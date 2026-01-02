@@ -379,7 +379,7 @@ msgstr "关于你的目标"
 msgid "Academic Word List"
 msgstr "学术词汇列表"
 
-#: src/features/Game/Battle/BattleCard.tsx:496
+#: src/features/Game/Battle/BattleCard.tsx:231
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "接受"
@@ -401,7 +401,7 @@ msgstr "掌握你的 C# 后端开发者面试"
 msgid "Achieve Speaking Fluency Fast"
 msgstr "快速实现口语流利"
 
-#: src/features/Game/GameStatRow.tsx:283
+#: src/features/Game/GameStatRow.tsx:284
 #. js-lingui-explicit-id
 msgid "Achievements"
 msgstr "成就"
@@ -426,6 +426,11 @@ msgstr "添加新目标"
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
 msgstr "添加一些您要求退款的原因，我们会为您办理。"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:350
+#. js-lingui-explicit-id
+msgid "Add Text Answer"
+msgstr "添加文字答案"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:182
 #. js-lingui-explicit-id
@@ -497,75 +502,20 @@ msgstr ""
 msgid "After the greeting, you'll usually hear:"
 msgstr "在问候语之后，你通常会听到："
 
-#: src/features/Game/Battle/useBattleQuestions.ts:328
-#. js-lingui-explicit-id
-msgid "AI and Creativity"
-msgstr "人工智能与创造力"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:286
-#. js-lingui-explicit-id
-msgid "AI and Employment"
-msgstr "AI与就业"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:391
-#. js-lingui-explicit-id
-msgid "AI and Ethics"
-msgstr "AI与伦理"
-
 #: src/features/Blog/blogData.tsx:23
 #. js-lingui-explicit-id
 msgid "AI and identity"
 msgstr "AI 和身份"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:244
-#. js-lingui-explicit-id
-msgid "AI and Responsibility"
-msgstr "AI与责任"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:265
-#. js-lingui-explicit-id
-msgid "AI and Trust"
-msgstr "AI 与信任"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:412
-#. js-lingui-explicit-id
-msgid "AI Autonomy"
-msgstr "AI 自主权"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:307
-#. js-lingui-explicit-id
-msgid "AI Bias"
-msgstr "AI 偏见"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:160
-#. js-lingui-explicit-id
-msgid "AI Companions"
-msgstr "AI 同伴"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:370
-#. js-lingui-explicit-id
-msgid "AI Companionship"
-msgstr "AI 伴侣"
 
 #: src/features/Landing/LandingPage.tsx:256
 #. js-lingui-explicit-id
 msgid "AI conversation"
 msgstr "AI 对话"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:223
+#: src/features/Game/Battle/BattleActionModal.tsx:242
 #. js-lingui-explicit-id
-msgid "AI Creativity"
-msgstr "AI 创造力"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:349
-#. js-lingui-explicit-id
-msgid "AI Decision Making"
+msgid "AI Decision"
 msgstr "AI 决策"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:181
-#. js-lingui-explicit-id
-msgid "AI Education"
-msgstr "AI 教育"
 
 #: src/features/SEO/metadata.ts:199
 #: src/features/SEO/metadata.ts:265
@@ -577,11 +527,6 @@ msgstr "AI英语导师"
 #. js-lingui-explicit-id
 msgid "ai English tutor"
 msgstr "ai 英语辅导员"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:55
-#. js-lingui-explicit-id
-msgid "AI Ethics"
-msgstr "AI伦理"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:170
 #. js-lingui-explicit-id
@@ -613,11 +558,6 @@ msgstr "AI 反馈非常重要"
 msgid "AI hours left in your balance."
 msgstr "您的余额中还剩AI小时。"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:76
-#. js-lingui-explicit-id
-msgid "AI in Daily Life"
-msgstr "日常生活中的AI"
-
 #: src/features/SEO/metadata.ts:304
 #. js-lingui-explicit-id
 msgid "AI Interview Coach"
@@ -639,11 +579,6 @@ msgstr "AI语言导师"
 msgid "AI language tutor pricing"
 msgstr "AI语言辅导价格"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:139
-#. js-lingui-explicit-id
-msgid "AI Regulation"
-msgstr "AI监管"
-
 #: src/features/Auth/WebViewWall.tsx:173
 #. js-lingui-explicit-id
 msgid "AI speaking partner"
@@ -653,11 +588,6 @@ msgstr "AI 语伴"
 #. js-lingui-explicit-id
 msgid "AI Speaking Practice"
 msgstr "AI口语练习"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:202
-#. js-lingui-explicit-id
-msgid "AI Trust"
-msgstr "AI 信任"
 
 #: src/features/SEO/metadata.ts:146
 #. js-lingui-explicit-id
@@ -669,12 +599,7 @@ msgstr "AI 辅导员费用"
 msgid "AI Tutor Updates"
 msgstr "AI辅导员更新"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:118
-#. js-lingui-explicit-id
-msgid "AI vs Humans"
-msgstr "AI对比人类"
-
-#: src/features/Game/Battle/BattleCard.tsx:295
+#: src/features/Game/Battle/BattleActionModal.tsx:376
 #. js-lingui-explicit-id
 msgid "AI will evaluate answers and determine the winner."
 msgstr "AI将评估答案并确定获胜者。"
@@ -745,6 +670,7 @@ msgid "Almost correct"
 msgstr "几乎正确"
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
+#: src/features/Game/Battle/BattleActionModal.tsx:271
 #. js-lingui-explicit-id
 msgid "Almost there!"
 msgstr "快到了！"
@@ -852,26 +778,6 @@ msgstr "建筑与设计"
 msgid "Architecture & Resiliency"
 msgstr "架构与弹性"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:47
-#. js-lingui-explicit-id
-msgid "Are great leaders born or made?"
-msgstr "伟大的领导者是天生的还是后天培养的？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:219
-#. js-lingui-explicit-id
-msgid "Are people optimistic or pessimistic about the future, and why?"
-msgstr "人们对未来是乐观还是悲观，以及原因是什么？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:341
-#. js-lingui-explicit-id
-msgid "Are people responsible for their circumstances?"
-msgstr "人们对自己的境遇负责吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:144
-#. js-lingui-explicit-id
-msgid "Are productivity tools actually making us more productive?"
-msgstr "生产力工具真的让我们更有效率吗？"
-
 #: src/features/Landing/Price/PricePage.tsx:82
 #. js-lingui-explicit-id
 msgid "Are there any hidden fees?"
@@ -888,7 +794,7 @@ msgstr "您确定要删除您的账户吗？"
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "您确定要删除您的目标吗？此操作无法撤销。"
 
-#: src/features/Game/Battle/BattleCard.tsx:545
+#: src/features/Game/Battle/BattleCard.tsx:292
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "您确定要拒绝这场对决吗？"
@@ -904,16 +810,6 @@ msgid ""
 "Articulate scalable solutions, performance optimization, and frontend "
 "architecture patterns."
 msgstr "阐述可扩展解决方案、性能优化和前端架构模式。"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:15
-#. js-lingui-explicit-id
-msgid "Artificial Intelligence"
-msgstr "人工智能"
-
-#: src/features/Game/GameStatRow.tsx:367
-#. js-lingui-explicit-id
-msgid "Ask for debate"
-msgstr "请求辩论"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:26
 #: src/features/Case/data/backendCSharp/techData.ts:13
@@ -1267,31 +1163,6 @@ msgstr "通话模式"
 msgid "Calling Customer Support"
 msgstr "拨打客户支持热线"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:308
-#. js-lingui-explicit-id
-msgid "Can AI ever be completely unbiased?"
-msgstr "人工智能是否能够完全无偏？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:161
-#. js-lingui-explicit-id
-msgid "Can AI replace human companionship in the future?"
-msgstr "人工智能能否在未来取代人类陪伴？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:224
-#. js-lingui-explicit-id
-msgid "Can AI-generated content be considered original creativity?"
-msgstr "AI生成的内容能否被视为原创创意？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:379
-#. js-lingui-explicit-id
-msgid "Can constant self-improvement become harmful?"
-msgstr "不断自我提升会变成有害的吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:93
-#. js-lingui-explicit-id
-msgid "Can creativity be taught, or is it natural talent?"
-msgstr "创造力是可以被教导的，还是与生俱来的天赋？"
-
 #: src/features/Landing/LandingPage.tsx:77
 #. js-lingui-explicit-id
 msgid "Can FluencyPal create a personal practice plan for me?"
@@ -1353,72 +1224,16 @@ msgstr "已经掌握基础知识但在面试中难以清晰表达决策的候选
 msgid "Card verified. Loading..."
 msgstr "卡已验证。加载中..."
 
-#: src/features/Game/Battle/useBattleQuestions.ts:38
-#. js-lingui-explicit-id
-msgid "Career"
-msgstr "职业"
-
 #: src/features/SEO/metadata.ts:97
 #: src/features/SEO/metadata.ts:308
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "职业晋升"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:206
-#: src/features/Game/Battle/useBattleQuestions.ts:311
-#. js-lingui-explicit-id
-msgid "Career Advice"
-msgstr "职业建议"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
 #. js-lingui-explicit-id
 msgid "Career benefit:"
 msgstr "职业益处:"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:97
-#. js-lingui-explicit-id
-msgid "Career Choices"
-msgstr "职业选择"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:147
-#. js-lingui-explicit-id
-msgid "Career Growth"
-msgstr "职业发展"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:353
-#. js-lingui-explicit-id
-msgid "Career Identity"
-msgstr "职业身份"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:374
-#. js-lingui-explicit-id
-msgid "Career Planning"
-msgstr "职业规划"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:269
-#. js-lingui-explicit-id
-msgid "Career Purpose"
-msgstr "职业目标"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:227
-#. js-lingui-explicit-id
-msgid "Career Risk"
-msgstr "职业风险"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:416
-#. js-lingui-explicit-id
-msgid "Career Satisfaction"
-msgstr "职业满意度"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:290
-#. js-lingui-explicit-id
-msgid "Career Stability"
-msgstr "职业稳定性"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:395
-#. js-lingui-explicit-id
-msgid "Career Success"
-msgstr "职业成功"
 
 #: src/features/Game/GamePage.tsx:181
 #. js-lingui-explicit-id
@@ -1540,7 +1355,8 @@ msgid ""
 "rambling."
 msgstr "清晰的系统设计结构。我终于在解释权衡时没有东拉西扯。"
 
-#: src/features/Game/Battle/BattleCard.tsx:209
+#: src/features/Game/Battle/BattleActionModal.tsx:262
+#: src/features/Game/Battle/BattleCard.tsx:263
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1577,11 +1393,6 @@ msgstr "通过自信交流经验"
 #. js-lingui-explicit-id
 msgid "Communicate system design trade-offs"
 msgstr "传达系统设计权衡"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:71
-#. js-lingui-explicit-id
-msgid "Communication"
-msgstr "沟通"
 
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:30
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:30
@@ -1933,22 +1744,6 @@ msgstr "创建您自己的角色扮演场景"
 msgid "Create Your Own Scenario"
 msgstr "创建您自己的场景"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:92
-#: src/features/Game/Battle/useBattleQuestions.ts:172
-#. js-lingui-explicit-id
-msgid "Creativity"
-msgstr "创造力"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:386
-#. js-lingui-explicit-id
-msgid "Creativity Pressure"
-msgstr "创造力压力"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:302
-#. js-lingui-explicit-id
-msgid "Creativity vs Efficiency"
-msgstr "创造力与效率"
-
 #: src/features/PayWall/CardValidatorQuiz.tsx:57
 #. js-lingui-explicit-id
 msgid "Credit Card Already Confirmed"
@@ -2069,22 +1864,17 @@ msgstr "数据与交易"
 msgid "Databases & Transactions"
 msgstr "数据库与事务"
 
-#: src/features/Game/Battle/BattleCard.tsx:409
+#: src/features/Game/Battle/BattleCard.tsx:120
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "辩论"
 
-#: src/features/Game/Battle/BattleCard.tsx:217
-#. js-lingui-explicit-id
-msgid "Debate completed!"
-msgstr "辩论完成！"
-
-#: src/features/Game/Battle/BattleCard.tsx:115
+#: src/features/Game/Battle/BattleActionModal.tsx:117
 #. js-lingui-explicit-id
 msgid "Debate ended!"
 msgstr "辩论结束！"
 
-#: src/features/Game/GameStatRow.tsx:142
+#: src/features/Game/GameStatRow.tsx:143
 #. js-lingui-explicit-id
 msgid "Debate Request"
 msgstr "辩论请求"
@@ -2094,20 +1884,10 @@ msgstr "辩论请求"
 msgid "Debate Request Sent!"
 msgstr "请求辩论已发送！"
 
-#: src/features/Game/Battle/BattleCard.tsx:277
+#: src/features/Game/Battle/BattleActionModal.tsx:358
 #. js-lingui-explicit-id
 msgid "Debate started!"
 msgstr "辩论开始了！"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:130
-#. js-lingui-explicit-id
-msgid "Decision Making"
-msgstr "决策制定"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:248
-#. js-lingui-explicit-id
-msgid "Decision Regret"
-msgstr "决策后悔"
 
 #: src/features/Header/NeedHelpModal.tsx:195
 #. js-lingui-explicit-id
@@ -2277,16 +2057,6 @@ msgstr "面向拥有复杂前端和高性能要求的产品公司的开发人员
 msgid "Diagnosis"
 msgstr "诊断"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:273
-#. js-lingui-explicit-id
-msgid "Digital Communication"
-msgstr "数字通信"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:361
-#. js-lingui-explicit-id
-msgid "Digital Detox"
-msgstr "数字排毒"
-
 #: src/features/Landing/Price/PricePage.tsx:339
 #. js-lingui-explicit-id
 msgid "Discounted AI Usage"
@@ -2306,7 +2076,7 @@ msgid ""
 "effortlessly and quickly."
 msgstr "发现有效的日常习惯，可以毫不费力且迅速地提高你的商务英语技能。"
 
-#: src/features/Game/GameStatRow.tsx:143
+#: src/features/Game/GameStatRow.tsx:144
 #. js-lingui-explicit-id
 msgid "Discuss and improve your skills together!"
 msgstr "一起讨论并提升你的技能！"
@@ -2411,11 +2181,6 @@ msgstr ""
 "## 场景如何运作\n"
 "您将扮演一个看医生的病人，由 AI 扮演医生。医生将询问您的症状，提供建议，并建议可能的治疗方案。通过自然对话，您将在专业的医疗环境中磨练沟通技巧。"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:278
-#. js-lingui-explicit-id
-msgid "Do grades motivate students or limit their potential?"
-msgstr "成绩是激励学生，还是限制学生的潜力？"
-
 #: src/features/Landing/Price/PricePage.tsx:49
 #. js-lingui-explicit-id
 msgid "Do I need to enter a credit card to start?"
@@ -2426,26 +2191,6 @@ msgstr "我需要输入信用卡信息才能开始吗？"
 #. js-lingui-explicit-id
 msgid "Do I need to schedule time with a real interviewer?"
 msgstr "我需要与真实面试官安排时间吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:173
-#. js-lingui-explicit-id
-msgid "Do limitations help or hurt creativity?"
-msgstr "限制是帮助还是阻碍创造力？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:324
-#. js-lingui-explicit-id
-msgid "Do modern workers expect too much from their jobs?"
-msgstr "现代员工对工作期望过高吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:320
-#. js-lingui-explicit-id
-msgid "Do online courses provide the same value as in-person learning?"
-msgstr "在线课程是否具有与面对面学习相同的价值？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:102
-#. js-lingui-explicit-id
-msgid "Do smartphones improve or damage our attention span?"
-msgstr "智能手机是提高还是削弱了我们的注意力？"
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:20
 #. js-lingui-explicit-id
@@ -2462,66 +2207,6 @@ msgstr "你有任何旅行计划吗？"
 #. js-lingui-explicit-id
 msgid "Doctor"
 msgstr "博士"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:194
-#. js-lingui-explicit-id
-msgid "Does automation create more jobs than it destroys?"
-msgstr "自动化创造的就业机会是否比其摧毁的多？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:316
-#. js-lingui-explicit-id
-msgid "Does comparing yourself to others help or harm motivation?"
-msgstr "将自己与他人比较是有助于还是有害于动机？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:295
-#. js-lingui-explicit-id
-msgid "Does discomfort always lead to personal growth?"
-msgstr "不适总会导致个人成长吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:333
-#. js-lingui-explicit-id
-msgid "Does fear protect us or limit us more?"
-msgstr "恐惧是保护我们还是更多地限制我们？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:257
-#. js-lingui-explicit-id
-msgid "Does financial independence equal personal freedom?"
-msgstr "经济独立等于个人自由吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:110
-#. js-lingui-explicit-id
-msgid "Does innovation come more from freedom or pressure?"
-msgstr "创新更多来自自由还是压力？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:135
-#. js-lingui-explicit-id
-msgid "Does modern life make people more anxious than before?"
-msgstr "现代生活是否让人比以前更加焦虑？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:43
-#. js-lingui-explicit-id
-msgid "Does money bring freedom, happiness, or neither?"
-msgstr "金钱带来自由、快乐，还是两者皆无？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:366
-#. js-lingui-explicit-id
-msgid "Does pressure improve or damage performance?"
-msgstr "压力是提高还是损害表现？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:387
-#. js-lingui-explicit-id
-msgid "Does pressure kill creativity or enhance it?"
-msgstr "压力是扼杀创造力还是激发创造力？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:26
-#. js-lingui-explicit-id
-msgid "Does social media do more harm than good for society?"
-msgstr "社交媒体对社会的危害大于益处吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:35
-#. js-lingui-explicit-id
-msgid "Does technology make people more connected or more lonely?"
-msgstr "技术使人们更加紧密相连还是更加孤独?"
 
 #: src/features/RolePlay/rolePlayData.tsx:394
 #. js-lingui-explicit-id
@@ -2576,23 +2261,6 @@ msgstr "编辑消息"
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "已编辑"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:21
-#: src/features/Game/Battle/useBattleQuestions.ts:59
-#: src/features/Game/Battle/useBattleQuestions.ts:122
-#. js-lingui-explicit-id
-msgid "Education"
-msgstr "教育"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:277
-#. js-lingui-explicit-id
-msgid "Education Pressure"
-msgstr "教育压力"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:210
-#. js-lingui-explicit-id
-msgid "Education System"
-msgstr "教育系统"
 
 #: src/features/Case/data/backendCSharp/techData.ts:18
 #. js-lingui-explicit-id
@@ -3167,11 +2835,6 @@ msgstr "删除您的帐户失败。请稍后再试，或者联系开发者。"
 msgid "Failed to send feedback. Please try again later."
 msgstr "发送反馈失败。请稍后再试。"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:50
-#. js-lingui-explicit-id
-msgid "Failure"
-msgstr "失败"
-
 #: src/features/Case/data/backendCSharp/faqSection.ts:10
 #: src/features/Case/data/frontend-junior/faqSection.ts:10
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
@@ -3430,11 +3093,6 @@ msgstr "框架与库"
 msgid "Free Conversation"
 msgstr "自由对话"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:382
-#. js-lingui-explicit-id
-msgid "Freedom vs Security"
-msgstr "自由 vs 安全"
-
 #: src/features/Goal/GoalQuestions.tsx:286
 #. js-lingui-explicit-id
 msgid "French"
@@ -3510,16 +3168,6 @@ msgstr "完全AI面试教练访问权限"
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "全功能 AI 辅导员访问权限"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:218
-#. js-lingui-explicit-id
-msgid "Future"
-msgstr "未来"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:428
-#. js-lingui-explicit-id
-msgid "Future of Work"
-msgstr "工作未来"
 
 #: src/features/Navigation/NavigationBar.tsx:69
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -3904,20 +3552,10 @@ msgstr "自信地处理并发"
 msgid "Happy April 1st!"
 msgstr "四月一日快乐！"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:274
-#. js-lingui-explicit-id
-msgid "Has digital communication improved or weakened human relationships?"
-msgstr "数字通信是加强了还是削弱了人际关系？"
-
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
 #. js-lingui-explicit-id
 msgid "Have fun!"
 msgstr "玩得开心！"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:236
-#. js-lingui-explicit-id
-msgid "Have people become too dependent on technology?"
-msgstr "人们是否变得过于依赖技术了？"
 
 #: src/features/RolePlay/rolePlayData.tsx:366
 #: src/features/RolePlay/rolePlayData.tsx:553
@@ -4095,11 +3733,6 @@ msgstr "如何运作："
 #. js-lingui-explicit-id
 msgid "How long will my hours last?"
 msgstr "我的小时会持续多久？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:68
-#. js-lingui-explicit-id
-msgid "How should success be measured: money, impact, or happiness?"
-msgstr "成功应该以什么来衡量：金钱、影响力还是幸福感？"
 
 #: src/features/Blog/blogData.tsx:257
 #. js-lingui-explicit-id
@@ -5090,16 +4723,6 @@ msgstr "印度尼西亚语学习计划"
 msgid "Initiate brain connection"
 msgstr "启动脑连接"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:109
-#. js-lingui-explicit-id
-msgid "Innovation"
-msgstr "创新"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:344
-#. js-lingui-explicit-id
-msgid "Innovation Speed"
-msgstr "创新速度"
-
 #: src/features/Dashboard/BrainCard.tsx:397
 #. js-lingui-explicit-id
 msgid "Install complete"
@@ -5240,237 +4863,20 @@ msgstr ""
 "\n"
 "邀请链接已发送至：\n"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:165
+#: src/features/Game/GameStatRow.tsx:368
 #. js-lingui-explicit-id
-msgid "Is a competitive workplace better than a collaborative one?"
-msgstr "竞争性的工作场所是否比协作性的工作场所更好？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:22
-#. js-lingui-explicit-id
-msgid "Is a university degree still necessary for career success today?"
-msgstr "今天，大学学位对职业成功来说仍然是必要的吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:417
-#. js-lingui-explicit-id
-msgid "Is career satisfaction a personal responsibility or a company’s role?"
-msgstr "职业满意是个人责任还是公司责任？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:148
-#. js-lingui-explicit-id
-msgid "Is changing jobs frequently good or bad for a career?"
-msgstr "频繁换工作对事业有利还是不利？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:114
-#. js-lingui-explicit-id
-msgid "Is comfort the enemy of growth?"
-msgstr "舒适是成长的敌人吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:253
-#. js-lingui-explicit-id
-msgid "Is company culture more important than salary?"
-msgstr "公司文化比薪水更重要吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:282
-#. js-lingui-explicit-id
-msgid "Is confidence more important than competence?"
-msgstr "自信比能力更重要吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:358
-#. js-lingui-explicit-id
-msgid "Is curiosity more powerful than discipline for learning?"
-msgstr "好奇心是否比自律对学习更有影响力？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:337
-#. js-lingui-explicit-id
-msgid "Is deep focus more valuable than being constantly available?"
-msgstr "持续专注是否比时刻待命更有价值？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:190
-#. js-lingui-explicit-id
-msgid "Is direct feedback always better than polite feedback?"
-msgstr "直接反馈总是比礼貌反馈好吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:186
-#. js-lingui-explicit-id
-msgid "Is external pressure useful for motivation?"
-msgstr "外部压力对激励作用有用吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:51
-#. js-lingui-explicit-id
-msgid "Is failure a necessary part of success?"
-msgstr "失败是成功的必要部分吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:345
-#. js-lingui-explicit-id
-msgid "Is fast innovation more dangerous than slow progress?"
-msgstr "快速创新比缓慢进步更危险吗？"
+msgid "Invite to a debate"
+msgstr "邀请参加辩论"
 
 #: src/features/Landing/LandingPage.tsx:127
 #. js-lingui-explicit-id
 msgid "Is FluencyPal a replacement for a human teacher?"
 msgstr "FluencyPal 是否可以替代人类老师？"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:207
-#. js-lingui-explicit-id
-msgid "Is following advice from others helpful or limiting?"
-msgstr "聆听他人建议是有帮助还是限制？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:312
-#. js-lingui-explicit-id
-msgid "Is following your passion good career advice?"
-msgstr "跟随你的热情是否是好的职业建议？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:371
-#. js-lingui-explicit-id
-msgid "Is forming emotional bonds with AI healthy or harmful?"
-msgstr "与人工智能形成情感纽带是健康的还是有害的？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:383
-#. js-lingui-explicit-id
-msgid "Is freedom more important than security?"
-msgstr "自由比安全更重要吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:177
-#. js-lingui-explicit-id
-msgid "Is having a clear life plan important?"
-msgstr "拥有清晰的人生计划重要吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:270
-#. js-lingui-explicit-id
-msgid "Is having a sense of purpose at work essential?"
-msgstr "在工作中拥有目标感是否重要？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:72
-#. js-lingui-explicit-id
-msgid "Is honest communication always the best policy?"
-msgstr "诚实沟通总是最好的政策吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:421
-#. js-lingui-explicit-id
-msgid "Is information overload making learning harder?"
-msgstr "信息过载是否让学习变得更加困难？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:98
-#. js-lingui-explicit-id
-msgid "Is it better to choose a job you love or one that pays well?"
-msgstr "选择你热爱的工作好，还是选择薪水高的工作好？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:131
-#. js-lingui-explicit-id
-msgid "Is it better to make fast decisions or well-analyzed ones?"
-msgstr "要快速做决定还是深入分析后再做决定更好？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:39
-#. js-lingui-explicit-id
-msgid "Is it better to specialize deeply in one skill or stay a generalist?"
-msgstr "在一项技能上深度专精是否更好，还是保持通才更好？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:249
-#. js-lingui-explicit-id
-msgid "Is it worse to make a wrong decision or make no decision at all?"
-msgstr "做出错误的决定比不做决定更糟糕吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:127
-#. js-lingui-explicit-id
-msgid "Is job security more important than job satisfaction?"
-msgstr "工作保障比工作满意度更重要吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:156
-#. js-lingui-explicit-id
-msgid "Is learning by doing more effective than learning by reading?"
-msgstr "通过实践学习比通过阅读学习更有效吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:232
-#. js-lingui-explicit-id
-msgid "Is learning fast better than learning deeply?"
-msgstr "学习快比学得深入更好吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:261
-#. js-lingui-explicit-id
-msgid "Is learning from mistakes more effective than learning from success?"
-msgstr "从错误中学习比从成功中学习更有效吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:375
-#. js-lingui-explicit-id
-msgid "Is long-term career planning realistic today?"
-msgstr "今天进行长期职业规划是否现实？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:408
-#. js-lingui-explicit-id
-msgid "Is meaningful work more important than high pay?"
-msgstr "有意义的工作比高薪更重要吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:81
-#. js-lingui-explicit-id
-msgid "Is motivation more important than discipline?"
-msgstr "动力比纪律更重要吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:169
-#. js-lingui-explicit-id
-msgid "Is multitasking a useful skill or a myth?"
-msgstr "同时处理多项任务是有用的技能还是一种迷思？"
-
 #: src/features/Landing/LandingPage.tsx:148
 #. js-lingui-explicit-id
 msgid "Is my data used to train AI models?"
 msgstr "我的数据会被用来训练 AI 模型吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:215
-#. js-lingui-explicit-id
-msgid "Is passion necessary to do great work?"
-msgstr "激情是否是做出优秀工作的必要条件？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:85
-#. js-lingui-explicit-id
-msgid "Is personal privacy still possible in the digital age?"
-msgstr "在数字时代，个人隐私是否仍然可能？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:362
-#. js-lingui-explicit-id
-msgid "Is regular digital detox necessary in modern life?"
-msgstr "在现代生活中，定期进行数字戒毒是必要的吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:10
-#. js-lingui-explicit-id
-msgid ""
-"Is remote work better for productivity than working in an office? Why or "
-"why not?"
-msgstr "远程工作在生产力方面是否优于在办公室工作？为什么或为什么不？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:198
-#. js-lingui-explicit-id
-msgid "Is self-discipline more important than talent?"
-msgstr "自律比天赋更重要吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:89
-#. js-lingui-explicit-id
-msgid "Is self-learning more effective than traditional education?"
-msgstr "自学是否比传统教育更有效？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:291
-#. js-lingui-explicit-id
-msgid "Is stability overrated in modern careers?"
-msgstr "在现代职业中，稳定性是否被高估了？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:396
-#. js-lingui-explicit-id
-msgid "Is success mostly a result of effort or circumstances?"
-msgstr "成功主要是努力的结果还是环境的结果？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:228
-#. js-lingui-explicit-id
-msgid "Is taking career risks necessary for long-term success?"
-msgstr "职业生涯中是否有必要承担风险以实现长期成功？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:404
-#. js-lingui-explicit-id
-msgid "Is technology developing faster than society can adapt?"
-msgstr "科技的发 展速度 是否超过了社会的适应能力？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:211
-#. js-lingui-explicit-id
-msgid "Is the current education system preparing people for real life?"
-msgstr "当前的教育系统是否在为现实生活做准备？"
 
 #: src/features/Landing/Price/PricePage.tsx:54
 #. js-lingui-explicit-id
@@ -5487,16 +4893,6 @@ msgstr "是否有免费试用？"
 #. js-lingui-explicit-id
 msgid "Is there content on resiliency and observability?"
 msgstr "内容有关于韧性和可观测性的吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:299
-#. js-lingui-explicit-id
-msgid "Is time more valuable than money?"
-msgstr "时间比金钱更有价值吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:64
-#. js-lingui-explicit-id
-msgid "Is working long hours a sign of ambition or poor time management?"
-msgstr "长时间工作是雄心勃勃的表现还是时间管理不善的体现？"
 
 #: src/features/Case/data/backendCSharp/coreData.ts:22
 #: src/features/Case/data/frontend-junior/coreData.ts:24
@@ -5734,11 +5130,6 @@ msgstr "启动你的前端职业生涯"
 msgid "Lazy Loading"
 msgstr "延迟加载"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:46
-#. js-lingui-explicit-id
-msgid "Leadership"
-msgstr "领导力"
-
 #: src/features/Case/data/frontend-senior/painSection.ts:35
 #. js-lingui-explicit-id
 msgid "Leadership and ownership questions feel **vague and subjective**"
@@ -5803,50 +5194,15 @@ msgstr "学习有效地描述症状并请求医疗建议"
 msgid "Learn useful words so you never go blank mid-sentence"
 msgstr "学习有用的单词，这样你在句子中途再也不会卡壳"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:88
-#. js-lingui-explicit-id
-msgid "Learning"
-msgstr "学习"
-
 #: src/features/SEO/metadata.ts:223
 #. js-lingui-explicit-id
 msgid "Learning Blog"
 msgstr "学习博客"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:399
-#. js-lingui-explicit-id
-msgid "Learning Failure"
-msgstr "学习失败"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:155
-#. js-lingui-explicit-id
-msgid "Learning Habits"
-msgstr "学习习惯"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:260
-#. js-lingui-explicit-id
-msgid "Learning Methods"
-msgstr "学习方法"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:357
-#. js-lingui-explicit-id
-msgid "Learning Motivation"
-msgstr "学习动机"
-
 #: src/features/Dashboard/PlanDashboardCards.tsx:325
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "学习计划"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:231
-#. js-lingui-explicit-id
-msgid "Learning Speed"
-msgstr "学习速度"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:319
-#. js-lingui-explicit-id
-msgid "Learning Technology"
-msgstr "学习技术"
 
 #: src/features/Header/ContactMessageModal.tsx:98
 #: src/features/Settings/MyProfile.tsx:235
@@ -5906,7 +5262,7 @@ msgstr "让我们决定我们将以什么速度学习！"
 msgid "Let's go"
 msgstr "我们走吧"
 
-#: src/features/Game/Battle/BattleCard.tsx:278
+#: src/features/Game/Battle/BattleActionModal.tsx:359
 #. js-lingui-explicit-id
 msgid "Let's see who has the best arguments."
 msgstr "让我们看看谁的论据最好。"
@@ -6183,20 +5539,10 @@ msgstr "模拟面试问题"
 msgid "Mock Interviews"
 msgstr "模拟面试"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:420
-#. js-lingui-explicit-id
-msgid "Modern Learning"
-msgstr "现代学习"
-
 #: src/features/Blog/blogData.tsx:26
 #. js-lingui-explicit-id
 msgid "modern literature"
 msgstr "现代文学"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:42
-#. js-lingui-explicit-id
-msgid "Money"
-msgstr "金钱"
 
 #: src/features/Landing/Price/PricePage.tsx:255
 #: src/features/Usage/SubscriptionPaymentModal.tsx:727
@@ -6236,12 +5582,6 @@ msgid ""
 "Most interviews include the classic “strengths and weaknesses” question. "
 "It’s especially important to handle this well in English."
 msgstr "大多数面试都包括经典的“优点和缺点”问题。用英语妥善处理这个问题尤为重要。"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:80
-#: src/features/Game/Battle/useBattleQuestions.ts:185
-#. js-lingui-explicit-id
-msgid "Motivation"
-msgstr "动机"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:141
 #: src/features/Goal/Quiz/QuizPage2.tsx:182
@@ -6371,7 +5711,7 @@ msgstr "新词："
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/Battle/BattleCard.tsx:279
+#: src/features/Game/Battle/BattleActionModal.tsx:360
 #: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:121
 #: src/features/Goal/GoalQuestions.tsx:503
@@ -6466,7 +5806,7 @@ msgstr "无需支付..."
 msgid "No Projections Available"
 msgstr "没有可用的预测"
 
-#: src/features/Game/Battle/BattleCard.tsx:203
+#: src/features/Game/Battle/BattleActionModal.tsx:255
 #. js-lingui-explicit-id
 msgid "No reason provided."
 msgstr "未提供理由。"
@@ -6559,6 +5899,11 @@ msgstr "未发布"
 #. js-lingui-explicit-id
 msgid "Not running inside Telegram App"
 msgstr "未在 Telegram 应用程序内运行"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:166
+#. js-lingui-explicit-id
+msgid "Not that time"
+msgstr "不是那个时候"
 
 #: src/features/Conversation/ConversationError.tsx:41
 #. js-lingui-explicit-id
@@ -6670,7 +6015,7 @@ msgid "Open plan"
 msgstr "开放式计划"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
-#: src/features/Game/Battle/BattleCard.tsx:518
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "打开结果"
@@ -6829,42 +6174,11 @@ msgstr "性能指标"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "性能、弹性和架构模式"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:197
-#. js-lingui-explicit-id
-msgid "Personal Development"
-msgstr "个人发展"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:256
-#. js-lingui-explicit-id
-msgid "Personal Freedom"
-msgstr "个人自由"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:176
-#. js-lingui-explicit-id
-msgid "Personal Goals"
-msgstr "个人目标"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:113
-#: src/features/Game/Battle/useBattleQuestions.ts:294
-#. js-lingui-explicit-id
-msgid "Personal Growth"
-msgstr "个人成长"
-
 #: src/features/Landing/LandingPage.tsx:334
 #: src/features/Landing/PlanLandingBlock.tsx:429
 #. js-lingui-explicit-id
 msgid "Personal Plan"
 msgstr "个人计划"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:340
-#. js-lingui-explicit-id
-msgid "Personal Responsibility"
-msgstr "个人责任"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:424
-#. js-lingui-explicit-id
-msgid "Personal Values"
-msgstr "个人价值观"
 
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:28
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:28
@@ -6967,7 +6281,7 @@ msgstr "请点击菜单 ⋮ 并选择"
 msgid "Please wait while we process your payment."
 msgstr "请稍候，我们正在处理您的付款。"
 
-#: src/features/Game/GameStatRow.tsx:271
+#: src/features/Game/GameStatRow.tsx:272
 #. js-lingui-explicit-id
 msgid "Points"
 msgstr "积分"
@@ -6992,7 +6306,7 @@ msgstr "葡萄牙语"
 msgid "Portuguese Learning Plan"
 msgstr "葡萄牙语学习计划"
 
-#: src/features/Game/GameStatRow.tsx:254
+#: src/features/Game/GameStatRow.tsx:255
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "位置"
@@ -7349,11 +6663,6 @@ msgstr "每小时AI费用："
 msgid "Priority support"
 msgstr "优先支持"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:84
-#. js-lingui-explicit-id
-msgid "Privacy"
-msgstr "隐私"
-
 #: src/features/Usage/PaymentModal.tsx:365
 #. js-lingui-explicit-id
 msgid "privacy policy"
@@ -7379,6 +6688,11 @@ msgstr "隐私政策"
 #. js-lingui-explicit-id
 msgid "Problem Solving"
 msgstr "问题解决"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:271
+#. js-lingui-explicit-id
+msgid "Processing answers..."
+msgstr "正在处理答案..."
 
 #: src/features/Dashboard/BrainCard.tsx:144
 #. js-lingui-explicit-id
@@ -7406,11 +6720,6 @@ msgstr "处理中..."
 #. js-lingui-explicit-id
 msgid "Product"
 msgstr "产品"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:143
-#. js-lingui-explicit-id
-msgid "Productivity"
-msgstr "生产力"
 
 #: src/features/RolePlay/rolePlayData.tsx:141
 #: src/features/RolePlay/rolePlayData.tsx:522
@@ -7807,15 +7116,10 @@ msgstr "相关场景"
 msgid "Reload page"
 msgstr "重新加载页面"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:9
+#: src/features/Game/Battle/BattleCard.tsx:301
 #. js-lingui-explicit-id
-msgid "Remote Work"
-msgstr "远程工作"
-
-#: src/features/Game/Battle/BattleCard.tsx:554
-#. js-lingui-explicit-id
-msgid "Remove debate"
-msgstr "移除辩论"
+msgid "Remove"
+msgstr "移除"
 
 #: src/features/Case/quiz/InterviewQuizPage.tsx:236
 #. js-lingui-explicit-id
@@ -7871,11 +7175,6 @@ msgstr "返回"
 #. js-lingui-explicit-id
 msgid "Returning an Item to a Store"
 msgstr "退回商品到商店"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:332
-#. js-lingui-explicit-id
-msgid "Risk and Fear"
-msgstr "风险和恐惧"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
 #. js-lingui-explicit-id
@@ -8052,11 +7351,6 @@ msgstr "选择你的游戏头像"
 msgid "Select your preferred language"
 msgstr "选择您的首选语言"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:378
-#. js-lingui-explicit-id
-msgid "Self-Improvement"
-msgstr "自我提升"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
 #. js-lingui-explicit-id
 msgid "Self-Introduction: Talking About Yourself"
@@ -8096,7 +7390,7 @@ msgstr "再次发送电子邮件"
 msgid "Send me sign-in link"
 msgstr "发送登录链接"
 
-#: src/features/Game/GameStatRow.tsx:145
+#: src/features/Game/GameStatRow.tsx:146
 #. js-lingui-explicit-id
 msgid "Send Request"
 msgstr "发送请求"
@@ -8198,112 +7492,15 @@ msgstr "以积极的态度给出简短的回答，表明你很容易接触并愿
 msgid "short story"
 msgstr "短篇故事"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:350
-#. js-lingui-explicit-id
-msgid "Should AI be allowed to make life-changing decisions?"
-msgstr "AI是否应该被允许做出改变生活的决定？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:16
-#. js-lingui-explicit-id
-msgid ""
-"Should AI be allowed to replace humans in creative jobs like writing or "
-"design?"
-msgstr "AI是否应该被允许取代人类在写作或设计等创造性工作中的角色？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:329
-#. js-lingui-explicit-id
-msgid "Should AI be credited as a creator or just a tool?"
-msgstr "AI应该被誉为创作者还是仅作为一个工具?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:392
-#. js-lingui-explicit-id
-msgid "Should AI follow strict ethical rules even if it reduces efficiency?"
-msgstr "AI 是否应该遵循严格的伦理规则，即使这会降低效率？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:413
-#. js-lingui-explicit-id
-msgid "Should AI systems be allowed to operate without human oversight?"
-msgstr "AI系统是否应在无人监督的情况下运行？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:56
-#. js-lingui-explicit-id
-msgid "Should AI systems be required to explain how they make decisions?"
-msgstr "AI系统是否应该被要求解释它们是如何做出决策的？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:30
-#. js-lingui-explicit-id
-msgid "Should companies be responsible for employees’ mental health?"
-msgstr "公司是否应对员工的心理健康负责？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:287
-#. js-lingui-explicit-id
-msgid "Should companies replace humans with AI if it is cheaper and faster?"
-msgstr "公司应否因为AI更便宜、更快捷而用AI取代人类？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:303
-#. js-lingui-explicit-id
-msgid "Should efficiency be prioritized over creativity at work?"
-msgstr "工作中应优先考虑效率而不是创造力吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:123
-#. js-lingui-explicit-id
-msgid "Should exams be replaced by continuous assessment?"
-msgstr "考试应被持续评估取代吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:400
-#. js-lingui-explicit-id
-msgid "Should failure be celebrated in learning environments?"
-msgstr "在学习环境中是否应该庆祝失败？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:140
-#. js-lingui-explicit-id
-msgid "Should governments strictly regulate AI development?"
-msgstr "政府是否应严格监管人工智能的发展？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:106
-#. js-lingui-explicit-id
-msgid "Should managers be friends with their employees?"
-msgstr "经理应该和员工做朋友吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:354
-#. js-lingui-explicit-id
-msgid "Should people define themselves by their profession?"
-msgstr "人们是否应该通过自己的职业来定义自己?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:266
-#. js-lingui-explicit-id
-msgid "Should people trust AI recommendations more than human advice?"
-msgstr "人们应该比人类建议更信任AI推荐吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:152
-#. js-lingui-explicit-id
-msgid "Should personal values ever be compromised for success?"
-msgstr "个人价值观是否应该为成功而妥协？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:425
-#. js-lingui-explicit-id
-msgid "Should personal values guide every major life decision?"
-msgstr "个人价值观是否应该指导每一个重大人生决策？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:60
-#. js-lingui-explicit-id
-msgid "Should schools focus more on practical skills than theory?"
-msgstr "学校是否应更注重实践技能而非理论？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:182
-#. js-lingui-explicit-id
-msgid "Should students be allowed to use AI tools in school?"
-msgstr "学生应该被允许在学校使用AI工具吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:240
-#. js-lingui-explicit-id
-msgid "Should work be a major source of personal fulfillment?"
-msgstr "工作应该是个人满足感的主要来源吗？"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
 #. js-lingui-explicit-id
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
 msgstr "显示好奇心和参与感。不要忘记感谢他们的答案："
+
+#: src/features/Game/Battle/BattleSection.tsx:53
+#. js-lingui-explicit-id
+msgid "Show Debates"
+msgstr "显示辩论"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
 #. js-lingui-explicit-id
@@ -8319,6 +7516,11 @@ msgstr "显示更少"
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "显示更多"
+
+#: src/features/Game/Battle/BattleSection.tsx:53
+#. js-lingui-explicit-id
+msgid "Show More Debates"
+msgstr "显示更多辩论"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:512
 #. js-lingui-explicit-id
@@ -8487,21 +7689,6 @@ msgstr "所以，在第一周你将学习："
 msgid "Social"
 msgstr "社会"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:315
-#. js-lingui-explicit-id
-msgid "Social Comparison"
-msgstr "社会比较"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:25
-#. js-lingui-explicit-id
-msgid "Social Media"
-msgstr "社交媒体"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:134
-#. js-lingui-explicit-id
-msgid "Society"
-msgstr "社会"
-
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:22
 #. js-lingui-explicit-id
 msgid ""
@@ -8595,7 +7782,7 @@ msgstr "开始模拟面试"
 msgid "Start Call"
 msgstr "开始通话"
 
-#: src/features/Game/Battle/BattleCard.tsx:512
+#: src/features/Game/Battle/BattleCard.tsx:247
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "开始辩论"
@@ -8863,7 +8050,7 @@ msgstr "提交"
 msgid "Submit answer"
 msgstr "提交答案"
 
-#: src/features/Game/Battle/BattleCard.tsx:219
+#: src/features/Game/Battle/BattleActionModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Submit Answers"
 msgstr "提交答案"
@@ -8904,16 +8091,6 @@ msgstr "需要订阅"
 #. js-lingui-explicit-id
 msgid "subscription plans"
 msgstr "订阅计划"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:67
-#. js-lingui-explicit-id
-msgid "Success"
-msgstr "成功"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:281
-#. js-lingui-explicit-id
-msgid "Success Mindset"
-msgstr "成功心态"
 
 #: src/features/Case/Landing/components/Footer.tsx:114
 #. js-lingui-explicit-id
@@ -9077,23 +8254,6 @@ msgstr "技术问题"
 msgid "Technical Support"
 msgstr "技术支持"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:34
-#: src/features/Game/Battle/useBattleQuestions.ts:101
-#: src/features/Game/Battle/useBattleQuestions.ts:193
-#. js-lingui-explicit-id
-msgid "Technology"
-msgstr "技术"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:235
-#. js-lingui-explicit-id
-msgid "Technology Dependence"
-msgstr "技术依赖"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:403
-#. js-lingui-explicit-id
-msgid "Technology Pace"
-msgstr "技术节奏"
-
 #: src/features/Case/data/frontend-junior/quizData.ts:95
 #. js-lingui-explicit-id
 msgid ""
@@ -9247,18 +8407,18 @@ msgid ""
 "technical explanations. Game changer."
 msgstr "个性化反馈准确地指出了我在技术解释中的错误之处。颠覆者。"
 
-#: src/features/Game/GameStatRow.tsx:157
+#: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id
 msgid "The topics for the debate will be randomly selected."
 msgstr "辩论的主题将被随机选定。"
 
-#: src/features/Game/Battle/BattleCard.tsx:283
-#: src/features/Game/GameStatRow.tsx:161
+#: src/features/Game/Battle/BattleActionModal.tsx:364
+#: src/features/Game/GameStatRow.tsx:162
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "获胜者获得 {points} 游戏积分！"
 
-#: src/features/Game/Battle/BattleCard.tsx:116
+#: src/features/Game/Battle/BattleActionModal.tsx:118
 #. js-lingui-explicit-id
 msgid "The winner has been declared."
 msgstr "获胜者已被宣布。"
@@ -9310,16 +8470,6 @@ msgstr "这显示结果并使你脱颖而出。"
 #. js-lingui-explicit-id
 msgid "Ticket"
 msgstr "票据"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:168
-#. js-lingui-explicit-id
-msgid "Time Management"
-msgstr "时间管理"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:298
-#. js-lingui-explicit-id
-msgid "Time Value"
-msgstr "时间值"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:521
 #. js-lingui-explicit-id
@@ -9453,7 +8603,7 @@ msgstr "打开音量"
 msgid "Type a message..."
 msgstr "输入消息..."
 
-#: src/features/Game/Battle/BattleCard.tsx:253
+#: src/features/Game/Battle/BattleActionModal.tsx:333
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "在此输入您的答案..."
@@ -9537,6 +8687,11 @@ msgid ""
 "achievement:"
 msgstr "使用这些模板来编写您自己的故事。别忘了提及一项成就："
 
+#: src/features/Game/Battle/BattleActionModal.tsx:297
+#. js-lingui-explicit-id
+msgid "Use your learning language ({lang})"
+msgstr "使用您正在学习的语言 ({lang})"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
 #. js-lingui-explicit-id
 msgid "Useful Phrases for Self-Introduction"
@@ -9567,11 +8722,6 @@ msgstr "UX和可访问性"
 #. js-lingui-explicit-id
 msgid "Vacancy description"
 msgstr "职位描述"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:151
-#. js-lingui-explicit-id
-msgid "Values"
-msgstr "价值观"
 
 #: src/features/Case/data/frontend-junior/demoSnippetSection.ts:15
 #. js-lingui-explicit-id
@@ -9637,7 +8787,7 @@ msgstr "语音录音模式"
 msgid "Vue & Pinia"
 msgstr "Vue 和 Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:506
+#: src/features/Game/Battle/BattleCard.tsx:241
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "正在等待其他玩家接受..."
@@ -9999,11 +9149,6 @@ msgstr ""
 msgid "Where can I use FluencyPal?"
 msgstr "我可以在哪里使用 FluencyPal？"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:245
-#. js-lingui-explicit-id
-msgid "Who should be responsible when AI makes a serious mistake?"
-msgstr "当 AI 犯下严重错误时，谁应该负责？"
-
 #: src/features/Case/data/backendCSharp/whoIsThisForSection.ts:10
 #: src/features/Case/data/frontend-junior/whoIsThisForSection.ts:10
 #: src/features/Case/data/frontend-senior/whoIsThisForSection.ts:10
@@ -10022,20 +9167,15 @@ msgstr "为什么后端候选人进步快"
 msgid "Why candidates improve so quickly"
 msgstr "为什么候选人进步得如此之快"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:119
-#. js-lingui-explicit-id
-msgid "Will AI ever truly understand human emotions?"
-msgstr "人工智能是否会真正理解人类的情感？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:429
-#. js-lingui-explicit-id
-msgid "Will traditional jobs still exist in 20 years?"
-msgstr "传统工作在20年后还会存在吗？"
-
-#: src/features/Game/Battle/BattleCard.tsx:499
+#: src/features/Game/Battle/BattleCard.tsx:234
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "获胜者获得{points}分"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:166
+#. js-lingui-explicit-id
+msgid "Winner!"
+msgstr "赢家！"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:383
 #. js-lingui-explicit-id
@@ -10074,51 +9214,6 @@ msgstr "单词统计"
 msgid "Words"
 msgstr "单词"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:126
-#. js-lingui-explicit-id
-msgid "Work"
-msgstr "工作"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:63
-#. js-lingui-explicit-id
-msgid "Work Culture"
-msgstr "工作文化"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:164
-#. js-lingui-explicit-id
-msgid "Work Environment"
-msgstr "工作环境"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:323
-#. js-lingui-explicit-id
-msgid "Work Expectations"
-msgstr "工作期望"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:336
-#. js-lingui-explicit-id
-msgid "Work Focus"
-msgstr "工作重点"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:407
-#. js-lingui-explicit-id
-msgid "Work Meaning"
-msgstr "工作意义"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:214
-#. js-lingui-explicit-id
-msgid "Work Motivation"
-msgstr "工作动力"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:365
-#. js-lingui-explicit-id
-msgid "Work Performance"
-msgstr "工作表现"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:239
-#. js-lingui-explicit-id
-msgid "Work Satisfaction"
-msgstr "工作满意度"
-
 #: src/features/RolePlay/rolePlayData.tsx:510
 #. js-lingui-explicit-id
 msgid ""
@@ -10151,36 +9246,6 @@ msgstr ""
 "#### 场景如何运作\n"
 "你将作为寻求技术问题帮助的来电者，而AI则充当支持代理。代理将询问细节，引导你通过可能的解决方案，并提供下一步建议。此场景帮助你熟悉处理技术问题并沟通解"
 "决方案。"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:29
-#. js-lingui-explicit-id
-msgid "Work-Life Balance"
-msgstr "工作与生活平衡"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:105
-#. js-lingui-explicit-id
-msgid "Workplace"
-msgstr "工作场所"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:252
-#. js-lingui-explicit-id
-msgid "Workplace Culture"
-msgstr "工作场所文化"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:189
-#. js-lingui-explicit-id
-msgid "Workplace Feedback"
-msgstr "职场反馈"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:203
-#. js-lingui-explicit-id
-msgid "Would you trust AI more than humans in critical situations?"
-msgstr "在关键情况下，您会比人类更信任人工智能吗？"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:77
-#. js-lingui-explicit-id
-msgid "Would you trust AI to make important life decisions for you?"
-msgstr "你会信任AI为你做出重要的人生决定吗？"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:210
 #. js-lingui-explicit-id
@@ -10382,6 +9447,11 @@ msgstr ""
 msgid "You can try AI in action now"
 msgstr "您现在可以尝试AI的实际操作"
 
+#: src/features/Game/Battle/BattleActionModal.tsx:329
+#. js-lingui-explicit-id
+msgid "You can use text to answer if you prefer."
+msgstr "您可以使用文字回答，如果您愿意的话。"
+
 #: src/features/Usage/SubscriptionPaymentModal.tsx:629
 #. js-lingui-explicit-id
 msgid "You don't have an active subscription."
@@ -10406,12 +9476,21 @@ msgstr "您将获得有关重试、熔断器、超时、回退、日志记录、
 msgid "You have"
 msgstr "你有"
 
-#: src/features/Game/Battle/BattleCard.tsx:218
+#: src/features/Game/Battle/BattleActionModal.tsx:274
 #. js-lingui-explicit-id
-msgid "You have completed all the questions."
-msgstr "您已完成所有问题。"
+msgid ""
+"You have answered all the questions. Submitting your answers now... Don't "
+"close this window."
+msgstr "您已回答所有问题。现在提交您的答案……请不要关闭此窗口。"
 
-#: src/features/Game/Battle/BattleCard.tsx:524
+#: src/features/Game/Battle/BattleActionModal.tsx:277
+#. js-lingui-explicit-id
+msgid ""
+"You have completed all the questions. Submit your answers now and wait for "
+"the results."
+msgstr "您已完成所有问题。现在提交您的答案并等待结果。"
+
+#: src/features/Game/Battle/BattleCard.tsx:270
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "您已提交答案。正在等待其他人……"
@@ -10442,7 +9521,7 @@ msgstr "你将回答有关 .NET、API、数据库、并发性和系统设计的�
 msgid "You will get 3 days of full access for free"
 msgstr "您将获得 3 天的完整免费访问权限"
 
-#: src/features/Game/GameStatRow.tsx:167
+#: src/features/Game/GameStatRow.tsx:168
 #. js-lingui-explicit-id
 msgid "You will see the response on the main page."
 msgstr "您将在主页面看到回复。"
@@ -10497,13 +9576,13 @@ msgstr "你的成就"
 msgid "Your AI speaking partner"
 msgstr "您的AI对话伙伴"
 
-#: src/features/Game/Battle/BattleCard.tsx:252
+#: src/features/Game/Battle/BattleActionModal.tsx:332
 #: src/features/Survey/RecordUserAudioAnswer.tsx:64
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "你的答案"
 
-#: src/features/Game/Battle/BattleCard.tsx:289
+#: src/features/Game/Battle/BattleActionModal.tsx:370
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
 msgstr "您的答案在提交后将对您的对手可见。"
@@ -10527,7 +9606,7 @@ msgid ""
 "step."
 msgstr "您的信用卡已确认。您可以继续执行下一步。"
 
-#: src/features/Game/GameStatRow.tsx:151
+#: src/features/Game/GameStatRow.tsx:152
 #. js-lingui-explicit-id
 msgid "Your debate request will be sent to {userName}"
 msgstr "你的辩论请求将发送给 {userName}"
@@ -10541,6 +9620,11 @@ msgstr "您期望的职位名称。例如：设计师，商店助理，健身教
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "您的经验"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:303
+#. js-lingui-explicit-id
+msgid "Your goal is not to be perfect, but to surpass your opponent."
+msgstr "你的目标不是要完美，而是要超越你的对手。"
 
 #: src/features/Auth/InterviewAuthWall.tsx:12
 #. js-lingui-explicit-id
@@ -10630,6 +9714,998 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Game/Battle/useBattleQuestions.ts:328
+#. js-lingui-explicit-id
+#~ msgid "AI and Creativity"
+#~ msgstr "人工智能与创造力"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:286
+#. js-lingui-explicit-id
+#~ msgid "AI and Employment"
+#~ msgstr "AI与就业"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:391
+#. js-lingui-explicit-id
+#~ msgid "AI and Ethics"
+#~ msgstr "AI与伦理"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:244
+#. js-lingui-explicit-id
+#~ msgid "AI and Responsibility"
+#~ msgstr "AI与责任"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:265
+#. js-lingui-explicit-id
+#~ msgid "AI and Trust"
+#~ msgstr "AI 与信任"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:412
+#. js-lingui-explicit-id
+#~ msgid "AI Autonomy"
+#~ msgstr "AI 自主权"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:307
+#. js-lingui-explicit-id
+#~ msgid "AI Bias"
+#~ msgstr "AI 偏见"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:160
+#. js-lingui-explicit-id
+#~ msgid "AI Companions"
+#~ msgstr "AI 同伴"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:370
+#. js-lingui-explicit-id
+#~ msgid "AI Companionship"
+#~ msgstr "AI 伴侣"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:223
+#. js-lingui-explicit-id
+#~ msgid "AI Creativity"
+#~ msgstr "AI 创造力"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:349
+#. js-lingui-explicit-id
+#~ msgid "AI Decision Making"
+#~ msgstr "AI 决策"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:181
+#. js-lingui-explicit-id
+#~ msgid "AI Education"
+#~ msgstr "AI 教育"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:55
+#. js-lingui-explicit-id
+#~ msgid "AI Ethics"
+#~ msgstr "AI伦理"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:76
+#. js-lingui-explicit-id
+#~ msgid "AI in Daily Life"
+#~ msgstr "日常生活中的AI"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:139
+#. js-lingui-explicit-id
+#~ msgid "AI Regulation"
+#~ msgstr "AI监管"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:202
+#. js-lingui-explicit-id
+#~ msgid "AI Trust"
+#~ msgstr "AI 信任"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:118
+#. js-lingui-explicit-id
+#~ msgid "AI vs Humans"
+#~ msgstr "AI对比人类"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:47
+#. js-lingui-explicit-id
+#~ msgid "Are great leaders born or made?"
+#~ msgstr "伟大的领导者是天生的还是后天培养的？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:219
+#. js-lingui-explicit-id
+#~ msgid "Are people optimistic or pessimistic about the future, and why?"
+#~ msgstr "人们对未来是乐观还是悲观，以及原因是什么？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:341
+#. js-lingui-explicit-id
+#~ msgid "Are people responsible for their circumstances?"
+#~ msgstr "人们对自己的境遇负责吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:144
+#. js-lingui-explicit-id
+#~ msgid "Are productivity tools actually making us more productive?"
+#~ msgstr "生产力工具真的让我们更有效率吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:15
+#. js-lingui-explicit-id
+#~ msgid "Artificial Intelligence"
+#~ msgstr "人工智能"
+
+#: src/features/Game/GameStatRow.tsx:367
+#. js-lingui-explicit-id
+#~ msgid "Ask for debate"
+#~ msgstr "请求辩论"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:308
+#. js-lingui-explicit-id
+#~ msgid "Can AI ever be completely unbiased?"
+#~ msgstr "人工智能是否能够完全无偏？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:161
+#. js-lingui-explicit-id
+#~ msgid "Can AI replace human companionship in the future?"
+#~ msgstr "人工智能能否在未来取代人类陪伴？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:224
+#. js-lingui-explicit-id
+#~ msgid "Can AI-generated content be considered original creativity?"
+#~ msgstr "AI生成的内容能否被视为原创创意？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:379
+#. js-lingui-explicit-id
+#~ msgid "Can constant self-improvement become harmful?"
+#~ msgstr "不断自我提升会变成有害的吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:93
+#. js-lingui-explicit-id
+#~ msgid "Can creativity be taught, or is it natural talent?"
+#~ msgstr "创造力是可以被教导的，还是与生俱来的天赋？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:38
+#. js-lingui-explicit-id
+#~ msgid "Career"
+#~ msgstr "职业"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:206
+#: src/features/Game/Battle/useBattleQuestions.ts:311
+#. js-lingui-explicit-id
+#~ msgid "Career Advice"
+#~ msgstr "职业建议"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:97
+#. js-lingui-explicit-id
+#~ msgid "Career Choices"
+#~ msgstr "职业选择"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:147
+#. js-lingui-explicit-id
+#~ msgid "Career Growth"
+#~ msgstr "职业发展"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:353
+#. js-lingui-explicit-id
+#~ msgid "Career Identity"
+#~ msgstr "职业身份"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:374
+#. js-lingui-explicit-id
+#~ msgid "Career Planning"
+#~ msgstr "职业规划"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:269
+#. js-lingui-explicit-id
+#~ msgid "Career Purpose"
+#~ msgstr "职业目标"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:227
+#. js-lingui-explicit-id
+#~ msgid "Career Risk"
+#~ msgstr "职业风险"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:416
+#. js-lingui-explicit-id
+#~ msgid "Career Satisfaction"
+#~ msgstr "职业满意度"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:290
+#. js-lingui-explicit-id
+#~ msgid "Career Stability"
+#~ msgstr "职业稳定性"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:395
+#. js-lingui-explicit-id
+#~ msgid "Career Success"
+#~ msgstr "职业成功"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:71
+#. js-lingui-explicit-id
+#~ msgid "Communication"
+#~ msgstr "沟通"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:92
+#: src/features/Game/Battle/useBattleQuestions.ts:172
+#. js-lingui-explicit-id
+#~ msgid "Creativity"
+#~ msgstr "创造力"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:386
+#. js-lingui-explicit-id
+#~ msgid "Creativity Pressure"
+#~ msgstr "创造力压力"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:302
+#. js-lingui-explicit-id
+#~ msgid "Creativity vs Efficiency"
+#~ msgstr "创造力与效率"
+
+#: src/features/Game/Battle/BattleCard.tsx:217
+#. js-lingui-explicit-id
+#~ msgid "Debate completed!"
+#~ msgstr "辩论完成！"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:130
+#. js-lingui-explicit-id
+#~ msgid "Decision Making"
+#~ msgstr "决策制定"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:248
+#. js-lingui-explicit-id
+#~ msgid "Decision Regret"
+#~ msgstr "决策后悔"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:273
+#. js-lingui-explicit-id
+#~ msgid "Digital Communication"
+#~ msgstr "数字通信"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:361
+#. js-lingui-explicit-id
+#~ msgid "Digital Detox"
+#~ msgstr "数字排毒"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:278
+#. js-lingui-explicit-id
+#~ msgid "Do grades motivate students or limit their potential?"
+#~ msgstr "成绩是激励学生，还是限制学生的潜力？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:173
+#. js-lingui-explicit-id
+#~ msgid "Do limitations help or hurt creativity?"
+#~ msgstr "限制是帮助还是阻碍创造力？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:324
+#. js-lingui-explicit-id
+#~ msgid "Do modern workers expect too much from their jobs?"
+#~ msgstr "现代员工对工作期望过高吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:320
+#. js-lingui-explicit-id
+#~ msgid "Do online courses provide the same value as in-person learning?"
+#~ msgstr "在线课程是否具有与面对面学习相同的价值？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:102
+#. js-lingui-explicit-id
+#~ msgid "Do smartphones improve or damage our attention span?"
+#~ msgstr "智能手机是提高还是削弱了我们的注意力？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:194
+#. js-lingui-explicit-id
+#~ msgid "Does automation create more jobs than it destroys?"
+#~ msgstr "自动化创造的就业机会是否比其摧毁的多？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:316
+#. js-lingui-explicit-id
+#~ msgid "Does comparing yourself to others help or harm motivation?"
+#~ msgstr "将自己与他人比较是有助于还是有害于动机？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:295
+#. js-lingui-explicit-id
+#~ msgid "Does discomfort always lead to personal growth?"
+#~ msgstr "不适总会导致个人成长吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:333
+#. js-lingui-explicit-id
+#~ msgid "Does fear protect us or limit us more?"
+#~ msgstr "恐惧是保护我们还是更多地限制我们？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:257
+#. js-lingui-explicit-id
+#~ msgid "Does financial independence equal personal freedom?"
+#~ msgstr "经济独立等于个人自由吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:110
+#. js-lingui-explicit-id
+#~ msgid "Does innovation come more from freedom or pressure?"
+#~ msgstr "创新更多来自自由还是压力？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:135
+#. js-lingui-explicit-id
+#~ msgid "Does modern life make people more anxious than before?"
+#~ msgstr "现代生活是否让人比以前更加焦虑？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:43
+#. js-lingui-explicit-id
+#~ msgid "Does money bring freedom, happiness, or neither?"
+#~ msgstr "金钱带来自由、快乐，还是两者皆无？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:366
+#. js-lingui-explicit-id
+#~ msgid "Does pressure improve or damage performance?"
+#~ msgstr "压力是提高还是损害表现？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:387
+#. js-lingui-explicit-id
+#~ msgid "Does pressure kill creativity or enhance it?"
+#~ msgstr "压力是扼杀创造力还是激发创造力？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:26
+#. js-lingui-explicit-id
+#~ msgid "Does social media do more harm than good for society?"
+#~ msgstr "社交媒体对社会的危害大于益处吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:35
+#. js-lingui-explicit-id
+#~ msgid "Does technology make people more connected or more lonely?"
+#~ msgstr "技术使人们更加紧密相连还是更加孤独?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:21
+#: src/features/Game/Battle/useBattleQuestions.ts:59
+#: src/features/Game/Battle/useBattleQuestions.ts:122
+#. js-lingui-explicit-id
+#~ msgid "Education"
+#~ msgstr "教育"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:277
+#. js-lingui-explicit-id
+#~ msgid "Education Pressure"
+#~ msgstr "教育压力"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:210
+#. js-lingui-explicit-id
+#~ msgid "Education System"
+#~ msgstr "教育系统"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:50
+#. js-lingui-explicit-id
+#~ msgid "Failure"
+#~ msgstr "失败"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:382
+#. js-lingui-explicit-id
+#~ msgid "Freedom vs Security"
+#~ msgstr "自由 vs 安全"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:218
+#. js-lingui-explicit-id
+#~ msgid "Future"
+#~ msgstr "未来"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:428
+#. js-lingui-explicit-id
+#~ msgid "Future of Work"
+#~ msgstr "工作未来"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:274
+#. js-lingui-explicit-id
+#~ msgid "Has digital communication improved or weakened human relationships?"
+#~ msgstr "数字通信是加强了还是削弱了人际关系？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:236
+#. js-lingui-explicit-id
+#~ msgid "Have people become too dependent on technology?"
+#~ msgstr "人们是否变得过于依赖技术了？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:68
+#. js-lingui-explicit-id
+#~ msgid "How should success be measured: money, impact, or happiness?"
+#~ msgstr "成功应该以什么来衡量：金钱、影响力还是幸福感？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:109
+#. js-lingui-explicit-id
+#~ msgid "Innovation"
+#~ msgstr "创新"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:344
+#. js-lingui-explicit-id
+#~ msgid "Innovation Speed"
+#~ msgstr "创新速度"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:165
+#. js-lingui-explicit-id
+#~ msgid "Is a competitive workplace better than a collaborative one?"
+#~ msgstr "竞争性的工作场所是否比协作性的工作场所更好？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:22
+#. js-lingui-explicit-id
+#~ msgid "Is a university degree still necessary for career success today?"
+#~ msgstr "今天，大学学位对职业成功来说仍然是必要的吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:417
+#. js-lingui-explicit-id
+#~ msgid "Is career satisfaction a personal responsibility or a company’s role?"
+#~ msgstr "职业满意是个人责任还是公司责任？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:148
+#. js-lingui-explicit-id
+#~ msgid "Is changing jobs frequently good or bad for a career?"
+#~ msgstr "频繁换工作对事业有利还是不利？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:114
+#. js-lingui-explicit-id
+#~ msgid "Is comfort the enemy of growth?"
+#~ msgstr "舒适是成长的敌人吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:253
+#. js-lingui-explicit-id
+#~ msgid "Is company culture more important than salary?"
+#~ msgstr "公司文化比薪水更重要吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:282
+#. js-lingui-explicit-id
+#~ msgid "Is confidence more important than competence?"
+#~ msgstr "自信比能力更重要吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:358
+#. js-lingui-explicit-id
+#~ msgid "Is curiosity more powerful than discipline for learning?"
+#~ msgstr "好奇心是否比自律对学习更有影响力？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:337
+#. js-lingui-explicit-id
+#~ msgid "Is deep focus more valuable than being constantly available?"
+#~ msgstr "持续专注是否比时刻待命更有价值？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:190
+#. js-lingui-explicit-id
+#~ msgid "Is direct feedback always better than polite feedback?"
+#~ msgstr "直接反馈总是比礼貌反馈好吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:186
+#. js-lingui-explicit-id
+#~ msgid "Is external pressure useful for motivation?"
+#~ msgstr "外部压力对激励作用有用吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:51
+#. js-lingui-explicit-id
+#~ msgid "Is failure a necessary part of success?"
+#~ msgstr "失败是成功的必要部分吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:345
+#. js-lingui-explicit-id
+#~ msgid "Is fast innovation more dangerous than slow progress?"
+#~ msgstr "快速创新比缓慢进步更危险吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:207
+#. js-lingui-explicit-id
+#~ msgid "Is following advice from others helpful or limiting?"
+#~ msgstr "聆听他人建议是有帮助还是限制？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:312
+#. js-lingui-explicit-id
+#~ msgid "Is following your passion good career advice?"
+#~ msgstr "跟随你的热情是否是好的职业建议？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:371
+#. js-lingui-explicit-id
+#~ msgid "Is forming emotional bonds with AI healthy or harmful?"
+#~ msgstr "与人工智能形成情感纽带是健康的还是有害的？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:383
+#. js-lingui-explicit-id
+#~ msgid "Is freedom more important than security?"
+#~ msgstr "自由比安全更重要吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:177
+#. js-lingui-explicit-id
+#~ msgid "Is having a clear life plan important?"
+#~ msgstr "拥有清晰的人生计划重要吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:270
+#. js-lingui-explicit-id
+#~ msgid "Is having a sense of purpose at work essential?"
+#~ msgstr "在工作中拥有目标感是否重要？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:72
+#. js-lingui-explicit-id
+#~ msgid "Is honest communication always the best policy?"
+#~ msgstr "诚实沟通总是最好的政策吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:421
+#. js-lingui-explicit-id
+#~ msgid "Is information overload making learning harder?"
+#~ msgstr "信息过载是否让学习变得更加困难？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:98
+#. js-lingui-explicit-id
+#~ msgid "Is it better to choose a job you love or one that pays well?"
+#~ msgstr "选择你热爱的工作好，还是选择薪水高的工作好？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:131
+#. js-lingui-explicit-id
+#~ msgid "Is it better to make fast decisions or well-analyzed ones?"
+#~ msgstr "要快速做决定还是深入分析后再做决定更好？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:39
+#. js-lingui-explicit-id
+#~ msgid "Is it better to specialize deeply in one skill or stay a generalist?"
+#~ msgstr "在一项技能上深度专精是否更好，还是保持通才更好？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:249
+#. js-lingui-explicit-id
+#~ msgid "Is it worse to make a wrong decision or make no decision at all?"
+#~ msgstr "做出错误的决定比不做决定更糟糕吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:127
+#. js-lingui-explicit-id
+#~ msgid "Is job security more important than job satisfaction?"
+#~ msgstr "工作保障比工作满意度更重要吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:156
+#. js-lingui-explicit-id
+#~ msgid "Is learning by doing more effective than learning by reading?"
+#~ msgstr "通过实践学习比通过阅读学习更有效吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:232
+#. js-lingui-explicit-id
+#~ msgid "Is learning fast better than learning deeply?"
+#~ msgstr "学习快比学得深入更好吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:261
+#. js-lingui-explicit-id
+#~ msgid "Is learning from mistakes more effective than learning from success?"
+#~ msgstr "从错误中学习比从成功中学习更有效吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:375
+#. js-lingui-explicit-id
+#~ msgid "Is long-term career planning realistic today?"
+#~ msgstr "今天进行长期职业规划是否现实？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:408
+#. js-lingui-explicit-id
+#~ msgid "Is meaningful work more important than high pay?"
+#~ msgstr "有意义的工作比高薪更重要吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:81
+#. js-lingui-explicit-id
+#~ msgid "Is motivation more important than discipline?"
+#~ msgstr "动力比纪律更重要吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:169
+#. js-lingui-explicit-id
+#~ msgid "Is multitasking a useful skill or a myth?"
+#~ msgstr "同时处理多项任务是有用的技能还是一种迷思？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:215
+#. js-lingui-explicit-id
+#~ msgid "Is passion necessary to do great work?"
+#~ msgstr "激情是否是做出优秀工作的必要条件？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:85
+#. js-lingui-explicit-id
+#~ msgid "Is personal privacy still possible in the digital age?"
+#~ msgstr "在数字时代，个人隐私是否仍然可能？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:362
+#. js-lingui-explicit-id
+#~ msgid "Is regular digital detox necessary in modern life?"
+#~ msgstr "在现代生活中，定期进行数字戒毒是必要的吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:10
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Is remote work better for productivity than working in an office? Why or "
+#~ "why not?"
+#~ msgstr "远程工作在生产力方面是否优于在办公室工作？为什么或为什么不？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:198
+#. js-lingui-explicit-id
+#~ msgid "Is self-discipline more important than talent?"
+#~ msgstr "自律比天赋更重要吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:89
+#. js-lingui-explicit-id
+#~ msgid "Is self-learning more effective than traditional education?"
+#~ msgstr "自学是否比传统教育更有效？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:291
+#. js-lingui-explicit-id
+#~ msgid "Is stability overrated in modern careers?"
+#~ msgstr "在现代职业中，稳定性是否被高估了？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:396
+#. js-lingui-explicit-id
+#~ msgid "Is success mostly a result of effort or circumstances?"
+#~ msgstr "成功主要是努力的结果还是环境的结果？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:228
+#. js-lingui-explicit-id
+#~ msgid "Is taking career risks necessary for long-term success?"
+#~ msgstr "职业生涯中是否有必要承担风险以实现长期成功？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:404
+#. js-lingui-explicit-id
+#~ msgid "Is technology developing faster than society can adapt?"
+#~ msgstr "科技的发 展速度 是否超过了社会的适应能力？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:211
+#. js-lingui-explicit-id
+#~ msgid "Is the current education system preparing people for real life?"
+#~ msgstr "当前的教育系统是否在为现实生活做准备？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:299
+#. js-lingui-explicit-id
+#~ msgid "Is time more valuable than money?"
+#~ msgstr "时间比金钱更有价值吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:64
+#. js-lingui-explicit-id
+#~ msgid "Is working long hours a sign of ambition or poor time management?"
+#~ msgstr "长时间工作是雄心勃勃的表现还是时间管理不善的体现？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:46
+#. js-lingui-explicit-id
+#~ msgid "Leadership"
+#~ msgstr "领导力"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:88
+#. js-lingui-explicit-id
+#~ msgid "Learning"
+#~ msgstr "学习"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:399
+#. js-lingui-explicit-id
+#~ msgid "Learning Failure"
+#~ msgstr "学习失败"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:155
+#. js-lingui-explicit-id
+#~ msgid "Learning Habits"
+#~ msgstr "学习习惯"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:260
+#. js-lingui-explicit-id
+#~ msgid "Learning Methods"
+#~ msgstr "学习方法"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:357
+#. js-lingui-explicit-id
+#~ msgid "Learning Motivation"
+#~ msgstr "学习动机"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:231
+#. js-lingui-explicit-id
+#~ msgid "Learning Speed"
+#~ msgstr "学习速度"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:319
+#. js-lingui-explicit-id
+#~ msgid "Learning Technology"
+#~ msgstr "学习技术"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:420
+#. js-lingui-explicit-id
+#~ msgid "Modern Learning"
+#~ msgstr "现代学习"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:42
+#. js-lingui-explicit-id
+#~ msgid "Money"
+#~ msgstr "金钱"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:80
+#: src/features/Game/Battle/useBattleQuestions.ts:185
+#. js-lingui-explicit-id
+#~ msgid "Motivation"
+#~ msgstr "动机"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:197
+#. js-lingui-explicit-id
+#~ msgid "Personal Development"
+#~ msgstr "个人发展"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:256
+#. js-lingui-explicit-id
+#~ msgid "Personal Freedom"
+#~ msgstr "个人自由"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:176
+#. js-lingui-explicit-id
+#~ msgid "Personal Goals"
+#~ msgstr "个人目标"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:113
+#: src/features/Game/Battle/useBattleQuestions.ts:294
+#. js-lingui-explicit-id
+#~ msgid "Personal Growth"
+#~ msgstr "个人成长"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:340
+#. js-lingui-explicit-id
+#~ msgid "Personal Responsibility"
+#~ msgstr "个人责任"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:424
+#. js-lingui-explicit-id
+#~ msgid "Personal Values"
+#~ msgstr "个人价值观"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:84
+#. js-lingui-explicit-id
+#~ msgid "Privacy"
+#~ msgstr "隐私"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:143
+#. js-lingui-explicit-id
+#~ msgid "Productivity"
+#~ msgstr "生产力"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:9
+#. js-lingui-explicit-id
+#~ msgid "Remote Work"
+#~ msgstr "远程工作"
+
+#: src/features/Game/Battle/BattleCard.tsx:554
+#. js-lingui-explicit-id
+#~ msgid "Remove debate"
+#~ msgstr "移除辩论"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:332
+#. js-lingui-explicit-id
+#~ msgid "Risk and Fear"
+#~ msgstr "风险和恐惧"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:378
+#. js-lingui-explicit-id
+#~ msgid "Self-Improvement"
+#~ msgstr "自我提升"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:350
+#. js-lingui-explicit-id
+#~ msgid "Should AI be allowed to make life-changing decisions?"
+#~ msgstr "AI是否应该被允许做出改变生活的决定？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:16
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Should AI be allowed to replace humans in creative jobs like writing or "
+#~ "design?"
+#~ msgstr "AI是否应该被允许取代人类在写作或设计等创造性工作中的角色？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:329
+#. js-lingui-explicit-id
+#~ msgid "Should AI be credited as a creator or just a tool?"
+#~ msgstr "AI应该被誉为创作者还是仅作为一个工具?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:392
+#. js-lingui-explicit-id
+#~ msgid "Should AI follow strict ethical rules even if it reduces efficiency?"
+#~ msgstr "AI 是否应该遵循严格的伦理规则，即使这会降低效率？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:413
+#. js-lingui-explicit-id
+#~ msgid "Should AI systems be allowed to operate without human oversight?"
+#~ msgstr "AI系统是否应在无人监督的情况下运行？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:56
+#. js-lingui-explicit-id
+#~ msgid "Should AI systems be required to explain how they make decisions?"
+#~ msgstr "AI系统是否应该被要求解释它们是如何做出决策的？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:30
+#. js-lingui-explicit-id
+#~ msgid "Should companies be responsible for employees’ mental health?"
+#~ msgstr "公司是否应对员工的心理健康负责？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:287
+#. js-lingui-explicit-id
+#~ msgid "Should companies replace humans with AI if it is cheaper and faster?"
+#~ msgstr "公司应否因为AI更便宜、更快捷而用AI取代人类？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:303
+#. js-lingui-explicit-id
+#~ msgid "Should efficiency be prioritized over creativity at work?"
+#~ msgstr "工作中应优先考虑效率而不是创造力吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:123
+#. js-lingui-explicit-id
+#~ msgid "Should exams be replaced by continuous assessment?"
+#~ msgstr "考试应被持续评估取代吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:400
+#. js-lingui-explicit-id
+#~ msgid "Should failure be celebrated in learning environments?"
+#~ msgstr "在学习环境中是否应该庆祝失败？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:140
+#. js-lingui-explicit-id
+#~ msgid "Should governments strictly regulate AI development?"
+#~ msgstr "政府是否应严格监管人工智能的发展？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:106
+#. js-lingui-explicit-id
+#~ msgid "Should managers be friends with their employees?"
+#~ msgstr "经理应该和员工做朋友吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:354
+#. js-lingui-explicit-id
+#~ msgid "Should people define themselves by their profession?"
+#~ msgstr "人们是否应该通过自己的职业来定义自己?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:266
+#. js-lingui-explicit-id
+#~ msgid "Should people trust AI recommendations more than human advice?"
+#~ msgstr "人们应该比人类建议更信任AI推荐吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:152
+#. js-lingui-explicit-id
+#~ msgid "Should personal values ever be compromised for success?"
+#~ msgstr "个人价值观是否应该为成功而妥协？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:425
+#. js-lingui-explicit-id
+#~ msgid "Should personal values guide every major life decision?"
+#~ msgstr "个人价值观是否应该指导每一个重大人生决策？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:60
+#. js-lingui-explicit-id
+#~ msgid "Should schools focus more on practical skills than theory?"
+#~ msgstr "学校是否应更注重实践技能而非理论？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:182
+#. js-lingui-explicit-id
+#~ msgid "Should students be allowed to use AI tools in school?"
+#~ msgstr "学生应该被允许在学校使用AI工具吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:240
+#. js-lingui-explicit-id
+#~ msgid "Should work be a major source of personal fulfillment?"
+#~ msgstr "工作应该是个人满足感的主要来源吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:315
+#. js-lingui-explicit-id
+#~ msgid "Social Comparison"
+#~ msgstr "社会比较"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:25
+#. js-lingui-explicit-id
+#~ msgid "Social Media"
+#~ msgstr "社交媒体"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:134
+#. js-lingui-explicit-id
+#~ msgid "Society"
+#~ msgstr "社会"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:67
+#. js-lingui-explicit-id
+#~ msgid "Success"
+#~ msgstr "成功"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:281
+#. js-lingui-explicit-id
+#~ msgid "Success Mindset"
+#~ msgstr "成功心态"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:34
+#: src/features/Game/Battle/useBattleQuestions.ts:101
+#: src/features/Game/Battle/useBattleQuestions.ts:193
+#. js-lingui-explicit-id
+#~ msgid "Technology"
+#~ msgstr "技术"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:235
+#. js-lingui-explicit-id
+#~ msgid "Technology Dependence"
+#~ msgstr "技术依赖"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:403
+#. js-lingui-explicit-id
+#~ msgid "Technology Pace"
+#~ msgstr "技术节奏"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:168
+#. js-lingui-explicit-id
+#~ msgid "Time Management"
+#~ msgstr "时间管理"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:298
+#. js-lingui-explicit-id
+#~ msgid "Time Value"
+#~ msgstr "时间值"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:151
+#. js-lingui-explicit-id
+#~ msgid "Values"
+#~ msgstr "价值观"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:245
+#. js-lingui-explicit-id
+#~ msgid "Who should be responsible when AI makes a serious mistake?"
+#~ msgstr "当 AI 犯下严重错误时，谁应该负责？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:119
+#. js-lingui-explicit-id
+#~ msgid "Will AI ever truly understand human emotions?"
+#~ msgstr "人工智能是否会真正理解人类的情感？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:429
+#. js-lingui-explicit-id
+#~ msgid "Will traditional jobs still exist in 20 years?"
+#~ msgstr "传统工作在20年后还会存在吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:126
+#. js-lingui-explicit-id
+#~ msgid "Work"
+#~ msgstr "工作"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:63
+#. js-lingui-explicit-id
+#~ msgid "Work Culture"
+#~ msgstr "工作文化"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:164
+#. js-lingui-explicit-id
+#~ msgid "Work Environment"
+#~ msgstr "工作环境"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:323
+#. js-lingui-explicit-id
+#~ msgid "Work Expectations"
+#~ msgstr "工作期望"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:336
+#. js-lingui-explicit-id
+#~ msgid "Work Focus"
+#~ msgstr "工作重点"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:407
+#. js-lingui-explicit-id
+#~ msgid "Work Meaning"
+#~ msgstr "工作意义"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:214
+#. js-lingui-explicit-id
+#~ msgid "Work Motivation"
+#~ msgstr "工作动力"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:365
+#. js-lingui-explicit-id
+#~ msgid "Work Performance"
+#~ msgstr "工作表现"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:239
+#. js-lingui-explicit-id
+#~ msgid "Work Satisfaction"
+#~ msgstr "工作满意度"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:29
+#. js-lingui-explicit-id
+#~ msgid "Work-Life Balance"
+#~ msgstr "工作与生活平衡"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:105
+#. js-lingui-explicit-id
+#~ msgid "Workplace"
+#~ msgstr "工作场所"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:252
+#. js-lingui-explicit-id
+#~ msgid "Workplace Culture"
+#~ msgstr "工作场所文化"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:189
+#. js-lingui-explicit-id
+#~ msgid "Workplace Feedback"
+#~ msgstr "职场反馈"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:203
+#. js-lingui-explicit-id
+#~ msgid "Would you trust AI more than humans in critical situations?"
+#~ msgstr "在关键情况下，您会比人类更信任人工智能吗？"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:77
+#. js-lingui-explicit-id
+#~ msgid "Would you trust AI to make important life decisions for you?"
+#~ msgstr "你会信任AI为你做出重要的人生决定吗？"
+
+#: src/features/Game/Battle/BattleCard.tsx:218
+#. js-lingui-explicit-id
+#~ msgid "You have completed all the questions."
+#~ msgstr "您已完成所有问题。"
 
 #: src/features/Blog/blogData.tsx:257
 #. js-lingui-explicit-id

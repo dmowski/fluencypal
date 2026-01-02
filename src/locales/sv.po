@@ -398,7 +398,7 @@ msgstr "Om ditt mål"
 msgid "Academic Word List"
 msgstr "Akademisk ordlista"
 
-#: src/features/Game/Battle/BattleCard.tsx:496
+#: src/features/Game/Battle/BattleCard.tsx:231
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Acceptera"
@@ -422,7 +422,7 @@ msgstr "Klara din intervju för C# Backend-utvecklare"
 msgid "Achieve Speaking Fluency Fast"
 msgstr "Uppnå talflyt snabbt"
 
-#: src/features/Game/GameStatRow.tsx:283
+#: src/features/Game/GameStatRow.tsx:284
 #. js-lingui-explicit-id
 msgid "Achievements"
 msgstr "Prestationer"
@@ -449,6 +449,11 @@ msgid "Add some info why you want a refund and we will do it."
 msgstr ""
 "Lägg till lite info om varför du vill ha en återbetalning och vi kommer att "
 "göra det."
+
+#: src/features/Game/Battle/BattleActionModal.tsx:350
+#. js-lingui-explicit-id
+msgid "Add Text Answer"
+msgstr "Lägg till textsvaret"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:182
 #. js-lingui-explicit-id
@@ -525,75 +530,20 @@ msgstr ""
 msgid "After the greeting, you'll usually hear:"
 msgstr "Efter hälsningen hör du vanligtvis:"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:328
-#. js-lingui-explicit-id
-msgid "AI and Creativity"
-msgstr "AI och kreativitet"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:286
-#. js-lingui-explicit-id
-msgid "AI and Employment"
-msgstr "AI och sysselsättning"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:391
-#. js-lingui-explicit-id
-msgid "AI and Ethics"
-msgstr "AI och etik"
-
 #: src/features/Blog/blogData.tsx:23
 #. js-lingui-explicit-id
 msgid "AI and identity"
 msgstr "AI och identitet"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:244
-#. js-lingui-explicit-id
-msgid "AI and Responsibility"
-msgstr "AI och ansvar"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:265
-#. js-lingui-explicit-id
-msgid "AI and Trust"
-msgstr "AI och Förtroende"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:412
-#. js-lingui-explicit-id
-msgid "AI Autonomy"
-msgstr "AI-autonomi"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:307
-#. js-lingui-explicit-id
-msgid "AI Bias"
-msgstr "AI-bias"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:160
-#. js-lingui-explicit-id
-msgid "AI Companions"
-msgstr "AI-kompanjoner"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:370
-#. js-lingui-explicit-id
-msgid "AI Companionship"
-msgstr "AI Kamratskap"
 
 #: src/features/Landing/LandingPage.tsx:256
 #. js-lingui-explicit-id
 msgid "AI conversation"
 msgstr "AI-konversation"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:223
+#: src/features/Game/Battle/BattleActionModal.tsx:242
 #. js-lingui-explicit-id
-msgid "AI Creativity"
-msgstr "AI Kreativitet"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:349
-#. js-lingui-explicit-id
-msgid "AI Decision Making"
-msgstr "AI-beslutsfattande"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:181
-#. js-lingui-explicit-id
-msgid "AI Education"
-msgstr "AI Utbildning"
+msgid "AI Decision"
+msgstr "AI-beslut"
 
 #: src/features/SEO/metadata.ts:199
 #: src/features/SEO/metadata.ts:265
@@ -605,11 +555,6 @@ msgstr "AI-engelsklärare"
 #. js-lingui-explicit-id
 msgid "ai English tutor"
 msgstr "ai engelsk lärare"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:55
-#. js-lingui-explicit-id
-msgid "AI Ethics"
-msgstr "AI-etik"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:170
 #. js-lingui-explicit-id
@@ -641,11 +586,6 @@ msgstr "AI-återkoppling som gör skillnad"
 msgid "AI hours left in your balance."
 msgstr "AI timmar kvar på ditt saldo."
 
-#: src/features/Game/Battle/useBattleQuestions.ts:76
-#. js-lingui-explicit-id
-msgid "AI in Daily Life"
-msgstr "AI i vardagen"
-
 #: src/features/SEO/metadata.ts:304
 #. js-lingui-explicit-id
 msgid "AI Interview Coach"
@@ -667,11 +607,6 @@ msgstr "AI Språkhandledare"
 msgid "AI language tutor pricing"
 msgstr "AI språkhandledare prissättning"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:139
-#. js-lingui-explicit-id
-msgid "AI Regulation"
-msgstr "AI-reglering"
-
 #: src/features/Auth/WebViewWall.tsx:173
 #. js-lingui-explicit-id
 msgid "AI speaking partner"
@@ -681,11 +616,6 @@ msgstr "AI samtalspartner"
 #. js-lingui-explicit-id
 msgid "AI Speaking Practice"
 msgstr "AI Talövning"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:202
-#. js-lingui-explicit-id
-msgid "AI Trust"
-msgstr "AI Förtroende"
 
 #: src/features/SEO/metadata.ts:146
 #. js-lingui-explicit-id
@@ -697,12 +627,7 @@ msgstr "AI-tutor kostnad"
 msgid "AI Tutor Updates"
 msgstr "AI Tutor Uppdateringar"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:118
-#. js-lingui-explicit-id
-msgid "AI vs Humans"
-msgstr "AI vs. Människor"
-
-#: src/features/Game/Battle/BattleCard.tsx:295
+#: src/features/Game/Battle/BattleActionModal.tsx:376
 #. js-lingui-explicit-id
 msgid "AI will evaluate answers and determine the winner."
 msgstr "AI kommer att utvärdera svaren och utse vinnaren."
@@ -773,6 +698,7 @@ msgid "Almost correct"
 msgstr "Nästan rätt"
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
+#: src/features/Game/Battle/BattleActionModal.tsx:271
 #. js-lingui-explicit-id
 msgid "Almost there!"
 msgstr "Nästan där!"
@@ -882,26 +808,6 @@ msgstr "Arkitektur & Design"
 msgid "Architecture & Resiliency"
 msgstr "Arkitektur & Motståndskraft"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:47
-#. js-lingui-explicit-id
-msgid "Are great leaders born or made?"
-msgstr "Är stora ledare födda eller skapade?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:219
-#. js-lingui-explicit-id
-msgid "Are people optimistic or pessimistic about the future, and why?"
-msgstr "Är människor optimistiska eller pessimistiska om framtiden, och varför?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:341
-#. js-lingui-explicit-id
-msgid "Are people responsible for their circumstances?"
-msgstr "Är människor ansvariga för sina omständigheter?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:144
-#. js-lingui-explicit-id
-msgid "Are productivity tools actually making us more productive?"
-msgstr "Gör produktivitetsverktyg oss verkligen mer produktiva?"
-
 #: src/features/Landing/Price/PricePage.tsx:82
 #. js-lingui-explicit-id
 msgid "Are there any hidden fees?"
@@ -920,7 +826,7 @@ msgstr ""
 "Är du säker på att du vill radera ditt mål? Denna åtgärd kan inte göras "
 "ogjord."
 
-#: src/features/Game/Battle/BattleCard.tsx:545
+#: src/features/Game/Battle/BattleCard.tsx:292
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Är du säker på att du vill avvisa denna utmaning?"
@@ -938,16 +844,6 @@ msgid ""
 msgstr ""
 "Artikulera skalbara lösningar, prestationsoptimering och frontendarkitektur "
 "mönster."
-
-#: src/features/Game/Battle/useBattleQuestions.ts:15
-#. js-lingui-explicit-id
-msgid "Artificial Intelligence"
-msgstr "Artificiell Intelligens"
-
-#: src/features/Game/GameStatRow.tsx:367
-#. js-lingui-explicit-id
-msgid "Ask for debate"
-msgstr "Be om debatt"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:26
 #: src/features/Case/data/backendCSharp/techData.ts:13
@@ -1316,31 +1212,6 @@ msgstr "Samtalsläge"
 msgid "Calling Customer Support"
 msgstr "Kontakta kundsupport"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:308
-#. js-lingui-explicit-id
-msgid "Can AI ever be completely unbiased?"
-msgstr "Kan AI någonsin bli helt opartisk?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:161
-#. js-lingui-explicit-id
-msgid "Can AI replace human companionship in the future?"
-msgstr "Kan AI ersätta mänskligt sällskap i framtiden?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:224
-#. js-lingui-explicit-id
-msgid "Can AI-generated content be considered original creativity?"
-msgstr "Kan AI-genererat innehåll betraktas som original kreativitet?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:379
-#. js-lingui-explicit-id
-msgid "Can constant self-improvement become harmful?"
-msgstr "Kan konstant självförbättring bli skadligt?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:93
-#. js-lingui-explicit-id
-msgid "Can creativity be taught, or is it natural talent?"
-msgstr "Kan kreativitet läras ut, eller är det en naturlig talang?"
-
 #: src/features/Landing/LandingPage.tsx:77
 #. js-lingui-explicit-id
 msgid "Can FluencyPal create a personal practice plan for me?"
@@ -1406,72 +1277,16 @@ msgstr ""
 msgid "Card verified. Loading..."
 msgstr "Kort verifierat. Laddar..."
 
-#: src/features/Game/Battle/useBattleQuestions.ts:38
-#. js-lingui-explicit-id
-msgid "Career"
-msgstr "Karriär"
-
 #: src/features/SEO/metadata.ts:97
 #: src/features/SEO/metadata.ts:308
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "Karriärutveckling"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:206
-#: src/features/Game/Battle/useBattleQuestions.ts:311
-#. js-lingui-explicit-id
-msgid "Career Advice"
-msgstr "Karriärråd"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
 #. js-lingui-explicit-id
 msgid "Career benefit:"
 msgstr "Karriärfördel:"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:97
-#. js-lingui-explicit-id
-msgid "Career Choices"
-msgstr "Karriärval"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:147
-#. js-lingui-explicit-id
-msgid "Career Growth"
-msgstr "Karriärtillväxt"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:353
-#. js-lingui-explicit-id
-msgid "Career Identity"
-msgstr "Karriäridentitet"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:374
-#. js-lingui-explicit-id
-msgid "Career Planning"
-msgstr "Karriärplanering"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:269
-#. js-lingui-explicit-id
-msgid "Career Purpose"
-msgstr "Karriärsyfte"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:227
-#. js-lingui-explicit-id
-msgid "Career Risk"
-msgstr "Karriärrisk"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:416
-#. js-lingui-explicit-id
-msgid "Career Satisfaction"
-msgstr "Karriärnöjdhet"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:290
-#. js-lingui-explicit-id
-msgid "Career Stability"
-msgstr "Karriärstabilitet"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:395
-#. js-lingui-explicit-id
-msgid "Career Success"
-msgstr "Karriärframgång"
 
 #: src/features/Game/GamePage.tsx:181
 #. js-lingui-explicit-id
@@ -1607,7 +1422,8 @@ msgstr ""
 "Klar struktur för systemdesign. Jag förklarade äntligen kompromisser utan "
 "att svamla."
 
-#: src/features/Game/Battle/BattleCard.tsx:209
+#: src/features/Game/Battle/BattleActionModal.tsx:262
+#: src/features/Game/Battle/BattleCard.tsx:263
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1646,11 +1462,6 @@ msgstr "Kommunicera erfarenhet med självförtroende"
 #. js-lingui-explicit-id
 msgid "Communicate system design trade-offs"
 msgstr "Kommunicera avvägningar i systemdesign"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:71
-#. js-lingui-explicit-id
-msgid "Communication"
-msgstr "Kommunikation"
 
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:30
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:30
@@ -2023,22 +1834,6 @@ msgstr "Skapa ditt eget rollspelscenario"
 msgid "Create Your Own Scenario"
 msgstr "Skapa ditt eget scenario"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:92
-#: src/features/Game/Battle/useBattleQuestions.ts:172
-#. js-lingui-explicit-id
-msgid "Creativity"
-msgstr "Kreativitet"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:386
-#. js-lingui-explicit-id
-msgid "Creativity Pressure"
-msgstr "Kreativitetspress"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:302
-#. js-lingui-explicit-id
-msgid "Creativity vs Efficiency"
-msgstr "Kreativitet vs Effektivitet"
-
 #: src/features/PayWall/CardValidatorQuiz.tsx:57
 #. js-lingui-explicit-id
 msgid "Credit Card Already Confirmed"
@@ -2162,22 +1957,17 @@ msgstr "Data & Transaktioner"
 msgid "Databases & Transactions"
 msgstr "Databaser & Transaktioner"
 
-#: src/features/Game/Battle/BattleCard.tsx:409
+#: src/features/Game/Battle/BattleCard.tsx:120
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Debatt"
 
-#: src/features/Game/Battle/BattleCard.tsx:217
-#. js-lingui-explicit-id
-msgid "Debate completed!"
-msgstr "Debatt avslutad!"
-
-#: src/features/Game/Battle/BattleCard.tsx:115
+#: src/features/Game/Battle/BattleActionModal.tsx:117
 #. js-lingui-explicit-id
 msgid "Debate ended!"
 msgstr "Debatten avslutad!"
 
-#: src/features/Game/GameStatRow.tsx:142
+#: src/features/Game/GameStatRow.tsx:143
 #. js-lingui-explicit-id
 msgid "Debate Request"
 msgstr "Debattförfrågan"
@@ -2189,20 +1979,10 @@ msgstr ""
 "plaintext\n"
 "Debattförfrågan skickad!\n"
 
-#: src/features/Game/Battle/BattleCard.tsx:277
+#: src/features/Game/Battle/BattleActionModal.tsx:358
 #. js-lingui-explicit-id
 msgid "Debate started!"
 msgstr "Debatt startad!"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:130
-#. js-lingui-explicit-id
-msgid "Decision Making"
-msgstr "Beslutsfattande"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:248
-#. js-lingui-explicit-id
-msgid "Decision Regret"
-msgstr "Beslutsångest"
 
 #: src/features/Header/NeedHelpModal.tsx:195
 #. js-lingui-explicit-id
@@ -2391,16 +2171,6 @@ msgstr ""
 msgid "Diagnosis"
 msgstr "Diagnos"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:273
-#. js-lingui-explicit-id
-msgid "Digital Communication"
-msgstr "Digital kommunikation"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:361
-#. js-lingui-explicit-id
-msgid "Digital Detox"
-msgstr "Digital Detox"
-
 #: src/features/Landing/Price/PricePage.tsx:339
 #. js-lingui-explicit-id
 msgid "Discounted AI Usage"
@@ -2422,7 +2192,7 @@ msgstr ""
 "Upptäck effektiva dagliga vanor för att förbättra dina affärsengelska "
 "färdigheter utan ansträngning och snabbt."
 
-#: src/features/Game/GameStatRow.tsx:143
+#: src/features/Game/GameStatRow.tsx:144
 #. js-lingui-explicit-id
 msgid "Discuss and improve your skills together!"
 msgstr "Diskutera och förbättra dina färdigheter tillsammans!"
@@ -2549,11 +2319,6 @@ msgstr ""
 "behandlingar. Genom att samtala naturligt kommer du att finslipa dina "
 "kommunikationsfärdigheter i en professionell vårdkontext."
 
-#: src/features/Game/Battle/useBattleQuestions.ts:278
-#. js-lingui-explicit-id
-msgid "Do grades motivate students or limit their potential?"
-msgstr "Motiverar betyg elever eller begränsar deras potential?"
-
 #: src/features/Landing/Price/PricePage.tsx:49
 #. js-lingui-explicit-id
 msgid "Do I need to enter a credit card to start?"
@@ -2564,26 +2329,6 @@ msgstr "Behöver jag ange ett kreditkort för att börja?"
 #. js-lingui-explicit-id
 msgid "Do I need to schedule time with a real interviewer?"
 msgstr "Behöver jag boka tid med en riktig intervjuare?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:173
-#. js-lingui-explicit-id
-msgid "Do limitations help or hurt creativity?"
-msgstr "Hjälper eller skadar begränsningar kreativiteten?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:324
-#. js-lingui-explicit-id
-msgid "Do modern workers expect too much from their jobs?"
-msgstr "Förväntar sig moderna arbetstagare för mycket av sina jobb?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:320
-#. js-lingui-explicit-id
-msgid "Do online courses provide the same value as in-person learning?"
-msgstr "Ger onlinekurser samma värde som lärande på plats?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:102
-#. js-lingui-explicit-id
-msgid "Do smartphones improve or damage our attention span?"
-msgstr "Förbättrar eller skadar smartphones vår koncentrationsförmåga?"
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:20
 #. js-lingui-explicit-id
@@ -2600,66 +2345,6 @@ msgstr "Har du några resplaner?"
 #. js-lingui-explicit-id
 msgid "Doctor"
 msgstr "Doktor"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:194
-#. js-lingui-explicit-id
-msgid "Does automation create more jobs than it destroys?"
-msgstr "Skapar automation fler jobb än det förstör?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:316
-#. js-lingui-explicit-id
-msgid "Does comparing yourself to others help or harm motivation?"
-msgstr "Hjälper eller skadar det motivationen att jämföra sig själv med andra?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:295
-#. js-lingui-explicit-id
-msgid "Does discomfort always lead to personal growth?"
-msgstr "Leder obehag alltid till personlig tillväxt?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:333
-#. js-lingui-explicit-id
-msgid "Does fear protect us or limit us more?"
-msgstr "Skyddar rädsla oss eller begränsar den oss mer?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:257
-#. js-lingui-explicit-id
-msgid "Does financial independence equal personal freedom?"
-msgstr "Innebär ekonomiskt oberoende personlig frihet?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:110
-#. js-lingui-explicit-id
-msgid "Does innovation come more from freedom or pressure?"
-msgstr "Kommer innovation mer från frihet eller press?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:135
-#. js-lingui-explicit-id
-msgid "Does modern life make people more anxious than before?"
-msgstr "Gör det moderna livet människor mer oroliga än tidigare?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:43
-#. js-lingui-explicit-id
-msgid "Does money bring freedom, happiness, or neither?"
-msgstr "Ger pengar frihet, lycka, eller ingetdera?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:366
-#. js-lingui-explicit-id
-msgid "Does pressure improve or damage performance?"
-msgstr "Förbättrar eller försämrar tryck prestationen?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:387
-#. js-lingui-explicit-id
-msgid "Does pressure kill creativity or enhance it?"
-msgstr "Dödar tryck kreativitet eller främjar det den?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:26
-#. js-lingui-explicit-id
-msgid "Does social media do more harm than good for society?"
-msgstr "Gör sociala medier mer skada än nytta för samhället?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:35
-#. js-lingui-explicit-id
-msgid "Does technology make people more connected or more lonely?"
-msgstr "Gör teknologin människor mer uppkopplade eller mer ensamma?"
 
 #: src/features/RolePlay/rolePlayData.tsx:394
 #. js-lingui-explicit-id
@@ -2714,23 +2399,6 @@ msgstr "Redigera meddelande"
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "redigerad"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:21
-#: src/features/Game/Battle/useBattleQuestions.ts:59
-#: src/features/Game/Battle/useBattleQuestions.ts:122
-#. js-lingui-explicit-id
-msgid "Education"
-msgstr "Utbildning"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:277
-#. js-lingui-explicit-id
-msgid "Education Pressure"
-msgstr "Utbildningspress"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:210
-#. js-lingui-explicit-id
-msgid "Education System"
-msgstr "Utbildningssystem"
 
 #: src/features/Case/data/backendCSharp/techData.ts:18
 #. js-lingui-explicit-id
@@ -3375,11 +3043,6 @@ msgstr ""
 msgid "Failed to send feedback. Please try again later."
 msgstr "Misslyckades med att skicka feedback. Försök igen senare."
 
-#: src/features/Game/Battle/useBattleQuestions.ts:50
-#. js-lingui-explicit-id
-msgid "Failure"
-msgstr "Misslyckande"
-
 #: src/features/Case/data/backendCSharp/faqSection.ts:10
 #: src/features/Case/data/frontend-junior/faqSection.ts:10
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
@@ -3673,11 +3336,6 @@ msgstr "Frameworks & Bibliotek"
 msgid "Free Conversation"
 msgstr "Gratis konversation"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:382
-#. js-lingui-explicit-id
-msgid "Freedom vs Security"
-msgstr "Frihet vs Säkerhet"
-
 #: src/features/Goal/GoalQuestions.tsx:286
 #. js-lingui-explicit-id
 msgid "French"
@@ -3753,16 +3411,6 @@ msgstr "Full AI-intervjutränaråtkomst"
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Full AI-handled tillgång"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:218
-#. js-lingui-explicit-id
-msgid "Future"
-msgstr "Framtid"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:428
-#. js-lingui-explicit-id
-msgid "Future of Work"
-msgstr "Framtidens Arbete"
 
 #: src/features/Navigation/NavigationBar.tsx:69
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -4192,20 +3840,10 @@ msgstr "Hantera samtidighet med självförtroende"
 msgid "Happy April 1st!"
 msgstr "Glad 1:a april!"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:274
-#. js-lingui-explicit-id
-msgid "Has digital communication improved or weakened human relationships?"
-msgstr "Har digital kommunikation förbättrat eller försvagat mänskliga relationer?"
-
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
 #. js-lingui-explicit-id
 msgid "Have fun!"
 msgstr "Ha kul!"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:236
-#. js-lingui-explicit-id
-msgid "Have people become too dependent on technology?"
-msgstr "Har människor blivit för beroende av teknik?"
 
 #: src/features/RolePlay/rolePlayData.tsx:366
 #: src/features/RolePlay/rolePlayData.tsx:553
@@ -4391,11 +4029,6 @@ msgstr "Hur det Fungerar:"
 #. js-lingui-explicit-id
 msgid "How long will my hours last?"
 msgstr "Hur länge kommer mina timmar att räcka?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:68
-#. js-lingui-explicit-id
-msgid "How should success be measured: money, impact, or happiness?"
-msgstr "Hur bör framgång mätas: pengar, påverkan eller lycka?"
 
 #: src/features/Blog/blogData.tsx:257
 #. js-lingui-explicit-id
@@ -5575,16 +5208,6 @@ msgstr "Indonesiska Lärplan"
 msgid "Initiate brain connection"
 msgstr "Initiera hjärnans anslutning"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:109
-#. js-lingui-explicit-id
-msgid "Innovation"
-msgstr "Innovation"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:344
-#. js-lingui-explicit-id
-msgid "Innovation Speed"
-msgstr "Innovationshastighet"
-
 #: src/features/Dashboard/BrainCard.tsx:397
 #. js-lingui-explicit-id
 msgid "Install complete"
@@ -5723,245 +5346,20 @@ msgstr "Introduktion: Small Talk med Intervjuaren"
 msgid "Invite Link Sent to:"
 msgstr "Inbjudningslänk skickad till:"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:165
+#: src/features/Game/GameStatRow.tsx:368
 #. js-lingui-explicit-id
-msgid "Is a competitive workplace better than a collaborative one?"
-msgstr "Är en konkurrenskraftig arbetsplats bättre än en samarbetsvillig?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:22
-#. js-lingui-explicit-id
-msgid "Is a university degree still necessary for career success today?"
-msgstr "Är en universitetsexamen fortfarande nödvändig för karriärframgång idag?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:417
-#. js-lingui-explicit-id
-msgid "Is career satisfaction a personal responsibility or a company’s role?"
-msgstr "Är karriärnöjdhet ett personligt ansvar eller företagets roll?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:148
-#. js-lingui-explicit-id
-msgid "Is changing jobs frequently good or bad for a career?"
-msgstr "Är det bra eller dåligt för karriären att byta jobb ofta?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:114
-#. js-lingui-explicit-id
-msgid "Is comfort the enemy of growth?"
-msgstr "Är komfort fienden till tillväxt?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:253
-#. js-lingui-explicit-id
-msgid "Is company culture more important than salary?"
-msgstr "Är företagskultur viktigare än lön?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:282
-#. js-lingui-explicit-id
-msgid "Is confidence more important than competence?"
-msgstr "Är självförtroende viktigare än kompetens?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:358
-#. js-lingui-explicit-id
-msgid "Is curiosity more powerful than discipline for learning?"
-msgstr "Är nyfikenhet starkare än disciplin för lärande?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:337
-#. js-lingui-explicit-id
-msgid "Is deep focus more valuable than being constantly available?"
-msgstr "Är djup koncentration mer värdefullt än att ständigt vara tillgänglig?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:190
-#. js-lingui-explicit-id
-msgid "Is direct feedback always better than polite feedback?"
-msgstr "Är direkt feedback alltid bättre än artig feedback?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:186
-#. js-lingui-explicit-id
-msgid "Is external pressure useful for motivation?"
-msgstr "Är yttre tryck användbart för motivation?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:51
-#. js-lingui-explicit-id
-msgid "Is failure a necessary part of success?"
-msgstr "Är motgångar en nödvändig del av framgång?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:345
-#. js-lingui-explicit-id
-msgid "Is fast innovation more dangerous than slow progress?"
-msgstr "Är snabb innovation farligare än långsam framsteg?"
+msgid "Invite to a debate"
+msgstr "Inbjudan till en debatt"
 
 #: src/features/Landing/LandingPage.tsx:127
 #. js-lingui-explicit-id
 msgid "Is FluencyPal a replacement for a human teacher?"
 msgstr "Är FluencyPal en ersättning för en mänsklig lärare?"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:207
-#. js-lingui-explicit-id
-msgid "Is following advice from others helpful or limiting?"
-msgstr "Är det hjälpsamt eller begränsande att följa andras råd?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:312
-#. js-lingui-explicit-id
-msgid "Is following your passion good career advice?"
-msgstr "Är det bra karriärråd att följa sin passion?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:371
-#. js-lingui-explicit-id
-msgid "Is forming emotional bonds with AI healthy or harmful?"
-msgstr "Är det hälsosamt eller skadligt att skapa känslomässiga band med AI?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:383
-#. js-lingui-explicit-id
-msgid "Is freedom more important than security?"
-msgstr "Är frihet viktigare än säkerhet?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:177
-#. js-lingui-explicit-id
-msgid "Is having a clear life plan important?"
-msgstr "Är det viktigt att ha en tydlig livsplan?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:270
-#. js-lingui-explicit-id
-msgid "Is having a sense of purpose at work essential?"
-msgstr "Är det viktigt att ha en känsla av syfte på jobbet?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:72
-#. js-lingui-explicit-id
-msgid "Is honest communication always the best policy?"
-msgstr "Är ärlig kommunikation alltid den bästa policyn?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:421
-#. js-lingui-explicit-id
-msgid "Is information overload making learning harder?"
-msgstr "Gör informationsöverflöd lärandet svårare?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:98
-#. js-lingui-explicit-id
-msgid "Is it better to choose a job you love or one that pays well?"
-msgstr "Är det bättre att välja ett jobb du älskar eller ett som betalar bra?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:131
-#. js-lingui-explicit-id
-msgid "Is it better to make fast decisions or well-analyzed ones?"
-msgstr "Är det bättre att fatta snabba beslut eller välanalyserade sådana?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:39
-#. js-lingui-explicit-id
-msgid "Is it better to specialize deeply in one skill or stay a generalist?"
-msgstr ""
-"Är det bättre att specialisera sig djupt inom en färdighet eller att förbli "
-"en generalist?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:249
-#. js-lingui-explicit-id
-msgid "Is it worse to make a wrong decision or make no decision at all?"
-msgstr ""
-"Är det värre att fatta ett felaktigt beslut än att inte fatta något beslut "
-"alls?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:127
-#. js-lingui-explicit-id
-msgid "Is job security more important than job satisfaction?"
-msgstr "Är arbetssäkerhet viktigare än arbetstillfredsställelse?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:156
-#. js-lingui-explicit-id
-msgid "Is learning by doing more effective than learning by reading?"
-msgstr ""
-"Är det mer effektivt att lära sig genom att göra än att lära sig genom att "
-"läsa?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:232
-#. js-lingui-explicit-id
-msgid "Is learning fast better than learning deeply?"
-msgstr "Är det bättre att lära sig snabbt än att lära sig på djupet?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:261
-#. js-lingui-explicit-id
-msgid "Is learning from mistakes more effective than learning from success?"
-msgstr "Är det mer effektivt att lära sig av misstag än av framgång?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:375
-#. js-lingui-explicit-id
-msgid "Is long-term career planning realistic today?"
-msgstr "Är långsiktig karriärplanering realistisk idag?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:408
-#. js-lingui-explicit-id
-msgid "Is meaningful work more important than high pay?"
-msgstr "Är meningsfullt arbete viktigare än hög lön?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:81
-#. js-lingui-explicit-id
-msgid "Is motivation more important than discipline?"
-msgstr "Är motivation viktigare än disciplin?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:169
-#. js-lingui-explicit-id
-msgid "Is multitasking a useful skill or a myth?"
-msgstr "Är multitasking en användbar färdighet eller en myt?"
-
 #: src/features/Landing/LandingPage.tsx:148
 #. js-lingui-explicit-id
 msgid "Is my data used to train AI models?"
 msgstr "Används mina data för att träna AI-modeller?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:215
-#. js-lingui-explicit-id
-msgid "Is passion necessary to do great work?"
-msgstr "Är passion nödvändig för att göra ett bra jobb?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:85
-#. js-lingui-explicit-id
-msgid "Is personal privacy still possible in the digital age?"
-msgstr "Är personlig integritet fortfarande möjlig i den digitala tidsåldern?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:362
-#. js-lingui-explicit-id
-msgid "Is regular digital detox necessary in modern life?"
-msgstr "Är regelbunden digital detox nödvändig i det moderna livet?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:10
-#. js-lingui-explicit-id
-msgid ""
-"Is remote work better for productivity than working in an office? Why or "
-"why not?"
-msgstr ""
-"Är distansarbete bättre för produktiviteten än att arbeta på ett kontor? "
-"Varför eller varför inte?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:198
-#. js-lingui-explicit-id
-msgid "Is self-discipline more important than talent?"
-msgstr "Är självdisciplin viktigare än talang?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:89
-#. js-lingui-explicit-id
-msgid "Is self-learning more effective than traditional education?"
-msgstr "Är självlärande mer effektivt än traditionell utbildning?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:291
-#. js-lingui-explicit-id
-msgid "Is stability overrated in modern careers?"
-msgstr "Är stabilitet överskattat i moderna karriärer?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:396
-#. js-lingui-explicit-id
-msgid "Is success mostly a result of effort or circumstances?"
-msgstr "Är framgång främst ett resultat av ansträngning eller omständigheter?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:228
-#. js-lingui-explicit-id
-msgid "Is taking career risks necessary for long-term success?"
-msgstr "Är det nödvändigt att ta karriärrisker för långsiktig framgång?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:404
-#. js-lingui-explicit-id
-msgid "Is technology developing faster than society can adapt?"
-msgstr "Utvecklas tekniken snabbare än vad samhället kan anpassa sig?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:211
-#. js-lingui-explicit-id
-msgid "Is the current education system preparing people for real life?"
-msgstr "Förbereder det nuvarande utbildningssystemet människor för verkliga livet?"
 
 #: src/features/Landing/Price/PricePage.tsx:54
 #. js-lingui-explicit-id
@@ -5978,16 +5376,6 @@ msgstr "Finns det en gratis provperiod?"
 #. js-lingui-explicit-id
 msgid "Is there content on resiliency and observability?"
 msgstr "Finns det innehåll om motståndskraft och observabilitet?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:299
-#. js-lingui-explicit-id
-msgid "Is time more valuable than money?"
-msgstr "Är tid mer värdefull än pengar?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:64
-#. js-lingui-explicit-id
-msgid "Is working long hours a sign of ambition or poor time management?"
-msgstr "Är arbete långa timmar ett tecken på ambition eller dålig tidsplanering?"
 
 #: src/features/Case/data/backendCSharp/coreData.ts:22
 #: src/features/Case/data/frontend-junior/coreData.ts:24
@@ -6238,11 +5626,6 @@ msgstr "Starta din frontend-karriär"
 msgid "Lazy Loading"
 msgstr "Lazy Loading"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:46
-#. js-lingui-explicit-id
-msgid "Leadership"
-msgstr "Ledarskap"
-
 #: src/features/Case/data/frontend-senior/painSection.ts:35
 #. js-lingui-explicit-id
 msgid "Leadership and ownership questions feel **vague and subjective**"
@@ -6311,50 +5694,15 @@ msgstr ""
 msgid "Learn useful words so you never go blank mid-sentence"
 msgstr "Lär dig användbara ord så att du aldrig tappar orden mitt i en mening"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:88
-#. js-lingui-explicit-id
-msgid "Learning"
-msgstr "Lärande"
-
 #: src/features/SEO/metadata.ts:223
 #. js-lingui-explicit-id
 msgid "Learning Blog"
 msgstr "Lärande Blogg"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:399
-#. js-lingui-explicit-id
-msgid "Learning Failure"
-msgstr "Inlärningsfel"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:155
-#. js-lingui-explicit-id
-msgid "Learning Habits"
-msgstr "Inlärningsvanor"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:260
-#. js-lingui-explicit-id
-msgid "Learning Methods"
-msgstr "Inlärningsmetoder"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:357
-#. js-lingui-explicit-id
-msgid "Learning Motivation"
-msgstr "Inlärningsmotivation"
-
 #: src/features/Dashboard/PlanDashboardCards.tsx:325
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Inlärningsplan"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:231
-#. js-lingui-explicit-id
-msgid "Learning Speed"
-msgstr "Inlärningshastighet"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:319
-#. js-lingui-explicit-id
-msgid "Learning Technology"
-msgstr "Lärande teknologi"
 
 #: src/features/Header/ContactMessageModal.tsx:98
 #: src/features/Settings/MyProfile.tsx:235
@@ -6414,7 +5762,7 @@ msgstr "Låt oss bestämma i vilken takt vi ska studera!"
 msgid "Let's go"
 msgstr "Låt oss gå"
 
-#: src/features/Game/Battle/BattleCard.tsx:278
+#: src/features/Game/Battle/BattleActionModal.tsx:359
 #. js-lingui-explicit-id
 msgid "Let's see who has the best arguments."
 msgstr "Låt oss se vem som har de bästa argumenten."
@@ -6704,20 +6052,10 @@ msgstr "Intervjufrågor för övning"
 msgid "Mock Interviews"
 msgstr "Mockintervjuer"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:420
-#. js-lingui-explicit-id
-msgid "Modern Learning"
-msgstr "Modern lärande"
-
 #: src/features/Blog/blogData.tsx:26
 #. js-lingui-explicit-id
 msgid "modern literature"
 msgstr "modern litteratur"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:42
-#. js-lingui-explicit-id
-msgid "Money"
-msgstr "Pengar"
 
 #: src/features/Landing/Price/PricePage.tsx:255
 #: src/features/Usage/SubscriptionPaymentModal.tsx:727
@@ -6759,12 +6097,6 @@ msgid ""
 msgstr ""
 "De flesta intervjuer inkluderar den klassiska \"styrkor och svagheter\" "
 "frågan. Det är särskilt viktigt att hantera detta väl på engelska."
-
-#: src/features/Game/Battle/useBattleQuestions.ts:80
-#: src/features/Game/Battle/useBattleQuestions.ts:185
-#. js-lingui-explicit-id
-msgid "Motivation"
-msgstr "Motivation"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:141
 #: src/features/Goal/Quiz/QuizPage2.tsx:182
@@ -6900,7 +6232,7 @@ msgstr "Nya ord:"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/Battle/BattleCard.tsx:279
+#: src/features/Game/Battle/BattleActionModal.tsx:360
 #: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:121
 #: src/features/Goal/GoalQuestions.tsx:503
@@ -6997,7 +6329,7 @@ msgstr "Inga betalningar..."
 msgid "No Projections Available"
 msgstr "Inga prognoser tillgängliga"
 
-#: src/features/Game/Battle/BattleCard.tsx:203
+#: src/features/Game/Battle/BattleActionModal.tsx:255
 #. js-lingui-explicit-id
 msgid "No reason provided."
 msgstr "Ingen anledning angiven."
@@ -7099,6 +6431,11 @@ msgstr "inte publicerad"
 #. js-lingui-explicit-id
 msgid "Not running inside Telegram App"
 msgstr "Körs inte i Telegram-appen"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:166
+#. js-lingui-explicit-id
+msgid "Not that time"
+msgstr "Inte den gången"
 
 #: src/features/Conversation/ConversationError.tsx:41
 #. js-lingui-explicit-id
@@ -7216,7 +6553,7 @@ msgid "Open plan"
 msgstr "Öppen planlösning"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
-#: src/features/Game/Battle/BattleCard.tsx:518
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Öppna resultat"
@@ -7385,42 +6722,11 @@ msgstr "Prestandamått"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "Prestanda, motståndskraft och arkitekturmodeller"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:197
-#. js-lingui-explicit-id
-msgid "Personal Development"
-msgstr "Personlig utveckling"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:256
-#. js-lingui-explicit-id
-msgid "Personal Freedom"
-msgstr "Personlig Frihet"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:176
-#. js-lingui-explicit-id
-msgid "Personal Goals"
-msgstr "Personliga mål"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:113
-#: src/features/Game/Battle/useBattleQuestions.ts:294
-#. js-lingui-explicit-id
-msgid "Personal Growth"
-msgstr "Personlig Utveckling"
-
 #: src/features/Landing/LandingPage.tsx:334
 #: src/features/Landing/PlanLandingBlock.tsx:429
 #. js-lingui-explicit-id
 msgid "Personal Plan"
 msgstr "Personlig Plan"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:340
-#. js-lingui-explicit-id
-msgid "Personal Responsibility"
-msgstr "Personligt ansvar"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:424
-#. js-lingui-explicit-id
-msgid "Personal Values"
-msgstr "Personliga värden"
 
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:28
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:28
@@ -7525,7 +6831,7 @@ msgstr "Vänligen tryck på menyn ⋮ och välj"
 msgid "Please wait while we process your payment."
 msgstr "Vänligen vänta medan vi behandlar din betalning."
 
-#: src/features/Game/GameStatRow.tsx:271
+#: src/features/Game/GameStatRow.tsx:272
 #. js-lingui-explicit-id
 msgid "Points"
 msgstr "Poäng"
@@ -7550,7 +6856,7 @@ msgstr "Portugisiska"
 msgid "Portuguese Learning Plan"
 msgstr "Portugisiskt Läroplan"
 
-#: src/features/Game/GameStatRow.tsx:254
+#: src/features/Game/GameStatRow.tsx:255
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "Position"
@@ -7944,11 +7250,6 @@ msgstr "Pris per en AI timme:"
 msgid "Priority support"
 msgstr "Prioriterad support"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:84
-#. js-lingui-explicit-id
-msgid "Privacy"
-msgstr "Integritet"
-
 #: src/features/Usage/PaymentModal.tsx:365
 #. js-lingui-explicit-id
 msgid "privacy policy"
@@ -7974,6 +7275,11 @@ msgstr "Integritetspolicy"
 #. js-lingui-explicit-id
 msgid "Problem Solving"
 msgstr "Problemlösning"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:271
+#. js-lingui-explicit-id
+msgid "Processing answers..."
+msgstr "Bearbetar svar..."
 
 #: src/features/Dashboard/BrainCard.tsx:144
 #. js-lingui-explicit-id
@@ -8001,11 +7307,6 @@ msgstr "Bearbetar..."
 #. js-lingui-explicit-id
 msgid "Product"
 msgstr "Produkt"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:143
-#. js-lingui-explicit-id
-msgid "Productivity"
-msgstr "Produktivitet"
 
 #: src/features/RolePlay/rolePlayData.tsx:141
 #: src/features/RolePlay/rolePlayData.tsx:522
@@ -8420,15 +7721,10 @@ msgstr "Relaterade scenarier"
 msgid "Reload page"
 msgstr "Ladda om sidan"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:9
+#: src/features/Game/Battle/BattleCard.tsx:301
 #. js-lingui-explicit-id
-msgid "Remote Work"
-msgstr "Fjärrarbete"
-
-#: src/features/Game/Battle/BattleCard.tsx:554
-#. js-lingui-explicit-id
-msgid "Remove debate"
-msgstr "Ta bort debatt"
+msgid "Remove"
+msgstr "Ta bort"
 
 #: src/features/Case/quiz/InterviewQuizPage.tsx:236
 #. js-lingui-explicit-id
@@ -8488,11 +7784,6 @@ msgstr "Återvänd"
 #. js-lingui-explicit-id
 msgid "Returning an Item to a Store"
 msgstr "Återlämna en vara till en butik"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:332
-#. js-lingui-explicit-id
-msgid "Risk and Fear"
-msgstr "Risk och Rädsla"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
 #. js-lingui-explicit-id
@@ -8673,11 +7964,6 @@ msgstr "Välj din spelavatar"
 msgid "Select your preferred language"
 msgstr "Välj ditt föredragna språk"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:378
-#. js-lingui-explicit-id
-msgid "Self-Improvement"
-msgstr "Självförbättring"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
 #. js-lingui-explicit-id
 msgid "Self-Introduction: Talking About Yourself"
@@ -8719,7 +8005,7 @@ msgstr "Skicka e-post igen"
 msgid "Send me sign-in link"
 msgstr "Skicka mig inloggningslänken"
 
-#: src/features/Game/GameStatRow.tsx:145
+#: src/features/Game/GameStatRow.tsx:146
 #. js-lingui-explicit-id
 msgid "Send Request"
 msgstr "Skicka förfrågan"
@@ -8827,114 +8113,15 @@ msgstr ""
 msgid "short story"
 msgstr "kort berättelse"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:350
-#. js-lingui-explicit-id
-msgid "Should AI be allowed to make life-changing decisions?"
-msgstr "Ska AI tillåtas fatta livsförändrande beslut?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:16
-#. js-lingui-explicit-id
-msgid ""
-"Should AI be allowed to replace humans in creative jobs like writing or "
-"design?"
-msgstr ""
-"Ska AI tillåtas ersätta människor i kreativa jobb som skrivande eller "
-"design?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:329
-#. js-lingui-explicit-id
-msgid "Should AI be credited as a creator or just a tool?"
-msgstr "Ska AI krediteras som skapare eller bara som ett verktyg?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:392
-#. js-lingui-explicit-id
-msgid "Should AI follow strict ethical rules even if it reduces efficiency?"
-msgstr "Ska AI följa strikta etiska regler även om det minskar effektiviteten?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:413
-#. js-lingui-explicit-id
-msgid "Should AI systems be allowed to operate without human oversight?"
-msgstr "Ska AI-system tillåtas att fungera utan mänsklig övervakning?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:56
-#. js-lingui-explicit-id
-msgid "Should AI systems be required to explain how they make decisions?"
-msgstr "Ska AI-system krävas att förklara hur de fattar beslut?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:30
-#. js-lingui-explicit-id
-msgid "Should companies be responsible for employees’ mental health?"
-msgstr "Ska företag vara ansvariga för anställdas mentala hälsa?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:287
-#. js-lingui-explicit-id
-msgid "Should companies replace humans with AI if it is cheaper and faster?"
-msgstr "Ska företag ersätta människor med AI om det är billigare och snabbare?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:303
-#. js-lingui-explicit-id
-msgid "Should efficiency be prioritized over creativity at work?"
-msgstr "Ska effektivitet prioriteras framför kreativitet på jobbet?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:123
-#. js-lingui-explicit-id
-msgid "Should exams be replaced by continuous assessment?"
-msgstr "Ska prov ersättas av kontinuerlig bedömning?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:400
-#. js-lingui-explicit-id
-msgid "Should failure be celebrated in learning environments?"
-msgstr "Bör misslyckande firas i lärmiljöer?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:140
-#. js-lingui-explicit-id
-msgid "Should governments strictly regulate AI development?"
-msgstr "Ska regeringar strikt reglera AI-utveckling?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:106
-#. js-lingui-explicit-id
-msgid "Should managers be friends with their employees?"
-msgstr "Ska chefer vara vänner med sina anställda?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:354
-#. js-lingui-explicit-id
-msgid "Should people define themselves by their profession?"
-msgstr "Bör människor definiera sig själva utifrån sitt yrke?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:266
-#. js-lingui-explicit-id
-msgid "Should people trust AI recommendations more than human advice?"
-msgstr "Bör människor lita mer på AI-rekommendationer än på mänskliga råd?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:152
-#. js-lingui-explicit-id
-msgid "Should personal values ever be compromised for success?"
-msgstr "Bör personliga värderingar någonsin komprometteras för framgång?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:425
-#. js-lingui-explicit-id
-msgid "Should personal values guide every major life decision?"
-msgstr "Bör personliga värderingar styra varje större livsbeslut?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:60
-#. js-lingui-explicit-id
-msgid "Should schools focus more on practical skills than theory?"
-msgstr "Borde skolor fokusera mer på praktiska färdigheter än på teori?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:182
-#. js-lingui-explicit-id
-msgid "Should students be allowed to use AI tools in school?"
-msgstr "Ska elever få använda AI-verktyg i skolan?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:240
-#. js-lingui-explicit-id
-msgid "Should work be a major source of personal fulfillment?"
-msgstr "Ska arbete vara en stor källa till personlig uppfyllelse?"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
 #. js-lingui-explicit-id
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
 msgstr "Visa nyfikenhet och engagemang. Glöm inte att tacka dem för deras svar:"
+
+#: src/features/Game/Battle/BattleSection.tsx:53
+#. js-lingui-explicit-id
+msgid "Show Debates"
+msgstr "Visa Debatter"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
 #. js-lingui-explicit-id
@@ -8950,6 +8137,11 @@ msgstr "Visa mindre"
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Visa mer"
+
+#: src/features/Game/Battle/BattleSection.tsx:53
+#. js-lingui-explicit-id
+msgid "Show More Debates"
+msgstr "Visa Fler Debatteringar"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:512
 #. js-lingui-explicit-id
@@ -9127,21 +8319,6 @@ msgstr "Så, under den första veckan kommer du att lära dig:"
 msgid "Social"
 msgstr "Social"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:315
-#. js-lingui-explicit-id
-msgid "Social Comparison"
-msgstr "Social jämförelse"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:25
-#. js-lingui-explicit-id
-msgid "Social Media"
-msgstr "Sociala Medier"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:134
-#. js-lingui-explicit-id
-msgid "Society"
-msgstr "Samhälle"
-
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:22
 #. js-lingui-explicit-id
 msgid ""
@@ -9239,7 +8416,7 @@ msgstr "Starta en praktikintervju"
 msgid "Start Call"
 msgstr "Starta samtal"
 
-#: src/features/Game/Battle/BattleCard.tsx:512
+#: src/features/Game/Battle/BattleCard.tsx:247
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Starta Debatt"
@@ -9539,7 +8716,7 @@ msgstr "Skicka"
 msgid "Submit answer"
 msgstr "Skicka svar"
 
-#: src/features/Game/Battle/BattleCard.tsx:219
+#: src/features/Game/Battle/BattleActionModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Submit Answers"
 msgstr "Skicka Svar"
@@ -9580,16 +8757,6 @@ msgstr "Prenumeration krävs"
 #. js-lingui-explicit-id
 msgid "subscription plans"
 msgstr "prenumerationsplaner"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:67
-#. js-lingui-explicit-id
-msgid "Success"
-msgstr "Framgång"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:281
-#. js-lingui-explicit-id
-msgid "Success Mindset"
-msgstr "Framgångsinriktat tänkesätt"
 
 #: src/features/Case/Landing/components/Footer.tsx:114
 #. js-lingui-explicit-id
@@ -9757,23 +8924,6 @@ msgstr "Teknisk fråga"
 #. js-lingui-explicit-id
 msgid "Technical Support"
 msgstr "Teknisk Support"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:34
-#: src/features/Game/Battle/useBattleQuestions.ts:101
-#: src/features/Game/Battle/useBattleQuestions.ts:193
-#. js-lingui-explicit-id
-msgid "Technology"
-msgstr "Teknologi"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:235
-#. js-lingui-explicit-id
-msgid "Technology Dependence"
-msgstr "Teknologi Beroende"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:403
-#. js-lingui-explicit-id
-msgid "Technology Pace"
-msgstr "Teknikens Takt"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:95
 #. js-lingui-explicit-id
@@ -9958,18 +9108,18 @@ msgstr ""
 "Den personliga återkopplingen visade mig exakt vad jag gjorde fel i mina "
 "tekniska förklaringar. En riktig förändring."
 
-#: src/features/Game/GameStatRow.tsx:157
+#: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id
 msgid "The topics for the debate will be randomly selected."
 msgstr "Ämnena för debatten kommer att väljas slumpmässigt."
 
-#: src/features/Game/Battle/BattleCard.tsx:283
-#: src/features/Game/GameStatRow.tsx:161
+#: src/features/Game/Battle/BattleActionModal.tsx:364
+#: src/features/Game/GameStatRow.tsx:162
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "Vinnaren tjänar {points} spelpoäng!"
 
-#: src/features/Game/Battle/BattleCard.tsx:116
+#: src/features/Game/Battle/BattleActionModal.tsx:118
 #. js-lingui-explicit-id
 msgid "The winner has been declared."
 msgstr "Vinnaren har utsetts."
@@ -10024,16 +9174,6 @@ msgstr "Detta visar resultat och får dig att sticka ut."
 #. js-lingui-explicit-id
 msgid "Ticket"
 msgstr "Biljett"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:168
-#. js-lingui-explicit-id
-msgid "Time Management"
-msgstr "Tidsplanering"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:298
-#. js-lingui-explicit-id
-msgid "Time Value"
-msgstr "Tidsvärde"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:521
 #. js-lingui-explicit-id
@@ -10170,7 +9310,7 @@ msgstr "Sätt på volymen"
 msgid "Type a message..."
 msgstr "Skriv ett meddelande..."
 
-#: src/features/Game/Battle/BattleCard.tsx:253
+#: src/features/Game/Battle/BattleActionModal.tsx:333
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "Skriv ditt svar här..."
@@ -10256,6 +9396,11 @@ msgstr ""
 "Använd dessa mallar för att skapa din egen berättelse. Glöm inte att nämna "
 "en prestation:"
 
+#: src/features/Game/Battle/BattleActionModal.tsx:297
+#. js-lingui-explicit-id
+msgid "Use your learning language ({lang})"
+msgstr "Använd ditt lärande språk ({lang})"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
 #. js-lingui-explicit-id
 msgid "Useful Phrases for Self-Introduction"
@@ -10286,11 +9431,6 @@ msgstr "UX & Tillgänglighet"
 #. js-lingui-explicit-id
 msgid "Vacancy description"
 msgstr "Ledig tjänstbeskrivning"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:151
-#. js-lingui-explicit-id
-msgid "Values"
-msgstr "Värderingar"
 
 #: src/features/Case/data/frontend-junior/demoSnippetSection.ts:15
 #. js-lingui-explicit-id
@@ -10358,7 +9498,7 @@ msgstr "Röstinspelningsläge"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:506
+#: src/features/Game/Battle/BattleCard.tsx:241
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Väntar på att andra spelare ska acceptera..."
@@ -10744,11 +9884,6 @@ msgstr ""
 msgid "Where can I use FluencyPal?"
 msgstr "Var kan jag använda FluencyPal?"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:245
-#. js-lingui-explicit-id
-msgid "Who should be responsible when AI makes a serious mistake?"
-msgstr "Vem bör hållas ansvarig när AI gör ett allvarligt misstag?"
-
 #: src/features/Case/data/backendCSharp/whoIsThisForSection.ts:10
 #: src/features/Case/data/frontend-junior/whoIsThisForSection.ts:10
 #: src/features/Case/data/frontend-senior/whoIsThisForSection.ts:10
@@ -10767,20 +9902,15 @@ msgstr "Varför backend-kandidater förbättras snabbt"
 msgid "Why candidates improve so quickly"
 msgstr "Varför kandidater förbättras så snabbt"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:119
-#. js-lingui-explicit-id
-msgid "Will AI ever truly understand human emotions?"
-msgstr "Kommer AI någonsin verkligen att förstå mänskliga känslor?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:429
-#. js-lingui-explicit-id
-msgid "Will traditional jobs still exist in 20 years?"
-msgstr "Kommer traditionella jobb fortfarande existera om 20 år?"
-
-#: src/features/Game/Battle/BattleCard.tsx:499
+#: src/features/Game/Battle/BattleCard.tsx:234
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Vinnaren får {points} poäng"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:166
+#. js-lingui-explicit-id
+msgid "Winner!"
+msgstr "Vinnare!"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:383
 #. js-lingui-explicit-id
@@ -10825,51 +9955,6 @@ msgstr "Ordstatistik"
 msgid "Words"
 msgstr "Ord"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:126
-#. js-lingui-explicit-id
-msgid "Work"
-msgstr "Arbete"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:63
-#. js-lingui-explicit-id
-msgid "Work Culture"
-msgstr "Arbetskultur"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:164
-#. js-lingui-explicit-id
-msgid "Work Environment"
-msgstr "Arbetsmiljö"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:323
-#. js-lingui-explicit-id
-msgid "Work Expectations"
-msgstr "Arbetsförväntningar"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:336
-#. js-lingui-explicit-id
-msgid "Work Focus"
-msgstr "Arbetsfokus"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:407
-#. js-lingui-explicit-id
-msgid "Work Meaning"
-msgstr "Arbetsbetydelse"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:214
-#. js-lingui-explicit-id
-msgid "Work Motivation"
-msgstr "Arbetsmotivation"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:365
-#. js-lingui-explicit-id
-msgid "Work Performance"
-msgstr "Arbetsprestation"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:239
-#. js-lingui-explicit-id
-msgid "Work Satisfaction"
-msgstr "Arbetstillfredsställelse"
-
 #: src/features/RolePlay/rolePlayData.tsx:510
 #. js-lingui-explicit-id
 msgid ""
@@ -10906,36 +9991,6 @@ msgstr ""
 "plays the support agent. The agent will ask for details, guide you through "
 "possible solutions, and offer next steps. This scenario helps you get "
 "comfortable navigating tech problems and communicating solutions."
-
-#: src/features/Game/Battle/useBattleQuestions.ts:29
-#. js-lingui-explicit-id
-msgid "Work-Life Balance"
-msgstr "Arbetslivsbalans"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:105
-#. js-lingui-explicit-id
-msgid "Workplace"
-msgstr "Arbetsplats"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:252
-#. js-lingui-explicit-id
-msgid "Workplace Culture"
-msgstr "Arbetsplatskultur"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:189
-#. js-lingui-explicit-id
-msgid "Workplace Feedback"
-msgstr "Arbetsplatsåterkoppling"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:203
-#. js-lingui-explicit-id
-msgid "Would you trust AI more than humans in critical situations?"
-msgstr "Skulle du lita mer på AI än på människor i kritiska situationer?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:77
-#. js-lingui-explicit-id
-msgid "Would you trust AI to make important life decisions for you?"
-msgstr "Skulle du lita på att AI tar viktiga livsbeslut åt dig?"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:210
 #. js-lingui-explicit-id
@@ -11173,6 +10228,11 @@ msgstr ""
 msgid "You can try AI in action now"
 msgstr "Du kan testa AI i aktion nu"
 
+#: src/features/Game/Battle/BattleActionModal.tsx:329
+#. js-lingui-explicit-id
+msgid "You can use text to answer if you prefer."
+msgstr "Du kan använda text för att svara om du föredrar det."
+
 #: src/features/Usage/SubscriptionPaymentModal.tsx:629
 #. js-lingui-explicit-id
 msgid "You don't have an active subscription."
@@ -11201,12 +10261,23 @@ msgstr ""
 msgid "You have"
 msgstr "Du har"
 
-#: src/features/Game/Battle/BattleCard.tsx:218
+#: src/features/Game/Battle/BattleActionModal.tsx:274
 #. js-lingui-explicit-id
-msgid "You have completed all the questions."
-msgstr "Du har besvarat alla frågorna."
+msgid ""
+"You have answered all the questions. Submitting your answers now... Don't "
+"close this window."
+msgstr ""
+"Du har besvarat alla frågor. Skickar in dina svar nu... Stäng inte detta "
+"fönster."
 
-#: src/features/Game/Battle/BattleCard.tsx:524
+#: src/features/Game/Battle/BattleActionModal.tsx:277
+#. js-lingui-explicit-id
+msgid ""
+"You have completed all the questions. Submit your answers now and wait for "
+"the results."
+msgstr "Du har besvarat alla frågor. Skicka in dina svar nu och vänta på resultaten."
+
+#: src/features/Game/Battle/BattleCard.tsx:270
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Du har skickat in dina svar. Väntar på andra..."
@@ -11241,7 +10312,7 @@ msgstr ""
 msgid "You will get 3 days of full access for free"
 msgstr "Du kommer att få 3 dagar full tillgång gratis"
 
-#: src/features/Game/GameStatRow.tsx:167
+#: src/features/Game/GameStatRow.tsx:168
 #. js-lingui-explicit-id
 msgid "You will see the response on the main page."
 msgstr "Du kommer att se svaret på huvudsidan."
@@ -11298,13 +10369,13 @@ msgstr "Dina prestationer"
 msgid "Your AI speaking partner"
 msgstr "Din AI-pratpartner"
 
-#: src/features/Game/Battle/BattleCard.tsx:252
+#: src/features/Game/Battle/BattleActionModal.tsx:332
 #: src/features/Survey/RecordUserAudioAnswer.tsx:64
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "Ditt svar"
 
-#: src/features/Game/Battle/BattleCard.tsx:289
+#: src/features/Game/Battle/BattleActionModal.tsx:370
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
 msgstr "Dina svar kommer att synas för din motståndare efter att du skickat in dem."
@@ -11330,7 +10401,7 @@ msgid ""
 "step."
 msgstr "Ditt kreditkort har redan bekräftats. Du kan gå vidare till nästa steg."
 
-#: src/features/Game/GameStatRow.tsx:151
+#: src/features/Game/GameStatRow.tsx:152
 #. js-lingui-explicit-id
 msgid "Your debate request will be sent to {userName}"
 msgstr "Din debattförfrågan kommer att skickas till {userName}"
@@ -11346,6 +10417,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "Din upplevelse"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:303
+#. js-lingui-explicit-id
+msgid "Your goal is not to be perfect, but to surpass your opponent."
+msgstr "Ditt mål är inte att vara perfekt, utan att överträffa din motståndare."
 
 #: src/features/Auth/InterviewAuthWall.tsx:12
 #. js-lingui-explicit-id
@@ -11440,6 +10516,1008 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:328
+#. js-lingui-explicit-id
+#~ msgid "AI and Creativity"
+#~ msgstr "AI och kreativitet"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:286
+#. js-lingui-explicit-id
+#~ msgid "AI and Employment"
+#~ msgstr "AI och sysselsättning"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:391
+#. js-lingui-explicit-id
+#~ msgid "AI and Ethics"
+#~ msgstr "AI och etik"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:244
+#. js-lingui-explicit-id
+#~ msgid "AI and Responsibility"
+#~ msgstr "AI och ansvar"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:265
+#. js-lingui-explicit-id
+#~ msgid "AI and Trust"
+#~ msgstr "AI och Förtroende"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:412
+#. js-lingui-explicit-id
+#~ msgid "AI Autonomy"
+#~ msgstr "AI-autonomi"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:307
+#. js-lingui-explicit-id
+#~ msgid "AI Bias"
+#~ msgstr "AI-bias"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:160
+#. js-lingui-explicit-id
+#~ msgid "AI Companions"
+#~ msgstr "AI-kompanjoner"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:370
+#. js-lingui-explicit-id
+#~ msgid "AI Companionship"
+#~ msgstr "AI Kamratskap"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:223
+#. js-lingui-explicit-id
+#~ msgid "AI Creativity"
+#~ msgstr "AI Kreativitet"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:349
+#. js-lingui-explicit-id
+#~ msgid "AI Decision Making"
+#~ msgstr "AI-beslutsfattande"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:181
+#. js-lingui-explicit-id
+#~ msgid "AI Education"
+#~ msgstr "AI Utbildning"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:55
+#. js-lingui-explicit-id
+#~ msgid "AI Ethics"
+#~ msgstr "AI-etik"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:76
+#. js-lingui-explicit-id
+#~ msgid "AI in Daily Life"
+#~ msgstr "AI i vardagen"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:139
+#. js-lingui-explicit-id
+#~ msgid "AI Regulation"
+#~ msgstr "AI-reglering"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:202
+#. js-lingui-explicit-id
+#~ msgid "AI Trust"
+#~ msgstr "AI Förtroende"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:118
+#. js-lingui-explicit-id
+#~ msgid "AI vs Humans"
+#~ msgstr "AI vs. Människor"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:47
+#. js-lingui-explicit-id
+#~ msgid "Are great leaders born or made?"
+#~ msgstr "Är stora ledare födda eller skapade?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:219
+#. js-lingui-explicit-id
+#~ msgid "Are people optimistic or pessimistic about the future, and why?"
+#~ msgstr "Är människor optimistiska eller pessimistiska om framtiden, och varför?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:341
+#. js-lingui-explicit-id
+#~ msgid "Are people responsible for their circumstances?"
+#~ msgstr "Är människor ansvariga för sina omständigheter?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:144
+#. js-lingui-explicit-id
+#~ msgid "Are productivity tools actually making us more productive?"
+#~ msgstr "Gör produktivitetsverktyg oss verkligen mer produktiva?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:15
+#. js-lingui-explicit-id
+#~ msgid "Artificial Intelligence"
+#~ msgstr "Artificiell Intelligens"
+
+#: src/features/Game/GameStatRow.tsx:367
+#. js-lingui-explicit-id
+#~ msgid "Ask for debate"
+#~ msgstr "Be om debatt"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:308
+#. js-lingui-explicit-id
+#~ msgid "Can AI ever be completely unbiased?"
+#~ msgstr "Kan AI någonsin bli helt opartisk?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:161
+#. js-lingui-explicit-id
+#~ msgid "Can AI replace human companionship in the future?"
+#~ msgstr "Kan AI ersätta mänskligt sällskap i framtiden?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:224
+#. js-lingui-explicit-id
+#~ msgid "Can AI-generated content be considered original creativity?"
+#~ msgstr "Kan AI-genererat innehåll betraktas som original kreativitet?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:379
+#. js-lingui-explicit-id
+#~ msgid "Can constant self-improvement become harmful?"
+#~ msgstr "Kan konstant självförbättring bli skadligt?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:93
+#. js-lingui-explicit-id
+#~ msgid "Can creativity be taught, or is it natural talent?"
+#~ msgstr "Kan kreativitet läras ut, eller är det en naturlig talang?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:38
+#. js-lingui-explicit-id
+#~ msgid "Career"
+#~ msgstr "Karriär"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:206
+#: src/features/Game/Battle/useBattleQuestions.ts:311
+#. js-lingui-explicit-id
+#~ msgid "Career Advice"
+#~ msgstr "Karriärråd"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:97
+#. js-lingui-explicit-id
+#~ msgid "Career Choices"
+#~ msgstr "Karriärval"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:147
+#. js-lingui-explicit-id
+#~ msgid "Career Growth"
+#~ msgstr "Karriärtillväxt"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:353
+#. js-lingui-explicit-id
+#~ msgid "Career Identity"
+#~ msgstr "Karriäridentitet"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:374
+#. js-lingui-explicit-id
+#~ msgid "Career Planning"
+#~ msgstr "Karriärplanering"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:269
+#. js-lingui-explicit-id
+#~ msgid "Career Purpose"
+#~ msgstr "Karriärsyfte"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:227
+#. js-lingui-explicit-id
+#~ msgid "Career Risk"
+#~ msgstr "Karriärrisk"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:416
+#. js-lingui-explicit-id
+#~ msgid "Career Satisfaction"
+#~ msgstr "Karriärnöjdhet"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:290
+#. js-lingui-explicit-id
+#~ msgid "Career Stability"
+#~ msgstr "Karriärstabilitet"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:395
+#. js-lingui-explicit-id
+#~ msgid "Career Success"
+#~ msgstr "Karriärframgång"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:71
+#. js-lingui-explicit-id
+#~ msgid "Communication"
+#~ msgstr "Kommunikation"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:92
+#: src/features/Game/Battle/useBattleQuestions.ts:172
+#. js-lingui-explicit-id
+#~ msgid "Creativity"
+#~ msgstr "Kreativitet"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:386
+#. js-lingui-explicit-id
+#~ msgid "Creativity Pressure"
+#~ msgstr "Kreativitetspress"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:302
+#. js-lingui-explicit-id
+#~ msgid "Creativity vs Efficiency"
+#~ msgstr "Kreativitet vs Effektivitet"
+
+#: src/features/Game/Battle/BattleCard.tsx:217
+#. js-lingui-explicit-id
+#~ msgid "Debate completed!"
+#~ msgstr "Debatt avslutad!"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:130
+#. js-lingui-explicit-id
+#~ msgid "Decision Making"
+#~ msgstr "Beslutsfattande"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:248
+#. js-lingui-explicit-id
+#~ msgid "Decision Regret"
+#~ msgstr "Beslutsångest"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:273
+#. js-lingui-explicit-id
+#~ msgid "Digital Communication"
+#~ msgstr "Digital kommunikation"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:361
+#. js-lingui-explicit-id
+#~ msgid "Digital Detox"
+#~ msgstr "Digital Detox"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:278
+#. js-lingui-explicit-id
+#~ msgid "Do grades motivate students or limit their potential?"
+#~ msgstr "Motiverar betyg elever eller begränsar deras potential?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:173
+#. js-lingui-explicit-id
+#~ msgid "Do limitations help or hurt creativity?"
+#~ msgstr "Hjälper eller skadar begränsningar kreativiteten?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:324
+#. js-lingui-explicit-id
+#~ msgid "Do modern workers expect too much from their jobs?"
+#~ msgstr "Förväntar sig moderna arbetstagare för mycket av sina jobb?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:320
+#. js-lingui-explicit-id
+#~ msgid "Do online courses provide the same value as in-person learning?"
+#~ msgstr "Ger onlinekurser samma värde som lärande på plats?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:102
+#. js-lingui-explicit-id
+#~ msgid "Do smartphones improve or damage our attention span?"
+#~ msgstr "Förbättrar eller skadar smartphones vår koncentrationsförmåga?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:194
+#. js-lingui-explicit-id
+#~ msgid "Does automation create more jobs than it destroys?"
+#~ msgstr "Skapar automation fler jobb än det förstör?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:316
+#. js-lingui-explicit-id
+#~ msgid "Does comparing yourself to others help or harm motivation?"
+#~ msgstr "Hjälper eller skadar det motivationen att jämföra sig själv med andra?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:295
+#. js-lingui-explicit-id
+#~ msgid "Does discomfort always lead to personal growth?"
+#~ msgstr "Leder obehag alltid till personlig tillväxt?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:333
+#. js-lingui-explicit-id
+#~ msgid "Does fear protect us or limit us more?"
+#~ msgstr "Skyddar rädsla oss eller begränsar den oss mer?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:257
+#. js-lingui-explicit-id
+#~ msgid "Does financial independence equal personal freedom?"
+#~ msgstr "Innebär ekonomiskt oberoende personlig frihet?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:110
+#. js-lingui-explicit-id
+#~ msgid "Does innovation come more from freedom or pressure?"
+#~ msgstr "Kommer innovation mer från frihet eller press?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:135
+#. js-lingui-explicit-id
+#~ msgid "Does modern life make people more anxious than before?"
+#~ msgstr "Gör det moderna livet människor mer oroliga än tidigare?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:43
+#. js-lingui-explicit-id
+#~ msgid "Does money bring freedom, happiness, or neither?"
+#~ msgstr "Ger pengar frihet, lycka, eller ingetdera?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:366
+#. js-lingui-explicit-id
+#~ msgid "Does pressure improve or damage performance?"
+#~ msgstr "Förbättrar eller försämrar tryck prestationen?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:387
+#. js-lingui-explicit-id
+#~ msgid "Does pressure kill creativity or enhance it?"
+#~ msgstr "Dödar tryck kreativitet eller främjar det den?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:26
+#. js-lingui-explicit-id
+#~ msgid "Does social media do more harm than good for society?"
+#~ msgstr "Gör sociala medier mer skada än nytta för samhället?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:35
+#. js-lingui-explicit-id
+#~ msgid "Does technology make people more connected or more lonely?"
+#~ msgstr "Gör teknologin människor mer uppkopplade eller mer ensamma?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:21
+#: src/features/Game/Battle/useBattleQuestions.ts:59
+#: src/features/Game/Battle/useBattleQuestions.ts:122
+#. js-lingui-explicit-id
+#~ msgid "Education"
+#~ msgstr "Utbildning"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:277
+#. js-lingui-explicit-id
+#~ msgid "Education Pressure"
+#~ msgstr "Utbildningspress"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:210
+#. js-lingui-explicit-id
+#~ msgid "Education System"
+#~ msgstr "Utbildningssystem"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:50
+#. js-lingui-explicit-id
+#~ msgid "Failure"
+#~ msgstr "Misslyckande"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:382
+#. js-lingui-explicit-id
+#~ msgid "Freedom vs Security"
+#~ msgstr "Frihet vs Säkerhet"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:218
+#. js-lingui-explicit-id
+#~ msgid "Future"
+#~ msgstr "Framtid"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:428
+#. js-lingui-explicit-id
+#~ msgid "Future of Work"
+#~ msgstr "Framtidens Arbete"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:274
+#. js-lingui-explicit-id
+#~ msgid "Has digital communication improved or weakened human relationships?"
+#~ msgstr "Har digital kommunikation förbättrat eller försvagat mänskliga relationer?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:236
+#. js-lingui-explicit-id
+#~ msgid "Have people become too dependent on technology?"
+#~ msgstr "Har människor blivit för beroende av teknik?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:68
+#. js-lingui-explicit-id
+#~ msgid "How should success be measured: money, impact, or happiness?"
+#~ msgstr "Hur bör framgång mätas: pengar, påverkan eller lycka?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:109
+#. js-lingui-explicit-id
+#~ msgid "Innovation"
+#~ msgstr "Innovation"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:344
+#. js-lingui-explicit-id
+#~ msgid "Innovation Speed"
+#~ msgstr "Innovationshastighet"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:165
+#. js-lingui-explicit-id
+#~ msgid "Is a competitive workplace better than a collaborative one?"
+#~ msgstr "Är en konkurrenskraftig arbetsplats bättre än en samarbetsvillig?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:22
+#. js-lingui-explicit-id
+#~ msgid "Is a university degree still necessary for career success today?"
+#~ msgstr "Är en universitetsexamen fortfarande nödvändig för karriärframgång idag?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:417
+#. js-lingui-explicit-id
+#~ msgid "Is career satisfaction a personal responsibility or a company’s role?"
+#~ msgstr "Är karriärnöjdhet ett personligt ansvar eller företagets roll?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:148
+#. js-lingui-explicit-id
+#~ msgid "Is changing jobs frequently good or bad for a career?"
+#~ msgstr "Är det bra eller dåligt för karriären att byta jobb ofta?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:114
+#. js-lingui-explicit-id
+#~ msgid "Is comfort the enemy of growth?"
+#~ msgstr "Är komfort fienden till tillväxt?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:253
+#. js-lingui-explicit-id
+#~ msgid "Is company culture more important than salary?"
+#~ msgstr "Är företagskultur viktigare än lön?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:282
+#. js-lingui-explicit-id
+#~ msgid "Is confidence more important than competence?"
+#~ msgstr "Är självförtroende viktigare än kompetens?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:358
+#. js-lingui-explicit-id
+#~ msgid "Is curiosity more powerful than discipline for learning?"
+#~ msgstr "Är nyfikenhet starkare än disciplin för lärande?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:337
+#. js-lingui-explicit-id
+#~ msgid "Is deep focus more valuable than being constantly available?"
+#~ msgstr "Är djup koncentration mer värdefullt än att ständigt vara tillgänglig?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:190
+#. js-lingui-explicit-id
+#~ msgid "Is direct feedback always better than polite feedback?"
+#~ msgstr "Är direkt feedback alltid bättre än artig feedback?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:186
+#. js-lingui-explicit-id
+#~ msgid "Is external pressure useful for motivation?"
+#~ msgstr "Är yttre tryck användbart för motivation?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:51
+#. js-lingui-explicit-id
+#~ msgid "Is failure a necessary part of success?"
+#~ msgstr "Är motgångar en nödvändig del av framgång?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:345
+#. js-lingui-explicit-id
+#~ msgid "Is fast innovation more dangerous than slow progress?"
+#~ msgstr "Är snabb innovation farligare än långsam framsteg?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:207
+#. js-lingui-explicit-id
+#~ msgid "Is following advice from others helpful or limiting?"
+#~ msgstr "Är det hjälpsamt eller begränsande att följa andras råd?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:312
+#. js-lingui-explicit-id
+#~ msgid "Is following your passion good career advice?"
+#~ msgstr "Är det bra karriärråd att följa sin passion?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:371
+#. js-lingui-explicit-id
+#~ msgid "Is forming emotional bonds with AI healthy or harmful?"
+#~ msgstr "Är det hälsosamt eller skadligt att skapa känslomässiga band med AI?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:383
+#. js-lingui-explicit-id
+#~ msgid "Is freedom more important than security?"
+#~ msgstr "Är frihet viktigare än säkerhet?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:177
+#. js-lingui-explicit-id
+#~ msgid "Is having a clear life plan important?"
+#~ msgstr "Är det viktigt att ha en tydlig livsplan?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:270
+#. js-lingui-explicit-id
+#~ msgid "Is having a sense of purpose at work essential?"
+#~ msgstr "Är det viktigt att ha en känsla av syfte på jobbet?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:72
+#. js-lingui-explicit-id
+#~ msgid "Is honest communication always the best policy?"
+#~ msgstr "Är ärlig kommunikation alltid den bästa policyn?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:421
+#. js-lingui-explicit-id
+#~ msgid "Is information overload making learning harder?"
+#~ msgstr "Gör informationsöverflöd lärandet svårare?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:98
+#. js-lingui-explicit-id
+#~ msgid "Is it better to choose a job you love or one that pays well?"
+#~ msgstr "Är det bättre att välja ett jobb du älskar eller ett som betalar bra?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:131
+#. js-lingui-explicit-id
+#~ msgid "Is it better to make fast decisions or well-analyzed ones?"
+#~ msgstr "Är det bättre att fatta snabba beslut eller välanalyserade sådana?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:39
+#. js-lingui-explicit-id
+#~ msgid "Is it better to specialize deeply in one skill or stay a generalist?"
+#~ msgstr ""
+#~ "Är det bättre att specialisera sig djupt inom en färdighet eller att förbli "
+#~ "en generalist?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:249
+#. js-lingui-explicit-id
+#~ msgid "Is it worse to make a wrong decision or make no decision at all?"
+#~ msgstr ""
+#~ "Är det värre att fatta ett felaktigt beslut än att inte fatta något beslut "
+#~ "alls?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:127
+#. js-lingui-explicit-id
+#~ msgid "Is job security more important than job satisfaction?"
+#~ msgstr "Är arbetssäkerhet viktigare än arbetstillfredsställelse?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:156
+#. js-lingui-explicit-id
+#~ msgid "Is learning by doing more effective than learning by reading?"
+#~ msgstr ""
+#~ "Är det mer effektivt att lära sig genom att göra än att lära sig genom att "
+#~ "läsa?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:232
+#. js-lingui-explicit-id
+#~ msgid "Is learning fast better than learning deeply?"
+#~ msgstr "Är det bättre att lära sig snabbt än att lära sig på djupet?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:261
+#. js-lingui-explicit-id
+#~ msgid "Is learning from mistakes more effective than learning from success?"
+#~ msgstr "Är det mer effektivt att lära sig av misstag än av framgång?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:375
+#. js-lingui-explicit-id
+#~ msgid "Is long-term career planning realistic today?"
+#~ msgstr "Är långsiktig karriärplanering realistisk idag?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:408
+#. js-lingui-explicit-id
+#~ msgid "Is meaningful work more important than high pay?"
+#~ msgstr "Är meningsfullt arbete viktigare än hög lön?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:81
+#. js-lingui-explicit-id
+#~ msgid "Is motivation more important than discipline?"
+#~ msgstr "Är motivation viktigare än disciplin?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:169
+#. js-lingui-explicit-id
+#~ msgid "Is multitasking a useful skill or a myth?"
+#~ msgstr "Är multitasking en användbar färdighet eller en myt?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:215
+#. js-lingui-explicit-id
+#~ msgid "Is passion necessary to do great work?"
+#~ msgstr "Är passion nödvändig för att göra ett bra jobb?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:85
+#. js-lingui-explicit-id
+#~ msgid "Is personal privacy still possible in the digital age?"
+#~ msgstr "Är personlig integritet fortfarande möjlig i den digitala tidsåldern?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:362
+#. js-lingui-explicit-id
+#~ msgid "Is regular digital detox necessary in modern life?"
+#~ msgstr "Är regelbunden digital detox nödvändig i det moderna livet?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:10
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Is remote work better for productivity than working in an office? Why or "
+#~ "why not?"
+#~ msgstr ""
+#~ "Är distansarbete bättre för produktiviteten än att arbeta på ett kontor? "
+#~ "Varför eller varför inte?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:198
+#. js-lingui-explicit-id
+#~ msgid "Is self-discipline more important than talent?"
+#~ msgstr "Är självdisciplin viktigare än talang?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:89
+#. js-lingui-explicit-id
+#~ msgid "Is self-learning more effective than traditional education?"
+#~ msgstr "Är självlärande mer effektivt än traditionell utbildning?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:291
+#. js-lingui-explicit-id
+#~ msgid "Is stability overrated in modern careers?"
+#~ msgstr "Är stabilitet överskattat i moderna karriärer?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:396
+#. js-lingui-explicit-id
+#~ msgid "Is success mostly a result of effort or circumstances?"
+#~ msgstr "Är framgång främst ett resultat av ansträngning eller omständigheter?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:228
+#. js-lingui-explicit-id
+#~ msgid "Is taking career risks necessary for long-term success?"
+#~ msgstr "Är det nödvändigt att ta karriärrisker för långsiktig framgång?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:404
+#. js-lingui-explicit-id
+#~ msgid "Is technology developing faster than society can adapt?"
+#~ msgstr "Utvecklas tekniken snabbare än vad samhället kan anpassa sig?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:211
+#. js-lingui-explicit-id
+#~ msgid "Is the current education system preparing people for real life?"
+#~ msgstr "Förbereder det nuvarande utbildningssystemet människor för verkliga livet?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:299
+#. js-lingui-explicit-id
+#~ msgid "Is time more valuable than money?"
+#~ msgstr "Är tid mer värdefull än pengar?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:64
+#. js-lingui-explicit-id
+#~ msgid "Is working long hours a sign of ambition or poor time management?"
+#~ msgstr "Är arbete långa timmar ett tecken på ambition eller dålig tidsplanering?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:46
+#. js-lingui-explicit-id
+#~ msgid "Leadership"
+#~ msgstr "Ledarskap"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:88
+#. js-lingui-explicit-id
+#~ msgid "Learning"
+#~ msgstr "Lärande"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:399
+#. js-lingui-explicit-id
+#~ msgid "Learning Failure"
+#~ msgstr "Inlärningsfel"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:155
+#. js-lingui-explicit-id
+#~ msgid "Learning Habits"
+#~ msgstr "Inlärningsvanor"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:260
+#. js-lingui-explicit-id
+#~ msgid "Learning Methods"
+#~ msgstr "Inlärningsmetoder"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:357
+#. js-lingui-explicit-id
+#~ msgid "Learning Motivation"
+#~ msgstr "Inlärningsmotivation"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:231
+#. js-lingui-explicit-id
+#~ msgid "Learning Speed"
+#~ msgstr "Inlärningshastighet"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:319
+#. js-lingui-explicit-id
+#~ msgid "Learning Technology"
+#~ msgstr "Lärande teknologi"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:420
+#. js-lingui-explicit-id
+#~ msgid "Modern Learning"
+#~ msgstr "Modern lärande"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:42
+#. js-lingui-explicit-id
+#~ msgid "Money"
+#~ msgstr "Pengar"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:80
+#: src/features/Game/Battle/useBattleQuestions.ts:185
+#. js-lingui-explicit-id
+#~ msgid "Motivation"
+#~ msgstr "Motivation"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:197
+#. js-lingui-explicit-id
+#~ msgid "Personal Development"
+#~ msgstr "Personlig utveckling"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:256
+#. js-lingui-explicit-id
+#~ msgid "Personal Freedom"
+#~ msgstr "Personlig Frihet"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:176
+#. js-lingui-explicit-id
+#~ msgid "Personal Goals"
+#~ msgstr "Personliga mål"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:113
+#: src/features/Game/Battle/useBattleQuestions.ts:294
+#. js-lingui-explicit-id
+#~ msgid "Personal Growth"
+#~ msgstr "Personlig Utveckling"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:340
+#. js-lingui-explicit-id
+#~ msgid "Personal Responsibility"
+#~ msgstr "Personligt ansvar"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:424
+#. js-lingui-explicit-id
+#~ msgid "Personal Values"
+#~ msgstr "Personliga värden"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:84
+#. js-lingui-explicit-id
+#~ msgid "Privacy"
+#~ msgstr "Integritet"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:143
+#. js-lingui-explicit-id
+#~ msgid "Productivity"
+#~ msgstr "Produktivitet"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:9
+#. js-lingui-explicit-id
+#~ msgid "Remote Work"
+#~ msgstr "Fjärrarbete"
+
+#: src/features/Game/Battle/BattleCard.tsx:554
+#. js-lingui-explicit-id
+#~ msgid "Remove debate"
+#~ msgstr "Ta bort debatt"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:332
+#. js-lingui-explicit-id
+#~ msgid "Risk and Fear"
+#~ msgstr "Risk och Rädsla"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:378
+#. js-lingui-explicit-id
+#~ msgid "Self-Improvement"
+#~ msgstr "Självförbättring"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:350
+#. js-lingui-explicit-id
+#~ msgid "Should AI be allowed to make life-changing decisions?"
+#~ msgstr "Ska AI tillåtas fatta livsförändrande beslut?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:16
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Should AI be allowed to replace humans in creative jobs like writing or "
+#~ "design?"
+#~ msgstr ""
+#~ "Ska AI tillåtas ersätta människor i kreativa jobb som skrivande eller "
+#~ "design?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:329
+#. js-lingui-explicit-id
+#~ msgid "Should AI be credited as a creator or just a tool?"
+#~ msgstr "Ska AI krediteras som skapare eller bara som ett verktyg?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:392
+#. js-lingui-explicit-id
+#~ msgid "Should AI follow strict ethical rules even if it reduces efficiency?"
+#~ msgstr "Ska AI följa strikta etiska regler även om det minskar effektiviteten?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:413
+#. js-lingui-explicit-id
+#~ msgid "Should AI systems be allowed to operate without human oversight?"
+#~ msgstr "Ska AI-system tillåtas att fungera utan mänsklig övervakning?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:56
+#. js-lingui-explicit-id
+#~ msgid "Should AI systems be required to explain how they make decisions?"
+#~ msgstr "Ska AI-system krävas att förklara hur de fattar beslut?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:30
+#. js-lingui-explicit-id
+#~ msgid "Should companies be responsible for employees’ mental health?"
+#~ msgstr "Ska företag vara ansvariga för anställdas mentala hälsa?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:287
+#. js-lingui-explicit-id
+#~ msgid "Should companies replace humans with AI if it is cheaper and faster?"
+#~ msgstr "Ska företag ersätta människor med AI om det är billigare och snabbare?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:303
+#. js-lingui-explicit-id
+#~ msgid "Should efficiency be prioritized over creativity at work?"
+#~ msgstr "Ska effektivitet prioriteras framför kreativitet på jobbet?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:123
+#. js-lingui-explicit-id
+#~ msgid "Should exams be replaced by continuous assessment?"
+#~ msgstr "Ska prov ersättas av kontinuerlig bedömning?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:400
+#. js-lingui-explicit-id
+#~ msgid "Should failure be celebrated in learning environments?"
+#~ msgstr "Bör misslyckande firas i lärmiljöer?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:140
+#. js-lingui-explicit-id
+#~ msgid "Should governments strictly regulate AI development?"
+#~ msgstr "Ska regeringar strikt reglera AI-utveckling?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:106
+#. js-lingui-explicit-id
+#~ msgid "Should managers be friends with their employees?"
+#~ msgstr "Ska chefer vara vänner med sina anställda?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:354
+#. js-lingui-explicit-id
+#~ msgid "Should people define themselves by their profession?"
+#~ msgstr "Bör människor definiera sig själva utifrån sitt yrke?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:266
+#. js-lingui-explicit-id
+#~ msgid "Should people trust AI recommendations more than human advice?"
+#~ msgstr "Bör människor lita mer på AI-rekommendationer än på mänskliga råd?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:152
+#. js-lingui-explicit-id
+#~ msgid "Should personal values ever be compromised for success?"
+#~ msgstr "Bör personliga värderingar någonsin komprometteras för framgång?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:425
+#. js-lingui-explicit-id
+#~ msgid "Should personal values guide every major life decision?"
+#~ msgstr "Bör personliga värderingar styra varje större livsbeslut?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:60
+#. js-lingui-explicit-id
+#~ msgid "Should schools focus more on practical skills than theory?"
+#~ msgstr "Borde skolor fokusera mer på praktiska färdigheter än på teori?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:182
+#. js-lingui-explicit-id
+#~ msgid "Should students be allowed to use AI tools in school?"
+#~ msgstr "Ska elever få använda AI-verktyg i skolan?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:240
+#. js-lingui-explicit-id
+#~ msgid "Should work be a major source of personal fulfillment?"
+#~ msgstr "Ska arbete vara en stor källa till personlig uppfyllelse?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:315
+#. js-lingui-explicit-id
+#~ msgid "Social Comparison"
+#~ msgstr "Social jämförelse"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:25
+#. js-lingui-explicit-id
+#~ msgid "Social Media"
+#~ msgstr "Sociala Medier"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:134
+#. js-lingui-explicit-id
+#~ msgid "Society"
+#~ msgstr "Samhälle"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:67
+#. js-lingui-explicit-id
+#~ msgid "Success"
+#~ msgstr "Framgång"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:281
+#. js-lingui-explicit-id
+#~ msgid "Success Mindset"
+#~ msgstr "Framgångsinriktat tänkesätt"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:34
+#: src/features/Game/Battle/useBattleQuestions.ts:101
+#: src/features/Game/Battle/useBattleQuestions.ts:193
+#. js-lingui-explicit-id
+#~ msgid "Technology"
+#~ msgstr "Teknologi"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:235
+#. js-lingui-explicit-id
+#~ msgid "Technology Dependence"
+#~ msgstr "Teknologi Beroende"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:403
+#. js-lingui-explicit-id
+#~ msgid "Technology Pace"
+#~ msgstr "Teknikens Takt"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:168
+#. js-lingui-explicit-id
+#~ msgid "Time Management"
+#~ msgstr "Tidsplanering"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:298
+#. js-lingui-explicit-id
+#~ msgid "Time Value"
+#~ msgstr "Tidsvärde"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:151
+#. js-lingui-explicit-id
+#~ msgid "Values"
+#~ msgstr "Värderingar"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:245
+#. js-lingui-explicit-id
+#~ msgid "Who should be responsible when AI makes a serious mistake?"
+#~ msgstr "Vem bör hållas ansvarig när AI gör ett allvarligt misstag?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:119
+#. js-lingui-explicit-id
+#~ msgid "Will AI ever truly understand human emotions?"
+#~ msgstr "Kommer AI någonsin verkligen att förstå mänskliga känslor?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:429
+#. js-lingui-explicit-id
+#~ msgid "Will traditional jobs still exist in 20 years?"
+#~ msgstr "Kommer traditionella jobb fortfarande existera om 20 år?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:126
+#. js-lingui-explicit-id
+#~ msgid "Work"
+#~ msgstr "Arbete"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:63
+#. js-lingui-explicit-id
+#~ msgid "Work Culture"
+#~ msgstr "Arbetskultur"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:164
+#. js-lingui-explicit-id
+#~ msgid "Work Environment"
+#~ msgstr "Arbetsmiljö"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:323
+#. js-lingui-explicit-id
+#~ msgid "Work Expectations"
+#~ msgstr "Arbetsförväntningar"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:336
+#. js-lingui-explicit-id
+#~ msgid "Work Focus"
+#~ msgstr "Arbetsfokus"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:407
+#. js-lingui-explicit-id
+#~ msgid "Work Meaning"
+#~ msgstr "Arbetsbetydelse"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:214
+#. js-lingui-explicit-id
+#~ msgid "Work Motivation"
+#~ msgstr "Arbetsmotivation"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:365
+#. js-lingui-explicit-id
+#~ msgid "Work Performance"
+#~ msgstr "Arbetsprestation"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:239
+#. js-lingui-explicit-id
+#~ msgid "Work Satisfaction"
+#~ msgstr "Arbetstillfredsställelse"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:29
+#. js-lingui-explicit-id
+#~ msgid "Work-Life Balance"
+#~ msgstr "Arbetslivsbalans"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:105
+#. js-lingui-explicit-id
+#~ msgid "Workplace"
+#~ msgstr "Arbetsplats"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:252
+#. js-lingui-explicit-id
+#~ msgid "Workplace Culture"
+#~ msgstr "Arbetsplatskultur"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:189
+#. js-lingui-explicit-id
+#~ msgid "Workplace Feedback"
+#~ msgstr "Arbetsplatsåterkoppling"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:203
+#. js-lingui-explicit-id
+#~ msgid "Would you trust AI more than humans in critical situations?"
+#~ msgstr "Skulle du lita mer på AI än på människor i kritiska situationer?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:77
+#. js-lingui-explicit-id
+#~ msgid "Would you trust AI to make important life decisions for you?"
+#~ msgstr "Skulle du lita på att AI tar viktiga livsbeslut åt dig?"
+
+#: src/features/Game/Battle/BattleCard.tsx:218
+#. js-lingui-explicit-id
+#~ msgid "You have completed all the questions."
+#~ msgstr "Du har besvarat alla frågorna."
 
 #: src/features/Blog/blogData.tsx:257
 #. js-lingui-explicit-id

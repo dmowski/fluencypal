@@ -406,7 +406,7 @@ msgstr "Пра вашую мэту"
 msgid "Academic Word List"
 msgstr "Акадэмічны спіс слоў"
 
-#: src/features/Game/Battle/BattleCard.tsx:496
+#: src/features/Game/Battle/BattleCard.tsx:231
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Прыняць"
@@ -430,7 +430,7 @@ msgstr "Закрыйце сумоўе на пасаду C# Backend Developer н�
 msgid "Achieve Speaking Fluency Fast"
 msgstr "Дасягніце плавнасці маўлення хутка"
 
-#: src/features/Game/GameStatRow.tsx:283
+#: src/features/Game/GameStatRow.tsx:284
 #. js-lingui-explicit-id
 msgid "Achievements"
 msgstr "Дасягненні"
@@ -457,6 +457,11 @@ msgid "Add some info why you want a refund and we will do it."
 msgstr ""
 "Дадайце некаторую інфармацыю, чаму вы хочаце атрымаць вяртанне грошай, і мы "
 "гэта зробім."
+
+#: src/features/Game/Battle/BattleActionModal.tsx:350
+#. js-lingui-explicit-id
+msgid "Add Text Answer"
+msgstr "Дадаць тэкставы адказ"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:182
 #. js-lingui-explicit-id
@@ -533,75 +538,20 @@ msgstr ""
 msgid "After the greeting, you'll usually hear:"
 msgstr "Пасля вітання, вы звычайна чуеце:"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:328
-#. js-lingui-explicit-id
-msgid "AI and Creativity"
-msgstr "AI і творчасць"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:286
-#. js-lingui-explicit-id
-msgid "AI and Employment"
-msgstr "AI і занятасць"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:391
-#. js-lingui-explicit-id
-msgid "AI and Ethics"
-msgstr "AI і этыка"
-
 #: src/features/Blog/blogData.tsx:23
 #. js-lingui-explicit-id
 msgid "AI and identity"
 msgstr "AI і ідэнтычнасць"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:244
-#. js-lingui-explicit-id
-msgid "AI and Responsibility"
-msgstr "AI і адказнасць"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:265
-#. js-lingui-explicit-id
-msgid "AI and Trust"
-msgstr "Штучны інтэлект і давер"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:412
-#. js-lingui-explicit-id
-msgid "AI Autonomy"
-msgstr "Аўтаномія ІІ"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:307
-#. js-lingui-explicit-id
-msgid "AI Bias"
-msgstr "Схільнасць ІІ"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:160
-#. js-lingui-explicit-id
-msgid "AI Companions"
-msgstr "AI Супольнікі"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:370
-#. js-lingui-explicit-id
-msgid "AI Companionship"
-msgstr "AI Суправаджэнне"
 
 #: src/features/Landing/LandingPage.tsx:256
 #. js-lingui-explicit-id
 msgid "AI conversation"
 msgstr "Размова AI"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:223
+#: src/features/Game/Battle/BattleActionModal.tsx:242
 #. js-lingui-explicit-id
-msgid "AI Creativity"
-msgstr "AI Крэатыўнасць"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:349
-#. js-lingui-explicit-id
-msgid "AI Decision Making"
-msgstr "Прымаць рашэнні штучным інтэлектам"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:181
-#. js-lingui-explicit-id
-msgid "AI Education"
-msgstr "Адукацыя з дапамогай ШІ"
+msgid "AI Decision"
+msgstr "Рашэнне AI"
 
 #: src/features/SEO/metadata.ts:199
 #: src/features/SEO/metadata.ts:265
@@ -613,11 +563,6 @@ msgstr "Інструктар з англійскай мовы AI"
 #. js-lingui-explicit-id
 msgid "ai English tutor"
 msgstr "AI англійскі рэпетытар"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:55
-#. js-lingui-explicit-id
-msgid "AI Ethics"
-msgstr "Этыка штучнага інтэлекту"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:170
 #. js-lingui-explicit-id
@@ -649,11 +594,6 @@ msgstr "Зваротная сувязь AI, якая мае значэнне"
 msgid "AI hours left in your balance."
 msgstr "У вашым балансе засталося AI гадзін."
 
-#: src/features/Game/Battle/useBattleQuestions.ts:76
-#. js-lingui-explicit-id
-msgid "AI in Daily Life"
-msgstr "Штучны інтэлект у паўсядзённым жыцці"
-
 #: src/features/SEO/metadata.ts:304
 #. js-lingui-explicit-id
 msgid "AI Interview Coach"
@@ -675,11 +615,6 @@ msgstr "Інтэрактыўны настаўнік па мове AI"
 msgid "AI language tutor pricing"
 msgstr "Цэны на штучны інтэлект як рэпетытар з мовы"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:139
-#. js-lingui-explicit-id
-msgid "AI Regulation"
-msgstr "Рэгуляцыя штучнага інтэлекту"
-
 #: src/features/Auth/WebViewWall.tsx:173
 #. js-lingui-explicit-id
 msgid "AI speaking partner"
@@ -689,11 +624,6 @@ msgstr "Партнёр для размоў на штучным інтэлект�
 #. js-lingui-explicit-id
 msgid "AI Speaking Practice"
 msgstr "Практыка маўлення з AI"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:202
-#. js-lingui-explicit-id
-msgid "AI Trust"
-msgstr "Давер да AI"
 
 #: src/features/SEO/metadata.ts:146
 #. js-lingui-explicit-id
@@ -705,12 +635,7 @@ msgstr "Кошт AI-рэпетытара"
 msgid "AI Tutor Updates"
 msgstr "Абнаўленні AI настаўніка"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:118
-#. js-lingui-explicit-id
-msgid "AI vs Humans"
-msgstr "AI супраць людзей"
-
-#: src/features/Game/Battle/BattleCard.tsx:295
+#: src/features/Game/Battle/BattleActionModal.tsx:376
 #. js-lingui-explicit-id
 msgid "AI will evaluate answers and determine the winner."
 msgstr "AI будзе ацэньваць адказы і вызначаць пераможцу."
@@ -783,6 +708,7 @@ msgid "Almost correct"
 msgstr "Прачы папраўна"
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
+#: src/features/Game/Battle/BattleActionModal.tsx:271
 #. js-lingui-explicit-id
 msgid "Almost there!"
 msgstr "Амаль там!"
@@ -894,28 +820,6 @@ msgstr ""
 msgid "Architecture & Resiliency"
 msgstr "Архітэктура і Жываздольнасць"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:47
-#. js-lingui-explicit-id
-msgid "Are great leaders born or made?"
-msgstr "Ці нараджаюцца вялікія лідэры, ці яны ствараюцца?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:219
-#. js-lingui-explicit-id
-msgid "Are people optimistic or pessimistic about the future, and why?"
-msgstr "Ці аптымістычна або песімістычна людзі глядзяць на будучыню, і чаму?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:341
-#. js-lingui-explicit-id
-msgid "Are people responsible for their circumstances?"
-msgstr "Ці людзі нясуць адказнасць за свае абставіны?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:144
-#. js-lingui-explicit-id
-msgid "Are productivity tools actually making us more productive?"
-msgstr ""
-"Ці сапраўды інструменты павышэння прадукцыйнасці робяць нас больш "
-"прадуктыўнымі?"
-
 #: src/features/Landing/Price/PricePage.tsx:82
 #. js-lingui-explicit-id
 msgid "Are there any hidden fees?"
@@ -932,7 +836,7 @@ msgstr "Вы ўпэўнены, што хочаце выдаліць свой р�
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "Вы ўпэўнены, што хочаце выдаліць сваю мэту? Гэта дзеянне нельга адмяніць."
 
-#: src/features/Game/Battle/BattleCard.tsx:545
+#: src/features/Game/Battle/BattleCard.tsx:292
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Вы ўпэўнены, што хочаце адхіліць гэтую бітву?"
@@ -950,16 +854,6 @@ msgid ""
 msgstr ""
 "Афармляйце маштабуючыя рашэнні, аптымізацыю прадукцыйнасці і ўзоры "
 "архітэктуры фронтэнда."
-
-#: src/features/Game/Battle/useBattleQuestions.ts:15
-#. js-lingui-explicit-id
-msgid "Artificial Intelligence"
-msgstr "Штучны інтэлект"
-
-#: src/features/Game/GameStatRow.tsx:367
-#. js-lingui-explicit-id
-msgid "Ask for debate"
-msgstr "Запытай пра дэбат"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:26
 #: src/features/Case/data/backendCSharp/techData.ts:13
@@ -1332,31 +1226,6 @@ msgstr "Рэжым выкліку"
 msgid "Calling Customer Support"
 msgstr "Выклік Службы падтрымкі кліентаў"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:308
-#. js-lingui-explicit-id
-msgid "Can AI ever be completely unbiased?"
-msgstr "Ці можа штучны інтэлект калі-небудзь быць цалкам неаб'ектыўным?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:161
-#. js-lingui-explicit-id
-msgid "Can AI replace human companionship in the future?"
-msgstr "Ці можа штучны інтэлект замяніць чалавечае таварыства ў будучыні?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:224
-#. js-lingui-explicit-id
-msgid "Can AI-generated content be considered original creativity?"
-msgstr "Ці можна лічыць AI-створаны змест арыгінальнай творчасцю?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:379
-#. js-lingui-explicit-id
-msgid "Can constant self-improvement become harmful?"
-msgstr "Ці можа пастаяннае самаўдасканаленне стаць шкодным?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:93
-#. js-lingui-explicit-id
-msgid "Can creativity be taught, or is it natural talent?"
-msgstr "Ці можна навучыць творчасці, ці гэта натуральны талент?"
-
 #: src/features/Landing/LandingPage.tsx:77
 #. js-lingui-explicit-id
 msgid "Can FluencyPal create a personal practice plan for me?"
@@ -1420,72 +1289,16 @@ msgstr ""
 msgid "Card verified. Loading..."
 msgstr "Карта праверана. Загрузка..."
 
-#: src/features/Game/Battle/useBattleQuestions.ts:38
-#. js-lingui-explicit-id
-msgid "Career"
-msgstr "Кар'ера"
-
 #: src/features/SEO/metadata.ts:97
 #: src/features/SEO/metadata.ts:308
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "Прасоўванне па Кар'еры"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:206
-#: src/features/Game/Battle/useBattleQuestions.ts:311
-#. js-lingui-explicit-id
-msgid "Career Advice"
-msgstr "Кар'ерныя парады"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
 #. js-lingui-explicit-id
 msgid "Career benefit:"
 msgstr "Кар'ерны выгад:"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:97
-#. js-lingui-explicit-id
-msgid "Career Choices"
-msgstr "Варыянты Кар'еры"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:147
-#. js-lingui-explicit-id
-msgid "Career Growth"
-msgstr "Рост кар'еры"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:353
-#. js-lingui-explicit-id
-msgid "Career Identity"
-msgstr "Кар'ерная ідэнтычнасць"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:374
-#. js-lingui-explicit-id
-msgid "Career Planning"
-msgstr "Планаванне кар'еры"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:269
-#. js-lingui-explicit-id
-msgid "Career Purpose"
-msgstr "Мэта кар'еры"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:227
-#. js-lingui-explicit-id
-msgid "Career Risk"
-msgstr "Кар'ерная рызыка"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:416
-#. js-lingui-explicit-id
-msgid "Career Satisfaction"
-msgstr "Кар'ернае задавальненне"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:290
-#. js-lingui-explicit-id
-msgid "Career Stability"
-msgstr "Кар'ерная стабільнасць"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:395
-#. js-lingui-explicit-id
-msgid "Career Success"
-msgstr "Кар'ерны поспех"
 
 #: src/features/Game/GamePage.tsx:181
 #. js-lingui-explicit-id
@@ -1621,7 +1434,8 @@ msgstr ""
 "Чыстая структура для праектавання сістэмы. Я нарэшце растлумачыў кампрамісы "
 "без залішніх падрабязнасцяў."
 
-#: src/features/Game/Battle/BattleCard.tsx:209
+#: src/features/Game/Battle/BattleActionModal.tsx:262
+#: src/features/Game/Battle/BattleCard.tsx:263
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1660,11 +1474,6 @@ msgstr "Камунікуйце вопыт з упэўненасцю"
 #. js-lingui-explicit-id
 msgid "Communicate system design trade-offs"
 msgstr "Камунікуйце кампрамісы ў дызайне сістэмы"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:71
-#. js-lingui-explicit-id
-msgid "Communication"
-msgstr "Камунікацыя"
 
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:30
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:30
@@ -2039,22 +1848,6 @@ msgstr "Стварыце свой уласны варыянт ролевай г�
 msgid "Create Your Own Scenario"
 msgstr "Стварыце свой уласны сцэнарый"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:92
-#: src/features/Game/Battle/useBattleQuestions.ts:172
-#. js-lingui-explicit-id
-msgid "Creativity"
-msgstr "Крэатыўнасць"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:386
-#. js-lingui-explicit-id
-msgid "Creativity Pressure"
-msgstr "Ціск творчасці"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:302
-#. js-lingui-explicit-id
-msgid "Creativity vs Efficiency"
-msgstr "Крэатыўнасць супраць эфектыўнасці"
-
 #: src/features/PayWall/CardValidatorQuiz.tsx:57
 #. js-lingui-explicit-id
 msgid "Credit Card Already Confirmed"
@@ -2178,22 +1971,17 @@ msgstr "Дадзеныя і транзакцыі"
 msgid "Databases & Transactions"
 msgstr "Базы дадзеных і транзакцыі"
 
-#: src/features/Game/Battle/BattleCard.tsx:409
+#: src/features/Game/Battle/BattleCard.tsx:120
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Дэбаты"
 
-#: src/features/Game/Battle/BattleCard.tsx:217
-#. js-lingui-explicit-id
-msgid "Debate completed!"
-msgstr "Дэбаты завершаны!"
-
-#: src/features/Game/Battle/BattleCard.tsx:115
+#: src/features/Game/Battle/BattleActionModal.tsx:117
 #. js-lingui-explicit-id
 msgid "Debate ended!"
 msgstr "Дэбаты завершыліся!"
 
-#: src/features/Game/GameStatRow.tsx:142
+#: src/features/Game/GameStatRow.tsx:143
 #. js-lingui-explicit-id
 msgid "Debate Request"
 msgstr "Запыт на дэбаты"
@@ -2203,20 +1991,10 @@ msgstr "Запыт на дэбаты"
 msgid "Debate Request Sent!"
 msgstr "Запыт на дэбаты адпраўлены!"
 
-#: src/features/Game/Battle/BattleCard.tsx:277
+#: src/features/Game/Battle/BattleActionModal.tsx:358
 #. js-lingui-explicit-id
 msgid "Debate started!"
 msgstr "Дэбаты пачаліся!"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:130
-#. js-lingui-explicit-id
-msgid "Decision Making"
-msgstr "Прыняцце рашэнняў"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:248
-#. js-lingui-explicit-id
-msgid "Decision Regret"
-msgstr "Пашкадаванне рашэння"
 
 #: src/features/Header/NeedHelpModal.tsx:195
 #. js-lingui-explicit-id
@@ -2407,16 +2185,6 @@ msgstr ""
 msgid "Diagnosis"
 msgstr "Дыягноз"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:273
-#. js-lingui-explicit-id
-msgid "Digital Communication"
-msgstr "Лічбавая камунікацыя"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:361
-#. js-lingui-explicit-id
-msgid "Digital Detox"
-msgstr "Digital Detox"
-
 #: src/features/Landing/Price/PricePage.tsx:339
 #. js-lingui-explicit-id
 msgid "Discounted AI Usage"
@@ -2438,7 +2206,7 @@ msgstr ""
 "Адкрыйце для сябе эфектыўныя шкодныя навыкі, каб паляпшыць вашыя навыкі "
 "бізнес-англійскай хутка і без зусім."
 
-#: src/features/Game/GameStatRow.tsx:143
+#: src/features/Game/GameStatRow.tsx:144
 #. js-lingui-explicit-id
 msgid "Discuss and improve your skills together!"
 msgstr "Абмяркоўвайце і ўдасканальвайце свае навыкі разам!"
@@ -2568,11 +2336,6 @@ msgstr ""
 "Спілкуючыся натуральна, вы адшліфоўваеце свае навыкі камунікацыі ў "
 "прафесійным медыцынскім асяроддзі."
 
-#: src/features/Game/Battle/useBattleQuestions.ts:278
-#. js-lingui-explicit-id
-msgid "Do grades motivate students or limit their potential?"
-msgstr "Ці матывуюць адзнакі студэнтаў або абмяжоўваюць іх патэнцыял?"
-
 #: src/features/Landing/Price/PricePage.tsx:49
 #. js-lingui-explicit-id
 msgid "Do I need to enter a credit card to start?"
@@ -2583,26 +2346,6 @@ msgstr "Ці трэба мне ўводзіць крэдытную карту, �
 #. js-lingui-explicit-id
 msgid "Do I need to schedule time with a real interviewer?"
 msgstr "Ці трэба мне запісацца на сустрэчу з сапраўдным інтэрв'юерам?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:173
-#. js-lingui-explicit-id
-msgid "Do limitations help or hurt creativity?"
-msgstr "Ці абмяжаванні дапамагаюць ці шкодзяць творчасці?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:324
-#. js-lingui-explicit-id
-msgid "Do modern workers expect too much from their jobs?"
-msgstr "Ці чакаюць сучасныя работнікі занадта шмат ад сваіх прац?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:320
-#. js-lingui-explicit-id
-msgid "Do online courses provide the same value as in-person learning?"
-msgstr "Ці даюць анлайн-курсы такую ж каштоўнасць, як і навучанне ў аўдыторыі?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:102
-#. js-lingui-explicit-id
-msgid "Do smartphones improve or damage our attention span?"
-msgstr "Ці паляпшаюць смартфоны ўвагу або шкодзяць ёй?"
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:20
 #. js-lingui-explicit-id
@@ -2619,66 +2362,6 @@ msgstr "Ці ёсць у вас якія-небудзь планы падаро�
 #. js-lingui-explicit-id
 msgid "Doctor"
 msgstr "Доктар"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:194
-#. js-lingui-explicit-id
-msgid "Does automation create more jobs than it destroys?"
-msgstr "Ці стварае аўтаматызацыя больш працоўных месцаў, чым знішчае?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:316
-#. js-lingui-explicit-id
-msgid "Does comparing yourself to others help or harm motivation?"
-msgstr "Ці дапамагае ці шкодзіць параўнанне сябе з іншымі матывацыі?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:295
-#. js-lingui-explicit-id
-msgid "Does discomfort always lead to personal growth?"
-msgstr "Ці заўсёды дыскамфорт вядзе да асабістага росту?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:333
-#. js-lingui-explicit-id
-msgid "Does fear protect us or limit us more?"
-msgstr "Ці абараняе нас страх альбо больш абмяжоўвае нас?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:257
-#. js-lingui-explicit-id
-msgid "Does financial independence equal personal freedom?"
-msgstr "Ці азначае фінансавая незалежнасць асабістую свабоду?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:110
-#. js-lingui-explicit-id
-msgid "Does innovation come more from freedom or pressure?"
-msgstr "Ці прыходзіць інавацыя больш з свабоды або пад ціскам?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:135
-#. js-lingui-explicit-id
-msgid "Does modern life make people more anxious than before?"
-msgstr "Ці робіць сучаснае жыццё людзей больш трывожнымі, чым раней?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:43
-#. js-lingui-explicit-id
-msgid "Does money bring freedom, happiness, or neither?"
-msgstr "Ці прыносіць грошы свабоду, шчасце ці ні тое, ні іншае?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:366
-#. js-lingui-explicit-id
-msgid "Does pressure improve or damage performance?"
-msgstr "Ці паляпшае ці пагаршае ціск прадукцыйнасць?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:387
-#. js-lingui-explicit-id
-msgid "Does pressure kill creativity or enhance it?"
-msgstr "Ці забівае ціск творчасць альбо ўзмацняе яе?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:26
-#. js-lingui-explicit-id
-msgid "Does social media do more harm than good for society?"
-msgstr "Ці наносіць сацыяльныя медыя больш шкоды, чым карысці для грамадства?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:35
-#. js-lingui-explicit-id
-msgid "Does technology make people more connected or more lonely?"
-msgstr "Ці робіць тэхналогія людзей больш звязанымі або больш адзінокімі?"
 
 #: src/features/RolePlay/rolePlayData.tsx:394
 #. js-lingui-explicit-id
@@ -2733,23 +2416,6 @@ msgstr "Рэдагаваць паведамленне"
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "адрэдагаваны"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:21
-#: src/features/Game/Battle/useBattleQuestions.ts:59
-#: src/features/Game/Battle/useBattleQuestions.ts:122
-#. js-lingui-explicit-id
-msgid "Education"
-msgstr "Адукацыя"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:277
-#. js-lingui-explicit-id
-msgid "Education Pressure"
-msgstr "Ціск на адукацыю"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:210
-#. js-lingui-explicit-id
-msgid "Education System"
-msgstr "Сістэма Адукацыі"
 
 #: src/features/Case/data/backendCSharp/techData.ts:18
 #. js-lingui-explicit-id
@@ -3398,11 +3064,6 @@ msgstr ""
 msgid "Failed to send feedback. Please try again later."
 msgstr "Не атрымалася адправіць водгук. Калі ласка, паспрабуйце яшчэ раз пазней."
 
-#: src/features/Game/Battle/useBattleQuestions.ts:50
-#. js-lingui-explicit-id
-msgid "Failure"
-msgstr "Няспраўнасць"
-
 #: src/features/Case/data/backendCSharp/faqSection.ts:10
 #: src/features/Case/data/frontend-junior/faqSection.ts:10
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
@@ -3700,11 +3361,6 @@ msgstr "Фреймворкі і бібліятэкі"
 msgid "Free Conversation"
 msgstr "Бясплатная размова"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:382
-#. js-lingui-explicit-id
-msgid "Freedom vs Security"
-msgstr "Свабода супраць Бяспекі"
-
 #: src/features/Goal/GoalQuestions.tsx:286
 #. js-lingui-explicit-id
 msgid "French"
@@ -3782,16 +3438,6 @@ msgstr "Поўны доступ да штучнага інтэлекту трэ�
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Поўны доступ да AI-тутара"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:218
-#. js-lingui-explicit-id
-msgid "Future"
-msgstr "Будучыня"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:428
-#. js-lingui-explicit-id
-msgid "Future of Work"
-msgstr "Будучыня працы"
 
 #: src/features/Navigation/NavigationBar.tsx:69
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -4229,20 +3875,10 @@ msgstr "Кіруйце канкурэнцыяй упэўнена"
 msgid "Happy April 1st!"
 msgstr "З Днём 1 красавіка!"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:274
-#. js-lingui-explicit-id
-msgid "Has digital communication improved or weakened human relationships?"
-msgstr "Ці палепшыла ці аслабіла лічбавая камунікацыя чалавечыя ўзаемаадносіны?"
-
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
 #. js-lingui-explicit-id
 msgid "Have fun!"
 msgstr "Развяжыся!"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:236
-#. js-lingui-explicit-id
-msgid "Have people become too dependent on technology?"
-msgstr "Ці сталі людзі занадта залежнымі ад тэхналогій?"
 
 #: src/features/RolePlay/rolePlayData.tsx:366
 #: src/features/RolePlay/rolePlayData.tsx:553
@@ -4434,11 +4070,6 @@ msgstr "Як гэта працуе:"
 #. js-lingui-explicit-id
 msgid "How long will my hours last?"
 msgstr "Як доўга будуць дзейнічаць мае гадзіны?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:68
-#. js-lingui-explicit-id
-msgid "How should success be measured: money, impact, or happiness?"
-msgstr "Як варта вымяраць поспех: грашыма, уплывам альбо шчасцем?"
 
 #: src/features/Blog/blogData.tsx:257
 #. js-lingui-explicit-id
@@ -5622,16 +5253,6 @@ msgstr "План вучэння інданезійскай мовы"
 msgid "Initiate brain connection"
 msgstr "Ініцыялізаваць злучэнне з мазгом"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:109
-#. js-lingui-explicit-id
-msgid "Innovation"
-msgstr "Інавацыі"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:344
-#. js-lingui-explicit-id
-msgid "Innovation Speed"
-msgstr "Хуткасць Інавацый"
-
 #: src/features/Dashboard/BrainCard.tsx:397
 #. js-lingui-explicit-id
 msgid "Install complete"
@@ -5770,251 +5391,20 @@ msgstr "Увод: Нефармальная размова з інтэрв'юер
 msgid "Invite Link Sent to:"
 msgstr "Спасылка-запрашэнне адпраўлена:"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:165
+#: src/features/Game/GameStatRow.tsx:368
 #. js-lingui-explicit-id
-msgid "Is a competitive workplace better than a collaborative one?"
-msgstr "Ці з'яўляецца канкурэнтнае працоўнае месца лепшым, чым калабаратыўнае?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:22
-#. js-lingui-explicit-id
-msgid "Is a university degree still necessary for career success today?"
-msgstr ""
-"Ці з'яўляецца ўніверсітэцкая ступень усё яшчэ неабходнай для поспеху ў "
-"кар'еры сёння?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:417
-#. js-lingui-explicit-id
-msgid "Is career satisfaction a personal responsibility or a company’s role?"
-msgstr ""
-"Ці з'яўляецца задаволенасць кар'ерай асабістай адказнасцю або роляй "
-"кампаніі?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:148
-#. js-lingui-explicit-id
-msgid "Is changing jobs frequently good or bad for a career?"
-msgstr "Ці добра часта змяняць працу для кар'еры?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:114
-#. js-lingui-explicit-id
-msgid "Is comfort the enemy of growth?"
-msgstr "Ці з'яўляецца камфорт ворагам росту?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:253
-#. js-lingui-explicit-id
-msgid "Is company culture more important than salary?"
-msgstr "Ці з’яўляецца культура кампаніі больш важнай, чым зарплата?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:282
-#. js-lingui-explicit-id
-msgid "Is confidence more important than competence?"
-msgstr "Ці больш важная ўпэўненасць, чым кампетэнтнасць?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:358
-#. js-lingui-explicit-id
-msgid "Is curiosity more powerful than discipline for learning?"
-msgstr "Ці з'яўляецца цікаўнасць больш магутнай за дысцыпліну для навучання?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:337
-#. js-lingui-explicit-id
-msgid "Is deep focus more valuable than being constantly available?"
-msgstr "Ці больш каштоўна глыбокае засяроджанне, чым пастаянная даступнасць?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:190
-#. js-lingui-explicit-id
-msgid "Is direct feedback always better than polite feedback?"
-msgstr "Ці заўсёды прамая зваротная сувязь лепшая за ветлівую зваротную сувязь?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:186
-#. js-lingui-explicit-id
-msgid "Is external pressure useful for motivation?"
-msgstr "Ці з'яўляецца знешні ціск карысным для матывацыі?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:51
-#. js-lingui-explicit-id
-msgid "Is failure a necessary part of success?"
-msgstr "Ці з'яўляецца няўдача неабходнай часткай поспеху?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:345
-#. js-lingui-explicit-id
-msgid "Is fast innovation more dangerous than slow progress?"
-msgstr "Ці з'яўляецца хуткая інавацыя больш небяспечнай, чым павольны прагрэс?"
+msgid "Invite to a debate"
+msgstr "Запрашэнне на дэбаты"
 
 #: src/features/Landing/LandingPage.tsx:127
 #. js-lingui-explicit-id
 msgid "Is FluencyPal a replacement for a human teacher?"
 msgstr "Ці з'яўляецца FluencyPal заменай чалавечаму настаўніку?"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:207
-#. js-lingui-explicit-id
-msgid "Is following advice from others helpful or limiting?"
-msgstr "Ці з'яўляецца прытрымліванне парадам іншых карысным або абмяжоўваючым?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:312
-#. js-lingui-explicit-id
-msgid "Is following your passion good career advice?"
-msgstr "Ці з'яўляецца след за сваёй страсцю добрай кар'ернай парадай?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:371
-#. js-lingui-explicit-id
-msgid "Is forming emotional bonds with AI healthy or harmful?"
-msgstr ""
-"Ці з'яўляецца фарміраванне эмацыйных сувязей з штучным інтэлектам здаровым "
-"або шкодным?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:383
-#. js-lingui-explicit-id
-msgid "Is freedom more important than security?"
-msgstr "Ці свабода больш важная, чым бяспека?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:177
-#. js-lingui-explicit-id
-msgid "Is having a clear life plan important?"
-msgstr "Ці важны ясны жыццёвы план?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:270
-#. js-lingui-explicit-id
-msgid "Is having a sense of purpose at work essential?"
-msgstr "Ці мае значэнне мэтанакіраванасць у працы?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:72
-#. js-lingui-explicit-id
-msgid "Is honest communication always the best policy?"
-msgstr "Ці заўсёды шчырая камунікацыя з'яўляецца найлепшай палітыкай?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:421
-#. js-lingui-explicit-id
-msgid "Is information overload making learning harder?"
-msgstr "Ці робіць перагрузка інфармацыяй навучанне больш цяжкім?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:98
-#. js-lingui-explicit-id
-msgid "Is it better to choose a job you love or one that pays well?"
-msgstr "Ці лепш выбраць работу, якую любіш, або тую, што добра аплочваецца?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:131
-#. js-lingui-explicit-id
-msgid "Is it better to make fast decisions or well-analyzed ones?"
-msgstr "Ці лепш прымаць хуткія рашэнні ці добра прааналізаваныя?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:39
-#. js-lingui-explicit-id
-msgid "Is it better to specialize deeply in one skill or stay a generalist?"
-msgstr ""
-"Ці лепш спецыялізавацца глыбока ў адной навыку або заставацца агульным "
-"спецыялістам?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:249
-#. js-lingui-explicit-id
-msgid "Is it worse to make a wrong decision or make no decision at all?"
-msgstr "Ці горш зрабіць няправільны выбар, ці зусім не прымаць рашэння?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:127
-#. js-lingui-explicit-id
-msgid "Is job security more important than job satisfaction?"
-msgstr "Ці больш важная бяспека працы, чым задавальненне ад працы?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:156
-#. js-lingui-explicit-id
-msgid "Is learning by doing more effective than learning by reading?"
-msgstr ""
-"Ці з'яўляецца навучанне праз дзеянні больш эфектыўным, чым навучанне праз "
-"чытанне?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:232
-#. js-lingui-explicit-id
-msgid "Is learning fast better than learning deeply?"
-msgstr "Ці з'яўляецца хуткае навучанне лепшым, чым глыбокае навучанне?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:261
-#. js-lingui-explicit-id
-msgid "Is learning from mistakes more effective than learning from success?"
-msgstr "Ці больш эфектыўна вучыцца на памылках, чым на поспехах?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:375
-#. js-lingui-explicit-id
-msgid "Is long-term career planning realistic today?"
-msgstr "Ці рэалістычны доўгатэрміновае планаванне кар'еры сёння?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:408
-#. js-lingui-explicit-id
-msgid "Is meaningful work more important than high pay?"
-msgstr "Ці мае значэнне праца больш важная, чым высокая зарплата?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:81
-#. js-lingui-explicit-id
-msgid "Is motivation more important than discipline?"
-msgstr "Ці з'яўляецца матывацыя больш важнай, чым дысцыпліна?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:169
-#. js-lingui-explicit-id
-msgid "Is multitasking a useful skill or a myth?"
-msgstr "Ці з'яўляецца многазадачнасць карысным навыкам ці міфам?"
-
 #: src/features/Landing/LandingPage.tsx:148
 #. js-lingui-explicit-id
 msgid "Is my data used to train AI models?"
 msgstr "Ці выкарыстоўваюцца мае дадзеныя для навучання AI-мадэляў?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:215
-#. js-lingui-explicit-id
-msgid "Is passion necessary to do great work?"
-msgstr "Ці неабходна запал, каб выконваць вялікую працу?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:85
-#. js-lingui-explicit-id
-msgid "Is personal privacy still possible in the digital age?"
-msgstr "Ці магчымае асабістае прыватнае жыццё ў лічбавую эпоху?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:362
-#. js-lingui-explicit-id
-msgid "Is regular digital detox necessary in modern life?"
-msgstr "Ці з'яўляецца рэгулярны лічбавы дэтокс неабходным у сучасным жыцці?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:10
-#. js-lingui-explicit-id
-msgid ""
-"Is remote work better for productivity than working in an office? Why or "
-"why not?"
-msgstr ""
-"Ці лепшая аддаленая работа для прадуктыўнасці, чым праца ў офісе? Чаму ці "
-"чаму не?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:198
-#. js-lingui-explicit-id
-msgid "Is self-discipline more important than talent?"
-msgstr "Ці самадысцыпліна важнейшая за талент?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:89
-#. js-lingui-explicit-id
-msgid "Is self-learning more effective than traditional education?"
-msgstr "Ці з'яўляецца самавучанне больш эфектыўным, чым традыцыйная адукацыя?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:291
-#. js-lingui-explicit-id
-msgid "Is stability overrated in modern careers?"
-msgstr "Ці пераацэнена стабільнасць у сучасных кар'ерах?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:396
-#. js-lingui-explicit-id
-msgid "Is success mostly a result of effort or circumstances?"
-msgstr "Ці ў асноўным поспех з'яўляецца вынікам намаганняў або абставінаў?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:228
-#. js-lingui-explicit-id
-msgid "Is taking career risks necessary for long-term success?"
-msgstr ""
-"Ці з'яўляецца прыняцце рызык у кар'еры неабходным для доўгатэрміновага "
-"поспеху?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:404
-#. js-lingui-explicit-id
-msgid "Is technology developing faster than society can adapt?"
-msgstr "Ці развіваецца тэхналогія хутчэй, чым грамадства можа прыстасавацца?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:211
-#. js-lingui-explicit-id
-msgid "Is the current education system preparing people for real life?"
-msgstr "Ці рыхтуе сучасная адукацыйная сістэма людзей да рэальнага жыцця?"
 
 #: src/features/Landing/Price/PricePage.tsx:54
 #. js-lingui-explicit-id
@@ -6031,18 +5421,6 @@ msgstr "Ці ёсць бясплатны пробны перыяд?"
 #. js-lingui-explicit-id
 msgid "Is there content on resiliency and observability?"
 msgstr "Ці ёсць змест пра ўстойлівасць і назіральнасць?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:299
-#. js-lingui-explicit-id
-msgid "Is time more valuable than money?"
-msgstr "Ці больш каштоўны час, чым грошы?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:64
-#. js-lingui-explicit-id
-msgid "Is working long hours a sign of ambition or poor time management?"
-msgstr ""
-"Ці з'яўляецца праца на працяглыя гадзіны прыкметай амбіцыйнасці або "
-"дрэннага кіравання часам?"
 
 #: src/features/Case/data/backendCSharp/coreData.ts:22
 #: src/features/Case/data/frontend-junior/coreData.ts:24
@@ -6296,11 +5674,6 @@ msgstr "Запусціце сваю кар'еру ў фронтэнд-распр
 msgid "Lazy Loading"
 msgstr "Лянівое Загружэнне"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:46
-#. js-lingui-explicit-id
-msgid "Leadership"
-msgstr "Лідэрства"
-
 #: src/features/Case/data/frontend-senior/painSection.ts:35
 #. js-lingui-explicit-id
 msgid "Leadership and ownership questions feel **vague and subjective**"
@@ -6367,50 +5740,15 @@ msgstr "Вывучайце апісваць сімптомы і эфектыўн
 msgid "Learn useful words so you never go blank mid-sentence"
 msgstr "Вучыце карысныя словы, каб вы ніколі не замаўчалі на паўслове"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:88
-#. js-lingui-explicit-id
-msgid "Learning"
-msgstr "Вучэнне"
-
 #: src/features/SEO/metadata.ts:223
 #. js-lingui-explicit-id
 msgid "Learning Blog"
 msgstr "Блог аб навучанні"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:399
-#. js-lingui-explicit-id
-msgid "Learning Failure"
-msgstr "Няўдача ў навучанні"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:155
-#. js-lingui-explicit-id
-msgid "Learning Habits"
-msgstr "Звычкі навучання"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:260
-#. js-lingui-explicit-id
-msgid "Learning Methods"
-msgstr "Методы навучання"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:357
-#. js-lingui-explicit-id
-msgid "Learning Motivation"
-msgstr "Матывацыя для навучання"
-
 #: src/features/Dashboard/PlanDashboardCards.tsx:325
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "План навучання"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:231
-#. js-lingui-explicit-id
-msgid "Learning Speed"
-msgstr "Хуткасць навучання"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:319
-#. js-lingui-explicit-id
-msgid "Learning Technology"
-msgstr "Тэхналогіі навучання"
 
 #: src/features/Header/ContactMessageModal.tsx:98
 #: src/features/Settings/MyProfile.tsx:235
@@ -6470,7 +5808,7 @@ msgstr "Давайце вырашым, з якой хуткасцю мы буд�
 msgid "Let's go"
 msgstr "Хадзім"
 
-#: src/features/Game/Battle/BattleCard.tsx:278
+#: src/features/Game/Battle/BattleActionModal.tsx:359
 #. js-lingui-explicit-id
 msgid "Let's see who has the best arguments."
 msgstr "Давай паглядзім, у каго лепшыя аргументы."
@@ -6760,20 +6098,10 @@ msgstr "Пытанні для імітацыі інтэрв'ю"
 msgid "Mock Interviews"
 msgstr "Інтэрв’ю па мадэлі "
 
-#: src/features/Game/Battle/useBattleQuestions.ts:420
-#. js-lingui-explicit-id
-msgid "Modern Learning"
-msgstr "Сучаснае Навучанне"
-
 #: src/features/Blog/blogData.tsx:26
 #. js-lingui-explicit-id
 msgid "modern literature"
 msgstr "сучасная літаратура"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:42
-#. js-lingui-explicit-id
-msgid "Money"
-msgstr "Грошы"
 
 #: src/features/Landing/Price/PricePage.tsx:255
 #: src/features/Usage/SubscriptionPaymentModal.tsx:727
@@ -6815,12 +6143,6 @@ msgid ""
 msgstr ""
 "Большасць інтэрв'ю ўключае класічныя пытанні пра \"сілы і слабості\". "
 "Асабліва важна гэта добра апрацоўваць на англійскай мове."
-
-#: src/features/Game/Battle/useBattleQuestions.ts:80
-#: src/features/Game/Battle/useBattleQuestions.ts:185
-#. js-lingui-explicit-id
-msgid "Motivation"
-msgstr "Матывацыя"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:141
 #: src/features/Goal/Quiz/QuizPage2.tsx:182
@@ -6956,7 +6278,7 @@ msgstr "Новыя словы:"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/Battle/BattleCard.tsx:279
+#: src/features/Game/Battle/BattleActionModal.tsx:360
 #: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:121
 #: src/features/Goal/GoalQuestions.tsx:503
@@ -7051,7 +6373,7 @@ msgstr "Без плацяжоў..."
 msgid "No Projections Available"
 msgstr "Праекцыі недаступныя"
 
-#: src/features/Game/Battle/BattleCard.tsx:203
+#: src/features/Game/Battle/BattleActionModal.tsx:255
 #. js-lingui-explicit-id
 msgid "No reason provided."
 msgstr "Прычына не прадастаўлена."
@@ -7153,6 +6475,11 @@ msgstr "не апублікавана"
 #. js-lingui-explicit-id
 msgid "Not running inside Telegram App"
 msgstr "Не запушчана ў дадатку Telegram"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:166
+#. js-lingui-explicit-id
+msgid "Not that time"
+msgstr "Не ў гэты раз"
 
 #: src/features/Conversation/ConversationError.tsx:41
 #. js-lingui-explicit-id
@@ -7270,7 +6597,7 @@ msgid "Open plan"
 msgstr "Адкрыты план"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
-#: src/features/Game/Battle/BattleCard.tsx:518
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Адкрыць вынікі"
@@ -7442,42 +6769,11 @@ msgstr "Параметры эфектыўнасці"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "Прадукцыйнасць, устойлівасць і архітэктурныя ўзоры"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:197
-#. js-lingui-explicit-id
-msgid "Personal Development"
-msgstr "Асабістае Развіццё"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:256
-#. js-lingui-explicit-id
-msgid "Personal Freedom"
-msgstr "Асабістая свабода"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:176
-#. js-lingui-explicit-id
-msgid "Personal Goals"
-msgstr "Асабістыя мэты"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:113
-#: src/features/Game/Battle/useBattleQuestions.ts:294
-#. js-lingui-explicit-id
-msgid "Personal Growth"
-msgstr "Асабісты рост"
-
 #: src/features/Landing/LandingPage.tsx:334
 #: src/features/Landing/PlanLandingBlock.tsx:429
 #. js-lingui-explicit-id
 msgid "Personal Plan"
 msgstr "Асабісты план"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:340
-#. js-lingui-explicit-id
-msgid "Personal Responsibility"
-msgstr "Асабістая адказнасць"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:424
-#. js-lingui-explicit-id
-msgid "Personal Values"
-msgstr "Асабістыя каштоўнасці"
 
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:28
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:28
@@ -7584,7 +6880,7 @@ msgstr "Калі ласка, націсніце на меню ⋮ і выбер�
 msgid "Please wait while we process your payment."
 msgstr "Калі ласка, пачакайце, пакуль мы апрацоўваем ваш плацёж."
 
-#: src/features/Game/GameStatRow.tsx:271
+#: src/features/Game/GameStatRow.tsx:272
 #. js-lingui-explicit-id
 msgid "Points"
 msgstr "Ачкі"
@@ -7609,7 +6905,7 @@ msgstr "Партугальская"
 msgid "Portuguese Learning Plan"
 msgstr "План вучэбы партугальскай мовы"
 
-#: src/features/Game/GameStatRow.tsx:254
+#: src/features/Game/GameStatRow.tsx:255
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "Пазіцыя"
@@ -8015,11 +7311,6 @@ msgstr "Цана за адзін гадзіну AI:"
 msgid "Priority support"
 msgstr "Прыярытэтная падтрымка"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:84
-#. js-lingui-explicit-id
-msgid "Privacy"
-msgstr "Прыватнасць"
-
 #: src/features/Usage/PaymentModal.tsx:365
 #. js-lingui-explicit-id
 msgid "privacy policy"
@@ -8045,6 +7336,11 @@ msgstr "Палітыка прыватнасці"
 #. js-lingui-explicit-id
 msgid "Problem Solving"
 msgstr "Рашэнне праблем"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:271
+#. js-lingui-explicit-id
+msgid "Processing answers..."
+msgstr "Апрацоўка адказаў..."
 
 #: src/features/Dashboard/BrainCard.tsx:144
 #. js-lingui-explicit-id
@@ -8072,11 +7368,6 @@ msgstr "Апрацоўка..."
 #. js-lingui-explicit-id
 msgid "Product"
 msgstr "Прадукт"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:143
-#. js-lingui-explicit-id
-msgid "Productivity"
-msgstr "Прадуктыўнасць"
 
 #: src/features/RolePlay/rolePlayData.tsx:141
 #: src/features/RolePlay/rolePlayData.tsx:522
@@ -8493,15 +7784,10 @@ msgstr "Павязаныя сцэнары"
 msgid "Reload page"
 msgstr "Перазагрузіць старонку"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:9
+#: src/features/Game/Battle/BattleCard.tsx:301
 #. js-lingui-explicit-id
-msgid "Remote Work"
-msgstr "Дыстанцыйная работа"
-
-#: src/features/Game/Battle/BattleCard.tsx:554
-#. js-lingui-explicit-id
-msgid "Remove debate"
-msgstr "Выдаліць дэбаты"
+msgid "Remove"
+msgstr "Выдаліць"
 
 #: src/features/Case/quiz/InterviewQuizPage.tsx:236
 #. js-lingui-explicit-id
@@ -8562,11 +7848,6 @@ msgstr "Вяртанне"
 #. js-lingui-explicit-id
 msgid "Returning an Item to a Store"
 msgstr "Вяртанне прадукту ў краму"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:332
-#. js-lingui-explicit-id
-msgid "Risk and Fear"
-msgstr "Рызыка і Страх"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
 #. js-lingui-explicit-id
@@ -8748,11 +8029,6 @@ msgstr "Выберыце свой аватар у гульні"
 msgid "Select your preferred language"
 msgstr "Выберыце ваш пераважны мову"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:378
-#. js-lingui-explicit-id
-msgid "Self-Improvement"
-msgstr "Самаўдасканаленне"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
 #. js-lingui-explicit-id
 msgid "Self-Introduction: Talking About Yourself"
@@ -8794,7 +8070,7 @@ msgstr "Адправіць электронную пошту яшчэ раз"
 msgid "Send me sign-in link"
 msgstr "Дашліце мне спасылку для ўваходу"
 
-#: src/features/Game/GameStatRow.tsx:145
+#: src/features/Game/GameStatRow.tsx:146
 #. js-lingui-explicit-id
 msgid "Send Request"
 msgstr "Адправіць запыт"
@@ -8905,126 +8181,17 @@ msgstr ""
 msgid "short story"
 msgstr "кароткі расказ"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:350
-#. js-lingui-explicit-id
-msgid "Should AI be allowed to make life-changing decisions?"
-msgstr "Ці павінна быць дазволена ШІ прымаць рашэнні, якія змяняюць жыццё?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:16
-#. js-lingui-explicit-id
-msgid ""
-"Should AI be allowed to replace humans in creative jobs like writing or "
-"design?"
-msgstr ""
-"Ці павінна штучны інтэлект быць дазволены замяняць людзей у крэатыўных "
-"прафесіях, такіх як пісьмо або дызайн?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:329
-#. js-lingui-explicit-id
-msgid "Should AI be credited as a creator or just a tool?"
-msgstr "Ці варта прызнаваць ШІ як стваральніка або толькі як інструмент?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:392
-#. js-lingui-explicit-id
-msgid "Should AI follow strict ethical rules even if it reduces efficiency?"
-msgstr ""
-"Ці мусіць штучны інтэлект прытрымлівацца строгіх этычных правілаў, нават "
-"калі гэта зніжае эфектыўнасць?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:413
-#. js-lingui-explicit-id
-msgid "Should AI systems be allowed to operate without human oversight?"
-msgstr "Ці павінны сістэмы штучнага інтэлекту працаваць без нагляду чалавека?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:56
-#. js-lingui-explicit-id
-msgid "Should AI systems be required to explain how they make decisions?"
-msgstr "Ці павінны AI-сістэмы тлумачыць, як яны прымаюць рашэнні?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:30
-#. js-lingui-explicit-id
-msgid "Should companies be responsible for employees’ mental health?"
-msgstr "Ці павінны кампаніі несці адказнасць за псіхічнае здароўе супрацоўнікаў?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:287
-#. js-lingui-explicit-id
-msgid "Should companies replace humans with AI if it is cheaper and faster?"
-msgstr ""
-"Ці павінны кампаніі замяняць людзей штучным інтэлектам, калі гэта танней і "
-"хутчэй?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:303
-#. js-lingui-explicit-id
-msgid "Should efficiency be prioritized over creativity at work?"
-msgstr "Ці варта аддаваць прыярытэт эфектыўнасці перад крэатыўнасцю на працы?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:123
-#. js-lingui-explicit-id
-msgid "Should exams be replaced by continuous assessment?"
-msgstr "Ці варта замяніць экзамены бесперапыннай ацэнкай?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:400
-#. js-lingui-explicit-id
-msgid "Should failure be celebrated in learning environments?"
-msgstr "Ці варта святкаваць няўдачы ў асяроддзі навучання?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:140
-#. js-lingui-explicit-id
-msgid "Should governments strictly regulate AI development?"
-msgstr "Ці павінны ўрады строга рэгуляваць развіццё ШІ?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:106
-#. js-lingui-explicit-id
-msgid "Should managers be friends with their employees?"
-msgstr "Ці варта мэнэджэрам сябраваць са сваімі супрацоўнікамі?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:354
-#. js-lingui-explicit-id
-msgid "Should people define themselves by their profession?"
-msgstr "Ці павінны людзі вызначаць сябе па сваёй прафесіі?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:266
-#. js-lingui-explicit-id
-msgid "Should people trust AI recommendations more than human advice?"
-msgstr ""
-"Ці варта людзям больш давяраць рэкамендацыям штучнага інтэлекту, чым "
-"парадам людзей?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:152
-#. js-lingui-explicit-id
-msgid "Should personal values ever be compromised for success?"
-msgstr "Ці варта ахвяраваць асабістымі каштоўнасцямі дзеля поспеху?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:425
-#. js-lingui-explicit-id
-msgid "Should personal values guide every major life decision?"
-msgstr "Ці павінны асабістыя каштоўнасці кіраваць кожным важным рашэннем у жыцці?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:60
-#. js-lingui-explicit-id
-msgid "Should schools focus more on practical skills than theory?"
-msgstr ""
-"Ці павінны школы больш засяроджваць увагу на практычных навыках, чым на "
-"тэорыі?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:182
-#. js-lingui-explicit-id
-msgid "Should students be allowed to use AI tools in school?"
-msgstr ""
-"Ці павінны студэнты мець дазвол на выкарыстанне інструментаў штучнага "
-"інтэлекту ў школе?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:240
-#. js-lingui-explicit-id
-msgid "Should work be a major source of personal fulfillment?"
-msgstr "Ці павінна праца быць асноўнай крыніцай асабістага задавальнення?"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
 #. js-lingui-explicit-id
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
 msgstr ""
 "Паказвайце цікавасць і зацікаўленасць. Не забывайце дзякуйца ім за іх "
 "адказы:"
+
+#: src/features/Game/Battle/BattleSection.tsx:53
+#. js-lingui-explicit-id
+msgid "Show Debates"
+msgstr "Паказаць дэбаты"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
 #. js-lingui-explicit-id
@@ -9040,6 +8207,11 @@ msgstr "Паказаць менш"
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Паказаць больш"
+
+#: src/features/Game/Battle/BattleSection.tsx:53
+#. js-lingui-explicit-id
+msgid "Show More Debates"
+msgstr "Паказаць Больш Дэбатаў"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:512
 #. js-lingui-explicit-id
@@ -9222,21 +8394,6 @@ msgstr "Такім чынам, у першы тыдзень вы навучыц�
 msgid "Social"
 msgstr "Сацыяльнае"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:315
-#. js-lingui-explicit-id
-msgid "Social Comparison"
-msgstr "Сацыяльнае параўнанне"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:25
-#. js-lingui-explicit-id
-msgid "Social Media"
-msgstr "Сацыяльныя сеткі"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:134
-#. js-lingui-explicit-id
-msgid "Society"
-msgstr "Супольнасць"
-
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:22
 #. js-lingui-explicit-id
 msgid ""
@@ -9332,7 +8489,7 @@ msgstr "Пачаць імітацыйнае сумоўе"
 msgid "Start Call"
 msgstr "Пачаць званок"
 
-#: src/features/Game/Battle/BattleCard.tsx:512
+#: src/features/Game/Battle/BattleCard.tsx:247
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Пачаць Дэбаты"
@@ -9630,7 +8787,7 @@ msgstr "Падаць"
 msgid "Submit answer"
 msgstr "Адправіць адказ"
 
-#: src/features/Game/Battle/BattleCard.tsx:219
+#: src/features/Game/Battle/BattleActionModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Submit Answers"
 msgstr "Адправіць адказы"
@@ -9671,16 +8828,6 @@ msgstr "Патрабуецца падпіска"
 #. js-lingui-explicit-id
 msgid "subscription plans"
 msgstr "планы падпіскі"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:67
-#. js-lingui-explicit-id
-msgid "Success"
-msgstr "Поспех"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:281
-#. js-lingui-explicit-id
-msgid "Success Mindset"
-msgstr "Поспеховы настрой"
 
 #: src/features/Case/Landing/components/Footer.tsx:114
 #. js-lingui-explicit-id
@@ -9850,23 +8997,6 @@ msgstr "Тэхнічнае Пытанне"
 #. js-lingui-explicit-id
 msgid "Technical Support"
 msgstr "Тэхнічная падтрымка"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:34
-#: src/features/Game/Battle/useBattleQuestions.ts:101
-#: src/features/Game/Battle/useBattleQuestions.ts:193
-#. js-lingui-explicit-id
-msgid "Technology"
-msgstr "Тэхналогіі"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:235
-#. js-lingui-explicit-id
-msgid "Technology Dependence"
-msgstr "Залежнасць ад тэхналогій"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:403
-#. js-lingui-explicit-id
-msgid "Technology Pace"
-msgstr "Тэмп тэхналогій"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:95
 #. js-lingui-explicit-id
@@ -10052,18 +9182,18 @@ msgstr ""
 "Персаналізаваная зваротная сувязь дакладна паказала мне, што я рабіў "
 "няправільна ў сваіх тэхнічных тлумачэннях. Гэта змяніла гульню."
 
-#: src/features/Game/GameStatRow.tsx:157
+#: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id
 msgid "The topics for the debate will be randomly selected."
 msgstr "Тэмы для дэбату будуць выбірацца выпадковым чынам."
 
-#: src/features/Game/Battle/BattleCard.tsx:283
-#: src/features/Game/GameStatRow.tsx:161
+#: src/features/Game/Battle/BattleActionModal.tsx:364
+#: src/features/Game/GameStatRow.tsx:162
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "Пераможца зарабляе {points} гульнявых балаў!"
 
-#: src/features/Game/Battle/BattleCard.tsx:116
+#: src/features/Game/Battle/BattleActionModal.tsx:118
 #. js-lingui-explicit-id
 msgid "The winner has been declared."
 msgstr "Пераможца быў абвешчаны."
@@ -10118,16 +9248,6 @@ msgstr "Гэта паказвае вынікі і робіць вас улічн
 #. js-lingui-explicit-id
 msgid "Ticket"
 msgstr "Квіток"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:168
-#. js-lingui-explicit-id
-msgid "Time Management"
-msgstr "Кіраванне часам"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:298
-#. js-lingui-explicit-id
-msgid "Time Value"
-msgstr "Значэнне Часу"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:521
 #. js-lingui-explicit-id
@@ -10265,7 +9385,7 @@ msgstr "Уключыць гук"
 msgid "Type a message..."
 msgstr "Увядзіце паведамленне..."
 
-#: src/features/Game/Battle/BattleCard.tsx:253
+#: src/features/Game/Battle/BattleActionModal.tsx:333
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "Ўвядзіце свой адказ тут..."
@@ -10353,6 +9473,11 @@ msgstr ""
 "Выкарыстоўвайце гэтыя шаблоны для стварэння сваёй гісторыі. Не забывайце "
 "згадаць пра свае дасягненне:"
 
+#: src/features/Game/Battle/BattleActionModal.tsx:297
+#. js-lingui-explicit-id
+msgid "Use your learning language ({lang})"
+msgstr "Выкарыстоўвайце вашу мову навучання ({lang})"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
 #. js-lingui-explicit-id
 msgid "Useful Phrases for Self-Introduction"
@@ -10383,11 +9508,6 @@ msgstr "UX & Даступнасць"
 #. js-lingui-explicit-id
 msgid "Vacancy description"
 msgstr "Апісанне вакансіі"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:151
-#. js-lingui-explicit-id
-msgid "Values"
-msgstr "Значэнні"
 
 #: src/features/Case/data/frontend-junior/demoSnippetSection.ts:15
 #. js-lingui-explicit-id
@@ -10455,7 +9575,7 @@ msgstr "Рэжым галасавога запісу"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:506
+#: src/features/Game/Battle/BattleCard.tsx:241
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Чаканне пацверджання ад іншых гульцоў..."
@@ -10847,13 +9967,6 @@ msgstr ""
 msgid "Where can I use FluencyPal?"
 msgstr "Дзе я магу выкарыстоўваць FluencyPal?"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:245
-#. js-lingui-explicit-id
-msgid "Who should be responsible when AI makes a serious mistake?"
-msgstr ""
-"Хто павінен несці адказнасць, калі штучны інтэлект здзейсніў сур'ёзную "
-"памылку?"
-
 #: src/features/Case/data/backendCSharp/whoIsThisForSection.ts:10
 #: src/features/Case/data/frontend-junior/whoIsThisForSection.ts:10
 #: src/features/Case/data/frontend-senior/whoIsThisForSection.ts:10
@@ -10872,20 +9985,15 @@ msgstr "Чаму кандыдаты на пазіцыі бекэнда імкл�
 msgid "Why candidates improve so quickly"
 msgstr "Чаму кандыдаты паляпшаюцца так хутка"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:119
-#. js-lingui-explicit-id
-msgid "Will AI ever truly understand human emotions?"
-msgstr "Ці зможа штучны інтэлект калі-небудзь сапраўды зразумець чалавечыя эмоцыі?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:429
-#. js-lingui-explicit-id
-msgid "Will traditional jobs still exist in 20 years?"
-msgstr "Ці будуць традыцыйныя прафесіі ўсё яшчэ існаваць праз 20 гадоў?"
-
-#: src/features/Game/Battle/BattleCard.tsx:499
+#: src/features/Game/Battle/BattleCard.tsx:234
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Пераможца атрымлівае {points} ачкоў"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:166
+#. js-lingui-explicit-id
+msgid "Winner!"
+msgstr "Пераможца!"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:383
 #. js-lingui-explicit-id
@@ -10931,51 +10039,6 @@ msgstr "Статыстыка слоў"
 msgid "Words"
 msgstr "Словы"
 
-#: src/features/Game/Battle/useBattleQuestions.ts:126
-#. js-lingui-explicit-id
-msgid "Work"
-msgstr "Працоўнае месца"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:63
-#. js-lingui-explicit-id
-msgid "Work Culture"
-msgstr "Культура працы"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:164
-#. js-lingui-explicit-id
-msgid "Work Environment"
-msgstr "Працоўнае асяроддзе"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:323
-#. js-lingui-explicit-id
-msgid "Work Expectations"
-msgstr "Чаканні ў працы"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:336
-#. js-lingui-explicit-id
-msgid "Work Focus"
-msgstr "Фокус на працы"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:407
-#. js-lingui-explicit-id
-msgid "Work Meaning"
-msgstr "Значэнне працы"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:214
-#. js-lingui-explicit-id
-msgid "Work Motivation"
-msgstr "Матывацыя да працы"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:365
-#. js-lingui-explicit-id
-msgid "Work Performance"
-msgstr "Прадукцыйнасць працы"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:239
-#. js-lingui-explicit-id
-msgid "Work Satisfaction"
-msgstr "Задаволенасць працай"
-
 #: src/features/RolePlay/rolePlayData.tsx:510
 #. js-lingui-explicit-id
 msgid ""
@@ -11015,38 +10078,6 @@ msgstr ""
 "падтрымкі. Агент будзе запытваць дэталі, кіраваць вас праз магчымыя "
 "рашэнні, і прапануе наступныя крокі. Гэты сцэнар дапамагае вам адчуваць "
 "сябе камфортна, навігуючы па тэхнічных праблемах і камунікацыі рашэнняў."
-
-#: src/features/Game/Battle/useBattleQuestions.ts:29
-#. js-lingui-explicit-id
-msgid "Work-Life Balance"
-msgstr "Баланс паміж працай і асабістым жыццём"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:105
-#. js-lingui-explicit-id
-msgid "Workplace"
-msgstr "Працоўнае месца"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:252
-#. js-lingui-explicit-id
-msgid "Workplace Culture"
-msgstr "Культура працоўнага месца"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:189
-#. js-lingui-explicit-id
-msgid "Workplace Feedback"
-msgstr "Зваротная сувязь на працоўным месцы"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:203
-#. js-lingui-explicit-id
-msgid "Would you trust AI more than humans in critical situations?"
-msgstr ""
-"Ці будзеце вы давяраць штучнаму інтэлекту больш, чым людзям у крытычных "
-"сітуацыях?"
-
-#: src/features/Game/Battle/useBattleQuestions.ts:77
-#. js-lingui-explicit-id
-msgid "Would you trust AI to make important life decisions for you?"
-msgstr "Ці даверылі б вы штучнаму інтэлекту прымаць важныя рашэнні ў вашым жыцці?"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:210
 #. js-lingui-explicit-id
@@ -11291,6 +10322,11 @@ msgstr ""
 msgid "You can try AI in action now"
 msgstr "Вы можаце паспрабаваць AI ў дзеянні зараз"
 
+#: src/features/Game/Battle/BattleActionModal.tsx:329
+#. js-lingui-explicit-id
+msgid "You can use text to answer if you prefer."
+msgstr "Вы можаце выкарыстоўваць тэкст для адказу, калі вам так зручней."
+
 #: src/features/Usage/SubscriptionPaymentModal.tsx:629
 #. js-lingui-explicit-id
 msgid "You don't have an active subscription."
@@ -11319,12 +10355,23 @@ msgstr ""
 msgid "You have"
 msgstr "Вы маеце"
 
-#: src/features/Game/Battle/BattleCard.tsx:218
+#: src/features/Game/Battle/BattleActionModal.tsx:274
 #. js-lingui-explicit-id
-msgid "You have completed all the questions."
-msgstr "Вы завяршылі ўсе пытанні."
+msgid ""
+"You have answered all the questions. Submitting your answers now... Don't "
+"close this window."
+msgstr ""
+"Вы адказалі на ўсе пытанні. Адпраўка вашых адказаў зараз... Не зачыняйце "
+"гэта акно."
 
-#: src/features/Game/Battle/BattleCard.tsx:524
+#: src/features/Game/Battle/BattleActionModal.tsx:277
+#. js-lingui-explicit-id
+msgid ""
+"You have completed all the questions. Submit your answers now and wait for "
+"the results."
+msgstr "Вы завяршылі ўсе пытанні. Адпраўце свае адказы цяпер і чакайце вынікаў."
+
+#: src/features/Game/Battle/BattleCard.tsx:270
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Вы адправілі свае адказы. Чаканне іншых..."
@@ -11359,7 +10406,7 @@ msgstr ""
 msgid "You will get 3 days of full access for free"
 msgstr "Вы атрымаеце 3 дні поўнага доступу бясплатна"
 
-#: src/features/Game/GameStatRow.tsx:167
+#: src/features/Game/GameStatRow.tsx:168
 #. js-lingui-explicit-id
 msgid "You will see the response on the main page."
 msgstr "Вы ўбачыце адказ на галоўнай старонцы."
@@ -11416,13 +10463,13 @@ msgstr "Вашыя дасягненні"
 msgid "Your AI speaking partner"
 msgstr "Ваш AI партнёр для размоў"
 
-#: src/features/Game/Battle/BattleCard.tsx:252
+#: src/features/Game/Battle/BattleActionModal.tsx:332
 #: src/features/Survey/RecordUserAudioAnswer.tsx:64
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "Ваш адказ"
 
-#: src/features/Game/Battle/BattleCard.tsx:289
+#: src/features/Game/Battle/BattleActionModal.tsx:370
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
 msgstr "Вашы адказы будуць бачныя вашаму суперніку пасля таго, як вы іх адпраўце."
@@ -11450,7 +10497,7 @@ msgstr ""
 "Ваша крэдытная карта ўжо пацверджана. Вы можаце перайсці да наступнага "
 "кроку."
 
-#: src/features/Game/GameStatRow.tsx:151
+#: src/features/Game/GameStatRow.tsx:152
 #. js-lingui-explicit-id
 msgid "Your debate request will be sent to {userName}"
 msgstr "Ваш запыт на дэбаты будзе адпраўлены {userName}"
@@ -11464,6 +10511,13 @@ msgstr "Ваша бажаная пасада. Напрыклад, Дызайне
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "Ваш досвед"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:303
+#. js-lingui-explicit-id
+msgid "Your goal is not to be perfect, but to surpass your opponent."
+msgstr ""
+"Ваша мэта не ў тым, каб быць ідэальным, а ў тым, каб перасягнуць свайго "
+"суперніка."
 
 #: src/features/Auth/InterviewAuthWall.tsx:12
 #. js-lingui-explicit-id
@@ -11557,6 +10611,1032 @@ msgid ""
 msgstr ""
 "— важна заняцца гэтай кароткай размовай, перш чым прыступіць да прафесійных "
 "тэм. Вось некаторыя карысныя англійскія фразы для пачатку інтэрв'ю:"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:328
+#. js-lingui-explicit-id
+#~ msgid "AI and Creativity"
+#~ msgstr "AI і творчасць"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:286
+#. js-lingui-explicit-id
+#~ msgid "AI and Employment"
+#~ msgstr "AI і занятасць"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:391
+#. js-lingui-explicit-id
+#~ msgid "AI and Ethics"
+#~ msgstr "AI і этыка"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:244
+#. js-lingui-explicit-id
+#~ msgid "AI and Responsibility"
+#~ msgstr "AI і адказнасць"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:265
+#. js-lingui-explicit-id
+#~ msgid "AI and Trust"
+#~ msgstr "Штучны інтэлект і давер"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:412
+#. js-lingui-explicit-id
+#~ msgid "AI Autonomy"
+#~ msgstr "Аўтаномія ІІ"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:307
+#. js-lingui-explicit-id
+#~ msgid "AI Bias"
+#~ msgstr "Схільнасць ІІ"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:160
+#. js-lingui-explicit-id
+#~ msgid "AI Companions"
+#~ msgstr "AI Супольнікі"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:370
+#. js-lingui-explicit-id
+#~ msgid "AI Companionship"
+#~ msgstr "AI Суправаджэнне"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:223
+#. js-lingui-explicit-id
+#~ msgid "AI Creativity"
+#~ msgstr "AI Крэатыўнасць"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:349
+#. js-lingui-explicit-id
+#~ msgid "AI Decision Making"
+#~ msgstr "Прымаць рашэнні штучным інтэлектам"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:181
+#. js-lingui-explicit-id
+#~ msgid "AI Education"
+#~ msgstr "Адукацыя з дапамогай ШІ"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:55
+#. js-lingui-explicit-id
+#~ msgid "AI Ethics"
+#~ msgstr "Этыка штучнага інтэлекту"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:76
+#. js-lingui-explicit-id
+#~ msgid "AI in Daily Life"
+#~ msgstr "Штучны інтэлект у паўсядзённым жыцці"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:139
+#. js-lingui-explicit-id
+#~ msgid "AI Regulation"
+#~ msgstr "Рэгуляцыя штучнага інтэлекту"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:202
+#. js-lingui-explicit-id
+#~ msgid "AI Trust"
+#~ msgstr "Давер да AI"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:118
+#. js-lingui-explicit-id
+#~ msgid "AI vs Humans"
+#~ msgstr "AI супраць людзей"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:47
+#. js-lingui-explicit-id
+#~ msgid "Are great leaders born or made?"
+#~ msgstr "Ці нараджаюцца вялікія лідэры, ці яны ствараюцца?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:219
+#. js-lingui-explicit-id
+#~ msgid "Are people optimistic or pessimistic about the future, and why?"
+#~ msgstr "Ці аптымістычна або песімістычна людзі глядзяць на будучыню, і чаму?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:341
+#. js-lingui-explicit-id
+#~ msgid "Are people responsible for their circumstances?"
+#~ msgstr "Ці людзі нясуць адказнасць за свае абставіны?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:144
+#. js-lingui-explicit-id
+#~ msgid "Are productivity tools actually making us more productive?"
+#~ msgstr ""
+#~ "Ці сапраўды інструменты павышэння прадукцыйнасці робяць нас больш "
+#~ "прадуктыўнымі?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:15
+#. js-lingui-explicit-id
+#~ msgid "Artificial Intelligence"
+#~ msgstr "Штучны інтэлект"
+
+#: src/features/Game/GameStatRow.tsx:367
+#. js-lingui-explicit-id
+#~ msgid "Ask for debate"
+#~ msgstr "Запытай пра дэбат"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:308
+#. js-lingui-explicit-id
+#~ msgid "Can AI ever be completely unbiased?"
+#~ msgstr "Ці можа штучны інтэлект калі-небудзь быць цалкам неаб'ектыўным?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:161
+#. js-lingui-explicit-id
+#~ msgid "Can AI replace human companionship in the future?"
+#~ msgstr "Ці можа штучны інтэлект замяніць чалавечае таварыства ў будучыні?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:224
+#. js-lingui-explicit-id
+#~ msgid "Can AI-generated content be considered original creativity?"
+#~ msgstr "Ці можна лічыць AI-створаны змест арыгінальнай творчасцю?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:379
+#. js-lingui-explicit-id
+#~ msgid "Can constant self-improvement become harmful?"
+#~ msgstr "Ці можа пастаяннае самаўдасканаленне стаць шкодным?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:93
+#. js-lingui-explicit-id
+#~ msgid "Can creativity be taught, or is it natural talent?"
+#~ msgstr "Ці можна навучыць творчасці, ці гэта натуральны талент?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:38
+#. js-lingui-explicit-id
+#~ msgid "Career"
+#~ msgstr "Кар'ера"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:206
+#: src/features/Game/Battle/useBattleQuestions.ts:311
+#. js-lingui-explicit-id
+#~ msgid "Career Advice"
+#~ msgstr "Кар'ерныя парады"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:97
+#. js-lingui-explicit-id
+#~ msgid "Career Choices"
+#~ msgstr "Варыянты Кар'еры"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:147
+#. js-lingui-explicit-id
+#~ msgid "Career Growth"
+#~ msgstr "Рост кар'еры"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:353
+#. js-lingui-explicit-id
+#~ msgid "Career Identity"
+#~ msgstr "Кар'ерная ідэнтычнасць"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:374
+#. js-lingui-explicit-id
+#~ msgid "Career Planning"
+#~ msgstr "Планаванне кар'еры"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:269
+#. js-lingui-explicit-id
+#~ msgid "Career Purpose"
+#~ msgstr "Мэта кар'еры"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:227
+#. js-lingui-explicit-id
+#~ msgid "Career Risk"
+#~ msgstr "Кар'ерная рызыка"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:416
+#. js-lingui-explicit-id
+#~ msgid "Career Satisfaction"
+#~ msgstr "Кар'ернае задавальненне"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:290
+#. js-lingui-explicit-id
+#~ msgid "Career Stability"
+#~ msgstr "Кар'ерная стабільнасць"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:395
+#. js-lingui-explicit-id
+#~ msgid "Career Success"
+#~ msgstr "Кар'ерны поспех"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:71
+#. js-lingui-explicit-id
+#~ msgid "Communication"
+#~ msgstr "Камунікацыя"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:92
+#: src/features/Game/Battle/useBattleQuestions.ts:172
+#. js-lingui-explicit-id
+#~ msgid "Creativity"
+#~ msgstr "Крэатыўнасць"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:386
+#. js-lingui-explicit-id
+#~ msgid "Creativity Pressure"
+#~ msgstr "Ціск творчасці"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:302
+#. js-lingui-explicit-id
+#~ msgid "Creativity vs Efficiency"
+#~ msgstr "Крэатыўнасць супраць эфектыўнасці"
+
+#: src/features/Game/Battle/BattleCard.tsx:217
+#. js-lingui-explicit-id
+#~ msgid "Debate completed!"
+#~ msgstr "Дэбаты завершаны!"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:130
+#. js-lingui-explicit-id
+#~ msgid "Decision Making"
+#~ msgstr "Прыняцце рашэнняў"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:248
+#. js-lingui-explicit-id
+#~ msgid "Decision Regret"
+#~ msgstr "Пашкадаванне рашэння"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:273
+#. js-lingui-explicit-id
+#~ msgid "Digital Communication"
+#~ msgstr "Лічбавая камунікацыя"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:361
+#. js-lingui-explicit-id
+#~ msgid "Digital Detox"
+#~ msgstr "Digital Detox"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:278
+#. js-lingui-explicit-id
+#~ msgid "Do grades motivate students or limit their potential?"
+#~ msgstr "Ці матывуюць адзнакі студэнтаў або абмяжоўваюць іх патэнцыял?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:173
+#. js-lingui-explicit-id
+#~ msgid "Do limitations help or hurt creativity?"
+#~ msgstr "Ці абмяжаванні дапамагаюць ці шкодзяць творчасці?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:324
+#. js-lingui-explicit-id
+#~ msgid "Do modern workers expect too much from their jobs?"
+#~ msgstr "Ці чакаюць сучасныя работнікі занадта шмат ад сваіх прац?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:320
+#. js-lingui-explicit-id
+#~ msgid "Do online courses provide the same value as in-person learning?"
+#~ msgstr "Ці даюць анлайн-курсы такую ж каштоўнасць, як і навучанне ў аўдыторыі?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:102
+#. js-lingui-explicit-id
+#~ msgid "Do smartphones improve or damage our attention span?"
+#~ msgstr "Ці паляпшаюць смартфоны ўвагу або шкодзяць ёй?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:194
+#. js-lingui-explicit-id
+#~ msgid "Does automation create more jobs than it destroys?"
+#~ msgstr "Ці стварае аўтаматызацыя больш працоўных месцаў, чым знішчае?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:316
+#. js-lingui-explicit-id
+#~ msgid "Does comparing yourself to others help or harm motivation?"
+#~ msgstr "Ці дапамагае ці шкодзіць параўнанне сябе з іншымі матывацыі?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:295
+#. js-lingui-explicit-id
+#~ msgid "Does discomfort always lead to personal growth?"
+#~ msgstr "Ці заўсёды дыскамфорт вядзе да асабістага росту?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:333
+#. js-lingui-explicit-id
+#~ msgid "Does fear protect us or limit us more?"
+#~ msgstr "Ці абараняе нас страх альбо больш абмяжоўвае нас?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:257
+#. js-lingui-explicit-id
+#~ msgid "Does financial independence equal personal freedom?"
+#~ msgstr "Ці азначае фінансавая незалежнасць асабістую свабоду?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:110
+#. js-lingui-explicit-id
+#~ msgid "Does innovation come more from freedom or pressure?"
+#~ msgstr "Ці прыходзіць інавацыя больш з свабоды або пад ціскам?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:135
+#. js-lingui-explicit-id
+#~ msgid "Does modern life make people more anxious than before?"
+#~ msgstr "Ці робіць сучаснае жыццё людзей больш трывожнымі, чым раней?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:43
+#. js-lingui-explicit-id
+#~ msgid "Does money bring freedom, happiness, or neither?"
+#~ msgstr "Ці прыносіць грошы свабоду, шчасце ці ні тое, ні іншае?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:366
+#. js-lingui-explicit-id
+#~ msgid "Does pressure improve or damage performance?"
+#~ msgstr "Ці паляпшае ці пагаршае ціск прадукцыйнасць?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:387
+#. js-lingui-explicit-id
+#~ msgid "Does pressure kill creativity or enhance it?"
+#~ msgstr "Ці забівае ціск творчасць альбо ўзмацняе яе?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:26
+#. js-lingui-explicit-id
+#~ msgid "Does social media do more harm than good for society?"
+#~ msgstr "Ці наносіць сацыяльныя медыя больш шкоды, чым карысці для грамадства?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:35
+#. js-lingui-explicit-id
+#~ msgid "Does technology make people more connected or more lonely?"
+#~ msgstr "Ці робіць тэхналогія людзей больш звязанымі або больш адзінокімі?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:21
+#: src/features/Game/Battle/useBattleQuestions.ts:59
+#: src/features/Game/Battle/useBattleQuestions.ts:122
+#. js-lingui-explicit-id
+#~ msgid "Education"
+#~ msgstr "Адукацыя"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:277
+#. js-lingui-explicit-id
+#~ msgid "Education Pressure"
+#~ msgstr "Ціск на адукацыю"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:210
+#. js-lingui-explicit-id
+#~ msgid "Education System"
+#~ msgstr "Сістэма Адукацыі"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:50
+#. js-lingui-explicit-id
+#~ msgid "Failure"
+#~ msgstr "Няспраўнасць"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:382
+#. js-lingui-explicit-id
+#~ msgid "Freedom vs Security"
+#~ msgstr "Свабода супраць Бяспекі"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:218
+#. js-lingui-explicit-id
+#~ msgid "Future"
+#~ msgstr "Будучыня"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:428
+#. js-lingui-explicit-id
+#~ msgid "Future of Work"
+#~ msgstr "Будучыня працы"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:274
+#. js-lingui-explicit-id
+#~ msgid "Has digital communication improved or weakened human relationships?"
+#~ msgstr "Ці палепшыла ці аслабіла лічбавая камунікацыя чалавечыя ўзаемаадносіны?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:236
+#. js-lingui-explicit-id
+#~ msgid "Have people become too dependent on technology?"
+#~ msgstr "Ці сталі людзі занадта залежнымі ад тэхналогій?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:68
+#. js-lingui-explicit-id
+#~ msgid "How should success be measured: money, impact, or happiness?"
+#~ msgstr "Як варта вымяраць поспех: грашыма, уплывам альбо шчасцем?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:109
+#. js-lingui-explicit-id
+#~ msgid "Innovation"
+#~ msgstr "Інавацыі"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:344
+#. js-lingui-explicit-id
+#~ msgid "Innovation Speed"
+#~ msgstr "Хуткасць Інавацый"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:165
+#. js-lingui-explicit-id
+#~ msgid "Is a competitive workplace better than a collaborative one?"
+#~ msgstr "Ці з'яўляецца канкурэнтнае працоўнае месца лепшым, чым калабаратыўнае?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:22
+#. js-lingui-explicit-id
+#~ msgid "Is a university degree still necessary for career success today?"
+#~ msgstr ""
+#~ "Ці з'яўляецца ўніверсітэцкая ступень усё яшчэ неабходнай для поспеху ў "
+#~ "кар'еры сёння?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:417
+#. js-lingui-explicit-id
+#~ msgid "Is career satisfaction a personal responsibility or a company’s role?"
+#~ msgstr ""
+#~ "Ці з'яўляецца задаволенасць кар'ерай асабістай адказнасцю або роляй "
+#~ "кампаніі?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:148
+#. js-lingui-explicit-id
+#~ msgid "Is changing jobs frequently good or bad for a career?"
+#~ msgstr "Ці добра часта змяняць працу для кар'еры?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:114
+#. js-lingui-explicit-id
+#~ msgid "Is comfort the enemy of growth?"
+#~ msgstr "Ці з'яўляецца камфорт ворагам росту?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:253
+#. js-lingui-explicit-id
+#~ msgid "Is company culture more important than salary?"
+#~ msgstr "Ці з’яўляецца культура кампаніі больш важнай, чым зарплата?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:282
+#. js-lingui-explicit-id
+#~ msgid "Is confidence more important than competence?"
+#~ msgstr "Ці больш важная ўпэўненасць, чым кампетэнтнасць?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:358
+#. js-lingui-explicit-id
+#~ msgid "Is curiosity more powerful than discipline for learning?"
+#~ msgstr "Ці з'яўляецца цікаўнасць больш магутнай за дысцыпліну для навучання?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:337
+#. js-lingui-explicit-id
+#~ msgid "Is deep focus more valuable than being constantly available?"
+#~ msgstr "Ці больш каштоўна глыбокае засяроджанне, чым пастаянная даступнасць?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:190
+#. js-lingui-explicit-id
+#~ msgid "Is direct feedback always better than polite feedback?"
+#~ msgstr "Ці заўсёды прамая зваротная сувязь лепшая за ветлівую зваротную сувязь?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:186
+#. js-lingui-explicit-id
+#~ msgid "Is external pressure useful for motivation?"
+#~ msgstr "Ці з'яўляецца знешні ціск карысным для матывацыі?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:51
+#. js-lingui-explicit-id
+#~ msgid "Is failure a necessary part of success?"
+#~ msgstr "Ці з'яўляецца няўдача неабходнай часткай поспеху?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:345
+#. js-lingui-explicit-id
+#~ msgid "Is fast innovation more dangerous than slow progress?"
+#~ msgstr "Ці з'яўляецца хуткая інавацыя больш небяспечнай, чым павольны прагрэс?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:207
+#. js-lingui-explicit-id
+#~ msgid "Is following advice from others helpful or limiting?"
+#~ msgstr "Ці з'яўляецца прытрымліванне парадам іншых карысным або абмяжоўваючым?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:312
+#. js-lingui-explicit-id
+#~ msgid "Is following your passion good career advice?"
+#~ msgstr "Ці з'яўляецца след за сваёй страсцю добрай кар'ернай парадай?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:371
+#. js-lingui-explicit-id
+#~ msgid "Is forming emotional bonds with AI healthy or harmful?"
+#~ msgstr ""
+#~ "Ці з'яўляецца фарміраванне эмацыйных сувязей з штучным інтэлектам здаровым "
+#~ "або шкодным?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:383
+#. js-lingui-explicit-id
+#~ msgid "Is freedom more important than security?"
+#~ msgstr "Ці свабода больш важная, чым бяспека?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:177
+#. js-lingui-explicit-id
+#~ msgid "Is having a clear life plan important?"
+#~ msgstr "Ці важны ясны жыццёвы план?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:270
+#. js-lingui-explicit-id
+#~ msgid "Is having a sense of purpose at work essential?"
+#~ msgstr "Ці мае значэнне мэтанакіраванасць у працы?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:72
+#. js-lingui-explicit-id
+#~ msgid "Is honest communication always the best policy?"
+#~ msgstr "Ці заўсёды шчырая камунікацыя з'яўляецца найлепшай палітыкай?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:421
+#. js-lingui-explicit-id
+#~ msgid "Is information overload making learning harder?"
+#~ msgstr "Ці робіць перагрузка інфармацыяй навучанне больш цяжкім?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:98
+#. js-lingui-explicit-id
+#~ msgid "Is it better to choose a job you love or one that pays well?"
+#~ msgstr "Ці лепш выбраць работу, якую любіш, або тую, што добра аплочваецца?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:131
+#. js-lingui-explicit-id
+#~ msgid "Is it better to make fast decisions or well-analyzed ones?"
+#~ msgstr "Ці лепш прымаць хуткія рашэнні ці добра прааналізаваныя?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:39
+#. js-lingui-explicit-id
+#~ msgid "Is it better to specialize deeply in one skill or stay a generalist?"
+#~ msgstr ""
+#~ "Ці лепш спецыялізавацца глыбока ў адной навыку або заставацца агульным "
+#~ "спецыялістам?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:249
+#. js-lingui-explicit-id
+#~ msgid "Is it worse to make a wrong decision or make no decision at all?"
+#~ msgstr "Ці горш зрабіць няправільны выбар, ці зусім не прымаць рашэння?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:127
+#. js-lingui-explicit-id
+#~ msgid "Is job security more important than job satisfaction?"
+#~ msgstr "Ці больш важная бяспека працы, чым задавальненне ад працы?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:156
+#. js-lingui-explicit-id
+#~ msgid "Is learning by doing more effective than learning by reading?"
+#~ msgstr ""
+#~ "Ці з'яўляецца навучанне праз дзеянні больш эфектыўным, чым навучанне праз "
+#~ "чытанне?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:232
+#. js-lingui-explicit-id
+#~ msgid "Is learning fast better than learning deeply?"
+#~ msgstr "Ці з'яўляецца хуткае навучанне лепшым, чым глыбокае навучанне?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:261
+#. js-lingui-explicit-id
+#~ msgid "Is learning from mistakes more effective than learning from success?"
+#~ msgstr "Ці больш эфектыўна вучыцца на памылках, чым на поспехах?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:375
+#. js-lingui-explicit-id
+#~ msgid "Is long-term career planning realistic today?"
+#~ msgstr "Ці рэалістычны доўгатэрміновае планаванне кар'еры сёння?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:408
+#. js-lingui-explicit-id
+#~ msgid "Is meaningful work more important than high pay?"
+#~ msgstr "Ці мае значэнне праца больш важная, чым высокая зарплата?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:81
+#. js-lingui-explicit-id
+#~ msgid "Is motivation more important than discipline?"
+#~ msgstr "Ці з'яўляецца матывацыя больш важнай, чым дысцыпліна?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:169
+#. js-lingui-explicit-id
+#~ msgid "Is multitasking a useful skill or a myth?"
+#~ msgstr "Ці з'яўляецца многазадачнасць карысным навыкам ці міфам?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:215
+#. js-lingui-explicit-id
+#~ msgid "Is passion necessary to do great work?"
+#~ msgstr "Ці неабходна запал, каб выконваць вялікую працу?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:85
+#. js-lingui-explicit-id
+#~ msgid "Is personal privacy still possible in the digital age?"
+#~ msgstr "Ці магчымае асабістае прыватнае жыццё ў лічбавую эпоху?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:362
+#. js-lingui-explicit-id
+#~ msgid "Is regular digital detox necessary in modern life?"
+#~ msgstr "Ці з'яўляецца рэгулярны лічбавы дэтокс неабходным у сучасным жыцці?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:10
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Is remote work better for productivity than working in an office? Why or "
+#~ "why not?"
+#~ msgstr ""
+#~ "Ці лепшая аддаленая работа для прадуктыўнасці, чым праца ў офісе? Чаму ці "
+#~ "чаму не?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:198
+#. js-lingui-explicit-id
+#~ msgid "Is self-discipline more important than talent?"
+#~ msgstr "Ці самадысцыпліна важнейшая за талент?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:89
+#. js-lingui-explicit-id
+#~ msgid "Is self-learning more effective than traditional education?"
+#~ msgstr "Ці з'яўляецца самавучанне больш эфектыўным, чым традыцыйная адукацыя?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:291
+#. js-lingui-explicit-id
+#~ msgid "Is stability overrated in modern careers?"
+#~ msgstr "Ці пераацэнена стабільнасць у сучасных кар'ерах?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:396
+#. js-lingui-explicit-id
+#~ msgid "Is success mostly a result of effort or circumstances?"
+#~ msgstr "Ці ў асноўным поспех з'яўляецца вынікам намаганняў або абставінаў?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:228
+#. js-lingui-explicit-id
+#~ msgid "Is taking career risks necessary for long-term success?"
+#~ msgstr ""
+#~ "Ці з'яўляецца прыняцце рызык у кар'еры неабходным для доўгатэрміновага "
+#~ "поспеху?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:404
+#. js-lingui-explicit-id
+#~ msgid "Is technology developing faster than society can adapt?"
+#~ msgstr "Ці развіваецца тэхналогія хутчэй, чым грамадства можа прыстасавацца?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:211
+#. js-lingui-explicit-id
+#~ msgid "Is the current education system preparing people for real life?"
+#~ msgstr "Ці рыхтуе сучасная адукацыйная сістэма людзей да рэальнага жыцця?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:299
+#. js-lingui-explicit-id
+#~ msgid "Is time more valuable than money?"
+#~ msgstr "Ці больш каштоўны час, чым грошы?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:64
+#. js-lingui-explicit-id
+#~ msgid "Is working long hours a sign of ambition or poor time management?"
+#~ msgstr ""
+#~ "Ці з'яўляецца праца на працяглыя гадзіны прыкметай амбіцыйнасці або "
+#~ "дрэннага кіравання часам?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:46
+#. js-lingui-explicit-id
+#~ msgid "Leadership"
+#~ msgstr "Лідэрства"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:88
+#. js-lingui-explicit-id
+#~ msgid "Learning"
+#~ msgstr "Вучэнне"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:399
+#. js-lingui-explicit-id
+#~ msgid "Learning Failure"
+#~ msgstr "Няўдача ў навучанні"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:155
+#. js-lingui-explicit-id
+#~ msgid "Learning Habits"
+#~ msgstr "Звычкі навучання"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:260
+#. js-lingui-explicit-id
+#~ msgid "Learning Methods"
+#~ msgstr "Методы навучання"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:357
+#. js-lingui-explicit-id
+#~ msgid "Learning Motivation"
+#~ msgstr "Матывацыя для навучання"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:231
+#. js-lingui-explicit-id
+#~ msgid "Learning Speed"
+#~ msgstr "Хуткасць навучання"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:319
+#. js-lingui-explicit-id
+#~ msgid "Learning Technology"
+#~ msgstr "Тэхналогіі навучання"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:420
+#. js-lingui-explicit-id
+#~ msgid "Modern Learning"
+#~ msgstr "Сучаснае Навучанне"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:42
+#. js-lingui-explicit-id
+#~ msgid "Money"
+#~ msgstr "Грошы"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:80
+#: src/features/Game/Battle/useBattleQuestions.ts:185
+#. js-lingui-explicit-id
+#~ msgid "Motivation"
+#~ msgstr "Матывацыя"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:197
+#. js-lingui-explicit-id
+#~ msgid "Personal Development"
+#~ msgstr "Асабістае Развіццё"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:256
+#. js-lingui-explicit-id
+#~ msgid "Personal Freedom"
+#~ msgstr "Асабістая свабода"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:176
+#. js-lingui-explicit-id
+#~ msgid "Personal Goals"
+#~ msgstr "Асабістыя мэты"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:113
+#: src/features/Game/Battle/useBattleQuestions.ts:294
+#. js-lingui-explicit-id
+#~ msgid "Personal Growth"
+#~ msgstr "Асабісты рост"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:340
+#. js-lingui-explicit-id
+#~ msgid "Personal Responsibility"
+#~ msgstr "Асабістая адказнасць"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:424
+#. js-lingui-explicit-id
+#~ msgid "Personal Values"
+#~ msgstr "Асабістыя каштоўнасці"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:84
+#. js-lingui-explicit-id
+#~ msgid "Privacy"
+#~ msgstr "Прыватнасць"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:143
+#. js-lingui-explicit-id
+#~ msgid "Productivity"
+#~ msgstr "Прадуктыўнасць"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:9
+#. js-lingui-explicit-id
+#~ msgid "Remote Work"
+#~ msgstr "Дыстанцыйная работа"
+
+#: src/features/Game/Battle/BattleCard.tsx:554
+#. js-lingui-explicit-id
+#~ msgid "Remove debate"
+#~ msgstr "Выдаліць дэбаты"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:332
+#. js-lingui-explicit-id
+#~ msgid "Risk and Fear"
+#~ msgstr "Рызыка і Страх"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:378
+#. js-lingui-explicit-id
+#~ msgid "Self-Improvement"
+#~ msgstr "Самаўдасканаленне"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:350
+#. js-lingui-explicit-id
+#~ msgid "Should AI be allowed to make life-changing decisions?"
+#~ msgstr "Ці павінна быць дазволена ШІ прымаць рашэнні, якія змяняюць жыццё?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:16
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Should AI be allowed to replace humans in creative jobs like writing or "
+#~ "design?"
+#~ msgstr ""
+#~ "Ці павінна штучны інтэлект быць дазволены замяняць людзей у крэатыўных "
+#~ "прафесіях, такіх як пісьмо або дызайн?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:329
+#. js-lingui-explicit-id
+#~ msgid "Should AI be credited as a creator or just a tool?"
+#~ msgstr "Ці варта прызнаваць ШІ як стваральніка або толькі як інструмент?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:392
+#. js-lingui-explicit-id
+#~ msgid "Should AI follow strict ethical rules even if it reduces efficiency?"
+#~ msgstr ""
+#~ "Ці мусіць штучны інтэлект прытрымлівацца строгіх этычных правілаў, нават "
+#~ "калі гэта зніжае эфектыўнасць?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:413
+#. js-lingui-explicit-id
+#~ msgid "Should AI systems be allowed to operate without human oversight?"
+#~ msgstr "Ці павінны сістэмы штучнага інтэлекту працаваць без нагляду чалавека?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:56
+#. js-lingui-explicit-id
+#~ msgid "Should AI systems be required to explain how they make decisions?"
+#~ msgstr "Ці павінны AI-сістэмы тлумачыць, як яны прымаюць рашэнні?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:30
+#. js-lingui-explicit-id
+#~ msgid "Should companies be responsible for employees’ mental health?"
+#~ msgstr "Ці павінны кампаніі несці адказнасць за псіхічнае здароўе супрацоўнікаў?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:287
+#. js-lingui-explicit-id
+#~ msgid "Should companies replace humans with AI if it is cheaper and faster?"
+#~ msgstr ""
+#~ "Ці павінны кампаніі замяняць людзей штучным інтэлектам, калі гэта танней і "
+#~ "хутчэй?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:303
+#. js-lingui-explicit-id
+#~ msgid "Should efficiency be prioritized over creativity at work?"
+#~ msgstr "Ці варта аддаваць прыярытэт эфектыўнасці перад крэатыўнасцю на працы?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:123
+#. js-lingui-explicit-id
+#~ msgid "Should exams be replaced by continuous assessment?"
+#~ msgstr "Ці варта замяніць экзамены бесперапыннай ацэнкай?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:400
+#. js-lingui-explicit-id
+#~ msgid "Should failure be celebrated in learning environments?"
+#~ msgstr "Ці варта святкаваць няўдачы ў асяроддзі навучання?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:140
+#. js-lingui-explicit-id
+#~ msgid "Should governments strictly regulate AI development?"
+#~ msgstr "Ці павінны ўрады строга рэгуляваць развіццё ШІ?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:106
+#. js-lingui-explicit-id
+#~ msgid "Should managers be friends with their employees?"
+#~ msgstr "Ці варта мэнэджэрам сябраваць са сваімі супрацоўнікамі?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:354
+#. js-lingui-explicit-id
+#~ msgid "Should people define themselves by their profession?"
+#~ msgstr "Ці павінны людзі вызначаць сябе па сваёй прафесіі?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:266
+#. js-lingui-explicit-id
+#~ msgid "Should people trust AI recommendations more than human advice?"
+#~ msgstr ""
+#~ "Ці варта людзям больш давяраць рэкамендацыям штучнага інтэлекту, чым "
+#~ "парадам людзей?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:152
+#. js-lingui-explicit-id
+#~ msgid "Should personal values ever be compromised for success?"
+#~ msgstr "Ці варта ахвяраваць асабістымі каштоўнасцямі дзеля поспеху?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:425
+#. js-lingui-explicit-id
+#~ msgid "Should personal values guide every major life decision?"
+#~ msgstr "Ці павінны асабістыя каштоўнасці кіраваць кожным важным рашэннем у жыцці?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:60
+#. js-lingui-explicit-id
+#~ msgid "Should schools focus more on practical skills than theory?"
+#~ msgstr ""
+#~ "Ці павінны школы больш засяроджваць увагу на практычных навыках, чым на "
+#~ "тэорыі?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:182
+#. js-lingui-explicit-id
+#~ msgid "Should students be allowed to use AI tools in school?"
+#~ msgstr ""
+#~ "Ці павінны студэнты мець дазвол на выкарыстанне інструментаў штучнага "
+#~ "інтэлекту ў школе?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:240
+#. js-lingui-explicit-id
+#~ msgid "Should work be a major source of personal fulfillment?"
+#~ msgstr "Ці павінна праца быць асноўнай крыніцай асабістага задавальнення?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:315
+#. js-lingui-explicit-id
+#~ msgid "Social Comparison"
+#~ msgstr "Сацыяльнае параўнанне"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:25
+#. js-lingui-explicit-id
+#~ msgid "Social Media"
+#~ msgstr "Сацыяльныя сеткі"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:134
+#. js-lingui-explicit-id
+#~ msgid "Society"
+#~ msgstr "Супольнасць"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:67
+#. js-lingui-explicit-id
+#~ msgid "Success"
+#~ msgstr "Поспех"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:281
+#. js-lingui-explicit-id
+#~ msgid "Success Mindset"
+#~ msgstr "Поспеховы настрой"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:34
+#: src/features/Game/Battle/useBattleQuestions.ts:101
+#: src/features/Game/Battle/useBattleQuestions.ts:193
+#. js-lingui-explicit-id
+#~ msgid "Technology"
+#~ msgstr "Тэхналогіі"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:235
+#. js-lingui-explicit-id
+#~ msgid "Technology Dependence"
+#~ msgstr "Залежнасць ад тэхналогій"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:403
+#. js-lingui-explicit-id
+#~ msgid "Technology Pace"
+#~ msgstr "Тэмп тэхналогій"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:168
+#. js-lingui-explicit-id
+#~ msgid "Time Management"
+#~ msgstr "Кіраванне часам"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:298
+#. js-lingui-explicit-id
+#~ msgid "Time Value"
+#~ msgstr "Значэнне Часу"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:151
+#. js-lingui-explicit-id
+#~ msgid "Values"
+#~ msgstr "Значэнні"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:245
+#. js-lingui-explicit-id
+#~ msgid "Who should be responsible when AI makes a serious mistake?"
+#~ msgstr ""
+#~ "Хто павінен несці адказнасць, калі штучны інтэлект здзейсніў сур'ёзную "
+#~ "памылку?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:119
+#. js-lingui-explicit-id
+#~ msgid "Will AI ever truly understand human emotions?"
+#~ msgstr "Ці зможа штучны інтэлект калі-небудзь сапраўды зразумець чалавечыя эмоцыі?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:429
+#. js-lingui-explicit-id
+#~ msgid "Will traditional jobs still exist in 20 years?"
+#~ msgstr "Ці будуць традыцыйныя прафесіі ўсё яшчэ існаваць праз 20 гадоў?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:126
+#. js-lingui-explicit-id
+#~ msgid "Work"
+#~ msgstr "Працоўнае месца"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:63
+#. js-lingui-explicit-id
+#~ msgid "Work Culture"
+#~ msgstr "Культура працы"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:164
+#. js-lingui-explicit-id
+#~ msgid "Work Environment"
+#~ msgstr "Працоўнае асяроддзе"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:323
+#. js-lingui-explicit-id
+#~ msgid "Work Expectations"
+#~ msgstr "Чаканні ў працы"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:336
+#. js-lingui-explicit-id
+#~ msgid "Work Focus"
+#~ msgstr "Фокус на працы"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:407
+#. js-lingui-explicit-id
+#~ msgid "Work Meaning"
+#~ msgstr "Значэнне працы"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:214
+#. js-lingui-explicit-id
+#~ msgid "Work Motivation"
+#~ msgstr "Матывацыя да працы"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:365
+#. js-lingui-explicit-id
+#~ msgid "Work Performance"
+#~ msgstr "Прадукцыйнасць працы"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:239
+#. js-lingui-explicit-id
+#~ msgid "Work Satisfaction"
+#~ msgstr "Задаволенасць працай"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:29
+#. js-lingui-explicit-id
+#~ msgid "Work-Life Balance"
+#~ msgstr "Баланс паміж працай і асабістым жыццём"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:105
+#. js-lingui-explicit-id
+#~ msgid "Workplace"
+#~ msgstr "Працоўнае месца"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:252
+#. js-lingui-explicit-id
+#~ msgid "Workplace Culture"
+#~ msgstr "Культура працоўнага месца"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:189
+#. js-lingui-explicit-id
+#~ msgid "Workplace Feedback"
+#~ msgstr "Зваротная сувязь на працоўным месцы"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:203
+#. js-lingui-explicit-id
+#~ msgid "Would you trust AI more than humans in critical situations?"
+#~ msgstr ""
+#~ "Ці будзеце вы давяраць штучнаму інтэлекту больш, чым людзям у крытычных "
+#~ "сітуацыях?"
+
+#: src/features/Game/Battle/useBattleQuestions.ts:77
+#. js-lingui-explicit-id
+#~ msgid "Would you trust AI to make important life decisions for you?"
+#~ msgstr "Ці даверылі б вы штучнаму інтэлекту прымаць важныя рашэнні ў вашым жыцці?"
+
+#: src/features/Game/Battle/BattleCard.tsx:218
+#. js-lingui-explicit-id
+#~ msgid "You have completed all the questions."
+#~ msgstr "Вы завяршылі ўсе пытанні."
 
 #: src/features/Blog/blogData.tsx:257
 #. js-lingui-explicit-id
