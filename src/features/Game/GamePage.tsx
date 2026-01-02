@@ -32,13 +32,13 @@ const TabLabel = ({
       <Typography
         component={"span"}
         sx={{
-          color: "#000",
-          fontWeight: "bold",
+          color: badgeHighlight ? "#ff3d00" : "inherit",
+          border: badgeHighlight ? "1px solid #ff3d00" : "1px solid rgba(255, 255, 255, 0.2)",
+          fontWeight: 400,
           borderRadius: "6px",
-          fontSize: "10px",
+          fontSize: "11px",
           padding: "1px 3px",
           minWidth: "16px",
-          backgroundColor: badgeHighlight ? "#ff3d00" : "rgba(244, 244, 244, 0.7)",
         }}
       >
         {badgeNumber}
