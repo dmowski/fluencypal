@@ -127,7 +127,7 @@ export const RecordUserAudioAnswer = ({
           >
             <Button
               variant={isNeedMoreRecording ? "contained" : "outlined"}
-              startIcon={isRecording ? <Check /> : <Mic size={"16px"} />}
+              startIcon={isRecording ? <Check size={"16px"} /> : <Mic size={"16px"} />}
               size="small"
               color={isRecording ? "error" : "primary"}
               sx={{
