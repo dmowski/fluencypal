@@ -427,7 +427,7 @@ msgstr "Domine sua entrevista para Desenvolvedor Backend C#"
 msgid "Achieve Speaking Fluency Fast"
 msgstr "Alcance a Fluência na Fala Rápido"
 
-#: src/features/Game/GameStatRow.tsx:284
+#: src/features/Game/GameStatRow.tsx:298
 #. js-lingui-explicit-id
 msgid "Achievements"
 msgstr "Conquistas"
@@ -455,7 +455,7 @@ msgstr ""
 "Adicione algumas informações sobre por que você deseja um reembolso e nós o "
 "faremos."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:350
+#: src/features/Game/Battle/BattleActionModal.tsx:351
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
 msgstr "Adicionar Resposta de Texto"
@@ -631,7 +631,7 @@ msgstr "Custo do tutor de IA"
 msgid "AI Tutor Updates"
 msgstr "Atualizações do Tutor de IA"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:376
+#: src/features/Game/Battle/BattleActionModal.tsx:377
 #. js-lingui-explicit-id
 msgid "AI will evaluate answers and determine the winner."
 msgstr "A IA avaliará as respostas e determinará o vencedor."
@@ -1985,10 +1985,15 @@ msgstr "Solicitação de Debate"
 msgid "Debate Request Sent!"
 msgstr "Pedido de Debate Enviado!"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:358
+#: src/features/Game/Battle/BattleActionModal.tsx:359
 #. js-lingui-explicit-id
 msgid "Debate started!"
 msgstr "Debate iniciado!"
+
+#: src/features/Game/GameStatRow.tsx:164
+#. js-lingui-explicit-id
+msgid "Debate topics will be selected randomly."
+msgstr "Tópicos de debate serão selecionados aleatoriamente."
 
 #: src/features/Header/NeedHelpModal.tsx:195
 #. js-lingui-explicit-id
@@ -5380,7 +5385,7 @@ msgstr "Introdução: Conversa Informal com o Entrevistador"
 msgid "Invite Link Sent to:"
 msgstr "Convite Enviado Para:"
 
-#: src/features/Game/GameStatRow.tsx:368
+#: src/features/Game/GameStatRow.tsx:241
 #. js-lingui-explicit-id
 msgid "Invite to a debate"
 msgstr "Convite para um debate"
@@ -5799,7 +5804,7 @@ msgstr "Vamos decidir a que ritmo vamos estudar!"
 msgid "Let's go"
 msgstr "Vamos lá"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:359
+#: src/features/Game/Battle/BattleActionModal.tsx:360
 #. js-lingui-explicit-id
 msgid "Let's see who has the best arguments."
 msgstr "Vamos ver quem tem os melhores argumentos."
@@ -6276,7 +6281,7 @@ msgstr "Palavras novas:"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/Battle/BattleActionModal.tsx:360
+#: src/features/Game/Battle/BattleActionModal.tsx:361
 #: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:121
 #: src/features/Goal/GoalQuestions.tsx:503
@@ -6880,7 +6885,7 @@ msgstr "Por favor, toque no menu ⋮ e escolha"
 msgid "Please wait while we process your payment."
 msgstr "Por favor, aguarde enquanto processamos seu pagamento."
 
-#: src/features/Game/GameStatRow.tsx:272
+#: src/features/Game/GameStatRow.tsx:286
 #. js-lingui-explicit-id
 msgid "Points"
 msgstr "Pontos"
@@ -6905,7 +6910,7 @@ msgstr "Português"
 msgid "Portuguese Learning Plan"
 msgstr "Plano de Aprendizagem de Português"
 
-#: src/features/Game/GameStatRow.tsx:255
+#: src/features/Game/GameStatRow.tsx:269
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "Posição"
@@ -9175,13 +9180,17 @@ msgstr ""
 
 #: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id
-msgid "The topics for the debate will be randomly selected."
-msgstr "Os tópicos para o debate serão selecionados aleatoriamente."
+msgid "The request will be sent to user {userName}."
+msgstr "A solicitação será enviada para o usuário {userName}."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:364
-#: src/features/Game/GameStatRow.tsx:162
+#: src/features/Game/Battle/BattleActionModal.tsx:365
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
+msgstr "O vencedor ganha {points} pontos de jogo!"
+
+#: src/features/Game/GameStatRow.tsx:152
+#. js-lingui-explicit-id
+msgid "The winner gets {points} game points!"
 msgstr "O vencedor ganha {points} pontos de jogo!"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:118
@@ -9375,7 +9384,7 @@ msgstr "Ligar Volume"
 msgid "Type a message..."
 msgstr "Digite uma mensagem..."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:333
+#: src/features/Game/Battle/BattleActionModal.tsx:334
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "Digite sua resposta aqui..."
@@ -10302,12 +10311,17 @@ msgstr ""
 "ao vivo e entrevistas comportamentais com foco em React, Vue, Angular, "
 "TypeScript e arquitetura web moderna."
 
+#: src/features/Game/GameStatRow.tsx:169
+#. js-lingui-explicit-id
+msgid "You can track the progress on the main page."
+msgstr "Você pode acompanhar o progresso na página principal."
+
 #: src/features/Blog/BlogOnePage.tsx:283
 #. js-lingui-explicit-id
 msgid "You can try AI in action now"
 msgstr "Você pode experimentar a IA em ação agora"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:329
+#: src/features/Game/Battle/BattleActionModal.tsx:330
 #. js-lingui-explicit-id
 msgid "You can use text to answer if you prefer."
 msgstr "Você pode usar texto para responder, se preferir."
@@ -10396,11 +10410,6 @@ msgstr ""
 msgid "You will get 3 days of full access for free"
 msgstr "Você terá 3 dias de acesso completo gratuitamente"
 
-#: src/features/Game/GameStatRow.tsx:168
-#. js-lingui-explicit-id
-msgid "You will see the response on the main page."
-msgstr "Você verá a resposta na página principal."
-
 #: src/features/Case/data/backendCSharp/quizData.ts:76
 #: src/features/Case/data/frontend-junior/quizData.ts:242
 #: src/features/Case/data/frontend-senior/quizData.ts:361
@@ -10455,13 +10464,13 @@ msgstr "As suas conquistas"
 msgid "Your AI speaking partner"
 msgstr "Seu parceiro de conversação com IA"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:332
+#: src/features/Game/Battle/BattleActionModal.tsx:333
 #: src/features/Survey/RecordUserAudioAnswer.tsx:64
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "Sua resposta"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:370
+#: src/features/Game/Battle/BattleActionModal.tsx:371
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
 msgstr "Suas respostas serão visíveis para o seu adversário após você enviá-las."
@@ -10488,11 +10497,6 @@ msgid ""
 msgstr ""
 "Seu cartão de crédito já foi confirmado. Você pode prosseguir para a "
 "próxima etapa."
-
-#: src/features/Game/GameStatRow.tsx:152
-#. js-lingui-explicit-id
-msgid "Your debate request will be sent to {userName}"
-msgstr "Sua solicitação de debate será enviada para {userName}"
 
 #: src/features/RolePlay/rolePlayData.tsx:162
 #. js-lingui-explicit-id
@@ -10606,6 +10610,21 @@ msgstr ""
 "— é importante participar desta breve conversa antes de mergulhar nos "
 "tópicos profissionais. Aqui estão algumas frases úteis em inglês para "
 "começar a entrevista:"
+
+#: src/features/Game/GameStatRow.tsx:158
+#. js-lingui-explicit-id
+#~ msgid "The topics for the debate will be randomly selected."
+#~ msgstr "Os tópicos para o debate serão selecionados aleatoriamente."
+
+#: src/features/Game/GameStatRow.tsx:168
+#. js-lingui-explicit-id
+#~ msgid "You will see the response on the main page."
+#~ msgstr "Você verá a resposta na página principal."
+
+#: src/features/Game/GameStatRow.tsx:152
+#. js-lingui-explicit-id
+#~ msgid "Your debate request will be sent to {userName}"
+#~ msgstr "Sua solicitação de debate será enviada para {userName}"
 
 #: src/features/Game/Battle/useBattleQuestions.ts:328
 #. js-lingui-explicit-id

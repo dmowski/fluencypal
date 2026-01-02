@@ -323,6 +323,7 @@ export const BattleActionModal = ({
                   width: "100%",
                   gap: "15px",
                   padding: "20px 10px 0 10px",
+                  display: "none",
                 }}
               >
                 <Typography variant="caption">

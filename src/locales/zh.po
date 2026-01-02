@@ -401,7 +401,7 @@ msgstr "掌握你的 C# 后端开发者面试"
 msgid "Achieve Speaking Fluency Fast"
 msgstr "快速实现口语流利"
 
-#: src/features/Game/GameStatRow.tsx:284
+#: src/features/Game/GameStatRow.tsx:298
 #. js-lingui-explicit-id
 msgid "Achievements"
 msgstr "成就"
@@ -427,7 +427,7 @@ msgstr "添加新目标"
 msgid "Add some info why you want a refund and we will do it."
 msgstr "添加一些您要求退款的原因，我们会为您办理。"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:350
+#: src/features/Game/Battle/BattleActionModal.tsx:351
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
 msgstr "添加文字答案"
@@ -599,7 +599,7 @@ msgstr "AI 辅导员费用"
 msgid "AI Tutor Updates"
 msgstr "AI辅导员更新"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:376
+#: src/features/Game/Battle/BattleActionModal.tsx:377
 #. js-lingui-explicit-id
 msgid "AI will evaluate answers and determine the winner."
 msgstr "AI将评估答案并确定获胜者。"
@@ -1884,10 +1884,15 @@ msgstr "辩论请求"
 msgid "Debate Request Sent!"
 msgstr "请求辩论已发送！"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:358
+#: src/features/Game/Battle/BattleActionModal.tsx:359
 #. js-lingui-explicit-id
 msgid "Debate started!"
 msgstr "辩论开始了！"
+
+#: src/features/Game/GameStatRow.tsx:164
+#. js-lingui-explicit-id
+msgid "Debate topics will be selected randomly."
+msgstr "辩论话题将被随机选择。"
 
 #: src/features/Header/NeedHelpModal.tsx:195
 #. js-lingui-explicit-id
@@ -4863,7 +4868,7 @@ msgstr ""
 "\n"
 "邀请链接已发送至：\n"
 
-#: src/features/Game/GameStatRow.tsx:368
+#: src/features/Game/GameStatRow.tsx:241
 #. js-lingui-explicit-id
 msgid "Invite to a debate"
 msgstr "邀请参加辩论"
@@ -5262,7 +5267,7 @@ msgstr "让我们决定我们将以什么速度学习！"
 msgid "Let's go"
 msgstr "我们走吧"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:359
+#: src/features/Game/Battle/BattleActionModal.tsx:360
 #. js-lingui-explicit-id
 msgid "Let's see who has the best arguments."
 msgstr "让我们看看谁的论据最好。"
@@ -5711,7 +5716,7 @@ msgstr "新词："
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/Battle/BattleActionModal.tsx:360
+#: src/features/Game/Battle/BattleActionModal.tsx:361
 #: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:121
 #: src/features/Goal/GoalQuestions.tsx:503
@@ -6281,7 +6286,7 @@ msgstr "请点击菜单 ⋮ 并选择"
 msgid "Please wait while we process your payment."
 msgstr "请稍候，我们正在处理您的付款。"
 
-#: src/features/Game/GameStatRow.tsx:272
+#: src/features/Game/GameStatRow.tsx:286
 #. js-lingui-explicit-id
 msgid "Points"
 msgstr "积分"
@@ -6306,7 +6311,7 @@ msgstr "葡萄牙语"
 msgid "Portuguese Learning Plan"
 msgstr "葡萄牙语学习计划"
 
-#: src/features/Game/GameStatRow.tsx:255
+#: src/features/Game/GameStatRow.tsx:269
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "位置"
@@ -8409,14 +8414,18 @@ msgstr "个性化反馈准确地指出了我在技术解释中的错误之处。
 
 #: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id
-msgid "The topics for the debate will be randomly selected."
-msgstr "辩论的主题将被随机选定。"
+msgid "The request will be sent to user {userName}."
+msgstr "请求将被发送给用户 {userName}。"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:364
-#: src/features/Game/GameStatRow.tsx:162
+#: src/features/Game/Battle/BattleActionModal.tsx:365
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "获胜者获得 {points} 游戏积分！"
+
+#: src/features/Game/GameStatRow.tsx:152
+#. js-lingui-explicit-id
+msgid "The winner gets {points} game points!"
+msgstr "获胜者将获得 {points} 个游戏积分！"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:118
 #. js-lingui-explicit-id
@@ -8603,7 +8612,7 @@ msgstr "打开音量"
 msgid "Type a message..."
 msgstr "输入消息..."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:333
+#: src/features/Game/Battle/BattleActionModal.tsx:334
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "在此输入您的答案..."
@@ -9442,12 +9451,17 @@ msgstr ""
 "您可以练习高级前端、领导和资深级别的面试，包括技术轮次、前端系统设计、现场编码，以及专注于 React、Vue、Angular、TypeScript "
 "和现代 Web 架构的行为面试。"
 
+#: src/features/Game/GameStatRow.tsx:169
+#. js-lingui-explicit-id
+msgid "You can track the progress on the main page."
+msgstr "您可以在主页上跟踪进度。"
+
 #: src/features/Blog/BlogOnePage.tsx:283
 #. js-lingui-explicit-id
 msgid "You can try AI in action now"
 msgstr "您现在可以尝试AI的实际操作"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:329
+#: src/features/Game/Battle/BattleActionModal.tsx:330
 #. js-lingui-explicit-id
 msgid "You can use text to answer if you prefer."
 msgstr "您可以使用文字回答，如果您愿意的话。"
@@ -9521,11 +9535,6 @@ msgstr "你将回答有关 .NET、API、数据库、并发性和系统设计的�
 msgid "You will get 3 days of full access for free"
 msgstr "您将获得 3 天的完整免费访问权限"
 
-#: src/features/Game/GameStatRow.tsx:168
-#. js-lingui-explicit-id
-msgid "You will see the response on the main page."
-msgstr "您将在主页面看到回复。"
-
 #: src/features/Case/data/backendCSharp/quizData.ts:76
 #: src/features/Case/data/frontend-junior/quizData.ts:242
 #: src/features/Case/data/frontend-senior/quizData.ts:361
@@ -9576,13 +9585,13 @@ msgstr "你的成就"
 msgid "Your AI speaking partner"
 msgstr "您的AI对话伙伴"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:332
+#: src/features/Game/Battle/BattleActionModal.tsx:333
 #: src/features/Survey/RecordUserAudioAnswer.tsx:64
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "你的答案"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:370
+#: src/features/Game/Battle/BattleActionModal.tsx:371
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
 msgstr "您的答案在提交后将对您的对手可见。"
@@ -9605,11 +9614,6 @@ msgid ""
 "Your credit card has already been confirmed. You can proceed to the next "
 "step."
 msgstr "您的信用卡已确认。您可以继续执行下一步。"
-
-#: src/features/Game/GameStatRow.tsx:152
-#. js-lingui-explicit-id
-msgid "Your debate request will be sent to {userName}"
-msgstr "你的辩论请求将发送给 {userName}"
 
 #: src/features/RolePlay/rolePlayData.tsx:162
 #. js-lingui-explicit-id
@@ -9714,6 +9718,21 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Game/GameStatRow.tsx:158
+#. js-lingui-explicit-id
+#~ msgid "The topics for the debate will be randomly selected."
+#~ msgstr "辩论的主题将被随机选定。"
+
+#: src/features/Game/GameStatRow.tsx:168
+#. js-lingui-explicit-id
+#~ msgid "You will see the response on the main page."
+#~ msgstr "您将在主页面看到回复。"
+
+#: src/features/Game/GameStatRow.tsx:152
+#. js-lingui-explicit-id
+#~ msgid "Your debate request will be sent to {userName}"
+#~ msgstr "你的辩论请求将发送给 {userName}"
 
 #: src/features/Game/Battle/useBattleQuestions.ts:328
 #. js-lingui-explicit-id

@@ -149,23 +149,24 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
                     width={"600px"}
                     listItems={[
                       {
-                        title: i18n._("Your debate request will be sent to {userName}", {
+                        title: i18n._("The winner gets {points} game points!", {
+                          points: BATTLE_WIN_POINTS,
+                        }),
+                        iconName: "crown",
+                      },
+                      {
+                        title: i18n._("The request will be sent to user {userName}.", {
                           userName,
                         }),
                         iconName: "message-circle",
                       },
                       {
-                        title: i18n._("The topics for the debate will be randomly selected."),
+                        title: i18n._("Debate topics will be selected randomly."),
                         iconName: "messages-square",
                       },
+
                       {
-                        title: i18n._("The winner earns {points} game points!", {
-                          points: BATTLE_WIN_POINTS,
-                        }),
-                        iconName: "coins",
-                      },
-                      {
-                        title: i18n._("You will see the response on the main page."),
+                        title: i18n._("You can track the progress on the main page."),
                         iconName: "bell",
                       },
                     ]}
@@ -227,6 +228,19 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
                 </Typography>
               </Stack>
             </Stack>
+
+            {!isMe && IS_BATTLE_FEATURE_ENABLED && (
+              <Button
+                variant="contained"
+                color="info"
+                size="large"
+                disabled={isAlreadyAskedForBattle}
+                startIcon={<Swords />}
+                onClick={() => setIsAskForDebates(true)}
+              >
+                {i18n._("Invite to a debate")}
+              </Button>
+            )}
 
             <Stack
               sx={{
@@ -357,17 +371,6 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
                 })}
               </Stack>
             </Stack>
-
-            {!isMe && IS_BATTLE_FEATURE_ENABLED && (
-              <Button
-                variant="contained"
-                disabled={isAlreadyAskedForBattle}
-                startIcon={<Swords />}
-                onClick={() => setIsAskForDebates(true)}
-              >
-                {i18n._("Invite to a debate")}
-              </Button>
-            )}
           </Stack>
         </CustomModal>
       )}

@@ -397,7 +397,7 @@ msgstr "C# 백엔드 개발자 면접에서 성공하세요"
 msgid "Achieve Speaking Fluency Fast"
 msgstr "빠른 말하기 유창성 달성하기"
 
-#: src/features/Game/GameStatRow.tsx:284
+#: src/features/Game/GameStatRow.tsx:298
 #. js-lingui-explicit-id
 msgid "Achievements"
 msgstr "업적"
@@ -423,7 +423,7 @@ msgstr "새 목표 추가"
 msgid "Add some info why you want a refund and we will do it."
 msgstr "환불을 원하는 이유를 몇 가지 추가해 주시면 처리해 드리겠습니다."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:350
+#: src/features/Game/Battle/BattleActionModal.tsx:351
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
 msgstr "텍스트 답변 추가"
@@ -596,7 +596,7 @@ msgstr "AI 튜터 비용"
 msgid "AI Tutor Updates"
 msgstr "AI 튜터 업데이트"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:376
+#: src/features/Game/Battle/BattleActionModal.tsx:377
 #. js-lingui-explicit-id
 msgid "AI will evaluate answers and determine the winner."
 msgstr "AI가 답변을 평가하고 승자를 결정합니다."
@@ -1892,10 +1892,15 @@ msgstr "토론 요청"
 msgid "Debate Request Sent!"
 msgstr "토론 요청이 전송되었습니다!"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:358
+#: src/features/Game/Battle/BattleActionModal.tsx:359
 #. js-lingui-explicit-id
 msgid "Debate started!"
 msgstr "토론이 시작되었습니다!"
+
+#: src/features/Game/GameStatRow.tsx:164
+#. js-lingui-explicit-id
+msgid "Debate topics will be selected randomly."
+msgstr "토론 주제는 무작위로 선택됩니다."
 
 #: src/features/Header/NeedHelpModal.tsx:195
 #. js-lingui-explicit-id
@@ -4959,7 +4964,7 @@ msgstr ""
 "\n"
 "초대 링크가 전송되었습니다:\n"
 
-#: src/features/Game/GameStatRow.tsx:368
+#: src/features/Game/GameStatRow.tsx:241
 #. js-lingui-explicit-id
 msgid "Invite to a debate"
 msgstr "토론에 초대하기"
@@ -5362,7 +5367,7 @@ msgstr "우리가 어떤 속도로 공부할지 결정해봅시다!"
 msgid "Let's go"
 msgstr "가자"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:359
+#: src/features/Game/Battle/BattleActionModal.tsx:360
 #. js-lingui-explicit-id
 msgid "Let's see who has the best arguments."
 msgstr "누가 가장 설득력 있는 주장을 펼치는지 봅시다."
@@ -5814,7 +5819,7 @@ msgstr "새로운 단어:"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/Battle/BattleActionModal.tsx:360
+#: src/features/Game/Battle/BattleActionModal.tsx:361
 #: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:121
 #: src/features/Goal/GoalQuestions.tsx:503
@@ -6387,7 +6392,7 @@ msgstr "메뉴 ⋮를 탭하고 선택해 주세요"
 msgid "Please wait while we process your payment."
 msgstr "결제를 처리하는 동안 기다려 주세요."
 
-#: src/features/Game/GameStatRow.tsx:272
+#: src/features/Game/GameStatRow.tsx:286
 #. js-lingui-explicit-id
 msgid "Points"
 msgstr "포인트"
@@ -6412,7 +6417,7 @@ msgstr "포르투갈어"
 msgid "Portuguese Learning Plan"
 msgstr "포르투갈어 학습 계획"
 
-#: src/features/Game/GameStatRow.tsx:255
+#: src/features/Game/GameStatRow.tsx:269
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "위치"
@@ -8545,14 +8550,20 @@ msgstr "맞춤형 피드백은 제가 기술적 설명에서 무엇을 잘못하
 
 #: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id
-msgid "The topics for the debate will be randomly selected."
-msgstr "토론 주제는 무작위로 선택됩니다."
+msgid "The request will be sent to user {userName}."
+msgstr ""
+"plaintext\n"
+"요청이 사용자 {userName}에게 전송됩니다.\n"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:364
-#: src/features/Game/GameStatRow.tsx:162
+#: src/features/Game/Battle/BattleActionModal.tsx:365
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "승자는 {points} 게임 포인트를 획득합니다!"
+
+#: src/features/Game/GameStatRow.tsx:152
+#. js-lingui-explicit-id
+msgid "The winner gets {points} game points!"
+msgstr "우승자는 {points} 게임 포인트를 받습니다!"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:118
 #. js-lingui-explicit-id
@@ -8743,7 +8754,7 @@ msgstr "볼륨 켜기"
 msgid "Type a message..."
 msgstr "메시지를 입력하세요..."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:333
+#: src/features/Game/Battle/BattleActionModal.tsx:334
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "여기에 답변을 입력하세요..."
@@ -9597,12 +9608,17 @@ msgstr ""
 "시니어 프론트엔드, 리드 및 스태프급 인터뷰를 포함하여 기술 라운드, 프론트엔드 시스템 디자인, 라이브 코딩, 행동 인터뷰를 "
 "React, Vue, Angular, TypeScript, 현대 웹 아키텍처에 중점을 두고 연습할 수 있습니다."
 
+#: src/features/Game/GameStatRow.tsx:169
+#. js-lingui-explicit-id
+msgid "You can track the progress on the main page."
+msgstr "메인 페이지에서 진행 상황을 추적할 수 있습니다."
+
 #: src/features/Blog/BlogOnePage.tsx:283
 #. js-lingui-explicit-id
 msgid "You can try AI in action now"
 msgstr "지금 바로 AI를 시도해 볼 수 있습니다"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:329
+#: src/features/Game/Battle/BattleActionModal.tsx:330
 #. js-lingui-explicit-id
 msgid "You can use text to answer if you prefer."
 msgstr "텍스트를 사용하여 답변할 수 있습니다."
@@ -9676,11 +9692,6 @@ msgstr ".NET, API, 데이터베이스, 동시성 및 시스템 설계에 대한 
 msgid "You will get 3 days of full access for free"
 msgstr "3일 동안 전체 액세스를 무료로 이용하실 수 있습니다"
 
-#: src/features/Game/GameStatRow.tsx:168
-#. js-lingui-explicit-id
-msgid "You will see the response on the main page."
-msgstr "메인 페이지에서 응답을 볼 수 있습니다."
-
 #: src/features/Case/data/backendCSharp/quizData.ts:76
 #: src/features/Case/data/frontend-junior/quizData.ts:242
 #: src/features/Case/data/frontend-senior/quizData.ts:361
@@ -9731,13 +9742,13 @@ msgstr "당신의 성과"
 msgid "Your AI speaking partner"
 msgstr "당신의 AI 스피킹 파트너"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:332
+#: src/features/Game/Battle/BattleActionModal.tsx:333
 #: src/features/Survey/RecordUserAudioAnswer.tsx:64
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "당신의 답변"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:370
+#: src/features/Game/Battle/BattleActionModal.tsx:371
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
 msgstr "당신의 답변은 제출 후 상대방에게 보이게 됩니다."
@@ -9760,11 +9771,6 @@ msgid ""
 "Your credit card has already been confirmed. You can proceed to the next "
 "step."
 msgstr "귀하의 신용카드는 이미 확인되었습니다. 다음 단계로 진행할 수 있습니다."
-
-#: src/features/Game/GameStatRow.tsx:152
-#. js-lingui-explicit-id
-msgid "Your debate request will be sent to {userName}"
-msgstr "{userName}님에게 토론 요청이 전송됩니다."
 
 #: src/features/RolePlay/rolePlayData.tsx:162
 #. js-lingui-explicit-id
@@ -9871,6 +9877,21 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Game/GameStatRow.tsx:158
+#. js-lingui-explicit-id
+#~ msgid "The topics for the debate will be randomly selected."
+#~ msgstr "토론 주제는 무작위로 선택됩니다."
+
+#: src/features/Game/GameStatRow.tsx:168
+#. js-lingui-explicit-id
+#~ msgid "You will see the response on the main page."
+#~ msgstr "메인 페이지에서 응답을 볼 수 있습니다."
+
+#: src/features/Game/GameStatRow.tsx:152
+#. js-lingui-explicit-id
+#~ msgid "Your debate request will be sent to {userName}"
+#~ msgstr "{userName}님에게 토론 요청이 전송됩니다."
 
 #: src/features/Game/Battle/useBattleQuestions.ts:328
 #. js-lingui-explicit-id
