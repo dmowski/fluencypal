@@ -27,7 +27,7 @@ const TabLabel = ({
   badgeHighlight?: boolean;
 }) => {
   return (
-    <Stack sx={{ flexDirection: "row", gap: "6px", alignItems: "center" }}>
+    <Stack sx={{ flexDirection: "row", gap: "5px", alignItems: "center" }}>
       <Typography variant="caption">{label}</Typography>
       <Typography
         component={"span"}
@@ -37,6 +37,7 @@ const TabLabel = ({
           borderRadius: "6px",
           fontSize: "10px",
           padding: "1px 3px",
+          minWidth: "16px",
           backgroundColor: badgeHighlight ? "#ff3d00" : "rgba(244, 244, 244, 0.7)",
         }}
       >
@@ -157,7 +158,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                   label={<TabLabel label={i18n._(`Global`)} badgeNumber={globalGamers} />}
                   value={0}
                   sx={{
-                    padding: "0 7px 0 10px",
+                    padding: "0 10px 0 10px",
                     minWidth: "unset",
                   }}
                 />
@@ -165,13 +166,13 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                   label={<TabLabel label={i18n._(`Today`)} badgeNumber={todayGamers} />}
                   value={1}
                   sx={{
-                    padding: "0 7px 0 10px",
+                    padding: "0 10px 0 10px",
                     minWidth: "unset",
                   }}
                 />
                 <Tab
                   sx={{
-                    padding: "0 7px 0 10px",
+                    padding: "0 10px 0 10px",
                     minWidth: "unset",
                   }}
                   label={
@@ -186,7 +187,6 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               </Tabs>
 
               {activeTab < 2 && <GameStats activeTab={activeTab === 0 ? "global" : "today"} />}
-
               {activeTab === 2 && <ChartSection />}
             </Stack>
           </Stack>
