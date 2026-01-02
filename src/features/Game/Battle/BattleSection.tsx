@@ -7,6 +7,7 @@ import { ChevronDown } from "lucide-react";
 import { useAuth } from "@/features/Auth/useAuth";
 
 const defaultLimit = 1;
+
 export const BattleSection = () => {
   const battles = useBattle();
   const { i18n } = useLingui();
@@ -15,9 +16,14 @@ export const BattleSection = () => {
 
   const [isLimited, setIsLimited] = useState(true);
 
-  const actualBattles = battles.battles.filter((battle) =>
-    userId ? battle.usersIds.includes(userId) : false
-  );
+  const actualBattles = battles.battles
+    .filter((battle) => {
+      const isMyBattle = userId ? battle.usersIds.includes(userId) : false;
+      return isMyBattle;
+    })
+    .sort((a, b) => {
+      return b.updatedAtIso.localeCompare(a.updatedAtIso);
+    });
 
   const battlesToShow = actualBattles.filter((battle, index) => {
     if (!isLimited) {
