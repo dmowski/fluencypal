@@ -157,19 +157,22 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                   label={<TabLabel label={i18n._(`Global`)} badgeNumber={globalGamers} />}
                   value={0}
                   sx={{
-                    padding: 0,
+                    padding: "0 7px 0 10px",
+                    minWidth: "unset",
                   }}
                 />
                 <Tab
                   label={<TabLabel label={i18n._(`Today`)} badgeNumber={todayGamers} />}
                   value={1}
                   sx={{
-                    padding: 0,
+                    padding: "0 7px 0 10px",
+                    minWidth: "unset",
                   }}
                 />
                 <Tab
                   sx={{
-                    padding: 0,
+                    padding: "0 7px 0 10px",
+                    minWidth: "unset",
                   }}
                   label={
                     <TabLabel
