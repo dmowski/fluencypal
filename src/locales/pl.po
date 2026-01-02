@@ -458,7 +458,7 @@ msgstr "Plan działań na poprawę kluczowych umiejętności backendowych"
 msgid "Active"
 msgstr "Aktywne"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:407
+#: src/features/Dashboard/PlanDashboardCards.tsx:319
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "Dodaj nowy cel"
@@ -839,7 +839,7 @@ msgstr "Czy są jakieś ukryte opłaty?"
 msgid "Are you sure you want to delete your account?"
 msgstr "Czy na pewno chcesz usunąć swoje konto?"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:95
+#: src/features/Dashboard/PlanDashboardCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "Czy na pewno chcesz usunąć swój cel? Tej akcji nie można cofnąć."
@@ -1676,7 +1676,7 @@ msgid "Contract Tests"
 msgstr "Testy Umów"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:109
-#: src/features/Dashboard/PlanDashboardCards.tsx:109
+#: src/features/Dashboard/PlanDashboardCards.tsx:97
 #: src/features/Goal/Quiz/GoalReview.tsx:20
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
 #: src/features/Landing/PlanLandingBlock.tsx:278
@@ -1761,12 +1761,12 @@ msgstr "Poprawki, gdy utkniesz"
 msgid "Could not find page"
 msgstr "Nie można znaleźć strony"
 
-#: src/features/Conversation/ConversationPage.tsx:162
+#: src/features/Conversation/ConversationPage.tsx:152
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Tworzenie nowej reguły..."
 
-#: src/features/Conversation/ConversationPage.tsx:158
+#: src/features/Conversation/ConversationPage.tsx:148
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Tworzenie nowych słów..."
@@ -2024,7 +2024,7 @@ msgstr "Usuń konto"
 msgid "Delete account (Total)"
 msgstr "Usuń konto (Całkowite)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:580
+#: src/features/Dashboard/PlanDashboardCards.tsx:492
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Usuń aktualny cel"
@@ -3473,12 +3473,12 @@ msgstr "Pełny dostęp do AI nauczyciela"
 msgid "Game"
 msgstr "Gra"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:597
+#: src/features/Dashboard/PlanDashboardCards.tsx:509
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Generuj więcej unikalnych lekcji"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:596
+#: src/features/Dashboard/PlanDashboardCards.tsx:508
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Generowanie..."
@@ -3731,8 +3731,8 @@ msgstr "Przejdź do strony głównej"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1360
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:348
-#: src/features/Dashboard/PlanDashboardCards.tsx:552
+#: src/features/Dashboard/PlanDashboardCards.tsx:260
+#: src/features/Dashboard/PlanDashboardCards.tsx:464
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Cel"
@@ -4888,7 +4888,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "W mniej niż 5 minut otrzymasz:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:607
+#: src/features/Dashboard/PlanDashboardCards.tsx:519
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Aby wygenerować więcej lekcji, musisz ukończyć przynajmniej 3 lekcje"
@@ -5783,7 +5783,7 @@ msgstr "Naucz się przydatnych słów, abyś nigdy nie zaniemówił w połowie z
 msgid "Learning Blog"
 msgstr "Blog o nauce"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:325
+#: src/features/Dashboard/PlanDashboardCards.tsx:237
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Plan nauki"
@@ -5871,7 +5871,7 @@ msgstr "Upewnijmy się, że jesteś gotowy"
 msgid "Literature & Fiction"
 msgstr "Literatura i Fikcja"
 
-#: src/features/Conversation/ConversationPage.tsx:134
+#: src/features/Conversation/ConversationPage.tsx:124
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Ładowanie Celu..."
@@ -5889,9 +5889,9 @@ msgstr "Ładowanie.."
 
 #: src/features/Conversation/ConversationCanvas2.tsx:334
 #: src/features/Conversation/ConversationCanvas2.tsx:1336
-#: src/features/Conversation/ConversationPage.tsx:121
-#: src/features/Conversation/ConversationPage.tsx:130
-#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Conversation/ConversationPage.tsx:111
+#: src/features/Conversation/ConversationPage.tsx:120
+#: src/features/Conversation/ConversationPage.tsx:140
 #: src/features/Game/GamePage.tsx:56
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:34
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:34
@@ -6174,7 +6174,7 @@ msgstr "Więcej informacji oznacza lepsze rezultaty."
 msgid "More options"
 msgstr "Więcej opcji"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:548
+#: src/features/Dashboard/PlanDashboardCards.tsx:460
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Więcej unikalnych lekcji"
@@ -6534,11 +6534,6 @@ msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr ""
 "Powiadomienie zostało wysłane do zespołu deweloperskiego. Przepraszamy za "
 "to..."
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:217
-#. js-lingui-explicit-id
-msgid "Now let’s determine your starting point!"
-msgstr "Teraz ustalmy twój punkt wyjścia!"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:298
 #. js-lingui-explicit-id
@@ -7914,7 +7909,7 @@ msgstr "Zwracanie towaru do sklepu"
 msgid "Robot Thinking"
 msgstr "Robot Myśli"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:110
+#: src/features/Dashboard/PlanDashboardCards.tsx:98
 #: src/features/Goal/Quiz/GoalReview.tsx:21
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
@@ -7970,7 +7965,7 @@ msgstr "Podgląd odgrywania ról"
 msgid "Routing"
 msgstr "Routing"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:112
+#: src/features/Dashboard/PlanDashboardCards.tsx:100
 #: src/features/Goal/Quiz/GoalReview.tsx:23
 #: src/features/Landing/PlanLandingBlock.tsx:281
 #. js-lingui-explicit-id
@@ -8272,7 +8267,7 @@ msgstr "Pokaż więcej"
 msgid "Show More"
 msgstr "Pokaż więcej"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:511
+#: src/features/Dashboard/PlanDashboardCards.tsx:423
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Pokaż więcej lekcji"
@@ -8461,7 +8456,7 @@ msgstr ""
 "Solidna wiedza o ASP.NET Core i EF Core. Pewne braki w zakresie wzorców "
 "odporności i obserwowalności."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:193
+#: src/features/Dashboard/PlanDashboardCards.tsx:181
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr ""
@@ -8525,8 +8520,7 @@ msgid "Stars"
 msgstr "Gwiazdy"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/PlanDashboardCards.tsx:270
-#: src/features/Dashboard/PlanDashboardCards.tsx:495
+#: src/features/Dashboard/PlanDashboardCards.tsx:407
 #: src/features/Goal/Quiz/GoalReview.tsx:138
 #: src/features/Goal/Quiz/PlanPreview.tsx:74
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -8641,7 +8635,7 @@ msgstr "Rozpocznij swój test rozmowy kwalifikacyjnej"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Rozpocznij swoją podróż do płynnych konwersacji już teraz"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:349
+#: src/features/Dashboard/PlanDashboardCards.tsx:261
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Rozpocznij swoją drogę do biegłości"
@@ -9841,7 +9835,7 @@ msgstr ""
 "przez jeden\n"
 "              rok."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:556
+#: src/features/Dashboard/PlanDashboardCards.tsx:468
 #. js-lingui-explicit-id
 msgid "We will help you to learn the language you need"
 msgstr "Pomożemy ci nauczyć się języka, którego potrzebujesz"
@@ -10104,7 +10098,7 @@ msgid "Word Stats"
 msgstr "Statystyki słów"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:182
-#: src/features/Dashboard/PlanDashboardCards.tsx:111
+#: src/features/Dashboard/PlanDashboardCards.tsx:99
 #: src/features/Goal/Quiz/GoalReview.tsx:22
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
@@ -10697,6 +10691,11 @@ msgstr ""
 "— ważne jest, aby zaangażować się w tę krótką rozmowę przed poruszeniem "
 "tematów zawodowych. Oto kilka przydatnych angielskich zwrotów, które pomogą "
 "rozpocząć wywiad:"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:217
+#. js-lingui-explicit-id
+#~ msgid "Now let’s determine your starting point!"
+#~ msgstr "Teraz ustalmy twój punkt wyjścia!"
 
 #: src/features/Landing/PlanLandingBlock.tsx:588
 #. js-lingui-explicit-id
