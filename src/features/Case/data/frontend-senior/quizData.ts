@@ -298,33 +298,6 @@ Finish the plan with salary negotiation steps.
         aiResponseFormat: "practice-plan",
       },
 
-      /*
-      {
-        type: "options",
-        id: "payment-plan",
-        title: i18n._("Which plan is right for you?"),
-        subTitle: i18n._("No payment after trial. Cancel anytime."),
-        multipleSelection: false,
-        options: [
-          { label: i18n._("Free"), subTitle: i18n._("1 days of full access") },
-          { label: i18n._("1 week, 30$"), subTitle: i18n._("3 days free trial") }, /// xxx
-          { label: i18n._("1 month, 60$"), subTitle: i18n._("3 days free trial") },
-          { label: i18n._("4 month, 90$"), subTitle: i18n._("4 days free trial") },
-        ],
-        buttonTitle: i18n._("See Results"),
-      },
-
-      {
-        type: "paywall",
-        id: "upgrade-step",
-        title: i18n._("Unlock Your Trial and Get Full Feedback"),
-        subTitle: i18n._("No payment required after trial. You decide when to pay."),
-        listItems: [],
-        buttonTitle: i18n._("Start Trial"),
-      },
-
-      */
-
       {
         type: "analyze-inputs",
         id: "ai-feedback-step-2",

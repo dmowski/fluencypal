@@ -41,7 +41,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
     {
       question: i18n._(`Is there a free trial?`),
       answer: i18n._(
-        `Yes. FluencyPal offers a free 3-day trial with full access to all features. No credit card is required to start the trial.`
+        `Yes. FluencyPal offers a free 1-day trial with full access to all features. No credit card is required to start the trial.`
       ),
     },
 

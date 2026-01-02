@@ -62,7 +62,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`Is there a free trial?`),
       answer: i18n._(
-        `Yes. FluencyPal offers a free 3-day trial with full access to all features. No credit card is required to start the trial. After the trial, you can continue with a paid plan or earn free access through the game.`
+        `Yes. FluencyPal offers a free 1-day trial with full access to all features. No credit card is required to start the trial. After the trial, you can continue with a paid plan or earn free access through the game.`
       ),
     },
 
