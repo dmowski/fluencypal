@@ -330,7 +330,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "5px",
-                paddingLeft: languageGoals.length > 1 ? "20px" : "10px",
               }}
             >
               {languageGoals.length > 1 && (
