@@ -33,6 +33,8 @@ interface BattleContextType {
 
   submitAnswers: (battleId: string) => Promise<SubmitResult>;
 
+  closeBattle: (battleId: string) => Promise<void>;
+
   loading: boolean;
 }
 
@@ -92,10 +94,11 @@ function useProvideBattle(): BattleContextType {
       approvedUsersIds: [userId],
       rejectedUsersIds: [],
       betPoints: BATTLE_WIN_POINTS,
-      questionsIds: [...getRandomQuestionsIds(3)],
+      questionsIds: [...getRandomQuestionsIds(2)],
       answers: [],
       submittedUsersIds: [],
       winnerUserId: null,
+      hiddenByUsersIds: [],
       winnerDescription: "",
     };
     const battleDoc = doc(battlesRef, id);
@@ -111,6 +114,19 @@ function useProvideBattle(): BattleContextType {
     await editBattle(battleId, {
       ...battle,
       approvedUsersIds: updatedApprovedUsersIds,
+    });
+  };
+
+  const closeBattle = async (battleId: string) => {
+    // set hiddenByUsersIds to include current user
+    const battle = battles?.find((b) => b.battleId === battleId);
+    if (!battle) return;
+
+    const updatedHiddenByUsersIds = uniq([...(battle.hiddenByUsersIds || []), userId]);
+
+    await editBattle(battleId, {
+      ...battle,
+      hiddenByUsersIds: updatedHiddenByUsersIds,
     });
   };
 
@@ -223,6 +239,8 @@ Please provide your decision in the following JSON format:
     battles: sortedBattles,
     loading,
     acceptBattle,
+
+    closeBattle,
 
     createBattle: addBattle,
     deleteBattle,

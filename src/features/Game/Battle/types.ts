@@ -16,6 +16,8 @@ export interface GameBattle {
   approvedUsersIds: string[];
   rejectedUsersIds: string[];
 
+  hiddenByUsersIds: string[];
+
   createdAtIso: string;
 
   betPoints: number;

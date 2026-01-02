@@ -105,7 +105,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
   };
 
   const isAlreadyAskedForBattle = battle.battles.some((b) => {
-    return b.usersIds.includes(userId) && b.usersIds.includes(stat.userId);
+    return b.usersIds.includes(userId) && b.usersIds.includes(stat.userId) && !b.winnerUserId;
   });
 
   return (
@@ -135,6 +135,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
                     onClick={() => {
                       setIsAskForDebates(false);
                       setIsBattleRequested(false);
+                      setIsShowUserInfoModal(false);
                     }}
                   />
                 ) : (
@@ -364,7 +365,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
                 startIcon={<Swords />}
                 onClick={() => setIsAskForDebates(true)}
               >
-                {i18n._("Ask for debate")}
+                {i18n._("Invite to a debate")}
               </Button>
             )}
           </Stack>
