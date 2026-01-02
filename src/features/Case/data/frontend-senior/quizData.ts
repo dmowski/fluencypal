@@ -338,18 +338,6 @@ Finish the plan with salary negotiation steps.
         listItems: [],
         buttonTitle: i18n._("Open Dashboard"),
       },
-      /*
-      {
-        type: "waitlist-done",
-        id: "completion-step",
-        title: i18n._("You're All Set!"),
-        subTitle: i18n._(
-          "Thank you for completing the Senior Frontend Developer interview prep. You will be notified via email once your trial is activated. It may take some time."
-        ),
-        listItems: [],
-        buttonTitle: i18n._("Return to Dashboard"),
-      },
-      */
     ],
   };
 };

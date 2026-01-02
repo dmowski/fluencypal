@@ -148,7 +148,7 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
                         : [
                             {
                               iconName: "sparkles",
-                              title: i18n._("You will get 3 days of full access for free"),
+                              title: i18n._("You will get a trial period of full access for free"),
                             },
                             {
                               iconName: "piggy-bank",
