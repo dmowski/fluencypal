@@ -138,12 +138,12 @@ Each word should be generated along with 4 ${isSameLanguage ? "synonyms" : "tran
 Do not wrap your answer in any intro or outro.
 
 Example of your response:
-* Dog - ${isSameLanguage ? "animal, bird, helicopter" : "пес, кошка, кот, зебра"}
-* Wolf - ${isSameLanguage ? "animal, bird, helicopter" : "волк, стакан, лиса, медведь"}
+* Dog = ${isSameLanguage ? "animal, bird, helicopter" : "пес, кошка, кот, зебра"}
+* Wolf = ${isSameLanguage ? "animal, bird, helicopter" : "волк, стакан, лиса, медведь"}
 
 
 Format of your response:
-* Word - option1, option2, option3, option4
+* Word = option1, option2, option3, option4
 
 Strictly follow the formate, because it will be parsed by the code.
 `,
@@ -154,10 +154,10 @@ Strictly follow the formate, because it will be parsed by the code.
   console.log("Words output");
   console.log(output);
 
-  const lines = output.split("\n").filter((line) => line.trim().length > 0 && line.includes("-"));
+  const lines = output.split("\n").filter((line) => line.trim().length > 0 && line.includes("="));
 
   const allQuestions: QuestionOutput[] = lines.map((line, index) => {
-    const wordAndOptions = line.split("-");
+    const wordAndOptions = line.split("=");
     let word = wordAndOptions[0]?.trim() || "";
     word = word.replace(/[*]/g, "").trim(); // Remove any asterisks if present
     // remove start number if present
