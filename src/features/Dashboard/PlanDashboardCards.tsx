@@ -408,9 +408,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 }
                 actionLabel={i18n._(`Start`)}
                 isLimited={!usage.isFullAccess}
-                onLimitedClick={() => {
-                  usage.togglePaymentModal(true);
-                }}
+                onLimitedClick={() => usage.togglePaymentModal(true)}
               />
             );
           })}

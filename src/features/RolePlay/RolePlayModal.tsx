@@ -17,6 +17,8 @@ import { RolePlayInputType } from "./types";
 
 import { useRolePlay } from "./useRolePlay";
 import { useLingui } from "@lingui/react";
+import { useUsage } from "../Usage/useUsage";
+import { TrialEndedSection } from "../Usage/TrialEndedSection";
 
 export const RolePlayModal = () => {
   const {
@@ -27,6 +29,8 @@ export const RolePlayModal = () => {
     setUserInputs,
     isStarting,
   } = useRolePlay();
+
+  const usage = useUsage();
 
   const { i18n } = useLingui();
 
@@ -255,17 +259,23 @@ export const RolePlayModal = () => {
                 </Stack>
               )}
 
-              <Button
-                sx={{
-                  padding: "10px 30px",
-                }}
-                size="large"
-                variant="contained"
-                type="submit"
-                disabled={isStarting}
-              >
-                {isStarting ? i18n._(`Loading...`) : i18n._(`Start`)}
-              </Button>
+              {!usage.isFullAccess ? (
+                <TrialEndedSection onLimitedClick={() => usage.togglePaymentModal(true)} />
+              ) : (
+                <>
+                  <Button
+                    sx={{
+                      padding: "10px 30px",
+                    }}
+                    size="large"
+                    variant="contained"
+                    type="submit"
+                    disabled={isStarting}
+                  >
+                    {isStarting ? i18n._(`Loading...`) : i18n._(`Start`)}
+                  </Button>
+                </>
+              )}
             </Stack>
           </Stack>
         </CustomModal>

@@ -9,6 +9,7 @@ interface RolePlayCardProps {
 
 export const RolePlayCardApp = ({ scenario, onClick }: RolePlayCardProps) => {
   const { i18n } = useLingui();
+
   return (
     <Stack
       sx={{
