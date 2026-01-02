@@ -18,6 +18,8 @@ import { useChat } from "./useChat";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAuth } from "../Auth/useAuth";
+import { useGame } from "../Game/useGame";
+import { UserProfileModal } from "../Game/UserProfileModal";
 
 interface MessageProps {
   message: UserChatMessage;
@@ -63,6 +65,11 @@ export function Message({
     setIsDeleting(false);
   };
 
+  const authorId = message.senderId;
+  const game = useGame();
+  const gameStat = game.stats.find((stat) => stat.userId === authorId);
+  const [isShowModal, setIsShowModal] = useState(false);
+
   return (
     <Box
       sx={{
@@ -70,8 +77,12 @@ export function Message({
         p: 2,
         border: "1px solid rgba(255, 255, 255, 0.1)",
         borderRadius: "10px",
+        backgroundColor: "rgba(255, 255, 255, 0.01)",
       }}
     >
+      {isShowModal && gameStat && (
+        <UserProfileModal stat={gameStat} onClose={() => setIsShowModal(false)} />
+      )}
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
         <Stack
           sx={{
@@ -83,22 +94,46 @@ export function Message({
             sx={{
               flexDirection: "row",
               alignItems: "center",
-              gap: "10px",
+              gap: "16px",
+              border: "none",
+              backgroundColor: "transparent",
+              color: "inherit",
+              cursor: "pointer",
+              userSelect: "text",
+              padding: "2px 4px",
+              borderRadius: "19px",
+              position: "relative",
+              left: "-4px",
+              ":focus": {
+                outline: "none",
+                boxShadow: "0 0 0 2px rgba(41, 179, 229, 0.5)",
+              },
             }}
+            component={"button"}
+            onClick={() => setIsShowModal(true)}
           >
             {userAvatarUrl && (
               <Stack
                 component={"img"}
                 src={userAvatarUrl}
                 sx={{
-                  width: "20px",
-                  height: "20px",
+                  width: "25px",
+                  height: "25px",
                   borderRadius: "50%",
                   objectFit: "cover",
+                  boxShadow: "0px 0px 0px 1px rgba(255, 255, 255, 0.71)",
                 }}
               />
             )}
-            <Typography variant="body2">{userName}</Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                fontWeight: 600,
+                paddingLeft: "1px",
+              }}
+            >
+              {userName}
+            </Typography>
             <Typography
               variant="caption"
               sx={{

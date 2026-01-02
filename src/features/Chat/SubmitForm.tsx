@@ -25,7 +25,11 @@ export function SubmitForm({ onSubmit, isLoading }: SubmitFormProps) {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ p: 2, display: "flex", gap: 1 }}>
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{ padding: "30px 0 10px 0", display: "flex", gap: 1 }}
+    >
       <TextField
         fullWidth
         placeholder={i18n._("Type a message...")}
@@ -36,6 +40,7 @@ export function SubmitForm({ onSubmit, isLoading }: SubmitFormProps) {
         maxRows={4}
         variant="outlined"
         size="small"
+        sx={{}}
       />
       <IconButton
         type="submit"
