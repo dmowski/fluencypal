@@ -1,10 +1,9 @@
 import { Button, Stack } from "@mui/material";
 import { useBattle } from "./useBattle";
-import { IS_BATTLE_FEATURE_ENABLED } from "./data";
 import { BattleCard } from "./BattleCard";
 import { useState } from "react";
 import { useLingui } from "@lingui/react";
-import { ArrowDown, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useAuth } from "@/features/Auth/useAuth";
 
 const defaultLimit = 1;
@@ -21,7 +20,6 @@ export const BattleSection = () => {
   );
 
   if (actualBattles.length === 0) return null;
-  if (!IS_BATTLE_FEATURE_ENABLED) return null;
 
   const battlesToShow = actualBattles.filter((battle, index) => {
     if (!isLimited) {
