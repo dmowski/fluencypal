@@ -12,7 +12,7 @@ export interface TotalUsageInfo {
   lastUpdatedAt: number;
   balanceHours: number; // hours
   usedHours: number; // hours
-  activeSubscriptionTill?: string; // ISO date string: Last date of subscription YYYY-MM-DD
+  activeSubscriptionTill?: string; // ISO date string: Last date of subscription YYYY-MM-DDTH:mm:ss.sssZ
 }
 
 interface BaseUsageLog {

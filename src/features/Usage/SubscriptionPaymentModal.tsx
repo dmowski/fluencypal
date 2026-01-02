@@ -441,12 +441,8 @@ export const SubscriptionPaymentModal = () => {
                     </Typography>
 
                     <WalletButton
-                      onPressPay={() => {
-                        setInitActiveTill(usage.activeSubscriptionTill || "");
-                      }}
-                      onShowWaiter={() => {
-                        showWaiter();
-                      }}
+                      onPressPay={() => setInitActiveTill(usage.activeSubscriptionTill || "")}
+                      onShowWaiter={() => showWaiter()}
                     />
                   </>
                 )}

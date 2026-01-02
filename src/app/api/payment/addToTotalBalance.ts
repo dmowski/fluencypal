@@ -31,7 +31,7 @@ export const addToTotalBalance = async ({
     const endDate = monthsCount
       ? lastDate.add(monthsCount, "month")
       : lastDate.add(daysCount || 1, "day");
-    const endDateIso = endDate.format("YYYY-MM-DD");
+    const endDateIso = endDate.toISOString();
     newTotalUsage.activeSubscriptionTill = endDateIso;
   } else {
     const newBalance = balance.balanceHours + amountToAddHours;
