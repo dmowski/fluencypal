@@ -15,7 +15,7 @@ import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { useCorrections } from "../Corrections/useCorrections";
 import { useLingui } from "@lingui/react";
 import { InfoBlockedSection } from "../Dashboard/InfoBlockedSection";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { SelectLanguage } from "../Dashboard/SelectLanguage";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
@@ -29,8 +29,6 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import { GamePage } from "../Game/GamePage";
 import { useGoalCreation } from "../Plan/useGoalCreation";
 import { useConversationsAnalysis } from "./useConversationsAnalysis";
-import { useChatHistory } from "../ConversationHistory/useChatHistory";
-import { PlanDashboardCards } from "../Dashboard/PlanDashboardCards";
 import { usePayWall } from "../PayWall/usePayWall";
 import { useGame } from "../Game/useGame";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
@@ -56,15 +54,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const { i18n } = useLingui();
   const words = useWords();
   const rules = useRules();
-  const history = useChatHistory();
-  const conversationsCount = history.conversations.length;
   const plan = usePlan();
-  const isReadyToFirstStart =
-    !history.loading &&
-    conversationsCount === 0 &&
-    !aiConversation.isStarted &&
-    !aiConversation.isInitializing &&
-    !!plan.activeGoal;
 
   const paywall = usePayWall();
 
@@ -182,10 +172,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         }}
       />
     );
-  }
-
-  if (isReadyToFirstStart) {
-    return <PlanDashboardCards lang={lang} />;
   }
 
   if (!aiConversation.isStarted) {

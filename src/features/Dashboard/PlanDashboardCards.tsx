@@ -9,7 +9,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { ChevronDown, CirclePlus, Divide, Flag, LandPlot, Plus, Sparkle } from "lucide-react";
+import { ChevronDown, Flag, LandPlot, Plus, Sparkle } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
@@ -23,13 +23,11 @@ import { cardColors, modeCardProps } from "../Plan/data";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { useMemo, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useUrlParam } from "../Url/useUrlParam";
 import { useSettings } from "../Settings/useSettings";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import { useWindowSizes } from "../Layout/useWindowSizes";
 import { ConversationMode } from "@/common/user";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
@@ -40,18 +38,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const userInfo = useAiUserInfo();
   const plan = usePlan();
   const settings = useSettings();
-  const history = useChatHistory();
-  const sizes = useWindowSizes();
-  const conversationsCount = history.conversations.length;
 
   const [selectGoalModalAnchorEl, setSelectGoalModalAnchorEl] = useState<null | HTMLElement>(null);
-
-  const isReadyToFirstStart =
-    !history.loading &&
-    conversationsCount === 0 &&
-    !aiConversation.isStarted &&
-    !aiConversation.isInitializing &&
-    !!plan.activeGoal;
 
   const startGoalElement = async (
     element: PlanElement,
@@ -199,82 +187,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
   const minimumLessonsCountToExpand = 3;
   const isAbleToExpand = doneLessonsCount >= minimumLessonsCountToExpand;
-
-  if (isReadyToFirstStart) {
-    return (
-      <Stack
-        sx={{
-          alignItems: "center",
-          justifyContent: "center",
-          paddingTop: `calc(20px + ${sizes.topOffset})`,
-          paddingBottom: `calc(40px + ${sizes.bottomOffset})`,
-          zIndex: 999,
-          gap: "10px",
-          width: "100%",
-        }}
-      >
-        <Typography align="center" variant="h6">
-          {i18n._(`Now let’s determine your starting point!`)}
-        </Typography>
-
-        <Stack
-          sx={{
-            width: "100%",
-            boxSizing: "border-box",
-            gap: "20px",
-            maxWidth: "700px",
-            padding: "10px",
-            paddingBottom: "40px",
-          }}
-        >
-          {sortedElements
-            .filter((element, index) => index < 3)
-            .map((planElement, index, all) => {
-              const cardInfo = modeCardProps[planElement.mode];
-              const colorIndex = index % cardColors.length;
-              const cardColor = cardColors[colorIndex];
-              const elementsWithSameMode =
-                sortedElements.filter((element) => element.mode === planElement.mode) || [];
-              const currentElementIndex = elementsWithSameMode.findIndex(
-                (element) => element.id === planElement.id
-              );
-              const imageVariants = cardInfo.imgUrl;
-              const imageIndex = currentElementIndex % imageVariants.length;
-              const imageUrl = imageVariants[imageIndex];
-
-              return (
-                <PlanCard
-                  id={planElement.id}
-                  key={planElement.id}
-                  delayToShow={index * 80}
-                  title={planElement.title}
-                  subTitle={modeLabels[planElement.mode]}
-                  description={""}
-                  details={""}
-                  isDone={false}
-                  isActive={true}
-                  isContinueLabel={false}
-                  onClick={(options) => startGoalElement(planElement, options)}
-                  startColor={cardColor.startColor}
-                  progressPercent={0}
-                  endColor={cardColor.endColor}
-                  bgColor={cardColor.bgColor}
-                  isLast={index === all.length - 1}
-                  icon={
-                    <Stack>
-                      <Stack className="avatar">
-                        <img src={imageUrl} alt="" />
-                      </Stack>
-                    </Stack>
-                  }
-                  actionLabel={i18n._(`Start`)}
-                />
-              );
-            })}
-        </Stack>
-      </Stack>
-    );
-  }
 
   const languageGoals = plan.goals
     .filter((goal) => goal.languageCode === settings.languageCode)
