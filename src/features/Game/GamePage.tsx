@@ -112,7 +112,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
 
           <Stack
             sx={{
-              paddingTop: "0px",
+              paddingTop: "20px",
               gap: "30px",
               width: "100%",
               boxSizing: "border-box",

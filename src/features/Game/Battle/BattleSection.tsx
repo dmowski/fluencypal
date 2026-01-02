@@ -19,8 +19,6 @@ export const BattleSection = () => {
     userId ? battle.usersIds.includes(userId) : false
   );
 
-  if (actualBattles.length === 0) return null;
-
   const battlesToShow = actualBattles.filter((battle, index) => {
     if (!isLimited) {
       return true;
@@ -29,11 +27,14 @@ export const BattleSection = () => {
   });
 
   const isNeedToShowMoreButton = battlesToShow.length < actualBattles.length;
+
+  if (actualBattles.length === 0) return null;
   return (
     <Stack
       sx={{
         gap: "5px",
         width: "100%",
+        paddingBottom: "20px",
       }}
     >
       <Stack
