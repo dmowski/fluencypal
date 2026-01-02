@@ -19,6 +19,7 @@ import {
   Swords,
   Languages,
   BookText,
+  Crown,
 } from "lucide-react";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
@@ -77,7 +78,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
     {
       question: i18n._(`Can I use FluencyPal for free?`),
       answer: i18n._(
-        `Yes. You can earn free full access by ranking in the top 5 of the FluencyPal speaking game. The game is free to play.`
+        `Yes. You can earn free full access by ranking in the top 5 of the FluencyPal game. The game is free to play.`
       ),
     },
 
@@ -289,6 +290,11 @@ export const PricePage = ({ lang }: PricePageProps) => {
                     title: i18n._("Reading practice"),
                     tooltip: i18n._("Improve fluency with interactive chat sessions"),
                     icon: BookText,
+                  },
+                  {
+                    title: i18n._("Place in the top 5 in the game to gain full access"),
+                    tooltip: i18n._("Improve fluency with interactive chat sessions"),
+                    icon: Crown,
                   },
                 ]}
                 buttonTitle={i18n._("Start")}
