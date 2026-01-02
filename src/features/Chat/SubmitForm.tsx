@@ -37,7 +37,7 @@ export function SubmitForm({ onSubmit, isLoading }: SubmitFormProps) {
         onChange={(e) => setMessageContent(e.target.value)}
         disabled={isSending || isLoading}
         multiline
-        maxRows={4}
+        maxRows={12}
         variant="outlined"
         size="small"
         sx={{}}

@@ -73,8 +73,8 @@ export function Message({
   return (
     <Box
       sx={{
-        mb: 2,
-        p: 2,
+        marginBottom: "15px",
+        padding: "15px",
         border: "1px solid rgba(255, 255, 255, 0.1)",
         borderRadius: "10px",
         backgroundColor: "rgba(255, 255, 255, 0.01)",
@@ -153,7 +153,7 @@ export function Message({
               <TextField
                 fullWidth
                 multiline
-                rows={2}
+                maxRows={12}
                 value={editedContent}
                 onChange={(e) => setEditedContent(e.target.value)}
                 sx={{ mt: 1 }}
@@ -161,7 +161,15 @@ export function Message({
               />
             </Stack>
           ) : (
-            <Typography sx={{ mt: 0.5, wordBreak: "break-word" }}>{message.content}</Typography>
+            <Typography
+              sx={{
+                marginTop: "5px",
+                wordBreak: "break-word",
+                whiteSpace: "pre-wrap",
+              }}
+            >
+              {message.content}
+            </Typography>
           )}
 
           {isEditing ? (
