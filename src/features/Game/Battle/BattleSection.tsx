@@ -27,7 +27,19 @@ export const BattleSection = () => {
 
   const battlesToShow = actualBattles
     .filter((battle) => !isLimited || !battle.hiddenByUsersIds?.includes(userId))
-    .filter((battle, index) => !isLimited || index < defaultLimit);
+    .filter((battle, index) => !isLimited || index < defaultLimit)
+    .sort((a, b) => {
+      const isAHidden = a.hiddenByUsersIds?.includes(userId) ? 1 : 0;
+      const isBHidden = b.hiddenByUsersIds?.includes(userId) ? 1 : 0;
+      const aUpdated = a.updatedAtIso;
+      const bUpdated = b.updatedAtIso;
+
+      if (isAHidden !== isBHidden) {
+        return isAHidden - isBHidden;
+      }
+
+      return bUpdated.localeCompare(aUpdated);
+    });
 
   const isNeedToShowMoreButton = battlesToShow.length < actualBattles.length;
 
