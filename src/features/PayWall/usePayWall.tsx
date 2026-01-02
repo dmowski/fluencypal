@@ -6,15 +6,11 @@ import { useAiConversation } from "../Conversation/useAiConversation";
 
 interface PayWallContextType {
   isShowPayWall: boolean;
-  togglePayWall: () => void;
   temporaryClosePayWall: () => void;
 }
 
 export const payWallContext = createContext<PayWallContextType>({
   isShowPayWall: false,
-  togglePayWall: () => {
-    console.warn("togglePayWall function is not implemented");
-  },
   temporaryClosePayWall: () => {
     console.warn("temporaryClosePayWall function is not implemented");
   },
@@ -54,10 +50,6 @@ function useProvidePayWall(): PayWallContextType {
     isInPaidArea,
   ]);
 
-  const togglePayWall = () => {
-    setIsShowPayWall((prev) => !prev);
-  };
-
   const temporaryClosePayWall = () => {
     setIsShowPayWall(false);
     setTimeout(() => {
@@ -72,7 +64,6 @@ function useProvidePayWall(): PayWallContextType {
 
   return {
     isShowPayWall,
-    togglePayWall,
     temporaryClosePayWall,
   };
 }

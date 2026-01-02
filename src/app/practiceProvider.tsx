@@ -50,11 +50,9 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                           <HomeworkProvider>
                                             <PlanProvider>
                                               <AiConversationProvider>
-                                                <PayWallProvider>
-                                                  <ChatProvider>
-                                                    <BattleProvider>{children}</BattleProvider>
-                                                  </ChatProvider>
-                                                </PayWallProvider>
+                                                <ChatProvider>
+                                                  <BattleProvider>{children}</BattleProvider>
+                                                </ChatProvider>
                                               </AiConversationProvider>
                                             </PlanProvider>
                                           </HomeworkProvider>

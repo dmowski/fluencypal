@@ -23,6 +23,7 @@ export const PayWall = ({ lang }: NoBalanceBlockProps) => {
     const urlForGame = appNavigation.pageUrl("game");
     route.push(urlForGame);
   };
+
   return (
     <CustomModal isOpen={true} onClose={() => payWall.temporaryClosePayWall()}>
       <Stack

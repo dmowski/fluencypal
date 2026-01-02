@@ -56,8 +56,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const rules = useRules();
   const plan = usePlan();
 
-  const paywall = usePayWall();
-
   const appNavigation = useAppNavigation();
   const { isProcessingGoal } = useGoalCreation();
 
@@ -177,7 +175,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   if (!aiConversation.isStarted) {
     return (
       <>
-        {paywall.isShowPayWall && !usage.isShowPaymentModal && <PayWall lang={lang} />}
         <RolePlayProvider rolePlayInfo={rolePlayInfo}>
           <Dashboard lang={lang} />
         </RolePlayProvider>
@@ -195,7 +192,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   return (
     <Stack>
-      {paywall.isShowPayWall && !usage.isShowPaymentModal && <PayWall lang={lang} />}
       <ConversationCanvas2
         messagesToComplete={planMessageCount}
         conversation={aiConversation.conversation}
