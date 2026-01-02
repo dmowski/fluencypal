@@ -25,7 +25,7 @@ function useProvidePayWall(): PayWallContextType {
   const usage = useUsage();
   const conversation = useAiConversation();
   const activeConversationMessageCount = conversation.conversation.length;
-  const isInPaidArea = activeConversationMessageCount > 4;
+  const isInPaidArea = activeConversationMessageCount >= 2;
 
   const [isShowPayWall, setIsShowPayWall] = useState(false);
 
