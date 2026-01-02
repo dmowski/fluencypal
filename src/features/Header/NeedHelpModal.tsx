@@ -147,9 +147,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
             >
               <Button
                 disabled={deleteAccount.isDeletingAccount}
-                onClick={() => {
-                  deleteAccount.onDeleteAccount();
-                }}
+                onClick={() => deleteAccount.onDeleteAccount()}
                 color="error"
                 variant="contained"
                 startIcon={<Trash size={"18px"} />}
@@ -191,8 +189,8 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
               {deleteAccount.isDeletingAccount
                 ? i18n._(`Deleting...`)
                 : deleteAccount.isTotalDelete
-                ? i18n._(`Delete account (Total)`)
-                : i18n._(`Delete account`)}
+                  ? i18n._(`Delete account (Total)`)
+                  : i18n._(`Delete account`)}
             </Button>
           </Stack>
         )}

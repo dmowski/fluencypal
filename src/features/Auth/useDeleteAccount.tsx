@@ -33,7 +33,7 @@ export const useDeleteAccount = ({
   useEffect(() => {
     if (!auth.uid) return;
 
-    const isDevAccount = auth.userInfo?.email?.includes("dmowski2") || false;
+    const isDevAccount = auth.userInfo?.email?.includes("dmowski") || false;
     const isTelegramApp = isTMA();
     setIsTotalDelete(isTelegramApp || isDevAccount);
   }, [auth.uid]);
