@@ -16,7 +16,7 @@ export const ChartSection = () => {
   }, [chat.messages.length]);
 
   return (
-    <Stack sx={{ height: "100%" }}>
+    <Stack>
       <MessageList
         messages={chat.messages}
         currentUserId={userId}
