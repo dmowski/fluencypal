@@ -17,6 +17,35 @@ import { ChartSection } from "../Chat/ChartSection";
 import { useChat } from "../Chat/useChat";
 import { BattleSection } from "./Battle/BattleSection";
 
+const TabLabel = ({
+  badgeNumber,
+  label,
+  badgeHighlight,
+}: {
+  label: string;
+  badgeNumber?: number;
+  badgeHighlight?: boolean;
+}) => {
+  return (
+    <Stack sx={{ flexDirection: "row", gap: "6px", alignItems: "center" }}>
+      <Typography variant="caption">{label}</Typography>
+      <Typography
+        component={"span"}
+        sx={{
+          color: "#000",
+          fontWeight: "bold",
+          borderRadius: "6px",
+          fontSize: "10px",
+          padding: "1px 3px",
+          backgroundColor: badgeHighlight ? "#ff3d00" : "rgba(244, 244, 244, 0.7)",
+        }}
+      >
+        {badgeNumber}
+      </Typography>
+    </Stack>
+  );
+};
+
 export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const game = useGame();
   const chat = useChat();
@@ -123,78 +152,31 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                 gap: "20px",
               }}
             >
-              <Tabs
-                scrollButtons="auto"
-                variant="scrollable"
-                allowScrollButtonsMobile
-                value={activeTab}
-                onChange={(event, newId) => setActiveTab(newId)}
-              >
+              <Tabs value={activeTab} onChange={(event, newId) => setActiveTab(newId)}>
                 <Tab
-                  label={
-                    <Stack sx={{ flexDirection: "row", gap: "10px", alignItems: "center" }}>
-                      <Typography variant="body2">{i18n._(`Global`)}</Typography>
-                      <Typography
-                        component={"span"}
-                        sx={{
-                          color: "#000",
-                          fontWeight: "bold",
-                          borderRadius: "5px",
-                          fontSize: "10px",
-                          padding: "2px 4px",
-                          backgroundColor: "rgba(244, 244, 244, 0.7)",
-                        }}
-                      >
-                        {globalGamers}
-                      </Typography>
-                    </Stack>
-                  }
+                  label={<TabLabel label={i18n._(`Global`)} badgeNumber={globalGamers} />}
                   value={0}
+                  sx={{
+                    padding: 0,
+                  }}
                 />
                 <Tab
-                  label={
-                    <Stack sx={{ flexDirection: "row", gap: "10px", alignItems: "center" }}>
-                      <Typography variant="body2">{i18n._(`Today`)}</Typography>
-                      <Typography
-                        component={"span"}
-                        sx={{
-                          color: "#000",
-                          fontWeight: "bold",
-                          borderRadius: "5px",
-                          fontSize: "10px",
-                          padding: "2px 4px",
-                          backgroundColor: "rgba(244, 244, 244, 0.7)",
-                        }}
-                      >
-                        {todayGamers}
-                      </Typography>
-                    </Stack>
-                  }
+                  label={<TabLabel label={i18n._(`Today`)} badgeNumber={todayGamers} />}
                   value={1}
+                  sx={{
+                    padding: 0,
+                  }}
                 />
-
                 <Tab
+                  sx={{
+                    padding: 0,
+                  }}
                   label={
-                    <Stack sx={{ flexDirection: "row", gap: "10px", alignItems: "center" }}>
-                      <Typography variant="body2">{i18n._(`Chat`)}</Typography>
-                      {chat.messages.length > 0 && (
-                        <Typography
-                          component={"span"}
-                          sx={{
-                            color: isUnreadMessages ? "#fff" : "#000",
-                            fontWeight: "bold",
-                            borderRadius: "5px",
-                            fontSize: "10px",
-                            padding: "2px 4px",
-                            backgroundColor: isUnreadMessages
-                              ? "#ff3d00"
-                              : "rgba(244, 244, 244, 0.7)",
-                          }}
-                        >
-                          {chat.messages.length}
-                        </Typography>
-                      )}
-                    </Stack>
+                    <TabLabel
+                      label={i18n._(`Chat`)}
+                      badgeNumber={chat.messages.length}
+                      badgeHighlight={isUnreadMessages}
+                    />
                   }
                   value={2}
                 />

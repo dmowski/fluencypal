@@ -52,6 +52,8 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
     ? dayjs(lastConversationDateTime).fromNow()
     : "Never";
 
+  const pageLanguageCode = user.pageLanguageCode || "en";
+
   const userSource: UserSource | null = userStat.userData.userSource || null;
   const isFromChatGpt =
     userSource?.referrer?.toLowerCase().includes("chatgpt") ||
@@ -167,7 +169,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             />
           )}
           <Typography variant="caption">
-            {[countryName, currency, learning].filter(Boolean).join(" | ")}
+            {["P:" + pageLanguageCode, countryName, currency, learning].filter(Boolean).join(" | ")}
           </Typography>
         </Stack>
 
