@@ -15,7 +15,7 @@ export const isTodayStat = ({
 }) => {
   if (!lastVisitStat) return false;
   if (!lastVisitStat[userId]) return false;
-  return dayjs(lastVisitStat[userId]).isSame(dayjs(), "day");
+  return dayjs().diff(dayjs(lastVisitStat[userId]), "hour") < 24;
 };
 
 export const GameStats = ({ activeTab }: { activeTab: "global" | "today" }) => {
