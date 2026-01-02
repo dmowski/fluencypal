@@ -130,6 +130,9 @@ export const RecordUserAudioAnswer = ({
               startIcon={isRecording ? <Check /> : <Mic size={"16px"} />}
               size="small"
               color={isRecording ? "error" : "primary"}
+              sx={{
+                paddingRight: "15px",
+              }}
               onClick={() => {
                 if (isRecording) {
                   stopRecording();
@@ -141,8 +144,8 @@ export const RecordUserAudioAnswer = ({
               {isRecording
                 ? i18n._("Done")
                 : !transcript
-                ? i18n._("Record")
-                : i18n._("Record more")}
+                  ? i18n._("Record")
+                  : i18n._("Record more")}
             </Button>
             {transcript && (
               <IconButton size="small" onClick={clearTranscript} disabled={isRecording}>
