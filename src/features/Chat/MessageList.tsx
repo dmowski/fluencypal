@@ -39,7 +39,7 @@ export function MessageList({ messages, currentUserId, onEdit, onDelete }: Messa
     <Box
       sx={{
         flex: 1,
-        overflowY: "auto",
+        overflow: "auto",
         minHeight: "400px",
         maxHeight: "700px",
       }}
