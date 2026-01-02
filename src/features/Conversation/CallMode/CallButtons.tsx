@@ -11,14 +11,12 @@ import { useLingui } from "@lingui/react";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 
-import LockIcon from "@mui/icons-material/Lock";
-import WarningIcon from "@mui/icons-material/Warning";
-import { BadgeQuestionMark, CircleQuestionMark } from "lucide-react";
+import { CircleQuestionMark } from "lucide-react";
 import { useState } from "react";
 import { CustomModal } from "@/features/uiKit/Modal/CustomModal";
 import { FeatureBlocker } from "@/features/Usage/FeatureBlocker";
 
-const CallButton = ({
+export const CallButton = ({
   label,
   onClick,
   activeButton,
