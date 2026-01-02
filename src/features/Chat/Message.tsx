@@ -1,13 +1,5 @@
 "use client";
-import {
-  Stack,
-  Typography,
-  Box,
-  TextField,
-  Button,
-  IconButton,
-  CircularProgress,
-} from "@mui/material";
+import { Stack, Typography, TextField, Button, IconButton, CircularProgress } from "@mui/material";
 import { UserChatMessage } from "./type";
 import { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
@@ -71,7 +63,7 @@ export function Message({
   const [isShowModal, setIsShowModal] = useState(false);
 
   return (
-    <Box
+    <Stack
       sx={{
         marginBottom: "15px",
         padding: "15px",
@@ -83,7 +75,14 @@ export function Message({
       {isShowModal && gameStat && (
         <UserProfileModal stat={gameStat} onClose={() => setIsShowModal(false)} />
       )}
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+      <Stack
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          width: "100%",
+        }}
+      >
         <Stack
           sx={{
             gap: "10px",
@@ -92,56 +91,85 @@ export function Message({
         >
           <Stack
             sx={{
+              justifyContent: "space-between",
               flexDirection: "row",
-              alignItems: "center",
-              gap: "16px",
-              border: "none",
-              backgroundColor: "transparent",
-              color: "inherit",
-              cursor: "pointer",
-              userSelect: "text",
-              padding: "2px 4px",
-              borderRadius: "19px",
-              position: "relative",
-              left: "-4px",
-              ":focus": {
-                outline: "none",
-                boxShadow: "0 0 0 2px rgba(41, 179, 229, 0.5)",
-              },
+              flexWrap: "wrap",
             }}
-            component={"button"}
-            onClick={() => setIsShowModal(true)}
           >
-            {userAvatarUrl && (
-              <Stack
-                component={"img"}
-                src={userAvatarUrl}
+            <Stack
+              sx={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "16px",
+                border: "none",
+                backgroundColor: "transparent",
+                color: "inherit",
+                cursor: "pointer",
+                userSelect: "text",
+                padding: "2px 10px 2px 2px",
+                borderRadius: "19px",
+                position: "relative",
+                left: "-2px",
+                ":focus": {
+                  outline: "none",
+                  boxShadow: "0 0 0 2px rgba(41, 179, 229, 0.5)",
+                },
+              }}
+              component={"button"}
+              onClick={() => setIsShowModal(true)}
+            >
+              {userAvatarUrl && (
+                <Stack
+                  component={"img"}
+                  src={userAvatarUrl}
+                  sx={{
+                    width: "25px",
+                    height: "25px",
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    boxShadow: "0px 0px 0px 1px rgba(255, 255, 255, 0.71)",
+                  }}
+                />
+              )}
+              <Typography
+                variant="body1"
                 sx={{
-                  width: "25px",
-                  height: "25px",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  boxShadow: "0px 0px 0px 1px rgba(255, 255, 255, 0.71)",
+                  fontWeight: 600,
+                  paddingLeft: "1px",
                 }}
-              />
+              >
+                {userName}
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {updatedAgo}
+              </Typography>
+            </Stack>
+
+            {isOwnMessage && (
+              <Stack sx={{ flexDirection: "row", opacity: 0.7 }}>
+                <IconButton
+                  size="small"
+                  onClick={() => setIsEditing(true)}
+                  disabled={isDeleting}
+                  title={i18n._("Edit message")}
+                >
+                  <EditIcon fontSize="small" />
+                </IconButton>
+                <IconButton
+                  size="small"
+                  onClick={handleDelete}
+                  disabled={isDeleting}
+                  title={i18n._("Delete message")}
+                >
+                  {isDeleting ? <CircularProgress size={20} /> : <DeleteIcon fontSize="small" />}
+                </IconButton>
+              </Stack>
             )}
-            <Typography
-              variant="body1"
-              sx={{
-                fontWeight: 600,
-                paddingLeft: "1px",
-              }}
-            >
-              {userName}
-            </Typography>
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              {updatedAgo}
-            </Typography>
           </Stack>
 
           {isEditing ? (
@@ -166,6 +194,7 @@ export function Message({
                 marginTop: "5px",
                 wordBreak: "break-word",
                 whiteSpace: "pre-wrap",
+                width: "100%",
               }}
             >
               {message.content}
@@ -236,27 +265,7 @@ export function Message({
             </>
           )}
         </Stack>
-        {isOwnMessage && (
-          <Box sx={{ display: "flex", gap: 0.5, ml: 2, opacity: 0.7 }}>
-            <IconButton
-              size="small"
-              onClick={() => setIsEditing(true)}
-              disabled={isDeleting}
-              title={i18n._("Edit message")}
-            >
-              <EditIcon fontSize="small" />
-            </IconButton>
-            <IconButton
-              size="small"
-              onClick={handleDelete}
-              disabled={isDeleting}
-              title={i18n._("Delete message")}
-            >
-              {isDeleting ? <CircularProgress size={20} /> : <DeleteIcon fontSize="small" />}
-            </IconButton>
-          </Box>
-        )}
-      </Box>
-    </Box>
+      </Stack>
+    </Stack>
   );
 }
