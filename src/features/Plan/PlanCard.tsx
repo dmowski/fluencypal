@@ -1,6 +1,6 @@
 "use client";
 import { Button, Stack, Typography } from "@mui/material";
-import { Check, ChevronRight, Loader, Mic, Webcam } from "lucide-react";
+import { Check, ChevronRight, Loader, Telescope } from "lucide-react";
 
 import { ReactNode, useEffect, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
@@ -38,6 +38,9 @@ interface PlanCardProps {
   isLast?: boolean;
   isContinueLabel: boolean;
   viewOnly?: boolean;
+
+  isLimited?: boolean;
+  onLimitedClick?: () => void;
 }
 
 export const PlanCard = ({
@@ -58,6 +61,8 @@ export const PlanCard = ({
   isLast,
   isContinueLabel,
   viewOnly = false,
+  isLimited,
+  onLimitedClick,
 }: PlanCardProps) => {
   const uniqKey = `plan-start-${id}`;
   const [showModal, setShowModal] = useUrlParam(uniqKey);
@@ -159,89 +164,160 @@ export const PlanCard = ({
                 )}
               </Stack>
 
-              {allowWebCam !== false && (
+              {isLimited ? (
                 <Stack
                   sx={{
-                    width: "350px",
-                    height: "220px",
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
-                    backgroundColor: "rgba(0, 0, 0, 0.2)",
-                    borderRadius: "9px",
-                    justifyContent: "center",
                     alignItems: "center",
-                    margin: "20px 0",
-                    position: "relative",
-                    overflow: "hidden",
+
+                    justifyContent: "center",
+                    borderRadius: "8px",
+                    marginTop: "30px",
+                    boxShadow:
+                      "0px 0px 0 1px rgba(206, 200, 239, 0.2), 3px 3px 30px rgba(0, 0, 0, 0.3)",
+
+                    background:
+                      "linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(47, 17, 216, 0.03) 100%)",
+                    padding: "30px 25px",
+                    maxWidth: "480px",
+                    gap: "25px",
                   }}
                 >
-                  {allowWebCam === true && <WebCamView />}
-
-                  {allowWebCam === null && (
-                    <Stack
+                  <Stack
+                    sx={{
+                      gap: "5px",
+                    }}
+                  >
+                    <Typography
+                      align="center"
+                      variant="h5"
                       sx={{
-                        gap: "5px",
-                        alignItems: "center",
+                        fontWeight: 600,
+                        fontSize: "1.4rem",
                       }}
                     >
-                      <Button color="info" variant="contained" onClick={() => setAllowWebCam(true)}>
-                        {i18n._(`Allow WebCam`)}
-                      </Button>
-                      <Button variant="text" onClick={() => setAllowWebCam(false)}>
-                        {i18n._(`Skip for now`)}
-                      </Button>
+                      {i18n._(`Trial is ended`)}
+                    </Typography>
+
+                    <Typography
+                      align="center"
+                      variant="body2"
+                      sx={{
+                        opacity: 0.7,
+                      }}
+                    >
+                      {i18n._(
+                        `Upgrade your plan to access this feature and unlock unlimited conversations.`
+                      )}
+                    </Typography>
+                  </Stack>
+
+                  <Button
+                    sx={{
+                      padding: "10px 20px",
+                    }}
+                    onClick={() => {
+                      onLimitedClick && onLimitedClick();
+                    }}
+                    size="large"
+                    variant="contained"
+                    color="info"
+                    startIcon={<Telescope />}
+                    endIcon={<ChevronRight />}
+                  >
+                    {i18n._(`Upgrade Plan`)}
+                  </Button>
+                </Stack>
+              ) : (
+                <>
+                  {allowWebCam !== false && (
+                    <Stack
+                      sx={{
+                        width: "350px",
+                        height: "220px",
+                        border: "1px solid rgba(255, 255, 255, 0.1)",
+                        backgroundColor: "rgba(0, 0, 0, 0.2)",
+                        borderRadius: "9px",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        margin: "20px 0",
+                        position: "relative",
+                        overflow: "hidden",
+                      }}
+                    >
+                      {allowWebCam === true && <WebCamView />}
+
+                      {allowWebCam === null && (
+                        <Stack
+                          sx={{
+                            gap: "5px",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Button
+                            color="info"
+                            variant="contained"
+                            onClick={() => setAllowWebCam(true)}
+                          >
+                            {i18n._(`Allow WebCam`)}
+                          </Button>
+                          <Button variant="text" onClick={() => setAllowWebCam(false)}>
+                            {i18n._(`Skip for now`)}
+                          </Button>
+                        </Stack>
+                      )}
                     </Stack>
                   )}
-                </Stack>
+
+                  <Stack
+                    sx={{
+                      width: "100%",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      margin: "5px 0px 15px 0px",
+                      gap: "10px",
+                    }}
+                  >
+                    <Button
+                      sx={{
+                        minWidth: "240px",
+                        padding: "10px 20px",
+                      }}
+                      onClick={onStartCallMode}
+                      size="large"
+                      variant="contained"
+                      color="info"
+                      startIcon={isLoadingCall ? <Loader /> : <VideocamIcon />}
+                      disabled={
+                        isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null
+                      }
+                    >
+                      {i18n._(`Start Call`)}
+                    </Button>
+
+                    <Button
+                      onClick={onStartVoiceOnly}
+                      variant="text"
+                      color="info"
+                      startIcon={isLoadingVoice ? <Loader /> : <MicIcon />}
+                      disabled={
+                        isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null
+                      }
+                    >
+                      {i18n._(`Start Voice Only`)}
+                    </Button>
+                  </Stack>
+
+                  <Typography
+                    align="center"
+                    variant="caption"
+                    sx={{
+                      opacity: 0.7,
+                    }}
+                  >
+                    {i18n._(`Send 6 messages to complete`)}
+                  </Typography>
+                </>
               )}
-
-              <Stack
-                sx={{
-                  width: "100%",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  margin: "5px 0px 15px 0px",
-                  gap: "10px",
-                }}
-              >
-                <Button
-                  sx={{
-                    minWidth: "240px",
-                    padding: "10px 20px",
-                  }}
-                  onClick={onStartCallMode}
-                  size="large"
-                  variant="contained"
-                  color="info"
-                  startIcon={isLoadingCall ? <Loader /> : <VideocamIcon />}
-                  disabled={
-                    isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null
-                  }
-                >
-                  {i18n._(`Start Call`)}
-                </Button>
-
-                <Button
-                  onClick={onStartVoiceOnly}
-                  variant="text"
-                  color="info"
-                  startIcon={isLoadingVoice ? <Loader /> : <MicIcon />}
-                  disabled={
-                    isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null
-                  }
-                >
-                  {i18n._(`Start Voice Only`)}
-                </Button>
-              </Stack>
-
-              <Typography
-                align="center"
-                variant="caption"
-                sx={{
-                  opacity: 0.7,
-                }}
-              >
-                {i18n._(`Send 6 messages to complete`)}
-              </Typography>
             </Stack>
           </Stack>
         </CustomModal>
