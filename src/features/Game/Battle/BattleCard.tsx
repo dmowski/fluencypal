@@ -117,7 +117,7 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                 fontWeight: 500,
               }}
             >
-              {i18n._("Debate Game")}
+              {i18n._("Debate")}
             </Typography>
           </Stack>
           <Stack
@@ -128,7 +128,7 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
               color: "rgba(120, 120, 120, 1)",
             }}
           >
-            <Typography variant="body2">{updatedAgo}</Typography>
+            <Typography variant="caption">{updatedAgo}</Typography>
           </Stack>
         </Stack>
         {!isAcceptedByMe && (
