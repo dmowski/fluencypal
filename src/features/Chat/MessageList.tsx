@@ -1,5 +1,5 @@
 "use client";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Stack } from "@mui/material";
 import { useGame } from "../Game/useGame";
 import { UserChatMessage } from "./type";
 import { useRef, useEffect } from "react";
@@ -14,18 +14,8 @@ interface MessageListProps {
 }
 
 export function MessageList({ messages, currentUserId, onEdit, onDelete }: MessageListProps) {
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
   const game = useGame();
   const { i18n } = useLingui();
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   const getUserName = (userId: string) => {
     return game.userNames?.[userId] || "Unknown";
@@ -36,14 +26,7 @@ export function MessageList({ messages, currentUserId, onEdit, onDelete }: Messa
   };
 
   return (
-    <Box
-      sx={{
-        flex: 1,
-        overflow: "auto",
-        minHeight: "400px",
-        maxHeight: "700px",
-      }}
-    >
+    <Stack sx={{}}>
       {messages.length === 0 ? (
         <Typography align="center" color="textSecondary">
           {i18n._("No messages yet")}
@@ -61,9 +44,8 @@ export function MessageList({ messages, currentUserId, onEdit, onDelete }: Messa
               onDelete={onDelete}
             />
           ))}
-          <div ref={messagesEndRef} />
         </>
       )}
-    </Box>
+    </Stack>
   );
 }
