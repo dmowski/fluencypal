@@ -386,7 +386,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
           justifyContent: "space-between",
           alignItems: "center",
           gap: "15px",
-          padding: "0px 20px 0 0",
+          padding: "0px 20px 0 1px",
           borderRadius: "57px",
           height: "54px",
           backgroundColor: isMe ? "rgba(41, 179, 229, 0.17)" : "rgba(255, 255, 255, 0.04)",
@@ -394,15 +394,24 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
           textAlign: "left",
           color: "#fff",
           cursor: "pointer",
+          ":focus": {
+            outline: "none",
+            boxShadow: "0 0 0 3px rgba(41, 179, 229, 0.5)",
+            ".avatar": {
+              boxShadow: "0px 0px 0px 0px rgba(41, 179, 229, 1)",
+            },
+          },
         }}
       >
         <Stack
           sx={{
             position: "relative",
+            right: "-2px",
           }}
         >
           <Stack
             component="img"
+            className="avatar"
             src={avatar}
             sx={{
               width: "50px",
