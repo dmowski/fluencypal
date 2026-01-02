@@ -37,6 +37,11 @@ export const CameraCanvas = ({
   isAiSpeaking,
   messageOrder,
   onWebCamDescription,
+
+  isVolumeOn,
+  setIsVolumeOn,
+  isLimited,
+  onLimitedClick,
 }: {
   conversation: ChatMessage[];
   stopCallMode: () => void;
@@ -46,6 +51,11 @@ export const CameraCanvas = ({
   isAiSpeaking: boolean;
   messageOrder: MessagesOrderMap;
   onWebCamDescription: (description: string) => void;
+
+  isVolumeOn: boolean;
+  setIsVolumeOn: (value: boolean) => void;
+  isLimited: boolean;
+  onLimitedClick: () => void;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -231,6 +241,10 @@ export const CameraCanvas = ({
               }
             }}
             exit={stopCallMode}
+            isVolumeOn={isVolumeOn}
+            setIsVolumeOn={setIsVolumeOn}
+            isLimited={isLimited}
+            onLimitedClick={onLimitedClick}
           />
         </Stack>
       </Stack>

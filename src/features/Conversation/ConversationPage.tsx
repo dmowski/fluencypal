@@ -208,7 +208,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         togglePaymentModal={usage.togglePaymentModal}
         analyzeUserMessage={corrections.analyzeUserMessage}
         transcriptMessage={recorder.transcription || ""}
-        toggleVolume={aiConversation.toggleVolume}
+        setIsVolumeOn={aiConversation.toggleVolume}
         startRecording={async () => {
           aiConversation.toggleVolume(false);
           await recorder.startRecording();
@@ -255,10 +255,11 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         setIsMuted={(isMuted) => aiConversation.toggleMute(isMuted)}
         isNeedToShowBalanceWarning={!isFullAccess}
         isVolumeOn={aiConversation.isVolumeOn}
-        setIsVolumeOn={(isVolumeOn) => aiConversation.toggleVolume(isVolumeOn)}
         voice={aiConversation.voice}
         messageOrder={aiConversation.messageOrder}
         onWebCamDescription={aiConversation.setWebCamDescription}
+        isLimited={!isFullAccess}
+        onLimitedClick={() => usage.togglePaymentModal(true)}
       />
     </Stack>
   );

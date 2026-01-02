@@ -95,15 +95,12 @@ interface ConversationCanvasProps {
   isMuted: boolean;
   setIsMuted: (newState: boolean) => void;
 
-  isVolumeOn: boolean;
-  setIsVolumeOn: (newState: boolean) => void;
-
   isProcessingGoal: boolean;
   temporaryGoal: GoalPlan | null;
   confirmGoal: (isConfirm: boolean) => Promise<void>;
   goalSettingProgress: number;
   isSavingGoal: boolean;
-  toggleVolume: (isVolumeOn: boolean) => void;
+
   isShowMessageProgress: boolean;
   conversationAnalysisResult: string;
   analyzeConversation: () => Promise<void>;
@@ -117,6 +114,11 @@ interface ConversationCanvasProps {
   messageOrder: MessagesOrderMap;
 
   onWebCamDescription: (description: string) => void;
+
+  isVolumeOn: boolean;
+  setIsVolumeOn: (value: boolean) => void;
+  isLimited: boolean;
+  onLimitedClick: () => void;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isCallMode,
@@ -146,7 +148,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   confirmGoal,
   goalSettingProgress,
   isSavingGoal,
-  toggleVolume,
   closeConversation,
   isShowMessageProgress,
   conversationAnalysisResult,
@@ -157,6 +158,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   isVolumeOn,
   setIsVolumeOn,
+  isLimited,
+  onLimitedClick,
   voice,
   messageOrder,
   onWebCamDescription,
@@ -518,6 +521,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
         conversation={conversation}
         stopCallMode={stopCallMode}
         onWebCamDescription={onWebCamDescription}
+        isVolumeOn={isVolumeOn}
+        setIsVolumeOn={setIsVolumeOn}
+        isLimited={isLimited}
+        onLimitedClick={onLimitedClick}
       />
     );
   }

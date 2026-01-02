@@ -165,99 +165,89 @@ export const PlanCard = ({
                 )}
               </Stack>
 
-              {isLimited ? (
-                <TrialEndedSection onLimitedClick={onLimitedClick} />
-              ) : (
-                <>
-                  {allowWebCam !== false && (
+              {allowWebCam !== false && (
+                <Stack
+                  sx={{
+                    width: "350px",
+                    height: "220px",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    backgroundColor: "rgba(0, 0, 0, 0.2)",
+                    borderRadius: "9px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    margin: "20px 0",
+                    position: "relative",
+                    overflow: "hidden",
+                  }}
+                >
+                  {allowWebCam === true && <WebCamView />}
+
+                  {allowWebCam === null && (
                     <Stack
                       sx={{
-                        width: "350px",
-                        height: "220px",
-                        border: "1px solid rgba(255, 255, 255, 0.1)",
-                        backgroundColor: "rgba(0, 0, 0, 0.2)",
-                        borderRadius: "9px",
-                        justifyContent: "center",
+                        gap: "5px",
                         alignItems: "center",
-                        margin: "20px 0",
-                        position: "relative",
-                        overflow: "hidden",
                       }}
                     >
-                      {allowWebCam === true && <WebCamView />}
-
-                      {allowWebCam === null && (
-                        <Stack
-                          sx={{
-                            gap: "5px",
-                            alignItems: "center",
-                          }}
-                        >
-                          <Button
-                            color="info"
-                            variant="contained"
-                            onClick={() => setAllowWebCam(true)}
-                          >
-                            {i18n._(`Allow WebCam`)}
-                          </Button>
-                          <Button variant="text" onClick={() => setAllowWebCam(false)}>
-                            {i18n._(`Skip for now`)}
-                          </Button>
-                        </Stack>
-                      )}
+                      <Button color="info" variant="contained" onClick={() => setAllowWebCam(true)}>
+                        {i18n._(`Allow WebCam`)}
+                      </Button>
+                      <Button variant="text" onClick={() => setAllowWebCam(false)}>
+                        {i18n._(`Skip for now`)}
+                      </Button>
                     </Stack>
                   )}
-
-                  <Stack
-                    sx={{
-                      width: "100%",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      margin: "5px 0px 15px 0px",
-                      gap: "10px",
-                    }}
-                  >
-                    <Button
-                      sx={{
-                        minWidth: "240px",
-                        padding: "10px 20px",
-                      }}
-                      onClick={onStartCallMode}
-                      size="large"
-                      variant="contained"
-                      color="info"
-                      startIcon={isLoadingCall ? <Loader /> : <VideocamIcon />}
-                      disabled={
-                        isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null
-                      }
-                    >
-                      {i18n._(`Start Call`)}
-                    </Button>
-
-                    <Button
-                      onClick={onStartVoiceOnly}
-                      variant="text"
-                      color="info"
-                      startIcon={isLoadingVoice ? <Loader /> : <MicIcon />}
-                      disabled={
-                        isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null
-                      }
-                    >
-                      {i18n._(`Start Voice Only`)}
-                    </Button>
-                  </Stack>
-
-                  <Typography
-                    align="center"
-                    variant="caption"
-                    sx={{
-                      opacity: 0.7,
-                    }}
-                  >
-                    {i18n._(`Send 6 messages to complete`)}
-                  </Typography>
-                </>
+                </Stack>
               )}
+
+              <Stack
+                sx={{
+                  width: "100%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "5px 0px 15px 0px",
+                  gap: "10px",
+                }}
+              >
+                <Button
+                  sx={{
+                    minWidth: "240px",
+                    padding: "10px 20px",
+                  }}
+                  onClick={onStartCallMode}
+                  size="large"
+                  variant="contained"
+                  color="info"
+                  startIcon={isLoadingCall ? <Loader /> : <VideocamIcon />}
+                  disabled={
+                    isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null
+                  }
+                >
+                  {i18n._(`Start Call`)}
+                </Button>
+
+                <Button
+                  onClick={onStartVoiceOnly}
+                  variant="text"
+                  color="info"
+                  startIcon={isLoadingVoice ? <Loader /> : <MicIcon />}
+                  disabled={
+                    isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null
+                  }
+                >
+                  {i18n._(`Start Voice Only`)}
+                </Button>
+              </Stack>
+
+              <Typography
+                align="center"
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._(`Send 6 messages to complete`)}
+              </Typography>
             </Stack>
           </Stack>
         </CustomModal>

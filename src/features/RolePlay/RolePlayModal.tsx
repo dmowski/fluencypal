@@ -259,23 +259,17 @@ export const RolePlayModal = () => {
                 </Stack>
               )}
 
-              {!usage.isFullAccess ? (
-                <TrialEndedSection onLimitedClick={() => usage.togglePaymentModal(true)} />
-              ) : (
-                <>
-                  <Button
-                    sx={{
-                      padding: "10px 30px",
-                    }}
-                    size="large"
-                    variant="contained"
-                    type="submit"
-                    disabled={isStarting}
-                  >
-                    {isStarting ? i18n._(`Loading...`) : i18n._(`Start`)}
-                  </Button>
-                </>
-              )}
+              <Button
+                sx={{
+                  padding: "10px 30px",
+                }}
+                size="large"
+                variant="contained"
+                type="submit"
+                disabled={isStarting}
+              >
+                {isStarting ? i18n._(`Loading...`) : i18n._(`Start`)}
+              </Button>
             </Stack>
           </Stack>
         </CustomModal>

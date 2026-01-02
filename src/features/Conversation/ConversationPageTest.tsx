@@ -171,7 +171,8 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         addUserMessage={generateFirstMessage}
         balanceHours={0.2}
         togglePaymentModal={() => alert("Payment modal toggled")}
-        toggleVolume={() => {}}
+        isLimited={true}
+        onLimitedClick={() => {}}
         isRecording={false}
         startRecording={async () => {}}
         stopRecording={async () => {}}

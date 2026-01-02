@@ -12,7 +12,6 @@ export const TrialEndedSection = ({ onLimitedClick }: { onLimitedClick?: () => v
 
         justifyContent: "center",
         borderRadius: "8px",
-        marginTop: "30px",
         boxShadow: "0px 0px 0 1px rgba(206, 200, 239, 0.2), 3px 3px 30px rgba(0, 0, 0, 0.3)",
 
         background:
@@ -35,7 +34,7 @@ export const TrialEndedSection = ({ onLimitedClick }: { onLimitedClick?: () => v
             fontSize: "1.4rem",
           }}
         >
-          {i18n._(`Trial is ended`)}
+          {i18n._(`Full access needed`)}
         </Typography>
 
         <Typography
