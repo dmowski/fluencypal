@@ -23,34 +23,34 @@ export const BattleSection = () => {
   if (actualBattles.length === 0) return null;
   if (!IS_BATTLE_FEATURE_ENABLED) return null;
 
-  const battlesToShow = actualBattles
-    .filter((battle) => {
-      if (!isLimited) {
-        return true;
-      }
-      return !battle.hiddenByUsersIds?.includes(userId);
-    })
-    .slice(0, defaultLimit);
-
-  console.log("actualBattles", actualBattles.length, defaultLimit, {
-    battlesToShow,
-    actualBattles,
+  const battlesToShow = actualBattles.filter((battle, index) => {
+    if (!isLimited) {
+      return true;
+    }
+    return !battle.hiddenByUsersIds?.includes(userId) && index < defaultLimit;
   });
+
   const isNeedToShowMoreButton = battlesToShow.length < actualBattles.length;
   return (
     <Stack
       sx={{
-        gap: "20px",
+        gap: "5px",
         width: "100%",
       }}
     >
-      {battlesToShow.map((battle) => (
-        <BattleCard key={battle.battleId} battle={battle} />
-      ))}
+      <Stack
+        sx={{
+          gap: "30px",
+        }}
+      >
+        {battlesToShow.map((battle) => (
+          <BattleCard key={battle.battleId} battle={battle} />
+        ))}
+      </Stack>
 
       {isNeedToShowMoreButton && (
         <Button onClick={() => setIsLimited(false)} endIcon={<ChevronDown />}>
-          {battlesToShow.length === 0 ? i18n._(`Show Debates`) : i18n._(`Show More Debates`)}
+          {battlesToShow.length === 0 ? i18n._(`Show Debates`) : i18n._(`Show More`)}
         </Button>
       )}
     </Stack>
