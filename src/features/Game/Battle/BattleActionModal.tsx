@@ -268,12 +268,19 @@ export const BattleActionModal = ({
 
           {!isWinnerDeclared && isShowLastStep && (
             <InfoStep
-              title={i18n._("Almost there!")}
-              subTitle={i18n._(
-                "You have completed all the questions. Submit your answers now and wait for the results."
-              )}
+              title={isSubmitting ? i18n._("Processing answers...") : i18n._("Almost there!")}
+              subTitle={
+                isSubmitting
+                  ? i18n._(
+                      "You have answered all the questions. Submitting your answers now... Don't close this window."
+                    )
+                  : i18n._(
+                      "You have completed all the questions. Submit your answers now and wait for the results."
+                    )
+              }
               actionButtonTitle={i18n._("Submit Answers")}
               actionButtonEndIcon={<Check />}
+              listItems={[]}
               width={"600px"}
               disabled={isSubmitting}
               onClick={onSubmitAnswers}
@@ -300,6 +307,7 @@ export const BattleActionModal = ({
                 transcript={activeTranscript}
                 minWords={30}
                 lang={lang}
+                subTitleComponent={<></>}
                 nextStep={nextQuestion}
                 updateTranscript={async (combinedTranscript) => {
                   console.log("combinedTranscript", combinedTranscript);
@@ -313,9 +321,13 @@ export const BattleActionModal = ({
               <Stack
                 sx={{
                   width: "100%",
-                  gap: "10px",
+                  gap: "15px",
+                  padding: "20px 10px 0 10px",
                 }}
               >
+                <Typography variant="caption">
+                  {i18n._("You can use text to answer if you prefer.")}
+                </Typography>
                 <TextField
                   label={i18n._("Your answer")}
                   placeholder={i18n._("Type your answer here...")}
@@ -332,9 +344,10 @@ export const BattleActionModal = ({
                       transcription: textAnswer,
                     });
                   }}
-                  variant="outlined"
+                  variant="text"
+                  disabled={textAnswer === activeTranscript || textAnswer.trim().length === 0}
                 >
-                  Submit
+                  {i18n._("Add Text Answer")}
                 </Button>
               </Stack>
             </Stack>
