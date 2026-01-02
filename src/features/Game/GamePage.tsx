@@ -34,7 +34,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
       game.stats.filter((stat) => {
         return isTodayStat({ lastVisitStat: game.gameLastVisit, userId: stat.userId });
       }).length,
-    [game.stats.length]
+    [game.stats]
   );
 
   return (
