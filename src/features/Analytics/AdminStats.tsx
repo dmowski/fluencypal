@@ -11,7 +11,6 @@ import { useGame } from "../Game/useGame";
 import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
 import { BadgeCheck, Check, Copy, Gem, House } from "lucide-react";
 import { defaultAvatar } from "../Game/avatars";
-import { NavigationBar } from "../Navigation/NavigationBar";
 import { UserSource } from "@/common/analytics";
 
 const copyToClipboard = async (text: string) => {
@@ -35,7 +34,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
   const createdAgo = user.createdAtIso ? dayjs(user.createdAtIso).fromNow() : "Unknown";
 
   const isToday =
-    user.lastLoginAtDateTime && dayjs(user.lastLoginAtDateTime).isSame(dayjs(), "day");
+    user.lastLoginAtDateTime && dayjs().diff(dayjs(user.lastLoginAtDateTime), "hour") < 24;
 
   const firebaseLink = getFirebaseLink(user.id);
   const countryName = user.countryName || "";
@@ -350,7 +349,7 @@ export function AdminStats() {
 
   const todayUsers = users.filter((user) => {
     const lastLogin = user.userData.lastLoginAtDateTime;
-    return lastLogin && dayjs(lastLogin).isSame(dayjs(), "day");
+    return lastLogin && dayjs().diff(dayjs(lastLogin), "hour") < 24;
   });
 
   if (!isAdmin) {
@@ -381,7 +380,7 @@ export function AdminStats() {
             }}
           >
             <Typography variant="h6">Users: {data.users.length}</Typography>
-            <Typography variant="h6">Today users: {todayUsers.length}</Typography>
+            <Typography variant="h6">Day: {todayUsers.length}</Typography>
             <Stack
               sx={{
                 gap: "10px",
