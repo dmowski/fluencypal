@@ -224,7 +224,7 @@ export const PlanCard = ({
                     startIcon={<Telescope />}
                     endIcon={<ChevronRight />}
                   >
-                    {i18n._(`Upgrade Plan`)}
+                    {i18n._(`Get Full Access`)}
                   </Button>
                 </Stack>
               ) : (
