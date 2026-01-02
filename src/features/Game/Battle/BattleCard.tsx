@@ -117,18 +117,30 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                 fontWeight: 500,
               }}
             >
-              {i18n._("Debate")}
+              {i18n._("Debate Game")}
             </Typography>
           </Stack>
-          <Typography
-            variant="body2"
+          <Stack
             sx={{
-              color: "rgba(255, 255, 255, 0.6)",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "10px",
+              color: "rgba(120, 120, 120, 1)",
             }}
           >
-            {updatedAgo}
-          </Typography>
+            <Typography variant="body2">{updatedAgo}</Typography>
+            <Swords size={"14px"} />
+          </Stack>
         </Stack>
+        {!isAcceptedByMe && (
+          <Stack>
+            <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
+              {i18n._("{userName} challenges you to a debate!", {
+                userName: game.userNames?.[battle.authorUserId] || i18n._("-"),
+              })}
+            </Typography>
+          </Stack>
+        )}
 
         <Stack
           sx={{
@@ -272,7 +284,12 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                 )}
               </Stack>
               <IconButton onClick={(e) => setIsShowMenu(e.currentTarget)} size="small">
-                <CircleEllipsis size={"16px"} />
+                <CircleEllipsis
+                  size={"20px"}
+                  style={{
+                    opacity: 0.7,
+                  }}
+                />
               </IconButton>
               <Menu
                 anchorEl={isShowMenu}
@@ -286,7 +303,7 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
               >
                 <MenuItem
                   sx={{}}
-                  disabled={isAcceptedByAll}
+                  //disabled={isAcceptedByAll}
                   onClick={() => {
                     const isConfirm = confirm(
                       i18n._("Are you sure you want to reject this battle?")
