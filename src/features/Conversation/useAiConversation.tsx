@@ -719,9 +719,19 @@ Start the conversation with: "${
     }
 
     let isMutedInternal = isMuted;
-    if (!isMuted && input.conversationMode === "record") {
+    const isRecordingNeedMute = !isMuted && input.conversationMode === "record";
+    const isLimitedAccessNeedMute = !isMuted && !usage.isFullAccess;
+
+    if (isRecordingNeedMute || isLimitedAccessNeedMute) {
       toggleMute(true);
       isMutedInternal = true;
+    }
+
+    let isVolumeOnInternal = isVolumeOn;
+    const isLimitedAccessNeedVolumeOff = isVolumeOn && !usage.isFullAccess;
+    if (isLimitedAccessNeedVolumeOff) {
+      toggleVolume(false);
+      isVolumeOnInternal = false;
     }
 
     setTemporaryGoal(null);
@@ -783,6 +793,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
         initInstruction: instruction,
         voice: aiRtcConfig.voice || input.voice,
         isMuted: isMutedInternal,
+        isVolumeOn: isVolumeOnInternal,
       });
       setVoice(aiRtcConfig.voice || input.voice || null);
       history.createConversation({
