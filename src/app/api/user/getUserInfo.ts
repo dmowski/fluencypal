@@ -4,6 +4,7 @@ import { AiUserInfo } from "@/common/userInfo";
 import { Conversation, UserConversationsMeta } from "@/common/conversation";
 import { QuizSurvey2 } from "@/features/Goal/Quiz/types";
 import { InterviewQuizSurvey } from "@/features/Case/types";
+import dayjs from "dayjs";
 
 export interface StripeUserInfo {
   customerId: string;
@@ -118,10 +119,17 @@ export const getUserConversationsMeta = async (userId: string): Promise<UserConv
   const conversationCount = docs.length || 0;
   const lastConversationDate = docs[0]?.updatedAtIso || null;
   const totalMessages = docs.reduce((acc, doc) => acc + (doc.messages.length || 0), 0);
+  const today = dayjs().startOf("day");
+  const todayConversations = docs.filter((doc) => dayjs(doc.updatedAtIso).isAfter(today));
+  const todayMessages = todayConversations.reduce(
+    (acc, doc) => acc + (doc.messages.length || 0),
+    0
+  );
 
   return {
     conversationCount,
     lastConversationDate,
     totalMessages,
+    todayMessages,
   };
 };

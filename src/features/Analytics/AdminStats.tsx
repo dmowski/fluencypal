@@ -1,5 +1,5 @@
 "use client";
-import { Button, Card, Link, Stack, TextField, Typography } from "@mui/material";
+import { Button, Link, Stack, TextField, Typography } from "@mui/material";
 import { useAuth } from "../Auth/useAuth";
 import { DEV_EMAILS } from "@/common/dev";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -9,7 +9,7 @@ import dayjs from "dayjs";
 import { getFirebaseLink } from "../Firebase/getFirebaseLink";
 import { useGame } from "../Game/useGame";
 import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
-import { BadgeCheck, Check, Copy, Gem, House } from "lucide-react";
+import { BadgeCheck, Check, Copy, Gem, House, LogIn, UserPlus } from "lucide-react";
 import { defaultAvatar } from "../Game/avatars";
 import { UserSource } from "@/common/analytics";
 
@@ -70,6 +70,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
   const languageToLearn = fullEnglishLanguageName[user.languageCode || "en"];
 
   const learning = `${nativeLanguage} → ${languageToLearn}`;
+  const todaysConversationsMessages = userStat.conversationMeta.todayMessages || 0;
 
   const [isCopied, setIsCopied] = useState(false);
   useEffect(() => {
@@ -93,7 +94,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
         borderRadius: "10px",
         padding: "14px 25px",
         flexDirection: "row",
-        alignItems: "center",
+        //alignItems: "center",
         gap: "25px",
       }}
     >
@@ -138,18 +139,75 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
       <Stack
         sx={{
           width: "500px",
+          gap: "10px",
+          ".icon": {
+            width: "16px",
+            height: "16px",
+            verticalAlign: "middle",
+            marginLeft: "4px",
+          },
         }}
       >
-        <Link href={firebaseLink} variant="h6" target="_blank" rel="noopener noreferrer">
-          {user.email} | {displayName}
-        </Link>
-        <Typography variant="caption">
-          <b>{lastLoginAgo}</b>/<b>{createdAgo}</b>
-        </Typography>
-        <Typography variant="caption">
-          <b>{lastConversationAgo}</b> - conversations ({conversationCount} | {totalMessages}
-          {` messages`})
-        </Typography>
+        <Stack sx={{}}>
+          <Link href={firebaseLink} variant="h6" target="_blank" rel="noopener noreferrer">
+            {user.email} | {displayName}
+          </Link>
+          <Stack>
+            <Typography variant="body2">
+              <LogIn className="icon" /> {lastLoginAgo} | Login
+            </Typography>
+
+            <Typography variant="body2">
+              <UserPlus className="icon" /> {createdAgo} | Created
+            </Typography>
+          </Stack>
+        </Stack>
+        <Stack
+          sx={{
+            padding: "20px 0",
+            gap: "12px",
+
+            b: {
+              paddingRight: "12px",
+              width: "40px",
+              display: "inline-block",
+              textAlign: "right",
+            },
+            ".stat-card": {
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              alignItems: "center",
+              gap: "5px",
+              padding: "8px 12px",
+              borderRadius: "8px",
+              height: "120px",
+              ".title": {
+                fontSize: "30px",
+              },
+            },
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Stack className="stat-card">
+            <Typography className="title">{todaysConversationsMessages}</Typography>
+            <Typography align="center">Today Messages</Typography>
+          </Stack>
+
+          <Stack className="stat-card">
+            <Typography className="title">{totalMessages}</Typography>
+            <Typography align="center">All Messages</Typography>
+          </Stack>
+
+          <Stack className="stat-card">
+            <Typography className="title">{conversationCount}</Typography>
+            <Stack>
+              <Typography align="center">Conversations</Typography>
+              <Typography align="center" variant="caption" sx={{ opacity: 0.7 }}>
+                {lastConversationAgo}
+              </Typography>
+            </Stack>
+          </Stack>
+        </Stack>
         <Stack
           sx={{
             flexDirection: "row",
