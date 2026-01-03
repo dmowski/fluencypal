@@ -26,13 +26,15 @@ export const PositionChanged = () => {
     return index >= myStatIndex - countToShow && index <= myStatIndex + countToShow;
   });
 
+  const myActualPosition = game.getRealPosition(myUserId);
+
   const statsToPositions = game.stats.filter((stat, index) => {
     return index >= myStatIndex - countToShow && index <= myStatIndex + countToShow;
   });
 
   const positions: Record<string, number> = {};
   statsToPositions.forEach((stat, index) => {
-    positions[stat.userId] = index - 1;
+    positions[stat.userId] = myActualPosition === 0 ? index : index - 1;
   });
 
   return (
