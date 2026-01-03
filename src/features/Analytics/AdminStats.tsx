@@ -433,6 +433,11 @@ export function AdminStats() {
     return acc + todayMessages;
   }, 0);
 
+  const lastHourMessagesCount = users.reduce((acc, user) => {
+    const lastHourMessages = user.conversationMeta.lastHourMessages || 0;
+    return acc + lastHourMessages;
+  }, 0);
+
   if (!isAdmin) {
     return <></>;
   }
@@ -468,7 +473,7 @@ export function AdminStats() {
                 flexDirection: "row",
                 alignItems: "center",
                 ".stat-card": {
-                  width: "150px",
+                  width: "200px",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   alignItems: "center",
                   gap: "0px",
@@ -489,6 +494,13 @@ export function AdminStats() {
                 <Typography className="value">{todayMessagesCount}</Typography>
                 <Typography align="center" variant="body2" className="label">
                   Today Messages
+                </Typography>
+              </Stack>
+
+              <Stack className="stat-card">
+                <Typography className="value">{lastHourMessagesCount}</Typography>
+                <Typography align="center" variant="body2" className="label">
+                  Last Hour Messages
                 </Typography>
               </Stack>
 

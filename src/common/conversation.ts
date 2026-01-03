@@ -23,6 +23,7 @@ export interface UserConversationsMeta {
   lastConversationDate: string | null;
   totalMessages: number;
   todayMessages: number;
+  lastHourMessages: number;
 }
 
 // parentId -> childId

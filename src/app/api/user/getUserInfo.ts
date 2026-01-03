@@ -126,10 +126,18 @@ export const getUserConversationsMeta = async (userId: string): Promise<UserConv
     0
   );
 
+  const lastHour = dayjs().subtract(1, "hour");
+  const lastHourConversations = docs.filter((doc) => dayjs(doc.updatedAtIso).isAfter(lastHour));
+  const lastHourMessages = lastHourConversations.reduce(
+    (acc, doc) => acc + (doc.messages.length || 0),
+    0
+  );
+
   return {
     conversationCount,
     lastConversationDate,
     totalMessages,
     todayMessages,
+    lastHourMessages,
   };
 };
