@@ -42,6 +42,8 @@ export const CameraCanvas = ({
   setIsVolumeOn,
   isLimited,
   onLimitedClick,
+
+  onSubmitTranscription,
 }: {
   conversation: ChatMessage[];
   stopCallMode: () => void;
@@ -56,6 +58,8 @@ export const CameraCanvas = ({
   setIsVolumeOn: (value: boolean) => void;
   isLimited: boolean;
   onLimitedClick: () => void;
+
+  onSubmitTranscription: (userMessage: string) => void;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -245,6 +249,7 @@ export const CameraCanvas = ({
             setIsVolumeOn={setIsVolumeOn}
             isLimited={isLimited}
             onLimitedClick={onLimitedClick}
+            onSubmitTranscription={onSubmitTranscription}
           />
         </Stack>
       </Stack>

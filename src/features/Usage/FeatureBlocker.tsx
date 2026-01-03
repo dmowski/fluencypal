@@ -1,6 +1,7 @@
 import { useLingui } from "@lingui/react";
 import { Button, Stack, Typography } from "@mui/material";
 import { ChevronRight, Telescope } from "lucide-react";
+import { ColorIconTextList } from "../Survey/ColorIconTextList";
 
 export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick?: () => void }) => {
   const { i18n } = useLingui();
@@ -15,9 +16,9 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick?: () => void
         boxShadow: "0px 0px 0 1px rgba(206, 200, 239, 0.2), 3px 3px 30px rgba(0, 0, 0, 0.3)",
 
         background:
-          "linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(47, 17, 216, 0.03) 100%)",
+          "linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(31, 3, 186, 0.03) 100%)",
         padding: "30px 25px",
-        maxWidth: "480px",
+        width: "100%",
         gap: "25px",
       }}
     >
@@ -27,18 +28,16 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick?: () => void
         }}
       >
         <Typography
-          align="center"
           variant="h5"
           sx={{
             fontWeight: 600,
-            fontSize: "1.4rem",
+            fontSize: "1.7rem",
           }}
         >
-          {i18n._(`Full access needed`)}
+          {i18n._(`Full access`)}
         </Typography>
 
         <Typography
-          align="center"
           variant="body2"
           sx={{
             opacity: 0.7,
@@ -48,16 +47,39 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick?: () => void
         </Typography>
       </Stack>
 
+      <Stack sx={{ width: "100%" }}>
+        <ColorIconTextList
+          listItems={[
+            {
+              title: i18n._("Unlimited AI Conversations"),
+              iconName: "star",
+            },
+            {
+              title: i18n._("Instant Grammar Corrections"),
+              iconName: "book",
+            },
+            {
+              title: i18n._("Realistic AI voice responses"),
+              iconName: "microscope",
+            },
+          ]}
+          gap="15px"
+          iconSize={"20px"}
+        />
+      </Stack>
       <Button
         sx={{
           padding: "10px 20px",
+          //backgroundColor: "rgba(6, 77, 121, 1)",
+          //color: "#FFFFFF",
         }}
         onClick={() => {
           onLimitedClick && onLimitedClick();
         }}
         size="large"
+        fullWidth
         variant="contained"
-        color="info"
+        //color="info"
         startIcon={<Telescope />}
         endIcon={<ChevronRight />}
       >

@@ -11,10 +11,15 @@ import { useLingui } from "@lingui/react";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 
-import { CircleQuestionMark } from "lucide-react";
+import { CircleQuestionMark, Mic, Send } from "lucide-react";
 import { useState } from "react";
 import { CustomModal } from "@/features/uiKit/Modal/CustomModal";
 import { FeatureBlocker } from "@/features/Usage/FeatureBlocker";
+import { useAuth } from "@/features/Auth/useAuth";
+import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
+import { useSettings } from "@/features/Settings/useSettings";
+import SendIcon from "@mui/icons-material/Send";
+import StopIcon from "@mui/icons-material/Stop";
 
 export const CallButton = ({
   label,
@@ -86,6 +91,8 @@ export const CallButtons = ({
   setIsVolumeOn,
   isLimited,
   onLimitedClick,
+
+  onSubmitTranscription,
 }: {
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
@@ -97,10 +104,22 @@ export const CallButtons = ({
   setIsVolumeOn: (value: boolean) => void;
   isLimited: boolean;
   onLimitedClick: () => void;
+
+  onSubmitTranscription: (userMessage: string) => void;
 }) => {
   const { i18n } = useLingui();
 
   const [isShowVolumeWarning, setIsShowVolumeWarning] = useState(false);
+  const [isShowMuteWarning, setIsShowMuteWarning] = useState(false);
+
+  const toggleMute = () => {
+    if (isLimited) {
+      setIsShowMuteWarning(true);
+      return;
+    }
+
+    setIsMuted(!isMuted);
+  };
 
   const toggleVolume = () => {
     if (isLimited) {
@@ -109,6 +128,25 @@ export const CallButtons = ({
     }
 
     setIsVolumeOn(!isVolumeOn);
+  };
+
+  const auth = useAuth();
+  const settings = useSettings();
+  const lang = settings.languageCode || "en";
+  const recorder = useAudioRecorder({
+    languageCode: lang,
+    getAuthToken: auth.getToken,
+    isFree: true,
+    isGame: false,
+    visualizerComponentWidth: "100%",
+  });
+  const transcription = recorder.transcription;
+
+  const submitTranscription = () => {
+    onSubmitTranscription(transcription || "");
+    recorder.removeTranscript();
+    recorder.cancelRecording();
+    setIsShowMuteWarning(false);
   };
 
   return (
@@ -130,7 +168,7 @@ export const CallButtons = ({
         inactiveButton={<MicOffIcon />}
         isActive={isMuted}
         label={isMuted ? i18n._("Unmute microphone") : i18n._("Mute microphone")}
-        onClick={() => setIsMuted(!isMuted)}
+        onClick={toggleMute}
         isLocked={isLimited}
       />
 
@@ -163,11 +201,14 @@ export const CallButtons = ({
         onClick={toggleVolume}
         isLocked={isLimited}
       />
-      {isShowVolumeWarning && (
+      {(isShowVolumeWarning || isShowMuteWarning) && (
         <CustomModal
           isOpen={true}
           onClose={() => {
             setIsShowVolumeWarning(false);
+            setIsShowMuteWarning(false);
+            recorder.cancelRecording();
+            recorder.removeTranscript();
           }}
         >
           <Stack
@@ -183,24 +224,126 @@ export const CallButtons = ({
                 gap: "0px",
               }}
             >
-              <Typography variant="h4" align="center">
-                {i18n._("AI voice")}
+              <Typography variant="h4">
+                {isShowVolumeWarning ? i18n._("AI voice") : i18n._("Real-time microphone")}
               </Typography>
               <Typography
-                align="center"
                 variant="body2"
                 sx={{
                   opacity: 0.7,
                 }}
               >
-                {i18n._(
-                  "Enabling ai voice is a premium feature. Please upgrade your plan to access this feature."
-                )}
+                {isShowVolumeWarning
+                  ? i18n._(
+                      "Enabling ai voice is a premium feature. Please upgrade your plan to access this feature."
+                    )
+                  : i18n._(
+                      "Using real-time microphone is a premium feature. Please upgrade your plan to access this feature or use recorded audio."
+                    )}
               </Typography>
             </Stack>
+
+            {isShowMuteWarning && (
+              <Stack
+                sx={{
+                  width: "100%",
+                  padding: "15px",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  borderRadius: "10px",
+                  gap: "20px",
+                  alignItems: "flex-start",
+                }}
+              >
+                <Stack
+                  sx={{
+                    gap: "5px",
+                  }}
+                >
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      opacity: 0.8,
+                    }}
+                    className={`${recorder.isTranscribing ? "loading-shimmer" : ""}`}
+                  >
+                    {i18n._("Your Message:")}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    className={`${recorder.isTranscribing ? "loading-shimmer" : ""}`}
+                    sx={{
+                      opacity: !recorder.transcription ? 0.5 : 1,
+                    }}
+                  >
+                    {recorder.isTranscribing
+                      ? i18n._("Loading...")
+                      : recorder.transcription || i18n._("No message recorded yet.")}
+                  </Typography>
+                </Stack>
+                <Stack
+                  sx={{
+                    width: "100%",
+                    gap: "10px",
+                  }}
+                >
+                  <Stack
+                    sx={{
+                      flexDirection: "row",
+                      width: "100%",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Button
+                      disabled={recorder.isTranscribing}
+                      variant={recorder.transcription ? "outlined" : "contained"}
+                      color={recorder.isRecording ? "error" : "info"}
+                      sx={{
+                        width: "100%",
+                      }}
+                      onClick={() => {
+                        if (recorder.isRecording) {
+                          recorder.stopRecording();
+                        } else {
+                          recorder.startRecording();
+                        }
+                      }}
+                      startIcon={recorder.isRecording ? <StopIcon /> : <MicIcon />}
+                    >
+                      {recorder.isRecording ? i18n._("Stop") : i18n._("Record Message")}
+                    </Button>
+
+                    <Stack
+                      sx={{
+                        width: "100%",
+                        minWidth: "100px",
+                        maxWidth: "100px",
+                        height: "38px",
+                      }}
+                    >
+                      {recorder.visualizerComponent}
+                    </Stack>
+                  </Stack>
+
+                  <Button
+                    variant="contained"
+                    color="info"
+                    disabled={
+                      !recorder.transcription || recorder.isTranscribing || recorder.isRecording
+                    }
+                    onClick={() => submitTranscription()}
+                    sx={{
+                      width: "calc(100% - 100px)",
+                    }}
+                    endIcon={<SendIcon />}
+                  >
+                    {i18n._("Send Message")}
+                  </Button>
+                </Stack>
+              </Stack>
+            )}
+
             <FeatureBlocker onLimitedClick={onLimitedClick} />
             <Button
-              variant="outlined"
               fullWidth
               onClick={() => {
                 setIsShowVolumeWarning(false);

@@ -525,6 +525,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
         setIsVolumeOn={setIsVolumeOn}
         isLimited={isLimited}
         onLimitedClick={onLimitedClick}
+        onSubmitTranscription={addUserMessage}
       />
     );
   }
