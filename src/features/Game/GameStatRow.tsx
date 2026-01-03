@@ -7,7 +7,7 @@ import { defaultAvatar } from "./avatars";
 import dayjs from "dayjs";
 import { UsersStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { UserProfileModal } from "./UserProfileModal";
 
@@ -26,6 +26,8 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
   const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 10 : false;
 
   const [isShowUserInfoModal, setIsShowUserInfoModal] = useState(false);
+
+  const actualPosition = game.getRealPosition(stat.userId) + 1;
 
   return (
     <>
@@ -61,6 +63,16 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
           },
         }}
       >
+        <Typography
+          sx={{
+            fontSize: "14px",
+            padding: "0 0px 0 20px",
+            fontVariantNumeric: "tabular-nums",
+          }}
+        >
+          {actualPosition}
+        </Typography>
+
         <Stack
           sx={{
             position: "relative",
@@ -76,7 +88,6 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
               height: "50px",
               borderRadius: "50%",
               objectFit: "cover",
-              boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
               position: "relative",
               zIndex: 1,
             }}
@@ -98,39 +109,80 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
             />
           )}
         </Stack>
+
         <Stack
           sx={{
             width: "100%",
-            padding: "5px 0",
+            padding: "0",
+            height: "100%",
             overflow: "hidden",
+            paddingTop: "2px",
+            gap: "2px",
+            justifyContent: "center",
           }}
         >
-          <Typography variant="body1">{userName}</Typography>
           <Typography
-            variant="caption"
+            variant="body1"
             sx={{
-              opacity: 0.7,
+              lineHeight: "1",
             }}
           >
-            {lastVisitAgo}
+            {userName}
           </Typography>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              gap: "20px",
+            }}
+          >
+            <Typography
+              variant="caption"
+              sx={{
+                opacity: 0.6,
+                lineHeight: "1",
+              }}
+            >
+              {lastVisitAgo}
+            </Typography>
+          </Stack>
         </Stack>
 
-        <Typography
-          variant="body2"
-          align="right"
-          sx={{
-            fontWeight: 600,
-            width: "max-content",
-            color: top5 ? "primary.main" : "text.primary",
-            fontSize: top5 ? "1.5rem" : "0.9rem",
-
-            fontVariantNumeric: "tabular-nums",
-          }}
-        >
-          {stat.points}
-        </Typography>
+        <GamePointRow points={stat.points} isTop={top5} />
       </Stack>
     </>
+  );
+};
+
+export const GamePointRow = ({ points, isTop }: { points: number; isTop: boolean }) => {
+  const [zoomIn, setZoomIn] = useState(false);
+  const [internalPoints, setInternalPoints] = useState(points);
+
+  useEffect(() => {
+    if (internalPoints === points) return;
+    setInternalPoints(points);
+
+    setZoomIn(true);
+    const timeout = setTimeout(() => {
+      setZoomIn(false);
+    }, 900);
+    return () => clearTimeout(timeout);
+  }, [points]);
+
+  return (
+    <Typography
+      variant="body2"
+      align="right"
+      sx={{
+        fontWeight: 600,
+        width: "max-content",
+        color: isTop || zoomIn ? "primary.main" : "text.primary",
+        fontSize: isTop ? "1.5rem" : "0.9rem",
+        fontVariantNumeric: "tabular-nums",
+        transform: zoomIn ? "scale(1.8)" : "scale(1)",
+        transition: "all 0.5s ease-in-out",
+      }}
+    >
+      {internalPoints}
+    </Typography>
   );
 };
