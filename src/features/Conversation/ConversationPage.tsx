@@ -33,6 +33,7 @@ import { usePayWall } from "../PayWall/usePayWall";
 import { useGame } from "../Game/useGame";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { RolePlayProvider } from "../RolePlay/useRolePlay";
+import { useAccess } from "../Usage/useAccess";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -55,6 +56,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const words = useWords();
   const rules = useRules();
   const plan = usePlan();
+  const access = useAccess();
 
   const appNavigation = useAppNavigation();
   const { isProcessingGoal } = useGoalCreation();
@@ -174,11 +176,9 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   if (!aiConversation.isStarted) {
     return (
-      <>
-        <RolePlayProvider rolePlayInfo={rolePlayInfo}>
-          <Dashboard lang={lang} />
-        </RolePlayProvider>
-      </>
+      <RolePlayProvider rolePlayInfo={rolePlayInfo}>
+        <Dashboard lang={lang} />
+      </RolePlayProvider>
     );
   }
 
@@ -187,8 +187,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     plan.activeGoal?.goalQuiz?.minPerDaySelected || defaultMessagesToComplete,
     defaultMessagesToComplete
   );
-
-  const isFullAccess = game.isGameWinner || usage.isFullAccess;
 
   return (
     <Stack>
@@ -253,12 +251,12 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         }}
         isMuted={aiConversation.isMuted}
         setIsMuted={(isMuted) => aiConversation.toggleMute(isMuted)}
-        isNeedToShowBalanceWarning={!isFullAccess}
+        isNeedToShowBalanceWarning={!access.isFullAppAccess}
         isVolumeOn={aiConversation.isVolumeOn}
         voice={aiConversation.voice}
         messageOrder={aiConversation.messageOrder}
         onWebCamDescription={aiConversation.setWebCamDescription}
-        isLimited={!isFullAccess}
+        isLimited={!access.isFullAppAccess}
         onLimitedClick={() => usage.togglePaymentModal(true)}
       />
     </Stack>

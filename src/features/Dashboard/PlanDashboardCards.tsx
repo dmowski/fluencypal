@@ -30,6 +30,7 @@ import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { ConversationMode } from "@/common/user";
 import { useUsage } from "../Usage/useUsage";
+import { useAccess } from "../Usage/useAccess";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();
@@ -40,6 +41,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const plan = usePlan();
   const settings = useSettings();
   const usage = useUsage();
+  const access = useAccess();
 
   const [selectGoalModalAnchorEl, setSelectGoalModalAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -407,7 +409,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   </Stack>
                 }
                 actionLabel={i18n._(`Start`)}
-                isLimited={!usage.isFullAccess}
+                isLimited={!access.isFullAppAccess}
                 onLimitedClick={() => usage.togglePaymentModal(true)}
               />
             );

@@ -30,6 +30,7 @@ import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
 import { useGame } from "../Game/useGame";
 import { ConversationMode } from "@/common/user";
+import { useAccess } from "../Usage/useAccess";
 
 const levelDescriptionsForAi: Record<string, string> = {
   A1: "User's language level is Beginner. Use extremely simple words and short sentences. Focus on basics.",
@@ -344,8 +345,8 @@ VISUAL_CONTEXT (latest): ${description}
     });
   };
 
-  const game = useGame();
-  const isLowBalance = !usage.isFullAccess && !game.isGameWinner;
+  const access = useAccess();
+  const isLowBalance = !access.isFullAppAccess;
 
   const [isMutedDueToNoBalance, setIsMutedDueToNoBalance] = useState(false);
   useEffect(() => {
@@ -720,7 +721,7 @@ Start the conversation with: "${
 
     let isMutedInternal = isMuted;
     const isRecordingNeedMute = !isMuted && input.conversationMode === "record";
-    const isLimitedAccessNeedMute = !isMuted && !usage.isFullAccess;
+    const isLimitedAccessNeedMute = !isMuted && !access.isFullAppAccess;
 
     if (isRecordingNeedMute || isLimitedAccessNeedMute) {
       toggleMute(true);
@@ -728,7 +729,7 @@ Start the conversation with: "${
     }
 
     let isVolumeOnInternal = isVolumeOn;
-    const isLimitedAccessNeedVolumeOff = isVolumeOn && !usage.isFullAccess;
+    const isLimitedAccessNeedVolumeOff = isVolumeOn && !access.isFullAppAccess;
     if (isLimitedAccessNeedVolumeOff) {
       toggleVolume(false);
       isVolumeOnInternal = false;

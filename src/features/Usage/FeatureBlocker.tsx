@@ -25,6 +25,7 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick?: () => void
       <Stack
         sx={{
           gap: "5px",
+          width: "100%",
         }}
       >
         <Typography

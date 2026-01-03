@@ -14,11 +14,12 @@ import { createSetupIntentRequest } from "./createSetupIntentRequest";
 import { VerifyCard } from "./CardValidator";
 import { ColorIconTextList } from "../Survey/ColorIconTextList";
 import { NavigationBar } from "../Navigation/NavigationBar";
+import { useAccess } from "../Usage/useAccess";
 
 export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
   const settings = useSettings();
-  const usage = useUsage();
+  const access = useAccess();
   const auth = useAuth();
   const isLoadingSettings = settings.loading;
   const isCreditCardConfirmed = settings.userSettings?.isCreditCardConfirmed;
@@ -47,7 +48,7 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
   };
 
   if (isCreditCardConfirmed || isLoadingSettings || isTg) return <></>;
-  if (usage.isFullAccess) return <></>;
+  if (access.isFullAppAccess) return <></>;
 
   return (
     <CustomModal isOpen={true}>

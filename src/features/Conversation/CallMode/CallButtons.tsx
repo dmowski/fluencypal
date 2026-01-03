@@ -166,7 +166,7 @@ export const CallButtons = ({
       <CallButton
         activeButton={<MicIcon />}
         inactiveButton={<MicOffIcon />}
-        isActive={isMuted}
+        isActive={!isMuted}
         label={isMuted ? i18n._("Unmute microphone") : i18n._("Mute microphone")}
         onClick={toggleMute}
         isLocked={isLimited}
