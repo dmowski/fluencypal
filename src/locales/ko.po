@@ -215,7 +215,7 @@ msgstr ""
 "**당신의 기술을 테스트해 보십니까?**  \n"
 "**FluencyPal에서 무료 모의 인터뷰**로 실제 경험을 모방하십시오 - 큰 날을 성공으로 이끄는 마지막 단계입니다!"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:84
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:84
 msgid "+{increasePoints} points"
 msgstr "+{increasePoints} 포인트"
 
@@ -654,7 +654,7 @@ msgstr "모든 시나리오"
 msgid "Allow WebCam"
 msgstr "웹캠 허용"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:719
+#: src/features/Conversation/ConversationCanvas.tsx:717
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "거의 맞습니다"
@@ -690,7 +690,7 @@ msgstr "금액이 너무 큽니다. 지원해 주신 점 감사드리나, $400 �
 msgid "Analysis"
 msgstr "분석"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:969
+#: src/features/Conversation/ConversationCanvas.tsx:967
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "분석 중"
@@ -700,12 +700,12 @@ msgstr "분석 중"
 msgid "Analyzing your inputs..."
 msgstr "입력을 분석 중입니다..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:454
-#: src/features/Conversation/ConversationCanvas2.tsx:461
-#: src/features/Conversation/ConversationCanvas2.tsx:468
-#: src/features/Conversation/ConversationCanvas2.tsx:731
-#: src/features/Conversation/ConversationCanvas2.tsx:870
-#: src/features/Conversation/ConversationCanvas2.tsx:877
+#: src/features/Conversation/ConversationCanvas.tsx:452
+#: src/features/Conversation/ConversationCanvas.tsx:459
+#: src/features/Conversation/ConversationCanvas.tsx:466
+#: src/features/Conversation/ConversationCanvas.tsx:729
+#: src/features/Conversation/ConversationCanvas.tsx:868
+#: src/features/Conversation/ConversationCanvas.tsx:875
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "분석 중..."
@@ -789,7 +789,7 @@ msgstr "정말로 목표를 삭제하시겠습니까? 이 작업은 취소할 �
 msgid "Are you sure you want to reject this battle?"
 msgstr "이 전투를 거부하시겠습니까?"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:466
+#: src/features/Conversation/ConversationCanvas.tsx:464
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
 msgstr "개선해야 할 부분:"
@@ -1146,7 +1146,7 @@ msgstr "C# 백엔드 면접 준비 테스트"
 msgid "Caching Strategies"
 msgstr "캐싱 전략"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1204
+#: src/features/Conversation/ConversationCanvas.tsx:1202
 #: src/features/Goal/Quiz/QuizPage2.tsx:316
 #. js-lingui-explicit-id
 msgid "Call mode"
@@ -1191,7 +1191,7 @@ msgstr "FluencyPal을 무료로 사용할 수 있나요?"
 msgid "Cancel"
 msgstr "취소"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1414
+#: src/features/Conversation/ConversationCanvas.tsx:1412
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "녹음 취소"
@@ -1408,7 +1408,7 @@ msgstr "회사"
 msgid "Complete previous tasks first"
 msgstr "이전 작업을 먼저 완료하세요."
 
-#: src/features/Game/gameQuestionScreens/core.tsx:49
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:49
 #. js-lingui-explicit-id
 msgid "Complete the sentence"
 msgstr "문장을 완성하세요"
@@ -1555,7 +1555,7 @@ msgstr "연락처:"
 msgid "Continue"
 msgstr "계속"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:491
+#: src/features/Conversation/ConversationCanvas.tsx:489
 #. js-lingui-explicit-id
 msgid "Continue conversation"
 msgstr "대화 계속하기"
@@ -1584,15 +1584,15 @@ msgstr "계약 테스트"
 msgid "Conversation"
 msgstr "대화"
 
+#: src/features/Landing/LandingPage.tsx:255
+#. js-lingui-explicit-id
+msgid "Conversation Practice"
+msgstr "대화 연습"
+
 #: src/features/Landing/Price/FeatureList.tsx:40
 #: src/features/Landing/Price/PricePage.tsx:351
 #. js-lingui-explicit-id
 msgid "Conversation practice"
-msgstr "대화 연습"
-
-#: src/features/Landing/LandingPage.tsx:255
-#. js-lingui-explicit-id
-msgid "Conversation Practice"
 msgstr "대화 연습"
 
 #: src/features/SEO/metadata.ts:267
@@ -1634,7 +1634,7 @@ msgstr "페이지 링크 복사"
 msgid "Core Web Vitals"
 msgstr "코어 웹 바이탈"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:829
+#: src/features/Conversation/ConversationCanvas.tsx:827
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "수정됨"
@@ -1981,13 +1981,13 @@ msgid ""
 "background jobs (queues, batching, throttling)."
 msgstr ".NET에서 백그라운드 작업을 처리할 때 동시성을 관리하는 전략을 설명하세요 (큐, 배치, 스로틀링)."
 
-#: src/features/Game/gameQuestionScreens/core.tsx:47
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:216
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:47
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:220
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "이미지를 설명하십시오"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:239
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:243
 #. js-lingui-explicit-id
 msgid "Describe the topic in your own words..."
 msgstr "자신의 말로 주제를 설명해보세요..."
@@ -2155,7 +2155,7 @@ msgstr ""
 msgid "Discuss scaling, observability, failure modes, and operational readiness."
 msgstr "스케일링, 관측 가능성, 실패 모드 및 운영 준비성에 대해 논의하십시오."
 
-#: src/features/Game/gameQuestionScreens/core.tsx:50
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:50
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "토픽 논의"
@@ -2238,11 +2238,11 @@ msgstr "연습 섹션에서 통화 모드를 꼭 시도해 보세요!"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas2.tsx:1081
+#: src/features/Conversation/ConversationCanvas.tsx:1079
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:165
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:246
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:188
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:169
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:251
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:192
 #: src/features/Landing/LandingPage.tsx:259
 #: src/features/Survey/RecordUserAudioAnswer.tsx:145
 #: src/features/Usage/SubscriptionWaiter.tsx:47
@@ -2540,7 +2540,7 @@ msgstr "결제 세션 생성 중 오류가 발생했습니다. 나중에 다시 
 msgid "Error creating plan. Please try again."
 msgstr "플랜 생성 오류. 다시 시도해 주세요."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:665
+#: src/features/Conversation/ConversationCanvas.tsx:663
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "메시지 분석 중 오류"
@@ -2561,14 +2561,14 @@ msgstr "결제 처리 오류"
 msgid "Error Processing the goal"
 msgstr "목표 처리 중 오류 발생"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:322
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:327
 #: src/features/Survey/RecordUserAudioAnswer.tsx:95
 #. js-lingui-explicit-id
 msgid "Error:"
 msgstr "오류:"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:256
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:271
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:260
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:275
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "오류:"
@@ -2927,7 +2927,7 @@ msgstr "FluencyPal이 귀하의 목표와 선호도를 이해할 수 있도록 �
 msgid "Finalizing decision ..."
 msgstr "결정 마무리 중 ..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1143
+#: src/features/Conversation/ConversationCanvas.tsx:1141
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "완료"
@@ -3488,7 +3488,7 @@ msgstr "연습하러 가기"
 msgid "Go to the main page"
 msgstr "메인 페이지로 이동하십시오"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1324
+#: src/features/Conversation/ConversationCanvas.tsx:1322
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
 #: src/features/Dashboard/PlanDashboardCards.tsx:470
@@ -3496,7 +3496,7 @@ msgstr "메인 페이지로 이동하십시오"
 msgid "Goal"
 msgstr "목표"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:996
+#: src/features/Conversation/ConversationCanvas.tsx:994
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "목표가 생성되었습니다"
@@ -3574,7 +3574,7 @@ msgstr "문법 수정"
 msgid "Grammar corrections to boost your confidence"
 msgstr "자신감을 높여주는 문법 수정"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:734
+#: src/features/Conversation/ConversationCanvas.tsx:732
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:434
 #. js-lingui-explicit-id
 msgid "Great!"
@@ -3662,7 +3662,7 @@ msgstr "건강"
 msgid "Help"
 msgstr "도움말"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1226
+#: src/features/Conversation/ConversationCanvas.tsx:1224
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "답변 도움"
@@ -4315,7 +4315,7 @@ msgstr "재시도를 추가하고 더 긴 시간 제한을 설정하겠습니다
 msgid "I'm a beginner"
 msgstr "나는 초보자입니다"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:373
+#: src/features/Conversation/ConversationCanvas.tsx:371
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "당신의 메시지 아이디어"
@@ -5177,7 +5177,7 @@ msgstr ""
 "답변을 집중시키세요: 현재 또는 마지막 직위, 주요 성과, 그리고 회사에 대한 관심. 자기 소개를 연습하여 자연스럽게 들릴 수 있도록 "
 "하세요."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1182
+#: src/features/Conversation/ConversationCanvas.tsx:1180
 #. js-lingui-explicit-id
 msgid "Keyboard mode"
 msgstr "키보드 모드"
@@ -5248,7 +5248,7 @@ msgstr "언어 학습 자료"
 msgid "Language Learning Tips"
 msgstr "언어 학습 팁"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:452
+#: src/features/Conversation/ConversationCanvas.tsx:450
 #. js-lingui-explicit-id
 msgid "Language level:"
 msgstr "언어 수준:"
@@ -5371,12 +5371,12 @@ msgstr "법적 사항:"
 msgid "Less"
 msgstr "덜"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:431
+#: src/features/Conversation/ConversationCanvas.tsx:429
 #. js-lingui-explicit-id
 msgid "Lesson Review"
 msgstr "수업 리뷰"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1006
+#: src/features/Conversation/ConversationCanvas.tsx:1004
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "추가된 수업:"
@@ -5454,8 +5454,8 @@ msgid "Loading.."
 msgstr "로딩 중.."
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:283
-#: src/features/Conversation/ConversationCanvas2.tsx:339
-#: src/features/Conversation/ConversationCanvas2.tsx:1300
+#: src/features/Conversation/ConversationCanvas.tsx:337
+#: src/features/Conversation/ConversationCanvas.tsx:1298
 #: src/features/Conversation/ConversationPage.tsx:111
 #: src/features/Conversation/ConversationPage.tsx:120
 #: src/features/Conversation/ConversationPage.tsx:140
@@ -5652,7 +5652,7 @@ msgstr "마이크 접근 권한"
 msgid "Minutes"
 msgstr "분"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1300
+#: src/features/Conversation/ConversationCanvas.tsx:1298
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "미션 완료"
@@ -5856,7 +5856,7 @@ msgstr "새로운 단어"
 msgid "New words to practice."
 msgstr "새로운 단어 연습하기."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:924
+#: src/features/Conversation/ConversationCanvas.tsx:922
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "새로운 단어를 어휘에 추가:"
@@ -5873,7 +5873,7 @@ msgstr "새로운 단어:"
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
 #: src/features/Game/Battle/BattleActionModal.tsx:361
 #: src/features/Game/GameOnboarding.tsx:74
-#: src/features/Game/gameQuestionScreens/core.tsx:121
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:125
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
 #: src/features/Goal/GoalQuestions.tsx:966
@@ -6178,12 +6178,12 @@ msgstr "텔레그램에서 열기"
 msgid "Open personal plan"
 msgstr "개인 계획 열기"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1027
+#: src/features/Conversation/ConversationCanvas.tsx:1025
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "오픈 플랜"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1312
+#: src/features/Conversation/ConversationCanvas.tsx:1310
 #: src/features/Game/Battle/BattleCard.tsx:270
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -6812,7 +6812,7 @@ msgstr ""
 "영어 인터뷰 준비는 시간이 걸리지만 보람이 있습니다. 이 기사의 팁을 사용하고, FluencyPal의 인터뷰 시뮬레이터로 연습하면, "
 "다음 직장 인터뷰에 자신감을 가지고 참여할 수 있습니다."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:976
+#: src/features/Conversation/ConversationCanvas.tsx:974
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "목표 설정중"
@@ -6931,16 +6931,16 @@ msgstr "프로필"
 msgid "Progress Calendar"
 msgstr "진행 상황 캘린더"
 
+#: src/features/Landing/LandingPage.tsx:403
+#. js-lingui-explicit-id
+msgid "Progress Tracking"
+msgstr "진행 상황 추적"
+
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
 #: src/features/Landing/Price/PricePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Progress tracking"
-msgstr "진행 상황 추적"
-
-#: src/features/Landing/LandingPage.tsx:403
-#. js-lingui-explicit-id
-msgid "Progress Tracking"
 msgstr "진행 상황 추적"
 
 #: src/features/RolePlay/rolePlayData.tsx:611
@@ -7006,9 +7006,9 @@ msgstr "큐"
 msgid "Rank in the top 5 to get the app for free"
 msgstr "상위 5위 안에 들면 앱을 무료로 받을 수 있습니다"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1067
-#: src/features/Conversation/ConversationCanvas2.tsx:1338
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:259
+#: src/features/Conversation/ConversationCanvas.tsx:1065
+#: src/features/Conversation/ConversationCanvas.tsx:1336
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:264
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "다시 녹음하다"
@@ -7018,7 +7018,7 @@ msgstr "다시 녹음하다"
 msgid "Re-Record"
 msgstr "다시 녹음하기"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1354
+#: src/features/Conversation/ConversationCanvas.tsx:1352
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "재작성"
@@ -7069,7 +7069,7 @@ msgstr ""
 "최신 언어 학습 기사, 영어 연습 팁 및 AI 튜터 업데이트를 읽어보세요. FluencyPal과 함께 유창성 목표를 달성하기 위해 "
 "정보를 유지하고, 동기를 부여받고, 영감을 얻으세요."
 
-#: src/features/Game/gameQuestionScreens/core.tsx:51
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:51
 #. js-lingui-explicit-id
 msgid "Read the text"
 msgstr "텍스트를 읽어보세요"
@@ -7219,9 +7219,9 @@ msgid "Recent graduates or bootcamp alumni entering frontend development"
 msgstr "최근 졸업생 또는 부트캠프 졸업생이 프론트엔드 개발에 진입"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:195
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:308
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:218
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:199
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:313
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:222
 #: src/features/Goal/GoalQuestions.tsx:743
 #: src/features/Survey/RecordUserAudioAnswer.tsx:147
 #. js-lingui-explicit-id
@@ -7258,7 +7258,7 @@ msgid "Record answer"
 msgstr "기록된 답변"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:316
-#: src/features/Conversation/ConversationCanvas2.tsx:1109
+#: src/features/Conversation/ConversationCanvas.tsx:1107
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "메시지 기록"
@@ -7574,7 +7574,7 @@ msgstr "독학 개발자가 HTML, CSS, JavaScript 지식을 검증하고자 함"
 msgid "Semantic HTML"
 msgstr "시맨틱 HTML"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1050
+#: src/features/Conversation/ConversationCanvas.tsx:1048
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -7822,8 +7822,8 @@ msgid ""
 "and async communication."
 msgstr "API 게이트웨이, 인증, 서비스 및 비동기 통신을 포함한 간단한 마이크로서비스 아키텍처를 스케치하십시오."
 
-#: src/features/Game/gameQuestionScreens/core.tsx:39
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:242
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:39
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:246
 #. js-lingui-explicit-id
 msgid "Skip"
 msgstr "죄송합니다."
@@ -8013,7 +8013,7 @@ msgstr "지금 바로 학습 시작하기"
 msgid "Start Monthly Plan"
 msgstr "월간 플랜 시작"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:504
+#: src/features/Conversation/ConversationCanvas.tsx:502
 #. js-lingui-explicit-id
 msgid "Start new lesson"
 msgstr "새로운 수업 시작"
@@ -8252,16 +8252,16 @@ msgid ""
 "leadership answers."
 msgstr "React 및 TypeScript에 대한 강한 지식. 의사소통 및 리더십 답변에서 약간의 갭이 있음."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:277
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "제출"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:136
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:233
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:170
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:159
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:256
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:140
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:237
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:174
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:163
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:260
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "답변 제출"
@@ -8760,13 +8760,13 @@ msgstr "총계:"
 msgid "Track Your Fluency Progress"
 msgstr "자신의 유창성 진행 상황 추적하기"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:780
-#: src/features/Conversation/ConversationCanvas2.tsx:783
-#: src/features/Conversation/ConversationCanvas2.tsx:868
-#: src/features/Conversation/ConversationCanvas2.tsx:875
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:95
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:224
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:118
+#: src/features/Conversation/ConversationCanvas.tsx:778
+#: src/features/Conversation/ConversationCanvas.tsx:781
+#: src/features/Conversation/ConversationCanvas.tsx:866
+#: src/features/Conversation/ConversationCanvas.tsx:873
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:99
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:229
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:122
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
 msgid "Transcribing..."
@@ -8777,7 +8777,7 @@ msgstr "전사 중..."
 msgid "Translate Guru"
 msgstr "번역 구루"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:48
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:48
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "단어를 번역하십시오"
@@ -9043,7 +9043,7 @@ msgstr "어휘"
 msgid "Vocabulary challenges"
 msgstr "어휘 도전"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1160
+#: src/features/Conversation/ConversationCanvas.tsx:1158
 #. js-lingui-explicit-id
 msgid "Voice record mode"
 msgstr "음성 녹음 모드"
@@ -9366,7 +9366,7 @@ msgstr "한 시간이란 무엇을 의미하나요?"
 msgid "What types of frontend interviews can I practice for?"
 msgstr "어떤 유형의 프론트엔드 인터뷰를 연습할 수 있나요?"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:459
+#: src/features/Conversation/ConversationCanvas.tsx:457
 #. js-lingui-explicit-id
 msgid "What was great:"
 msgstr "무엇이 좋았는지:"
@@ -9894,12 +9894,12 @@ msgstr "당신의 면접 준비 파트너"
 msgid "Your Language Level"
 msgstr "당신의 언어 수준"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:757
+#: src/features/Conversation/ConversationCanvas.tsx:755
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "당신의 메시지"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1249
+#: src/features/Conversation/ConversationCanvas.tsx:1247
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "당신의 메시지..."
