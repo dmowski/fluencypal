@@ -74,11 +74,6 @@ export const CardValidatorQuiz = ({
         listItems={[
           {
             iconName: "shield-check",
-            title: i18n._("No charge during trial"),
-            iconColor: "rgb(96, 165, 250)",
-          },
-          {
-            iconName: "shield-check",
             title: i18n._("No automatic payment"),
             iconColor: "rgb(96, 165, 250)",
           },

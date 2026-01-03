@@ -76,8 +76,6 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
             {i18n._("Confirm your payment method")}
           </Typography>
           <Typography sx={{}}>
-            {i18n._("FluencyPal won’t charge you during the trial.")}
-            <br />
             {i18n._(
               "Your card is used only to activate secure access and will not be billed unless you decide to continue."
             )}
@@ -131,8 +129,8 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
             submitting
               ? i18n._("Verifying...")
               : isSuccess
-              ? i18n._("Card verified. Loading...")
-              : i18n._("Continue")
+                ? i18n._("Card verified. Loading...")
+                : i18n._("Continue")
           }
           disabled={!stripe || !elements || submitting || isSuccess}
         />

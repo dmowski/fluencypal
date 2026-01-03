@@ -86,6 +86,10 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
             >
               {usage.paymentLogs
                 .sort((a, b) => b.createdAt - a.createdAt)
+                .filter((log) => {
+                  const isTrial = log.type === "trial-days" || log.type === "welcome";
+                  return !isTrial;
+                })
                 .map((log) => {
                   const humanDate = dayjs(log.createdAt).format("DD MMM YYYY");
                   const humanTime = dayjs(log.createdAt).format("HH:mm");

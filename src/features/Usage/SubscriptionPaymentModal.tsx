@@ -623,11 +623,6 @@ export const SubscriptionPaymentModal = () => {
                   align="center"
                 >
                   {!isActiveSubscription && <>{i18n._(`You don't have an active subscription.`)}</>}
-                  {isActiveSubscription && isTrial && activeTill && (
-                    <>
-                      {i18n._(`Your trial ended until`)} <b>{activeTill}</b>
-                    </>
-                  )}
 
                   {isActiveSubscription && !isTrial && activeTill && (
                     <>

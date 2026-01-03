@@ -585,7 +585,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             description={i18n._(
               `Jump into your tailored learning path and build real skills through engaging practice with AI voice chat.`
             )}
-            actionButtonPostfixLabel={i18n._(`1 day free trial`)}
+            actionButtonPostfixLabel={i18n._(``)}
             actionButtonLabel={i18n._(`Start Practicing`)}
             actionButtonHref={`${getUrlStart(lang)}quiz`}
           />

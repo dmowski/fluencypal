@@ -48,7 +48,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`What’s the price?`),
       answer: i18n._(
-        `After the free trial, FluencyPal offers one monthly plan that gives you full access to all features. There is no automatic recurring payment. Each month, you decide whether you want to continue and pay again manually. This way, you are never charged when you are not using the app.`
+        `FluencyPal offers Free and monthly plans that give you full access to all features. There is no automatic recurring payment. Each month, you decide whether you want to continue and pay again manually. This way, you are never charged when you are not using the app.`
       ),
     },
 
@@ -62,7 +62,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`Is there a free trial?`),
       answer: i18n._(
-        `Yes. FluencyPal offers a free 1-day trial with full access to all features. No credit card is required to start the trial. After the trial, you can continue with a paid plan or earn free access through the game.`
+        `No. FluencyPal offers a free plan with limited features and a monthly plan for full access. You can use the free plan indefinitely to practice speaking and explore basic features before deciding to upgrade.`
       ),
     },
 

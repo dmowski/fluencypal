@@ -239,7 +239,7 @@ Return only the JSON, nothing else. Your response will be passed into javascript
       {
         type: "info",
         id: "score-intro-step",
-        title: i18n._("Before the free trial"),
+        title: i18n._("Before we start"),
         subTitle: i18n._(
           "On the next steps, you'll receive a detailed analysis of your answers and example responses to help you improve."
         ),

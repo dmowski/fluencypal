@@ -45,13 +45,13 @@ export const PricePage = ({ lang }: PricePageProps) => {
     {
       question: i18n._(`Is there a free trial?`),
       answer: i18n._(
-        `Yes. FluencyPal offers a free 1-day trial with full access to all features. No credit card is required to start the trial.`
+        `No. FluencyPal offers a free plan with limited features and a monthly plan for full access. You can use the free plan indefinitely to practice speaking and explore basic features before deciding to upgrade.`
       ),
     },
 
     {
       question: i18n._(`Do I need to enter a credit card to start?`),
-      answer: i18n._(`No. You can start the free trial without entering any payment details.`),
+      answer: i18n._(`No. You can start the free plan without entering any payment details.`),
     },
 
     {
@@ -264,11 +264,6 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 listTitle={i18n._("Everything in Free, plus:")}
                 isLightButton
                 listItems={[
-                  {
-                    title: i18n._("1 day full access trial"),
-                    tooltip: i18n._("Get unlimited access to AI-powered language practice"),
-                    icon: Gem,
-                  },
                   {
                     title: i18n._("Game-based practice"),
                     tooltip: i18n._("Get unlimited access to AI-powered language practice"),
