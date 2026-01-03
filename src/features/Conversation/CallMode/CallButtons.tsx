@@ -20,6 +20,8 @@ import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useSettings } from "@/features/Settings/useSettings";
 import SendIcon from "@mui/icons-material/Send";
 import StopIcon from "@mui/icons-material/Stop";
+import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
+import ClosedCaptionDisabledIcon from "@mui/icons-material/ClosedCaptionDisabled";
 
 export const CallButton = ({
   label,
@@ -93,6 +95,9 @@ export const CallButtons = ({
   onLimitedClick,
 
   onSubmitTranscription,
+
+  isSubtitlesEnabled,
+  toggleSubtitles,
 }: {
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
@@ -106,6 +111,9 @@ export const CallButtons = ({
   onLimitedClick: () => void;
 
   onSubmitTranscription: (userMessage: string) => void;
+
+  isSubtitlesEnabled: boolean;
+  toggleSubtitles: (isToggleOn: boolean) => void;
 }) => {
   const { i18n } = useLingui();
 
@@ -179,6 +187,14 @@ export const CallButtons = ({
         label={isVolumeOn ? i18n._("Turn off volume") : i18n._("Turn on volume")}
         onClick={toggleVolume}
         isLocked={isLimited}
+      />
+
+      <CallButton
+        activeButton={<ClosedCaptionIcon />}
+        inactiveButton={<ClosedCaptionDisabledIcon />}
+        isActive={isSubtitlesEnabled}
+        label={isSubtitlesEnabled ? i18n._("Turn off subtitles") : i18n._("Turn on subtitles")}
+        onClick={() => toggleSubtitles(!isSubtitlesEnabled)}
       />
 
       <CallButton

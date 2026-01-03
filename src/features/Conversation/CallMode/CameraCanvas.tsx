@@ -64,8 +64,16 @@ export const CameraCanvas = ({
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
   const webCam = useWebCam();
-
   const [isWebCamEnabled, setIsWebCamEnabled] = useState<boolean>(true);
+  const [isSubtitlesEnabled, setIsSubtitlesEnabled] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (isLimited) {
+      setIsSubtitlesEnabled(true);
+    } else {
+      setIsSubtitlesEnabled(false);
+    }
+  }, [isLimited]);
 
   const auth = useAuth();
   const userPhoto = auth.userInfo?.photoURL || "";
@@ -74,8 +82,8 @@ export const CameraCanvas = ({
 
   const footerHeight = `calc(80px + ${sizes.bottomOffset})`;
 
-  const topHeight = `50dvh`;
-  const topHeightMobile = `40dvh`;
+  const topHeight = isSubtitlesEnabled ? `50dvh` : `calc(97dvh - ${footerHeight})`;
+  const topHeightMobile = isSubtitlesEnabled ? `40dvh` : `calc(95dvh - ${footerHeight})`;
 
   const isTimeToScreenshots =
     isWebCamEnabled &&
@@ -137,6 +145,7 @@ export const CameraCanvas = ({
             zIndex: 1,
             "@media (max-width: 800px)": {
               height: topHeightMobile,
+              gridTemplateColumns: isSubtitlesEnabled ? "1fr 1fr" : "1fr",
             },
           }}
         >
@@ -205,6 +214,7 @@ export const CameraCanvas = ({
             alignItems: "center",
             overflow: "auto",
             height: "100%",
+            display: isSubtitlesEnabled ? "flex" : "none",
             paddingTop: topHeight,
             paddingBottom: footerHeight,
             "@media (max-width: 800px)": {
@@ -250,6 +260,8 @@ export const CameraCanvas = ({
             isLimited={isLimited}
             onLimitedClick={onLimitedClick}
             onSubmitTranscription={onSubmitTranscription}
+            isSubtitlesEnabled={isSubtitlesEnabled}
+            toggleSubtitles={(isToggleOn) => setIsSubtitlesEnabled(isToggleOn)}
           />
         </Stack>
       </Stack>
