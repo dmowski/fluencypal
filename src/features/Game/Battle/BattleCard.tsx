@@ -158,9 +158,19 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                   flexDirection: "row",
                   gap: "10px",
                   alignItems: "center",
+                  display: "grid",
+                  gridTemplateColumns: "1fr auto",
                 }}
               >
-                <GameStatRow stat={stat} />
+                <Stack
+                  sx={{
+                    width: "100%",
+                    overflow: "auto",
+                  }}
+                >
+                  <GameStatRow stat={stat} />
+                </Stack>
+
                 {isWinnerDeclared ? (
                   <>
                     <Stack
