@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { Button, Stack, Typography } from "@mui/material";
 import { Check, Loader } from "lucide-react";
-import { FinishButton, TaskTitle } from "./core";
+import { FinishButton, TaskTitle } from "./gameCoreUI";
 import { useGame } from "../useGame";
 
 export const WordScreen = ({}: GameQuestionScreenProps) => {

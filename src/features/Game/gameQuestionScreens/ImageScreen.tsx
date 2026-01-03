@@ -10,7 +10,7 @@ import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { StringDiff } from "react-string-diff";
-import { FinishButton, GameContainer, SkipButton, TaskTitle } from "./core";
+import { FinishButton, GameContainer, SkipButton, TaskTitle } from "./gameCoreUI";
 import { useGame } from "../useGame";
 
 export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {

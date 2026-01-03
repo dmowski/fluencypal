@@ -3,7 +3,7 @@ import { GameQuestionScreenProps } from "./type";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { Check, Delete, Loader, ShieldAlert } from "lucide-react";
-import { FinishButton, GameContainer, TaskTitle } from "./core";
+import { FinishButton, GameContainer, TaskTitle } from "./gameCoreUI";
 import { useGame } from "../useGame";
 
 export const SentenceScreen = ({}: GameQuestionScreenProps) => {

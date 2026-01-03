@@ -9,7 +9,7 @@ import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { getWordsFromText } from "@/libs/getWordsFromText";
 import { useLingui } from "@lingui/react";
-import { FinishButton, GameContainer, SkipButton, TaskTitle } from "./core";
+import { FinishButton, GameContainer, SkipButton, TaskTitle } from "./gameCoreUI";
 import { useGame } from "../useGame";
 
 const READ_TEXT_ACCEPTED_PERCENTAGE = 60;
