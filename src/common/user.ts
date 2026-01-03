@@ -14,7 +14,7 @@ export interface InitUserSettings {
 
 export type AppMode = "interview" | "learning";
 
-export type ConversationMode = "record" | "call";
+export type ConversationMode = "record" | "call" | "chat";
 
 export interface UserSettings extends InitUserSettings {
   languageCode: SupportedLanguage | null;

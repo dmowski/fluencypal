@@ -173,6 +173,15 @@ export const CallButtons = ({
       />
 
       <CallButton
+        activeButton={<VolumeUpIcon />}
+        inactiveButton={<VolumeOffIcon />}
+        isActive={isVolumeOn}
+        label={isVolumeOn ? i18n._("Turn off volume") : i18n._("Turn on volume")}
+        onClick={toggleVolume}
+        isLocked={isLimited}
+      />
+
+      <CallButton
         activeButton={<VideocamIcon />}
         inactiveButton={<VideocamOffIcon />}
         isActive={isWebCamEnabled}
@@ -193,14 +202,6 @@ export const CallButtons = ({
         <CallEndIcon />
       </IconButton>
 
-      <CallButton
-        activeButton={<VolumeUpIcon />}
-        inactiveButton={<VolumeOffIcon />}
-        isActive={isVolumeOn}
-        label={isVolumeOn ? i18n._("Turn off volume") : i18n._("Turn on volume")}
-        onClick={toggleVolume}
-        isLocked={isLimited}
-      />
       {(isShowVolumeWarning || isShowMuteWarning) && (
         <CustomModal
           isOpen={true}
@@ -216,6 +217,7 @@ export const CallButtons = ({
               maxWidth: "400px",
               gap: "40px",
               alignItems: "center",
+              paddingTop: "25px",
             }}
           >
             <Stack
@@ -224,7 +226,7 @@ export const CallButtons = ({
                 gap: "0px",
               }}
             >
-              <Typography variant="h4">
+              <Typography variant="h5">
                 {isShowVolumeWarning ? i18n._("AI voice") : i18n._("Real-time microphone")}
               </Typography>
               <Typography
@@ -247,9 +249,9 @@ export const CallButtons = ({
               <Stack
                 sx={{
                   width: "100%",
-                  padding: "15px",
-                  border: "1px solid rgba(255, 255, 255, 0.2)",
-                  borderRadius: "10px",
+                  //padding: "15px",
+                  //border: "1px solid rgba(255, 255, 255, 0.2)",
+                  //borderRadius: "10px",
                   gap: "20px",
                   alignItems: "flex-start",
                 }}
@@ -260,10 +262,12 @@ export const CallButtons = ({
                   }}
                 >
                   <Typography
-                    variant="body2"
-                    sx={{
-                      opacity: 0.8,
-                    }}
+                    variant="h6"
+                    sx={
+                      {
+                        //opacity: 0.8,
+                      }
+                    }
                     className={`${recorder.isTranscribing ? "loading-shimmer" : ""}`}
                   >
                     {i18n._("Your Message:")}

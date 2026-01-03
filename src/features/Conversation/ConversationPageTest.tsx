@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useAiConversation } from "./useAiConversation";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { GoalPlan } from "../Plan/types";
+import { ConversationMode } from "@/common/user";
 
 interface ConversationPageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -155,7 +156,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   };
 
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
-
+  const [conversationMode, setConversationMode] = useState<ConversationMode>("chat");
   return (
     <Stack>
       <ConversationCanvas2
@@ -196,14 +197,16 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
           await sleep(2000);
           return "Nice to see you here";
         }}
-        toggleCallMode={() => {}}
         isNeedToShowBalanceWarning={false}
         setIsMuted={() => setIsAiSpeaking(!isAiSpeaking)}
         isVolumeOn={true}
         setIsVolumeOn={() => {}}
         isAiSpeaking={isAiSpeaking}
-        isCallMode={true}
+        conversationMode={conversationMode}
         voice="shimmer"
+        toggleConversationMode={(mode: ConversationMode): void => {
+          setConversationMode(mode);
+        }}
       />
     </Stack>
   );

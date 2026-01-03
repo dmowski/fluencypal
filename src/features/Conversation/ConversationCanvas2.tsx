@@ -55,6 +55,7 @@ import { useResizeElement } from "../Layout/useResizeElement";
 import { Messages } from "./Messages";
 import { AiVoice } from "@/common/ai";
 import { CameraCanvas } from "./CallMode/CameraCanvas";
+import { ConversationMode } from "@/common/user";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -106,8 +107,8 @@ interface ConversationCanvasProps {
   analyzeConversation: () => Promise<void>;
   messagesToComplete: number;
   generateHelpMessage: () => Promise<string>;
-  isCallMode: boolean;
-  toggleCallMode: (newStateIsCallMode: boolean) => void;
+  toggleConversationMode: (mode: ConversationMode) => void;
+  conversationMode: ConversationMode;
   isNeedToShowBalanceWarning: boolean;
   voice: AiVoice | null;
 
@@ -121,8 +122,7 @@ interface ConversationCanvasProps {
   onLimitedClick: () => void;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
-  isCallMode,
-  toggleCallMode,
+  toggleConversationMode,
   conversation,
   isAiSpeaking,
   gameWords,
@@ -163,14 +163,16 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   voice,
   messageOrder,
   onWebCamDescription,
+  conversationMode,
 }) => {
   const { i18n } = useLingui();
   const sound = useSound();
-  const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+  const isChatMode = conversationMode === "chat";
+  const isRecordMode = conversationMode === "record";
+  const isCallMode = conversationMode === "call";
+
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const closeMenus = () => setAnchorElUser(null);
-  const startCallMode = () => toggleCallMode(true);
-  const stopCallMode = () => toggleCallMode(false);
 
   const isFinishingProcess = isClosing || isClosed;
   const { ref, size } = useResizeElement<HTMLDivElement>();
@@ -519,7 +521,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
         isAiSpeaking={isAiSpeaking}
         voice={voice}
         conversation={conversation}
-        stopCallMode={stopCallMode}
+        stopCallMode={() => toggleConversationMode("record")}
         onWebCamDescription={onWebCamDescription}
         isVolumeOn={isVolumeOn}
         setIsVolumeOn={setIsVolumeOn}
@@ -1080,36 +1082,13 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     </Button>
                   )}
 
-                  {isCallMode && !isCompletedLesson && (
-                    <Stack
-                      sx={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                        width: "100%",
-                        gap: "10px",
-                      }}
-                    >
-                      <Button
-                        startIcon={<Phone />}
-                        variant="outlined"
-                        size="large"
-                        onClick={async () => stopCallMode()}
-                      >
-                        {i18n._("Stop")}
-                      </Button>
-                      <IconButton onClick={(e) => setAnchorElUser(e.currentTarget)}>
-                        <CircleEllipsis />
-                      </IconButton>
-                    </Stack>
-                  )}
-
                   {!transcriptMessage &&
                     !isRecording &&
                     !isAnalyzingResponse &&
                     !isCallMode &&
                     !isProcessingGoal &&
                     !isCompletedLesson &&
-                    !isShowKeyboard && (
+                    !isChatMode && (
                       <Stack
                         sx={{
                           flexDirection: "row",
@@ -1168,30 +1147,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     <Divider />
 
                     <MenuItem
-                      sx={{}}
-                      disabled={isFinishingProcess}
+                      disabled={isRecording || isAnalyzingResponse || (!isCallMode && !isChatMode)}
                       onClick={() => {
-                        setIsVolumeOn(!isVolumeOn);
-                        closeMenus();
-                      }}
-                    >
-                      <ListItemIcon>{!isVolumeOn ? <Volume2 /> : <VolumeX />}</ListItemIcon>
-                      <ListItemText>
-                        <Typography>
-                          {isVolumeOn ? i18n._("Turn Volume Off") : i18n._("Turn Volume On")}
-                        </Typography>
-                      </ListItemText>
-                    </MenuItem>
-
-                    <Divider />
-
-                    <MenuItem
-                      disabled={
-                        isRecording || isAnalyzingResponse || (!isCallMode && !isShowKeyboard)
-                      }
-                      onClick={() => {
-                        setIsShowKeyboard(false);
-                        stopCallMode();
+                        toggleConversationMode("record");
                         closeMenus();
                       }}
                     >
@@ -1202,7 +1160,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         <Typography>{i18n._("Voice record mode")}</Typography>
                       </ListItemText>
 
-                      {!isCallMode && !isShowKeyboard && (
+                      {!isCallMode && !isChatMode && (
                         <ListItemIcon>
                           <Check />
                         </ListItemIcon>
@@ -1211,10 +1169,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
                     <MenuItem
                       sx={{}}
-                      disabled={isRecording || isAnalyzingResponse || isShowKeyboard}
+                      disabled={isRecording || isAnalyzingResponse || isChatMode}
                       onClick={() => {
-                        setIsShowKeyboard(!isShowKeyboard);
-                        stopCallMode();
+                        toggleConversationMode("chat");
                         closeMenus();
                       }}
                     >
@@ -1225,7 +1182,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         <Typography>{i18n._("Keyboard mode")}</Typography>
                       </ListItemText>
 
-                      {isShowKeyboard && (
+                      {isChatMode && (
                         <ListItemIcon>
                           <Check />
                         </ListItemIcon>
@@ -1236,8 +1193,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       sx={{}}
                       disabled={isRecording || isAnalyzingResponse || isCallMode}
                       onClick={() => {
-                        startCallMode();
-                        setIsShowKeyboard(false);
+                        toggleConversationMode("call");
                         closeMenus();
                       }}
                     >
@@ -1277,7 +1233,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     !isAnalyzingResponse &&
                     !isProcessingGoal &&
                     !isCompletedLesson &&
-                    isShowKeyboard && (
+                    isChatMode && (
                       <Stack
                         sx={{
                           flexDirection: "row",
@@ -1478,14 +1434,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                               width: "100%",
                             }}
                           >
-                            <Button
-                              color={"warning"}
-                              startIcon={<AddCardIcon />}
-                              onClick={() => togglePaymentModal(true)}
-                              variant="contained"
-                            >
-                              {i18n._("Subscribe")}
-                            </Button>
+                            <IconButton color={"warning"} onClick={() => togglePaymentModal(true)}>
+                              <AddCardIcon />
+                            </IconButton>
                           </Stack>
                         )}
                       </>

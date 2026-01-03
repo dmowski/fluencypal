@@ -28,7 +28,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { GoalElementInfo, GoalPlan } from "../Plan/types";
 import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
-import { useGame } from "../Game/useGame";
 import { ConversationMode } from "@/common/user";
 import { useAccess } from "../Usage/useAccess";
 
@@ -69,8 +68,6 @@ interface AiConversationContextType {
   toggleMute: (isMute: boolean) => void;
   isMuted: boolean;
   addUserMessage: (message: string) => Promise<void>;
-  isShowUserInput: boolean;
-  setIsShowUserInput: (value: boolean) => void;
   currentMode: ConversationType;
   gameWords: GuessGameStat | null;
 
@@ -92,6 +89,8 @@ interface AiConversationContextType {
 
   setWebCamDescription: (description: string) => void;
   closeConversation: () => Promise<void>;
+  toggleConversationMode: (mode: ConversationMode) => void;
+  conversationMode: ConversationMode;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -235,8 +234,6 @@ VISUAL_CONTEXT (latest): ${description}
 
   const isMuted = isMutedStorage ?? true;
 
-  const [isShowUserInput, setIsShowUserInput] = useLocalStorage<boolean>("isShowUserInput", false);
-
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
     history.setMessages(conversationId, conversation);
@@ -304,6 +301,25 @@ VISUAL_CONTEXT (latest): ${description}
     await sleep(300);
     setIsInitializing("");
     setIsStarted(true);
+  };
+
+  const toggleConversationMode = (mode: ConversationMode) => {
+    const isLimited = !access.isFullAppAccess;
+    settings.setConversationMode(mode);
+
+    if (mode === "call") {
+      toggleMute(isLimited ? true : false);
+    }
+
+    if (mode === "chat") {
+      toggleMute(true);
+    }
+
+    if (mode === "record") {
+      toggleMute(true);
+    }
+
+    toggleVolume(isLimited ? false : true);
   };
 
   const onMessage = (message: ChatMessage) => {
@@ -735,6 +751,8 @@ Start the conversation with: "${
       isVolumeOnInternal = false;
     }
 
+    console.log("START", { isVolumeOnInternal, isMutedInternal });
+
     setTemporaryGoal(null);
     setGoalSettingProgress(0);
     setIsProcessingGoal(false);
@@ -866,8 +884,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     toggleMute,
     isMuted,
     addUserMessage,
-    isShowUserInput: isShowUserInput || false,
-    setIsShowUserInput,
+
     gameWords: gameStat,
     isVolumeOn,
     toggleVolume,
@@ -882,6 +899,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     messageOrder,
     setWebCamDescription,
     closeConversation,
+    toggleConversationMode,
+    conversationMode: settings.conversationMode,
   };
 }
 
