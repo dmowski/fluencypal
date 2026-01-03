@@ -576,6 +576,11 @@ msgstr "Інтэрактыўны настаўнік па мове AI"
 msgid "AI language tutor pricing"
 msgstr "Цэны на штучны інтэлект як рэпетытар з мовы"
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:364
+#. js-lingui-explicit-id
+msgid "AI responses are text-only"
+msgstr "Адказы штучнага інтэлекту ў выглядзе толькі тэксту"
+
 #: src/features/Auth/WebViewWall.tsx:173
 #. js-lingui-explicit-id
 msgid "AI speaking partner"
@@ -600,6 +605,11 @@ msgstr "Абнаўленні AI настаўніка"
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "Голас AI"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:359
+#. js-lingui-explicit-id
+msgid "AI voice is disabled"
+msgstr "Голас AI адключаны"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:377
 #. js-lingui-explicit-id
@@ -935,7 +945,7 @@ msgstr "Будзьце падрыхтаваныя да сумоўя на пра�
 msgid "Be specific about your role"
 msgstr "Будзьце канкрэтнымі пра сваю ролю"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:254
+#: src/features/Goal/Quiz/QuizPage2.tsx:255
 #. js-lingui-explicit-id
 msgid "Before the training plan..."
 msgstr "Перад планам трэніровак..."
@@ -1156,7 +1166,7 @@ msgid "Caching Strategies"
 msgstr "Стратэгіі кэшавання"
 
 #: src/features/Conversation/ConversationCanvas.tsx:1202
-#: src/features/Goal/Quiz/QuizPage2.tsx:316
+#: src/features/Goal/Quiz/QuizPage2.tsx:317
 #. js-lingui-explicit-id
 msgid "Call mode"
 msgstr "Рэжым выкліку"
@@ -1340,7 +1350,7 @@ msgstr "План вучэбы кітайскай мовы"
 msgid "Choose isolation levels, model aggregates, and write efficient queries."
 msgstr "Выбірайце ўзроўні ізаляцыі, мадэльныя агрэгаты і пішыце эфектыўныя запыты."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:111
+#: src/features/Goal/Quiz/QuizPage2.tsx:112
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "Выберыце мову сайта"
@@ -2273,8 +2283,8 @@ msgstr "Ці трэба мне запісацца на сустрэчу з са�
 msgid "Do you cover databases and transactions?"
 msgstr "Ці ахопліваеце вы базы дадзеных і транзакцыі?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:137
-#: src/features/Goal/Quiz/QuizPage2.tsx:178
+#: src/features/Goal/Quiz/QuizPage2.tsx:138
+#: src/features/Goal/Quiz/QuizPage2.tsx:179
 #. js-lingui-explicit-id
 msgid "Do you have any travel plans?"
 msgstr "Ці ёсць у вас якія-небудзь планы падарожжаў?"
@@ -2289,7 +2299,7 @@ msgstr "Доктар"
 msgid "Dog Owner"
 msgstr "Уладальнік сабакі"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:317
+#: src/features/Goal/Quiz/QuizPage2.tsx:318
 #. js-lingui-explicit-id
 msgid "Don't forget to try call mode in the practice section!"
 msgstr "Не забудзьцеся паспрабаваць рэжым выкліку ў раздзеле практыкаванняў!"
@@ -2603,7 +2613,7 @@ msgstr "Памылка пры стварэнні сесіі плацяжоў"
 msgid "Error creating payment session. Try again later."
 msgstr "Памылка пры стварэнні сесіі аплаты. Паспрабуйце зноў пазней."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:63
+#: src/features/Goal/Quiz/QuizPage2.tsx:64
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "Памылка пры стварэнні плана. Калі ласка, паспрабуйце яшчэ раз."
@@ -3287,6 +3297,25 @@ msgstr "Бясплатна"
 msgid "Free Conversation"
 msgstr "Бясплатная размова"
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:396
+#. js-lingui-explicit-id
+msgid ""
+"Free plan is for speaking and writing practice. Paid plan unlocks listening "
+"and real-time conversations with AI"
+msgstr ""
+"Бясплатны план прызначаны для практыкі маўлення і пісьма. Платны план "
+"адкрывае магчымасці праслухоўвання і размоў у рэальным часе з AI"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:347
+#. js-lingui-explicit-id
+msgid "Free plan:"
+msgstr "Бясплатны план:"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:332
+#. js-lingui-explicit-id
+msgid "Free vs Paid Plan"
+msgstr "Бясплатны супраць Платны План"
+
 #: src/features/Lang/getLabels.tsx:12
 #. js-lingui-explicit-id
 msgid "French Learning Plan"
@@ -3613,10 +3642,15 @@ msgstr "Дайце нам вашы водгукі"
 msgid "Global"
 msgstr "Глабальны"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:320
+#: src/features/Goal/Quiz/QuizPage2.tsx:321
 #. js-lingui-explicit-id
 msgid "Go to Practice"
 msgstr "Перайсці да практыкі"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:404
+#. js-lingui-explicit-id
+msgid "Go to Practice (Free Plan)"
+msgstr "Перайсці да практыкі (Бясплатны план)"
 
 #: src/features/NotFound/NotFoundPage.tsx:37
 #. js-lingui-explicit-id
@@ -3873,8 +3907,8 @@ msgstr "Вылучыце свае сілы, якія ўтэчныя для ро�
 msgid "Hints to boost your confidence"
 msgstr "Падказкі для павышэння вашай упэўненасці"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:129
-#: src/features/Goal/Quiz/QuizPage2.tsx:174
+#: src/features/Goal/Quiz/QuizPage2.tsx:130
+#: src/features/Goal/Quiz/QuizPage2.tsx:175
 #. js-lingui-explicit-id
 msgid "Hobbies or interests"
 msgstr "Хобі або інтарэсы"
@@ -5307,7 +5341,7 @@ msgstr ""
 "Гэта дапамагло мне адказаць на пытанні пра даступнасць і аптымізацыю "
 "прадукцыйнасці без панікі."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:299
+#: src/features/Goal/Quiz/QuizPage2.tsx:300
 #. js-lingui-explicit-id
 msgid "It might take up to a minute"
 msgstr "Можа спатрэбіцца да хвіліны"
@@ -5639,7 +5673,7 @@ msgstr "Давайце дададзім некалькі гадзін да ва�
 msgid "Let's choose how to start practicing"
 msgstr "Давайце абярэм, як пачаць практыкавацца"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:211
+#: src/features/Goal/Quiz/QuizPage2.tsx:212
 #. js-lingui-explicit-id
 msgid "Let's continue, I have a question for you!"
 msgstr "Давайце працягнем, у мяне ёсць пытанне для вас!"
@@ -5655,12 +5689,12 @@ msgstr "Давайце створым уліковы запіс"
 msgid "Let's see who has the best arguments."
 msgstr "Давай паглядзім, у каго лепшыя аргументы."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:255
+#: src/features/Goal/Quiz/QuizPage2.tsx:256
 #. js-lingui-explicit-id
 msgid "Let's talk about your goals a bit more"
 msgstr "Давайце пагаворым пра вашы мэты крыху больш"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:126
+#: src/features/Goal/Quiz/QuizPage2.tsx:127
 #. js-lingui-explicit-id
 msgid "Let's talk. Tell me  about yourself"
 msgstr "Давай пагаворым. Раскажы мне пра сябе"
@@ -5669,6 +5703,11 @@ msgstr "Давай пагаворым. Раскажы мне пра сябе"
 #. js-lingui-explicit-id
 msgid "Let’s make sure you’re ready"
 msgstr "Давайце ўпэўнімся, што вы гатовы"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:383
+#. js-lingui-explicit-id
+msgid "Listening practice. You can hear AI responses"
+msgstr "Практыка слухання. Вы можаце слухаць адказы AI"
 
 #: src/features/Blog/blogData.tsx:33
 #. js-lingui-explicit-id
@@ -5731,8 +5770,8 @@ msgstr "Рэгістрацыя/Адсочванне"
 msgid "Looking for something specific?"
 msgstr "Шукаеце нешта канкрэтнае?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:133
-#: src/features/Goal/Quiz/QuizPage2.tsx:170
+#: src/features/Goal/Quiz/QuizPage2.tsx:134
+#: src/features/Goal/Quiz/QuizPage2.tsx:171
 #. js-lingui-explicit-id
 msgid "Main goal in learning"
 msgstr "Асноўная мэта ў навучанні"
@@ -5978,8 +6017,8 @@ msgstr ""
 "Большасць інтэрв'ю ўключае класічныя пытанні пра \"сілы і слабості\". "
 "Асабліва важна гэта добра апрацоўваць на англійскай мове."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:141
-#: src/features/Goal/Quiz/QuizPage2.tsx:182
+#: src/features/Goal/Quiz/QuizPage2.tsx:142
+#: src/features/Goal/Quiz/QuizPage2.tsx:183
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
 msgstr "Фільмы, кнігі або музыка"
@@ -6318,7 +6357,7 @@ msgstr "Не ў гэты раз"
 msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "Абвешчанне было адпраўлена ​​каманде распрацоўнікаў. Прабачце за гэта..."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:298
+#: src/features/Goal/Quiz/QuizPage2.tsx:299
 #. js-lingui-explicit-id
 msgid "Now, we ready to create your learning plan"
 msgstr "Цяпер мы гатовы стварыць ваш план навучання"
@@ -6447,8 +6486,8 @@ msgstr "Іншыя распаўсюджаныя пытанні:\n"
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
-#: src/features/Goal/Quiz/QuizPage2.tsx:44
-#: src/features/Goal/Quiz/useQuiz.tsx:627
+#: src/features/Goal/Quiz/QuizPage2.tsx:45
+#: src/features/Goal/Quiz/useQuiz.tsx:628
 #: src/features/Lang/LanguageSwitcher.tsx:103
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -6502,6 +6541,11 @@ msgstr "Старонка"
 #. js-lingui-explicit-id
 msgid "Page Language"
 msgstr "Мова старонкі"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:376
+#. js-lingui-explicit-id
+msgid "Paid plan:"
+msgstr "Платны план:"
 
 #: src/features/Blog/blogData.tsx:24
 #. js-lingui-explicit-id
@@ -7462,6 +7506,11 @@ msgstr "Рэальныя англійскія сцэнары"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Рэальная рольгульня для практыкі адмыслованага англійскага"
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:388
+#. js-lingui-explicit-id
+msgid "Real-time conversations with AI using voice"
+msgstr "Рэальныя размовы з AI з выкарыстаннем голасу"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:230
 #. js-lingui-explicit-id
 msgid "Real-time microphone"
@@ -7513,11 +7562,11 @@ msgstr ""
 msgid "Record"
 msgstr "Запіс"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:158
+#: src/features/Goal/Quiz/QuizPage2.tsx:159
 msgid "Record 2-3 minutes story using <0>{learningLanguageName}</0>"
 msgstr "Запішыце 2-3 хвіліны гісторыі, выкарыстоўваючы <0>{learningLanguageName}</0>"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:162
+#: src/features/Goal/Quiz/QuizPage2.tsx:163
 msgid ""
 "Record 2-3 minutes story using <0>{learningLanguageName}</0> or "
 "<1>{nativeLanguageName}</1>"
@@ -7932,7 +7981,7 @@ msgstr "старэйшы інтэрв’ю для frontend распрацоўн�
 msgid "Sentence Builder"
 msgstr "Складальнік сentэнцый"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:100
+#: src/features/Goal/Quiz/QuizPage2.tsx:101
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Усталяваць маю мову"
@@ -8159,7 +8208,7 @@ msgstr ""
 "гаварыце дружным тонам. Калі інтэрв'юэр спытае: \"Ці было у вас "
 "якія-небудзь праблемы з тым, каб знайсці нас?\", вы можаце сказаць:"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "Такім чынам, я магу перавесці для вас словы"
@@ -8218,6 +8267,11 @@ msgstr "Гаварыце натуральна, не перадумваючы з�
 #. js-lingui-explicit-id
 msgid "Speaking"
 msgstr "Гаворка"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:354
+#. js-lingui-explicit-id
+msgid "Speaking and writing practice"
+msgstr "Практыка маўлення і пісьма"
 
 #: src/features/Landing/LandingPage.tsx:195
 #. js-lingui-explicit-id
@@ -8637,8 +8691,8 @@ msgstr ""
 #: src/features/Dashboard/SelectLanguage.tsx:95
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:25
-#: src/features/Goal/Quiz/QuizPage2.tsx:45
-#: src/features/Goal/Quiz/useQuiz.tsx:628
+#: src/features/Goal/Quiz/QuizPage2.tsx:46
+#: src/features/Goal/Quiz/useQuiz.tsx:629
 #: src/features/Lang/LanguageSwitcher.tsx:104
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -8761,7 +8815,7 @@ msgstr ""
 "Раскажыце пра час, калі вы сутыкнуліся з памылкай. Як вы знайшлі прычыну і "
 "выправілі яе?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:155
+#: src/features/Goal/Quiz/QuizPage2.tsx:156
 #. js-lingui-explicit-id
 msgid "Tell me about yourself"
 msgstr "Раскажы мне пра сябе"
@@ -8909,6 +8963,11 @@ msgstr ""
 "якую яшчэ называюць 'SmallTalk'. Рэкрутары выкарыстоўваюць гэты час для "
 "стварэння дружнага атмасферу і лепшага вас пазнання."
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:333
+#. js-lingui-explicit-id
+msgid "The key differences between them."
+msgstr "Ключавыя адрозненні паміж імі."
+
 #: src/features/Landing/Price/PricePage.tsx:66
 #. js-lingui-explicit-id
 msgid ""
@@ -8965,7 +9024,7 @@ msgstr "Гэта дзеянне незваротнае."
 msgid "This approach shows self-awareness and growth."
 msgstr "Гэты падыход паказвае самасвядомасць і рост."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:112
+#: src/features/Goal/Quiz/QuizPage2.tsx:113
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "Гэта тэкст, які вы бачыце на кнопках і меню"
@@ -9504,7 +9563,7 @@ msgstr "Стандарты WCAG"
 msgid "We appreciate your feedback!"
 msgstr "Мы цанім Ваш водгук!"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:125
+#: src/features/Goal/Quiz/QuizPage2.tsx:126
 #. js-lingui-explicit-id
 msgid "We are ready"
 msgstr "Мы гатовы"
@@ -9650,7 +9709,7 @@ msgstr "Якая галоўная задача FluencyPal?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "На якія віды інтэрв'ю па backend я магу падрыхтавацца?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "Якую мову вы размаўляеце"
@@ -9844,7 +9903,7 @@ msgstr ""
 "рашэнні, і прапануе наступныя крокі. Гэты сцэнар дапамагае вам адчуваць "
 "сябе камфортна, навігуючы па тэхнічных праблемах і камунікацыі рашэнняў."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:210
+#: src/features/Goal/Quiz/QuizPage2.tsx:211
 #. js-lingui-explicit-id
 msgid "Wow, that was awesome!"
 msgstr "Вау, гэта было цудоўна!"

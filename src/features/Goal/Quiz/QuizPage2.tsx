@@ -1,6 +1,6 @@
 "use client";
 
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { fullLanguageName, SupportedLanguage } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import { MIN_WORDS_FOR_ANSWER, QuizProvider, useQuiz } from "./useQuiz";
@@ -22,6 +22,7 @@ import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { sleep } from "@/libs/sleep";
 import { QuizPageLoader } from "@/features/Case/quiz/QuizPageLoader";
 import { Check } from "lucide-react";
+import { ColorIconTextList } from "@/features/Survey/ColorIconTextList";
 
 const QuizQuestions = () => {
   const {
@@ -318,6 +319,89 @@ const QuizQuestions = () => {
                 imageUrl="/quiz/callMode.jpg"
                 onClick={doneQuiz}
                 actionButtonTitle={i18n._("Go to Practice")}
+                actionButtonEndIcon={<Check />}
+                disabled={isStepLoading}
+                isStepLoading={isStepLoading}
+              />
+            </AuthWall>
+          )}
+
+          {currentStep === "paidVsFree" && (
+            <AuthWall>
+              <InfoStep
+                title={i18n._(`Free vs Paid Plan`)}
+                subTitle={i18n._(`The key differences between them.`)}
+                subComponent={
+                  <>
+                    <Stack
+                      sx={{
+                        padding: "20px 0",
+                        gap: "30px",
+                      }}
+                    >
+                      <Stack>
+                        <Typography
+                          variant="body1"
+                          sx={{ fontWeight: "bold", marginBottom: "10px" }}
+                        >
+                          {i18n._("Free plan:")}
+                        </Typography>
+                        <ColorIconTextList
+                          gap="10px"
+                          iconSize="22px"
+                          listItems={[
+                            {
+                              title: i18n._("Speaking and writing practice"),
+                              iconName: "mic",
+                            },
+
+                            {
+                              title: i18n._("AI voice is disabled"),
+                              iconName: "volume-x",
+                            },
+
+                            {
+                              title: i18n._("AI responses are text-only"),
+                              iconName: "message-square",
+                            },
+                          ]}
+                        />
+                      </Stack>
+
+                      <Stack>
+                        <Typography
+                          variant="body1"
+                          sx={{ fontWeight: "bold", marginBottom: "10px" }}
+                        >
+                          {i18n._("Paid plan:")}
+                        </Typography>
+                        <ColorIconTextList
+                          gap="10px"
+                          iconSize="22px"
+                          listItems={[
+                            {
+                              title: i18n._("Listening practice. You can hear AI responses"),
+                              iconName: "volume-2",
+                            },
+
+                            {
+                              title: i18n._("Real-time conversations with AI using voice"),
+                              iconName: "audio-lines",
+                            },
+                          ]}
+                        />
+                      </Stack>
+
+                      <Typography>
+                        {i18n._(
+                          "Free plan is for speaking and writing practice. Paid plan unlocks listening and real-time conversations with AI"
+                        )}
+                      </Typography>
+                    </Stack>
+                  </>
+                }
+                onClick={doneQuiz}
+                actionButtonTitle={i18n._("Go to Practice (Free Plan)")}
                 actionButtonEndIcon={<Check />}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}

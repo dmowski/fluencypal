@@ -564,6 +564,11 @@ msgstr "مدرس اللغة الذكية"
 msgid "AI language tutor pricing"
 msgstr "أسعار معلم اللغة الذكاء الاصطناعي"
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:364
+#. js-lingui-explicit-id
+msgid "AI responses are text-only"
+msgstr "الردود الذكية هي نصوص فقط"
+
 #: src/features/Auth/WebViewWall.tsx:173
 #. js-lingui-explicit-id
 msgid "AI speaking partner"
@@ -588,6 +593,11 @@ msgstr "تحديثات المعلم الذكي"
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "صوت الذكاء الاصطناعي"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:359
+#. js-lingui-explicit-id
+msgid "AI voice is disabled"
+msgstr "الصوت الذكي معطل"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:377
 #. js-lingui-explicit-id
@@ -916,7 +926,7 @@ msgstr "استعد لمقابلة العمل الخاصة بك"
 msgid "Be specific about your role"
 msgstr "كن محددًا بشأن دورك"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:254
+#: src/features/Goal/Quiz/QuizPage2.tsx:255
 #. js-lingui-explicit-id
 msgid "Before the training plan..."
 msgstr "قبل خطة التدريب..."
@@ -1133,7 +1143,7 @@ msgid "Caching Strategies"
 msgstr "استراتيجيات التخزين المؤقت"
 
 #: src/features/Conversation/ConversationCanvas.tsx:1202
-#: src/features/Goal/Quiz/QuizPage2.tsx:316
+#: src/features/Goal/Quiz/QuizPage2.tsx:317
 #. js-lingui-explicit-id
 msgid "Call mode"
 msgstr "وضع المكالمة"
@@ -1314,7 +1324,7 @@ msgstr "خطة تعلم الصينية"
 msgid "Choose isolation levels, model aggregates, and write efficient queries."
 msgstr "اختر مستويات العزل، نماذج التراكم، واكتب استفسارات فعالة."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:111
+#: src/features/Goal/Quiz/QuizPage2.tsx:112
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "اختر لغة الموقع"
@@ -2222,8 +2232,8 @@ msgstr "هل أحتاج إلى تحديد موعد مع مقابِل حقيقي�
 msgid "Do you cover databases and transactions?"
 msgstr "هل تغطي قواعد البيانات والمعاملات؟"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:137
-#: src/features/Goal/Quiz/QuizPage2.tsx:178
+#: src/features/Goal/Quiz/QuizPage2.tsx:138
+#: src/features/Goal/Quiz/QuizPage2.tsx:179
 #. js-lingui-explicit-id
 msgid "Do you have any travel plans?"
 msgstr "هل لديك أي خطط للسفر؟"
@@ -2238,7 +2248,7 @@ msgstr "دكتور"
 msgid "Dog Owner"
 msgstr "مالك الكلب"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:317
+#: src/features/Goal/Quiz/QuizPage2.tsx:318
 #. js-lingui-explicit-id
 msgid "Don't forget to try call mode in the practice section!"
 msgstr ""
@@ -2543,7 +2553,7 @@ msgstr "خطأ في إنشاء جلسة الدفع"
 msgid "Error creating payment session. Try again later."
 msgstr "خطأ في إنشاء جلسة الدفع. حاول مرة أخرى لاحقًا."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:63
+#: src/features/Goal/Quiz/QuizPage2.tsx:64
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "خطأ في إنشاء الخطة. يرجى المحاولة مرة أخرى."
@@ -3204,6 +3214,25 @@ msgstr "مجاني"
 msgid "Free Conversation"
 msgstr "محادثة مجانية"
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:396
+#. js-lingui-explicit-id
+msgid ""
+"Free plan is for speaking and writing practice. Paid plan unlocks listening "
+"and real-time conversations with AI"
+msgstr ""
+"الخطة المجانية مخصصة لممارسة التحدث والكتابة. الخطة المدفوعة تفتح الاستماع "
+"والمحادثات الفورية مع الذكاء الاصطناعي"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:347
+#. js-lingui-explicit-id
+msgid "Free plan:"
+msgstr "خطة مجانية:"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:332
+#. js-lingui-explicit-id
+msgid "Free vs Paid Plan"
+msgstr "خطة مجانية مقابل خطة مدفوعة"
+
 #: src/features/Lang/getLabels.tsx:12
 #. js-lingui-explicit-id
 msgid "French Learning Plan"
@@ -3522,10 +3551,15 @@ msgstr "أعطنا ملاحظاتك"
 msgid "Global"
 msgstr "عالمي"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:320
+#: src/features/Goal/Quiz/QuizPage2.tsx:321
 #. js-lingui-explicit-id
 msgid "Go to Practice"
 msgstr "اذهب إلى التمرين"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:404
+#. js-lingui-explicit-id
+msgid "Go to Practice (Free Plan)"
+msgstr "اذهب إلى التمرين (الخطة المجانية)"
 
 #: src/features/NotFound/NotFoundPage.tsx:37
 #. js-lingui-explicit-id
@@ -3769,8 +3803,8 @@ msgstr "برز قوتك المرتبطة بالدور:"
 msgid "Hints to boost your confidence"
 msgstr "نصائح لتعزيز ثقتك بنفسك"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:129
-#: src/features/Goal/Quiz/QuizPage2.tsx:174
+#: src/features/Goal/Quiz/QuizPage2.tsx:130
+#: src/features/Goal/Quiz/QuizPage2.tsx:175
 #. js-lingui-explicit-id
 msgid "Hobbies or interests"
 msgstr "الهوايات أو الاهتمامات"
@@ -5151,7 +5185,7 @@ msgid ""
 "optimization without panic."
 msgstr "لقد ساعدني في الإجابة على أسئلة حول الوصول وتحسين الأداء دون ذعر."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:299
+#: src/features/Goal/Quiz/QuizPage2.tsx:300
 #. js-lingui-explicit-id
 msgid "It might take up to a minute"
 msgstr "قد يستغرق الأمر دقيقة كاملة"
@@ -5476,7 +5510,7 @@ msgstr "دعنا نضيف بعض الساعات إلى رصيدك"
 msgid "Let's choose how to start practicing"
 msgstr "دعونا نختار كيفية البدء في ممارسة اللغة"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:211
+#: src/features/Goal/Quiz/QuizPage2.tsx:212
 #. js-lingui-explicit-id
 msgid "Let's continue, I have a question for you!"
 msgstr "لنواصل، لدي سؤال لك!"
@@ -5492,12 +5526,12 @@ msgstr "لنقم بإنشاء حساب"
 msgid "Let's see who has the best arguments."
 msgstr "دعونا نرى من لديه أفضل الحجج."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:255
+#: src/features/Goal/Quiz/QuizPage2.tsx:256
 #. js-lingui-explicit-id
 msgid "Let's talk about your goals a bit more"
 msgstr "دعونا نتحدث عن أهدافك قليلاً بشكل أعمق"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:126
+#: src/features/Goal/Quiz/QuizPage2.tsx:127
 #. js-lingui-explicit-id
 msgid "Let's talk. Tell me  about yourself"
 msgstr "دعنا نتحدث. أخبرني عن نفسك"
@@ -5506,6 +5540,11 @@ msgstr "دعنا نتحدث. أخبرني عن نفسك"
 #. js-lingui-explicit-id
 msgid "Let’s make sure you’re ready"
 msgstr "لنتأكد من أنك جاهز"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:383
+#. js-lingui-explicit-id
+msgid "Listening practice. You can hear AI responses"
+msgstr "ممارسة الاستماع. يمكنك سماع ردود الذكاء الاصطناعي"
 
 #: src/features/Blog/blogData.tsx:33
 #. js-lingui-explicit-id
@@ -5568,8 +5607,8 @@ msgstr "التسجيل/التتبع"
 msgid "Looking for something specific?"
 msgstr "تبحث عن شيء محدد؟"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:133
-#: src/features/Goal/Quiz/QuizPage2.tsx:170
+#: src/features/Goal/Quiz/QuizPage2.tsx:134
+#: src/features/Goal/Quiz/QuizPage2.tsx:171
 #. js-lingui-explicit-id
 msgid "Main goal in learning"
 msgstr "الهدف الرئيسي في التعلم"
@@ -5813,8 +5852,8 @@ msgstr ""
 "تتضمن معظم المقابلات السؤال الكلاسيكي \"النقاط القوية والضعف\". من الخصوصي "
 "المهم التعامل مع هذا بشكل جيد باللغة الإنجليزية."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:141
-#: src/features/Goal/Quiz/QuizPage2.tsx:182
+#: src/features/Goal/Quiz/QuizPage2.tsx:142
+#: src/features/Goal/Quiz/QuizPage2.tsx:183
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
 msgstr "أفلام، كتب، أو موسيقى"
@@ -6159,7 +6198,7 @@ msgstr ""
 msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "تم إرسال الإشعار إلى فريق التطوير. عذرًا على ذلك..."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:298
+#: src/features/Goal/Quiz/QuizPage2.tsx:299
 #. js-lingui-explicit-id
 msgid "Now, we ready to create your learning plan"
 msgstr "الآن، نحن مستعدون لإنشاء خطة التعلم الخاصة بك"
@@ -6285,8 +6324,8 @@ msgstr "تشمل الأسئلة الشائعة الأخرى:"
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
-#: src/features/Goal/Quiz/QuizPage2.tsx:44
-#: src/features/Goal/Quiz/useQuiz.tsx:627
+#: src/features/Goal/Quiz/QuizPage2.tsx:45
+#: src/features/Goal/Quiz/useQuiz.tsx:628
 #: src/features/Lang/LanguageSwitcher.tsx:103
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -6337,6 +6376,11 @@ msgstr "صفحة"
 #. js-lingui-explicit-id
 msgid "Page Language"
 msgstr "لغة الصفحة"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:376
+#. js-lingui-explicit-id
+msgid "Paid plan:"
+msgstr "خطة مدفوعة:"
 
 #: src/features/Blog/blogData.tsx:24
 #. js-lingui-explicit-id
@@ -7279,6 +7323,11 @@ msgstr "سيناريوهات اللغة الإنجليزية في العالم �
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "لعبة الأدوار الحقيقية لممارسة اللغة الإنجليزية المتقدمة"
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:388
+#. js-lingui-explicit-id
+msgid "Real-time conversations with AI using voice"
+msgstr "محادثات في الوقت الفعلي مع الذكاء الاصطناعي باستخدام الصوت"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:230
 #. js-lingui-explicit-id
 msgid "Real-time microphone"
@@ -7330,11 +7379,11 @@ msgstr ""
 msgid "Record"
 msgstr "سجل"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:158
+#: src/features/Goal/Quiz/QuizPage2.tsx:159
 msgid "Record 2-3 minutes story using <0>{learningLanguageName}</0>"
 msgstr "سجل قصة مدتها 2-3 دقائق باستخدام <0>{learningLanguageName}</0>"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:162
+#: src/features/Goal/Quiz/QuizPage2.tsx:163
 msgid ""
 "Record 2-3 minutes story using <0>{learningLanguageName}</0> or "
 "<1>{nativeLanguageName}</1>"
@@ -7747,7 +7796,7 @@ msgstr ""
 msgid "Sentence Builder"
 msgstr "بناء الجمل"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:100
+#: src/features/Goal/Quiz/QuizPage2.tsx:101
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "اضبط لغتي"
@@ -7968,7 +8017,7 @@ msgstr ""
 "ابتسم، وصافح الأشخاص (إذا كان ذلك مناسبًا ثقافيًا)، وتحدث بنبرة ودية. إذا "
 "سألك المقابل، \"هل واجهت أي صعوبة في العثور علينا؟\" قد تقول:"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "لذلك يمكنني ترجمة الكلمات لك"
@@ -8025,6 +8074,11 @@ msgstr "تحدث بشكل طبيعي، دون التفكير المفرط"
 #. js-lingui-explicit-id
 msgid "Speaking"
 msgstr "التحدث"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:354
+#. js-lingui-explicit-id
+msgid "Speaking and writing practice"
+msgstr "ممارسة التحدث والكتابة"
 
 #: src/features/Landing/LandingPage.tsx:195
 #. js-lingui-explicit-id
@@ -8431,8 +8485,8 @@ msgstr "سيناريوهات تصميم النظام المستخدمة من ق�
 #: src/features/Dashboard/SelectLanguage.tsx:95
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:25
-#: src/features/Goal/Quiz/QuizPage2.tsx:45
-#: src/features/Goal/Quiz/useQuiz.tsx:628
+#: src/features/Goal/Quiz/QuizPage2.tsx:46
+#: src/features/Goal/Quiz/useQuiz.tsx:629
 #: src/features/Lang/LanguageSwitcher.tsx:104
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -8552,7 +8606,7 @@ msgid ""
 "fix it?"
 msgstr "أخبرنا عن وقت واجهت فيه خللاً برمجيًا. كيف وجدت السبب وقمت بإصلاحه؟"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:155
+#: src/features/Goal/Quiz/QuizPage2.tsx:156
 #. js-lingui-explicit-id
 msgid "Tell me about yourself"
 msgstr "أخبرني عن نفسك"
@@ -8696,6 +8750,11 @@ msgstr ""
 "أيضاً بـ 'الحديث الصغير'. يستخدم المجندين هذا الوقت لخلق جو ودي والتعرف "
 "عليك بشكل أفضل قليلاً."
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:333
+#. js-lingui-explicit-id
+msgid "The key differences between them."
+msgstr "الاختلافات الرئيسية بينهما."
+
 #: src/features/Landing/Price/PricePage.tsx:66
 #. js-lingui-explicit-id
 msgid ""
@@ -8752,7 +8811,7 @@ msgstr "هذا الإجراء لا يمكن التراجع عنه."
 msgid "This approach shows self-awareness and growth."
 msgstr "هذا الأسلوب يظهر الوعي الذاتي والنمو."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:112
+#: src/features/Goal/Quiz/QuizPage2.tsx:113
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "هذا هو النص الذي تراه على الأزرار والقوائم"
@@ -9293,7 +9352,7 @@ msgstr "معايير WCAG"
 msgid "We appreciate your feedback!"
 msgstr "نحن نقدر ملاحظاتك!"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:125
+#: src/features/Goal/Quiz/QuizPage2.tsx:126
 #. js-lingui-explicit-id
 msgid "We are ready"
 msgstr "نحن مستعدون"
@@ -9432,7 +9491,7 @@ msgstr "ما هو التركيز الرئيسي في FluencyPal؟"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "ما هي أنواع المقابلات الخلفية التي يمكنني التدرب عليها؟"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "ما هي اللغة التي تتحدثها"
@@ -9622,7 +9681,7 @@ msgstr ""
 "خطوات التالية. يساعدك هذا السيناريو على الشعور بالراحة في التنقل بين مشكلات "
 "التقنية والتواصل حول الحلول."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:210
+#: src/features/Goal/Quiz/QuizPage2.tsx:211
 #. js-lingui-explicit-id
 msgid "Wow, that was awesome!"
 msgstr "واو، لقد كان ذلك رائعاً!"

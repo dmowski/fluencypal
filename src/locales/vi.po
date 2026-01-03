@@ -575,6 +575,11 @@ msgstr "Hướng Dẫn Ngôn Ngữ AI"
 msgid "AI language tutor pricing"
 msgstr "Giá cho gia sư ngôn ngữ AI"
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:364
+#. js-lingui-explicit-id
+msgid "AI responses are text-only"
+msgstr "Các câu trả lời của AI chỉ có văn bản"
+
 #: src/features/Auth/WebViewWall.tsx:173
 #. js-lingui-explicit-id
 msgid "AI speaking partner"
@@ -599,6 +604,11 @@ msgstr "Cập nhật Gia sư AI"
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "Giọng nói AI"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:359
+#. js-lingui-explicit-id
+msgid "AI voice is disabled"
+msgstr "AI Voice bị vô hiệu hóa"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:377
 #. js-lingui-explicit-id
@@ -931,7 +941,7 @@ msgstr "Hãy chuẩn bị cho buổi phỏng vấn xin việc của bạn"
 msgid "Be specific about your role"
 msgstr "Hãy xác định rõ vai trò của bạn"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:254
+#: src/features/Goal/Quiz/QuizPage2.tsx:255
 #. js-lingui-explicit-id
 msgid "Before the training plan..."
 msgstr "Trước khi kế hoạch đào tạo..."
@@ -1149,7 +1159,7 @@ msgid "Caching Strategies"
 msgstr "Chiến Lược Lưu Bộ Nhớ Đệm"
 
 #: src/features/Conversation/ConversationCanvas.tsx:1202
-#: src/features/Goal/Quiz/QuizPage2.tsx:316
+#: src/features/Goal/Quiz/QuizPage2.tsx:317
 #. js-lingui-explicit-id
 msgid "Call mode"
 msgstr "Chế độ gọi"
@@ -1332,7 +1342,7 @@ msgstr "Kế Hoạch Học Tiếng Trung"
 msgid "Choose isolation levels, model aggregates, and write efficient queries."
 msgstr "Chọn mức độ cô lập, mô hình hóa các tổng hợp, và viết các truy vấn hiệu quả."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:111
+#: src/features/Goal/Quiz/QuizPage2.tsx:112
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "Chọn Ngôn ngữ Trang Web"
@@ -2269,8 +2279,8 @@ msgstr "Tôi có cần phải sắp xếp thời gian với một người phỏ
 msgid "Do you cover databases and transactions?"
 msgstr "Bạn có bao gồm cơ sở dữ liệu và giao dịch không?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:137
-#: src/features/Goal/Quiz/QuizPage2.tsx:178
+#: src/features/Goal/Quiz/QuizPage2.tsx:138
+#: src/features/Goal/Quiz/QuizPage2.tsx:179
 #. js-lingui-explicit-id
 msgid "Do you have any travel plans?"
 msgstr "Bạn có kế hoạch du lịch nào không?"
@@ -2285,7 +2295,7 @@ msgstr "Bác sĩ"
 msgid "Dog Owner"
 msgstr "Chủ chó"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:317
+#: src/features/Goal/Quiz/QuizPage2.tsx:318
 #. js-lingui-explicit-id
 msgid "Don't forget to try call mode in the practice section!"
 msgstr "Đừng quên thử chế độ gọi trong phần thực hành!"
@@ -2597,7 +2607,7 @@ msgstr "Lỗi khi tạo phiên thanh toán"
 msgid "Error creating payment session. Try again later."
 msgstr "Lỗi khi tạo phiên thanh toán. Vui lòng thử lại sau."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:63
+#: src/features/Goal/Quiz/QuizPage2.tsx:64
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "Lỗi khi tạo kế hoạch. Vui lòng thử lại."
@@ -3280,6 +3290,25 @@ msgstr "Miễn phí"
 msgid "Free Conversation"
 msgstr "Cuộc trò chuyện tự do"
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:396
+#. js-lingui-explicit-id
+msgid ""
+"Free plan is for speaking and writing practice. Paid plan unlocks listening "
+"and real-time conversations with AI"
+msgstr ""
+"Gói miễn phí dành cho thực hành nói và viết. Gói trả phí mở khóa tính năng "
+"nghe và trò chuyện theo thời gian thực với AI."
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:347
+#. js-lingui-explicit-id
+msgid "Free plan:"
+msgstr "Kế hoạch miễn phí:"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:332
+#. js-lingui-explicit-id
+msgid "Free vs Paid Plan"
+msgstr "Miễn phí và Gói trả phí"
+
 #: src/features/Lang/getLabels.tsx:12
 #. js-lingui-explicit-id
 msgid "French Learning Plan"
@@ -3608,10 +3637,15 @@ msgstr "Hãy cho chúng tôi phản hồi của bạn"
 msgid "Global"
 msgstr "Toàn cầu"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:320
+#: src/features/Goal/Quiz/QuizPage2.tsx:321
 #. js-lingui-explicit-id
 msgid "Go to Practice"
 msgstr "Đi đến Luyện tập"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:404
+#. js-lingui-explicit-id
+msgid "Go to Practice (Free Plan)"
+msgstr "Đi tới Thực hành (Gói Miễn phí)"
 
 #: src/features/NotFound/NotFoundPage.tsx:37
 #. js-lingui-explicit-id
@@ -3861,8 +3895,8 @@ msgstr "Nêu bật những điểm mạnh liên quan đến vị trí:"
 msgid "Hints to boost your confidence"
 msgstr "Gợi ý để tăng sự tự tin của bạn"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:129
-#: src/features/Goal/Quiz/QuizPage2.tsx:174
+#: src/features/Goal/Quiz/QuizPage2.tsx:130
+#: src/features/Goal/Quiz/QuizPage2.tsx:175
 #. js-lingui-explicit-id
 msgid "Hobbies or interests"
 msgstr "Sở thích hoặc mối quan tâm"
@@ -5295,7 +5329,7 @@ msgstr ""
 "Nó đã giúp tôi trả lời các câu hỏi về khả năng tiếp cận và tối ưu hóa hiệu "
 "suất mà không hoảng loạn."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:299
+#: src/features/Goal/Quiz/QuizPage2.tsx:300
 #. js-lingui-explicit-id
 msgid "It might take up to a minute"
 msgstr "Có thể mất đến một phút"
@@ -5626,7 +5660,7 @@ msgstr "Hãy thêm một số giờ vào số dư của bạn"
 msgid "Let's choose how to start practicing"
 msgstr "Hãy chọn cách để bắt đầu luyện tập"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:211
+#: src/features/Goal/Quiz/QuizPage2.tsx:212
 #. js-lingui-explicit-id
 msgid "Let's continue, I have a question for you!"
 msgstr "Chúng ta hãy tiếp tục, tôi có một câu hỏi cho bạn!"
@@ -5642,12 +5676,12 @@ msgstr "Hãy tạo một tài khoản"
 msgid "Let's see who has the best arguments."
 msgstr "Hãy xem ai có những lập luận tốt nhất."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:255
+#: src/features/Goal/Quiz/QuizPage2.tsx:256
 #. js-lingui-explicit-id
 msgid "Let's talk about your goals a bit more"
 msgstr "Hãy nói thêm một chút về mục tiêu của bạn"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:126
+#: src/features/Goal/Quiz/QuizPage2.tsx:127
 #. js-lingui-explicit-id
 msgid "Let's talk. Tell me  about yourself"
 msgstr "Hãy cùng trò chuyện. Hãy kể cho tôi nghe về bạn."
@@ -5656,6 +5690,11 @@ msgstr "Hãy cùng trò chuyện. Hãy kể cho tôi nghe về bạn."
 #. js-lingui-explicit-id
 msgid "Let’s make sure you’re ready"
 msgstr "Hãy chắc chắn rằng bạn đã sẵn sàng"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:383
+#. js-lingui-explicit-id
+msgid "Listening practice. You can hear AI responses"
+msgstr "Thực hành nghe. Bạn có thể nghe phản hồi của AI"
 
 #: src/features/Blog/blogData.tsx:33
 #. js-lingui-explicit-id
@@ -5718,8 +5757,8 @@ msgstr "Nhật ký/Dấu vết"
 msgid "Looking for something specific?"
 msgstr "Đang tìm kiếm một cái gì đó cụ thể?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:133
-#: src/features/Goal/Quiz/QuizPage2.tsx:170
+#: src/features/Goal/Quiz/QuizPage2.tsx:134
+#: src/features/Goal/Quiz/QuizPage2.tsx:171
 #. js-lingui-explicit-id
 msgid "Main goal in learning"
 msgstr "Mục tiêu chính trong việc học"
@@ -5965,8 +6004,8 @@ msgstr ""
 "Hầu hết các cuộc phỏng vấn đều bao gồm câu hỏi cổ điển về \"điểm mạnh và "
 "điểm yếu\". Việc xử lý tốt vấn đề này trong tiếng Anh đặc biệt quan trọng."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:141
-#: src/features/Goal/Quiz/QuizPage2.tsx:182
+#: src/features/Goal/Quiz/QuizPage2.tsx:142
+#: src/features/Goal/Quiz/QuizPage2.tsx:183
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
 msgstr "Phim, sách, hoặc âm nhạc"
@@ -6306,7 +6345,7 @@ msgstr "Không phải lúc đó"
 msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "Thông báo đã được gửi đến nhóm phát triển. Xin lỗi vì điều này..."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:298
+#: src/features/Goal/Quiz/QuizPage2.tsx:299
 #. js-lingui-explicit-id
 msgid "Now, we ready to create your learning plan"
 msgstr "Bây giờ, chúng tôi sẵn sàng tạo kế hoạch học tập của bạn"
@@ -6434,8 +6473,8 @@ msgstr "Các câu hỏi phổ biến khác bao gồm:"
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
-#: src/features/Goal/Quiz/QuizPage2.tsx:44
-#: src/features/Goal/Quiz/useQuiz.tsx:627
+#: src/features/Goal/Quiz/QuizPage2.tsx:45
+#: src/features/Goal/Quiz/useQuiz.tsx:628
 #: src/features/Lang/LanguageSwitcher.tsx:103
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -6490,6 +6529,11 @@ msgstr "Trang"
 #. js-lingui-explicit-id
 msgid "Page Language"
 msgstr "Ngôn ngữ Trang"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:376
+#. js-lingui-explicit-id
+msgid "Paid plan:"
+msgstr "Gói trả phí:"
 
 #: src/features/Blog/blogData.tsx:24
 #. js-lingui-explicit-id
@@ -7453,6 +7497,11 @@ msgstr "Cảnh Hàng Ngày Trong Tiếng Anh"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Thực Hành Đóng Vai Thực Tế Để Nâng Cao Kỹ Năng Tiếng Anh"
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:388
+#. js-lingui-explicit-id
+msgid "Real-time conversations with AI using voice"
+msgstr "Đàm thoại thời gian thực với AI bằng giọng nói"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:230
 #. js-lingui-explicit-id
 msgid "Real-time microphone"
@@ -7504,11 +7553,11 @@ msgstr ""
 msgid "Record"
 msgstr "Ghi lại"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:158
+#: src/features/Goal/Quiz/QuizPage2.tsx:159
 msgid "Record 2-3 minutes story using <0>{learningLanguageName}</0>"
 msgstr "Ghi âm câu chuyện dài 2-3 phút sử dụng <0>{learningLanguageName}</0>"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:162
+#: src/features/Goal/Quiz/QuizPage2.tsx:163
 msgid ""
 "Record 2-3 minutes story using <0>{learningLanguageName}</0> or "
 "<1>{nativeLanguageName}</1>"
@@ -7927,7 +7976,7 @@ msgstr "phỏng vấn frontend cấp cao"
 msgid "Sentence Builder"
 msgstr "Trình Xây dựng Câu"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:100
+#: src/features/Goal/Quiz/QuizPage2.tsx:101
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Đặt Ngôn Ngữ Của Tôi"
@@ -8155,7 +8204,7 @@ msgstr ""
 "thiện. Nếu người phỏng vấn hỏi, \"Bạn có gặp khó khăn gì khi tìm chúng tôi "
 "không?\" bạn có thể phản hồi như sau:"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "Vì vậy, tôi có thể dịch từ cho bạn"
@@ -8214,6 +8263,11 @@ msgstr "Nói một cách tự nhiên, đừng suy nghĩ quá nhiều"
 #. js-lingui-explicit-id
 msgid "Speaking"
 msgstr "Nói chuyện"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:354
+#. js-lingui-explicit-id
+msgid "Speaking and writing practice"
+msgstr "Luyện tập nói và viết"
 
 #: src/features/Landing/LandingPage.tsx:195
 #. js-lingui-explicit-id
@@ -8633,8 +8687,8 @@ msgstr ""
 #: src/features/Dashboard/SelectLanguage.tsx:95
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:25
-#: src/features/Goal/Quiz/QuizPage2.tsx:45
-#: src/features/Goal/Quiz/useQuiz.tsx:628
+#: src/features/Goal/Quiz/QuizPage2.tsx:46
+#: src/features/Goal/Quiz/useQuiz.tsx:629
 #: src/features/Lang/LanguageSwitcher.tsx:104
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -8756,7 +8810,7 @@ msgstr ""
 "Hãy kể về một lần bạn bị mắc kẹt với một lỗi. Bạn đã tìm ra nguyên nhân và "
 "khắc phục nó như thế nào?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:155
+#: src/features/Goal/Quiz/QuizPage2.tsx:156
 #. js-lingui-explicit-id
 msgid "Tell me about yourself"
 msgstr "Hãy cho tôi biết về bản thân bạn."
@@ -8904,6 +8958,11 @@ msgstr ""
 "chính thức - còn được gọi là 'SmallTalk'. Nhà tuyển dụng sử dụng thời gian "
 "này để tạo ra một không khí thân thiện và hiểu bạn hơn một chút."
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:333
+#. js-lingui-explicit-id
+msgid "The key differences between them."
+msgstr "Sự khác biệt chính giữa chúng."
+
 #: src/features/Landing/Price/PricePage.tsx:66
 #. js-lingui-explicit-id
 msgid ""
@@ -8960,7 +9019,7 @@ msgstr "Hành động này không thể đảo ngược."
 msgid "This approach shows self-awareness and growth."
 msgstr "Phương pháp này cho thấy sự tự nhận thức và phát triển."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:112
+#: src/features/Goal/Quiz/QuizPage2.tsx:113
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "Đây là văn bản bạn thấy trên các nút và menu"
@@ -9502,7 +9561,7 @@ msgstr "Tiêu chuẩn WCAG"
 msgid "We appreciate your feedback!"
 msgstr "Chúng tôi rất trân trọng phản hồi của bạn!"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:125
+#: src/features/Goal/Quiz/QuizPage2.tsx:126
 #. js-lingui-explicit-id
 msgid "We are ready"
 msgstr "Chúng tôi đã sẵn sàng"
@@ -9646,7 +9705,7 @@ msgstr "Trọng tâm chính của FluencyPal là gì?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "Tôi có thể thực hành cho những loại phỏng vấn backend nào?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "Bạn nói ngôn ngữ nào"
@@ -9837,7 +9896,7 @@ msgstr ""
 "giúp bạn cảm thấy thoải mái hơn khi điều hướng các vấn đề công nghệ và giao "
 "tiếp về các giải pháp."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:210
+#: src/features/Goal/Quiz/QuizPage2.tsx:211
 #. js-lingui-explicit-id
 msgid "Wow, that was awesome!"
 msgstr "Wow, điều đó thật tuyệt vời!"

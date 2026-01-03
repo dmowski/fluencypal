@@ -53,6 +53,7 @@ type QuizStep =
   | "reviewAbout"
   | "before_goalReview"
   | "callMode"
+  | "paidVsFree"
   | "goalReview";
 
 const stepsViews: QuizStep[] = [
@@ -74,7 +75,7 @@ const stepsViews: QuizStep[] = [
 
   "before_goalReview",
   "goalReview",
-  "callMode",
+  "paidVsFree",
 ];
 
 export const MIN_WORDS_FOR_ANSWER = 30;
