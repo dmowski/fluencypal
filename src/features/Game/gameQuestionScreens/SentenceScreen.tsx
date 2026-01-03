@@ -10,15 +10,19 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
+  const [isShowStats, setIsShowStats] = useState(false);
 
   const game = useGame();
   const question = game.activeQuestion;
   useEffect(() => {
     setIsCorrect(null);
     setSelectedWords([]);
+    setIsShowStats(false);
+    setIsSubmitting(false);
   }, [question]);
 
   const handleAnswerSubmit = async (answer: string) => {
+    setIsShowStats(true);
     setIsSubmitting(true);
     const { isCorrect } = await game.submitAnswer(question?.id || "", answer);
     setIsSubmitting(false);
@@ -171,7 +175,13 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
           </Button>
         )}
 
-        {isCorrect !== null && <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} />}
+        {
+          <FinishButton
+            isCorrect={isCorrect}
+            setIsCorrect={setIsCorrect}
+            isShowStats={isShowStats}
+          />
+        }
       </Stack>
     </GameContainer>
   );

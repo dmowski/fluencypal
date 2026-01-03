@@ -16,6 +16,7 @@ import { useGame } from "../useGame";
 export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isShowStats, setIsShowStats] = useState(false);
 
   const [textAnswer, setTextAnswer] = useState<string>("");
   const [answerDescription, setAnswerDescription] = useState<string | null>(null);
@@ -42,10 +43,13 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
     setAnswerCorrectedMessage(null);
     recorder.removeTranscript();
     setIsUseMicrophone(Math.random() > 0.1);
+    setIsShowStats(false);
+    setIsSubmitting(false);
   }, [question]);
 
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
+    setIsShowStats(true);
     const { isCorrect, description } = await game.submitAnswer(question?.id || "", answer);
 
     const splitDescription = (description || "").split("|");
@@ -336,7 +340,11 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
                 </Markdown>
               )}
             </Stack>
-            <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} />
+            <FinishButton
+              isCorrect={isCorrect}
+              setIsCorrect={setIsCorrect}
+              isShowStats={isShowStats}
+            />
           </Stack>
         )}
       </Stack>

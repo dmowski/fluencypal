@@ -9,6 +9,7 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isShowStats, setIsShowStats] = useState(false);
 
   const game = useGame();
   const question = game.activeQuestion;
@@ -16,10 +17,13 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
   useEffect(() => {
     setIsCorrect(null);
     setSelectedAnswer(null);
+    setIsShowStats(false);
+    setIsSubmitting(false);
   }, [question]);
 
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
+    setIsShowStats(true);
     const { isCorrect } = await game.submitAnswer(question?.id || "", answer);
     setIsSubmitting(false);
     setIsCorrect(isCorrect);
@@ -101,7 +105,7 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
           gap: "5px",
         }}
       >
-        {isCorrect !== null && <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} />}
+        <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} isShowStats={isShowStats} />
       </Stack>
     </Stack>
   );

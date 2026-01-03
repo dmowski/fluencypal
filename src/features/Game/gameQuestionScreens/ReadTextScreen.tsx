@@ -18,6 +18,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { i18n } = useLingui();
+  const [isShowStats, setIsShowStats] = useState(false);
 
   const auth = useAuth();
   const settings = useSettings();
@@ -47,13 +48,17 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
   useEffect(() => {
     setIsCorrect(null);
     recorder.removeTranscript();
+    setIsShowStats(false);
+    setIsSubmitting(false);
   }, [question]);
 
   const handleAnswerSubmit = async (answer: string) => {
+    cancelRecording();
+    setIsShowStats(true);
     setIsSubmitting(true);
     const { isCorrect } = await game.submitAnswer(question?.id || "", answer);
     setIsSubmitting(false);
-    cancelRecording();
+
     setIsCorrect(isCorrect);
   };
 
@@ -323,7 +328,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
           </Typography>
         )}
 
-        {isCorrect !== null && <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} />}
+        <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} isShowStats={isShowStats} />
       </Stack>
     </GameContainer>
   );

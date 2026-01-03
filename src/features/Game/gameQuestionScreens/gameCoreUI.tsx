@@ -2,9 +2,9 @@ import { Button, Stack, Typography } from "@mui/material";
 import { useGame } from "../useGame";
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
-import { ChevronLast, ChevronRight, Crown, X } from "lucide-react";
+import { ChevronLast, ChevronRight, Crown, Loader, X } from "lucide-react";
 import { pointsIncreaseMap } from "../points";
-import { PositionChanged } from "../PositionChangedModal";
+import { PositionChanged } from "../PositionChanged";
 
 export const GameContainer = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -90,9 +90,11 @@ export const TaskTitle = () => {
 export const FinishButton = ({
   isCorrect,
   setIsCorrect,
+  isShowStats,
 }: {
-  isCorrect: boolean;
+  isCorrect: boolean | null;
   setIsCorrect: (value: boolean | null) => void;
+  isShowStats: boolean;
 }) => {
   const { i18n } = useLingui();
   const game = useGame();
@@ -104,23 +106,26 @@ export const FinishButton = ({
         width: "100%",
       }}
     >
-      <Button
-        variant="contained"
-        size="large"
-        color={isCorrect ? "info" : "error"}
-        startIcon={isCorrect ? <Crown /> : <X />}
-        endIcon={<ChevronRight />}
-        onClick={() => {
-          setIsCorrect(null);
-          game.nextQuestion();
-        }}
-        sx={{
-          width: "100%",
-        }}
-      >
-        {i18n._("Next")}
-      </Button>
-      <PositionChanged />
+      {isShowStats && (
+        <Button
+          variant="contained"
+          size="large"
+          color={isCorrect === null ? "info" : isCorrect ? "success" : "error"}
+          startIcon={isCorrect === null ? <Loader /> : isCorrect ? <Crown /> : <X />}
+          endIcon={<ChevronRight />}
+          disabled={isCorrect === null}
+          onClick={() => {
+            setIsCorrect(null);
+            game.nextQuestion();
+          }}
+          sx={{
+            width: "100%",
+          }}
+        >
+          {i18n._("Next")}
+        </Button>
+      )}
+      {isShowStats && <PositionChanged />}
     </Stack>
   );
 };
