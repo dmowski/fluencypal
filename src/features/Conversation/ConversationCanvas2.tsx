@@ -512,7 +512,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     </>
   );
 
-  if (isCallMode && !gameWords?.wordsUserToDescribe) {
+  if (isCallMode) {
     return (
       <CameraCanvas
         messageOrder={messageOrder}
