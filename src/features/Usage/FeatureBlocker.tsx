@@ -3,18 +3,16 @@ import { Button, Stack, Typography } from "@mui/material";
 import { ChevronRight, Telescope } from "lucide-react";
 import { ColorIconTextList } from "../Survey/ColorIconTextList";
 
-export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick?: () => void }) => {
+export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick: () => void }) => {
   const { i18n } = useLingui();
 
   return (
     <Stack
       sx={{
         alignItems: "center",
-
         justifyContent: "center",
         borderRadius: "8px",
         boxShadow: "0px 0px 0 1px rgba(206, 200, 239, 0.2), 3px 3px 30px rgba(0, 0, 0, 0.3)",
-
         background:
           "linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(31, 3, 186, 0.03) 100%)",
         padding: "30px 25px",
@@ -44,7 +42,7 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick?: () => void
             opacity: 0.7,
           }}
         >
-          {i18n._(`Upgrade your plan to access this feature and unlock unlimited conversations.`)}
+          {i18n._(`Upgrade your plan to unlock unlimited conversations.`)}
         </Typography>
       </Stack>
 
@@ -71,16 +69,11 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick?: () => void
       <Button
         sx={{
           padding: "10px 20px",
-          //backgroundColor: "rgba(6, 77, 121, 1)",
-          //color: "#FFFFFF",
         }}
-        onClick={() => {
-          onLimitedClick && onLimitedClick();
-        }}
+        onClick={onLimitedClick}
         size="large"
         fullWidth
         variant="contained"
-        //color="info"
         startIcon={<Telescope />}
         endIcon={<ChevronRight />}
       >
