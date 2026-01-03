@@ -6,6 +6,6 @@ export const useAccess = () => {
   const usage = useUsage();
 
   return {
-    isFullAppAccess: false, //game.isGameWinner || usage.isFullAccess,
+    isFullAppAccess: game.isGameWinner || usage.isFullAccess,
   };
 };
