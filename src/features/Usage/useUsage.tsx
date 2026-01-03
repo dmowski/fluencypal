@@ -146,7 +146,7 @@ function useProvideUsage(): UsageContextType {
     activeSubscriptionTill || (!!totalUsage?.balanceHours && totalUsage.balanceHours > 0);
 
   return {
-    isFullAccess: false,
+    isFullAccess: isFullAccess,
     lastUpdatedAt: totalUsage?.lastUpdatedAt || 0,
     activeSubscriptionTill: activeSubscriptionTill
       ? totalUsage?.activeSubscriptionTill || undefined
