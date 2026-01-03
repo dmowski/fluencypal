@@ -48,11 +48,13 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
               top: `calc(${sizes.topOffset} + 10px)`,
               right: "10px",
               zIndex: 100,
+              color: "rgba(255, 255, 255, 1)",
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
             }}
             onClick={() => onClose()}
             size="large"
           >
-            <X />
+            <X strokeWidth={"3px"} />
           </IconButton>
         )}
         <Stack

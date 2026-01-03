@@ -36,7 +36,7 @@ import {
   VolumeX,
 } from "lucide-react";
 import VideocamIcon from "@mui/icons-material/Videocam";
-import AddCardIcon from "@mui/icons-material/AddCard";
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 
 import { AliasGamePanel } from "./AliasGamePanel";
 import { ChatMessage, MessagesOrderMap } from "@/common/conversation";
@@ -109,7 +109,6 @@ interface ConversationCanvasProps {
   generateHelpMessage: () => Promise<string>;
   toggleConversationMode: (mode: ConversationMode) => void;
   conversationMode: ConversationMode;
-  isNeedToShowBalanceWarning: boolean;
   voice: AiVoice | null;
 
   messageOrder: MessagesOrderMap;
@@ -154,7 +153,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   analyzeConversation,
   messagesToComplete,
   generateHelpMessage,
-  isNeedToShowBalanceWarning,
 
   isVolumeOn,
   setIsVolumeOn,
@@ -1213,7 +1211,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     <Divider />
                     <MenuItem
                       sx={{}}
-                      disabled={isRecording || isAnalyzingResponse || isNeedToShowBalanceWarning}
+                      disabled={isRecording || isAnalyzingResponse || isLimited}
                       onClick={(e) => {
                         openHelpAnswer(e.currentTarget);
                         closeMenus();
@@ -1400,7 +1398,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                   )}
                 </Stack>
 
-                {(isRecording || isAnalyzingResponse || isNeedToShowBalanceWarning) && (
+                {(isRecording || isAnalyzingResponse || isLimited) && (
                   <Stack
                     sx={{
                       width: "100%",
@@ -1425,7 +1423,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       </Tooltip>
                     ) : (
                       <>
-                        {isNeedToShowBalanceWarning && (
+                        {isLimited && (
                           <Stack
                             sx={{
                               alignItems: "flex-end",
@@ -1434,8 +1432,15 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                               width: "100%",
                             }}
                           >
-                            <IconButton color={"warning"} onClick={() => togglePaymentModal(true)}>
-                              <AddCardIcon />
+                            <IconButton
+                              sx={{
+                                boxShadow: "0 0 0 1px rgba(255, 255, 255, 0.11)",
+                                background:
+                                  "linear-gradient(130deg, rgba(255, 255, 255, 0.07), rgba(244, 244, 244, 0.02))",
+                              }}
+                              onClick={() => togglePaymentModal(true)}
+                            >
+                              <VolumeOffIcon />
                             </IconButton>
                           </Stack>
                         )}

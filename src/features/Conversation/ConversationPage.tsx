@@ -247,7 +247,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         toggleConversationMode={aiConversation.toggleConversationMode}
         isMuted={aiConversation.isMuted}
         setIsMuted={(isMuted) => aiConversation.toggleMute(isMuted)}
-        isNeedToShowBalanceWarning={!access.isFullAppAccess}
         isVolumeOn={aiConversation.isVolumeOn}
         voice={aiConversation.voice}
         messageOrder={aiConversation.messageOrder}
