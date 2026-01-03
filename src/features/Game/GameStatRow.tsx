@@ -29,6 +29,8 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
 
   const actualPosition = game.getRealPosition(stat.userId) + 1;
 
+  const points = game.stats.find((s) => s.userId === stat.userId)?.points || 0;
+
   return (
     <>
       {isShowUserInfoModal && (
@@ -68,6 +70,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
             fontSize: "14px",
             padding: "0 0px 0 20px",
             fontVariantNumeric: "tabular-nums",
+            color: top5 ? "#70bfffff" : "#fff",
           }}
         >
           {actualPosition}
@@ -147,7 +150,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
           </Stack>
         </Stack>
 
-        <GamePointRow points={stat.points} isTop={top5} />
+        <GamePointRow points={points} isTop={top5} />
       </Stack>
     </>
   );
@@ -175,7 +178,11 @@ export const GamePointRow = ({ points, isTop }: { points: number; isTop: boolean
       sx={{
         fontWeight: 600,
         width: "max-content",
-        color: isTop || zoomIn ? "primary.main" : "text.primary",
+        color: zoomIn
+          ? "rgba(255, 114, 107, 1)"
+          : isTop
+            ? "rgba(112, 191, 255, 1)"
+            : "rgba(255, 255, 255, 1)",
         fontSize: isTop ? "1.5rem" : "0.9rem",
         fontVariantNumeric: "tabular-nums",
         transform: zoomIn ? "scale(1.8)" : "scale(1)",
