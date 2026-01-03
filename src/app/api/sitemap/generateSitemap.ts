@@ -3,7 +3,7 @@ import { getBlogs } from "@/features/Blog/blogData";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { getAllInterviews } from "@/features/Case/data/data";
 
-const updateTime = "2026-01-01T18:01:02+00:00";
+const updateTime = "2026-01-03T01:01:02+00:00";
 
 interface UrlDefinition {
   path: string;
