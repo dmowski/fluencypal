@@ -176,32 +176,48 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             ".stat-card": {
               border: "1px solid rgba(255, 255, 255, 0.1)",
               alignItems: "center",
-              gap: "5px",
-              padding: "8px 12px",
+              gap: "0px",
+              padding: "17px 12px 8px 12px",
               borderRadius: "8px",
               height: "120px",
-              ".title": {
+              ".value": {
                 fontSize: "30px",
+                fontWeight: 600,
+              },
+              ".label": {
+                opacity: 0.9,
               },
             },
             flexDirection: "row",
             alignItems: "center",
           }}
         >
-          <Stack className="stat-card">
-            <Typography className="title">{todaysConversationsMessages}</Typography>
-            <Typography align="center">Today Messages</Typography>
+          <Stack
+            className="stat-card"
+            sx={{
+              backgroundColor:
+                todaysConversationsMessages > 0 ? "rgba(255, 255, 255, 0.06)" : "transparent",
+            }}
+          >
+            <Typography className="value">{todaysConversationsMessages}</Typography>
+            <Typography align="center" variant="body2" className="label">
+              Today Messages
+            </Typography>
           </Stack>
 
           <Stack className="stat-card">
-            <Typography className="title">{totalMessages}</Typography>
-            <Typography align="center">All Messages</Typography>
+            <Typography className="value">{totalMessages}</Typography>
+            <Typography align="center" variant="body2" className="label">
+              All Messages
+            </Typography>
           </Stack>
 
           <Stack className="stat-card">
-            <Typography className="title">{conversationCount}</Typography>
+            <Typography className="value">{conversationCount}</Typography>
             <Stack>
-              <Typography align="center">Conversations</Typography>
+              <Typography align="center" variant="body2" className="label">
+                Conversations
+              </Typography>
               <Typography align="center" variant="caption" sx={{ opacity: 0.7 }}>
                 {lastConversationAgo}
               </Typography>
@@ -290,7 +306,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             }}
           >
             <Typography variant="caption">Quiz</Typography>
-            <TextField value={allTextInfo} rows={22} multiline />
+            <TextField value={allTextInfo} rows={13} multiline />
           </Stack>
           <Button
             color={isCopied ? "success" : "primary"}
