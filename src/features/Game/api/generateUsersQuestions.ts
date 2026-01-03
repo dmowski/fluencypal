@@ -23,7 +23,7 @@ export const generateUsersQuestions = async ({
   const userInfoRecords = aiUserInfo?.records || [];
 
   const unansweredQuestions = await getUnansweredQuestions(userInfo.uid, learningLanguage);
-  if (unansweredQuestions.length > 5 && !alwaysGenerateQuestions) {
+  if (unansweredQuestions.length > 10 && !alwaysGenerateQuestions) {
     const responseData = unansweredQuestions.map((question) =>
       convertFullQuestionToShort(question)
     );
