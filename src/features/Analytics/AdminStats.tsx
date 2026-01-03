@@ -428,6 +428,11 @@ export function AdminStats() {
     return lastLogin && dayjs().diff(dayjs(lastLogin), "hour") < 24;
   });
 
+  const todayMessagesCount = users.reduce((acc, user) => {
+    const todayMessages = user.conversationMeta.todayMessages || 0;
+    return acc + todayMessages;
+  }, 0);
+
   if (!isAdmin) {
     return <></>;
   }
@@ -455,8 +460,46 @@ export function AdminStats() {
               alignItems: "flex-start",
             }}
           >
-            <Typography variant="h6">Users: {data.users.length}</Typography>
-            <Typography variant="h6">Day: {todayUsers.length}</Typography>
+            <Stack
+              sx={{
+                width: "100%",
+                padding: "20px",
+                gap: "12px",
+                flexDirection: "row",
+                alignItems: "center",
+                ".stat-card": {
+                  width: "150px",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  alignItems: "center",
+                  gap: "0px",
+                  padding: "17px 12px 8px 12px",
+                  borderRadius: "8px",
+                  height: "120px",
+                  ".value": {
+                    fontSize: "30px",
+                    fontWeight: 600,
+                  },
+                  ".label": {
+                    opacity: 0.9,
+                  },
+                },
+              }}
+            >
+              <Stack className="stat-card">
+                <Typography className="value">{todayMessagesCount}</Typography>
+                <Typography align="center" variant="body2" className="label">
+                  Today Messages
+                </Typography>
+              </Stack>
+
+              <Stack className="stat-card">
+                <Typography className="value">{todayUsers.length}</Typography>
+                <Typography align="center" variant="body2" className="label">
+                  Today Users
+                </Typography>
+              </Stack>
+            </Stack>
+
             <Stack
               sx={{
                 gap: "10px",
