@@ -120,7 +120,7 @@ interface ConversationCanvasProps {
   isLimited: boolean;
   onLimitedClick: () => void;
 }
-export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
+export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
   conversation,
   isAiSpeaking,

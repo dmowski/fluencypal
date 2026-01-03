@@ -3,7 +3,7 @@ import { Divider, Stack } from "@mui/material";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { sleep } from "@/libs/sleep";
-import { ConversationCanvas2 } from "./ConversationCanvas2";
+import { ConversationCanvas } from "./ConversationCanvas";
 import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
 import { useEffect, useState } from "react";
@@ -159,7 +159,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   const [conversationMode, setConversationMode] = useState<ConversationMode>("chat");
   return (
     <Stack>
-      <ConversationCanvas2
+      <ConversationCanvas
         messagesToComplete={5}
         messageOrder={{}}
         isMuted

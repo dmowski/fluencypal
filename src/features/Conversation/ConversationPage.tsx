@@ -10,7 +10,7 @@ import { PayWall } from "../Usage/PayWall";
 import { Dashboard } from "../Dashboard/Dashboard";
 import { getPageLangCode, SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
-import { ConversationCanvas2 } from "./ConversationCanvas2";
+import { ConversationCanvas } from "./ConversationCanvas";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { useCorrections } from "../Corrections/useCorrections";
 import { useLingui } from "@lingui/react";
@@ -190,7 +190,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   return (
     <Stack>
-      <ConversationCanvas2
+      <ConversationCanvas
         messagesToComplete={planMessageCount}
         conversation={aiConversation.conversation}
         isAiSpeaking={aiConversation.isAiSpeaking}
