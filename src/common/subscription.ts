@@ -1,3 +1,3 @@
 export const PRICE_PER_MONTH_USD = 7;
 
-export const TRIAL_DAYS = 1;
+export const TRIAL_DAYS = 0;

@@ -23,14 +23,14 @@ export const addToTotalBalance = async ({
     lastUpdatedAt: Date.now(),
   };
 
-  if (monthsCount || daysCount) {
+  if (monthsCount || daysCount !== undefined) {
     const isActiveSubscriptions = !!balance.activeSubscriptionTill;
 
     const lastDate = isActiveSubscriptions ? dayjs(balance.activeSubscriptionTill) : dayjs();
 
     const endDate = monthsCount
       ? lastDate.add(monthsCount, "month")
-      : lastDate.add(daysCount || 1, "day");
+      : lastDate.add(daysCount || 0, "day");
     const endDateIso = endDate.toISOString();
     newTotalUsage.activeSubscriptionTill = endDateIso;
   } else {
