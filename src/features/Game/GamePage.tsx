@@ -13,7 +13,7 @@ import { GameOnboarding } from "./GameOnboarding";
 import { NavigationBar } from "../Navigation/NavigationBar";
 import { SupportedLanguage } from "../Lang/lang";
 import { useMemo, useState } from "react";
-import { ChartSection } from "../Chat/ChartSection";
+import { ChartSection } from "../Chat/ChatSection";
 import { useChat } from "../Chat/useChat";
 import { useUrlState } from "../Url/useUrlParam";
 
