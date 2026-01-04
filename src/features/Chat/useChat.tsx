@@ -147,7 +147,7 @@ function useProvideChat(): ChatContextType {
   const addMessage = async ({ messageContent, activeMessageId }: AddMessageProps) => {
     const createdAtIso = new Date().toISOString();
     const newMessage: UserChatMessage = {
-      id: `${userId}-${Date.now()}`,
+      id: `${Date.now()}`,
       senderId: userId,
       content: messageContent,
       createdAtIso: createdAtIso,
