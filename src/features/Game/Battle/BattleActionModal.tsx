@@ -306,7 +306,6 @@ export const BattleActionModal = ({
                 ]}
                 transcript={activeTranscript}
                 minWords={30}
-                lang={lang}
                 subTitleComponent={<></>}
                 nextStep={nextQuestion}
                 updateTranscript={async (combinedTranscript) => {

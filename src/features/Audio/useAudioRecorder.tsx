@@ -5,21 +5,17 @@ import { sendTranscriptRequest } from "@/app/api/transcript/sendTranscriptReques
 import { useVoiceVisualizer, VoiceVisualizer } from "react-voice-visualizer";
 import { useIsWebView } from "../Auth/useIsWebView";
 import { isAllowedMicrophone, requestMicrophoneAccess } from "@/libs/mic";
+import { useAuth } from "../Auth/useAuth";
+import { useSettings } from "../Settings/useSettings";
 
 export const useAudioRecorder = ({
-  languageCode,
-  getAuthToken,
-  isFree,
-  isGame,
   visualizerComponentWidth,
 }: {
-  languageCode: string;
-  getAuthToken: () => Promise<string>;
-  isFree: boolean;
-  isGame: boolean;
   visualizerComponentWidth?: string;
 }) => {
-  const learnLanguageCode = languageCode || "en";
+  const auth = useAuth();
+  const settings = useSettings();
+  const learnLanguageCode = settings.languageCode || "en";
 
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcription, setTranscription] = useState<string | null>(null);
@@ -61,7 +57,7 @@ export const useAudioRecorder = ({
     }
 
     setIsTranscribing(true);
-    const token = await getAuthToken();
+    const token = await auth.getToken();
     try {
       const transcriptResponse = await sendTranscriptRequest({
         audioBlob: recordedAudioBlog,
@@ -69,8 +65,6 @@ export const useAudioRecorder = ({
         languageCode: learnLanguageCode,
         audioDuration: recordingSeconds || 5,
         format,
-        isGame,
-        isFree,
       });
       setTranscription(transcriptResponse.transcript);
       if (transcriptResponse.error) {

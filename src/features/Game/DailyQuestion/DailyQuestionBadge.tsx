@@ -1,19 +1,9 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
-import { use, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { dailyQuestions } from "./dailyQuestions";
 import dayjs from "dayjs";
-import {
-  ArrowRight,
-  Check,
-  Languages,
-  Lightbulb,
-  Mic,
-  Sparkle,
-  Sparkles,
-  Telescope,
-} from "lucide-react";
+import { ArrowRight, Check, Languages, Lightbulb, Mic, Sparkles } from "lucide-react";
 import { getWordsCount } from "@/libs/words";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
@@ -22,7 +12,6 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "@/features/Firebase/firebaseDb";
 import { DailyQuestionAnswer } from "./types";
 import { and, doc, or, orderBy, query, setDoc, where } from "firebase/firestore";
-import { useGame } from "../useGame";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { QuestionComment } from "./QuestionComment";
 import { sendTelegramRequest } from "@/features/Telegram/sendTextAiRequest";
@@ -35,7 +24,6 @@ export const DailyQuestionBadge = () => {
   const todayIsoDate = dayjs().format("YYYY-MM-DD");
   const todaysQuestion = dailyQuestions[todayIsoDate];
   const questionId = todaysQuestion?.id;
-  const game = useGame();
 
   const now = useMemo(() => new Date(), []);
   const timeLeft = dayjs(todayIsoDate).endOf("day").diff(now);
@@ -61,10 +49,7 @@ export const DailyQuestionBadge = () => {
   }, [collectionRef, settings.languageCode, userId]);
 
   const [allAnswers] = useCollection(queryRef);
-  const allAnswersData = useMemo(
-    () => allAnswers?.docs.map((doc) => doc.data()) || [],
-    [allAnswers]
-  );
+
   const myAnswer = allAnswers?.docs.find((answer) => {
     const answerData = answer.data();
     return answerData.authorUserId === userId && answerData.questionId === questionId;
@@ -125,10 +110,6 @@ export const DailyQuestionBadge = () => {
   };
 
   const recorder = useAudioRecorder({
-    languageCode: settings.languageCode || "en",
-    getAuthToken: auth.getToken,
-    isFree: false,
-    isGame: false,
     visualizerComponentWidth: "100%",
   });
 

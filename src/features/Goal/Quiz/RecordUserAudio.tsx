@@ -4,10 +4,8 @@ import { Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { ReactNode, useEffect } from "react";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
-import { useAuth } from "@/features/Auth/useAuth";
 import { getWordsCount } from "@/libs/words";
 import { RecordUserAudioAnswer } from "../../Survey/RecordUserAudioAnswer";
-import { SupportedLanguage } from "@/features/Lang/lang";
 import { ColorIconTextList, ColorIconTextListItem } from "@/features/Survey/ColorIconTextList";
 import { InterviewQuizButton } from "./InterviewQuizButton";
 
@@ -19,7 +17,6 @@ export const RecordUserAudio = ({
   subTitle,
   subTitleComponent,
   isLoading,
-  lang,
   nextStep,
   listItems,
 }: {
@@ -30,17 +27,11 @@ export const RecordUserAudio = ({
   subTitle: string | ReactNode;
   subTitleComponent?: ReactNode;
   isLoading?: boolean;
-  lang: SupportedLanguage;
   nextStep: () => void;
   listItems?: ColorIconTextListItem[];
 }) => {
   const { i18n } = useLingui();
-  const auth = useAuth();
   const recorder = useAudioRecorder({
-    languageCode: lang,
-    getAuthToken: auth.getToken,
-    isFree: false,
-    isGame: false,
     visualizerComponentWidth: "100%",
   });
 
@@ -58,7 +49,6 @@ export const RecordUserAudio = ({
   };
 
   const wordsCount = getWordsCount(transcript || "");
-  const isNeedMoreRecording = !transcript || wordsCount < minWords;
 
   return (
     <Stack
@@ -140,8 +130,8 @@ export const RecordUserAudio = ({
             recorder.isRecording && wordsCount < minWords
               ? "error"
               : wordsCount > minWords
-              ? "success"
-              : "primary"
+                ? "success"
+                : "primary"
           }
           disabled={isLoading || wordsCount < minWords || recorder.isTranscribing}
           title={i18n._("Next")}

@@ -115,7 +115,6 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
               listItems={quiz.currentStep.listItems}
               transcript={survey?.answers[quiz.currentStep.id]?.answer || ""}
               minWords={MIN_CHARACTERS_FOR_TRANSCRIPT}
-              lang={lang}
               nextStep={quiz.nextStep}
               updateTranscript={async (combinedTranscript) => {
                 if (!quiz.survey) return;

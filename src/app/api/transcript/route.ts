@@ -31,16 +31,10 @@ export async function POST(request: Request) {
   const urlParams = new URLSearchParams(urlQueryParams);
   const languageCodeString = urlParams.get("lang") || "";
   const format = urlParams.get("format") || "webm";
-  const isFree = urlParams.get("isFree") === "true";
 
-  let userEmail = "";
-  let userId = "";
-
-  if (!isFree) {
-    const userInfo = await validateAuthToken(request);
-    userEmail = userInfo.email || "";
-    userId = userInfo.uid || "";
-  }
+  const userInfo = await validateAuthToken(request);
+  const userEmail = userInfo.email || "";
+  const userId = userInfo.uid || "";
 
   const supportedLang =
     supportedLanguages.find((lang) => lang === languageCodeString.toLowerCase()) || "en";
@@ -56,10 +50,9 @@ export async function POST(request: Request) {
     languageCode: supportedLang,
     userEmail,
     userId,
-    isKeepGrammarMistakes: isFree ? false : true,
   });
 
-  if (!responseData.error && !isFree && userId) {
+  if (!responseData.error && userId) {
     const priceUsd = calculateAudioTranscriptionPrice(audioDuration, model);
     const priceHours = convertUsdToHours(priceUsd);
     const usageLog: TranscriptUsageLog = {

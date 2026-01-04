@@ -7,8 +7,6 @@ import { Check, ChevronLast, Languages, Loader, Mic, Trash } from "lucide-react"
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
-import { useAuth } from "@/features/Auth/useAuth";
-import { useSettings } from "@/features/Settings/useSettings";
 import { StringDiff } from "react-string-diff";
 import { FinishButton, GameContainer, SkipButton, TaskTitle } from "./gameCoreUI";
 import { useGame } from "../useGame";
@@ -22,15 +20,8 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
   const [answerDescription, setAnswerDescription] = useState<string | null>(null);
   const [answerCorrectedMessage, setAnswerCorrectedMessage] = useState<string | null>(null);
 
-  const auth = useAuth();
   const game = useGame();
-  const settings = useSettings();
-  const recorder = useAudioRecorder({
-    languageCode: settings.languageCode || "en",
-    getAuthToken: auth.getToken,
-    isFree: false,
-    isGame: true,
-  });
+  const recorder = useAudioRecorder({});
   const [isUseMicrophone, setIsUseMicrophone] = useState<boolean>(false);
   const translator = useTranslate();
 

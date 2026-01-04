@@ -5,8 +5,6 @@ import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { Check, Languages, Loader, Mic, Trash } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
-import { useAuth } from "@/features/Auth/useAuth";
-import { useSettings } from "@/features/Settings/useSettings";
 import { getWordsFromText } from "@/libs/getWordsFromText";
 import { useLingui } from "@lingui/react";
 import { FinishButton, GameContainer, SkipButton, TaskTitle } from "./gameCoreUI";
@@ -20,14 +18,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
   const { i18n } = useLingui();
   const [isShowStats, setIsShowStats] = useState(false);
 
-  const auth = useAuth();
-  const settings = useSettings();
-  const recorder = useAudioRecorder({
-    languageCode: settings.languageCode || "en",
-    getAuthToken: auth.getToken,
-    isFree: false,
-    isGame: true,
-  });
+  const recorder = useAudioRecorder({});
 
   const userTranscript = recorder.transcription;
   const isRecording = recorder.isRecording;

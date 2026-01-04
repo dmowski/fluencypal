@@ -138,14 +138,7 @@ export const CallButtons = ({
     setIsVolumeOn(!isVolumeOn);
   };
 
-  const auth = useAuth();
-  const settings = useSettings();
-  const lang = settings.languageCode || "en";
   const recorder = useAudioRecorder({
-    languageCode: lang,
-    getAuthToken: auth.getToken,
-    isFree: true,
-    isGame: false,
     visualizerComponentWidth: "100%",
   });
   const transcription = recorder.transcription;

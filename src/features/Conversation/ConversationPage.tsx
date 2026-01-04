@@ -6,7 +6,6 @@ import { Stack } from "@mui/material";
 import { SignInForm } from "../Auth/SignInForm";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
-import { PayWall } from "../Usage/PayWall";
 import { Dashboard } from "../Dashboard/Dashboard";
 import { getPageLangCode, SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
@@ -29,7 +28,6 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import { GamePage } from "../Game/GamePage";
 import { useGoalCreation } from "../Plan/useGoalCreation";
 import { useConversationsAnalysis } from "./useConversationsAnalysis";
-import { usePayWall } from "../PayWall/usePayWall";
 import { useGame } from "../Game/useGame";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { RolePlayProvider } from "../RolePlay/useRolePlay";
@@ -45,12 +43,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const settings = useSettings();
   const aiConversation = useAiConversation();
   const usage = useUsage();
-  const recorder = useAudioRecorder({
-    languageCode: settings.languageCode || "en",
-    getAuthToken: auth.getToken,
-    isFree: false,
-    isGame: false,
-  });
+  const recorder = useAudioRecorder({});
   const corrections = useCorrections();
   const { i18n } = useLingui();
   const words = useWords();
