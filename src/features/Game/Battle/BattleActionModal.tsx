@@ -303,9 +303,14 @@ export const BattleActionModal = ({
                     title: i18n._("Your goal is not to be perfect, but to surpass your opponent."),
                     iconName: "rocket",
                   },
+                  {
+                    title: i18n._("The answer should not take more than 300 words. ~2 minutes."),
+                    iconName: "timer",
+                  },
                 ]}
                 transcript={activeTranscript}
                 minWords={30}
+                maxWords={300}
                 subTitleComponent={<></>}
                 nextStep={nextQuestion}
                 updateTranscript={async (combinedTranscript) => {

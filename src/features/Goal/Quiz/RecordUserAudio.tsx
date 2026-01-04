@@ -12,6 +12,7 @@ import { InterviewQuizButton } from "./InterviewQuizButton";
 export const RecordUserAudio = ({
   transcript,
   minWords,
+  maxWords,
   updateTranscript,
   title,
   subTitle,
@@ -22,6 +23,7 @@ export const RecordUserAudio = ({
 }: {
   transcript: string;
   minWords: number;
+  maxWords?: number;
   updateTranscript: (transcript: string) => Promise<void>;
   title: string;
   subTitle: string | ReactNode;
@@ -49,6 +51,8 @@ export const RecordUserAudio = ({
   };
 
   const wordsCount = getWordsCount(transcript || "");
+
+  const isInLimits = wordsCount >= minWords && (!maxWords || wordsCount <= maxWords);
 
   return (
     <Stack
@@ -113,6 +117,7 @@ export const RecordUserAudio = ({
           <RecordUserAudioAnswer
             transcript={transcript}
             minWords={minWords}
+            maxWords={maxWords}
             isLoading={isLoading}
             isTranscribing={recorder.isTranscribing}
             visualizerComponent={recorder.visualizerComponent}
@@ -126,14 +131,8 @@ export const RecordUserAudio = ({
 
         <InterviewQuizButton
           onClick={nextStep}
-          color={
-            recorder.isRecording && wordsCount < minWords
-              ? "error"
-              : wordsCount > minWords
-                ? "success"
-                : "primary"
-          }
-          disabled={isLoading || wordsCount < minWords || recorder.isTranscribing}
+          color={recorder.isRecording && !isInLimits ? "error" : isInLimits ? "success" : "primary"}
+          disabled={isLoading || !isInLimits || recorder.isTranscribing}
           title={i18n._("Next")}
         />
       </Stack>

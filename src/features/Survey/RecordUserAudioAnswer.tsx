@@ -10,6 +10,7 @@ import { getWordsCount } from "@/libs/words";
 export const RecordUserAudioAnswer = ({
   transcript,
   minWords,
+  maxWords,
   isLoading,
   isTranscribing,
   visualizerComponent,
@@ -21,6 +22,7 @@ export const RecordUserAudioAnswer = ({
 }: {
   transcript: string;
   minWords: number;
+  maxWords?: number;
   isLoading?: boolean;
   isTranscribing: boolean;
   visualizerComponent: ReactNode;
@@ -33,6 +35,8 @@ export const RecordUserAudioAnswer = ({
   const { i18n } = useLingui();
   const wordsCount = getWordsCount(transcript || "");
   const isNeedMoreRecording = !transcript || wordsCount < minWords;
+  const isNeedLessRecording = maxWords !== undefined && wordsCount > maxWords;
+  const isInLimits = !isNeedMoreRecording && !isNeedLessRecording;
 
   return (
     <Stack
@@ -67,12 +71,21 @@ export const RecordUserAudioAnswer = ({
         <Typography
           variant="caption"
           sx={{
-            color: wordsCount === 0 ? "inherit" : wordsCount < minWords ? "#FFA500" : "#4CAF50",
+            color: isNeedLessRecording
+              ? "#ff4740ff"
+              : wordsCount === 0
+                ? "inherit"
+                : wordsCount < minWords
+                  ? "#FFA500"
+                  : "#4CAF50",
           }}
         >
           {wordsCount > 0 && (
             <>
-              {wordsCount} / <b>{minWords}</b>
+              {wordsCount} /{" "}
+              <b>
+                {minWords} {maxWords ? `- ${maxWords} ` : ""}{" "}
+              </b>
             </>
           )}
         </Typography>
@@ -133,6 +146,7 @@ export const RecordUserAudioAnswer = ({
               sx={{
                 paddingRight: "15px",
               }}
+              disabled={isNeedLessRecording}
               onClick={() => {
                 if (isRecording) {
                   stopRecording();
