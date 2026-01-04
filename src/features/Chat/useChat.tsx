@@ -166,6 +166,8 @@ function useProvideChat(): ChatContextType {
         },
         await auth.getToken()
       );
+    } else {
+      console.log("Do not add points for dev");
     }
   };
 
