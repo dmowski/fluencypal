@@ -35,7 +35,19 @@ export const ChartSection = () => {
   };
 
   const topLevelMessages = useMemo(() => {
-    return chat.messages.filter((msg) => !msg.parentMessageId);
+    return chat.messages.filter((msg) => {
+      const isTopLevel = !msg.parentMessageId;
+      if (isTopLevel) {
+        return true;
+      }
+
+      const isParentChainIsBroken = !chat.messages.find((m) => m.id === msg.parentMessageId);
+      if (isParentChainIsBroken) {
+        return true;
+      }
+
+      return !msg.parentMessageId;
+    });
   }, [activeMessageId, chat.messages]);
 
   const repliesMessages = useMemo(() => {
@@ -45,6 +57,16 @@ export const ChartSection = () => {
 
     return chat.messages.filter((msg) => msg.parentMessageId === activeMessageId);
   }, [activeMessageId, chat.messages]);
+
+  const deleteMessage = async (messageId: string) => {
+    const isConfirmed = window.confirm(i18n._("Are you sure you want to delete this message?"));
+    if (!isConfirmed) return;
+    await chat.deleteMessage(messageId);
+
+    if (activeMessageId === messageId) {
+      setActiveMessageId("");
+    }
+  };
 
   return (
     <Stack
@@ -85,7 +107,7 @@ export const ChartSection = () => {
             isOwnMessage={activeMessage.senderId === userId}
             userName={game.getUserName(activeMessage.senderId)}
             onEdit={chat.editMessage}
-            onDelete={chat.deleteMessage}
+            onDelete={deleteMessage}
             onCommentClick={() => onCommentClick(activeMessage.id)}
             commentsCount={chat.commentsInfo[activeMessage.id] || 0}
           />
@@ -125,7 +147,7 @@ export const ChartSection = () => {
                 messages={repliesMessages}
                 currentUserId={userId}
                 onEdit={chat.editMessage}
-                onDelete={chat.deleteMessage}
+                onDelete={deleteMessage}
                 onCommentClick={onCommentClick}
               />
             )}
@@ -154,7 +176,7 @@ export const ChartSection = () => {
             messages={topLevelMessages}
             currentUserId={userId}
             onEdit={chat.editMessage}
-            onDelete={chat.deleteMessage}
+            onDelete={deleteMessage}
             onCommentClick={onCommentClick}
           />
           <Stack
