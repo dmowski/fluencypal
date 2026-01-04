@@ -103,7 +103,7 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick: () => void 
                 fontWeight: 600,
               }}
             >
-              {i18n._(`Hint: `)}
+              {i18n._(`Hint:`)}
             </Typography>
             <Typography
               variant="body1"
