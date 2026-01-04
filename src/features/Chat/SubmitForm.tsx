@@ -1,6 +1,5 @@
 "use client";
 import { IconButton, Stack, Typography, Button } from "@mui/material";
-import { useState } from "react";
 import { useLingui } from "@lingui/react";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import SendIcon from "@mui/icons-material/Send";
@@ -15,19 +14,7 @@ interface SubmitFormProps {
 }
 
 export function SubmitForm({ onSubmit, isLoading }: SubmitFormProps) {
-  const [messageContent, setMessageContent] = useState("");
-  const [isSending, setIsSending] = useState(false);
   const { i18n } = useLingui();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (messageContent.trim() && !isSending && !isLoading) {
-      setIsSending(true);
-      await onSubmit(messageContent);
-      setMessageContent("");
-      setIsSending(false);
-    }
-  };
 
   const recorder = useAudioRecorder({
     visualizerComponentWidth: "100%",
@@ -45,7 +32,6 @@ export function SubmitForm({ onSubmit, isLoading }: SubmitFormProps) {
       sx={{
         width: "100%",
         padding: "35px 0 15px 0",
-        //borderRadius: "10px",
         gap: "20px",
         alignItems: "flex-start",
       }}
