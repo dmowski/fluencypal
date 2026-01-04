@@ -1,4 +1,5 @@
 import {
+  GameAchievement,
   GameAvatars,
   GameLastVisit,
   GameQuestionType,
@@ -156,12 +157,12 @@ export const isUserIsGameWinner = async (userId: string): Promise<boolean> => {
 interface increaseUserPointsProps {
   userId: string;
   points: number;
-  questionType: GameQuestionType;
+  gameAchievement: GameAchievement;
 }
 export const increaseUserPoints = async ({
   userId,
   points,
-  questionType,
+  gameAchievement,
 }: increaseUserPointsProps) => {
   const db = getDB();
 
@@ -173,14 +174,12 @@ export const increaseUserPoints = async ({
   const newValue = oldValue + points;
 
   const usersAchievements = achievements[userId] || {};
-  const oldAchievementPoints = usersAchievements?.[questionType] || 0;
+  const oldAchievementPoints = usersAchievements?.[gameAchievement] || 0;
   const newAchievementPoints = oldAchievementPoints + points;
   const newUserAchievements = {
     ...usersAchievements,
-    [questionType]: newAchievementPoints,
+    [gameAchievement]: newAchievementPoints,
   };
-
-  console.log("newUserAchievements", newUserAchievements);
 
   await Promise.all([
     db

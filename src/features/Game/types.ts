@@ -67,10 +67,12 @@ export type GameAchievements = Partial<Record<GameAchievement, number>>;
 // [UserId]: achievement points
 export type GameUsersAchievements = Record<string, GameAchievements>;
 
-export interface SubmitBattleRequest {
-  battle: GameBattle;
+export interface IncreaseGamePointsRequest {
+  battle?: GameBattle;
+  chatMessage?: string;
+  chatUserId?: string;
 }
 
-export interface SubmitBattleResponse {
+export interface IncreaseGamePointsResponse {
   isDone: boolean;
 }

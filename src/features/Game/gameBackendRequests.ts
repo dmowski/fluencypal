@@ -1,8 +1,8 @@
 import {
   GameUsersPoints,
   GetGameQuestionsResponse,
-  SubmitBattleRequest,
-  SubmitBattleResponse,
+  IncreaseGamePointsRequest,
+  IncreaseGamePointsResponse,
   UsersStat,
 } from "@/features/Game/types";
 import { GetGameQuestionsRequest, SubmitAnswerRequest, SubmitAnswerResponse } from "./types";
@@ -59,8 +59,11 @@ export const submitAnswerRequest = async (request: SubmitAnswerRequest, authKey:
   return data;
 };
 
-export const submitBattleRequest = async (request: SubmitBattleRequest, authKey: string) => {
-  const response = await fetch(`/api/game/submitBattle`, {
+export const increaseGamePointsRequest = async (
+  request: IncreaseGamePointsRequest,
+  authKey: string
+) => {
+  const response = await fetch(`/api/game/increasePoints`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -68,7 +71,7 @@ export const submitBattleRequest = async (request: SubmitBattleRequest, authKey:
     },
     body: JSON.stringify(request),
   });
-  const data = (await response.json()) as SubmitBattleResponse;
+  const data = (await response.json()) as IncreaseGamePointsResponse;
   return data;
 };
 

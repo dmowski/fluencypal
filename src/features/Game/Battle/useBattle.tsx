@@ -10,7 +10,7 @@ import { useBattleQuestions } from "./useBattleQuestions";
 import { uniq } from "@/libs/uniq";
 import { useTextAi } from "@/features/Ai/useTextAi";
 import { useGame } from "../useGame";
-import { submitBattleRequest } from "../gameBackendRequests";
+import { increaseGamePointsRequest } from "../gameBackendRequests";
 
 interface SubmitResult {
   isWinnerExists: boolean;
@@ -223,7 +223,7 @@ Please provide your decision in the following JSON format:
       };
       await editBattle(battleId, updatedBattle);
 
-      await submitBattleRequest(
+      await increaseGamePointsRequest(
         {
           battle: updatedBattle,
         },

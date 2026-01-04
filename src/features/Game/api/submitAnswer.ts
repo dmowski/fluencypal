@@ -132,7 +132,7 @@ true|A group of people is seen singing a song.|Your speech is correct because it
     updatedStats = await increaseUserPoints({
       userId: userInfo.uid,
       points: pointsToAdd,
-      questionType: question.type,
+      gameAchievement: question.type,
     });
 
     setQuestion({
