@@ -51,7 +51,6 @@ const CorrectionContext = createContext<CorrectionsContextType | null>(null);
 function useProvideCorrections(): CorrectionsContextType {
   const auth = useAuth();
   const settings = useSettings();
-  const languageCode = settings.languageCode || "en";
   const correctionStatsDocRef = auth.uid ? db.collections.phraseCorrections(auth.uid) : null;
   const [correctionStats, loading] = useCollectionData(correctionStatsDocRef);
   const textAi = useTextAi();
@@ -67,7 +66,7 @@ function useProvideCorrections(): CorrectionsContextType {
         rate: number;
       }>({
         systemMessage: `You are a helpful assistant that helps to improve student's answers.
-Student gives you an answer to a question, your role is to analyze it from the grammar prospective and suggest improved version of the answer.
+Student gives you an answer to a question, your role is to analyze it from the grammar prospective and suggest improved version of the answer. This is transcription of user's voice answer, do not focus on punctuation mistakes.
 
 Return your result in JSON format.
 Structure of result: {

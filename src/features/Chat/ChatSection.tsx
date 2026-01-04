@@ -128,7 +128,9 @@ export const ChartSection = () => {
               </Stack>
             ) : (
               <MessageList
-                messages={repliesMessages}
+                messages={repliesMessages.sort((a, b) =>
+                  a.createdAtIso.localeCompare(b.createdAtIso)
+                )}
                 currentUserId={userId}
                 onEdit={chat.editMessage}
                 onDelete={deleteMessage}

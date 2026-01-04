@@ -1,15 +1,14 @@
 "use client";
-import { IconButton, Stack, Typography, Button } from "@mui/material";
+import { Stack, Typography, Button, IconButton } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import SendIcon from "@mui/icons-material/Send";
 import StopIcon from "@mui/icons-material/Stop";
 import MicIcon from "@mui/icons-material/Mic";
 import { CHAT_MESSAGE_POINTS } from "./data";
-import { useEffect, useRef, useState } from "react";
-import { RecordAiInfo } from "../Conversation/ConversationCanvas";
-import { useCorrections } from "../Corrections/useCorrections";
-import { useTranslate } from "../Translation/useTranslate";
+import { useState } from "react";
+import { ProcessUserInput } from "../Conversation/ProcessUserInput";
+import { Mic, Trash } from "lucide-react";
 
 interface SubmitFormProps {
   onSubmit: (message: string) => Promise<void>;
@@ -19,8 +18,6 @@ interface SubmitFormProps {
 
 export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFormProps) {
   const { i18n } = useLingui();
-
-  const [isNeedToShowCorrection, setIsNeedToShowCorrection] = useState<boolean>(false);
 
   const recorder = useAudioRecorder({
     visualizerComponentWidth: "100%",
@@ -34,63 +31,7 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
 
   const needMoreText = !!recorder?.transcription?.length && recorder.transcription.length < 4;
 
-  const transcription = recorder.transcription;
-
-  const messageAnalyzing = useRef("");
-
   const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] = useState(false);
-  const [description, setDescription] = useState<string | null>(null);
-  const [correctedMessage, setCorrectedMessage] = useState<string | null>(null);
-  const corrections = useCorrections();
-  const [isAnalyzingError, setIsAnalyzingError] = useState(false);
-
-  const analyzeUserInput = async (usersNewMessage: string) => {
-    messageAnalyzing.current = usersNewMessage;
-
-    setIsAnalyzingMessageWithAi(true);
-    setIsNeedToShowCorrection(false);
-    setDescription(null);
-    setCorrectedMessage(null);
-
-    try {
-      const userMessage = usersNewMessage;
-      const previousBotMessage = "";
-
-      const { sourceMessage, correctedMessage, description } = await corrections.analyzeUserMessage(
-        {
-          previousBotMessage,
-          message: userMessage,
-          conversationId: "chat",
-        }
-      );
-      if (usersNewMessage !== sourceMessage) {
-        return;
-      }
-
-      const isBad =
-        !!description &&
-        !!correctedMessage?.trim() &&
-        correctedMessage.toLowerCase().trim() !== sourceMessage.toLowerCase().trim();
-      setIsNeedToShowCorrection(isBad);
-
-      setCorrectedMessage(isBad ? correctedMessage || null : null);
-      setDescription(isBad ? description || null : null);
-      setIsAnalyzingMessageWithAi(false);
-    } catch (error) {
-      console.error("Error during analyzing message", error);
-      setIsAnalyzingError(true);
-      setIsAnalyzingMessageWithAi(false);
-      throw error;
-    }
-  };
-
-  useEffect(() => {
-    if (recorder.transcription) {
-      analyzeUserInput(recorder.transcription);
-    }
-  }, [recorder.transcription]);
-
-  const translator = useTranslate();
   const isAnalyzingResponse = isAnalyzingMessageWithAi || recorder.isTranscribing;
 
   if (isLoading) return <Typography>{i18n._("Loading...")}</Typography>;
@@ -114,19 +55,14 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
             justifyContent: "space-between",
           }}
         >
-          <RecordAiInfo
+          <ProcessUserInput
             isTranscribing={recorder.isTranscribing}
-            confirmedUserInput={transcription || ""}
-            isAnalyzingResponse={isAnalyzingResponse}
-            isNeedToShowCorrection={isNeedToShowCorrection}
-            translateWithModal={translator.translateWithModal}
-            description={description || ""}
-            correctedMessage={correctedMessage || ""}
-            isAnalyzingError={isAnalyzingError}
+            userMessage={recorder.transcription || ""}
+            setIsAnalyzing={setIsAnalyzingMessageWithAi}
+            setIsNeedCorrection={() => {}}
           />
         </Stack>
       )}
-      {translator.translateModal}
       <Stack
         sx={{
           width: "100%",
@@ -140,7 +76,7 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
             alignItems: "center",
           }}
         >
-          {(!transcription || recorder.isTranscribing || recorder.isRecording) && (
+          {(!recorder.transcription || recorder.isTranscribing || recorder.isRecording) && (
             <Button
               disabled={recorder.isTranscribing}
               variant={"contained"}
@@ -162,7 +98,7 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
             </Button>
           )}
 
-          {transcription && (
+          {recorder.transcription && (
             <Stack
               sx={{
                 flexDirection: "row",
@@ -174,11 +110,12 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
                 variant="outlined"
                 color="info"
                 disabled={needMoreText || recorder.isTranscribing || recorder.isRecording}
-                onClick={() => {
+                onClick={async () => {
+                  recorder.removeTranscript();
                   recorder.startRecording();
                 }}
                 fullWidth
-                endIcon={<SendIcon />}
+                endIcon={<Mic />}
               >
                 {i18n._("Re-record")}
               </Button>
@@ -201,7 +138,7 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
               width: "100%",
               height: "38px",
               alignItems: "center",
-              justifyContent: "center",
+              justifyContent: "flex-end",
               flexDirection: "row",
             }}
           >
@@ -214,7 +151,7 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
               {recorder.visualizerComponent}
             </Stack>
 
-            {transcription && needMoreText && (
+            {recorder.transcription && needMoreText && (
               <>
                 <Typography
                   sx={{
@@ -230,7 +167,7 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
               </>
             )}
 
-            {!recorder.isRecording && !transcription && (
+            {!recorder.isRecording && !recorder.transcription && (
               <Typography
                 sx={{
                   width: "100%",
@@ -244,6 +181,18 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
                   points: CHAT_MESSAGE_POINTS,
                 })}
               </Typography>
+            )}
+
+            {recorder.transcription && (
+              <IconButton
+                size="small"
+                onClick={() => {
+                  recorder.removeTranscript();
+                  recorder.cancelRecording();
+                }}
+              >
+                <Trash size={"18px"} color="rgba(200, 200, 200, 1)" />
+              </IconButton>
             )}
           </Stack>
         </Stack>

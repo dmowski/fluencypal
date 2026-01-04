@@ -22,18 +22,13 @@ import {
   Check,
   CircleEllipsis,
   Keyboard,
-  Languages,
   Lightbulb,
   Loader,
   LogOut,
   Mic,
-  Phone,
   Send,
-  ShieldAlert,
   Trash2,
   Trophy,
-  Volume2,
-  VolumeX,
 } from "lucide-react";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
@@ -42,8 +37,6 @@ import { AliasGamePanel } from "./AliasGamePanel";
 import { ChatMessage, MessagesOrderMap } from "@/common/conversation";
 import { GuessGameStat } from "./types";
 import dayjs from "dayjs";
-import { StringDiff } from "react-string-diff";
-import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useLingui } from "@lingui/react";
 import { useSound } from "../Audio/useSound";
 import { GoalPlan } from "../Plan/types";
@@ -56,6 +49,8 @@ import { Messages } from "./Messages";
 import { AiVoice } from "@/common/ai";
 import { CameraCanvas } from "./CallMode/CameraCanvas";
 import { ConversationMode } from "@/common/user";
+import { ProcessUserInput } from "./ProcessUserInput";
+import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -178,99 +173,22 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
   const bottomSectionHeight = `${height + 40}px`;
 
-  const [correctedMessage, setCorrectedMessage] = useState<string | null>(null);
-  const [description, setDescription] = useState<string | null>(null);
-
   const messageAnalyzing = useRef("");
   const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] = useState(false);
   const [isNeedToShowCorrection, setIsNeedToShowCorrection] = useState(false);
-  const [isAnalyzingError, setIsAnalyzingError] = useState(false);
   const [internalUserInput, setInternalUserInput] = useState<string>("");
   const [isConfirmedUserKeyboardInput, setIsConfirmedUserKeyboardInput] = useState(false);
 
   const confirmedUserInput =
     transcriptMessage || (isConfirmedUserKeyboardInput ? internalUserInput : "");
-
-  const [newWords, setNewWords] = useState<string[]>([]);
-
   const isAnalyzingResponse = isAnalyzingMessageWithAi || isTranscribing;
-
-  useEffect(() => {
-    if (isTranscribing) {
-      setDescription(null);
-      setNewWords([]);
-      setCorrectedMessage(null);
-    }
-  }, [isTranscribing]);
-
-  const analyzeUserInput = async (usersNewMessage: string) => {
-    messageAnalyzing.current = usersNewMessage;
-
-    setIsAnalyzingMessageWithAi(true);
-    setIsNeedToShowCorrection(false);
-    setDescription(null);
-    setCorrectedMessage(null);
-    setNewWords([]);
-
-    try {
-      const userMessage = usersNewMessage;
-      const previousBotMessage = conversation.length
-        ? conversation[conversation.length - 1].text
-        : "";
-
-      const { sourceMessage, correctedMessage, description, newWords } = await analyzeUserMessage({
-        previousBotMessage,
-        message: userMessage,
-        conversationId,
-      });
-      setNewWords(newWords || []);
-      if (usersNewMessage !== sourceMessage) {
-        return;
-      }
-
-      const isBad =
-        !!description &&
-        !!correctedMessage?.trim() &&
-        correctedMessage.toLowerCase().trim() !== sourceMessage.toLowerCase().trim();
-      setIsNeedToShowCorrection(isBad);
-
-      setCorrectedMessage(isBad ? correctedMessage || null : null);
-      setDescription(isBad ? description || null : null);
-      setIsAnalyzingMessageWithAi(false);
-
-      if (!isMuted) {
-        if (!isBad) {
-          sound.play("win3", 0.2);
-        }
-      }
-    } catch (error) {
-      console.error("Error during analyzing message", error);
-      setIsAnalyzingError(true);
-      setIsAnalyzingMessageWithAi(false);
-      throw error;
-    }
-  };
-
-  const analyzeMessageAudioTranscript = async () => {
-    if (transcriptMessage === messageAnalyzing.current || !transcriptMessage) {
-      return;
-    }
-    await analyzeUserInput(transcriptMessage);
-  };
 
   const analyzeUserKeyboardInput = async () => {
     if (internalUserInput === messageAnalyzing.current || !internalUserInput) {
       return;
     }
     setIsConfirmedUserKeyboardInput(true);
-    await analyzeUserInput(internalUserInput);
   };
-
-  useEffect(() => {
-    if (transcriptMessage) {
-      analyzeMessageAudioTranscript();
-    }
-  }, [transcriptMessage]);
 
   useEffect(() => {
     const isWindow = typeof window !== "undefined";
@@ -647,7 +565,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
               gap: "10px",
             }}
           >
-            {(recordingError || isAnalyzingError) && (
+            {recordingError && (
               <Stack>
                 <Alert
                   severity="error"
@@ -666,15 +584,11 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             )}
 
             {(confirmedUserInput || isTranscribing || isAnalyzingResponse) && (
-              <RecordAiInfo
+              <ProcessUserInput
                 isTranscribing={isTranscribing}
-                confirmedUserInput={confirmedUserInput}
-                isAnalyzingResponse={isAnalyzingResponse}
-                isNeedToShowCorrection={isNeedToShowCorrection}
-                translateWithModal={translator.translateWithModal}
-                description={description || ""}
-                correctedMessage={correctedMessage || ""}
-                isAnalyzingError={isAnalyzingError}
+                userMessage={confirmedUserInput}
+                setIsAnalyzing={setIsAnalyzingMessageWithAi}
+                setIsNeedCorrection={setIsNeedToShowCorrection}
               />
             )}
 
@@ -1200,257 +1114,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
               </Stack>
             )}
           </Stack>
-        </Stack>
-      </Stack>
-    </Stack>
-  );
-};
-
-export const RecordAiInfo = ({
-  isTranscribing,
-  confirmedUserInput,
-  isAnalyzingResponse,
-  isNeedToShowCorrection,
-  correctedMessage,
-  translateWithModal,
-  description,
-  isAnalyzingError,
-}: {
-  isTranscribing: boolean;
-  confirmedUserInput: string;
-  isAnalyzingResponse: boolean;
-  isNeedToShowCorrection: boolean;
-  correctedMessage: string;
-  translateWithModal: (text: string, element: HTMLElement) => Promise<void>;
-  description: string;
-  isAnalyzingError: boolean;
-}) => {
-  const { i18n } = useLingui();
-  return (
-    <Stack
-      sx={{
-        flexDirection: "row",
-        justifyContent: "space-between",
-        width: "100%",
-      }}
-    >
-      <Stack
-        sx={{
-          alignItems: "flex-start",
-          gap: "15px",
-        }}
-      >
-        <Stack
-          sx={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "15px",
-          }}
-        >
-          <Stack
-            sx={{
-              height: "40px",
-              width: "40px",
-              borderRadius: "50%",
-              alignItems: "center",
-              justifyContent: "center",
-              background: isAnalyzingResponse
-                ? "rgba(255, 255, 255, 0.06)"
-                : isNeedToShowCorrection
-                  ? "linear-gradient(45deg, #2b3cadff 0%, #4e5ec3ff 100%)"
-                  : "linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)",
-            }}
-          >
-            {isNeedToShowCorrection && !isAnalyzingResponse ? (
-              <ShieldAlert color="#fff" size={"21px"} strokeWidth={"2.3px"} />
-            ) : (
-              <>
-                {isAnalyzingResponse ? (
-                  <Loader color="#fff" size={"21px"} strokeWidth={"4px"} />
-                ) : (
-                  <Check color="#fff" size={"21px"} strokeWidth={"4px"} />
-                )}
-              </>
-            )}
-          </Stack>
-
-          {isNeedToShowCorrection && !isAnalyzingResponse ? (
-            <Typography variant="h6">{i18n._("Almost correct")}</Typography>
-          ) : (
-            <>
-              {isAnalyzingResponse ? (
-                <Typography
-                  className="loading-shimmer"
-                  sx={{
-                    color: "#fff",
-                    display: "inline",
-                  }}
-                  variant="h6"
-                >
-                  {i18n._("Analyzing...")}
-                </Typography>
-              ) : (
-                <Typography variant="h6">{i18n._("Great!")}</Typography>
-              )}
-            </>
-          )}
-        </Stack>
-        {isNeedToShowCorrection && (
-          <Stack>{description && <Typography>{description}</Typography>}</Stack>
-        )}
-        <Stack
-          sx={{
-            gap: "10px",
-            paddingBottom: "10px",
-          }}
-        >
-          <Stack>
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-                fontWeight: 350,
-              }}
-            >
-              {i18n._("Your Message")}
-            </Typography>
-            <Stack
-              sx={{
-                width: "100%",
-                gap: "12px",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                variant="body2"
-                component={"div"}
-                className={isTranscribing ? "loading-shimmer" : ""}
-                sx={{
-                  fontWeight: 400,
-                  fontSize: "1.1rem",
-                  paddingBottom: "3px",
-                  opacity: isTranscribing ? 0.7 : 1,
-                }}
-              >
-                <StringDiff
-                  oldValue={isTranscribing ? i18n._("Transcribing...") : confirmedUserInput || ""}
-                  newValue={isTranscribing ? i18n._("Transcribing...") : confirmedUserInput || ""}
-                />
-              </Typography>
-              <Stack
-                sx={{
-                  opacity:
-                    isTranscribing || isAnalyzingResponse ? 0 : isNeedToShowCorrection ? 0 : 1,
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "2px",
-                }}
-              >
-                {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
-                  <>
-                    <AudioPlayIcon
-                      text={correctedMessage}
-                      instructions="Calm and clear"
-                      voice={"coral"}
-                    />
-                    <IconButton
-                      onClick={(e) => translateWithModal(correctedMessage, e.currentTarget)}
-                    >
-                      <Languages size={"16px"} style={{ opacity: 0.8 }} />
-                    </IconButton>
-                  </>
-                )}
-              </Stack>
-            </Stack>
-          </Stack>
-
-          {(isNeedToShowCorrection || isAnalyzingResponse) && (
-            <Stack>
-              <Typography
-                variant="caption"
-                sx={{
-                  opacity: 0.7,
-                  fontWeight: 350,
-                }}
-              >
-                {i18n._("Corrected")}
-              </Typography>
-
-              <Stack
-                sx={{
-                  width: "100%",
-                  gap: "12px",
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <Typography
-                  variant="body2"
-                  component={"div"}
-                  className={isTranscribing || isAnalyzingResponse ? "loading-shimmer" : ""}
-                  sx={{
-                    fontWeight: 400,
-                    fontSize: "1.1rem",
-                    paddingBottom: "3px",
-                    opacity: isTranscribing || isAnalyzingResponse ? 0.7 : 1,
-                  }}
-                >
-                  <StringDiff
-                    styles={{
-                      added: {
-                        color: "#81e381",
-                        fontWeight: 600,
-                      },
-                      removed: {
-                        display: "none",
-                        textDecoration: "line-through",
-                        opacity: 0.4,
-                      },
-                      default: {},
-                    }}
-                    oldValue={
-                      isTranscribing
-                        ? i18n._("Transcribing...")
-                        : isAnalyzingResponse
-                          ? i18n._("Analyzing...")
-                          : confirmedUserInput || ""
-                    }
-                    newValue={
-                      isTranscribing
-                        ? i18n._("Transcribing...")
-                        : isAnalyzingResponse
-                          ? i18n._("Analyzing...")
-                          : correctedMessage || confirmedUserInput || ""
-                    }
-                  />
-                </Typography>
-
-                <Stack
-                  sx={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: "2px",
-                  }}
-                >
-                  {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
-                    <>
-                      <AudioPlayIcon
-                        text={correctedMessage}
-                        instructions="Calm and clear"
-                        voice={"coral"}
-                      />
-                      <IconButton
-                        onClick={(e) => translateWithModal(correctedMessage, e.currentTarget)}
-                      >
-                        <Languages size={"16px"} style={{ opacity: 0.8 }} />
-                      </IconButton>
-                    </>
-                  )}
-                </Stack>
-              </Stack>
-            </Stack>
-          )}
         </Stack>
       </Stack>
     </Stack>
