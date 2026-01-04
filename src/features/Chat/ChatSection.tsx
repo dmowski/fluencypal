@@ -49,9 +49,7 @@ export const ChartSection = () => {
   return (
     <Stack
       sx={{
-        /// backgroundColor: activeMessageId ? "rgba(255, 255, 255, 0.01)" : "transparent",
         borderRadius: "12px",
-        //padding: activeMessageId ? "10px 14px" : "0",
       }}
     >
       {activeMessage ? (
