@@ -29,7 +29,7 @@ export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
 
     const isDeveloper = auth.userInfo?.email?.includes("dmowski") || false;
     if (isDeveloper) {
-      // return;
+      return;
     }
 
     initGTag();

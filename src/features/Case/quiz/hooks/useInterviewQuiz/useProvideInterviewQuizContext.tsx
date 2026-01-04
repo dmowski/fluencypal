@@ -256,11 +256,7 @@ export function useProvideInterviewQuizContext({
   const currentStepType = currentStep?.type || null;
 
   useEffect(() => {
-    if (!analytics.isInitialized) {
-      return;
-    }
-
-    if (isConfirmedGTag) {
+    if (!analytics.isInitialized || isConfirmedGTag) {
       return;
     }
     const isDev = auth.userInfo?.email?.includes("dmowski") || false;
