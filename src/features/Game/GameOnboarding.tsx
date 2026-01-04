@@ -7,6 +7,7 @@ import { GameMyAvatar } from "./GameMyAvatar";
 import { GameMyUsername } from "./GameMyUsername";
 import { useLingui } from "@lingui/react";
 import { ArrowRight, LucideSwords } from "lucide-react";
+import { CHAT_MESSAGE_POINTS } from "../Chat/data";
 
 export const GameOnboarding = () => {
   const settings = useSettings();
@@ -48,7 +49,7 @@ export const GameOnboarding = () => {
           }}
         >
           <Typography align="center" variant="h6">
-            {i18n._(`Learn and Play`)}
+            {i18n._(`Get a full access for free!`)}
           </Typography>
           <Typography
             variant="body2"
@@ -58,6 +59,74 @@ export const GameOnboarding = () => {
             align="center"
           >
             {i18n._(`Describe images, craft sentences, and translate words`)}
+          </Typography>
+
+          <Typography
+            variant="body2"
+            sx={{
+              opacity: 0.9,
+            }}
+            align="center"
+          >
+            {i18n._(`Rank in top 5 to get full access to all features!`)}
+          </Typography>
+        </Stack>
+      </Stack>
+      <Button
+        variant="contained"
+        onClick={onNext}
+        color="info"
+        size="large"
+        sx={{
+          minWidth: "200px",
+        }}
+        endIcon={<ArrowRight />}
+      >
+        {i18n._(`Next`)}
+      </Button>
+    </>,
+
+    <>
+      <span></span>
+      <Stack
+        sx={{
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          gap: "10px",
+        }}
+      >
+        <img
+          src={"/avatar/talk3.webp"}
+          onClick={() => setStep(0)}
+          alt="Map"
+          style={{ width: "150px", height: "150px" }}
+        />
+        <Stack
+          sx={{
+            alignItems: "center",
+            minHeight: "120px",
+          }}
+        >
+          <Typography align="center" variant="h6">
+            {i18n._(`Community Chat`)}
+          </Typography>
+
+          <Typography
+            variant="body2"
+            align="center"
+            sx={{
+              opacity: 0.9,
+              maxWidth: "400px",
+            }}
+          >
+            {i18n._(
+              `Record a message in Community Chat and get {points} points in the leaderboard`,
+              {
+                points: CHAT_MESSAGE_POINTS,
+              }
+            )}
+            .
           </Typography>
         </Stack>
       </Stack>
