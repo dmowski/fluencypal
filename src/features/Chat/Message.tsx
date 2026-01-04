@@ -12,6 +12,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAuth } from "../Auth/useAuth";
 import { useGame } from "../Game/useGame";
 import { UserProfileModal } from "../Game/UserProfileModal";
+import { DynamicIcon, IconName } from "lucide-react/dynamic";
 
 interface MessageProps {
   message: UserChatMessage;
@@ -67,6 +68,7 @@ export function Message({
       sx={{
         padding: "15px",
         backgroundColor: "rgba(255, 255, 255, 0.01)",
+        position: "relative",
       }}
     >
       {isShowModal && gameStat && (
@@ -78,6 +80,8 @@ export function Message({
           justifyContent: "space-between",
           alignItems: "flex-start",
           width: "100%",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <Stack
@@ -224,40 +228,24 @@ export function Message({
                 sx={{
                   flexDirection: "row",
                   alignItems: "center",
-                  gap: "10px",
+                  gap: "8px",
                 }}
               >
-                <Stack
-                  sx={{
-                    flexDirection: "row",
-                    gap: "2px",
-                    alignItems: "center",
-                  }}
-                >
-                  <IconButton size="small">
-                    {isLikedByMe ? (
-                      <FavoriteIcon
-                        color="error"
-                        onClick={async () => await chat.toggleLike(message.id, "like")}
-                      />
-                    ) : (
-                      <FavoriteBorderIcon
-                        onClick={async () => await chat.toggleLike(message.id, "like")}
-                        sx={{
-                          opacity: 0.6,
-                        }}
-                      />
-                    )}
-                  </IconButton>
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      opacity: chat.messagesLikes[message.id]?.length ? 0.7 : 0.5,
-                    }}
-                  >
-                    {chat.messagesLikes[message.id]?.length || 0}
-                  </Typography>
-                </Stack>
+                <MessageButton
+                  isActive={isLikedByMe}
+                  onClick={() => chat.toggleLike(message.id, "like")}
+                  label={i18n._("Like")}
+                  count={chat.messagesLikes[message.id]?.length || 0}
+                  iconName={"heart"}
+                />
+
+                <MessageButton
+                  isActive={false}
+                  onClick={() => chat.toggleLike(message.id, "like")}
+                  label={i18n._("Like")}
+                  count={message.replies?.length || 0}
+                  iconName={"message-circle"}
+                />
               </Stack>
             </>
           )}
@@ -266,3 +254,63 @@ export function Message({
     </Stack>
   );
 }
+
+export const MessageButton = ({
+  isActive,
+  onClick,
+  label,
+  count,
+  iconName,
+}: {
+  isActive: boolean;
+  onClick: () => void;
+  label: string;
+  count: number;
+  iconName: IconName;
+}) => {
+  const color = isActive ? "#ff0034" : "inherit";
+  return (
+    <Stack
+      onClick={onClick}
+      aria-label={label}
+      sx={{
+        flexDirection: "row",
+        gap: "6px",
+        alignItems: "center",
+        border: "none",
+        background: "rgba(255, 255, 255, 0)",
+        color: "inherit",
+        cursor: "pointer",
+        padding: "6px 10px 6px 12px",
+        position: "relative",
+        left: "-12px",
+        borderRadius: "28px",
+        ":hover": {
+          backgroundColor: "rgba(255, 255, 255, 0.1)",
+        },
+      }}
+      component={"button"}
+    >
+      <DynamicIcon
+        name={iconName}
+        size={"20px"}
+        style={{
+          opacity: isActive ? 1 : 0.7,
+          color: color,
+          fill: isActive ? color : "none",
+        }}
+      />
+      <Typography
+        variant="body2"
+        sx={{
+          opacity: isActive ? 1 : 0.7,
+          color: color,
+          fontWeight: 400,
+          fontVariantNumeric: "tabular-nums",
+        }}
+      >
+        {count || 0}
+      </Typography>
+    </Stack>
+  );
+};
