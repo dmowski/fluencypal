@@ -73,8 +73,11 @@ export const ChartSection = () => {
               gap: "10px",
             }}
           >
-            <Button startIcon={<ChevronLeft />} onClick={() => setActiveMessageId("")}>
-              {i18n._("Back to all messages")}
+            <Button
+              startIcon={<ChevronLeft />}
+              onClick={() => setActiveMessageId(activeMessage.parentMessageId || "")}
+            >
+              {i18n._("Back")}
             </Button>
           </Stack>
           <Message
@@ -86,7 +89,7 @@ export const ChartSection = () => {
             onEdit={chat.editMessage}
             onDelete={chat.deleteMessage}
             onCommentClick={() => onCommentClick(activeMessage.id)}
-            commentsCount={22}
+            commentsCount={chat.commentsInfo[activeMessage.id] || 0}
           />
           <Stack
             sx={{

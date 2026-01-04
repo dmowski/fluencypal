@@ -16,6 +16,8 @@ interface ChatContextType {
   messagesLikes: Record<string, ChatLike[]>;
   toggleLike: (messageId: string, type: ChatLikeType) => Promise<void>;
 
+  commentsInfo: Record<string, number>;
+
   addMessage: ({ messageContent, activeMessageId }: AddMessageProps) => Promise<void>;
   deleteMessage: (messageId: string) => Promise<void>;
   editMessage: (messageId: string, newContent: string) => Promise<void>;
@@ -37,6 +39,19 @@ function useProvideChat(): ChatContextType {
   const [messages, loading] = useCollectionData(messagesRef);
 
   const [unreadMessagesCount, setUnreadMessagesCount] = useState(0);
+
+  const commentsInfo: Record<string, number> = useMemo(() => {
+    const info: Record<string, number> = {};
+    messages?.forEach((msg) => {
+      if (msg.parentMessageId) {
+        if (!info[msg.parentMessageId]) {
+          info[msg.parentMessageId] = 0;
+        }
+        info[msg.parentMessageId] += 1;
+      }
+    });
+    return info;
+  }, [messages]);
 
   const likesRef = db.collections.usersChatLikes();
   const [likes] = useCollectionData(likesRef);
@@ -142,6 +157,7 @@ function useProvideChat(): ChatContextType {
 
     unreadMessagesCount,
     markAsRead,
+    commentsInfo,
 
     toggleLike,
 

@@ -4,6 +4,7 @@ import { useGame } from "../Game/useGame";
 import { UserChatMessage } from "./type";
 import { Message } from "./Message";
 import { useLingui } from "@lingui/react";
+import { useChat } from "./useChat";
 
 interface MessageListProps {
   messages: UserChatMessage[];
@@ -16,6 +17,7 @@ interface MessageListProps {
 export function MessageList(props: MessageListProps) {
   const game = useGame();
   const { i18n } = useLingui();
+  const chat = useChat();
 
   return (
     <Stack
@@ -45,7 +47,7 @@ export function MessageList(props: MessageListProps) {
                 onEdit={props.onEdit}
                 onDelete={props.onDelete}
                 onCommentClick={() => props.onCommentClick(message.id)}
-                commentsCount={2}
+                commentsCount={chat.commentsInfo[message.id] || 0}
               />
             </Stack>
           ))}
