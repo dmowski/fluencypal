@@ -602,7 +602,7 @@ msgstr "Biaya tutor AI"
 msgid "AI Tutor Updates"
 msgstr "Pembaruan Tutor AI"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:239
+#: src/features/Conversation/CallMode/CallButtons.tsx:232
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "Suara AI"
@@ -1383,7 +1383,7 @@ msgstr ""
 "Struktur yang jelas untuk desain sistem. Saya akhirnya menjelaskan "
 "trade-off tanpa berbelit-belit."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:365
+#: src/features/Conversation/CallMode/CallButtons.tsx:358
 #: src/features/Game/Battle/BattleActionModal.tsx:262
 #: src/features/Game/Battle/BattleCard.tsx:285
 #: src/features/Game/UserProfileModal.tsx:131
@@ -1615,16 +1615,16 @@ msgstr "Tes Kontrak"
 msgid "Conversation"
 msgstr "Percakapan"
 
+#: src/features/Landing/LandingPage.tsx:255
+#. js-lingui-explicit-id
+msgid "Conversation Practice"
+msgstr "Latihan Percakapan"
+
 #: src/features/Landing/Price/FeatureList.tsx:40
 #: src/features/Landing/Price/PricePage.tsx:351
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Praktik percakapan"
-
-#: src/features/Landing/LandingPage.tsx:255
-#. js-lingui-explicit-id
-msgid "Conversation Practice"
-msgstr "Latihan Percakapan"
 
 #: src/features/SEO/metadata.ts:267
 #. js-lingui-explicit-id
@@ -2382,7 +2382,7 @@ msgstr ""
 "\n"
 "Email"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:248
+#: src/features/Conversation/CallMode/CallButtons.tsx:241
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your plan to access "
@@ -5783,7 +5783,9 @@ msgstr "Memuat."
 msgid "Loading.."
 msgstr "Memuat.."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:292
+#: src/features/Chat/SubmitForm.tsx:43
+#: src/features/Chat/SubmitForm.tsx:75
+#: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:337
 #: src/features/Conversation/ConversationCanvas.tsx:1298
 #: src/features/Conversation/ConversationPage.tsx:104
@@ -6077,7 +6079,7 @@ msgstr ""
 msgid "Movies, books, or music"
 msgstr "Film, buku, atau musik"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:171
+#: src/features/Conversation/CallMode/CallButtons.tsx:164
 #. js-lingui-explicit-id
 msgid "Mute microphone"
 msgstr "Bisukan mikrofon"
@@ -6272,7 +6274,7 @@ msgstr "Tidak memerlukan kartu kredit"
 msgid "No interviews found"
 msgstr "Tidak ada wawancara ditemukan"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:293
+#: src/features/Conversation/CallMode/CallButtons.tsx:286
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "Belum ada pesan yang direkam."
@@ -6787,6 +6789,11 @@ msgstr "Silakan konfirmasi kartu kredit Anda untuk mengakses semua fitur."
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
 msgstr "Silakan masukkan alamat email yang valid"
+
+#: src/features/Chat/SubmitForm.tsx:163
+#. js-lingui-explicit-id
+msgid "Please record a longer message (at least a few words)."
+msgstr "Silakan rekam pesan yang lebih panjang (setidaknya beberapa kata)."
 
 #: src/features/Conversation/ConversationError.tsx:37
 #. js-lingui-explicit-id
@@ -7312,17 +7319,17 @@ msgstr "Profil"
 msgid "Progress Calendar"
 msgstr "Kalender Kemajuan"
 
+#: src/features/Landing/LandingPage.tsx:403
+#. js-lingui-explicit-id
+msgid "Progress Tracking"
+msgstr "Pelacakan Kemajuan"
+
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
 #: src/features/Landing/Price/PricePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Pelacakan kemajuan"
-
-#: src/features/Landing/LandingPage.tsx:403
-#. js-lingui-explicit-id
-msgid "Progress Tracking"
-msgstr "Pelacakan Kemajuan"
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -7582,7 +7589,7 @@ msgstr "Peran Peran Kehidupan Nyata untuk Latihan Bahasa Inggris Tingkat Lanjut"
 msgid "Real-time conversations with AI using voice"
 msgstr "Percakapan waktu nyata dengan AI menggunakan suara"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:239
+#: src/features/Conversation/CallMode/CallButtons.tsx:232
 #. js-lingui-explicit-id
 msgid "Real-time microphone"
 msgstr "Mikrofon waktu-nyata"
@@ -7643,6 +7650,11 @@ msgstr ""
 "Rekam cerita selama 2-3 menit menggunakan <0>{learningLanguageName}</0> "
 "atau <1>{nativeLanguageName}</1>"
 
+#: src/features/Chat/SubmitForm.tsx:164
+#. js-lingui-explicit-id
+msgid "Record a message and get {points} points"
+msgstr "Rekam pesan dan dapatkan {points} poin"
+
 #: src/features/Case/data/frontend-junior/quizData.ts:59
 #: src/features/Case/data/frontend-junior/quizData.ts:77
 #: src/features/Case/data/frontend-junior/quizData.ts:98
@@ -7660,7 +7672,8 @@ msgstr "Rekam Jawaban"
 msgid "Record answer"
 msgstr "Rekam jawaban"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:325
+#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Conversation/CallMode/CallButtons.tsx:318
 #: src/features/Conversation/ConversationCanvas.tsx:1107
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -8000,7 +8013,8 @@ msgstr "Kirim email lagi"
 msgid "Send me sign-in link"
 msgstr "Kirimkan saya tautan masuk"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:352
+#: src/features/Chat/SubmitForm.tsx:130
+#: src/features/Conversation/CallMode/CallButtons.tsx:345
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Kirim Pesan"
@@ -8597,7 +8611,8 @@ msgstr ""
 "petunjuk untuk berlatih menyampaikan jawaban yang singkat, persuasif yang "
 "membantu Anda menonjol dalam setiap wawancara kerja."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:325
+#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Conversation/CallMode/CallButtons.tsx:318
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Berhenti"
@@ -9204,6 +9219,11 @@ msgstr "Lacak Kemajuan Kefasihan Anda"
 msgid "Transcribing..."
 msgstr "Mentranskripsi..."
 
+#: src/features/Chat/SubmitForm.tsx:58
+#. js-lingui-explicit-id
+msgid "Transcription:"
+msgstr "Transkripsi:"
+
 #: src/features/Game/UserProfileModal.tsx:86
 #. js-lingui-explicit-id
 msgid "Translate Guru"
@@ -9245,40 +9265,35 @@ msgstr "Coba gratis"
 msgid "Turkish Learning Plan"
 msgstr "Rencana Pembelajaran Bahasa Turki"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:189
+#: src/features/Conversation/CallMode/CallButtons.tsx:182
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "Matikan subtitle"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:197
+#: src/features/Conversation/CallMode/CallButtons.tsx:190
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "Matikan video"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:180
+#: src/features/Conversation/CallMode/CallButtons.tsx:173
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "Matikan volume"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:189
+#: src/features/Conversation/CallMode/CallButtons.tsx:182
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "Aktifkan subtitle"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:197
+#: src/features/Conversation/CallMode/CallButtons.tsx:190
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "Nyalakan video"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:180
+#: src/features/Conversation/CallMode/CallButtons.tsx:173
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "Nyalakan volume"
-
-#: src/features/Chat/SubmitForm.tsx:35
-#. js-lingui-explicit-id
-msgid "Type a message..."
-msgstr "Ketik pesan..."
 
 #: src/features/Game/Battle/BattleActionModal.tsx:333
 #. js-lingui-explicit-id
@@ -9338,7 +9353,7 @@ msgstr "Ulasan jawaban tanpa batas"
 msgid "Unlock full interview preparation"
 msgstr "Buka persiapan wawancara lengkap"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:171
+#: src/features/Conversation/CallMode/CallButtons.tsx:164
 #. js-lingui-explicit-id
 msgid "Unmute microphone"
 msgstr "Nyalakan mikrofon"
@@ -9405,7 +9420,7 @@ msgstr "Nama pengguna harus setidaknya 3 karakter."
 msgid "Username:"
 msgstr "Nama Pengguna:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:251
+#: src/features/Conversation/CallMode/CallButtons.tsx:244
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your plan "
@@ -10433,7 +10448,7 @@ msgstr "Pesan Anda"
 msgid "Your message..."
 msgstr "Pesan Anda..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:282
+#: src/features/Conversation/CallMode/CallButtons.tsx:275
 #. js-lingui-explicit-id
 msgid "Your Message:"
 msgstr "Pesan Anda:"
@@ -10508,6 +10523,11 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
+
+#: src/features/Chat/SubmitForm.tsx:35
+#. js-lingui-explicit-id
+#~ msgid "Type a message..."
+#~ msgstr "Ketik pesan..."
 
 #: src/features/Goal/GoalQuestions.tsx:311
 #. js-lingui-explicit-id

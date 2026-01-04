@@ -593,7 +593,7 @@ msgstr "AI vejleder omkostninger"
 msgid "AI Tutor Updates"
 msgstr "AI Tutor Opdateringer"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:239
+#: src/features/Conversation/CallMode/CallButtons.tsx:232
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AI stemme"
@@ -1371,7 +1371,7 @@ msgstr ""
 "Klar struktur for systemdesign. Jeg forklarede endelig kompromiser uden at "
 "rode rundt."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:365
+#: src/features/Conversation/CallMode/CallButtons.tsx:358
 #: src/features/Game/Battle/BattleActionModal.tsx:262
 #: src/features/Game/Battle/BattleCard.tsx:285
 #: src/features/Game/UserProfileModal.tsx:131
@@ -1603,16 +1603,16 @@ msgstr "Kontrakttest"
 msgid "Conversation"
 msgstr "Samtale"
 
+#: src/features/Landing/LandingPage.tsx:255
+#. js-lingui-explicit-id
+msgid "Conversation Practice"
+msgstr "Samtaleøvelse"
+
 #: src/features/Landing/Price/FeatureList.tsx:40
 #: src/features/Landing/Price/PricePage.tsx:351
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Samtalepraksis"
-
-#: src/features/Landing/LandingPage.tsx:255
-#. js-lingui-explicit-id
-msgid "Conversation Practice"
-msgstr "Samtaleøvelse"
 
 #: src/features/SEO/metadata.ts:267
 #. js-lingui-explicit-id
@@ -2353,7 +2353,7 @@ msgstr ""
 msgid "Email"
 msgstr "E-mail"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:248
+#: src/features/Conversation/CallMode/CallButtons.tsx:241
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your plan to access "
@@ -5673,7 +5673,9 @@ msgstr "Indlæser."
 msgid "Loading.."
 msgstr "Indlæser.."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:292
+#: src/features/Chat/SubmitForm.tsx:43
+#: src/features/Chat/SubmitForm.tsx:75
+#: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:337
 #: src/features/Conversation/ConversationCanvas.tsx:1298
 #: src/features/Conversation/ConversationPage.tsx:104
@@ -5968,7 +5970,7 @@ msgstr ""
 msgid "Movies, books, or music"
 msgstr "Film, bøger eller musik"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:171
+#: src/features/Conversation/CallMode/CallButtons.tsx:164
 #. js-lingui-explicit-id
 msgid "Mute microphone"
 msgstr "Slå mikrofon fra"
@@ -6160,7 +6162,7 @@ msgstr "Ingen kreditkort kræves"
 msgid "No interviews found"
 msgstr "Ingen interviews fundet"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:293
+#: src/features/Conversation/CallMode/CallButtons.tsx:286
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "Ingen besked er optaget endnu."
@@ -6667,6 +6669,11 @@ msgstr "Bekræft venligst dit kreditkort for at få adgang til alle funktioner."
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
 msgstr "Indtast venligst en gyldig e-mailadresse"
+
+#: src/features/Chat/SubmitForm.tsx:163
+#. js-lingui-explicit-id
+msgid "Please record a longer message (at least a few words)."
+msgstr "Venligst optag en længere besked (mindst nogle få ord)."
 
 #: src/features/Conversation/ConversationError.tsx:37
 #. js-lingui-explicit-id
@@ -7177,17 +7184,17 @@ msgstr "Profil"
 msgid "Progress Calendar"
 msgstr "Fremskridtskalender"
 
+#: src/features/Landing/LandingPage.tsx:403
+#. js-lingui-explicit-id
+msgid "Progress Tracking"
+msgstr "Progress Tracking"
+
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
 #: src/features/Landing/Price/PricePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Fremdriftssporing"
-
-#: src/features/Landing/LandingPage.tsx:403
-#. js-lingui-explicit-id
-msgid "Progress Tracking"
-msgstr "Progress Tracking"
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -7440,7 +7447,7 @@ msgstr "Real-Life Rollespil for Avanceret Engelsk Øvelse"
 msgid "Real-time conversations with AI using voice"
 msgstr "Realtids-samtaler med AI ved hjælp af stemme"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:239
+#: src/features/Conversation/CallMode/CallButtons.tsx:232
 #. js-lingui-explicit-id
 msgid "Real-time microphone"
 msgstr "Mikrofon i realtid"
@@ -7501,6 +7508,11 @@ msgstr ""
 "Optag en 2-3 minutters historie ved hjælp af <0>{learningLanguageName}</0> "
 "eller <1>{nativeLanguageName}</1>"
 
+#: src/features/Chat/SubmitForm.tsx:164
+#. js-lingui-explicit-id
+msgid "Record a message and get {points} points"
+msgstr "Optag en besked og få {points} point"
+
 #: src/features/Case/data/frontend-junior/quizData.ts:59
 #: src/features/Case/data/frontend-junior/quizData.ts:77
 #: src/features/Case/data/frontend-junior/quizData.ts:98
@@ -7518,7 +7530,8 @@ msgstr "Optag Svar"
 msgid "Record answer"
 msgstr "Optag svar"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:325
+#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Conversation/CallMode/CallButtons.tsx:318
 #: src/features/Conversation/ConversationCanvas.tsx:1107
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -7856,7 +7869,8 @@ msgstr "Send e-mail igen"
 msgid "Send me sign-in link"
 msgstr "Send mig tilmeldingslink"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:352
+#: src/features/Chat/SubmitForm.tsx:130
+#: src/features/Conversation/CallMode/CallButtons.tsx:345
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Send besked"
@@ -8448,7 +8462,8 @@ msgstr ""
 "præcise, overbevisende svar, der hjælper dig med at skille dig ud i ethvert "
 "jobinterview."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:325
+#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Conversation/CallMode/CallButtons.tsx:318
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Stop"
@@ -9046,6 +9061,11 @@ msgstr "Spor Dit Flydende Fremskridt"
 msgid "Transcribing..."
 msgstr "Transskriberer..."
 
+#: src/features/Chat/SubmitForm.tsx:58
+#. js-lingui-explicit-id
+msgid "Transcription:"
+msgstr "Transskription:"
+
 #: src/features/Game/UserProfileModal.tsx:86
 #. js-lingui-explicit-id
 msgid "Translate Guru"
@@ -9087,40 +9107,35 @@ msgstr "Prøv gratis"
 msgid "Turkish Learning Plan"
 msgstr "Tyrkisk Læringsplan"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:189
+#: src/features/Conversation/CallMode/CallButtons.tsx:182
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "Slå undertekster fra"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:197
+#: src/features/Conversation/CallMode/CallButtons.tsx:190
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "Sluk video"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:180
+#: src/features/Conversation/CallMode/CallButtons.tsx:173
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "Sluk for lyden"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:189
+#: src/features/Conversation/CallMode/CallButtons.tsx:182
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "Tænd undertekster"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:197
+#: src/features/Conversation/CallMode/CallButtons.tsx:190
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "Tænd video"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:180
+#: src/features/Conversation/CallMode/CallButtons.tsx:173
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "Tænd for lyden"
-
-#: src/features/Chat/SubmitForm.tsx:35
-#. js-lingui-explicit-id
-msgid "Type a message..."
-msgstr "Skriv en besked..."
 
 #: src/features/Game/Battle/BattleActionModal.tsx:333
 #. js-lingui-explicit-id
@@ -9178,7 +9193,7 @@ msgstr "Ubegrænsede svaranmeldelser"
 msgid "Unlock full interview preparation"
 msgstr "Lås op for fuld interviewforberedelse"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:171
+#: src/features/Conversation/CallMode/CallButtons.tsx:164
 #. js-lingui-explicit-id
 msgid "Unmute microphone"
 msgstr "Slå mikrofon til lyd"
@@ -9243,7 +9258,7 @@ msgstr "Brugernavn skal være mindst 3 tegn langt."
 msgid "Username:"
 msgstr "Brugernavn:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:251
+#: src/features/Conversation/CallMode/CallButtons.tsx:244
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your plan "
@@ -10244,7 +10259,7 @@ msgstr "Din besked"
 msgid "Your message..."
 msgstr "Din besked..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:282
+#: src/features/Conversation/CallMode/CallButtons.tsx:275
 #. js-lingui-explicit-id
 msgid "Your Message:"
 msgstr "Din Besked:"
@@ -10315,6 +10330,11 @@ msgstr ""
 "— det er vigtigt at deltage i denne korte samtale, før man hopper ind i "
 "professionelle emner. Her er nogle nyttige engelske vendinger til at starte "
 "interviewet:"
+
+#: src/features/Chat/SubmitForm.tsx:35
+#. js-lingui-explicit-id
+#~ msgid "Type a message..."
+#~ msgstr "Skriv en besked..."
 
 #: src/features/Goal/GoalQuestions.tsx:311
 #. js-lingui-explicit-id

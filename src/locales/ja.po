@@ -565,7 +565,7 @@ msgstr "AI家庭教師の費用"
 msgid "AI Tutor Updates"
 msgstr "AIチューターの更新"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:239
+#: src/features/Conversation/CallMode/CallButtons.tsx:232
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AIボイス"
@@ -1313,7 +1313,7 @@ msgid ""
 "rambling."
 msgstr "システムデザインの明確な構造。ついに寄り道せずにトレードオフを説明しました。"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:365
+#: src/features/Conversation/CallMode/CallButtons.tsx:358
 #: src/features/Game/Battle/BattleActionModal.tsx:262
 #: src/features/Game/Battle/BattleCard.tsx:285
 #: src/features/Game/UserProfileModal.tsx:131
@@ -1540,15 +1540,15 @@ msgstr "契約テスト"
 msgid "Conversation"
 msgstr "会話"
 
+#: src/features/Landing/LandingPage.tsx:255
+#. js-lingui-explicit-id
+msgid "Conversation Practice"
+msgstr "会話練習"
+
 #: src/features/Landing/Price/FeatureList.tsx:40
 #: src/features/Landing/Price/PricePage.tsx:351
 #. js-lingui-explicit-id
 msgid "Conversation practice"
-msgstr "会話練習"
-
-#: src/features/Landing/LandingPage.tsx:255
-#. js-lingui-explicit-id
-msgid "Conversation Practice"
 msgstr "会話練習"
 
 #: src/features/SEO/metadata.ts:267
@@ -2239,7 +2239,7 @@ msgstr "忙しいスケジュールの中で英語のスピーキングスキル
 msgid "Email"
 msgstr "メール"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:248
+#: src/features/Conversation/CallMode/CallButtons.tsx:241
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your plan to access "
@@ -5283,7 +5283,9 @@ msgstr "ロード中。"
 msgid "Loading.."
 msgstr "読み込み中.."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:292
+#: src/features/Chat/SubmitForm.tsx:43
+#: src/features/Chat/SubmitForm.tsx:75
+#: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:337
 #: src/features/Conversation/ConversationCanvas.tsx:1298
 #: src/features/Conversation/ConversationPage.tsx:104
@@ -5565,7 +5567,7 @@ msgstr "ほとんどの面接には、古典的な「強みと弱み」につい
 msgid "Movies, books, or music"
 msgstr "映画、本、または音楽"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:171
+#: src/features/Conversation/CallMode/CallButtons.tsx:164
 #. js-lingui-explicit-id
 msgid "Mute microphone"
 msgstr "マイクをミュート"
@@ -5752,7 +5754,7 @@ msgstr "クレジットカードは必要ありません"
 msgid "No interviews found"
 msgstr "該当するインタビューが見つかりませんでした"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:293
+#: src/features/Conversation/CallMode/CallButtons.tsx:286
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "まだメッセージが記録されていません。"
@@ -6238,6 +6240,11 @@ msgstr "すべての機能にアクセスするために、クレジットカー
 msgid "Please enter a valid email address"
 msgstr "有効なメールアドレスを入力してください"
 
+#: src/features/Chat/SubmitForm.tsx:163
+#. js-lingui-explicit-id
+msgid "Please record a longer message (at least a few words)."
+msgstr "長めのメッセージ（少なくとも数単語）を記録してください。"
+
 #: src/features/Conversation/ConversationError.tsx:37
 #. js-lingui-explicit-id
 msgid "Please refresh the page and try one more time"
@@ -6720,17 +6727,17 @@ msgstr "プロフィール"
 msgid "Progress Calendar"
 msgstr "進行カレンダー"
 
+#: src/features/Landing/LandingPage.tsx:403
+#. js-lingui-explicit-id
+msgid "Progress Tracking"
+msgstr "進捗追跡"
+
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
 #: src/features/Landing/Price/PricePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "進行状況の追跡"
-
-#: src/features/Landing/LandingPage.tsx:403
-#. js-lingui-explicit-id
-msgid "Progress Tracking"
-msgstr "進捗追跡"
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -6976,7 +6983,7 @@ msgstr "実際の役割演技による上級英語練習"
 msgid "Real-time conversations with AI using voice"
 msgstr "リアルタイムの会話を音声でAIと行う"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:239
+#: src/features/Conversation/CallMode/CallButtons.tsx:232
 #. js-lingui-explicit-id
 msgid "Real-time microphone"
 msgstr "リアルタイムマイクロフォン"
@@ -7035,6 +7042,11 @@ msgstr ""
 "2-3分の物語を<0>{learningLanguageName}</0>または<1>{nativeLanguageName}</1"
 ">を使用して録音してください"
 
+#: src/features/Chat/SubmitForm.tsx:164
+#. js-lingui-explicit-id
+msgid "Record a message and get {points} points"
+msgstr "メッセージを録音して{points}ポイントを獲得する"
+
 #: src/features/Case/data/frontend-junior/quizData.ts:59
 #: src/features/Case/data/frontend-junior/quizData.ts:77
 #: src/features/Case/data/frontend-junior/quizData.ts:98
@@ -7052,7 +7064,8 @@ msgstr "回答を記録する"
 msgid "Record answer"
 msgstr "回答を記録"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:325
+#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Conversation/CallMode/CallButtons.tsx:318
 #: src/features/Conversation/ConversationCanvas.tsx:1107
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -7375,7 +7388,8 @@ msgstr "メールを再送信"
 msgid "Send me sign-in link"
 msgstr "サインインリンクを送信してください。"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:352
+#: src/features/Chat/SubmitForm.tsx:130
+#: src/features/Conversation/CallMode/CallButtons.tsx:345
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "メッセージを送信"
@@ -7944,7 +7958,8 @@ msgstr ""
 "いて尋ねられ、あなたの返答に基づいてAIが難易度を調整します。プロンプトを使用して、どのような職業インタビューでも引き立つような簡潔で説得力のある答えを"
 "提供する練習をしてみてください。"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:325
+#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Conversation/CallMode/CallButtons.tsx:318
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "ストップ"
@@ -8500,6 +8515,11 @@ msgstr "あなたの流暢さの進捗を追跡する"
 msgid "Transcribing..."
 msgstr "書き起こしています..."
 
+#: src/features/Chat/SubmitForm.tsx:58
+#. js-lingui-explicit-id
+msgid "Transcription:"
+msgstr "文字起こし:"
+
 #: src/features/Game/UserProfileModal.tsx:86
 #. js-lingui-explicit-id
 msgid "Translate Guru"
@@ -8541,40 +8561,35 @@ msgstr "無料で試してみる"
 msgid "Turkish Learning Plan"
 msgstr "トルコ語学習プラン"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:189
+#: src/features/Conversation/CallMode/CallButtons.tsx:182
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "字幕をオフにする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:197
+#: src/features/Conversation/CallMode/CallButtons.tsx:190
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "ビデオをオフにする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:180
+#: src/features/Conversation/CallMode/CallButtons.tsx:173
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "ボリュームをオフにする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:189
+#: src/features/Conversation/CallMode/CallButtons.tsx:182
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "字幕をオンにする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:197
+#: src/features/Conversation/CallMode/CallButtons.tsx:190
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "ビデオをオンにする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:180
+#: src/features/Conversation/CallMode/CallButtons.tsx:173
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "ボリュームをオンにする"
-
-#: src/features/Chat/SubmitForm.tsx:35
-#. js-lingui-explicit-id
-msgid "Type a message..."
-msgstr "メッセージを入力してください..."
 
 #: src/features/Game/Battle/BattleActionModal.tsx:333
 #. js-lingui-explicit-id
@@ -8632,7 +8647,7 @@ msgstr "無制限の回答レビュー"
 msgid "Unlock full interview preparation"
 msgstr "フルインタビュー準備をアンロック"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:171
+#: src/features/Conversation/CallMode/CallButtons.tsx:164
 #. js-lingui-explicit-id
 msgid "Unmute microphone"
 msgstr "マイクのミュートを解除"
@@ -8695,7 +8710,7 @@ msgstr "ユーザー名は最低3文字必要です。"
 msgid "Username:"
 msgstr "ユーザー名:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:251
+#: src/features/Conversation/CallMode/CallButtons.tsx:244
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your plan "
@@ -9618,7 +9633,7 @@ msgstr "あなたのメッセージ"
 msgid "Your message..."
 msgstr "あなたのメッセージ..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:282
+#: src/features/Conversation/CallMode/CallButtons.tsx:275
 #. js-lingui-explicit-id
 msgid "Your Message:"
 msgstr "あなたのメッセージ:"
@@ -9684,6 +9699,11 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Chat/SubmitForm.tsx:35
+#. js-lingui-explicit-id
+#~ msgid "Type a message..."
+#~ msgstr "メッセージを入力してください..."
 
 #: src/features/Goal/GoalQuestions.tsx:311
 #. js-lingui-explicit-id
