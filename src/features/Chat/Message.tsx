@@ -39,6 +39,9 @@ export function Message({
   const [isDeleting, setIsDeleting] = useState(false);
   const { i18n } = useLingui();
   const translator = useTranslate();
+  const [isShowFullContent, setIsShowFullContent] = useState(false);
+  const limitMessages = 190;
+  const isLimitedMessage = message.content.length > limitMessages && !isShowFullContent;
 
   const auth = useAuth();
   const myUserId = auth.uid;
@@ -152,6 +155,8 @@ export function Message({
                 }}
               >
                 {updatedAgo}
+
+                {message.updatedAtIso !== message.createdAtIso && " | " + i18n._("edited")}
               </Typography>
             </Stack>
 
@@ -202,7 +207,22 @@ export function Message({
                 width: "100%",
               }}
             >
-              {message.content}
+              {message.content.length > limitMessages ? (
+                <>
+                  {isLimitedMessage
+                    ? message.content.slice(0, limitMessages) + "..."
+                    : message.content}
+                  <Button
+                    size="small"
+                    onClick={() => setIsShowFullContent(!isShowFullContent)}
+                    sx={{ textTransform: "none", marginLeft: "5px", padding: 0, minWidth: 0 }}
+                  >
+                    {isShowFullContent ? i18n._("Show less") : i18n._("Show more")}
+                  </Button>
+                </>
+              ) : (
+                message.content
+              )}
             </Typography>
           )}
 
@@ -222,12 +242,6 @@ export function Message({
             </Stack>
           ) : (
             <>
-              {message.updatedAtIso !== message.createdAtIso && (
-                <Typography variant="caption" color="textSecondary" sx={{ fontStyle: "italic" }}>
-                  ({i18n._("edited")})
-                </Typography>
-              )}
-
               <Stack
                 sx={{
                   flexDirection: "row",
