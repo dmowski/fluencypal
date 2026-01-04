@@ -5,13 +5,13 @@ import { useGame } from "./useGame";
 import { Typography } from "@mui/material";
 import { defaultAvatar } from "./avatars";
 import dayjs from "dayjs";
-import { GameQuestionType, UsersStat } from "./types";
+import { GameAchievement, UsersStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
-import { achievementsMaxPoints, allGameTypes } from "./data";
+import { achievementsMaxPoints, allAchievementTypes } from "./data";
 import { Swords, X } from "lucide-react";
 import { InfoStep } from "../Survey/InfoStep";
 import { useBattle } from "./Battle/useBattle";
@@ -51,12 +51,13 @@ const zeroColor: IconColor = {
   iconColor: "#fff",
   bgColor: "rgba(100, 100, 100, 0.5)",
 };
-const achievementsIconMap: Record<GameQuestionType, IconName> = {
+const achievementsIconMap: Record<GameAchievement, IconName> = {
   translate: "languages",
   sentence: "pickaxe",
   describe_image: "image",
   topic_to_discuss: "messages-square",
   read_text: "book-open-text",
+  chat_message: "message-circle",
 };
 
 export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: () => void }) => {
@@ -73,7 +74,7 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
   const avatar = game.gameAvatars[stat.userId] || defaultAvatar;
 
   const achievements = game.userAchievements ? game.userAchievements[stat.userId] || {} : {};
-  const achievementsKeys: GameQuestionType[] = allGameTypes.sort(
+  const achievementsKeys: GameAchievement[] = allAchievementTypes.sort(
     (a, b) => (achievements[b] || 0) - (achievements[a] || 0)
   );
 
@@ -81,12 +82,13 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
 
   const position = game.getRealPosition(stat.userId);
 
-  const achievementsLabelMap: Record<GameQuestionType, string> = {
+  const achievementsLabelMap: Record<GameAchievement, string> = {
     translate: i18n._("Translate Guru"),
     sentence: i18n._("Sentence Builder"),
     describe_image: i18n._("Image Describer"),
     topic_to_discuss: i18n._("Topic Talker"),
     read_text: i18n._("Reader"),
+    chat_message: i18n._("Chat Enthusiast"),
   };
 
   const [isAskForDebates, setIsAskForDebates] = useState(false);

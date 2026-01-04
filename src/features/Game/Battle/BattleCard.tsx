@@ -166,6 +166,7 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                   sx={{
                     width: "100%",
                     overflow: "auto",
+                    padding: "3px",
                   }}
                 >
                   <GameStatRow stat={stat} />
