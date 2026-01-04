@@ -47,41 +47,41 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
     <Stack
       sx={{
         width: "100%",
-        padding: "0px 0 15px 0",
+        padding: "0px",
         gap: "20px",
         alignItems: "flex-start",
       }}
     >
-      <Stack>
-        {recorder.transcription && (
+      {recorder.transcription && (
+        <Stack>
           <Stack>
             <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
               {i18n._("Transcription:")}
             </Typography>
           </Stack>
-        )}
-        <Stack
-          sx={{
-            gap: "5px",
-            flexDirection: "row",
-          }}
-        >
-          <Typography
-            variant="body1"
-            className={`${recorder.isTranscribing ? "loading-shimmer" : ""}`}
+          <Stack
             sx={{
-              opacity: !recorder.transcription ? 0.5 : 1,
+              gap: "5px",
+              flexDirection: "row",
             }}
           >
-            {recorder.isTranscribing ? i18n._("Loading...") : recorder.transcription || i18n._("")}
-          </Typography>
-          {recorder.transcription && (
-            <IconButton size="small" onClick={() => recorder.removeTranscript()}>
-              <Trash size={"14px"} />
-            </IconButton>
-          )}
+            <Typography
+              variant="body1"
+              className={`${recorder.isTranscribing ? "loading-shimmer" : ""}`}
+              sx={{
+                opacity: !recorder.transcription ? 0.5 : 1,
+              }}
+            >
+              {recorder.transcription}
+            </Typography>
+            {recorder.transcription && (
+              <IconButton size="small" onClick={() => recorder.removeTranscript()}>
+                <Trash size={"14px"} />
+              </IconButton>
+            )}
+          </Stack>
         </Stack>
-      </Stack>
+      )}
       <Stack
         sx={{
           width: "100%",

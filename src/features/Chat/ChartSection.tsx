@@ -95,17 +95,26 @@ export const ChartSection = () => {
             sx={{
               width: "100%",
               borderTop: "1px solid rgba(255, 255, 255, 0.12)",
-              padding: "10px",
+              padding: "0px",
+              background: "rgba(255, 255, 255, 0.005)",
             }}
           >
-            <Typography
-              variant="body2"
+            <Stack
               sx={{
-                opacity: 0.8,
+                padding: "20px 20px",
+                borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
+                background: "rgba(17, 157, 218, 0.13)",
               }}
             >
-              {i18n._("Replies:")}
-            </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  opacity: 0.9,
+                }}
+              >
+                {i18n._("Replies:")}
+              </Typography>
+            </Stack>
 
             {repliesMessages.length === 0 ? (
               <Typography color="textSecondary">{i18n._("No replies yet")}</Typography>
@@ -121,7 +130,7 @@ export const ChartSection = () => {
           </Stack>
           <Stack
             sx={{
-              padding: "10px",
+              padding: "15px",
               borderTop: "1px solid rgba(255,255,255,0.1)",
             }}
           >
@@ -133,7 +142,12 @@ export const ChartSection = () => {
           </Stack>
         </Stack>
       ) : (
-        <>
+        <Stack
+          sx={{
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            borderRadius: "12px",
+          }}
+        >
           <MessageList
             messages={topLevelMessages}
             currentUserId={userId}
@@ -141,12 +155,19 @@ export const ChartSection = () => {
             onDelete={chat.deleteMessage}
             onCommentClick={onCommentClick}
           />
-          <SubmitForm
-            onSubmit={submitMessage}
-            isLoading={chat.loading}
-            recordMessageTitle={i18n._("Record Message")}
-          />
-        </>
+          <Stack
+            sx={{
+              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+              padding: "15px",
+            }}
+          >
+            <SubmitForm
+              onSubmit={submitMessage}
+              isLoading={chat.loading}
+              recordMessageTitle={i18n._("Record Message")}
+            />
+          </Stack>
+        </Stack>
       )}
     </Stack>
   );
