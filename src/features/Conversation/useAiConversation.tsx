@@ -24,7 +24,6 @@ import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { firstAiMessage } from "@/features/Lang/lang";
-import { useRouter, useSearchParams } from "next/navigation";
 import { GoalElementInfo, GoalPlan } from "../Plan/types";
 import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
@@ -175,25 +174,6 @@ VISUAL_CONTEXT (latest): ${description}
   const [gameStat, setGameStat] = useState<GuessGameStat | null>(null);
 
   const [isStarted, setIsStarted] = useState(false);
-
-  const searchParams = useSearchParams();
-  const router = useRouter();
-
-  const isStartedUrl = searchParams.get("started") === "true";
-  const setIsStartedUrl = (isStarted: boolean) => {
-    const pathName = window.location.pathname;
-
-    if (isStarted) {
-      router.push(`${pathName}?started=true`, { scroll: false });
-    } else {
-      router.push(`${pathName}`, { scroll: false });
-    }
-  };
-
-  useEffect(() => {
-    if (!isStarted) return;
-    if (!isStartedUrl) closeConversation();
-  }, [isStartedUrl]);
 
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
   const [goalInfo, setGoalInfo] = useState<GoalElementInfo | null>(null);
@@ -764,7 +744,7 @@ Start the conversation with: "${
     setGoalInfo(input.goal || null);
 
     try {
-      setIsStartedUrl(true);
+      setIsStarted(true);
       setIsInitializing(`Loading...`);
       setCurrentMode(input.mode);
       setConversation([]);

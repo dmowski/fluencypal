@@ -221,9 +221,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         analyzeConversation={analyzeConversation}
         closeConversation={async () => {
           await aiConversation.closeConversation();
-          const url = `${getUrlStart(lang)}practice`;
-
-          router.push(url);
           window.scrollTo({
             top: 0,
             behavior: "smooth",
