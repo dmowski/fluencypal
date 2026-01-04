@@ -18,7 +18,7 @@ export const ChartSection = () => {
   const { i18n } = useLingui();
   const userId = auth.uid || "anonymous";
 
-  const [activeMessageId, setActiveMessageId] = useUrlState("activeMessageId", "", true);
+  const [activeMessageId, setActiveMessageId] = useUrlState("post", "", true);
 
   const activeMessage = chat.messages.find((msg) => msg.id === activeMessageId);
 
