@@ -1,5 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
+import { MouseEventHandler } from "react";
 
 export const MessageActionButton = ({
   isActive,
@@ -9,15 +10,16 @@ export const MessageActionButton = ({
   iconName,
 }: {
   isActive: boolean;
-  onClick: () => void;
+  onClick: (e: HTMLElement) => void;
   label: string;
-  count: number;
+  count?: number;
   iconName: IconName;
 }) => {
   const color = isActive ? "#ff0034" : "inherit";
   return (
     <Stack
-      onClick={onClick}
+      onClick={(e) => onClick(e.currentTarget)}
+      component={"button"}
       aria-label={label}
       sx={{
         flexDirection: "row",
@@ -35,7 +37,6 @@ export const MessageActionButton = ({
           backgroundColor: "rgba(255, 255, 255, 0.1)",
         },
       }}
-      component={"button"}
     >
       <DynamicIcon
         name={iconName}
@@ -46,17 +47,19 @@ export const MessageActionButton = ({
           fill: isActive ? color : "none",
         }}
       />
-      <Typography
-        variant="body2"
-        sx={{
-          opacity: isActive ? 1 : 0.7,
-          color: color,
-          fontWeight: 400,
-          fontVariantNumeric: "tabular-nums",
-        }}
-      >
-        {count || 0}
-      </Typography>
+      {count !== undefined && (
+        <Typography
+          variant="body2"
+          sx={{
+            opacity: isActive ? 1 : 0.7,
+            color: color,
+            fontWeight: 400,
+            fontVariantNumeric: "tabular-nums",
+          }}
+        >
+          {count || 0}
+        </Typography>
+      )}
     </Stack>
   );
 };

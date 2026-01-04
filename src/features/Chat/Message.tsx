@@ -11,6 +11,7 @@ import { useAuth } from "../Auth/useAuth";
 import { useGame } from "../Game/useGame";
 import { UserProfileModal } from "../Game/UserProfileModal";
 import { MessageActionButton } from "./MessageActionButton";
+import { useTranslate } from "../Translation/useTranslate";
 
 interface MessageProps {
   message: UserChatMessage;
@@ -37,6 +38,7 @@ export function Message({
   const [editedContent, setEditedContent] = useState(message.content);
   const [isDeleting, setIsDeleting] = useState(false);
   const { i18n } = useLingui();
+  const translator = useTranslate();
 
   const auth = useAuth();
   const myUserId = auth.uid;
@@ -248,6 +250,16 @@ export function Message({
                   count={commentsCount}
                   iconName={"message-circle"}
                 />
+
+                {translator.isTranslateAvailable && (
+                  <MessageActionButton
+                    isActive={false}
+                    onClick={(element) => translator.translateWithModal(message.content, element)}
+                    label={i18n._("Translate")}
+                    iconName={"languages"}
+                  />
+                )}
+                {translator.translateModal}
               </Stack>
             </>
           )}
