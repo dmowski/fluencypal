@@ -13,6 +13,7 @@ interface AddMessageProps {
 
 interface ChatContextType {
   messages: UserChatMessage[];
+  topLevelMessages: UserChatMessage[];
   messagesLikes: Record<string, ChatLike[]>;
   toggleLike: (messageId: string, type: ChatLikeType) => Promise<void>;
 
@@ -36,22 +37,49 @@ function useProvideChat(): ChatContextType {
   const auth = useAuth();
   const userId = auth.uid || "anonymous";
   const messagesRef = db.collections.usersChatMessages();
-  const [messages, loading] = useCollectionData(messagesRef);
+  const [messagesData, loading] = useCollectionData(messagesRef);
 
-  const [unreadMessagesCount, setUnreadMessagesCount] = useState(0);
+  const { messages, topLevelMessages, commentsInfo } = useMemo<{
+    messages: UserChatMessage[];
+    topLevelMessages: UserChatMessage[];
+    commentsInfo: Record<string, number>;
+  }>(() => {
+    const sortedMessages = messagesData
+      ? [...messagesData].sort((a, b) => b.createdAtIso.localeCompare(a.createdAtIso))
+      : [];
 
-  const commentsInfo: Record<string, number> = useMemo(() => {
-    const info: Record<string, number> = {};
-    messages?.forEach((msg) => {
+    const topLevel = sortedMessages.filter((msg) => {
+      const isTopLevel = !msg.parentMessageId;
+      if (isTopLevel) {
+        return true;
+      }
+
+      const isParentChainIsBroken = !sortedMessages.find((m) => m.id === msg.parentMessageId);
+      if (isParentChainIsBroken) {
+        return true;
+      }
+
+      return !msg.parentMessageId;
+    });
+
+    const commentsMap: Record<string, number> = {};
+    sortedMessages.forEach((msg) => {
       if (msg.parentMessageId) {
-        if (!info[msg.parentMessageId]) {
-          info[msg.parentMessageId] = 0;
+        if (!commentsMap[msg.parentMessageId]) {
+          commentsMap[msg.parentMessageId] = 0;
         }
-        info[msg.parentMessageId] += 1;
+        commentsMap[msg.parentMessageId] += 1;
       }
     });
-    return info;
-  }, [messages]);
+
+    return {
+      messages: sortedMessages,
+      topLevelMessages: topLevel,
+      commentsInfo: commentsMap,
+    };
+  }, [messagesData]);
+
+  const [unreadMessagesCount, setUnreadMessagesCount] = useState(0);
 
   const likesRef = db.collections.usersChatLikes();
   const [likes] = useCollectionData(likesRef);
@@ -69,12 +97,6 @@ function useProvideChat(): ChatContextType {
     return likesMap;
   }, [likes]);
 
-  const sortedMessages = useMemo(() => {
-    return messages
-      ? [...messages].sort((a, b) => b.createdAtIso.localeCompare(a.createdAtIso))
-      : [];
-  }, [messages]);
-
   const getUnreadMessagesCount = (chatMessageCount: number) => {
     const isWindow = typeof window !== "undefined";
     if (!isWindow) return 0;
@@ -85,19 +107,18 @@ function useProvideChat(): ChatContextType {
   };
 
   const refreshUnreadMessagesCount = () => {
-    const count = getUnreadMessagesCount(sortedMessages.length);
+    const count = getUnreadMessagesCount(topLevelMessages.length);
     setUnreadMessagesCount(count);
   };
 
   useEffect(() => {
     refreshUnreadMessagesCount();
-  }, [sortedMessages.length]);
+  }, [topLevelMessages.length]);
 
   const markAsRead = () => {
     const isWindow = typeof window !== "undefined";
     if (!isWindow) return;
-
-    localStorage.setItem(UNREAD_MESSAGES_LOCAL_STORAGE_KEY, String(sortedMessages.length));
+    localStorage.setItem(UNREAD_MESSAGES_LOCAL_STORAGE_KEY, String(topLevelMessages.length));
     setUnreadMessagesCount(0);
   };
 
@@ -151,7 +172,8 @@ function useProvideChat(): ChatContextType {
   };
 
   return {
-    messages: sortedMessages,
+    messages,
+    topLevelMessages,
     messagesLikes,
     editMessage,
 

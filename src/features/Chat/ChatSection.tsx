@@ -34,22 +34,6 @@ export const ChartSection = () => {
     await chat.addMessage({ messageContent, activeMessageId });
   };
 
-  const topLevelMessages = useMemo(() => {
-    return chat.messages.filter((msg) => {
-      const isTopLevel = !msg.parentMessageId;
-      if (isTopLevel) {
-        return true;
-      }
-
-      const isParentChainIsBroken = !chat.messages.find((m) => m.id === msg.parentMessageId);
-      if (isParentChainIsBroken) {
-        return true;
-      }
-
-      return !msg.parentMessageId;
-    });
-  }, [activeMessageId, chat.messages]);
-
   const repliesMessages = useMemo(() => {
     if (!activeMessageId) {
       return [];
@@ -173,7 +157,7 @@ export const ChartSection = () => {
           }}
         >
           <MessageList
-            messages={topLevelMessages}
+            messages={chat.topLevelMessages}
             currentUserId={userId}
             onEdit={chat.editMessage}
             onDelete={deleteMessage}
