@@ -1,5 +1,5 @@
 "use client";
-import { Button, Link, Stack, TextField, Typography } from "@mui/material";
+import { Button, Link, Stack, TextField, Tooltip, Typography } from "@mui/material";
 import { useAuth } from "../Auth/useAuth";
 import { DEV_EMAILS } from "@/common/dev";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -9,7 +9,17 @@ import dayjs from "dayjs";
 import { getFirebaseLink } from "../Firebase/getFirebaseLink";
 import { useGame } from "../Game/useGame";
 import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
-import { BadgeCheck, Check, Copy, Gem, House, LogIn, UserPlus } from "lucide-react";
+import {
+  BadgeCheck,
+  Check,
+  Copy,
+  Crown,
+  Gem,
+  HandCoins,
+  House,
+  LogIn,
+  UserPlus,
+} from "lucide-react";
 import { defaultAvatar } from "../Game/avatars";
 import { UserSource } from "@/common/analytics";
 
@@ -71,6 +81,11 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
 
   const learning = `${nativeLanguage} → ${languageToLearn}`;
   const todaysConversationsMessages = userStat.conversationMeta.todayMessages || 0;
+
+  const isGameWinner = userStat.isGameWinner;
+  const activeSubscriptionTill = userStat.activeSubscriptionTill;
+  const isActiveSubscriber =
+    activeSubscriptionTill && dayjs(activeSubscriptionTill).isAfter(dayjs());
 
   const [isCopied, setIsCopied] = useState(false);
   useEffect(() => {
@@ -134,6 +149,56 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
               src="https://us1.discourse-cdn.com/openai1/original/4X/3/2/1/321a1ba297482d3d4060d114860de1aa5610f8a9.png"
             />
           </Stack>
+        )}
+
+        {isGameWinner && (
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "8px",
+              padding: "4px 0",
+              background: "linear-gradient(120deg, #fda085, #8f361eff)",
+              color: "#fff",
+              width: "50px",
+              height: "50px",
+              borderRadius: "50%",
+              justifyContent: "center",
+            }}
+          >
+            <Crown size={"25px"} />
+          </Stack>
+        )}
+
+        {isActiveSubscriber && (
+          <Tooltip title={`Subscriber till: ${dayjs(activeSubscriptionTill).format("DD MMMM")}`}>
+            <Stack
+              sx={{
+                alignItems: "center",
+                gap: "4px",
+              }}
+            >
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "4px 0",
+                  background: "linear-gradient(120deg, #ff6ec4, #1f1aa9ff)",
+                  color: "#fff",
+                  width: "50px",
+                  height: "50px",
+                  borderRadius: "50%",
+                  justifyContent: "center",
+                }}
+              >
+                <HandCoins size={"25px"} />
+              </Stack>
+              <Typography variant="caption" align="center">
+                in {dayjs(activeSubscriptionTill).diff(dayjs(), "day")} days
+              </Typography>
+            </Stack>
+          </Tooltip>
         )}
       </Stack>
       <Stack

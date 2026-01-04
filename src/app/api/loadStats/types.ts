@@ -8,6 +8,8 @@ export interface UserStat {
   conversationMeta: UserConversationsMeta;
   goalQuiz2: QuizSurvey2[];
   interviewStats: InterviewQuizSurvey[];
+  activeSubscriptionTill: string | null;
+  isGameWinner: boolean;
 }
 
 export interface AdminStatsRequest {
