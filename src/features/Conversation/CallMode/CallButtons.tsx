@@ -1,23 +1,17 @@
 import CallEndIcon from "@mui/icons-material/CallEnd";
 import MicOffIcon from "@mui/icons-material/MicOff";
 import MicIcon from "@mui/icons-material/Mic";
-
 import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
-
 import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
-
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-
-import { CircleQuestionMark, Mic, Send } from "lucide-react";
+import { CircleQuestionMark } from "lucide-react";
 import { useState } from "react";
 import { CustomModal } from "@/features/uiKit/Modal/CustomModal";
 import { FeatureBlocker } from "@/features/Usage/FeatureBlocker";
-import { useAuth } from "@/features/Auth/useAuth";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
-import { useSettings } from "@/features/Settings/useSettings";
 import SendIcon from "@mui/icons-material/Send";
 import StopIcon from "@mui/icons-material/Stop";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
@@ -141,10 +135,9 @@ export const CallButtons = ({
   const recorder = useAudioRecorder({
     visualizerComponentWidth: "100%",
   });
-  const transcription = recorder.transcription;
 
   const submitTranscription = () => {
-    onSubmitTranscription(transcription || "");
+    onSubmitTranscription(recorder.transcription || "");
     recorder.removeTranscript();
     recorder.cancelRecording();
     setIsShowMuteWarning(false);
