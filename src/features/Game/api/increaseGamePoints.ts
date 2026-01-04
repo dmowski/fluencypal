@@ -1,3 +1,4 @@
+import { CHAT_MESSAGE_POINTS } from "@/features/Chat/data";
 import { BATTLE_WIN_POINTS } from "../Battle/data";
 import { IncreaseGamePointsRequest, IncreaseGamePointsResponse } from "../types";
 import { increaseUserPoints } from "./statsResources";
@@ -15,7 +16,7 @@ export const increaseGamePoints = async (
   if (props.chatMessage && props.chatUserId) {
     await increaseUserPoints({
       userId: props.chatUserId,
-      points: 5,
+      points: CHAT_MESSAGE_POINTS,
       gameAchievement: "chat_message",
     });
   }
