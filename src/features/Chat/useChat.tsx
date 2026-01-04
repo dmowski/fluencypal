@@ -6,12 +6,17 @@ import { db } from "../Firebase/firebaseDb";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { ChatLike, ChatLikeType, UserChatMessage } from "./type";
 
+interface AddMessageProps {
+  messageContent: string;
+  activeMessageId: string;
+}
+
 interface ChatContextType {
   messages: UserChatMessage[];
   messagesLikes: Record<string, ChatLike[]>;
   toggleLike: (messageId: string, type: ChatLikeType) => Promise<void>;
 
-  addMessage: (message: string) => Promise<void>;
+  addMessage: ({ messageContent, activeMessageId }: AddMessageProps) => Promise<void>;
   deleteMessage: (messageId: string) => Promise<void>;
   editMessage: (messageId: string, newContent: string) => Promise<void>;
 
@@ -102,7 +107,7 @@ function useProvideChat(): ChatContextType {
     await setDoc(likeDoc, newLike);
   };
 
-  const addMessage = async (messageContent: string) => {
+  const addMessage = async ({ messageContent, activeMessageId }: AddMessageProps) => {
     const newMessage: UserChatMessage = {
       id: `${userId}-${Date.now()}`,
       senderId: userId,
@@ -110,7 +115,7 @@ function useProvideChat(): ChatContextType {
       createdAtIso: new Date().toISOString(),
       createdAtUtc: Date.now(),
       updatedAtIso: new Date().toISOString(),
-      replies: [],
+      parentMessageId: activeMessageId,
     };
     const messageDoc = doc(messagesRef, newMessage.id);
     await setDoc(messageDoc, newMessage);

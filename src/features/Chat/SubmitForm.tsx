@@ -13,9 +13,10 @@ import { useAuth } from "../Auth/useAuth";
 interface SubmitFormProps {
   onSubmit: (message: string) => Promise<void>;
   isLoading: boolean;
+  recordMessageTitle: string;
 }
 
-export function SubmitForm({ onSubmit, isLoading }: SubmitFormProps) {
+export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFormProps) {
   const { i18n } = useLingui();
   const auth = useAuth();
 
@@ -46,7 +47,7 @@ export function SubmitForm({ onSubmit, isLoading }: SubmitFormProps) {
     <Stack
       sx={{
         width: "100%",
-        padding: "35px 0 15px 0",
+        padding: "0px 0 15px 0",
         gap: "20px",
         alignItems: "flex-start",
       }}
@@ -112,7 +113,7 @@ export function SubmitForm({ onSubmit, isLoading }: SubmitFormProps) {
               }}
               startIcon={recorder.isRecording ? <StopIcon /> : <MicIcon />}
             >
-              {recorder.isRecording ? i18n._("Stop") : i18n._("Record Message")}
+              {recorder.isRecording ? i18n._("Stop") : recordMessageTitle}
             </Button>
           )}
 

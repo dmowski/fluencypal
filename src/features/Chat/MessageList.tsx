@@ -2,7 +2,6 @@
 import { Typography, Box, Stack } from "@mui/material";
 import { useGame } from "../Game/useGame";
 import { UserChatMessage } from "./type";
-import { useRef, useEffect } from "react";
 import { Message } from "./Message";
 import { useLingui } from "@lingui/react";
 
@@ -11,19 +10,12 @@ interface MessageListProps {
   currentUserId: string;
   onEdit: (messageId: string, newContent: string) => Promise<void>;
   onDelete: (messageId: string) => Promise<void>;
+  onCommentClick: (messageId: string) => void;
 }
 
-export function MessageList({ messages, currentUserId, onEdit, onDelete }: MessageListProps) {
+export function MessageList(props: MessageListProps) {
   const game = useGame();
   const { i18n } = useLingui();
-
-  const getUserName = (userId: string) => {
-    return game.userNames?.[userId] || "Unknown";
-  };
-
-  const getUserAvatarUrl = (userId: string) => {
-    return game.gameAvatars?.[userId] || "";
-  };
 
   return (
     <Stack
@@ -36,22 +28,24 @@ export function MessageList({ messages, currentUserId, onEdit, onDelete }: Messa
         },
       }}
     >
-      {messages.length === 0 ? (
+      {props.messages.length === 0 ? (
         <Typography align="center" color="textSecondary">
           {i18n._("No messages yet")}
         </Typography>
       ) : (
         <>
-          {messages.map((message, index) => (
+          {props.messages.map((message, index) => (
             <Stack key={message.id} className="message-item">
               <Message
                 key={message.id}
-                userAvatarUrl={getUserAvatarUrl(message.senderId)}
+                userAvatarUrl={game.getUserAvatarUrl(message.senderId)}
                 message={message}
-                isOwnMessage={message.senderId === currentUserId}
-                userName={getUserName(message.senderId)}
-                onEdit={onEdit}
-                onDelete={onDelete}
+                isOwnMessage={message.senderId === props.currentUserId}
+                userName={game.getUserName(message.senderId)}
+                onEdit={props.onEdit}
+                onDelete={props.onDelete}
+                onCommentClick={() => props.onCommentClick(message.id)}
+                commentsCount={2}
               />
             </Stack>
           ))}

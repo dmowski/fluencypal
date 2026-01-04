@@ -8,18 +8,14 @@ export interface ChatLike {
   createdAtIso: string;
 }
 
-export interface ChatMessage {
+export interface UserChatMessage {
   id: string;
   senderId: string;
-
   content: string;
+
+  parentMessageId: string;
 
   createdAtIso: string;
   createdAtUtc: number;
-
   updatedAtIso: string;
-}
-
-export interface UserChatMessage extends ChatMessage {
-  replies: ChatMessage[];
 }

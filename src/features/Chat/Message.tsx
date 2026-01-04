@@ -7,12 +7,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import dayjs from "dayjs";
 import { useLingui } from "@lingui/react";
 import { useChat } from "./useChat";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAuth } from "../Auth/useAuth";
 import { useGame } from "../Game/useGame";
 import { UserProfileModal } from "../Game/UserProfileModal";
-import { DynamicIcon, IconName } from "lucide-react/dynamic";
 import { MessageActionButton } from "./MessageActionButton";
 
 interface MessageProps {
@@ -22,6 +19,8 @@ interface MessageProps {
   userAvatarUrl: string;
   onEdit: (messageId: string, newContent: string) => Promise<void>;
   onDelete: (messageId: string) => Promise<void>;
+  onCommentClick: () => void;
+  commentsCount: number;
 }
 
 export function Message({
@@ -31,6 +30,8 @@ export function Message({
   userAvatarUrl,
   onEdit,
   onDelete,
+  onCommentClick,
+  commentsCount,
 }: MessageProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(message.content);
@@ -242,9 +243,9 @@ export function Message({
 
                 <MessageActionButton
                   isActive={false}
-                  onClick={() => chat.toggleLike(message.id, "like")}
-                  label={i18n._("Like")}
-                  count={message.replies?.length || 0}
+                  onClick={onCommentClick}
+                  label={i18n._("Comment")}
+                  count={commentsCount}
                   iconName={"message-circle"}
                 />
               </Stack>
