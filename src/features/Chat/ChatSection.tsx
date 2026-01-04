@@ -1,5 +1,5 @@
 "use client";
-import { Button, Stack, Typography } from "@mui/material";
+import { Alert, Button, Stack, Typography } from "@mui/material";
 import { useChat } from "./useChat";
 import { useAuth } from "../Auth/useAuth";
 import { SubmitForm } from "./SubmitForm";
@@ -117,7 +117,11 @@ export const ChartSection = () => {
             </Stack>
 
             {repliesMessages.length === 0 ? (
-              <Typography color="textSecondary">{i18n._("No replies yet")}</Typography>
+              <Stack>
+                <Alert severity="info" sx={{ marginTop: "10px" }} title="asd">
+                  {i18n._("No replies yet. Be the first to reply to this message.")}
+                </Alert>
+              </Stack>
             ) : (
               <MessageList
                 messages={repliesMessages}
