@@ -411,7 +411,7 @@ msgstr "Handlingsplan for å forbedre kritiske backend-ferdigheter"
 msgid "Active"
 msgstr "Aktiv"
 
-#: src/features/Chat/ChatSection.tsx:148
+#: src/features/Chat/ChatSection.tsx:149
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Legg til et svar"
@@ -664,7 +664,7 @@ msgstr "Alle Scenarier"
 msgid "Allow WebCam"
 msgstr "Tillat webkameraet"
 
-#: src/features/Conversation/ConversationCanvas.tsx:717
+#: src/features/Conversation/ProcessUserInput.tsx:153
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Nesten riktig"
@@ -697,12 +697,17 @@ msgstr ""
 "Beløpet er for stort. Jeg setter pris på støtten din, men la oss holde det "
 "under $400"
 
+#: src/features/Conversation/ProcessUserInput.tsx:115
+#. js-lingui-explicit-id
+msgid "An error occurred while analyzing the message. Please try again."
+msgstr "En feil oppstod under analysen av meldingen. Vennligst prøv igjen."
+
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:411
 #. js-lingui-explicit-id
 msgid "Analysis"
 msgstr "Analyse"
 
-#: src/features/Conversation/ConversationCanvas.tsx:967
+#: src/features/Conversation/ConversationCanvas.tsx:630
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analyserer"
@@ -712,12 +717,12 @@ msgstr "Analyserer"
 msgid "Analyzing your inputs..."
 msgstr "Analyserer dine innlegg..."
 
-#: src/features/Conversation/ConversationCanvas.tsx:452
-#: src/features/Conversation/ConversationCanvas.tsx:459
-#: src/features/Conversation/ConversationCanvas.tsx:466
-#: src/features/Conversation/ConversationCanvas.tsx:729
-#: src/features/Conversation/ConversationCanvas.tsx:868
-#: src/features/Conversation/ConversationCanvas.tsx:875
+#: src/features/Conversation/ConversationCanvas.tsx:370
+#: src/features/Conversation/ConversationCanvas.tsx:377
+#: src/features/Conversation/ConversationCanvas.tsx:384
+#: src/features/Conversation/ProcessUserInput.tsx:165
+#: src/features/Conversation/ProcessUserInput.tsx:304
+#: src/features/Conversation/ProcessUserInput.tsx:311
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Analyserer..."
@@ -802,7 +807,7 @@ msgstr ""
 msgid "Are you sure you want to reject this battle?"
 msgstr "Er du sikker på at du vil avslå denne kampen?"
 
-#: src/features/Conversation/ConversationCanvas.tsx:464
+#: src/features/Conversation/ConversationCanvas.tsx:382
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
 msgstr "Områder for forbedring:"
@@ -1156,7 +1161,7 @@ msgstr "C# Backend Intervju Forberedelsestest"
 msgid "Caching Strategies"
 msgstr "Bufringsstrategier"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1202
+#: src/features/Conversation/ConversationCanvas.tsx:865
 #: src/features/Goal/Quiz/QuizPage2.tsx:314
 #. js-lingui-explicit-id
 msgid "Call mode"
@@ -1201,7 +1206,7 @@ msgstr "Kan jeg bruke FluencyPal gratis?"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1412
+#: src/features/Conversation/ConversationCanvas.tsx:1075
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Avbryt opptak"
@@ -1584,7 +1589,7 @@ msgstr "Kontakter:"
 msgid "Continue"
 msgstr "Fortsett"
 
-#: src/features/Conversation/ConversationCanvas.tsx:489
+#: src/features/Conversation/ConversationCanvas.tsx:407
 #. js-lingui-explicit-id
 msgid "Continue conversation"
 msgstr "Fortsett samtalen"
@@ -1656,7 +1661,7 @@ msgstr "Kopier sidelenke"
 msgid "Core Web Vitals"
 msgstr "Kjerneveiledninger på nettet"
 
-#: src/features/Conversation/ConversationCanvas.tsx:827
+#: src/features/Conversation/ProcessUserInput.tsx:265
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Rettet"
@@ -2298,7 +2303,7 @@ msgstr "Glem ikke å prøve samtalemodus i praksisdelen!"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:1079
+#: src/features/Conversation/ConversationCanvas.tsx:742
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:493
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
@@ -2606,7 +2611,7 @@ msgstr "Feil ved opprettelse av betalingsøkt. Prøv igjen senere."
 msgid "Error creating plan. Please try again."
 msgstr "Feil ved oppretting av plan. Vennligst prøv igjen."
 
-#: src/features/Conversation/ConversationCanvas.tsx:663
+#: src/features/Conversation/ConversationCanvas.tsx:581
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Feil under analyse av melding"
@@ -3016,7 +3021,7 @@ msgstr ""
 msgid "Finalizing decision ..."
 msgstr "Tar en endelig beslutning ..."
 
-#: src/features/Conversation/ConversationCanvas.tsx:1141
+#: src/features/Conversation/ConversationCanvas.tsx:804
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Fullfør"
@@ -3627,7 +3632,7 @@ msgstr "Gå til Øvelse (Gratis Plan)"
 msgid "Go to the main page"
 msgstr "Gå til hovedsiden"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1322
+#: src/features/Conversation/ConversationCanvas.tsx:985
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
 #: src/features/Dashboard/PlanDashboardCards.tsx:470
@@ -3635,7 +3640,7 @@ msgstr "Gå til hovedsiden"
 msgid "Goal"
 msgstr "Mål"
 
-#: src/features/Conversation/ConversationCanvas.tsx:994
+#: src/features/Conversation/ConversationCanvas.tsx:657
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "Målet er opprettet"
@@ -3714,7 +3719,7 @@ msgstr "Grammatikk Korreksjoner"
 msgid "Grammar corrections to boost your confidence"
 msgstr "Grammatikkorreksjoner for å styrke selvtilliten din"
 
-#: src/features/Conversation/ConversationCanvas.tsx:732
+#: src/features/Conversation/ProcessUserInput.tsx:168
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:415
 #. js-lingui-explicit-id
 msgid "Great!"
@@ -3802,7 +3807,7 @@ msgstr "Helse"
 msgid "Help"
 msgstr "Hjelp"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1224
+#: src/features/Conversation/ConversationCanvas.tsx:887
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Hjelp med svar"
@@ -4488,7 +4493,7 @@ msgstr "Jeg vil legge til in-memory caching og øke DB-ressursene."
 msgid "I'd add retries with a longer timeout."
 msgstr "Jeg ville lagt til nye forsøk med lengre tidsavbrudd."
 
-#: src/features/Conversation/ConversationCanvas.tsx:371
+#: src/features/Conversation/ConversationCanvas.tsx:289
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "Ide for meldingen din"
@@ -5409,7 +5414,7 @@ msgstr ""
 "prestasjon, og din interesse for selskapet. Øv på din selv-introduksjon "
 "slik at du høres"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1180
+#: src/features/Conversation/ConversationCanvas.tsx:843
 #. js-lingui-explicit-id
 msgid "Keyboard mode"
 msgstr ""
@@ -5481,7 +5486,7 @@ msgstr "Språklæringsressurser"
 msgid "Language Learning Tips"
 msgstr "Språklæringstips"
 
-#: src/features/Conversation/ConversationCanvas.tsx:450
+#: src/features/Conversation/ConversationCanvas.tsx:368
 #. js-lingui-explicit-id
 msgid "Language level:"
 msgstr "Språknivå:"
@@ -5605,12 +5610,12 @@ msgstr "Juridisk:"
 msgid "Less"
 msgstr "Mindre"
 
-#: src/features/Conversation/ConversationCanvas.tsx:429
+#: src/features/Conversation/ConversationCanvas.tsx:347
 #. js-lingui-explicit-id
 msgid "Lesson Review"
 msgstr "Leksjonsgjennomgang"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1004
+#: src/features/Conversation/ConversationCanvas.tsx:667
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "Leksjoner lagt til:"
@@ -5687,10 +5692,10 @@ msgstr "Laster."
 msgid "Loading.."
 msgstr "Laster inn.."
 
-#: src/features/Chat/SubmitForm.tsx:33
+#: src/features/Chat/SubmitForm.tsx:37
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
-#: src/features/Conversation/ConversationCanvas.tsx:337
-#: src/features/Conversation/ConversationCanvas.tsx:1298
+#: src/features/Conversation/ConversationCanvas.tsx:255
+#: src/features/Conversation/ConversationCanvas.tsx:961
 #: src/features/Conversation/ConversationPage.tsx:104
 #: src/features/Conversation/ConversationPage.tsx:113
 #: src/features/Conversation/ConversationPage.tsx:133
@@ -5889,7 +5894,7 @@ msgstr "Mikrofon Tilgang"
 msgid "Minutes"
 msgstr "Minutter"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1298
+#: src/features/Conversation/ConversationCanvas.tsx:961
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Oppdrag fullført"
@@ -6090,11 +6095,6 @@ msgstr "Nye ord"
 #. js-lingui-explicit-id
 msgid "New words to practice."
 msgstr "Nye ord å øve på."
-
-#: src/features/Conversation/ConversationCanvas.tsx:922
-#. js-lingui-explicit-id
-msgid "New Words to Vocabulary:"
-msgstr "Nye ord til ordforrådet:"
 
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
@@ -6417,12 +6417,12 @@ msgstr "Åpne i Telegram"
 msgid "Open personal plan"
 msgstr "Åpne personlig plan"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1025
+#: src/features/Conversation/ConversationCanvas.tsx:688
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "Åpen planløsning"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1310
+#: src/features/Conversation/ConversationCanvas.tsx:973
 #: src/features/Game/Battle/BattleCard.tsx:281
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -6685,7 +6685,7 @@ msgstr "Vennligst bekreft kredittkortet ditt for å få tilgang til alle funksjo
 msgid "Please enter a valid email address"
 msgstr "Vennligst skriv inn en gyldig e-postadresse"
 
-#: src/features/Chat/SubmitForm.tsx:153
+#: src/features/Chat/SubmitForm.tsx:165
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Vennligst ta opp en lengre melding (minst noen få ord)."
@@ -7077,7 +7077,7 @@ msgstr ""
 "Bruk tipsene fra denne artikkelen, øv med FluencyPals intervjusimulator, og "
 "gå inn i ditt neste jobbintervju med selvtillit."
 
-#: src/features/Conversation/ConversationCanvas.tsx:974
+#: src/features/Conversation/ConversationCanvas.tsx:637
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "Forbereder Mål"
@@ -7274,8 +7274,9 @@ msgstr "Rangér blant topp 5 for å få appen gratis"
 msgid "Rating"
 msgstr "Vurdering"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1065
-#: src/features/Conversation/ConversationCanvas.tsx:1336
+#: src/features/Chat/SubmitForm.tsx:120
+#: src/features/Conversation/ConversationCanvas.tsx:728
+#: src/features/Conversation/ConversationCanvas.tsx:999
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
@@ -7286,7 +7287,7 @@ msgstr "Spill inn på nytt"
 msgid "Re-Record"
 msgstr "Ta opp på nytt"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1352
+#: src/features/Conversation/ConversationCanvas.tsx:1015
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Omskriv"
@@ -7523,7 +7524,7 @@ msgstr ""
 "Spill inn en historie på 2-3 minutter ved å bruke "
 "<0>{learningLanguageName}</0> eller <1>{nativeLanguageName}</1>"
 
-#: src/features/Chat/SubmitForm.tsx:154
+#: src/features/Chat/SubmitForm.tsx:180
 #. js-lingui-explicit-id
 msgid "Record a message and get {points} points"
 msgstr "Spill inn en melding og få {points} poeng"
@@ -7547,7 +7548,7 @@ msgstr "Ta opp svar"
 
 #: src/features/Chat/ChatSection.tsx:175
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
-#: src/features/Conversation/ConversationCanvas.tsx:1107
+#: src/features/Conversation/ConversationCanvas.tsx:770
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Ta opp melding"
@@ -7867,7 +7868,7 @@ msgstr ""
 "norsk\n"
 "Semantisk HTML\n"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1048
+#: src/features/Conversation/ConversationCanvas.tsx:711
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -7888,7 +7889,7 @@ msgstr "Send e-post på nytt"
 msgid "Send me sign-in link"
 msgstr "Send meg påloggingslenke"
 
-#: src/features/Chat/SubmitForm.tsx:120
+#: src/features/Chat/SubmitForm.tsx:131
 #: src/features/Conversation/CallMode/CallButtons.tsx:345
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -8307,7 +8308,7 @@ msgstr "Begynn å lære nå"
 msgid "Start Monthly Plan"
 msgstr "Start månedlig plan"
 
-#: src/features/Conversation/ConversationCanvas.tsx:502
+#: src/features/Conversation/ConversationCanvas.tsx:420
 #. js-lingui-explicit-id
 msgid "Start new lesson"
 msgstr "Start ny leksjon"
@@ -8489,7 +8490,7 @@ msgstr ""
 "basert på dine svar. Bruk ledetrådene til å øve på å gi konsise, "
 "overbevisende svar som hjelper deg å skille deg ut i ethvert jobbintervju."
 
-#: src/features/Chat/SubmitForm.tsx:105
+#: src/features/Chat/SubmitForm.tsx:97
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -9078,23 +9079,16 @@ msgstr "Totalt:"
 msgid "Track Your Fluency Progress"
 msgstr "Spor Fremdriften i Din Flytendehet"
 
-#: src/features/Conversation/ConversationCanvas.tsx:778
-#: src/features/Conversation/ConversationCanvas.tsx:781
-#: src/features/Conversation/ConversationCanvas.tsx:866
-#: src/features/Conversation/ConversationCanvas.tsx:873
+#: src/features/Conversation/ProcessUserInput.tsx:223
+#: src/features/Conversation/ProcessUserInput.tsx:224
+#: src/features/Conversation/ProcessUserInput.tsx:302
+#: src/features/Conversation/ProcessUserInput.tsx:309
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:220
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Transkriberer..."
-
-#: src/features/Chat/SubmitForm.tsx:48
-#. js-lingui-explicit-id
-msgid "Transcription:"
-msgstr ""
-"\n"
-"Transkripsjon:\n"
 
 #: src/features/Chat/Message.tsx:272
 #. js-lingui-explicit-id
@@ -9370,7 +9364,7 @@ msgstr "Ordforråd"
 msgid "Vocabulary challenges"
 msgstr "Ordforrådsutfordringer"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1158
+#: src/features/Conversation/ConversationCanvas.tsx:821
 #. js-lingui-explicit-id
 msgid "Voice record mode"
 msgstr "Opptaksmodus for stemme"
@@ -9709,7 +9703,7 @@ msgstr "Hva betyr en time?"
 msgid "What types of frontend interviews can I practice for?"
 msgstr "Hvilke typer frontend-intervjuer kan jeg øve meg på?"
 
-#: src/features/Conversation/ConversationCanvas.tsx:457
+#: src/features/Conversation/ConversationCanvas.tsx:375
 #. js-lingui-explicit-id
 msgid "What was great:"
 msgstr "Hva var flott:"
@@ -10295,12 +10289,12 @@ msgstr "Din partner for forberedelse til jobbintervju"
 msgid "Your Language Level"
 msgstr "Ditt Språknivå"
 
-#: src/features/Conversation/ConversationCanvas.tsx:755
+#: src/features/Conversation/ProcessUserInput.tsx:201
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Din Melding"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1247
+#: src/features/Conversation/ConversationCanvas.tsx:910
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Din melding..."
@@ -10376,6 +10370,18 @@ msgstr ""
 "— det er viktig å delta i denne korte samtalen før du hopper inn i "
 "profesjonelle emner. Her er noen nyttige engelske uttrykk for å starte "
 "intervjuet:"
+
+#: src/features/Conversation/ConversationCanvas.tsx:922
+#. js-lingui-explicit-id
+#~ msgid "New Words to Vocabulary:"
+#~ msgstr "Nye ord til ordforrådet:"
+
+#: src/features/Chat/SubmitForm.tsx:48
+#. js-lingui-explicit-id
+#~ msgid "Transcription:"
+#~ msgstr ""
+#~ "\n"
+#~ "Transkripsjon:\n"
 
 #: src/features/Chat/ChartSection.tsx:120
 #. js-lingui-explicit-id

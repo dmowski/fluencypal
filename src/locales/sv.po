@@ -413,7 +413,7 @@ msgstr "Handlingsplan för att förbättra kritiska backend-färdigheter"
 msgid "Active"
 msgstr "Aktiv"
 
-#: src/features/Chat/ChatSection.tsx:148
+#: src/features/Chat/ChatSection.tsx:149
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Lägg till ett svar"
@@ -668,7 +668,7 @@ msgstr "Alla scenarier"
 msgid "Allow WebCam"
 msgstr "Tillåt WebCam"
 
-#: src/features/Conversation/ConversationCanvas.tsx:717
+#: src/features/Conversation/ProcessUserInput.tsx:153
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Nästan rätt"
@@ -701,12 +701,17 @@ msgstr ""
 "Beloppet är för stort. Jag uppskattar ditt stöd, men låt oss hålla det "
 "under 400 dollar"
 
+#: src/features/Conversation/ProcessUserInput.tsx:115
+#. js-lingui-explicit-id
+msgid "An error occurred while analyzing the message. Please try again."
+msgstr "Ett fel uppstod vid analysen av meddelandet. Vänligen försök igen."
+
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:411
 #. js-lingui-explicit-id
 msgid "Analysis"
 msgstr "Analys"
 
-#: src/features/Conversation/ConversationCanvas.tsx:967
+#: src/features/Conversation/ConversationCanvas.tsx:630
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analyserar"
@@ -716,12 +721,12 @@ msgstr "Analyserar"
 msgid "Analyzing your inputs..."
 msgstr "Analyserar dina inmatningar..."
 
-#: src/features/Conversation/ConversationCanvas.tsx:452
-#: src/features/Conversation/ConversationCanvas.tsx:459
-#: src/features/Conversation/ConversationCanvas.tsx:466
-#: src/features/Conversation/ConversationCanvas.tsx:729
-#: src/features/Conversation/ConversationCanvas.tsx:868
-#: src/features/Conversation/ConversationCanvas.tsx:875
+#: src/features/Conversation/ConversationCanvas.tsx:370
+#: src/features/Conversation/ConversationCanvas.tsx:377
+#: src/features/Conversation/ConversationCanvas.tsx:384
+#: src/features/Conversation/ProcessUserInput.tsx:165
+#: src/features/Conversation/ProcessUserInput.tsx:304
+#: src/features/Conversation/ProcessUserInput.tsx:311
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Analyserar..."
@@ -806,7 +811,7 @@ msgstr ""
 msgid "Are you sure you want to reject this battle?"
 msgstr "Är du säker på att du vill avvisa denna utmaning?"
 
-#: src/features/Conversation/ConversationCanvas.tsx:464
+#: src/features/Conversation/ConversationCanvas.tsx:382
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
 msgstr "Områden att förbättra:"
@@ -1162,7 +1167,7 @@ msgstr "C# Backend-intervjutest för beredskap"
 msgid "Caching Strategies"
 msgstr "Caching-strategier"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1202
+#: src/features/Conversation/ConversationCanvas.tsx:865
 #: src/features/Goal/Quiz/QuizPage2.tsx:314
 #. js-lingui-explicit-id
 msgid "Call mode"
@@ -1207,7 +1212,7 @@ msgstr "Kan jag använda FluencyPal gratis?"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1412
+#: src/features/Conversation/ConversationCanvas.tsx:1075
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Avbryt inspelning"
@@ -1592,7 +1597,7 @@ msgstr "Kontakter:"
 msgid "Continue"
 msgstr "Fortsätt"
 
-#: src/features/Conversation/ConversationCanvas.tsx:489
+#: src/features/Conversation/ConversationCanvas.tsx:407
 #. js-lingui-explicit-id
 msgid "Continue conversation"
 msgstr "Fortsätt konversationen"
@@ -1664,7 +1669,7 @@ msgstr "Kopiera sidlänk"
 msgid "Core Web Vitals"
 msgstr "Kärnwebapprovningar"
 
-#: src/features/Conversation/ConversationCanvas.tsx:827
+#: src/features/Conversation/ProcessUserInput.tsx:265
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Korrigerad"
@@ -2310,7 +2315,7 @@ msgstr "Glöm inte att prova samtalsläge i övningssektionen!"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:1079
+#: src/features/Conversation/ConversationCanvas.tsx:742
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:493
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
@@ -2619,7 +2624,7 @@ msgstr "Fel vid skapande av betalningssession. Försök igen senare."
 msgid "Error creating plan. Please try again."
 msgstr "Fel vid skapande av plan. Försök igen."
 
-#: src/features/Conversation/ConversationCanvas.tsx:663
+#: src/features/Conversation/ConversationCanvas.tsx:581
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Fel under analys av meddelande"
@@ -3035,7 +3040,7 @@ msgstr ""
 msgid "Finalizing decision ..."
 msgstr "Slutför beslut ..."
 
-#: src/features/Conversation/ConversationCanvas.tsx:1141
+#: src/features/Conversation/ConversationCanvas.tsx:804
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Avsluta"
@@ -3642,7 +3647,7 @@ msgstr "Gå till Öva (Gratisplan)"
 msgid "Go to the main page"
 msgstr "Gå till huvudsidan"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1322
+#: src/features/Conversation/ConversationCanvas.tsx:985
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
 #: src/features/Dashboard/PlanDashboardCards.tsx:470
@@ -3650,7 +3655,7 @@ msgstr "Gå till huvudsidan"
 msgid "Goal"
 msgstr "Mål"
 
-#: src/features/Conversation/ConversationCanvas.tsx:994
+#: src/features/Conversation/ConversationCanvas.tsx:657
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "Målet är skapat"
@@ -3730,7 +3735,7 @@ msgstr "Grammatikkorrigeringar"
 msgid "Grammar corrections to boost your confidence"
 msgstr "Grammatikkorrigeringar för att öka ditt självförtroende"
 
-#: src/features/Conversation/ConversationCanvas.tsx:732
+#: src/features/Conversation/ProcessUserInput.tsx:168
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:415
 #. js-lingui-explicit-id
 msgid "Great!"
@@ -3818,7 +3823,7 @@ msgstr "Hälsa"
 msgid "Help"
 msgstr "Hjälp"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1224
+#: src/features/Conversation/ConversationCanvas.tsx:887
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Hjälp med svar"
@@ -4499,7 +4504,7 @@ msgstr "Jag skulle lägga till caching i minnet och öka DB-resurserna."
 msgid "I'd add retries with a longer timeout."
 msgstr "Jag skulle lägga till omförsök med en längre timeout."
 
-#: src/features/Conversation/ConversationCanvas.tsx:371
+#: src/features/Conversation/ConversationCanvas.tsx:289
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "Idé för ditt meddelande"
@@ -5426,7 +5431,7 @@ msgstr ""
 "nyckelbedrift och ditt intresse för företaget. Träna på din "
 "självintroduktion så att du låter"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1180
+#: src/features/Conversation/ConversationCanvas.tsx:843
 #. js-lingui-explicit-id
 msgid "Keyboard mode"
 msgstr "Tangentbordsläge"
@@ -5494,7 +5499,7 @@ msgstr "Språkinlärningsresurser"
 msgid "Language Learning Tips"
 msgstr "Språkinlärningstips"
 
-#: src/features/Conversation/ConversationCanvas.tsx:450
+#: src/features/Conversation/ConversationCanvas.tsx:368
 #. js-lingui-explicit-id
 msgid "Language level:"
 msgstr "Språknivå:"
@@ -5620,12 +5625,12 @@ msgstr "Rättsliga:"
 msgid "Less"
 msgstr "Mindre"
 
-#: src/features/Conversation/ConversationCanvas.tsx:429
+#: src/features/Conversation/ConversationCanvas.tsx:347
 #. js-lingui-explicit-id
 msgid "Lesson Review"
 msgstr "Lektionsgenomgång"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1004
+#: src/features/Conversation/ConversationCanvas.tsx:667
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "Lektioner tillagda:"
@@ -5702,10 +5707,10 @@ msgstr "Laddar."
 msgid "Loading.."
 msgstr "Laddar.."
 
-#: src/features/Chat/SubmitForm.tsx:33
+#: src/features/Chat/SubmitForm.tsx:37
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
-#: src/features/Conversation/ConversationCanvas.tsx:337
-#: src/features/Conversation/ConversationCanvas.tsx:1298
+#: src/features/Conversation/ConversationCanvas.tsx:255
+#: src/features/Conversation/ConversationCanvas.tsx:961
 #: src/features/Conversation/ConversationPage.tsx:104
 #: src/features/Conversation/ConversationPage.tsx:113
 #: src/features/Conversation/ConversationPage.tsx:133
@@ -5907,7 +5912,7 @@ msgstr "Mikrofonåtkomst"
 msgid "Minutes"
 msgstr "Minuter"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1298
+#: src/features/Conversation/ConversationCanvas.tsx:961
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Uppdrag slutfört"
@@ -6108,11 +6113,6 @@ msgstr "Nya ord"
 #. js-lingui-explicit-id
 msgid "New words to practice."
 msgstr "Nya ord att öva på."
-
-#: src/features/Conversation/ConversationCanvas.tsx:922
-#. js-lingui-explicit-id
-msgid "New Words to Vocabulary:"
-msgstr "Nya ord till ordförrådet:"
 
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
@@ -6437,12 +6437,12 @@ msgstr "Öppna i Telegram"
 msgid "Open personal plan"
 msgstr "Öppna personlig plan"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1025
+#: src/features/Conversation/ConversationCanvas.tsx:688
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "Öppen planlösning"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1310
+#: src/features/Conversation/ConversationCanvas.tsx:973
 #: src/features/Game/Battle/BattleCard.tsx:281
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -6705,7 +6705,7 @@ msgstr "Vänligen bekräfta ditt kreditkort för att få tillgång till alla fun
 msgid "Please enter a valid email address"
 msgstr "Vänligen ange en giltig e-postadress"
 
-#: src/features/Chat/SubmitForm.tsx:153
+#: src/features/Chat/SubmitForm.tsx:165
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Vänligen spela in ett längre meddelande (åtminstone några ord)."
@@ -7098,7 +7098,7 @@ msgstr ""
 "Använd tipsen från denna artikel, öva med FluencyPals intervjusimulator, "
 "och gå in i din nästa jobbintervju med självförtroende."
 
-#: src/features/Conversation/ConversationCanvas.tsx:974
+#: src/features/Conversation/ConversationCanvas.tsx:637
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "Förbereder Mål"
@@ -7295,8 +7295,9 @@ msgstr "Ranka bland de topp 5 för att få appen gratis"
 msgid "Rating"
 msgstr "Betyg"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1065
-#: src/features/Conversation/ConversationCanvas.tsx:1336
+#: src/features/Chat/SubmitForm.tsx:120
+#: src/features/Conversation/ConversationCanvas.tsx:728
+#: src/features/Conversation/ConversationCanvas.tsx:999
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
@@ -7307,7 +7308,7 @@ msgstr "Spela in igen"
 msgid "Re-Record"
 msgstr "Spela in på nytt"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1352
+#: src/features/Conversation/ConversationCanvas.tsx:1015
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Skriv om"
@@ -7544,7 +7545,7 @@ msgstr ""
 "Spela in en 2-3 minuters berättelse med hjälp av "
 "<0>{learningLanguageName}</0> eller <1>{nativeLanguageName}</1>"
 
-#: src/features/Chat/SubmitForm.tsx:154
+#: src/features/Chat/SubmitForm.tsx:180
 #. js-lingui-explicit-id
 msgid "Record a message and get {points} points"
 msgstr "Spela in ett meddelande och få {points} poäng"
@@ -7568,7 +7569,7 @@ msgstr "Spela in svar"
 
 #: src/features/Chat/ChatSection.tsx:175
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
-#: src/features/Conversation/ConversationCanvas.tsx:1107
+#: src/features/Conversation/ConversationCanvas.tsx:770
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Spela in meddelande"
@@ -7885,7 +7886,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantisk HTML"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1048
+#: src/features/Conversation/ConversationCanvas.tsx:711
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -7906,7 +7907,7 @@ msgstr "Skicka e-post igen"
 msgid "Send me sign-in link"
 msgstr "Skicka mig inloggningslänken"
 
-#: src/features/Chat/SubmitForm.tsx:120
+#: src/features/Chat/SubmitForm.tsx:131
 #: src/features/Conversation/CallMode/CallButtons.tsx:345
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -8323,7 +8324,7 @@ msgstr "Börja Lära nu"
 msgid "Start Monthly Plan"
 msgstr "Starta Månadsplan"
 
-#: src/features/Conversation/ConversationCanvas.tsx:502
+#: src/features/Conversation/ConversationCanvas.tsx:420
 #. js-lingui-explicit-id
 msgid "Start new lesson"
 msgstr "Starta ny lektion"
@@ -8501,7 +8502,7 @@ msgstr ""
 "att leverera koncisa, övertygande svar som hjälper dig att sticka ut i alla "
 "jobbintervjuer."
 
-#: src/features/Chat/SubmitForm.tsx:105
+#: src/features/Chat/SubmitForm.tsx:97
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -9091,21 +9092,16 @@ msgstr "Totalt:"
 msgid "Track Your Fluency Progress"
 msgstr "Spåra din flytande utveckling"
 
-#: src/features/Conversation/ConversationCanvas.tsx:778
-#: src/features/Conversation/ConversationCanvas.tsx:781
-#: src/features/Conversation/ConversationCanvas.tsx:866
-#: src/features/Conversation/ConversationCanvas.tsx:873
+#: src/features/Conversation/ProcessUserInput.tsx:223
+#: src/features/Conversation/ProcessUserInput.tsx:224
+#: src/features/Conversation/ProcessUserInput.tsx:302
+#: src/features/Conversation/ProcessUserInput.tsx:309
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:220
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Transkriberar..."
-
-#: src/features/Chat/SubmitForm.tsx:48
-#. js-lingui-explicit-id
-msgid "Transcription:"
-msgstr "Transkription:"
 
 #: src/features/Chat/Message.tsx:272
 #. js-lingui-explicit-id
@@ -9379,7 +9375,7 @@ msgstr "Ordförråd"
 msgid "Vocabulary challenges"
 msgstr "Ordförrådsutmaningar"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1158
+#: src/features/Conversation/ConversationCanvas.tsx:821
 #. js-lingui-explicit-id
 msgid "Voice record mode"
 msgstr "Röstinspelningsläge"
@@ -9715,7 +9711,7 @@ msgstr "Vad betyder en timme?"
 msgid "What types of frontend interviews can I practice for?"
 msgstr "Vilka typer av frontendintervjuer kan jag öva på?"
 
-#: src/features/Conversation/ConversationCanvas.tsx:457
+#: src/features/Conversation/ConversationCanvas.tsx:375
 #. js-lingui-explicit-id
 msgid "What was great:"
 msgstr "Vad var bra:"
@@ -10289,12 +10285,12 @@ msgstr "Din partner för förberedelse inför jobbintervjun"
 msgid "Your Language Level"
 msgstr "Ditt Språknivå"
 
-#: src/features/Conversation/ConversationCanvas.tsx:755
+#: src/features/Conversation/ProcessUserInput.tsx:201
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Ditt meddelande"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1247
+#: src/features/Conversation/ConversationCanvas.tsx:910
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Ditt meddelande..."
@@ -10370,6 +10366,16 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Conversation/ConversationCanvas.tsx:922
+#. js-lingui-explicit-id
+#~ msgid "New Words to Vocabulary:"
+#~ msgstr "Nya ord till ordförrådet:"
+
+#: src/features/Chat/SubmitForm.tsx:48
+#. js-lingui-explicit-id
+#~ msgid "Transcription:"
+#~ msgstr "Transkription:"
 
 #: src/features/Chat/ChartSection.tsx:120
 #. js-lingui-explicit-id

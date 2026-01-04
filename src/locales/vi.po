@@ -422,7 +422,7 @@ msgstr "Kế hoạch hành động để cải thiện kỹ năng backend quan t
 msgid "Active"
 msgstr "Đang hoạt động"
 
-#: src/features/Chat/ChatSection.tsx:148
+#: src/features/Chat/ChatSection.tsx:149
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Thêm trả lời"
@@ -677,7 +677,7 @@ msgstr "Tất cả các kịch bản"
 msgid "Allow WebCam"
 msgstr "Cho phép WebCam"
 
-#: src/features/Conversation/ConversationCanvas.tsx:717
+#: src/features/Conversation/ProcessUserInput.tsx:153
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Gần đúng"
@@ -710,12 +710,17 @@ msgstr ""
 "Số tiền quá lớn. Tôi đánh giá cao sự hỗ trợ của bạn, nhưng hãy giữ nó dưới "
 "$400"
 
+#: src/features/Conversation/ProcessUserInput.tsx:115
+#. js-lingui-explicit-id
+msgid "An error occurred while analyzing the message. Please try again."
+msgstr "Đã xảy ra lỗi khi phân tích thông điệp. Vui lòng thử lại."
+
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:411
 #. js-lingui-explicit-id
 msgid "Analysis"
 msgstr "Phân tích"
 
-#: src/features/Conversation/ConversationCanvas.tsx:967
+#: src/features/Conversation/ConversationCanvas.tsx:630
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Phân tích"
@@ -725,12 +730,12 @@ msgstr "Phân tích"
 msgid "Analyzing your inputs..."
 msgstr "Đang phân tích các đầu vào của bạn..."
 
-#: src/features/Conversation/ConversationCanvas.tsx:452
-#: src/features/Conversation/ConversationCanvas.tsx:459
-#: src/features/Conversation/ConversationCanvas.tsx:466
-#: src/features/Conversation/ConversationCanvas.tsx:729
-#: src/features/Conversation/ConversationCanvas.tsx:868
-#: src/features/Conversation/ConversationCanvas.tsx:875
+#: src/features/Conversation/ConversationCanvas.tsx:370
+#: src/features/Conversation/ConversationCanvas.tsx:377
+#: src/features/Conversation/ConversationCanvas.tsx:384
+#: src/features/Conversation/ProcessUserInput.tsx:165
+#: src/features/Conversation/ProcessUserInput.tsx:304
+#: src/features/Conversation/ProcessUserInput.tsx:311
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Đang phân tích..."
@@ -815,7 +820,7 @@ msgstr ""
 msgid "Are you sure you want to reject this battle?"
 msgstr "Bạn có chắc chắn muốn từ chối trận đấu này không?"
 
-#: src/features/Conversation/ConversationCanvas.tsx:464
+#: src/features/Conversation/ConversationCanvas.tsx:382
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
 msgstr "Các khu vực cần cải thiện:"
@@ -1169,7 +1174,7 @@ msgstr "Bài Kiểm Tra Sẵn Sàng Phỏng Vấn Backend C#"
 msgid "Caching Strategies"
 msgstr "Chiến Lược Lưu Bộ Nhớ Đệm"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1202
+#: src/features/Conversation/ConversationCanvas.tsx:865
 #: src/features/Goal/Quiz/QuizPage2.tsx:314
 #. js-lingui-explicit-id
 msgid "Call mode"
@@ -1214,7 +1219,7 @@ msgstr "Tôi có thể sử dụng FluencyPal miễn phí không?"
 msgid "Cancel"
 msgstr "Hủy bỏ"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1412
+#: src/features/Conversation/ConversationCanvas.tsx:1075
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Hủy bỏ ghi âm"
@@ -1597,7 +1602,7 @@ msgstr "Contacts:"
 msgid "Continue"
 msgstr "Tiếp tục"
 
-#: src/features/Conversation/ConversationCanvas.tsx:489
+#: src/features/Conversation/ConversationCanvas.tsx:407
 #. js-lingui-explicit-id
 msgid "Continue conversation"
 msgstr "Tiếp tục cuộc trò chuyện"
@@ -1669,7 +1674,7 @@ msgstr "Sao chép liên kết trang"
 msgid "Core Web Vitals"
 msgstr "Các chỉ số Web cốt lõi"
 
-#: src/features/Conversation/ConversationCanvas.tsx:827
+#: src/features/Conversation/ProcessUserInput.tsx:265
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Đã sửa"
@@ -2323,7 +2328,7 @@ msgstr "Đừng quên thử chế độ gọi trong phần thực hành!"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:1079
+#: src/features/Conversation/ConversationCanvas.tsx:742
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:493
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
@@ -2633,7 +2638,7 @@ msgstr "Lỗi khi tạo phiên thanh toán. Vui lòng thử lại sau."
 msgid "Error creating plan. Please try again."
 msgstr "Lỗi khi tạo kế hoạch. Vui lòng thử lại."
 
-#: src/features/Conversation/ConversationCanvas.tsx:663
+#: src/features/Conversation/ConversationCanvas.tsx:581
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Lỗi trong quá trình phân tích tin nhắn"
@@ -3052,7 +3057,7 @@ msgstr ""
 msgid "Finalizing decision ..."
 msgstr "Đang hoàn thiện quyết định ..."
 
-#: src/features/Conversation/ConversationCanvas.tsx:1141
+#: src/features/Conversation/ConversationCanvas.tsx:804
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Hoàn tất"
@@ -3668,7 +3673,7 @@ msgstr "Đi tới Thực hành (Gói Miễn phí)"
 msgid "Go to the main page"
 msgstr "Đi đến trang chính"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1322
+#: src/features/Conversation/ConversationCanvas.tsx:985
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
 #: src/features/Dashboard/PlanDashboardCards.tsx:470
@@ -3676,7 +3681,7 @@ msgstr "Đi đến trang chính"
 msgid "Goal"
 msgstr "Mục tiêu"
 
-#: src/features/Conversation/ConversationCanvas.tsx:994
+#: src/features/Conversation/ConversationCanvas.tsx:657
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "Mục tiêu đã được tạo"
@@ -3757,7 +3762,7 @@ msgstr "Sửa lỗi ngữ pháp"
 msgid "Grammar corrections to boost your confidence"
 msgstr "Sửa ngữ pháp để tăng cường sự tự tin của bạn"
 
-#: src/features/Conversation/ConversationCanvas.tsx:732
+#: src/features/Conversation/ProcessUserInput.tsx:168
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:415
 #. js-lingui-explicit-id
 msgid "Great!"
@@ -3844,7 +3849,7 @@ msgstr "Sức khỏe"
 msgid "Help"
 msgstr "Trợ giúp"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1224
+#: src/features/Conversation/ConversationCanvas.tsx:887
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Giúp với câu trả lời"
@@ -4532,7 +4537,7 @@ msgstr "Tôi sẽ thêm bộ nhớ đệm trong bộ nhớ và tăng tài nguyê
 msgid "I'd add retries with a longer timeout."
 msgstr "Tôi sẽ thêm thử lại với thời gian chờ lâu hơn."
 
-#: src/features/Conversation/ConversationCanvas.tsx:371
+#: src/features/Conversation/ConversationCanvas.tsx:289
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "Ý tưởng cho tin nhắn của bạn"
@@ -5462,7 +5467,7 @@ msgstr ""
 "thành tựu quan trọng, và sự quan tâm của bạn đối với công ty. Luyện tập "
 "giới thiệu bản thân sao cho bạn nghe"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1180
+#: src/features/Conversation/ConversationCanvas.tsx:843
 #. js-lingui-explicit-id
 msgid "Keyboard mode"
 msgstr "Chế độ bàn phím"
@@ -5532,7 +5537,7 @@ msgstr "Tài nguyên Học Ngôn Ngữ"
 msgid "Language Learning Tips"
 msgstr "Mẹo Học Ngôn Ngữ"
 
-#: src/features/Conversation/ConversationCanvas.tsx:450
+#: src/features/Conversation/ConversationCanvas.tsx:368
 #. js-lingui-explicit-id
 msgid "Language level:"
 msgstr "Trình độ ngôn ngữ:"
@@ -5656,12 +5661,12 @@ msgstr "Pháp lý:"
 msgid "Less"
 msgstr "Ít hơn"
 
-#: src/features/Conversation/ConversationCanvas.tsx:429
+#: src/features/Conversation/ConversationCanvas.tsx:347
 #. js-lingui-explicit-id
 msgid "Lesson Review"
 msgstr "Đánh Giá Bài Học"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1004
+#: src/features/Conversation/ConversationCanvas.tsx:667
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "Bài học được thêm:"
@@ -5738,10 +5743,10 @@ msgstr "Đang tải."
 msgid "Loading.."
 msgstr "Đang tải.."
 
-#: src/features/Chat/SubmitForm.tsx:33
+#: src/features/Chat/SubmitForm.tsx:37
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
-#: src/features/Conversation/ConversationCanvas.tsx:337
-#: src/features/Conversation/ConversationCanvas.tsx:1298
+#: src/features/Conversation/ConversationCanvas.tsx:255
+#: src/features/Conversation/ConversationCanvas.tsx:961
 #: src/features/Conversation/ConversationPage.tsx:104
 #: src/features/Conversation/ConversationPage.tsx:113
 #: src/features/Conversation/ConversationPage.tsx:133
@@ -5943,7 +5948,7 @@ msgstr "Quyền truy cập Microphone"
 msgid "Minutes"
 msgstr "Phút"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1298
+#: src/features/Conversation/ConversationCanvas.tsx:961
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Nhiệm vụ hoàn thành"
@@ -6144,11 +6149,6 @@ msgstr "Từ mới"
 #. js-lingui-explicit-id
 msgid "New words to practice."
 msgstr "Từ mới để luyện tập."
-
-#: src/features/Conversation/ConversationCanvas.tsx:922
-#. js-lingui-explicit-id
-msgid "New Words to Vocabulary:"
-msgstr "Từ mới cho từ vựng:"
 
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
@@ -6472,12 +6472,12 @@ msgstr "Mở trong Telegram"
 msgid "Open personal plan"
 msgstr "Mở kế hoạch cá nhân"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1025
+#: src/features/Conversation/ConversationCanvas.tsx:688
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "Kế hoạch mở"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1310
+#: src/features/Conversation/ConversationCanvas.tsx:973
 #: src/features/Game/Battle/BattleCard.tsx:281
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -6743,7 +6743,7 @@ msgstr "Vui lòng xác nhận thẻ tín dụng của bạn để truy cập t�
 msgid "Please enter a valid email address"
 msgstr "Vui lòng nhập địa chỉ email hợp lệ"
 
-#: src/features/Chat/SubmitForm.tsx:153
+#: src/features/Chat/SubmitForm.tsx:165
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Vui lòng ghi lại một thông điệp dài hơn (ít nhất vài từ)."
@@ -7149,7 +7149,7 @@ msgstr ""
 "phỏng phỏng vấn của FluencyPal, và tiến vào cuộc phỏng vấn công việc tiếp "
 "theo của bạn với sự tự tin."
 
-#: src/features/Conversation/ConversationCanvas.tsx:974
+#: src/features/Conversation/ConversationCanvas.tsx:637
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "Đang Chuẩn bị Mục tiêu"
@@ -7350,8 +7350,9 @@ msgstr "Đứng trong top 5 để nhận ứng dụng miễn phí"
 msgid "Rating"
 msgstr "Đánh giá"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1065
-#: src/features/Conversation/ConversationCanvas.tsx:1336
+#: src/features/Chat/SubmitForm.tsx:120
+#: src/features/Conversation/ConversationCanvas.tsx:728
+#: src/features/Conversation/ConversationCanvas.tsx:999
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
@@ -7362,7 +7363,7 @@ msgstr "Ghi lại"
 msgid "Re-Record"
 msgstr "Ghi lại"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1352
+#: src/features/Conversation/ConversationCanvas.tsx:1015
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Viết lại"
@@ -7601,7 +7602,7 @@ msgstr ""
 "Ghi âm một câu chuyện từ 2-3 phút sử dụng <0>{learningLanguageName}</0> "
 "hoặc <1>{nativeLanguageName}</1>"
 
-#: src/features/Chat/SubmitForm.tsx:154
+#: src/features/Chat/SubmitForm.tsx:180
 #. js-lingui-explicit-id
 msgid "Record a message and get {points} points"
 msgstr "Ghi âm một tin nhắn và nhận {points} điểm"
@@ -7625,7 +7626,7 @@ msgstr "Ghi âm câu trả lời"
 
 #: src/features/Chat/ChatSection.tsx:175
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
-#: src/features/Conversation/ConversationCanvas.tsx:1107
+#: src/features/Conversation/ConversationCanvas.tsx:770
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Ghi Tin Nhắn"
@@ -7949,7 +7950,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantic HTML"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1048
+#: src/features/Conversation/ConversationCanvas.tsx:711
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -7970,7 +7971,7 @@ msgstr "Gửi email lại"
 msgid "Send me sign-in link"
 msgstr "Gửi cho tôi liên kết đăng nhập"
 
-#: src/features/Chat/SubmitForm.tsx:120
+#: src/features/Chat/SubmitForm.tsx:131
 #: src/features/Conversation/CallMode/CallButtons.tsx:345
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -8395,7 +8396,7 @@ msgstr "Bắt đầu học ngay bây giờ"
 msgid "Start Monthly Plan"
 msgstr "Bắt đầu Kế hoạch Hàng tháng"
 
-#: src/features/Conversation/ConversationCanvas.tsx:502
+#: src/features/Conversation/ConversationCanvas.tsx:420
 #. js-lingui-explicit-id
 msgid "Start new lesson"
 msgstr "Bắt đầu bài học mới"
@@ -8571,7 +8572,7 @@ msgstr ""
 "đưa ra các câu trả lời ngắn gọn, thuyết phục giúp bạn nổi bật trong bất kỳ "
 "cuộc phỏng vấn công việc nào."
 
-#: src/features/Chat/SubmitForm.tsx:105
+#: src/features/Chat/SubmitForm.tsx:97
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -9164,21 +9165,16 @@ msgstr "Tổng cộng:"
 msgid "Track Your Fluency Progress"
 msgstr "Theo dõi tiến bộ thông thạo của bạn"
 
-#: src/features/Conversation/ConversationCanvas.tsx:778
-#: src/features/Conversation/ConversationCanvas.tsx:781
-#: src/features/Conversation/ConversationCanvas.tsx:866
-#: src/features/Conversation/ConversationCanvas.tsx:873
+#: src/features/Conversation/ProcessUserInput.tsx:223
+#: src/features/Conversation/ProcessUserInput.tsx:224
+#: src/features/Conversation/ProcessUserInput.tsx:302
+#: src/features/Conversation/ProcessUserInput.tsx:309
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:220
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Đang phiên âm..."
-
-#: src/features/Chat/SubmitForm.tsx:48
-#. js-lingui-explicit-id
-msgid "Transcription:"
-msgstr "Chuyển âm:"
 
 #: src/features/Chat/Message.tsx:272
 #. js-lingui-explicit-id
@@ -9461,7 +9457,7 @@ msgstr "Từ vựng"
 msgid "Vocabulary challenges"
 msgstr "Thử thách từ vựng"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1158
+#: src/features/Conversation/ConversationCanvas.tsx:821
 #. js-lingui-explicit-id
 msgid "Voice record mode"
 msgstr "Chế độ ghi âm giọng nói"
@@ -9800,7 +9796,7 @@ msgstr "Đồng nghĩa với một giờ là gì?"
 msgid "What types of frontend interviews can I practice for?"
 msgstr "Có những loại phỏng vấn frontend nào mà tôi có thể luyện tập?"
 
-#: src/features/Conversation/ConversationCanvas.tsx:457
+#: src/features/Conversation/ConversationCanvas.tsx:375
 #. js-lingui-explicit-id
 msgid "What was great:"
 msgstr "Điều tuyệt vời:"
@@ -10387,12 +10383,12 @@ msgstr "Người bạn đồng hành chuẩn bị phỏng vấn xin việc của
 msgid "Your Language Level"
 msgstr "Mức độ ngôn ngữ của bạn"
 
-#: src/features/Conversation/ConversationCanvas.tsx:755
+#: src/features/Conversation/ProcessUserInput.tsx:201
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Tin nhắn của bạn"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1247
+#: src/features/Conversation/ConversationCanvas.tsx:910
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Tin nhắn của bạn..."
@@ -10468,6 +10464,16 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Conversation/ConversationCanvas.tsx:922
+#. js-lingui-explicit-id
+#~ msgid "New Words to Vocabulary:"
+#~ msgstr "Từ mới cho từ vựng:"
+
+#: src/features/Chat/SubmitForm.tsx:48
+#. js-lingui-explicit-id
+#~ msgid "Transcription:"
+#~ msgstr "Chuyển âm:"
 
 #: src/features/Chat/ChartSection.tsx:120
 #. js-lingui-explicit-id
