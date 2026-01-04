@@ -26,23 +26,34 @@ export function MessageList({ messages, currentUserId, onEdit, onDelete }: Messa
   };
 
   return (
-    <Stack sx={{}}>
+    <Stack
+      sx={{
+        border: "1px solid rgba(255, 255, 255, 0.1)",
+        borderRadius: "12px",
+        overflow: "hidden",
+        ".message-item:not(:last-child)": {
+          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+        },
+      }}
+    >
       {messages.length === 0 ? (
         <Typography align="center" color="textSecondary">
           {i18n._("No messages yet")}
         </Typography>
       ) : (
         <>
-          {messages.map((message) => (
-            <Message
-              key={message.id}
-              userAvatarUrl={getUserAvatarUrl(message.senderId)}
-              message={message}
-              isOwnMessage={message.senderId === currentUserId}
-              userName={getUserName(message.senderId)}
-              onEdit={onEdit}
-              onDelete={onDelete}
-            />
+          {messages.map((message, index) => (
+            <Stack key={message.id} className="message-item">
+              <Message
+                key={message.id}
+                userAvatarUrl={getUserAvatarUrl(message.senderId)}
+                message={message}
+                isOwnMessage={message.senderId === currentUserId}
+                userName={getUserName(message.senderId)}
+                onEdit={onEdit}
+                onDelete={onDelete}
+              />
+            </Stack>
           ))}
         </>
       )}

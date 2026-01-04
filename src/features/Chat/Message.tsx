@@ -65,10 +65,7 @@ export function Message({
   return (
     <Stack
       sx={{
-        marginBottom: "15px",
         padding: "15px",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
-        borderRadius: "10px",
         backgroundColor: "rgba(255, 255, 255, 0.01)",
       }}
     >
@@ -143,7 +140,7 @@ export function Message({
               <Typography
                 variant="caption"
                 sx={{
-                  opacity: 0.7,
+                  opacity: 0.6,
                 }}
               >
                 {updatedAgo}
