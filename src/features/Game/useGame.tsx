@@ -32,6 +32,7 @@ import { db } from "../Firebase/firebaseDb";
 import { setDoc } from "firebase/firestore";
 import { avatars } from "./avatars";
 import { generateRandomUsername } from "./userNames";
+import { useUrlState } from "../Url/useUrlParam";
 
 interface GameContextType {
   stats: UsersStat[];
@@ -68,6 +69,9 @@ interface GameContextType {
 
   getUserAvatarUrl: (userId: string) => string;
   getUserName: (userId: string) => string;
+
+  modalUserId: string;
+  showUserInModal: (userId: string) => void;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
@@ -79,6 +83,8 @@ function useProvideGame(): GameContextType {
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [questions, setQuestions] = useState<GameQuestionShort[]>([]);
   const [activeQuestion, setActiveQuestion] = useState<GameQuestionShort | null>(null);
+
+  const [modalUserId, setModalUserId] = useUrlState<string | null>("userId", "", true);
 
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
   const [gameRate, gameRateLoading] = useDocumentData(db.documents.gameRate2);
@@ -331,6 +337,9 @@ function useProvideGame(): GameContextType {
 
     getUserAvatarUrl,
     getUserName,
+
+    modalUserId: modalUserId || "",
+    showUserInModal: setModalUserId,
   };
 }
 

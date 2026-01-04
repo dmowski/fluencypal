@@ -9,7 +9,6 @@ import { useLingui } from "@lingui/react";
 import { useChat } from "./useChat";
 import { useAuth } from "../Auth/useAuth";
 import { useGame } from "../Game/useGame";
-import { UserProfileModal } from "../Game/UserProfileModal";
 import { MessageActionButton } from "./MessageActionButton";
 import { useTranslate } from "../Translation/useTranslate";
 
@@ -65,10 +64,7 @@ export function Message({
     setIsDeleting(false);
   };
 
-  const authorId = message.senderId;
   const game = useGame();
-  const gameStat = game.stats.find((stat) => stat.userId === authorId);
-  const [isShowModal, setIsShowModal] = useState(false);
 
   return (
     <Stack
@@ -78,9 +74,6 @@ export function Message({
         position: "relative",
       }}
     >
-      {isShowModal && gameStat && (
-        <UserProfileModal stat={gameStat} onClose={() => setIsShowModal(false)} />
-      )}
       <Stack
         sx={{
           display: "flex",
@@ -124,7 +117,7 @@ export function Message({
                 },
               }}
               component={"button"}
-              onClick={() => setIsShowModal(true)}
+              onClick={() => game.showUserInModal(message.senderId)}
             >
               {userAvatarUrl && (
                 <Stack

@@ -7,9 +7,6 @@ import { defaultAvatar } from "./avatars";
 import dayjs from "dayjs";
 import { UsersStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
-import { useState } from "react";
-
-import { UserProfileModal } from "./UserProfileModal";
 import { GamePointRow } from "./GamePointRow";
 
 export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
@@ -26,22 +23,16 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
   const avatar = game.gameAvatars[stat.userId] || defaultAvatar;
   const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 10 : false;
 
-  const [isShowUserInfoModal, setIsShowUserInfoModal] = useState(false);
-
   const actualPosition = game.getRealPosition(stat.userId) + 1;
 
   const points = game.stats.find((s) => s.userId === stat.userId)?.points || 0;
 
   return (
     <>
-      {isShowUserInfoModal && (
-        <UserProfileModal stat={stat} onClose={() => setIsShowUserInfoModal(false)} />
-      )}
-
       <Stack
         key={stat.userId}
         component={"button"}
-        onClick={() => setIsShowUserInfoModal(true)}
+        onClick={() => game.showUserInModal(stat.userId)}
         sx={{
           flexDirection: "row",
           width: "100%",
