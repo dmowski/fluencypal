@@ -11,7 +11,6 @@ import { getPageLangCode, SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { ConversationCanvas } from "./ConversationCanvas";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
-import { useCorrections } from "../Corrections/useCorrections";
 import { useLingui } from "@lingui/react";
 import { InfoBlockedSection } from "../Dashboard/InfoBlockedSection";
 import { useEffect } from "react";
@@ -44,7 +43,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const aiConversation = useAiConversation();
   const usage = useUsage();
   const recorder = useAudioRecorder({});
-  const corrections = useCorrections();
   const { i18n } = useLingui();
   const words = useWords();
   const rules = useRules();
@@ -195,9 +193,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
           await aiConversation.addUserMessage(message);
         }}
         balanceHours={usage.balanceHours}
-        conversationId={aiConversation.conversationId}
         togglePaymentModal={usage.togglePaymentModal}
-        analyzeUserMessage={corrections.analyzeUserMessage}
         transcriptMessage={recorder.transcription || ""}
         setIsVolumeOn={aiConversation.toggleVolume}
         startRecording={async () => {

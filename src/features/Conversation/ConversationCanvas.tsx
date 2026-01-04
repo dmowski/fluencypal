@@ -63,22 +63,7 @@ interface ConversationCanvasProps {
   balanceHours: number;
   recordingError: string;
   togglePaymentModal: (isOpen: boolean) => void;
-  conversationId: string;
   closeConversation: () => void;
-  analyzeUserMessage: ({
-    previousBotMessage,
-    message,
-    conversationId,
-  }: {
-    previousBotMessage: string;
-    message: string;
-    conversationId: string;
-  }) => Promise<{
-    sourceMessage: string;
-    correctedMessage: string;
-    description: string;
-    newWords: string[];
-  }>;
   transcriptMessage?: string;
   startRecording: () => Promise<void>;
   stopRecording: () => Promise<void>;
@@ -124,7 +109,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   isClosing,
   addUserMessage,
   togglePaymentModal,
-  analyzeUserMessage,
+
   transcriptMessage,
   startRecording,
   stopRecording,
@@ -134,7 +119,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   recordingMilliSeconds,
   recordVisualizerComponent,
   recordingError,
-  conversationId,
+
   isMuted,
   setIsMuted,
   isProcessingGoal,
