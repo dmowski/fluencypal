@@ -7,8 +7,6 @@ import StopIcon from "@mui/icons-material/Stop";
 import MicIcon from "@mui/icons-material/Mic";
 import { CHAT_MESSAGE_POINTS } from "./data";
 import { Trash } from "lucide-react";
-import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
-import { useAuth } from "../Auth/useAuth";
 
 interface SubmitFormProps {
   onSubmit: (message: string) => Promise<void>;
@@ -18,7 +16,6 @@ interface SubmitFormProps {
 
 export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFormProps) {
   const { i18n } = useLingui();
-  const auth = useAuth();
 
   const recorder = useAudioRecorder({
     visualizerComponentWidth: "100%",
@@ -28,14 +25,6 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
     await onSubmit(recorder.transcription || "");
     recorder.removeTranscript();
     recorder.cancelRecording();
-
-    await increaseGamePointsRequest(
-      {
-        chatMessage: recorder.transcription || "",
-        chatUserId: auth.uid || "",
-      },
-      await auth.getToken()
-    );
   };
 
   const needMoreText = !!recorder?.transcription?.length && recorder.transcription.length < 4;

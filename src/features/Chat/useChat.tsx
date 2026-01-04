@@ -5,6 +5,7 @@ import { useAuth } from "../Auth/useAuth";
 import { db } from "../Firebase/firebaseDb";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { ChatLike, ChatLikeType, UserChatMessage } from "./type";
+import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
 
 interface AddMessageProps {
   messageContent: string;
@@ -155,6 +156,17 @@ function useProvideChat(): ChatContextType {
     };
     const messageDoc = doc(messagesRef, newMessage.id);
     await setDoc(messageDoc, newMessage);
+
+    const isDev = auth.userInfo?.email?.includes("dmowski");
+    if (!isDev) {
+      await increaseGamePointsRequest(
+        {
+          chatMessage: messageContent,
+          chatUserId: auth.uid || "",
+        },
+        await auth.getToken()
+      );
+    }
   };
 
   const deleteMessage = async (messageId: string) => {
