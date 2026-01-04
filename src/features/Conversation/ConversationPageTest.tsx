@@ -59,22 +59,6 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     }, 300);
   }, []);
 
-  const analyzeMessage = async ({
-    previousBotMessage,
-    message,
-  }: {
-    previousBotMessage: string;
-    message: string;
-  }) => {
-    await sleep(100);
-    return {
-      correctedMessage: "Nice to be here!",
-      description: "Need to pay attention to the grammar",
-      sourceMessage: message,
-      newWords: ["Hello", "Amazing"],
-    };
-  };
-
   const recordVisualizerComponent = (
     <Stack
       sx={{
@@ -163,9 +147,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         messagesToComplete={5}
         messageOrder={{}}
         isMuted
-        conversationId="1"
         conversation={testMessage}
-        analyzeUserMessage={analyzeMessage}
         gameWords={gameStat}
         isClosed={false}
         isClosing={false}
