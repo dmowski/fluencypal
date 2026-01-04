@@ -8,7 +8,7 @@ export interface ChatLike {
   createdAtIso: string;
 }
 
-export interface UserChatMessage {
+export interface ChatMessage {
   id: string;
   senderId: string;
 
@@ -18,4 +18,8 @@ export interface UserChatMessage {
   createdAtUtc: number;
 
   updatedAtIso: string;
+}
+
+export interface UserChatMessage extends ChatMessage {
+  replies: ChatMessage[];
 }

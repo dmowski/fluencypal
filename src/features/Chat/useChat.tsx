@@ -110,6 +110,7 @@ function useProvideChat(): ChatContextType {
       createdAtIso: new Date().toISOString(),
       createdAtUtc: Date.now(),
       updatedAtIso: new Date().toISOString(),
+      replies: [],
     };
     const messageDoc = doc(messagesRef, newMessage.id);
     await setDoc(messageDoc, newMessage);
