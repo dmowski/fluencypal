@@ -148,9 +148,11 @@ export const deleteGameUserById = async (userId: string) => {
 
 export const isUserIsGameWinner = async (userId: string): Promise<boolean> => {
   const points = await getGameUsersPoints();
-  const sortedUserNames = Object.keys(points).sort((a, b) => points[b] - points[a]);
-  const userIndex = sortedUserNames.indexOf(userId);
-  const isTop5 = userIndex < 5;
+  const sortedUserIds = Object.keys(points).sort((a, b) => (points[b] || 0) - (points[a] || 0));
+
+  const userIndex = sortedUserIds.indexOf(userId);
+  const isTop5 = userIndex !== -1 && userIndex < 5;
+
   return isTop5;
 };
 
