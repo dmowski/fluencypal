@@ -1448,6 +1448,11 @@ msgstr "สื่อสารข้อแลกเปลี่ยนในกา
 msgid "Communication & Leadership"
 msgstr "การสื่อสารและภาวะผู้นำ"
 
+#: src/features/Game/GameOnboarding.tsx:112
+#. js-lingui-explicit-id
+msgid "Community Chat"
+msgstr "แชทชุมชน"
+
 #: src/features/Case/Landing/components/Footer.tsx:122
 #. js-lingui-explicit-id
 msgid "Company"
@@ -2035,7 +2040,7 @@ msgstr ""
 "อธิบายวิธีการวินิจฉัยและแก้ไขการลดประสิทธิภาพที่เกิดจากการ re-render "
 "ที่มากเกินไป."
 
-#: src/features/Game/GameOnboarding.tsx:60
+#: src/features/Game/GameOnboarding.tsx:61
 #. js-lingui-explicit-id
 msgid "Describe images, craft sentences, and translate words"
 msgstr "อธิบายภาพ, สร้างประโยค, และแปลคำ"
@@ -3371,7 +3376,7 @@ msgstr "การออกแบบระบบ Frontend"
 msgid "frontend system design interview"
 msgstr "การสัมภาษณ์ออกแบบระบบส่วนหน้าของผู้ใช้"
 
-#: src/features/Usage/FeatureBlocker.tsx:36
+#: src/features/Usage/FeatureBlocker.tsx:51
 #. js-lingui-explicit-id
 msgid "Full access"
 msgstr "การเข้าถึงแบบเต็มรูปแบบ"
@@ -3381,6 +3386,11 @@ msgstr "การเข้าถึงแบบเต็มรูปแบบ"
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "เข้าถึงเต็มรูปแบบ"
+
+#: src/features/Usage/FeatureBlocker.tsx:114
+#. js-lingui-explicit-id
+msgid "Full access is free if you reach the top 5 on the game leaderboard!"
+msgstr "เข้าถึงได้เต็มรูปแบบฟรีหากคุณติดอันดับ 5 อันดับสูงสุดในกระดานผู้นำของเกม!"
 
 #: src/features/Case/data/reusable/priceSection.ts:24
 #. js-lingui-explicit-id
@@ -3423,6 +3433,11 @@ msgstr "กำลังสร้าง..."
 #. js-lingui-explicit-id
 msgid "German Learning Plan"
 msgstr "แผนการเรียนภาษาเยอรมัน"
+
+#: src/features/Game/GameOnboarding.tsx:52
+#. js-lingui-explicit-id
+msgid "Get a full access for free!"
+msgstr "ได้เข้าถึงแบบเต็มรูปแบบฟรี!"
 
 #: src/features/Dashboard/TasksCard.tsx:52
 #. js-lingui-explicit-id
@@ -3538,7 +3553,7 @@ msgstr ""
 "และเพลิดเพลินกับการฝึกภาษาที่ขับเคลื่อนด้วย AI "
 "โดยไม่ต้องสมัครสมาชิกหรือค่าซ่อน."
 
-#: src/features/Usage/FeatureBlocker.tsx:80
+#: src/features/Usage/FeatureBlocker.tsx:97
 #: src/features/Usage/SubscriptionPaymentModal.tsx:775
 #. js-lingui-explicit-id
 msgid "Get Full Access"
@@ -3897,6 +3912,11 @@ msgstr "เน้นทักษะการเป็นผู้นำและ
 #. js-lingui-explicit-id
 msgid "Highlight your strengths relevant to the role:"
 msgstr "เน้นความสามารถที่สำคัญต่อบทบาท:"
+
+#: src/features/Usage/FeatureBlocker.tsx:106
+#. js-lingui-explicit-id
+msgid "Hint: "
+msgstr "คำแนะนำ:"
 
 #: src/features/Auth/InterviewAuthWall.tsx:27
 #. js-lingui-explicit-id
@@ -5169,7 +5189,6 @@ msgid "Installing..."
 msgstr "กำลังติดตั้ง..."
 
 #: src/features/Landing/LandingPage.tsx:384
-#: src/features/Usage/FeatureBlocker.tsx:57
 #. js-lingui-explicit-id
 msgid "Instant Grammar Corrections"
 msgstr "คำแนะนำไวยากรณ์ทันที"
@@ -5564,11 +5583,6 @@ msgstr "การประเมินความสามารถในกา
 msgid "Learn"
 msgstr "เรียนรู้"
 
-#: src/features/Game/GameOnboarding.tsx:51
-#. js-lingui-explicit-id
-msgid "Learn and Play"
-msgstr "เรียนรู้และเล่น"
-
 #: src/features/Landing/LandingPage.tsx:437
 #. js-lingui-explicit-id
 msgid "Learn anywhere, anytime"
@@ -5689,7 +5703,7 @@ msgstr "มาพูดคุยเกี่ยวกับเป้าหมา
 msgid "Let's talk. Tell me  about yourself"
 msgstr "มาพูดคุยกัน บอกฉันเกี่ยวกับตัวคุณ"
 
-#: src/features/Game/GameOnboarding.tsx:95
+#: src/features/Game/GameOnboarding.tsx:164
 #. js-lingui-explicit-id
 msgid "Let’s make sure you’re ready"
 msgstr "มาตรวจสอบว่าคุณพร้อมแล้ว"
@@ -5703,6 +5717,11 @@ msgstr "ถูกใจ"
 #. js-lingui-explicit-id
 msgid "Listening practice. You can hear AI responses"
 msgstr "ฝึกการฟัง คุณสามารถได้ยินการตอบสนองของ AI"
+
+#: src/features/Usage/FeatureBlocker.tsx:68
+#. js-lingui-explicit-id
+msgid "Listening practice. You will hear AI responses"
+msgstr "การฝึกฝนการฟัง คุณจะได้ยินคำตอบจาก AI"
 
 #: src/features/Blog/blogData.tsx:33
 #. js-lingui-explicit-id
@@ -6136,7 +6155,8 @@ msgstr "คำศัพท์ใหม่สำหรับฝึกฝน."
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
 #: src/features/Game/Battle/BattleActionModal.tsx:360
-#: src/features/Game/GameOnboarding.tsx:74
+#: src/features/Game/GameOnboarding.tsx:85
+#: src/features/Game/GameOnboarding.tsx:143
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:125
 #: src/features/Goal/Quiz/GoalReview.tsx:152
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
@@ -7311,6 +7331,11 @@ msgstr ""
 msgid "Rank in the top 5 to get the app for free"
 msgstr "ติดอันดับใน 5 อันดับแรกเพื่อรับแอปฟรี"
 
+#: src/features/Game/GameOnboarding.tsx:71
+#. js-lingui-explicit-id
+msgid "Rank in top 5 to get full access to all features!"
+msgstr "จัดอยู่อันดับ 5 สูงสุดเพื่อเข้าถึงคุณสมบัติทั้งหมด!"
+
 #: src/features/Game/GamePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Rating"
@@ -7414,7 +7439,7 @@ msgstr "พร้อมที่จะประสบความสำเร็
 msgid "Ready to Become Fluent in English?"
 msgstr "พร้อมที่จะพูดภาษาอังกฤษได้อย่างคล่องแคล่วหรือยัง?"
 
-#: src/features/Game/GameOnboarding.tsx:131
+#: src/features/Game/GameOnboarding.tsx:200
 #. js-lingui-explicit-id
 msgid "Ready to Play"
 msgstr "พร้อมเล่น"
@@ -7494,15 +7519,15 @@ msgstr "สถานการณ์ภาษาอังกฤษในชีว
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "การเล่นบทบาทจริงสำหรับการฝึกภาษาอังกฤษขั้นสูง"
 
+#: src/features/Conversation/CallMode/CallButtons.tsx:232
+#. js-lingui-explicit-id
+msgid "Real-time conversation"
+msgstr "การสนทนาแบบเรียลไทม์"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:385
 #. js-lingui-explicit-id
 msgid "Real-time conversations with AI using voice"
 msgstr "การสนทนาแบบเรียลไทม์กับ AI โดยใช้เสียง"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:232
-#. js-lingui-explicit-id
-msgid "Real-time microphone"
-msgstr "ไมโครโฟนแบบเรียลไทม์"
 
 #: src/features/Case/data/backendCSharp/techStackSection.ts:16
 #. js-lingui-explicit-id
@@ -7514,11 +7539,6 @@ msgstr "กรณีศึกษาของ API และข้อมูลใ�
 #. js-lingui-explicit-id
 msgid "Real-world scenarios, not just theory"
 msgstr "สถานการณ์จริง ไม่ใช่แค่ทฤษฎีเท่านั้น"
-
-#: src/features/Usage/FeatureBlocker.tsx:61
-#. js-lingui-explicit-id
-msgid "Realistic AI voice responses"
-msgstr "การตอบสนองด้วยเสียง AI ที่สมจริง"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
 #. js-lingui-explicit-id
@@ -7564,6 +7584,13 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Record a message and get {points} points"
 msgstr "บันทึกข้อความและรับ {points} คะแนน"
+
+#: src/features/Game/GameOnboarding.tsx:123
+#. js-lingui-explicit-id
+msgid ""
+"Record a message in Community Chat and get {points} points in the "
+"leaderboard"
+msgstr "บันทึกข้อความในชุมชนแชทและรับ {points} คะแนนในกระดานผู้นำ"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:59
 #: src/features/Case/data/frontend-junior/quizData.ts:77
@@ -9236,13 +9263,6 @@ msgstr "ข้อผิดพลาดที่ไม่รู้จัก"
 msgid "Unknown error during sign-in"
 msgstr "ข้อผิดพลาดที่ไม่ทราบสาเหตุระหว่างการลงชื่อเข้าใช้"
 
-#: src/features/Usage/FeatureBlocker.tsx:53
-#. js-lingui-explicit-id
-msgid "Unlimited AI Conversations"
-msgstr ""
-"\n"
-"การสนทนา AI แบบไม่จำกัด\n"
-
 #: src/features/Case/data/reusable/priceSection.ts:25
 #. js-lingui-explicit-id
 msgid "Unlimited answer reviews"
@@ -9263,7 +9283,7 @@ msgstr "เปิดไมโครโฟน"
 msgid "Unpublish"
 msgstr "ไม่เผยแพร่"
 
-#: src/features/Usage/FeatureBlocker.tsx:45
+#: src/features/Usage/FeatureBlocker.tsx:60
 #. js-lingui-explicit-id
 msgid "Upgrade your plan to unlock unlimited conversations."
 msgstr "อัปเกรดแผนของคุณเพื่อปลดล็อกการสนทนาไม่จำกัด"
@@ -9392,6 +9412,11 @@ msgstr "คำศัพท์"
 #. js-lingui-explicit-id
 msgid "Vocabulary challenges"
 msgstr "ท้าทายคำศัพท์"
+
+#: src/features/Usage/FeatureBlocker.tsx:72
+#. js-lingui-explicit-id
+msgid "Voice conversations without delays"
+msgstr "การสนทนาด้วยเสียงโดยไม่ล่าช้า"
 
 #: src/features/Conversation/ConversationCanvas.tsx:806
 #. js-lingui-explicit-id
@@ -10259,7 +10284,7 @@ msgstr "คำตอบของคุณ"
 msgid "Your answers will be visible to your opponent after you submit them."
 msgstr "คำตอบของคุณจะถูกมองเห็นโดยคู่แข่งของคุณหลังจากที่คุณส่งคำตอบแล้ว"
 
-#: src/features/Game/GameOnboarding.tsx:106
+#: src/features/Game/GameOnboarding.tsx:175
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "อวตารของคุณ:"
@@ -10391,6 +10416,61 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Usage/FeatureBlocker.tsx:105
+#. js-lingui-explicit-id
+#~ msgid "Hint: Full access is free if you reach the top 5 on the game leaderboard!"
+#~ msgstr ""
+#~ "คำใบ้: เข้าถึงแบบเต็มรูปแบบฟรีหากคุณขึ้นไปอยู่ใน 5 "
+#~ "อันดับแรกในกระดานผู้นำของเกม!"
+
+#: src/features/Usage/FeatureBlocker.tsx:105
+#. js-lingui-explicit-id
+#~ msgid "Hint: Full access for free if you reach the top 5 in the game leaderboard!"
+#~ msgstr ""
+#~ "คำแนะนำ: เข้าถึงแบบเต็มรูปแบบได้ฟรีหากคุณอยู่ใน 5 "
+#~ "อันดับแรกบนกระดานผู้นำของเกม!"
+
+#: src/features/Usage/FeatureBlocker.tsx:105
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Hint: You can get full access for free by reaching the top 5 in the game "
+#~ "leaderboard!"
+#~ msgstr ""
+#~ "คำแนะนำ: คุณสามารถเข้าถึงฟีเจอร์ทั้งหมดได้ฟรีโดยการขึ้นเป็น 5 "
+#~ "อันดับแรกบนกระดานผู้นำเกม!"
+
+#: src/features/Usage/FeatureBlocker.tsx:72
+#. js-lingui-explicit-id
+#~ msgid "Real-time conversations without delays"
+#~ msgstr "การสนทนาแบบเรียลไทม์โดยไม่มีความล่าช้า"
+
+#: src/features/Usage/FeatureBlocker.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Realistic voice responses"
+#~ msgstr "การตอบสนองด้วยเสียงที่สมจริง"
+
+#: src/features/Usage/FeatureBlocker.tsx:68
+#. js-lingui-explicit-id
+#~ msgid "Unlimited AI Conversations"
+#~ msgstr ""
+#~ "\n"
+#~ "การสนทนา AI แบบไม่จำกัด\n"
+
+#: src/features/Usage/FeatureBlocker.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Realistic AI voice responses"
+#~ msgstr "การตอบสนองด้วยเสียง AI ที่สมจริง"
+
+#: src/features/Game/GameOnboarding.tsx:51
+#. js-lingui-explicit-id
+#~ msgid "Learn and Play"
+#~ msgstr "เรียนรู้และเล่น"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:232
+#. js-lingui-explicit-id
+#~ msgid "Real-time microphone"
+#~ msgstr "ไมโครโฟนแบบเรียลไทม์"
 
 #: src/features/Conversation/ConversationCanvas.tsx:922
 #. js-lingui-explicit-id

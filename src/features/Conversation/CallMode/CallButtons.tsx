@@ -216,7 +216,7 @@ export const CallButtons = ({
         >
           <Stack
             sx={{
-              maxWidth: "400px",
+              maxWidth: "600px",
               gap: "40px",
               alignItems: "center",
               paddingTop: "25px",
@@ -224,12 +224,12 @@ export const CallButtons = ({
           >
             <Stack
               sx={{
-                maxWidth: "500px",
+                maxWidth: "600px",
                 gap: "0px",
               }}
             >
               <Typography variant="h5">
-                {isShowVolumeWarning ? i18n._("AI voice") : i18n._("Real-time microphone")}
+                {isShowVolumeWarning ? i18n._("AI voice") : i18n._("Real-time conversation")}
               </Typography>
               <Typography
                 variant="body2"
