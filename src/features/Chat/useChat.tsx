@@ -71,7 +71,7 @@ function useProvideChat(): ChatContextType {
 
   const sortedMessages = useMemo(() => {
     return messages
-      ? [...messages].sort((a, b) => a.createdAtIso.localeCompare(b.createdAtIso))
+      ? [...messages].sort((a, b) => b.createdAtIso.localeCompare(a.createdAtIso))
       : [];
   }, [messages]);
 
