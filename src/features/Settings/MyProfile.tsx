@@ -145,7 +145,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
             }}
           >
             <GameMyAvatar />
-            <GameMyUsername />
+            <GameMyUsername align="center" />
           </Stack>
 
           <Typography

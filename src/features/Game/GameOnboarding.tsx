@@ -112,7 +112,7 @@ export const GameOnboarding = () => {
               paddingTop: "25px",
             }}
           >
-            <GameMyUsername />
+            <GameMyUsername align="center" />
           </Stack>
         </Stack>
       </Stack>

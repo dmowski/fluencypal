@@ -4,7 +4,7 @@ import { useLingui } from "@lingui/react";
 import { useEffect, useState } from "react";
 import { CheckIcon, PencilIcon } from "lucide-react";
 
-export const GameMyUsername = () => {
+export const GameMyUsername = ({ align }: { align: "flex-start" | "center" }) => {
   const game = useGame();
   const myUsername = game.myUserName || "";
   const { i18n } = useLingui();
@@ -15,8 +15,8 @@ export const GameMyUsername = () => {
   const isAlreadyTaken = isMyUserName
     ? false
     : game.userNames
-    ? Object.values(game.userNames).some((name) => name === internalUsername)
-    : false;
+      ? Object.values(game.userNames).some((name) => name === internalUsername)
+      : false;
 
   useEffect(() => {
     if (myUsername) {
@@ -41,7 +41,7 @@ export const GameMyUsername = () => {
   return (
     <Stack
       sx={{
-        alignItems: "center",
+        alignItems: align || "center",
       }}
     >
       <Typography
@@ -59,13 +59,15 @@ export const GameMyUsername = () => {
           gap: "10px",
         }}
       >
+        {align === "center" && (
+          <Stack
+            sx={{
+              width: "10px",
+            }}
+          ></Stack>
+        )}
         {isEditUsername ? (
           <>
-            <Stack
-              sx={{
-                width: "10px",
-              }}
-            ></Stack>
             <TextField
               variant="outlined"
               size="small"
@@ -84,11 +86,6 @@ export const GameMyUsername = () => {
           </>
         ) : (
           <>
-            <Stack
-              sx={{
-                width: "10px",
-              }}
-            ></Stack>
             <Typography variant="h6">{myUsername || "-"} </Typography>
             <IconButton
               disabled={game.isLoading}

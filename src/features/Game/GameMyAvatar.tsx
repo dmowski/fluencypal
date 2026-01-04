@@ -6,7 +6,7 @@ import { useLingui } from "@lingui/react";
 import { useUrlParam } from "../Url/useUrlParam";
 import { useAuth } from "../Auth/useAuth";
 
-export const GameMyAvatar = () => {
+export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
   const game = useGame();
   const [isShowAvatarSelector, setIsShowAvatarSelector] = useUrlParam("showAvatarSelector");
   const { i18n } = useLingui();
@@ -84,8 +84,8 @@ export const GameMyAvatar = () => {
       <Stack
         sx={{
           img: {
-            width: "90px",
-            height: "90px",
+            width: avatarSize || "90px",
+            height: avatarSize || "90px",
             borderRadius: "50%",
             objectFit: "cover",
             boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",

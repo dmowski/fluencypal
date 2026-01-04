@@ -15,7 +15,7 @@ import { SupportedLanguage } from "../Lang/lang";
 import { useMemo, useState } from "react";
 import { ChartSection } from "../Chat/ChartSection";
 import { useChat } from "../Chat/useChat";
-import { BattleSection } from "./Battle/BattleSection";
+import { useUrlState } from "../Url/useUrlParam";
 
 const TabLabel = ({
   badgeNumber,
@@ -56,7 +56,11 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const loadingMessage = i18n._(`Loading...`);
   const playMessage = i18n._(`Play`);
 
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useUrlState<"global-rate" | "today-rate" | "chat">(
+    "space",
+    "global-rate",
+    false
+  );
 
   const globalGamers = useMemo(() => game.stats.length, [game.stats.length]);
   const todayGamers = useMemo(
@@ -85,7 +89,6 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
             width: "100%",
             maxWidth: "700px",
             padding: "10px 10px",
-            paddingTop: "30px",
             boxSizing: "border-box",
             gap: "20px",
             position: "relative",
@@ -93,51 +96,59 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
             zIndex: 1,
           }}
         >
-          <BattleSection />
-          <Stack
-            sx={{
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "20px",
-            }}
-          >
-            <GameMyAvatar />
-            <GameMyUsername />
-          </Stack>
-
           <Stack
             sx={{
               width: "100%",
+              flexDirection: "row",
               alignItems: "center",
-              gap: "5px",
+              justifyContent: "space-between",
+              gap: "20px",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              backgroundColor: "rgba(255, 255, 255, 0.03)",
+              padding: "20px",
+              borderRadius: "12px",
+              boxSizing: "border-box",
+              flexWrap: "wrap",
+              "@media (max-width: 600px)": {
+                padding: "15px",
+              },
             }}
           >
-            <Button
-              variant="contained"
-              startIcon={<Swords />}
-              color="info"
-              size="large"
-              onClick={() => {
-                goFullScreen();
-                game.playGame();
-              }}
-              disabled={game.loadingQuestions}
+            <Stack
               sx={{
-                width: "100%",
-                padding: "15px 20px",
+                flexDirection: "row",
+                gap: "15px",
+                width: "max-content",
               }}
             >
-              {game.loadingQuestions ? loadingMessage : playMessage}
-            </Button>
-            <Typography
-              textAlign={"center"}
-              variant="caption"
+              <GameMyAvatar avatarSize="45px" />
+              <GameMyUsername align={"flex-start"} />
+            </Stack>
+
+            <Stack
               sx={{
-                opacity: 0.9,
+                alignItems: "center",
+                gap: "5px",
+                width: "max-content",
               }}
             >
-              {i18n._("Rank in the top 5 to get the app for free")}
-            </Typography>
+              <Button
+                variant="contained"
+                startIcon={<Swords />}
+                color="info"
+                onClick={() => {
+                  goFullScreen();
+                  game.playGame();
+                }}
+                disabled={game.loadingQuestions}
+                sx={{
+                  width: "100%",
+                  padding: "10px 40px",
+                }}
+              >
+                {game.loadingQuestions ? loadingMessage : playMessage}
+              </Button>
+            </Stack>
           </Stack>
 
           <Stack
@@ -155,8 +166,8 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
             >
               <Tabs value={activeTab} onChange={(event, newId) => setActiveTab(newId)}>
                 <Tab
-                  label={<TabLabel label={i18n._(`Global`)} badgeNumber={globalGamers} />}
-                  value={0}
+                  label={<TabLabel label={i18n._(`Rating`)} badgeNumber={globalGamers} />}
+                  value={"global-rate"}
                   sx={{
                     padding: "0 10px 0 10px",
                     minWidth: "unset",
@@ -164,7 +175,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                 />
                 <Tab
                   label={<TabLabel label={i18n._(`Today`)} badgeNumber={todayGamers} />}
-                  value={1}
+                  value={"today-rate"}
                   sx={{
                     padding: "0 10px 0 10px",
                     minWidth: "unset",
@@ -182,12 +193,13 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                       badgeHighlight={isUnreadMessages}
                     />
                   }
-                  value={2}
+                  value={"chat"}
                 />
               </Tabs>
 
-              {activeTab < 2 && <GameStats activeTab={activeTab === 0 ? "global" : "today"} />}
-              {activeTab === 2 && <ChartSection />}
+              {activeTab === "global-rate" && <GameStats activeTab="global" />}
+              {activeTab === "today-rate" && <GameStats activeTab="today" />}
+              {activeTab === "chat" && <ChartSection />}
             </Stack>
           </Stack>
 
