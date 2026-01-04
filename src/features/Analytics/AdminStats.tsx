@@ -171,7 +171,9 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
         )}
 
         {isActiveSubscriber && (
-          <Tooltip title={`Subscriber till: ${dayjs(activeSubscriptionTill).format("DD MMMM")}`}>
+          <Tooltip
+            title={`Subscriber till: ${dayjs(activeSubscriptionTill).format("DD MMMM h")}` + "h"}
+          >
             <Stack
               sx={{
                 alignItems: "center",
@@ -195,7 +197,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                 <HandCoins size={"25px"} />
               </Stack>
               <Typography variant="caption" align="center">
-                in {dayjs(activeSubscriptionTill).diff(dayjs(), "day")} days
+                {dayjs(activeSubscriptionTill).format("DD MMM")}
               </Typography>
             </Stack>
           </Tooltip>
