@@ -48,7 +48,7 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick: () => void 
               fontSize: "1.7rem",
             }}
           >
-            {i18n._(`Full access`)}
+            {i18n._(`Full Access`)}
           </Typography>
 
           <Typography
