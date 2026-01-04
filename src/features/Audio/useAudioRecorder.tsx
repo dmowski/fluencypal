@@ -48,6 +48,14 @@ export const useAudioRecorder = ({
   const isCancel = useRef(false);
 
   const getRecordTranscript = async (recordedAudioBlog: Blob, format: string) => {
+    if (format.includes("ogg")) {
+      setTranscriptionError(
+        "Sorry, transcription is not available for your audio. Try another browser."
+      );
+      setIsTranscribing(false);
+      recorderControls.clearCanvas();
+      return;
+    }
     setTranscriptionError(null);
     if (!recordedAudioBlog) {
       setTranscription(null);

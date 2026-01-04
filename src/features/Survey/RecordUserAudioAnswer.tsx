@@ -1,5 +1,5 @@
 "use client";
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+import { Alert, Button, IconButton, Stack, Typography } from "@mui/material";
 
 import { useLingui } from "@lingui/react";
 import { Check, Goal, Mic, Trash } from "lucide-react";
@@ -91,9 +91,9 @@ export const RecordUserAudioAnswer = ({
       </Typography>
 
       {error && (
-        <Typography color="error" variant="caption" sx={{ paddingTop: "6px", minHeight: "18px" }}>
+        <Alert severity="error" sx={{ marginTop: "10px" }}>
           {i18n._("Error:")} {error}
-        </Typography>
+        </Alert>
       )}
 
       {!transcript && !isTranscribing && (

@@ -15,7 +15,13 @@ export const sendTranscriptRequest = async ({
   format,
 }: SendTranscriptRequestProps) => {
   const formData = new FormData();
-  const extension = format.includes("webm") ? "webm" : format.includes("mp4") ? "mp4" : "mp3";
+  const extension = format.includes("webm")
+    ? "webm"
+    : format.includes("mp4")
+      ? "mp4"
+      : format.includes("ogg")
+        ? "ogg"
+        : "mp3";
 
   formData.append("audio", audioBlob, `recording.${extension}`);
   const response = await fetch(
