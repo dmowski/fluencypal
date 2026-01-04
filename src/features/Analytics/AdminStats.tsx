@@ -79,6 +79,8 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
     "en";
   const languageToLearn = fullEnglishLanguageName[user.languageCode || "en"];
 
+  const lastHourMessages = userStat.conversationMeta.lastHourMessages || 0;
+
   const learning = `${nativeLanguage} → ${languageToLearn}`;
   const todaysConversationsMessages = userStat.conversationMeta.todayMessages || 0;
 
@@ -205,7 +207,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
       </Stack>
       <Stack
         sx={{
-          width: "500px",
+          width: "600px",
           gap: "10px",
           ".icon": {
             width: "16px",
@@ -244,6 +246,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
               border: "1px solid rgba(255, 255, 255, 0.1)",
               alignItems: "center",
               gap: "0px",
+              width: "140px",
               padding: "17px 12px 8px 12px",
               borderRadius: "8px",
               height: "120px",
@@ -262,20 +265,32 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           <Stack
             className="stat-card"
             sx={{
+              backgroundColor: lastHourMessages > 0 ? "rgba(255, 255, 255, 0.06)" : "transparent",
+            }}
+          >
+            <Typography className="value">{lastHourMessages}</Typography>
+            <Typography align="center" variant="body2" className="label">
+              Last Hour
+            </Typography>
+          </Stack>
+
+          <Stack
+            className="stat-card"
+            sx={{
               backgroundColor:
                 todaysConversationsMessages > 0 ? "rgba(255, 255, 255, 0.06)" : "transparent",
             }}
           >
             <Typography className="value">{todaysConversationsMessages}</Typography>
             <Typography align="center" variant="body2" className="label">
-              Today Messages
+              Today
             </Typography>
           </Stack>
 
           <Stack className="stat-card">
             <Typography className="value">{totalMessages}</Typography>
             <Typography align="center" variant="body2" className="label">
-              All Messages
+              All
             </Typography>
           </Stack>
 
