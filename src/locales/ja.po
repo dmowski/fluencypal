@@ -389,6 +389,11 @@ msgstr "クリティカルなバックエンドスキルを向上させるため
 msgid "Active"
 msgstr "アクティブ"
 
+#: src/features/Chat/ChartSection.tsx:128
+#. js-lingui-explicit-id
+msgid "Add a reply"
+msgstr "返信を追加"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:323
 #. js-lingui-explicit-id
 msgid "Add new goal"
@@ -827,6 +832,11 @@ msgstr ""
 "\n"
 "戻る\n"
 
+#: src/features/Chat/ChartSection.tsx:77
+#. js-lingui-explicit-id
+msgid "Back to all messages"
+msgstr "すべてのメッセージに戻る"
+
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
 msgid "Backend engineers who improved their interviews"
@@ -1142,7 +1152,7 @@ msgstr "FluencyPalはいつでも使用を停止できますか？"
 msgid "Can I use FluencyPal for free?"
 msgstr "FluencyPalを無料で使用できますか？"
 
-#: src/features/Chat/Message.tsx:212
+#: src/features/Chat/Message.tsx:218
 #: src/features/Header/NeedHelpModal.tsx:167
 #: src/features/Usage/PaymentModal.tsx:350
 #. js-lingui-explicit-id
@@ -1336,6 +1346,11 @@ msgstr "実際の開発作業で練習したものとは異なると感じるコ
 #. js-lingui-explicit-id
 msgid "Coding Skills"
 msgstr "コーディングスキル"
+
+#: src/features/Chat/Message.tsx:247
+#. js-lingui-explicit-id
+msgid "Comment"
+msgstr "コメント"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
 #. js-lingui-explicit-id
@@ -1859,7 +1874,7 @@ msgstr "アカウントを削除 (合計)"
 msgid "Delete current goal"
 msgstr "現在の目標を削除"
 
-#: src/features/Chat/Message.tsx:164
+#: src/features/Chat/Message.tsx:170
 #. js-lingui-explicit-id
 msgid "Delete message"
 msgstr "メッセージを削除"
@@ -2202,12 +2217,12 @@ msgstr "小話をスキップしないでください"
 msgid "Early access to new tools"
 msgstr "新しいツールへの早期アクセス"
 
-#: src/features/Chat/Message.tsx:156
+#: src/features/Chat/Message.tsx:162
 #. js-lingui-explicit-id
 msgid "Edit message"
 msgstr "メッセージを編集"
 
-#: src/features/Chat/Message.tsx:219
+#: src/features/Chat/Message.tsx:225
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "編集済み"
@@ -5252,6 +5267,13 @@ msgstr "話しましょう。あなた自身について教えてください。
 msgid "Let’s make sure you’re ready"
 msgstr "あなたが準備できていることを確認しましょう"
 
+#: src/features/Chat/Message.tsx:239
+#. js-lingui-explicit-id
+msgid "Like"
+msgstr ""
+"plaintext\n"
+"いいね\n"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:380
 #. js-lingui-explicit-id
 msgid "Listening practice. You can hear AI responses"
@@ -5278,8 +5300,8 @@ msgstr "ロード中。"
 msgid "Loading.."
 msgstr "読み込み中.."
 
-#: src/features/Chat/SubmitForm.tsx:43
-#: src/features/Chat/SubmitForm.tsx:75
+#: src/features/Chat/SubmitForm.tsx:44
+#: src/features/Chat/SubmitForm.tsx:76
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:337
 #: src/features/Conversation/ConversationCanvas.tsx:1298
@@ -5754,7 +5776,7 @@ msgstr "該当するインタビューが見つかりませんでした"
 msgid "No message recorded yet."
 msgstr "まだメッセージが記録されていません。"
 
-#: src/features/Chat/MessageList.tsx:41
+#: src/features/Chat/MessageList.tsx:33
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "まだメッセージはありません"
@@ -5774,6 +5796,11 @@ msgstr "プロジェクションは利用できません"
 #. js-lingui-explicit-id
 msgid "No reason provided."
 msgstr "理由が提供されていません。"
+
+#: src/features/Chat/ChartSection.tsx:108
+#. js-lingui-explicit-id
+msgid "No replies yet"
+msgstr "まだ返信はありません"
 
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:138
 #. js-lingui-explicit-id
@@ -6235,7 +6262,7 @@ msgstr "すべての機能にアクセスするために、クレジットカー
 msgid "Please enter a valid email address"
 msgstr "有効なメールアドレスを入力してください"
 
-#: src/features/Chat/SubmitForm.tsx:163
+#: src/features/Chat/SubmitForm.tsx:164
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "長めのメッセージ（少なくとも数単語）を記録してください。"
@@ -7041,7 +7068,7 @@ msgstr ""
 "2-3分の物語を<0>{learningLanguageName}</0>または<1>{nativeLanguageName}</1"
 ">を使用して録音してください"
 
-#: src/features/Chat/SubmitForm.tsx:164
+#: src/features/Chat/SubmitForm.tsx:165
 #. js-lingui-explicit-id
 msgid "Record a message and get {points} points"
 msgstr "メッセージを録音して{points}ポイントを獲得する"
@@ -7063,7 +7090,7 @@ msgstr "回答を記録する"
 msgid "Record answer"
 msgstr "回答を記録"
 
-#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Chat/ChartSection.tsx:144
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #: src/features/Conversation/ConversationCanvas.tsx:1107
 #. js-lingui-explicit-id
@@ -7146,6 +7173,11 @@ msgstr "データを削除しています..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "レンダリングパフォーマンス"
+
+#: src/features/Chat/ChartSection.tsx:104
+#. js-lingui-explicit-id
+msgid "Replies:"
+msgstr "返信:"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
@@ -7278,7 +7310,7 @@ msgstr "AI SEOとの給与交渉面接"
 msgid "Salary negotiation preparation"
 msgstr "給与交渉の準備"
 
-#: src/features/Chat/Message.tsx:209
+#: src/features/Chat/Message.tsx:215
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "保存"
@@ -7387,7 +7419,7 @@ msgstr "メールを再送信"
 msgid "Send me sign-in link"
 msgstr "サインインリンクを送信してください。"
 
-#: src/features/Chat/SubmitForm.tsx:130
+#: src/features/Chat/SubmitForm.tsx:131
 #: src/features/Conversation/CallMode/CallButtons.tsx:345
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -7957,7 +7989,7 @@ msgstr ""
 "いて尋ねられ、あなたの返答に基づいてAIが難易度を調整します。プロンプトを使用して、どのような職業インタビューでも引き立つような簡潔で説得力のある答えを"
 "提供する練習をしてみてください。"
 
-#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Chat/SubmitForm.tsx:116
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -8514,7 +8546,7 @@ msgstr "あなたの流暢さの進捗を追跡する"
 msgid "Transcribing..."
 msgstr "書き起こしています..."
 
-#: src/features/Chat/SubmitForm.tsx:58
+#: src/features/Chat/SubmitForm.tsx:59
 #. js-lingui-explicit-id
 msgid "Transcription:"
 msgstr "文字起こし:"

@@ -388,6 +388,11 @@ msgstr "백엔드 필수 기술 향상을 위한 실행 계획"
 msgid "Active"
 msgstr "활성화됨"
 
+#: src/features/Chat/ChartSection.tsx:128
+#. js-lingui-explicit-id
+msgid "Add a reply"
+msgstr "답글 추가"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:323
 #. js-lingui-explicit-id
 msgid "Add new goal"
@@ -826,6 +831,11 @@ msgstr ""
 "\n"
 "돌아가기\n"
 
+#: src/features/Chat/ChartSection.tsx:77
+#. js-lingui-explicit-id
+msgid "Back to all messages"
+msgstr "모든 메시지로 돌아가기"
+
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
 msgid "Backend engineers who improved their interviews"
@@ -1143,7 +1153,7 @@ msgstr "FluencyPal을 언제든지 중지할 수 있나요?"
 msgid "Can I use FluencyPal for free?"
 msgstr "FluencyPal을 무료로 사용할 수 있나요?"
 
-#: src/features/Chat/Message.tsx:212
+#: src/features/Chat/Message.tsx:218
 #: src/features/Header/NeedHelpModal.tsx:167
 #: src/features/Usage/PaymentModal.tsx:350
 #. js-lingui-explicit-id
@@ -1333,6 +1343,11 @@ msgstr "코드 챌린지는 당신이 실습한 **실제 개발 작업**과 다�
 #. js-lingui-explicit-id
 msgid "Coding Skills"
 msgstr "코딩 기술"
+
+#: src/features/Chat/Message.tsx:247
+#. js-lingui-explicit-id
+msgid "Comment"
+msgstr "코멘트"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
 #. js-lingui-explicit-id
@@ -1855,7 +1870,7 @@ msgstr "계정 삭제 (전체)"
 msgid "Delete current goal"
 msgstr "현재 목표 삭제"
 
-#: src/features/Chat/Message.tsx:164
+#: src/features/Chat/Message.tsx:170
 #. js-lingui-explicit-id
 msgid "Delete message"
 msgstr "메시지 삭제"
@@ -2199,12 +2214,12 @@ msgstr "소소한 대화를 건너뛰지 마세요"
 msgid "Early access to new tools"
 msgstr "새로운 도구에 대한 조기 액세스"
 
-#: src/features/Chat/Message.tsx:156
+#: src/features/Chat/Message.tsx:162
 #. js-lingui-explicit-id
 msgid "Edit message"
 msgstr "메시지 편집"
 
-#: src/features/Chat/Message.tsx:219
+#: src/features/Chat/Message.tsx:225
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "편집됨"
@@ -5255,6 +5270,11 @@ msgstr "이야기해 봅시다. 당신에 대해 알려주세요."
 msgid "Let’s make sure you’re ready"
 msgstr "준비가 되었는지 확인해봅시다"
 
+#: src/features/Chat/Message.tsx:239
+#. js-lingui-explicit-id
+msgid "Like"
+msgstr "좋아요"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:380
 #. js-lingui-explicit-id
 msgid "Listening practice. You can hear AI responses"
@@ -5281,8 +5301,8 @@ msgstr "로딩 중."
 msgid "Loading.."
 msgstr "로딩 중.."
 
-#: src/features/Chat/SubmitForm.tsx:43
-#: src/features/Chat/SubmitForm.tsx:75
+#: src/features/Chat/SubmitForm.tsx:44
+#: src/features/Chat/SubmitForm.tsx:76
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:337
 #: src/features/Conversation/ConversationCanvas.tsx:1298
@@ -5755,7 +5775,7 @@ msgstr "인터뷰가 없습니다"
 msgid "No message recorded yet."
 msgstr "메시지가 아직 기록되지 않았습니다."
 
-#: src/features/Chat/MessageList.tsx:41
+#: src/features/Chat/MessageList.tsx:33
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "아직 메시지가 없습니다"
@@ -5775,6 +5795,11 @@ msgstr "사용 가능한 투영 없음"
 #. js-lingui-explicit-id
 msgid "No reason provided."
 msgstr "사유가 제공되지 않았습니다."
+
+#: src/features/Chat/ChartSection.tsx:108
+#. js-lingui-explicit-id
+msgid "No replies yet"
+msgstr "아직 답변이 없습니다"
 
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:138
 #. js-lingui-explicit-id
@@ -6234,7 +6259,7 @@ msgstr "모든 기능에 액세스하려면 신용카드를 확인해 주세요.
 msgid "Please enter a valid email address"
 msgstr "유효한 이메일 주소를 입력하세요"
 
-#: src/features/Chat/SubmitForm.tsx:163
+#: src/features/Chat/SubmitForm.tsx:164
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "좀 더 긴 메시지를 녹음해 주세요(적어도 몇 단어 이상)."
@@ -7036,7 +7061,7 @@ msgstr ""
 "2-3분의 이야기를 <0>{learningLanguageName}</0> 또는 <1>{nativeLanguageName}</1>를 "
 "사용하여 녹음하세요."
 
-#: src/features/Chat/SubmitForm.tsx:164
+#: src/features/Chat/SubmitForm.tsx:165
 #. js-lingui-explicit-id
 msgid "Record a message and get {points} points"
 msgstr "메시지를 녹음하고 {points} 포인트를 획득하세요."
@@ -7058,7 +7083,7 @@ msgstr "답변 녹음"
 msgid "Record answer"
 msgstr "기록된 답변"
 
-#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Chat/ChartSection.tsx:144
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #: src/features/Conversation/ConversationCanvas.tsx:1107
 #. js-lingui-explicit-id
@@ -7141,6 +7166,11 @@ msgstr "데이터를 제거 중..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "렌더링 성능"
+
+#: src/features/Chat/ChartSection.tsx:104
+#. js-lingui-explicit-id
+msgid "Replies:"
+msgstr "답변:"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
@@ -7273,7 +7303,7 @@ msgstr "AI SEO와의 급여 협상 인터뷰"
 msgid "Salary negotiation preparation"
 msgstr "급여 협상 준비"
 
-#: src/features/Chat/Message.tsx:209
+#: src/features/Chat/Message.tsx:215
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "저장"
@@ -7382,7 +7412,7 @@ msgstr "이메일 다시 보내기"
 msgid "Send me sign-in link"
 msgstr "로그인 링크 보내기"
 
-#: src/features/Chat/SubmitForm.tsx:130
+#: src/features/Chat/SubmitForm.tsx:131
 #: src/features/Conversation/CallMode/CallButtons.tsx:345
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -7942,7 +7972,7 @@ msgstr ""
 "역할에 대한 동기에 대해 질문을 받게 될 것이고, AI는 여러분의 응답에 기반하여 난이도를 조절합니다. 질문에 대해 간결하고 설득력 "
 "있는 답변을 제공하는 연습을 위해 프롬프트를 사용하세요. 어떤 직업 인터뷰에서든 돋보일 수 있도록 도움이 될 것입니다."
 
-#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Chat/SubmitForm.tsx:116
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -8505,7 +8535,7 @@ msgstr "자신의 유창성 진행 상황 추적하기"
 msgid "Transcribing..."
 msgstr "전사 중..."
 
-#: src/features/Chat/SubmitForm.tsx:58
+#: src/features/Chat/SubmitForm.tsx:59
 #. js-lingui-explicit-id
 msgid "Transcription:"
 msgstr "전사:"

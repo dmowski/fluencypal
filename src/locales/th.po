@@ -422,6 +422,11 @@ msgstr "แผนปฏิบัติการเพื่อพัฒนาท
 msgid "Active"
 msgstr "ทำงาน"
 
+#: src/features/Chat/ChartSection.tsx:128
+#. js-lingui-explicit-id
+msgid "Add a reply"
+msgstr "เพิ่มการตอบกลับ"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:323
 #. js-lingui-explicit-id
 msgid "Add new goal"
@@ -874,6 +879,11 @@ msgstr ""
 msgid "Back"
 msgstr "กลับ"
 
+#: src/features/Chat/ChartSection.tsx:77
+#. js-lingui-explicit-id
+msgid "Back to all messages"
+msgstr "กลับไปที่ข้อความทั้งหมด"
+
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
 msgid "Backend engineers who improved their interviews"
@@ -1201,7 +1211,7 @@ msgstr "ฉันสามารถหยุดใช้ FluencyPal ได้ท
 msgid "Can I use FluencyPal for free?"
 msgstr "ฉันสามารถใช้ FluencyPal ได้ฟรีหรือไม่?"
 
-#: src/features/Chat/Message.tsx:212
+#: src/features/Chat/Message.tsx:218
 #: src/features/Header/NeedHelpModal.tsx:167
 #: src/features/Usage/PaymentModal.tsx:350
 #. js-lingui-explicit-id
@@ -1404,6 +1414,11 @@ msgstr "โจทย์การเขียนโค้ดรู้สึกแ
 #. js-lingui-explicit-id
 msgid "Coding Skills"
 msgstr "ทักษะการเขียนโค้ด"
+
+#: src/features/Chat/Message.tsx:247
+#. js-lingui-explicit-id
+msgid "Comment"
+msgstr "ความคิดเห็น"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
 #. js-lingui-explicit-id
@@ -1952,7 +1967,7 @@ msgstr "ลบบัญชี (ทั้งหมด)"
 msgid "Delete current goal"
 msgstr "ลบเป้าหมายปัจจุบัน"
 
-#: src/features/Chat/Message.tsx:164
+#: src/features/Chat/Message.tsx:170
 #. js-lingui-explicit-id
 msgid "Delete message"
 msgstr "ลบข้อความ"
@@ -2334,12 +2349,12 @@ msgstr "อย่าข้ามการพูดคุยเล็กๆ"
 msgid "Early access to new tools"
 msgstr "การเข้าถึงเครื่องมือใหม่ล่วงหน้า"
 
-#: src/features/Chat/Message.tsx:156
+#: src/features/Chat/Message.tsx:162
 #. js-lingui-explicit-id
 msgid "Edit message"
 msgstr "แก้ไขข้อความ"
 
-#: src/features/Chat/Message.tsx:219
+#: src/features/Chat/Message.tsx:225
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "แก้ไขแล้ว"
@@ -5673,6 +5688,11 @@ msgstr "มาพูดคุยกัน บอกฉันเกี่ยว�
 msgid "Let’s make sure you’re ready"
 msgstr "มาตรวจสอบว่าคุณพร้อมแล้ว"
 
+#: src/features/Chat/Message.tsx:239
+#. js-lingui-explicit-id
+msgid "Like"
+msgstr "ถูกใจ"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:380
 #. js-lingui-explicit-id
 msgid "Listening practice. You can hear AI responses"
@@ -5699,8 +5719,8 @@ msgstr "กำลังโหลด."
 msgid "Loading.."
 msgstr "กำลังโหลด.."
 
-#: src/features/Chat/SubmitForm.tsx:43
-#: src/features/Chat/SubmitForm.tsx:75
+#: src/features/Chat/SubmitForm.tsx:44
+#: src/features/Chat/SubmitForm.tsx:76
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:337
 #: src/features/Conversation/ConversationCanvas.tsx:1298
@@ -6189,7 +6209,7 @@ msgstr "ไม่พบการสัมภาษณ์"
 msgid "No message recorded yet."
 msgstr "ยังไม่มีข้อความบันทึก"
 
-#: src/features/Chat/MessageList.tsx:41
+#: src/features/Chat/MessageList.tsx:33
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "ยังไม่มีข้อความ"
@@ -6211,6 +6231,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "No reason provided."
 msgstr "ไม่มีเหตุผลที่ระบุ"
+
+#: src/features/Chat/ChartSection.tsx:108
+#. js-lingui-explicit-id
+msgid "No replies yet"
+msgstr "ยังไม่มีการตอบกลับ"
 
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:138
 #. js-lingui-explicit-id
@@ -6696,7 +6721,7 @@ msgstr "กรุณายืนยันบัตรเครดิตของ
 msgid "Please enter a valid email address"
 msgstr "กรุณาใส่ที่อยู่อีเมลที่ถูกต้อง"
 
-#: src/features/Chat/SubmitForm.tsx:163
+#: src/features/Chat/SubmitForm.tsx:164
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "โปรดบันทึกข้อความที่ยาวขึ้น (อย่างน้อยสองสามคำ)"
@@ -7534,7 +7559,7 @@ msgstr ""
 "บันทึกเรื่องราว 2-3 นาทีโดยใช้ภาษา <0>{learningLanguageName}</0> หรือ "
 "<1>{nativeLanguageName}</1>"
 
-#: src/features/Chat/SubmitForm.tsx:164
+#: src/features/Chat/SubmitForm.tsx:165
 #. js-lingui-explicit-id
 msgid "Record a message and get {points} points"
 msgstr "บันทึกข้อความและรับ {points} คะแนน"
@@ -7556,7 +7581,7 @@ msgstr "บันทึกคำตอบ"
 msgid "Record answer"
 msgstr "บันทึกคำตอบ"
 
-#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Chat/ChartSection.tsx:144
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #: src/features/Conversation/ConversationCanvas.tsx:1107
 #. js-lingui-explicit-id
@@ -7642,6 +7667,11 @@ msgstr "ลบข้อมูลของคุณ..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "ประสิทธิภาพการแสดงผล"
+
+#: src/features/Chat/ChartSection.tsx:104
+#. js-lingui-explicit-id
+msgid "Replies:"
+msgstr "ตอบกลับ:"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
@@ -7779,7 +7809,7 @@ msgstr "การสัมภาษณ์การเจรจาเงินเ
 msgid "Salary negotiation preparation"
 msgstr "การเตรียมการเจรจาเรื่องเงินเดือน"
 
-#: src/features/Chat/Message.tsx:209
+#: src/features/Chat/Message.tsx:215
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "บันทึก"
@@ -7892,7 +7922,7 @@ msgstr "ส่งอีเมลอีกครั้ง"
 msgid "Send me sign-in link"
 msgstr "ส่งลิงก์สำหรับเข้าสู่ระบบให้ฉัน"
 
-#: src/features/Chat/SubmitForm.tsx:130
+#: src/features/Chat/SubmitForm.tsx:131
 #: src/features/Conversation/CallMode/CallButtons.tsx:345
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -8483,7 +8513,7 @@ msgstr ""
 "ใช้ข้อเสนอเพื่อฝึกกล่าวคำตอบที่สั้น โน้มน้าว "
 "ที่จะช่วยคุณโดดเด่นในสัมภาษณ์งานใด ๆ."
 
-#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Chat/SubmitForm.tsx:116
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -9086,7 +9116,7 @@ msgstr "ติดตามความก้าวหน้าในการพ
 msgid "Transcribing..."
 msgstr "กำลังถอดความ..."
 
-#: src/features/Chat/SubmitForm.tsx:58
+#: src/features/Chat/SubmitForm.tsx:59
 #. js-lingui-explicit-id
 msgid "Transcription:"
 msgstr "การถอดเสียง:"

@@ -412,6 +412,11 @@ msgstr "خطة عمل لتحسين المهارات الأساسية في الب
 msgid "Active"
 msgstr "نشط"
 
+#: src/features/Chat/ChartSection.tsx:128
+#. js-lingui-explicit-id
+msgid "Add a reply"
+msgstr "أضف رداً"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:323
 #. js-lingui-explicit-id
 msgid "Add new goal"
@@ -853,6 +858,11 @@ msgstr "تجنب هذه الأخطاء سيجعلك تبدو أكثر احترا
 msgid "Back"
 msgstr "عودة"
 
+#: src/features/Chat/ChartSection.tsx:77
+#. js-lingui-explicit-id
+msgid "Back to all messages"
+msgstr "رجوع إلى جميع الرسائل"
+
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
 msgid "Backend engineers who improved their interviews"
@@ -1182,7 +1192,7 @@ msgstr "هل يمكنني التوقف عن استخدام FluencyPal في أي 
 msgid "Can I use FluencyPal for free?"
 msgstr "هل يمكنني استخدام FluencyPal مجانًا؟"
 
-#: src/features/Chat/Message.tsx:212
+#: src/features/Chat/Message.tsx:218
 #: src/features/Header/NeedHelpModal.tsx:167
 #: src/features/Usage/PaymentModal.tsx:350
 #. js-lingui-explicit-id
@@ -1381,6 +1391,11 @@ msgstr "تحديات البرمجة تبدو مختلفة عن **العمل ال
 #. js-lingui-explicit-id
 msgid "Coding Skills"
 msgstr "مهارات البرمجة"
+
+#: src/features/Chat/Message.tsx:247
+#. js-lingui-explicit-id
+msgid "Comment"
+msgstr "تعليق"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
 #. js-lingui-explicit-id
@@ -1918,7 +1933,7 @@ msgstr "حذف الحساب (كليًا)"
 msgid "Delete current goal"
 msgstr "حذف الهدف الحالي"
 
-#: src/features/Chat/Message.tsx:164
+#: src/features/Chat/Message.tsx:170
 #. js-lingui-explicit-id
 msgid "Delete message"
 msgstr ""
@@ -2289,12 +2304,12 @@ msgstr "لا تتجاهل الحديث العابر"
 msgid "Early access to new tools"
 msgstr "الوصول المبكر إلى الأدوات الجديدة"
 
-#: src/features/Chat/Message.tsx:156
+#: src/features/Chat/Message.tsx:162
 #. js-lingui-explicit-id
 msgid "Edit message"
 msgstr "تعديل الرسالة"
 
-#: src/features/Chat/Message.tsx:219
+#: src/features/Chat/Message.tsx:225
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "مُحرَّر"
@@ -5541,6 +5556,11 @@ msgstr "دعنا نتحدث. أخبرني عن نفسك"
 msgid "Let’s make sure you’re ready"
 msgstr "لنتأكد من أنك جاهز"
 
+#: src/features/Chat/Message.tsx:239
+#. js-lingui-explicit-id
+msgid "Like"
+msgstr "أعجبني"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:380
 #. js-lingui-explicit-id
 msgid "Listening practice. You can hear AI responses"
@@ -5567,8 +5587,8 @@ msgstr "جارِ التحميل."
 msgid "Loading.."
 msgstr "جارٍ التحميل.."
 
-#: src/features/Chat/SubmitForm.tsx:43
-#: src/features/Chat/SubmitForm.tsx:75
+#: src/features/Chat/SubmitForm.tsx:44
+#: src/features/Chat/SubmitForm.tsx:76
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:337
 #: src/features/Conversation/ConversationCanvas.tsx:1298
@@ -6058,7 +6078,7 @@ msgstr ""
 msgid "No message recorded yet."
 msgstr "لا توجد رسالة مسجلة بعد."
 
-#: src/features/Chat/MessageList.tsx:41
+#: src/features/Chat/MessageList.tsx:33
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "لا توجد رسائل بعد"
@@ -6080,6 +6100,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "No reason provided."
 msgstr "لا يوجد سبب مقدم."
+
+#: src/features/Chat/ChartSection.tsx:108
+#. js-lingui-explicit-id
+msgid "No replies yet"
+msgstr "لم يتم الرد بعد"
 
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:138
 #. js-lingui-explicit-id
@@ -6565,7 +6590,7 @@ msgstr "يرجى تأكيد بطاقة الائتمان الخاصة بك للو
 msgid "Please enter a valid email address"
 msgstr "يرجى إدخال عنوان بريد إلكتروني صالح"
 
-#: src/features/Chat/SubmitForm.tsx:163
+#: src/features/Chat/SubmitForm.tsx:164
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "يرجى تسجيل رسالة أطول (بضع كلمات على الأقل)."
@@ -7402,7 +7427,7 @@ msgstr ""
 "سجل قصة مدتها 2-3 دقائق باستخدام <0>{learningLanguageName}</0> أو "
 "<1>{nativeLanguageName}</1>"
 
-#: src/features/Chat/SubmitForm.tsx:164
+#: src/features/Chat/SubmitForm.tsx:165
 #. js-lingui-explicit-id
 msgid "Record a message and get {points} points"
 msgstr "سجل رسالة واحصل على {points} نقاط"
@@ -7424,7 +7449,7 @@ msgstr "تسجيل الإجابة"
 msgid "Record answer"
 msgstr "سجل الإجابة"
 
-#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Chat/ChartSection.tsx:144
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #: src/features/Conversation/ConversationCanvas.tsx:1107
 #. js-lingui-explicit-id
@@ -7509,6 +7534,11 @@ msgstr "جاري إزالة بياناتك..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "أداء العرض"
+
+#: src/features/Chat/ChartSection.tsx:104
+#. js-lingui-explicit-id
+msgid "Replies:"
+msgstr "الردود:"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
@@ -7645,7 +7675,7 @@ msgstr "مقابلة تفاوض على الراتب مع AI SEO"
 msgid "Salary negotiation preparation"
 msgstr "التحضير لمفاوضات الراتب"
 
-#: src/features/Chat/Message.tsx:209
+#: src/features/Chat/Message.tsx:215
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "حفظ"
@@ -7760,7 +7790,7 @@ msgstr "إعادة إرسال البريد الإلكتروني"
 msgid "Send me sign-in link"
 msgstr "أرسل لي رابط تسجيل الدخول"
 
-#: src/features/Chat/SubmitForm.tsx:130
+#: src/features/Chat/SubmitForm.tsx:131
 #: src/features/Conversation/CallMode/CallButtons.tsx:345
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -8345,7 +8375,7 @@ msgstr ""
 "تعديل الذكاء الصناعي للصعوبة بناءً على ردودك. استخدم التلميحات للتدرب على "
 "تقديم إجابات مقنعة ومختصرة تساعدك على التميز في أي مقابلة عمل.\n"
 
-#: src/features/Chat/SubmitForm.tsx:115
+#: src/features/Chat/SubmitForm.tsx:116
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -8934,7 +8964,7 @@ msgstr "تتبع تقدم طلاقتك"
 msgid "Transcribing..."
 msgstr "جار التحويل..."
 
-#: src/features/Chat/SubmitForm.tsx:58
+#: src/features/Chat/SubmitForm.tsx:59
 #. js-lingui-explicit-id
 msgid "Transcription:"
 msgstr "النص:"
