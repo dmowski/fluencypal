@@ -66,19 +66,31 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick: () => void 
           iconSize={"20px"}
         />
       </Stack>
-      <Button
+      <Stack
         sx={{
-          padding: "10px 20px",
+          width: "100%",
+          gap: "10px",
         }}
-        onClick={onLimitedClick}
-        size="large"
-        fullWidth
-        variant="contained"
-        startIcon={<Telescope />}
-        endIcon={<ChevronRight />}
       >
-        {i18n._(`Get Full Access`)}
-      </Button>
+        <Button
+          sx={{
+            padding: "10px 20px",
+          }}
+          onClick={onLimitedClick}
+          size="large"
+          fullWidth
+          variant="contained"
+          startIcon={<Telescope />}
+          endIcon={<ChevronRight />}
+        >
+          {i18n._(`Get Full Access`)}
+        </Button>
+        <Typography variant="caption">
+          {i18n._(
+            `Hint: You can get full access for free by reaching the top 5 in the game leaderboard!`
+          )}
+        </Typography>
+      </Stack>
     </Stack>
   );
 };
