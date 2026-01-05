@@ -103,10 +103,10 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               alignItems: "center",
               justifyContent: "space-between",
               gap: "20px",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
+              border: "1px solid rgba(255, 255, 255, 0.031)",
               backgroundColor: "rgba(255, 255, 255, 0.03)",
-              padding: "20px",
-              borderRadius: "12px",
+              padding: "15px 20px",
+              borderRadius: "16px",
               boxSizing: "border-box",
               flexWrap: "wrap",
               "@media (max-width: 600px)": {
