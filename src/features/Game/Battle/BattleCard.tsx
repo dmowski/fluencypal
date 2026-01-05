@@ -272,17 +272,28 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
 
                 {battle.winnerUserId && (
                   <>
+                    {!battle.hiddenByUsersIds?.includes(auth.uid || "") && (
+                      <Button
+                        variant="contained"
+                        color="info"
+                        onClick={() => battles.closeBattle(battle.battleId)}
+                      >
+                        {i18n._("Hide")}
+                      </Button>
+                    )}
+
                     <Button
-                      variant="contained"
                       color="info"
                       startIcon={<Crown />}
-                      onClick={openBattle}
+                      onClick={() => {
+                        openBattle();
+
+                        if (!battle.hiddenByUsersIds?.includes(auth.uid || "")) {
+                          battles.closeBattle(battle.battleId);
+                        }
+                      }}
                     >
                       {i18n._("Open results")}
-                    </Button>
-
-                    <Button color="info" onClick={() => battles.closeBattle(battle.battleId)}>
-                      {i18n._("Hide")}
                     </Button>
                   </>
                 )}
