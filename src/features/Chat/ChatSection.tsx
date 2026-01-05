@@ -30,6 +30,10 @@ export const ChartSection = () => {
     setActiveMessageId(messageId);
   };
 
+  const onOpen = (messageId: string) => {
+    setActiveMessageId(messageId);
+  };
+
   const submitMessage = async (messageContent: string) => {
     await chat.addMessage({ messageContent, activeMessageId });
   };
@@ -85,6 +89,7 @@ export const ChartSection = () => {
             </Button>
           </Stack>
           <Message
+            onOpen={onOpen}
             key={activeMessage.id}
             userAvatarUrl={game.getUserAvatarUrl(activeMessage.senderId)}
             message={activeMessage}
@@ -132,6 +137,7 @@ export const ChartSection = () => {
                   a.createdAtIso.localeCompare(b.createdAtIso)
                 )}
                 currentUserId={userId}
+                onOpen={onOpen}
                 onEdit={chat.editMessage}
                 onDelete={deleteMessage}
                 onCommentClick={onCommentClick}
@@ -163,6 +169,7 @@ export const ChartSection = () => {
             onEdit={chat.editMessage}
             onDelete={deleteMessage}
             onCommentClick={onCommentClick}
+            onOpen={onOpen}
           />
           <Stack
             sx={{

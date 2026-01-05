@@ -12,6 +12,7 @@ interface MessageListProps {
   onEdit: (messageId: string, newContent: string) => Promise<void>;
   onDelete: (messageId: string) => Promise<void>;
   onCommentClick: (messageId: string) => void;
+  onOpen: (messageId: string) => void;
 }
 
 export function MessageList(props: MessageListProps) {
@@ -37,6 +38,7 @@ export function MessageList(props: MessageListProps) {
           {props.messages.map((message, index) => (
             <Stack key={message.id} className="message-item">
               <Message
+                onOpen={props.onOpen}
                 key={message.id}
                 userAvatarUrl={game.getUserAvatarUrl(message.senderId)}
                 message={message}

@@ -21,6 +21,7 @@ interface MessageProps {
   onEdit: (messageId: string, newContent: string) => Promise<void>;
   onDelete: (messageId: string) => Promise<void>;
   onCommentClick: () => void;
+  onOpen: (messageId: string) => void;
   commentsCount: number;
 }
 
@@ -33,6 +34,7 @@ export function Message({
   onDelete,
   onCommentClick,
   commentsCount,
+  onOpen,
 }: MessageProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(message.content);
@@ -73,194 +75,215 @@ export function Message({
         padding: "15px",
         backgroundColor: "rgba(255, 255, 255, 0.01)",
         position: "relative",
+        width: "100%",
+        zIndex: 1,
+        gap: "10px",
+        cursor: isEditing ? "default" : "pointer",
+        ".open-message-button:focus": {
+          boxShadow: "inset 0 0 0 2px rgba(41, 179, 229, 0.5)",
+          borderRadius: "12px",
+        },
+      }}
+      onClick={(e) => {
+        if (isEditing) return;
+        const isAnySelectedText = window.getSelection()?.toString().length ?? 0 > 0;
+        if (isAnySelectedText) return;
+
+        const target = e.target as HTMLElement;
+        if (
+          target.closest("button") ||
+          target.closest("a") ||
+          target.closest("input") ||
+          target.closest("textarea")
+        ) {
+          return;
+        }
+
+        onOpen(message.id);
       }}
     >
       <Stack
         sx={{
-          display: "flex",
           justifyContent: "space-between",
-          alignItems: "flex-start",
-          width: "100%",
-          position: "relative",
-          zIndex: 1,
+          flexDirection: "row",
+          flexWrap: "wrap",
         }}
       >
         <Stack
           sx={{
-            gap: "10px",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "16px",
+            border: "none",
+            backgroundColor: "transparent",
+            color: "inherit",
+            cursor: "pointer",
+            userSelect: "text",
+            padding: "2px 10px 2px 2px",
+            borderRadius: "19px",
+            position: "relative",
+            left: "-2px",
+            ":focus": {
+              outline: "none",
+              boxShadow: "0 0 0 2px rgba(41, 179, 229, 0.5)",
+            },
+          }}
+          component={"button"}
+          onClick={() => game.showUserInModal(message.senderId)}
+        >
+          {userAvatarUrl && <Avatar avatarSize="25px" url={userAvatarUrl} />}
+          <Typography
+            variant="body1"
+            sx={{
+              fontWeight: 600,
+              paddingLeft: "1px",
+            }}
+          >
+            {userName}
+          </Typography>
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: 0.6,
+            }}
+          >
+            {updatedAgo}
+
+            {message.updatedAtIso !== message.createdAtIso && " | " + i18n._("edited")}
+          </Typography>
+        </Stack>
+
+        {isOwnMessage && (
+          <Stack sx={{ flexDirection: "row", opacity: 0.7 }}>
+            <IconButton
+              size="small"
+              onClick={() => setIsEditing(true)}
+              disabled={isDeleting}
+              title={i18n._("Edit message")}
+            >
+              <EditIcon fontSize="small" />
+            </IconButton>
+            <IconButton
+              size="small"
+              onClick={handleDelete}
+              disabled={isDeleting}
+              title={i18n._("Delete message")}
+            >
+              {isDeleting ? <CircularProgress size={20} /> : <DeleteIcon fontSize="small" />}
+            </IconButton>
+          </Stack>
+        )}
+      </Stack>
+
+      {isEditing ? (
+        <Stack
+          sx={{
             width: "100%",
           }}
         >
-          <Stack
-            sx={{
-              justifyContent: "space-between",
-              flexDirection: "row",
-              flexWrap: "wrap",
-            }}
-          >
-            <Stack
-              sx={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: "16px",
-                border: "none",
-                backgroundColor: "transparent",
-                color: "inherit",
-                cursor: "pointer",
-                userSelect: "text",
-                padding: "2px 10px 2px 2px",
-                borderRadius: "19px",
-                position: "relative",
-                left: "-2px",
-                ":focus": {
-                  outline: "none",
-                  boxShadow: "0 0 0 2px rgba(41, 179, 229, 0.5)",
-                },
-              }}
-              component={"button"}
-              onClick={() => game.showUserInModal(message.senderId)}
-            >
-              {userAvatarUrl && <Avatar avatarSize="25px" url={userAvatarUrl} />}
-              <Typography
-                variant="body1"
-                sx={{
-                  fontWeight: 600,
-                  paddingLeft: "1px",
-                }}
-              >
-                {userName}
-              </Typography>
-              <Typography
-                variant="caption"
-                sx={{
-                  opacity: 0.6,
-                }}
-              >
-                {updatedAgo}
-
-                {message.updatedAtIso !== message.createdAtIso && " | " + i18n._("edited")}
-              </Typography>
-            </Stack>
-
-            {isOwnMessage && (
-              <Stack sx={{ flexDirection: "row", opacity: 0.7 }}>
-                <IconButton
-                  size="small"
-                  onClick={() => setIsEditing(true)}
-                  disabled={isDeleting}
-                  title={i18n._("Edit message")}
-                >
-                  <EditIcon fontSize="small" />
-                </IconButton>
-                <IconButton
-                  size="small"
-                  onClick={handleDelete}
-                  disabled={isDeleting}
-                  title={i18n._("Delete message")}
-                >
-                  {isDeleting ? <CircularProgress size={20} /> : <DeleteIcon fontSize="small" />}
-                </IconButton>
-              </Stack>
-            )}
-          </Stack>
-
-          {isEditing ? (
-            <Stack
-              sx={{
-                width: "100%",
-              }}
-            >
-              <TextField
-                fullWidth
-                multiline
-                maxRows={12}
-                value={editedContent}
-                onChange={(e) => setEditedContent(e.target.value)}
-                sx={{ mt: 1 }}
-                disabled={isDeleting}
-              />
-            </Stack>
-          ) : (
-            <Typography
-              sx={{
-                marginTop: "5px",
-                wordBreak: "break-word",
-                whiteSpace: "pre-wrap",
-                width: "100%",
-              }}
-            >
-              {message.content.length > limitMessages ? (
-                <>
-                  {isLimitedMessage
-                    ? message.content.slice(0, limitMessages) + "..."
-                    : message.content}
-                  <Button
-                    size="small"
-                    onClick={() => setIsShowFullContent(!isShowFullContent)}
-                    sx={{ textTransform: "none", marginLeft: "5px", padding: 0, minWidth: 0 }}
-                  >
-                    {isShowFullContent ? i18n._("Show less") : i18n._("Show more")}
-                  </Button>
-                </>
-              ) : (
-                message.content
-              )}
-            </Typography>
-          )}
-
-          {isEditing ? (
-            <Stack sx={{ gap: "10px", flexDirection: "row" }}>
+          <TextField
+            fullWidth
+            multiline
+            maxRows={12}
+            value={editedContent}
+            onChange={(e) => setEditedContent(e.target.value)}
+            sx={{ mt: 1 }}
+            disabled={isDeleting}
+          />
+        </Stack>
+      ) : (
+        <Typography
+          sx={{
+            marginTop: "5px",
+            wordBreak: "break-word",
+            whiteSpace: "pre-wrap",
+            width: "100%",
+          }}
+        >
+          {message.content.length > limitMessages ? (
+            <>
+              {isLimitedMessage ? message.content.slice(0, limitMessages) + "..." : message.content}
               <Button
                 size="small"
-                onClick={handleSaveEdit}
-                disabled={isDeleting || !editedContent.trim()}
-                variant="contained"
+                onClick={() => setIsShowFullContent(!isShowFullContent)}
+                sx={{ textTransform: "none", marginLeft: "5px", padding: 0, minWidth: 0 }}
               >
-                {isDeleting ? <CircularProgress size={20} /> : i18n._("Save")}
+                {isShowFullContent ? i18n._("Show less") : i18n._("Show more")}
               </Button>
-              <Button size="small" onClick={() => setIsEditing(false)} disabled={isDeleting}>
-                {i18n._("Cancel")}
-              </Button>
-            </Stack>
-          ) : (
-            <>
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "8px",
-                }}
-              >
-                <MessageActionButton
-                  isActive={isLikedByMe}
-                  onClick={() => chat.toggleLike(message.id, "like")}
-                  label={i18n._("Like")}
-                  count={chat.messagesLikes[message.id]?.length || 0}
-                  iconName={"heart"}
-                />
-
-                <MessageActionButton
-                  isActive={false}
-                  onClick={onCommentClick}
-                  label={i18n._("Comment")}
-                  count={commentsCount}
-                  iconName={"message-circle"}
-                />
-
-                {translator.isTranslateAvailable && (
-                  <MessageActionButton
-                    isActive={false}
-                    onClick={(element) => translator.translateWithModal(message.content, element)}
-                    label={i18n._("Translate")}
-                    iconName={"languages"}
-                  />
-                )}
-                {translator.translateModal}
-              </Stack>
             </>
+          ) : (
+            message.content
           )}
+        </Typography>
+      )}
+
+      {isEditing ? (
+        <Stack sx={{ gap: "10px", flexDirection: "row" }}>
+          <Button
+            size="small"
+            onClick={handleSaveEdit}
+            disabled={isDeleting || !editedContent.trim()}
+            variant="contained"
+          >
+            {isDeleting ? <CircularProgress size={20} /> : i18n._("Save")}
+          </Button>
+          <Button size="small" onClick={() => setIsEditing(false)} disabled={isDeleting}>
+            {i18n._("Cancel")}
+          </Button>
         </Stack>
-      </Stack>
+      ) : (
+        <Stack
+          sx={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "8px",
+          }}
+        >
+          <MessageActionButton
+            isActive={isLikedByMe}
+            onClick={() => chat.toggleLike(message.id, "like")}
+            label={i18n._("Like")}
+            count={chat.messagesLikes[message.id]?.length || 0}
+            iconName={"heart"}
+          />
+
+          <MessageActionButton
+            isActive={false}
+            onClick={onCommentClick}
+            label={i18n._("Comment")}
+            count={commentsCount}
+            iconName={"message-circle"}
+          />
+
+          {translator.isTranslateAvailable && (
+            <MessageActionButton
+              isActive={false}
+              onClick={(element) => translator.translateWithModal(message.content, element)}
+              label={i18n._("Translate")}
+              iconName={"languages"}
+            />
+          )}
+          {translator.translateModal}
+        </Stack>
+      )}
+      <Stack
+        component={"button"}
+        onClick={() => {
+          onOpen(message.id);
+        }}
+        className="open-message-button"
+        sx={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          top: 0,
+          left: 0,
+          border: "none",
+          backgroundColor: "rgba(0,0,0,0)",
+          zIndex: -1,
+          outline: "none",
+        }}
+      />
     </Stack>
   );
 }
