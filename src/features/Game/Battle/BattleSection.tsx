@@ -20,6 +20,7 @@ export const BattleSection = () => {
     .filter((battle) => {
       const isMyBattle = userId ? battle.usersIds.includes(userId) : false;
       return isMyBattle;
+      //return true;
     })
     .sort((a, b) => {
       return b.updatedAtIso.localeCompare(a.updatedAtIso);

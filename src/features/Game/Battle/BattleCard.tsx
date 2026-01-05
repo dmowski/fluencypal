@@ -282,7 +282,7 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                     </Button>
 
                     <Button color="info" onClick={() => battles.closeBattle(battle.battleId)}>
-                      {i18n._("Close")}
+                      {i18n._("Hide")}
                     </Button>
                   </>
                 )}
