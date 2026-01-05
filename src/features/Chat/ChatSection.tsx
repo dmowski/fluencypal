@@ -205,6 +205,7 @@ export const ChartSection = () => {
           <Message
             onOpen={onOpen}
             key={activeMessage.id}
+            isContentWide
             userAvatarUrl={game.getUserAvatarUrl(activeMessage.senderId)}
             message={activeMessage}
             isOwnMessage={activeMessage.senderId === userId}
@@ -214,38 +215,31 @@ export const ChartSection = () => {
             onCommentClick={() => onCommentClick(activeMessage.id)}
             commentsCount={chat.commentsInfo[activeMessage.id] || 0}
           />
-          <Stack
-            sx={{
-              width: "100%",
-              borderTop: "1px solid rgba(255, 255, 255, 0.12)",
-              padding: "0px",
-              background: "rgba(255, 255, 255, 0.005)",
-            }}
-          >
+          {repliesMessages.length > 0 && (
             <Stack
               sx={{
-                padding: "20px 20px",
-                borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
-                background: "rgba(17, 157, 218, 0.13)",
+                width: "100%",
+                borderTop: "1px solid rgba(255, 255, 255, 0.12)",
+                padding: "0px",
+                background: "rgba(255, 255, 255, 0.005)",
               }}
             >
-              <Typography
-                variant="body1"
+              <Stack
                 sx={{
-                  opacity: 0.9,
+                  padding: "15px 20px",
+                  borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
+                  background: "rgba(17, 157, 218, 0.13)",
                 }}
               >
-                {i18n._("Replies:")}
-              </Typography>
-            </Stack>
-
-            {repliesMessages.length === 0 ? (
-              <Stack>
-                <Alert severity="info" sx={{ marginTop: "10px" }} title="asd">
-                  {i18n._("No replies yet. Be the first to reply to this message.")}
-                </Alert>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    opacity: 0.9,
+                  }}
+                >
+                  {i18n._("Replies:")}
+                </Typography>
               </Stack>
-            ) : (
               <MessageList
                 messages={repliesMessages.sort((a, b) =>
                   a.createdAtIso.localeCompare(b.createdAtIso)
@@ -256,8 +250,8 @@ export const ChartSection = () => {
                 onDelete={deleteMessage}
                 onCommentClick={onCommentClick}
               />
-            )}
-          </Stack>
+            </Stack>
+          )}
         </Stack>
       ) : (
         <Stack
