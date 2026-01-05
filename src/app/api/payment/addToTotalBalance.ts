@@ -8,6 +8,9 @@ interface AddToTotalBalanceProps {
   amountToAddHours: number;
   monthsCount?: number;
   daysCount?: number;
+
+  // This is not a balance in hours, but actual hours to add to . Like for trial hours
+  hoursCount?: number;
 }
 
 export const addToTotalBalance = async ({
@@ -15,6 +18,8 @@ export const addToTotalBalance = async ({
   amountToAddHours,
   monthsCount,
   daysCount,
+
+  hoursCount,
 }: AddToTotalBalanceProps) => {
   const db = getDB();
   const balance = await getUserBalance(userId);
@@ -23,15 +28,18 @@ export const addToTotalBalance = async ({
     lastUpdatedAt: Date.now(),
   };
 
-  if (monthsCount || daysCount !== undefined) {
+  if (monthsCount || daysCount !== undefined || hoursCount !== undefined) {
     const isActiveSubscriptions = !!balance.activeSubscriptionTill;
-
     const lastDate = isActiveSubscriptions ? dayjs(balance.activeSubscriptionTill) : dayjs();
 
     const endDate = monthsCount
       ? lastDate.add(monthsCount, "month")
-      : lastDate.add(daysCount || 0, "day");
+      : hoursCount
+        ? lastDate.add(hoursCount, "hour")
+        : lastDate.add(daysCount || 0, "day");
     const endDateIso = endDate.toISOString();
+
+    console.log("endDateIso", endDateIso);
     newTotalUsage.activeSubscriptionTill = endDateIso;
   } else {
     const newBalance = balance.balanceHours + amountToAddHours;

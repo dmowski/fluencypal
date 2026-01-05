@@ -73,5 +73,6 @@ export interface PaymentLog {
   amountOfHours: number;
   amountOfMonth: number;
   amountOfDays: number;
+
   receiptUrl: string;
 }

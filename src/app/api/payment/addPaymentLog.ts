@@ -13,6 +13,7 @@ interface AddPaymentLogParams {
   receiptUrl?: string;
   monthsCount?: number;
   daysCount?: number;
+  hoursCount?: number;
 }
 export const addPaymentLog = async ({
   amount,
@@ -24,6 +25,7 @@ export const addPaymentLog = async ({
   receiptUrl,
   monthsCount,
   daysCount,
+  hoursCount,
 }: AddPaymentLogParams) => {
   const paymentLog: PaymentLog = {
     id: paymentId,
@@ -68,5 +70,6 @@ export const addPaymentLog = async ({
     amountToAddHours: paymentLog.amountOfHours,
     monthsCount,
     daysCount,
+    hoursCount,
   });
 };
