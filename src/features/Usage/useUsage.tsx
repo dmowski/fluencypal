@@ -123,12 +123,7 @@ function useProvideUsage(): UsageContextType {
     if (!totalData) {
       console.log("ADD START BALANCE");
       isBalanceInit.current = true;
-      await initWelcomeBalanceRequest(
-        {
-          languageCode: "en",
-        },
-        await auth.getToken()
-      );
+      await initWelcomeBalanceRequest({}, await auth.getToken());
     }
 
     setIsWelcomeBalanceInitialized(true);

@@ -32,9 +32,7 @@ export interface AiImageResponse {
   aiImageResponse: string;
 }
 
-export interface InitBalanceRequest {
-  languageCode: SupportedLanguage;
-}
+export interface InitBalanceRequest {}
 
 export interface InitBalanceResponse {
   done: boolean;
