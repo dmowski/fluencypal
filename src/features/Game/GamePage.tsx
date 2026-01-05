@@ -136,7 +136,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               }}
             >
               <Button
-                variant="contained"
+                variant={"contained"}
                 startIcon={<Swords />}
                 color="info"
                 onClick={() => {
