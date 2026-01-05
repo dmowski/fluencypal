@@ -238,9 +238,13 @@ msgstr ""
 "Simulasikan pengalaman nyata dengan **wawancara simulasi gratis di "
 "FluencyPal**—langkah terakhir Anda untuk menguasai hari besar!"
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:84
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:106
 msgid "+{increasePoints} points"
 msgstr "+{increasePoints} poin"
+
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:26
+msgid "+{points} points"
+msgstr "+{poin} poin"
 
 #: src/features/Game/Battle/BattleCard.tsx:138
 #. js-lingui-explicit-id
@@ -421,15 +425,30 @@ msgstr "Rencana aksi untuk meningkatkan keterampilan backend yang kritis"
 msgid "Active"
 msgstr "Aktif"
 
-#: src/features/Chat/ChatSection.tsx:149
+#: src/features/Chat/ChatSection.tsx:170
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Tambahkan balasan"
+
+#: src/features/Chat/ChatSection.tsx:89
+#. js-lingui-explicit-id
+msgid "Add Comment"
+msgstr "Tambahkan Komentar"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:323
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "Tambahkan tujuan baru"
+
+#: src/features/Chat/ChatSection.tsx:89
+#. js-lingui-explicit-id
+msgid "Add New Post"
+msgstr "Tambahkan Postingan Baru"
+
+#: src/features/Chat/ChatSection.tsx:303
+#. js-lingui-explicit-id
+msgid "Add Post"
+msgstr "Tambahkan Pos"
 
 #: src/features/Settings/MyProfile.tsx:234
 #. js-lingui-explicit-id
@@ -801,7 +820,7 @@ msgstr "Arsitektur & Ketahanan"
 msgid "Are there any hidden fees?"
 msgstr "Apakah ada biaya tersembunyi?"
 
-#: src/features/Chat/ChatSection.tsx:46
+#: src/features/Chat/ChatSection.tsx:54
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Apakah Anda yakin ingin menghapus pesan ini?"
@@ -885,7 +904,7 @@ msgstr ""
 "Menghindari kesalahan-kesalahan ini akan membuat Anda terlihat lebih "
 "profesional dan meningkatkan peluang Anda untuk sukses."
 
-#: src/features/Chat/ChatSection.tsx:84
+#: src/features/Chat/ChatSection.tsx:201
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -1077,6 +1096,11 @@ msgstr ""
 "Bangun kepercayaan diri untuk membahas ekuitas, manfaat, dan paket gaji "
 "yang sesuai dengan pengalaman Anda."
 
+#: src/features/Chat/ChatSection.tsx:123
+#. js-lingui-explicit-id
+msgid "Build connections"
+msgstr "Bangun koneksi"
+
 #: src/features/Landing/LandingPage.tsx:197
 #. js-lingui-explicit-id
 msgid "Build fluency and confidence with daily speaking practice."
@@ -1219,7 +1243,7 @@ msgstr "Apakah saya dapat berhenti menggunakan FluencyPal kapan saja?"
 msgid "Can I use FluencyPal for free?"
 msgstr "Bisakah saya menggunakan FluencyPal secara gratis?"
 
-#: src/features/Chat/Message.tsx:222
+#: src/features/Chat/Message.tsx:231
 #: src/features/Header/NeedHelpModal.tsx:167
 #: src/features/Usage/PaymentModal.tsx:350
 #. js-lingui-explicit-id
@@ -1424,7 +1448,7 @@ msgstr ""
 msgid "Coding Skills"
 msgstr "Kemampuan Koding"
 
-#: src/features/Chat/Message.tsx:245
+#: src/features/Chat/Message.tsx:253
 #. js-lingui-explicit-id
 msgid "Comment"
 msgstr "Komentar"
@@ -1467,7 +1491,7 @@ msgstr "Perusahaan"
 msgid "Complete previous tasks first"
 msgstr "Selesaikan tugas sebelumnya terlebih dahulu"
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:49
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:71
 #. js-lingui-explicit-id
 msgid "Complete the sentence"
 msgstr "Lengkapi kalimat ini"
@@ -1976,7 +2000,7 @@ msgstr "Hapus akun (Total)"
 msgid "Delete current goal"
 msgstr "Hapus tujuan saat ini"
 
-#: src/features/Chat/Message.tsx:159
+#: src/features/Chat/Message.tsx:170
 #. js-lingui-explicit-id
 msgid "Delete message"
 msgstr "Hapus pesan"
@@ -2052,7 +2076,7 @@ msgstr ""
 "Jelaskan strategi untuk menangani konkurensi di .NET saat memproses "
 "pekerjaan latar belakang (antrian, batching, pembatasan)."
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:47
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:69
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:211
 #. js-lingui-explicit-id
 msgid "Describe the image"
@@ -2243,7 +2267,7 @@ msgstr ""
 msgid "Discuss scaling, observability, failure modes, and operational readiness."
 msgstr "Diskusikan skala, observabilitas, mode kegagalan, dan kesiapan operasional."
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:50
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:72
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Diskusikan topik tersebut"
@@ -2363,12 +2387,17 @@ msgstr "Jangan lewatkan obrolan ringan"
 msgid "Early access to new tools"
 msgstr "Akses awal ke alat baru"
 
-#: src/features/Chat/Message.tsx:151
+#: src/features/Chat/ChatSection.tsx:127
+#. js-lingui-explicit-id
+msgid "Earn game points!"
+msgstr "Dapatkan poin permainan!"
+
+#: src/features/Chat/Message.tsx:162
 #. js-lingui-explicit-id
 msgid "Edit message"
 msgstr "Edit pesan"
 
-#: src/features/Chat/Message.tsx:141
+#: src/features/Chat/Message.tsx:152
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "diedit"
@@ -5789,7 +5818,7 @@ msgstr "Mari berbicara. Ceritakan tentang dirimu"
 msgid "Let’s make sure you’re ready"
 msgstr "Mari pastikan Anda siap"
 
-#: src/features/Chat/Message.tsx:237
+#: src/features/Chat/Message.tsx:245
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "Suka"
@@ -5825,7 +5854,7 @@ msgstr "Memuat."
 msgid "Loading.."
 msgstr "Memuat.."
 
-#: src/features/Chat/SubmitForm.tsx:37
+#: src/features/Chat/SubmitForm.tsx:39
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:240
 #: src/features/Conversation/ConversationCanvas.tsx:946
@@ -6242,7 +6271,7 @@ msgstr "Kata-kata baru untuk dipraktikkan."
 #: src/features/Game/Battle/BattleActionModal.tsx:365
 #: src/features/Game/GameOnboarding.tsx:85
 #: src/features/Game/GameOnboarding.tsx:143
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:125
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
 #: src/features/Goal/Quiz/GoalReview.tsx:152
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:136
@@ -6316,7 +6345,7 @@ msgstr "Tidak ada wawancara ditemukan"
 msgid "No message recorded yet."
 msgstr "Belum ada pesan yang direkam."
 
-#: src/features/Chat/MessageList.tsx:33
+#: src/features/Chat/MessageList.tsx:34
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "Belum ada pesan"
@@ -6337,7 +6366,7 @@ msgstr "Tidak Ada Proyeksi Tersedia"
 msgid "No reason provided."
 msgstr "Tidak ada alasan yang diberikan."
 
-#: src/features/Chat/ChatSection.tsx:126
+#: src/features/Chat/ChatSection.tsx:244
 #. js-lingui-explicit-id
 msgid "No replies yet. Be the first to reply to this message."
 msgstr "Belum ada balasan. Jadilah yang pertama memberi balasan pada pesan ini."
@@ -6832,7 +6861,7 @@ msgstr "Silakan konfirmasi kartu kredit Anda untuk mengakses semua fitur."
 msgid "Please enter a valid email address"
 msgstr "Silakan masukkan alamat email yang valid"
 
-#: src/features/Chat/SubmitForm.tsx:165
+#: src/features/Chat/SubmitForm.tsx:167
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Silakan rekam pesan yang lebih panjang (setidaknya beberapa kata)."
@@ -7450,7 +7479,7 @@ msgstr "Masuk dalam peringkat 5 besar untuk mendapatkan akses penuh ke semua fit
 msgid "Rating"
 msgstr "Penilaian"
 
-#: src/features/Chat/SubmitForm.tsx:120
+#: src/features/Chat/SubmitForm.tsx:122
 #: src/features/Conversation/ConversationCanvas.tsx:713
 #: src/features/Conversation/ConversationCanvas.tsx:984
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
@@ -7517,7 +7546,7 @@ msgstr ""
 "Inggris, dan pembaruan tutor AI. Tetap terinformasi, termotivasi, dan "
 "terinspirasi untuk mencapai tujuan kefasihan Anda dengan FluencyPal."
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:51
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:73
 #. js-lingui-explicit-id
 msgid "Read the text"
 msgstr "Baca teksnya"
@@ -7659,6 +7688,11 @@ msgstr "Skenario API dan data dunia nyata"
 msgid "Real-world scenarios, not just theory"
 msgstr "Skenario dunia nyata, bukan hanya teori"
 
+#: src/features/Chat/ChatSection.tsx:119
+#. js-lingui-explicit-id
+msgid "Receive feedback and support"
+msgstr "Terima umpan balik dan dukungan"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
 #. js-lingui-explicit-id
 msgid "Receive instant, tailored feedback from your AI partner."
@@ -7699,10 +7733,10 @@ msgstr ""
 "Rekam cerita selama 2-3 menit menggunakan <0>{learningLanguageName}</0> "
 "atau <1>{nativeLanguageName}</1>"
 
-#: src/features/Chat/SubmitForm.tsx:180
+#: src/features/Chat/ChatSection.tsx:170
 #. js-lingui-explicit-id
-msgid "Record a message and get {points} points"
-msgstr "Rekam pesan dan dapatkan {points} poin"
+msgid "Record a message"
+msgstr "Rekam pesan"
 
 #: src/features/Game/GameOnboarding.tsx:123
 #. js-lingui-explicit-id
@@ -7730,7 +7764,6 @@ msgstr "Rekam Jawaban"
 msgid "Record answer"
 msgstr "Rekam jawaban"
 
-#: src/features/Chat/ChatSection.tsx:175
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #: src/features/Conversation/ConversationCanvas.tsx:755
 #. js-lingui-explicit-id
@@ -7817,7 +7850,7 @@ msgstr "Menghapus data Anda..."
 msgid "Rendering Performance"
 msgstr "Kinerja Rendering"
 
-#: src/features/Chat/ChatSection.tsx:119
+#: src/features/Chat/ChatSection.tsx:237
 #. js-lingui-explicit-id
 msgid "Replies:"
 msgstr "Balasan:"
@@ -7961,7 +7994,7 @@ msgstr "Wawancara negosiasi gaji dengan AI SEO"
 msgid "Salary negotiation preparation"
 msgstr "Persiapan negosiasi gaji"
 
-#: src/features/Chat/Message.tsx:219
+#: src/features/Chat/Message.tsx:228
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Simpan"
@@ -8076,7 +8109,7 @@ msgstr "Kirim email lagi"
 msgid "Send me sign-in link"
 msgstr "Kirimkan saya tautan masuk"
 
-#: src/features/Chat/SubmitForm.tsx:131
+#: src/features/Chat/SubmitForm.tsx:133
 #: src/features/Conversation/CallMode/CallButtons.tsx:345
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -8147,10 +8180,20 @@ msgstr ""
 "Bagikan cerita menarik tentang kolaborasi lintas tim, resolusi konflik, dan "
 "kepemilikan proyek."
 
+#: src/features/Chat/ChatSection.tsx:115
+#. js-lingui-explicit-id
+msgid "Share news, ideas or ask questions"
+msgstr "Bagikan berita, ide, atau ajukan pertanyaan"
+
 #: src/features/Case/data/frontend-junior/quizData.ts:66
 #. js-lingui-explicit-id
 msgid "Share what you're currently learning"
 msgstr "Bagikan apa yang sedang Anda pelajari"
+
+#: src/features/Chat/ChatSection.tsx:99
+#. js-lingui-explicit-id
+msgid "Share your thoughts with the community!"
+msgstr "Bagikan pemikiran Anda dengan komunitas!"
 
 #: src/features/RolePlay/rolePlayData.tsx:491
 #: src/features/RolePlay/rolePlayData.tsx:595
@@ -8194,13 +8237,13 @@ msgstr "Tampilkan Debat"
 msgid "Show knowledge of the company and genuine interest. For example:"
 msgstr "Tunjukkan pengetahuan tentang perusahaan dan minat yang tulus. Misalnya:"
 
-#: src/features/Chat/Message.tsx:202
+#: src/features/Chat/Message.tsx:211
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Tampilkan lebih sedikit"
 
-#: src/features/Chat/Message.tsx:202
+#: src/features/Chat/Message.tsx:211
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -8310,7 +8353,7 @@ msgstr ""
 "Gambarlah arsitektur mikrolayanan sederhana dengan API gateway, otentikasi, "
 "layanan, dan komunikasi asinkron."
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:39
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:61
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:237
 #. js-lingui-explicit-id
 msgid "Skip"
@@ -8676,7 +8719,7 @@ msgstr ""
 "petunjuk untuk berlatih menyampaikan jawaban yang singkat, persuasif yang "
 "membantu Anda menonjol dalam setiap wawancara kerja."
 
-#: src/features/Chat/SubmitForm.tsx:97
+#: src/features/Chat/SubmitForm.tsx:99
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -9289,7 +9332,7 @@ msgstr "Lacak Kemajuan Kefasihan Anda"
 msgid "Transcribing..."
 msgstr "Mentranskripsi..."
 
-#: src/features/Chat/Message.tsx:254
+#: src/features/Chat/Message.tsx:262
 #. js-lingui-explicit-id
 msgid "Translate"
 msgstr "Menerjemahkan"
@@ -9299,7 +9342,7 @@ msgstr "Menerjemahkan"
 msgid "Translate Guru"
 msgstr "Terjemahkan Guru"
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:48
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:70
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Terjemahkan kata"
@@ -9930,6 +9973,11 @@ msgstr "Apa yang akan Anda capai"
 #. js-lingui-explicit-id
 msgid "What's included?"
 msgstr "Apa yang termasuk?"
+
+#: src/features/Chat/ChatSection.tsx:292
+#. js-lingui-explicit-id
+msgid "What's new?"
+msgstr "Apa yang baru?"
 
 #: src/features/Landing/LandingPage.tsx:49
 #. js-lingui-explicit-id
@@ -10593,3 +10641,75 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
+
+#: src/features/Chat/ChatSection.tsx:119
+#. js-lingui-explicit-id
+#~ msgid "Get feedback"
+#~ msgstr "Dapatkan umpan balik"
+
+#: src/features/Chat/ChatSection.tsx:123
+#. js-lingui-explicit-id
+#~ msgid "Build connections."
+#~ msgstr "Bangun koneksi."
+
+#: src/features/Chat/ChatSection.tsx:119
+#. js-lingui-explicit-id
+#~ msgid "Get feedback."
+#~ msgstr "Dapatkan umpan balik."
+
+#: src/features/Chat/ChatSection.tsx:115
+#. js-lingui-explicit-id
+#~ msgid "Share news, ideas or ask questions."
+#~ msgstr "Bagikan berita, ide atau ajukan pertanyaan."
+
+#: src/features/Chat/ChatSection.tsx:119
+#. js-lingui-explicit-id
+#~ msgid "Receive feedback."
+#~ msgstr "Menerima umpan balik."
+
+#: src/features/Chat/ChatSection.tsx:115
+#. js-lingui-explicit-id
+#~ msgid "Share news, ideas, or questions."
+#~ msgstr "Bagikan berita, ide, atau pertanyaan."
+
+#: src/features/Chat/ChatSection.tsx:115
+#. js-lingui-explicit-id
+#~ msgid "Share updates, ideas, or questions."
+#~ msgstr "Bagikan pembaruan, ide, atau pertanyaan."
+
+#: src/features/Chat/ChatSection.tsx:125
+#. js-lingui-explicit-id
+#~ msgid "Build connections and foster discussions."
+#~ msgstr "Bangun koneksi dan rangsang diskusi."
+
+#: src/features/Chat/ChatSection.tsx:129
+#. js-lingui-explicit-id
+#~ msgid "Earn game points for active participation!"
+#~ msgstr "Dapatkan poin permainan untuk partisipasi aktif!"
+
+#: src/features/Chat/ChatSection.tsx:121
+#. js-lingui-explicit-id
+#~ msgid "Receive feedback from other community members."
+#~ msgstr "Terima umpan balik dari anggota komunitas lainnya."
+
+#: src/features/Chat/ChatSection.tsx:115
+#. js-lingui-explicit-id
+#~ msgid "Share updates, ideas, or questions with fellow community members."
+#~ msgstr "Bagikan pembaruan, ide, atau pertanyaan dengan sesama anggota komunitas."
+
+#: src/features/Chat/ChatSection.tsx:114
+#. js-lingui-explicit-id
+#~ msgid "Engage with others by posting your thoughts, questions, or updates."
+#~ msgstr ""
+#~ "Terlibat dengan orang lain dengan memposting pemikiran, pertanyaan, atau "
+#~ "pembaruan Anda."
+
+#: src/features/Chat/ChatSection.tsx:300
+#. js-lingui-explicit-id
+#~ msgid "Post"
+#~ msgstr "Poskan"
+
+#: src/features/Chat/SubmitForm.tsx:180
+#. js-lingui-explicit-id
+#~ msgid "Record a message and get {points} points"
+#~ msgstr "Rekam pesan dan dapatkan {points} poin"

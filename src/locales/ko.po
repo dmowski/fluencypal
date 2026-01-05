@@ -215,9 +215,13 @@ msgstr ""
 "**당신의 기술을 테스트해 보십니까?**  \n"
 "**FluencyPal에서 무료 모의 인터뷰**로 실제 경험을 모방하십시오 - 큰 날을 성공으로 이끄는 마지막 단계입니다!"
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:84
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:106
 msgid "+{increasePoints} points"
 msgstr "+{increasePoints} 포인트"
+
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:26
+msgid "+{points} points"
+msgstr "+{points} 포인트"
 
 #: src/features/Game/Battle/BattleCard.tsx:138
 #. js-lingui-explicit-id
@@ -388,15 +392,30 @@ msgstr "백엔드 필수 기술 향상을 위한 실행 계획"
 msgid "Active"
 msgstr "활성화됨"
 
-#: src/features/Chat/ChatSection.tsx:149
+#: src/features/Chat/ChatSection.tsx:170
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "답글 추가"
+
+#: src/features/Chat/ChatSection.tsx:89
+#. js-lingui-explicit-id
+msgid "Add Comment"
+msgstr "주석 추가"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:323
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "새 목표 추가"
+
+#: src/features/Chat/ChatSection.tsx:89
+#. js-lingui-explicit-id
+msgid "Add New Post"
+msgstr "새 게시물 추가"
+
+#: src/features/Chat/ChatSection.tsx:303
+#. js-lingui-explicit-id
+msgid "Add Post"
+msgstr "게시물 추가"
 
 #: src/features/Settings/MyProfile.tsx:234
 #. js-lingui-explicit-id
@@ -757,7 +776,7 @@ msgstr "건축 및 회복력"
 msgid "Are there any hidden fees?"
 msgstr "숨겨진 수수료가 있나요?"
 
-#: src/features/Chat/ChatSection.tsx:46
+#: src/features/Chat/ChatSection.tsx:54
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "이 메시지를 삭제하시겠습니까?"
@@ -833,7 +852,7 @@ msgid ""
 "your chances of success."
 msgstr "이러한 실수를 피하면 당신이 더 전문적으로 보이게 하고 성공의 가능성을 높일 것입니다."
 
-#: src/features/Chat/ChatSection.tsx:84
+#: src/features/Chat/ChatSection.tsx:201
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -1017,6 +1036,11 @@ msgid ""
 "match your experience."
 msgstr "귀하의 경험과 일치하는 주식, 혜택 및 급여 패키지에 대해 논의할 수 있는 자신감을 키우세요."
 
+#: src/features/Chat/ChatSection.tsx:123
+#. js-lingui-explicit-id
+msgid "Build connections"
+msgstr "연결 구축"
+
 #: src/features/Landing/LandingPage.tsx:197
 #. js-lingui-explicit-id
 msgid "Build fluency and confidence with daily speaking practice."
@@ -1159,7 +1183,7 @@ msgstr "FluencyPal을 언제든지 중지할 수 있나요?"
 msgid "Can I use FluencyPal for free?"
 msgstr "FluencyPal을 무료로 사용할 수 있나요?"
 
-#: src/features/Chat/Message.tsx:222
+#: src/features/Chat/Message.tsx:231
 #: src/features/Header/NeedHelpModal.tsx:167
 #: src/features/Usage/PaymentModal.tsx:350
 #. js-lingui-explicit-id
@@ -1349,7 +1373,7 @@ msgstr "코드 챌린지는 당신이 실습한 **실제 개발 작업**과 다�
 msgid "Coding Skills"
 msgstr "코딩 기술"
 
-#: src/features/Chat/Message.tsx:245
+#: src/features/Chat/Message.tsx:253
 #. js-lingui-explicit-id
 msgid "Comment"
 msgstr "코멘트"
@@ -1392,7 +1416,7 @@ msgstr "회사"
 msgid "Complete previous tasks first"
 msgstr "이전 작업을 먼저 완료하세요."
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:49
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:71
 #. js-lingui-explicit-id
 msgid "Complete the sentence"
 msgstr "문장을 완성하세요"
@@ -1880,7 +1904,7 @@ msgstr "계정 삭제 (전체)"
 msgid "Delete current goal"
 msgstr "현재 목표 삭제"
 
-#: src/features/Chat/Message.tsx:159
+#: src/features/Chat/Message.tsx:170
 #. js-lingui-explicit-id
 msgid "Delete message"
 msgstr "메시지 삭제"
@@ -1945,7 +1969,7 @@ msgid ""
 "background jobs (queues, batching, throttling)."
 msgstr ".NET에서 백그라운드 작업을 처리할 때 동시성을 관리하는 전략을 설명하세요 (큐, 배치, 스로틀링)."
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:47
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:69
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:211
 #. js-lingui-explicit-id
 msgid "Describe the image"
@@ -2114,7 +2138,7 @@ msgstr ""
 msgid "Discuss scaling, observability, failure modes, and operational readiness."
 msgstr "스케일링, 관측 가능성, 실패 모드 및 운영 준비성에 대해 논의하십시오."
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:50
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:72
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "토픽 논의"
@@ -2224,12 +2248,17 @@ msgstr "소소한 대화를 건너뛰지 마세요"
 msgid "Early access to new tools"
 msgstr "새로운 도구에 대한 조기 액세스"
 
-#: src/features/Chat/Message.tsx:151
+#: src/features/Chat/ChatSection.tsx:127
+#. js-lingui-explicit-id
+msgid "Earn game points!"
+msgstr "게임 포인트를 획득하세요!"
+
+#: src/features/Chat/Message.tsx:162
 #. js-lingui-explicit-id
 msgid "Edit message"
 msgstr "메시지 편집"
 
-#: src/features/Chat/Message.tsx:141
+#: src/features/Chat/Message.tsx:152
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "편집됨"
@@ -5290,7 +5319,7 @@ msgstr "이야기해 봅시다. 당신에 대해 알려주세요."
 msgid "Let’s make sure you’re ready"
 msgstr "준비가 되었는지 확인해봅시다"
 
-#: src/features/Chat/Message.tsx:237
+#: src/features/Chat/Message.tsx:245
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "좋아요"
@@ -5326,7 +5355,7 @@ msgstr "로딩 중."
 msgid "Loading.."
 msgstr "로딩 중.."
 
-#: src/features/Chat/SubmitForm.tsx:37
+#: src/features/Chat/SubmitForm.tsx:39
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:240
 #: src/features/Conversation/ConversationCanvas.tsx:946
@@ -5723,7 +5752,7 @@ msgstr "새로운 단어 연습하기."
 #: src/features/Game/Battle/BattleActionModal.tsx:365
 #: src/features/Game/GameOnboarding.tsx:85
 #: src/features/Game/GameOnboarding.tsx:143
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:125
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
 #: src/features/Goal/Quiz/GoalReview.tsx:152
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:136
@@ -5795,7 +5824,7 @@ msgstr "인터뷰가 없습니다"
 msgid "No message recorded yet."
 msgstr "메시지가 아직 기록되지 않았습니다."
 
-#: src/features/Chat/MessageList.tsx:33
+#: src/features/Chat/MessageList.tsx:34
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "아직 메시지가 없습니다"
@@ -5816,7 +5845,7 @@ msgstr "사용 가능한 투영 없음"
 msgid "No reason provided."
 msgstr "사유가 제공되지 않았습니다."
 
-#: src/features/Chat/ChatSection.tsx:126
+#: src/features/Chat/ChatSection.tsx:244
 #. js-lingui-explicit-id
 msgid "No replies yet. Be the first to reply to this message."
 msgstr "아직 답장이 없습니다. 이 메시지에 첫 번째로 답장하세요."
@@ -6279,7 +6308,7 @@ msgstr "모든 기능에 액세스하려면 신용카드를 확인해 주세요.
 msgid "Please enter a valid email address"
 msgstr "유효한 이메일 주소를 입력하세요"
 
-#: src/features/Chat/SubmitForm.tsx:165
+#: src/features/Chat/SubmitForm.tsx:167
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "좀 더 긴 메시지를 녹음해 주세요(적어도 몇 단어 이상)."
@@ -6848,7 +6877,7 @@ msgstr ""
 "\n"
 "평점\n"
 
-#: src/features/Chat/SubmitForm.tsx:120
+#: src/features/Chat/SubmitForm.tsx:122
 #: src/features/Conversation/ConversationCanvas.tsx:713
 #: src/features/Conversation/ConversationCanvas.tsx:984
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
@@ -6912,7 +6941,7 @@ msgstr ""
 "최신 언어 학습 기사, 영어 연습 팁 및 AI 튜터 업데이트를 읽어보세요. FluencyPal과 함께 유창성 목표를 달성하기 위해 "
 "정보를 유지하고, 동기를 부여받고, 영감을 얻으세요."
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:51
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:73
 #. js-lingui-explicit-id
 msgid "Read the text"
 msgstr "텍스트를 읽어보세요"
@@ -7044,6 +7073,11 @@ msgstr "실제 API 및 데이터 시나리오"
 msgid "Real-world scenarios, not just theory"
 msgstr "현실 세계의 시나리오, 단지 이론만이 아닌"
 
+#: src/features/Chat/ChatSection.tsx:119
+#. js-lingui-explicit-id
+msgid "Receive feedback and support"
+msgstr "피드백과 지원 받기"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
 #. js-lingui-explicit-id
 msgid "Receive instant, tailored feedback from your AI partner."
@@ -7082,10 +7116,10 @@ msgstr ""
 "2-3분의 이야기를 <0>{learningLanguageName}</0> 또는 <1>{nativeLanguageName}</1>를 "
 "사용하여 녹음하세요."
 
-#: src/features/Chat/SubmitForm.tsx:180
+#: src/features/Chat/ChatSection.tsx:170
 #. js-lingui-explicit-id
-msgid "Record a message and get {points} points"
-msgstr "메시지를 녹음하고 {points} 포인트를 획득하세요."
+msgid "Record a message"
+msgstr "메시지를 녹음하세요"
 
 #: src/features/Game/GameOnboarding.tsx:123
 #. js-lingui-explicit-id
@@ -7111,7 +7145,6 @@ msgstr "답변 녹음"
 msgid "Record answer"
 msgstr "기록된 답변"
 
-#: src/features/Chat/ChatSection.tsx:175
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #: src/features/Conversation/ConversationCanvas.tsx:755
 #. js-lingui-explicit-id
@@ -7195,7 +7228,7 @@ msgstr "데이터를 제거 중..."
 msgid "Rendering Performance"
 msgstr "렌더링 성능"
 
-#: src/features/Chat/ChatSection.tsx:119
+#: src/features/Chat/ChatSection.tsx:237
 #. js-lingui-explicit-id
 msgid "Replies:"
 msgstr "답변:"
@@ -7331,7 +7364,7 @@ msgstr "AI SEO와의 급여 협상 인터뷰"
 msgid "Salary negotiation preparation"
 msgstr "급여 협상 준비"
 
-#: src/features/Chat/Message.tsx:219
+#: src/features/Chat/Message.tsx:228
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "저장"
@@ -7440,7 +7473,7 @@ msgstr "이메일 다시 보내기"
 msgid "Send me sign-in link"
 msgstr "로그인 링크 보내기"
 
-#: src/features/Chat/SubmitForm.tsx:131
+#: src/features/Chat/SubmitForm.tsx:133
 #: src/features/Conversation/CallMode/CallButtons.tsx:345
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -7507,10 +7540,20 @@ msgid ""
 "resolution, and project ownership."
 msgstr "팀 간 협업, 갈등 해결, 프로젝트 주인의식에 대한 매력적인 이야기를 공유하세요."
 
+#: src/features/Chat/ChatSection.tsx:115
+#. js-lingui-explicit-id
+msgid "Share news, ideas or ask questions"
+msgstr "뉴스를 공유하거나, 아이디어를 나누거나, 질문하세요."
+
 #: src/features/Case/data/frontend-junior/quizData.ts:66
 #. js-lingui-explicit-id
 msgid "Share what you're currently learning"
 msgstr "현재 배우고 있는 내용을 공유하세요"
+
+#: src/features/Chat/ChatSection.tsx:99
+#. js-lingui-explicit-id
+msgid "Share your thoughts with the community!"
+msgstr "귀하의 생각을 커뮤니티와 공유하세요!"
 
 #: src/features/RolePlay/rolePlayData.tsx:491
 #: src/features/RolePlay/rolePlayData.tsx:595
@@ -7550,13 +7593,13 @@ msgstr "토론 보기"
 msgid "Show knowledge of the company and genuine interest. For example:"
 msgstr "회사에 대한 지식을 보여주고 진정한 관심을 보여주세요. 예를 들면:"
 
-#: src/features/Chat/Message.tsx:202
+#: src/features/Chat/Message.tsx:211
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "덜 보기"
 
-#: src/features/Chat/Message.tsx:202
+#: src/features/Chat/Message.tsx:211
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -7657,7 +7700,7 @@ msgid ""
 "and async communication."
 msgstr "API 게이트웨이, 인증, 서비스 및 비동기 통신을 포함한 간단한 마이크로서비스 아키텍처를 스케치하십시오."
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:39
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:61
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:237
 #. js-lingui-explicit-id
 msgid "Skip"
@@ -8002,7 +8045,7 @@ msgstr ""
 "역할에 대한 동기에 대해 질문을 받게 될 것이고, AI는 여러분의 응답에 기반하여 난이도를 조절합니다. 질문에 대해 간결하고 설득력 "
 "있는 답변을 제공하는 연습을 위해 프롬프트를 사용하세요. 어떤 직업 인터뷰에서든 돋보일 수 있도록 도움이 될 것입니다."
 
-#: src/features/Chat/SubmitForm.tsx:97
+#: src/features/Chat/SubmitForm.tsx:99
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -8570,7 +8613,7 @@ msgstr "자신의 유창성 진행 상황 추적하기"
 msgid "Transcribing..."
 msgstr "전사 중..."
 
-#: src/features/Chat/Message.tsx:254
+#: src/features/Chat/Message.tsx:262
 #. js-lingui-explicit-id
 msgid "Translate"
 msgstr "번역하기"
@@ -8580,7 +8623,7 @@ msgstr "번역하기"
 msgid "Translate Guru"
 msgstr "번역 구루"
 
-#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:48
+#: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:70
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "단어를 번역하십시오"
@@ -9177,6 +9220,11 @@ msgstr "당신이 성취할 것"
 msgid "What's included?"
 msgstr "무엇이 포함되어 있나요?"
 
+#: src/features/Chat/ChatSection.tsx:292
+#. js-lingui-explicit-id
+msgid "What's new?"
+msgstr "무엇이 새로워졌나요?"
+
 #: src/features/Landing/LandingPage.tsx:49
 #. js-lingui-explicit-id
 msgid "What’s the price?"
@@ -9753,3 +9801,73 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Chat/ChatSection.tsx:119
+#. js-lingui-explicit-id
+#~ msgid "Get feedback"
+#~ msgstr "피드백 받기"
+
+#: src/features/Chat/ChatSection.tsx:123
+#. js-lingui-explicit-id
+#~ msgid "Build connections."
+#~ msgstr "연결을 구축하세요."
+
+#: src/features/Chat/ChatSection.tsx:119
+#. js-lingui-explicit-id
+#~ msgid "Get feedback."
+#~ msgstr "피드백 받기."
+
+#: src/features/Chat/ChatSection.tsx:115
+#. js-lingui-explicit-id
+#~ msgid "Share news, ideas or ask questions."
+#~ msgstr "뉴스, 아이디어를 공유하거나 질문하세요."
+
+#: src/features/Chat/ChatSection.tsx:119
+#. js-lingui-explicit-id
+#~ msgid "Receive feedback."
+#~ msgstr "피드백 받기."
+
+#: src/features/Chat/ChatSection.tsx:115
+#. js-lingui-explicit-id
+#~ msgid "Share news, ideas, or questions."
+#~ msgstr "뉴스, 아이디어 또는 질문을 공유하세요."
+
+#: src/features/Chat/ChatSection.tsx:115
+#. js-lingui-explicit-id
+#~ msgid "Share updates, ideas, or questions."
+#~ msgstr "업데이트, 아이디어 또는 질문을 공유하세요."
+
+#: src/features/Chat/ChatSection.tsx:125
+#. js-lingui-explicit-id
+#~ msgid "Build connections and foster discussions."
+#~ msgstr "연결을 구축하고 토론을 촉진하십시오."
+
+#: src/features/Chat/ChatSection.tsx:129
+#. js-lingui-explicit-id
+#~ msgid "Earn game points for active participation!"
+#~ msgstr "활동적인 참여로 게임 포인트를 획득하세요!"
+
+#: src/features/Chat/ChatSection.tsx:121
+#. js-lingui-explicit-id
+#~ msgid "Receive feedback from other community members."
+#~ msgstr "다른 커뮤니티 회원들로부터 피드백을 받으세요."
+
+#: src/features/Chat/ChatSection.tsx:115
+#. js-lingui-explicit-id
+#~ msgid "Share updates, ideas, or questions with fellow community members."
+#~ msgstr "커뮤니티의 다른 구성원들과 업데이트, 아이디어 또는 질문을 공유하세요."
+
+#: src/features/Chat/ChatSection.tsx:114
+#. js-lingui-explicit-id
+#~ msgid "Engage with others by posting your thoughts, questions, or updates."
+#~ msgstr "생각, 질문 또는 업데이트를 게시하여 다른 사람들과 소통하세요."
+
+#: src/features/Chat/ChatSection.tsx:300
+#. js-lingui-explicit-id
+#~ msgid "Post"
+#~ msgstr "게시"
+
+#: src/features/Chat/SubmitForm.tsx:180
+#. js-lingui-explicit-id
+#~ msgid "Record a message and get {points} points"
+#~ msgstr "메시지를 녹음하고 {points} 포인트를 획득하세요."

@@ -11,6 +11,9 @@ import { useLingui } from "@lingui/react";
 import { Message } from "./Message";
 import { useGame } from "../Game/useGame";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { Avatar } from "../Game/Avatar";
+import { ColorIconTextList } from "../Survey/ColorIconTextList";
+import AddIcon from "@mui/icons-material/Add";
 
 export const ChartSection = () => {
   const auth = useAuth();
@@ -57,41 +60,98 @@ export const ChartSection = () => {
     }
   };
 
+  const [isNewPostModalOpen, setIsNewPostModalOpen] = useState(false);
+
   return (
     <Stack
       sx={{
         borderRadius: "12px",
+        backgroundColor: "rgba(255, 255, 255, 0.03)",
       }}
     >
-      {messageToComment && (
-        <CustomModal onClose={() => setActiveMessageIdComment("")} isOpen={true}>
+      {(messageToComment || isNewPostModalOpen) && (
+        <CustomModal
+          onClose={() => {
+            setActiveMessageIdComment("");
+            setIsNewPostModalOpen(false);
+          }}
+          isOpen={true}
+        >
           <Stack
             sx={{
               maxWidth: "600px",
               gap: "20px",
+              width: "100%",
             }}
           >
-            <Typography variant="h6" align="center" sx={{ marginBottom: "10px" }}>
-              {i18n._("Add Comment")}
-            </Typography>
+            <Stack sx={{ marginBottom: "10px" }}>
+              <Typography variant="h6">
+                {isNewPostModalOpen ? i18n._("Add New Post") : i18n._("Add Comment")}
+              </Typography>
+
+              {isNewPostModalOpen && (
+                <Typography
+                  variant="body2"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
+                  {i18n._("Share your thoughts with the community!")}
+                </Typography>
+              )}
+            </Stack>
+
+            {isNewPostModalOpen && (
+              <Stack
+                sx={{
+                  padding: "0px 0 20px 0",
+                }}
+              >
+                <ColorIconTextList
+                  iconSize="18px"
+                  gap="10px"
+                  listItems={[
+                    {
+                      title: i18n._("Share news, ideas or ask questions"),
+                      iconName: "message-circle",
+                    },
+                    {
+                      title: i18n._("Receive feedback and support"),
+                      iconName: "thumbs-up",
+                    },
+                    {
+                      title: i18n._("Build connections"),
+                      iconName: "users",
+                    },
+                    {
+                      title: i18n._("Earn game points!"),
+                      iconName: "bell",
+                    },
+                  ]}
+                />
+              </Stack>
+            )}
+
             <Stack
               sx={{
                 border: "1px solid rgba(255, 255, 255, 0.1)",
                 borderRadius: "16px",
               }}
             >
-              <Message
-                onOpen={onOpen}
-                key={messageToComment.id}
-                userAvatarUrl={game.getUserAvatarUrl(messageToComment.senderId)}
-                message={messageToComment}
-                isOwnMessage={messageToComment.senderId === userId}
-                userName={game.getUserName(messageToComment.senderId)}
-                onEdit={chat.editMessage}
-                onDelete={deleteMessage}
-                onCommentClick={() => onCommentClick(messageToComment.id)}
-                commentsCount={chat.commentsInfo[messageToComment.id] || 0}
-              />
+              {messageToComment && (
+                <Message
+                  onOpen={onOpen}
+                  key={messageToComment.id}
+                  userAvatarUrl={game.getUserAvatarUrl(messageToComment.senderId)}
+                  message={messageToComment}
+                  isOwnMessage={messageToComment.senderId === userId}
+                  userName={game.getUserName(messageToComment.senderId)}
+                  onEdit={chat.editMessage}
+                  onDelete={deleteMessage}
+                  onCommentClick={() => onCommentClick(messageToComment.id)}
+                  commentsCount={chat.commentsInfo[messageToComment.id] || 0}
+                />
+              )}
 
               <Stack
                 sx={{
@@ -100,10 +160,15 @@ export const ChartSection = () => {
               >
                 <SubmitForm
                   onSubmit={(messageContent) =>
-                    chat.addMessage({ messageContent, parentMessageId: messageToComment.id })
+                    chat.addMessage({
+                      messageContent,
+                      parentMessageId: messageToComment?.id ? messageToComment.id : "",
+                    })
                   }
                   isLoading={chat.loading}
-                  recordMessageTitle={i18n._("Add a reply")}
+                  recordMessageTitle={
+                    messageToComment?.id ? i18n._("Add a reply") : i18n._("Record a message")
+                  }
                 />
               </Stack>
             </Stack>
@@ -200,6 +265,46 @@ export const ChartSection = () => {
             borderRadius: "12px",
           }}
         >
+          <Stack
+            sx={{
+              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+              flexDirection: "row",
+              alignItems: "center",
+              padding: "20px 20px 20px 20px",
+              gap: "20px",
+            }}
+            onClick={() => setIsNewPostModalOpen(true)}
+          >
+            <Avatar url={game.getUserAvatarUrl(userId)} avatarSize="35px" />
+            <Stack
+              sx={{
+                width: "100%",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography
+                sx={{
+                  opacity: 0.6,
+                }}
+              >
+                {i18n._("What's new?")}
+              </Typography>
+              <Button
+                variant="contained"
+                color="info"
+                sx={{
+                  width: "auto",
+                }}
+                startIcon={<AddIcon />}
+                onClick={() => setIsNewPostModalOpen(true)}
+              >
+                {i18n._("Add Post")}
+              </Button>
+            </Stack>
+          </Stack>
+
           <MessageList
             messages={chat.topLevelMessages}
             currentUserId={userId}
@@ -208,19 +313,6 @@ export const ChartSection = () => {
             onCommentClick={onCommentClick}
             onOpen={onOpen}
           />
-          <Stack
-            sx={{
-              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-            }}
-          >
-            <SubmitForm
-              onSubmit={(messageContent) =>
-                chat.addMessage({ messageContent, parentMessageId: "" })
-              }
-              isLoading={chat.loading}
-              recordMessageTitle={i18n._("Record Message")}
-            />
-          </Stack>
         </Stack>
       )}
     </Stack>
