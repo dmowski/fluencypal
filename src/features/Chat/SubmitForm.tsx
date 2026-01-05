@@ -9,6 +9,8 @@ import { CHAT_MESSAGE_POINTS } from "./data";
 import { useState } from "react";
 import { ProcessUserInput } from "../Conversation/ProcessUserInput";
 import { Mic, Trash } from "lucide-react";
+import { Trans } from "@lingui/react/macro";
+import { GamePlusPoints } from "../Game/gameQuestionScreens/gameCoreUI";
 
 interface SubmitFormProps {
   onSubmit: (message: string) => Promise<void>;
@@ -42,7 +44,7 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
         width: "100%",
         gap: "20px",
         alignItems: "flex-start",
-        backgroundColor: "rgba(20, 28, 40, 0.9)",
+        //backgroundColor: "rgba(20, 28, 40, 0.9)",
         padding: "15px",
       }}
     >
@@ -135,7 +137,7 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
 
           <Stack
             sx={{
-              width: "100%",
+              width: recorder.isRecording ? "100%" : "max-content",
               height: "38px",
               alignItems: "center",
               justifyContent: "flex-end",
@@ -168,31 +170,33 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
             )}
 
             {!recorder.isRecording && !recorder.transcription && (
-              <Typography
+              <Stack
                 sx={{
                   width: "100%",
                   paddingLeft: "10px",
-                  opacity: 0.8,
                 }}
-                variant="caption"
-                color={"textSecondary"}
               >
-                {i18n._(`Record a message and get {points} points`, {
-                  points: CHAT_MESSAGE_POINTS,
-                })}
-              </Typography>
+                <GamePlusPoints points={CHAT_MESSAGE_POINTS} />
+              </Stack>
             )}
 
             {recorder.transcription && (
-              <IconButton
-                size="small"
-                onClick={() => {
-                  recorder.removeTranscript();
-                  recorder.cancelRecording();
+              <Stack
+                sx={{
+                  width: "100%",
+                  paddingLeft: "20px",
                 }}
               >
-                <Trash size={"18px"} color="rgba(200, 200, 200, 1)" />
-              </IconButton>
+                <IconButton
+                  size="small"
+                  onClick={() => {
+                    recorder.removeTranscript();
+                    recorder.cancelRecording();
+                  }}
+                >
+                  <Trash size={"18px"} color="rgba(200, 200, 200, 1)" />
+                </IconButton>
+              </Stack>
             )}
           </Stack>
         </Stack>

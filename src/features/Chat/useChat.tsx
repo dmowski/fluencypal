@@ -9,7 +9,7 @@ import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
 
 interface AddMessageProps {
   messageContent: string;
-  activeMessageId: string;
+  parentMessageId: string;
 }
 
 interface ChatContextType {
@@ -20,7 +20,7 @@ interface ChatContextType {
 
   commentsInfo: Record<string, number>;
 
-  addMessage: ({ messageContent, activeMessageId }: AddMessageProps) => Promise<void>;
+  addMessage: ({ messageContent, parentMessageId }: AddMessageProps) => Promise<void>;
   deleteMessage: (messageId: string) => Promise<void>;
   editMessage: (messageId: string, newContent: string) => Promise<void>;
 
@@ -144,7 +144,7 @@ function useProvideChat(): ChatContextType {
     await setDoc(likeDoc, newLike);
   };
 
-  const addMessage = async ({ messageContent, activeMessageId }: AddMessageProps) => {
+  const addMessage = async ({ messageContent, parentMessageId }: AddMessageProps) => {
     const createdAtIso = new Date().toISOString();
     const newMessage: UserChatMessage = {
       id: `${Date.now()}`,
@@ -153,7 +153,7 @@ function useProvideChat(): ChatContextType {
       createdAtIso: createdAtIso,
       createdAtUtc: Date.now(),
       updatedAtIso: createdAtIso,
-      parentMessageId: activeMessageId,
+      parentMessageId: parentMessageId,
     };
     const messageDoc = doc(messagesRef, newMessage.id);
     await setDoc(messageDoc, newMessage);

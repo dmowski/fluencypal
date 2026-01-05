@@ -4,12 +4,13 @@ import { useChat } from "./useChat";
 import { useAuth } from "../Auth/useAuth";
 import { SubmitForm } from "./SubmitForm";
 import { MessageList } from "./MessageList";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useUrlState } from "../Url/useUrlParam";
 import { ChevronLeft } from "lucide-react";
 import { useLingui } from "@lingui/react";
 import { Message } from "./Message";
 import { useGame } from "../Game/useGame";
+import { CustomModal } from "../uiKit/Modal/CustomModal";
 
 export const ChartSection = () => {
   const auth = useAuth();
@@ -19,23 +20,23 @@ export const ChartSection = () => {
   const userId = auth.uid || "anonymous";
 
   const [activeMessageId, setActiveMessageId] = useUrlState("post", "", true);
-
   const activeMessage = chat.messages.find((msg) => msg.id === activeMessageId);
 
   useEffect(() => {
     chat.markAsRead();
   }, [chat.messages.length]);
 
+  const [activeMessageIdComment, setActiveMessageIdComment] = useState("");
+  const messageToComment = useMemo(() => {
+    return chat.messages.find((msg) => msg.id === activeMessageIdComment);
+  }, [activeMessageIdComment, chat.messages]);
+
   const onCommentClick = (messageId: string) => {
-    setActiveMessageId(messageId);
+    setActiveMessageIdComment(messageId);
   };
 
   const onOpen = (messageId: string) => {
     setActiveMessageId(messageId);
-  };
-
-  const submitMessage = async (messageContent: string) => {
-    await chat.addMessage({ messageContent, activeMessageId });
   };
 
   const repliesMessages = useMemo(() => {
@@ -62,6 +63,53 @@ export const ChartSection = () => {
         borderRadius: "12px",
       }}
     >
+      {messageToComment && (
+        <CustomModal onClose={() => setActiveMessageIdComment("")} isOpen={true}>
+          <Stack
+            sx={{
+              maxWidth: "600px",
+              gap: "20px",
+            }}
+          >
+            <Typography variant="h6" align="center" sx={{ marginBottom: "10px" }}>
+              {i18n._("Add Comment")}
+            </Typography>
+            <Stack
+              sx={{
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                borderRadius: "16px",
+              }}
+            >
+              <Message
+                onOpen={onOpen}
+                key={messageToComment.id}
+                userAvatarUrl={game.getUserAvatarUrl(messageToComment.senderId)}
+                message={messageToComment}
+                isOwnMessage={messageToComment.senderId === userId}
+                userName={game.getUserName(messageToComment.senderId)}
+                onEdit={chat.editMessage}
+                onDelete={deleteMessage}
+                onCommentClick={() => onCommentClick(messageToComment.id)}
+                commentsCount={chat.commentsInfo[messageToComment.id] || 0}
+              />
+
+              <Stack
+                sx={{
+                  borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
+              >
+                <SubmitForm
+                  onSubmit={(messageContent) =>
+                    chat.addMessage({ messageContent, parentMessageId: messageToComment.id })
+                  }
+                  isLoading={chat.loading}
+                  recordMessageTitle={i18n._("Add a reply")}
+                />
+              </Stack>
+            </Stack>
+          </Stack>
+        </CustomModal>
+      )}
       {activeMessage ? (
         <Stack
           sx={{
@@ -144,17 +192,6 @@ export const ChartSection = () => {
               />
             )}
           </Stack>
-          <Stack
-            sx={{
-              borderTop: "1px solid rgba(255,255,255,0.1)",
-            }}
-          >
-            <SubmitForm
-              onSubmit={submitMessage}
-              isLoading={chat.loading}
-              recordMessageTitle={i18n._("Add a reply")}
-            />
-          </Stack>
         </Stack>
       ) : (
         <Stack
@@ -177,7 +214,9 @@ export const ChartSection = () => {
             }}
           >
             <SubmitForm
-              onSubmit={submitMessage}
+              onSubmit={(messageContent) =>
+                chat.addMessage({ messageContent, parentMessageId: "" })
+              }
               isLoading={chat.loading}
               recordMessageTitle={i18n._("Record Message")}
             />

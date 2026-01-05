@@ -6,6 +6,28 @@ import { ChevronLast, ChevronRight, Crown, Loader, X } from "lucide-react";
 import { pointsIncreaseMap } from "../points";
 import { PositionChanged } from "../PositionChanged";
 
+export const GamePlusPoints = ({ points }: { points: number }) => {
+  return (
+    <Stack
+      sx={{
+        backgroundColor: "rgba(11, 149, 241, 0.5)",
+        borderRadius: "11px",
+        padding: "3px 13px 3px 10px",
+        fontWeight: 500,
+        flexDirection: "row",
+        color: "#fff",
+        width: "max-content",
+        alignItems: "center",
+        gap: "8px",
+        fontSize: "13px",
+      }}
+      component={"span"}
+    >
+      <Trans>+{points} points</Trans>
+    </Stack>
+  );
+};
+
 export const GameContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <Stack
