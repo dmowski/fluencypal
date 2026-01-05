@@ -11,6 +11,7 @@ import { useAuth } from "../Auth/useAuth";
 import { useGame } from "../Game/useGame";
 import { MessageActionButton } from "./MessageActionButton";
 import { useTranslate } from "../Translation/useTranslate";
+import { Avatar } from "../Game/Avatar";
 
 interface MessageProps {
   message: UserChatMessage;
@@ -119,19 +120,7 @@ export function Message({
               component={"button"}
               onClick={() => game.showUserInModal(message.senderId)}
             >
-              {userAvatarUrl && (
-                <Stack
-                  component={"img"}
-                  src={userAvatarUrl}
-                  sx={{
-                    width: "25px",
-                    height: "25px",
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                    boxShadow: "0px 0px 0px 1px rgba(255, 255, 255, 0.71)",
-                  }}
-                />
-              )}
+              {userAvatarUrl && <Avatar avatarSize="25px" url={userAvatarUrl} />}
               <Typography
                 variant="body1"
                 sx={{
