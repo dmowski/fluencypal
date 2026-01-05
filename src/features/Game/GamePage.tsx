@@ -88,7 +88,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
           sx={{
             width: "100%",
             maxWidth: "700px",
-            padding: "10px 10px",
+            padding: "10px 0px",
             boxSizing: "border-box",
             gap: "20px",
             position: "relative",
@@ -117,6 +117,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
             <Stack
               sx={{
                 flexDirection: "row",
+                alignItems: "center",
                 gap: "15px",
                 width: "max-content",
               }}

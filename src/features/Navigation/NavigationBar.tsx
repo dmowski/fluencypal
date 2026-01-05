@@ -1,5 +1,5 @@
 "use client";
-import { Avatar, Link, Stack, Typography } from "@mui/material";
+import { Link, Stack, Typography } from "@mui/material";
 import { Home, LucideProps, Swords, User, VenetianMask } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes, use, useMemo } from "react";
 import { SupportedLanguage } from "../Lang/lang";
@@ -13,6 +13,7 @@ import { useSettings } from "../Settings/useSettings";
 import { AppMode } from "@/common/user";
 import { useChat } from "../Chat/useChat";
 import { UserProfileModal } from "../Game/UserProfileModal";
+import { Avatar } from "../Game/Avatar";
 
 export interface IconProps {
   color?: string;
@@ -206,22 +207,12 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                   }}
                 >
                   {isProfile && userPhoto ? (
-                    <>
-                      <Avatar
-                        alt={userName}
-                        src={userPhoto}
-                        sx={{
-                          width: "20px",
-                          height: "20px",
-                          borderRadius: "50%",
-                          fontSize: "10px",
-                          transform: "scale(1.15)",
-                          border: isActive
-                            ? `1.5px solid ${activeColor}`
-                            : "1.5px solid transparent",
-                        }}
-                      />
-                    </>
+                    <Avatar
+                      avatarSize="20px"
+                      url={userPhoto}
+                      isActive={isActive}
+                      activeColor={activeColor}
+                    />
                   ) : (
                     <item.icon color={color} width={"20px"} height={"20px"} />
                   )}

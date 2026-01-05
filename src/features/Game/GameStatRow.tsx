@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import { UsersStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { GamePointRow } from "./GamePointRow";
+import { Avatar } from "./Avatar";
 
 export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
   const game = useGame();
@@ -41,7 +42,6 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
           alignItems: "center",
           gap: "15px",
           padding: "0px 20px 0 1px",
-          borderRadius: "57px",
           height: "54px",
           backgroundColor: isMe ? "rgba(41, 179, 229, 0.17)" : "rgba(255, 255, 255, 0.04)",
           border: "none",
@@ -60,7 +60,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
         <Typography
           sx={{
             fontSize: "14px",
-            padding: "0 0px 0 20px",
+            padding: "0 0 0 10px",
             fontVariantNumeric: "tabular-nums",
             color: top5 ? "#70bfffff" : "#fff",
           }}
@@ -68,42 +68,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
           {actualPosition}
         </Typography>
 
-        <Stack
-          sx={{
-            position: "relative",
-            right: "-2px",
-          }}
-        >
-          <Stack
-            component="img"
-            className="avatar"
-            src={avatar}
-            sx={{
-              width: "50px",
-              height: "50px",
-              borderRadius: "50%",
-              objectFit: "cover",
-              position: "relative",
-              zIndex: 1,
-            }}
-          />
-          {isOnline && (
-            <Stack
-              sx={{
-                display: "block",
-                width: "10px",
-                height: "10px",
-                borderRadius: "50px",
-                backgroundColor: "#11ff22",
-                boxShadow: "0px 0px 0px 2px #111",
-                position: "absolute",
-                bottom: "1px",
-                right: "1px",
-                zIndex: 1,
-              }}
-            />
-          )}
-        </Stack>
+        <Avatar avatarSize={"50px"} url={avatar} isOnline={isOnline} />
 
         <Stack
           sx={{

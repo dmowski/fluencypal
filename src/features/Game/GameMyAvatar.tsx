@@ -5,6 +5,7 @@ import { Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { useUrlParam } from "../Url/useUrlParam";
 import { useAuth } from "../Auth/useAuth";
+import { Avatar } from "./Avatar";
 
 export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
   const game = useGame();
@@ -53,26 +54,18 @@ export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
                   <Stack
                     key={index}
                     sx={{
-                      img: {
-                        width: "80px",
-                        height: "80px",
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                        boxShadow: isSelected
-                          ? "0px 0px 0px 2px rgba(0, 0, 0, 1), 0px 0px 0px 5px rgba(255, 255, 255, 1)"
-                          : "0px 0px 0px 3px rgba(55, 55, 55, 1)",
-                        cursor: "pointer",
-                        ":hover": {
-                          boxShadow: "0px 0px 0px 3px rgba(255, 255, 255, 0.8)",
-                        },
-                      },
-                    }}
-                    onClick={() => {
-                      game.setAvatar(avatar);
-                      setIsShowAvatarSelector(false);
+                      cursor: "pointer",
                     }}
                   >
-                    <img src={avatar} />
+                    <Avatar
+                      url={avatar}
+                      avatarSize="80px"
+                      isSelected={isSelected}
+                      onClick={() => {
+                        game.setAvatar(avatar);
+                        setIsShowAvatarSelector(false);
+                      }}
+                    />
                   </Stack>
                 );
               })}
@@ -81,25 +74,11 @@ export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
         </CustomModal>
       )}
 
-      <Stack
-        sx={{
-          img: {
-            width: avatarSize || "90px",
-            height: avatarSize || "90px",
-            borderRadius: "50%",
-            objectFit: "cover",
-            boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
-            backgroundColor: "rgba(255, 255, 255, 0.05)",
-            position: "relative",
-            zIndex: 1,
-          },
-          position: "relative",
-          cursor: "pointer",
-        }}
-        onClick={() => setIsShowAvatarSelector(!isShowAvatarSelector)}
-      >
-        <img src={game.myAvatar} />
-      </Stack>
+      <Avatar
+        avatarSize={avatarSize || "90px"}
+        url={game.myAvatar}
+        onClick={() => setIsShowAvatarSelector(true)}
+      />
     </>
   );
 };
