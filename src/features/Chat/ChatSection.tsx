@@ -140,6 +140,7 @@ export const ChartSection = () => {
             >
               {messageToComment && (
                 <Message
+                  isContentWide
                   onOpen={onOpen}
                   key={messageToComment.id}
                   userAvatarUrl={game.getUserAvatarUrl(messageToComment.senderId)}

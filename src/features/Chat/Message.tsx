@@ -23,6 +23,7 @@ interface MessageProps {
   onCommentClick: () => void;
   onOpen: (messageId: string) => void;
   commentsCount: number;
+  isContentWide?: boolean;
 }
 
 export function Message({
@@ -35,6 +36,7 @@ export function Message({
   onCommentClick,
   commentsCount,
   onOpen,
+  isContentWide = false,
 }: MessageProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(message.content);
@@ -198,6 +200,7 @@ export function Message({
             wordBreak: "break-word",
             whiteSpace: "pre-wrap",
             width: "100%",
+            paddingLeft: isContentWide ? "0px" : "42px",
           }}
         >
           {message.content.length > limitMessages ? (
@@ -237,6 +240,7 @@ export function Message({
             flexDirection: "row",
             alignItems: "center",
             gap: "8px",
+            paddingLeft: isContentWide ? "0px" : "42px",
           }}
         >
           <MessageActionButton
