@@ -111,6 +111,8 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               flexWrap: "wrap",
               "@media (max-width: 600px)": {
                 padding: "15px",
+                borderBottom: "1px solid rgba(255, 255, 255, 0.031)",
+                borderRadius: 0,
               },
             }}
           >
