@@ -23,7 +23,7 @@ export const GameStats = ({ activeTab }: { activeTab: "global" | "today" }) => {
   return (
     <Stack
       sx={{
-        gap: "15px",
+        gap: "12px",
       }}
     >
       {game.stats

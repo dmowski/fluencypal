@@ -43,6 +43,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
           gap: "15px",
           padding: "0px 20px 0 1px",
           height: "54px",
+          borderRadius: "12px",
           backgroundColor: isMe ? "rgba(41, 179, 229, 0.17)" : "rgba(255, 255, 255, 0.04)",
           border: "none",
           textAlign: "left",
@@ -60,7 +61,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
         <Typography
           sx={{
             fontSize: "14px",
-            padding: "0 0 0 10px",
+            padding: "0 0 0 14px",
             fontVariantNumeric: "tabular-nums",
             color: top5 ? "#70bfffff" : "#fff",
           }}
@@ -68,7 +69,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
           {actualPosition}
         </Typography>
 
-        <Avatar avatarSize={"50px"} url={avatar} isOnline={isOnline} />
+        <Avatar avatarSize={"35px"} url={avatar} isOnline={isOnline} />
 
         <Stack
           sx={{
