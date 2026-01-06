@@ -163,7 +163,7 @@ export const BattleActionModal = ({
                                   fontWeight: 600,
                                 }}
                               >
-                                {isWinner ? i18n._("Winner!") : i18n._("Not that time")}
+                                {isWinner ? i18n._("Winner!") : i18n._("Second Place")}
                               </Typography>
                               {isWinner ? (
                                 <Crown color="rgba(255, 255, 255, 1)" size="24px" />
