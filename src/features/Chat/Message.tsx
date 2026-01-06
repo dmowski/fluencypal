@@ -293,6 +293,11 @@ export function Message({
             whiteSpace: "pre-wrap",
             width: "100%",
 
+            fontSize: "15px",
+            lineHeight: "21px",
+            color: "rgba(243, 245, 247)",
+            fontWeight: 350,
+
             paddingLeft: isContentWide ? "0px" : contentLeftPadding,
           }}
         >
