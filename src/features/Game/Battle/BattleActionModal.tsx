@@ -182,6 +182,7 @@ export const BattleActionModal = ({
                               <Stack
                                 sx={{
                                   gap: "50px",
+                                  color: "rgba(255, 255, 255, 0.9)",
                                 }}
                               >
                                 {battle.questionsIds.map((questionId) => {
@@ -200,7 +201,13 @@ export const BattleActionModal = ({
                                         <Typography variant="caption">{question.topic}</Typography>
                                         <Typography variant="h5">{question.description}</Typography>
                                       </Stack>
-                                      <Typography>{answerObj?.answer || "-"}</Typography>
+                                      <Typography
+                                        sx={{
+                                          fontSize: "18px",
+                                        }}
+                                      >
+                                        {answerObj?.answer || "-"}
+                                      </Typography>
                                     </Stack>
                                   );
                                 })}
@@ -220,7 +227,7 @@ export const BattleActionModal = ({
                         borderRadius: "12px",
                         overflow: "hidden",
                         gap: "0px",
-                        borderColor: "rgba(173, 33, 61, 1)",
+                        borderColor: "rgba(173, 33, 61, 0.7)",
                       }}
                     >
                       <Stack
@@ -230,13 +237,14 @@ export const BattleActionModal = ({
                           flexDirection: "row",
                           gap: "10px",
                           padding: "15px",
-                          backgroundColor: "rgba(173, 33, 61, 1)",
+                          backgroundColor: "rgba(118, 11, 33, 1)",
                         }}
                       >
                         <Typography
                           sx={{
                             fontSize: "20px",
                             fontWeight: 600,
+                            color: "rgba(255, 243, 253, 0.8)",
                           }}
                         >
                           {i18n._("AI Decision")}
@@ -248,7 +256,11 @@ export const BattleActionModal = ({
                       <Stack
                         sx={{
                           padding: "15px",
-                          color: "rgba(255, 243, 253, 1)",
+
+                          color: "rgba(255, 243, 253, 0.8)",
+                          "*": {
+                            lineHeight: "1.6",
+                          },
                         }}
                       >
                         <Markdown>
