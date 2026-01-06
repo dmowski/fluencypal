@@ -407,7 +407,9 @@ export const initDayJsLocale = (locale: SupportedLanguage) => {
   const dayJsLocale = dayJsLocalesMap[locale];
   const shortTime = dayJsRelativeShortTimeMap[locale];
   if (locale === "en") {
-    dayjs.updateLocale(locale, {
+    dayjs.locale(locale + "-gb");
+    dayjs.updateLocale(locale + "-gb", {
+      ...dayJsLocale,
       weekStart: 1,
       relativeTime: shortTime,
     });
