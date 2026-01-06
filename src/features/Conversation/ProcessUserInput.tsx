@@ -225,32 +225,6 @@ export const ProcessUserInput = ({
                   newValue={isTranscribing ? i18n._("Transcribing...") : userMessage || ""}
                 />
               </Typography>
-              <Stack
-                sx={{
-                  opacity:
-                    isTranscribing || isAnalyzingResponse ? 0 : isNeedToShowCorrection ? 0 : 1,
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "2px",
-                }}
-              >
-                {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
-                  <>
-                    <AudioPlayIcon
-                      text={correctedMessage}
-                      instructions="Calm and clear"
-                      voice={"coral"}
-                    />
-                    <IconButton
-                      onClick={(e) =>
-                        translator.translateWithModal(correctedMessage, e.currentTarget)
-                      }
-                    >
-                      <Languages size={"16px"} style={{ opacity: 0.8 }} />
-                    </IconButton>
-                  </>
-                )}
-              </Stack>
             </Stack>
           </Stack>
 
@@ -314,34 +288,32 @@ export const ProcessUserInput = ({
                     }
                   />
                 </Typography>
-
-                <Stack
-                  sx={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: "2px",
-                  }}
-                >
-                  {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
-                    <>
-                      <AudioPlayIcon
-                        text={correctedMessage}
-                        instructions="Calm and clear"
-                        voice={"coral"}
-                      />
-                      <IconButton
-                        onClick={(e) =>
-                          translator.translateWithModal(correctedMessage, e.currentTarget)
-                        }
-                      >
-                        <Languages size={"16px"} style={{ opacity: 0.8 }} />
-                      </IconButton>
-                    </>
-                  )}
-                </Stack>
               </Stack>
             </Stack>
           )}
+
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "2px",
+            }}
+          >
+            {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
+              <>
+                <AudioPlayIcon
+                  text={correctedMessage}
+                  instructions="Calm and clear"
+                  voice={"coral"}
+                />
+                <IconButton
+                  onClick={(e) => translator.translateWithModal(correctedMessage, e.currentTarget)}
+                >
+                  <Languages size={"16px"} style={{ opacity: 0.8 }} />
+                </IconButton>
+              </>
+            )}
+          </Stack>
         </Stack>
       </Stack>
       {translator.translateModal}
