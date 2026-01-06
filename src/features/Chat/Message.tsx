@@ -172,11 +172,16 @@ export function Message({
             variant="caption"
             sx={{
               opacity: 0.6,
+              i: {
+                fontStyle: "normal",
+                opacity: 0.6,
+                paddingLeft: "10px",
+              },
             }}
           >
             {updatedAgo}
 
-            {message.updatedAtIso !== message.createdAtIso && " | " + i18n._("edited")}
+            {message.updatedAtIso !== message.createdAtIso && <i>{i18n._("edited")}</i>}
           </Typography>
         </Stack>
 
