@@ -328,7 +328,7 @@ export const SubscriptionPaymentModal = () => {
   const isActiveSubscription = usage.isFullAccess;
   const isTrial = !usage.paymentLogs?.find((log) => log.type === "user" || "subscription-full-v1");
   const activeTill = usage.activeSubscriptionTill
-    ? `${dayjs(usage.activeSubscriptionTill).format("DD MMM")} (in ${dayjs(usage.activeSubscriptionTill).fromNow(true)})`
+    ? `${dayjs(usage.activeSubscriptionTill).format("DD MMMM")}`
     : null;
 
   useEffect(() => {
