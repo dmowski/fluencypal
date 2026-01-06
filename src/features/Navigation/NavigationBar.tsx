@@ -1,6 +1,6 @@
 "use client";
 import { Link, Stack, Typography } from "@mui/material";
-import { Home, LucideProps, Swords, User, VenetianMask } from "lucide-react";
+import { Home, LucideProps, Swords, User, Users, VenetianMask } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes, use, useMemo } from "react";
 import { SupportedLanguage } from "../Lang/lang";
 import { useLingui } from "@lingui/react";
@@ -69,9 +69,9 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
           title: i18n._("Home"),
         },
         {
-          name: "game",
-          icon: Swords,
-          title: i18n._("Game"),
+          name: "community",
+          icon: Users,
+          title: i18n._("Community"),
           //badge: chat.unreadMessagesCount > 0 ? chat.unreadMessagesCount : undefined,
         },
         {

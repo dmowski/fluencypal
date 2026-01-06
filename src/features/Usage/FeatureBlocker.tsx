@@ -111,7 +111,7 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick: () => void 
                 opacity: 0.7,
               }}
             >
-              {i18n._(`Full access is free if you reach the top 5 on the game leaderboard!`)}
+              {i18n._(`Full access is free if you reach the top 5 on the community leaderboard!`)}
             </Typography>
           </Stack>
         </Stack>

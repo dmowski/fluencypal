@@ -115,7 +115,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     return <InfoBlockedSection title={isProcessingGoal || i18n._(`Loading Goal...`)} />;
   }
 
-  if (appNavigation.currentPage === "game") {
+  if (appNavigation.currentPage === "community") {
     return <GamePage lang={lang} />;
   }
 

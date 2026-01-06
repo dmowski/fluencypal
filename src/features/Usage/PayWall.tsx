@@ -20,7 +20,7 @@ export const PayWall = ({ lang }: NoBalanceBlockProps) => {
   const appNavigation = useAppNavigation();
 
   const openGamePage = () => {
-    const urlForGame = appNavigation.pageUrl("game");
+    const urlForGame = appNavigation.pageUrl("community");
     route.push(urlForGame);
   };
 

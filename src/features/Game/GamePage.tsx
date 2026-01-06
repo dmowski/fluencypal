@@ -58,7 +58,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
 
   const [activeTab, setActiveTab] = useUrlState<"global-rate" | "today-rate" | "chat">(
     "space",
-    "global-rate",
+    "chat",
     false
   );
 

@@ -3,7 +3,6 @@ import { Swords } from "lucide-react";
 import { useGame } from "./useGame";
 
 import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
@@ -17,7 +16,7 @@ export const GameBadge = () => {
   const showMyPosition = points && points > 1;
   const playersCount = game.stats.length;
   const appNavigation = useAppNavigation();
-  const urlToNavigate = appNavigation.pageUrl("game");
+  const urlToNavigate = appNavigation.pageUrl("community");
 
   const router = useRouter();
 
