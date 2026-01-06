@@ -401,6 +401,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           .sort((a, b) => {
             return dayjs(b.updatedAtIso).diff(dayjs(a.updatedAtIso));
           })
+          .filter((_, index) => index < 3)
           .map((conversation, index) => {
             const bgColors = index % 2 === 0 ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 0, 0, 0.1)";
             return (
