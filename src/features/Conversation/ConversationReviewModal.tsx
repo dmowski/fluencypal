@@ -2,6 +2,7 @@ import { Stack, Typography, Button } from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useLingui } from "@lingui/react";
+import { ChevronRight, Plus } from "lucide-react";
 
 export const ConversationReviewModal = ({
   setIsShowAnalyzeConversationModal,
@@ -40,10 +41,10 @@ export const ConversationReviewModal = ({
           >
             <Typography
               sx={{
-                paddingBottom: "20px",
+                paddingLeft: "10px",
               }}
-              align="center"
-              variant="h5"
+              className="decor-text"
+              variant="h3"
               component={"h2"}
             >
               {i18n._("Lesson Review")}
@@ -87,31 +88,34 @@ export const ConversationReviewModal = ({
           <Stack
             gap="10px"
             sx={{
-              alignItems: "center",
               padding: "0 10px",
               boxSizing: "border-box",
             }}
           >
+            <Button
+              fullWidth
+              onClick={() => closeConversation()}
+              variant="outlined"
+              color="info"
+              size="large"
+              endIcon={<Plus />}
+              disabled={!conversationAnalysisResult}
+            >
+              {i18n._(`Start new lesson`)}
+            </Button>
+
             <Button
               disabled={!conversationAnalysisResult}
               onClick={() => {
                 setIsShowAnalyzeConversationModal(false);
                 setIsConversationContinueAfterAnalyze(true);
               }}
-              variant="text"
+              variant="contained"
+              size="large"
+              color="info"
+              endIcon={<ChevronRight />}
             >
               {i18n._(`Continue conversation`)}
-            </Button>
-
-            <Button
-              fullWidth
-              onClick={() => closeConversation()}
-              variant="contained"
-              color="info"
-              size="large"
-              disabled={!conversationAnalysisResult}
-            >
-              {i18n._(`Start new lesson`)}
             </Button>
           </Stack>
         </Stack>

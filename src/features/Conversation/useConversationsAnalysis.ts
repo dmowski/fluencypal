@@ -48,14 +48,14 @@ export const useConversationsAnalysis = () => {
       : "";
 
     const expectedStructure = `
-#### Language level:
-Example: Intermediate
-
 #### What was great:
 Example: I liked the way you described your situation related to *** 
 
 #### Areas to improve:
 It's better to use *** instead of ***, because ***
+
+#### Language level:
+Example: Intermediate
 
 `;
 
