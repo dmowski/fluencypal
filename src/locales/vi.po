@@ -426,12 +426,12 @@ msgstr "Kế hoạch hành động để cải thiện kỹ năng backend quan t
 msgid "Active"
 msgstr "Đang hoạt động"
 
-#: src/features/Chat/ChatSection.tsx:170
+#: src/features/Chat/ChatSection.tsx:141
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Thêm trả lời"
 
-#: src/features/Chat/ChatSection.tsx:89
+#: src/features/Chat/ChatSection.tsx:71
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "Thêm bình luận"
@@ -441,12 +441,12 @@ msgstr "Thêm bình luận"
 msgid "Add new goal"
 msgstr "Thêm mục tiêu mới"
 
-#: src/features/Chat/ChatSection.tsx:89
+#: src/features/Chat/ChatSection.tsx:71
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "Thêm Bài Viết Mới"
 
-#: src/features/Chat/ChatSection.tsx:303
+#: src/features/Chat/ChatSection.tsx:219
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "Thêm Bài Viết"
@@ -816,7 +816,7 @@ msgstr "Kiến trúc & Khả năng phục hồi"
 msgid "Are there any hidden fees?"
 msgstr "Có bất kỳ khoản phí ẩn nào không?"
 
-#: src/features/Chat/ChatSection.tsx:54
+#: src/features/Chat/Message.tsx:57
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Bạn có chắc chắn muốn xóa tin nhắn này không?"
@@ -898,7 +898,7 @@ msgstr ""
 "Tránh những sai lầm này sẽ khiến bạn trông chuyên nghiệp hơn và tăng cơ hội "
 "thành công của bạn."
 
-#: src/features/Chat/ChatSection.tsx:201
+#: src/features/Chat/ChatSection.tsx:172
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -1089,7 +1089,7 @@ msgstr ""
 "Xây dựng sự tự tin để thảo luận về công bằng, lợi ích và các gói lương phù "
 "hợp với kinh nghiệm của bạn."
 
-#: src/features/Chat/ChatSection.tsx:123
+#: src/features/Chat/ChatSection.tsx:105
 #. js-lingui-explicit-id
 msgid "Build connections"
 msgstr "Kết nối các mối quan hệ"
@@ -1236,7 +1236,7 @@ msgstr "Tôi có thể ngừng sử dụng FluencyPal bất cứ lúc nào khôn
 msgid "Can I use FluencyPal for free?"
 msgstr "Tôi có thể sử dụng FluencyPal miễn phí không?"
 
-#: src/features/Chat/Message.tsx:231
+#: src/features/Chat/Message.tsx:223
 #: src/features/Header/NeedHelpModal.tsx:167
 #: src/features/Usage/PaymentModal.tsx:350
 #. js-lingui-explicit-id
@@ -1441,7 +1441,7 @@ msgstr ""
 msgid "Coding Skills"
 msgstr "Kỹ Năng Lập Trình"
 
-#: src/features/Chat/Message.tsx:253
+#: src/features/Chat/Message.tsx:275
 #. js-lingui-explicit-id
 msgid "Comment"
 msgstr "Bình luận"
@@ -1992,7 +1992,7 @@ msgstr "Xóa tài khoản (Tổng cộng)"
 msgid "Delete current goal"
 msgstr "Xóa mục tiêu hiện tại"
 
-#: src/features/Chat/Message.tsx:170
+#: src/features/Chat/Message.tsx:186
 #. js-lingui-explicit-id
 msgid "Delete message"
 msgstr "Xóa tin nhắn"
@@ -2383,17 +2383,17 @@ msgstr "Đừng bỏ qua cuộc trò chuyện nhỏ"
 msgid "Early access to new tools"
 msgstr "Quyền truy cập sớm vào công cụ mới"
 
-#: src/features/Chat/ChatSection.tsx:127
+#: src/features/Chat/ChatSection.tsx:109
 #. js-lingui-explicit-id
 msgid "Earn game points!"
 msgstr "Kiếm điểm trò chơi!"
 
-#: src/features/Chat/Message.tsx:162
+#: src/features/Chat/Message.tsx:178
 #. js-lingui-explicit-id
 msgid "Edit message"
 msgstr "Chỉnh sửa tin nhắn"
 
-#: src/features/Chat/Message.tsx:152
+#: src/features/Chat/Message.tsx:168
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "chỉnh sửa"
@@ -5757,7 +5757,7 @@ msgstr "Hãy cùng trò chuyện. Hãy kể cho tôi nghe về bạn."
 msgid "Let’s make sure you’re ready"
 msgstr "Hãy chắc chắn rằng bạn đã sẵn sàng"
 
-#: src/features/Chat/Message.tsx:245
+#: src/features/Chat/Message.tsx:267
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "Thích"
@@ -6280,11 +6280,6 @@ msgstr "Không tìm thấy buổi phỏng vấn nào"
 msgid "No message recorded yet."
 msgstr "Chưa có tin nhắn nào được ghi lại."
 
-#: src/features/Chat/MessageList.tsx:34
-#. js-lingui-explicit-id
-msgid "No messages yet"
-msgstr "Chưa có tin nhắn nào"
-
 #: src/features/Header/PaymentHistoryModal.tsx:76
 #: src/features/Usage/PaymentModal.tsx:505
 #. js-lingui-explicit-id
@@ -6300,11 +6295,6 @@ msgstr "Không có dự đoán nào có sẵn"
 #. js-lingui-explicit-id
 msgid "No reason provided."
 msgstr "Không có lý do được cung cấp."
-
-#: src/features/Chat/ChatSection.tsx:244
-#. js-lingui-explicit-id
-msgid "No replies yet. Be the first to reply to this message."
-msgstr "Chưa có phản hồi nào. Hãy là người đầu tiên trả lời tin nhắn này."
 
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:138
 #. js-lingui-explicit-id
@@ -7611,7 +7601,7 @@ msgstr "Tình huống API và dữ liệu trong thế giới thực"
 msgid "Real-world scenarios, not just theory"
 msgstr "Tình huống thực tế, không chỉ lý thuyết"
 
-#: src/features/Chat/ChatSection.tsx:119
+#: src/features/Chat/ChatSection.tsx:101
 #. js-lingui-explicit-id
 msgid "Receive feedback and support"
 msgstr "Nhận phản hồi và hỗ trợ"
@@ -7658,7 +7648,7 @@ msgstr ""
 "Ghi âm một câu chuyện từ 2-3 phút sử dụng <0>{learningLanguageName}</0> "
 "hoặc <1>{nativeLanguageName}</1>"
 
-#: src/features/Chat/ChatSection.tsx:170
+#: src/features/Chat/ChatSection.tsx:141
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Ghi âm một tin nhắn"
@@ -7774,11 +7764,6 @@ msgstr "Đang xóa dữ liệu của bạn..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "Hiệu Suất Kết Xuất"
-
-#: src/features/Chat/ChatSection.tsx:237
-#. js-lingui-explicit-id
-msgid "Replies:"
-msgstr "Phản hồi:"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
@@ -7922,7 +7907,7 @@ msgstr "Phỏng vấn đàm phán lương với AI SEO"
 msgid "Salary negotiation preparation"
 msgstr "Chuẩn bị đàm phán lương"
 
-#: src/features/Chat/Message.tsx:228
+#: src/features/Chat/Message.tsx:220
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Lưu"
@@ -8108,7 +8093,7 @@ msgstr ""
 "Chia sẻ những câu chuyện hấp dẫn về sự hợp tác giữa các nhóm, giải quyết "
 "xung đột và sự sở hữu dự án."
 
-#: src/features/Chat/ChatSection.tsx:115
+#: src/features/Chat/ChatSection.tsx:97
 #. js-lingui-explicit-id
 msgid "Share news, ideas or ask questions"
 msgstr "Chia sẻ tin tức, ý tưởng hoặc đặt câu hỏi"
@@ -8118,7 +8103,7 @@ msgstr "Chia sẻ tin tức, ý tưởng hoặc đặt câu hỏi"
 msgid "Share what you're currently learning"
 msgstr "Chia sẻ những gì bạn đang học hiện tại"
 
-#: src/features/Chat/ChatSection.tsx:99
+#: src/features/Chat/ChatSection.tsx:81
 #. js-lingui-explicit-id
 msgid "Share your thoughts with the community!"
 msgstr "Chia sẻ suy nghĩ của bạn với cộng đồng!"
@@ -8165,13 +8150,13 @@ msgstr "Hiển thị Tranh luận"
 msgid "Show knowledge of the company and genuine interest. For example:"
 msgstr "Hiển thị kiến thức về công ty và sự quan tâm chân thành. Ví dụ:"
 
-#: src/features/Chat/Message.tsx:211
+#: src/features/Chat/Message.tsx:245
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Hiển thị ít hơn"
 
-#: src/features/Chat/Message.tsx:211
+#: src/features/Chat/Message.tsx:245
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -9255,7 +9240,7 @@ msgstr "Theo dõi tiến bộ thông thạo của bạn"
 msgid "Transcribing..."
 msgstr "Đang phiên âm..."
 
-#: src/features/Chat/Message.tsx:262
+#: src/features/Chat/Message.tsx:284
 #. js-lingui-explicit-id
 msgid "Translate"
 msgstr ""
@@ -9898,7 +9883,7 @@ msgstr "Bạn sẽ đạt được gì?"
 msgid "What's included?"
 msgstr "Điều gì được bao gồm?"
 
-#: src/features/Chat/ChatSection.tsx:292
+#: src/features/Chat/ChatSection.tsx:208
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "Có gì mới?"
@@ -10548,6 +10533,21 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Chat/MessageList.tsx:34
+#. js-lingui-explicit-id
+#~ msgid "No messages yet"
+#~ msgstr "Chưa có tin nhắn nào"
+
+#: src/features/Chat/ChatSection.tsx:244
+#. js-lingui-explicit-id
+#~ msgid "No replies yet. Be the first to reply to this message."
+#~ msgstr "Chưa có phản hồi nào. Hãy là người đầu tiên trả lời tin nhắn này."
+
+#: src/features/Chat/ChatSection.tsx:237
+#. js-lingui-explicit-id
+#~ msgid "Replies:"
+#~ msgstr "Phản hồi:"
 
 #: src/features/Chat/ChatSection.tsx:119
 #. js-lingui-explicit-id
