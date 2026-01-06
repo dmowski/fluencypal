@@ -26,12 +26,16 @@ export const addToTotalBalance = async ({
 }: AddToTotalBalanceProps) => {
   const db = getDB();
   const balance = await getUserBalance(userId);
-
   const newTotalUsage: Partial<TotalUsageInfo> = {
     lastUpdatedAt: Date.now(),
   };
 
-  if (monthsCount || daysCount !== undefined || hoursCount !== undefined) {
+  if (
+    monthsCount ||
+    daysCount !== undefined ||
+    hoursCount !== undefined ||
+    minutesCount !== undefined
+  ) {
     const isActiveSubscriptions = !!balance.activeSubscriptionTill;
     const lastDate = isActiveSubscriptions ? dayjs(balance.activeSubscriptionTill) : dayjs();
 
