@@ -138,6 +138,8 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
             const isActive = appNavigation.currentPage === item.name;
             const color = isActive ? activeColor : inactiveColor;
 
+            const isActiveBadge = item.badge !== undefined && item.badge > 0;
+
             const isProfile = item.name === "profile";
             return (
               <Stack
@@ -217,27 +219,32 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                       width: "100%",
                     }}
                   >
-                    <Stack
-                      sx={{
-                        width: "4px",
-                        height: "7px",
-                      }}
-                    />
+                    {isActiveBadge && (
+                      <Stack
+                        sx={{
+                          width: "4px",
+                          height: "7px",
+                        }}
+                      />
+                    )}
+
                     <Typography variant="caption" component={"span"} align="center">
                       {item.title}
                     </Typography>
 
-                    <Stack
-                      sx={{
-                        borderRadius: "18px",
-                        backgroundColor: "#ff3d00",
-                        width: "5px",
-                        height: "5px",
-                        opacity: item.badge !== undefined && item.badge > 0 ? 1 : 0,
-                        position: "relative",
-                        top: "1px",
-                      }}
-                    />
+                    {isActiveBadge && (
+                      <Stack
+                        sx={{
+                          borderRadius: "18px",
+                          backgroundColor: "#ff3d00",
+                          width: "5px",
+                          height: "5px",
+                          opacity: 1,
+                          position: "relative",
+                          top: "1px",
+                        }}
+                      />
+                    )}
                   </Stack>
                 </Link>
               </Stack>
