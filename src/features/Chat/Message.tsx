@@ -341,12 +341,12 @@ export function Message({
           >
             {contentToShow.length > limitMessages && !isShowTranslation ? (
               <>
-                {isLimitedMessage ? contentToShow.slice(0, limitMessages) + "..." : contentToShow}
+                {isLimitedMessage ? contentToShow.slice(0, limitMessages) + "... " : contentToShow}
                 {!isFullContentByDefault && (
                   <Button
                     size="small"
                     onClick={() => setIsShowFullContent(!isShowFullContent)}
-                    sx={{ textTransform: "none", marginLeft: "5px", padding: 0, minWidth: 0 }}
+                    sx={{ textTransform: "none", padding: 0, minWidth: 0 }}
                   >
                     {isShowFullContent ? i18n._("Show less") : i18n._("Show more")}
                   </Button>
