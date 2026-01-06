@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { defaultAvatar } from "../Game/avatars";
 import { UserSource } from "@/common/analytics";
+import { Messages } from "../Conversation/Messages";
 
 const copyToClipboard = async (text: string) => {
   try {
@@ -90,6 +91,9 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
     activeSubscriptionTill && dayjs(activeSubscriptionTill).isAfter(dayjs());
 
   const [isCopied, setIsCopied] = useState(false);
+
+  const conversations = userStat.conversationMeta.conversations || [];
+
   useEffect(() => {
     if (!isCopied) {
       return;
@@ -374,7 +378,67 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           </Stack>
         )}
       </Stack>
-      {allTextInfo && (
+
+      <Stack
+        sx={{
+          width: "100%",
+          height: "100%",
+          maxHeight: "350px",
+          overflow: "auto",
+          gap: "20px",
+        }}
+      >
+        {conversations.length === 0 && (
+          <Typography
+            sx={{
+              opacity: 0.6,
+            }}
+          >
+            No conversations
+          </Typography>
+        )}
+        {conversations
+          .sort((a, b) => {
+            return dayjs(b.updatedAtIso).diff(dayjs(a.updatedAtIso));
+          })
+          .map((conversation, index) => {
+            const bgColors = index % 2 === 0 ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 0, 0, 0.1)";
+            return (
+              <Stack
+                key={conversation.id}
+                sx={{
+                  backgroundColor: bgColors,
+                }}
+              >
+                <Typography
+                  sx={{
+                    backgroundColor: "rgba(94, 94, 94, 1)",
+                    padding: "4px 8px",
+                    position: "sticky",
+                    top: 0,
+                    zIndex: 1,
+                    fontSize: "14px",
+                  }}
+                >
+                  {conversation.mode} ({conversation.languageCode}: {conversation.messagesCount}{" "}
+                  messages) - <i>{dayjs(conversation.updatedAtIso).fromNow()}</i>
+                </Typography>
+                <Stack
+                  sx={{
+                    fontSize: "14px",
+                  }}
+                >
+                  <Messages
+                    messageOrder={conversation.messageOrder}
+                    conversation={conversation.messages}
+                  />
+                </Stack>
+              </Stack>
+            );
+          })}
+      </Stack>
+
+      {allTextInfo && !!false && (
         <Stack
           sx={{
             flexDirection: "row",

@@ -141,5 +141,6 @@ export const getUserConversationsMeta = async (userId: string): Promise<UserConv
     totalMessages,
     todayMessages,
     lastHourMessages,
+    conversations: docs,
   };
 };

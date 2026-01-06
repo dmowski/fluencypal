@@ -24,6 +24,7 @@ export interface UserConversationsMeta {
   totalMessages: number;
   todayMessages: number;
   lastHourMessages: number;
+  conversations: Conversation[];
 }
 
 // parentId -> childId
