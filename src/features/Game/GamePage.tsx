@@ -153,6 +153,9 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                   sx={{
                     width: "100%",
                     padding: "10px 40px",
+                    "@media (max-width: 500px)": {
+                      padding: "10px 20px",
+                    },
                   }}
                 >
                   {game.loadingQuestions ? loadingMessage : playMessage}
