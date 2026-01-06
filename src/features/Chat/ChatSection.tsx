@@ -148,7 +148,11 @@ export const ChartSection = () => {
             border: "1px solid rgba(255, 255, 255, 0.1)",
             borderRadius: "12px",
             gap: "0px",
-            overflow: "hidden",
+            "@media (max-width: 700px)": {
+              borderRadius: "0px",
+              border: "none",
+              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+            },
           }}
         >
           <Stack
@@ -175,6 +179,12 @@ export const ChartSection = () => {
           sx={{
             border: "1px solid rgba(255, 255, 255, 0.1)",
             borderRadius: "12px",
+
+            "@media (max-width: 700px)": {
+              borderRadius: "0px",
+              border: "none",
+              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+            },
           }}
         >
           <Stack
@@ -196,18 +206,32 @@ export const ChartSection = () => {
                 justifyContent: "space-between",
               }}
             >
-              <Typography
-                sx={{
-                  opacity: 0.6,
-                }}
-              >
-                {i18n._("What's new?")}
-              </Typography>
+              <Stack>
+                <Typography
+                  sx={{
+                    //opacity: 0.6,
+                    fontWeight: "bold",
+                  }}
+                >
+                  {game.myUserName}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    opacity: 0.6,
+                  }}
+                >
+                  {i18n._("What's new?")}
+                </Typography>
+              </Stack>
               <Button
                 variant="contained"
                 color="info"
                 sx={{
                   width: "auto",
+                  "@media (max-width: 400px)": {
+                    display: "none",
+                  },
                 }}
                 startIcon={<AddIcon />}
                 onClick={() => setIsNewPostModalOpen(true)}
