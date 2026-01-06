@@ -72,7 +72,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
           name: "community",
           icon: Users,
           title: i18n._("Community"),
-          //badge: chat.unreadMessagesCount > 0 ? chat.unreadMessagesCount : undefined,
+          badge: chat.unreadMessagesCount > 0 ? chat.unreadMessagesCount : undefined,
         },
         {
           name: "role-play",

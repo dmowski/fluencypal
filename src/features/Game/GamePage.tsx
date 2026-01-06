@@ -4,7 +4,7 @@ import { useGame } from "./useGame";
 import { GameQuestion } from "./GameQuestion";
 import { useLingui } from "@lingui/react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { Swords } from "lucide-react";
+import { Loader, Swords } from "lucide-react";
 import { GameStats, isTodayStat } from "./GameStats";
 import { exitFullScreen, goFullScreen } from "@/libs/fullScreen";
 import { GameMyAvatar } from "./GameMyAvatar";
@@ -143,7 +143,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               >
                 <Button
                   variant={"outlined"}
-                  startIcon={<Swords />}
+                  startIcon={game.loadingQuestions ? <Loader /> : <Swords />}
                   color="info"
                   onClick={() => {
                     goFullScreen();

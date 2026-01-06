@@ -79,6 +79,8 @@ export const PositionChanged = () => {
                 className="position-changed-row"
                 style={{
                   top: `${position * 70 + 12}px`,
+                  backgroundColor: "#181818",
+                  zIndex: 10 - position,
                 }}
               >
                 <GameStatRow stat={stat} key={stat.userId} />
