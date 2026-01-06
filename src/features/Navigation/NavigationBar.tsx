@@ -1,7 +1,7 @@
 "use client";
 import { Link, Stack, Typography } from "@mui/material";
-import { Home, LucideProps, Swords, User, Users, VenetianMask } from "lucide-react";
-import { ForwardRefExoticComponent, RefAttributes, use, useMemo } from "react";
+import { Home, LucideProps, User, Users, VenetianMask } from "lucide-react";
+import { ForwardRefExoticComponent, RefAttributes, useMemo } from "react";
 import { SupportedLanguage } from "../Lang/lang";
 import { useLingui } from "@lingui/react";
 import { useWindowSizes } from "../Layout/useWindowSizes";
@@ -12,8 +12,8 @@ import { useGame } from "../Game/useGame";
 import { useSettings } from "../Settings/useSettings";
 import { AppMode } from "@/common/user";
 import { useChat } from "../Chat/useChat";
-import { UserProfileModal } from "../Game/UserProfileModal";
 import { Avatar } from "../Game/Avatar";
+import { GlobalModals } from "../Modal/GlobalModals";
 
 export interface IconProps {
   color?: string;
@@ -43,7 +43,6 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
   const settings = useSettings();
   const appMode = settings.appMode;
   const userPhoto = game.gameAvatars?.[auth.uid] || "";
-  const userName = game.userNames?.[auth.uid];
   const { bottomOffset } = useWindowSizes();
   const chat = useChat();
 
@@ -99,12 +98,6 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
     appNavigation.setCurrentPage(item.name);
   };
 
-  const activeUserProfile = useMemo(() => {
-    if (!game.modalUserId) return null;
-    const stat = game.stats.find((s) => s.userId === game.modalUserId);
-    return stat || null;
-  }, [game.modalUserId]);
-
   return (
     <Stack
       component={"nav"}
@@ -127,9 +120,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
         },
       }}
     >
-      {activeUserProfile && (
-        <UserProfileModal stat={activeUserProfile} onClose={() => game.showUserInModal("")} />
-      )}
+      <GlobalModals />
 
       <Stack sx={{ width: "100%", maxWidth: "700px", padding: "0 10px" }}>
         <Stack
