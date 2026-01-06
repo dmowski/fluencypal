@@ -6,21 +6,20 @@ import dayjs from "dayjs";
 interface AddToTotalBalanceProps {
   userId: string;
   amountToAddHours: number;
-  monthsCount?: number;
-  daysCount?: number;
 
   // This is not a balance in hours, but actual hours to add to . Like for trial hours
   hoursCount?: number;
-
   minutesCount?: number;
+  monthsCount?: number;
+  daysCount?: number;
 }
 
 export const addToTotalBalance = async ({
   userId,
   amountToAddHours,
+
   monthsCount,
   daysCount,
-
   hoursCount,
   minutesCount,
 }: AddToTotalBalanceProps) => {
@@ -31,7 +30,7 @@ export const addToTotalBalance = async ({
   };
 
   if (
-    monthsCount ||
+    monthsCount !== undefined ||
     daysCount !== undefined ||
     hoursCount !== undefined ||
     minutesCount !== undefined
