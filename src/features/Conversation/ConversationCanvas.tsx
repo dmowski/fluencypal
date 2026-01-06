@@ -303,7 +303,10 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
         <ConversationReviewModal
           setIsShowAnalyzeConversationModal={setIsShowAnalyzeConversationModal}
           conversationAnalysisResult={conversationAnalysisResult}
-          closeConversation={closeConversation}
+          closeConversation={() => {
+            setIsShowAnalyzeConversationModal(false);
+            closeConversation();
+          }}
           setIsConversationContinueAfterAnalyze={setIsConversationContinueAfterAnalyze}
         />
       )}
