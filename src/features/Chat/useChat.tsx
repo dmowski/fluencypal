@@ -6,6 +6,7 @@ import { db } from "../Firebase/firebaseDb";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { ChatLike, ChatLikeType, UserChatMessage } from "./type";
 import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
+import { useUrlState } from "../Url/useUrlParam";
 
 interface AddMessageProps {
   messageContent: string;
@@ -28,6 +29,12 @@ interface ChatContextType {
   markAsRead: () => void;
 
   loading: boolean;
+
+  onCommentClick: (messageId: string) => void;
+  activeCommentId: string;
+
+  activeMessageId: string;
+  onOpen: (messageId: string) => void;
 }
 
 const ChatContext = createContext<ChatContextType | null>(null);
@@ -39,6 +46,9 @@ function useProvideChat(): ChatContextType {
   const userId = auth.uid || "anonymous";
   const messagesRef = db.collections.usersChatMessages();
   const [messagesData, loading] = useCollectionData(messagesRef);
+
+  const [activeMessageIdComment, setActiveMessageIdComment] = useState("");
+  const [activeMessageId, setActiveMessageId] = useUrlState("post", "", true);
 
   const { messages, topLevelMessages, commentsInfo } = useMemo<{
     messages: UserChatMessage[];
@@ -201,6 +211,12 @@ function useProvideChat(): ChatContextType {
     addMessage,
     deleteMessage,
     loading,
+
+    activeCommentId: activeMessageIdComment,
+    onCommentClick: (messageId: string) => setActiveMessageIdComment(messageId),
+
+    activeMessageId,
+    onOpen: (messageId: string) => setActiveMessageId(messageId),
   };
 }
 

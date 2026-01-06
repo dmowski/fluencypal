@@ -15,29 +15,12 @@ import { Avatar } from "../Game/Avatar";
 
 interface MessageProps {
   message: UserChatMessage;
-  isOwnMessage: boolean;
-  userName: string;
-  userAvatarUrl: string;
-  onEdit: (messageId: string, newContent: string) => Promise<void>;
-  onDelete: (messageId: string) => Promise<void>;
-  onCommentClick: () => void;
-  onOpen: (messageId: string) => void;
-  commentsCount: number;
+
   isContentWide?: boolean;
+  isChain?: boolean;
 }
 
-export function Message({
-  message,
-  isOwnMessage,
-  userName,
-  userAvatarUrl,
-  onEdit,
-  onDelete,
-  onCommentClick,
-  commentsCount,
-  onOpen,
-  isContentWide = false,
-}: MessageProps) {
+export function Message({ message, isContentWide = false, isChain = false }: MessageProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(message.content);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -48,8 +31,15 @@ export function Message({
   const isLimitedMessage = message.content.length > limitMessages && !isShowFullContent;
 
   const auth = useAuth();
+  const game = useGame();
+  const userName = game.getUserName(message.senderId);
+  const userAvatarUrl = game.getUserAvatarUrl(message.senderId);
   const myUserId = auth.uid;
+  const isOwnMessage = message.senderId === myUserId;
   const chat = useChat();
+
+  const commentsCount = chat.commentsInfo[message.id] || 0;
+
   const isLikedByMe = chat.messagesLikes[message.id]?.some((like) => like.userId === myUserId);
 
   const updatedAgo = dayjs(message.updatedAtIso).fromNow();
@@ -57,19 +47,28 @@ export function Message({
   const handleSaveEdit = async () => {
     if (editedContent.trim()) {
       setIsDeleting(true);
-      await onEdit(message.id, editedContent);
+      await chat.editMessage(message.id, editedContent);
       setIsEditing(false);
       setIsDeleting(false);
     }
   };
 
   const handleDelete = async () => {
+    const isConfirmed = window.confirm(i18n._("Are you sure you want to delete this message?"));
+    if (!isConfirmed) {
+      return;
+    }
+
     setIsDeleting(true);
-    await onDelete(message.id);
+    await chat.deleteMessage(message.id);
     setIsDeleting(false);
   };
 
-  const game = useGame();
+  const avatarSize = "35px";
+  const contentLeftPadding = `calc(${avatarSize} + 18px)`;
+  const chainLeftPadding = `calc(calc(${avatarSize} / 2) + 14px)`;
+  const chainTop = `calc(${avatarSize} + 25px)`;
+  const chainHeight = `calc(100% - ${avatarSize} - 20px)`;
 
   return (
     <Stack
@@ -79,7 +78,7 @@ export function Message({
         position: "relative",
         width: "100%",
         zIndex: 1,
-        gap: "10px",
+        gap: "0px",
         cursor: isEditing ? "default" : "pointer",
         ".open-message-button:focus": {
           boxShadow: "inset 0 0 0 2px rgba(41, 179, 229, 0.5)",
@@ -101,9 +100,23 @@ export function Message({
           return;
         }
 
-        onOpen(message.id);
+        chat.onOpen(message.id);
       }}
     >
+      {isChain && (
+        <Stack
+          sx={{
+            position: "absolute",
+            top: chainTop,
+            left: chainLeftPadding,
+
+            height: chainHeight,
+            width: "2px",
+            backgroundColor: "rgba(255, 255, 255, 0.3)",
+            borderRadius: "2px",
+          }}
+        />
+      )}
       <Stack
         sx={{
           justifyContent: "space-between",
@@ -117,11 +130,12 @@ export function Message({
             alignItems: "center",
             gap: "16px",
             border: "none",
+
             backgroundColor: "transparent",
             color: "inherit",
             cursor: "pointer",
             userSelect: "text",
-            padding: "2px 10px 2px 2px",
+            padding: "2px 10px 0px 2px",
             borderRadius: "19px",
             position: "relative",
             left: "-2px",
@@ -133,7 +147,7 @@ export function Message({
           component={"button"}
           onClick={() => game.showUserInModal(message.senderId)}
         >
-          {userAvatarUrl && <Avatar avatarSize="25px" url={userAvatarUrl} />}
+          {userAvatarUrl && <Avatar avatarSize={avatarSize} url={userAvatarUrl} />}
           <Typography
             variant="body1"
             sx={{
@@ -156,7 +170,7 @@ export function Message({
         </Stack>
 
         {isOwnMessage && (
-          <Stack sx={{ flexDirection: "row", opacity: 0.7 }}>
+          <Stack sx={{ flexDirection: "row", opacity: 0.7, alignItems: "center", gap: "1px" }}>
             <IconButton
               size="small"
               onClick={() => setIsEditing(true)}
@@ -181,6 +195,9 @@ export function Message({
         <Stack
           sx={{
             width: "100%",
+            position: "relative",
+            zIndex: 1,
+            gap: "10px",
           }}
         >
           <TextField
@@ -189,18 +206,32 @@ export function Message({
             maxRows={12}
             value={editedContent}
             onChange={(e) => setEditedContent(e.target.value)}
-            sx={{ mt: 1 }}
+            sx={{ marginTop: "10px", backgroundColor: "rgba(10, 18, 30, 1)" }}
             disabled={isDeleting}
           />
+
+          <Stack sx={{ gap: "10px", flexDirection: "row" }}>
+            <Button
+              size="small"
+              onClick={handleSaveEdit}
+              disabled={isDeleting || !editedContent.trim()}
+              variant="contained"
+            >
+              {isDeleting ? <CircularProgress size={20} /> : i18n._("Save")}
+            </Button>
+            <Button size="small" onClick={() => setIsEditing(false)} disabled={isDeleting}>
+              {i18n._("Cancel")}
+            </Button>
+          </Stack>
         </Stack>
       ) : (
         <Typography
           sx={{
-            marginTop: "5px",
             wordBreak: "break-word",
             whiteSpace: "pre-wrap",
             width: "100%",
-            paddingLeft: isContentWide ? "0px" : "42px",
+
+            paddingLeft: isContentWide ? "0px" : contentLeftPadding,
           }}
         >
           {message.content.length > limitMessages ? (
@@ -220,27 +251,14 @@ export function Message({
         </Typography>
       )}
 
-      {isEditing ? (
-        <Stack sx={{ gap: "10px", flexDirection: "row" }}>
-          <Button
-            size="small"
-            onClick={handleSaveEdit}
-            disabled={isDeleting || !editedContent.trim()}
-            variant="contained"
-          >
-            {isDeleting ? <CircularProgress size={20} /> : i18n._("Save")}
-          </Button>
-          <Button size="small" onClick={() => setIsEditing(false)} disabled={isDeleting}>
-            {i18n._("Cancel")}
-          </Button>
-        </Stack>
-      ) : (
+      {!isEditing && (
         <Stack
           sx={{
             flexDirection: "row",
             alignItems: "center",
             gap: "8px",
-            paddingLeft: isContentWide ? "0px" : "42px",
+            paddingTop: "10px",
+            paddingLeft: isContentWide ? "0px" : contentLeftPadding,
           }}
         >
           <MessageActionButton
@@ -253,7 +271,7 @@ export function Message({
 
           <MessageActionButton
             isActive={false}
-            onClick={onCommentClick}
+            onClick={() => chat.onCommentClick(message.id)}
             label={i18n._("Comment")}
             count={commentsCount}
             iconName={"message-circle"}
@@ -272,9 +290,7 @@ export function Message({
       )}
       <Stack
         component={"button"}
-        onClick={() => {
-          onOpen(message.id);
-        }}
+        onClick={() => chat.onOpen(message.id)}
         className="open-message-button"
         sx={{
           position: "absolute",
