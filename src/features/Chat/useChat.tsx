@@ -48,7 +48,7 @@ function useProvideChat(): ChatContextType {
   const [messagesData, loading] = useCollectionData(messagesRef);
 
   const [activeMessageIdComment, setActiveMessageIdComment] = useState("");
-  const [activeMessageId, setActiveMessageId] = useUrlState("post", "", true);
+  const [activeMessageId, setActiveMessageId] = useUrlState("post", "", false);
 
   const { messages, topLevelMessages, commentsInfo } = useMemo<{
     messages: UserChatMessage[];
