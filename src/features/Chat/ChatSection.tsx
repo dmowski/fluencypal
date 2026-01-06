@@ -35,6 +35,9 @@ export const ChartSection = () => {
 
   const [isNewPostModalOpen, setIsNewPostModalOpen] = useState(false);
 
+  const isModalOpen = messageToComment || isNewPostModalOpen;
+  const [isActiveRecording, setIsActiveRecording] = useState(false);
+
   return (
     <Stack
       sx={{
@@ -42,9 +45,13 @@ export const ChartSection = () => {
         backgroundColor: "rgba(255, 255, 255, 0.03)",
       }}
     >
-      {(messageToComment || isNewPostModalOpen) && (
+      {isModalOpen && (
         <CustomModal
           onClose={() => {
+            if (isActiveRecording) {
+              alert(i18n._("Please stop the recording before closing the window."));
+              return;
+            }
             chat.setActiveCommentMessageId("");
             setIsNewPostModalOpen(false);
           }}
@@ -117,6 +124,7 @@ export const ChartSection = () => {
 
               <Stack>
                 <SubmitForm
+                  setIsActiveRecording={setIsActiveRecording}
                   onSubmit={(messageContent) =>
                     chat.addMessage({
                       messageContent,

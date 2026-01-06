@@ -6,19 +6,24 @@ import SendIcon from "@mui/icons-material/Send";
 import StopIcon from "@mui/icons-material/Stop";
 import MicIcon from "@mui/icons-material/Mic";
 import { CHAT_MESSAGE_POINTS } from "./data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProcessUserInput } from "../Conversation/ProcessUserInput";
 import { Mic, Trash } from "lucide-react";
-import { Trans } from "@lingui/react/macro";
 import { GamePlusPoints } from "../Game/gameQuestionScreens/gameCoreUI";
 
 interface SubmitFormProps {
   onSubmit: (message: string) => Promise<void>;
   isLoading: boolean;
   recordMessageTitle: string;
+  setIsActiveRecording: (isRecording: boolean) => void;
 }
 
-export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFormProps) {
+export function SubmitForm({
+  onSubmit,
+  isLoading,
+  recordMessageTitle,
+  setIsActiveRecording,
+}: SubmitFormProps) {
   const { i18n } = useLingui();
 
   const recorder = useAudioRecorder({
@@ -30,6 +35,12 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
     recorder.removeTranscript();
     recorder.cancelRecording();
   };
+
+  useEffect(() => {
+    if (setIsActiveRecording) {
+      setIsActiveRecording(recorder.isRecording);
+    }
+  }, [recorder.isRecording, setIsActiveRecording]);
 
   const needMoreText = !!recorder?.transcription?.length && recorder.transcription.length < 4;
 
