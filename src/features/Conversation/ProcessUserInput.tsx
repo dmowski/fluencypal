@@ -1,6 +1,6 @@
 "use client";
 
-import { IconButton, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { Check, Languages, Loader, ShieldAlert } from "lucide-react";
 
 import { StringDiff } from "react-string-diff";
@@ -32,6 +32,8 @@ export const ProcessUserInput = ({
   const [correctedMessage, setCorrectedMessage] = useState<string | null>(null);
   const corrections = useCorrections();
   const [isAnalyzingError, setIsAnalyzingError] = useState(false);
+
+  const [isShowFullContent, setIsShowFullContent] = useState(false);
 
   const setIsAnalyzingMessage = (value: boolean) => {
     setIsAnalyzingMessageWithAi(value);
@@ -97,11 +99,13 @@ export const ProcessUserInput = ({
 
   const isAnalyzingResponse = isAnalyzingMessageWithAi || isTranscribing;
 
+  const contentToShow = description || "";
+  const limitMessages = 70;
+  const isLimitedMessage = contentToShow.length > limitMessages && !isShowFullContent;
+
   return (
     <Stack
       sx={{
-        flexDirection: "row",
-        justifyContent: "space-between",
         width: "100%",
       }}
     >
@@ -180,7 +184,23 @@ export const ProcessUserInput = ({
                   opacity: 0.87,
                 }}
               >
-                {description}
+                {contentToShow.length > limitMessages ? (
+                  <>
+                    {isLimitedMessage
+                      ? contentToShow.slice(0, limitMessages) + "..."
+                      : contentToShow}
+
+                    <Button
+                      size="small"
+                      onClick={() => setIsShowFullContent(!isShowFullContent)}
+                      sx={{ textTransform: "none", marginLeft: "5px", padding: 0, minWidth: 0 }}
+                    >
+                      {isShowFullContent ? i18n._("Show less") : i18n._("Show more")}
+                    </Button>
+                  </>
+                ) : (
+                  contentToShow
+                )}
               </Typography>
             )}
           </Stack>
