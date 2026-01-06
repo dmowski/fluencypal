@@ -758,7 +758,7 @@ export const SubscriptionPaymentModal = () => {
                   )}
 
                   <Typography variant="body1">
-                    {i18n._("Learn at full speed with full access")}
+                    {i18n._("Get confidence with AI support")}
                   </Typography>
                   <Stack
                     sx={{
