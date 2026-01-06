@@ -106,6 +106,31 @@ export function Message({
 
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
 
+  const [translation, setTranslation] = useState<string | null>(null);
+  const [isShowTranslation, setIsShowTranslation] = useState(false);
+  const [isTranslating, setIsTranslating] = useState(false);
+
+  const toggleTranslation = async () => {
+    if (isShowTranslation) {
+      setIsShowTranslation(false);
+      return;
+    }
+
+    if (translation) {
+      setIsShowTranslation(true);
+      return;
+    }
+
+    setIsTranslating(true);
+    const translatedText = await translator.translateText({ text: message.content });
+    setIsShowFullContent(true);
+    setTranslation(translatedText);
+    setIsShowTranslation(true);
+    setIsTranslating(false);
+  };
+
+  const contentToShow = isShowTranslation && translation ? translation : message.content;
+
   return (
     <Stack
       sx={{
@@ -301,9 +326,9 @@ export function Message({
             paddingLeft: isContentWide ? "0px" : contentLeftPadding,
           }}
         >
-          {message.content.length > limitMessages ? (
+          {contentToShow.length > limitMessages && !isShowTranslation ? (
             <>
-              {isLimitedMessage ? message.content.slice(0, limitMessages) + "..." : message.content}
+              {isLimitedMessage ? contentToShow.slice(0, limitMessages) + "..." : contentToShow}
               {!isFullContentByDefault && (
                 <Button
                   size="small"
@@ -315,7 +340,7 @@ export function Message({
               )}
             </>
           ) : (
-            message.content
+            contentToShow
           )}
         </Typography>
       )}
@@ -348,8 +373,8 @@ export function Message({
 
           {translator.isTranslateAvailable && (
             <MessageActionButton
-              isActive={false}
-              onClick={(element) => translator.translateWithModal(message.content, element)}
+              isActive={isTranslating}
+              onClick={() => toggleTranslation()}
               label={i18n._("Translate")}
               iconName={"languages"}
             />
