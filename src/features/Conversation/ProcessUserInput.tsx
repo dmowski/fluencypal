@@ -45,6 +45,7 @@ export const ProcessUserInput = ({
 
   const analyzeUserInput = async (usersNewMessage: string) => {
     messageAnalyzing.current = usersNewMessage;
+    setIsAnalyzingError(false);
 
     setIsAnalyzingMessage(true);
     setIsCorrection(false);
