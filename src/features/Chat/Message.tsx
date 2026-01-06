@@ -77,7 +77,10 @@ export function Message({
     }
   };
 
-  const handleDelete = async () => {
+  const onDelete = async (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    setMenuAnchorEl(null);
+    e.preventDefault();
+    e.stopPropagation();
     const isConfirmed = window.confirm(i18n._("Are you sure you want to delete this message?"));
     if (!isConfirmed) {
       return;
@@ -86,6 +89,13 @@ export function Message({
     setIsDeleting(true);
     await chat.deleteMessage(message.id);
     setIsDeleting(false);
+  };
+
+  const onEdit = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    setMenuAnchorEl(null);
+    e.preventDefault();
+    e.stopPropagation();
+    setIsEditing(true);
   };
 
   const avatarSize = "35px";
@@ -221,12 +231,7 @@ export function Message({
               open={Boolean(menuAnchorEl)}
               onClose={() => setMenuAnchorEl(null)}
             >
-              <MenuItem
-                onClick={() => {
-                  setIsEditing(true);
-                  setMenuAnchorEl(null);
-                }}
-              >
+              <MenuItem onClick={onEdit}>
                 <ListItemIcon>
                   <EditIcon />
                 </ListItemIcon>
@@ -235,12 +240,7 @@ export function Message({
                 </ListItemText>
               </MenuItem>
               <Divider />
-              <MenuItem
-                onClick={() => {
-                  setMenuAnchorEl(null);
-                  handleDelete();
-                }}
-              >
+              <MenuItem onClick={onDelete}>
                 <ListItemIcon>
                   <DeleteIcon color="error" />
                 </ListItemIcon>
