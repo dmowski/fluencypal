@@ -55,7 +55,6 @@ export function SubmitForm({
         width: "100%",
         gap: "20px",
         alignItems: "flex-start",
-        //backgroundColor: "rgba(20, 28, 40, 0.9)",
         padding: "15px",
       }}
     >
@@ -111,7 +110,7 @@ export function SubmitForm({
             </Button>
           )}
 
-          {recorder.transcription && (
+          {recorder.transcription && !recorder.isRecording && !recorder.isTranscribing && (
             <Stack
               sx={{
                 flexDirection: "row",
@@ -124,7 +123,6 @@ export function SubmitForm({
                 color="info"
                 disabled={needMoreText || recorder.isTranscribing || recorder.isRecording}
                 onClick={async () => {
-                  recorder.removeTranscript();
                   recorder.startRecording();
                 }}
                 fullWidth
