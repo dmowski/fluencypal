@@ -38,6 +38,15 @@ export const ChartSection = () => {
   const isModalOpen = messageToComment || isNewPostModalOpen;
   const [isActiveRecording, setIsActiveRecording] = useState(false);
 
+  const onCloseRecordMessageModal = () => {
+    if (isActiveRecording) {
+      alert(i18n._("Please stop the recording before closing the window."));
+      return;
+    }
+    chat.setActiveCommentMessageId("");
+    setIsNewPostModalOpen(false);
+  };
+
   return (
     <Stack
       sx={{
@@ -46,17 +55,7 @@ export const ChartSection = () => {
       }}
     >
       {isModalOpen && (
-        <CustomModal
-          onClose={() => {
-            if (isActiveRecording) {
-              alert(i18n._("Please stop the recording before closing the window."));
-              return;
-            }
-            chat.setActiveCommentMessageId("");
-            setIsNewPostModalOpen(false);
-          }}
-          isOpen={true}
-        >
+        <CustomModal onClose={onCloseRecordMessageModal} isOpen={true}>
           <Stack
             sx={{
               maxWidth: "600px",
@@ -116,6 +115,7 @@ export const ChartSection = () => {
               sx={{
                 border: "1px solid rgba(255, 255, 255, 0.1)",
                 borderRadius: "16px",
+                backgroundColor: "rgba(30, 38, 50, 0.9)",
               }}
             >
               {messageToComment && (
@@ -125,12 +125,13 @@ export const ChartSection = () => {
               <Stack>
                 <SubmitForm
                   setIsActiveRecording={setIsActiveRecording}
-                  onSubmit={(messageContent) =>
-                    chat.addMessage({
+                  onSubmit={async (messageContent) => {
+                    await chat.addMessage({
                       messageContent,
                       parentMessageId: messageToComment?.id ? messageToComment.id : "",
-                    })
-                  }
+                    });
+                    onCloseRecordMessageModal();
+                  }}
                   isLoading={chat.loading}
                   recordMessageTitle={
                     messageToComment?.id ? i18n._("Add a reply") : i18n._("Record a message")
