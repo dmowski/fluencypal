@@ -41,7 +41,6 @@ import { useLingui } from "@lingui/react";
 import { useSound } from "../Audio/useSound";
 import { GoalPlan } from "../Plan/types";
 import { GradingProgressBar } from "../uiKit/Progress/GradingProgressBar";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useTranslate } from "../Translation/useTranslate";
 import { useUrlParam } from "../Url/useUrlParam";
 import { useResizeElement } from "../Layout/useResizeElement";
@@ -944,7 +943,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                   )}
                 </Stack>
 
-                {(isRecording || isAnalyzingResponse || isLimited) && (
+                {(isRecording || isLimited) && (
                   <Stack
                     sx={{
                       width: "100%",
@@ -954,7 +953,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                       },
                     }}
                   >
-                    {isRecording || isAnalyzingResponse ? (
+                    {isRecording ? (
                       <Tooltip title={i18n._("Cancel recording")}>
                         <Stack>
                           <IconButton

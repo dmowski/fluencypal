@@ -102,6 +102,7 @@ export const ProcessUserInput = ({
   const contentToShow = description || "";
   const limitMessages = 70;
   const isLimitedMessage = contentToShow.length > limitMessages && !isShowFullContent;
+  const messagesFontSize = userMessage.length < 320 ? "1.1rem" : "0.9rem";
 
   return (
     <Stack
@@ -207,7 +208,7 @@ export const ProcessUserInput = ({
         )}
         <Stack
           sx={{
-            gap: "10px",
+            gap: "0px",
             paddingBottom: "10px",
           }}
         >
@@ -235,7 +236,7 @@ export const ProcessUserInput = ({
                 className={isTranscribing ? "loading-shimmer" : ""}
                 sx={{
                   fontWeight: 400,
-                  fontSize: "1.1rem",
+                  fontSize: messagesFontSize,
                   paddingBottom: "3px",
                   opacity: isTranscribing ? 0.7 : 0.9,
                 }}
@@ -249,7 +250,11 @@ export const ProcessUserInput = ({
           </Stack>
 
           {(isNeedToShowCorrection || isAnalyzingResponse) && (
-            <Stack>
+            <Stack
+              sx={{
+                paddingTop: "15px",
+              }}
+            >
               <Typography
                 variant="caption"
                 sx={{
@@ -274,7 +279,7 @@ export const ProcessUserInput = ({
                   className={isTranscribing || isAnalyzingResponse ? "loading-shimmer" : ""}
                   sx={{
                     fontWeight: 400,
-                    fontSize: "1.1rem",
+                    fontSize: messagesFontSize,
                     paddingBottom: "3px",
                     opacity: isTranscribing || isAnalyzingResponse ? 0.7 : 0.9,
                   }}
@@ -312,28 +317,26 @@ export const ProcessUserInput = ({
             </Stack>
           )}
 
-          <Stack
-            sx={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: "2px",
-            }}
-          >
-            {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
-              <>
-                <AudioPlayIcon
-                  text={correctedMessage}
-                  instructions="Calm and clear"
-                  voice={"coral"}
-                />
-                <IconButton
-                  onClick={(e) => translator.translateWithModal(correctedMessage, e.currentTarget)}
-                >
-                  <Languages size={"16px"} style={{ opacity: 0.8 }} />
-                </IconButton>
-              </>
-            )}
-          </Stack>
+          {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
+            <Stack
+              sx={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "2px",
+              }}
+            >
+              <AudioPlayIcon
+                text={correctedMessage}
+                instructions="Calm and clear"
+                voice={"coral"}
+              />
+              <IconButton
+                onClick={(e) => translator.translateWithModal(correctedMessage, e.currentTarget)}
+              >
+                <Languages size={"16px"} style={{ opacity: 0.8 }} />
+              </IconButton>
+            </Stack>
+          )}
         </Stack>
       </Stack>
       {translator.translateModal}
