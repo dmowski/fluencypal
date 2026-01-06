@@ -2,7 +2,8 @@ import { Stack, Typography, Button } from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useLingui } from "@lingui/react";
-import { ChevronRight, Plus } from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import AddIcon from "@mui/icons-material/Add";
 
 export const ConversationReviewModal = ({
   setIsShowAnalyzeConversationModal,
@@ -98,7 +99,7 @@ export const ConversationReviewModal = ({
               variant="outlined"
               color="info"
               size="large"
-              endIcon={<Plus />}
+              endIcon={<AddIcon />}
               disabled={!conversationAnalysisResult}
             >
               {i18n._(`Start new lesson`)}
