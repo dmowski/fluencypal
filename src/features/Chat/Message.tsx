@@ -177,9 +177,10 @@ export function Message({
                 opacity: 0.6,
                 paddingLeft: "10px",
               },
+              span: {},
             }}
           >
-            {updatedAgo}
+            <span>{updatedAgo}</span>
 
             {message.updatedAtIso !== message.createdAtIso && <i>{i18n._("edited")}</i>}
           </Typography>
