@@ -1,5 +1,17 @@
 "use client";
-import { Stack, Typography, TextField, Button, IconButton, CircularProgress } from "@mui/material";
+import {
+  Stack,
+  Typography,
+  TextField,
+  Button,
+  IconButton,
+  CircularProgress,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+} from "@mui/material";
 import { UserChatMessage } from "./type";
 import { useEffect, useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
@@ -12,6 +24,7 @@ import { useGame } from "../Game/useGame";
 import { MessageActionButton } from "./MessageActionButton";
 import { useTranslate } from "../Translation/useTranslate";
 import { Avatar } from "../Game/Avatar";
+import { CircleEllipsis } from "lucide-react";
 
 interface MessageProps {
   message: UserChatMessage;
@@ -80,6 +93,8 @@ export function Message({
   const chainLeftPadding = `calc(calc(${avatarSize} / 2) + 14px)`;
   const chainTop = `calc(${avatarSize} + 25px)`;
   const chainHeight = `calc(100% - ${avatarSize} - 20px)`;
+
+  const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
 
   return (
     <Stack
@@ -188,22 +203,52 @@ export function Message({
 
         {isOwnMessage && (
           <Stack sx={{ flexDirection: "row", opacity: 0.7, alignItems: "center", gap: "1px" }}>
-            <IconButton
-              size="small"
-              onClick={() => setIsEditing(true)}
-              disabled={isDeleting}
-              title={i18n._("Edit message")}
-            >
-              <EditIcon fontSize="small" />
+            <IconButton onClick={(e) => setMenuAnchorEl(e.currentTarget)} size="small">
+              <CircleEllipsis
+                size={"20px"}
+                style={{
+                  opacity: 0.7,
+                }}
+              />
             </IconButton>
-            <IconButton
-              size="small"
-              onClick={handleDelete}
-              disabled={isDeleting}
-              title={i18n._("Delete message")}
+            <Menu
+              anchorEl={menuAnchorEl}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              open={Boolean(menuAnchorEl)}
+              onClose={() => setMenuAnchorEl(null)}
             >
-              {isDeleting ? <CircularProgress size={20} /> : <DeleteIcon fontSize="small" />}
-            </IconButton>
+              <MenuItem
+                onClick={() => {
+                  setIsEditing(true);
+                  setMenuAnchorEl(null);
+                }}
+              >
+                <ListItemIcon>
+                  <EditIcon />
+                </ListItemIcon>
+                <ListItemText>
+                  <Typography>{i18n._("Edit")}</Typography>
+                </ListItemText>
+              </MenuItem>
+              <Divider />
+              <MenuItem
+                onClick={() => {
+                  setMenuAnchorEl(null);
+                  handleDelete();
+                }}
+              >
+                <ListItemIcon>
+                  <DeleteIcon color="error" />
+                </ListItemIcon>
+                <ListItemText>
+                  <Typography color="error">{i18n._("Delete")}</Typography>
+                </ListItemText>
+              </MenuItem>
+            </Menu>
           </Stack>
         )}
       </Stack>
