@@ -327,7 +327,10 @@ export const DailyQuestionBadge = () => {
                     }}
                   >
                     <IconTextList
-                      listItems={todaysQuestion.hints.map((h) => ({ title: h, icon: Lightbulb }))}
+                      listItems={todaysQuestion.hints.map((hint) => ({
+                        title: hint,
+                        iconName: "lightbulb",
+                      }))}
                     />
                     {translation.translateModal}
                     <Stack

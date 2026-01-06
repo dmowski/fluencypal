@@ -4,7 +4,7 @@ import { DynamicIcon, IconName } from "lucide-react/dynamic";
 
 export interface ListItem {
   title: string;
-  iconName?: IconName;
+  iconName: IconName;
   href?: string;
 }
 

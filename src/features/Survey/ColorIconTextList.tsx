@@ -4,7 +4,7 @@ import { DynamicIcon, IconName } from "lucide-react/dynamic";
 
 export interface ColorIconTextListItem {
   title: string;
-  iconName?: IconName;
+  iconName: IconName;
   href?: string;
   iconColor?: string;
 }
@@ -45,14 +45,12 @@ export const ColorIconTextList = ({
               gridTemplateColumns: `${iconSizeValue} 1fr`,
             }}
           >
-            {item.iconName && (
-              <DynamicIcon
-                name={item.iconName}
-                size={iconSizeValue}
-                style={iconStyle}
-                color={item.iconColor}
-              />
-            )}
+            <DynamicIcon
+              name={item.iconName}
+              size={iconSizeValue}
+              style={iconStyle}
+              color={item.iconColor}
+            />
             <Typography
               variant="body1"
               target={item.href ? "_blank" : undefined}
