@@ -29,18 +29,9 @@ export const ChartSection = () => {
     chat.markAsRead();
   }, [chat.messages.length]);
 
-  const [activeMessageIdComment, setActiveMessageIdComment] = useState("");
   const messageToComment = useMemo(() => {
-    return chat.messages.find((msg) => msg.id === activeMessageIdComment);
-  }, [activeMessageIdComment, chat.messages]);
-
-  const repliesMessages = useMemo(() => {
-    if (!activeMessageId) {
-      return [];
-    }
-
-    return chat.messages.filter((msg) => msg.parentMessageId === activeMessageId);
-  }, [activeMessageId, chat.messages]);
+    return chat.messages.find((msg) => msg.id === chat.activeCommentId);
+  }, [chat.activeCommentId, chat.messages]);
 
   const [isNewPostModalOpen, setIsNewPostModalOpen] = useState(false);
 
@@ -54,7 +45,7 @@ export const ChartSection = () => {
       {(messageToComment || isNewPostModalOpen) && (
         <CustomModal
           onClose={() => {
-            setActiveMessageIdComment("");
+            chat.onCommentClick("");
             setIsNewPostModalOpen(false);
           }}
           isOpen={true}
@@ -124,11 +115,7 @@ export const ChartSection = () => {
                 <Message isContentWide key={messageToComment.id} message={messageToComment} />
               )}
 
-              <Stack
-                sx={{
-                  borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-                }}
-              >
+              <Stack>
                 <SubmitForm
                   onSubmit={(messageContent) =>
                     chat.addMessage({

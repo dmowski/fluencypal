@@ -153,22 +153,6 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
               {recorder.visualizerComponent}
             </Stack>
 
-            {recorder.transcription && needMoreText && (
-              <>
-                <Typography
-                  sx={{
-                    width: "100%",
-                    paddingLeft: "10px",
-                    opacity: 0.8,
-                  }}
-                  variant="caption"
-                  color={"#ff8e86ff"}
-                >
-                  {i18n._(`Please record a longer message (at least a few words).`)}
-                </Typography>
-              </>
-            )}
-
             {!recorder.isRecording && !recorder.transcription && (
               <Stack
                 sx={{
@@ -200,6 +184,21 @@ export function SubmitForm({ onSubmit, isLoading, recordMessageTitle }: SubmitFo
             )}
           </Stack>
         </Stack>
+        {recorder.transcription && needMoreText && (
+          <>
+            <Typography
+              sx={{
+                width: "100%",
+                paddingLeft: "10px",
+                opacity: 0.8,
+              }}
+              variant="caption"
+              color={"#ff8e86ff"}
+            >
+              {i18n._(`Please record a longer message (at least a few words).`)}
+            </Typography>
+          </>
+        )}
       </Stack>
     </Stack>
   );
