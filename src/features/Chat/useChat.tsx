@@ -30,8 +30,8 @@ interface ChatContextType {
 
   loading: boolean;
 
-  onCommentClick: (messageId: string) => void;
-  activeCommentId: string;
+  setActiveCommentMessageId: (messageId: string) => void;
+  activeCommentMessageId: string;
 
   activeMessageId: string;
   onOpen: (messageId: string) => void;
@@ -47,7 +47,7 @@ function useProvideChat(): ChatContextType {
   const messagesRef = db.collections.usersChatMessages();
   const [messagesData, loading] = useCollectionData(messagesRef);
 
-  const [activeMessageIdComment, setActiveMessageIdComment] = useState("");
+  const [activeCommentMessageId, setActiveCommentMessageId] = useState("");
   const [activeMessageId, setActiveMessageId] = useUrlState("post", "", false);
 
   const { messages, topLevelMessages, commentsInfo } = useMemo<{
@@ -212,8 +212,8 @@ function useProvideChat(): ChatContextType {
     deleteMessage,
     loading,
 
-    activeCommentId: activeMessageIdComment,
-    onCommentClick: (messageId: string) => setActiveMessageIdComment(messageId),
+    activeCommentMessageId,
+    setActiveCommentMessageId,
 
     activeMessageId,
     onOpen: (messageId: string) => setActiveMessageId(messageId),

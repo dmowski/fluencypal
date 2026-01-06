@@ -30,8 +30,8 @@ export const ChartSection = () => {
   }, [chat.messages.length]);
 
   const messageToComment = useMemo(() => {
-    return chat.messages.find((msg) => msg.id === chat.activeCommentId);
-  }, [chat.activeCommentId, chat.messages]);
+    return chat.messages.find((msg) => msg.id === chat.activeCommentMessageId);
+  }, [chat.activeCommentMessageId, chat.messages]);
 
   const [isNewPostModalOpen, setIsNewPostModalOpen] = useState(false);
 
@@ -45,7 +45,7 @@ export const ChartSection = () => {
       {(messageToComment || isNewPostModalOpen) && (
         <CustomModal
           onClose={() => {
-            chat.onCommentClick("");
+            chat.setActiveCommentMessageId("");
             setIsNewPostModalOpen(false);
           }}
           isOpen={true}

@@ -335,7 +335,7 @@ export function Message({
 
           <MessageActionButton
             isActive={false}
-            onClick={() => chat.onCommentClick(message.id)}
+            onClick={() => chat.setActiveCommentMessageId(message.id)}
             label={i18n._("Comment")}
             count={commentsCount}
             iconName={"message-circle"}
