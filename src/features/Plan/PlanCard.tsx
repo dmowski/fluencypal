@@ -211,6 +211,7 @@ export const PlanCard = ({
                   justifyContent: "center",
                   margin: "5px 0px 15px 0px",
                   gap: "10px",
+                  marginTop: allowWebCam !== false ? "5px" : "20px",
                 }}
               >
                 <Button
