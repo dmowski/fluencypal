@@ -10,15 +10,12 @@ import { RulesProvider } from "@/features/Rules/useRules";
 import { TextAiProvider } from "@/features/Ai/useTextAi";
 import { AiUserInfoProvider } from "@/features/Ai/useAiUserInfo";
 import { AudioProvider } from "@/features/Audio/useAudio";
-
 import { WebCamProvider } from "@/features/webCam/useWebCam";
 import { CorrectionsProvider } from "@/features/Corrections/useCorrections";
-
 import { JSX, Suspense } from "react";
 import { NotificationsProvider } from "@toolpad/core/useNotifications";
 import { PlanProvider } from "@/features/Plan/usePlan";
 import { GameProvider } from "@/features/Game/useGame";
-import { PayWallProvider } from "@/features/PayWall/usePayWall";
 import { TelegramProvider } from "./telegramProvider";
 import { TgNavigationProvider } from "@/features/Telegram/useTgNavigation";
 import { AppNavigationProvider } from "@/features/Navigation/useAppNavigation";
