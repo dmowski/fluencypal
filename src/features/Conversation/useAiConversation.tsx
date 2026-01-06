@@ -363,7 +363,7 @@ VISUAL_CONTEXT (latest): ${description}
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (conversation.length === 0) return;
-      history.saveConversation(conversationId, conversation);
+      history.saveConversation(conversationId, conversation, messageOrder);
     }, 2000);
 
     return () => {

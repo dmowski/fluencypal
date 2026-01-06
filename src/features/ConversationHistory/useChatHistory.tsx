@@ -4,7 +4,12 @@ import { getDocs, limit, orderBy, query, setDoc, where } from "firebase/firestor
 import { useAuth } from "../Auth/useAuth";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { db } from "../Firebase/firebaseDb";
-import { ChatMessage, Conversation, ConversationType } from "@/common/conversation";
+import {
+  ChatMessage,
+  Conversation,
+  ConversationType,
+  MessagesOrderMap,
+} from "@/common/conversation";
 import { useSettings } from "../Settings/useSettings";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
@@ -15,7 +20,11 @@ interface ChatHistoryContextType {
     mode: ConversationType;
   }) => Promise<void>;
   setMessages: (conversationId: string, messages: ChatMessage[]) => Promise<void>;
-  saveConversation: (conversationId: string, messages: ChatMessage[]) => Promise<void>;
+  saveConversation: (
+    conversationId: string,
+    messages: ChatMessage[],
+    messageOrder: MessagesOrderMap
+  ) => Promise<void>;
   getLastConversations: (count: number) => Promise<Conversation[]>;
   conversations: Conversation[];
   loading: boolean;
@@ -96,7 +105,11 @@ function useProvideChatHistory(): ChatHistoryContextType {
     await setDoc(conversationDoc, conversationInfo);
   };
 
-  const saveConversation = async (conversationId: string, messages: ChatMessage[]) => {
+  const saveConversation = async (
+    conversationId: string,
+    messages: ChatMessage[],
+    messageOrder: MessagesOrderMap
+  ) => {
     const conversationDoc = getConversationDoc(conversationId);
     await setDoc(
       conversationDoc,
@@ -105,6 +118,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
         messagesCount: messages.length,
         updatedAtIso: new Date().toISOString(),
         updatedAt: Date.now(),
+        messageOrder,
       },
       { merge: true }
     );
