@@ -176,7 +176,7 @@ export const ProcessUserInput = ({
               <Typography
                 variant="body2"
                 sx={{
-                  opacity: 0.9,
+                  opacity: 0.87,
                 }}
               >
                 {description}
@@ -216,7 +216,7 @@ export const ProcessUserInput = ({
                   fontWeight: 400,
                   fontSize: "1.1rem",
                   paddingBottom: "3px",
-                  opacity: isTranscribing ? 0.7 : 1,
+                  opacity: isTranscribing ? 0.7 : 0.9,
                 }}
               >
                 <StringDiff
@@ -281,7 +281,7 @@ export const ProcessUserInput = ({
                     fontWeight: 400,
                     fontSize: "1.1rem",
                     paddingBottom: "3px",
-                    opacity: isTranscribing || isAnalyzingResponse ? 0.7 : 1,
+                    opacity: isTranscribing || isAnalyzingResponse ? 0.7 : 0.9,
                   }}
                 >
                   <StringDiff
