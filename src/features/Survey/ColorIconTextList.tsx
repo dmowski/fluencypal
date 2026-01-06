@@ -33,15 +33,16 @@ export const ColorIconTextList = ({
           opacity: 1,
         };
 
-        const iconSizeValue = iconSize || 18;
+        const iconSizeValue = iconSize || "18px";
         return (
           <Stack
             key={index}
             sx={{
-              flexDirection: "row",
               gap: "15px",
               alignItems: "center",
               width: "100%",
+              display: "grid",
+              gridTemplateColumns: `${iconSizeValue} 1fr`,
             }}
           >
             {item.iconName && (
