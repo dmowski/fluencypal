@@ -13,7 +13,6 @@ import { useSettings } from "../Settings/useSettings";
 import { AppMode } from "@/common/user";
 import { useChat } from "../Chat/useChat";
 import { Avatar } from "../Game/Avatar";
-import { GlobalModals } from "../Modal/GlobalModals";
 
 export interface IconProps {
   color?: string;
@@ -120,8 +119,6 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
         },
       }}
     >
-      <GlobalModals />
-
       <Stack sx={{ width: "100%", maxWidth: "700px", padding: "0 10px" }}>
         <Stack
           sx={{

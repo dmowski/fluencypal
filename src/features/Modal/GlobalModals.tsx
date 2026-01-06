@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo } from "react";
 import { useGame } from "../Game/useGame";
 import { UserProfileModal } from "../Game/UserProfileModal";

@@ -6,11 +6,13 @@ export const TopOffset = () => {
   const { topOffset } = useWindowSizes();
 
   return (
-    <Stack
-      sx={{
-        width: "100%",
-        height: topOffset,
-      }}
-    />
+    <>
+      <Stack
+        sx={{
+          width: "100%",
+          height: topOffset,
+        }}
+      />
+    </>
   );
 };
