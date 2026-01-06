@@ -99,58 +99,65 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
           <Stack
             sx={{
               width: "100%",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: "20px",
-              border: "1px solid rgba(255, 255, 255, 0.031)",
-              backgroundColor: "rgba(255, 255, 255, 0.03)",
-              padding: "15px 20px",
-              borderRadius: "16px",
-              boxSizing: "border-box",
-              flexWrap: "wrap",
-              "@media (max-width: 600px)": {
-                padding: "15px",
-                borderBottom: "1px solid rgba(255, 255, 255, 0.031)",
-                borderRadius: 0,
-              },
+              gap: "5px",
             }}
           >
             <Stack
               sx={{
+                width: "100%",
                 flexDirection: "row",
                 alignItems: "center",
-                gap: "15px",
-                width: "max-content",
+                justifyContent: "space-between",
+                gap: "20px",
+                border: "1px solid rgba(255, 255, 255, 0.031)",
+                backgroundColor: "rgba(255, 255, 255, 0.03)",
+                padding: "15px 20px",
+                borderRadius: "16px",
+                boxSizing: "border-box",
+                flexWrap: "wrap",
+                "@media (max-width: 600px)": {
+                  padding: "15px",
+                  borderBottom: "1px solid rgba(255, 255, 255, 0.031)",
+                  borderRadius: 0,
+                },
               }}
             >
-              <GameMyAvatar avatarSize="45px" />
-              <GameMyUsername align={"flex-start"} />
-            </Stack>
-
-            <Stack
-              sx={{
-                alignItems: "center",
-                gap: "5px",
-                width: "max-content",
-              }}
-            >
-              <Button
-                variant={"contained"}
-                startIcon={<Swords />}
-                color="info"
-                onClick={() => {
-                  goFullScreen();
-                  game.playGame();
-                }}
-                disabled={game.loadingQuestions}
+              <Stack
                 sx={{
-                  width: "100%",
-                  padding: "10px 40px",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "15px",
+                  width: "max-content",
                 }}
               >
-                {game.loadingQuestions ? loadingMessage : playMessage}
-              </Button>
+                <GameMyAvatar avatarSize="45px" />
+                <GameMyUsername align={"flex-start"} />
+              </Stack>
+
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  gap: "5px",
+                  width: "max-content",
+                }}
+              >
+                <Button
+                  variant={"contained"}
+                  startIcon={<Swords />}
+                  color="info"
+                  onClick={() => {
+                    goFullScreen();
+                    game.playGame();
+                  }}
+                  disabled={game.loadingQuestions}
+                  sx={{
+                    width: "100%",
+                    padding: "10px 40px",
+                  }}
+                >
+                  {game.loadingQuestions ? loadingMessage : playMessage}
+                </Button>
+              </Stack>
             </Stack>
           </Stack>
 
@@ -169,6 +176,21 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
             >
               <Tabs value={activeTab} onChange={(event, newId) => setActiveTab(newId)}>
                 <Tab
+                  sx={{
+                    padding: "0 10px 0 10px",
+                    minWidth: "unset",
+                  }}
+                  label={
+                    <TabLabel
+                      label={i18n._(`Chat`)}
+                      badgeNumber={chat.messages.length}
+                      badgeHighlight={isUnreadMessages}
+                    />
+                  }
+                  value={"chat"}
+                />
+
+                <Tab
                   label={<TabLabel label={i18n._(`Rating`)} badgeNumber={globalGamers} />}
                   value={"global-rate"}
                   sx={{
@@ -183,20 +205,6 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                     padding: "0 10px 0 10px",
                     minWidth: "unset",
                   }}
-                />
-                <Tab
-                  sx={{
-                    padding: "0 10px 0 10px",
-                    minWidth: "unset",
-                  }}
-                  label={
-                    <TabLabel
-                      label={i18n._(`Chat`)}
-                      badgeNumber={chat.messages.length}
-                      badgeHighlight={isUnreadMessages}
-                    />
-                  }
-                  value={"chat"}
                 />
               </Tabs>
 

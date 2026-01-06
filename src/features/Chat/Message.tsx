@@ -1,7 +1,7 @@
 "use client";
 import { Stack, Typography, TextField, Button, IconButton, CircularProgress } from "@mui/material";
 import { UserChatMessage } from "./type";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import dayjs from "dayjs";
@@ -18,15 +18,26 @@ interface MessageProps {
 
   isContentWide?: boolean;
   isChain?: boolean;
+  isFullContentByDefault?: boolean;
 }
 
-export function Message({ message, isContentWide = false, isChain = false }: MessageProps) {
+export function Message({
+  message,
+  isContentWide = false,
+  isChain = false,
+  isFullContentByDefault = false,
+}: MessageProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(message.content);
   const [isDeleting, setIsDeleting] = useState(false);
   const { i18n } = useLingui();
   const translator = useTranslate();
-  const [isShowFullContent, setIsShowFullContent] = useState(false);
+  const [isShowFullContent, setIsShowFullContent] = useState(isFullContentByDefault);
+
+  useEffect(() => {
+    setIsShowFullContent(isFullContentByDefault);
+  }, [isFullContentByDefault]);
+
   const limitMessages = 190;
   const isLimitedMessage = message.content.length > limitMessages && !isShowFullContent;
 
@@ -237,13 +248,15 @@ export function Message({ message, isContentWide = false, isChain = false }: Mes
           {message.content.length > limitMessages ? (
             <>
               {isLimitedMessage ? message.content.slice(0, limitMessages) + "..." : message.content}
-              <Button
-                size="small"
-                onClick={() => setIsShowFullContent(!isShowFullContent)}
-                sx={{ textTransform: "none", marginLeft: "5px", padding: 0, minWidth: 0 }}
-              >
-                {isShowFullContent ? i18n._("Show less") : i18n._("Show more")}
-              </Button>
+              {!isFullContentByDefault && (
+                <Button
+                  size="small"
+                  onClick={() => setIsShowFullContent(!isShowFullContent)}
+                  sx={{ textTransform: "none", marginLeft: "5px", padding: 0, minWidth: 0 }}
+                >
+                  {isShowFullContent ? i18n._("Show less") : i18n._("Show more")}
+                </Button>
+              )}
             </>
           ) : (
             message.content

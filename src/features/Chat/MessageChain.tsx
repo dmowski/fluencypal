@@ -48,7 +48,12 @@ export function MessageChain({ parentId, topLevel = false, isLast }: MessageChai
       }}
     >
       {rootMessage && (
-        <Message key={rootMessage.id} message={rootMessage} isChain={!!childMessages.length} />
+        <Message
+          key={rootMessage.id}
+          message={rootMessage}
+          isChain={!!childMessages.length}
+          isFullContentByDefault={topLevel}
+        />
       )}
 
       {childMessages.map((message, index, all) => {
