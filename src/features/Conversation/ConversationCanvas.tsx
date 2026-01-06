@@ -51,6 +51,7 @@ import { CameraCanvas } from "./CallMode/CameraCanvas";
 import { ConversationMode } from "@/common/user";
 import { ProcessUserInput } from "./ProcessUserInput";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
+import { ConversationReviewModal } from "./ConversationReviewModal";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -300,115 +301,12 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
         </Popover>
       )}
       {isShowAnalyzeConversationModal && (
-        <>
-          <CustomModal isOpen={true} onClose={() => setIsShowAnalyzeConversationModal(false)}>
-            <Stack
-              sx={{
-                gap: "30px",
-                width: "100dvw",
-                alignItems: "center",
-              }}
-            >
-              <Stack
-                sx={{
-                  maxWidth: "600px",
-                  gap: "30px",
-                  width: "100%",
-                }}
-              >
-                <Stack
-                  sx={{
-                    gap: "10px",
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      paddingBottom: "20px",
-                    }}
-                    align="center"
-                    variant="h5"
-                    component={"h2"}
-                  >
-                    {i18n._("Lesson Review")}
-                  </Typography>
-                  {conversationAnalysisResult ? (
-                    <Stack
-                      sx={{
-                        gap: "15px",
-                        padding: "0 10px",
-                        boxSizing: "border-box",
-                      }}
-                    >
-                      <Markdown>{conversationAnalysisResult}</Markdown>
-                    </Stack>
-                  ) : (
-                    <Stack
-                      sx={{
-                        gap: "15px",
-                        padding: "0 10px",
-                        boxSizing: "border-box",
-                      }}
-                    >
-                      <Stack>
-                        <Typography variant="body1">{i18n._(`Language level:`)}</Typography>
-                        <Typography className="loading-shimmer">
-                          {i18n._(`Analyzing...`)}
-                        </Typography>
-                      </Stack>
-
-                      <Stack>
-                        <Typography variant="h6">{i18n._(`What was great:`)}</Typography>
-                        <Typography className="loading-shimmer">
-                          {i18n._(`Analyzing...`)}
-                        </Typography>
-                      </Stack>
-
-                      <Stack>
-                        <Typography variant="h6">{i18n._(`Areas to improve:`)}</Typography>
-                        <Typography className="loading-shimmer">
-                          {i18n._(`Analyzing...`)}
-                        </Typography>
-                      </Stack>
-                    </Stack>
-                  )}
-                </Stack>
-
-                <Stack
-                  gap="10px"
-                  sx={{
-                    alignItems: "center",
-                    padding: "0 10px",
-                    boxSizing: "border-box",
-                  }}
-                >
-                  <Button
-                    disabled={!conversationAnalysisResult}
-                    onClick={() => {
-                      setIsShowAnalyzeConversationModal(false);
-                      setIsConversationContinueAfterAnalyze(true);
-                    }}
-                    variant="text"
-                  >
-                    {i18n._(`Continue conversation`)}
-                  </Button>
-
-                  <Button
-                    sx={{
-                      width: "100%",
-                    }}
-                    onClick={() => closeConversation()}
-                    variant="contained"
-                    color="info"
-                    size="large"
-                    disabled={!conversationAnalysisResult}
-                  >
-                    {i18n._(`Start new lesson`)}
-                  </Button>
-                </Stack>
-              </Stack>
-            </Stack>
-          </CustomModal>
-        </>
+        <ConversationReviewModal
+          setIsShowAnalyzeConversationModal={setIsShowAnalyzeConversationModal}
+          conversationAnalysisResult={conversationAnalysisResult}
+          closeConversation={closeConversation}
+          setIsConversationContinueAfterAnalyze={setIsConversationContinueAfterAnalyze}
+        />
       )}
     </>
   );

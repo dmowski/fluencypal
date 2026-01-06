@@ -188,7 +188,12 @@ export const PlanCard = ({
                         alignItems: "center",
                       }}
                     >
-                      <Button color="info" variant="contained" onClick={() => setAllowWebCam(true)}>
+                      <Button
+                        color="info"
+                        variant="contained"
+                        onClick={() => setAllowWebCam(true)}
+                        startIcon={<VideocamIcon />}
+                      >
                         {i18n._(`Allow WebCam`)}
                       </Button>
                       <Button variant="text" onClick={() => setAllowWebCam(false)}>
