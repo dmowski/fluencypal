@@ -699,12 +699,12 @@ msgstr "Toutes les interviews"
 msgid "All Scenarios"
 msgstr "Tous les scénarios"
 
-#: src/features/Plan/PlanCard.tsx:192
+#: src/features/Plan/PlanCard.tsx:197
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "Autoriser la Webcam"
 
-#: src/features/Conversation/ProcessUserInput.tsx:153
+#: src/features/Conversation/ProcessUserInput.tsx:159
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Presque correct"
@@ -737,7 +737,7 @@ msgstr ""
 "Le montant est trop élevé. J'apprécie votre soutien, mais gardons-le en "
 "dessous de 400 $"
 
-#: src/features/Conversation/ProcessUserInput.tsx:115
+#: src/features/Conversation/ProcessUserInput.tsx:121
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "Une erreur est survenue lors de l'analyse du message. Veuillez réessayer."
@@ -747,7 +747,7 @@ msgstr "Une erreur est survenue lors de l'analyse du message. Veuillez réessaye
 msgid "Analysis"
 msgstr "Analyse"
 
-#: src/features/Conversation/ConversationCanvas.tsx:615
+#: src/features/Conversation/ConversationCanvas.tsx:512
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analyser"
@@ -757,10 +757,10 @@ msgstr "Analyser"
 msgid "Analyzing your inputs..."
 msgstr "Analyse de vos entrées..."
 
-#: src/features/Conversation/ConversationCanvas.tsx:355
-#: src/features/Conversation/ConversationCanvas.tsx:362
-#: src/features/Conversation/ConversationCanvas.tsx:369
-#: src/features/Conversation/ProcessUserInput.tsx:165
+#: src/features/Conversation/ConversationReviewModal.tsx:72
+#: src/features/Conversation/ConversationReviewModal.tsx:77
+#: src/features/Conversation/ConversationReviewModal.tsx:82
+#: src/features/Conversation/ProcessUserInput.tsx:171
 #: src/features/Conversation/ProcessUserInput.tsx:304
 #: src/features/Conversation/ProcessUserInput.tsx:311
 #. js-lingui-explicit-id
@@ -847,7 +847,12 @@ msgstr ""
 msgid "Are you sure you want to reject this battle?"
 msgstr "Êtes-vous sûr de vouloir rejeter cette bataille ?"
 
-#: src/features/Conversation/ConversationCanvas.tsx:367
+#: src/features/Conversation/useConversationsAnalysis.ts:54
+#. js-lingui-explicit-id
+msgid "Areas to improve"
+msgstr "Des domaines à améliorer"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:76
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
 msgstr "Zones à améliorer:"
@@ -1213,7 +1218,7 @@ msgstr "Test de Prêt pour l'Entretien Backend en C#"
 msgid "Caching Strategies"
 msgstr "Stratégies de mise en cache"
 
-#: src/features/Conversation/ConversationCanvas.tsx:850
+#: src/features/Conversation/ConversationCanvas.tsx:747
 #: src/features/Goal/Quiz/QuizPage2.tsx:314
 #. js-lingui-explicit-id
 msgid "Call mode"
@@ -1258,7 +1263,7 @@ msgstr "Puis-je utiliser FluencyPal gratuitement ?"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1060
+#: src/features/Conversation/ConversationCanvas.tsx:957
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Annuler l'enregistrement"
@@ -1650,13 +1655,13 @@ msgstr "Contacts :"
 #: src/features/Case/data/frontend-senior/quizData.ts:306
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/PayWall/CardValidator.tsx:133
-#: src/features/Plan/PlanCard.tsx:395
+#: src/features/Plan/PlanCard.tsx:401
 #: src/features/Usage/SubscriptionPaymentModal.tsx:594
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Continuer"
 
-#: src/features/Conversation/ConversationCanvas.tsx:392
+#: src/features/Conversation/ConversationReviewModal.tsx:118
 #. js-lingui-explicit-id
 msgid "Continue conversation"
 msgstr "Continuer la conversation"
@@ -2380,7 +2385,7 @@ msgstr "N'oubliez pas d'essayer le mode appel dans la section pratique !"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:727
+#: src/features/Conversation/ConversationCanvas.tsx:624
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:496
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
@@ -2699,7 +2704,7 @@ msgstr ""
 msgid "Error creating plan. Please try again."
 msgstr "Erreur lors de la création du plan. Veuillez réessayer."
 
-#: src/features/Conversation/ConversationCanvas.tsx:566
+#: src/features/Conversation/ConversationCanvas.tsx:463
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Erreur lors de l'analyse du message"
@@ -3124,7 +3129,7 @@ msgstr ""
 msgid "Finalizing decision ..."
 msgstr "Finalisation de la décision ..."
 
-#: src/features/Conversation/ConversationCanvas.tsx:789
+#: src/features/Conversation/ConversationCanvas.tsx:686
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Terminer"
@@ -3761,7 +3766,7 @@ msgstr "Aller à la pratique (Plan gratuit)"
 msgid "Go to the main page"
 msgstr "Aller à la page principale"
 
-#: src/features/Conversation/ConversationCanvas.tsx:970
+#: src/features/Conversation/ConversationCanvas.tsx:867
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
 #: src/features/Dashboard/PlanDashboardCards.tsx:470
@@ -3769,7 +3774,7 @@ msgstr "Aller à la page principale"
 msgid "Goal"
 msgstr "Objectif"
 
-#: src/features/Conversation/ConversationCanvas.tsx:642
+#: src/features/Conversation/ConversationCanvas.tsx:539
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "L'objectif est créé"
@@ -3851,7 +3856,7 @@ msgstr "Corrections de grammaire"
 msgid "Grammar corrections to boost your confidence"
 msgstr "Corrections grammaticales pour renforcer votre confiance"
 
-#: src/features/Conversation/ProcessUserInput.tsx:168
+#: src/features/Conversation/ProcessUserInput.tsx:174
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:418
 #. js-lingui-explicit-id
 msgid "Great!"
@@ -3943,7 +3948,7 @@ msgstr "Santé"
 msgid "Help"
 msgstr "Aide"
 
-#: src/features/Conversation/ConversationCanvas.tsx:872
+#: src/features/Conversation/ConversationCanvas.tsx:769
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Aide avec la réponse"
@@ -5637,7 +5642,7 @@ msgstr ""
 "réalisation clé, et votre intérêt pour l'entreprise. Pratiquez votre "
 "auto-présentation pour que vous sonniez"
 
-#: src/features/Conversation/ConversationCanvas.tsx:828
+#: src/features/Conversation/ConversationCanvas.tsx:725
 #. js-lingui-explicit-id
 msgid "Keyboard mode"
 msgstr "Mode clavier"
@@ -5709,7 +5714,12 @@ msgstr "Ressources d'apprentissage des langues"
 msgid "Language Learning Tips"
 msgstr "Conseils pour l'apprentissage des langues"
 
-#: src/features/Conversation/ConversationCanvas.tsx:353
+#: src/features/Conversation/useConversationsAnalysis.ts:57
+#. js-lingui-explicit-id
+msgid "Language level"
+msgstr "Niveau de langue"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:81
 #. js-lingui-explicit-id
 msgid "Language level:"
 msgstr "Niveau de langue:"
@@ -5835,12 +5845,12 @@ msgstr "Juridique:"
 msgid "Less"
 msgstr "Moins"
 
-#: src/features/Conversation/ConversationCanvas.tsx:332
+#: src/features/Conversation/ConversationReviewModal.tsx:50
 #. js-lingui-explicit-id
 msgid "Lesson Review"
 msgstr "Révision de la Leçon"
 
-#: src/features/Conversation/ConversationCanvas.tsx:652
+#: src/features/Conversation/ConversationCanvas.tsx:549
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "Leçons ajoutées :"
@@ -5925,7 +5935,7 @@ msgstr "Chargement.."
 #: src/features/Chat/SubmitForm.tsx:50
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:240
-#: src/features/Conversation/ConversationCanvas.tsx:946
+#: src/features/Conversation/ConversationCanvas.tsx:843
 #: src/features/Conversation/ConversationPage.tsx:102
 #: src/features/Conversation/ConversationPage.tsx:111
 #: src/features/Conversation/ConversationPage.tsx:131
@@ -6128,7 +6138,7 @@ msgstr "Accès au microphone"
 msgid "Minutes"
 msgstr "Minutes"
 
-#: src/features/Conversation/ConversationCanvas.tsx:946
+#: src/features/Conversation/ConversationCanvas.tsx:843
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Mission accomplie"
@@ -6652,12 +6662,12 @@ msgstr "Ouvrir dans Telegram"
 msgid "Open personal plan"
 msgstr "Ouvrir le plan personnel"
 
-#: src/features/Conversation/ConversationCanvas.tsx:673
+#: src/features/Conversation/ConversationCanvas.tsx:570
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "Plan ouvert"
 
-#: src/features/Conversation/ConversationCanvas.tsx:958
+#: src/features/Conversation/ConversationCanvas.tsx:855
 #: src/features/Game/Battle/BattleCard.tsx:296
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7357,7 +7367,7 @@ msgstr ""
 "simulateur d'entretien de FluencyPal, et entrez dans votre prochain "
 "entretien d'embauche avec confiance."
 
-#: src/features/Conversation/ConversationCanvas.tsx:622
+#: src/features/Conversation/ConversationCanvas.tsx:519
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "Préparation de l'objectif"
@@ -7564,8 +7574,8 @@ msgid "Rating"
 msgstr "Évaluation"
 
 #: src/features/Chat/SubmitForm.tsx:131
-#: src/features/Conversation/ConversationCanvas.tsx:713
-#: src/features/Conversation/ConversationCanvas.tsx:984
+#: src/features/Conversation/ConversationCanvas.tsx:610
+#: src/features/Conversation/ConversationCanvas.tsx:881
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
@@ -7576,7 +7586,7 @@ msgstr "Ré-enregistrer"
 msgid "Re-Record"
 msgstr "Réenregistrer"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1000
+#: src/features/Conversation/ConversationCanvas.tsx:897
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Réécrire"
@@ -7850,7 +7860,7 @@ msgid "Record answer"
 msgstr "Enregistrer la réponse"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
-#: src/features/Conversation/ConversationCanvas.tsx:755
+#: src/features/Conversation/ConversationCanvas.tsx:652
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Enregistrez le Message"
@@ -8177,13 +8187,13 @@ msgstr ""
 "plaintext\n"
 "HTML sémantique\n"
 
-#: src/features/Conversation/ConversationCanvas.tsx:696
+#: src/features/Conversation/ConversationCanvas.tsx:593
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Envoyer"
 
-#: src/features/Plan/PlanCard.tsx:248
+#: src/features/Plan/PlanCard.tsx:254
 #. js-lingui-explicit-id
 msgid "Send 6 messages to complete"
 msgstr "Envoyez 6 messages pour terminer"
@@ -8331,12 +8341,14 @@ msgstr ""
 "exemple:"
 
 #: src/features/Chat/Message.tsx:338
+#: src/features/Conversation/ProcessUserInput.tsx:199
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Afficher moins"
 
 #: src/features/Chat/Message.tsx:338
+#: src/features/Conversation/ProcessUserInput.tsx:199
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -8451,7 +8463,7 @@ msgstr ""
 msgid "Skip"
 msgstr "Passer"
 
-#: src/features/Plan/PlanCard.tsx:195
+#: src/features/Plan/PlanCard.tsx:200
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "Passer pour l'instant"
@@ -8607,7 +8619,7 @@ msgstr "Démarrer"
 msgid "Start a mock interview"
 msgstr "Démarrer une simulation d'entretien"
 
-#: src/features/Plan/PlanCard.tsx:225
+#: src/features/Plan/PlanCard.tsx:231
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "Commencer l'appel"
@@ -8633,7 +8645,7 @@ msgstr "Commencez à apprendre maintenant"
 msgid "Start Monthly Plan"
 msgstr "Démarrer le forfait mensuel"
 
-#: src/features/Conversation/ConversationCanvas.tsx:405
+#: src/features/Conversation/ConversationReviewModal.tsx:104
 #. js-lingui-explicit-id
 msgid "Start new lesson"
 msgstr "Commencer une nouvelle leçon"
@@ -8672,7 +8684,7 @@ msgstr "Commencer la pratique de la parole"
 msgid "Start Test"
 msgstr "Démarrer le test"
 
-#: src/features/Plan/PlanCard.tsx:237
+#: src/features/Plan/PlanCard.tsx:243
 #. js-lingui-explicit-id
 msgid "Start Voice Only"
 msgstr "Démarrer en mode vocal uniquement"
@@ -9420,8 +9432,8 @@ msgstr "Total :"
 msgid "Track Your Fluency Progress"
 msgstr "Suivez vos progrès en fluidité"
 
-#: src/features/Conversation/ProcessUserInput.tsx:223
-#: src/features/Conversation/ProcessUserInput.tsx:224
+#: src/features/Conversation/ProcessUserInput.tsx:245
+#: src/features/Conversation/ProcessUserInput.tsx:246
 #: src/features/Conversation/ProcessUserInput.tsx:302
 #: src/features/Conversation/ProcessUserInput.tsx:309
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
@@ -9712,7 +9724,7 @@ msgstr "Défis de vocabulaire"
 msgid "Voice conversations without delays"
 msgstr "Conversations vocales sans délais"
 
-#: src/features/Conversation/ConversationCanvas.tsx:806
+#: src/features/Conversation/ConversationCanvas.tsx:703
 #. js-lingui-explicit-id
 msgid "Voice record mode"
 msgstr "Mode d'enregistrement vocal"
@@ -10057,10 +10069,15 @@ msgstr "Que signifie une heure ?"
 msgid "What types of frontend interviews can I practice for?"
 msgstr "Quels types d'entretiens de frontend puis-je pratiquer ?"
 
-#: src/features/Conversation/ConversationCanvas.tsx:360
+#: src/features/Conversation/ConversationReviewModal.tsx:71
 #. js-lingui-explicit-id
 msgid "What was great:"
 msgstr "Ce qui était génial :"
+
+#: src/features/Conversation/useConversationsAnalysis.ts:51
+#. js-lingui-explicit-id
+msgid "What went well"
+msgstr "Ce qui s'est bien passé"
 
 #: src/features/Auth/AuthWall.tsx:25
 #: src/features/Auth/InterviewAuthWall.tsx:11
@@ -10669,12 +10686,12 @@ msgstr "Votre partenaire de préparation aux entretiens d'embauche"
 msgid "Your Language Level"
 msgstr "Votre niveau de langue"
 
-#: src/features/Conversation/ProcessUserInput.tsx:201
+#: src/features/Conversation/ProcessUserInput.tsx:223
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Votre Message"
 
-#: src/features/Conversation/ConversationCanvas.tsx:895
+#: src/features/Conversation/ConversationCanvas.tsx:792
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Votre message..."

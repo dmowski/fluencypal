@@ -42,9 +42,9 @@ export const ConversationReviewModal = ({
             <Typography
               sx={{
                 paddingLeft: "10px",
+                fontWeight: 700,
               }}
-              className="decor-text"
-              variant="h3"
+              variant="h4"
               component={"h2"}
             >
               {i18n._("Lesson Review")}

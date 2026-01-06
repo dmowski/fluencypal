@@ -657,12 +657,12 @@ msgstr "所有面试"
 msgid "All Scenarios"
 msgstr "所有场景"
 
-#: src/features/Plan/PlanCard.tsx:192
+#: src/features/Plan/PlanCard.tsx:197
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "允许网络摄像头"
 
-#: src/features/Conversation/ProcessUserInput.tsx:153
+#: src/features/Conversation/ProcessUserInput.tsx:159
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "几乎正确"
@@ -693,7 +693,7 @@ msgstr "购买小时数"
 msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
 msgstr "金额过大。我感谢你的支持，但让我们将其保持在400美元以下"
 
-#: src/features/Conversation/ProcessUserInput.tsx:115
+#: src/features/Conversation/ProcessUserInput.tsx:121
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "消息分析时发生错误。请重试。"
@@ -703,7 +703,7 @@ msgstr "消息分析时发生错误。请重试。"
 msgid "Analysis"
 msgstr "分析"
 
-#: src/features/Conversation/ConversationCanvas.tsx:615
+#: src/features/Conversation/ConversationCanvas.tsx:512
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "分析中"
@@ -713,10 +713,10 @@ msgstr "分析中"
 msgid "Analyzing your inputs..."
 msgstr "正在分析您的输入..."
 
-#: src/features/Conversation/ConversationCanvas.tsx:355
-#: src/features/Conversation/ConversationCanvas.tsx:362
-#: src/features/Conversation/ConversationCanvas.tsx:369
-#: src/features/Conversation/ProcessUserInput.tsx:165
+#: src/features/Conversation/ConversationReviewModal.tsx:72
+#: src/features/Conversation/ConversationReviewModal.tsx:77
+#: src/features/Conversation/ConversationReviewModal.tsx:82
+#: src/features/Conversation/ProcessUserInput.tsx:171
 #: src/features/Conversation/ProcessUserInput.tsx:304
 #: src/features/Conversation/ProcessUserInput.tsx:311
 #. js-lingui-explicit-id
@@ -801,7 +801,12 @@ msgstr "您确定要删除您的目标吗？此操作无法撤销。"
 msgid "Are you sure you want to reject this battle?"
 msgstr "您确定要拒绝这场对决吗？"
 
-#: src/features/Conversation/ConversationCanvas.tsx:367
+#: src/features/Conversation/useConversationsAnalysis.ts:54
+#. js-lingui-explicit-id
+msgid "Areas to improve"
+msgstr "需要改进的领域"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:76
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
 msgstr "需要改进的地方："
@@ -1145,7 +1150,7 @@ msgstr "C# 后端面试准备测试"
 msgid "Caching Strategies"
 msgstr "缓存策略"
 
-#: src/features/Conversation/ConversationCanvas.tsx:850
+#: src/features/Conversation/ConversationCanvas.tsx:747
 #: src/features/Goal/Quiz/QuizPage2.tsx:314
 #. js-lingui-explicit-id
 msgid "Call mode"
@@ -1190,7 +1195,7 @@ msgstr "FluencyPal 可以免费使用吗？"
 msgid "Cancel"
 msgstr "取消"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1060
+#: src/features/Conversation/ConversationCanvas.tsx:957
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "取消录音"
@@ -1552,13 +1557,13 @@ msgstr "联系人："
 #: src/features/Case/data/frontend-senior/quizData.ts:306
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/PayWall/CardValidator.tsx:133
-#: src/features/Plan/PlanCard.tsx:395
+#: src/features/Plan/PlanCard.tsx:401
 #: src/features/Usage/SubscriptionPaymentModal.tsx:594
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "继续"
 
-#: src/features/Conversation/ConversationCanvas.tsx:392
+#: src/features/Conversation/ConversationReviewModal.tsx:118
 #. js-lingui-explicit-id
 msgid "Continue conversation"
 msgstr "继续对话"
@@ -2203,7 +2208,7 @@ msgstr "别忘了在练习部分尝试通话模式！"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:727
+#: src/features/Conversation/ConversationCanvas.tsx:624
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:496
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
@@ -2491,7 +2496,7 @@ msgstr "创建支付会话时出错。请稍后再试。"
 msgid "Error creating plan. Please try again."
 msgstr "创建计划时出错。请重试。"
 
-#: src/features/Conversation/ConversationCanvas.tsx:566
+#: src/features/Conversation/ConversationCanvas.tsx:463
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "分析消息时出错"
@@ -2855,7 +2860,7 @@ msgstr "填写入职测验，以帮助 FluencyPal 了解您的目标和偏好。
 msgid "Finalizing decision ..."
 msgstr "正在做出决定..."
 
-#: src/features/Conversation/ConversationCanvas.tsx:789
+#: src/features/Conversation/ConversationCanvas.tsx:686
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "完成"
@@ -3410,7 +3415,7 @@ msgstr "前往练习（免费计划）"
 msgid "Go to the main page"
 msgstr "去主页"
 
-#: src/features/Conversation/ConversationCanvas.tsx:970
+#: src/features/Conversation/ConversationCanvas.tsx:867
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
 #: src/features/Dashboard/PlanDashboardCards.tsx:470
@@ -3418,7 +3423,7 @@ msgstr "去主页"
 msgid "Goal"
 msgstr "目标"
 
-#: src/features/Conversation/ConversationCanvas.tsx:642
+#: src/features/Conversation/ConversationCanvas.tsx:539
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "目标已创建"
@@ -3489,7 +3494,7 @@ msgstr "语法纠正"
 msgid "Grammar corrections to boost your confidence"
 msgstr "语法纠正以提升您的自信心"
 
-#: src/features/Conversation/ProcessUserInput.tsx:168
+#: src/features/Conversation/ProcessUserInput.tsx:174
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:418
 #. js-lingui-explicit-id
 msgid "Great!"
@@ -3570,7 +3575,7 @@ msgstr "健康"
 msgid "Help"
 msgstr "帮助"
 
-#: src/features/Conversation/ConversationCanvas.tsx:872
+#: src/features/Conversation/ConversationCanvas.tsx:769
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "帮助回答"
@@ -4985,7 +4990,7 @@ msgid ""
 "your interest in the company. Practice your self-introduction so you sound "
 msgstr "保持你的回答的焦点：当前或最后的职位，一个关键的成就，以及你对公司的兴趣。练习你的自我介绍，以便你听起来"
 
-#: src/features/Conversation/ConversationCanvas.tsx:828
+#: src/features/Conversation/ConversationCanvas.tsx:725
 #. js-lingui-explicit-id
 msgid "Keyboard mode"
 msgstr "键盘模式"
@@ -5049,7 +5054,12 @@ msgstr "语言学习资源"
 msgid "Language Learning Tips"
 msgstr "语言学习技巧"
 
-#: src/features/Conversation/ConversationCanvas.tsx:353
+#: src/features/Conversation/useConversationsAnalysis.ts:57
+#. js-lingui-explicit-id
+msgid "Language level"
+msgstr "语言等级"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:81
 #. js-lingui-explicit-id
 msgid "Language level:"
 msgstr "语言水平:"
@@ -5165,12 +5175,12 @@ msgstr "法律："
 msgid "Less"
 msgstr "更少"
 
-#: src/features/Conversation/ConversationCanvas.tsx:332
+#: src/features/Conversation/ConversationReviewModal.tsx:50
 #. js-lingui-explicit-id
 msgid "Lesson Review"
 msgstr "课程回顾"
 
-#: src/features/Conversation/ConversationCanvas.tsx:652
+#: src/features/Conversation/ConversationCanvas.tsx:549
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "已添加的课程："
@@ -5255,7 +5265,7 @@ msgstr "加载中.."
 #: src/features/Chat/SubmitForm.tsx:50
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:240
-#: src/features/Conversation/ConversationCanvas.tsx:946
+#: src/features/Conversation/ConversationCanvas.tsx:843
 #: src/features/Conversation/ConversationPage.tsx:102
 #: src/features/Conversation/ConversationPage.tsx:111
 #: src/features/Conversation/ConversationPage.tsx:131
@@ -5444,7 +5454,7 @@ msgstr "麦克风访问"
 msgid "Minutes"
 msgstr "分钟"
 
-#: src/features/Conversation/ConversationCanvas.tsx:946
+#: src/features/Conversation/ConversationCanvas.tsx:843
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "任务完成"
@@ -5926,12 +5936,12 @@ msgstr "在 Telegram 中打开"
 msgid "Open personal plan"
 msgstr "打开个人计划"
 
-#: src/features/Conversation/ConversationCanvas.tsx:673
+#: src/features/Conversation/ConversationCanvas.tsx:570
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "开放式计划"
 
-#: src/features/Conversation/ConversationCanvas.tsx:958
+#: src/features/Conversation/ConversationCanvas.tsx:855
 #: src/features/Game/Battle/BattleCard.tsx:296
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -6543,7 +6553,7 @@ msgid ""
 "walk into your next job interview with confidence."
 msgstr "准备英语面试需要时间，但它会有回报。使用本文的提示，通过FluencyPal的面试模拟器进行练习，然后带着信心走入你的下一次工作面试。"
 
-#: src/features/Conversation/ConversationCanvas.tsx:622
+#: src/features/Conversation/ConversationCanvas.tsx:519
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "准备目标"
@@ -6746,8 +6756,8 @@ msgid "Rating"
 msgstr "评分"
 
 #: src/features/Chat/SubmitForm.tsx:131
-#: src/features/Conversation/ConversationCanvas.tsx:713
-#: src/features/Conversation/ConversationCanvas.tsx:984
+#: src/features/Conversation/ConversationCanvas.tsx:610
+#: src/features/Conversation/ConversationCanvas.tsx:881
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
@@ -6758,7 +6768,7 @@ msgstr "重新录制"
 msgid "Re-Record"
 msgstr "重新录制"
 
-#: src/features/Conversation/ConversationCanvas.tsx:1000
+#: src/features/Conversation/ConversationCanvas.tsx:897
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "重写"
@@ -7010,7 +7020,7 @@ msgid "Record answer"
 msgstr "记录答案"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:318
-#: src/features/Conversation/ConversationCanvas.tsx:755
+#: src/features/Conversation/ConversationCanvas.tsx:652
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "记录信息"
@@ -7314,13 +7324,13 @@ msgstr "自学开发者希望验证他们的HTML、CSS和JavaScript知识"
 msgid "Semantic HTML"
 msgstr "语义化 HTML"
 
-#: src/features/Conversation/ConversationCanvas.tsx:696
+#: src/features/Conversation/ConversationCanvas.tsx:593
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "发送"
 
-#: src/features/Plan/PlanCard.tsx:248
+#: src/features/Plan/PlanCard.tsx:254
 #. js-lingui-explicit-id
 msgid "Send 6 messages to complete"
 msgstr "发送6条信息以完成"
@@ -7456,12 +7466,14 @@ msgid "Show knowledge of the company and genuine interest. For example:"
 msgstr "展示对公司的了解和真诚的兴趣。例如:"
 
 #: src/features/Chat/Message.tsx:338
+#: src/features/Conversation/ProcessUserInput.tsx:199
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "显示更少"
 
 #: src/features/Chat/Message.tsx:338
+#: src/features/Conversation/ProcessUserInput.tsx:199
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -7568,7 +7580,7 @@ msgstr "绘制一个简单的微服务架构，包含API网关、认证、服务
 msgid "Skip"
 msgstr "跳过"
 
-#: src/features/Plan/PlanCard.tsx:195
+#: src/features/Plan/PlanCard.tsx:200
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "暂时跳过"
@@ -7717,7 +7729,7 @@ msgstr "开始"
 msgid "Start a mock interview"
 msgstr "开始模拟面试"
 
-#: src/features/Plan/PlanCard.tsx:225
+#: src/features/Plan/PlanCard.tsx:231
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "开始通话"
@@ -7743,7 +7755,7 @@ msgstr "立即开始学习"
 msgid "Start Monthly Plan"
 msgstr "开始月度计划"
 
-#: src/features/Conversation/ConversationCanvas.tsx:405
+#: src/features/Conversation/ConversationReviewModal.tsx:104
 #. js-lingui-explicit-id
 msgid "Start new lesson"
 msgstr "开始新课程"
@@ -7780,7 +7792,7 @@ msgstr "开始口语练习"
 msgid "Start Test"
 msgstr "开始测试"
 
-#: src/features/Plan/PlanCard.tsx:237
+#: src/features/Plan/PlanCard.tsx:243
 #. js-lingui-explicit-id
 msgid "Start Voice Only"
 msgstr "开始仅语音"
@@ -8443,8 +8455,8 @@ msgstr "总计："
 msgid "Track Your Fluency Progress"
 msgstr "跟踪您的流利度进度"
 
-#: src/features/Conversation/ProcessUserInput.tsx:223
-#: src/features/Conversation/ProcessUserInput.tsx:224
+#: src/features/Conversation/ProcessUserInput.tsx:245
+#: src/features/Conversation/ProcessUserInput.tsx:246
 #: src/features/Conversation/ProcessUserInput.tsx:302
 #: src/features/Conversation/ProcessUserInput.tsx:309
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
@@ -8722,7 +8734,7 @@ msgstr "词汇挑战"
 msgid "Voice conversations without delays"
 msgstr "语音对话无延迟"
 
-#: src/features/Conversation/ConversationCanvas.tsx:806
+#: src/features/Conversation/ConversationCanvas.tsx:703
 #. js-lingui-explicit-id
 msgid "Voice record mode"
 msgstr "语音录音模式"
@@ -9038,10 +9050,15 @@ msgstr "什么是一小时？"
 msgid "What types of frontend interviews can I practice for?"
 msgstr "我可以练习哪几种前端面试？"
 
-#: src/features/Conversation/ConversationCanvas.tsx:360
+#: src/features/Conversation/ConversationReviewModal.tsx:71
 #. js-lingui-explicit-id
 msgid "What was great:"
 msgstr "什么是伟大的:"
+
+#: src/features/Conversation/useConversationsAnalysis.ts:51
+#. js-lingui-explicit-id
+msgid "What went well"
+msgstr "做得好的地方"
 
 #: src/features/Auth/AuthWall.tsx:25
 #: src/features/Auth/InterviewAuthWall.tsx:11
@@ -9555,12 +9572,12 @@ msgstr "你的工作面试准备伙伴"
 msgid "Your Language Level"
 msgstr "你的语言水平"
 
-#: src/features/Conversation/ProcessUserInput.tsx:201
+#: src/features/Conversation/ProcessUserInput.tsx:223
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "您的消息"
 
-#: src/features/Conversation/ConversationCanvas.tsx:895
+#: src/features/Conversation/ConversationCanvas.tsx:792
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "你的消息..."

@@ -47,14 +47,13 @@ export const useConversationsAnalysis = () => {
       ? `Lesson: ${goalElement.title} - ${goalElement.description} - ${goalElement.details}`
       : "";
 
-    const expectedStructure = `
-#### What was great:
+    const expectedStructure = `#### ${i18n._("What went well")}:
 Example: I liked the way you described your situation related to *** 
 
-#### Areas to improve:
+#### ${i18n._("Areas to improve")}:
 It's better to use *** instead of ***, because ***
 
-#### Language level:
+#### ${i18n._("Language level")}:
 Example: Intermediate
 
 `;
@@ -62,13 +61,12 @@ Example: Intermediate
     const systemMessage = `You are a language teacher/analyzer.
 You are analyzing the conversation between the user and AI.
 The user is learning ${settings.fullLanguageName}.
-Use "${fullNativeLanguage}" language for your analysis.
+Use the "${fullNativeLanguage}" language for analysis.
 The user has the following goal: ${planDescription}.
 The user is using the following lesson: ${goalElementDescription}.
     
-Answer to the user in the following format :
+Answer to the user in the following format:
 ${expectedStructure}`;
-
     try {
       const aiResults = await textAi.generate({
         systemMessage,
