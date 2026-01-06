@@ -99,9 +99,9 @@ export function Message({
   };
 
   const avatarSize = "35px";
-  const contentLeftPadding = `calc(${avatarSize} + 18px)`;
+  const contentLeftPadding = `calc(${avatarSize} + 22px)`;
   const chainLeftPadding = `calc(calc(${avatarSize} / 2) + 14px)`;
-  const chainTop = `calc(${avatarSize} + 25px)`;
+  const chainTop = `calc(${avatarSize} + 26px)`;
   const chainHeight = `calc(100% - ${avatarSize} - 20px)`;
 
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
@@ -134,10 +134,11 @@ export function Message({
   return (
     <Stack
       sx={{
-        padding: "15px",
+        padding: "10px",
         backgroundColor: "rgba(255, 255, 255, 0.01)",
         position: "relative",
         width: "100%",
+        flexDirection: "row",
         zIndex: 1,
         gap: "0px",
         cursor: isEditing ? "default" : "pointer",
@@ -178,104 +179,15 @@ export function Message({
           }}
         />
       )}
+
       <Stack
         sx={{
-          justifyContent: "space-between",
-          flexDirection: "row",
-          flexWrap: "wrap",
+          position: "absolute",
+          top: "15px",
+          left: "15px",
         }}
       >
-        <Stack
-          sx={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "16px",
-            border: "none",
-
-            backgroundColor: "transparent",
-            color: "inherit",
-            cursor: "pointer",
-            userSelect: "text",
-            padding: "2px 10px 0px 2px",
-            borderRadius: "19px",
-            position: "relative",
-            left: "-2px",
-            ":focus": {
-              outline: "none",
-              boxShadow: "0 0 0 2px rgba(41, 179, 229, 0.5)",
-            },
-          }}
-          component={"button"}
-          onClick={() => game.showUserInModal(message.senderId)}
-        >
-          {userAvatarUrl && <Avatar avatarSize={avatarSize} url={userAvatarUrl} />}
-          <Typography
-            variant="body1"
-            sx={{
-              fontWeight: 600,
-              paddingLeft: "1px",
-            }}
-          >
-            {userName}
-          </Typography>
-          <Typography
-            variant="caption"
-            sx={{
-              opacity: 0.6,
-              i: {
-                fontStyle: "normal",
-                opacity: 0.6,
-                paddingLeft: "10px",
-              },
-              span: {},
-            }}
-          >
-            <span>{updatedAgo}</span>
-
-            {message.updatedAtIso !== message.createdAtIso && <i>{i18n._("edited")}</i>}
-          </Typography>
-        </Stack>
-
-        {isOwnMessage && (
-          <Stack sx={{ flexDirection: "row", opacity: 0.7, alignItems: "center", gap: "1px" }}>
-            <IconButton onClick={(e) => setMenuAnchorEl(e.currentTarget)} size="small">
-              <CircleEllipsis
-                size={"20px"}
-                style={{
-                  opacity: 0.7,
-                }}
-              />
-            </IconButton>
-            <Menu
-              anchorEl={menuAnchorEl}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              open={Boolean(menuAnchorEl)}
-              onClose={() => setMenuAnchorEl(null)}
-            >
-              <MenuItem onClick={onEdit}>
-                <ListItemIcon>
-                  <EditIcon />
-                </ListItemIcon>
-                <ListItemText>
-                  <Typography>{i18n._("Edit")}</Typography>
-                </ListItemText>
-              </MenuItem>
-              <Divider />
-              <MenuItem onClick={onDelete}>
-                <ListItemIcon>
-                  <DeleteIcon color="error" />
-                </ListItemIcon>
-                <ListItemText>
-                  <Typography color="error">{i18n._("Delete")}</Typography>
-                </ListItemText>
-              </MenuItem>
-            </Menu>
-          </Stack>
-        )}
+        <Avatar avatarSize={avatarSize} url={userAvatarUrl} />
       </Stack>
 
       {isEditing ? (
@@ -312,76 +224,177 @@ export function Message({
           </Stack>
         </Stack>
       ) : (
-        <Typography
-          sx={{
-            wordBreak: "break-word",
-            whiteSpace: "pre-wrap",
-            width: "100%",
-
-            fontSize: "15px",
-            lineHeight: "21px",
-            color: "rgba(243, 245, 247)",
-            fontWeight: 350,
-
-            paddingLeft: isContentWide ? "0px" : contentLeftPadding,
-          }}
-        >
-          {contentToShow.length > limitMessages && !isShowTranslation ? (
-            <>
-              {isLimitedMessage ? contentToShow.slice(0, limitMessages) + "..." : contentToShow}
-              {!isFullContentByDefault && (
-                <Button
-                  size="small"
-                  onClick={() => setIsShowFullContent(!isShowFullContent)}
-                  sx={{ textTransform: "none", marginLeft: "5px", padding: 0, minWidth: 0 }}
-                >
-                  {isShowFullContent ? i18n._("Show less") : i18n._("Show more")}
-                </Button>
-              )}
-            </>
-          ) : (
-            contentToShow
-          )}
-        </Typography>
-      )}
-
-      {!isEditing && (
         <Stack
           sx={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "8px",
-            paddingTop: "10px",
-            paddingLeft: isContentWide ? "0px" : contentLeftPadding,
+            //border: isContentWide ? "1px solid red" : "1px solid green",
+            width: "100%",
           }}
         >
-          <MessageActionButton
-            isActive={isLikedByMe}
-            onClick={() => chat.toggleLike(message.id, "like")}
-            label={i18n._("Like")}
-            count={chat.messagesLikes[message.id]?.length || 0}
-            iconName={"heart"}
-          />
+          <Stack
+            sx={{
+              width: "100%",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              paddingLeft: contentLeftPadding,
+            }}
+          >
+            <Stack
+              sx={{
+                flexDirection: "row",
+                gap: "16px",
+                alignItems: "flex-end",
+                backgroundColor: "transparent",
+                color: "inherit",
+                border: "none",
+                padding: 0,
+                ":focus": {
+                  outline: "none",
+                  boxShadow: "0 0 0 2px rgba(41, 179, 229, 0.5)",
+                },
+              }}
+              component={"button"}
+              onClick={() => game.showUserInModal(message.senderId)}
+            >
+              <Typography
+                variant="body1"
+                sx={{
+                  fontWeight: 600,
+                }}
+              >
+                {userName}
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.6,
 
-          <MessageActionButton
-            isActive={false}
-            onClick={() => chat.setActiveCommentMessageId(message.id)}
-            label={i18n._("Comment")}
-            count={commentsCount}
-            iconName={"message-circle"}
-          />
+                  i: {
+                    fontStyle: "normal",
+                    opacity: 0.6,
+                    paddingLeft: "10px",
+                  },
+                  span: {},
+                }}
+              >
+                <span>{updatedAgo}</span>
 
-          {translator.isTranslateAvailable && (
+                {message.updatedAtIso !== message.createdAtIso && <i>{i18n._("edited")}</i>}
+              </Typography>
+            </Stack>
+
+            {isOwnMessage && (
+              <Stack sx={{ flexDirection: "row", opacity: 0.7, alignItems: "center", gap: "1px" }}>
+                <IconButton onClick={(e) => setMenuAnchorEl(e.currentTarget)} size="small">
+                  <CircleEllipsis
+                    size={"20px"}
+                    style={{
+                      opacity: 0.7,
+                    }}
+                  />
+                </IconButton>
+                <Menu
+                  anchorEl={menuAnchorEl}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                  }}
+                  keepMounted
+                  open={Boolean(menuAnchorEl)}
+                  onClose={() => setMenuAnchorEl(null)}
+                >
+                  <MenuItem onClick={onEdit}>
+                    <ListItemIcon>
+                      <EditIcon />
+                    </ListItemIcon>
+                    <ListItemText>
+                      <Typography>{i18n._("Edit")}</Typography>
+                    </ListItemText>
+                  </MenuItem>
+                  <Divider />
+                  <MenuItem onClick={onDelete}>
+                    <ListItemIcon>
+                      <DeleteIcon color="error" />
+                    </ListItemIcon>
+                    <ListItemText>
+                      <Typography color="error">{i18n._("Delete")}</Typography>
+                    </ListItemText>
+                  </MenuItem>
+                </Menu>
+              </Stack>
+            )}
+          </Stack>
+
+          <Typography
+            sx={{
+              wordBreak: "break-word",
+              whiteSpace: "pre-wrap",
+              width: "100%",
+
+              fontSize: "15px",
+              lineHeight: "21px",
+              color: "rgba(243, 245, 247)",
+              fontWeight: 350,
+              paddingLeft: isContentWide ? "0px" : contentLeftPadding,
+              paddingTop: isContentWide ? "20px" : 0,
+            }}
+          >
+            {contentToShow.length > limitMessages && !isShowTranslation ? (
+              <>
+                {isLimitedMessage ? contentToShow.slice(0, limitMessages) + "..." : contentToShow}
+                {!isFullContentByDefault && (
+                  <Button
+                    size="small"
+                    onClick={() => setIsShowFullContent(!isShowFullContent)}
+                    sx={{ textTransform: "none", marginLeft: "5px", padding: 0, minWidth: 0 }}
+                  >
+                    {isShowFullContent ? i18n._("Show less") : i18n._("Show more")}
+                  </Button>
+                )}
+              </>
+            ) : (
+              contentToShow
+            )}
+          </Typography>
+
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "8px",
+              paddingTop: "5px",
+              paddingLeft: isContentWide ? "0px" : contentLeftPadding,
+            }}
+          >
             <MessageActionButton
-              isActive={isTranslating}
-              onClick={() => toggleTranslation()}
-              label={i18n._("Translate")}
-              iconName={"languages"}
+              isActive={isLikedByMe}
+              onClick={() => chat.toggleLike(message.id, "like")}
+              label={i18n._("Like")}
+              count={chat.messagesLikes[message.id]?.length || 0}
+              iconName={"heart"}
             />
-          )}
-          {translator.translateModal}
+
+            <MessageActionButton
+              isActive={false}
+              onClick={() => chat.setActiveCommentMessageId(message.id)}
+              label={i18n._("Comment")}
+              count={commentsCount}
+              iconName={"message-circle"}
+            />
+
+            {translator.isTranslateAvailable && (
+              <MessageActionButton
+                isActive={isTranslating}
+                onClick={() => toggleTranslation()}
+                label={i18n._("Translate")}
+                iconName={"languages"}
+              />
+            )}
+            {translator.translateModal}
+          </Stack>
         </Stack>
       )}
+
       <Stack
         component={"button"}
         onClick={() => chat.onOpen(message.id)}

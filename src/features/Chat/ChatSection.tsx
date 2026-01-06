@@ -192,8 +192,8 @@ export const ChartSection = () => {
               borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
               flexDirection: "row",
               alignItems: "center",
-              padding: "20px 20px 20px 20px",
-              gap: "20px",
+              padding: "20px 20px 20px 15px",
+              gap: "15px",
             }}
             onClick={() => setIsNewPostModalOpen(true)}
           >
@@ -210,7 +210,7 @@ export const ChartSection = () => {
                 <Typography
                   sx={{
                     //opacity: 0.6,
-                    fontWeight: "bold",
+                    fontWeight: 600,
                   }}
                 >
                   {game.myUserName}
