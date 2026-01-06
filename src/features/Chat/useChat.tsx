@@ -43,8 +43,8 @@ const UNREAD_MESSAGES_LOCAL_STORAGE_KEY = "chat-last-read-timestamp";
 
 function useProvideChat(): ChatContextType {
   const auth = useAuth();
-  const userId = auth.uid || "anonymous";
-  const messagesRef = db.collections.usersChatMessages();
+  const userId = auth.uid;
+  const messagesRef = db.collections.usersChatMessages(userId);
   const [messagesData, loading] = useCollectionData(messagesRef);
 
   const [activeCommentMessageId, setActiveCommentMessageId] = useState("");
@@ -92,7 +92,7 @@ function useProvideChat(): ChatContextType {
 
   const [unreadMessagesCount, setUnreadMessagesCount] = useState(0);
 
-  const likesRef = db.collections.usersChatLikes();
+  const likesRef = db.collections.usersChatLikes(userId);
   const [likes] = useCollectionData(likesRef);
 
   const messagesLikes = useMemo(() => {
@@ -134,6 +134,7 @@ function useProvideChat(): ChatContextType {
   };
 
   const toggleLike = async (messageId: string, type: ChatLikeType) => {
+    if (!likesRef || !userId) return;
     const likeId = `${userId}-${messageId}`;
     const likeDoc = doc(likesRef, likeId);
     const isExistingLike = likes?.find(
@@ -155,6 +156,7 @@ function useProvideChat(): ChatContextType {
   };
 
   const addMessage = async ({ messageContent, parentMessageId }: AddMessageProps) => {
+    if (!messagesRef || !userId) return;
     const createdAtIso = new Date().toISOString();
     const newMessage: UserChatMessage = {
       id: `${Date.now()}`,
@@ -183,11 +185,13 @@ function useProvideChat(): ChatContextType {
   };
 
   const deleteMessage = async (messageId: string) => {
+    if (!messagesRef || !userId) return;
     const messageDoc = doc(messagesRef, messageId);
     await deleteDoc(messageDoc);
   };
 
   const editMessage = async (messageId: string, newContent: string) => {
+    if (!messagesRef || !userId) return;
     const messageDoc = doc(messagesRef, messageId);
     const updatedMessage: Partial<UserChatMessage> = {
       content: newContent,

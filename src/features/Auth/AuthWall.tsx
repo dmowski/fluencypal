@@ -54,10 +54,6 @@ export const AuthWall = ({
       authSubTitle={singInSubTitle || i18n._("So you can keep your progress")}
       authList={[
         {
-          title: i18n._("Credit card is required"),
-          iconName: "bird",
-        },
-        {
           title: i18n._("No ads, no spam"),
           iconName: "between-horizontal-start",
         },

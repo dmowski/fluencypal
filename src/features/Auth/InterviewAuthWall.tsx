@@ -36,10 +36,6 @@ export const InterviewAuthWall = ({ children, width }: { children: ReactNode; wi
       authSubTitle={i18n._("So you can keep your progress")}
       authList={[
         {
-          title: i18n._("Credit card is required for verification only"),
-          iconName: "bird",
-        },
-        {
           title: i18n._("No ads, no spam"),
           iconName: "between-horizontal-start",
         },

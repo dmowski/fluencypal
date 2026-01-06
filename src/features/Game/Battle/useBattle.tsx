@@ -42,8 +42,8 @@ const BattleContext = createContext<BattleContextType | null>(null);
 
 function useProvideBattle(): BattleContextType {
   const auth = useAuth();
-  const userId = auth.uid || "anonymous";
-  const battlesRef = db.collections.battle();
+  const userId = auth.uid;
+  const battlesRef = db.collections.battle(userId);
   const { questions } = useBattleQuestions();
   const [battles, loading] = useCollectionData(battlesRef);
 
@@ -61,6 +61,7 @@ function useProvideBattle(): BattleContextType {
   }, [battles]);
 
   const addBattle = async (battle: GameBattle) => {
+    if (!battlesRef) return;
     const id = Date.now().toString();
     const newBattle: GameBattle = {
       ...battle,
@@ -70,11 +71,13 @@ function useProvideBattle(): BattleContextType {
   };
 
   const deleteBattle = async (battleId: string) => {
+    if (!battlesRef) return;
     const battleDoc = doc(battlesRef, battleId);
     await deleteDoc(battleDoc);
   };
 
   const editBattle = async (battleId: string, updates: GameBattle) => {
+    if (!battlesRef) return;
     const battleDoc = doc(battlesRef, battleId);
     const updatedBattle: GameBattle = {
       ...updates,
@@ -84,6 +87,7 @@ function useProvideBattle(): BattleContextType {
   };
 
   const createBattleWithUser = async (opponentUserId: string) => {
+    if (!battlesRef) return;
     const id = Date.now().toString();
     const newBattle: GameBattle = {
       usersIds: [userId, opponentUserId],
