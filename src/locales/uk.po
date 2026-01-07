@@ -3451,12 +3451,31 @@ msgid "frontend system design interview"
 msgstr "інтерв’ю з проектування систем фронтенду"
 
 #: src/features/Landing/Price/PricePage.tsx:300
+#: src/features/Settings/MyProfile.tsx:75
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/SubscriptionPaymentModal.tsx:664
 #: src/features/Usage/SubscriptionPaymentModal.tsx:712
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "Повний доступ"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
+#. js-lingui-explicit-id
+msgid "Full Access for 1 day"
+msgstr ""
+"\n"
+"Повний доступ на 1 день\n"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+msgid "Full Access for 1 month"
+msgstr "Повний доступ на 1 місяць"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
+#. js-lingui-explicit-id
+msgid "Full Access for 1 week"
+msgstr "Повний доступ на 1 тиждень"
 
 #: src/features/Usage/FeatureBlocker.tsx:114
 #. js-lingui-explicit-id
@@ -5891,15 +5910,15 @@ msgstr ""
 msgid "Malay Learning Plan"
 msgstr "План вивчення малайської"
 
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+msgid "Manage your full access settings"
+msgstr "Керуйте налаштуваннями повного доступу"
+
 #: src/features/Settings/MyProfile.tsx:159
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Керуйте налаштуваннями свого профілю та перевіряйте свій прогрес"
-
-#: src/features/Settings/MyProfile.tsx:76
-#. js-lingui-explicit-id
-msgid "Manage your subscription settings"
-msgstr "Керуйте параметрами підписки"
 
 #: src/features/Case/data/frontend-junior/demoSnippetSection.ts:23
 #. js-lingui-explicit-id
@@ -8774,31 +8793,10 @@ msgstr "Надіслати відповідь"
 msgid "Submit Answers"
 msgstr "Надіслати відповіді"
 
-#: src/features/Settings/MyProfile.tsx:75
-#. js-lingui-explicit-id
-msgid "Subscription"
-msgstr "Підписка"
-
 #: src/features/Header/PaymentHistoryModal.tsx:24
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "Підписка (1 місяць)"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:531
-#. js-lingui-explicit-id
-msgid "Subscription for 1 day | Full access"
-msgstr "Підписка на 1 день | Повний доступ"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:443
-#: src/features/Usage/SubscriptionPaymentModal.tsx:528
-#. js-lingui-explicit-id
-msgid "Subscription for 1 month | Full access"
-msgstr "Підписка на 1 місяць | Повний доступ"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:530
-#. js-lingui-explicit-id
-msgid "Subscription for 1 week | Full access"
-msgstr "Підписка на 1 тиждень | Повний доступ"
 
 #: src/features/Usage/PayWall.tsx:65
 #. js-lingui-explicit-id
@@ -10310,11 +10308,12 @@ msgstr ""
 #: src/features/Usage/SubscriptionPaymentModal.tsx:903
 #. js-lingui-explicit-id
 msgid ""
-"You can renew your subscription any time before it expires to avoid\n"
+"You can renew your full access any time before it expires to avoid\n"
 "                          interruption of service."
 msgstr ""
-"Ви можете поновити підписку в будь-який час до її закінчення, щоб уникнути\n"
-"                          переривання обслуговування."
+"Ви можете поновити свій повний доступ у будь-який час до того, як він "
+"закінчиться, щоб уникнути\n"
+"переривання обслуговування."
 
 #: src/features/Game/UserProfileModal.tsx:168
 #. js-lingui-explicit-id
@@ -10511,6 +10510,11 @@ msgstr "Ваша бажана назва посади. Як-от Дизайне�
 msgid "Your experience"
 msgstr "Ваш досвід"
 
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
+#. js-lingui-explicit-id
+msgid "Your full access is active until"
+msgstr "Ваш повний доступ активний до"
+
 #: src/features/Game/Battle/BattleActionModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Your goal is not to be perfect, but to surpass your opponent."
@@ -10569,11 +10573,6 @@ msgstr "Ваші запитання отримали відповіді"
 msgid "Your subscription has been successfully changed."
 msgstr "Вашу підписку успішно змінено."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:677
-#. js-lingui-explicit-id
-msgid "Your subscription is active until"
-msgstr "Ваша підписка активна до"
-
 #: src/features/Auth/AuthWallBasic.tsx:204
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
@@ -10608,6 +10607,46 @@ msgid ""
 msgstr ""
 "— важливо задіяти цю коротку розмову, перш ніж приступати до професійних "
 "тем. Ось деякі корисні англійські фрази для початку інтерв'ю:"
+
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Manage your subscription settings"
+#~ msgstr "Керуйте параметрами підписки"
+
+#: src/features/Settings/MyProfile.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "Subscription"
+#~ msgstr "Підписка"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 day | Full access"
+#~ msgstr "Підписка на 1 день | Повний доступ"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 month | Full access"
+#~ msgstr "Підписка на 1 місяць | Повний доступ"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 week | Full access"
+#~ msgstr "Підписка на 1 тиждень | Повний доступ"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:903
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "You can renew your subscription any time before it expires to avoid\n"
+#~ "                          interruption of service."
+#~ msgstr ""
+#~ "Ви можете поновити підписку в будь-який час до її закінчення, щоб уникнути\n"
+#~ "                          переривання обслуговування."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
+#. js-lingui-explicit-id
+#~ msgid "Your subscription is active until"
+#~ msgstr "Ваша підписка активна до"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:625
 #. js-lingui-explicit-id

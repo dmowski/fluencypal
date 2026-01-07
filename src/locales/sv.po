@@ -3417,12 +3417,29 @@ msgid "frontend system design interview"
 msgstr "frontend system design intervju"
 
 #: src/features/Landing/Price/PricePage.tsx:300
+#: src/features/Settings/MyProfile.tsx:75
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/SubscriptionPaymentModal.tsx:664
 #: src/features/Usage/SubscriptionPaymentModal.tsx:712
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "Fullständig Åtkomst"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
+#. js-lingui-explicit-id
+msgid "Full Access for 1 day"
+msgstr "Full åtkomst i 1 dag"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+msgid "Full Access for 1 month"
+msgstr "Full åtkomst i 1 månad"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
+#. js-lingui-explicit-id
+msgid "Full Access for 1 week"
+msgstr "Full tillgång i 1 vecka"
 
 #: src/features/Usage/FeatureBlocker.tsx:114
 #. js-lingui-explicit-id
@@ -5844,15 +5861,15 @@ msgstr "Se till att tillåta webbkameratillgång i dina webbläsarinställningar
 msgid "Malay Learning Plan"
 msgstr "Malaysiskt Lärplan"
 
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+msgid "Manage your full access settings"
+msgstr "Hantera dina fullständiga åtkomstinställningar"
+
 #: src/features/Settings/MyProfile.tsx:159
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Hantera dina profilinställningar och kontrollera dina framsteg"
-
-#: src/features/Settings/MyProfile.tsx:76
-#. js-lingui-explicit-id
-msgid "Manage your subscription settings"
-msgstr "Hantera dina prenumerationsinställningar"
 
 #: src/features/Case/data/frontend-junior/demoSnippetSection.ts:23
 #. js-lingui-explicit-id
@@ -8698,31 +8715,10 @@ msgstr "Skicka svar"
 msgid "Submit Answers"
 msgstr "Skicka Svar"
 
-#: src/features/Settings/MyProfile.tsx:75
-#. js-lingui-explicit-id
-msgid "Subscription"
-msgstr "Prenumeration"
-
 #: src/features/Header/PaymentHistoryModal.tsx:24
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "Prenumeration (1 månad)"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:531
-#. js-lingui-explicit-id
-msgid "Subscription for 1 day | Full access"
-msgstr "Prenumeration i 1 dag | Fullständig åtkomst"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:443
-#: src/features/Usage/SubscriptionPaymentModal.tsx:528
-#. js-lingui-explicit-id
-msgid "Subscription for 1 month | Full access"
-msgstr "Prenumeration för 1 månad | Full åtkomst"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:530
-#. js-lingui-explicit-id
-msgid "Subscription for 1 week | Full access"
-msgstr "Prenumeration i 1 vecka | Fullständig åtkomst"
 
 #: src/features/Usage/PayWall.tsx:65
 #. js-lingui-explicit-id
@@ -10214,11 +10210,11 @@ msgstr ""
 #: src/features/Usage/SubscriptionPaymentModal.tsx:903
 #. js-lingui-explicit-id
 msgid ""
-"You can renew your subscription any time before it expires to avoid\n"
+"You can renew your full access any time before it expires to avoid\n"
 "                          interruption of service."
 msgstr ""
-"Du kan förnya din prenumeration när som helst innan den löper ut för att "
-"undvika\n"
+"Du kan förnya din fullständiga åtkomst när som helst innan den upphör för "
+"att undvika\n"
 "                          avbrott i tjänsten."
 
 #: src/features/Game/UserProfileModal.tsx:168
@@ -10411,6 +10407,11 @@ msgstr ""
 msgid "Your experience"
 msgstr "Din upplevelse"
 
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
+#. js-lingui-explicit-id
+msgid "Your full access is active until"
+msgstr "Din fullständiga åtkomst är aktiv till"
+
 #: src/features/Game/Battle/BattleActionModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Your goal is not to be perfect, but to surpass your opponent."
@@ -10469,11 +10470,6 @@ msgstr "Dina frågor besvarade"
 msgid "Your subscription has been successfully changed."
 msgstr "Din prenumeration har ändrats framgångsrikt."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:677
-#. js-lingui-explicit-id
-msgid "Your subscription is active until"
-msgstr "Din prenumeration är aktiv tills"
-
 #: src/features/Auth/AuthWallBasic.tsx:204
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
@@ -10509,6 +10505,47 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Manage your subscription settings"
+#~ msgstr "Hantera dina prenumerationsinställningar"
+
+#: src/features/Settings/MyProfile.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "Subscription"
+#~ msgstr "Prenumeration"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 day | Full access"
+#~ msgstr "Prenumeration i 1 dag | Fullständig åtkomst"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 month | Full access"
+#~ msgstr "Prenumeration för 1 månad | Full åtkomst"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 week | Full access"
+#~ msgstr "Prenumeration i 1 vecka | Fullständig åtkomst"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:903
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "You can renew your subscription any time before it expires to avoid\n"
+#~ "                          interruption of service."
+#~ msgstr ""
+#~ "Du kan förnya din prenumeration när som helst innan den löper ut för att "
+#~ "undvika\n"
+#~ "                          avbrott i tjänsten."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
+#. js-lingui-explicit-id
+#~ msgid "Your subscription is active until"
+#~ msgstr "Din prenumeration är aktiv tills"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:625
 #. js-lingui-explicit-id

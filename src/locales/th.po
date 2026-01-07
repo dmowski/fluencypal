@@ -3430,12 +3430,33 @@ msgid "frontend system design interview"
 msgstr "การสัมภาษณ์ออกแบบระบบส่วนหน้าของผู้ใช้"
 
 #: src/features/Landing/Price/PricePage.tsx:300
+#: src/features/Settings/MyProfile.tsx:75
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/SubscriptionPaymentModal.tsx:664
 #: src/features/Usage/SubscriptionPaymentModal.tsx:712
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "เข้าถึงเต็มรูปแบบ"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
+#. js-lingui-explicit-id
+msgid "Full Access for 1 day"
+msgstr ""
+"Full Access for 1 day\n"
+"การเข้าถึงทั้งหมดเป็นเวลา 1 วัน"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+msgid "Full Access for 1 month"
+msgstr ""
+"\n"
+"เข้าถึงแบบเต็มรูปแบบ 1 เดือน\n"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
+#. js-lingui-explicit-id
+msgid "Full Access for 1 week"
+msgstr "เข้าถึงได้เต็มรูปแบบเป็นเวลา 1 สัปดาห์"
 
 #: src/features/Usage/FeatureBlocker.tsx:114
 #. js-lingui-explicit-id
@@ -5864,15 +5885,15 @@ msgstr "อนุญาตให้เข้าถึงเว็บแคมใ
 msgid "Malay Learning Plan"
 msgstr "แผนการเรียนรู้ภาษามาเลย์"
 
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+msgid "Manage your full access settings"
+msgstr "จัดการการตั้งค่าการเข้าถึงเต็มรูปแบบของคุณ"
+
 #: src/features/Settings/MyProfile.tsx:159
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "จัดการการตั้งค่าโปรไฟล์ของคุณและตรวจสอบความก้าวหน้าของคุณ"
-
-#: src/features/Settings/MyProfile.tsx:76
-#. js-lingui-explicit-id
-msgid "Manage your subscription settings"
-msgstr "จัดการการตั้งค่าสมัครของคุณ"
 
 #: src/features/Case/data/frontend-junior/demoSnippetSection.ts:23
 #. js-lingui-explicit-id
@@ -8715,31 +8736,10 @@ msgstr "ส่งคำตอบ"
 msgid "Submit Answers"
 msgstr "ส่งคำตอบ"
 
-#: src/features/Settings/MyProfile.tsx:75
-#. js-lingui-explicit-id
-msgid "Subscription"
-msgstr "การสมัครสมาชิก"
-
 #: src/features/Header/PaymentHistoryModal.tsx:24
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "สมัครสมาชิก (1 เดือน)"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:531
-#. js-lingui-explicit-id
-msgid "Subscription for 1 day | Full access"
-msgstr "สมัครสมาชิก 1 วัน | เข้าถึงทั้งหมด"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:443
-#: src/features/Usage/SubscriptionPaymentModal.tsx:528
-#. js-lingui-explicit-id
-msgid "Subscription for 1 month | Full access"
-msgstr "การสมัครสมาชิก 1 เดือน | การเข้าถึงแบบเต็ม"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:530
-#. js-lingui-explicit-id
-msgid "Subscription for 1 week | Full access"
-msgstr "การสมัครสมาชิก 1 สัปดาห์ | การเข้าถึงทั้งหมด"
 
 #: src/features/Usage/PayWall.tsx:65
 #. js-lingui-explicit-id
@@ -10237,11 +10237,12 @@ msgstr ""
 #: src/features/Usage/SubscriptionPaymentModal.tsx:903
 #. js-lingui-explicit-id
 msgid ""
-"You can renew your subscription any time before it expires to avoid\n"
+"You can renew your full access any time before it expires to avoid\n"
 "                          interruption of service."
 msgstr ""
-"คุณสามารถต่ออายุสมาชิกได้ตลอดเวลา ก่อนที่มันจะหมดอายุ เพื่อหลีกเลี่ยงการ\n"
-"                          ขัดจังหวะการให้บริการ"
+"คุณสามารถต่ออายุการเข้าถึงเต็มรูปแบบของคุณได้ตลอดเวลาก่อนที่จะหมดอายุเพื่อหล"
+"ีกเลี่ยง\n"
+"                          การหยุดชะงักของบริการ"
 
 #: src/features/Game/UserProfileModal.tsx:168
 #. js-lingui-explicit-id
@@ -10436,6 +10437,11 @@ msgstr ""
 msgid "Your experience"
 msgstr "ประสบการณ์ของคุณ"
 
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
+#. js-lingui-explicit-id
+msgid "Your full access is active until"
+msgstr "การเข้าถึงเต็มรูปแบบของคุณจะใช้งานได้ถึง"
+
 #: src/features/Game/Battle/BattleActionModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Your goal is not to be perfect, but to surpass your opponent."
@@ -10494,11 +10500,6 @@ msgstr "คำถามของคุณได้รับการตอบแ
 msgid "Your subscription has been successfully changed."
 msgstr "การสมัครของคุณได้ถูกเปลี่ยนแปลงเรียบร้อยแล้ว"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:677
-#. js-lingui-explicit-id
-msgid "Your subscription is active until"
-msgstr "การสมัครสมาชิกของคุณยังใช้งานได้จนถึง"
-
 #: src/features/Auth/AuthWallBasic.tsx:204
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
@@ -10533,6 +10534,46 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Manage your subscription settings"
+#~ msgstr "จัดการการตั้งค่าสมัครของคุณ"
+
+#: src/features/Settings/MyProfile.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "Subscription"
+#~ msgstr "การสมัครสมาชิก"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 day | Full access"
+#~ msgstr "สมัครสมาชิก 1 วัน | เข้าถึงทั้งหมด"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 month | Full access"
+#~ msgstr "การสมัครสมาชิก 1 เดือน | การเข้าถึงแบบเต็ม"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 week | Full access"
+#~ msgstr "การสมัครสมาชิก 1 สัปดาห์ | การเข้าถึงทั้งหมด"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:903
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "You can renew your subscription any time before it expires to avoid\n"
+#~ "                          interruption of service."
+#~ msgstr ""
+#~ "คุณสามารถต่ออายุสมาชิกได้ตลอดเวลา ก่อนที่มันจะหมดอายุ เพื่อหลีกเลี่ยงการ\n"
+#~ "                          ขัดจังหวะการให้บริการ"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
+#. js-lingui-explicit-id
+#~ msgid "Your subscription is active until"
+#~ msgstr "การสมัครสมาชิกของคุณยังใช้งานได้จนถึง"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:625
 #. js-lingui-explicit-id

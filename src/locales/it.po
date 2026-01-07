@@ -3451,12 +3451,29 @@ msgid "frontend system design interview"
 msgstr "colloquio di progettazione del sistema frontend"
 
 #: src/features/Landing/Price/PricePage.tsx:300
+#: src/features/Settings/MyProfile.tsx:75
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/SubscriptionPaymentModal.tsx:664
 #: src/features/Usage/SubscriptionPaymentModal.tsx:712
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "Accesso completo"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
+#. js-lingui-explicit-id
+msgid "Full Access for 1 day"
+msgstr "Accesso completo per 1 giorno"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+msgid "Full Access for 1 month"
+msgstr "Accesso completo per 1 mese"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
+#. js-lingui-explicit-id
+msgid "Full Access for 1 week"
+msgstr "Accesso completo per 1 settimana"
 
 #: src/features/Usage/FeatureBlocker.tsx:114
 #. js-lingui-explicit-id
@@ -5921,15 +5938,15 @@ msgstr ""
 msgid "Malay Learning Plan"
 msgstr "Piano di Apprendimento del Malese"
 
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+msgid "Manage your full access settings"
+msgstr "Gestisci le impostazioni di accesso completo"
+
 #: src/features/Settings/MyProfile.tsx:159
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Gestisci le impostazioni del tuo profilo e controlla i tuoi progressi"
-
-#: src/features/Settings/MyProfile.tsx:76
-#. js-lingui-explicit-id
-msgid "Manage your subscription settings"
-msgstr "Gestisci le impostazioni del tuo abbonamento"
 
 #: src/features/Case/data/frontend-junior/demoSnippetSection.ts:23
 #. js-lingui-explicit-id
@@ -8809,31 +8826,10 @@ msgstr "Invia risposta"
 msgid "Submit Answers"
 msgstr "Invia risposte"
 
-#: src/features/Settings/MyProfile.tsx:75
-#. js-lingui-explicit-id
-msgid "Subscription"
-msgstr "Abbonamento"
-
 #: src/features/Header/PaymentHistoryModal.tsx:24
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "Abbonamento (1 mese)"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:531
-#. js-lingui-explicit-id
-msgid "Subscription for 1 day | Full access"
-msgstr "Abbonamento per 1 giorno | Accesso completo"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:443
-#: src/features/Usage/SubscriptionPaymentModal.tsx:528
-#. js-lingui-explicit-id
-msgid "Subscription for 1 month | Full access"
-msgstr "Abbonamento per 1 mese | Accesso completo"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:530
-#. js-lingui-explicit-id
-msgid "Subscription for 1 week | Full access"
-msgstr "Abbonamento per 1 settimana | Accesso completo"
 
 #: src/features/Usage/PayWall.tsx:65
 #. js-lingui-explicit-id
@@ -10354,12 +10350,12 @@ msgstr ""
 #: src/features/Usage/SubscriptionPaymentModal.tsx:903
 #. js-lingui-explicit-id
 msgid ""
-"You can renew your subscription any time before it expires to avoid\n"
+"You can renew your full access any time before it expires to avoid\n"
 "                          interruption of service."
 msgstr ""
-"Puoi rinnovare il tuo abbonamento in qualsiasi momento prima della sua "
-"scadenza per evitare\n"
-"                          l'interruzione del servizio."
+"Puoi rinnovare il tuo pieno accesso in qualsiasi momento prima che scada "
+"per evitare\n"
+"                          interruzioni del servizio."
 
 #: src/features/Game/UserProfileModal.tsx:168
 #. js-lingui-explicit-id
@@ -10563,6 +10559,11 @@ msgstr ""
 msgid "Your experience"
 msgstr "La tua esperienza"
 
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
+#. js-lingui-explicit-id
+msgid "Your full access is active until"
+msgstr "Il tuo accesso completo è attivo fino al"
+
 #: src/features/Game/Battle/BattleActionModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Your goal is not to be perfect, but to surpass your opponent."
@@ -10623,11 +10624,6 @@ msgstr "Le tue domande ricevono risposta"
 msgid "Your subscription has been successfully changed."
 msgstr "Il tuo abbonamento è stato modificato con successo."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:677
-#. js-lingui-explicit-id
-msgid "Your subscription is active until"
-msgstr "Il tuo abbonamento è attivo fino al"
-
 #: src/features/Auth/AuthWallBasic.tsx:204
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
@@ -10663,6 +10659,47 @@ msgstr ""
 "— è importante impegnarsi in questa breve conversazione prima di tuffarsi "
 "nei temi professionali. Ecco alcune frasi inglesi utili per iniziare "
 "l'intervista:"
+
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Manage your subscription settings"
+#~ msgstr "Gestisci le impostazioni del tuo abbonamento"
+
+#: src/features/Settings/MyProfile.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "Subscription"
+#~ msgstr "Abbonamento"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 day | Full access"
+#~ msgstr "Abbonamento per 1 giorno | Accesso completo"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 month | Full access"
+#~ msgstr "Abbonamento per 1 mese | Accesso completo"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 week | Full access"
+#~ msgstr "Abbonamento per 1 settimana | Accesso completo"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:903
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "You can renew your subscription any time before it expires to avoid\n"
+#~ "                          interruption of service."
+#~ msgstr ""
+#~ "Puoi rinnovare il tuo abbonamento in qualsiasi momento prima della sua "
+#~ "scadenza per evitare\n"
+#~ "                          l'interruzione del servizio."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
+#. js-lingui-explicit-id
+#~ msgid "Your subscription is active until"
+#~ msgstr "Il tuo abbonamento è attivo fino al"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:625
 #. js-lingui-explicit-id

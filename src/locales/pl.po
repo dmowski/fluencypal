@@ -3462,12 +3462,29 @@ msgid "frontend system design interview"
 msgstr "projektowanie systemu frontendowego - rozmowa kwalifikacyjna"
 
 #: src/features/Landing/Price/PricePage.tsx:300
+#: src/features/Settings/MyProfile.tsx:75
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/SubscriptionPaymentModal.tsx:664
 #: src/features/Usage/SubscriptionPaymentModal.tsx:712
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "Pełny dostęp"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
+#. js-lingui-explicit-id
+msgid "Full Access for 1 day"
+msgstr "Pełny dostęp na 1 dzień"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+msgid "Full Access for 1 month"
+msgstr "Pełny dostęp na 1 miesiąc"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
+#. js-lingui-explicit-id
+msgid "Full Access for 1 week"
+msgstr "Pełen dostęp na 1 tydzień"
 
 #: src/features/Usage/FeatureBlocker.tsx:114
 #. js-lingui-explicit-id
@@ -5920,15 +5937,15 @@ msgstr ""
 msgid "Malay Learning Plan"
 msgstr "Plan Nauki Malajskiego"
 
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+msgid "Manage your full access settings"
+msgstr "Zarządzaj swoimi ustawieniami pełnego dostępu"
+
 #: src/features/Settings/MyProfile.tsx:159
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Zarządzaj ustawieniami swojego profilu i sprawdzaj swoje postępy"
-
-#: src/features/Settings/MyProfile.tsx:76
-#. js-lingui-explicit-id
-msgid "Manage your subscription settings"
-msgstr "Zarządzaj ustawieniami subskrypcji"
 
 #: src/features/Case/data/frontend-junior/demoSnippetSection.ts:23
 #. js-lingui-explicit-id
@@ -8823,31 +8840,10 @@ msgstr "Prześlij odpowiedź"
 msgid "Submit Answers"
 msgstr "Prześlij odpowiedzi"
 
-#: src/features/Settings/MyProfile.tsx:75
-#. js-lingui-explicit-id
-msgid "Subscription"
-msgstr "Subskrypcja"
-
 #: src/features/Header/PaymentHistoryModal.tsx:24
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "Subskrypcja (1 miesiąc)"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:531
-#. js-lingui-explicit-id
-msgid "Subscription for 1 day | Full access"
-msgstr "Subskrypcja na 1 dzień | Pełny dostęp"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:443
-#: src/features/Usage/SubscriptionPaymentModal.tsx:528
-#. js-lingui-explicit-id
-msgid "Subscription for 1 month | Full access"
-msgstr "Subskrypcja na 1 miesiąc | Pełny dostęp"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:530
-#. js-lingui-explicit-id
-msgid "Subscription for 1 week | Full access"
-msgstr "Subskrypcja na 1 tydzień | Pełny dostęp"
 
 #: src/features/Usage/PayWall.tsx:65
 #. js-lingui-explicit-id
@@ -10372,12 +10368,12 @@ msgstr ""
 #: src/features/Usage/SubscriptionPaymentModal.tsx:903
 #. js-lingui-explicit-id
 msgid ""
-"You can renew your subscription any time before it expires to avoid\n"
+"You can renew your full access any time before it expires to avoid\n"
 "                          interruption of service."
 msgstr ""
-"Możesz odnowić swoją subskrypcję w dowolnym momencie przed jej "
-"wygaśnięciem, aby uniknąć\n"
-"                          przerwy w korzystaniu z usługi."
+"Możesz odnowić pełny dostęp w dowolnym momencie przed jego wygaśnięciem, "
+"aby uniknąć\n"
+"                          przerwy w dostępie do usługi."
 
 #: src/features/Game/UserProfileModal.tsx:168
 #. js-lingui-explicit-id
@@ -10576,6 +10572,11 @@ msgstr ""
 msgid "Your experience"
 msgstr "Twoje doświadczenie"
 
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
+#. js-lingui-explicit-id
+msgid "Your full access is active until"
+msgstr "Twój pełny dostęp jest aktywny do"
+
 #: src/features/Game/Battle/BattleActionModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Your goal is not to be perfect, but to surpass your opponent."
@@ -10638,11 +10639,6 @@ msgstr "Twoje pytania zostały odpowiedziane"
 msgid "Your subscription has been successfully changed."
 msgstr "Twoja subskrypcja została pomyślnie zmieniona."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:677
-#. js-lingui-explicit-id
-msgid "Your subscription is active until"
-msgstr "Twoje subskrypcja jest aktywna do"
-
 #: src/features/Auth/AuthWallBasic.tsx:204
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
@@ -10678,6 +10674,47 @@ msgstr ""
 "— ważne jest, aby zaangażować się w tę krótką rozmowę przed poruszeniem "
 "tematów zawodowych. Oto kilka przydatnych angielskich zwrotów, które pomogą "
 "rozpocząć wywiad:"
+
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Manage your subscription settings"
+#~ msgstr "Zarządzaj ustawieniami subskrypcji"
+
+#: src/features/Settings/MyProfile.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "Subscription"
+#~ msgstr "Subskrypcja"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 day | Full access"
+#~ msgstr "Subskrypcja na 1 dzień | Pełny dostęp"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 month | Full access"
+#~ msgstr "Subskrypcja na 1 miesiąc | Pełny dostęp"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 week | Full access"
+#~ msgstr "Subskrypcja na 1 tydzień | Pełny dostęp"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:903
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "You can renew your subscription any time before it expires to avoid\n"
+#~ "                          interruption of service."
+#~ msgstr ""
+#~ "Możesz odnowić swoją subskrypcję w dowolnym momencie przed jej "
+#~ "wygaśnięciem, aby uniknąć\n"
+#~ "                          przerwy w korzystaniu z usługi."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
+#. js-lingui-explicit-id
+#~ msgid "Your subscription is active until"
+#~ msgstr "Twoje subskrypcja jest aktywna do"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:625
 #. js-lingui-explicit-id

@@ -3362,12 +3362,33 @@ msgstr ""
 "مقابلة التصميم الأمامي لنظام\n"
 
 #: src/features/Landing/Price/PricePage.tsx:300
+#: src/features/Settings/MyProfile.tsx:75
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/SubscriptionPaymentModal.tsx:664
 #: src/features/Usage/SubscriptionPaymentModal.tsx:712
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "الوصول الكامل"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
+#. js-lingui-explicit-id
+msgid "Full Access for 1 day"
+msgstr "الوصول الكامل لمدة يوم واحد"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+msgid "Full Access for 1 month"
+msgstr ""
+"plaintext\n"
+"وصول كامل لمدة 1 شهر\n"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
+#. js-lingui-explicit-id
+msgid "Full Access for 1 week"
+msgstr ""
+"\n"
+"الوصول الكامل لمدة أسبوع واحد\n"
 
 #: src/features/Usage/FeatureBlocker.tsx:114
 #. js-lingui-explicit-id
@@ -5730,15 +5751,15 @@ msgstr "تأكد من السماح بالوصول إلى كاميرا الويب
 msgid "Malay Learning Plan"
 msgstr "خطة التعلم للغة الملايوية"
 
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+msgid "Manage your full access settings"
+msgstr "إدارة إعدادات الوصول الكامل الخاصة بك"
+
 #: src/features/Settings/MyProfile.tsx:159
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "إدارة إعدادات ملفك الشخصي وتحقق من تقدمك"
-
-#: src/features/Settings/MyProfile.tsx:76
-#. js-lingui-explicit-id
-msgid "Manage your subscription settings"
-msgstr "إدارة إعدادات الاشتراك الخاصة بك"
 
 #: src/features/Case/data/frontend-junior/demoSnippetSection.ts:23
 #. js-lingui-explicit-id
@@ -8566,33 +8587,10 @@ msgstr "قدم الإجابة"
 msgid "Submit Answers"
 msgstr "إرسال الإجابات"
 
-#: src/features/Settings/MyProfile.tsx:75
-#. js-lingui-explicit-id
-msgid "Subscription"
-msgstr "اشتراك"
-
 #: src/features/Header/PaymentHistoryModal.tsx:24
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "الاشتراك (1 شهر)"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:531
-#. js-lingui-explicit-id
-msgid "Subscription for 1 day | Full access"
-msgstr ""
-"\n"
-"اشتراك لمدة يوم واحد | وصول كامل\n"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:443
-#: src/features/Usage/SubscriptionPaymentModal.tsx:528
-#. js-lingui-explicit-id
-msgid "Subscription for 1 month | Full access"
-msgstr "الاشتراك لمدة شهر | الوصول الكامل"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:530
-#. js-lingui-explicit-id
-msgid "Subscription for 1 week | Full access"
-msgstr "اشتراك لمدة أسبوع | وصول كامل"
 
 #: src/features/Usage/PayWall.tsx:65
 #. js-lingui-explicit-id
@@ -10079,10 +10077,10 @@ msgstr ""
 #: src/features/Usage/SubscriptionPaymentModal.tsx:903
 #. js-lingui-explicit-id
 msgid ""
-"You can renew your subscription any time before it expires to avoid\n"
+"You can renew your full access any time before it expires to avoid\n"
 "                          interruption of service."
 msgstr ""
-"يمكنك تجديد اشتراكك في أي وقت قبل انتهاء صلاحيته لتجنب\n"
+"يمكنك تجديد وصولك الكامل في أي وقت قبل انتهاء صلاحيته لتجنب\n"
 "                          انقطاع الخدمة."
 
 #: src/features/Game/UserProfileModal.tsx:168
@@ -10278,6 +10276,11 @@ msgstr "عنوان الوظيفة المرغوب. مثل مصمم، مساعد �
 msgid "Your experience"
 msgstr "تجربتك"
 
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
+#. js-lingui-explicit-id
+msgid "Your full access is active until"
+msgstr "صلاحيتك الكاملة فعّالة حتى"
+
 #: src/features/Game/Battle/BattleActionModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Your goal is not to be perfect, but to surpass your opponent."
@@ -10336,11 +10339,6 @@ msgstr "أسئلتك تم الإجابة عليها"
 msgid "Your subscription has been successfully changed."
 msgstr "لقد تم تغيير اشتراكك بنجاح."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:677
-#. js-lingui-explicit-id
-msgid "Your subscription is active until"
-msgstr "اشتراكك نشط حتى"
-
 #: src/features/Auth/AuthWallBasic.tsx:204
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
@@ -10375,6 +10373,48 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Manage your subscription settings"
+#~ msgstr "إدارة إعدادات الاشتراك الخاصة بك"
+
+#: src/features/Settings/MyProfile.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "Subscription"
+#~ msgstr "اشتراك"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 day | Full access"
+#~ msgstr ""
+#~ "\n"
+#~ "اشتراك لمدة يوم واحد | وصول كامل\n"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 month | Full access"
+#~ msgstr "الاشتراك لمدة شهر | الوصول الكامل"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
+#. js-lingui-explicit-id
+#~ msgid "Subscription for 1 week | Full access"
+#~ msgstr "اشتراك لمدة أسبوع | وصول كامل"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:903
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "You can renew your subscription any time before it expires to avoid\n"
+#~ "                          interruption of service."
+#~ msgstr ""
+#~ "يمكنك تجديد اشتراكك في أي وقت قبل انتهاء صلاحيته لتجنب\n"
+#~ "                          انقطاع الخدمة."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
+#. js-lingui-explicit-id
+#~ msgid "Your subscription is active until"
+#~ msgstr "اشتراكك نشط حتى"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:625
 #. js-lingui-explicit-id
