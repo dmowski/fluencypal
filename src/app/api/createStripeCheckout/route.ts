@@ -5,7 +5,7 @@ import Stripe from "stripe";
 import { validateAuthToken } from "../config/firebase";
 import { stripeConfig } from "../payment/config";
 import { pricePerHour } from "@/common/ai";
-import { PRICE_PER_MONTH_USD } from "@/common/subscription";
+import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD } from "@/common/subscription";
 
 async function getConversionRate(toCurrency: string): Promise<number> {
   const isToCurrencyIsUsd = toCurrency.toLowerCase() === "usd";
@@ -104,23 +104,32 @@ export async function POST(request: Request) {
       return Response.json(response);
     } else {
       const months = requestData.months;
-      if (months > 4) {
+      const days = requestData.days;
+
+      if (months > 4 || days > 120) {
         const response: StripeCreateCheckoutResponse = {
           sessionUrl: null,
-          error: "Months count is too large",
+          error: "Count is too large",
         };
         return Response.json(response);
       }
 
-      if (months < 0) {
+      if (months < 0 && days < 0) {
         const response: StripeCreateCheckoutResponse = {
           sessionUrl: null,
-          error: "Months count is too small",
+          error: "Count is too small",
         };
         return Response.json(response);
       }
-      const pricePerMonthInCurrency = PRICE_PER_MONTH_USD * rate;
-      const totalStripeMoney = Math.round(pricePerMonthInCurrency * months * 100);
+
+      // Calculate total price
+      const totalMonthStripeMoney = Math.round(PRICE_PER_MONTH_USD * rate * months * 100);
+      const totalDayStripeMoney = Math.round(PRICE_PER_DAY_USD * rate * days * 100);
+      const totalStripeMoney = days ? totalDayStripeMoney : totalMonthStripeMoney;
+
+      const description = days
+        ? `Add ${days} day(s) to your account balance`
+        : `Add ${months} month(s) to your account balance`;
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
@@ -129,8 +138,8 @@ export async function POST(request: Request) {
             price_data: {
               currency: currency.toLowerCase() || "pln",
               product_data: {
-                name: "Subscription",
-                description: `Add ${months} month(s) to your account balance`,
+                name: "Full Access",
+                description: description,
               },
               unit_amount: totalStripeMoney,
             },
@@ -146,6 +155,7 @@ export async function POST(request: Request) {
           immediateServiceConsent: "true",
           amountOfHours: 0,
           amountOfMonths: months,
+          amountOfDays: days,
         },
       });
 

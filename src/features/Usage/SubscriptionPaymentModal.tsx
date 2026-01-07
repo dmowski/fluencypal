@@ -279,6 +279,7 @@ export const SubscriptionPaymentModal = () => {
         {
           userId: auth.uid,
           months: 1,
+          days: 0,
           languageCode: supportedLang,
           currency: currency.currency,
         },
@@ -780,7 +781,7 @@ export const SubscriptionPaymentModal = () => {
                         onClick={showConfirmPage}
                       >
                         {activeTill
-                          ? i18n._(`Active till ${activeTill}`)
+                          ? i18n._(`Active till {activeTill}`, { activeTill: activeTill })
                           : i18n._(`Get Full Access`)}
                       </Button>
                     )}

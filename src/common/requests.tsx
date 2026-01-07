@@ -87,6 +87,7 @@ export interface StripeCreateCheckoutRequestHours extends StripeCreateCheckoutRe
 
 export interface StripeCreateCheckoutSubscription extends StripeCreateCheckoutRequestBase {
   months: number;
+  days: number;
 }
 
 export type StripeCreateCheckoutRequest =

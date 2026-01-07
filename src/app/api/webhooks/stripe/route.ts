@@ -122,7 +122,25 @@ export async function POST(request: Request) {
       const amountPaid = (session.amount_total ?? 0) / 100;
 
       const months = session.metadata?.amountOfMonths;
-      if (months) {
+      const days = session.metadata?.amountOfDays;
+
+      if (days) {
+        const daysCount = parseInt(days, 10);
+        if (daysCount <= 0) throw new Error("Amount of days is not set");
+
+        const tgMessage = `🤑 User ${userEmail} subscribed for ${daysCount} days.`;
+        sentSupportTelegramMessage({ message: tgMessage, userId });
+        await addPaymentLog({
+          amount: amountPaid,
+          userId: userId,
+          paymentId,
+          currency: currency || "pln",
+          amountOfHours: 0,
+          type: "subscription-full-v1",
+          receiptUrl,
+          daysCount: daysCount,
+        });
+      } else if (months) {
         const monthsCount = parseInt(months, 10);
         if (monthsCount <= 0) throw new Error("Amount of months is not set");
 
