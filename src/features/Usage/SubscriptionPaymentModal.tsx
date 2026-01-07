@@ -43,6 +43,7 @@ import { SubscriptionWaiter } from "./SubscriptionWaiter";
 import { CRYPTO_MONTHLY_PRICE_TON } from "../Telegram/cryptoPrice";
 import { useSettings } from "../Settings/useSettings";
 import { StripeCreateCheckoutRequest } from "@/common/requests";
+import { sleep } from "@/libs/sleep";
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
@@ -309,10 +310,28 @@ export const SubscriptionPaymentModal = () => {
         token,
       });
       if (!checkoutInfo.sessionUrl) {
-        console.log("checkoutInfo", checkoutInfo);
         setIsRedirecting(false);
-        notifications.show(i18n._("Error creating payment session"), {
-          severity: "error",
+        notifications.show(
+          i18n._("Error creating payment session. Notification sent to support. Try again later."),
+          {
+            severity: "error",
+          }
+        );
+
+        console.error("checkoutInfo", checkoutInfo);
+
+        await sentPaymentTgMessage({
+          message: "Error during payment process",
+          email: auth?.userInfo?.email || "unknownEmail",
+          token: await auth.getToken(),
+        });
+
+        await sleep(300);
+
+        await sentPaymentTgMessage({
+          message: "Error during payment process" + checkoutInfo.error,
+          email: auth?.userInfo?.email || "unknownEmail",
+          token: await auth.getToken(),
         });
         return;
       } else {
