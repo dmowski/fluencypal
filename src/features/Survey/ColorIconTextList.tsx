@@ -45,12 +45,14 @@ export const ColorIconTextList = ({
               gridTemplateColumns: `${iconSizeValue} 1fr`,
             }}
           >
-            <DynamicIcon
-              name={item.iconName}
-              size={iconSizeValue}
-              style={iconStyle}
-              color={item.iconColor}
-            />
+            <Stack>
+              <DynamicIcon
+                name={item.iconName}
+                size={iconSizeValue}
+                style={iconStyle}
+                color={item.iconColor}
+              />
+            </Stack>
             <Typography
               variant="body1"
               target={item.href ? "_blank" : undefined}
