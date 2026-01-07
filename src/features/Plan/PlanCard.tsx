@@ -313,7 +313,9 @@ export const PlanCard = ({
                 ":hover": {
                   backgroundColor: isActive
                     ? "rgba(13, 220, 196, 0.2)"
-                    : "rgba(13, 220, 196, 0.15)",
+                    : isDone
+                      ? "rgba(13, 220, 196, 0.15)"
+                      : "rgba(13, 220, 196, 0.008)",
                   "@media (max-width: 450px)": {
                     backgroundColor: "rgba(13, 220, 196, 0.1)",
                   },
@@ -337,18 +339,39 @@ export const PlanCard = ({
       >
         <Stack
           sx={{
-            padding: "5px",
+            width: "2px",
+            borderRadius: "0px",
+            "--height": `100%`,
+            top: "50%",
+            left: "49px",
+            height: "var(--height)",
+            backgroundColor:
+              isNextInPlan || isContinueLabel ? "rgba(255, 255, 255, 0)" : "rgba(13, 220, 196, 1)",
+            position: "absolute",
+            display: isLast ? "none" : "block",
+
+            zIndex: 0,
+            "@media (max-width: 500px)": {
+              display: "none",
+            },
+          }}
+        ></Stack>
+
+        <Stack
+          sx={{
+            padding: "4px",
             borderRadius: "100px",
             gridArea: "icon",
 
             boxShadow: isDone
-              ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
+              ? "0px 0px 0 2px rgba(13, 220, 196, 1)"
               : isActive
-                ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
+                ? "0px 0px 0 2px rgba(13, 220, 196, 1)"
                 : "0px 0px 0 1px rgba(255, 255, 255, 0.1)",
             boxSizing: "border-box",
             width: "max-content",
             position: "relative",
+            backgroundColor: "#111",
           }}
         >
           {isDone && (
@@ -358,7 +381,7 @@ export const PlanCard = ({
                 bottom: "0px",
                 right: "0px",
                 backgroundColor: "rgb(9, 108, 96)",
-                boxShadow: "0px 0px 0 2px rgba(13, 220, 196, 0.9)",
+                boxShadow: "0px 0px 0 2px rgba(13, 220, 196, 1)",
                 width: "20px",
                 height: "20px",
                 borderRadius: "100px",
@@ -404,12 +427,14 @@ export const PlanCard = ({
                 sx={{
                   position: "absolute",
                   bottom: "-4px",
+
                   margin: "auto",
                   left: "0px",
                   right: "0px",
                   width: "10px",
                   height: "10px",
                   backgroundColor: "rgb(9, 108, 96)",
+
                   borderRadius: "1px",
                   transform: "rotate(45deg)",
                   zIndex: -2,
@@ -417,27 +442,7 @@ export const PlanCard = ({
               ></Stack>
             </Stack>
           )}
-          <Stack
-            sx={{
-              width: "2px",
-              borderRadius: "0px",
-              "--height": `72px`,
-              bottom: "calc(-2px - var(--height))",
-              height: "var(--height)",
-              backgroundColor:
-                isNextInPlan || isContinueLabel
-                  ? "rgba(255, 255, 255, 0)"
-                  : "rgba(13, 220, 196, 0.9)",
-              position: "absolute",
-              display: isLast ? "none" : "block",
 
-              left: "calc(50% - 1px)",
-              zIndex: 2,
-              "@media (max-width: 500px)": {
-                display: "none",
-              },
-            }}
-          ></Stack>
           <Stack
             sx={{
               boxSizing: "border-box",
@@ -454,6 +459,7 @@ export const PlanCard = ({
               ".avatar": {
                 transition: "all 0.4s ease",
                 opacity: 1,
+
                 img: {
                   width: "50px",
                   height: "50px",
