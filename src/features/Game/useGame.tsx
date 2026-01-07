@@ -33,6 +33,7 @@ import { setDoc } from "firebase/firestore";
 import { avatars } from "./avatars";
 import { generateRandomUsername } from "./userNames";
 import { useUrlState } from "../Url/useUrlParam";
+import { isActiveBrowserTab } from "@/libs/isActiveBrowserTab";
 
 interface GameContextType {
   stats: UsersStat[];
@@ -119,7 +120,7 @@ function useProvideGame(): GameContextType {
   }, [gameRate]);
 
   const updateLastVisit = async () => {
-    if (!userId) return;
+    if (!userId || !isActiveBrowserTab()) return;
     const doc = db.documents.gameLastVisit2;
     setDoc(
       doc,

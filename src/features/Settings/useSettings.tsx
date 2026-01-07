@@ -15,6 +15,7 @@ import { countries } from "@/libs/countries";
 import { AppMode, ConversationMode, InitUserSettings, UserSettings } from "@/common/user";
 import { NativeLangCode } from "@/libs/language/type";
 import { useUserSource } from "../Analytics/useUserSource";
+import { isActiveBrowserTab } from "@/libs/isActiveBrowserTab";
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -117,7 +118,7 @@ function useProvideSettings(): SettingsContextType {
   }, [userId, userSettingsDoc]);
 
   const saveLastLoginTime = async () => {
-    if (!userId || !userSettingsDoc) return;
+    if (!userId || !userSettingsDoc || !isActiveBrowserTab()) return;
     const formattedLastLoginIso = new Date().toISOString();
     await setDoc(userSettingsDoc, { lastLoginAtDateTime: formattedLastLoginIso }, { merge: true });
   };
