@@ -18,4 +18,6 @@ export interface UserChatMessage {
   createdAtIso: string;
   createdAtUtc: number;
   updatedAtIso: string;
+
+  viewsUserIds?: string[];
 }

@@ -62,6 +62,16 @@ export function Message({
   const isOwnMessage = message.senderId === myUserId;
   const chat = useChat();
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (message.id) {
+        chat.viewMessage(message);
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [message.id, auth.uid]);
+
   const commentsCount = chat.commentsInfo[message.id] || 0;
 
   const isLikedByMe = chat.messagesLikes[message.id]?.some((like) => like.userId === myUserId);

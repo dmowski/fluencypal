@@ -25,6 +25,8 @@ interface ChatContextType {
   deleteMessage: (messageId: string) => Promise<void>;
   editMessage: (messageId: string, newContent: string) => Promise<void>;
 
+  viewMessage: (message: UserChatMessage) => Promise<void>;
+
   unreadMessagesCount: number;
   markAsRead: () => void;
 
@@ -200,6 +202,21 @@ function useProvideChat(): ChatContextType {
     await setDoc(messageDoc, updatedMessage, { merge: true });
   };
 
+  const viewMessage = async (message: UserChatMessage) => {
+    if (!userId) return;
+    const isAlreadyViewed = message.viewsUserIds ? message.viewsUserIds?.includes(userId) : false;
+    if (isAlreadyViewed) return;
+    if (!messagesRef) return;
+    const messageToRead = messages.find((msg) => msg.id === message.id);
+    if (!messageToRead) return;
+
+    const updatedViewsUserIds = messageToRead.viewsUserIds
+      ? [...messageToRead.viewsUserIds, userId]
+      : [userId];
+    const messageDoc = doc(messagesRef, message.id);
+    await setDoc(messageDoc, { viewsUserIds: updatedViewsUserIds }, { merge: true });
+  };
+
   return {
     messages,
     topLevelMessages,
@@ -207,6 +224,8 @@ function useProvideChat(): ChatContextType {
     editMessage,
 
     unreadMessagesCount,
+    viewMessage,
+
     markAsRead,
     commentsInfo,
 

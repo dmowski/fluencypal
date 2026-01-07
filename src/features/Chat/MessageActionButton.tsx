@@ -1,6 +1,5 @@
 import { Stack, Typography } from "@mui/material";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
-import { MouseEventHandler } from "react";
 
 export const MessageActionButton = ({
   isActive,
@@ -8,12 +7,14 @@ export const MessageActionButton = ({
   label,
   count,
   iconName,
+  leftShift,
 }: {
   isActive: boolean;
   onClick: (e: HTMLElement) => void;
   label: string;
   count?: number;
   iconName: IconName;
+  leftShift?: string;
 }) => {
   const color = isActive ? "#ff0034" : "inherit";
   return (
@@ -31,7 +32,7 @@ export const MessageActionButton = ({
         cursor: "pointer",
         padding: "6px 10px 6px 12px",
         position: "relative",
-        left: "-12px",
+        left: leftShift || "-12px",
         borderRadius: "28px",
         ":hover": {
           backgroundColor: "rgba(255, 255, 255, 0.1)",

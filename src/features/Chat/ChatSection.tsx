@@ -5,7 +5,7 @@ import { useAuth } from "../Auth/useAuth";
 import { SubmitForm } from "./SubmitForm";
 import { useEffect, useMemo, useState } from "react";
 import { useUrlState } from "../Url/useUrlParam";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Eye } from "lucide-react";
 import { useLingui } from "@lingui/react";
 import { Message } from "./Message";
 import { useGame } from "../Game/useGame";
@@ -163,6 +163,8 @@ export const ChartSection = () => {
               borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
               backgroundColor: "rgba(255, 255, 255, 0.031)",
               gap: "10px",
+              width: "100%",
+              justifyContent: "space-between",
             }}
           >
             <Button
@@ -171,6 +173,25 @@ export const ChartSection = () => {
             >
               {i18n._("Back")}
             </Button>
+
+            <Stack
+              sx={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "10px",
+                paddingRight: "8px",
+                color: "rgba(255, 255, 255, 0.5)",
+              }}
+            >
+              <Typography variant="caption">{activeMessage.viewsUserIds?.length || 0}</Typography>
+              <Eye
+                size={"18px"}
+                style={{
+                  opacity: 0.7,
+                  color: "inherit",
+                }}
+              />
+            </Stack>
           </Stack>
           <MessageChain topLevel parentId={activeMessage.id} />
         </Stack>
