@@ -49,6 +49,13 @@ const getConversationStarterMessagePrompt = (startMessage: string): string => {
 Start the conversation with message like this: "${startMessage}".`;
 };
 
+const teacherRules = `## Rules for speaking teacher
+Do not focus on teaching or asking to repeat after you.
+Don't make user feel like they are being tested.
+You should be friendly and engaging.
+If you feel that the user is struggling, you can propose a new part of the topic.
+Engage in a natural conversation without making it feel like a lesson.`;
+
 interface StartConversationProps {
   mode: ConversationType;
   wordsToLearn?: string[];
@@ -421,33 +428,27 @@ VISUAL_CONTEXT (latest): ${description}
         throw new Error("Goal is not set for goal-talk mode");
       }
 
-      const goalTitle = goal?.goalPlan.title || "";
       const elementTitle = goal?.goalElement.title || "";
       const elementDescription = goal?.goalElement.description || "";
       const elementDetails = goal?.goalElement.details || "";
 
       setIsInitializing(`Starting Role Play...`);
-
-      const goalOfGame =
-        appMode === "learning"
-          ? `Goal of this game is to help student to achieve this goal in learning ${fullLanguageName} language: ${goalTitle}.`
-          : `Goal of this game is to help user to achieve this goal in preparing for job interview: ${goalTitle}.`;
+      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : "";
 
       return {
         ...baseConfig,
         model: aiModal,
         voice: "shimmer",
-        initInstruction: `${aiPersona}
+        initInstruction: `# Overview
+You are an ${fullLanguageName} speaking teacher. Your name is "Shimmer".
 Your role is to play a Role Play game on this topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
-${goalOfGame}
+You win the goal if user will talk with you. Keep in mind to change topic if user stuck at some point
 
-Info about Student: ${userInfo || "No info about student"}.
-${userLevelDescription}
+${teacherRules}
 
-If you feel that the user is struggling, you can propose a new part of the topic or simplify your messages.
-Keep the conversation casual and don't turn it into a lesson or a "repeat after me" exercise.
+${userInfoPrompt}
 
-You should be friendly and engaging.
+${voiceInstructions}
 
 ${voiceInstructions}
 
@@ -481,16 +482,11 @@ ${voiceInstructions}
         model: aiModal,
         voice: "shimmer",
         initInstruction: `# Overview
-You are an English speaking teacher. Your name is "Shimmer".
+You are an ${fullLanguageName} speaking teacher. Your name is "Shimmer".
 Your role is to make user talks on a topic: ${elementTitle}. ${elementDescription}. (${elementDetails}).
 You win the goal if user will talk with you. Keep in mind to change topic if user stuck at some point
 
-## Rules for speaking teacher
-Do not focus on teaching or asking to repeat after you.
-Don't make user feel like they are being tested.
-You should be friendly and engaging.
-If you feel that the user is struggling, you can propose a new part of the topic.
-Engage in a natural conversation without making it feel like a lesson.
+${teacherRules}
 
 ${userInfoPrompt}
 
