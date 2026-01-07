@@ -38,6 +38,17 @@ const levelDescriptionsForAi: Record<string, string> = {
   C1: "User's language level is Advanced. Can understand complex topics and use specialized vocabulary.",
 };
 
+const voiceInstructions = `## AI Voice
+Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking  These pauses should feel natural and reflective, as if you're savoring the moment.`;
+
+const getConversationStarterMessagePrompt = (startMessage: string): string => {
+  if (!startMessage) {
+    return "";
+  }
+  return `## Conversation Start
+Start the conversation with message like this: "${startMessage}".`;
+};
+
 interface StartConversationProps {
   mode: ConversationType;
   wordsToLearn?: string[];
@@ -197,7 +208,7 @@ VISUAL_CONTEXT (latest): ${description}
 
   const aiPersona =
     appMode === "learning"
-      ? `You2 are an ${fullLanguageName} teacher.`
+      ? `You are an ${fullLanguageName} teacher.`
       : `You are an job interview coach.`;
 
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
@@ -403,6 +414,8 @@ VISUAL_CONTEXT (latest): ${description}
   ): Promise<AiRtcConfig> => {
     const baseConfig = await getBaseRtcConfig();
 
+    console.log("mode", mode);
+
     if (mode === "goal-role-play") {
       if (!goal) {
         throw new Error("Goal is not set for goal-talk mode");
@@ -435,9 +448,8 @@ If you feel that the user is struggling, you can propose a new part of the topic
 Keep the conversation casual and don't turn it into a lesson or a "repeat after me" exercise.
 
 You should be friendly and engaging.
-Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking.
-These pauses should feel natural and reflective, as if you're savoring the moment.
-Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
+
+${voiceInstructions}
 
 `,
       };
@@ -460,7 +472,7 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
       firstPotentialBotMessage.current = firstMessage;
       let startFirstMessage = `"${firstMessage}".`;
 
-      let openerInfoPrompt = userInfo ? `Info about Student : ${userInfo}.` : "";
+      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : "";
 
       setIsInitializing(`Starting conversation...`);
 
@@ -468,20 +480,23 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
         ...baseConfig,
         model: aiModal,
         voice: "shimmer",
-        initInstruction: `${aiPersona} Your name is "Shimmer". Your role is to make user talks on a topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
-${openerInfoPrompt}
-Do not teach or explain rules—just talk.
+        initInstruction: `# Overview
+You are an English speaking teacher. Your name is "Shimmer".
+Your role is to make user talks on a topic: ${elementTitle}. ${elementDescription}. (${elementDetails}).
+You win the goal if user will talk with you. Keep in mind to change topic if user stuck at some point
+
+## Rules for speaking teacher
+Do not focus on teaching or asking to repeat after you.
+Don't make user feel like they are being tested.
 You should be friendly and engaging.
-Don't make user feel like they are being tested and feel stupid.
 If you feel that the user is struggling, you can propose a new part of the topic.
 Engage in a natural conversation without making it feel like a lesson.
-${userLevelDescription}
 
-Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
-Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
+${userInfoPrompt}
 
-Start the conversation with message like this: ${startFirstMessage}
-    `,
+${voiceInstructions}
+
+${getConversationStarterMessagePrompt(startFirstMessage)}`,
       };
     }
 
@@ -527,10 +542,9 @@ ${
     : "After the first user response, introduce yourself, your role and ask user to describe their day."
 }
 
-Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
-Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
+${voiceInstructions}
 
-Start the conversation with exactly this message: ${startFirstMessage} Don't add anything else for the first message.
+${getConversationStarterMessagePrompt(startFirstMessage)}
     `,
       };
     }
@@ -627,9 +641,8 @@ For every user message, you must reply with following parts in one response:
 Use only ${fullLanguageName} language.
 Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
   
-Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
-Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
-  
+${voiceInstructions}
+
 Start the conversation with simple phrase: ${firstCorrectionMessage}. You are lead of conversation.
   
 ${userInfo ? `Info about student: ${userInfo}` : ""}

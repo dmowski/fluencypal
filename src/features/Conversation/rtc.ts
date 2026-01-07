@@ -91,7 +91,6 @@ type Modalities = "audio" | "text";
 interface UpdateSessionProps {
   dataChannel: RTCDataChannel;
   initInstruction?: string;
-  //aiTools: AiToolForLlm[];
   voice?: AiVoice;
   languageCode: SupportedLanguage;
   modalities: Modalities[];
@@ -100,20 +99,19 @@ interface UpdateSessionProps {
 const updateSession = async ({
   dataChannel,
   initInstruction,
-  //aiTools,
   voice,
   languageCode,
   modalities,
 }: UpdateSessionProps) => {
   if (!dataChannel) throw Error("Error on updateSession. dataChannel is not available");
 
+  //console.log("Update session initInstruction=");
+  //console.log(initInstruction);
+
   const event = {
     type: "session.update",
     session: {
       instructions: initInstruction,
-      /*
-        tools: aiTools,
-      */
       input_audio_transcription: {
         model: "gpt-4o-mini-transcribe",
         language: languageCode,
@@ -218,7 +216,7 @@ export const initAiRtc = async ({
 }: AiRtcConfig) => {
   const audioId = "audio_for_llm";
   const existingAudio = document.getElementById(audioId) as HTMLAudioElement | null;
-
+  //console.log("model", model);
   let audioEl = existingAudio;
   if (!audioEl) {
     audioEl = document.createElement("audio");
