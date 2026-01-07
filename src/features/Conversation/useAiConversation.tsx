@@ -553,6 +553,7 @@ ${getConversationStarterMessagePrompt(startFirstMessage)}
     }
 
     if (mode === "rule") {
+      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : "";
       return {
         ...baseConfig,
         voice: "ash",
@@ -564,13 +565,15 @@ Start your lesson be introducing the rule with short explanation.
 Then, ask user to use these rules in sentences.
 Craft a lesson that will help user to understand the rule.
 
-${userInfo ? `Student info: ${userInfo}` : ""}
-${userLevelDescription}
+${userInfoPrompt}
+
+${voiceInstructions}
 `,
       };
     }
 
     if (mode === "words") {
+      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : "";
       return {
         ...baseConfig,
         model: aiModal,
@@ -582,8 +585,9 @@ Start your lesson be introducing new words with short explanation.
 Then, ask user to use these words in sentences.
 Go step by step, word by word.
 
-${userInfo ? `Student info: ${userInfo}` : ""}
-${userLevelDescription}
+${userInfoPrompt}
+
+${voiceInstructions}
 
 `,
       };
