@@ -72,8 +72,8 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
     },
 
     {
-      title: i18n._(`Subscription`),
-      subTitle: i18n._(`Manage your subscription settings`),
+      title: i18n._(`Full Access`),
+      subTitle: i18n._(`Manage your full access settings`),
       icon: Wallet,
       onClick: () => {
         usage.togglePaymentModal(true);

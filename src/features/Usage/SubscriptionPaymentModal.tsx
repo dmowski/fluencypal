@@ -440,7 +440,7 @@ export const SubscriptionPaymentModal = () => {
                     opacity: 0.7,
                   }}
                 >
-                  {i18n._(`Subscription for 1 month | Full access`)}
+                  {i18n._(`Full Access for 1 month`)}
                 </Typography>
 
                 <Typography variant="caption">
@@ -525,10 +525,10 @@ export const SubscriptionPaymentModal = () => {
                 }}
               >
                 {duration === "month"
-                  ? i18n._(`Subscription for 1 month | Full access`)
+                  ? i18n._(`Full Access for 1 month`)
                   : duration === "week"
-                    ? i18n._(`Subscription for 1 week | Full access`)
-                    : i18n._(`Subscription for 1 day | Full access`)}
+                    ? i18n._(`Full Access for 1 week`)
+                    : i18n._(`Full Access for 1 day`)}
               </Typography>
             </Stack>
 
@@ -674,7 +674,7 @@ export const SubscriptionPaymentModal = () => {
 
                   {isActiveSubscription && !isTrial && activeTill && (
                     <>
-                      {i18n._(`Your subscription is active until`)} <b>{activeTill || "-"}</b>
+                      {i18n._(`Your full access is active until`)} <b>{activeTill || "-"}</b>
                     </>
                   )}
 
@@ -901,7 +901,7 @@ export const SubscriptionPaymentModal = () => {
                         }}
                       >
                         {i18n._(
-                          `You can renew your subscription any time before it expires to avoid
+                          `You can renew your full access any time before it expires to avoid
                           interruption of service.`
                         )}
                       </Typography>
