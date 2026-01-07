@@ -765,22 +765,57 @@ export const SubscriptionPaymentModal = () => {
                       gap: "5px",
                     }}
                   >
-                    <Button
-                      color="info"
-                      disabled={!!activeTill}
-                      variant="contained"
-                      size="large"
-                      onClick={showConfirmPage}
-                    >
-                      {activeTill ? i18n._(`Active`) : i18n._(`Get Full Access`)}
-                    </Button>
+                    {!activeTill && (
+                      <Button
+                        color="info"
+                        disabled={!!activeTill}
+                        variant="contained"
+                        size="large"
+                        onClick={showConfirmPage}
+                      >
+                        {activeTill
+                          ? i18n._(`Active till ${activeTill}`)
+                          : i18n._(`Get Full Access`)}
+                      </Button>
+                    )}
 
                     {activeTill && (
-                      <>
-                        <Button color="info" variant="text" size="large" onClick={showConfirmPage}>
-                          {i18n._(`Buy More`)}
-                        </Button>
-                      </>
+                      <Typography
+                        variant="body2"
+                        align="left"
+                        sx={{
+                          color: "#00CFFF",
+                        }}
+                      >
+                        {i18n._(`Active till {activeTill}`, { activeTill: activeTill })}
+                      </Typography>
+                    )}
+
+                    {activeTill && (
+                      <Button
+                        color="info"
+                        variant="outlined"
+                        size="large"
+                        onClick={showConfirmPage}
+                      >
+                        {i18n._(`Buy More`)}
+                      </Button>
+                    )}
+
+                    {activeTill && (
+                      <Typography
+                        variant="body2"
+                        align="left"
+                        sx={{
+                          opacity: 0.7,
+                          paddingBottom: "10px",
+                        }}
+                      >
+                        {i18n._(
+                          `You can renew your subscription any time before it expires to avoid
+                          interruption of service.`
+                        )}
+                      </Typography>
                     )}
                   </Stack>
                   <FeatureList appMode={appMode} />
