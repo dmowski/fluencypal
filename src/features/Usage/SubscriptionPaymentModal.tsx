@@ -278,7 +278,7 @@ export const SubscriptionPaymentModal = () => {
     }
   };
 
-  const [duration, setDuration] = useState<"day" | "week" | "month">("week");
+  const [duration, setDuration] = useState<"day" | "week" | "month">("day");
 
   const durationPriceUsd =
     duration === "month"
