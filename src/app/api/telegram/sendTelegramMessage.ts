@@ -23,7 +23,7 @@ const sendTelegramMessage = async (message: string, chatId: string): Promise<voi
     const resultJson = await result.json();
     console.log("After parsing JSON");
 
-    const isDebug = true;
+    const isDebug = false;
     if (isDebug) {
       console.log("Telegram response: ", resultJson);
     }
