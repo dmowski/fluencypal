@@ -105,9 +105,6 @@ const updateSession = async ({
 }: UpdateSessionProps) => {
   if (!dataChannel) throw Error("Error on updateSession. dataChannel is not available");
 
-  console.log("Update session initInstruction=");
-  console.log(initInstruction);
-
   const event = {
     type: "session.update",
     session: {
