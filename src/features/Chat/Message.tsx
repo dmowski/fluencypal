@@ -51,7 +51,7 @@ export function Message({
     setIsShowFullContent(isFullContentByDefault);
   }, [isFullContentByDefault]);
 
-  const limitMessages = 190;
+  const limitMessages = 260;
   const isLimitedMessage = message.content.length > limitMessages && !isShowFullContent;
 
   const auth = useAuth();
