@@ -426,13 +426,13 @@ msgstr "Réalisations"
 msgid "Action plan to improve critical backend skills"
 msgstr "Plan d'action pour améliorer les compétences back-end critiques"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:708
+#: src/features/Usage/SubscriptionPaymentModal.tsx:727
 #. js-lingui-explicit-id
 msgid "Active"
 msgstr "Actif"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:847
-#: src/features/Usage/SubscriptionPaymentModal.tsx:860
+#: src/features/Usage/SubscriptionPaymentModal.tsx:866
+#: src/features/Usage/SubscriptionPaymentModal.tsx:879
 #. js-lingui-explicit-id
 msgid "Active till {activeTill}"
 msgstr "Active jusqu'à {activeTill}"
@@ -586,7 +586,7 @@ msgstr "Retour d'IA sur vos réponses"
 msgid "AI feedback that matters"
 msgstr "Des commentaires d'IA qui comptent"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:665
+#: src/features/Usage/SubscriptionPaymentModal.tsx:684
 #. js-lingui-explicit-id
 msgid "AI hours left in your balance."
 msgstr "Heures IA restantes dans votre solde."
@@ -1159,7 +1159,7 @@ msgid "Buy a subscription"
 msgstr "Achetez un abonnement"
 
 #: src/features/Usage/PaymentModal.tsx:457
-#: src/features/Usage/SubscriptionPaymentModal.tsx:871
+#: src/features/Usage/SubscriptionPaymentModal.tsx:890
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Acheter Plus"
@@ -1561,7 +1561,7 @@ msgstr "Suivi du score de confiance"
 msgid "Confirm Credit Card"
 msgstr "Confirmer la carte de crédit"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:499
+#: src/features/Usage/SubscriptionPaymentModal.tsx:518
 #. js-lingui-explicit-id
 msgid "Confirm payment"
 msgstr "Confirmer le paiement"
@@ -1661,7 +1661,7 @@ msgstr "Contacts :"
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/PayWall/CardValidator.tsx:133
 #: src/features/Plan/PlanCard.tsx:424
-#: src/features/Usage/SubscriptionPaymentModal.tsx:623
+#: src/features/Usage/SubscriptionPaymentModal.tsx:642
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Continuer"
@@ -1974,12 +1974,12 @@ msgstr "Données et transactions"
 msgid "Databases & Transactions"
 msgstr "Bases de données & Transactions"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:769
+#: src/features/Usage/SubscriptionPaymentModal.tsx:788
 #. js-lingui-explicit-id
 msgid "Day"
 msgstr "Jour"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:823
+#: src/features/Usage/SubscriptionPaymentModal.tsx:842
 #. js-lingui-explicit-id
 msgid "day"
 msgstr "jour"
@@ -2699,15 +2699,23 @@ msgstr ""
 msgid "Error analyzing conversation"
 msgstr "Erreur d'analyse de conversation"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:84
-#: src/features/Usage/SubscriptionPaymentModal.tsx:103
-#: src/features/Usage/SubscriptionPaymentModal.tsx:233
-#: src/features/Usage/SubscriptionPaymentModal.tsx:314
+#: src/features/Usage/SubscriptionPaymentModal.tsx:85
+#: src/features/Usage/SubscriptionPaymentModal.tsx:104
+#: src/features/Usage/SubscriptionPaymentModal.tsx:234
 #. js-lingui-explicit-id
 msgid "Error creating payment session"
 msgstr "Erreur lors de la création de la session de paiement"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:240
+#: src/features/Usage/SubscriptionPaymentModal.tsx:315
+#. js-lingui-explicit-id
+msgid ""
+"Error creating payment session. Notification sent to support. Try again "
+"later."
+msgstr ""
+"Erreur lors de la création de la session de paiement. Notification envoyée "
+"au support. Veuillez réessayer plus tard."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:241
 #. js-lingui-explicit-id
 msgid "Error creating payment session. Try again later."
 msgstr ""
@@ -2724,13 +2732,13 @@ msgstr "Erreur lors de la création du plan. Veuillez réessayer."
 msgid "Error during analyzing message"
 msgstr "Erreur lors de l'analyse du message"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:269
-#: src/features/Usage/SubscriptionPaymentModal.tsx:325
+#: src/features/Usage/SubscriptionPaymentModal.tsx:270
+#: src/features/Usage/SubscriptionPaymentModal.tsx:344
 #. js-lingui-explicit-id
 msgid "Error during payment process"
 msgstr "Erreur lors du processus de paiement"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:130
+#: src/features/Usage/SubscriptionPaymentModal.tsx:131
 #. js-lingui-explicit-id
 msgid "Error processing payment"
 msgstr "Erreur lors du traitement du paiement"
@@ -3476,8 +3484,8 @@ msgstr "entretien sur la conception de système frontend"
 
 #: src/features/Landing/Price/PricePage.tsx:300
 #: src/features/Usage/FeatureBlocker.tsx:51
-#: src/features/Usage/SubscriptionPaymentModal.tsx:645
-#: src/features/Usage/SubscriptionPaymentModal.tsx:693
+#: src/features/Usage/SubscriptionPaymentModal.tsx:664
+#: src/features/Usage/SubscriptionPaymentModal.tsx:712
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "Accès Complet"
@@ -3645,7 +3653,7 @@ msgstr ""
 "simule une expérience de shopping réaliste, vous aidant à développer des "
 "compétences de communication essentielles."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:831
+#: src/features/Usage/SubscriptionPaymentModal.tsx:850
 #. js-lingui-explicit-id
 msgid "Get confidence with AI support"
 msgstr "Obtenez de la confiance avec le soutien de l'IA"
@@ -3661,7 +3669,7 @@ msgstr ""
 "abonnements ou frais cachés."
 
 #: src/features/Usage/FeatureBlocker.tsx:97
-#: src/features/Usage/SubscriptionPaymentModal.tsx:848
+#: src/features/Usage/SubscriptionPaymentModal.tsx:867
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "Obtenez un Accès Complet"
@@ -4239,7 +4247,7 @@ msgstr ""
 "avec des composants imbriqués et des données asynchrones ?"
 
 #: src/features/Usage/PaymentModal.tsx:302
-#: src/features/Usage/SubscriptionPaymentModal.tsx:558
+#: src/features/Usage/SubscriptionPaymentModal.tsx:577
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "J'accepte le"
@@ -4616,7 +4624,7 @@ msgid "I know all of them"
 msgstr "Je les connais tous."
 
 #: src/features/Usage/PaymentModal.tsx:284
-#: src/features/Usage/SubscriptionPaymentModal.tsx:540
+#: src/features/Usage/SubscriptionPaymentModal.tsx:559
 #. js-lingui-explicit-id
 msgid ""
 "I want the service to be provided immediately and I acknowledge that as "
@@ -4638,7 +4646,7 @@ msgid "I want to learn..."
 msgstr "Je veux apprendre..."
 
 #: src/features/Usage/PaymentModal.tsx:323
-#: src/features/Usage/SubscriptionPaymentModal.tsx:579
+#: src/features/Usage/SubscriptionPaymentModal.tsx:598
 #. js-lingui-explicit-id
 msgid "I want to receive commercial and marketing content"
 msgstr "Je souhaite recevoir du contenu commercial et marketing"
@@ -5963,7 +5971,7 @@ msgstr "Chargement.."
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:149
 #: src/features/Usage/PaymentModal.tsx:498
-#: src/features/Usage/SubscriptionPaymentModal.tsx:158
+#: src/features/Usage/SubscriptionPaymentModal.tsx:159
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Chargement..."
@@ -6204,18 +6212,18 @@ msgstr "Entrevues simulées"
 msgid "modern literature"
 msgstr "littérature moderne"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:783
-#. js-lingui-explicit-id
-msgid "Month"
-msgstr "Mois"
-
 #: src/features/Landing/Price/PricePage.tsx:259
 #: src/features/Landing/Price/PricePage.tsx:330
-#: src/features/Usage/SubscriptionPaymentModal.tsx:747
-#: src/features/Usage/SubscriptionPaymentModal.tsx:820
+#: src/features/Usage/SubscriptionPaymentModal.tsx:766
+#: src/features/Usage/SubscriptionPaymentModal.tsx:839
 #. js-lingui-explicit-id
 msgid "month"
 msgstr "mois"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:802
+#. js-lingui-explicit-id
+msgid "Month"
+msgstr "Mois"
 
 #: src/features/Case/data/reusable/priceSection.ts:17
 #. js-lingui-explicit-id
@@ -6303,7 +6311,7 @@ msgstr "naturel et non robotique"
 
 #: src/features/Header/NeedHelpModal.tsx:36
 #: src/features/Settings/MyProfile.tsx:92
-#: src/features/Usage/SubscriptionPaymentModal.tsx:901
+#: src/features/Usage/SubscriptionPaymentModal.tsx:920
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Besoin d'aide ?"
@@ -6588,7 +6596,7 @@ msgid "Now, we ready to create your learning plan"
 msgstr "Maintenant, nous sommes prêts à créer votre plan d'apprentissage"
 
 #: src/features/Usage/PaymentModal.tsx:306
-#: src/features/Usage/SubscriptionPaymentModal.tsx:562
+#: src/features/Usage/SubscriptionPaymentModal.tsx:581
 #. js-lingui-explicit-id
 msgid ""
 "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
@@ -6799,17 +6807,17 @@ msgstr ""
 "Collez votre texte de CV ici. Vous pouvez également écrire un bref résumé "
 "de votre expérience."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:623
+#: src/features/Usage/SubscriptionPaymentModal.tsx:642
 #. js-lingui-explicit-id
 msgid "Pay"
 msgstr "Payer"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:158
+#: src/features/Usage/SubscriptionPaymentModal.tsx:159
 #. js-lingui-explicit-id
 msgid "Pay with crypto"
 msgstr "Payer avec des cryptomonnaies"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:454
+#: src/features/Usage/SubscriptionPaymentModal.tsx:473
 #. js-lingui-explicit-id
 msgid "Pay with Stars"
 msgstr "Payer avec des Étoiles"
@@ -6819,7 +6827,7 @@ msgstr "Payer avec des Étoiles"
 msgid "Payment"
 msgstr "Paiement"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:256
+#: src/features/Usage/SubscriptionPaymentModal.tsx:257
 #. js-lingui-explicit-id
 msgid "Payment failed! Please try again."
 msgstr "Échec du paiement ! Veuillez réessayer."
@@ -6835,7 +6843,7 @@ msgstr "Historique des Paiements"
 msgid "Payment history:"
 msgstr "Historique des paiements:"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:415
+#: src/features/Usage/SubscriptionPaymentModal.tsx:434
 #. js-lingui-explicit-id
 msgid "Payment option"
 msgstr "Option de paiement"
@@ -8615,7 +8623,7 @@ msgstr "SQL"
 msgid "Stand out in behavioral rounds"
 msgstr "Sortez du lot lors des tours de comportement"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:745
+#: src/features/Usage/SubscriptionPaymentModal.tsx:764
 #. js-lingui-explicit-id
 msgid "Stars"
 msgstr "Étoiles"
@@ -8954,18 +8962,18 @@ msgstr "Abonnement"
 msgid "Subscription (1 month)"
 msgstr "Abonnement (1 mois)"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:512
+#: src/features/Usage/SubscriptionPaymentModal.tsx:531
 #. js-lingui-explicit-id
 msgid "Subscription for 1 day | Full access"
 msgstr "Abonnement pour 1 jour | Accès complet"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:424
-#: src/features/Usage/SubscriptionPaymentModal.tsx:509
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
+#: src/features/Usage/SubscriptionPaymentModal.tsx:528
 #. js-lingui-explicit-id
 msgid "Subscription for 1 month | Full access"
 msgstr "Abonnement pour 1 mois | Accès complet"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:511
+#: src/features/Usage/SubscriptionPaymentModal.tsx:530
 #. js-lingui-explicit-id
 msgid "Subscription for 1 week | Full access"
 msgstr "Abonnement pour 1 semaine | Accès complet"
@@ -9174,7 +9182,7 @@ msgstr ""
 "junior."
 
 #: src/features/Usage/PaymentModal.tsx:304
-#: src/features/Usage/SubscriptionPaymentModal.tsx:560
+#: src/features/Usage/SubscriptionPaymentModal.tsx:579
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "Conditions Générales"
@@ -9452,7 +9460,7 @@ msgid "Total used:"
 msgstr "Total utilisé:"
 
 #: src/features/Usage/PaymentModal.tsx:254
-#: src/features/Usage/SubscriptionPaymentModal.tsx:595
+#: src/features/Usage/SubscriptionPaymentModal.tsx:614
 #. js-lingui-explicit-id
 msgid "Total:"
 msgstr "Total :"
@@ -9997,12 +10005,12 @@ msgstr ""
 msgid "Webcam Feedback Preview"
 msgstr "Aperçu du Retour Vidéo de la Webcam"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:776
+#: src/features/Usage/SubscriptionPaymentModal.tsx:795
 #. js-lingui-explicit-id
 msgid "Week"
 msgstr "Semaine"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:822
+#: src/features/Usage/SubscriptionPaymentModal.tsx:841
 #. js-lingui-explicit-id
 msgid "week"
 msgstr "semaine"
@@ -10508,7 +10516,7 @@ msgstr ""
 "entretiens comportementaux axés sur React, Vue, Angular, TypeScript et "
 "l'architecture web moderne."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:884
+#: src/features/Usage/SubscriptionPaymentModal.tsx:903
 #. js-lingui-explicit-id
 msgid ""
 "You can renew your subscription any time before it expires to avoid\n"
@@ -10533,7 +10541,7 @@ msgstr "Vous pouvez essayer l'IA en action maintenant"
 msgid "You can use text to answer if you prefer."
 msgstr "Vous pouvez utiliser le texte pour répondre si vous préférez."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:654
+#: src/features/Usage/SubscriptionPaymentModal.tsx:673
 #. js-lingui-explicit-id
 msgid "You do not have full access."
 msgstr "Vous n'avez pas un accès complet."
@@ -10557,7 +10565,7 @@ msgstr ""
 "les délais d'attente, les solutions de repli, la journalisation, le traçage "
 "et les métriques pour maintenir les services fiables."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:664
+#: src/features/Usage/SubscriptionPaymentModal.tsx:683
 #. js-lingui-explicit-id
 msgid "You have"
 msgstr "Vous avez"
@@ -10779,7 +10787,7 @@ msgstr "Vos questions répondues"
 msgid "Your subscription has been successfully changed."
 msgstr "Votre abonnement a été modifié avec succès."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:658
+#: src/features/Usage/SubscriptionPaymentModal.tsx:677
 #. js-lingui-explicit-id
 msgid "Your subscription is active until"
 msgstr "Votre abonnement est actif jusqu'à"
