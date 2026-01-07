@@ -6,7 +6,7 @@ import { useLingui } from "@lingui/react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Loader, Swords } from "lucide-react";
 import { GameStats, isTodayStat } from "./GameStats";
-import { exitFullScreen, goFullScreen } from "@/libs/fullScreen";
+import { exitFullScreen } from "@/libs/fullScreen";
 import { GameMyAvatar } from "./GameMyAvatar";
 import { GameMyUsername } from "./GameMyUsername";
 import { GameOnboarding } from "./GameOnboarding";
@@ -16,6 +16,7 @@ import { useMemo, useState } from "react";
 import { ChartSection } from "../Chat/ChatSection";
 import { useChat } from "../Chat/useChat";
 import { useUrlState } from "../Url/useUrlParam";
+import { useSettings } from "../Settings/useSettings";
 
 const TabLabel = ({
   badgeNumber,
@@ -51,6 +52,17 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const game = useGame();
   const chat = useChat();
   const { i18n } = useLingui();
+  const settings = useSettings();
+  const isGameOnboardingCompleted = settings.userSettings?.isGameOnboardingCompleted;
+  const [isShowOnboarding, setIsShowOnboarding] = useState(false);
+
+  const onPlayClick = () => {
+    if (!isGameOnboardingCompleted) {
+      setIsShowOnboarding(true);
+    }
+    game.playGame();
+  };
+
   const isUnreadMessages = chat.unreadMessagesCount > 0;
 
   const loadingMessage = i18n._(`Loading...`);
@@ -82,8 +94,6 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
           paddingBottom: "90px",
         }}
       >
-        <GameOnboarding />
-
         <Stack
           sx={{
             width: "100%",
@@ -145,10 +155,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                   variant={"outlined"}
                   startIcon={game.loadingQuestions ? <Loader /> : <Swords />}
                   color="info"
-                  onClick={() => {
-                    goFullScreen();
-                    game.playGame();
-                  }}
+                  onClick={onPlayClick}
                   disabled={game.loadingQuestions}
                   sx={{
                     width: "100%",
@@ -217,7 +224,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
             </Stack>
           </Stack>
 
-          {game.activeQuestion && game.isGamePlaying && (
+          {game.activeQuestion && game.isGamePlaying && !isShowOnboarding && (
             <Stack
               sx={{
                 gap: "20px",
@@ -241,6 +248,15 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                 </Stack>
               </CustomModal>
             </Stack>
+          )}
+
+          {isShowOnboarding && !isGameOnboardingCompleted && (
+            <GameOnboarding
+              onFinish={() => {
+                setIsShowOnboarding(false);
+                settings.onDoneGameOnboarding();
+              }}
+            />
           )}
         </Stack>
       </Stack>

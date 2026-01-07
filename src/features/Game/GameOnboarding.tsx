@@ -1,25 +1,20 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { useSettings } from "../Settings/useSettings";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useState } from "react";
-import { useGame } from "./useGame";
 import { GameMyAvatar } from "./GameMyAvatar";
 import { GameMyUsername } from "./GameMyUsername";
 import { useLingui } from "@lingui/react";
 import { ArrowRight, LucideSwords } from "lucide-react";
 import { CHAT_MESSAGE_POINTS } from "../Chat/data";
 
-export const GameOnboarding = () => {
-  const settings = useSettings();
+export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
   const [step, setStep] = useState(0);
-  const game = useGame();
   const { i18n } = useLingui();
-  const isOnboardingCompleted = settings.userSettings?.isGameOnboardingCompleted;
   const onNext = () => {
     if (step < stepsContent.length - 1) {
       setStep(step + 1);
     } else {
-      settings.onDoneGameOnboarding();
+      onFinish();
     }
   };
 
@@ -202,35 +197,32 @@ export const GameOnboarding = () => {
     </>,
   ];
 
-  if (isOnboardingCompleted || game.isGamePlaying) return null;
   return (
-    <>
-      <CustomModal isOpen={true}>
+    <CustomModal isOpen={true}>
+      <Stack
+        sx={{
+          width: "100%",
+          boxSizing: "border-box",
+          gap: "20px",
+          alignItems: "center",
+          height: "100%",
+        }}
+      >
         <Stack
           sx={{
             width: "100%",
-            boxSizing: "border-box",
-            gap: "20px",
-            alignItems: "center",
+            maxWidth: "500px",
             height: "100%",
+            maxHeight: "700px",
+            gap: "20px",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingBottom: "40px",
           }}
         >
-          <Stack
-            sx={{
-              width: "100%",
-              maxWidth: "500px",
-              height: "100%",
-              maxHeight: "700px",
-              gap: "20px",
-              justifyContent: "center",
-              alignItems: "center",
-              paddingBottom: "40px",
-            }}
-          >
-            {stepsContent[step]}
-          </Stack>
+          {stepsContent[step]}
         </Stack>
-      </CustomModal>
-    </>
+      </Stack>
+    </CustomModal>
   );
 };
