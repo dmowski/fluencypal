@@ -619,7 +619,7 @@ export const SubscriptionPaymentModal = () => {
                 }}
               >
                 <Typography align="center" variant="h5" component="h2">
-                  {i18n._(`Subscription`)}
+                  {i18n._(`Full Access`)}
                 </Typography>
                 <Typography
                   variant="caption"
@@ -628,7 +628,7 @@ export const SubscriptionPaymentModal = () => {
                   }}
                   align="center"
                 >
-                  {!isActiveSubscription && <>{i18n._(`You don't have an active subscription.`)}</>}
+                  {!isActiveSubscription && <>{i18n._(`You do not have full access.`)}</>}
 
                   {isActiveSubscription && !isTrial && activeTill && (
                     <>
