@@ -90,6 +90,10 @@ export const PaymentModal = () => {
   };
 
   const onShowAmountInput = () => {
+    const isDevEmail = auth?.userInfo?.email?.includes("dmowski");
+    if (isDevEmail) {
+      return;
+    }
     sentTgMessage("Event: Press on Pay Button");
     setIsShowAmountInput(true);
   };

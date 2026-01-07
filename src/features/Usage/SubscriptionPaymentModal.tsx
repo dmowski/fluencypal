@@ -38,6 +38,8 @@ import { useSettings } from "../Settings/useSettings";
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
 
+const devEmails = ["dmowski.alex@gmail.com"];
+
 const WalletButton = ({
   onShowWaiter,
   onPressPay,
@@ -315,6 +317,10 @@ export const SubscriptionPaymentModal = () => {
   const showConfirmPage = async () => {
     setIsShowConfirmPayments(true);
     scrollTop();
+    const isDevEmail = auth?.userInfo?.email?.includes("dmowski");
+    if (isDevEmail) {
+      return;
+    }
 
     if (!isTelegramApp) {
       sentPaymentTgMessage({
