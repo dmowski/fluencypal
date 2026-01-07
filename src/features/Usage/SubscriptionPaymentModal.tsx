@@ -1,5 +1,13 @@
 "use client";
-import { Button, Checkbox, FormControlLabel, Link, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  ButtonGroup,
+  Checkbox,
+  FormControlLabel,
+  Link,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useUsage } from "./useUsage";
 import { useNotifications } from "@toolpad/core/useNotifications";
@@ -13,7 +21,7 @@ import { supportedLanguages } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useCurrency } from "../User/useCurrency";
-import { PRICE_PER_MONTH_USD } from "@/common/subscription";
+import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD } from "@/common/subscription";
 import { sentPaymentTgMessage } from "./sentTgMessage";
 import dayjs from "dayjs";
 import { ContactList } from "../Landing/Contact/ContactList";
@@ -34,6 +42,7 @@ import { sendCreateCryptoOrderRequest } from "@/app/api/crypto/createOrder/sendC
 import { SubscriptionWaiter } from "./SubscriptionWaiter";
 import { CRYPTO_MONTHLY_PRICE_TON } from "../Telegram/cryptoPrice";
 import { useSettings } from "../Settings/useSettings";
+import { StripeCreateCheckoutRequest } from "@/common/requests";
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
@@ -178,8 +187,6 @@ export const SubscriptionPaymentModal = () => {
   const locale = pathname?.split("/")[1] as string;
   const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
 
-  const pricePerMonthInCurrency = Math.round(currency.rate * PRICE_PER_MONTH_USD * 10) / 10;
-
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const scrollTop = () => {
@@ -270,21 +277,32 @@ export const SubscriptionPaymentModal = () => {
     }
   };
 
+  const [duration, setDuration] = useState<"day" | "week" | "month">("week");
+
+  const durationPriceUsd =
+    duration === "month"
+      ? PRICE_PER_MONTH_USD
+      : duration === "day"
+        ? PRICE_PER_DAY_USD
+        : PRICE_PER_DAY_USD * 7;
+
+  const priceInCurrency = Math.round(currency.rate * durationPriceUsd * 10) / 10;
+
   const clickOnConfirmRequestStripe = async () => {
     const token = await auth.getToken();
 
     try {
+      const dataToCheckout: StripeCreateCheckoutRequest = {
+        userId: auth.uid,
+        months: duration === "month" ? 1 : 0,
+        days: duration === "week" ? 7 : duration === "day" ? 1 : 0,
+        languageCode: supportedLang,
+        currency: currency.currency,
+      };
+
       setIsRedirecting(true);
-      const checkoutInfo = await createStripeCheckout(
-        {
-          userId: auth.uid,
-          months: 1,
-          days: 0,
-          languageCode: supportedLang,
-          currency: currency.currency,
-        },
-        token
-      );
+
+      const checkoutInfo = await createStripeCheckout(dataToCheckout, token);
       await sentPaymentTgMessage({
         message: "Event: Redirect to stripe",
         email: auth?.userInfo?.email || "unknownEmail",
@@ -487,7 +505,11 @@ export const SubscriptionPaymentModal = () => {
                   opacity: 0.7,
                 }}
               >
-                {i18n._(`Subscription for 1 month | Full access`)}
+                {duration === "month"
+                  ? i18n._(`Subscription for 1 month | Full access`)
+                  : duration === "week"
+                    ? i18n._(`Subscription for 1 week | Full access`)
+                    : i18n._(`Subscription for 1 day | Full access`)}
               </Typography>
             </Stack>
 
@@ -577,7 +599,7 @@ export const SubscriptionPaymentModal = () => {
                         <b>{TELEGRAM_MONTHLY_PRICE_START} Stars</b>
                       </>
                     ) : (
-                      <b>{currency.convertUsdToCurrency(PRICE_PER_MONTH_USD)}</b>
+                      <b>{currency.convertUsdToCurrency(durationPriceUsd)}</b>
                     )}
                   </Typography>
                 </Stack>
@@ -727,7 +749,42 @@ export const SubscriptionPaymentModal = () => {
                       </Stack>
                     </>
                   ) : (
-                    <>
+                    <Stack sx={{ gap: "20px" }}>
+                      <Stack
+                        sx={{
+                          width: "100%",
+                        }}
+                      >
+                        <ButtonGroup
+                          aria-label="Basic button group"
+                          sx={{
+                            width: "100%",
+                          }}
+                        >
+                          <Button
+                            fullWidth
+                            variant={duration === "day" ? "contained" : "outlined"}
+                            onClick={() => setDuration("day")}
+                          >
+                            {i18n._("Day")}
+                          </Button>
+                          <Button
+                            fullWidth
+                            variant={duration === "week" ? "contained" : "outlined"}
+                            onClick={() => setDuration("week")}
+                          >
+                            {i18n._("Week")}
+                          </Button>
+                          <Button
+                            fullWidth
+                            variant={duration === "month" ? "contained" : "outlined"}
+                            onClick={() => setDuration("month")}
+                          >
+                            {i18n._("Month")}
+                          </Button>
+                        </ButtonGroup>
+                      </Stack>
+
                       <Stack
                         sx={{
                           flexDirection: "row",
@@ -742,7 +799,7 @@ export const SubscriptionPaymentModal = () => {
                             fontSize: "3.6rem",
                           }}
                         >
-                          {pricePerMonthInCurrency}
+                          {priceInCurrency}
                         </Typography>
                         <Stack
                           sx={{
@@ -758,10 +815,16 @@ export const SubscriptionPaymentModal = () => {
                           >
                             {currency.currency} /
                           </Typography>
-                          <Typography variant="caption">{i18n._("month")}</Typography>
+                          <Typography variant="caption">
+                            {duration === "month"
+                              ? i18n._("month")
+                              : duration === "week"
+                                ? i18n._("week")
+                                : i18n._("day")}
+                          </Typography>
                         </Stack>
                       </Stack>
-                    </>
+                    </Stack>
                   )}
 
                   <Typography variant="body1">
