@@ -58,9 +58,17 @@ const QuizQuestions = () => {
     setRedirecting(true);
     try {
       await confirmPlan();
-      const url = `${getUrlStart(pageLanguage)}practice`;
-      console.log("url", url);
-      router.push(url);
+      const goalTalkModeElement = survey?.goalData?.elements.find(
+        (el) => el.mode === "conversation"
+      );
+      if (goalTalkModeElement) {
+        const url = `${getUrlStart(pageLanguage)}practice?plan-start-${goalTalkModeElement.id}=true`;
+        router.push(url);
+      } else {
+        const url = `${getUrlStart(pageLanguage)}practice`;
+        console.log("url", url);
+        router.push(url);
+      }
     } catch (e) {
       alert(i18n._("Error creating plan. Please try again."));
     }
