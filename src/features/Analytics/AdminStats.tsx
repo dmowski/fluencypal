@@ -352,7 +352,12 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             alignItems: "center",
             gap: "8px",
             padding: "4px 0",
+            color: "#fff",
+            textDecoration: "none",
           }}
+          component={"a"}
+          target="_blank"
+          href={`/practice?page=community&space=global-rate&userId=${userId}`}
         >
           {gameAvatar && (
             <img src={gameAvatar} style={{ borderRadius: "34px", width: "22px", height: "22px" }} />
