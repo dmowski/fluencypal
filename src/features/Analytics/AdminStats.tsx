@@ -397,7 +397,12 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
         )}
 
         {userSource?.urlPath && (
-          <Stack>
+          <Stack
+            sx={{
+              width: "100%",
+              wordBreak: "break-all",
+            }}
+          >
             <Typography variant="caption">{userSource?.urlPath || ""}</Typography>
           </Stack>
         )}
