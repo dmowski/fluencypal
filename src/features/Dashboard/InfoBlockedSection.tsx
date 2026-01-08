@@ -2,15 +2,9 @@
 
 import { Stack, Typography } from "@mui/material";
 
-import { JSX } from "react";
+import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
 
-export const InfoBlockedSection = ({
-  title,
-  children,
-}: {
-  title: string;
-  children?: JSX.Element | JSX.Element[];
-}) => {
+export const InfoBlockedSection = ({ title }: { title: string }) => {
   return (
     <Stack
       sx={{
@@ -19,19 +13,25 @@ export const InfoBlockedSection = ({
         alignItems: "center",
       }}
     >
-      <Typography
+      <Stack
         sx={{
-          padding: "20px",
-          opacity: 0.4,
-          fontSize: "1.1rem",
-          fontWeight: 350,
+          gap: "10px",
+          width: "100%",
+          maxWidth: "700px",
         }}
-        align="center"
-        className="loading-shimmer"
       >
-        {title}
-      </Typography>
-      {children}
+        <Typography
+          variant="body2"
+          sx={{
+            opacity: 0.8,
+            textAlign: "center",
+          }}
+          className="loading-shimmer"
+        >
+          {title}
+        </Typography>
+        <LoadingShapes sizes={["20px", "200px", "20px", "100px"]} />
+      </Stack>
     </Stack>
   );
 };

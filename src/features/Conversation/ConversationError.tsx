@@ -3,7 +3,6 @@
 import { Button, Stack, Typography } from "@mui/material";
 
 import { useLingui } from "@lingui/react";
-import { InfoBlockedSection } from "../Dashboard/InfoBlockedSection";
 
 export const ConversationError = ({
   errorMessage,
@@ -14,7 +13,14 @@ export const ConversationError = ({
 }) => {
   const { i18n } = useLingui();
   return (
-    <InfoBlockedSection title="">
+    <Stack
+      sx={{
+        width: "100%",
+        height: "100vh",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Stack
         sx={{
           width: "100%",
@@ -51,6 +57,6 @@ export const ConversationError = ({
           {i18n._(`Reload page`)}
         </Button>
       </Stack>
-    </InfoBlockedSection>
+    </Stack>
   );
 };
