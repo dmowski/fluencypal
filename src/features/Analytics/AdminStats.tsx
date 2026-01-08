@@ -462,15 +462,21 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
               <Stack
                 key={conversation.id}
                 sx={{
+                  flexDirection: "row",
                   backgroundColor: "rgba(229, 229, 229, 0.21)",
                   padding: "10px",
                   cursor: "pointer",
                   borderRadius: "8px",
+                  justifyContent: "space-between",
                 }}
                 onClick={() => setShowConversation(conversation)}
               >
                 <Typography sx={{}}>
-                  <b>{conversation.messagesCount} messages</b> | {conversation.mode} |{" "}
+                  <b>{conversation.messagesCount} messages</b> | {conversation.mode}
+                </Typography>
+
+                <Typography sx={{}}>
+                  {dayjs(conversation.updatedAtIso).format("HH:mm")} |{" "}
                   {dayjs(conversation.updatedAtIso).fromNow()}
                 </Typography>
               </Stack>
