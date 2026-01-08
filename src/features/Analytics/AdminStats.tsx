@@ -398,9 +398,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
 
         {userSource?.urlPath && (
           <Stack>
-            <Typography variant="caption">
-              <b>Source:</b> {userSource?.urlPath || ""}
-            </Typography>
+            <Typography variant="caption">{userSource?.urlPath || ""}</Typography>
           </Stack>
         )}
       </Stack>
