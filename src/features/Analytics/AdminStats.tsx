@@ -19,6 +19,7 @@ import {
   HandCoins,
   House,
   LogIn,
+  SquareArrowOutUpRight,
   UserPlus,
 } from "lucide-react";
 import { defaultAvatar } from "../Game/avatars";
@@ -127,6 +128,8 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
         flexDirection: "row",
         //alignItems: "center",
         gap: "25px",
+        backgroundColor: "rgba(17, 17, 17, 0.2)",
+        height: "500px",
       }}
     >
       {showGoalPlan && (
@@ -430,23 +433,26 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
         sx={{
           width: "100%",
           height: "100%",
-          maxHeight: "350px",
           overflow: "auto",
-          gap: "20px",
+          gap: "10px",
         }}
       >
         <Stack
           sx={{
-            padding: "10px",
             backgroundColor: "rgba(20, 79, 146, 1)",
             borderRadius: "8px",
+            gap: "2px",
           }}
         >
           <Stack
             sx={{
               flexDirection: "row",
-              justifyContent: "space-between",
+              padding: "10px",
+              borderRadius: "8px 8px 0 0",
               alignItems: "center",
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+              cursor: "pointer",
+              ":hover": { backgroundColor: "rgba(255, 255, 255, 0.2)" },
             }}
             onClick={() => {
               setShowGoalPlan(userStat.goalQuiz2[0].goalData);
@@ -455,20 +461,21 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             <Typography variant="h6">{userStat.goalQuiz2[0]?.goalData?.title || ""}</Typography>
 
             <IconButton>
-              <ArrowRight />
+              <SquareArrowOutUpRight size={"18px"} />
             </IconButton>
           </Stack>
 
           <Stack
             sx={{
-              gap: "10px",
+              gap: "20px",
+              padding: "10px",
             }}
           >
             <Typography variant="body1">
               {userStat.goalQuiz2[0]?.aboutUserTranscription || ""}
             </Typography>
             <Stack>
-              <Typography variant="caption">
+              <Typography variant="caption" sx={{}}>
                 {userStat.goalQuiz2[0]?.aboutUserFollowUpQuestion.title}
               </Typography>
               <Typography variant="body1">
@@ -501,27 +508,30 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             return a.updatedAtIso.localeCompare(b.updatedAtIso);
           })
           .filter((_, index) => index < 23)
-          .map((conversation, index) => {
+          .map((conversation) => {
             return (
               <Stack
                 key={conversation.id}
                 sx={{
-                  flexDirection: "row",
                   backgroundColor: "rgba(229, 229, 229, 0.21)",
-                  padding: "10px",
+                  padding: "10px 15px",
                   cursor: "pointer",
                   borderRadius: "8px",
-                  justifyContent: "space-between",
+                  display: "grid",
+                  gridTemplateColumns: "140px 200px 200px",
+                  gap: "10px",
+                  ":hover": { backgroundColor: "rgba(229, 229, 229, 0.35)" },
                 }}
                 onClick={() => setShowConversation(conversation)}
               >
                 <Typography sx={{}}>
-                  <b>{conversation.messagesCount} messages</b> | {conversation.mode}
+                  <b>{conversation.messagesCount} messages</b>
                 </Typography>
 
+                <Typography sx={{}}>{conversation.mode}</Typography>
+
                 <Typography sx={{}}>
-                  {dayjs(conversation.updatedAtIso).format("DD MMM | HH:mm")} |{" "}
-                  {dayjs(conversation.updatedAtIso).fromNow()}
+                  {dayjs(conversation.updatedAtIso).format("DD MMM | HH:mm")}
                 </Typography>
               </Stack>
             );
