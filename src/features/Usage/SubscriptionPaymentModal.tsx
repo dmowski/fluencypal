@@ -45,6 +45,7 @@ import { useSettings } from "../Settings/useSettings";
 import { StripeCreateCheckoutRequest } from "@/common/requests";
 import { sleep } from "@/libs/sleep";
 import { Check, CirclePlus, Plus } from "lucide-react";
+import { FaqItem } from "../Landing/FAQ/FaqItem";
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
@@ -776,8 +777,10 @@ export const SubscriptionPaymentModal = () => {
                       <Stack
                         sx={{
                           width: "100%",
+                          gap: "5px",
                         }}
                       >
+                        <Typography variant="caption">{i18n._("Duration:")}</Typography>
                         <ButtonGroup
                           aria-label="Basic button group"
                           sx={{
@@ -906,14 +909,44 @@ export const SubscriptionPaymentModal = () => {
                   <FeatureList appMode={appMode} />
                 </Stack>
               </Stack>
+
+              <Stack>
+                <FaqItem
+                  info={{
+                    question: i18n._("Can I get full access for free?"),
+                    answer: i18n._(
+                      "Yes. Simply play on the Community page or send messages in the chat to earn points. The top five users will have full access as long as they remain at the top!"
+                    ),
+                  }}
+                />
+
+                <FaqItem
+                  info={{
+                    question: i18n._("Is this a subscription?"),
+                    answer: i18n._(
+                      "No, you are purchasing full access for a selected period of time. There is no auto-renewal, you can buy full access again when your current period ends."
+                    ),
+                  }}
+                />
+
+                <FaqItem
+                  info={{
+                    question: i18n._("Can I do a refund after purchase?"),
+                    answer: i18n._(
+                      'Yes. If you\'re not satisfied with the service, on "Profile/Payment history" page you can request a refund and we will discuss the details.'
+                    ),
+                  }}
+                />
+              </Stack>
               <Stack
                 sx={{
                   width: "100%",
                   gap: "10px",
-                  maxWidth: "400px",
+                  maxWidth: "600px",
+                  padding: "10px 10px 40px 10px",
                 }}
               >
-                <Typography variant="body1">{i18n._(`Need help?`)}</Typography>
+                <Typography variant="body1">{i18n._(`Contacts`)}</Typography>
                 <ContactList />
               </Stack>
             </Stack>
