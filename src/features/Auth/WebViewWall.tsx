@@ -88,10 +88,10 @@ export const WebViewWall = ({
               isTelegram && isAndroid
                 ? "/instruction/tgAndroid.png"
                 : isTelegram && !isAndroid
-                ? "/instruction/tgIos.png"
-                : isAndroid
-                ? "/instruction/instagramInstructionAndroid.png"
-                : "/instruction/instagramInstruction.png"
+                  ? "/instruction/tgIos.png"
+                  : isAndroid
+                    ? "/instruction/instagramInstructionAndroid.png"
+                    : "/instruction/instagramInstruction.png"
             }
             alt="Instagram instruction"
             style={{
@@ -191,7 +191,7 @@ export const WebViewWall = ({
             alignItems: "center",
           }}
         >
-          {mode === "general" && (
+          {mode === "general" && false && (
             <Button
               variant="outlined"
               size="large"
