@@ -184,20 +184,16 @@ const QuizQuestions = () => {
                 }
                 listItems={[
                   {
-                    title: i18n._("Main goal in learning"),
-                    iconName: "graduation-cap",
-                  },
-                  {
-                    title: i18n._("What you want to achieve"),
-                    iconName: "flag",
-                  },
-                  {
                     title: i18n._("What challenges you face"),
                     iconName: "alert-triangle",
                   },
                   {
-                    title: i18n._("Movies, books, or music"),
+                    title: i18n._("Hobbies or interests"),
                     iconName: "music",
+                  },
+                  {
+                    title: i18n._("What you want to achieve"),
+                    iconName: "flag",
                   },
                 ]}
                 transcript={survey?.aboutUserTranscription || ""}
