@@ -1,7 +1,7 @@
 import { DailyQuestions } from "./types";
 
 export const dailyQuestions: DailyQuestions = {
-  "2025-09-24": {
+  "2026-01-08": {
     id: "erase-one-memory",
     title: "If you could erase one memory, would you?",
     description:
@@ -16,7 +16,7 @@ export const dailyQuestions: DailyQuestions = {
       "There are memories I wish I could erase, especially painful arguments. But I think those experiences shaped me. Without them, I might not appreciate peace and good relationships as much as I do now.",
   },
 
-  "2025-09-25": {
+  "2026-01-09": {
     id: "would-you-rather-respected-loved",
     title: "Would you rather be respected or loved?",
     description:
@@ -31,7 +31,7 @@ export const dailyQuestions: DailyQuestions = {
       "I think being respected is more important for me. Love can be fleeting, but respect comes from trust and integrity. However, I know that without love life can feel empty, so maybe the balance is the key.",
   },
 
-  "2025-09-26": {
+  "2026-01-10": {
     id: "are-humans-inherently-good-or-selfish",
     title: "Are humans inherently good or selfish?",
     description:
@@ -45,7 +45,7 @@ export const dailyQuestions: DailyQuestions = {
     exampleAnswer:
       "I think humans are naturally selfish because survival comes first. But at the same time, cooperation has been essential for survival too, which is why we show kindness. So maybe we are both.",
   },
-  "2025-09-29": {
+  "2026-01-11": {
     id: "truth-most-people-not-ready-to-hear",
     title: "What is a truth most people are not ready to hear?",
     description: "Share a belief or observation you think society avoids facing.",
@@ -58,7 +58,7 @@ export const dailyQuestions: DailyQuestions = {
     exampleAnswer:
       "I believe most people are not ready to hear that money does buy happiness, at least up to a point. Without financial security, it’s almost impossible to focus on mental peace or relationships.",
   },
-  "2025-09-30": {
+  "2026-01-12": {
     id: "press-button-get-everything-lose-10-years",
     title: "Would you press a button to get everything you want but lose 10 years of life?",
     description:
@@ -73,7 +73,7 @@ export const dailyQuestions: DailyQuestions = {
       "I don’t think I’d press the button. Part of achieving goals is the journey itself. If everything was handed to me, I might lose the satisfaction of working for it, even if I had 10 fewer years.",
   },
 
-  "2025-10-01": {
+  "2026-01-13": {
     id: "free-will-or-illusion",
     title: "Do you believe in free will, or is everything predetermined?",
     description:
@@ -87,7 +87,7 @@ export const dailyQuestions: DailyQuestions = {
     exampleAnswer:
       "I believe we have some free will, but it’s limited. Our environment, upbringing, and even genetics influence most of our decisions. Still, I like to think there’s space for personal choice.",
   },
-  "2025-10-02": {
+  "2026-01-14": {
     id: "happiness-or-success",
     title: "Would you rather be happy or successful?",
     description: "Discuss whether personal joy or external achievement is more important in life.",
@@ -100,7 +100,7 @@ export const dailyQuestions: DailyQuestions = {
     exampleAnswer:
       "I’d choose happiness. Success without happiness feels empty, while happiness itself can be a kind of success. But ideally, the two go hand in hand.",
   },
-  "2025-10-03": {
+  "2026-01-15": {
     id: "unlimited-knowledge-or-unlimited-money",
     title: "Would you choose unlimited knowledge or unlimited money?",
     description: "Imagine you could have infinite wealth or infinite wisdom, but not both.",
@@ -113,7 +113,7 @@ export const dailyQuestions: DailyQuestions = {
     exampleAnswer:
       "I’d choose unlimited knowledge. With it, I could probably find ways to earn money anyway, and more importantly, knowledge can’t be taken away.",
   },
-  "2025-10-04": {
+  "2026-01-16": {
     id: "biggest-lie-we-tell-ourselves",
     title: "What is the biggest lie people tell themselves?",
     description: "Share a comforting belief or common excuse you think most people use.",
@@ -126,7 +126,7 @@ export const dailyQuestions: DailyQuestions = {
     exampleAnswer:
       "The biggest lie is ‘I’ll do it tomorrow.’ We say it to feel better, but often tomorrow never comes. It’s a way to escape responsibility without guilt.",
   },
-  "2025-10-05": {
+  "2026-01-17": {
     id: "immortality-choice",
     title: "Would you want to live forever?",
     description:

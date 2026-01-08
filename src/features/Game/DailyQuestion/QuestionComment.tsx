@@ -11,6 +11,7 @@ import { useGame } from "../useGame";
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import { Avatar } from "../Avatar";
 
 export const QuestionComment = ({
   answerDocId,
@@ -89,16 +90,8 @@ export const QuestionComment = ({
             gap: "10px",
           }}
         >
-          <Stack
-            sx={{
-              ".avatar": { width: "40px", height: "40px", borderRadius: "50%" },
-            }}
-          >
-            <img
-              className="avatar"
-              src={game.gameAvatars?.[answer.authorUserId]}
-              alt="User Avatar"
-            />
+          <Stack sx={{}}>
+            <Avatar url={game.gameAvatars?.[answer.authorUserId]} avatarSize="40px" />
           </Stack>
           <Stack>
             <Typography variant="body2" sx={{ fontWeight: 600 }}>

@@ -733,7 +733,7 @@ msgstr ""
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "เกิดข้อผิดพลาดระหว่างการวิเคราะห์ข้อความ กรุณาลองใหม่อีกครั้ง"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:414
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:409
 #. js-lingui-explicit-id
 msgid "Analysis"
 msgstr "การวิเคราะห์"
@@ -769,7 +769,7 @@ msgstr "และ"
 msgid "Angular & RxJS"
 msgstr "แองกูลาร์ & RxJS"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:643
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:604
 #. js-lingui-explicit-id
 msgid "Answer Now"
 msgstr "ตอบเลย"
@@ -984,6 +984,11 @@ msgstr "เตรียมพร้อมสำหรับการสัมภ
 #. js-lingui-explicit-id
 msgid "Be specific about your role"
 msgstr "ระบุบทบาทของคุณให้ชัดเจน"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:585
+#. js-lingui-explicit-id
+msgid "Be the first to respond and share your thoughts."
+msgstr "เป็นคนแรกที่ตอบกลับและแบ่งปันความคิดของคุณ"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:253
 #. js-lingui-explicit-id
@@ -1926,6 +1931,11 @@ msgstr "การสัมภาษณ์รายวันโดยไม่ต
 msgid "Daily Language Practice"
 msgstr "การฝึกภาษาประจำวัน"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:270
+#. js-lingui-explicit-id
+msgid "Daily Question"
+msgstr "คำถามประจำวัน"
+
 #: src/features/Landing/LandingPage.tsx:107
 #. js-lingui-explicit-id
 msgid ""
@@ -2380,7 +2390,6 @@ msgstr "อย่าลืมลองโหมดการโทรในส่
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
 #: src/features/Conversation/ConversationCanvas.tsx:627
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:496
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
@@ -3867,7 +3876,7 @@ msgid "Grammar corrections to boost your confidence"
 msgstr "การแก้ไขไวยากรณ์เพื่อเพิ่มความมั่นใจของคุณ"
 
 #: src/features/Conversation/ProcessUserInput.tsx:174
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:418
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:413
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "ที่สุด!"
@@ -6473,7 +6482,7 @@ msgstr "NoSQL"
 msgid "Not Found"
 msgstr "ไม่พบ"
 
-#: src/features/Game/DailyQuestion/QuestionComment.tsx:139
+#: src/features/Game/DailyQuestion/QuestionComment.tsx:132
 #. js-lingui-explicit-id
 msgid "not published"
 msgstr "ยังไม่ได้เผยแพร่"
@@ -6531,6 +6540,13 @@ msgid ""
 msgstr ""
 "หลังจากที่คุณซื้อแล้ว ชั่วโมงของคุณจะพร้อมใช้งานจนกว่าคุณจะใช้มัน "
 "ไม่มีวันหมดอายุ"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:577
+#. js-lingui-explicit-id
+msgid ""
+"One person has already answered - check out the answer and share your "
+"thoughts."
+msgstr "มีคนหนึ่งตอบแล้ว - ดูคำตอบและแบ่งปันความคิดของคุณ."
 
 #: src/features/Dashboard/BrainCard.tsx:429
 #. js-lingui-explicit-id
@@ -7268,7 +7284,7 @@ msgstr "การเตรียมตั้งเป้าหมาย"
 msgid "Preparing the brain"
 msgstr "เตรียมสมอง"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:546
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:502
 #. js-lingui-explicit-id
 msgid "Previous questions"
 msgstr "คำถามก่อนหน้านี้"
@@ -7403,17 +7419,17 @@ msgstr "จิตวิทยา"
 msgid "Public Talk Skills"
 msgstr "ทักษะการพูดแบบสาธารณะ"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:498
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:457
 #. js-lingui-explicit-id
 msgid "Publish"
 msgstr "เผยแพร่"
 
-#: src/features/Game/DailyQuestion/QuestionComment.tsx:193
+#: src/features/Game/DailyQuestion/QuestionComment.tsx:186
 #. js-lingui-explicit-id
 msgid "Publish an answer"
 msgstr "เผยแพร่คำตอบ"
 
-#: src/features/Game/DailyQuestion/QuestionComment.tsx:139
+#: src/features/Game/DailyQuestion/QuestionComment.tsx:132
 #. js-lingui-explicit-id
 msgid "published"
 msgstr "เผยแพร่แล้ว"
@@ -7468,11 +7484,6 @@ msgstr "การให้คะแนน"
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
-msgstr "บันทึกใหม่"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:500
-#. js-lingui-explicit-id
-msgid "Re-Record"
 msgstr "บันทึกใหม่"
 
 #: src/features/Conversation/ConversationCanvas.tsx:900
@@ -7685,7 +7696,6 @@ msgstr ""
 msgid "Recent graduates or bootcamp alumni entering frontend development"
 msgstr "บัณฑิตจบใหม่หรือศิษย์เก่า bootcamp ที่เข้าสู่วงการพัฒนาส่วนหน้าของเว็บ"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:501
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:190
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:304
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:213
@@ -7746,7 +7756,7 @@ msgstr "บันทึกข้อความ"
 msgid "Record more"
 msgstr "บันทึกเพิ่มเติม"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:439
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:434
 #. js-lingui-explicit-id
 msgid "Record your answer to see AI suggestion"
 msgstr "บันทึกคำตอบของคุณเพื่อดูคำแนะนำจาก AI"
@@ -8003,7 +8013,7 @@ msgstr "การสัมภาษณ์คัดกรองกับผู้
 msgid "Second Place"
 msgstr "อันดับที่สอง"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:643
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:604
 #. js-lingui-explicit-id
 msgid "See Answers"
 msgstr "ดูคำตอบ"
@@ -8820,12 +8830,12 @@ msgstr ""
 msgid "Success!"
 msgstr "สำเร็จ!"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:435
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:430
 #. js-lingui-explicit-id
 msgid "Suggestion"
 msgstr "ข้อเสนอแนะ"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:438
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:433
 #. js-lingui-explicit-id
 msgid "Suggestion is loading..."
 msgstr "คำแนะนำกำลังโหลด..."
@@ -9190,7 +9200,7 @@ msgstr "วิธีนี้แสดงถึงการรู้ตัวแ
 msgid "This is text you see on buttons and menus"
 msgstr "นี่คือข้อความที่คุณเห็นบนปุ่มและเมนู"
 
-#: src/features/Game/DailyQuestion/QuestionComment.tsx:121
+#: src/features/Game/DailyQuestion/QuestionComment.tsx:114
 #. js-lingui-explicit-id
 msgid "This is your answer"
 msgstr "นี่คือคำตอบของคุณ"
@@ -9217,7 +9227,7 @@ msgstr "นี่แสดงผลลัพธ์และทำให้คุ
 msgid "Ticket"
 msgstr "ตั๋ว"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:505
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:461
 #. js-lingui-explicit-id
 msgid "To see others answers, you need to publish yours."
 msgstr "ในการดูคำตอบของผู้อื่น คุณจำเป็นต้องเผยแพร่คำตอบของคุณก่อน"
@@ -9238,11 +9248,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "วันนี้"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:275
-#. js-lingui-explicit-id
-msgid "Today’s Question"
-msgstr "Today's Question"
 
 #: src/features/Landing/PlanLandingBlock.tsx:231
 #. js-lingui-explicit-id
@@ -9423,7 +9428,7 @@ msgstr "ปลดล็อกการเตรียมสัมภาษณ์
 msgid "Unmute microphone"
 msgstr "เปิดไมโครโฟน"
 
-#: src/features/Game/DailyQuestion/QuestionComment.tsx:193
+#: src/features/Game/DailyQuestion/QuestionComment.tsx:186
 #. js-lingui-explicit-id
 msgid "Unpublish"
 msgstr "ไม่เผยแพร่"
@@ -10605,6 +10610,15 @@ msgstr ""
 "คุณถูกขอให้ **ออกแบบระบบในทันที** แต่ไม่มีใครบอกคุณเลยว่า \"ดี\" "
 "มันควรจะเป็นอย่างไร"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:581
+#. js-lingui-explicit-id
+msgid ""
+"{peopleAnswered} people have already answered - see what they said and "
+"share your thoughts."
+msgstr ""
+"{peopleAnswered} คนได้ตอบไปแล้ว - "
+"ดูความคิดเห็นของพวกเขาและแชร์ความคิดของคุณ."
+
 #: src/features/Game/Battle/BattleCard.tsx:137
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
@@ -10625,6 +10639,36 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:585
+#. js-lingui-explicit-id
+#~ msgid "Be the first to answer and share your thoughts"
+#~ msgstr "เป็นคนแรกที่ตอบและแบ่งปันความคิดของคุณ"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:577
+#. js-lingui-explicit-id
+#~ msgid "One person answered already — see the answer and share your thoughts."
+#~ msgstr "มีคนตอบไปแล้ว — ดูคำตอบและแบ่งปันความคิดเห็นของคุณ"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:270
+#. js-lingui-explicit-id
+#~ msgid "Today’s Question"
+#~ msgstr "Today's Question"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:577
+#. js-lingui-explicit-id
+#~ msgid "One person answered already — see what they said & share yours"
+#~ msgstr "มีคนตอบแล้ว — ดูว่าพวกเขาพูดอะไร & แชร์ของคุณ"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:579
+#. js-lingui-explicit-id
+#~ msgid "{peopleAnswered} people answered already — see what they said & share yours"
+#~ msgstr "{peopleAnswered} คนตอบแล้ว — ดูว่าพวกเขาพูดว่าอะไร & แชร์ความคิดเห็นของคุณ"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:500
+#. js-lingui-explicit-id
+#~ msgid "Re-Record"
+#~ msgstr "บันทึกใหม่"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:939
 #. js-lingui-explicit-id

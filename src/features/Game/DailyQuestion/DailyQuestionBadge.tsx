@@ -3,7 +3,7 @@ import { useLingui } from "@lingui/react";
 import { useEffect, useMemo, useState } from "react";
 import { dailyQuestions } from "./dailyQuestions";
 import dayjs from "dayjs";
-import { ArrowRight, Check, Languages, Lightbulb, Mic, Sparkles } from "lucide-react";
+import { Check, Languages, Sparkles } from "lucide-react";
 import { getWordsCount } from "@/libs/words";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
@@ -67,11 +67,6 @@ export const DailyQuestionBadge = () => {
     const updates: Partial<DailyQuestionAnswer> = {
       transcript: newTranscript,
     };
-
-    if (!newTranscript) {
-      updates.aiSuggestion = null;
-      console.log("updates.aiSuggestion = null;");
-    }
 
     updateTranscriptInDb({ ...updates, isPublished: false }, myAnswerData, answerDocId);
   };
@@ -272,7 +267,7 @@ export const DailyQuestionBadge = () => {
                 fontWeight: 500,
               }}
             >
-              {i18n._("Today’s Question")}
+              {i18n._("Daily Question")}
             </Typography>
           </Stack>
           <Typography
@@ -451,54 +446,15 @@ export const DailyQuestionBadge = () => {
                         },
                       }}
                     >
-                      {isNeedMoreRecording && recorder.visualizerComponent}
                       <Button
-                        disabled={
-                          (recorder.isRecording && wordsCount >= minWords) ||
-                          recorder.isTranscribing
-                        }
-                        onClick={async () => {
-                          if (transcript && wordsCount >= minWords) {
-                            if (recorder.isRecording) {
-                              await recorder.stopRecording();
-                            }
-                            publishAnswer();
-                            return;
-                          }
-
-                          if (recorder.isRecording) {
-                            recorder.stopRecording();
-                            return;
-                          }
-
-                          recorder.startRecording();
-                        }}
+                        disabled={wordsCount <= minWords || recorder.isRecording}
+                        onClick={publishAnswer}
                         size="large"
                         variant="contained"
-                        color={
-                          recorder.isRecording && wordsCount < minWords
-                            ? "error"
-                            : wordsCount >= minWords
-                              ? "success"
-                              : "primary"
-                        }
-                        endIcon={
-                          recorder.isRecording && wordsCount < minWords ? (
-                            <Check />
-                          ) : transcript && wordsCount >= minWords ? (
-                            <ArrowRight />
-                          ) : (
-                            <Mic />
-                          )
-                        }
+                        color={"primary"}
+                        endIcon={<Check />}
                       >
-                        {recorder.isRecording && wordsCount < minWords
-                          ? i18n._("Done")
-                          : transcript && wordsCount >= minWords
-                            ? i18n._("Publish")
-                            : transcript
-                              ? i18n._("Re-Record")
-                              : i18n._("Record")}
+                        {i18n._("Publish")}
                       </Button>
                     </Stack>
                     <Typography align="center" variant="caption" color="text.secondary">
@@ -618,10 +574,15 @@ export const DailyQuestionBadge = () => {
             }}
           >
             {peopleAnswered === 1
-              ? "One person answered already — see what they said & share yours"
+              ? i18n._(
+                  "One person has already answered - check out the answer and share your thoughts."
+                )
               : peopleAnswered > 0
-                ? `${peopleAnswered} people answered already — see what they said & share yours`
-                : "Be the first to answer and share your thoughts"}
+                ? i18n._(
+                    "{peopleAnswered} people have already answered - see what they said and share your thoughts.",
+                    { peopleAnswered }
+                  )
+                : i18n._("Be the first to respond and share your thoughts.")}
           </Typography>
         )}
 
