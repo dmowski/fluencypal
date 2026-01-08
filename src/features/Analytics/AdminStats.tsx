@@ -467,13 +467,23 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             <Typography variant="body1">
               {userStat.goalQuiz2[0]?.aboutUserTranscription || ""}
             </Typography>
-            <Typography variant="body1">
-              {userStat.goalQuiz2[0]?.aboutUserFollowUpTranscription || ""}
-            </Typography>
+            <Stack>
+              <Typography variant="caption">
+                {userStat.goalQuiz2[0]?.aboutUserFollowUpQuestion.title}
+              </Typography>
+              <Typography variant="body1">
+                {userStat.goalQuiz2[0]?.aboutUserFollowUpTranscription || ""}
+              </Typography>
+            </Stack>
 
-            <Typography variant="body1">
-              {userStat.goalQuiz2[0]?.goalUserTranscription || ""}
-            </Typography>
+            <Stack>
+              <Typography variant="caption">
+                {userStat.goalQuiz2[0]?.goalFollowUpQuestion.title}
+              </Typography>
+              <Typography variant="body1">
+                {userStat.goalQuiz2[0]?.goalUserTranscription || ""}
+              </Typography>
+            </Stack>
           </Stack>
         </Stack>
 
