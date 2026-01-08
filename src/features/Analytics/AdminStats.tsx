@@ -412,6 +412,32 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           gap: "20px",
         }}
       >
+        <Stack
+          sx={{
+            padding: "10px",
+            backgroundColor: "rgba(20, 79, 146, 1)",
+            borderRadius: "8px",
+          }}
+        >
+          <Typography variant="h6">{userStat.goalQuiz2[0]?.goalData?.title || ""}</Typography>
+          <Stack
+            sx={{
+              gap: "10px",
+            }}
+          >
+            <Typography variant="body1">
+              {userStat.goalQuiz2[0]?.aboutUserTranscription || ""}
+            </Typography>
+            <Typography variant="body1">
+              {userStat.goalQuiz2[0]?.aboutUserFollowUpTranscription || ""}
+            </Typography>
+
+            <Typography variant="body1">
+              {userStat.goalQuiz2[0]?.goalUserTranscription || ""}
+            </Typography>
+          </Stack>
+        </Stack>
+
         {conversations.length === 0 && (
           <Typography
             sx={{
