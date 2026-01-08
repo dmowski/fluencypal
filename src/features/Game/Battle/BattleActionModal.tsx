@@ -15,6 +15,7 @@ import { useSettings } from "@/features/Settings/useSettings";
 import { BATTLE_WIN_POINTS } from "./data";
 import { fullLanguageName } from "@/features/Lang/lang";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
+import { ChartSection } from "@/features/Chat/ChatSection";
 
 export const BattleActionModal = ({
   battle,
@@ -267,6 +268,18 @@ export const BattleActionModal = ({
                           {"\n" + (battle.winnerDescription || i18n._("No reason provided."))}
                         </Markdown>
                       </Stack>
+                    </Stack>
+
+                    <Stack
+                      sx={{
+                        gap: "10px",
+                      }}
+                    >
+                      <Stack>
+                        <Typography variant="h6">{i18n._(`Comments:`)}</Typography>
+                        <Typography>{i18n._(`You can discuss the battle here.`)}</Typography>
+                      </Stack>
+                      <ChartSection placeholder={i18n._("How the battle went?")} />
                     </Stack>
                   </Stack>
                 </>

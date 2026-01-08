@@ -51,7 +51,7 @@ function useProvideChat({ space }: { space: string }): ChatContextType {
   const [activeCommentMessageId, setActiveCommentMessageId] = useState("");
   const [activeMessageId, setActiveMessageId] = useUrlState("post", "", false);
 
-  const settings = useSettings();
+  //const settings = useSettings();
 
   const { messages, topLevelMessages, commentsInfo } = useMemo<{
     messages: UserChatMessage[];
@@ -93,8 +93,7 @@ function useProvideChat({ space }: { space: string }): ChatContextType {
     };
   }, [messagesData]);
 
-  const readChatMessages = settings.readChatMessages;
-  const unreadMessagesCount = Math.max(0, topLevelMessages.length - readChatMessages);
+  //const unreadMessagesCount = Math.max(0, topLevelMessages.length - readChatMessages);
 
   const likesRef = db.collections.usersChatLikes(space, userId);
   const [likes] = useCollectionData(likesRef);
@@ -116,7 +115,7 @@ function useProvideChat({ space }: { space: string }): ChatContextType {
     const isWindow = typeof window !== "undefined";
     if (!isWindow) return;
 
-    settings.setReadChatMessages(topLevelMessages.length);
+    // settings.setReadChatMessages(topLevelMessages.length);
   };
 
   const toggleLike = async (messageId: string, type: ChatLikeType) => {
@@ -207,7 +206,7 @@ function useProvideChat({ space }: { space: string }): ChatContextType {
     messagesLikes,
     editMessage,
 
-    unreadMessagesCount,
+    unreadMessagesCount: 0,
     viewMessage,
 
     markAsRead,

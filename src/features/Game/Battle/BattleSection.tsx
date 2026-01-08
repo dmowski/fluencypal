@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useLingui } from "@lingui/react";
 import { ChevronDown } from "lucide-react";
 import { useAuth } from "@/features/Auth/useAuth";
+import { ChatProvider } from "@/features/Chat/useChat";
 
 const defaultLimit = 1;
 
@@ -59,7 +60,11 @@ export const BattleSection = () => {
         }}
       >
         {battlesToShow.map((battle) => (
-          <BattleCard key={battle.battleId} battle={battle} />
+          <Stack key={battle.battleId}>
+            <ChatProvider space={`battle_${battle.battleId}`}>
+              <BattleCard battle={battle} />
+            </ChatProvider>
+          </Stack>
         ))}
       </Stack>
 

@@ -395,7 +395,7 @@ msgstr "改进关键后端技能的行动计划"
 msgid "Active"
 msgstr "活跃"
 
-#: src/features/Chat/ChatSection.tsx:137
+#: src/features/Chat/ChatSection.tsx:106
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "添加回复"
@@ -415,7 +415,7 @@ msgstr "添加新目标"
 msgid "Add New Post"
 msgstr "添加新帖子"
 
-#: src/features/Chat/ChatSection.tsx:260
+#: src/features/Chat/ChatSection.tsx:229
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "添加帖子"
@@ -425,7 +425,7 @@ msgstr "添加帖子"
 msgid "Add some info why you want a refund and we will do it."
 msgstr "添加一些您要求退款的原因，我们会为您办理。"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:367
+#: src/features/Game/Battle/BattleActionModal.tsx:380
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
 msgstr "添加文字答案"
@@ -499,7 +499,7 @@ msgstr "AI 和身份"
 msgid "AI conversation"
 msgstr "AI 对话"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:250
+#: src/features/Game/Battle/BattleActionModal.tsx:251
 #. js-lingui-explicit-id
 msgid "AI Decision"
 msgstr "AI 决策"
@@ -601,7 +601,7 @@ msgstr "AI 语音"
 msgid "AI voice is disabled"
 msgstr "AI 语音已禁用"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:393
+#: src/features/Game/Battle/BattleActionModal.tsx:406
 #. js-lingui-explicit-id
 msgid "AI will evaluate answers and determine the winner."
 msgstr "AI将评估答案并确定获胜者。"
@@ -667,7 +667,7 @@ msgid "Almost correct"
 msgstr "几乎正确"
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
-#: src/features/Game/Battle/BattleActionModal.tsx:283
+#: src/features/Game/Battle/BattleActionModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Almost there!"
 msgstr "快到了！"
@@ -860,7 +860,7 @@ msgid ""
 "your chances of success."
 msgstr "避免这些错误将使你看起来更专业，增加你成功的机会。"
 
-#: src/features/Chat/ChatSection.tsx:174
+#: src/features/Chat/ChatSection.tsx:143
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -1039,11 +1039,6 @@ msgid ""
 "Build confidence to discuss equity, benefits, and salary packages that "
 "match your experience."
 msgstr "建立自信，讨论符合您经验的股权、福利和薪酬方案。"
-
-#: src/features/Chat/ChatSection.tsx:102
-#. js-lingui-explicit-id
-msgid "Build connections"
-msgstr "建立联系"
 
 #: src/features/Landing/LandingPage.tsx:197
 #. js-lingui-explicit-id
@@ -1364,7 +1359,7 @@ msgid ""
 msgstr "清晰的系统设计结构。我终于在解释权衡时没有东拉西扯。"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
-#: src/features/Game/Battle/BattleActionModal.tsx:274
+#: src/features/Game/Battle/BattleActionModal.tsx:287
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:472
 #: src/features/Game/UserProfileModal.tsx:131
 #: src/features/Header/NeedHelpModal.tsx:181
@@ -1392,6 +1387,11 @@ msgstr "编码技能"
 msgid "Comment"
 msgstr "评论"
 
+#: src/features/Game/Battle/BattleActionModal.tsx:279
+#. js-lingui-explicit-id
+msgid "Comments:"
+msgstr "评论："
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
 #. js-lingui-explicit-id
 msgid "Common Mistakes to Avoid"
@@ -1414,7 +1414,7 @@ msgstr "传达系统设计权衡"
 msgid "Communication & Leadership"
 msgstr "沟通与领导力"
 
-#: src/features/Navigation/NavigationBar.tsx:72
+#: src/features/Navigation/NavigationBar.tsx:70
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "社区"
@@ -1679,12 +1679,12 @@ msgstr "卡壳时的纠正"
 msgid "Could not find page"
 msgstr "无法找到页面"
 
-#: src/features/Conversation/ConversationPage.tsx:143
+#: src/features/Conversation/ConversationPage.tsx:148
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "正在制定新规则..."
 
-#: src/features/Conversation/ConversationPage.tsx:139
+#: src/features/Conversation/ConversationPage.tsx:144
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "正在创造新词……"
@@ -1884,7 +1884,7 @@ msgstr "天"
 msgid "Debate"
 msgstr "辩论"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:117
+#: src/features/Game/Battle/BattleActionModal.tsx:118
 #. js-lingui-explicit-id
 msgid "Debate ended!"
 msgstr "辩论结束！"
@@ -1899,7 +1899,7 @@ msgstr "辩论请求"
 msgid "Debate Request Sent!"
 msgstr "请求辩论已发送！"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:375
+#: src/features/Game/Battle/BattleActionModal.tsx:388
 #. js-lingui-explicit-id
 msgid "Debate started!"
 msgstr "辩论开始了！"
@@ -2264,11 +2264,6 @@ msgstr "持续时间:"
 #. js-lingui-explicit-id
 msgid "Early access to new tools"
 msgstr "新的工具抢先体验"
-
-#: src/features/Chat/ChatSection.tsx:106
-#. js-lingui-explicit-id
-msgid "Earn game points!"
-msgstr "赚取游戏积分！"
 
 #: src/features/Chat/Message.tsx:321
 #. js-lingui-explicit-id
@@ -3719,8 +3714,8 @@ msgstr "提高自信心的提示"
 msgid "Hobbies or interests"
 msgstr "爱好或兴趣"
 
-#: src/features/Navigation/NavigationBar.tsx:54
-#: src/features/Navigation/NavigationBar.tsx:67
+#: src/features/Navigation/NavigationBar.tsx:52
+#: src/features/Navigation/NavigationBar.tsx:65
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "首页"
@@ -3816,6 +3811,11 @@ msgstr "如何运作："
 #. js-lingui-explicit-id
 msgid "How long will my hours last?"
 msgstr "我的小时会持续多久？"
+
+#: src/features/Game/Battle/BattleActionModal.tsx:282
+#. js-lingui-explicit-id
+msgid "How the battle went?"
+msgstr "战斗进展如何？"
 
 #: src/features/Blog/blogData.tsx:257
 #. js-lingui-explicit-id
@@ -5290,7 +5290,7 @@ msgstr "让我们继续..."
 msgid "Let's create an account"
 msgstr "让我们创建一个账户"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:376
+#: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Let's see who has the best arguments."
 msgstr "让我们看看谁的论据最好。"
@@ -5320,7 +5320,7 @@ msgstr "倾听练习。您将听到AI的回答"
 msgid "Literature & Fiction"
 msgstr "文学与小说"
 
-#: src/features/Conversation/ConversationPage.tsx:115
+#: src/features/Conversation/ConversationPage.tsx:116
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "正在加载目标..."
@@ -5340,9 +5340,9 @@ msgstr "加载中.."
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:240
 #: src/features/Conversation/ConversationCanvas.tsx:846
-#: src/features/Conversation/ConversationPage.tsx:102
-#: src/features/Conversation/ConversationPage.tsx:111
-#: src/features/Conversation/ConversationPage.tsx:131
+#: src/features/Conversation/ConversationPage.tsx:103
+#: src/features/Conversation/ConversationPage.tsx:112
+#: src/features/Conversation/ConversationPage.tsx:136
 #: src/features/Game/GamePage.tsx:68
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
@@ -5729,7 +5729,7 @@ msgstr "新单词练习。"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/Battle/BattleActionModal.tsx:377
+#: src/features/Game/Battle/BattleActionModal.tsx:390
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
@@ -5814,7 +5814,7 @@ msgstr "无需支付..."
 msgid "No Projections Available"
 msgstr "没有可用的预测"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:267
+#: src/features/Game/Battle/BattleActionModal.tsx:268
 #. js-lingui-explicit-id
 msgid "No reason provided."
 msgstr "未提供理由。"
@@ -6698,7 +6698,7 @@ msgstr "隐私政策"
 msgid "Problem Solving"
 msgstr "问题解决"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:283
+#: src/features/Game/Battle/BattleActionModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Processing answers..."
 msgstr "正在处理答案..."
@@ -6746,8 +6746,8 @@ msgstr "专业发展"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "正在从其他领域转向前端工程的专业人士"
 
-#: src/features/Navigation/NavigationBar.tsx:60
-#: src/features/Navigation/NavigationBar.tsx:83
+#: src/features/Navigation/NavigationBar.tsx:58
+#: src/features/Navigation/NavigationBar.tsx:80
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "个人资料"
@@ -7030,11 +7030,6 @@ msgstr "真实世界的 API 和数据场景"
 msgid "Real-world scenarios, not just theory"
 msgstr "真实场景，而不仅仅是理论"
 
-#: src/features/Chat/ChatSection.tsx:98
-#. js-lingui-explicit-id
-msgid "Receive feedback and support"
-msgstr "接收反馈和支持"
-
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
 #. js-lingui-explicit-id
 msgid "Receive instant, tailored feedback from your AI partner."
@@ -7075,7 +7070,7 @@ msgid ""
 "help me to create a personalized practice plan."
 msgstr "用<0>{learningLanguageName}</0>录制2-3分钟的故事。这将帮助我创建一个个性化的练习计划。"
 
-#: src/features/Chat/ChatSection.tsx:137
+#: src/features/Chat/ChatSection.tsx:106
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "录制消息"
@@ -7245,7 +7240,7 @@ msgstr "机器人思考中"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:78
+#: src/features/Navigation/NavigationBar.tsx:75
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -7355,7 +7350,7 @@ msgstr "筛选"
 msgid "Screening interview with AI recruiter"
 msgstr "与AI招聘人员的筛选面试"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:166
+#: src/features/Game/Battle/BattleActionModal.tsx:167
 #. js-lingui-explicit-id
 msgid "Second Place"
 msgstr "亚军"
@@ -7507,11 +7502,6 @@ msgid ""
 "resolution, and project ownership."
 msgstr "分享关于跨团队合作、冲突解决和项目所有权的引人入胜的故事。"
 
-#: src/features/Chat/ChatSection.tsx:94
-#. js-lingui-explicit-id
-msgid "Share news, ideas or ask questions"
-msgstr "分享新闻、想法或提出问题"
-
 #: src/features/Case/data/frontend-junior/quizData.ts:66
 #. js-lingui-explicit-id
 msgid "Share what you're currently learning"
@@ -7519,8 +7509,8 @@ msgstr "分享您目前正在学习的内容"
 
 #: src/features/Chat/ChatSection.tsx:78
 #. js-lingui-explicit-id
-msgid "Share your thoughts with the community!"
-msgstr "与社区分享你的想法！"
+msgid "Share your thoughts and get feedback!"
+msgstr "分享你的想法并获取反馈！"
 
 #: src/features/RolePlay/rolePlayData.tsx:491
 #: src/features/RolePlay/rolePlayData.tsx:595
@@ -7550,7 +7540,7 @@ msgstr "短篇故事"
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
 msgstr "显示好奇心和参与感。不要忘记感谢他们的答案："
 
-#: src/features/Game/Battle/BattleSection.tsx:68
+#: src/features/Game/Battle/BattleSection.tsx:73
 #. js-lingui-explicit-id
 msgid "Show Debates"
 msgstr "显示辩论"
@@ -7574,7 +7564,7 @@ msgstr "显示更少"
 msgid "Show more"
 msgstr "显示更多"
 
-#: src/features/Game/Battle/BattleSection.tsx:68
+#: src/features/Game/Battle/BattleSection.tsx:73
 #. js-lingui-explicit-id
 msgid "Show More"
 msgstr "显示更多"
@@ -8090,7 +8080,7 @@ msgstr "提交"
 msgid "Submit answer"
 msgstr "提交答案"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:293
+#: src/features/Game/Battle/BattleActionModal.tsx:306
 #. js-lingui-explicit-id
 msgid "Submit Answers"
 msgstr "提交答案"
@@ -8364,7 +8354,7 @@ msgid ""
 "responses immediately."
 msgstr "我对 CSS 和 JavaScript 答案的 AI 反馈非常准确。我立刻改进了我的回应。"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:319
+#: src/features/Game/Battle/BattleActionModal.tsx:332
 #. js-lingui-explicit-id
 msgid "The answer should not take more than 300 words. ~2 minutes."
 msgstr "答案不应超过300字。~2分钟。"
@@ -8438,7 +8428,7 @@ msgstr "个性化反馈准确地指出了我在技术解释中的错误之处。
 msgid "The request will be sent to user {userName}."
 msgstr "请求将被发送给用户 {userName}。"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:381
+#: src/features/Game/Battle/BattleActionModal.tsx:394
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "获胜者获得 {points} 游戏积分！"
@@ -8448,7 +8438,7 @@ msgstr "获胜者获得 {points} 游戏积分！"
 msgid "The winner gets {points} game points!"
 msgstr "获胜者将获得 {points} 个游戏积分！"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:118
+#: src/features/Game/Battle/BattleActionModal.tsx:119
 #. js-lingui-explicit-id
 msgid "The winner has been declared."
 msgstr "获胜者已被宣布。"
@@ -8639,7 +8629,7 @@ msgstr "启动视频"
 msgid "Turn on volume"
 msgstr "打开音量"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:350
+#: src/features/Game/Battle/BattleActionModal.tsx:363
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "在此输入您的答案..."
@@ -8728,7 +8718,7 @@ msgid ""
 "achievement:"
 msgstr "使用这些模板来编写您自己的故事。别忘了提及一项成就："
 
-#: src/features/Game/Battle/BattleActionModal.tsx:309
+#: src/features/Game/Battle/BattleActionModal.tsx:322
 #. js-lingui-explicit-id
 msgid "Use your learning language ({lang})"
 msgstr "使用您正在学习的语言 ({lang})"
@@ -9192,7 +9182,7 @@ msgstr "你将会达到的目标"
 msgid "What's included?"
 msgstr "包含什么？"
 
-#: src/features/Chat/ChatSection.tsx:245
+#: src/features/Chat/ChatSection.tsx:214
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "有什么新功能？"
@@ -9249,7 +9239,7 @@ msgstr "为什么候选人进步得如此之快"
 msgid "Winner gets {points} points"
 msgstr "获胜者获得{points}分"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:166
+#: src/features/Game/Battle/BattleActionModal.tsx:167
 #. js-lingui-explicit-id
 msgid "Winner!"
 msgstr "赢家！"
@@ -9481,6 +9471,11 @@ msgstr "你可以构建项目，但**不知道面试官真正想看到什么**"
 msgid "You can delete your personal data anytime"
 msgstr "您可以随时删除您的个人数据"
 
+#: src/features/Game/Battle/BattleActionModal.tsx:280
+#. js-lingui-explicit-id
+msgid "You can discuss the battle here."
+msgstr "您可以在这里讨论战斗。"
+
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -9527,7 +9522,7 @@ msgstr "您可以在主页上跟踪进度。"
 msgid "You can try AI in action now"
 msgstr "您现在可以尝试AI的实际操作"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:346
+#: src/features/Game/Battle/BattleActionModal.tsx:359
 #. js-lingui-explicit-id
 msgid "You can use text to answer if you prefer."
 msgstr "您可以使用文字回答，如果您愿意的话。"
@@ -9556,14 +9551,14 @@ msgstr "您将获得有关重试、熔断器、超时、回退、日志记录、
 msgid "You have"
 msgstr "你有"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:286
+#: src/features/Game/Battle/BattleActionModal.tsx:299
 #. js-lingui-explicit-id
 msgid ""
 "You have answered all the questions. Submitting your answers now... Don't "
 "close this window."
 msgstr "您已回答所有问题。现在提交您的答案……请不要关闭此窗口。"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:289
+#: src/features/Game/Battle/BattleActionModal.tsx:302
 #. js-lingui-explicit-id
 msgid ""
 "You have completed all the questions. Submit your answers now and wait for "
@@ -9651,13 +9646,13 @@ msgstr "你的成就"
 msgid "Your AI speaking partner"
 msgstr "您的AI对话伙伴"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:349
+#: src/features/Game/Battle/BattleActionModal.tsx:362
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "你的答案"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:387
+#: src/features/Game/Battle/BattleActionModal.tsx:400
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
 msgstr "您的答案在提交后将对您的对手可见。"
@@ -9701,7 +9696,7 @@ msgstr "您的全面访问权限有效期至"
 msgid "Your full access is active until {activeTill}"
 msgstr "您的完全访问权限将保持有效直到 {activeTill}"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:315
+#: src/features/Game/Battle/BattleActionModal.tsx:328
 #. js-lingui-explicit-id
 msgid "Your goal is not to be perfect, but to surpass your opponent."
 msgstr "你的目标不是要完美，而是要超越你的对手。"
@@ -9801,6 +9796,31 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Chat/ChatSection.tsx:102
+#. js-lingui-explicit-id
+#~ msgid "Build connections"
+#~ msgstr "建立联系"
+
+#: src/features/Chat/ChatSection.tsx:106
+#. js-lingui-explicit-id
+#~ msgid "Earn game points!"
+#~ msgstr "赚取游戏积分！"
+
+#: src/features/Chat/ChatSection.tsx:98
+#. js-lingui-explicit-id
+#~ msgid "Receive feedback and support"
+#~ msgstr "接收反馈和支持"
+
+#: src/features/Chat/ChatSection.tsx:94
+#. js-lingui-explicit-id
+#~ msgid "Share news, ideas or ask questions"
+#~ msgstr "分享新闻、想法或提出问题"
+
+#: src/features/Chat/ChatSection.tsx:78
+#. js-lingui-explicit-id
+#~ msgid "Share your thoughts with the community!"
+#~ msgstr "与社区分享你的想法！"
 
 #: src/features/Goal/Quiz/GoalReview.tsx:79
 #. js-lingui-explicit-id

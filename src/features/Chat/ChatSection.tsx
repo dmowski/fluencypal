@@ -15,7 +15,7 @@ import { ColorIconTextList } from "../Survey/ColorIconTextList";
 import AddIcon from "@mui/icons-material/Add";
 import { MessageChain } from "./MessageChain";
 
-export const ChartSection = () => {
+export const ChartSection = ({ placeholder }: { placeholder?: string }) => {
   const auth = useAuth();
   const chat = useChat();
   const game = useGame();
@@ -75,41 +75,10 @@ export const ChartSection = () => {
                     opacity: 0.7,
                   }}
                 >
-                  {i18n._("Share your thoughts with the community!")}
+                  {i18n._("Share your thoughts and get feedback!")}
                 </Typography>
               )}
             </Stack>
-
-            {isNewPostModalOpen && (
-              <Stack
-                sx={{
-                  padding: "0px 0 20px 0",
-                }}
-              >
-                <ColorIconTextList
-                  iconSize="18px"
-                  gap="10px"
-                  listItems={[
-                    {
-                      title: i18n._("Share news, ideas or ask questions"),
-                      iconName: "message-circle",
-                    },
-                    {
-                      title: i18n._("Receive feedback and support"),
-                      iconName: "thumbs-up",
-                    },
-                    {
-                      title: i18n._("Build connections"),
-                      iconName: "users",
-                    },
-                    {
-                      title: i18n._("Earn game points!"),
-                      iconName: "bell",
-                    },
-                  ]}
-                />
-              </Stack>
-            )}
 
             <Stack
               sx={{
@@ -242,7 +211,7 @@ export const ChartSection = () => {
                     opacity: 0.6,
                   }}
                 >
-                  {i18n._("What's new?")}
+                  {placeholder || i18n._("What's new?")}
                 </Typography>
               </Stack>
               <Button
