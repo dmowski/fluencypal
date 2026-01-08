@@ -11,7 +11,6 @@ import { Message } from "./Message";
 import { useGame } from "../Game/useGame";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Avatar } from "../Game/Avatar";
-import { ColorIconTextList } from "../Survey/ColorIconTextList";
 import AddIcon from "@mui/icons-material/Add";
 import { MessageChain } from "./MessageChain";
 

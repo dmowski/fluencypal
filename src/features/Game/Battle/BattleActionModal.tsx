@@ -273,11 +273,20 @@ export const BattleActionModal = ({
                     <Stack
                       sx={{
                         gap: "10px",
+                        paddingTop: "10px",
+                        paddingBottom: "20px",
                       }}
                     >
                       <Stack>
                         <Typography variant="h6">{i18n._(`Comments:`)}</Typography>
-                        <Typography>{i18n._(`You can discuss the battle here.`)}</Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            opacity: 0.7,
+                          }}
+                        >
+                          {i18n._(`You can discuss the battle here.`)}
+                        </Typography>
                       </Stack>
                       <ChartSection placeholder={i18n._("How the battle went?")} />
                     </Stack>
