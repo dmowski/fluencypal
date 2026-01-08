@@ -923,8 +923,24 @@ export const SubscriptionPaymentModal = () => {
                 <FaqItem
                   info={{
                     question: i18n._("Is this a subscription?"),
-                    answer: i18n._(
-                      "No, you are purchasing full access for a selected period of time. There is no auto-renewal, you can buy full access again when your current period ends."
+                    answer: (
+                      <Stack
+                        sx={{
+                          gap: "10px",
+                        }}
+                      >
+                        <Typography>
+                          {i18n._(
+                            "No, you are purchasing full access for a selected period of time. There is no auto-renewal, you can buy full access again when your current period ends."
+                          )}
+                        </Typography>
+
+                        <Typography>
+                          {i18n._(
+                            "FluencyPal is my personal project and I want to keep it simple. No subscriptions, no recurring payments, just straightforward access when you need it."
+                          )}
+                        </Typography>
+                      </Stack>
                     ),
                   }}
                 />
