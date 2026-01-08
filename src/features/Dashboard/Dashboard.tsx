@@ -15,9 +15,6 @@ import { DashboardBlur } from "./DashboardBlur";
 import { RolePlayModal } from "../RolePlay/RolePlayModal";
 import { DailyQuestionBadge } from "../Game/DailyQuestion/DailyQuestionBadge";
 import { BattleSection } from "../Game/Battle/BattleSection";
-import { FeatureBlocker } from "../Usage/FeatureBlocker";
-import { useUsage } from "../Usage/useUsage";
-import { useAccess } from "../Usage/useAccess";
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -25,8 +22,6 @@ interface DashboardProps {
 export function Dashboard({ lang }: DashboardProps) {
   const appNavigation = useAppNavigation();
   const IS_SHOW_DAILY_QUESTION_BADGE = true;
-  const usage = useUsage();
-  const access = useAccess();
 
   return (
     <>
