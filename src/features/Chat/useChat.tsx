@@ -7,6 +7,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { ChatLike, ChatLikeType, UserChatMessage } from "./type";
 import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
 import { useUrlState } from "../Url/useUrlParam";
+import { useSettings } from "../Settings/useSettings";
 
 interface AddMessageProps {
   messageContent: string;
@@ -41,8 +42,6 @@ interface ChatContextType {
 
 const ChatContext = createContext<ChatContextType | null>(null);
 
-const UNREAD_MESSAGES_LOCAL_STORAGE_KEY = "chat-last-read-timestamp";
-
 function useProvideChat(): ChatContextType {
   const auth = useAuth();
   const userId = auth.uid;
@@ -51,6 +50,8 @@ function useProvideChat(): ChatContextType {
 
   const [activeCommentMessageId, setActiveCommentMessageId] = useState("");
   const [activeMessageId, setActiveMessageId] = useUrlState("post", "", false);
+
+  const settings = useSettings();
 
   const { messages, topLevelMessages, commentsInfo } = useMemo<{
     messages: UserChatMessage[];
@@ -92,7 +93,8 @@ function useProvideChat(): ChatContextType {
     };
   }, [messagesData]);
 
-  const [unreadMessagesCount, setUnreadMessagesCount] = useState(0);
+  const readChatMessages = settings.readChatMessages;
+  const unreadMessagesCount = Math.max(0, topLevelMessages.length - readChatMessages);
 
   const likesRef = db.collections.usersChatLikes(userId);
   const [likes] = useCollectionData(likesRef);
@@ -110,29 +112,11 @@ function useProvideChat(): ChatContextType {
     return likesMap;
   }, [likes]);
 
-  const getUnreadMessagesCount = (chatMessageCount: number) => {
-    const isWindow = typeof window !== "undefined";
-    if (!isWindow) return 0;
-
-    const readMessagesCount = localStorage.getItem(UNREAD_MESSAGES_LOCAL_STORAGE_KEY) || "0";
-
-    return Math.max(0, chatMessageCount - Number(readMessagesCount));
-  };
-
-  const refreshUnreadMessagesCount = () => {
-    const count = getUnreadMessagesCount(topLevelMessages.length);
-    setUnreadMessagesCount(count);
-  };
-
-  useEffect(() => {
-    refreshUnreadMessagesCount();
-  }, [topLevelMessages.length]);
-
   const markAsRead = () => {
     const isWindow = typeof window !== "undefined";
     if (!isWindow) return;
-    localStorage.setItem(UNREAD_MESSAGES_LOCAL_STORAGE_KEY, String(topLevelMessages.length));
-    setUnreadMessagesCount(0);
+
+    settings.setReadChatMessages(topLevelMessages.length);
   };
 
   const toggleLike = async (messageId: string, type: ChatLikeType) => {
