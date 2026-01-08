@@ -214,15 +214,15 @@ export const DailyQuestionBadge = () => {
         color: "#fff",
         textDecoration: "none",
         maxWidth: "700px",
-        borderRadius: "8px",
+        borderRadius: "15px",
         width: "100%",
         height: "auto",
         cursor: isStartAnswering ? "initial" : "pointer",
 
-        background: isStartAnswering ? "rgba(115, 25, 35, 0.2)" : "rgba(115, 25, 35, 1)",
+        background: isStartAnswering ? "rgba(115, 25, 35, 0.2)" : "rgba(115, 25, 35, 0.31)",
         boxShadow: isStartAnswering
           ? "0px 0px 0px 1px rgba(255, 255, 255, 0.2)"
-          : "0px 0px 0px 1px rgba(255, 255, 255, 0.2)",
+          : "0px 0px 0px 1px rgba(255, 255, 255, 0.031)",
         flexDirection: "row",
         transition: "all 0.3s ease",
         gap: "20px",
