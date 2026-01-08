@@ -31,6 +31,7 @@ import { useGame } from "../Game/useGame";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { RolePlayProvider } from "../RolePlay/useRolePlay";
 import { useAccess } from "../Usage/useAccess";
+import { ChatProvider } from "../Chat/useChat";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -116,7 +117,11 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   }
 
   if (appNavigation.currentPage === "community") {
-    return <GamePage lang={lang} />;
+    return (
+      <ChatProvider space="global">
+        <GamePage lang={lang} />
+      </ChatProvider>
+    );
   }
 
   if (aiConversation.errorInitiating) {

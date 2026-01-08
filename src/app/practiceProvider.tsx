@@ -20,7 +20,6 @@ import { TelegramProvider } from "./telegramProvider";
 import { TgNavigationProvider } from "@/features/Telegram/useTgNavigation";
 import { AppNavigationProvider } from "@/features/Navigation/useAppNavigation";
 import { AnalyticsProvider } from "@/features/Analytics/useAnalytics";
-import { ChatProvider } from "@/features/Chat/useChat";
 import { BattleProvider } from "@/features/Game/Battle/useBattle";
 import { GlobalModals } from "@/features/Modal/GlobalModals";
 
@@ -48,12 +47,10 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                           <HomeworkProvider>
                                             <PlanProvider>
                                               <AiConversationProvider>
-                                                <ChatProvider>
-                                                  <BattleProvider>
-                                                    {children}
-                                                    <GlobalModals />
-                                                  </BattleProvider>
-                                                </ChatProvider>
+                                                <BattleProvider>
+                                                  {children}
+                                                  <GlobalModals />
+                                                </BattleProvider>
                                               </AiConversationProvider>
                                             </PlanProvider>
                                           </HomeworkProvider>

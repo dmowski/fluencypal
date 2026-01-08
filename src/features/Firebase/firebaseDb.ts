@@ -73,10 +73,11 @@ export const db = {
     homework: (userId?: string) =>
       userId ? dataPointCollection<Homework>(`users/${userId}/homeworks`) : null,
 
-    usersChatMessages: (userId?: string) =>
-      userId ? dataPointCollection<UserChatMessage>(`chat/global/messages`) : null,
-    usersChatLikes: (userId?: string) =>
-      userId ? dataPointCollection<ChatLike>(`chat/global/likes`) : null,
+    usersChatMessages: (space: string, userId: string) =>
+      userId ? dataPointCollection<UserChatMessage>(`chat/${space}/messages`) : null,
+    usersChatLikes: (space: string, userId: string) =>
+      userId ? dataPointCollection<ChatLike>(`chat/${space}/likes`) : null,
+
     battle: (userId?: string) => (userId ? dataPointCollection<GameBattle>(`battles`) : null),
 
     conversation: (userId?: string) =>

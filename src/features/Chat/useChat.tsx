@@ -42,10 +42,10 @@ interface ChatContextType {
 
 const ChatContext = createContext<ChatContextType | null>(null);
 
-function useProvideChat(): ChatContextType {
+function useProvideChat({ space }: { space: string }): ChatContextType {
   const auth = useAuth();
   const userId = auth.uid;
-  const messagesRef = db.collections.usersChatMessages(userId);
+  const messagesRef = db.collections.usersChatMessages(space, userId);
   const [messagesData, loading] = useCollectionData(messagesRef);
 
   const [activeCommentMessageId, setActiveCommentMessageId] = useState("");
@@ -96,7 +96,7 @@ function useProvideChat(): ChatContextType {
   const readChatMessages = settings.readChatMessages;
   const unreadMessagesCount = Math.max(0, topLevelMessages.length - readChatMessages);
 
-  const likesRef = db.collections.usersChatLikes(userId);
+  const likesRef = db.collections.usersChatLikes(space, userId);
   const [likes] = useCollectionData(likesRef);
 
   const messagesLikes = useMemo(() => {
@@ -227,8 +227,14 @@ function useProvideChat(): ChatContextType {
   };
 }
 
-export function ChatProvider({ children }: { children: ReactNode }): JSX.Element {
-  const chatHistoryData = useProvideChat();
+export function ChatProvider({
+  children,
+  space,
+}: {
+  children: ReactNode;
+  space: string;
+}): JSX.Element {
+  const chatHistoryData = useProvideChat({ space });
 
   return <ChatContext.Provider value={chatHistoryData}>{children}</ChatContext.Provider>;
 }
