@@ -46,6 +46,9 @@ export function Dashboard({ lang }: DashboardProps) {
             padding: "0 10px",
             gap: "40px",
             width: "100%",
+            "@media (max-width:600px)": {
+              padding: "0px",
+            },
           }}
         >
           {appNavigation.currentPage === "home" && (

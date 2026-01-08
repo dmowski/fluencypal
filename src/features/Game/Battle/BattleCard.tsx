@@ -84,6 +84,10 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
         display: "grid",
         minHeight: "120px",
         gridTemplateColumns: "1fr",
+        "@media (max-width:600px)": {
+          boxShadow: "none",
+          borderRadius: "0px",
+        },
       }}
     >
       {isActiveModal && (

@@ -71,7 +71,6 @@ export const DailyQuestionBadgeComponent = ({
         minHeight: "120px",
         gridTemplateColumns: "1fr",
         "@media (max-width:600px)": {
-          padding: "30px 10px 30px 10px",
           boxShadow: "none",
           borderRadius: "0px",
         },
