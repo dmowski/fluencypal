@@ -205,7 +205,7 @@ ${battle.usersIds
   .join("\n\n")}
 
 Please provide your decision in the following JSON format:
-{"winnerUserId": 'userId', "reason": "A brief explanation of why the selected participant won."}`;
+{"winnerUserId": "userId", "reason": "A brief explanation of why the selected participant won. Do not mention userId in the reason."}`;
 
       console.log("systemMessage", systemMessage);
 
