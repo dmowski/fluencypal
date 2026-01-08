@@ -228,9 +228,9 @@ VISUAL_CONTEXT (latest): ${description}
     defaultMessagesToComplete
   );
 
-  const [isMutedStorage, setIsMutedStorage] = useLocalStorage<boolean>("isMuted", true);
+  const [isMutedStorage, setIsMutedStorage] = useLocalStorage<boolean>("isMuted", false);
 
-  const isMuted = isMutedStorage ?? true;
+  const isMuted = isMutedStorage ?? false;
 
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
