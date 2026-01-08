@@ -3,7 +3,7 @@ import { useLingui } from "@lingui/react";
 import { useEffect, useMemo, useState } from "react";
 import { dailyQuestions } from "./dailyQuestions";
 import dayjs from "dayjs";
-import { Check, Languages, Sparkles } from "lucide-react";
+import { Check, ChevronRight, Languages, Mic, Sparkles } from "lucide-react";
 import { getWordsCount } from "@/libs/words";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
@@ -373,70 +373,72 @@ export const DailyQuestionBadge = () => {
                       error={recorder.error}
                     />
 
-                    <Stack
-                      sx={{
-                        border: "1px solid rgba(255, 255, 255, 0.1)",
-                        padding: "12px 12px 15px 10px",
-                        borderRadius: "8px",
-                        backgroundColor: "rgba(255, 255, 255, 0.02)",
-                        gap: "12px",
-                      }}
-                    >
+                    {transcript && (
                       <Stack
                         sx={{
-                          flexDirection: "row",
-                          alignItems: "center",
-                          gap: "6px",
+                          border: "1px solid rgba(255, 255, 255, 0.1)",
+                          padding: "12px 12px 15px 10px",
+                          borderRadius: "8px",
+                          backgroundColor: "rgba(255, 255, 255, 0.02)",
+                          gap: "12px",
                         }}
                       >
-                        {(aiSuggestionRate || 0) >= 8 && (
-                          <Stack
-                            sx={{
-                              padding: "7px",
-                              borderRadius: "50%",
-                              backgroundColor: "rgba(76, 175, 80, 0.9)",
-                            }}
-                          >
-                            <Sparkles color="#fff" size={"14px"} />
-                          </Stack>
-                        )}
-                        <Typography
-                          variant="body1"
-                          sx={{
-                            opacity: 0.8,
-                          }}
-                          className={isLoadingAiSuggestion ? "loading-shimmer" : ""}
-                        >
-                          <b>{i18n._("Analysis")}</b>:{" "}
-                          {isLoadingAiSuggestion
-                            ? "Loading..."
-                            : aiSuggestionRate && `${aiSuggestionRate || 0}/10`}
-                          {aiSuggestionRate && <> {aiSuggestionRate >= 8 && i18n._("Great!")}</>}
-                        </Typography>
-                      </Stack>
-
-                      {(aiSuggestionRate || 0) < 8 && (
                         <Stack
                           sx={{
-                            gap: "8px",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            gap: "6px",
                           }}
                         >
+                          {(aiSuggestionRate || 0) >= 8 && (
+                            <Stack
+                              sx={{
+                                padding: "7px",
+                                borderRadius: "50%",
+                                backgroundColor: "rgba(76, 175, 80, 0.9)",
+                              }}
+                            >
+                              <Sparkles color="#fff" size={"14px"} />
+                            </Stack>
+                          )}
                           <Typography
-                            variant="body2"
+                            variant="body1"
                             sx={{
                               opacity: 0.8,
                             }}
                             className={isLoadingAiSuggestion ? "loading-shimmer" : ""}
                           >
-                            <b>{i18n._("Suggestion")}</b>:{" "}
-                            {aiSuggestion ||
-                              (transcript
-                                ? i18n._("Suggestion is loading...")
-                                : i18n._("Record your answer to see AI suggestion"))}
+                            <b>{i18n._("Analysis")}</b>:{" "}
+                            {isLoadingAiSuggestion
+                              ? "Loading..."
+                              : aiSuggestionRate && `${aiSuggestionRate || 0}/10`}
+                            {aiSuggestionRate && <> {aiSuggestionRate >= 8 && i18n._("Great!")}</>}
                           </Typography>
                         </Stack>
-                      )}
-                    </Stack>
+
+                        {(aiSuggestionRate || 0) < 8 && (
+                          <Stack
+                            sx={{
+                              gap: "8px",
+                            }}
+                          >
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                opacity: 0.8,
+                              }}
+                              className={isLoadingAiSuggestion ? "loading-shimmer" : ""}
+                            >
+                              <b>{i18n._("Suggestion")}</b>:{" "}
+                              {aiSuggestion ||
+                                (transcript
+                                  ? i18n._("Suggestion is loading...")
+                                  : i18n._("Record your answer to see AI suggestion"))}
+                            </Typography>
+                          </Stack>
+                        )}
+                      </Stack>
+                    )}
 
                     <Stack
                       sx={{
@@ -456,6 +458,19 @@ export const DailyQuestionBadge = () => {
                       <Typography align="center" variant="caption" color="text.secondary">
                         {i18n._(`To see others answers, you need to publish yours.`)}
                       </Typography>
+                      <Button
+                        sx={{
+                          marginTop: "30px",
+                        }}
+                        onClick={() => {
+                          setIsStartAnswering(false);
+                          if (recorder.isRecording) {
+                            recorder.cancelRecording();
+                          }
+                        }}
+                      >
+                        {i18n._("Close")}
+                      </Button>
                     </Stack>
                   </Stack>
                 </>
@@ -583,25 +598,30 @@ export const DailyQuestionBadge = () => {
           </Typography>
         )}
 
-        <Stack
-          sx={{
-            paddingTop: "15px",
-            width: "max-content",
-          }}
-        >
-          {!isStartAnswering && (
+        {!isStartAnswering && (
+          <Stack
+            sx={{
+              paddingTop: "25px",
+              width: "max-content",
+              flexDirection: "row",
+              gap: "10px",
+            }}
+          >
             <Button
               onClick={onClick}
               variant="outlined"
+              endIcon={
+                isIamAnsweredThisQuestion ? <Check size={"18px"} /> : <ChevronRight size={"18px"} />
+              }
               sx={{
                 color: "#fff",
                 borderColor: "#fff",
               }}
             >
-              {isIamAnsweredThisQuestion ? i18n._("See Answers") : i18n._("Answer Now")}
+              {isIamAnsweredThisQuestion ? i18n._("See Answers") : i18n._("Open")}
             </Button>
-          )}
-        </Stack>
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );
