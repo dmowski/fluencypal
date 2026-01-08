@@ -414,7 +414,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           .sort((a, b) => {
             return dayjs(b.updatedAtIso).diff(dayjs(a.updatedAtIso));
           })
-          .filter((_, index) => index < 3)
+          .filter((_, index) => index < 23)
           .map((conversation, index) => {
             return (
               <Stack
