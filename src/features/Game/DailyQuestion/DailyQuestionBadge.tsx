@@ -16,8 +16,8 @@ import { useTranslate } from "@/features/Translation/useTranslate";
 import { QuestionComment } from "./QuestionComment";
 import { sendTelegramRequest } from "@/features/Telegram/sendTextAiRequest";
 import { useCorrections } from "@/features/Corrections/useCorrections";
-import { IconTextList } from "@/features/Survey/IconTextList";
 import { RecordUserAudioAnswer } from "@/features/Survey/RecordUserAudioAnswer";
+import { ColorIconTextList } from "@/features/Survey/ColorIconTextList";
 
 export const DailyQuestionBadge = () => {
   const { i18n } = useLingui();
@@ -320,11 +320,13 @@ export const DailyQuestionBadge = () => {
                       gap: "10px",
                     }}
                   >
-                    <IconTextList
+                    <ColorIconTextList
                       listItems={todaysQuestion.hints.map((hint) => ({
                         title: hint,
                         iconName: "lightbulb",
                       }))}
+                      iconSize={"20px"}
+                      gap="10px"
                     />
                     {translation.translateModal}
                     <Stack
@@ -438,11 +440,7 @@ export const DailyQuestionBadge = () => {
 
                     <Stack
                       sx={{
-                        "@media (max-width:600px)": {
-                          position: "sticky",
-                          bottom: "86px",
-                          boxShadow: "0px -4px 18px 0px rgba(0, 0, 0, 0.1)",
-                        },
+                        gap: "5px",
                       }}
                     >
                       <Button
@@ -455,10 +453,10 @@ export const DailyQuestionBadge = () => {
                       >
                         {i18n._("Publish")}
                       </Button>
+                      <Typography align="center" variant="caption" color="text.secondary">
+                        {i18n._(`To see others answers, you need to publish yours.`)}
+                      </Typography>
                     </Stack>
-                    <Typography align="center" variant="caption" color="text.secondary">
-                      {i18n._(`To see others answers, you need to publish yours.`)}
-                    </Typography>
                   </Stack>
                 </>
               )}
