@@ -14,10 +14,14 @@ export const GoalReview = ({
   onClick,
   isLoading,
   goalData,
+  actionButtonLabel,
+  actionButtonIcon,
 }: {
   onClick: () => void;
   isLoading: boolean;
   goalData?: GoalPlan | null;
+  actionButtonLabel?: string;
+  actionButtonIcon?: React.ReactNode;
 }) => {
   const { i18n } = useLingui();
   const sizes = useWindowSizes();
@@ -153,8 +157,8 @@ export const GoalReview = ({
       <FooterButton
         disabled={isLoading}
         onClick={onClick}
-        title={i18n._("Start")}
-        endIcon={<ArrowRight />}
+        title={actionButtonLabel || i18n._("Start")}
+        endIcon={actionButtonIcon || <ArrowRight />}
       />
     </Stack>
   );

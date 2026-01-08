@@ -23,6 +23,7 @@ import { sleep } from "@/libs/sleep";
 import { QuizPageLoader } from "@/features/Case/quiz/QuizPageLoader";
 import { Check } from "lucide-react";
 import { ColorIconTextList } from "@/features/Survey/ColorIconTextList";
+import VideocamIcon from "@mui/icons-material/Videocam";
 
 const QuizQuestions = () => {
   const {
@@ -132,21 +133,25 @@ const QuizQuestions = () => {
           {currentStep === "before_recordAbout" && (
             <AuthWall>
               <InfoStep
-                title={i18n._(`We are ready`)}
-                subTitle={i18n._(`Let's talk. Tell me  about yourself`)}
+                title={i18n._(`Conversation preparation`)}
+                subTitle={i18n._(
+                  `I'll ask you a few questions to get to know you. Then, based on your answers, I'll create a personalized practice plan for you.`
+                )}
                 listItems={[
-                  {
-                    title: i18n._("Hobbies or interests"),
-                    iconName: "guitar",
-                  },
                   {
                     title: i18n._("Main goal in learning"),
                     iconName: "graduation-cap",
                   },
                   {
-                    title: i18n._("Do you have any travel plans?"),
-                    iconName: "plane",
+                    title: i18n._("The biggest challenge in learning"),
+                    iconName: "alert-triangle",
                   },
+
+                  {
+                    title: i18n._("Hobbies or interests"),
+                    iconName: "guitar",
+                  },
+
                   {
                     title: i18n._("Movies, books, or music"),
                     iconName: "music",
@@ -162,16 +167,18 @@ const QuizQuestions = () => {
           {currentStep === "recordAbout" && (
             <AuthWall>
               <RecordUserAudio
-                title={i18n._("Tell me about yourself")}
+                title={i18n._("Tell me about your goals")}
                 subTitle={
                   languageToLearn === nativeLanguage ? (
                     <Trans>
-                      Record 2-3 minutes story using <b>{learningLanguageName}</b>
+                      Record 2-3 minutes story using <b>{learningLanguageName}</b>. This will help
+                      me to create a personalized practice plan.
                     </Trans>
                   ) : (
                     <Trans>
                       Record 2-3 minutes story using <b>{learningLanguageName}</b> or{" "}
-                      <b>{nativeLanguageName}</b>
+                      <b>{nativeLanguageName}</b>. This will help me to create a personalized
+                      practice plan.
                     </Trans>
                   )
                 }
@@ -181,12 +188,12 @@ const QuizQuestions = () => {
                     iconName: "graduation-cap",
                   },
                   {
-                    title: i18n._("Hobbies or interests"),
-                    iconName: "guitar",
+                    title: i18n._("What you want to achieve"),
+                    iconName: "flag",
                   },
                   {
-                    title: i18n._("Do you have any travel plans?"),
-                    iconName: "plane",
+                    title: i18n._("What challenges you face"),
+                    iconName: "alert-triangle",
                   },
                   {
                     title: i18n._("Movies, books, or music"),
@@ -216,8 +223,8 @@ const QuizQuestions = () => {
           {currentStep === "before_recordAboutFollowUp" && (
             <AuthWall>
               <InfoStep
-                title={i18n._(`Wow, that was awesome!`)}
-                subTitle={i18n._(`Let's continue, I have a question for you!`)}
+                title={i18n._(`Let's continue...`)}
+                subTitle={i18n._(`I'll ask you two more questions before I make your plan.`)}
                 subComponent={
                   <Stack
                     sx={{
@@ -259,8 +266,8 @@ const QuizQuestions = () => {
           {currentStep === "before_recordAboutFollowUp2" && (
             <AuthWall>
               <InfoStep
-                title={i18n._(`Before the training plan...`)}
-                subTitle={i18n._(`Let's talk about your goals a bit more`)}
+                title={i18n._(`Almost there...`)}
+                subTitle={i18n._(`The last question before we create your plan`)}
                 subComponent={
                   <Stack
                     sx={{
@@ -302,8 +309,8 @@ const QuizQuestions = () => {
           {currentStep === "before_goalReview" && (
             <AuthWall>
               <InfoStep
-                title={i18n._(`Now, we ready to create your learning plan`)}
-                subTitle={i18n._(`It might take up to a minute`)}
+                title={i18n._(`We ready to create your plan`)}
+                subTitle={i18n._(`It might take up to a minute.`)}
                 onClick={nextStep}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
@@ -317,6 +324,8 @@ const QuizQuestions = () => {
                 onClick={doneQuiz}
                 isLoading={isGoalGenerating || survey?.goalData === null}
                 goalData={survey?.goalData}
+                actionButtonIcon={<VideocamIcon />}
+                actionButtonLabel={i18n._("Start")}
               />
             </AuthWall>
           )}
