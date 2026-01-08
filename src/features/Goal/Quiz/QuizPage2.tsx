@@ -304,7 +304,7 @@ const QuizQuestions = () => {
 
           {currentStep === "goalReview" && (
             <AuthWall>
-              <GoalReview onClick={nextStep} />
+              <GoalReview onClick={doneQuiz} />
             </AuthWall>
           )}
 

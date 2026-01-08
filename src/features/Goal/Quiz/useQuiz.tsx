@@ -75,7 +75,6 @@ const stepsViews: QuizStep[] = [
 
   "before_goalReview",
   "goalReview",
-  "paidVsFree",
 ];
 
 export const MIN_WORDS_FOR_ANSWER = 30;
