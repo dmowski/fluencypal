@@ -169,7 +169,7 @@ export const DailyQuestionBadgeComponent = ({
           <Stack
             sx={{
               gap: "10px",
-              paddingTop: "20px",
+              padding: "40px 0 20px 0",
             }}
           >
             <Stack>
