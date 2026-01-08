@@ -17,7 +17,7 @@ export const InfoBlockedSection = ({ title }: { title: string }) => {
         sx={{
           gap: "10px",
           width: "100%",
-          maxWidth: "700px",
+          maxWidth: "680px",
         }}
       >
         <Typography
