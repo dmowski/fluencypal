@@ -240,7 +240,6 @@ export const ChartSection = ({ placeholder }: { placeholder?: string }) => {
           sx={{
             padding: "30px 20px 20px 20px",
             marginTop: "-10px",
-            //alignItems: "center",
             justifyContent: "center",
           }}
         >
