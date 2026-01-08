@@ -100,6 +100,8 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
 
   const conversations = userStat.conversationMeta.conversations || [];
 
+  const aiUserInfo = userStat.aiUserInfo;
+
   useEffect(() => {
     if (!isCopied) {
       return;
@@ -491,6 +493,30 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                 {userStat.goalQuiz2[0]?.goalUserTranscription || ""}
               </Typography>
             </Stack>
+
+            {aiUserInfo?.records && (
+              <details>
+                <summary>AI User Info Records ({aiUserInfo.records.length})</summary>
+
+                <Stack sx={{ gap: "10px", paddingTop: "10px" }}>
+                  {aiUserInfo?.records.map((record, index) => (
+                    <Typography
+                      key={index}
+                      variant="body1"
+                      sx={{
+                        //borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+                        padding: "8px",
+                        borderRadius: "4px",
+                        fontSize: "18px",
+                        backgroundColor: "rgba(255, 255, 255, 0.05)",
+                      }}
+                    >
+                      {record}
+                    </Typography>
+                  ))}
+                </Stack>
+              </details>
+            )}
           </Stack>
         </Stack>
 
