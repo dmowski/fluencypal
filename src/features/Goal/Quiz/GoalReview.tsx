@@ -3,18 +3,24 @@ import { Stack, Typography } from "@mui/material";
 import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
 import { ArrowRight } from "lucide-react";
-import { useQuiz } from "./useQuiz";
 import { PlanCard } from "@/features/Plan/PlanCard";
-import { PlanElementMode } from "@/features/Plan/types";
+import { GoalPlan, PlanElementMode } from "@/features/Plan/types";
 import { cardColors, modeCardProps } from "@/features/Plan/data";
 import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 import { FooterButton } from "../../Survey/FooterButton";
 import { useAuth } from "@/features/Auth/useAuth";
 
-export const GoalReview = ({ onClick }: { onClick: () => void }) => {
+export const GoalReview = ({
+  onClick,
+  isLoading,
+  goalData,
+}: {
+  onClick: () => void;
+  isLoading: boolean;
+  goalData?: GoalPlan | null;
+}) => {
   const { i18n } = useLingui();
   const sizes = useWindowSizes();
-  const quiz = useQuiz();
 
   const modeLabels: Record<PlanElementMode, string> = {
     conversation: i18n._(`Conversation`),
@@ -25,8 +31,6 @@ export const GoalReview = ({ onClick }: { onClick: () => void }) => {
 
   const auth = useAuth();
   const username = auth.userInfo?.displayName;
-
-  const isLoading = quiz.isGoalGenerating || quiz.survey?.goalData === null;
 
   return (
     <Stack
@@ -79,7 +83,7 @@ export const GoalReview = ({ onClick }: { onClick: () => void }) => {
               }}
               className={isLoading ? "loading-shimmer" : ""}
             >
-              {isLoading ? i18n._("Loading..") : quiz.survey?.goalData?.title}
+              {isLoading ? i18n._("Loading..") : goalData?.title}
             </Typography>
           </Stack>
           <Stack
@@ -95,7 +99,7 @@ export const GoalReview = ({ onClick }: { onClick: () => void }) => {
                   gap: "15px",
                 }}
               >
-                {quiz.survey?.goalData?.elements.map((planElement, index, sortedElements) => {
+                {goalData?.elements.map((planElement, index, sortedElements) => {
                   const cardInfo = modeCardProps[planElement.mode];
                   const colorIndex = index % cardColors.length;
                   const cardColor = cardColors[colorIndex];

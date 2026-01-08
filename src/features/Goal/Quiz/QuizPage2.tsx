@@ -38,6 +38,7 @@ const QuizQuestions = () => {
     nextStep,
     confirmPlan,
     pageLanguage,
+    isGoalGenerating,
   } = useQuiz();
   const { i18n } = useLingui();
 
@@ -304,7 +305,11 @@ const QuizQuestions = () => {
 
           {currentStep === "goalReview" && (
             <AuthWall>
-              <GoalReview onClick={doneQuiz} />
+              <GoalReview
+                onClick={doneQuiz}
+                isLoading={isGoalGenerating || survey?.goalData === null}
+                goalData={survey?.goalData}
+              />
             </AuthWall>
           )}
 

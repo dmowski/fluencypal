@@ -1,5 +1,5 @@
 "use client";
-import { Button, Link, Stack, TextField, Tooltip, Typography } from "@mui/material";
+import { Button, IconButton, Link, Stack, TextField, Tooltip, Typography } from "@mui/material";
 import { useAuth } from "../Auth/useAuth";
 import { DEV_EMAILS } from "@/common/dev";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -10,6 +10,7 @@ import { getFirebaseLink } from "../Firebase/getFirebaseLink";
 import { useGame } from "../Game/useGame";
 import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
 import {
+  ArrowRight,
   BadgeCheck,
   Check,
   Copy,
@@ -25,6 +26,8 @@ import { UserSource } from "@/common/analytics";
 import { Messages } from "../Conversation/Messages";
 import { Conversation } from "@/common/conversation";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { GoalPlan } from "../Plan/types";
+import { GoalReview } from "../Goal/Quiz/GoalReview";
 
 const copyToClipboard = async (text: string) => {
   try {
@@ -112,6 +115,9 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
 
   const [showConversation, setShowConversation] = useState<Conversation | null>(null);
 
+  //
+  const [showGoalPlan, setShowGoalPlan] = useState<GoalPlan | null>(null);
+
   return (
     <Stack
       sx={{
@@ -123,6 +129,18 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
         gap: "25px",
       }}
     >
+      {showGoalPlan && (
+        <CustomModal onClose={() => setShowGoalPlan(null)} isOpen={true}>
+          <GoalReview
+            goalData={showGoalPlan}
+            onClick={function (): void {
+              setShowGoalPlan(null);
+            }}
+            isLoading={false}
+          />
+        </CustomModal>
+      )}
+
       {showConversation && (
         <CustomModal onClose={() => setShowConversation(null)} isOpen={true}>
           <Messages
@@ -424,7 +442,23 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             borderRadius: "8px",
           }}
         >
-          <Typography variant="h6">{userStat.goalQuiz2[0]?.goalData?.title || ""}</Typography>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+            onClick={() => {
+              setShowGoalPlan(userStat.goalQuiz2[0].goalData);
+            }}
+          >
+            <Typography variant="h6">{userStat.goalQuiz2[0]?.goalData?.title || ""}</Typography>
+
+            <IconButton>
+              <ArrowRight />
+            </IconButton>
+          </Stack>
+
           <Stack
             sx={{
               gap: "10px",
@@ -454,7 +488,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
         )}
         {conversations
           .sort((a, b) => {
-            return dayjs(b.updatedAtIso).diff(dayjs(a.updatedAtIso));
+            return a.updatedAtIso.localeCompare(b.updatedAtIso);
           })
           .filter((_, index) => index < 23)
           .map((conversation, index) => {
@@ -476,7 +510,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                 </Typography>
 
                 <Typography sx={{}}>
-                  {dayjs(conversation.updatedAtIso).format("HH:mm")} |{" "}
+                  {dayjs(conversation.updatedAtIso).format("DD MMM | HH:mm")} |{" "}
                   {dayjs(conversation.updatedAtIso).fromNow()}
                 </Typography>
               </Stack>
