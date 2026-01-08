@@ -70,6 +70,11 @@ export const DailyQuestionBadgeComponent = ({
         display: "grid",
         minHeight: "120px",
         gridTemplateColumns: "1fr",
+        "@media (max-width:600px)": {
+          padding: "30px 10px 30px 10px",
+          boxShadow: "none",
+          borderRadius: "0px",
+        },
       }}
     >
       <Stack
@@ -183,6 +188,7 @@ export const DailyQuestionBadgeComponent = ({
                 {i18n._(`You can discuss the daily question here.`)}
               </Typography>
             </Stack>
+
             <ChartSection placeholder={i18n._("What do you think?")} />
           </Stack>
         )}

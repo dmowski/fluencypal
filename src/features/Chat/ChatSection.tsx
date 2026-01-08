@@ -194,6 +194,8 @@ export const ChartSection = ({ placeholder }: { placeholder?: string }) => {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: "10px",
               }}
             >
               <Stack>
@@ -214,14 +216,12 @@ export const ChartSection = ({ placeholder }: { placeholder?: string }) => {
                   {placeholder || i18n._("What's new?")}
                 </Typography>
               </Stack>
+
               <Button
                 variant="contained"
                 color="info"
                 sx={{
                   width: "auto",
-                  "@media (max-width: 400px)": {
-                    display: "none",
-                  },
                 }}
                 startIcon={<AddIcon />}
                 onClick={() => setIsNewPostModalOpen(true)}
@@ -240,7 +240,7 @@ export const ChartSection = ({ placeholder }: { placeholder?: string }) => {
           sx={{
             padding: "30px 20px 20px 20px",
             marginTop: "-10px",
-            alignItems: "center",
+            //alignItems: "center",
             justifyContent: "center",
           }}
         >
