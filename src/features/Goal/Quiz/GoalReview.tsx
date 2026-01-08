@@ -149,7 +149,7 @@ export const GoalReview = ({ onClick }: { onClick: () => void }) => {
       <FooterButton
         disabled={isLoading}
         onClick={onClick}
-        title={i18n._("Next")}
+        title={i18n._("Start")}
         endIcon={<ArrowRight />}
       />
     </Stack>
