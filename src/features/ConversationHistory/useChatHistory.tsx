@@ -98,6 +98,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
       messages: [],
       languageCode,
       messageOrder: {},
+      createdAtIso: new Date().toISOString(),
       updatedAtIso: new Date().toISOString(),
       mode,
     };

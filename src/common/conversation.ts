@@ -39,6 +39,7 @@ export interface Conversation {
   messageOrder: MessagesOrderMap;
 
   createdAt: number;
+  createdAtIso: string;
   updatedAt: number;
   updatedAtIso: string;
   languageCode: SupportedLanguage;
