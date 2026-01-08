@@ -23,6 +23,8 @@ import {
 import { defaultAvatar } from "../Game/avatars";
 import { UserSource } from "@/common/analytics";
 import { Messages } from "../Conversation/Messages";
+import { Conversation } from "@/common/conversation";
+import { CustomModal } from "../uiKit/Modal/CustomModal";
 
 const copyToClipboard = async (text: string) => {
   try {
@@ -108,6 +110,8 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
     setIsCopied(true);
   };
 
+  const [showConversation, setShowConversation] = useState<Conversation | null>(null);
+
   return (
     <Stack
       sx={{
@@ -119,6 +123,15 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
         gap: "25px",
       }}
     >
+      {showConversation && (
+        <CustomModal onClose={() => setShowConversation(null)} isOpen={true}>
+          <Messages
+            messageOrder={showConversation.messageOrder}
+            conversation={showConversation.messages}
+          />
+        </CustomModal>
+      )}
+
       <Stack
         sx={{
           alignItems: "center",
@@ -403,37 +416,21 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           })
           .filter((_, index) => index < 3)
           .map((conversation, index) => {
-            const bgColors = index % 2 === 0 ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 0, 0, 0.1)";
             return (
               <Stack
                 key={conversation.id}
                 sx={{
-                  backgroundColor: bgColors,
+                  backgroundColor: "rgba(229, 229, 229, 0.21)",
+                  padding: "10px",
+                  cursor: "pointer",
+                  borderRadius: "8px",
                 }}
+                onClick={() => setShowConversation(conversation)}
               >
-                <Typography
-                  sx={{
-                    backgroundColor: "rgba(94, 94, 94, 1)",
-                    padding: "4px 8px",
-                    position: "sticky",
-                    top: 0,
-                    zIndex: 1,
-                    fontSize: "14px",
-                  }}
-                >
-                  {conversation.mode} ({conversation.languageCode}: {conversation.messagesCount}{" "}
-                  messages) - <i>{dayjs(conversation.updatedAtIso).fromNow()}</i>
+                <Typography sx={{}}>
+                  <b>{conversation.messagesCount} messages</b> | {conversation.mode} |{" "}
+                  {dayjs(conversation.updatedAtIso).fromNow()}
                 </Typography>
-                <Stack
-                  sx={{
-                    fontSize: "14px",
-                  }}
-                >
-                  <Messages
-                    messageOrder={conversation.messageOrder}
-                    conversation={conversation.messages}
-                  />
-                </Stack>
               </Stack>
             );
           })}
