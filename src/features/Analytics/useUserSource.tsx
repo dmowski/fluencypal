@@ -36,7 +36,7 @@ function useProvideUserSource(): UserSourceContextType {
     if (!isWindow) return null;
 
     const url = new URL(window.location.href);
-    const referrer = document.referrer || "direct";
+    const referrer = document.referrer || "";
 
     return {
       urlPath: url.pathname + url.search,
@@ -63,19 +63,7 @@ function useProvideUserSource(): UserSourceContextType {
     }
 
     const fromUrl = getSourceFromUrl();
-
-    // Only store when the URL actually contains tracking params
-    const hasTrackingParams =
-      fromUrl?.gclid ||
-      fromUrl?.gbraid ||
-      fromUrl?.wbraid ||
-      fromUrl?.utmSource ||
-      fromUrl?.utmMedium ||
-      fromUrl?.utmCampaign ||
-      fromUrl?.utmContent ||
-      fromUrl?.utmTerm;
-
-    if (fromUrl && hasTrackingParams) {
+    if (fromUrl) {
       localStorage.setItem(SOURCE_STORAGE_KEY, JSON.stringify(fromUrl));
       setUserSource(fromUrl);
     }

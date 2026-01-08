@@ -395,6 +395,14 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             <Gem size={"16px"} />
           </Stack>
         )}
+
+        {userSource?.urlPath && (
+          <Stack>
+            <Typography variant="caption">
+              <b>Source:</b> {userSource?.urlPath || ""}
+            </Typography>
+          </Stack>
+        )}
       </Stack>
 
       <Stack
