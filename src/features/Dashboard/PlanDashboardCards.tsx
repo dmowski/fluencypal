@@ -455,7 +455,11 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               maxWidth: "600px",
             }}
           >
-            <Stack>
+            <Stack
+              sx={{
+                gap: "20px",
+              }}
+            >
               <Typography
                 align="center"
                 variant="caption"
@@ -465,14 +469,15 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               >
                 {i18n._(`More unique lessons`)}
               </Typography>
-
-              <Typography variant="h4" align="center" component="h2" className="decor-text">
-                {plan.activeGoal?.title || i18n._(`Goal`)}
-              </Typography>
-              <Typography sx={{ paddingTop: "20px" }} align="center" variant="caption">
-                {plan.activeGoal?.goalQuiz?.description ||
-                  i18n._(`We will help you to learn the language you need`)}
-              </Typography>
+              <Stack>
+                <Typography variant="h4" align="center" component="h2" className="decor-text">
+                  {plan.activeGoal?.title || i18n._(`Goal`)}
+                </Typography>
+                <Typography sx={{ paddingTop: "5px" }} align="center" variant="caption">
+                  {plan.activeGoal?.goalQuiz?.description ||
+                    i18n._(`Generate more lessons to achieve your goal faster.`)}
+                </Typography>
+              </Stack>
             </Stack>
 
             <Stack
