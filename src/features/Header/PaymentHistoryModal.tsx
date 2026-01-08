@@ -1,12 +1,15 @@
-import { Link, Stack, Typography } from "@mui/material";
+import { Button, Link, Stack, TextField, Typography } from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 
-import { SupportedLanguage } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import { useUsage } from "../Usage/useUsage";
 import dayjs from "dayjs";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 import { PaymentLogType } from "@/common/usage";
+import { useState } from "react";
+import { BanknoteX } from "lucide-react";
+import { sendFeedbackMessageRequest } from "@/app/api/telegram/sendFeedbackMessageRequest";
+import { useAuth } from "../Auth/useAuth";
 
 interface PaymentHistoryModalProps {
   onClose: () => void;
@@ -16,6 +19,9 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
   const { i18n } = useLingui();
 
   const usage = useUsage();
+  const auth = useAuth();
+
+  const [isShowRefund, setIsShowRefund] = useState(false);
 
   const paymentTypeLabelMap: Record<PaymentLogType, string> = {
     welcome: i18n._(`Trial balance`),
@@ -23,6 +29,20 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
     gift: i18n._(`Gift`),
     "subscription-full-v1": i18n._(`Subscription (1 month)`),
     "trial-days": i18n._(`Trial days`),
+  };
+
+  const [refundMessage, setRefundMessage] = useState(
+    "I would like to request a refund for my recent payment."
+  );
+
+  const [isRefundSubmitting, setIsRefundSubmitting] = useState(false);
+
+  const onSubmitRefundRequest = async () => {
+    setIsRefundSubmitting(true);
+    sendFeedbackMessageRequest({ message: "REFUND: " + refundMessage }, await auth.getToken());
+    setIsShowRefund(false);
+    alert(i18n._(`Your refund request has been submitted. We will get back to you soon.`));
+    setIsRefundSubmitting(false);
   };
 
   return (
@@ -164,6 +184,79 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
                   );
                 })}
             </Stack>
+          )}
+
+          {isShowRefund ? (
+            <Stack
+              sx={{
+                marginTop: "20px",
+                paddingTop: "20px",
+                padding: "30px 15px",
+                borderRadius: "10px",
+                backgroundColor: "rgba(255, 255, 255, 0.02)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                gap: "10px",
+              }}
+            >
+              <Stack>
+                <Typography variant="h4" sx={{ marginBottom: "10px" }}>
+                  {i18n._(`Refund form`)}
+                </Typography>
+                <Typography variant="body2" sx={{ marginBottom: "10px" }}>
+                  {i18n._(`You can add some details regarding your refund request below:`)}
+                </Typography>
+              </Stack>
+
+              <TextField
+                value={refundMessage}
+                onChange={(e) => setRefundMessage(e.target.value)}
+                multiline
+                rows={4}
+                fullWidth
+              />
+              <Stack
+                sx={{
+                  marginTop: "10px",
+                  gap: "10px",
+                  flexDirection: "row",
+                }}
+              >
+                <Button
+                  variant="contained"
+                  disabled={isRefundSubmitting}
+                  onClick={onSubmitRefundRequest}
+                >
+                  {i18n._(`Submit Request`)}
+                </Button>
+                <Button
+                  variant="outlined"
+                  disabled={isRefundSubmitting}
+                  onClick={() => setIsShowRefund(false)}
+                >
+                  {i18n._(`Cancel`)}
+                </Button>
+              </Stack>
+            </Stack>
+          ) : (
+            <>
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  width: "100%",
+                  flexDirection: "row",
+                  paddingTop: "20px",
+                }}
+              >
+                <Button
+                  variant="outlined"
+                  disabled={usage.paymentLogs?.length === 0 || isRefundSubmitting}
+                  startIcon={<BanknoteX />}
+                  onClick={() => setIsShowRefund(true)}
+                >
+                  {i18n._(`Request Refund`)}
+                </Button>
+              </Stack>
+            </>
           )}
         </Stack>
       </Stack>

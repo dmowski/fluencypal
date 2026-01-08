@@ -1259,6 +1259,7 @@ msgstr "Bolehkah saya menggunakan FluencyPal secara percuma?"
 
 #: src/features/Chat/Message.tsx:232
 #: src/features/Header/NeedHelpModal.tsx:167
+#: src/features/Header/PaymentHistoryModal.tsx:237
 #: src/features/Usage/PaymentModal.tsx:354
 #. js-lingui-explicit-id
 msgid "Cancel"
@@ -3771,7 +3772,7 @@ msgstr "Mula dengan ciri asas"
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Dapatkan akses tanpa had kepada latihan bahasa yang dipacu AI"
 
-#: src/features/Header/PaymentHistoryModal.tsx:23
+#: src/features/Header/PaymentHistoryModal.tsx:30
 #. js-lingui-explicit-id
 msgid "Gift"
 msgstr "Hadiah"
@@ -5943,7 +5944,7 @@ msgstr "Memuatkan.."
 #: src/features/Game/GamePage.tsx:68
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:65
+#: src/features/Header/PaymentHistoryModal.tsx:86
 #: src/features/RolePlay/RolePlayModal.tsx:270
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:149
@@ -6432,7 +6433,7 @@ msgstr "Tiada temu bual ditemui"
 msgid "No message recorded yet."
 msgstr "Tiada mesej direkodkan lagi."
 
-#: src/features/Header/PaymentHistoryModal.tsx:76
+#: src/features/Header/PaymentHistoryModal.tsx:97
 #: src/features/Usage/PaymentModal.tsx:509
 #. js-lingui-explicit-id
 msgid "No payments..."
@@ -6792,7 +6793,7 @@ msgstr "Bayar dengan kripto"
 msgid "Pay with Stars"
 msgstr "Bayar dengan Bintang"
 
-#: src/features/Header/PaymentHistoryModal.tsx:22
+#: src/features/Header/PaymentHistoryModal.tsx:29
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "Pembayaran"
@@ -6802,7 +6803,7 @@ msgstr "Pembayaran"
 msgid "Payment failed! Please try again."
 msgstr "Pembayaran gagal! Sila cuba lagi."
 
-#: src/features/Header/PaymentHistoryModal.tsx:39
+#: src/features/Header/PaymentHistoryModal.tsx:60
 #: src/features/Settings/MyProfile.tsx:99
 #. js-lingui-explicit-id
 msgid "Payment History"
@@ -7884,6 +7885,11 @@ msgstr "Muat Semula"
 msgid "Refund"
 msgstr "Pulangan"
 
+#: src/features/Header/PaymentHistoryModal.tsx:204
+#. js-lingui-explicit-id
+msgid "Refund form"
+msgstr "Borang bayaran balik"
+
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:436
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
@@ -7914,6 +7920,11 @@ msgstr "Mengeluarkan data anda..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "Prestasi Perenderan"
+
+#: src/features/Header/PaymentHistoryModal.tsx:257
+#. js-lingui-explicit-id
+msgid "Request Refund"
+msgstr "Minta Pemulangan Wang"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
@@ -8879,7 +8890,12 @@ msgstr "Hantar jawapan"
 msgid "Submit Answers"
 msgstr "Hantar Jawapan"
 
-#: src/features/Header/PaymentHistoryModal.tsx:24
+#: src/features/Header/PaymentHistoryModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Submit Request"
+msgstr "Hantar Permintaan"
+
+#: src/features/Header/PaymentHistoryModal.tsx:31
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "Langganan (1 bulan)"
@@ -9399,12 +9415,12 @@ msgstr "Terjemahkan perkataan"
 msgid "Travel"
 msgstr "Travel"
 
-#: src/features/Header/PaymentHistoryModal.tsx:21
+#: src/features/Header/PaymentHistoryModal.tsx:28
 #. js-lingui-explicit-id
 msgid "Trial balance"
 msgstr "Baki ujian"
 
-#: src/features/Header/PaymentHistoryModal.tsx:25
+#: src/features/Header/PaymentHistoryModal.tsx:32
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "Hari percubaan"
@@ -9624,11 +9640,15 @@ msgstr "Lihat semua"
 msgid "View all posts"
 msgstr "Lihat semua pos"
 
-#: src/features/Header/PaymentHistoryModal.tsx:48
-#: src/features/Settings/MyProfile.tsx:100
+#: src/features/Header/PaymentHistoryModal.tsx:69
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr "Lihat sejarah pembayaran anda"
+
+#: src/features/Settings/MyProfile.tsx:100
+#. js-lingui-explicit-id
+msgid "View your payment history. Refunds"
+msgstr "Lihat sejarah pembayaran anda. Pemulangan Wang"
 
 #: src/features/Landing/LandingPage.tsx:405
 #. js-lingui-explicit-id
@@ -10342,6 +10362,13 @@ msgstr ""
 msgid "You are on the waitlist"
 msgstr "Anda berada dalam senarai menunggu"
 
+#: src/features/Header/PaymentHistoryModal.tsx:207
+#. js-lingui-explicit-id
+msgid "You can add some details regarding your refund request below:"
+msgstr ""
+"Anda boleh menambah beberapa butiran berkaitan permintaan bayaran balik "
+"anda di bawah:"
+
 #: src/features/Case/data/frontend-junior/painSection.ts:16
 #. js-lingui-explicit-id
 msgid ""
@@ -10656,6 +10683,13 @@ msgstr "Pelan pembelajaran anda"
 #. js-lingui-explicit-id
 msgid "Your questions answered"
 msgstr "Soalan anda dijawab"
+
+#: src/features/Header/PaymentHistoryModal.tsx:45
+#. js-lingui-explicit-id
+msgid "Your refund request has been submitted. We will get back to you soon."
+msgstr ""
+"Permohonan bayaran balik anda telah dihantar. Kami akan menghubungi anda "
+"tidak lama lagi."
 
 #: src/features/Usage/SubscriptionWaiter.tsx:56
 #. js-lingui-explicit-id

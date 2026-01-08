@@ -1265,6 +1265,7 @@ msgstr "Kann ich FluencyPal kostenlos nutzen?"
 
 #: src/features/Chat/Message.tsx:232
 #: src/features/Header/NeedHelpModal.tsx:167
+#: src/features/Header/PaymentHistoryModal.tsx:237
 #: src/features/Usage/PaymentModal.tsx:354
 #. js-lingui-explicit-id
 msgid "Cancel"
@@ -3800,7 +3801,7 @@ msgstr "Loslegen mit grundlegenden Funktionen"
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Erhalten Sie unbegrenzten Zugang zu KI-gestütztem Sprachtraining"
 
-#: src/features/Header/PaymentHistoryModal.tsx:23
+#: src/features/Header/PaymentHistoryModal.tsx:30
 #. js-lingui-explicit-id
 msgid "Gift"
 msgstr "Geschenk"
@@ -5986,7 +5987,7 @@ msgstr "Wird geladen..."
 #: src/features/Game/GamePage.tsx:68
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:65
+#: src/features/Header/PaymentHistoryModal.tsx:86
 #: src/features/RolePlay/RolePlayModal.tsx:270
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:149
@@ -6473,7 +6474,7 @@ msgstr "Keine Interviews gefunden"
 msgid "No message recorded yet."
 msgstr "Noch keine Nachricht aufgezeichnet."
 
-#: src/features/Header/PaymentHistoryModal.tsx:76
+#: src/features/Header/PaymentHistoryModal.tsx:97
 #: src/features/Usage/PaymentModal.tsx:509
 #. js-lingui-explicit-id
 msgid "No payments..."
@@ -6831,7 +6832,7 @@ msgstr "Mit Krypto bezahlen"
 msgid "Pay with Stars"
 msgstr "Mit Sternen bezahlen"
 
-#: src/features/Header/PaymentHistoryModal.tsx:22
+#: src/features/Header/PaymentHistoryModal.tsx:29
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "Zahlung"
@@ -6841,7 +6842,7 @@ msgstr "Zahlung"
 msgid "Payment failed! Please try again."
 msgstr "Zahlung fehlgeschlagen! Bitte versuchen Sie es erneut."
 
-#: src/features/Header/PaymentHistoryModal.tsx:39
+#: src/features/Header/PaymentHistoryModal.tsx:60
 #: src/features/Settings/MyProfile.tsx:99
 #. js-lingui-explicit-id
 msgid "Payment History"
@@ -7937,6 +7938,11 @@ msgstr "Aktualisieren"
 msgid "Refund"
 msgstr "Rückerstattung"
 
+#: src/features/Header/PaymentHistoryModal.tsx:204
+#. js-lingui-explicit-id
+msgid "Refund form"
+msgstr "Rückerstattungsformular"
+
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:436
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
@@ -7967,6 +7973,11 @@ msgstr "Entfernen Ihrer Daten..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "Renderleistung"
+
+#: src/features/Header/PaymentHistoryModal.tsx:257
+#. js-lingui-explicit-id
+msgid "Request Refund"
+msgstr "Rückerstattung beantragen"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
@@ -8939,7 +8950,12 @@ msgstr "Antwort einreichen"
 msgid "Submit Answers"
 msgstr "Antworten einreichen"
 
-#: src/features/Header/PaymentHistoryModal.tsx:24
+#: src/features/Header/PaymentHistoryModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Submit Request"
+msgstr "Anfrage einreichen"
+
+#: src/features/Header/PaymentHistoryModal.tsx:31
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "Abonnement (1 Monat)"
@@ -9467,12 +9483,12 @@ msgstr "Übersetze das Wort"
 msgid "Travel"
 msgstr "Reisen"
 
-#: src/features/Header/PaymentHistoryModal.tsx:21
+#: src/features/Header/PaymentHistoryModal.tsx:28
 #. js-lingui-explicit-id
 msgid "Trial balance"
 msgstr "Eröffnungsbilanz"
 
-#: src/features/Header/PaymentHistoryModal.tsx:25
+#: src/features/Header/PaymentHistoryModal.tsx:32
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "Probetage"
@@ -9691,11 +9707,15 @@ msgstr "Alle anzeigen"
 msgid "View all posts"
 msgstr "View all posts"
 
-#: src/features/Header/PaymentHistoryModal.tsx:48
-#: src/features/Settings/MyProfile.tsx:100
+#: src/features/Header/PaymentHistoryModal.tsx:69
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr "Sehen Sie Ihre Zahlungshistorie an"
+
+#: src/features/Settings/MyProfile.tsx:100
+#. js-lingui-explicit-id
+msgid "View your payment history. Refunds"
+msgstr "Sehen Sie sich Ihre Zahlungshistorie an. Rückerstattungen"
 
 #: src/features/Landing/LandingPage.tsx:405
 #. js-lingui-explicit-id
@@ -10408,6 +10428,13 @@ msgstr ""
 msgid "You are on the waitlist"
 msgstr "Sie sind auf der Warteliste"
 
+#: src/features/Header/PaymentHistoryModal.tsx:207
+#. js-lingui-explicit-id
+msgid "You can add some details regarding your refund request below:"
+msgstr ""
+"Sie können im Folgenden einige Details zu Ihrem Rückerstattungsantrag "
+"hinzufügen:"
+
 #: src/features/Case/data/frontend-junior/painSection.ts:16
 #. js-lingui-explicit-id
 msgid ""
@@ -10725,6 +10752,13 @@ msgstr "Ihr Lernplan"
 #. js-lingui-explicit-id
 msgid "Your questions answered"
 msgstr "Ihre Fragen beantwortet"
+
+#: src/features/Header/PaymentHistoryModal.tsx:45
+#. js-lingui-explicit-id
+msgid "Your refund request has been submitted. We will get back to you soon."
+msgstr ""
+"Ihr Rückerstattungsantrag wurde eingereicht. Wir werden uns in Kürze bei "
+"Ihnen melden."
 
 #: src/features/Usage/SubscriptionWaiter.tsx:56
 #. js-lingui-explicit-id

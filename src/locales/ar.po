@@ -1236,6 +1236,7 @@ msgstr "هل يمكنني استخدام FluencyPal مجانًا؟"
 
 #: src/features/Chat/Message.tsx:232
 #: src/features/Header/NeedHelpModal.tsx:167
+#: src/features/Header/PaymentHistoryModal.tsx:237
 #: src/features/Usage/PaymentModal.tsx:354
 #. js-lingui-explicit-id
 msgid "Cancel"
@@ -3650,7 +3651,7 @@ msgstr "ابدأ باستخدام الميزات الأساسية"
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "احصل على وصول غير محدود لممارسة اللغة المدعومة بالذكاء الاصطناعي"
 
-#: src/features/Header/PaymentHistoryModal.tsx:23
+#: src/features/Header/PaymentHistoryModal.tsx:30
 #. js-lingui-explicit-id
 msgid "Gift"
 msgstr "هدية"
@@ -5709,7 +5710,7 @@ msgstr "جارٍ التحميل.."
 #: src/features/Game/GamePage.tsx:68
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:65
+#: src/features/Header/PaymentHistoryModal.tsx:86
 #: src/features/RolePlay/RolePlayModal.tsx:270
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:149
@@ -6190,7 +6191,7 @@ msgstr ""
 msgid "No message recorded yet."
 msgstr "لا توجد رسالة مسجلة بعد."
 
-#: src/features/Header/PaymentHistoryModal.tsx:76
+#: src/features/Header/PaymentHistoryModal.tsx:97
 #: src/features/Usage/PaymentModal.tsx:509
 #. js-lingui-explicit-id
 msgid "No payments..."
@@ -6540,7 +6541,7 @@ msgstr "ادفع بالعملات المشفرة"
 msgid "Pay with Stars"
 msgstr "ادفع بالنجوم"
 
-#: src/features/Header/PaymentHistoryModal.tsx:22
+#: src/features/Header/PaymentHistoryModal.tsx:29
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "الدفع"
@@ -6550,7 +6551,7 @@ msgstr "الدفع"
 msgid "Payment failed! Please try again."
 msgstr "فشل الدفع! يرجى المحاولة مرة أخرى."
 
-#: src/features/Header/PaymentHistoryModal.tsx:39
+#: src/features/Header/PaymentHistoryModal.tsx:60
 #: src/features/Settings/MyProfile.tsx:99
 #. js-lingui-explicit-id
 msgid "Payment History"
@@ -7616,6 +7617,11 @@ msgstr "تحديث"
 msgid "Refund"
 msgstr "رد الأموال"
 
+#: src/features/Header/PaymentHistoryModal.tsx:204
+#. js-lingui-explicit-id
+msgid "Refund form"
+msgstr "نموذج استرداد"
+
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:436
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
@@ -7646,6 +7652,11 @@ msgstr "جاري إزالة بياناتك..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "أداء العرض"
+
+#: src/features/Header/PaymentHistoryModal.tsx:257
+#. js-lingui-explicit-id
+msgid "Request Refund"
+msgstr "طلب استرداد الأموال"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
@@ -8592,7 +8603,14 @@ msgstr "قدم الإجابة"
 msgid "Submit Answers"
 msgstr "إرسال الإجابات"
 
-#: src/features/Header/PaymentHistoryModal.tsx:24
+#: src/features/Header/PaymentHistoryModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Submit Request"
+msgstr ""
+"plaintext\n"
+"تقديم الطلب\n"
+
+#: src/features/Header/PaymentHistoryModal.tsx:31
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "الاشتراك (1 شهر)"
@@ -9104,12 +9122,12 @@ msgstr "ترجم الكلمة"
 msgid "Travel"
 msgstr "السفر"
 
-#: src/features/Header/PaymentHistoryModal.tsx:21
+#: src/features/Header/PaymentHistoryModal.tsx:28
 #. js-lingui-explicit-id
 msgid "Trial balance"
 msgstr "ميزان المحاكمة"
 
-#: src/features/Header/PaymentHistoryModal.tsx:25
+#: src/features/Header/PaymentHistoryModal.tsx:32
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "أيام التجربة"
@@ -9333,11 +9351,15 @@ msgstr "عرض الكل"
 msgid "View all posts"
 msgstr "عرض جميع المنشورات"
 
-#: src/features/Header/PaymentHistoryModal.tsx:48
-#: src/features/Settings/MyProfile.tsx:100
+#: src/features/Header/PaymentHistoryModal.tsx:69
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr "عرض سجل الدفعات الخاص بك"
+
+#: src/features/Settings/MyProfile.tsx:100
+#. js-lingui-explicit-id
+msgid "View your payment history. Refunds"
+msgstr "عرض سجل الدفع الخاص بك.  المبالغ المستردة"
 
 #: src/features/Landing/LandingPage.tsx:405
 #. js-lingui-explicit-id
@@ -10026,6 +10048,11 @@ msgstr ""
 msgid "You are on the waitlist"
 msgstr "أنت على قائمة الانتظار"
 
+#: src/features/Header/PaymentHistoryModal.tsx:207
+#. js-lingui-explicit-id
+msgid "You can add some details regarding your refund request below:"
+msgstr "يمكنك إضافة بعض التفاصيل المتعلقة بطلب الاسترداد الخاص بك أدناه:"
+
 #: src/features/Case/data/frontend-junior/painSection.ts:16
 #. js-lingui-explicit-id
 msgid ""
@@ -10333,6 +10360,11 @@ msgstr "خطتك للتعلّم"
 #. js-lingui-explicit-id
 msgid "Your questions answered"
 msgstr "أسئلتك تم الإجابة عليها"
+
+#: src/features/Header/PaymentHistoryModal.tsx:45
+#. js-lingui-explicit-id
+msgid "Your refund request has been submitted. We will get back to you soon."
+msgstr "تم تقديم طلب استرداد المبلغ الخاص بك. سنقوم بالرد عليك قريباً."
 
 #: src/features/Usage/SubscriptionWaiter.tsx:56
 #. js-lingui-explicit-id

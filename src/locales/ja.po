@@ -1194,6 +1194,7 @@ msgstr "FluencyPalを無料で使用できますか？"
 
 #: src/features/Chat/Message.tsx:232
 #: src/features/Header/NeedHelpModal.tsx:167
+#: src/features/Header/PaymentHistoryModal.tsx:237
 #: src/features/Usage/PaymentModal.tsx:354
 #. js-lingui-explicit-id
 msgid "Cancel"
@@ -3470,7 +3471,7 @@ msgstr "基本機能を使い始める"
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "無制限のAI駆動の言語練習へのアクセスを得る"
 
-#: src/features/Header/PaymentHistoryModal.tsx:23
+#: src/features/Header/PaymentHistoryModal.tsx:30
 #. js-lingui-explicit-id
 msgid "Gift"
 msgstr "ギフト"
@@ -5418,7 +5419,7 @@ msgstr "読み込み中.."
 #: src/features/Game/GamePage.tsx:68
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:65
+#: src/features/Header/PaymentHistoryModal.tsx:86
 #: src/features/RolePlay/RolePlayModal.tsx:270
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:149
@@ -5882,7 +5883,7 @@ msgstr "該当するインタビューが見つかりませんでした"
 msgid "No message recorded yet."
 msgstr "まだメッセージが記録されていません。"
 
-#: src/features/Header/PaymentHistoryModal.tsx:76
+#: src/features/Header/PaymentHistoryModal.tsx:97
 #: src/features/Usage/PaymentModal.tsx:509
 #. js-lingui-explicit-id
 msgid "No payments..."
@@ -6212,7 +6213,7 @@ msgstr "暗号通貨で支払う"
 msgid "Pay with Stars"
 msgstr "スターで支払う"
 
-#: src/features/Header/PaymentHistoryModal.tsx:22
+#: src/features/Header/PaymentHistoryModal.tsx:29
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "支払い"
@@ -6222,7 +6223,7 @@ msgstr "支払い"
 msgid "Payment failed! Please try again."
 msgstr "支払いに失敗しました！もう一度お試しください。"
 
-#: src/features/Header/PaymentHistoryModal.tsx:39
+#: src/features/Header/PaymentHistoryModal.tsx:60
 #: src/features/Settings/MyProfile.tsx:99
 #. js-lingui-explicit-id
 msgid "Payment History"
@@ -7251,6 +7252,11 @@ msgstr "リフレッシュ"
 msgid "Refund"
 msgstr "返金"
 
+#: src/features/Header/PaymentHistoryModal.tsx:204
+#. js-lingui-explicit-id
+msgid "Refund form"
+msgstr "返金フォーム"
+
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:436
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
@@ -7281,6 +7287,11 @@ msgstr "データを削除しています..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "レンダリングパフォーマンス"
+
+#: src/features/Header/PaymentHistoryModal.tsx:257
+#. js-lingui-explicit-id
+msgid "Request Refund"
+msgstr "払い戻しをリクエスト"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
@@ -8195,7 +8206,12 @@ msgstr "回答を提出する"
 msgid "Submit Answers"
 msgstr "回答を送信"
 
-#: src/features/Header/PaymentHistoryModal.tsx:24
+#: src/features/Header/PaymentHistoryModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Submit Request"
+msgstr "リクエストを送信"
+
+#: src/features/Header/PaymentHistoryModal.tsx:31
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "サブスクリプション（1ヶ月）"
@@ -8684,12 +8700,12 @@ msgstr "単語を翻訳する"
 msgid "Travel"
 msgstr "旅行"
 
-#: src/features/Header/PaymentHistoryModal.tsx:21
+#: src/features/Header/PaymentHistoryModal.tsx:28
 #. js-lingui-explicit-id
 msgid "Trial balance"
 msgstr "トライアルバランス"
 
-#: src/features/Header/PaymentHistoryModal.tsx:25
+#: src/features/Header/PaymentHistoryModal.tsx:32
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "試用日数"
@@ -8901,13 +8917,17 @@ msgstr "すべて表示"
 msgid "View all posts"
 msgstr "すべての投稿を見る"
 
-#: src/features/Header/PaymentHistoryModal.tsx:48
-#: src/features/Settings/MyProfile.tsx:100
+#: src/features/Header/PaymentHistoryModal.tsx:69
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr ""
 "\n"
 "お支払い履歴を表示\n"
+
+#: src/features/Settings/MyProfile.tsx:100
+#. js-lingui-explicit-id
+msgid "View your payment history. Refunds"
+msgstr "お支払い履歴を表示します。返金"
 
 #: src/features/Landing/LandingPage.tsx:405
 #. js-lingui-explicit-id
@@ -9556,6 +9576,11 @@ msgstr ""
 msgid "You are on the waitlist"
 msgstr "あなたはウェイトリストに載っています"
 
+#: src/features/Header/PaymentHistoryModal.tsx:207
+#. js-lingui-explicit-id
+msgid "You can add some details regarding your refund request below:"
+msgstr "返金リクエストに関する詳細を以下に追加することができます:"
+
 #: src/features/Case/data/frontend-junior/painSection.ts:16
 #. js-lingui-explicit-id
 msgid ""
@@ -9837,6 +9862,11 @@ msgstr "あなたの学習プラン"
 #. js-lingui-explicit-id
 msgid "Your questions answered"
 msgstr "あなたの質問にお答えします"
+
+#: src/features/Header/PaymentHistoryModal.tsx:45
+#. js-lingui-explicit-id
+msgid "Your refund request has been submitted. We will get back to you soon."
+msgstr "あなたの返金リクエストが提出されました。すぐにご連絡いたします。"
 
 #: src/features/Usage/SubscriptionWaiter.tsx:56
 #. js-lingui-explicit-id

@@ -1235,6 +1235,7 @@ msgstr "Kan jeg bruke FluencyPal gratis?"
 
 #: src/features/Chat/Message.tsx:232
 #: src/features/Header/NeedHelpModal.tsx:167
+#: src/features/Header/PaymentHistoryModal.tsx:237
 #: src/features/Usage/PaymentModal.tsx:354
 #. js-lingui-explicit-id
 msgid "Cancel"
@@ -3691,7 +3692,7 @@ msgstr ""
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Få ubegrenset tilgang til AI-drevet språkøvelse"
 
-#: src/features/Header/PaymentHistoryModal.tsx:23
+#: src/features/Header/PaymentHistoryModal.tsx:30
 #. js-lingui-explicit-id
 msgid "Gift"
 msgstr "Gave"
@@ -5804,7 +5805,7 @@ msgstr "Laster inn.."
 #: src/features/Game/GamePage.tsx:68
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:65
+#: src/features/Header/PaymentHistoryModal.tsx:86
 #: src/features/RolePlay/RolePlayModal.tsx:270
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:149
@@ -6283,7 +6284,7 @@ msgstr "Ingen intervjuer funnet"
 msgid "No message recorded yet."
 msgstr "Ingen melding er spilt inn ennå."
 
-#: src/features/Header/PaymentHistoryModal.tsx:76
+#: src/features/Header/PaymentHistoryModal.tsx:97
 #: src/features/Usage/PaymentModal.tsx:509
 #. js-lingui-explicit-id
 msgid "No payments..."
@@ -6635,7 +6636,7 @@ msgstr "Betal med krypto"
 msgid "Pay with Stars"
 msgstr "Betal med Stjerner"
 
-#: src/features/Header/PaymentHistoryModal.tsx:22
+#: src/features/Header/PaymentHistoryModal.tsx:29
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "Betaling"
@@ -6645,7 +6646,7 @@ msgstr "Betaling"
 msgid "Payment failed! Please try again."
 msgstr "Betaling mislyktes! Vennligst prøv igjen."
 
-#: src/features/Header/PaymentHistoryModal.tsx:39
+#: src/features/Header/PaymentHistoryModal.tsx:60
 #: src/features/Settings/MyProfile.tsx:99
 #. js-lingui-explicit-id
 msgid "Payment History"
@@ -7711,6 +7712,11 @@ msgstr "Oppdater"
 msgid "Refund"
 msgstr "Refusjon"
 
+#: src/features/Header/PaymentHistoryModal.tsx:204
+#. js-lingui-explicit-id
+msgid "Refund form"
+msgstr "Refusjonsskjema"
+
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:436
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
@@ -7741,6 +7747,11 @@ msgstr "Fjerner dataene dine..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "Gjengivelsesperformance"
+
+#: src/features/Header/PaymentHistoryModal.tsx:257
+#. js-lingui-explicit-id
+msgid "Request Refund"
+msgstr "Be om refusjon"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
@@ -8708,7 +8719,14 @@ msgstr "Send inn svar"
 msgid "Submit Answers"
 msgstr "Send inn svar"
 
-#: src/features/Header/PaymentHistoryModal.tsx:24
+#: src/features/Header/PaymentHistoryModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Submit Request"
+msgstr ""
+"\n"
+"Send forespørsel\n"
+
+#: src/features/Header/PaymentHistoryModal.tsx:31
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "Abonnement (1 måned)"
@@ -9227,12 +9245,12 @@ msgstr "Oversett ordet"
 msgid "Travel"
 msgstr "Reise"
 
-#: src/features/Header/PaymentHistoryModal.tsx:21
+#: src/features/Header/PaymentHistoryModal.tsx:28
 #. js-lingui-explicit-id
 msgid "Trial balance"
 msgstr "Prøvebalanse"
 
-#: src/features/Header/PaymentHistoryModal.tsx:25
+#: src/features/Header/PaymentHistoryModal.tsx:32
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "Prøvedager"
@@ -9448,11 +9466,15 @@ msgstr "Vis alle"
 msgid "View all posts"
 msgstr "Se alle innlegg"
 
-#: src/features/Header/PaymentHistoryModal.tsx:48
-#: src/features/Settings/MyProfile.tsx:100
+#: src/features/Header/PaymentHistoryModal.tsx:69
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr "Vis din betalingshistorikk"
+
+#: src/features/Settings/MyProfile.tsx:100
+#. js-lingui-explicit-id
+msgid "View your payment history. Refunds"
+msgstr "Vis din betalingshistorikk. Refusjoner"
 
 #: src/features/Landing/LandingPage.tsx:405
 #. js-lingui-explicit-id
@@ -10153,6 +10175,13 @@ msgstr ""
 msgid "You are on the waitlist"
 msgstr "Du står på ventelisten"
 
+#: src/features/Header/PaymentHistoryModal.tsx:207
+#. js-lingui-explicit-id
+msgid "You can add some details regarding your refund request below:"
+msgstr ""
+"Du kan legge til noen detaljer angående din forespørsel om refusjon "
+"nedenfor:"
+
 #: src/features/Case/data/frontend-junior/painSection.ts:16
 #. js-lingui-explicit-id
 msgid ""
@@ -10468,6 +10497,13 @@ msgstr "Din plan for læring"
 #. js-lingui-explicit-id
 msgid "Your questions answered"
 msgstr "Dine spørsmål besvart"
+
+#: src/features/Header/PaymentHistoryModal.tsx:45
+#. js-lingui-explicit-id
+msgid "Your refund request has been submitted. We will get back to you soon."
+msgstr ""
+"Forespørselen din om refusjon har blitt sendt inn. Vi vil ta kontakt med "
+"deg snart."
 
 #: src/features/Usage/SubscriptionWaiter.tsx:56
 #. js-lingui-explicit-id

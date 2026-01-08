@@ -97,7 +97,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
     },
     {
       title: i18n._(`Payment History`),
-      subTitle: i18n._(`View your payment history`),
+      subTitle: i18n._(`View your payment history. Refunds`),
       icon: Landmark,
       onClick: () => {
         setIsShowPaymentHistoryModal(true);
