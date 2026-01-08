@@ -44,6 +44,7 @@ import { CRYPTO_MONTHLY_PRICE_TON } from "../Telegram/cryptoPrice";
 import { useSettings } from "../Settings/useSettings";
 import { StripeCreateCheckoutRequest } from "@/common/requests";
 import { sleep } from "@/libs/sleep";
+import { Check, CirclePlus, Plus } from "lucide-react";
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
@@ -713,13 +714,16 @@ export const SubscriptionPaymentModal = () => {
                     {activeTill && (
                       <Stack
                         sx={{
-                          padding: "3px 17px",
+                          padding: "3px 17px 3px 12px",
                           borderRadius: "18px",
                           backgroundColor: "rgba(5, 172, 255, 0.4 )",
                           alignItems: "center",
                           justifyContent: "center",
+                          flexDirection: "row",
+                          gap: "6px",
                         }}
                       >
+                        <Check size={"18px"} />
                         <Typography
                           variant="body2"
                           sx={{ padding: 0, margin: 0, color: "#fff", fontWeight: 600 }}
@@ -857,27 +861,12 @@ export const SubscriptionPaymentModal = () => {
                     {!activeTill && (
                       <Button
                         color="info"
-                        disabled={!!activeTill}
                         variant="contained"
                         size="large"
                         onClick={showConfirmPage}
                       >
-                        {activeTill
-                          ? i18n._(`Active till {activeTill}`, { activeTill: activeTill })
-                          : i18n._(`Get Full Access`)}
+                        {i18n._(`Get Full Access`)}
                       </Button>
-                    )}
-
-                    {activeTill && (
-                      <Typography
-                        variant="body2"
-                        align="left"
-                        sx={{
-                          color: "#00CFFF",
-                        }}
-                      >
-                        {i18n._(`Active till {activeTill}`, { activeTill: activeTill })}
-                      </Typography>
                     )}
 
                     {activeTill && (
@@ -885,6 +874,7 @@ export const SubscriptionPaymentModal = () => {
                         color="info"
                         variant="outlined"
                         size="large"
+                        startIcon={<Plus />}
                         onClick={showConfirmPage}
                       >
                         {i18n._(`Buy More`)}
@@ -892,19 +882,25 @@ export const SubscriptionPaymentModal = () => {
                     )}
 
                     {activeTill && (
-                      <Typography
-                        variant="body2"
-                        align="left"
-                        sx={{
-                          opacity: 0.7,
-                          paddingBottom: "10px",
-                        }}
-                      >
-                        {i18n._(
-                          `You can renew your full access any time before it expires to avoid
+                      <>
+                        <Typography variant="body2" align="left">
+                          {i18n._(`Your full access is active until {activeTill}`, {
+                            activeTill: activeTill,
+                          })}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          align="left"
+                          sx={{
+                            paddingBottom: "10px",
+                          }}
+                        >
+                          {i18n._(
+                            `You can renew your full access any time before it expires to avoid
                           interruption of service.`
-                        )}
-                      </Typography>
+                          )}
+                        </Typography>
+                      </>
                     )}
                   </Stack>
                   <FeatureList appMode={appMode} />
