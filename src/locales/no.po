@@ -240,7 +240,7 @@ msgstr "+{increasePoints} poeng"
 msgid "+{points} points"
 msgstr "+{poeng} poeng"
 
-#: src/features/Game/Battle/BattleCard.tsx:138
+#: src/features/Game/Battle/BattleCard.tsx:144
 #. js-lingui-explicit-id
 msgid "-"
 msgstr "-"
@@ -375,7 +375,7 @@ msgstr "Et standard svar på \"Hvordan har du det?\""
 msgid "Academic Word List"
 msgstr "Akademisk ordliste"
 
-#: src/features/Game/Battle/BattleCard.tsx:253
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Godta"
@@ -414,12 +414,12 @@ msgstr "Handlingsplan for å forbedre kritiske backend-ferdigheter"
 msgid "Active"
 msgstr "Aktiv"
 
-#: src/features/Chat/ChatSection.tsx:106
+#: src/features/Chat/ChatSection.tsx:105
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Legg til et svar"
 
-#: src/features/Chat/ChatSection.tsx:68
+#: src/features/Chat/ChatSection.tsx:67
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "Legg til kommentar"
@@ -429,7 +429,7 @@ msgstr "Legg til kommentar"
 msgid "Add new goal"
 msgstr "Legg til nytt mål"
 
-#: src/features/Chat/ChatSection.tsx:68
+#: src/features/Chat/ChatSection.tsx:67
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "Legg til nytt innlegg"
@@ -444,7 +444,7 @@ msgstr "Legg til innlegg"
 msgid "Add some info why you want a refund and we will do it."
 msgstr "Legg til litt info om hvorfor du vil ha en refusjon, og vi vil gjøre det."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:380
+#: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
 msgstr "Legg til tekstsvar"
@@ -622,7 +622,7 @@ msgstr "AI-stemme"
 msgid "AI voice is disabled"
 msgstr "AI-stemme er deaktivert"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:406
+#: src/features/Game/Battle/BattleActionModal.tsx:415
 #. js-lingui-explicit-id
 msgid "AI will evaluate answers and determine the winner."
 msgstr "AI vil evaluere svarene og bestemme vinneren."
@@ -688,7 +688,7 @@ msgid "Almost correct"
 msgstr "Nesten riktig"
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
-#: src/features/Game/Battle/BattleActionModal.tsx:296
+#: src/features/Game/Battle/BattleActionModal.tsx:305
 #. js-lingui-explicit-id
 msgid "Almost there!"
 msgstr "Nesten der!"
@@ -725,11 +725,6 @@ msgstr ""
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "En feil oppstod under analysen av meldingen. Vennligst prøv igjen."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:411
-#. js-lingui-explicit-id
-msgid "Analysis"
-msgstr "Analyse"
-
 #: src/features/Conversation/ConversationCanvas.tsx:515
 #. js-lingui-explicit-id
 msgid "Analyzing"
@@ -765,6 +760,11 @@ msgstr "Angular & RxJS"
 #. js-lingui-explicit-id
 msgid "Answering Typical Interview Questions"
 msgstr "Å svare på typiske intervju spørsmål"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:176
+#. js-lingui-explicit-id
+msgid "Answers:"
+msgstr "Svar:"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:375
 #. js-lingui-explicit-id
@@ -820,7 +820,7 @@ msgstr ""
 "Er du sikker på at du vil slette målet ditt? Denne handlingen kan ikke "
 "angres."
 
-#: src/features/Game/Battle/BattleCard.tsx:330
+#: src/features/Game/Battle/BattleCard.tsx:351
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Er du sikker på at du vil avslå denne kampen?"
@@ -889,7 +889,7 @@ msgstr ""
 "Å unngå disse feilene vil gjøre deg mer profesjonell og øke sjansene dine "
 "for suksess."
 
-#: src/features/Chat/ChatSection.tsx:143
+#: src/features/Chat/ChatSection.tsx:142
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -966,11 +966,6 @@ msgstr "Vær forberedt til jobbintervjuet ditt"
 #. js-lingui-explicit-id
 msgid "Be specific about your role"
 msgstr "Vær spesifikk om din rolle"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:597
-#. js-lingui-explicit-id
-msgid "Be the first to respond and share your thoughts."
-msgstr "Vær den første til å svare og del dine tanker."
 
 #: src/features/Case/data/frontend-junior/quizData.ts:145
 #: src/features/Case/data/frontend-senior/quizData.ts:242
@@ -1417,8 +1412,8 @@ msgstr ""
 "bli for omstendelig."
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
-#: src/features/Game/Battle/BattleActionModal.tsx:287
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:472
+#: src/features/Game/Battle/BattleActionModal.tsx:296
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:207
 #: src/features/Game/UserProfileModal.tsx:131
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1447,7 +1442,7 @@ msgstr "Kodingferdigheter"
 msgid "Comment"
 msgstr "Kommentar"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:279
+#: src/features/Game/Battle/BattleActionModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Comments:"
 msgstr "Kommentarer:"
@@ -1912,7 +1907,7 @@ msgstr "Daglig intervju uten frykt for vurdering"
 msgid "Daily Language Practice"
 msgstr "Daglig Språk Praksis"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:269
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:108
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Daglig spørsmål"
@@ -1963,7 +1958,7 @@ msgstr "Dag"
 msgid "day"
 msgstr "dag"
 
-#: src/features/Game/Battle/BattleCard.tsx:120
+#: src/features/Game/Battle/BattleCard.tsx:126
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Debatt"
@@ -1985,7 +1980,7 @@ msgstr "Debattforespørsel"
 msgid "Debate Request Sent!"
 msgstr "Debattforespørsel sendt!"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:388
+#: src/features/Game/Battle/BattleActionModal.tsx:397
 #. js-lingui-explicit-id
 msgid "Debate started!"
 msgstr "Debatt startet!"
@@ -3832,7 +3827,6 @@ msgid "Grammar corrections to boost your confidence"
 msgstr "Grammatikkorreksjoner for å styrke selvtilliten din"
 
 #: src/features/Conversation/ProcessUserInput.tsx:174
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:415
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Flott!"
@@ -3968,7 +3962,7 @@ msgstr ""
 "Her er resten av din personlige tilbakemelding for å hjelpe deg med å bli "
 "bedre."
 
-#: src/features/Game/Battle/BattleCard.tsx:281
+#: src/features/Game/Battle/BattleCard.tsx:287
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "Skjul"
@@ -4106,7 +4100,7 @@ msgstr "Hvordan det fungerer:"
 msgid "How long will my hours last?"
 msgstr "Hvor lenge vil timene mine vare?"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:282
+#: src/features/Game/Battle/BattleActionModal.tsx:291
 #. js-lingui-explicit-id
 msgid "How the battle went?"
 msgstr "Hvordan gikk slaget?"
@@ -5785,7 +5779,7 @@ msgstr "La oss fortsette..."
 msgid "Let's create an account"
 msgstr "La oss opprette en konto"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:389
+#: src/features/Game/Battle/BattleActionModal.tsx:398
 #. js-lingui-explicit-id
 msgid "Let's see who has the best arguments."
 msgstr "La oss se hvem som har de beste argumentene."
@@ -6242,7 +6236,7 @@ msgstr "Nye ord å øve på."
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/Battle/BattleActionModal.tsx:390
+#: src/features/Game/Battle/BattleActionModal.tsx:399
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
@@ -6315,6 +6309,11 @@ msgstr "Ingen intervjuer funnet"
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "Ingen melding er spilt inn ennå."
+
+#: src/features/Chat/ChatSection.tsx:248
+#. js-lingui-explicit-id
+msgid "No messages yet. Be the first to share your thoughts!"
+msgstr "Ingen meldinger ennå. Vær den første til å dele dine tanker!"
 
 #: src/features/Header/PaymentHistoryModal.tsx:96
 #: src/features/Usage/PaymentModal.tsx:509
@@ -6492,13 +6491,6 @@ msgstr ""
 "Når du har kjøpt, forblir timene dine tilgjengelige til du bruker dem. Det "
 "er ingen utløpsdato."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:589
-#. js-lingui-explicit-id
-msgid ""
-"One person has already answered - check out the answer and share your "
-"thoughts."
-msgstr "En person har allerede svart - sjekk ut svaret og del dine tanker."
-
 #: src/features/Dashboard/BrainCard.tsx:429
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -6524,7 +6516,6 @@ msgstr "Online Språkpraksis"
 msgid "Oops! Something went wrong"
 msgstr "Oops! Noe gikk galt"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:621
 #: src/features/Landing/Price/PricePage.tsx:195
 #. js-lingui-explicit-id
 msgid "Open"
@@ -6563,7 +6554,7 @@ msgid "Open plan"
 msgstr "Åpen planløsning"
 
 #: src/features/Conversation/ConversationCanvas.tsx:858
-#: src/features/Game/Battle/BattleCard.tsx:296
+#: src/features/Game/Battle/BattleCard.tsx:302
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Åpne resultater"
@@ -6835,7 +6826,7 @@ msgstr "Vennligst ta opp en lengre melding (minst noen få ord)."
 msgid "Please refresh the page and try one more time"
 msgstr "Vennligst oppdater siden og prøv en gang til"
 
-#: src/features/Chat/ChatSection.tsx:43
+#: src/features/Chat/ChatSection.tsx:42
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Vennligst stopp opptaket før du lukker vinduet."
@@ -7232,11 +7223,6 @@ msgstr "Forbereder Mål"
 msgid "Preparing the brain"
 msgstr "Forbereder hjernen"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:514
-#. js-lingui-explicit-id
-msgid "Previous questions"
-msgstr "Tidligere spørsmål"
-
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -7281,7 +7267,7 @@ msgstr "Personvernerklæring"
 msgid "Problem Solving"
 msgstr "Problemløsning"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:296
+#: src/features/Game/Battle/BattleActionModal.tsx:305
 #. js-lingui-explicit-id
 msgid "Processing answers..."
 msgstr "Behandler svar..."
@@ -7366,11 +7352,6 @@ msgstr "Psykologi"
 #. js-lingui-explicit-id
 msgid "Public Talk Skills"
 msgstr "Offentlige Talferdigheter"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:456
-#. js-lingui-explicit-id
-msgid "Publish"
-msgstr "Publiser"
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -7670,7 +7651,7 @@ msgstr ""
 "<0>{learningLanguageName}</0>. Dette vil hjelpe meg med å lage en personlig "
 "tilpasset treningsplan."
 
-#: src/features/Chat/ChatSection.tsx:106
+#: src/features/Chat/ChatSection.tsx:105
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Ta opp en melding"
@@ -7709,11 +7690,6 @@ msgstr "Ta opp melding"
 #. js-lingui-explicit-id
 msgid "Record more"
 msgstr "Opptak mer"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:436
-#. js-lingui-explicit-id
-msgid "Record your answer to see AI suggestion"
-msgstr "Spill inn svaret ditt for å se AI-forslag"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
 #. js-lingui-explicit-id
@@ -7769,7 +7745,7 @@ msgstr "Relaterte Scenarier"
 msgid "Reload page"
 msgstr "Last inn siden på nytt"
 
-#: src/features/Game/Battle/BattleCard.tsx:339
+#: src/features/Game/Battle/BattleCard.tsx:360
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "Fjern"
@@ -7967,11 +7943,6 @@ msgstr "Screeningsintervju med AI-rekrutterer"
 msgid "Second Place"
 msgstr "Andreplass"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:621
-#. js-lingui-explicit-id
-msgid "See Answers"
-msgstr "Se svar"
-
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
 msgid "See strengths and gaps across core backend topics."
@@ -8129,7 +8100,7 @@ msgstr ""
 msgid "Share what you're currently learning"
 msgstr "Del hva du lærer akkurat nå"
 
-#: src/features/Chat/ChatSection.tsx:78
+#: src/features/Chat/ChatSection.tsx:77
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "Del tankene dine og få tilbakemelding!"
@@ -8183,6 +8154,7 @@ msgstr "Vis mindre"
 
 #: src/features/Chat/Message.tsx:361
 #: src/features/Conversation/ProcessUserInput.tsx:199
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:207
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -8458,7 +8430,7 @@ msgstr "Begynn en imitasjonsintervju"
 msgid "Start Call"
 msgstr "Start samtale"
 
-#: src/features/Game/Battle/BattleCard.tsx:269
+#: src/features/Game/Battle/BattleCard.tsx:275
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Start debatt"
@@ -8753,7 +8725,7 @@ msgstr "Send inn"
 msgid "Submit answer"
 msgstr "Send inn svar"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:306
+#: src/features/Game/Battle/BattleActionModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Submit Answers"
 msgstr "Send inn svar"
@@ -8789,16 +8761,6 @@ msgstr "Suksesshistorier"
 #. js-lingui-explicit-id
 msgid "Success!"
 msgstr "Suksess!"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:432
-#. js-lingui-explicit-id
-msgid "Suggestion"
-msgstr "Forslag"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:435
-#. js-lingui-explicit-id
-msgid "Suggestion is loading..."
-msgstr "Forslag lastes inn..."
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -9050,7 +9012,7 @@ msgstr ""
 "AI-tilbakemeldingen på mine CSS- og JavaScript-svar var helt presis. Jeg "
 "forbedret svarene mine umiddelbart."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:332
+#: src/features/Game/Battle/BattleActionModal.tsx:341
 #. js-lingui-explicit-id
 msgid "The answer should not take more than 300 words. ~2 minutes."
 msgstr "Svaret bør ikke være mer enn 300 ord. ~2 minutter."
@@ -9137,7 +9099,7 @@ msgstr ""
 msgid "The request will be sent to user {userName}."
 msgstr "Forespørselen vil bli sendt til bruker {userName}."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:394
+#: src/features/Game/Battle/BattleActionModal.tsx:403
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "Vinneren tjener {points} spillpoeng!"
@@ -9197,11 +9159,6 @@ msgstr "Dette viser resultater og får deg til å skille deg ut."
 #. js-lingui-explicit-id
 msgid "Ticket"
 msgstr "Billett"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:459
-#. js-lingui-explicit-id
-msgid "To see others answers, you need to publish yours."
-msgstr "For å se andres svar, må du publisere ditt eget."
 
 #: src/features/Landing/LandingPage.tsx:142
 #. js-lingui-explicit-id
@@ -9344,7 +9301,7 @@ msgstr "Slå på video"
 msgid "Turn on volume"
 msgstr "Slå på volum"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:363
+#: src/features/Game/Battle/BattleActionModal.tsx:372
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "Skriv svaret ditt her..."
@@ -9435,7 +9392,7 @@ msgstr ""
 "Bruk disse malene for å lage din egen historie. Ikke glem å nevne en "
 "prestasjon:"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:322
+#: src/features/Game/Battle/BattleActionModal.tsx:331
 #. js-lingui-explicit-id
 msgid "Use your learning language ({lang})"
 msgstr "Bruk læringsspråket ditt ({lang})"
@@ -9555,7 +9512,7 @@ msgstr "Opptaksmodus for stemme"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:263
+#: src/features/Game/Battle/BattleCard.tsx:269
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Venter på at andre spillere skal akseptere..."
@@ -9825,6 +9782,11 @@ msgstr "Hva får jeg med betalingstjenesten?"
 msgid "What do I need to use FluencyPal?"
 msgstr "Hva trenger jeg for å bruke FluencyPal?"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:186
+#. js-lingui-explicit-id
+msgid "What do you think?"
+msgstr "Hva synes du?"
+
 #: src/features/Landing/Price/PricePage.tsx:406
 #. js-lingui-explicit-id
 msgid "What I can do for you:"
@@ -9983,7 +9945,7 @@ msgstr "Hvorfor backendkandidater forbedrer seg raskt"
 msgid "Why candidates improve so quickly"
 msgstr "Hvorfor kandidater forbedrer seg så raskt"
 
-#: src/features/Game/Battle/BattleCard.tsx:256
+#: src/features/Game/Battle/BattleCard.tsx:262
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Vinneren får {points} poeng"
@@ -10263,10 +10225,15 @@ msgstr "Du kan bygge prosjekter, men **vet ikke hva intervjuere egentlig vil se*
 msgid "You can delete your personal data anytime"
 msgstr "Du kan slette dine personlige data når som helst"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:280
+#: src/features/Game/Battle/BattleActionModal.tsx:288
 #. js-lingui-explicit-id
 msgid "You can discuss the battle here."
 msgstr "Du kan diskutere slaget her."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:183
+#. js-lingui-explicit-id
+msgid "You can discuss the daily question here."
+msgstr "Du kan diskutere dagens spørsmål her."
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
@@ -10323,7 +10290,7 @@ msgstr "Du kan spore fremgangen på hovedsiden."
 msgid "You can try AI in action now"
 msgstr "Du kan prøve AI i handling nå"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:359
+#: src/features/Game/Battle/BattleActionModal.tsx:368
 #. js-lingui-explicit-id
 msgid "You can use text to answer if you prefer."
 msgstr "Du kan bruke tekst for å svare hvis du foretrekker det."
@@ -10357,7 +10324,7 @@ msgstr ""
 msgid "You have"
 msgstr "Du har"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:299
+#: src/features/Game/Battle/BattleActionModal.tsx:308
 #. js-lingui-explicit-id
 msgid ""
 "You have answered all the questions. Submitting your answers now... Don't "
@@ -10366,7 +10333,7 @@ msgstr ""
 "Du har besvart alle spørsmålene. Sender inn svarene dine nå... Ikke lukk "
 "dette vinduet."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:302
+#: src/features/Game/Battle/BattleActionModal.tsx:311
 #. js-lingui-explicit-id
 msgid ""
 "You have completed all the questions. Submit your answers now and wait for "
@@ -10375,7 +10342,7 @@ msgstr ""
 "Du har fullført alle spørsmålene. Send inn svarene dine nå og vent på "
 "resultatene."
 
-#: src/features/Game/Battle/BattleCard.tsx:303
+#: src/features/Game/Battle/BattleCard.tsx:324
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Du har sendt inn svarene dine. Venter på andre..."
@@ -10468,13 +10435,13 @@ msgstr "Dine prestasjoner"
 msgid "Your AI speaking partner"
 msgstr "Din AI-samtalepartner"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:362
+#: src/features/Game/Battle/BattleActionModal.tsx:371
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "Svaret ditt"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:400
+#: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
 msgstr ""
@@ -10524,7 +10491,7 @@ msgstr "Din fullstendige tilgang er aktiv frem til"
 msgid "Your full access is active until {activeTill}"
 msgstr "Din full tilgang er aktiv frem til {activeTill}"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:328
+#: src/features/Game/Battle/BattleActionModal.tsx:337
 #. js-lingui-explicit-id
 msgid "Your goal is not to be perfect, but to surpass your opponent."
 msgstr "Målet ditt er ikke å være perfekt, men å overgå motstanderen din."
@@ -10603,16 +10570,7 @@ msgstr ""
 "Du blir bedt om å **designe systemer på stedet**, men ingen forteller deg "
 "hvordan et \"godt\" system ser ut."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:593
-#. js-lingui-explicit-id
-msgid ""
-"{peopleAnswered} people have already answered - see what they said and "
-"share your thoughts."
-msgstr ""
-"{peopleAnswered} personer har allerede svart - se hva de sa og del dine "
-"tanker."
-
-#: src/features/Game/Battle/BattleCard.tsx:137
+#: src/features/Game/Battle/BattleCard.tsx:143
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
 msgstr "{userName} utfordrer deg til en debatt!"
@@ -10633,6 +10591,67 @@ msgstr ""
 "— det er viktig å delta i denne korte samtalen før du hopper inn i "
 "profesjonelle emner. Her er noen nyttige engelske uttrykk for å starte "
 "intervjuet:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:411
+#. js-lingui-explicit-id
+#~ msgid "Analysis"
+#~ msgstr "Analyse"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:597
+#. js-lingui-explicit-id
+#~ msgid "Be the first to respond and share your thoughts."
+#~ msgstr "Vær den første til å svare og del dine tanker."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:589
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "One person has already answered - check out the answer and share your "
+#~ "thoughts."
+#~ msgstr "En person har allerede svart - sjekk ut svaret og del dine tanker."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:514
+#. js-lingui-explicit-id
+#~ msgid "Previous questions"
+#~ msgstr "Tidligere spørsmål"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:456
+#. js-lingui-explicit-id
+#~ msgid "Publish"
+#~ msgstr "Publiser"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:436
+#. js-lingui-explicit-id
+#~ msgid "Record your answer to see AI suggestion"
+#~ msgstr "Spill inn svaret ditt for å se AI-forslag"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:621
+#. js-lingui-explicit-id
+#~ msgid "See Answers"
+#~ msgstr "Se svar"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:432
+#. js-lingui-explicit-id
+#~ msgid "Suggestion"
+#~ msgstr "Forslag"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:435
+#. js-lingui-explicit-id
+#~ msgid "Suggestion is loading..."
+#~ msgstr "Forslag lastes inn..."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:459
+#. js-lingui-explicit-id
+#~ msgid "To see others answers, you need to publish yours."
+#~ msgstr "For å se andres svar, må du publisere ditt eget."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:593
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "{peopleAnswered} people have already answered - see what they said and "
+#~ "share your thoughts."
+#~ msgstr ""
+#~ "{peopleAnswered} personer har allerede svart - se hva de sa og del dine "
+#~ "tanker."
 
 #: src/features/Chat/ChatSection.tsx:102
 #. js-lingui-explicit-id

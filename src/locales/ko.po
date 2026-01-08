@@ -223,7 +223,7 @@ msgstr "+{increasePoints} 포인트"
 msgid "+{points} points"
 msgstr "+{points} 포인트"
 
-#: src/features/Game/Battle/BattleCard.tsx:138
+#: src/features/Game/Battle/BattleCard.tsx:144
 #. js-lingui-explicit-id
 msgid "-"
 msgstr "-"
@@ -354,7 +354,7 @@ msgstr "\"어떻게 지내세요?\"에 대한 표준적인 답변"
 msgid "Academic Word List"
 msgstr "학문적 단어 목록"
 
-#: src/features/Game/Battle/BattleCard.tsx:253
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "받기"
@@ -391,12 +391,12 @@ msgstr "백엔드 필수 기술 향상을 위한 실행 계획"
 msgid "Active"
 msgstr "활성화됨"
 
-#: src/features/Chat/ChatSection.tsx:106
+#: src/features/Chat/ChatSection.tsx:105
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "답글 추가"
 
-#: src/features/Chat/ChatSection.tsx:68
+#: src/features/Chat/ChatSection.tsx:67
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "주석 추가"
@@ -406,7 +406,7 @@ msgstr "주석 추가"
 msgid "Add new goal"
 msgstr "새 목표 추가"
 
-#: src/features/Chat/ChatSection.tsx:68
+#: src/features/Chat/ChatSection.tsx:67
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "새 게시물 추가"
@@ -421,7 +421,7 @@ msgstr "게시물 추가"
 msgid "Add some info why you want a refund and we will do it."
 msgstr "환불을 원하는 이유를 몇 가지 추가해 주시면 처리해 드리겠습니다."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:380
+#: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
 msgstr "텍스트 답변 추가"
@@ -597,7 +597,7 @@ msgstr "AI 음성"
 msgid "AI voice is disabled"
 msgstr "AI 음성 비활성화됨"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:406
+#: src/features/Game/Battle/BattleActionModal.tsx:415
 #. js-lingui-explicit-id
 msgid "AI will evaluate answers and determine the winner."
 msgstr "AI가 답변을 평가하고 승자를 결정합니다."
@@ -663,7 +663,7 @@ msgid "Almost correct"
 msgstr "거의 맞습니다"
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
-#: src/features/Game/Battle/BattleActionModal.tsx:296
+#: src/features/Game/Battle/BattleActionModal.tsx:305
 #. js-lingui-explicit-id
 msgid "Almost there!"
 msgstr "거의 다 왔어요!"
@@ -697,11 +697,6 @@ msgstr "금액이 너무 큽니다. 지원해 주신 점 감사드리나, $400 �
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "메시지를 분석하는 중에 오류가 발생했습니다. 다시 시도해 주세요."
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:411
-#. js-lingui-explicit-id
-msgid "Analysis"
-msgstr "분석"
 
 #: src/features/Conversation/ConversationCanvas.tsx:515
 #. js-lingui-explicit-id
@@ -738,6 +733,11 @@ msgstr "Angular & RxJS"
 #. js-lingui-explicit-id
 msgid "Answering Typical Interview Questions"
 msgstr "일반적인 면접 질문에 대답하기"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:176
+#. js-lingui-explicit-id
+msgid "Answers:"
+msgstr "답변:"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:375
 #. js-lingui-explicit-id
@@ -791,7 +791,7 @@ msgstr "정말로 계정을 삭제하시겠습니까?"
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "정말로 목표를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
 
-#: src/features/Game/Battle/BattleCard.tsx:330
+#: src/features/Game/Battle/BattleCard.tsx:351
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "이 전투를 거부하시겠습니까?"
@@ -856,7 +856,7 @@ msgid ""
 "your chances of success."
 msgstr "이러한 실수를 피하면 당신이 더 전문적으로 보이게 하고 성공의 가능성을 높일 것입니다."
 
-#: src/features/Chat/ChatSection.tsx:143
+#: src/features/Chat/ChatSection.tsx:142
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -933,11 +933,6 @@ msgstr "직업 면접을 준비하세요"
 #. js-lingui-explicit-id
 msgid "Be specific about your role"
 msgstr "당신의 역할에 대해 구체적으로 설명하세요."
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:597
-#. js-lingui-explicit-id
-msgid "Be the first to respond and share your thoughts."
-msgstr "첫 번째로 응답하고 생각을 공유하세요."
 
 #: src/features/Case/data/frontend-junior/quizData.ts:145
 #: src/features/Case/data/frontend-senior/quizData.ts:242
@@ -1361,8 +1356,8 @@ msgid ""
 msgstr "명확한 시스템 설계 구조. 마침내 횡설수설하지 않고 트레이드오프를 설명했습니다."
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
-#: src/features/Game/Battle/BattleActionModal.tsx:287
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:472
+#: src/features/Game/Battle/BattleActionModal.tsx:296
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:207
 #: src/features/Game/UserProfileModal.tsx:131
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1389,7 +1384,7 @@ msgstr "코딩 기술"
 msgid "Comment"
 msgstr "코멘트"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:279
+#: src/features/Game/Battle/BattleActionModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Comments:"
 msgstr "코멘트:"
@@ -1836,7 +1831,7 @@ msgstr "판단 없이 매일 인터뷰하기"
 msgid "Daily Language Practice"
 msgstr "매일 언어 연습"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:269
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:108
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "데일리 퀘스천"
@@ -1886,7 +1881,7 @@ msgstr "일"
 msgid "day"
 msgstr "하루"
 
-#: src/features/Game/Battle/BattleCard.tsx:120
+#: src/features/Game/Battle/BattleCard.tsx:126
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "토론"
@@ -1906,7 +1901,7 @@ msgstr "토론 요청"
 msgid "Debate Request Sent!"
 msgstr "토론 요청이 전송되었습니다!"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:388
+#: src/features/Game/Battle/BattleActionModal.tsx:397
 #. js-lingui-explicit-id
 msgid "Debate started!"
 msgstr "토론이 시작되었습니다!"
@@ -3605,7 +3600,6 @@ msgid "Grammar corrections to boost your confidence"
 msgstr "자신감을 높여주는 문법 수정"
 
 #: src/features/Conversation/ProcessUserInput.tsx:174
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:415
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "대박!"
@@ -3730,7 +3724,7 @@ msgstr ""
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "개선을 돕기 위한 나머지 맞춤형 피드백을 제공합니다."
 
-#: src/features/Game/Battle/BattleCard.tsx:281
+#: src/features/Game/Battle/BattleCard.tsx:287
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "숨기기"
@@ -3864,7 +3858,7 @@ msgstr "작동 방식:"
 msgid "How long will my hours last?"
 msgstr "내 시간이 얼마나 지속될까요?"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:282
+#: src/features/Game/Battle/BattleActionModal.tsx:291
 #. js-lingui-explicit-id
 msgid "How the battle went?"
 msgstr "전투는 어떻게 진행되었나요?"
@@ -5395,7 +5389,7 @@ msgstr "계속해보죠..."
 msgid "Let's create an account"
 msgstr "계정을 만듭시다"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:389
+#: src/features/Game/Battle/BattleActionModal.tsx:398
 #. js-lingui-explicit-id
 msgid "Let's see who has the best arguments."
 msgstr "누가 가장 설득력 있는 주장을 펼치는지 봅시다."
@@ -5837,7 +5831,7 @@ msgstr "새로운 단어 연습하기."
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/Battle/BattleActionModal.tsx:390
+#: src/features/Game/Battle/BattleActionModal.tsx:399
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
@@ -5910,6 +5904,11 @@ msgstr "인터뷰가 없습니다"
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "메시지가 아직 기록되지 않았습니다."
+
+#: src/features/Chat/ChatSection.tsx:248
+#. js-lingui-explicit-id
+msgid "No messages yet. Be the first to share your thoughts!"
+msgstr "아직 메시지가 없습니다. 가장 먼저 당신의 생각을 공유해보세요!"
 
 #: src/features/Header/PaymentHistoryModal.tsx:96
 #: src/features/Usage/PaymentModal.tsx:509
@@ -6072,13 +6071,6 @@ msgid ""
 "expiration."
 msgstr "구매하신 후에는 사용하기 전까지 그 시간을 사용할 수 있습니다. 만료기간이 없습니다."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:589
-#. js-lingui-explicit-id
-msgid ""
-"One person has already answered - check out the answer and share your "
-"thoughts."
-msgstr "한 사람이 이미 대답했습니다 - 답변을 확인하고 당신의 생각을 공유하세요."
-
 #: src/features/Dashboard/BrainCard.tsx:429
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -6104,7 +6096,6 @@ msgstr "온라인 언어 연습"
 msgid "Oops! Something went wrong"
 msgstr "이런! 문제가 발생했습니다"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:621
 #: src/features/Landing/Price/PricePage.tsx:195
 #. js-lingui-explicit-id
 msgid "Open"
@@ -6143,7 +6134,7 @@ msgid "Open plan"
 msgstr "오픈 플랜"
 
 #: src/features/Conversation/ConversationCanvas.tsx:858
-#: src/features/Game/Battle/BattleCard.tsx:296
+#: src/features/Game/Battle/BattleCard.tsx:302
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "결과 열기"
@@ -6403,7 +6394,7 @@ msgstr "좀 더 긴 메시지를 녹음해 주세요(적어도 몇 단어 이상
 msgid "Please refresh the page and try one more time"
 msgstr "페이지를 새로고침하고 한 번 더 시도해주세요"
 
-#: src/features/Chat/ChatSection.tsx:43
+#: src/features/Chat/ChatSection.tsx:42
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "창을 닫기 전에 녹음을 중지해 주세요."
@@ -6773,11 +6764,6 @@ msgstr "목표 설정중"
 msgid "Preparing the brain"
 msgstr "두뇌 준비하기"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:514
-#. js-lingui-explicit-id
-msgid "Previous questions"
-msgstr "이전 질문"
-
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -6822,7 +6808,7 @@ msgstr "개인정보 보호정책"
 msgid "Problem Solving"
 msgstr "문제 해결"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:296
+#: src/features/Game/Battle/BattleActionModal.tsx:305
 #. js-lingui-explicit-id
 msgid "Processing answers..."
 msgstr "답변 처리 중..."
@@ -6907,11 +6893,6 @@ msgstr "심리학"
 #. js-lingui-explicit-id
 msgid "Public Talk Skills"
 msgstr "공개 토론 기술"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:456
-#. js-lingui-explicit-id
-msgid "Publish"
-msgstr "게시하기"
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -7200,7 +7181,7 @@ msgstr ""
 "<0>{learningLanguageName}</0>로 2-3분짜리 이야기를 녹음하세요. 이는 개인 맞춤형 연습 계획을 만드는 데 "
 "도움이 됩니다."
 
-#: src/features/Chat/ChatSection.tsx:106
+#: src/features/Chat/ChatSection.tsx:105
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "메시지를 녹음하세요"
@@ -7239,11 +7220,6 @@ msgstr "메시지 기록"
 #. js-lingui-explicit-id
 msgid "Record more"
 msgstr "더 녹음하기"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:436
-#. js-lingui-explicit-id
-msgid "Record your answer to see AI suggestion"
-msgstr "당신의 답변을 녹음하여 AI 제안을 확인하세요"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
 #. js-lingui-explicit-id
@@ -7296,7 +7272,7 @@ msgstr "관련 시나리오"
 msgid "Reload page"
 msgstr "페이지 새로고침"
 
-#: src/features/Game/Battle/BattleCard.tsx:339
+#: src/features/Game/Battle/BattleCard.tsx:360
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "제거"
@@ -7487,11 +7463,6 @@ msgstr "AI 리쿠르터와의 사전 인터뷰"
 msgid "Second Place"
 msgstr "두 번째 장소"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:621
-#. js-lingui-explicit-id
-msgid "See Answers"
-msgstr "답변 보기"
-
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
 msgid "See strengths and gaps across core backend topics."
@@ -7639,7 +7610,7 @@ msgstr "팀 간 협업, 갈등 해결, 프로젝트 주인의식에 대한 매�
 msgid "Share what you're currently learning"
 msgstr "현재 배우고 있는 내용을 공유하세요"
 
-#: src/features/Chat/ChatSection.tsx:78
+#: src/features/Chat/ChatSection.tsx:77
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "생각을 공유하고 피드백을 받으세요!"
@@ -7691,6 +7662,7 @@ msgstr "덜 보기"
 
 #: src/features/Chat/Message.tsx:361
 #: src/features/Conversation/ProcessUserInput.tsx:199
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:207
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -7953,7 +7925,7 @@ msgstr "모의 면접 시작"
 msgid "Start Call"
 msgstr "통화 시작"
 
-#: src/features/Game/Battle/BattleCard.tsx:269
+#: src/features/Game/Battle/BattleCard.tsx:275
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "토론 시작"
@@ -8218,7 +8190,7 @@ msgstr "제출"
 msgid "Submit answer"
 msgstr "답변 제출"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:306
+#: src/features/Game/Battle/BattleActionModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Submit Answers"
 msgstr "답안 제출"
@@ -8252,16 +8224,6 @@ msgstr "성공 사례"
 #. js-lingui-explicit-id
 msgid "Success!"
 msgstr "성공!"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:432
-#. js-lingui-explicit-id
-msgid "Suggestion"
-msgstr "제안"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:435
-#. js-lingui-explicit-id
-msgid "Suggestion is loading..."
-msgstr "제안이 로딩 중입니다..."
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -8498,7 +8460,7 @@ msgid ""
 "responses immediately."
 msgstr "CSS 및 JavaScript 답변에 대한 AI 피드백이 정확했습니다. 즉시 내 답변을 개선했습니다."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:332
+#: src/features/Game/Battle/BattleActionModal.tsx:341
 #. js-lingui-explicit-id
 msgid "The answer should not take more than 300 words. ~2 minutes."
 msgstr "답변은 300 단어를 초과하지 않아야 합니다. ~2분."
@@ -8577,7 +8539,7 @@ msgstr ""
 "plaintext\n"
 "요청이 사용자 {userName}에게 전송됩니다.\n"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:394
+#: src/features/Game/Battle/BattleActionModal.tsx:403
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "승자는 {points} 게임 포인트를 획득합니다!"
@@ -8636,11 +8598,6 @@ msgstr "이것은 결과를 보여주고 당신을 독특하게 만듭니다."
 #. js-lingui-explicit-id
 msgid "Ticket"
 msgstr "티켓"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:459
-#. js-lingui-explicit-id
-msgid "To see others answers, you need to publish yours."
-msgstr "다른 사람의 답변을 보려면, 당신의 답변을 게시해야 합니다."
 
 #: src/features/Landing/LandingPage.tsx:142
 #. js-lingui-explicit-id
@@ -8780,7 +8737,7 @@ msgstr "비디오 켜기"
 msgid "Turn on volume"
 msgstr "볼륨 켜기"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:363
+#: src/features/Game/Battle/BattleActionModal.tsx:372
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "여기에 답변을 입력하세요..."
@@ -8869,7 +8826,7 @@ msgid ""
 "achievement:"
 msgstr "이 템플릿들을 사용하여 자신만의 이야기를 만드세요. 성과를 언급하는 것을 잊지 마세요:"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:322
+#: src/features/Game/Battle/BattleActionModal.tsx:331
 #. js-lingui-explicit-id
 msgid "Use your learning language ({lang})"
 msgstr "당신의 학습 언어를 사용하세요 ({lang})"
@@ -8985,7 +8942,7 @@ msgstr "음성 녹음 모드"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:263
+#: src/features/Game/Battle/BattleCard.tsx:269
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "다른 플레이어가 수락할 때까지 대기 중..."
@@ -9236,6 +9193,11 @@ msgstr "유료 플랜으로 무엇을 얻을 수 있습니까?"
 msgid "What do I need to use FluencyPal?"
 msgstr "FluencyPal을 사용하려면 무엇이 필요합니까?"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:186
+#. js-lingui-explicit-id
+msgid "What do you think?"
+msgstr "무엇을 생각하세요?"
+
 #: src/features/Landing/Price/PricePage.tsx:406
 #. js-lingui-explicit-id
 msgid "What I can do for you:"
@@ -9388,7 +9350,7 @@ msgstr "백엔드 후보자가 빠르게 향상되는 이유"
 msgid "Why candidates improve so quickly"
 msgstr "후보자들이 왜 그렇게 빨리 향상되는가"
 
-#: src/features/Game/Battle/BattleCard.tsx:256
+#: src/features/Game/Battle/BattleCard.tsx:262
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "승자는 {points} 점을 받습니다."
@@ -9637,10 +9599,15 @@ msgstr "프로젝트를 만들 수 있지만, **면접관이 실제로 무엇을
 msgid "You can delete your personal data anytime"
 msgstr "언제든지 개인정보를 삭제할 수 있습니다"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:280
+#: src/features/Game/Battle/BattleActionModal.tsx:288
 #. js-lingui-explicit-id
 msgid "You can discuss the battle here."
 msgstr "당신은 여기에서 전투에 대해 논의할 수 있습니다."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:183
+#. js-lingui-explicit-id
+msgid "You can discuss the daily question here."
+msgstr "여기에서 일일 질문에 대해 토론할 수 있습니다."
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
@@ -9688,7 +9655,7 @@ msgstr "메인 페이지에서 진행 상황을 추적할 수 있습니다."
 msgid "You can try AI in action now"
 msgstr "지금 바로 AI를 시도해 볼 수 있습니다"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:359
+#: src/features/Game/Battle/BattleActionModal.tsx:368
 #. js-lingui-explicit-id
 msgid "You can use text to answer if you prefer."
 msgstr "텍스트를 사용하여 답변할 수 있습니다."
@@ -9717,21 +9684,21 @@ msgstr "재시도, 서킷 브레이커, 타임아웃, 폴백, 로깅, 추적, �
 msgid "You have"
 msgstr "당신은"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:299
+#: src/features/Game/Battle/BattleActionModal.tsx:308
 #. js-lingui-explicit-id
 msgid ""
 "You have answered all the questions. Submitting your answers now... Don't "
 "close this window."
 msgstr "모든 질문에 답변하셨습니다. 지금 답변을 제출하는 중입니다... 이 창을 닫지 마세요."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:302
+#: src/features/Game/Battle/BattleActionModal.tsx:311
 #. js-lingui-explicit-id
 msgid ""
 "You have completed all the questions. Submit your answers now and wait for "
 "the results."
 msgstr "모든 질문을 완료했습니다. 이제 답안을 제출하고 결과를 기다리세요."
 
-#: src/features/Game/Battle/BattleCard.tsx:303
+#: src/features/Game/Battle/BattleCard.tsx:324
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "당신의 답변이 제출되었습니다. 다른 사람들을 기다리는 중..."
@@ -9812,13 +9779,13 @@ msgstr "당신의 성과"
 msgid "Your AI speaking partner"
 msgstr "당신의 AI 스피킹 파트너"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:362
+#: src/features/Game/Battle/BattleActionModal.tsx:371
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "당신의 답변"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:400
+#: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
 msgstr "당신의 답변은 제출 후 상대방에게 보이게 됩니다."
@@ -9862,7 +9829,7 @@ msgstr "당신의 전체 접근 권한은 ~까지 활성화됩니다."
 msgid "Your full access is active until {activeTill}"
 msgstr "{activeTill}까지 전체 액세스가 활성화됩니다."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:328
+#: src/features/Game/Battle/BattleActionModal.tsx:337
 #. js-lingui-explicit-id
 msgid "Your goal is not to be perfect, but to surpass your opponent."
 msgstr "당신의 목표는 완벽함이 아니라, 상대방을 능가하는 것입니다."
@@ -9937,14 +9904,7 @@ msgid ""
 "“good” looks like"
 msgstr "당신은 **즉석에서 시스템을 설계하라고 요청받지만**, 아무도 \"좋은\" 것이 무엇인지 말해주지 않습니다."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:593
-#. js-lingui-explicit-id
-msgid ""
-"{peopleAnswered} people have already answered - see what they said and "
-"share your thoughts."
-msgstr "{peopleAnswered}명이 이미 답변했습니다 - 그들이 한 말을 보고 당신의 생각을 공유하십시오."
-
-#: src/features/Game/Battle/BattleCard.tsx:137
+#: src/features/Game/Battle/BattleCard.tsx:143
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
 msgstr "{userName}님이 토론에 도전합니다!"
@@ -9964,6 +9924,65 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:411
+#. js-lingui-explicit-id
+#~ msgid "Analysis"
+#~ msgstr "분석"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:597
+#. js-lingui-explicit-id
+#~ msgid "Be the first to respond and share your thoughts."
+#~ msgstr "첫 번째로 응답하고 생각을 공유하세요."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:589
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "One person has already answered - check out the answer and share your "
+#~ "thoughts."
+#~ msgstr "한 사람이 이미 대답했습니다 - 답변을 확인하고 당신의 생각을 공유하세요."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:514
+#. js-lingui-explicit-id
+#~ msgid "Previous questions"
+#~ msgstr "이전 질문"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:456
+#. js-lingui-explicit-id
+#~ msgid "Publish"
+#~ msgstr "게시하기"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:436
+#. js-lingui-explicit-id
+#~ msgid "Record your answer to see AI suggestion"
+#~ msgstr "당신의 답변을 녹음하여 AI 제안을 확인하세요"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:621
+#. js-lingui-explicit-id
+#~ msgid "See Answers"
+#~ msgstr "답변 보기"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:432
+#. js-lingui-explicit-id
+#~ msgid "Suggestion"
+#~ msgstr "제안"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:435
+#. js-lingui-explicit-id
+#~ msgid "Suggestion is loading..."
+#~ msgstr "제안이 로딩 중입니다..."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:459
+#. js-lingui-explicit-id
+#~ msgid "To see others answers, you need to publish yours."
+#~ msgstr "다른 사람의 답변을 보려면, 당신의 답변을 게시해야 합니다."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:593
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "{peopleAnswered} people have already answered - see what they said and "
+#~ "share your thoughts."
+#~ msgstr "{peopleAnswered}명이 이미 답변했습니다 - 그들이 한 말을 보고 당신의 생각을 공유하십시오."
 
 #: src/features/Chat/ChatSection.tsx:102
 #. js-lingui-explicit-id

@@ -246,7 +246,7 @@ msgstr "+{increasePoints} poin"
 msgid "+{points} points"
 msgstr "+{poin} poin"
 
-#: src/features/Game/Battle/BattleCard.tsx:138
+#: src/features/Game/Battle/BattleCard.tsx:144
 #. js-lingui-explicit-id
 msgid "-"
 msgstr "-"
@@ -385,7 +385,7 @@ msgstr "Sebuah jawaban standar untuk \"Apa kabar?\""
 msgid "Academic Word List"
 msgstr "Daftar Kata Akademik"
 
-#: src/features/Game/Battle/BattleCard.tsx:253
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Terima"
@@ -424,12 +424,12 @@ msgstr "Rencana aksi untuk meningkatkan keterampilan backend yang kritis"
 msgid "Active"
 msgstr "Aktif"
 
-#: src/features/Chat/ChatSection.tsx:106
+#: src/features/Chat/ChatSection.tsx:105
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Tambahkan balasan"
 
-#: src/features/Chat/ChatSection.tsx:68
+#: src/features/Chat/ChatSection.tsx:67
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "Tambahkan Komentar"
@@ -439,7 +439,7 @@ msgstr "Tambahkan Komentar"
 msgid "Add new goal"
 msgstr "Tambahkan tujuan baru"
 
-#: src/features/Chat/ChatSection.tsx:68
+#: src/features/Chat/ChatSection.tsx:67
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "Tambahkan Postingan Baru"
@@ -456,7 +456,7 @@ msgstr ""
 "Tambahkan beberapa informasi mengapa Anda ingin pengembalian dana dan kami "
 "akan melakukannya."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:380
+#: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
 msgstr "Tambahkan Jawaban Teks"
@@ -635,7 +635,7 @@ msgstr "Suara AI"
 msgid "AI voice is disabled"
 msgstr "AI suara dinonaktifkan"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:406
+#: src/features/Game/Battle/BattleActionModal.tsx:415
 #. js-lingui-explicit-id
 msgid "AI will evaluate answers and determine the winner."
 msgstr "AI akan mengevaluasi jawaban dan menentukan pemenangnya."
@@ -703,7 +703,7 @@ msgid "Almost correct"
 msgstr "Hampir benar"
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
-#: src/features/Game/Battle/BattleActionModal.tsx:296
+#: src/features/Game/Battle/BattleActionModal.tsx:305
 #. js-lingui-explicit-id
 msgid "Almost there!"
 msgstr "Hampir di sana!"
@@ -740,11 +740,6 @@ msgstr ""
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "Terjadi kesalahan saat menganalisis pesan. Silakan coba lagi."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:411
-#. js-lingui-explicit-id
-msgid "Analysis"
-msgstr "Analisis"
-
 #: src/features/Conversation/ConversationCanvas.tsx:515
 #. js-lingui-explicit-id
 msgid "Analyzing"
@@ -780,6 +775,11 @@ msgstr "Angular & RxJS"
 #. js-lingui-explicit-id
 msgid "Answering Typical Interview Questions"
 msgstr "Menjawab Pertanyaan Wawancara yang Umum"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:176
+#. js-lingui-explicit-id
+msgid "Answers:"
+msgstr "Jawaban:"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:375
 #. js-lingui-explicit-id
@@ -837,7 +837,7 @@ msgstr ""
 "Apakah Anda yakin ingin menghapus tujuan Anda? Tindakan ini tidak dapat "
 "dibatalkan."
 
-#: src/features/Game/Battle/BattleCard.tsx:330
+#: src/features/Game/Battle/BattleCard.tsx:351
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Apakah Anda yakin ingin menolak pertempuran ini?"
@@ -908,7 +908,7 @@ msgstr ""
 "Menghindari kesalahan-kesalahan ini akan membuat Anda terlihat lebih "
 "profesional dan meningkatkan peluang Anda untuk sukses."
 
-#: src/features/Chat/ChatSection.tsx:143
+#: src/features/Chat/ChatSection.tsx:142
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -986,11 +986,6 @@ msgstr "Bersiaplah untuk wawancara pekerjaan Anda"
 #. js-lingui-explicit-id
 msgid "Be specific about your role"
 msgstr "Bersikaplah spesifik tentang peran Anda"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:597
-#. js-lingui-explicit-id
-msgid "Be the first to respond and share your thoughts."
-msgstr "Jadilah yang pertama merespons dan bagikan pemikiran Anda."
 
 #: src/features/Case/data/frontend-junior/quizData.ts:145
 #: src/features/Case/data/frontend-senior/quizData.ts:242
@@ -1434,8 +1429,8 @@ msgstr ""
 "trade-off tanpa berbelit-belit."
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
-#: src/features/Game/Battle/BattleActionModal.tsx:287
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:472
+#: src/features/Game/Battle/BattleActionModal.tsx:296
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:207
 #: src/features/Game/UserProfileModal.tsx:131
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1464,7 +1459,7 @@ msgstr "Kemampuan Koding"
 msgid "Comment"
 msgstr "Komentar"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:279
+#: src/features/Game/Battle/BattleActionModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Comments:"
 msgstr "Komentar:"
@@ -1931,7 +1926,7 @@ msgstr "Wawancara harian tanpa takut dinilai"
 msgid "Daily Language Practice"
 msgstr "Praktek Bahasa Sehari-hari"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:269
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:108
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Pertanyaan Harian"
@@ -1982,7 +1977,7 @@ msgstr "Hari"
 msgid "day"
 msgstr "hari"
 
-#: src/features/Game/Battle/BattleCard.tsx:120
+#: src/features/Game/Battle/BattleCard.tsx:126
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Debat"
@@ -2002,7 +1997,7 @@ msgstr "Permintaan Debat"
 msgid "Debate Request Sent!"
 msgstr "Permintaan Debat Dikirim!"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:388
+#: src/features/Game/Battle/BattleActionModal.tsx:397
 #. js-lingui-explicit-id
 msgid "Debate started!"
 msgstr "Debat dimulai!"
@@ -3893,7 +3888,6 @@ msgid "Grammar corrections to boost your confidence"
 msgstr "Koreksi tata bahasa untuk meningkatkan kepercayaan diri Anda"
 
 #: src/features/Conversation/ProcessUserInput.tsx:174
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:415
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Hebat!"
@@ -4032,7 +4026,7 @@ msgstr ""
 "Berikut adalah sisa umpan balik personalisasi Anda untuk membantu Anda "
 "meningkatkan."
 
-#: src/features/Game/Battle/BattleCard.tsx:281
+#: src/features/Game/Battle/BattleCard.tsx:287
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "Sembunyikan"
@@ -4172,7 +4166,7 @@ msgstr "Cara Kerjanya:"
 msgid "How long will my hours last?"
 msgstr "Berapa lama jam saya akan bertahan?"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:282
+#: src/features/Game/Battle/BattleActionModal.tsx:291
 #. js-lingui-explicit-id
 msgid "How the battle went?"
 msgstr "Bagaimana jalannya pertempuran?"
@@ -5898,7 +5892,7 @@ msgstr "Mari kita lanjutkan..."
 msgid "Let's create an account"
 msgstr "Mari buat akun"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:389
+#: src/features/Game/Battle/BattleActionModal.tsx:398
 #. js-lingui-explicit-id
 msgid "Let's see who has the best arguments."
 msgstr "Mari kita lihat siapa yang memiliki argumen terbaik."
@@ -6360,7 +6354,7 @@ msgstr "Kata-kata baru untuk dipraktikkan."
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/Battle/BattleActionModal.tsx:390
+#: src/features/Game/Battle/BattleActionModal.tsx:399
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
@@ -6435,6 +6429,11 @@ msgstr "Tidak ada wawancara ditemukan"
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "Belum ada pesan yang direkam."
+
+#: src/features/Chat/ChatSection.tsx:248
+#. js-lingui-explicit-id
+msgid "No messages yet. Be the first to share your thoughts!"
+msgstr "Belum ada pesan. Jadilah yang pertama berbagi pemikiran Anda!"
 
 #: src/features/Header/PaymentHistoryModal.tsx:96
 #: src/features/Usage/PaymentModal.tsx:509
@@ -6616,13 +6615,6 @@ msgstr ""
 "Setelah dibeli, jam Anda tetap tersedia sampai Anda menggunakannya. Tidak "
 "ada masa kedaluwarsa."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:589
-#. js-lingui-explicit-id
-msgid ""
-"One person has already answered - check out the answer and share your "
-"thoughts."
-msgstr "Satu orang telah menjawab - lihat jawabannya dan bagikan pemikiran Anda."
-
 #: src/features/Dashboard/BrainCard.tsx:429
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -6648,7 +6640,6 @@ msgstr "Online Language Practice"
 msgid "Oops! Something went wrong"
 msgstr "Ups! Ada yang salah"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:621
 #: src/features/Landing/Price/PricePage.tsx:195
 #. js-lingui-explicit-id
 msgid "Open"
@@ -6687,7 +6678,7 @@ msgid "Open plan"
 msgstr "Rencana terbuka"
 
 #: src/features/Conversation/ConversationCanvas.tsx:858
-#: src/features/Game/Battle/BattleCard.tsx:296
+#: src/features/Game/Battle/BattleCard.tsx:302
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Buka hasil"
@@ -6961,7 +6952,7 @@ msgstr "Silakan rekam pesan yang lebih panjang (setidaknya beberapa kata)."
 msgid "Please refresh the page and try one more time"
 msgstr "Silakan segarkan halaman dan coba sekali lagi"
 
-#: src/features/Chat/ChatSection.tsx:43
+#: src/features/Chat/ChatSection.tsx:42
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Harap hentikan perekaman sebelum menutup jendela."
@@ -7377,11 +7368,6 @@ msgstr "Mempersiapkan Tujuan"
 msgid "Preparing the brain"
 msgstr "Mempersiapkan otak"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:514
-#. js-lingui-explicit-id
-msgid "Previous questions"
-msgstr "Pertanyaan sebelumnya"
-
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -7426,7 +7412,7 @@ msgstr "Kebijakan Privasi"
 msgid "Problem Solving"
 msgstr "Pemecahan Masalah"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:296
+#: src/features/Game/Battle/BattleActionModal.tsx:305
 #. js-lingui-explicit-id
 msgid "Processing answers..."
 msgstr "Memproses jawaban..."
@@ -7511,13 +7497,6 @@ msgstr "Psikologi"
 #. js-lingui-explicit-id
 msgid "Public Talk Skills"
 msgstr "Keterampilan Berbicara di Publik"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:456
-#. js-lingui-explicit-id
-msgid "Publish"
-msgstr ""
-"\n"
-"Terbitkan\n"
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -7823,7 +7802,7 @@ msgstr ""
 "Rekam cerita 2-3 menit menggunakan <0>{learningLanguageName}</0>. Ini akan "
 "membantu saya membuat rencana latihan yang dipersonalisasi."
 
-#: src/features/Chat/ChatSection.tsx:106
+#: src/features/Chat/ChatSection.tsx:105
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Rekam pesan"
@@ -7864,11 +7843,6 @@ msgstr "Rekam Pesan"
 #. js-lingui-explicit-id
 msgid "Record more"
 msgstr "Rekam lebih banyak"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:436
-#. js-lingui-explicit-id
-msgid "Record your answer to see AI suggestion"
-msgstr "Rekam jawaban Anda untuk melihat saran AI"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
 #. js-lingui-explicit-id
@@ -7924,7 +7898,7 @@ msgstr "Terkait Skenario"
 msgid "Reload page"
 msgstr "Muat ulang halaman"
 
-#: src/features/Game/Battle/BattleCard.tsx:339
+#: src/features/Game/Battle/BattleCard.tsx:360
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "Hapus"
@@ -8125,11 +8099,6 @@ msgstr "Wawancara penyaringan dengan perekrut AI"
 msgid "Second Place"
 msgstr "Peringkat Kedua"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:621
-#. js-lingui-explicit-id
-msgid "See Answers"
-msgstr "Lihat Jawaban"
-
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
 msgid "See strengths and gaps across core backend topics."
@@ -8285,7 +8254,7 @@ msgstr ""
 msgid "Share what you're currently learning"
 msgstr "Bagikan apa yang sedang Anda pelajari"
 
-#: src/features/Chat/ChatSection.tsx:78
+#: src/features/Chat/ChatSection.tsx:77
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "Bagikan pemikiran Anda dan dapatkan masukan!"
@@ -8341,6 +8310,7 @@ msgstr "Tampilkan lebih sedikit"
 
 #: src/features/Chat/Message.tsx:361
 #: src/features/Conversation/ProcessUserInput.tsx:199
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:207
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -8621,7 +8591,7 @@ msgstr "Mulai wawancara tiruan"
 msgid "Start Call"
 msgstr "Mulai Panggilan"
 
-#: src/features/Game/Battle/BattleCard.tsx:269
+#: src/features/Game/Battle/BattleCard.tsx:275
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Mulai Debat"
@@ -8912,7 +8882,7 @@ msgstr "Kirim"
 msgid "Submit answer"
 msgstr "Kirim jawaban"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:306
+#: src/features/Game/Battle/BattleActionModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Submit Answers"
 msgstr "Kumpulkan Jawaban"
@@ -8946,16 +8916,6 @@ msgstr "Kisah sukses"
 #. js-lingui-explicit-id
 msgid "Success!"
 msgstr "Sukses!"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:432
-#. js-lingui-explicit-id
-msgid "Suggestion"
-msgstr "Saran"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:435
-#. js-lingui-explicit-id
-msgid "Suggestion is loading..."
-msgstr "Penawaran sedang dimuat..."
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -9209,7 +9169,7 @@ msgstr ""
 "Masukan AI pada jawaban CSS dan JavaScript saya sangat tepat. Saya langsung "
 "meningkatkan jawaban saya."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:332
+#: src/features/Game/Battle/BattleActionModal.tsx:341
 #. js-lingui-explicit-id
 msgid "The answer should not take more than 300 words. ~2 minutes."
 msgstr "Jawabannya seharusnya tidak lebih dari 300 kata. ~2 menit."
@@ -9297,7 +9257,7 @@ msgstr ""
 msgid "The request will be sent to user {userName}."
 msgstr "Permintaan akan dikirim ke pengguna {userName}."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:394
+#: src/features/Game/Battle/BattleActionModal.tsx:403
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "Pemenang mendapatkan {points} poin permainan!"
@@ -9358,11 +9318,6 @@ msgstr "Ini menunjukkan hasil dan membuat Anda menonjol."
 #. js-lingui-explicit-id
 msgid "Ticket"
 msgstr "Tiket"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:459
-#. js-lingui-explicit-id
-msgid "To see others answers, you need to publish yours."
-msgstr "Untuk melihat jawaban orang lain, Anda perlu mempublikasikan jawaban Anda."
 
 #: src/features/Landing/LandingPage.tsx:142
 #. js-lingui-explicit-id
@@ -9503,7 +9458,7 @@ msgstr "Nyalakan video"
 msgid "Turn on volume"
 msgstr "Nyalakan volume"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:363
+#: src/features/Game/Battle/BattleActionModal.tsx:372
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "Ketikan jawaban Anda di sini..."
@@ -9598,7 +9553,7 @@ msgstr ""
 "Gunakan templat ini untuk membuat cerita Anda sendiri. Jangan lupa untuk "
 "menyebutkan sebuah pencapaian:"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:322
+#: src/features/Game/Battle/BattleActionModal.tsx:331
 #. js-lingui-explicit-id
 msgid "Use your learning language ({lang})"
 msgstr "Gunakan bahasa belajar Anda ({lang})"
@@ -9720,7 +9675,7 @@ msgstr "Mode rekaman suara"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:263
+#: src/features/Game/Battle/BattleCard.tsx:269
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Menunggu pemain lain untuk menerima..."
@@ -9992,6 +9947,11 @@ msgstr "Apa yang saya dapatkan dengan paket berbayar?"
 msgid "What do I need to use FluencyPal?"
 msgstr "Apa yang saya perlukan untuk menggunakan FluencyPal?"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:186
+#. js-lingui-explicit-id
+msgid "What do you think?"
+msgstr "Apa pendapat Anda?"
+
 #: src/features/Landing/Price/PricePage.tsx:406
 #. js-lingui-explicit-id
 msgid "What I can do for you:"
@@ -10151,7 +10111,7 @@ msgstr "Mengapa kandidat backend berkembang pesat"
 msgid "Why candidates improve so quickly"
 msgstr "Mengapa kandidat meningkat begitu cepat"
 
-#: src/features/Game/Battle/BattleCard.tsx:256
+#: src/features/Game/Battle/BattleCard.tsx:262
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Pemenang mendapatkan {points} poin"
@@ -10443,10 +10403,15 @@ msgstr ""
 msgid "You can delete your personal data anytime"
 msgstr "Anda dapat menghapus data pribadi Anda kapan saja"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:280
+#: src/features/Game/Battle/BattleActionModal.tsx:288
 #. js-lingui-explicit-id
 msgid "You can discuss the battle here."
 msgstr "Anda dapat mendiskusikan pertempuran di sini."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:183
+#. js-lingui-explicit-id
+msgid "You can discuss the daily question here."
+msgstr "Anda dapat mendiskusikan pertanyaan harian di sini."
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
@@ -10502,7 +10467,7 @@ msgstr "Anda dapat melacak kemajuan di halaman utama."
 msgid "You can try AI in action now"
 msgstr "Anda bisa mencoba AI dalam aksi sekarang"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:359
+#: src/features/Game/Battle/BattleActionModal.tsx:368
 #. js-lingui-explicit-id
 msgid "You can use text to answer if you prefer."
 msgstr "Anda dapat menggunakan teks untuk menjawab jika Anda mau."
@@ -10536,7 +10501,7 @@ msgstr ""
 msgid "You have"
 msgstr "Anda memiliki"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:299
+#: src/features/Game/Battle/BattleActionModal.tsx:308
 #. js-lingui-explicit-id
 msgid ""
 "You have answered all the questions. Submitting your answers now... Don't "
@@ -10545,7 +10510,7 @@ msgstr ""
 "Anda telah menjawab semua pertanyaan. Mengirimkan jawaban Anda sekarang... "
 "Jangan tutup jendela ini."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:302
+#: src/features/Game/Battle/BattleActionModal.tsx:311
 #. js-lingui-explicit-id
 msgid ""
 "You have completed all the questions. Submit your answers now and wait for "
@@ -10554,7 +10519,7 @@ msgstr ""
 "Anda telah menyelesaikan semua pertanyaan. Kirimkan jawaban Anda sekarang "
 "dan tunggu hasilnya."
 
-#: src/features/Game/Battle/BattleCard.tsx:303
+#: src/features/Game/Battle/BattleCard.tsx:324
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Anda telah mengirimkan jawaban Anda. Menunggu yang lain..."
@@ -10647,13 +10612,13 @@ msgstr "Prestasi Anda"
 msgid "Your AI speaking partner"
 msgstr "Mitra bicara AI Anda"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:362
+#: src/features/Game/Battle/BattleActionModal.tsx:371
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "Jawaban Anda"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:400
+#: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
 msgstr "Jawaban Anda akan terlihat oleh lawan Anda setelah Anda mengirimkannya."
@@ -10703,7 +10668,7 @@ msgstr "Akses penuh Anda aktif hingga"
 msgid "Your full access is active until {activeTill}"
 msgstr "Akses penuh Anda aktif hingga {activeTill}"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:328
+#: src/features/Game/Battle/BattleActionModal.tsx:337
 #. js-lingui-explicit-id
 msgid "Your goal is not to be perfect, but to surpass your opponent."
 msgstr ""
@@ -10788,16 +10753,7 @@ msgstr ""
 "Anda diminta untuk **merancang sistem secara spontan**, tetapi tidak ada "
 "yang memberi tahu seperti apa rupa \"baik\"."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:593
-#. js-lingui-explicit-id
-msgid ""
-"{peopleAnswered} people have already answered - see what they said and "
-"share your thoughts."
-msgstr ""
-"{peopleAnswered} orang telah menjawab - lihat apa yang mereka katakan dan "
-"bagikan pendapat Anda."
-
-#: src/features/Game/Battle/BattleCard.tsx:137
+#: src/features/Game/Battle/BattleCard.tsx:143
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
 msgstr "{userName} menantang Anda untuk berdebat!"
@@ -10818,6 +10774,69 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:411
+#. js-lingui-explicit-id
+#~ msgid "Analysis"
+#~ msgstr "Analisis"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:597
+#. js-lingui-explicit-id
+#~ msgid "Be the first to respond and share your thoughts."
+#~ msgstr "Jadilah yang pertama merespons dan bagikan pemikiran Anda."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:589
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "One person has already answered - check out the answer and share your "
+#~ "thoughts."
+#~ msgstr "Satu orang telah menjawab - lihat jawabannya dan bagikan pemikiran Anda."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:514
+#. js-lingui-explicit-id
+#~ msgid "Previous questions"
+#~ msgstr "Pertanyaan sebelumnya"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:456
+#. js-lingui-explicit-id
+#~ msgid "Publish"
+#~ msgstr ""
+#~ "\n"
+#~ "Terbitkan\n"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:436
+#. js-lingui-explicit-id
+#~ msgid "Record your answer to see AI suggestion"
+#~ msgstr "Rekam jawaban Anda untuk melihat saran AI"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:621
+#. js-lingui-explicit-id
+#~ msgid "See Answers"
+#~ msgstr "Lihat Jawaban"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:432
+#. js-lingui-explicit-id
+#~ msgid "Suggestion"
+#~ msgstr "Saran"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:435
+#. js-lingui-explicit-id
+#~ msgid "Suggestion is loading..."
+#~ msgstr "Penawaran sedang dimuat..."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:459
+#. js-lingui-explicit-id
+#~ msgid "To see others answers, you need to publish yours."
+#~ msgstr "Untuk melihat jawaban orang lain, Anda perlu mempublikasikan jawaban Anda."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:593
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "{peopleAnswered} people have already answered - see what they said and "
+#~ "share your thoughts."
+#~ msgstr ""
+#~ "{peopleAnswered} orang telah menjawab - lihat apa yang mereka katakan dan "
+#~ "bagikan pendapat Anda."
 
 #: src/features/Chat/ChatSection.tsx:102
 #. js-lingui-explicit-id

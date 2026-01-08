@@ -240,7 +240,7 @@ msgstr "+{increasePoints} points"
 msgid "+{points} points"
 msgstr "+{points} points"
 
-#: src/features/Game/Battle/BattleCard.tsx:138
+#: src/features/Game/Battle/BattleCard.tsx:144
 #. js-lingui-explicit-id
 msgid "-"
 msgstr "-"
@@ -375,7 +375,7 @@ msgstr "A standard reply to “How are you?”"
 msgid "Academic Word List"
 msgstr "Academic Word List"
 
-#: src/features/Game/Battle/BattleCard.tsx:253
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Accept"
@@ -414,12 +414,12 @@ msgstr "Action plan to improve critical backend skills"
 msgid "Active"
 msgstr "Active"
 
-#: src/features/Chat/ChatSection.tsx:106
+#: src/features/Chat/ChatSection.tsx:105
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Add a reply"
 
-#: src/features/Chat/ChatSection.tsx:68
+#: src/features/Chat/ChatSection.tsx:67
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "Add Comment"
@@ -429,7 +429,7 @@ msgstr "Add Comment"
 msgid "Add new goal"
 msgstr "Add new goal"
 
-#: src/features/Chat/ChatSection.tsx:68
+#: src/features/Chat/ChatSection.tsx:67
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "Add New Post"
@@ -444,7 +444,7 @@ msgstr "Add Post"
 msgid "Add some info why you want a refund and we will do it."
 msgstr "Add some info why you want a refund and we will do it."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:380
+#: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
 msgstr "Add Text Answer"
@@ -622,7 +622,7 @@ msgstr "AI voice"
 msgid "AI voice is disabled"
 msgstr "AI voice is disabled"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:406
+#: src/features/Game/Battle/BattleActionModal.tsx:415
 #. js-lingui-explicit-id
 msgid "AI will evaluate answers and determine the winner."
 msgstr "AI will evaluate answers and determine the winner."
@@ -688,7 +688,7 @@ msgid "Almost correct"
 msgstr "Almost correct"
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
-#: src/features/Game/Battle/BattleActionModal.tsx:296
+#: src/features/Game/Battle/BattleActionModal.tsx:305
 #. js-lingui-explicit-id
 msgid "Almost there!"
 msgstr "Almost there!"
@@ -722,11 +722,6 @@ msgstr "Amount is too large. I appreciate your support, but let's keep it under 
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "An error occurred while analyzing the message. Please try again."
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:411
-#. js-lingui-explicit-id
-msgid "Analysis"
-msgstr "Analysis"
 
 #: src/features/Conversation/ConversationCanvas.tsx:515
 #. js-lingui-explicit-id
@@ -763,6 +758,11 @@ msgstr "Angular & RxJS"
 #. js-lingui-explicit-id
 msgid "Answering Typical Interview Questions"
 msgstr "Answering Typical Interview Questions"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:176
+#. js-lingui-explicit-id
+msgid "Answers:"
+msgstr "Answers:"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:375
 #. js-lingui-explicit-id
@@ -816,7 +816,7 @@ msgstr "Are you sure you want to delete your account?"
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "Are you sure you want to delete your goal? This action cannot be undone."
 
-#: src/features/Game/Battle/BattleCard.tsx:330
+#: src/features/Game/Battle/BattleCard.tsx:351
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Are you sure you want to reject this battle?"
@@ -885,7 +885,7 @@ msgstr ""
 "Avoiding these mistakes will make you look more professional and increase "
 "your chances of success."
 
-#: src/features/Chat/ChatSection.tsx:143
+#: src/features/Chat/ChatSection.tsx:142
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -962,11 +962,6 @@ msgstr "Be prepared for your job interview"
 #. js-lingui-explicit-id
 msgid "Be specific about your role"
 msgstr "Be specific about your role"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:597
-#. js-lingui-explicit-id
-msgid "Be the first to respond and share your thoughts."
-msgstr "Be the first to respond and share your thoughts."
 
 #: src/features/Case/data/frontend-junior/quizData.ts:145
 #: src/features/Case/data/frontend-senior/quizData.ts:242
@@ -1410,8 +1405,8 @@ msgstr ""
 "rambling."
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
-#: src/features/Game/Battle/BattleActionModal.tsx:287
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:472
+#: src/features/Game/Battle/BattleActionModal.tsx:296
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:207
 #: src/features/Game/UserProfileModal.tsx:131
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1440,7 +1435,7 @@ msgstr "Coding Skills"
 msgid "Comment"
 msgstr "Comment"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:279
+#: src/features/Game/Battle/BattleActionModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Comments:"
 msgstr "Comments:"
@@ -1904,7 +1899,7 @@ msgstr "Daily interview without fear of judgment"
 msgid "Daily Language Practice"
 msgstr "Daily Language Practice"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:269
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:108
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Daily Question"
@@ -1955,7 +1950,7 @@ msgstr "Day"
 msgid "day"
 msgstr "day"
 
-#: src/features/Game/Battle/BattleCard.tsx:120
+#: src/features/Game/Battle/BattleCard.tsx:126
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Debate"
@@ -1975,7 +1970,7 @@ msgstr "Debate Request"
 msgid "Debate Request Sent!"
 msgstr "Debate Request Sent!"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:388
+#: src/features/Game/Battle/BattleActionModal.tsx:397
 #. js-lingui-explicit-id
 msgid "Debate started!"
 msgstr "Debate started!"
@@ -3807,7 +3802,6 @@ msgid "Grammar corrections to boost your confidence"
 msgstr "Grammar corrections to boost your confidence"
 
 #: src/features/Conversation/ProcessUserInput.tsx:174
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:415
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Great!"
@@ -3939,7 +3933,7 @@ msgstr ""
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "Here's the rest of your personalized feedback to help you improve."
 
-#: src/features/Game/Battle/BattleCard.tsx:281
+#: src/features/Game/Battle/BattleCard.tsx:287
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "Hide"
@@ -4077,7 +4071,7 @@ msgstr "How it Works:"
 msgid "How long will my hours last?"
 msgstr "How long will my hours last?"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:282
+#: src/features/Game/Battle/BattleActionModal.tsx:291
 #. js-lingui-explicit-id
 msgid "How the battle went?"
 msgstr "How the battle went?"
@@ -5740,7 +5734,7 @@ msgstr "Let's continue..."
 msgid "Let's create an account"
 msgstr "Let's create an account"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:389
+#: src/features/Game/Battle/BattleActionModal.tsx:398
 #. js-lingui-explicit-id
 msgid "Let's see who has the best arguments."
 msgstr "Let's see who has the best arguments."
@@ -6197,7 +6191,7 @@ msgstr "New words to practice."
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/Battle/BattleActionModal.tsx:390
+#: src/features/Game/Battle/BattleActionModal.tsx:399
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
@@ -6270,6 +6264,11 @@ msgstr "No interviews found"
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "No message recorded yet."
+
+#: src/features/Chat/ChatSection.tsx:248
+#. js-lingui-explicit-id
+msgid "No messages yet. Be the first to share your thoughts!"
+msgstr "No messages yet. Be the first to share your thoughts!"
 
 #: src/features/Header/PaymentHistoryModal.tsx:96
 #: src/features/Usage/PaymentModal.tsx:509
@@ -6444,15 +6443,6 @@ msgstr ""
 "Once purchased, your hours remain available until you use them. There is no "
 "expiration."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:589
-#. js-lingui-explicit-id
-msgid ""
-"One person has already answered - check out the answer and share your "
-"thoughts."
-msgstr ""
-"One person has already answered - check out the answer and share your "
-"thoughts."
-
 #: src/features/Dashboard/BrainCard.tsx:429
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -6478,7 +6468,6 @@ msgstr "Online Language Practice"
 msgid "Oops! Something went wrong"
 msgstr "Oops! Something went wrong"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:621
 #: src/features/Landing/Price/PricePage.tsx:195
 #. js-lingui-explicit-id
 msgid "Open"
@@ -6517,7 +6506,7 @@ msgid "Open plan"
 msgstr "Open plan"
 
 #: src/features/Conversation/ConversationCanvas.tsx:858
-#: src/features/Game/Battle/BattleCard.tsx:296
+#: src/features/Game/Battle/BattleCard.tsx:302
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Open results"
@@ -6789,7 +6778,7 @@ msgstr "Please record a longer message (at least a few words)."
 msgid "Please refresh the page and try one more time"
 msgstr "Please refresh the page and try one more time"
 
-#: src/features/Chat/ChatSection.tsx:43
+#: src/features/Chat/ChatSection.tsx:42
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Please stop the recording before closing the window."
@@ -7188,11 +7177,6 @@ msgstr "Preparing Goal"
 msgid "Preparing the brain"
 msgstr "Preparing the brain"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:514
-#. js-lingui-explicit-id
-msgid "Previous questions"
-msgstr "Previous questions"
-
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -7237,7 +7221,7 @@ msgstr "Privacy Policy"
 msgid "Problem Solving"
 msgstr "Problem Solving"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:296
+#: src/features/Game/Battle/BattleActionModal.tsx:305
 #. js-lingui-explicit-id
 msgid "Processing answers..."
 msgstr "Processing answers..."
@@ -7322,11 +7306,6 @@ msgstr "Psychology"
 #. js-lingui-explicit-id
 msgid "Public Talk Skills"
 msgstr "Public Talk Skills"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:456
-#. js-lingui-explicit-id
-msgid "Publish"
-msgstr "Publish"
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -7619,7 +7598,7 @@ msgstr ""
 "Record 2-3 minutes story using <0>{learningLanguageName}</0>. This will "
 "help me to create a personalized practice plan."
 
-#: src/features/Chat/ChatSection.tsx:106
+#: src/features/Chat/ChatSection.tsx:105
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Record a message"
@@ -7660,11 +7639,6 @@ msgstr "Record Message"
 #. js-lingui-explicit-id
 msgid "Record more"
 msgstr "Record more"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:436
-#. js-lingui-explicit-id
-msgid "Record your answer to see AI suggestion"
-msgstr "Record your answer to see AI suggestion"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
 #. js-lingui-explicit-id
@@ -7719,7 +7693,7 @@ msgstr "Related Scenarios"
 msgid "Reload page"
 msgstr "Reload page"
 
-#: src/features/Game/Battle/BattleCard.tsx:339
+#: src/features/Game/Battle/BattleCard.tsx:360
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "Remove"
@@ -7916,11 +7890,6 @@ msgstr "Screening interview with AI recruiter"
 msgid "Second Place"
 msgstr "Second Place"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:621
-#. js-lingui-explicit-id
-msgid "See Answers"
-msgstr "See Answers"
-
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
 msgid "See strengths and gaps across core backend topics."
@@ -8074,7 +8043,7 @@ msgstr ""
 msgid "Share what you're currently learning"
 msgstr "Share what you're currently learning"
 
-#: src/features/Chat/ChatSection.tsx:78
+#: src/features/Chat/ChatSection.tsx:77
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "Share your thoughts and get feedback!"
@@ -8128,6 +8097,7 @@ msgstr "Show less"
 
 #: src/features/Chat/Message.tsx:361
 #: src/features/Conversation/ProcessUserInput.tsx:199
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:207
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -8401,7 +8371,7 @@ msgstr "Start a mock interview"
 msgid "Start Call"
 msgstr "Start Call"
 
-#: src/features/Game/Battle/BattleCard.tsx:269
+#: src/features/Game/Battle/BattleCard.tsx:275
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Start Debate"
@@ -8687,7 +8657,7 @@ msgstr "Submit"
 msgid "Submit answer"
 msgstr "Submit answer"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:306
+#: src/features/Game/Battle/BattleActionModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Submit Answers"
 msgstr "Submit Answers"
@@ -8721,16 +8691,6 @@ msgstr "Success stories"
 #. js-lingui-explicit-id
 msgid "Success!"
 msgstr "Success!"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:432
-#. js-lingui-explicit-id
-msgid "Suggestion"
-msgstr "Suggestion"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:435
-#. js-lingui-explicit-id
-msgid "Suggestion is loading..."
-msgstr "Suggestion is loading..."
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -8980,7 +8940,7 @@ msgstr ""
 "The AI feedback on my CSS and JavaScript answers was spot-on. I improved my "
 "responses immediately."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:332
+#: src/features/Game/Battle/BattleActionModal.tsx:341
 #. js-lingui-explicit-id
 msgid "The answer should not take more than 300 words. ~2 minutes."
 msgstr "The answer should not take more than 300 words. ~2 minutes."
@@ -9067,7 +9027,7 @@ msgstr ""
 msgid "The request will be sent to user {userName}."
 msgstr "The request will be sent to user {userName}."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:394
+#: src/features/Game/Battle/BattleActionModal.tsx:403
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "The winner earns {points} game points!"
@@ -9127,11 +9087,6 @@ msgstr "This shows results and makes you stand out."
 #. js-lingui-explicit-id
 msgid "Ticket"
 msgstr "Ticket"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:459
-#. js-lingui-explicit-id
-msgid "To see others answers, you need to publish yours."
-msgstr "To see others answers, you need to publish yours."
 
 #: src/features/Landing/LandingPage.tsx:142
 #. js-lingui-explicit-id
@@ -9272,7 +9227,7 @@ msgstr "Turn on video"
 msgid "Turn on volume"
 msgstr "Turn on volume"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:363
+#: src/features/Game/Battle/BattleActionModal.tsx:372
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "Type your answer here..."
@@ -9363,7 +9318,7 @@ msgstr ""
 "Use these templates to craft your own story. Don’t forget to mention an "
 "achievement:"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:322
+#: src/features/Game/Battle/BattleActionModal.tsx:331
 #. js-lingui-explicit-id
 msgid "Use your learning language ({lang})"
 msgstr "Use your learning language ({lang})"
@@ -9483,7 +9438,7 @@ msgstr "Voice record mode"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:263
+#: src/features/Game/Battle/BattleCard.tsx:269
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Waiting for other players to accept..."
@@ -9750,6 +9705,11 @@ msgstr "What do I get with the paid plan?"
 msgid "What do I need to use FluencyPal?"
 msgstr "What do I need to use FluencyPal?"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:186
+#. js-lingui-explicit-id
+msgid "What do you think?"
+msgstr "What do you think?"
+
 #: src/features/Landing/Price/PricePage.tsx:406
 #. js-lingui-explicit-id
 msgid "What I can do for you:"
@@ -9906,7 +9866,7 @@ msgstr "Why backend candidates improve fast"
 msgid "Why candidates improve so quickly"
 msgstr "Why candidates improve so quickly"
 
-#: src/features/Game/Battle/BattleCard.tsx:256
+#: src/features/Game/Battle/BattleCard.tsx:262
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Winner gets {points} points"
@@ -10186,10 +10146,15 @@ msgstr ""
 msgid "You can delete your personal data anytime"
 msgstr "You can delete your personal data anytime"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:280
+#: src/features/Game/Battle/BattleActionModal.tsx:288
 #. js-lingui-explicit-id
 msgid "You can discuss the battle here."
 msgstr "You can discuss the battle here."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:183
+#. js-lingui-explicit-id
+msgid "You can discuss the daily question here."
+msgstr "You can discuss the daily question here."
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
@@ -10245,7 +10210,7 @@ msgstr "You can track the progress on the main page."
 msgid "You can try AI in action now"
 msgstr "You can try AI in action now"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:359
+#: src/features/Game/Battle/BattleActionModal.tsx:368
 #. js-lingui-explicit-id
 msgid "You can use text to answer if you prefer."
 msgstr "You can use text to answer if you prefer."
@@ -10278,7 +10243,7 @@ msgstr ""
 msgid "You have"
 msgstr "You have"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:299
+#: src/features/Game/Battle/BattleActionModal.tsx:308
 #. js-lingui-explicit-id
 msgid ""
 "You have answered all the questions. Submitting your answers now... Don't "
@@ -10287,7 +10252,7 @@ msgstr ""
 "You have answered all the questions. Submitting your answers now... Don't "
 "close this window."
 
-#: src/features/Game/Battle/BattleActionModal.tsx:302
+#: src/features/Game/Battle/BattleActionModal.tsx:311
 #. js-lingui-explicit-id
 msgid ""
 "You have completed all the questions. Submit your answers now and wait for "
@@ -10296,7 +10261,7 @@ msgstr ""
 "You have completed all the questions. Submit your answers now and wait for "
 "the results."
 
-#: src/features/Game/Battle/BattleCard.tsx:303
+#: src/features/Game/Battle/BattleCard.tsx:324
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "You have submitted your answers. Waiting for others..."
@@ -10385,13 +10350,13 @@ msgstr "Your achievements"
 msgid "Your AI speaking partner"
 msgstr "Your AI speaking partner"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:362
+#: src/features/Game/Battle/BattleActionModal.tsx:371
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "Your answer"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:400
+#: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
 msgstr "Your answers will be visible to your opponent after you submit them."
@@ -10439,7 +10404,7 @@ msgstr "Your full access is active until"
 msgid "Your full access is active until {activeTill}"
 msgstr "Your full access is active until {activeTill}"
 
-#: src/features/Game/Battle/BattleActionModal.tsx:328
+#: src/features/Game/Battle/BattleActionModal.tsx:337
 #. js-lingui-explicit-id
 msgid "Your goal is not to be perfect, but to surpass your opponent."
 msgstr "Your goal is not to be perfect, but to surpass your opponent."
@@ -10516,16 +10481,7 @@ msgstr ""
 "You’re asked to **design systems on the spot**, but no one tells you what "
 "“good” looks like"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:593
-#. js-lingui-explicit-id
-msgid ""
-"{peopleAnswered} people have already answered - see what they said and "
-"share your thoughts."
-msgstr ""
-"{peopleAnswered} people have already answered - see what they said and "
-"share your thoughts."
-
-#: src/features/Game/Battle/BattleCard.tsx:137
+#: src/features/Game/Battle/BattleCard.tsx:143
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
 msgstr "{userName} challenges you to a debate!"
@@ -10546,6 +10502,69 @@ msgstr ""
 "— it’s important to engage in this short conversation before jumping into "
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:411
+#. js-lingui-explicit-id
+#~ msgid "Analysis"
+#~ msgstr "Analysis"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:597
+#. js-lingui-explicit-id
+#~ msgid "Be the first to respond and share your thoughts."
+#~ msgstr "Be the first to respond and share your thoughts."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:589
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "One person has already answered - check out the answer and share your "
+#~ "thoughts."
+#~ msgstr ""
+#~ "One person has already answered - check out the answer and share your "
+#~ "thoughts."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:514
+#. js-lingui-explicit-id
+#~ msgid "Previous questions"
+#~ msgstr "Previous questions"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:456
+#. js-lingui-explicit-id
+#~ msgid "Publish"
+#~ msgstr "Publish"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:436
+#. js-lingui-explicit-id
+#~ msgid "Record your answer to see AI suggestion"
+#~ msgstr "Record your answer to see AI suggestion"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:621
+#. js-lingui-explicit-id
+#~ msgid "See Answers"
+#~ msgstr "See Answers"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:432
+#. js-lingui-explicit-id
+#~ msgid "Suggestion"
+#~ msgstr "Suggestion"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:435
+#. js-lingui-explicit-id
+#~ msgid "Suggestion is loading..."
+#~ msgstr "Suggestion is loading..."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:459
+#. js-lingui-explicit-id
+#~ msgid "To see others answers, you need to publish yours."
+#~ msgstr "To see others answers, you need to publish yours."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:593
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "{peopleAnswered} people have already answered - see what they said and "
+#~ "share your thoughts."
+#~ msgstr ""
+#~ "{peopleAnswered} people have already answered - see what they said and "
+#~ "share your thoughts."
 
 #: src/features/Chat/ChatSection.tsx:102
 #. js-lingui-explicit-id

@@ -178,7 +178,8 @@ export const ChartSection = ({ placeholder }: { placeholder?: string }) => {
         >
           <Stack
             sx={{
-              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+              borderBottom:
+                chat.messages.length > 0 ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
               flexDirection: "row",
               alignItems: "center",
               padding: "20px 20px 20px 15px",
@@ -231,6 +232,21 @@ export const ChartSection = ({ placeholder }: { placeholder?: string }) => {
           </Stack>
 
           <MessageChain topLevel parentId={""} />
+        </Stack>
+      )}
+
+      {chat.messages.length === 0 && (
+        <Stack
+          sx={{
+            padding: "30px 20px 20px 20px",
+            marginTop: "-10px",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography variant="body2" sx={{ opacity: 0.7 }}>
+            {i18n._("No messages yet. Be the first to share your thoughts!")}
+          </Typography>
         </Stack>
       )}
     </Stack>
