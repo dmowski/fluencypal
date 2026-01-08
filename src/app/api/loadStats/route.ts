@@ -3,6 +3,7 @@ import { DEV_EMAILS } from "@/common/dev";
 import { AdminStatsRequest, AdminStatsResponse, UserStat } from "./types";
 import {
   getAllUsersWithIds,
+  getUserAiInfo,
   getUserConversationsMeta,
   getUsersInterviewSurvey,
   getUsersQuizSurvey,
@@ -27,11 +28,12 @@ export async function POST(request: Request) {
 
   const userStats = await Promise.all(
     allUsers.map(async (user) => {
-      const [conversationMeta, goalQuiz2, interviewStats, balance] = await Promise.all([
+      const [conversationMeta, goalQuiz2, interviewStats, balance, aiUserInfo] = await Promise.all([
         getUserConversationsMeta(user.id),
         getUsersQuizSurvey(user.id),
         getUsersInterviewSurvey(user.id),
         getUserBalance(user.id),
+        getUserAiInfo(user.id),
       ]);
 
       const userStat: UserStat = {
@@ -41,6 +43,7 @@ export async function POST(request: Request) {
         interviewStats,
         activeSubscriptionTill: balance.activeSubscriptionTill,
         isGameWinner: balance.isGameWinner,
+        aiUserInfo,
       };
       return userStat;
     })
