@@ -85,7 +85,7 @@ function useProvideGame(): GameContextType {
   const [questions, setQuestions] = useState<GameQuestionShort[]>([]);
   const [activeQuestion, setActiveQuestion] = useState<GameQuestionShort | null>(null);
 
-  const [modalUserId, setModalUserId] = useUrlState<string | null>("userId", "", true);
+  const [modalUserId, setModalUserId] = useUrlState<string | null>("userId", "", false);
 
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
   const [gameRate, gameRateLoading] = useDocumentData(db.documents.gameRate2);

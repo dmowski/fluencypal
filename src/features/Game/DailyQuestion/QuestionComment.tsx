@@ -91,7 +91,13 @@ export const QuestionComment = ({
           }}
         >
           <Stack sx={{}}>
-            <Avatar url={game.gameAvatars?.[answer.authorUserId]} avatarSize="40px" />
+            <Avatar
+              url={game.gameAvatars?.[answer.authorUserId]}
+              avatarSize="40px"
+              onClick={() => {
+                game.showUserInModal(answer.authorUserId);
+              }}
+            />
           </Stack>
           <Stack>
             <Typography variant="body2" sx={{ fontWeight: 600 }}>

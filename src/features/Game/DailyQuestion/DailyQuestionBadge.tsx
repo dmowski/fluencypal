@@ -122,7 +122,6 @@ export const DailyQuestionBadge = () => {
 
   const minWords = 30;
   const wordsCount = getWordsCount(transcript || "");
-  const isNeedMoreRecording = !transcript || wordsCount < minWords;
 
   const onClick = (e: React.MouseEvent) => {
     e.preventDefault();
