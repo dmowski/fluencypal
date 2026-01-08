@@ -495,7 +495,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             </Stack>
 
             {aiUserInfo?.records && (
-              <details>
+              <details open>
                 <summary>AI User Info Records ({aiUserInfo.records.length})</summary>
 
                 <Stack sx={{ gap: "10px", paddingTop: "10px" }}>
@@ -557,8 +557,8 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                 <Typography sx={{}}>{conversation.mode}</Typography>
 
                 <Typography sx={{}}>
-                  {dayjs(conversation.updatedAtIso).format("DD MMM")}|
-                  {dayjs(conversation.createdAt).format("HH:mm")} -
+                  {dayjs(conversation.updatedAtIso).format("DD MMM")} |{" "}
+                  {dayjs(conversation.createdAtIso || conversation.createdAt).format("HH:mm")} -
                   {dayjs(conversation.updatedAtIso).format("HH:mm")}
                 </Typography>
               </Stack>
