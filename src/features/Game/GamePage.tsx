@@ -5,14 +5,14 @@ import { GameQuestion } from "./GameQuestion";
 import { useLingui } from "@lingui/react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Loader, Swords } from "lucide-react";
-import { GameStats, isTodayStat } from "./GameStats";
+import { GameStats } from "./GameStats";
 import { exitFullScreen } from "@/libs/fullScreen";
 import { GameMyAvatar } from "./GameMyAvatar";
 import { GameMyUsername } from "./GameMyUsername";
 import { GameOnboarding } from "./GameOnboarding";
 import { NavigationBar } from "../Navigation/NavigationBar";
 import { SupportedLanguage } from "../Lang/lang";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { ChartSection } from "../Chat/ChatSection";
 import { useChat } from "../Chat/useChat";
 import { useUrlState } from "../Url/useUrlParam";
@@ -69,15 +69,6 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const playMessage = i18n._(`Play`);
 
   const [activeTab, setActiveTab] = useUrlState<"rate" | "chat">("space", "chat", false);
-
-  const globalGamers = useMemo(() => game.stats.length, [game.stats.length]);
-  const todayGamers = useMemo(
-    () =>
-      game.stats.filter((stat) => {
-        return isTodayStat({ lastVisitStat: game.gameLastVisit, userId: stat.userId });
-      }).length,
-    [game.stats]
-  );
 
   return (
     <>
@@ -197,7 +188,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                 />
 
                 <Tab
-                  label={<TabLabel label={i18n._(`Rating`)} badgeNumber={globalGamers} />}
+                  label={<TabLabel label={i18n._(`Rating`)} badgeNumber={game.stats.length} />}
                   value={"rate"}
                   sx={{
                     padding: "0 10px 0 10px",
