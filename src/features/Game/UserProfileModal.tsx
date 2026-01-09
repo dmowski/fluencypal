@@ -17,7 +17,7 @@ import { InfoStep } from "../Survey/InfoStep";
 import { useBattle } from "./Battle/useBattle";
 import { BATTLE_WIN_POINTS } from "./Battle/data";
 import { ChatProvider } from "../Chat/useChat";
-import { ChartSection } from "../Chat/ChatSection";
+import { ChatSection } from "../Chat/ChatSection";
 
 interface IconColor {
   iconColor: string;
@@ -397,7 +397,7 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                     isPrivate: true,
                   }}
                 >
-                  <ChartSection />
+                  <ChatSection />
                 </ChatProvider>
               </Stack>
             </Stack>

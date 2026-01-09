@@ -117,17 +117,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   }
 
   if (appNavigation.currentPage === "community") {
-    return (
-      <ChatProvider
-        metadata={{
-          space: "global",
-          allowedUserIds: null,
-          isPrivate: false,
-        }}
-      >
-        <GamePage lang={lang} />
-      </ChatProvider>
-    );
+    return <GamePage lang={lang} />;
   }
 
   if (aiConversation.errorInitiating) {

@@ -13,10 +13,9 @@ import { GameOnboarding } from "./GameOnboarding";
 import { NavigationBar } from "../Navigation/NavigationBar";
 import { SupportedLanguage } from "../Lang/lang";
 import { useState } from "react";
-import { ChartSection } from "../Chat/ChatSection";
-import { useChat } from "../Chat/useChat";
 import { useUrlState } from "../Url/useUrlParam";
 import { useSettings } from "../Settings/useSettings";
+import { ChatPage } from "../Chat/ChatPage";
 
 const TabLabel = ({
   badgeNumber,
@@ -30,27 +29,28 @@ const TabLabel = ({
   return (
     <Stack sx={{ flexDirection: "row", gap: "5px", alignItems: "center" }}>
       <Typography variant="caption">{label}</Typography>
-      <Typography
-        component={"span"}
-        sx={{
-          color: badgeHighlight ? "#ff3d00" : "inherit",
-          border: badgeHighlight ? "1px solid #ff3d00" : "1px solid rgba(255, 255, 255, 0.2)",
-          fontWeight: 400,
-          borderRadius: "6px",
-          fontSize: "11px",
-          padding: "1px 3px",
-          minWidth: "16px",
-        }}
-      >
-        {badgeNumber}
-      </Typography>
+      {badgeNumber && (
+        <Typography
+          component={"span"}
+          sx={{
+            color: badgeHighlight ? "#ff3d00" : "inherit",
+            border: badgeHighlight ? "1px solid #ff3d00" : "1px solid rgba(255, 255, 255, 0.2)",
+            fontWeight: 400,
+            borderRadius: "6px",
+            fontSize: "11px",
+            padding: "1px 3px",
+            minWidth: "16px",
+          }}
+        >
+          {badgeNumber}
+        </Typography>
+      )}
     </Stack>
   );
 };
 
 export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const game = useGame();
-  const chat = useChat();
   const { i18n } = useLingui();
   const settings = useSettings();
   const isGameOnboardingCompleted = settings.userSettings?.isGameOnboardingCompleted;
@@ -62,11 +62,6 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
     }
     game.playGame();
   };
-
-  const isUnreadMessages = chat.unreadMessagesCount > 0;
-
-  const loadingMessage = i18n._(`Loading...`);
-  const playMessage = i18n._(`Play`);
 
   const [activeTab, setActiveTab] = useUrlState<"rate" | "chat">("space", "chat", false);
 
@@ -152,7 +147,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                     },
                   }}
                 >
-                  {game.loadingQuestions ? loadingMessage : playMessage}
+                  {game.loadingQuestions ? i18n._(`Loading...`) : i18n._(`Play`)}
                 </Button>
               </Stack>
             </Stack>
@@ -177,13 +172,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                     padding: "0 10px 0 10px",
                     minWidth: "unset",
                   }}
-                  label={
-                    <TabLabel
-                      label={i18n._(`Chat`)}
-                      badgeNumber={chat.messages.length}
-                      badgeHighlight={isUnreadMessages}
-                    />
-                  }
+                  label={<TabLabel label={i18n._(`Chat`)} />}
                   value={"chat"}
                 />
 
@@ -198,7 +187,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               </Tabs>
 
               {activeTab === "rate" && <GameStats />}
-              {activeTab === "chat" && <ChartSection />}
+              {activeTab === "chat" && <ChatPage />}
             </Stack>
           </Stack>
 

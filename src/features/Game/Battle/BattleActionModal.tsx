@@ -15,7 +15,7 @@ import { useSettings } from "@/features/Settings/useSettings";
 import { BATTLE_WIN_POINTS } from "./data";
 import { fullLanguageName } from "@/features/Lang/lang";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
-import { ChartSection } from "@/features/Chat/ChatSection";
+import { ChatSection } from "@/features/Chat/ChatSection";
 
 export const BattleActionModal = ({
   battle,
@@ -288,7 +288,7 @@ export const BattleActionModal = ({
                           {i18n._(`You can discuss the battle here.`)}
                         </Typography>
                       </Stack>
-                      <ChartSection placeholder={i18n._("How the battle went?")} />
+                      <ChatSection placeholder={i18n._("How the battle went?")} />
                     </Stack>
                   </Stack>
                 </>

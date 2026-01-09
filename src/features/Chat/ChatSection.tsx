@@ -14,7 +14,7 @@ import { Avatar } from "../Game/Avatar";
 import AddIcon from "@mui/icons-material/Add";
 import { MessageChain } from "./MessageChain";
 
-export const ChartSection = ({ placeholder }: { placeholder?: string }) => {
+export const ChatSection = ({ placeholder }: { placeholder?: string }) => {
   const auth = useAuth();
   const chat = useChat();
   const game = useGame();

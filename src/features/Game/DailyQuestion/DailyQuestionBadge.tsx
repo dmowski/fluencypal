@@ -5,7 +5,7 @@ import { dailyQuestions } from "./dailyQuestions";
 import dayjs from "dayjs";
 import { ChevronRight, MessageCircle, X } from "lucide-react";
 import { ColorIconTextList } from "@/features/Survey/ColorIconTextList";
-import { ChartSection } from "@/features/Chat/ChatSection";
+import { ChatSection } from "@/features/Chat/ChatSection";
 import { ChatProvider, useChat } from "@/features/Chat/useChat";
 import { DailyQuestion } from "./types";
 
@@ -194,7 +194,7 @@ export const DailyQuestionBadgeComponent = ({
               </Typography>
             </Stack>
 
-            <ChartSection placeholder={i18n._("What do you think?")} />
+            <ChatSection placeholder={i18n._("What do you think?")} />
           </Stack>
         )}
 
