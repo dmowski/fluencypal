@@ -245,7 +245,7 @@ msgstr "+{increasePoints} คะแนน"
 msgid "+{points} points"
 msgstr "+{points} คะแนน"
 
-#: src/features/Game/Battle/BattleCard.tsx:144
+#: src/features/Game/Battle/BattleCard.tsx:148
 #. js-lingui-explicit-id
 msgid "-"
 msgstr "-"
@@ -384,7 +384,7 @@ msgstr "การตอบที่มาตรฐานสำหรับ \"ค
 msgid "Academic Word List"
 msgstr "รายชื่อคำศัพท์วิชาการ"
 
-#: src/features/Game/Battle/BattleCard.tsx:259
+#: src/features/Game/Battle/BattleCard.tsx:263
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "ยอมรับ"
@@ -774,11 +774,6 @@ msgstr "แองกูลาร์ & RxJS"
 msgid "Answering Typical Interview Questions"
 msgstr "การตอบคำถามสัมภาษณ์ทั่วไป"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:181
-#. js-lingui-explicit-id
-msgid "Answers:"
-msgstr "คำตอบ:"
-
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:375
 #. js-lingui-explicit-id
 msgid "Anything else?"
@@ -833,7 +828,7 @@ msgstr "คุณแน่ใจหรือว่าต้องการลบ
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "คุณแน่ใจไหมว่าต้องการลบเป้าหมายของคุณ? การกระทำนี้ไม่สามารถยกเลิกได้."
 
-#: src/features/Game/Battle/BattleCard.tsx:351
+#: src/features/Game/Battle/BattleCard.tsx:355
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "คุณแน่ใจหรือว่าต้องการปฏิเสธการต่อสู้นี้?"
@@ -1430,7 +1425,7 @@ msgstr ""
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
 #: src/features/Game/Battle/BattleActionModal.tsx:296
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:213
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:212
 #: src/features/Game/UserProfileModal.tsx:131
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1493,6 +1488,11 @@ msgstr "ชุมชน"
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "แชทชุมชน"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:180
+#. js-lingui-explicit-id
+msgid "Community Responses:"
+msgstr "การตอบสนองของชุมชน:"
 
 #: src/features/Case/Landing/components/Footer.tsx:122
 #. js-lingui-explicit-id
@@ -1927,7 +1927,7 @@ msgstr "การสัมภาษณ์รายวันโดยไม่ต
 msgid "Daily Language Practice"
 msgstr "การฝึกภาษาประจำวัน"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:113
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:112
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "คำถามประจำวัน"
@@ -1980,7 +1980,7 @@ msgstr "วัน"
 msgid "day"
 msgstr "วัน"
 
-#: src/features/Game/Battle/BattleCard.tsx:126
+#: src/features/Game/Battle/BattleCard.tsx:130
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "อภิปราย"
@@ -3993,7 +3993,7 @@ msgstr ""
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "นี่คือข้อเสนอแนะเฉพาะบุคคลของคุณ เพื่อช่วยให้คุณพัฒนาขึ้น"
 
-#: src/features/Game/Battle/BattleCard.tsx:287
+#: src/features/Game/Battle/BattleCard.tsx:291
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "ซ่อน"
@@ -6348,7 +6348,7 @@ msgstr "ไม่พบการสัมภาษณ์"
 msgid "No message recorded yet."
 msgstr "ยังไม่มีข้อความบันทึก"
 
-#: src/features/Chat/ChatSection.tsx:248
+#: src/features/Chat/ChatSection.tsx:247
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "ยังไม่มีข้อความใดๆ เป็นคนแรกที่แบ่งปันความคิดของคุณ!"
@@ -6594,7 +6594,7 @@ msgid "Open plan"
 msgstr "เปิดแผน"
 
 #: src/features/Conversation/ConversationCanvas.tsx:858
-#: src/features/Game/Battle/BattleCard.tsx:302
+#: src/features/Game/Battle/BattleCard.tsx:306
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "เปิดผลลัพธ์"
@@ -7784,7 +7784,7 @@ msgstr "สถานการณ์ที่เกี่ยวข้อง"
 msgid "Reload page"
 msgstr "โหลดหน้าเว็บใหม่"
 
-#: src/features/Game/Battle/BattleCard.tsx:360
+#: src/features/Game/Battle/BattleCard.tsx:364
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "ลบออก"
@@ -8193,7 +8193,7 @@ msgstr "แสดงน้อยลง"
 
 #: src/features/Chat/Message.tsx:361
 #: src/features/Conversation/ProcessUserInput.tsx:199
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:213
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:212
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -8465,7 +8465,7 @@ msgstr "เริ่มสัมภาษณ์จำลอง"
 msgid "Start Call"
 msgstr "เริ่มการโทร"
 
-#: src/features/Game/Battle/BattleCard.tsx:275
+#: src/features/Game/Battle/BattleCard.tsx:279
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "เริ่มดีเบต"
@@ -9540,7 +9540,7 @@ msgstr "โหมดบันทึกเสียง"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:269
+#: src/features/Game/Battle/BattleCard.tsx:273
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "กำลังรอผู้เล่นคนอื่นยอมรับ..."
@@ -9807,7 +9807,7 @@ msgstr "ฉันจะได้รับอะไรจากแผนการ
 msgid "What do I need to use FluencyPal?"
 msgstr "ฉันต้องใช้อะไรบ้างในการใช้ FluencyPal?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:192
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:191
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "คุณคิดว่าอย่างไร?"
@@ -9969,7 +9969,7 @@ msgstr "ทำไมผู้สมัครฝ่ายหลังถึงพ
 msgid "Why candidates improve so quickly"
 msgstr "ทำไมนักเรียนถึงพัฒนาได้เร็ว"
 
-#: src/features/Game/Battle/BattleCard.tsx:262
+#: src/features/Game/Battle/BattleCard.tsx:266
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "ผู้ชนะจะได้รับ {points} คะแนน"
@@ -10257,7 +10257,7 @@ msgstr "คุณสามารถลบข้อมูลส่วนตัว
 msgid "You can discuss the battle here."
 msgstr "คุณสามารถพูดคุยเกี่ยวกับการรบที่นี่"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:188
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:187
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "คุณสามารถสนทนาเกี่ยวกับคำถามประจำวันได้ที่นี่"
@@ -10364,7 +10364,7 @@ msgid ""
 "the results."
 msgstr "คุณได้ทำคำถามทั้งหมดเสร็จสิ้นแล้ว ส่งคำตอบของคุณตอนนี้และรอผลลัพธ์"
 
-#: src/features/Game/Battle/BattleCard.tsx:324
+#: src/features/Game/Battle/BattleCard.tsx:328
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "คุณได้ส่งคำตอบเรียบร้อยแล้ว กำลังรอผู้อื่น..."
@@ -10587,7 +10587,7 @@ msgstr ""
 "คุณถูกขอให้ **ออกแบบระบบในทันที** แต่ไม่มีใครบอกคุณเลยว่า \"ดี\" "
 "มันควรจะเป็นอย่างไร"
 
-#: src/features/Game/Battle/BattleCard.tsx:143
+#: src/features/Game/Battle/BattleCard.tsx:147
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
 msgstr "{userName} ท้าให้คุณเข้าร่วมการดีเบต!"
@@ -10607,6 +10607,11 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:181
+#. js-lingui-explicit-id
+#~ msgid "Answers:"
+#~ msgstr "คำตอบ:"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:411
 #. js-lingui-explicit-id

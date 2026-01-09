@@ -177,7 +177,7 @@ export const DailyQuestionBadgeComponent = ({
             }}
           >
             <Stack>
-              <Typography variant="h6">{i18n._(`Answers:`)}</Typography>
+              <Typography variant="h6">{i18n._(`Community Responses:`)}</Typography>
               <Typography
                 variant="body2"
                 sx={{
