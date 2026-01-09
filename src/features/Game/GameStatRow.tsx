@@ -17,14 +17,15 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
   const userName = game.userNames?.[stat.userId] || "";
 
   const isMe = stat.userId === userId;
-  const top5 = game.getRealPosition(stat.userId) < 5;
+  const realPosition = game.getRealPosition(stat.userId);
+  const top5 = realPosition < 5;
   const lastVisit = game.gameLastVisit ? game.gameLastVisit[stat.userId] : null;
   const lastVisitAgo = lastVisit ? dayjs(lastVisit).fromNow() : null;
 
   const avatar = game.gameAvatars[stat.userId] || defaultAvatar;
   const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 10 : false;
 
-  const actualPosition = game.getRealPosition(stat.userId) + 1;
+  const actualPosition = realPosition + 1;
 
   const points = game.stats.find((s) => s.userId === stat.userId)?.points || 0;
 

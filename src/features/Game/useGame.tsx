@@ -114,9 +114,20 @@ function useProvideGame(): GameContextType {
     setActiveQuestion(null);
   };
 
-  const stats = useMemo(() => {
-    if (!gameRate) return [];
-    return getSortedStatsFromData(gameRate);
+  const { stats, positionMap } = useMemo(() => {
+    if (!gameRate)
+      return {
+        stats: [],
+        positionMap: {} as Record<string, number>,
+      };
+    const internalStats = getSortedStatsFromData(gameRate);
+
+    const newPositionMap: Record<string, number> = {};
+    internalStats.forEach((stat, index) => {
+      newPositionMap[stat.userId] = index;
+    });
+
+    return { stats: internalStats, positionMap: newPositionMap };
   }, [gameRate]);
 
   const updateLastVisit = async () => {
@@ -296,8 +307,7 @@ function useProvideGame(): GameContextType {
   const myUserName = userNames?.[userId || ""] || null;
 
   const getRealPosition = (userId: string) => {
-    const index = stats.findIndex((stat) => stat.userId === userId);
-    return index >= 0 ? index : 0;
+    return positionMap[userId] ?? -1;
   };
 
   const getUserName = (userId: string) => {

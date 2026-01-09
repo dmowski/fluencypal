@@ -68,11 +68,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const loadingMessage = i18n._(`Loading...`);
   const playMessage = i18n._(`Play`);
 
-  const [activeTab, setActiveTab] = useUrlState<"global-rate" | "today-rate" | "chat">(
-    "space",
-    "chat",
-    false
-  );
+  const [activeTab, setActiveTab] = useUrlState<"rate" | "chat">("space", "chat", false);
 
   const globalGamers = useMemo(() => game.stats.length, [game.stats.length]);
   const todayGamers = useMemo(
@@ -202,15 +198,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
 
                 <Tab
                   label={<TabLabel label={i18n._(`Rating`)} badgeNumber={globalGamers} />}
-                  value={"global-rate"}
-                  sx={{
-                    padding: "0 10px 0 10px",
-                    minWidth: "unset",
-                  }}
-                />
-                <Tab
-                  label={<TabLabel label={i18n._(`Today`)} badgeNumber={todayGamers} />}
-                  value={"today-rate"}
+                  value={"rate"}
                   sx={{
                     padding: "0 10px 0 10px",
                     minWidth: "unset",
@@ -218,8 +206,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                 />
               </Tabs>
 
-              {activeTab === "global-rate" && <GameStats activeTab="global" />}
-              {activeTab === "today-rate" && <GameStats activeTab="today" />}
+              {activeTab === "rate" && <GameStats />}
               {activeTab === "chat" && <ChartSection />}
             </Stack>
           </Stack>

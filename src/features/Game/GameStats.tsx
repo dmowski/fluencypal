@@ -1,10 +1,11 @@
 "use client";
 
-import { Stack } from "@mui/material";
+import { Button, ButtonGroup, Stack, Typography } from "@mui/material";
 import { useGame } from "./useGame";
 import { GameStatRow } from "./GameStatRow";
 import dayjs from "dayjs";
 import { GameLastVisit } from "./types";
+import { useState } from "react";
 
 export const isTodayStat = ({
   lastVisitStat,
@@ -18,23 +19,43 @@ export const isTodayStat = ({
   return dayjs().diff(dayjs(lastVisitStat[userId]), "hour") < 24;
 };
 
-export const GameStats = ({ activeTab }: { activeTab: "global" | "today" }) => {
+export const GameStats = () => {
   const game = useGame();
+  const [sort, setSort] = useState<"score" | "lastVisit">("score");
   return (
     <Stack
       sx={{
         gap: "12px",
       }}
     >
+      <Stack sx={{ flexDirection: "row", padding: "10px 0" }}>
+        <ButtonGroup>
+          <Button
+            variant={sort === "score" ? "contained" : "outlined"}
+            onClick={() => setSort("score")}
+          >
+            Sort by Score
+          </Button>
+          <Button
+            variant={sort === "lastVisit" ? "contained" : "outlined"}
+            onClick={() => setSort("lastVisit")}
+          >
+            Sort by Last Visit
+          </Button>
+        </ButtonGroup>
+      </Stack>
       {game.stats
-        .filter((stat) => {
-          if (activeTab === "today") {
-            return isTodayStat({
-              lastVisitStat: game.gameLastVisit,
-              userId: stat.userId,
-            });
+        .sort((a, b) => {
+          if (sort === "score") {
+            return b.points - a.points;
+          } else {
+            const aLastVisit = game.gameLastVisit?.[a.userId];
+            const bLastVisit = game.gameLastVisit?.[b.userId];
+            if (!aLastVisit && !bLastVisit) return 0;
+            if (!aLastVisit) return 1;
+            if (!bLastVisit) return -1;
+            return bLastVisit.localeCompare(aLastVisit);
           }
-          return true;
         })
         .map((stat) => {
           return <GameStatRow key={stat.userId} stat={stat} />;
