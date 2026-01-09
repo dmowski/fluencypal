@@ -105,7 +105,8 @@ export const db = {
         : null,
   },
   documents: {
-    chat: (space: string) => (space ? dataPointDoc<UserChatMetadata>(`chat/${space}`) : null),
+    chat: (userId: string, space: string) =>
+      space && userId ? dataPointDoc<UserChatMetadata>(`chat/${space}`) : null,
 
     homework: (userId?: string, homeworkId?: string) =>
       userId && homeworkId

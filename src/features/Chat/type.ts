@@ -9,7 +9,7 @@ export interface ChatLike {
 }
 
 export interface UserChatMetadata {
-  userIds?: string[] | null;
+  allowedUserIds: string[] | null;
   isPrivate: boolean;
 }
 

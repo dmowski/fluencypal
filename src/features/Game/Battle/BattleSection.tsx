@@ -61,7 +61,13 @@ export const BattleSection = () => {
       >
         {battlesToShow.map((battle) => (
           <Stack key={battle.battleId}>
-            <ChatProvider space={`battle_${battle.battleId}`}>
+            <ChatProvider
+              metadata={{
+                space: `battle_${battle.battleId}`,
+                allowedUserIds: battle.usersIds,
+                isPrivate: true,
+              }}
+            >
               <BattleCard battle={battle} />
             </ChatProvider>
           </Stack>

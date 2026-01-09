@@ -3,11 +3,16 @@ import { createContext, useContext, ReactNode, JSX, useMemo, useState, useEffect
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useAuth } from "../Auth/useAuth";
 import { db } from "../Firebase/firebaseDb";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { ChatLike, ChatLikeType, UserChatMessage } from "./type";
+import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
+import { ChatLike, ChatLikeType, UserChatMessage, UserChatMetadata } from "./type";
 import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
 import { useUrlState } from "../Url/useUrlParam";
-import { useSettings } from "../Settings/useSettings";
+
+interface ChatProviderProps {
+  space: string;
+  allowedUserIds: string[] | null;
+  isPrivate: boolean;
+}
 
 interface AddMessageProps {
   messageContent: string;
@@ -42,16 +47,38 @@ interface ChatContextType {
 
 const ChatContext = createContext<ChatContextType | null>(null);
 
-function useProvideChat({ space }: { space: string }): ChatContextType {
+function useProvideChat({ space, allowedUserIds, isPrivate }: ChatProviderProps): ChatContextType {
   const auth = useAuth();
   const userId = auth.uid;
-  const messagesRef = db.collections.usersChatMessages(space, userId);
+
+  const metaRef = db.documents.chat(userId, space);
+  const [metaData] = useDocumentData(metaRef);
+
+  const isCanRead =
+    metaData &&
+    userId &&
+    (metaData.isPrivate === false || metaData.allowedUserIds?.includes(userId));
+
+  const messagesRef = isCanRead ? db.collections.usersChatMessages(space, userId) : null;
   const [messagesData, loading] = useCollectionData(messagesRef);
 
   const [activeCommentMessageId, setActiveCommentMessageId] = useState("");
   const [activeMessageId, setActiveMessageId] = useUrlState("post", "", false);
 
-  //const settings = useSettings();
+  const initMetadataIfNeeded = async () => {
+    if (metaData) {
+      return;
+    }
+
+    const chatMetaData: UserChatMetadata = {
+      isPrivate,
+      allowedUserIds: allowedUserIds,
+    };
+    if (metaRef && userId) {
+      console.log("Init metadata");
+      await setDoc(metaRef, chatMetaData);
+    }
+  };
 
   const { messages, topLevelMessages, commentsInfo } = useMemo<{
     messages: UserChatMessage[];
@@ -142,6 +169,8 @@ function useProvideChat({ space }: { space: string }): ChatContextType {
 
   const addMessage = async ({ messageContent, parentMessageId }: AddMessageProps) => {
     if (!messagesRef || !userId) return;
+    await initMetadataIfNeeded();
+
     const createdAtIso = new Date().toISOString();
     const newMessage: UserChatMessage = {
       id: `${Date.now()}`,
@@ -228,12 +257,12 @@ function useProvideChat({ space }: { space: string }): ChatContextType {
 
 export function ChatProvider({
   children,
-  space,
+  metadata,
 }: {
   children: ReactNode;
-  space: string;
+  metadata: ChatProviderProps;
 }): JSX.Element {
-  const chatHistoryData = useProvideChat({ space });
+  const chatHistoryData = useProvideChat(metadata);
 
   return <ChatContext.Provider value={chatHistoryData}>{children}</ChatContext.Provider>;
 }
