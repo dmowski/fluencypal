@@ -11,6 +11,7 @@ interface ChatListContextType {
   myChats: UserChatMetadata[];
   myReadStats: ChatSpaceUserReadMetadata;
   unreadSpaces: Record<string, number>;
+  myUnreadCount: number;
 }
 
 const ChatListContext = createContext<ChatListContextType | null>(null);
@@ -33,7 +34,7 @@ function useProvideChatList(): ChatListContextType {
     console.error("Error fetching my chats:", myChatsError);
   }
 
-  const unreadSpaces: Record<string, number> = useMemo(() => {
+  const { unreadSpaces, myUnreadCount } = useMemo(() => {
     const unreadLocalData: Record<string, number> = {};
     myChats?.forEach((chat) => {
       const readMessagesCount = Object.keys(myReadStatsData?.[chat.spaceId] || {}).length;
@@ -43,7 +44,8 @@ function useProvideChatList(): ChatListContextType {
         unreadLocalData[chat.spaceId] = unreadCount;
       }
     });
-    return unreadLocalData;
+    const unreadCount = Object.values(unreadLocalData).reduce((a, b) => a + b, 0);
+    return { unreadSpaces: unreadLocalData, myUnreadCount: unreadCount };
   }, [myChats, myReadStatsData]);
 
   return {
@@ -51,6 +53,7 @@ function useProvideChatList(): ChatListContextType {
     myChats: myChats || [],
     myReadStats: myReadStatsData || {},
     unreadSpaces,
+    myUnreadCount,
   };
 }
 

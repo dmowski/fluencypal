@@ -21,8 +21,6 @@ export const ChatPage = () => {
   const game = useGame();
   const chatMetadata = chatList.myChats.find((chat) => chat.spaceId === activeChatId);
 
-  const myUnreadCount = Object.values(chatList.unreadSpaces).reduce((a, b) => a + b, 0);
-
   return (
     <Stack>
       <Stack
@@ -46,7 +44,7 @@ export const ChatPage = () => {
           >
             {i18n._("Public")}
           </Button>
-          <Badge color="error" badgeContent={myUnreadCount}>
+          <Badge color="error" badgeContent={chatList.myUnreadCount}>
             <Button
               startIcon={<HatGlasses size={"14px"} />}
               variant={page === "private" ? "contained" : "outlined"}

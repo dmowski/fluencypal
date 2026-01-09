@@ -1,5 +1,5 @@
 "use client";
-import { Link, Stack, Typography } from "@mui/material";
+import { Badge, Link, Stack, Typography } from "@mui/material";
 import { Home, LucideProps, User, Users, VenetianMask } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes, useMemo } from "react";
 import { SupportedLanguage } from "../Lang/lang";
@@ -12,6 +12,7 @@ import { useGame } from "../Game/useGame";
 import { useSettings } from "../Settings/useSettings";
 import { AppMode } from "@/common/user";
 import { Avatar } from "../Game/Avatar";
+import { useChatList } from "../Chat/useChatList";
 
 export interface IconProps {
   color?: string;
@@ -42,6 +43,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
   const appMode = settings.appMode;
   const userPhoto = game.gameAvatars?.[auth.uid] || "";
   const { bottomOffset } = useWindowSizes();
+  const chatList = useChatList();
 
   const navigationItemsByMode: Record<AppMode, NavigationItem[]> = useMemo(
     () => ({
@@ -68,6 +70,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
           name: "community",
           icon: Users,
           title: i18n._("Community"),
+          badge: chatList.myUnreadCount,
         },
         {
           name: "role-play",
@@ -81,7 +84,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
         },
       ],
     }),
-    [appMode]
+    [appMode, chatList.myUnreadCount]
   );
 
   const navigationItems: NavigationItem[] = navigationItemsByMode[appMode || "learning"];
@@ -193,16 +196,18 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                     },
                   }}
                 >
-                  {isProfile && userPhoto ? (
-                    <Avatar
-                      avatarSize="20px"
-                      url={userPhoto}
-                      isActive={isActive}
-                      activeColor={activeColor}
-                    />
-                  ) : (
-                    <item.icon color={color} width={"20px"} height={"20px"} />
-                  )}
+                  <Badge color="error" badgeContent={isActiveBadge ? item.badge : 0}>
+                    {isProfile && userPhoto ? (
+                      <Avatar
+                        avatarSize="20px"
+                        url={userPhoto}
+                        isActive={isActive}
+                        activeColor={activeColor}
+                      />
+                    ) : (
+                      <item.icon color={color} width={"20px"} height={"20px"} />
+                    )}
+                  </Badge>
 
                   <Stack
                     sx={{
@@ -213,32 +218,9 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                       width: "100%",
                     }}
                   >
-                    {isActiveBadge && (
-                      <Stack
-                        sx={{
-                          width: "4px",
-                          height: "7px",
-                        }}
-                      />
-                    )}
-
                     <Typography variant="caption" component={"span"} align="center">
                       {item.title}
                     </Typography>
-
-                    {isActiveBadge && (
-                      <Stack
-                        sx={{
-                          borderRadius: "18px",
-                          backgroundColor: "#ff3d00",
-                          width: "5px",
-                          height: "5px",
-                          opacity: 1,
-                          position: "relative",
-                          top: "1px",
-                        }}
-                      />
-                    )}
                   </Stack>
                 </Link>
               </Stack>
