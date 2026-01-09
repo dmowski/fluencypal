@@ -114,21 +114,55 @@ function useProvideGame(): GameContextType {
     setActiveQuestion(null);
   };
 
-  const { stats, positionMap } = useMemo(() => {
+  const {
+    stats,
+    positionMap,
+    myStats,
+    myIndex,
+    myPosition,
+    nextPositionStat,
+    pointsToNextPosition,
+  } = useMemo(() => {
     if (!gameRate)
       return {
-        stats: [],
+        stats: [] as UsersStat[],
         positionMap: {} as Record<string, number>,
+        myStats: null as UsersStat | null,
+        myIndex: -1,
+        myPosition: null as number | null,
+        nextPositionStat: null as UsersStat | null,
+        pointsToNextPosition: null as number | null,
       };
     const internalStats = getSortedStatsFromData(gameRate);
 
     const newPositionMap: Record<string, number> = {};
+    let myStats: UsersStat | null = null;
+    let myIndex: number = -1;
+    let myPosition: number | null = null;
+    let nextPositionStat: UsersStat | null = null;
+    let pointsToNextPosition: number | null = null;
     internalStats.forEach((stat, index) => {
       newPositionMap[stat.userId] = index;
+      if (stat.userId === userId) {
+        myStats = stat;
+        myIndex = index;
+        myPosition = index + 1;
+        if (index > 0) {
+          nextPositionStat = internalStats[index - 1];
+          pointsToNextPosition = nextPositionStat.points - stat.points;
+        }
+      }
     });
 
-    return { stats: internalStats, positionMap: newPositionMap };
-  }, [gameRate]);
+    return {
+      stats: internalStats,
+      positionMap: newPositionMap,
+      myStats,
+      myIndex,
+      myPosition,
+      nextPositionStat,
+    };
+  }, [gameRate, userId]);
 
   const updateLastVisit = async () => {
     if (!userId || !isActiveBrowserTab()) return;
@@ -258,35 +292,6 @@ function useProvideGame(): GameContextType {
     const nextQuestion = randomArray[0] || null;
     setActiveQuestion(nextQuestion);
   };
-
-  const myStats = useMemo(() => {
-    if (!userId) return null;
-    const myStat = stats.find((stat) => stat.userId === userId);
-    if (!myStat) return null;
-    return myStat;
-  }, [userId, stats]);
-
-  const myIndex = useMemo(() => {
-    if (!myStats) return null;
-    const myIndex = stats.findIndex((stat) => stat.userId === myStats.userId);
-    if (myIndex === -1) return null;
-    return myIndex;
-  }, [myStats, stats]);
-
-  const myPosition = useMemo(() => {
-    return myIndex === null ? null : myIndex + 1;
-  }, [myIndex]);
-
-  const nextPositionStat = useMemo(() => {
-    if (myIndex === null) return null;
-    if (myIndex - 1 < 0 || myIndex == -1) return null;
-    return stats[myIndex - 1];
-  }, [myIndex, stats]);
-
-  const pointsToNextPosition = useMemo(() => {
-    if (!nextPositionStat || !myStats) return null;
-    return nextPositionStat.points - myStats.points;
-  }, [nextPositionStat, myStats]);
 
   const isTop5Position = myIndex !== null && myIndex < 5;
 
