@@ -27,7 +27,7 @@ import {
 import { QuizSurvey2 } from "../Goal/Quiz/types";
 import { DailyQuestionAnswer, DailyQuestionLike } from "../Game/DailyQuestion/types";
 import { InterviewQuizSurvey } from "../Case/types";
-import { ChatLike, UserChatMessage } from "../Chat/type";
+import { ChatLike, UserChatMessage, UserChatMetadata } from "../Chat/type";
 import { GameBattle } from "../Game/Battle/types";
 
 interface FirestoreDataConverter<T> {
@@ -73,8 +73,12 @@ export const db = {
     homework: (userId?: string) =>
       userId ? dataPointCollection<Homework>(`users/${userId}/homeworks`) : null,
 
+    userChatList: (userId?: string) =>
+      userId ? dataPointCollection<UserChatMetadata>(`chat`) : null,
+
     usersChatMessages: (space: string, userId: string) =>
       userId ? dataPointCollection<UserChatMessage>(`chat/${space}/messages`) : null,
+
     usersChatLikes: (space: string, userId: string) =>
       userId ? dataPointCollection<ChatLike>(`chat/${space}/likes`) : null,
 

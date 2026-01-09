@@ -8,6 +8,10 @@ export interface ChatLike {
   createdAtIso: string;
 }
 
+export interface UserChatMetadata {
+  userIds?: string[] | null;
+}
+
 export interface UserChatMessage {
   id: string;
   senderId: string;
