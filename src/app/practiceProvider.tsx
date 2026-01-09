@@ -1,7 +1,6 @@
 import { AuthProvider } from "@/features/Auth/useAuth";
 import { SettingsProvider } from "@/features/Settings/useSettings";
 import { UsageProvider } from "@/features/Usage/useUsage";
-import { HomeworkProvider } from "@/features/Homework/useHomework";
 import { ChatHistoryProvider } from "@/features/ConversationHistory/useChatHistory";
 import { AiConversationProvider } from "@/features/Conversation/useAiConversation";
 import { TasksProvider } from "@/features/Tasks/useTasks";
@@ -44,16 +43,14 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                     <ChatHistoryProvider>
                                       <RulesProvider>
                                         <TasksProvider>
-                                          <HomeworkProvider>
-                                            <PlanProvider>
-                                              <AiConversationProvider>
-                                                <BattleProvider>
-                                                  {children}
-                                                  <GlobalModals />
-                                                </BattleProvider>
-                                              </AiConversationProvider>
-                                            </PlanProvider>
-                                          </HomeworkProvider>
+                                          <PlanProvider>
+                                            <AiConversationProvider>
+                                              <BattleProvider>
+                                                {children}
+                                                <GlobalModals />
+                                              </BattleProvider>
+                                            </AiConversationProvider>
+                                          </PlanProvider>
                                         </TasksProvider>
                                       </RulesProvider>
                                     </ChatHistoryProvider>
