@@ -862,6 +862,11 @@ msgstr "避免这些错误将使你看起来更专业，增加你成功的机会
 msgid "Back"
 msgstr "返回"
 
+#: src/features/Chat/ChatPage.tsx:90
+#. js-lingui-explicit-id
+msgid "Back to all chats"
+msgstr "返回所有聊天"
+
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
 msgid "Backend engineers who improved their interviews"
@@ -1228,7 +1233,9 @@ msgstr "职业晋升"
 msgid "Career benefit:"
 msgstr "职业益处:"
 
-#: src/features/Game/GamePage.tsx:182
+#: src/features/Chat/ChatPage.tsx:215
+#: src/features/Chat/ChatPage.tsx:217
+#: src/features/Game/GamePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Chat"
 msgstr "聊天"
@@ -1355,7 +1362,7 @@ msgstr "清晰的系统设计结构。我终于在解释权衡时没有东拉西
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
 #: src/features/Game/Battle/BattleActionModal.tsx:296
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:218
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:219
 #: src/features/Game/UserProfileModal.tsx:136
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1419,7 +1426,7 @@ msgstr "社区"
 msgid "Community Chat"
 msgstr "社区聊天"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:186
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:187
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "社区回复："
@@ -1679,12 +1686,12 @@ msgstr "卡壳时的纠正"
 msgid "Could not find page"
 msgstr "无法找到页面"
 
-#: src/features/Conversation/ConversationPage.tsx:154
+#: src/features/Conversation/ConversationPage.tsx:144
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "正在制定新规则..."
 
-#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Conversation/ConversationPage.tsx:140
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "正在创造新词……"
@@ -1831,10 +1838,15 @@ msgstr "每天面试，无需担心评判"
 msgid "Daily Language Practice"
 msgstr "日常语言练习"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:118
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:119
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "每日问题"
+
+#: src/features/Chat/ChatPage.tsx:213
+#. js-lingui-explicit-id
+msgid "Daily Question Chat"
+msgstr "每日问题聊天"
 
 #: src/features/Landing/LandingPage.tsx:107
 #. js-lingui-explicit-id
@@ -1883,6 +1895,11 @@ msgstr "天"
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "辩论"
+
+#: src/features/Chat/ChatPage.tsx:212
+#. js-lingui-explicit-id
+msgid "Debate Chat"
+msgstr "辩论聊天"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:118
 #. js-lingui-explicit-id
@@ -3461,6 +3478,11 @@ msgstr "给一个小例子（计数器，输入，按钮）"
 #. js-lingui-explicit-id
 msgid "Give us your feedback"
 msgstr "给我们您的反馈"
+
+#: src/features/Chat/ChatPage.tsx:214
+#. js-lingui-explicit-id
+msgid "Global Chat"
+msgstr "全球聊天"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:336
 #. js-lingui-explicit-id
@@ -5351,8 +5373,8 @@ msgstr "加载中.."
 #: src/features/Conversation/ConversationCanvas.tsx:846
 #: src/features/Conversation/ConversationPage.tsx:103
 #: src/features/Conversation/ConversationPage.tsx:112
-#: src/features/Conversation/ConversationPage.tsx:142
-#: src/features/Game/GamePage.tsx:68
+#: src/features/Conversation/ConversationPage.tsx:132
+#: src/features/Game/GamePage.tsx:150
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:85
@@ -5631,6 +5653,11 @@ msgstr "电影、书籍或音乐"
 #. js-lingui-explicit-id
 msgid "Mute microphone"
 msgstr "静音麦克风"
+
+#: src/features/Chat/ChatPage.tsx:52
+#. js-lingui-explicit-id
+msgid "My Chats"
+msgstr "我的聊天"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:103
 #. js-lingui-explicit-id
@@ -6254,7 +6281,7 @@ msgstr "在游戏中名列前五以获得完整访问权限"
 msgid "Plan for"
 msgstr "计划针对"
 
-#: src/features/Game/GamePage.tsx:69
+#: src/features/Game/GamePage.tsx:150
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "播放"
@@ -6780,6 +6807,11 @@ msgstr "心理学家"
 msgid "Psychology"
 msgstr "心理学"
 
+#: src/features/Chat/ChatPage.tsx:45
+#. js-lingui-explicit-id
+msgid "Public"
+msgstr "公众"
+
 #: src/features/Landing/PlanLandingBlock.tsx:223
 #. js-lingui-explicit-id
 msgid "Public Talk Skills"
@@ -6832,7 +6864,7 @@ msgstr "在前5名中排名以免费获取该应用"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "排名前5以获得所有功能的完全访问权限！"
 
-#: src/features/Game/GamePage.tsx:191
+#: src/features/Game/GamePage.tsx:174
 #. js-lingui-explicit-id
 msgid "Rating"
 msgstr "评分"
@@ -7531,7 +7563,7 @@ msgstr "短篇故事"
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
 msgstr "显示好奇心和参与感。不要忘记感谢他们的答案："
 
-#: src/features/Game/Battle/BattleSection.tsx:79
+#: src/features/Game/Battle/BattleSection.tsx:81
 #. js-lingui-explicit-id
 msgid "Show Debates"
 msgstr "显示辩论"
@@ -7550,13 +7582,13 @@ msgstr "显示更少"
 
 #: src/features/Chat/Message.tsx:361
 #: src/features/Conversation/ProcessUserInput.tsx:199
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:218
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:219
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "显示更多"
 
-#: src/features/Game/Battle/BattleSection.tsx:79
+#: src/features/Game/Battle/BattleSection.tsx:81
 #. js-lingui-explicit-id
 msgid "Show More"
 msgstr "显示更多"
@@ -9055,7 +9087,7 @@ msgstr "我在付费计划中能得到什么？"
 msgid "What do I need to use FluencyPal?"
 msgstr "我使用FluencyPal需要什么？"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:197
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:198
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "你怎么看？"
@@ -9453,7 +9485,7 @@ msgstr "您可以随时删除您的个人数据"
 msgid "You can discuss the battle here."
 msgstr "您可以在这里讨论战斗。"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:193
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:194
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "您可以在这里讨论每日问题。"
@@ -9546,6 +9578,11 @@ msgid ""
 "You have completed all the questions. Submit your answers now and wait for "
 "the results."
 msgstr "您已完成所有问题。现在提交您的答案并等待结果。"
+
+#: src/features/Chat/ChatPage.tsx:117
+#. js-lingui-explicit-id
+msgid "You have no chats yet."
+msgstr "您还没有聊天记录。"
 
 #: src/features/Game/Battle/BattleCard.tsx:328
 #. js-lingui-explicit-id
@@ -9771,6 +9808,11 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Chat/ChatPage.tsx:163
+#. js-lingui-explicit-id
+#~ msgid "Private Chat"
+#~ msgstr "私人聊天"
 
 #: src/features/Game/GamePage.tsx:212
 #. js-lingui-explicit-id

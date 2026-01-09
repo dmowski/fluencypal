@@ -9,8 +9,12 @@ export interface ChatLike {
 }
 
 export interface UserChatMetadata {
+  spaceId: string;
   allowedUserIds: string[] | null;
   isPrivate: boolean;
+  type: "global" | "debate" | "privateChat" | "dailyQuestion";
+
+  debateId?: string;
 }
 
 export interface UserChatMessage {

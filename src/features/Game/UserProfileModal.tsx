@@ -392,9 +392,10 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
               <Stack>
                 <ChatProvider
                   metadata={{
-                    space: chatSpace,
+                    spaceId: chatSpace,
                     allowedUserIds: [stat.userId, userId],
                     isPrivate: true,
+                    type: "privateChat",
                   }}
                 >
                   <ChatSection />

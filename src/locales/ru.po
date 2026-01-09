@@ -905,6 +905,11 @@ msgstr ""
 msgid "Back"
 msgstr "Назад"
 
+#: src/features/Chat/ChatPage.tsx:90
+#. js-lingui-explicit-id
+msgid "Back to all chats"
+msgstr "Назад ко всем чатам"
+
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
 msgid "Backend engineers who improved their interviews"
@@ -1289,7 +1294,9 @@ msgstr "Карьерный рост"
 msgid "Career benefit:"
 msgstr "Преимущества для карьеры:"
 
-#: src/features/Game/GamePage.tsx:182
+#: src/features/Chat/ChatPage.tsx:215
+#: src/features/Chat/ChatPage.tsx:217
+#: src/features/Game/GamePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Chat"
 msgstr "Чат"
@@ -1431,7 +1438,7 @@ msgstr ""
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
 #: src/features/Game/Battle/BattleActionModal.tsx:296
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:218
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:219
 #: src/features/Game/UserProfileModal.tsx:136
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1497,7 +1504,7 @@ msgstr "Сообщество"
 msgid "Community Chat"
 msgstr "Чат Сообщества"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:186
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:187
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "Ответы сообщества:"
@@ -1764,12 +1771,12 @@ msgstr "Исправления, когда вы застряли"
 msgid "Could not find page"
 msgstr "Не удалось найти страницу"
 
-#: src/features/Conversation/ConversationPage.tsx:154
+#: src/features/Conversation/ConversationPage.tsx:144
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Создание нового правила..."
 
-#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Conversation/ConversationPage.tsx:140
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Создание новых слов..."
@@ -1934,10 +1941,15 @@ msgstr "Ежедневное собеседование без страха ос
 msgid "Daily Language Practice"
 msgstr "Ежедневная практика языка"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:118
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:119
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Ежедневный вопрос"
+
+#: src/features/Chat/ChatPage.tsx:213
+#. js-lingui-explicit-id
+msgid "Daily Question Chat"
+msgstr "Ежедневный Вопрос Чат"
 
 #: src/features/Landing/LandingPage.tsx:107
 #. js-lingui-explicit-id
@@ -1989,6 +2001,11 @@ msgstr "день"
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Дебаты"
+
+#: src/features/Chat/ChatPage.tsx:212
+#. js-lingui-explicit-id
+msgid "Debate Chat"
+msgstr "Чат-дебаты"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:118
 #. js-lingui-explicit-id
@@ -3779,6 +3796,11 @@ msgstr "Дайте небольшой пример (счетчик, ввод, к
 #. js-lingui-explicit-id
 msgid "Give us your feedback"
 msgstr "Дайте нам свой отзыв"
+
+#: src/features/Chat/ChatPage.tsx:214
+#. js-lingui-explicit-id
+msgid "Global Chat"
+msgstr "Глобальный чат"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:336
 #. js-lingui-explicit-id
@@ -5920,8 +5942,8 @@ msgstr "Загрузка.."
 #: src/features/Conversation/ConversationCanvas.tsx:846
 #: src/features/Conversation/ConversationPage.tsx:103
 #: src/features/Conversation/ConversationPage.tsx:112
-#: src/features/Conversation/ConversationPage.tsx:142
-#: src/features/Game/GamePage.tsx:68
+#: src/features/Conversation/ConversationPage.tsx:132
+#: src/features/Game/GamePage.tsx:150
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:85
@@ -6218,6 +6240,11 @@ msgstr "Фильмы, книги или музыка"
 #. js-lingui-explicit-id
 msgid "Mute microphone"
 msgstr "Отключить микрофон"
+
+#: src/features/Chat/ChatPage.tsx:52
+#. js-lingui-explicit-id
+msgid "My Chats"
+msgstr "Мои чаты"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:103
 #. js-lingui-explicit-id
@@ -6887,7 +6914,7 @@ msgstr "Займите место в топ-5 в игре, чтобы получ
 msgid "Plan for"
 msgstr "План для"
 
-#: src/features/Game/GamePage.tsx:69
+#: src/features/Game/GamePage.tsx:150
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Играть"
@@ -7462,6 +7489,11 @@ msgstr "Психолог"
 msgid "Psychology"
 msgstr "Психология"
 
+#: src/features/Chat/ChatPage.tsx:45
+#. js-lingui-explicit-id
+msgid "Public"
+msgstr "Публичный"
+
 #: src/features/Landing/PlanLandingBlock.tsx:223
 #. js-lingui-explicit-id
 msgid "Public Talk Skills"
@@ -7514,7 +7546,7 @@ msgstr "Войдите в топ-5, чтобы получить приложен
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Займите место в топ-5, чтобы получить полный доступ ко всем функциям!"
 
-#: src/features/Game/GamePage.tsx:191
+#: src/features/Game/GamePage.tsx:174
 #. js-lingui-explicit-id
 msgid "Rating"
 msgstr "Рейтинг"
@@ -8262,7 +8294,7 @@ msgstr ""
 "Проявляйте любознательность и участие. Не забывайте благодарить их за "
 "ответы:"
 
-#: src/features/Game/Battle/BattleSection.tsx:79
+#: src/features/Game/Battle/BattleSection.tsx:81
 #. js-lingui-explicit-id
 msgid "Show Debates"
 msgstr "Показать дебаты"
@@ -8281,13 +8313,13 @@ msgstr "Показать меньше"
 
 #: src/features/Chat/Message.tsx:361
 #: src/features/Conversation/ProcessUserInput.tsx:199
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:218
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:219
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Показать больше"
 
-#: src/features/Game/Battle/BattleSection.tsx:79
+#: src/features/Game/Battle/BattleSection.tsx:81
 #. js-lingui-explicit-id
 msgid "Show More"
 msgstr "Показать больше"
@@ -9908,7 +9940,7 @@ msgstr "Что я получу платно?"
 msgid "What do I need to use FluencyPal?"
 msgstr "Что мне нужно для использования FluencyPal?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:197
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:198
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "Что вы думаете?"
@@ -10365,7 +10397,7 @@ msgstr "Вы можете удалить свои личные данные в �
 msgid "You can discuss the battle here."
 msgstr "Вы можете обсудить сражение здесь."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:193
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:194
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "Вы можете обсудить ежедневный вопрос здесь."
@@ -10475,6 +10507,11 @@ msgid ""
 "You have completed all the questions. Submit your answers now and wait for "
 "the results."
 msgstr "Вы завершили все вопросы. Отправьте свои ответы сейчас и ждите результатов."
+
+#: src/features/Chat/ChatPage.tsx:117
+#. js-lingui-explicit-id
+msgid "You have no chats yet."
+msgstr "У вас еще нет чатов."
 
 #: src/features/Game/Battle/BattleCard.tsx:328
 #. js-lingui-explicit-id
@@ -10719,6 +10756,11 @@ msgstr ""
 "— важно провести этот короткий разговор перед тем, как переходить к "
 "профессиональным темам. Вот несколько полезных английских фраз для начала "
 "интервью:"
+
+#: src/features/Chat/ChatPage.tsx:163
+#. js-lingui-explicit-id
+#~ msgid "Private Chat"
+#~ msgstr "Частный чат"
 
 #: src/features/Game/GamePage.tsx:212
 #. js-lingui-explicit-id

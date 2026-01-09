@@ -18,9 +18,10 @@ export const DailyQuestionBadge = () => {
   return (
     <ChatProvider
       metadata={{
-        space: "daily-question-" + questionId,
+        spaceId: "daily-question-" + questionId,
         allowedUserIds: null,
         isPrivate: false,
+        type: "dailyQuestion",
       }}
     >
       <DailyQuestionBadgeComponent todaysQuestion={todaysQuestion} />

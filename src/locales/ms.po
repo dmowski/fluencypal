@@ -910,6 +910,11 @@ msgstr ""
 msgid "Back"
 msgstr "Kembali"
 
+#: src/features/Chat/ChatPage.tsx:90
+#. js-lingui-explicit-id
+msgid "Back to all chats"
+msgstr "Kembali ke semua sembang"
+
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
 msgid "Backend engineers who improved their interviews"
@@ -1296,7 +1301,9 @@ msgstr "Peningkatan Kerjaya"
 msgid "Career benefit:"
 msgstr "Manfaat kerjaya:"
 
-#: src/features/Game/GamePage.tsx:182
+#: src/features/Chat/ChatPage.tsx:215
+#: src/features/Chat/ChatPage.tsx:217
+#: src/features/Game/GamePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Chat"
 msgstr "Sembang"
@@ -1436,7 +1443,7 @@ msgstr ""
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
 #: src/features/Game/Battle/BattleActionModal.tsx:296
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:218
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:219
 #: src/features/Game/UserProfileModal.tsx:136
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1502,7 +1509,7 @@ msgstr "Komuniti"
 msgid "Community Chat"
 msgstr "Sembang Komuniti"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:186
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:187
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "Tindak Balas Komuniti:"
@@ -1773,12 +1780,12 @@ msgstr ""
 msgid "Could not find page"
 msgstr "Tidak dapat mencari halaman"
 
-#: src/features/Conversation/ConversationPage.tsx:154
+#: src/features/Conversation/ConversationPage.tsx:144
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Membentuk peraturan baru..."
 
-#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Conversation/ConversationPage.tsx:140
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Mencipta perkataan baru..."
@@ -1944,10 +1951,15 @@ msgstr "Temu bual harian tanpa rasa takut dinilai"
 msgid "Daily Language Practice"
 msgstr "Amalan Bahasa Harian"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:118
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:119
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Soalan Harian"
+
+#: src/features/Chat/ChatPage.tsx:213
+#. js-lingui-explicit-id
+msgid "Daily Question Chat"
+msgstr "Sembang Soalan Harian"
 
 #: src/features/Landing/LandingPage.tsx:107
 #. js-lingui-explicit-id
@@ -2000,6 +2012,11 @@ msgstr "hari"
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Debat"
+
+#: src/features/Chat/ChatPage.tsx:212
+#. js-lingui-explicit-id
+msgid "Debate Chat"
+msgstr "Sembang Debat"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:118
 #. js-lingui-explicit-id
@@ -3806,6 +3823,11 @@ msgstr "Beri contoh kecil (kaunter, input, butang)"
 #. js-lingui-explicit-id
 msgid "Give us your feedback"
 msgstr "Berikan maklum balas anda"
+
+#: src/features/Chat/ChatPage.tsx:214
+#. js-lingui-explicit-id
+msgid "Global Chat"
+msgstr "Sembang Global"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:336
 #. js-lingui-explicit-id
@@ -5986,8 +6008,8 @@ msgstr "Memuatkan.."
 #: src/features/Conversation/ConversationCanvas.tsx:846
 #: src/features/Conversation/ConversationPage.tsx:103
 #: src/features/Conversation/ConversationPage.tsx:112
-#: src/features/Conversation/ConversationPage.tsx:142
-#: src/features/Game/GamePage.tsx:68
+#: src/features/Conversation/ConversationPage.tsx:132
+#: src/features/Game/GamePage.tsx:150
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:85
@@ -6285,6 +6307,13 @@ msgstr "Filem, buku, atau muzik"
 #. js-lingui-explicit-id
 msgid "Mute microphone"
 msgstr "Bisukan mikrofon"
+
+#: src/features/Chat/ChatPage.tsx:52
+#. js-lingui-explicit-id
+msgid "My Chats"
+msgstr ""
+"\n"
+"Sembang Saya\n"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:103
 #. js-lingui-explicit-id
@@ -6959,7 +6988,7 @@ msgstr "Tempatkan dalam 5 teratas dalam permainan untuk mendapatkan akses penuh"
 msgid "Plan for"
 msgstr "Rancang untuk"
 
-#: src/features/Game/GamePage.tsx:69
+#: src/features/Game/GamePage.tsx:150
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Main"
@@ -7535,6 +7564,11 @@ msgstr "Psikolog"
 msgid "Psychology"
 msgstr "Psikologi"
 
+#: src/features/Chat/ChatPage.tsx:45
+#. js-lingui-explicit-id
+msgid "Public"
+msgstr "Awam"
+
 #: src/features/Landing/PlanLandingBlock.tsx:223
 #. js-lingui-explicit-id
 msgid "Public Talk Skills"
@@ -7587,7 +7621,7 @@ msgstr "Terdapat dalam 5 teratas untuk mendapatkan aplikasi ini secara percuma"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Peringkat dalam 5 teratas untuk mendapatkan akses penuh kepada semua ciri!"
 
-#: src/features/Game/GamePage.tsx:191
+#: src/features/Game/GamePage.tsx:174
 #. js-lingui-explicit-id
 msgid "Rating"
 msgstr "Penilaian"
@@ -8327,7 +8361,7 @@ msgstr ""
 "Tunjukkan rasa ingin tahu dan keterlibatan. Jangan lupa untuk berterima "
 "kasih kepada mereka atas jawapan mereka:"
 
-#: src/features/Game/Battle/BattleSection.tsx:79
+#: src/features/Game/Battle/BattleSection.tsx:81
 #. js-lingui-explicit-id
 msgid "Show Debates"
 msgstr "Tunjuk Perdebatan"
@@ -8348,13 +8382,13 @@ msgstr "Tunjukkan kurang"
 
 #: src/features/Chat/Message.tsx:361
 #: src/features/Conversation/ProcessUserInput.tsx:199
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:218
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:219
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Tunjukkan lebih banyak"
 
-#: src/features/Game/Battle/BattleSection.tsx:79
+#: src/features/Game/Battle/BattleSection.tsx:81
 #. js-lingui-explicit-id
 msgid "Show More"
 msgstr "Tunjukkan Lagi"
@@ -9976,7 +10010,7 @@ msgstr "Apakah yang saya dapatkan dengan pelan berbayar?"
 msgid "What do I need to use FluencyPal?"
 msgstr "Apakah yang saya perlukan untuk menggunakan FluencyPal?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:197
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:198
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "Apa pendapat anda?"
@@ -10436,7 +10470,7 @@ msgstr "Anda boleh memadam data peribadi anda pada bila-bila masa"
 msgid "You can discuss the battle here."
 msgstr "Anda boleh membincangkan pertempuran di sini."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:193
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:194
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "Anda boleh membincangkan soalan harian di sini."
@@ -10546,6 +10580,13 @@ msgid ""
 msgstr ""
 "Anda telah menyelesaikan semua soalan. Serahkan jawapan anda sekarang dan "
 "tunggu keputusan."
+
+#: src/features/Chat/ChatPage.tsx:117
+#. js-lingui-explicit-id
+msgid "You have no chats yet."
+msgstr ""
+"\n"
+"Anda belum mempunyai sembang.\n"
 
 #: src/features/Game/Battle/BattleCard.tsx:328
 #. js-lingui-explicit-id
@@ -10794,6 +10835,11 @@ msgstr ""
 "— sangat penting untuk melibatkan diri dalam perbualan pendek ini sebelum "
 "melompat ke topik profesional. Berikut adalah beberapa frasa Inggeris yang "
 "berguna untuk memulakan temuduga:"
+
+#: src/features/Chat/ChatPage.tsx:163
+#. js-lingui-explicit-id
+#~ msgid "Private Chat"
+#~ msgstr "Sembang Peribadi"
 
 #: src/features/Game/GamePage.tsx:212
 #. js-lingui-explicit-id

@@ -21,6 +21,7 @@ import { AppNavigationProvider } from "@/features/Navigation/useAppNavigation";
 import { AnalyticsProvider } from "@/features/Analytics/useAnalytics";
 import { BattleProvider } from "@/features/Game/Battle/useBattle";
 import { GlobalModals } from "@/features/Modal/GlobalModals";
+import { ChatListProvider } from "@/features/Chat/useChatList";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
@@ -32,36 +33,38 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
               <AuthProvider>
                 <AnalyticsProvider>
                   <SettingsProvider>
-                    <WebCamProvider>
-                      <GameProvider>
-                        <UsageProvider>
-                          <TextAiProvider>
-                            <AudioProvider>
-                              <AiUserInfoProvider>
-                                <WordsProvider>
-                                  <CorrectionsProvider>
-                                    <ChatHistoryProvider>
-                                      <RulesProvider>
-                                        <TasksProvider>
-                                          <PlanProvider>
-                                            <AiConversationProvider>
-                                              <BattleProvider>
-                                                {children}
-                                                <GlobalModals />
-                                              </BattleProvider>
-                                            </AiConversationProvider>
-                                          </PlanProvider>
-                                        </TasksProvider>
-                                      </RulesProvider>
-                                    </ChatHistoryProvider>
-                                  </CorrectionsProvider>
-                                </WordsProvider>
-                              </AiUserInfoProvider>
-                            </AudioProvider>
-                          </TextAiProvider>
-                        </UsageProvider>
-                      </GameProvider>
-                    </WebCamProvider>
+                    <ChatListProvider>
+                      <WebCamProvider>
+                        <GameProvider>
+                          <UsageProvider>
+                            <TextAiProvider>
+                              <AudioProvider>
+                                <AiUserInfoProvider>
+                                  <WordsProvider>
+                                    <CorrectionsProvider>
+                                      <ChatHistoryProvider>
+                                        <RulesProvider>
+                                          <TasksProvider>
+                                            <PlanProvider>
+                                              <AiConversationProvider>
+                                                <BattleProvider>
+                                                  {children}
+                                                  <GlobalModals />
+                                                </BattleProvider>
+                                              </AiConversationProvider>
+                                            </PlanProvider>
+                                          </TasksProvider>
+                                        </RulesProvider>
+                                      </ChatHistoryProvider>
+                                    </CorrectionsProvider>
+                                  </WordsProvider>
+                                </AiUserInfoProvider>
+                              </AudioProvider>
+                            </TextAiProvider>
+                          </UsageProvider>
+                        </GameProvider>
+                      </WebCamProvider>
+                    </ChatListProvider>
                   </SettingsProvider>
                 </AnalyticsProvider>
               </AuthProvider>

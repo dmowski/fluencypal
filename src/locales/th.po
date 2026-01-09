@@ -908,6 +908,11 @@ msgstr ""
 msgid "Back"
 msgstr "กลับ"
 
+#: src/features/Chat/ChatPage.tsx:90
+#. js-lingui-explicit-id
+msgid "Back to all chats"
+msgstr "กลับไปยังการสนทนาทั้งหมด"
+
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
 msgid "Backend engineers who improved their interviews"
@@ -1290,7 +1295,9 @@ msgstr "ความก้าวหน้าในอาชีพ"
 msgid "Career benefit:"
 msgstr "ผลประโยชน์ทางอาชีพ:"
 
-#: src/features/Game/GamePage.tsx:182
+#: src/features/Chat/ChatPage.tsx:215
+#: src/features/Chat/ChatPage.tsx:217
+#: src/features/Game/GamePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Chat"
 msgstr "แชท"
@@ -1430,7 +1437,7 @@ msgstr ""
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
 #: src/features/Game/Battle/BattleActionModal.tsx:296
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:218
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:219
 #: src/features/Game/UserProfileModal.tsx:136
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1494,7 +1501,7 @@ msgstr "ชุมชน"
 msgid "Community Chat"
 msgstr "แชทชุมชน"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:186
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:187
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "การตอบสนองของชุมชน:"
@@ -1760,12 +1767,12 @@ msgstr "การแก้ไขเมื่อคุณติดขัด"
 msgid "Could not find page"
 msgstr "ไม่พบหน้าที่ต้องการ"
 
-#: src/features/Conversation/ConversationPage.tsx:154
+#: src/features/Conversation/ConversationPage.tsx:144
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "กำลังสร้างกฎใหม่..."
 
-#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Conversation/ConversationPage.tsx:140
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "การสร้างคำใหม่..."
@@ -1932,10 +1939,15 @@ msgstr "การสัมภาษณ์รายวันโดยไม่ต
 msgid "Daily Language Practice"
 msgstr "การฝึกภาษาประจำวัน"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:118
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:119
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "คำถามประจำวัน"
+
+#: src/features/Chat/ChatPage.tsx:213
+#. js-lingui-explicit-id
+msgid "Daily Question Chat"
+msgstr "แชทถามตอบประจำวัน"
 
 #: src/features/Landing/LandingPage.tsx:107
 #. js-lingui-explicit-id
@@ -1989,6 +2001,11 @@ msgstr "วัน"
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "อภิปราย"
+
+#: src/features/Chat/ChatPage.tsx:212
+#. js-lingui-explicit-id
+msgid "Debate Chat"
+msgstr "การสนทนาโต้แย้ง"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:118
 #. js-lingui-explicit-id
@@ -3759,6 +3776,13 @@ msgstr "ให้ตัวอย่างขนาดเล็ก (ตัวน�
 #. js-lingui-explicit-id
 msgid "Give us your feedback"
 msgstr "ให้คำติชมของคุณแก่เรา"
+
+#: src/features/Chat/ChatPage.tsx:214
+#. js-lingui-explicit-id
+msgid "Global Chat"
+msgstr ""
+"Global Chat\n"
+"แชททั่วโลก"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:336
 #. js-lingui-explicit-id
@@ -5885,8 +5909,8 @@ msgstr "กำลังโหลด.."
 #: src/features/Conversation/ConversationCanvas.tsx:846
 #: src/features/Conversation/ConversationPage.tsx:103
 #: src/features/Conversation/ConversationPage.tsx:112
-#: src/features/Conversation/ConversationPage.tsx:142
-#: src/features/Game/GamePage.tsx:68
+#: src/features/Conversation/ConversationPage.tsx:132
+#: src/features/Game/GamePage.tsx:150
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:85
@@ -6178,6 +6202,11 @@ msgstr "ภาพยนตร์ หนังสือ หรือเพลง"
 #. js-lingui-explicit-id
 msgid "Mute microphone"
 msgstr "ปิดไมโครโฟน"
+
+#: src/features/Chat/ChatPage.tsx:52
+#. js-lingui-explicit-id
+msgid "My Chats"
+msgstr "การสนทนาของฉัน"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:103
 #. js-lingui-explicit-id
@@ -6843,7 +6872,7 @@ msgstr "ติดอันดับใน 5 อันดับแรกในเ
 msgid "Plan for"
 msgstr "\\[\\text{วางแผนสำหรับ}\\]"
 
-#: src/features/Game/GamePage.tsx:69
+#: src/features/Game/GamePage.tsx:150
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "เล่น"
@@ -7409,6 +7438,11 @@ msgstr "นักจิตวิทยา"
 msgid "Psychology"
 msgstr "จิตวิทยา"
 
+#: src/features/Chat/ChatPage.tsx:45
+#. js-lingui-explicit-id
+msgid "Public"
+msgstr "สาธารณะ"
+
 #: src/features/Landing/PlanLandingBlock.tsx:223
 #. js-lingui-explicit-id
 msgid "Public Talk Skills"
@@ -7463,7 +7497,7 @@ msgstr "ติดอันดับใน 5 อันดับแรกเพื
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "จัดอยู่อันดับ 5 สูงสุดเพื่อเข้าถึงคุณสมบัติทั้งหมด!"
 
-#: src/features/Game/GamePage.tsx:191
+#: src/features/Game/GamePage.tsx:174
 #. js-lingui-explicit-id
 msgid "Rating"
 msgstr "การให้คะแนน"
@@ -8196,7 +8230,7 @@ msgstr ""
 "แสดงความอยากรู้อยากเห็นและมีส่วนร่วม "
 "อย่าลืมขอบคุณพวกเขาสำหรับคำตอบของพวกเขา:"
 
-#: src/features/Game/Battle/BattleSection.tsx:79
+#: src/features/Game/Battle/BattleSection.tsx:81
 #. js-lingui-explicit-id
 msgid "Show Debates"
 msgstr "แสดงการอภิปราย"
@@ -8215,13 +8249,13 @@ msgstr "แสดงน้อยลง"
 
 #: src/features/Chat/Message.tsx:361
 #: src/features/Conversation/ProcessUserInput.tsx:199
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:218
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:219
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "แสดงเพิ่มเติม"
 
-#: src/features/Game/Battle/BattleSection.tsx:79
+#: src/features/Game/Battle/BattleSection.tsx:81
 #. js-lingui-explicit-id
 msgid "Show More"
 msgstr "แสดงเพิ่มเติม"
@@ -9824,7 +9858,7 @@ msgstr "ฉันจะได้รับอะไรจากแผนการ
 msgid "What do I need to use FluencyPal?"
 msgstr "ฉันต้องใช้อะไรบ้างในการใช้ FluencyPal?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:197
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:198
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "คุณคิดว่าอย่างไร?"
@@ -10274,7 +10308,7 @@ msgstr "คุณสามารถลบข้อมูลส่วนตัว
 msgid "You can discuss the battle here."
 msgstr "คุณสามารถพูดคุยเกี่ยวกับการรบที่นี่"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:193
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:194
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "คุณสามารถสนทนาเกี่ยวกับคำถามประจำวันได้ที่นี่"
@@ -10380,6 +10414,11 @@ msgid ""
 "You have completed all the questions. Submit your answers now and wait for "
 "the results."
 msgstr "คุณได้ทำคำถามทั้งหมดเสร็จสิ้นแล้ว ส่งคำตอบของคุณตอนนี้และรอผลลัพธ์"
+
+#: src/features/Chat/ChatPage.tsx:117
+#. js-lingui-explicit-id
+msgid "You have no chats yet."
+msgstr "คุณยังไม่มีการแชท"
 
 #: src/features/Game/Battle/BattleCard.tsx:328
 #. js-lingui-explicit-id
@@ -10624,6 +10663,11 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Chat/ChatPage.tsx:163
+#. js-lingui-explicit-id
+#~ msgid "Private Chat"
+#~ msgstr "การสนทนาส่วนตัว"
 
 #: src/features/Game/GamePage.tsx:212
 #. js-lingui-explicit-id

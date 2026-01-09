@@ -63,9 +63,11 @@ export const BattleSection = () => {
           <Stack key={battle.battleId}>
             <ChatProvider
               metadata={{
-                space: `battle_${battle.battleId}`,
+                spaceId: `battle_${battle.battleId}`,
                 allowedUserIds: battle.usersIds,
+                debateId: battle.battleId,
                 isPrivate: true,
+                type: "debate",
               }}
             >
               <BattleCard battle={battle} />

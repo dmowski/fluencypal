@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useMemo, useState, useEffect } from "react";
+import { createContext, useContext, ReactNode, JSX, useMemo, useState } from "react";
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useAuth } from "../Auth/useAuth";
 import { db } from "../Firebase/firebaseDb";
@@ -7,12 +7,6 @@ import { useCollectionData, useDocumentData } from "react-firebase-hooks/firesto
 import { ChatLike, ChatLikeType, UserChatMessage, UserChatMetadata } from "./type";
 import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
 import { useUrlState } from "../Url/useUrlParam";
-
-interface ChatProviderProps {
-  space: string;
-  allowedUserIds: string[] | null;
-  isPrivate: boolean;
-}
 
 interface AddMessageProps {
   messageContent: string;
@@ -61,16 +55,18 @@ const getIsCanRead = ({
   );
 };
 
-function useProvideChat({ space, allowedUserIds, isPrivate }: ChatProviderProps): ChatContextType {
+function useProvideChat(propsChatMetadata: UserChatMetadata): ChatContextType {
   const auth = useAuth();
   const userId = auth.uid;
 
-  const metaRef = db.documents.chat(userId, space);
+  const metaRef = db.documents.chat(userId, propsChatMetadata.spaceId);
   const [metaData] = useDocumentData(metaRef);
 
   const isCanRead = getIsCanRead({ chatMetadata: metaData, userId });
 
-  const messagesRef = isCanRead ? db.collections.usersChatMessages(space, userId) : null;
+  const messagesRef = isCanRead
+    ? db.collections.usersChatMessages(propsChatMetadata.spaceId, userId)
+    : null;
   const [messagesData, loading] = useCollectionData(messagesRef);
 
   const [activeCommentMessageId, setActiveCommentMessageId] = useState("");
@@ -81,17 +77,15 @@ function useProvideChat({ space, allowedUserIds, isPrivate }: ChatProviderProps)
       return messagesRef;
     }
 
-    const chatMetaData: UserChatMetadata = {
-      isPrivate,
-      allowedUserIds: allowedUserIds,
-    };
     if (metaRef && userId) {
       console.log("Init metadata");
-      await setDoc(metaRef, chatMetaData);
+      await setDoc(metaRef, propsChatMetadata);
     }
 
-    const isCanReadAfterInit = getIsCanRead({ chatMetadata: chatMetaData, userId });
-    return isCanReadAfterInit ? db.collections.usersChatMessages(space, userId) : null;
+    const isCanReadAfterInit = getIsCanRead({ chatMetadata: propsChatMetadata, userId });
+    return isCanReadAfterInit
+      ? db.collections.usersChatMessages(propsChatMetadata.spaceId, userId)
+      : null;
   };
 
   const { messages, topLevelMessages, commentsInfo } = useMemo<{
@@ -134,9 +128,9 @@ function useProvideChat({ space, allowedUserIds, isPrivate }: ChatProviderProps)
     };
   }, [messagesData]);
 
-  //const unreadMessagesCount = Math.max(0, topLevelMessages.length - readChatMessages);
-
-  const likesRef = db.collections.usersChatLikes(space, userId);
+  const likesRef = isCanRead
+    ? db.collections.usersChatLikes(propsChatMetadata.spaceId, userId)
+    : null;
   const [likes] = useCollectionData(likesRef);
 
   const messagesLikes = useMemo(() => {
@@ -275,7 +269,7 @@ export function ChatProvider({
   metadata,
 }: {
   children: ReactNode;
-  metadata: ChatProviderProps;
+  metadata: UserChatMetadata;
 }): JSX.Element {
   const chatHistoryData = useProvideChat(metadata);
 
