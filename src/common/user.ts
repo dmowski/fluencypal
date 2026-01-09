@@ -32,8 +32,6 @@ export interface UserSettings extends InitUserSettings {
   appMode: AppMode | null;
 
   conversationMode: ConversationMode | null;
-
-  readChatMessages?: number | null;
 }
 
 export interface UserSettingsWithId extends UserSettings {

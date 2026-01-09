@@ -36,9 +36,6 @@ interface SettingsContextType {
 
   conversationMode: ConversationMode;
   setConversationMode: (mode: ConversationMode) => Promise<void>;
-
-  readChatMessages: number;
-  setReadChatMessages: (count: number) => Promise<void>;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -59,8 +56,6 @@ export const settingsContext = createContext<SettingsContextType>({
 
   conversationMode: "record",
   setConversationMode: async () => {},
-  readChatMessages: 0,
-  setReadChatMessages: async () => {},
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -185,12 +180,6 @@ function useProvideSettings(): SettingsContextType {
     localStorage.setItem("pageLanguageCode", pageLanguageCode);
   }, [pageLanguageCode]);
 
-  const readChatMessages = userSettings?.readChatMessages || 0;
-  const setReadChatMessages = async (count: number) => {
-    if (!userSettingsDoc) return;
-    await setDoc(userSettingsDoc, { readChatMessages: count }, { merge: true });
-  };
-
   return {
     userCreatedAt,
 
@@ -209,9 +198,6 @@ function useProvideSettings(): SettingsContextType {
 
     conversationMode: userSettings?.conversationMode || "record",
     setConversationMode,
-
-    readChatMessages,
-    setReadChatMessages,
   };
 }
 
