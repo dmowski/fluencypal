@@ -233,8 +233,20 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
 
   const deleteMessage = async (messageId: string) => {
     if (!messagesRef || !userId) return;
-    const messageDoc = doc(messagesRef, messageId);
-    await deleteDoc(messageDoc);
+
+    const isChildExisting = messages.find((m) => m.parentMessageId === messageId);
+    if (isChildExisting) {
+      const messageDoc = doc(messagesRef, messageId);
+      const updatedMessage: Partial<UserChatMessage> = {
+        content: "[deleted]",
+        isDeleted: true,
+        updatedAtIso: new Date().toISOString(),
+      };
+      await setDoc(messageDoc, updatedMessage, { merge: true });
+    } else {
+      const messageDoc = doc(messagesRef, messageId);
+      await deleteDoc(messageDoc);
+    }
   };
 
   const editMessage = async (messageId: string, newContent: string) => {

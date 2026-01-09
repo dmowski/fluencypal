@@ -42,4 +42,6 @@ export interface UserChatMessage {
   updatedAtIso: string;
 
   viewsUserIds?: string[];
+
+  isDeleted?: boolean;
 }

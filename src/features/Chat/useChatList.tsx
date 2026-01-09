@@ -3,12 +3,14 @@ import { createContext, useContext, ReactNode, JSX, useMemo } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { db } from "../Firebase/firebaseDb";
 import { query, where } from "firebase/firestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { UserChatMetadata } from "./type";
+import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
+import { ChatSpaceUserReadMetadata, UserChatMetadata } from "./type";
 
 interface ChatListContextType {
   loading: boolean;
   myChats: UserChatMetadata[];
+  myReadStats: ChatSpaceUserReadMetadata;
+  unreadSpaces: Record<string, number>;
 }
 
 const ChatListContext = createContext<ChatListContextType | null>(null);
@@ -16,6 +18,9 @@ const ChatListContext = createContext<ChatListContextType | null>(null);
 function useProvideChatList(): ChatListContextType {
   const auth = useAuth();
   const chatListRef = db.collections.userChatList(auth.uid || "");
+
+  const myReadStatsRef = db.documents.chatSpaceUserReadMetadata(auth.uid || "");
+  const [myReadStatsData] = useDocumentData(myReadStatsRef);
 
   const myChatsQuery = useMemo(() => {
     if (chatListRef === null || !auth.uid) return null;
@@ -28,9 +33,24 @@ function useProvideChatList(): ChatListContextType {
     console.error("Error fetching my chats:", myChatsError);
   }
 
+  const unreadSpaces: Record<string, number> = useMemo(() => {
+    const unreadLocalData: Record<string, number> = {};
+    myChats?.forEach((chat) => {
+      const readMessagesCount = Object.keys(myReadStatsData?.[chat.spaceId] || {}).length;
+      const totalMessagesCount = chat.totalMessages || 0;
+      const unreadCount = Math.max(0, totalMessagesCount - readMessagesCount);
+      if (unreadCount > 0) {
+        unreadLocalData[chat.spaceId] = unreadCount;
+      }
+    });
+    return unreadLocalData;
+  }, [myChats, myReadStatsData]);
+
   return {
     loading: myChatsLoading,
     myChats: myChats || [],
+    myReadStats: myReadStatsData || {},
+    unreadSpaces,
   };
 }
 

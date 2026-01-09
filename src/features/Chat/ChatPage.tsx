@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Stack, Typography } from "@mui/material";
+import { Badge, Button, ButtonGroup, Stack, Typography } from "@mui/material";
 import { ChatSection } from "./ChatSection";
 import { ChatProvider } from "./useChat";
 import { useLingui } from "@lingui/react";
@@ -128,6 +128,8 @@ export const ChatPage = () => {
                       }}
                     >
                       {chatList.myChats.map((chat, index) => {
+                        const unreadCount = chatList.unreadSpaces[chat.spaceId] || 0;
+
                         const allUserIds = uniq(
                           chat.allowedUserIds?.sort((a, b) => {
                             // me first
@@ -156,7 +158,7 @@ export const ChatPage = () => {
                             }}
                             sx={{
                               borderRadius: "3px",
-                              padding: "10px 12px",
+                              padding: "10px 20px 10px 12px",
                               backgroundColor: `rgba(255, 255, 255, 0.05)`,
                               flexDirection: "row",
                               alignItems: "center",
@@ -219,7 +221,17 @@ export const ChatPage = () => {
                                 <Typography variant="body2">{userNames}</Typography>
                               </Stack>
                             </Stack>
-                            <ChevronRight />
+                            <Stack
+                              sx={{
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "10px",
+                              }}
+                            >
+                              <Badge color="info" badgeContent={unreadCount}>
+                                <ChevronRight />
+                              </Badge>
+                            </Stack>
                           </Stack>
                         );
                       })}

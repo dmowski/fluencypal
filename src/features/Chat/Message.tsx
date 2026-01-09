@@ -255,7 +255,7 @@ export function Message({
             }}
           >
             {isDeleted ? (
-              <></>
+              <Stack></Stack>
             ) : (
               <Stack
                 sx={{
