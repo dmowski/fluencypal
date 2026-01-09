@@ -24,6 +24,8 @@ export const GameStats = () => {
   const game = useGame();
   const [sort, setSort] = useState<"score" | "lastVisit">("score");
   const { i18n } = useLingui();
+  const [limit, setLimit] = useState(50);
+
   return (
     <Stack
       sx={{
@@ -71,9 +73,14 @@ export const GameStats = () => {
             return bLastVisit.localeCompare(aLastVisit);
           }
         })
+        .filter((_, index) => index < limit)
         .map((stat) => {
           return <GameStatRow key={stat.userId} stat={stat} />;
         })}
+
+      {limit < game.stats.length && (
+        <Button onClick={() => setLimit((prev) => prev + 500)}>{i18n._("Load More")}</Button>
+      )}
     </Stack>
   );
 };
