@@ -1,24 +1,10 @@
 "use client";
 
-import { Button, ButtonGroup, Stack, Typography } from "@mui/material";
+import { Button, ButtonGroup, Stack } from "@mui/material";
 import { useGame } from "./useGame";
 import { GameStatRow } from "./GameStatRow";
-import dayjs from "dayjs";
-import { GameLastVisit } from "./types";
 import { useState } from "react";
 import { useLingui } from "@lingui/react";
-
-export const isTodayStat = ({
-  lastVisitStat,
-  userId,
-}: {
-  lastVisitStat?: GameLastVisit | null;
-  userId: string;
-}) => {
-  if (!lastVisitStat) return false;
-  if (!lastVisitStat[userId]) return false;
-  return dayjs().diff(dayjs(lastVisitStat[userId]), "hour") < 24;
-};
 
 export const GameStats = () => {
   const game = useGame();
