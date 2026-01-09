@@ -156,39 +156,32 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
           <Stack
             sx={{
               paddingTop: "20px",
-              gap: "30px",
+              gap: "10px",
               width: "100%",
-              boxSizing: "border-box",
             }}
           >
-            <Stack
-              sx={{
-                gap: "20px",
-              }}
-            >
-              <Tabs value={activeTab} onChange={(event, newId) => setActiveTab(newId)}>
-                <Tab
-                  sx={{
-                    padding: "0 10px 0 10px",
-                    minWidth: "unset",
-                  }}
-                  label={<TabLabel label={i18n._(`Chat`)} />}
-                  value={"chat"}
-                />
+            <Tabs value={activeTab} onChange={(event, newId) => setActiveTab(newId)}>
+              <Tab
+                sx={{
+                  padding: "0 10px 0 10px",
+                  minWidth: "unset",
+                }}
+                label={<TabLabel label={i18n._(`Chat`)} />}
+                value={"chat"}
+              />
 
-                <Tab
-                  label={<TabLabel label={i18n._(`Rating`)} badgeNumber={game.stats.length} />}
-                  value={"rate"}
-                  sx={{
-                    padding: "0 10px 0 10px",
-                    minWidth: "unset",
-                  }}
-                />
-              </Tabs>
+              <Tab
+                label={<TabLabel label={i18n._(`Rating`)} badgeNumber={game.stats.length} />}
+                value={"rate"}
+                sx={{
+                  padding: "0 10px 0 10px",
+                  minWidth: "unset",
+                }}
+              />
+            </Tabs>
 
-              {activeTab === "rate" && <GameStats />}
-              {activeTab === "chat" && <ChatPage />}
-            </Stack>
+            {activeTab === "rate" && <GameStats />}
+            {activeTab === "chat" && <ChatPage />}
           </Stack>
 
           {game.activeQuestion && game.isGamePlaying && !isShowOnboarding && (
