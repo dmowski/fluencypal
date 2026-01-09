@@ -7,7 +7,7 @@ import { useCollectionData, useDocumentData } from "react-firebase-hooks/firesto
 import {
   ChatLike,
   ChatLikeType,
-  ChatSpaceUserMetadata,
+  ChatSpaceUserReadMetadata,
   UserChatMessage,
   UserChatMetadata,
   UserChatMetadataStatic,
@@ -247,19 +247,19 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     await setDoc(messageDoc, updatedMessage, { merge: true });
   };
 
-  const myMetaRef = db.documents.chatSpaceUserMetadata(propsChatMetadata.spaceId, userId);
+  const myMetaRef = db.documents.chatSpaceUserReadMetadata(userId);
   const [myMetaDataSnap] = useDocumentData(myMetaRef);
 
   const viewMessage = async (message: UserChatMessage) => {
     if (!userId) return;
 
     if (myMetaRef) {
-      const partialMyMeta: Partial<ChatSpaceUserMetadata> = {
-        readMessagesIds: {
-          [message.id]: new Date().toISOString(),
+      const partialMyMeta: Partial<ChatSpaceUserReadMetadata> = {
+        [propsChatMetadata.spaceId]: {
+          [message.id]: true,
         },
       };
-      const isAlreadyViewed = myMetaDataSnap?.readMessagesIds[message.id];
+      const isAlreadyViewed = myMetaDataSnap?.[propsChatMetadata.spaceId]?.[message.id];
       if (!isAlreadyViewed) {
         await setDoc(myMetaRef, partialMyMeta, { merge: true });
       }
