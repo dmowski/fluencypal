@@ -47,6 +47,8 @@ export function Message({
   const translator = useTranslate();
   const [isShowFullContent, setIsShowFullContent] = useState(isFullContentByDefault);
 
+  const isDeleted = message.isDeleted || false;
+
   useEffect(() => {
     setIsShowFullContent(isFullContentByDefault);
   }, [isFullContentByDefault]);
@@ -144,14 +146,16 @@ export function Message({
   return (
     <Stack
       sx={{
-        padding: "10px",
-        backgroundColor: "rgba(255, 255, 255, 0.01)",
+        padding: isDeleted ? "20px 0" : "10px",
+
+        backgroundColor: isDeleted ? "rgba(0, 0, 0, 0.2)" : "rgba(255, 255, 255, 0.01)",
+
         position: "relative",
         width: "100%",
         flexDirection: "row",
         zIndex: 1,
         gap: "0px",
-        cursor: isEditing ? "default" : "pointer",
+        cursor: isEditing || isDeleted ? "default" : "pointer",
         ".open-message-button:focus": {
           boxShadow: "inset 0 0 0 2px rgba(41, 179, 229, 0.5)",
           borderRadius: "12px",
@@ -195,6 +199,7 @@ export function Message({
           position: "absolute",
           top: "15px",
           left: "15px",
+          opacity: isDeleted ? 0 : 1,
         }}
       >
         <Avatar avatarSize={avatarSize} url={userAvatarUrl} />
@@ -249,49 +254,53 @@ export function Message({
               paddingLeft: contentLeftPadding,
             }}
           >
-            <Stack
-              sx={{
-                flexDirection: "row",
-                gap: "16px",
-                alignItems: "flex-end",
-                backgroundColor: "transparent",
-                color: "inherit",
-                border: "none",
-                padding: 0,
-                ":focus": {
-                  outline: "none",
-                  boxShadow: "0 0 0 2px rgba(41, 179, 229, 0.5)",
-                },
-              }}
-              component={"button"}
-              onClick={() => game.showUserInModal(message.senderId)}
-            >
-              <Typography
-                variant="body1"
+            {isDeleted ? (
+              <></>
+            ) : (
+              <Stack
                 sx={{
-                  fontWeight: 600,
-                }}
-              >
-                {userName}
-              </Typography>
-              <Typography
-                variant="caption"
-                sx={{
-                  opacity: 0.6,
-
-                  i: {
-                    fontStyle: "normal",
-                    opacity: 0.6,
-                    paddingLeft: "10px",
+                  flexDirection: "row",
+                  gap: "16px",
+                  alignItems: "flex-end",
+                  backgroundColor: "transparent",
+                  color: "inherit",
+                  border: "none",
+                  padding: 0,
+                  ":focus": {
+                    outline: "none",
+                    boxShadow: "0 0 0 2px rgba(41, 179, 229, 0.5)",
                   },
-                  span: {},
                 }}
+                component={"button"}
+                onClick={() => game.showUserInModal(message.senderId)}
               >
-                <span>{updatedAgo}</span>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontWeight: 600,
+                  }}
+                >
+                  {userName}
+                </Typography>
+                <Typography
+                  variant="caption"
+                  sx={{
+                    opacity: 0.6,
 
-                {message.updatedAtIso !== message.createdAtIso && <i>{i18n._("edited")}</i>}
-              </Typography>
-            </Stack>
+                    i: {
+                      fontStyle: "normal",
+                      opacity: 0.6,
+                      paddingLeft: "10px",
+                    },
+                    span: {},
+                  }}
+                >
+                  <span>{updatedAgo}</span>
+
+                  {message.updatedAtIso !== message.createdAtIso && <i>{i18n._("edited")}</i>}
+                </Typography>
+              </Stack>
+            )}
 
             {isOwnMessage && (
               <Stack sx={{ flexDirection: "row", opacity: 0.7, alignItems: "center", gap: "1px" }}>
@@ -343,7 +352,7 @@ export function Message({
 
               fontSize: "15px",
               lineHeight: "21px",
-              color: "rgba(243, 245, 247)",
+              color: isDeleted ? "rgba(243, 245, 247, 0.3)" : "rgba(243, 245, 247, 1)",
               fontWeight: 350,
               paddingLeft: isContentWide ? "0px" : contentLeftPadding,
               paddingTop: isContentWide ? "20px" : 0,
@@ -367,60 +376,64 @@ export function Message({
             )}
           </Typography>
 
-          <Stack
-            sx={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: "8px",
-              paddingTop: "5px",
-              paddingLeft: isContentWide ? "0px" : contentLeftPadding,
-            }}
-          >
-            <MessageActionButton
-              isActive={isLikedByMe}
-              onClick={() => chat.toggleLike(message.id, "like")}
-              label={i18n._("Like")}
-              count={chat.messagesLikes[message.id]?.length || 0}
-              iconName={"heart"}
-            />
-
-            <MessageActionButton
-              isActive={false}
-              onClick={() => chat.setActiveCommentMessageId(message.id)}
-              label={i18n._("Comment")}
-              count={commentsCount}
-              iconName={"message-circle"}
-            />
-
-            {translator.isTranslateAvailable && (
+          {!isDeleted && (
+            <Stack
+              sx={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "8px",
+                paddingTop: "5px",
+                paddingLeft: isContentWide ? "0px" : contentLeftPadding,
+              }}
+            >
               <MessageActionButton
-                isActive={isTranslating}
-                onClick={() => toggleTranslation()}
-                label={i18n._("Translate")}
-                iconName={"languages"}
+                isActive={isLikedByMe}
+                onClick={() => chat.toggleLike(message.id, "like")}
+                label={i18n._("Like")}
+                count={chat.messagesLikes[message.id]?.length || 0}
+                iconName={"heart"}
               />
-            )}
-            {translator.translateModal}
-          </Stack>
+
+              <MessageActionButton
+                isActive={false}
+                onClick={() => chat.setActiveCommentMessageId(message.id)}
+                label={i18n._("Comment")}
+                count={commentsCount}
+                iconName={"message-circle"}
+              />
+
+              {translator.isTranslateAvailable && (
+                <MessageActionButton
+                  isActive={isTranslating}
+                  onClick={() => toggleTranslation()}
+                  label={i18n._("Translate")}
+                  iconName={"languages"}
+                />
+              )}
+              {translator.translateModal}
+            </Stack>
+          )}
         </Stack>
       )}
 
-      <Stack
-        component={"button"}
-        onClick={() => chat.onOpen(message.id)}
-        className="open-message-button"
-        sx={{
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          top: 0,
-          left: 0,
-          border: "none",
-          backgroundColor: "rgba(0,0,0,0)",
-          zIndex: -1,
-          outline: "none",
-        }}
-      />
+      {!isEditing && (
+        <Stack
+          component={"button"}
+          onClick={() => chat.onOpen(message.id)}
+          className="open-message-button"
+          sx={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            top: 0,
+            left: 0,
+            border: "none",
+            backgroundColor: "rgba(0,0,0,0)",
+            zIndex: -1,
+            outline: "none",
+          }}
+        />
+      )}
     </Stack>
   );
 }
