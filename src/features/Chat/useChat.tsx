@@ -47,6 +47,20 @@ interface ChatContextType {
 
 const ChatContext = createContext<ChatContextType | null>(null);
 
+const getIsCanRead = ({
+  chatMetadata,
+  userId,
+}: {
+  chatMetadata?: UserChatMetadata;
+  userId: string;
+}) => {
+  return (
+    chatMetadata &&
+    userId &&
+    (chatMetadata.isPrivate === false || chatMetadata.allowedUserIds?.includes(userId))
+  );
+};
+
 function useProvideChat({ space, allowedUserIds, isPrivate }: ChatProviderProps): ChatContextType {
   const auth = useAuth();
   const userId = auth.uid;
@@ -54,10 +68,7 @@ function useProvideChat({ space, allowedUserIds, isPrivate }: ChatProviderProps)
   const metaRef = db.documents.chat(userId, space);
   const [metaData] = useDocumentData(metaRef);
 
-  const isCanRead =
-    metaData &&
-    userId &&
-    (metaData.isPrivate === false || metaData.allowedUserIds?.includes(userId));
+  const isCanRead = getIsCanRead({ chatMetadata: metaData, userId });
 
   const messagesRef = isCanRead ? db.collections.usersChatMessages(space, userId) : null;
   const [messagesData, loading] = useCollectionData(messagesRef);
@@ -67,7 +78,7 @@ function useProvideChat({ space, allowedUserIds, isPrivate }: ChatProviderProps)
 
   const initMetadataIfNeeded = async () => {
     if (metaData) {
-      return;
+      return messagesRef;
     }
 
     const chatMetaData: UserChatMetadata = {
@@ -78,6 +89,9 @@ function useProvideChat({ space, allowedUserIds, isPrivate }: ChatProviderProps)
       console.log("Init metadata");
       await setDoc(metaRef, chatMetaData);
     }
+
+    const isCanReadAfterInit = getIsCanRead({ chatMetadata: chatMetaData, userId });
+    return isCanReadAfterInit ? db.collections.usersChatMessages(space, userId) : null;
   };
 
   const { messages, topLevelMessages, commentsInfo } = useMemo<{
@@ -168,8 +182,9 @@ function useProvideChat({ space, allowedUserIds, isPrivate }: ChatProviderProps)
   };
 
   const addMessage = async ({ messageContent, parentMessageId }: AddMessageProps) => {
-    if (!messagesRef || !userId) return;
-    await initMetadataIfNeeded();
+    const messagesRefInternal = await initMetadataIfNeeded();
+
+    if (!messagesRefInternal || !userId) return;
 
     const createdAtIso = new Date().toISOString();
     const newMessage: UserChatMessage = {
@@ -181,7 +196,7 @@ function useProvideChat({ space, allowedUserIds, isPrivate }: ChatProviderProps)
       updatedAtIso: createdAtIso,
       parentMessageId: parentMessageId,
     };
-    const messageDoc = doc(messagesRef, newMessage.id);
+    const messageDoc = doc(messagesRefInternal, newMessage.id);
     await setDoc(messageDoc, newMessage);
 
     const isDev = auth.userInfo?.email?.includes("dmowski");

@@ -16,6 +16,8 @@ import { Swords, X } from "lucide-react";
 import { InfoStep } from "../Survey/InfoStep";
 import { useBattle } from "./Battle/useBattle";
 import { BATTLE_WIN_POINTS } from "./Battle/data";
+import { ChatProvider } from "../Chat/useChat";
+import { ChartSection } from "../Chat/ChatSection";
 
 interface IconColor {
   iconColor: string;
@@ -107,6 +109,9 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
     return b.usersIds.includes(userId) && b.usersIds.includes(stat.userId) && !b.winnerUserId;
   });
 
+  const chatSpace = `u_${[stat.userId, userId].sort((a, b) => a.localeCompare(b)).join("_")}`;
+
+  if (!userId) return <></>;
   return (
     <>
       {isAskForDebates && (
@@ -186,7 +191,7 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
               gap: "30px",
               width: "100%",
               padding: "0 10px 80px 10px",
-              maxWidth: "400px",
+              maxWidth: "700px",
             }}
           >
             <Stack
@@ -368,6 +373,32 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                     </Stack>
                   );
                 })}
+              </Stack>
+            </Stack>
+            <Stack
+              sx={{
+                width: "100%",
+                gap: "6px",
+              }}
+            >
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._("Chat between you and {userName}", { userName })}
+              </Typography>
+              <Stack>
+                <ChatProvider
+                  metadata={{
+                    space: chatSpace,
+                    allowedUserIds: [stat.userId, userId],
+                    isPrivate: true,
+                  }}
+                >
+                  <ChartSection />
+                </ChatProvider>
               </Stack>
             </Stack>
           </Stack>
