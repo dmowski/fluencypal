@@ -262,13 +262,17 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             {user.email} | {displayName}
           </Link>
           <Stack>
-            <Typography variant="body2">
-              <LogIn className="icon" /> {lastLoginAgo} | Login
-            </Typography>
+            <Tooltip title={dayjs(user.lastLoginAtDateTime).format("DD MMMM YYYY HH:mm") || ""}>
+              <Typography variant="body2">
+                <LogIn className="icon" /> {lastLoginAgo} | Login
+              </Typography>
+            </Tooltip>
 
-            <Typography variant="body2">
-              <UserPlus className="icon" /> {createdAgo} | Created
-            </Typography>
+            <Tooltip title={dayjs(user.createdAtIso).format("DD MMMM YYYY HH:mm") || ""}>
+              <Typography variant="body2">
+                <UserPlus className="icon" /> {createdAgo} | Created
+              </Typography>
+            </Tooltip>
           </Stack>
         </Stack>
         <Stack
