@@ -24,10 +24,6 @@ export const ChatSection = ({ placeholder }: { placeholder?: string }) => {
   const [activeMessageId, setActiveMessageId] = useUrlState("post", "", true);
   const activeMessage = chat.messages.find((msg) => msg.id === activeMessageId);
 
-  useEffect(() => {
-    chat.markAsRead();
-  }, [chat.messages.length]);
-
   const messageToComment = useMemo(() => {
     return chat.messages.find((msg) => msg.id === chat.activeCommentMessageId);
   }, [chat.activeCommentMessageId, chat.messages]);

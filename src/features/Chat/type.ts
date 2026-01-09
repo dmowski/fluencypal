@@ -8,13 +8,24 @@ export interface ChatLike {
   createdAtIso: string;
 }
 
-export interface UserChatMetadata {
+export interface UserChatMetadataStatic {
   spaceId: string;
   allowedUserIds: string[] | null;
   isPrivate: boolean;
   type: "global" | "debate" | "privateChat" | "dailyQuestion";
 
   debateId?: string;
+}
+
+// Metadata about a chat space
+export interface UserChatMetadata extends UserChatMetadataStatic {
+  totalMessages: number;
+}
+
+// Metadata about a user in a chat space
+export interface ChatSpaceUserMetadata {
+  // messageId, time when the user first read the message
+  readMessagesIds: Record<string, string>;
 }
 
 export interface UserChatMessage {

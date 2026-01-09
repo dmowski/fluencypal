@@ -1,10 +1,17 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useMemo, useState } from "react";
+import { createContext, useContext, ReactNode, JSX, useMemo, useState, useEffect } from "react";
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useAuth } from "../Auth/useAuth";
 import { db } from "../Firebase/firebaseDb";
 import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
-import { ChatLike, ChatLikeType, UserChatMessage, UserChatMetadata } from "./type";
+import {
+  ChatLike,
+  ChatLikeType,
+  ChatSpaceUserMetadata,
+  UserChatMessage,
+  UserChatMetadata,
+  UserChatMetadataStatic,
+} from "./type";
 import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
 import { useUrlState } from "../Url/useUrlParam";
 
@@ -28,7 +35,7 @@ interface ChatContextType {
   viewMessage: (message: UserChatMessage) => Promise<void>;
 
   unreadMessagesCount: number;
-  markAsRead: () => void;
+  markAsRead: (messageId: string) => void;
 
   loading: boolean;
 
@@ -55,7 +62,7 @@ const getIsCanRead = ({
   );
 };
 
-function useProvideChat(propsChatMetadata: UserChatMetadata): ChatContextType {
+function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextType {
   const auth = useAuth();
   const userId = auth.uid;
 
@@ -72,6 +79,20 @@ function useProvideChat(propsChatMetadata: UserChatMetadata): ChatContextType {
   const [activeCommentMessageId, setActiveCommentMessageId] = useState("");
   const [activeMessageId, setActiveMessageId] = useUrlState("post", "", false);
 
+  const updateTotalMessages = () => {
+    if (!metaData || !metaRef || !messagesData) return;
+    const realTotalMessages = messagesData.length;
+    if (metaData.totalMessages === realTotalMessages) return;
+
+    const partialMetadata: Partial<UserChatMetadata> = { totalMessages: realTotalMessages };
+
+    setDoc(metaRef, partialMetadata, { merge: true });
+  };
+
+  useEffect(() => {
+    updateTotalMessages();
+  }, [messagesData, metaData]);
+
   const initMetadataIfNeeded = async () => {
     if (metaData) {
       return messagesRef;
@@ -79,10 +100,13 @@ function useProvideChat(propsChatMetadata: UserChatMetadata): ChatContextType {
 
     if (metaRef && userId) {
       console.log("Init metadata");
-      await setDoc(metaRef, propsChatMetadata);
+      await setDoc(metaRef, { ...propsChatMetadata, totalMessages: 0 });
     }
 
-    const isCanReadAfterInit = getIsCanRead({ chatMetadata: propsChatMetadata, userId });
+    const isCanReadAfterInit = getIsCanRead({
+      chatMetadata: { ...propsChatMetadata, totalMessages: 0 },
+      userId,
+    });
     return isCanReadAfterInit
       ? db.collections.usersChatMessages(propsChatMetadata.spaceId, userId)
       : null;
@@ -146,7 +170,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadata): ChatContextType {
     return likesMap;
   }, [likes]);
 
-  const markAsRead = () => {
+  const markAsRead = (messageId: string) => {
     const isWindow = typeof window !== "undefined";
     if (!isWindow) return;
 
@@ -223,8 +247,24 @@ function useProvideChat(propsChatMetadata: UserChatMetadata): ChatContextType {
     await setDoc(messageDoc, updatedMessage, { merge: true });
   };
 
+  const myMetaRef = db.documents.chatSpaceUserMetadata(propsChatMetadata.spaceId, userId);
+  const [myMetaDataSnap] = useDocumentData(myMetaRef);
+
   const viewMessage = async (message: UserChatMessage) => {
     if (!userId) return;
+
+    if (myMetaRef) {
+      const partialMyMeta: Partial<ChatSpaceUserMetadata> = {
+        readMessagesIds: {
+          [message.id]: new Date().toISOString(),
+        },
+      };
+      const isAlreadyViewed = myMetaDataSnap?.readMessagesIds[message.id];
+      if (!isAlreadyViewed) {
+        await setDoc(myMetaRef, partialMyMeta, { merge: true });
+      }
+    }
+
     const isAlreadyViewed = message.viewsUserIds ? message.viewsUserIds?.includes(userId) : false;
     if (isAlreadyViewed) return;
     if (!messagesRef) return;
@@ -269,7 +309,7 @@ export function ChatProvider({
   metadata,
 }: {
   children: ReactNode;
-  metadata: UserChatMetadata;
+  metadata: UserChatMetadataStatic;
 }): JSX.Element {
   const chatHistoryData = useProvideChat(metadata);
 
