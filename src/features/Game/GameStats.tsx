@@ -6,6 +6,7 @@ import { GameStatRow } from "./GameStatRow";
 import dayjs from "dayjs";
 import { GameLastVisit } from "./types";
 import { useState } from "react";
+import { useLingui } from "@lingui/react";
 
 export const isTodayStat = ({
   lastVisitStat,
@@ -22,25 +23,38 @@ export const isTodayStat = ({
 export const GameStats = () => {
   const game = useGame();
   const [sort, setSort] = useState<"score" | "lastVisit">("score");
+  const { i18n } = useLingui();
   return (
     <Stack
       sx={{
         gap: "12px",
       }}
     >
-      <Stack sx={{ flexDirection: "row", padding: "10px 0" }}>
+      <Stack
+        sx={{
+          padding: "10px 2px",
+          flexDirection: "row",
+          alignItems: "center",
+          width: "100%",
+          gap: "10px",
+          "@media (max-width: 600px)": {
+            border: "none",
+          },
+        }}
+      >
         <ButtonGroup>
           <Button
+            size="small"
             variant={sort === "score" ? "contained" : "outlined"}
             onClick={() => setSort("score")}
           >
-            Sort by Score
+            {i18n._("Score")}
           </Button>
           <Button
             variant={sort === "lastVisit" ? "contained" : "outlined"}
             onClick={() => setSort("lastVisit")}
           >
-            Sort by Last Visit
+            {i18n._("Last Visit")}
           </Button>
         </ButtonGroup>
       </Stack>
