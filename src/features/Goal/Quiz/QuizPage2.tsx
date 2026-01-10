@@ -66,7 +66,7 @@ const QuizQuestions = () => {
         (el) => el.mode === "conversation"
       );
       if (goalTalkModeElement) {
-        const url = `${getUrlStart(pageLanguage)}practice?plan-start-${goalTalkModeElement.id}=true`;
+        const url = `${getUrlStart(pageLanguage)}practice`;
         router.push(url);
       } else {
         const url = `${getUrlStart(pageLanguage)}practice`;
@@ -420,7 +420,7 @@ const QuizQuestions = () => {
                   </>
                 }
                 onClick={doneQuiz}
-                actionButtonTitle={i18n._("Go to Practice (Free Plan)")}
+                actionButtonTitle={i18n._("Go to Practice")}
                 actionButtonEndIcon={<Check />}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
