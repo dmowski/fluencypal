@@ -129,8 +129,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const userInfo = aiUserInfo.userInfo?.records?.join(". ") || "";
   const fullLanguageName = settings.fullLanguageName || "English";
   const languageCode = settings.languageCode || "en";
-  const [isVolumeOnStorage, setIsVolumeOn] = useLocalStorage<boolean>("isVolumeOn", true);
-  const isVolumeOn = isVolumeOnStorage === undefined ? true : isVolumeOnStorage;
+  const [isVolumeOn, setIsVolumeOn] = useState(true);
   const [isProcessingGoal, setIsProcessingGoal] = useState(false);
   const [temporaryGoal, setTemporaryGoal] = useState<GoalPlan | null>(null);
   const [isSavingGoal, setIsSavingGoal] = useState(false);
