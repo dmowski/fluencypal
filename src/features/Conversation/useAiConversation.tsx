@@ -227,9 +227,7 @@ VISUAL_CONTEXT (latest): ${description}
     defaultMessagesToComplete
   );
 
-  const [isMutedStorage, setIsMutedStorage] = useLocalStorage<boolean>("isMuted", false);
-
-  const isMuted = isMutedStorage ?? false;
+  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
@@ -279,7 +277,7 @@ VISUAL_CONTEXT (latest): ${description}
 
   const toggleMute = (isMute: boolean) => {
     communicator?.toggleMute(isMute);
-    setIsMutedStorage(isMute);
+    setIsMuted(isMute);
   };
 
   useEffect(() => {
