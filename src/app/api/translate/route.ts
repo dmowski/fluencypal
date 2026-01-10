@@ -4,10 +4,10 @@ import { TranslateRequest, TranslateResponse } from "./types";
 export async function POST(request: Request) {
   const data = (await request.json()) as TranslateRequest;
 
-  if (!data.text || !data.sourceLanguage || !data.targetLanguage) {
+  if (!data.text || !data.targetLanguage) {
     const response: TranslateResponse = {
       translatedText: "Invalid request data",
-      sourceLanguage: data.sourceLanguage || "unknown",
+      sourceLanguage: data.sourceLanguage || null,
       targetLanguage: data.targetLanguage || "unknown",
     };
     return Response.json(response, { status: 400 });

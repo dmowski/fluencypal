@@ -13,6 +13,7 @@ import { fullLanguagesMap } from "@/libs/language/languages";
 import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
 
 const translationCache: Record<string, string> = {};
+
 export const useTranslate = () => {
   const settings = useSettings();
   const plan = usePlan();
@@ -49,11 +50,10 @@ export const useTranslate = () => {
     if (translationCache[text]) {
       return translationCache[text];
     }
-    // todo: add words to the dictionary to learn
 
     const response = await translateRequest({
       text,
-      sourceLanguage: learningLanguage,
+      sourceLanguage: null,
       targetLanguage,
     });
     translationCache[text] = response.translatedText;

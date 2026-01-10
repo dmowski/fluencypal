@@ -14,7 +14,7 @@ const getTranslateClient = () => {
 
 interface TranslateTextProps {
   text: string;
-  sourceLanguage: NativeLangCode;
+  sourceLanguage: NativeLangCode | null;
   targetLanguage: NativeLangCode;
 }
 export const translateText = async ({
@@ -26,20 +26,24 @@ export const translateText = async ({
   const projectId = "dark-lang";
   const location = "global";
 
-  const translatedTextResponse = await client.translateText({
-    parent: `projects/${projectId}/locations/${location}`,
-    contents: [text],
-    mimeType: "text/plain",
-    sourceLanguageCode: sourceLanguage,
-    targetLanguageCode: targetLanguage,
-  });
+  try {
+    const translatedTextResponse = await client.translateText({
+      parent: `projects/${projectId}/locations/${location}`,
+      contents: [text],
+      mimeType: "text/plain",
+      sourceLanguageCode: sourceLanguage,
+      targetLanguageCode: targetLanguage,
+    });
 
-  const translatedText =
-    translatedTextResponse[0].translations
-      ?.map((t) => {
-        return t.translatedText;
-      })
-      .join("") || "Translation failed";
-
-  return translatedText;
+    const translatedText =
+      translatedTextResponse[0].translations
+        ?.map((t) => {
+          return t.translatedText;
+        })
+        .join("") || "Translation failed";
+    return translatedText;
+  } catch (error) {
+    console.error("Translation error:", error);
+    return "Translation error";
+  }
 };
