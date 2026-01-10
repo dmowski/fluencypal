@@ -22,7 +22,7 @@ import { ChatSection } from "../Chat/ChatSection";
 interface IconColor {
   iconColor: string;
   bgColor: string;
-  borderColor?: string;
+  borderColor: string;
 }
 
 const iconColors: IconColor[] = [
@@ -52,7 +52,9 @@ const iconColors: IconColor[] = [
 const zeroColor: IconColor = {
   iconColor: "#fff",
   bgColor: "rgba(100, 100, 100, 0.5)",
+  borderColor: "rgba(80, 80, 80, 0.5)",
 };
+
 const achievementsIconMap: Record<GameAchievement, IconName> = {
   translate: "languages",
   sentence: "pickaxe",
@@ -87,12 +89,12 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
 
   const achievementsLabelMap: Record<GameAchievement, string> = {
     translate: i18n._("Translates"),
-    sentence: i18n._("Sentence Builder"),
-    describe_image: i18n._("Image Describer"),
-    topic_to_discuss: i18n._("Topic Talker"),
+    sentence: i18n._("Sentences"),
+    describe_image: i18n._("Images"),
+    topic_to_discuss: i18n._("Discussions"),
     read_text: i18n._("Reader"),
     chat_message: i18n._("Chat"),
-    ai_conversation: i18n._("Talks with AI"),
+    ai_conversation: i18n._("AI"),
   };
 
   const [isAskForDebates, setIsAskForDebates] = useState(false);
@@ -304,7 +306,16 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                 {i18n._("Achievements")}
               </Typography>
 
-              <Stack sx={{ width: "100%", gap: "10px" }}>
+              <Stack
+                sx={{
+                  width: "100%",
+                  gap: "10px",
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr 1fr 1fr",
+                  "@media (max-width: 700px)": { gridTemplateColumns: "1fr 1fr 1fr" },
+                  "@media (max-width: 450px)": { gridTemplateColumns: "1fr 1fr" },
+                }}
+              >
                 {achievementsKeys.map((achievementsKey) => {
                   const achievementPoints = achievements[achievementsKey] || 0;
 
@@ -324,53 +335,37 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                     <Stack
                       key={achievementsKey}
                       sx={{
-                        border: "1px solid rgba(255, 255, 255, 0.1)",
                         width: "100%",
-                        paddingRight: "10px",
                         borderRadius: "8px",
-                        overflow: "hidden",
+                        backgroundColor: color.borderColor,
+                        border: `1px solid ${color.bgColor}`,
+                        alignItems: "center",
+                        padding: "20px 10px 10px 10px",
+                        justifyContent: "space-between",
+                        gap: "15px",
                       }}
                     >
-                      <Stack
-                        sx={{
-                          width: "100%",
-                          justifyContent: "space-between",
-                          flexDirection: "row",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Stack
+                      <DynamicIcon
+                        name={achievementsIconMap[achievementsKey]}
+                        size={"30px"}
+                        strokeWidth={"1px"}
+                        color={color.iconColor}
+                      />
+
+                      <Stack>
+                        <Typography variant="h6" align="center">
+                          <b>{achievementPercent.toFixed(0)}</b>%
+                        </Typography>
+
+                        <Typography
+                          variant="caption"
+                          align="center"
                           sx={{
-                            flexDirection: "row",
-                            alignItems: "center",
-                            gap: "10px",
+                            textTransform: "uppercase",
                           }}
                         >
-                          <Stack
-                            sx={{
-                              backgroundColor: color.bgColor,
-                              padding: "12px",
-                            }}
-                          >
-                            <DynamicIcon
-                              name={achievementsIconMap[achievementsKey]}
-                              size={"25px"}
-                              color={color.iconColor}
-                            />
-                          </Stack>
-                          <Typography variant="body2">
-                            {achievementsLabelMap[achievementsKey]}
-                          </Typography>
-                        </Stack>
-                        <Stack
-                          sx={{
-                            alignItems: "flex-end",
-                          }}
-                        >
-                          <Typography variant="body2">
-                            <b>{achievementPoints}</b> / {maxPoints}
-                          </Typography>
-                        </Stack>
+                          {achievementsLabelMap[achievementsKey]}
+                        </Typography>
                       </Stack>
                     </Stack>
                   );
