@@ -53,7 +53,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const appNavigation = useAppNavigation();
   const { isProcessingGoal } = useGoalCreation();
 
-  const { analyzeConversation, conversationAnalysis, generateNextUserMessage } =
+  const { analyzeConversation, conversationAnalysis, gamePointsEarned, generateNextUserMessage } =
     useConversationsAnalysis();
 
   const router = useRouter();
@@ -184,6 +184,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   return (
     <Stack>
       <ConversationCanvas
+        pointsEarned={gamePointsEarned}
         messagesToComplete={planMessageCount}
         conversation={aiConversation.conversation}
         isAiSpeaking={aiConversation.isAiSpeaking}
