@@ -58,7 +58,7 @@ function useProvideChatList(): ChatListContextType {
 
     const readMessagesCountGlobal = Object.keys(myReadStatsData?.["global"] || {}).length;
     const totalMessagesCountGlobal = globalChat?.totalMessages || 0;
-    const unreadCountGlobal = Math.max(0, totalMessagesCountGlobal - readMessagesCountGlobal);
+    const unreadCountGlobal = 0; //Math.max(0, totalMessagesCountGlobal - readMessagesCountGlobal);
 
     return { unreadSpaces: unreadLocalData, myUnreadCount: unreadCount, unreadCountGlobal };
   }, [myChats, myReadStatsData, globalChat]);
