@@ -19,11 +19,13 @@ export const ChatSection = ({
   titleContent,
   contextForAiAnalysis,
   addNewPostButtonText,
+  limitTopMessages,
 }: {
   placeholder?: string;
   titleContent?: React.ReactNode;
   contextForAiAnalysis: string;
   addNewPostButtonText?: string;
+  limitTopMessages?: number;
 }) => {
   const auth = useAuth();
   const chat = useChat();
@@ -242,7 +244,7 @@ export const ChatSection = ({
             </Stack>
           </Stack>
 
-          <MessageChain topLevel parentId={""} />
+          <MessageChain topLevel parentId={""} limitTopMessages={limitTopMessages} />
         </Stack>
       )}
 

@@ -24,6 +24,9 @@ import { QuizPageLoader } from "@/features/Case/quiz/QuizPageLoader";
 import { Check } from "lucide-react";
 import { ColorIconTextList } from "@/features/Survey/ColorIconTextList";
 import VideocamIcon from "@mui/icons-material/Videocam";
+import { ChatProvider } from "@/features/Chat/useChat";
+import { ChatSection } from "@/features/Chat/ChatSection";
+import { WelcomeChatMessage } from "./WelcomeChatMessage";
 
 const QuizQuestions = () => {
   const {
@@ -303,11 +306,11 @@ const QuizQuestions = () => {
           {currentStep === "goalReview" && (
             <AuthWall>
               <GoalReview
-                onClick={doneQuiz}
+                onClick={nextStep}
                 isLoading={isGoalGenerating || survey?.goalData === null}
                 goalData={survey?.goalData}
-                actionButtonIcon={<VideocamIcon />}
-                actionButtonLabel={i18n._("Start")}
+                //actionButtonIcon={<VideocamIcon />}
+                actionButtonLabel={i18n._("Next")}
               />
             </AuthWall>
           )}
@@ -318,13 +321,25 @@ const QuizQuestions = () => {
                 title={i18n._(`Call mode`)}
                 subTitle={i18n._(`Don't forget to try call mode in the practice section!`)}
                 imageUrl="/quiz/callMode.jpg"
-                onClick={doneQuiz}
+                onClick={nextStep}
                 actionButtonTitle={i18n._("Go to Practice")}
                 actionButtonEndIcon={<Check />}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
               />
             </AuthWall>
+          )}
+
+          {currentStep === "writeWelcomeMessageInChat" && (
+            <>
+              <AuthWall>
+                <WelcomeChatMessage
+                  done={doneQuiz}
+                  isLoading={isStepLoading}
+                  exampleToRecord="Hi, my name is Alex"
+                />
+              </AuthWall>
+            </>
           )}
 
           {currentStep === "paidVsFree" && (

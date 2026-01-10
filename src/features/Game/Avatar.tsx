@@ -56,7 +56,7 @@ export const Avatar = ({
       }}
       onClick={onClick}
     >
-      <img src={url} />
+      <img src={url || undefined} />
 
       {isOnline && (
         <Stack
