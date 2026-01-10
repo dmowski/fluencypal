@@ -93,9 +93,16 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     const realTotalMessages = messagesData.length;
     if (metaData.totalMessages === realTotalMessages) return;
 
+    const totalTopLevelMessagesIds = messagesData
+      .filter((msg) => {
+        return !msg.parentMessageId;
+      })
+      .map((msg) => msg.id);
+
     const partialMetadata: Partial<UserChatMetadata> = {
       totalMessages: realTotalMessages,
       lastMessageAtIso: new Date().toISOString(),
+      totalTopLevelMessagesIds: totalTopLevelMessagesIds,
     };
 
     setDoc(metaRef, partialMetadata, { merge: true });
@@ -116,6 +123,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
         ...propsChatMetadata,
         totalMessages: 0,
         lastMessageAtIso: new Date().toISOString(),
+        totalTopLevelMessagesIds: [],
       });
     }
 
@@ -124,6 +132,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
         ...propsChatMetadata,
         totalMessages: 0,
         lastMessageAtIso: new Date().toISOString(),
+        totalTopLevelMessagesIds: [],
       },
       userId,
     });
