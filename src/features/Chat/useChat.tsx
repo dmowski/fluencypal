@@ -91,13 +91,18 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
   const updateTotalMessages = () => {
     if (!metaData || !metaRef || !messagesData) return;
     const realTotalMessages = messagesData.length;
-    if (metaData.totalMessages === realTotalMessages) return;
-
     const totalTopLevelMessagesIds = messagesData
       .filter((msg) => {
         return !msg.parentMessageId;
       })
       .map((msg) => msg.id);
+
+    if (
+      metaData.totalMessages === realTotalMessages &&
+      metaData.totalTopLevelMessagesIds.length === totalTopLevelMessagesIds.length
+    ) {
+      return;
+    }
 
     const partialMetadata: Partial<UserChatMetadata> = {
       totalMessages: realTotalMessages,
