@@ -903,6 +903,7 @@ msgstr ""
 "Mengelakkan kesilapan ini akan membuat anda kelihatan lebih profesional dan "
 "meningkatkan peluang kejayaan anda."
 
+#: src/features/Chat/ChatPage.tsx:132
 #: src/features/Chat/ChatSection.tsx:138
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
@@ -910,10 +911,10 @@ msgstr ""
 msgid "Back"
 msgstr "Kembali"
 
-#: src/features/Chat/ChatPage.tsx:90
+#: src/features/Chat/ChatPage.tsx:170
 #. js-lingui-explicit-id
-msgid "Back to all chats"
-msgstr "Kembali ke semua sembang"
+msgid "Back to chat list"
+msgstr "Kembali ke senarai perbualan"
 
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
@@ -1301,8 +1302,8 @@ msgstr "Peningkatan Kerjaya"
 msgid "Career benefit:"
 msgstr "Manfaat kerjaya:"
 
-#: src/features/Chat/ChatPage.tsx:217
-#: src/features/Chat/ChatPage.tsx:219
+#: src/features/Chat/ChatPage.tsx:330
+#: src/features/Chat/ChatPage.tsx:332
 #: src/features/Game/GamePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1322,6 +1323,11 @@ msgstr "Pemacu Sembang"
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Sejarah sembang"
+
+#: src/features/Chat/ChatPage.tsx:163
+#. js-lingui-explicit-id
+msgid "Chat not found or you don't have access to it."
+msgstr "Chat tidak dijumpai atau anda tidak mempunyai akses kepadanya."
 
 #: src/features/RolePlay/rolePlayData.tsx:393
 #. js-lingui-explicit-id
@@ -1499,7 +1505,7 @@ msgstr "Komunikasikan kompromi reka bentuk sistem"
 msgid "Communication & Leadership"
 msgstr "Komunikasi & Kepimpinan"
 
-#: src/features/Navigation/NavigationBar.tsx:70
+#: src/features/Navigation/NavigationBar.tsx:72
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Komuniti"
@@ -1956,7 +1962,7 @@ msgstr "Amalan Bahasa Harian"
 msgid "Daily Question"
 msgstr "Soalan Harian"
 
-#: src/features/Chat/ChatPage.tsx:215
+#: src/features/Chat/ChatPage.tsx:328
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Sembang Soalan Harian"
@@ -2013,7 +2019,7 @@ msgstr "hari"
 msgid "Debate"
 msgstr "Debat"
 
-#: src/features/Chat/ChatPage.tsx:214
+#: src/features/Chat/ChatPage.tsx:327
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Sembang Debat"
@@ -3824,7 +3830,7 @@ msgstr "Beri contoh kecil (kaunter, input, butang)"
 msgid "Give us your feedback"
 msgstr "Berikan maklum balas anda"
 
-#: src/features/Chat/ChatPage.tsx:216
+#: src/features/Chat/ChatPage.tsx:329
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Sembang Global"
@@ -4109,8 +4115,8 @@ msgstr "Petunjuk untuk meningkatkan keyakinan anda"
 msgid "Hobbies or interests"
 msgstr "Hobi atau minat"
 
-#: src/features/Navigation/NavigationBar.tsx:52
-#: src/features/Navigation/NavigationBar.tsx:65
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/Navigation/NavigationBar.tsx:67
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Rumah"
@@ -6308,7 +6314,7 @@ msgstr "Filem, buku, atau muzik"
 msgid "Mute microphone"
 msgstr "Bisukan mikrofon"
 
-#: src/features/Chat/ChatPage.tsx:52
+#: src/features/Chat/ChatPage.tsx:64
 #. js-lingui-explicit-id
 msgid "My Chats"
 msgstr ""
@@ -7531,8 +7537,8 @@ msgstr "Pembangunan Profesional"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Profesional yang beralih dari bidang lain ke kejuruteraan frontend"
 
-#: src/features/Navigation/NavigationBar.tsx:58
-#: src/features/Navigation/NavigationBar.tsx:80
+#: src/features/Navigation/NavigationBar.tsx:60
+#: src/features/Navigation/NavigationBar.tsx:83
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
@@ -7564,7 +7570,7 @@ msgstr "Psikolog"
 msgid "Psychology"
 msgstr "Psikologi"
 
-#: src/features/Chat/ChatPage.tsx:45
+#: src/features/Chat/ChatPage.tsx:56
 #. js-lingui-explicit-id
 msgid "Public"
 msgstr "Awam"
@@ -8046,7 +8052,7 @@ msgstr "Robot Sedang Berfikir"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:75
+#: src/features/Navigation/NavigationBar.tsx:78
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -10581,7 +10587,7 @@ msgstr ""
 "Anda telah menyelesaikan semua soalan. Serahkan jawapan anda sekarang dan "
 "tunggu keputusan."
 
-#: src/features/Chat/ChatPage.tsx:117
+#: src/features/Chat/ChatPage.tsx:193
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr ""
@@ -10835,6 +10841,11 @@ msgstr ""
 "— sangat penting untuk melibatkan diri dalam perbualan pendek ini sebelum "
 "melompat ke topik profesional. Berikut adalah beberapa frasa Inggeris yang "
 "berguna untuk memulakan temuduga:"
+
+#: src/features/Chat/ChatPage.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Back to all chats"
+#~ msgstr "Kembali ke semua sembang"
 
 #: src/features/Chat/ChatPage.tsx:163
 #. js-lingui-explicit-id

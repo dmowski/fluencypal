@@ -852,6 +852,7 @@ msgid ""
 "your chances of success."
 msgstr "これらのミスを避けることで、よりプロフェッショナルに見え、成功の可能性を高めます。"
 
+#: src/features/Chat/ChatPage.tsx:132
 #: src/features/Chat/ChatSection.tsx:138
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
@@ -861,12 +862,10 @@ msgstr ""
 "\n"
 "戻る\n"
 
-#: src/features/Chat/ChatPage.tsx:90
+#: src/features/Chat/ChatPage.tsx:170
 #. js-lingui-explicit-id
-msgid "Back to all chats"
-msgstr ""
-"\n"
-"すべてのチャットに戻る\n"
+msgid "Back to chat list"
+msgstr "チャットリストに戻る"
 
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
@@ -1234,8 +1233,8 @@ msgstr "キャリアの向上"
 msgid "Career benefit:"
 msgstr "キャリアのメリット:"
 
-#: src/features/Chat/ChatPage.tsx:217
-#: src/features/Chat/ChatPage.tsx:219
+#: src/features/Chat/ChatPage.tsx:330
+#: src/features/Chat/ChatPage.tsx:332
 #: src/features/Game/GamePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1259,6 +1258,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "チャット履歴"
+
+#: src/features/Chat/ChatPage.tsx:163
+#. js-lingui-explicit-id
+msgid "Chat not found or you don't have access to it."
+msgstr "チャットが見つからない、またはあなたにはアクセス権がありません。"
 
 #: src/features/RolePlay/rolePlayData.tsx:393
 #. js-lingui-explicit-id
@@ -1423,7 +1427,7 @@ msgstr "システム設計のトレードオフを伝える"
 msgid "Communication & Leadership"
 msgstr "コミュニケーション & リーダーシップ"
 
-#: src/features/Navigation/NavigationBar.tsx:70
+#: src/features/Navigation/NavigationBar.tsx:72
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr ""
@@ -1858,7 +1862,7 @@ msgstr "毎日の言語練習"
 msgid "Daily Question"
 msgstr "デイリークエスチョン"
 
-#: src/features/Chat/ChatPage.tsx:215
+#: src/features/Chat/ChatPage.tsx:328
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "デイリークエスチョンチャット"
@@ -1911,7 +1915,7 @@ msgstr "日"
 msgid "Debate"
 msgstr "討論"
 
-#: src/features/Chat/ChatPage.tsx:214
+#: src/features/Chat/ChatPage.tsx:327
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "ディベートチャット"
@@ -3524,7 +3528,7 @@ msgstr "小さな例を挙げる (カウンター、入力、ボタン)"
 msgid "Give us your feedback"
 msgstr "フィードバックをお寄せください"
 
-#: src/features/Chat/ChatPage.tsx:216
+#: src/features/Chat/ChatPage.tsx:329
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "グローバルチャット"
@@ -3790,8 +3794,8 @@ msgstr ""
 msgid "Hobbies or interests"
 msgstr "趣味や関心"
 
-#: src/features/Navigation/NavigationBar.tsx:52
-#: src/features/Navigation/NavigationBar.tsx:65
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/Navigation/NavigationBar.tsx:67
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "ホーム"
@@ -5762,7 +5766,7 @@ msgstr "映画、本、または音楽"
 msgid "Mute microphone"
 msgstr "マイクをミュート"
 
-#: src/features/Chat/ChatPage.tsx:52
+#: src/features/Chat/ChatPage.tsx:64
 #. js-lingui-explicit-id
 msgid "My Chats"
 msgstr ""
@@ -6905,8 +6909,8 @@ msgstr "プロフェッショナル開発"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "他の分野からフロントエンドエンジニアリングに転職するプロフェッショナル"
 
-#: src/features/Navigation/NavigationBar.tsx:58
-#: src/features/Navigation/NavigationBar.tsx:80
+#: src/features/Navigation/NavigationBar.tsx:60
+#: src/features/Navigation/NavigationBar.tsx:83
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "プロフィール"
@@ -6938,7 +6942,7 @@ msgstr "心理学者"
 msgid "Psychology"
 msgstr "心理学"
 
-#: src/features/Chat/ChatPage.tsx:45
+#: src/features/Chat/ChatPage.tsx:56
 #. js-lingui-explicit-id
 msgid "Public"
 msgstr "公共"
@@ -7402,7 +7406,7 @@ msgstr "ロボット思考中"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:75
+#: src/features/Navigation/NavigationBar.tsx:78
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -9763,7 +9767,7 @@ msgid ""
 "the results."
 msgstr "すべての質問に回答しました。今すぐ回答を提出し、結果をお待ちください。"
 
-#: src/features/Chat/ChatPage.tsx:117
+#: src/features/Chat/ChatPage.tsx:193
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "チャットはまだありません。"
@@ -9992,6 +9996,13 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Chat/ChatPage.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Back to all chats"
+#~ msgstr ""
+#~ "\n"
+#~ "すべてのチャットに戻る\n"
 
 #: src/features/Chat/ChatPage.tsx:163
 #. js-lingui-explicit-id

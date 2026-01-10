@@ -890,6 +890,7 @@ msgstr ""
 "Att undvika dessa misstag kommer att få dig att se mer professionell ut och "
 "öka dina chanser till framgång."
 
+#: src/features/Chat/ChatPage.tsx:132
 #: src/features/Chat/ChatSection.tsx:138
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
@@ -897,10 +898,10 @@ msgstr ""
 msgid "Back"
 msgstr "Tillbaka"
 
-#: src/features/Chat/ChatPage.tsx:90
+#: src/features/Chat/ChatPage.tsx:170
 #. js-lingui-explicit-id
-msgid "Back to all chats"
-msgstr "Tillbaka till alla chattar"
+msgid "Back to chat list"
+msgstr "Tillbaka till chattlistan"
 
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
@@ -1283,8 +1284,8 @@ msgstr "Karriärutveckling"
 msgid "Career benefit:"
 msgstr "Karriärfördel:"
 
-#: src/features/Chat/ChatPage.tsx:217
-#: src/features/Chat/ChatPage.tsx:219
+#: src/features/Chat/ChatPage.tsx:330
+#: src/features/Chat/ChatPage.tsx:332
 #: src/features/Game/GamePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1304,6 +1305,11 @@ msgstr "Chattentusiast"
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Chatt-historik"
+
+#: src/features/Chat/ChatPage.tsx:163
+#. js-lingui-explicit-id
+msgid "Chat not found or you don't have access to it."
+msgstr "Chatten hittades inte eller så har du inte åtkomst till den."
 
 #: src/features/RolePlay/rolePlayData.tsx:393
 #. js-lingui-explicit-id
@@ -1482,7 +1488,7 @@ msgstr "Kommunicera avvägningar i systemdesign"
 msgid "Communication & Leadership"
 msgstr "Kommunikation & Ledarskap"
 
-#: src/features/Navigation/NavigationBar.tsx:70
+#: src/features/Navigation/NavigationBar.tsx:72
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Gemenskap"
@@ -1930,7 +1936,7 @@ msgstr "Daglig Språkträning"
 msgid "Daily Question"
 msgstr "Daglig fråga"
 
-#: src/features/Chat/ChatPage.tsx:215
+#: src/features/Chat/ChatPage.tsx:328
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Daglig Frågechatt"
@@ -1986,7 +1992,7 @@ msgstr "dag"
 msgid "Debate"
 msgstr "Debatt"
 
-#: src/features/Chat/ChatPage.tsx:214
+#: src/features/Chat/ChatPage.tsx:327
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Debattchatt"
@@ -3759,7 +3765,7 @@ msgstr "Ge ett litet exempel (räknare, inmatning, knapp)"
 msgid "Give us your feedback"
 msgstr "Ge oss din feedback"
 
-#: src/features/Chat/ChatPage.tsx:216
+#: src/features/Chat/ChatPage.tsx:329
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Global chatt"
@@ -4037,8 +4043,8 @@ msgstr "Ledtrådar för att stärka ditt självförtroende"
 msgid "Hobbies or interests"
 msgstr "Hobbyer eller intressen"
 
-#: src/features/Navigation/NavigationBar.tsx:52
-#: src/features/Navigation/NavigationBar.tsx:65
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/Navigation/NavigationBar.tsx:67
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Hem"
@@ -6177,7 +6183,7 @@ msgstr "Filmer, böcker eller musik"
 msgid "Mute microphone"
 msgstr "Stäng av mikrofonen"
 
-#: src/features/Chat/ChatPage.tsx:52
+#: src/features/Chat/ChatPage.tsx:64
 #. js-lingui-explicit-id
 msgid "My Chats"
 msgstr "Mina Chattar"
@@ -7376,8 +7382,8 @@ msgstr "Professionell Utveckling"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Professionella som övergår från andra områden till frontend-utveckling"
 
-#: src/features/Navigation/NavigationBar.tsx:58
-#: src/features/Navigation/NavigationBar.tsx:80
+#: src/features/Navigation/NavigationBar.tsx:60
+#: src/features/Navigation/NavigationBar.tsx:83
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
@@ -7409,7 +7415,7 @@ msgstr "Psykolog"
 msgid "Psychology"
 msgstr "Psykologi"
 
-#: src/features/Chat/ChatPage.tsx:45
+#: src/features/Chat/ChatPage.tsx:56
 #. js-lingui-explicit-id
 msgid "Public"
 msgstr "Allmänheten"
@@ -7889,7 +7895,7 @@ msgstr "Robot tänker"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:75
+#: src/features/Navigation/NavigationBar.tsx:78
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -10388,7 +10394,7 @@ msgid ""
 "the results."
 msgstr "Du har besvarat alla frågor. Skicka in dina svar nu och vänta på resultaten."
 
-#: src/features/Chat/ChatPage.tsx:117
+#: src/features/Chat/ChatPage.tsx:193
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "Du har inga chattar ännu."
@@ -10634,6 +10640,11 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Chat/ChatPage.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Back to all chats"
+#~ msgstr "Tillbaka till alla chattar"
 
 #: src/features/Chat/ChatPage.tsx:163
 #. js-lingui-explicit-id

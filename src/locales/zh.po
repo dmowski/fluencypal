@@ -855,6 +855,7 @@ msgid ""
 "your chances of success."
 msgstr "避免这些错误将使你看起来更专业，增加你成功的机会。"
 
+#: src/features/Chat/ChatPage.tsx:132
 #: src/features/Chat/ChatSection.tsx:138
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
@@ -862,10 +863,10 @@ msgstr "避免这些错误将使你看起来更专业，增加你成功的机会
 msgid "Back"
 msgstr "返回"
 
-#: src/features/Chat/ChatPage.tsx:90
+#: src/features/Chat/ChatPage.tsx:170
 #. js-lingui-explicit-id
-msgid "Back to all chats"
-msgstr "返回所有聊天"
+msgid "Back to chat list"
+msgstr "返回聊天列表"
 
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
@@ -1233,8 +1234,8 @@ msgstr "职业晋升"
 msgid "Career benefit:"
 msgstr "职业益处:"
 
-#: src/features/Chat/ChatPage.tsx:217
-#: src/features/Chat/ChatPage.tsx:219
+#: src/features/Chat/ChatPage.tsx:330
+#: src/features/Chat/ChatPage.tsx:332
 #: src/features/Game/GamePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1254,6 +1255,11 @@ msgstr "聊天爱好者"
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "聊天记录"
+
+#: src/features/Chat/ChatPage.tsx:163
+#. js-lingui-explicit-id
+msgid "Chat not found or you don't have access to it."
+msgstr "未找到聊天记录或您无权访问。"
 
 #: src/features/RolePlay/rolePlayData.tsx:393
 #. js-lingui-explicit-id
@@ -1416,7 +1422,7 @@ msgstr "传达系统设计权衡"
 msgid "Communication & Leadership"
 msgstr "沟通与领导力"
 
-#: src/features/Navigation/NavigationBar.tsx:70
+#: src/features/Navigation/NavigationBar.tsx:72
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "社区"
@@ -1843,7 +1849,7 @@ msgstr "日常语言练习"
 msgid "Daily Question"
 msgstr "每日问题"
 
-#: src/features/Chat/ChatPage.tsx:215
+#: src/features/Chat/ChatPage.tsx:328
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "每日问题聊天"
@@ -1896,7 +1902,7 @@ msgstr "天"
 msgid "Debate"
 msgstr "辩论"
 
-#: src/features/Chat/ChatPage.tsx:214
+#: src/features/Chat/ChatPage.tsx:327
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "辩论聊天"
@@ -3479,7 +3485,7 @@ msgstr "给一个小例子（计数器，输入，按钮）"
 msgid "Give us your feedback"
 msgstr "给我们您的反馈"
 
-#: src/features/Chat/ChatPage.tsx:216
+#: src/features/Chat/ChatPage.tsx:329
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "全球聊天"
@@ -3735,8 +3741,8 @@ msgstr "提高自信心的提示"
 msgid "Hobbies or interests"
 msgstr "爱好或兴趣"
 
-#: src/features/Navigation/NavigationBar.tsx:52
-#: src/features/Navigation/NavigationBar.tsx:65
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/Navigation/NavigationBar.tsx:67
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "首页"
@@ -5654,7 +5660,7 @@ msgstr "电影、书籍或音乐"
 msgid "Mute microphone"
 msgstr "静音麦克风"
 
-#: src/features/Chat/ChatPage.tsx:52
+#: src/features/Chat/ChatPage.tsx:64
 #. js-lingui-explicit-id
 msgid "My Chats"
 msgstr "我的聊天"
@@ -6774,8 +6780,8 @@ msgstr "专业发展"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "正在从其他领域转向前端工程的专业人士"
 
-#: src/features/Navigation/NavigationBar.tsx:58
-#: src/features/Navigation/NavigationBar.tsx:80
+#: src/features/Navigation/NavigationBar.tsx:60
+#: src/features/Navigation/NavigationBar.tsx:83
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "个人资料"
@@ -6807,7 +6813,7 @@ msgstr "心理学家"
 msgid "Psychology"
 msgstr "心理学"
 
-#: src/features/Chat/ChatPage.tsx:45
+#: src/features/Chat/ChatPage.tsx:56
 #. js-lingui-explicit-id
 msgid "Public"
 msgstr "公众"
@@ -7263,7 +7269,7 @@ msgstr "机器人思考中"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:75
+#: src/features/Navigation/NavigationBar.tsx:78
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -9579,7 +9585,7 @@ msgid ""
 "the results."
 msgstr "您已完成所有问题。现在提交您的答案并等待结果。"
 
-#: src/features/Chat/ChatPage.tsx:117
+#: src/features/Chat/ChatPage.tsx:193
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "您还没有聊天记录。"
@@ -9808,6 +9814,11 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Chat/ChatPage.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Back to all chats"
+#~ msgstr "返回所有聊天"
 
 #: src/features/Chat/ChatPage.tsx:163
 #. js-lingui-explicit-id

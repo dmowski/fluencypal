@@ -851,6 +851,7 @@ msgid ""
 "your chances of success."
 msgstr "이러한 실수를 피하면 당신이 더 전문적으로 보이게 하고 성공의 가능성을 높일 것입니다."
 
+#: src/features/Chat/ChatPage.tsx:132
 #: src/features/Chat/ChatSection.tsx:138
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
@@ -860,10 +861,12 @@ msgstr ""
 "\n"
 "돌아가기\n"
 
-#: src/features/Chat/ChatPage.tsx:90
+#: src/features/Chat/ChatPage.tsx:170
 #. js-lingui-explicit-id
-msgid "Back to all chats"
-msgstr "모든 채팅으로 돌아가기"
+msgid "Back to chat list"
+msgstr ""
+"plaintext\n"
+"채팅 목록으로 돌아가기\n"
 
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
@@ -1233,8 +1236,8 @@ msgstr "커리어 향상"
 msgid "Career benefit:"
 msgstr "직업적 이점:"
 
-#: src/features/Chat/ChatPage.tsx:217
-#: src/features/Chat/ChatPage.tsx:219
+#: src/features/Chat/ChatPage.tsx:330
+#: src/features/Chat/ChatPage.tsx:332
 #: src/features/Game/GamePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1254,6 +1257,11 @@ msgstr "채팅 애호가"
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "채팅 기록"
+
+#: src/features/Chat/ChatPage.tsx:163
+#. js-lingui-explicit-id
+msgid "Chat not found or you don't have access to it."
+msgstr "채팅을 찾을 수 없거나 접근 권한이 없습니다."
 
 #: src/features/RolePlay/rolePlayData.tsx:393
 #. js-lingui-explicit-id
@@ -1418,7 +1426,7 @@ msgstr "시스템 설계 트레이드오프를 전달하기"
 msgid "Communication & Leadership"
 msgstr "커뮤니케이션 & 리더십"
 
-#: src/features/Navigation/NavigationBar.tsx:70
+#: src/features/Navigation/NavigationBar.tsx:72
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "커뮤니티"
@@ -1848,7 +1856,7 @@ msgstr "매일 언어 연습"
 msgid "Daily Question"
 msgstr "데일리 퀘스천"
 
-#: src/features/Chat/ChatPage.tsx:215
+#: src/features/Chat/ChatPage.tsx:328
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "일일 질문 채팅"
@@ -1903,7 +1911,7 @@ msgstr "하루"
 msgid "Debate"
 msgstr "토론"
 
-#: src/features/Chat/ChatPage.tsx:214
+#: src/features/Chat/ChatPage.tsx:327
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "토론 채팅"
@@ -3525,7 +3533,7 @@ msgstr "(카운터, 입력, 버튼)의 작은 예시를 제공하십시오."
 msgid "Give us your feedback"
 msgstr "피드백을 남겨주세요"
 
-#: src/features/Chat/ChatPage.tsx:216
+#: src/features/Chat/ChatPage.tsx:329
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "글로벌 채팅"
@@ -3787,8 +3795,8 @@ msgstr "자신감을 높이기 위한 힌트"
 msgid "Hobbies or interests"
 msgstr "취미나 관심사"
 
-#: src/features/Navigation/NavigationBar.tsx:52
-#: src/features/Navigation/NavigationBar.tsx:65
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/Navigation/NavigationBar.tsx:67
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "집"
@@ -5762,7 +5770,7 @@ msgstr "영화, 책, 또는 음악"
 msgid "Mute microphone"
 msgstr "마이크 음소거"
 
-#: src/features/Chat/ChatPage.tsx:52
+#: src/features/Chat/ChatPage.tsx:64
 #. js-lingui-explicit-id
 msgid "My Chats"
 msgstr "내 대화"
@@ -6898,8 +6906,8 @@ msgstr "전문 개발"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "다른 분야에서 프론트엔드 엔지니어링으로 전환하는 전문가들"
 
-#: src/features/Navigation/NavigationBar.tsx:58
-#: src/features/Navigation/NavigationBar.tsx:80
+#: src/features/Navigation/NavigationBar.tsx:60
+#: src/features/Navigation/NavigationBar.tsx:83
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "프로필"
@@ -6931,7 +6939,7 @@ msgstr "심리학자"
 msgid "Psychology"
 msgstr "심리학"
 
-#: src/features/Chat/ChatPage.tsx:45
+#: src/features/Chat/ChatPage.tsx:56
 #. js-lingui-explicit-id
 msgid "Public"
 msgstr "공용"
@@ -7395,7 +7403,7 @@ msgstr "로봇 생각 중"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:75
+#: src/features/Navigation/NavigationBar.tsx:78
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -9745,7 +9753,7 @@ msgid ""
 "the results."
 msgstr "모든 질문을 완료했습니다. 이제 답안을 제출하고 결과를 기다리세요."
 
-#: src/features/Chat/ChatPage.tsx:117
+#: src/features/Chat/ChatPage.tsx:193
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "대화 내역이 없습니다."
@@ -9976,6 +9984,11 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Chat/ChatPage.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Back to all chats"
+#~ msgstr "모든 채팅으로 돌아가기"
 
 #: src/features/Chat/ChatPage.tsx:163
 #. js-lingui-explicit-id

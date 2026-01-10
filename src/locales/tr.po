@@ -893,6 +893,7 @@ msgstr ""
 "Bu hatalardan kaçınmak sizi daha profesyonel gösterecek ve başarı şansınızı "
 "artıracaktır."
 
+#: src/features/Chat/ChatPage.tsx:132
 #: src/features/Chat/ChatSection.tsx:138
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
@@ -900,10 +901,10 @@ msgstr ""
 msgid "Back"
 msgstr "Geri"
 
-#: src/features/Chat/ChatPage.tsx:90
+#: src/features/Chat/ChatPage.tsx:170
 #. js-lingui-explicit-id
-msgid "Back to all chats"
-msgstr "Tüm sohbetlere geri dön"
+msgid "Back to chat list"
+msgstr "Sohbet listesine geri dön"
 
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
@@ -1284,8 +1285,8 @@ msgstr "Kariyer İlerlemesi"
 msgid "Career benefit:"
 msgstr "Kariyer faydası:"
 
-#: src/features/Chat/ChatPage.tsx:217
-#: src/features/Chat/ChatPage.tsx:219
+#: src/features/Chat/ChatPage.tsx:330
+#: src/features/Chat/ChatPage.tsx:332
 #: src/features/Game/GamePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1305,6 +1306,11 @@ msgstr "Sohbet Meraklısı"
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Sohbet geçmişi"
+
+#: src/features/Chat/ChatPage.tsx:163
+#. js-lingui-explicit-id
+msgid "Chat not found or you don't have access to it."
+msgstr "Sohbet bulunamadı veya bu sohbete erişiminiz yok."
 
 #: src/features/RolePlay/rolePlayData.tsx:393
 #. js-lingui-explicit-id
@@ -1482,7 +1488,7 @@ msgstr "Tasarım sistemi takaslarını ilet"
 msgid "Communication & Leadership"
 msgstr "İletişim ve Liderlik"
 
-#: src/features/Navigation/NavigationBar.tsx:70
+#: src/features/Navigation/NavigationBar.tsx:72
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Topluluk"
@@ -1932,7 +1938,7 @@ msgstr "Günlük Dil Pratiği"
 msgid "Daily Question"
 msgstr "Günlük Soru"
 
-#: src/features/Chat/ChatPage.tsx:215
+#: src/features/Chat/ChatPage.tsx:328
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Günlük Soru Sohbeti"
@@ -1988,7 +1994,7 @@ msgstr "gün"
 msgid "Debate"
 msgstr "Tartışma"
 
-#: src/features/Chat/ChatPage.tsx:214
+#: src/features/Chat/ChatPage.tsx:327
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Tartışma Sohbeti"
@@ -3775,7 +3781,7 @@ msgstr "Küçük bir örnek ver (sayaç, giriş, düğme)"
 msgid "Give us your feedback"
 msgstr "Bize geri bildiriminizi verin"
 
-#: src/features/Chat/ChatPage.tsx:216
+#: src/features/Chat/ChatPage.tsx:329
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Global Sohbet"
@@ -4058,8 +4064,8 @@ msgstr "Kendinize güveninizi artırmak için ipuçları"
 msgid "Hobbies or interests"
 msgstr "Hobiler veya ilgi alanları"
 
-#: src/features/Navigation/NavigationBar.tsx:52
-#: src/features/Navigation/NavigationBar.tsx:65
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/Navigation/NavigationBar.tsx:67
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Ev"
@@ -6193,7 +6199,7 @@ msgstr "Filmler, kitaplar veya müzik"
 msgid "Mute microphone"
 msgstr "Mikrofonu sessize al"
 
-#: src/features/Chat/ChatPage.tsx:52
+#: src/features/Chat/ChatPage.tsx:64
 #. js-lingui-explicit-id
 msgid "My Chats"
 msgstr "Sohbetlerim"
@@ -7401,8 +7407,8 @@ msgstr "Profesyonel Gelişim"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Diğer alanlardan ön uç mühendisliğine geçiş yapan profesyoneller"
 
-#: src/features/Navigation/NavigationBar.tsx:58
-#: src/features/Navigation/NavigationBar.tsx:80
+#: src/features/Navigation/NavigationBar.tsx:60
+#: src/features/Navigation/NavigationBar.tsx:83
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
@@ -7434,7 +7440,7 @@ msgstr "Psikolog"
 msgid "Psychology"
 msgstr "Psikoloji"
 
-#: src/features/Chat/ChatPage.tsx:45
+#: src/features/Chat/ChatPage.tsx:56
 #. js-lingui-explicit-id
 msgid "Public"
 msgstr "Herkese Açık"
@@ -7912,7 +7918,7 @@ msgstr "Robot Düşünüyor"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:75
+#: src/features/Navigation/NavigationBar.tsx:78
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -10421,7 +10427,7 @@ msgstr ""
 "Tüm soruları tamamladınız. Cevaplarınızı şimdi gönderin ve sonuçları "
 "bekleyin."
 
-#: src/features/Chat/ChatPage.tsx:117
+#: src/features/Chat/ChatPage.tsx:193
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "Henüz bir sohbetiniz yok."
@@ -10670,6 +10676,11 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Chat/ChatPage.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Back to all chats"
+#~ msgstr "Tüm sohbetlere geri dön"
 
 #: src/features/Chat/ChatPage.tsx:163
 #. js-lingui-explicit-id

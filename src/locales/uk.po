@@ -892,6 +892,7 @@ msgstr ""
 "Уникнення цих помилок зробить вас більш професійним та збільшить ваші шанси "
 "на успіх."
 
+#: src/features/Chat/ChatPage.tsx:132
 #: src/features/Chat/ChatSection.tsx:138
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
@@ -899,10 +900,10 @@ msgstr ""
 msgid "Back"
 msgstr "Назад"
 
-#: src/features/Chat/ChatPage.tsx:90
+#: src/features/Chat/ChatPage.tsx:170
 #. js-lingui-explicit-id
-msgid "Back to all chats"
-msgstr "Повернутися до всіх чатів"
+msgid "Back to chat list"
+msgstr "Повернутися до списку чатів"
 
 #: src/features/Case/data/backendCSharp/reviewSection.ts:11
 #. js-lingui-explicit-id
@@ -1286,8 +1287,8 @@ msgstr "Просування по кар'єрі"
 msgid "Career benefit:"
 msgstr "Користь для кар'єри:"
 
-#: src/features/Chat/ChatPage.tsx:217
-#: src/features/Chat/ChatPage.tsx:219
+#: src/features/Chat/ChatPage.tsx:330
+#: src/features/Chat/ChatPage.tsx:332
 #: src/features/Game/GamePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1307,6 +1308,11 @@ msgstr "Ентузіаст спілкування"
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Історія чату"
+
+#: src/features/Chat/ChatPage.tsx:163
+#. js-lingui-explicit-id
+msgid "Chat not found or you don't have access to it."
+msgstr "Чат не знайдено або у вас немає доступу до нього."
 
 #: src/features/RolePlay/rolePlayData.tsx:393
 #. js-lingui-explicit-id
@@ -1484,7 +1490,7 @@ msgstr "Спілкуйтеся про компроміси у проектува
 msgid "Communication & Leadership"
 msgstr "Спілкування та Лідерство"
 
-#: src/features/Navigation/NavigationBar.tsx:70
+#: src/features/Navigation/NavigationBar.tsx:72
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Спільнота"
@@ -1933,7 +1939,7 @@ msgstr "Щоденна практика мови"
 msgid "Daily Question"
 msgstr "Щоденне питання"
 
-#: src/features/Chat/ChatPage.tsx:215
+#: src/features/Chat/ChatPage.tsx:328
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Щоденний запитання чат"
@@ -1989,7 +1995,7 @@ msgstr "день"
 msgid "Debate"
 msgstr "Дебати"
 
-#: src/features/Chat/ChatPage.tsx:214
+#: src/features/Chat/ChatPage.tsx:327
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Дискусійний чат"
@@ -3797,7 +3803,7 @@ msgstr "Дайте невеликий приклад (лічильник, вве
 msgid "Give us your feedback"
 msgstr "Надішліть нам свої відгуки"
 
-#: src/features/Chat/ChatPage.tsx:216
+#: src/features/Chat/ChatPage.tsx:329
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Глобальний чат"
@@ -4078,8 +4084,8 @@ msgstr "Поради для підвищення вашої впевненост
 msgid "Hobbies or interests"
 msgstr "Хобі або інтереси"
 
-#: src/features/Navigation/NavigationBar.tsx:52
-#: src/features/Navigation/NavigationBar.tsx:65
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/Navigation/NavigationBar.tsx:67
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Додому"
@@ -6226,7 +6232,7 @@ msgstr "Фільми, книги чи музика"
 msgid "Mute microphone"
 msgstr "Вимкнути мікрофон"
 
-#: src/features/Chat/ChatPage.tsx:52
+#: src/features/Chat/ChatPage.tsx:64
 #. js-lingui-explicit-id
 msgid "My Chats"
 msgstr ""
@@ -7443,8 +7449,8 @@ msgstr "Професійний розвиток"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Фахівці, які переходять з інших галузей у frontend-розробку"
 
-#: src/features/Navigation/NavigationBar.tsx:58
-#: src/features/Navigation/NavigationBar.tsx:80
+#: src/features/Navigation/NavigationBar.tsx:60
+#: src/features/Navigation/NavigationBar.tsx:83
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Профіль"
@@ -7476,7 +7482,7 @@ msgstr "Психолог"
 msgid "Psychology"
 msgstr "Психологія"
 
-#: src/features/Chat/ChatPage.tsx:45
+#: src/features/Chat/ChatPage.tsx:56
 #. js-lingui-explicit-id
 msgid "Public"
 msgstr "Публічно"
@@ -7961,7 +7967,7 @@ msgstr "Робот думає"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:75
+#: src/features/Navigation/NavigationBar.tsx:78
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -10490,7 +10496,7 @@ msgstr ""
 "Ви відповіли на всі запитання. Надішліть свої відповіді зараз і чекайте на "
 "результати."
 
-#: src/features/Chat/ChatPage.tsx:117
+#: src/features/Chat/ChatPage.tsx:193
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "У вас ще немає чатів."
@@ -10737,6 +10743,11 @@ msgid ""
 msgstr ""
 "— важливо задіяти цю коротку розмову, перш ніж приступати до професійних "
 "тем. Ось деякі корисні англійські фрази для початку інтерв'ю:"
+
+#: src/features/Chat/ChatPage.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Back to all chats"
+#~ msgstr "Повернутися до всіх чатів"
 
 #: src/features/Chat/ChatPage.tsx:163
 #. js-lingui-explicit-id
