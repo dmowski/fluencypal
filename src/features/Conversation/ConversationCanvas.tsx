@@ -100,6 +100,7 @@ interface ConversationCanvasProps {
   isLimited: boolean;
   onLimitedClick: () => void;
   pointsEarned: number;
+  openCommunityPage: () => void;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -144,6 +145,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   onWebCamDescription,
   conversationMode,
   pointsEarned,
+  openCommunityPage,
 }) => {
   const { i18n } = useLingui();
   const sound = useSound();
@@ -318,6 +320,11 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
           }}
           setIsConversationContinueAfterAnalyze={setIsConversationContinueAfterAnalyze}
           pointsEarned={pointsEarned}
+          openCommunityPage={() => {
+            setIsShowAnalyzeConversationModal(false);
+            closeConversation();
+            openCommunityPage();
+          }}
         />
       )}
     </>

@@ -1,10 +1,10 @@
-import { Stack, Typography, Button } from "@mui/material";
+import { Stack, Typography, Button, Badge } from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useLingui } from "@lingui/react";
-import { ChevronRight } from "lucide-react";
-import AddIcon from "@mui/icons-material/Add";
+import { ChevronRight, Users } from "lucide-react";
 import { PositionChanged } from "../Game/PositionChanged";
+import { useChatList } from "../Chat/useChatList";
 
 export const ConversationReviewModal = ({
   setIsShowAnalyzeConversationModal,
@@ -12,14 +12,19 @@ export const ConversationReviewModal = ({
   closeConversation,
   setIsConversationContinueAfterAnalyze,
   pointsEarned,
+  openCommunityPage,
 }: {
   setIsShowAnalyzeConversationModal: (value: boolean) => void;
   conversationAnalysisResult: string | null;
   closeConversation: () => void;
   setIsConversationContinueAfterAnalyze: (value: boolean) => void;
   pointsEarned: number;
+  openCommunityPage: () => void;
 }) => {
   const { i18n } = useLingui();
+
+  const chatList = useChatList();
+  const unreadMessagesCount = chatList.unreadCountGlobal;
 
   return (
     <CustomModal isOpen={true} onClose={() => setIsShowAnalyzeConversationModal(false)}>
@@ -128,13 +133,33 @@ export const ConversationReviewModal = ({
               {i18n._(`Start new lesson`)}
             </Button>
 
+            <Badge
+              color="error"
+              badgeContent={conversationAnalysisResult ? unreadMessagesCount | 0 : 0}
+            >
+              <Button
+                disabled={!conversationAnalysisResult}
+                onClick={() => {
+                  setIsShowAnalyzeConversationModal(false);
+                  setIsConversationContinueAfterAnalyze(true);
+                  openCommunityPage();
+                }}
+                endIcon={<Users size={"16px"} />}
+                variant="outlined"
+                size="large"
+                color="info"
+              >
+                {i18n._(`Join community chat`)}
+              </Button>
+            </Badge>
+
             <Button
               disabled={!conversationAnalysisResult}
               onClick={() => {
                 setIsShowAnalyzeConversationModal(false);
                 setIsConversationContinueAfterAnalyze(true);
               }}
-              variant="text"
+              variant="outlined"
               size="large"
               color="info"
             >

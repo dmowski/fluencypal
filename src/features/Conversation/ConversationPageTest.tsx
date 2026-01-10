@@ -145,6 +145,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   return (
     <Stack>
       <ConversationCanvas
+        openCommunityPage={() => {}}
         pointsEarned={5}
         messagesToComplete={2}
         messageOrder={{}}
