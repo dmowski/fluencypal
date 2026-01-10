@@ -290,13 +290,16 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     await setDoc(messageDoc, { viewsUserIds: updatedViewsUserIds }, { merge: true });
   };
 
+  const readMessagesCount = Object.keys(myMetaDataSnap?.[propsChatMetadata.spaceId] || {}).length;
+  const unreadMessagesCount = Math.max(0, (metaData?.totalMessages || 0) - readMessagesCount);
+
   return {
     messages,
     topLevelMessages,
     messagesLikes,
     editMessage,
 
-    unreadMessagesCount: 0,
+    unreadMessagesCount: unreadMessagesCount,
     viewMessage,
 
     markAsRead,

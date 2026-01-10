@@ -1,4 +1,4 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Badge, Button, Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { useMemo, useState } from "react";
 import { dailyQuestions } from "./dailyQuestions";
@@ -50,6 +50,7 @@ export const DailyQuestionBadgeComponent = ({
 
   const chat = useChat();
   const commentsCount = chat.messages.length;
+  const unreadComments = chat.unreadMessagesCount || 0;
 
   return (
     <Stack
@@ -207,17 +208,23 @@ export const DailyQuestionBadgeComponent = ({
             gap: "20px",
           }}
         >
-          <Button
-            onClick={onToggleView}
-            variant="outlined"
-            endIcon={isOpen ? <X size={"18px"} /> : <ChevronRight size={"18px"} />}
-            sx={{
-              color: "#fff",
-              borderColor: "#fff",
-            }}
-          >
-            {isOpen ? i18n._("Close") : i18n._("Show more")}
-          </Button>
+          <Badge badgeContent={unreadComments} color="error">
+            <Button
+              onClick={onToggleView}
+              variant="outlined"
+              endIcon={isOpen ? <X size={"18px"} /> : <ChevronRight size={"18px"} />}
+              sx={{
+                color: "#fff",
+                borderColor: "#fff",
+              }}
+            >
+              {isOpen
+                ? i18n._("Close")
+                : unreadComments
+                  ? i18n._("Show answers")
+                  : i18n._("Show more")}
+            </Button>
+          </Badge>
 
           <Stack
             sx={{
