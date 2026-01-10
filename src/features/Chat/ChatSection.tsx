@@ -1,5 +1,5 @@
 "use client";
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import { useChat } from "./useChat";
 import { useAuth } from "../Auth/useAuth";
 import { SubmitForm } from "./SubmitForm";
@@ -32,6 +32,9 @@ export const ChatSection = ({
   const game = useGame();
   const { i18n } = useLingui();
   const userId = auth.uid || "anonymous";
+  const [isShowTextField] = useUrlState("showTextField", false, false);
+
+  const [textMessage, setTextMessage] = useState("");
 
   const [activeMessageId, setActiveMessageId] = useUrlState("post", "", false);
   const activeMessage = chat.messages.find((msg) => msg.id === activeMessageId);
@@ -123,6 +126,41 @@ export const ChatSection = ({
                   }
                   previousBotMessage={contextForAiAnalysis || ""}
                 />
+
+                {isShowTextField && (
+                  <Stack
+                    sx={{
+                      padding: "20px 10px 10px 10px",
+                      backgroundColor: "rgba(0, 0, 0, 0.41)",
+                      borderRadius: "0px 0px 16px 16px",
+                      gap: "10px",
+                    }}
+                  >
+                    <TextField
+                      placeholder={i18n._("Text message")}
+                      value={textMessage}
+                      multiline
+                      minRows={4}
+                      maxRows={10}
+                      fullWidth
+                      onChange={(e) => setTextMessage(e.target.value)}
+                    />
+                    <Button
+                      variant="outlined"
+                      onClick={async () => {
+                        await chat.addMessage({
+                          messageContent: textMessage,
+                          parentMessageId: messageToComment?.id ? messageToComment.id : "",
+                        });
+                        setTextMessage("");
+                        onCloseRecordMessageModal();
+                      }}
+                      disabled={textMessage.trim() === ""}
+                    >
+                      {i18n._("Send")}
+                    </Button>
+                  </Stack>
+                )}
               </Stack>
             </Stack>
           </Stack>
