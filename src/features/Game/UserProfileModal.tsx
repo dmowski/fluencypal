@@ -395,7 +395,7 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                     type: "privateChat",
                   }}
                 >
-                  <ChatSection />
+                  <ChatSection contextForAiAnalysis="" />
                 </ChatProvider>
               </Stack>
             </Stack>

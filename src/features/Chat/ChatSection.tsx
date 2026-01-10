@@ -3,7 +3,7 @@ import { Button, Stack, Typography } from "@mui/material";
 import { useChat } from "./useChat";
 import { useAuth } from "../Auth/useAuth";
 import { SubmitForm } from "./SubmitForm";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useUrlState } from "../Url/useUrlParam";
 import { ChevronLeft, Eye } from "lucide-react";
 import { useLingui } from "@lingui/react";
@@ -14,7 +14,15 @@ import { Avatar } from "../Game/Avatar";
 import AddIcon from "@mui/icons-material/Add";
 import { MessageChain } from "./MessageChain";
 
-export const ChatSection = ({ placeholder }: { placeholder?: string }) => {
+export const ChatSection = ({
+  placeholder,
+  titleContent,
+  contextForAiAnalysis,
+}: {
+  placeholder?: string;
+  titleContent?: React.ReactNode;
+  contextForAiAnalysis: string;
+}) => {
   const auth = useAuth();
   const chat = useChat();
   const game = useGame();
@@ -59,11 +67,13 @@ export const ChatSection = ({ placeholder }: { placeholder?: string }) => {
             }}
           >
             <Stack sx={{ marginBottom: "10px" }}>
-              <Typography variant="h6">
-                {isNewPostModalOpen ? i18n._("Add New Post") : i18n._("Add Comment")}
-              </Typography>
+              {!titleContent && (
+                <Typography variant="h6">
+                  {isNewPostModalOpen ? i18n._("Add New Post") : i18n._("Add Comment")}
+                </Typography>
+              )}
 
-              {isNewPostModalOpen && (
+              {isNewPostModalOpen && !titleContent && (
                 <Typography
                   variant="body2"
                   sx={{
@@ -73,6 +83,8 @@ export const ChatSection = ({ placeholder }: { placeholder?: string }) => {
                   {i18n._("Share your thoughts and get feedback!")}
                 </Typography>
               )}
+
+              {titleContent}
             </Stack>
 
             <Stack
@@ -100,6 +112,7 @@ export const ChatSection = ({ placeholder }: { placeholder?: string }) => {
                   recordMessageTitle={
                     messageToComment?.id ? i18n._("Add a reply") : i18n._("Record a message")
                   }
+                  previousBotMessage={contextForAiAnalysis || ""}
                 />
               </Stack>
             </Stack>

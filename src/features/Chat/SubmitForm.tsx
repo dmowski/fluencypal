@@ -16,6 +16,7 @@ interface SubmitFormProps {
   isLoading: boolean;
   recordMessageTitle: string;
   setIsActiveRecording: (isRecording: boolean) => void;
+  previousBotMessage: string;
 }
 
 export function SubmitForm({
@@ -23,6 +24,7 @@ export function SubmitForm({
   isLoading,
   recordMessageTitle,
   setIsActiveRecording,
+  previousBotMessage,
 }: SubmitFormProps) {
   const { i18n } = useLingui();
 
@@ -72,6 +74,7 @@ export function SubmitForm({
             userMessage={recorder.transcription || ""}
             setIsAnalyzing={setIsAnalyzingMessageWithAi}
             setIsNeedCorrection={() => {}}
+            previousBotMessage={previousBotMessage}
           />
         </Stack>
       )}

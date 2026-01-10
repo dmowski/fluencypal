@@ -15,11 +15,13 @@ export const ProcessUserInput = ({
   userMessage,
   setIsAnalyzing,
   setIsNeedCorrection,
+  previousBotMessage,
 }: {
   isTranscribing: boolean;
   userMessage: string;
   setIsAnalyzing: (value: boolean) => void;
   setIsNeedCorrection: (value: boolean) => void;
+  previousBotMessage: string;
 }) => {
   const { i18n } = useLingui();
   const [isNeedToShowCorrection, setIsNeedToShowCorrection] = useState<boolean>(false);
@@ -34,6 +36,7 @@ export const ProcessUserInput = ({
   const [isAnalyzingError, setIsAnalyzingError] = useState(false);
 
   const [isShowFullContent, setIsShowFullContent] = useState(false);
+  const [rate, setRate] = useState<number | null>(null);
 
   const setIsAnalyzingMessage = (value: boolean) => {
     setIsAnalyzingMessageWithAi(value);
@@ -53,18 +56,17 @@ export const ProcessUserInput = ({
     setIsCorrection(false);
     setDescription(null);
     setCorrectedMessage(null);
+    setRate(null);
 
     try {
       const userMessage = usersNewMessage;
-      const previousBotMessage = "";
 
-      const { sourceMessage, correctedMessage, description } = await corrections.analyzeUserMessage(
-        {
+      const { sourceMessage, correctedMessage, description, rate } =
+        await corrections.analyzeUserMessage({
           previousBotMessage,
           message: userMessage,
           conversationId: "chat",
-        }
-      );
+        });
       if (usersNewMessage !== sourceMessage) {
         return;
       }
@@ -74,6 +76,7 @@ export const ProcessUserInput = ({
         !!correctedMessage?.trim() &&
         correctedMessage.toLowerCase().trim() !== sourceMessage.toLowerCase().trim();
       setIsCorrection(isBad);
+      setRate(rate);
 
       setCorrectedMessage(isBad ? correctedMessage || null : null);
       setDescription(isBad ? description || null : null);
@@ -126,56 +129,77 @@ export const ProcessUserInput = ({
             flexDirection: "row",
             alignItems: "center",
             gap: "15px",
+            width: "100%",
+            justifyContent: "space-between",
           }}
         >
           <Stack
             sx={{
-              height: "40px",
-              width: "40px",
-              borderRadius: "50%",
+              flexDirection: "row",
               alignItems: "center",
-              justifyContent: "center",
-              background: isAnalyzingResponse
-                ? "rgba(255, 255, 255, 0.06)"
-                : isNeedToShowCorrection
-                  ? "linear-gradient(45deg, #2b3cadff 0%, #4e5ec3ff 100%)"
-                  : "linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)",
+              gap: "15px",
             }}
           >
+            <Stack
+              sx={{
+                height: "40px",
+                width: "40px",
+                borderRadius: "50%",
+                alignItems: "center",
+                justifyContent: "center",
+                background: isAnalyzingResponse
+                  ? "rgba(255, 255, 255, 0.06)"
+                  : isNeedToShowCorrection
+                    ? "linear-gradient(45deg, #2b3cadff 0%, #4e5ec3ff 100%)"
+                    : "linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)",
+              }}
+            >
+              {isNeedToShowCorrection && !isAnalyzingResponse ? (
+                <ShieldAlert color="#fff" size={"21px"} strokeWidth={"2.3px"} />
+              ) : (
+                <>
+                  {isAnalyzingResponse ? (
+                    <Loader color="#fff" size={"21px"} strokeWidth={"4px"} />
+                  ) : (
+                    <Check color="#fff" size={"21px"} strokeWidth={"4px"} />
+                  )}
+                </>
+              )}
+            </Stack>
+
             {isNeedToShowCorrection && !isAnalyzingResponse ? (
-              <ShieldAlert color="#fff" size={"21px"} strokeWidth={"2.3px"} />
+              <Typography variant="h6">{i18n._("Almost correct")}</Typography>
             ) : (
               <>
                 {isAnalyzingResponse ? (
-                  <Loader color="#fff" size={"21px"} strokeWidth={"4px"} />
+                  <Typography
+                    className="loading-shimmer"
+                    sx={{
+                      color: "#fff",
+                      display: "inline",
+                    }}
+                    variant="h6"
+                  >
+                    {i18n._("Analyzing...")}
+                  </Typography>
                 ) : (
-                  <Check color="#fff" size={"21px"} strokeWidth={"4px"} />
+                  <Typography variant="h6">{i18n._("Great!")}</Typography>
                 )}
               </>
             )}
           </Stack>
-
-          {isNeedToShowCorrection && !isAnalyzingResponse ? (
-            <Typography variant="h6">{i18n._("Almost correct")}</Typography>
-          ) : (
-            <>
-              {isAnalyzingResponse ? (
-                <Typography
-                  className="loading-shimmer"
-                  sx={{
-                    color: "#fff",
-                    display: "inline",
-                  }}
-                  variant="h6"
-                >
-                  {i18n._("Analyzing...")}
-                </Typography>
-              ) : (
-                <Typography variant="h6">{i18n._("Great!")}</Typography>
-              )}
-            </>
+          {!!rate && (
+            <Typography
+              variant="body2"
+              sx={{
+                opacity: 0.7,
+              }}
+            >
+              {rate}/10
+            </Typography>
           )}
         </Stack>
+
         {isNeedToShowCorrection && (
           <Stack>
             {description && (

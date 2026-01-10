@@ -52,6 +52,57 @@ export const DailyQuestionBadgeComponent = ({
   const commentsCount = chat.messages.length;
   const unreadComments = chat.unreadMessagesCount || 0;
 
+  const content = (
+    <>
+      <Typography
+        sx={{
+          paddingTop: "10px",
+          fontSize: "1.7rem",
+          fontWeight: 560,
+          lineHeight: 1.2,
+          "@media (max-width:600px)": {
+            fontSize: "1.5rem",
+          },
+        }}
+      >
+        {todaysQuestion.title}
+      </Typography>
+
+      <Typography
+        sx={{
+          paddingTop: "5px",
+          fontSize: "0.9rem",
+          fontWeight: 350,
+          lineHeight: 1.2,
+          color: "#fff",
+          opacity: 0.96,
+        }}
+      >
+        {todaysQuestion.description}
+      </Typography>
+
+      {isOpen && (
+        <Stack>
+          <Stack
+            sx={{
+              gap: "0px",
+              paddingTop: "20px",
+            }}
+          >
+            <ColorIconTextList
+              listItems={todaysQuestion.hints.map((hint) => ({
+                title: hint,
+                iconName: "lightbulb",
+              }))}
+              iconSize={"20px"}
+              gap="10px"
+            />
+          </Stack>
+        </Stack>
+      )}
+    </>
+  );
+
   return (
     <Stack
       onClick={isOpen ? undefined : onToggleView}
@@ -130,52 +181,7 @@ export const DailyQuestionBadgeComponent = ({
           </Typography>
         </Stack>
 
-        <Typography
-          sx={{
-            paddingTop: "10px",
-            fontSize: "1.7rem",
-            fontWeight: 560,
-            lineHeight: 1.2,
-            "@media (max-width:600px)": {
-              fontSize: "1.5rem",
-            },
-          }}
-        >
-          {todaysQuestion.title}
-        </Typography>
-
-        <Typography
-          sx={{
-            paddingTop: "5px",
-            fontSize: "0.9rem",
-            fontWeight: 350,
-            lineHeight: 1.2,
-            color: "#fff",
-            opacity: 0.96,
-          }}
-        >
-          {todaysQuestion.description}
-        </Typography>
-
-        {isOpen && (
-          <Stack>
-            <Stack
-              sx={{
-                gap: "0px",
-                paddingTop: "20px",
-              }}
-            >
-              <ColorIconTextList
-                listItems={todaysQuestion.hints.map((hint) => ({
-                  title: hint,
-                  iconName: "lightbulb",
-                }))}
-                iconSize={"20px"}
-                gap="10px"
-              />
-            </Stack>
-          </Stack>
-        )}
+        {content}
 
         {isOpen && (
           <Stack
@@ -196,7 +202,11 @@ export const DailyQuestionBadgeComponent = ({
               </Typography>
             </Stack>
 
-            <ChatSection placeholder={i18n._("What do you think?")} />
+            <ChatSection
+              placeholder={i18n._("What do you think?")}
+              titleContent={<Stack>{content}</Stack>}
+              contextForAiAnalysis={todaysQuestion.title + ". " + todaysQuestion.description}
+            />
           </Stack>
         )}
 

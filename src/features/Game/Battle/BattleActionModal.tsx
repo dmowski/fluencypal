@@ -288,7 +288,10 @@ export const BattleActionModal = ({
                           {i18n._(`You can discuss the battle here.`)}
                         </Typography>
                       </Stack>
-                      <ChatSection placeholder={i18n._("How the battle went?")} />
+                      <ChatSection
+                        placeholder={i18n._("How the battle went?")}
+                        contextForAiAnalysis=""
+                      />
                     </Stack>
                   </Stack>
                 </>

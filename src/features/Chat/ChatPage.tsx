@@ -76,7 +76,7 @@ export const ChatPage = () => {
             type: "global",
           }}
         >
-          <ChatSection />
+          <ChatSection contextForAiAnalysis="" />
         </ChatProvider>
       ) : (
         <>
@@ -160,7 +160,7 @@ export const ChatPage = () => {
                   </Stack>
 
                   <ChatProvider metadata={chatMetadata}>
-                    <ChatSection />
+                    <ChatSection contextForAiAnalysis="" />
                   </ChatProvider>
                 </>
               ) : (

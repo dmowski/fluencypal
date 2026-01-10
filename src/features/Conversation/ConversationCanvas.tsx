@@ -1,7 +1,7 @@
 "use client";
 
 import { Markdown } from "../uiKit/Markdown/Markdown";
-import { JSX, useEffect, useRef, useState } from "react";
+import { JSX, useEffect, useMemo, useRef, useState } from "react";
 import {
   Alert,
   Button,
@@ -239,6 +239,17 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
   const loadingMessage = i18n._(`Loading...`);
 
+  const lastBotMessage = useMemo(() => {
+    for (let i = conversation.length - 1; i >= 0; i--) {
+      if (conversation[i].isBot) {
+        return conversation[i].text;
+      }
+    }
+    return "";
+  }, [conversation]);
+
+  console.log("lastBotMessage", lastBotMessage);
+
   const modals = (
     <>
       {translator.translateModal}
@@ -474,6 +485,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                 userMessage={confirmedUserInput}
                 setIsAnalyzing={setIsAnalyzingMessageWithAi}
                 setIsNeedCorrection={setIsNeedToShowCorrection}
+                previousBotMessage={lastBotMessage}
               />
             )}
 
