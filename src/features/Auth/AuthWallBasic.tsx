@@ -194,7 +194,7 @@ export const AuthWallBasic = ({
             imageUrl={agreementImageUrl}
             width={width}
             title={i18n._("We will speak freely")}
-            subTitle={i18n._("So we need your agreement with that")}
+            subTitle={i18n._("So we need your agreement with that and our policies")}
             listItems={[
               {
                 title: i18n._("We process your voice using AI"),
@@ -207,6 +207,10 @@ export const AuthWallBasic = ({
               {
                 title: i18n._("You can delete your personal data anytime"),
                 iconName: "shield-check",
+              },
+              {
+                title: i18n._("We can send you marketing emails"),
+                iconName: "mail",
               },
               {
                 title: i18n._("We use cookies to enhance your experience"),

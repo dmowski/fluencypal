@@ -34,16 +34,8 @@ export const AuthWall = ({
           iconName: "sparkles",
         },
         {
-          title: i18n._("Personalized plan tailored to your goals"),
-          iconName: "lightbulb",
-        },
-        {
           title: i18n._("Grammar corrections to boost your confidence"),
           iconName: "graduation-cap",
-        },
-        {
-          title: i18n._("Learn useful words so you never go blank mid-sentence"),
-          iconName: "book-type",
         },
         {
           title: i18n._("Community support to keep you motivated"),
@@ -53,10 +45,6 @@ export const AuthWall = ({
       authTitle={signInTitle || i18n._("Let's create an account")}
       authSubTitle={singInSubTitle || i18n._("So you can keep your progress")}
       authList={[
-        {
-          title: i18n._("No ads, no spam"),
-          iconName: "between-horizontal-start",
-        },
         {
           title: i18n._("Privacy Policy"),
           iconName: "scroll-text",
