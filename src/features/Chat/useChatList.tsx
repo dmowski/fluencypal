@@ -12,6 +12,7 @@ interface ChatListContextType {
   myReadStats: ChatSpaceUserReadMetadata;
   unreadSpaces: Record<string, number>;
   myUnreadCount: number;
+  unreadCountGlobal: number;
 }
 
 const ChatListContext = createContext<ChatListContextType | null>(null);
@@ -29,12 +30,13 @@ function useProvideChatList(): ChatListContextType {
   }, [chatListRef, auth.uid]);
 
   const [myChats, myChatsLoading, myChatsError] = useCollectionData(myChatsQuery);
+  const [globalChat] = useDocumentData(db.documents.chat(auth.uid, "global"));
 
   if (myChatsError) {
     console.error("Error fetching my chats:", myChatsError);
   }
 
-  const { unreadSpaces, myUnreadCount } = useMemo(() => {
+  const { unreadSpaces, myUnreadCount, unreadCountGlobal } = useMemo(() => {
     const unreadLocalData: Record<string, number> = {};
     myChats
       ?.sort((a, b) => {
@@ -53,8 +55,13 @@ function useProvideChatList(): ChatListContextType {
         }
       });
     const unreadCount = Object.values(unreadLocalData).reduce((a, b) => a + b, 0);
-    return { unreadSpaces: unreadLocalData, myUnreadCount: unreadCount };
-  }, [myChats, myReadStatsData]);
+
+    const readMessagesCountGlobal = Object.keys(myReadStatsData?.["global"] || {}).length;
+    const totalMessagesCountGlobal = globalChat?.totalMessages || 0;
+    const unreadCountGlobal = Math.max(0, totalMessagesCountGlobal - readMessagesCountGlobal);
+
+    return { unreadSpaces: unreadLocalData, myUnreadCount: unreadCount, unreadCountGlobal };
+  }, [myChats, myReadStatsData, globalChat]);
 
   return {
     loading: myChatsLoading,
@@ -62,6 +69,7 @@ function useProvideChatList(): ChatListContextType {
     myReadStats: myReadStatsData || {},
     unreadSpaces,
     myUnreadCount,
+    unreadCountGlobal,
   };
 }
 

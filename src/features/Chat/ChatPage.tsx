@@ -49,14 +49,16 @@ export const ChatPage = () => {
         }}
       >
         <ButtonGroup>
-          <Button
-            size="small"
-            startIcon={<Globe size={"14px"} />}
-            variant={page === "public" ? "contained" : "outlined"}
-            onClick={() => setPage("public")}
-          >
-            {i18n._("Public")}
-          </Button>
+          <Badge color="error" badgeContent={chatList.unreadCountGlobal}>
+            <Button
+              size="small"
+              startIcon={<Globe size={"14px"} />}
+              variant={page === "public" ? "contained" : "outlined"}
+              onClick={() => setPage("public")}
+            >
+              {i18n._("Public")}
+            </Button>
+          </Badge>
           <Badge color="error" badgeContent={chatList.myUnreadCount}>
             <Button
               startIcon={<HatGlasses size={"14px"} />}

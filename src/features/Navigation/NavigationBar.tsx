@@ -70,7 +70,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
           name: "community",
           icon: Users,
           title: i18n._("Community"),
-          badge: chatList.myUnreadCount,
+          badge: chatList.myUnreadCount + chatList.unreadCountGlobal,
         },
         {
           name: "role-play",
@@ -84,7 +84,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
         },
       ],
     }),
-    [appMode, chatList.myUnreadCount]
+    [appMode, chatList.myUnreadCount, chatList.unreadCountGlobal]
   );
 
   const navigationItems: NavigationItem[] = navigationItemsByMode[appMode || "learning"];
