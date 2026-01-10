@@ -143,6 +143,8 @@ export function Message({
   };
 
   const contentToShow = isShowTranslation && translation ? translation : message.content;
+  const lastVisit = game.gameLastVisit ? game.gameLastVisit[message.senderId] : null;
+  const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 5 : false;
 
   return (
     <Stack
@@ -203,7 +205,7 @@ export function Message({
           opacity: isDeleted ? 0 : 1,
         }}
       >
-        <Avatar avatarSize={avatarSize} url={userAvatarUrl} />
+        <Avatar avatarSize={avatarSize} url={userAvatarUrl} isOnline={isOnline} />
       </Stack>
 
       {isEditing ? (

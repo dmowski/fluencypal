@@ -23,7 +23,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
   const lastVisitAgo = lastVisit ? dayjs(lastVisit).fromNow() : null;
 
   const avatar = game.gameAvatars[stat.userId] || defaultAvatar;
-  const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 10 : false;
+  const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 5 : false;
 
   const actualPosition = realPosition + 1;
 
