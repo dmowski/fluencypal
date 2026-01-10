@@ -91,7 +91,10 @@ export const ConversationReviewModal = ({
 
           <Stack
             sx={{
-              padding: "0 10px",
+              padding: "15px 15px 15px 15px",
+              border: "1px solid rgba(97, 149, 255, 0.4)",
+              borderRadius: "10px",
+              boxSizing: "border-box",
             }}
           >
             <Typography variant="h6">{i18n._(`Leaderboard`)}</Typography>
