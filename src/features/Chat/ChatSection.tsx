@@ -99,7 +99,12 @@ export const ChatSection = ({
               }}
             >
               {messageToComment && (
-                <Message isContentWide key={messageToComment.id} message={messageToComment} />
+                <Message
+                  isContentWide
+                  key={messageToComment.id}
+                  message={messageToComment}
+                  isFullContentByDefault
+                />
               )}
 
               <Stack>

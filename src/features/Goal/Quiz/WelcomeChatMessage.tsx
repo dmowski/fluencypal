@@ -32,7 +32,7 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
         alignItems: "center",
         padding: "15px 15px",
         borderRadius: "8px",
-        gap: "10px",
+        gap: "12px",
         backgroundColor: "rgba(99, 177, 135, 0.1)",
         display: "grid",
         gridTemplateColumns: "auto 1fr",
@@ -50,6 +50,7 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
       >
         <PawPrint color="#fff" size={"21px"} strokeWidth={"2px"} />
       </Stack>
+
       <Stack
         sx={{
           gap: "2px",
