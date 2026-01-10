@@ -384,7 +384,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           }}
           component={"a"}
           target="_blank"
-          href={`/practice?page=community&space=global-rate&userId=${userId}`}
+          href={`/practice?page=community&space=rate&userId=${userId}`}
         >
           {gameAvatar && (
             <img src={gameAvatar} style={{ borderRadius: "34px", width: "22px", height: "22px" }} />
