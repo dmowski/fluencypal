@@ -361,7 +361,7 @@ export function Message({
             {contentToShow.length > limitMessages && !isShowTranslation ? (
               <>
                 {isLimitedMessage ? contentToShow.slice(0, limitMessages) + "... " : contentToShow}
-                {!isFullContentByDefault && (
+                {!isFullContentByDefault && !isShowFullContent && (
                   <Button
                     size="small"
                     onClick={() => setIsShowFullContent(!isShowFullContent)}
