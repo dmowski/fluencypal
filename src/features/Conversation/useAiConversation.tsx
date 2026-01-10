@@ -830,9 +830,13 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 
   const closeConversation = async () => {
     setIsClosing(true);
+    setIsStarted(false);
+    setIsInitializing("");
+    communicator?.closeHandler();
+
     try {
       const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
-      if (isNeedToSaveUserInfo && conversation.length > 4) {
+      if (isNeedToSaveUserInfo && conversation.length > 2) {
         await aiUserInfo.updateUserInfo(conversation, languageCode);
       }
     } catch (e) {
@@ -845,10 +849,6 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
         },
       });
     }
-
-    communicator?.closeHandler();
-    setIsStarted(false);
-    setIsInitializing("");
 
     setConversationId(`${Date.now()}`);
     setConversation([]);
