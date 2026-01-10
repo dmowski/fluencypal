@@ -45,7 +45,7 @@ export const dailyQuestions: DailyQuestions = {
     exampleAnswer:
       "I think humans are naturally selfish because survival comes first. But at the same time, cooperation has been essential for survival too, which is why we show kindness. So maybe we are both.",
   },
-  "2026-01-11": {
+  "2026-02-11": {
     id: "truth-most-people-not-ready-to-hear",
     title: "What is a truth most people are not ready to hear?",
     description: "Share a belief or observation you think society avoids facing.",
