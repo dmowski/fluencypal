@@ -100,6 +100,12 @@ export const ProcessUserInput = ({
     }
   }, [userMessage]);
 
+  useEffect(() => {
+    if (isTranscribing) {
+      setIsAnalyzingMessage(true);
+    }
+  }, [isTranscribing]);
+
   const isAnalyzingResponse = isAnalyzingMessageWithAi || isTranscribing;
 
   const contentToShow = description || "";
