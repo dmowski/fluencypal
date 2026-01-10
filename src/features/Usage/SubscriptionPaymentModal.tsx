@@ -46,6 +46,7 @@ import { StripeCreateCheckoutRequest } from "@/common/requests";
 import { sleep } from "@/libs/sleep";
 import { Check, CirclePlus, Plus } from "lucide-react";
 import { FaqItem } from "../Landing/FAQ/FaqItem";
+import { useAnalytics } from "../Analytics/useAnalytics";
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
@@ -291,6 +292,8 @@ export const SubscriptionPaymentModal = () => {
 
   const priceInCurrency = Math.round(currency.rate * durationPriceUsd * 10) / 10;
 
+  const analytics = useAnalytics();
+
   const clickOnConfirmRequestStripe = async () => {
     const token = await auth.getToken();
 
@@ -306,11 +309,14 @@ export const SubscriptionPaymentModal = () => {
       setIsRedirecting(true);
 
       const checkoutInfo = await createStripeCheckout(dataToCheckout, token);
+
       await sentPaymentTgMessage({
         message: "Event: Redirect to stripe",
         email: auth?.userInfo?.email || "unknownEmail",
         token,
       });
+      analytics.confirmGtag();
+
       if (!checkoutInfo.sessionUrl) {
         setIsRedirecting(false);
         notifications.show(
