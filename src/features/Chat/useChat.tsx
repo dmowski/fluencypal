@@ -205,9 +205,10 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
 
   const addMessage = async ({ messageContent, parentMessageId }: AddMessageProps) => {
     if (propsChatMetadata.type === "global") {
+      const url = `https://www.fluencypal.com/ru/practice?page=community`;
       sendFeedbackMessageRequest(
         {
-          message: `💬 New message in global chat:\n\n${messageContent}`,
+          message: `💬 New message in global chat:\n\n${messageContent}\n\n${url}`,
         },
         await auth.getToken()
       );
