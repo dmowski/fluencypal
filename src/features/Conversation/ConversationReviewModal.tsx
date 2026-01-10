@@ -4,17 +4,20 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useLingui } from "@lingui/react";
 import { ChevronRight } from "lucide-react";
 import AddIcon from "@mui/icons-material/Add";
+import { PositionChanged } from "../Game/PositionChanged";
 
 export const ConversationReviewModal = ({
   setIsShowAnalyzeConversationModal,
   conversationAnalysisResult,
   closeConversation,
   setIsConversationContinueAfterAnalyze,
+  pointsEarned,
 }: {
   setIsShowAnalyzeConversationModal: (value: boolean) => void;
   conversationAnalysisResult: string | null;
   closeConversation: () => void;
   setIsConversationContinueAfterAnalyze: (value: boolean) => void;
+  pointsEarned: number;
 }) => {
   const { i18n } = useLingui();
 
@@ -84,6 +87,22 @@ export const ConversationReviewModal = ({
                 </Stack>
               </Stack>
             )}
+          </Stack>
+
+          <Stack
+            sx={{
+              padding: "0 10px",
+            }}
+          >
+            <Typography variant="h6">{i18n._(`Leaderboard`)}</Typography>
+            {pointsEarned && (
+              <Typography>
+                {i18n._(`Points earned: {pointsEarned}. Keep practicing to improve your score!`, {
+                  pointsEarned,
+                })}
+              </Typography>
+            )}
+            <PositionChanged />
           </Stack>
 
           <Stack

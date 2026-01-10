@@ -99,6 +99,7 @@ interface ConversationCanvasProps {
   setIsVolumeOn: (value: boolean) => void;
   isLimited: boolean;
   onLimitedClick: () => void;
+  pointsEarned: number;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -142,6 +143,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   messageOrder,
   onWebCamDescription,
   conversationMode,
+  pointsEarned,
 }) => {
   const { i18n } = useLingui();
   const sound = useSound();
@@ -315,6 +317,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             closeConversation();
           }}
           setIsConversationContinueAfterAnalyze={setIsConversationContinueAfterAnalyze}
+          pointsEarned={pointsEarned}
         />
       )}
     </>
@@ -852,7 +855,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                       sx={{
                         alignItems: "flex-start",
                         gap: "5px",
-                        opacity: isAiSpeaking ? 0.7 : 1,
                       }}
                     >
                       <Typography>{i18n._("Mission complete")}</Typography>
