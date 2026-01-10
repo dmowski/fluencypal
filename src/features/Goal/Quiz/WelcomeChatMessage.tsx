@@ -3,6 +3,7 @@ import { ChatSection } from "@/features/Chat/ChatSection";
 import { ChatProvider, useChat } from "@/features/Chat/useChat";
 import { GameMyAvatar } from "@/features/Game/GameMyAvatar";
 import { GameMyUsername } from "@/features/Game/GameMyUsername";
+import { useGame } from "@/features/Game/useGame";
 import { InfoStep } from "@/features/Survey/InfoStep";
 import { useLingui } from "@lingui/react";
 import { Stack, Typography } from "@mui/material";
@@ -21,11 +22,13 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
   const { i18n } = useLingui();
   const chat = useChat();
   const auth = useAuth();
+  const game = useGame();
+  const myPoints = game.myPoints || 0;
   const myUserIds = auth.uid;
 
-  const isSendMessage = chat.messages.some(
-    (msg) => msg.senderId === myUserIds && msg.content.trim().length > 0
-  );
+  const isDone =
+    myPoints > 1 ||
+    chat.messages.some((msg) => msg.senderId === myUserIds && msg.content.trim().length > 0);
 
   const exampleToRecord = props.exampleToRecord ? (
     <Stack
@@ -111,7 +114,7 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
           />
         </Stack>
       }
-      disabled={props.isLoading || !isSendMessage}
+      disabled={props.isLoading || !isDone}
       actionButtonTitle={props.actionButtonTitle}
       isStepLoading={props.isLoading}
     />
