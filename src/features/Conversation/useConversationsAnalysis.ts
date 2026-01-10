@@ -9,6 +9,7 @@ import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import { useLingui } from "@lingui/react";
 import { fullLanguageName, getPageLangCode, SupportedLanguage } from "../Lang/lang";
+import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
 
 export const useConversationsAnalysis = () => {
   const plan = usePlan();
@@ -29,9 +30,40 @@ export const useConversationsAnalysis = () => {
     ? fullLanguageName[nativeLanguageCode as SupportedLanguage] || nativeLanguageCode
     : nativeLanguageCode;
 
-  const [conversationAnalysis, setConversationAnalysis] = useState<string>("");
+  const [conversationAnalysisMap, setConversationAnalysisMap] = useState<Record<string, string>>(
+    {}
+  );
+
+  const [gamePointsEarnMap, setGamePointsEarnMap] = useState<Record<string, number>>({});
+
+  const activeConversationId = aiConversation.conversationId || "";
+  const conversationAnalysis = conversationAnalysisMap[activeConversationId] || "";
+  const gamePointsEarned = gamePointsEarnMap[activeConversationId] || 0;
+
   const analyzeConversation = async () => {
-    setConversationAnalysis("");
+    if (conversationAnalysis && !conversationAnalysis.startsWith("Error")) {
+      return;
+    }
+
+    if (!conversationAnalysis) {
+      const usersMessages = aiConversation.conversation.filter((msg) => !msg.isBot);
+      if (usersMessages.length > 3) {
+        const pointsEarned = usersMessages.length;
+        setGamePointsEarnMap((prev) => {
+          const newMap = { ...prev, [activeConversationId]: pointsEarned };
+          return newMap;
+        });
+
+        await increaseGamePointsRequest(
+          {
+            aiConversationId: activeConversationId,
+            aiConversationPoints: pointsEarned,
+          },
+          await auth.getToken()
+        );
+      }
+    }
+
     const messages = aiConversation.conversation;
 
     const messagesString = messages
@@ -74,7 +106,10 @@ ${expectedStructure}`;
         model: "gpt-4o",
         languageCode: settings.languageCode || "en",
       });
-      setConversationAnalysis(aiResults);
+      setConversationAnalysisMap((prev) => {
+        const newMap = { ...prev, [activeConversationId]: aiResults };
+        return newMap;
+      });
     } catch (error) {
       Sentry.captureException(error, {
         extra: {
@@ -87,7 +122,10 @@ ${expectedStructure}`;
       notifications.show(i18n._(`Error analyzing conversation`) + "=" + error, {
         severity: "error",
       });
-      setConversationAnalysis("Error analyzing conversation...");
+      setConversationAnalysisMap((prev) => {
+        const newMap = { ...prev, [activeConversationId]: "Error analyzing conversation..." };
+        return newMap;
+      });
       throw error;
     }
   };
@@ -139,5 +177,6 @@ Provide only potential answer, without any kind of wrapper/started/intro words. 
     conversationAnalysis,
     analyzeConversation,
     generateNextUserMessage,
+    gamePointsEarned,
   };
 };

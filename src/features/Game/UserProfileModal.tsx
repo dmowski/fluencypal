@@ -60,6 +60,7 @@ const achievementsIconMap: Record<GameAchievement, IconName> = {
   topic_to_discuss: "messages-square",
   read_text: "book-open-text",
   chat_message: "message-circle",
+  ai_conversation: "bot-message-square",
 };
 
 export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: () => void }) => {
@@ -91,6 +92,7 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
     topic_to_discuss: i18n._("Topic Talker"),
     read_text: i18n._("Reader"),
     chat_message: i18n._("Chat Enthusiast"),
+    ai_conversation: i18n._("Talks with AI"),
   };
 
   const [isAskForDebates, setIsAskForDebates] = useState(false);

@@ -17,4 +17,5 @@ export const achievementsMaxPoints: Record<GameAchievement, number> = {
   topic_to_discuss: 300,
   read_text: 100,
   chat_message: 200,
+  ai_conversation: 500,
 };

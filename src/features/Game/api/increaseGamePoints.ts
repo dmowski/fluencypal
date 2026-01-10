@@ -21,6 +21,14 @@ export const increaseGamePoints = async (
     });
   }
 
+  if (props.aiConversationId && props.aiConversationUserId && props.aiConversationPoints) {
+    await increaseUserPoints({
+      userId: props.aiConversationUserId || "",
+      points: props.aiConversationPoints,
+      gameAchievement: "ai_conversation",
+    });
+  }
+
   return {
     isDone: true,
   };

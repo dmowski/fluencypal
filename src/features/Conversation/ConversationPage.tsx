@@ -55,6 +55,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   const { analyzeConversation, conversationAnalysis, generateNextUserMessage } =
     useConversationsAnalysis();
+
   const router = useRouter();
 
   useEffect(() => {

@@ -60,7 +60,7 @@ export interface SubmitAnswerResponse {
   description: string | null;
 }
 
-export type GameAchievement = GameQuestionType | "chat_message";
+export type GameAchievement = GameQuestionType | "chat_message" | "ai_conversation";
 
 export type GameAchievements = Partial<Record<GameAchievement, number>>;
 
@@ -71,6 +71,10 @@ export interface IncreaseGamePointsRequest {
   battle?: GameBattle;
   chatMessage?: string;
   chatUserId?: string;
+
+  aiConversationId?: string;
+  aiConversationPoints?: number;
+  aiConversationUserId?: string;
 }
 
 export interface IncreaseGamePointsResponse {
