@@ -140,7 +140,8 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   };
 
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
-  const [conversationMode, setConversationMode] = useState<ConversationMode>("chat");
+  const [conversationMode, setConversationMode] = useState<ConversationMode>("call");
+
   return (
     <Stack>
       <ConversationCanvas

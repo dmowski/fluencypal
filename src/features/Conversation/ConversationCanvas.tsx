@@ -220,9 +220,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
     actualCountOfUserMessages >= messagesToComplete;
 
   const showAnalyzeConversationModal = () => {
-    // todo: move to useEffect
     analyzeConversation();
-
     setIsShowAnalyzeConversationModal(true);
   };
 
@@ -338,6 +336,11 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
         isLimited={isLimited}
         onLimitedClick={onLimitedClick}
         onSubmitTranscription={addUserMessage}
+        isCompletedLesson={isCompletedLesson}
+        onShowAnalyzeConversationModal={() => {
+          toggleConversationMode("record");
+          showAnalyzeConversationModal();
+        }}
       />
     );
   }
@@ -852,17 +855,12 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                         opacity: isAiSpeaking ? 0.7 : 1,
                       }}
                     >
-                      <Typography>
-                        {isAiSpeaking ? i18n._("Loading...") : i18n._("Mission complete")}
-                      </Typography>
+                      <Typography>{i18n._("Mission complete")}</Typography>
                       <Button
                         startIcon={<Trophy />}
                         size="large"
-                        disabled={isAiSpeaking}
+                        color="info"
                         variant="contained"
-                        sx={{
-                          minWidth: "200px",
-                        }}
                         onClick={async () => showAnalyzeConversationModal()}
                       >
                         {i18n._("Open results")}

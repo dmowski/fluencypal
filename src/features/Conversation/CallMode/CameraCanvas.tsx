@@ -44,6 +44,9 @@ export const CameraCanvas = ({
   onLimitedClick,
 
   onSubmitTranscription,
+
+  isCompletedLesson,
+  onShowAnalyzeConversationModal,
 }: {
   conversation: ChatMessage[];
   stopCallMode: () => void;
@@ -60,6 +63,9 @@ export const CameraCanvas = ({
   onLimitedClick: () => void;
 
   onSubmitTranscription: (userMessage: string) => void;
+
+  isCompletedLesson: boolean;
+  onShowAnalyzeConversationModal: () => void;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -262,6 +268,8 @@ export const CameraCanvas = ({
             onSubmitTranscription={onSubmitTranscription}
             isSubtitlesEnabled={isSubtitlesEnabled}
             toggleSubtitles={(isToggleOn) => setIsSubtitlesEnabled(isToggleOn)}
+            isCompletedLesson={isCompletedLesson}
+            onShowAnalyzeConversationModal={onShowAnalyzeConversationModal}
           />
         </Stack>
       </Stack>
