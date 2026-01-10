@@ -451,26 +451,29 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             gap: "2px",
           }}
         >
-          <Stack
-            sx={{
-              flexDirection: "row",
-              padding: "10px",
-              borderRadius: "8px 8px 0 0",
-              alignItems: "center",
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-              cursor: "pointer",
-              ":hover": { backgroundColor: "rgba(255, 255, 255, 0.2)" },
-            }}
-            onClick={() => {
-              setShowGoalPlan(userStat.goalQuiz2[0].goalData);
-            }}
-          >
-            <Typography variant="h6">{userStat.goalQuiz2[0]?.goalData?.title || ""}</Typography>
+          {userStat.goalQuiz2.map((quiz, index) => (
+            <Stack
+              key={index}
+              sx={{
+                flexDirection: "row",
+                padding: "10px",
+                borderRadius: "8px 8px 0 0",
+                alignItems: "center",
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                cursor: "pointer",
+                ":hover": { backgroundColor: "rgba(255, 255, 255, 0.2)" },
+              }}
+              onClick={() => {
+                setShowGoalPlan(quiz.goalData);
+              }}
+            >
+              <Typography variant="h6">{quiz?.goalData?.title || ""}</Typography>
 
-            <IconButton>
-              <SquareArrowOutUpRight size={"18px"} />
-            </IconButton>
-          </Stack>
+              <IconButton>
+                <SquareArrowOutUpRight size={"18px"} />
+              </IconButton>
+            </Stack>
+          ))}
 
           <Stack
             sx={{
