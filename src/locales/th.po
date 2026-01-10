@@ -425,12 +425,12 @@ msgstr "แผนปฏิบัติการเพื่อพัฒนาท
 msgid "Active"
 msgstr "ทำงาน"
 
-#: src/features/Chat/ChatSection.tsx:125
+#: src/features/Chat/ChatSection.tsx:128
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "เพิ่มการตอบกลับ"
 
-#: src/features/Chat/ChatSection.tsx:79
+#: src/features/Chat/ChatSection.tsx:82
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "เพิ่มความคิดเห็น"
@@ -440,12 +440,12 @@ msgstr "เพิ่มความคิดเห็น"
 msgid "Add new goal"
 msgstr "เพิ่มเป้าหมายใหม่"
 
-#: src/features/Chat/ChatSection.tsx:79
+#: src/features/Chat/ChatSection.tsx:82
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "เพิ่มโพสต์ใหม่"
 
-#: src/features/Chat/ChatSection.tsx:285
+#: src/features/Chat/ChatSection.tsx:324
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "เพิ่มโพสต์"
@@ -907,7 +907,7 @@ msgstr ""
 "สในการประสบความสำเร็จของคุณ"
 
 #: src/features/Chat/ChatPage.tsx:151
-#: src/features/Chat/ChatSection.tsx:198
+#: src/features/Chat/ChatSection.tsx:201
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -6431,7 +6431,7 @@ msgstr "ไม่พบการสัมภาษณ์"
 msgid "No message recorded yet."
 msgstr "ยังไม่มีข้อความบันทึก"
 
-#: src/features/Chat/ChatSection.tsx:303
+#: src/features/Chat/ChatSection.tsx:342
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "ยังไม่มีข้อความใดๆ เป็นคนแรกที่แบ่งปันความคิดของคุณ!"
@@ -6473,6 +6473,11 @@ msgstr "ไม่มีข้อความที่จะแปล"
 #. js-lingui-explicit-id
 msgid "No translation available"
 msgstr "ไม่มีการแปลที่สามารถใช้ได้"
+
+#: src/features/Chat/ChatSection.tsx:253
+#. js-lingui-explicit-id
+msgid "No views yet. Be the first to view this post!"
+msgstr "ยังไม่มีใครเข้าชม มาเป็นคนแรกที่เข้าชมโพสต์นี้!"
 
 #: src/features/Usage/UsageStatsCards.tsx:120
 #: src/features/Usage/UsageStatsCards.tsx:474
@@ -6949,7 +6954,7 @@ msgstr "โปรดบันทึกข้อความที่ยาวข
 msgid "Please refresh the page and try one more time"
 msgstr "กรุณารีเฟรชหน้าเว็บแล้วลองอีกครั้ง"
 
-#: src/features/Chat/ChatSection.tsx:53
+#: src/features/Chat/ChatSection.tsx:54
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "โปรดหยุดการบันทึกก่อนที่จะปิดหน้าต่าง"
@@ -7778,7 +7783,7 @@ msgstr ""
 "บันทึกเรื่องเล่า 2-3 นาทีโดยใช้ <0>{learningLanguageName}</0> "
 "สิ่งนี้จะช่วยให้ฉันสร้างแผนการฝึกฝนตามความต้องการของคุณ"
 
-#: src/features/Chat/ChatSection.tsx:125
+#: src/features/Chat/ChatSection.tsx:128
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "บันทึกข้อความ"
@@ -8136,7 +8141,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "HTML ความหมาย"
 
-#: src/features/Chat/ChatSection.tsx:160
+#: src/features/Chat/ChatSection.tsx:163
 #: src/features/Conversation/ConversationCanvas.tsx:606
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
@@ -8236,7 +8241,7 @@ msgstr ""
 msgid "Share what you're currently learning"
 msgstr "แบ่งปันสิ่งที่คุณกำลังเรียนรู้ในขณะนี้"
 
-#: src/features/Chat/ChatSection.tsx:90
+#: src/features/Chat/ChatSection.tsx:93
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "แบ่งปันความคิดของคุณและรับคำติชม!"
@@ -9097,7 +9102,7 @@ msgstr ""
 msgid "Testing & Quality"
 msgstr "การทดสอบ & คุณภาพ"
 
-#: src/features/Chat/ChatSection.tsx:140
+#: src/features/Chat/ChatSection.tsx:143
 #. js-lingui-explicit-id
 msgid "Text message"
 msgstr "ข้อความตัวอักษร"
@@ -9534,6 +9539,11 @@ msgstr "ชื่อผู้ใช้ต้องมีอักขระอย
 #. js-lingui-explicit-id
 msgid "Username:"
 msgstr "ชื่อผู้ใช้:"
+
+#: src/features/Chat/ChatSection.tsx:245
+#. js-lingui-explicit-id
+msgid "Users who viewed this post"
+msgstr "ผู้ใช้ที่ดูโพสต์นี้"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:244
 #. js-lingui-explicit-id
@@ -10008,7 +10018,7 @@ msgstr "สิ่งที่คุณจะบรรลุ"
 msgid "What's included?"
 msgstr "อะไรบ้างที่รวมอยู่ในนั้น?"
 
-#: src/features/Chat/ChatSection.tsx:272
+#: src/features/Chat/ChatSection.tsx:311
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "มีอะไรใหม่?"

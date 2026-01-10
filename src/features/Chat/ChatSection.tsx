@@ -1,5 +1,5 @@
 "use client";
-import { Button, Stack, TextField, Typography } from "@mui/material";
+import { Button, Popover, Stack, TextField, Typography } from "@mui/material";
 import { useChat } from "./useChat";
 import { useAuth } from "../Auth/useAuth";
 import { SubmitForm } from "./SubmitForm";
@@ -13,6 +13,7 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Avatar } from "../Game/Avatar";
 import AddIcon from "@mui/icons-material/Add";
 import { MessageChain } from "./MessageChain";
+import { GameStatRow } from "../Game/GameStatRow";
 
 export const ChatSection = ({
   placeholder,
@@ -56,6 +57,8 @@ export const ChatSection = ({
     chat.setActiveCommentMessageId("");
     setIsNewPostModalOpen(false);
   };
+
+  const [showViewsAnchorEl, setShowViewsAnchorEl] = useState<null | HTMLElement>(null);
 
   return (
     <Stack
@@ -206,6 +209,7 @@ export const ChatSection = ({
                 paddingRight: "8px",
                 color: "rgba(255, 255, 255, 0.5)",
               }}
+              onClick={(e) => setShowViewsAnchorEl(e.currentTarget)}
             >
               <Typography variant="caption">{activeMessage.viewsUserIds?.length || 0}</Typography>
               <Eye
@@ -216,6 +220,41 @@ export const ChatSection = ({
                 }}
               />
             </Stack>
+
+            <Popover
+              anchorEl={showViewsAnchorEl}
+              open={!!showViewsAnchorEl}
+              onClose={() => setShowViewsAnchorEl(null)}
+              slotProps={{
+                backdrop: {
+                  sx: {
+                    backgroundColor: "rgba(0, 0, 0, 0.8)",
+                  },
+                },
+              }}
+            >
+              <Stack
+                sx={{
+                  padding: "10px 10px",
+                  maxWidth: "600px",
+                  maxHeight: "400px",
+                  overflowY: "auto",
+                  gap: "10px",
+                }}
+              >
+                <Typography variant="body2">{i18n._("Users who viewed this post")}</Typography>
+                {activeMessage.viewsUserIds && activeMessage.viewsUserIds.length > 0 ? (
+                  activeMessage.viewsUserIds.map((uid) => {
+                    const userStat = game.stats.find((stat) => stat.userId === uid);
+                    return <Stack key={uid}>{userStat && <GameStatRow stat={userStat} />}</Stack>;
+                  })
+                ) : (
+                  <Typography variant="caption" sx={{ opacity: 0.7 }}>
+                    {i18n._("No views yet. Be the first to view this post!")}
+                  </Typography>
+                )}
+              </Stack>
+            </Popover>
           </Stack>
           <MessageChain topLevel parentId={activeMessage.id} />
         </Stack>
