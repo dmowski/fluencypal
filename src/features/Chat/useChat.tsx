@@ -88,35 +88,6 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
   const [activeCommentMessageId, setActiveCommentMessageId] = useState("");
   const [activeMessageId, setActiveMessageId] = useUrlState("post", "", false);
 
-  const updateTotalMessages = () => {
-    if (!metaData || !metaRef || !messagesData) return;
-    const realTotalMessages = messagesData.length;
-    const totalTopLevelMessagesIds = messagesData
-      .filter((msg) => {
-        return !msg.parentMessageId;
-      })
-      .map((msg) => msg.id);
-
-    if (
-      metaData.totalMessages === realTotalMessages &&
-      (metaData?.totalTopLevelMessagesIds?.length || 0) === totalTopLevelMessagesIds.length
-    ) {
-      return;
-    }
-
-    const partialMetadata: Partial<UserChatMetadata> = {
-      totalMessages: realTotalMessages,
-      lastMessageAtIso: new Date().toISOString(),
-      totalTopLevelMessagesIds: totalTopLevelMessagesIds,
-    };
-
-    setDoc(metaRef, partialMetadata, { merge: true });
-  };
-
-  useEffect(() => {
-    updateTotalMessages();
-  }, [messagesData, metaData]);
-
   const initMetadataIfNeeded = async () => {
     if (metaData) {
       return messagesRef;
@@ -129,6 +100,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
         totalMessages: 0,
         lastMessageAtIso: new Date().toISOString(),
         totalTopLevelMessagesIds: [],
+        secondLevelSingleCommentsIds: [],
       });
     }
 
@@ -138,6 +110,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
         totalMessages: 0,
         lastMessageAtIso: new Date().toISOString(),
         totalTopLevelMessagesIds: [],
+        secondLevelSingleCommentsIds: [],
       },
       userId,
     });
@@ -146,10 +119,11 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       : null;
   };
 
-  const { messages, topLevelMessages, commentsInfo } = useMemo<{
+  const { messages, topLevelMessages, commentsInfo, secondLevelSingleCommentsIds } = useMemo<{
     messages: UserChatMessage[];
     topLevelMessages: UserChatMessage[];
     commentsInfo: Record<string, number>;
+    secondLevelSingleCommentsIds: string[];
   }>(() => {
     const sortedMessages = messagesData
       ? [...messagesData].sort((a, b) => b.createdAtIso.localeCompare(a.createdAtIso))
@@ -157,16 +131,31 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
 
     const topLevel = sortedMessages.filter((msg) => {
       const isTopLevel = !msg.parentMessageId;
-      if (isTopLevel) {
-        return true;
-      }
+      return isTopLevel;
+    });
 
-      const isParentChainIsBroken = !sortedMessages.find((m) => m.id === msg.parentMessageId);
-      if (isParentChainIsBroken) {
-        return true;
-      }
+    const topLevelIds = topLevel.map((msg) => msg.id);
 
-      return !msg.parentMessageId;
+    const topLevelMap: Record<string, string[]> = {};
+
+    sortedMessages.forEach((msg) => {
+      const isSecondLevel = msg.parentMessageId && topLevelIds.includes(msg.parentMessageId);
+      if (!isSecondLevel) return;
+
+      const topLevelBucket = topLevelMap[msg.parentMessageId];
+      if (topLevelBucket) {
+        topLevelBucket.push(msg.id);
+      } else {
+        topLevelMap[msg.parentMessageId] = [msg.id];
+      }
+    });
+
+    const secondLevelSingleCommentsIds = Object.values(topLevelMap)
+      .filter((ids) => ids.length === 1)
+      .map((ids) => ids[0]);
+
+    secondLevelSingleCommentsIds.map((id) => {
+      const message = sortedMessages.find((msg) => msg.id === id);
     });
 
     const commentsMap: Record<string, number> = {};
@@ -183,8 +172,36 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       messages: sortedMessages,
       topLevelMessages: topLevel,
       commentsInfo: commentsMap,
+      secondLevelSingleCommentsIds,
     };
   }, [messagesData]);
+
+  useEffect(() => {
+    updateTotalMessages();
+  }, [messagesData, metaData]);
+
+  const updateTotalMessages = () => {
+    if (!metaData || !metaRef || !messagesData) return;
+    const realTotalMessages = messagesData.length;
+    const totalTopLevelMessagesIds = topLevelMessages.map((msg) => msg.id);
+
+    if (
+      metaData.totalMessages === realTotalMessages &&
+      (metaData?.totalTopLevelMessagesIds?.length || 0) === totalTopLevelMessagesIds.length &&
+      secondLevelSingleCommentsIds.length === (metaData?.secondLevelSingleCommentsIds?.length || 0)
+    ) {
+      return;
+    }
+
+    const partialMetadata: Partial<UserChatMetadata> = {
+      totalMessages: realTotalMessages,
+      lastMessageAtIso: new Date().toISOString(),
+      totalTopLevelMessagesIds: totalTopLevelMessagesIds,
+      secondLevelSingleCommentsIds: secondLevelSingleCommentsIds,
+    };
+
+    setDoc(metaRef, partialMetadata, { merge: true });
+  };
 
   const likesRef = isCanRead
     ? db.collections.usersChatLikes(propsChatMetadata.spaceId, userId)

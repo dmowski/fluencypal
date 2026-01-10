@@ -57,7 +57,10 @@ function useProvideChatList(): ChatListContextType {
     const unreadCount = Object.values(unreadLocalData).reduce((a, b) => a + b, 0);
 
     const readGlobalIds = Object.keys(myReadStatsData?.["global"] || {});
-    const totalMessagesCountGlobal = globalChat?.totalTopLevelMessagesIds || [];
+    const totalMessagesCountGlobal = [
+      ...(globalChat?.totalTopLevelMessagesIds || []),
+      ...(globalChat?.secondLevelSingleCommentsIds || []),
+    ];
     const unreadCountGlobal = totalMessagesCountGlobal.filter(
       (id) => !readGlobalIds.includes(id)
     ).length;

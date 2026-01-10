@@ -21,6 +21,7 @@ export interface UserChatMetadataStatic {
 export interface UserChatMetadata extends UserChatMetadataStatic {
   totalMessages: number;
   totalTopLevelMessagesIds: string[];
+  secondLevelSingleCommentsIds: string[];
   lastMessageAtIso: string;
 }
 
