@@ -65,6 +65,15 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
           {i18n._(`Example:`)}
         </Typography>
         <Typography>{props.exampleToRecord}</Typography>
+        <Typography
+          sx={{
+            marginTop: "10px",
+            paddingTop: "10px",
+            borderTop: "1px solid rgba(255, 255, 255, 0.2)",
+          }}
+        >
+          {i18n._(`You can also share fun facts about yourself or your goals!`)}
+        </Typography>
       </Stack>
     </Stack>
   ) : null;
