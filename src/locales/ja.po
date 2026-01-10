@@ -392,12 +392,12 @@ msgstr "クリティカルなバックエンドスキルを向上させるため
 msgid "Active"
 msgstr "アクティブ"
 
-#: src/features/Chat/ChatSection.tsx:113
+#: src/features/Chat/ChatSection.tsx:115
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "返信を追加"
 
-#: src/features/Chat/ChatSection.tsx:72
+#: src/features/Chat/ChatSection.tsx:74
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "コメントを追加"
@@ -407,15 +407,20 @@ msgstr "コメントを追加"
 msgid "Add new goal"
 msgstr "新しい目標を追加"
 
-#: src/features/Chat/ChatSection.tsx:72
+#: src/features/Chat/ChatSection.tsx:74
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "新しい投稿を追加"
 
-#: src/features/Chat/ChatSection.tsx:238
+#: src/features/Chat/ChatSection.tsx:240
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "投稿を追加"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:208
+#. js-lingui-explicit-id
+msgid "Add Response"
+msgstr "レスポンスを追加"
 
 #: src/features/Settings/MyProfile.tsx:234
 #. js-lingui-explicit-id
@@ -858,7 +863,7 @@ msgid ""
 msgstr "これらのミスを避けることで、よりプロフェッショナルに見え、成功の可能性を高めます。"
 
 #: src/features/Chat/ChatPage.tsx:149
-#: src/features/Chat/ChatSection.tsx:151
+#: src/features/Chat/ChatSection.tsx:153
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -1372,7 +1377,6 @@ msgstr "システムデザインの明確な構造。ついに寄り道せずに
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
 #: src/features/Game/Battle/BattleActionModal.tsx:299
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:232
 #: src/features/Game/UserProfileModal.tsx:140
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1438,7 +1442,7 @@ msgstr ""
 msgid "Community Chat"
 msgstr "コミュニティチャット"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:194
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:193
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "コミュニティの回答:"
@@ -1856,7 +1860,7 @@ msgstr "ジャッジされることなく、毎日のインタビュー"
 msgid "Daily Language Practice"
 msgstr "毎日の言語練習"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:171
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:170
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "デイリークエスチョン"
@@ -5958,7 +5962,7 @@ msgstr "該当するインタビューが見つかりませんでした"
 msgid "No message recorded yet."
 msgstr "まだメッセージが記録されていません。"
 
-#: src/features/Chat/ChatSection.tsx:256
+#: src/features/Chat/ChatSection.tsx:258
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "まだメッセージはありません。最初にあなたの考えを共有しましょう！"
@@ -6447,7 +6451,7 @@ msgstr "長めのメッセージ（少なくとも数単語）を記録してく
 msgid "Please refresh the page and try one more time"
 msgstr "ページを更新して、もう一度試してください"
 
-#: src/features/Chat/ChatSection.tsx:46
+#: src/features/Chat/ChatSection.tsx:48
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "ウィンドウを閉じる前に録音を停止してください。"
@@ -7243,7 +7247,7 @@ msgstr ""
 "<0>{learningLanguageName}</0>を使って2～3"
 "分のストーリーを録画してください。これにより、個別の練習プランを作成するのに役立ちます。"
 
-#: src/features/Chat/ChatSection.tsx:113
+#: src/features/Chat/ChatSection.tsx:115
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "メッセージを録音する"
@@ -7677,7 +7681,7 @@ msgstr "チーム間のコラボレーション、紛争解決、およびプロ
 msgid "Share what you're currently learning"
 msgstr "現在学んでいることを共有する"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "意見を共有してフィードバックを得よう！"
@@ -7705,11 +7709,6 @@ msgstr "肯定的な態度での短い返答は、あなたが話しやすく、
 msgid "short story"
 msgstr "短編小説"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:234
-#. js-lingui-explicit-id
-msgid "Show answers"
-msgstr "解答を表示"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
 #. js-lingui-explicit-id
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
@@ -7734,7 +7733,6 @@ msgstr "表示を減らす"
 
 #: src/features/Chat/Message.tsx:370
 #: src/features/Conversation/ProcessUserInput.tsx:223
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:235
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -9264,7 +9262,7 @@ msgstr "有料プランで何が得られますか？"
 msgid "What do I need to use FluencyPal?"
 msgstr "FluencyPalを利用するには何が必要ですか?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:206
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:205
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "何を考えていますか？"
@@ -9368,7 +9366,7 @@ msgstr "達成すること"
 msgid "What's included?"
 msgstr "何が含まれていますか？"
 
-#: src/features/Chat/ChatSection.tsx:225
+#: src/features/Chat/ChatSection.tsx:227
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr ""
@@ -9675,7 +9673,7 @@ msgstr "個人データはいつでも削除できます"
 msgid "You can discuss the battle here."
 msgstr "ここで戦いについて話し合うことができます。"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:201
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:200
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "日々の質問をここで議論できます。"
@@ -10000,6 +9998,11 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:234
+#. js-lingui-explicit-id
+#~ msgid "Show answers"
+#~ msgstr "解答を表示"
 
 #: src/features/Game/UserProfileModal.tsx:92
 #. js-lingui-explicit-id

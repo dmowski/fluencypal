@@ -391,12 +391,12 @@ msgstr "백엔드 필수 기술 향상을 위한 실행 계획"
 msgid "Active"
 msgstr "활성화됨"
 
-#: src/features/Chat/ChatSection.tsx:113
+#: src/features/Chat/ChatSection.tsx:115
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "답글 추가"
 
-#: src/features/Chat/ChatSection.tsx:72
+#: src/features/Chat/ChatSection.tsx:74
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "주석 추가"
@@ -406,15 +406,20 @@ msgstr "주석 추가"
 msgid "Add new goal"
 msgstr "새 목표 추가"
 
-#: src/features/Chat/ChatSection.tsx:72
+#: src/features/Chat/ChatSection.tsx:74
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "새 게시물 추가"
 
-#: src/features/Chat/ChatSection.tsx:238
+#: src/features/Chat/ChatSection.tsx:240
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "게시물 추가"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:208
+#. js-lingui-explicit-id
+msgid "Add Response"
+msgstr "응답 추가"
 
 #: src/features/Settings/MyProfile.tsx:234
 #. js-lingui-explicit-id
@@ -857,7 +862,7 @@ msgid ""
 msgstr "이러한 실수를 피하면 당신이 더 전문적으로 보이게 하고 성공의 가능성을 높일 것입니다."
 
 #: src/features/Chat/ChatPage.tsx:149
-#: src/features/Chat/ChatSection.tsx:151
+#: src/features/Chat/ChatSection.tsx:153
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -1373,7 +1378,6 @@ msgstr "명확한 시스템 설계 구조. 마침내 횡설수설하지 않고 �
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
 #: src/features/Game/Battle/BattleActionModal.tsx:299
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:232
 #: src/features/Game/UserProfileModal.tsx:140
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1437,7 +1441,7 @@ msgstr "커뮤니티"
 msgid "Community Chat"
 msgstr "커뮤니티 채팅"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:194
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:193
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "커뮤니티 응답:"
@@ -1852,7 +1856,7 @@ msgstr "판단 없이 매일 인터뷰하기"
 msgid "Daily Language Practice"
 msgstr "매일 언어 연습"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:171
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:170
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "데일리 퀘스천"
@@ -5961,7 +5965,7 @@ msgstr "인터뷰가 없습니다"
 msgid "No message recorded yet."
 msgstr "메시지가 아직 기록되지 않았습니다."
 
-#: src/features/Chat/ChatSection.tsx:256
+#: src/features/Chat/ChatSection.tsx:258
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "아직 메시지가 없습니다. 가장 먼저 당신의 생각을 공유해보세요!"
@@ -6450,7 +6454,7 @@ msgstr "좀 더 긴 메시지를 녹음해 주세요(적어도 몇 단어 이상
 msgid "Please refresh the page and try one more time"
 msgstr "페이지를 새로고침하고 한 번 더 시도해주세요"
 
-#: src/features/Chat/ChatSection.tsx:46
+#: src/features/Chat/ChatSection.tsx:48
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "창을 닫기 전에 녹음을 중지해 주세요."
@@ -7242,7 +7246,7 @@ msgstr ""
 "<0>{learningLanguageName}</0>로 2-3분짜리 이야기를 녹음하세요. 이는 개인 맞춤형 연습 계획을 만드는 데 "
 "도움이 됩니다."
 
-#: src/features/Chat/ChatSection.tsx:113
+#: src/features/Chat/ChatSection.tsx:115
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "메시지를 녹음하세요"
@@ -7676,7 +7680,7 @@ msgstr "팀 간 협업, 갈등 해결, 프로젝트 주인의식에 대한 매�
 msgid "Share what you're currently learning"
 msgstr "현재 배우고 있는 내용을 공유하세요"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "생각을 공유하고 피드백을 받으세요!"
@@ -7704,11 +7708,6 @@ msgstr "긍정적인 태도로 짧게 답변하는 것은 대화를 편안하게
 msgid "short story"
 msgstr "단편 소설"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:234
-#. js-lingui-explicit-id
-msgid "Show answers"
-msgstr "답안 표시"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
 #. js-lingui-explicit-id
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
@@ -7733,7 +7732,6 @@ msgstr "덜 보기"
 
 #: src/features/Chat/Message.tsx:370
 #: src/features/Conversation/ProcessUserInput.tsx:223
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:235
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -9254,7 +9252,7 @@ msgstr "유료 플랜으로 무엇을 얻을 수 있습니까?"
 msgid "What do I need to use FluencyPal?"
 msgstr "FluencyPal을 사용하려면 무엇이 필요합니까?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:206
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:205
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "무엇을 생각하세요?"
@@ -9358,7 +9356,7 @@ msgstr "당신이 성취할 것"
 msgid "What's included?"
 msgstr "무엇이 포함되어 있나요?"
 
-#: src/features/Chat/ChatSection.tsx:225
+#: src/features/Chat/ChatSection.tsx:227
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "무엇이 새로워졌나요?"
@@ -9665,7 +9663,7 @@ msgstr "언제든지 개인정보를 삭제할 수 있습니다"
 msgid "You can discuss the battle here."
 msgstr "당신은 여기에서 전투에 대해 논의할 수 있습니다."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:201
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:200
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "여기에서 일일 질문에 대해 토론할 수 있습니다."
@@ -9990,6 +9988,11 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:234
+#. js-lingui-explicit-id
+#~ msgid "Show answers"
+#~ msgstr "답안 표시"
 
 #: src/features/Game/UserProfileModal.tsx:92
 #. js-lingui-explicit-id
