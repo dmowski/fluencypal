@@ -221,7 +221,9 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     }
     isSending.current = messageContent;
 
-    if (propsChatMetadata.type === "global") {
+    const isDev = auth.userInfo?.email?.includes("dmowski");
+
+    if (propsChatMetadata.type === "global" && !isDev) {
       const url = `https://www.fluencypal.com/ru/practice?page=community`;
       sendFeedbackMessageRequest(
         {
@@ -250,7 +252,6 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     const messageDoc = doc(messagesRefInternal, newMessage.id);
     await setDoc(messageDoc, newMessage);
 
-    const isDev = auth.userInfo?.email?.includes("dmowski");
     if (!isDev) {
       await increaseGamePointsRequest(
         {
