@@ -41,7 +41,7 @@ export const DailyQuestionBadgeComponent = ({
   const timeLeft = dayjs(todayIsoDate).endOf("day").diff(now);
   const hoursLeft = Math.max(0, Math.floor(timeLeft / (1000 * 60 * 60)));
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const onToggleView = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -105,7 +105,6 @@ export const DailyQuestionBadgeComponent = ({
 
   return (
     <Stack
-      onClick={isOpen ? undefined : onToggleView}
       key={todayIsoDate}
       sx={{
         padding: "21px 20px 24px 20px",
@@ -209,47 +208,6 @@ export const DailyQuestionBadgeComponent = ({
             />
           </Stack>
         )}
-
-        <Stack
-          sx={{
-            paddingTop: "25px",
-            width: "max-content",
-            flexDirection: "row",
-            gap: "20px",
-          }}
-        >
-          <Badge badgeContent={unreadComments} color="error">
-            <Button
-              onClick={onToggleView}
-              variant="outlined"
-              endIcon={isOpen ? <X size={"18px"} /> : <ChevronRight size={"18px"} />}
-              sx={{
-                color: "#fff",
-                borderColor: "#fff",
-              }}
-            >
-              {isOpen
-                ? i18n._("Close")
-                : unreadComments
-                  ? i18n._("Show answers")
-                  : i18n._("Show more")}
-            </Button>
-          </Badge>
-
-          <Stack
-            sx={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: "8px",
-            }}
-            onClick={() => {}}
-          >
-            <MessageCircle size="16px" color="rgba(255, 255, 255, 0.6)" />
-            <Typography variant="caption" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
-              {commentsCount || 0}
-            </Typography>
-          </Stack>
-        </Stack>
       </Stack>
     </Stack>
   );
