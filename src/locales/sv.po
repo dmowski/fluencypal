@@ -416,12 +416,12 @@ msgstr "Handlingsplan för att förbättra kritiska backend-färdigheter"
 msgid "Active"
 msgstr "Aktiv"
 
-#: src/features/Chat/ChatSection.tsx:128
+#: src/features/Chat/ChatSection.tsx:125
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Lägg till ett svar"
 
-#: src/features/Chat/ChatSection.tsx:82
+#: src/features/Chat/ChatSection.tsx:79
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "Lägg till kommentar"
@@ -431,12 +431,12 @@ msgstr "Lägg till kommentar"
 msgid "Add new goal"
 msgstr "Lägg till nytt mål"
 
-#: src/features/Chat/ChatSection.tsx:82
+#: src/features/Chat/ChatSection.tsx:79
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "Lägg till nytt inlägg"
 
-#: src/features/Chat/ChatSection.tsx:325
+#: src/features/Chat/ChatSection.tsx:287
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "Lägg till inlägg"
@@ -896,7 +896,7 @@ msgstr ""
 "öka dina chanser till framgång."
 
 #: src/features/Chat/ChatPage.tsx:153
-#: src/features/Chat/ChatSection.tsx:202
+#: src/features/Chat/ChatSection.tsx:164
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -5901,7 +5901,6 @@ msgstr "Laddar."
 msgid "Loading.."
 msgstr "Laddar.."
 
-#: src/features/Chat/SubmitForm.tsx:56
 #: src/features/Conversation/CallMode/CallButtons.tsx:313
 #: src/features/Conversation/ConversationCanvas.tsx:242
 #: src/features/Conversation/ConversationPage.tsx:104
@@ -6401,7 +6400,7 @@ msgstr "Inga intervjuer hittades"
 msgid "No message recorded yet."
 msgstr "Inget meddelande spelades in ännu."
 
-#: src/features/Chat/ChatSection.tsx:343
+#: src/features/Chat/ChatSection.tsx:305
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Inga meddelanden än. Var den första att dela dina tankar!"
@@ -6442,7 +6441,7 @@ msgstr "Ingen text att översätta"
 msgid "No translation available"
 msgstr "Ingen översättning tillgänglig"
 
-#: src/features/Chat/ChatSection.tsx:254
+#: src/features/Chat/ChatSection.tsx:216
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "Inga visningar än. Var först med att se detta inlägg!"
@@ -6917,7 +6916,7 @@ msgstr "Vänligen bekräfta ditt kreditkort för att få tillgång till alla fun
 msgid "Please enter a valid email address"
 msgstr "Vänligen ange en giltig e-postadress"
 
-#: src/features/Chat/SubmitForm.tsx:216
+#: src/features/Chat/SubmitForm.tsx:326
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Vänligen spela in ett längre meddelande (åtminstone några ord)."
@@ -6927,7 +6926,7 @@ msgstr "Vänligen spela in ett längre meddelande (åtminstone några ord)."
 msgid "Please refresh the page and try one more time"
 msgstr "Vänligen uppdatera sidan och försök en gång till"
 
-#: src/features/Chat/ChatSection.tsx:54
+#: src/features/Chat/ChatSection.tsx:51
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Vänligen stoppa inspelningen innan du stänger fönstret."
@@ -7512,7 +7511,7 @@ msgstr "Rankas bland de topp 5 för att få full tillgång till alla funktioner!
 msgid "Rating"
 msgstr "Betyg"
 
-#: src/features/Chat/SubmitForm.tsx:138
+#: src/features/Chat/SubmitForm.tsx:240
 #: src/features/Conversation/ConversationCanvas.tsx:636
 #: src/features/Conversation/ConversationCanvas.tsx:901
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
@@ -7758,7 +7757,7 @@ msgstr ""
 "<0>{learningLanguageName}</0>. Detta kommer att hjälpa mig att skapa en "
 "personlig träningsplan."
 
-#: src/features/Chat/ChatSection.tsx:128
+#: src/features/Chat/ChatSection.tsx:125
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Spela in ett meddelande"
@@ -7925,6 +7924,11 @@ msgstr "Återvänd"
 #. js-lingui-explicit-id
 msgid "Returning an Item to a Store"
 msgstr "Återlämna en vara till en butik"
+
+#: src/features/Chat/SubmitForm.tsx:149
+#. js-lingui-explicit-id
+msgid "Review Message"
+msgstr "Granska meddelande"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
 #. js-lingui-explicit-id
@@ -8115,7 +8119,6 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantisk HTML"
 
-#: src/features/Chat/ChatSection.tsx:163
 #: src/features/Conversation/ConversationCanvas.tsx:619
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
@@ -8142,7 +8145,7 @@ msgstr "Skicka e-post igen"
 msgid "Send me sign-in link"
 msgstr "Skicka mig inloggningslänken"
 
-#: src/features/Chat/SubmitForm.tsx:151
+#: src/features/Chat/SubmitForm.tsx:256
 #: src/features/Conversation/CallMode/CallButtons.tsx:373
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -8154,7 +8157,7 @@ msgid "Send Request"
 msgstr "Skicka förfrågan"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:151
+#: src/features/Chat/SubmitForm.tsx:256
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -8219,7 +8222,7 @@ msgstr ""
 msgid "Share what you're currently learning"
 msgstr "Dela vad du lär dig just nu"
 
-#: src/features/Chat/ChatSection.tsx:93
+#: src/features/Chat/ChatSection.tsx:90
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "Dela dina tankar och få feedback!"
@@ -8748,7 +8751,7 @@ msgstr ""
 "att leverera koncisa, övertygande svar som hjälper dig att sticka ut i alla "
 "jobbintervjuer."
 
-#: src/features/Chat/SubmitForm.tsx:116
+#: src/features/Chat/SubmitForm.tsx:216
 #: src/features/Conversation/CallMode/CallButtons.tsx:346
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -9084,11 +9087,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "Testning & Kvalitet"
-
-#: src/features/Chat/ChatSection.tsx:143
-#. js-lingui-explicit-id
-msgid "Text message"
-msgstr "Textmeddelande"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -9524,7 +9522,7 @@ msgstr "Användarnamnet måste vara minst 3 tecken långt."
 msgid "Username:"
 msgstr "Användarnamn:"
 
-#: src/features/Chat/ChatSection.tsx:246
+#: src/features/Chat/ChatSection.tsx:208
 #. js-lingui-explicit-id
 msgid "Users who viewed this post"
 msgstr "Användare som visade denna post"
@@ -10002,7 +10000,7 @@ msgstr "Vad du kommer att uppnå"
 msgid "What's included?"
 msgstr "Vad ingår?"
 
-#: src/features/Chat/ChatSection.tsx:312
+#: src/features/Chat/ChatSection.tsx:274
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "Vad är nytt?"
@@ -10619,6 +10617,7 @@ msgstr "Din partner för förberedelse inför jobbintervjun"
 msgid "Your Language Level"
 msgstr "Ditt Språknivå"
 
+#: src/features/Chat/SubmitForm.tsx:111
 #: src/features/Conversation/ProcessUserInput.tsx:247
 #. js-lingui-explicit-id
 msgid "Your Message"
@@ -10702,6 +10701,11 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Chat/ChatSection.tsx:143
+#. js-lingui-explicit-id
+#~ msgid "Text message"
+#~ msgstr "Textmeddelande"
 
 #: src/features/Landing/LandingPage.tsx:198
 #: src/features/Landing/LandingPage.tsx:200

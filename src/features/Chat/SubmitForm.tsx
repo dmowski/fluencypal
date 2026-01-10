@@ -1,5 +1,5 @@
 "use client";
-import { Stack, Typography, Button, IconButton } from "@mui/material";
+import { Stack, Typography, Button, IconButton, TextField } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import SendIcon from "@mui/icons-material/Send";
@@ -8,7 +8,7 @@ import MicIcon from "@mui/icons-material/Mic";
 import { CHAT_MESSAGE_POINTS } from "./data";
 import { useEffect, useState } from "react";
 import { ProcessUserInput } from "../Conversation/ProcessUserInput";
-import { Mic, Trash } from "lucide-react";
+import { Keyboard, Mic, TextSearch, Trash } from "lucide-react";
 import { GamePlusPoints } from "../Game/gameQuestionScreens/gameCoreUI";
 
 interface SubmitFormProps {
@@ -53,7 +53,17 @@ export function SubmitForm({
   const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] = useState(false);
   const isAnalyzingResponse = isAnalyzingMessageWithAi || recorder.isTranscribing;
 
-  if (isLoading) return <Typography>{i18n._("Loading...")}</Typography>;
+  const [isTextMode, setIsTextMode] = useState(false);
+  const [textMessage, setTextMessage] = useState("");
+  const [preSubmitTextMessage, setPreSubmitTextMessage] = useState("");
+
+  const onPreSubmitTextMessage = async () => {
+    setPreSubmitTextMessage(textMessage.trim());
+  };
+
+  const onChangeTextMessage = (message: string) => {
+    setTextMessage(message);
+  };
 
   return (
     <Stack
@@ -64,7 +74,10 @@ export function SubmitForm({
         padding: "15px",
       }}
     >
-      {(recorder.transcription || recorder.isTranscribing || isAnalyzingResponse) && (
+      {(recorder.transcription ||
+        recorder.isTranscribing ||
+        isAnalyzingResponse ||
+        preSubmitTextMessage) && (
         <Stack
           sx={{
             flexDirection: "row",
@@ -75,149 +88,247 @@ export function SubmitForm({
         >
           <ProcessUserInput
             isTranscribing={recorder.isTranscribing}
-            userMessage={recorder.transcription || ""}
+            userMessage={(isTextMode ? preSubmitTextMessage : recorder.transcription || "") || ""}
             setIsAnalyzing={setIsAnalyzingMessageWithAi}
             setIsNeedCorrection={() => {}}
             previousBotMessage={previousBotMessage}
           />
         </Stack>
       )}
-      <Stack
-        sx={{
-          width: "100%",
-          gap: "10px",
-        }}
-      >
+
+      {isTextMode && (
         <Stack
           sx={{
-            flexDirection: "row",
+            gap: "10px",
             width: "100%",
-            alignItems: "center",
+            paddingTop: "10px",
+            position: "relative",
           }}
         >
-          {(!recorder.transcription || recorder.isTranscribing || recorder.isRecording) && (
-            <Button
-              disabled={recorder.isTranscribing}
-              variant={"contained"}
-              color={recorder.isRecording ? "error" : "info"}
-              sx={{
-                width: "100%",
-              }}
-              size="large"
-              onClick={() => {
-                if (recorder.isRecording) {
-                  recorder.stopRecording();
-                } else {
-                  recorder.startRecording();
-                }
-              }}
-              startIcon={recorder.isRecording ? <StopIcon /> : <MicIcon />}
-            >
-              {recorder.isRecording ? i18n._("Stop") : recordMessageTitle}
-            </Button>
-          )}
-
-          {recorder.transcription && !recorder.isRecording && !recorder.isTranscribing && (
-            <Stack
-              sx={{
-                flexDirection: "row",
-                gap: "10px",
-                width: "calc(100% - 0px)",
-              }}
-            >
-              <Button
-                variant="outlined"
-                color="info"
-                disabled={needMoreText || recorder.isTranscribing || recorder.isRecording}
-                onClick={async () => {
-                  recorder.startRecording();
-                }}
-                fullWidth
-                endIcon={<Mic />}
-              >
-                {i18n._("Re-record")}
-              </Button>
-
-              <Button
-                variant="contained"
-                color="info"
-                disabled={
-                  needMoreText || recorder.isTranscribing || recorder.isRecording || isSending
-                }
-                onClick={() => submitTranscription()}
-                fullWidth
-                endIcon={<SendIcon />}
-              >
-                {isSending ? i18n._("Sending...") : i18n._("Send Message")}
-              </Button>
-            </Stack>
-          )}
+          <TextField
+            placeholder={i18n._("")}
+            value={textMessage}
+            label={i18n._("Your Message")}
+            multiline
+            minRows={4}
+            maxRows={10}
+            fullWidth
+            onChange={(e) => onChangeTextMessage(e.target.value || "")}
+          />
 
           <Stack
             sx={{
-              width: recorder.isRecording ? "100%" : "max-content",
-              height: "38px",
-              alignItems: "center",
-              justifyContent: "flex-end",
               flexDirection: "row",
+              display: "grid",
+              gridTemplateColumns: "auto 1fr auto",
+              gap: "10px",
             }}
           >
             <Stack
               sx={{
-                height: "100%",
-                width: recorder.isRecording ? "100%" : "0",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
-              {recorder.visualizerComponent}
+              <IconButton
+                onClick={() => setIsTextMode(!isTextMode)}
+                disabled={recorder.isRecording || recorder.isTranscribing || isLoading}
+              >
+                <Mic size={"18px"} color={"rgba(200, 200, 200, 1)"} />
+              </IconButton>
             </Stack>
 
-            {!recorder.isRecording && !recorder.transcription && (
+            <Button
+              variant="contained"
+              onClick={async () => onPreSubmitTextMessage()}
+              disabled={textMessage.trim() === ""}
+              sx={{
+                width: "100%",
+              }}
+            >
+              {i18n._("Review Message")}
+            </Button>
+
+            <Stack
+              sx={{
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <IconButton
+                onClick={async () => onPreSubmitTextMessage()}
+                disabled={textMessage.trim() === ""}
+              >
+                <TextSearch size={"18px"} color={"rgba(200, 200, 200, 1)"} />
+              </IconButton>
+            </Stack>
+          </Stack>
+        </Stack>
+      )}
+
+      {!isTextMode && (
+        <Stack
+          sx={{
+            width: "100%",
+            gap: "10px",
+          }}
+        >
+          <Stack
+            sx={{
+              flexDirection: "row",
+              width: "100%",
+              alignItems: "center",
+            }}
+          >
+            {!recorder.transcription && !recorder.isTranscribing && !recorder.isRecording && (
+              <IconButton
+                onClick={() => setIsTextMode(!isTextMode)}
+                disabled={recorder.isRecording || recorder.isTranscribing || isLoading}
+                sx={{
+                  marginRight: "10px",
+                }}
+              >
+                <Keyboard
+                  size={"18px"}
+                  color={isTextMode ? "rgba(0, 150, 255, 1)" : "rgba(200, 200, 200, 1)"}
+                />
+              </IconButton>
+            )}
+
+            {(!recorder.transcription || recorder.isTranscribing || recorder.isRecording) && (
+              <Button
+                disabled={recorder.isTranscribing || isLoading}
+                variant={"contained"}
+                color={recorder.isRecording ? "error" : "info"}
+                sx={{
+                  width: "100%",
+                }}
+                size="large"
+                onClick={() => {
+                  if (recorder.isRecording) {
+                    recorder.stopRecording();
+                  } else {
+                    recorder.startRecording();
+                  }
+                }}
+                startIcon={recorder.isRecording ? <StopIcon /> : <MicIcon />}
+              >
+                {recorder.isRecording ? i18n._("Stop") : recordMessageTitle}
+              </Button>
+            )}
+
+            {recorder.transcription && !recorder.isRecording && !recorder.isTranscribing && (
               <Stack
+                sx={{
+                  flexDirection: "row",
+                  gap: "10px",
+                  width: "calc(100% - 0px)",
+                  flexWrap: "wrap",
+                }}
+              >
+                <Button
+                  variant="outlined"
+                  color="info"
+                  disabled={
+                    needMoreText || recorder.isTranscribing || recorder.isRecording || isLoading
+                  }
+                  onClick={async () => {
+                    recorder.startRecording();
+                  }}
+                  endIcon={<Mic />}
+                >
+                  {i18n._("Re-record")}
+                </Button>
+
+                <Button
+                  variant="contained"
+                  color="info"
+                  disabled={
+                    needMoreText ||
+                    recorder.isTranscribing ||
+                    recorder.isRecording ||
+                    isSending ||
+                    isLoading
+                  }
+                  onClick={() => submitTranscription()}
+                  endIcon={<SendIcon />}
+                >
+                  {isSending ? i18n._("Sending...") : i18n._("Send Message")}
+                </Button>
+              </Stack>
+            )}
+
+            <Stack
+              sx={{
+                width: recorder.isRecording ? "100%" : "max-content",
+                height: "38px",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                flexDirection: "row",
+              }}
+            >
+              <Stack
+                sx={{
+                  height: "100%",
+                  width: recorder.isRecording ? "100%" : "0",
+                }}
+              >
+                {recorder.visualizerComponent}
+              </Stack>
+
+              {!recorder.isRecording && !recorder.transcription && (
+                <Stack
+                  sx={{
+                    width: "100%",
+                    paddingLeft: "10px",
+                    "@media (max-width: 600px)": {
+                      display: "none",
+                    },
+                  }}
+                >
+                  <GamePlusPoints points={CHAT_MESSAGE_POINTS} />
+                </Stack>
+              )}
+
+              {recorder.transcription && (
+                <Stack
+                  sx={{
+                    width: "100%",
+                    paddingLeft: "20px",
+                  }}
+                >
+                  <IconButton
+                    size="small"
+                    disabled={isLoading}
+                    onClick={() => {
+                      recorder.removeTranscript();
+                      recorder.cancelRecording();
+                    }}
+                  >
+                    <Trash size={"18px"} color="rgba(200, 200, 200, 1)" />
+                  </IconButton>
+                </Stack>
+              )}
+            </Stack>
+          </Stack>
+
+          {recorder.transcription && needMoreText && (
+            <>
+              <Typography
                 sx={{
                   width: "100%",
                   paddingLeft: "10px",
+                  opacity: 0.8,
                 }}
+                variant="caption"
+                color={"#ff8e86ff"}
               >
-                <GamePlusPoints points={CHAT_MESSAGE_POINTS} />
-              </Stack>
-            )}
-
-            {recorder.transcription && (
-              <Stack
-                sx={{
-                  width: "100%",
-                  paddingLeft: "20px",
-                }}
-              >
-                <IconButton
-                  size="small"
-                  onClick={() => {
-                    recorder.removeTranscript();
-                    recorder.cancelRecording();
-                  }}
-                >
-                  <Trash size={"18px"} color="rgba(200, 200, 200, 1)" />
-                </IconButton>
-              </Stack>
-            )}
-          </Stack>
+                {i18n._(`Please record a longer message (at least a few words).`)}
+              </Typography>
+            </>
+          )}
         </Stack>
-        {recorder.transcription && needMoreText && (
-          <>
-            <Typography
-              sx={{
-                width: "100%",
-                paddingLeft: "10px",
-                opacity: 0.8,
-              }}
-              variant="caption"
-              color={"#ff8e86ff"}
-            >
-              {i18n._(`Please record a longer message (at least a few words).`)}
-            </Typography>
-          </>
-        )}
-      </Stack>
+      )}
     </Stack>
   );
 }

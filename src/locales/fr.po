@@ -431,12 +431,12 @@ msgstr "Plan d'action pour améliorer les compétences back-end critiques"
 msgid "Active"
 msgstr "Actif"
 
-#: src/features/Chat/ChatSection.tsx:128
+#: src/features/Chat/ChatSection.tsx:125
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Ajouter une réponse"
 
-#: src/features/Chat/ChatSection.tsx:82
+#: src/features/Chat/ChatSection.tsx:79
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "Ajouter un commentaire"
@@ -446,12 +446,12 @@ msgstr "Ajouter un commentaire"
 msgid "Add new goal"
 msgstr "Ajouter un nouvel objectif"
 
-#: src/features/Chat/ChatSection.tsx:82
+#: src/features/Chat/ChatSection.tsx:79
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "Ajouter un nouveau post"
 
-#: src/features/Chat/ChatSection.tsx:325
+#: src/features/Chat/ChatSection.tsx:287
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "Ajouter un post"
@@ -913,7 +913,7 @@ msgstr ""
 "de réussite."
 
 #: src/features/Chat/ChatPage.tsx:153
-#: src/features/Chat/ChatSection.tsx:202
+#: src/features/Chat/ChatSection.tsx:164
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -6069,7 +6069,6 @@ msgstr "Chargement."
 msgid "Loading.."
 msgstr "Chargement.."
 
-#: src/features/Chat/SubmitForm.tsx:56
 #: src/features/Conversation/CallMode/CallButtons.tsx:313
 #: src/features/Conversation/ConversationCanvas.tsx:242
 #: src/features/Conversation/ConversationPage.tsx:104
@@ -6582,7 +6581,7 @@ msgstr ""
 "plaintext\n"
 "Aucun message enregistré pour le moment.\n"
 
-#: src/features/Chat/ChatSection.tsx:343
+#: src/features/Chat/ChatSection.tsx:305
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Aucun message pour le moment. Soyez le premier à partager vos idées !"
@@ -6623,7 +6622,7 @@ msgstr "Aucun texte à traduire"
 msgid "No translation available"
 msgstr "Aucune traduction disponible"
 
-#: src/features/Chat/ChatSection.tsx:254
+#: src/features/Chat/ChatSection.tsx:216
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "Aucune vue pour l'instant. Soyez le premier à voir ce post !"
@@ -7109,7 +7108,7 @@ msgstr ""
 msgid "Please enter a valid email address"
 msgstr "Veuillez entrer une adresse e-mail valide"
 
-#: src/features/Chat/SubmitForm.tsx:216
+#: src/features/Chat/SubmitForm.tsx:326
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Veuillez enregistrer un message plus long (au moins quelques mots)."
@@ -7119,7 +7118,7 @@ msgstr "Veuillez enregistrer un message plus long (au moins quelques mots)."
 msgid "Please refresh the page and try one more time"
 msgstr "Veuillez rafraîchir la page et essayer une fois de plus"
 
-#: src/features/Chat/ChatSection.tsx:54
+#: src/features/Chat/ChatSection.tsx:51
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Veuillez arrêter l'enregistrement avant de fermer la fenêtre."
@@ -7743,7 +7742,7 @@ msgstr ""
 msgid "Rating"
 msgstr "Évaluation"
 
-#: src/features/Chat/SubmitForm.tsx:138
+#: src/features/Chat/SubmitForm.tsx:240
 #: src/features/Conversation/ConversationCanvas.tsx:636
 #: src/features/Conversation/ConversationCanvas.tsx:901
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
@@ -7992,7 +7991,7 @@ msgstr ""
 "<0>{learningLanguageName}</0>. Cela m'aidera à créer un plan de pratique "
 "personnalisé."
 
-#: src/features/Chat/ChatSection.tsx:128
+#: src/features/Chat/ChatSection.tsx:125
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Enregistrer un message"
@@ -8162,6 +8161,11 @@ msgstr "Retour"
 #. js-lingui-explicit-id
 msgid "Returning an Item to a Store"
 msgstr "Renvoyer un article à un magasin"
+
+#: src/features/Chat/SubmitForm.tsx:149
+#. js-lingui-explicit-id
+msgid "Review Message"
+msgstr "Message de révision"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
 #. js-lingui-explicit-id
@@ -8361,7 +8365,6 @@ msgstr ""
 "plaintext\n"
 "HTML sémantique\n"
 
-#: src/features/Chat/ChatSection.tsx:163
 #: src/features/Conversation/ConversationCanvas.tsx:619
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
@@ -8388,7 +8391,7 @@ msgstr "Envoyer l'e-mail à nouveau"
 msgid "Send me sign-in link"
 msgstr "Envoyez-moi le lien de connexion"
 
-#: src/features/Chat/SubmitForm.tsx:151
+#: src/features/Chat/SubmitForm.tsx:256
 #: src/features/Conversation/CallMode/CallButtons.tsx:373
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -8400,7 +8403,7 @@ msgid "Send Request"
 msgstr "Envoyer la demande"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:151
+#: src/features/Chat/SubmitForm.tsx:256
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -8467,7 +8470,7 @@ msgstr ""
 msgid "Share what you're currently learning"
 msgstr "Partagez ce que vous apprenez actuellement"
 
-#: src/features/Chat/ChatSection.tsx:93
+#: src/features/Chat/ChatSection.tsx:90
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "Partagez vos idées et obtenez des retours !"
@@ -9001,7 +9004,7 @@ msgstr ""
 "réponses concises et persuasives qui vous aideront à vous démarquer lors de "
 "n'importe quel entretien d'embauche."
 
-#: src/features/Chat/SubmitForm.tsx:116
+#: src/features/Chat/SubmitForm.tsx:216
 #: src/features/Conversation/CallMode/CallButtons.tsx:346
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -9345,11 +9348,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "Test & Qualité"
-
-#: src/features/Chat/ChatSection.tsx:143
-#. js-lingui-explicit-id
-msgid "Text message"
-msgstr "Message texte"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -9794,7 +9792,7 @@ msgstr "Le nom d'utilisateur doit comporter au moins 3 caractères."
 msgid "Username:"
 msgstr "Nom d'utilisateur :"
 
-#: src/features/Chat/ChatSection.tsx:246
+#: src/features/Chat/ChatSection.tsx:208
 #. js-lingui-explicit-id
 msgid "Users who viewed this post"
 msgstr "Utilisateurs qui ont consulté cette publication"
@@ -10286,7 +10284,7 @@ msgstr "Ce que vous allez accomplir"
 msgid "What's included?"
 msgstr "Qu'est-ce qui est inclus ?"
 
-#: src/features/Chat/ChatSection.tsx:312
+#: src/features/Chat/ChatSection.tsx:274
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "Quoi de neuf ?"
@@ -10940,6 +10938,7 @@ msgstr "Votre partenaire de préparation aux entretiens d'embauche"
 msgid "Your Language Level"
 msgstr "Votre niveau de langue"
 
+#: src/features/Chat/SubmitForm.tsx:111
 #: src/features/Conversation/ProcessUserInput.tsx:247
 #. js-lingui-explicit-id
 msgid "Your Message"
@@ -11023,6 +11022,11 @@ msgstr ""
 "— il est important de s'engager dans cette courte conversation avant de "
 "plonger dans des sujets professionnels. Voici quelques expressions "
 "anglaises utiles pour commencer l'entretien :"
+
+#: src/features/Chat/ChatSection.tsx:143
+#. js-lingui-explicit-id
+#~ msgid "Text message"
+#~ msgstr "Message texte"
 
 #: src/features/Landing/LandingPage.tsx:198
 #: src/features/Landing/LandingPage.tsx:200

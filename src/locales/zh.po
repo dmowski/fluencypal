@@ -395,12 +395,12 @@ msgstr "改进关键后端技能的行动计划"
 msgid "Active"
 msgstr "活跃"
 
-#: src/features/Chat/ChatSection.tsx:128
+#: src/features/Chat/ChatSection.tsx:125
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "添加回复"
 
-#: src/features/Chat/ChatSection.tsx:82
+#: src/features/Chat/ChatSection.tsx:79
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "添加评论"
@@ -410,12 +410,12 @@ msgstr "添加评论"
 msgid "Add new goal"
 msgstr "添加新目标"
 
-#: src/features/Chat/ChatSection.tsx:82
+#: src/features/Chat/ChatSection.tsx:79
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "添加新帖子"
 
-#: src/features/Chat/ChatSection.tsx:325
+#: src/features/Chat/ChatSection.tsx:287
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "添加帖子"
@@ -861,7 +861,7 @@ msgid ""
 msgstr "避免这些错误将使你看起来更专业，增加你成功的机会。"
 
 #: src/features/Chat/ChatPage.tsx:153
-#: src/features/Chat/ChatSection.tsx:202
+#: src/features/Chat/ChatSection.tsx:164
 #: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
@@ -5395,7 +5395,6 @@ msgstr "加载中。"
 msgid "Loading.."
 msgstr "加载中.."
 
-#: src/features/Chat/SubmitForm.tsx:56
 #: src/features/Conversation/CallMode/CallButtons.tsx:313
 #: src/features/Conversation/ConversationCanvas.tsx:242
 #: src/features/Conversation/ConversationPage.tsx:104
@@ -5872,7 +5871,7 @@ msgstr "未找到面试"
 msgid "No message recorded yet."
 msgstr "尚未录制任何消息。"
 
-#: src/features/Chat/ChatSection.tsx:343
+#: src/features/Chat/ChatSection.tsx:305
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "暂无消息。快来分享你的想法吧！"
@@ -5913,7 +5912,7 @@ msgstr "无文本可翻译"
 msgid "No translation available"
 msgstr "无翻译可用"
 
-#: src/features/Chat/ChatSection.tsx:254
+#: src/features/Chat/ChatSection.tsx:216
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "还没有浏览记录。成为第一个查看此帖的人吧！"
@@ -6354,7 +6353,7 @@ msgstr "请确认您的信用卡以访问所有功能。"
 msgid "Please enter a valid email address"
 msgstr "请输入有效的电子邮件地址"
 
-#: src/features/Chat/SubmitForm.tsx:216
+#: src/features/Chat/SubmitForm.tsx:326
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "请录制一条较长的信息（至少几个字）。"
@@ -6364,7 +6363,7 @@ msgstr "请录制一条较长的信息（至少几个字）。"
 msgid "Please refresh the page and try one more time"
 msgstr "请刷新页面并再试一次"
 
-#: src/features/Chat/ChatSection.tsx:54
+#: src/features/Chat/ChatSection.tsx:51
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "请在关闭窗口前停止录音。"
@@ -6912,7 +6911,7 @@ msgstr "排名前5以获得所有功能的完全访问权限！"
 msgid "Rating"
 msgstr "评分"
 
-#: src/features/Chat/SubmitForm.tsx:138
+#: src/features/Chat/SubmitForm.tsx:240
 #: src/features/Conversation/ConversationCanvas.tsx:636
 #: src/features/Conversation/ConversationCanvas.tsx:901
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
@@ -7141,7 +7140,7 @@ msgid ""
 "help me to create a personalized practice plan."
 msgstr "用<0>{learningLanguageName}</0>录制2-3分钟的故事。这将帮助我创建一个个性化的练习计划。"
 
-#: src/features/Chat/ChatSection.tsx:128
+#: src/features/Chat/ChatSection.tsx:125
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "录制消息"
@@ -7301,6 +7300,11 @@ msgstr "返回"
 #. js-lingui-explicit-id
 msgid "Returning an Item to a Store"
 msgstr "退回商品到商店"
+
+#: src/features/Chat/SubmitForm.tsx:149
+#. js-lingui-explicit-id
+msgid "Review Message"
+msgstr "审查消息"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
 #. js-lingui-explicit-id
@@ -7485,7 +7489,6 @@ msgstr "自学开发者希望验证他们的HTML、CSS和JavaScript知识"
 msgid "Semantic HTML"
 msgstr "语义化 HTML"
 
-#: src/features/Chat/ChatSection.tsx:163
 #: src/features/Conversation/ConversationCanvas.tsx:619
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
@@ -7512,7 +7515,7 @@ msgstr "再次发送电子邮件"
 msgid "Send me sign-in link"
 msgstr "发送登录链接"
 
-#: src/features/Chat/SubmitForm.tsx:151
+#: src/features/Chat/SubmitForm.tsx:256
 #: src/features/Conversation/CallMode/CallButtons.tsx:373
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -7524,7 +7527,7 @@ msgid "Send Request"
 msgstr "发送请求"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:151
+#: src/features/Chat/SubmitForm.tsx:256
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -7585,7 +7588,7 @@ msgstr "分享关于跨团队合作、冲突解决和项目所有权的引人入
 msgid "Share what you're currently learning"
 msgstr "分享您目前正在学习的内容"
 
-#: src/features/Chat/ChatSection.tsx:93
+#: src/features/Chat/ChatSection.tsx:90
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "分享你的想法并获取反馈！"
@@ -8081,7 +8084,7 @@ msgstr ""
 "在这个情境中，您将扮演一个求职者的角色，而我们的AI将扮演专业的招聘人员。您将被询问您的经验、技能和对这个角色的动机，AI会根据您的回答调整难度。利用提"
 "示来练习提供简洁、有说服力的答案，使您在任何工作面试中脱颖而出。"
 
-#: src/features/Chat/SubmitForm.tsx:116
+#: src/features/Chat/SubmitForm.tsx:216
 #: src/features/Conversation/CallMode/CallButtons.tsx:346
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -8389,11 +8392,6 @@ msgstr "使用FluencyPal的AI驱动面试测验来测试您的面试技巧。练
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "测试与质量"
-
-#: src/features/Chat/ChatSection.tsx:143
-#. js-lingui-explicit-id
-msgid "Text message"
-msgstr "文本信息"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -8802,7 +8800,7 @@ msgstr "用户名必须至少为3个字符长。"
 msgid "Username:"
 msgstr "用户名:"
 
-#: src/features/Chat/ChatSection.tsx:246
+#: src/features/Chat/ChatSection.tsx:208
 #. js-lingui-explicit-id
 msgid "Users who viewed this post"
 msgstr "查看此帖的用户"
@@ -9256,7 +9254,7 @@ msgstr "你将会达到的目标"
 msgid "What's included?"
 msgstr "包含什么？"
 
-#: src/features/Chat/ChatSection.tsx:312
+#: src/features/Chat/ChatSection.tsx:274
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "有什么新功能？"
@@ -9802,6 +9800,7 @@ msgstr "你的工作面试准备伙伴"
 msgid "Your Language Level"
 msgstr "你的语言水平"
 
+#: src/features/Chat/SubmitForm.tsx:111
 #: src/features/Conversation/ProcessUserInput.tsx:247
 #. js-lingui-explicit-id
 msgid "Your Message"
@@ -9878,6 +9877,11 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Chat/ChatSection.tsx:143
+#. js-lingui-explicit-id
+#~ msgid "Text message"
+#~ msgstr "文本信息"
 
 #: src/features/Landing/LandingPage.tsx:198
 #: src/features/Landing/LandingPage.tsx:200
