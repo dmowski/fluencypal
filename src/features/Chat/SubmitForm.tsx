@@ -32,10 +32,14 @@ export function SubmitForm({
     visualizerComponentWidth: "100%",
   });
 
+  const [isSending, setIsSending] = useState(false);
+
   const submitTranscription = async () => {
+    setIsSending(true);
     await onSubmit(recorder.transcription || "");
     recorder.removeTranscript();
     recorder.cancelRecording();
+    setIsSending(false);
   };
 
   useEffect(() => {
@@ -137,12 +141,14 @@ export function SubmitForm({
               <Button
                 variant="contained"
                 color="info"
-                disabled={needMoreText || recorder.isTranscribing || recorder.isRecording}
+                disabled={
+                  needMoreText || recorder.isTranscribing || recorder.isRecording || isSending
+                }
                 onClick={() => submitTranscription()}
                 fullWidth
                 endIcon={<SendIcon />}
               >
-                {i18n._("Send Message")}
+                {isSending ? i18n._("Sending...") : i18n._("Send Message")}
               </Button>
             </Stack>
           )}
