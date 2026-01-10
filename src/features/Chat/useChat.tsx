@@ -241,7 +241,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       const url = `https://www.fluencypal.com/ru/practice?page=community`;
       sendFeedbackMessageRequest(
         {
-          message: `💬 New message in global chat:\n\n${messageContent}\n\n${url}`,
+          message: `💬 New message in global chat\n\n${url}`,
         },
         await auth.getToken()
       );
