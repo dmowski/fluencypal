@@ -618,6 +618,10 @@ export function AdminStats() {
   const isLoadingRef = useRef(false);
   const [sourceData, setData] = useState<AdminStatsResponse | null>(null);
 
+  const [usersToShowMode, setUsersToShowMode] = useState<"all" | "today" | "secondDay" | "old">(
+    "all"
+  );
+
   const data = useMemo(() => {
     if (!sourceData) return null;
     const cleanUsers = sourceData?.users.filter((user) => {
@@ -713,7 +717,7 @@ export function AdminStats() {
     return lastLogin && dayjs().diff(dayjs(lastLogin), "hour") < 24;
   });
 
-  const secondDayVisitors = todayUsers.filter((user) => {
+  const secondDayVisitors = users.filter((user) => {
     const createdAt = user.userData.createdAtIso;
     const lastLogin = user.userData.lastLoginAtDateTime;
 
@@ -721,11 +725,11 @@ export function AdminStats() {
       createdAt &&
       lastLogin &&
       dayjs(lastLogin).diff(dayjs(createdAt), "hour") >= 24 &&
-      dayjs().diff(dayjs(lastLogin), "hour") < 48
+      dayjs(lastLogin).diff(dayjs(createdAt), "hour") < 48
     );
   });
 
-  const thirdAndMoreDayVisitors = todayUsers.filter((user) => {
+  const thirdAndMoreDayVisitors = users.filter((user) => {
     const createdAt = user.userData.createdAtIso;
     const lastLogin = user.userData.lastLoginAtDateTime;
     return createdAt && lastLogin && dayjs(lastLogin).diff(dayjs(createdAt), "hour") >= 48;
@@ -741,10 +745,16 @@ export function AdminStats() {
     return acc + lastHourMessages;
   }, 0);
 
-  if (!isAdmin) {
-    return <></>;
-  }
+  const usersToShow =
+    usersToShowMode === "all"
+      ? users
+      : usersToShowMode === "today"
+        ? todayUsers
+        : usersToShowMode === "secondDay"
+          ? secondDayVisitors
+          : thirdAndMoreDayVisitors;
 
+  if (!isAdmin) return <></>;
   return (
     <Stack sx={{}}>
       <Button
@@ -783,6 +793,9 @@ export function AdminStats() {
                   padding: "17px 12px 8px 12px",
                   borderRadius: "8px",
                   height: "120px",
+                  "&.active": {
+                    backgroundColor: "rgba(255, 255, 255, 0.06)",
+                  },
                   ".value": {
                     fontSize: "30px",
                     fontWeight: 600,
@@ -807,21 +820,40 @@ export function AdminStats() {
                 </Typography>
               </Stack>
 
-              <Stack className="stat-card">
+              <Stack
+                className={["stat-card", usersToShowMode === "all" ? "active" : ""].join(" ")}
+                onClick={() => setUsersToShowMode("all")}
+              >
+                <Typography className="value">{users.length}</Typography>
+                <Typography align="center" variant="body2" className="label">
+                  All
+                </Typography>
+              </Stack>
+
+              <Stack
+                className={["stat-card", usersToShowMode === "today" ? "active" : ""].join(" ")}
+                onClick={() => setUsersToShowMode("today")}
+              >
                 <Typography className="value">{todayUsers.length}</Typography>
                 <Typography align="center" variant="body2" className="label">
                   Today Users
                 </Typography>
               </Stack>
 
-              <Stack className="stat-card">
+              <Stack
+                className={["stat-card", usersToShowMode === "secondDay" ? "active" : ""].join(" ")}
+                onClick={() => setUsersToShowMode("secondDay")}
+              >
                 <Typography className="value">{secondDayVisitors.length}</Typography>
                 <Typography align="center" variant="body2" className="label">
                   Second Day Visitors
                 </Typography>
               </Stack>
 
-              <Stack className="stat-card">
+              <Stack
+                className={["stat-card", usersToShowMode === "old" ? "active" : ""].join(" ")}
+                onClick={() => setUsersToShowMode("old")}
+              >
                 <Typography className="value">{thirdAndMoreDayVisitors.length}</Typography>
                 <Typography align="center" variant="body2" className="label">
                   Old Visitors
@@ -857,7 +889,7 @@ export function AdminStats() {
               padding: "20px 10px",
             }}
           >
-            {users.map((user) => (
+            {usersToShow.map((user) => (
               <UserCard
                 key={user.userData.id}
                 userStat={user}
