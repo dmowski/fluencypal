@@ -205,6 +205,7 @@ export const DailyQuestionBadgeComponent = ({
               placeholder={i18n._("What do you think?")}
               titleContent={<Stack>{content}</Stack>}
               contextForAiAnalysis={todaysQuestion.title + ". " + todaysQuestion.description}
+              addNewPostButtonText={i18n._("Add Response")}
             />
           </Stack>
         )}

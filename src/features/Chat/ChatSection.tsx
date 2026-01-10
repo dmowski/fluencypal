@@ -18,10 +18,12 @@ export const ChatSection = ({
   placeholder,
   titleContent,
   contextForAiAnalysis,
+  addNewPostButtonText,
 }: {
   placeholder?: string;
   titleContent?: React.ReactNode;
   contextForAiAnalysis: string;
+  addNewPostButtonText?: string;
 }) => {
   const auth = useAuth();
   const chat = useChat();
@@ -235,7 +237,7 @@ export const ChatSection = ({
                 startIcon={<AddIcon />}
                 onClick={() => setIsNewPostModalOpen(true)}
               >
-                {i18n._("Add Post")}
+                {addNewPostButtonText || i18n._("Add Post")}
               </Button>
             </Stack>
           </Stack>
