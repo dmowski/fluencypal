@@ -258,7 +258,7 @@ const QuizQuestions = () => {
           {currentStep === "before_recordAboutFollowUp2" && (
             <AuthWall>
               <InfoStep
-                title={i18n._(`Almost there...`)}
+                title={i18n._(`Next question`)}
                 subTitle={i18n._(`The last question before we create your plan`)}
                 onClick={nextStep}
                 disabled={isStepLoading}
@@ -294,7 +294,7 @@ const QuizQuestions = () => {
           {currentStep === "before_goalReview" && (
             <AuthWall>
               <InfoStep
-                title={i18n._(`We ready to create your plan`)}
+                title={i18n._(`We are ready to craft your plan.`)}
                 subTitle={i18n._(`It might take up to a minute.`)}
                 onClick={nextStep}
                 disabled={isStepLoading}
@@ -334,9 +334,12 @@ const QuizQuestions = () => {
             <>
               <AuthWall>
                 <WelcomeChatMessage
+                  title={i18n._(`Welcome Message`)}
+                  subTitle={i18n._(`Record a welcome message to our community of learners.`)}
                   done={doneQuiz}
                   isLoading={isStepLoading}
-                  exampleToRecord="Hi, my name is Alex"
+                  exampleToRecord={survey?.exampleOfWelcomeMessage || ""}
+                  actionButtonTitle={i18n._("Go to Practice with AI")}
                 />
               </AuthWall>
             </>

@@ -10,6 +10,9 @@ interface WelcomeChatMessageProps {
   done: () => void;
   exampleToRecord?: string;
   isLoading: boolean;
+  title: string;
+  subTitle: string;
+  actionButtonTitle: string;
 }
 
 const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
@@ -31,6 +34,8 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
         borderRadius: "8px",
         gap: "10px",
         backgroundColor: "rgba(99, 177, 135, 0.1)",
+        display: "grid",
+        gridTemplateColumns: "auto 1fr",
       }}
     >
       <Stack
@@ -65,8 +70,8 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
 
   return (
     <InfoStep
-      title={i18n._(`Let's write a welcome message`)}
-      subTitle={i18n._(`Step from comfort zone`)}
+      title={props.title}
+      subTitle={props.subTitle}
       onClick={props.done}
       subComponent={
         <Stack
@@ -76,10 +81,15 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
           }}
         >
           {exampleToRecord}
-          <ChatSection contextForAiAnalysis="" limitTopMessages={3} />
+          <ChatSection
+            contextForAiAnalysis=""
+            limitTopMessages={3}
+            titleContent={exampleToRecord}
+          />
         </Stack>
       }
       disabled={props.isLoading || !isSendMessage}
+      actionButtonTitle={props.actionButtonTitle}
       isStepLoading={props.isLoading}
     />
   );

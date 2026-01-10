@@ -377,6 +377,46 @@ ${survey.aboutUserFollowUpTranscription}
     return newAnswer;
   };
 
+  const generateWelcomeMessage = async () => {
+    const survey = surveyDoc;
+    if (!survey) {
+      return;
+    }
+
+    const systemPrompt = `Your goal is to create a user's welcome message they can send to chat of language learning community in ${
+      fullLanguageName[languageToLearn]
+    } language. The welcome message should be friendly, engaging, and reflect the user's personality based on their self-description.
+
+The welcome message should be concise, ideally between 30 to 50 words, and should include:
+1. A brief introduction of the user.
+2. Their motivation for learning ${fullLanguageName[languageToLearn]}.
+3. What they hope to achieve.
+
+Example of your response:
+Hello everyone! I'm [Your Name], excited to join this community as I embark on my journey to learn ${fullLanguageName[languageToLearn]}. I'm passionate about [Your Interests] and look forward to connecting with fellow learners. My goal is to become fluent and immerse myself in the culture. Let's learn together!
+`;
+
+    const usersInfo = [
+      "AboutUser:",
+      survey.aboutUserTranscription,
+      survey.aboutUserFollowUpQuestion.title,
+      survey.aboutUserFollowUpTranscription,
+      survey.goalFollowUpQuestion.title,
+      survey.goalUserTranscription,
+    ]
+      .map((text) => text.trim())
+      .filter((text) => text.length > 0)
+      .join(" ");
+
+    const aiResponse = await textAi.generate({
+      systemMessage: systemPrompt,
+      userMessage: usersInfo,
+      model: "gpt-4o",
+    });
+
+    return aiResponse;
+  };
+
   const generatingGoalQuestion = async () => {
     const survey = surveyDoc;
     if (!survey) {
@@ -489,12 +529,15 @@ ${survey.aboutUserFollowUpTranscription}
     ];
 
     console.log("🦄 generateGoal | Starting goal generation.");
+    const generateExampleRequest = generateWelcomeMessage();
+
     const userRecords = await userInfo.extractUserRecords(conversationMessages, languageToLearn);
     const goal = await plan.generateGoal({
       languageCode: languageToLearn,
       conversationMessages: conversationMessages,
       userInfo: userRecords,
     });
+    const exampleOfWelcomeMessage = await generateExampleRequest;
 
     setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
 
@@ -510,6 +553,8 @@ ${survey.aboutUserFollowUpTranscription}
         goalData: goal,
         goalHash: finalSurveyHash,
         userRecords: userRecords,
+        exampleOfWelcomeMessage:
+          exampleOfWelcomeMessage || (surveyRef.current || survey).exampleOfWelcomeMessage || "",
       },
       "generateGoal"
     );
@@ -580,6 +625,7 @@ ${survey.aboutUserFollowUpTranscription}
         learningLanguageCode: languageToLearn,
         nativeLanguageCode: nativeLanguage,
         pageLanguageCode: pageLanguage,
+        exampleOfWelcomeMessage: "",
 
         aboutUserTranscription: "",
         aboutUserFollowUpQuestion: {
