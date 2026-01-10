@@ -86,7 +86,11 @@ export const UIProgressBar = ({
               borderRadius: "25px",
             }}
           >
-            <GradingProgressBar height={"12px"} value={Math.max(0, progress * 100)} label="" />
+            <GradingProgressBar
+              height={"12px"}
+              value={Math.min(100, Math.max(0, progress * 100))}
+              label=""
+            />
           </Stack>
 
           <Stack
