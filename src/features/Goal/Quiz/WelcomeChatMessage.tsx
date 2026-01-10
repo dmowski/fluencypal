@@ -109,7 +109,7 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
           {exampleToRecord}
           <ChatSection
             contextForAiAnalysis=""
-            limitTopMessages={3}
+            limitTopMessages={4}
             titleContent={exampleToRecord}
           />
         </Stack>
