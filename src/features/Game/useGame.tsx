@@ -174,6 +174,7 @@ function useProvideGame(): GameContextType {
       },
       { merge: true }
     );
+    resetPointsIfNeeded();
   };
 
   const setAvatar = async (avatarUrl: string) => {
@@ -193,7 +194,6 @@ function useProvideGame(): GameContextType {
     updateLastVisit();
     setDefaultAvatarIfNeeded();
     setDefaultUsernameIfNeeded();
-    resetPointsIfNeeded();
   }, [userId, isLoading]);
 
   useEffect(() => {
@@ -217,7 +217,7 @@ function useProvideGame(): GameContextType {
 
   const resetPointsIfNeeded = async () => {
     if (!userId || isLoading || !gameAvatars) return;
-    if (myAvatar) return; // Avatar already set
+    if (myStats) return; // Avatar already set
     await resetGamePointsRequest();
   };
 
