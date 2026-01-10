@@ -20,6 +20,7 @@ export interface UserChatMetadataStatic {
 // Metadata about a chat space
 export interface UserChatMetadata extends UserChatMetadataStatic {
   totalMessages: number;
+  lastMessageAtIso: string;
 }
 
 // Metadata about a user in a chat space

@@ -35,7 +35,6 @@ interface ChatContextType {
   viewMessage: (message: UserChatMessage) => Promise<void>;
 
   unreadMessagesCount: number;
-  markAsRead: (messageId: string) => void;
 
   loading: boolean;
 
@@ -84,7 +83,10 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     const realTotalMessages = messagesData.length;
     if (metaData.totalMessages === realTotalMessages) return;
 
-    const partialMetadata: Partial<UserChatMetadata> = { totalMessages: realTotalMessages };
+    const partialMetadata: Partial<UserChatMetadata> = {
+      totalMessages: realTotalMessages,
+      lastMessageAtIso: new Date().toISOString(),
+    };
 
     setDoc(metaRef, partialMetadata, { merge: true });
   };
@@ -100,11 +102,19 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
 
     if (metaRef && userId) {
       console.log("Init metadata");
-      await setDoc(metaRef, { ...propsChatMetadata, totalMessages: 0 });
+      await setDoc(metaRef, {
+        ...propsChatMetadata,
+        totalMessages: 0,
+        lastMessageAtIso: new Date().toISOString(),
+      });
     }
 
     const isCanReadAfterInit = getIsCanRead({
-      chatMetadata: { ...propsChatMetadata, totalMessages: 0 },
+      chatMetadata: {
+        ...propsChatMetadata,
+        totalMessages: 0,
+        lastMessageAtIso: new Date().toISOString(),
+      },
       userId,
     });
     return isCanReadAfterInit
@@ -169,13 +179,6 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     }
     return likesMap;
   }, [likes]);
-
-  const markAsRead = (messageId: string) => {
-    const isWindow = typeof window !== "undefined";
-    if (!isWindow) return;
-
-    // settings.setReadChatMessages(topLevelMessages.length);
-  };
 
   const toggleLike = async (messageId: string, type: ChatLikeType) => {
     if (!likesRef || !userId) return;
@@ -298,22 +301,15 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     topLevelMessages,
     messagesLikes,
     editMessage,
-
     unreadMessagesCount: unreadMessagesCount,
     viewMessage,
-
-    markAsRead,
     commentsInfo,
-
     toggleLike,
-
     addMessage,
     deleteMessage,
     loading,
-
     activeCommentMessageId,
     setActiveCommentMessageId,
-
     activeMessageId,
     onOpen: (messageId: string) => setActiveMessageId(messageId),
   };

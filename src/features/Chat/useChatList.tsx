@@ -36,14 +36,22 @@ function useProvideChatList(): ChatListContextType {
 
   const { unreadSpaces, myUnreadCount } = useMemo(() => {
     const unreadLocalData: Record<string, number> = {};
-    myChats?.forEach((chat) => {
-      const readMessagesCount = Object.keys(myReadStatsData?.[chat.spaceId] || {}).length;
-      const totalMessagesCount = chat.totalMessages || 0;
-      const unreadCount = Math.max(0, totalMessagesCount - readMessagesCount);
-      if (unreadCount > 0) {
-        unreadLocalData[chat.spaceId] = unreadCount;
-      }
-    });
+    myChats
+      ?.sort((a, b) => {
+        const aTime = b.lastMessageAtIso || "";
+        const bTime = a.lastMessageAtIso || "";
+
+        // last message first
+        return aTime.localeCompare(bTime);
+      })
+      .forEach((chat) => {
+        const readMessagesCount = Object.keys(myReadStatsData?.[chat.spaceId] || {}).length;
+        const totalMessagesCount = chat.totalMessages || 0;
+        const unreadCount = Math.max(0, totalMessagesCount - readMessagesCount);
+        if (unreadCount > 0) {
+          unreadLocalData[chat.spaceId] = unreadCount;
+        }
+      });
     const unreadCount = Object.values(unreadLocalData).reduce((a, b) => a + b, 0);
     return { unreadSpaces: unreadLocalData, myUnreadCount: unreadCount };
   }, [myChats, myReadStatsData]);

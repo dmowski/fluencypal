@@ -21,6 +21,7 @@ export const ChatPage = () => {
 
   const [activeChatId, setActiveChatId] = useUrlState<string>("activeChatId", "", false);
   const chatList = useChatList();
+
   const chatMetadata = chatList.myChats.find((chat) => chat.spaceId === activeChatId);
 
   const activeChatBgImage =
