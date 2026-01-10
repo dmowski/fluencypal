@@ -219,8 +219,8 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       console.log("Already sending message:", isSending.current);
       return;
     }
-
     isSending.current = messageContent;
+
     if (propsChatMetadata.type === "global") {
       const url = `https://www.fluencypal.com/ru/practice?page=community`;
       sendFeedbackMessageRequest(
@@ -233,6 +233,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     const messagesRefInternal = await initMetadataIfNeeded();
 
     if (!messagesRefInternal || !userId) {
+      isSending.current = "";
       return;
     }
 
