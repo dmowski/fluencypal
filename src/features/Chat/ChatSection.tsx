@@ -117,11 +117,11 @@ export const ChatSection = ({
                 <SubmitForm
                   setIsActiveRecording={setIsActiveRecording}
                   onSubmit={async (messageContent) => {
+                    onCloseRecordMessageModal();
                     await chat.addMessage({
                       messageContent,
                       parentMessageId: messageToComment?.id ? messageToComment.id : "",
                     });
-                    onCloseRecordMessageModal();
                   }}
                   isLoading={chat.loading}
                   recordMessageTitle={
@@ -151,12 +151,12 @@ export const ChatSection = ({
                     <Button
                       variant="outlined"
                       onClick={async () => {
+                        onCloseRecordMessageModal();
+                        setTextMessage("");
                         await chat.addMessage({
                           messageContent: textMessage,
                           parentMessageId: messageToComment?.id ? messageToComment.id : "",
                         });
-                        setTextMessage("");
-                        onCloseRecordMessageModal();
                       }}
                       disabled={textMessage.trim() === ""}
                     >
