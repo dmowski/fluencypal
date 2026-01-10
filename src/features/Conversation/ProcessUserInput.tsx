@@ -103,7 +103,7 @@ export const ProcessUserInput = ({
   const isAnalyzingResponse = isAnalyzingMessageWithAi || isTranscribing;
 
   const contentToShow = description || "";
-  const limitMessages = 70;
+  const limitMessages = 120;
   const isLimitedMessage = contentToShow.length > limitMessages && !isShowFullContent;
   const messagesFontSize = userMessage.length < 320 ? "1.1rem" : "0.9rem";
 

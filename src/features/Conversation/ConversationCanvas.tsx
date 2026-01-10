@@ -248,8 +248,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
     return "";
   }, [conversation]);
 
-  console.log("lastBotMessage", lastBotMessage);
-
   const modals = (
     <>
       {translator.translateModal}
