@@ -1,4 +1,4 @@
-import { Badge, Button, ButtonGroup, Stack, Typography } from "@mui/material";
+import { Alert, Badge, Button, ButtonGroup, IconButton, Stack, Typography } from "@mui/material";
 import { ChatSection } from "./ChatSection";
 import { ChatProvider } from "./useChat";
 import { useLingui } from "@lingui/react";
@@ -9,17 +9,28 @@ import { useAuth } from "../Auth/useAuth";
 import { useGame } from "../Game/useGame";
 import { Avatar } from "../Game/Avatar";
 import { uniq } from "@/libs/uniq";
+import { UserChatMetadata } from "./type";
 
 export const ChatPage = () => {
   const { i18n } = useLingui();
   const auth = useAuth();
+  const game = useGame();
 
   const [page, setPage] = useUrlState<"public" | "private">("chats", "public", false);
 
   const [activeChatId, setActiveChatId] = useUrlState<string>("activeChatId", "", false);
   const chatList = useChatList();
-  const game = useGame();
   const chatMetadata = chatList.myChats.find((chat) => chat.spaceId === activeChatId);
+
+  const activeChatBgImage =
+    game.gameAvatars[
+      chatMetadata?.allowedUserIds?.sort((a, b) => {
+        // my id last
+        if (a === auth.uid) return 1;
+        if (b === auth.uid) return -1;
+        return 0;
+      })?.[0] || ""
+    ];
 
   return (
     <Stack>
@@ -72,30 +83,93 @@ export const ChatPage = () => {
           {activeChatId ? (
             <Stack
               sx={{
-                gap: "10px",
-                borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-                paddingTop: "10px",
+                gap: "0px",
                 marginTop: "10px",
+                backgroundColor: `rgba(255, 255, 255, 0.02)`,
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                borderRadius: "15px",
               }}
             >
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                }}
-              >
-                <Button
-                  onClick={() => {
-                    setActiveChatId("");
+              {chatMetadata ? (
+                <>
+                  <Stack
+                    sx={{
+                      padding: "60px 2px 50px 2px",
+                      width: "100%",
+                      gap: "20px",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      position: "relative",
+                    }}
+                  >
+                    <Stack
+                      sx={{
+                        background: `url('${activeChatBgImage}') no-repeat center center`,
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        backgroundSize: "cover",
+                        opacity: 0.1,
+                        filter: "blur(22px)",
+                      }}
+                    />
+                    <Stack
+                      sx={{
+                        alignItems: "center",
+                        position: "absolute",
+                        top: "10px",
+                        left: "10px",
+                      }}
+                    >
+                      <Button
+                        color="info"
+                        variant="outlined"
+                        onClick={() => setActiveChatId("")}
+                        startIcon={<ChevronLeft />}
+                      >
+                        {i18n._("Back")}
+                      </Button>
+                    </Stack>
+                    <Stack
+                      sx={{
+                        alignItems: "center",
+                        gap: "20px",
+                      }}
+                    >
+                      <ChatHeader chat={chatMetadata} avatarSize="100px" alignItems="center" />
+                    </Stack>
+                  </Stack>
+
+                  <ChatProvider metadata={chatMetadata}>
+                    <ChatSection />
+                  </ChatProvider>
+                </>
+              ) : (
+                <Stack
+                  sx={{
+                    padding: "20px",
+                    gap: "20px",
+                    alignItems: "flex-start",
                   }}
-                  startIcon={<ChevronLeft />}
                 >
-                  {i18n._("Back to all chats")}
-                </Button>
-              </Stack>
-              {chatMetadata && (
-                <ChatProvider metadata={chatMetadata}>
-                  <ChatSection />
-                </ChatProvider>
+                  <Alert
+                    severity="error"
+                    sx={{
+                      width: "100%",
+                    }}
+                  >
+                    {i18n._("Chat not found or you don't have access to it.")}
+                  </Alert>
+                  <Button
+                    startIcon={<ChevronLeft />}
+                    onClick={() => setActiveChatId("")}
+                    variant="outlined"
+                  >
+                    {i18n._("Back to chat list")}
+                  </Button>
+                </Stack>
               )}
             </Stack>
           ) : (
@@ -131,26 +205,6 @@ export const ChatPage = () => {
                     >
                       {chatList.myChats.map((chat, index) => {
                         const unreadCount = chatList.unreadSpaces[chat.spaceId] || 0;
-
-                        const allUserIds = uniq(
-                          chat.allowedUserIds?.sort((a, b) => {
-                            // me first
-                            if (a === auth.uid) return -1;
-                            if (b === auth.uid) return 1;
-                            return 0;
-                          }) || []
-                        );
-
-                        const isOnlyOneUser = allUserIds.length <= 1;
-
-                        const userIds = allUserIds.filter(
-                          (userId) => isOnlyOneUser || userId !== auth.uid
-                        );
-
-                        const userNames = userIds
-                          .map((userId) => game.getUserName(userId))
-                          .join(", ");
-
                         return (
                           <Stack
                             key={chat.spaceId || index}
@@ -184,44 +238,7 @@ export const ChatPage = () => {
                                 gap: "10px",
                               }}
                             >
-                              <Stack
-                                sx={{
-                                  flexDirection: "row",
-                                  minWidth: "44px",
-                                }}
-                              >
-                                {userIds.map((userId, index) => {
-                                  return (
-                                    <Stack
-                                      key={userId}
-                                      sx={{
-                                        marginLeft: index === 0 ? "0" : "-30px",
-                                      }}
-                                    >
-                                      <Avatar
-                                        url={game.getUserAvatarUrl(userId)}
-                                        avatarSize="40px"
-                                      />
-                                    </Stack>
-                                  );
-                                })}
-                              </Stack>
-                              <Stack>
-                                <Typography
-                                  variant="body1"
-                                  sx={{
-                                    fontWeight: 600,
-                                  }}
-                                >
-                                  {chat.type === "debate" && i18n._("Debate Chat")}
-                                  {chat.type === "dailyQuestion" && i18n._("Daily Question Chat")}
-                                  {chat.type === "global" && i18n._("Global Chat")}
-                                  {chat.type === "privateChat" && i18n._("Chat")}
-
-                                  {!chat.type && i18n._("Chat")}
-                                </Typography>
-                                <Typography variant="body2">{userNames}</Typography>
-                              </Stack>
+                              <ChatHeader chat={chat} />
                             </Stack>
                             <Stack
                               sx={{
@@ -246,5 +263,76 @@ export const ChatPage = () => {
         </>
       )}
     </Stack>
+  );
+};
+
+const ChatHeader = ({
+  chat,
+  avatarSize = "40px",
+  alignItems,
+}: {
+  chat: UserChatMetadata;
+  avatarSize?: string;
+  alignItems?: "center" | "flex-start";
+}) => {
+  const { i18n } = useLingui();
+  const auth = useAuth();
+  const game = useGame();
+
+  const allUserIds = uniq(
+    chat.allowedUserIds?.sort((a, b) => {
+      // me first
+      if (a === auth.uid) return -1;
+      if (b === auth.uid) return 1;
+      return 0;
+    }) || []
+  );
+
+  const isOnlyOneUser = allUserIds.length <= 1;
+  const userIds = allUserIds.filter((userId) => isOnlyOneUser || userId !== auth.uid);
+  const userNames = userIds.map((userId) => game.getUserName(userId)).join(", ");
+
+  return (
+    <>
+      <Stack
+        sx={{
+          flexDirection: "row",
+          minWidth: "44px",
+        }}
+      >
+        {userIds.map((userId, index) => {
+          return (
+            <Stack
+              key={userId}
+              sx={{
+                marginLeft: index === 0 ? "0" : "-30px",
+              }}
+            >
+              <Avatar url={game.getUserAvatarUrl(userId)} avatarSize={avatarSize} />
+            </Stack>
+          );
+        })}
+      </Stack>
+      <Stack
+        sx={{
+          alignItems: alignItems || "flex-start",
+        }}
+      >
+        <Typography
+          variant="body1"
+          sx={{
+            fontWeight: 600,
+          }}
+        >
+          {chat.type === "debate" && i18n._("Debate Chat")}
+          {chat.type === "dailyQuestion" && i18n._("Daily Question Chat")}
+          {chat.type === "global" && i18n._("Global Chat")}
+          {chat.type === "privateChat" && i18n._("Chat")}
+
+          {!chat.type && i18n._("Chat")}
+        </Typography>
+        <Typography variant="body2">{userNames}</Typography>
+      </Stack>
+    </>
   );
 };
