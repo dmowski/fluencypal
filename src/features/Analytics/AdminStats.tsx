@@ -713,6 +713,23 @@ export function AdminStats() {
     return lastLogin && dayjs().diff(dayjs(lastLogin), "hour") < 24;
   });
 
+  const secondDayVisitors = users.filter((user) => {
+    const createdAt = user.userData.createdAtIso;
+    const lastLogin = user.userData.lastLoginAtDateTime;
+    return (
+      createdAt &&
+      lastLogin &&
+      dayjs(lastLogin).diff(dayjs(createdAt), "hour") >= 24 &&
+      dayjs().diff(dayjs(lastLogin), "hour") < 48
+    );
+  });
+
+  const thirdAndMoreDayVisitors = users.filter((user) => {
+    const createdAt = user.userData.createdAtIso;
+    const lastLogin = user.userData.lastLoginAtDateTime;
+    return createdAt && lastLogin && dayjs(lastLogin).diff(dayjs(createdAt), "hour") >= 48;
+  });
+
   const todayMessagesCount = users.reduce((acc, user) => {
     const todayMessages = user.conversationMeta.todayMessages || 0;
     return acc + todayMessages;
@@ -793,6 +810,20 @@ export function AdminStats() {
                 <Typography className="value">{todayUsers.length}</Typography>
                 <Typography align="center" variant="body2" className="label">
                   Today Users
+                </Typography>
+              </Stack>
+
+              <Stack className="stat-card">
+                <Typography className="value">{secondDayVisitors.length}</Typography>
+                <Typography align="center" variant="body2" className="label">
+                  Second Day Visitors
+                </Typography>
+              </Stack>
+
+              <Stack className="stat-card">
+                <Typography className="value">{thirdAndMoreDayVisitors.length}</Typography>
+                <Typography align="center" variant="body2" className="label">
+                  Old Visitors
                 </Typography>
               </Stack>
             </Stack>
