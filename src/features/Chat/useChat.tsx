@@ -203,7 +203,15 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     await setDoc(likeDoc, newLike);
   };
 
+  const [isSending, setIsSending] = useState("");
+
   const addMessage = async ({ messageContent, parentMessageId }: AddMessageProps) => {
+    if (isSending) {
+      console.log("Already sending message:", isSending);
+      return;
+    }
+
+    setIsSending(messageContent);
     if (propsChatMetadata.type === "global") {
       const url = `https://www.fluencypal.com/ru/practice?page=community`;
       sendFeedbackMessageRequest(
@@ -215,7 +223,9 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     }
     const messagesRefInternal = await initMetadataIfNeeded();
 
-    if (!messagesRefInternal || !userId) return;
+    if (!messagesRefInternal || !userId) {
+      return;
+    }
 
     const createdAtIso = new Date().toISOString();
     const newMessage: UserChatMessage = {
@@ -242,6 +252,8 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     } else {
       console.log("Do not add points for dev");
     }
+
+    setIsSending("");
   };
 
   const deleteMessage = async (messageId: string) => {
