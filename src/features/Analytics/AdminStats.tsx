@@ -713,9 +713,10 @@ export function AdminStats() {
     return lastLogin && dayjs().diff(dayjs(lastLogin), "hour") < 24;
   });
 
-  const secondDayVisitors = users.filter((user) => {
+  const secondDayVisitors = todayUsers.filter((user) => {
     const createdAt = user.userData.createdAtIso;
     const lastLogin = user.userData.lastLoginAtDateTime;
+
     return (
       createdAt &&
       lastLogin &&
@@ -724,7 +725,7 @@ export function AdminStats() {
     );
   });
 
-  const thirdAndMoreDayVisitors = users.filter((user) => {
+  const thirdAndMoreDayVisitors = todayUsers.filter((user) => {
     const createdAt = user.userData.createdAtIso;
     const lastLogin = user.userData.lastLoginAtDateTime;
     return createdAt && lastLogin && dayjs(lastLogin).diff(dayjs(createdAt), "hour") >= 48;

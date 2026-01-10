@@ -23,7 +23,7 @@ export async function POST(request: Request) {
   }
 
   const allUsers = await getAllUsersWithIds({
-    limits: isFullExport ? 1_000_000 : 41,
+    limits: isFullExport ? 1_000_000 : 60,
   });
 
   const userStats = await Promise.all(
