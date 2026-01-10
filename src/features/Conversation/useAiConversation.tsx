@@ -836,7 +836,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 
     try {
       const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
-      if (isNeedToSaveUserInfo && conversation.length > 2) {
+      if (isNeedToSaveUserInfo && conversation.length > 4) {
         await aiUserInfo.updateUserInfo(conversation, languageCode);
       }
     } catch (e) {
