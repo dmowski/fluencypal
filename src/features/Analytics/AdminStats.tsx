@@ -118,8 +118,9 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
 
   const [showConversation, setShowConversation] = useState<Conversation | null>(null);
 
-  //
   const [showGoalPlan, setShowGoalPlan] = useState<GoalPlan | null>(null);
+
+  const exampleMessageFromQuiz = userStat.goalQuiz2[0]?.exampleOfWelcomeMessage || "";
 
   return (
     <Stack
@@ -497,6 +498,12 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                 {userStat.goalQuiz2[0]?.goalUserTranscription || ""}
               </Typography>
             </Stack>
+            {exampleMessageFromQuiz && (
+              <Stack>
+                <Typography variant="caption">Example welcome message:</Typography>
+                <Typography variant="body1">{exampleMessageFromQuiz}</Typography>
+              </Stack>
+            )}
 
             {aiUserInfo?.records && (
               <details open>
