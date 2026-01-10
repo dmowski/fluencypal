@@ -99,7 +99,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
 
     if (
       metaData.totalMessages === realTotalMessages &&
-      metaData.totalTopLevelMessagesIds.length === totalTopLevelMessagesIds.length
+      (metaData?.totalTopLevelMessagesIds?.length || 0) === totalTopLevelMessagesIds.length
     ) {
       return;
     }
