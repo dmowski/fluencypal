@@ -26,6 +26,8 @@ import { useTranslate } from "../Translation/useTranslate";
 import { Avatar } from "../Game/Avatar";
 import { CircleEllipsis } from "lucide-react";
 
+const limitMessages = 300;
+
 interface MessageProps {
   message: UserChatMessage;
 
@@ -53,7 +55,6 @@ export function Message({
     setIsShowFullContent(isFullContentByDefault);
   }, [isFullContentByDefault]);
 
-  const limitMessages = 260;
   const isLimitedMessage = message.content.length > limitMessages && !isShowFullContent;
 
   const auth = useAuth();
