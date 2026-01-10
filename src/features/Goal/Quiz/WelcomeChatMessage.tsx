@@ -1,6 +1,8 @@
 import { useAuth } from "@/features/Auth/useAuth";
 import { ChatSection } from "@/features/Chat/ChatSection";
 import { ChatProvider, useChat } from "@/features/Chat/useChat";
+import { GameMyAvatar } from "@/features/Game/GameMyAvatar";
+import { GameMyUsername } from "@/features/Game/GameMyUsername";
 import { InfoStep } from "@/features/Survey/InfoStep";
 import { useLingui } from "@lingui/react";
 import { Stack, Typography } from "@mui/material";
@@ -90,6 +92,17 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
             gap: "20px",
           }}
         >
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "15px",
+              width: "max-content",
+            }}
+          >
+            <GameMyAvatar avatarSize="45px" />
+            <GameMyUsername align={"flex-start"} />
+          </Stack>
           {exampleToRecord}
           <ChatSection
             contextForAiAnalysis=""
