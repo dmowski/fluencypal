@@ -387,13 +387,13 @@ ${survey.aboutUserFollowUpTranscription}
       fullLanguageName[languageToLearn]
     } language. The welcome message should be friendly, engaging, and reflect the user's personality based on their self-description.
 
-The welcome message should be concise, ideally between 30 to 50 words, and should include:
+The welcome message should be concise, ideally between 20 to 40 words, and should include:
 1. A brief introduction of the user.
 2. Their motivation for learning ${fullLanguageName[languageToLearn]}.
 3. What they hope to achieve.
 
-Example of your response:
-Hello everyone! I'm [Your Name], excited to join this community as I embark on my journey to learn ${fullLanguageName[languageToLearn]}. I'm passionate about [Your Interests] and look forward to connecting with fellow learners. My goal is to become fluent and immerse myself in the culture. Let's learn together!
+Example of your response (Use for inspiration only, do not copy):
+Hello everyone! I'm excited to join this community as I embark on my journey to learn ${fullLanguageName[languageToLearn]}. I'm passionate about [Your Interests] and look forward to connecting with fellow learners. My goal is to become fluent and immerse myself in the culture. Let's learn together!
 `;
 
     const usersInfo = [
