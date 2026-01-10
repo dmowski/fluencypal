@@ -149,7 +149,7 @@ export const ConversationReviewModal = ({
                 size="large"
                 color="info"
               >
-                {i18n._(`Join community chat`)}
+                {i18n._(`Open community chat`)}
               </Button>
             </Badge>
 
