@@ -104,17 +104,34 @@ export const ChatPage = () => {
                   >
                     <Stack
                       sx={{
-                        background: `url('${activeChatBgImage}') no-repeat center center`,
                         position: "absolute",
-                        top: 0,
-                        left: 0,
+                        top: "0",
+                        left: "0",
                         width: "100%",
                         height: "100%",
-                        backgroundSize: "cover",
-                        opacity: 0.1,
-                        filter: "blur(22px)",
+                        overflow: "hidden",
+                        borderRadius: "15px 15px 0 0",
+                        zIndex: -1,
                       }}
-                    />
+                    >
+                      <Stack
+                        sx={{
+                          background: `url('${activeChatBgImage}') no-repeat center center`,
+                          width: "calc(100% + 30px)",
+                          height: "calc(100% + 20px)",
+                          position: "relative",
+                          top: "-15px",
+                          left: "-15px",
+                          backgroundPosition: "center",
+                          backgroundSize: "cover",
+                          opacity: 0.06,
+                          filter: "blur(22px)",
+                          overflow: "hidden",
+                          border: "10px solid red",
+                        }}
+                      />
+                    </Stack>
+
                     <Stack
                       sx={{
                         alignItems: "center",
