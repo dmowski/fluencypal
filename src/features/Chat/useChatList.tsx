@@ -56,9 +56,11 @@ function useProvideChatList(): ChatListContextType {
       });
     const unreadCount = Object.values(unreadLocalData).reduce((a, b) => a + b, 0);
 
-    const readMessagesCountGlobal = Object.keys(myReadStatsData?.["global"] || {}).length;
-    const totalMessagesCountGlobal = globalChat?.totalMessages || 0;
-    const unreadCountGlobal = Math.max(0, totalMessagesCountGlobal - readMessagesCountGlobal);
+    const readGlobalIds = Object.keys(myReadStatsData?.["global"] || {});
+    const totalMessagesCountGlobal = globalChat?.totalTopLevelMessagesIds || [];
+    const unreadCountGlobal = totalMessagesCountGlobal.filter(
+      (id) => !readGlobalIds.includes(id)
+    ).length;
 
     return { unreadSpaces: unreadLocalData, myUnreadCount: unreadCount, unreadCountGlobal };
   }, [myChats, myReadStatsData, globalChat]);
