@@ -221,13 +221,6 @@ const QuizQuestions = () => {
               <InfoStep
                 title={i18n._(`Let's continue...`)}
                 subTitle={i18n._(`I'll ask you two more questions before I make your plan.`)}
-                subComponent={
-                  <Stack
-                    sx={{
-                      paddingTop: "20px",
-                    }}
-                  ></Stack>
-                }
                 onClick={nextStep}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
@@ -264,13 +257,6 @@ const QuizQuestions = () => {
               <InfoStep
                 title={i18n._(`Almost there...`)}
                 subTitle={i18n._(`The last question before we create your plan`)}
-                subComponent={
-                  <Stack
-                    sx={{
-                      paddingTop: "20px",
-                    }}
-                  ></Stack>
-                }
                 onClick={nextStep}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}

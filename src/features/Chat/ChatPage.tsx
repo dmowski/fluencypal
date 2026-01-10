@@ -10,6 +10,7 @@ import { useGame } from "../Game/useGame";
 import { Avatar } from "../Game/Avatar";
 import { uniq } from "@/libs/uniq";
 import { UserChatMetadata } from "./type";
+import dayjs from "dayjs";
 
 export const ChatPage = () => {
   const { i18n } = useLingui();
@@ -124,7 +125,7 @@ export const ChatPage = () => {
                           left: "-15px",
                           backgroundPosition: "center",
                           backgroundSize: "cover",
-                          opacity: 0.06,
+                          opacity: 0.1,
                           filter: "blur(22px)",
                           overflow: "hidden",
                           border: "10px solid red",
@@ -155,7 +156,7 @@ export const ChatPage = () => {
                         gap: "20px",
                       }}
                     >
-                      <ChatHeader chat={chatMetadata} avatarSize="100px" alignItems="center" />
+                      <ChatHeaderFull chat={chatMetadata} />
                     </Stack>
                   </Stack>
 
@@ -255,7 +256,7 @@ export const ChatPage = () => {
                                 gap: "10px",
                               }}
                             >
-                              <ChatHeader chat={chat} />
+                              <ChatHeaderList chat={chat} />
                             </Stack>
                             <Stack
                               sx={{
@@ -283,15 +284,7 @@ export const ChatPage = () => {
   );
 };
 
-const ChatHeader = ({
-  chat,
-  avatarSize = "40px",
-  alignItems,
-}: {
-  chat: UserChatMetadata;
-  avatarSize?: string;
-  alignItems?: "center" | "flex-start";
-}) => {
+const ChatHeaderList = ({ chat }: { chat: UserChatMetadata }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const game = useGame();
@@ -308,6 +301,12 @@ const ChatHeader = ({
   const isOnlyOneUser = allUserIds.length <= 1;
   const userIds = allUserIds.filter((userId) => isOnlyOneUser || userId !== auth.uid);
   const userNames = userIds.map((userId) => game.getUserName(userId)).join(", ");
+  const lastVisited = dayjs(
+    userIds
+      .map((userId) => game.gameLastVisit?.[userId])
+      .sort()
+      .reverse()[0] || Date.now()
+  ).fromNow();
 
   return (
     <>
@@ -325,22 +324,17 @@ const ChatHeader = ({
                 marginLeft: index === 0 ? "0" : "-30px",
               }}
             >
-              <Avatar url={game.getUserAvatarUrl(userId)} avatarSize={avatarSize} />
+              <Avatar url={game.getUserAvatarUrl(userId)} avatarSize={"30px"} />
             </Stack>
           );
         })}
       </Stack>
       <Stack
         sx={{
-          alignItems: alignItems || "flex-start",
+          alignItems: "flex-start",
         }}
       >
-        <Typography
-          variant="body1"
-          sx={{
-            fontWeight: 600,
-          }}
-        >
+        <Typography variant="caption">
           {chat.type === "debate" && i18n._("Debate Chat")}
           {chat.type === "dailyQuestion" && i18n._("Daily Question Chat")}
           {chat.type === "global" && i18n._("Global Chat")}
@@ -348,7 +342,102 @@ const ChatHeader = ({
 
           {!chat.type && i18n._("Chat")}
         </Typography>
-        <Typography variant="body2">{userNames}</Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            fontWeight: 600,
+          }}
+        >
+          {userNames}
+        </Typography>
+      </Stack>
+    </>
+  );
+};
+
+const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
+  const { i18n } = useLingui();
+  const auth = useAuth();
+  const game = useGame();
+
+  const allUserIds = uniq(
+    chat.allowedUserIds?.sort((a, b) => {
+      // me first
+      if (a === auth.uid) return -1;
+      if (b === auth.uid) return 1;
+      return 0;
+    }) || []
+  );
+
+  const isOnlyOneUser = allUserIds.length <= 1;
+  const userIds = allUserIds.filter((userId) => isOnlyOneUser || userId !== auth.uid);
+  const userNames = userIds.map((userId) => game.getUserName(userId)).join(", ");
+  const lastVisited = dayjs(
+    userIds
+      .map((userId) => game.gameLastVisit?.[userId])
+      .sort()
+      .reverse()[0] || Date.now()
+  ).fromNow();
+
+  return (
+    <>
+      <Stack
+        sx={{
+          flexDirection: "row",
+          minWidth: "44px",
+        }}
+      >
+        {userIds.map((userId, index) => {
+          return (
+            <Stack
+              key={userId}
+              sx={{
+                marginLeft: index === 0 ? "0" : "-30px",
+              }}
+            >
+              <Avatar url={game.getUserAvatarUrl(userId)} avatarSize={"90px"} />
+            </Stack>
+          );
+        })}
+      </Stack>
+      <Stack
+        sx={{
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="caption">
+          {chat.type === "debate" && i18n._("Debate Chat")}
+          {chat.type === "dailyQuestion" && i18n._("Daily Question Chat")}
+          {chat.type === "global" && i18n._("Global Chat")}
+          {chat.type === "privateChat" && i18n._("Chat")}
+
+          {!chat.type && i18n._("Chat")}
+        </Typography>
+
+        <Typography
+          variant="h4"
+          sx={{
+            //fontWeight: 600,
+            "@media (max-width: 600px)": {
+              fontSize: "23px",
+            },
+          }}
+        >
+          {userNames}
+        </Typography>
+
+        <Typography
+          variant="caption"
+          sx={{
+            opacity: 0.7,
+            paddingTop: "4px",
+            position: "absolute",
+            top: "10px",
+            right: "15px",
+          }}
+        >
+          {i18n._("Last visited: {lastVisited}", { lastVisited })}
+        </Typography>
       </Stack>
     </>
   );
