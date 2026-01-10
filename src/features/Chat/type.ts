@@ -25,7 +25,7 @@ export interface UserChatMetadata extends UserChatMetadataStatic {
 // Metadata about a user in a chat space
 export interface ChatSpaceUserReadMetadata {
   // messageId, time when the user first read the message
-  [chatId: string]: {
+  [spaceId: string]: {
     [messageId: string]: boolean;
   };
 }
