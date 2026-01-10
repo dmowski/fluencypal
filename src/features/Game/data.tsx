@@ -8,7 +8,19 @@ export const allGameTypes: GameQuestionType[] = [
   "read_text",
 ];
 
-export const allAchievementTypes: GameAchievement[] = [...allGameTypes, "chat_message"];
+const achievementMap: Record<GameAchievement, boolean> = {
+  translate: true,
+  sentence: true,
+  describe_image: true,
+  topic_to_discuss: true,
+  read_text: true,
+  chat_message: true,
+  ai_conversation: true,
+};
+
+export const allAchievementTypes: GameAchievement[] = Object.keys(
+  achievementMap
+) as GameAchievement[];
 
 export const achievementsMaxPoints: Record<GameAchievement, number> = {
   translate: 50,

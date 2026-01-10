@@ -58,6 +58,7 @@ export const useConversationsAnalysis = () => {
           {
             aiConversationId: activeConversationId,
             aiConversationPoints: pointsEarned,
+            aiConversationUserId: auth.uid || "",
           },
           await auth.getToken()
         );

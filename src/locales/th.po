@@ -408,7 +408,7 @@ msgstr "พิชิตการสัมภาษณ์งานเป็นน
 msgid "Achieve Speaking Fluency Fast"
 msgstr "บรรลุความคล่องแคล่วในการพูดได้อย่างรวดเร็ว"
 
-#: src/features/Game/UserProfileModal.tsx:302
+#: src/features/Game/UserProfileModal.tsx:304
 #. js-lingui-explicit-id
 msgid "Achievements"
 msgstr ""
@@ -833,7 +833,7 @@ msgstr "คุณแน่ใจไหมว่าต้องการลบเ
 msgid "Are you sure you want to reject this battle?"
 msgstr "คุณแน่ใจหรือว่าต้องการปฏิเสธการต่อสู้นี้?"
 
-#: src/features/Conversation/useConversationsAnalysis.ts:53
+#: src/features/Conversation/useConversationsAnalysis.ts:87
 #. js-lingui-explicit-id
 msgid "Areas to improve"
 msgstr "พื้นที่ที่ต้องปรับปรุง"
@@ -1299,19 +1299,15 @@ msgstr "ผลประโยชน์ทางอาชีพ:"
 #: src/features/Chat/ChatPage.tsx:347
 #: src/features/Chat/ChatPage.tsx:349
 #: src/features/Game/GamePage.tsx:169
+#: src/features/Game/UserProfileModal.tsx:94
 #. js-lingui-explicit-id
 msgid "Chat"
 msgstr "แชท"
 
-#: src/features/Game/UserProfileModal.tsx:390
+#: src/features/Game/UserProfileModal.tsx:392
 #. js-lingui-explicit-id
 msgid "Chat between you and {userName}"
 msgstr "การสนทนาระหว่างคุณกับ {userName}"
-
-#: src/features/Game/UserProfileModal.tsx:93
-#. js-lingui-explicit-id
-msgid "Chat Enthusiast"
-msgstr "ผู้ที่ชื่นชอบการแชท"
 
 #: src/features/Usage/UsageStatsCards.tsx:181
 #. js-lingui-explicit-id
@@ -1444,7 +1440,7 @@ msgstr ""
 #: src/features/Conversation/CallMode/CallButtons.tsx:358
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:219
-#: src/features/Game/UserProfileModal.tsx:136
+#: src/features/Game/UserProfileModal.tsx:138
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1773,12 +1769,12 @@ msgstr "การแก้ไขเมื่อคุณติดขัด"
 msgid "Could not find page"
 msgstr "ไม่พบหน้าที่ต้องการ"
 
-#: src/features/Conversation/ConversationPage.tsx:144
+#: src/features/Conversation/ConversationPage.tsx:145
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "กำลังสร้างกฎใหม่..."
 
-#: src/features/Conversation/ConversationPage.tsx:140
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "การสร้างคำใหม่..."
@@ -2018,12 +2014,12 @@ msgstr "การสนทนาโต้แย้ง"
 msgid "Debate ended!"
 msgstr "การถกเถียงสิ้นสุดลง!"
 
-#: src/features/Game/UserProfileModal.tsx:147
+#: src/features/Game/UserProfileModal.tsx:149
 #. js-lingui-explicit-id
 msgid "Debate Request"
 msgstr "คำขอการโต้วาที"
 
-#: src/features/Game/UserProfileModal.tsx:134
+#: src/features/Game/UserProfileModal.tsx:136
 #. js-lingui-explicit-id
 msgid "Debate Request Sent!"
 msgstr "คำขอการโต้วาทีถูกส่งแล้ว!"
@@ -2033,7 +2029,7 @@ msgstr "คำขอการโต้วาทีถูกส่งแล้ว
 msgid "Debate started!"
 msgstr "การโต้วาทีเริ่มขึ้นแล้ว!"
 
-#: src/features/Game/UserProfileModal.tsx:168
+#: src/features/Game/UserProfileModal.tsx:170
 #. js-lingui-explicit-id
 msgid "Debate topics will be selected randomly."
 msgstr "หัวข้ออภิปรายจะถูกสุ่มเลือก"
@@ -2247,7 +2243,7 @@ msgstr ""
 "ค้นพบวิธีการฝึกฝนทุกวันที่มีประสิทธิภาพในการปรับปรุงทักษะภาษาอังกฤษเพื่อธุรก"
 "ิจของคุณโดยไม่ยากลำบากและรวดเร็ว"
 
-#: src/features/Game/UserProfileModal.tsx:148
+#: src/features/Game/UserProfileModal.tsx:150
 #. js-lingui-explicit-id
 msgid "Discuss and improve your skills together!"
 msgstr "พูดคุยและพัฒนาทักษะของคุณไปพร้อมกัน!"
@@ -2692,8 +2688,8 @@ msgstr ""
 "ผู้สมัครระดับเริ่มต้นที่มุ่งเป้าไปยังสตาร์ทอัพหรือเอเจนซี่ที่มีสแต็คการพัฒนา"
 "เว็บสมัยใหม่"
 
-#: src/features/Conversation/useConversationsAnalysis.ts:87
-#: src/features/Conversation/useConversationsAnalysis.ts:130
+#: src/features/Conversation/useConversationsAnalysis.ts:124
+#: src/features/Conversation/useConversationsAnalysis.ts:170
 #. js-lingui-explicit-id
 msgid "Error analyzing conversation"
 msgstr "ข้อผิดพลาดในการวิเคราะห์บทสนทนา"
@@ -4719,7 +4715,7 @@ msgid ""
 "contact us."
 msgstr "ถ้าคุณต้องการลบข้อมูลทั้งหมด รวมถึงยอดคงเหลือของคุณ กรุณาติดต่อเรา"
 
-#: src/features/Game/UserProfileModal.tsx:90
+#: src/features/Game/UserProfileModal.tsx:91
 #. js-lingui-explicit-id
 msgid "Image Describer"
 msgstr "คำอธิบายภาพ"
@@ -5455,7 +5451,7 @@ msgstr "บทนำ: การคุยเล่นกับผู้สัม�
 msgid "Invite Link Sent to:"
 msgstr "ลิงก์เชิญถูกส่งไปยัง:"
 
-#: src/features/Game/UserProfileModal.tsx:245
+#: src/features/Game/UserProfileModal.tsx:247
 #. js-lingui-explicit-id
 msgid "Invite to a debate"
 msgstr "เชิญเข้าร่วมการอภิปราย"
@@ -5693,7 +5689,7 @@ msgstr "แหล่งข้อมูลการเรียนรู้ภา
 msgid "Language Learning Tips"
 msgstr "เคล็ดลับการเรียนภาษา"
 
-#: src/features/Conversation/useConversationsAnalysis.ts:56
+#: src/features/Conversation/useConversationsAnalysis.ts:90
 #. js-lingui-explicit-id
 msgid "Language level"
 msgstr "ระดับภาษา"
@@ -5893,7 +5889,7 @@ msgstr ""
 "\n"
 "โหลดเพิ่มเติม\n"
 
-#: src/features/Conversation/ConversationPage.tsx:116
+#: src/features/Conversation/ConversationPage.tsx:117
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "กำลังโหลดวัตถุประสงค์..."
@@ -5913,9 +5909,9 @@ msgstr "กำลังโหลด.."
 #: src/features/Conversation/CallMode/CallButtons.tsx:285
 #: src/features/Conversation/ConversationCanvas.tsx:240
 #: src/features/Conversation/ConversationCanvas.tsx:846
-#: src/features/Conversation/ConversationPage.tsx:103
-#: src/features/Conversation/ConversationPage.tsx:112
-#: src/features/Conversation/ConversationPage.tsx:132
+#: src/features/Conversation/ConversationPage.tsx:104
+#: src/features/Conversation/ConversationPage.tsx:113
+#: src/features/Conversation/ConversationPage.tsx:133
 #: src/features/Game/GamePage.tsx:150
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
@@ -6938,7 +6934,7 @@ msgstr "กรุณาแตะที่เมนู ⋮ และเลือ�
 msgid "Please wait while we process your payment."
 msgstr "โปรดรอในขณะที่เราดำเนินการชำระเงินของคุณ"
 
-#: src/features/Game/UserProfileModal.tsx:290
+#: src/features/Game/UserProfileModal.tsx:292
 #. js-lingui-explicit-id
 msgid "Points"
 msgstr "คะแนน"
@@ -6953,7 +6949,7 @@ msgstr "แผนการเรียนรู้ภาษาโปแลนด
 msgid "Portuguese Learning Plan"
 msgstr "แผนการเรียนภาษาโปรตุเกส"
 
-#: src/features/Game/UserProfileModal.tsx:273
+#: src/features/Game/UserProfileModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "ตำแหน่ง"
@@ -7575,7 +7571,7 @@ msgstr ""
 msgid "Read the text"
 msgstr "อ่านข้อความ"
 
-#: src/features/Game/UserProfileModal.tsx:92
+#: src/features/Game/UserProfileModal.tsx:93
 #. js-lingui-explicit-id
 msgid "Reader"
 msgstr "ผู้อ่าน"
@@ -8127,7 +8123,7 @@ msgstr "ส่งลิงก์สำหรับเข้าสู่ระบ
 msgid "Send Message"
 msgstr "ส่งข้อความ"
 
-#: src/features/Game/UserProfileModal.tsx:150
+#: src/features/Game/UserProfileModal.tsx:152
 #. js-lingui-explicit-id
 msgid "Send Request"
 msgstr "ส่งคำขอ"
@@ -8170,7 +8166,7 @@ msgstr ""
 msgid "senior frontend interview"
 msgstr "การสัมภาษณ์ Frontend อาวุโส"
 
-#: src/features/Game/UserProfileModal.tsx:89
+#: src/features/Game/UserProfileModal.tsx:90
 #. js-lingui-explicit-id
 msgid "Sentence Builder"
 msgstr "ตัวสร้างประโยค"
@@ -8933,6 +8929,11 @@ msgstr "การพูดถึงจุดแข็งและจุดอ่
 msgid "Talking to a Doctor"
 msgstr "พูดคุยกับแพทย์"
 
+#: src/features/Game/UserProfileModal.tsx:95
+#. js-lingui-explicit-id
+msgid "Talks with AI"
+msgstr "การสนทนากับ AI"
+
 #: src/features/Landing/LandingPage.tsx:368
 #. js-lingui-explicit-id
 msgid ""
@@ -9184,7 +9185,7 @@ msgstr ""
 "คำติชมเฉพาะบุคคลได้แสดงให้ฉันเห็นอย่างชัดเจนว่าฉันทำอะไรผิดในคำอธิบายทางเทคน"
 "ิคของฉัน ถือเป็นตัวเปลี่ยนเกม"
 
-#: src/features/Game/UserProfileModal.tsx:162
+#: src/features/Game/UserProfileModal.tsx:164
 #. js-lingui-explicit-id
 msgid "The request will be sent to user {userName}."
 msgstr "คำขอจะถูกส่งไปยังผู้ใช้ {userName}."
@@ -9194,7 +9195,7 @@ msgstr "คำขอจะถูกส่งไปยังผู้ใช้ {u
 msgid "The winner earns {points} game points!"
 msgstr "ผู้ชนะได้รับ {points} คะแนนจากเกม!"
 
-#: src/features/Game/UserProfileModal.tsx:156
+#: src/features/Game/UserProfileModal.tsx:158
 #. js-lingui-explicit-id
 msgid "The winner gets {points} game points!"
 msgstr "ผู้ชนะได้รับ {points} คะแนนเกม!"
@@ -9273,7 +9274,7 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "งานพูดในส่วนของ TOEFL"
 
-#: src/features/Game/UserProfileModal.tsx:91
+#: src/features/Game/UserProfileModal.tsx:92
 #. js-lingui-explicit-id
 msgid "Topic Talker"
 msgstr "ผู้พูดหัวข้อ"
@@ -9315,15 +9316,15 @@ msgstr "กำลังถอดความ..."
 msgid "Translate"
 msgstr "แปล"
 
-#: src/features/Game/UserProfileModal.tsx:88
-#. js-lingui-explicit-id
-msgid "Translate Guru"
-msgstr "แปลกูรู"
-
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:70
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "แปลคำว่า"
+
+#: src/features/Game/UserProfileModal.tsx:89
+#. js-lingui-explicit-id
+msgid "Translates"
+msgstr "แปลภาษา"
 
 #: src/features/RolePlay/rolePlayData.tsx:336
 #: src/features/RolePlay/rolePlayData.tsx:460
@@ -9607,7 +9608,7 @@ msgstr "กำลังรอผู้เล่นคนอื่นยอมร
 msgid "Waiting for payment..."
 msgstr "รอการชำระเงิน..."
 
-#: src/features/Game/UserProfileModal.tsx:135
+#: src/features/Game/UserProfileModal.tsx:137
 #. js-lingui-explicit-id
 msgid "Waiting for {userName} to respond."
 msgstr "กำลังรอการตอบกลับจาก {userName}"
@@ -9940,7 +9941,7 @@ msgstr "ฉันสามารถฝึกซ้อมสำหรับกา
 msgid "What was great:"
 msgstr "สิ่งที่ดีที่สุด:"
 
-#: src/features/Conversation/useConversationsAnalysis.ts:50
+#: src/features/Conversation/useConversationsAnalysis.ts:84
 #. js-lingui-explicit-id
 msgid "What went well"
 msgstr "สิ่งที่ทำได้ดี"
@@ -10364,7 +10365,7 @@ msgstr ""
 "ีกเลี่ยง\n"
 "                          การหยุดชะงักของบริการ"
 
-#: src/features/Game/UserProfileModal.tsx:173
+#: src/features/Game/UserProfileModal.tsx:175
 #. js-lingui-explicit-id
 msgid "You can track the progress on the main page."
 msgstr "คุณสามารถติดตามความคืบหน้าได้ที่หน้าหลัก"
@@ -10669,6 +10670,16 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Game/UserProfileModal.tsx:94
+#. js-lingui-explicit-id
+#~ msgid "Chat Enthusiast"
+#~ msgstr "ผู้ที่ชื่นชอบการแชท"
+
+#: src/features/Game/UserProfileModal.tsx:89
+#. js-lingui-explicit-id
+#~ msgid "Translate Guru"
+#~ msgstr "แปลกูรู"
 
 #: src/features/Chat/ChatPage.tsx:90
 #. js-lingui-explicit-id

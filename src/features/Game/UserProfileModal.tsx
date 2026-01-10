@@ -86,12 +86,12 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
   const position = game.getRealPosition(stat.userId);
 
   const achievementsLabelMap: Record<GameAchievement, string> = {
-    translate: i18n._("Translate Guru"),
+    translate: i18n._("Translates"),
     sentence: i18n._("Sentence Builder"),
     describe_image: i18n._("Image Describer"),
     topic_to_discuss: i18n._("Topic Talker"),
     read_text: i18n._("Reader"),
-    chat_message: i18n._("Chat Enthusiast"),
+    chat_message: i18n._("Chat"),
     ai_conversation: i18n._("Talks with AI"),
   };
 
