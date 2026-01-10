@@ -1,5 +1,14 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useMemo, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  JSX,
+  useMemo,
+  useState,
+  useEffect,
+  useRef,
+} from "react";
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useAuth } from "../Auth/useAuth";
 import { db } from "../Firebase/firebaseDb";
@@ -203,15 +212,15 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     await setDoc(likeDoc, newLike);
   };
 
-  const [isSending, setIsSending] = useState("");
+  const isSending = useRef<string>("");
 
   const addMessage = async ({ messageContent, parentMessageId }: AddMessageProps) => {
-    if (isSending) {
-      console.log("Already sending message:", isSending);
+    if (isSending.current) {
+      console.log("Already sending message:", isSending.current);
       return;
     }
 
-    setIsSending(messageContent);
+    isSending.current = messageContent;
     if (propsChatMetadata.type === "global") {
       const url = `https://www.fluencypal.com/ru/practice?page=community`;
       sendFeedbackMessageRequest(
@@ -253,7 +262,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       console.log("Do not add points for dev");
     }
 
-    setIsSending("");
+    isSending.current = "";
   };
 
   const deleteMessage = async (messageId: string) => {
