@@ -110,15 +110,16 @@ export const ConversationReviewModal = ({
             sx={{
               padding: "0 10px",
               boxSizing: "border-box",
+              alignItems: "flex-start",
+              width: "100%",
             }}
           >
             <Button
-              fullWidth
               onClick={() => closeConversation()}
-              variant="outlined"
+              variant="contained"
               color="info"
               size="large"
-              endIcon={<AddIcon />}
+              endIcon={<ChevronRight />}
               disabled={!conversationAnalysisResult}
             >
               {i18n._(`Start new lesson`)}
@@ -130,10 +131,9 @@ export const ConversationReviewModal = ({
                 setIsShowAnalyzeConversationModal(false);
                 setIsConversationContinueAfterAnalyze(true);
               }}
-              variant="contained"
+              variant="text"
               size="large"
               color="info"
-              endIcon={<ChevronRight />}
             >
               {i18n._(`Continue conversation`)}
             </Button>
