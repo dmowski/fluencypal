@@ -125,6 +125,10 @@ export const CameraCanvas = ({
     analyzeWebcam();
   }, [isTimeToScreenshots, isAiSpeaking, screenshotTimer]);
 
+  useEffect(() => {
+    if (isCompletedLesson) setIsMuted(true);
+  }, [isCompletedLesson]);
+
   return (
     <>
       <Stack

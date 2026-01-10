@@ -145,7 +145,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   return (
     <Stack>
       <ConversationCanvas
-        messagesToComplete={5}
+        messagesToComplete={2}
         messageOrder={{}}
         isMuted
         conversation={testMessage}
