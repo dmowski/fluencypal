@@ -14,6 +14,7 @@ import {
 } from "./type";
 import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
 import { useUrlState } from "../Url/useUrlParam";
+import { sendFeedbackMessageRequest } from "@/app/api/telegram/sendFeedbackMessageRequest";
 
 interface AddMessageProps {
   messageContent: string;
@@ -203,6 +204,14 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
   };
 
   const addMessage = async ({ messageContent, parentMessageId }: AddMessageProps) => {
+    if (propsChatMetadata.type === "global") {
+      sendFeedbackMessageRequest(
+        {
+          message: `💬 New message in global chat:\n\n${messageContent}`,
+        },
+        await auth.getToken()
+      );
+    }
     const messagesRefInternal = await initMetadataIfNeeded();
 
     if (!messagesRefInternal || !userId) return;
