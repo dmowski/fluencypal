@@ -46,7 +46,7 @@ export const AuthWall = ({
           iconName: "book-type",
         },
         {
-          title: i18n._("Practice real-life situations in advance"),
+          title: i18n._("Community support to keep you motivated"),
           iconName: "users-round",
         },
       ]}
