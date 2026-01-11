@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useUrlState } from "../Url/useUrlParam";
 import { useSettings } from "../Settings/useSettings";
 import { ChatPage } from "../Chat/ChatPage";
+import { useChatList } from "../Chat/useChatList";
 
 const TabLabel = ({
   badgeNumber,
@@ -55,6 +56,8 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const settings = useSettings();
   const isGameOnboardingCompleted = settings.userSettings?.isGameOnboardingCompleted;
   const [isShowOnboarding, setIsShowOnboarding] = useState(false);
+
+  const chatList = useChatList();
 
   const onPlayClick = () => {
     if (!isGameOnboardingCompleted) {
@@ -186,7 +189,13 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               />
 
               <Tab
-                label={<TabLabel label={i18n._(`My Chats`)} />}
+                label={
+                  <TabLabel
+                    label={i18n._(`My Chats`)}
+                    badgeNumber={chatList.myUnreadCount ? chatList.myUnreadCount : undefined}
+                    badgeHighlight
+                  />
+                }
                 value={"dm"}
                 sx={{
                   padding: "0 10px 0 10px",
