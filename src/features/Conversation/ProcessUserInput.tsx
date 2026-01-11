@@ -113,6 +113,21 @@ export const ProcessUserInput = ({
   const isLimitedMessage = contentToShow.length > limitMessages && !isShowFullContent;
   const messagesFontSize = userMessage.length < 320 ? "1.1rem" : "0.9rem";
 
+  const [isTranslatingCorrectedMessage, setIsTranslatingCorrectedMessage] = useState(false);
+  const [translatedCorrectedMessage, setTranslatedCorrectedMessage] = useState<string | null>(null);
+
+  const onTranslateCorrectedMessage = async () => {
+    if (!correctedMessage) return;
+    if (translatedCorrectedMessage) {
+      setTranslatedCorrectedMessage(null);
+      return;
+    }
+    setIsTranslatingCorrectedMessage(true);
+    const translated = await translator.translateText({ text: correctedMessage || "" });
+    setTranslatedCorrectedMessage(translated);
+    setIsTranslatingCorrectedMessage(false);
+  };
+
   return (
     <Stack
       sx={{
@@ -328,18 +343,22 @@ export const ProcessUserInput = ({
                       default: {},
                     }}
                     oldValue={
-                      isTranscribing
-                        ? i18n._("Transcribing...")
-                        : isAnalyzingResponse
-                          ? i18n._("Analyzing...")
-                          : userMessage || ""
+                      translatedCorrectedMessage
+                        ? translatedCorrectedMessage
+                        : isTranscribing
+                          ? i18n._("Transcribing...")
+                          : isAnalyzingResponse
+                            ? i18n._("Analyzing...")
+                            : userMessage || ""
                     }
                     newValue={
-                      isTranscribing
-                        ? i18n._("Transcribing...")
-                        : isAnalyzingResponse
-                          ? i18n._("Analyzing...")
-                          : correctedMessage || userMessage || ""
+                      translatedCorrectedMessage
+                        ? translatedCorrectedMessage
+                        : isTranscribing
+                          ? i18n._("Transcribing...")
+                          : isAnalyzingResponse
+                            ? i18n._("Analyzing...")
+                            : correctedMessage || userMessage || ""
                     }
                   />
                 </Typography>
@@ -361,7 +380,8 @@ export const ProcessUserInput = ({
                 voice={"coral"}
               />
               <IconButton
-                onClick={(e) => translator.translateWithModal(correctedMessage, e.currentTarget)}
+                onClick={onTranslateCorrectedMessage}
+                disabled={isTranslatingCorrectedMessage}
               >
                 <Languages size={"16px"} style={{ opacity: 0.8 }} />
               </IconButton>
@@ -369,7 +389,6 @@ export const ProcessUserInput = ({
           )}
         </Stack>
       </Stack>
-      {translator.translateModal}
     </Stack>
   );
 };

@@ -8,8 +8,9 @@ import MicIcon from "@mui/icons-material/Mic";
 import { CHAT_MESSAGE_POINTS } from "./data";
 import { useEffect, useState } from "react";
 import { ProcessUserInput } from "../Conversation/ProcessUserInput";
-import { Keyboard, Mic, TextSearch, Trash } from "lucide-react";
+import { Keyboard, Lightbulb, Mic, TextSearch, Trash } from "lucide-react";
 import { GamePlusPoints } from "../Game/gameQuestionScreens/gameCoreUI";
+import { useTextAi } from "../Ai/useTextAi";
 
 interface SubmitFormProps {
   onSubmit: (message: string) => Promise<void>;
@@ -33,6 +34,7 @@ export function SubmitForm({
   });
 
   const [isSending, setIsSending] = useState(false);
+  const ai = useTextAi();
 
   const submitTranscription = async () => {
     setIsSending(true);
@@ -72,6 +74,32 @@ export function SubmitForm({
     await onSubmit(textMessage.trim());
     setTextMessage("");
     setPreSubmitTextMessage("");
+  };
+
+  const [ideaForMessage, setIdeaForMessage] = useState("");
+  const [isGeneratingIdea, setIsGeneratingIdea] = useState(false);
+  const generateIdeasForMessage = async () => {
+    setIsGeneratingIdea(true);
+    setIdeaForMessage(i18n._("Loading..."));
+    const systemMessage = `You are an assistant that helps users come up with ideas for messages they can send in a chat to boost conversation. 
+
+Provide a short idea for a message the user can send in a chat to gain interest.
+
+The idea should be concise, engaging and provocative.
+
+Do not wrap the idea in quotes or punctuation.
+Keep it under 20 words.
+Provide only the message user can send, without any additional explanation or context.
+`;
+
+    const userMessage = `Context (Previous chat message): ${previousBotMessage}`;
+    const idea = await ai.generate({
+      systemMessage: systemMessage,
+      userMessage: userMessage,
+      model: "gpt-4o",
+    });
+    setIdeaForMessage(idea);
+    setIsGeneratingIdea(false);
   };
 
   return (
@@ -114,6 +142,22 @@ export function SubmitForm({
             position: "relative",
           }}
         >
+          {ideaForMessage && (
+            <Stack>
+              <Typography
+                className={isGeneratingIdea ? "loading-shimmer" : ""}
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._("Idea for your message:")}
+              </Typography>
+              <Typography className={isGeneratingIdea ? "loading-shimmer" : ""}>
+                {ideaForMessage}
+              </Typography>
+            </Stack>
+          )}
           <TextField
             placeholder={i18n._("")}
             value={textMessage}
@@ -151,6 +195,7 @@ export function SubmitForm({
               variant="contained"
               onClick={async () => submitTextMessage()}
               disabled={textMessage.trim() === ""}
+              endIcon={<SendIcon />}
               sx={{
                 width: "100%",
               }}
@@ -162,8 +207,15 @@ export function SubmitForm({
               sx={{
                 alignItems: "center",
                 justifyContent: "center",
+                flexDirection: "row",
               }}
             >
+              <IconButton
+                onClick={generateIdeasForMessage}
+                disabled={isGeneratingIdea || !previousBotMessage}
+              >
+                <Lightbulb size={"18px"} color={"rgba(200, 200, 200, 1)"} />
+              </IconButton>
               <IconButton
                 onClick={async () => onPreSubmitTextMessage()}
                 disabled={textMessage.trim() === ""}
