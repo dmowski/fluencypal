@@ -4,6 +4,7 @@ import { ChatProvider, useChat } from "@/features/Chat/useChat";
 import { GameMyAvatar } from "@/features/Game/GameMyAvatar";
 import { GameMyUsername } from "@/features/Game/GameMyUsername";
 import { useGame } from "@/features/Game/useGame";
+import { ColorIconTextList } from "@/features/Survey/ColorIconTextList";
 import { InfoStep } from "@/features/Survey/InfoStep";
 import { useLingui } from "@lingui/react";
 import { Stack, Typography } from "@mui/material";
@@ -33,53 +34,34 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
   const exampleToRecord = props.exampleToRecord ? (
     <Stack
       sx={{
-        alignItems: "center",
+        alignItems: "flex-start",
         padding: "15px 15px",
         borderRadius: "15px",
-        gap: "15px",
+        gap: "5px",
         backgroundColor: "rgba(99, 177, 135, 0.1)",
       }}
     >
-      <Stack
-        sx={{
-          flexDirection: "row",
-          width: "100%",
-          alignItems: "center",
-          gridTemplateColumns: "auto 1fr",
-          gap: "15px",
-        }}
-      >
-        <Stack
-          sx={{
-            background: "linear-gradient(45deg, rgba(99, 177, 135, 1) 0%, #7bd5a1 100%)",
-            height: "40px",
-            width: "40px",
-            borderRadius: "50%",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <PawPrint color="#fff" size={"21px"} strokeWidth={"2px"} />
-        </Stack>
-        <Typography variant="h6">{i18n._(`Example:`)}</Typography>
-      </Stack>
-
-      <Stack
-        sx={{
-          gap: "2px",
-        }}
-      >
-        <Typography>{props.exampleToRecord}</Typography>
-        <Typography
-          sx={{
-            marginTop: "10px",
-            paddingTop: "10px",
-            borderTop: "1px solid rgba(255, 255, 255, 0.2)",
-          }}
-        >
-          {i18n._(`You can also share fun facts about yourself or your goals!`)}
-        </Typography>
-      </Stack>
+      <Typography variant="h6">{i18n._(`Hint:`)}</Typography>
+      <ColorIconTextList
+        gap="10px"
+        listItems={[
+          {
+            title: i18n._(`You can use any language.`),
+            iconName: "languages",
+            iconColor: "#a8f3cbff",
+          },
+          {
+            title: i18n._(`Share fun facts about yourself`),
+            iconName: "crown",
+            iconColor: "#a8f3cbff",
+          },
+          {
+            title: i18n._(`What recently made you happy?`),
+            iconName: "paw-print",
+            iconColor: "#a8f3cbff",
+          },
+        ]}
+      />
     </Stack>
   ) : null;
 

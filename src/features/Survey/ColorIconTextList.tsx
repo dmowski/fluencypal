@@ -16,7 +16,7 @@ export const ColorIconTextList = ({
 }: {
   listItems: ColorIconTextListItem[];
   gap?: string;
-  iconSize: string;
+  iconSize?: string;
 }) => {
   if (listItems.length === 0) {
     return null;
