@@ -51,7 +51,7 @@ export const PositionChanged = () => {
           padding: "0",
           gap: "20px",
           width: "100%",
-          maxWidth: "600px",
+
           boxSizing: "border-box",
         }}
       >
@@ -80,6 +80,7 @@ export const PositionChanged = () => {
                 style={{
                   top: `${position * 70 + 12}px`,
                   backgroundColor: "#181818",
+                  borderRadius: "12px",
                   zIndex: 10 - position,
                 }}
               >

@@ -17,6 +17,7 @@ import { useUrlState } from "../Url/useUrlParam";
 import { useSettings } from "../Settings/useSettings";
 import { ChatPage } from "../Chat/ChatPage";
 import { useChatList } from "../Chat/useChatList";
+import { PositionChanged } from "./PositionChanged";
 
 const TabLabel = ({
   badgeNumber,
@@ -66,7 +67,11 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
     game.playGame();
   };
 
-  const [activeTab, setActiveTab] = useUrlState<"rate" | "chat" | "dm">("space", "chat", false);
+  const [activeTab, setActiveTab] = useUrlState<"rate" | "chat" | "dm" | "game">(
+    "space",
+    "chat",
+    false
+  );
 
   return (
     <>
@@ -76,14 +81,12 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
         sx={{
           alignItems: "center",
           justifyContent: "center",
-          paddingBottom: "90px",
         }}
       >
         <Stack
           sx={{
             width: "100%",
             maxWidth: "700px",
-            padding: "10px 0px",
             boxSizing: "border-box",
             gap: "20px",
             position: "relative",
@@ -93,72 +96,6 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
         >
           <Stack
             sx={{
-              width: "100%",
-              gap: "5px",
-            }}
-          >
-            <Stack
-              sx={{
-                width: "100%",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: "20px",
-                border: "1px solid rgba(255, 255, 255, 0.031)",
-                backgroundColor: "rgba(255, 255, 255, 0.03)",
-                padding: "15px 20px",
-                borderRadius: "16px",
-                boxSizing: "border-box",
-                flexWrap: "wrap",
-                "@media (max-width: 600px)": {
-                  padding: "15px",
-                  borderBottom: "1px solid rgba(255, 255, 255, 0.031)",
-                  borderRadius: 0,
-                },
-              }}
-            >
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "15px",
-                  width: "max-content",
-                }}
-              >
-                <GameMyAvatar avatarSize="45px" />
-                <GameMyUsername align={"flex-start"} />
-              </Stack>
-
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  gap: "5px",
-                  width: "max-content",
-                }}
-              >
-                <Button
-                  variant={"outlined"}
-                  startIcon={game.loadingQuestions ? <Loader /> : <Swords />}
-                  color="info"
-                  onClick={onPlayClick}
-                  disabled={game.loadingQuestions}
-                  sx={{
-                    width: "100%",
-                    padding: "10px 40px",
-                    "@media (max-width: 500px)": {
-                      padding: "10px 20px",
-                    },
-                  }}
-                >
-                  {game.loadingQuestions ? i18n._(`Loading...`) : i18n._(`Play`)}
-                </Button>
-              </Stack>
-            </Stack>
-          </Stack>
-
-          <Stack
-            sx={{
-              paddingTop: "20px",
               gap: "0px",
               width: "100%",
             }}
@@ -202,11 +139,112 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                   minWidth: "unset",
                 }}
               />
+
+              <Tab
+                label={
+                  <TabLabel
+                    label={i18n._(`Game`)}
+                    badgeNumber={chatList.myUnreadCount ? chatList.myUnreadCount : undefined}
+                    badgeHighlight
+                  />
+                }
+                value={"game"}
+                sx={{
+                  padding: "0 10px 0 10px",
+                  minWidth: "unset",
+                }}
+              />
             </Tabs>
 
             {activeTab === "rate" && <GameStats />}
             {activeTab === "chat" && <ChatPage type="public" />}
             {activeTab === "dm" && <ChatPage type="private" />}
+
+            {activeTab === "game" && (
+              <Stack
+                sx={{
+                  width: "100%",
+                  gap: "5px",
+                }}
+              >
+                <Stack
+                  sx={{
+                    width: "100%",
+                    alignItems: "flex-start",
+                    justifyContent: "space-between",
+                    gap: "20px",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    backgroundColor: "rgba(255, 255, 255, 0.03)",
+
+                    padding: "15px 20px",
+                    boxSizing: "border-box",
+
+                    "@media (max-width: 600px)": {
+                      padding: "15px",
+                      borderBottom: "1px solid rgba(255, 255, 255, 0.031)",
+                      borderRadius: 0,
+                    },
+                  }}
+                >
+                  <Stack
+                    sx={{
+                      width: "100%",
+                      //alignItems: "center",
+                      gap: "10px",
+                    }}
+                  >
+                    <Stack
+                      sx={{
+                        gap: "10px",
+                        alignItems: "flex-start",
+                        width: "100%",
+                        maxWidth: "500px",
+                      }}
+                    >
+                      <Typography variant="h5">{i18n._(`Game`)}</Typography>
+                      <Typography variant="body2">
+                        {i18n._(`Ready to test your knowledge and climb the leaderboard?`)}
+                      </Typography>
+                      <Button
+                        variant={"contained"}
+                        startIcon={game.loadingQuestions ? <Loader /> : <Swords />}
+                        color="info"
+                        onClick={onPlayClick}
+                        disabled={game.loadingQuestions}
+                        sx={{
+                          minWidth: "250px",
+                          padding: "10px 40px",
+                          "@media (max-width: 500px)": {
+                            padding: "10px 20px",
+                          },
+                        }}
+                      >
+                        {game.loadingQuestions ? i18n._(`Loading...`) : i18n._(`Play`)}
+                      </Button>
+                    </Stack>
+
+                    <Stack
+                      sx={{
+                        width: "100%",
+                        paddingTop: "20px",
+                      }}
+                    >
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          paddingLeft: "5px",
+                          opacity: 0.7,
+                        }}
+                      >
+                        {i18n._(`Answer questions correctly to climb the leaderboard!`)}
+                      </Typography>
+                      <PositionChanged />
+                    </Stack>
+                  </Stack>
+                </Stack>
+              </Stack>
+            )}
           </Stack>
 
           {game.activeQuestion && game.isGamePlaying && !isShowOnboarding && (
