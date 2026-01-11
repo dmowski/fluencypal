@@ -1,10 +1,11 @@
 "use client";
 
-import { Button, ButtonGroup, Stack } from "@mui/material";
+import { Button, IconButton, Menu, MenuItem, Stack, Typography } from "@mui/material";
 import { useGame } from "./useGame";
 import { GameStatRow } from "./GameStatRow";
 import { useState } from "react";
 import { useLingui } from "@lingui/react";
+import { ChevronDown } from "lucide-react";
 
 export const GameStats = () => {
   const game = useGame();
@@ -12,39 +13,76 @@ export const GameStats = () => {
   const { i18n } = useLingui();
   const [limit, setLimit] = useState(50);
 
+  const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
+
   return (
     <Stack
       sx={{
-        gap: "3px",
+        gap: "10px",
+
+        borderRadius: "12px",
+        border: "1px solid rgba(255, 255, 255, 0.1)",
+        backgroundColor: "rgba(255, 255, 255, 0.03)",
+
+        "@media (max-width: 600px)": {
+          gap: "3px",
+          border: "none",
+          borderRadius: 0,
+          padding: "0",
+        },
       }}
     >
       <Stack
         sx={{
-          padding: "20px 2px 0 0",
+          padding: "18px 10px 10px 18px",
           flexDirection: "row",
           alignItems: "center",
           width: "100%",
-          gap: "10px",
+          gap: "5px",
           "@media (max-width: 600px)": {
             border: "none",
           },
         }}
       >
-        <ButtonGroup>
-          <Button
-            size="small"
-            variant={sort === "score" ? "contained" : "outlined"}
-            onClick={() => setSort("score")}
+        <Typography
+          variant="body2"
+          sx={{
+            opacity: 0.8,
+          }}
+        >
+          {sort == "lastVisit" ? i18n._("Last Visit") : i18n._("Score")}
+        </Typography>
+        <IconButton size="small" onClick={(e) => setMenuAnchorEl(e.currentTarget)}>
+          <ChevronDown
+            size={"22px"}
+            style={{
+              paddingTop: "1px",
+            }}
+          />
+        </IconButton>
+
+        <Menu
+          anchorEl={menuAnchorEl}
+          open={Boolean(menuAnchorEl)}
+          onClose={() => setMenuAnchorEl(null)}
+        >
+          <MenuItem
+            onClick={() => {
+              setSort("score");
+              setMenuAnchorEl(null);
+            }}
           >
             {i18n._("Score")}
-          </Button>
-          <Button
-            variant={sort === "lastVisit" ? "contained" : "outlined"}
-            onClick={() => setSort("lastVisit")}
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              setSort("lastVisit");
+              setMenuAnchorEl(null);
+            }}
           >
             {i18n._("Last Visit")}
-          </Button>
-        </ButtonGroup>
+          </MenuItem>
+        </Menu>
       </Stack>
       {game.stats
         .sort((a, b) => {

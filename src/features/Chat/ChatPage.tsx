@@ -180,7 +180,8 @@ export const ChatPage = ({ type }: { type: "public" | "private" }) => {
                     <Stack
                       sx={{
                         gap: "10px",
-                        padding: "20px 0",
+                        padding: "15px 0 20px 0",
+
                         borderRadius: "12px",
                         border: "1px solid rgba(255, 255, 255, 0.1)",
                         backgroundColor: "rgba(255, 255, 255, 0.03)",
