@@ -12,7 +12,13 @@ import { uniq } from "@/libs/uniq";
 import { UserChatMetadata } from "./type";
 import dayjs from "dayjs";
 
-export const ChatPage = ({ type }: { type: "public" | "private" }) => {
+export const ChatPage = ({
+  type,
+  isFullContentByDefault,
+}: {
+  type: "public" | "private";
+  isFullContentByDefault?: boolean;
+}) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const game = useGame();
@@ -43,7 +49,7 @@ export const ChatPage = ({ type }: { type: "public" | "private" }) => {
             type: "global",
           }}
         >
-          <ChatSection contextForAiAnalysis="" />
+          <ChatSection contextForAiAnalysis="" isFullContentByDefault={isFullContentByDefault} />
         </ChatProvider>
       ) : (
         <>
@@ -126,7 +132,10 @@ export const ChatPage = ({ type }: { type: "public" | "private" }) => {
                   </Stack>
 
                   <ChatProvider metadata={chatMetadata}>
-                    <ChatSection contextForAiAnalysis="" />
+                    <ChatSection
+                      contextForAiAnalysis=""
+                      isFullContentByDefault={isFullContentByDefault}
+                    />
                   </ChatProvider>
                 </>
               ) : (

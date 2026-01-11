@@ -161,8 +161,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
 
             {activeTab === "rate" && <GameStats />}
             {activeTab === "chat" && <ChatPage type="public" />}
-            {activeTab === "dm" && <ChatPage type="private" />}
-
+            {activeTab === "dm" && <ChatPage type="private" isFullContentByDefault />}
             {activeTab === "game" && (
               <Stack
                 sx={{

@@ -21,12 +21,14 @@ export const ChatSection = ({
   contextForAiAnalysis,
   addNewPostButtonText,
   limitTopMessages,
+  isFullContentByDefault,
 }: {
   placeholder?: string;
   titleContent?: React.ReactNode;
   contextForAiAnalysis: string;
   addNewPostButtonText?: string;
   limitTopMessages?: number;
+  isFullContentByDefault?: boolean;
 }) => {
   const auth = useAuth();
   const chat = useChat();
@@ -219,7 +221,11 @@ export const ChatSection = ({
               </Stack>
             </Popover>
           </Stack>
-          <MessageChain topLevel parentId={activeMessage.id} />
+          <MessageChain
+            topLevel
+            parentId={activeMessage.id}
+            isFullContentByDefault={isFullContentByDefault}
+          />
         </Stack>
       ) : (
         <Stack

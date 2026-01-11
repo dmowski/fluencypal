@@ -8,6 +8,7 @@ interface MessageChainProps {
   topLevel?: boolean;
   isLast?: boolean;
   limitTopMessages?: number;
+  isFullContentByDefault?: boolean;
 }
 
 export function MessageChain({
@@ -15,6 +16,7 @@ export function MessageChain({
   topLevel = false,
   isLast,
   limitTopMessages,
+  isFullContentByDefault,
 }: MessageChainProps) {
   const chat = useChat();
   const rootMessage = parentId ? chat.messages.find((m) => m.id === parentId) : null;
@@ -45,6 +47,7 @@ export function MessageChain({
                 parentId={message.id}
                 topLevel={false}
                 isLast={isLast}
+                isFullContentByDefault={isFullContentByDefault}
               />
             );
           })}
@@ -70,13 +73,20 @@ export function MessageChain({
           key={rootMessage.id}
           message={rootMessage}
           isChain={!!childMessages.length}
-          isFullContentByDefault={topLevel}
+          isFullContentByDefault={topLevel || isFullContentByDefault}
         />
       )}
 
       {childMessages.map((message, index, all) => {
         const isLast = index === all.length - 1;
-        return <MessageChain key={message.id} parentId={message.id} isLast={isLast} />;
+        return (
+          <MessageChain
+            key={message.id}
+            parentId={message.id}
+            isLast={isLast}
+            isFullContentByDefault={isFullContentByDefault}
+          />
+        );
       })}
     </Stack>
   );
