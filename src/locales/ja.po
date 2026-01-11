@@ -668,7 +668,7 @@ msgstr "すべてのシナリオ"
 msgid "Allow WebCam"
 msgstr "Webカメラを許可"
 
-#: src/features/Conversation/ProcessUserInput.tsx:177
+#: src/features/Conversation/ProcessUserInput.tsx:192
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "ほぼ正確"
@@ -699,7 +699,7 @@ msgstr "購入する時間の量"
 msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
 msgstr "金額が大きすぎます。あなたのサポートに感謝しますが、$400以下にしましょう。"
 
-#: src/features/Conversation/ProcessUserInput.tsx:130
+#: src/features/Conversation/ProcessUserInput.tsx:145
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "メッセージの分析中にエラーが発生しました。もう一度お試しください。"
@@ -717,9 +717,9 @@ msgstr "入力を分析中..."
 #: src/features/Conversation/ConversationReviewModal.tsx:81
 #: src/features/Conversation/ConversationReviewModal.tsx:86
 #: src/features/Conversation/ConversationReviewModal.tsx:91
-#: src/features/Conversation/ProcessUserInput.tsx:189
-#: src/features/Conversation/ProcessUserInput.tsx:334
-#: src/features/Conversation/ProcessUserInput.tsx:341
+#: src/features/Conversation/ProcessUserInput.tsx:204
+#: src/features/Conversation/ProcessUserInput.tsx:351
+#: src/features/Conversation/ProcessUserInput.tsx:360
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "解析中..."
@@ -1685,7 +1685,7 @@ msgstr "ページリンクをコピー"
 msgid "Core Web Vitals"
 msgstr "コアウェブバイタル"
 
-#: src/features/Conversation/ProcessUserInput.tsx:295
+#: src/features/Conversation/ProcessUserInput.tsx:310
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "訂正済み"
@@ -3650,7 +3650,7 @@ msgstr "文法訂正"
 msgid "Grammar corrections to boost your confidence"
 msgstr "文法の修正で自信を高めましょう"
 
-#: src/features/Conversation/ProcessUserInput.tsx:192
+#: src/features/Conversation/ProcessUserInput.tsx:207
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "素晴らしい！"
@@ -4380,6 +4380,11 @@ msgstr "プランを作成する前に、あなたにあと2つ質問します�
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "あなたのメッセージのアイデア"
+
+#: src/features/Chat/SubmitForm.tsx:154
+#. js-lingui-explicit-id
+msgid "Idea for your message:"
+msgstr "あなたのメッセージのアイデア："
 
 #: src/features/Blog/blogData.tsx:368
 #. js-lingui-explicit-id
@@ -5499,6 +5504,7 @@ msgstr "ロード中。"
 msgid "Loading.."
 msgstr "読み込み中.."
 
+#: src/features/Chat/SubmitForm.tsx:83
 #: src/features/Conversation/CallMode/CallButtons.tsx:313
 #: src/features/Conversation/ConversationCanvas.tsx:242
 #: src/features/Conversation/ConversationPage.tsx:104
@@ -6474,7 +6480,7 @@ msgstr "すべての機能にアクセスするために、クレジットカー
 msgid "Please enter a valid email address"
 msgstr "有効なメールアドレスを入力してください"
 
-#: src/features/Chat/SubmitForm.tsx:335
+#: src/features/Chat/SubmitForm.tsx:387
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "長めのメッセージ（少なくとも数単語）を記録してください。"
@@ -7042,7 +7048,7 @@ msgstr "トップ5にランクインして、全ての機能にフルアクセ�
 msgid "Rating"
 msgstr "評価"
 
-#: src/features/Chat/SubmitForm.tsx:249
+#: src/features/Chat/SubmitForm.tsx:301
 #: src/features/Conversation/ConversationCanvas.tsx:636
 #: src/features/Conversation/ConversationCanvas.tsx:901
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
@@ -7653,8 +7659,8 @@ msgstr "メールを再送信"
 msgid "Send me sign-in link"
 msgstr "サインインリンクを送信してください。"
 
-#: src/features/Chat/SubmitForm.tsx:158
-#: src/features/Chat/SubmitForm.tsx:265
+#: src/features/Chat/SubmitForm.tsx:203
+#: src/features/Chat/SubmitForm.tsx:317
 #: src/features/Conversation/CallMode/CallButtons.tsx:373
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -7666,7 +7672,7 @@ msgid "Send Request"
 msgstr "リクエストを送信"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:265
+#: src/features/Chat/SubmitForm.tsx:317
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -7775,14 +7781,14 @@ msgstr "ディベートを表示"
 msgid "Show knowledge of the company and genuine interest. For example:"
 msgstr "会社についての知識を示し、真剣な関心を持つこと。例えば："
 
-#: src/features/Conversation/ProcessUserInput.tsx:229
+#: src/features/Conversation/ProcessUserInput.tsx:244
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "表示を減らす"
 
 #: src/features/Chat/Message.tsx:381
-#: src/features/Conversation/ProcessUserInput.tsx:229
+#: src/features/Conversation/ProcessUserInput.tsx:244
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -8241,7 +8247,7 @@ msgstr ""
 "いて尋ねられ、あなたの返答に基づいてAIが難易度を調整します。プロンプトを使用して、どのような職業インタビューでも引き立つような簡潔で説得力のある答えを"
 "提供する練習をしてみてください。"
 
-#: src/features/Chat/SubmitForm.tsx:225
+#: src/features/Chat/SubmitForm.tsx:277
 #: src/features/Conversation/CallMode/CallButtons.tsx:346
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -8765,10 +8771,10 @@ msgstr "合計："
 msgid "Track Your Fluency Progress"
 msgstr "あなたの流暢さの進捗を追跡する"
 
-#: src/features/Conversation/ProcessUserInput.tsx:275
-#: src/features/Conversation/ProcessUserInput.tsx:276
-#: src/features/Conversation/ProcessUserInput.tsx:332
-#: src/features/Conversation/ProcessUserInput.tsx:339
+#: src/features/Conversation/ProcessUserInput.tsx:290
+#: src/features/Conversation/ProcessUserInput.tsx:291
+#: src/features/Conversation/ProcessUserInput.tsx:349
+#: src/features/Conversation/ProcessUserInput.tsx:358
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:220
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
@@ -9993,8 +9999,8 @@ msgstr "就職面接準備パートナー"
 msgid "Your Language Level"
 msgstr "あなたの言語レベル"
 
-#: src/features/Chat/SubmitForm.tsx:120
-#: src/features/Conversation/ProcessUserInput.tsx:253
+#: src/features/Chat/SubmitForm.tsx:164
+#: src/features/Conversation/ProcessUserInput.tsx:268
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "あなたのメッセージ"

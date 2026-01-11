@@ -671,7 +671,7 @@ msgstr "所有场景"
 msgid "Allow WebCam"
 msgstr "允许网络摄像头"
 
-#: src/features/Conversation/ProcessUserInput.tsx:177
+#: src/features/Conversation/ProcessUserInput.tsx:192
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "几乎正确"
@@ -702,7 +702,7 @@ msgstr "购买小时数"
 msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
 msgstr "金额过大。我感谢你的支持，但让我们将其保持在400美元以下"
 
-#: src/features/Conversation/ProcessUserInput.tsx:130
+#: src/features/Conversation/ProcessUserInput.tsx:145
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "消息分析时发生错误。请重试。"
@@ -720,9 +720,9 @@ msgstr "正在分析您的输入..."
 #: src/features/Conversation/ConversationReviewModal.tsx:81
 #: src/features/Conversation/ConversationReviewModal.tsx:86
 #: src/features/Conversation/ConversationReviewModal.tsx:91
-#: src/features/Conversation/ProcessUserInput.tsx:189
-#: src/features/Conversation/ProcessUserInput.tsx:334
-#: src/features/Conversation/ProcessUserInput.tsx:341
+#: src/features/Conversation/ProcessUserInput.tsx:204
+#: src/features/Conversation/ProcessUserInput.tsx:351
+#: src/features/Conversation/ProcessUserInput.tsx:360
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "正在分析..."
@@ -1677,7 +1677,7 @@ msgstr "复制页面链接"
 msgid "Core Web Vitals"
 msgstr "核心网络指标"
 
-#: src/features/Conversation/ProcessUserInput.tsx:295
+#: src/features/Conversation/ProcessUserInput.tsx:310
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "已更正"
@@ -3609,7 +3609,7 @@ msgstr "语法纠正"
 msgid "Grammar corrections to boost your confidence"
 msgstr "语法纠正以提升您的自信心"
 
-#: src/features/Conversation/ProcessUserInput.tsx:192
+#: src/features/Conversation/ProcessUserInput.tsx:207
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "太棒了！"
@@ -4318,6 +4318,11 @@ msgstr "我会在制定你的计划之前再问你两个问题。"
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "为你的信息出主意"
+
+#: src/features/Chat/SubmitForm.tsx:154
+#. js-lingui-explicit-id
+msgid "Idea for your message:"
+msgstr "您的消息创意："
 
 #: src/features/Blog/blogData.tsx:368
 #. js-lingui-explicit-id
@@ -5399,6 +5404,7 @@ msgstr "加载中。"
 msgid "Loading.."
 msgstr "加载中.."
 
+#: src/features/Chat/SubmitForm.tsx:83
 #: src/features/Conversation/CallMode/CallButtons.tsx:313
 #: src/features/Conversation/ConversationCanvas.tsx:242
 #: src/features/Conversation/ConversationPage.tsx:104
@@ -6362,7 +6368,7 @@ msgstr "请确认您的信用卡以访问所有功能。"
 msgid "Please enter a valid email address"
 msgstr "请输入有效的电子邮件地址"
 
-#: src/features/Chat/SubmitForm.tsx:335
+#: src/features/Chat/SubmitForm.tsx:387
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "请录制一条较长的信息（至少几个字）。"
@@ -6915,7 +6921,7 @@ msgstr "排名前5以获得所有功能的完全访问权限！"
 msgid "Rating"
 msgstr "评分"
 
-#: src/features/Chat/SubmitForm.tsx:249
+#: src/features/Chat/SubmitForm.tsx:301
 #: src/features/Conversation/ConversationCanvas.tsx:636
 #: src/features/Conversation/ConversationCanvas.tsx:901
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
@@ -7520,8 +7526,8 @@ msgstr "再次发送电子邮件"
 msgid "Send me sign-in link"
 msgstr "发送登录链接"
 
-#: src/features/Chat/SubmitForm.tsx:158
-#: src/features/Chat/SubmitForm.tsx:265
+#: src/features/Chat/SubmitForm.tsx:203
+#: src/features/Chat/SubmitForm.tsx:317
 #: src/features/Conversation/CallMode/CallButtons.tsx:373
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -7533,7 +7539,7 @@ msgid "Send Request"
 msgstr "发送请求"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:265
+#: src/features/Chat/SubmitForm.tsx:317
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -7642,14 +7648,14 @@ msgstr "显示辩论"
 msgid "Show knowledge of the company and genuine interest. For example:"
 msgstr "展示对公司的了解和真诚的兴趣。例如:"
 
-#: src/features/Conversation/ProcessUserInput.tsx:229
+#: src/features/Conversation/ProcessUserInput.tsx:244
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "显示更少"
 
 #: src/features/Chat/Message.tsx:381
-#: src/features/Conversation/ProcessUserInput.tsx:229
+#: src/features/Conversation/ProcessUserInput.tsx:244
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -8094,7 +8100,7 @@ msgstr ""
 "在这个情境中，您将扮演一个求职者的角色，而我们的AI将扮演专业的招聘人员。您将被询问您的经验、技能和对这个角色的动机，AI会根据您的回答调整难度。利用提"
 "示来练习提供简洁、有说服力的答案，使您在任何工作面试中脱颖而出。"
 
-#: src/features/Chat/SubmitForm.tsx:225
+#: src/features/Chat/SubmitForm.tsx:277
 #: src/features/Conversation/CallMode/CallButtons.tsx:346
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -8607,10 +8613,10 @@ msgstr "总计："
 msgid "Track Your Fluency Progress"
 msgstr "跟踪您的流利度进度"
 
-#: src/features/Conversation/ProcessUserInput.tsx:275
-#: src/features/Conversation/ProcessUserInput.tsx:276
-#: src/features/Conversation/ProcessUserInput.tsx:332
-#: src/features/Conversation/ProcessUserInput.tsx:339
+#: src/features/Conversation/ProcessUserInput.tsx:290
+#: src/features/Conversation/ProcessUserInput.tsx:291
+#: src/features/Conversation/ProcessUserInput.tsx:349
+#: src/features/Conversation/ProcessUserInput.tsx:358
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:220
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
@@ -9815,8 +9821,8 @@ msgstr "你的工作面试准备伙伴"
 msgid "Your Language Level"
 msgstr "你的语言水平"
 
-#: src/features/Chat/SubmitForm.tsx:120
-#: src/features/Conversation/ProcessUserInput.tsx:253
+#: src/features/Chat/SubmitForm.tsx:164
+#: src/features/Conversation/ProcessUserInput.tsx:268
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "您的消息"

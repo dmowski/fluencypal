@@ -698,7 +698,7 @@ msgstr "جميع السيناريوهات"
 msgid "Allow WebCam"
 msgstr "السماح بكاميرا الويب"
 
-#: src/features/Conversation/ProcessUserInput.tsx:177
+#: src/features/Conversation/ProcessUserInput.tsx:192
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "تقريبا صحيح"
@@ -729,7 +729,7 @@ msgstr "عدد الساعات للشراء"
 msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
 msgstr "المبلغ كبير جداً. أقدر دعمك، ولكن دعنا نحافظ عليه أقل من 400 دولار"
 
-#: src/features/Conversation/ProcessUserInput.tsx:130
+#: src/features/Conversation/ProcessUserInput.tsx:145
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "حدث خطأ أثناء تحليل الرسالة. يرجى المحاولة مرة أخرى."
@@ -747,9 +747,9 @@ msgstr "جارٍ تحليل مدخلاتك..."
 #: src/features/Conversation/ConversationReviewModal.tsx:81
 #: src/features/Conversation/ConversationReviewModal.tsx:86
 #: src/features/Conversation/ConversationReviewModal.tsx:91
-#: src/features/Conversation/ProcessUserInput.tsx:189
-#: src/features/Conversation/ProcessUserInput.tsx:334
-#: src/features/Conversation/ProcessUserInput.tsx:341
+#: src/features/Conversation/ProcessUserInput.tsx:204
+#: src/features/Conversation/ProcessUserInput.tsx:351
+#: src/features/Conversation/ProcessUserInput.tsx:360
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "جار التحليل..."
@@ -1736,7 +1736,7 @@ msgstr ""
 msgid "Core Web Vitals"
 msgstr "الأساسيات الحيوية للويب"
 
-#: src/features/Conversation/ProcessUserInput.tsx:295
+#: src/features/Conversation/ProcessUserInput.tsx:310
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "تم التصحيح"
@@ -3837,7 +3837,7 @@ msgstr "تصحيحات القواعد"
 msgid "Grammar corrections to boost your confidence"
 msgstr "تصحيحات القواعد لزيادة ثقتك بنفسك"
 
-#: src/features/Conversation/ProcessUserInput.tsx:192
+#: src/features/Conversation/ProcessUserInput.tsx:207
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "رائع!"
@@ -4616,6 +4616,11 @@ msgstr "سأسألك سؤالين آخرين قبل أن أضع خطتك."
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "فكرة لرسالتك"
+
+#: src/features/Chat/SubmitForm.tsx:154
+#. js-lingui-explicit-id
+msgid "Idea for your message:"
+msgstr "فكرة لرسالتك:"
 
 #: src/features/Blog/blogData.tsx:368
 #. js-lingui-explicit-id
@@ -5794,6 +5799,7 @@ msgstr "جارِ التحميل."
 msgid "Loading.."
 msgstr "جارٍ التحميل.."
 
+#: src/features/Chat/SubmitForm.tsx:83
 #: src/features/Conversation/CallMode/CallButtons.tsx:313
 #: src/features/Conversation/ConversationCanvas.tsx:242
 #: src/features/Conversation/ConversationPage.tsx:104
@@ -6812,7 +6818,7 @@ msgstr "يرجى تأكيد بطاقة الائتمان الخاصة بك للو
 msgid "Please enter a valid email address"
 msgstr "يرجى إدخال عنوان بريد إلكتروني صالح"
 
-#: src/features/Chat/SubmitForm.tsx:335
+#: src/features/Chat/SubmitForm.tsx:387
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "يرجى تسجيل رسالة أطول (بضع كلمات على الأقل)."
@@ -7402,7 +7408,7 @@ msgstr "رتب في المراكز الخمسة الأولى للحصول على
 msgid "Rating"
 msgstr "التقييم"
 
-#: src/features/Chat/SubmitForm.tsx:249
+#: src/features/Chat/SubmitForm.tsx:301
 #: src/features/Conversation/ConversationCanvas.tsx:636
 #: src/features/Conversation/ConversationCanvas.tsx:901
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
@@ -8032,8 +8038,8 @@ msgstr "إعادة إرسال البريد الإلكتروني"
 msgid "Send me sign-in link"
 msgstr "أرسل لي رابط تسجيل الدخول"
 
-#: src/features/Chat/SubmitForm.tsx:158
-#: src/features/Chat/SubmitForm.tsx:265
+#: src/features/Chat/SubmitForm.tsx:203
+#: src/features/Chat/SubmitForm.tsx:317
 #: src/features/Conversation/CallMode/CallButtons.tsx:373
 #. js-lingui-explicit-id
 msgid "Send Message"
@@ -8045,7 +8051,7 @@ msgid "Send Request"
 msgstr "إرسال الطلب"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:265
+#: src/features/Chat/SubmitForm.tsx:317
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -8160,14 +8166,14 @@ msgstr "عرض المناظرات"
 msgid "Show knowledge of the company and genuine interest. For example:"
 msgstr "اظهر معرفة بالشركة واهتمام حقيقي. على سبيل المثال:"
 
-#: src/features/Conversation/ProcessUserInput.tsx:229
+#: src/features/Conversation/ProcessUserInput.tsx:244
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "عرض أقل"
 
 #: src/features/Chat/Message.tsx:381
-#: src/features/Conversation/ProcessUserInput.tsx:229
+#: src/features/Conversation/ProcessUserInput.tsx:244
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -8635,7 +8641,7 @@ msgstr ""
 "تعديل الذكاء الصناعي للصعوبة بناءً على ردودك. استخدم التلميحات للتدرب على "
 "تقديم إجابات مقنعة ومختصرة تساعدك على التميز في أي مقابلة عمل.\n"
 
-#: src/features/Chat/SubmitForm.tsx:225
+#: src/features/Chat/SubmitForm.tsx:277
 #: src/features/Conversation/CallMode/CallButtons.tsx:346
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -9193,10 +9199,10 @@ msgstr "المجموع:"
 msgid "Track Your Fluency Progress"
 msgstr "تتبع تقدم طلاقتك"
 
-#: src/features/Conversation/ProcessUserInput.tsx:275
-#: src/features/Conversation/ProcessUserInput.tsx:276
-#: src/features/Conversation/ProcessUserInput.tsx:332
-#: src/features/Conversation/ProcessUserInput.tsx:339
+#: src/features/Conversation/ProcessUserInput.tsx:290
+#: src/features/Conversation/ProcessUserInput.tsx:291
+#: src/features/Conversation/ProcessUserInput.tsx:349
+#: src/features/Conversation/ProcessUserInput.tsx:358
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:220
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
@@ -10501,8 +10507,8 @@ msgstr "شريكك في التحضير لمقابلات العمل"
 msgid "Your Language Level"
 msgstr "مستوى لغتك"
 
-#: src/features/Chat/SubmitForm.tsx:120
-#: src/features/Conversation/ProcessUserInput.tsx:253
+#: src/features/Chat/SubmitForm.tsx:164
+#: src/features/Conversation/ProcessUserInput.tsx:268
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "رسالتك"
