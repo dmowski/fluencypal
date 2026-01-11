@@ -146,6 +146,25 @@ export function Message({
   const lastVisit = game.gameLastVisit ? game.gameLastVisit[message.senderId] : null;
   const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 5 : false;
 
+  const onClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (isEditing) return;
+
+    const isAnySelectedText = window.getSelection()?.toString().length ?? 0 > 0;
+    if (isAnySelectedText) return;
+
+    const target = e.target as HTMLElement;
+    if (
+      target.closest("button") ||
+      target.closest("a") ||
+      target.closest("input") ||
+      target.closest("textarea")
+    ) {
+      return;
+    }
+
+    chat.onOpen(message.id);
+  };
+
   return (
     <Stack
       sx={{
@@ -158,28 +177,11 @@ export function Message({
         flexDirection: "row",
         zIndex: 1,
         gap: "0px",
-        cursor: isEditing || isDeleted ? "default" : "pointer",
+        // cursor: isEditing || isDeleted ? "default" : "pointer",
         ".open-message-button:focus": {
           boxShadow: "inset 0 0 0 2px rgba(41, 179, 229, 0.5)",
           borderRadius: "12px",
         },
-      }}
-      onClick={(e) => {
-        if (isEditing) return;
-        const isAnySelectedText = window.getSelection()?.toString().length ?? 0 > 0;
-        if (isAnySelectedText) return;
-
-        const target = e.target as HTMLElement;
-        if (
-          target.closest("button") ||
-          target.closest("a") ||
-          target.closest("input") ||
-          target.closest("textarea")
-        ) {
-          return;
-        }
-
-        chat.onOpen(message.id);
       }}
     >
       {isChain && (
@@ -361,21 +363,26 @@ export function Message({
               paddingTop: isContentWide ? "20px" : 0,
             }}
           >
-            {contentToShow.length > limitMessages && !isShowTranslation ? (
+            {contentToShow.length > limitMessages &&
+            !isShowTranslation &&
+            !isShowFullContent &&
+            !isFullContentByDefault ? (
               <>
-                {isLimitedMessage ? contentToShow.slice(0, limitMessages) + "... " : contentToShow}
-                {!isFullContentByDefault && !isShowFullContent && (
-                  <Button
-                    size="small"
-                    onClick={() => setIsShowFullContent(!isShowFullContent)}
-                    sx={{ textTransform: "none", padding: 0, minWidth: 0 }}
-                  >
-                    {isShowFullContent ? i18n._("Show less") : i18n._("Show more")}
-                  </Button>
-                )}
+                <span onClick={() => setIsShowFullContent(!isShowFullContent)}>
+                  {isLimitedMessage
+                    ? contentToShow.slice(0, limitMessages) + "... "
+                    : contentToShow}
+                </span>
+                <Button
+                  size="small"
+                  onClick={() => setIsShowFullContent(!isShowFullContent)}
+                  sx={{ textTransform: "none", padding: 0, minWidth: 0 }}
+                >
+                  {i18n._("Show more")}
+                </Button>
               </>
             ) : (
-              contentToShow
+              <span onClick={onClick}>{contentToShow}</span>
             )}
           </Typography>
 
