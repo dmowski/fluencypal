@@ -65,6 +65,15 @@ export function SubmitForm({
     setTextMessage(message);
   };
 
+  const submitTextMessage = async () => {
+    if (textMessage.trim() === "") {
+      return;
+    }
+    await onSubmit(textMessage.trim());
+    setTextMessage("");
+    setPreSubmitTextMessage("");
+  };
+
   return (
     <Stack
       sx={{
@@ -140,13 +149,13 @@ export function SubmitForm({
 
             <Button
               variant="contained"
-              onClick={async () => onPreSubmitTextMessage()}
+              onClick={async () => submitTextMessage()}
               disabled={textMessage.trim() === ""}
               sx={{
                 width: "100%",
               }}
             >
-              {i18n._("Review Message")}
+              {i18n._("Send Message")}
             </Button>
 
             <Stack

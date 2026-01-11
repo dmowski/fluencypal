@@ -126,7 +126,9 @@ export const ChatSection = ({
                   recordMessageTitle={
                     messageToComment?.id ? i18n._("Add a reply") : i18n._("Record a message")
                   }
-                  previousBotMessage={contextForAiAnalysis || ""}
+                  previousBotMessage={
+                    messageToComment ? messageToComment.content : contextForAiAnalysis || ""
+                  }
                 />
               </Stack>
             </Stack>
