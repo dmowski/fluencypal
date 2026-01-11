@@ -46,7 +46,7 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
         gap="10px"
         listItems={[
           {
-            title: i18n._(`You can use any language.`),
+            title: i18n._(`You can use any language you like`),
             iconName: "languages",
             iconColor: "#a8f3cbff",
           },
