@@ -306,7 +306,7 @@ const QuizQuestions = () => {
           {currentStep === "goalReview" && (
             <AuthWall>
               <GoalReview
-                onClick={nextStep}
+                onClick={doneQuiz}
                 isLoading={isGoalGenerating || survey?.goalData === null}
                 goalData={survey?.goalData}
                 //actionButtonIcon={<VideocamIcon />}

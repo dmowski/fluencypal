@@ -76,7 +76,7 @@ const stepsViews: QuizStep[] = [
 
   "before_goalReview",
   "goalReview",
-  "writeWelcomeMessageInChat",
+  //"writeWelcomeMessageInChat",
 ];
 
 export const MIN_WORDS_FOR_ANSWER = 30;
