@@ -180,7 +180,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               />
 
               <Tab
-                label={<TabLabel label={i18n._(`Rating`)} badgeNumber={game.stats.length} />}
+                label={<TabLabel label={i18n._(`Rating`)} />}
                 value={"rate"}
                 sx={{
                   padding: "0 10px 0 10px",

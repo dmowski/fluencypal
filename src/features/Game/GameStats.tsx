@@ -37,6 +37,7 @@ export const GameStats = () => {
           padding: "18px 10px 10px 18px",
           flexDirection: "row",
           alignItems: "center",
+          justifyContent: "space-between",
           width: "100%",
           gap: "5px",
           "@media (max-width: 600px)": {
@@ -44,22 +45,50 @@ export const GameStats = () => {
           },
         }}
       >
-        <Typography
-          variant="body2"
+        <Stack
           sx={{
-            opacity: 0.8,
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "5px",
           }}
         >
-          {sort == "lastVisit" ? i18n._("Last Visit") : i18n._("Score")}
-        </Typography>
-        <IconButton size="small" onClick={(e) => setMenuAnchorEl(e.currentTarget)}>
-          <ChevronDown
-            size={"22px"}
-            style={{
-              paddingTop: "1px",
+          <Typography
+            variant="body2"
+            sx={{
+              opacity: 0.8,
             }}
-          />
-        </IconButton>
+          >
+            {sort == "lastVisit" ? i18n._("Last Visit") : i18n._("Score")}
+          </Typography>
+          <IconButton size="small" onClick={(e) => setMenuAnchorEl(e.currentTarget)}>
+            <ChevronDown
+              size={"22px"}
+              style={{
+                paddingTop: "1px",
+              }}
+            />
+          </IconButton>
+        </Stack>
+
+        <Stack
+          sx={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "8px",
+            opacity: 0.8,
+            paddingRight: "12px",
+          }}
+        >
+          <Typography variant="body2">{i18n._("Players:")}</Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              fontWeight: 600,
+            }}
+          >
+            {game.stats.length}
+          </Typography>
+        </Stack>
 
         <Menu
           anchorEl={menuAnchorEl}
