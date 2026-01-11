@@ -128,12 +128,12 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               <Tab
                 label={
                   <TabLabel
-                    label={i18n._(`My Chats`)}
+                    label={i18n._(`Game`)}
                     badgeNumber={chatList.myUnreadCount ? chatList.myUnreadCount : undefined}
                     badgeHighlight
                   />
                 }
-                value={"dm"}
+                value={"game"}
                 sx={{
                   padding: "0 10px 0 10px",
                   minWidth: "unset",
@@ -143,12 +143,12 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               <Tab
                 label={
                   <TabLabel
-                    label={i18n._(`Game`)}
+                    label={i18n._(`My Chats`)}
                     badgeNumber={chatList.myUnreadCount ? chatList.myUnreadCount : undefined}
                     badgeHighlight
                   />
                 }
-                value={"game"}
+                value={"dm"}
                 sx={{
                   padding: "0 10px 0 10px",
                   minWidth: "unset",
