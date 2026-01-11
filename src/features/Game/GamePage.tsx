@@ -113,7 +113,15 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                   padding: "0 10px 0 10px",
                   minWidth: "unset",
                 }}
-                label={<TabLabel label={i18n._(`Chat`)} />}
+                label={
+                  <TabLabel
+                    label={i18n._(`Chat`)}
+                    badgeNumber={
+                      chatList.unreadCountGlobal ? chatList.unreadCountGlobal : undefined
+                    }
+                    badgeHighlight
+                  />
+                }
                 value={"chat"}
               />
 
