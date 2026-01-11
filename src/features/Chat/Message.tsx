@@ -268,7 +268,7 @@ export function Message({
                   backgroundColor: "transparent",
                   color: "inherit",
                   border: "none",
-                  padding: 0,
+                  padding: isContentWide ? "10px 0" : "0",
                   ":focus": {
                     outline: "none",
                     boxShadow: "0 0 0 2px rgba(41, 179, 229, 0.5)",
