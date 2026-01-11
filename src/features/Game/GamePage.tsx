@@ -191,7 +191,8 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
 
                     "@media (max-width: 600px)": {
                       padding: "15px",
-                      borderBottom: "1px solid rgba(255, 255, 255, 0.031)",
+                      border: "none",
+                      borderTop: "1px solid rgba(255, 255, 255, 0.1)",
                       borderRadius: 0,
                     },
                   }}

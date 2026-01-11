@@ -27,6 +27,7 @@ export const GameStats = () => {
         "@media (max-width: 600px)": {
           gap: "3px",
           border: "none",
+          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
           borderRadius: 0,
           padding: "0",
         },
