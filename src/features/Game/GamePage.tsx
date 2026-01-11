@@ -81,6 +81,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
         sx={{
           alignItems: "center",
           justifyContent: "center",
+          padding: "0 0 100px 0",
         }}
       >
         <Stack
