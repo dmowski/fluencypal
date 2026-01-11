@@ -2,7 +2,7 @@ import { Alert, Badge, Button, ButtonGroup, IconButton, Stack, Typography } from
 import { ChatSection } from "./ChatSection";
 import { ChatProvider } from "./useChat";
 import { useLingui } from "@lingui/react";
-import { ChevronLeft, ChevronRight, Globe, HatGlasses } from "lucide-react";
+import { ChevronLeft, ChevronRight, Globe, HatGlasses, Users } from "lucide-react";
 import { useChatList } from "./useChatList";
 import { useUrlState } from "../Url/useUrlParam";
 import { useAuth } from "../Auth/useAuth";
@@ -48,11 +48,19 @@ export const ChatPage = () => {
           },
         }}
       >
-        <ButtonGroup>
+        <ButtonGroup
+          sx={{
+            width: "100%",
+          }}
+        >
           <Badge color="error" badgeContent={chatList.unreadCountGlobal}>
             <Button
               size="small"
-              startIcon={<Globe size={"14px"} />}
+              sx={{
+                paddingLeft: "20px",
+                paddingRight: "18px",
+              }}
+              startIcon={<Users size={"15px"} />}
               variant={page === "public" ? "contained" : "outlined"}
               onClick={() => setPage("public")}
             >
@@ -61,7 +69,11 @@ export const ChatPage = () => {
           </Badge>
           <Badge color="error" badgeContent={chatList.myUnreadCount}>
             <Button
-              startIcon={<HatGlasses size={"14px"} />}
+              sx={{
+                paddingLeft: "20px",
+                paddingRight: "18px",
+              }}
+              startIcon={<HatGlasses size={"15px"} />}
               variant={page === "private" ? "contained" : "outlined"}
               onClick={() => setPage("private")}
             >
