@@ -1,8 +1,8 @@
-import { Alert, Badge, Button, ButtonGroup, IconButton, Stack, Typography } from "@mui/material";
+import { Alert, Badge, Button, Stack, Typography } from "@mui/material";
 import { ChatSection } from "./ChatSection";
 import { ChatProvider } from "./useChat";
 import { useLingui } from "@lingui/react";
-import { ChevronLeft, ChevronRight, Globe, HatGlasses, Users } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useChatList } from "./useChatList";
 import { useUrlState } from "../Url/useUrlParam";
 import { useAuth } from "../Auth/useAuth";
@@ -12,12 +12,10 @@ import { uniq } from "@/libs/uniq";
 import { UserChatMetadata } from "./type";
 import dayjs from "dayjs";
 
-export const ChatPage = () => {
+export const ChatPage = ({ type }: { type: "public" | "private" }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const game = useGame();
-
-  const [page, setPage] = useUrlState<"public" | "private">("chats", "public", false);
 
   const [activeChatId, setActiveChatId] = useUrlState<string>("activeChatId", "", false);
   const chatList = useChatList();
@@ -36,54 +34,7 @@ export const ChatPage = () => {
 
   return (
     <Stack>
-      <Stack
-        sx={{
-          padding: "10px 2px",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "100%",
-          gap: "10px",
-          "@media (max-width: 600px)": {
-            border: "none",
-          },
-        }}
-      >
-        <ButtonGroup
-          sx={{
-            width: "100%",
-          }}
-        >
-          <Badge color="error" badgeContent={chatList.unreadCountGlobal}>
-            <Button
-              size="small"
-              sx={{
-                paddingLeft: "20px",
-                paddingRight: "18px",
-              }}
-              startIcon={<Users size={"15px"} />}
-              variant={page === "public" ? "contained" : "outlined"}
-              onClick={() => setPage("public")}
-            >
-              {i18n._("Public")}
-            </Button>
-          </Badge>
-          <Badge color="error" badgeContent={chatList.myUnreadCount}>
-            <Button
-              sx={{
-                paddingLeft: "20px",
-                paddingRight: "18px",
-              }}
-              startIcon={<HatGlasses size={"15px"} />}
-              variant={page === "private" ? "contained" : "outlined"}
-              onClick={() => setPage("private")}
-            >
-              {i18n._("My Chats")}
-            </Button>
-          </Badge>
-        </ButtonGroup>
-      </Stack>
-
-      {page === "public" ? (
+      {type === "public" ? (
         <ChatProvider
           metadata={{
             spaceId: "global",
@@ -229,9 +180,15 @@ export const ChatPage = () => {
                     <Stack
                       sx={{
                         gap: "10px",
-                        paddingTop: "0px",
+                        padding: "20px 0",
+                        borderRadius: "12px",
+                        border: "1px solid rgba(255, 255, 255, 0.1)",
+                        backgroundColor: "rgba(255, 255, 255, 0.03)",
                         "@media (max-width: 600px)": {
                           gap: "3px",
+                          border: "none",
+                          borderRadius: 0,
+                          padding: "0",
                         },
                       }}
                     >

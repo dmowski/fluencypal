@@ -15,12 +15,12 @@ export const GameStats = () => {
   return (
     <Stack
       sx={{
-        gap: "12px",
+        gap: "3px",
       }}
     >
       <Stack
         sx={{
-          padding: "10px 2px",
+          padding: "20px 2px 0 0",
           flexDirection: "row",
           alignItems: "center",
           width: "100%",

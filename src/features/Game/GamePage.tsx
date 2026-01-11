@@ -63,7 +63,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
     game.playGame();
   };
 
-  const [activeTab, setActiveTab] = useUrlState<"rate" | "chat">("space", "chat", false);
+  const [activeTab, setActiveTab] = useUrlState<"rate" | "chat" | "dm">("space", "chat", false);
 
   return (
     <>
@@ -156,11 +156,17 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
           <Stack
             sx={{
               paddingTop: "20px",
-              gap: "10px",
+              gap: "0px",
               width: "100%",
             }}
           >
-            <Tabs value={activeTab} onChange={(event, newId) => setActiveTab(newId)}>
+            <Tabs
+              value={activeTab}
+              onChange={(event, newId) => setActiveTab(newId)}
+              sx={{
+                marginLeft: "10px",
+              }}
+            >
               <Tab
                 sx={{
                   padding: "0 10px 0 10px",
@@ -178,10 +184,20 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                   minWidth: "unset",
                 }}
               />
+
+              <Tab
+                label={<TabLabel label={i18n._(`My Chats`)} />}
+                value={"dm"}
+                sx={{
+                  padding: "0 10px 0 10px",
+                  minWidth: "unset",
+                }}
+              />
             </Tabs>
 
             {activeTab === "rate" && <GameStats />}
-            {activeTab === "chat" && <ChatPage />}
+            {activeTab === "chat" && <ChatPage type="public" />}
+            {activeTab === "dm" && <ChatPage type="private" />}
           </Stack>
 
           {game.activeQuestion && game.isGamePlaying && !isShowOnboarding && (
