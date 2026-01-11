@@ -135,13 +135,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               />
 
               <Tab
-                label={
-                  <TabLabel
-                    label={i18n._(`Game`)}
-                    badgeNumber={chatList.myUnreadCount ? chatList.myUnreadCount : undefined}
-                    badgeHighlight
-                  />
-                }
+                label={<TabLabel label={i18n._(`Game`)} badgeHighlight />}
                 value={"game"}
                 sx={{
                   padding: "0 10px 0 10px",
