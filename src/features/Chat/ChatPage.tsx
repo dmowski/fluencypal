@@ -100,7 +100,6 @@ export const ChatPage = () => {
             <Stack
               sx={{
                 gap: "0px",
-                marginTop: "10px",
                 backgroundColor: `rgba(255, 255, 255, 0.02)`,
                 border: "1px solid rgba(255, 255, 255, 0.1)",
                 borderRadius: "15px",
@@ -230,7 +229,7 @@ export const ChatPage = () => {
                     <Stack
                       sx={{
                         gap: "10px",
-                        paddingTop: "20px",
+                        paddingTop: "0px",
                         "@media (max-width: 600px)": {
                           gap: "3px",
                         },
@@ -316,19 +315,13 @@ const ChatHeaderList = ({ chat }: { chat: UserChatMetadata }) => {
   const isOnlyOneUser = allUserIds.length <= 1;
   const userIds = allUserIds.filter((userId) => isOnlyOneUser || userId !== auth.uid);
   const userNames = userIds.map((userId) => game.getUserName(userId)).join(", ");
-  const lastVisited = dayjs(
-    userIds
-      .map((userId) => game.gameLastVisit?.[userId])
-      .sort()
-      .reverse()[0] || Date.now()
-  ).fromNow();
 
   return (
     <>
       <Stack
         sx={{
           flexDirection: "row",
-          minWidth: "44px",
+          minWidth: "50px",
         }}
       >
         {userIds.map((userId, index) => {
@@ -339,7 +332,7 @@ const ChatHeaderList = ({ chat }: { chat: UserChatMetadata }) => {
                 marginLeft: index === 0 ? "0" : "-30px",
               }}
             >
-              <Avatar url={game.getUserAvatarUrl(userId)} avatarSize={"30px"} />
+              <Avatar url={game.getUserAvatarUrl(userId)} avatarSize={"44px"} />
             </Stack>
           );
         })}
