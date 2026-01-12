@@ -95,7 +95,7 @@ function useProvideWebCam(): WebCamContextType {
     );
 
     const end = performance.now();
-    console.log("Screenshot time:", end - start, "ms");
+    //console.log("Screenshot time:", end - start, "ms");
     return response.aiImageResponse;
   };
 

@@ -107,7 +107,7 @@ export const CameraCanvas = ({
     try {
       const imageDescription = await webCam.getImageDescription();
       if (imageDescription) {
-        console.log("WEBCAM DESCRIPTION", imageDescription);
+        //console.log("WEBCAM DESCRIPTION", imageDescription);
         onWebCamDescription(imageDescription);
       }
     } catch (err) {
@@ -116,7 +116,7 @@ export const CameraCanvas = ({
       setIsAnalyzing(false);
     }
 
-    await sleep(5000);
+    await sleep(10_000);
     setScreenshotTimer((prev) => prev + 1);
   };
 
