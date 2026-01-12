@@ -16,7 +16,6 @@ export async function POST(request: Request) {
     id: docRef.id || Date.now().toString(),
     createdAtHuman: new Date().toLocaleString(),
     createdAt: Date.now(),
-    minPerDaySelected: data.minPerDaySelected || 0,
     nativeLanguageCode: data.nativeLanguageCode || "en",
   };
 

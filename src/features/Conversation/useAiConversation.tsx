@@ -195,11 +195,7 @@ VISUAL_CONTEXT (latest): ${description}
   const communicatorRef = useRef(communicator);
   communicatorRef.current = communicator;
 
-  const defaultMessagesToComplete = 5;
-  const planMessageCount = Math.min(
-    plan.activeGoal?.goalQuiz?.minPerDaySelected || defaultMessagesToComplete,
-    defaultMessagesToComplete
-  );
+  const planMessageCount = 40;
 
   const [isMuted, setIsMuted] = useState(true);
 
