@@ -55,15 +55,6 @@ export const TasksCard = () => {
           isDone={!!tasks.todayStats?.rule}
           lockedText={!words.totalWordsCount ? i18n._(`Complete previous tasks first`) : ""}
         />
-
-        <ClickCard
-          isDone={!!tasks.todayStats?.words}
-          title={i18n._(`New words`)}
-          subTitle={i18n._(`Practice new vocabulary with the AI`)}
-          buttonIcon={<GraduationCap size={"30px"} />}
-          lockedText={!words.totalWordsCount ? i18n._(`Complete previous tasks first`) : ""}
-          onStart={() => words.getNewWordsToLearn()}
-        />
       </Stack>
     </DashboardCard>
   );

@@ -84,14 +84,21 @@ export const LessonStartModal = ({
   const wordsLoadingRef = useRef(isWordsLoading);
   const translator = useTranslate();
 
-  const loadWords = async () => {
+  const loadWords = async (knownWords?: string[]) => {
     setIsWordsLoading(true);
     wordsLoadingRef.current = true;
-    const wordsList = await words.getNewWordsToLearn(goalInfo);
+    const start = Date.now();
+    const wordsList = await words.getNewWordsToLearn(goalInfo, knownWords || []);
+    const end = Date.now();
+    console.log("Time taken to generate words:", end - start, "ms");
 
     setWordsToLearn(wordsList);
     setIsWordsLoading(false);
     wordsLoadingRef.current = false;
+  };
+
+  const refreshWords = () => {
+    loadWords(wordsToLearn);
   };
 
   const [ruleToLearn, setRuleToLearn] = useState<string>("");
@@ -353,9 +360,9 @@ export const LessonStartModal = ({
             }
             disabled={isWordsLoading}
             onClick={onNext}
-            secondButtonTitle={i18n._(`Refresh`)}
+            secondButtonTitle={i18n._(`I know these`)}
             secondButtonEndIcon={<RefreshCw size={"18px"} />}
-            onSecondButtonClick={() => loadWords()}
+            onSecondButtonClick={() => refreshWords()}
           />
         )}
 

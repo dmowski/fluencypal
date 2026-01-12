@@ -28,57 +28,14 @@ import { useUrlParam } from "../Url/useUrlParam";
 import { useSettings } from "../Settings/useSettings";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import { ConversationMode } from "@/common/user";
-import { useUsage } from "../Usage/useUsage";
-import { useAccess } from "../Usage/useAccess";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
-  const aiConversation = useAiConversation();
-  const words = useWords();
-  const rules = useRules();
   const { i18n } = useLingui();
   const userInfo = useAiUserInfo();
   const plan = usePlan();
   const settings = useSettings();
-  const usage = useUsage();
-  const access = useAccess();
 
   const [selectGoalModalAnchorEl, setSelectGoalModalAnchorEl] = useState<null | HTMLElement>(null);
-
-  const startGoalElement = async (
-    element: PlanElement,
-    options: {
-      conversationMode: ConversationMode;
-      webCamDescription?: string;
-    }
-  ) => {
-    if (!plan.activeGoal) return;
-
-    if (settings.conversationMode !== options.conversationMode) {
-      await settings.setConversationMode(options.conversationMode);
-    }
-
-    const goalInfo = {
-      goalElement: element,
-      goalPlan: plan.activeGoal,
-    };
-
-    if (element.mode === "words") {
-      words.getNewWordsToLearn(goalInfo);
-      return;
-    }
-
-    if (element.mode === "rule") {
-      rules.getRules(goalInfo);
-      return;
-    }
-    aiConversation.startConversation({
-      mode: element.mode === "play" ? "goal-role-play" : "goal-talk",
-      goal: goalInfo,
-      webCamDescription: options.webCamDescription,
-      conversationMode: options.conversationMode,
-    });
-  };
 
   const isGoalSet = !!plan.activeGoal?.elements?.length;
 

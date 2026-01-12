@@ -15,7 +15,7 @@ interface WordsContextType {
   loading: boolean;
   addWordsStatFromText: (text: string) => Promise<string[]>;
   totalWordsCount: number;
-  getNewWordsToLearn: (goal?: GoalElementInfo) => Promise<string[]>;
+  getNewWordsToLearn: (goal: GoalElementInfo, knownWords: string[]) => Promise<string[]>;
 }
 
 const WordsContext = createContext<WordsContextType | null>(null);
@@ -27,9 +27,7 @@ function useProvideWords(): WordsContextType {
 
   const [wordsStats, loading] = useDocumentData(wordsStatsDocRef);
   const textAi = useTextAi();
-  const [isGeneratingWords, setIsGeneratingWords] = useState(false);
   const [wordsToLearn, setWordsToLearn] = useState<string[]>([]);
-  const [goal, setGoal] = useState<GoalElementInfo | null>(null);
 
   const totalWordsCount = useMemo(() => {
     if (!wordsStats) return 0;
@@ -73,14 +71,21 @@ function useProvideWords(): WordsContextType {
     return await addWords(stat);
   };
 
-  const getNewWordsToLearn = async (goal?: GoalElementInfo) => {
+  const getNewWordsToLearn = async (goal?: GoalElementInfo, knownWords: string[] = []) => {
     const dictionary = wordsStats?.dictionary || {};
-    setGoal(goal || null);
-    const knownWords = Object.keys(dictionary).filter((word) => dictionary[word] > 0);
+    const knownWordsFromDictionary = Object.keys(dictionary).filter((word) => dictionary[word] > 3);
+    const knownWordsTotal = [...knownWordsFromDictionary, ...knownWords];
+
+    if (knownWordsTotal.length > 0) {
+      const knownWordsMap: Record<string, number> = {};
+      knownWordsTotal.forEach((word) => {
+        knownWordsMap[word] = 4;
+      });
+      addWords(knownWordsMap);
+    }
+
     setWordsToLearn([]);
     try {
-      setIsGeneratingWords(true);
-
       const systemInstruction = [
         `User provides list of works that they knows.
 You should generate list of 5 new words to learn.
@@ -91,10 +96,15 @@ ${
     : ""
 }
 Return info in JSON format. Example: ["word1", "word2", "word3"].
+
+Users known words: ${knownWordsTotal.join(", ")}
+
 Do not wrap answer with any wrapper phrases.
 Your response will be sent to JSON.parse() function.
 `,
       ].join(" ");
+
+      console.log("systemInstruction", systemInstruction);
       const response = await textAi.generate({
         systemMessage: systemInstruction,
         userMessage: knownWords.join(" "),
@@ -102,12 +112,10 @@ Your response will be sent to JSON.parse() function.
         languageCode: settings.languageCode || "en",
       });
       const newWordsToLearn = JSON.parse(response) as string[];
-      setIsGeneratingWords(false);
       setWordsToLearn(newWordsToLearn.map((word) => word.toLowerCase()));
 
       return newWordsToLearn;
     } catch (error) {
-      setIsGeneratingWords(false);
       throw error;
     }
   };
