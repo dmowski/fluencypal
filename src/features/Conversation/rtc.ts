@@ -12,29 +12,6 @@ import { UsageLog } from "@/common/usage";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { SendSdpOfferRequest, SendSdpOfferResponse } from "@/common/requests";
 
-/**
- * Sends an SDP (Session Description Protocol) offer to an API for processing.
- *
- * @param {RTCSessionDescriptionInit} offer - The WebRTC SDP offer containing session description details.
- * @param {RealTimeModel} model - The AI model to use for processing the SDP offer.
- * @param {string} authToken - The authorization token to use for the API request.
- * @returns {Promise<string>} The SDP response returned from the API.
- *
- * @throws {Error} If the API request fails or returns an unexpected response.
- *
- * @description
- * This function is used in a WebRTC communication flow where an SDP offer is
- * sent to an AI-powered real-time processing API (possibly for AI-driven audio/video interactions).
- *
- * It:
- * 1. Retrieves a temporary authorization key (`EPHEMERAL_KEY`).
- * 2. Sends the provided SDP offer to `https://api.openai.com/v1/realtime`, specifying
- *    the AI model to use.
- * 3. Returns the processed SDP response from the API.
- *
- * The API is expected to facilitate real-time AI-enhanced communication,
- * potentially modifying or routing the SDP data for further WebRTC negotiation.
- */
 const sendSdpOffer = async (
   offer: RTCSessionDescriptionInit,
   model: RealTimeModel,
@@ -177,22 +154,6 @@ export interface AiRtcConfig {
   webCamDescription?: string;
 }
 
-async function listMediaDevices() {
-  try {
-    const devices = await navigator.mediaDevices.enumerateDevices();
-    devices.forEach((device, index) => {
-      console.log(
-        `#${index + 1}`,
-        `kind: ${device.kind}`,
-        `label: ${device.label || "(label hidden - requires permission)"}`,
-        `deviceId: ${device.deviceId}`
-      );
-    });
-  } catch (err) {
-    console.error("Error listing media devices:", err);
-  }
-}
-
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
 
 interface InstructionState {
@@ -221,7 +182,6 @@ export const initAiRtc = async ({
 }: AiRtcConfig) => {
   const audioId = "audio_for_llm";
   const existingAudio = document.getElementById(audioId) as HTMLAudioElement | null;
-  //console.log("model", model);
   let audioEl = existingAudio;
   if (!audioEl) {
     audioEl = document.createElement("audio");
@@ -235,7 +195,6 @@ export const initAiRtc = async ({
   const userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
-  //listMediaDevices();
   await sleep(1000);
 
   const peerConnection = new RTCPeerConnection();

@@ -395,8 +395,6 @@ VISUAL_CONTEXT (latest): ${description}
   }): Promise<AiRtcConfig> => {
     const baseConfig = await getBaseRtcConfig();
 
-    console.log("mode", mode);
-
     let lessonPlanPrompt = lessonPlan
       ? `## Lesson Plan:
 ${lessonPlan.steps
@@ -694,14 +692,15 @@ Start the conversation with: "${
       isVolumeOnInternal = false;
     }
 
-    console.log("START", { isVolumeOnInternal, isMutedInternal });
+    console.log("START", { isVolumeOnInternal, isMutedInternal, mode: input.mode });
 
     setTemporaryGoal(null);
     setGoalSettingProgress(0);
     setIsProcessingGoal(false);
 
-    if (input.analyzeResultAiInstruction)
+    if (input.analyzeResultAiInstruction) {
       console.log("analyzeResultAiInstruction", input.analyzeResultAiInstruction);
+    }
 
     setGameStat(input.gameWords ? input.gameWords : null);
     setGoalInfo(input.goal || null);

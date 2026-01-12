@@ -1,6 +1,7 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useState } from "react";
+import { createContext, useContext, ReactNode, JSX, useState, useEffect, act } from "react";
 import { LessonPlan } from "./type";
+import { useAiConversation } from "../Conversation/useAiConversation";
 
 interface LessonPlanContextType {
   loading: boolean;
@@ -12,6 +13,23 @@ const LessonPlanContext = createContext<LessonPlanContextType | null>(null);
 
 function useProvideLessonPlan(): LessonPlanContextType {
   const [activeLessonPlan, setActiveLessonPlan] = useState<LessonPlan | null>(null);
+  const aiConversation = useAiConversation();
+
+  const activeConversationMessage = aiConversation.conversation;
+
+  useEffect(() => {
+    setActiveLessonPlan(null);
+  }, [aiConversation.isClosing]);
+
+  const analyzeActiveConversation = () => {
+    console.log("ANALYZING CONVERSATION");
+  };
+
+  useEffect(() => {
+    if (activeConversationMessage.length > 3 && activeLessonPlan) {
+      analyzeActiveConversation();
+    }
+  }, [activeConversationMessage]);
 
   return {
     loading: false,

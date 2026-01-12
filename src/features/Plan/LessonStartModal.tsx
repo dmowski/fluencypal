@@ -121,8 +121,6 @@ Plan should contain 3-5 steps.
 Format the response as a JSON array with each step containing "stepTitle", "stepDescriptionForStudent", and "teacherInstructions".
 `;
 
-    console.log("systemMessage", systemMessage);
-
     const response = await ai.generateJson<LessonPlanStep[]>({
       systemMessage,
       userMessage: `Create the lesson plan as specified.`,
@@ -140,10 +138,7 @@ Format the response as a JSON array with each step containing "stepTitle", "step
   const loadWords = async (knownWords?: string[]) => {
     setIsWordsLoading(true);
     wordsLoadingRef.current = true;
-    const start = Date.now();
     const wordsList = await words.getNewWordsToLearn(goalInfo, knownWords || []);
-    const end = Date.now();
-    console.log("Time taken to generate words:", end - start, "ms");
 
     setWordsToLearn(wordsList);
     setIsWordsLoading(false);
@@ -161,7 +156,6 @@ Format the response as a JSON array with each step containing "stepTitle", "step
     setIsRuleLoading(true);
     isRuleLoadingRef.current = true;
     const rule = await rules.getRules(goalInfo);
-    console.log("rule", rule);
     setRuleToLearn(rule);
     setIsRuleLoading(false);
     isRuleLoadingRef.current = false;
