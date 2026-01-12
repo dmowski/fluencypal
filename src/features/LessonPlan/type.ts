@@ -7,3 +7,9 @@ export interface LessonPlanStep {
 export interface LessonPlan {
   steps: LessonPlanStep[];
 }
+
+export interface LessonPlanAnalysis {
+  activeStepIndex: number;
+  isFine: boolean;
+  suggestionsToTeacher?: string;
+}

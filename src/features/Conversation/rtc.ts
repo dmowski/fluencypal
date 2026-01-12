@@ -381,7 +381,9 @@ export const initAiRtc = async ({
   const updateInstruction = async (partial: Partial<InstructionState>): Promise<void> => {
     Object.assign(instructionState, partial);
     const updatedInstruction = getInstruction();
-    console.log("RTC updatedInstruction", updatedInstruction);
+    if (partial.correction) {
+      console.log("RTC updatedInstruction", updatedInstruction);
+    }
     await updateSession({
       ...sessionPrompts,
       initInstruction: updatedInstruction,
