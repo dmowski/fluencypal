@@ -135,17 +135,9 @@ export const LessonStartModal = ({
   };
 
   useEffect(() => {
-    if (steps.includes("words") && !wordsLoadingRef.current) {
-      loadWords();
-    }
-
-    if (steps.includes("rules") && !isRuleLoadingRef.current) {
-      loadRule();
-    }
-
-    if (!isLoadingIdeasRef.current) {
-      loadIdeas();
-    }
+    if (steps.includes("words") && !wordsLoadingRef.current) loadWords();
+    if (steps.includes("rules") && !isRuleLoadingRef.current) loadRule();
+    if (!isLoadingIdeasRef.current) loadIdeas();
   }, []);
 
   const onNext = () => {
@@ -154,6 +146,7 @@ export const LessonStartModal = ({
       setStep(steps[currentStepIndex + 1]);
     }
   };
+
   const [imageDescription, setImageDescription] = useState<string>("");
   const [loadingImageDescription, setLoadingImageDescription] = useState<boolean>(false);
 
