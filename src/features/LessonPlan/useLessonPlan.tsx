@@ -26,10 +26,10 @@ function useProvideLessonPlan(): LessonPlanContextType {
   };
 
   useEffect(() => {
-    if (activeConversationMessage.length > 3 && activeLessonPlan) {
+    if (activeConversationMessage.length > 1 && activeLessonPlan) {
       analyzeActiveConversation();
     }
-  }, [activeConversationMessage]);
+  }, [activeConversationMessage.length]);
 
   return {
     loading: false,

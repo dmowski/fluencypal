@@ -22,7 +22,7 @@ import { useTranslate } from "../Translation/useTranslate";
 import { ConversationIdea, useAiUserInfo } from "../Ai/useAiUserInfo";
 import { useTextAi } from "../Ai/useTextAi";
 import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
-import { LessonPlanStep } from "../LessonPlan/type";
+import { LessonPlan, LessonPlanStep } from "../LessonPlan/type";
 import { useLessonPlan } from "../LessonPlan/useLessonPlan";
 
 type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start" | "plan";
@@ -85,7 +85,31 @@ export const LessonStartModal = ({
   const [isLessonPlanLoading, setIsLessonPlanLoading] = useState<boolean>(false);
   const isLoadingLessonPlanRef = useRef(false);
 
+  const getLessonPlanFromStorage = (elementId: string): LessonPlan | null => {
+    const stored = localStorage.getItem(`lessonPlan_${elementId}`);
+    if (stored) {
+      try {
+        const plan: LessonPlan = JSON.parse(stored);
+        return plan;
+      } catch (error) {
+        console.error("Error parsing lesson plan from storage:", error);
+        return null;
+      }
+    }
+    return null;
+  };
+
+  const setLessonPlanToStorage = (elementId: string, plan: LessonPlan) => {
+    localStorage.setItem(`lessonPlan_${elementId}`, JSON.stringify(plan));
+  };
+
   const loadLessonPlan = async () => {
+    const storagePlan = getLessonPlanFromStorage(goalInfo.goalElement.id);
+    if (storagePlan) {
+      lessonPlan.setActiveLessonPlan(storagePlan);
+      return;
+    }
+
     isLoadingLessonPlanRef.current = true;
     setIsLessonPlanLoading(true);
     const userInfo = (aiUserInfo.userInfo?.records || []).join(". ");
@@ -128,9 +152,10 @@ Format the response as a JSON array with each step containing "stepTitle", "step
       model: "gpt-4o",
     });
 
-    lessonPlan.setActiveLessonPlan({
-      steps: response,
-    });
+    const plan: LessonPlan = { steps: response };
+    setLessonPlanToStorage(goalInfo.goalElement.id, plan);
+    lessonPlan.setActiveLessonPlan(plan);
+
     isLoadingLessonPlanRef.current = false;
     setIsLessonPlanLoading(false);
   };
@@ -231,7 +256,7 @@ Format the response as a JSON array with each step containing "stepTitle", "step
     });
 
     setIsStarting(false);
-    onClose();
+    // onClose();
   };
 
   return (
