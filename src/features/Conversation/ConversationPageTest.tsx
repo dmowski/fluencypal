@@ -146,8 +146,8 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     <Stack>
       <ConversationCanvas
         openCommunityPage={() => {}}
-        pointsEarned={5}
-        messagesToComplete={2}
+        pointsEarned={12}
+        messagesToComplete={222}
         messageOrder={{}}
         isMuted
         conversation={testMessage}
@@ -173,7 +173,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         goalSettingProgress={0}
         isSavingGoal={false}
         isShowMessageProgress={true}
-        conversationAnalysisResult={``}
+        conversationAnalysisResult={`2`}
         closeConversation={async () => alert("Close conversation")}
         analyzeConversation={async () => {}}
         onWebCamDescription={() => {}}
@@ -187,9 +187,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         isAiSpeaking={isAiSpeaking}
         conversationMode={conversationMode}
         voice="shimmer"
-        toggleConversationMode={(mode: ConversationMode): void => {
-          setConversationMode(mode);
-        }}
+        toggleConversationMode={(mode: ConversationMode): void => setConversationMode(mode)}
       />
     </Stack>
   );
