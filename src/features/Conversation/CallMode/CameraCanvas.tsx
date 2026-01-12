@@ -135,6 +135,8 @@ export const CameraCanvas = ({
         sx={{
           gap: "0px",
           width: "100%",
+          height: "100dvh",
+          overflow: "hidden",
         }}
       >
         <Stack
