@@ -16,20 +16,19 @@ import { useFixJson } from "./useFixJson";
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
+export interface ConversationIdea {
+  firstMessage: string;
+  potentialTopics: string;
+}
+
 interface AiUserInfoContextType {
-  updateUserInfo: (
-    conversation: ChatMessage[],
-    languageCode: SupportedLanguage
-  ) => Promise<{
+  updateUserInfo: (conversation: ChatMessage[]) => Promise<{
     records: string[];
   }>;
   userInfo: AiUserInfo | null;
 
-  extractUserRecords: (conversation: ChatMessage[], lang: SupportedLanguage) => Promise<string[]>;
-  generateFirstMessageText: (
-    topic: string,
-    languageCode: SupportedLanguage
-  ) => Promise<{ firstMessage: string; potentialTopics: string }>;
+  extractUserRecords: (conversation: ChatMessage[]) => Promise<string[]>;
+  generateFirstMessageText: (topic: string) => Promise<ConversationIdea>;
   saveUserInfo: (updatedRecords: string[]) => Promise<void>;
 }
 
@@ -38,12 +37,13 @@ const AiUserInfoContext = createContext<AiUserInfoContextType | null>(null);
 function useProvideAiUserInfo(): AiUserInfoContextType {
   const auth = useAuth();
   const settings = useSettings();
+  const languageCode = settings.languageCode || "en";
   const textAi = useTextAi();
   const fixJson = useFixJson();
   const dbDocRef = db.documents.aiUserInfo(auth.uid);
   const [userInfo] = useDocumentData<AiUserInfo>(dbDocRef);
 
-  const cleanUpSummary = async (summary: string[], lang: SupportedLanguage) => {
+  const cleanUpSummary = async (summary: string[]) => {
     const systemMessage = `Given information about users from conversation with AI language teacher.
 Your goal is to clean up repeated information and return only unique information.
 Return info in JSON format.
@@ -56,15 +56,12 @@ If not relevant information found, return empty array.
       userMessage: aiUserMessage,
       systemMessage,
       model: "gpt-4o",
-      languageCode: lang,
+      languageCode,
     });
     return fixJson.parseJson<string[]>(summaryFromConversation);
   };
 
-  const extractUserRecords = async (
-    conversation: ChatMessage[],
-    lang: SupportedLanguage
-  ): Promise<string[]> => {
+  const extractUserRecords = async (conversation: ChatMessage[]): Promise<string[]> => {
     try {
       const systemMessage = `Given conversation with user and language teacher.
 Your goal is to extract information about user from this conversation.
@@ -86,7 +83,7 @@ If not relevant information found, return empty array.`;
         userMessage: aiUserMessage,
         systemMessage,
         model: "gpt-4o",
-        languageCode: lang,
+        languageCode,
         attempts: 4,
       });
 
@@ -94,7 +91,7 @@ If not relevant information found, return empty array.`;
       const newRecords: string[] = parsedSummary;
 
       const updatedRecords = oldRecords
-        ? await cleanUpSummary([...newRecords, ...oldRecords], lang)
+        ? await cleanUpSummary([...newRecords, ...oldRecords])
         : newRecords;
 
       return updatedRecords;
@@ -120,12 +117,12 @@ If not relevant information found, return empty array.`;
     );
   };
 
-  const updateUserInfo = async (conversation: ChatMessage[], lang: SupportedLanguage) => {
+  const updateUserInfo = async (conversation: ChatMessage[]) => {
     if (!dbDocRef) {
       throw new Error("dbDocRef is not defined | useAiUserInfo.updateUserInfo");
     }
 
-    const updatedRecords = await extractUserRecords(conversation, lang);
+    const updatedRecords = await extractUserRecords(conversation);
 
     await saveUserInfo(updatedRecords);
 
@@ -173,7 +170,7 @@ If not relevant information found, return empty array.`;
     return lastMessagesText;
   };
 
-  const generateFirstMessageText = async (topic: string, languageCode: SupportedLanguage) => {
+  const generateFirstMessageText = async (topic: string) => {
     const infoNotes = userInfo?.records || [];
 
     const firstMessages: string[] = await getLastFirstMessage(4);

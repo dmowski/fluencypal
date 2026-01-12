@@ -531,7 +531,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     console.log("🦄 generateGoal | Starting goal generation.");
     const generateExampleRequest = generateWelcomeMessage();
 
-    const userRecords = await userInfo.extractUserRecords(conversationMessages, languageToLearn);
+    const userRecords = await userInfo.extractUserRecords(conversationMessages);
     const goal = await plan.generateGoal({
       languageCode: languageToLearn,
       conversationMessages: conversationMessages,

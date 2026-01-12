@@ -88,7 +88,7 @@ export const useGoalCreation = () => {
 
       await new Promise((resolve) =>
         setTimeout(async () => {
-          const updatedInfoRecords = await userInfo.updateUserInfo(conversation, code);
+          const updatedInfoRecords = await userInfo.updateUserInfo(conversation);
           console.log("updatedInfoRecords", updatedInfoRecords);
           setIsProcessingGoal(i18n._(`Processing the goal...`) + "32%");
 

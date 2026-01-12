@@ -210,7 +210,7 @@ export function useProvideInterviewQuizContext({
           })
           .flat();
 
-        const userRecords = await userInfo.extractUserRecords(conversationMessages, lang);
+        const userRecords = await userInfo.extractUserRecords(conversationMessages);
         const goal = await plan.generateGoal({
           languageCode: lang,
           conversationMessages: conversationMessages,

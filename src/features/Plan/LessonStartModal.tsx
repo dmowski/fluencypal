@@ -21,6 +21,7 @@ import { ConversationMode } from "@/common/user";
 import { ConversationType } from "@/common/conversation";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useTranslate } from "../Translation/useTranslate";
+import { ConversationIdea, useAiUserInfo } from "../Ai/useAiUserInfo";
 
 type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start";
 
@@ -106,6 +107,26 @@ export const LessonStartModal = ({
     isRuleLoadingRef.current = false;
   };
 
+  const [ideas, setIdeas] = useState<ConversationIdea>();
+  const isLoadingIdeasRef = useRef(false);
+
+  const aiUserInfo = useAiUserInfo();
+
+  const loadIdeas = async () => {
+    isLoadingIdeasRef.current = true;
+    const goalTitle = goalInfo.goalPlan.title || "";
+    const elementTitle = goalInfo.goalElement.title || "";
+    const elementDescription = goalInfo.goalElement.description || "";
+    const goalInfoString = `${goalTitle} - ${elementTitle} - ${elementDescription}`;
+    const start = Date.now();
+    const result = await aiUserInfo.generateFirstMessageText(goalInfoString);
+    const end = Date.now();
+    console.log("Time taken to generate ideas:", end - start, "ms");
+    console.log("result", result);
+    setIdeas(result);
+    isLoadingIdeasRef.current = false;
+  };
+
   useEffect(() => {
     if (steps.includes("words") && !wordsLoadingRef.current) {
       loadWords();
@@ -113,6 +134,10 @@ export const LessonStartModal = ({
 
     if (steps.includes("rules") && !isRuleLoadingRef.current) {
       loadRule();
+    }
+
+    if (!isLoadingIdeasRef.current) {
+      loadIdeas();
     }
   }, []);
 
@@ -159,6 +184,7 @@ export const LessonStartModal = ({
       conversationMode,
       wordsToLearn,
       ruleToLearn,
+      ideas: ideas || undefined,
     });
 
     setIsStarting(false);

@@ -84,7 +84,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         id: `${Date.now()}`,
       },
     ]);
-    const responseString = await aiUserInfo.generateFirstMessageText("", "en");
+    const responseString = await aiUserInfo.generateFirstMessageText("");
 
     if (responseString) {
       setTestMessage([

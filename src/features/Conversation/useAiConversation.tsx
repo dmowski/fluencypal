@@ -20,7 +20,7 @@ import { UsageLog } from "@/common/usage";
 import { ChatMessage, ConversationType, MessagesOrderMap } from "@/common/conversation";
 import { useTasks } from "../Tasks/useTasks";
 import { sleep } from "@/libs/sleep";
-import { useAiUserInfo } from "../Ai/useAiUserInfo";
+import { ConversationIdea, useAiUserInfo } from "../Ai/useAiUserInfo";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { firstAiMessage } from "@/features/Lang/lang";
@@ -67,6 +67,7 @@ interface StartConversationProps {
   goal?: GoalElementInfo | null;
   webCamDescription?: string;
   conversationMode: ConversationMode;
+  ideas?: ConversationIdea;
 }
 
 interface AiConversationContextType {
@@ -216,7 +217,7 @@ VISUAL_CONTEXT (latest): ${description}
 
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
     if (isNeedToSaveUserInfo && conversation.length >= 3 && conversation.length % 4 === 0) {
-      aiUserInfo.updateUserInfo(conversation, languageCode);
+      aiUserInfo.updateUserInfo(conversation);
     }
 
     const usersMessagesCount = conversation.filter((message) => !message.isBot).length;
@@ -383,10 +384,15 @@ VISUAL_CONTEXT (latest): ${description}
     return baseConfig;
   };
 
-  const getAiRtcConfig = async (
-    mode: ConversationType,
-    goal?: GoalElementInfo | null
-  ): Promise<AiRtcConfig> => {
+  const getAiRtcConfig = async ({
+    mode,
+    goal,
+    ideas,
+  }: {
+    mode: ConversationType;
+    goal?: GoalElementInfo | null;
+    ideas?: ConversationIdea;
+  }): Promise<AiRtcConfig> => {
     const baseConfig = await getBaseRtcConfig();
 
     console.log("mode", mode);
@@ -436,7 +442,8 @@ ${voiceInstructions}
       const goalInfo = `${goalTitle} - ${elementTitle} - ${elementDescription}`;
       const elementDetails = goal?.goalElement.details || "";
 
-      const { firstMessage } = await aiUserInfo.generateFirstMessageText(goalInfo, languageCode);
+      const firstMessage =
+        ideas?.firstMessage || (await aiUserInfo.generateFirstMessageText(goalInfo)).firstMessage;
 
       firstPotentialBotMessage.current = firstMessage;
       let startFirstMessage = `"${firstMessage}".`;
@@ -471,10 +478,9 @@ ${getConversationStarterMessagePrompt(startFirstMessage)}`,
 
       if (userInfo && userInfo.length > 0) {
         setIsInitializing(`Analyzing info...`);
-        const { firstMessage, potentialTopics } = await aiUserInfo.generateFirstMessageText(
-          "",
-          languageCode
-        );
+        const first = ideas || (await aiUserInfo.generateFirstMessageText(""));
+        const { firstMessage, potentialTopics } = first;
+
         firstPotentialBotMessage.current = firstMessage;
         startFirstMessage = `"${firstMessage}".`;
 
@@ -705,7 +711,7 @@ Start the conversation with: "${
       setErrorInitiating("");
 
       firstPotentialBotMessage.current = "";
-      const aiRtcConfig = await getAiRtcConfig(input.mode, input.goal);
+      const aiRtcConfig = await getAiRtcConfig({ mode: input.mode, goal: input.goal });
       let instruction = aiRtcConfig.initInstruction;
 
       if (input.wordsToLearn) {
@@ -776,7 +782,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     try {
       const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
       if (isNeedToSaveUserInfo && conversation.length > 4) {
-        await aiUserInfo.updateUserInfo(conversation, languageCode);
+        await aiUserInfo.updateUserInfo(conversation);
       }
     } catch (e) {
       console.error("Error saving user info:", e);
