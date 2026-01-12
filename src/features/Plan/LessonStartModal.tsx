@@ -20,6 +20,7 @@ import { on } from "events";
 import { ConversationMode } from "@/common/user";
 import { ConversationType } from "@/common/conversation";
 import { Markdown } from "../uiKit/Markdown/Markdown";
+import { useTranslate } from "../Translation/useTranslate";
 
 type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start";
 
@@ -80,6 +81,7 @@ export const LessonStartModal = ({
   const [wordsToLearn, setWordsToLearn] = useState<string[]>([]);
   const [isWordsLoading, setIsWordsLoading] = useState<boolean>(false);
   const wordsLoadingRef = useRef(isWordsLoading);
+  const translator = useTranslate();
 
   const loadWords = async () => {
     setIsWordsLoading(true);
@@ -171,6 +173,8 @@ export const LessonStartModal = ({
           width: "100%",
         }}
       >
+        {translator.translateModal}
+
         {step === "intro" && (
           <InfoStep
             title={goalInfo.goalElement.title}
@@ -344,7 +348,16 @@ export const LessonStartModal = ({
                 }}
                 className={isRuleLoading ? "loading-shimmer" : ""}
               >
-                <Markdown variant="conversation">{ruleToLearn || i18n._(`Loading...`)}</Markdown>
+                <Markdown
+                  onWordClick={
+                    translator.isTranslateAvailable
+                      ? (word, element) => translator.translateWithModal(word, element)
+                      : undefined
+                  }
+                  variant="conversation"
+                >
+                  {ruleToLearn || i18n._(`Loading...`)}
+                </Markdown>
               </Stack>
             }
             disabled={isRuleLoading}
