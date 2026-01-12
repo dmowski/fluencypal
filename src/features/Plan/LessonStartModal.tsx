@@ -195,7 +195,7 @@ export const LessonStartModal = ({
     });
 
     setIsStarting(false);
-    // onClose();
+    onClose();
   };
 
   return (
