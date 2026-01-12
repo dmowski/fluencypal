@@ -103,9 +103,9 @@ export const LessonStartModal = ({
     localStorage.setItem(`lessonPlan_${elementId}`, JSON.stringify(plan));
   };
 
-  const loadLessonPlan = async () => {
+  const loadLessonPlan = async (skipCache?: boolean) => {
     const storagePlan = getLessonPlanFromStorage(goalInfo.goalElement.id);
-    if (storagePlan) {
+    if (storagePlan && !skipCache) {
       lessonPlan.setActiveLessonPlan(storagePlan);
       return;
     }
@@ -514,7 +514,7 @@ Format the response as a JSON array with each step containing "stepTitle", "step
             secondButtonDisabled={isLessonPlanLoading}
             secondButtonTitle={i18n._(`Refresh`)}
             secondButtonEndIcon={<RefreshCw size={"18px"} />}
-            onSecondButtonClick={() => loadLessonPlan()}
+            onSecondButtonClick={() => loadLessonPlan(true)}
           />
         )}
 
