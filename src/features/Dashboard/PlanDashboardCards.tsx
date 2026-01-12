@@ -390,14 +390,11 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 delayToShow={index * 80}
                 title={planElement.title}
                 subTitle={modeLabels[planElement.mode]}
-                description={planElement.description}
                 details={planElement.details}
                 isDone={isDone}
                 isActive={isActive}
                 isContinueLabel={isActive && index > 0}
-                onClick={(options) => startGoalElement(planElement, options)}
                 startColor={cardColor.startColor}
-                progressPercent={Math.min((planElement.startCount || 0) * 10, 100)}
                 endColor={cardColor.endColor}
                 bgColor={cardColor.bgColor}
                 isLast={index === all.length - 1}
@@ -408,9 +405,14 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                     </Stack>
                   </Stack>
                 }
-                actionLabel={i18n._(`Start`)}
-                isLimited={!access.isFullAppAccess}
-                onLimitedClick={() => usage.togglePaymentModal(true)}
+                goalInfo={
+                  plan.activeGoal
+                    ? {
+                        goalPlan: plan.activeGoal,
+                        goalElement: planElement,
+                      }
+                    : undefined
+                }
               />
             );
           })}

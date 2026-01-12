@@ -125,15 +125,12 @@ export const GoalReview = ({
                         delayToShow={index * 80}
                         title={planElement.title}
                         subTitle={modeLabels[planElement.mode]}
-                        description={planElement.description}
                         details={planElement.details}
                         isDone={false}
                         isActive={false}
                         isContinueLabel={false}
-                        onClick={async () => {}}
                         viewOnly
                         startColor={cardColor.startColor}
-                        progressPercent={Math.min((planElement.startCount || 0) * 10, 100)}
                         endColor={cardColor.endColor}
                         bgColor={cardColor.bgColor}
                         isLast={index === sortedElements.length - 1}
@@ -144,7 +141,6 @@ export const GoalReview = ({
                             </Stack>
                           </Stack>
                         }
-                        actionLabel={i18n._(`Start`)}
                       />
                     </Stack>
                   );

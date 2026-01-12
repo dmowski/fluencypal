@@ -1,37 +1,21 @@
 "use client";
-import { Button, Stack, Typography } from "@mui/material";
-import { Check, ChevronRight, Loader, Telescope } from "lucide-react";
-
-import { ReactNode, useEffect, useState } from "react";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { Stack, Typography } from "@mui/material";
+import { Check, ChevronRight } from "lucide-react";
+import { ReactNode } from "react";
 import { useLingui } from "@lingui/react";
-import { goFullScreen } from "@/libs/fullScreen";
 import { useUrlParam } from "../Url/useUrlParam";
-import { useWebCam } from "../webCam/useWebCam";
-import { WebCamView } from "../webCam/WebCamView";
-import { ConversationMode } from "@/common/user";
-import VideocamIcon from "@mui/icons-material/Videocam";
-import MicIcon from "@mui/icons-material/Mic";
+import { GoalElementInfo } from "./types";
+import { LessonStartModal } from "./LessonStartModal";
 
 interface PlanCardProps {
   id: string;
   title: string;
   subTitle: string;
   details: string;
-  description: string;
-  onClick: ({
-    conversationMode,
-    webCamDescription,
-  }: {
-    conversationMode: ConversationMode;
-    webCamDescription?: string;
-  }) => Promise<void>;
   startColor: string;
   endColor: string;
   bgColor: string;
   icon: ReactNode;
-  actionLabel: string;
-  progressPercent?: number;
   delayToShow: number;
   isDone: boolean;
   isActive?: boolean;
@@ -39,17 +23,13 @@ interface PlanCardProps {
   isContinueLabel: boolean;
   viewOnly?: boolean;
 
-  isLimited?: boolean;
-  onLimitedClick?: () => void;
+  goalInfo?: GoalElementInfo;
 }
 
 export const PlanCard = ({
   id,
   title,
   subTitle,
-  description,
-  progressPercent,
-  onClick,
   startColor,
   endColor,
   bgColor,
@@ -61,201 +41,24 @@ export const PlanCard = ({
   isLast,
   isContinueLabel,
   viewOnly = false,
-  isLimited,
-  onLimitedClick,
+  goalInfo,
 }: PlanCardProps) => {
   const uniqKey = `plan-start-${id}`;
   const [showModal, setShowModal] = useUrlParam(uniqKey);
   const { i18n } = useLingui();
-  const webcam = useWebCam();
 
-  const [isLoadingCall, setIsLoadingCall] = useState<boolean>(false);
-  const [isLoadingVoice, setIsLoadingVoice] = useState<boolean>(false);
   const isNextInPlan = !isActive && !isDone;
-
-  const [allowWebCam, setAllowWebCam] = useState<boolean | null>(null);
-  useEffect(() => {
-    if (allowWebCam === false) {
-      setAllowWebCam(null);
-    }
-  }, [showModal]);
-
-  const onStartCallMode = async () => {
-    if (viewOnly) return;
-    setIsLoadingCall(true);
-    goFullScreen();
-    let imageDescription = "";
-    try {
-      imageDescription = allowWebCam ? (await webcam.getImageDescription()) || "" : "";
-    } catch (error) {
-      console.error("Error getting image description:", error);
-    }
-
-    await onClick({
-      conversationMode: "call",
-      webCamDescription: imageDescription || "",
-    });
-    setIsLoadingCall(false);
-    setShowModal(false);
-  };
-
-  const onStartVoiceOnly = async () => {
-    if (viewOnly) return;
-    setIsLoadingVoice(true);
-    goFullScreen();
-
-    await onClick({
-      conversationMode: "record",
-    });
-    setIsLoadingVoice(false);
-    setShowModal(false);
-  };
 
   return (
     <>
-      {showModal && (
-        <CustomModal isOpen={true} onClose={() => setShowModal(false)}>
-          <Stack
-            sx={{
-              width: "100%",
-              justifyContent: "center",
-              height: "100%",
-            }}
-          >
-            <Stack
-              sx={{
-                alignItems: "center",
-                width: "100%",
-
-                img: {
-                  borderRadius: "100px",
-                  width: "100px",
-                  height: "100px",
-                },
-              }}
-            >
-              {icon}
-            </Stack>
-            <Stack
-              sx={{
-                alignItems: "center",
-                width: "100%",
-                paddingTop: "30px",
-              }}
-            >
-              <Stack>
-                <Typography
-                  align="center"
-                  variant="caption"
-                  sx={{
-                    color: `rgba(255, 255, 255, 0.5)`,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {subTitle}
-                </Typography>
-                <Typography variant="h4" align="center" component="h2" className="decor-text">
-                  {title}
-                </Typography>
-                {description && (
-                  <Typography sx={{ paddingTop: "0px" }} align="center" variant="caption">
-                    {description}
-                  </Typography>
-                )}
-              </Stack>
-
-              {allowWebCam !== false && (
-                <Stack
-                  sx={{
-                    width: "350px",
-                    height: "220px",
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
-                    backgroundColor: "rgba(0, 0, 0, 0.2)",
-                    borderRadius: "9px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    margin: "20px 0",
-                    position: "relative",
-                    overflow: "hidden",
-                  }}
-                >
-                  {allowWebCam === true && <WebCamView />}
-
-                  {allowWebCam === null && (
-                    <Stack
-                      sx={{
-                        gap: "5px",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Button
-                        color="info"
-                        variant="contained"
-                        onClick={() => setAllowWebCam(true)}
-                        startIcon={<VideocamIcon />}
-                      >
-                        {i18n._(`Allow WebCam`)}
-                      </Button>
-                      <Button variant="text" onClick={() => setAllowWebCam(false)}>
-                        {i18n._(`Skip for now`)}
-                      </Button>
-                    </Stack>
-                  )}
-                </Stack>
-              )}
-
-              <Stack
-                sx={{
-                  width: "100%",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  margin: "5px 0px 15px 0px",
-                  gap: "10px",
-                  marginTop: allowWebCam !== false ? "5px" : "20px",
-                }}
-              >
-                <Button
-                  sx={{
-                    minWidth: "240px",
-                    padding: "10px 20px",
-                  }}
-                  onClick={onStartCallMode}
-                  size="large"
-                  variant="contained"
-                  color="info"
-                  startIcon={isLoadingCall ? <Loader /> : <VideocamIcon />}
-                  disabled={
-                    isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null
-                  }
-                >
-                  {i18n._(`Start Call`)}
-                </Button>
-
-                <Button
-                  onClick={onStartVoiceOnly}
-                  variant="text"
-                  color="info"
-                  startIcon={isLoadingVoice ? <Loader /> : <MicIcon />}
-                  disabled={
-                    isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null
-                  }
-                >
-                  {i18n._(`Start Voice Only`)}
-                </Button>
-              </Stack>
-
-              <Typography
-                align="center"
-                variant="caption"
-                sx={{
-                  opacity: 0.7,
-                }}
-              >
-                {i18n._(`Send 6 messages to complete`)}
-              </Typography>
-            </Stack>
-          </Stack>
-        </CustomModal>
+      {showModal && goalInfo && (
+        <LessonStartModal
+          title={title}
+          subTitle={subTitle}
+          icon={icon}
+          onClose={() => setShowModal(false)}
+          goalInfo={goalInfo}
+        />
       )}
 
       <Stack
