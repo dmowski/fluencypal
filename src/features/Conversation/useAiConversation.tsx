@@ -804,6 +804,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     setIsStarted(false);
     setIsInitializing("");
     communicator?.closeHandler();
+    setLessonPlanAnalysis(null);
 
     try {
       const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);

@@ -86,7 +86,7 @@ ${activePlan}
 Format the response as a JSON object containing {
 "progress": number, // the cumulative percentage of the lesson plan completed (0-100), do not reduce from previous
 "isFine": true/false, // whether the lesson plan is being followed correctly
-"suggestionsToTeacher": "specific suggestions here if needed, or empty. Use direct voice addressing the teacher. Give examples of what to say or do next.",
+"suggestionsToTeacher": "Specific suggestions here if needed, or empty. Use direct voice addressing the teacher. Give examples of what to say",
 "comments": "additional comments for debug purposes"
 }
 
