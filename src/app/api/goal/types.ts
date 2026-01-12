@@ -5,7 +5,6 @@ export interface CreateGoalRequest {
   languageToLearn: SupportedLanguage;
   level: string;
   description: string;
-  minPerDaySelected: number;
   nativeLanguageCode: NativeLangCode | null;
 }
 

@@ -141,11 +141,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     );
   }
 
-  const defaultMessagesToComplete = 5;
-  const planMessageCount = Math.min(
-    plan.activeGoal?.goalQuiz?.minPerDaySelected || defaultMessagesToComplete,
-    defaultMessagesToComplete
-  );
+  const planMessageCount = 40;
 
   return (
     <Stack>
