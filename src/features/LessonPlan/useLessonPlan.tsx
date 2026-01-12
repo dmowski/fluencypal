@@ -116,24 +116,6 @@ ${JSON.stringify(previousProgress, null, 2)}
     isAnalyzingRef.current = false;
   };
 
-  const getLessonPlanFromStorage = (elementId: string): LessonPlan | null => {
-    const stored = localStorage.getItem(`lessonPlan_${elementId}`);
-    if (stored) {
-      try {
-        const plan: LessonPlan = JSON.parse(stored);
-        return plan;
-      } catch (error) {
-        console.error("Error parsing lesson plan from storage:", error);
-        return null;
-      }
-    }
-    return null;
-  };
-
-  const setLessonPlanToStorage = (elementId: string, plan: LessonPlan) => {
-    localStorage.setItem(`lessonPlan_${elementId}`, JSON.stringify(plan));
-  };
-
   const aiUserInfo = useAiUserInfo();
 
   const createLessonPlan = async (
@@ -174,7 +156,7 @@ ${JSON.stringify(previousProgress, null, 2)}
   
   Provide a step-by-step lesson plan with clear objectives and activities.
   
-  Plan should contain 3-5 steps.
+  Plan should contain 2-3 steps.
   On the first step in teacherInstructions, include a start message to introduce the topic to the student.
   
   Format the response as a JSON array with each step containing "stepTitle", "stepDescriptionForStudent", and "teacherInstructions".
@@ -230,4 +212,22 @@ export const useLessonPlan = (): LessonPlanContextType => {
     throw new Error("useLessonPlan must be used within a LessonPlanProvider");
   }
   return context;
+};
+
+const getLessonPlanFromStorage = (elementId: string): LessonPlan | null => {
+  const stored = localStorage.getItem(`lessonPlan_${elementId}`);
+  if (stored) {
+    try {
+      const plan: LessonPlan = JSON.parse(stored);
+      return plan;
+    } catch (error) {
+      console.error("Error parsing lesson plan from storage:", error);
+      return null;
+    }
+  }
+  return null;
+};
+
+const setLessonPlanToStorage = (elementId: string, plan: LessonPlan) => {
+  localStorage.setItem(`lessonPlan_${elementId}`, JSON.stringify(plan));
 };
