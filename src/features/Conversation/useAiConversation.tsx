@@ -74,8 +74,7 @@ interface AiConversationContextType {
   isStarted: boolean;
   setIsStarted: (isStarted: boolean) => void;
   startConversation: (params: StartConversationProps) => Promise<void>;
-  confirmStartConversationModal: StartConversationProps | null;
-  setIsConfirmed: (isConfirmed: boolean) => void;
+
   conversation: ChatMessage[];
   errorInitiating?: string;
   isClosing: boolean;
@@ -94,7 +93,6 @@ interface AiConversationContextType {
   conversationId: string;
 
   isProcessingGoal: boolean;
-  confirmGoal: (isConfirm: boolean) => Promise<void>;
   temporaryGoal: GoalPlan | null;
   goalSettingProgress: number;
   isSavingGoal: boolean;
@@ -137,9 +135,6 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const aiModal = MODELS.REALTIME_CONVERSATION;
 
-  const [confirmStartConversationModal, setConfirmStartConversationModal] =
-    useState<StartConversationProps | null>(null);
-
   const toggleVolume = (isOn: boolean) => {
     setIsVolumeOn(isOn);
     communicatorRef.current?.toggleVolume(isOn);
@@ -161,30 +156,6 @@ VISUAL_CONTEXT (latest): ${description}
     const webCamDescriptionWithInstruction = getWebCamDescriptionInstruction(description);
     if (!webCamDescriptionWithInstruction) return;
     communicatorRef.current?.sendWebCamDescription(webCamDescriptionWithInstruction);
-  };
-
-  const confirmGoal = async (isConfirm: boolean) => {
-    if (!temporaryGoal) {
-      console.log("❌ No goal to confirm");
-      return;
-    }
-
-    if (isConfirm) {
-      setIsSavingGoal(true);
-      await plan.addGoalPlan(temporaryGoal);
-      setTemporaryGoal(null);
-      await closeConversation();
-      setIsProcessingGoal(false);
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-      setIsSavingGoal(false);
-    } else {
-      setIsProcessingGoal(false);
-      setTemporaryGoal(null);
-    }
   };
 
   const usage = useUsage();
@@ -692,38 +663,9 @@ Start the conversation with: "${
 
   const [currentMode, setCurrentMode] = useState<ConversationType>("talk");
 
-  const confirmLocalStorageKey = `confirm-start-conversation_2`;
-  const isNeedToShowConfirmationModal = () => {
-    if (plan.activeGoal) {
-      return false;
-    }
-
-    const isConfirmInLocalStorage = localStorage.getItem(confirmLocalStorageKey);
-    return !isConfirmInLocalStorage;
-  };
-
-  const setIsConfirmed = (isConfirmed: boolean) => {
-    if (isConfirmed) {
-      localStorage.setItem(confirmLocalStorageKey, "true");
-    } else {
-      localStorage.removeItem(confirmLocalStorageKey);
-      setConfirmStartConversationModal(null);
-    }
-  };
-
   const startConversation = async (input: StartConversationProps) => {
     if (!settings.languageCode) throw new Error("Language is not set | startConversation");
     setMessageOrder({});
-    if (isNeedToShowConfirmationModal()) {
-      setConfirmStartConversationModal(input);
-      return;
-    } else {
-      setConfirmStartConversationModal(null);
-    }
-
-    if (input.conversationMode && settings.conversationMode !== input.conversationMode) {
-      await settings.setConversationMode(input.conversationMode);
-    }
 
     let isMutedInternal = isMuted;
     const isRecordingNeedMute = !isMuted && input.conversationMode === "record";
@@ -861,7 +803,6 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     currentMode,
     voice,
     conversationId,
-    setIsConfirmed,
     isInitializing,
     isStarted,
     startConversation,
@@ -874,17 +815,14 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     toggleMute,
     isMuted,
     addUserMessage,
-
     gameWords: gameStat,
     isVolumeOn,
     toggleVolume,
     setIsStarted,
     isProcessingGoal,
     temporaryGoal,
-    confirmGoal,
     goalSettingProgress,
     isSavingGoal,
-    confirmStartConversationModal,
     goalInfo,
     messageOrder,
     setWebCamDescription,

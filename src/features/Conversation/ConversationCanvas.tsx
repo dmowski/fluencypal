@@ -78,7 +78,6 @@ interface ConversationCanvasProps {
 
   isProcessingGoal: boolean;
   temporaryGoal: GoalPlan | null;
-  confirmGoal: (isConfirm: boolean) => Promise<void>;
   goalSettingProgress: number;
   isSavingGoal: boolean;
 
@@ -126,7 +125,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   setIsMuted,
   isProcessingGoal,
   temporaryGoal,
-  confirmGoal,
   goalSettingProgress,
   isSavingGoal,
   closeConversation,
@@ -544,61 +542,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                       <Typography className="loading-shimmer">
                         {i18n._(`Preparing Goal`)}
                       </Typography>
-                    </Stack>
-                  )}
-
-                  {isProcessingGoal && temporaryGoal && (
-                    <Stack
-                      sx={{
-                        flexDirection: "column",
-                        width: "100%",
-                        gap: "20px",
-                      }}
-                    >
-                      <Stack
-                        sx={{
-                          gap: "10px",
-                          alignItems: "flex-start",
-                        }}
-                      >
-                        <Stack>
-                          <Typography variant="caption">{i18n._(`Goal is created`)}:</Typography>
-                          <Typography variant="h5" className="decor-text">
-                            {temporaryGoal.title}
-                          </Typography>
-                          <Typography
-                            variant="caption"
-                            sx={{
-                              color: "#b6d5f3",
-                            }}
-                          >
-                            {i18n._(`Lessons added:`)} {temporaryGoal.elements.length}
-                          </Typography>
-                        </Stack>
-                      </Stack>
-
-                      <Stack
-                        sx={{
-                          width: "100%",
-                          gap: "10px",
-                          flexDirection: "row",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <Button
-                          onClick={() => !isSavingGoal && confirmGoal(true)}
-                          color={isSavingGoal ? "primary" : "info"}
-                          size="large"
-                          variant="contained"
-                          startIcon={isSavingGoal ? <Loader /> : <Check />}
-                        >
-                          {i18n._("Open plan")}
-                        </Button>
-                        <IconButton onClick={() => confirmGoal(false)}>
-                          <Trash2 size={"14px"} />
-                        </IconButton>
-                      </Stack>
                     </Stack>
                   )}
 

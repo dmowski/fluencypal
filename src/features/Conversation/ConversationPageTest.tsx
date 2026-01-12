@@ -170,7 +170,6 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         recordingError={""}
         isProcessingGoal={false}
         temporaryGoal={testGoal}
-        confirmGoal={async () => {}}
         goalSettingProgress={0}
         isSavingGoal={false}
         isShowMessageProgress={true}

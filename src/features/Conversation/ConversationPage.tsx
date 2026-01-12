@@ -20,7 +20,6 @@ import { useRules } from "../Rules/useRules";
 import { ConversationError } from "./ConversationError";
 import { useRouter } from "next/navigation";
 import { usePlan } from "../Plan/usePlan";
-import { ConfirmConversationModal } from "./ConfirmConversationModal";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { GamePage } from "../Game/GamePage";
 import { useGoalCreation } from "../Plan/useGoalCreation";
@@ -134,20 +133,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     return <SelectLanguage pageLang={lang} />;
   }
 
-  if (aiConversation.confirmStartConversationModal) {
-    return (
-      <ConfirmConversationModal
-        onCancel={() => aiConversation.setIsConfirmed(false)}
-        onConfirm={() => {
-          aiConversation.setIsConfirmed(true);
-          if (aiConversation.confirmStartConversationModal) {
-            aiConversation.startConversation(aiConversation.confirmStartConversationModal);
-          }
-        }}
-      />
-    );
-  }
-
   if (!aiConversation.isStarted) {
     return (
       <RolePlayProvider rolePlayInfo={rolePlayInfo}>
@@ -200,7 +185,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         recordingError={recorder.error}
         isProcessingGoal={aiConversation.isProcessingGoal}
         temporaryGoal={aiConversation.temporaryGoal}
-        confirmGoal={aiConversation.confirmGoal}
         goalSettingProgress={aiConversation.goalSettingProgress}
         isSavingGoal={aiConversation.isSavingGoal}
         analyzeConversation={analyzeConversation}
