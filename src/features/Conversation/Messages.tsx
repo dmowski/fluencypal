@@ -150,6 +150,7 @@ export const Message = ({ message }: { message: ChatMessage }) => {
           </IconButton>
         )}
       </Stack>
+      {translator.translateModal}
     </Stack>
   );
 };

@@ -8,7 +8,6 @@ import { useLingui } from "@lingui/react";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { ArrowDown, X } from "lucide-react";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
-import { useUrlParam } from "../Url/useUrlParam";
 import { fullLanguagesMap } from "@/libs/language/languages";
 import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
 
@@ -18,7 +17,7 @@ export const useTranslate = () => {
   const settings = useSettings();
   const plan = usePlan();
 
-  const [isShowModal, setIsShowModal] = useUrlParam("showTranslateModal");
+  const [isShowModal, setIsShowModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const pageLangCode = useMemo(() => getPageLangCode(), []);
