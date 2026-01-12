@@ -3,6 +3,7 @@ import { createContext, useContext, ReactNode, JSX, useState, useEffect, useRef 
 import { LessonPlan, LessonPlanAnalysis } from "./type";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useTextAi } from "../Ai/useTextAi";
+import { getSortedMessages } from "../Conversation/getSortedMessages";
 
 interface LessonPlanContextType {
   loading: boolean;
@@ -33,8 +34,13 @@ function useProvideLessonPlan(): LessonPlanContextType {
   };
 
   const getActiveConversationAsText = (): string => {
+    const sortedMessages = getSortedMessages({
+      conversation: aiConversation.conversation,
+      messageOrder: aiConversation.messageOrder,
+    });
+
     let conversationText = `## Conversation so far:\n\n`;
-    activeConversationMessage.forEach((message) => {
+    sortedMessages.forEach((message) => {
       conversationText += `${message.isBot ? "Teacher" : "Student"}: ${message.text}\n`;
     });
 
@@ -86,9 +92,10 @@ Format the response as a JSON object containing {
       model: "gpt-4o",
     });
     const end = Date.now();
-    console.log(`Lesson plan analysis took ${(end - start) / 1000} seconds`);
-
-    console.log("result", JSON.stringify({ userMessage, systemInstructions, result }, null, 2));
+    console.log(
+      `result ${(end - start) / 1000} seconds`,
+      JSON.stringify({ userMessage, systemInstructions, result }, null, 2)
+    );
 
     if (result) {
       setActiveProgress(result);
@@ -98,9 +105,17 @@ Format the response as a JSON object containing {
   };
 
   useEffect(() => {
-    if (activeConversationMessage.length > 1 && activeLessonPlan && !isAnalyzingRef.current) {
-      analyzeActiveConversation();
+    const isSkip =
+      activeConversationMessage.length > 1 && activeLessonPlan && !isAnalyzingRef.current;
+    if (isSkip) {
+      return;
     }
+
+    const timeout = setTimeout(() => {
+      analyzeActiveConversation();
+    }, 1000);
+
+    return () => clearTimeout(timeout);
   }, [activeConversationMessage.length]);
 
   return {
