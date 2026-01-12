@@ -201,7 +201,7 @@ VISUAL_CONTEXT (latest): ${description}
     defaultMessagesToComplete
   );
 
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
