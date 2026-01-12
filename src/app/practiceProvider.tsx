@@ -22,6 +22,7 @@ import { AnalyticsProvider } from "@/features/Analytics/useAnalytics";
 import { BattleProvider } from "@/features/Game/Battle/useBattle";
 import { GlobalModals } from "@/features/Modal/GlobalModals";
 import { ChatListProvider } from "@/features/Chat/useChatList";
+import { LessonPlanProvider } from "@/features/LessonPlan/useLessonPlan";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
@@ -48,7 +49,9 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                             <PlanProvider>
                                               <AiConversationProvider>
                                                 <BattleProvider>
-                                                  {children}
+                                                  <LessonPlanProvider>
+                                                    {children}
+                                                  </LessonPlanProvider>
                                                   <GlobalModals />
                                                 </BattleProvider>
                                               </AiConversationProvider>
