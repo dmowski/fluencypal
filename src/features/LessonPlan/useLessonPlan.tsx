@@ -71,19 +71,25 @@ ${activePlan}
 Format the response as a JSON object containing {
 "activeStepIndex": number, // index of the current step in the lesson plan (0-based)
 "isFine": true/false, // whether the lesson plan is being followed correctly
-"suggestionsToTeacher": "specific suggestions here if needed, or empty"
+"suggestionsToTeacher": "specific suggestions here if needed, or empty",
+"comments": "additional comments for debug purposes"
 }
 `;
+    const userMessage = `${activeConversation}\n\nPlease provide your analysis.`;
     console.log("activeConversation", activeConversation);
 
+    const start = Date.now();
     const result = await ai.generateJson<LessonPlanAnalysis>({
       systemMessage: systemInstructions,
-      userMessage: `${activeConversation}\n\nPlease provide your analysis now.`,
+      userMessage: userMessage,
       attempts: 2,
       model: "gpt-4o",
     });
+    const end = Date.now();
+    console.log(`Lesson plan analysis took ${(end - start) / 1000} seconds`);
 
-    console.log("result", result);
+    console.log("result", JSON.stringify({ userMessage, systemInstructions, result }, null, 2));
+
     if (result) {
       setActiveProgress(result);
     }

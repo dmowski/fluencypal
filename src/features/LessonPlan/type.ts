@@ -12,4 +12,5 @@ export interface LessonPlanAnalysis {
   activeStepIndex: number;
   isFine: boolean;
   suggestionsToTeacher?: string;
+  comments?: string;
 }
