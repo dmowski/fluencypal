@@ -15,6 +15,7 @@ import { WebCamView } from "@/features/webCam/WebCamView";
 import { useEffect, useRef, useState } from "react";
 import { ScanLine } from "lucide-react";
 import { sleep } from "@/libs/sleep";
+import { LessonPlanAnalysis } from "@/features/LessonPlan/type";
 
 const girlVoices: AiVoice[] = ["alloy", "coral", "sage", "shimmer"];
 
@@ -47,6 +48,7 @@ export const CameraCanvas = ({
 
   isCompletedLesson,
   onShowAnalyzeConversationModal,
+  lessonPlanAnalysis,
 }: {
   conversation: ChatMessage[];
   stopCallMode: () => void;
@@ -66,6 +68,8 @@ export const CameraCanvas = ({
 
   isCompletedLesson: boolean;
   onShowAnalyzeConversationModal: () => void;
+
+  lessonPlanAnalysis: LessonPlanAnalysis | null;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -77,7 +81,7 @@ export const CameraCanvas = ({
     if (isLimited) {
       setIsSubtitlesEnabled(true);
     } else {
-      setIsSubtitlesEnabled(false);
+      setIsSubtitlesEnabled(true);
     }
   }, [isLimited]);
 
@@ -277,8 +281,8 @@ export const CameraCanvas = ({
             onSubmitTranscription={onSubmitTranscription}
             isSubtitlesEnabled={isSubtitlesEnabled}
             toggleSubtitles={(isToggleOn) => setIsSubtitlesEnabled(isToggleOn)}
-            isCompletedLesson={isCompletedLesson}
             onShowAnalyzeConversationModal={onShowAnalyzeConversationModal}
+            lessonPlanAnalysis={lessonPlanAnalysis}
           />
         </Stack>
       </Stack>

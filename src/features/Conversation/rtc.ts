@@ -369,19 +369,24 @@ export const initAiRtc = async ({
   };
 
   const getInstruction = (): string => {
+    if (instructionState.correction) {
+      return instructionState.correction;
+    }
+
     return [
+      instructionState.correction,
       instructionState.baseInitInstruction,
       instructionState.webCamDescription,
-      instructionState.correction,
     ]
       .filter((part) => part && part.length > 0)
       .join("\n");
   };
 
   const updateInstruction = async (partial: Partial<InstructionState>): Promise<void> => {
+    const isCorrectionExistsBefore = Boolean(instructionState.correction);
     Object.assign(instructionState, partial);
     const updatedInstruction = getInstruction();
-    if (partial.correction) {
+    if (partial.correction || isCorrectionExistsBefore) {
       console.log("RTC updatedInstruction", updatedInstruction);
     }
     await updateSession({
@@ -484,7 +489,16 @@ export const initAiRtc = async ({
   };
 
   const sendWebCamDescription = async (description: string) => {
+    const isCorrectionExistsBefore = Boolean(instructionState.correction);
+    if (isCorrectionExistsBefore) {
+      console.log("Ignoring webcam description update due to existing correction.");
+      return;
+    }
     updateInstruction({ webCamDescription: description });
+  };
+
+  const sendCorrectionInstruction = async (correction: string) => {
+    updateInstruction({ correction });
   };
 
   return {
@@ -494,5 +508,6 @@ export const initAiRtc = async ({
     toggleMute,
     toggleVolume,
     sendWebCamDescription,
+    sendCorrectionInstruction,
   };
 };

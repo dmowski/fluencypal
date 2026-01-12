@@ -141,6 +141,7 @@ ${userInfo}
 Provide a step-by-step lesson plan with clear objectives and activities.
 
 Plan should contain 3-5 steps.
+On the first step in teacherInstructions, include a start message to introduce the topic to the student.
 
 Format the response as a JSON array with each step containing "stepTitle", "stepDescriptionForStudent", and "teacherInstructions".
 `;

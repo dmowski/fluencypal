@@ -147,7 +147,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
       <ConversationCanvas
         openCommunityPage={() => {}}
         pointsEarned={12}
-        messagesToComplete={222}
+        lessonPlanAnalysis={null}
         messageOrder={{}}
         isMuted
         conversation={testMessage}

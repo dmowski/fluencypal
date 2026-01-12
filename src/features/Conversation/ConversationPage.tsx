@@ -147,8 +147,8 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     <Stack>
       <ConversationCanvas
         pointsEarned={gamePointsEarned}
+        lessonPlanAnalysis={aiConversation.lessonPlanAnalysis}
         openCommunityPage={() => appNavigation.setCurrentPage("community")}
-        messagesToComplete={planMessageCount}
         conversation={aiConversation.conversation}
         isAiSpeaking={aiConversation.isAiSpeaking}
         gameWords={aiConversation.gameWords}

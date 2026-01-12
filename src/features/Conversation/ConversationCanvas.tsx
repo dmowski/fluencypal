@@ -40,7 +40,6 @@ import dayjs from "dayjs";
 import { useLingui } from "@lingui/react";
 import { useSound } from "../Audio/useSound";
 import { GoalPlan } from "../Plan/types";
-import { GradingProgressBar } from "../uiKit/Progress/GradingProgressBar";
 import { useTranslate } from "../Translation/useTranslate";
 import { useUrlParam } from "../Url/useUrlParam";
 import { useResizeElement } from "../Layout/useResizeElement";
@@ -51,6 +50,7 @@ import { ConversationMode } from "@/common/user";
 import { ProcessUserInput } from "./ProcessUserInput";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { ConversationReviewModal } from "./ConversationReviewModal";
+import { LessonPlanAnalysis } from "../LessonPlan/type";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -84,7 +84,6 @@ interface ConversationCanvasProps {
   isShowMessageProgress: boolean;
   conversationAnalysisResult: string;
   analyzeConversation: () => Promise<void>;
-  messagesToComplete: number;
   generateHelpMessage: () => Promise<string>;
   toggleConversationMode: (mode: ConversationMode) => void;
   conversationMode: ConversationMode;
@@ -100,6 +99,8 @@ interface ConversationCanvasProps {
   onLimitedClick: () => void;
   pointsEarned: number;
   openCommunityPage: () => void;
+
+  lessonPlanAnalysis: LessonPlanAnalysis | null;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -126,12 +127,10 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   isProcessingGoal,
   temporaryGoal,
   goalSettingProgress,
-  isSavingGoal,
   closeConversation,
-  isShowMessageProgress,
   conversationAnalysisResult,
   analyzeConversation,
-  messagesToComplete,
+
   generateHelpMessage,
 
   isVolumeOn,
@@ -144,6 +143,8 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   conversationMode,
   pointsEarned,
   openCommunityPage,
+
+  lessonPlanAnalysis,
 }) => {
   const { i18n } = useLingui();
   const sound = useSound();
@@ -204,23 +205,11 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
     };
   }, [conversation, isAnalyzingResponse, isRecording]);
 
-  const actualCountOfUserMessages = conversation.filter((message) => !message.isBot).length;
-  const progress = Math.max(
-    4,
-    Math.min((actualCountOfUserMessages / messagesToComplete) * 100, 100)
-  );
-
   const [isShowAnalyzeConversationModal, setIsShowAnalyzeConversationModal] = useUrlParam(
     "showAnalyzeConversationModal"
   );
   const [isConversationContinueAfterAnalyze, setIsConversationContinueAfterAnalyze] =
     useState(false);
-
-  const isCompletedLesson =
-    !isConversationContinueAfterAnalyze &&
-    !!isShowMessageProgress &&
-    actualCountOfUserMessages >= messagesToComplete;
-
   const showAnalyzeConversationModal = () => {
     analyzeConversation();
     setIsShowAnalyzeConversationModal(true);
@@ -328,9 +317,14 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
     </>
   );
 
+  const isCompletedLesson =
+    !isConversationContinueAfterAnalyze &&
+    (lessonPlanAnalysis ? (lessonPlanAnalysis.progress || 0) > 99 : false);
+
   if (isCallMode) {
     return (
       <CameraCanvas
+        lessonPlanAnalysis={lessonPlanAnalysis}
         messageOrder={messageOrder}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
@@ -356,28 +350,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   return (
     <Stack>
       {modals}
-      {isShowMessageProgress && (
-        <Stack
-          sx={{
-            zIndex: 100,
-            width: "100%",
-            height: "max-content",
-            padding: "0px 0px",
-            boxSizing: "border-box",
-            backgroundColor: "rgba(20, 28, 40, 0.9)",
-            backdropFilter: "blur(10px)",
 
-            position: "fixed",
-            top: "-4px",
-            "@media (max-width: 600px)": {
-              top: "0px",
-            },
-            display: "none",
-          }}
-        >
-          <GradingProgressBar value={progress} />
-        </Stack>
-      )}
       <Stack
         sx={{
           width: "100%",

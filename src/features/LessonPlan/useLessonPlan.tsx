@@ -22,8 +22,6 @@ function useProvideLessonPlan(): LessonPlanContextType {
 
   const ai = useTextAi();
 
-  const activeConversationMessage = aiConversation.conversation;
-
   const getActivePlanAsText = (): string => {
     if (!activeLessonPlan) return "";
     let planText = `## Lesson Plan:\n\n`;
@@ -44,7 +42,6 @@ function useProvideLessonPlan(): LessonPlanContextType {
       conversationText += `${message.isBot ? "Teacher" : "Student"}: ${message.text}\n`;
     });
 
-    // ai
     return conversationText;
   };
 
@@ -54,10 +51,20 @@ function useProvideLessonPlan(): LessonPlanContextType {
   const isAnalyzingRef = useRef(false);
 
   const analyzeActiveConversation = async () => {
+    if (!activeLessonPlan) return;
     isAnalyzingRef.current = true;
-    console.log("ANALYZING CONVERSATION");
     const activePlan = getActivePlanAsText();
     const activeConversation = getActiveConversationAsText();
+    console.log("🔥 Starting analyzing");
+
+    const initActiveProgress: LessonPlanAnalysis = {
+      progress: 0,
+      isFine: true,
+      suggestionsToTeacher: "",
+      comments: "Initial state",
+    };
+
+    const previousProgress = activeProgress || initActiveProgress;
 
     const systemInstructions = `You are supervisor AI helping the teacher to follow the lesson plan.
 
@@ -71,18 +78,19 @@ If the student is struggling, suggest specific strategies or activities that the
 
 Your analysis should be concise and focused on actionable insights for the teacher.
 
-
 ${activePlan}
 
 Format the response as a JSON object containing {
-"activeStepIndex": number, // index of the current step in the lesson plan (0-based)
+"progress": number, // the cumulative percentage of the lesson plan completed (0-100), do not reduce from previous
 "isFine": true/false, // whether the lesson plan is being followed correctly
-"suggestionsToTeacher": "specific suggestions here if needed, or empty",
+"suggestionsToTeacher": "specific suggestions here if needed, or empty. Use direct voice addressing the teacher. Give examples of what to say or do next.",
 "comments": "additional comments for debug purposes"
 }
+
+The previous analysis was:
+${JSON.stringify(previousProgress, null, 2)}
 `;
     const userMessage = `${activeConversation}\n\nPlease provide your analysis.`;
-    console.log("activeConversation", activeConversation);
 
     const start = Date.now();
     const result = await ai.generateJson<LessonPlanAnalysis>({
@@ -92,31 +100,34 @@ Format the response as a JSON object containing {
       model: "gpt-4o",
     });
     const end = Date.now();
-    console.log(
-      `result ${(end - start) / 1000} seconds`,
-      JSON.stringify({ userMessage, systemInstructions, result }, null, 2)
-    );
+
+    //console.log(userMessage);
+    //console.log("systemInstructions", systemInstructions);
+    console.log(`result ${(end - start) / 1000} seconds`, JSON.stringify({ result }, null, 2));
 
     if (result) {
       setActiveProgress(result);
+      aiConversation.setLessonPlanAnalysis(result);
     }
 
     isAnalyzingRef.current = false;
   };
 
+  const activeConversationMessageRef = useRef(0);
+  activeConversationMessageRef.current = aiConversation.conversation.length;
   useEffect(() => {
-    const isSkip =
-      activeConversationMessage.length > 1 && activeLessonPlan && !isAnalyzingRef.current;
-    if (isSkip) {
-      return;
-    }
-
     const timeout = setTimeout(() => {
+      const isGood =
+        activeConversationMessageRef.current > 1 && activeLessonPlan && !isAnalyzingRef.current;
+      if (!isGood) {
+        return;
+      }
+
       analyzeActiveConversation();
-    }, 1000);
+    }, 3000);
 
     return () => clearTimeout(timeout);
-  }, [activeConversationMessage.length]);
+  }, [JSON.stringify(aiConversation.conversation), activeLessonPlan]);
 
   return {
     loading: false,

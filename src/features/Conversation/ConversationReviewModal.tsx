@@ -141,7 +141,6 @@ export const ConversationReviewModal = ({
                 disabled={!conversationAnalysisResult}
                 onClick={() => {
                   setIsShowAnalyzeConversationModal(false);
-                  setIsConversationContinueAfterAnalyze(true);
                   openCommunityPage();
                 }}
                 endIcon={<Users size={"16px"} />}

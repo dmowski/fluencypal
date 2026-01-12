@@ -12,7 +12,6 @@ import {
 } from "react";
 import { AiVoice, MODELS } from "@/common/ai";
 import { AiRtcConfig, AiRtcInstance, AiTool, initAiRtc } from "./rtc";
-import { useLocalStorage } from "react-use";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
@@ -29,7 +28,7 @@ import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
 import { ConversationMode } from "@/common/user";
 import { useAccess } from "../Usage/useAccess";
-import { LessonPlan, LessonPlanStep } from "../LessonPlan/type";
+import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from "../LessonPlan/type";
 
 const levelDescriptionsForAi: Record<string, string> = {
   A1: "User's language level is Beginner. Use extremely simple words and short sentences. Focus on basics.",
@@ -109,6 +108,9 @@ interface AiConversationContextType {
   closeConversation: () => Promise<void>;
   toggleConversationMode: (mode: ConversationMode) => void;
   conversationMode: ConversationMode;
+
+  lessonPlanAnalysis: LessonPlanAnalysis | null;
+  setLessonPlanAnalysis: (analysis: LessonPlanAnalysis | null) => void;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -136,6 +138,16 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isSavingGoal, setIsSavingGoal] = useState(false);
   const [voice, setVoice] = useState<AiVoice | null>(null);
 
+  const [lessonPlanAnalysis, setLessonPlanAnalysis] = useState<LessonPlanAnalysis | null>(null);
+
+  const updateLessonPlanAnalysis = (analysis: LessonPlanAnalysis | null) => {
+    const correction = analysis?.suggestionsToTeacher || "";
+    setLessonPlanAnalysis(analysis);
+
+    const correctionInstruction = getCorrectionInstruction(correction);
+    communicatorRef.current?.sendCorrectionInstruction(correctionInstruction);
+  };
+
   const aiModal = MODELS.REALTIME_CONVERSATION;
 
   const toggleVolume = (isOn: boolean) => {
@@ -150,6 +162,17 @@ function useProvideAiConversation(): AiConversationContextType {
     const message = `
 VISUAL_CONTEXT is sensor data from the user's webcam. You can use it during the conversation to better understand user's emotions and reactions.
 VISUAL_CONTEXT (latest): ${description}
+`;
+
+    return message;
+  };
+
+  const getCorrectionInstruction = (correction: string): string => {
+    if (!correction || correction.trim().length === 0) {
+      return "";
+    }
+    const message = `Your critical goal is to apply shift conversation to the following direction:
+${correction}
 `;
 
     return message;
@@ -838,6 +861,9 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     closeConversation,
     toggleConversationMode,
     conversationMode: settings.conversationMode,
+
+    lessonPlanAnalysis,
+    setLessonPlanAnalysis: updateLessonPlanAnalysis,
   };
 }
 

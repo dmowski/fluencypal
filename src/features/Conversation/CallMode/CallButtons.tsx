@@ -16,6 +16,7 @@ import SendIcon from "@mui/icons-material/Send";
 import StopIcon from "@mui/icons-material/Stop";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
 import ClosedCaptionDisabledIcon from "@mui/icons-material/ClosedCaptionDisabled";
+import { LessonPlanAnalysis } from "@/features/LessonPlan/type";
 
 export const CallButton = ({
   label,
@@ -92,7 +93,8 @@ export const CallButtons = ({
 
   isSubtitlesEnabled,
   toggleSubtitles,
-  isCompletedLesson,
+
+  lessonPlanAnalysis,
   onShowAnalyzeConversationModal,
 }: {
   isMuted: boolean;
@@ -111,10 +113,12 @@ export const CallButtons = ({
   isSubtitlesEnabled: boolean;
   toggleSubtitles: (isToggleOn: boolean) => void;
 
-  isCompletedLesson: boolean;
+  lessonPlanAnalysis: LessonPlanAnalysis | null;
   onShowAnalyzeConversationModal: () => void;
 }) => {
   const { i18n } = useLingui();
+
+  const progress = lessonPlanAnalysis?.progress || 0;
 
   const [isShowVolumeWarning, setIsShowVolumeWarning] = useState(false);
   const [isShowMuteWarning, setIsShowMuteWarning] = useState(false);
@@ -152,19 +156,43 @@ export const CallButtons = ({
     <Stack
       sx={{
         backgroundColor: "rgba(10, 18, 30, 1)",
-        borderRadius: "20px",
+        borderRadius: "20px 20px 0 0 ",
         boxShadow: "0 0 0 1px rgba(255, 255, 255, 0.3)",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
         gap: "10px",
         width: "max-content",
-        padding: "10px 10px",
+        padding: "10px 10px 21px 10px",
         position: "relative",
-        bottom: isCompletedLesson ? "80px" : "0px",
+        bottom: progress > 99 ? "80px" : "0px",
       }}
     >
-      {isCompletedLesson ? (
+      <Stack
+        sx={{
+          position: "absolute",
+          bottom: "0px",
+          left: "0px",
+          width: "calc(100% - 0px)",
+          height: "9px",
+          borderRadius: "0",
+          overflow: "hidden",
+        }}
+      >
+        <Stack
+          sx={{
+            width: `${progress}%`,
+            height: "100%",
+            position: "absolute",
+            top: 0,
+            left: "0px",
+            background: "linear-gradient(90deg, rgba(46, 193, 233, 1), rgba(0, 166, 255, 1))",
+            transition: "width 0.3s ease-in-out",
+          }}
+        />
+      </Stack>
+
+      {progress > 99 ? (
         <Stack
           sx={{
             alignItems: "center",
