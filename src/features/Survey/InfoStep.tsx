@@ -40,6 +40,7 @@ export const InfoStep = ({
   secondButtonTitle,
   onSecondButtonClick,
   secondButtonStartIcon,
+  secondButtonDisabled,
 }: {
   title?: string;
   subTitle?: string;
@@ -59,6 +60,7 @@ export const InfoStep = ({
   onSelectOptionsChange?: (selectedOptions: QuizOption[]) => void;
   multipleSelection?: boolean;
 
+  secondButtonDisabled?: boolean;
   secondButtonTitle?: string;
   onSecondButtonClick?: () => void;
   secondButtonEndIcon?: ReactNode;
@@ -274,6 +276,7 @@ export const InfoStep = ({
           secondButtonTitle={secondButtonTitle}
           onSecondButtonClick={onSecondButtonClick}
           secondButtonStartIcon={secondButtonStartIcon}
+          secondButtonDisabled={secondButtonDisabled}
         />
       </Stack>
     </Stack>

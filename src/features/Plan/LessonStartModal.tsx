@@ -1,11 +1,10 @@
 "use client";
-import { Button, Stack, Tooltip, Typography } from "@mui/material";
-import { Check, ChevronLeft, Loader, RefreshCw, RotateCcw } from "lucide-react";
+import { Button, Stack, Typography } from "@mui/material";
+import { Check, RefreshCw } from "lucide-react";
 
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
-import { goFullScreen } from "@/libs/fullScreen";
 import { useWebCam } from "../webCam/useWebCam";
 import { WebCamView } from "../webCam/WebCamView";
 import VideocamIcon from "@mui/icons-material/Videocam";
@@ -16,17 +15,18 @@ import { useWords } from "../Words/useWords";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useRules } from "../Rules/useRules";
 import { InfoStep } from "../Survey/InfoStep";
-import { on } from "events";
 import { ConversationMode } from "@/common/user";
 import { ConversationType } from "@/common/conversation";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useTranslate } from "../Translation/useTranslate";
 import { ConversationIdea, useAiUserInfo } from "../Ai/useAiUserInfo";
+import { useTextAi } from "../Ai/useTextAi";
+import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
 
-type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start";
+type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start" | "plan";
 
 const elementSteps: Record<PlanElementMode, Step[]> = {
-  conversation: ["intro", "mic", "webcam", "start"],
+  conversation: ["intro", "mic", "webcam", "plan", "start"],
   words: ["intro", "mic", "words", "start"],
   play: ["intro", "mic", "webcam", "start"],
   rule: ["intro", "mic", "rules", "start"],
@@ -46,6 +46,13 @@ const conversationTypes: Record<PlanElementMode, ConversationType> = {
   play: "goal-role-play",
   rule: "rule",
 };
+
+export interface LessonPlanStep {
+  stepTitle: string;
+  stepDescriptionForStudent: string;
+
+  teacherInstructions: string;
+}
 
 export const LessonStartModal = ({
   title,
@@ -68,6 +75,8 @@ export const LessonStartModal = ({
   const words = useWords();
   const rules = useRules();
   const aiConversation = useAiConversation();
+  const aiUserInfo = useAiUserInfo();
+  const ai = useTextAi();
 
   const [allowWebCam, setAllowWebCam] = useState<boolean | null>(null);
   const conversationMode = conversationModes[goalInfo.goalElement.mode];
@@ -83,6 +92,61 @@ export const LessonStartModal = ({
   const [isWordsLoading, setIsWordsLoading] = useState<boolean>(false);
   const wordsLoadingRef = useRef(isWordsLoading);
   const translator = useTranslate();
+
+  const [isLessonPlanLoading, setIsLessonPlanLoading] = useState<boolean>(false);
+  const isLoadingLessonPlanRef = useRef(false);
+
+  const [lessonPlan, setLessonPlan] = useState<LessonPlanStep[]>([]);
+
+  const loadLessonPlan = async () => {
+    isLoadingLessonPlanRef.current = true;
+    setIsLessonPlanLoading(true);
+    const userInfo = (aiUserInfo.userInfo?.records || []).join(". ");
+
+    const mainGoal = goalInfo.goalPlan.title;
+    const elementTitle = goalInfo.goalElement.title;
+    const elementDescription = goalInfo.goalElement.description;
+    const elementDetails = goalInfo.goalElement.details;
+
+    const systemMessage = `Your goal is to create a detailed lesson plan for a speech lesson.
+
+This plan will be used by a AI tutor that can only talk and listen.
+
+The student's main goal is:
+${mainGoal}
+
+The lesson element is titled:
+${elementTitle}
+
+The lesson description:
+${elementDescription}
+
+The lesson details:
+${elementDetails}
+
+Info about student:
+${userInfo}
+
+Provide a step-by-step lesson plan with clear objectives and activities.
+
+Plan should contain 3-5 steps.
+
+Format the response as a JSON array with each step containing "stepTitle", "stepDescriptionForStudent", and "teacherInstructions".
+`;
+
+    console.log("systemMessage", systemMessage);
+
+    const response = await ai.generateJson<LessonPlanStep[]>({
+      systemMessage,
+      userMessage: `Create the lesson plan as specified.`,
+      attempts: 2,
+      model: "gpt-4o",
+    });
+
+    setLessonPlan(response || []);
+    isLoadingLessonPlanRef.current = false;
+    setIsLessonPlanLoading(false);
+  };
 
   const loadWords = async (knownWords?: string[]) => {
     setIsWordsLoading(true);
@@ -117,19 +181,13 @@ export const LessonStartModal = ({
   const [ideas, setIdeas] = useState<ConversationIdea>();
   const isLoadingIdeasRef = useRef(false);
 
-  const aiUserInfo = useAiUserInfo();
-
   const loadIdeas = async () => {
     isLoadingIdeasRef.current = true;
     const goalTitle = goalInfo.goalPlan.title || "";
     const elementTitle = goalInfo.goalElement.title || "";
     const elementDescription = goalInfo.goalElement.description || "";
     const goalInfoString = `${goalTitle} - ${elementTitle} - ${elementDescription}`;
-    const start = Date.now();
     const result = await aiUserInfo.generateFirstMessageText(goalInfoString);
-    const end = Date.now();
-    console.log("Time taken to generate ideas:", end - start, "ms");
-    console.log("result", result);
     setIdeas(result);
     isLoadingIdeasRef.current = false;
   };
@@ -138,6 +196,7 @@ export const LessonStartModal = ({
     if (steps.includes("words") && !wordsLoadingRef.current) loadWords();
     if (steps.includes("rules") && !isRuleLoadingRef.current) loadRule();
     if (!isLoadingIdeasRef.current) loadIdeas();
+    if (steps.includes("plan") && !isLoadingLessonPlanRef.current) loadLessonPlan();
   }, []);
 
   const onNext = () => {
@@ -354,6 +413,7 @@ export const LessonStartModal = ({
             disabled={isWordsLoading}
             onClick={onNext}
             secondButtonTitle={i18n._(`I know these`)}
+            secondButtonDisabled={isWordsLoading}
             secondButtonEndIcon={<RefreshCw size={"18px"} />}
             onSecondButtonClick={() => refreshWords()}
           />
@@ -389,8 +449,62 @@ export const LessonStartModal = ({
             disabled={isRuleLoading}
             onClick={onNext}
             secondButtonTitle={i18n._(`Refresh`)}
+            secondButtonDisabled={isRuleLoading}
             secondButtonEndIcon={<RefreshCw size={"18px"} />}
             onSecondButtonClick={() => loadRule()}
+          />
+        )}
+
+        {step === "plan" && (
+          <InfoStep
+            title={i18n._(`Lesson Plan`)}
+            subTitle={i18n._(`Here is the lesson plan for this session:`)}
+            subComponent={
+              <Stack
+                sx={{
+                  width: "100%",
+                  flexDirection: "row",
+                  gap: "30px",
+                  flexWrap: "wrap",
+                  padding: "20px 0",
+                }}
+              >
+                {lessonPlan.length === 0 && (
+                  <Stack
+                    sx={{
+                      width: "100%",
+                    }}
+                  >
+                    <LoadingShapes
+                      sizes={["20px", "100px", "20px", "100px", "20px", "100px", "20px", "100px"]}
+                    />
+                  </Stack>
+                )}
+
+                {lessonPlan.map((planStep, index) => (
+                  <Stack
+                    key={index}
+                    className={isLessonPlanLoading ? "loading-shimmer" : ""}
+                    sx={{
+                      width: "100%",
+                    }}
+                  >
+                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                      {index + 1}. {planStep.stepTitle}
+                    </Typography>
+                    <Typography sx={{ marginTop: "5px" }}>
+                      {planStep.stepDescriptionForStudent}
+                    </Typography>
+                  </Stack>
+                ))}
+              </Stack>
+            }
+            disabled={isLessonPlanLoading}
+            onClick={onNext}
+            secondButtonDisabled={isLessonPlanLoading}
+            secondButtonTitle={i18n._(`Refresh`)}
+            secondButtonEndIcon={<RefreshCw size={"18px"} />}
+            onSecondButtonClick={() => loadLessonPlan()}
           />
         )}
 

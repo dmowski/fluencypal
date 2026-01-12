@@ -15,6 +15,7 @@ export const InterviewQuizButton: React.FC<{
   onSecondButtonClick?: () => void;
   secondButtonEndIcon?: React.ReactNode;
   secondButtonStartIcon?: React.ReactNode;
+  secondButtonDisabled?: boolean;
 }> = ({
   onClick,
   color,
@@ -27,6 +28,7 @@ export const InterviewQuizButton: React.FC<{
   onSecondButtonClick,
   secondButtonEndIcon,
   secondButtonStartIcon,
+  secondButtonDisabled,
 }) => {
   return (
     <Stack
@@ -67,6 +69,7 @@ export const InterviewQuizButton: React.FC<{
           color={color}
           type={type}
           size="large"
+          disabled={secondButtonDisabled}
           sx={{
             width: `max-content`,
             paddingTop: "12px",
