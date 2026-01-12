@@ -2,7 +2,7 @@
 import { Button, Stack, Tooltip, Typography } from "@mui/material";
 import { Check, ChevronLeft, Loader, RefreshCw, RotateCcw } from "lucide-react";
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
 import { goFullScreen } from "@/libs/fullScreen";
@@ -79,29 +79,37 @@ export const LessonStartModal = ({
 
   const [wordsToLearn, setWordsToLearn] = useState<string[]>([]);
   const [isWordsLoading, setIsWordsLoading] = useState<boolean>(false);
+  const wordsLoadingRef = useRef(isWordsLoading);
+
   const loadWords = async () => {
     setIsWordsLoading(true);
+    wordsLoadingRef.current = true;
     const wordsList = await words.getNewWordsToLearn(goalInfo);
 
     setWordsToLearn(wordsList);
     setIsWordsLoading(false);
+    wordsLoadingRef.current = false;
   };
 
   const [ruleToLearn, setRuleToLearn] = useState<string>("");
   const [isRuleLoading, setIsRuleLoading] = useState<boolean>(false);
+  const isRuleLoadingRef = useRef(isRuleLoading);
   const loadRule = async () => {
     setIsRuleLoading(true);
+    isRuleLoadingRef.current = true;
     const rule = await rules.getRules(goalInfo);
+    console.log("rule", rule);
     setRuleToLearn(rule);
     setIsRuleLoading(false);
+    isRuleLoadingRef.current = false;
   };
 
   useEffect(() => {
-    if (steps.includes("words") && !isWordsLoading) {
+    if (steps.includes("words") && !wordsLoadingRef.current) {
       loadWords();
     }
 
-    if (steps.includes("rules") && !isRuleLoading) {
+    if (steps.includes("rules") && !isRuleLoadingRef.current) {
       loadRule();
     }
   }, []);
@@ -336,7 +344,7 @@ export const LessonStartModal = ({
                 }}
                 className={isRuleLoading ? "loading-shimmer" : ""}
               >
-                <Markdown variant="conversation">{ruleToLearn}</Markdown>
+                <Markdown variant="conversation">{ruleToLearn || i18n._(`Loading...`)}</Markdown>
               </Stack>
             }
             disabled={isRuleLoading}
