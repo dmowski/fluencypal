@@ -65,7 +65,6 @@ export const InterviewQuizButton: React.FC<{
           onClick={onSecondButtonClick}
           variant="text"
           color={color}
-          disabled={disabled}
           type={type}
           size="large"
           sx={{

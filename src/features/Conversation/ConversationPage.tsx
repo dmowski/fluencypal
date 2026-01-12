@@ -137,16 +137,8 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     return <SelectLanguage pageLang={lang} />;
   }
 
-  if (words.isGeneratingWords) {
-    return <InfoBlockedSection title={i18n._(`Crafting new words...`)} />;
-  }
-
   if (rules.isGeneratingRule) {
     return <InfoBlockedSection title={i18n._(`Crafting new rule...`)} />;
-  }
-
-  if (words.wordsToLearn.length > 0) {
-    return <WordsToLearn />;
   }
 
   if (rules.rule) {
