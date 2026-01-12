@@ -29,6 +29,7 @@ import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
 import { ConversationMode } from "@/common/user";
 import { useAccess } from "../Usage/useAccess";
+import { LessonPlan, LessonPlanStep } from "../LessonPlan/type";
 
 const levelDescriptionsForAi: Record<string, string> = {
   A1: "User's language level is Beginner. Use extremely simple words and short sentences. Focus on basics.",
@@ -68,6 +69,7 @@ interface StartConversationProps {
   webCamDescription?: string;
   conversationMode: ConversationMode;
   ideas?: ConversationIdea;
+  lessonPlan?: LessonPlan;
 }
 
 interface AiConversationContextType {
@@ -388,63 +390,43 @@ VISUAL_CONTEXT (latest): ${description}
     mode,
     goal,
     ideas,
+    lessonPlan,
   }: {
     mode: ConversationType;
     goal?: GoalElementInfo | null;
     ideas?: ConversationIdea;
+    lessonPlan?: LessonPlan;
   }): Promise<AiRtcConfig> => {
     const baseConfig = await getBaseRtcConfig();
 
     console.log("mode", mode);
 
-    if (mode === "goal-role-play") {
-      if (!goal) {
-        throw new Error("Goal is not set for goal-talk mode");
-      }
+    let lessonPlanPrompt = lessonPlan
+      ? `## Lesson Plan:
+${lessonPlan.steps
+  .map(
+    (step: LessonPlanStep, index: number) =>
+      `${index + 1}. ${step.stepTitle}\n${step.teacherInstructions}`
+  )
+  .join("\n")}
+`
+      : "";
 
-      const elementTitle = goal?.goalElement.title || "";
-      const elementDescription = goal?.goalElement.description || "";
-      const elementDetails = goal?.goalElement.details || "";
+    const goalTitle = goal?.goalPlan.title || "";
+    const elementTitle = goal?.goalElement.title || "";
+    const elementDescription = goal?.goalElement.description || "";
+    const goalInfo = `${goalTitle} - ${elementTitle} - ${elementDescription}`;
+    const elementDetails = goal?.goalElement.details || "";
 
-      setIsInitializing(`Starting Role Play...`);
-      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : "";
-
-      return {
-        ...baseConfig,
-        model: aiModal,
-        voice: "shimmer",
-        initInstruction: `# Overview
-You are an ${fullLanguageName} speaking teacher. Your name is "Shimmer".
-Your role is to play a Role Play game on this topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
-You win the goal if user will talk with you. Keep in mind to change topic if user stuck at some point
-
-${teacherRules}
-
-${userInfoPrompt}
-
-${voiceInstructions}
-
-${voiceInstructions}
-
-`,
-      };
-    }
+    let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : "";
 
     if (mode === "goal-talk") {
       if (!goal) {
         throw new Error("Goal is not set for goal-talk mode");
       }
-
       setIsInitializing(`Analyzing Goal Lesson...`);
-      const goalTitle = goal?.goalPlan.title || "";
-      const elementTitle = goal?.goalElement.title || "";
-      const elementDescription = goal?.goalElement.description || "";
-      const goalInfo = `${goalTitle} - ${elementTitle} - ${elementDescription}`;
-      const elementDetails = goal?.goalElement.details || "";
-
       const firstMessage =
         ideas?.firstMessage || (await aiUserInfo.generateFirstMessageText(goalInfo)).firstMessage;
-
       firstPotentialBotMessage.current = firstMessage;
       let startFirstMessage = `"${firstMessage}".`;
 
@@ -463,11 +445,38 @@ You win the goal if user will talk with you. Keep in mind to change topic if use
 
 ${teacherRules}
 
+${lessonPlanPrompt || getConversationStarterMessagePrompt(startFirstMessage)}
+
+${userInfoPrompt}
+
+${voiceInstructions}`,
+      };
+    }
+
+    if (mode === "goal-role-play") {
+      if (!goal) {
+        throw new Error("Goal is not set for goal-talk mode");
+      }
+      setIsInitializing(`Starting Role Play...`);
+      return {
+        ...baseConfig,
+        model: aiModal,
+        voice: "shimmer",
+        initInstruction: `# Overview
+You are an ${fullLanguageName} speaking teacher. Your name is "Shimmer".
+Your role is to play a Role Play game on this topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
+You win the goal if user will talk with you. Keep in mind to change topic if user stuck at some point
+
+${teacherRules}
+${lessonPlanPrompt}
+
 ${userInfoPrompt}
 
 ${voiceInstructions}
 
-${getConversationStarterMessagePrompt(startFirstMessage)}`,
+${voiceInstructions}
+
+`,
       };
     }
 
@@ -711,19 +720,24 @@ Start the conversation with: "${
       setErrorInitiating("");
 
       firstPotentialBotMessage.current = "";
-      const aiRtcConfig = await getAiRtcConfig({ mode: input.mode, goal: input.goal });
+      const aiRtcConfig = await getAiRtcConfig({
+        mode: input.mode,
+        goal: input.goal,
+        ideas: input.ideas,
+        lessonPlan: input.lessonPlan,
+      });
       let instruction = aiRtcConfig.initInstruction;
 
-      if (input.wordsToLearn) {
-        instruction += `------
-Words to learn:
+      if (input.wordsToLearn?.length) {
+        instruction += `
+## Words to learn:
 ${input.wordsToLearn.join(" ")}
 `;
       }
 
       if (input.ruleToLearn) {
-        instruction += `------
-Rule to learn:
+        instruction += `
+##  Rule to learn:
 ${input.ruleToLearn}
 `;
       }
@@ -738,19 +752,13 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 `;
       }
 
-      if (input.webCamDescription) {
-        const webCamInstruction = getWebCamDescriptionInstruction(input.webCamDescription);
-        if (webCamInstruction) {
-          instruction += webCamInstruction;
-          instruction += `In the first greeting message, if appropriate, you can mention the user's appearance.`;
-        }
-      }
       const conversation = await initAiRtc({
         ...aiRtcConfig,
         initInstruction: instruction,
         voice: aiRtcConfig.voice || input.voice,
         isMuted: isMutedInternal,
         isVolumeOn: isVolumeOnInternal,
+        webCamDescription: input.webCamDescription || "",
       });
       setVoice(aiRtcConfig.voice || input.voice || null);
       history.createConversation({

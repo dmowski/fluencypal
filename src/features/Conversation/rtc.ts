@@ -174,6 +174,7 @@ export interface AiRtcConfig {
   isVolumeOn: boolean;
   authToken: string;
   isInitWebCamera?: boolean;
+  webCamDescription?: string;
 }
 
 async function listMediaDevices() {
@@ -194,6 +195,12 @@ async function listMediaDevices() {
 
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
 
+interface InstructionState {
+  baseInitInstruction: string;
+  webCamDescription: string;
+  correction: string;
+}
+
 export const initAiRtc = async ({
   model,
   initInstruction,
@@ -210,6 +217,7 @@ export const initAiRtc = async ({
   isVolumeOn,
   authToken,
   onMessageOrder,
+  webCamDescription,
 }: AiRtcConfig) => {
   const audioId = "audio_for_llm";
   const existingAudio = document.getElementById(audioId) as HTMLAudioElement | null;
@@ -391,38 +399,39 @@ export const initAiRtc = async ({
     }
   };
 
-  const setDebugInfo = (color: string) => {
-    /*
-    let dynamicInfoElement = document.getElementById("debug-info");
-    if (!dynamicInfoElement) {
-      // create small 1px div on top right corner
-      dynamicInfoElement = document.createElement("div");
-      dynamicInfoElement.id = "debug-info";
-      dynamicInfoElement.style.position = "fixed";
-      dynamicInfoElement.style.top = "2px";
-      dynamicInfoElement.style.right = "2px";
-      dynamicInfoElement.style.width = "4px";
-      dynamicInfoElement.style.height = "4px";
-      dynamicInfoElement.style.borderRadius = "5px";
-      //dynamicInfoElement.style.opacity = "0.5";
-      dynamicInfoElement.style.zIndex = "999999999";
-      window.document.body.appendChild(dynamicInfoElement);
-    }
-    dynamicInfoElement.style.backgroundColor = color;
-    */
+  const setDebugInfo = (color: string) => {};
+  const closeEvent = () => {};
+  const errorEvent = (e: any) => console.error("Data channel error", e);
+
+  const instructionState: InstructionState = {
+    baseInitInstruction: initInstruction,
+    webCamDescription: webCamDescription || "",
+    correction: "",
   };
 
-  const closeEvent = () => {
-    //setDebugInfo("yellow");
+  const getInstruction = (): string => {
+    return [
+      instructionState.baseInitInstruction,
+      instructionState.webCamDescription,
+      instructionState.correction,
+    ]
+      .filter((part) => part && part.length > 0)
+      .join("\n");
   };
-  const errorEvent = (e: any) => {
-    //setDebugInfo("red");
-    console.error("Data channel error", e);
+
+  const updateInstruction = async (partial: Partial<InstructionState>): Promise<void> => {
+    Object.assign(instructionState, partial);
+    const updatedInstruction = getInstruction();
+    console.log("RTC updatedInstruction", updatedInstruction);
+    await updateSession({
+      ...sessionPrompts,
+      initInstruction: updatedInstruction,
+    });
   };
 
   const sessionPrompts: UpdateSessionProps = {
     dataChannel,
-    initInstruction,
+    initInstruction: getInstruction(),
     voice,
     languageCode,
     modalities: isVolumeOn ? ["audio", "text"] : ["text"],
@@ -430,7 +439,7 @@ export const initAiRtc = async ({
 
   const openHandler = async () => {
     await sleep(600);
-    await updateSession(sessionPrompts);
+    await updateInstruction({});
     onOpen();
   };
 
@@ -505,34 +514,16 @@ export const initAiRtc = async ({
     });
   };
 
-  if (isMuted) {
-    toggleMute(true);
-  }
+  if (isMuted) toggleMute(true);
 
   const toggleVolume = async (isVolumeOn: boolean) => {
-    if (!audioEl) {
-      console.error("Audio element is not available");
-      return;
-    }
-
-    if (!isVolumeOn) {
-      audioEl.muted = true;
-      audioEl.volume = 0;
-      return;
-    } else {
-      audioEl.muted = false;
-      audioEl.volume = 1;
-    }
+    if (!audioEl) return;
+    audioEl.muted = !isVolumeOn;
+    audioEl.volume = isVolumeOn ? 1 : 0;
   };
 
   const sendWebCamDescription = async (description: string) => {
-    const updatedInstruction = sessionPrompts.initInstruction
-      ? sessionPrompts.initInstruction + "\n" + description
-      : description;
-    await updateSession({
-      ...sessionPrompts,
-      initInstruction: updatedInstruction,
-    });
+    updateInstruction({ webCamDescription: description });
   };
 
   return {

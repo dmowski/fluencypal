@@ -52,13 +52,7 @@ export const PlanCard = ({
   return (
     <>
       {showModal && goalInfo && (
-        <LessonStartModal
-          title={title}
-          subTitle={subTitle}
-          icon={icon}
-          onClose={() => setShowModal(false)}
-          goalInfo={goalInfo}
-        />
+        <LessonStartModal onClose={() => setShowModal(false)} goalInfo={goalInfo} />
       )}
 
       <Stack
