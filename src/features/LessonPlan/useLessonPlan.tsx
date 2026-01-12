@@ -1,15 +1,22 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX } from "react";
+import { createContext, useContext, ReactNode, JSX, useState } from "react";
+import { LessonPlan } from "./type";
 
 interface LessonPlanContextType {
   loading: boolean;
+  activeLessonPlan: LessonPlan | null;
+  setActiveLessonPlan: (plan: LessonPlan) => void;
 }
 
 const LessonPlanContext = createContext<LessonPlanContextType | null>(null);
 
 function useProvideLessonPlan(): LessonPlanContextType {
+  const [activeLessonPlan, setActiveLessonPlan] = useState<LessonPlan | null>(null);
+
   return {
     loading: false,
+    activeLessonPlan,
+    setActiveLessonPlan,
   };
 }
 

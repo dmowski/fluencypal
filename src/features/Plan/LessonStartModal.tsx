@@ -2,7 +2,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { Check, RefreshCw } from "lucide-react";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
 import { useWebCam } from "../webCam/useWebCam";
@@ -22,7 +22,8 @@ import { useTranslate } from "../Translation/useTranslate";
 import { ConversationIdea, useAiUserInfo } from "../Ai/useAiUserInfo";
 import { useTextAi } from "../Ai/useTextAi";
 import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
-import { LessonPlan, LessonPlanStep } from "../LessonPlan/type";
+import { LessonPlanStep } from "../LessonPlan/type";
+import { useLessonPlan } from "../LessonPlan/useLessonPlan";
 
 type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start" | "plan";
 
@@ -64,6 +65,8 @@ export const LessonStartModal = ({
   const aiUserInfo = useAiUserInfo();
   const ai = useTextAi();
 
+  const lessonPlan = useLessonPlan();
+
   const [allowWebCam, setAllowWebCam] = useState<boolean | null>(null);
   const conversationMode = conversationModes[goalInfo.goalElement.mode];
 
@@ -81,8 +84,6 @@ export const LessonStartModal = ({
 
   const [isLessonPlanLoading, setIsLessonPlanLoading] = useState<boolean>(false);
   const isLoadingLessonPlanRef = useRef(false);
-
-  const [lessonPlan, setLessonPlan] = useState<LessonPlan>();
 
   const loadLessonPlan = async () => {
     isLoadingLessonPlanRef.current = true;
@@ -129,7 +130,7 @@ Format the response as a JSON array with each step containing "stepTitle", "step
       model: "gpt-4o",
     });
 
-    setLessonPlan({
+    lessonPlan.setActiveLessonPlan({
       steps: response,
     });
     isLoadingLessonPlanRef.current = false;
@@ -232,7 +233,7 @@ Format the response as a JSON array with each step containing "stepTitle", "step
       wordsToLearn,
       ruleToLearn,
       ideas: ideas || undefined,
-      lessonPlan: lessonPlan,
+      lessonPlan: lessonPlan.activeLessonPlan || undefined,
     });
 
     setIsStarting(false);
@@ -458,7 +459,8 @@ Format the response as a JSON array with each step containing "stepTitle", "step
                   padding: "20px 0",
                 }}
               >
-                {(!lessonPlan || lessonPlan.steps.length === 0) && (
+                {(!lessonPlan.activeLessonPlan ||
+                  lessonPlan.activeLessonPlan.steps.length === 0) && (
                   <Stack
                     sx={{
                       width: "100%",
@@ -470,7 +472,7 @@ Format the response as a JSON array with each step containing "stepTitle", "step
                   </Stack>
                 )}
 
-                {lessonPlan?.steps.map((planStep, index) => (
+                {lessonPlan.activeLessonPlan?.steps.map((planStep, index) => (
                   <Stack
                     key={index}
                     className={isLessonPlanLoading ? "loading-shimmer" : ""}
