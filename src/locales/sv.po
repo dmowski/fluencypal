@@ -691,7 +691,12 @@ msgstr "Alla intervjuer"
 msgid "All Scenarios"
 msgstr "Alla scenarier"
 
-#: src/features/Plan/PlanCard.tsx:197
+#: src/features/Plan/LessonStartModal.tsx:213
+#. js-lingui-explicit-id
+msgid "Allow Microphone Access"
+msgstr "Tillåt mikrofonåtkomst"
+
+#: src/features/Plan/LessonStartModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "Tillåt WebCam"
@@ -902,7 +907,6 @@ msgstr ""
 
 #: src/features/Chat/ChatPage.tsx:121
 #: src/features/Chat/ChatSection.tsx:168
-#: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
 msgid "Back"
@@ -1666,7 +1670,7 @@ msgstr "Kontakter:"
 #: src/features/Case/data/frontend-senior/quizData.ts:306
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/PayWall/CardValidator.tsx:133
-#: src/features/Plan/PlanCard.tsx:424
+#: src/features/Plan/PlanCard.tsx:227
 #: src/features/Usage/SubscriptionPaymentModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -1776,15 +1780,10 @@ msgstr "Korrigeringar när du kör fast"
 msgid "Could not find page"
 msgstr "Kunde inte hitta sidan"
 
-#: src/features/Conversation/ConversationPage.tsx:145
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Skapa ny regel..."
-
-#: src/features/Conversation/ConversationPage.tsx:141
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "Skapa nya ord..."
 
 #: src/features/SEO/metadata.ts:105
 #. js-lingui-explicit-id
@@ -2058,7 +2057,7 @@ msgstr "Radera konto"
 msgid "Delete account (Total)"
 msgstr "Ta bort konto (Totalt)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:503
+#: src/features/Dashboard/PlanDashboardCards.tsx:505
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Radera nuvarande mål"
@@ -3537,17 +3536,17 @@ msgstr "Spel"
 msgid "Game-based practice"
 msgstr "Spelbaserad träning"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:478
+#: src/features/Dashboard/PlanDashboardCards.tsx:480
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "Generera fler lektioner för att uppnå ditt mål snabbare."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:520
+#: src/features/Dashboard/PlanDashboardCards.tsx:522
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Generera fler unika lektioner"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:519
+#: src/features/Dashboard/PlanDashboardCards.tsx:521
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Genererar..."
@@ -3811,7 +3810,7 @@ msgstr "Gå till huvudsidan"
 #: src/features/Conversation/ConversationCanvas.tsx:887
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
-#: src/features/Dashboard/PlanDashboardCards.tsx:474
+#: src/features/Dashboard/PlanDashboardCards.tsx:476
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Mål"
@@ -3987,6 +3986,16 @@ msgstr "Hjälp"
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Hjälp med svar"
+
+#: src/features/Plan/LessonStartModal.tsx:327
+#. js-lingui-explicit-id
+msgid "Here are some new rules for you to learn:"
+msgstr "Här är några nya regler för dig att lära dig:"
+
+#: src/features/Plan/LessonStartModal.tsx:293
+#. js-lingui-explicit-id
+msgid "Here are some new words for you to learn:"
+msgstr "Här är några nya ord för dig att lära dig:"
 
 #: src/features/Usage/UsageStatsCards.tsx:189
 #. js-lingui-explicit-id
@@ -4957,7 +4966,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "Inom mindre än 5 minuter kommer du att få:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:530
+#: src/features/Dashboard/PlanDashboardCards.tsx:532
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "För att generera fler lektioner måste du slutföra minst 3 lektioner"
@@ -5894,6 +5903,11 @@ msgstr "Litteratur & Fiction"
 msgid "Load More"
 msgstr "Ladda mer"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Loading"
+msgstr "Laddar"
+
 #: src/features/Conversation/ConversationPage.tsx:117
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
@@ -5959,6 +5973,16 @@ msgstr "Huvudmål med lärandet"
 #. js-lingui-explicit-id
 msgid "Make sure to allow webcam access in your browser settings."
 msgstr "Se till att tillåta webbkameratillgång i dina webbläsarinställningar."
+
+#: src/features/Plan/LessonStartModal.tsx:186
+#. js-lingui-explicit-id
+msgid "Make sure your microphone is working properly."
+msgstr "Se till att din mikrofon fungerar korrekt."
+
+#: src/features/Plan/LessonStartModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Make sure your webcam is working properly."
+msgstr "Se till att din webbkamera fungerar korrekt."
 
 #: src/features/Lang/getLabels.tsx:25
 #. js-lingui-explicit-id
@@ -6108,6 +6132,16 @@ msgstr "Mikro-frontender"
 msgid "Microphone Access"
 msgstr "Mikrofonåtkomst"
 
+#: src/features/Plan/LessonStartModal.tsx:217
+#. js-lingui-explicit-id
+msgid "Microphone access denied. Please enable it in your browser settings."
+msgstr "Mikrofonåtkomst nekad. Vänligen aktivera det i dina webbläsarinställningar."
+
+#: src/features/Plan/LessonStartModal.tsx:185
+#. js-lingui-explicit-id
+msgid "Microphone Setup"
+msgstr "Mikrofoninställningar"
+
 #: src/features/Usage/UsageStatsCards.tsx:556
 #. js-lingui-explicit-id
 msgid "Minutes"
@@ -6188,7 +6222,7 @@ msgstr "Mer"
 msgid "More options"
 msgstr "Fler alternativ"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:470
+#: src/features/Dashboard/PlanDashboardCards.tsx:472
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Fler unika lektioner"
@@ -6302,11 +6336,6 @@ msgstr "Nya funktioner & simuleringar läggs till regelbundet"
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "Nya Grammatikregler"
-
-#: src/features/Dashboard/RulesToLearn.tsx:38
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "Ny regel att öva på."
 
 #: src/features/Landing/Price/FeatureList.tsx:48
 #: src/features/Landing/Price/PricePage.tsx:361
@@ -7846,6 +7875,8 @@ msgstr "Redis"
 msgid "Reflex"
 msgstr "Reflex"
 
+#: src/features/Plan/LessonStartModal.tsx:318
+#: src/features/Plan/LessonStartModal.tsx:344
 #: src/features/Telegram/TgAppPage.tsx:183
 #. js-lingui-explicit-id
 msgid "Refresh"
@@ -8012,6 +8043,11 @@ msgstr "Regel"
 msgid "Rule of the day"
 msgstr "Regel för dagen"
 
+#: src/features/Plan/LessonStartModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Rules to Learn"
+msgstr "Regler att Lära Sig"
+
 #: src/features/Lang/getLabels.tsx:21
 #. js-lingui-explicit-id
 msgid "Russian Learning Plan"
@@ -8135,11 +8171,6 @@ msgstr "Semantisk HTML"
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Skicka"
-
-#: src/features/Plan/PlanCard.tsx:254
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "Skicka 6 meddelanden för att slutföra"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:337
 #. js-lingui-explicit-id
@@ -8302,7 +8333,7 @@ msgstr "Visa mer"
 msgid "Show More"
 msgstr "Visa Mer"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:429
+#: src/features/Dashboard/PlanDashboardCards.tsx:431
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Visa fler lektioner"
@@ -8406,7 +8437,7 @@ msgstr ""
 msgid "Skip"
 msgstr "Skip"
 
-#: src/features/Plan/PlanCard.tsx:200
+#: src/features/Plan/LessonStartModal.tsx:277
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "Hoppa över för nuvarande"
@@ -8541,10 +8572,7 @@ msgid "Stars"
 msgstr "Stjärnor"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/PlanDashboardCards.tsx:411
-#: src/features/Goal/Quiz/GoalReview.tsx:147
-#: src/features/Goal/Quiz/GoalReview.tsx:161
-#: src/features/Goal/Quiz/PlanPreview.tsx:74
+#: src/features/Goal/Quiz/GoalReview.tsx:157
 #: src/features/Landing/LandingPage.tsx:198
 #: src/features/Landing/LandingPage.tsx:200
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -8563,7 +8591,7 @@ msgstr "Start"
 msgid "Start a mock interview"
 msgstr "Starta en praktikintervju"
 
-#: src/features/Plan/PlanCard.tsx:231
+#: src/features/Plan/LessonStartModal.tsx:356
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "Starta samtal"
@@ -8584,6 +8612,11 @@ msgstr "Börja Lära Dig"
 msgid "Start Learning Now"
 msgstr "Börja Lära nu"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Start Lesson"
+msgstr "Starta lektion"
+
 #: src/features/Case/data/reusable/priceSection.ts:30
 #. js-lingui-explicit-id
 msgid "Start Monthly Plan"
@@ -8594,7 +8627,6 @@ msgstr "Starta Månadsplan"
 msgid "Start new lesson"
 msgstr "Starta ny lektion"
 
-#: src/features/Dashboard/RulesToLearn.tsx:87
 #: src/features/Dashboard/WordsToLearn.tsx:109
 #. js-lingui-explicit-id
 msgid "Start practice"
@@ -8627,11 +8659,6 @@ msgstr "Starta talövning"
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "Börja test"
-
-#: src/features/Plan/PlanCard.tsx:243
-#. js-lingui-explicit-id
-msgid "Start Voice Only"
-msgstr "Starta endast röst"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:11
 #. js-lingui-explicit-id
@@ -9840,6 +9867,11 @@ msgstr ""
 msgid "We will speak freely"
 msgstr "Vi kommer att tala fritt"
 
+#: src/features/Plan/LessonStartModal.tsx:355
+#. js-lingui-explicit-id
+msgid "We're ready to begin!"
+msgstr "Vi är redo att börja!"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
 #. js-lingui-explicit-id
 msgid "Weaknesses:"
@@ -9864,6 +9896,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Webcam Feedback Preview"
 msgstr "Webbkamera Förhandsgranskning av Feedback"
+
+#: src/features/Plan/LessonStartModal.tsx:229
+#. js-lingui-explicit-id
+msgid "Webcam Setup"
+msgstr "Webbkamera Inställning"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:808
 #. js-lingui-explicit-id
@@ -10128,6 +10165,11 @@ msgstr "Ordstatistik"
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Ord"
+
+#: src/features/Plan/LessonStartModal.tsx:292
+#. js-lingui-explicit-id
+msgid "Words to Learn"
+msgstr "Ord att Lära Sig"
 
 #: src/features/RolePlay/rolePlayData.tsx:510
 #. js-lingui-explicit-id
@@ -10722,6 +10764,26 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Conversation/ConversationPage.tsx:141
+#. js-lingui-explicit-id
+#~ msgid "Crafting new words..."
+#~ msgstr "Skapa nya ord..."
+
+#: src/features/Dashboard/RulesToLearn.tsx:38
+#. js-lingui-explicit-id
+#~ msgid "New rule to practice."
+#~ msgstr "Ny regel att öva på."
+
+#: src/features/Plan/PlanCard.tsx:254
+#. js-lingui-explicit-id
+#~ msgid "Send 6 messages to complete"
+#~ msgstr "Skicka 6 meddelanden för att slutföra"
+
+#: src/features/Plan/PlanCard.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Start Voice Only"
+#~ msgstr "Starta endast röst"
 
 #: src/features/Chat/SubmitForm.tsx:149
 #. js-lingui-explicit-id

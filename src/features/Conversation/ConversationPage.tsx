@@ -17,8 +17,6 @@ import { useEffect } from "react";
 import { SelectLanguage } from "../Dashboard/SelectLanguage";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
-import { WordsToLearn } from "../Dashboard/WordsToLearn";
-import { RulesToLearn } from "../Dashboard/RulesToLearn";
 import { ConversationError } from "./ConversationError";
 import { useRouter } from "next/navigation";
 import { usePlan } from "../Plan/usePlan";
@@ -31,7 +29,6 @@ import { useGame } from "../Game/useGame";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { RolePlayProvider } from "../RolePlay/useRolePlay";
 import { useAccess } from "../Usage/useAccess";
-import { ChatProvider } from "../Chat/useChat";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -135,14 +132,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   if (!settings.languageCode) {
     return <SelectLanguage pageLang={lang} />;
-  }
-
-  if (rules.isGeneratingRule) {
-    return <InfoBlockedSection title={i18n._(`Crafting new rule...`)} />;
-  }
-
-  if (rules.rule) {
-    return <RulesToLearn />;
   }
 
   if (aiConversation.confirmStartConversationModal) {

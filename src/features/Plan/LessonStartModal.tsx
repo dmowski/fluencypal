@@ -19,6 +19,7 @@ import { InfoStep } from "../Survey/InfoStep";
 import { on } from "events";
 import { ConversationMode } from "@/common/user";
 import { ConversationType } from "@/common/conversation";
+import { Markdown } from "../uiKit/Markdown/Markdown";
 
 type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start";
 
@@ -76,11 +77,8 @@ export const LessonStartModal = ({
 
   const [isMicAllowed, setIsMicAllowed] = useState<boolean | null>(null);
 
-  const [ruleToLearn, setRuleToLearn] = useState<string>("");
-
   const [wordsToLearn, setWordsToLearn] = useState<string[]>([]);
   const [isWordsLoading, setIsWordsLoading] = useState<boolean>(false);
-
   const loadWords = async () => {
     setIsWordsLoading(true);
     const wordsList = await words.getNewWordsToLearn(goalInfo);
@@ -89,9 +87,22 @@ export const LessonStartModal = ({
     setIsWordsLoading(false);
   };
 
+  const [ruleToLearn, setRuleToLearn] = useState<string>("");
+  const [isRuleLoading, setIsRuleLoading] = useState<boolean>(false);
+  const loadRule = async () => {
+    setIsRuleLoading(true);
+    const rule = await rules.getRules(goalInfo);
+    setRuleToLearn(rule);
+    setIsRuleLoading(false);
+  };
+
   useEffect(() => {
-    if (steps.includes("words") && !isWordsLoading && !words.isGeneratingWords) {
+    if (steps.includes("words") && !isWordsLoading) {
       loadWords();
+    }
+
+    if (steps.includes("rules") && !isRuleLoading) {
+      loadRule();
     }
   }, []);
 
@@ -136,7 +147,8 @@ export const LessonStartModal = ({
       goal: goalInfo,
       webCamDescription: imageDescription,
       conversationMode,
-      wordsToLearn: wordsToLearn,
+      wordsToLearn,
+      ruleToLearn,
     });
 
     setIsStarting(false);
@@ -302,10 +314,36 @@ export const LessonStartModal = ({
               </Stack>
             }
             disabled={isWordsLoading}
-            onClick={onStart}
+            onClick={onNext}
             secondButtonTitle={i18n._(`Refresh`)}
             secondButtonEndIcon={<RefreshCw size={"18px"} />}
             onSecondButtonClick={() => loadWords()}
+          />
+        )}
+
+        {step === "rules" && (
+          <InfoStep
+            title={i18n._(`Rules to Learn`)}
+            subTitle={i18n._(`Here are some new rules for you to learn:`)}
+            subComponent={
+              <Stack
+                sx={{
+                  width: "100%",
+                  flexDirection: "row",
+                  gap: "0px 12px",
+                  flexWrap: "wrap",
+                  padding: "20px 0",
+                }}
+                className={isRuleLoading ? "loading-shimmer" : ""}
+              >
+                <Markdown variant="conversation">{ruleToLearn}</Markdown>
+              </Stack>
+            }
+            disabled={isRuleLoading}
+            onClick={onNext}
+            secondButtonTitle={i18n._(`Refresh`)}
+            secondButtonEndIcon={<RefreshCw size={"18px"} />}
+            onSecondButtonClick={() => loadRule()}
           />
         )}
 
@@ -324,135 +362,3 @@ export const LessonStartModal = ({
     </CustomModal>
   );
 };
-
-/*
-return (
-    <CustomModal isOpen={true} onClose={() => onClose()}>
-      <Stack
-        sx={{
-          width: "100%",
-          justifyContent: "center",
-          height: "100%",
-        }}
-      >
-        <Stack
-          sx={{
-            alignItems: "center",
-            width: "100%",
-
-            img: {
-              borderRadius: "100px",
-              width: "100px",
-              height: "100px",
-            },
-          }}
-        >
-          {icon}
-        </Stack>
-        <Stack
-          sx={{
-            alignItems: "center",
-            width: "100%",
-            paddingTop: "30px",
-          }}
-        >
-          <Stack>
-            <Typography
-              align="center"
-              variant="caption"
-              sx={{
-                color: `rgba(255, 255, 255, 0.5)`,
-                textTransform: "uppercase",
-              }}
-            >
-              {subTitle}
-            </Typography>
-            <Typography variant="h4" align="center" component="h2" className="decor-text">
-              {title}
-            </Typography>
-            {description && (
-              <Typography sx={{ paddingTop: "0px" }} align="center" variant="caption">
-                {description}
-              </Typography>
-            )}
-          </Stack>
-
-          {allowWebCam !== false && (
-            <Stack
-              sx={{
-                width: "350px",
-                height: "220px",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-                backgroundColor: "rgba(0, 0, 0, 0.2)",
-                borderRadius: "9px",
-                justifyContent: "center",
-                alignItems: "center",
-                margin: "20px 0",
-                position: "relative",
-                overflow: "hidden",
-              }}
-            >
-              {allowWebCam === true && <WebCamView />}
-
-              {allowWebCam === null && (
-                <Stack
-                  sx={{
-                    gap: "5px",
-                    alignItems: "center",
-                  }}
-                >
-                  <Button
-                    color="info"
-                    variant="contained"
-                    onClick={() => setAllowWebCam(true)}
-                    startIcon={<VideocamIcon />}
-                  >
-                    {i18n._(`Allow WebCam`)}
-                  </Button>
-                  <Button variant="text" onClick={() => setAllowWebCam(false)}>
-                    {i18n._(`Skip for now`)}
-                  </Button>
-                </Stack>
-              )}
-            </Stack>
-          )}
-
-          <Stack
-            sx={{
-              width: "100%",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "5px 0px 15px 0px",
-              gap: "10px",
-              marginTop: allowWebCam !== false ? "5px" : "20px",
-            }}
-          >
-            <Button
-              sx={{
-                minWidth: "240px",
-                padding: "10px 20px",
-              }}
-              onClick={onStartCallMode}
-              size="large"
-              variant="contained"
-              color="info"
-              startIcon={isLoadingCall ? <Loader /> : <VideocamIcon />}
-              disabled={isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null}
-            >
-              {i18n._(`Start Call`)}
-            </Button>
-
-            <Button
-              onClick={onStartVoiceOnly}
-              variant="text"
-              color="info"
-              startIcon={isLoadingVoice ? <Loader /> : <MicIcon />}
-              disabled={isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null}
-            >
-              {i18n._(`Start Voice Only`)}
-            </Button>
-          </Stack>
-        </Stack>
-      </Stack>
-    </CustomModal>
-    */

@@ -698,7 +698,12 @@ msgstr "Tüm Görüşmeler"
 msgid "All Scenarios"
 msgstr "Tüm Senaryolar"
 
-#: src/features/Plan/PlanCard.tsx:197
+#: src/features/Plan/LessonStartModal.tsx:213
+#. js-lingui-explicit-id
+msgid "Allow Microphone Access"
+msgstr "Mikrofona Erişime İzin Ver"
+
+#: src/features/Plan/LessonStartModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "WebCam'e İzin Ver"
@@ -905,7 +910,6 @@ msgstr ""
 
 #: src/features/Chat/ChatPage.tsx:121
 #: src/features/Chat/ChatSection.tsx:168
-#: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
 msgid "Back"
@@ -1666,7 +1670,7 @@ msgstr "İletişim:"
 #: src/features/Case/data/frontend-senior/quizData.ts:306
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/PayWall/CardValidator.tsx:133
-#: src/features/Plan/PlanCard.tsx:424
+#: src/features/Plan/PlanCard.tsx:227
 #: src/features/Usage/SubscriptionPaymentModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -1776,15 +1780,10 @@ msgstr "Sıkıştığınızda düzeltmeler"
 msgid "Could not find page"
 msgstr "Sayfa bulunamadı"
 
-#: src/features/Conversation/ConversationPage.tsx:145
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Yeni kural oluşturuluyor..."
-
-#: src/features/Conversation/ConversationPage.tsx:141
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "Yeni kelimeler oluşturuluyor..."
 
 #: src/features/SEO/metadata.ts:105
 #. js-lingui-explicit-id
@@ -2058,7 +2057,7 @@ msgstr "Hesabı Sil"
 msgid "Delete account (Total)"
 msgstr "Hesabı Sil (Toplam)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:503
+#: src/features/Dashboard/PlanDashboardCards.tsx:505
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Mevcut hedefi sil"
@@ -3546,17 +3545,17 @@ msgstr "Oyun"
 msgid "Game-based practice"
 msgstr "Oyun tabanlı pratik"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:478
+#: src/features/Dashboard/PlanDashboardCards.tsx:480
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "Hedefinize daha hızlı ulaşmak için daha fazla ders oluşturun."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:520
+#: src/features/Dashboard/PlanDashboardCards.tsx:522
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Daha eşsiz dersler oluşturun"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:519
+#: src/features/Dashboard/PlanDashboardCards.tsx:521
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Oluşturuluyor..."
@@ -3827,7 +3826,7 @@ msgstr "Ana sayfaya git"
 #: src/features/Conversation/ConversationCanvas.tsx:887
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
-#: src/features/Dashboard/PlanDashboardCards.tsx:474
+#: src/features/Dashboard/PlanDashboardCards.tsx:476
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Hedef"
@@ -4006,6 +4005,16 @@ msgstr "Yardım"
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Cevapla ilgili yardım"
+
+#: src/features/Plan/LessonStartModal.tsx:327
+#. js-lingui-explicit-id
+msgid "Here are some new rules for you to learn:"
+msgstr "Burada öğrenmeniz için bazı yeni kurallar var:"
+
+#: src/features/Plan/LessonStartModal.tsx:293
+#. js-lingui-explicit-id
+msgid "Here are some new words for you to learn:"
+msgstr "Öğrenmeniz için işte bazı yeni kelimeler:"
 
 #: src/features/Usage/UsageStatsCards.tsx:189
 #. js-lingui-explicit-id
@@ -4973,7 +4982,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "5 dakikadan kısa sürede şunları alacaksınız:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:530
+#: src/features/Dashboard/PlanDashboardCards.tsx:532
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Daha fazla ders oluşturmak için en az 3 dersi tamamlamanız gerekmektedir."
@@ -5913,6 +5922,11 @@ msgstr "Edebiyat ve Kurgu"
 msgid "Load More"
 msgstr "Daha Fazla Yükle"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Loading"
+msgstr "Yükleniyor"
+
 #: src/features/Conversation/ConversationPage.tsx:117
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
@@ -5978,6 +5992,16 @@ msgstr "Öğrenmede ana hedef"
 #. js-lingui-explicit-id
 msgid "Make sure to allow webcam access in your browser settings."
 msgstr "Tarayıcı ayarlarında kamera erişimine izin verdiğinizden emin olun."
+
+#: src/features/Plan/LessonStartModal.tsx:186
+#. js-lingui-explicit-id
+msgid "Make sure your microphone is working properly."
+msgstr "Mikrofonunuzun düzgün çalıştığından emin olun."
+
+#: src/features/Plan/LessonStartModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Make sure your webcam is working properly."
+msgstr "Web kameranızın düzgün çalıştığından emin olun."
 
 #: src/features/Lang/getLabels.tsx:25
 #. js-lingui-explicit-id
@@ -6124,6 +6148,16 @@ msgstr "Mikro-ön uçlar"
 msgid "Microphone Access"
 msgstr "Mikrofon Erişimi"
 
+#: src/features/Plan/LessonStartModal.tsx:217
+#. js-lingui-explicit-id
+msgid "Microphone access denied. Please enable it in your browser settings."
+msgstr "Mikrofon erişimi reddedildi. Lütfen tarayıcı ayarlarından etkinleştirin."
+
+#: src/features/Plan/LessonStartModal.tsx:185
+#. js-lingui-explicit-id
+msgid "Microphone Setup"
+msgstr "Mikrofon Kurulumu"
+
 #: src/features/Usage/UsageStatsCards.tsx:556
 #. js-lingui-explicit-id
 msgid "Minutes"
@@ -6204,7 +6238,7 @@ msgstr "Daha Fazla"
 msgid "More options"
 msgstr "Daha fazla seçenek"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:470
+#: src/features/Dashboard/PlanDashboardCards.tsx:472
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Daha benzersiz dersler"
@@ -6318,11 +6352,6 @@ msgstr "Yeni özellikler ve simülasyonlar düzenli olarak ekleniyor"
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "Yeni Dilbilgisi Kuralları"
-
-#: src/features/Dashboard/RulesToLearn.tsx:38
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "Yeni kural uygulama."
 
 #: src/features/Landing/Price/FeatureList.tsx:48
 #: src/features/Landing/Price/PricePage.tsx:361
@@ -7870,6 +7899,8 @@ msgstr "Redis"
 msgid "Reflex"
 msgstr "Refleks"
 
+#: src/features/Plan/LessonStartModal.tsx:318
+#: src/features/Plan/LessonStartModal.tsx:344
 #: src/features/Telegram/TgAppPage.tsx:183
 #. js-lingui-explicit-id
 msgid "Refresh"
@@ -8038,6 +8069,11 @@ msgstr "Kural"
 msgid "Rule of the day"
 msgstr "Günün Kuralı"
 
+#: src/features/Plan/LessonStartModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Rules to Learn"
+msgstr "Öğrenilecek Kurallar"
+
 #: src/features/Lang/getLabels.tsx:21
 #. js-lingui-explicit-id
 msgid "Russian Learning Plan"
@@ -8163,11 +8199,6 @@ msgstr "Semantik HTML"
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Gönder"
-
-#: src/features/Plan/PlanCard.tsx:254
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "6 mesaj göndermek için tamamlayın"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:337
 #. js-lingui-explicit-id
@@ -8332,7 +8363,7 @@ msgstr "Daha fazla göster"
 msgid "Show More"
 msgstr "Daha Fazla Göster"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:429
+#: src/features/Dashboard/PlanDashboardCards.tsx:431
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Daha fazla ders göster"
@@ -8436,7 +8467,7 @@ msgstr ""
 msgid "Skip"
 msgstr "Atla"
 
-#: src/features/Plan/PlanCard.tsx:200
+#: src/features/Plan/LessonStartModal.tsx:277
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "Şimdilik atla"
@@ -8573,10 +8604,7 @@ msgid "Stars"
 msgstr "Yıldızlar"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/PlanDashboardCards.tsx:411
-#: src/features/Goal/Quiz/GoalReview.tsx:147
-#: src/features/Goal/Quiz/GoalReview.tsx:161
-#: src/features/Goal/Quiz/PlanPreview.tsx:74
+#: src/features/Goal/Quiz/GoalReview.tsx:157
 #: src/features/Landing/LandingPage.tsx:198
 #: src/features/Landing/LandingPage.tsx:200
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -8595,7 +8623,7 @@ msgstr "Başla"
 msgid "Start a mock interview"
 msgstr "Bir deneme mülakatı başlat"
 
-#: src/features/Plan/PlanCard.tsx:231
+#: src/features/Plan/LessonStartModal.tsx:356
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "Çağrıyı Başlat"
@@ -8616,6 +8644,11 @@ msgstr "Öğrenmeye Başla"
 msgid "Start Learning Now"
 msgstr "Şimdi Öğrenmeye Başla"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Start Lesson"
+msgstr "Dersi Başlat"
+
 #: src/features/Case/data/reusable/priceSection.ts:30
 #. js-lingui-explicit-id
 msgid "Start Monthly Plan"
@@ -8626,7 +8659,6 @@ msgstr "Aylık Planı Başlat"
 msgid "Start new lesson"
 msgstr "Yeni dersi başlat"
 
-#: src/features/Dashboard/RulesToLearn.tsx:87
 #: src/features/Dashboard/WordsToLearn.tsx:109
 #. js-lingui-explicit-id
 msgid "Start practice"
@@ -8657,11 +8689,6 @@ msgstr "Konuşma Pratiğine Başla"
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "Testi Başlat"
-
-#: src/features/Plan/PlanCard.tsx:243
-#. js-lingui-explicit-id
-msgid "Start Voice Only"
-msgstr "Yalnızca Sesli Başlat"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:11
 #. js-lingui-explicit-id
@@ -9873,6 +9900,11 @@ msgstr ""
 msgid "We will speak freely"
 msgstr "Özgürce konuşacağız"
 
+#: src/features/Plan/LessonStartModal.tsx:355
+#. js-lingui-explicit-id
+msgid "We're ready to begin!"
+msgstr "Başlamaya hazırız!"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
 #. js-lingui-explicit-id
 msgid "Weaknesses:"
@@ -9897,6 +9929,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Webcam Feedback Preview"
 msgstr "Webcam Geri Bildirim Önizlemesi"
+
+#: src/features/Plan/LessonStartModal.tsx:229
+#. js-lingui-explicit-id
+msgid "Webcam Setup"
+msgstr "Webcam Kurulumu"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:808
 #. js-lingui-explicit-id
@@ -10159,6 +10196,11 @@ msgstr "Kelime İstatistikleri"
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Kelimeler"
+
+#: src/features/Plan/LessonStartModal.tsx:292
+#. js-lingui-explicit-id
+msgid "Words to Learn"
+msgstr "Öğrenilecek Kelimeler"
 
 #: src/features/RolePlay/rolePlayData.tsx:510
 #. js-lingui-explicit-id
@@ -10760,6 +10802,26 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Conversation/ConversationPage.tsx:141
+#. js-lingui-explicit-id
+#~ msgid "Crafting new words..."
+#~ msgstr "Yeni kelimeler oluşturuluyor..."
+
+#: src/features/Dashboard/RulesToLearn.tsx:38
+#. js-lingui-explicit-id
+#~ msgid "New rule to practice."
+#~ msgstr "Yeni kural uygulama."
+
+#: src/features/Plan/PlanCard.tsx:254
+#. js-lingui-explicit-id
+#~ msgid "Send 6 messages to complete"
+#~ msgstr "6 mesaj göndermek için tamamlayın"
+
+#: src/features/Plan/PlanCard.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Start Voice Only"
+#~ msgstr "Yalnızca Sesli Başlat"
 
 #: src/features/Chat/SubmitForm.tsx:149
 #. js-lingui-explicit-id

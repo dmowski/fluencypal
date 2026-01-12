@@ -663,7 +663,12 @@ msgstr "すべてのインタビュー"
 msgid "All Scenarios"
 msgstr "すべてのシナリオ"
 
-#: src/features/Plan/PlanCard.tsx:197
+#: src/features/Plan/LessonStartModal.tsx:213
+#. js-lingui-explicit-id
+msgid "Allow Microphone Access"
+msgstr "マイクへのアクセスを許可"
+
+#: src/features/Plan/LessonStartModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "Webカメラを許可"
@@ -864,7 +869,6 @@ msgstr "これらのミスを避けることで、よりプロフェッショナ
 
 #: src/features/Chat/ChatPage.tsx:121
 #: src/features/Chat/ChatSection.tsx:168
-#: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
 msgid "Back"
@@ -1602,7 +1606,7 @@ msgstr "連絡先:"
 #: src/features/Case/data/frontend-senior/quizData.ts:306
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/PayWall/CardValidator.tsx:133
-#: src/features/Plan/PlanCard.tsx:424
+#: src/features/Plan/PlanCard.tsx:227
 #: src/features/Usage/SubscriptionPaymentModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -1712,15 +1716,10 @@ msgstr "行き詰った時の修正"
 msgid "Could not find page"
 msgstr "ページが見つかりませんでした"
 
-#: src/features/Conversation/ConversationPage.tsx:145
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "新しいルールの作成..."
-
-#: src/features/Conversation/ConversationPage.tsx:141
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "新しい言葉を作成中..."
 
 #: src/features/SEO/metadata.ts:105
 #. js-lingui-explicit-id
@@ -1977,7 +1976,7 @@ msgstr "アカウントを削除する"
 msgid "Delete account (Total)"
 msgstr "アカウントを削除 (合計)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:503
+#: src/features/Dashboard/PlanDashboardCards.tsx:505
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "現在の目標を削除"
@@ -3322,17 +3321,17 @@ msgstr "ゲーム"
 msgid "Game-based practice"
 msgstr "ゲームベースの練習"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:478
+#: src/features/Dashboard/PlanDashboardCards.tsx:480
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "目標をより早く達成するために、さらに多くのレッスンを生成しましょう。"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:520
+#: src/features/Dashboard/PlanDashboardCards.tsx:522
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "もっとユニークなレッスンを生成する"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:519
+#: src/features/Dashboard/PlanDashboardCards.tsx:521
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "生成中..."
@@ -3572,7 +3571,7 @@ msgstr "メインページに移動する"
 #: src/features/Conversation/ConversationCanvas.tsx:887
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
-#: src/features/Dashboard/PlanDashboardCards.tsx:474
+#: src/features/Dashboard/PlanDashboardCards.tsx:476
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "目標"
@@ -3736,6 +3735,16 @@ msgstr "ヘルプ"
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "答えを支援する"
+
+#: src/features/Plan/LessonStartModal.tsx:327
+#. js-lingui-explicit-id
+msgid "Here are some new rules for you to learn:"
+msgstr "以下は、学ぶべき新しいルールです："
+
+#: src/features/Plan/LessonStartModal.tsx:293
+#. js-lingui-explicit-id
+msgid "Here are some new words for you to learn:"
+msgstr "ここに学ぶべき新しい単語があります:"
 
 #: src/features/Usage/UsageStatsCards.tsx:189
 #. js-lingui-explicit-id
@@ -4605,7 +4614,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "5分以内に次のものが得られます："
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:530
+#: src/features/Dashboard/PlanDashboardCards.tsx:532
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "より多くのレッスンを生成するためには、少なくとも3つのレッスンを完了する必要があります"
@@ -5488,6 +5497,11 @@ msgstr "文学 & フィクション"
 msgid "Load More"
 msgstr "もっと読む"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Loading"
+msgstr "読み込み中"
+
 #: src/features/Conversation/ConversationPage.tsx:117
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
@@ -5553,6 +5567,16 @@ msgstr "学習の主な目的"
 #. js-lingui-explicit-id
 msgid "Make sure to allow webcam access in your browser settings."
 msgstr "カメラへのアクセスをブラウザの設定で許可してください。"
+
+#: src/features/Plan/LessonStartModal.tsx:186
+#. js-lingui-explicit-id
+msgid "Make sure your microphone is working properly."
+msgstr "マイクが正常に動作していることを確認してください。"
+
+#: src/features/Plan/LessonStartModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Make sure your webcam is working properly."
+msgstr "あなたのウェブカメラが正常に動作していることを確認してください。"
 
 #: src/features/Lang/getLabels.tsx:25
 #. js-lingui-explicit-id
@@ -5691,6 +5715,16 @@ msgstr "マイクロフロントエンド"
 msgid "Microphone Access"
 msgstr "マイクアクセス"
 
+#: src/features/Plan/LessonStartModal.tsx:217
+#. js-lingui-explicit-id
+msgid "Microphone access denied. Please enable it in your browser settings."
+msgstr "マイクへのアクセスが拒否されました。ブラウザの設定で有効にしてください。"
+
+#: src/features/Plan/LessonStartModal.tsx:185
+#. js-lingui-explicit-id
+msgid "Microphone Setup"
+msgstr "マイクのセットアップ"
+
 #: src/features/Usage/UsageStatsCards.tsx:556
 #. js-lingui-explicit-id
 msgid "Minutes"
@@ -5771,7 +5805,7 @@ msgstr "もっと"
 msgid "More options"
 msgstr "さらにオプション"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:470
+#: src/features/Dashboard/PlanDashboardCards.tsx:472
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "よりユニークなレッスン"
@@ -5880,11 +5914,6 @@ msgstr "定期的に新しい機能とシミュレーションが追加されま
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "新しい文法ルール"
-
-#: src/features/Dashboard/RulesToLearn.tsx:38
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "新しいルールを練習する。"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
 #: src/features/Landing/Price/PricePage.tsx:361
@@ -7357,6 +7386,8 @@ msgstr "Redis"
 msgid "Reflex"
 msgstr "リフレックス"
 
+#: src/features/Plan/LessonStartModal.tsx:318
+#: src/features/Plan/LessonStartModal.tsx:344
 #: src/features/Telegram/TgAppPage.tsx:183
 #. js-lingui-explicit-id
 msgid "Refresh"
@@ -7519,6 +7550,11 @@ msgstr "ルール"
 msgid "Rule of the day"
 msgstr "今日のルール"
 
+#: src/features/Plan/LessonStartModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Rules to Learn"
+msgstr "学ぶためのルール"
+
 #: src/features/Lang/getLabels.tsx:21
 #. js-lingui-explicit-id
 msgid "Russian Learning Plan"
@@ -7638,11 +7674,6 @@ msgstr "セマンティックHTML"
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "送信"
-
-#: src/features/Plan/PlanCard.tsx:254
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "完了するために6つのメッセージを送信してください"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:337
 #. js-lingui-explicit-id
@@ -7801,7 +7832,7 @@ msgstr ""
 msgid "Show More"
 msgstr "もっと表示する"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:429
+#: src/features/Dashboard/PlanDashboardCards.tsx:431
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "レッスンをもっと表示"
@@ -7899,7 +7930,7 @@ msgstr "マイクロサービスアーキテクチャの簡単なスケッチを
 msgid "Skip"
 msgstr "スキップ"
 
-#: src/features/Plan/PlanCard.tsx:200
+#: src/features/Plan/LessonStartModal.tsx:277
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "今はスキップ"
@@ -8029,10 +8060,7 @@ msgid "Stars"
 msgstr "スターズ"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/PlanDashboardCards.tsx:411
-#: src/features/Goal/Quiz/GoalReview.tsx:147
-#: src/features/Goal/Quiz/GoalReview.tsx:161
-#: src/features/Goal/Quiz/PlanPreview.tsx:74
+#: src/features/Goal/Quiz/GoalReview.tsx:157
 #: src/features/Landing/LandingPage.tsx:198
 #: src/features/Landing/LandingPage.tsx:200
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -8051,7 +8079,7 @@ msgstr "開始"
 msgid "Start a mock interview"
 msgstr "模擬面接を開始する"
 
-#: src/features/Plan/PlanCard.tsx:231
+#: src/features/Plan/LessonStartModal.tsx:356
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr ""
@@ -8074,6 +8102,13 @@ msgstr "学習を始める"
 msgid "Start Learning Now"
 msgstr "今すぐ学び始める"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Start Lesson"
+msgstr ""
+"\n"
+"レッスンを開始\n"
+
 #: src/features/Case/data/reusable/priceSection.ts:30
 #. js-lingui-explicit-id
 msgid "Start Monthly Plan"
@@ -8084,7 +8119,6 @@ msgstr "月額プランを開始"
 msgid "Start new lesson"
 msgstr "新しいレッスンを開始する"
 
-#: src/features/Dashboard/RulesToLearn.tsx:87
 #: src/features/Dashboard/WordsToLearn.tsx:109
 #. js-lingui-explicit-id
 msgid "Start practice"
@@ -8119,11 +8153,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "テストを開始"
-
-#: src/features/Plan/PlanCard.tsx:243
-#. js-lingui-explicit-id
-msgid "Start Voice Only"
-msgstr "音声のみ開始"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:11
 #. js-lingui-explicit-id
@@ -9259,6 +9288,11 @@ msgstr ""
 msgid "We will speak freely"
 msgstr "自由に話しましょう"
 
+#: src/features/Plan/LessonStartModal.tsx:355
+#. js-lingui-explicit-id
+msgid "We're ready to begin!"
+msgstr "私たちは始める準備ができました！"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
 #. js-lingui-explicit-id
 msgid "Weaknesses:"
@@ -9281,6 +9315,11 @@ msgstr "ウェブカメラへのアクセスが拒否されました。ブラウ
 #. js-lingui-explicit-id
 msgid "Webcam Feedback Preview"
 msgstr "ウェブカメラフィードバックプレビュー"
+
+#: src/features/Plan/LessonStartModal.tsx:229
+#. js-lingui-explicit-id
+msgid "Webcam Setup"
+msgstr "ウェブカメラのセットアップ"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:808
 #. js-lingui-explicit-id
@@ -9540,6 +9579,13 @@ msgstr "単語統計"
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "単語"
+
+#: src/features/Plan/LessonStartModal.tsx:292
+#. js-lingui-explicit-id
+msgid "Words to Learn"
+msgstr ""
+"\n"
+"学習する単語\n"
 
 #: src/features/RolePlay/rolePlayData.tsx:510
 #. js-lingui-explicit-id
@@ -10076,6 +10122,26 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Conversation/ConversationPage.tsx:141
+#. js-lingui-explicit-id
+#~ msgid "Crafting new words..."
+#~ msgstr "新しい言葉を作成中..."
+
+#: src/features/Dashboard/RulesToLearn.tsx:38
+#. js-lingui-explicit-id
+#~ msgid "New rule to practice."
+#~ msgstr "新しいルールを練習する。"
+
+#: src/features/Plan/PlanCard.tsx:254
+#. js-lingui-explicit-id
+#~ msgid "Send 6 messages to complete"
+#~ msgstr "完了するために6つのメッセージを送信してください"
+
+#: src/features/Plan/PlanCard.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Start Voice Only"
+#~ msgstr "音声のみ開始"
 
 #: src/features/Chat/SubmitForm.tsx:149
 #. js-lingui-explicit-id

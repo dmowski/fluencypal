@@ -698,7 +698,12 @@ msgstr "Todas as Entrevistas"
 msgid "All Scenarios"
 msgstr "Todos os Cenários"
 
-#: src/features/Plan/PlanCard.tsx:197
+#: src/features/Plan/LessonStartModal.tsx:213
+#. js-lingui-explicit-id
+msgid "Allow Microphone Access"
+msgstr "Permitir Acesso ao Microfone"
+
+#: src/features/Plan/LessonStartModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "Permitir câmera web"
@@ -909,7 +914,6 @@ msgstr ""
 
 #: src/features/Chat/ChatPage.tsx:121
 #: src/features/Chat/ChatSection.tsx:168
-#: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
 msgid "Back"
@@ -1672,7 +1676,7 @@ msgstr "Contatos:"
 #: src/features/Case/data/frontend-senior/quizData.ts:306
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/PayWall/CardValidator.tsx:133
-#: src/features/Plan/PlanCard.tsx:424
+#: src/features/Plan/PlanCard.tsx:227
 #: src/features/Usage/SubscriptionPaymentModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -1782,15 +1786,10 @@ msgstr "Correções quando você ficar preso"
 msgid "Could not find page"
 msgstr "Não foi possível encontrar a página"
 
-#: src/features/Conversation/ConversationPage.tsx:145
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Criando nova regra..."
-
-#: src/features/Conversation/ConversationPage.tsx:141
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "Criando novas palavras..."
 
 #: src/features/SEO/metadata.ts:105
 #. js-lingui-explicit-id
@@ -2065,7 +2064,7 @@ msgstr "Excluir conta"
 msgid "Delete account (Total)"
 msgstr "Deletar conta (Total)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:503
+#: src/features/Dashboard/PlanDashboardCards.tsx:505
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Excluir objetivo atual"
@@ -3554,17 +3553,17 @@ msgstr "Jogo"
 msgid "Game-based practice"
 msgstr "Prática baseada em jogos"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:478
+#: src/features/Dashboard/PlanDashboardCards.tsx:480
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "Gere mais lições para alcançar seu objetivo mais rapidamente."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:520
+#: src/features/Dashboard/PlanDashboardCards.tsx:522
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Gere mais lições únicas"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:519
+#: src/features/Dashboard/PlanDashboardCards.tsx:521
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Gerando..."
@@ -3834,7 +3833,7 @@ msgstr "Vá para a página principal"
 #: src/features/Conversation/ConversationCanvas.tsx:887
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
-#: src/features/Dashboard/PlanDashboardCards.tsx:474
+#: src/features/Dashboard/PlanDashboardCards.tsx:476
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Meta"
@@ -4012,6 +4011,16 @@ msgstr "Ajuda"
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Ajuda com a resposta"
+
+#: src/features/Plan/LessonStartModal.tsx:327
+#. js-lingui-explicit-id
+msgid "Here are some new rules for you to learn:"
+msgstr "Aqui estão algumas novas regras para você aprender:"
+
+#: src/features/Plan/LessonStartModal.tsx:293
+#. js-lingui-explicit-id
+msgid "Here are some new words for you to learn:"
+msgstr "Aqui estão algumas novas palavras para você aprender:"
 
 #: src/features/Usage/UsageStatsCards.tsx:189
 #. js-lingui-explicit-id
@@ -4986,7 +4995,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "Em menos de 5 minutos, você receberá:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:530
+#: src/features/Dashboard/PlanDashboardCards.tsx:532
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Para gerar mais lições, você precisa completar pelo menos 3 lições"
@@ -5933,6 +5942,11 @@ msgstr "Literatura & Ficção"
 msgid "Load More"
 msgstr "Carregar Mais"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Loading"
+msgstr "Carregando"
+
 #: src/features/Conversation/ConversationPage.tsx:117
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
@@ -6000,6 +6014,16 @@ msgid "Make sure to allow webcam access in your browser settings."
 msgstr ""
 "Certifique-se de permitir o acesso à webcam nas configurações do seu "
 "navegador."
+
+#: src/features/Plan/LessonStartModal.tsx:186
+#. js-lingui-explicit-id
+msgid "Make sure your microphone is working properly."
+msgstr "Certifique-se de que seu microfone está funcionando corretamente."
+
+#: src/features/Plan/LessonStartModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Make sure your webcam is working properly."
+msgstr "Certifique-se de que sua webcam está funcionando corretamente."
 
 #: src/features/Lang/getLabels.tsx:25
 #. js-lingui-explicit-id
@@ -6148,6 +6172,18 @@ msgstr "Micro-frontends"
 msgid "Microphone Access"
 msgstr "Acesso ao Microfone"
 
+#: src/features/Plan/LessonStartModal.tsx:217
+#. js-lingui-explicit-id
+msgid "Microphone access denied. Please enable it in your browser settings."
+msgstr ""
+"Acesso ao microfone negado. Por favor, ative-o nas configurações do seu "
+"navegador."
+
+#: src/features/Plan/LessonStartModal.tsx:185
+#. js-lingui-explicit-id
+msgid "Microphone Setup"
+msgstr "Configuração do Microfone"
+
 #: src/features/Usage/UsageStatsCards.tsx:556
 #. js-lingui-explicit-id
 msgid "Minutes"
@@ -6234,7 +6270,7 @@ msgstr "Mais"
 msgid "More options"
 msgstr "Mais opções"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:470
+#: src/features/Dashboard/PlanDashboardCards.tsx:472
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Mais lições únicas"
@@ -6348,11 +6384,6 @@ msgstr "Novos recursos e simulações adicionados regularmente"
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "Novas Regras de Gramática"
-
-#: src/features/Dashboard/RulesToLearn.tsx:38
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "Nova regra para praticar."
 
 #: src/features/Landing/Price/FeatureList.tsx:48
 #: src/features/Landing/Price/PricePage.tsx:361
@@ -7908,6 +7939,8 @@ msgstr "Redis"
 msgid "Reflex"
 msgstr "Reflexo"
 
+#: src/features/Plan/LessonStartModal.tsx:318
+#: src/features/Plan/LessonStartModal.tsx:344
 #: src/features/Telegram/TgAppPage.tsx:183
 #. js-lingui-explicit-id
 msgid "Refresh"
@@ -8076,6 +8109,11 @@ msgstr "Regra"
 msgid "Rule of the day"
 msgstr "Regra do dia"
 
+#: src/features/Plan/LessonStartModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Rules to Learn"
+msgstr "Regras para Aprender"
+
 #: src/features/Lang/getLabels.tsx:21
 #. js-lingui-explicit-id
 msgid "Russian Learning Plan"
@@ -8199,11 +8237,6 @@ msgstr "HTML semântico"
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Enviar"
-
-#: src/features/Plan/PlanCard.tsx:254
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "Envie 6 mensagens para concluir"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:337
 #. js-lingui-explicit-id
@@ -8368,7 +8401,7 @@ msgstr "Mostrar mais"
 msgid "Show More"
 msgstr "Mostrar Mais"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:429
+#: src/features/Dashboard/PlanDashboardCards.tsx:431
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Mostrar mais lições"
@@ -8474,7 +8507,7 @@ msgstr ""
 msgid "Skip"
 msgstr "Pular"
 
-#: src/features/Plan/PlanCard.tsx:200
+#: src/features/Plan/LessonStartModal.tsx:277
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "Pular por enquanto"
@@ -8609,10 +8642,7 @@ msgid "Stars"
 msgstr "Estrelas"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/PlanDashboardCards.tsx:411
-#: src/features/Goal/Quiz/GoalReview.tsx:147
-#: src/features/Goal/Quiz/GoalReview.tsx:161
-#: src/features/Goal/Quiz/PlanPreview.tsx:74
+#: src/features/Goal/Quiz/GoalReview.tsx:157
 #: src/features/Landing/LandingPage.tsx:198
 #: src/features/Landing/LandingPage.tsx:200
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -8631,7 +8661,7 @@ msgstr "Iniciar"
 msgid "Start a mock interview"
 msgstr "Iniciar uma simulação de entrevista"
 
-#: src/features/Plan/PlanCard.tsx:231
+#: src/features/Plan/LessonStartModal.tsx:356
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "Iniciar Chamada"
@@ -8652,6 +8682,11 @@ msgstr "Comece a Aprender"
 msgid "Start Learning Now"
 msgstr "Comece a Aprender Agora"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Start Lesson"
+msgstr "Iniciar Aula"
+
 #: src/features/Case/data/reusable/priceSection.ts:30
 #. js-lingui-explicit-id
 msgid "Start Monthly Plan"
@@ -8662,7 +8697,6 @@ msgstr "Iniciar Plano Mensal"
 msgid "Start new lesson"
 msgstr "Iniciar nova aula"
 
-#: src/features/Dashboard/RulesToLearn.tsx:87
 #: src/features/Dashboard/WordsToLearn.tsx:109
 #. js-lingui-explicit-id
 msgid "Start practice"
@@ -8693,11 +8727,6 @@ msgstr "Comece a Prática de Fala"
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "Iniciar Teste"
-
-#: src/features/Plan/PlanCard.tsx:243
-#. js-lingui-explicit-id
-msgid "Start Voice Only"
-msgstr "Iniciar Apenas Voz"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:11
 #. js-lingui-explicit-id
@@ -9915,6 +9944,11 @@ msgstr ""
 msgid "We will speak freely"
 msgstr "Iremos falar livremente"
 
+#: src/features/Plan/LessonStartModal.tsx:355
+#. js-lingui-explicit-id
+msgid "We're ready to begin!"
+msgstr "Estamos prontos para começar!"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
 #. js-lingui-explicit-id
 msgid "Weaknesses:"
@@ -9939,6 +9973,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Webcam Feedback Preview"
 msgstr "Pré-visualização de Feedback da Webcam"
+
+#: src/features/Plan/LessonStartModal.tsx:229
+#. js-lingui-explicit-id
+msgid "Webcam Setup"
+msgstr "Configuração da Webcam"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:808
 #. js-lingui-explicit-id
@@ -10204,6 +10243,11 @@ msgstr "Estatísticas de Palavras"
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Palavras"
+
+#: src/features/Plan/LessonStartModal.tsx:292
+#. js-lingui-explicit-id
+msgid "Words to Learn"
+msgstr "Palavras para Aprender"
 
 #: src/features/RolePlay/rolePlayData.tsx:510
 #. js-lingui-explicit-id
@@ -10816,6 +10860,26 @@ msgstr ""
 "— é importante participar desta breve conversa antes de mergulhar nos "
 "tópicos profissionais. Aqui estão algumas frases úteis em inglês para "
 "começar a entrevista:"
+
+#: src/features/Conversation/ConversationPage.tsx:141
+#. js-lingui-explicit-id
+#~ msgid "Crafting new words..."
+#~ msgstr "Criando novas palavras..."
+
+#: src/features/Dashboard/RulesToLearn.tsx:38
+#. js-lingui-explicit-id
+#~ msgid "New rule to practice."
+#~ msgstr "Nova regra para praticar."
+
+#: src/features/Plan/PlanCard.tsx:254
+#. js-lingui-explicit-id
+#~ msgid "Send 6 messages to complete"
+#~ msgstr "Envie 6 mensagens para concluir"
+
+#: src/features/Plan/PlanCard.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Start Voice Only"
+#~ msgstr "Iniciar Apenas Voz"
 
 #: src/features/Chat/SubmitForm.tsx:149
 #. js-lingui-explicit-id

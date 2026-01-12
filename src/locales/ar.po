@@ -693,7 +693,12 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "جميع السيناريوهات"
 
-#: src/features/Plan/PlanCard.tsx:197
+#: src/features/Plan/LessonStartModal.tsx:213
+#. js-lingui-explicit-id
+msgid "Allow Microphone Access"
+msgstr "السماح بالوصول إلى الميكروفون"
+
+#: src/features/Plan/LessonStartModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "السماح بكاميرا الويب"
@@ -894,7 +899,6 @@ msgstr "تجنب هذه الأخطاء سيجعلك تبدو أكثر احترا
 
 #: src/features/Chat/ChatPage.tsx:121
 #: src/features/Chat/ChatSection.tsx:168
-#: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
 msgid "Back"
@@ -1651,7 +1655,7 @@ msgstr "جهات الاتصال:"
 #: src/features/Case/data/frontend-senior/quizData.ts:306
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/PayWall/CardValidator.tsx:133
-#: src/features/Plan/PlanCard.tsx:424
+#: src/features/Plan/PlanCard.tsx:227
 #: src/features/Usage/SubscriptionPaymentModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -1763,15 +1767,10 @@ msgstr "تصحيحات عندما تعلق"
 msgid "Could not find page"
 msgstr "لم نتمكن من العثور على الصفحة"
 
-#: src/features/Conversation/ConversationPage.tsx:145
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "إنشاء قاعدة جديدة..."
-
-#: src/features/Conversation/ConversationPage.tsx:141
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "صياغة كلمات جديدة..."
 
 #: src/features/SEO/metadata.ts:105
 #. js-lingui-explicit-id
@@ -2038,7 +2037,7 @@ msgstr "حذف الحساب"
 msgid "Delete account (Total)"
 msgstr "حذف الحساب (كليًا)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:503
+#: src/features/Dashboard/PlanDashboardCards.tsx:505
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "حذف الهدف الحالي"
@@ -3487,17 +3486,17 @@ msgstr "لعبة"
 msgid "Game-based practice"
 msgstr "ممارسة مبنية على الألعاب"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:478
+#: src/features/Dashboard/PlanDashboardCards.tsx:480
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "توليد المزيد من الدروس لتحقيق هدفك بشكل أسرع."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:520
+#: src/features/Dashboard/PlanDashboardCards.tsx:522
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "قم بإنشاء دروس فريدة أكثر"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:519
+#: src/features/Dashboard/PlanDashboardCards.tsx:521
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "جار الإنشاء..."
@@ -3754,7 +3753,7 @@ msgstr "اذهب إلى الصفحة الرئيسية"
 #: src/features/Conversation/ConversationCanvas.tsx:887
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
-#: src/features/Dashboard/PlanDashboardCards.tsx:474
+#: src/features/Dashboard/PlanDashboardCards.tsx:476
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "هدف"
@@ -3926,6 +3925,16 @@ msgstr "مساعدة"
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "مساعدة في الإجابة"
+
+#: src/features/Plan/LessonStartModal.tsx:327
+#. js-lingui-explicit-id
+msgid "Here are some new rules for you to learn:"
+msgstr "إليك بعض القواعد الجديدة لتتعلمها:"
+
+#: src/features/Plan/LessonStartModal.tsx:293
+#. js-lingui-explicit-id
+msgid "Here are some new words for you to learn:"
+msgstr "إليك بعض الكلمات الجديدة لتتعلمها:"
 
 #: src/features/Usage/UsageStatsCards.tsx:189
 #. js-lingui-explicit-id
@@ -4861,7 +4870,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "خلال أقل من 5 دقائق، ستحصل على:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:530
+#: src/features/Dashboard/PlanDashboardCards.tsx:532
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "لكي تتمكن من إنشاء المزيد من الدروس، يجب عليك إتمام ثلاث دروس على الأقل"
@@ -5783,6 +5792,11 @@ msgstr "الأدب والخيال"
 msgid "Load More"
 msgstr "تحميل المزيد"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Loading"
+msgstr "جارٍ التحميل"
+
 #: src/features/Conversation/ConversationPage.tsx:117
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
@@ -5848,6 +5862,16 @@ msgstr "الهدف الرئيسي في التعلم"
 #. js-lingui-explicit-id
 msgid "Make sure to allow webcam access in your browser settings."
 msgstr "تأكد من السماح بالوصول إلى كاميرا الويب في إعدادات المتصفح لديك."
+
+#: src/features/Plan/LessonStartModal.tsx:186
+#. js-lingui-explicit-id
+msgid "Make sure your microphone is working properly."
+msgstr "تأكد من أن الميكروفون يعمل بشكل صحيح."
+
+#: src/features/Plan/LessonStartModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Make sure your webcam is working properly."
+msgstr "تأكد من أن كاميرا الويب تعمل بشكل صحيح."
 
 #: src/features/Lang/getLabels.tsx:25
 #. js-lingui-explicit-id
@@ -5989,6 +6013,16 @@ msgstr "واجهات مصغرة"
 msgid "Microphone Access"
 msgstr "إمكانية الوصول إلى الميكروفون"
 
+#: src/features/Plan/LessonStartModal.tsx:217
+#. js-lingui-explicit-id
+msgid "Microphone access denied. Please enable it in your browser settings."
+msgstr "تم رفض الوصول إلى الميكروفون. يُرجى تمكينه في إعدادات المتصفح لديك."
+
+#: src/features/Plan/LessonStartModal.tsx:185
+#. js-lingui-explicit-id
+msgid "Microphone Setup"
+msgstr "إعداد الميكروفون"
+
 #: src/features/Usage/UsageStatsCards.tsx:556
 #. js-lingui-explicit-id
 msgid "Minutes"
@@ -6075,7 +6109,7 @@ msgstr "أكثر"
 msgid "More options"
 msgstr "المزيد من الخيارات"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:470
+#: src/features/Dashboard/PlanDashboardCards.tsx:472
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "دروس أكثر تميزاً"
@@ -6184,11 +6218,6 @@ msgstr "ميزات ومحاكاة جديدة تضاف بانتظام"
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "قواعد النحو الجديدة"
-
-#: src/features/Dashboard/RulesToLearn.tsx:38
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "قاعدة جديدة للممارسة."
 
 #: src/features/Landing/Price/FeatureList.tsx:48
 #: src/features/Landing/Price/PricePage.tsx:361
@@ -7726,6 +7755,8 @@ msgstr "Redis"
 msgid "Reflex"
 msgstr "ريفلكس"
 
+#: src/features/Plan/LessonStartModal.tsx:318
+#: src/features/Plan/LessonStartModal.tsx:344
 #: src/features/Telegram/TgAppPage.tsx:183
 #. js-lingui-explicit-id
 msgid "Refresh"
@@ -7892,6 +7923,11 @@ msgstr "قاعدة"
 msgid "Rule of the day"
 msgstr "قاعدة اليوم"
 
+#: src/features/Plan/LessonStartModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Rules to Learn"
+msgstr "قواعد للتعلم"
+
 #: src/features/Lang/getLabels.tsx:21
 #. js-lingui-explicit-id
 msgid "Russian Learning Plan"
@@ -8017,11 +8053,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "أرسل"
-
-#: src/features/Plan/PlanCard.tsx:254
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "أرسل 6 رسائل للإكمال"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:337
 #. js-lingui-explicit-id
@@ -8184,7 +8215,7 @@ msgstr "أظهر المزيد"
 msgid "Show More"
 msgstr "عرض المزيد"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:429
+#: src/features/Dashboard/PlanDashboardCards.tsx:431
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr ""
@@ -8292,7 +8323,7 @@ msgstr ""
 msgid "Skip"
 msgstr "تخطي"
 
-#: src/features/Plan/PlanCard.tsx:200
+#: src/features/Plan/LessonStartModal.tsx:277
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "تخطي في الوقت الحالي"
@@ -8422,10 +8453,7 @@ msgid "Stars"
 msgstr "النجوم"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/PlanDashboardCards.tsx:411
-#: src/features/Goal/Quiz/GoalReview.tsx:147
-#: src/features/Goal/Quiz/GoalReview.tsx:161
-#: src/features/Goal/Quiz/PlanPreview.tsx:74
+#: src/features/Goal/Quiz/GoalReview.tsx:157
 #: src/features/Landing/LandingPage.tsx:198
 #: src/features/Landing/LandingPage.tsx:200
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -8444,7 +8472,7 @@ msgstr "ابدأ"
 msgid "Start a mock interview"
 msgstr "ابدأ مقابلة وهمية"
 
-#: src/features/Plan/PlanCard.tsx:231
+#: src/features/Plan/LessonStartModal.tsx:356
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "ابدأ المكالمة"
@@ -8465,6 +8493,11 @@ msgstr "ابدأ التعلم"
 msgid "Start Learning Now"
 msgstr "ابدأ التعلم الآن"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Start Lesson"
+msgstr "ابدأ الدرس"
+
 #: src/features/Case/data/reusable/priceSection.ts:30
 #. js-lingui-explicit-id
 msgid "Start Monthly Plan"
@@ -8475,7 +8508,6 @@ msgstr "ابدأ الخطة الشهرية"
 msgid "Start new lesson"
 msgstr "ابدأ درسًا جديدًا"
 
-#: src/features/Dashboard/RulesToLearn.tsx:87
 #: src/features/Dashboard/WordsToLearn.tsx:109
 #. js-lingui-explicit-id
 msgid "Start practice"
@@ -8506,11 +8538,6 @@ msgstr "ابدأ ممارسة التحدث"
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "ابدأ الاختبار"
-
-#: src/features/Plan/PlanCard.tsx:243
-#. js-lingui-explicit-id
-msgid "Start Voice Only"
-msgstr "ابدأ الصوت فقط"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:11
 #. js-lingui-explicit-id
@@ -9710,6 +9737,11 @@ msgstr ""
 msgid "We will speak freely"
 msgstr "سنتحدث بحرية"
 
+#: src/features/Plan/LessonStartModal.tsx:355
+#. js-lingui-explicit-id
+msgid "We're ready to begin!"
+msgstr "نحن جاهزون للبدء!"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
 #. js-lingui-explicit-id
 msgid "Weaknesses:"
@@ -9734,6 +9766,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Webcam Feedback Preview"
 msgstr "معاينة تعليقات كاميرا الويب"
+
+#: src/features/Plan/LessonStartModal.tsx:229
+#. js-lingui-explicit-id
+msgid "Webcam Setup"
+msgstr "إعداد كاميرا الويب"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:808
 #. js-lingui-explicit-id
@@ -9998,6 +10035,11 @@ msgstr "إحصائيات الكلمات"
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "كلمات"
+
+#: src/features/Plan/LessonStartModal.tsx:292
+#. js-lingui-explicit-id
+msgid "Words to Learn"
+msgstr "كلمات للتعلم"
 
 #: src/features/RolePlay/rolePlayData.tsx:510
 #. js-lingui-explicit-id
@@ -10588,6 +10630,26 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/Conversation/ConversationPage.tsx:141
+#. js-lingui-explicit-id
+#~ msgid "Crafting new words..."
+#~ msgstr "صياغة كلمات جديدة..."
+
+#: src/features/Dashboard/RulesToLearn.tsx:38
+#. js-lingui-explicit-id
+#~ msgid "New rule to practice."
+#~ msgstr "قاعدة جديدة للممارسة."
+
+#: src/features/Plan/PlanCard.tsx:254
+#. js-lingui-explicit-id
+#~ msgid "Send 6 messages to complete"
+#~ msgstr "أرسل 6 رسائل للإكمال"
+
+#: src/features/Plan/PlanCard.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Start Voice Only"
+#~ msgstr "ابدأ الصوت فقط"
 
 #: src/features/Chat/SubmitForm.tsx:149
 #. js-lingui-explicit-id

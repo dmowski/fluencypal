@@ -700,7 +700,12 @@ msgstr "Tất cả cuộc phỏng vấn"
 msgid "All Scenarios"
 msgstr "Tất cả các kịch bản"
 
-#: src/features/Plan/PlanCard.tsx:197
+#: src/features/Plan/LessonStartModal.tsx:213
+#. js-lingui-explicit-id
+msgid "Allow Microphone Access"
+msgstr "Cho phép truy cập Micro"
+
+#: src/features/Plan/LessonStartModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "Cho phép WebCam"
@@ -909,7 +914,6 @@ msgstr ""
 
 #: src/features/Chat/ChatPage.tsx:121
 #: src/features/Chat/ChatSection.tsx:168
-#: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
 msgid "Back"
@@ -1671,7 +1675,7 @@ msgstr "Contacts:"
 #: src/features/Case/data/frontend-senior/quizData.ts:306
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/PayWall/CardValidator.tsx:133
-#: src/features/Plan/PlanCard.tsx:424
+#: src/features/Plan/PlanCard.tsx:227
 #: src/features/Usage/SubscriptionPaymentModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -1781,15 +1785,10 @@ msgstr "Sửa lỗi khi bạn bị mắc kẹt"
 msgid "Could not find page"
 msgstr "Không thể tìm thấy trang"
 
-#: src/features/Conversation/ConversationPage.tsx:145
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Đang tạo quy tắc mới..."
-
-#: src/features/Conversation/ConversationPage.tsx:141
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "Đang tạo ra những từ mới..."
 
 #: src/features/SEO/metadata.ts:105
 #. js-lingui-explicit-id
@@ -2063,7 +2062,7 @@ msgstr "Xóa tài khoản"
 msgid "Delete account (Total)"
 msgstr "Xóa tài khoản (Tổng cộng)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:503
+#: src/features/Dashboard/PlanDashboardCards.tsx:505
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Xóa mục tiêu hiện tại"
@@ -3564,17 +3563,17 @@ msgstr "Game"
 msgid "Game-based practice"
 msgstr "Thực hành dựa trên trò chơi"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:478
+#: src/features/Dashboard/PlanDashboardCards.tsx:480
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "Tạo thêm bài học để đạt được mục tiêu của bạn nhanh hơn."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:520
+#: src/features/Dashboard/PlanDashboardCards.tsx:522
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Tạo thêm nhiều bài học độc đáo"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:519
+#: src/features/Dashboard/PlanDashboardCards.tsx:521
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Đang tạo..."
@@ -3843,7 +3842,7 @@ msgstr "Đi đến trang chính"
 #: src/features/Conversation/ConversationCanvas.tsx:887
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
-#: src/features/Dashboard/PlanDashboardCards.tsx:474
+#: src/features/Dashboard/PlanDashboardCards.tsx:476
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Mục tiêu"
@@ -4019,6 +4018,16 @@ msgstr "Trợ giúp"
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Giúp với câu trả lời"
+
+#: src/features/Plan/LessonStartModal.tsx:327
+#. js-lingui-explicit-id
+msgid "Here are some new rules for you to learn:"
+msgstr "Dưới đây là một số quy tắc mới để bạn học:"
+
+#: src/features/Plan/LessonStartModal.tsx:293
+#. js-lingui-explicit-id
+msgid "Here are some new words for you to learn:"
+msgstr "Dưới đây là một số từ mới để bạn học:"
 
 #: src/features/Usage/UsageStatsCards.tsx:189
 #. js-lingui-explicit-id
@@ -4995,7 +5004,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "Trong chưa đầy 5 phút, bạn sẽ nhận được:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:530
+#: src/features/Dashboard/PlanDashboardCards.tsx:532
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Để tạo thêm nhiều bài học, bạn cần hoàn thành ít nhất 3 bài học"
@@ -5936,6 +5945,11 @@ msgstr "Văn học & Tiểu thuyết"
 msgid "Load More"
 msgstr "Tải Thêm"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Loading"
+msgstr "Đang tải"
+
 #: src/features/Conversation/ConversationPage.tsx:117
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
@@ -6001,6 +6015,16 @@ msgstr "Mục tiêu chính trong việc học"
 #. js-lingui-explicit-id
 msgid "Make sure to allow webcam access in your browser settings."
 msgstr "Hãy chắc chắn cho phép truy cập webcam trong cài đặt trình duyệt của bạn."
+
+#: src/features/Plan/LessonStartModal.tsx:186
+#. js-lingui-explicit-id
+msgid "Make sure your microphone is working properly."
+msgstr "Hãy chắc chắn rằng micro của bạn đang hoạt động tốt."
+
+#: src/features/Plan/LessonStartModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Make sure your webcam is working properly."
+msgstr "Hãy đảm bảo rằng webcam của bạn hoạt động đúng cách."
 
 #: src/features/Lang/getLabels.tsx:25
 #. js-lingui-explicit-id
@@ -6150,6 +6174,18 @@ msgstr "Micro-frontends"
 msgid "Microphone Access"
 msgstr "Quyền truy cập Microphone"
 
+#: src/features/Plan/LessonStartModal.tsx:217
+#. js-lingui-explicit-id
+msgid "Microphone access denied. Please enable it in your browser settings."
+msgstr ""
+"Quyền truy cập micro đã bị từ chối. Vui lòng bật nó trong cài đặt trình "
+"duyệt của bạn."
+
+#: src/features/Plan/LessonStartModal.tsx:185
+#. js-lingui-explicit-id
+msgid "Microphone Setup"
+msgstr "Thiết lập Microphone"
+
 #: src/features/Usage/UsageStatsCards.tsx:556
 #. js-lingui-explicit-id
 msgid "Minutes"
@@ -6230,7 +6266,7 @@ msgstr "Thêm nữa"
 msgid "More options"
 msgstr "Nhiều tùy chọn"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:470
+#: src/features/Dashboard/PlanDashboardCards.tsx:472
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Thêm nhiều bài học độc đáo"
@@ -6344,11 +6380,6 @@ msgstr "Các tính năng và mô phỏng mới được bổ sung thường xuy�
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "Quy tắc ngữ pháp mới"
-
-#: src/features/Dashboard/RulesToLearn.tsx:38
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "Quy tắc mới để thực hành."
 
 #: src/features/Landing/Price/FeatureList.tsx:48
 #: src/features/Landing/Price/PricePage.tsx:361
@@ -7910,6 +7941,8 @@ msgstr "Redis"
 msgid "Reflex"
 msgstr "Phản xạ"
 
+#: src/features/Plan/LessonStartModal.tsx:318
+#: src/features/Plan/LessonStartModal.tsx:344
 #: src/features/Telegram/TgAppPage.tsx:183
 #. js-lingui-explicit-id
 msgid "Refresh"
@@ -8083,6 +8116,11 @@ msgstr "Quy tắc"
 msgid "Rule of the day"
 msgstr "Quy tắc của ngày"
 
+#: src/features/Plan/LessonStartModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Rules to Learn"
+msgstr "Quy tắc để học"
+
 #: src/features/Lang/getLabels.tsx:21
 #. js-lingui-explicit-id
 msgid "Russian Learning Plan"
@@ -8206,11 +8244,6 @@ msgstr "Semantic HTML"
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Gửi"
-
-#: src/features/Plan/PlanCard.tsx:254
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "Gửi 6 tin nhắn để hoàn thành"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:337
 #. js-lingui-explicit-id
@@ -8377,7 +8410,7 @@ msgstr "Hiển thị thêm"
 msgid "Show More"
 msgstr "Hiển thị thêm"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:429
+#: src/features/Dashboard/PlanDashboardCards.tsx:431
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Hiển thị thêm bài học"
@@ -8485,7 +8518,7 @@ msgstr ""
 msgid "Skip"
 msgstr "Bỏ qua"
 
-#: src/features/Plan/PlanCard.tsx:200
+#: src/features/Plan/LessonStartModal.tsx:277
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "Bỏ qua bây giờ"
@@ -8620,10 +8653,7 @@ msgid "Stars"
 msgstr "Ngôi sao"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/PlanDashboardCards.tsx:411
-#: src/features/Goal/Quiz/GoalReview.tsx:147
-#: src/features/Goal/Quiz/GoalReview.tsx:161
-#: src/features/Goal/Quiz/PlanPreview.tsx:74
+#: src/features/Goal/Quiz/GoalReview.tsx:157
 #: src/features/Landing/LandingPage.tsx:198
 #: src/features/Landing/LandingPage.tsx:200
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -8642,7 +8672,7 @@ msgstr "Bắt đầu"
 msgid "Start a mock interview"
 msgstr "Bắt đầu một buổi phỏng vấn giả định"
 
-#: src/features/Plan/PlanCard.tsx:231
+#: src/features/Plan/LessonStartModal.tsx:356
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "Bắt đầu cuộc gọi"
@@ -8663,6 +8693,11 @@ msgstr "Bắt Đầu Học"
 msgid "Start Learning Now"
 msgstr "Bắt đầu học ngay bây giờ"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Start Lesson"
+msgstr "Bắt đầu bài học"
+
 #: src/features/Case/data/reusable/priceSection.ts:30
 #. js-lingui-explicit-id
 msgid "Start Monthly Plan"
@@ -8673,7 +8708,6 @@ msgstr "Bắt đầu Kế hoạch Hàng tháng"
 msgid "Start new lesson"
 msgstr "Bắt đầu bài học mới"
 
-#: src/features/Dashboard/RulesToLearn.tsx:87
 #: src/features/Dashboard/WordsToLearn.tsx:109
 #. js-lingui-explicit-id
 msgid "Start practice"
@@ -8704,11 +8738,6 @@ msgstr "Bắt đầu thực hành nói chuyện"
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "Bắt đầu Kiểm tra"
-
-#: src/features/Plan/PlanCard.tsx:243
-#. js-lingui-explicit-id
-msgid "Start Voice Only"
-msgstr "Bắt đầu Chỉ giọng nói"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:11
 #. js-lingui-explicit-id
@@ -9930,6 +9959,11 @@ msgstr ""
 msgid "We will speak freely"
 msgstr "Chúng ta sẽ nói chuyện một cách tự do"
 
+#: src/features/Plan/LessonStartModal.tsx:355
+#. js-lingui-explicit-id
+msgid "We're ready to begin!"
+msgstr "Chúng ta đã sẵn sàng để bắt đầu!"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
 #. js-lingui-explicit-id
 msgid "Weaknesses:"
@@ -9954,6 +9988,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Webcam Feedback Preview"
 msgstr "Xem trước Phản hồi Webcam"
+
+#: src/features/Plan/LessonStartModal.tsx:229
+#. js-lingui-explicit-id
+msgid "Webcam Setup"
+msgstr "Thiết lập Webcam"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:808
 #. js-lingui-explicit-id
@@ -10221,6 +10260,11 @@ msgstr "Thống kê từ vựng"
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Từ vựng"
+
+#: src/features/Plan/LessonStartModal.tsx:292
+#. js-lingui-explicit-id
+msgid "Words to Learn"
+msgstr "Những Từ Cần Học"
 
 #: src/features/RolePlay/rolePlayData.tsx:510
 #. js-lingui-explicit-id
@@ -10827,6 +10871,26 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Conversation/ConversationPage.tsx:141
+#. js-lingui-explicit-id
+#~ msgid "Crafting new words..."
+#~ msgstr "Đang tạo ra những từ mới..."
+
+#: src/features/Dashboard/RulesToLearn.tsx:38
+#. js-lingui-explicit-id
+#~ msgid "New rule to practice."
+#~ msgstr "Quy tắc mới để thực hành."
+
+#: src/features/Plan/PlanCard.tsx:254
+#. js-lingui-explicit-id
+#~ msgid "Send 6 messages to complete"
+#~ msgstr "Gửi 6 tin nhắn để hoàn thành"
+
+#: src/features/Plan/PlanCard.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Start Voice Only"
+#~ msgstr "Bắt đầu Chỉ giọng nói"
 
 #: src/features/Chat/SubmitForm.tsx:149
 #. js-lingui-explicit-id

@@ -666,7 +666,12 @@ msgstr "所有面试"
 msgid "All Scenarios"
 msgstr "所有场景"
 
-#: src/features/Plan/PlanCard.tsx:197
+#: src/features/Plan/LessonStartModal.tsx:213
+#. js-lingui-explicit-id
+msgid "Allow Microphone Access"
+msgstr "允许麦克风访问"
+
+#: src/features/Plan/LessonStartModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "允许网络摄像头"
@@ -867,7 +872,6 @@ msgstr "避免这些错误将使你看起来更专业，增加你成功的机会
 
 #: src/features/Chat/ChatPage.tsx:121
 #: src/features/Chat/ChatSection.tsx:168
-#: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
 msgid "Back"
@@ -1594,7 +1598,7 @@ msgstr "联系人："
 #: src/features/Case/data/frontend-senior/quizData.ts:306
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/PayWall/CardValidator.tsx:133
-#: src/features/Plan/PlanCard.tsx:424
+#: src/features/Plan/PlanCard.tsx:227
 #: src/features/Usage/SubscriptionPaymentModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -1704,15 +1708,10 @@ msgstr "卡壳时的纠正"
 msgid "Could not find page"
 msgstr "无法找到页面"
 
-#: src/features/Conversation/ConversationPage.tsx:145
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "正在制定新规则..."
-
-#: src/features/Conversation/ConversationPage.tsx:141
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "正在创造新词……"
 
 #: src/features/SEO/metadata.ts:105
 #. js-lingui-explicit-id
@@ -1966,7 +1965,7 @@ msgstr "删除账户"
 msgid "Delete account (Total)"
 msgstr "删除账户（总计）"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:503
+#: src/features/Dashboard/PlanDashboardCards.tsx:505
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "删除当前目标"
@@ -3288,17 +3287,17 @@ msgstr "游戏"
 msgid "Game-based practice"
 msgstr "基于游戏的练习"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:478
+#: src/features/Dashboard/PlanDashboardCards.tsx:480
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "生成更多课程，以更快实现您的目标。"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:520
+#: src/features/Dashboard/PlanDashboardCards.tsx:522
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "生成更多独特的课程"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:519
+#: src/features/Dashboard/PlanDashboardCards.tsx:521
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "生成中..."
@@ -3533,7 +3532,7 @@ msgstr "去主页"
 #: src/features/Conversation/ConversationCanvas.tsx:887
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
-#: src/features/Dashboard/PlanDashboardCards.tsx:474
+#: src/features/Dashboard/PlanDashboardCards.tsx:476
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "目标"
@@ -3693,6 +3692,16 @@ msgstr "帮助"
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "帮助回答"
+
+#: src/features/Plan/LessonStartModal.tsx:327
+#. js-lingui-explicit-id
+msgid "Here are some new rules for you to learn:"
+msgstr "这是一些新的规则供你学习："
+
+#: src/features/Plan/LessonStartModal.tsx:293
+#. js-lingui-explicit-id
+msgid "Here are some new words for you to learn:"
+msgstr "这是一些你要学习的新单词："
 
 #: src/features/Usage/UsageStatsCards.tsx:189
 #. js-lingui-explicit-id
@@ -4534,7 +4543,7 @@ msgstr "提高你的英语口语技能并不必复杂。有了FluencyPal，无�
 msgid "In less than 5 minutes, you'll get:"
 msgstr "在不到5分钟内，您将获得："
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:530
+#: src/features/Dashboard/PlanDashboardCards.tsx:532
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "为了生成更多的课程，你需要至少完成3节课"
@@ -5388,6 +5397,11 @@ msgstr "文学与小说"
 msgid "Load More"
 msgstr "加载更多"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Loading"
+msgstr "加载中"
+
 #: src/features/Conversation/ConversationPage.tsx:117
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
@@ -5453,6 +5467,16 @@ msgstr "学习的主要目标"
 #. js-lingui-explicit-id
 msgid "Make sure to allow webcam access in your browser settings."
 msgstr "请确保在您的浏览器设置中允许访问摄像头。"
+
+#: src/features/Plan/LessonStartModal.tsx:186
+#. js-lingui-explicit-id
+msgid "Make sure your microphone is working properly."
+msgstr "确保您的麦克风正常工作。"
+
+#: src/features/Plan/LessonStartModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Make sure your webcam is working properly."
+msgstr "请确保您的网络摄像头正常工作。"
 
 #: src/features/Lang/getLabels.tsx:25
 #. js-lingui-explicit-id
@@ -5589,6 +5613,16 @@ msgstr "微前端"
 msgid "Microphone Access"
 msgstr "麦克风访问"
 
+#: src/features/Plan/LessonStartModal.tsx:217
+#. js-lingui-explicit-id
+msgid "Microphone access denied. Please enable it in your browser settings."
+msgstr "麦克风访问被拒绝。请在您的浏览器设置中启用它。"
+
+#: src/features/Plan/LessonStartModal.tsx:185
+#. js-lingui-explicit-id
+msgid "Microphone Setup"
+msgstr "麦克风设置"
+
 #: src/features/Usage/UsageStatsCards.tsx:556
 #. js-lingui-explicit-id
 msgid "Minutes"
@@ -5669,7 +5703,7 @@ msgstr "更多"
 msgid "More options"
 msgstr "更多选项"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:470
+#: src/features/Dashboard/PlanDashboardCards.tsx:472
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "更多独特的课程"
@@ -5775,11 +5809,6 @@ msgstr "定期添加新功能和模拟"
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "新的语法规则"
-
-#: src/features/Dashboard/RulesToLearn.tsx:38
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "新规则以供练习。"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
 #: src/features/Landing/Price/PricePage.tsx:361
@@ -7226,6 +7255,8 @@ msgstr "Redis"
 msgid "Reflex"
 msgstr "反射"
 
+#: src/features/Plan/LessonStartModal.tsx:318
+#: src/features/Plan/LessonStartModal.tsx:344
 #: src/features/Telegram/TgAppPage.tsx:183
 #. js-lingui-explicit-id
 msgid "Refresh"
@@ -7386,6 +7417,11 @@ msgstr "规则"
 msgid "Rule of the day"
 msgstr "今日规则"
 
+#: src/features/Plan/LessonStartModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Rules to Learn"
+msgstr "学习规则"
+
 #: src/features/Lang/getLabels.tsx:21
 #. js-lingui-explicit-id
 msgid "Russian Learning Plan"
@@ -7505,11 +7541,6 @@ msgstr "语义化 HTML"
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "发送"
-
-#: src/features/Plan/PlanCard.tsx:254
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "发送6条信息以完成"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:337
 #. js-lingui-explicit-id
@@ -7666,7 +7697,7 @@ msgstr "显示更多"
 msgid "Show More"
 msgstr "显示更多"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:429
+#: src/features/Dashboard/PlanDashboardCards.tsx:431
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "显示更多课程"
@@ -7762,7 +7793,7 @@ msgstr "绘制一个简单的微服务架构，包含API网关、认证、服务
 msgid "Skip"
 msgstr "跳过"
 
-#: src/features/Plan/PlanCard.tsx:200
+#: src/features/Plan/LessonStartModal.tsx:277
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "暂时跳过"
@@ -7892,10 +7923,7 @@ msgid "Stars"
 msgstr "星星"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/PlanDashboardCards.tsx:411
-#: src/features/Goal/Quiz/GoalReview.tsx:147
-#: src/features/Goal/Quiz/GoalReview.tsx:161
-#: src/features/Goal/Quiz/PlanPreview.tsx:74
+#: src/features/Goal/Quiz/GoalReview.tsx:157
 #: src/features/Landing/LandingPage.tsx:198
 #: src/features/Landing/LandingPage.tsx:200
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -7914,7 +7942,7 @@ msgstr "开始"
 msgid "Start a mock interview"
 msgstr "开始模拟面试"
 
-#: src/features/Plan/PlanCard.tsx:231
+#: src/features/Plan/LessonStartModal.tsx:356
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "开始通话"
@@ -7935,6 +7963,11 @@ msgstr "开始学习"
 msgid "Start Learning Now"
 msgstr "立即开始学习"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Start Lesson"
+msgstr "开始课程"
+
 #: src/features/Case/data/reusable/priceSection.ts:30
 #. js-lingui-explicit-id
 msgid "Start Monthly Plan"
@@ -7945,7 +7978,6 @@ msgstr "开始月度计划"
 msgid "Start new lesson"
 msgstr "开始新课程"
 
-#: src/features/Dashboard/RulesToLearn.tsx:87
 #: src/features/Dashboard/WordsToLearn.tsx:109
 #. js-lingui-explicit-id
 msgid "Start practice"
@@ -7976,11 +8008,6 @@ msgstr "开始口语练习"
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "开始测试"
-
-#: src/features/Plan/PlanCard.tsx:243
-#. js-lingui-explicit-id
-msgid "Start Voice Only"
-msgstr "开始仅语音"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:11
 #. js-lingui-explicit-id
@@ -9098,6 +9125,11 @@ msgstr ""
 msgid "We will speak freely"
 msgstr "我们将自由交谈"
 
+#: src/features/Plan/LessonStartModal.tsx:355
+#. js-lingui-explicit-id
+msgid "We're ready to begin!"
+msgstr "我们准备好开始了！"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
 #. js-lingui-explicit-id
 msgid "Weaknesses:"
@@ -9120,6 +9152,11 @@ msgstr "Webcam 访问被拒绝。请在浏览器设置中启用 webcam 权限。
 #. js-lingui-explicit-id
 msgid "Webcam Feedback Preview"
 msgstr "网络摄像头反馈预览"
+
+#: src/features/Plan/LessonStartModal.tsx:229
+#. js-lingui-explicit-id
+msgid "Webcam Setup"
+msgstr "网络摄像头设置"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:808
 #. js-lingui-explicit-id
@@ -9372,6 +9409,11 @@ msgstr "单词统计"
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "单词"
+
+#: src/features/Plan/LessonStartModal.tsx:292
+#. js-lingui-explicit-id
+msgid "Words to Learn"
+msgstr "要学习的单词"
 
 #: src/features/RolePlay/rolePlayData.tsx:510
 #. js-lingui-explicit-id
@@ -9898,6 +9940,26 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Conversation/ConversationPage.tsx:141
+#. js-lingui-explicit-id
+#~ msgid "Crafting new words..."
+#~ msgstr "正在创造新词……"
+
+#: src/features/Dashboard/RulesToLearn.tsx:38
+#. js-lingui-explicit-id
+#~ msgid "New rule to practice."
+#~ msgstr "新规则以供练习。"
+
+#: src/features/Plan/PlanCard.tsx:254
+#. js-lingui-explicit-id
+#~ msgid "Send 6 messages to complete"
+#~ msgstr "发送6条信息以完成"
+
+#: src/features/Plan/PlanCard.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Start Voice Only"
+#~ msgstr "开始仅语音"
 
 #: src/features/Chat/SubmitForm.tsx:149
 #. js-lingui-explicit-id

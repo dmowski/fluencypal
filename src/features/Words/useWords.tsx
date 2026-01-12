@@ -16,10 +16,6 @@ interface WordsContextType {
   addWordsStatFromText: (text: string) => Promise<string[]>;
   totalWordsCount: number;
   getNewWordsToLearn: (goal?: GoalElementInfo) => Promise<string[]>;
-  removeWordsToLearn: () => void;
-  wordsToLearn: string[];
-  isGeneratingWords: boolean;
-  goal: GoalElementInfo | null;
 }
 
 const WordsContext = createContext<WordsContextType | null>(null);
@@ -53,10 +49,13 @@ function useProvideWords(): WordsContextType {
       }
     });
 
-    const partToUpdate = Object.keys(newWords).reduce((acc, word) => {
-      acc[word] = (wordsStats?.dictionary?.[word] || 0) + newWords[word];
-      return acc;
-    }, {} as Record<string, number>);
+    const partToUpdate = Object.keys(newWords).reduce(
+      (acc, word) => {
+        acc[word] = (wordsStats?.dictionary?.[word] || 0) + newWords[word];
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     await setDoc(
       wordsStatsDocRef,
@@ -114,12 +113,8 @@ Your response will be sent to JSON.parse() function.
   };
 
   return {
-    isGeneratingWords,
-    removeWordsToLearn: () => setWordsToLearn([]),
     wordsStats: wordsStats || null,
     getNewWordsToLearn,
-    goal,
-    wordsToLearn,
     totalWordsCount,
     loading,
     addWordsStatFromText,

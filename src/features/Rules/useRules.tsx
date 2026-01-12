@@ -1,24 +1,17 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useState } from "react";
+import { createContext, useContext, ReactNode, JSX } from "react";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useTextAi } from "../Ai/useTextAi";
 import { GoalElementInfo } from "../Plan/types";
 import { useSettings } from "../Settings/useSettings";
 
 interface RulesContextType {
-  getRules: (goal?: GoalElementInfo) => Promise<void>;
-  rule: string;
-  isGeneratingRule: boolean;
-  removeRule: () => void;
-  goal: GoalElementInfo | null;
+  getRules: (goal?: GoalElementInfo) => Promise<string>;
 }
 
 const RulesContext = createContext<RulesContextType | null>(null);
 
 function useProvideRules(): RulesContextType {
-  const [isGeneratingRule, setIsGeneratingRule] = useState(false);
-  const [rule, setRule] = useState("");
-  const [goal, setGoal] = useState<GoalElementInfo | null>(null);
   const chatHistory = useChatHistory();
   const textAi = useTextAi();
   const settings = useSettings();
@@ -37,11 +30,8 @@ function useProvideRules(): RulesContextType {
   };
 
   const getRules = async (goal?: GoalElementInfo) => {
-    setIsGeneratingRule(true);
-    setGoal(goal || null);
     try {
       const userMessage = await getUserMessages();
-
       const systemInstruction = [
         `User provides list of his messages that he used during voice conversation.`,
         appMode === "interview"
@@ -59,20 +49,14 @@ function useProvideRules(): RulesContextType {
         model: "gpt-4o",
         languageCode: settings.languageCode || "en",
       });
-      setRule(newRuleToLearn);
+      return newRuleToLearn;
     } catch (error) {
-      setIsGeneratingRule(false);
-      throw error;
+      return "";
     }
-    setIsGeneratingRule(false);
   };
 
   return {
-    isGeneratingRule,
-    goal,
     getRules,
-    rule,
-    removeRule: () => setRule(""),
   };
 }
 

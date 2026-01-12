@@ -662,7 +662,12 @@ msgstr "모든 인터뷰"
 msgid "All Scenarios"
 msgstr "모든 시나리오"
 
-#: src/features/Plan/PlanCard.tsx:197
+#: src/features/Plan/LessonStartModal.tsx:213
+#. js-lingui-explicit-id
+msgid "Allow Microphone Access"
+msgstr "마이크 액세스 허용"
+
+#: src/features/Plan/LessonStartModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "웹캠 허용"
@@ -863,7 +868,6 @@ msgstr "이러한 실수를 피하면 당신이 더 전문적으로 보이게 �
 
 #: src/features/Chat/ChatPage.tsx:121
 #: src/features/Chat/ChatSection.tsx:168
-#: src/features/Dashboard/RulesToLearn.tsx:102
 #: src/features/Dashboard/WordsToLearn.tsx:124
 #. js-lingui-explicit-id
 msgid "Back"
@@ -1599,7 +1603,7 @@ msgstr "연락처:"
 #: src/features/Case/data/frontend-senior/quizData.ts:306
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/PayWall/CardValidator.tsx:133
-#: src/features/Plan/PlanCard.tsx:424
+#: src/features/Plan/PlanCard.tsx:227
 #: src/features/Usage/SubscriptionPaymentModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -1709,15 +1713,10 @@ msgstr "막혔을 때 수정하기"
 msgid "Could not find page"
 msgstr "페이지를 찾을 수 없습니다"
 
-#: src/features/Conversation/ConversationPage.tsx:145
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "룰 생성 중..."
-
-#: src/features/Conversation/ConversationPage.tsx:141
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "새로운 단어를 만들고 있습니다..."
 
 #: src/features/SEO/metadata.ts:105
 #. js-lingui-explicit-id
@@ -1975,7 +1974,7 @@ msgstr "계정 삭제"
 msgid "Delete account (Total)"
 msgstr "계정 삭제 (전체)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:503
+#: src/features/Dashboard/PlanDashboardCards.tsx:505
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "현재 목표 삭제"
@@ -3329,17 +3328,17 @@ msgstr "게임"
 msgid "Game-based practice"
 msgstr "게임 기반 연습"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:478
+#: src/features/Dashboard/PlanDashboardCards.tsx:480
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "더 빠르게 목표를 달성하기 위해 더 많은 수업을 생성하세요."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:520
+#: src/features/Dashboard/PlanDashboardCards.tsx:522
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "더 많은 독특한 수업을 생성하세요"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:519
+#: src/features/Dashboard/PlanDashboardCards.tsx:521
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "생성 중..."
@@ -3579,7 +3578,7 @@ msgstr "메인 페이지로 이동하십시오"
 #: src/features/Conversation/ConversationCanvas.tsx:887
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:264
-#: src/features/Dashboard/PlanDashboardCards.tsx:474
+#: src/features/Dashboard/PlanDashboardCards.tsx:476
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "목표"
@@ -3743,6 +3742,16 @@ msgstr "도움말"
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "답변 도움"
+
+#: src/features/Plan/LessonStartModal.tsx:327
+#. js-lingui-explicit-id
+msgid "Here are some new rules for you to learn:"
+msgstr "여기에 배워야 할 새로운 규칙이 있습니다:"
+
+#: src/features/Plan/LessonStartModal.tsx:293
+#. js-lingui-explicit-id
+msgid "Here are some new words for you to learn:"
+msgstr "다음은 당신이 배워야 할 몇 가지 새로운 단어들입니다:"
 
 #: src/features/Usage/UsageStatsCards.tsx:189
 #. js-lingui-explicit-id
@@ -4617,7 +4626,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "5분 이내에 얻을 수 있는 것:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:530
+#: src/features/Dashboard/PlanDashboardCards.tsx:532
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "더 많은 수업을 생성하기 위해서는 적어도 3개의 수업을 완료해야 합니다"
@@ -5493,6 +5502,11 @@ msgstr "문학 & 소설"
 msgid "Load More"
 msgstr "로드 더보기"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Loading"
+msgstr "로딩 중"
+
 #: src/features/Conversation/ConversationPage.tsx:117
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
@@ -5558,6 +5572,16 @@ msgstr "배움의 주요 목표"
 #. js-lingui-explicit-id
 msgid "Make sure to allow webcam access in your browser settings."
 msgstr "웹캠 액세스를 브라우저 설정에서 허용하세요."
+
+#: src/features/Plan/LessonStartModal.tsx:186
+#. js-lingui-explicit-id
+msgid "Make sure your microphone is working properly."
+msgstr "마이크가 제대로 작동하는지 확인하세요."
+
+#: src/features/Plan/LessonStartModal.tsx:230
+#. js-lingui-explicit-id
+msgid "Make sure your webcam is working properly."
+msgstr "웹캠이 제대로 작동하는지 확인하세요."
 
 #: src/features/Lang/getLabels.tsx:25
 #. js-lingui-explicit-id
@@ -5697,6 +5721,16 @@ msgstr "마이크로 프론트엔드"
 msgid "Microphone Access"
 msgstr "마이크 접근 권한"
 
+#: src/features/Plan/LessonStartModal.tsx:217
+#. js-lingui-explicit-id
+msgid "Microphone access denied. Please enable it in your browser settings."
+msgstr "마이크 접근이 거부되었습니다. 브라우저 설정에서 이를 활성화해 주세요."
+
+#: src/features/Plan/LessonStartModal.tsx:185
+#. js-lingui-explicit-id
+msgid "Microphone Setup"
+msgstr "마이크 설정"
+
 #: src/features/Usage/UsageStatsCards.tsx:556
 #. js-lingui-explicit-id
 msgid "Minutes"
@@ -5777,7 +5811,7 @@ msgstr "더 보기"
 msgid "More options"
 msgstr "더 많은 옵션"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:470
+#: src/features/Dashboard/PlanDashboardCards.tsx:472
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "더욱 독특한 수업들"
@@ -5883,11 +5917,6 @@ msgstr "새로운 기능 및 시뮬레이션이 정기적으로 추가됩니다.
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "새로운 문법 규칙"
-
-#: src/features/Dashboard/RulesToLearn.tsx:38
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "새로운 연습 규칙."
 
 #: src/features/Landing/Price/FeatureList.tsx:48
 #: src/features/Landing/Price/PricePage.tsx:361
@@ -7356,6 +7385,8 @@ msgstr "레디스"
 msgid "Reflex"
 msgstr "리플렉스"
 
+#: src/features/Plan/LessonStartModal.tsx:318
+#: src/features/Plan/LessonStartModal.tsx:344
 #: src/features/Telegram/TgAppPage.tsx:183
 #. js-lingui-explicit-id
 msgid "Refresh"
@@ -7518,6 +7549,11 @@ msgstr "룰"
 msgid "Rule of the day"
 msgstr "오늘의 규칙"
 
+#: src/features/Plan/LessonStartModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Rules to Learn"
+msgstr "배워야 할 규칙"
+
 #: src/features/Lang/getLabels.tsx:21
 #. js-lingui-explicit-id
 msgid "Russian Learning Plan"
@@ -7637,11 +7673,6 @@ msgstr "시맨틱 HTML"
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "보내기"
-
-#: src/features/Plan/PlanCard.tsx:254
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "6개의 메시지를 완료하십시오"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:337
 #. js-lingui-explicit-id
@@ -7798,7 +7829,7 @@ msgstr "더 보여주기"
 msgid "Show More"
 msgstr "더 보기"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:429
+#: src/features/Dashboard/PlanDashboardCards.tsx:431
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "더 많은 수업 보기"
@@ -7894,7 +7925,7 @@ msgstr "API 게이트웨이, 인증, 서비스 및 비동기 통신을 포함한
 msgid "Skip"
 msgstr "죄송합니다."
 
-#: src/features/Plan/PlanCard.tsx:200
+#: src/features/Plan/LessonStartModal.tsx:277
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "지금은 건너뛰기"
@@ -8024,10 +8055,7 @@ msgid "Stars"
 msgstr "별"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/PlanDashboardCards.tsx:411
-#: src/features/Goal/Quiz/GoalReview.tsx:147
-#: src/features/Goal/Quiz/GoalReview.tsx:161
-#: src/features/Goal/Quiz/PlanPreview.tsx:74
+#: src/features/Goal/Quiz/GoalReview.tsx:157
 #: src/features/Landing/LandingPage.tsx:198
 #: src/features/Landing/LandingPage.tsx:200
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -8046,7 +8074,7 @@ msgstr "시작"
 msgid "Start a mock interview"
 msgstr "모의 면접 시작"
 
-#: src/features/Plan/PlanCard.tsx:231
+#: src/features/Plan/LessonStartModal.tsx:356
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "통화 시작"
@@ -8067,6 +8095,11 @@ msgstr "학습 시작"
 msgid "Start Learning Now"
 msgstr "지금 바로 학습 시작하기"
 
+#: src/features/Plan/LessonStartModal.tsx:353
+#. js-lingui-explicit-id
+msgid "Start Lesson"
+msgstr "수업 시작"
+
 #: src/features/Case/data/reusable/priceSection.ts:30
 #. js-lingui-explicit-id
 msgid "Start Monthly Plan"
@@ -8077,7 +8110,6 @@ msgstr "월간 플랜 시작"
 msgid "Start new lesson"
 msgstr "새로운 수업 시작"
 
-#: src/features/Dashboard/RulesToLearn.tsx:87
 #: src/features/Dashboard/WordsToLearn.tsx:109
 #. js-lingui-explicit-id
 msgid "Start practice"
@@ -8108,11 +8140,6 @@ msgstr "대화 연습 시작하기"
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "테스트 시작"
-
-#: src/features/Plan/PlanCard.tsx:243
-#. js-lingui-explicit-id
-msgid "Start Voice Only"
-msgstr "음성만 시작"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:11
 #. js-lingui-explicit-id
@@ -9251,6 +9278,11 @@ msgstr ""
 msgid "We will speak freely"
 msgstr "우리는 자유롭게 말할 것입니다"
 
+#: src/features/Plan/LessonStartModal.tsx:355
+#. js-lingui-explicit-id
+msgid "We're ready to begin!"
+msgstr "우리는 시작할 준비가 되었습니다!"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
 #. js-lingui-explicit-id
 msgid "Weaknesses:"
@@ -9273,6 +9305,11 @@ msgstr "웹캠 접근이 거부되었습니다. 브라우저 설정에서 웹캠
 #. js-lingui-explicit-id
 msgid "Webcam Feedback Preview"
 msgstr "웹캠 피드백 미리보기"
+
+#: src/features/Plan/LessonStartModal.tsx:229
+#. js-lingui-explicit-id
+msgid "Webcam Setup"
+msgstr "웹캠 설정"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:808
 #. js-lingui-explicit-id
@@ -9526,6 +9563,11 @@ msgstr "단어 통계"
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "단어들"
+
+#: src/features/Plan/LessonStartModal.tsx:292
+#. js-lingui-explicit-id
+msgid "Words to Learn"
+msgstr "배울 단어들"
 
 #: src/features/RolePlay/rolePlayData.tsx:510
 #. js-lingui-explicit-id
@@ -10066,6 +10108,26 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Conversation/ConversationPage.tsx:141
+#. js-lingui-explicit-id
+#~ msgid "Crafting new words..."
+#~ msgstr "새로운 단어를 만들고 있습니다..."
+
+#: src/features/Dashboard/RulesToLearn.tsx:38
+#. js-lingui-explicit-id
+#~ msgid "New rule to practice."
+#~ msgstr "새로운 연습 규칙."
+
+#: src/features/Plan/PlanCard.tsx:254
+#. js-lingui-explicit-id
+#~ msgid "Send 6 messages to complete"
+#~ msgstr "6개의 메시지를 완료하십시오"
+
+#: src/features/Plan/PlanCard.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Start Voice Only"
+#~ msgstr "음성만 시작"
 
 #: src/features/Chat/SubmitForm.tsx:149
 #. js-lingui-explicit-id
