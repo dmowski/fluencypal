@@ -1,15 +1,18 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX, useState, useEffect, useRef } from "react";
-import { LessonPlan, LessonPlanAnalysis } from "./type";
+import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from "./type";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useTextAi } from "../Ai/useTextAi";
 import { getSortedMessages } from "../Conversation/getSortedMessages";
+import { GoalElementInfo } from "../Plan/types";
+import { useAiUserInfo } from "../Ai/useAiUserInfo";
 
 interface LessonPlanContextType {
   loading: boolean;
   activeLessonPlan: LessonPlan | null;
   setActiveLessonPlan: (plan: LessonPlan) => void;
   activeProgress: LessonPlanAnalysis | null;
+  createLessonPlan: (goalInfo: GoalElementInfo, skipCache?: boolean) => Promise<LessonPlan>;
 }
 
 const LessonPlanContext = createContext<LessonPlanContextType | null>(null);
@@ -113,6 +116,84 @@ ${JSON.stringify(previousProgress, null, 2)}
     isAnalyzingRef.current = false;
   };
 
+  const getLessonPlanFromStorage = (elementId: string): LessonPlan | null => {
+    const stored = localStorage.getItem(`lessonPlan_${elementId}`);
+    if (stored) {
+      try {
+        const plan: LessonPlan = JSON.parse(stored);
+        return plan;
+      } catch (error) {
+        console.error("Error parsing lesson plan from storage:", error);
+        return null;
+      }
+    }
+    return null;
+  };
+
+  const setLessonPlanToStorage = (elementId: string, plan: LessonPlan) => {
+    localStorage.setItem(`lessonPlan_${elementId}`, JSON.stringify(plan));
+  };
+
+  const aiUserInfo = useAiUserInfo();
+
+  const createLessonPlan = async (
+    goalInfo: GoalElementInfo,
+    skipCache?: boolean
+  ): Promise<LessonPlan> => {
+    const storagePlan = getLessonPlanFromStorage(goalInfo.goalElement.id);
+    if (storagePlan && !skipCache) {
+      setActiveLessonPlan(storagePlan);
+      return storagePlan;
+    }
+
+    const userInfo = (aiUserInfo.userInfo?.records || []).join(". ");
+
+    const mainGoal = goalInfo.goalPlan.title;
+    const elementTitle = goalInfo.goalElement.title;
+    const elementDescription = goalInfo.goalElement.description;
+    const elementDetails = goalInfo.goalElement.details;
+
+    const systemMessage = `Your goal is to create a detailed lesson plan for a speech lesson.
+  
+  This plan will be used by a AI tutor that can only talk and listen.
+  
+  The student's main goal is:
+  ${mainGoal}
+  
+  The lesson element is titled:
+  ${elementTitle}
+  
+  The lesson description:
+  ${elementDescription}
+  
+  The lesson details:
+  ${elementDetails}
+  
+  Info about student:
+  ${userInfo}
+  
+  Provide a step-by-step lesson plan with clear objectives and activities.
+  
+  Plan should contain 3-5 steps.
+  On the first step in teacherInstructions, include a start message to introduce the topic to the student.
+  
+  Format the response as a JSON array with each step containing "stepTitle", "stepDescriptionForStudent", and "teacherInstructions".
+  `;
+
+    const response = await ai.generateJson<LessonPlanStep[]>({
+      systemMessage,
+      userMessage: `Create the lesson plan as specified.`,
+      attempts: 2,
+      model: "gpt-4o",
+    });
+
+    const plan: LessonPlan = { steps: response };
+    setLessonPlanToStorage(goalInfo.goalElement.id, plan);
+    setActiveLessonPlan(plan);
+
+    return plan;
+  };
+
   const activeConversationMessageRef = useRef(0);
   activeConversationMessageRef.current = aiConversation.conversation.length;
   useEffect(() => {
@@ -134,6 +215,7 @@ ${JSON.stringify(previousProgress, null, 2)}
     activeLessonPlan,
     activeProgress,
     setActiveLessonPlan,
+    createLessonPlan,
   };
 }
 
