@@ -151,9 +151,7 @@ VISUAL_CONTEXT (latest): ${description}
     if (!correction || correction.trim().length === 0) {
       return "";
     }
-    const message = `Your critical goal is to apply shift conversation to the following direction:
-${correction}
-`;
+    const message = `${correction}`;
 
     return message;
   };
