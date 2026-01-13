@@ -142,7 +142,7 @@ Example of plan:
 ]
 
 Use ${fullLangName} language for generating plan (title, description, details).
-The plan should include at least 8 elements and must cover each type of activity.
+The plan should include at least 8 elements and must cover each type of activity. 5 of them should be 'conversation' type.
 `;
 
     const userMessage = `Conversation:
@@ -174,12 +174,12 @@ ${input.conversationMessages.map((message) => {
       const elementMode: PlanElementMode = type.includes("conversation")
         ? "conversation"
         : type.includes("words")
-        ? "words"
-        : type.includes("play")
-        ? "play"
-        : type.includes("rule")
-        ? "rule"
-        : "conversation";
+          ? "words"
+          : type.includes("play")
+            ? "play"
+            : type.includes("rule")
+              ? "rule"
+              : "conversation";
 
       const randomId = `${index}_${elementMode}_${Math.random().toString(36).substring(2, 15)}`;
       const details = `${element?.details || ""}`;
