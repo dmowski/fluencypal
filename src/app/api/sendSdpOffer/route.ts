@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
   const balance = await getUserBalance(userInfo.uid || "");
   if (!balance.isFullAccess) {
-    console.error("Insufficient balance.");
+    //console.error("Insufficient balance.");
   }
 
   console.log("GET TOKEN userId", userInfo.uid);
