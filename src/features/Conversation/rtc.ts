@@ -211,7 +211,7 @@ export const initAiRtc = async ({
     setDebugInfo("green");
     const event = JSON.parse(e.data);
     const type = (event?.type || "") as string;
-    //console.log("Event type:", type, "|", event);
+    // console.log("Event type:", type, "|", event);
     //console.log(JSON.stringify(event, null, 2));
 
     const previousItemId = event?.previous_item_id as string | undefined;

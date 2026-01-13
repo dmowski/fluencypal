@@ -34,18 +34,20 @@ function useProvideLessonPlan(): LessonPlanContextType {
     return planText;
   };
 
-  const getActiveConversationAsText = (): string => {
+  const getActiveConversationAsText = () => {
     const sortedMessages = getSortedMessages({
       conversation: aiConversation.conversation,
       messageOrder: aiConversation.messageOrder,
     });
+
+    const lastMessageText = sortedMessages[sortedMessages.length - 1]?.text || "";
 
     let conversationText = `## Conversation so far:\n\n`;
     sortedMessages.forEach((message) => {
       conversationText += `${message.isBot ? "Teacher" : "Student"}: ${message.text}\n`;
     });
 
-    return conversationText;
+    return { conversationText, lastMessageText };
   };
 
   useEffect(() => {
@@ -54,11 +56,15 @@ function useProvideLessonPlan(): LessonPlanContextType {
   const isAnalyzingRef = useRef(false);
 
   const analyzeActiveConversation = async () => {
-    if (!activeLessonPlan) return;
+    if (!activeLessonPlan) {
+      console.log("skip");
+      return;
+    }
+
     isAnalyzingRef.current = true;
     const activePlan = getActivePlanAsText();
     const activeConversation = getActiveConversationAsText();
-    console.log("🔥 Starting analyzing");
+    console.log("🔥 Starting analyzing:", activeConversation.lastMessageText);
 
     const initActiveProgress: LessonPlanAnalysis = {
       progress: 0,
@@ -93,7 +99,7 @@ Format the response as a JSON object containing {
 The previous analysis was:
 ${JSON.stringify(previousProgress, null, 2)}
 `;
-    const userMessage = `${activeConversation}\n\nPlease provide your analysis.`;
+    const userMessage = `${activeConversation.conversationText}\n\nPlease provide your analysis.`;
 
     const start = Date.now();
     const result = await ai.generateJson<LessonPlanAnalysis>({
