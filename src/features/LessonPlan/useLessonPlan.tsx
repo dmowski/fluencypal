@@ -6,6 +6,7 @@ import { useTextAi } from "../Ai/useTextAi";
 import { getSortedMessages } from "../Conversation/getSortedMessages";
 import { GoalElementInfo } from "../Plan/types";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
+import { useSettings } from "../Settings/useSettings";
 
 interface LessonPlanContextType {
   loading: boolean;
@@ -22,6 +23,7 @@ function useProvideLessonPlan(): LessonPlanContextType {
   const aiConversation = useAiConversation();
 
   const [activeProgress, setActiveProgress] = useState<LessonPlanAnalysis | null>(null);
+  const settings = useSettings();
 
   // message, analysis map
   const [lessonAnalysisProgress, setLessonAnalysisProgress] = useState<
@@ -167,32 +169,34 @@ ${JSON.stringify(previousProgress, null, 2)}
     const elementDetails = goalInfo.goalElement.details;
 
     const systemMessage = `Your goal is to create a detailed lesson plan for a speech lesson.
-  
-  This plan will be used by a AI tutor that can only talk and listen.
-  
-  The student's main goal is:
-  ${mainGoal}
-  
-  The lesson element is titled:
-  ${elementTitle}
-  
-  The lesson description:
-  ${elementDescription}
-  
-  The lesson details:
-  ${elementDetails}
-  
-  Info about student:
-  ${userInfo}
-  
-  Provide a step-by-step lesson plan with clear objectives and activities.
-  
-  Plan should contain 2-3 steps.
-  On the first step in teacherInstructions, include a start message to introduce the topic to the student.
-  
-  Format the response as a JSON array with each step containing "stepTitle", "stepDescriptionForStudent", and "teacherInstructions".
-  `;
 
+This plan will be used by a AI tutor that can only talk and listen.
+  
+The student's main goal is:
+${mainGoal}
+
+The lesson element is titled:
+${elementTitle}
+
+The lesson description:
+${elementDescription}
+
+The lesson details:
+${elementDetails}
+
+Info about student:
+${userInfo}
+
+Provide a step-by-step lesson plan with clear objectives and activities.
+
+Plan should contain 2-3 steps.
+On the first step in teacherInstructions, include a start message to introduce the topic to the student.
+
+Student language is ${settings.userSettings?.nativeLanguageCode || "en"}. And he is learning ${settings.fullLanguageName || "English"}.
+
+Format the response as a JSON array with each step containing "stepTitle", "stepDescriptionForStudent", and "teacherInstructions".
+  `;
+    //console.log("systemMessage", systemMessage);
     const response = await ai.generateJson<LessonPlanStep[]>({
       systemMessage,
       userMessage: `Create the lesson plan as specified.`,

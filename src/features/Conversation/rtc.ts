@@ -387,7 +387,8 @@ export const initAiRtc = async ({
     Object.assign(instructionState, partial);
     const updatedInstruction = getInstruction();
     if (partial.correction || isCorrectionExistsBefore) {
-      console.log("RTC updatedInstruction", updatedInstruction);
+      console.log("RTC updatedInstruction");
+      console.log(updatedInstruction);
     }
     await updateSession({
       ...sessionPrompts,
