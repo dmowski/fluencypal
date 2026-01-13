@@ -21,6 +21,7 @@ export async function POST(request: Request) {
 
   const userLastVisit = lastVisits[userInfo.uid || ""];
   if (!userLastVisit) {
+    console.log("User has no last visit record", userInfo.uid);
     await sentSupportTelegramMessage({
       message: "User has no last visit record",
       userId: userInfo.uid || "",
@@ -29,6 +30,7 @@ export async function POST(request: Request) {
     const diffMinutes = dayjs().diff(dayjs(userLastVisit), "minute");
     const trashHoldMinutes = 5;
     if (diffMinutes > trashHoldMinutes) {
+      console.log(`User last visit was ${diffMinutes} minutes ago`, userInfo.uid);
       await sentSupportTelegramMessage({
         message: `User last visit was ${diffMinutes} minutes ago`,
         userId: userInfo.uid || "",
