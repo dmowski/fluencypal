@@ -3,7 +3,11 @@
 import { createContext, useContext, ReactNode, JSX, useEffect, useRef, useState } from "react";
 import { AiVoice, MODELS } from "@/common/ai";
 
-import { ConversationConfig, ConversationInstance, initConversation } from "./rtc";
+import {
+  ConversationConfig,
+  ConversationInstance,
+  initConversation,
+} from "./ConversationInstance/rtc";
 
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useUsage } from "../Usage/useUsage";
