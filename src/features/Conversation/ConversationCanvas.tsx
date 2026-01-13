@@ -76,11 +76,6 @@ interface ConversationCanvasProps {
   isMuted: boolean;
   setIsMuted: (newState: boolean) => void;
 
-  isProcessingGoal: boolean;
-  temporaryGoal: GoalPlan | null;
-  goalSettingProgress: number;
-  isSavingGoal: boolean;
-
   isShowMessageProgress: boolean;
   conversationAnalysisResult: string;
   analyzeConversation: () => Promise<void>;
@@ -124,9 +119,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
   isMuted,
   setIsMuted,
-  isProcessingGoal,
-  temporaryGoal,
-  goalSettingProgress,
   closeConversation,
   conversationAnalysisResult,
   analyzeConversation,
@@ -510,14 +502,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                     </Button>
                   )}
 
-                  {isProcessingGoal && !temporaryGoal && (
-                    <Stack>
-                      <Typography className="loading-shimmer">
-                        {i18n._(`Preparing Goal`)}
-                      </Typography>
-                    </Stack>
-                  )}
-
                   {confirmedUserInput && !isRecording && !isAnalyzingResponse && (
                     <Button
                       startIcon={<ArrowUp />}
@@ -571,7 +555,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                     !isRecording &&
                     !isAnalyzingResponse &&
                     !isCallMode &&
-                    !isProcessingGoal &&
                     !isCompletedLesson &&
                     !isChatMode && (
                       <Stack
@@ -716,7 +699,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                   {!confirmedUserInput &&
                     !isRecording &&
                     !isAnalyzingResponse &&
-                    !isProcessingGoal &&
                     !isCompletedLesson &&
                     isChatMode && (
                       <Stack
@@ -792,18 +774,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                       </Button>
                     </Stack>
                   )}
-
-                  {!!goalSettingProgress &&
-                    !transcriptMessage &&
-                    !isRecording &&
-                    !isAnalyzingResponse &&
-                    !isProcessingGoal && (
-                      <Stack>
-                        <Typography variant="caption" sx={{ opacity: 0.8 }}>
-                          {i18n._("Goal")}: {goalSettingProgress}%
-                        </Typography>
-                      </Stack>
-                    )}
 
                   {transcriptMessage &&
                     !isRecording &&

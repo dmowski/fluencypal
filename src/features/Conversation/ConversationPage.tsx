@@ -41,9 +41,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const usage = useUsage();
   const recorder = useAudioRecorder({});
   const { i18n } = useLingui();
-  const words = useWords();
-  const rules = useRules();
-  const plan = usePlan();
   const access = useAccess();
 
   const appNavigation = useAppNavigation();
@@ -141,8 +138,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     );
   }
 
-  const planMessageCount = 40;
-
   return (
     <Stack>
       <ConversationCanvas
@@ -179,10 +174,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         recordingMilliSeconds={recorder.recordingMilliSeconds}
         recordVisualizerComponent={recorder.visualizerComponent}
         recordingError={recorder.error}
-        isProcessingGoal={aiConversation.isProcessingGoal}
-        temporaryGoal={aiConversation.temporaryGoal}
-        goalSettingProgress={aiConversation.goalSettingProgress}
-        isSavingGoal={aiConversation.isSavingGoal}
         analyzeConversation={analyzeConversation}
         closeConversation={async () => {
           await aiConversation.closeConversation();

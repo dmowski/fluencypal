@@ -110,7 +110,6 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     }
   };
 
-  const testGoal: GoalPlan | null = null;
   const a = {
     id: "",
     title: "Improve Spontaneous Speaking",
@@ -168,10 +167,6 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={""}
-        isProcessingGoal={false}
-        temporaryGoal={testGoal}
-        goalSettingProgress={0}
-        isSavingGoal={false}
         isShowMessageProgress={true}
         conversationAnalysisResult={`2`}
         closeConversation={async () => alert("Close conversation")}

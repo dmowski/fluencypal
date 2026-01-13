@@ -86,10 +86,6 @@ interface AiConversationContextType {
 
   conversationId: string;
 
-  isProcessingGoal: boolean;
-  temporaryGoal: GoalPlan | null;
-  goalSettingProgress: number;
-  isSavingGoal: boolean;
   goalInfo: GoalElementInfo | null;
 
   voice: AiVoice | null;
@@ -120,9 +116,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const fullLanguageName = settings.fullLanguageName || "English";
   const languageCode = settings.languageCode || "en";
   const [isVolumeOn, setIsVolumeOn] = useState(true);
-  const [isProcessingGoal, setIsProcessingGoal] = useState(false);
-  const [temporaryGoal, setTemporaryGoal] = useState<GoalPlan | null>(null);
-  const [isSavingGoal, setIsSavingGoal] = useState(false);
   const [voice, setVoice] = useState<AiVoice | null>(null);
 
   const [lessonPlanAnalysis, setLessonPlanAnalysis] = useState<LessonPlanAnalysis | null>(null);
@@ -605,9 +598,7 @@ ${voiceInstructions}
 
     console.log("START", { isVolumeOnInternal, isMutedInternal, mode: input.mode });
 
-    setTemporaryGoal(null);
     setGoalSettingProgress(0);
-    setIsProcessingGoal(false);
 
     if (input.analyzeResultAiInstruction) {
       console.log("analyzeResultAiInstruction", input.analyzeResultAiInstruction);
@@ -740,10 +731,6 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     isVolumeOn,
     toggleVolume,
     setIsStarted,
-    isProcessingGoal,
-    temporaryGoal,
-    goalSettingProgress,
-    isSavingGoal,
     goalInfo,
     messageOrder,
     setWebCamDescription,
