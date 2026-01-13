@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useState, useEffect, useRef } from "react";
+import { createContext, useContext, ReactNode, JSX, useState, useEffect } from "react";
 import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from "./type";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useTextAi } from "../Ai/useTextAi";
@@ -53,15 +53,10 @@ function useProvideLessonPlan(): LessonPlanContextType {
   useEffect(() => {
     setActiveLessonPlan(null);
   }, [aiConversation.isClosing]);
-  const isAnalyzingRef = useRef(false);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const analyzeActiveConversation = async () => {
-    if (!activeLessonPlan) {
-      console.log("skip");
-      return;
-    }
-
-    isAnalyzingRef.current = true;
+    setIsAnalyzing(true);
     const activePlan = getActivePlanAsText();
     const activeConversation = getActiveConversationAsText();
     console.log("🔥 Starting analyzing:", activeConversation.lastMessageText);
@@ -102,24 +97,26 @@ ${JSON.stringify(previousProgress, null, 2)}
     const userMessage = `${activeConversation.conversationText}\n\nPlease provide your analysis.`;
 
     const start = Date.now();
-    const result = await ai.generateJson<LessonPlanAnalysis>({
-      systemMessage: systemInstructions,
-      userMessage: userMessage,
-      attempts: 2,
-      model: "gpt-4o",
-    });
-    const end = Date.now();
+    try {
+      const result = await ai.generateJson<LessonPlanAnalysis>({
+        systemMessage: systemInstructions,
+        userMessage: userMessage,
+        attempts: 2,
+        model: "gpt-4o",
+      });
+      const end = Date.now();
 
-    //console.log(userMessage);
-    //console.log("systemInstructions", systemInstructions);
-    console.log(`result ${(end - start) / 1000} seconds`, JSON.stringify({ result }, null, 2));
+      console.log(`result ${(end - start) / 1000} seconds`, JSON.stringify({ result }, null, 2));
 
-    if (result) {
-      setActiveProgress(result);
-      aiConversation.setLessonPlanAnalysis(result);
+      if (result) {
+        setActiveProgress(result);
+        aiConversation.setLessonPlanAnalysis(result);
+      }
+    } catch (error) {
+      console.error("Error during lesson plan analysis:", error);
     }
 
-    isAnalyzingRef.current = false;
+    setIsAnalyzing(false);
   };
 
   const aiUserInfo = useAiUserInfo();
@@ -182,21 +179,39 @@ ${JSON.stringify(previousProgress, null, 2)}
     return plan;
   };
 
-  const activeConversationMessageRef = useRef(0);
-  activeConversationMessageRef.current = aiConversation.conversation.length;
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      const isGood =
-        activeConversationMessageRef.current > 1 && activeLessonPlan && !isAnalyzingRef.current;
-      if (!isGood) {
-        return;
-      }
+  const [lastMessageUpdateTime, setLastMessageUpdateTime] = useState(0);
+  const [isReadyToAnalyze, setIsReadyToAnalyze] = useState(false);
 
-      analyzeActiveConversation();
+  useEffect(() => {
+    setLastMessageUpdateTime(Date.now());
+    setIsReadyToAnalyze(false);
+
+    const timer = setTimeout(() => {
+      setIsReadyToAnalyze(true);
     }, 3000);
 
-    return () => clearTimeout(timeout);
-  }, [JSON.stringify(aiConversation.conversation), activeLessonPlan]);
+    return () => clearTimeout(timer);
+  }, [JSON.stringify(aiConversation.conversation)]);
+
+  useEffect(() => {
+    if (!isReadyToAnalyze) return;
+
+    const isEnoughMessages = aiConversation.conversation.length > 1;
+    if (!isEnoughMessages) {
+      return;
+    }
+
+    if (isAnalyzing) {
+      return;
+    }
+
+    if (!activeLessonPlan) {
+      console.log("skip");
+      return;
+    }
+
+    analyzeActiveConversation();
+  }, [lastMessageUpdateTime, isReadyToAnalyze, isAnalyzing, activeLessonPlan]);
 
   return {
     loading: false,
