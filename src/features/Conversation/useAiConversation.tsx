@@ -11,7 +11,7 @@ import {
   useState,
 } from "react";
 import { AiVoice, MODELS } from "@/common/ai";
-import { AiRtcConfig, AiRtcInstance, AiTool, initAiRtc } from "./rtc";
+import { AiRtcConfig, AiRtcInstance, initAiRtc } from "./rtc";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
@@ -259,10 +259,6 @@ VISUAL_CONTEXT (latest): ${description}
     };
   }, []);
 
-  const baseAiTools: AiTool[] = useMemo(() => {
-    return [];
-  }, [fullLanguageName]);
-
   const onOpen = async () => {
     await sleep(100);
     communicatorRef.current?.triggerAiResponse();
@@ -369,7 +365,6 @@ VISUAL_CONTEXT (latest): ${description}
     const baseConfig: AiRtcConfig = {
       model: aiModal,
       initInstruction: "",
-      aiTools: baseAiTools,
       onOpen,
       onMessage,
       onAddDelta,

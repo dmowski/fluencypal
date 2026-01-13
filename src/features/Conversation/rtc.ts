@@ -48,21 +48,6 @@ const sendSdpOffer = async (
   }
 };
 
-export interface AiToolForLlm {
-  type: "function";
-  name: string;
-  description: string;
-  parameters: {
-    type: "object";
-    properties: Record<string, { type: "string"; description: string }>;
-    required: string[];
-  };
-}
-
-export interface AiTool extends AiToolForLlm {
-  handler: (args: Record<string, string>) => Promise<void>;
-}
-
 type Modalities = "audio" | "text";
 
 interface UpdateSessionProps {
@@ -138,7 +123,6 @@ export interface AiRtcConfig {
   model: RealTimeModel;
   initInstruction: string;
   onOpen: () => void;
-  aiTools: AiTool[];
   onMessage: (message: ChatMessage) => void;
   onAddDelta: (id: string, delta: string, isBot: boolean) => void;
   setIsAiSpeaking: (speaking: boolean) => void;
@@ -165,7 +149,6 @@ interface InstructionState {
 export const initAiRtc = async ({
   model,
   initInstruction,
-  aiTools,
   onMessage,
   onOpen,
   setIsAiSpeaking,
@@ -208,7 +191,6 @@ export const initAiRtc = async ({
   const dataChannel = peerConnection.createDataChannel("oai-events");
 
   const messageHandler = (e: MessageEvent) => {
-    setDebugInfo("green");
     const event = JSON.parse(e.data);
     const type = (event?.type || "") as string;
     // console.log("Event type:", type, "|", event);
@@ -325,40 +307,8 @@ export const initAiRtc = async ({
         }
       }
     }
-
-    if (type === "response.function_call_arguments.done") {
-      const functionName = event?.name;
-      const handler = aiTools.find((tool) => tool.name === functionName)?.handler;
-      if (!handler) {
-        console.log("❌ Handler not found for:", functionName);
-        return;
-      }
-
-      const args = event?.arguments;
-      console.log(functionName, args);
-      if (!args) {
-        console.log("❌ Arguments not found for:", functionName);
-        return;
-      }
-
-      let parsedArgs: Record<string, string> = {};
-      try {
-        parsedArgs = JSON.parse(args);
-      } catch (error) {
-        console.error("Error parsing args for function: " + functionName, error);
-
-        return;
-      }
-
-      try {
-        handler(parsedArgs);
-      } catch (error) {
-        console.error("Error calling handler for function: " + functionName, error);
-      }
-    }
   };
 
-  const setDebugInfo = (color: string) => {};
   const closeEvent = () => {};
   const errorEvent = (e: any) => console.error("Data channel error", e);
 
@@ -413,7 +363,6 @@ export const initAiRtc = async ({
 
   dataChannel.addEventListener("message", messageHandler);
   dataChannel.addEventListener("open", openHandler);
-
   dataChannel.addEventListener("close", closeEvent);
   dataChannel.addEventListener("error", errorEvent);
 
