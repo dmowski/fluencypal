@@ -101,6 +101,8 @@ If the student is struggling, suggest specific strategies or activities that the
 
 Your analysis should be concise and focused on actionable insights for the teacher.
 
+If you notice that the teacher is asking the student to repeat after him, prevent this behavior by offering alternative methods of engaging the student in the learning process.
+
 ${activePlan}
 
 Format the response as a JSON object containing {
