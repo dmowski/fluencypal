@@ -7,7 +7,7 @@ import {
   ConversationConfig,
   ConversationInstance,
   initConversation,
-} from "./ConversationInstance/rtc";
+} from "./ConversationInstance/webRtc";
 
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useUsage } from "../Usage/useUsage";
