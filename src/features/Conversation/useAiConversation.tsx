@@ -118,14 +118,22 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isVolumeOn, setIsVolumeOn] = useState(true);
   const [voice, setVoice] = useState<AiVoice | null>(null);
 
+  const [isWaitingForCorrection, setIsWaitingForCorrection] = useState(false);
+
   const [lessonPlanAnalysis, setLessonPlanAnalysis] = useState<LessonPlanAnalysis | null>(null);
 
-  const updateLessonPlanAnalysis = (analysis: LessonPlanAnalysis | null) => {
+  const updateLessonPlanAnalysis = async (analysis: LessonPlanAnalysis | null) => {
     const correction = analysis?.suggestionsToTeacher || "";
     setLessonPlanAnalysis(analysis);
 
     const correctionInstruction = getCorrectionInstruction(correction);
     communicatorRef.current?.sendCorrectionInstruction(correctionInstruction);
+
+    if (isWaitingForCorrection) {
+      //await sleep(500);
+      //await communicatorRef.current?.triggerAiResponse();
+      //setIsWaitingForCorrection(false);
+    }
   };
 
   const aiModal = MODELS.REALTIME_CONVERSATION;
@@ -705,6 +713,15 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 
   const addUserMessage = async (message: string) => {
     communicator?.addUserChatMessage(message);
+    const isNeedCorrection = lessonPlanAnalysis?.suggestionsToTeacher;
+    if (isNeedCorrection) {
+      // await sleep(2000);
+      //setIsWaitingForCorrection(true);
+    } else {
+      //await sleep(300);
+      //await communicatorRef.current?.triggerAiResponse();
+    }
+
     await sleep(300);
     await communicatorRef.current?.triggerAiResponse();
   };

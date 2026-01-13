@@ -103,7 +103,7 @@ If the student is struggling, suggest specific strategies or activities that the
 
 Your analysis should be concise and focused on actionable insights for the teacher.
 
-If you notice that the teacher is asking the student to repeat after him, prevent this behavior by forcing the teacher to use alternative methods of engaging the student in the learning process and propose direct messages the teacher should say instead.
+If you notice that the teacher is asking the student to repeat after him, prevent this behavior by forcing the teacher to use alternative methods of engaging the student in the learning process and give a messages the teacher should say (use conversation language).
 
 ${activePlan}
 
