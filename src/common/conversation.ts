@@ -5,7 +5,6 @@ export type ConversationType =
   | "words"
   | "rule"
   | "role-play"
-  | "magic"
   | "goal-role-play"
   | "goal-talk";
 
