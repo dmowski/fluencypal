@@ -9,7 +9,6 @@ import { GuessGameStat } from "./types";
 import { useEffect, useState } from "react";
 import { useAiConversation } from "./useAiConversation";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
-import { GoalPlan } from "../Plan/types";
 import { ConversationMode } from "@/common/user";
 
 interface ConversationPageTestProps {

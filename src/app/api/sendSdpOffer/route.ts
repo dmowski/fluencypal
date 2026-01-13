@@ -2,15 +2,38 @@ import { SendSdpOfferRequest, SendSdpOfferResponse } from "@/common/requests";
 import { getEphemeralToken } from "../token/getEphemeralToken";
 import { validateAuthToken } from "../config/firebase";
 import { getUserBalance } from "../payment/getUserBalance";
+import { getGameUsersLastVisit } from "@/features/Game/api/statsResources";
+import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
+import dayjs from "dayjs";
 
 export async function POST(request: Request) {
   const body = (await request.json()) as SendSdpOfferRequest;
   const ephemeralKey = await getEphemeralToken(body.model);
 
   const userInfo = await validateAuthToken(request);
-  const balance = await getUserBalance(userInfo.uid || "");
+  const [balance, lastVisits] = await Promise.all([
+    getUserBalance(userInfo.uid || ""),
+    getGameUsersLastVisit(),
+  ]);
   if (!balance.isFullAccess) {
     //console.error("Insufficient balance.");
+  }
+
+  const userLastVisit = lastVisits[userInfo.uid || ""];
+  if (!userLastVisit) {
+    await sentSupportTelegramMessage({
+      message: "User has no last visit record",
+      userId: userInfo.uid || "",
+    });
+  } else {
+    const diffMinutes = dayjs().diff(dayjs(userLastVisit), "minute");
+    const trashHoldMinutes = 5;
+    if (diffMinutes > trashHoldMinutes) {
+      await sentSupportTelegramMessage({
+        message: `User last visit was ${diffMinutes} minutes ago`,
+        userId: userInfo.uid || "",
+      });
+    }
   }
 
   console.log("GET TOKEN userId", userInfo.uid);
