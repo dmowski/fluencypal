@@ -117,25 +117,19 @@ function useProvideAiConversation(): AiConversationContextType {
   const languageCode = settings.languageCode || "en";
   const [isVolumeOn, setIsVolumeOn] = useState(true);
   const [voice, setVoice] = useState<AiVoice | null>(null);
-
-  const [isWaitingForCorrection, setIsWaitingForCorrection] = useState(false);
-
   const [lessonPlanAnalysis, setLessonPlanAnalysis] = useState<LessonPlanAnalysis | null>(null);
+  const [lessonPlan, setLessonPlan] = useState<LessonPlan | null>(null);
 
   const updateLessonPlanAnalysis = async (analysis: LessonPlanAnalysis | null) => {
-    const correction = analysis?.suggestionsToTeacher || "";
     setLessonPlanAnalysis(analysis);
 
-    if (analysis?.teacherResponse) {
-      communicatorRef.current?.sendCorrectionInstruction(
-        "Say this phrase in your response: " + analysis.teacherResponse
-      );
-      await sleep(300);
+    if (analysis?.teacherResponseInstruction) {
+      communicatorRef.current?.sendCorrectionInstruction(analysis.teacherResponseInstruction);
       await communicatorRef.current?.triggerAiResponse();
       //setIsWaitingForCorrection(false);
     } else {
-      const correctionInstruction = getCorrectionInstruction(correction);
-      communicatorRef.current?.sendCorrectionInstruction(correctionInstruction);
+      //const correctionInstruction = getCorrectionInstruction(correction);
+      //communicatorRef.current?.sendCorrectionInstruction(correctionInstruction);
     }
   };
 
@@ -589,6 +583,8 @@ ${voiceInstructions}
     if (!settings.languageCode) throw new Error("Language is not set | startConversation");
     setMessageOrder({});
 
+    setLessonPlan(input.lessonPlan || null);
+
     let isMutedInternal = isMuted;
     const isRecordingNeedMute = !isMuted && input.conversationMode === "record";
     const isLimitedAccessNeedMute = !isMuted && !access.isFullAppAccess;
@@ -716,17 +712,10 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 
   const addUserMessage = async (message: string) => {
     communicator?.addUserChatMessage(message);
-    const isNeedCorrection = lessonPlanAnalysis?.suggestionsToTeacher;
-    if (isNeedCorrection) {
-      // await sleep(2000);
-      //setIsWaitingForCorrection(true);
-    } else {
-      //await sleep(300);
-      //await communicatorRef.current?.triggerAiResponse();
+    if (!lessonPlan) {
+      await sleep(300);
+      await communicatorRef.current?.triggerAiResponse();
     }
-
-    // await sleep(300);
-    // await communicatorRef.current?.triggerAiResponse();
   };
 
   return {

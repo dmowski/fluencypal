@@ -28,6 +28,7 @@ import { useGame } from "../Game/useGame";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { RolePlayProvider } from "../RolePlay/useRolePlay";
 import { useAccess } from "../Usage/useAccess";
+import { useLessonPlan } from "../LessonPlan/useLessonPlan";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -92,6 +93,14 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
       recorder.cancelRecording();
     }
   }, [aiConversation.isClosing]);
+
+  const lessonPlan = useLessonPlan();
+
+  useEffect(() => {
+    if (recorder.transcription) {
+      lessonPlan.generateAnalysis(recorder.transcription);
+    }
+  }, [recorder.transcription]);
 
   if (auth.loading) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;

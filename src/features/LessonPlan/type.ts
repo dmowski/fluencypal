@@ -9,10 +9,7 @@ export interface LessonPlan {
 }
 
 export interface LessonPlanAnalysis {
-  isFine: boolean;
-  suggestionsToTeacher?: string;
-  teacherResponse?: string;
+  teacherResponseInstruction?: string;
+  isFollowingPlan?: boolean;
   progress?: number;
-
-  comments?: string;
 }

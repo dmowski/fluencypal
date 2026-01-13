@@ -219,7 +219,7 @@ export const LessonStartModal = ({
                 {goalInfo.goalElement.details}
               </Typography>
             }
-            onClick={onStart}
+            onClick={onNext}
           />
         )}
 

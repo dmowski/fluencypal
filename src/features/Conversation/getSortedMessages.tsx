@@ -11,7 +11,7 @@ export const getSortedMessages = ({
   const sortedIds: string[] = [];
 
   if (!messageOrder || Object.keys(messageOrder).length === 0) {
-    return conversation;
+    return [...conversation];
   }
 
   const parents = new Set(Object.keys(messageOrder));
@@ -22,7 +22,7 @@ export const getSortedMessages = ({
 
   if (!rootId) {
     // Fallback: return original order if chain is broken
-    return conversation;
+    return [...conversation];
   }
 
   let currentId: string | undefined = rootId;
