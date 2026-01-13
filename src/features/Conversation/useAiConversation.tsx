@@ -126,13 +126,16 @@ function useProvideAiConversation(): AiConversationContextType {
     const correction = analysis?.suggestionsToTeacher || "";
     setLessonPlanAnalysis(analysis);
 
-    const correctionInstruction = getCorrectionInstruction(correction);
-    communicatorRef.current?.sendCorrectionInstruction(correctionInstruction);
-
-    if (isWaitingForCorrection) {
-      //await sleep(500);
-      //await communicatorRef.current?.triggerAiResponse();
+    if (analysis?.teacherResponse) {
+      communicatorRef.current?.sendCorrectionInstruction(
+        "Say this phrase in your response: " + analysis.teacherResponse
+      );
+      await sleep(300);
+      await communicatorRef.current?.triggerAiResponse();
       //setIsWaitingForCorrection(false);
+    } else {
+      const correctionInstruction = getCorrectionInstruction(correction);
+      communicatorRef.current?.sendCorrectionInstruction(correctionInstruction);
     }
   };
 
@@ -722,8 +725,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
       //await communicatorRef.current?.triggerAiResponse();
     }
 
-    await sleep(300);
-    await communicatorRef.current?.triggerAiResponse();
+    // await sleep(300);
+    // await communicatorRef.current?.triggerAiResponse();
   };
 
   return {

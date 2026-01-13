@@ -191,7 +191,7 @@ export const LessonStartModal = ({
     });
 
     setIsStarting(false);
-    onClose();
+    //onClose();
   };
   const auth = useAuth();
   const isDev = auth.userInfo?.email?.includes("dmowski");
@@ -219,7 +219,7 @@ export const LessonStartModal = ({
                 {goalInfo.goalElement.details}
               </Typography>
             }
-            onClick={onNext}
+            onClick={onStart}
           />
         )}
 

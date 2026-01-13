@@ -11,6 +11,7 @@ export interface LessonPlan {
 export interface LessonPlanAnalysis {
   isFine: boolean;
   suggestionsToTeacher?: string;
+  teacherResponse?: string;
   progress?: number;
 
   comments?: string;

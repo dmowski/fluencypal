@@ -44,21 +44,25 @@ function useProvideLessonPlan(): LessonPlanContextType {
     return planText;
   };
 
-  const getActiveConversationAsText = () => {
+  const getActiveConversation = () => {
     const sortedMessages = getSortedMessages({
       conversation: aiConversation.conversation,
       messageOrder: aiConversation.messageOrder,
     });
 
-    const lastMessageText = sortedMessages[sortedMessages.length - 1]?.text || "";
+    const lastMessage =
+      sortedMessages.length > 0 ? sortedMessages[sortedMessages.length - 1] : null;
+    const lastMessageText = lastMessage ? lastMessage.text : "";
 
     let conversationText = `## Conversation so far:\n\n`;
     sortedMessages.forEach((message) => {
       conversationText += `${message.isBot ? "Teacher" : "Student"}: ${message.text}\n`;
     });
 
-    return { conversationText, lastMessageText };
+    return { conversationText, lastMessageText, lastMessage };
   };
+
+  const activeConversation = getActiveConversation();
 
   useEffect(() => {
     setActiveLessonPlan(null);
@@ -66,9 +70,14 @@ function useProvideLessonPlan(): LessonPlanContextType {
 
   const analyzeActiveConversation = async () => {
     const activePlan = getActivePlanAsText();
-    const activeConversation = getActiveConversationAsText();
+    const activeConversation = getActiveConversation();
 
     const lastMessage = activeConversation.lastMessageText;
+    if (activeConversation.lastMessage?.isBot) {
+      console.log("Do not analyze bot message");
+      return;
+    }
+
     const currentStatus = lessonAnalysisProgress[lastMessage];
     if (currentStatus === "in-progress" || currentStatus === "done") {
       console.log("Analysis already in progress for this message, skipping.");
@@ -111,6 +120,7 @@ Format the response as a JSON object containing {
 "progress": number, // the cumulative percentage of the lesson plan completed (0-100), do not reduce from previous
 "isFine": true/false, // whether the lesson plan is being followed correctly
 "suggestionsToTeacher": "Specific suggestions here if needed, or empty. Use direct voice addressing the teacher. Give examples of what to say",
+"teacherResponse": "Specific messages the teacher should say to the student",
 "comments": "additional comments for debug purposes"
 }
 
@@ -217,10 +227,12 @@ Format the response as a JSON array with each step containing "stepTitle", "step
   useEffect(() => {
     setLastMessageUpdateTime(Date.now());
     setIsReadyToAnalyze(false);
+    const timeoutTime = activeConversation.lastMessage?.isBot ? 3000 : 200;
+    //console.log("timeoutTime", timeoutTime);
 
     const timer = setTimeout(() => {
       setIsReadyToAnalyze(true);
-    }, 3000);
+    }, timeoutTime);
 
     return () => clearTimeout(timer);
   }, [JSON.stringify(aiConversation.conversation)]);
