@@ -23,6 +23,14 @@ function useProvideLessonPlan(): LessonPlanContextType {
 
   const [activeProgress, setActiveProgress] = useState<LessonPlanAnalysis | null>(null);
 
+  // message, analysis map
+  const [lessonAnalysisProgress, setLessonAnalysisProgress] = useState<
+    Record<string, "in-progress" | "done" | undefined>
+  >({});
+  const [lessonAnalysisResult, setLessonAnalysisResult] = useState<
+    Record<string, LessonPlanAnalysis | null | undefined>
+  >({});
+
   const ai = useTextAi();
 
   const getActivePlanAsText = (): string => {
@@ -53,12 +61,23 @@ function useProvideLessonPlan(): LessonPlanContextType {
   useEffect(() => {
     setActiveLessonPlan(null);
   }, [aiConversation.isClosing]);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const analyzeActiveConversation = async () => {
-    setIsAnalyzing(true);
     const activePlan = getActivePlanAsText();
     const activeConversation = getActiveConversationAsText();
+
+    const lastMessage = activeConversation.lastMessageText;
+    const currentStatus = lessonAnalysisProgress[lastMessage];
+    if (currentStatus === "in-progress" || currentStatus === "done") {
+      console.log("Analysis already in progress for this message, skipping.");
+      return;
+    }
+
+    setLessonAnalysisProgress((prev) => ({
+      ...prev,
+      [lastMessage]: "in-progress",
+    }));
+
     console.log("🔥 Starting analyzing:", activeConversation.lastMessageText);
 
     const initActiveProgress: LessonPlanAnalysis = {
@@ -109,6 +128,10 @@ ${JSON.stringify(previousProgress, null, 2)}
       console.log(`result ${(end - start) / 1000} seconds`, JSON.stringify({ result }, null, 2));
 
       if (result) {
+        setLessonAnalysisResult((prev) => ({
+          ...prev,
+          [lastMessage]: result,
+        }));
         setActiveProgress(result);
         aiConversation.setLessonPlanAnalysis(result);
       }
@@ -116,7 +139,10 @@ ${JSON.stringify(previousProgress, null, 2)}
       console.error("Error during lesson plan analysis:", error);
     }
 
-    setIsAnalyzing(false);
+    setLessonAnalysisProgress((prev) => ({
+      ...prev,
+      [lastMessage]: "done",
+    }));
   };
 
   const aiUserInfo = useAiUserInfo();
@@ -201,17 +227,13 @@ ${JSON.stringify(previousProgress, null, 2)}
       return;
     }
 
-    if (isAnalyzing) {
-      return;
-    }
-
     if (!activeLessonPlan) {
       console.log("skip");
       return;
     }
 
     analyzeActiveConversation();
-  }, [lastMessageUpdateTime, isReadyToAnalyze, isAnalyzing, activeLessonPlan]);
+  }, [lastMessageUpdateTime, isReadyToAnalyze, activeLessonPlan]);
 
   return {
     loading: false,
