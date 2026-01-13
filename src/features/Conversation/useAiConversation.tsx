@@ -2,7 +2,9 @@
 
 import { createContext, useContext, ReactNode, JSX, useEffect, useRef, useState } from "react";
 import { AiVoice, MODELS } from "@/common/ai";
-import { AiRtcConfig, AiRtcInstance, initAiRtc } from "./rtc";
+
+import { ConversationConfig, ConversationInstance, initConversation } from "./rtc";
+
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
@@ -185,7 +187,7 @@ VISUAL_CONTEXT (latest): ${description}
       ? `You are an ${fullLanguageName} teacher.`
       : `You are an job interview coach.`;
 
-  const [communicator, setCommunicator] = useState<AiRtcInstance>();
+  const [communicator, setCommunicator] = useState<ConversationInstance>();
   const communicatorRef = useRef(communicator);
   communicatorRef.current = communicator;
 
@@ -353,7 +355,7 @@ VISUAL_CONTEXT (latest): ${description}
   };
 
   const getBaseRtcConfig = async () => {
-    const baseConfig: AiRtcConfig = {
+    const baseConfig: ConversationConfig = {
       model: aiModal,
       initInstruction: "",
       onOpen,
@@ -371,7 +373,7 @@ VISUAL_CONTEXT (latest): ${description}
     return baseConfig;
   };
 
-  const getAiRtcConfig = async ({
+  const getConversationConfig = async ({
     mode,
     goal,
     ideas,
@@ -381,7 +383,7 @@ VISUAL_CONTEXT (latest): ${description}
     goal?: GoalElementInfo | null;
     ideas?: ConversationIdea;
     lessonPlan?: LessonPlan;
-  }): Promise<AiRtcConfig> => {
+  }): Promise<ConversationConfig> => {
     const baseConfig = await getBaseRtcConfig();
 
     let lessonPlanPrompt = lessonPlan
@@ -608,13 +610,13 @@ ${voiceInstructions}
       setErrorInitiating("");
 
       firstPotentialBotMessage.current = "";
-      const aiRtcConfig = await getAiRtcConfig({
+      const conversationConfig = await getConversationConfig({
         mode: input.mode,
         goal: input.goal,
         ideas: input.ideas,
         lessonPlan: input.lessonPlan,
       });
-      let instruction = aiRtcConfig.initInstruction;
+      let instruction = conversationConfig.initInstruction;
 
       if (input.wordsToLearn?.length) {
         instruction += `
@@ -640,15 +642,15 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 `;
       }
 
-      const conversation = await initAiRtc({
-        ...aiRtcConfig,
+      const conversation = await initConversation({
+        ...conversationConfig,
         initInstruction: instruction,
-        voice: aiRtcConfig.voice || input.voice,
+        voice: conversationConfig.voice || input.voice,
         isMuted: isMutedInternal,
         isVolumeOn: isVolumeOnInternal,
         webCamDescription: input.webCamDescription || "",
       });
-      setVoice(aiRtcConfig.voice || input.voice || null);
+      setVoice(conversationConfig.voice || input.voice || null);
       history.createConversation({
         conversationId,
         languageCode: settings.languageCode,

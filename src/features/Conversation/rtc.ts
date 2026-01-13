@@ -119,7 +119,7 @@ const monitorWebRtcAudio = (stream: MediaStream, setIsAiSpeaking: (speaking: boo
   checkSpeaking();
 };
 
-export interface AiRtcConfig {
+export interface ConversationConfig {
   model: RealTimeModel;
   initInstruction: string;
   onOpen: () => void;
@@ -137,7 +137,15 @@ export interface AiRtcConfig {
   webCamDescription?: string;
 }
 
-export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
+export type ConversationInstance = {
+  closeHandler: () => void;
+  addUserChatMessage: (message: string) => void;
+  triggerAiResponse: () => void;
+  toggleMute: (mute: boolean) => void;
+  toggleVolume: (isVolumeOn: boolean) => void;
+  sendWebCamDescription: (description: string) => void;
+  sendCorrectionInstruction: (correction: string) => void;
+};
 
 interface InstructionState {
   baseInitInstruction: string;
@@ -145,7 +153,7 @@ interface InstructionState {
   correction: string;
 }
 
-export const initAiRtc = async ({
+export const initConversation = async ({
   model,
   initInstruction,
   onMessage,
@@ -161,7 +169,7 @@ export const initAiRtc = async ({
   authToken,
   onMessageOrder,
   webCamDescription,
-}: AiRtcConfig) => {
+}: ConversationConfig) => {
   const audioId = "audio_for_llm";
   const existingAudio = document.getElementById(audioId) as HTMLAudioElement | null;
   let audioEl = existingAudio;
@@ -453,10 +461,13 @@ export const initAiRtc = async ({
 
   return {
     closeHandler,
+
     addUserChatMessage,
     triggerAiResponse,
+
     toggleMute,
     toggleVolume,
+
     sendWebCamDescription,
     sendCorrectionInstruction,
   };
