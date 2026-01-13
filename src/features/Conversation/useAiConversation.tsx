@@ -16,7 +16,7 @@ import { ConversationIdea, useAiUserInfo } from "../Ai/useAiUserInfo";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { firstAiMessage } from "@/features/Lang/lang";
-import { GoalElementInfo, GoalPlan } from "../Plan/types";
+import { GoalElementInfo } from "../Plan/types";
 import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
 import { ConversationMode } from "@/common/user";
@@ -146,15 +146,6 @@ VISUAL_CONTEXT (latest): ${description}
     return message;
   };
 
-  const getCorrectionInstruction = (correction: string): string => {
-    if (!correction || correction.trim().length === 0) {
-      return "";
-    }
-    const message = `${correction}`;
-
-    return message;
-  };
-
   const setWebCamDescription = async (description: string) => {
     const webCamDescriptionWithInstruction = getWebCamDescriptionInstruction(description);
     if (!webCamDescriptionWithInstruction) return;
@@ -177,7 +168,6 @@ VISUAL_CONTEXT (latest): ${description}
   const [isUserSpeaking, setIsUserSpeaking] = useState(false);
   const tasks = useTasks();
   const plan = usePlan();
-  const [goalSettingProgress, setGoalSettingProgress] = useState(0);
 
   const [messageOrder, setMessageOrder] = useState<MessagesOrderMap>({});
 
@@ -591,8 +581,6 @@ ${voiceInstructions}
     }
 
     console.log("START", { isVolumeOnInternal, isMutedInternal, mode: input.mode });
-
-    setGoalSettingProgress(0);
 
     if (input.analyzeResultAiInstruction) {
       console.log("analyzeResultAiInstruction", input.analyzeResultAiInstruction);

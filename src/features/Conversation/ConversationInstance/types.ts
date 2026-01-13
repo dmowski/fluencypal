@@ -25,9 +25,13 @@ export interface ConversationConfig {
 }
 
 export type ConversationInstance = {
-  closeHandler: () => void;
   addUserChatMessage: (message: string) => void;
-  triggerAiResponse: () => void;
+
+  // Terminate the conversation and clean up resources
+  closeHandler: () => void;
+
+  // add bot message
+  triggerAiResponse: () => Promise<void>;
   toggleMute: (mute: boolean) => void;
   toggleVolume: (isVolumeOn: boolean) => void;
   sendWebCamDescription: (description: string) => void;
