@@ -7,13 +7,14 @@ import { useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { StringDiff } from "react-string-diff";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
-import { conversationModeLabel } from "../Conversation/data";
+
 import { useLingui } from "@lingui/react";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import dayjs from "dayjs";
 import { useCorrections } from "../Corrections/useCorrections";
 import { useSettings } from "../Settings/useSettings";
 import { GradientBgCard } from "../uiKit/Card/GradientBgCard";
+import { ConversationType } from "@/common/conversation";
 
 interface WorkStat {
   word: string;
@@ -66,6 +67,17 @@ export const UsageStatsCards = () => {
   const correctionsCount = correctionStats.length || 0;
 
   const chatMessages = chatHistory.conversations;
+
+  const conversationModeLabel: Record<ConversationType, string> = {
+    talk: i18n._("Just talk"),
+
+    words: i18n._("Words"),
+    rule: i18n._("Rule"),
+
+    "role-play": i18n._("Role Play"),
+    "goal-role-play": i18n._("Goal Role Play"),
+    "goal-talk": i18n._("Goal Talk"),
+  };
 
   return (
     <>
