@@ -17,8 +17,11 @@ export interface ConversationConfig {
   languageCode: SupportedLanguage;
   voice?: AiVoice;
   isVolumeOn: boolean;
-  getAuthToken: () => Promise<string>;
+
   webCamDescription?: string;
+
+  // used for sendSdpOffer: WebRTC auth
+  getAuthToken: () => Promise<string>;
 }
 
 export type ConversationInstance = {
