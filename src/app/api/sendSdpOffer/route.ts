@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     }
   }
 
-  console.log("GET TOKEN userId", userInfo.uid);
+  console.log("GET TOKEN userId", userInfo.uid, userInfo.email);
 
   const baseUrl = "https://api.openai.com/v1/realtime";
   const sdpResponse = await fetch(`${baseUrl}?model=${body.model}`, {
