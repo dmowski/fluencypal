@@ -7,10 +7,9 @@ import {
   UsageEvent,
 } from "@/common/ai";
 import { sleep } from "@/libs/sleep";
-import { ChatMessage, MessagesOrderMap } from "@/common/conversation";
-import { UsageLog } from "@/common/usage";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { SendSdpOfferRequest, SendSdpOfferResponse } from "@/common/requests";
+import { ConversationConfig, ConversationInstance } from "./types";
 
 const sendSdpOffer = async (
   offer: RTCSessionDescriptionInit,
@@ -119,34 +118,6 @@ const monitorWebRtcAudio = (stream: MediaStream, setIsAiSpeaking: (speaking: boo
   checkSpeaking();
 };
 
-export interface ConversationConfig {
-  model: RealTimeModel;
-  initInstruction: string;
-  onOpen: () => void;
-  onMessage: (message: ChatMessage) => void;
-  onAddDelta: (id: string, delta: string, isBot: boolean) => void;
-  setIsAiSpeaking: (speaking: boolean) => void;
-  setIsUserSpeaking: (speaking: boolean) => void;
-  onMessageOrder: (orderPart: MessagesOrderMap) => void;
-  isMuted: boolean;
-  onAddUsage: ({}: UsageLog) => void;
-  languageCode: SupportedLanguage;
-  voice?: AiVoice;
-  isVolumeOn: boolean;
-  getAuthToken: () => Promise<string>;
-  webCamDescription?: string;
-}
-
-export type ConversationInstance = {
-  closeHandler: () => void;
-  addUserChatMessage: (message: string) => void;
-  triggerAiResponse: () => void;
-  toggleMute: (mute: boolean) => void;
-  toggleVolume: (isVolumeOn: boolean) => void;
-  sendWebCamDescription: (description: string) => void;
-  sendCorrectionInstruction: (correction: string) => void;
-};
-
 interface InstructionState {
   baseInitInstruction: string;
   webCamDescription: string;
@@ -169,7 +140,7 @@ export const initConversation = async ({
   getAuthToken,
   onMessageOrder,
   webCamDescription,
-}: ConversationConfig) => {
+}: ConversationConfig): Promise<ConversationInstance> => {
   const audioId = "audio_for_llm";
   const existingAudio = document.getElementById(audioId) as HTMLAudioElement | null;
   let audioEl = existingAudio;

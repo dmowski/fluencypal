@@ -3,11 +3,7 @@
 import { createContext, useContext, ReactNode, JSX, useEffect, useRef, useState } from "react";
 import { AiVoice, MODELS } from "@/common/ai";
 
-import {
-  ConversationConfig,
-  ConversationInstance,
-  initConversation,
-} from "./ConversationInstance/webRtc";
+import { initConversation } from "./ConversationInstance/webRtc";
 
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useUsage } from "../Usage/useUsage";
@@ -26,6 +22,7 @@ import * as Sentry from "@sentry/nextjs";
 import { ConversationMode } from "@/common/user";
 import { useAccess } from "../Usage/useAccess";
 import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from "../LessonPlan/type";
+import { ConversationConfig, ConversationInstance } from "./ConversationInstance/types";
 
 const voiceInstructions = `## AI Voice
 Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking  These pauses should feel natural and reflective, as if you're savoring the moment.`;
