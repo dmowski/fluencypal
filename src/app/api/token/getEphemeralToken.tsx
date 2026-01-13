@@ -1,5 +1,3 @@
-import { MODELS } from "@/common/ai";
-
 export const getEphemeralToken = async (model: string) => {
   const openAIKey = process.env.OPENAI_API_KEY;
   if (!openAIKey) {

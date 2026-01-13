@@ -13,6 +13,8 @@ export async function POST(request: Request) {
     console.error("Insufficient balance.");
   }
 
+  console.log("GET TOKEN userId", userInfo.uid);
+
   const baseUrl = "https://api.openai.com/v1/realtime";
   const sdpResponse = await fetch(`${baseUrl}?model=${body.model}`, {
     method: "POST",
