@@ -146,7 +146,12 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
       <ConversationCanvas
         openCommunityPage={() => {}}
         pointsEarned={12}
-        lessonPlanAnalysis={null}
+        lessonPlanAnalysis={{
+          progress: 50,
+          isFine: false,
+          suggestionsToTeacher: "Try to speak more clearly.",
+          comments: "The student is making good progress but needs to work on pronunciation.",
+        }}
         messageOrder={{}}
         isMuted
         conversation={testMessage}

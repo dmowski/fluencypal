@@ -339,6 +339,8 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
     );
   }
 
+  const progress = lessonPlanAnalysis ? lessonPlanAnalysis.progress || 0 : 0;
+
   return (
     <Stack>
       {modals}
@@ -398,6 +400,30 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             justifyContent: "center",
           }}
         >
+          <Stack
+            sx={{
+              position: "absolute",
+              top: "-5px",
+              left: "0px",
+              width: "calc(100% - 0px)",
+              height: "4px",
+              borderRadius: "0",
+              overflow: "hidden",
+            }}
+          >
+            <Stack
+              sx={{
+                width: `${progress}%`,
+                height: "100%",
+                position: "absolute",
+                top: 0,
+                left: "0px",
+                background: "linear-gradient(90deg, rgba(46, 193, 233, 1), rgba(0, 166, 255, 1))",
+                transition: "width 0.3s ease-in-out",
+              }}
+            />
+          </Stack>
+
           {gameWords?.wordsUserToDescribe && (
             <Stack
               sx={{
