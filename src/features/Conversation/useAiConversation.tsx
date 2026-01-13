@@ -3,7 +3,7 @@
 import { createContext, useContext, ReactNode, JSX, useEffect, useRef, useState } from "react";
 import { AiVoice, MODELS } from "@/common/ai";
 
-import { initConversation } from "./ConversationInstance/webRtc";
+import { initWebRtcConversation } from "./ConversationInstance/webRtc";
 
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useUsage } from "../Usage/useUsage";
@@ -24,6 +24,7 @@ import { useAccess } from "../Usage/useAccess";
 import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from "../LessonPlan/type";
 import { ConversationConfig, ConversationInstance } from "./ConversationInstance/types";
 import { useTextAi } from "../Ai/useTextAi";
+import { initTextConversation } from "./ConversationInstance/textConversation";
 
 const voiceInstructions = `## AI Voice
 Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking  These pauses should feel natural and reflective, as if you're savoring the moment.`;
@@ -640,6 +641,11 @@ ${input.ruleToLearn}
 Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 `;
       }
+
+      const IS_USE_TEXT_CONNECTOR = false;
+      const initConversation = IS_USE_TEXT_CONNECTOR
+        ? initWebRtcConversation
+        : initTextConversation;
 
       const conversation = await initConversation({
         ...conversationConfig,

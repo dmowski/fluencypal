@@ -124,7 +124,7 @@ interface InstructionState {
   correction: string;
 }
 
-export const initConversation = async ({
+export const initWebRtcConversation = async ({
   model,
   initInstruction,
   onMessage,
