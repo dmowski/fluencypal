@@ -24,6 +24,7 @@ import { useTextAi } from "../Ai/useTextAi";
 import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
 import { LessonPlan, LessonPlanStep } from "../LessonPlan/type";
 import { useLessonPlan } from "../LessonPlan/useLessonPlan";
+import { useAuth } from "../Auth/useAuth";
 
 type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start" | "plan";
 
@@ -193,6 +194,8 @@ export const LessonStartModal = ({
     setIsStarting(false);
     onClose();
   };
+  const auth = useAuth();
+  const isDev = auth.userInfo?.email?.includes("dmowski");
 
   return (
     <CustomModal isOpen={true} onClose={() => onClose()}>
@@ -440,6 +443,26 @@ export const LessonStartModal = ({
                     <Typography sx={{ marginTop: "5px" }}>
                       {planStep.stepDescriptionForStudent}
                     </Typography>
+                    {isDev && (
+                      <details>
+                        <summary
+                          style={{
+                            marginTop: "8px",
+                            cursor: "pointer",
+                            color: "rgba(255, 255, 255, 0.7)",
+                          }}
+                        >
+                          {i18n._(`Teacher Instructions`)}
+                        </summary>
+                        <Typography
+                          sx={{
+                            marginTop: "5px",
+                          }}
+                        >
+                          {planStep.teacherInstructions}
+                        </Typography>
+                      </details>
+                    )}
                   </Stack>
                 ))}
               </Stack>
