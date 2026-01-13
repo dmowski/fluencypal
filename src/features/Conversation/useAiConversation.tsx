@@ -421,6 +421,7 @@ ${lessonPlan.steps
 
     let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : "";
 
+    // GOAL TALK
     if (mode === "goal-talk") {
       if (!goal) {
         throw new Error("Goal is not set for goal-talk mode");
@@ -453,7 +454,7 @@ ${userInfoPrompt}
 ${voiceInstructions}`,
       };
     }
-
+    // GOAL ROLE PLAY
     if (mode === "goal-role-play") {
       if (!goal) {
         throw new Error("Goal is not set for goal-talk mode");
@@ -526,6 +527,8 @@ ${getConversationStarterMessagePrompt(startFirstMessage)}
     `,
       };
     }
+
+    // SCENARIOS. OLD FEATURE
     if (mode === "role-play") {
       return {
         ...baseConfig,
