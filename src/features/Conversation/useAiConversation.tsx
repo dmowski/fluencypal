@@ -367,7 +367,7 @@ VISUAL_CONTEXT (latest): ${description}
       isVolumeOn,
       onAddUsage: (usageLog: UsageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
       languageCode: settings.languageCode || "en",
-      authToken: await auth.getToken(),
+      getAuthToken: async () => await auth.getToken(),
       onMessageOrder: updateMessageOrder,
     };
     return baseConfig;

@@ -15,7 +15,7 @@ import { SendSdpOfferRequest, SendSdpOfferResponse } from "@/common/requests";
 const sendSdpOffer = async (
   offer: RTCSessionDescriptionInit,
   model: RealTimeModel,
-  authToken: string
+  getAuthToken: () => Promise<string>
 ): Promise<string> => {
   try {
     if (!offer.sdp) {
@@ -32,7 +32,7 @@ const sendSdpOffer = async (
       body: JSON.stringify(request),
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${await getAuthToken()}`,
       },
     });
 
@@ -133,7 +133,7 @@ export interface ConversationConfig {
   languageCode: SupportedLanguage;
   voice?: AiVoice;
   isVolumeOn: boolean;
-  authToken: string;
+  getAuthToken: () => Promise<string>;
   webCamDescription?: string;
 }
 
@@ -166,7 +166,7 @@ export const initConversation = async ({
   languageCode,
   voice,
   isVolumeOn,
-  authToken,
+  getAuthToken,
   onMessageOrder,
   webCamDescription,
 }: ConversationConfig) => {
@@ -378,7 +378,7 @@ export const initConversation = async ({
   await peerConnection.setLocalDescription(offer);
   const answer: RTCSessionDescriptionInit = {
     type: "answer",
-    sdp: await sendSdpOffer(offer, model, authToken),
+    sdp: await sendSdpOffer(offer, model, getAuthToken),
   };
   await peerConnection.setRemoteDescription(answer);
 
