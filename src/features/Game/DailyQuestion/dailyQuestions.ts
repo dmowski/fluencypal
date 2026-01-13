@@ -87,7 +87,7 @@ export const dailyQuestions: DailyQuestions = {
     exampleAnswer:
       "I believe we have some free will, but it’s limited. Our environment, upbringing, and even genetics influence most of our decisions. Still, I like to think there’s space for personal choice.",
   },
-  "2026-01-14": {
+  "2026-11-14": {
     id: "happiness-or-success",
     title: "Would you rather be happy or successful?",
     description: "Discuss whether personal joy or external achievement is more important in life.",
@@ -100,7 +100,7 @@ export const dailyQuestions: DailyQuestions = {
     exampleAnswer:
       "I’d choose happiness. Success without happiness feels empty, while happiness itself can be a kind of success. But ideally, the two go hand in hand.",
   },
-  "2026-01-15": {
+  "2026-11-15": {
     id: "unlimited-knowledge-or-unlimited-money",
     title: "Would you choose unlimited knowledge or unlimited money?",
     description: "Imagine you could have infinite wealth or infinite wisdom, but not both.",
@@ -113,7 +113,7 @@ export const dailyQuestions: DailyQuestions = {
     exampleAnswer:
       "I’d choose unlimited knowledge. With it, I could probably find ways to earn money anyway, and more importantly, knowledge can’t be taken away.",
   },
-  "2026-01-16": {
+  "2026-11-16": {
     id: "biggest-lie-we-tell-ourselves",
     title: "What is the biggest lie people tell themselves?",
     description: "Share a comforting belief or common excuse you think most people use.",
@@ -126,7 +126,7 @@ export const dailyQuestions: DailyQuestions = {
     exampleAnswer:
       "The biggest lie is ‘I’ll do it tomorrow.’ We say it to feel better, but often tomorrow never comes. It’s a way to escape responsibility without guilt.",
   },
-  "2026-01-17": {
+  "2026-11-17": {
     id: "immortality-choice",
     title: "Would you want to live forever?",
     description:
