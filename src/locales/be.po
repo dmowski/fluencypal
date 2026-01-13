@@ -749,7 +749,7 @@ msgstr ""
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "Адбылася памылка пры аналізе паведамлення. Калі ласка, паспрабуйце яшчэ раз."
 
-#: src/features/Conversation/ConversationCanvas.tsx:509
+#: src/features/Conversation/ConversationCanvas.tsx:501
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Аналіз"
@@ -1213,7 +1213,7 @@ msgstr "Тэст гатоўнасці да сумоўя на Backend-распр�
 msgid "Caching Strategies"
 msgstr "Стратэгіі кэшавання"
 
-#: src/features/Conversation/ConversationCanvas.tsx:689
+#: src/features/Conversation/ConversationCanvas.tsx:672
 #: src/features/Goal/Quiz/QuizPage2.tsx:321
 #. js-lingui-explicit-id
 msgid "Call mode"
@@ -1269,7 +1269,7 @@ msgstr "Ці магу я выкарыстоўваць FluencyPal бясплат�
 msgid "Cancel"
 msgstr "Скасаваць"
 
-#: src/features/Conversation/ConversationCanvas.tsx:893
+#: src/features/Conversation/ConversationCanvas.tsx:863
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Скасаваць запіс"
@@ -1324,7 +1324,7 @@ msgstr "Чат"
 msgid "Chat between you and {userName}"
 msgstr "Чат паміж вамі і {userName}"
 
-#: src/features/Usage/UsageStatsCards.tsx:181
+#: src/features/Usage/UsageStatsCards.tsx:193
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Гісторыя чата"
@@ -1774,7 +1774,7 @@ msgstr "Выпраўлена"
 msgid "Corrected answers for remembering"
 msgstr "Выпраўленыя адказы для запамінання"
 
-#: src/features/Usage/UsageStatsCards.tsx:510
+#: src/features/Usage/UsageStatsCards.tsx:522
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Карэкціі"
@@ -2166,7 +2166,7 @@ msgstr "Апішыце гэтыя словы:"
 msgid "Describe your custom scenario here..."
 msgstr "Апішыце свой карыстацкі сцэнарый тут..."
 
-#: src/features/Usage/UsageStatsCards.tsx:391
+#: src/features/Usage/UsageStatsCards.tsx:403
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Апісанне:"
@@ -2420,7 +2420,7 @@ msgstr "Не забудзьцеся паспрабаваць рэжым выкл
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:566
+#: src/features/Conversation/ConversationCanvas.tsx:550
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
@@ -2744,7 +2744,7 @@ msgstr "Памылка пры стварэнні сесіі аплаты. Пас
 msgid "Error creating plan. Please try again."
 msgstr "Памылка пры стварэнні плана. Калі ласка, паспрабуйце яшчэ раз."
 
-#: src/features/Conversation/ConversationCanvas.tsx:459
+#: src/features/Conversation/ConversationCanvas.tsx:451
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Памылка пры аналізе паведамлення"
@@ -3161,7 +3161,7 @@ msgstr ""
 msgid "Finalizing decision ..."
 msgstr "Прыняцце рашэнне ..."
 
-#: src/features/Conversation/ConversationCanvas.tsx:628
+#: src/features/Conversation/ConversationCanvas.tsx:611
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Завяршыць"
@@ -3833,13 +3833,22 @@ msgstr "Перайсці да Практыкі з ШІ"
 msgid "Go to the main page"
 msgstr "Перайсці на галоўную старонку"
 
-#: src/features/Conversation/ConversationCanvas.tsx:803
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:221
 #: src/features/Dashboard/PlanDashboardCards.tsx:433
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Мэта"
+
+#: src/features/Usage/UsageStatsCards.tsx:78
+#. js-lingui-explicit-id
+msgid "Goal Role Play"
+msgstr "Мэта Ролевыя Гульні"
+
+#: src/features/Usage/UsageStatsCards.tsx:79
+#. js-lingui-explicit-id
+msgid "Goal Talk"
+msgstr "Мэтавая Гутарка"
 
 #: src/features/Survey/RecordUserAudioAnswer.tsx:123
 msgid "Goal: at least <0>{minWords}</0> words"
@@ -3908,7 +3917,7 @@ msgstr "Граматыка"
 msgid "Grammar Correction Preview"
 msgstr "Папярэдні прагляд выпраўлення граматыкі"
 
-#: src/features/Usage/UsageStatsCards.tsx:285
+#: src/features/Usage/UsageStatsCards.tsx:297
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Граматычныя Папраўкі"
@@ -4008,7 +4017,7 @@ msgstr "Здароўе"
 msgid "Help"
 msgstr "Дапамога"
 
-#: src/features/Conversation/ConversationCanvas.tsx:711
+#: src/features/Conversation/ConversationCanvas.tsx:694
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Дапамагчы з адказам"
@@ -4023,17 +4032,17 @@ msgstr "Вось некалькі новых правіл, якія трэба �
 msgid "Here are some new words for you to learn:"
 msgstr "Вось некалькі новых слоў для вас, каб вывучыць:"
 
-#: src/features/Usage/UsageStatsCards.tsx:189
+#: src/features/Usage/UsageStatsCards.tsx:201
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Вось размовы, якія вы мелі з FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:293
+#: src/features/Usage/UsageStatsCards.tsx:305
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Вось выпраўленні, якія ў вас былі ў размовах."
 
-#: src/features/Usage/UsageStatsCards.tsx:91
+#: src/features/Usage/UsageStatsCards.tsx:103
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "Вось словы, якія вы найчасцей выкарыстоўвалі ў сваіх размовах."
@@ -4735,7 +4744,7 @@ msgstr ""
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "Я задам вам яшчэ два пытанні, перш чым сфармаваць ваш план."
 
-#: src/features/Conversation/ConversationCanvas.tsx:272
+#: src/features/Conversation/ConversationCanvas.tsx:264
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "Ідэя для вашага паведамлення"
@@ -5662,6 +5671,11 @@ msgstr "сабяседа па прыёме на працу малодшага ф
 msgid "junior frontend interview"
 msgstr "малодшы інтэрв'ю на пазіцыю фронтэнд распрацоўшчыка"
 
+#: src/features/Usage/UsageStatsCards.tsx:72
+#. js-lingui-explicit-id
+msgid "Just talk"
+msgstr "Проста размаўляйце"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:165
 #. js-lingui-explicit-id
 msgid "Keep it concise and relevant"
@@ -5677,7 +5691,7 @@ msgstr ""
 "дасягненні, і ваш інтарэс да кампаніі. Трэнуйце сваю самаставедкі, каб вы "
 "прыглядаліся"
 
-#: src/features/Conversation/ConversationCanvas.tsx:667
+#: src/features/Conversation/ConversationCanvas.tsx:650
 #. js-lingui-explicit-id
 msgid "Keyboard mode"
 msgstr "Рэжым клавіятуры"
@@ -5952,7 +5966,7 @@ msgstr "Загрузіць больш"
 msgid "Loading"
 msgstr "Загрузка"
 
-#: src/features/Conversation/ConversationPage.tsx:113
+#: src/features/Conversation/ConversationPage.tsx:110
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Загрузка мэты..."
@@ -5970,10 +5984,10 @@ msgstr "Загрузка.."
 
 #: src/features/Chat/SubmitForm.tsx:83
 #: src/features/Conversation/CallMode/CallButtons.tsx:341
-#: src/features/Conversation/ConversationCanvas.tsx:229
-#: src/features/Conversation/ConversationPage.tsx:100
-#: src/features/Conversation/ConversationPage.tsx:109
-#: src/features/Conversation/ConversationPage.tsx:129
+#: src/features/Conversation/ConversationCanvas.tsx:221
+#: src/features/Conversation/ConversationPage.tsx:97
+#: src/features/Conversation/ConversationPage.tsx:106
+#: src/features/Conversation/ConversationPage.tsx:126
 #: src/features/Game/GamePage.tsx:226
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
@@ -6187,13 +6201,13 @@ msgstr ""
 msgid "Microphone Setup"
 msgstr "Налада мікрафона"
 
-#: src/features/Usage/UsageStatsCards.tsx:556
+#: src/features/Usage/UsageStatsCards.tsx:568
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Хвіліны"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:203
-#: src/features/Conversation/ConversationCanvas.tsx:783
+#: src/features/Conversation/ConversationCanvas.tsx:765
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Місія выканана"
@@ -6439,12 +6453,12 @@ msgstr "Не знойдзены блогаў"
 msgid "No charge will be made"
 msgstr "Аплата не будзе спаганяцца"
 
-#: src/features/Usage/UsageStatsCards.tsx:212
+#: src/features/Usage/UsageStatsCards.tsx:224
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Пакуль што размоў няма"
 
-#: src/features/Usage/UsageStatsCards.tsx:315
+#: src/features/Usage/UsageStatsCards.tsx:327
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Пакуль няма правак"
@@ -6510,8 +6524,8 @@ msgstr "Няма перакладу"
 msgid "No views yet. Be the first to view this post!"
 msgstr "Яшчэ няма праглядаў. Станьце першым, хто праглядзіць гэты пост!"
 
-#: src/features/Usage/UsageStatsCards.tsx:120
-#: src/features/Usage/UsageStatsCards.tsx:474
+#: src/features/Usage/UsageStatsCards.tsx:132
+#: src/features/Usage/UsageStatsCards.tsx:486
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Ніякіх слоў пакуль не выкарыстана"
@@ -6692,7 +6706,7 @@ msgstr "Адкрыць чат супольнасці"
 msgid "Open Dashboard"
 msgstr "Адкрыць панэль кіравання"
 
-#: src/features/Usage/UsageStatsCards.tsx:580
+#: src/features/Usage/UsageStatsCards.tsx:592
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Адкрыць гісторыю"
@@ -6713,7 +6727,7 @@ msgid "Open personal plan"
 msgstr "Адкрыць персанальны план"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:211
-#: src/features/Conversation/ConversationCanvas.tsx:791
+#: src/features/Conversation/ConversationCanvas.tsx:773
 #: src/features/Game/Battle/BattleCard.tsx:306
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7392,11 +7406,6 @@ msgstr ""
 "дапамогай сімулятара інтэрв'ю FluencyPal і ўвайдзіце на наступнае працоўнае "
 "інтэрв'ю з упэўненасцю."
 
-#: src/features/Conversation/ConversationCanvas.tsx:516
-#. js-lingui-explicit-id
-msgid "Preparing Goal"
-msgstr "Падрыхтоўка Мэты"
-
 #: src/features/Dashboard/BrainCard.tsx:535
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -7585,14 +7594,14 @@ msgid "Rating"
 msgstr "Ацэнка"
 
 #: src/features/Chat/SubmitForm.tsx:301
-#: src/features/Conversation/ConversationCanvas.tsx:552
-#: src/features/Conversation/ConversationCanvas.tsx:817
+#: src/features/Conversation/ConversationCanvas.tsx:536
+#: src/features/Conversation/ConversationCanvas.tsx:787
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Перазапісаць"
 
-#: src/features/Conversation/ConversationCanvas.tsx:833
+#: src/features/Conversation/ConversationCanvas.tsx:803
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Перапісаць"
@@ -7869,7 +7878,7 @@ msgid "Record answer"
 msgstr "Запісаць адказ"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:374
-#: src/features/Conversation/ConversationCanvas.tsx:594
+#: src/features/Conversation/ConversationCanvas.tsx:577
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Запісаць паведамленне"
@@ -8016,6 +8025,7 @@ msgstr "Робат думае"
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:78
 #: src/features/RolePlay/RolePlayBoard.tsx:49
+#: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Ролевая гра"
@@ -8069,6 +8079,7 @@ msgstr "Маршрутызацыя"
 #: src/features/Dashboard/PlanDashboardCards.tsx:61
 #: src/features/Goal/Quiz/GoalReview.tsx:37
 #: src/features/Landing/PlanLandingBlock.tsx:281
+#: src/features/Usage/UsageStatsCards.tsx:75
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "Правіла"
@@ -8201,7 +8212,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Семантычны HTML"
 
-#: src/features/Conversation/ConversationCanvas.tsx:535
+#: src/features/Conversation/ConversationCanvas.tsx:519
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -9054,7 +9065,7 @@ msgid "Teacher"
 msgstr "Настаўнік"
 
 #: src/features/Conversation/Messages.tsx:85
-#: src/features/Usage/UsageStatsCards.tsx:259
+#: src/features/Usage/UsageStatsCards.tsx:271
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Наставнік:"
@@ -9381,7 +9392,7 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "Заданні па размове TOEFL"
 
-#: src/features/Usage/UsageStatsCards.tsx:557
+#: src/features/Usage/UsageStatsCards.tsx:569
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Агулам"
@@ -9697,7 +9708,7 @@ msgstr "Выклікі слоўнікавага запасу"
 msgid "Voice conversations without delays"
 msgstr "Галасавыя размовы без затрымак"
 
-#: src/features/Conversation/ConversationCanvas.tsx:645
+#: src/features/Conversation/ConversationCanvas.tsx:628
 #. js-lingui-explicit-id
 msgid "Voice record mode"
 msgstr "Рэжым галасавога запісу"
@@ -10202,7 +10213,7 @@ msgstr ""
 "На працягу 2 тыдняў я перайшоў ад нервовасці да ўпэўненасці ў абмеркаванні "
 "архітэктурных рашэнняў. Атрымаў працу, якую хацеў."
 
-#: src/features/Usage/UsageStatsCards.tsx:83
+#: src/features/Usage/UsageStatsCards.tsx:95
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Статыстыка слоў"
@@ -10211,7 +10222,8 @@ msgstr "Статыстыка слоў"
 #: src/features/Goal/Quiz/GoalReview.tsx:36
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
-#: src/features/Usage/UsageStatsCards.tsx:440
+#: src/features/Usage/UsageStatsCards.tsx:74
+#: src/features/Usage/UsageStatsCards.tsx:452
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Словы"
@@ -10642,7 +10654,7 @@ msgid "You've made amazing progress. Let’s keep going."
 msgstr "Вы зрабілі вялікі прагрэс. Давайце працягваем."
 
 #: src/features/Conversation/Messages.tsx:85
-#: src/features/Usage/UsageStatsCards.tsx:259
+#: src/features/Usage/UsageStatsCards.tsx:271
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Вы:"
@@ -10652,7 +10664,7 @@ msgstr "Вы:"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Ваш акаўнт быў паспяхова выдалены. Нам шкада, што вы адходзіце!"
 
-#: src/features/Usage/UsageStatsCards.tsx:428
+#: src/features/Usage/UsageStatsCards.tsx:440
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "Вашыя дасягненні"
@@ -10741,7 +10753,7 @@ msgstr "Ваш узровень валоды"
 msgid "Your Message"
 msgstr "Ваша паведамленне"
 
-#: src/features/Conversation/ConversationCanvas.tsx:734
+#: src/features/Conversation/ConversationCanvas.tsx:716
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Ваша паведамленне..."
@@ -10816,6 +10828,11 @@ msgid ""
 msgstr ""
 "— важна заняцца гэтай кароткай размовай, перш чым прыступіць да прафесійных "
 "тэм. Вось некаторыя карысныя англійскія фразы для пачатку інтэрв'ю:"
+
+#: src/features/Conversation/ConversationCanvas.tsx:516
+#. js-lingui-explicit-id
+#~ msgid "Preparing Goal"
+#~ msgstr "Падрыхтоўка Мэты"
 
 #: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id

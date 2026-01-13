@@ -750,7 +750,7 @@ msgstr ""
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "Terjadi kesalahan saat menganalisis pesan. Silakan coba lagi."
 
-#: src/features/Conversation/ConversationCanvas.tsx:509
+#: src/features/Conversation/ConversationCanvas.tsx:501
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Menganalisis"
@@ -1213,7 +1213,7 @@ msgstr "Tes Kesiapan Wawancara Backend C#"
 msgid "Caching Strategies"
 msgstr "Strategi Pencachean"
 
-#: src/features/Conversation/ConversationCanvas.tsx:689
+#: src/features/Conversation/ConversationCanvas.tsx:672
 #: src/features/Goal/Quiz/QuizPage2.tsx:321
 #. js-lingui-explicit-id
 msgid "Call mode"
@@ -1269,7 +1269,7 @@ msgstr "Bisakah saya menggunakan FluencyPal secara gratis?"
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/features/Conversation/ConversationCanvas.tsx:893
+#: src/features/Conversation/ConversationCanvas.tsx:863
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Batalkan perekaman"
@@ -1324,7 +1324,7 @@ msgstr "Obrolan"
 msgid "Chat between you and {userName}"
 msgstr "Obrolan antara Anda dan {userName}"
 
-#: src/features/Usage/UsageStatsCards.tsx:181
+#: src/features/Usage/UsageStatsCards.tsx:193
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Riwayat obrolan"
@@ -1773,7 +1773,7 @@ msgstr "Diperbaiki"
 msgid "Corrected answers for remembering"
 msgstr "Jawaban yang dikoreksi untuk diingat"
 
-#: src/features/Usage/UsageStatsCards.tsx:510
+#: src/features/Usage/UsageStatsCards.tsx:522
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Koreksi"
@@ -2163,7 +2163,7 @@ msgstr "Jelaskan kata-kata ini:"
 msgid "Describe your custom scenario here..."
 msgstr "Deskripsikan skenario kustom Anda di sini..."
 
-#: src/features/Usage/UsageStatsCards.tsx:391
+#: src/features/Usage/UsageStatsCards.tsx:403
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Deskripsi:"
@@ -2420,7 +2420,7 @@ msgstr "Jangan lupa untuk mencoba mode panggilan di bagian latihan!"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:566
+#: src/features/Conversation/ConversationCanvas.tsx:550
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
@@ -2748,7 +2748,7 @@ msgstr "Terjadi kesalahan saat membuat sesi pembayaran. Coba lagi nanti."
 msgid "Error creating plan. Please try again."
 msgstr "Galat membuat rencana. Silakan coba lagi."
 
-#: src/features/Conversation/ConversationCanvas.tsx:459
+#: src/features/Conversation/ConversationCanvas.tsx:451
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Kesalahan saat menganalisis pesan"
@@ -3174,7 +3174,7 @@ msgstr ""
 msgid "Finalizing decision ..."
 msgstr "Mengambil keputusan akhir ..."
 
-#: src/features/Conversation/ConversationCanvas.tsx:628
+#: src/features/Conversation/ConversationCanvas.tsx:611
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Selesai"
@@ -3846,13 +3846,22 @@ msgstr "Pergi ke Latihan dengan AI"
 msgid "Go to the main page"
 msgstr "Pergi ke halaman utama"
 
-#: src/features/Conversation/ConversationCanvas.tsx:803
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:221
 #: src/features/Dashboard/PlanDashboardCards.tsx:433
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Tujuan"
+
+#: src/features/Usage/UsageStatsCards.tsx:78
+#. js-lingui-explicit-id
+msgid "Goal Role Play"
+msgstr "Bermain Peran Tujuan"
+
+#: src/features/Usage/UsageStatsCards.tsx:79
+#. js-lingui-explicit-id
+msgid "Goal Talk"
+msgstr "Tujuan Bicara"
 
 #: src/features/Survey/RecordUserAudioAnswer.tsx:123
 msgid "Goal: at least <0>{minWords}</0> words"
@@ -3920,7 +3929,7 @@ msgstr "Tata Bahasa"
 msgid "Grammar Correction Preview"
 msgstr "Pratinjau Koreksi Tata Bahasa"
 
-#: src/features/Usage/UsageStatsCards.tsx:285
+#: src/features/Usage/UsageStatsCards.tsx:297
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Koreksi Tata Bahasa"
@@ -4018,7 +4027,7 @@ msgstr "Kesehatan"
 msgid "Help"
 msgstr "Bantuan"
 
-#: src/features/Conversation/ConversationCanvas.tsx:711
+#: src/features/Conversation/ConversationCanvas.tsx:694
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Bantuan dengan jawaban"
@@ -4033,17 +4042,17 @@ msgstr "Berikut adalah beberapa aturan baru untuk Anda pelajari:"
 msgid "Here are some new words for you to learn:"
 msgstr "Berikut beberapa kata baru yang bisa Anda pelajari:"
 
-#: src/features/Usage/UsageStatsCards.tsx:189
+#: src/features/Usage/UsageStatsCards.tsx:201
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Berikut adalah percakapan yang Anda miliki dengan FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:293
+#: src/features/Usage/UsageStatsCards.tsx:305
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Berikut adalah koreksi yang Anda miliki dalam percakapan Anda."
 
-#: src/features/Usage/UsageStatsCards.tsx:91
+#: src/features/Usage/UsageStatsCards.tsx:103
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr ""
@@ -4769,7 +4778,7 @@ msgstr ""
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "Saya akan menanyakan dua pertanyaan lagi sebelum saya membuat rencana Anda."
 
-#: src/features/Conversation/ConversationCanvas.tsx:272
+#: src/features/Conversation/ConversationCanvas.tsx:264
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "Ide untuk pesan Anda"
@@ -5709,6 +5718,11 @@ msgstr "wawancara pengembang frontend junior"
 msgid "junior frontend interview"
 msgstr "wawancara frontend junior"
 
+#: src/features/Usage/UsageStatsCards.tsx:72
+#. js-lingui-explicit-id
+msgid "Just talk"
+msgstr "Hanya berbicara"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:165
 #. js-lingui-explicit-id
 msgid "Keep it concise and relevant"
@@ -5724,7 +5738,7 @@ msgstr ""
 "prestasi utama, dan minat Anda pada perusahaan. Latihlah perkenalan diri "
 "Anda agar terdengar"
 
-#: src/features/Conversation/ConversationCanvas.tsx:667
+#: src/features/Conversation/ConversationCanvas.tsx:650
 #. js-lingui-explicit-id
 msgid "Keyboard mode"
 msgstr "Mode papan ketik"
@@ -6001,7 +6015,7 @@ msgstr "Muat Lebih Banyak"
 msgid "Loading"
 msgstr "Memuat"
 
-#: src/features/Conversation/ConversationPage.tsx:113
+#: src/features/Conversation/ConversationPage.tsx:110
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Memuat Tujuan..."
@@ -6019,10 +6033,10 @@ msgstr "Memuat.."
 
 #: src/features/Chat/SubmitForm.tsx:83
 #: src/features/Conversation/CallMode/CallButtons.tsx:341
-#: src/features/Conversation/ConversationCanvas.tsx:229
-#: src/features/Conversation/ConversationPage.tsx:100
-#: src/features/Conversation/ConversationPage.tsx:109
-#: src/features/Conversation/ConversationPage.tsx:129
+#: src/features/Conversation/ConversationCanvas.tsx:221
+#: src/features/Conversation/ConversationPage.tsx:97
+#: src/features/Conversation/ConversationPage.tsx:106
+#: src/features/Conversation/ConversationPage.tsx:126
 #: src/features/Game/GamePage.tsx:226
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
@@ -6234,13 +6248,13 @@ msgstr "Akses mikrofon ditolak. Silakan aktifkan di pengaturan browser Anda."
 msgid "Microphone Setup"
 msgstr "Pengaturan Mikrofon"
 
-#: src/features/Usage/UsageStatsCards.tsx:556
+#: src/features/Usage/UsageStatsCards.tsx:568
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Menit"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:203
-#: src/features/Conversation/ConversationCanvas.tsx:783
+#: src/features/Conversation/ConversationCanvas.tsx:765
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Misi selesai"
@@ -6488,12 +6502,12 @@ msgstr "Tidak ada blog yang ditemukan"
 msgid "No charge will be made"
 msgstr "Tidak ada biaya yang akan dikenakan"
 
-#: src/features/Usage/UsageStatsCards.tsx:212
+#: src/features/Usage/UsageStatsCards.tsx:224
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Belum ada percakapan"
 
-#: src/features/Usage/UsageStatsCards.tsx:315
+#: src/features/Usage/UsageStatsCards.tsx:327
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Belum ada koreksi"
@@ -6561,8 +6575,8 @@ msgstr "Tidak ada terjemahan yang tersedia"
 msgid "No views yet. Be the first to view this post!"
 msgstr "Belum ada tayangan. Jadilah yang pertama melihat postingan ini!"
 
-#: src/features/Usage/UsageStatsCards.tsx:120
-#: src/features/Usage/UsageStatsCards.tsx:474
+#: src/features/Usage/UsageStatsCards.tsx:132
+#: src/features/Usage/UsageStatsCards.tsx:486
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Belum ada kata yang digunakan"
@@ -6745,7 +6759,7 @@ msgstr "Buka obrolan komunitas"
 msgid "Open Dashboard"
 msgstr "Buka Dasbor"
 
-#: src/features/Usage/UsageStatsCards.tsx:580
+#: src/features/Usage/UsageStatsCards.tsx:592
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Buka sejarah"
@@ -6766,7 +6780,7 @@ msgid "Open personal plan"
 msgstr "Buka rencana pribadi"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:211
-#: src/features/Conversation/ConversationCanvas.tsx:791
+#: src/features/Conversation/ConversationCanvas.tsx:773
 #: src/features/Game/Battle/BattleCard.tsx:306
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7448,11 +7462,6 @@ msgstr ""
 "simulator wawancara FluencyPal, dan masuklah ke wawancara pekerjaan "
 "berikutnya dengan percaya diri."
 
-#: src/features/Conversation/ConversationCanvas.tsx:516
-#. js-lingui-explicit-id
-msgid "Preparing Goal"
-msgstr "Mempersiapkan Tujuan"
-
 #: src/features/Dashboard/BrainCard.tsx:535
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -7644,14 +7653,14 @@ msgid "Rating"
 msgstr "Penilaian"
 
 #: src/features/Chat/SubmitForm.tsx:301
-#: src/features/Conversation/ConversationCanvas.tsx:552
-#: src/features/Conversation/ConversationCanvas.tsx:817
+#: src/features/Conversation/ConversationCanvas.tsx:536
+#: src/features/Conversation/ConversationCanvas.tsx:787
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Rekam ulang"
 
-#: src/features/Conversation/ConversationCanvas.tsx:833
+#: src/features/Conversation/ConversationCanvas.tsx:803
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Tulis ulang"
@@ -7929,7 +7938,7 @@ msgid "Record answer"
 msgstr "Rekam jawaban"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:374
-#: src/features/Conversation/ConversationCanvas.tsx:594
+#: src/features/Conversation/ConversationCanvas.tsx:577
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Rekam Pesan"
@@ -8076,6 +8085,7 @@ msgstr "Robot Berpikir"
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:78
 #: src/features/RolePlay/RolePlayBoard.tsx:49
+#: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Peran Main"
@@ -8129,6 +8139,7 @@ msgstr "Pengarahan"
 #: src/features/Dashboard/PlanDashboardCards.tsx:61
 #: src/features/Goal/Quiz/GoalReview.tsx:37
 #: src/features/Landing/PlanLandingBlock.tsx:281
+#: src/features/Usage/UsageStatsCards.tsx:75
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "Aturan"
@@ -8265,7 +8276,7 @@ msgstr ""
 "plaintext\n"
 "Semantic HTML\n"
 
-#: src/features/Conversation/ConversationCanvas.tsx:535
+#: src/features/Conversation/ConversationCanvas.tsx:519
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -9119,7 +9130,7 @@ msgid "Teacher"
 msgstr "Guru"
 
 #: src/features/Conversation/Messages.tsx:85
-#: src/features/Usage/UsageStatsCards.tsx:259
+#: src/features/Usage/UsageStatsCards.tsx:271
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Guru:"
@@ -9447,7 +9458,7 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "Tugas Berbicara TOEFL"
 
-#: src/features/Usage/UsageStatsCards.tsx:557
+#: src/features/Usage/UsageStatsCards.tsx:569
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Total"
@@ -9766,7 +9777,7 @@ msgstr "Tantangan kosa kata"
 msgid "Voice conversations without delays"
 msgstr "Percakapan suara tanpa jeda"
 
-#: src/features/Conversation/ConversationCanvas.tsx:645
+#: src/features/Conversation/ConversationCanvas.tsx:628
 #. js-lingui-explicit-id
 msgid "Voice record mode"
 msgstr "Mode rekaman suara"
@@ -10275,7 +10286,7 @@ msgstr ""
 "Dalam waktu 2 minggu saya berubah dari gugup menjadi percaya diri membahas "
 "keputusan arsitektur. Mendapatkan pekerjaan yang saya inginkan.\n"
 
-#: src/features/Usage/UsageStatsCards.tsx:83
+#: src/features/Usage/UsageStatsCards.tsx:95
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Statistik Kata"
@@ -10284,7 +10295,8 @@ msgstr "Statistik Kata"
 #: src/features/Goal/Quiz/GoalReview.tsx:36
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
-#: src/features/Usage/UsageStatsCards.tsx:440
+#: src/features/Usage/UsageStatsCards.tsx:74
+#: src/features/Usage/UsageStatsCards.tsx:452
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Kata-kata"
@@ -10728,7 +10740,7 @@ msgid "You've made amazing progress. Let’s keep going."
 msgstr "Anda telah membuat kemajuan yang luar biasa. Mari kita lanjutkan."
 
 #: src/features/Conversation/Messages.tsx:85
-#: src/features/Usage/UsageStatsCards.tsx:259
+#: src/features/Usage/UsageStatsCards.tsx:271
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Anda:"
@@ -10738,7 +10750,7 @@ msgstr "Anda:"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Akun Anda telah berhasil dihapus. Kami merasa sedih melihat Anda pergi!"
 
-#: src/features/Usage/UsageStatsCards.tsx:428
+#: src/features/Usage/UsageStatsCards.tsx:440
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "Prestasi Anda"
@@ -10829,7 +10841,7 @@ msgstr "Tingkat Bahasa Anda"
 msgid "Your Message"
 msgstr "Pesan Anda"
 
-#: src/features/Conversation/ConversationCanvas.tsx:734
+#: src/features/Conversation/ConversationCanvas.tsx:716
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Pesan Anda..."
@@ -10911,6 +10923,11 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
+
+#: src/features/Conversation/ConversationCanvas.tsx:516
+#. js-lingui-explicit-id
+#~ msgid "Preparing Goal"
+#~ msgstr "Mempersiapkan Tujuan"
 
 #: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
