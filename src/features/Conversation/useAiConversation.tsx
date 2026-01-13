@@ -23,6 +23,7 @@ import { ConversationMode } from "@/common/user";
 import { useAccess } from "../Usage/useAccess";
 import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from "../LessonPlan/type";
 import { ConversationConfig, ConversationInstance } from "./ConversationInstance/types";
+import { useTextAi } from "../Ai/useTextAi";
 
 const voiceInstructions = `## AI Voice
 Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking  These pauses should feel natural and reflective, as if you're savoring the moment.`;
@@ -105,6 +106,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const auth = useAuth();
   const settings = useSettings();
   const aiUserInfo = useAiUserInfo();
+  const ai = useTextAi();
   const firstPotentialBotMessage = useRef("");
   const userInfo = aiUserInfo.userInfo?.records?.join(". ") || "";
   const fullLanguageName = settings.fullLanguageName || "English";
@@ -360,6 +362,14 @@ VISUAL_CONTEXT (latest): ${description}
       languageCode: settings.languageCode || "en",
       getAuthToken: async () => await auth.getToken(),
       onMessageOrder: updateMessageOrder,
+      generateTextWithAi: async ({ userMessage, systemMessage }) => {
+        return await ai.generate({
+          userMessage,
+          systemMessage,
+          languageCode: settings.languageCode || "en",
+          model: "gpt-4o",
+        });
+      },
     };
     return baseConfig;
   };
