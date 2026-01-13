@@ -134,7 +134,6 @@ export interface AiRtcConfig {
   voice?: AiVoice;
   isVolumeOn: boolean;
   authToken: string;
-  isInitWebCamera?: boolean;
   webCamDescription?: string;
 }
 

@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  JSX,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { createContext, useContext, ReactNode, JSX, useEffect, useRef, useState } from "react";
 import { AiVoice, MODELS } from "@/common/ai";
 import { AiRtcConfig, AiRtcInstance, initAiRtc } from "./rtc";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
