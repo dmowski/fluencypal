@@ -115,12 +115,7 @@ interface AiConversationContextType {
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
 
-const modesToExtractUserInfo: ConversationType[] = [
-  "talk",
-  "talkAndCorrect",
-  "beginner",
-  "goal-talk",
-];
+const modesToExtractUserInfo: ConversationType[] = ["talk", "beginner", "goal-talk"];
 
 function useProvideAiConversation(): AiConversationContextType {
   const [isInitializing, setIsInitializing] = useState("");
@@ -618,37 +613,6 @@ ${voiceInstructions}
   Important moment that along with user's messages, you will be receiving information from webcamera.
   Response to it in funny and engaging way.
   `,
-      };
-    }
-    if (mode === "talkAndCorrect") {
-      const firstCorrectionMessage = userInfo
-        ? `"${firstAiMessage[languageCode]}". You can mention student name if applicable. No need to introduce yourself, user already knows you. Not needed provide correction for the first message`
-        : `"${firstAiMessage[languageCode]}"`;
-      return {
-        ...baseConfig,
-        voice: "shimmer",
-        model: aiModal,
-        initInstruction: `${aiPersona}
-Your name is "Shimmer". The user wants both a conversation and corrections.
-
-For every user message, you must reply with following parts in one response:
-
-1. Response: React to the user's message. You can comment, show interest, or share a short thought. Keep it friendly and supportive.
-
-2. Correction: If the user made mistakes, tell them where a mistake was made and provide the corrected version. Ask user to repeat corrected version.
-
-
-Use only ${fullLanguageName} language.
-Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
-  
-${voiceInstructions}
-
-Start the conversation with simple phrase: ${firstCorrectionMessage}. You are lead of conversation.
-  
-${userInfo ? `Info about student: ${userInfo}` : ""}
-
-${userLevelDescription}
-`,
       };
     }
     if (mode === "beginner") {
