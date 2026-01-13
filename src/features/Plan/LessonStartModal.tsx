@@ -22,23 +22,22 @@ import { useTranslate } from "../Translation/useTranslate";
 import { ConversationIdea, useAiUserInfo } from "../Ai/useAiUserInfo";
 import { useTextAi } from "../Ai/useTextAi";
 import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
-import { LessonPlan, LessonPlanStep } from "../LessonPlan/type";
 import { useLessonPlan } from "../LessonPlan/useLessonPlan";
 import { useAuth } from "../Auth/useAuth";
 
 type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start" | "plan";
 
 const elementSteps: Record<PlanElementMode, Step[]> = {
-  conversation: ["intro", "mic", "webcam", "plan", "start"],
+  conversation: ["intro", "mic", "plan", "start"],
   words: ["intro", "mic", "words", "start"],
-  play: ["intro", "mic", "webcam", "start"],
+  play: ["intro", "mic", "start"],
   rule: ["intro", "mic", "rules", "start"],
 };
 
 const conversationModes: Record<PlanElementMode, ConversationMode> = {
-  conversation: "call",
+  conversation: "record",
   words: "record",
-  play: "call",
+  play: "record",
   rule: "record",
 };
 
