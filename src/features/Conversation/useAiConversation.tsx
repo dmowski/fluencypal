@@ -30,14 +30,6 @@ import { ConversationMode } from "@/common/user";
 import { useAccess } from "../Usage/useAccess";
 import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from "../LessonPlan/type";
 
-const levelDescriptionsForAi: Record<string, string> = {
-  A1: "User's language level is Beginner. Use extremely simple words and short sentences. Focus on basics.",
-  A2: "User's language level is Elementary. Use clear, short sentences and common expressions. Avoid complexity.",
-  B1: "User's language level is Intermediate. Use straightforward language with some variety. Explain unfamiliar terms.",
-  B2: "User's language level is Upper intermediate. Can handle more complex structures and wider vocabulary.",
-  C1: "User's language level is Advanced. Can understand complex topics and use specialized vocabulary.",
-};
-
 const voiceInstructions = `## AI Voice
 Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking  These pauses should feel natural and reflective, as if you're savoring the moment.`;
 
@@ -115,7 +107,7 @@ interface AiConversationContextType {
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
 
-const modesToExtractUserInfo: ConversationType[] = ["talk", "beginner", "goal-talk"];
+const modesToExtractUserInfo: ConversationType[] = ["talk", "goal-talk"];
 
 function useProvideAiConversation(): AiConversationContextType {
   const [isInitializing, setIsInitializing] = useState("");
@@ -199,10 +191,7 @@ ${correction}
 
   const [messageOrder, setMessageOrder] = useState<MessagesOrderMap>({});
 
-  const userLevel = plan.activeGoal?.goalQuiz?.level || "A2";
   const appMode = settings.appMode;
-  const userLevelDescription =
-    appMode === "learning" ? levelDescriptionsForAi[userLevel] || levelDescriptionsForAi["A2"] : "";
 
   const aiPersona =
     appMode === "learning"
@@ -507,8 +496,6 @@ ${voiceInstructions}
 
         openerInfoPrompt = `Info about Student : ${userInfo}. 
 
-${userLevelDescription}
-  
 Ask the student to describe their day and try to cover new topics that used didn't mentioned before.
 Don't focus solely on one topic. Try to cover a variety of topics (Example ${potentialTopics}).
   `;
@@ -644,8 +631,6 @@ Remember:
 - Keep the conversation upbeat and encouraging.
 
 ${userInfo ? `Student info: ${userInfo}` : ""}
-
-${userLevelDescription}
 
 Start the conversation with: "${
           firstAiMessage[languageCode]

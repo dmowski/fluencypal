@@ -2,7 +2,6 @@ import { SupportedLanguage } from "../features/Lang/lang";
 
 export type ConversationType =
   | "talk"
-  | "beginner"
   | "words"
   | "rule"
   | "role-play"
