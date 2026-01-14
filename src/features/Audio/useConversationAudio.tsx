@@ -59,6 +59,8 @@ interface ConversationAudioContextType {
 
   /** When user navigates away, you can release audio resources. */
   dispose: () => void;
+
+  isPlaying: () => boolean;
 }
 
 const ConversationAudioContext = createContext<ConversationAudioContextType | null>(null);
@@ -70,6 +72,18 @@ class AudioQueuePlayer {
   private nextTime = 0;
   private sources = new Set<AudioBufferSourceNode>();
   private unlocked = false;
+
+  isPlaying(): boolean {
+    if (!this.ctx) return false;
+    if (this.ctx.state === "closed") return false;
+
+    // Actively playing sources
+    if (this.sources.size > 0) return true;
+
+    // Scheduled queue (nothing currently playing but queued)
+    const now = this.ctx.currentTime;
+    return this.nextTime > now + 0.03; // epsilon to avoid flicker
+  }
 
   async unlockFromGesture(): Promise<void> {
     if (!this.ctx) {
@@ -266,6 +280,10 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     playerRef.current!.dispose();
   }, []);
 
+  const isPlaying = useCallback(() => {
+    return playerRef.current!.isPlaying();
+  }, []);
+
   return useMemo(
     () => ({
       startConversationAudio,
@@ -276,6 +294,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       setVolume,
       getVolume,
       dispose,
+      isPlaying,
     }),
     [
       startConversationAudio,

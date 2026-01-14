@@ -1,9 +1,9 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
-import { useAudio } from "./useAudio";
+import { useState } from "react";
 import { IconButton, Tooltip } from "@mui/material";
 import { TextToAudioVoice } from "@/app/api/textToAudio/types";
 import { Loader, Pause, Volume2 } from "lucide-react";
+import { useConversationAudio } from "./useConversationAudio";
 export interface AudioPlayIconProps {
   text: string;
   voice: TextToAudioVoice;
@@ -22,87 +22,37 @@ export const AudioPlayIcon = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const audio = useMemo(() => {
-    const isWindow = typeof window !== "undefined";
-    return isWindow ? new Audio() : null;
-  }, []);
+
+  const audio = useConversationAudio();
+
   const [countOfAttempts, setCountOfAttempts] = useState(0);
 
-  const [audioUrl, setAudioUrl] = useState<string | null>(null);
-  const { getAudioUrl } = useAudio();
-
   const togglePlay = async () => {
-    if (isPlaying) {
-      audio?.pause();
-      if (audio) {
-        audio.src = "";
-      }
+    if (audio.isUnlocked() === false) {
+      await audio.startConversationAudio();
+    }
 
+    if (audio.isPlaying()) {
+      audio.interrupt();
       setIsPlaying(false);
       return;
     }
 
+    setIsPlaying(true);
     setCountOfAttempts(countOfAttempts + 1);
     let speed = 1;
     if (countOfAttempts > 1 && countOfAttempts % 2 === 0) {
       speed = 0.8;
     }
+    await audio.speak(text, { voice, instructions });
 
-    if (audioUrl) {
-      if (audio) {
-        audio.src = audioUrl;
-        audio.volume = 1;
-        audio.playbackRate = speed;
-        audio.play();
-      }
-
-      setIsPlaying(true);
-      return;
-    } else {
-      setIsLoading(true);
-      try {
-        const url = await getAudioUrl(text, instructions, voice);
-        setAudioUrl(url);
-        if (audio) {
-          audio.src = url;
-          audio.playbackRate = speed;
-          audio.play();
-        }
-        setIsPlaying(true);
-      } catch (error) {
-        console.error(error);
-        setError("Failed to play audio");
-      } finally {
-        setIsLoading(false);
-      }
-    }
-  };
-
-  useEffect(() => {
-    setError(null);
-    if (audio) {
-      audio.src = "";
-    }
-    setIsPlaying(false);
-    setAudioUrl(null);
-    setCountOfAttempts(0);
-    if (audio)
-      audio.onended = () => {
-        console.log("audio ended");
+    const checkIfEnded = setInterval(() => {
+      if (!audio.isPlaying()) {
         setIsPlaying(false);
-      };
-
-    const timeOut = setTimeout(() => {
-      if (autoplay && text) {
-        togglePlay();
+        clearInterval(checkIfEnded);
       }
     }, 500);
-
-    return () => {
-      if (audio) audio.pause();
-      clearTimeout(timeOut);
-    };
-  }, [text]);
+  };
 
   return (
     <Tooltip title={error || ""}>
