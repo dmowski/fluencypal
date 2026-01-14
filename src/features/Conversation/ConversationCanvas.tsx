@@ -176,8 +176,10 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
     if (!isWindow) return;
 
     const scrollToBottom = () => {
-      const scrollElement = (document.querySelector("#conversation-canvas-modal") ||
-        document.querySelector("#messages-call-mode")) as HTMLElement;
+      const scrollElement =
+        document.querySelector("#conversation-canvas-modal") ||
+        document.querySelector("#messages-call-mode");
+
       if (scrollElement) {
         scrollElement.scrollTo({
           top: scrollElement.scrollHeight + 1000,
@@ -312,16 +314,19 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
   if (isCallMode) {
     return (
-      <Stack
+      <Modal
+        open={true}
         sx={{
-          width: "100dvw",
           height: "100dvh",
+          width: "100dvw",
           overflow: "scroll",
-          position: "fixed",
-          top: 0,
-          left: 0,
-          overscrollBehavior: "contain",
-          WebkitOverflowScrolling: "touch",
+        }}
+        slotProps={{
+          backdrop: {
+            sx: {
+              backgroundColor: "rgba(0, 0, 0, 0)",
+            },
+          },
         }}
       >
         <CameraCanvas
@@ -345,7 +350,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             showAnalyzeConversationModal();
           }}
         />
-      </Stack>
+      </Modal>
     );
   }
 
