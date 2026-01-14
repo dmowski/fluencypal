@@ -138,9 +138,16 @@ class AudioQueuePlayer {
     src.start(startAt);
 
     this.sources.add(src);
-    src.onended = () => this.sources.delete(src);
+
+    const waitUnitFinish = new Promise<void>((r) => {
+      src.onended = () => {
+        this.sources.delete(src);
+        r();
+      };
+    });
 
     this.nextTime = startAt + decoded.duration;
+    await waitUnitFinish;
   }
 
   interrupt(): void {

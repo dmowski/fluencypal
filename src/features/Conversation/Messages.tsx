@@ -21,19 +21,10 @@ export const Messages = ({
 }) => {
   const translator = useTranslate();
 
-  const sortedMessages = useMemo(() => {
-    const messages = getSortedMessages({ conversation, messageOrder });
-    const messagesData = messages.map((msg, index, all) => {
-      const lastMessage = all[all.length - 1];
-      const isLastIsBot = lastMessage?.isBot;
-      const isThisIsLast = index === all.length - 1;
-      return {
-        message: msg,
-        isSpeaking: isThisIsLast && isLastIsBot && isAiSpeaking,
-      };
-    });
-    return messagesData;
-  }, [conversation, messageOrder]);
+  const sortedMessages = useMemo(
+    () => getSortedMessages({ conversation, messageOrder }),
+    [conversation, messageOrder, isAiSpeaking]
+  );
 
   const messages = (
     <>
@@ -45,8 +36,17 @@ export const Messages = ({
           width: "100%",
         }}
       >
-        {sortedMessages.map(({ message, isSpeaking }) => {
-          return <Message key={message.id} message={message} isAiSpeaking={isSpeaking} />;
+        {sortedMessages.map((message, index, all) => {
+          const lastMessage = all[all.length - 1];
+          const isLastIsBot = lastMessage?.isBot;
+          const isThisIsLast = index === all.length - 1;
+          return (
+            <Message
+              key={message.id}
+              message={message}
+              isAiSpeaking={isThisIsLast && isLastIsBot && isAiSpeaking}
+            />
+          );
         })}
       </Stack>
     </>
@@ -113,6 +113,7 @@ export const Message = ({
           style={{
             color: "#b5dbff",
             opacity: isAiSpeaking ? 1 : 0,
+            transition: "opacity 0.3s ease-in-out",
           }}
         />
       </Stack>
