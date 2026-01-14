@@ -659,10 +659,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 `;
       }
 
-      const IS_USE_TEXT_CONNECTOR = !!input.lessonPlan;
-      const initConversation = IS_USE_TEXT_CONNECTOR
-        ? initTextConversation
-        : initWebRtcConversation;
+      const initConversation = initTextConversation;
 
       const conversation = await initConversation({
         ...conversationConfig,

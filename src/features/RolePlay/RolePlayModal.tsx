@@ -17,7 +17,6 @@ import { RolePlayInputType } from "./types";
 
 import { useRolePlay } from "./useRolePlay";
 import { useLingui } from "@lingui/react";
-import { useUsage } from "../Usage/useUsage";
 
 export const RolePlayModal = () => {
   const {
@@ -28,8 +27,6 @@ export const RolePlayModal = () => {
     setUserInputs,
     isStarting,
   } = useRolePlay();
-
-  const usage = useUsage();
 
   const { i18n } = useLingui();
 
