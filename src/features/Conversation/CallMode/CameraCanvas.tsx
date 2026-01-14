@@ -158,6 +158,7 @@ export const CameraCanvas = ({
             position: "fixed",
             top: 0,
             height: topHeight,
+            pointerEvents: "none",
             zIndex: 1,
             "@media (max-width: 800px)": {
               height: topHeightMobile,
