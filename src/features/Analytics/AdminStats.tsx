@@ -545,7 +545,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
         )}
         {conversations
           .sort((a, b) => {
-            return b.updatedAtIso.localeCompare(a.updatedAtIso);
+            return (b.updatedAtIso || "").localeCompare(a.updatedAtIso || "");
           })
           .filter((_, index) => index < 23)
           .map((conversation) => {
