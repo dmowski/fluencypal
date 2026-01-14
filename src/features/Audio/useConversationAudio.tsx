@@ -250,12 +250,17 @@ function useProvideConversationAudio(): ConversationAudioContextType {
 
   const speak = useCallback(
     async (text: string, opts: SpeakOptions) => {
+      const maxLength = 400;
+      text = text.trim();
+      const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
+
       if (!playerRef.current!.isUnlocked()) {
         throw new Error(
           "Audio is not unlocked. Call startConversationAudio() from a user gesture first."
         );
       }
-      const url = opts.audioUrl ?? (await getAudioUrl(text, opts.instructions ?? "", opts.voice));
+      const url =
+        opts.audioUrl ?? (await getAudioUrl(trimmedText, opts.instructions ?? "", opts.voice));
       const proxied = `/api/audioProxy?url=${encodeURIComponent(url)}`;
 
       // fetch audio bytes
