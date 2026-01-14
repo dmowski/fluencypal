@@ -3,12 +3,12 @@ import MicOffIcon from "@mui/icons-material/MicOff";
 import MicIcon from "@mui/icons-material/Mic";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+import { Button, CircularProgress, IconButton, Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import { CircleQuestionMark, Trophy } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CustomModal } from "@/features/uiKit/Modal/CustomModal";
 import { FeatureBlocker } from "@/features/Usage/FeatureBlocker";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
@@ -17,6 +17,9 @@ import StopIcon from "@mui/icons-material/Stop";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
 import ClosedCaptionDisabledIcon from "@mui/icons-material/ClosedCaptionDisabled";
 import { LessonPlanAnalysis } from "@/features/LessonPlan/type";
+import { sleep } from "@/libs/sleep";
+import CloseIcon from "@mui/icons-material/Close";
+import DoneIcon from "@mui/icons-material/Done";
 
 export const CallButton = ({
   label,
@@ -152,6 +155,29 @@ export const CallButtons = ({
     setIsShowMuteWarning(false);
   };
 
+  const [isRecordingByButton, setIsRecordingByButton] = useState(false);
+
+  const onDoneRecordingUsingButton = async () => {
+    recorder.stopRecording();
+  };
+
+  const startRecordingUsingButton = async () => {
+    setIsRecordingByButton(true);
+    await sleep(20); // wait for state to update
+    await recorder.startRecording();
+  };
+
+  useEffect(() => {
+    if (!isRecordingByButton) return;
+    if (!recorder.transcription) return;
+
+    submitTranscription();
+
+    setTimeout(() => {
+      setIsRecordingByButton(false);
+    }, 200);
+  }, [isRecordingByButton, recorder.transcription]);
+
   return (
     <Stack
       sx={{
@@ -213,52 +239,97 @@ export const CallButtons = ({
         </Stack>
       ) : (
         <>
-          <CallButton
-            activeButton={<MicIcon />}
-            inactiveButton={<MicOffIcon />}
-            isActive={!isMuted}
-            label={isMuted ? i18n._("Unmute microphone") : i18n._("Mute microphone")}
-            onClick={toggleMute}
-            isLocked={isLimited}
-          />
+          {isRecordingByButton ? (
+            <>
+              <CallButton
+                activeButton={
+                  recorder.isTranscribing ? <CircularProgress size={"24px"} /> : <DoneIcon />
+                }
+                inactiveButton={
+                  recorder.isTranscribing ? <CircularProgress size={"24px"} /> : <DoneIcon />
+                }
+                isActive={recorder.isTranscribing}
+                label={i18n._("Done recording")}
+                onClick={recorder.isTranscribing ? () => {} : onDoneRecordingUsingButton}
+              />
 
-          <CallButton
-            activeButton={<VolumeUpIcon />}
-            inactiveButton={<VolumeOffIcon />}
-            isActive={isVolumeOn}
-            label={isVolumeOn ? i18n._("Turn off volume") : i18n._("Turn on volume")}
-            onClick={toggleVolume}
-            isLocked={isLimited}
-          />
+              <CallButton
+                activeButton={
+                  recorder.isTranscribing ? <CircularProgress size={"24px"} /> : <CloseIcon />
+                }
+                inactiveButton={
+                  recorder.isTranscribing ? <CircularProgress size={"24px"} /> : <CloseIcon />
+                }
+                isActive={true}
+                label={i18n._("Cancel recording")}
+                onClick={
+                  recorder.isTranscribing
+                    ? () => {}
+                    : () => {
+                        recorder.cancelRecording();
+                        setIsRecordingByButton(false);
+                      }
+                }
+              />
+              <Stack
+                sx={{
+                  width: "185px",
+                }}
+              >
+                {recorder.visualizerComponent}
+              </Stack>
+            </>
+          ) : (
+            <>
+              <CallButton
+                activeButton={<MicIcon />}
+                inactiveButton={<MicOffIcon />}
+                isActive={false}
+                label={i18n._("Record message")}
+                onClick={startRecordingUsingButton}
+              />
 
-          <CallButton
-            activeButton={<ClosedCaptionIcon />}
-            inactiveButton={<ClosedCaptionDisabledIcon />}
-            isActive={isSubtitlesEnabled}
-            label={isSubtitlesEnabled ? i18n._("Turn off subtitles") : i18n._("Turn on subtitles")}
-            onClick={() => toggleSubtitles(!isSubtitlesEnabled)}
-          />
+              <CallButton
+                activeButton={<VolumeUpIcon />}
+                inactiveButton={<VolumeOffIcon />}
+                isActive={isVolumeOn}
+                label={isVolumeOn ? i18n._("Turn off volume") : i18n._("Turn on volume")}
+                onClick={toggleVolume}
+                isLocked={isLimited}
+              />
 
-          <CallButton
-            activeButton={<VideocamIcon />}
-            inactiveButton={<VideocamOffIcon />}
-            isActive={isWebCamEnabled}
-            label={isWebCamEnabled ? i18n._("Turn off video") : i18n._("Turn on video")}
-            onClick={() => toggleWebCam(!isWebCamEnabled)}
-          />
+              <CallButton
+                activeButton={<ClosedCaptionIcon />}
+                inactiveButton={<ClosedCaptionDisabledIcon />}
+                isActive={isSubtitlesEnabled}
+                label={
+                  isSubtitlesEnabled ? i18n._("Turn off subtitles") : i18n._("Turn on subtitles")
+                }
+                onClick={() => toggleSubtitles(!isSubtitlesEnabled)}
+              />
 
-          <IconButton
-            size="large"
-            onClick={exit}
-            sx={{
-              width: "70px",
-              borderRadius: "30px",
-              backgroundColor: "#dc362e",
-              ":hover": { backgroundColor: "rgba(255, 0, 0, 0.7)" },
-            }}
-          >
-            <CallEndIcon />
-          </IconButton>
+              <CallButton
+                activeButton={<VideocamIcon />}
+                inactiveButton={<VideocamOffIcon />}
+                isActive={isWebCamEnabled}
+                label={isWebCamEnabled ? i18n._("Turn off video") : i18n._("Turn on video")}
+                onClick={() => toggleWebCam(!isWebCamEnabled)}
+              />
+
+              <IconButton
+                size="large"
+                onClick={exit}
+                sx={{
+                  width: "70px",
+                  borderRadius: "30px",
+                  backgroundColor: "#dc362e",
+                  ":hover": { backgroundColor: "rgba(255, 0, 0, 0.7)" },
+                }}
+              >
+                <CallEndIcon />
+              </IconButton>
+            </>
+          )}
 
           {(isShowVolumeWarning || isShowMuteWarning) && (
             <CustomModal
