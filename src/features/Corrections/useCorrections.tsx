@@ -48,18 +48,20 @@ function useProvideCorrections(): CorrectionsContextType {
     try {
       const newWordsStatsRequest = words.addWordsStatFromText(input.message);
 
+      const fullLanguageName = settings.fullLanguageName || "English";
+
       const systemMessage = `You are speech checker system.
 User gives a audio transcript, your role is to analyze it from the voice speech prospective. 
 Do not focus fully on punctuation, because it may be not accurate in the voice to text software, but focus on grammar, style, and natural language flow.
 
 Return your result in JSON format.
 Structure of result: {
-"correctedMessage": "string",
-"suggestion": "string (use ${settings.fullLanguageName || "English"} language)",
+"correctedMessage": "string. Use ${fullLanguageName} language.",
+"suggestion": "string. Use ${fullLanguageName} language.",
 "rate": "number (1-10, where 10 is best by style and grammar)"
 }
 
-correctedMessage - return corrected message if need to correct, or return empty string if no correction is needed.
+correctedMessage - return corrected message in ${fullLanguageName} language if need to correct, or return empty string if no correction is needed.
 suggestion: A direct message to the user explaining one biggest issue in message or empty string if no correction is needed. Be concise and do it in one sentence.
 rate: rate the original user input from 1 to 10, where 10 is perfect.
 

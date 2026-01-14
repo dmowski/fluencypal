@@ -128,7 +128,7 @@ export const initTextConversation = async ({
         const instruction = previousMessage?.text
           ? `Please read the following text aloud in response to: "${previousMessage.text}"`
           : "Please read the following text aloud:";
-        await playAudio(aiResponse, voice, instruction);
+        playAudio(aiResponse, voice, instruction);
       }
     } catch (error: any) {
       console.error("Error generating AI response:", error);
