@@ -4,6 +4,7 @@ import { IconButton, Tooltip } from "@mui/material";
 import { TextToAudioVoice } from "@/app/api/textToAudio/types";
 import { Loader, Pause, Volume2 } from "lucide-react";
 import { useConversationAudio } from "./useConversationAudio";
+
 export interface AudioPlayIconProps {
   text: string;
   voice: TextToAudioVoice;
@@ -45,13 +46,7 @@ export const AudioPlayIcon = ({
       speed = 0.8;
     }
     await audio.speak(text, { voice, instructions });
-
-    const checkIfEnded = setInterval(() => {
-      if (!audio.isPlaying()) {
-        setIsPlaying(false);
-        clearInterval(checkIfEnded);
-      }
-    }, 500);
+    setIsPlaying(false);
   };
 
   return (

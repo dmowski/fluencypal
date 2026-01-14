@@ -376,7 +376,6 @@ VISUAL_CONTEXT (latest): ${description}
           model: "gpt-4o",
         });
       },
-      // playAudio: (textToPlay: string, voice: AiVoice, instruction: string) => Promise<void>
       playAudio: async (textToPlay: string, voice: AiVoice, instruction: string) => {
         await audio.interruptWithFade(120);
         await audio.speak(textToPlay, { instructions: instruction, voice });
