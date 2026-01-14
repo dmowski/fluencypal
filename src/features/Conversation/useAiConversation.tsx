@@ -139,6 +139,9 @@ function useProvideAiConversation(): AiConversationContextType {
     setIsVolumeOn(isOn);
     communicatorRef.current?.toggleVolume(isOn);
     audio.setVolume(isOn ? 1 : 0);
+    if (!isOn && audio.isPlaying) {
+      audio.interrupt();
+    }
   };
 
   const getWebCamDescriptionInstruction = (description: string): string => {
