@@ -21,7 +21,7 @@ export async function POST(request: Request) {
   }
 
   await validateAuthToken(request);
-  console.log("Validate token time", Date.now() - start1);
+  console.log("AUDIO GENERATOR: Validate token time", Date.now() - start1);
 
   const client = new OpenAI({
     apiKey: openAIKey,
@@ -44,11 +44,11 @@ export async function POST(request: Request) {
       error: null,
       audioUrl: url,
     };
-    console.log("Check file time", Date.now() - start2);
+    console.log("AUDIO GENERATOR: Check file time", Date.now() - start2);
     return Response.json(response);
   }
 
-  console.log("Check file time", Date.now() - start2);
+  console.log("AUDIO GENERATOR: Check file time", Date.now() - start2);
 
   const start3 = Date.now();
 
@@ -65,11 +65,11 @@ export async function POST(request: Request) {
     instructions: combinedInstructions,
   });
 
-  console.log("Generate audio time", Date.now() - start3);
+  console.log("AUDIO GENERATOR: Generate audio time", Date.now() - start3);
 
   const start4 = Date.now();
   const buffer = Buffer.from(await mp3.arrayBuffer());
-  console.log("Buffer creation time", Date.now() - start4);
+  console.log("AUDIO GENERATOR: Buffer creation time", Date.now() - start4);
 
   const start5 = Date.now();
 
@@ -78,12 +78,12 @@ export async function POST(request: Request) {
     contentType: "audio/mpeg",
     resumable: false,
   });
-  console.log("File save time", Date.now() - start5);
+  console.log("AUDIO GENERATOR: File save time", Date.now() - start5);
 
   const start6 = Date.now();
   await audioStorageFile.makePublic();
   const url = audioStorageFile.publicUrl();
-  console.log("Make public time", Date.now() - start6);
+  console.log("AUDIO GENERATOR: Make public time", Date.now() - start6);
 
   const response: TextToAudioResponse = {
     error: null,
