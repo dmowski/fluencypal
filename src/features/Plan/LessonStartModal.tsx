@@ -195,7 +195,7 @@ export const LessonStartModal = ({
     });
 
     setIsStarting(false);
-    //onClose();
+    onClose();
   };
   const auth = useAuth();
   const isDev = auth.userInfo?.email?.includes("dmowski");

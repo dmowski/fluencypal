@@ -138,6 +138,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const toggleVolume = (isOn: boolean) => {
     setIsVolumeOn(isOn);
     communicatorRef.current?.toggleVolume(isOn);
+    audio.setVolume(isOn ? 1 : 0);
   };
 
   const getWebCamDescriptionInstruction = (description: string): string => {
@@ -377,7 +378,7 @@ VISUAL_CONTEXT (latest): ${description}
       },
       // playAudio: (textToPlay: string, voice: AiVoice, instruction: string) => Promise<void>
       playAudio: async (textToPlay: string, voice: AiVoice, instruction: string) => {
-        audio.interruptWithFade(120);
+        await audio.interruptWithFade(120);
         await audio.speak(textToPlay, { instructions: instruction, voice });
       },
     };

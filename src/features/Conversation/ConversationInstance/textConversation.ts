@@ -95,7 +95,6 @@ export const initTextConversation = async ({
       const systemMessage = getSystemMessage();
       const userMessage = formatConversationHistory();
 
-      console.log("Generating AI response...");
       //console.log("System message:", systemMessage);
       // console.log("Conversation history:", userMessage);
 
@@ -125,16 +124,12 @@ export const initTextConversation = async ({
       // Notify about new message
       onMessage(botMessage);
 
-      console.log("voice", voice, audioState.isVolumeOn);
       if (voice && audioState.isVolumeOn) {
         const instruction = previousMessage?.text
           ? `Please read the following text aloud in response to: "${previousMessage.text}"`
           : "Please read the following text aloud:";
-        console.log("PLAY AUDIO?!!! WIII", instruction);
         await playAudio(aiResponse, voice, instruction);
       }
-
-      console.log("AI response generated successfully");
     } catch (error: any) {
       console.error("Error generating AI response:", error);
 
