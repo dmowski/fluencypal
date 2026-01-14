@@ -156,15 +156,33 @@ export const CallButtons = ({
   };
 
   const [isRecordingByButton, setIsRecordingByButton] = useState(false);
+  const [previousIsVolumeOn, setPreviousIsVolumeOn] = useState(isVolumeOn);
+
+  useEffect(() => {
+    if (!isRecordingByButton) {
+      setPreviousIsVolumeOn(isVolumeOn);
+    }
+  }, [isRecordingByButton, isVolumeOn]);
 
   const onDoneRecordingUsingButton = async () => {
+    if (recorder.isTranscribing) return;
     recorder.stopRecording();
   };
 
   const startRecordingUsingButton = async () => {
+    if (recorder.isTranscribing) return;
     setIsRecordingByButton(true);
+    setIsVolumeOn(false);
+
     await sleep(20); // wait for state to update
     await recorder.startRecording();
+  };
+
+  const cancelRecordingUsingButton = () => {
+    if (recorder.isTranscribing) return;
+    setIsVolumeOn(previousIsVolumeOn);
+    recorder.cancelRecording();
+    setIsRecordingByButton(false);
   };
 
   useEffect(() => {
@@ -250,7 +268,7 @@ export const CallButtons = ({
                 }
                 isActive={recorder.isTranscribing}
                 label={i18n._("Done recording")}
-                onClick={recorder.isTranscribing ? () => {} : onDoneRecordingUsingButton}
+                onClick={onDoneRecordingUsingButton}
               />
 
               <Stack
@@ -270,14 +288,7 @@ export const CallButtons = ({
                 }
                 isActive={true}
                 label={i18n._("Cancel recording")}
-                onClick={
-                  recorder.isTranscribing
-                    ? () => {}
-                    : () => {
-                        recorder.cancelRecording();
-                        setIsRecordingByButton(false);
-                      }
-                }
+                onClick={cancelRecordingUsingButton}
               />
             </>
           ) : (
