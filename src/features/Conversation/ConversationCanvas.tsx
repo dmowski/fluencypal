@@ -176,27 +176,23 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
     if (!isWindow) return;
 
     const scrollToBottom = () => {
-      window.scrollTo({
-        top: document.body.scrollHeight + 200,
-        behavior: "smooth",
-      });
-
-      const callModeMessagesElement = document.getElementById("messages-call-mode");
-      if (callModeMessagesElement) {
-        callModeMessagesElement.scrollTo({
-          top: callModeMessagesElement.scrollHeight,
+      const scrollElement = (document.querySelector("#conversation-canvas-modal") ||
+        document.querySelector("#messages-call-mode")) as HTMLElement;
+      if (scrollElement) {
+        scrollElement.scrollTo({
+          top: scrollElement.scrollHeight + 1000,
           behavior: "smooth",
         });
       }
     };
     const timeout = setTimeout(() => {
       scrollToBottom();
-    }, 100);
+    }, 500);
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [conversation, isAnalyzingResponse, isRecording]);
+  }, [conversation, isAnalyzingResponse, isRecording, isCallMode]);
 
   const [isShowAnalyzeConversationModal, setIsShowAnalyzeConversationModal] = useUrlParam(
     "showAnalyzeConversationModal"
@@ -358,6 +354,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   return (
     <Modal
       open={true}
+      id="conversation-canvas-modal"
       sx={{
         height: "100dvh",
         width: "100dvw",
@@ -371,7 +368,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
         },
       }}
     >
-      <Stack>
+      <Stack id="messages-list">
         {modals}
 
         <Stack
