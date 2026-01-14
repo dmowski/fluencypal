@@ -622,7 +622,7 @@ msgstr "AI tutor cost"
 msgid "AI Tutor Updates"
 msgstr "AI Tutor Updates"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#: src/features/Conversation/CallMode/CallButtons.tsx:359
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AI voice"
@@ -1189,16 +1189,11 @@ msgstr "C# Backend Interview Readiness Test"
 msgid "Caching Strategies"
 msgstr "Caching Strategies"
 
-#: src/features/Conversation/ConversationCanvas.tsx:703
+#: src/features/Conversation/ConversationCanvas.tsx:702
 #: src/features/Goal/Quiz/QuizPage2.tsx:321
 #. js-lingui-explicit-id
 msgid "Call mode"
 msgstr "Call mode"
-
-#: src/features/Conversation/ConversationCanvas.tsx:694
-#. js-lingui-explicit-id
-msgid "Call mode is coming soon!"
-msgstr "Call mode is coming soon!"
 
 #: src/features/RolePlay/rolePlayData.tsx:507
 #. js-lingui-explicit-id
@@ -1250,7 +1245,8 @@ msgstr "Can I use FluencyPal for free?"
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/features/Conversation/ConversationCanvas.tsx:895
+#: src/features/Conversation/CallMode/CallButtons.tsx:264
+#: src/features/Conversation/ConversationCanvas.tsx:894
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Cancel recording"
@@ -1433,7 +1429,7 @@ msgstr ""
 "Clear structure for system design. I finally explained trade-offs without "
 "rambling."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:414
+#: src/features/Conversation/CallMode/CallButtons.tsx:485
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:140
 #: src/features/Header/NeedHelpModal.tsx:181
@@ -2396,6 +2392,11 @@ msgstr "Don't forget to try call mode in the practice section!"
 msgid "Done"
 msgstr "Done"
 
+#: src/features/Conversation/CallMode/CallButtons.tsx:252
+#. js-lingui-explicit-id
+msgid "Done recording"
+msgstr "Done recording"
+
 #: src/features/Landing/LandingPage.tsx:196
 #. js-lingui-explicit-id
 msgid "Don’t let mistakes stop you."
@@ -2455,7 +2456,7 @@ msgstr ""
 msgid "Email"
 msgstr "Email"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:297
+#: src/features/Conversation/CallMode/CallButtons.tsx:368
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your plan to access "
@@ -3944,7 +3945,7 @@ msgstr "Health"
 msgid "Help"
 msgstr "Help"
 
-#: src/features/Conversation/ConversationCanvas.tsx:726
+#: src/features/Conversation/ConversationCanvas.tsx:725
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Help with answer"
@@ -5879,7 +5880,7 @@ msgid "Loading.."
 msgstr "Loading.."
 
 #: src/features/Chat/SubmitForm.tsx:83
-#: src/features/Conversation/CallMode/CallButtons.tsx:341
+#: src/features/Conversation/CallMode/CallButtons.tsx:412
 #: src/features/Conversation/ConversationCanvas.tsx:221
 #: src/features/Conversation/ConversationPage.tsx:106
 #: src/features/Conversation/ConversationPage.tsx:115
@@ -6099,8 +6100,8 @@ msgstr "Microphone Setup"
 msgid "Minutes"
 msgstr "Minutes"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:203
-#: src/features/Conversation/ConversationCanvas.tsx:797
+#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/ConversationCanvas.tsx:796
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Mission complete"
@@ -6192,11 +6193,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
 msgstr "Movies, books, or music"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:220
-#. js-lingui-explicit-id
-msgid "Mute microphone"
-msgstr "Mute microphone"
 
 #: src/features/Game/GamePage.tsx:149
 #. js-lingui-explicit-id
@@ -6364,7 +6360,7 @@ msgstr "No credit card required"
 msgid "No interviews found"
 msgstr "No interviews found"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:342
+#: src/features/Conversation/CallMode/CallButtons.tsx:413
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "No message recorded yet."
@@ -6614,8 +6610,8 @@ msgstr "Open in Telegram"
 msgid "Open personal plan"
 msgstr "Open personal plan"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:211
-#: src/features/Conversation/ConversationCanvas.tsx:805
+#: src/features/Conversation/CallMode/CallButtons.tsx:237
+#: src/features/Conversation/ConversationCanvas.tsx:804
 #: src/features/Game/Battle/BattleCard.tsx:306
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7465,13 +7461,13 @@ msgstr "Rating"
 
 #: src/features/Chat/SubmitForm.tsx:301
 #: src/features/Conversation/ConversationCanvas.tsx:566
-#: src/features/Conversation/ConversationCanvas.tsx:819
+#: src/features/Conversation/ConversationCanvas.tsx:818
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Re-record"
 
-#: src/features/Conversation/ConversationCanvas.tsx:835
+#: src/features/Conversation/ConversationCanvas.tsx:834
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Re-write"
@@ -7636,7 +7632,7 @@ msgstr "Real-Life English Scenarios"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Real-Life Role-Play for Advanced English Practice"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#: src/features/Conversation/CallMode/CallButtons.tsx:359
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "Real-time conversation"
@@ -7738,7 +7734,12 @@ msgstr "Record Answer"
 msgid "Record answer"
 msgstr "Record answer"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:374
+#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#. js-lingui-explicit-id
+msgid "Record message"
+msgstr "Record message"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:445
 #: src/features/Conversation/ConversationCanvas.tsx:607
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -8093,7 +8094,7 @@ msgstr "Send me sign-in link"
 
 #: src/features/Chat/SubmitForm.tsx:203
 #: src/features/Chat/SubmitForm.tsx:317
-#: src/features/Conversation/CallMode/CallButtons.tsx:401
+#: src/features/Conversation/CallMode/CallButtons.tsx:472
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Send Message"
@@ -8689,7 +8690,7 @@ msgstr ""
 "persuasive answers that help you stand out in any job interview.\n"
 
 #: src/features/Chat/SubmitForm.tsx:277
-#: src/features/Conversation/CallMode/CallButtons.tsx:374
+#: src/features/Conversation/CallMode/CallButtons.tsx:445
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Stop"
@@ -9313,32 +9314,32 @@ msgstr "Try for free"
 msgid "Turkish Learning Plan"
 msgstr "Turkish Learning Plan"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:238
+#: src/features/Conversation/CallMode/CallButtons.tsx:306
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "Turn off subtitles"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:246
+#: src/features/Conversation/CallMode/CallButtons.tsx:315
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "Turn off video"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/CallMode/CallButtons.tsx:296
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "Turn off volume"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:238
+#: src/features/Conversation/CallMode/CallButtons.tsx:306
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "Turn on subtitles"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:246
+#: src/features/Conversation/CallMode/CallButtons.tsx:315
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "Turn on video"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/CallMode/CallButtons.tsx:296
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "Turn on volume"
@@ -9393,11 +9394,6 @@ msgstr "Unlimited answer reviews"
 #. js-lingui-explicit-id
 msgid "Unlock full interview preparation"
 msgstr "Unlock full interview preparation"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:220
-#. js-lingui-explicit-id
-msgid "Unmute microphone"
-msgstr "Unmute microphone"
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -9464,7 +9460,7 @@ msgstr "Username:"
 msgid "Users who viewed this post"
 msgstr "Users who viewed this post"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:300
+#: src/features/Conversation/CallMode/CallButtons.tsx:371
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your plan "
@@ -10579,12 +10575,12 @@ msgstr "Your Language Level"
 msgid "Your Message"
 msgstr "Your Message"
 
-#: src/features/Conversation/ConversationCanvas.tsx:748
+#: src/features/Conversation/ConversationCanvas.tsx:747
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Your message..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:331
+#: src/features/Conversation/CallMode/CallButtons.tsx:402
 #. js-lingui-explicit-id
 msgid "Your Message:"
 msgstr "Your Message:"
@@ -10655,6 +10651,21 @@ msgstr ""
 "— it’s important to engage in this short conversation before jumping into "
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
+
+#: src/features/Conversation/ConversationCanvas.tsx:694
+#. js-lingui-explicit-id
+#~ msgid "Call mode is coming soon!"
+#~ msgstr "Call mode is coming soon!"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:220
+#. js-lingui-explicit-id
+#~ msgid "Mute microphone"
+#~ msgstr "Mute microphone"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:220
+#. js-lingui-explicit-id
+#~ msgid "Unmute microphone"
+#~ msgstr "Unmute microphone"
 
 #: src/features/Conversation/ConversationCanvas.tsx:516
 #. js-lingui-explicit-id

@@ -597,7 +597,7 @@ msgstr "AI 튜터 비용"
 msgid "AI Tutor Updates"
 msgstr "AI 튜터 업데이트"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#: src/features/Conversation/CallMode/CallButtons.tsx:359
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AI 음성"
@@ -1155,16 +1155,11 @@ msgstr "C# 백엔드 면접 준비 테스트"
 msgid "Caching Strategies"
 msgstr "캐싱 전략"
 
-#: src/features/Conversation/ConversationCanvas.tsx:703
+#: src/features/Conversation/ConversationCanvas.tsx:702
 #: src/features/Goal/Quiz/QuizPage2.tsx:321
 #. js-lingui-explicit-id
 msgid "Call mode"
 msgstr "콜 모드"
-
-#: src/features/Conversation/ConversationCanvas.tsx:694
-#. js-lingui-explicit-id
-msgid "Call mode is coming soon!"
-msgstr "통화 모드가 곧 출시됩니다!"
 
 #: src/features/RolePlay/rolePlayData.tsx:507
 #. js-lingui-explicit-id
@@ -1216,7 +1211,8 @@ msgstr "FluencyPal을 무료로 사용할 수 있나요?"
 msgid "Cancel"
 msgstr "취소"
 
-#: src/features/Conversation/ConversationCanvas.tsx:895
+#: src/features/Conversation/CallMode/CallButtons.tsx:264
+#: src/features/Conversation/ConversationCanvas.tsx:894
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "녹음 취소"
@@ -1386,7 +1382,7 @@ msgid ""
 "rambling."
 msgstr "명확한 시스템 설계 구조. 마침내 횡설수설하지 않고 트레이드오프를 설명했습니다."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:414
+#: src/features/Conversation/CallMode/CallButtons.tsx:485
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:140
 #: src/features/Header/NeedHelpModal.tsx:181
@@ -2299,6 +2295,11 @@ msgstr "연습 섹션에서 통화 모드를 꼭 시도해 보세요!"
 msgid "Done"
 msgstr "완료"
 
+#: src/features/Conversation/CallMode/CallButtons.tsx:252
+#. js-lingui-explicit-id
+msgid "Done recording"
+msgstr "녹음 완료"
+
 #: src/features/Landing/LandingPage.tsx:196
 #. js-lingui-explicit-id
 msgid "Don’t let mistakes stop you."
@@ -2356,7 +2357,7 @@ msgstr "바쁜 일정 속에서도 영어 말하기 능력을 향상시키는 �
 msgid "Email"
 msgstr "이메일"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:297
+#: src/features/Conversation/CallMode/CallButtons.tsx:368
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your plan to access "
@@ -3740,7 +3741,7 @@ msgstr "건강"
 msgid "Help"
 msgstr "도움말"
 
-#: src/features/Conversation/ConversationCanvas.tsx:726
+#: src/features/Conversation/ConversationCanvas.tsx:725
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "답변 도움"
@@ -5538,7 +5539,7 @@ msgid "Loading.."
 msgstr "로딩 중.."
 
 #: src/features/Chat/SubmitForm.tsx:83
-#: src/features/Conversation/CallMode/CallButtons.tsx:341
+#: src/features/Conversation/CallMode/CallButtons.tsx:412
 #: src/features/Conversation/ConversationCanvas.tsx:221
 #: src/features/Conversation/ConversationPage.tsx:106
 #: src/features/Conversation/ConversationPage.tsx:115
@@ -5751,8 +5752,8 @@ msgstr "마이크 설정"
 msgid "Minutes"
 msgstr "분"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:203
-#: src/features/Conversation/ConversationCanvas.tsx:797
+#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/ConversationCanvas.tsx:796
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "미션 완료"
@@ -5842,11 +5843,6 @@ msgstr "대부분의 인터뷰에는 클래식한 \"강점과 약점\" 질문이
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
 msgstr "영화, 책, 또는 음악"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:220
-#. js-lingui-explicit-id
-msgid "Mute microphone"
-msgstr "마이크 음소거"
 
 #: src/features/Game/GamePage.tsx:149
 #. js-lingui-explicit-id
@@ -6008,7 +6004,7 @@ msgstr "신용카드 필요 없음"
 msgid "No interviews found"
 msgstr "인터뷰가 없습니다"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:342
+#: src/features/Conversation/CallMode/CallButtons.tsx:413
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "메시지가 아직 기록되지 않았습니다."
@@ -6246,8 +6242,8 @@ msgstr "텔레그램에서 열기"
 msgid "Open personal plan"
 msgstr "개인 계획 열기"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:211
-#: src/features/Conversation/ConversationCanvas.tsx:805
+#: src/features/Conversation/CallMode/CallButtons.tsx:237
+#: src/features/Conversation/ConversationCanvas.tsx:804
 #: src/features/Game/Battle/BattleCard.tsx:306
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7058,13 +7054,13 @@ msgstr ""
 
 #: src/features/Chat/SubmitForm.tsx:301
 #: src/features/Conversation/ConversationCanvas.tsx:566
-#: src/features/Conversation/ConversationCanvas.tsx:819
+#: src/features/Conversation/ConversationCanvas.tsx:818
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "다시 녹음하다"
 
-#: src/features/Conversation/ConversationCanvas.tsx:835
+#: src/features/Conversation/ConversationCanvas.tsx:834
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "재작성"
@@ -7226,7 +7222,7 @@ msgstr "실생활 영어 상황"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "실생활 역할극을 통한 고급 영어 연습"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#: src/features/Conversation/CallMode/CallButtons.tsx:359
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "실시간 대화"
@@ -7323,7 +7319,12 @@ msgstr "답변 녹음"
 msgid "Record answer"
 msgstr "기록된 답변"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:374
+#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#. js-lingui-explicit-id
+msgid "Record message"
+msgstr "메시지 녹음"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:445
 #: src/features/Conversation/ConversationCanvas.tsx:607
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -7668,7 +7669,7 @@ msgstr "로그인 링크 보내기"
 
 #: src/features/Chat/SubmitForm.tsx:203
 #: src/features/Chat/SubmitForm.tsx:317
-#: src/features/Conversation/CallMode/CallButtons.tsx:401
+#: src/features/Conversation/CallMode/CallButtons.tsx:472
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "메시지 보내기"
@@ -8236,7 +8237,7 @@ msgstr ""
 "있는 답변을 제공하는 연습을 위해 프롬프트를 사용하세요. 어떤 직업 인터뷰에서든 돋보일 수 있도록 도움이 될 것입니다."
 
 #: src/features/Chat/SubmitForm.tsx:277
-#: src/features/Conversation/CallMode/CallButtons.tsx:374
+#: src/features/Conversation/CallMode/CallButtons.tsx:445
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "정지"
@@ -8827,32 +8828,32 @@ msgstr "무료로 시도해보세요"
 msgid "Turkish Learning Plan"
 msgstr "터키어 학습 계획"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:238
+#: src/features/Conversation/CallMode/CallButtons.tsx:306
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "자막 끄기"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:246
+#: src/features/Conversation/CallMode/CallButtons.tsx:315
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "비디오 끄기"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/CallMode/CallButtons.tsx:296
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "볼륨 끄기"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:238
+#: src/features/Conversation/CallMode/CallButtons.tsx:306
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "자막 켜기"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:246
+#: src/features/Conversation/CallMode/CallButtons.tsx:315
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "비디오 켜기"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/CallMode/CallButtons.tsx:296
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "볼륨 켜기"
@@ -8907,11 +8908,6 @@ msgstr "무제한 답변 검토"
 #. js-lingui-explicit-id
 msgid "Unlock full interview preparation"
 msgstr "전체 인터뷰 준비 잠금 해제"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:220
-#. js-lingui-explicit-id
-msgid "Unmute microphone"
-msgstr "마이크로폰 음소거 해제"
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -8976,7 +8972,7 @@ msgstr "사용자 이름:"
 msgid "Users who viewed this post"
 msgstr "이 게시물을 본 사용자"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:300
+#: src/features/Conversation/CallMode/CallButtons.tsx:371
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your plan "
@@ -10008,12 +10004,12 @@ msgstr "당신의 언어 수준"
 msgid "Your Message"
 msgstr "당신의 메시지"
 
-#: src/features/Conversation/ConversationCanvas.tsx:748
+#: src/features/Conversation/ConversationCanvas.tsx:747
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "당신의 메시지..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:331
+#: src/features/Conversation/CallMode/CallButtons.tsx:402
 #. js-lingui-explicit-id
 msgid "Your Message:"
 msgstr "당신의 메시지:"
@@ -10081,6 +10077,21 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Conversation/ConversationCanvas.tsx:694
+#. js-lingui-explicit-id
+#~ msgid "Call mode is coming soon!"
+#~ msgstr "통화 모드가 곧 출시됩니다!"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:220
+#. js-lingui-explicit-id
+#~ msgid "Mute microphone"
+#~ msgstr "마이크 음소거"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:220
+#. js-lingui-explicit-id
+#~ msgid "Unmute microphone"
+#~ msgstr "마이크로폰 음소거 해제"
 
 #: src/features/Conversation/ConversationCanvas.tsx:516
 #. js-lingui-explicit-id

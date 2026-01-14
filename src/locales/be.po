@@ -634,7 +634,7 @@ msgstr "Кошт AI-рэпетытара"
 msgid "AI Tutor Updates"
 msgstr "Абнаўленні AI настаўніка"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#: src/features/Conversation/CallMode/CallButtons.tsx:359
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "Голас AI"
@@ -1213,16 +1213,11 @@ msgstr "Тэст гатоўнасці да сумоўя на Backend-распр�
 msgid "Caching Strategies"
 msgstr "Стратэгіі кэшавання"
 
-#: src/features/Conversation/ConversationCanvas.tsx:703
+#: src/features/Conversation/ConversationCanvas.tsx:702
 #: src/features/Goal/Quiz/QuizPage2.tsx:321
 #. js-lingui-explicit-id
 msgid "Call mode"
 msgstr "Рэжым выкліку"
-
-#: src/features/Conversation/ConversationCanvas.tsx:694
-#. js-lingui-explicit-id
-msgid "Call mode is coming soon!"
-msgstr "Рэжым званка хутка будзе даступны!"
 
 #: src/features/RolePlay/rolePlayData.tsx:507
 #. js-lingui-explicit-id
@@ -1274,7 +1269,8 @@ msgstr "Ці магу я выкарыстоўваць FluencyPal бясплат�
 msgid "Cancel"
 msgstr "Скасаваць"
 
-#: src/features/Conversation/ConversationCanvas.tsx:895
+#: src/features/Conversation/CallMode/CallButtons.tsx:264
+#: src/features/Conversation/ConversationCanvas.tsx:894
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Скасаваць запіс"
@@ -1458,7 +1454,7 @@ msgstr ""
 "Чыстая структура для праектавання сістэмы. Я нарэшце растлумачыў кампрамісы "
 "без залішніх падрабязнасцяў."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:414
+#: src/features/Conversation/CallMode/CallButtons.tsx:485
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:140
 #: src/features/Header/NeedHelpModal.tsx:181
@@ -2436,6 +2432,11 @@ msgstr "Не забудзьцеся паспрабаваць рэжым выкл
 msgid "Done"
 msgstr "Выканана"
 
+#: src/features/Conversation/CallMode/CallButtons.tsx:252
+#. js-lingui-explicit-id
+msgid "Done recording"
+msgstr "Гатова запісваць"
+
 #: src/features/Landing/LandingPage.tsx:196
 #. js-lingui-explicit-id
 msgid "Don’t let mistakes stop you."
@@ -2497,7 +2498,7 @@ msgstr ""
 msgid "Email"
 msgstr "Электронная пошта"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:297
+#: src/features/Conversation/CallMode/CallButtons.tsx:368
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your plan to access "
@@ -4022,7 +4023,7 @@ msgstr "Здароўе"
 msgid "Help"
 msgstr "Дапамога"
 
-#: src/features/Conversation/ConversationCanvas.tsx:726
+#: src/features/Conversation/ConversationCanvas.tsx:725
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Дапамагчы з адказам"
@@ -5988,7 +5989,7 @@ msgid "Loading.."
 msgstr "Загрузка.."
 
 #: src/features/Chat/SubmitForm.tsx:83
-#: src/features/Conversation/CallMode/CallButtons.tsx:341
+#: src/features/Conversation/CallMode/CallButtons.tsx:412
 #: src/features/Conversation/ConversationCanvas.tsx:221
 #: src/features/Conversation/ConversationPage.tsx:106
 #: src/features/Conversation/ConversationPage.tsx:115
@@ -6211,8 +6212,8 @@ msgstr "Налада мікрафона"
 msgid "Minutes"
 msgstr "Хвіліны"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:203
-#: src/features/Conversation/ConversationCanvas.tsx:797
+#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/ConversationCanvas.tsx:796
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Місія выканана"
@@ -6306,11 +6307,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
 msgstr "Фільмы, кнігі або музыка"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:220
-#. js-lingui-explicit-id
-msgid "Mute microphone"
-msgstr "Выключыць мікрафон"
 
 #: src/features/Game/GamePage.tsx:149
 #. js-lingui-explicit-id
@@ -6478,7 +6474,7 @@ msgstr "Не патрабуецца крэдытная карта"
 msgid "No interviews found"
 msgstr "Интэрв'ю не знойдзеныя"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:342
+#: src/features/Conversation/CallMode/CallButtons.tsx:413
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "Яшчэ няма захаваных паведамленняў."
@@ -6731,8 +6727,8 @@ msgstr "Адкрыць у Telegram"
 msgid "Open personal plan"
 msgstr "Адкрыць персанальны план"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:211
-#: src/features/Conversation/ConversationCanvas.tsx:805
+#: src/features/Conversation/CallMode/CallButtons.tsx:237
+#: src/features/Conversation/ConversationCanvas.tsx:804
 #: src/features/Game/Battle/BattleCard.tsx:306
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7600,13 +7596,13 @@ msgstr "Ацэнка"
 
 #: src/features/Chat/SubmitForm.tsx:301
 #: src/features/Conversation/ConversationCanvas.tsx:566
-#: src/features/Conversation/ConversationCanvas.tsx:819
+#: src/features/Conversation/ConversationCanvas.tsx:818
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Перазапісаць"
 
-#: src/features/Conversation/ConversationCanvas.tsx:835
+#: src/features/Conversation/ConversationCanvas.tsx:834
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Перапісаць"
@@ -7777,7 +7773,7 @@ msgstr "Рэальныя англійскія сцэнары"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Рэальная рольгульня для практыкі адмыслованага англійскага"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#: src/features/Conversation/CallMode/CallButtons.tsx:359
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "Размова ў рэжыме рэальнага часу"
@@ -7882,7 +7878,12 @@ msgstr "Запісаць адказ"
 msgid "Record answer"
 msgstr "Запісаць адказ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:374
+#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#. js-lingui-explicit-id
+msgid "Record message"
+msgstr "Запісаць паведамленне"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:445
 #: src/features/Conversation/ConversationCanvas.tsx:607
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -8240,7 +8241,7 @@ msgstr "Дашліце мне спасылку для ўваходу"
 
 #: src/features/Chat/SubmitForm.tsx:203
 #: src/features/Chat/SubmitForm.tsx:317
-#: src/features/Conversation/CallMode/CallButtons.tsx:401
+#: src/features/Conversation/CallMode/CallButtons.tsx:472
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Адправіць паведамленне"
@@ -8847,7 +8848,7 @@ msgstr ""
 "пераканаўчых адказаў, якія могуць вылучыць вас на любым працоўным інтэрв'ю."
 
 #: src/features/Chat/SubmitForm.tsx:277
-#: src/features/Conversation/CallMode/CallButtons.tsx:374
+#: src/features/Conversation/CallMode/CallButtons.tsx:445
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Стоп"
@@ -9480,32 +9481,32 @@ msgstr "Паспрабуйце бясплатна"
 msgid "Turkish Learning Plan"
 msgstr "План вучэння турэцкай мовы"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:238
+#: src/features/Conversation/CallMode/CallButtons.tsx:306
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "Выключыць субтытры"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:246
+#: src/features/Conversation/CallMode/CallButtons.tsx:315
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "Выключыць відэа"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/CallMode/CallButtons.tsx:296
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "Адключыць гук"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:238
+#: src/features/Conversation/CallMode/CallButtons.tsx:306
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "Уключыць субтытры"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:246
+#: src/features/Conversation/CallMode/CallButtons.tsx:315
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "Уключыць відэа"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/CallMode/CallButtons.tsx:296
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "Уключыце гук"
@@ -9560,11 +9561,6 @@ msgstr "Неабмежаваныя перавіркі адказаў"
 #. js-lingui-explicit-id
 msgid "Unlock full interview preparation"
 msgstr "Разблакіраваць поўную падрыхтоўку да інтэрв'ю"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:220
-#. js-lingui-explicit-id
-msgid "Unmute microphone"
-msgstr "Уключыць мікрафон"
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -9633,7 +9629,7 @@ msgstr "Імя карыстальніка:"
 msgid "Users who viewed this post"
 msgstr "Карыстальнікі, якія праглядалі гэты пост"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:300
+#: src/features/Conversation/CallMode/CallButtons.tsx:371
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your plan "
@@ -10763,12 +10759,12 @@ msgstr "Ваш узровень валоды"
 msgid "Your Message"
 msgstr "Ваша паведамленне"
 
-#: src/features/Conversation/ConversationCanvas.tsx:748
+#: src/features/Conversation/ConversationCanvas.tsx:747
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Ваша паведамленне..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:331
+#: src/features/Conversation/CallMode/CallButtons.tsx:402
 #. js-lingui-explicit-id
 msgid "Your Message:"
 msgstr "Вашае паведамленне:"
@@ -10838,6 +10834,21 @@ msgid ""
 msgstr ""
 "— важна заняцца гэтай кароткай размовай, перш чым прыступіць да прафесійных "
 "тэм. Вось некаторыя карысныя англійскія фразы для пачатку інтэрв'ю:"
+
+#: src/features/Conversation/ConversationCanvas.tsx:694
+#. js-lingui-explicit-id
+#~ msgid "Call mode is coming soon!"
+#~ msgstr "Рэжым званка хутка будзе даступны!"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:220
+#. js-lingui-explicit-id
+#~ msgid "Mute microphone"
+#~ msgstr "Выключыць мікрафон"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:220
+#. js-lingui-explicit-id
+#~ msgid "Unmute microphone"
+#~ msgstr "Уключыць мікрафон"
 
 #: src/features/Conversation/ConversationCanvas.tsx:516
 #. js-lingui-explicit-id

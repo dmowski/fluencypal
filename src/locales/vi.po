@@ -633,7 +633,7 @@ msgstr "Chi phí gia sư AI"
 msgid "AI Tutor Updates"
 msgstr "Cập nhật Gia sư AI"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#: src/features/Conversation/CallMode/CallButtons.tsx:359
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "Giọng nói AI"
@@ -1206,16 +1206,11 @@ msgstr "Bài Kiểm Tra Sẵn Sàng Phỏng Vấn Backend C#"
 msgid "Caching Strategies"
 msgstr "Chiến Lược Lưu Bộ Nhớ Đệm"
 
-#: src/features/Conversation/ConversationCanvas.tsx:703
+#: src/features/Conversation/ConversationCanvas.tsx:702
 #: src/features/Goal/Quiz/QuizPage2.tsx:321
 #. js-lingui-explicit-id
 msgid "Call mode"
 msgstr "Chế độ gọi"
-
-#: src/features/Conversation/ConversationCanvas.tsx:694
-#. js-lingui-explicit-id
-msgid "Call mode is coming soon!"
-msgstr "Chế độ cuộc gọi sắp ra mắt!"
 
 #: src/features/RolePlay/rolePlayData.tsx:507
 #. js-lingui-explicit-id
@@ -1267,7 +1262,8 @@ msgstr "Tôi có thể sử dụng FluencyPal miễn phí không?"
 msgid "Cancel"
 msgstr "Hủy bỏ"
 
-#: src/features/Conversation/ConversationCanvas.tsx:895
+#: src/features/Conversation/CallMode/CallButtons.tsx:264
+#: src/features/Conversation/ConversationCanvas.tsx:894
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Hủy bỏ ghi âm"
@@ -1450,7 +1446,7 @@ msgstr ""
 "Cấu trúc rõ ràng cho thiết kế hệ thống. Cuối cùng tôi đã giải thích được sự "
 "đánh đổi mà không dài dòng."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:414
+#: src/features/Conversation/CallMode/CallButtons.tsx:485
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:140
 #: src/features/Header/NeedHelpModal.tsx:181
@@ -2434,6 +2430,11 @@ msgstr "Đừng quên thử chế độ gọi trong phần thực hành!"
 msgid "Done"
 msgstr "Hoàn thành"
 
+#: src/features/Conversation/CallMode/CallButtons.tsx:252
+#. js-lingui-explicit-id
+msgid "Done recording"
+msgstr "Hoàn tất ghi âm"
+
 #: src/features/Landing/LandingPage.tsx:196
 #. js-lingui-explicit-id
 msgid "Don’t let mistakes stop you."
@@ -2495,7 +2496,7 @@ msgstr ""
 msgid "Email"
 msgstr "Email"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:297
+#: src/features/Conversation/CallMode/CallButtons.tsx:368
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your plan to access "
@@ -4016,7 +4017,7 @@ msgstr "Sức khỏe"
 msgid "Help"
 msgstr "Trợ giúp"
 
-#: src/features/Conversation/ConversationCanvas.tsx:726
+#: src/features/Conversation/ConversationCanvas.tsx:725
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Giúp với câu trả lời"
@@ -5979,7 +5980,7 @@ msgid "Loading.."
 msgstr "Đang tải.."
 
 #: src/features/Chat/SubmitForm.tsx:83
-#: src/features/Conversation/CallMode/CallButtons.tsx:341
+#: src/features/Conversation/CallMode/CallButtons.tsx:412
 #: src/features/Conversation/ConversationCanvas.tsx:221
 #: src/features/Conversation/ConversationPage.tsx:106
 #: src/features/Conversation/ConversationPage.tsx:115
@@ -6204,8 +6205,8 @@ msgstr "Thiết lập Microphone"
 msgid "Minutes"
 msgstr "Phút"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:203
-#: src/features/Conversation/ConversationCanvas.tsx:797
+#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/ConversationCanvas.tsx:796
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Nhiệm vụ hoàn thành"
@@ -6297,11 +6298,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
 msgstr "Phim, sách, hoặc âm nhạc"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:220
-#. js-lingui-explicit-id
-msgid "Mute microphone"
-msgstr "Tắt microphone"
 
 #: src/features/Game/GamePage.tsx:149
 #. js-lingui-explicit-id
@@ -6469,7 +6465,7 @@ msgstr "Không cần thẻ tín dụng"
 msgid "No interviews found"
 msgstr "Không tìm thấy buổi phỏng vấn nào"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:342
+#: src/features/Conversation/CallMode/CallButtons.tsx:413
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "Chưa có tin nhắn nào được ghi lại."
@@ -6723,8 +6719,8 @@ msgstr "Mở trong Telegram"
 msgid "Open personal plan"
 msgstr "Mở kế hoạch cá nhân"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:211
-#: src/features/Conversation/ConversationCanvas.tsx:805
+#: src/features/Conversation/CallMode/CallButtons.tsx:237
+#: src/features/Conversation/ConversationCanvas.tsx:804
 #: src/features/Game/Battle/BattleCard.tsx:306
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7593,13 +7589,13 @@ msgstr "Đánh giá"
 
 #: src/features/Chat/SubmitForm.tsx:301
 #: src/features/Conversation/ConversationCanvas.tsx:566
-#: src/features/Conversation/ConversationCanvas.tsx:819
+#: src/features/Conversation/ConversationCanvas.tsx:818
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Ghi lại"
 
-#: src/features/Conversation/ConversationCanvas.tsx:835
+#: src/features/Conversation/ConversationCanvas.tsx:834
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Viết lại"
@@ -7770,7 +7766,7 @@ msgstr "Cảnh Hàng Ngày Trong Tiếng Anh"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Thực Hành Đóng Vai Thực Tế Để Nâng Cao Kỹ Năng Tiếng Anh"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#: src/features/Conversation/CallMode/CallButtons.tsx:359
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "Hội thoại theo thời gian thực"
@@ -7874,7 +7870,12 @@ msgstr "Ghi âm câu trả lời"
 msgid "Record answer"
 msgstr "Ghi âm câu trả lời"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:374
+#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#. js-lingui-explicit-id
+msgid "Record message"
+msgstr "Ghi âm tin nhắn"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:445
 #: src/features/Conversation/ConversationCanvas.tsx:607
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -8237,7 +8238,7 @@ msgstr "Gửi cho tôi liên kết đăng nhập"
 
 #: src/features/Chat/SubmitForm.tsx:203
 #: src/features/Chat/SubmitForm.tsx:317
-#: src/features/Conversation/CallMode/CallButtons.tsx:401
+#: src/features/Conversation/CallMode/CallButtons.tsx:472
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Gửi Tin Nhắn"
@@ -8844,7 +8845,7 @@ msgstr ""
 "cuộc phỏng vấn công việc nào."
 
 #: src/features/Chat/SubmitForm.tsx:277
-#: src/features/Conversation/CallMode/CallButtons.tsx:374
+#: src/features/Conversation/CallMode/CallButtons.tsx:445
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Dừng"
@@ -9479,32 +9480,32 @@ msgstr "Dùng thử miễn phí"
 msgid "Turkish Learning Plan"
 msgstr "Kế Hoạch Học Tiếng Thổ Nhĩ Kỳ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:238
+#: src/features/Conversation/CallMode/CallButtons.tsx:306
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "Tắt phụ đề"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:246
+#: src/features/Conversation/CallMode/CallButtons.tsx:315
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "Tắt video"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/CallMode/CallButtons.tsx:296
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "Tắt âm lượng"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:238
+#: src/features/Conversation/CallMode/CallButtons.tsx:306
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "Bật phụ đề"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:246
+#: src/features/Conversation/CallMode/CallButtons.tsx:315
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "Bật video"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/CallMode/CallButtons.tsx:296
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "Bật âm lượng"
@@ -9559,11 +9560,6 @@ msgstr "Đánh giá câu trả lời không giới hạn"
 #. js-lingui-explicit-id
 msgid "Unlock full interview preparation"
 msgstr "Mở khóa chuẩn bị phỏng vấn đầy đủ"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:220
-#. js-lingui-explicit-id
-msgid "Unmute microphone"
-msgstr "Bật tiếng micro"
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -9632,7 +9628,7 @@ msgstr "Tên người dùng:"
 msgid "Users who viewed this post"
 msgstr "Người dùng đã xem bài viết này"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:300
+#: src/features/Conversation/CallMode/CallButtons.tsx:371
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your plan "
@@ -10764,12 +10760,12 @@ msgstr "Mức độ ngôn ngữ của bạn"
 msgid "Your Message"
 msgstr "Tin nhắn của bạn"
 
-#: src/features/Conversation/ConversationCanvas.tsx:748
+#: src/features/Conversation/ConversationCanvas.tsx:747
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Tin nhắn của bạn..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:331
+#: src/features/Conversation/CallMode/CallButtons.tsx:402
 #. js-lingui-explicit-id
 msgid "Your Message:"
 msgstr "Tin nhắn của bạn:"
@@ -10842,6 +10838,21 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Conversation/ConversationCanvas.tsx:694
+#. js-lingui-explicit-id
+#~ msgid "Call mode is coming soon!"
+#~ msgstr "Chế độ cuộc gọi sắp ra mắt!"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:220
+#. js-lingui-explicit-id
+#~ msgid "Mute microphone"
+#~ msgstr "Tắt microphone"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:220
+#. js-lingui-explicit-id
+#~ msgid "Unmute microphone"
+#~ msgstr "Bật tiếng micro"
 
 #: src/features/Conversation/ConversationCanvas.tsx:516
 #. js-lingui-explicit-id

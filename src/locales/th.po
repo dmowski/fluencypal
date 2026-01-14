@@ -635,7 +635,7 @@ msgstr "ค่าใช้จ่ายของติวเตอร์ AI"
 msgid "AI Tutor Updates"
 msgstr "การอัปเดตติวเตอร์ AI"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#: src/features/Conversation/CallMode/CallButtons.tsx:359
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "เสียง AI"
@@ -1211,16 +1211,11 @@ msgstr "การทดสอบความพร้อมสัมภาษณ
 msgid "Caching Strategies"
 msgstr "นโยบายการแคช"
 
-#: src/features/Conversation/ConversationCanvas.tsx:703
+#: src/features/Conversation/ConversationCanvas.tsx:702
 #: src/features/Goal/Quiz/QuizPage2.tsx:321
 #. js-lingui-explicit-id
 msgid "Call mode"
 msgstr "โหมดโทร"
-
-#: src/features/Conversation/ConversationCanvas.tsx:694
-#. js-lingui-explicit-id
-msgid "Call mode is coming soon!"
-msgstr "โหมดการโทรกำลังจะมาเร็ว ๆ นี้!"
 
 #: src/features/RolePlay/rolePlayData.tsx:507
 #. js-lingui-explicit-id
@@ -1274,7 +1269,8 @@ msgstr "ฉันสามารถใช้ FluencyPal ได้ฟรีหร
 msgid "Cancel"
 msgstr "ยกเลิก"
 
-#: src/features/Conversation/ConversationCanvas.tsx:895
+#: src/features/Conversation/CallMode/CallButtons.tsx:264
+#: src/features/Conversation/ConversationCanvas.tsx:894
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "ยกเลิกการบันทึก"
@@ -1457,7 +1453,7 @@ msgstr ""
 "โครงสร้างที่ชัดเจนสำหรับการออกแบบระบบ "
 "ในที่สุดฉันก็อธิบายข้อแลกเปลี่ยนโดยไม่พูดวกไปวนมา"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:414
+#: src/features/Conversation/CallMode/CallButtons.tsx:485
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:140
 #: src/features/Header/NeedHelpModal.tsx:181
@@ -2434,6 +2430,11 @@ msgstr "อย่าลืมลองโหมดการโทรในส่
 msgid "Done"
 msgstr "เสร็จแล้ว"
 
+#: src/features/Conversation/CallMode/CallButtons.tsx:252
+#. js-lingui-explicit-id
+msgid "Done recording"
+msgstr "บันทึกเสร็จสิ้น"
+
 #: src/features/Landing/LandingPage.tsx:196
 #. js-lingui-explicit-id
 msgid "Don’t let mistakes stop you."
@@ -2495,7 +2496,7 @@ msgstr ""
 msgid "Email"
 msgstr "อีเมล"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:297
+#: src/features/Conversation/CallMode/CallButtons.tsx:368
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your plan to access "
@@ -4005,7 +4006,7 @@ msgstr "สุขภาพ"
 msgid "Help"
 msgstr "ขอความช่วยเหลือ"
 
-#: src/features/Conversation/ConversationCanvas.tsx:726
+#: src/features/Conversation/ConversationCanvas.tsx:725
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "ช่วยเหลือเรื่องคำตอบ"
@@ -5965,7 +5966,7 @@ msgid "Loading.."
 msgstr "กำลังโหลด.."
 
 #: src/features/Chat/SubmitForm.tsx:83
-#: src/features/Conversation/CallMode/CallButtons.tsx:341
+#: src/features/Conversation/CallMode/CallButtons.tsx:412
 #: src/features/Conversation/ConversationCanvas.tsx:221
 #: src/features/Conversation/ConversationPage.tsx:106
 #: src/features/Conversation/ConversationPage.tsx:115
@@ -6186,8 +6187,8 @@ msgstr "การตั้งค่าไมโครโฟน"
 msgid "Minutes"
 msgstr "นาที"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:203
-#: src/features/Conversation/ConversationCanvas.tsx:797
+#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/ConversationCanvas.tsx:796
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "ภารกิจเสร็จสิ้น"
@@ -6279,11 +6280,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
 msgstr "ภาพยนตร์ หนังสือ หรือเพลง"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:220
-#. js-lingui-explicit-id
-msgid "Mute microphone"
-msgstr "ปิดไมโครโฟน"
 
 #: src/features/Game/GamePage.tsx:149
 #. js-lingui-explicit-id
@@ -6451,7 +6447,7 @@ msgstr "ไม่ต้องใช้บัตรเครดิต"
 msgid "No interviews found"
 msgstr "ไม่พบการสัมภาษณ์"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:342
+#: src/features/Conversation/CallMode/CallButtons.tsx:413
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "ยังไม่มีข้อความบันทึก"
@@ -6706,8 +6702,8 @@ msgstr "เปิดใน Telegram"
 msgid "Open personal plan"
 msgstr "เปิดแผนส่วนบุคคล"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:211
-#: src/features/Conversation/ConversationCanvas.tsx:805
+#: src/features/Conversation/CallMode/CallButtons.tsx:237
+#: src/features/Conversation/ConversationCanvas.tsx:804
 #: src/features/Game/Battle/BattleCard.tsx:306
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7561,13 +7557,13 @@ msgstr "การให้คะแนน"
 
 #: src/features/Chat/SubmitForm.tsx:301
 #: src/features/Conversation/ConversationCanvas.tsx:566
-#: src/features/Conversation/ConversationCanvas.tsx:819
+#: src/features/Conversation/ConversationCanvas.tsx:818
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:255
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "บันทึกใหม่"
 
-#: src/features/Conversation/ConversationCanvas.tsx:835
+#: src/features/Conversation/ConversationCanvas.tsx:834
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "เขียนใหม่"
@@ -7732,7 +7728,7 @@ msgstr "สถานการณ์ภาษาอังกฤษในชีว
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "การเล่นบทบาทจริงสำหรับการฝึกภาษาอังกฤษขั้นสูง"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#: src/features/Conversation/CallMode/CallButtons.tsx:359
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "การสนทนาแบบเรียลไทม์"
@@ -7832,7 +7828,12 @@ msgstr "บันทึกคำตอบ"
 msgid "Record answer"
 msgstr "บันทึกคำตอบ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:374
+#: src/features/Conversation/CallMode/CallButtons.tsx:288
+#. js-lingui-explicit-id
+msgid "Record message"
+msgstr "บันทึกข้อความ"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:445
 #: src/features/Conversation/ConversationCanvas.tsx:607
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -8189,7 +8190,7 @@ msgstr "ส่งลิงก์สำหรับเข้าสู่ระบ
 
 #: src/features/Chat/SubmitForm.tsx:203
 #: src/features/Chat/SubmitForm.tsx:317
-#: src/features/Conversation/CallMode/CallButtons.tsx:401
+#: src/features/Conversation/CallMode/CallButtons.tsx:472
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "ส่งข้อความ"
@@ -8788,7 +8789,7 @@ msgstr ""
 "ที่จะช่วยคุณโดดเด่นในสัมภาษณ์งานใด ๆ."
 
 #: src/features/Chat/SubmitForm.tsx:277
-#: src/features/Conversation/CallMode/CallButtons.tsx:374
+#: src/features/Conversation/CallMode/CallButtons.tsx:445
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "หยุด"
@@ -9419,32 +9420,32 @@ msgstr "ลองใช้ฟรี"
 msgid "Turkish Learning Plan"
 msgstr "แผนการเรียนรู้ภาษาตุรกี"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:238
+#: src/features/Conversation/CallMode/CallButtons.tsx:306
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "ปิดคำบรรยาย"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:246
+#: src/features/Conversation/CallMode/CallButtons.tsx:315
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "ปิดวิดีโอ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/CallMode/CallButtons.tsx:296
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "ปิดเสียง"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:238
+#: src/features/Conversation/CallMode/CallButtons.tsx:306
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "เปิดคำบรรยาย"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:246
+#: src/features/Conversation/CallMode/CallButtons.tsx:315
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "เปิดวิดีโอ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:229
+#: src/features/Conversation/CallMode/CallButtons.tsx:296
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "เปิดเสียง"
@@ -9499,11 +9500,6 @@ msgstr "การตรวจสอบคำตอบไม่จำกัด"
 #. js-lingui-explicit-id
 msgid "Unlock full interview preparation"
 msgstr "ปลดล็อกการเตรียมสัมภาษณ์อย่างเต็มรูปแบบ"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:220
-#. js-lingui-explicit-id
-msgid "Unmute microphone"
-msgstr "เปิดไมโครโฟน"
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -9568,7 +9564,7 @@ msgstr "ชื่อผู้ใช้:"
 msgid "Users who viewed this post"
 msgstr "ผู้ใช้ที่ดูโพสต์นี้"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:300
+#: src/features/Conversation/CallMode/CallButtons.tsx:371
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your plan "
@@ -10689,12 +10685,12 @@ msgstr "ระดับภาษาของคุณ"
 msgid "Your Message"
 msgstr "ข้อความของคุณ"
 
-#: src/features/Conversation/ConversationCanvas.tsx:748
+#: src/features/Conversation/ConversationCanvas.tsx:747
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "ข้อความของคุณ..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:331
+#: src/features/Conversation/CallMode/CallButtons.tsx:402
 #. js-lingui-explicit-id
 msgid "Your Message:"
 msgstr "ข้อความของคุณ:"
@@ -10764,6 +10760,21 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Conversation/ConversationCanvas.tsx:694
+#. js-lingui-explicit-id
+#~ msgid "Call mode is coming soon!"
+#~ msgstr "โหมดการโทรกำลังจะมาเร็ว ๆ นี้!"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:220
+#. js-lingui-explicit-id
+#~ msgid "Mute microphone"
+#~ msgstr "ปิดไมโครโฟน"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:220
+#. js-lingui-explicit-id
+#~ msgid "Unmute microphone"
+#~ msgstr "เปิดไมโครโฟน"
 
 #: src/features/Conversation/ConversationCanvas.tsx:516
 #. js-lingui-explicit-id
