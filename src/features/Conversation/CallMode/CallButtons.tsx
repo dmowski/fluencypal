@@ -121,7 +121,7 @@ export const CallButtons = ({
 }) => {
   const { i18n } = useLingui();
 
-  const progress = lessonPlanAnalysis?.progress || 0;
+  const progress = lessonPlanAnalysis?.progress || 1;
 
   const [isShowVolumeWarning, setIsShowVolumeWarning] = useState(false);
   const [isShowMuteWarning, setIsShowMuteWarning] = useState(false);
@@ -207,7 +207,7 @@ export const CallButtons = ({
         width: "max-content",
         padding: "10px 10px 21px 10px",
         position: "relative",
-        bottom: progress > 99 ? "80px" : "0px",
+        bottom: progress > 99 ? "80px" : "-1px",
       }}
     >
       <Stack
@@ -219,6 +219,7 @@ export const CallButtons = ({
           height: "9px",
           borderRadius: "0",
           overflow: "hidden",
+          opacity: lessonPlanAnalysis ? 1 : 0,
         }}
       >
         <Stack

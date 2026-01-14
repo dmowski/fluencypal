@@ -29,16 +29,16 @@ import { useConversationAudio } from "../Audio/useConversationAudio";
 type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start" | "plan";
 
 const elementSteps: Record<PlanElementMode, Step[]> = {
-  conversation: ["intro", "mic", "plan", "start"],
+  conversation: ["intro", "mic", "webcam", "plan", "start"],
   words: ["intro", "mic", "words", "start"],
-  play: ["intro", "mic", "start"],
+  play: ["intro", "mic", "webcam", "start"],
   rule: ["intro", "mic", "rules", "start"],
 };
 
 const conversationModes: Record<PlanElementMode, ConversationMode> = {
-  conversation: "record",
+  conversation: "call",
   words: "record",
-  play: "record",
+  play: "call",
   rule: "record",
 };
 
