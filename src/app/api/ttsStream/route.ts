@@ -17,7 +17,6 @@ export async function GET(req: Request) {
     voice: voice as any,
     input,
     instructions: instructions || "Speak in a cheerful and positive tone.",
-    // consider response_format: "aac" for iOS friendliness
   });
 
   return new Response(resp.body as any, {
