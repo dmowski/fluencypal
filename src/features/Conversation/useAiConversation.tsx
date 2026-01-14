@@ -259,10 +259,6 @@ VISUAL_CONTEXT (latest): ${description}
   };
 
   const toggleConversationMode = (mode: ConversationMode) => {
-    if (!auth.isDev) {
-      alert("Call mode is coming soon!");
-      return;
-    }
     const isLimited = !access.isFullAppAccess;
     settings.setConversationMode(mode);
 
