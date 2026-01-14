@@ -109,6 +109,10 @@ class AudioQueuePlayer {
       throw new Error("AudioQueuePlayer: not unlocked. Call unlockFromGesture() first.");
     }
 
+    if (this.ctx.state === "suspended") {
+      await this.ctx.resume();
+    }
+
     // decodeAudioData may detach the buffer in some browsers; slice to be safe
     const decoded = await this.ctx.decodeAudioData(arrayBuffer.slice(0));
 
@@ -143,21 +147,29 @@ class AudioQueuePlayer {
       return;
     }
 
+    // If Safari suspended the context, resume it so automation works predictably
+    if (this.ctx.state === "suspended") {
+      await this.ctx.resume();
+    }
+
     const now = this.ctx.currentTime;
     const g = this.gain.gain;
 
+    // Fade out
     g.cancelScheduledValues(now);
     g.setValueAtTime(g.value, now);
     g.linearRampToValueAtTime(0.0001, now + ms / 1000);
 
-    // Stop after fade
-    await new Promise<void>((r) => setTimeout(() => r(), ms + 30));
+    // Wait until fade is effectively done
+    await new Promise<void>((r) => setTimeout(() => r(), ms + 20));
+
+    // Stop everything & clear schedule
     this.interrupt();
 
-    // Restore volume for next audio
-    const restoreAt = this.ctx.currentTime + 0.01;
-    g.setValueAtTime(0.0001, restoreAt);
-    g.linearRampToValueAtTime(1.0, restoreAt + 0.03);
+    // Immediately restore volume NOW (not later on a timer)
+    const t = this.ctx.currentTime;
+    g.cancelScheduledValues(t);
+    g.setValueAtTime(1.0, t);
   }
 
   dispose(): void {
@@ -220,10 +232,8 @@ function useProvideConversationAudio(): ConversationAudioContextType {
           "Audio is not unlocked. Call startConversationAudio() from a user gesture first."
         );
       }
-      console.log("Start SPEAKING");
       const url = opts.audioUrl ?? (await getAudioUrl(text, opts.instructions ?? "", opts.voice));
       const proxied = `/api/audioProxy?url=${encodeURIComponent(url)}`;
-      console.log("url", proxied);
 
       // fetch audio bytes
       const res = await fetch(proxied);
