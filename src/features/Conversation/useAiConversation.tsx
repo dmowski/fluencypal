@@ -25,6 +25,7 @@ import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from "../LessonPlan/ty
 import { ConversationConfig, ConversationInstance } from "./ConversationInstance/types";
 import { useTextAi } from "../Ai/useTextAi";
 import { initTextConversation } from "./ConversationInstance/textConversation";
+import { useConversationAudio } from "../Audio/useConversationAudio";
 
 const voiceInstructions = `## AI Voice
 Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking  These pauses should feel natural and reflective, as if you're savoring the moment.`;
@@ -349,6 +350,7 @@ VISUAL_CONTEXT (latest): ${description}
       return { ...prev, ...orderPart };
     });
   };
+  const audio = useConversationAudio();
 
   const getBaseRtcConfig = async () => {
     const baseConfig: ConversationConfig = {
@@ -372,6 +374,11 @@ VISUAL_CONTEXT (latest): ${description}
           languageCode: settings.languageCode || "en",
           model: "gpt-4o",
         });
+      },
+      // playAudio: (textToPlay: string, voice: AiVoice, instruction: string) => Promise<void>
+      playAudio: async (textToPlay: string, voice: AiVoice, instruction: string) => {
+        audio.interruptWithFade(120);
+        await audio.speak(textToPlay, { instructions: instruction, voice });
       },
     };
     return baseConfig;
@@ -644,7 +651,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 `;
       }
 
-      const IS_USE_TEXT_CONNECTOR = false;
+      const IS_USE_TEXT_CONNECTOR = true;
       const initConversation = IS_USE_TEXT_CONNECTOR
         ? initTextConversation
         : initWebRtcConversation;

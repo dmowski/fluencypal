@@ -24,6 +24,7 @@ import { useTextAi } from "../Ai/useTextAi";
 import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
 import { useLessonPlan } from "../LessonPlan/useLessonPlan";
 import { useAuth } from "../Auth/useAuth";
+import { useConversationAudio } from "../Audio/useConversationAudio";
 
 type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start" | "plan";
 
@@ -173,8 +174,11 @@ export const LessonStartModal = ({
   };
 
   const [isStarting, setIsStarting] = useState<boolean>(false);
+  const audio = useConversationAudio();
   const onStart = async () => {
     setIsStarting(true);
+    await audio.startConversationAudio();
+
     if (settings.conversationMode !== conversationMode) {
       await settings.setConversationMode(conversationMode);
     }

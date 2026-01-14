@@ -25,6 +25,7 @@ export const initTextConversation = async ({
   onMessageOrder,
   webCamDescription,
   generateTextWithAi,
+  playAudio,
 }: ConversationConfig): Promise<ConversationInstance> => {
   // State management
   const conversationHistory: ChatMessage[] = [];
@@ -34,6 +35,11 @@ export const initTextConversation = async ({
     baseInitInstruction: initInstruction,
     webCamDescription: webCamDescription || "",
     correction: "",
+  };
+
+  const audioState = {
+    isMuted: isMuted,
+    isVolumeOn: isVolumeOn,
   };
 
   // Generate unique message ID
@@ -81,18 +87,17 @@ export const initTextConversation = async ({
     setIsAiSpeaking(true);
 
     const botMessageId = generateMessageId();
-    const previousMessageId =
-      conversationHistory.length > 0
-        ? conversationHistory[conversationHistory.length - 1].id
-        : null;
+    const previousMessage =
+      conversationHistory.length > 0 ? conversationHistory[conversationHistory.length - 1] : null;
+    const previousMessageId = previousMessage ? previousMessage?.id : null;
 
     try {
       const systemMessage = getSystemMessage();
       const userMessage = formatConversationHistory();
 
       console.log("Generating AI response...");
-      console.log("System message:", systemMessage);
-      console.log("Conversation history:", userMessage);
+      //console.log("System message:", systemMessage);
+      // console.log("Conversation history:", userMessage);
 
       onAddDelta(botMessageId, "...", true);
 
@@ -119,6 +124,15 @@ export const initTextConversation = async ({
 
       // Notify about new message
       onMessage(botMessage);
+
+      console.log("voice", voice, audioState.isVolumeOn);
+      if (voice && audioState.isVolumeOn) {
+        const instruction = previousMessage?.text
+          ? `Please read the following text aloud in response to: "${previousMessage.text}"`
+          : "Please read the following text aloud:";
+        console.log("PLAY AUDIO?!!! WIII", instruction);
+        await playAudio(aiResponse, voice, instruction);
+      }
 
       console.log("AI response generated successfully");
     } catch (error: any) {
@@ -200,12 +214,12 @@ export const initTextConversation = async ({
   };
 
   // No-op implementations for audio-related functions
-  const toggleMute = (): void => {
-    // Not applicable for text conversation
+  const toggleMute = (mute: boolean): void => {
+    audioState.isMuted = mute;
   };
 
-  const toggleVolume = (): void => {
-    // Not applicable for text conversation
+  const toggleVolume = (isVolumeOn: boolean): void => {
+    audioState.isVolumeOn = isVolumeOn;
   };
 
   // Initialize conversation

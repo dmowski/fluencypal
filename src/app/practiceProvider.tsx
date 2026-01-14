@@ -23,6 +23,7 @@ import { BattleProvider } from "@/features/Game/Battle/useBattle";
 import { GlobalModals } from "@/features/Modal/GlobalModals";
 import { ChatListProvider } from "@/features/Chat/useChatList";
 import { LessonPlanProvider } from "@/features/LessonPlan/useLessonPlan";
+import { ConversationAudioProvider } from "@/features/Audio/useConversationAudio";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
@@ -40,28 +41,30 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                           <UsageProvider>
                             <TextAiProvider>
                               <AudioProvider>
-                                <AiUserInfoProvider>
-                                  <WordsProvider>
-                                    <CorrectionsProvider>
-                                      <ChatHistoryProvider>
-                                        <RulesProvider>
-                                          <TasksProvider>
-                                            <PlanProvider>
-                                              <AiConversationProvider>
-                                                <BattleProvider>
-                                                  <LessonPlanProvider>
-                                                    {children}
-                                                  </LessonPlanProvider>
-                                                  <GlobalModals />
-                                                </BattleProvider>
-                                              </AiConversationProvider>
-                                            </PlanProvider>
-                                          </TasksProvider>
-                                        </RulesProvider>
-                                      </ChatHistoryProvider>
-                                    </CorrectionsProvider>
-                                  </WordsProvider>
-                                </AiUserInfoProvider>
+                                <ConversationAudioProvider>
+                                  <AiUserInfoProvider>
+                                    <WordsProvider>
+                                      <CorrectionsProvider>
+                                        <ChatHistoryProvider>
+                                          <RulesProvider>
+                                            <TasksProvider>
+                                              <PlanProvider>
+                                                <AiConversationProvider>
+                                                  <BattleProvider>
+                                                    <LessonPlanProvider>
+                                                      {children}
+                                                    </LessonPlanProvider>
+                                                    <GlobalModals />
+                                                  </BattleProvider>
+                                                </AiConversationProvider>
+                                              </PlanProvider>
+                                            </TasksProvider>
+                                          </RulesProvider>
+                                        </ChatHistoryProvider>
+                                      </CorrectionsProvider>
+                                    </WordsProvider>
+                                  </AiUserInfoProvider>
+                                </ConversationAudioProvider>
                               </AudioProvider>
                             </TextAiProvider>
                           </UsageProvider>
