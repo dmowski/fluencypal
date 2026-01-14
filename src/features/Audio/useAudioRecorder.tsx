@@ -1,6 +1,6 @@
 "use client";
 
-import React, {
+import {
   createContext,
   useCallback,
   useContext,
@@ -12,7 +12,6 @@ import React, {
 } from "react";
 import { sendTranscriptRequest } from "@/app/api/transcript/sendTranscriptRequest";
 import { useVoiceVisualizer, VoiceVisualizer } from "react-voice-visualizer";
-import { useIsWebView } from "../Auth/useIsWebView";
 import { isAllowedMicrophone, requestMicrophoneAccess } from "@/libs/mic";
 import { useAuth } from "../Auth/useAuth";
 import { useSettings } from "../Settings/useSettings";
