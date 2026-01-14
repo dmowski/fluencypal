@@ -24,6 +24,7 @@ import { GlobalModals } from "@/features/Modal/GlobalModals";
 import { ChatListProvider } from "@/features/Chat/useChatList";
 import { LessonPlanProvider } from "@/features/LessonPlan/useLessonPlan";
 import { ConversationAudioProvider } from "@/features/Audio/useConversationAudio";
+import { AudioRecorderProvider } from "@/features/Audio/useAudioRecorder";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
@@ -52,7 +53,9 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                                 <AiConversationProvider>
                                                   <BattleProvider>
                                                     <LessonPlanProvider>
-                                                      {children}
+                                                      <AudioRecorderProvider>
+                                                        {children}
+                                                      </AudioRecorderProvider>
                                                     </LessonPlanProvider>
                                                     <GlobalModals />
                                                   </BattleProvider>

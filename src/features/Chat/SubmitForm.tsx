@@ -29,9 +29,7 @@ export function SubmitForm({
 }: SubmitFormProps) {
   const { i18n } = useLingui();
 
-  const recorder = useAudioRecorder({
-    visualizerComponentWidth: "100%",
-  });
+  const recorder = useAudioRecorder();
 
   const [isSending, setIsSending] = useState(false);
   const ai = useTextAi();
@@ -334,7 +332,7 @@ Provide only the message user can send, without any additional explanation or co
                   width: recorder.isRecording ? "100%" : "0",
                 }}
               >
-                {recorder.visualizerComponent}
+                {recorder.Visualizer}
               </Stack>
 
               {!recorder.isRecording && !recorder.transcription && (

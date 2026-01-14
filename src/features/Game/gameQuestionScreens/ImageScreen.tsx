@@ -21,7 +21,7 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
   const [answerCorrectedMessage, setAnswerCorrectedMessage] = useState<string | null>(null);
 
   const game = useGame();
-  const recorder = useAudioRecorder({});
+  const recorder = useAudioRecorder();
   const [isUseMicrophone, setIsUseMicrophone] = useState<boolean>(false);
   const translator = useTranslate();
 
@@ -159,7 +159,14 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
                 >
                   {i18n._(`Done`)}
                 </Button>
-                {recorder.visualizerComponent}
+                <Stack
+                  sx={{
+                    width: "100%",
+                    maxWidth: "200px",
+                  }}
+                >
+                  {recorder.Visualizer}
+                </Stack>
                 <IconButton
                   onClick={() => {
                     recorder.cancelRecording();

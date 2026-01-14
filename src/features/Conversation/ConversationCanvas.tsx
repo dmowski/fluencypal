@@ -1,7 +1,7 @@
 "use client";
 
 import { Markdown } from "../uiKit/Markdown/Markdown";
-import { JSX, useEffect, useMemo, useRef, useState } from "react";
+import { JSX, ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import {
   Alert,
   Button,
@@ -72,7 +72,7 @@ interface ConversationCanvasProps {
   isTranscribing: boolean;
   isRecording: boolean;
   recordingMilliSeconds: number;
-  recordVisualizerComponent: JSX.Element | null;
+  recordVisualizerComponent: ReactNode;
 
   isMuted: boolean;
   setIsMuted: (newState: boolean) => void;
@@ -890,7 +890,13 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                           },
                         }}
                       >
-                        {recordVisualizerComponent}
+                        <Stack
+                          sx={{
+                            width: "150px",
+                          }}
+                        >
+                          {recordVisualizerComponent}
+                        </Stack>
                         <Stack
                           sx={{
                             position: "absolute",

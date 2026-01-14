@@ -33,9 +33,7 @@ export const RecordUserAudio = ({
   listItems?: ColorIconTextListItem[];
 }) => {
   const { i18n } = useLingui();
-  const recorder = useAudioRecorder({
-    visualizerComponentWidth: "100%",
-  });
+  const recorder = useAudioRecorder();
 
   useEffect(() => {
     if (recorder.transcription) {
@@ -120,7 +118,7 @@ export const RecordUserAudio = ({
             maxWords={maxWords}
             isLoading={isLoading}
             isTranscribing={recorder.isTranscribing}
-            visualizerComponent={recorder.visualizerComponent}
+            visualizerComponent={recorder.Visualizer}
             isRecording={recorder.isRecording}
             stopRecording={recorder.stopRecording}
             startRecording={recorder.startRecording}

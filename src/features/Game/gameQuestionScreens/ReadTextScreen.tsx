@@ -18,7 +18,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
   const { i18n } = useLingui();
   const [isShowStats, setIsShowStats] = useState(false);
 
-  const recorder = useAudioRecorder({});
+  const recorder = useAudioRecorder();
 
   const userTranscript = recorder.transcription;
   const isRecording = recorder.isRecording;
@@ -226,51 +226,49 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
             sx={{
               flexDirection: "row",
               justifyContent: "space-between",
-              alignItems: "center",
               width: "100%",
             }}
           >
+            {!userTranscript && (
+              <Button variant="contained" size="large" onClick={() => submitBackupRecorder()}>
+                {i18n._("Done")}
+              </Button>
+            )}
+
             <Stack
               sx={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: "10px",
+                width: "100%",
+                maxWidth: "200px",
               }}
             >
-              {!userTranscript && (
-                <Button variant="contained" size="large" onClick={() => submitBackupRecorder()}>
-                  {i18n._("Done")}
-                </Button>
-              )}
+              {recorder.Visualizer}
+            </Stack>
 
-              {recorder.visualizerComponent}
+            {!isRecording && userTranscript && percentage < READ_TEXT_ACCEPTED_PERCENTAGE && (
+              <Button
+                startIcon={<Mic />}
+                variant="contained"
+                size="large"
+                onClick={() => startRecording()}
+              >
+                {i18n._("Re-record")}
+              </Button>
+            )}
 
-              {!isRecording && userTranscript && percentage < READ_TEXT_ACCEPTED_PERCENTAGE && (
+            {!isRecording && (
+              <>
                 <Button
-                  startIcon={<Mic />}
                   variant="contained"
                   size="large"
-                  onClick={() => startRecording()}
+                  startIcon={isSubmitting ? <Loader /> : <Check />}
+                  disabled={percentage < READ_TEXT_ACCEPTED_PERCENTAGE || isSubmitting}
+                  onClick={() => handleAnswerSubmit(question.question)}
                 >
-                  {i18n._("Re-record")}
+                  {i18n._("Submit")}
                 </Button>
-              )}
-
-              {!isRecording && (
-                <>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    startIcon={isSubmitting ? <Loader /> : <Check />}
-                    disabled={percentage < READ_TEXT_ACCEPTED_PERCENTAGE || isSubmitting}
-                    onClick={() => handleAnswerSubmit(question.question)}
-                  >
-                    {i18n._("Submit")}
-                  </Button>
-                  <Typography variant="body2">{percentage}%</Typography>
-                </>
-              )}
-            </Stack>
+                <Typography variant="body2">{percentage}%</Typography>
+              </>
+            )}
 
             <IconButton
               onClick={() => {

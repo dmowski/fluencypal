@@ -144,9 +144,7 @@ export const CallButtons = ({
     setIsVolumeOn(!isVolumeOn);
   };
 
-  const recorder = useAudioRecorder({
-    visualizerComponentWidth: "100%",
-  });
+  const recorder = useAudioRecorder();
 
   const submitTranscription = () => {
     onSubmitTranscription(recorder.transcription || "");
@@ -276,7 +274,7 @@ export const CallButtons = ({
                   width: "185px",
                 }}
               >
-                {recorder.visualizerComponent}
+                {recorder.Visualizer}
               </Stack>
 
               <CallButton
@@ -465,7 +463,7 @@ export const CallButtons = ({
                             height: "38px",
                           }}
                         >
-                          {recorder.visualizerComponent}
+                          {recorder.Visualizer}
                         </Stack>
                       </Stack>
 

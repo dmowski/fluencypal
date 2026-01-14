@@ -40,7 +40,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const settings = useSettings();
   const aiConversation = useAiConversation();
   const usage = useUsage();
-  const recorder = useAudioRecorder({});
+  const recorder = useAudioRecorder();
   const { i18n } = useLingui();
   const access = useAccess();
 
@@ -181,7 +181,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         isTranscribing={recorder.isTranscribing}
         isRecording={recorder.isRecording}
         recordingMilliSeconds={recorder.recordingMilliSeconds}
-        recordVisualizerComponent={recorder.visualizerComponent}
+        recordVisualizerComponent={recorder.Visualizer}
         recordingError={recorder.error}
         analyzeConversation={analyzeConversation}
         closeConversation={async () => {
