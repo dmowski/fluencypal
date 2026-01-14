@@ -687,12 +687,13 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                       )}
                     </MenuItem>
 
-                    {/*<MenuItem
+                    <MenuItem
                       sx={{}}
                       disabled={isRecording || isAnalyzingResponse || isCallMode}
                       onClick={() => {
-                        toggleConversationMode("call");
-                        closeMenus();
+                        alert(i18n._("Call mode is coming soon!"));
+                        //toggleConversationMode("call");
+                        //closeMenus();
                       }}
                     >
                       <ListItemIcon>
@@ -707,7 +708,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                           <Check />
                         </ListItemIcon>
                       )}
-                    </MenuItem>*/}
+                    </MenuItem>
 
                     <Divider />
                     <MenuItem
