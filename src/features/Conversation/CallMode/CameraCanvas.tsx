@@ -157,9 +157,10 @@ export const CameraCanvas = ({
             gridTemplateColumns: "1fr 1fr",
             position: "fixed",
             top: 0,
-            height: topHeight,
+
             pointerEvents: "none",
             zIndex: 1,
+            height: topHeight,
             "@media (max-width: 800px)": {
               height: topHeightMobile,
               gridTemplateColumns: isSubtitlesEnabled ? "1fr 1fr" : "1fr",
