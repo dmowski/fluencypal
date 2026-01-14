@@ -1,6 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { sendTranscriptRequest } from "@/app/api/transcript/sendTranscriptRequest";
 import { useVoiceVisualizer, VoiceVisualizer } from "react-voice-visualizer";
 import { useIsWebView } from "../Auth/useIsWebView";
@@ -8,88 +17,117 @@ import { isAllowedMicrophone, requestMicrophoneAccess } from "@/libs/mic";
 import { useAuth } from "../Auth/useAuth";
 import { useSettings } from "../Settings/useSettings";
 
-export const useAudioRecorder = ({
-  visualizerComponentWidth,
-}: {
-  visualizerComponentWidth?: string;
-}) => {
+type AudioRecorderContextValue = {
+  startRecording: () => Promise<void>;
+  stopRecording: () => Promise<void>;
+  cancelRecording: () => Promise<void>;
+
+  isRecording: boolean;
+  isTranscribing: boolean;
+
+  transcription: string | null;
+  error: string;
+
+  recordingMilliSeconds: number;
+
+  removeTranscript: () => void;
+
+  Visualizer: ReactNode;
+};
+
+const AudioRecorderContext = createContext<AudioRecorderContextValue | null>(null);
+
+export function AudioRecorderProvider({ children }: { children: ReactNode }) {
   const auth = useAuth();
   const settings = useSettings();
   const learnLanguageCode = settings.languageCode || "en";
 
+  const recorderControls = useVoiceVisualizer();
+
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcription, setTranscription] = useState<string | null>(null);
   const [transcriptionError, setTranscriptionError] = useState<string | null>(null);
-
-  const recorderControls = useVoiceVisualizer();
   const [recordingSeconds, setRecordingSeconds] = useState(0);
-  const recordingMilliSeconds = recorderControls.recordingTime;
 
+  const isCancel = useRef(false);
+
+  // Keep a stable "seconds" value derived from visualizer ms.
   useEffect(() => {
-    const seconds = Math.floor(recordingMilliSeconds / 1000);
+    const seconds = Math.floor((recorderControls.recordingTime ?? 0) / 1000);
     setRecordingSeconds(seconds);
-  }, [recordingMilliSeconds]);
+  }, [recorderControls.recordingTime]);
 
-  const { inWebView } = useIsWebView();
+  const getRecordTranscript = useCallback(
+    async (recordedAudioBlob: Blob, format: string) => {
+      if (format.includes("ogg")) {
+        setTranscriptionError(
+          "Sorry, transcription is not available for your audio. Try another browser."
+        );
+        setIsTranscribing(false);
+        recorderControls.clearCanvas();
+        return;
+      }
 
+      setTranscriptionError(null);
+
+      if (!recordedAudioBlob) {
+        setTranscription(null);
+        setIsTranscribing(false);
+        recorderControls.clearCanvas();
+        return;
+      }
+
+      setIsTranscribing(true);
+
+      const token = await auth.getToken();
+      try {
+        const transcriptResponse = await sendTranscriptRequest({
+          audioBlob: recordedAudioBlob,
+          authKey: token,
+          languageCode: learnLanguageCode,
+          audioDuration: recordingSeconds || 5,
+          format,
+        });
+
+        setTranscription(transcriptResponse.transcript);
+
+        if (transcriptResponse.error) {
+          setTranscriptionError(transcriptResponse.error);
+        }
+      } catch {
+        setTranscriptionError("Error during transcription");
+      } finally {
+        recorderControls.clearCanvas();
+        setIsTranscribing(false);
+      }
+    },
+    [
+      auth,
+      learnLanguageCode,
+      recorderControls,
+      recordingSeconds, // ok: captures latest duration estimate
+    ]
+  );
+
+  // When blob becomes available, transcribe (unless cancelled).
   useEffect(() => {
     if (!recorderControls.recordedBlob) return;
 
     if (isCancel.current) {
-      console.log("Cancelled recording");
+      // Optional: clear cancel flag so the next recording works
+      // isCancel.current = false;
       return;
     }
 
     const format = recorderControls.recordedBlob.type.toLowerCase();
+    void getRecordTranscript(recorderControls.recordedBlob, format);
+  }, [recorderControls.recordedBlob, getRecordTranscript, recorderControls]);
 
-    getRecordTranscript(recorderControls.recordedBlob, format);
-  }, [recorderControls.recordedBlob]);
-
-  const isCancel = useRef(false);
-
-  const getRecordTranscript = async (recordedAudioBlog: Blob, format: string) => {
-    if (format.includes("ogg")) {
-      setTranscriptionError(
-        "Sorry, transcription is not available for your audio. Try another browser."
-      );
-      setIsTranscribing(false);
-      recorderControls.clearCanvas();
-      return;
-    }
-    setTranscriptionError(null);
-    if (!recordedAudioBlog) {
-      setTranscription(null);
-      setIsTranscribing(false);
-      recorderControls.clearCanvas();
-      return;
-    }
-
-    setIsTranscribing(true);
-    const token = await auth.getToken();
-    try {
-      const transcriptResponse = await sendTranscriptRequest({
-        audioBlob: recordedAudioBlog,
-        authKey: token,
-        languageCode: learnLanguageCode,
-        audioDuration: recordingSeconds || 5,
-        format,
-      });
-      setTranscription(transcriptResponse.transcript);
-      if (transcriptResponse.error) {
-        setTranscriptionError(transcriptResponse.error);
-      }
-    } catch (error) {
-      setTranscriptionError("Error during transcription");
-    }
-    recorderControls.clearCanvas();
-    setIsTranscribing(false);
-  };
-
-  const startRecording = async () => {
-    const isAllowed = await isAllowedMicrophone();
-    if (!isAllowed) {
-      const requestResult = await requestMicrophoneAccess();
-      if (!requestResult) {
+  const startRecording = useCallback(async () => {
+    const allowed = await isAllowedMicrophone();
+    if (!allowed) {
+      const granted = await requestMicrophoneAccess();
+      if (!granted) {
         alert(
           "Microphone access is denied. Please allow microphone access in your browser settings."
         );
@@ -97,52 +135,48 @@ export const useAudioRecorder = ({
       }
     }
 
-    console.log("Start recording");
-    recorderControls.startRecording();
-    console.log("Recording started");
     isCancel.current = false;
-  };
+    recorderControls.startRecording();
+  }, [recorderControls]);
 
-  const stopRecording = async () => {
-    const seconds = Math.floor(recorderControls.recordingTime / 1000);
+  const stopRecording = useCallback(async () => {
+    const seconds = Math.floor((recorderControls.recordingTime ?? 0) / 1000);
     if (seconds < 1) {
-      cancelRecording();
+      // too short => cancel
+      if (recorderControls.isRecordingInProgress) {
+        isCancel.current = true;
+        recorderControls.stopRecording();
+      }
       return;
     }
-    setIsTranscribing(true);
+
+    setIsTranscribing(true); // immediate UI feedback
     recorderControls.stopRecording();
-  };
+  }, [recorderControls]);
 
-  const isRecording = recorderControls.isRecordingInProgress;
-
-  const cancelRecording = async () => {
-    if (isRecording) {
+  const cancelRecording = useCallback(async () => {
+    if (recorderControls.isRecordingInProgress) {
       isCancel.current = true;
       recorderControls.stopRecording();
     }
-  };
+  }, [recorderControls]);
 
-  const removeTranscript = () => {
-    if (isRecording) {
+  const removeTranscript = useCallback(() => {
+    if (recorderControls.isRecordingInProgress) {
       isCancel.current = true;
       recorderControls.stopRecording();
     }
     setTranscription(null);
     setIsTranscribing(false);
-  };
+    setTranscriptionError(null);
+  }, [recorderControls]);
 
-  return {
-    startRecording,
-    stopRecording,
-    cancelRecording,
-    isRecording,
-    isTranscribing,
-    transcription,
-    error: recorderControls.error?.message || transcriptionError || "",
-    recordingMilliSeconds: recordingSeconds * 1000,
-    isAbleToRecord: !inWebView,
-    removeTranscript,
-    visualizerComponent: recorderControls.isRecordingInProgress ? (
+  const isRecording = recorderControls.isRecordingInProgress;
+
+  const Visualizer = useMemo(() => {
+    if (!recorderControls.isRecordingInProgress) return null;
+
+    return (
       <VoiceVisualizer
         controls={recorderControls}
         height={"40px"}
@@ -151,8 +185,51 @@ export const useAudioRecorder = ({
         fullscreen={true}
         barWidth={3}
         gap={1}
-        width={visualizerComponentWidth || "150px"}
+        width={"100%"}
       />
-    ) : null,
-  };
-};
+    );
+  }, [recorderControls]);
+
+  const value: AudioRecorderContextValue = useMemo(
+    () => ({
+      startRecording,
+      stopRecording,
+      cancelRecording,
+
+      isRecording,
+      isTranscribing,
+
+      transcription,
+      error: recorderControls.error?.message || transcriptionError || "",
+
+      recordingMilliSeconds: recordingSeconds * 1000,
+
+      removeTranscript,
+
+      Visualizer,
+    }),
+    [
+      startRecording,
+      stopRecording,
+      cancelRecording,
+      isRecording,
+      isTranscribing,
+      transcription,
+      recorderControls.error?.message,
+      transcriptionError,
+      recordingSeconds,
+      removeTranscript,
+      Visualizer,
+    ]
+  );
+
+  return <AudioRecorderContext.Provider value={value}>{children}</AudioRecorderContext.Provider>;
+}
+
+export function useAudioRecorder() {
+  const ctx = useContext(AudioRecorderContext);
+  if (!ctx) {
+    throw new Error("useAudioRecorder must be used within an AudioRecorderProvider");
+  }
+  return ctx;
+}
