@@ -122,15 +122,21 @@ export function AudioRecorderProvider({ children }: { children: ReactNode }) {
     void getRecordTranscript(recorderControls.recordedBlob, format);
   }, [recorderControls.recordedBlob, getRecordTranscript, recorderControls]);
 
+  const [isInternalAllowed, setIsInternalAllowed] = useState<boolean | null>(null);
+
   const startRecording = useCallback(async () => {
-    const allowed = await isAllowedMicrophone();
-    if (!allowed) {
-      const granted = await requestMicrophoneAccess();
-      if (!granted) {
-        alert(
-          "Microphone access is denied. Please allow microphone access in your browser settings."
-        );
-        return;
+    if (isInternalAllowed === null) {
+      const allowed = await isAllowedMicrophone();
+      if (!allowed) {
+        const granted = await requestMicrophoneAccess();
+        if (!granted) {
+          alert(
+            "Microphone access is denied. Please allow microphone access in your browser settings."
+          );
+          return;
+        }
+      } else {
+        setIsInternalAllowed(true);
       }
     }
 
