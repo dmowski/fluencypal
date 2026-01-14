@@ -356,6 +356,9 @@ VISUAL_CONTEXT (latest): ${description}
     });
   };
   const audio = useConversationAudio();
+  const [isAiSpeakingStartedFromConversation, setIsAiSpeakingStartedFromConversation] =
+    useState(false);
+  const isSpeakingFromConversation = isAiSpeakingStartedFromConversation && audio.isPlaying;
 
   const getBaseRtcConfig = async () => {
     const baseConfig: ConversationConfig = {
@@ -382,7 +385,9 @@ VISUAL_CONTEXT (latest): ${description}
       },
       playAudio: async (textToPlay: string, voice: AiVoice, instruction: string) => {
         await audio.interruptWithFade(120);
+        setIsAiSpeakingStartedFromConversation(true);
         await audio.speak(textToPlay, { instructions: instruction, voice });
+        setIsAiSpeakingStartedFromConversation(false);
       },
     };
     return baseConfig;
@@ -735,7 +740,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     conversation,
     errorInitiating,
     isClosing,
-    isAiSpeaking,
+    isAiSpeaking: isSpeakingFromConversation || isAiSpeaking,
     isClosed,
     isUserSpeaking,
     toggleMute,

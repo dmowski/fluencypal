@@ -13,7 +13,6 @@ export const initTextConversation = async ({
   initInstruction,
   onMessage,
   onOpen,
-  setIsAiSpeaking,
   setIsUserSpeaking,
   isMuted,
   onAddDelta,
@@ -84,7 +83,6 @@ export const initTextConversation = async ({
     }
 
     isProcessingAiResponse = true;
-    setIsAiSpeaking(true);
 
     const botMessageId = generateMessageId();
     const previousMessage =
@@ -125,12 +123,10 @@ export const initTextConversation = async ({
       onMessage(botMessage);
 
       if (voice && audioState.isVolumeOn) {
-        setIsAiSpeaking(true);
         const instruction = previousMessage?.text
           ? `Please read the following text aloud in response to: "${previousMessage.text}"`
           : "Please read the following text aloud:";
         await playAudio(aiResponse, voice, instruction);
-        setIsAiSpeaking(false);
       }
     } catch (error: any) {
       console.error("Error generating AI response:", error);
@@ -154,7 +150,6 @@ export const initTextConversation = async ({
       onMessage(errorBotMessage);
     } finally {
       isProcessingAiResponse = false;
-      setIsAiSpeaking(false);
     }
   };
 

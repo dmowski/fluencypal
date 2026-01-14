@@ -211,7 +211,9 @@ function useProvideConversationAudio(): ConversationAudioContextType {
   const auth = useAuth();
 
   const playerRef = useRef<AudioQueuePlayer | null>(null);
-  if (!playerRef.current) playerRef.current = new AudioQueuePlayer();
+  if (!playerRef.current) {
+    playerRef.current = new AudioQueuePlayer();
+  }
 
   const getAudioUrl = useCallback(
     async (text: string, instructions: string, voice: TextToAudioVoice) => {
@@ -297,7 +299,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     const interval = setInterval(() => {
       const playing = isPlayingChecker();
       setIsPlaying(playing);
-    }, 200);
+    }, 40);
 
     return () => {
       clearInterval(interval);
@@ -325,6 +327,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       setVolume,
       getVolume,
       dispose,
+      isPlaying,
     ]
   );
 }
