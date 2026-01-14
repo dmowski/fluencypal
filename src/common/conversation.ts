@@ -12,7 +12,7 @@ export interface ChatMessage {
   id: string;
   isBot: boolean;
   text: string;
-  previousId?: string;
+  previousId?: string | null;
 }
 
 export interface UserConversationsMeta {

@@ -126,7 +126,7 @@ Format the response as a JSON object containing {
 "progress": number, // the cumulative percentage of the lesson plan completed (0-100), do not reduce from previous
 "isFollowingPlan": boolean, // is the teacher following the lesson plan
 "suggestionsToTeacher": "Specific suggestions to help the teacher get back on track if they are deviating from the lesson plan. If everything is fine, leave it empty.",
-"teacherResponseInstruction": "Specific instructions and message the teacher should say to the student. It should be direct instruction to teacher using conversation language."
+"teacherResponseInstruction": "Specific instructions and message the teacher should say to the student. It should be direct instruction to teacher using conversation language. If everything is fine, leave it empty."
 }
 
 Example of teacherResponseInstruction. (Use conversation language appropriate for speaking to student): 

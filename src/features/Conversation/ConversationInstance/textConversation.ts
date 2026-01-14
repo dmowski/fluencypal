@@ -1,5 +1,12 @@
 "use client";
+import { ChatMessage } from "@/common/conversation";
 import { ConversationConfig, ConversationInstance } from "./types";
+
+interface InstructionState {
+  baseInitInstruction: string;
+  webCamDescription: string;
+  correction: string;
+}
 
 export const initTextConversation = async ({
   model,
@@ -19,22 +26,202 @@ export const initTextConversation = async ({
   webCamDescription,
   generateTextWithAi,
 }: ConversationConfig): Promise<ConversationInstance> => {
-  const closeEvent = () => {};
-  const errorEvent = (e: any) => console.error("Data channel error", e);
+  // State management
+  const conversationHistory: ChatMessage[] = [];
+  let isProcessingAiResponse = false;
+
+  const instructionState: InstructionState = {
+    baseInitInstruction: initInstruction,
+    webCamDescription: webCamDescription || "",
+    correction: "",
+  };
+
+  // Generate unique message ID
+  const generateMessageId = (): string => {
+    return `msg_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+  };
+
+  // Build system message from instruction parts
+  const getSystemMessage = (): string => {
+    if (instructionState.correction) {
+      return instructionState.correction;
+    }
+
+    return [
+      instructionState.correction,
+      instructionState.baseInitInstruction,
+      instructionState.webCamDescription,
+    ]
+      .filter((part) => part && part.length > 0)
+      .join("\n");
+  };
+
+  // Convert conversation history to text format for AI
+  const formatConversationHistory = (): string => {
+    if (conversationHistory.length === 0) {
+      return "";
+    }
+
+    return conversationHistory
+      .map((msg) => {
+        const role = msg.isBot ? "Assistant" : "User";
+        return `${role}: ${msg.text}`;
+      })
+      .join("\n");
+  };
+
+  // Trigger AI response
+  const triggerAiResponse = async (): Promise<void> => {
+    if (isProcessingAiResponse) {
+      console.log("AI response already in progress, skipping trigger");
+      return;
+    }
+
+    isProcessingAiResponse = true;
+    setIsAiSpeaking(true);
+
+    const botMessageId = generateMessageId();
+    const previousMessageId =
+      conversationHistory.length > 0
+        ? conversationHistory[conversationHistory.length - 1].id
+        : null;
+
+    try {
+      const systemMessage = getSystemMessage();
+      const userMessage = formatConversationHistory();
+
+      console.log("Generating AI response...");
+      console.log("System message:", systemMessage);
+      console.log("Conversation history:", userMessage);
+
+      onAddDelta(botMessageId, "...", true);
+
+      const aiResponse = await generateTextWithAi({
+        systemMessage,
+        userMessage,
+      });
+
+      const botMessage: ChatMessage = {
+        id: botMessageId,
+        isBot: true,
+        text: aiResponse,
+        previousId: previousMessageId,
+      };
+
+      conversationHistory.push(botMessage);
+
+      // Update message ordering
+      if (previousMessageId) {
+        onMessageOrder({
+          [previousMessageId]: botMessageId,
+        });
+      }
+
+      // Notify about new message
+      onMessage(botMessage);
+
+      console.log("AI response generated successfully");
+    } catch (error: any) {
+      console.error("Error generating AI response:", error);
+
+      const errorMessage = `Error: ${error.message || "Unknown error occurred"}`;
+      const errorBotMessage: ChatMessage = {
+        id: botMessageId,
+        isBot: true,
+        text: errorMessage,
+        previousId: previousMessageId,
+      };
+
+      conversationHistory.push(errorBotMessage);
+
+      if (previousMessageId) {
+        onMessageOrder({
+          [previousMessageId]: botMessageId,
+        });
+      }
+
+      onMessage(errorBotMessage);
+    } finally {
+      isProcessingAiResponse = false;
+      setIsAiSpeaking(false);
+    }
+  };
+
+  // Add user message
+  const addUserChatMessage = (message: string): void => {
+    const userMessageId = generateMessageId();
+    const previousMessageId =
+      conversationHistory.length > 0
+        ? conversationHistory[conversationHistory.length - 1].id
+        : null;
+
+    const userMessage: ChatMessage = {
+      id: userMessageId,
+      isBot: false,
+      text: message,
+      previousId: previousMessageId,
+    };
+
+    conversationHistory.push(userMessage);
+
+    // Update message ordering
+    if (previousMessageId) {
+      onMessageOrder({
+        [previousMessageId]: userMessageId,
+      });
+    }
+
+    // Notify about new message
+    onMessage(userMessage);
+  };
+
+  // Send correction instruction
+  const sendCorrectionInstruction = async (correction: string): Promise<void> => {
+    console.log("Updating correction instruction:", correction);
+    instructionState.correction = correction;
+  };
+
+  // Send webcam description
+  const sendWebCamDescription = async (description: string): Promise<void> => {
+    const isCorrectionExists = Boolean(instructionState.correction);
+    if (isCorrectionExists) {
+      console.log("Ignoring webcam description update due to existing correction.");
+      return;
+    }
+    console.log("Updating webcam description:", description);
+    instructionState.webCamDescription = description;
+  };
+
+  // Cleanup handler
+  const closeHandler = (): void => {
+    console.log("Closing text conversation");
+    conversationHistory.length = 0;
+    isProcessingAiResponse = false;
+  };
+
+  // No-op implementations for audio-related functions
+  const toggleMute = (): void => {
+    // Not applicable for text conversation
+  };
+
+  const toggleVolume = (): void => {
+    // Not applicable for text conversation
+  };
+
+  // Initialize conversation
+  setTimeout(() => {
+    onOpen();
+    // Auto-trigger first AI response (like WebRTC)
+    triggerAiResponse();
+  }, 10);
 
   return {
-    closeHandler: () => {
-      closeEvent();
-    },
-
-    addUserChatMessage: async (message: string) => {},
-    triggerAiResponse: async () => {},
-
-    toggleMute: () => {},
-    toggleVolume: () => {},
-
-    sendWebCamDescription: async (description: string) => {},
-
-    sendCorrectionInstruction: async (instruction: string) => {},
+    closeHandler,
+    addUserChatMessage,
+    triggerAiResponse,
+    toggleMute,
+    toggleVolume,
+    sendWebCamDescription,
+    sendCorrectionInstruction,
   };
 };

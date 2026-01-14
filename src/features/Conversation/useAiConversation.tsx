@@ -122,9 +122,11 @@ function useProvideAiConversation(): AiConversationContextType {
 
     if (analysis?.teacherResponseInstruction) {
       communicatorRef.current?.sendCorrectionInstruction(analysis.teacherResponseInstruction);
+      await sleep(30);
       await communicatorRef.current?.triggerAiResponse();
       //setIsWaitingForCorrection(false);
     } else {
+      await communicatorRef.current?.triggerAiResponse();
       //const correctionInstruction = getCorrectionInstruction(correction);
       //communicatorRef.current?.sendCorrectionInstruction(correctionInstruction);
     }
@@ -644,8 +646,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 
       const IS_USE_TEXT_CONNECTOR = false;
       const initConversation = IS_USE_TEXT_CONNECTOR
-        ? initWebRtcConversation
-        : initTextConversation;
+        ? initTextConversation
+        : initWebRtcConversation;
 
       const conversation = await initConversation({
         ...conversationConfig,
