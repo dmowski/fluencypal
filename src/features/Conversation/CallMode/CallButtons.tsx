@@ -253,12 +253,20 @@ export const CallButtons = ({
                 onClick={recorder.isTranscribing ? () => {} : onDoneRecordingUsingButton}
               />
 
+              <Stack
+                sx={{
+                  width: "185px",
+                }}
+              >
+                {recorder.visualizerComponent}
+              </Stack>
+
               <CallButton
                 activeButton={
-                  recorder.isTranscribing ? <CircularProgress size={"24px"} /> : <CloseIcon />
+                  recorder.isTranscribing ? <CloseIcon style={{ opacity: 0.2 }} /> : <CloseIcon />
                 }
                 inactiveButton={
-                  recorder.isTranscribing ? <CircularProgress size={"24px"} /> : <CloseIcon />
+                  recorder.isTranscribing ? <CloseIcon style={{ opacity: 0.2 }} /> : <CloseIcon />
                 }
                 isActive={true}
                 label={i18n._("Cancel recording")}
@@ -271,13 +279,6 @@ export const CallButtons = ({
                       }
                 }
               />
-              <Stack
-                sx={{
-                  width: "185px",
-                }}
-              >
-                {recorder.visualizerComponent}
-              </Stack>
             </>
           ) : (
             <>
