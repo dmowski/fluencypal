@@ -42,7 +42,7 @@ export async function POST(request: Request) {
   const audioDurationString = urlParams.get("audioDuration") || "";
   const audioDuration = Math.min(Math.max(parseFloat(audioDurationString) || 0, 4), 50);
 
-  const model: TranscriptAiModel = "gpt-4o-mini-transcribe";
+  const model: TranscriptAiModel = "gpt-4o-transcribe";
   const responseData = await transcribeAudioFileWithOpenAI({
     file,
     model,

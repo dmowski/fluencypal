@@ -3,7 +3,7 @@ import { TranscriptAiModel } from "@/common/ai";
 import { getBucket } from "../config/firebase";
 import { TranscriptResponse } from "./types";
 import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
-import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
+import { fullLanguageName, SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { sleep } from "@/libs/sleep";
 
 export const transcribeAudioFileWithOpenAI = async ({
@@ -54,11 +54,17 @@ export const transcribeAudioFileWithOpenAI = async ({
   });
 
   try {
+    const languagePrompt = languageCode
+      ? `The audio is in the following language: ${fullLanguageName[languageCode]}. Return the transcription in the same language.`
+      : "";
+
+    const prompt = `Transcribe the audio. Keep grammar mistakes and typos. ${languagePrompt}`;
+
     const transcriptionResult = await client.audio.transcriptions.create({
       file,
       model,
       language: supportedLang,
-      prompt: "Transcribe the audio. Keep grammar mistakes and typos.",
+      prompt: prompt,
     });
 
     let output = transcriptionResult.text || "";
