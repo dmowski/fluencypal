@@ -69,21 +69,11 @@ class AudioQueuePlayer {
   private ctx: AudioContext | null = null;
   private gain: GainNode | null = null;
 
-  private nextTime = 0;
-  private sources = new Set<AudioBufferSourceNode>();
   private unlocked = false;
 
-  isPlaying(): boolean {
-    if (!this.ctx) return false;
-    if (this.ctx.state === "closed") return false;
-
-    // Actively playing sources
-    if (this.sources.size > 0) return true;
-
-    // Scheduled queue (nothing currently playing but queued)
-    const now = this.ctx.currentTime;
-    return this.nextTime > now + 0.03; // epsilon to avoid flicker
-  }
+  // Stream playback
+  private streamEl: HTMLAudioElement | null = null;
+  private streamNode: MediaElementAudioSourceNode | null = null;
 
   async unlockFromGesture(): Promise<void> {
     if (!this.ctx) {
@@ -99,8 +89,15 @@ class AudioQueuePlayer {
       await this.ctx.resume();
     }
 
-    // "Warm up" schedule time to avoid underruns
-    this.nextTime = Math.max(this.ctx.currentTime + 0.05, this.nextTime);
+    // Create audio element + connect it to gain (so fade/volume works)
+    if (!this.streamEl) {
+      const el = new Audio();
+      el.preload = "auto";
+      this.streamNode = this.ctx!.createMediaElementSource(el);
+      this.streamNode.connect(this.gain!);
+      this.streamEl = el;
+    }
+
     this.unlocked = true;
   }
 
@@ -118,48 +115,49 @@ class AudioQueuePlayer {
     return this.gain?.gain.value ?? 1;
   }
 
-  async enqueueArrayBuffer(arrayBuffer: ArrayBuffer): Promise<void> {
-    if (!this.ctx || !this.gain) {
+  async playStreamUrl(url: string): Promise<void> {
+    if (!this.ctx || !this.gain || !this.streamEl) {
       throw new Error("AudioQueuePlayer: not unlocked. Call unlockFromGesture() first.");
     }
+    if (this.ctx.state === "suspended") await this.ctx.resume();
 
-    if (this.ctx.state === "suspended") {
-      await this.ctx.resume();
-    }
+    // Stop previous audio instantly
+    this.stopStream();
 
-    // decodeAudioData may detach the buffer in some browsers; slice to be safe
-    const decoded = await this.ctx.decodeAudioData(arrayBuffer.slice(0));
+    const el = this.streamEl;
+    el.src = url;
 
-    const src = this.ctx.createBufferSource();
-    src.buffer = decoded;
-    src.connect(this.gain);
+    // Plays as soon as buffered enough (streaming)
+    await el.play();
 
-    const startAt = Math.max(this.nextTime, this.ctx.currentTime + 0.02);
-    src.start(startAt);
+    await new Promise<void>((resolve, reject) => {
+      const onEnded = () => cleanup(resolve);
+      const onError = () => cleanup(() => reject(new Error("Stream audio error")));
 
-    this.sources.add(src);
-
-    const waitUnitFinish = new Promise<void>((r) => {
-      src.onended = () => {
-        this.sources.delete(src);
-        r();
+      const cleanup = (done: () => void) => {
+        el.removeEventListener("ended", onEnded);
+        el.removeEventListener("error", onError);
+        done();
       };
-    });
 
-    this.nextTime = startAt + decoded.duration;
-    await waitUnitFinish;
+      el.addEventListener("ended", onEnded);
+      el.addEventListener("error", onError);
+    });
+  }
+
+  stopStream(): void {
+    const el = this.streamEl;
+    if (!el) return;
+    try {
+      el.pause();
+      el.currentTime = 0;
+      el.removeAttribute("src");
+      el.load();
+    } catch {}
   }
 
   interrupt(): void {
-    if (!this.ctx) return;
-
-    for (const s of this.sources) {
-      try {
-        s.stop();
-      } catch {}
-    }
-    this.sources.clear();
-    this.nextTime = this.ctx.currentTime + 0.02;
+    this.stopStream();
   }
 
   async interruptWithFade(ms = 120): Promise<void> {
@@ -167,27 +165,19 @@ class AudioQueuePlayer {
       this.interrupt();
       return;
     }
-
-    // If Safari suspended the context, resume it so automation works predictably
-    if (this.ctx.state === "suspended") {
-      await this.ctx.resume();
-    }
+    if (this.ctx.state === "suspended") await this.ctx.resume();
 
     const now = this.ctx.currentTime;
     const g = this.gain.gain;
 
-    // Fade out
     g.cancelScheduledValues(now);
     g.setValueAtTime(g.value, now);
     g.linearRampToValueAtTime(0.0001, now + ms / 1000);
 
-    // Wait until fade is effectively done
-    await new Promise<void>((r) => setTimeout(() => r(), ms + 20));
+    await new Promise<void>((r) => setTimeout(r, ms + 20));
 
-    // Stop everything & clear schedule
-    this.interrupt();
+    this.stopStream();
 
-    // Immediately restore volume NOW (not later on a timer)
     const t = this.ctx.currentTime;
     g.cancelScheduledValues(t);
     g.setValueAtTime(1.0, t);
@@ -196,13 +186,17 @@ class AudioQueuePlayer {
   dispose(): void {
     this.interrupt();
     if (this.ctx && this.ctx.state !== "closed") {
-      // close() may fail if called during certain states; ignore
       this.ctx.close().catch(() => {});
     }
     this.ctx = null;
     this.gain = null;
+    this.streamNode = null;
+    this.streamEl = null;
     this.unlocked = false;
-    this.nextTime = 0;
+  }
+
+  isPlaying(): boolean {
+    return !!this.streamEl && !this.streamEl.paused && !this.streamEl.ended;
   }
 }
 
@@ -248,6 +242,20 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     return playerRef.current!.isUnlocked();
   }, []);
 
+  const speak = useCallback(async (text: string, opts: SpeakOptions) => {
+    const maxLength = 400;
+    text = text.trim();
+    const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
+    const q = new URLSearchParams({
+      input: trimmedText,
+      voice: opts.voice,
+      instructions: opts.instructions ?? "",
+    });
+
+    await playerRef.current!.playStreamUrl(`/api/ttsStream?${q}`);
+  }, []);
+
+  /*
   const speak = useCallback(
     async (text: string, opts: SpeakOptions) => {
       const maxLength = 400;
@@ -273,6 +281,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     },
     [getAudioUrl]
   );
+  */
 
   const interrupt = useCallback(() => {
     playerRef.current!.interrupt();
