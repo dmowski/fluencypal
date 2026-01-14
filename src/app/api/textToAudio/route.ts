@@ -68,8 +68,12 @@ export async function POST(request: Request) {
   console.log("AUDIO GENERATOR: Generate audio time", Date.now() - start3);
 
   const start4 = Date.now();
-  const buffer = Buffer.from(await mp3.arrayBuffer());
-  console.log("AUDIO GENERATOR: Buffer creation time", Date.now() - start4);
+  const arrayBuffer = await mp3.arrayBuffer();
+  console.log("AUDIO GENERATOR: ArrayBuffer creation time", Date.now() - start4);
+
+  const startBuffer = Date.now();
+  const buffer = Buffer.from(arrayBuffer);
+  console.log("AUDIO GENERATOR: Buffer creation time", Date.now() - startBuffer);
 
   const start5 = Date.now();
 
