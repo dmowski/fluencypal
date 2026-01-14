@@ -36,6 +36,7 @@ export interface AuthContext {
   getToken: () => Promise<string>;
 
   signInWithEmail: (email: string) => Promise<SignInResult>;
+  isDev: boolean;
 }
 
 const LOCALSTORAGE_EMAIL_KEY = "emailForSignIn";
@@ -56,6 +57,7 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
   signInWithEmail: async () => {
     throw new Error("signInWithEmail not implemented");
   },
+  isDev: false,
 });
 
 function useProvideAuth(): AuthContext {
@@ -233,6 +235,8 @@ function useProvideAuth(): AuthContext {
     logout,
     getToken,
     signInWithEmail,
+
+    isDev: userInfo?.email?.includes("dmowski") || false,
   };
 }
 

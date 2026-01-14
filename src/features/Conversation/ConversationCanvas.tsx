@@ -691,9 +691,8 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                       sx={{}}
                       disabled={isRecording || isAnalyzingResponse || isCallMode}
                       onClick={() => {
-                        alert(i18n._("Call mode is coming soon!"));
-                        //toggleConversationMode("call");
-                        //closeMenus();
+                        toggleConversationMode("call");
+                        closeMenus();
                       }}
                     >
                       <ListItemIcon>
