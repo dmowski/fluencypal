@@ -185,6 +185,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         recordingError={recorder.error}
         analyzeConversation={analyzeConversation}
         closeConversation={async () => {
+          lessonPlan.setActiveLessonPlan(null);
           await aiConversation.closeConversation();
           window.scrollTo({
             top: 0,

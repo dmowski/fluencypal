@@ -11,7 +11,7 @@ import { useSettings } from "../Settings/useSettings";
 interface LessonPlanContextType {
   loading: boolean;
   activeLessonPlan: LessonPlan | null;
-  setActiveLessonPlan: (plan: LessonPlan) => void;
+  setActiveLessonPlan: (plan: LessonPlan | null) => void;
   activeProgress: LessonPlanAnalysis | null;
   createLessonPlan: (goalInfo: GoalElementInfo, skipCache?: boolean) => Promise<LessonPlan>;
   generateAnalysis: (temporaryUserMessage?: string) => Promise<LessonPlanAnalysis | null>;
@@ -72,10 +72,6 @@ function useProvideLessonPlan(): LessonPlanContextType {
 
   const activeConversation = getActiveConversation();
 
-  useEffect(() => {
-    setActiveLessonPlan(null);
-  }, [aiConversation.isClosing]);
-
   const generateAnalysis = async (
     temporaryUserMessage?: string
   ): Promise<LessonPlanAnalysis | null> => {
@@ -130,7 +126,7 @@ Format the response as a JSON object containing {
 }
 
 Example of teacherResponseInstruction. (Use conversation language appropriate for speaking to student): 
-Say exactly this phrase and nothing else: "[phrase teacher should say]"
+Say exactly this phrase and nothing else: [phrase teacher should say]
 
 teacherResponseInstruction is optional and should be used only when necessary to guide the teacher back on track.
 

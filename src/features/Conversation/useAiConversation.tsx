@@ -687,6 +687,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
   };
 
   const closeConversation = async () => {
+    await audio.interruptWithFade(120);
     setIsClosing(true);
     setIsStarted(false);
     setIsInitializing("");
