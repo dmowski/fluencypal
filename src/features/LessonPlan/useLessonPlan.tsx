@@ -126,7 +126,7 @@ Format the response as a JSON object containing {
 }
 
 Example of teacherResponseInstruction. (Use conversation language appropriate for speaking to student): 
-Say exactly this phrase and nothing else: [phrase teacher should say]
+Say this phrase to student: phrase teacher should say
 
 teacherResponseInstruction is optional and should be used only when necessary to guide the teacher back on track.
 

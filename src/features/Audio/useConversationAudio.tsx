@@ -60,7 +60,7 @@ interface ConversationAudioContextType {
   /** When user navigates away, you can release audio resources. */
   dispose: () => void;
 
-  isPlaying: () => boolean;
+  isPlaying: boolean;
 }
 
 const ConversationAudioContext = createContext<ConversationAudioContextType | null>(null);
@@ -287,9 +287,22 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     playerRef.current!.dispose();
   }, []);
 
-  const isPlaying = useCallback(() => {
+  const isPlayingChecker = useCallback(() => {
     return playerRef.current!.isPlaying();
   }, []);
+
+  const [isPlaying, setIsPlaying] = React.useState(false);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      const playing = isPlayingChecker();
+      setIsPlaying(playing);
+    }, 200);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isPlayingChecker]);
 
   return useMemo(
     () => ({
