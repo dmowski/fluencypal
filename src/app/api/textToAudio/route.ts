@@ -1,13 +1,9 @@
 import OpenAI from "openai";
-import { calculateTextToAudioPrice, convertUsdToHours, TextToAudioModal } from "@/common/ai";
+import { TextToAudioModal } from "@/common/ai";
 import { getBucket, validateAuthToken } from "../config/firebase";
-import { getUserBalance } from "../payment/getUserBalance";
 import { TextToAudioRequest, TextToAudioResponse } from "./types";
 import { createHash } from "crypto";
-import * as mm from "music-metadata";
-import { TextToAudioUsageLog } from "@/common/usage";
 import { fullEnglishLanguageName, supportedLanguages } from "@/features/Lang/lang";
-import { addUsage } from "../payment/addUsage";
 
 const getHash = (text: string) => {
   const hash = createHash("sha256")
@@ -18,21 +14,20 @@ const getHash = (text: string) => {
 };
 
 export async function POST(request: Request) {
+  const start1 = Date.now();
   const openAIKey = process.env.OPENAI_API_KEY;
   if (!openAIKey) {
     throw new Error("OpenAI API key is not set");
   }
 
-  const userInfo = await validateAuthToken(request);
-  const balance = await getUserBalance(userInfo.uid || "");
-  if (!balance.isFullAccess) {
-    console.error("Insufficient balance.");
-  }
+  await validateAuthToken(request);
+  console.log("Validate token time", Date.now() - start1);
 
   const client = new OpenAI({
     apiKey: openAIKey,
   });
 
+  const start2 = Date.now();
   const aiRequest = (await request.json()) as TextToAudioRequest;
 
   const fileName = getHash(getHash(JSON.stringify(aiRequest))) + ".mp3";
@@ -45,13 +40,17 @@ export async function POST(request: Request) {
   if (exists) {
     await cacheFile.makePublic();
     const url = cacheFile.publicUrl();
-
     const response: TextToAudioResponse = {
       error: null,
       audioUrl: url,
     };
+    console.log("Check file time", Date.now() - start2);
     return Response.json(response);
   }
+
+  console.log("Check file time", Date.now() - start2);
+
+  const start3 = Date.now();
 
   const supportedLang =
     supportedLanguages.find((lang) => lang === aiRequest.languageCode.toLowerCase()) || "en";
@@ -66,46 +65,30 @@ export async function POST(request: Request) {
     instructions: combinedInstructions,
   });
 
+  console.log("Generate audio time", Date.now() - start3);
+
+  const start4 = Date.now();
   const buffer = Buffer.from(await mp3.arrayBuffer());
+  console.log("Buffer creation time", Date.now() - start4);
+
+  const start5 = Date.now();
+
   const audioStorageFile = bucket.file(filePath);
   await audioStorageFile.save(buffer, {
     contentType: "audio/mpeg",
     resumable: false,
   });
+  console.log("File save time", Date.now() - start5);
 
-  const metadata = await mm.parseBuffer(buffer, "audio/mpeg", {
-    duration: true,
-  });
-  const realDurationSeconds = Math.round(metadata.format.duration || 0);
-  const estimatedDuration = Math.round(aiRequest.input.length / 12);
-  const durationInSeconds = Math.max(realDurationSeconds, estimatedDuration, 3);
-
+  const start6 = Date.now();
   await audioStorageFile.makePublic();
   const url = audioStorageFile.publicUrl();
+  console.log("Make public time", Date.now() - start6);
 
   const response: TextToAudioResponse = {
     error: null,
     audioUrl: url,
   };
-
-  const priceUsd = calculateTextToAudioPrice(durationInSeconds, model);
-
-  const priceHours = convertUsdToHours(priceUsd);
-  const usageLog: TextToAudioUsageLog = {
-    usageId: `${Date.now()}`,
-    languageCode: supportedLang,
-    createdAt: Date.now(),
-    priceUsd,
-    priceHours,
-    type: "text_to_audio",
-    model: model,
-    duration: durationInSeconds,
-    transcriptSize: aiRequest.input.length || 0,
-  };
-
-  if (!balance.isGameWinner) {
-    await addUsage(userInfo.uid, usageLog);
-  }
 
   return Response.json(response);
 }
