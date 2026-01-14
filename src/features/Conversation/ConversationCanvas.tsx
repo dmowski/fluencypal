@@ -356,16 +356,19 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   const progress = lessonPlanAnalysis ? lessonPlanAnalysis.progress || 0 : 0;
 
   return (
-    <Stack
+    <Modal
+      open={true}
       sx={{
-        width: "100dvw",
         height: "100dvh",
+        width: "100dvw",
         overflow: "scroll",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        overscrollBehavior: "contain",
-        WebkitOverflowScrolling: "touch",
+      }}
+      slotProps={{
+        backdrop: {
+          sx: {
+            backgroundColor: "rgba(0, 0, 0, 0)",
+          },
+        },
       }}
     >
       <Stack>
@@ -964,6 +967,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
           </Stack>
         </Stack>
       </Stack>
-    </Stack>
+    </Modal>
   );
 };
