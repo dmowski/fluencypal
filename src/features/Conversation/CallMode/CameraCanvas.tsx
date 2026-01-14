@@ -249,7 +249,11 @@ export const CameraCanvas = ({
               paddingBottom: "30px",
             }}
           >
-            <Messages conversation={conversation} messageOrder={messageOrder} />
+            <Messages
+              conversation={conversation}
+              messageOrder={messageOrder}
+              isAiSpeaking={isAiSpeaking}
+            />
           </Stack>
         </Stack>
 

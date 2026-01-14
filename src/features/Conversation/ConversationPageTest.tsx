@@ -137,8 +137,8 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     languageCode: "en",
   };
 
-  const [isAiSpeaking, setIsAiSpeaking] = useState(false);
-  const [conversationMode, setConversationMode] = useState<ConversationMode>("call");
+  const [isAiSpeaking, setIsAiSpeaking] = useState(true);
+  const [conversationMode, setConversationMode] = useState<ConversationMode>("record");
 
   return (
     <Stack>

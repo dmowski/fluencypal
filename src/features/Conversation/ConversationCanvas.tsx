@@ -371,7 +371,11 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             width: "100%",
           }}
         >
-          <Messages conversation={conversation} messageOrder={messageOrder} />
+          <Messages
+            conversation={conversation}
+            messageOrder={messageOrder}
+            isAiSpeaking={isAiSpeaking}
+          />
           <Stack
             sx={{
               height: bottomSectionHeight,

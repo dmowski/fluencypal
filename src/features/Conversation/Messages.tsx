@@ -2,7 +2,7 @@
 
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { IconButton, Stack, Typography } from "@mui/material";
-import { Languages } from "lucide-react";
+import { AudioLines, AudioWaveform, Languages } from "lucide-react";
 
 import { ChatMessage, MessagesOrderMap } from "@/common/conversation";
 import { useLingui } from "@lingui/react";
@@ -13,16 +13,27 @@ import { getSortedMessages } from "./getSortedMessages";
 export const Messages = ({
   conversation,
   messageOrder,
+  isAiSpeaking,
 }: {
   conversation: ChatMessage[];
   messageOrder: MessagesOrderMap;
+  isAiSpeaking?: boolean;
 }) => {
   const translator = useTranslate();
 
-  const sortedMessages = useMemo(
-    () => getSortedMessages({ conversation, messageOrder }),
-    [conversation, messageOrder]
-  );
+  const sortedMessages = useMemo(() => {
+    const messages = getSortedMessages({ conversation, messageOrder });
+    const messagesData = messages.map((msg, index, all) => {
+      const lastMessage = all[all.length - 1];
+      const isLastIsBot = lastMessage?.isBot;
+      const isThisIsLast = index === all.length - 1;
+      return {
+        message: msg,
+        isSpeaking: isThisIsLast && isLastIsBot && isAiSpeaking,
+      };
+    });
+    return messagesData;
+  }, [conversation, messageOrder]);
 
   const messages = (
     <>
@@ -34,9 +45,9 @@ export const Messages = ({
           width: "100%",
         }}
       >
-        {sortedMessages.map((message) => (
-          <Message key={message.id} message={message} />
-        ))}
+        {sortedMessages.map(({ message, isSpeaking }) => {
+          return <Message key={message.id} message={message} isAiSpeaking={isSpeaking} />;
+        })}
       </Stack>
     </>
   );
@@ -44,7 +55,13 @@ export const Messages = ({
   return messages;
 };
 
-export const Message = ({ message }: { message: ChatMessage }) => {
+export const Message = ({
+  message,
+  isAiSpeaking,
+}: {
+  message: ChatMessage;
+  isAiSpeaking?: boolean;
+}) => {
   const { i18n } = useLingui();
   const translator = useTranslate();
 
@@ -76,14 +93,30 @@ export const Message = ({ message }: { message: ChatMessage }) => {
         width: "100%",
       }}
     >
-      <Typography
-        variant="caption"
+      <Stack
         sx={{
-          opacity: 0.5,
+          flexDirection: "row",
+          alignItems: "center",
+          gap: "8px",
         }}
       >
-        {isBot ? i18n._("Teacher:") : i18n._("You:")}
-      </Typography>
+        <Typography
+          variant="caption"
+          sx={{
+            opacity: 0.5,
+          }}
+        >
+          {isBot ? i18n._("Teacher:") : i18n._("You:")}{" "}
+        </Typography>
+        <AudioLines
+          size={"14px"}
+          style={{
+            color: "#b5dbff",
+            opacity: isAiSpeaking ? 1 : 0,
+          }}
+        />
+      </Stack>
+
       <Stack
         sx={{
           display: "inline-block",
