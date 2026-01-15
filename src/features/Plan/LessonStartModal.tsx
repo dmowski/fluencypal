@@ -25,6 +25,7 @@ import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
 import { useLessonPlan } from "../LessonPlan/useLessonPlan";
 import { useAuth } from "../Auth/useAuth";
 import { useConversationAudio } from "../Audio/useConversationAudio";
+import { usePlan } from "./usePlan";
 
 type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start" | "plan";
 
@@ -64,7 +65,7 @@ export const LessonStartModal = ({
   const rules = useRules();
   const aiConversation = useAiConversation();
   const aiUserInfo = useAiUserInfo();
-  const ai = useTextAi();
+  const plan = usePlan();
 
   const lessonPlan = useLessonPlan();
 
@@ -211,6 +212,8 @@ export const LessonStartModal = ({
 
     setIsStarting(false);
     onClose();
+
+    plan.startGoalElement(goalInfo.goalElement.id);
   };
   const auth = useAuth();
   const isDev = auth.userInfo?.email?.includes("dmowski");
