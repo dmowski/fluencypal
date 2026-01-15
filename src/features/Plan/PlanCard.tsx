@@ -3,12 +3,8 @@ import { Stack, Typography } from "@mui/material";
 import { Check, ChevronRight } from "lucide-react";
 import { ReactNode } from "react";
 import { useLingui } from "@lingui/react";
-import { useUrlParam } from "../Url/useUrlParam";
-import { GoalElementInfo } from "./types";
-import { LessonStartModal } from "./LessonStartModal";
 
 interface PlanCardProps {
-  id: string;
   title: string;
   subTitle: string;
   details: string;
@@ -22,12 +18,10 @@ interface PlanCardProps {
   isLast?: boolean;
   isContinueLabel: boolean;
   viewOnly?: boolean;
-
-  goalInfo?: GoalElementInfo;
+  onClick?: () => void;
 }
 
 export const PlanCard = ({
-  id,
   title,
   subTitle,
   startColor,
@@ -41,25 +35,18 @@ export const PlanCard = ({
   isLast,
   isContinueLabel,
   viewOnly = false,
-  goalInfo,
+  onClick,
 }: PlanCardProps) => {
-  const uniqKey = `plan-start-${id}`;
-  const [showModal, setShowModal] = useUrlParam(uniqKey);
   const { i18n } = useLingui();
 
   const isNextInPlan = !isActive && !isDone;
 
   return (
     <>
-      {showModal && goalInfo && (
-        <LessonStartModal onClose={() => setShowModal(false)} goalInfo={goalInfo} />
-      )}
-
       <Stack
         onClick={() => {
           if (viewOnly) return;
-
-          setShowModal(true);
+          onClick?.();
         }}
         component={"button"}
         sx={{

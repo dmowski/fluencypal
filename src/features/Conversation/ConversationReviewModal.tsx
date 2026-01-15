@@ -8,16 +8,20 @@ import { ConversationResult } from "../Plan/types";
 export const ConversationReviewModal = ({
   setIsShowAnalyzeConversationModal,
   conversationAnalysisResult,
-  closeConversation,
+
   setIsConversationContinueAfterAnalyze,
   pointsEarned,
+
   openCommunityPage,
+  openNextLesson,
 }: {
   setIsShowAnalyzeConversationModal: (value: boolean) => void;
   conversationAnalysisResult: ConversationResult | null;
-  closeConversation: () => void;
+
   setIsConversationContinueAfterAnalyze: (value: boolean) => void;
   pointsEarned: number;
+
+  openNextLesson: () => void;
   openCommunityPage: () => void;
 }) => {
   const { i18n } = useLingui();
@@ -120,7 +124,7 @@ export const ConversationReviewModal = ({
             }}
           >
             <Button
-              onClick={() => closeConversation()}
+              onClick={openNextLesson}
               variant="contained"
               color="info"
               size="large"

@@ -190,6 +190,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         conversationMode={conversationMode}
         voice="shimmer"
         toggleConversationMode={(mode: ConversationMode): void => setConversationMode(mode)}
+        openNextLesson={() => {}}
       />
     </Stack>
   );

@@ -120,7 +120,6 @@ export const GoalReview = ({
                   return (
                     <Stack key={index} sx={{}}>
                       <PlanCard
-                        id={planElement.id}
                         key={planElement.id}
                         delayToShow={index * 80}
                         title={planElement.title}

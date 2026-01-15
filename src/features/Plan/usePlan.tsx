@@ -19,6 +19,7 @@ import {
   GoalPlan,
   PlanElement,
   PlanElementMode,
+  GoalElementInfo,
 } from "./types";
 import { useSettings } from "../Settings/useSettings";
 import { ChatMessage } from "@/common/conversation";
@@ -26,6 +27,7 @@ import { useTextAi } from "../Ai/useTextAi";
 import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
 import { GoalQuiz } from "@/app/api/goal/types";
 import { uniq } from "@/libs/uniq";
+import { useUrlState } from "../Url/useUrlParam";
 
 const appActivities = `The app supports the following activity types:
 * words: Practice vocabulary related to a specific topic
@@ -91,6 +93,13 @@ interface PlanContextType {
   startGoalElement: (goalElementId: string) => Promise<void>;
 
   generateMoreElements: () => Promise<void>;
+
+  openNextLesson: () => void;
+
+  openElementModal: (goalElementId: string) => void;
+  closeElementModal: () => void;
+
+  activeGoalElementInfo: GoalElementInfo | null;
 }
 
 const PlanContext = createContext<PlanContextType | null>(null);
@@ -463,6 +472,43 @@ ${JSON.stringify(input.progress, null, 2)}
     await setDoc(docRef, { elements: planData.elements }, { merge: true });
   };
 
+  const activeElements = useMemo(() => {
+    if (!activeGoal) return [];
+    const existingProgress = activeGoal.progress || [];
+    const completedElements = uniq(
+      existingProgress.filter((p) => p.state === "completed").map((p) => p.elementId)
+    );
+    const activeEls = activeGoal.elements.filter((el) => !completedElements.includes(el.id));
+    return activeEls;
+  }, [activeGoal]);
+
+  const [activeElementId, setActiveElementId] = useUrlState("plan-id", "", false);
+
+  const activeGoalElementInfo = useMemo(() => {
+    if (!activeGoal || !activeElementId) return null;
+    const element = activeGoal.elements.find((el) => el.id === activeElementId);
+    if (!element) return null;
+
+    const goalElementInfo: GoalElementInfo = {
+      goalElement: element,
+      goalPlan: activeGoal,
+    };
+    return goalElementInfo;
+  }, [activeGoal, activeElementId]);
+
+  const openNextLesson = (): void => {
+    const nextElement = activeElements[0];
+    openElementModal(nextElement?.id || "");
+  };
+
+  const openElementModal = (goalElementId: string): void => {
+    setActiveElementId(goalElementId);
+  };
+
+  const closeElementModal = (): void => {
+    setActiveElementId("");
+  };
+
   return {
     setActiveGoal,
     goals: goals || [],
@@ -479,6 +525,11 @@ ${JSON.stringify(input.progress, null, 2)}
     startGoalElement,
 
     generateMoreElements,
+    openNextLesson,
+    activeGoalElementInfo,
+
+    openElementModal,
+    closeElementModal,
   };
 }
 

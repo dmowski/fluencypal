@@ -305,7 +305,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
             return (
               <PlanCard
-                id={planElement.id}
                 key={planElement.id}
                 delayToShow={index * 80}
                 title={planElement.title}
@@ -318,20 +317,13 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 endColor={cardColor.endColor}
                 bgColor={cardColor.bgColor}
                 isLast={index === all.length - 1}
+                onClick={() => plan.openElementModal(planElement.id)}
                 icon={
                   <Stack>
                     <Stack className="avatar">
                       <img src={imageUrl} alt="" />
                     </Stack>
                   </Stack>
-                }
-                goalInfo={
-                  plan.activeGoal
-                    ? {
-                        goalPlan: plan.activeGoal,
-                        goalElement: planElement,
-                      }
-                    : undefined
                 }
               />
             );

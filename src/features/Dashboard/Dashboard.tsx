@@ -15,6 +15,8 @@ import { DashboardBlur } from "./DashboardBlur";
 import { RolePlayModal } from "../RolePlay/RolePlayModal";
 import { DailyQuestionBadge } from "../Game/DailyQuestion/DailyQuestionBadge";
 import { BattleSection } from "../Game/Battle/BattleSection";
+import { usePlan } from "../Plan/usePlan";
+import { LessonStartModal } from "../Plan/LessonStartModal";
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -23,10 +25,19 @@ export function Dashboard({ lang }: DashboardProps) {
   const appNavigation = useAppNavigation();
   const IS_SHOW_DAILY_QUESTION_BADGE = true;
 
+  const plan = usePlan();
+
   return (
     <>
       <NavigationBar lang={lang} />
       <RolePlayModal />
+
+      {plan.activeGoalElementInfo && (
+        <LessonStartModal
+          onClose={() => plan.closeElementModal()}
+          goalInfo={plan.activeGoalElementInfo}
+        />
+      )}
 
       <Stack
         sx={{

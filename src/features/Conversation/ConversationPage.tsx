@@ -24,6 +24,7 @@ import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { RolePlayProvider } from "../RolePlay/useRolePlay";
 import { useAccess } from "../Usage/useAccess";
 import { useLessonPlan } from "../LessonPlan/useLessonPlan";
+import { usePlan } from "../Plan/usePlan";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -38,6 +39,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const recorder = useAudioRecorder();
   const { i18n } = useLingui();
   const access = useAccess();
+  const plan = usePlan();
 
   const appNavigation = useAppNavigation();
 
@@ -151,6 +153,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
           recorder.removeTranscript();
           await aiConversation.addUserMessage(message);
         }}
+        openNextLesson={() => plan.openNextLesson()}
         balanceHours={usage.balanceHours}
         togglePaymentModal={usage.togglePaymentModal}
         transcriptMessage={recorder.transcription || ""}

@@ -1,7 +1,7 @@
 "use client";
 
 import { Markdown } from "../uiKit/Markdown/Markdown";
-import { JSX, ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import {
   Alert,
   Button,
@@ -39,10 +39,8 @@ import { ChatMessage, MessagesOrderMap } from "@/common/conversation";
 import { GuessGameStat } from "./types";
 import dayjs from "dayjs";
 import { useLingui } from "@lingui/react";
-import { useSound } from "../Audio/useSound";
-import { ConversationResult, GoalPlan } from "../Plan/types";
+import { ConversationResult } from "../Plan/types";
 import { useTranslate } from "../Translation/useTranslate";
-import { useUrlParam } from "../Url/useUrlParam";
 import { useResizeElement } from "../Layout/useResizeElement";
 import { Messages } from "./Messages";
 import { AiVoice } from "@/common/ai";
@@ -97,6 +95,8 @@ interface ConversationCanvasProps {
   openCommunityPage: () => void;
 
   lessonPlanAnalysis: LessonPlanAnalysis | null;
+
+  openNextLesson: () => void;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -138,11 +138,10 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   openCommunityPage,
 
   lessonPlanAnalysis,
+  openNextLesson,
 }) => {
   const { i18n } = useLingui();
-  const sound = useSound();
   const isChatMode = conversationMode === "chat";
-  const isRecordMode = conversationMode === "record";
   const isCallMode = conversationMode === "call";
 
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -291,9 +290,10 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
         <ConversationReviewModal
           setIsShowAnalyzeConversationModal={setIsShowAnalyzeConversationModal}
           conversationAnalysisResult={conversationAnalysisResult}
-          closeConversation={() => {
+          openNextLesson={() => {
             setIsShowAnalyzeConversationModal(false);
             closeConversation();
+            openNextLesson();
           }}
           setIsConversationContinueAfterAnalyze={setIsConversationContinueAfterAnalyze}
           pointsEarned={pointsEarned}
