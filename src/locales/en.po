@@ -424,7 +424,7 @@ msgstr "Add a reply"
 msgid "Add Comment"
 msgstr "Add Comment"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:280
+#: src/features/Dashboard/PlanDashboardCards.tsx:239
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "Add new goal"
@@ -622,7 +622,7 @@ msgstr "AI tutor cost"
 msgid "AI Tutor Updates"
 msgstr "AI Tutor Updates"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:369
+#: src/features/Conversation/CallMode/CallButtons.tsx:375
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AI voice"
@@ -687,12 +687,12 @@ msgstr "All Interviews"
 msgid "All Scenarios"
 msgstr "All Scenarios"
 
-#: src/features/Plan/LessonStartModal.tsx:260
+#: src/features/Plan/LessonStartModal.tsx:277
 #. js-lingui-explicit-id
 msgid "Allow Microphone Access"
 msgstr "Allow Microphone Access"
 
-#: src/features/Plan/LessonStartModal.tsx:316
+#: src/features/Plan/LessonStartModal.tsx:333
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "Allow WebCam"
@@ -743,9 +743,6 @@ msgstr "Analyzing"
 msgid "Analyzing your inputs..."
 msgstr "Analyzing your inputs..."
 
-#: src/features/Conversation/ConversationReviewModal.tsx:81
-#: src/features/Conversation/ConversationReviewModal.tsx:86
-#: src/features/Conversation/ConversationReviewModal.tsx:91
 #: src/features/Conversation/ProcessUserInput.tsx:204
 #: src/features/Conversation/ProcessUserInput.tsx:351
 #: src/features/Conversation/ProcessUserInput.tsx:360
@@ -821,7 +818,7 @@ msgstr "Are you sure you want to delete this message?"
 msgid "Are you sure you want to delete your account?"
 msgstr "Are you sure you want to delete your account?"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:44
+#: src/features/Dashboard/PlanDashboardCards.tsx:39
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "Are you sure you want to delete your goal? This action cannot be undone."
@@ -830,16 +827,6 @@ msgstr "Are you sure you want to delete your goal? This action cannot be undone.
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Are you sure you want to reject this battle?"
-
-#: src/features/Conversation/useConversationsAnalysis.ts:86
-#. js-lingui-explicit-id
-msgid "Areas to improve"
-msgstr "Areas to improve"
-
-#: src/features/Conversation/ConversationReviewModal.tsx:85
-#. js-lingui-explicit-id
-msgid "Areas to improve:"
-msgstr "Areas to improve:"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:24
 #. js-lingui-explicit-id
@@ -1245,8 +1232,8 @@ msgstr "Can I use FluencyPal for free?"
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:288
-#: src/features/Conversation/ConversationCanvas.tsx:933
+#: src/features/Conversation/CallMode/CallButtons.tsx:294
+#: src/features/Conversation/ConversationCanvas.tsx:934
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Cancel recording"
@@ -1429,7 +1416,7 @@ msgstr ""
 "Clear structure for system design. I finally explained trade-offs without "
 "rambling."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:495
+#: src/features/Conversation/CallMode/CallButtons.tsx:501
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:140
 #: src/features/Header/NeedHelpModal.tsx:181
@@ -1661,7 +1648,7 @@ msgstr "Contacts:"
 msgid "Continue"
 msgstr "Continue"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:165
+#: src/features/Conversation/ConversationReviewModal.tsx:143
 #. js-lingui-explicit-id
 msgid "Continue conversation"
 msgstr "Continue conversation"
@@ -1681,7 +1668,7 @@ msgstr "Continue to payment"
 msgid "Contract Tests"
 msgstr "Contract Tests"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:58
+#: src/features/Dashboard/PlanDashboardCards.tsx:53
 #: src/features/Goal/Quiz/GoalReview.tsx:34
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
 #: src/features/Landing/PlanLandingBlock.tsx:278
@@ -2035,7 +2022,7 @@ msgstr "Delete account"
 msgid "Delete account (Total)"
 msgstr "Delete account (Total)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:462
+#: src/features/Dashboard/PlanDashboardCards.tsx:425
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Delete current goal"
@@ -2392,7 +2379,7 @@ msgstr "Don't forget to try call mode in the practice section!"
 msgid "Done"
 msgstr "Done"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:268
+#: src/features/Conversation/CallMode/CallButtons.tsx:274
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Done recording"
@@ -2456,7 +2443,7 @@ msgstr ""
 msgid "Email"
 msgstr "Email"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:378
+#: src/features/Conversation/CallMode/CallButtons.tsx:384
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your plan to access "
@@ -2669,8 +2656,8 @@ msgstr ""
 "Entry-level candidates targeting startups or agencies with modern web "
 "development stacks"
 
-#: src/features/Conversation/useConversationsAnalysis.ts:123
-#: src/features/Conversation/useConversationsAnalysis.ts:169
+#: src/features/Conversation/useConversationsAnalysis.ts:139
+#: src/features/Conversation/useConversationsAnalysis.ts:182
 #. js-lingui-explicit-id
 msgid "Error analyzing conversation"
 msgstr "Error analyzing conversation"
@@ -2716,11 +2703,6 @@ msgstr "Error during payment process"
 #. js-lingui-explicit-id
 msgid "Error processing payment"
 msgstr "Error processing payment"
-
-#: src/features/Plan/useGoalCreation.ts:133
-#. js-lingui-explicit-id
-msgid "Error Processing the goal"
-msgstr "Error Processing the goal"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:316
 #: src/features/Survey/RecordUserAudioAnswer.tsx:108
@@ -3501,17 +3483,17 @@ msgstr "Game"
 msgid "Game-based practice"
 msgstr "Game-based practice"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:437
+#: src/features/Dashboard/PlanDashboardCards.tsx:400
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "Generate more lessons to achieve your goal faster."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:479
+#: src/features/Dashboard/PlanDashboardCards.tsx:442
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Generate more unique lessons"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:478
+#: src/features/Dashboard/PlanDashboardCards.tsx:441
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Generating..."
@@ -3769,8 +3751,8 @@ msgid "Go to the main page"
 msgstr "Go to the main page"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:221
-#: src/features/Dashboard/PlanDashboardCards.tsx:433
+#: src/features/Dashboard/PlanDashboardCards.tsx:180
+#: src/features/Dashboard/PlanDashboardCards.tsx:396
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Goal"
@@ -3950,12 +3932,12 @@ msgstr "Help"
 msgid "Help with answer"
 msgstr "Help with answer"
 
-#: src/features/Plan/LessonStartModal.tsx:375
+#: src/features/Plan/LessonStartModal.tsx:392
 #. js-lingui-explicit-id
 msgid "Here are some new rules for you to learn:"
 msgstr "Here are some new rules for you to learn:"
 
-#: src/features/Plan/LessonStartModal.tsx:340
+#: src/features/Plan/LessonStartModal.tsx:357
 #. js-lingui-explicit-id
 msgid "Here are some new words for you to learn:"
 msgstr "Here are some new words for you to learn:"
@@ -3975,7 +3957,7 @@ msgstr "Here are the corrections you had in your conversations."
 msgid "Here are the words you used the most in your conversations."
 msgstr "Here are the words you used the most in your conversations."
 
-#: src/features/Plan/LessonStartModal.tsx:411
+#: src/features/Plan/LessonStartModal.tsx:428
 #. js-lingui-explicit-id
 msgid "Here is the lesson plan for this session:"
 msgstr "Here is the lesson plan for this session:"
@@ -4578,7 +4560,7 @@ msgstr ""
 "I finally got 3 offers after months of silence. The React component "
 "challenges were exactly what I needed."
 
-#: src/features/Plan/LessonStartModal.tsx:365
+#: src/features/Plan/LessonStartModal.tsx:382
 #. js-lingui-explicit-id
 msgid "I know these"
 msgstr "I know these"
@@ -4665,7 +4647,7 @@ msgstr ""
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "I'll ask you two more questions before I make your plan."
 
-#: src/features/Conversation/ConversationCanvas.tsx:263
+#: src/features/Conversation/ConversationCanvas.tsx:262
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "Idea for your message"
@@ -4925,7 +4907,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "In less than 5 minutes, you'll get:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:489
+#: src/features/Dashboard/PlanDashboardCards.tsx:452
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "In order to generate more lessons, you need to complete at least 3 lessons"
@@ -5658,16 +5640,6 @@ msgstr "Language Learning Resources"
 msgid "Language Learning Tips"
 msgstr "Language Learning Tips"
 
-#: src/features/Conversation/useConversationsAnalysis.ts:89
-#. js-lingui-explicit-id
-msgid "Language level"
-msgstr "Language level"
-
-#: src/features/Conversation/ConversationReviewModal.tsx:90
-#. js-lingui-explicit-id
-msgid "Language level:"
-msgstr "Language level:"
-
 #: src/features/Lang/LanguageSwitcher.tsx:214
 #. js-lingui-explicit-id
 msgid "Language to Learn"
@@ -5705,7 +5677,7 @@ msgstr "Launch your frontend career"
 msgid "Lazy Loading"
 msgstr "Lazy Loading"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:105
+#: src/features/Conversation/ConversationReviewModal.tsx:102
 #. js-lingui-explicit-id
 msgid "Leaderboard"
 msgstr "Leaderboard"
@@ -5770,7 +5742,7 @@ msgstr "Learn to describe symptoms and ask for medical advice effectively"
 msgid "Learning Blog"
 msgstr "Learning Blog"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:198
+#: src/features/Dashboard/PlanDashboardCards.tsx:157
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Learning Plan"
@@ -5792,12 +5764,12 @@ msgstr "Legal:"
 msgid "Less"
 msgstr "Less"
 
-#: src/features/Plan/LessonStartModal.tsx:410
+#: src/features/Plan/LessonStartModal.tsx:427
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
 msgstr "Lesson Plan"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:59
+#: src/features/Conversation/ConversationReviewModal.tsx:55
 #. js-lingui-explicit-id
 msgid "Lesson Review"
 msgstr "Lesson Review"
@@ -5858,15 +5830,10 @@ msgstr "Literature & Fiction"
 msgid "Load More"
 msgstr "Load More"
 
-#: src/features/Plan/LessonStartModal.tsx:485
+#: src/features/Plan/LessonStartModal.tsx:506
 #. js-lingui-explicit-id
 msgid "Loading"
 msgstr "Loading"
-
-#: src/features/Conversation/ConversationPage.tsx:119
-#. js-lingui-explicit-id
-msgid "Loading Goal..."
-msgstr "Loading Goal..."
 
 #: src/features/Telegram/TgAppPage.tsx:162
 #. js-lingui-explicit-id
@@ -5880,17 +5847,17 @@ msgid "Loading.."
 msgstr "Loading.."
 
 #: src/features/Chat/SubmitForm.tsx:81
-#: src/features/Conversation/CallMode/CallButtons.tsx:422
-#: src/features/Conversation/ConversationCanvas.tsx:220
-#: src/features/Conversation/ConversationPage.tsx:106
-#: src/features/Conversation/ConversationPage.tsx:115
-#: src/features/Conversation/ConversationPage.tsx:135
+#: src/features/Conversation/CallMode/CallButtons.tsx:428
+#: src/features/Conversation/ConversationCanvas.tsx:219
+#: src/features/Conversation/ConversationPage.tsx:99
+#: src/features/Conversation/ConversationPage.tsx:108
+#: src/features/Conversation/ConversationPage.tsx:124
 #: src/features/Game/GamePage.tsx:226
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:85
-#: src/features/Plan/LessonStartModal.tsx:395
-#: src/features/RolePlay/RolePlayModal.tsx:270
+#: src/features/Plan/LessonStartModal.tsx:412
+#: src/features/RolePlay/RolePlayModal.tsx:267
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
 #: src/features/Usage/PaymentModal.tsx:498
@@ -5930,12 +5897,12 @@ msgstr "Main goal in learning"
 msgid "Make sure to allow webcam access in your browser settings."
 msgstr "Make sure to allow webcam access in your browser settings."
 
-#: src/features/Plan/LessonStartModal.tsx:233
+#: src/features/Plan/LessonStartModal.tsx:250
 #. js-lingui-explicit-id
 msgid "Make sure your microphone is working properly."
 msgstr "Make sure your microphone is working properly."
 
-#: src/features/Plan/LessonStartModal.tsx:277
+#: src/features/Plan/LessonStartModal.tsx:294
 #. js-lingui-explicit-id
 msgid "Make sure your webcam is working properly."
 msgstr "Make sure your webcam is working properly."
@@ -6085,12 +6052,12 @@ msgstr "Micro-frontends"
 msgid "Microphone Access"
 msgstr "Microphone Access"
 
-#: src/features/Plan/LessonStartModal.tsx:264
+#: src/features/Plan/LessonStartModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "Microphone access denied. Please enable it in your browser settings."
 
-#: src/features/Plan/LessonStartModal.tsx:232
+#: src/features/Plan/LessonStartModal.tsx:249
 #. js-lingui-explicit-id
 msgid "Microphone Setup"
 msgstr "Microphone Setup"
@@ -6100,7 +6067,7 @@ msgstr "Microphone Setup"
 msgid "Minutes"
 msgstr "Minutes"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:245
+#: src/features/Conversation/CallMode/CallButtons.tsx:251
 #: src/features/Conversation/ConversationCanvas.tsx:829
 #. js-lingui-explicit-id
 msgid "Mission complete"
@@ -6175,7 +6142,7 @@ msgstr "More"
 msgid "More options"
 msgstr "More options"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:429
+#: src/features/Dashboard/PlanDashboardCards.tsx:392
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "More unique lessons"
@@ -6310,6 +6277,11 @@ msgstr "New Words"
 msgid "Next"
 msgstr "Next"
 
+#: src/features/Conversation/ConversationReviewModal.tsx:130
+#. js-lingui-explicit-id
+msgid "Next Lesson"
+msgstr "Next Lesson"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:261
 #. js-lingui-explicit-id
 msgid "Next question"
@@ -6360,7 +6332,7 @@ msgstr "No credit card required"
 msgid "No interviews found"
 msgstr "No interviews found"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:423
+#: src/features/Conversation/CallMode/CallButtons.tsx:429
 #. js-lingui-explicit-id
 msgid "No message recorded yet."
 msgstr "No message recorded yet."
@@ -6578,11 +6550,6 @@ msgstr "Oops! Something went wrong"
 msgid "Open"
 msgstr "Open"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:151
-#. js-lingui-explicit-id
-msgid "Open community chat"
-msgstr "Open community chat"
-
 #: src/features/Case/data/backendCSharp/quizData.ts:81
 #: src/features/Case/data/frontend-junior/quizData.ts:247
 #: src/features/Case/data/frontend-senior/quizData.ts:339
@@ -6610,7 +6577,7 @@ msgstr "Open in Telegram"
 msgid "Open personal plan"
 msgstr "Open personal plan"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:253
+#: src/features/Conversation/CallMode/CallButtons.tsx:259
 #: src/features/Conversation/ConversationCanvas.tsx:837
 #: src/features/Game/Battle/BattleCard.tsx:306
 #. js-lingui-explicit-id
@@ -6913,7 +6880,7 @@ msgstr "Please wait while we process your payment."
 msgid "Points"
 msgstr "Points"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:108
+#: src/features/Conversation/ConversationReviewModal.tsx:105
 #. js-lingui-explicit-id
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr "Points earned: {pointsEarned}. Keep practicing to improve your score!"
@@ -7331,18 +7298,6 @@ msgstr "Processing answers..."
 msgid "Processing existing knowledge in that brain..."
 msgstr "Processing existing knowledge in that brain..."
 
-#: src/features/Plan/useGoalCreation.ts:41
-#: src/features/Plan/useGoalCreation.ts:71
-#: src/features/Plan/useGoalCreation.ts:93
-#: src/features/Plan/useGoalCreation.ts:96
-#: src/features/Plan/useGoalCreation.ts:100
-#: src/features/Plan/useGoalCreation.ts:109
-#: src/features/Plan/useGoalCreation.ts:115
-#: src/features/Plan/useGoalCreation.ts:119
-#. js-lingui-explicit-id
-msgid "Processing the goal..."
-msgstr "Processing the goal..."
-
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
 msgid "Processing..."
@@ -7632,7 +7587,7 @@ msgstr "Real-Life English Scenarios"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Real-Life Role-Play for Advanced English Practice"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:369
+#: src/features/Conversation/CallMode/CallButtons.tsx:375
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "Real-time conversation"
@@ -7734,13 +7689,13 @@ msgstr "Record Answer"
 msgid "Record answer"
 msgstr "Record answer"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:455
+#: src/features/Conversation/CallMode/CallButtons.tsx:461
 #: src/features/Conversation/ConversationCanvas.tsx:638
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Record Message"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:298
+#: src/features/Conversation/CallMode/CallButtons.tsx:304
 #. js-lingui-explicit-id
 msgid "Record message"
 msgstr "Record message"
@@ -7778,8 +7733,8 @@ msgstr "Redis"
 msgid "Reflex"
 msgstr "Reflex"
 
-#: src/features/Plan/LessonStartModal.tsx:401
-#: src/features/Plan/LessonStartModal.tsx:476
+#: src/features/Plan/LessonStartModal.tsx:418
+#: src/features/Plan/LessonStartModal.tsx:493
 #: src/features/Telegram/TgAppPage.tsx:183
 #. js-lingui-explicit-id
 msgid "Refresh"
@@ -7879,7 +7834,7 @@ msgstr "Returning an Item to a Store"
 msgid "Robot Thinking"
 msgstr "Robot Thinking"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:59
+#: src/features/Dashboard/PlanDashboardCards.tsx:54
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
@@ -7935,7 +7890,7 @@ msgstr "Roleplay Preview"
 msgid "Routing"
 msgstr "Routing"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:61
+#: src/features/Dashboard/PlanDashboardCards.tsx:56
 #: src/features/Goal/Quiz/GoalReview.tsx:37
 #: src/features/Landing/PlanLandingBlock.tsx:281
 #: src/features/Usage/UsageStatsCards.tsx:75
@@ -7948,7 +7903,7 @@ msgstr "Rule"
 msgid "Rule of the day"
 msgstr "Rule of the day"
 
-#: src/features/Plan/LessonStartModal.tsx:374
+#: src/features/Plan/LessonStartModal.tsx:391
 #. js-lingui-explicit-id
 msgid "Rules to Learn"
 msgstr "Rules to Learn"
@@ -8094,7 +8049,7 @@ msgstr "Send me sign-in link"
 
 #: src/features/Chat/SubmitForm.tsx:201
 #: src/features/Chat/SubmitForm.tsx:315
-#: src/features/Conversation/CallMode/CallButtons.tsx:482
+#: src/features/Conversation/CallMode/CallButtons.tsx:488
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Send Message"
@@ -8238,7 +8193,7 @@ msgstr "Show more"
 msgid "Show More"
 msgstr "Show More"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:388
+#: src/features/Dashboard/PlanDashboardCards.tsx:351
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Show more lessons"
@@ -8342,7 +8297,7 @@ msgstr ""
 msgid "Skip"
 msgstr "Skip"
 
-#: src/features/Plan/LessonStartModal.tsx:324
+#: src/features/Plan/LessonStartModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "Skip for now"
@@ -8418,7 +8373,7 @@ msgstr ""
 "Solid knowledge of ASP.NET Core and EF Core. Some gaps in resiliency "
 "patterns and observability."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:142
+#: src/features/Dashboard/PlanDashboardCards.tsx:101
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "Something went wrong while generating more lessons. Please try again later."
@@ -8483,7 +8438,7 @@ msgstr "Stars"
 #: src/features/Landing/Price/PricePage.tsx:378
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:325
 #: src/features/RolePlay/RolePlayCardApp.tsx:137
-#: src/features/RolePlay/RolePlayModal.tsx:270
+#: src/features/RolePlay/RolePlayModal.tsx:267
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Start"
@@ -8494,7 +8449,7 @@ msgstr "Start"
 msgid "Start a mock interview"
 msgstr "Start a mock interview"
 
-#: src/features/Plan/LessonStartModal.tsx:488
+#: src/features/Plan/LessonStartModal.tsx:509
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "Start Call"
@@ -8515,7 +8470,7 @@ msgstr "Start Learning"
 msgid "Start Learning Now"
 msgstr "Start Learning Now"
 
-#: src/features/Plan/LessonStartModal.tsx:485
+#: src/features/Plan/LessonStartModal.tsx:506
 #. js-lingui-explicit-id
 msgid "Start Lesson"
 msgstr "Start Lesson"
@@ -8524,11 +8479,6 @@ msgstr "Start Lesson"
 #. js-lingui-explicit-id
 msgid "Start Monthly Plan"
 msgstr "Start Monthly Plan"
-
-#: src/features/Conversation/ConversationReviewModal.tsx:133
-#. js-lingui-explicit-id
-msgid "Start new lesson"
-msgstr "Start new lesson"
 
 #: src/features/Landing/LandingPage.tsx:359
 #: src/features/Landing/PlanLandingBlock.tsx:589
@@ -8580,7 +8530,7 @@ msgstr "Start Your Interview Test"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Start Your Journey to Fluent Conversations Now"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:222
+#: src/features/Dashboard/PlanDashboardCards.tsx:181
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Start your way to fluency"
@@ -8690,7 +8640,7 @@ msgstr ""
 "persuasive answers that help you stand out in any job interview.\n"
 
 #: src/features/Chat/SubmitForm.tsx:275
-#: src/features/Conversation/CallMode/CallButtons.tsx:455
+#: src/features/Conversation/CallMode/CallButtons.tsx:461
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Stop"
@@ -8814,6 +8764,11 @@ msgstr "Success stories"
 msgid "Success!"
 msgstr "Success!"
 
+#: src/features/Conversation/ConversationReviewModal.tsx:65
+#. js-lingui-explicit-id
+msgid "Summary:"
+msgstr "Summary:"
+
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
 msgid "Swedish Learning Plan"
@@ -8907,7 +8862,7 @@ msgstr ""
 msgid "Teacher"
 msgstr "Teacher"
 
-#: src/features/Plan/LessonStartModal.tsx:458
+#: src/features/Plan/LessonStartModal.tsx:475
 #. js-lingui-explicit-id
 msgid "Teacher Instructions"
 msgstr "Teacher Instructions"
@@ -9314,32 +9269,32 @@ msgstr "Try for free"
 msgid "Turkish Learning Plan"
 msgstr "Turkish Learning Plan"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:316
+#: src/features/Conversation/CallMode/CallButtons.tsx:322
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "Turn off subtitles"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:325
+#: src/features/Conversation/CallMode/CallButtons.tsx:331
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "Turn off video"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:306
+#: src/features/Conversation/CallMode/CallButtons.tsx:312
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "Turn off volume"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:316
+#: src/features/Conversation/CallMode/CallButtons.tsx:322
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "Turn on subtitles"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:325
+#: src/features/Conversation/CallMode/CallButtons.tsx:331
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "Turn on video"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:306
+#: src/features/Conversation/CallMode/CallButtons.tsx:312
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "Turn on volume"
@@ -9460,7 +9415,7 @@ msgstr "Username:"
 msgid "Users who viewed this post"
 msgstr "Users who viewed this post"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:381
+#: src/features/Conversation/CallMode/CallButtons.tsx:387
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your plan "
@@ -9757,7 +9712,7 @@ msgstr ""
 msgid "We will speak freely"
 msgstr "We will speak freely"
 
-#: src/features/Plan/LessonStartModal.tsx:487
+#: src/features/Plan/LessonStartModal.tsx:508
 #. js-lingui-explicit-id
 msgid "We're ready to begin!"
 msgstr "We're ready to begin!"
@@ -9787,7 +9742,7 @@ msgstr ""
 msgid "Webcam Feedback Preview"
 msgstr "Webcam Feedback Preview"
 
-#: src/features/Plan/LessonStartModal.tsx:276
+#: src/features/Plan/LessonStartModal.tsx:293
 #. js-lingui-explicit-id
 msgid "Webcam Setup"
 msgstr "Webcam Setup"
@@ -9821,6 +9776,11 @@ msgstr "Wellness"
 #. js-lingui-explicit-id
 msgid "What are HTML semantic elements and why are they important?"
 msgstr "What are HTML semantic elements and why are they important?"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:79
+#. js-lingui-explicit-id
+msgid "What can be improved:"
+msgstr "What can be improved:"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:190
 #. js-lingui-explicit-id
@@ -9907,21 +9867,21 @@ msgstr "What one hour means?"
 msgid "What recently made you happy?"
 msgstr "What recently made you happy?"
 
+#: src/features/Conversation/ConversationReviewModal.tsx:86
+#. js-lingui-explicit-id
+msgid "What to focus on next time:"
+msgstr "What to focus on next time:"
+
 #: src/features/Case/data/frontend-junior/faqSection.ts:14
 #: src/features/Case/data/frontend-senior/faqSection.ts:14
 #. js-lingui-explicit-id
 msgid "What types of frontend interviews can I practice for?"
 msgstr "What types of frontend interviews can I practice for?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:80
+#: src/features/Conversation/ConversationReviewModal.tsx:72
 #. js-lingui-explicit-id
 msgid "What was great:"
 msgstr "What was great:"
-
-#: src/features/Conversation/useConversationsAnalysis.ts:83
-#. js-lingui-explicit-id
-msgid "What went well"
-msgstr "What went well"
 
 #: src/features/Auth/AuthWall.tsx:25
 #: src/features/Auth/InterviewAuthWall.tsx:11
@@ -10046,7 +10006,7 @@ msgstr ""
 msgid "Word Stats"
 msgstr "Word Stats"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:60
+#: src/features/Dashboard/PlanDashboardCards.tsx:55
 #: src/features/Goal/Quiz/GoalReview.tsx:36
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
@@ -10056,7 +10016,7 @@ msgstr "Word Stats"
 msgid "Words"
 msgstr "Words"
 
-#: src/features/Plan/LessonStartModal.tsx:339
+#: src/features/Plan/LessonStartModal.tsx:356
 #. js-lingui-explicit-id
 msgid "Words to Learn"
 msgstr "Words to Learn"
@@ -10580,7 +10540,7 @@ msgstr "Your Message"
 msgid "Your message..."
 msgstr "Your message..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:412
+#: src/features/Conversation/CallMode/CallButtons.tsx:418
 #. js-lingui-explicit-id
 msgid "Your Message:"
 msgstr "Your Message:"
@@ -10651,6 +10611,63 @@ msgstr ""
 "— it’s important to engage in this short conversation before jumping into "
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
+
+#: src/features/Conversation/useConversationsAnalysis.ts:86
+#. js-lingui-explicit-id
+#~ msgid "Areas to improve"
+#~ msgstr "Areas to improve"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:85
+#. js-lingui-explicit-id
+#~ msgid "Areas to improve:"
+#~ msgstr "Areas to improve:"
+
+#: src/features/Plan/useGoalCreation.ts:133
+#. js-lingui-explicit-id
+#~ msgid "Error Processing the goal"
+#~ msgstr "Error Processing the goal"
+
+#: src/features/Conversation/useConversationsAnalysis.ts:89
+#. js-lingui-explicit-id
+#~ msgid "Language level"
+#~ msgstr "Language level"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Language level:"
+#~ msgstr "Language level:"
+
+#: src/features/Conversation/ConversationPage.tsx:119
+#. js-lingui-explicit-id
+#~ msgid "Loading Goal..."
+#~ msgstr "Loading Goal..."
+
+#: src/features/Conversation/ConversationReviewModal.tsx:151
+#. js-lingui-explicit-id
+#~ msgid "Open community chat"
+#~ msgstr "Open community chat"
+
+#: src/features/Plan/useGoalCreation.ts:41
+#: src/features/Plan/useGoalCreation.ts:71
+#: src/features/Plan/useGoalCreation.ts:93
+#: src/features/Plan/useGoalCreation.ts:96
+#: src/features/Plan/useGoalCreation.ts:100
+#: src/features/Plan/useGoalCreation.ts:109
+#: src/features/Plan/useGoalCreation.ts:115
+#: src/features/Plan/useGoalCreation.ts:119
+#. js-lingui-explicit-id
+#~ msgid "Processing the goal..."
+#~ msgstr "Processing the goal..."
+
+#: src/features/Conversation/ConversationReviewModal.tsx:133
+#. js-lingui-explicit-id
+#~ msgid "Start new lesson"
+#~ msgstr "Start new lesson"
+
+#: src/features/Conversation/useConversationsAnalysis.ts:83
+#. js-lingui-explicit-id
+#~ msgid "What went well"
+#~ msgstr "What went well"
 
 #: src/features/Conversation/ConversationCanvas.tsx:694
 #. js-lingui-explicit-id
