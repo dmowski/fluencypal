@@ -8,7 +8,6 @@ import { GoalPlan, PlanElement, PlanElementMode } from "./types";
 import { useSettings } from "../Settings/useSettings";
 import { ChatMessage } from "@/common/conversation";
 import { useTextAi } from "../Ai/useTextAi";
-import { useFixJson } from "../Ai/useFixJson";
 import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
 import { GoalQuiz } from "@/app/api/goal/types";
 
