@@ -20,7 +20,7 @@ export interface TextAiRequest {
 }
 
 export interface JsonAiRequest extends TextAiRequest {
-  attempts: number;
+  attempts?: number;
 }
 
 interface TextAiContextType {
@@ -127,7 +127,8 @@ function useProvideTextAi(): TextAiContextType {
   }
 
   const generateJson = async <T,>(conversationDate: JsonAiRequest, attemptInfo?: AttemptInfo) => {
-    const isAttemptExceeded = attemptInfo && attemptInfo.attempt >= conversationDate.attempts;
+    const isAttemptExceeded =
+      attemptInfo && attemptInfo.attempt >= (conversationDate.attempts || 3);
     if (isAttemptExceeded) {
       throw attemptInfo.error || new Error("AI JSON generation: Max attempts exceeded");
     }

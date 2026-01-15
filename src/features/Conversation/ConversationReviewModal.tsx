@@ -1,9 +1,9 @@
 import { Stack, Typography, Button } from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useLingui } from "@lingui/react";
 import { ChevronRight } from "lucide-react";
 import { PositionChanged } from "../Game/PositionChanged";
+import { ConversationResult } from "../Plan/types";
 
 export const ConversationReviewModal = ({
   setIsShowAnalyzeConversationModal,
@@ -14,7 +14,7 @@ export const ConversationReviewModal = ({
   openCommunityPage,
 }: {
   setIsShowAnalyzeConversationModal: (value: boolean) => void;
-  conversationAnalysisResult: string | null;
+  conversationAnalysisResult: ConversationResult | null;
   closeConversation: () => void;
   setIsConversationContinueAfterAnalyze: (value: boolean) => void;
   pointsEarned: number;
@@ -54,40 +54,41 @@ export const ConversationReviewModal = ({
             >
               {i18n._("Lesson Review")}
             </Typography>
-            {conversationAnalysisResult ? (
-              <Stack
-                sx={{
-                  gap: "15px",
-                  padding: "0 10px",
-                  boxSizing: "border-box",
-                }}
-              >
-                <Markdown>{conversationAnalysisResult}</Markdown>
+            <Stack
+              sx={{
+                gap: "15px",
+                padding: "0 10px",
+                boxSizing: "border-box",
+              }}
+            >
+              <Stack>
+                <Typography variant="h6">{i18n._(`Summary:`)}</Typography>
+                <Typography className={!conversationAnalysisResult ? "loading-shimmer" : ""}>
+                  {conversationAnalysisResult?.shortSummaryOfLesson || "..."}
+                </Typography>
               </Stack>
-            ) : (
-              <Stack
-                sx={{
-                  gap: "15px",
-                  padding: "0 10px",
-                  boxSizing: "border-box",
-                }}
-              >
-                <Stack>
-                  <Typography variant="h6">{i18n._(`What was great:`)}</Typography>
-                  <Typography className="loading-shimmer">{i18n._(`Analyzing...`)}</Typography>
-                </Stack>
 
-                <Stack>
-                  <Typography variant="h6">{i18n._(`Areas to improve:`)}</Typography>
-                  <Typography className="loading-shimmer">{i18n._(`Analyzing...`)}</Typography>
-                </Stack>
-
-                <Stack>
-                  <Typography variant="body1">{i18n._(`Language level:`)}</Typography>
-                  <Typography className="loading-shimmer">{i18n._(`Analyzing...`)}</Typography>
-                </Stack>
+              <Stack>
+                <Typography variant="h6">{i18n._(`What was great:`)}</Typography>
+                <Typography className={!conversationAnalysisResult ? "loading-shimmer" : ""}>
+                  {conversationAnalysisResult?.whatUserDidWell || "..."}
+                </Typography>
               </Stack>
-            )}
+
+              <Stack>
+                <Typography variant="h6">{i18n._(`What can be improved:`)}</Typography>
+                <Typography className={!conversationAnalysisResult ? "loading-shimmer" : ""}>
+                  {conversationAnalysisResult?.whatUserCanImprove || "..."}
+                </Typography>
+              </Stack>
+
+              <Stack>
+                <Typography variant="h6">{i18n._(`What to focus on next time:`)}</Typography>
+                <Typography className={!conversationAnalysisResult ? "loading-shimmer" : ""}>
+                  {conversationAnalysisResult?.whatToFocusOnNextTime || "..."}
+                </Typography>
+              </Stack>
+            </Stack>
           </Stack>
 
           <Stack
@@ -126,7 +127,7 @@ export const ConversationReviewModal = ({
               endIcon={<ChevronRight />}
               disabled={!conversationAnalysisResult}
             >
-              {i18n._(`Start new lesson`)}
+              {i18n._(`Next Lesson`)}
             </Button>
 
             <Button

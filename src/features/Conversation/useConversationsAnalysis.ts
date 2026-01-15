@@ -10,6 +10,8 @@ import { useNotifications } from "@toolpad/core/useNotifications";
 import { useLingui } from "@lingui/react";
 import { fullLanguageName, getPageLangCode, SupportedLanguage } from "../Lang/lang";
 import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
+import { ConversationResult } from "../Plan/types";
+import { useLessonPlan } from "../LessonPlan/useLessonPlan";
 
 export const useConversationsAnalysis = () => {
   const plan = usePlan();
@@ -20,6 +22,7 @@ export const useConversationsAnalysis = () => {
   const auth = useAuth();
   const notifications = useNotifications();
   const { i18n } = useLingui();
+  const lessonPlan = useLessonPlan();
 
   const learningLanguage = settings.languageCode || "en";
 
@@ -30,18 +33,18 @@ export const useConversationsAnalysis = () => {
     ? fullLanguageName[nativeLanguageCode as SupportedLanguage] || nativeLanguageCode
     : nativeLanguageCode;
 
-  const [conversationAnalysisMap, setConversationAnalysisMap] = useState<Record<string, string>>(
-    {}
-  );
+  const [conversationAnalysisMap, setConversationAnalysisMap] = useState<
+    Record<string, ConversationResult | null>
+  >({});
 
   const [gamePointsEarnMap, setGamePointsEarnMap] = useState<Record<string, number>>({});
 
   const activeConversationId = aiConversation.conversationId || "";
-  const conversationAnalysis = conversationAnalysisMap[activeConversationId] || "";
+  const conversationAnalysis = conversationAnalysisMap[activeConversationId] || null;
   const gamePointsEarned = gamePointsEarnMap[activeConversationId] || 0;
 
   const analyzeConversation = async () => {
-    if (conversationAnalysis && !conversationAnalysis.startsWith("Error")) {
+    if (conversationAnalysis) {
       return;
     }
 
@@ -76,37 +79,50 @@ export const useConversationsAnalysis = () => {
 
     const planDescription = plan.activeGoal?.goalQuiz?.description || "";
     const goalElement = aiConversation.goalInfo?.goalElement;
-    const goalElementDescription = goalElement
+
+    const goalElementId = goalElement?.id;
+    const goalElementDescription = goalElementId
       ? `Lesson: ${goalElement.title} - ${goalElement.description} - ${goalElement.details}`
       : "";
-
-    const expectedStructure = `#### ${i18n._("What went well")}:
-Example: I liked the way you described your situation related to *** 
-
-#### ${i18n._("Areas to improve")}:
-It's better to use *** instead of ***, because ***
-
-#### ${i18n._("Language level")}:
-Example: Intermediate
-
-`;
 
     const systemMessage = `You are a language teacher/analyzer.
 You are analyzing the conversation between the user and AI.
 The user is learning ${settings.fullLanguageName}.
+
 Use the "${fullNativeLanguage}" language for analysis.
+
 The user has the following goal: ${planDescription}.
+
 The user is using the following lesson: ${goalElementDescription}.
+
+${lessonPlan.activeLessonPlan ? `Lesson plan: ${JSON.stringify(lessonPlan.activeLessonPlan)}` : ""}
     
-Answer to the user in the following format:
-${expectedStructure}`;
+Answer in the following format (Results object in JSON):
+{
+shortSummaryOfLesson: string;
+
+whatUserDidWell: string;
+whatUserCanImprove: string;
+
+whatToFocusOnNextTime: string;
+}
+
+Your output must be in valid JSON format with no additional text or explanation.
+Your response will be parsed using JSON.parse().
+`;
     try {
-      const aiResults = await textAi.generate({
+      console.log("Lesson review", systemMessage, messagesString);
+      const aiResults = await textAi.generateJson<ConversationResult>({
         systemMessage,
         userMessage: messagesString,
         model: "gpt-4o",
         languageCode: settings.languageCode || "en",
       });
+
+      if (goalElementId) {
+        plan.finishGoalElement(goalElementId, aiResults);
+      }
+
       setConversationAnalysisMap((prev) => {
         const newMap = { ...prev, [activeConversationId]: aiResults };
         return newMap;
@@ -123,10 +139,7 @@ ${expectedStructure}`;
       notifications.show(i18n._(`Error analyzing conversation`) + "=" + error, {
         severity: "error",
       });
-      setConversationAnalysisMap((prev) => {
-        const newMap = { ...prev, [activeConversationId]: "Error analyzing conversation..." };
-        return newMap;
-      });
+      console.error(error);
       throw error;
     }
   };

@@ -169,7 +169,13 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={""}
         isShowMessageProgress={true}
-        conversationAnalysisResult={`2`}
+        conversationAnalysisResult={{
+          whatToFocusOnNextTime: "Try to use more complex sentences.",
+          whatUserDidWell: "You spoke clearly and confidently.",
+          shortSummaryOfLesson:
+            "In this lesson, we discussed the importance of clear communication and practiced speaking on various topics.",
+          whatUserCanImprove: "Work on expanding your vocabulary and using idiomatic expressions.",
+        }}
         closeConversation={async () => alert("Close conversation")}
         analyzeConversation={async () => {}}
         onWebCamDescription={() => {}}
