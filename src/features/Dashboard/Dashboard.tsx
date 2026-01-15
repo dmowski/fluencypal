@@ -59,11 +59,10 @@ export function Dashboard({ lang }: DashboardProps) {
         >
           {appNavigation.currentPage === "home" && (
             <>
-              <BattleSection />
-
               {IS_SHOW_DAILY_QUESTION_BADGE && <DailyQuestionBadge />}
               {!IS_SHOW_DAILY_QUESTION_BADGE && <GameBadge />}
               <PlanDashboardCards lang={lang} />
+              <BattleSection />
             </>
           )}
 

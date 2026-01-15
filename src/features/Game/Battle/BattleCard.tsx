@@ -26,12 +26,10 @@ import {
   SquareCheckBig,
   Swords,
   Trash,
-  X,
 } from "lucide-react";
 import { useState } from "react";
 import { BattleActionModal } from "./BattleActionModal";
 import { useChat } from "@/features/Chat/useChat";
-import { Message } from "@/features/Chat/Message";
 
 export const BattleCard = ({ battle }: { battle: GameBattle }) => {
   const { i18n } = useLingui();
