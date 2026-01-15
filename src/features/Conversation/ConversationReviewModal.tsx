@@ -1,10 +1,9 @@
-import { Stack, Typography, Button, Badge } from "@mui/material";
+import { Stack, Typography, Button } from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useLingui } from "@lingui/react";
-import { ChevronRight, Users } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { PositionChanged } from "../Game/PositionChanged";
-import { useChatList } from "../Chat/useChatList";
 
 export const ConversationReviewModal = ({
   setIsShowAnalyzeConversationModal,
@@ -22,9 +21,6 @@ export const ConversationReviewModal = ({
   openCommunityPage: () => void;
 }) => {
   const { i18n } = useLingui();
-
-  const chatList = useChatList();
-  const unreadMessagesCount = chatList.unreadCountGlobal;
 
   return (
     <CustomModal isOpen={true} onClose={() => setIsShowAnalyzeConversationModal(false)}>
@@ -132,25 +128,6 @@ export const ConversationReviewModal = ({
             >
               {i18n._(`Start new lesson`)}
             </Button>
-
-            <Badge
-              color="error"
-              badgeContent={conversationAnalysisResult ? unreadMessagesCount | 0 : 0}
-            >
-              <Button
-                disabled={!conversationAnalysisResult}
-                onClick={() => {
-                  setIsShowAnalyzeConversationModal(false);
-                  openCommunityPage();
-                }}
-                endIcon={<Users size={"16px"} />}
-                variant="outlined"
-                size="large"
-                color="info"
-              >
-                {i18n._(`Open community chat`)}
-              </Button>
-            </Badge>
 
             <Button
               disabled={!conversationAnalysisResult}
