@@ -13,6 +13,26 @@ export interface PlanElement {
   startCount: number;
 }
 
+export type GoalElementProgressState = "in_progress" | "completed" | "started";
+
+export interface ConversationResult {
+  shortSummaryOfLesson: string;
+
+  whatUserDidWell: string;
+  whatUserCanImprove: string;
+
+  whatToFocusOnNextTime: string;
+}
+
+export interface GoalElementProgress {
+  elementId: string;
+  state: GoalElementProgressState;
+  startedAtIso: string;
+  completedAtIso: string | null;
+
+  results: ConversationResult | null;
+}
+
 export interface GoalPlan {
   id: string;
   title: string;
@@ -21,6 +41,8 @@ export interface GoalPlan {
   updatedAt: number;
   languageCode: SupportedLanguage;
   goalQuiz: GoalQuiz | null;
+
+  progress?: GoalElementProgress[];
 }
 
 // Core type for user goal

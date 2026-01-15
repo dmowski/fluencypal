@@ -1,15 +1,71 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useMemo, useState } from "react";
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  JSX,
+  useMemo,
+  useState,
+  useRef,
+  useEffect,
+} from "react";
 import { useAuth } from "../Auth/useAuth";
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../Firebase/firebaseDb";
-import { GoalPlan, PlanElement, PlanElementMode } from "./types";
+import {
+  GoalElementProgress,
+  ConversationResult,
+  GoalPlan,
+  PlanElement,
+  PlanElementMode,
+} from "./types";
 import { useSettings } from "../Settings/useSettings";
 import { ChatMessage } from "@/common/conversation";
 import { useTextAi } from "../Ai/useTextAi";
 import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
 import { GoalQuiz } from "@/app/api/goal/types";
+import { uniq } from "@/libs/uniq";
+
+const appActivities = `The app supports the following activity types:
+* words: Practice vocabulary related to a specific topic
+* play: Role-play conversations (e.g. job interview)
+* rule: Learn and practice grammar or concepts
+* conversation: General conversation with AI on a specific topic`;
+
+const exampleOfPlan = `Example of plan:
+[
+  {
+    "type": "conversation",
+    "title": "On the Street",
+    "description": "Casual conversation about asking for directions",
+    "details": "Student practices real-life interactions like asking for directions, understanding local responses, and reacting naturally. AI should vary levels of politeness, formality, and regional accents to build flexibility."
+  },
+  {
+    "type": "words",
+    "title": "Software Vocabulary",
+    "description": "Vocabulary related to software development",
+    "details": "Practice essential words used in programming, tools (e.g. Git, IDE), and collaboration (e.g. pull request, backlog). Student will match terms, fill gaps, and use new words in context."
+  },
+  {
+    "type": "play",
+    "title": "Job Interview Simulation",
+    "description": "Mock technical interview for a software developer position",
+    "details": "AI acts as an interviewer asking both technical and behavioral questions. Student must respond clearly and confidently. After each response, AI gives specific feedback on grammar, vocabulary, and fluency."
+  },
+  {
+    "type": "rule",
+    "title": "Past Simple Tense",
+    "description": "Understanding and practicing past simple tense",
+    "details": "Review past simple grammar rules. Student completes gap-fill exercises, rewrites present-tense sentences, and speaks about past events. AI highlights mistakes and corrects them with explanations."
+  },
+  {
+    "type": "conversation",
+    "title": "Workplace Culture",
+    "description": "Discussion about working in an international team",
+    "details": "Student practices discussing topics like remote work, teamwork, and workplace etiquette. AI introduces cultural nuances and encourages comparisons with the student's own experience to deepen understanding."
+  }
+]`;
 
 interface GenerateGoalProps {
   conversationMessages: ChatMessage[];
@@ -30,6 +86,9 @@ interface PlanContextType {
   isCraftingGoal: boolean;
   isCraftingError: boolean;
   setActiveGoal: (goalId: string) => Promise<void>;
+
+  finishGoalElement: (goalElementId: string, results: ConversationResult) => Promise<void>;
+  startGoalElement: (goalElementId: string) => Promise<void>;
 }
 
 const PlanContext = createContext<PlanContextType | null>(null);
@@ -41,14 +100,14 @@ function useProvidePlan(): PlanContextType {
   const [isCraftingError, setIsCraftingError] = useState(false);
   const settings = useSettings();
 
-  const collectionRef = db.collections.goals(auth.uid);
-  const [goals, loading] = useCollectionData(collectionRef);
+  const goalsCollectionRef = db.collections.goals(auth.uid);
+  const [goals, loading] = useCollectionData(goalsCollectionRef);
 
   const addGoalPlan = async (goalPlan: GoalPlan) => {
-    if (!collectionRef) {
-      throw new Error("collectionRef ref is not defined");
+    if (!goalsCollectionRef) {
+      throw new Error("goalsCollectionRef ref is not defined");
     }
-    const docRef = doc(collectionRef, goalPlan.id);
+    const docRef = doc(goalsCollectionRef, goalPlan.id);
     await setDoc(docRef, goalPlan, { merge: true });
   };
 
@@ -96,48 +155,12 @@ ${input.conversationMessages.map((message) => {
 Below is a conversation between a student and a teacher. Based on the student's level and goals, generate a personalized language learning plan that can be completed using our AI-powered language learning app.`;
 
     const systemMessage = `${systemMessageTop}
+${appActivities}
 
-The app supports the following activity types:
-* words: Practice vocabulary related to a specific topic
-* play: Role-play conversations (e.g. job interview)
-* rule: Learn and practice grammar or concepts
-* conversation: General conversation with AI on a specific topic
+Your output must be in valid JSON format with no additional text or explanation.
+Your response will be parsed using JSON.parse().
 
-Your output must be in valid JSON format with no additional text or explanation. Your response will be parsed using JSON.parse().
-
-Example of plan:
-[
-  {
-    "type": "conversation",
-    "title": "On the Street",
-    "description": "Casual conversation about asking for directions",
-    "details": "Student practices real-life interactions like asking for directions, understanding local responses, and reacting naturally. AI should vary levels of politeness, formality, and regional accents to build flexibility."
-  },
-  {
-    "type": "words",
-    "title": "Software Vocabulary",
-    "description": "Vocabulary related to software development",
-    "details": "Practice essential words used in programming, tools (e.g. Git, IDE), and collaboration (e.g. pull request, backlog). Student will match terms, fill gaps, and use new words in context."
-  },
-  {
-    "type": "play",
-    "title": "Job Interview Simulation",
-    "description": "Mock technical interview for a software developer position",
-    "details": "AI acts as an interviewer asking both technical and behavioral questions. Student must respond clearly and confidently. After each response, AI gives specific feedback on grammar, vocabulary, and fluency."
-  },
-  {
-    "type": "rule",
-    "title": "Past Simple Tense",
-    "description": "Understanding and practicing past simple tense",
-    "details": "Review past simple grammar rules. Student completes gap-fill exercises, rewrites present-tense sentences, and speaks about past events. AI highlights mistakes and corrects them with explanations."
-  },
-  {
-    "type": "conversation",
-    "title": "Workplace Culture",
-    "description": "Discussion about working in an international team",
-    "details": "Student practices discussing topics like remote work, teamwork, and workplace etiquette. AI introduces cultural nuances and encourages comparisons with the student's own experience to deepen understanding."
-  }
-]
+${exampleOfPlan}
 
 Use ${fullLangName} language for generating plan (title, description, details).
 The plan should include at least 8 elements and must cover each type of activity. 5 of them should be 'conversation' type.
@@ -152,9 +175,58 @@ ${input.conversationMessages.map((message) => {
 })}
 `;
 
-    const parsedElements = await textAi.generateJson<AiGeneratedElement[]>({
+    return generateElementsWithAi({
       systemMessage,
       userMessage,
+      languageCode: input.languageCode,
+    });
+  };
+
+  const generateExtenderElements = async (input: {
+    languageCode: SupportedLanguage;
+    existingElements: PlanElement[];
+    progress: GoalElementProgress[];
+  }): Promise<PlanElement[]> => {
+    const fullLangName = fullEnglishLanguageName[input.languageCode];
+
+    const systemMessage = `You are professional ${fullLangName} Teacher. 
+
+Below is a student learning plan and progress.
+Based on the date, generate next plan element that can be completed using our AI-powered language learning app.
+
+${appActivities}
+
+Your output must be in valid JSON format with no additional text or explanation.
+Your response will be parsed using JSON.parse().
+
+${exampleOfPlan}
+
+Use ${fullLangName} language for generating plan (title, description, details).
+The plan should include at least 4 elements.
+`;
+
+    const userMessage = `Active learning plan:
+${JSON.stringify(input.existingElements, null, 2)}
+
+Progress:
+${JSON.stringify(input.progress, null, 2)}
+`;
+
+    return generateElementsWithAi({
+      systemMessage,
+      userMessage,
+      languageCode: input.languageCode,
+    });
+  };
+
+  const generateElementsWithAi = async (input: {
+    systemMessage: string;
+    userMessage: string;
+    languageCode: SupportedLanguage;
+  }): Promise<PlanElement[]> => {
+    const parsedElements = await textAi.generateJson<AiGeneratedElement[]>({
+      systemMessage: input.systemMessage,
+      userMessage: input.userMessage,
       model: "gpt-4o",
       languageCode: input.languageCode,
       attempts: 4,
@@ -200,8 +272,8 @@ ${input.conversationMessages.map((message) => {
   };
 
   const generateGoal = async (input: GenerateGoalProps): Promise<GoalPlan> => {
-    if (!collectionRef) {
-      throw new Error("collectionRef ref is not defined");
+    if (!goalsCollectionRef) {
+      throw new Error("goalsCollectionRef ref is not defined");
     }
     setIsCraftingGoal(true);
     setIsCraftingError(false);
@@ -210,7 +282,7 @@ ${input.conversationMessages.map((message) => {
       generateElements(input),
       generateGoalTitle(input),
     ]);
-    const docRef = doc(collectionRef);
+    const docRef = doc(goalsCollectionRef);
     const goalPlanId = docRef.id;
     const goalPlan: GoalPlan = {
       id: goalPlanId,
@@ -228,10 +300,10 @@ ${input.conversationMessages.map((message) => {
 
   const setActiveGoal = async (goalId: string) => {
     // Just update updatedAt to make it the latest
-    if (!collectionRef) {
-      throw new Error("collectionRef ref is not defined");
+    if (!goalsCollectionRef) {
+      throw new Error("goalsCollectionRef ref is not defined");
     }
-    const docRef = doc(collectionRef, goalId);
+    const docRef = doc(goalsCollectionRef, goalId);
     await setDoc(docRef, { updatedAt: Date.now() }, { merge: true });
   };
 
@@ -264,20 +336,115 @@ ${input.conversationMessages.map((message) => {
   }, [goals, settings.languageCode]);
 
   const deleteGoals = async () => {
-    if (!collectionRef || !auth.uid) {
-      throw new Error("collectionRef ref is not defined");
+    if (!goalsCollectionRef || !auth.uid) {
+      throw new Error("goalsCollectionRef ref is not defined");
     }
-
-    const activeId = activeGoal?.id;
-    if (!activeId) {
-      return;
-    }
-
-    await deleteDoc(doc(collectionRef, activeId));
+    if (!activeGoal?.id) return;
+    await deleteDoc(doc(goalsCollectionRef, activeGoal.id));
   };
 
+  const updateActiveGoalProgress = async (data: GoalElementProgress) => {
+    if (!goalsCollectionRef || !auth.uid) {
+      throw new Error("goalsCollectionRef ref is not defined");
+    }
+    if (!activeGoal?.id) return;
+
+    const existingProgress = activeGoal.progress || [];
+    const cleanProgress = existingProgress.filter((p) => p.elementId !== data.elementId);
+    cleanProgress.push(data);
+
+    const docRef = doc(goalsCollectionRef, activeGoal.id);
+
+    const updatedGoalData: Partial<GoalPlan> = {
+      progress: cleanProgress,
+    };
+    await setDoc(docRef, updatedGoalData, { merge: true });
+  };
+
+  const startGoalElement = async (goalElementId: string) => {
+    if (!activeGoal) return;
+    const elementNotFound = !activeGoal.elements.find((el) => el.id === goalElementId);
+    if (elementNotFound) {
+      throw new Error("startGoalElement error: Goal element not found in active goal");
+    }
+
+    const existingProgress = activeGoal.progress || [];
+    const elementProgress = existingProgress.find((p) => p.elementId === goalElementId);
+
+    const newProgress: GoalElementProgress = {
+      elementId: goalElementId,
+      startedAtIso: new Date().toISOString(),
+      completedAtIso: null,
+      results: null,
+      ...elementProgress,
+      state: "in_progress",
+    };
+    await updateActiveGoalProgress(newProgress);
+  };
+
+  const finishGoalElement = async (goalElementId: string, results: ConversationResult) => {
+    if (!activeGoal) return;
+
+    const elementNotFound = !activeGoal.elements.find((el) => el.id === goalElementId);
+    if (elementNotFound) {
+      throw new Error("startGoalElement error: Goal element not found in active goal");
+    }
+
+    const existingProgress = activeGoal.progress || [];
+    const elementProgress = existingProgress.find((p) => p.elementId === goalElementId);
+
+    const newProgress: GoalElementProgress = {
+      elementId: goalElementId,
+      startedAtIso: elementProgress?.startedAtIso || new Date().toISOString(),
+      completedAtIso: new Date().toISOString(),
+      results: results,
+      state: "completed",
+    };
+    await updateActiveGoalProgress(newProgress);
+  };
+
+  const isNeededToExtendActiveGoal = useMemo(() => {
+    if (!activeGoal) return false;
+    const existingProgress = activeGoal.progress || [];
+    const completedElements = uniq(
+      existingProgress.filter((p) => p.state === "completed").map((p) => p.elementId)
+    );
+
+    return completedElements.length >= activeGoal.elements.length - 3;
+  }, [activeGoal]);
+
+  const isGeneratingExtenderGoal = useRef(false);
+  const generateExtenderGoal = async (): Promise<void> => {
+    if (isGeneratingExtenderGoal.current) return;
+    if (!activeGoal || !goalsCollectionRef) return;
+
+    console.log("Generating extended goal elements...");
+    const newElements = await generateExtenderElements({
+      languageCode: activeGoal.languageCode,
+      existingElements: activeGoal.elements,
+      progress: activeGoal.progress || [],
+    });
+    console.log("New elements", newElements);
+
+    const updatedElements = [...activeGoal.elements, ...newElements];
+    const docRef = doc(goalsCollectionRef, activeGoal.id);
+
+    const updatedPlanData: Partial<GoalPlan> = {
+      elements: updatedElements,
+      updatedAt: Date.now(),
+    };
+    await setDoc(docRef, updatedPlanData, { merge: true });
+    isGeneratingExtenderGoal.current = true;
+  };
+
+  useEffect(() => {
+    if (isNeededToExtendActiveGoal) {
+      generateExtenderGoal();
+    }
+  }, [isNeededToExtendActiveGoal]);
+
   const increaseStartCount = async (plan: GoalPlan, goalElement: PlanElement) => {
-    if (!collectionRef) {
+    if (!goalsCollectionRef) {
       return;
     }
 
@@ -289,7 +456,7 @@ ${input.conversationMessages.map((message) => {
     if (!element) return;
     element.startCount = (element.startCount || 0) + 1;
 
-    const docRef = doc(collectionRef, planId);
+    const docRef = doc(goalsCollectionRef, planId);
     await setDoc(docRef, { elements: planData.elements }, { merge: true });
   };
 
@@ -304,6 +471,9 @@ ${input.conversationMessages.map((message) => {
     generateGoal,
     isCraftingGoal,
     isCraftingError,
+
+    finishGoalElement,
+    startGoalElement,
   };
 }
 

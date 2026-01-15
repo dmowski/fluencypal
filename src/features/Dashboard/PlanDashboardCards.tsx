@@ -64,20 +64,16 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const goalDescription = plan.activeGoal?.goalQuiz?.description || "";
 
   const sortedElements = useMemo(() => {
-    const elements = plan.activeGoal?.elements || [];
-    const conversationElement = elements.find((el) => el.mode === "conversation");
-    if (!conversationElement) {
-      return elements;
-    }
-
-    const otherElements = elements.filter((el) => el !== conversationElement);
-    return [conversationElement, ...otherElements];
+    return plan.activeGoal?.elements || [];
   }, [plan.activeGoal?.elements]);
 
   let activeIndex: null | number = null;
 
   sortedElements.forEach((element, index) => {
-    if (element.startCount == 0 && activeIndex === null) {
+    const isCompleted =
+      plan.activeGoal?.progress?.find((part) => part.elementId === element.id)?.state ===
+      "completed";
+    if (!isCompleted && activeIndex === null) {
       activeIndex = index;
     }
   });
@@ -337,7 +333,11 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             const imageVariants = cardInfo.imgUrl;
             const imageIndex = currentElementIndex % imageVariants.length;
             const imageUrl = imageVariants[imageIndex];
-            const isDone = planElement.startCount > 0;
+
+            const isDone =
+              plan.activeGoal?.progress?.find((part) => part.elementId === planElement.id)
+                ?.state === "completed";
+
             const isActive = index === activeIndex;
 
             return (
