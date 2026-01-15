@@ -30,9 +30,9 @@ type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start" | "plan";
 
 const elementSteps: Record<PlanElementMode, Step[]> = {
   conversation: ["intro", "mic", "webcam", "plan", "start"],
-  words: ["intro", "mic", "words", "start"],
-  play: ["intro", "mic", "webcam", "start"],
-  rule: ["intro", "mic", "rules", "start"],
+  words: ["intro", "mic", "words", "plan", "start"],
+  play: ["intro", "mic", "webcam", "plan", "start"],
+  rule: ["intro", "mic", "rules", "plan", "start"],
 };
 
 const conversationModes: Record<PlanElementMode, ConversationMode> = {
@@ -86,11 +86,19 @@ export const LessonStartModal = ({
   const [isLessonPlanLoading, setIsLessonPlanLoading] = useState<boolean>(false);
   const isLoadingLessonPlanRef = useRef(false);
 
-  const loadLessonPlan = async (skipCache?: boolean) => {
+  const loadLessonPlan = async ({
+    skipCache,
+    words,
+    rule,
+  }: {
+    skipCache?: boolean;
+    words?: string[];
+    rule?: string;
+  }) => {
     isLoadingLessonPlanRef.current = true;
     setIsLessonPlanLoading(true);
 
-    await lessonPlan.createLessonPlan(goalInfo, skipCache);
+    await lessonPlan.createLessonPlan({ goalInfo, skipCache, words, rule });
 
     isLoadingLessonPlanRef.current = false;
     setIsLessonPlanLoading(false);
@@ -102,6 +110,7 @@ export const LessonStartModal = ({
     const wordsList = await words.getNewWordsToLearn(goalInfo, knownWords || []);
 
     setWordsToLearn(wordsList);
+    loadLessonPlan({ words: wordsList, skipCache: true });
     setIsWordsLoading(false);
     wordsLoadingRef.current = false;
   };
@@ -117,6 +126,7 @@ export const LessonStartModal = ({
     setIsRuleLoading(true);
     isRuleLoadingRef.current = true;
     const rule = await rules.getRules(goalInfo);
+    loadLessonPlan({ rule: rule, skipCache: true });
     setRuleToLearn(rule);
     setIsRuleLoading(false);
     isRuleLoadingRef.current = false;
@@ -137,10 +147,15 @@ export const LessonStartModal = ({
   };
 
   useEffect(() => {
+    const isWords = steps.includes("words");
+    const isRules = steps.includes("rules");
+
+    if (steps.includes("plan") && !isLoadingLessonPlanRef.current && !isWords && !isRules)
+      loadLessonPlan({});
+
     if (steps.includes("words") && !wordsLoadingRef.current) loadWords();
     if (steps.includes("rules") && !isRuleLoadingRef.current) loadRule();
     if (!isLoadingIdeasRef.current) loadIdeas();
-    if (steps.includes("plan") && !isLoadingLessonPlanRef.current) loadLessonPlan();
   }, []);
 
   const onNext = () => {
@@ -475,7 +490,11 @@ export const LessonStartModal = ({
             secondButtonDisabled={isLessonPlanLoading}
             secondButtonTitle={i18n._(`Refresh`)}
             secondButtonEndIcon={<RefreshCw size={"18px"} />}
-            onSecondButtonClick={() => loadLessonPlan(true)}
+            onSecondButtonClick={() =>
+              loadLessonPlan({
+                skipCache: true,
+              })
+            }
           />
         )}
 

@@ -104,7 +104,7 @@ Your response will be sent to JSON.parse() function.
 `,
       ].join(" ");
 
-      console.log("systemInstruction", systemInstruction);
+      //console.log("systemInstruction", systemInstruction);
       const response = await textAi.generate({
         systemMessage: systemInstruction,
         userMessage: knownWords.join(" "),

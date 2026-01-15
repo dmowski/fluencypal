@@ -13,7 +13,17 @@ interface LessonPlanContextType {
   activeLessonPlan: LessonPlan | null;
   setActiveLessonPlan: (plan: LessonPlan | null) => void;
   activeProgress: LessonPlanAnalysis | null;
-  createLessonPlan: (goalInfo: GoalElementInfo, skipCache?: boolean) => Promise<LessonPlan>;
+  createLessonPlan: ({
+    goalInfo,
+    skipCache,
+    words,
+    rule,
+  }: {
+    goalInfo: GoalElementInfo;
+    skipCache?: boolean;
+    words?: string[];
+    rule?: string;
+  }) => Promise<LessonPlan>;
   generateAnalysis: (temporaryUserMessage?: string) => Promise<LessonPlanAnalysis | null>;
 }
 
@@ -190,10 +200,17 @@ ${JSON.stringify(previousProgress, null, 2)}
 
   const aiUserInfo = useAiUserInfo();
 
-  const createLessonPlan = async (
-    goalInfo: GoalElementInfo,
-    skipCache?: boolean
-  ): Promise<LessonPlan> => {
+  const createLessonPlan = async ({
+    goalInfo,
+    skipCache,
+    words,
+    rule,
+  }: {
+    goalInfo: GoalElementInfo;
+    skipCache?: boolean;
+    words?: string[];
+    rule?: string;
+  }): Promise<LessonPlan> => {
     const storagePlan = getLessonPlanFromStorage(goalInfo.goalElement.id);
     if (storagePlan && !skipCache) {
       setActiveLessonPlan(storagePlan);
@@ -206,6 +223,8 @@ ${JSON.stringify(previousProgress, null, 2)}
     const elementTitle = goalInfo.goalElement.title;
     const elementDescription = goalInfo.goalElement.description;
     const elementDetails = goalInfo.goalElement.details;
+
+    const numberOfSteps = "4";
 
     const systemMessage = `Your goal is to create a detailed lesson plan for a speech lesson.
 
@@ -223,12 +242,16 @@ ${elementDescription}
 The lesson details:
 ${elementDetails}
 
+${words ? `Words to learn: ${words.join(", ")}` : ""}
+
+${rule ? `Rule to learn: ${rule}` : ""}
+
 Info about student:
 ${userInfo}
 
 Provide a step-by-step lesson plan with clear objectives and activities.
 
-Plan should contain 2-3 steps.
+Plan should contain ${numberOfSteps} steps.
 On the first step in teacherInstructions, include a start message to introduce the topic to the student.
 
 Student language is ${settings.userSettings?.nativeLanguageCode || "en"}. And he is learning ${settings.fullLanguageName || "English"}.

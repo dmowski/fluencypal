@@ -721,7 +721,6 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
   const addUserMessage = async (message: string) => {
     communicator?.addUserChatMessage(message);
     if (!lessonPlan) {
-      await sleep(300);
       await communicatorRef.current?.triggerAiResponse();
     }
   };

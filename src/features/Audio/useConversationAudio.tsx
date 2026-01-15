@@ -243,7 +243,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
   }, []);
 
   const speak = useCallback(async (text: string, opts: SpeakOptions) => {
-    const maxLength = 400;
+    const maxLength = 600;
     text = text.trim();
     const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
     const q = new URLSearchParams({
