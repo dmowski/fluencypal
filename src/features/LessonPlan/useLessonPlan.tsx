@@ -135,6 +135,8 @@ Format the response as a JSON object containing {
 
 teacherResponse is optional and should be used only when necessary to guide the teacher back on track.
 
+If lesson is done, provide last teacherResponse to properly end the lesson.
+
 The previous analysis was:
 ${JSON.stringify(previousProgress, null, 2)}
 `;
