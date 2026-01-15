@@ -20,7 +20,6 @@ import { ConversationType } from "@/common/conversation";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useTranslate } from "../Translation/useTranslate";
 import { ConversationIdea, useAiUserInfo } from "../Ai/useAiUserInfo";
-import { useTextAi } from "../Ai/useTextAi";
 import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
 import { useLessonPlan } from "../LessonPlan/useLessonPlan";
 import { useAuth } from "../Auth/useAuth";
@@ -30,16 +29,16 @@ import { usePlan } from "./usePlan";
 type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start" | "plan";
 
 const elementSteps: Record<PlanElementMode, Step[]> = {
-  conversation: ["intro", "mic", "webcam", "plan", "start"],
+  conversation: ["intro", "mic", "plan", "start"],
   words: ["intro", "mic", "words", "plan", "start"],
-  play: ["intro", "mic", "webcam", "plan", "start"],
+  play: ["intro", "mic", "plan", "start"],
   rule: ["intro", "mic", "rules", "plan", "start"],
 };
 
 const conversationModes: Record<PlanElementMode, ConversationMode> = {
-  conversation: "call",
+  conversation: "record",
   words: "record",
-  play: "call",
+  play: "record",
   rule: "record",
 };
 

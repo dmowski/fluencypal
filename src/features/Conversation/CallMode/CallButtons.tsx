@@ -8,7 +8,7 @@ import { useLingui } from "@lingui/react";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import { CircleQuestionMark, Trophy } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CustomModal } from "@/features/uiKit/Modal/CustomModal";
 import { FeatureBlocker } from "@/features/Usage/FeatureBlocker";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
@@ -146,11 +146,19 @@ export const CallButtons = ({
 
   const recorder = useAudioRecorder();
 
+  const isSubmittingRef = useRef(false);
+
   const submitTranscription = () => {
+    if (isSubmittingRef.current) return;
+    isSubmittingRef.current = true;
     onSubmitTranscription(recorder.transcription || "");
     recorder.removeTranscript();
     recorder.cancelRecording();
     setIsShowMuteWarning(false);
+
+    setTimeout(() => {
+      isSubmittingRef.current = false;
+    }, 200);
   };
 
   const [isRecordingByButton, setIsRecordingByButton] = useState(false);
@@ -188,10 +196,7 @@ export const CallButtons = ({
     if (!recorder.transcription) return;
 
     submitTranscription();
-
-    setTimeout(() => {
-      setIsRecordingByButton(false);
-    }, 200);
+    setIsRecordingByButton(false);
   }, [isRecordingByButton, recorder.transcription]);
 
   return (
