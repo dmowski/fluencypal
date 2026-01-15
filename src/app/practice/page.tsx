@@ -1,5 +1,5 @@
 import { supportedLanguages } from "@/features/Lang/lang";
-import { ConversationPage } from "@/features/Conversation/ConversationPage";
+import { PracticePage } from "@/features/Conversation/PracticePage";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { Metadata } from "next";
 import { generateMetadataInfo } from "@/features/SEO/metadata";
@@ -37,7 +37,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
         <PracticeProvider>
           <TopOffset />
           <main>
-            <ConversationPage rolePlayInfo={rolePlayInfo} lang={supportedLang} />
+            <PracticePage rolePlayInfo={rolePlayInfo} lang={supportedLang} />
           </main>
         </PracticeProvider>
       </body>

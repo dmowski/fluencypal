@@ -25,12 +25,12 @@ import { useLessonPlan } from "../LessonPlan/useLessonPlan";
 import { usePlan } from "../Plan/usePlan";
 import { usePageLangRedirect } from "../Router/usePageLangRedirect";
 
-interface ConversationPageProps {
+interface PracticePageProps {
   rolePlayInfo: RolePlayScenariosInfo;
   lang: SupportedLanguage;
 }
 
-export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) {
+export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   const auth = useAuth();
   const settings = useSettings();
   const aiConversation = useAiConversation();
