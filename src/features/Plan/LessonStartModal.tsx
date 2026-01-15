@@ -29,16 +29,16 @@ import { usePlan } from "./usePlan";
 type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start" | "plan";
 
 const elementSteps: Record<PlanElementMode, Step[]> = {
-  conversation: ["intro", "mic", "plan", "start"],
+  conversation: ["intro", "mic", "webcam", "plan", "start"],
   words: ["intro", "mic", "words", "plan", "start"],
-  play: ["intro", "mic", "plan", "start"],
+  play: ["intro", "mic", "webcam", "plan", "start"],
   rule: ["intro", "mic", "rules", "plan", "start"],
 };
 
 const conversationModes: Record<PlanElementMode, ConversationMode> = {
-  conversation: "record",
+  conversation: "call",
   words: "record",
-  play: "record",
+  play: "call",
   rule: "record",
 };
 
