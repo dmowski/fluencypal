@@ -195,9 +195,9 @@ export default function LandingPage({ lang }: LandingPageProps) {
             title={i18n._(`Speaking practice`)}
             subTitle1={i18n._(`Don’t let mistakes stop you.`)}
             subTitle2={i18n._(`Build fluency and confidence with daily speaking practice.`)}
-            buttonTitle={i18n._(`Start`)}
+            buttonTitle={i18n._(`Start Speaking`)}
+            openMyPracticeLinkTitle={i18n._(`Start Speaking`)}
             buttonHref={`${getUrlStart(lang)}quiz`}
-            openMyPracticeLinkTitle={i18n._(`Start`)}
             cards={[
               {
                 videoUrl: "/landing/preview/grammar2.webm",
