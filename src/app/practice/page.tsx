@@ -1,5 +1,5 @@
 import { supportedLanguages } from "@/features/Lang/lang";
-import { PracticePage } from "@/features/Conversation/PracticePage";
+import { PracticePage } from "@/features/Router/PracticePage";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { Metadata } from "next";
 import { generateMetadataInfo } from "@/features/SEO/metadata";

@@ -3,15 +3,15 @@ import { Divider, Stack } from "@mui/material";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { sleep } from "@/libs/sleep";
-import { ConversationCanvas } from "./ConversationCanvas";
+import { ConversationCanvas } from "../Conversation/ConversationCanvas";
 import { ChatMessage } from "@/common/conversation";
-import { GuessGameStat } from "./types";
+import { GuessGameStat } from "../Conversation/types";
 import { useEffect, useState } from "react";
-import { useAiConversation } from "./useAiConversation";
+import { useAiConversation } from "../Conversation/useAiConversation";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { ConversationMode } from "@/common/user";
 
-interface ConversationPageTestProps {
+interface PracticePageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
   lang: SupportedLanguage;
 }
@@ -26,7 +26,7 @@ for (let i = 0; i < 7; i++) {
   });
 }
 
-export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTestProps) {
+export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) {
   const aiUserInfo = useAiUserInfo();
   const [testMessage, setTestMessage] = useState<ChatMessage[]>(startTestMessages);
 

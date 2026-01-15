@@ -9,21 +9,21 @@ import { useSettings } from "../Settings/useSettings";
 import { Dashboard } from "../Dashboard/Dashboard";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
-import { ConversationCanvas } from "./ConversationCanvas";
+import { ConversationCanvas } from "../Conversation/ConversationCanvas";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { useLingui } from "@lingui/react";
 import { InfoBlockedSection } from "../Dashboard/InfoBlockedSection";
 import { useEffect } from "react";
 import { SelectLanguage } from "../Dashboard/SelectLanguage";
-import { ConversationError } from "./ConversationError";
+import { ConversationError } from "../Conversation/ConversationError";
 import { GamePage } from "../Game/GamePage";
-import { useConversationsAnalysis } from "./useConversationsAnalysis";
+import { useConversationsAnalysis } from "../Conversation/useConversationsAnalysis";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { RolePlayProvider } from "../RolePlay/useRolePlay";
 import { useAccess } from "../Usage/useAccess";
 import { useLessonPlan } from "../LessonPlan/useLessonPlan";
 import { usePlan } from "../Plan/usePlan";
-import { usePageLangRedirect } from "../Router/usePageLangRedirect";
+import { usePageLangRedirect } from "./usePageLangRedirect";
 
 interface PracticePageProps {
   rolePlayInfo: RolePlayScenariosInfo;

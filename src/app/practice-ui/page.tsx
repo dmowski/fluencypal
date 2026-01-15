@@ -2,7 +2,7 @@ import { supportedLanguages } from "@/features/Lang/lang";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { Metadata } from "next";
 import { generateMetadataInfo } from "@/features/SEO/metadata";
-import { ConversationPageTest } from "@/features/Conversation/ConversationPageTest";
+import { PracticePageTest } from "@/features/Router/PracticePageTest";
 import { PracticeProvider } from "../practiceProvider";
 import { TopOffset } from "@/features/Layout/TopOffset";
 
@@ -43,7 +43,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
         <PracticeProvider>
           <TopOffset />
           <main>
-            <ConversationPageTest rolePlayInfo={rolePlayInfo} lang={supportedLang} />
+            <PracticePageTest rolePlayInfo={rolePlayInfo} lang={supportedLang} />
           </main>
         </PracticeProvider>
       </body>
