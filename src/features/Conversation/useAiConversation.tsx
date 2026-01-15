@@ -26,6 +26,7 @@ import { ConversationConfig, ConversationInstance } from "./ConversationInstance
 import { useTextAi } from "../Ai/useTextAi";
 import { initTextConversation } from "./ConversationInstance/textConversation";
 import { useConversationAudio } from "../Audio/useConversationAudio";
+import { voiceLearningPlanMap } from "./CallMode/voiceAvatar";
 
 const voiceInstructions = `## AI Voice
 Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking  These pauses should feel natural and reflective, as if you're savoring the moment.`;
@@ -85,7 +86,7 @@ interface AiConversationContextType {
 
   goalInfo: GoalElementInfo | null;
 
-  voice: AiVoice | null;
+  voice: AiVoice;
 
   messageOrder: MessagesOrderMap;
 
@@ -424,7 +425,7 @@ ${lessonPlan.steps
 
     let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : "";
 
-    // GOAL TALK
+    // GOAL TALK, conversation
     if (mode === "goal-talk") {
       if (!goal) {
         throw new Error("Goal is not set for goal-talk mode");
@@ -442,7 +443,7 @@ ${lessonPlan.steps
       return {
         ...baseConfig,
         model: aiModal,
-        voice: "shimmer",
+        voice: voiceLearningPlanMap.conversation,
         initInstruction: `# Overview
 You are an ${fullLanguageName} speaking teacher. Your name is "Shimmer".
 Your role is to make user talks on a topic: ${elementTitle}. ${elementDescription}. (${elementDetails}).
@@ -466,7 +467,7 @@ ${voiceInstructions}`,
       return {
         ...baseConfig,
         model: aiModal,
-        voice: "shimmer",
+        voice: voiceLearningPlanMap.play,
         initInstruction: `# Overview
 You are an ${fullLanguageName} speaking teacher. Your name is "Shimmer".
 Your role is to play a Role Play game on this topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
@@ -544,7 +545,7 @@ ${getConversationStarterMessagePrompt(startFirstMessage)}
       let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : "";
       return {
         ...baseConfig,
-        voice: "ash",
+        voice: voiceLearningPlanMap.rule,
         model: aiModal,
         initInstruction: `${aiPersona}
 Your name is "Bruno".
@@ -565,7 +566,7 @@ ${voiceInstructions}
       return {
         ...baseConfig,
         model: aiModal,
-        voice: "ash",
+        voice: voiceLearningPlanMap.words,
         initInstruction: `${aiPersona}
 Your name is "Bruno".
 The user wants to learn new words.
@@ -727,7 +728,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 
   return {
     currentMode,
-    voice,
+    voice: voice || "shimmer",
     conversationId,
     isInitializing,
     isStarted,

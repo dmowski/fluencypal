@@ -9,7 +9,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { ChevronDown, Flag, LandPlot, Plus, Sparkle } from "lucide-react";
+import { ChevronDown, Flag, LandPlot, MoveRight, Plus, Sparkle } from "lucide-react";
 import { useLingui } from "@lingui/react";
 import { usePlan } from "../Plan/usePlan";
 import { PlanElementMode } from "../Plan/types";
@@ -24,6 +24,9 @@ import { useUrlParam } from "../Url/useUrlParam";
 import { useSettings } from "../Settings/useSettings";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+import { ActiveLessonCard } from "../Plan/ActiveLessonCard";
+import VideocamIcon from "@mui/icons-material/Videocam";
+import { getAiVoiceByPlanPlanElementMode } from "../Conversation/CallMode/voiceAvatar";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -114,6 +117,20 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
   return (
     <Stack gap="20px">
+      {plan.nextElement && (
+        <ActiveLessonCard
+          subTitle={i18n._("Next Lesson")}
+          title={plan.nextElement.title}
+          descriptionTop={plan.nextElement.description}
+          descriptionBottom={plan.nextElement.subTitle}
+          actionLabel={i18n._("Join")}
+          aiVideo={getAiVoiceByPlanPlanElementMode(plan.nextElement.mode)}
+          startIcon={<VideocamIcon />}
+          onAction={() => {
+            alert("Hello");
+          }}
+        />
+      )}
       <Stack
         sx={{
           display: "grid",

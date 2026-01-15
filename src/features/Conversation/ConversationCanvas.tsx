@@ -81,7 +81,7 @@ interface ConversationCanvasProps {
   generateHelpMessage: () => Promise<string>;
   toggleConversationMode: (mode: ConversationMode) => void;
   conversationMode: ConversationMode;
-  voice: AiVoice | null;
+  voice: AiVoice;
 
   messageOrder: MessagesOrderMap;
 

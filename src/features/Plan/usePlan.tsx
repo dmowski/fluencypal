@@ -100,6 +100,7 @@ interface PlanContextType {
   closeElementModal: () => void;
 
   activeGoalElementInfo: GoalElementInfo | null;
+  nextElement: PlanElement | undefined;
 }
 
 const PlanContext = createContext<PlanContextType | null>(null);
@@ -496,8 +497,9 @@ ${JSON.stringify(input.progress, null, 2)}
     return goalElementInfo;
   }, [activeGoal, activeElementId]);
 
+  const nextElement = activeElements[0];
+
   const openNextLesson = (): void => {
-    const nextElement = activeElements[0];
     openElementModal(nextElement?.id || "");
   };
 
@@ -510,6 +512,7 @@ ${JSON.stringify(input.progress, null, 2)}
   };
 
   return {
+    nextElement,
     setActiveGoal,
     goals: goals || [],
     activeGoal,

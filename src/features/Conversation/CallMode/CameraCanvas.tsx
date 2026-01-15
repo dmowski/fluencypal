@@ -12,22 +12,11 @@ import { AvatarVideo } from "./types";
 import { AiAvatarVideo } from "./AiAvatarVideo";
 import { CallButtons } from "./CallButtons";
 import { WebCamView } from "@/features/webCam/WebCamView";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ScanLine } from "lucide-react";
 import { sleep } from "@/libs/sleep";
 import { LessonPlanAnalysis } from "@/features/LessonPlan/type";
-
-const girlVoices: AiVoice[] = ["alloy", "coral", "sage", "shimmer"];
-
-const girl1: AvatarVideo = {
-  sitVideoUrl: ["/call/girl_2/sit.webm", "/call/girl_2/sit2.webm"],
-  talkVideoUrl: ["/call/girl_2/talk.webm", "/call/girl_2/talk2.webm"],
-};
-
-const boy1: AvatarVideo = {
-  sitVideoUrl: ["/call/boy_1/sit.webm"],
-  talkVideoUrl: ["/call/boy_1/talk.webm", "/call/boy_1/talk2.webm"],
-};
+import { getAiVoiceByVoice } from "./voiceAvatar";
 
 export const CameraCanvas = ({
   conversation,
@@ -54,7 +43,7 @@ export const CameraCanvas = ({
   stopCallMode: () => void;
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
-  voice: AiVoice | null;
+  voice: AiVoice;
   isAiSpeaking: boolean;
   messageOrder: MessagesOrderMap;
   onWebCamDescription: (description: string) => void;
@@ -88,8 +77,7 @@ export const CameraCanvas = ({
   const auth = useAuth();
   const userPhoto = auth.userInfo?.photoURL || "";
   const myUserName = auth.userInfo?.displayName || auth.userInfo?.email || "You";
-  const aiVideo: AvatarVideo | null = voice ? (girlVoices.includes(voice) ? girl1 : boy1) : null;
-
+  const aiVideo: AvatarVideo | null = getAiVoiceByVoice(voice);
   const footerHeight = `calc(80px + ${sizes.bottomOffset})`;
 
   const topHeight = isSubtitlesEnabled ? `50dvh` : `calc(97dvh - ${footerHeight})`;
