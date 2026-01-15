@@ -124,11 +124,9 @@ export const CallButtons = ({
   const progress = lessonPlanAnalysis?.progress || 1;
 
   const [isShowVolumeWarning, setIsShowVolumeWarning] = useState(false);
-  const [isShowMuteWarning, setIsShowMuteWarning] = useState(false);
 
   const toggleMute = () => {
     if (isLimited) {
-      setIsShowMuteWarning(true);
       return;
     }
 
@@ -151,11 +149,12 @@ export const CallButtons = ({
   const submitTranscription = () => {
     if (isSubmittingRef.current) return;
     isSubmittingRef.current = true;
+
     onSubmitTranscription(recorder.transcription || "");
     recorder.removeTranscript();
     recorder.cancelRecording();
-    setIsShowMuteWarning(false);
 
+    setIsVolumeOn(previousIsVolumeOn);
     setTimeout(() => {
       isSubmittingRef.current = false;
     }, 200);
@@ -347,12 +346,11 @@ export const CallButtons = ({
             </>
           )}
 
-          {(isShowVolumeWarning || isShowMuteWarning) && (
+          {isShowVolumeWarning && (
             <CustomModal
               isOpen={true}
               onClose={() => {
                 setIsShowVolumeWarning(false);
-                setIsShowMuteWarning(false);
                 recorder.cancelRecording();
                 recorder.removeTranscript();
               }}
@@ -389,107 +387,6 @@ export const CallButtons = ({
                         )}
                   </Typography>
                 </Stack>
-
-                {isShowMuteWarning && (
-                  <Stack
-                    sx={{
-                      width: "100%",
-                      //padding: "15px",
-                      //border: "1px solid rgba(255, 255, 255, 0.2)",
-                      //borderRadius: "10px",
-                      gap: "20px",
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    <Stack
-                      sx={{
-                        gap: "5px",
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        sx={
-                          {
-                            //opacity: 0.8,
-                          }
-                        }
-                        className={`${recorder.isTranscribing ? "loading-shimmer" : ""}`}
-                      >
-                        {i18n._("Your Message:")}
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        className={`${recorder.isTranscribing ? "loading-shimmer" : ""}`}
-                        sx={{
-                          opacity: !recorder.transcription ? 0.5 : 1,
-                        }}
-                      >
-                        {recorder.isTranscribing
-                          ? i18n._("Loading...")
-                          : recorder.transcription || i18n._("No message recorded yet.")}
-                      </Typography>
-                    </Stack>
-                    <Stack
-                      sx={{
-                        width: "100%",
-                        gap: "10px",
-                      }}
-                    >
-                      <Stack
-                        sx={{
-                          flexDirection: "row",
-                          width: "100%",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Button
-                          disabled={recorder.isTranscribing}
-                          variant={recorder.transcription ? "outlined" : "contained"}
-                          color={recorder.isRecording ? "error" : "info"}
-                          sx={{
-                            width: "100%",
-                          }}
-                          onClick={() => {
-                            if (recorder.isRecording) {
-                              recorder.stopRecording();
-                            } else {
-                              recorder.startRecording();
-                            }
-                          }}
-                          startIcon={recorder.isRecording ? <StopIcon /> : <MicIcon />}
-                        >
-                          {recorder.isRecording ? i18n._("Stop") : i18n._("Record Message")}
-                        </Button>
-
-                        <Stack
-                          sx={{
-                            width: "100%",
-                            minWidth: "100px",
-                            maxWidth: "100px",
-                            height: "38px",
-                          }}
-                        >
-                          {recorder.visualizerComponent}
-                        </Stack>
-                      </Stack>
-
-                      <Button
-                        variant="contained"
-                        color="info"
-                        disabled={
-                          !recorder.transcription || recorder.isTranscribing || recorder.isRecording
-                        }
-                        onClick={() => submitTranscription()}
-                        sx={{
-                          width: "calc(100% - 100px)",
-                        }}
-                        endIcon={<SendIcon />}
-                      >
-                        {i18n._("Send Message")}
-                      </Button>
-                    </Stack>
-                  </Stack>
-                )}
 
                 <FeatureBlocker onLimitedClick={onLimitedClick} />
                 <Button
