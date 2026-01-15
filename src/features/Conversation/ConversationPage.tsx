@@ -170,7 +170,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         isTranscribing={recorder.isTranscribing}
         isRecording={recorder.isRecording}
         recordingMilliSeconds={recorder.recordingMilliSeconds}
-        recordVisualizerComponent={recorder.Visualizer}
+        recordVisualizerComponent={recorder.visualizerComponent}
         recordingError={recorder.error}
         analyzeConversation={analyzeConversation}
         closeConversation={async () => {

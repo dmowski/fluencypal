@@ -76,7 +76,7 @@ export const initTextConversation = async ({
   };
 
   // Trigger AI response
-  const triggerAiResponse = async (): Promise<void> => {
+  const triggerAiResponse = async (teacherMessage?: string): Promise<void> => {
     if (isProcessingAiResponse) {
       console.log("AI response already in progress, skipping trigger");
       return;
@@ -98,10 +98,12 @@ export const initTextConversation = async ({
 
       onAddDelta(botMessageId, "...", true);
 
-      const aiResponse = await generateTextWithAi({
-        systemMessage,
-        userMessage,
-      });
+      const aiResponse =
+        teacherMessage ||
+        (await generateTextWithAi({
+          systemMessage,
+          userMessage,
+        }));
 
       const botMessage: ChatMessage = {
         id: botMessageId,
@@ -184,7 +186,10 @@ export const initTextConversation = async ({
   // Send correction instruction
   const sendCorrectionInstruction = async (correction: string): Promise<void> => {
     console.log("Updating correction instruction:", correction);
-    instructionState.correction = correction;
+    // instructionState.correction = correction;
+    if (correction) {
+      triggerAiResponse(correction);
+    }
   };
 
   // Send webcam description

@@ -280,7 +280,7 @@ export const CallButtons = ({
                   width: "185px",
                 }}
               >
-                {recorder.Visualizer}
+                {recorder.visualizerComponent}
               </Stack>
 
               <CallButton
@@ -469,7 +469,7 @@ export const CallButtons = ({
                             height: "38px",
                           }}
                         >
-                          {recorder.Visualizer}
+                          {recorder.visualizerComponent}
                         </Stack>
                       </Stack>
 

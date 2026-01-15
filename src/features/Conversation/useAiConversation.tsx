@@ -121,10 +121,10 @@ function useProvideAiConversation(): AiConversationContextType {
   const updateLessonPlanAnalysis = async (analysis: LessonPlanAnalysis | null) => {
     setLessonPlanAnalysis(analysis);
 
-    if (analysis?.teacherResponseInstruction) {
-      communicatorRef.current?.sendCorrectionInstruction(analysis.teacherResponseInstruction);
-      await sleep(30);
-      await communicatorRef.current?.triggerAiResponse();
+    if (analysis?.teacherResponse) {
+      communicatorRef.current?.sendCorrectionInstruction(analysis.teacherResponse);
+      // await sleep(30);
+      //await communicatorRef.current?.triggerAiResponse();
       //setIsWaitingForCorrection(false);
     } else {
       await communicatorRef.current?.triggerAiResponse();

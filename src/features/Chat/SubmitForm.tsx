@@ -332,7 +332,7 @@ Provide only the message user can send, without any additional explanation or co
                   width: recorder.isRecording ? "100%" : "0",
                 }}
               >
-                {recorder.Visualizer}
+                {recorder.visualizerComponent}
               </Stack>
 
               {!recorder.isRecording && !recorder.transcription && (

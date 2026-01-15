@@ -165,7 +165,7 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
                     maxWidth: "200px",
                   }}
                 >
-                  {recorder.Visualizer}
+                  {recorder.visualizerComponent}
                 </Stack>
                 <IconButton
                   onClick={() => {

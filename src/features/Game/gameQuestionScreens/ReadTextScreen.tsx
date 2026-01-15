@@ -241,7 +241,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
                 maxWidth: "200px",
               }}
             >
-              {recorder.Visualizer}
+              {recorder.visualizerComponent}
             </Stack>
 
             {!isRecording && userTranscript && percentage < READ_TEXT_ACCEPTED_PERCENTAGE && (
