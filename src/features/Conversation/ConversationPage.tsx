@@ -43,8 +43,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   const appNavigation = useAppNavigation();
 
-  const { analyzeConversation, conversationAnalysis, gamePointsEarned, generateNextUserMessage } =
-    useConversationsAnalysis();
+  const conversationAnalysis = useConversationsAnalysis();
 
   const router = useRouter();
 
@@ -141,7 +140,10 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   return (
     <Stack>
       <ConversationCanvas
-        pointsEarned={gamePointsEarned}
+        pointsEarned={conversationAnalysis.gamePointsEarned}
+        analyzeConversation={conversationAnalysis.analyzeConversation}
+        conversationAnalysisResult={conversationAnalysis.conversationAnalysis}
+        generateHelpMessage={conversationAnalysis.generateNextUserMessage}
         lessonPlanAnalysis={aiConversation.lessonPlanAnalysis}
         openCommunityPage={() => appNavigation.setCurrentPage("community")}
         conversation={aiConversation.conversation}
@@ -175,7 +177,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         recordingMilliSeconds={recorder.recordingMilliSeconds}
         recordVisualizerComponent={recorder.visualizerComponent}
         recordingError={recorder.error}
-        analyzeConversation={analyzeConversation}
         closeConversation={async () => {
           lessonPlan.setActiveLessonPlan(null);
           await aiConversation.closeConversation();
@@ -185,8 +186,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
           });
         }}
         isShowMessageProgress={!!aiConversation.goalInfo?.goalElement}
-        conversationAnalysisResult={conversationAnalysis}
-        generateHelpMessage={generateNextUserMessage}
         conversationMode={aiConversation.conversationMode}
         toggleConversationMode={aiConversation.toggleConversationMode}
         isMuted={aiConversation.isMuted}

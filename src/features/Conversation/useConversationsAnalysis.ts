@@ -106,7 +106,7 @@ whatUserCanImprove: string;
 
 whatToFocusOnNextTime: string;
 }
-
+Use ${settings.fullLanguageName} language for all answers.
 Your output must be in valid JSON format with no additional text or explanation.
 Your response will be parsed using JSON.parse().
 `;
