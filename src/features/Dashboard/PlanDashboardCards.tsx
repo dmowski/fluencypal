@@ -118,18 +118,24 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   return (
     <Stack gap="20px">
       {plan.nextElement && (
-        <ActiveLessonCard
-          subTitle={i18n._("Next Lesson")}
-          title={plan.nextElement.title}
-          descriptionTop={plan.nextElement.description}
-          descriptionBottom={plan.nextElement.subTitle}
-          actionLabel={i18n._("Join")}
-          aiVideo={getAiVoiceByPlanPlanElementMode(plan.nextElement.mode)}
-          startIcon={<VideocamIcon />}
-          onAction={() => {
-            alert("Hello");
+        <Stack
+          sx={{
+            paddingBottom: "50px",
           }}
-        />
+        >
+          <ActiveLessonCard
+            subTitle={i18n._("Next Lesson")}
+            title={plan.nextElement.title}
+            descriptionTop={plan.nextElement.description}
+            descriptionBottom={plan.nextElement.subTitle}
+            actionLabel={i18n._("Join")}
+            aiVideo={getAiVoiceByPlanPlanElementMode(plan.nextElement.mode)}
+            startIcon={<VideocamIcon />}
+            onAction={() => {
+              alert("Hello");
+            }}
+          />
+        </Stack>
       )}
       <Stack
         sx={{
