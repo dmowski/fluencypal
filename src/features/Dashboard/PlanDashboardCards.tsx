@@ -10,13 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 import { ChevronDown, Flag, LandPlot, Plus, Sparkle } from "lucide-react";
-import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
-import { useWords } from "../Words/useWords";
-import { useRules } from "../Rules/useRules";
-import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { usePlan } from "../Plan/usePlan";
-import { GoalPlan, PlanElement, PlanElementMode } from "../Plan/types";
+import { PlanElementMode } from "../Plan/types";
 import { PlanCard } from "../Plan/PlanCard";
 
 import { cardColors, modeCardProps } from "../Plan/data";
@@ -31,7 +27,6 @@ import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
-  const userInfo = useAiUserInfo();
   const plan = usePlan();
   const settings = useSettings();
 
@@ -80,7 +75,9 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const [isShowMoreModal, setIsShowMoreModal] = useUrlParam("showMoreModal");
 
   const doneLessonsCount = sortedElements.reduce((acc, element) => {
-    if (element.startCount > 0) {
+    const progress = plan.activeGoal?.progress?.find((part) => part.elementId === element.id);
+    const isDone = progress?.state === "completed";
+    if (isDone) {
       return acc + 1;
     }
     return acc;
@@ -96,41 +93,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     try {
       setIsLearningPlanUpdating(true);
 
-      const goalPlanElements = plan.activeGoal?.elements || [];
-      const goalPlanElementsString = goalPlanElements
-        .map((element) => {
-          return `${element.mode} - ${element.title}: ${element.description}`;
-        })
-        .join(", ");
-
-      const newGoal = await plan.generateGoal({
-        userInfo: userInfo.userInfo?.records || [],
-        conversationMessages: [
-          {
-            isBot: true,
-            id: "1",
-            text: "What you learned already?",
-          },
-          {
-            isBot: false,
-            id: "2",
-            text:
-              "I learned following lessons and I want something new, but related to my goal. My learned lessons are: " +
-              goalPlanElementsString,
-          },
-        ],
-        languageCode: lang,
-        goalQuiz: plan.activeGoal?.goalQuiz || undefined,
-      });
-
-      // filter new elements to copy only new elements
-      const newElements = newGoal.elements.filter((newElement) => {
-        return !goalPlanElements.some((oldElement) => oldElement.title === newElement.title);
-      });
-
-      const updatedPlan: GoalPlan = { ...plan.activeGoal };
-      updatedPlan.elements = [...goalPlanElements, ...newElements];
-      await plan.addGoalPlan(updatedPlan);
+      await plan.generateMoreElements();
 
       setIsLearningPlanUpdating(false);
       setIsShowMoreModal(false);

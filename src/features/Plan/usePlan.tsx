@@ -89,6 +89,8 @@ interface PlanContextType {
 
   finishGoalElement: (goalElementId: string, results: ConversationResult) => Promise<void>;
   startGoalElement: (goalElementId: string) => Promise<void>;
+
+  generateMoreElements: () => Promise<void>;
 }
 
 const PlanContext = createContext<PlanContextType | null>(null);
@@ -414,7 +416,8 @@ ${JSON.stringify(input.progress, null, 2)}
   }, [activeGoal]);
 
   const isGeneratingExtenderGoal = useRef(false);
-  const generateExtenderGoal = async (): Promise<void> => {
+
+  const generateMoreElements = async (): Promise<void> => {
     if (isGeneratingExtenderGoal.current) return;
     if (!activeGoal || !goalsCollectionRef) return;
 
@@ -439,7 +442,7 @@ ${JSON.stringify(input.progress, null, 2)}
 
   useEffect(() => {
     if (isNeededToExtendActiveGoal) {
-      generateExtenderGoal();
+      generateMoreElements();
     }
   }, [isNeededToExtendActiveGoal]);
 
@@ -474,6 +477,8 @@ ${JSON.stringify(input.progress, null, 2)}
 
     finishGoalElement,
     startGoalElement,
+
+    generateMoreElements,
   };
 }
 
