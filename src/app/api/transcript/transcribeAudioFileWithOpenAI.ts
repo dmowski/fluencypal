@@ -109,10 +109,6 @@ export const transcribeAudioFileWithOpenAI = async ({
       userId,
     });
     await sleep(1000);
-    await sentSupportTelegramMessage({
-      message: `${error} | ${userEmail}`,
-      userId,
-    });
 
     const errorResponse: TranscriptResponse = {
       error: "Error during transcription",

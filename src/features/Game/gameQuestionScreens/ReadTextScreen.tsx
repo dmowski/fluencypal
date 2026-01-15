@@ -226,35 +226,10 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
             sx={{
               flexDirection: "row",
               justifyContent: "space-between",
+              alignItems: "center",
               width: "100%",
             }}
           >
-            {!userTranscript && (
-              <Button variant="contained" size="large" onClick={() => submitBackupRecorder()}>
-                {i18n._("Done")}
-              </Button>
-            )}
-
-            <Stack
-              sx={{
-                width: "100%",
-                maxWidth: "200px",
-              }}
-            >
-              {recorder.visualizerComponent}
-            </Stack>
-
-            {!isRecording && userTranscript && percentage < READ_TEXT_ACCEPTED_PERCENTAGE && (
-              <Button
-                startIcon={<Mic />}
-                variant="contained"
-                size="large"
-                onClick={() => startRecording()}
-              >
-                {i18n._("Re-record")}
-              </Button>
-            )}
-
             {!isRecording && (
               <>
                 <Button
@@ -268,6 +243,34 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
                 </Button>
                 <Typography variant="body2">{percentage}%</Typography>
               </>
+            )}
+
+            {!userTranscript && (
+              <Button variant="contained" size="large" onClick={() => submitBackupRecorder()}>
+                {i18n._("Done")}
+              </Button>
+            )}
+
+            {isRecording && (
+              <Stack
+                sx={{
+                  width: "100%",
+                  maxWidth: "200px",
+                }}
+              >
+                {recorder.visualizerComponent}
+              </Stack>
+            )}
+
+            {!isRecording && userTranscript && percentage < READ_TEXT_ACCEPTED_PERCENTAGE && (
+              <Button
+                startIcon={<Mic />}
+                variant="contained"
+                size="large"
+                onClick={() => startRecording()}
+              >
+                {i18n._("Re-record")}
+              </Button>
             )}
 
             <IconButton
@@ -289,6 +292,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
               sx={{
                 flexDirection: "row",
                 gap: "10px",
+                width: "100%",
                 alignItems: "center",
               }}
             >
