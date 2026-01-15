@@ -38,7 +38,6 @@ const PlanContext = createContext<PlanContextType | null>(null);
 function useProvidePlan(): PlanContextType {
   const auth = useAuth();
   const textAi = useTextAi();
-  const fixJson = useFixJson();
   const [isCraftingGoal, setIsCraftingGoal] = useState(false);
   const [isCraftingError, setIsCraftingError] = useState(false);
   const settings = useSettings();

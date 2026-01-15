@@ -15,16 +15,11 @@ import { useLingui } from "@lingui/react";
 import { InfoBlockedSection } from "../Dashboard/InfoBlockedSection";
 import { useEffect } from "react";
 import { SelectLanguage } from "../Dashboard/SelectLanguage";
-import { useWords } from "../Words/useWords";
-import { useRules } from "../Rules/useRules";
 import { ConversationError } from "./ConversationError";
 import { useRouter } from "next/navigation";
-import { usePlan } from "../Plan/usePlan";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { GamePage } from "../Game/GamePage";
-import { useGoalCreation } from "../Plan/useGoalCreation";
 import { useConversationsAnalysis } from "./useConversationsAnalysis";
-import { useGame } from "../Game/useGame";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { RolePlayProvider } from "../RolePlay/useRolePlay";
 import { useAccess } from "../Usage/useAccess";
@@ -45,7 +40,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const access = useAccess();
 
   const appNavigation = useAppNavigation();
-  const { isProcessingGoal } = useGoalCreation();
 
   const { analyzeConversation, conversationAnalysis, gamePointsEarned, generateNextUserMessage } =
     useConversationsAnalysis();
@@ -86,7 +80,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
       scroll: false,
     });
   }, [settings.userSettings]);
-  const game = useGame();
 
   useEffect(() => {
     if (aiConversation.isClosing) {
@@ -113,10 +106,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   if (isLoading) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
-  }
-
-  if (isProcessingGoal) {
-    return <InfoBlockedSection title={isProcessingGoal || i18n._(`Loading Goal...`)} />;
   }
 
   if (appNavigation.currentPage === "community") {
