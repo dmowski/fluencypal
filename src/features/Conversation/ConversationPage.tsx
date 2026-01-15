@@ -45,30 +45,23 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   usePageLangRedirect();
 
   useEffect(() => {
-    if (!aiConversation.isStarted) {
-      recorder.removeTranscript();
-    }
+    if (!aiConversation.isStarted) recorder.removeTranscript();
   }, [aiConversation.isStarted]);
 
   useEffect(() => {
-    if (aiConversation.isClosing) {
-      recorder.cancelRecording();
-    }
+    if (aiConversation.isClosing) recorder.cancelRecording();
   }, [aiConversation.isClosing]);
 
   useEffect(() => {
-    if (recorder.transcription) {
-      lessonPlan.generateAnalysis(recorder.transcription);
-    }
+    if (recorder.transcription) lessonPlan.generateAnalysis(recorder.transcription);
   }, [recorder.transcription]);
 
   if (auth.loading) return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
 
-  const isLoading =
-    settings.loading || auth.loading || !auth.uid || !usage.isWelcomeBalanceInitialized;
-
-  if (isLoading) return <InfoBlockedSection title={i18n._(`Loading...`)} />;
+  if (settings.loading || auth.loading || !auth.uid || !usage.isWelcomeBalanceInitialized) {
+    return <InfoBlockedSection title={i18n._(`Loading...`)} />;
+  }
 
   if (appNavigation.currentPage === "community") return <GamePage lang={lang} />;
 
