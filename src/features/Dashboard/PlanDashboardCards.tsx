@@ -115,9 +115,11 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     .filter((goal) => goal.languageCode === settings.languageCode)
     .sort((a, b) => b.createdAt - a.createdAt);
 
+  const nextElementId = plan.nextElement?.id;
+
   return (
     <Stack gap="20px">
-      {plan.nextElement && (
+      {plan.nextElement && nextElementId && (
         <Stack
           sx={{
             paddingBottom: "50px",
@@ -131,9 +133,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             actionLabel={i18n._("Join")}
             aiVideo={getAiVoiceByPlanPlanElementMode(plan.nextElement.mode)}
             startIcon={<VideocamIcon />}
-            onAction={() => {
-              alert("Hello");
-            }}
+            onAction={() => plan.openElementModal(nextElementId)}
           />
         </Stack>
       )}
