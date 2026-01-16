@@ -301,7 +301,8 @@ export const LessonStartModal = ({
               >
                 <Stack
                   sx={{
-                    width: "350px",
+                    maxWidth: "350px",
+                    width: "100%",
                     height: "220px",
                     border: "1px solid rgba(255, 255, 255, 0.1)",
                     backgroundColor: "rgba(0, 0, 0, 0.2)",
