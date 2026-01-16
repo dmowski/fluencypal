@@ -121,7 +121,15 @@ function useProvideSettings(): SettingsContextType {
   const saveLastLoginTime = async () => {
     if (!userId || !userSettingsDoc || !isActiveBrowserTab()) return;
     const formattedLastLoginIso = new Date().toISOString();
-    await setDoc(userSettingsDoc, { lastLoginAtDateTime: formattedLastLoginIso }, { merge: true });
+
+    const browserInfo = getBrowserInfo();
+
+    const partialData: Partial<UserSettings> = {
+      lastLoginAtDateTime: formattedLastLoginIso,
+      browserInfo,
+    };
+
+    await setDoc(userSettingsDoc, partialData, { merge: true });
   };
 
   const saveLoginTime = async () => {
@@ -220,4 +228,9 @@ export const useSettings = (): SettingsContextType => {
     throw new Error("useSettings must be used within a SettingsProvider");
   }
   return context;
+};
+
+const getBrowserInfo = (): string => {
+  const navigatorInfo = typeof navigator !== "undefined" ? navigator.userAgent : "unknown";
+  return navigatorInfo;
 };

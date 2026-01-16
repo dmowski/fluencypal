@@ -32,6 +32,8 @@ export interface UserSettings extends InitUserSettings {
   appMode: AppMode | null;
 
   conversationMode: ConversationMode | null;
+
+  browserInfo: string | null;
 }
 
 export interface UserSettingsWithId extends UserSettings {
