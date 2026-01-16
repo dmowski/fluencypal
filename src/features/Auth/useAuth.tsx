@@ -13,6 +13,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/init";
 import * as Sentry from "@sentry/nextjs";
 import { FirebaseError } from "firebase/app";
+import { acceptAnalytics } from "../Analytics/initGTag";
 
 interface SignInResult {
   isDone: boolean;
@@ -211,6 +212,8 @@ function useProvideAuth(): AuthContext {
       id: userInfo.uid,
       email: userInfo?.email || "",
     });
+
+    acceptAnalytics();
   }, [userInfo]);
 
   const logout = async (): Promise<void> => {
