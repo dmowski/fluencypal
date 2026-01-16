@@ -6,12 +6,12 @@ import { promisify } from "util";
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
 
-const OPENAI_KEY = process.env.OPENAI_KEY;
-if (!OPENAI_KEY) {
-  throw new Error("OPENAI_KEY is not defined. Please set it in .env file");
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+if (!OPENAI_API_KEY) {
+  throw new Error("OPENAI_API_KEY is not defined. Please set it in .env file");
 }
 
-const openAi = new OpenAI({ apiKey: OPENAI_KEY });
+const openAi = new OpenAI({ apiKey: OPENAI_API_KEY });
 const TRANSLATE_MODEL = "gpt-4o";
 
 const localesFolder = "./src/locales";
