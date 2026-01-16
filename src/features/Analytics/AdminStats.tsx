@@ -101,6 +101,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
   const conversations = userStat.conversationMeta.conversations || [];
 
   const aiUserInfo = userStat.aiUserInfo;
+  const browserInfo = userStat.userData.browserInfo || "";
 
   useEffect(() => {
     if (!isCopied) {
@@ -432,6 +433,17 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             }}
           >
             <Typography variant="caption">{userSource?.urlPath || ""}</Typography>
+          </Stack>
+        )}
+
+        {browserInfo && (
+          <Stack
+            sx={{
+              width: "100%",
+              wordBreak: "break-all",
+            }}
+          >
+            <Typography variant="caption">{browserInfo}</Typography>
           </Stack>
         )}
       </Stack>
