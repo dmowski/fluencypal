@@ -319,6 +319,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
           height: "100dvh",
           width: "100dvw",
           overflow: "scroll",
+          zIndex: 992,
         }}
         slotProps={{
           backdrop: {

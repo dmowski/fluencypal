@@ -96,24 +96,6 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick: () => void 
           >
             {i18n._(`Get Full Access`)}
           </Button>
-          <Stack>
-            <Typography
-              variant="body1"
-              sx={{
-                fontWeight: 600,
-              }}
-            >
-              {i18n._(`Hint:`)}
-            </Typography>
-            <Typography
-              variant="body1"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              {i18n._(`Full access is free if you reach the top 5 on the community leaderboard!`)}
-            </Typography>
-          </Stack>
         </Stack>
       </Stack>
 
