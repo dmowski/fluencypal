@@ -101,7 +101,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
   const conversations = userStat.conversationMeta.conversations || [];
 
   const aiUserInfo = userStat.aiUserInfo;
-  const browserInfo = userStat.userData.browserInfo || "";
+  const browserInfo = userStat.userData?.browserInfo || "";
 
   useEffect(() => {
     if (!isCopied) {
