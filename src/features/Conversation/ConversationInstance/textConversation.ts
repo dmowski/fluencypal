@@ -188,6 +188,9 @@ export const initTextConversation = async ({
     console.log("Updating correction instruction:", correction);
     // instructionState.correction = correction;
     if (correction) {
+      if (correction.startsWith("Assistant:")) {
+        correction = correction.replace("Assistant:", "").trim();
+      }
       triggerAiResponse(correction);
     }
   };
