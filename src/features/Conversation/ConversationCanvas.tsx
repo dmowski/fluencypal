@@ -529,9 +529,11 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                     sx={{
                       flexDirection: "row",
                       justifyContent: "space-between",
+                      alignItems: "center",
+
                       width: "100%",
                       "@media (max-width: 600px)": {
-                        alignItems: "flex-end",
+                        alignItems: "center",
                         gap: "10px",
                       },
                     }}
@@ -923,10 +925,13 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                     {(isRecording || isLimited) && (
                       <Stack
                         sx={{
-                          width: "100%",
+                          width: "max-content",
+                          height: "100%",
                           alignItems: "flex-end",
+                          justifyContent: "flex-end",
+
                           "@media (max-width: 600px)": {
-                            alignItems: "flex-start",
+                            alignItems: "flex-end",
                           },
                         }}
                       >
@@ -951,14 +956,15 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                                   alignItems: "flex-end",
                                   boxSizing: "border-box",
                                   gap: "5px",
-                                  width: "100%",
+
+                                  width: "max-content",
                                 }}
                               >
                                 <IconButton
                                   sx={{
                                     boxShadow: "0 0 0 1px rgba(255, 255, 255, 0.11)",
                                     background:
-                                      "linear-gradient(130deg, rgba(255, 255, 255, 0.07), rgba(244, 244, 244, 0.02))",
+                                      "linear-gradient(130deg, rgba(229, 8, 8, 0.77), rgba(240, 128, 24, 0.93))",
                                   }}
                                   onClick={() => togglePaymentModal(true)}
                                 >

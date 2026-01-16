@@ -131,7 +131,7 @@ export const ConversationReviewModal = ({
           <InfoStep
             isStepLoading={!conversationAnalysisResult}
             title={i18n._("Next Step")}
-            subTitle={i18n._("You're all set! Continue practicing to improve your skills.")}
+            subTitle={i18n._("Continue practicing to improve your skills.")}
             disabled={!conversationAnalysisResult}
             onClick={onNext}
             actionButtonTitle={i18n._("Next Lesson")}
