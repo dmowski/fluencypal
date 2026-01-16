@@ -464,7 +464,11 @@ export const LessonStartModal = ({
                       {planStep.stepDescriptionForStudent}
                     </Typography>
                     {isDev && (
-                      <details>
+                      <details
+                        style={{
+                          display: "none",
+                        }}
+                      >
                         <summary
                           style={{
                             marginTop: "8px",
