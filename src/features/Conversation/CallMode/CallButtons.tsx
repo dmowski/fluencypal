@@ -300,7 +300,7 @@ export const CallButtons = ({
                 activeButton={<MicIcon />}
                 inactiveButton={<MicOffIcon />}
                 isActive={false}
-                label={i18n._("Record message")}
+                label={i18n._("Record Message")}
                 onClick={startRecordingUsingButton}
               />
 
