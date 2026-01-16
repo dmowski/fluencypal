@@ -123,7 +123,6 @@ function useProvideSettings(): SettingsContextType {
     const formattedLastLoginIso = new Date().toISOString();
 
     const browserInfo = getBrowserInfo();
-    console.log("browserInfo", browserInfo);
 
     const partialData: Partial<UserSettings> = {
       lastLoginAtDateTime: formattedLastLoginIso,
