@@ -90,7 +90,8 @@ export const ConversationReviewModal = ({
         {step == "shortSummaryOfLesson" && (
           <InfoStep
             title={i18n._("Summary")}
-            subTitle={conversationAnalysisResult?.shortSummaryOfLesson || "..."}
+            isStepLoading={!conversationAnalysisResult}
+            subTitle={conversationAnalysisResult?.shortSummaryOfLesson || i18n._("Loading...")}
             disabled={!conversationAnalysisResult}
             onClick={onNext}
           />
@@ -98,8 +99,9 @@ export const ConversationReviewModal = ({
 
         {step == "whatToFocusOnNextTime" && (
           <InfoStep
+            isStepLoading={!conversationAnalysisResult}
             title={i18n._("What to focus on next time")}
-            subTitle={conversationAnalysisResult?.whatToFocusOnNextTime || "..."}
+            subTitle={conversationAnalysisResult?.whatToFocusOnNextTime || i18n._("Loading...")}
             disabled={!conversationAnalysisResult}
             onClick={onNext}
           />
@@ -107,8 +109,9 @@ export const ConversationReviewModal = ({
 
         {step == "whatUserCanImprove" && (
           <InfoStep
+            isStepLoading={!conversationAnalysisResult}
             title={i18n._("What you can improve")}
-            subTitle={conversationAnalysisResult?.whatUserCanImprove || "..."}
+            subTitle={conversationAnalysisResult?.whatUserCanImprove || i18n._("Loading...")}
             disabled={!conversationAnalysisResult}
             onClick={onNext}
           />
@@ -117,7 +120,8 @@ export const ConversationReviewModal = ({
         {step == "whatUserDidWell" && (
           <InfoStep
             title={i18n._("What you did well")}
-            subTitle={conversationAnalysisResult?.whatUserDidWell || "..."}
+            isStepLoading={!conversationAnalysisResult}
+            subTitle={conversationAnalysisResult?.whatUserDidWell || i18n._("Loading...")}
             disabled={!conversationAnalysisResult}
             onClick={onNext}
           />
@@ -125,6 +129,7 @@ export const ConversationReviewModal = ({
 
         {step == "finish" && (
           <InfoStep
+            isStepLoading={!conversationAnalysisResult}
             title={i18n._("Next Step")}
             subTitle={i18n._("You're all set! Continue practicing to improve your skills.")}
             disabled={!conversationAnalysisResult}

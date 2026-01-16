@@ -102,6 +102,7 @@ export const InfoStep = ({
           {titleWithTemplate && (
             <Typography
               variant="h4"
+              className={`${isStepLoading ? "loading-shimmer" : ""}`}
               sx={{
                 fontWeight: 660,
                 lineHeight: "1.2",
@@ -113,6 +114,7 @@ export const InfoStep = ({
           {subTitle && (
             <Typography
               variant="body1"
+              className={`${isStepLoading ? "loading-shimmer" : ""}`}
               sx={{
                 opacity: 0.9,
                 paddingTop: "10px",
