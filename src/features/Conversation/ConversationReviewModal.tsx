@@ -1,9 +1,18 @@
-import { Stack, Typography, Button } from "@mui/material";
+import { Stack } from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
-import { ChevronRight } from "lucide-react";
 import { PositionChanged } from "../Game/PositionChanged";
 import { ConversationResult } from "../Plan/types";
+import { useState } from "react";
+import { InfoStep } from "../Survey/InfoStep";
+
+type Step =
+  | "game"
+  | "shortSummaryOfLesson"
+  | "whatToFocusOnNextTime"
+  | "whatUserCanImprove"
+  | "whatUserDidWell"
+  | "finish";
 
 export const ConversationReviewModal = ({
   setIsShowAnalyzeConversationModal,
@@ -12,7 +21,6 @@ export const ConversationReviewModal = ({
   setIsConversationContinueAfterAnalyze,
   pointsEarned,
 
-  openCommunityPage,
   openNextLesson,
 }: {
   setIsShowAnalyzeConversationModal: (value: boolean) => void;
@@ -26,128 +34,104 @@ export const ConversationReviewModal = ({
 }) => {
   const { i18n } = useLingui();
 
+  const onDone = () => {
+    setIsShowAnalyzeConversationModal(false);
+    setIsConversationContinueAfterAnalyze(true);
+    openNextLesson();
+  };
+
+  const steps: Step[] = [
+    "game",
+    "shortSummaryOfLesson",
+    "whatToFocusOnNextTime",
+    "whatUserCanImprove",
+    "whatUserDidWell",
+    "finish",
+  ];
+  const [step, setStep] = useState<Step>(steps[0]);
+
+  console.log("step", step);
+
+  const onNext = () => {
+    const currentStepIndex = steps.indexOf(step);
+    const isLastStep = currentStepIndex === steps.length - 1;
+    if (isLastStep) {
+      onDone();
+      return;
+    }
+
+    if (currentStepIndex < steps.length - 1) {
+      setStep(steps[currentStepIndex + 1]);
+    }
+  };
+
   return (
     <CustomModal isOpen={true} onClose={() => setIsShowAnalyzeConversationModal(false)}>
       <Stack
         sx={{
-          gap: "30px",
-          width: "100dvw",
-          alignItems: "center",
-          paddingBottom: "40px",
+          maxWidth: "700px",
+          width: "100%",
         }}
       >
-        <Stack
-          sx={{
-            maxWidth: "600px",
-            gap: "30px",
-            width: "100%",
-          }}
-        >
-          <Stack
-            sx={{
-              gap: "10px",
-            }}
-          >
-            <Typography
-              sx={{
-                paddingLeft: "10px",
-                fontWeight: 700,
-              }}
-              variant="h4"
-              component={"h2"}
-            >
-              {i18n._("Lesson Review")}
-            </Typography>
-            <Stack
-              sx={{
-                gap: "15px",
-                padding: "0 10px",
-                boxSizing: "border-box",
-              }}
-            >
-              <Stack>
-                <Typography variant="h6">{i18n._(`Summary:`)}</Typography>
-                <Typography className={!conversationAnalysisResult ? "loading-shimmer" : ""}>
-                  {conversationAnalysisResult?.shortSummaryOfLesson || "..."}
-                </Typography>
-              </Stack>
-
-              <Stack>
-                <Typography variant="h6">{i18n._(`What was great:`)}</Typography>
-                <Typography className={!conversationAnalysisResult ? "loading-shimmer" : ""}>
-                  {conversationAnalysisResult?.whatUserDidWell || "..."}
-                </Typography>
-              </Stack>
-
-              <Stack>
-                <Typography variant="h6">{i18n._(`What can be improved:`)}</Typography>
-                <Typography className={!conversationAnalysisResult ? "loading-shimmer" : ""}>
-                  {conversationAnalysisResult?.whatUserCanImprove || "..."}
-                </Typography>
-              </Stack>
-
-              <Stack>
-                <Typography variant="h6">{i18n._(`What to focus on next time:`)}</Typography>
-                <Typography className={!conversationAnalysisResult ? "loading-shimmer" : ""}>
-                  {conversationAnalysisResult?.whatToFocusOnNextTime || "..."}
-                </Typography>
-              </Stack>
-            </Stack>
-          </Stack>
-
-          <Stack
-            sx={{
-              padding: "15px 15px 15px 15px",
-              border: "1px solid rgba(97, 149, 255, 0.4)",
-              borderRadius: "10px",
-              boxSizing: "border-box",
-            }}
-          >
-            <Typography variant="h6">{i18n._(`Leaderboard`)}</Typography>
-            {pointsEarned && (
-              <Typography>
-                {i18n._(`Points earned: {pointsEarned}. Keep practicing to improve your score!`, {
-                  pointsEarned,
-                })}
-              </Typography>
+        {step == "game" && (
+          <InfoStep
+            title={i18n._("Leaderboard")}
+            subTitle={i18n._(
+              `Points earned: {pointsEarned}. Keep practicing to improve your score!`,
+              {
+                pointsEarned,
+              }
             )}
-            <PositionChanged />
-          </Stack>
+            subComponent={<PositionChanged />}
+            onClick={onNext}
+          />
+        )}
 
-          <Stack
-            gap="10px"
-            sx={{
-              padding: "0 10px",
-              boxSizing: "border-box",
-              alignItems: "flex-start",
-              width: "100%",
-            }}
-          >
-            <Button
-              onClick={openNextLesson}
-              variant="contained"
-              color="info"
-              size="large"
-              endIcon={<ChevronRight />}
-              disabled={!conversationAnalysisResult}
-            >
-              {i18n._(`Next Lesson`)}
-            </Button>
+        {step == "shortSummaryOfLesson" && (
+          <InfoStep
+            title={i18n._("Summary")}
+            subTitle={conversationAnalysisResult?.shortSummaryOfLesson || "..."}
+            disabled={!conversationAnalysisResult}
+            onClick={onNext}
+          />
+        )}
 
-            <Button
-              disabled={!conversationAnalysisResult}
-              onClick={() => {
-                setIsShowAnalyzeConversationModal(false);
-                setIsConversationContinueAfterAnalyze(true);
-              }}
-              variant="outlined"
-              size="large"
-              color="info"
-            >
-              {i18n._(`Continue conversation`)}
-            </Button>
-          </Stack>
-        </Stack>
+        {step == "whatToFocusOnNextTime" && (
+          <InfoStep
+            title={i18n._("What to focus on next time")}
+            subTitle={conversationAnalysisResult?.whatToFocusOnNextTime || "..."}
+            disabled={!conversationAnalysisResult}
+            onClick={onNext}
+          />
+        )}
+
+        {step == "whatUserCanImprove" && (
+          <InfoStep
+            title={i18n._("What you can improve")}
+            subTitle={conversationAnalysisResult?.whatUserCanImprove || "..."}
+            disabled={!conversationAnalysisResult}
+            onClick={onNext}
+          />
+        )}
+
+        {step == "whatUserDidWell" && (
+          <InfoStep
+            title={i18n._("What you did well")}
+            subTitle={conversationAnalysisResult?.whatUserDidWell || "..."}
+            disabled={!conversationAnalysisResult}
+            onClick={onNext}
+          />
+        )}
+
+        {step == "finish" && (
+          <InfoStep
+            title={i18n._("Next Step")}
+            subTitle={i18n._("You're all set! Continue practicing to improve your skills.")}
+            disabled={!conversationAnalysisResult}
+            onClick={onNext}
+            actionButtonTitle={i18n._("Next Lesson")}
+          />
+        )}
       </Stack>
     </CustomModal>
   );

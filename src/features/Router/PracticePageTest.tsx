@@ -145,9 +145,6 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
       <ConversationCanvas
         openCommunityPage={() => {}}
         pointsEarned={12}
-        lessonPlanAnalysis={{
-          progress: 50,
-        }}
         messageOrder={{}}
         isMuted
         conversation={testMessage}
@@ -169,6 +166,9 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={""}
         isShowMessageProgress={true}
+        lessonPlanAnalysis={{
+          progress: 100,
+        }}
         conversationAnalysisResult={{
           whatToFocusOnNextTime: "Try to use more complex sentences.",
           whatUserDidWell: "You spoke clearly and confidently.",
