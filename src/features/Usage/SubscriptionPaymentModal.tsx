@@ -281,7 +281,7 @@ export const SubscriptionPaymentModal = () => {
     }
   };
 
-  const [duration, setDuration] = useState<"day" | "week" | "month">("day");
+  const [duration, setDuration] = useState<"day" | "week" | "month">("month");
 
   const durationPriceUsd =
     duration === "month"
@@ -784,9 +784,17 @@ export const SubscriptionPaymentModal = () => {
                         sx={{
                           width: "100%",
                           gap: "5px",
+                          display: "none",
                         }}
                       >
-                        <Typography variant="caption">{i18n._("Duration:")}</Typography>
+                        <Typography
+                          sx={{
+                            width: "100%",
+                          }}
+                          variant="caption"
+                        >
+                          {i18n._("Duration:")}
+                        </Typography>
                         <ButtonGroup
                           aria-label="Basic button group"
                           sx={{
