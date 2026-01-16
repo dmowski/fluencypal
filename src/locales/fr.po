@@ -1688,11 +1688,6 @@ msgstr "Contacts :"
 msgid "Continue"
 msgstr "Continuer"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:147
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "Continuer la conversation"
-
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -5898,7 +5893,7 @@ msgstr "Lancez votre carrière en frontend"
 msgid "Lazy Loading"
 msgstr "Chargement Paresseux"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:106
+#: src/features/Conversation/ConversationReviewModal.tsx:78
 #. js-lingui-explicit-id
 msgid "Leaderboard"
 msgstr "Tableau des leaders"
@@ -5995,11 +5990,6 @@ msgstr "Moins"
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
 msgstr "Plan de Leçon"
-
-#: src/features/Conversation/ConversationReviewModal.tsx:59
-#. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "Révision de la Leçon"
 
 #: src/features/Usage/PaymentModal.tsx:131
 #. js-lingui-explicit-id
@@ -6519,7 +6509,7 @@ msgstr "Nouveaux Mots"
 msgid "Next"
 msgstr "Suivant"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:134
+#: src/features/Conversation/ConversationReviewModal.tsx:132
 #: src/features/Dashboard/PlanDashboardCards.tsx:129
 #. js-lingui-explicit-id
 msgid "Next Lesson"
@@ -6529,6 +6519,11 @@ msgstr "Prochaine leçon"
 #. js-lingui-explicit-id
 msgid "Next question"
 msgstr "Question suivante"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:128
+#. js-lingui-explicit-id
+msgid "Next Step"
+msgstr "Étape suivante"
 
 #: src/features/Auth/InterviewAuthWall.tsx:39
 #. js-lingui-explicit-id
@@ -7132,7 +7127,7 @@ msgstr "Veuillez patienter pendant que nous traitons votre paiement."
 msgid "Points"
 msgstr "Points"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:109
+#: src/features/Conversation/ConversationReviewModal.tsx:79
 #. js-lingui-explicit-id
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr ""
@@ -9090,10 +9085,10 @@ msgstr "Histoires de succès"
 msgid "Success!"
 msgstr "Succès !"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:69
+#: src/features/Conversation/ConversationReviewModal.tsx:92
 #. js-lingui-explicit-id
-msgid "Summary:"
-msgstr "Résumé :"
+msgid "Summary"
+msgstr "Résumé"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -10135,11 +10130,6 @@ msgstr ""
 "Qu'est-ce que les éléments sémantiques HTML et pourquoi sont-ils importants "
 "?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:83
-#. js-lingui-explicit-id
-msgid "What can be improved:"
-msgstr "Ce qui peut être amélioré :"
-
 #: src/features/Goal/Quiz/QuizPage2.tsx:190
 #. js-lingui-explicit-id
 msgid "What challenges you face"
@@ -10227,10 +10217,10 @@ msgstr "Que signifie une heure ?"
 msgid "What recently made you happy?"
 msgstr "Qu'est-ce qui vous a récemment rendu heureux ?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:90
+#: src/features/Conversation/ConversationReviewModal.tsx:101
 #. js-lingui-explicit-id
-msgid "What to focus on next time:"
-msgstr "Sur quoi se concentrer la prochaine fois :"
+msgid "What to focus on next time"
+msgstr "Ce sur quoi se concentrer la prochaine fois"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:14
 #: src/features/Case/data/frontend-senior/faqSection.ts:14
@@ -10238,10 +10228,15 @@ msgstr "Sur quoi se concentrer la prochaine fois :"
 msgid "What types of frontend interviews can I practice for?"
 msgstr "Quels types d'entretiens de frontend puis-je pratiquer ?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:76
+#: src/features/Conversation/ConversationReviewModal.tsx:110
 #. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "Ce qui était génial :"
+msgid "What you can improve"
+msgstr "Ce que vous pouvez améliorer"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:119
+#. js-lingui-explicit-id
+msgid "What you did well"
+msgstr "Ce que vous avez bien fait"
 
 #: src/features/Auth/AuthWall.tsx:25
 #: src/features/Auth/InterviewAuthWall.tsx:11
@@ -10797,6 +10792,11 @@ msgstr "Vous bénéficierez d'une période d'essai avec un accès complet gratui
 msgid "You're All Set!"
 msgstr "Vous êtes prêt!"
 
+#: src/features/Conversation/ConversationReviewModal.tsx:129
+#. js-lingui-explicit-id
+msgid "You're all set! Continue practicing to improve your skills."
+msgstr "Vous êtes prêt ! Continuez à pratiquer pour améliorer vos compétences."
+
 #: src/features/Case/data/frontend-junior/painSection.ts:47
 #. js-lingui-explicit-id
 msgid "You're not sure what **salary to ask for** or how to negotiate"
@@ -10998,6 +10998,36 @@ msgstr ""
 "— il est important de s'engager dans cette courte conversation avant de "
 "plonger dans des sujets professionnels. Voici quelques expressions "
 "anglaises utiles pour commencer l'entretien :"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:147
+#. js-lingui-explicit-id
+#~ msgid "Continue conversation"
+#~ msgstr "Continuer la conversation"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:59
+#. js-lingui-explicit-id
+#~ msgid "Lesson Review"
+#~ msgstr "Révision de la Leçon"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:69
+#. js-lingui-explicit-id
+#~ msgid "Summary:"
+#~ msgstr "Résumé :"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "What can be improved:"
+#~ msgstr "Ce qui peut être amélioré :"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "What to focus on next time:"
+#~ msgstr "Sur quoi se concentrer la prochaine fois :"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "What was great:"
+#~ msgstr "Ce qui était génial :"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:429
 #. js-lingui-explicit-id

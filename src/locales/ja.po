@@ -1598,11 +1598,6 @@ msgstr "連絡先:"
 msgid "Continue"
 msgstr "続ける"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:147
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "会話を続ける"
-
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -5330,7 +5325,7 @@ msgstr "フロントエンドキャリアをスタートしましょう"
 msgid "Lazy Loading"
 msgstr "遅延読み込み"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:106
+#: src/features/Conversation/ConversationReviewModal.tsx:78
 #. js-lingui-explicit-id
 msgid "Leaderboard"
 msgstr "リーダーボード"
@@ -5421,11 +5416,6 @@ msgstr "少ない"
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
 msgstr "レッスンプラン"
-
-#: src/features/Conversation/ConversationReviewModal.tsx:59
-#. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "レッスンレビュー"
 
 #: src/features/Usage/PaymentModal.tsx:131
 #. js-lingui-explicit-id
@@ -5918,7 +5908,7 @@ msgstr "新しい単語"
 msgid "Next"
 msgstr "次へ"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:134
+#: src/features/Conversation/ConversationReviewModal.tsx:132
 #: src/features/Dashboard/PlanDashboardCards.tsx:129
 #. js-lingui-explicit-id
 msgid "Next Lesson"
@@ -5928,6 +5918,11 @@ msgstr "次のレッスン"
 #. js-lingui-explicit-id
 msgid "Next question"
 msgstr "次の質問"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:128
+#. js-lingui-explicit-id
+msgid "Next Step"
+msgstr "次のステップ"
 
 #: src/features/Auth/InterviewAuthWall.tsx:39
 #. js-lingui-explicit-id
@@ -6493,7 +6488,7 @@ msgstr "お支払いの処理中ですので、しばらくお待ちください
 msgid "Points"
 msgstr "ポイント"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:109
+#: src/features/Conversation/ConversationReviewModal.tsx:79
 #. js-lingui-explicit-id
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr "得点: {pointsEarned}。スコアを向上させるために練習を続けましょう！"
@@ -8308,10 +8303,10 @@ msgstr "成功事例"
 msgid "Success!"
 msgstr "成功！"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:69
+#: src/features/Conversation/ConversationReviewModal.tsx:92
 #. js-lingui-explicit-id
-msgid "Summary:"
-msgstr "要約:"
+msgid "Summary"
+msgstr "要約"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -9276,11 +9271,6 @@ msgstr "ウェルネス"
 msgid "What are HTML semantic elements and why are they important?"
 msgstr "HTMLのセマンティック要素とは何ですか、そしてなぜそれらが重要なのですか？"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:83
-#. js-lingui-explicit-id
-msgid "What can be improved:"
-msgstr "改善できる点:"
-
 #: src/features/Goal/Quiz/QuizPage2.tsx:190
 #. js-lingui-explicit-id
 msgid "What challenges you face"
@@ -9366,10 +9356,10 @@ msgstr "1時間とは何を意味しますか？"
 msgid "What recently made you happy?"
 msgstr "最近、あなたを幸せにしたことは何ですか？"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:90
+#: src/features/Conversation/ConversationReviewModal.tsx:101
 #. js-lingui-explicit-id
-msgid "What to focus on next time:"
-msgstr "次回注目する点:"
+msgid "What to focus on next time"
+msgstr "次回に焦点を当てるべきこと"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:14
 #: src/features/Case/data/frontend-senior/faqSection.ts:14
@@ -9377,10 +9367,15 @@ msgstr "次回注目する点:"
 msgid "What types of frontend interviews can I practice for?"
 msgstr "どのような種類のフロントエンド面接を練習できますか？"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:76
+#: src/features/Conversation/ConversationReviewModal.tsx:110
 #. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "何が素晴らしかったか："
+msgid "What you can improve"
+msgstr "改善できる点"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:119
+#. js-lingui-explicit-id
+msgid "What you did well"
+msgstr "あなたがうまくできたこと"
 
 #: src/features/Auth/AuthWall.tsx:25
 #: src/features/Auth/InterviewAuthWall.tsx:11
@@ -9859,6 +9854,11 @@ msgstr "完全なアクセスを無料で試用できる期間があります"
 msgid "You're All Set!"
 msgstr "あなたの準備は整いました！"
 
+#: src/features/Conversation/ConversationReviewModal.tsx:129
+#. js-lingui-explicit-id
+msgid "You're all set! Continue practicing to improve your skills."
+msgstr "準備完了です！スキルを向上させるために練習を続けましょう。"
+
 #: src/features/Case/data/frontend-junior/painSection.ts:47
 #. js-lingui-explicit-id
 msgid "You're not sure what **salary to ask for** or how to negotiate"
@@ -10041,6 +10041,36 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Conversation/ConversationReviewModal.tsx:147
+#. js-lingui-explicit-id
+#~ msgid "Continue conversation"
+#~ msgstr "会話を続ける"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:59
+#. js-lingui-explicit-id
+#~ msgid "Lesson Review"
+#~ msgstr "レッスンレビュー"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:69
+#. js-lingui-explicit-id
+#~ msgid "Summary:"
+#~ msgstr "要約:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "What can be improved:"
+#~ msgstr "改善できる点:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "What to focus on next time:"
+#~ msgstr "次回注目する点:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "What was great:"
+#~ msgstr "何が素晴らしかったか："
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:429
 #. js-lingui-explicit-id

@@ -1595,11 +1595,6 @@ msgstr "연락처:"
 msgid "Continue"
 msgstr "계속"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:147
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "대화 계속하기"
-
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -5339,7 +5334,7 @@ msgstr "프론트엔드 경력을 시작하세요"
 msgid "Lazy Loading"
 msgstr "게으른 로딩"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:106
+#: src/features/Conversation/ConversationReviewModal.tsx:78
 #. js-lingui-explicit-id
 msgid "Leaderboard"
 msgstr "리더보드"
@@ -5428,11 +5423,6 @@ msgstr "덜"
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
 msgstr "레슨 계획"
-
-#: src/features/Conversation/ConversationReviewModal.tsx:59
-#. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "수업 리뷰"
 
 #: src/features/Usage/PaymentModal.tsx:131
 #. js-lingui-explicit-id
@@ -5921,7 +5911,7 @@ msgstr "새로운 단어들"
 msgid "Next"
 msgstr "다음"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:134
+#: src/features/Conversation/ConversationReviewModal.tsx:132
 #: src/features/Dashboard/PlanDashboardCards.tsx:129
 #. js-lingui-explicit-id
 msgid "Next Lesson"
@@ -5931,6 +5921,11 @@ msgstr "다음 수업"
 #. js-lingui-explicit-id
 msgid "Next question"
 msgstr "다음 질문"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:128
+#. js-lingui-explicit-id
+msgid "Next Step"
+msgstr "다음 단계"
 
 #: src/features/Auth/InterviewAuthWall.tsx:39
 #. js-lingui-explicit-id
@@ -6496,7 +6491,7 @@ msgstr "결제를 처리하는 동안 기다려 주세요."
 msgid "Points"
 msgstr "포인트"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:109
+#: src/features/Conversation/ConversationReviewModal.tsx:79
 #. js-lingui-explicit-id
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr "포인트 획득: {pointsEarned}. 점수를 높이기 위해 계속 연습하세요!"
@@ -8298,10 +8293,10 @@ msgstr "성공 사례"
 msgid "Success!"
 msgstr "성공!"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:69
+#: src/features/Conversation/ConversationReviewModal.tsx:92
 #. js-lingui-explicit-id
-msgid "Summary:"
-msgstr "요약:"
+msgid "Summary"
+msgstr "요약"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -9266,11 +9261,6 @@ msgstr "웰니스"
 msgid "What are HTML semantic elements and why are they important?"
 msgstr "HTML 시맨틱 요소란 무엇이며, 그것이 중요한 이유는 무엇입니까?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:83
-#. js-lingui-explicit-id
-msgid "What can be improved:"
-msgstr "무엇을 개선할 수 있을까요:"
-
 #: src/features/Goal/Quiz/QuizPage2.tsx:190
 #. js-lingui-explicit-id
 msgid "What challenges you face"
@@ -9356,10 +9346,10 @@ msgstr "한 시간이란 무엇을 의미하나요?"
 msgid "What recently made you happy?"
 msgstr "최근에 무엇이 당신을 행복하게 만들었나요?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:90
+#: src/features/Conversation/ConversationReviewModal.tsx:101
 #. js-lingui-explicit-id
-msgid "What to focus on next time:"
-msgstr "다음에 중점적으로 다룰 것:"
+msgid "What to focus on next time"
+msgstr "다음 번에는 무엇에 집중할지"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:14
 #: src/features/Case/data/frontend-senior/faqSection.ts:14
@@ -9367,10 +9357,15 @@ msgstr "다음에 중점적으로 다룰 것:"
 msgid "What types of frontend interviews can I practice for?"
 msgstr "어떤 유형의 프론트엔드 인터뷰를 연습할 수 있나요?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:76
+#: src/features/Conversation/ConversationReviewModal.tsx:110
 #. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "무엇이 좋았는지:"
+msgid "What you can improve"
+msgstr "어떤 점을 개선할 수 있는지"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:119
+#. js-lingui-explicit-id
+msgid "What you did well"
+msgstr "당신이 잘한 것"
 
 #: src/features/Auth/AuthWall.tsx:25
 #: src/features/Auth/InterviewAuthWall.tsx:11
@@ -9845,6 +9840,11 @@ msgstr "전체 액세스를 무료로 이용할 수 있는 체험 기간을 받�
 msgid "You're All Set!"
 msgstr "당신은 모두 준비되었습니다!"
 
+#: src/features/Conversation/ConversationReviewModal.tsx:129
+#. js-lingui-explicit-id
+msgid "You're all set! Continue practicing to improve your skills."
+msgstr "모든 준비가 완료되었습니다! 계속 연습하여 실력을 향상시키세요."
+
 #: src/features/Case/data/frontend-junior/painSection.ts:47
 #. js-lingui-explicit-id
 msgid "You're not sure what **salary to ask for** or how to negotiate"
@@ -10029,6 +10029,36 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:147
+#. js-lingui-explicit-id
+#~ msgid "Continue conversation"
+#~ msgstr "대화 계속하기"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:59
+#. js-lingui-explicit-id
+#~ msgid "Lesson Review"
+#~ msgstr "수업 리뷰"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:69
+#. js-lingui-explicit-id
+#~ msgid "Summary:"
+#~ msgstr "요약:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "What can be improved:"
+#~ msgstr "무엇을 개선할 수 있을까요:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "What to focus on next time:"
+#~ msgstr "다음에 중점적으로 다룰 것:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "What was great:"
+#~ msgstr "무엇이 좋았는지:"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:429
 #. js-lingui-explicit-id

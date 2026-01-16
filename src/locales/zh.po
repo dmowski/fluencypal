@@ -1590,11 +1590,6 @@ msgstr "联系人："
 msgid "Continue"
 msgstr "继续"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:147
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "继续对话"
-
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -5232,7 +5227,7 @@ msgstr "启动你的前端职业生涯"
 msgid "Lazy Loading"
 msgstr "延迟加载"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:106
+#: src/features/Conversation/ConversationReviewModal.tsx:78
 #. js-lingui-explicit-id
 msgid "Leaderboard"
 msgstr "排行榜"
@@ -5321,11 +5316,6 @@ msgstr "更少"
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
 msgstr "课程计划"
-
-#: src/features/Conversation/ConversationReviewModal.tsx:59
-#. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "课程回顾"
 
 #: src/features/Usage/PaymentModal.tsx:131
 #. js-lingui-explicit-id
@@ -5811,7 +5801,7 @@ msgstr "新词"
 msgid "Next"
 msgstr "下一步"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:134
+#: src/features/Conversation/ConversationReviewModal.tsx:132
 #: src/features/Dashboard/PlanDashboardCards.tsx:129
 #. js-lingui-explicit-id
 msgid "Next Lesson"
@@ -5821,6 +5811,11 @@ msgstr "下一课"
 #. js-lingui-explicit-id
 msgid "Next question"
 msgstr "下一个问题"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:128
+#. js-lingui-explicit-id
+msgid "Next Step"
+msgstr "下一步"
 
 #: src/features/Auth/InterviewAuthWall.tsx:39
 #. js-lingui-explicit-id
@@ -6379,7 +6374,7 @@ msgstr "请稍候，我们正在处理您的付款。"
 msgid "Points"
 msgstr "积分"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:109
+#: src/features/Conversation/ConversationReviewModal.tsx:79
 #. js-lingui-explicit-id
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr "获得的积分：{pointsEarned}。继续练习以提高你的分数！"
@@ -8158,10 +8153,10 @@ msgstr "成功案例"
 msgid "Success!"
 msgstr "成功！"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:69
+#: src/features/Conversation/ConversationReviewModal.tsx:92
 #. js-lingui-explicit-id
-msgid "Summary:"
-msgstr "总结："
+msgid "Summary"
+msgstr "总结"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -9111,11 +9106,6 @@ msgstr "健康"
 msgid "What are HTML semantic elements and why are they important?"
 msgstr "HTML语义元素是什么？为什么它们很重要？"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:83
-#. js-lingui-explicit-id
-msgid "What can be improved:"
-msgstr "有什么可以改进的："
-
 #: src/features/Goal/Quiz/QuizPage2.tsx:190
 #. js-lingui-explicit-id
 msgid "What challenges you face"
@@ -9201,10 +9191,10 @@ msgstr "什么是一小时？"
 msgid "What recently made you happy?"
 msgstr "最近有什么事情让你感到开心？"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:90
+#: src/features/Conversation/ConversationReviewModal.tsx:101
 #. js-lingui-explicit-id
-msgid "What to focus on next time:"
-msgstr "下次需要重点关注的事项："
+msgid "What to focus on next time"
+msgstr "下一次需要专注于什么"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:14
 #: src/features/Case/data/frontend-senior/faqSection.ts:14
@@ -9212,10 +9202,15 @@ msgstr "下次需要重点关注的事项："
 msgid "What types of frontend interviews can I practice for?"
 msgstr "我可以练习哪几种前端面试？"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:76
+#: src/features/Conversation/ConversationReviewModal.tsx:110
 #. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "什么是伟大的:"
+msgid "What you can improve"
+msgstr "你可以改进的地方"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:119
+#. js-lingui-explicit-id
+msgid "What you did well"
+msgstr "你做得好的地方"
 
 #: src/features/Auth/AuthWall.tsx:25
 #: src/features/Auth/InterviewAuthWall.tsx:11
@@ -9677,6 +9672,11 @@ msgstr "您将获得一个免费试用期，以享受全面访问权限"
 msgid "You're All Set!"
 msgstr "一切就绪！"
 
+#: src/features/Conversation/ConversationReviewModal.tsx:129
+#. js-lingui-explicit-id
+msgid "You're all set! Continue practicing to improve your skills."
+msgstr "您已准备就绪！继续练习以提升您的技能。"
+
 #: src/features/Case/data/frontend-junior/painSection.ts:47
 #. js-lingui-explicit-id
 msgid "You're not sure what **salary to ask for** or how to negotiate"
@@ -9859,6 +9859,36 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Conversation/ConversationReviewModal.tsx:147
+#. js-lingui-explicit-id
+#~ msgid "Continue conversation"
+#~ msgstr "继续对话"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:59
+#. js-lingui-explicit-id
+#~ msgid "Lesson Review"
+#~ msgstr "课程回顾"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:69
+#. js-lingui-explicit-id
+#~ msgid "Summary:"
+#~ msgstr "总结："
+
+#: src/features/Conversation/ConversationReviewModal.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "What can be improved:"
+#~ msgstr "有什么可以改进的："
+
+#: src/features/Conversation/ConversationReviewModal.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "What to focus on next time:"
+#~ msgstr "下次需要重点关注的事项："
+
+#: src/features/Conversation/ConversationReviewModal.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "What was great:"
+#~ msgstr "什么是伟大的:"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:429
 #. js-lingui-explicit-id

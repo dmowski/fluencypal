@@ -1662,11 +1662,6 @@ msgstr "İletişim:"
 msgid "Continue"
 msgstr "Devam et"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:147
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "Konuşmaya devam et"
-
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -5755,7 +5750,7 @@ msgstr "Ön Uç Kariyerinize Başlayın"
 msgid "Lazy Loading"
 msgstr "Tembel Yükleme"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:106
+#: src/features/Conversation/ConversationReviewModal.tsx:78
 #. js-lingui-explicit-id
 msgid "Leaderboard"
 msgstr "Lider Tablosu"
@@ -5846,11 +5841,6 @@ msgstr "Daha az"
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
 msgstr "Ders Planı"
-
-#: src/features/Conversation/ConversationReviewModal.tsx:59
-#. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "Ders İncelemesi"
 
 #: src/features/Usage/PaymentModal.tsx:131
 #. js-lingui-explicit-id
@@ -6354,7 +6344,7 @@ msgstr "Yeni Kelimeler"
 msgid "Next"
 msgstr "İleri"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:134
+#: src/features/Conversation/ConversationReviewModal.tsx:132
 #: src/features/Dashboard/PlanDashboardCards.tsx:129
 #. js-lingui-explicit-id
 msgid "Next Lesson"
@@ -6364,6 +6354,11 @@ msgstr "Sonraki Ders"
 #. js-lingui-explicit-id
 msgid "Next question"
 msgstr "Sonraki soru"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:128
+#. js-lingui-explicit-id
+msgid "Next Step"
+msgstr "Sonraki Adım"
 
 #: src/features/Auth/InterviewAuthWall.tsx:39
 #. js-lingui-explicit-id
@@ -6957,7 +6952,7 @@ msgstr "Ödemenizi işlerken lütfen bekleyin."
 msgid "Points"
 msgstr "Puanlar"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:109
+#: src/features/Conversation/ConversationReviewModal.tsx:79
 #. js-lingui-explicit-id
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr ""
@@ -8865,10 +8860,10 @@ msgstr "Başarı hikayeleri"
 msgid "Success!"
 msgstr "Başarılı!"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:69
+#: src/features/Conversation/ConversationReviewModal.tsx:92
 #. js-lingui-explicit-id
-msgid "Summary:"
-msgstr "Özet:"
+msgid "Summary"
+msgstr "Özet"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -9886,11 +9881,6 @@ msgstr "Sağlık"
 msgid "What are HTML semantic elements and why are they important?"
 msgstr "HTML anlamsal öğeler nelerdir ve neden önemlidirler?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:83
-#. js-lingui-explicit-id
-msgid "What can be improved:"
-msgstr "Neler geliştirilebilir:"
-
 #: src/features/Goal/Quiz/QuizPage2.tsx:190
 #. js-lingui-explicit-id
 msgid "What challenges you face"
@@ -9976,10 +9966,10 @@ msgstr "Bir saat ne anlama gelir?"
 msgid "What recently made you happy?"
 msgstr "Sizi yakın zamanda mutlu eden ne oldu?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:90
+#: src/features/Conversation/ConversationReviewModal.tsx:101
 #. js-lingui-explicit-id
-msgid "What to focus on next time:"
-msgstr "Bir sonraki seferde nelere odaklanılmalı:"
+msgid "What to focus on next time"
+msgstr "Bir sonraki sefere nelere odaklanmalı"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:14
 #: src/features/Case/data/frontend-senior/faqSection.ts:14
@@ -9987,10 +9977,15 @@ msgstr "Bir sonraki seferde nelere odaklanılmalı:"
 msgid "What types of frontend interviews can I practice for?"
 msgstr "Hangi türde front-end mülakatlarını pratik yapabilirim?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:76
+#: src/features/Conversation/ConversationReviewModal.tsx:110
 #. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "Harika olan neydi:"
+msgid "What you can improve"
+msgstr "Geliştirebileceğiniz şeyler"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:119
+#. js-lingui-explicit-id
+msgid "What you did well"
+msgstr "Ne yaptınız iyi"
 
 #: src/features/Auth/AuthWall.tsx:25
 #: src/features/Auth/InterviewAuthWall.tsx:11
@@ -10523,6 +10518,11 @@ msgstr "Tam erişim deneme süresini ücretsiz olarak alacaksınız"
 msgid "You're All Set!"
 msgstr "Hazırsınız!"
 
+#: src/features/Conversation/ConversationReviewModal.tsx:129
+#. js-lingui-explicit-id
+msgid "You're all set! Continue practicing to improve your skills."
+msgstr "Hazırsınız! Becerilerinizi geliştirmek için pratik yapmaya devam edin."
+
 #: src/features/Case/data/frontend-junior/painSection.ts:47
 #. js-lingui-explicit-id
 msgid "You're not sure what **salary to ask for** or how to negotiate"
@@ -10719,6 +10719,36 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:147
+#. js-lingui-explicit-id
+#~ msgid "Continue conversation"
+#~ msgstr "Konuşmaya devam et"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:59
+#. js-lingui-explicit-id
+#~ msgid "Lesson Review"
+#~ msgstr "Ders İncelemesi"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:69
+#. js-lingui-explicit-id
+#~ msgid "Summary:"
+#~ msgstr "Özet:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "What can be improved:"
+#~ msgstr "Neler geliştirilebilir:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "What to focus on next time:"
+#~ msgstr "Bir sonraki seferde nelere odaklanılmalı:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "What was great:"
+#~ msgstr "Harika olan neydi:"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:429
 #. js-lingui-explicit-id

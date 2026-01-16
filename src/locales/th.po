@@ -1671,11 +1671,6 @@ msgstr "ติดต่อ:"
 msgid "Continue"
 msgstr "ต่อไป"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:147
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "ดำเนินการสนทนาต่อ"
-
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -5758,7 +5753,7 @@ msgstr "เริ่มต้นอาชีพของคุณในสาย
 msgid "Lazy Loading"
 msgstr "การโหลดแบบขี้เกียจ"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:106
+#: src/features/Conversation/ConversationReviewModal.tsx:78
 #. js-lingui-explicit-id
 msgid "Leaderboard"
 msgstr "ลีดเดอร์บอร์ด"
@@ -5851,11 +5846,6 @@ msgstr "น้อยลง"
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
 msgstr "แผนการสอน"
-
-#: src/features/Conversation/ConversationReviewModal.tsx:59
-#. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "การทบทวนบทเรียน"
 
 #: src/features/Usage/PaymentModal.tsx:131
 #. js-lingui-explicit-id
@@ -6364,7 +6354,7 @@ msgstr "คำศัพท์ใหม่"
 msgid "Next"
 msgstr "ถัดไป"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:134
+#: src/features/Conversation/ConversationReviewModal.tsx:132
 #: src/features/Dashboard/PlanDashboardCards.tsx:129
 #. js-lingui-explicit-id
 msgid "Next Lesson"
@@ -6374,6 +6364,11 @@ msgstr "บทเรียนถัดไป"
 #. js-lingui-explicit-id
 msgid "Next question"
 msgstr "คำถามถัดไป"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:128
+#. js-lingui-explicit-id
+msgid "Next Step"
+msgstr "ขั้นตอนต่อไป"
 
 #: src/features/Auth/InterviewAuthWall.tsx:39
 #. js-lingui-explicit-id
@@ -6968,7 +6963,7 @@ msgstr "โปรดรอในขณะที่เราดำเนินก
 msgid "Points"
 msgstr "คะแนน"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:109
+#: src/features/Conversation/ConversationReviewModal.tsx:79
 #. js-lingui-explicit-id
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr "คะแนนที่ได้รับ: {pointsEarned} เก็บฝึกฝนต่อไปเพื่อเพิ่มคะแนนของคุณ!"
@@ -8865,10 +8860,10 @@ msgstr ""
 msgid "Success!"
 msgstr "สำเร็จ!"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:69
+#: src/features/Conversation/ConversationReviewModal.tsx:92
 #. js-lingui-explicit-id
-msgid "Summary:"
-msgstr "สรุป:"
+msgid "Summary"
+msgstr "สรุป"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -9880,11 +9875,6 @@ msgstr "สุขภาพและสุขภาพจิต"
 msgid "What are HTML semantic elements and why are they important?"
 msgstr "องค์ประกอบทางความหมายของ HTML คืออะไร และทำไมถึงมีความสำคัญ?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:83
-#. js-lingui-explicit-id
-msgid "What can be improved:"
-msgstr "สิ่งที่สามารถพัฒนาได้:"
-
 #: src/features/Goal/Quiz/QuizPage2.tsx:190
 #. js-lingui-explicit-id
 msgid "What challenges you face"
@@ -9970,10 +9960,10 @@ msgstr "หมายความว่าอะไรคือหนึ่งช
 msgid "What recently made you happy?"
 msgstr "อะไรที่ทำให้คุณมีความสุขเมื่อเร็วๆ นี้?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:90
+#: src/features/Conversation/ConversationReviewModal.tsx:101
 #. js-lingui-explicit-id
-msgid "What to focus on next time:"
-msgstr "สิ่งที่ควรเน้นในครั้งต่อไป:"
+msgid "What to focus on next time"
+msgstr "ควรเน้นอะไรในครั้งถัดไป"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:14
 #: src/features/Case/data/frontend-senior/faqSection.ts:14
@@ -9981,10 +9971,15 @@ msgstr "สิ่งที่ควรเน้นในครั้งต่อ
 msgid "What types of frontend interviews can I practice for?"
 msgstr "ฉันสามารถฝึกซ้อมสำหรับการสัมภาษณ์ส่วนหน้าแบบใดได้บ้าง?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:76
+#: src/features/Conversation/ConversationReviewModal.tsx:110
 #. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "สิ่งที่ดีที่สุด:"
+msgid "What you can improve"
+msgstr "สิ่งที่คุณสามารถปรับปรุงได้"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:119
+#. js-lingui-explicit-id
+msgid "What you did well"
+msgstr "สิ่งที่คุณทำได้ดี"
 
 #: src/features/Auth/AuthWall.tsx:25
 #: src/features/Auth/InterviewAuthWall.tsx:11
@@ -10518,6 +10513,11 @@ msgstr "คุณจะได้รับช่วงทดลองใช้ง
 msgid "You're All Set!"
 msgstr "คุณพร้อมแล้ว!"
 
+#: src/features/Conversation/ConversationReviewModal.tsx:129
+#. js-lingui-explicit-id
+msgid "You're all set! Continue practicing to improve your skills."
+msgstr "คุณพร้อมแล้ว! ทำการฝึกฝนต่อไปเพื่อพัฒนาทักษะของคุณให้ดียิ่งขึ้น"
+
 #: src/features/Case/data/frontend-junior/painSection.ts:47
 #. js-lingui-explicit-id
 msgid "You're not sure what **salary to ask for** or how to negotiate"
@@ -10712,6 +10712,36 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:147
+#. js-lingui-explicit-id
+#~ msgid "Continue conversation"
+#~ msgstr "ดำเนินการสนทนาต่อ"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:59
+#. js-lingui-explicit-id
+#~ msgid "Lesson Review"
+#~ msgstr "การทบทวนบทเรียน"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:69
+#. js-lingui-explicit-id
+#~ msgid "Summary:"
+#~ msgstr "สรุป:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "What can be improved:"
+#~ msgstr "สิ่งที่สามารถพัฒนาได้:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "What to focus on next time:"
+#~ msgstr "สิ่งที่ควรเน้นในครั้งต่อไป:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "What was great:"
+#~ msgstr "สิ่งที่ดีที่สุด:"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:429
 #. js-lingui-explicit-id

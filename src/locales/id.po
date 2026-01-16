@@ -1673,11 +1673,6 @@ msgstr "Kontak:"
 msgid "Continue"
 msgstr "Lanjutkan"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:147
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "Lanjutkan percakapan"
-
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -5834,7 +5829,7 @@ msgstr "Luncurkan karir frontend Anda"
 msgid "Lazy Loading"
 msgstr "Pemuatan Lambat"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:106
+#: src/features/Conversation/ConversationReviewModal.tsx:78
 #. js-lingui-explicit-id
 msgid "Leaderboard"
 msgstr "Papan Peringkat"
@@ -5927,11 +5922,6 @@ msgstr "Kurang"
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
 msgstr "Rencana Pelajaran"
-
-#: src/features/Conversation/ConversationReviewModal.tsx:59
-#. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "Tinjauan Pelajaran"
 
 #: src/features/Usage/PaymentModal.tsx:131
 #. js-lingui-explicit-id
@@ -6440,7 +6430,7 @@ msgstr "Kata Baru"
 msgid "Next"
 msgstr "Berikutnya"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:134
+#: src/features/Conversation/ConversationReviewModal.tsx:132
 #: src/features/Dashboard/PlanDashboardCards.tsx:129
 #. js-lingui-explicit-id
 msgid "Next Lesson"
@@ -6450,6 +6440,11 @@ msgstr "Pelajaran Berikutnya"
 #. js-lingui-explicit-id
 msgid "Next question"
 msgstr "Pertanyaan berikutnya"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:128
+#. js-lingui-explicit-id
+msgid "Next Step"
+msgstr "Langkah Berikutnya"
 
 #: src/features/Auth/InterviewAuthWall.tsx:39
 #. js-lingui-explicit-id
@@ -7048,7 +7043,7 @@ msgstr "Silakan tunggu sementara kami memproses pembayaran Anda."
 msgid "Points"
 msgstr "Poin"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:109
+#: src/features/Conversation/ConversationReviewModal.tsx:79
 #. js-lingui-explicit-id
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr ""
@@ -8988,10 +8983,10 @@ msgstr "Kisah sukses"
 msgid "Success!"
 msgstr "Sukses!"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:69
+#: src/features/Conversation/ConversationReviewModal.tsx:92
 #. js-lingui-explicit-id
-msgid "Summary:"
-msgstr "Ringkasan:"
+msgid "Summary"
+msgstr "Ringkasan"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -10020,11 +10015,6 @@ msgstr "Kesejahteraan"
 msgid "What are HTML semantic elements and why are they important?"
 msgstr "Apa itu elemen semantik HTML dan mengapa mereka penting?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:83
-#. js-lingui-explicit-id
-msgid "What can be improved:"
-msgstr "Apa yang dapat ditingkatkan:"
-
 #: src/features/Goal/Quiz/QuizPage2.tsx:190
 #. js-lingui-explicit-id
 msgid "What challenges you face"
@@ -10112,10 +10102,10 @@ msgstr "Apa arti satu jam?"
 msgid "What recently made you happy?"
 msgstr "Apa yang baru-baru ini membuatmu bahagia?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:90
+#: src/features/Conversation/ConversationReviewModal.tsx:101
 #. js-lingui-explicit-id
-msgid "What to focus on next time:"
-msgstr "Apa yang harus difokuskan pada lain waktu:"
+msgid "What to focus on next time"
+msgstr "Apa yang harus difokuskan pada lain waktu"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:14
 #: src/features/Case/data/frontend-senior/faqSection.ts:14
@@ -10123,10 +10113,15 @@ msgstr "Apa yang harus difokuskan pada lain waktu:"
 msgid "What types of frontend interviews can I practice for?"
 msgstr "Jenis wawancara frontend apa yang bisa saya latih?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:76
+#: src/features/Conversation/ConversationReviewModal.tsx:110
 #. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "Apa yang hebat:"
+msgid "What you can improve"
+msgstr "Apa yang dapat Anda tingkatkan"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:119
+#. js-lingui-explicit-id
+msgid "What you did well"
+msgstr "Apa yang telah Anda lakukan dengan baik"
 
 #: src/features/Auth/AuthWall.tsx:25
 #: src/features/Auth/InterviewAuthWall.tsx:11
@@ -10674,6 +10669,11 @@ msgstr "Anda akan mendapatkan masa percobaan dengan akses penuh secara gratis"
 msgid "You're All Set!"
 msgstr "Kamu Siap!"
 
+#: src/features/Conversation/ConversationReviewModal.tsx:129
+#. js-lingui-explicit-id
+msgid "You're all set! Continue practicing to improve your skills."
+msgstr "Anda siap! Lanjutkan berlatih untuk meningkatkan keterampilan Anda."
+
 #: src/features/Case/data/frontend-junior/painSection.ts:47
 #. js-lingui-explicit-id
 msgid "You're not sure what **salary to ask for** or how to negotiate"
@@ -10881,6 +10881,36 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:147
+#. js-lingui-explicit-id
+#~ msgid "Continue conversation"
+#~ msgstr "Lanjutkan percakapan"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:59
+#. js-lingui-explicit-id
+#~ msgid "Lesson Review"
+#~ msgstr "Tinjauan Pelajaran"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:69
+#. js-lingui-explicit-id
+#~ msgid "Summary:"
+#~ msgstr "Ringkasan:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "What can be improved:"
+#~ msgstr "Apa yang dapat ditingkatkan:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "What to focus on next time:"
+#~ msgstr "Apa yang harus difokuskan pada lain waktu:"
+
+#: src/features/Conversation/ConversationReviewModal.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "What was great:"
+#~ msgstr "Apa yang hebat:"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:429
 #. js-lingui-explicit-id
