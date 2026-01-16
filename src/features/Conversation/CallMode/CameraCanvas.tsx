@@ -108,14 +108,14 @@ export const CameraCanvas = ({
       setIsAnalyzing(false);
     }
 
-    await sleep(10_000);
+    await sleep(20_000);
     setScreenshotTimer((prev) => prev + 1);
   };
 
   useEffect(() => {
     if (!isTimeToScreenshots) return;
     analyzeWebcam();
-  }, [isTimeToScreenshots, isAiSpeaking, screenshotTimer]);
+  }, [isTimeToScreenshots, screenshotTimer]);
 
   useEffect(() => {
     if (isCompletedLesson) setIsMuted(true);
