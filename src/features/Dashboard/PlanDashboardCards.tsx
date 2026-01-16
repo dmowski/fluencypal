@@ -123,6 +123,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         <Stack
           sx={{
             paddingBottom: "50px",
+            marginTop: `-30px`,
           }}
         >
           <ActiveLessonCard
