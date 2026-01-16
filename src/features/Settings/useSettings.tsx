@@ -123,6 +123,7 @@ function useProvideSettings(): SettingsContextType {
     const formattedLastLoginIso = new Date().toISOString();
 
     const browserInfo = getBrowserInfo();
+    console.log("browserInfo", browserInfo);
 
     const partialData: Partial<UserSettings> = {
       lastLoginAtDateTime: formattedLastLoginIso,
@@ -231,6 +232,11 @@ export const useSettings = (): SettingsContextType => {
 };
 
 const getBrowserInfo = (): string => {
-  const navigatorInfo = typeof navigator !== "undefined" ? navigator.userAgent : "unknown";
-  return navigatorInfo;
+  try {
+    const navigatorInfo = typeof navigator !== "undefined" ? navigator.userAgent : "unknown";
+    return navigatorInfo;
+  } catch (error) {
+    console.error("Error getting browser info:", error);
+    return "unknown";
+  }
 };
