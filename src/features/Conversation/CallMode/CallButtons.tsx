@@ -225,13 +225,15 @@ export const CallButtons = ({
     silenceMs: 800,
   });
 
+  const isReallySpeaking = vadAudioRecorder.isSpeaking && vadAudioRecorder.speakingLevel > 0.6;
+
   useEffect(() => {
-    if (vadAudioRecorder.isSpeaking) {
+    if (isReallySpeaking) {
       setIsVolumeOn(false);
     } else {
       setIsVolumeOn(isVolumeOnToDisplay);
     }
-  }, [vadAudioRecorder.isSpeaking]);
+  }, [isReallySpeaking]);
 
   const IS_USE_VAD = true;
 
@@ -260,7 +262,6 @@ export const CallButtons = ({
 
   useEffect(() => {
     submitVadTranscription();
-    console.log("transcriptStack", transcriptStack);
   }, [transcriptStack]);
 
   const [isVadEnabled, setIsVadEnabled] = useState(false);
