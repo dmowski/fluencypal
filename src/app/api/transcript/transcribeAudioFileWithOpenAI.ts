@@ -80,6 +80,8 @@ export const transcribeAudioFileWithOpenAI = async ({
       "###",
       "#",
       "##",
+      ".",
+      ",",
     ];
     if (badEntityContents.includes(output.toLowerCase())) {
       output = "";
