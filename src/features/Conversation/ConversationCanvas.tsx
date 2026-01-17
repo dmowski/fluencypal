@@ -317,8 +317,8 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
         open={true}
         sx={{
           height: "100dvh",
-          width: "100dvw",
-          overflow: "scroll",
+          width: "100%",
+          overflow: "auto",
           zIndex: 992,
         }}
         slotProps={{
