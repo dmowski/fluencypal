@@ -202,7 +202,7 @@ export const initTextConversation = async ({
       console.log("Ignoring webcam description update due to existing correction.");
       return;
     }
-    console.log("Updating webcam description:", description);
+    //console.log("Updating webcam description:", description);
     instructionState.webCamDescription = description;
   };
 
