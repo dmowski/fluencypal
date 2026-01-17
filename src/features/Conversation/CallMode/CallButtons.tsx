@@ -226,6 +226,8 @@ export const CallButtons = ({
   });
 
   const isReallySpeaking = vadAudioRecorder.isSpeaking && vadAudioRecorder.speakingLevel > 0.6;
+  const isSpeakingRef = useRef(false);
+  isSpeakingRef.current = vadAudioRecorder.isSpeaking || vadAudioRecorder.isTranscribing;
 
   useEffect(() => {
     if (isReallySpeaking) {
@@ -251,7 +253,7 @@ export const CallButtons = ({
     if (elapsed < WAIT_SECOND_BEFORE_SEND * 1000) {
       await sleep(WAIT_SECOND_BEFORE_SEND * 1000 - elapsed);
     }
-    if (transcriptStack !== transcriptionStackRef.current) {
+    if (transcriptStack !== transcriptionStackRef.current || isSpeakingRef.current) {
       return;
     }
 

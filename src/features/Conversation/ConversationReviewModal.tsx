@@ -55,8 +55,6 @@ export const ConversationReviewModal = ({
   ];
   const [step, setStep] = useState<Step>(steps[0]);
 
-  console.log("step", step);
-
   const onNext = () => {
     const currentStepIndex = steps.indexOf(step);
     const isLastStep = currentStepIndex === steps.length - 1;
