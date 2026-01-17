@@ -75,6 +75,9 @@ class AudioQueuePlayer {
   private streamEl: HTMLAudioElement | null = null;
   private streamNode: MediaElementAudioSourceNode | null = null;
 
+  // Track real playing state based on audio events
+  private _isPlaying = false;
+
   async unlockFromGesture(): Promise<void> {
     if (!this.ctx) {
       const Ctx = (window.AudioContext ||
@@ -96,6 +99,20 @@ class AudioQueuePlayer {
       this.streamNode = this.ctx!.createMediaElementSource(el);
       this.streamNode.connect(this.gain!);
       this.streamEl = el;
+
+      // Listen to real audio playback events
+      el.addEventListener("playing", () => {
+        this._isPlaying = true;
+      });
+      el.addEventListener("waiting", () => {
+        this._isPlaying = false;
+      });
+      el.addEventListener("pause", () => {
+        this._isPlaying = false;
+      });
+      el.addEventListener("ended", () => {
+        this._isPlaying = false;
+      });
     }
 
     this.unlocked = true;
@@ -148,6 +165,7 @@ class AudioQueuePlayer {
   stopStream(): void {
     const el = this.streamEl;
     if (!el) return;
+    this._isPlaying = false;
     try {
       el.pause();
       el.currentTime = 0;
@@ -193,10 +211,11 @@ class AudioQueuePlayer {
     this.streamNode = null;
     this.streamEl = null;
     this.unlocked = false;
+    this._isPlaying = false;
   }
 
   isPlaying(): boolean {
-    return !!this.streamEl && !this.streamEl.paused && !this.streamEl.ended;
+    return this._isPlaying;
   }
 }
 
