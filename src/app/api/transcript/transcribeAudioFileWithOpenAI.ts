@@ -58,7 +58,7 @@ export const transcribeAudioFileWithOpenAI = async ({
       ? `The audio is in the following language: ${fullLanguageName[languageCode]}. Return the transcription in the same language.`
       : "";
 
-    const prompt = `Transcribe the audio. Keep grammar mistakes and typos. ${languagePrompt}`;
+    const prompt = `Transcribe the audio. Keep grammar mistakes and typos. ${languagePrompt}. If audio does not contain any speech, return an empty string.`;
 
     const transcriptionResult = await client.audio.transcriptions.create({
       file,
@@ -67,7 +67,25 @@ export const transcribeAudioFileWithOpenAI = async ({
       prompt: prompt,
     });
 
-    let output = transcriptionResult.text || "";
+    let output = (transcriptionResult.text || "").trim();
+
+    const badEntityContents = [
+      "",
+      "n/a",
+      "no speech",
+      "silence",
+      '""',
+      "''",
+      "...",
+      "###",
+      "#",
+      "##",
+    ];
+    if (badEntityContents.includes(output.toLowerCase())) {
+      output = "";
+    }
+
+    console.log("TRANSCRIPTION OUTPUT", output || "❌");
 
     const badContents = [
       "transcribe the audio",
@@ -83,7 +101,7 @@ export const transcribeAudioFileWithOpenAI = async ({
     });
 
     const response: TranscriptResponse = {
-      transcript: output || "...",
+      transcript: output || "",
       error: null,
     };
 

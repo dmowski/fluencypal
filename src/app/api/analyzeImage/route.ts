@@ -63,6 +63,5 @@ export async function POST(request: Request) {
   };
 
   const priceUsd = calculateTextUsagePrice(usageEvent, model);
-  console.log("priceUsd for screenshot", priceUsd);
   return Response.json(answer);
 }
