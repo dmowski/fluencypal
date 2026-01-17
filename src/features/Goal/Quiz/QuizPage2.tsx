@@ -66,7 +66,8 @@ const QuizQuestions = () => {
         (el) => el.mode === "conversation"
       );
       if (goalTalkModeElement) {
-        const url = `${getUrlStart(pageLanguage)}practice?plan-id=${goalTalkModeElement.id}`;
+        //const url = `${getUrlStart(pageLanguage)}practice?plan-id=${goalTalkModeElement.id}`;
+        const url = `${getUrlStart(pageLanguage)}practice`;
         router.push(url);
       } else {
         const url = `${getUrlStart(pageLanguage)}practice`;
