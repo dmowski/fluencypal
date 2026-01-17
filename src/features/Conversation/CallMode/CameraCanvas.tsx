@@ -81,7 +81,7 @@ export const CameraCanvas = ({
   const footerHeight = `calc(80px + ${sizes.bottomOffset})`;
 
   const topHeight = isSubtitlesEnabled ? `50dvh` : `calc(97dvh - ${footerHeight})`;
-  const topHeightMobile = isSubtitlesEnabled ? `40dvh` : `calc(95dvh - ${footerHeight})`;
+  const topHeightMobile = isSubtitlesEnabled ? `22dvh` : `calc(95dvh - ${footerHeight})`;
 
   const isTimeToScreenshots =
     isWebCamEnabled &&
@@ -252,8 +252,9 @@ export const CameraCanvas = ({
             position: "fixed",
             bottom: 0,
             height: footerHeight,
-            left: "50%",
-            transform: "translateX(-50%)",
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <CallButtons

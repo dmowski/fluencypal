@@ -138,7 +138,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
   };
 
   const [isAiSpeaking, setIsAiSpeaking] = useState(true);
-  const [conversationMode, setConversationMode] = useState<ConversationMode>("record");
+  const [conversationMode, setConversationMode] = useState<ConversationMode>("call");
 
   return (
     <Stack>
