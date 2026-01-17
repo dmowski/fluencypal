@@ -255,34 +255,6 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     await playerRef.current!.playStreamUrl(`/api/ttsStream?${q}`);
   }, []);
 
-  /*
-  const speak = useCallback(
-    async (text: string, opts: SpeakOptions) => {
-      const maxLength = 400;
-      text = text.trim();
-      const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
-
-      if (!playerRef.current!.isUnlocked()) {
-        throw new Error(
-          "Audio is not unlocked. Call startConversationAudio() from a user gesture first."
-        );
-      }
-      const url =
-        opts.audioUrl ?? (await getAudioUrl(trimmedText, opts.instructions ?? "", opts.voice));
-      const proxied = `/api/audioProxy?url=${encodeURIComponent(url)}`;
-
-      // fetch audio bytes
-      const res = await fetch(proxied);
-      if (!res.ok) throw new Error(`Failed to fetch audio: ${res.status}`);
-      const ab = await res.arrayBuffer();
-
-      // decode + enqueue
-      await playerRef.current!.enqueueArrayBuffer(ab);
-    },
-    [getAudioUrl]
-  );
-  */
-
   const interrupt = useCallback(() => {
     playerRef.current!.interrupt();
   }, []);
