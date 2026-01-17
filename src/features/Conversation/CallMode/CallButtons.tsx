@@ -237,7 +237,7 @@ export const CallButtons = ({
     }
   }, [isReallySpeaking]);
 
-  const IS_USE_VAD = true;
+  const IS_USE_VAD = false;
 
   const [isSubmittingVad, setIsSubmittingVad] = useState(false);
 
@@ -253,7 +253,7 @@ export const CallButtons = ({
     if (elapsed < WAIT_SECOND_BEFORE_SEND * 1000) {
       await sleep(WAIT_SECOND_BEFORE_SEND * 1000 - elapsed);
     }
-    if (transcriptStack !== transcriptionStackRef.current || isSpeakingRef.current) {
+    if (transcriptStack !== transcriptionStackRef.current) {
       return;
     }
 
