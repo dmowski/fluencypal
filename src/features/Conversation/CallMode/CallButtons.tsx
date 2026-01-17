@@ -7,13 +7,19 @@ import { Button, CircularProgress, IconButton, Stack, Typography } from "@mui/ma
 import { useLingui } from "@lingui/react";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import { CircleQuestionMark, Trophy } from "lucide-react";
+import {
+  AudioLines,
+  CircleQuestionMark,
+  Ear,
+  EarOff,
+  Loader,
+  TextInitial,
+  Trophy,
+} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { CustomModal } from "@/features/uiKit/Modal/CustomModal";
 import { FeatureBlocker } from "@/features/Usage/FeatureBlocker";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
-import SendIcon from "@mui/icons-material/Send";
-import StopIcon from "@mui/icons-material/Stop";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
 import ClosedCaptionDisabledIcon from "@mui/icons-material/ClosedCaptionDisabled";
 import { LessonPlanAnalysis } from "@/features/LessonPlan/type";
@@ -21,6 +27,7 @@ import { sleep } from "@/libs/sleep";
 import CloseIcon from "@mui/icons-material/Close";
 import DoneIcon from "@mui/icons-material/Done";
 import { useLessonPlan } from "@/features/LessonPlan/useLessonPlan";
+import { useVadAudioRecorder } from "@/features/Audio/useVadAudioRecorder";
 
 export const CallButton = ({
   label,
@@ -205,6 +212,71 @@ export const CallButtons = ({
     setIsRecordingByButton(false);
   }, [isRecordingByButton, recorder.transcription]);
 
+  const [transcriptStack, setTranscriptStack] = useState("");
+  const transcriptionStackRef = useRef("");
+  transcriptionStackRef.current = transcriptStack;
+
+  const vadAudioRecorder = useVadAudioRecorder({
+    onTranscription: (transcript: string) => {
+      setTranscriptStack((prev) => {
+        const newTranscript = prev ? prev + " " + transcript : transcript;
+        return newTranscript;
+      });
+    },
+  });
+
+  const IS_USE_VAD = false;
+
+  const [isSubmittingVad, setIsSubmittingVad] = useState(false);
+
+  const submitVadTranscription = async () => {
+    if (!transcriptStack) return;
+
+    setIsSubmittingVad(true);
+    const minSecondsBeforeSending = 5;
+    const start = Date.now();
+    await lessonPlan.generateAnalysis(transcriptStack);
+
+    const end = Date.now();
+    const elapsed = end - start;
+    if (elapsed < minSecondsBeforeSending * 1000) {
+      await sleep(minSecondsBeforeSending * 1000 - elapsed);
+    }
+    if (transcriptStack !== transcriptionStackRef.current) {
+      return;
+    }
+
+    onSubmitTranscription(transcriptStack);
+    setTranscriptStack("");
+    setIsSubmittingVad(false);
+  };
+
+  useEffect(() => {
+    submitVadTranscription();
+  }, [transcriptStack]);
+
+  const [isVadEnabled, setIsVadEnabled] = useState(false);
+  const startVad = () => {
+    setIsVadEnabled(true);
+    vadAudioRecorder.start();
+  };
+
+  const stopVad = () => {
+    setIsVadEnabled(false);
+    vadAudioRecorder.stop();
+  };
+
+  const toggleVad = () => {
+    if (isVadEnabled) {
+      stopVad();
+    } else {
+      startVad();
+    }
+  };
+
+  const speakingPercent = Math.round(vadAudioRecorder.speakingLevel * 100);
+  const inActivePercent = 100 - speakingPercent;
+
   return (
     <Stack
       sx={{
@@ -314,13 +386,58 @@ export const CallButtons = ({
             </>
           ) : (
             <>
-              <CallButton
-                activeButton={<MicIcon />}
-                inactiveButton={<MicOffIcon />}
-                isActive={false}
-                label={i18n._("Record Message")}
-                onClick={startRecordingUsingButton}
-              />
+              {IS_USE_VAD ? (
+                <CallButton
+                  activeButton={
+                    vadAudioRecorder.isTranscribing || isSubmittingVad ? (
+                      <Loader />
+                    ) : (
+                      <Stack
+                        sx={{
+                          position: "relative",
+                        }}
+                      >
+                        <MicIcon
+                          sx={{
+                            color: "#fff",
+                          }}
+                        />
+                        <Stack
+                          sx={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            overflow: "hidden",
+                            height: inActivePercent + "%",
+                            width: "100%",
+                          }}
+                        >
+                          <MicIcon
+                            sx={{
+                              position: "absolute",
+                              top: 0,
+                              left: 0,
+                              color: "#888",
+                            }}
+                          />
+                        </Stack>
+                      </Stack>
+                    )
+                  }
+                  inactiveButton={<MicOffIcon />}
+                  isActive={isVadEnabled}
+                  label={i18n._("Record Message")}
+                  onClick={toggleVad}
+                />
+              ) : (
+                <CallButton
+                  activeButton={<MicIcon />}
+                  inactiveButton={<MicOffIcon />}
+                  isActive={false}
+                  label={i18n._("Record Message")}
+                  onClick={startRecordingUsingButton}
+                />
+              )}
 
               <CallButton
                 activeButton={<VolumeUpIcon />}
