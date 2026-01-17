@@ -222,11 +222,8 @@ export const initTextConversation = async ({
     audioState.isVolumeOn = isVolumeOn;
   };
 
-  // Initialize conversation
   setTimeout(() => {
     onOpen();
-    // Auto-trigger first AI response (like WebRTC)
-    triggerAiResponse();
   }, 10);
 
   return {

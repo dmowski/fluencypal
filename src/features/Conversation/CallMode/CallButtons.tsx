@@ -140,6 +140,7 @@ export const CallButtons = ({
     }
 
     setIsVolumeOn(!isVolumeOn);
+    setIsVolumeOnToDisplay(!isVolumeOn);
   };
 
   const recorder = useAudioRecorder();
@@ -165,7 +166,7 @@ export const CallButtons = ({
     recorder.removeTranscript();
     recorder.cancelRecording();
 
-    setIsVolumeOn(previousIsVolumeOn);
+    setIsVolumeOn(isVolumeOnToDisplay);
 
     setTimeout(() => {
       isSubmittingRef.current = false;
@@ -174,13 +175,12 @@ export const CallButtons = ({
   };
 
   const [isRecordingByButton, setIsRecordingByButton] = useState(false);
-  const [previousIsVolumeOn, setPreviousIsVolumeOn] = useState(isVolumeOn);
-
+  const [isVolumeOnToDisplay, setIsVolumeOnToDisplay] = useState(isVolumeOn);
   useEffect(() => {
-    if (!isRecordingByButton) {
-      setPreviousIsVolumeOn(isVolumeOn);
-    }
-  }, [isRecordingByButton, isVolumeOn]);
+    sleep(300).then(() => {
+      setIsVolumeOnToDisplay(isVolumeOn);
+    });
+  }, []);
 
   const onDoneRecordingUsingButton = async () => {
     if (recorder.isTranscribing) return;
@@ -199,7 +199,6 @@ export const CallButtons = ({
 
   const cancelRecordingUsingButton = () => {
     if (recorder.isTranscribing) return;
-    setIsVolumeOn(previousIsVolumeOn);
     recorder.cancelRecording();
     setIsRecordingByButton(false);
   };
@@ -223,24 +222,32 @@ export const CallButtons = ({
         return newTranscript;
       });
     },
+    silenceMs: 800,
   });
 
-  const IS_USE_VAD = false;
+  useEffect(() => {
+    if (vadAudioRecorder.isSpeaking) {
+      setIsVolumeOn(false);
+    } else {
+      setIsVolumeOn(isVolumeOnToDisplay);
+    }
+  }, [vadAudioRecorder.isSpeaking]);
+
+  const IS_USE_VAD = true;
 
   const [isSubmittingVad, setIsSubmittingVad] = useState(false);
 
+  const WAIT_SECOND_BEFORE_SEND = 4;
+
   const submitVadTranscription = async () => {
     if (!transcriptStack) return;
-
     setIsSubmittingVad(true);
-    const minSecondsBeforeSending = 5;
     const start = Date.now();
     await lessonPlan.generateAnalysis(transcriptStack);
-
     const end = Date.now();
     const elapsed = end - start;
-    if (elapsed < minSecondsBeforeSending * 1000) {
-      await sleep(minSecondsBeforeSending * 1000 - elapsed);
+    if (elapsed < WAIT_SECOND_BEFORE_SEND * 1000) {
+      await sleep(WAIT_SECOND_BEFORE_SEND * 1000 - elapsed);
     }
     if (transcriptStack !== transcriptionStackRef.current) {
       return;
@@ -253,6 +260,7 @@ export const CallButtons = ({
 
   useEffect(() => {
     submitVadTranscription();
+    console.log("transcriptStack", transcriptStack);
   }, [transcriptStack]);
 
   const [isVadEnabled, setIsVadEnabled] = useState(false);
@@ -274,7 +282,7 @@ export const CallButtons = ({
     }
   };
 
-  const speakingPercent = Math.round(vadAudioRecorder.speakingLevel * 100);
+  const speakingPercent = Math.max(30, Math.round(vadAudioRecorder.speakingLevel * 100));
   const inActivePercent = 100 - speakingPercent;
 
   return (
@@ -328,7 +336,10 @@ export const CallButtons = ({
             height: "48px",
             minWidth: "250px",
           }}
-          onClick={onShowAnalyzeConversationModal}
+          onClick={() => {
+            stopVad();
+            onShowAnalyzeConversationModal();
+          }}
         >
           {i18n._("Open results")}
         </Button>
@@ -389,40 +400,40 @@ export const CallButtons = ({
               {IS_USE_VAD ? (
                 <CallButton
                   activeButton={
-                    vadAudioRecorder.isTranscribing || isSubmittingVad ? (
-                      <Loader />
-                    ) : (
+                    <Stack
+                      sx={{
+                        position: "relative",
+                      }}
+                    >
+                      <MicIcon
+                        sx={{
+                          color: "#3dc2ff",
+                        }}
+                      />
                       <Stack
                         sx={{
-                          position: "relative",
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          overflow: "hidden",
+                          height: inActivePercent + "%",
+                          width: "100%",
                         }}
                       >
                         <MicIcon
                           sx={{
-                            color: "#fff",
-                          }}
-                        />
-                        <Stack
-                          sx={{
                             position: "absolute",
                             top: 0,
                             left: 0,
-                            overflow: "hidden",
-                            height: inActivePercent + "%",
-                            width: "100%",
+                            color: vadAudioRecorder.isTranscribing
+                              ? "#ff9900"
+                              : isSubmittingVad
+                                ? "#ff3df5"
+                                : "#888",
                           }}
-                        >
-                          <MicIcon
-                            sx={{
-                              position: "absolute",
-                              top: 0,
-                              left: 0,
-                              color: "#888",
-                            }}
-                          />
-                        </Stack>
+                        />
                       </Stack>
-                    )
+                    </Stack>
                   }
                   inactiveButton={<MicOffIcon />}
                   isActive={isVadEnabled}
@@ -442,8 +453,8 @@ export const CallButtons = ({
               <CallButton
                 activeButton={<VolumeUpIcon />}
                 inactiveButton={<VolumeOffIcon />}
-                isActive={isVolumeOn}
-                label={isVolumeOn ? i18n._("Turn off volume") : i18n._("Turn on volume")}
+                isActive={isVolumeOnToDisplay}
+                label={isVolumeOnToDisplay ? i18n._("Turn off volume") : i18n._("Turn on volume")}
                 onClick={toggleVolume}
                 isLocked={isLimited}
               />
@@ -468,7 +479,10 @@ export const CallButtons = ({
 
               <IconButton
                 size="large"
-                onClick={exit}
+                onClick={() => {
+                  vadAudioRecorder.stop();
+                  exit();
+                }}
                 sx={{
                   width: "70px",
                   borderRadius: "30px",

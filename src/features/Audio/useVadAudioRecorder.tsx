@@ -7,9 +7,11 @@ import { useVadRecorder } from "./useVadRecorder";
 import { useState } from "react";
 
 export const useVadAudioRecorder = ({
+  silenceMs,
   onTranscription,
 }: {
   onTranscription: (transcript: string) => void;
+  silenceMs?: number;
 }) => {
   const auth = useAuth();
   const settings = useSettings();
@@ -19,7 +21,7 @@ export const useVadAudioRecorder = ({
     onChunk: (blob) => {
       getRecordTranscript(blob, blob.type.toLowerCase());
     },
-    silenceMs: 300,
+    silenceMs,
   });
 
   const { inWebView } = useIsWebView();
