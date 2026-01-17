@@ -219,7 +219,7 @@ export const CallButtons = ({
     onTranscription: (transcript: string) => {
       setTranscriptStack((prev) => {
         const newTranscript = prev ? prev + " " + transcript : transcript;
-        return newTranscript;
+        return newTranscript.trim();
       });
     },
     silenceMs: 800,
@@ -282,7 +282,7 @@ export const CallButtons = ({
     }
   };
 
-  const speakingPercent = Math.max(30, Math.round(vadAudioRecorder.speakingLevel * 100));
+  const speakingPercent = Math.max(10, Math.round(vadAudioRecorder.speakingLevel * 100));
   const inActivePercent = 100 - speakingPercent;
 
   return (
@@ -407,9 +407,24 @@ export const CallButtons = ({
                     >
                       <MicIcon
                         sx={{
-                          color: "#3dc2ff",
+                          fontWeight: "bold",
+                          color: "#ff3d3d",
                         }}
                       />
+
+                      <Stack
+                        sx={{
+                          opacity: vadAudioRecorder.isTranscribing || isSubmittingVad ? 1 : 0,
+                          position: "absolute",
+                          bottom: "-10px",
+                          right: "-10px",
+                          height: "14px",
+                          width: "14px",
+                        }}
+                      >
+                        <CircularProgress size={"14px"} thickness={8} />
+                      </Stack>
+
                       <Stack
                         sx={{
                           position: "absolute",
@@ -422,14 +437,11 @@ export const CallButtons = ({
                       >
                         <MicIcon
                           sx={{
+                            fontWeight: "bold",
                             position: "absolute",
                             top: 0,
                             left: 0,
-                            color: vadAudioRecorder.isTranscribing
-                              ? "#ff9900"
-                              : isSubmittingVad
-                                ? "#ff3df5"
-                                : "#888",
+                            color: "#fff",
                           }}
                         />
                       </Stack>
