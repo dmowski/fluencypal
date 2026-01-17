@@ -20,6 +20,7 @@ import { LessonPlanAnalysis } from "@/features/LessonPlan/type";
 import { sleep } from "@/libs/sleep";
 import CloseIcon from "@mui/icons-material/Close";
 import DoneIcon from "@mui/icons-material/Done";
+import { useLessonPlan } from "@/features/LessonPlan/useLessonPlan";
 
 export const CallButton = ({
   label,
@@ -138,17 +139,30 @@ export const CallButtons = ({
 
   const isSubmittingRef = useRef(false);
 
-  const submitTranscription = () => {
-    if (isSubmittingRef.current) return;
-    isSubmittingRef.current = true;
+  const lessonPlan = useLessonPlan();
 
-    onSubmitTranscription(recorder.transcription || "");
+  const [isProcessingTranscription, setIsProcessingTranscription] = useState(false);
+
+  const submitTranscription = async () => {
+    const transcription = recorder.transcription;
+    if (!transcription || isSubmittingRef.current) {
+      return;
+    }
+
+    isSubmittingRef.current = true;
+    setIsProcessingTranscription(true);
+
+    await lessonPlan.generateAnalysis(transcription);
+
+    onSubmitTranscription(transcription);
     recorder.removeTranscript();
     recorder.cancelRecording();
 
     setIsVolumeOn(previousIsVolumeOn);
+
     setTimeout(() => {
       isSubmittingRef.current = false;
+      setIsProcessingTranscription(false);
     }, 200);
   };
 
@@ -163,6 +177,7 @@ export const CallButtons = ({
 
   const onDoneRecordingUsingButton = async () => {
     if (recorder.isTranscribing) return;
+
     recorder.stopRecording();
   };
 
@@ -247,16 +262,24 @@ export const CallButtons = ({
         </Button>
       ) : (
         <>
-          {isRecordingByButton ? (
+          {isRecordingByButton || isProcessingTranscription ? (
             <>
               <CallButton
                 activeButton={
-                  recorder.isTranscribing ? <CircularProgress size={"24px"} /> : <DoneIcon />
+                  recorder.isTranscribing || isProcessingTranscription ? (
+                    <CircularProgress size={"24px"} />
+                  ) : (
+                    <DoneIcon />
+                  )
                 }
                 inactiveButton={
-                  recorder.isTranscribing ? <CircularProgress size={"24px"} /> : <DoneIcon />
+                  recorder.isTranscribing || isProcessingTranscription ? (
+                    <CircularProgress size={"24px"} />
+                  ) : (
+                    <DoneIcon />
+                  )
                 }
-                isActive={recorder.isTranscribing}
+                isActive={recorder.isTranscribing || isProcessingTranscription}
                 label={i18n._("Done recording")}
                 onClick={onDoneRecordingUsingButton}
               />
@@ -271,10 +294,18 @@ export const CallButtons = ({
 
               <CallButton
                 activeButton={
-                  recorder.isTranscribing ? <CloseIcon style={{ opacity: 0.2 }} /> : <CloseIcon />
+                  recorder.isTranscribing || isProcessingTranscription ? (
+                    <CloseIcon style={{ opacity: 0.2 }} />
+                  ) : (
+                    <CloseIcon />
+                  )
                 }
                 inactiveButton={
-                  recorder.isTranscribing ? <CloseIcon style={{ opacity: 0.2 }} /> : <CloseIcon />
+                  recorder.isTranscribing || isProcessingTranscription ? (
+                    <CloseIcon style={{ opacity: 0.2 }} />
+                  ) : (
+                    <CloseIcon />
+                  )
                 }
                 isActive={true}
                 label={i18n._("Cancel recording")}
