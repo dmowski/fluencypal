@@ -211,7 +211,7 @@ export const CallButtons = ({
         width: "max-content",
         padding: "10px 10px 21px 10px",
         position: "relative",
-        bottom: progress > 99 ? "80px" : "-1px",
+        bottom: "-1px",
       }}
     >
       <Stack
