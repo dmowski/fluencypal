@@ -167,7 +167,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         recordingError={""}
         isShowMessageProgress={true}
         lessonPlanAnalysis={{
-          progress: 100,
+          progress: 99,
         }}
         conversationAnalysisResult={{
           whatToFocusOnNextTime: "Try to use more complex sentences.",
