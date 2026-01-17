@@ -125,14 +125,6 @@ export const CallButtons = ({
 
   const [isShowVolumeWarning, setIsShowVolumeWarning] = useState(false);
 
-  const toggleMute = () => {
-    if (isLimited) {
-      return;
-    }
-
-    setIsMuted(!isMuted);
-  };
-
   const toggleVolume = () => {
     if (isLimited) {
       setIsShowVolumeWarning(true);
@@ -240,24 +232,19 @@ export const CallButtons = ({
       </Stack>
 
       {progress > 99 ? (
-        <Stack
+        <Button
+          startIcon={<Trophy />}
+          size="large"
+          color="info"
+          variant="contained"
           sx={{
-            alignItems: "center",
-            gap: "10px",
-            padding: "10px 20px",
+            height: "48px",
+            minWidth: "250px",
           }}
+          onClick={onShowAnalyzeConversationModal}
         >
-          <Typography>{i18n._("Mission complete")}</Typography>
-          <Button
-            startIcon={<Trophy />}
-            size="large"
-            color="info"
-            variant="contained"
-            onClick={onShowAnalyzeConversationModal}
-          >
-            {i18n._("Open results")}
-          </Button>
-        </Stack>
+          {i18n._("Open results")}
+        </Button>
       ) : (
         <>
           {isRecordingByButton ? (
