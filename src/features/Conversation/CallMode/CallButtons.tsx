@@ -7,15 +7,7 @@ import { Button, CircularProgress, IconButton, Stack, Typography } from "@mui/ma
 import { useLingui } from "@lingui/react";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import {
-  AudioLines,
-  CircleQuestionMark,
-  Ear,
-  EarOff,
-  Loader,
-  TextInitial,
-  Trophy,
-} from "lucide-react";
+import { CircleQuestionMark, Trophy } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { CustomModal } from "@/features/uiKit/Modal/CustomModal";
 import { FeatureBlocker } from "@/features/Usage/FeatureBlocker";
