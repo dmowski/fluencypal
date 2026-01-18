@@ -1,5 +1,5 @@
 "use client";
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { ReactNode } from "react";
 import { AiAvatarVideo } from "@/features/Conversation/CallMode/AiAvatarVideo";
 import { AiAvatar } from "@/features/Conversation/CallMode/types";
@@ -15,6 +15,9 @@ interface ActiveLessonCardProps {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   delayToShow?: number;
+
+  settingsIcon?: ReactNode;
+  onSettingsClick?: () => void;
 }
 
 export const ActiveLessonCard = ({
@@ -28,6 +31,9 @@ export const ActiveLessonCard = ({
   startIcon,
   endIcon,
   delayToShow = 0,
+
+  settingsIcon,
+  onSettingsClick,
 }: ActiveLessonCardProps) => {
   return (
     <Stack
@@ -99,6 +105,26 @@ export const ActiveLessonCard = ({
         >
           <AiAvatarVideo aiVideo={aiVideo} isSpeaking={false} />
         </Stack>
+
+        {settingsIcon && (
+          <Stack>
+            <IconButton
+              onClick={onSettingsClick}
+              sx={{
+                position: "absolute",
+                top: "10px",
+                left: "10px",
+                color: "#fff",
+                backgroundColor: "rgba(0,0,0,0.3)",
+                "&:hover": {
+                  backgroundColor: "rgba(0,0,0,0.5)",
+                },
+              }}
+            >
+              {settingsIcon}
+            </IconButton>
+          </Stack>
+        )}
       </Stack>
 
       {/* Right content */}

@@ -24,6 +24,9 @@ export const SelectTeacher = ({
         gridTemplateColumns: "1fr 1fr",
         aspectRatio: "4 / 3",
         gap: "15px",
+        "@media (max-width:600px)": {
+          aspectRatio: "3 / 3",
+        },
       }}
     >
       {voices.map((voice) => {
