@@ -113,7 +113,7 @@ function useProvideSettings(): SettingsContextType {
       country: country || null,
       countryName: countryName || null,
       userSource: userSource.userSource,
-      teacherVoice: "shimmer",
+      teacherVoice: null,
     };
 
     await setDoc(userSettingsDoc, settingsData, { merge: true });

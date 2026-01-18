@@ -3,4 +3,6 @@ export interface AiAvatar {
   talkVideoUrl: string[];
 
   voiceInstruction: string;
+
+  helloPhrases: string[];
 }

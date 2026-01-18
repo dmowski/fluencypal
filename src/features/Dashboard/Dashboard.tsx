@@ -24,6 +24,7 @@ import { useState } from "react";
 import { useSettings } from "../Settings/useSettings";
 import { useAccess } from "../Usage/useAccess";
 import { useUsage } from "../Usage/useUsage";
+import { SelectTeacher } from "../Conversation/CallMode/SelectTeacher";
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -55,6 +56,7 @@ export function Dashboard({ lang }: DashboardProps) {
     conversation.startConversation({
       conversationMode: "call",
       mode: "talk",
+      voice: settings.userSettings?.teacherVoice || "shimmer",
     });
   };
 
@@ -152,6 +154,18 @@ export function Dashboard({ lang }: DashboardProps) {
           {appNavigation.currentPage === "profile" && (
             <>
               <MyProfile lang={lang} />
+
+              <Stack
+                sx={{
+                  gap: "10px",
+                }}
+              >
+                <Typography variant="h6">{i18n._("Your AI teacher voice:")}</Typography>
+                <SelectTeacher
+                  selectedVoice={settings.userSettings?.teacherVoice || "shimmer"}
+                  onSelectVoice={settings.setVoice}
+                />
+              </Stack>
 
               <UsageStatsCards />
 

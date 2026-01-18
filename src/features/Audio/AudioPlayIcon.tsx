@@ -10,9 +10,16 @@ export interface AudioPlayIconProps {
   voice: AiVoice;
   instructions: string;
   borderColor?: string;
+  onChangeState?: (isPlaying: boolean) => void;
 }
 
-export const AudioPlayIcon = ({ text, borderColor, instructions, voice }: AudioPlayIconProps) => {
+export const AudioPlayIcon = ({
+  text,
+  borderColor,
+  instructions,
+  voice,
+  onChangeState,
+}: AudioPlayIconProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const audio = useConversationAudio();
@@ -28,6 +35,7 @@ export const AudioPlayIcon = ({ text, borderColor, instructions, voice }: AudioP
     if (isPlaying && audio.isPlaying) {
       audio.interrupt();
       setIsPlaying(false);
+      onChangeState?.(false);
       return;
     }
 
@@ -38,8 +46,10 @@ export const AudioPlayIcon = ({ text, borderColor, instructions, voice }: AudioP
     }, 300);
 
     setIsPlaying(true);
+    onChangeState?.(true);
     await audio.speak(text, { voice, instructions });
     setIsPlaying(false);
+    onChangeState?.(false);
   };
 
   return (
