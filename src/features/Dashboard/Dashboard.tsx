@@ -127,7 +127,7 @@ export function Dashboard({ lang }: DashboardProps) {
                 >
                   <Button
                     color="secondary"
-                    endIcon={<Origami />}
+                    startIcon={<Origami />}
                     onClick={startJustTalk}
                     disabled={isCallStarting}
                     variant="contained"
