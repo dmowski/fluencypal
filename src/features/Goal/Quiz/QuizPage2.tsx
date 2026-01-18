@@ -23,10 +23,9 @@ import { sleep } from "@/libs/sleep";
 import { QuizPageLoader } from "@/features/Case/quiz/QuizPageLoader";
 import { Check } from "lucide-react";
 import { ColorIconTextList } from "@/features/Survey/ColorIconTextList";
-import VideocamIcon from "@mui/icons-material/Videocam";
-import { ChatProvider } from "@/features/Chat/useChat";
-import { ChatSection } from "@/features/Chat/ChatSection";
 import { WelcomeChatMessage } from "./WelcomeChatMessage";
+import { useSettings } from "@/features/Settings/useSettings";
+import { SelectTeacher } from "@/features/Conversation/CallMode/SelectTeacher";
 
 const QuizQuestions = () => {
   const {
@@ -45,6 +44,8 @@ const QuizQuestions = () => {
     isGoalGenerating,
   } = useQuiz();
   const { i18n } = useLingui();
+
+  const settings = useSettings();
 
   const { languageGroups } = useLanguageGroup({
     defaultGroupTitle: i18n._(`Other languages`),
@@ -117,6 +118,31 @@ const QuizQuestions = () => {
               disabled={isStepLoading}
               isStepLoading={isStepLoading}
             />
+          )}
+
+          {currentStep === "teacherSelection" && (
+            <AuthWall>
+              <InfoStep
+                title={i18n._(`Pick your teacher`)}
+                subTitle={i18n._(`Select a voice and look that feels right for you.`)}
+                actionButtonTitle={i18n._(`Continue`)}
+                subComponent={
+                  <Stack
+                    sx={{
+                      paddingTop: "20px",
+                    }}
+                  >
+                    <SelectTeacher
+                      selectedVoice={settings.userSettings?.teacherVoice}
+                      onSelectVoice={settings.setVoice}
+                    />
+                  </Stack>
+                }
+                onClick={nextStep}
+                disabled={isStepLoading || !settings.userSettings?.teacherVoice}
+                isStepLoading={isStepLoading}
+              />
+            </AuthWall>
           )}
 
           {currentStep === "nativeLanguage" && <NativeLanguageSelector />}
