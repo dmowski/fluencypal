@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { AvatarVideo } from "./types";
+import { AiAvatar } from "./types";
 import { Stack } from "@mui/material";
 
 export const AiAvatarVideo = ({
   aiVideo,
   isSpeaking,
 }: {
-  aiVideo: AvatarVideo;
+  aiVideo: AiAvatar;
   isSpeaking: boolean;
 }) => {
   const [sitIndex, setSitIndex] = useState(0);

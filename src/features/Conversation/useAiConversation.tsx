@@ -26,10 +26,14 @@ import { ConversationConfig, ConversationInstance } from "./ConversationInstance
 import { useTextAi } from "../Ai/useTextAi";
 import { initTextConversation } from "./ConversationInstance/textConversation";
 import { useConversationAudio } from "../Audio/useConversationAudio";
-import { voiceLearningPlanMap } from "./CallMode/voiceAvatar";
+import { getAiVoiceByVoice, voiceLearningPlanMap } from "./CallMode/voiceAvatar";
 
-const voiceInstructions = `## AI Voice
-Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking  These pauses should feel natural and reflective, as if you're savoring the moment.`;
+const getVoiceInstructions = (voice: AiVoice): string => {
+  const voiceAvatar = getAiVoiceByVoice(voice);
+  const voiceInstructions = `## AI Voice
+${voiceAvatar.voiceInstruction}`;
+  return voiceInstructions;
+};
 
 const getConversationStarterMessagePrompt = (startMessage: string): string => {
   if (!startMessage) {
@@ -398,13 +402,17 @@ VISUAL_CONTEXT (latest): ${description}
     goal,
     ideas,
     lessonPlan,
+    voice,
   }: {
     mode: ConversationType;
     goal?: GoalElementInfo | null;
     ideas?: ConversationIdea;
     lessonPlan?: LessonPlan;
+    voice: AiVoice;
   }): Promise<ConversationConfig> => {
     const baseConfig = await getBaseRtcConfig();
+
+    const voiceInstructions = getVoiceInstructions(voice);
 
     let lessonPlanPrompt = lessonPlan
       ? `## Lesson Plan:
@@ -443,7 +451,7 @@ ${lessonPlan.steps
       return {
         ...baseConfig,
         model: aiModal,
-        voice: voiceLearningPlanMap.conversation,
+        voice,
         initInstruction: `# Overview
 You are an ${fullLanguageName} speaking teacher. Your name is "Shimmer".
 Your role is to make user talks on a topic: ${elementTitle}. ${elementDescription}. (${elementDetails}).
@@ -467,7 +475,7 @@ ${voiceInstructions}`,
       return {
         ...baseConfig,
         model: aiModal,
-        voice: voiceLearningPlanMap.play,
+        voice,
         initInstruction: `# Overview
 You are an ${fullLanguageName} speaking teacher. Your name is "Shimmer".
 Your role is to play a Role Play game on this topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
@@ -510,7 +518,7 @@ Don't focus solely on one topic. Try to cover a variety of topics (Example\n${po
       return {
         ...baseConfig,
         model: aiModal,
-        voice: "shimmer",
+        voice,
         initInstruction: `${aiPersona} Your name is "Shimmer". Your role is to make user talks.
 ${openerInfoPrompt}
 Do not teach or explain rules—just talk.
@@ -536,6 +544,7 @@ ${getConversationStarterMessagePrompt(startFirstMessage)}
     if (mode === "role-play") {
       return {
         ...baseConfig,
+        voice,
         model: aiModal,
         initInstruction: ``,
       };
@@ -545,10 +554,9 @@ ${getConversationStarterMessagePrompt(startFirstMessage)}
       let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : "";
       return {
         ...baseConfig,
-        voice: voiceLearningPlanMap.rule,
+        voice,
         model: aiModal,
         initInstruction: `${aiPersona}
-Your name is "Bruno".
 The user wants to learn a new rule.
 Start your lesson be introducing the rule with short explanation.
 Then, ask user to use these rules in sentences.
@@ -566,9 +574,8 @@ ${voiceInstructions}
       return {
         ...baseConfig,
         model: aiModal,
-        voice: voiceLearningPlanMap.words,
+        voice,
         initInstruction: `${aiPersona}
-Your name is "Bruno".
 The user wants to learn new words.
 Start your lesson be introducing new words with short explanation.
 Then, ask user to use these words in sentences.
@@ -633,6 +640,7 @@ ${voiceInstructions}
         goal: input.goal,
         ideas: input.ideas,
         lessonPlan: input.lessonPlan,
+        voice: input.voice || "shimmer",
       });
       let instruction = conversationConfig.initInstruction;
 

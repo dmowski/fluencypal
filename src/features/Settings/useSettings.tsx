@@ -16,6 +16,7 @@ import { AppMode, ConversationMode, InitUserSettings, UserSettings } from "@/com
 import { NativeLangCode } from "@/libs/language/type";
 import { useUserSource } from "../Analytics/useUserSource";
 import { isActiveBrowserTab } from "@/libs/isActiveBrowserTab";
+import { AiVoice } from "@/common/ai";
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -36,6 +37,8 @@ interface SettingsContextType {
 
   conversationMode: ConversationMode;
   setConversationMode: (mode: ConversationMode) => Promise<void>;
+
+  setVoice: (voice: AiVoice) => Promise<void>;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -56,6 +59,7 @@ export const settingsContext = createContext<SettingsContextType>({
 
   conversationMode: "record",
   setConversationMode: async () => {},
+  setVoice: async () => {},
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -109,6 +113,7 @@ function useProvideSettings(): SettingsContextType {
       country: country || null,
       countryName: countryName || null,
       userSource: userSource.userSource,
+      teacherVoice: "shimmer",
     };
 
     await setDoc(userSettingsDoc, settingsData, { merge: true });
@@ -188,6 +193,11 @@ function useProvideSettings(): SettingsContextType {
     localStorage.setItem("pageLanguageCode", pageLanguageCode);
   }, [pageLanguageCode]);
 
+  const setVoice = async (voice: AiVoice) => {
+    if (!userSettingsDoc) return;
+    await setDoc(userSettingsDoc, { teacherVoice: voice }, { merge: true });
+  };
+
   return {
     userCreatedAt,
 
@@ -206,6 +216,7 @@ function useProvideSettings(): SettingsContextType {
 
     conversationMode: userSettings?.conversationMode || "record",
     setConversationMode,
+    setVoice,
   };
 }
 

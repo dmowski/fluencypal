@@ -2,7 +2,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { ReactNode } from "react";
 import { AiAvatarVideo } from "@/features/Conversation/CallMode/AiAvatarVideo";
-import { AvatarVideo } from "@/features/Conversation/CallMode/types";
+import { AiAvatar } from "@/features/Conversation/CallMode/types";
 
 interface ActiveLessonCardProps {
   title: string;
@@ -11,7 +11,7 @@ interface ActiveLessonCardProps {
   descriptionBottom?: string;
   actionLabel: string;
   onAction: () => void;
-  aiVideo: AvatarVideo;
+  aiVideo: AiAvatar;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   delayToShow?: number;

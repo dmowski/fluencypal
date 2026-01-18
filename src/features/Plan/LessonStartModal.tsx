@@ -207,6 +207,7 @@ export const LessonStartModal = ({
       ruleToLearn,
       ideas: ideas || undefined,
       lessonPlan: lessonPlan.activeLessonPlan || undefined,
+      voice: settings.userSettings?.teacherVoice || "shimmer",
     });
 
     setIsStarting(false);

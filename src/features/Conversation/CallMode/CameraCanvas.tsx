@@ -8,7 +8,7 @@ import { Stack } from "@mui/material";
 import { Messages } from "../Messages";
 import { WebCamFooter } from "./WebCamFooter";
 import { UserPreviewStatic } from "./UserPreviewStatic";
-import { AvatarVideo } from "./types";
+import { AiAvatar } from "./types";
 import { AiAvatarVideo } from "./AiAvatarVideo";
 import { CallButtons } from "./CallButtons";
 import { WebCamView } from "@/features/webCam/WebCamView";
@@ -80,7 +80,7 @@ export const CameraCanvas = ({
   const auth = useAuth();
   const userPhoto = auth.userInfo?.photoURL || "";
   const myUserName = auth.userInfo?.displayName || auth.userInfo?.email || "You";
-  const aiVideo: AvatarVideo | null = getAiVoiceByVoice(voice);
+  const aiVideo: AiAvatar | null = getAiVoiceByVoice(voice);
   const footerHeight = `calc(80px + ${sizes.bottomOffset})`;
 
   const topHeight = isSubtitlesEnabled ? `50dvh` : `calc(97dvh - ${footerHeight})`;

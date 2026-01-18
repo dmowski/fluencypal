@@ -1,6 +1,7 @@
 import { NativeLangCode } from "@/libs/language/type";
 import { SupportedLanguage } from "../features/Lang/lang";
 import { UserSource } from "./analytics";
+import { AiVoice } from "./ai";
 
 export interface InitUserSettings {
   createdAt: number | null;
@@ -10,6 +11,7 @@ export interface InitUserSettings {
   country: string | null;
   countryName: string | null;
   userSource: UserSource | null;
+  teacherVoice: AiVoice | null;
 }
 
 export type AppMode = "interview" | "learning";

@@ -1,4 +1,6 @@
-export interface AvatarVideo {
+export interface AiAvatar {
   sitVideoUrl: string[];
   talkVideoUrl: string[];
+
+  voiceInstruction: string;
 }
