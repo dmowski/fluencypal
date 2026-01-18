@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 
 import { ProgressBoard } from "./Progress/ProgressBoard";
 import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
@@ -24,7 +24,8 @@ import { useState } from "react";
 import { useSettings } from "../Settings/useSettings";
 import { useAccess } from "../Usage/useAccess";
 import { useUsage } from "../Usage/useUsage";
-import { SelectTeacher } from "../Conversation/CallMode/SelectTeacher";
+import SettingsIcon from "@mui/icons-material/Settings";
+import { useTeacherSettings } from "../Conversation/CallMode/useTeacherSettings";
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -36,6 +37,7 @@ export function Dashboard({ lang }: DashboardProps) {
 
   const plan = usePlan();
   const { i18n } = useLingui();
+  const teacherSettings = useTeacherSettings();
 
   const conversation = useAiConversation();
   const [isCallStarting, setIsCallStarting] = useState(false);
@@ -139,6 +141,9 @@ export function Dashboard({ lang }: DashboardProps) {
                   >
                     {i18n._("Just to Talk")}
                   </Button>
+                  <IconButton size="small" sx={{}}>
+                    <SettingsIcon onClick={teacherSettings.openSettingsModal} />
+                  </IconButton>
                 </Stack>
               </Stack>
 
