@@ -434,7 +434,7 @@ msgstr "Дадаць адказ"
 msgid "Add Comment"
 msgstr "Дадаць каментарый"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:244
+#: src/features/Dashboard/PlanDashboardCards.tsx:247
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "Дадаць новую мэту"
@@ -454,7 +454,7 @@ msgstr "Дадаць паст"
 msgid "Add Response"
 msgstr "Дадаць Адказ"
 
-#: src/features/Settings/MyProfile.tsx:234
+#: src/features/Settings/MyProfile.tsx:245
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
 msgstr ""
@@ -634,6 +634,11 @@ msgstr "Кошт AI-рэпетытара"
 msgid "AI Tutor Updates"
 msgstr "Абнаўленні AI настаўніка"
 
+#: src/features/Settings/MyProfile.tsx:77
+#. js-lingui-explicit-id
+msgid "AI Voice"
+msgstr "Голас AI"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:487
 #. js-lingui-explicit-id
 msgid "AI voice"
@@ -701,12 +706,12 @@ msgstr "Усе інтэрв'ю"
 msgid "All Scenarios"
 msgstr "Усе сцэнары"
 
-#: src/features/Plan/LessonStartModal.tsx:277
+#: src/features/Plan/LessonStartModal.tsx:278
 #. js-lingui-explicit-id
 msgid "Allow Microphone Access"
 msgstr "Дазволіць доступ да мікрафона"
 
-#: src/features/Plan/LessonStartModal.tsx:334
+#: src/features/Plan/LessonStartModal.tsx:335
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "Дазволіць вэб-камеру"
@@ -836,7 +841,7 @@ msgstr "Вы ўпэўнены, што хочаце выдаліць гэтае �
 msgid "Are you sure you want to delete your account?"
 msgstr "Вы ўпэўнены, што хочаце выдаліць свой рахунак?"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:42
+#: src/features/Dashboard/PlanDashboardCards.tsx:45
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "Вы ўпэўнены, што хочаце выдаліць сваю мэту? Гэта дзеянне нельга адмяніць."
@@ -1417,6 +1422,11 @@ msgstr "Выбірайце ўзроўні ізаляцыі, мадэльныя �
 msgid "Choose Site Language"
 msgstr "Выберыце мову сайта"
 
+#: src/features/Settings/MyProfile.tsx:78
+#. js-lingui-explicit-id
+msgid "Choose the voice for your AI teacher"
+msgstr "Выберыце голас для вашага AI-настаўніка"
+
 #: src/features/Case/data/reusable/priceSection.ts:11
 #. js-lingui-explicit-id
 msgid "Choose your interview preparation plan"
@@ -1694,7 +1704,7 @@ msgstr "Працягнуць да аплаты"
 msgid "Contract Tests"
 msgstr "Тэсты Дагавора"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:56
+#: src/features/Dashboard/PlanDashboardCards.tsx:59
 #: src/features/Goal/Quiz/GoalReview.tsx:34
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
 #: src/features/Landing/PlanLandingBlock.tsx:278
@@ -1718,7 +1728,7 @@ msgstr "Практыка размовы"
 msgid "Conversation preparation"
 msgstr "Падрыхтоўка да размовы"
 
-#: src/features/Dashboard/Dashboard.tsx:110
+#: src/features/Dashboard/Dashboard.tsx:112
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "Размова з ШІ"
@@ -1890,7 +1900,7 @@ msgstr "с# распрацоўшчык інтэрв'ю"
 msgid "Current Balance of AI usage"
 msgstr "Бягучы баланс выкарыстання AI"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:293
+#: src/features/Dashboard/PlanDashboardCards.tsx:296
 #. js-lingui-explicit-id
 msgid "Current Lesson"
 msgstr "Бягучы ўрок"
@@ -2062,7 +2072,7 @@ msgstr ""
 "\n"
 "Выдаліць уліковы запіс (Усяго)\n"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:443
+#: src/features/Dashboard/PlanDashboardCards.tsx:448
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Выдаліць цяперашнюю мэту"
@@ -2420,9 +2430,10 @@ msgstr "Не забудзьцеся паспрабаваць рэжым выкл
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
 #: src/features/Conversation/ConversationCanvas.tsx:617
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:250
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:254
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
 #: src/features/Landing/LandingPage.tsx:259
+#: src/features/Modal/GlobalModals.tsx:72
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
 #: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
@@ -2763,7 +2774,7 @@ msgstr "Памылка падчас правядзення аплаты"
 msgid "Error processing payment"
 msgstr "Памылка пры апрацоўцы аплаты"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:320
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:324
 #: src/features/Survey/RecordUserAudioAnswer.tsx:108
 #. js-lingui-explicit-id
 msgid "Error:"
@@ -3120,8 +3131,8 @@ msgstr "ЧАП"
 msgid "Fast Answer Practice"
 msgstr "Практыка Шустрых Адказаў"
 
-#: src/features/Settings/MyProfile.tsx:83
-#: src/features/Settings/MyProfile.tsx:242
+#: src/features/Settings/MyProfile.tsx:94
+#: src/features/Settings/MyProfile.tsx:253
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Водгук"
@@ -3498,7 +3509,7 @@ msgid "frontend system design interview"
 msgstr "фронтэнд сістэма дызайн інтэрв'ю"
 
 #: src/features/Landing/Price/PricePage.tsx:300
-#: src/features/Settings/MyProfile.tsx:75
+#: src/features/Settings/MyProfile.tsx:86
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/SubscriptionPaymentModal.tsx:672
 #: src/features/Usage/SubscriptionPaymentModal.tsx:720
@@ -3550,17 +3561,17 @@ msgstr "Гульня"
 msgid "Game-based practice"
 msgstr "Практыка на аснове гульні"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:418
+#: src/features/Dashboard/PlanDashboardCards.tsx:423
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "Стварыце больш урокаў, каб хутчэй дасягнуць сваёй мэты."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:460
+#: src/features/Dashboard/PlanDashboardCards.tsx:465
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Генеруй больш унікальных урокаў"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:459
+#: src/features/Dashboard/PlanDashboardCards.tsx:464
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Генеруецца..."
@@ -3797,7 +3808,7 @@ msgstr "Падарунак"
 msgid "Give a small example (counter, input, button)"
 msgstr "Дайце невялікі прыклад (лічыльнік, уваход, кнопка)"
 
-#: src/features/Settings/MyProfile.tsx:84
+#: src/features/Settings/MyProfile.tsx:95
 #. js-lingui-explicit-id
 msgid "Give us your feedback"
 msgstr "Дайце нам вашы водгукі"
@@ -3825,8 +3836,8 @@ msgid "Go to the main page"
 msgstr "Перайсці на галоўную старонку"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:185
-#: src/features/Dashboard/PlanDashboardCards.tsx:414
+#: src/features/Dashboard/PlanDashboardCards.tsx:188
+#: src/features/Dashboard/PlanDashboardCards.tsx:419
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Мэта"
@@ -4003,7 +4014,7 @@ msgstr "Развяжыся!"
 msgid "Health"
 msgstr "Здароўе"
 
-#: src/features/Settings/MyProfile.tsx:91
+#: src/features/Settings/MyProfile.tsx:102
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Дапамога"
@@ -4013,12 +4024,12 @@ msgstr "Дапамога"
 msgid "Help with answer"
 msgstr "Дапамагчы з адказам"
 
-#: src/features/Plan/LessonStartModal.tsx:393
+#: src/features/Plan/LessonStartModal.tsx:394
 #. js-lingui-explicit-id
 msgid "Here are some new rules for you to learn:"
 msgstr "Вось некалькі новых правіл, якія трэба вывучыць:"
 
-#: src/features/Plan/LessonStartModal.tsx:358
+#: src/features/Plan/LessonStartModal.tsx:359
 #. js-lingui-explicit-id
 msgid "Here are some new words for you to learn:"
 msgstr "Вось некалькі новых слоў для вас, каб вывучыць:"
@@ -4038,7 +4049,7 @@ msgstr "Вось выпраўленні, якія ў вас былі ў разм
 msgid "Here are the words you used the most in your conversations."
 msgstr "Вось словы, якія вы найчасцей выкарыстоўвалі ў сваіх размовах."
 
-#: src/features/Plan/LessonStartModal.tsx:429
+#: src/features/Plan/LessonStartModal.tsx:430
 #. js-lingui-explicit-id
 msgid "Here is the lesson plan for this session:"
 msgstr "Вось план урока для гэтай сесіі:"
@@ -4648,7 +4659,7 @@ msgstr ""
 "Нарэшце я атрымаў 3 прапановы пасля месяцаў маўчання. Выпрабаванні "
 "кампанентаў React былі якраз тым, што мне было патрэбна."
 
-#: src/features/Plan/LessonStartModal.tsx:383
+#: src/features/Plan/LessonStartModal.tsx:384
 #. js-lingui-explicit-id
 msgid "I know these"
 msgstr "Я ведаю гэтыя"
@@ -5000,7 +5011,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "Менш чым за 5 хвілін вы атрымаеце:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:470
+#: src/features/Dashboard/PlanDashboardCards.tsx:475
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Каб стварыць больш урокаў, вам трэба завершыць прынамсі 3 урокі."
@@ -5666,7 +5677,7 @@ msgstr "малодшы інтэрв'ю на пазіцыю фронтэнд ра
 msgid "Just talk"
 msgstr "Проста размаўляйце"
 
-#: src/features/Dashboard/Dashboard.tsx:138
+#: src/features/Dashboard/Dashboard.tsx:140
 #. js-lingui-explicit-id
 msgid "Just to Talk"
 msgstr "Проста пагаварыць"
@@ -5720,7 +5731,7 @@ msgstr ""
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "Атрымаць першую працу распрацоўшчыка цяжэй, чым яна павінна быць"
 
-#: src/features/Settings/MyProfile.tsx:68
+#: src/features/Settings/MyProfile.tsx:71
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Мова"
@@ -5858,14 +5869,14 @@ msgstr "Вывучайце апісваць сімптомы і эфектыўн
 msgid "Learning Blog"
 msgstr "Блог аб навучанні"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:162
+#: src/features/Dashboard/PlanDashboardCards.tsx:165
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "План навучання"
 
 #: src/features/Header/ContactMessageModal.tsx:98
-#: src/features/Settings/MyProfile.tsx:235
-#: src/features/Settings/MyProfile.tsx:244
+#: src/features/Settings/MyProfile.tsx:246
+#: src/features/Settings/MyProfile.tsx:255
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Пакіньце сваё паведамленне"
@@ -5880,7 +5891,7 @@ msgstr "Прававые пытанні:"
 msgid "Less"
 msgstr "Менш"
 
-#: src/features/Plan/LessonStartModal.tsx:428
+#: src/features/Plan/LessonStartModal.tsx:429
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
 msgstr "План урока"
@@ -5941,7 +5952,7 @@ msgstr "Літаратура і мастацкая літаратура"
 msgid "Load More"
 msgstr "Загрузіць больш"
 
-#: src/features/Plan/LessonStartModal.tsx:511
+#: src/features/Plan/LessonStartModal.tsx:512
 #. js-lingui-explicit-id
 msgid "Loading"
 msgstr "Загрузка"
@@ -5967,7 +5978,7 @@ msgstr "Загрузка.."
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:85
-#: src/features/Plan/LessonStartModal.tsx:413
+#: src/features/Plan/LessonStartModal.tsx:414
 #: src/features/RolePlay/RolePlayModal.tsx:267
 #: src/features/Router/PracticePage.tsx:59
 #: src/features/Router/PracticePage.tsx:63
@@ -5981,12 +5992,12 @@ msgid "Loading..."
 msgstr "Загрузка..."
 
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:110
+#: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Выйсці"
 
-#: src/features/Settings/MyProfile.tsx:111
+#: src/features/Settings/MyProfile.tsx:122
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Выйсці з вашага ўліковага запісу"
@@ -6011,12 +6022,12 @@ msgstr "Асноўная мэта ў навучанні"
 msgid "Make sure to allow webcam access in your browser settings."
 msgstr "Пераканайцеся, што дазволілі доступ да вэб-камеры ў наладах вашага браўзера."
 
-#: src/features/Plan/LessonStartModal.tsx:250
+#: src/features/Plan/LessonStartModal.tsx:251
 #. js-lingui-explicit-id
 msgid "Make sure your microphone is working properly."
 msgstr "Пераканайцеся, што ваш мікрафон працуе належным чынам."
 
-#: src/features/Plan/LessonStartModal.tsx:294
+#: src/features/Plan/LessonStartModal.tsx:295
 #. js-lingui-explicit-id
 msgid "Make sure your webcam is working properly."
 msgstr "Пераканайцеся, што ваша вэб-камера працуе належным чынам."
@@ -6026,12 +6037,12 @@ msgstr "Пераканайцеся, што ваша вэб-камера прац
 msgid "Malay Learning Plan"
 msgstr "План вучэння малайскай мовы"
 
-#: src/features/Settings/MyProfile.tsx:76
+#: src/features/Settings/MyProfile.tsx:87
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Кіруйце наладамі поўнага доступу"
 
-#: src/features/Settings/MyProfile.tsx:159
+#: src/features/Settings/MyProfile.tsx:170
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Кіруйце наладамі свайго профілю і правярайце свой прагрэс"
@@ -6167,14 +6178,14 @@ msgstr "Мікра-фронтэнды"
 msgid "Microphone Access"
 msgstr "Доступ да мікрафона"
 
-#: src/features/Plan/LessonStartModal.tsx:281
+#: src/features/Plan/LessonStartModal.tsx:282
 #. js-lingui-explicit-id
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr ""
 "Доступ да мікрафона забаронены. Калі ласка, уключыце яго ў наладах вашага "
 "браўзера."
 
-#: src/features/Plan/LessonStartModal.tsx:249
+#: src/features/Plan/LessonStartModal.tsx:250
 #. js-lingui-explicit-id
 msgid "Microphone Setup"
 msgstr "Налада мікрафона"
@@ -6260,7 +6271,7 @@ msgstr "Болей"
 msgid "More options"
 msgstr "Больш варыянтаў"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:410
+#: src/features/Dashboard/PlanDashboardCards.tsx:415
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Больш унікальных урокаў"
@@ -6325,7 +6336,7 @@ msgid "natural and not robotic"
 msgstr "прыродны і не робатычны"
 
 #: src/features/Header/NeedHelpModal.tsx:36
-#: src/features/Settings/MyProfile.tsx:92
+#: src/features/Settings/MyProfile.tsx:103
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Патрэбна дапамога?"
@@ -6833,7 +6844,7 @@ msgid "Payment failed! Please try again."
 msgstr "Аплата не выканана! Калі ласка, паспрабуйце зноў."
 
 #: src/features/Header/PaymentHistoryModal.tsx:59
-#: src/features/Settings/MyProfile.tsx:99
+#: src/features/Settings/MyProfile.tsx:110
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Гісторыя плацяжоў"
@@ -7556,7 +7567,7 @@ msgstr "Ацэнка"
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Conversation/ConversationCanvas.tsx:603
 #: src/features/Conversation/ConversationCanvas.tsx:857
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Перазапісаць"
@@ -7775,7 +7786,7 @@ msgstr ""
 "распрацоўку фронтэнда"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:306
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:310
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:220
 #: src/features/Survey/RecordUserAudioAnswer.tsx:161
 #. js-lingui-explicit-id
@@ -7879,14 +7890,14 @@ msgstr "Redis"
 msgid "Reflex"
 msgstr "Рэфлекс"
 
-#: src/features/Plan/LessonStartModal.tsx:419
-#: src/features/Plan/LessonStartModal.tsx:498
+#: src/features/Plan/LessonStartModal.tsx:420
+#: src/features/Plan/LessonStartModal.tsx:499
 #: src/features/Telegram/TgAppPage.tsx:183
 #. js-lingui-explicit-id
 msgid "Refresh"
 msgstr "Абнавіць"
 
-#: src/features/Settings/MyProfile.tsx:233
+#: src/features/Settings/MyProfile.tsx:244
 #. js-lingui-explicit-id
 msgid "Refund"
 msgstr "Вяртанне грошай"
@@ -7981,7 +7992,7 @@ msgstr "Вяртанне прадукту ў краму"
 msgid "Robot Thinking"
 msgstr "Робат думае"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:57
+#: src/features/Dashboard/PlanDashboardCards.tsx:60
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
@@ -8038,7 +8049,7 @@ msgstr "Прагледжванне ролевых гульняў"
 msgid "Routing"
 msgstr "Маршрутызацыя"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:59
+#: src/features/Dashboard/PlanDashboardCards.tsx:62
 #: src/features/Goal/Quiz/GoalReview.tsx:37
 #: src/features/Landing/PlanLandingBlock.tsx:281
 #: src/features/Usage/UsageStatsCards.tsx:75
@@ -8051,7 +8062,7 @@ msgstr "Правіла"
 msgid "Rule of the day"
 msgstr "Правіла дня"
 
-#: src/features/Plan/LessonStartModal.tsx:392
+#: src/features/Plan/LessonStartModal.tsx:393
 #. js-lingui-explicit-id
 msgid "Rules to Learn"
 msgstr "Правілы для вывучэння"
@@ -8144,12 +8155,21 @@ msgstr "Бачыце свае паляпшэнні і сачыце за сваі
 msgid "Select languages"
 msgstr "Выберыце мовы"
 
+#: src/features/Modal/GlobalModals.tsx:56
+#. js-lingui-explicit-id
+msgid ""
+"Select the voice your AI teacher will use during conversations. You can "
+"change this anytime."
+msgstr ""
+"Абярыце голас, які ваш AI настаўнік будзе выкарыстоўваць падчас размоў. Вы "
+"можаце змяніць гэта ў любую хвіліну."
+
 #: src/features/Game/GameMyAvatar.tsx:39
 #. js-lingui-explicit-id
 msgid "Select your game avatar"
 msgstr "Выберыце свой аватар у гульні"
 
-#: src/features/Settings/MyProfile.tsx:69
+#: src/features/Settings/MyProfile.tsx:72
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Выберыце ваш пераважны мову"
@@ -8345,7 +8365,7 @@ msgstr "Паказаць больш"
 msgid "Show More"
 msgstr "Паказаць больш"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:369
+#: src/features/Dashboard/PlanDashboardCards.tsx:374
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Паказаць больш урокаў"
@@ -8452,7 +8472,7 @@ msgstr ""
 msgid "Skip"
 msgstr "Прапусціць"
 
-#: src/features/Plan/LessonStartModal.tsx:342
+#: src/features/Plan/LessonStartModal.tsx:343
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "Прапусціць пакуль"
@@ -8530,7 +8550,7 @@ msgstr ""
 "Моцныя веды ASP.NET Core і EF Core. Некаторыя прабелы ў шаблонах "
 "устойлівасці і назіральнасці."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:104
+#: src/features/Dashboard/PlanDashboardCards.tsx:107
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "Неўдалася стварыць больш урокаў. Калі ласка, паспрабуйце яшчэ раз пазней."
@@ -8587,7 +8607,7 @@ msgid "Stars"
 msgstr "Зоркі"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/PlanDashboardCards.tsx:297
+#: src/features/Dashboard/PlanDashboardCards.tsx:300
 #: src/features/Goal/Quiz/GoalReview.tsx:156
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:295
@@ -8599,7 +8619,7 @@ msgstr "Зоркі"
 msgid "Start"
 msgstr "Пачаць"
 
-#: src/features/Dashboard/Dashboard.tsx:116
+#: src/features/Dashboard/Dashboard.tsx:118
 #. js-lingui-explicit-id
 msgid ""
 "Start a casual call to practice your communication skills. This is a "
@@ -8615,7 +8635,7 @@ msgstr ""
 msgid "Start a mock interview"
 msgstr "Пачаць імітацыйнае сумоўе"
 
-#: src/features/Plan/LessonStartModal.tsx:514
+#: src/features/Plan/LessonStartModal.tsx:515
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "Пачаць званок"
@@ -8636,7 +8656,7 @@ msgstr "Пачаць навучанне"
 msgid "Start Learning Now"
 msgstr "Пачаць навучанне зараз"
 
-#: src/features/Plan/LessonStartModal.tsx:511
+#: src/features/Plan/LessonStartModal.tsx:512
 #. js-lingui-explicit-id
 msgid "Start Lesson"
 msgstr "Пачаць ўрок"
@@ -8702,7 +8722,7 @@ msgstr "Пачніце свой тэставы інтэрв'ю"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Пачніце сваю падарожжу да вольных размоваў цяпер"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:186
+#: src/features/Dashboard/PlanDashboardCards.tsx:189
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Пачніце свой шлях да валодання"
@@ -8889,7 +8909,7 @@ msgstr ""
 "Моцныя веды React і TypeScript. Нязначныя прабелы ў адказах на пытанні па "
 "камунікацыі і лідэрстве."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:246
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Падаць"
@@ -9039,7 +9059,7 @@ msgstr ""
 msgid "Teacher"
 msgstr "Настаўнік"
 
-#: src/features/Plan/LessonStartModal.tsx:480
+#: src/features/Plan/LessonStartModal.tsx:481
 #. js-lingui-explicit-id
 msgid "Teacher Instructions"
 msgstr "Інструкцыі для настаўніка"
@@ -9398,7 +9418,7 @@ msgstr "Сачыце за прагрэсам вашай плавучасці"
 #: src/features/Conversation/ProcessUserInput.tsx:349
 #: src/features/Conversation/ProcessUserInput.tsx:358
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:220
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:224
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
 #. js-lingui-explicit-id
 msgid "Transcribing..."
@@ -9654,7 +9674,7 @@ msgstr "Праглядзець усе запісы"
 msgid "View your payment history"
 msgstr "Праглядзець гісторыю вашых плацяжоў"
 
-#: src/features/Settings/MyProfile.tsx:100
+#: src/features/Settings/MyProfile.tsx:111
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "Праглядзіце гісторыю вашых плацяжоў. Вяртанні сродкаў"
@@ -9847,7 +9867,7 @@ msgstr "Варшава"
 msgid "WCAG Standards"
 msgstr "Стандарты WCAG"
 
-#: src/features/Settings/MyProfile.tsx:243
+#: src/features/Settings/MyProfile.tsx:254
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Мы цанім Ваш водгук!"
@@ -9897,7 +9917,7 @@ msgstr ""
 msgid "We will speak freely"
 msgstr "Мы будзем казаць свабодна"
 
-#: src/features/Plan/LessonStartModal.tsx:513
+#: src/features/Plan/LessonStartModal.tsx:514
 #. js-lingui-explicit-id
 msgid "We're ready to begin!"
 msgstr "Мы гатовы пачаць!"
@@ -9927,7 +9947,7 @@ msgstr ""
 msgid "Webcam Feedback Preview"
 msgstr "Папярэдні прагляд зваротнай сувязі вэб-камеры"
 
-#: src/features/Plan/LessonStartModal.tsx:293
+#: src/features/Plan/LessonStartModal.tsx:294
 #. js-lingui-explicit-id
 msgid "Webcam Setup"
 msgstr "Наладка вэб-камеры"
@@ -10198,7 +10218,7 @@ msgstr ""
 msgid "Word Stats"
 msgstr "Статыстыка слоў"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:58
+#: src/features/Dashboard/PlanDashboardCards.tsx:61
 #: src/features/Goal/Quiz/GoalReview.tsx:36
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
@@ -10208,7 +10228,7 @@ msgstr "Статыстыка слоў"
 msgid "Words"
 msgstr "Словы"
 
-#: src/features/Plan/LessonStartModal.tsx:357
+#: src/features/Plan/LessonStartModal.tsx:358
 #. js-lingui-explicit-id
 msgid "Words to Learn"
 msgstr "Словы для вывучэння"
@@ -10653,6 +10673,11 @@ msgstr "Вашыя дасягненні"
 #. js-lingui-explicit-id
 msgid "Your AI speaking partner"
 msgstr "Ваш AI партнёр для размоў"
+
+#: src/features/Modal/GlobalModals.tsx:49
+#. js-lingui-explicit-id
+msgid "Your AI teacher voice:"
+msgstr "Ваш голас настаўніка штучнага інтэлекту:"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:374
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68

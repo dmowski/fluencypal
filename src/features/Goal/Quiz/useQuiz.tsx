@@ -55,6 +55,7 @@ type QuizStep =
   | "callMode"
   | "paidVsFree"
   | "writeWelcomeMessageInChat"
+  | "teacherSelection"
   | "goalReview";
 
 const stepsViews: QuizStep[] = [
@@ -67,6 +68,7 @@ const stepsViews: QuizStep[] = [
 
   "before_recordAbout",
   "recordAbout",
+  "teacherSelection",
 
   "before_recordAboutFollowUp",
   "recordAboutFollowUp",
