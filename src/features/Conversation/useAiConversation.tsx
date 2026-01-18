@@ -26,7 +26,7 @@ import { ConversationConfig, ConversationInstance } from "./ConversationInstance
 import { useTextAi } from "../Ai/useTextAi";
 import { initTextConversation } from "./ConversationInstance/textConversation";
 import { useConversationAudio } from "../Audio/useConversationAudio";
-import { getAiVoiceByVoice, voiceLearningPlanMap } from "./CallMode/voiceAvatar";
+import { getAiVoiceByVoice } from "./CallMode/voiceAvatar";
 
 const getVoiceInstructions = (voice: AiVoice): string => {
   const voiceAvatar = getAiVoiceByVoice(voice);

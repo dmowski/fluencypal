@@ -41,15 +41,3 @@ export const voiceAvatarMap: Record<AiVoice, AiAvatar> = {
 export const getAiVoiceByVoice = (voice?: AiVoice): AiAvatar => {
   return voice ? voiceAvatarMap[voice] : voiceAvatarMap.ash;
 };
-
-export const voiceLearningPlanMap: Record<PlanElementMode, AiVoice> = {
-  conversation: "shimmer",
-  words: "ash",
-  play: "shimmer",
-  rule: "ash",
-};
-
-export const getAiVoiceByPlanPlanElementMode = (mode: PlanElementMode): AiAvatar => {
-  const voice = voiceLearningPlanMap[mode];
-  return getAiVoiceByVoice(voice);
-};

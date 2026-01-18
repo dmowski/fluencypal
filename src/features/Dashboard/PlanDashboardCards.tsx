@@ -26,7 +26,7 @@ import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { ActiveLessonCard } from "../Plan/ActiveLessonCard";
 import VideocamIcon from "@mui/icons-material/Videocam";
-import { getAiVoiceByPlanPlanElementMode } from "../Conversation/CallMode/voiceAvatar";
+import { getAiVoiceByVoice } from "../Conversation/CallMode/voiceAvatar";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -295,7 +295,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             descriptionTop={plan.nextElement.description}
             descriptionBottom={plan.nextElement.subTitle}
             actionLabel={i18n._("Start")}
-            aiVideo={getAiVoiceByPlanPlanElementMode(plan.nextElement.mode)}
+            aiVideo={getAiVoiceByVoice(settings.userSettings?.teacherVoice || "shimmer")}
             startIcon={<VideocamIcon />}
             onAction={() => plan.openElementModal(nextElementId)}
           />
