@@ -11,7 +11,7 @@ export const SelectTeacher = ({
   selectedVoice,
   onSelectVoice,
 }: {
-  selectedVoice: AiVoice;
+  selectedVoice?: AiVoice | null;
   onSelectVoice: (voice: AiVoice) => void;
 }) => {
   const voices = Object.keys(voiceAvatarMap) as AiVoice[];

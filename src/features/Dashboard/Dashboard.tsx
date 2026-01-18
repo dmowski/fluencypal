@@ -155,34 +155,6 @@ export function Dashboard({ lang }: DashboardProps) {
             <>
               <MyProfile lang={lang} />
 
-              <Stack
-                sx={{
-                  gap: "30px",
-                  backgroundColor: "rgba(255, 255, 255, 0.04)",
-                  padding: "20px 20px 30px 20px",
-                  borderRadius: "16px",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                }}
-              >
-                <Stack>
-                  <Typography variant="h5">{i18n._("Your AI teacher voice:")}</Typography>
-                  <Typography
-                    sx={{
-                      opacity: 0.7,
-                    }}
-                    variant="body2"
-                  >
-                    {i18n._(
-                      "Select the voice your AI teacher will use during conversations. You can change this anytime."
-                    )}
-                  </Typography>
-                </Stack>
-                <SelectTeacher
-                  selectedVoice={settings.userSettings?.teacherVoice || "shimmer"}
-                  onSelectVoice={settings.setVoice}
-                />
-              </Stack>
-
               <UsageStatsCards />
 
               <Stack

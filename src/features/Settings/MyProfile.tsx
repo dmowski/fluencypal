@@ -10,6 +10,7 @@ import {
   LogOut,
   LucideProps,
   MessageCircleQuestionMark,
+  Speech,
   Star,
   Wallet,
 } from "lucide-react";
@@ -29,6 +30,7 @@ import { useRouter } from "next/navigation";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { GameMyAvatar } from "../Game/GameMyAvatar";
 import { GameMyUsername } from "../Game/GameMyUsername";
+import { useTeacherSettings } from "../Conversation/CallMode/useTeacherSettings";
 
 export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -36,6 +38,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
 
   const { i18n } = useLingui();
   const [isShowLogout, setIsShowLogout] = useState(true);
+  const teacherSettings = useTeacherSettings();
 
   useEffect(() => {
     const isTelegramApp = isTMA();
@@ -69,6 +72,14 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       subTitle: i18n._(`Select your preferred language`),
       icon: Languages,
       onClick: () => setIsShowModal(true),
+    },
+    {
+      title: i18n._(`AI Voice`),
+      subTitle: i18n._(`Choose the voice for your AI teacher`),
+      icon: Speech,
+      onClick: () => {
+        teacherSettings.openSettingsModal();
+      },
     },
 
     {
