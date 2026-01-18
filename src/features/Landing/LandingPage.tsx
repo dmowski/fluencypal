@@ -342,7 +342,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 },
 
                 {
-                  videoUrl: "/call/boy_1/talk.webm",
+                  videoUrl: "/call/ash/talk.webm",
                   bgColor: "rgb(169, 129, 255)",
 
                   title: i18n._("Practice"),

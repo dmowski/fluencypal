@@ -4,20 +4,20 @@ import { PlanElementMode } from "@/features/Plan/types";
 
 const voiceAvatarMap: Record<AiVoice, AvatarVideo> = {
   ash: {
-    sitVideoUrl: ["/call/boy_1/sit.webm"],
-    talkVideoUrl: ["/call/boy_1/talk.webm", "/call/boy_1/talk2.webm"],
+    sitVideoUrl: ["/call/ash/sit.webm"],
+    talkVideoUrl: ["/call/ash/talk.webm", "/call/ash/talk2.webm"],
   },
   shimmer: {
-    sitVideoUrl: ["/call/girl_2/sit.webm", "/call/girl_2/sit2.webm"],
-    talkVideoUrl: ["/call/girl_2/talk.webm", "/call/girl_2/talk2.webm"],
+    sitVideoUrl: ["/call/shimmer/sit.webm", "/call/shimmer/sit2.webm"],
+    talkVideoUrl: ["/call/shimmer/talk.webm", "/call/shimmer/talk2.webm"],
   },
   marin: {
-    sitVideoUrl: ["/call/girl_2/sit.webm", "/call/girl_2/sit2.webm"],
-    talkVideoUrl: ["/call/girl_2/talk.webm", "/call/girl_2/talk2.webm"],
+    sitVideoUrl: ["/call/shimmer/sit.webm", "/call/shimmer/sit2.webm"],
+    talkVideoUrl: ["/call/shimmer/talk.webm", "/call/shimmer/talk2.webm"],
   },
   verse: {
-    sitVideoUrl: ["/call/boy_1/sit.webm"],
-    talkVideoUrl: ["/call/boy_1/talk.webm", "/call/boy_1/talk2.webm"],
+    sitVideoUrl: ["/call/ash/sit.webm"],
+    talkVideoUrl: ["/call/ash/talk.webm", "/call/ash/talk2.webm"],
   },
 };
 
