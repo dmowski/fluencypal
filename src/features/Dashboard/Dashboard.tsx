@@ -137,14 +137,6 @@ export function Dashboard({ lang }: DashboardProps) {
                   >
                     {i18n._("Just to Talk")}
                   </Button>
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      opacity: 0.7,
-                    }}
-                  >
-                    {i18n._("The most advanced AI model to casually chat.")}
-                  </Typography>
                 </Stack>
               </Stack>
 
