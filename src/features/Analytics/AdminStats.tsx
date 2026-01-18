@@ -739,7 +739,7 @@ export function AdminStats() {
     return lastLogin && dayjs().diff(dayjs(lastLogin), "hour") < 24;
   });
 
-  const secondDayVisitors = users.filter((user) => {
+  const secondDayVisitors = todayUsers.filter((user) => {
     const createdAt = user.userData.createdAtIso;
     const lastLogin = user.userData.lastLoginAtDateTime;
 
@@ -751,18 +751,18 @@ export function AdminStats() {
     );
   });
 
-  const thirdAndMoreDayVisitors = users.filter((user) => {
+  const thirdAndMoreDayVisitors = todayUsers.filter((user) => {
     const createdAt = user.userData.createdAtIso;
     const lastLogin = user.userData.lastLoginAtDateTime;
     return createdAt && lastLogin && dayjs(lastLogin).diff(dayjs(createdAt), "hour") >= 48;
   });
 
-  const todayMessagesCount = users.reduce((acc, user) => {
+  const todayMessagesCount = todayUsers.reduce((acc, user) => {
     const todayMessages = user.conversationMeta.todayMessages || 0;
     return acc + todayMessages;
   }, 0);
 
-  const lastHourMessagesCount = users.reduce((acc, user) => {
+  const lastHourMessagesCount = todayUsers.reduce((acc, user) => {
     const lastHourMessages = user.conversationMeta.lastHourMessages || 0;
     return acc + lastHourMessages;
   }, 0);
@@ -839,16 +839,6 @@ export function AdminStats() {
                 <Typography className="value">{lastHourMessagesCount}</Typography>
                 <Typography align="center" variant="body2" className="label">
                   Last Hour Messages
-                </Typography>
-              </Stack>
-
-              <Stack
-                className={["stat-card", usersToShowMode === "all" ? "active" : ""].join(" ")}
-                onClick={() => setUsersToShowMode("all")}
-              >
-                <Typography className="value">{users.length}</Typography>
-                <Typography align="center" variant="body2" className="label">
-                  All
                 </Typography>
               </Stack>
 
