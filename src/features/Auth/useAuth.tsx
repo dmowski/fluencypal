@@ -203,6 +203,8 @@ function useProvideAuth(): AuthContext {
 
   const isAuthorized = !!userInfo?.uid && !errorAuth;
 
+  const isDev = userInfo?.email?.includes("dmowski") || false;
+
   useEffect(() => {
     if (!userInfo) {
       return;
@@ -213,7 +215,9 @@ function useProvideAuth(): AuthContext {
       email: userInfo?.email || "",
     });
 
-    acceptAnalytics();
+    if (!isDev) {
+      acceptAnalytics();
+    }
   }, [userInfo]);
 
   const logout = async (): Promise<void> => {
@@ -239,7 +243,7 @@ function useProvideAuth(): AuthContext {
     getToken,
     signInWithEmail,
 
-    isDev: userInfo?.email?.includes("dmowski") || false,
+    isDev: isDev,
   };
 }
 
