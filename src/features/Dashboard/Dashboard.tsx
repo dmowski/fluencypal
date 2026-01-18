@@ -114,7 +114,7 @@ export function Dashboard({ lang }: DashboardProps) {
                     }}
                   >
                     {i18n._(
-                      "Start a casual call to practice your conversation skills. It's a no-strings-attached conversation. Just in case you're feeling casual."
+                      "Start a casual call to practice your communication skills. This is a no-strings-attached conversation if you'd like to chat in a casual setting."
                     )}
                   </Typography>
                 </Stack>

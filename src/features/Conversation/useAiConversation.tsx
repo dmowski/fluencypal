@@ -36,7 +36,7 @@ const getConversationStarterMessagePrompt = (startMessage: string): string => {
     return "";
   }
   return `## Conversation Start
-Start the conversation with message like this: "${startMessage}".`;
+Start the conversation with message like this: ${startMessage}.`;
 };
 
 const teacherRules = `## Rules for speaking teacher
@@ -502,7 +502,7 @@ ${voiceInstructions}
         openerInfoPrompt = `Info about Student : ${userInfo}. 
 
 Ask the student to describe their day and try to cover new topics that used didn't mentioned before.
-Don't focus solely on one topic. Try to cover a variety of topics (Example ${potentialTopics}).
+Don't focus solely on one topic. Try to cover a variety of topics (Example\n${potentialTopics}).
   `;
         setIsInitializing(`Starting conversation...`);
       }
