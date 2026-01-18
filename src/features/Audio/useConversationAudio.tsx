@@ -12,7 +12,7 @@ import React, {
 import { useSettings } from "../Settings/useSettings";
 import { useAuth } from "../Auth/useAuth";
 import { sendTextToAudioRequest } from "@/app/api/textToAudio/sendTextToAudioRequest";
-import { TextToAudioVoice } from "@/app/api/textToAudio/types";
+import { AiVoice } from "@/common/ai";
 
 /**
  * What this gives you:
@@ -30,7 +30,7 @@ import { TextToAudioVoice } from "@/app/api/textToAudio/types";
 
 type SpeakOptions = {
   instructions: string;
-  voice: TextToAudioVoice;
+  voice: AiVoice;
   /**
    * Optional: if you already have a URL, you can pass it and skip TTS generation.
    */
@@ -229,7 +229,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
   }
 
   const getAudioUrl = useCallback(
-    async (text: string, instructions: string, voice: TextToAudioVoice) => {
+    async (text: string, instructions: string, voice: AiVoice) => {
       const languageCode = settings.languageCode;
       if (!languageCode) {
         throw new Error("Language is not set | useProvideConversationAudio.getAudioUrl");

@@ -282,7 +282,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                 {!helpMessage ? loadingMessage : helpMessage}
               </Markdown>
               {helpMessage && (
-                <AudioPlayIcon text={helpMessage} instructions="Calm and clear" voice={"coral"} />
+                <AudioPlayIcon text={helpMessage} instructions="Calm and clear" voice={"shimmer"} />
               )}
             </Stack>
           </Stack>

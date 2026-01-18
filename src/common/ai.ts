@@ -11,7 +11,7 @@ export type TextAiModel = "gpt-4o" | "gpt-4o-mini";
 
 export type TranscriptAiModel = "gpt-4o-transcribe" | "gpt-4o-mini-transcribe";
 
-export type AiVoice = "alloy" | "ash" | "ballad" | "coral" | "echo" | "sage" | "shimmer" | "verse";
+export type AiVoice = "ash" | "shimmer" | "marin" | "verse";
 
 export type TextToAudioModal = "gpt-4o-mini-tts";
 

@@ -377,7 +377,7 @@ export const ProcessUserInput = ({
               <AudioPlayIcon
                 text={correctedMessage}
                 instructions="Calm and clear"
-                voice={"coral"}
+                voice={"shimmer"}
               />
               <IconButton
                 onClick={onTranslateCorrectedMessage}

@@ -3,10 +3,10 @@ import { createContext, useContext, ReactNode, JSX } from "react";
 import { useSettings } from "../Settings/useSettings";
 import { useAuth } from "../Auth/useAuth";
 import { sendTextToAudioRequest } from "@/app/api/textToAudio/sendTextToAudioRequest";
-import { TextToAudioVoice } from "@/app/api/textToAudio/types";
+import { AiVoice } from "@/common/ai";
 
 interface AudioContextType {
-  getAudioUrl: (text: string, instructions: string, voice: TextToAudioVoice) => Promise<string>;
+  getAudioUrl: (text: string, instructions: string, voice: AiVoice) => Promise<string>;
 }
 
 const AudioContext = createContext<AudioContextType | null>(null);
@@ -15,7 +15,7 @@ function useProvideAudio(): AudioContextType {
   const settings = useSettings();
   const auth = useAuth();
 
-  const getAudioUrl = async (text: string, instructions: string, voice: TextToAudioVoice) => {
+  const getAudioUrl = async (text: string, instructions: string, voice: AiVoice) => {
     const languageCode = settings.languageCode;
     if (!languageCode) {
       throw new Error("Language is not set | useProvideAudio.getAudioUrl");

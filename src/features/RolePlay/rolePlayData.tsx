@@ -114,7 +114,7 @@ In this scenario, you’ll step into the role of someone meeting a new acquainta
         "Two people casually chatting at a coffee shop or park, both smiling and engaged in friendly conversation, while others are in the background enjoying the atmosphere.",
       imageSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c.webp",
       videoSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c_1.mp4",
-      voice: "sage",
+      voice: "marin",
     },
     {
       id: "job-interview",
@@ -206,7 +206,7 @@ Keep asking user different aspects of the job.
         "A professional recruiter sitting at a desk, reviewing a candidate's resume, while the candidate sits across, looking slightly nervous but engaged in conversation.",
       imageSrc: "/role/07d20442-758f-42a9-81b2-3dc7bf4fe248.webp",
       videoSrc: "/role/090f7de1-91bd-4210-a99c-4eb077c9efd7_1.mp4",
-      voice: "alloy",
+      voice: "marin",
     },
 
     /*{
@@ -343,7 +343,7 @@ In this scenario, you’ll step into the role of a traveler looking to buy a tic
       illustrationDescription:
         "A busy train station with a ticket booth. A traveler with a backpack is talking to a ticket agent behind the counter, while a departure board shows various destinations.",
       imageSrc: "/role/36b7ea13-f429-46ae-a6c7-19d3206ab6b0.webp",
-      voice: "echo",
+      voice: "ash",
     },
 
     {
@@ -438,7 +438,7 @@ In this scenario, you’ll portray a fellow dog owner meeting an AI-driven chara
       illustrationDescription:
         "Two dog owners in a green park setting, each with a leashed dog, smiling and engaged in casual conversation while their dogs sniff around.",
       imageSrc: "/role/20897efe-6b4d-4f97-b8e9-164e35381d37.webp",
-      voice: "sage",
+      voice: "shimmer",
     },
     {
       id: "hotel-check-in",
@@ -603,7 +603,7 @@ You’ll step into the role of a customer returning a product, while the AI acts
       illustrationDescription:
         "A customer holding a shopping bag, talking to a cashier at the returns counter, explaining why they need to return an item while the cashier processes the request.",
       imageSrc: "/role/2ac841c8-3569-45e0-a8aa-fe98e15ea5e2.webp",
-      voice: "sage",
+      voice: "shimmer",
     },
     {
       id: "meeting-with-psychologist",
@@ -654,7 +654,7 @@ Note: This is a role-play scenario intended to practice speaking on mental healt
       illustrationDescription:
         "A comfortable, welcoming office with a psychologist listening attentively to a client seated across from them, expressing themselves in a supportive atmosphere.",
       imageSrc: "/role/ceb0e1b7-9c34-47c0-ae09-4086fb734da4.webp",
-      voice: "sage",
+      voice: "shimmer",
 
       contentPage:
         i18n._(`Discuss mental health topics in a comfortable, supportive setting. This role-play scenario provides a safe space to express yourself clearly, explore sensitive issues, and practice discussing mental health openly.
@@ -711,7 +711,7 @@ You’ll outline your own role-play by providing a brief description of the sett
       illustrationDescription:
         "A customer holding a shopping bag, talking to a cashier at the returns counter, explaining why they need to return an item while the cashier processes the request.",
       imageSrc: "/role/1ca9343e-839f-4b49-ac1f-9c7bfdea272e.webp",
-      voice: "sage",
+      voice: "shimmer",
     },
   ];
 

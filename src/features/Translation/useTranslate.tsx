@@ -150,7 +150,7 @@ export const useTranslate = () => {
                 <AudioPlayIcon
                   text={translatedText?.source || ""}
                   instructions="Calm and clear"
-                  voice={"coral"}
+                  voice={"shimmer"}
                 />
               </Stack>
 

@@ -317,7 +317,7 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
                     <AudioPlayIcon
                       text={answerCorrectedMessage}
                       instructions="Calm and clear"
-                      voice={"coral"}
+                      voice={"shimmer"}
                     />
                   </Stack>
                 </Stack>

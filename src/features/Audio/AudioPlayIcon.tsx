@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
 import { IconButton } from "@mui/material";
-import { TextToAudioVoice } from "@/app/api/textToAudio/types";
 import { Loader, Pause, Volume2 } from "lucide-react";
 import { useConversationAudio } from "./useConversationAudio";
+import { AiVoice } from "@/common/ai";
 
 export interface AudioPlayIconProps {
   text: string;
-  voice: TextToAudioVoice;
+  voice: AiVoice;
   instructions: string;
   borderColor?: string;
 }
