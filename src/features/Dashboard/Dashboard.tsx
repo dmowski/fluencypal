@@ -1,6 +1,6 @@
 "use client";
 
-import { Stack } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 
 import { ProgressBoard } from "./Progress/ProgressBoard";
 import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
@@ -17,15 +17,46 @@ import { DailyQuestionBadge } from "../Game/DailyQuestion/DailyQuestionBadge";
 import { BattleSection } from "../Game/Battle/BattleSection";
 import { usePlan } from "../Plan/usePlan";
 import { LessonStartModal } from "../Plan/LessonStartModal";
+import { useLingui } from "@lingui/react";
+import { Origami } from "lucide-react";
+import { useAiConversation } from "../Conversation/useAiConversation";
+import { useState } from "react";
+import { useSettings } from "../Settings/useSettings";
+import { useAccess } from "../Usage/useAccess";
+import { useUsage } from "../Usage/useUsage";
 
 interface DashboardProps {
   lang: SupportedLanguage;
 }
+
 export function Dashboard({ lang }: DashboardProps) {
   const appNavigation = useAppNavigation();
   const IS_SHOW_DAILY_QUESTION_BADGE = true;
 
   const plan = usePlan();
+  const { i18n } = useLingui();
+
+  const conversation = useAiConversation();
+  const [isCallStarting, setIsCallStarting] = useState(false);
+  const settings = useSettings();
+  const access = useAccess();
+  const usage = useUsage();
+
+  const startJustTalk = async () => {
+    const isLimited = !access.isFullAppAccess;
+
+    if (isLimited) {
+      usage.togglePaymentModal(true);
+      return;
+    }
+
+    setIsCallStarting(true);
+    await settings.setConversationMode("call");
+    conversation.startConversation({
+      conversationMode: "call",
+      mode: "talk",
+    });
+  };
 
   return (
     <>
@@ -59,6 +90,64 @@ export function Dashboard({ lang }: DashboardProps) {
         >
           {appNavigation.currentPage === "home" && (
             <>
+              <Stack
+                sx={{
+                  marginBottom: "20px",
+                  alignItems: "flex-start",
+                  gap: "20px",
+
+                  width: "100%",
+                  borderRadius: "16px",
+                  padding: "20px",
+                  backgroundColor: "rgba(255, 255, 255, 0.04)",
+                  "@media (max-width:600px)": {
+                    borderRadius: "0px",
+                    padding: "20px 10px",
+                  },
+                }}
+              >
+                <Stack>
+                  <Typography variant="h6">{i18n._("Conversation with AI")}</Typography>
+                  <Typography
+                    sx={{
+                      opacity: 0.7,
+                    }}
+                  >
+                    {i18n._(
+                      "Start a casual call to practice your conversation skills. It's a no-strings-attached conversation. Just in case you're feeling casual."
+                    )}
+                  </Typography>
+                </Stack>
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: "15px",
+                  }}
+                >
+                  <Button
+                    color="secondary"
+                    endIcon={<Origami />}
+                    onClick={startJustTalk}
+                    disabled={isCallStarting}
+                    variant="contained"
+                    sx={{
+                      padding: "10px 30px",
+                    }}
+                  >
+                    {i18n._("Just to Talk")}
+                  </Button>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      opacity: 0.7,
+                    }}
+                  >
+                    {i18n._("The most advanced AI model to casually chat.")}
+                  </Typography>
+                </Stack>
+              </Stack>
+
               {IS_SHOW_DAILY_QUESTION_BADGE && <DailyQuestionBadge />}
               {!IS_SHOW_DAILY_QUESTION_BADGE && <GameBadge />}
               <PlanDashboardCards lang={lang} />

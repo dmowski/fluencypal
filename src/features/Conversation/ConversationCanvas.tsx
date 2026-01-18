@@ -97,6 +97,7 @@ interface ConversationCanvasProps {
   lessonPlanAnalysis: LessonPlanAnalysis | null;
 
   openNextLesson: () => void;
+  isRealTimeConversation: boolean;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -139,6 +140,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
   lessonPlanAnalysis,
   openNextLesson,
+  isRealTimeConversation,
 }) => {
   const { i18n } = useLingui();
   const isChatMode = conversationMode === "chat";
@@ -345,6 +347,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
           onLimitedClick={onLimitedClick}
           onSubmitTranscription={addUserMessage}
           isCompletedLesson={isCompletedLesson}
+          isRealTimeConversation={isRealTimeConversation}
           onShowAnalyzeConversationModal={() => {
             toggleConversationMode("record");
             showAnalyzeConversationModal();

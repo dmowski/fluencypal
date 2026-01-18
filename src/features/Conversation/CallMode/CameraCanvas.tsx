@@ -38,6 +38,7 @@ export const CameraCanvas = ({
   isCompletedLesson,
   onShowAnalyzeConversationModal,
   lessonPlanAnalysis,
+  isRealTimeConversation,
 }: {
   conversation: ChatMessage[];
   stopCallMode: () => void;
@@ -59,6 +60,8 @@ export const CameraCanvas = ({
   onShowAnalyzeConversationModal: () => void;
 
   lessonPlanAnalysis: LessonPlanAnalysis | null;
+
+  isRealTimeConversation: boolean;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -260,6 +263,7 @@ export const CameraCanvas = ({
           <CallButtons
             isMuted={isMuted}
             setIsMuted={setIsMuted}
+            isRealTimeConversation={isRealTimeConversation}
             isWebCamEnabled={isWebCamEnabled}
             toggleWebCam={(isToggleOn: boolean) => {
               if (isToggleOn) {

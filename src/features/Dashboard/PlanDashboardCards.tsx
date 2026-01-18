@@ -119,25 +119,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
   return (
     <Stack gap="20px">
-      {plan.nextElement && nextElementId && (
-        <Stack
-          sx={{
-            paddingBottom: "50px",
-            marginTop: `-30px`,
-          }}
-        >
-          <ActiveLessonCard
-            subTitle={i18n._("Next Lesson")}
-            title={plan.nextElement.title}
-            descriptionTop={plan.nextElement.description}
-            descriptionBottom={plan.nextElement.subTitle}
-            actionLabel={i18n._("Join")}
-            aiVideo={getAiVoiceByPlanPlanElementMode(plan.nextElement.mode)}
-            startIcon={<VideocamIcon />}
-            onAction={() => plan.openElementModal(nextElementId)}
-          />
-        </Stack>
-      )}
       <Stack
         sx={{
           display: "grid",
@@ -300,6 +281,27 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           </Stack>
         </Stack>
       </Stack>
+
+      {plan.nextElement && nextElementId && (
+        <Stack
+          sx={{
+            paddingBottom: "50px",
+            gap: "0px",
+          }}
+        >
+          <ActiveLessonCard
+            subTitle={i18n._("Current Lesson")}
+            title={plan.nextElement.title}
+            descriptionTop={plan.nextElement.description}
+            descriptionBottom={plan.nextElement.subTitle}
+            actionLabel={i18n._("Start")}
+            aiVideo={getAiVoiceByPlanPlanElementMode(plan.nextElement.mode)}
+            startIcon={<VideocamIcon />}
+            onAction={() => plan.openElementModal(nextElementId)}
+          />
+        </Stack>
+      )}
+
       {isGoalSet && plan.activeGoal ? (
         <Stack
           sx={{

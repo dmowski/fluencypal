@@ -660,7 +660,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 `;
       }
 
-      const initConversation = initTextConversation;
+      const isUseRtc = input.mode === "talk";
+      const initConversation = isUseRtc ? initWebRtcConversation : initTextConversation;
 
       const conversation = await initConversation({
         ...conversationConfig,

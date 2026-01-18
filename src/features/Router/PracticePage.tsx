@@ -91,6 +91,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   return (
     <Stack>
       <ConversationCanvas
+        isRealTimeConversation={aiConversation.currentMode === "talk"}
         pointsEarned={conversationAnalysis.gamePointsEarned}
         analyzeConversation={conversationAnalysis.analyzeConversation}
         conversationAnalysisResult={conversationAnalysis.conversationAnalysis}

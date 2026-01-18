@@ -7,7 +7,7 @@ import { Button, CircularProgress, IconButton, Stack, Typography } from "@mui/ma
 import { useLingui } from "@lingui/react";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import { CircleQuestionMark, Trophy } from "lucide-react";
+import { Trophy } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { CustomModal } from "@/features/uiKit/Modal/CustomModal";
 import { FeatureBlocker } from "@/features/Usage/FeatureBlocker";
@@ -20,64 +20,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import DoneIcon from "@mui/icons-material/Done";
 import { useLessonPlan } from "@/features/LessonPlan/useLessonPlan";
 import { useVadAudioRecorder } from "@/features/Audio/useVadAudioRecorder";
-
-export const CallButton = ({
-  label,
-  onClick,
-  activeButton,
-  inactiveButton,
-  isActive,
-  isLocked,
-}: {
-  label: string;
-  onClick: () => void;
-  activeButton: React.ReactNode;
-  inactiveButton: React.ReactNode;
-  isActive: boolean;
-  isLocked?: boolean;
-}) => {
-  return (
-    <Stack
-      sx={{
-        position: "relative",
-      }}
-    >
-      <IconButton
-        sx={{
-          backgroundColor: isActive ? "rgba(100, 100, 100, 0.4)" : "rgb(250 222 220)",
-          color: isActive ? "#fff" : "#222",
-          ":hover": {
-            backgroundColor: isActive ? "rgba(100, 100, 100, 0.2)" : "rgba(250, 222, 220, 0.8)",
-          },
-        }}
-        size="large"
-        onClick={() => onClick()}
-        title={label}
-      >
-        {isActive ? activeButton : inactiveButton}
-      </IconButton>
-      {isLocked && (
-        <Stack
-          sx={{
-            position: "absolute",
-            bottom: "0px",
-            right: "0px",
-            backgroundColor: "rgba(0, 0, 0, 0.9)",
-            borderRadius: "100px",
-            padding: "0px",
-          }}
-        >
-          <CircleQuestionMark
-            size={"17px"}
-            style={{
-              color: "rgba(115, 178, 255, 0.9)",
-            }}
-          />
-        </Stack>
-      )}
-    </Stack>
-  );
-};
+import { CallButton } from "./CallButton";
 
 export const CallButtons = ({
   isMuted,
@@ -99,6 +42,7 @@ export const CallButtons = ({
 
   lessonPlanAnalysis,
   onShowAnalyzeConversationModal,
+  isRealTimeConversation,
 }: {
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
@@ -118,6 +62,8 @@ export const CallButtons = ({
 
   lessonPlanAnalysis: LessonPlanAnalysis | null;
   onShowAnalyzeConversationModal: () => void;
+
+  isRealTimeConversation: boolean;
 }) => {
   const { i18n } = useLingui();
 
@@ -392,7 +338,7 @@ export const CallButtons = ({
             </>
           ) : (
             <>
-              {IS_USE_VAD ? (
+              {IS_USE_VAD && (
                 <CallButton
                   activeButton={
                     <Stack
@@ -447,7 +393,19 @@ export const CallButtons = ({
                   label={i18n._("Record Message")}
                   onClick={toggleVad}
                 />
-              ) : (
+              )}
+
+              {isRealTimeConversation && (
+                <CallButton
+                  activeButton={<MicIcon />}
+                  inactiveButton={<MicOffIcon />}
+                  isActive={isMuted === false}
+                  label={i18n._("Record Message")}
+                  onClick={() => setIsMuted(false)}
+                />
+              )}
+
+              {!isRealTimeConversation && (
                 <CallButton
                   activeButton={<MicIcon />}
                   inactiveButton={<MicOffIcon />}
