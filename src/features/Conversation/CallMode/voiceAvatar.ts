@@ -3,21 +3,27 @@ import { AvatarVideo } from "./types";
 import { PlanElementMode } from "@/features/Plan/types";
 
 const voiceAvatarMap: Record<AiVoice, AvatarVideo> = {
+  // man
   ash: {
     sitVideoUrl: ["/call/ash/sit.webm"],
     talkVideoUrl: ["/call/ash/talk.webm", "/call/ash/talk2.webm"],
   },
+  // girl
   shimmer: {
     sitVideoUrl: ["/call/shimmer/sit.webm", "/call/shimmer/sit2.webm"],
     talkVideoUrl: ["/call/shimmer/talk.webm", "/call/shimmer/talk2.webm"],
   },
+
+  // girl
   marin: {
-    sitVideoUrl: ["/call/shimmer/sit.webm", "/call/shimmer/sit2.webm"],
-    talkVideoUrl: ["/call/shimmer/talk.webm", "/call/shimmer/talk2.webm"],
+    sitVideoUrl: ["/call/marin/sit.webm"],
+    talkVideoUrl: ["/call/marin/talk.webm"],
   },
+
+  // man
   verse: {
     sitVideoUrl: ["/call/ash/sit.webm"],
-    talkVideoUrl: ["/call/ash/talk.webm", "/call/ash/talk2.webm"],
+    talkVideoUrl: ["/call/ash/talk.webm"],
   },
 };
 
