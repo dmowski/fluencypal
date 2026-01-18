@@ -22,7 +22,7 @@ export const SelectTeacher = ({
         width: "100%",
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
-        aspectRatio: "1.5 / 1",
+        aspectRatio: "4 / 3",
         gap: "15px",
       }}
     >
@@ -67,8 +67,8 @@ export const AvatarCard = ({
         sx={{
           boxShadow: isSelected
             ? "0px 0px 0px 4px rgba(0, 0, 0, 1), 0px 0px 0px 7px rgba(0, 185, 252, 1)"
-            : "0px 0px 0px 1px rgb(51, 51, 51)",
-          borderRadius: "3px",
+            : "0px 0px 0px 1px rgb(51, 51, 51, 0)",
+          borderRadius: isSelected ? "3px" : 0,
           overflow: "hidden",
           cursor: "pointer",
           width: "100%",
