@@ -425,7 +425,7 @@ msgstr "أضف رداً"
 msgid "Add Comment"
 msgstr "إضافة تعليق"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:263
+#: src/features/Dashboard/PlanDashboardCards.tsx:244
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "إضافة هدف جديد"
@@ -1691,6 +1691,13 @@ msgstr "ممارسة المحادثة"
 msgid "Conversation preparation"
 msgstr "إعداد المحادثة"
 
+#: src/features/Dashboard/Dashboard.tsx:83
+#. js-lingui-explicit-id
+msgid "Conversation with AI"
+msgstr ""
+"plaintext\n"
+"محادثة مع الذكاء الاصطناعي\n"
+
 #: src/features/SEO/metadata.ts:267
 #. js-lingui-explicit-id
 msgid "Conversational English Practice"
@@ -1853,6 +1860,11 @@ msgstr "مقابلة مطور سي شارب"
 #. js-lingui-explicit-id
 msgid "Current Balance of AI usage"
 msgstr "الرصيد الحالي لاستخدام الذكاء الصناعي"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:293
+#. js-lingui-explicit-id
+msgid "Current Lesson"
+msgstr "الدرس الحالي"
 
 #: src/features/RolePlay/rolePlayData.tsx:680
 #: src/features/RolePlay/rolePlayData.tsx:707
@@ -2018,7 +2030,7 @@ msgstr "حذف الحساب"
 msgid "Delete account (Total)"
 msgstr "حذف الحساب (كليًا)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:441
+#: src/features/Dashboard/PlanDashboardCards.tsx:443
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "حذف الهدف الحالي"
@@ -3460,17 +3472,17 @@ msgstr "لعبة"
 msgid "Game-based practice"
 msgstr "ممارسة مبنية على الألعاب"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:416
+#: src/features/Dashboard/PlanDashboardCards.tsx:418
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "توليد المزيد من الدروس لتحقيق هدفك بشكل أسرع."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:458
+#: src/features/Dashboard/PlanDashboardCards.tsx:460
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "قم بإنشاء دروس فريدة أكثر"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:457
+#: src/features/Dashboard/PlanDashboardCards.tsx:459
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "جار الإنشاء..."
@@ -3725,8 +3737,8 @@ msgid "Go to the main page"
 msgstr "اذهب إلى الصفحة الرئيسية"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:204
-#: src/features/Dashboard/PlanDashboardCards.tsx:412
+#: src/features/Dashboard/PlanDashboardCards.tsx:185
+#: src/features/Dashboard/PlanDashboardCards.tsx:414
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "هدف"
@@ -4852,7 +4864,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "خلال أقل من 5 دقائق، ستحصل على:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:468
+#: src/features/Dashboard/PlanDashboardCards.tsx:470
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "لكي تتمكن من إنشاء المزيد من الدروس، يجب عليك إتمام ثلاث دروس على الأقل"
@@ -5452,7 +5464,6 @@ msgid "job interview tips"
 msgstr "نصائح المقابلة الوظيفية"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/Dashboard/PlanDashboardCards.tsx:134
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "انضم"
@@ -5498,6 +5509,11 @@ msgstr "مقابلة مبتدئة لواجهة المستخدم الأمامية
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "فقط تحدث"
+
+#: src/features/Dashboard/Dashboard.tsx:108
+#. js-lingui-explicit-id
+msgid "Just to Talk"
+msgstr "فقط للدردشة"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:165
 #. js-lingui-explicit-id
@@ -5682,7 +5698,7 @@ msgstr "تعلم كيفية وصف الأعراض وطلب النصيحة الط
 msgid "Learning Blog"
 msgstr "مدونة التعلم"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:181
+#: src/features/Dashboard/PlanDashboardCards.tsx:162
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "خطة التعلم"
@@ -6080,7 +6096,7 @@ msgstr "أكثر"
 msgid "More options"
 msgstr "المزيد من الخيارات"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:408
+#: src/features/Dashboard/PlanDashboardCards.tsx:410
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "دروس أكثر تميزاً"
@@ -6211,7 +6227,6 @@ msgid "Next"
 msgstr "التالي"
 
 #: src/features/Conversation/ConversationReviewModal.tsx:168
-#: src/features/Dashboard/PlanDashboardCards.tsx:130
 #. js-lingui-explicit-id
 msgid "Next Lesson"
 msgstr ""
@@ -8134,7 +8149,7 @@ msgstr "أظهر المزيد"
 msgid "Show More"
 msgstr "عرض المزيد"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:367
+#: src/features/Dashboard/PlanDashboardCards.tsx:369
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr ""
@@ -8372,6 +8387,7 @@ msgid "Stars"
 msgstr "النجوم"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
+#: src/features/Dashboard/PlanDashboardCards.tsx:297
 #: src/features/Goal/Quiz/GoalReview.tsx:156
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:295
@@ -8382,6 +8398,15 @@ msgstr "النجوم"
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "ابدأ"
+
+#: src/features/Dashboard/Dashboard.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"Start a casual call to practice your conversation skills. It's a "
+"no-strings-attached conversation. Just in case you're feeling casual."
+msgstr ""
+"ابدأ محادثة غير رسمية لممارسة مهاراتك في المحادثة. إنها محادثة بدون أي "
+"التزامات. فقط في حال كنت تشعر بالرغبة في الحديث بشكل غير رسمي."
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:45
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:45
@@ -8476,7 +8501,7 @@ msgstr "ابدأ اختبار المقابلة الخاص بك"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "ابدأ رحلتك نحو المحادثات الطليقة الآن"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:205
+#: src/features/Dashboard/PlanDashboardCards.tsx:186
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "ابدأ رحلتك نحو الطلاقة"
@@ -10541,6 +10566,38 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/Dashboard/Dashboard.tsx:109
+#. js-lingui-explicit-id
+#~ msgid "Conversation without obligations. Just in case you want to chat."
+#~ msgstr ""
+#~ "\n"
+#~ "محادثة بلا التزامات. فقط في حال رغبت في الدردشة.\n"
+
+#: src/features/Dashboard/Dashboard.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Start a random call to practice your speaking skills"
+#~ msgstr "ابدأ مكالمة عشوائية لتحسين مهاراتك في التحدث"
+
+#: src/features/Dashboard/Dashboard.tsx:103
+#. js-lingui-explicit-id
+#~ msgid "Just Talk"
+#~ msgstr "فقط تحدث"
+
+#: src/features/Dashboard/Dashboard.tsx:92
+#. js-lingui-explicit-id
+#~ msgid "Start a random video call to practice your speaking skills"
+#~ msgstr "ابدأ مكالمة فيديو عشوائية لممارسة مهارات التحدث لديك"
+
+#: src/features/Dashboard/Dashboard.tsx:86
+#. js-lingui-explicit-id
+#~ msgid "Conversation with stranger"
+#~ msgstr "محادثة مع غريب"
+
+#: src/features/Dashboard/Dashboard.tsx:92
+#. js-lingui-explicit-id
+#~ msgid "Start your practice by clicking the button below!"
+#~ msgstr "ابدأ ممارستك بالنقر على الزر أدناه!"
 
 #: src/features/Usage/FeatureBlocker.tsx:114
 #. js-lingui-explicit-id

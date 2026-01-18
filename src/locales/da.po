@@ -426,7 +426,7 @@ msgstr "Tilføj et svar"
 msgid "Add Comment"
 msgstr "Tilføj Kommentar"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:263
+#: src/features/Dashboard/PlanDashboardCards.tsx:244
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "Tilføj nyt mål"
@@ -1705,6 +1705,11 @@ msgstr "Samtalepraksis"
 msgid "Conversation preparation"
 msgstr "Samtaleforberedelse"
 
+#: src/features/Dashboard/Dashboard.tsx:83
+#. js-lingui-explicit-id
+msgid "Conversation with AI"
+msgstr "Samtale med AI"
+
 #: src/features/SEO/metadata.ts:267
 #. js-lingui-explicit-id
 msgid "Conversational English Practice"
@@ -1869,6 +1874,11 @@ msgstr "csharp udvikler interview"
 #. js-lingui-explicit-id
 msgid "Current Balance of AI usage"
 msgstr "Nuværende Saldo af AI brug"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:293
+#. js-lingui-explicit-id
+msgid "Current Lesson"
+msgstr "Nuværende Lektion"
 
 #: src/features/RolePlay/rolePlayData.tsx:680
 #: src/features/RolePlay/rolePlayData.tsx:707
@@ -2035,7 +2045,7 @@ msgstr "Slet konto"
 msgid "Delete account (Total)"
 msgstr "Slet konto (Total)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:441
+#: src/features/Dashboard/PlanDashboardCards.tsx:443
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Slet nuværende mål"
@@ -3496,17 +3506,17 @@ msgstr "Spil"
 msgid "Game-based practice"
 msgstr "Spilbaseret praksis"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:416
+#: src/features/Dashboard/PlanDashboardCards.tsx:418
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "Generer flere lektioner for at nå dit mål hurtigere."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:458
+#: src/features/Dashboard/PlanDashboardCards.tsx:460
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Generer flere unikke lektioner"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:457
+#: src/features/Dashboard/PlanDashboardCards.tsx:459
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Genererer..."
@@ -3767,8 +3777,8 @@ msgid "Go to the main page"
 msgstr "Gå til hovedsiden"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:204
-#: src/features/Dashboard/PlanDashboardCards.tsx:412
+#: src/features/Dashboard/PlanDashboardCards.tsx:185
+#: src/features/Dashboard/PlanDashboardCards.tsx:414
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Mål"
@@ -4940,7 +4950,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "Inden for mindre end 5 minutter får du:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:468
+#: src/features/Dashboard/PlanDashboardCards.tsx:470
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "For at generere flere lektioner skal du gennemføre mindst 3 lektioner"
@@ -5546,7 +5556,6 @@ msgid "job interview tips"
 msgstr "jobinterview tips"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/Dashboard/PlanDashboardCards.tsx:134
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "Tilmeld dig"
@@ -5594,6 +5603,11 @@ msgstr "junior frontend interview"
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "Bare tal"
+
+#: src/features/Dashboard/Dashboard.tsx:108
+#. js-lingui-explicit-id
+msgid "Just to Talk"
+msgstr "Bare for at tale"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:165
 #. js-lingui-explicit-id
@@ -5782,7 +5796,7 @@ msgstr "Lær at beskrive symptomer og anmode om medicinsk rådgivning effektivt"
 msgid "Learning Blog"
 msgstr "Læringsblog"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:181
+#: src/features/Dashboard/PlanDashboardCards.tsx:162
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Læringsplan"
@@ -6184,7 +6198,7 @@ msgstr "Mere"
 msgid "More options"
 msgstr "Flere muligheder"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:408
+#: src/features/Dashboard/PlanDashboardCards.tsx:410
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Flere unikke lektioner"
@@ -6320,7 +6334,6 @@ msgid "Next"
 msgstr "Næste"
 
 #: src/features/Conversation/ConversationReviewModal.tsx:168
-#: src/features/Dashboard/PlanDashboardCards.tsx:130
 #. js-lingui-explicit-id
 msgid "Next Lesson"
 msgstr "Næste Lektion"
@@ -8246,7 +8259,7 @@ msgstr "Vis flere"
 msgid "Show More"
 msgstr "Vis Mere"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:367
+#: src/features/Dashboard/PlanDashboardCards.tsx:369
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Vis flere lektioner"
@@ -8485,6 +8498,7 @@ msgid "Stars"
 msgstr "Stjerner"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
+#: src/features/Dashboard/PlanDashboardCards.tsx:297
 #: src/features/Goal/Quiz/GoalReview.tsx:156
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:295
@@ -8495,6 +8509,15 @@ msgstr "Stjerner"
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Start"
+
+#: src/features/Dashboard/Dashboard.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"Start a casual call to practice your conversation skills. It's a "
+"no-strings-attached conversation. Just in case you're feeling casual."
+msgstr ""
+"Start en afslappet samtale for at øve dine samtalefærdigheder. Det er en "
+"uforpligtende samtale. Bare hvis du føler dig afslappet."
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:45
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:45
@@ -8589,7 +8612,7 @@ msgstr "Start din interviewtest"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Start Din Rejse til Flydende Samtaler Nu"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:205
+#: src/features/Dashboard/PlanDashboardCards.tsx:186
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Start din vej til flydende"
@@ -10670,6 +10693,38 @@ msgstr ""
 "— det er vigtigt at deltage i denne korte samtale, før man hopper ind i "
 "professionelle emner. Her er nogle nyttige engelske vendinger til at starte "
 "interviewet:"
+
+#: src/features/Dashboard/Dashboard.tsx:109
+#. js-lingui-explicit-id
+#~ msgid "Conversation without obligations. Just in case you want to chat."
+#~ msgstr ""
+#~ "Samtale uden forpligtelser. Bare i tilfælde af, at du har lyst til at "
+#~ "chatte."
+
+#: src/features/Dashboard/Dashboard.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Start a random call to practice your speaking skills"
+#~ msgstr "Start en tilfældig opkald for at øve dine taleevner"
+
+#: src/features/Dashboard/Dashboard.tsx:103
+#. js-lingui-explicit-id
+#~ msgid "Just Talk"
+#~ msgstr "Bare Tal"
+
+#: src/features/Dashboard/Dashboard.tsx:92
+#. js-lingui-explicit-id
+#~ msgid "Start a random video call to practice your speaking skills"
+#~ msgstr "Start en tilfældig videoopkald for at øve dine taleevner"
+
+#: src/features/Dashboard/Dashboard.tsx:86
+#. js-lingui-explicit-id
+#~ msgid "Conversation with stranger"
+#~ msgstr "Samtale med en fremmed"
+
+#: src/features/Dashboard/Dashboard.tsx:92
+#. js-lingui-explicit-id
+#~ msgid "Start your practice by clicking the button below!"
+#~ msgstr "Begynd din øvelse ved at klikke på knappen nedenfor!"
 
 #: src/features/Usage/FeatureBlocker.tsx:114
 #. js-lingui-explicit-id

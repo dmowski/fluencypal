@@ -443,7 +443,7 @@ msgstr "Eine Antwort hinzufügen"
 msgid "Add Comment"
 msgstr "Kommentar hinzufügen"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:263
+#: src/features/Dashboard/PlanDashboardCards.tsx:244
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "Neues Ziel hinzufügen"
@@ -1731,6 +1731,11 @@ msgstr "Gesprächsübung"
 msgid "Conversation preparation"
 msgstr "Vorbereitung auf das Gespräch"
 
+#: src/features/Dashboard/Dashboard.tsx:83
+#. js-lingui-explicit-id
+msgid "Conversation with AI"
+msgstr "Konversation mit KI"
+
 #: src/features/SEO/metadata.ts:267
 #. js-lingui-explicit-id
 msgid "Conversational English Practice"
@@ -1901,6 +1906,11 @@ msgstr "csharp-Entwickler Vorstellungsgespräch"
 msgid "Current Balance of AI usage"
 msgstr "Aktueller Kontostand der AI-Nutzung"
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:293
+#. js-lingui-explicit-id
+msgid "Current Lesson"
+msgstr "Aktuelle Lektion"
+
 #: src/features/RolePlay/rolePlayData.tsx:680
 #: src/features/RolePlay/rolePlayData.tsx:707
 #. js-lingui-explicit-id
@@ -2068,7 +2078,7 @@ msgstr "Konto löschen"
 msgid "Delete account (Total)"
 msgstr "Konto löschen (Gesamt)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:441
+#: src/features/Dashboard/PlanDashboardCards.tsx:443
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Aktuelles Ziel löschen"
@@ -3595,17 +3605,17 @@ msgstr "Spiel"
 msgid "Game-based practice"
 msgstr "Spielbasierte Übung"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:416
+#: src/features/Dashboard/PlanDashboardCards.tsx:418
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "Erstellen Sie mehr Lektionen, um Ihr Ziel schneller zu erreichen."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:458
+#: src/features/Dashboard/PlanDashboardCards.tsx:460
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Generiere mehr einzigartige Lektionen"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:457
+#: src/features/Dashboard/PlanDashboardCards.tsx:459
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Generieren..."
@@ -3876,8 +3886,8 @@ msgid "Go to the main page"
 msgstr "Gehe zur Hauptseite"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:204
-#: src/features/Dashboard/PlanDashboardCards.tsx:412
+#: src/features/Dashboard/PlanDashboardCards.tsx:185
+#: src/features/Dashboard/PlanDashboardCards.tsx:414
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Ziel"
@@ -5081,7 +5091,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "In weniger als 5 Minuten erhalten Sie:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:468
+#: src/features/Dashboard/PlanDashboardCards.tsx:470
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr ""
@@ -5716,7 +5726,6 @@ msgid "job interview tips"
 msgstr "Tipps für Vorstellungsgespräche"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/Dashboard/PlanDashboardCards.tsx:134
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "Beitreten"
@@ -5766,6 +5775,11 @@ msgstr "Junior Frontend-Interview"
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "Einfach reden"
+
+#: src/features/Dashboard/Dashboard.tsx:108
+#. js-lingui-explicit-id
+msgid "Just to Talk"
+msgstr "Nur um zu reden"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:165
 #. js-lingui-explicit-id
@@ -5961,7 +5975,7 @@ msgstr ""
 msgid "Learning Blog"
 msgstr "Lernblog"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:181
+#: src/features/Dashboard/PlanDashboardCards.tsx:162
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Lernplan"
@@ -6365,7 +6379,7 @@ msgstr "More"
 msgid "More options"
 msgstr "Mehr Optionen"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:408
+#: src/features/Dashboard/PlanDashboardCards.tsx:410
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Mehr einzigartige Lektionen"
@@ -6502,7 +6516,6 @@ msgid "Next"
 msgstr "Nächste"
 
 #: src/features/Conversation/ConversationReviewModal.tsx:168
-#: src/features/Dashboard/PlanDashboardCards.tsx:130
 #. js-lingui-explicit-id
 msgid "Next Lesson"
 msgstr "Nächste Lektion"
@@ -8466,7 +8479,7 @@ msgstr "Mehr anzeigen"
 msgid "Show More"
 msgstr "Mehr Anzeigen"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:367
+#: src/features/Dashboard/PlanDashboardCards.tsx:369
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Mehr Lektionen anzeigen"
@@ -8708,6 +8721,7 @@ msgid "Stars"
 msgstr "Sterne"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
+#: src/features/Dashboard/PlanDashboardCards.tsx:297
 #: src/features/Goal/Quiz/GoalReview.tsx:156
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:295
@@ -8718,6 +8732,16 @@ msgstr "Sterne"
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Start"
+
+#: src/features/Dashboard/Dashboard.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"Start a casual call to practice your conversation skills. It's a "
+"no-strings-attached conversation. Just in case you're feeling casual."
+msgstr ""
+"Beginnen Sie einen lockeren Anruf, um Ihre Konversationsfähigkeiten zu "
+"üben. Es ist ein unverbindliches Gespräch. Nur für den Fall, dass Sie sich "
+"locker fühlen."
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:45
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:45
@@ -8814,7 +8838,7 @@ msgstr "Starten Sie Ihren Interview-Test"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Beginne jetzt deine Reise zu fließenden Gesprächen"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:205
+#: src/features/Dashboard/PlanDashboardCards.tsx:186
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Beginnen Sie Ihren Weg zur Fließendheit"
@@ -10941,6 +10965,36 @@ msgstr ""
 "— es ist wichtig, sich in dieses kurze Gespräch zu vertiefen, bevor man "
 "professionelle Themen anspricht. Hier sind einige nützliche englische "
 "Redewendungen, um das Interview zu beginnen:"
+
+#: src/features/Dashboard/Dashboard.tsx:109
+#. js-lingui-explicit-id
+#~ msgid "Conversation without obligations. Just in case you want to chat."
+#~ msgstr "Konversation ohne Verpflichtungen. Für den Fall, dass Sie chatten möchten."
+
+#: src/features/Dashboard/Dashboard.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Start a random call to practice your speaking skills"
+#~ msgstr "Starten Sie einen zufälligen Anruf, um Ihre Sprechfähigkeiten zu üben"
+
+#: src/features/Dashboard/Dashboard.tsx:103
+#. js-lingui-explicit-id
+#~ msgid "Just Talk"
+#~ msgstr "Nur Sprechen"
+
+#: src/features/Dashboard/Dashboard.tsx:92
+#. js-lingui-explicit-id
+#~ msgid "Start a random video call to practice your speaking skills"
+#~ msgstr "Starte einen zufälligen Videoanruf, um deine Sprechfertigkeiten zu üben."
+
+#: src/features/Dashboard/Dashboard.tsx:86
+#. js-lingui-explicit-id
+#~ msgid "Conversation with stranger"
+#~ msgstr "Konversation mit einem Fremden"
+
+#: src/features/Dashboard/Dashboard.tsx:92
+#. js-lingui-explicit-id
+#~ msgid "Start your practice by clicking the button below!"
+#~ msgstr "Starten Sie Ihre Übung, indem Sie auf die Schaltfläche unten klicken!"
 
 #: src/features/Usage/FeatureBlocker.tsx:114
 #. js-lingui-explicit-id

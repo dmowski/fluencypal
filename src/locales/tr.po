@@ -431,7 +431,7 @@ msgstr "Yanıt ekle"
 msgid "Add Comment"
 msgstr "Yorum Ekle"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:263
+#: src/features/Dashboard/PlanDashboardCards.tsx:244
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "Yeni hedef ekle"
@@ -1706,6 +1706,11 @@ msgstr "Konuşma pratikleri"
 msgid "Conversation preparation"
 msgstr "Konuşma hazırlığı"
 
+#: src/features/Dashboard/Dashboard.tsx:83
+#. js-lingui-explicit-id
+msgid "Conversation with AI"
+msgstr "AI ile Sohbet"
+
 #: src/features/SEO/metadata.ts:267
 #. js-lingui-explicit-id
 msgid "Conversational English Practice"
@@ -1873,6 +1878,11 @@ msgstr "csharp geliştirici mülakatı"
 msgid "Current Balance of AI usage"
 msgstr "AI kullanımının Güncel Bakiyesi"
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:293
+#. js-lingui-explicit-id
+msgid "Current Lesson"
+msgstr "Geçerli Ders"
+
 #: src/features/RolePlay/rolePlayData.tsx:680
 #: src/features/RolePlay/rolePlayData.tsx:707
 #. js-lingui-explicit-id
@@ -2038,7 +2048,7 @@ msgstr "Hesabı Sil"
 msgid "Delete account (Total)"
 msgstr "Hesabı Sil (Toplam)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:441
+#: src/features/Dashboard/PlanDashboardCards.tsx:443
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Mevcut hedefi sil"
@@ -3521,17 +3531,17 @@ msgstr "Oyun"
 msgid "Game-based practice"
 msgstr "Oyun tabanlı pratik"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:416
+#: src/features/Dashboard/PlanDashboardCards.tsx:418
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "Hedefinize daha hızlı ulaşmak için daha fazla ders oluşturun."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:458
+#: src/features/Dashboard/PlanDashboardCards.tsx:460
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Daha eşsiz dersler oluşturun"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:457
+#: src/features/Dashboard/PlanDashboardCards.tsx:459
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Oluşturuluyor..."
@@ -3800,8 +3810,8 @@ msgid "Go to the main page"
 msgstr "Ana sayfaya git"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:204
-#: src/features/Dashboard/PlanDashboardCards.tsx:412
+#: src/features/Dashboard/PlanDashboardCards.tsx:185
+#: src/features/Dashboard/PlanDashboardCards.tsx:414
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Hedef"
@@ -4966,7 +4976,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "5 dakikadan kısa sürede şunları alacaksınız:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:468
+#: src/features/Dashboard/PlanDashboardCards.tsx:470
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Daha fazla ders oluşturmak için en az 3 dersi tamamlamanız gerekmektedir."
@@ -5582,7 +5592,6 @@ msgid "job interview tips"
 msgstr "iş görüşmesi ipuçları"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/Dashboard/PlanDashboardCards.tsx:134
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "Katıl"
@@ -5628,6 +5637,11 @@ msgstr "junior frontend mülakatı"
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "Sadece konuş"
+
+#: src/features/Dashboard/Dashboard.tsx:108
+#. js-lingui-explicit-id
+msgid "Just to Talk"
+msgstr "Sadece Konuşmak İçin"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:165
 #. js-lingui-explicit-id
@@ -5814,7 +5828,7 @@ msgstr "Semptomları tanımlamayı ve tıbbi tavsiye istemeyi etkili bir şekild
 msgid "Learning Blog"
 msgstr "Öğrenme Blogu"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:181
+#: src/features/Dashboard/PlanDashboardCards.tsx:162
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Öğrenme Planı"
@@ -6211,7 +6225,7 @@ msgstr "Daha Fazla"
 msgid "More options"
 msgstr "Daha fazla seçenek"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:408
+#: src/features/Dashboard/PlanDashboardCards.tsx:410
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Daha benzersiz dersler"
@@ -6347,7 +6361,6 @@ msgid "Next"
 msgstr "İleri"
 
 #: src/features/Conversation/ConversationReviewModal.tsx:168
-#: src/features/Dashboard/PlanDashboardCards.tsx:130
 #. js-lingui-explicit-id
 msgid "Next Lesson"
 msgstr "Sonraki Ders"
@@ -8280,7 +8293,7 @@ msgstr "Daha fazla göster"
 msgid "Show More"
 msgstr "Daha Fazla Göster"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:367
+#: src/features/Dashboard/PlanDashboardCards.tsx:369
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Daha fazla ders göster"
@@ -8521,6 +8534,7 @@ msgid "Stars"
 msgstr "Yıldızlar"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
+#: src/features/Dashboard/PlanDashboardCards.tsx:297
 #: src/features/Goal/Quiz/GoalReview.tsx:156
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:295
@@ -8531,6 +8545,15 @@ msgstr "Yıldızlar"
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Başla"
+
+#: src/features/Dashboard/Dashboard.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"Start a casual call to practice your conversation skills. It's a "
+"no-strings-attached conversation. Just in case you're feeling casual."
+msgstr ""
+"Sadece sohbet becerilerinizi geliştirmek için gündelik bir arama başlatın. "
+"Bağlayıcı olmayan bir konuşma. Sadece, kendinizi rahat hissediyorsanız diye."
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:45
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:45
@@ -8625,7 +8648,7 @@ msgstr "Başvurunuzu Başlatın Test"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Hızla Akıcı Konuşmalara Geçiş Yolculuğunuza Şimdi Başlayın"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:205
+#: src/features/Dashboard/PlanDashboardCards.tsx:186
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Akıcılığa doğru yolculuğunuza başlayın"
@@ -10713,6 +10736,36 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Dashboard/Dashboard.tsx:109
+#. js-lingui-explicit-id
+#~ msgid "Conversation without obligations. Just in case you want to chat."
+#~ msgstr "Sorumluluk olmadan sohbet. Sadece konuşmak isterseniz."
+
+#: src/features/Dashboard/Dashboard.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Start a random call to practice your speaking skills"
+#~ msgstr "Konuşma becerilerinizi geliştirmek için rastgele bir arama başlatın"
+
+#: src/features/Dashboard/Dashboard.tsx:103
+#. js-lingui-explicit-id
+#~ msgid "Just Talk"
+#~ msgstr "Sadece Konuş"
+
+#: src/features/Dashboard/Dashboard.tsx:92
+#. js-lingui-explicit-id
+#~ msgid "Start a random video call to practice your speaking skills"
+#~ msgstr "Konuşma becerilerinizi geliştirmek için rastgele bir video araması başlatın"
+
+#: src/features/Dashboard/Dashboard.tsx:86
+#. js-lingui-explicit-id
+#~ msgid "Conversation with stranger"
+#~ msgstr "Yabancıyla konuşma"
+
+#: src/features/Dashboard/Dashboard.tsx:92
+#. js-lingui-explicit-id
+#~ msgid "Start your practice by clicking the button below!"
+#~ msgstr "Aşağıdaki düğmeye tıklayarak pratiğinize başlayın!"
 
 #: src/features/Usage/FeatureBlocker.tsx:114
 #. js-lingui-explicit-id

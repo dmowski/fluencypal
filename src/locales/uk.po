@@ -430,7 +430,7 @@ msgstr "Додати відповідь"
 msgid "Add Comment"
 msgstr "Додати коментарій"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:263
+#: src/features/Dashboard/PlanDashboardCards.tsx:244
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "Додати нову ціль"
@@ -1708,6 +1708,11 @@ msgstr "Практика розмови"
 msgid "Conversation preparation"
 msgstr "Підготовка до розмови"
 
+#: src/features/Dashboard/Dashboard.tsx:83
+#. js-lingui-explicit-id
+msgid "Conversation with AI"
+msgstr "Розмова з ШІ"
+
 #: src/features/SEO/metadata.ts:267
 #. js-lingui-explicit-id
 msgid "Conversational English Practice"
@@ -1874,6 +1879,11 @@ msgstr "інтерв'ю розробника C#"
 msgid "Current Balance of AI usage"
 msgstr "Поточний Баланс використання AI"
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:293
+#. js-lingui-explicit-id
+msgid "Current Lesson"
+msgstr "Поточний урок"
+
 #: src/features/RolePlay/rolePlayData.tsx:680
 #: src/features/RolePlay/rolePlayData.tsx:707
 #. js-lingui-explicit-id
@@ -2039,7 +2049,7 @@ msgstr "Видалити аккаунт"
 msgid "Delete account (Total)"
 msgstr "Видалити обліковий запис (Усього)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:441
+#: src/features/Dashboard/PlanDashboardCards.tsx:443
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Видалити поточну мету"
@@ -3548,17 +3558,17 @@ msgstr "Гра"
 msgid "Game-based practice"
 msgstr "Практика на базі гри"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:416
+#: src/features/Dashboard/PlanDashboardCards.tsx:418
 #. js-lingui-explicit-id
 msgid "Generate more lessons to achieve your goal faster."
 msgstr "Згенеруйте більше уроків, щоб досягти своєї мети швидше."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:458
+#: src/features/Dashboard/PlanDashboardCards.tsx:460
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Створюйте більше унікальних уроків"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:457
+#: src/features/Dashboard/PlanDashboardCards.tsx:459
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Генеруємо..."
@@ -3820,8 +3830,8 @@ msgid "Go to the main page"
 msgstr "Перейти на головну сторінку"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:204
-#: src/features/Dashboard/PlanDashboardCards.tsx:412
+#: src/features/Dashboard/PlanDashboardCards.tsx:185
+#: src/features/Dashboard/PlanDashboardCards.tsx:414
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Мета"
@@ -4987,7 +4997,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "Менш ніж за 5 хвилин ви отримаєте:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:468
+#: src/features/Dashboard/PlanDashboardCards.tsx:470
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Щоб генерувати більше уроків, вам потрібно завершити принаймні 3 уроки"
@@ -5603,7 +5613,6 @@ msgid "job interview tips"
 msgstr "поради щодо співбесіди на роботу"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/Dashboard/PlanDashboardCards.tsx:134
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "Приєднатися"
@@ -5651,6 +5660,11 @@ msgstr "інтерв'ю на позицію молодшого фронтенд-
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "Просто говоріть"
+
+#: src/features/Dashboard/Dashboard.tsx:108
+#. js-lingui-explicit-id
+msgid "Just to Talk"
+msgstr "Просто поговорити"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:165
 #. js-lingui-explicit-id
@@ -5840,7 +5854,7 @@ msgstr "Навчіться ефективно описувати симптом�
 msgid "Learning Blog"
 msgstr "Блог про навчання"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:181
+#: src/features/Dashboard/PlanDashboardCards.tsx:162
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "План навчання"
@@ -6244,7 +6258,7 @@ msgstr "Більше"
 msgid "More options"
 msgstr "Більше опцій"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:408
+#: src/features/Dashboard/PlanDashboardCards.tsx:410
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Більше унікальних уроків"
@@ -6381,7 +6395,6 @@ msgid "Next"
 msgstr "Далі"
 
 #: src/features/Conversation/ConversationReviewModal.tsx:168
-#: src/features/Dashboard/PlanDashboardCards.tsx:130
 #. js-lingui-explicit-id
 msgid "Next Lesson"
 msgstr "Наступний урок"
@@ -8333,7 +8346,7 @@ msgstr "Показати більше"
 msgid "Show More"
 msgstr "Показати більше"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:367
+#: src/features/Dashboard/PlanDashboardCards.tsx:369
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Показати більше уроків"
@@ -8575,6 +8588,7 @@ msgid "Stars"
 msgstr "Зірки"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
+#: src/features/Dashboard/PlanDashboardCards.tsx:297
 #: src/features/Goal/Quiz/GoalReview.tsx:156
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:295
@@ -8585,6 +8599,15 @@ msgstr "Зірки"
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Почати"
+
+#: src/features/Dashboard/Dashboard.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"Start a casual call to practice your conversation skills. It's a "
+"no-strings-attached conversation. Just in case you're feeling casual."
+msgstr ""
+"Почніть неформальну розмову для практики навичок спілкування. Це розмова "
+"без зобов'язань. На випадок, якщо ви відчуваєте себе невимушено."
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:45
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:45
@@ -8679,7 +8702,7 @@ msgstr "Почніть свій інтерв'ю-тест"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Розпочніть свою подорож до вільного спілкування зараз"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:205
+#: src/features/Dashboard/PlanDashboardCards.tsx:186
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Розпочніть шлях до володіння"
@@ -10780,6 +10803,36 @@ msgid ""
 msgstr ""
 "— важливо задіяти цю коротку розмову, перш ніж приступати до професійних "
 "тем. Ось деякі корисні англійські фрази для початку інтерв'ю:"
+
+#: src/features/Dashboard/Dashboard.tsx:109
+#. js-lingui-explicit-id
+#~ msgid "Conversation without obligations. Just in case you want to chat."
+#~ msgstr "Бесіда без зобов'язань. Про всяк випадок, якщо ви захочете поспілкуватися."
+
+#: src/features/Dashboard/Dashboard.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Start a random call to practice your speaking skills"
+#~ msgstr "Почати випадковий виклик для практики розмовних навичок"
+
+#: src/features/Dashboard/Dashboard.tsx:103
+#. js-lingui-explicit-id
+#~ msgid "Just Talk"
+#~ msgstr "Просто поговоріть"
+
+#: src/features/Dashboard/Dashboard.tsx:92
+#. js-lingui-explicit-id
+#~ msgid "Start a random video call to practice your speaking skills"
+#~ msgstr "Розпочніть випадковий відеодзвінок, щоб практикувати свої навички розмови"
+
+#: src/features/Dashboard/Dashboard.tsx:86
+#. js-lingui-explicit-id
+#~ msgid "Conversation with stranger"
+#~ msgstr "Розмова з незнайомцем"
+
+#: src/features/Dashboard/Dashboard.tsx:92
+#. js-lingui-explicit-id
+#~ msgid "Start your practice by clicking the button below!"
+#~ msgstr "Почніть свою практику, натиснувши кнопку нижче!"
 
 #: src/features/Usage/FeatureBlocker.tsx:114
 #. js-lingui-explicit-id
