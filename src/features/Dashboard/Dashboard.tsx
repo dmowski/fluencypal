@@ -18,7 +18,7 @@ import { BattleSection } from "../Game/Battle/BattleSection";
 import { usePlan } from "../Plan/usePlan";
 import { LessonStartModal } from "../Plan/LessonStartModal";
 import { useLingui } from "@lingui/react";
-import { Origami } from "lucide-react";
+import { Gem, Origami, VolumeOff } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useState } from "react";
 import { useSettings } from "../Settings/useSettings";
@@ -94,6 +94,70 @@ export function Dashboard({ lang }: DashboardProps) {
         >
           {appNavigation.currentPage === "home" && (
             <>
+              {!access.isFullAppAccess && (
+                <Stack
+                  sx={{
+                    marginBottom: "20px",
+                    alignItems: "center",
+                    gap: "10px",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+
+                    width: "100%",
+                    borderRadius: "16px",
+                    padding: "20px",
+                    backgroundColor: "rgba(138, 25, 138, 0.099)",
+                    border: "1px solid rgba(138, 25, 138, 0.2)",
+                    flexWrap: "wrap",
+                    "@media (max-width:600px)": {
+                      borderRadius: "0px",
+                      padding: "20px 10px",
+                      border: "none",
+                    },
+                  }}
+                >
+                  <Stack>
+                    <Stack
+                      sx={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        //justifyContent: "center",
+                        gap: "15px",
+                      }}
+                    >
+                      <Typography
+                        variant="h5"
+                        sx={{
+                          fontWeight: 600,
+                        }}
+                      >
+                        {i18n._("Limited access")}
+                      </Typography>
+                      <VolumeOff size={"20px"} />
+                    </Stack>
+                    <Typography
+                      sx={{
+                        opacity: 0.7,
+                      }}
+                      variant="caption"
+                    >
+                      {i18n._("The AI voice is disabled.")}
+                    </Typography>
+                  </Stack>
+                  <Button
+                    color="warning"
+                    onClick={() => usage.togglePaymentModal(true)}
+                    variant="contained"
+                    endIcon={<Gem />}
+                    sx={{
+                      padding: "10px 30px",
+                    }}
+                  >
+                    {i18n._("Upgrade Now")}
+                  </Button>
+                </Stack>
+              )}
+
               <Stack
                 sx={{
                   marginBottom: "20px",
