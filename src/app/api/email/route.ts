@@ -14,6 +14,7 @@ export async function GET(request: Request) {
 
   if (isSendTest && confirmSend) {
     const randomId = Math.floor(Math.random() * 10000);
+    console.log("SEND REAL EMAIL");
     await sendEmail({
       emailTo: "dmowski.alex@gmail.com",
       messageText: emailUi.text,
