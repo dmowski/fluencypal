@@ -157,7 +157,7 @@ export const CallButtons = ({
 
   const vadAudioRecorder = useVadAudioRecorder({
     onTranscription: (transcript: string) => {
-      onSubmitTranscription(transcript);
+      setTranscriptStack((prev) => (prev + " " + transcript).trim());
     },
     silenceMs: 400,
   });
