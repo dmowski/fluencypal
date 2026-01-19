@@ -22,6 +22,8 @@ import { useLessonPlan } from "@/features/LessonPlan/useLessonPlan";
 import { useVadAudioRecorder } from "@/features/Audio/useVadAudioRecorder";
 import { CallButton } from "./CallButton";
 
+const IS_USE_VAD = false;
+
 export const CallButtons = ({
   isMuted,
   setIsMuted,
@@ -155,12 +157,9 @@ export const CallButtons = ({
 
   const vadAudioRecorder = useVadAudioRecorder({
     onTranscription: (transcript: string) => {
-      setTranscriptStack((prev) => {
-        const newTranscript = prev ? prev + " " + transcript : transcript;
-        return newTranscript.trim();
-      });
+      onSubmitTranscription(transcript);
     },
-    silenceMs: 800,
+    silenceMs: 400,
   });
 
   const isReallySpeaking = vadAudioRecorder.isSpeaking && vadAudioRecorder.speakingLevel > 0.6;
@@ -174,8 +173,6 @@ export const CallButtons = ({
       setIsVolumeOn(isVolumeOnToDisplay);
     }
   }, [isReallySpeaking]);
-
-  const IS_USE_VAD = false;
 
   const [isSubmittingVad, setIsSubmittingVad] = useState(false);
 

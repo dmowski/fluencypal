@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type UseVadRecorderOptions = {
-  onChunk: (blob: Blob) => void;
+  onChunk: (blob: Blob, format: string, durationSeconds: number) => void;
   silenceMs?: number; // default 3000
   tickMs?: number; // default 50
   rmsThreshold?: number; // default 0.02
@@ -210,9 +210,13 @@ export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderRe
         if (!speechStartedAt || !lastVoiceAt) return;
         const speechDur = lastVoiceAt - speechStartedAt;
         if (speechDur < minSpeechMs) return;
+        const format = rec.mimeType || "audio/webm";
 
-        const blob = new Blob(parts, { type: rec.mimeType || "audio/webm" });
-        if (blob.size > 0) onChunk(blob);
+        const blob = new Blob(parts, { type: format });
+
+        const durationSeconds = speechDur / 1000;
+
+        if (blob.size > 0) onChunk(blob, format, durationSeconds);
       };
 
       setIsRunning(true);

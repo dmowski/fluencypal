@@ -17,18 +17,11 @@ export const useVadAudioRecorder = ({
   const settings = useSettings();
   const learnLanguageCode = settings.languageCode || "en";
 
-  const recorderControls = useVadRecorder({
-    onChunk: (blob) => {
-      getRecordTranscript(blob, blob.type.toLowerCase());
-    },
-    silenceMs,
-  });
-
-  const { inWebView } = useIsWebView();
-
-  const [isTranscribing, setIsTranscribing] = useState(false);
-
-  const getRecordTranscript = async (recordedAudioBlog: Blob, format: string) => {
+  const getRecordTranscript = async (
+    recordedAudioBlog: Blob,
+    format: string,
+    durationSeconds: number,
+  ) => {
     if (format.includes("ogg")) {
       console.log("Skip because vad");
       return;
@@ -44,8 +37,8 @@ export const useVadAudioRecorder = ({
       const transcriptResponse = await sendTranscriptRequest({
         audioBlob: recordedAudioBlog,
         authKey: token,
-        languageCode: learnLanguageCode,
-        audioDuration: 5,
+        languageCode: "ru",
+        audioDuration: durationSeconds,
         format,
       });
       if (transcriptResponse.transcript) {
@@ -57,6 +50,15 @@ export const useVadAudioRecorder = ({
       setIsTranscribing(false);
     }
   };
+
+  const recorderControls = useVadRecorder({
+    onChunk: getRecordTranscript,
+    silenceMs,
+  });
+
+  const { inWebView } = useIsWebView();
+
+  const [isTranscribing, setIsTranscribing] = useState(false);
 
   return {
     isAbleToUse: !inWebView,
