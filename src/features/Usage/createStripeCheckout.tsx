@@ -2,7 +2,7 @@ import { StripeCreateCheckoutResponse, StripeCreateCheckoutRequest } from "@/com
 
 export const createStripeCheckout = async (
   conversationDate: StripeCreateCheckoutRequest,
-  authToken: string
+  authToken: string,
 ) => {
   const response = await fetch("/api/createStripeCheckout", {
     method: "POST",

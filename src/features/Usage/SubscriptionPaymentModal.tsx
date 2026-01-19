@@ -281,14 +281,18 @@ export const SubscriptionPaymentModal = () => {
     }
   };
 
-  const [duration, setDuration] = useState<"day" | "week" | "month">("month");
+  const [duration, setDuration] = useState<"day" | "week" | "month" | "year">("month");
+
+  const yearPrice = PRICE_PER_MONTH_USD * 12;
 
   const durationPriceUsd =
     duration === "month"
       ? PRICE_PER_MONTH_USD
       : duration === "day"
         ? PRICE_PER_DAY_USD
-        : PRICE_PER_DAY_USD * 7;
+        : duration === "year"
+          ? yearPrice
+          : PRICE_PER_DAY_USD * 7;
 
   const priceInCurrency = Math.round(currency.rate * durationPriceUsd * 10) / 10;
 
@@ -300,7 +304,7 @@ export const SubscriptionPaymentModal = () => {
     try {
       const dataToCheckout: StripeCreateCheckoutRequest = {
         userId: auth.uid,
-        months: duration === "month" ? 1 : 0,
+        months: duration === "month" ? 1 : duration === "year" ? 12 : 0,
         days: duration === "week" ? 7 : duration === "day" ? 1 : 0,
         languageCode: supportedLang,
         currency: currency.currency,
@@ -536,7 +540,9 @@ export const SubscriptionPaymentModal = () => {
                   ? i18n._(`Full Access for 1 month`)
                   : duration === "week"
                     ? i18n._(`Full Access for 1 week`)
-                    : i18n._(`Full Access for 1 day`)}
+                    : duration === "year"
+                      ? i18n._(`Full Access for 1 year`)
+                      : i18n._(`Full Access for 1 day`)}
               </Typography>
             </Stack>
 
@@ -784,7 +790,7 @@ export const SubscriptionPaymentModal = () => {
                         sx={{
                           width: "100%",
                           gap: "5px",
-                          display: "none",
+                          //display: "none",
                         }}
                       >
                         <Typography
@@ -821,6 +827,13 @@ export const SubscriptionPaymentModal = () => {
                             onClick={() => setDuration("month")}
                           >
                             {i18n._("Month")}
+                          </Button>
+                          <Button
+                            fullWidth
+                            variant={duration === "year" ? "contained" : "outlined"}
+                            onClick={() => setDuration("year")}
+                          >
+                            {i18n._("Year")}
                           </Button>
                         </ButtonGroup>
                       </Stack>
@@ -860,7 +873,9 @@ export const SubscriptionPaymentModal = () => {
                               ? i18n._("month")
                               : duration === "week"
                                 ? i18n._("week")
-                                : i18n._("day")}
+                                : duration === "year"
+                                  ? i18n._("year")
+                                  : i18n._("day")}
                           </Typography>
                         </Stack>
                       </Stack>

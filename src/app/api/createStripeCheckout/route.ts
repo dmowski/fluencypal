@@ -105,7 +105,7 @@ export async function POST(request: Request) {
       const months = requestData.months;
       const days = requestData.days;
 
-      if (months > 4 || days > 120) {
+      if (months > 34 || days > 120) {
         const response: StripeCreateCheckoutResponse = {
           sessionUrl: null,
           error: "Count is too large",
