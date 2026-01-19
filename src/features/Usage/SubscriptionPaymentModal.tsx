@@ -80,7 +80,7 @@ const WalletButton = ({
         {
           monthCount: 1,
         },
-        await auth.getToken()
+        await auth.getToken(),
       );
 
       if (order.error) {
@@ -228,7 +228,7 @@ export const SubscriptionPaymentModal = () => {
         {
           monthCount: 1,
         },
-        token
+        token,
       );
       console.log("checkoutInfo", checkoutInfo);
       if (checkoutInfo.error) {
@@ -323,7 +323,7 @@ export const SubscriptionPaymentModal = () => {
           i18n._("Error creating payment session. Notification sent to support. Try again later."),
           {
             severity: "error",
-          }
+          },
         );
 
         console.error("checkoutInfo", checkoutInfo);
@@ -914,7 +914,7 @@ export const SubscriptionPaymentModal = () => {
                         >
                           {i18n._(
                             `You can renew your full access any time before it expires to avoid
-                          interruption of service.`
+                          interruption of service.`,
                           )}
                         </Typography>
                       </>
@@ -929,7 +929,7 @@ export const SubscriptionPaymentModal = () => {
                   info={{
                     question: i18n._("Can I get full access for free?"),
                     answer: i18n._(
-                      "Yes. Simply play on the Community page or send messages in the chat to earn points. The top five users will have full access as long as they remain at the top!"
+                      "Yes. Simply play on the Community page or send messages in the chat to earn points. The top five users will have full access as long as they remain at the top!",
                     ),
                   }}
                 />
@@ -945,13 +945,7 @@ export const SubscriptionPaymentModal = () => {
                       >
                         <Typography>
                           {i18n._(
-                            "No, you are purchasing full access for a selected period of time. There is no auto-renewal, you can buy full access again when your current period ends."
-                          )}
-                        </Typography>
-
-                        <Typography>
-                          {i18n._(
-                            "FluencyPal is my personal project and I want to keep it simple. No subscriptions, no recurring payments, just straightforward access when you need it."
+                            "No, you are purchasing full access for a selected period of time. There is no auto-renewal, you can buy full access again when your current period ends.",
                           )}
                         </Typography>
                       </Stack>
@@ -963,7 +957,7 @@ export const SubscriptionPaymentModal = () => {
                   info={{
                     question: i18n._("Can I do a refund after purchase?"),
                     answer: i18n._(
-                      'Yes. If you\'re not satisfied with the service, on "Profile/Payment history" page you can request a refund and we will discuss the details.'
+                      'Yes. If you\'re not satisfied with the service, on "Profile/Payment history" page you can request a refund and we will discuss the details.',
                     ),
                   }}
                 />
