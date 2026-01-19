@@ -140,6 +140,17 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
   const [isAiSpeaking, setIsAiSpeaking] = useState(true);
   const [conversationMode, setConversationMode] = useState<ConversationMode>("call");
 
+  const addMessage = async (message: string) => {
+    setTestMessage((prevMessages) => [
+      ...prevMessages,
+      {
+        isBot: false,
+        text: message,
+        id: `${Date.now()}`,
+      },
+    ]);
+  };
+
   return (
     <Stack>
       <ConversationCanvas
@@ -151,10 +162,10 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         gameWords={gameStat}
         isClosed={false}
         isClosing={false}
-        addUserMessage={generateFirstMessage}
+        addUserMessage={addMessage}
         balanceHours={0.2}
         togglePaymentModal={() => alert("Payment modal toggled")}
-        isLimited={true}
+        isLimited={false}
         onLimitedClick={() => {}}
         isRecording={false}
         startRecording={async () => {}}

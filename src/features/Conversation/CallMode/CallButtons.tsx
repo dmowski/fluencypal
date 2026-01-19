@@ -494,10 +494,10 @@ export const CallButtons = ({
                   >
                     {isShowVolumeWarning
                       ? i18n._(
-                          "Enabling ai voice is a premium feature. Please upgrade your plan to access this feature."
+                          "Enabling ai voice is a premium feature. Please upgrade your plan to access this feature.",
                         )
                       : i18n._(
-                          "Using real-time microphone is a premium feature. Please upgrade your plan to access this feature or use recorded audio."
+                          "Using real-time microphone is a premium feature. Please upgrade your plan to access this feature or use recorded audio.",
                         )}
                   </Typography>
                 </Stack>
