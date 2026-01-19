@@ -221,7 +221,7 @@ export const getCommonMessageTemplate = ({
                                 target="_blank"
                                 style="
                                   display: inline-block;
-                                  padding: 16px 36px;
+                                  padding: 16px 56px;
                                   font-family: Roboto, Helvetica, Arial, sans-serif;
                                   font-size: 18px;
                                   color: #ffffff;
