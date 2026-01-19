@@ -18,6 +18,7 @@ export interface EmailProps {
   title: string;
   subtitle: string;
   messageContent: string;
+  afterButtonContent: string;
 
   callToAction: string;
   callbackUrl: string;
@@ -27,6 +28,7 @@ export const getCommonMessageTemplate = ({
   title,
   subtitle,
   messageContent,
+  afterButtonContent,
 
   callToAction,
   callbackUrl,
@@ -191,7 +193,7 @@ export const getCommonMessageTemplate = ({
                   bgcolor="#ffffff"
                   style="
                     margin: 0;
-                    padding: 1px 40px 50px 47px;
+                    padding: 1px 40px 10px 47px;
                     font-family: Roboto, Helvetica, Arial, sans-serif;
                     font-size: 16px;
                     line-height: 24px;
@@ -210,10 +212,10 @@ export const getCommonMessageTemplate = ({
                 <td align="left" bgcolor="#ffffff">
                   <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr>
-                      <td align="left" bgcolor="#ffffff" style="padding: 0px 47px 72px 47px">
+                      <td align="left" bgcolor="#ffffff" style="padding: 0px 47px 42px 47px">
                         <table border="0" cellpadding="0" cellspacing="0">
                           <tr>
-                            <td align="center" bgcolor="#1a82e2" style="border-radius: 6px">
+                            <td align="center" bgcolor="#1a82e2" style="border-radius: 28px">
                               <a
                                 href="${callbackUrl}"
                                 target="_blank"
@@ -221,10 +223,10 @@ export const getCommonMessageTemplate = ({
                                   display: inline-block;
                                   padding: 16px 36px;
                                   font-family: Roboto, Helvetica, Arial, sans-serif;
-                                  font-size: 16px;
+                                  font-size: 18px;
                                   color: #ffffff;
                                   text-decoration: none;
-                                  border-radius: 6px;
+                                  border-radius: 28px;
                                 "
                                 >${callToAction}</a
                               >
@@ -237,6 +239,27 @@ export const getCommonMessageTemplate = ({
                 </td>
               </tr>
               <!-- end button -->
+
+
+              <!-- start copy -->
+              <tr>
+                <td
+                  align="left"
+                  bgcolor="#ffffff"
+                  style="
+                    margin: 0;
+                    padding: 1px 40px 50px 47px;
+                    font-family: Roboto, Helvetica, Arial, sans-serif;
+                    font-size: 16px;
+                    line-height: 24px;
+                  "
+                >
+                  <div style="margin: 0; padding-bottom: 0px; color: #222222">
+                    <div>${afterButtonContent}</div>
+                  </div>
+                </td>
+              </tr>
+              <!-- end copy -->
   
               <!-- start copy -->
               <tr>
