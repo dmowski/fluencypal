@@ -14,7 +14,7 @@ async function getConversionRate(toCurrency: string): Promise<number> {
   }
 
   const res = await fetch(
-    `https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}`
+    `https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}`,
   );
 
   if (!res.ok) {
@@ -76,7 +76,6 @@ export async function POST(request: Request) {
       const money = Math.round(amountOfHours * pricePerHourInCurrency * 100);
 
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
         line_items: [
           {
             price_data: {
@@ -132,7 +131,6 @@ export async function POST(request: Request) {
         : `Add ${months} month(s) to your account balance`;
 
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
         line_items: [
           {
             price_data: {
