@@ -45,6 +45,9 @@ export const CallButtons = ({
   lessonPlanAnalysis,
   onShowAnalyzeConversationModal,
   isRealTimeConversation,
+
+  addTranscriptDelta,
+  triggerResponse,
 }: {
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
@@ -66,6 +69,9 @@ export const CallButtons = ({
   onShowAnalyzeConversationModal: () => void;
 
   isRealTimeConversation: boolean;
+
+  addTranscriptDelta: (transcripts: string) => void;
+  triggerResponse: () => void;
 }) => {
   const { i18n } = useLingui();
 
@@ -152,12 +158,16 @@ export const CallButtons = ({
   }, [isRecordingByButton, recorder.transcription]);
 
   const [transcriptStack, setTranscriptStack] = useState("");
-  const transcriptionStackRef = useRef("");
-  transcriptionStackRef.current = transcriptStack;
 
   const vadAudioRecorder = useVadAudioRecorder({
     onTranscription: (transcript: string) => {
-      setTranscriptStack((prev) => (prev + " " + transcript).trim());
+      if (!transcript) return;
+
+      addTranscriptDelta(transcript);
+      setTranscriptStack((prev) => {
+        const newTranscript = prev + " " + transcript;
+        return newTranscript;
+      });
     },
     silenceMs: 400,
   });
@@ -174,32 +184,39 @@ export const CallButtons = ({
     }
   }, [isReallySpeaking]);
 
-  const [isSubmittingVad, setIsSubmittingVad] = useState(false);
+  const WAIT_BEFORE_SEND = 5000;
+  const [beforeSendingTimeout, setBeforeSendingTimeout] = useState<number | null>(null);
 
-  const WAIT_SECOND_BEFORE_SEND = 4;
+  //
+  const waitingPercent = beforeSendingTimeout
+    ? Math.round(((WAIT_BEFORE_SEND - beforeSendingTimeout) / WAIT_BEFORE_SEND) * 100)
+    : 0;
 
-  const submitVadTranscription = async () => {
+  useEffect(() => {
     if (!transcriptStack) return;
-    setIsSubmittingVad(true);
-    const start = Date.now();
-    await lessonPlan.generateAnalysis(transcriptStack);
-    const end = Date.now();
-    const elapsed = end - start;
-    if (elapsed < WAIT_SECOND_BEFORE_SEND * 1000) {
-      await sleep(WAIT_SECOND_BEFORE_SEND * 1000 - elapsed);
-    }
-    if (transcriptStack !== transcriptionStackRef.current) {
+    setBeforeSendingTimeout(WAIT_BEFORE_SEND);
+  }, [transcriptStack, isReallySpeaking]);
+
+  useEffect(() => {
+    if (beforeSendingTimeout === null) return;
+
+    const tick = 300;
+
+    if (beforeSendingTimeout <= tick) {
+      triggerResponse();
+      setBeforeSendingTimeout(null);
       return;
     }
 
-    onSubmitTranscription(transcriptStack);
-    setTranscriptStack("");
-    setIsSubmittingVad(false);
-  };
+    const timeout = setTimeout(() => {
+      setBeforeSendingTimeout((prev) => {
+        if (prev === null) return null;
+        return prev - tick;
+      });
+    }, tick);
 
-  useEffect(() => {
-    submitVadTranscription();
-  }, [transcriptStack]);
+    return () => clearTimeout(timeout);
+  }, [beforeSendingTimeout]);
 
   const [isVadEnabled, setIsVadEnabled] = useState(false);
   const startVad = () => {
@@ -220,8 +237,8 @@ export const CallButtons = ({
     }
   };
 
-  const speakingPercent = Math.max(10, Math.round(vadAudioRecorder.speakingLevel * 100));
-  const inActivePercent = 100 - speakingPercent;
+  const speakingVolumePercent = Math.max(10, Math.round(vadAudioRecorder.speakingLevel * 100));
+  const inActivePercent = 100 - speakingVolumePercent;
 
   return (
     <Stack
@@ -352,7 +369,7 @@ export const CallButtons = ({
 
                       <Stack
                         sx={{
-                          opacity: vadAudioRecorder.isTranscribing || isSubmittingVad ? 1 : 0,
+                          opacity: waitingPercent > 0 ? 1 : 0,
                           position: "absolute",
                           bottom: "-10px",
                           right: "-10px",
@@ -360,7 +377,12 @@ export const CallButtons = ({
                           width: "14px",
                         }}
                       >
-                        <CircularProgress size={"14px"} thickness={8} />
+                        <CircularProgress
+                          size={"14px"}
+                          thickness={8}
+                          value={waitingPercent}
+                          variant="determinate"
+                        />
                       </Stack>
 
                       <Stack
