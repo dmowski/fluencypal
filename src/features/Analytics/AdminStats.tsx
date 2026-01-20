@@ -520,12 +520,6 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                 {userStat.goalQuiz2[0]?.goalUserTranscription || ""}
               </Typography>
             </Stack>
-            {exampleMessageFromQuiz && (
-              <Stack>
-                <Typography variant="caption">Example welcome message:</Typography>
-                <Typography variant="body1">{exampleMessageFromQuiz}</Typography>
-              </Stack>
-            )}
 
             {aiUserInfo?.records && (
               <details open>
@@ -641,7 +635,7 @@ export function AdminStats() {
   const [sourceData, setData] = useState<AdminStatsResponse | null>(null);
 
   const [usersToShowMode, setUsersToShowMode] = useState<"all" | "today" | "secondDay" | "old">(
-    "all"
+    "all",
   );
 
   const data = useMemo(() => {
