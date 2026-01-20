@@ -21,6 +21,7 @@ import DoneIcon from "@mui/icons-material/Done";
 import { useLessonPlan } from "@/features/LessonPlan/useLessonPlan";
 import { useVadAudioRecorder } from "@/features/Audio/useVadAudioRecorder";
 import { CallButton } from "./CallButton";
+import { useTextAi } from "@/features/Ai/useTextAi";
 
 const IS_USE_VAD = false;
 
@@ -76,6 +77,33 @@ export const CallButtons = ({
   const { i18n } = useLingui();
 
   const progress = lessonPlanAnalysis?.progress || 1;
+
+  const ai = useTextAi();
+
+  const howMuchToWait = async (message: string): Promise<number> => {
+    const start = Date.now();
+    const response = await ai.generate({
+      systemMessage: `User will provide a transcript from real-time conversation. Respond a number of milliseconds it worts to wait to user finish the message
+        
+Examples:
+'I went to the': 3000
+'Yesterday, I saw': 4500
+'The weather today is': 5000
+'In my opinion,': 6500
+'No': 2000
+'Yes, I agree.': 2000
+'I think the answer is 42.': 1000
+'I think the answer is 42, because': 5000
+'Hello, how are you?': 1500
+`,
+      userMessage: message,
+      model: "gpt-4o",
+    });
+
+    console.log("response:", response, message);
+
+    return parseInt(response.trim());
+  };
 
   const [isShowVolumeWarning, setIsShowVolumeWarning] = useState(false);
 
@@ -158,17 +186,30 @@ export const CallButtons = ({
   }, [isRecordingByButton, recorder.transcription]);
 
   const [transcriptStack, setTranscriptStack] = useState("");
+  const transcriptStackRef = useRef("");
+  transcriptStackRef.current = transcriptStack;
+  const WAIT_BEFORE_SEND = 6000;
 
   const vadAudioRecorder = useVadAudioRecorder({
-    onTranscription: (transcript: string) => {
+    onStop: () => {
+      console.log("ON STOP");
+      setIsVadEnabled(false);
+    },
+    onTranscription: async (transcript: string) => {
       if (!transcript) return;
 
       addTranscriptDelta(transcript);
+      const updatedTranscript = (transcriptStackRef.current + " " + transcript).trim();
+      const toWait = updatedTranscript ? await howMuchToWait(updatedTranscript) : WAIT_BEFORE_SEND;
+      setBeforeSendingTimeout(toWait);
+      setOriginBeforeSendingTimeout(toWait);
+
       setTranscriptStack((prev) => {
         const newTranscript = prev + " " + transcript;
         return newTranscript;
       });
     },
+
     silenceMs: 400,
   });
 
@@ -184,26 +225,31 @@ export const CallButtons = ({
     }
   }, [isReallySpeaking]);
 
-  const WAIT_BEFORE_SEND = 5000;
   const [beforeSendingTimeout, setBeforeSendingTimeout] = useState<number | null>(null);
+  const [originBeforeSendingTimeout, setOriginBeforeSendingTimeout] = useState<number | null>(null);
 
   //
   const waitingPercent = beforeSendingTimeout
-    ? Math.round(((WAIT_BEFORE_SEND - beforeSendingTimeout) / WAIT_BEFORE_SEND) * 100)
+    ? Math.round(
+        (((originBeforeSendingTimeout || WAIT_BEFORE_SEND) - beforeSendingTimeout) /
+          (originBeforeSendingTimeout || WAIT_BEFORE_SEND)) *
+          100,
+      )
     : 0;
 
   useEffect(() => {
     if (!transcriptStack) return;
-    setBeforeSendingTimeout(WAIT_BEFORE_SEND);
-  }, [transcriptStack, isReallySpeaking]);
+    setBeforeSendingTimeout(originBeforeSendingTimeout);
+  }, [isReallySpeaking]);
 
   useEffect(() => {
     if (beforeSendingTimeout === null) return;
 
-    const tick = 300;
+    const tick = 100;
 
     if (beforeSendingTimeout <= tick) {
       triggerResponse();
+      setTranscriptStack("");
       setBeforeSendingTimeout(null);
       return;
     }
@@ -369,17 +415,17 @@ export const CallButtons = ({
 
                       <Stack
                         sx={{
-                          opacity: waitingPercent > 0 ? 1 : 0,
+                          opacity: waitingPercent > 0 ? 0.7 : 0,
                           position: "absolute",
-                          bottom: "-10px",
-                          right: "-10px",
-                          height: "14px",
-                          width: "14px",
+                          top: "-13px",
+                          left: "-13px",
+                          height: "50px",
+                          width: "50px",
                         }}
                       >
                         <CircularProgress
-                          size={"14px"}
-                          thickness={8}
+                          size={"50px"}
+                          thickness={1}
                           value={waitingPercent}
                           variant="determinate"
                         />

@@ -137,7 +137,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
     languageCode: "en",
   };
 
-  const [isAiSpeaking, setIsAiSpeaking] = useState(true);
+  const [isAiSpeaking, setIsAiSpeaking] = useState(false);
   const [conversationMode, setConversationMode] = useState<ConversationMode>("call");
 
   const addMessage = async (message: string) => {
@@ -171,7 +171,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
       ...prevMessages,
       {
         isBot: true,
-        text: `Got it. Let me think about that..`,
+        text: `...`,
         id: `${Date.now()}`,
       },
     ]);

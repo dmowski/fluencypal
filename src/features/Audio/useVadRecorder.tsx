@@ -14,6 +14,7 @@ type UseVadRecorderOptions = {
   /** RMS range mapping for meter; tune for your env. */
   meterRmsMin?: number; // default 0.003
   meterRmsMax?: number; // default 0.08
+  onStop?: () => void;
 };
 
 type UseVadRecorderReturn = {
@@ -68,6 +69,7 @@ export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderRe
     levelSmoothing = 0.85,
     meterRmsMin = 0.003,
     meterRmsMax = 0.08,
+    onStop,
   } = options;
 
   const [isRunning, setIsRunning] = useState(false);
@@ -143,6 +145,7 @@ export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderRe
     }
 
     setIsRunning(false);
+    if (onStop) onStop();
   }, []);
 
   const finalizeUtterance = useCallback(() => {
