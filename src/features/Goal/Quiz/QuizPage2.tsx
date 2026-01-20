@@ -42,10 +42,13 @@ const QuizQuestions = () => {
     confirmPlan,
     pageLanguage,
     isGoalGenerating,
+    isLastStep,
   } = useQuiz();
   const { i18n } = useLingui();
 
   const settings = useSettings();
+
+  const [isFullAccess, setIsFullAccess] = useState(false);
 
   const { languageGroups } = useLanguageGroup({
     defaultGroupTitle: i18n._(`Other languages`),
@@ -61,17 +64,19 @@ const QuizQuestions = () => {
 
   const doneQuiz = async () => {
     setRedirecting(true);
+
+    const queryParams = isFullAccess ? "?paymentModal=true" : "";
     try {
       await confirmPlan();
       const goalTalkModeElement = survey?.goalData?.elements.find(
-        (el) => el.mode === "conversation"
+        (el) => el.mode === "conversation",
       );
       if (goalTalkModeElement) {
         //const url = `${getUrlStart(pageLanguage)}practice?plan-id=${goalTalkModeElement.id}`;
-        const url = `${getUrlStart(pageLanguage)}practice`;
+        const url = `${getUrlStart(pageLanguage)}practice${queryParams}`;
         router.push(url);
       } else {
-        const url = `${getUrlStart(pageLanguage)}practice`;
+        const url = `${getUrlStart(pageLanguage)}practice${queryParams}`;
         console.log("url", url);
         router.push(url);
       }
@@ -80,6 +85,14 @@ const QuizQuestions = () => {
     }
     await sleep(4000);
     setRedirecting(false);
+  };
+
+  const next = () => {
+    if (isLastStep) {
+      doneQuiz();
+    } else {
+      nextStep();
+    }
   };
 
   if (redirecting) {
@@ -114,7 +127,7 @@ const QuizQuestions = () => {
               title={i18n._(`What language do you speak`)}
               subTitle={i18n._(`So I can translate words for you`)}
               actionButtonTitle={i18n._(`Set My Language`)}
-              onClick={nextStep}
+              onClick={next}
               disabled={isStepLoading}
               isStepLoading={isStepLoading}
             />
@@ -138,7 +151,7 @@ const QuizQuestions = () => {
                     />
                   </Stack>
                 }
-                onClick={nextStep}
+                onClick={next}
                 disabled={isStepLoading || !settings.userSettings?.teacherVoice}
                 isStepLoading={isStepLoading}
               />
@@ -152,7 +165,7 @@ const QuizQuestions = () => {
               title={i18n._(`Choose Site Language`)}
               subTitle={i18n._(`This is text you see on buttons and menus`)}
               imageUrl="/illustrations/ui-schema.png"
-              onClick={nextStep}
+              onClick={next}
               disabled={isStepLoading}
               isStepLoading={isStepLoading}
             />
@@ -165,7 +178,7 @@ const QuizQuestions = () => {
               <InfoStep
                 title={i18n._(`Conversation preparation`)}
                 subTitle={i18n._(
-                  `I'll ask you a few questions to get to know you. Then, based on your answers, I'll create a personalized practice plan for you.`
+                  `I'll ask you a few questions to get to know you. Then, based on your answers, I'll create a personalized practice plan for you.`,
                 )}
                 listItems={[
                   {
@@ -187,7 +200,7 @@ const QuizQuestions = () => {
                     iconName: "music",
                   },
                 ]}
-                onClick={nextStep}
+                onClick={next}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
               />
@@ -228,7 +241,7 @@ const QuizQuestions = () => {
                 ]}
                 transcript={survey?.aboutUserTranscription || ""}
                 minWords={MIN_WORDS_FOR_ANSWER}
-                nextStep={nextStep}
+                nextStep={next}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {
                     return;
@@ -239,7 +252,7 @@ const QuizQuestions = () => {
                       ...survey,
                       aboutUserTranscription: combinedTranscript,
                     },
-                    "recordAbout UI"
+                    "recordAbout UI",
                   );
                 }}
               />
@@ -251,7 +264,7 @@ const QuizQuestions = () => {
               <InfoStep
                 title={i18n._(`Let's continue...`)}
                 subTitle={i18n._(`I'll ask you two more questions before I make your plan.`)}
-                onClick={nextStep}
+                onClick={next}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
               />
@@ -264,7 +277,7 @@ const QuizQuestions = () => {
                 question={survey?.aboutUserFollowUpQuestion || null}
                 transcript={survey?.aboutUserFollowUpTranscription || ""}
                 loading={isFollowUpGenerating}
-                nextStep={nextStep}
+                nextStep={next}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {
                     return;
@@ -275,7 +288,7 @@ const QuizQuestions = () => {
                       ...survey,
                       aboutUserFollowUpTranscription: combinedTranscript,
                     },
-                    "recordAboutFollowUp UI"
+                    "recordAboutFollowUp UI",
                   );
                 }}
               />
@@ -287,7 +300,7 @@ const QuizQuestions = () => {
               <InfoStep
                 title={i18n._(`Next question`)}
                 subTitle={i18n._(`The last question before we create your plan`)}
-                onClick={nextStep}
+                onClick={next}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
               />
@@ -300,7 +313,7 @@ const QuizQuestions = () => {
                 question={survey?.goalFollowUpQuestion || null}
                 transcript={survey?.goalUserTranscription || ""}
                 loading={isGoalQuestionGenerating}
-                nextStep={nextStep}
+                nextStep={next}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {
                     return;
@@ -311,7 +324,7 @@ const QuizQuestions = () => {
                       ...survey,
                       goalUserTranscription: combinedTranscript,
                     },
-                    "recordAboutFollowUp2 UI"
+                    "recordAboutFollowUp2 UI",
                   );
                 }}
               />
@@ -323,7 +336,19 @@ const QuizQuestions = () => {
               <InfoStep
                 title={i18n._(`We are ready to craft your plan.`)}
                 subTitle={i18n._(`It might take up to a minute.`)}
-                onClick={nextStep}
+                onClick={next}
+                disabled={isStepLoading}
+                isStepLoading={isStepLoading}
+              />
+            </AuthWall>
+          )}
+
+          {currentStep === "accessPlan" && (
+            <AuthWall>
+              <InfoStep
+                title={i18n._(`Access plan`)}
+                subTitle={i18n._(`Unlock your personalized practice plan.`)}
+                onClick={next}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
               />
@@ -333,10 +358,9 @@ const QuizQuestions = () => {
           {currentStep === "goalReview" && (
             <AuthWall>
               <GoalReview
-                onClick={doneQuiz}
+                onClick={next}
                 isLoading={isGoalGenerating || survey?.goalData === null}
                 goalData={survey?.goalData}
-                //actionButtonIcon={<VideocamIcon />}
                 actionButtonLabel={i18n._("Next")}
               />
             </AuthWall>
@@ -348,7 +372,7 @@ const QuizQuestions = () => {
                 title={i18n._(`Call mode`)}
                 subTitle={i18n._(`Don't forget to try call mode in the practice section!`)}
                 imageUrl="/quiz/callMode.jpg"
-                onClick={nextStep}
+                onClick={next}
                 actionButtonTitle={i18n._("Go to Practice")}
                 actionButtonEndIcon={<Check />}
                 disabled={isStepLoading}
@@ -363,7 +387,7 @@ const QuizQuestions = () => {
                 <WelcomeChatMessage
                   title={i18n._(`Send a message to the community`)}
                   subTitle={i18n._(`Record a welcome message to our community of learners.`)}
-                  done={doneQuiz}
+                  done={next}
                   isLoading={isStepLoading}
                   exampleToRecord={survey?.exampleOfWelcomeMessage || ""}
                   actionButtonTitle={i18n._("Go to Practice with AI")}
@@ -440,7 +464,7 @@ const QuizQuestions = () => {
 
                       <Typography>
                         {i18n._(
-                          "Free plan is for speaking and writing practice. Paid plan unlocks listening and real-time conversations with AI"
+                          "Free plan is for speaking and writing practice. Paid plan unlocks listening and real-time conversations with AI",
                         )}
                       </Typography>
                     </Stack>

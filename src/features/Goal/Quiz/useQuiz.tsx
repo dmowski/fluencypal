@@ -56,6 +56,7 @@ type QuizStep =
   | "paidVsFree"
   | "writeWelcomeMessageInChat"
   | "teacherSelection"
+  | "accessPlan"
   | "goalReview";
 
 const stepsViews: QuizStep[] = [
@@ -78,6 +79,7 @@ const stepsViews: QuizStep[] = [
 
   "before_goalReview",
   "goalReview",
+  "accessPlan",
   //"writeWelcomeMessageInChat",
 ];
 
@@ -165,12 +167,12 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
       pageLang,
       currentStep: stepsViews[0],
     }),
-    []
+    [],
   );
 
   const [stateInput, setStateInput, isStateLoading] = useUrlMapState(
     defaultState as unknown as Record<string, string>,
-    false
+    false,
   );
 
   useEffect(() => {
@@ -188,7 +190,7 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
     async (partial: Partial<QuizUrlState>, options?: SetUrlStateOptions) => {
       return await setStateInput(partial as unknown as Record<string, string>, options);
     },
-    [setStateInput]
+    [setStateInput],
   );
 
   const state = stateInput as unknown as QuizUrlState;
@@ -215,13 +217,13 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   const test = async () => {};
 
   const [isGeneratingFollowUpMap, setIsGeneratingFollowUpMap] = useState<Record<string, boolean>>(
-    {}
+    {},
   );
   const isFollowUpGenerating = Object.values(isGeneratingFollowUpMap).some((v) => v);
 
   const processAbout = async (
     survey: QuizSurvey2,
-    hash: string
+    hash: string,
   ): Promise<QuizSurvey2FollowUpQuestion> => {
     const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
     const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
@@ -305,7 +307,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
           ...survey,
           aboutUserFollowUpQuestion: newAnswer,
         },
-        "generatingFollowUp"
+        "generatingFollowUp",
       );
       setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
     } catch (e) {
@@ -328,7 +330,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
 
   const createGoalQuestion = async (
     survey: QuizSurvey2,
-    hash: string
+    hash: string,
   ): Promise<QuizSurvey2FollowUpQuestion> => {
     const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
     const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves and their answer to question then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
@@ -459,7 +461,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
           ...(surveyRef.current || survey),
           goalFollowUpQuestion: newGoalQuestion,
         },
-        "generatingGoalQuestion"
+        "generatingGoalQuestion",
       );
       setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
       return;
@@ -558,7 +560,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
         exampleOfWelcomeMessage:
           exampleOfWelcomeMessage || (surveyRef.current || survey).exampleOfWelcomeMessage || "",
       },
-      "generateGoal"
+      "generateGoal",
     );
   };
 
@@ -605,7 +607,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
             nativeLanguageCode: nativeLanguage,
             pageLanguageCode: pageLanguage,
           },
-          "ensureSurveyDocExists"
+          "ensureSurveyDocExists",
         );
 
         await syncWithSettings(survey);
@@ -666,7 +668,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
           nativeLanguageCode: nativeLanguage,
           pageLanguageCode: pageLanguage,
         },
-        "ensureSurveyDocExists"
+        "ensureSurveyDocExists",
       );
       await syncWithSettings(updatedSurvey);
     }
@@ -685,7 +687,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       }
 
       const systemLanguages = languageGroups.filter(
-        (group) => group.isSystemLanguage && group.languageCode !== langToLearn
+        (group) => group.isSystemLanguage && group.languageCode !== langToLearn,
       );
       const goodSystemLang = systemLanguages[0]?.languageCode;
       if (goodSystemLang) {
@@ -702,7 +704,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
       const filteredLanguagesCodes = languagesByCountryCode.filter((code) => code !== langToLearn);
       const languageByCountry = filteredLanguagesCodes.filter((code) =>
-        languageGroups.find((lang) => lang.languageCode === code)
+        languageGroups.find((lang) => lang.languageCode === code),
       )[0];
 
       if (languageByCountry) {
@@ -764,7 +766,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
   const path = useMemo(() => {
     const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
-      nativeLanguage
+      nativeLanguage,
     );
 
     const path = stepsViews.filter((viewStep) => {
@@ -822,7 +824,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
     if (url && currentStep === "nativeLanguage") {
       const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
-        nativeLanguage
+        nativeLanguage,
       );
       if (isNativeLanguageIsSupportedLanguage && pageLang !== nativeLanguage) {
         url = replaceUrlToLang(nativeLanguage, url);
