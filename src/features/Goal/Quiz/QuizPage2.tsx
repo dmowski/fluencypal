@@ -21,11 +21,14 @@ import { useState } from "react";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { sleep } from "@/libs/sleep";
 import { QuizPageLoader } from "@/features/Case/quiz/QuizPageLoader";
-import { Check } from "lucide-react";
+import { BotOff, Check, LockOpen } from "lucide-react";
 import { ColorIconTextList } from "@/features/Survey/ColorIconTextList";
 import { WelcomeChatMessage } from "./WelcomeChatMessage";
 import { useSettings } from "@/features/Settings/useSettings";
 import { SelectTeacher } from "@/features/Conversation/CallMode/SelectTeacher";
+import { AiAvatarVideo } from "@/features/Conversation/CallMode/AiAvatarVideo";
+import { getAiVoiceByVoice } from "@/features/Conversation/CallMode/voiceAvatar";
+import { AiAvatar } from "@/features/Conversation/CallMode/types";
 
 const QuizQuestions = () => {
   const {
@@ -48,7 +51,7 @@ const QuizQuestions = () => {
 
   const settings = useSettings();
 
-  const [isFullAccess, setIsFullAccess] = useState(false);
+  const [isFullAccess, setIsFullAccess] = useState(true);
 
   const { languageGroups } = useLanguageGroup({
     defaultGroupTitle: i18n._(`Other languages`),
@@ -346,8 +349,35 @@ const QuizQuestions = () => {
           {currentStep === "accessPlan" && (
             <AuthWall>
               <InfoStep
-                title={i18n._(`Access plan`)}
-                subTitle={i18n._(`Unlock your personalized practice plan.`)}
+                title={i18n._(`How would you like to practice?`)}
+                subTitle={i18n._(
+                  `Unlock human-like voice conversations and a curriculum tailored specifically to your goals.`,
+                )}
+                subComponent={
+                  <Stack sx={{ paddingTop: "30px", gap: "20px" }}>
+                    <AccessSelector
+                      isSpeaking={true}
+                      isFullAccess={true}
+                      isSelected={isFullAccess}
+                      onSelect={() => setIsFullAccess(true)}
+                      aiAvatar={getAiVoiceByVoice(settings.userSettings?.teacherVoice || "shimmer")}
+                      title={i18n._(`Full Access`)}
+                      description={i18n._(
+                        `Unlock full access to personalized practice plans and real-time conversations with AI.`,
+                      )}
+                    />
+
+                    <AccessSelector
+                      isSpeaking={false}
+                      isFullAccess={false}
+                      isSelected={!isFullAccess}
+                      onSelect={() => setIsFullAccess(false)}
+                      aiAvatar={getAiVoiceByVoice(settings.userSettings?.teacherVoice || "shimmer")}
+                      title={i18n._(`Limited Access`)}
+                      description={i18n._(`Basic exercises and text-only practice.`)}
+                    />
+                  </Stack>
+                }
                 onClick={next}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
@@ -495,5 +525,104 @@ export const QuizPage2 = ({ lang, defaultLangToLearn }: QuizPageProps) => {
         <QuizQuestions />
       </WebViewWall>
     </QuizProvider>
+  );
+};
+
+const AccessSelector = ({
+  isSelected,
+  onSelect,
+  aiAvatar,
+  title,
+  description,
+  isSpeaking,
+  isFullAccess,
+}: {
+  isSelected: boolean;
+  onSelect: () => void;
+  aiAvatar: AiAvatar;
+  title: string;
+  description: string;
+  isSpeaking: boolean;
+  isFullAccess: boolean;
+}) => {
+  const { i18n } = useLingui();
+  return (
+    <Stack
+      component={"button"}
+      onClick={onSelect}
+      sx={{
+        flexDirection: "row",
+        textAlign: "left",
+        background: isFullAccess
+          ? "linear-gradient(135deg, rgba(255, 0, 234, 0.3) 0%, rgba(0, 255, 163, 0) 100%)"
+          : "transparent",
+        border: "none",
+        borderRadius: "8px",
+        color: "inherit",
+
+        alignItems: "center",
+        justifyContent: "center",
+
+        gap: "20px",
+        display: "grid",
+        gridTemplateColumns: "auto 1fr",
+        padding: "5px 5px",
+
+        boxShadow: isSelected
+          ? "0px 0px 0px 4px rgba(0, 185, 252, 1)"
+          : "0px 0px 0px 1px rgb(51, 51, 51, 0.9)",
+      }}
+    >
+      <Stack
+        sx={{
+          width: "100px",
+          height: "100%",
+          aspectRatio: "1 / 1",
+
+          position: "relative",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          justifyContent: "center",
+          borderRadius: "8px",
+          overflow: "hidden",
+        }}
+      >
+        <AiAvatarVideo aiVideo={aiAvatar} isSpeaking={isFullAccess && isSelected} />
+        {!isFullAccess && (
+          <Stack
+            sx={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              top: 0,
+              left: 0,
+
+              padding: "5px",
+              alignItems: "center",
+              justifyContent: "center",
+
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
+            }}
+          >
+            <BotOff color="white" size={52} />
+          </Stack>
+        )}
+      </Stack>
+
+      <Stack
+        sx={{
+          width: "100%",
+          padding: "15px 10px 15px 0",
+        }}
+      >
+        <Typography variant="h6">{title}</Typography>
+        <Typography
+          sx={{
+            opacity: isSelected ? 0.9 : 0.8,
+          }}
+        >
+          {i18n._(description)}
+        </Typography>
+      </Stack>
+    </Stack>
   );
 };
