@@ -211,7 +211,7 @@ Examples:
       await lessonPlan.generateAnalysis(updatedTranscript);
     },
 
-    silenceMs: 400,
+    silenceMs: 1000,
   });
 
   const isReallySpeaking = vadAudioRecorder.isSpeaking && vadAudioRecorder.speakingLevel > 0.6;
