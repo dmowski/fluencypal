@@ -99,7 +99,9 @@ Backend example: `src/features/Interview/data/backend/quizData.ts`.
 Both export a function with the signature `getXyzQuizData(lang: SupportedLanguage): InterviewQuiz` and return localized steps:
 
 ```ts
-export const getCsharpBackendDeveloperQuizData = (lang: SupportedLanguage): InterviewQuiz => {
+export const getCsharpBackendDeveloperQuizData = (
+  lang: SupportedLanguage,
+): InterviewQuiz => {
   const i18n = getI18nInstance(lang);
   return {
     steps: [
@@ -107,7 +109,9 @@ export const getCsharpBackendDeveloperQuizData = (lang: SupportedLanguage): Inte
         type: "info",
         id: "intro",
         title: i18n._("C# Backend Interview Readiness Test"),
-        subTitle: i18n._("Assess readiness across APIs, databases, concurrency, and design."),
+        subTitle: i18n._(
+          "Assess readiness across APIs, databases, concurrency, and design.",
+        ),
         buttonTitle: i18n._("Start"),
       },
       {

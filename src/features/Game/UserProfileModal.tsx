@@ -65,7 +65,13 @@ const achievementsIconMap: Record<GameAchievement, IconName> = {
   ai_conversation: "bot-message-square",
 };
 
-export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: () => void }) => {
+export const UserProfileModal = ({
+  stat,
+  onClose,
+}: {
+  stat: UsersStat;
+  onClose: () => void;
+}) => {
   const game = useGame();
   const auth = useAuth();
   const battle = useBattle();
@@ -78,9 +84,11 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
 
   const avatar = game.gameAvatars[stat.userId] || defaultAvatar;
 
-  const achievements = game.userAchievements ? game.userAchievements[stat.userId] || {} : {};
+  const achievements = game.userAchievements
+    ? game.userAchievements[stat.userId] || {}
+    : {};
   const achievementsKeys: GameAchievement[] = allAchievementTypes.sort(
-    (a, b) => (achievements[b] || 0) - (achievements[a] || 0)
+    (a, b) => (achievements[b] || 0) - (achievements[a] || 0),
   );
 
   const { i18n } = useLingui();
@@ -110,7 +118,11 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
   };
 
   const isAlreadyAskedForBattle = battle.battles.some((b) => {
-    return b.usersIds.includes(userId) && b.usersIds.includes(stat.userId) && !b.winnerUserId;
+    return (
+      b.usersIds.includes(userId) &&
+      b.usersIds.includes(stat.userId) &&
+      !b.winnerUserId
+    );
   });
 
   const chatSpace = `u_${[stat.userId, userId].sort((a, b) => a.localeCompare(b)).join("_")}`;
@@ -136,7 +148,9 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                 {isBattleRequested ? (
                   <InfoStep
                     title={i18n._("Debate Request Sent!")}
-                    subTitle={i18n._("Waiting for {userName} to respond.", { userName })}
+                    subTitle={i18n._("Waiting for {userName} to respond.", {
+                      userName,
+                    })}
                     actionButtonTitle={i18n._("Close")}
                     actionButtonEndIcon={<X />}
                     width={"600px"}
@@ -149,7 +163,9 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                 ) : (
                   <InfoStep
                     title={i18n._("Debate Request")}
-                    subTitle={i18n._("Discuss and improve your skills together!")}
+                    subTitle={i18n._(
+                      "Discuss and improve your skills together!",
+                    )}
                     disabled={isCreatingBattle}
                     actionButtonTitle={i18n._("Send Request")}
                     actionButtonStartIcon={<Swords />}
@@ -163,18 +179,25 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                         iconName: "crown",
                       },
                       {
-                        title: i18n._("The request will be sent to user {userName}.", {
-                          userName,
-                        }),
+                        title: i18n._(
+                          "The request will be sent to user {userName}.",
+                          {
+                            userName,
+                          },
+                        ),
                         iconName: "message-circle",
                       },
                       {
-                        title: i18n._("Debate topics will be selected randomly."),
+                        title: i18n._(
+                          "Debate topics will be selected randomly.",
+                        ),
                         iconName: "messages-square",
                       },
 
                       {
-                        title: i18n._("You can track the progress on the main page."),
+                        title: i18n._(
+                          "You can track the progress on the main page.",
+                        ),
                         iconName: "bell",
                       },
                     ]}
@@ -312,24 +335,35 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                   gap: "10px",
                   display: "grid",
                   gridTemplateColumns: "1fr 1fr 1fr 1fr",
-                  "@media (max-width: 700px)": { gridTemplateColumns: "1fr 1fr 1fr" },
-                  "@media (max-width: 450px)": { gridTemplateColumns: "1fr 1fr" },
+                  "@media (max-width: 700px)": {
+                    gridTemplateColumns: "1fr 1fr 1fr",
+                  },
+                  "@media (max-width: 450px)": {
+                    gridTemplateColumns: "1fr 1fr",
+                  },
                 }}
               >
                 {achievementsKeys.map((achievementsKey) => {
                   const achievementPoints = achievements[achievementsKey] || 0;
 
-                  const maxPoints = achievementsMaxPoints[achievementsKey] || 50;
+                  const maxPoints =
+                    achievementsMaxPoints[achievementsKey] || 50;
 
-                  const achievementPercent = (achievementPoints / maxPoints) * 100;
+                  const achievementPercent =
+                    (achievementPoints / maxPoints) * 100;
 
                   // Max Percent - zero points, Min Percent - max points
                   const colorPosition = Math.min(
                     iconColors.length - 1,
-                    Math.floor(((100 - achievementPercent) / 100) * iconColors.length)
+                    Math.floor(
+                      ((100 - achievementPercent) / 100) * iconColors.length,
+                    ),
                   );
 
-                  const color = achievementPoints === 0 ? zeroColor : iconColors[colorPosition];
+                  const color =
+                    achievementPoints === 0
+                      ? zeroColor
+                      : iconColors[colorPosition];
 
                   return (
                     <Stack

@@ -2,7 +2,7 @@ import { getI18nInstance } from "@/appRouterI18n";
 import { SupportedLanguage } from "./lang";
 
 export const getLangLearnPlanLabels = (
-  lang: SupportedLanguage
+  lang: SupportedLanguage,
 ): Record<SupportedLanguage, string> => {
   const i18n = getI18nInstance(lang);
   const labelMap: Record<SupportedLanguage, string> = {

@@ -13,7 +13,8 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const pathnameHasLocale = locales.some(
-    (locale: string) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    (locale: string) =>
+      pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
   const currentQuery = request.nextUrl.searchParams.toString();

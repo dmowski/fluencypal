@@ -26,9 +26,15 @@ describe("getMetadataUrls", () => {
 
     expect(res.pathWithQueries).toBe("case/123/quiz");
     expect(res.ogUrl).toBe(res.alternates.languages["fr"]);
-    expect(res.alternates.canonical).toBe("https://www.fluencypal.com/fr/case/123/quiz");
-    expect(res.alternates.languages.fr).toBe("https://www.fluencypal.com/fr/case/123/quiz");
-    expect(res.alternates.languages.en).toBe("https://www.fluencypal.com/case/123/quiz");
+    expect(res.alternates.canonical).toBe(
+      "https://www.fluencypal.com/fr/case/123/quiz",
+    );
+    expect(res.alternates.languages.fr).toBe(
+      "https://www.fluencypal.com/fr/case/123/quiz",
+    );
+    expect(res.alternates.languages.en).toBe(
+      "https://www.fluencypal.com/case/123/quiz",
+    );
   });
 });
 
@@ -71,7 +77,9 @@ describe("SEO Metadata", () => {
     test("getMetadataIcons returns icon and apple entries", () => {
       const icons = getMetadataIcons();
       expect(icons.icon).toBeDefined();
-      expect(icons.icon.some((i: any) => i.url === "/favicon-48x48.png")).toBe(true);
+      expect(icons.icon.some((i: any) => i.url === "/favicon-48x48.png")).toBe(
+        true,
+      );
       expect(icons.apple).toBeDefined();
       expect(icons.apple[0].url).toBe("/logo192.png");
     });
@@ -99,11 +107,15 @@ describe("SEO Metadata", () => {
 
       expect(res.pathWithQueries).toBe("blog/123?category=tech");
       expect(res.ogUrl).toBe(res.alternates.languages["fr"]);
-      expect(res.alternates.canonical).toBe("https://www.fluencypal.com/fr/blog/123?category=tech");
-      expect(res.alternates.languages.fr).toBe(
-        "https://www.fluencypal.com/fr/blog/123?category=tech"
+      expect(res.alternates.canonical).toBe(
+        "https://www.fluencypal.com/fr/blog/123?category=tech",
       );
-      expect(res.alternates.languages.en).toBe("https://www.fluencypal.com/blog/123?category=tech");
+      expect(res.alternates.languages.fr).toBe(
+        "https://www.fluencypal.com/fr/blog/123?category=tech",
+      );
+      expect(res.alternates.languages.en).toBe(
+        "https://www.fluencypal.com/blog/123?category=tech",
+      );
     });
   });
 
@@ -122,7 +134,7 @@ describe("SEO Metadata", () => {
         blogId: "no-projections-available",
       });
       expect(meta.title).toBe(
-        "No Projections Available - Practice English Conversation with AI | FluencyPal"
+        "No Projections Available - Practice English Conversation with AI | FluencyPal",
       );
       expect(meta.description).toBe("A silence at the end of the algorithm");
       expect(meta.openGraph.images[0].url).toBe("/blog/dog/dog-park.webp");
@@ -135,20 +147,22 @@ describe("SEO Metadata", () => {
         scenarioId: "alias-game",
       });
       expect(meta.title).toBe(
-        "Alias Word Guessing Game - Practice English Conversation with AI | FluencyPal"
+        "Alias Word Guessing Game - Practice English Conversation with AI | FluencyPal",
       );
       expect(meta.description).toBe(
-        "Practice vocabulary by creatively describing and guessing words"
+        "Practice vocabulary by creatively describing and guessing words",
       );
       expect(meta.openGraph.images[0].url).toBe(
-        `https://www.fluencypal.com//role/f0de782c-6f1a-4005-924d-02459308a4fa.webp`
+        `https://www.fluencypal.com//role/f0de782c-6f1a-4005-924d-02459308a4fa.webp`,
       );
     });
 
     test("generates metadata for ru language homepage", () => {
       const meta = generateMetadataInfo({ lang: "ru", currentPath: "" });
 
-      expect(meta.title).toBe(`FluencyPal – AI English Speaking Practice for Fluency & Confidence`);
+      expect(meta.title).toBe(
+        `FluencyPal – AI English Speaking Practice for Fluency & Confidence`,
+      );
       expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/ru`);
     });
 
@@ -159,12 +173,14 @@ describe("SEO Metadata", () => {
         scenarioId: "alias-game",
       });
       expect(meta.title).toBe(
-        "Alias Word Guessing Game - Practice English Conversation with AI | FluencyPal"
+        "Alias Word Guessing Game - Practice English Conversation with AI | FluencyPal",
       );
       expect(meta.description).toBe(
-        "Practice vocabulary by creatively describing and guessing words"
+        "Practice vocabulary by creatively describing and guessing words",
       );
-      expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/ru/scenarios/alias-game`);
+      expect(meta.alternates.canonical).toBe(
+        `https://www.fluencypal.com/ru/scenarios/alias-game`,
+      );
     });
   });
 });

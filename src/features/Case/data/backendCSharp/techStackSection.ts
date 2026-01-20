@@ -3,7 +3,9 @@ import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getBackendTechData } from "./techData";
 
-export const getBackendTechStackSection = (lang: SupportedLanguage): TechStackSection => {
+export const getBackendTechStackSection = (
+  lang: SupportedLanguage,
+): TechStackSection => {
   const i18n = getI18nInstance(lang);
   const tech = getBackendTechData(lang);
 
@@ -37,7 +39,11 @@ export const getBackendTechStackSection = (lang: SupportedLanguage): TechStackSe
       },
       {
         groupTitle: i18n._("Testing & Quality"),
-        items: [tech["unit-tests"], tech["integration-tests"], tech["contract-tests"]],
+        items: [
+          tech["unit-tests"],
+          tech["integration-tests"],
+          tech["contract-tests"],
+        ],
       },
     ],
   };

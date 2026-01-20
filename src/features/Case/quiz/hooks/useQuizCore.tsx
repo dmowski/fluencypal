@@ -23,19 +23,25 @@ export function useQuizCore<Step extends string>({
     () => ({
       currentStepId: path[0],
     }),
-    []
+    [],
   );
 
   const [stateInput, setStateInput, isStateLoading] = useUrlMapState(
     defaultState as unknown as Record<string, string>,
-    true
+    true,
   );
 
   const setState = useCallback(
-    async (partial: Partial<QuizCoreUrlState>, options?: SetUrlStateOptions) => {
-      return await setStateInput(partial as unknown as Record<string, string>, options);
+    async (
+      partial: Partial<QuizCoreUrlState>,
+      options?: SetUrlStateOptions,
+    ) => {
+      return await setStateInput(
+        partial as unknown as Record<string, string>,
+        options,
+      );
     },
-    [setStateInput]
+    [setStateInput],
   );
 
   useEffect(() => {
@@ -47,7 +53,9 @@ export function useQuizCore<Step extends string>({
   const state = stateInput as unknown as QuizCoreUrlState;
 
   const currentStepIndex =
-    path.indexOf(state.currentStepId) > -1 ? path.indexOf(state.currentStepId) : 0;
+    path.indexOf(state.currentStepId) > -1
+      ? path.indexOf(state.currentStepId)
+      : 0;
 
   const router = useRouter();
   const nextStep = async () => {

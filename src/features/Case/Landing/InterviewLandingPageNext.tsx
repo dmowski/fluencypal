@@ -23,7 +23,9 @@ export async function generateInterviewStaticParams() {
     .flat();
 }
 
-export async function generateInterviewMetadata(props: InterviewPageProps): Promise<Metadata> {
+export async function generateInterviewMetadata(
+  props: InterviewPageProps,
+): Promise<Metadata> {
   const params = await props.params;
   const id = params.id;
   const lang = (params.lang || "en") as SupportedLanguage;
@@ -46,13 +48,21 @@ export async function InterviewLandingPageNext({
   const lang = (langParam || "en") as SupportedLanguage;
   const allInterviews = getAllInterviews(lang);
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
-  const interviewData = allInterviews.interviews.find((interview) => interview.coreData.id === id);
+  const interviewData = allInterviews.interviews.find(
+    (interview) => interview.coreData.id === id,
+  );
 
   if (!interviewData) {
     return <NotFoundPage lang={supportedLang} />;
   }
 
-  const content = <InterviewLanding lang={supportedLang} id={id} interviewData={interviewData} />;
+  const content = (
+    <InterviewLanding
+      lang={supportedLang}
+      id={id}
+      interviewData={interviewData}
+    />
+  );
 
   if (lang === "en") {
     return (

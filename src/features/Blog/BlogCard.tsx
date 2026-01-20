@@ -11,7 +11,12 @@ interface BlogCardProps {
   lang: string;
 }
 
-export const BlogCard: React.FC<BlogCardProps> = ({ blog, lang, height, variant }) => {
+export const BlogCard: React.FC<BlogCardProps> = ({
+  blog,
+  lang,
+  height,
+  variant,
+}) => {
   const i18n = getI18nInstance(lang);
   return (
     <Stack
@@ -40,7 +45,9 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blog, lang, height, variant 
           border: "1px solid rgba(0, 0, 0, 0.3)",
           ".role-play-image": {
             backgroundImage:
-              variant === "highlight" && blog.videoSrc ? "" : `url(${blog.imagePreviewUrl})`,
+              variant === "highlight" && blog.videoSrc
+                ? ""
+                : `url(${blog.imagePreviewUrl})`,
 
             video: {
               opacity: 1,
@@ -84,7 +91,11 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blog, lang, height, variant 
             },
           }}
         >
-          <img src={blog.imagePreviewUrl} alt={`Illustration for ${blog.title}`} style={{}} />
+          <img
+            src={blog.imagePreviewUrl}
+            alt={`Illustration for ${blog.title}`}
+            style={{}}
+          />
           <Stack
             sx={{
               backgroundImage: `url(${blog.imagePreviewUrl})`,

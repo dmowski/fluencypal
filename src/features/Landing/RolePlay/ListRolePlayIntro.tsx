@@ -1,5 +1,9 @@
 import { Stack, Typography } from "@mui/material";
-import { maxContentWidth, subTitleFontStyle, titleFontStyle } from "../landingSettings";
+import {
+  maxContentWidth,
+  subTitleFontStyle,
+  titleFontStyle,
+} from "../landingSettings";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
@@ -63,7 +67,9 @@ export const ListRolePlayIntro = ({ lang }: ListRolePlayIntroProps) => {
                 },
               }}
             >
-              {i18n._(`Practice Real-Life Conversations With Role-Play Scenarios`)}
+              {i18n._(
+                `Practice Real-Life Conversations With Role-Play Scenarios`,
+              )}
             </Typography>
             <Typography
               variant="body1"
@@ -75,7 +81,7 @@ export const ListRolePlayIntro = ({ lang }: ListRolePlayIntroProps) => {
               }}
             >
               {i18n._(
-                `Order food, schedule appointments, ace job interviews, and more—all with guidance from your AI tutor.`
+                `Order food, schedule appointments, ace job interviews, and more—all with guidance from your AI tutor.`,
               )}
             </Typography>
           </Stack>

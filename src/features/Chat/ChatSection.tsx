@@ -57,7 +57,8 @@ export const ChatSection = ({
     setIsNewPostModalOpen(false);
   };
 
-  const [showViewsAnchorEl, setShowViewsAnchorEl] = useState<null | HTMLElement>(null);
+  const [showViewsAnchorEl, setShowViewsAnchorEl] =
+    useState<null | HTMLElement>(null);
 
   return (
     <Stack
@@ -78,7 +79,9 @@ export const ChatSection = ({
             <Stack sx={{ marginBottom: "10px" }}>
               {!titleContent && (
                 <Typography variant="h6">
-                  {isNewPostModalOpen ? i18n._("Add New Post") : i18n._("Add Comment")}
+                  {isNewPostModalOpen
+                    ? i18n._("Add New Post")
+                    : i18n._("Add Comment")}
                 </Typography>
               )}
 
@@ -119,15 +122,21 @@ export const ChatSection = ({
                     onCloseRecordMessageModal();
                     await chat.addMessage({
                       messageContent,
-                      parentMessageId: messageToComment?.id ? messageToComment.id : "",
+                      parentMessageId: messageToComment?.id
+                        ? messageToComment.id
+                        : "",
                     });
                   }}
                   isLoading={chat.loading}
                   recordMessageTitle={
-                    messageToComment?.id ? i18n._("Add a reply") : i18n._("Record a message")
+                    messageToComment?.id
+                      ? i18n._("Add a reply")
+                      : i18n._("Record a message")
                   }
                   previousBotMessage={
-                    messageToComment ? messageToComment.content : contextForAiAnalysis || ""
+                    messageToComment
+                      ? messageToComment.content
+                      : contextForAiAnalysis || ""
                   }
                 />
               </Stack>
@@ -163,7 +172,9 @@ export const ChatSection = ({
           >
             <Button
               startIcon={<ChevronLeft />}
-              onClick={() => setActiveMessageId(activeMessage.parentMessageId || "")}
+              onClick={() =>
+                setActiveMessageId(activeMessage.parentMessageId || "")
+              }
             >
               {i18n._("Back")}
             </Button>
@@ -178,7 +189,9 @@ export const ChatSection = ({
               }}
               onClick={(e) => setShowViewsAnchorEl(e.currentTarget)}
             >
-              <Typography variant="caption">{activeMessage.viewsUserIds?.length || 0}</Typography>
+              <Typography variant="caption">
+                {activeMessage.viewsUserIds?.length || 0}
+              </Typography>
               <Eye
                 size={"18px"}
                 style={{
@@ -209,11 +222,20 @@ export const ChatSection = ({
                   gap: "10px",
                 }}
               >
-                <Typography variant="body2">{i18n._("Users who viewed this post")}</Typography>
-                {activeMessage.viewsUserIds && activeMessage.viewsUserIds.length > 0 ? (
+                <Typography variant="body2">
+                  {i18n._("Users who viewed this post")}
+                </Typography>
+                {activeMessage.viewsUserIds &&
+                activeMessage.viewsUserIds.length > 0 ? (
                   activeMessage.viewsUserIds.map((uid) => {
-                    const userStat = game.stats.find((stat) => stat.userId === uid);
-                    return <Stack key={uid}>{userStat && <GameStatRow stat={userStat} />}</Stack>;
+                    const userStat = game.stats.find(
+                      (stat) => stat.userId === uid,
+                    );
+                    return (
+                      <Stack key={uid}>
+                        {userStat && <GameStatRow stat={userStat} />}
+                      </Stack>
+                    );
                   })
                 ) : (
                   <Typography variant="caption" sx={{ opacity: 0.7 }}>
@@ -245,7 +267,9 @@ export const ChatSection = ({
           <Stack
             sx={{
               borderBottom:
-                chat.messages.length > 0 ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
+                chat.messages.length > 0
+                  ? "1px solid rgba(255, 255, 255, 0.1)"
+                  : "none",
               flexDirection: "row",
               alignItems: "center",
               padding: "20px 20px 20px 15px",
@@ -297,7 +321,11 @@ export const ChatSection = ({
             </Stack>
           </Stack>
 
-          <MessageChain topLevel parentId={""} limitTopMessages={limitTopMessages} />
+          <MessageChain
+            topLevel
+            parentId={""}
+            limitTopMessages={limitTopMessages}
+          />
         </Stack>
       )}
 

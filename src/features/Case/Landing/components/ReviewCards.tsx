@@ -26,7 +26,12 @@ const avatarColors = [
 ];
 
 /** Interview Landing Review Cards */
-export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) => {
+export const ReviewCards = ({
+  title,
+  subTitle,
+  reviews,
+  id,
+}: ReviewCardsProps) => {
   return (
     <Stack
       id={id}
@@ -125,14 +130,18 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
                     gap: "12px",
                   }}
                 >
-                  <Stack direction="row" sx={{ alignItems: "center", gap: "12px" }}>
+                  <Stack
+                    direction="row"
+                    sx={{ alignItems: "center", gap: "12px" }}
+                  >
                     <Stack
                       component={"span"}
                       sx={{
                         width: "48px",
                         height: "48px",
                         borderRadius: "50%",
-                        backgroundColor: avatarColors[index % avatarColors.length],
+                        backgroundColor:
+                          avatarColors[index % avatarColors.length],
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -174,7 +183,10 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
                         aria-hidden="true"
                         sx={{
                           fontSize: "18px",
-                          color: i < review.rate ? "#fbbf24" : "rgba(251, 191, 36, 0.3)",
+                          color:
+                            i < review.rate
+                              ? "#fbbf24"
+                              : "rgba(251, 191, 36, 0.3)",
                         }}
                       >
                         ★

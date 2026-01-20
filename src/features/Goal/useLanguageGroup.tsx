@@ -17,7 +17,9 @@ export const useLanguageGroup = ({
         return;
       }
 
-      const userLang = [...navigator.languages].map((lang) => lang.toLowerCase());
+      const userLang = [...navigator.languages].map((lang) =>
+        lang.toLowerCase(),
+      );
       setUserLanguages(userLang);
     }, 20);
   }, []);
@@ -33,16 +35,24 @@ export const useLanguageGroup = ({
         const isSystemLanguage = userLanguages.includes(lang.languageCode);
         return {
           ...lang,
-          groupTitle: isSystemLanguage ? systemLanguagesTitle : defaultGroupTitle,
+          groupTitle: isSystemLanguage
+            ? systemLanguagesTitle
+            : defaultGroupTitle,
           isSystemLanguage,
         };
       })
       .sort((a, b) => {
         // system languages first
-        if (a.groupTitle === systemLanguagesTitle && b.groupTitle !== systemLanguagesTitle) {
+        if (
+          a.groupTitle === systemLanguagesTitle &&
+          b.groupTitle !== systemLanguagesTitle
+        ) {
           return -1;
         }
-        if (a.groupTitle !== systemLanguagesTitle && b.groupTitle === systemLanguagesTitle) {
+        if (
+          a.groupTitle !== systemLanguagesTitle &&
+          b.groupTitle === systemLanguagesTitle
+        ) {
           return 1;
         }
 

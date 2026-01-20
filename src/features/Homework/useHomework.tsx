@@ -31,12 +31,17 @@ function useProvideHomework(): HomeworkContextType {
     }
 
     const homeworkCollection = db.collections.homework(userId);
-    return homeworkCollection ? query(homeworkCollection, where("languageCode", "==", lang)) : null;
+    return homeworkCollection
+      ? query(homeworkCollection, where("languageCode", "==", lang))
+      : null;
   }, [userId, settings.languageCode]);
 
-  const [allHomeworks = [], loadingHomeworks, errorHomeworks] = useCollectionData(allHomeworkQuery);
+  const [allHomeworks = [], loadingHomeworks, errorHomeworks] =
+    useCollectionData(allHomeworkQuery);
 
-  const incompleteHomeworks = allHomeworks.filter((h) => !h.isDone && !h.isSkip);
+  const incompleteHomeworks = allHomeworks.filter(
+    (h) => !h.isDone && !h.isSkip,
+  );
   const completeHomeworks = allHomeworks.filter((h) => h.isDone && !h.isSkip);
 
   const saveHomework = async (homework: Homework): Promise<string> => {
@@ -62,7 +67,11 @@ function useProvideHomework(): HomeworkContextType {
     if (!docRef) {
       throw new Error("Invalid Homework document reference");
     }
-    await setDoc(docRef, { isDone: true, isSkip: true, isSkipAt: Date.now() }, { merge: true });
+    await setDoc(
+      docRef,
+      { isDone: true, isSkip: true, isSkipAt: Date.now() },
+      { merge: true },
+    );
   };
 
   return {
@@ -76,10 +85,18 @@ function useProvideHomework(): HomeworkContextType {
   };
 }
 
-export function HomeworkProvider({ children }: { children: ReactNode }): JSX.Element {
+export function HomeworkProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const homeworkData = useProvideHomework();
 
-  return <HomeworkContext.Provider value={homeworkData}>{children}</HomeworkContext.Provider>;
+  return (
+    <HomeworkContext.Provider value={homeworkData}>
+      {children}
+    </HomeworkContext.Provider>
+  );
 }
 
 export function useHomework(): HomeworkContextType {

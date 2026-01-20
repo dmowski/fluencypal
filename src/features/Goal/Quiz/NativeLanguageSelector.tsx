@@ -1,5 +1,11 @@
 "use client";
-import { IconButton, InputAdornment, Stack, TextField, Typography } from "@mui/material";
+import {
+  IconButton,
+  InputAdornment,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
 import { Search, X } from "lucide-react";

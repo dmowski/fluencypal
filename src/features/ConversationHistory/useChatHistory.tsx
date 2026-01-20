@@ -1,6 +1,13 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX } from "react";
-import { getDocs, limit, orderBy, query, setDoc, where } from "firebase/firestore";
+import {
+  getDocs,
+  limit,
+  orderBy,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 import { useAuth } from "../Auth/useAuth";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { db } from "../Firebase/firebaseDb";
@@ -19,11 +26,14 @@ interface ChatHistoryContextType {
     languageCode: SupportedLanguage;
     mode: ConversationType;
   }) => Promise<void>;
-  setMessages: (conversationId: string, messages: ChatMessage[]) => Promise<void>;
+  setMessages: (
+    conversationId: string,
+    messages: ChatMessage[],
+  ) => Promise<void>;
   saveConversation: (
     conversationId: string,
     messages: ChatMessage[],
-    messageOrder: MessagesOrderMap
+    messageOrder: MessagesOrderMap,
   ) => Promise<void>;
   getLastConversations: (count: number) => Promise<Conversation[]>;
   conversations: Conversation[];
@@ -60,14 +70,17 @@ function useProvideChatHistory(): ChatHistoryContextType {
       collectionRef,
       where("languageCode", "==", languageCode),
       orderBy("updatedAt", "desc"),
-      limit(count)
+      limit(count),
     );
     const snapshot = await getDocs(queryRef);
     const data = snapshot.docs.map((doc) => doc.data());
     return data;
   };
 
-  const setMessages = async (conversationId: string, messages: ChatMessage[]) => {
+  const setMessages = async (
+    conversationId: string,
+    messages: ChatMessage[],
+  ) => {
     const conversationDoc = getConversationDoc(conversationId);
     await setDoc(
       conversationDoc,
@@ -76,7 +89,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
         messagesCount: messages.length,
         updatedAt: Date.now(),
       },
-      { merge: true }
+      { merge: true },
     );
   };
 
@@ -109,7 +122,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
   const saveConversation = async (
     conversationId: string,
     messages: ChatMessage[],
-    messageOrder: MessagesOrderMap
+    messageOrder: MessagesOrderMap,
   ) => {
     const conversationDoc = getConversationDoc(conversationId);
     await setDoc(
@@ -121,7 +134,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
         updatedAt: Date.now(),
         messageOrder,
       },
-      { merge: true }
+      { merge: true },
     );
   };
 
@@ -135,11 +148,17 @@ function useProvideChatHistory(): ChatHistoryContextType {
   };
 }
 
-export function ChatHistoryProvider({ children }: { children: ReactNode }): JSX.Element {
+export function ChatHistoryProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const chatHistoryData = useProvideChatHistory();
 
   return (
-    <ChatHistoryContext.Provider value={chatHistoryData}>{children}</ChatHistoryContext.Provider>
+    <ChatHistoryContext.Provider value={chatHistoryData}>
+      {children}
+    </ChatHistoryContext.Provider>
   );
 }
 

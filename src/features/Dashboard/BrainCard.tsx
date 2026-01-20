@@ -16,7 +16,10 @@ import { useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Camera } from "lucide-react";
 import { useTextAi } from "../Ai/useTextAi";
-import { fullEnglishLanguageName, supportedLanguages } from "@/features/Lang/lang";
+import {
+  fullEnglishLanguageName,
+  supportedLanguages,
+} from "@/features/Lang/lang";
 import React from "react";
 import { sleep } from "@/libs/sleep";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -88,7 +91,9 @@ export const BrainCard = () => {
 
   const setIsShowPreparingModal = (value: boolean) => {
     if (value) {
-      router.push(`${getUrlStart(supportedLang)}practice?brain=true`, { scroll: false });
+      router.push(`${getUrlStart(supportedLang)}practice?brain=true`, {
+        scroll: false,
+      });
     } else {
       webCam.disconnect();
       setIsAnalyzing(false);
@@ -141,18 +146,24 @@ export const BrainCard = () => {
       }, 2000);
 
       setTimeout(() => {
-        setImageDescription(i18n._(`Processing existing knowledge in that brain...`));
+        setImageDescription(
+          i18n._(`Processing existing knowledge in that brain...`),
+        );
       }, 3000);
 
       const newImageDescription = await webCam.getImageDescription();
-      setImageDescription(i18n._(`Thinking about which languages might be good to install...`));
+      setImageDescription(
+        i18n._(`Thinking about which languages might be good to install...`),
+      );
       if (!newImageDescription) {
         setImageDescription(i18n._(`Brain connection failed.`));
         setIsAnalyzing(false);
         return;
       }
 
-      const fullLangList = supportedLanguages.map((l) => fullEnglishLanguageName[l]).join(", ");
+      const fullLangList = supportedLanguages
+        .map((l) => fullEnglishLanguageName[l])
+        .join(", ");
       const t2 = setTimeout(() => {
         setImageDescription(i18n._(`Finalizing decision ...`));
       }, 1000);
@@ -180,7 +191,8 @@ Address directly to the user.
         .split(",")
         .map((l) => l.trim());
       setLanguagesToLearn(languagesToLearnList);
-      const [_, ...languagesToLearnDescription] = languagesToLearnText.split("\n");
+      const [_, ...languagesToLearnDescription] =
+        languagesToLearnText.split("\n");
       setImageDescription(languagesToLearnDescription.join(" ").trim());
     } catch (error) {
       setIsError(true);
@@ -194,7 +206,10 @@ Address directly to the user.
 
   return (
     <DashboardCard>
-      <CustomModal isOpen={isShowPreparingModal} onClose={() => setIsShowPreparingModal(false)}>
+      <CustomModal
+        isOpen={isShowPreparingModal}
+        onClose={() => setIsShowPreparingModal(false)}
+      >
         <Stack
           sx={{
             alignItems: "flex-start",
@@ -451,53 +466,57 @@ Address directly to the user.
                     </Stack>
                   )}
 
-                  {!isInstalling && !isAnalyzing && !languagesToLearn.length && (
-                    <Stack
-                      sx={{
-                        width: "max-content",
-                        paddingBottom: "20px",
-                      }}
-                    >
-                      <Button
+                  {!isInstalling &&
+                    !isAnalyzing &&
+                    !languagesToLearn.length && (
+                      <Stack
                         sx={{
-                          width: "100%",
-                          padding: "0px 20px",
-                          transition: "transform 0.3s",
-                          "&:hover": {
-                            transform: "scale(1.02)",
-                          },
-                        }}
-                        color="info"
-                        startIcon={
-                          <PsychologyIcon
-                            sx={{
-                              width: "3rem",
-                              height: "4rem",
-                            }}
-                          />
-                        }
-                        variant="contained"
-                        disabled={isAnalyzing}
-                        onClick={async () => {
-                          if (isAnalyzing) {
-                            return;
-                          }
-                          if (languagesToLearn.length > 0) {
-                            startInstall();
-                            return;
-                          }
-
-                          descriptionFromWebCam();
+                          width: "max-content",
+                          paddingBottom: "20px",
                         }}
                       >
-                        {languagesToLearn.length > 0
-                          ? i18n._(`Install:`) + " " + languagesToLearn.join(", ")
-                          : isAnalyzing
-                            ? i18n._(`Connecting...`)
-                            : i18n._(`Initiate brain connection`)}
-                      </Button>
-                    </Stack>
-                  )}
+                        <Button
+                          sx={{
+                            width: "100%",
+                            padding: "0px 20px",
+                            transition: "transform 0.3s",
+                            "&:hover": {
+                              transform: "scale(1.02)",
+                            },
+                          }}
+                          color="info"
+                          startIcon={
+                            <PsychologyIcon
+                              sx={{
+                                width: "3rem",
+                                height: "4rem",
+                              }}
+                            />
+                          }
+                          variant="contained"
+                          disabled={isAnalyzing}
+                          onClick={async () => {
+                            if (isAnalyzing) {
+                              return;
+                            }
+                            if (languagesToLearn.length > 0) {
+                              startInstall();
+                              return;
+                            }
+
+                            descriptionFromWebCam();
+                          }}
+                        >
+                          {languagesToLearn.length > 0
+                            ? i18n._(`Install:`) +
+                              " " +
+                              languagesToLearn.join(", ")
+                            : isAnalyzing
+                              ? i18n._(`Connecting...`)
+                              : i18n._(`Initiate brain connection`)}
+                        </Button>
+                      </Stack>
+                    )}
                 </Stack>
               )}
 
@@ -531,12 +550,18 @@ Address directly to the user.
                         paddingBottom: "20px",
                       }}
                     >
-                      <Typography variant="h3" component="h2" className="decor-text">
+                      <Typography
+                        variant="h3"
+                        component="h2"
+                        className="decor-text"
+                      >
                         {i18n._(`Preparing the brain`)}
                       </Typography>
 
                       <Typography>
-                        {i18n._(`Upload language skills directly to your brain`)}
+                        {i18n._(
+                          `Upload language skills directly to your brain`,
+                        )}
                       </Typography>
                     </Stack>
 
@@ -572,11 +597,13 @@ Address directly to the user.
                       How does it work?
                     </Typography>
                     <Typography variant="caption">
-                      Our AI-powered Neural Sync Engine analyzes your cognitive signature using your
-                      webcam feed — inspired by recent research in neuro-symbolic AI and
-                      brain-computer interfaces (BCI). Based on your focus, micro-expressions, and
-                      language exposure history, the system recommends optimal language packs and
-                      begins real-time skill embedding.{" "}
+                      Our AI-powered Neural Sync Engine analyzes your cognitive
+                      signature using your webcam feed — inspired by recent
+                      research in neuro-symbolic AI and brain-computer
+                      interfaces (BCI). Based on your focus, micro-expressions,
+                      and language exposure history, the system recommends
+                      optimal language packs and begins real-time skill
+                      embedding.{" "}
                       <Link
                         variant="caption"
                         href="https://en.wikipedia.org/wiki/Brain%E2%80%93computer_interface"
@@ -682,11 +709,17 @@ Address directly to the user.
             Ogtopenetic activations
           </Link>{" "}
           •{" "}
-          <Link variant="caption" href="https://www.nature.com/articles/d41586-025-01001-6">
+          <Link
+            variant="caption"
+            href="https://www.nature.com/articles/d41586-025-01001-6"
+          >
             Brain Transferring Research Paper
           </Link>
           •{" "}
-          <Link variant="caption" href="https://www.nature.com/articles/d41586-025-01001-6">
+          <Link
+            variant="caption"
+            href="https://www.nature.com/articles/d41586-025-01001-6"
+          >
             Research paper
           </Link>
         </Typography>

@@ -40,7 +40,7 @@ async function getConversionRate(toCurrency: string): Promise<number> {
   }
 
   const res = await fetch(
-    `https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}`
+    `https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}`,
   );
 
   if (!res.ok) {

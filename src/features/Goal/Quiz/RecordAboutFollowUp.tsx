@@ -28,7 +28,9 @@ export const RecordAboutFollowUp = ({
 
   return (
     <RecordUserAudio
-      title={loading ? i18n._("Loading...") : question?.title || i18n._("Loading...")}
+      title={
+        loading ? i18n._("Loading...") : question?.title || i18n._("Loading...")
+      }
       isLoading={!question?.title || loading}
       subTitle={question?.subtitle || ""}
       nextStep={nextStep}

@@ -82,7 +82,9 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
           }}
         >
           {isLoading && <CircularProgress />}
-          {isShowForm && clientSecret && <VerifyCard lang={lang} clientSecret={clientSecret} />}
+          {isShowForm && clientSecret && (
+            <VerifyCard lang={lang} clientSecret={clientSecret} />
+          )}
           {!isShowForm && !isLoading && (
             <>
               <Stack
@@ -115,7 +117,9 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
                   >
                     {isShowHowToUseForFree
                       ? i18n._("Simple steps to get the app for free.")
-                      : i18n._("Please confirm your credit card to access all features.")}
+                      : i18n._(
+                          "Please confirm your credit card to access all features.",
+                        )}
                   </Typography>
                 </Stack>
 
@@ -127,7 +131,9 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
                         ? [
                             {
                               iconName: "credit-card",
-                              title: i18n._("1. Confirm your credit card details"),
+                              title: i18n._(
+                                "1. Confirm your credit card details",
+                              ),
                             },
                             {
                               iconName: "piggy-bank",
@@ -139,21 +145,29 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
                             },
                             {
                               iconName: "swords",
-                              title: i18n._("4. Play the game and become one of the top 5 players"),
+                              title: i18n._(
+                                "4. Play the game and become one of the top 5 players",
+                              ),
                             },
                             {
                               iconName: "trophy",
-                              title: i18n._("5. Winners get full access for free "),
+                              title: i18n._(
+                                "5. Winners get full access for free ",
+                              ),
                             },
                           ]
                         : [
                             {
                               iconName: "sparkles",
-                              title: i18n._("You will get a trial period of full access for free"),
+                              title: i18n._(
+                                "You will get a trial period of full access for free",
+                              ),
                             },
                             {
                               iconName: "piggy-bank",
-                              title: i18n._("No automatic payment after the trial"),
+                              title: i18n._(
+                                "No automatic payment after the trial",
+                              ),
                             },
                             {
                               iconName: "shield-check",
@@ -189,7 +203,9 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
                   size="large"
                   color="info"
                   endIcon={<Gem />}
-                  onClick={() => setIsShowHowToUseForFree(!isShowHowToUseForFree)}
+                  onClick={() =>
+                    setIsShowHowToUseForFree(!isShowHowToUseForFree)
+                  }
                 >
                   {i18n._("How to use for free")}
                 </Button>

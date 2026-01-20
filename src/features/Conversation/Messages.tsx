@@ -23,7 +23,7 @@ export const Messages = ({
 
   const sortedMessages = useMemo(
     () => getSortedMessages({ conversation, messageOrder }),
-    [conversation, messageOrder, isAiSpeaking]
+    [conversation, messageOrder, isAiSpeaking],
   );
 
   const messages = (
@@ -75,7 +75,9 @@ export const Message = ({
     if (translatedText) {
       setTranslatedText("");
     } else {
-      const result = await translator.translateText({ text: message?.text || "" });
+      const result = await translator.translateText({
+        text: message?.text || "",
+      });
       setTranslatedText("\n" + result.trim());
     }
     setIsTranslating(false);
@@ -138,7 +140,10 @@ export const Message = ({
 
         {translator.isTranslateAvailable && text && (
           <IconButton onClick={toggleTranslation} disabled={isTranslating}>
-            <Languages size={"16px"} color={isTranslating ? "#4cd1fdff" : "#eee"} />
+            <Languages
+              size={"16px"}
+              color={isTranslating ? "#4cd1fdff" : "#eee"}
+            />
           </IconButton>
         )}
       </Stack>

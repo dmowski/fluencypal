@@ -23,9 +23,16 @@ export interface ConversationConfig {
   // used for sendSdpOffer: WebRTC auth
   getAuthToken: () => Promise<string>;
 
-  generateTextWithAi: ({}: { userMessage: string; systemMessage: string }) => Promise<string>;
+  generateTextWithAi: ({}: {
+    userMessage: string;
+    systemMessage: string;
+  }) => Promise<string>;
 
-  playAudio: (textToPlay: string, voice: AiVoice, instruction: string) => Promise<void>;
+  playAudio: (
+    textToPlay: string,
+    voice: AiVoice,
+    instruction: string,
+  ) => Promise<void>;
 }
 
 export type ConversationInstance = {

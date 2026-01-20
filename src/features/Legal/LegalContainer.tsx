@@ -9,7 +9,11 @@ interface LegalContainerProps {
   lang: SupportedLanguage;
 }
 
-export const LegalContainer = ({ children, page, lang }: LegalContainerProps) => {
+export const LegalContainer = ({
+  children,
+  page,
+  lang,
+}: LegalContainerProps) => {
   const isCookies = page === "cookies";
   const isTerms = page === "terms";
   const isPrivacy = page === "privacy";
@@ -22,13 +26,22 @@ export const LegalContainer = ({ children, page, lang }: LegalContainerProps) =>
         zIndex: 2,
       }}
     >
-      <Button variant={isTerms ? "contained" : "outlined"} href={`${getUrlStart(lang)}terms`}>
+      <Button
+        variant={isTerms ? "contained" : "outlined"}
+        href={`${getUrlStart(lang)}terms`}
+      >
         {i18n._(`Terms of Use`)}
       </Button>
-      <Button variant={isPrivacy ? "contained" : "outlined"} href={`${getUrlStart(lang)}privacy`}>
+      <Button
+        variant={isPrivacy ? "contained" : "outlined"}
+        href={`${getUrlStart(lang)}privacy`}
+      >
         {i18n._(`Privacy Policy`)}
       </Button>
-      <Button variant={isCookies ? "contained" : "outlined"} href={`${getUrlStart(lang)}cookies`}>
+      <Button
+        variant={isCookies ? "contained" : "outlined"}
+        href={`${getUrlStart(lang)}cookies`}
+      >
         {i18n._(`Cookies Policy`)}
       </Button>
     </ButtonGroup>

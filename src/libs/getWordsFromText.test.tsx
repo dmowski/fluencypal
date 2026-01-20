@@ -13,7 +13,9 @@ describe("getWordsFromText", () => {
   });
 
   it("Advanced string", () => {
-    const result = getWordsFromText("hello World. hello world? And - hello world! Привет мир.");
+    const result = getWordsFromText(
+      "hello World. hello world? And - hello world! Привет мир.",
+    );
     expect(result).toEqual({
       hello: 3,
       world: 3,

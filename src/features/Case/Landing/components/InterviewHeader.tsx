@@ -11,7 +11,11 @@ export interface HeaderProps {
 }
 
 /** Interview Landing Header */
-export function InterviewHeader({ lang, startTrialHref, pageUrl }: HeaderProps) {
+export function InterviewHeader({
+  lang,
+  startTrialHref,
+  pageUrl,
+}: HeaderProps) {
   const { i18n } = useLingui();
 
   return (

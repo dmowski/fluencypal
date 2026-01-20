@@ -164,7 +164,10 @@ export const StepInfoCards = (props: StepsCardsProps) => {
                     {card.title}
                   </Typography>
                 </Stack>
-                <Typography variant="body2" sx={{ color: "#fff", opacity: 0.7 }}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#fff", opacity: 0.7 }}
+                >
                   {card.description}
                 </Typography>
               </Stack>

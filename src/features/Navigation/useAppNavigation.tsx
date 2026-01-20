@@ -12,10 +12,16 @@ interface AppNavigationContextType {
   pageUrl: (page: PageType) => string;
 }
 
-const AppNavigationContext = createContext<AppNavigationContextType | null>(null);
+const AppNavigationContext = createContext<AppNavigationContextType | null>(
+  null,
+);
 
 function useProvideAppNavigation(): AppNavigationContextType {
-  const [internalValue, setValue, isLoading] = useUrlState<PageType>("page", "home", true);
+  const [internalValue, setValue, isLoading] = useUrlState<PageType>(
+    "page",
+    "home",
+    true,
+  );
   const searchParams = useSearchParams();
 
   const pageUrl = (page: PageType) => {
@@ -32,15 +38,25 @@ function useProvideAppNavigation(): AppNavigationContextType {
   };
 }
 
-export function AppNavigationProvider({ children }: { children: ReactNode }): JSX.Element {
+export function AppNavigationProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideAppNavigation();
-  return <AppNavigationContext.Provider value={hook}>{children}</AppNavigationContext.Provider>;
+  return (
+    <AppNavigationContext.Provider value={hook}>
+      {children}
+    </AppNavigationContext.Provider>
+  );
 }
 
 export const useAppNavigation = (): AppNavigationContextType => {
   const context = useContext(AppNavigationContext);
   if (!context) {
-    throw new Error("useAppNavigation must be used within a AppNavigationProvider");
+    throw new Error(
+      "useAppNavigation must be used within a AppNavigationProvider",
+    );
   }
   return context;
 };

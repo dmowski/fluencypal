@@ -3,7 +3,8 @@ interface AudioGenerationInfo {
   duration: number;
 }
 
-const REMOTE_URL = "https://astra-deploy-2-507232057233.europe-central2.run.app/";
+const REMOTE_URL =
+  "https://astra-deploy-2-507232057233.europe-central2.run.app/";
 const BASE_URL = REMOTE_URL;
 
 const audioCacheInfo: Record<string, Promise<AudioGenerationInfo> | null> = {};
@@ -22,7 +23,7 @@ export const getPublicTextToAudioByVoiceIdUrl = async (
   text: string,
   voiceId: string,
   stability: number = 0.5,
-  lang: string
+  lang: string,
 ): Promise<AudioGenerationInfo> => {
   const cacheKey = `${text}_${voiceId}`;
 

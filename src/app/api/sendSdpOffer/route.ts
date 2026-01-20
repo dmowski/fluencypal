@@ -30,7 +30,10 @@ export async function POST(request: Request) {
     const diffMinutes = dayjs().diff(dayjs(userLastVisit), "minute");
     const trashHoldMinutes = 5;
     if (diffMinutes > trashHoldMinutes) {
-      console.log(`User last visit was ${diffMinutes} minutes ago`, userInfo.uid);
+      console.log(
+        `User last visit was ${diffMinutes} minutes ago`,
+        userInfo.uid,
+      );
       await sentSupportTelegramMessage({
         message: `User last visit was ${diffMinutes} minutes ago`,
         userId: userInfo.uid || "",
@@ -51,7 +54,9 @@ export async function POST(request: Request) {
   });
 
   if (!sdpResponse.ok) {
-    throw new Error(`Failed to send SDP Offer: ${sdpResponse.status} ${sdpResponse.statusText}`);
+    throw new Error(
+      `Failed to send SDP Offer: ${sdpResponse.status} ${sdpResponse.statusText}`,
+    );
   }
 
   const response: SendSdpOfferResponse = {

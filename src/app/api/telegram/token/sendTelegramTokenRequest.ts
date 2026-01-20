@@ -2,7 +2,7 @@
 import { TelegramAuthRequest, TelegramAuthResponse } from "./types";
 
 export const sendTelegramTokenRequest = async (
-  input: TelegramAuthRequest
+  input: TelegramAuthRequest,
 ): Promise<TelegramAuthResponse> => {
   const response = await fetch("/api/telegram/token", {
     method: "POST",

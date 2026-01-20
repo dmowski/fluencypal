@@ -80,8 +80,13 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
               marginBottom: "10px",
             }}
           />
-          <Typography variant="caption" sx={{ maxWidth: "300px", opacity: 0.7, fontSize: "11px" }}>
-            {i18n._(`AI-powered interview preparation that helps you get more job offers.`)}
+          <Typography
+            variant="caption"
+            sx={{ maxWidth: "300px", opacity: 0.7, fontSize: "11px" }}
+          >
+            {i18n._(
+              `AI-powered interview preparation that helps you get more job offers.`,
+            )}
           </Typography>
           <Stack
             sx={{
@@ -121,13 +126,25 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
         <Stack>
           <Typography className="section-title">{i18n._(`Company`)}</Typography>
 
-          <Link href={`${getUrlStart(lang)}contacts`} variant="body1" className="link">
+          <Link
+            href={`${getUrlStart(lang)}contacts`}
+            variant="body1"
+            className="link"
+          >
             {i18n._(`Contacts`)}
           </Link>
-          <Link href={`${getUrlStart(lang)}terms`} variant="body1" className="link">
+          <Link
+            href={`${getUrlStart(lang)}terms`}
+            variant="body1"
+            className="link"
+          >
             {i18n._(`Terms of Use`)}
           </Link>
-          <Link href={`${getUrlStart(lang)}privacy`} variant="body1" className="link">
+          <Link
+            href={`${getUrlStart(lang)}privacy`}
+            variant="body1"
+            className="link"
+          >
             {i18n._(`Privacy Policy`)}
           </Link>
         </Stack>

@@ -36,7 +36,8 @@ export function useQuizSurveyData<T extends CoreSurveyData>({
 
   const ensureSurveyDocExists = async () => {
     if (surveyDoc) return;
-    if (!surveyDocRef) throw new Error("ensureSurveyDocExists | No survey doc ref");
+    if (!surveyDocRef)
+      throw new Error("ensureSurveyDocExists | No survey doc ref");
     if ((await getDoc(surveyDocRef)).data()) return;
 
     await setDoc(surveyDocRef, initEmptyData);

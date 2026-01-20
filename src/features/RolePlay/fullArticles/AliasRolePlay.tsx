@@ -1,10 +1,21 @@
 import { getI18nInstance } from "@/appRouterI18n";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { Stack, Typography } from "@mui/material";
-import { AudioLines, HandHeart, Heart, MessageCircleHeart, Speech, Zap } from "lucide-react";
+import {
+  AudioLines,
+  HandHeart,
+  Heart,
+  MessageCircleHeart,
+  Speech,
+  Zap,
+} from "lucide-react";
 import { JSX } from "react";
 
-export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Element => {
+export const AliasRolePlay = ({
+  lang,
+}: {
+  lang: SupportedLanguage;
+}): JSX.Element => {
   const i18n = getI18nInstance(lang);
   return (
     <Stack>
@@ -32,7 +43,9 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
         >
           <Speech size={"18px"} />
           <Typography>
-            {i18n._(`Enhance your vocabulary by describing words in unique ways.`)}
+            {i18n._(
+              `Enhance your vocabulary by describing words in unique ways.`,
+            )}
           </Typography>
         </Stack>
 
@@ -58,7 +71,9 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
         >
           <Zap size={"18px"} />
           <Typography>
-            {i18n._(`Practice rapid thinking and fluent speaking under playful pressure.`)}
+            {i18n._(
+              `Practice rapid thinking and fluent speaking under playful pressure.`,
+            )}
           </Typography>
         </Stack>
 
@@ -101,7 +116,10 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
       >
         {i18n._(`Choose Your Language Level`)}
       </Typography>
-      <Typography variant="caption" style={{ fontSize: "0.9rem", opacity: 0.8 }}>
+      <Typography
+        variant="caption"
+        style={{ fontSize: "0.9rem", opacity: 0.8 }}
+      >
         {i18n._(`Pick a level to start playing!`)}
       </Typography>
       <img
@@ -125,7 +143,10 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
       >
         {i18n._(`Check proposed words`)}
       </Typography>
-      <Typography variant="caption" style={{ fontSize: "0.9rem", opacity: 0.8 }}>
+      <Typography
+        variant="caption"
+        style={{ fontSize: "0.9rem", opacity: 0.8 }}
+      >
         {i18n._(`Based on your level, the AI will suggest words to describe.`)}
       </Typography>
       <img
@@ -149,8 +170,13 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
       >
         {i18n._(`Record your description`)}
       </Typography>
-      <Typography variant="caption" style={{ fontSize: "0.9rem", opacity: 0.8 }}>
-        {i18n._(`Describe the word you see on the screen without using the word itself!`)}
+      <Typography
+        variant="caption"
+        style={{ fontSize: "0.9rem", opacity: 0.8 }}
+      >
+        {i18n._(
+          `Describe the word you see on the screen without using the word itself!`,
+        )}
       </Typography>
       <img
         src="/rolePlaysPublic/alias/recording.webp"
@@ -173,7 +199,10 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
       >
         {i18n._(`Have fun!`)}
       </Typography>
-      <Typography variant="caption" style={{ fontSize: "0.9rem", opacity: 0.8 }}>
+      <Typography
+        variant="caption"
+        style={{ fontSize: "0.9rem", opacity: 0.8 }}
+      >
         {i18n._(`Enjoy the game and see how the AI guesses your description!`)}
       </Typography>
       <img

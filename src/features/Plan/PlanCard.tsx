@@ -130,7 +130,9 @@ export const PlanCard = ({
             left: "49px",
             height: "var(--height)",
             backgroundColor:
-              isNextInPlan || isContinueLabel ? "rgba(255, 255, 255, 0)" : "rgba(13, 220, 196, 1)",
+              isNextInPlan || isContinueLabel
+                ? "rgba(255, 255, 255, 0)"
+                : "rgba(13, 220, 196, 1)",
             position: "absolute",
             display: isLast ? "none" : "block",
 
@@ -347,7 +349,10 @@ export const PlanCard = ({
             sx={{
               fontWeight: 600,
               fontSize: "0.82rem",
-              color: isActive || isDone ? `rgba(67, 244, 223, 0.9)` : `rgba(67, 244, 223, 0.5)`,
+              color:
+                isActive || isDone
+                  ? `rgba(67, 244, 223, 0.9)`
+                  : `rgba(67, 244, 223, 0.5)`,
             }}
           >
             {subTitle}

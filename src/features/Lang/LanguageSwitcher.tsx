@@ -52,7 +52,7 @@ export function LanguageSwitcher({
   const [isLoading, setIsLoading] = useState(false);
   const [isSawLangSelector, setIsSawLangSelector] = useLocalStorage<boolean>(
     "isUserSawLangSelector",
-    false
+    false,
   );
 
   const pageLang = useMemo(() => parseLangFromUrl(pathname), [pathname]);
@@ -61,9 +61,11 @@ export function LanguageSwitcher({
 
   const updatePageLanguage = (newLang: SupportedLanguage) => {
     setIsLoading(true);
-    const sliceNumber = locale !== "en" ? 2 : pathname.startsWith("/en") ? 2 : 1;
+    const sliceNumber =
+      locale !== "en" ? 2 : pathname.startsWith("/en") ? 2 : 1;
 
-    const pathNameWithoutLocale = pathname?.split("/")?.slice(sliceNumber) ?? [];
+    const pathNameWithoutLocale =
+      pathname?.split("/")?.slice(sliceNumber) ?? [];
 
     const query = new URLSearchParams(window.location.search);
 
@@ -85,9 +87,13 @@ export function LanguageSwitcher({
   };
 
   const systemLangs = useMemo(() => getUserLangCode(), []);
-  const isCurrentPageLangIsSystem = systemLangs.length && systemLangs.includes(supportedLang);
+  const isCurrentPageLangIsSystem =
+    systemLangs.length && systemLangs.includes(supportedLang);
   const supportedLangCodeLabel =
-    systemLangs.length && !isCurrentPageLangIsSystem && !isAuth && !isSawLangSelector
+    systemLangs.length &&
+    !isCurrentPageLangIsSystem &&
+    !isAuth &&
+    !isSawLangSelector
       ? availableOnLabelMap[systemLangs[0]]
       : "";
 
@@ -106,7 +112,7 @@ export function LanguageSwitcher({
 
   const selectedNativeLanguage = useMemo(
     () => languageGroups.find((lang) => lang.languageCode === nativeLang),
-    [languageGroups, nativeLang]
+    [languageGroups, nativeLang],
   );
 
   return (

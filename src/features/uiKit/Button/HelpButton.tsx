@@ -7,9 +7,16 @@ interface KeyboardButtonProps {
   isLoading?: boolean;
 }
 
-export const HelpButton: React.FC<KeyboardButtonProps> = ({ isEnabled, isLoading, onClick }) => {
+export const HelpButton: React.FC<KeyboardButtonProps> = ({
+  isEnabled,
+  isLoading,
+  onClick,
+}) => {
   return (
-    <Tooltip title={isEnabled ? "Help me with answer" : "Answer is loading..."} arrow>
+    <Tooltip
+      title={isEnabled ? "Help me with answer" : "Answer is loading..."}
+      arrow
+    >
       <Stack>
         <button
           style={{

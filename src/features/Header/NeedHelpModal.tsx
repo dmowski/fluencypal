@@ -16,11 +16,17 @@ interface NeedHelpModalProps {
 
 export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
   const isTelegramApp = isTMA();
-  const urlPathToRedirect = isTelegramApp ? getUrlStart(lang) + "tg" : getUrlStart(lang);
+  const urlPathToRedirect = isTelegramApp
+    ? getUrlStart(lang) + "tg"
+    : getUrlStart(lang);
 
-  const deleteAccount = useDeleteAccount({ onClose, startPage: urlPathToRedirect });
+  const deleteAccount = useDeleteAccount({
+    onClose,
+    startPage: urlPathToRedirect,
+  });
   const { i18n } = useLingui();
-  const [isShowDeleteAccountModal, setIsShowDeleteAccountModal] = useState(false);
+  const [isShowDeleteAccountModal, setIsShowDeleteAccountModal] =
+    useState(false);
 
   return (
     <CustomModal isOpen={true} onClose={() => onClose()}>
@@ -42,7 +48,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
             }}
           >
             {i18n._(
-              `My name is Alex. I am the founder of this project. You will find my contacts below.`
+              `My name is Alex. I am the founder of this project. You will find my contacts below.`,
             )}
           </Typography>
         </Stack>
@@ -94,7 +100,9 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
               >
                 <ReceiptText />
                 <Typography>
-                  <Link href={`${getUrlStart(lang)}terms`}>{i18n._(`Terms of Use`)}</Link>
+                  <Link href={`${getUrlStart(lang)}terms`}>
+                    {i18n._(`Terms of Use`)}
+                  </Link>
                 </Typography>
               </Stack>
 
@@ -107,7 +115,9 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
               >
                 <Cookie />
                 <Typography>
-                  <Link href={`${getUrlStart(lang)}privacy`}>{i18n._(`Privacy Policy`)}</Link>
+                  <Link href={`${getUrlStart(lang)}privacy`}>
+                    {i18n._(`Privacy Policy`)}
+                  </Link>
                 </Typography>
               </Stack>
             </Stack>
@@ -127,14 +137,16 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
               <Typography variant="h5">
                 {i18n._(`Are you sure you want to delete your account?`)}
               </Typography>
-              <Typography variant="caption">{i18n._(`This action is irreversible.`)}</Typography>
+              <Typography variant="caption">
+                {i18n._(`This action is irreversible.`)}
+              </Typography>
               <Typography variant="caption">
                 {i18n._(`We will delete your data, but information about your balance will be stored for one
               year.`)}
               </Typography>
               <Typography variant="caption">
                 {i18n._(
-                  `If you want to remove all information, including your balance, please contact us.`
+                  `If you want to remove all information, including your balance, please contact us.`,
                 )}
               </Typography>
             </Stack>

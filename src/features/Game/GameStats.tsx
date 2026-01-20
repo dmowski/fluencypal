@@ -1,6 +1,13 @@
 "use client";
 
-import { Button, IconButton, Menu, MenuItem, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { useGame } from "./useGame";
 import { GameStatRow } from "./GameStatRow";
 import { useState } from "react";
@@ -61,7 +68,10 @@ export const GameStats = () => {
           >
             {sort == "lastVisit" ? i18n._("Last Visit") : i18n._("Score")}
           </Typography>
-          <IconButton size="small" onClick={(e) => setMenuAnchorEl(e.currentTarget)}>
+          <IconButton
+            size="small"
+            onClick={(e) => setMenuAnchorEl(e.currentTarget)}
+          >
             <ChevronDown
               size={"22px"}
               style={{
@@ -133,7 +143,9 @@ export const GameStats = () => {
         })}
 
       {limit < game.stats.length && (
-        <Button onClick={() => setLimit((prev) => prev + 500)}>{i18n._("Load More")}</Button>
+        <Button onClick={() => setLimit((prev) => prev + 500)}>
+          {i18n._("Load More")}
+        </Button>
       )}
     </Stack>
   );

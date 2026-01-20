@@ -79,7 +79,7 @@ export const ListInterviewIntro = ({ lang }: ListInterviewIntroProps) => {
               }}
             >
               {i18n._(
-                `Practice with our interactive interview scenarios designed to boost your confidence and improve your communication skills.`
+                `Practice with our interactive interview scenarios designed to boost your confidence and improve your communication skills.`,
               )}
             </Typography>
           </Stack>

@@ -34,7 +34,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
   const { rolePlayScenarios } = getRolePlayScenarios(lang);
 
   const relatedCards = rolePlayScenarios.filter((scenario) =>
-    item.relatedRolePlays.includes(scenario.id)
+    item.relatedRolePlays.includes(scenario.id),
   );
 
   return (
@@ -270,7 +270,12 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                 >
                   {relatedCards.map((scenario, index) => {
                     return (
-                      <RolePlayCard key={index} scenario={scenario} lang={lang} height="400px" />
+                      <RolePlayCard
+                        key={index}
+                        scenario={scenario}
+                        lang={lang}
+                        height="400px"
+                      />
                     );
                   })}
                 </Stack>

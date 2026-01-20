@@ -72,7 +72,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
       const res = await sendTelegramTokenRequest({ initData });
       if (res.error) {
         setError(
-          `${res.error.code}: ${res.error.message}${res.error.reason ? ` (${res.error.reason})` : ""}`
+          `${res.error.code}: ${res.error.message}${res.error.reason ? ` (${res.error.reason})` : ""}`,
         );
       } else {
         const token = res.token;
@@ -101,7 +101,8 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
       return;
     }
 
-    const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+    const sleep = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms));
 
     if (raw) {
       isInitializing.current = true;

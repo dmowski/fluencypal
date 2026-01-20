@@ -1,10 +1,13 @@
 import { CHAT_MESSAGE_POINTS } from "@/features/Chat/data";
 import { BATTLE_WIN_POINTS } from "../Battle/data";
-import { IncreaseGamePointsRequest, IncreaseGamePointsResponse } from "../types";
+import {
+  IncreaseGamePointsRequest,
+  IncreaseGamePointsResponse,
+} from "../types";
 import { increaseUserPoints } from "./statsResources";
 
 export const increaseGamePoints = async (
-  props: IncreaseGamePointsRequest
+  props: IncreaseGamePointsRequest,
 ): Promise<IncreaseGamePointsResponse> => {
   if (props.battle?.winnerUserId) {
     await increaseUserPoints({
@@ -21,7 +24,11 @@ export const increaseGamePoints = async (
     });
   }
 
-  if (props.aiConversationId && props.aiConversationUserId && props.aiConversationPoints) {
+  if (
+    props.aiConversationId &&
+    props.aiConversationUserId &&
+    props.aiConversationPoints
+  ) {
     await increaseUserPoints({
       userId: props.aiConversationUserId || "",
       points: props.aiConversationPoints,

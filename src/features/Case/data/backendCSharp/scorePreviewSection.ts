@@ -2,7 +2,9 @@ import { ScorePreviewSection } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
-export const getBackendScorePreviewSection = (lang: SupportedLanguage): ScorePreviewSection => {
+export const getBackendScorePreviewSection = (
+  lang: SupportedLanguage,
+): ScorePreviewSection => {
   const i18n = getI18nInstance(lang);
 
   return {
@@ -20,7 +22,7 @@ export const getBackendScorePreviewSection = (lang: SupportedLanguage): ScorePre
       label: i18n._("Backend Readiness Score"),
       totalScore: 80,
       description: i18n._(
-        "Solid knowledge of ASP.NET Core and EF Core. Some gaps in resiliency patterns and observability."
+        "Solid knowledge of ASP.NET Core and EF Core. Some gaps in resiliency patterns and observability.",
       ),
       scoreMetrics: [
         { title: i18n._("ASP.NET Core"), score: 85 },

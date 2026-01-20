@@ -14,7 +14,12 @@ const sanitizeString = (str: string) => {
   return sanitizedString;
 };
 
-export const isGoodUserInput = ({ input, correctedMessage }: isEqualMessagesProps) => {
-  const isGood = !correctedMessage || sanitizeString(correctedMessage) === sanitizeString(input);
+export const isGoodUserInput = ({
+  input,
+  correctedMessage,
+}: isEqualMessagesProps) => {
+  const isGood =
+    !correctedMessage ||
+    sanitizeString(correctedMessage) === sanitizeString(input);
   return isGood;
 };

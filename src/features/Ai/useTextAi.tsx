@@ -36,7 +36,8 @@ function useProvideTextAi(): TextAiContextType {
   const languageCode = settings.languageCode || "en";
 
   const generate = async (conversationDate: TextAiRequest) => {
-    const valueForCache = conversationDate.userMessage + conversationDate.systemMessage;
+    const valueForCache =
+      conversationDate.userMessage + conversationDate.systemMessage;
 
     if (conversationDate.cache) {
       const responseFromCache = await getDataFromCache({
@@ -49,8 +50,11 @@ function useProvideTextAi(): TextAiContextType {
     }
 
     const response = await sendTextAiRequest(
-      { ...conversationDate, languageCode: conversationDate.languageCode || languageCode },
-      await auth.getToken()
+      {
+        ...conversationDate,
+        languageCode: conversationDate.languageCode || languageCode,
+      },
+      await auth.getToken(),
     );
 
     const responseString = response.aiResponse || "";
@@ -69,7 +73,8 @@ function useProvideTextAi(): TextAiContextType {
   const parseJson = async <T,>(json: string): Promise<T> => {
     try {
       let trimmedJson = json.trim();
-      const isAbleToFixWithoutAi = trimmedJson.startsWith("```json") && trimmedJson.endsWith("```");
+      const isAbleToFixWithoutAi =
+        trimmedJson.startsWith("```json") && trimmedJson.endsWith("```");
       if (isAbleToFixWithoutAi) {
         trimmedJson = trimmedJson.slice(7, -3).trim();
       }
@@ -105,7 +110,8 @@ function useProvideTextAi(): TextAiContextType {
     });
     try {
       let trimmedJson = fixJsonRes.trim();
-      const isAbleToFixWithoutAi = trimmedJson.startsWith("```json") && trimmedJson.endsWith("```");
+      const isAbleToFixWithoutAi =
+        trimmedJson.startsWith("```json") && trimmedJson.endsWith("```");
       if (isAbleToFixWithoutAi) {
         trimmedJson = trimmedJson.slice(7, -3).trim();
       }
@@ -126,11 +132,17 @@ function useProvideTextAi(): TextAiContextType {
     error?: Error;
   }
 
-  const generateJson = async <T,>(conversationDate: JsonAiRequest, attemptInfo?: AttemptInfo) => {
+  const generateJson = async <T,>(
+    conversationDate: JsonAiRequest,
+    attemptInfo?: AttemptInfo,
+  ) => {
     const isAttemptExceeded =
       attemptInfo && attemptInfo.attempt >= (conversationDate.attempts || 3);
     if (isAttemptExceeded) {
-      throw attemptInfo.error || new Error("AI JSON generation: Max attempts exceeded");
+      throw (
+        attemptInfo.error ||
+        new Error("AI JSON generation: Max attempts exceeded")
+      );
     }
 
     try {
@@ -144,13 +156,16 @@ function useProvideTextAi(): TextAiContextType {
         },
       });
       await sleep(2000);
-      console.log("Retrying AI JSON generation, attempt:", (attemptInfo?.attempt || 0) + 1);
+      console.log(
+        "Retrying AI JSON generation, attempt:",
+        (attemptInfo?.attempt || 0) + 1,
+      );
       return generateJson<T>(
         { ...conversationDate, cache: false },
         {
           attempt: (attemptInfo?.attempt || 0) + 1,
           error: error as Error,
-        }
+        },
       );
     }
   };
@@ -161,9 +176,15 @@ function useProvideTextAi(): TextAiContextType {
   };
 }
 
-export function TextAiProvider({ children }: { children: ReactNode }): JSX.Element {
+export function TextAiProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideTextAi();
-  return <TextAiContext.Provider value={hook}>{children}</TextAiContext.Provider>;
+  return (
+    <TextAiContext.Provider value={hook}>{children}</TextAiContext.Provider>
+  );
 }
 
 export const useTextAi = (): TextAiContextType => {

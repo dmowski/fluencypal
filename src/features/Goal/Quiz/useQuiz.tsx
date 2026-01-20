@@ -1,6 +1,10 @@
 "use client";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { fullLanguageName, SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
+import {
+  fullLanguageName,
+  SupportedLanguage,
+  supportedLanguages,
+} from "@/features/Lang/lang";
 import { SetUrlStateOptions, useUrlMapState } from "@/features/Url/useUrlParam";
 
 import { useRouter } from "next/navigation";
@@ -188,7 +192,10 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
 
   const setState = useCallback(
     async (partial: Partial<QuizUrlState>, options?: SetUrlStateOptions) => {
-      return await setStateInput(partial as unknown as Record<string, string>, options);
+      return await setStateInput(
+        partial as unknown as Record<string, string>,
+        options,
+      );
     },
     [setStateInput],
   );
@@ -208,7 +215,10 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
     if (!surveyDocRef) {
       throw new Error("updateSurvey | No survey doc ref");
     }
-    const updatedSurvey: QuizSurvey2 = { ...surveyDoc, updatedAtIso: new Date().toISOString() };
+    const updatedSurvey: QuizSurvey2 = {
+      ...surveyDoc,
+      updatedAtIso: new Date().toISOString(),
+    };
     await setDoc(surveyDocRef, updatedSurvey, { merge: true });
     console.log("✅ Survey doc updated: " + label);
     return updatedSurvey;
@@ -216,16 +226,19 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
 
   const test = async () => {};
 
-  const [isGeneratingFollowUpMap, setIsGeneratingFollowUpMap] = useState<Record<string, boolean>>(
-    {},
+  const [isGeneratingFollowUpMap, setIsGeneratingFollowUpMap] = useState<
+    Record<string, boolean>
+  >({});
+  const isFollowUpGenerating = Object.values(isGeneratingFollowUpMap).some(
+    (v) => v,
   );
-  const isFollowUpGenerating = Object.values(isGeneratingFollowUpMap).some((v) => v);
 
   const processAbout = async (
     survey: QuizSurvey2,
     hash: string,
   ): Promise<QuizSurvey2FollowUpQuestion> => {
-    const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
+    const learningLanguageFullName =
+      fullLanguageName[survey.learningLanguageCode];
     const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
 The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses.
 
@@ -294,10 +307,14 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
       console.log("🦄 generatingFollowUp ");
       const newAnswer = await processAbout(survey, initHash);
 
-      const afterHash = getHash(surveyRef.current?.aboutUserTranscription || "");
+      const afterHash = getHash(
+        surveyRef.current?.aboutUserTranscription || "",
+      );
 
       if (afterHash !== initHash) {
-        console.log("⏩ generatingFollowUp | User about changed, skipping analysis");
+        console.log(
+          "⏩ generatingFollowUp | User about changed, skipping analysis",
+        );
         setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
         return;
       }
@@ -323,16 +340,18 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     }
   };
 
-  const [isGeneratingGoalFollowUpMap, setIsGeneratingGoalFollowUpMap] = useState<
-    Record<string, boolean>
-  >({});
-  const isGoalQuestionGenerating = Object.values(isGeneratingGoalFollowUpMap).some((v) => v);
+  const [isGeneratingGoalFollowUpMap, setIsGeneratingGoalFollowUpMap] =
+    useState<Record<string, boolean>>({});
+  const isGoalQuestionGenerating = Object.values(
+    isGeneratingGoalFollowUpMap,
+  ).some((v) => v);
 
   const createGoalQuestion = async (
     survey: QuizSurvey2,
     hash: string,
   ): Promise<QuizSurvey2FollowUpQuestion> => {
-    const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
+    const learningLanguageFullName =
+      fullLanguageName[survey.learningLanguageCode];
     const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves and their answer to question then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
 The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand ${learningLanguageFullName} well.
 
@@ -433,26 +452,39 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     const initHash = getHash(survey.aboutUserFollowUpTranscription || "");
 
     if (initHash === survey.goalFollowUpQuestion.hash) {
-      console.log(`⏩ generatingGoalQuestion | Goal followup already generated, skipping`);
+      console.log(
+        `⏩ generatingGoalQuestion | Goal followup already generated, skipping`,
+      );
       return;
     }
 
     if (isGeneratingGoalFollowUpMap[initHash]) {
-      console.log(`⏩ generatingGoalQuestion | Goal followup already in progress, skipping`);
+      console.log(
+        `⏩ generatingGoalQuestion | Goal followup already in progress, skipping`,
+      );
       return;
     }
 
-    console.log(`🦄 generatingGoalQuestion | Starting analysis for text length`);
+    console.log(
+      `🦄 generatingGoalQuestion | Starting analysis for text length`,
+    );
     setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: true }));
 
     try {
       const newGoalQuestion = await createGoalQuestion(survey, initHash);
 
-      const afterHash = getHash(surveyRef.current?.aboutUserFollowUpTranscription || "");
+      const afterHash = getHash(
+        surveyRef.current?.aboutUserFollowUpTranscription || "",
+      );
 
       if (afterHash !== initHash) {
-        console.log(`⏩ generatingGoalQuestion | User about followup changed, skipping analysis`);
-        setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
+        console.log(
+          `⏩ generatingGoalQuestion | User about followup changed, skipping analysis`,
+        );
+        setIsGeneratingGoalFollowUpMap((prev) => ({
+          ...prev,
+          [initHash]: false,
+        }));
         return;
       }
 
@@ -463,7 +495,10 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
         },
         "generatingGoalQuestion",
       );
-      setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
+      setIsGeneratingGoalFollowUpMap((prev) => ({
+        ...prev,
+        [initHash]: false,
+      }));
       return;
     } catch (e) {
       console.error("❌ generatingGoalQuestion | Error during analysis", e);
@@ -474,11 +509,16 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
           survey,
         },
       });
-      setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
+      setIsGeneratingGoalFollowUpMap((prev) => ({
+        ...prev,
+        [initHash]: false,
+      }));
     }
   };
 
-  const [isGoalGeneratingMap, setIsGoalGeneratingMap] = useState<Record<string, boolean>>({});
+  const [isGoalGeneratingMap, setIsGoalGeneratingMap] = useState<
+    Record<string, boolean>
+  >({});
   const isGoalGenerating = Object.values(isGoalGeneratingMap).some((v) => v);
 
   const generateGoal = async () => {
@@ -545,9 +585,13 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
     setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
 
-    const finalSurveyHash = getHash(surveyRef.current?.goalUserTranscription || "");
+    const finalSurveyHash = getHash(
+      surveyRef.current?.goalUserTranscription || "",
+    );
     if (initialSurveyHash !== finalSurveyHash) {
-      console.log("🦄 generateGoal | Survey changed during goal generation, skipping update");
+      console.log(
+        "🦄 generateGoal | Survey changed during goal generation, skipping update",
+      );
       return;
     }
     if (!surveyRef.current) return;
@@ -558,7 +602,9 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
         goalHash: finalSurveyHash,
         userRecords: userRecords,
         exampleOfWelcomeMessage:
-          exampleOfWelcomeMessage || (surveyRef.current || survey).exampleOfWelcomeMessage || "",
+          exampleOfWelcomeMessage ||
+          (surveyRef.current || survey).exampleOfWelcomeMessage ||
+          "",
       },
       "generateGoal",
     );
@@ -680,7 +726,9 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     systemLanguagesTitle: i18n._(`System languages`),
   });
 
-  const preFindNativeLanguage = async (langToLearn: string): Promise<Partial<QuizUrlState>> => {
+  const preFindNativeLanguage = async (
+    langToLearn: string,
+  ): Promise<Partial<QuizUrlState>> => {
     try {
       if (nativeLanguage !== langToLearn) {
         return {};
@@ -702,7 +750,9 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
         ? guessLanguagesByCountry(countryCode)
         : [];
 
-      const filteredLanguagesCodes = languagesByCountryCode.filter((code) => code !== langToLearn);
+      const filteredLanguagesCodes = languagesByCountryCode.filter(
+        (code) => code !== langToLearn,
+      );
       const languageByCountry = filteredLanguagesCodes.filter((code) =>
         languageGroups.find((lang) => lang.languageCode === code),
       )[0];
@@ -765,9 +815,9 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
   };
 
   const path = useMemo(() => {
-    const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
-      nativeLanguage,
-    );
+    const isNativeLanguageIsSupportedLanguage = (
+      supportedLanguages as string[]
+    ).includes(nativeLanguage);
 
     const path = stepsViews.filter((viewStep) => {
       if (viewStep === "pageLanguage" || viewStep === "before_pageLanguage") {
@@ -783,7 +833,8 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
     return path;
   }, [nativeLanguage]);
-  const currentStepIndex = path.indexOf(currentStep) === -1 ? 0 : path.indexOf(currentStep);
+  const currentStepIndex =
+    path.indexOf(currentStep) === -1 ? 0 : path.indexOf(currentStep);
 
   const [isGTagConfirmed, setIsGTagConfirmed] = useState(false);
 
@@ -823,9 +874,9 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     });
 
     if (url && currentStep === "nativeLanguage") {
-      const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
-        nativeLanguage,
-      );
+      const isNativeLanguageIsSupportedLanguage = (
+        supportedLanguages as string[]
+      ).includes(nativeLanguage);
       if (isNativeLanguageIsSupportedLanguage && pageLang !== nativeLanguage) {
         url = replaceUrlToLang(nativeLanguage, url);
       }

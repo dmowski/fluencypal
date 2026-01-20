@@ -12,9 +12,14 @@ const isOptionAvailable = (option: SelectGroupItem, inputValue: string) => {
   );
 };
 
-const filterHandler = (options: SelectGroupItem[], params: FilterOptionsState<SelectGroupItem>) => {
+const filterHandler = (
+  options: SelectGroupItem[],
+  params: FilterOptionsState<SelectGroupItem>,
+) => {
   const { inputValue } = params;
-  const filtered = options.filter((option) => isOptionAvailable(option, inputValue));
+  const filtered = options.filter((option) =>
+    isOptionAvailable(option, inputValue),
+  );
   return filtered;
 };
 
@@ -53,7 +58,9 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
         width: "100%",
       }}
       groupBy={(option) => {
-        const group = options.find((group) => group.languageCode === option.languageCode);
+        const group = options.find(
+          (group) => group.languageCode === option.languageCode,
+        );
         return group?.groupTitle || "Other";
       }}
       getOptionLabel={(option) => {
@@ -104,7 +111,9 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
             >
               <Stack>
                 <Typography>{option.englishName}</Typography>
-                {showSubtitle && <Typography variant="caption">{option.nativeName}</Typography>}
+                {showSubtitle && (
+                  <Typography variant="caption">{option.nativeName}</Typography>
+                )}
               </Stack>
             </Stack>
           </Stack>
@@ -120,7 +129,7 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
           required={required}
           onBlur={(e) => {
             const appropriateOption = options.find((option) =>
-              isOptionAvailable(option, e.target.value)
+              isOptionAvailable(option, e.target.value),
             );
             if (appropriateOption) {
               onChange(appropriateOption.languageCode);
@@ -128,7 +137,9 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
           }}
         />
       )}
-      onChange={(_, newValue) => newValue?.languageCode && onChange(newValue?.languageCode)}
+      onChange={(_, newValue) =>
+        newValue?.languageCode && onChange(newValue?.languageCode)
+      }
       filterOptions={(options, params) => filterHandler(options, params)}
     />
   );

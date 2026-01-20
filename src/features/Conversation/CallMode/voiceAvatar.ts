@@ -9,7 +9,9 @@ export const voiceAvatarMap: Record<AiVoice, AiAvatar> = {
     talkVideoUrl: ["/call/ash/talk.webm"],
     voiceInstruction: `Your voice is deep, with a steady tone that commands attention. Your speech is articulate and purposeful, with natural pauses that emphasize your points.`,
 
-    helloPhrases: ["Hello, I’m Ash. I’ll help you speak clearly and with confidence."],
+    helloPhrases: [
+      "Hello, I’m Ash. I’ll help you speak clearly and with confidence.",
+    ],
   },
   // girl
   shimmer: {
@@ -26,7 +28,9 @@ export const voiceAvatarMap: Record<AiVoice, AiAvatar> = {
     sitVideoUrl: ["/call/marin/sit.webm"],
     talkVideoUrl: ["/call/marin/talk.webm"],
     voiceInstruction: `Your voice is soft and gentle, with a calming presence that puts others at ease. Your speech is clear and deliberate, with thoughtful pauses that convey empathy and understanding.`,
-    helloPhrases: ["Hi, I’m Marin. Don’t worry about mistakes — I’ll guide you gently."],
+    helloPhrases: [
+      "Hi, I’m Marin. Don’t worry about mistakes — I’ll guide you gently.",
+    ],
   },
 
   // man
@@ -34,7 +38,9 @@ export const voiceAvatarMap: Record<AiVoice, AiAvatar> = {
     sitVideoUrl: ["/call/verse/sit.webm"],
     talkVideoUrl: ["/call/verse/talk.webm", "/call/verse/talk2.webm"],
     voiceInstruction: `Your voice is deep, with a friendly and approachable tone. Your speech is clear and articulate, with natural pauses that make you easy to understand.`,
-    helloPhrases: ["Hey! I’m Verse. I’m here to keep things light and motivating."],
+    helloPhrases: [
+      "Hey! I’m Verse. I’m here to keep things light and motivating.",
+    ],
   },
 };
 

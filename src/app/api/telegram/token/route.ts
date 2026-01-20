@@ -1,4 +1,8 @@
-import { TelegramAuthRequest, TelegramAuthResponse, TelegramUser } from "./types";
+import {
+  TelegramAuthRequest,
+  TelegramAuthResponse,
+  TelegramUser,
+} from "./types";
 import crypto from "node:crypto";
 import { envConfig } from "../../config/envConfig";
 import {
@@ -31,8 +35,10 @@ function safeJsonParse<T>(s?: string): T | undefined {
 function verifyTelegramInitData(
   initData: string,
   botToken: string,
-  maxAgeMs = 10 * 60 * 1000 // 10 minutes; relax during dev if needed
-): { ok: true; parsed: Record<string, string> } | { ok: false; reason: string } {
+  maxAgeMs = 10 * 60 * 1000, // 10 minutes; relax during dev if needed
+):
+  | { ok: true; parsed: Record<string, string> }
+  | { ok: false; reason: string } {
   try {
     const parsed = parseQueryString(initData);
 
@@ -49,7 +55,10 @@ function verifyTelegramInitData(
     const dataCheckString = keys.map((k) => `${k}=${parsed[k]}`).join("\n");
 
     // ⚠️ WebApp rule: secret = HMAC_SHA256(bot_token, key = "WebAppData")
-    const secretKey = crypto.createHmac("sha256", "WebAppData").update(botToken).digest();
+    const secretKey = crypto
+      .createHmac("sha256", "WebAppData")
+      .update(botToken)
+      .digest();
 
     const expectedHash = crypto
       .createHmac("sha256", secretKey)
@@ -108,7 +117,10 @@ export async function POST(request: Request) {
     if (!botToken) {
       const resp: TelegramAuthResponse = {
         ...baseResponse,
-        error: { code: "SERVER_MISCONFIGURED", message: "Internal error. Try again later." },
+        error: {
+          code: "SERVER_MISCONFIGURED",
+          message: "Internal error. Try again later.",
+        },
       };
       return Response.json(resp);
     }
@@ -131,14 +143,18 @@ export async function POST(request: Request) {
     if (!tgUser?.id) {
       const resp: TelegramAuthResponse = {
         ...baseResponse,
-        error: { code: "NO_TELEGRAM_USER", message: "Internal error. Try again later..." },
+        error: {
+          code: "NO_TELEGRAM_USER",
+          message: "Internal error. Try again later...",
+        },
       };
       return Response.json(resp);
     }
 
     const uid = `tg:${tgUser.id}`;
     const displayName =
-      [tgUser.first_name, tgUser.last_name].filter(Boolean).join(" ").trim() || null;
+      [tgUser.first_name, tgUser.last_name].filter(Boolean).join(" ").trim() ||
+      null;
 
     // 4) Ensure Firebase user exists (idempotent)
     let userRecord: UserInfo | null = null;
@@ -146,11 +162,15 @@ export async function POST(request: Request) {
       userRecord = await getAuthUser(uid);
     } catch (e: any) {
       const notFound =
-        e?.errorInfo?.code === "auth/user-not-found" || /user-not-found/i.test(String(e?.message));
+        e?.errorInfo?.code === "auth/user-not-found" ||
+        /user-not-found/i.test(String(e?.message));
       if (!notFound) {
         const resp: TelegramAuthResponse = {
           ...baseResponse,
-          error: { code: "AUTH_LOOKUP_FAILED", message: "Internal error. Try again later...." },
+          error: {
+            code: "AUTH_LOOKUP_FAILED",
+            message: "Internal error. Try again later....",
+          },
         };
         return Response.json(resp);
       }

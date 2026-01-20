@@ -94,7 +94,8 @@ export const GameBadge = () => {
               },
             }}
           >
-            Answer <b>{game.pointsToNextPosition} questions</b> to get a new position
+            Answer <b>{game.pointsToNextPosition} questions</b> to get a new
+            position
           </Typography>
         )}
 

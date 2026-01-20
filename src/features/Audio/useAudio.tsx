@@ -6,7 +6,11 @@ import { sendTextToAudioRequest } from "@/app/api/textToAudio/sendTextToAudioReq
 import { AiVoice } from "@/common/ai";
 
 interface AudioContextType {
-  getAudioUrl: (text: string, instructions: string, voice: AiVoice) => Promise<string>;
+  getAudioUrl: (
+    text: string,
+    instructions: string,
+    voice: AiVoice,
+  ) => Promise<string>;
 }
 
 const AudioContext = createContext<AudioContextType | null>(null);
@@ -15,7 +19,11 @@ function useProvideAudio(): AudioContextType {
   const settings = useSettings();
   const auth = useAuth();
 
-  const getAudioUrl = async (text: string, instructions: string, voice: AiVoice) => {
+  const getAudioUrl = async (
+    text: string,
+    instructions: string,
+    voice: AiVoice,
+  ) => {
     const languageCode = settings.languageCode;
     if (!languageCode) {
       throw new Error("Language is not set | useProvideAudio.getAudioUrl");
@@ -28,7 +36,7 @@ function useProvideAudio(): AudioContextType {
         instructions,
         voice,
       },
-      await auth.getToken()
+      await auth.getToken(),
     );
     const audioUrl = response.audioUrl;
     if (!audioUrl) {
@@ -42,7 +50,11 @@ function useProvideAudio(): AudioContextType {
   };
 }
 
-export function AudioProvider({ children }: { children: ReactNode }): JSX.Element {
+export function AudioProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideAudio();
   return <AudioContext.Provider value={hook}>{children}</AudioContext.Provider>;
 }

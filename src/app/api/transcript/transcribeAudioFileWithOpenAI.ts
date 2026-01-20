@@ -3,7 +3,11 @@ import { TranscriptAiModel } from "@/common/ai";
 import { getBucket } from "../config/firebase";
 import { TranscriptResponse } from "./types";
 import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
-import { fullLanguageName, SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
+import {
+  fullLanguageName,
+  SupportedLanguage,
+  supportedLanguages,
+} from "@/features/Lang/lang";
 import { sleep } from "@/libs/sleep";
 
 export const transcribeAudioFileWithOpenAI = async ({
@@ -39,7 +43,8 @@ export const transcribeAudioFileWithOpenAI = async ({
   }
 
   const supportedLang =
-    supportedLanguages.find((lang) => lang === languageCode.toLowerCase()) || "en";
+    supportedLanguages.find((lang) => lang === languageCode.toLowerCase()) ||
+    "en";
 
   if (!file) {
     const errorResponse: TranscriptResponse = {
@@ -98,7 +103,10 @@ export const transcribeAudioFileWithOpenAI = async ({
 
     badContents.forEach((badContent) => {
       if (output.toLowerCase().includes(badContent.toLowerCase())) {
-        output = output.toLowerCase().replaceAll(badContent.toLowerCase(), "").trim();
+        output = output
+          .toLowerCase()
+          .replaceAll(badContent.toLowerCase(), "")
+          .trim();
       }
     });
 

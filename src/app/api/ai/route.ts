@@ -1,5 +1,9 @@
 import { AiRequest, AiResponse } from "@/common/requests";
-import { calculateTextUsagePrice, convertUsdToHours, TextUsageEvent } from "@/common/ai";
+import {
+  calculateTextUsagePrice,
+  convertUsdToHours,
+  TextUsageEvent,
+} from "@/common/ai";
 import { validateAuthToken } from "../config/firebase";
 import { getUserBalance } from "../payment/getUserBalance";
 import { TextUsageLog } from "@/common/usage";

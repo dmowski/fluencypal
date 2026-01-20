@@ -35,7 +35,10 @@ export async function POST(request: NextRequest) {
       const isOldPayment = orderCreatedAt < new Date(Date.now() - oldDuration);
       if (isOldPayment) {
         console.log(`ORDER:${order.id} = isOldPayment`, isOldPayment);
-        await updateOrder(order.id, { status: "outdated", updatedAtIso: new Date().toISOString() });
+        await updateOrder(order.id, {
+          status: "outdated",
+          updatedAtIso: new Date().toISOString(),
+        });
         continue;
       }
 
@@ -44,7 +47,10 @@ export async function POST(request: NextRequest) {
       const isPaid = await isCryptoPaid(comment);
       console.log(`ORDER:${order.id} = isPaid`, isPaid);
       if (isPaid) {
-        await updateOrder(order.id, { status: "paid", updatedAtIso: new Date().toISOString() });
+        await updateOrder(order.id, {
+          status: "paid",
+          updatedAtIso: new Date().toISOString(),
+        });
         await addPaymentLog({
           amount: order.amount,
           userId,
@@ -70,7 +76,10 @@ export async function POST(request: NextRequest) {
     const errorResponse: CheckPaymentResponse = {
       isPaymentPending: false,
       isRecentlyPaid: false,
-      error: { code: "SERVER_ERROR", message: e?.message || "Unexpected server error" },
+      error: {
+        code: "SERVER_ERROR",
+        message: e?.message || "Unexpected server error",
+      },
     };
     return Response.json(errorResponse);
   }

@@ -3,7 +3,11 @@ import { Button, Stack, Typography } from "@mui/material";
 import { ChevronRight, Telescope } from "lucide-react";
 import { ColorIconTextList } from "../Survey/ColorIconTextList";
 
-export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick: () => void }) => {
+export const FeatureBlocker = ({
+  onLimitedClick,
+}: {
+  onLimitedClick: () => void;
+}) => {
   const { i18n } = useLingui();
 
   const bgUrl = "/landing/preview/space2.webp";
@@ -14,7 +18,8 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick: () => void 
         alignItems: "center",
         justifyContent: "center",
         borderRadius: "18px",
-        boxShadow: "0px 0px 0 1px rgba(206, 200, 239, 0.2), 2px 2px 30px rgba(0, 0, 0, 0.1)",
+        boxShadow:
+          "0px 0px 0 1px rgba(206, 200, 239, 0.2), 2px 2px 30px rgba(0, 0, 0, 0.1)",
         background: "rgba(10, 18, 30, 1)",
 
         width: "100%",

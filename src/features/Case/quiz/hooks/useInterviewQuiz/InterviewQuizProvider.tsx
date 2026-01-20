@@ -19,6 +19,11 @@ export function InterviewQuizProvider({
   coreData: InterviewCoreData;
   quiz: InterviewQuiz;
 }): JSX.Element {
-  const hook = useProvideInterviewQuizContext({ lang, coreData, quiz, interviewId });
+  const hook = useProvideInterviewQuizContext({
+    lang,
+    coreData,
+    quiz,
+    interviewId,
+  });
   return <QuizContext.Provider value={hook}>{children}</QuizContext.Provider>;
 }

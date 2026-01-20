@@ -53,17 +53,25 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   }, [aiConversation.isClosing]);
 
   useEffect(() => {
-    if (recorder.transcription) lessonPlan.generateAnalysis(recorder.transcription);
+    if (recorder.transcription)
+      lessonPlan.generateAnalysis(recorder.transcription);
   }, [recorder.transcription]);
 
   if (auth.loading) return <InfoBlockedSection title={i18n._(`Loading...`)} />;
-  if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
+  if (!auth.isAuthorized)
+    return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
 
-  if (settings.loading || auth.loading || !auth.uid || !usage.isWelcomeBalanceInitialized) {
+  if (
+    settings.loading ||
+    auth.loading ||
+    !auth.uid ||
+    !usage.isWelcomeBalanceInitialized
+  ) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
 
-  if (appNavigation.currentPage === "community") return <GamePage lang={lang} />;
+  if (appNavigation.currentPage === "community")
+    return <GamePage lang={lang} />;
 
   if (aiConversation.errorInitiating) {
     return (
@@ -75,7 +83,11 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   }
 
   if (aiConversation.isInitializing) {
-    return <InfoBlockedSection title={aiConversation.isInitializing || i18n._(`Loading...`)} />;
+    return (
+      <InfoBlockedSection
+        title={aiConversation.isInitializing || i18n._(`Loading...`)}
+      />
+    );
   }
 
   if (!settings.languageCode) return <SelectLanguage pageLang={lang} />;

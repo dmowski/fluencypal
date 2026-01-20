@@ -1,6 +1,9 @@
 import { TextToAudioRequest, TextToAudioResponse } from "./types";
 
-export const sendTextToAudioRequest = async (options: TextToAudioRequest, authKey: string) => {
+export const sendTextToAudioRequest = async (
+  options: TextToAudioRequest,
+  authKey: string,
+) => {
   const response = await fetch(`/api/textToAudio`, {
     method: "POST",
     body: JSON.stringify(options),

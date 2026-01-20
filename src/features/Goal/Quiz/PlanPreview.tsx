@@ -36,9 +36,11 @@ export const PlanPreview = ({ plan }: PlanPreviewProps) => {
           const colorIndex = index % cardColors.length;
           const cardColor = cardColors[colorIndex];
           const elementsWithSameMode =
-            sortedElements.filter((element) => element.mode === planElement.mode) || [];
+            sortedElements.filter(
+              (element) => element.mode === planElement.mode,
+            ) || [];
           const currentElementIndex = elementsWithSameMode.findIndex(
-            (element) => element.id === planElement.id
+            (element) => element.id === planElement.id,
           );
 
           const imageVariants = cardInfo.imgUrl;

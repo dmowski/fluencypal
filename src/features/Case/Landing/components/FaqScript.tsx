@@ -10,7 +10,13 @@ export interface FaqScriptProps {
   description: string;
 }
 
-export const FaqScript = ({ items, url, lang, pageTitle, description }: FaqScriptProps) => {
+export const FaqScript = ({
+  items,
+  url,
+  lang,
+  pageTitle,
+  description,
+}: FaqScriptProps) => {
   const fullUrl = "https://fluencypal.com" + url;
 
   const structuredData = {

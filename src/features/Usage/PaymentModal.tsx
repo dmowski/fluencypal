@@ -64,7 +64,7 @@ export const PaymentModal = () => {
       {
         message: message,
       },
-      await auth.getToken()
+      await auth.getToken(),
     );
   };
 
@@ -76,7 +76,7 @@ export const PaymentModal = () => {
         languageCode: supportedLang,
         currency: currency.currency,
       },
-      await auth.getToken()
+      await auth.getToken(),
     );
     if (!checkoutInfo.sessionUrl) {
       console.log("checkoutInfo", checkoutInfo);
@@ -101,7 +101,10 @@ export const PaymentModal = () => {
   if (!usage.isShowPaymentModal) return null;
 
   return (
-    <CustomModal isOpen={true && auth.isAuthorized} onClose={() => usage.togglePaymentModal(false)}>
+    <CustomModal
+      isOpen={true && auth.isAuthorized}
+      onClose={() => usage.togglePaymentModal(false)}
+    >
       {isShowAmountInput ? (
         <>
           <Stack
@@ -198,7 +201,7 @@ export const PaymentModal = () => {
                   <b>{i18n._(`What one hour means?`)}</b>
                   <br />
                   {i18n._(
-                    `You only charged for when AI is actively working: speaking or analyzing your speech.`
+                    `You only charged for when AI is actively working: speaking or analyzing your speech.`,
                   )}
                 </Typography>
 
@@ -211,7 +214,7 @@ export const PaymentModal = () => {
                   <b>{i18n._(`How long will my hours last?`)}</b>
                   <br />
                   {i18n._(
-                    `Once purchased, your hours remain available until you use them. There is no expiration.`
+                    `Once purchased, your hours remain available until you use them. There is no expiration.`,
                   )}
                 </Typography>
 
@@ -224,7 +227,7 @@ export const PaymentModal = () => {
                   <b>{i18n._(`What's included?`)}</b>
                   <br />
                   {i18n._(
-                    `Access to all functionalities on app where AI is present: speaking, analyzing, role-plays, new words and runles creator.`
+                    `Access to all functionalities on app where AI is present: speaking, analyzing, role-plays, new words and runles creator.`,
                   )}
                 </Typography>
               </Stack>
@@ -252,7 +255,9 @@ export const PaymentModal = () => {
 
                 <Typography variant="h5">
                   {i18n._(`Total:`)}{" "}
-                  <b>{currency.convertUsdToCurrency(amountToAdd * pricePerHour)}</b>
+                  <b>
+                    {currency.convertUsdToCurrency(amountToAdd * pricePerHour)}
+                  </b>
                 </Typography>
               </Stack>
               <Divider />
@@ -263,7 +268,7 @@ export const PaymentModal = () => {
                 {amountToAdd > 400 && (
                   <Typography variant="caption" color="error">
                     {i18n._(
-                      `Amount is too large. I appreciate your support, but let's keep it under $400`
+                      `Amount is too large. I appreciate your support, but let's keep it under $400`,
                     )}
                   </Typography>
                 )}
@@ -300,7 +305,10 @@ export const PaymentModal = () => {
                     label={
                       <Typography variant="caption">
                         {i18n._(`I accept the`)}{" "}
-                        <Link target="_blank" href={`${getUrlStart(supportedLang)}terms`}>
+                        <Link
+                          target="_blank"
+                          href={`${getUrlStart(supportedLang)}terms`}
+                        >
                           {i18n._(`Terms and Conditions`)}
                         </Link>{" "}
                         {i18n._(`of the Website operated by Fundacja Rozwoju Przedsiębiorczości "Twój
@@ -320,7 +328,9 @@ export const PaymentModal = () => {
                     control={<Checkbox />}
                     label={
                       <Typography variant="caption">
-                        {i18n._(`I want to receive commercial and marketing content`)}
+                        {i18n._(
+                          `I want to receive commercial and marketing content`,
+                        )}
                       </Typography>
                     }
                   />
@@ -365,7 +375,10 @@ export const PaymentModal = () => {
                   the service and for marketing purposes – in the case of consent. We would like to
                   inform you about the possibility of withdrawing your consent. For full information
                   on data processing and your rights, see the`)}{" "}
-                  <Link target="_blank" href={`${getUrlStart(supportedLang)}privacy`}>
+                  <Link
+                    target="_blank"
+                    href={`${getUrlStart(supportedLang)}privacy`}
+                  >
                     {i18n._(`privacy policy`)}
                   </Link>
                   .
@@ -412,7 +425,9 @@ export const PaymentModal = () => {
                         opacity: 0.7,
                       }}
                     >
-                      {i18n._(`Your payment was successful, but updates might take a few minutes`)}
+                      {i18n._(
+                        `Your payment was successful, but updates might take a few minutes`,
+                      )}
                     </Typography>
                   </>
                 ) : (
@@ -440,7 +455,9 @@ export const PaymentModal = () => {
                 >
                   <Stack>
                     <Typography variant="h3">
-                      {convertHoursToHumanFormat(Math.max(0, usage.balanceHours))}
+                      {convertHoursToHumanFormat(
+                        Math.max(0, usage.balanceHours),
+                      )}
                     </Typography>
                     <Typography variant="caption">
                       {i18n._(`Current Balance of AI usage`)}
@@ -471,7 +488,8 @@ export const PaymentModal = () => {
                       color: "#c2c2c2",
                     }}
                   >
-                    {i18n._(`Total used:`)} <b>{convertHoursToHumanFormat(usage.usedHours)}</b>
+                    {i18n._(`Total used:`)}{" "}
+                    <b>{convertHoursToHumanFormat(usage.usedHours)}</b>
                   </Typography>
 
                   <Stack
@@ -520,8 +538,12 @@ export const PaymentModal = () => {
                         {usage.paymentLogs
                           .sort((a, b) => b.createdAt - a.createdAt)
                           .map((log) => {
-                            const humanDate = dayjs(log.createdAt).format("DD MMM YYYY");
-                            const humanTime = dayjs(log.createdAt).format("HH:mm");
+                            const humanDate = dayjs(log.createdAt).format(
+                              "DD MMM YYYY",
+                            );
+                            const humanTime = dayjs(log.createdAt).format(
+                              "HH:mm",
+                            );
                             return (
                               <Stack
                                 key={log.id}
@@ -545,10 +567,13 @@ export const PaymentModal = () => {
                               >
                                 <Stack>
                                   <Typography variant="h6">
-                                    {log.currency.toUpperCase()} {log.amountAdded}
+                                    {log.currency.toUpperCase()}{" "}
+                                    {log.amountAdded}
                                   </Typography>
                                   <Typography variant="body2">
-                                    {convertHoursToHumanFormat(log.amountOfHours)}
+                                    {convertHoursToHumanFormat(
+                                      log.amountOfHours,
+                                    )}
                                   </Typography>
                                   <Typography
                                     variant="caption"
@@ -568,11 +593,17 @@ export const PaymentModal = () => {
                                     },
                                   }}
                                 >
-                                  <Typography variant="caption">{humanTime}</Typography>
-                                  <Typography variant="body2">{humanDate}</Typography>
+                                  <Typography variant="caption">
+                                    {humanTime}
+                                  </Typography>
+                                  <Typography variant="body2">
+                                    {humanDate}
+                                  </Typography>
                                   {log.receiptUrl && (
                                     <Link href={log.receiptUrl} target="_blank">
-                                      <Typography variant="body2">Receipt</Typography>
+                                      <Typography variant="body2">
+                                        Receipt
+                                      </Typography>
                                     </Link>
                                   )}
                                 </Stack>

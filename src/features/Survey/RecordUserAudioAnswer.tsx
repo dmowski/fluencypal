@@ -118,7 +118,11 @@ export const RecordUserAudioAnswer = ({
             paddingBottom: "10px",
           }}
         >
-          <Goal size={"24px"} color="rgba(255, 255, 255, 0.3)" strokeWidth={"2px"} />
+          <Goal
+            size={"24px"}
+            color="rgba(255, 255, 255, 0.3)"
+            strokeWidth={"2px"}
+          />
           <Typography variant="h6" align="center" sx={{}}>
             <Trans>
               Goal: at least <b>{minWords}</b> words
@@ -140,7 +144,9 @@ export const RecordUserAudioAnswer = ({
           >
             <Button
               variant={isNeedMoreRecording ? "contained" : "outlined"}
-              startIcon={isRecording ? <Check size={"16px"} /> : <Mic size={"16px"} />}
+              startIcon={
+                isRecording ? <Check size={"16px"} /> : <Mic size={"16px"} />
+              }
               size="small"
               color={isRecording ? "error" : "primary"}
               sx={{
@@ -162,7 +168,11 @@ export const RecordUserAudioAnswer = ({
                   : i18n._("Record more")}
             </Button>
             {transcript && (
-              <IconButton size="small" onClick={clearTranscript} disabled={isRecording}>
+              <IconButton
+                size="small"
+                onClick={clearTranscript}
+                disabled={isRecording}
+              >
                 <Trash size={"16px"} />
               </IconButton>
             )}

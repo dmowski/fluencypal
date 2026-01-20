@@ -203,7 +203,9 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                 borderRadius: borderRadius,
                 position: "relative",
                 zIndex: 2,
-                boxShadow: isCenter ? "0 3px 70px rgba(0, 0, 0, 1)" : "0 4px 85px rgba(0, 0, 0, 1)",
+                boxShadow: isCenter
+                  ? "0 3px 70px rgba(0, 0, 0, 1)"
+                  : "0 4px 85px rgba(0, 0, 0, 1)",
 
                 "@media (max-width: 700px)": {
                   height: "400px",
@@ -223,7 +225,12 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                   }}
                 >
                   {card.imageUrl && !card.videoUrl && (
-                    <Stack component={"img"} alt={card.alt} src={card.imageUrl} sx={contentStyle} />
+                    <Stack
+                      component={"img"}
+                      alt={card.alt}
+                      src={card.imageUrl}
+                      sx={contentStyle}
+                    />
                   )}
                   {card.videoUrl && (
                     <>
@@ -269,7 +276,8 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                       height: "calc(100% + var(--padding) * 2)",
                       top: "calc(0px - var(--padding))",
                       left: "calc(0px - var(--padding))",
-                      boxShadow: "0 0 0 0px rgba(0, 0, 0, 1), 0 0 0 1px rgba(255, 255, 255, 1)",
+                      boxShadow:
+                        "0 0 0 0px rgba(0, 0, 0, 1), 0 0 0 1px rgba(255, 255, 255, 1)",
                       borderRadius: borderRadius,
                       "@media (max-width: 700px)": {
                         borderRadius: borderRadiusMobile,

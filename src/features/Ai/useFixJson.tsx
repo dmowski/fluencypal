@@ -10,7 +10,8 @@ export const useFixJson = () => {
   const parseJson = async <T,>(json: string): Promise<T> => {
     try {
       let trimmedJson = json.trim();
-      const isAbleToFixWithoutAi = trimmedJson.startsWith("```json") && trimmedJson.endsWith("```");
+      const isAbleToFixWithoutAi =
+        trimmedJson.startsWith("```json") && trimmedJson.endsWith("```");
       if (isAbleToFixWithoutAi) {
         trimmedJson = trimmedJson.slice(7, -3).trim();
       }
@@ -46,7 +47,8 @@ export const useFixJson = () => {
     });
     try {
       let trimmedJson = fixJsonRes.trim();
-      const isAbleToFixWithoutAi = trimmedJson.startsWith("```json") && trimmedJson.endsWith("```");
+      const isAbleToFixWithoutAi =
+        trimmedJson.startsWith("```json") && trimmedJson.endsWith("```");
       if (isAbleToFixWithoutAi) {
         trimmedJson = trimmedJson.slice(7, -3).trim();
       }

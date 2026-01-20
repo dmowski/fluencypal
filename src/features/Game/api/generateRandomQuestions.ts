@@ -1,5 +1,8 @@
 import { GameQuestionShort, GameQuestionFull } from "@/features/Game/types";
-import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
+import {
+  fullEnglishLanguageName,
+  SupportedLanguage,
+} from "@/features/Lang/lang";
 import { generateTextWithAi } from "../../../app/api/ai/generateTextWithAi";
 import { shuffleArray } from "@/libs/array";
 import { imageDescriptions } from "@/features/Game/ImagesDescriptions";
@@ -19,7 +22,9 @@ const getUserInfoForAi = ({
   learningLanguage,
 }: generateRandomQuestionsProps): string => {
   const userInfo =
-    userInfoRecords.length > 0 ? `Info about the user: ${userInfoRecords.join(", ")}` : "";
+    userInfoRecords.length > 0
+      ? `Info about the user: ${userInfoRecords.join(", ")}`
+      : "";
 
   const nativeLanguageTitle =
     fullLanguagesMap[nativeLanguage]?.englishName ||
@@ -50,28 +55,30 @@ const generateImageQuestions = async ({
 }: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
   const shuffledImages = shuffleArray(imageDescriptions);
   const limitedImageDescriptions = shuffledImages.slice(0, 10);
-  const allQuestions: QuestionOutput[] = limitedImageDescriptions.map((image) => {
-    const shortQuestion: GameQuestionShort = {
-      id: `${Date.now()}_img_${image.id}`,
-      type: "describe_image",
-      question: image.shortDescription,
-      imageUrl: image.url,
-      options: [],
-    };
+  const allQuestions: QuestionOutput[] = limitedImageDescriptions.map(
+    (image) => {
+      const shortQuestion: GameQuestionShort = {
+        id: `${Date.now()}_img_${image.id}`,
+        type: "describe_image",
+        question: image.shortDescription,
+        imageUrl: image.url,
+        options: [],
+      };
 
-    const fullQuestion: GameQuestionFull = {
-      ...shortQuestion,
-      createdAt: Date.now(),
-      answeredAt: null,
-      isAnsweredCorrectly: null,
-      learningLanguage: learningLanguage,
-      correctAnswer: image.fullImageDescription,
-    };
-    return {
-      fullQuestions: fullQuestion,
-      shortQuestions: shortQuestion,
-    };
-  });
+      const fullQuestion: GameQuestionFull = {
+        ...shortQuestion,
+        createdAt: Date.now(),
+        answeredAt: null,
+        isAnsweredCorrectly: null,
+        learningLanguage: learningLanguage,
+        correctAnswer: image.fullImageDescription,
+      };
+      return {
+        fullQuestions: fullQuestion,
+        shortQuestions: shortQuestion,
+      };
+    },
+  );
   return allQuestions;
 };
 
@@ -112,7 +119,7 @@ const generateTextToReadQuestions = async ({
         fullQuestions: fullQuestion,
         shortQuestions: shortQuestion,
       };
-    })
+    }),
   );
   return allQuestions;
 };
@@ -154,7 +161,9 @@ Strictly follow the formate, because it will be parsed by the code.
   console.log("Words output");
   console.log(output);
 
-  const lines = output.split("\n").filter((line) => line.trim().length > 0 && line.includes("="));
+  const lines = output
+    .split("\n")
+    .filter((line) => line.trim().length > 0 && line.includes("="));
 
   const allQuestions: QuestionOutput[] = lines.map((line, index) => {
     const wordAndOptions = line.split("=");
@@ -163,7 +172,8 @@ Strictly follow the formate, because it will be parsed by the code.
     // remove start number if present
     word = word.replace(/^\d+\.\s*/, "").trim(); // Remove any leading numbers and dots
 
-    const options = wordAndOptions[1]?.split(",").map((option) => option.trim()) || [];
+    const options =
+      wordAndOptions[1]?.split(",").map((option) => option.trim()) || [];
 
     const correctOption = options?.[0] || "";
 
@@ -217,7 +227,9 @@ Do not wrap your answer in any intro text.
   console.log(output);
   console.log("-----------------------------------");
 
-  const sentences = splitTextIntoSentences(output).filter((sentence) => sentence.trim().length > 3);
+  const sentences = splitTextIntoSentences(output).filter(
+    (sentence) => sentence.trim().length > 3,
+  );
 
   const allQuestions: QuestionOutput[] = sentences.map((sentence, index) => {
     const shortQuestion: GameQuestionShort = {
@@ -284,7 +296,7 @@ const generateTopicToDiscuss = async ({
         fullQuestions: fullQuestion,
         shortQuestions: shortQuestion,
       };
-    })
+    }),
   );
 };
 

@@ -50,7 +50,8 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
   const updatedAgo = dayjs(battle.updatedAtIso).fromNow();
   const isMyBattle = battle.usersIds.includes(auth.uid || "");
   const isAcceptedByMe = battle.approvedUsersIds.includes(auth.uid || "");
-  const isAcceptedByAll = battle.approvedUsersIds.length === battle.usersIds.length;
+  const isAcceptedByAll =
+    battle.approvedUsersIds.length === battle.usersIds.length;
 
   const [isShowMenu, setIsShowMenu] = useState<null | HTMLElement>(null);
 
@@ -89,7 +90,10 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
       }}
     >
       {isActiveModal && (
-        <BattleActionModal battle={battle} onClose={() => setIsActiveModal(false)} />
+        <BattleActionModal
+          battle={battle}
+          onClose={() => setIsActiveModal(false)}
+        />
       )}
       <Stack
         sx={{
@@ -116,7 +120,13 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
           >
             <img
               src="/icons/flame-icon.svg"
-              style={{ width: 20, height: 20, position: "relative", top: "-2px", left: "-1px" }}
+              style={{
+                width: 20,
+                height: 20,
+                position: "relative",
+                top: "-2px",
+                left: "-1px",
+              }}
             />
             <Typography
               variant="body2"
@@ -141,7 +151,10 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
         </Stack>
         {!isAcceptedByMe && (
           <Stack>
-            <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
+            <Typography
+              variant="body2"
+              sx={{ color: "rgba(255, 255, 255, 0.6)" }}
+            >
               {i18n._("{userName} challenges you to a debate!", {
                 userName: game.userNames?.[battle.authorUserId] || i18n._("-"),
               })}
@@ -156,7 +169,9 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
         >
           {gameStats.map((stat) => {
             const isAccepted = battle.approvedUsersIds.includes(stat.userId);
-            const isAnswerSubmitted = battle.submittedUsersIds.includes(stat.userId);
+            const isAnswerSubmitted = battle.submittedUsersIds.includes(
+              stat.userId,
+            );
             const isWinnerDeclared = Boolean(battle.winnerUserId);
             const isWinner = stat.userId === battle.winnerUserId;
             return (
@@ -260,23 +275,38 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                     >
                       {i18n._("Accept")}
                     </Button>
-                    <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
-                      {i18n._("Winner gets {points} points", { points: battle.betPoints })}
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "rgba(255, 255, 255, 0.6)" }}
+                    >
+                      {i18n._("Winner gets {points} points", {
+                        points: battle.betPoints,
+                      })}
                     </Typography>
                   </Stack>
                 )}
 
                 {isAcceptedByMe && !isAcceptedByAll && (
-                  <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "rgba(255, 255, 255, 0.6)" }}
+                  >
                     {i18n._("Waiting for other players to accept...")}
                   </Typography>
                 )}
 
-                {isAcceptedByAll && !isSubmittedByMe && !battle.winnerUserId && (
-                  <Button variant="contained" color="info" startIcon={<Mic />} onClick={openBattle}>
-                    {i18n._("Start Debate")}
-                  </Button>
-                )}
+                {isAcceptedByAll &&
+                  !isSubmittedByMe &&
+                  !battle.winnerUserId && (
+                    <Button
+                      variant="contained"
+                      color="info"
+                      startIcon={<Mic />}
+                      onClick={openBattle}
+                    >
+                      {i18n._("Start Debate")}
+                    </Button>
+                  )}
 
                 {battle.winnerUserId && (
                   <>
@@ -296,7 +326,9 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                       onClick={() => {
                         openBattle();
 
-                        if (!battle.hiddenByUsersIds?.includes(auth.uid || "")) {
+                        if (
+                          !battle.hiddenByUsersIds?.includes(auth.uid || "")
+                        ) {
                           battles.closeBattle(battle.battleId);
                         }
                       }}
@@ -313,8 +345,14 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                         openBattle();
                       }}
                     >
-                      <MessageCircle size="16px" color="rgba(255, 255, 255, 0.6)" />
-                      <Typography variant="caption" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
+                      <MessageCircle
+                        size="16px"
+                        color="rgba(255, 255, 255, 0.6)"
+                      />
+                      <Typography
+                        variant="caption"
+                        sx={{ color: "rgba(255, 255, 255, 0.6)" }}
+                      >
                         {commentsCount || 0}
                       </Typography>
                     </Stack>
@@ -322,12 +360,20 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                 )}
 
                 {isSubmittedByMe && !battle.winnerUserId && (
-                  <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
-                    {i18n._("You have submitted your answers. Waiting for others...")}
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "rgba(255, 255, 255, 0.6)" }}
+                  >
+                    {i18n._(
+                      "You have submitted your answers. Waiting for others...",
+                    )}
                   </Typography>
                 )}
               </Stack>
-              <IconButton onClick={(e) => setIsShowMenu(e.currentTarget)} size="small">
+              <IconButton
+                onClick={(e) => setIsShowMenu(e.currentTarget)}
+                size="small"
+              >
                 <CircleEllipsis
                   size={"20px"}
                   style={{
@@ -350,7 +396,7 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                   //disabled={isAcceptedByAll}
                   onClick={() => {
                     const isConfirm = confirm(
-                      i18n._("Are you sure you want to reject this battle?")
+                      i18n._("Are you sure you want to reject this battle?"),
                     );
                     if (isConfirm) battles.deleteBattle(battle.battleId);
                   }}

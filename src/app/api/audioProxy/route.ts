@@ -21,7 +21,8 @@ export async function GET(req: Request) {
   const res = await fetch(url);
   console.log("PROXY AUDIO: Fetch time", Date.now() - start3);
 
-  if (!res.ok) return new NextResponse("Upstream fetch failed", { status: 502 });
+  if (!res.ok)
+    return new NextResponse("Upstream fetch failed", { status: 502 });
 
   const start4 = Date.now();
   const contentType = res.headers.get("content-type") ?? "audio/mpeg";

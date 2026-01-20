@@ -17,7 +17,8 @@ export const useBattleQuestions = () => {
     },
     q3: {
       topic: "Education",
-      description: "Is a university degree still necessary for career success today?",
+      description:
+        "Is a university degree still necessary for career success today?",
     },
     q4: {
       topic: "Social Media",
@@ -25,7 +26,8 @@ export const useBattleQuestions = () => {
     },
     q5: {
       topic: "Work-Life Balance",
-      description: "Should companies be responsible for employees’ mental health?",
+      description:
+        "Should companies be responsible for employees’ mental health?",
     },
 
     q6: {
@@ -34,7 +36,8 @@ export const useBattleQuestions = () => {
     },
     q7: {
       topic: "Career",
-      description: "Is it better to specialize deeply in one skill or stay a generalist?",
+      description:
+        "Is it better to specialize deeply in one skill or stay a generalist?",
     },
     q8: {
       topic: "Money",
@@ -51,7 +54,8 @@ export const useBattleQuestions = () => {
 
     q11: {
       topic: "AI Ethics",
-      description: "Should AI systems be required to explain how they make decisions?",
+      description:
+        "Should AI systems be required to explain how they make decisions?",
     },
     q12: {
       topic: "Education",
@@ -59,11 +63,13 @@ export const useBattleQuestions = () => {
     },
     q13: {
       topic: "Work Culture",
-      description: "Is working long hours a sign of ambition or poor time management?",
+      description:
+        "Is working long hours a sign of ambition or poor time management?",
     },
     q14: {
       topic: "Success",
-      description: "How should success be measured: money, impact, or happiness?",
+      description:
+        "How should success be measured: money, impact, or happiness?",
     },
     q15: {
       topic: "Communication",
@@ -72,7 +78,8 @@ export const useBattleQuestions = () => {
 
     q16: {
       topic: "AI in Daily Life",
-      description: "Would you trust AI to make important life decisions for you?",
+      description:
+        "Would you trust AI to make important life decisions for you?",
     },
     q17: {
       topic: "Motivation",
@@ -84,7 +91,8 @@ export const useBattleQuestions = () => {
     },
     q19: {
       topic: "Learning",
-      description: "Is self-learning more effective than traditional education?",
+      description:
+        "Is self-learning more effective than traditional education?",
     },
     q20: {
       topic: "Creativity",
@@ -93,7 +101,8 @@ export const useBattleQuestions = () => {
 
     q21: {
       topic: "Career Choices",
-      description: "Is it better to choose a job you love or one that pays well?",
+      description:
+        "Is it better to choose a job you love or one that pays well?",
     },
     q22: {
       topic: "Technology",
@@ -151,7 +160,8 @@ export const useBattleQuestions = () => {
     },
     q35: {
       topic: "Learning Habits",
-      description: "Is learning by doing more effective than learning by reading?",
+      description:
+        "Is learning by doing more effective than learning by reading?",
     },
 
     q36: {
@@ -160,7 +170,8 @@ export const useBattleQuestions = () => {
     },
     q37: {
       topic: "Work Environment",
-      description: "Is a competitive workplace better than a collaborative one?",
+      description:
+        "Is a competitive workplace better than a collaborative one?",
     },
     q38: {
       topic: "Time Management",
@@ -198,7 +209,8 @@ export const useBattleQuestions = () => {
 
     q46: {
       topic: "AI Trust",
-      description: "Would you trust AI more than humans in critical situations?",
+      description:
+        "Would you trust AI more than humans in critical situations?",
     },
     q47: {
       topic: "Career Advice",
@@ -206,7 +218,8 @@ export const useBattleQuestions = () => {
     },
     q48: {
       topic: "Education System",
-      description: "Is the current education system preparing people for real life?",
+      description:
+        "Is the current education system preparing people for real life?",
     },
     q49: {
       topic: "Work Motivation",
@@ -214,12 +227,14 @@ export const useBattleQuestions = () => {
     },
     q50: {
       topic: "Future",
-      description: "Are people optimistic or pessimistic about the future, and why?",
+      description:
+        "Are people optimistic or pessimistic about the future, and why?",
     },
 
     q51: {
       topic: "AI Creativity",
-      description: "Can AI-generated content be considered original creativity?",
+      description:
+        "Can AI-generated content be considered original creativity?",
     },
     q52: {
       topic: "Career Risk",
@@ -244,7 +259,8 @@ export const useBattleQuestions = () => {
     },
     q57: {
       topic: "Decision Regret",
-      description: "Is it worse to make a wrong decision or make no decision at all?",
+      description:
+        "Is it worse to make a wrong decision or make no decision at all?",
     },
     q58: {
       topic: "Workplace Culture",
@@ -256,12 +272,14 @@ export const useBattleQuestions = () => {
     },
     q60: {
       topic: "Learning Methods",
-      description: "Is learning from mistakes more effective than learning from success?",
+      description:
+        "Is learning from mistakes more effective than learning from success?",
     },
 
     q61: {
       topic: "AI and Trust",
-      description: "Should people trust AI recommendations more than human advice?",
+      description:
+        "Should people trust AI recommendations more than human advice?",
     },
     q62: {
       topic: "Career Purpose",
@@ -269,7 +287,8 @@ export const useBattleQuestions = () => {
     },
     q63: {
       topic: "Digital Communication",
-      description: "Has digital communication improved or weakened human relationships?",
+      description:
+        "Has digital communication improved or weakened human relationships?",
     },
     q64: {
       topic: "Education Pressure",
@@ -282,7 +301,8 @@ export const useBattleQuestions = () => {
 
     q66: {
       topic: "AI and Employment",
-      description: "Should companies replace humans with AI if it is cheaper and faster?",
+      description:
+        "Should companies replace humans with AI if it is cheaper and faster?",
     },
     q67: {
       topic: "Career Stability",
@@ -315,7 +335,8 @@ export const useBattleQuestions = () => {
     },
     q74: {
       topic: "Learning Technology",
-      description: "Do online courses provide the same value as in-person learning?",
+      description:
+        "Do online courses provide the same value as in-person learning?",
     },
     q75: {
       topic: "Work Expectations",
@@ -332,7 +353,8 @@ export const useBattleQuestions = () => {
     },
     q78: {
       topic: "Work Focus",
-      description: "Is deep focus more valuable than being constantly available?",
+      description:
+        "Is deep focus more valuable than being constantly available?",
     },
     q79: {
       topic: "Personal Responsibility",
@@ -387,7 +409,8 @@ export const useBattleQuestions = () => {
 
     q91: {
       topic: "AI and Ethics",
-      description: "Should AI follow strict ethical rules even if it reduces efficiency?",
+      description:
+        "Should AI follow strict ethical rules even if it reduces efficiency?",
     },
     q92: {
       topic: "Career Success",
@@ -408,11 +431,13 @@ export const useBattleQuestions = () => {
 
     q96: {
       topic: "AI Autonomy",
-      description: "Should AI systems be allowed to operate without human oversight?",
+      description:
+        "Should AI systems be allowed to operate without human oversight?",
     },
     q97: {
       topic: "Career Satisfaction",
-      description: "Is career satisfaction a personal responsibility or a company’s role?",
+      description:
+        "Is career satisfaction a personal responsibility or a company’s role?",
     },
     q98: {
       topic: "Modern Learning",

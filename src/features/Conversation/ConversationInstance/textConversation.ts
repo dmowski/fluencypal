@@ -86,7 +86,9 @@ export const initTextConversation = async ({
 
     const botMessageId = generateMessageId();
     const previousMessage =
-      conversationHistory.length > 0 ? conversationHistory[conversationHistory.length - 1] : null;
+      conversationHistory.length > 0
+        ? conversationHistory[conversationHistory.length - 1]
+        : null;
     const previousMessageId = previousMessage ? previousMessage?.id : null;
 
     try {
@@ -188,7 +190,9 @@ export const initTextConversation = async ({
   };
 
   // Send correction instruction
-  const sendCorrectionInstruction = async (correction: string): Promise<void> => {
+  const sendCorrectionInstruction = async (
+    correction: string,
+  ): Promise<void> => {
     console.log("Updating correction instruction:", correction);
     // instructionState.correction = correction;
     if (correction) {
@@ -203,7 +207,9 @@ export const initTextConversation = async ({
   const sendWebCamDescription = async (description: string): Promise<void> => {
     const isCorrectionExists = Boolean(instructionState.correction);
     if (isCorrectionExists) {
-      console.log("Ignoring webcam description update due to existing correction.");
+      console.log(
+        "Ignoring webcam description update due to existing correction.",
+      );
       return;
     }
     //console.log("Updating webcam description:", description);

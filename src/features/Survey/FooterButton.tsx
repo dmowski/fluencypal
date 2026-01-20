@@ -84,7 +84,8 @@ export const FooterButton = ({
           sx={{
             width: "100%",
             height: "100%",
-            background: "linear-gradient(to top, rgba(10, 18, 30, 0.9), rgba(10, 18, 30, 0))",
+            background:
+              "linear-gradient(to top, rgba(10, 18, 30, 0.9), rgba(10, 18, 30, 0))",
             position: "absolute",
             bottom: 0,
             left: 0,

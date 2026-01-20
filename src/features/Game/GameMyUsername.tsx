@@ -4,7 +4,11 @@ import { useLingui } from "@lingui/react";
 import { useEffect, useState } from "react";
 import { CheckIcon, PencilIcon } from "lucide-react";
 
-export const GameMyUsername = ({ align }: { align: "flex-start" | "center" }) => {
+export const GameMyUsername = ({
+  align,
+}: {
+  align: "flex-start" | "center";
+}) => {
   const game = useGame();
   const myUsername = game.myUserName || "";
   const { i18n } = useLingui();
@@ -75,7 +79,9 @@ export const GameMyUsername = ({ align }: { align: "flex-start" | "center" }) =>
               onChange={(e) => setInternalUsername(e.target.value)}
               sx={{ width: "220px" }}
               color={isAlreadyTaken ? "error" : "primary"}
-              helperText={isAlreadyTaken ? i18n._("Username is already taken") : ""}
+              helperText={
+                isAlreadyTaken ? i18n._("Username is already taken") : ""
+              }
             />
             <IconButton
               onClick={() => saveUsername()}

@@ -1,9 +1,12 @@
 "use client";
-import { CreateTelegramInvoiceRequest, CreateTelegramInvoiceResponse } from "./types";
+import {
+  CreateTelegramInvoiceRequest,
+  CreateTelegramInvoiceResponse,
+} from "./types";
 
 export const sendCreateTelegramInvoiceRequest = async (
   input: CreateTelegramInvoiceRequest,
-  auth: string
+  auth: string,
 ): Promise<CreateTelegramInvoiceResponse> => {
   const response = await fetch("/api/telegram/createInvoice", {
     method: "POST",

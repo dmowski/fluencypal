@@ -8,7 +8,14 @@ import {
   signInWithEmailLink,
   ActionCodeSettings,
 } from "firebase/auth";
-import { Context, JSX, ReactNode, createContext, useContext, useEffect } from "react";
+import {
+  Context,
+  JSX,
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+} from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/init";
 import * as Sentry from "@sentry/nextjs";
@@ -71,7 +78,10 @@ function useProvideAuth(): AuthContext {
 
       return { isDone: true, error: "" };
     } catch (error) {
-      if (error instanceof FirebaseError && error.code === "auth/popup-closed-by-user") {
+      if (
+        error instanceof FirebaseError &&
+        error.code === "auth/popup-closed-by-user"
+      ) {
         return { isDone: false, error: "" };
       }
       console.error("Google sign in error", error);
@@ -146,21 +156,32 @@ function useProvideAuth(): AuthContext {
         errorCode === "auth/invalid-continue-uri" ||
         errorCode === "auth/unauthorized-continue-uri"
       ) {
-        return { isDone: false, error: "There is an issue with the sign-in link configuration." };
+        return {
+          isDone: false,
+          error: "There is an issue with the sign-in link configuration.",
+        };
       } else {
-        return { isDone: false, error: "Failed to send sign-in email. Please try again." };
+        return {
+          isDone: false,
+          error: "Failed to send sign-in email. Please try again.",
+        };
       }
     }
   };
 
-  const signInWithCustomToken = async (backendToken: string): Promise<SignInResult> => {
+  const signInWithCustomToken = async (
+    backendToken: string,
+  ): Promise<SignInResult> => {
     try {
       if (!backendToken || typeof backendToken !== "string") {
         return { isDone: false, error: "No token provided" };
       }
 
       // If already signed in, Firebase will switch the user if token UID differs.
-      const credentialUser = await firebaseSignInWithCustomToken(auth, backendToken);
+      const credentialUser = await firebaseSignInWithCustomToken(
+        auth,
+        backendToken,
+      );
 
       console.log("credentialUser", credentialUser);
 
@@ -250,7 +271,9 @@ function useProvideAuth(): AuthContext {
 export function AuthProvider(props: { children: ReactNode }): JSX.Element {
   const auth = useProvideAuth();
 
-  return <authContext.Provider value={auth}>{props.children}</authContext.Provider>;
+  return (
+    <authContext.Provider value={auth}>{props.children}</authContext.Provider>
+  );
 }
 
 export const useAuth = (): AuthContext => useContext(authContext);

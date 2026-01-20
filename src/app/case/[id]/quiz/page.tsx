@@ -10,7 +10,9 @@ export async function generateStaticParams() {
   return generateInterviewQuizStaticParams();
 }
 
-export async function generateMetadata(props: InterviewQuizPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: InterviewQuizPageProps,
+): Promise<Metadata> {
   return generateInterviewQuizMetadata(props);
 }
 

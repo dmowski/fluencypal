@@ -3,7 +3,7 @@ import { CreateCryptoOrderRequest, CreateCryptoOrderResponse } from "./types";
 
 export const sendCreateCryptoOrderRequest = async (
   input: CreateCryptoOrderRequest,
-  auth: string
+  auth: string,
 ): Promise<CreateCryptoOrderResponse> => {
   const response = await fetch("/api/crypto/createOrder", {
     method: "POST",

@@ -25,7 +25,8 @@ export const TasksCard = () => {
         <Stack
           sx={{
             borderRadius: "50%",
-            background: "linear-gradient(45deg,rgb(230, 69, 163) 0%,rgb(209, 109, 109) 100%)",
+            background:
+              "linear-gradient(45deg,rgb(230, 69, 163) 0%,rgb(209, 109, 109) 100%)",
             height: "50px",
             width: "50px",
 
@@ -53,7 +54,11 @@ export const TasksCard = () => {
           buttonIcon={<BookOpenText size={"30px"} />}
           onStart={() => rules.getRules()}
           isDone={!!tasks.todayStats?.rule}
-          lockedText={!words.totalWordsCount ? i18n._(`Complete previous tasks first`) : ""}
+          lockedText={
+            !words.totalWordsCount
+              ? i18n._(`Complete previous tasks first`)
+              : ""
+          }
         />
       </Stack>
     </DashboardCard>

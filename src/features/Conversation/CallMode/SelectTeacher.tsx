@@ -82,7 +82,10 @@ export const AvatarCard = ({
         component={"button"}
         onClick={onToggle}
       >
-        <AiAvatarVideo aiVideo={aiAvatar} isSpeaking={audio.isPlaying && isPlayingThisVoice} />
+        <AiAvatarVideo
+          aiVideo={aiAvatar}
+          isSpeaking={audio.isPlaying && isPlayingThisVoice}
+        />
       </Stack>
 
       <Stack

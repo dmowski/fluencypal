@@ -48,7 +48,8 @@ export const dailyQuestions: DailyQuestions = {
   "2026-02-11": {
     id: "truth-most-people-not-ready-to-hear",
     title: "What is a truth most people are not ready to hear?",
-    description: "Share a belief or observation you think society avoids facing.",
+    description:
+      "Share a belief or observation you think society avoids facing.",
     minWords: 30,
     hints: [
       "It could be about work, happiness, relationships, or life in general.",
@@ -60,7 +61,8 @@ export const dailyQuestions: DailyQuestions = {
   },
   "2026-01-12": {
     id: "press-button-get-everything-lose-10-years",
-    title: "Would you press a button to get everything you want but lose 10 years of life?",
+    title:
+      "Would you press a button to get everything you want but lose 10 years of life?",
     description:
       "Imagine a button that grants you all your dreams instantly at the cost of 10 years of your lifespan.",
     minWords: 30,
@@ -90,7 +92,8 @@ export const dailyQuestions: DailyQuestions = {
   "2026-11-14": {
     id: "happiness-or-success",
     title: "Would you rather be happy or successful?",
-    description: "Discuss whether personal joy or external achievement is more important in life.",
+    description:
+      "Discuss whether personal joy or external achievement is more important in life.",
     minWords: 30,
     hints: [
       "Think about how you define success.",
@@ -103,7 +106,8 @@ export const dailyQuestions: DailyQuestions = {
   "2026-11-15": {
     id: "unlimited-knowledge-or-unlimited-money",
     title: "Would you choose unlimited knowledge or unlimited money?",
-    description: "Imagine you could have infinite wealth or infinite wisdom, but not both.",
+    description:
+      "Imagine you could have infinite wealth or infinite wisdom, but not both.",
     minWords: 30,
     hints: [
       "Consider the power and risks of knowledge.",
@@ -116,7 +120,8 @@ export const dailyQuestions: DailyQuestions = {
   "2026-11-16": {
     id: "biggest-lie-we-tell-ourselves",
     title: "What is the biggest lie people tell themselves?",
-    description: "Share a comforting belief or common excuse you think most people use.",
+    description:
+      "Share a comforting belief or common excuse you think most people use.",
     minWords: 30,
     hints: [
       "Think about work, relationships, or life goals.",
@@ -157,7 +162,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-07": {
     id: "future-or-past",
     title: "Would you rather travel 100 years into the past or the future?",
-    description: "Choose whether you’d explore history or peek into what’s coming.",
+    description:
+      "Choose whether you’d explore history or peek into what’s coming.",
     minWords: 30,
     hints: [
       "Think about curiosity vs. nostalgia.",
@@ -170,7 +176,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-08": {
     id: "humanity-biggest-threat",
     title: "What is the biggest threat to humanity?",
-    description: "Consider what could truly endanger humanity’s survival or well-being.",
+    description:
+      "Consider what could truly endanger humanity’s survival or well-being.",
     minWords: 30,
     hints: [
       "Think about technology, nature, or human behavior.",
@@ -183,7 +190,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-09": {
     id: "dream-never-achieved",
     title: "What dream would you pursue if failure was impossible?",
-    description: "Imagine you couldn’t fail at anything. Which dream would you choose?",
+    description:
+      "Imagine you couldn’t fail at anything. Which dream would you choose?",
     minWords: 30,
     hints: [
       "Think about passions you set aside.",
@@ -196,7 +204,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-10": {
     id: "better-to-know-or-not",
     title: "Is it better to know the truth, even if it hurts?",
-    description: "Decide whether painful truths are better than comforting lies.",
+    description:
+      "Decide whether painful truths are better than comforting lies.",
     minWords: 30,
     hints: [
       "Think about relationships or health situations.",
@@ -209,7 +218,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-11": {
     id: "change-one-law",
     title: "If you could change one law in your country, what would it be?",
-    description: "Imagine you have the power to rewrite one law or rule that affects society.",
+    description:
+      "Imagine you have the power to rewrite one law or rule that affects society.",
     minWords: 30,
     hints: [
       "Think about fairness and justice.",
@@ -222,7 +232,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-12": {
     id: "lose-wealth-or-memories",
     title: "Would you rather lose all your money or all your memories?",
-    description: "Choose between financial security and your personal experiences.",
+    description:
+      "Choose between financial security and your personal experiences.",
     minWords: 30,
     hints: [
       "Think about how money vs. memory defines identity.",
@@ -235,7 +246,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-13": {
     id: "meaning-of-life",
     title: "What do you think is the meaning of life?",
-    description: "Give your personal perspective on why we exist and what matters most.",
+    description:
+      "Give your personal perspective on why we exist and what matters most.",
     minWords: 30,
     hints: [
       "Think about purpose, love, or growth.",
@@ -261,7 +273,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-15": {
     id: "change-one-thing-past",
     title: "If you could change one thing from your past, would you?",
-    description: "Decide whether altering your past would improve your present.",
+    description:
+      "Decide whether altering your past would improve your present.",
     minWords: 30,
     hints: [
       "Think about regrets you carry.",
@@ -274,7 +287,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-16": {
     id: "technology-friend-or-enemy",
     title: "Is technology making us smarter or lazier?",
-    description: "Explore whether modern tools improve us or make us dependent.",
+    description:
+      "Explore whether modern tools improve us or make us dependent.",
     minWords: 30,
     hints: [
       "Think about how you use technology daily.",
@@ -287,7 +301,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-17": {
     id: "life-fair-or-not",
     title: "Do you think life is fair?",
-    description: "Reflect on whether fairness exists or if randomness rules our lives.",
+    description:
+      "Reflect on whether fairness exists or if randomness rules our lives.",
     minWords: 30,
     hints: [
       "Think about privilege and inequality.",
@@ -353,7 +368,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-22": {
     id: "justice-or-mercy",
     title: "Is it better to give justice or mercy?",
-    description: "Decide whether strict fairness or compassion is more valuable.",
+    description:
+      "Decide whether strict fairness or compassion is more valuable.",
     minWords: 30,
     hints: [
       "Think about punishments and forgiveness.",
@@ -365,7 +381,8 @@ export const dailyQuestions: DailyQuestions = {
   },
   "2025-10-23": {
     id: "control-or-freedom",
-    title: "Would you rather have total control over your life or total freedom with no control?",
+    title:
+      "Would you rather have total control over your life or total freedom with no control?",
     description: "Choose between perfect order and complete unpredictability.",
     minWords: 30,
     hints: [
@@ -419,7 +436,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-27": {
     id: "rich-and-lonely-or-poor-and-loved",
     title: "Would you rather be rich and lonely or poor and loved?",
-    description: "Choose between wealth without connection or love without wealth.",
+    description:
+      "Choose between wealth without connection or love without wealth.",
     minWords: 30,
     hints: [
       "Think about basic needs vs. emotional needs.",
@@ -432,7 +450,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-28": {
     id: "erase-past-or-see-future",
     title: "Would you rather erase your past or see your future?",
-    description: "Choose between fixing past mistakes or knowing what’s coming.",
+    description:
+      "Choose between fixing past mistakes or knowing what’s coming.",
     minWords: 30,
     hints: [
       "Think about regrets and second chances.",
@@ -444,7 +463,8 @@ export const dailyQuestions: DailyQuestions = {
   },
   "2025-10-29": {
     id: "true-self-or-fit-in",
-    title: "Is it better to be your true self and be disliked, or fake yourself and be loved?",
+    title:
+      "Is it better to be your true self and be disliked, or fake yourself and be loved?",
     description: "Choose authenticity or acceptance.",
     minWords: 30,
     hints: [
@@ -471,7 +491,8 @@ export const dailyQuestions: DailyQuestions = {
   "2025-10-31": {
     id: "fear-of-death",
     title: "Is fear of death necessary for living a full life?",
-    description: "Decide whether mortality gives meaning to life or just creates anxiety.",
+    description:
+      "Decide whether mortality gives meaning to life or just creates anxiety.",
     minWords: 30,
     hints: [
       "Think about how awareness of death shapes choices.",

@@ -13,7 +13,8 @@ export const GameNativeLanguageSelector = () => {
 
   const nativeLang = settings.userSettings?.nativeLanguageCode;
 
-  const isNativeLanguageIsTheSameAsGameLanguage = nativeLang === settings.languageCode;
+  const isNativeLanguageIsTheSameAsGameLanguage =
+    nativeLang === settings.languageCode;
 
   const { languageGroups } = useLanguageGroup({
     defaultGroupTitle: i18n._(`Other languages`),
@@ -22,11 +23,12 @@ export const GameNativeLanguageSelector = () => {
 
   const selectedNativeLanguage = useMemo(
     () => languageGroups.find((lang) => lang.languageCode === nativeLang),
-    [languageGroups, nativeLang]
+    [languageGroups, nativeLang],
   );
 
   const nativeLanguageFullName = selectedNativeLanguage?.nativeName;
-  const isShowLangSelector = isShowLangSelectorState || isNativeLanguageIsTheSameAsGameLanguage;
+  const isShowLangSelector =
+    isShowLangSelectorState || isNativeLanguageIsTheSameAsGameLanguage;
 
   return (
     <Stack
@@ -49,7 +51,10 @@ export const GameNativeLanguageSelector = () => {
         {i18n._("Your Native Language:")}
         {!isShowLangSelector ? " " + nativeLanguageFullName : ""}
         {!isShowLangSelector && (
-          <IconButton size="small" onClick={() => setIsShowLangSelector(!isShowLangSelector)}>
+          <IconButton
+            size="small"
+            onClick={() => setIsShowLangSelector(!isShowLangSelector)}
+          >
             <PencilIcon size={"11px"} />
           </IconButton>
         )}

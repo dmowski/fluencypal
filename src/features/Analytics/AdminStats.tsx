@@ -1,5 +1,13 @@
 "use client";
-import { Button, IconButton, Link, Stack, TextField, Tooltip, Typography } from "@mui/material";
+import {
+  Button,
+  IconButton,
+  Link,
+  Stack,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { useAuth } from "../Auth/useAuth";
 import { DEV_EMAILS } from "@/common/dev";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -39,7 +47,13 @@ const copyToClipboard = async (text: string) => {
   }
 };
 
-const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: string }) => {
+const UserCard = ({
+  userStat,
+  allTextInfo,
+}: {
+  userStat: UserStat;
+  allTextInfo: string;
+}) => {
   const game = useGame();
   const [isQuizFull, setIsQuizFull] = useState(false);
   const user = userStat.userData;
@@ -48,10 +62,13 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
     ? dayjs(user.lastLoginAtDateTime).fromNow()
     : "Never";
 
-  const createdAgo = user.createdAtIso ? dayjs(user.createdAtIso).fromNow() : "Unknown";
+  const createdAgo = user.createdAtIso
+    ? dayjs(user.createdAtIso).fromNow()
+    : "Unknown";
 
   const isToday =
-    user.lastLoginAtDateTime && dayjs().diff(dayjs(user.lastLoginAtDateTime), "hour") < 24;
+    user.lastLoginAtDateTime &&
+    dayjs().diff(dayjs(user.lastLoginAtDateTime), "hour") < 24;
 
   const firebaseLink = getFirebaseLink(user.id);
   const countryName = user.countryName || "";
@@ -64,7 +81,8 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
 
   const totalMessages = userStat.conversationMeta.totalMessages || 0;
   const conversationCount = userStat.conversationMeta.conversationCount || 0;
-  const lastConversationDateTime = userStat.conversationMeta.lastConversationDate;
+  const lastConversationDateTime =
+    userStat.conversationMeta.lastConversationDate;
   const lastConversationAgo = lastConversationDateTime
     ? dayjs(lastConversationDateTime).fromNow()
     : "Never";
@@ -89,7 +107,8 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
   const lastHourMessages = userStat.conversationMeta.lastHourMessages || 0;
 
   const learning = `${nativeLanguage} → ${languageToLearn}`;
-  const todaysConversationsMessages = userStat.conversationMeta.todayMessages || 0;
+  const todaysConversationsMessages =
+    userStat.conversationMeta.todayMessages || 0;
 
   const isGameWinner = userStat.isGameWinner;
   const activeSubscriptionTill = userStat.activeSubscriptionTill;
@@ -118,16 +137,21 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
     setIsCopied(true);
   };
 
-  const [showConversation, setShowConversation] = useState<Conversation | null>(null);
+  const [showConversation, setShowConversation] = useState<Conversation | null>(
+    null,
+  );
 
   const [showGoalPlan, setShowGoalPlan] = useState<GoalPlan | null>(null);
 
-  const exampleMessageFromQuiz = userStat.goalQuiz2[0]?.exampleOfWelcomeMessage || "";
+  const exampleMessageFromQuiz =
+    userStat.goalQuiz2[0]?.exampleOfWelcomeMessage || "";
 
   return (
     <Stack
       sx={{
-        border: isToday ? "1px solid rgba(255, 255, 255, 0.2)" : "1px solid transparent",
+        border: isToday
+          ? "1px solid rgba(255, 255, 255, 0.2)"
+          : "1px solid transparent",
         borderRadius: "10px",
         padding: "14px 25px",
         flexDirection: "row",
@@ -217,7 +241,10 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
 
         {isActiveSubscriber && (
           <Tooltip
-            title={`Subscriber till: ${dayjs(activeSubscriptionTill).format("DD MMMM h")}` + "h"}
+            title={
+              `Subscriber till: ${dayjs(activeSubscriptionTill).format("DD MMMM h")}` +
+              "h"
+            }
           >
             <Stack
               sx={{
@@ -261,17 +288,31 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
         }}
       >
         <Stack sx={{}}>
-          <Link href={firebaseLink} variant="h6" target="_blank" rel="noopener noreferrer">
+          <Link
+            href={firebaseLink}
+            variant="h6"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {user.email} | {displayName}
           </Link>
           <Stack>
-            <Tooltip title={dayjs(user.lastLoginAtDateTime).format("DD MMMM YYYY HH:mm") || ""}>
+            <Tooltip
+              title={
+                dayjs(user.lastLoginAtDateTime).format("DD MMMM YYYY HH:mm") ||
+                ""
+              }
+            >
               <Typography variant="body2">
                 <LogIn className="icon" /> {lastLoginAgo} | Login
               </Typography>
             </Tooltip>
 
-            <Tooltip title={dayjs(user.createdAtIso).format("DD MMMM YYYY HH:mm") || ""}>
+            <Tooltip
+              title={
+                dayjs(user.createdAtIso).format("DD MMMM YYYY HH:mm") || ""
+              }
+            >
               <Typography variant="body2">
                 <UserPlus className="icon" /> {createdAgo} | Created
               </Typography>
@@ -312,7 +353,10 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           <Stack
             className="stat-card"
             sx={{
-              backgroundColor: lastHourMessages > 0 ? "rgba(255, 255, 255, 0.06)" : "transparent",
+              backgroundColor:
+                lastHourMessages > 0
+                  ? "rgba(255, 255, 255, 0.06)"
+                  : "transparent",
             }}
           >
             <Typography className="value">{lastHourMessages}</Typography>
@@ -325,10 +369,14 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             className="stat-card"
             sx={{
               backgroundColor:
-                todaysConversationsMessages > 0 ? "rgba(255, 255, 255, 0.06)" : "transparent",
+                todaysConversationsMessages > 0
+                  ? "rgba(255, 255, 255, 0.06)"
+                  : "transparent",
             }}
           >
-            <Typography className="value">{todaysConversationsMessages}</Typography>
+            <Typography className="value">
+              {todaysConversationsMessages}
+            </Typography>
             <Typography align="center" variant="body2" className="label">
               Today
             </Typography>
@@ -347,7 +395,11 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
               <Typography align="center" variant="body2" className="label">
                 Conversations
               </Typography>
-              <Typography align="center" variant="caption" sx={{ opacity: 0.7 }}>
+              <Typography
+                align="center"
+                variant="caption"
+                sx={{ opacity: 0.7 }}
+              >
                 {lastConversationAgo}
               </Typography>
             </Stack>
@@ -372,7 +424,9 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             />
           )}
           <Typography variant="caption">
-            {["P:" + pageLanguageCode, countryName, currency, learning].filter(Boolean).join(" | ")}
+            {["P:" + pageLanguageCode, countryName, currency, learning]
+              .filter(Boolean)
+              .join(" | ")}
           </Typography>
         </Stack>
 
@@ -390,7 +444,10 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           href={`/practice?page=community&space=rate&userId=${userId}`}
         >
           {gameAvatar && (
-            <img src={gameAvatar} style={{ borderRadius: "34px", width: "22px", height: "22px" }} />
+            <img
+              src={gameAvatar}
+              style={{ borderRadius: "34px", width: "22px", height: "22px" }}
+            />
           )}
           <Typography variant="caption">
             {[gameUsername, userStats?.points].filter(Boolean).join(" | ")}
@@ -433,7 +490,9 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
               wordBreak: "break-all",
             }}
           >
-            <Typography variant="caption">{userSource?.urlPath || ""}</Typography>
+            <Typography variant="caption">
+              {userSource?.urlPath || ""}
+            </Typography>
           </Stack>
         )}
 
@@ -486,7 +545,9 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                 setShowGoalPlan(quiz.goalData);
               }}
             >
-              <Typography variant="h6">{quiz?.goalData?.title || ""}</Typography>
+              <Typography variant="h6">
+                {quiz?.goalData?.title || ""}
+              </Typography>
 
               <IconButton>
                 <SquareArrowOutUpRight size={"18px"} />
@@ -523,7 +584,9 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
 
             {aiUserInfo?.records && (
               <details open>
-                <summary>AI User Info Records ({aiUserInfo.records.length})</summary>
+                <summary>
+                  AI User Info Records ({aiUserInfo.records.length})
+                </summary>
 
                 <Stack sx={{ gap: "10px", paddingTop: "10px" }}>
                   {aiUserInfo?.records.map((record, index) => (
@@ -585,8 +648,10 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
 
                 <Typography sx={{}}>
                   {dayjs(conversation.updatedAtIso).format("DD MMM")} |{" "}
-                  {dayjs(conversation.createdAtIso || conversation.createdAt).format("HH:mm")} -
-                  {dayjs(conversation.updatedAtIso).format("HH:mm")}
+                  {dayjs(
+                    conversation.createdAtIso || conversation.createdAt,
+                  ).format("HH:mm")}{" "}
+                  -{dayjs(conversation.updatedAtIso).format("HH:mm")}
                 </Typography>
               </Stack>
             );
@@ -634,9 +699,9 @@ export function AdminStats() {
   const isLoadingRef = useRef(false);
   const [sourceData, setData] = useState<AdminStatsResponse | null>(null);
 
-  const [usersToShowMode, setUsersToShowMode] = useState<"all" | "today" | "secondDay" | "old">(
-    "all",
-  );
+  const [usersToShowMode, setUsersToShowMode] = useState<
+    "all" | "today" | "secondDay" | "old"
+  >("all");
 
   const data = useMemo(() => {
     if (!sourceData) return null;
@@ -649,7 +714,10 @@ export function AdminStats() {
   const loadFullData = async () => {
     isLoadingRef.current = true;
     setIsLoading(true);
-    const result = await loadStatsRequest({ isFullExport: true }, await auth.getToken());
+    const result = await loadStatsRequest(
+      { isFullExport: true },
+      await auth.getToken(),
+    );
     isLoadingRef.current = false;
     setIsLoading(false);
     setData(result);
@@ -659,7 +727,10 @@ export function AdminStats() {
     if (isLoadingRef.current) return;
     isLoadingRef.current = true;
     setIsLoading(true);
-    const result = await loadStatsRequest({ isFullExport: false }, await auth.getToken());
+    const result = await loadStatsRequest(
+      { isFullExport: false },
+      await auth.getToken(),
+    );
     isLoadingRef.current = false;
     setIsLoading(false);
     setData(result);
@@ -694,7 +765,8 @@ export function AdminStats() {
           goalQuiz2: userStat.goalQuiz2.map((quiz) => {
             const updatedQuiz = {
               aboutUserTranscription: quiz.aboutUserTranscription,
-              aboutUserFollowUpTranscription: quiz.aboutUserFollowUpTranscription,
+              aboutUserFollowUpTranscription:
+                quiz.aboutUserFollowUpTranscription,
               goalUserTranscription: quiz.goalUserTranscription,
             };
 
@@ -748,7 +820,11 @@ export function AdminStats() {
   const thirdAndMoreDayVisitors = todayUsers.filter((user) => {
     const createdAt = user.userData.createdAtIso;
     const lastLogin = user.userData.lastLoginAtDateTime;
-    return createdAt && lastLogin && dayjs(lastLogin).diff(dayjs(createdAt), "hour") >= 48;
+    return (
+      createdAt &&
+      lastLogin &&
+      dayjs(lastLogin).diff(dayjs(createdAt), "hour") >= 48
+    );
   });
 
   const todayMessagesCount = todayUsers.reduce((acc, user) => {
@@ -830,14 +906,19 @@ export function AdminStats() {
               </Stack>
 
               <Stack className="stat-card">
-                <Typography className="value">{lastHourMessagesCount}</Typography>
+                <Typography className="value">
+                  {lastHourMessagesCount}
+                </Typography>
                 <Typography align="center" variant="body2" className="label">
                   Last Hour Messages
                 </Typography>
               </Stack>
 
               <Stack
-                className={["stat-card", usersToShowMode === "today" ? "active" : ""].join(" ")}
+                className={[
+                  "stat-card",
+                  usersToShowMode === "today" ? "active" : "",
+                ].join(" ")}
                 onClick={() => setUsersToShowMode("today")}
               >
                 <Typography className="value">{todayUsers.length}</Typography>
@@ -847,20 +928,30 @@ export function AdminStats() {
               </Stack>
 
               <Stack
-                className={["stat-card", usersToShowMode === "secondDay" ? "active" : ""].join(" ")}
+                className={[
+                  "stat-card",
+                  usersToShowMode === "secondDay" ? "active" : "",
+                ].join(" ")}
                 onClick={() => setUsersToShowMode("secondDay")}
               >
-                <Typography className="value">{secondDayVisitors.length}</Typography>
+                <Typography className="value">
+                  {secondDayVisitors.length}
+                </Typography>
                 <Typography align="center" variant="body2" className="label">
                   Second Day Visitors
                 </Typography>
               </Stack>
 
               <Stack
-                className={["stat-card", usersToShowMode === "old" ? "active" : ""].join(" ")}
+                className={[
+                  "stat-card",
+                  usersToShowMode === "old" ? "active" : "",
+                ].join(" ")}
                 onClick={() => setUsersToShowMode("old")}
               >
-                <Typography className="value">{thirdAndMoreDayVisitors.length}</Typography>
+                <Typography className="value">
+                  {thirdAndMoreDayVisitors.length}
+                </Typography>
                 <Typography align="center" variant="body2" className="label">
                   Old Visitors
                 </Typography>
@@ -878,7 +969,9 @@ export function AdminStats() {
               </Button>
               <Button
                 color={isCopied ? "success" : "primary"}
-                startIcon={isCopied ? <Check size="16px" /> : <Copy size="16px" />}
+                startIcon={
+                  isCopied ? <Check size="16px" /> : <Copy size="16px" />
+                }
                 variant="outlined"
                 size="small"
                 onClick={() => copyAll()}
@@ -928,7 +1021,9 @@ export function parseBrowserInfo(userAgent?: string): BrowserInfo {
     os = m ? `iOS ${m[1]}.${m[2]}${m[3] ? "." + m[3] : ""}` : "iOS";
   } else if (ua.includes("android")) {
     const m = ua.match(/android (\d+)(?:\.(\d+))?(?:\.(\d+))?/);
-    os = m ? `Android ${m[1]}${m[2] ? "." + m[2] : ""}${m[3] ? "." + m[3] : ""}` : "Android";
+    os = m
+      ? `Android ${m[1]}${m[2] ? "." + m[2] : ""}${m[3] ? "." + m[3] : ""}`
+      : "Android";
   } else if (ua.includes("mac os x")) {
     const m = ua.match(/mac os x (\d+)[._](\d+)(?:[._](\d+))?/);
     os = m ? `macOS ${m[1]}.${m[2]}${m[3] ? "." + m[3] : ""}` : "macOS";

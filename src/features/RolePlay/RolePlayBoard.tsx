@@ -35,7 +35,8 @@ export const RolePlayBoard = () => {
         <Stack
           sx={{
             borderRadius: "50%",
-            background: "linear-gradient(45deg,rgb(230, 69, 182) 0%,rgb(109, 111, 209) 100%)",
+            background:
+              "linear-gradient(45deg,rgb(230, 69, 182) 0%,rgb(109, 111, 209) 100%)",
             height: "60px",
             width: "60px",
 
@@ -60,7 +61,9 @@ export const RolePlayBoard = () => {
           variant="scrollable"
           allowScrollButtonsMobile
           value={selectedTab}
-          onChange={(event, newId) => onSetTab(`${newId || allCategoriesLabel}`)}
+          onChange={(event, newId) =>
+            onSetTab(`${newId || allCategoriesLabel}`)
+          }
         >
           {allTabs.map((tab, index) => {
             return <Tab key={index} label={tab} value={tab} />;
@@ -85,7 +88,9 @@ export const RolePlayBoard = () => {
           </Stack>
           {selectedTab === allCategoriesLabel && (
             <Button
-              startIcon={isLimited ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
+              startIcon={
+                isLimited ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />
+              }
               onClick={() => setIsLimited(!isLimited)}
             >
               {isLimited ? i18n._(`Show more`) : i18n._(`Show less`)}

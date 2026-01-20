@@ -30,8 +30,14 @@ export const confirmGtag = async () => {
 
     // Optional: log if we have Google Ads click IDs or not
     if (storeInfo) {
-      const hasClickId = storeInfo.gclid || storeInfo.gbraid || storeInfo.wbraid;
-      console.log("Stored user source:", storeInfo, "hasClickId:", !!hasClickId);
+      const hasClickId =
+        storeInfo.gclid || storeInfo.gbraid || storeInfo.wbraid;
+      console.log(
+        "Stored user source:",
+        storeInfo,
+        "hasClickId:",
+        !!hasClickId,
+      );
     } else {
       console.log("No stored user source found in localStorage");
     }

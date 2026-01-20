@@ -57,7 +57,11 @@ function useProvideBattle(): BattleContextType {
   };
 
   const sortedBattles = useMemo(() => {
-    return battles ? [...battles].sort((a, b) => a.createdAtIso.localeCompare(b.createdAtIso)) : [];
+    return battles
+      ? [...battles].sort((a, b) =>
+          a.createdAtIso.localeCompare(b.createdAtIso),
+        )
+      : [];
   }, [battles]);
 
   const addBattle = async (battle: GameBattle) => {
@@ -126,7 +130,10 @@ function useProvideBattle(): BattleContextType {
     const battle = battles?.find((b) => b.battleId === battleId);
     if (!battle) return;
 
-    const updatedHiddenByUsersIds = uniq([...(battle.hiddenByUsersIds || []), userId]);
+    const updatedHiddenByUsersIds = uniq([
+      ...(battle.hiddenByUsersIds || []),
+      userId,
+    ]);
 
     await editBattle(battleId, {
       ...battle,
@@ -153,7 +160,8 @@ function useProvideBattle(): BattleContextType {
       updatedAtIso: new Date().toISOString(),
     };
     const cleanAnswers = battle.answers.filter((a) => {
-      const isCurrentAnswer = a.questionId === questionId && a.userId === userId;
+      const isCurrentAnswer =
+        a.questionId === questionId && a.userId === userId;
       return !isCurrentAnswer;
     });
     const updatedAnswers = [...cleanAnswers, answer];
@@ -168,7 +176,10 @@ function useProvideBattle(): BattleContextType {
     const battle = battles?.find((b) => b.battleId === battleId);
     if (!battle) return { isWinnerExists: false };
 
-    const updatedSubmittedUsersIds = uniq([...battle.submittedUsersIds, userId]);
+    const updatedSubmittedUsersIds = uniq([
+      ...battle.submittedUsersIds,
+      userId,
+    ]);
 
     await editBattle(battleId, {
       ...battle,
@@ -176,7 +187,7 @@ function useProvideBattle(): BattleContextType {
     });
 
     const isReadyToDecideWinner = battle.usersIds.every((id) =>
-      updatedSubmittedUsersIds.includes(id)
+      updatedSubmittedUsersIds.includes(id),
     );
 
     const getUserUsername = (userId: string) => {
@@ -209,7 +220,10 @@ Please provide your decision in the following JSON format:
 
       console.log("systemMessage", systemMessage);
 
-      const result = await ai.generateJson<{ winnerUserId: string; reason: string }>({
+      const result = await ai.generateJson<{
+        winnerUserId: string;
+        reason: string;
+      }>({
         systemMessage,
         userMessage: "Decide the winner based on the provided answers.",
         attempts: 3,
@@ -231,7 +245,7 @@ Please provide your decision in the following JSON format:
         {
           battle: updatedBattle,
         },
-        await auth.getToken()
+        await auth.getToken(),
       );
 
       return { isWinnerExists: true };
@@ -255,9 +269,17 @@ Please provide your decision in the following JSON format:
   };
 }
 
-export function BattleProvider({ children }: { children: ReactNode }): JSX.Element {
+export function BattleProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const battleData = useProvideBattle();
-  return <BattleContext.Provider value={battleData}>{children}</BattleContext.Provider>;
+  return (
+    <BattleContext.Provider value={battleData}>
+      {children}
+    </BattleContext.Provider>
+  );
 }
 
 export function useBattle(): BattleContextType {

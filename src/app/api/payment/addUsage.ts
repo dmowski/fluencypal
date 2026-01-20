@@ -15,6 +15,9 @@ export const addUsage = async (userId: string, usage: UsageLog) => {
 
 export const isUsageLogExists = async (userId: string, usageId: string) => {
   const db = getDB();
-  const doc = await db.collection(`users/${userId}/usageLogs`).doc(usageId).get();
+  const doc = await db
+    .collection(`users/${userId}/usageLogs`)
+    .doc(usageId)
+    .get();
   return doc.exists;
 };

@@ -3,7 +3,13 @@ import MicOffIcon from "@mui/icons-material/MicOff";
 import MicIcon from "@mui/icons-material/Mic";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
-import { Button, CircularProgress, IconButton, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { useLingui } from "@lingui/react";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
@@ -122,7 +128,8 @@ Examples:
 
   const lessonPlan = useLessonPlan();
 
-  const [isProcessingTranscription, setIsProcessingTranscription] = useState(false);
+  const [isProcessingTranscription, setIsProcessingTranscription] =
+    useState(false);
 
   const submitTranscription = async () => {
     const transcription = recorder.transcription;
@@ -198,8 +205,14 @@ Examples:
       if (!transcript) return;
 
       addTranscriptDelta(transcript);
-      const updatedTranscript = (transcriptStackRef.current + " " + transcript).trim();
-      const toWait = updatedTranscript ? await howMuchToWait(updatedTranscript) : WAIT_BEFORE_SEND;
+      const updatedTranscript = (
+        transcriptStackRef.current +
+        " " +
+        transcript
+      ).trim();
+      const toWait = updatedTranscript
+        ? await howMuchToWait(updatedTranscript)
+        : WAIT_BEFORE_SEND;
       setBeforeSendingTimeout(toWait);
       setOriginBeforeSendingTimeout(toWait);
 
@@ -214,9 +227,11 @@ Examples:
     silenceMs: 1000,
   });
 
-  const isReallySpeaking = vadAudioRecorder.isSpeaking && vadAudioRecorder.speakingLevel > 0.6;
+  const isReallySpeaking =
+    vadAudioRecorder.isSpeaking && vadAudioRecorder.speakingLevel > 0.6;
   const isSpeakingRef = useRef(false);
-  isSpeakingRef.current = vadAudioRecorder.isSpeaking || vadAudioRecorder.isTranscribing;
+  isSpeakingRef.current =
+    vadAudioRecorder.isSpeaking || vadAudioRecorder.isTranscribing;
 
   useEffect(() => {
     if (isReallySpeaking) {
@@ -226,13 +241,18 @@ Examples:
     }
   }, [isReallySpeaking]);
 
-  const [beforeSendingTimeout, setBeforeSendingTimeout] = useState<number | null>(null);
-  const [originBeforeSendingTimeout, setOriginBeforeSendingTimeout] = useState<number | null>(null);
+  const [beforeSendingTimeout, setBeforeSendingTimeout] = useState<
+    number | null
+  >(null);
+  const [originBeforeSendingTimeout, setOriginBeforeSendingTimeout] = useState<
+    number | null
+  >(null);
 
   //
   const waitingPercent = beforeSendingTimeout
     ? Math.round(
-        (((originBeforeSendingTimeout || WAIT_BEFORE_SEND) - beforeSendingTimeout) /
+        (((originBeforeSendingTimeout || WAIT_BEFORE_SEND) -
+          beforeSendingTimeout) /
           (originBeforeSendingTimeout || WAIT_BEFORE_SEND)) *
           100,
       )
@@ -284,7 +304,10 @@ Examples:
     }
   };
 
-  const speakingVolumePercent = Math.max(10, Math.round(vadAudioRecorder.speakingLevel * 100));
+  const speakingVolumePercent = Math.max(
+    10,
+    Math.round(vadAudioRecorder.speakingLevel * 100),
+  );
   const inActivePercent = 100 - speakingVolumePercent;
 
   return (
@@ -322,7 +345,8 @@ Examples:
             position: "absolute",
             top: 0,
             left: "0px",
-            background: "linear-gradient(90deg, rgba(46, 193, 233, 1), rgba(0, 166, 255, 1))",
+            background:
+              "linear-gradient(90deg, rgba(46, 193, 233, 1), rgba(0, 166, 255, 1))",
             transition: "width 0.3s ease-in-out",
           }}
         />
@@ -485,7 +509,11 @@ Examples:
                 activeButton={<VolumeUpIcon />}
                 inactiveButton={<VolumeOffIcon />}
                 isActive={isVolumeOnToDisplay}
-                label={isVolumeOnToDisplay ? i18n._("Turn off volume") : i18n._("Turn on volume")}
+                label={
+                  isVolumeOnToDisplay
+                    ? i18n._("Turn off volume")
+                    : i18n._("Turn on volume")
+                }
                 onClick={toggleVolume}
                 isLocked={isLimited}
               />
@@ -495,7 +523,9 @@ Examples:
                 inactiveButton={<ClosedCaptionDisabledIcon />}
                 isActive={isSubtitlesEnabled}
                 label={
-                  isSubtitlesEnabled ? i18n._("Turn off subtitles") : i18n._("Turn on subtitles")
+                  isSubtitlesEnabled
+                    ? i18n._("Turn off subtitles")
+                    : i18n._("Turn on subtitles")
                 }
                 onClick={() => toggleSubtitles(!isSubtitlesEnabled)}
               />
@@ -504,7 +534,11 @@ Examples:
                 activeButton={<VideocamIcon />}
                 inactiveButton={<VideocamOffIcon />}
                 isActive={isWebCamEnabled}
-                label={isWebCamEnabled ? i18n._("Turn off video") : i18n._("Turn on video")}
+                label={
+                  isWebCamEnabled
+                    ? i18n._("Turn off video")
+                    : i18n._("Turn on video")
+                }
                 onClick={() => toggleWebCam(!isWebCamEnabled)}
               />
 
@@ -550,7 +584,9 @@ Examples:
                   }}
                 >
                   <Typography variant="h5">
-                    {isShowVolumeWarning ? i18n._("AI voice") : i18n._("Real-time conversation")}
+                    {isShowVolumeWarning
+                      ? i18n._("AI voice")
+                      : i18n._("Real-time conversation")}
                   </Typography>
                   <Typography
                     variant="body2"

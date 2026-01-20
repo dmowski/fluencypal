@@ -60,7 +60,10 @@ export interface SubmitAnswerResponse {
   description: string | null;
 }
 
-export type GameAchievement = GameQuestionType | "chat_message" | "ai_conversation";
+export type GameAchievement =
+  | GameQuestionType
+  | "chat_message"
+  | "ai_conversation";
 
 export type GameAchievements = Partial<Record<GameAchievement, number>>;
 

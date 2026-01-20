@@ -14,7 +14,10 @@ import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "../Lang/getUrlStart";
 import Script from "next/script";
 import { HeaderStatic } from "../Header/HeaderStatic";
-import { WebCamButtons, WebcamSection } from "../Case/Landing/components/WebcamSection";
+import {
+  WebCamButtons,
+  WebcamSection,
+} from "../Case/Landing/components/WebcamSection";
 import { HowItWorks } from "./HowItWorks";
 import { DynamicIcon } from "lucide-react/dynamic";
 import { WelcomeScreen2 } from "./WelcomeScreen2";
@@ -34,56 +37,58 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`What is FluencyPal?`),
       answer: i18n._(
-        `FluencyPal is an AI-powered conversation practice app designed for intermediate and advanced learners. It helps you improve speaking fluency, pronunciation, and confidence through realistic conversations and instant feedback.`
+        `FluencyPal is an AI-powered conversation practice app designed for intermediate and advanced learners. It helps you improve speaking fluency, pronunciation, and confidence through realistic conversations and instant feedback.`,
       ),
     },
 
     {
       question: i18n._(`How does FluencyPal understand my learning goals?`),
       answer: i18n._(
-        `When you start, FluencyPal asks a short series of questions about your goals, current language level, and areas you want to improve. You answer using your voice. Based on your responses, FluencyPal creates a personalized practice plan for you. For example, business English focuses on professional vocabulary and scenarios, travel English focuses on real-life situations, and interview preparation simulates interview questions with feedback.`
+        `When you start, FluencyPal asks a short series of questions about your goals, current language level, and areas you want to improve. You answer using your voice. Based on your responses, FluencyPal creates a personalized practice plan for you. For example, business English focuses on professional vocabulary and scenarios, travel English focuses on real-life situations, and interview preparation simulates interview questions with feedback.`,
       ),
     },
 
     {
       question: i18n._(`What’s the price?`),
       answer: i18n._(
-        `FluencyPal offers Free and monthly plans that give you full access to all features. There is no automatic recurring payment. Each month, you decide whether you want to continue and pay again manually. This way, you are never charged when you are not using the app.`
+        `FluencyPal offers Free and monthly plans that give you full access to all features. There is no automatic recurring payment. Each month, you decide whether you want to continue and pay again manually. This way, you are never charged when you are not using the app.`,
       ),
     },
 
     {
       question: i18n._(`What level of speaking should I have?`),
       answer: i18n._(
-        `FluencyPal is best suited for learners who can hold basic conversations and want to improve fluency, accuracy, and confidence. It works well for pre-intermediate, intermediate, and advanced speakers and adapts to your level over time.`
+        `FluencyPal is best suited for learners who can hold basic conversations and want to improve fluency, accuracy, and confidence. It works well for pre-intermediate, intermediate, and advanced speakers and adapts to your level over time.`,
       ),
     },
 
     {
       question: i18n._(`Is there a free trial?`),
       answer: i18n._(
-        `No. FluencyPal offers a free plan with limited features and a monthly plan for full access. You can use the free plan indefinitely to practice speaking and explore basic features before deciding to upgrade.`
+        `No. FluencyPal offers a free plan with limited features and a monthly plan for full access. You can use the free plan indefinitely to practice speaking and explore basic features before deciding to upgrade.`,
       ),
     },
 
     {
       question: i18n._(`Can I use FluencyPal for free?`),
       answer: i18n._(
-        `Yes. FluencyPal offers free full access for users who rank in the top 5 of our speaking game. The game is free to play and includes reading text aloud, describing images, discussing topics, and answering questions. You can improve your speaking skills while playing.`
+        `Yes. FluencyPal offers free full access for users who rank in the top 5 of our speaking game. The game is free to play and includes reading text aloud, describing images, discussing topics, and answering questions. You can improve your speaking skills while playing.`,
       ),
     },
 
     {
-      question: i18n._(`Can FluencyPal create a personal practice plan for me?`),
+      question: i18n._(
+        `Can FluencyPal create a personal practice plan for me?`,
+      ),
       answer: i18n._(
-        `Yes. FluencyPal generates a personalized practice plan based on your goals and proficiency level. Your daily sessions focus on relevant vocabulary, grammar, and real-life conversations. You can interact with the AI using voice or text.`
+        `Yes. FluencyPal generates a personalized practice plan based on your goals and proficiency level. Your daily sessions focus on relevant vocabulary, grammar, and real-life conversations. You can interact with the AI using voice or text.`,
       ),
     },
 
     {
       question: i18n._(`What is the main focus of FluencyPal?`),
       answer: i18n._(
-        `FluencyPal is focused on speaking practice. You can use voice mode and optionally enable webcam feedback with an AI avatar to make conversations feel more realistic and engaging, while receiving feedback on your speaking performance.`
+        `FluencyPal is focused on speaking practice. You can use voice mode and optionally enable webcam feedback with an AI avatar to make conversations feel more realistic and engaging, while receiving feedback on your speaking performance.`,
       ),
     },
 
@@ -91,63 +96,64 @@ export default function LandingPage({ lang }: LandingPageProps) {
       question: i18n._(`Can I practice languages other than English?`),
       answer:
         i18n._(
-          `Yes. FluencyPal supports multiple languages and adapts conversations to your selected language and proficiency level. Available languages include:`
-        ) + ` ${supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}`,
+          `Yes. FluencyPal supports multiple languages and adapts conversations to your selected language and proficiency level. Available languages include:`,
+        ) +
+        ` ${supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}`,
     },
 
     {
       question: i18n._(`What learning modes are available?`),
       answer: i18n._(
-        `FluencyPal offers several learning modes: Casual Conversation for uninterrupted speaking practice, Talk & Correct for instant grammar and pronunciation feedback, Role-Play Scenarios for real-life situations, as well as grammar practice, vocabulary building, and progress tracking.`
+        `FluencyPal offers several learning modes: Casual Conversation for uninterrupted speaking practice, Talk & Correct for instant grammar and pronunciation feedback, Role-Play Scenarios for real-life situations, as well as grammar practice, vocabulary building, and progress tracking.`,
       ),
     },
 
     {
       question: i18n._(`How do daily tasks help me improve?`),
       answer: i18n._(
-        `Daily speaking tasks introduce new vocabulary and sentence structures, help you build a learning habit, and reinforce your skills to improve fluency faster.`
+        `Daily speaking tasks introduce new vocabulary and sentence structures, help you build a learning habit, and reinforce your skills to improve fluency faster.`,
       ),
     },
 
     {
       question: i18n._(`Where can I use FluencyPal?`),
       answer: i18n._(
-        `FluencyPal is a browser-based app, so you only need an internet browser to use it. You can run FluencyPal on a mobile phone, tablet, or desktop without installing anything.`
+        `FluencyPal is a browser-based app, so you only need an internet browser to use it. You can run FluencyPal on a mobile phone, tablet, or desktop without installing anything.`,
       ),
     },
 
     {
       question: i18n._(`How is my data handled and is my privacy protected?`),
       answer: i18n._(
-        `FluencyPal stores conversation transcripts in its database to improve your learning experience. You can permanently delete your personal data at any time from the app settings. Voice processing is handled using OpenAI services, and FluencyPal does not store your voice recordings. Webcam data is not stored either — it is processed in real time by the AI and then immediately discarded.`
+        `FluencyPal stores conversation transcripts in its database to improve your learning experience. You can permanently delete your personal data at any time from the app settings. Voice processing is handled using OpenAI services, and FluencyPal does not store your voice recordings. Webcam data is not stored either — it is processed in real time by the AI and then immediately discarded.`,
       ),
     },
 
     {
       question: i18n._(`Is FluencyPal a replacement for a human teacher?`),
       answer: i18n._(
-        `FluencyPal is designed to help you practice speaking and build confidence, not to replace a human teacher. It works best as a daily speaking companion that helps you practice more often, get instant feedback, and prepare for real conversations.`
+        `FluencyPal is designed to help you practice speaking and build confidence, not to replace a human teacher. It works best as a daily speaking companion that helps you practice more often, get instant feedback, and prepare for real conversations.`,
       ),
     },
 
     {
       question: i18n._(`How can I track my progress?`),
       answer: i18n._(
-        `FluencyPal tracks your activity and completed tasks over time. As you practice regularly, conversations become more complex and feedback adapts to your level, helping you notice improvements in fluency, confidence, and accuracy.`
+        `FluencyPal tracks your activity and completed tasks over time. As you practice regularly, conversations become more complex and feedback adapts to your level, helping you notice improvements in fluency, confidence, and accuracy.`,
       ),
     },
 
     {
       question: i18n._(`What do I need to use FluencyPal?`),
       answer: i18n._(
-        `To use FluencyPal, you need a modern internet browser and a microphone. A webcam is optional and only used if you enable webcam feedback. No installation is required.`
+        `To use FluencyPal, you need a modern internet browser and a microphone. A webcam is optional and only used if you enable webcam feedback. No installation is required.`,
       ),
     },
 
     {
       question: i18n._(`Is my data used to train AI models?`),
       answer: i18n._(
-        `FluencyPal does not use your personal data or conversations to train AI models.`
+        `FluencyPal does not use your personal data or conversations to train AI models.`,
       ),
     },
   ];
@@ -194,7 +200,9 @@ export default function LandingPage({ lang }: LandingPageProps) {
             label={i18n._(`Practice with AI`)}
             title={i18n._(`Speaking practice`)}
             subTitle1={i18n._(`Don’t let mistakes stop you.`)}
-            subTitle2={i18n._(`Build fluency and confidence with daily speaking practice.`)}
+            subTitle2={i18n._(
+              `Build fluency and confidence with daily speaking practice.`,
+            )}
             buttonTitle={i18n._(`Start Speaking`)}
             openMyPracticeLinkTitle={i18n._(`Start Speaking`)}
             buttonHref={`${getUrlStart(lang)}quiz`}
@@ -228,10 +236,10 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 type: "webcamDemo",
                 title: i18n._("Practice Speaking with AI"),
                 subTitle: i18n._(
-                  "Get instant AI feedback on clarity, vocabulary, and flow — while you speak."
+                  "Get instant AI feedback on clarity, vocabulary, and flow — while you speak.",
                 ),
                 content: i18n._(
-                  "Practice real conversations and explain your thoughts out loud in a safe, pressure-free environment — without fear of mistakes."
+                  "Practice real conversations and explain your thoughts out loud in a safe, pressure-free environment — without fear of mistakes.",
                 ),
                 infoList: [
                   {
@@ -270,7 +278,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
               label={i18n._(`Simple & Effective`)}
               title={i18n._(`How It Works`)}
               subTitle={i18n._(
-                "Improving your English speaking skills doesn't have to be complicated. With FluencyPal, anyone can practice confidently and see real progress in minutes, regardless of their current level."
+                "Improving your English speaking skills doesn't have to be complicated. With FluencyPal, anyone can practice confidently and see real progress in minutes, regardless of their current level.",
               )}
               cards={[
                 {
@@ -281,7 +289,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   titleColor: "#fff",
                   titleBgColor: "#111",
                   subTitle: i18n._(
-                    `Fill out a onboarding quiz to help FluencyPal understand your goals and preferences.`
+                    `Fill out a onboarding quiz to help FluencyPal understand your goals and preferences.`,
                   ),
                   subTitleColor: "#515154ff",
                   footerButton: (
@@ -336,7 +344,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   titleBgColor: "#fff",
 
                   subTitle: i18n._(
-                    "Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you."
+                    "Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you.",
                   ),
                   subTitleColor: "#fff",
                 },
@@ -350,7 +358,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   titleBgColor: "#fff",
 
                   subTitle: i18n._(
-                    "Jump into your tailored learning path and build real skills through engaging practice with AI voice chat."
+                    "Jump into your tailored learning path and build real skills through engaging practice with AI voice chat.",
                   ),
                   subTitleColor: "#fff",
                   footerButton: <WebCamButtons />,
@@ -366,14 +374,14 @@ export default function LandingPage({ lang }: LandingPageProps) {
           <ProposalCards
             title={i18n._(`Four Ways FluencyPal Boosts Your Speaking Skills`)}
             subTitle={i18n._(
-              `Target the specific skills you need—speaking, grammar, vocabulary, and progress tracking—to achieve online English fluency faster.`
+              `Target the specific skills you need—speaking, grammar, vocabulary, and progress tracking—to achieve online English fluency faster.`,
             )}
             infoCards={[
               {
                 category: i18n._(`Speaking`),
                 title: i18n._(`Achieve Speaking Fluency Fast`),
                 description: i18n._(
-                  `Practice realistic conversations tailored to your skill level. FluencyPal responds naturally, highlights areas for improvement, and builds your confidence.`
+                  `Practice realistic conversations tailored to your skill level. FluencyPal responds naturally, highlights areas for improvement, and builds your confidence.`,
                 ),
                 img: "/landing/talk.webp",
                 href: `${getUrlStart(lang)}quiz`,
@@ -383,7 +391,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 category: i18n._(`Grammar`),
                 title: i18n._(`Instant Grammar Corrections`),
                 description: i18n._(
-                  `Get immediate feedback and explanations on your grammar mistakes as you practice. Enhance your speaking accuracy naturally.`
+                  `Get immediate feedback and explanations on your grammar mistakes as you practice. Enhance your speaking accuracy naturally.`,
                 ),
                 img: "/landing/rules.webp",
                 href: `${getUrlStart(lang)}quiz`,
@@ -393,7 +401,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 category: i18n._(`Vocabulary`),
                 title: i18n._(`Grow Your Vocabulary Daily`),
                 description: i18n._(
-                  `Receive personalized vocabulary tailored to your conversational needs. Use new words immediately to reinforce learning.`
+                  `Receive personalized vocabulary tailored to your conversational needs. Use new words immediately to reinforce learning.`,
                 ),
                 img: "/landing/words.webp",
                 href: `${getUrlStart(lang)}quiz`,
@@ -403,7 +411,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 category: i18n._(`Progress Tracking`),
                 title: i18n._(`Track Your Fluency Progress`),
                 description: i18n._(
-                  `Visualize your daily progress with intuitive tracking. Stay motivated by clearly seeing your improvements.`
+                  `Visualize your daily progress with intuitive tracking. Stay motivated by clearly seeing your improvements.`,
                 ),
                 img: "/landing/progress.webp",
                 href: `${getUrlStart(lang)}quiz`,
@@ -414,7 +422,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
           <RolePlayDemo
             title={i18n._(`Real-Life Role-Play for Advanced English Practice`)}
             subTitle={i18n._(
-              `Practice speaking fluently in real-world scenarios like job interviews, business meetings, and everyday conversations.`
+              `Practice speaking fluently in real-world scenarios like job interviews, business meetings, and everyday conversations.`,
             )}
             actionButtonTitle={i18n._(`Explore Role-Play Scenarios`)}
             footerLabel={i18n._(`Looking for something specific?`)}

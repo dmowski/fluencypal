@@ -30,7 +30,7 @@ export const ContactMessageModal = ({
         {
           message: feedback,
         },
-        await auth.getToken()
+        await auth.getToken(),
       );
     } catch (error) {
       console.error("Error sending feedback:", error);

@@ -1,6 +1,8 @@
 import { TranslateRequest, TranslateResponse } from "./types";
 
-export const translateRequest = async (request: TranslateRequest): Promise<TranslateResponse> => {
+export const translateRequest = async (
+  request: TranslateRequest,
+): Promise<TranslateResponse> => {
   const response = await fetch("/api/translate", {
     method: "POST",
     headers: {

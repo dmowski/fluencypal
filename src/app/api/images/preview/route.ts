@@ -30,7 +30,7 @@ export async function GET(request: Request) {
             <p>${img.shortDescription}</p>
             <p><small>${img.fullImageDescription}</small></p>
           </div>
-        `
+        `,
           )
           .join("")}
       </body>

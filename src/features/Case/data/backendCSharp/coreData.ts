@@ -10,7 +10,7 @@ export const getCoreData = (lang: SupportedLanguage): InterviewCoreData => {
     jobTitle: i18n._("C# Backend Developer"),
     title: i18n._("C# Backend Developer Interview"),
     subTitle: i18n._(
-      "Prepare for .NET, APIs, databases, multithreading, and system design questions."
+      "Prepare for .NET, APIs, databases, multithreading, and system design questions.",
     ),
     keywords: [
       i18n._("c# backend interview"),

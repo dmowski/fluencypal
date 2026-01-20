@@ -10,7 +10,8 @@ export const WebCamFooter = ({ name }: { name: string }) => {
           left: "0",
           width: "100%",
           height: "80px",
-          background: "linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0,0,0,0))",
+          background:
+            "linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0,0,0,0))",
         }}
       ></Stack>
 

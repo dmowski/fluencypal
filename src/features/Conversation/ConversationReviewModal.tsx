@@ -69,7 +69,10 @@ export const ConversationReviewModal = ({
   };
 
   return (
-    <CustomModal isOpen={true} onClose={() => setIsShowAnalyzeConversationModal(false)}>
+    <CustomModal
+      isOpen={true}
+      onClose={() => setIsShowAnalyzeConversationModal(false)}
+    >
       {translator.translateModal}
 
       <Stack
@@ -85,7 +88,7 @@ export const ConversationReviewModal = ({
               `Points earned: {pointsEarned}. Keep practicing to improve your score!`,
               {
                 pointsEarned,
-              }
+              },
             )}
             subComponent={<PositionChanged />}
             onClick={onNext}
@@ -98,7 +101,10 @@ export const ConversationReviewModal = ({
             isStepLoading={!conversationAnalysisResult}
             subComponent={
               <TranslatableComponent
-                message={conversationAnalysisResult?.shortSummaryOfLesson || i18n._("Loading...")}
+                message={
+                  conversationAnalysisResult?.shortSummaryOfLesson ||
+                  i18n._("Loading...")
+                }
                 isLoading={!conversationAnalysisResult}
               />
             }
@@ -113,7 +119,10 @@ export const ConversationReviewModal = ({
             title={i18n._("What to focus on next time")}
             subComponent={
               <TranslatableComponent
-                message={conversationAnalysisResult?.whatToFocusOnNextTime || i18n._("Loading...")}
+                message={
+                  conversationAnalysisResult?.whatToFocusOnNextTime ||
+                  i18n._("Loading...")
+                }
                 isLoading={!conversationAnalysisResult}
               />
             }
@@ -128,7 +137,10 @@ export const ConversationReviewModal = ({
             title={i18n._("What you can improve")}
             subComponent={
               <TranslatableComponent
-                message={conversationAnalysisResult?.whatUserCanImprove || i18n._("Loading...")}
+                message={
+                  conversationAnalysisResult?.whatUserCanImprove ||
+                  i18n._("Loading...")
+                }
                 isLoading={!conversationAnalysisResult}
               />
             }
@@ -143,7 +155,10 @@ export const ConversationReviewModal = ({
             isStepLoading={!conversationAnalysisResult}
             subComponent={
               <TranslatableComponent
-                message={conversationAnalysisResult?.whatUserDidWell || i18n._("Loading...")}
+                message={
+                  conversationAnalysisResult?.whatUserDidWell ||
+                  i18n._("Loading...")
+                }
                 isLoading={!conversationAnalysisResult}
               />
             }
@@ -231,7 +246,10 @@ const TranslatableComponent = ({
             opacity: isLoading ? 0.5 : 1,
           }}
         >
-          <Languages size={"16px"} color={isTranslating ? "#4cd1fdff" : "#eee"} />
+          <Languages
+            size={"16px"}
+            color={isTranslating ? "#4cd1fdff" : "#eee"}
+          />
         </IconButton>
       )}
     </Stack>

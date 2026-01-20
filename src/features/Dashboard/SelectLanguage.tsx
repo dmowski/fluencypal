@@ -15,13 +15,15 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
 import { useLanguageGroup } from "../Goal/useLanguageGroup";
 
-export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ pageLang }) => {
+export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({
+  pageLang,
+}) => {
   const settings = useSettings();
   const searchParams = useSearchParams();
   const langToLearnUrl = searchParams.get("learn");
   const langToLearn =
     supportedLanguages.find(
-      (lang) => lang.toLowerCase() === langToLearnUrl?.trim().toLowerCase()
+      (lang) => lang.toLowerCase() === langToLearnUrl?.trim().toLowerCase(),
     ) || "en";
 
   const [myLang, setMyLang] = useState<SupportedLanguage | null>(pageLang);
@@ -55,9 +57,12 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
     const query = new URLSearchParams(window.location.search);
     query.delete("learn");
     const queryString = query.toString();
-    router.push(`${getUrlStart(myLang || "en")}practice${queryString ? `?${queryString}` : ``}`, {
-      scroll: false,
-    });
+    router.push(
+      `${getUrlStart(myLang || "en")}practice${queryString ? `?${queryString}` : ``}`,
+      {
+        scroll: false,
+      },
+    );
   }
 
   async function handleChangeLearnLang(newLang: SupportedLanguage) {
@@ -70,9 +75,12 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
     }
     const queryString = query.toString();
 
-    router.push(`${getUrlStart(myLang || "en")}practice${queryString ? `?${queryString}` : ``}`, {
-      scroll: false,
-    });
+    router.push(
+      `${getUrlStart(myLang || "en")}practice${queryString ? `?${queryString}` : ``}`,
+      {
+        scroll: false,
+      },
+    );
   }
 
   async function handleChangeMyLang(newLang: SupportedLanguage) {
@@ -99,7 +107,7 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
 
   const selectedNativeLanguage = useMemo(
     () => languageGroups.find((lang) => lang.languageCode === nativeLang),
-    [languageGroups, nativeLang]
+    [languageGroups, nativeLang],
   );
 
   return (

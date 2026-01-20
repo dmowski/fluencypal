@@ -1,5 +1,8 @@
 import { supportedLanguages } from "@/features/Lang/lang";
-import { StripeCreateCheckoutRequest, StripeCreateCheckoutResponse } from "@/common/requests";
+import {
+  StripeCreateCheckoutRequest,
+  StripeCreateCheckoutResponse,
+} from "@/common/requests";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import Stripe from "stripe";
 import { validateAuthToken } from "../config/firebase";
@@ -51,7 +54,8 @@ export async function POST(request: Request) {
     const stripe = new Stripe(stripeKey);
     const requestData = (await request.json()) as StripeCreateCheckoutRequest;
     const { userId, currency } = requestData;
-    const supportedLang = supportedLanguages.find((l) => l === requestData.languageCode) || "en";
+    const supportedLang =
+      supportedLanguages.find((l) => l === requestData.languageCode) || "en";
     const rate = await getConversionRate(currency.toLowerCase());
 
     if ("amountOfHours" in requestData) {
@@ -92,7 +96,12 @@ export async function POST(request: Request) {
         mode: "payment",
         success_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true&paymentSuccess=true&session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true&paymentCanceled=true`,
-        metadata: { userId, termsAccepted: "true", immediateServiceConsent: "true", amountOfHours },
+        metadata: {
+          userId,
+          termsAccepted: "true",
+          immediateServiceConsent: "true",
+          amountOfHours,
+        },
       });
 
       const response: StripeCreateCheckoutResponse = {
@@ -122,9 +131,15 @@ export async function POST(request: Request) {
       }
 
       // Calculate total price
-      const totalMonthStripeMoney = Math.round(PRICE_PER_MONTH_USD * rate * months * 100);
-      const totalDayStripeMoney = Math.round(PRICE_PER_DAY_USD * rate * days * 100);
-      const totalStripeMoney = days ? totalDayStripeMoney : totalMonthStripeMoney;
+      const totalMonthStripeMoney = Math.round(
+        PRICE_PER_MONTH_USD * rate * months * 100,
+      );
+      const totalDayStripeMoney = Math.round(
+        PRICE_PER_DAY_USD * rate * days * 100,
+      );
+      const totalStripeMoney = days
+        ? totalDayStripeMoney
+        : totalMonthStripeMoney;
 
       const description = days
         ? `Add ${days} day(s) to your account balance`

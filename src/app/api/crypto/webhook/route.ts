@@ -30,7 +30,9 @@ export async function POST(request: Request) {
 
   if (tx.event_type === "account_tx" && tx.tx_hash) {
     console.log("Getting transaction");
-    const fullTransaction = await ta.blockchain.getBlockchainTransaction(tx.tx_hash);
+    const fullTransaction = await ta.blockchain.getBlockchainTransaction(
+      tx.tx_hash,
+    );
     const txHash = tx.tx_hash;
 
     const comment: string = fullTransaction?.inMsg?.decodedBody.text || "";
@@ -57,7 +59,10 @@ export async function POST(request: Request) {
       return Response.json({ done: true });
     }
 
-    await updateOrder(order.id, { status: "paid", updatedAtIso: new Date().toISOString() });
+    await updateOrder(order.id, {
+      status: "paid",
+      updatedAtIso: new Date().toISOString(),
+    });
     await addPaymentLog({
       amount: order.amount,
       userId,

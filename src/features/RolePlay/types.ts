@@ -2,7 +2,11 @@ import { AiVoice } from "@/common/ai";
 import { ResourceCategory } from "@/common/category";
 import { JSX } from "react";
 
-export type RolePlayInputType = "text-input" | "textarea" | "options" | "checkbox";
+export type RolePlayInputType =
+  | "text-input"
+  | "textarea"
+  | "options"
+  | "checkbox";
 export interface InputStructureForUser {
   id: string;
   labelForUser: string;
@@ -28,7 +32,7 @@ export interface RolePlayInputResult {
 export type AiRolePlayInstructionCreator = (
   scenario: RolePlayInstruction,
   fullLanguageName: string,
-  userInput: RolePlayInputResult[]
+  userInput: RolePlayInputResult[],
 ) => string;
 
 export interface RolePlayInstruction {

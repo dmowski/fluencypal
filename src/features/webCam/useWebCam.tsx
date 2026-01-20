@@ -1,5 +1,13 @@
 "use client";
-import { createContext, useContext, useRef, useState, ReactNode, JSX, RefObject } from "react";
+import {
+  createContext,
+  useContext,
+  useRef,
+  useState,
+  ReactNode,
+  JSX,
+  RefObject,
+} from "react";
 import { useAuth } from "../Auth/useAuth";
 import { sendImageAiRequest } from "../Ai/sendImageAiRequest";
 import { useSettings } from "../Settings/useSettings";
@@ -34,7 +42,9 @@ function useProvideWebCam(): WebCamContextType {
     setIsError(false);
 
     try {
-      const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const mediaStream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+      });
       stream.current = mediaStream;
       //await sleep(9000);
       if (videoRef.current) {
@@ -91,7 +101,7 @@ function useProvideWebCam(): WebCamContextType {
         imageBase64: screenShot,
         languageCode,
       },
-      authKey
+      authKey,
     );
 
     const end = performance.now();
@@ -140,9 +150,15 @@ function useProvideWebCam(): WebCamContextType {
   };
 }
 
-export function WebCamProvider({ children }: { children: ReactNode }): JSX.Element {
+export function WebCamProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideWebCam();
-  return <WebCamContext.Provider value={hook}>{children}</WebCamContext.Provider>;
+  return (
+    <WebCamContext.Provider value={hook}>{children}</WebCamContext.Provider>
+  );
 }
 
 export const useWebCam = (): WebCamContextType => {

@@ -24,7 +24,9 @@ export const useDeleteAccount = ({
   const userId = auth.uid;
   const notifications = useNotifications();
   const userSettingsDoc = useMemo(() => {
-    return userId ? (doc(firestore, `users/${userId}`) as DocumentReference<UserSettings>) : null;
+    return userId
+      ? (doc(firestore, `users/${userId}`) as DocumentReference<UserSettings>)
+      : null;
   }, [userId]);
 
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
@@ -65,7 +67,9 @@ export const useDeleteAccount = ({
       redirectToStartPage();
       return;
     }
-    const confirm = window.confirm(i18n._(`Are you sure you want to delete your account?`));
+    const confirm = window.confirm(
+      i18n._(`Are you sure you want to delete your account?`),
+    );
     if (!confirm) return;
 
     setIsDeletingAccount(true);
@@ -81,11 +85,13 @@ export const useDeleteAccount = ({
       await setDoc(userSettingsDoc, { languageCode: null }, { merge: true });
 
       notifications.show(
-        i18n._(`Your account has been successfully deleted. We are sorry to see you go!`),
+        i18n._(
+          `Your account has been successfully deleted. We are sorry to see you go!`,
+        ),
         {
           severity: "success",
           autoHideDuration: 10_000,
-        }
+        },
       );
 
       auth.logout();
@@ -95,11 +101,13 @@ export const useDeleteAccount = ({
     } catch (error) {
       setIsDeletingAccount(false);
       notifications.show(
-        i18n._(`Failed to delete your account. Please try again later, or contact the developers.`),
+        i18n._(
+          `Failed to delete your account. Please try again later, or contact the developers.`,
+        ),
         {
           severity: "error",
           autoHideDuration: 10_000,
-        }
+        },
       );
 
       throw error;

@@ -28,7 +28,9 @@ export const BattleSection = () => {
     });
 
   const battlesToShow = actualBattles
-    .filter((battle) => !isLimited || !battle.hiddenByUsersIds?.includes(userId))
+    .filter(
+      (battle) => !isLimited || !battle.hiddenByUsersIds?.includes(userId),
+    )
     .filter((battle, index) => !isLimited || index < defaultLimit)
     .sort((a, b) => {
       const isAHidden = a.hiddenByUsersIds?.includes(userId) ? 1 : 0;
@@ -78,7 +80,9 @@ export const BattleSection = () => {
 
       {isNeedToShowMoreButton && (
         <Button onClick={() => setIsLimited(false)} endIcon={<ChevronDown />}>
-          {battlesToShow.length === 0 ? i18n._(`Show Debates`) : i18n._(`Show More`)}
+          {battlesToShow.length === 0
+            ? i18n._(`Show Debates`)
+            : i18n._(`Show More`)}
         </Button>
       )}
     </Stack>

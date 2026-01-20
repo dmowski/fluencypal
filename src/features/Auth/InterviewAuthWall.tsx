@@ -3,7 +3,13 @@ import { useLingui } from "@lingui/react";
 import { AuthWallBasic } from "./AuthWallBasic";
 import { getUrlStart } from "../Lang/getUrlStart";
 
-export const InterviewAuthWall = ({ children, width }: { children: ReactNode; width?: string }) => {
+export const InterviewAuthWall = ({
+  children,
+  width,
+}: {
+  children: ReactNode;
+  width?: string;
+}) => {
   const { i18n } = useLingui();
   return (
     <AuthWallBasic

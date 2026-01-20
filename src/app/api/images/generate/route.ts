@@ -27,14 +27,18 @@ export async function GET(request: Request) {
           ...image,
           isGenerated,
         };
-      })
+      }),
     );
 
-    const nonGeneratedImages = generatedImages.filter((image) => !image.isGenerated);
+    const nonGeneratedImages = generatedImages.filter(
+      (image) => !image.isGenerated,
+    );
 
     await Promise.all(
       nonGeneratedImages.map(async (nonGeneratedImage) => {
-        const generateImage = await generateImageBuffer(nonGeneratedImage.fullImageDescription);
+        const generateImage = await generateImageBuffer(
+          nonGeneratedImage.fullImageDescription,
+        );
         const resizedImage = await resizeImage(generateImage, 1024, "webp");
         await uploadImage({
           imageBuffer: resizedImage,
@@ -42,7 +46,7 @@ export async function GET(request: Request) {
           name: nonGeneratedImage.id + ".webp" || `image-${Date.now()}.webp`,
         });
         nonGeneratedImage.isGenerated = true;
-      })
+      }),
     );
     return Response.json({ generatedImages });
   } else {
@@ -56,10 +60,12 @@ export async function GET(request: Request) {
           isGenerated,
           url,
         };
-      })
+      }),
     );
 
-    const nonGeneratedImages = generatedImages.filter((image) => !image.isGenerated);
+    const nonGeneratedImages = generatedImages.filter(
+      (image) => !image.isGenerated,
+    );
     console.log("nonGeneratedImages", nonGeneratedImages);
     const resizedImages: string[] = [];
 
@@ -68,7 +74,9 @@ export async function GET(request: Request) {
 
       for (const nonGeneratedImage of nonGeneratedImages) {
         const prompt =
-          nonGeneratedImage.shortDescription + ". " + nonGeneratedImage.fullImageDescription;
+          nonGeneratedImage.shortDescription +
+          ". " +
+          nonGeneratedImage.fullImageDescription;
         console.log("-------------------------------");
         console.log(prompt);
         const results = await generateImagesBuffers(mjClient, prompt);
@@ -77,14 +85,15 @@ export async function GET(request: Request) {
           results.map(async (imageBuffer, index) => {
             const resizedImage = await resizeImage(imageBuffer, 1024, "webp");
             const id = convertNameIntoId(nonGeneratedImage.shortDescription);
-            const name = id + "_" + index + ".webp" || `image-${Date.now()}.webp`;
+            const name =
+              id + "_" + index + ".webp" || `image-${Date.now()}.webp`;
             console.log("name", name);
             return await uploadImage({
               imageBuffer: resizedImage,
               extension: "webp",
               name: name,
             });
-          })
+          }),
         );
         resizedImages.push(...tempResizedImages);
       }

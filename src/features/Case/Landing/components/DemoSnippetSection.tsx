@@ -139,7 +139,10 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
                   >
                     {i18n._(`Candidate's answer`)}
                   </Typography>
-                  <Typography variant="body1" sx={{ lineHeight: 1.5, opacity: 0.95 }}>
+                  <Typography
+                    variant="body1"
+                    sx={{ lineHeight: 1.5, opacity: 0.95 }}
+                  >
                     {item.userAnswerShort}
                   </Typography>
                 </Stack>

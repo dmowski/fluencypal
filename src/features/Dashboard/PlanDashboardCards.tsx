@@ -9,7 +9,14 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { ChevronDown, Flag, LandPlot, MoveRight, Plus, Sparkle } from "lucide-react";
+import {
+  ChevronDown,
+  Flag,
+  LandPlot,
+  MoveRight,
+  Plus,
+  Sparkle,
+} from "lucide-react";
 import { useLingui } from "@lingui/react";
 import { usePlan } from "../Plan/usePlan";
 import { PlanElementMode } from "../Plan/types";
@@ -36,13 +43,16 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const teacherSettings = useTeacherSettings();
   const settings = useSettings();
 
-  const [selectGoalModalAnchorEl, setSelectGoalModalAnchorEl] = useState<null | HTMLElement>(null);
+  const [selectGoalModalAnchorEl, setSelectGoalModalAnchorEl] =
+    useState<null | HTMLElement>(null);
 
   const isGoalSet = !!plan.activeGoal?.elements?.length;
 
   const deletePlans = async () => {
     const confirmResult = confirm(
-      i18n._(`Are you sure you want to delete your goal? This action cannot be undone.`)
+      i18n._(
+        `Are you sure you want to delete your goal? This action cannot be undone.`,
+      ),
     );
     if (!confirmResult) {
       return;
@@ -72,8 +82,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
   sortedElements.forEach((element, index) => {
     const isCompleted =
-      plan.activeGoal?.progress?.find((part) => part.elementId === element.id)?.state ===
-      "completed";
+      plan.activeGoal?.progress?.find((part) => part.elementId === element.id)
+        ?.state === "completed";
     if (!isCompleted && activeIndex === null) {
       activeIndex = index;
     }
@@ -81,7 +91,9 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const [isShowMoreModal, setIsShowMoreModal] = useUrlParam("showMoreModal");
 
   const doneLessonsCount = sortedElements.reduce((acc, element) => {
-    const progress = plan.activeGoal?.progress?.find((part) => part.elementId === element.id);
+    const progress = plan.activeGoal?.progress?.find(
+      (part) => part.elementId === element.id,
+    );
     const isDone = progress?.state === "completed";
     if (isDone) {
       return acc + 1;
@@ -104,7 +116,11 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       setIsLearningPlanUpdating(false);
       setIsShowMoreModal(false);
     } catch (error) {
-      alert(i18n._(`Something went wrong while generating more lessons. Please try again later.`));
+      alert(
+        i18n._(
+          `Something went wrong while generating more lessons. Please try again later.`,
+        ),
+      );
       setIsLearningPlanUpdating(false);
 
       throw error;
@@ -142,7 +158,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           <Stack
             sx={{
               borderRadius: "50%",
-              background: "linear-gradient(45deg,rgb(120, 13, 220) 0%,rgb(199, 13, 236) 100%)",
+              background:
+                "linear-gradient(45deg,rgb(120, 13, 220) 0%,rgb(199, 13, 236) 100%)",
               height: "60px",
               width: "60px",
 
@@ -191,7 +208,9 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               {languageGoals.length > 1 && (
                 <IconButton
                   size="small"
-                  onClick={(event) => setSelectGoalModalAnchorEl(event.currentTarget)}
+                  onClick={(event) =>
+                    setSelectGoalModalAnchorEl(event.currentTarget)
+                  }
                 >
                   <ChevronDown />
                 </IconButton>
@@ -224,7 +243,11 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                         }}
                       >
                         <ListItemIcon>
-                          {isActive ? <RadioButtonCheckedIcon /> : <RadioButtonUncheckedIcon />}
+                          {isActive ? (
+                            <RadioButtonCheckedIcon />
+                          ) : (
+                            <RadioButtonUncheckedIcon />
+                          )}
                         </ListItemIcon>
                         <ListItemText>
                           <Typography>{goal.title}</Typography>
@@ -298,7 +321,9 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             descriptionTop={plan.nextElement.description}
             descriptionBottom={plan.nextElement.subTitle}
             actionLabel={i18n._("Start")}
-            aiVideo={getAiVoiceByVoice(settings.userSettings?.teacherVoice || "shimmer")}
+            aiVideo={getAiVoiceByVoice(
+              settings.userSettings?.teacherVoice || "shimmer",
+            )}
             startIcon={<VideocamIcon />}
             onAction={() => plan.openElementModal(nextElementId)}
             settingsIcon={<SettingsIcon />}
@@ -319,9 +344,11 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             const colorIndex = index % cardColors.length;
             const cardColor = cardColors[colorIndex];
             const elementsWithSameMode =
-              sortedElements.filter((element) => element.mode === planElement.mode) || [];
+              sortedElements.filter(
+                (element) => element.mode === planElement.mode,
+              ) || [];
             const currentElementIndex = elementsWithSameMode.findIndex(
-              (element) => element.id === planElement.id
+              (element) => element.id === planElement.id,
             );
 
             const imageVariants = cardInfo.imgUrl;
@@ -329,8 +356,9 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             const imageUrl = imageVariants[imageIndex];
 
             const isDone =
-              plan.activeGoal?.progress?.find((part) => part.elementId === planElement.id)
-                ?.state === "completed";
+              plan.activeGoal?.progress?.find(
+                (part) => part.elementId === planElement.id,
+              )?.state === "completed";
 
             const isActive = index === activeIndex;
 
@@ -415,12 +443,23 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 {i18n._(`More unique lessons`)}
               </Typography>
               <Stack>
-                <Typography variant="h4" align="center" component="h2" className="decor-text">
+                <Typography
+                  variant="h4"
+                  align="center"
+                  component="h2"
+                  className="decor-text"
+                >
                   {plan.activeGoal?.title || i18n._(`Goal`)}
                 </Typography>
-                <Typography sx={{ paddingTop: "5px" }} align="center" variant="caption">
+                <Typography
+                  sx={{ paddingTop: "5px" }}
+                  align="center"
+                  variant="caption"
+                >
                   {plan.activeGoal?.goalQuiz?.description ||
-                    i18n._(`Generate more lessons to achieve your goal faster.`)}
+                    i18n._(
+                      `Generate more lessons to achieve your goal faster.`,
+                    )}
                 </Typography>
               </Stack>
             </Stack>
@@ -473,7 +512,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   }}
                 >
                   {i18n._(
-                    `In order to generate more lessons, you need to complete at least 3 lessons`
+                    `In order to generate more lessons, you need to complete at least 3 lessons`,
                   )}
                 </Typography>
               )}

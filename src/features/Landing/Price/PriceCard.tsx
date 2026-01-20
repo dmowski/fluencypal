@@ -11,7 +11,9 @@ interface PriceCardProps {
 
   listTitle: string;
   listItems: {
-    icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+    icon: ForwardRefExoticComponent<
+      Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+    >;
     title: string;
     tooltip?: string;
   }[];
@@ -136,7 +138,11 @@ export const PriceCard: React.FC<PriceCardProps> = ({
                   gap: "12px",
                 }}
               >
-                <item.icon color={"#1f74be"} size={"1rem"} strokeWidth={"1.6px"} />
+                <item.icon
+                  color={"#1f74be"}
+                  size={"1rem"}
+                  strokeWidth={"1.6px"}
+                />
                 <Typography>{item.title}</Typography>
               </Stack>
             );

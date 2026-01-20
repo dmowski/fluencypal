@@ -83,7 +83,7 @@ async function processTranslations(poData, lang) {
         translationPromises.push(
           translate(entry.msgid, lang).then((translatedText) => {
             entry.msgstr[0] = translatedText; // Update with AI translation
-          })
+          }),
         );
       }
     }

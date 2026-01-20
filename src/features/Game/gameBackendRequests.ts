@@ -5,7 +5,11 @@ import {
   IncreaseGamePointsResponse,
   UsersStat,
 } from "@/features/Game/types";
-import { GetGameQuestionsRequest, SubmitAnswerRequest, SubmitAnswerResponse } from "./types";
+import {
+  GetGameQuestionsRequest,
+  SubmitAnswerRequest,
+  SubmitAnswerResponse,
+} from "./types";
 
 export const getSortedStatsFromData = (userPoints: GameUsersPoints) => {
   const userIds = Object.keys(userPoints);
@@ -32,7 +36,7 @@ export const getSortedStatsFromData = (userPoints: GameUsersPoints) => {
 
 export const getGameQuestionsRequest = async (
   requests: GetGameQuestionsRequest,
-  authKey: string
+  authKey: string,
 ) => {
   const response = await fetch(`/api/game/getQuestions`, {
     method: "POST",
@@ -46,7 +50,10 @@ export const getGameQuestionsRequest = async (
   return data;
 };
 
-export const submitAnswerRequest = async (request: SubmitAnswerRequest, authKey: string) => {
+export const submitAnswerRequest = async (
+  request: SubmitAnswerRequest,
+  authKey: string,
+) => {
   const response = await fetch(`/api/game/submitAnswer`, {
     method: "POST",
     headers: {
@@ -61,7 +68,7 @@ export const submitAnswerRequest = async (request: SubmitAnswerRequest, authKey:
 
 export const increaseGamePointsRequest = async (
   request: IncreaseGamePointsRequest,
-  authKey: string
+  authKey: string,
 ) => {
   const response = await fetch(`/api/game/increasePoints`, {
     method: "POST",

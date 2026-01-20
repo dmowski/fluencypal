@@ -201,7 +201,9 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   ...markdownComponents,
 
   h1: ({ children }) => (
-    <Typography variant="h1">{wrapChildrenWithTranslateWrapper(children)}</Typography>
+    <Typography variant="h1">
+      {wrapChildrenWithTranslateWrapper(children)}
+    </Typography>
   ),
   h2: ({ children }) => (
     <Typography
@@ -236,10 +238,14 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
     </Typography>
   ),
   h5: ({ children }) => (
-    <Typography variant="h5">{wrapChildrenWithTranslateWrapper(children)}</Typography>
+    <Typography variant="h5">
+      {wrapChildrenWithTranslateWrapper(children)}
+    </Typography>
   ),
   h6: ({ children }) => (
-    <Typography variant="h6">{wrapChildrenWithTranslateWrapper(children)}</Typography>
+    <Typography variant="h6">
+      {wrapChildrenWithTranslateWrapper(children)}
+    </Typography>
   ),
 
   a: ({ href, children }) => (
@@ -268,7 +274,9 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
     </ol>
   ),
   li: ({ children }) => (
-    <Typography component={"li"}>{wrapChildrenWithTranslateWrapper(children)}</Typography>
+    <Typography component={"li"}>
+      {wrapChildrenWithTranslateWrapper(children)}
+    </Typography>
   ),
   input: ({ checked }) => (
     <Checkbox
@@ -279,9 +287,13 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
       }}
     />
   ),
-  small: ({ children }) => <Typography>{wrapChildrenWithTranslateWrapper(children)}</Typography>,
+  small: ({ children }) => (
+    <Typography>{wrapChildrenWithTranslateWrapper(children)}</Typography>
+  ),
   em: ({ children }) => <em>{wrapChildrenWithTranslateWrapper(children)}</em>,
-  strong: ({ children }) => <strong>{wrapChildrenWithTranslateWrapper(children)}</strong>,
+  strong: ({ children }) => (
+    <strong>{wrapChildrenWithTranslateWrapper(children)}</strong>
+  ),
   blockquote: ({ children }) => (
     <blockquote>{wrapChildrenWithTranslateWrapper(children)}</blockquote>
   ),
@@ -319,15 +331,19 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   },
 };
 
-export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, variant }) => {
+export const Markdown: React.FC<MarkdownProps> = ({
+  children,
+  onWordClick,
+  variant,
+}) => {
   const styleComponents =
     variant === "small"
       ? markdownComponentsSmall
       : variant === "conversation"
-      ? markdownComponentsConversation
-      : variant === "blog"
-      ? markdownComponentsBlog
-      : markdownComponents;
+        ? markdownComponentsConversation
+        : variant === "blog"
+          ? markdownComponentsBlog
+          : markdownComponents;
   return (
     <Stack
       sx={{
@@ -353,7 +369,9 @@ export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, varia
           : undefined
       }
     >
-      <MarkdownTool options={{ overrides: styleComponents }}>{children}</MarkdownTool>
+      <MarkdownTool options={{ overrides: styleComponents }}>
+        {children}
+      </MarkdownTool>
     </Stack>
   );
 };

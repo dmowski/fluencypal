@@ -32,7 +32,7 @@ export const sendTranscriptRequest = async ({
       headers: {
         Authorization: `Bearer ${authKey}`,
       },
-    }
+    },
   );
   const data = (await response.json()) as TranscriptResponse;
   return data;

@@ -1,7 +1,11 @@
 import { AuthUserInfo } from "@/app/api/config/type";
 import { GetGameQuestionsRequest, GetGameQuestionsResponse } from "../types";
 import { getUserAiInfo, getUserInfo } from "@/app/api/user/getUserInfo";
-import { convertFullQuestionToShort, getUnansweredQuestions, setQuestion } from "./getQuestion";
+import {
+  convertFullQuestionToShort,
+  getUnansweredQuestions,
+  setQuestion,
+} from "./getQuestion";
 import { generateRandomQuestions } from "./generateRandomQuestions";
 
 const alwaysGenerateQuestions = false; // Set to true to always generate questions
@@ -22,10 +26,13 @@ export const generateUsersQuestions = async ({
   const learningLanguage = fullUserInfo.languageCode || "en";
   const userInfoRecords = aiUserInfo?.records || [];
 
-  const unansweredQuestions = await getUnansweredQuestions(userInfo.uid, learningLanguage);
+  const unansweredQuestions = await getUnansweredQuestions(
+    userInfo.uid,
+    learningLanguage,
+  );
   if (unansweredQuestions.length > 10 && !alwaysGenerateQuestions) {
     const responseData = unansweredQuestions.map((question) =>
-      convertFullQuestionToShort(question)
+      convertFullQuestionToShort(question),
     );
     return responseData;
   }
@@ -45,6 +52,8 @@ export const generateUsersQuestions = async ({
     }),
   ]);
 
-  const responseData = generatedQuestions.map((question) => question.shortQuestions);
+  const responseData = generatedQuestions.map(
+    (question) => question.shortQuestions,
+  );
   return responseData;
 };

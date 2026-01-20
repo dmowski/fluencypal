@@ -34,7 +34,11 @@ export async function InterviewLanding({
 
   return (
     <Stack sx={{ width: "100%" }}>
-      <InterviewHeader lang={lang} startTrialHref={quizLink} pageUrl={pageUrl} />
+      <InterviewHeader
+        lang={lang}
+        startTrialHref={quizLink}
+        pageUrl={pageUrl}
+      />
       <main style={{ width: "100%", margin: 0 }}>
         <Stack sx={{ alignItems: "center", gap: "0" }}>
           {interviewData.sections.map((section, index) => {

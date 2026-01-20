@@ -15,7 +15,10 @@ interface ScenariosPageProps {
   lang: SupportedLanguage;
 }
 
-export const ScenariosPage = ({ selectedCategory, lang }: ScenariosPageProps) => {
+export const ScenariosPage = ({
+  selectedCategory,
+  lang,
+}: ScenariosPageProps) => {
   const i18n = getI18nInstance(lang);
   return (
     <>

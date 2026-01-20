@@ -1,7 +1,13 @@
 "use client";
 
 import { UserSource } from "@/common/analytics";
-import { createContext, useContext, ReactNode, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 
 const SOURCE_STORAGE_KEY = "user_source_info";
 
@@ -81,7 +87,11 @@ function useProvideUserSource(): UserSourceContextType {
 
 export function UserSourceProvider({ children }: { children: ReactNode }) {
   const hook = useProvideUserSource();
-  return <UserSourceContext.Provider value={hook}>{children}</UserSourceContext.Provider>;
+  return (
+    <UserSourceContext.Provider value={hook}>
+      {children}
+    </UserSourceContext.Provider>
+  );
 }
 
 export const useUserSource = (): UserSourceContextType => {

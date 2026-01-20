@@ -3,7 +3,10 @@ import { createContext, useContext, ReactNode, JSX, useMemo } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { db } from "../Firebase/firebaseDb";
 import { query, where } from "firebase/firestore";
-import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
+import {
+  useCollectionData,
+  useDocumentData,
+} from "react-firebase-hooks/firestore";
 import { ChatSpaceUserReadMetadata, UserChatMetadata } from "./type";
 
 interface ChatListContextType {
@@ -26,10 +29,14 @@ function useProvideChatList(): ChatListContextType {
 
   const myChatsQuery = useMemo(() => {
     if (chatListRef === null || !auth.uid) return null;
-    return query(chatListRef, where("allowedUserIds", "array-contains", auth.uid));
+    return query(
+      chatListRef,
+      where("allowedUserIds", "array-contains", auth.uid),
+    );
   }, [chatListRef, auth.uid]);
 
-  const [myChats, myChatsLoading, myChatsError] = useCollectionData(myChatsQuery);
+  const [myChats, myChatsLoading, myChatsError] =
+    useCollectionData(myChatsQuery);
   const [globalChat] = useDocumentData(db.documents.chat(auth.uid, "global"));
 
   if (myChatsError) {
@@ -47,14 +54,19 @@ function useProvideChatList(): ChatListContextType {
         return aTime.localeCompare(bTime);
       })
       .forEach((chat) => {
-        const readMessagesCount = Object.keys(myReadStatsData?.[chat.spaceId] || {}).length;
+        const readMessagesCount = Object.keys(
+          myReadStatsData?.[chat.spaceId] || {},
+        ).length;
         const totalMessagesCount = chat.totalMessages || 0;
         const unreadCount = Math.max(0, totalMessagesCount - readMessagesCount);
         if (unreadCount > 0) {
           unreadLocalData[chat.spaceId] = unreadCount;
         }
       });
-    const unreadCount = Object.values(unreadLocalData).reduce((a, b) => a + b, 0);
+    const unreadCount = Object.values(unreadLocalData).reduce(
+      (a, b) => a + b,
+      0,
+    );
 
     const readGlobalIds = Object.keys(myReadStatsData?.["global"] || {});
     const totalMessagesCountGlobal = [
@@ -62,10 +74,14 @@ function useProvideChatList(): ChatListContextType {
       ...(globalChat?.secondLevelSingleCommentsIds || []),
     ];
     const unreadCountGlobal = totalMessagesCountGlobal.filter(
-      (id) => !readGlobalIds.includes(id)
+      (id) => !readGlobalIds.includes(id),
     ).length;
 
-    return { unreadSpaces: unreadLocalData, myUnreadCount: unreadCount, unreadCountGlobal };
+    return {
+      unreadSpaces: unreadLocalData,
+      myUnreadCount: unreadCount,
+      unreadCountGlobal,
+    };
   }, [myChats, myReadStatsData, globalChat]);
 
   return {
@@ -78,10 +94,16 @@ function useProvideChatList(): ChatListContextType {
   };
 }
 
-export function ChatListProvider({ children }: { children: ReactNode }): JSX.Element {
+export function ChatListProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideChatList();
 
-  return <ChatListContext.Provider value={hook}>{children}</ChatListContext.Provider>;
+  return (
+    <ChatListContext.Provider value={hook}>{children}</ChatListContext.Provider>
+  );
 }
 
 export const useChatList = (): ChatListContextType => {

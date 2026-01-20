@@ -7,7 +7,11 @@ interface StatCardProps {
   description: string;
 }
 
-export const StatCard: React.FC<StatCardProps> = ({ title, value, description }) => {
+export const StatCard: React.FC<StatCardProps> = ({
+  title,
+  value,
+  description,
+}) => {
   return (
     <Stack
       sx={{

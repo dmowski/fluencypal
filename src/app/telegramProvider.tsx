@@ -28,5 +28,9 @@ export function TelegramProvider(props: PropsWithChildren) {
   const isTelegramApp = isTMA();
   isTelegramApp && initTg();
 
-  return didMount && isTelegramApp ? <TelegramProviderInner {...props} /> : <>{props.children}</>;
+  return didMount && isTelegramApp ? (
+    <TelegramProviderInner {...props} />
+  ) : (
+    <>{props.children}</>
+  );
 }

@@ -1,5 +1,13 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useState, useEffect, useRef } from "react";
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  JSX,
+  useState,
+  useEffect,
+  useRef,
+} from "react";
 import { useGame } from "../Game/useGame";
 import { useUsage } from "../Usage/useUsage";
 import { useAiConversation } from "../Conversation/useAiConversation";
@@ -27,7 +35,10 @@ function useProvidePayWall(): PayWallContextType {
 
   const isNeedToShowPayWall = useRef(false);
   isNeedToShowPayWall.current =
-    usage.balanceHours <= 0.01 && !usage.isFullAccess && !game.isGameWinner && isInPaidArea;
+    usage.balanceHours <= 0.01 &&
+    !usage.isFullAccess &&
+    !game.isGameWinner &&
+    isInPaidArea;
 
   useEffect(() => {
     if (usage.loading || game.isLoading) {
@@ -68,10 +79,18 @@ function useProvidePayWall(): PayWallContextType {
   };
 }
 
-export function PayWallProvider({ children }: { children: ReactNode }): JSX.Element {
+export function PayWallProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const settings = useProvidePayWall();
 
-  return <payWallContext.Provider value={settings}>{children}</payWallContext.Provider>;
+  return (
+    <payWallContext.Provider value={settings}>
+      {children}
+    </payWallContext.Provider>
+  );
 }
 
 export const usePayWall = (): PayWallContextType => {

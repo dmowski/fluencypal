@@ -63,7 +63,8 @@ interface ConversationAudioContextType {
   isPlaying: boolean;
 }
 
-const ConversationAudioContext = createContext<ConversationAudioContextType | null>(null);
+const ConversationAudioContext =
+  createContext<ConversationAudioContextType | null>(null);
 
 class AudioQueuePlayer {
   private ctx: AudioContext | null = null;
@@ -134,7 +135,9 @@ class AudioQueuePlayer {
 
   async playStreamUrl(url: string): Promise<void> {
     if (!this.ctx || !this.gain || !this.streamEl) {
-      throw new Error("AudioQueuePlayer: not unlocked. Call unlockFromGesture() first.");
+      throw new Error(
+        "AudioQueuePlayer: not unlocked. Call unlockFromGesture() first.",
+      );
     }
     if (this.ctx.state === "suspended") await this.ctx.resume();
 
@@ -149,7 +152,8 @@ class AudioQueuePlayer {
 
     await new Promise<void>((resolve, reject) => {
       const onEnded = () => cleanup(resolve);
-      const onError = () => cleanup(() => reject(new Error("Stream audio error")));
+      const onError = () =>
+        cleanup(() => reject(new Error("Stream audio error")));
 
       const cleanup = (done: () => void) => {
         el.removeEventListener("ended", onEnded);
@@ -232,7 +236,9 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     async (text: string, instructions: string, voice: AiVoice) => {
       const languageCode = settings.languageCode;
       if (!languageCode) {
-        throw new Error("Language is not set | useProvideConversationAudio.getAudioUrl");
+        throw new Error(
+          "Language is not set | useProvideConversationAudio.getAudioUrl",
+        );
       }
 
       const response = await sendTextToAudioRequest(
@@ -242,14 +248,14 @@ function useProvideConversationAudio(): ConversationAudioContextType {
           instructions,
           voice,
         },
-        await auth.getToken()
+        await auth.getToken(),
       );
 
       const audioUrl = response.audioUrl;
       if (!audioUrl) throw new Error("Failed to generate audio");
       return audioUrl;
     },
-    [settings.languageCode, auth]
+    [settings.languageCode, auth],
   );
 
   const startConversationAudio = useCallback(async () => {
@@ -264,7 +270,8 @@ function useProvideConversationAudio(): ConversationAudioContextType {
   const speak = useCallback(async (text: string, opts: SpeakOptions) => {
     const maxLength = 600;
     text = text.trim();
-    const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
+    const trimmedText =
+      text.length > maxLength ? text.slice(0, maxLength) : text;
     const q = new URLSearchParams({
       input: trimmedText,
       voice: opts.voice,
@@ -333,21 +340,29 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       getVolume,
       dispose,
       isPlaying,
-    ]
+    ],
   );
 }
 
-export function ConversationAudioProvider({ children }: { children: ReactNode }): JSX.Element {
+export function ConversationAudioProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideConversationAudio();
   return (
-    <ConversationAudioContext.Provider value={hook}>{children}</ConversationAudioContext.Provider>
+    <ConversationAudioContext.Provider value={hook}>
+      {children}
+    </ConversationAudioContext.Provider>
   );
 }
 
 export const useConversationAudio = (): ConversationAudioContextType => {
   const context = useContext(ConversationAudioContext);
   if (!context) {
-    throw new Error("useConversationAudio must be used within a ConversationAudioProvider");
+    throw new Error(
+      "useConversationAudio must be used within a ConversationAudioProvider",
+    );
   }
   return context;
 };

@@ -8,7 +8,10 @@ import { InterviewQuizButton } from "../Goal/Quiz/InterviewQuizButton";
 import { QuizOption } from "../Case/types";
 import { useAuth } from "../Auth/useAuth";
 
-const replacePlaceholders = (text: string, placeholders: Record<string, string>) => {
+const replacePlaceholders = (
+  text: string,
+  placeholders: Record<string, string>,
+) => {
   let replacedText = text;
   const keys = Object.keys(placeholders);
   keys.forEach((key) => {
@@ -132,7 +135,11 @@ export const InfoStep = ({
                 paddingTop: "30px",
               }}
             >
-              <ColorIconTextList listItems={listItems} iconSize="26px" gap="23px" />
+              <ColorIconTextList
+                listItems={listItems}
+                iconSize="26px"
+                gap="23px"
+              />
             </Stack>
           )}
 
@@ -146,7 +153,7 @@ export const InfoStep = ({
               >
                 {options.map((option) => {
                   const isSelected = selectedOptions?.some(
-                    (selected) => selected.label === option.label
+                    (selected) => selected.label === option.label,
                   );
                   return (
                     <Stack
@@ -158,10 +165,13 @@ export const InfoStep = ({
                           if (isSelected) {
                             newSelectedOptions =
                               selectedOptions?.filter(
-                                (selected) => selected.label !== option.label
+                                (selected) => selected.label !== option.label,
                               ) || [];
                           } else {
-                            newSelectedOptions = [...(selectedOptions || []), option];
+                            newSelectedOptions = [
+                              ...(selectedOptions || []),
+                              option,
+                            ];
                           }
                         } else {
                           newSelectedOptions = isSelected ? [] : [option];
@@ -180,7 +190,9 @@ export const InfoStep = ({
                         border: isSelected
                           ? "2px solid rgb(96, 165, 250)"
                           : "2px solid rgba(96, 165, 250, 0.1)",
-                        backgroundColor: isSelected ? "rgba(96, 165, 250, 0.1)" : "transparent",
+                        backgroundColor: isSelected
+                          ? "rgba(96, 165, 250, 0.1)"
+                          : "transparent",
                         "&:hover": {
                           backgroundColor: isSelected
                             ? "rgba(96, 165, 250, 0.15)"
@@ -208,7 +220,9 @@ export const InfoStep = ({
                             alignItems: "flex-start",
                           }}
                         >
-                          <Typography variant="body1">{option.label}</Typography>
+                          <Typography variant="body1">
+                            {option.label}
+                          </Typography>
                           {option.subTitle && (
                             <Typography
                               variant="body2"

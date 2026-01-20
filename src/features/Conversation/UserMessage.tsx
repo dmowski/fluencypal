@@ -13,7 +13,10 @@ interface UserMessageProps {
 }
 type MessageQuality = "loading" | "great" | "bad" | "error";
 
-export const UserMessage = ({ message, analyzeUserMessage }: UserMessageProps) => {
+export const UserMessage = ({
+  message,
+  analyzeUserMessage,
+}: UserMessageProps) => {
   const [level, setLevel] = useState<MessageQuality>("loading");
   const [correctedMessage, setCorrectedMessage] = useState<string | null>(null);
   const [description, setDescription] = useState<string | null>(null);
@@ -33,16 +36,17 @@ export const UserMessage = ({ message, analyzeUserMessage }: UserMessageProps) =
     setDescription(null);
     setCorrectedMessage(null);
     try {
-      const { sourceMessage, correctedMessage, description } = await analyzeUserMessage(message);
+      const { sourceMessage, correctedMessage, description } =
+        await analyzeUserMessage(message);
       if (message !== sourceMessage) {
         return;
       }
 
       setLevel(
-        correctedMessage.toLowerCase().trim() === sourceMessage.toLowerCase().trim() ||
-          !correctedMessage.trim()
+        correctedMessage.toLowerCase().trim() ===
+          sourceMessage.toLowerCase().trim() || !correctedMessage.trim()
           ? "great"
-          : "bad"
+          : "bad",
       );
 
       setCorrectedMessage(correctedMessage || null);
@@ -155,7 +159,8 @@ export const UserMessage = ({ message, analyzeUserMessage }: UserMessageProps) =
                     padding: "10px",
                   }}
                 >
-                  {description || "There are some mistakes in your message. Press to see them"}
+                  {description ||
+                    "There are some mistakes in your message. Press to see them"}
                 </Typography>
               }
               placement="top"

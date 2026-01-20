@@ -957,7 +957,8 @@ export const paintingVersionDescriptions: ImageDescriptionShort[] = [
       "A terrifying image of a wild-eyed god devouring his child in a dark and chaotic background",
   },
   {
-    shortDescription: "Self-Portrait with Thorn Necklace and Hummingbird by Frida Kahlo",
+    shortDescription:
+      "Self-Portrait with Thorn Necklace and Hummingbird by Frida Kahlo",
     fullImageDescription:
       "A self-portrait of Kahlo with a thorn necklace, black cat and monkey behind her, and vibrant green foliage",
   },
@@ -1086,21 +1087,23 @@ export const getImagePublicUrl = (name: string, index?: string): string => {
   return `https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2F${id}${index ? `_` + index : ""}.webp?alt=media`;
 };
 
-export const openAiImageDescriptions: ImageDescription[] = imageDescriptionsRaw.map((desc) => ({
-  ...desc,
-  id: convertNameIntoId(desc.shortDescription),
-  url: getImagePublicUrl(desc.shortDescription),
-}));
+export const openAiImageDescriptions: ImageDescription[] =
+  imageDescriptionsRaw.map((desc) => ({
+    ...desc,
+    id: convertNameIntoId(desc.shortDescription),
+    url: getImagePublicUrl(desc.shortDescription),
+  }));
 
-export const paintingImageDescriptions: ImageDescription[] = paintingVersionDescriptions
-  .map((desc) => {
-    return [0, 1, 2, 3].map((index) => ({
-      ...desc,
-      id: convertNameIntoId(desc.shortDescription),
-      url: getImagePublicUrl(desc.shortDescription, `${index}`),
-    }));
-  })
-  .flat();
+export const paintingImageDescriptions: ImageDescription[] =
+  paintingVersionDescriptions
+    .map((desc) => {
+      return [0, 1, 2, 3].map((index) => ({
+        ...desc,
+        id: convertNameIntoId(desc.shortDescription),
+        url: getImagePublicUrl(desc.shortDescription, `${index}`),
+      }));
+    })
+    .flat();
 
 export const imageDescriptions: ImageDescription[] = [
   ...openAiImageDescriptions,

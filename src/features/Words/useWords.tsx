@@ -1,5 +1,12 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useMemo, useState } from "react";
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  JSX,
+  useMemo,
+  useState,
+} from "react";
 import { useAuth } from "../Auth/useAuth";
 import { setDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
@@ -15,7 +22,10 @@ interface WordsContextType {
   loading: boolean;
   addWordsStatFromText: (text: string) => Promise<string[]>;
   totalWordsCount: number;
-  getNewWordsToLearn: (goal: GoalElementInfo, knownWords: string[]) => Promise<string[]>;
+  getNewWordsToLearn: (
+    goal: GoalElementInfo,
+    knownWords: string[],
+  ) => Promise<string[]>;
 }
 
 const WordsContext = createContext<WordsContextType | null>(null);
@@ -23,7 +33,10 @@ const WordsContext = createContext<WordsContextType | null>(null);
 function useProvideWords(): WordsContextType {
   const auth = useAuth();
   const settings = useSettings();
-  const wordsStatsDocRef = db.documents.userWordsStats(auth.uid, settings.languageCode);
+  const wordsStatsDocRef = db.documents.userWordsStats(
+    auth.uid,
+    settings.languageCode,
+  );
 
   const [wordsStats, loading] = useDocumentData(wordsStatsDocRef);
   const textAi = useTextAi();
@@ -52,7 +65,7 @@ function useProvideWords(): WordsContextType {
         acc[word] = (wordsStats?.dictionary?.[word] || 0) + newWords[word];
         return acc;
       },
-      {} as Record<string, number>
+      {} as Record<string, number>,
     );
 
     await setDoc(
@@ -60,7 +73,7 @@ function useProvideWords(): WordsContextType {
       {
         dictionary: partToUpdate,
       },
-      { merge: true }
+      { merge: true },
     );
 
     return newWordsList;
@@ -71,9 +84,14 @@ function useProvideWords(): WordsContextType {
     return await addWords(stat);
   };
 
-  const getNewWordsToLearn = async (goal?: GoalElementInfo, knownWords: string[] = []) => {
+  const getNewWordsToLearn = async (
+    goal?: GoalElementInfo,
+    knownWords: string[] = [],
+  ) => {
     const dictionary = wordsStats?.dictionary || {};
-    const knownWordsFromDictionary = Object.keys(dictionary).filter((word) => dictionary[word] > 3);
+    const knownWordsFromDictionary = Object.keys(dictionary).filter(
+      (word) => dictionary[word] > 3,
+    );
     const knownWordsTotal = [...knownWordsFromDictionary, ...knownWords];
 
     if (knownWordsTotal.length > 0) {
@@ -129,7 +147,11 @@ Your response will be sent to JSON.parse() function.
   };
 }
 
-export function WordsProvider({ children }: { children: ReactNode }): JSX.Element {
+export function WordsProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideWords();
   return <WordsContext.Provider value={hook}>{children}</WordsContext.Provider>;
 }

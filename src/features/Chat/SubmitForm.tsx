@@ -1,5 +1,11 @@
 "use client";
-import { Stack, Typography, Button, IconButton, TextField } from "@mui/material";
+import {
+  Stack,
+  Typography,
+  Button,
+  IconButton,
+  TextField,
+} from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import SendIcon from "@mui/icons-material/Send";
@@ -48,10 +54,13 @@ export function SubmitForm({
     }
   }, [recorder.isRecording, setIsActiveRecording]);
 
-  const needMoreText = !!recorder?.transcription?.length && recorder.transcription.length < 4;
+  const needMoreText =
+    !!recorder?.transcription?.length && recorder.transcription.length < 4;
 
-  const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] = useState(false);
-  const isAnalyzingResponse = isAnalyzingMessageWithAi || recorder.isTranscribing;
+  const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] =
+    useState(false);
+  const isAnalyzingResponse =
+    isAnalyzingMessageWithAi || recorder.isTranscribing;
 
   const [isTextMode, setIsTextMode] = useState(false);
   const [textMessage, setTextMessage] = useState("");
@@ -123,7 +132,11 @@ Provide only the message user can send, without any additional explanation or co
         >
           <ProcessUserInput
             isTranscribing={recorder.isTranscribing}
-            userMessage={(isTextMode ? preSubmitTextMessage : recorder.transcription || "") || ""}
+            userMessage={
+              (isTextMode
+                ? preSubmitTextMessage
+                : recorder.transcription || "") || ""
+            }
             setIsAnalyzing={setIsAnalyzingMessageWithAi}
             setIsNeedCorrection={() => {}}
             previousBotMessage={previousBotMessage}
@@ -183,7 +196,9 @@ Provide only the message user can send, without any additional explanation or co
             >
               <IconButton
                 onClick={() => setIsTextMode(!isTextMode)}
-                disabled={recorder.isRecording || recorder.isTranscribing || isLoading}
+                disabled={
+                  recorder.isRecording || recorder.isTranscribing || isLoading
+                }
               >
                 <Mic size={"18px"} color={"rgba(200, 200, 200, 1)"} />
               </IconButton>
@@ -239,22 +254,32 @@ Provide only the message user can send, without any additional explanation or co
               alignItems: "center",
             }}
           >
-            {!recorder.transcription && !recorder.isTranscribing && !recorder.isRecording && (
-              <IconButton
-                onClick={() => setIsTextMode(!isTextMode)}
-                disabled={recorder.isRecording || recorder.isTranscribing || isLoading}
-                sx={{
-                  marginRight: "10px",
-                }}
-              >
-                <Keyboard
-                  size={"18px"}
-                  color={isTextMode ? "rgba(0, 150, 255, 1)" : "rgba(200, 200, 200, 1)"}
-                />
-              </IconButton>
-            )}
+            {!recorder.transcription &&
+              !recorder.isTranscribing &&
+              !recorder.isRecording && (
+                <IconButton
+                  onClick={() => setIsTextMode(!isTextMode)}
+                  disabled={
+                    recorder.isRecording || recorder.isTranscribing || isLoading
+                  }
+                  sx={{
+                    marginRight: "10px",
+                  }}
+                >
+                  <Keyboard
+                    size={"18px"}
+                    color={
+                      isTextMode
+                        ? "rgba(0, 150, 255, 1)"
+                        : "rgba(200, 200, 200, 1)"
+                    }
+                  />
+                </IconButton>
+              )}
 
-            {(!recorder.transcription || recorder.isTranscribing || recorder.isRecording) && (
+            {(!recorder.transcription ||
+              recorder.isTranscribing ||
+              recorder.isRecording) && (
               <Button
                 disabled={recorder.isTranscribing || isLoading}
                 variant={"contained"}
@@ -276,46 +301,51 @@ Provide only the message user can send, without any additional explanation or co
               </Button>
             )}
 
-            {recorder.transcription && !recorder.isRecording && !recorder.isTranscribing && (
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  gap: "10px",
-                  width: "calc(100% - 0px)",
-                  flexWrap: "wrap",
-                }}
-              >
-                <Button
-                  variant="outlined"
-                  color="info"
-                  disabled={
-                    needMoreText || recorder.isTranscribing || recorder.isRecording || isLoading
-                  }
-                  onClick={async () => {
-                    recorder.startRecording();
+            {recorder.transcription &&
+              !recorder.isRecording &&
+              !recorder.isTranscribing && (
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    gap: "10px",
+                    width: "calc(100% - 0px)",
+                    flexWrap: "wrap",
                   }}
-                  endIcon={<Mic />}
                 >
-                  {i18n._("Re-record")}
-                </Button>
+                  <Button
+                    variant="outlined"
+                    color="info"
+                    disabled={
+                      needMoreText ||
+                      recorder.isTranscribing ||
+                      recorder.isRecording ||
+                      isLoading
+                    }
+                    onClick={async () => {
+                      recorder.startRecording();
+                    }}
+                    endIcon={<Mic />}
+                  >
+                    {i18n._("Re-record")}
+                  </Button>
 
-                <Button
-                  variant="contained"
-                  color="info"
-                  disabled={
-                    needMoreText ||
-                    recorder.isTranscribing ||
-                    recorder.isRecording ||
-                    isSending ||
-                    isLoading
-                  }
-                  onClick={() => submitTranscription()}
-                  endIcon={<SendIcon />}
-                >
-                  {isSending ? i18n._("Sending...") : i18n._("Send Message")}
-                </Button>
-              </Stack>
-            )}
+                  <Button
+                    variant="contained"
+                    color="info"
+                    disabled={
+                      needMoreText ||
+                      recorder.isTranscribing ||
+                      recorder.isRecording ||
+                      isSending ||
+                      isLoading
+                    }
+                    onClick={() => submitTranscription()}
+                    endIcon={<SendIcon />}
+                  >
+                    {isSending ? i18n._("Sending...") : i18n._("Send Message")}
+                  </Button>
+                </Stack>
+              )}
 
             <Stack
               sx={{
@@ -382,7 +412,9 @@ Provide only the message user can send, without any additional explanation or co
                 variant="caption"
                 color={"#ff8e86ff"}
               >
-                {i18n._(`Please record a longer message (at least a few words).`)}
+                {i18n._(
+                  `Please record a longer message (at least a few words).`,
+                )}
               </Typography>
             </>
           )}

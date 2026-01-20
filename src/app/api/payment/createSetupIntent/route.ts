@@ -33,7 +33,7 @@ const getOrCreateCustomerId = async (userId: string): Promise<string> => {
     },
     {
       idempotencyKey: `customer_${userId}`, // same uid → same customer
-    }
+    },
   );
 
   const newInfo: StripeUserInfo = { customerId: customer.id };
@@ -45,7 +45,9 @@ export async function POST(request: Request) {
   try {
     const authed = await validateAuthToken(request);
     if (!authed) {
-      return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+      });
     }
 
     const userId = authed.uid;
@@ -60,11 +62,14 @@ export async function POST(request: Request) {
           card: { request_three_d_secure: "automatic" },
         },
         // You can tag the SI too, if you want to trace:
-        metadata: { firebaseUid: userId, purpose: "fluencypal_card_verification" },
+        metadata: {
+          firebaseUid: userId,
+          purpose: "fluencypal_card_verification",
+        },
       },
       {
         idempotencyKey: `create_setup_intent_${userId}_${Date.now()}`, // 1 SI per click
-      }
+      },
     );
 
     const response: SetupIntentResponse = {
@@ -74,7 +79,8 @@ export async function POST(request: Request) {
   } catch (err: any) {
     // Map Stripe errors to 4xx where appropriate
     const code = err?.statusCode ?? 500;
-    const message = err?.raw?.message || err?.message || "Unable to create SetupIntent";
+    const message =
+      err?.raw?.message || err?.message || "Unable to create SetupIntent";
     // Log safe context (no secrets)
     console.error("createSetupIntent error:", { code, message });
     return new Response(JSON.stringify({ error: message }), { status: code });

@@ -121,9 +121,14 @@ export const RolePlayModal = () => {
                 >
                   {selectedRolePlayScenario.input.map((input, index) => {
                     const type = input.type;
-                    const inputId = selectedRolePlayScenario.id + "-" + input.id;
-                    const value = userInputs?.[inputId] || input.defaultValue || "";
-                    const inputRenderMap: Record<RolePlayInputType, React.ReactElement> = {
+                    const inputId =
+                      selectedRolePlayScenario.id + "-" + input.id;
+                    const value =
+                      userInputs?.[inputId] || input.defaultValue || "";
+                    const inputRenderMap: Record<
+                      RolePlayInputType,
+                      React.ReactElement
+                    > = {
                       "text-input": (
                         <TextField
                           key={index}
@@ -150,7 +155,9 @@ export const RolePlayModal = () => {
                               onChange={(e) => {
                                 setUserInputs({
                                   ...userInputs,
-                                  [inputId]: e.target.checked ? "true" : "false",
+                                  [inputId]: e.target.checked
+                                    ? "true"
+                                    : "false",
                                 });
                               }}
                               disabled={isStarting}
@@ -240,7 +247,9 @@ export const RolePlayModal = () => {
                                     [inputId]: option,
                                   });
                                 }}
-                                variant={value === option ? "contained" : "outlined"}
+                                variant={
+                                  value === option ? "contained" : "outlined"
+                                }
                               >
                                 {option}
                               </Button>

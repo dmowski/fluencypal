@@ -45,47 +45,49 @@ export const PricePage = ({ lang }: PricePageProps) => {
     {
       question: i18n._(`Is there a free trial?`),
       answer: i18n._(
-        `No. FluencyPal offers a free plan with limited features and a monthly plan for full access. You can use the free plan indefinitely to practice speaking and explore basic features before deciding to upgrade.`
+        `No. FluencyPal offers a free plan with limited features and a monthly plan for full access. You can use the free plan indefinitely to practice speaking and explore basic features before deciding to upgrade.`,
       ),
     },
 
     {
       question: i18n._(`Do I need to enter a credit card to start?`),
-      answer: i18n._(`No. You can start the free plan without entering any payment details.`),
+      answer: i18n._(
+        `No. You can start the free plan without entering any payment details.`,
+      ),
     },
 
     {
       question: i18n._(`Is the payment recurring?`),
       answer: i18n._(
-        `No. FluencyPal does not use automatic recurring payments. You decide each month whether you want to continue and pay again manually.`
+        `No. FluencyPal does not use automatic recurring payments. You decide each month whether you want to continue and pay again manually.`,
       ),
     },
 
     {
       question: i18n._(`What do I get with the paid plan?`),
       answer: i18n._(
-        `The paid plan gives you full access to all FluencyPal features, including unlimited speaking practice, all learning modes, personalized practice plans, and progress tracking.`
+        `The paid plan gives you full access to all FluencyPal features, including unlimited speaking practice, all learning modes, personalized practice plans, and progress tracking.`,
       ),
     },
 
     {
       question: i18n._(`Can I stop using FluencyPal anytime?`),
       answer: i18n._(
-        `Yes. Since there is no automatic renewal, you can simply stop using the app at any time without being charged again.`
+        `Yes. Since there is no automatic renewal, you can simply stop using the app at any time without being charged again.`,
       ),
     },
 
     {
       question: i18n._(`Can I use FluencyPal for free?`),
       answer: i18n._(
-        `Yes. You can earn free full access by ranking in the top 5 of the FluencyPal game. The game is free to play.`
+        `Yes. You can earn free full access by ranking in the top 5 of the FluencyPal game. The game is free to play.`,
       ),
     },
 
     {
       question: i18n._(`Are there any hidden fees?`),
       answer: i18n._(
-        `No. The price shown is the full price. There are no hidden fees or surprise charges.`
+        `No. The price shown is the full price. There are no hidden fees or surprise charges.`,
       ),
     },
   ];
@@ -185,7 +187,9 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   ...subTitleFontStyle,
                 }}
               >
-                {i18n._(`From mistakes and hesitation to confident conversations`)}
+                {i18n._(
+                  `From mistakes and hesitation to confident conversations`,
+                )}
               </Typography>
             </Stack>
 
@@ -256,7 +260,9 @@ export const PricePage = ({ lang }: PricePageProps) => {
                       >
                         <CurrencyToDisplay />
                       </Typography>
-                      <Typography variant="caption">/ {i18n._("month")}</Typography>
+                      <Typography variant="caption">
+                        / {i18n._("month")}
+                      </Typography>
                     </Stack>
                   </Stack>
                 }
@@ -266,29 +272,39 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 listItems={[
                   {
                     title: i18n._("Game-based practice"),
-                    tooltip: i18n._("Get unlimited access to AI-powered language practice"),
+                    tooltip: i18n._(
+                      "Get unlimited access to AI-powered language practice",
+                    ),
                     icon: Swords,
                   },
                   {
                     title: i18n._("Debates and discussions"),
                     tooltip: i18n._(
-                      "Engage in real-life conversations like job interviews or ordering food"
+                      "Engage in real-life conversations like job interviews or ordering food",
                     ),
                     icon: UsersRound,
                   },
                   {
                     title: i18n._("Vocabulary challenges"),
-                    tooltip: i18n._("Improve fluency with interactive chat sessions"),
+                    tooltip: i18n._(
+                      "Improve fluency with interactive chat sessions",
+                    ),
                     icon: Languages,
                   },
                   {
                     title: i18n._("Reading practice"),
-                    tooltip: i18n._("Improve fluency with interactive chat sessions"),
+                    tooltip: i18n._(
+                      "Improve fluency with interactive chat sessions",
+                    ),
                     icon: BookText,
                   },
                   {
-                    title: i18n._("Place in the top 5 in the game to gain full access"),
-                    tooltip: i18n._("Improve fluency with interactive chat sessions"),
+                    title: i18n._(
+                      "Place in the top 5 in the game to gain full access",
+                    ),
+                    tooltip: i18n._(
+                      "Improve fluency with interactive chat sessions",
+                    ),
                     icon: Crown,
                   },
                 ]}
@@ -327,34 +343,44 @@ export const PricePage = ({ lang }: PricePageProps) => {
                       >
                         <CurrencyToDisplay />
                       </Typography>
-                      <Typography variant="caption">/ {i18n._("month")}</Typography>
+                      <Typography variant="caption">
+                        / {i18n._("month")}
+                      </Typography>
                     </Stack>
                   </Stack>
                 }
-                priceSubDescription={i18n._("Learn at full speed with full access")}
+                priceSubDescription={i18n._(
+                  "Learn at full speed with full access",
+                )}
                 listTitle={i18n._("Everything in Free, plus:")}
                 isLightButton
                 listItems={[
                   {
                     title: i18n._("Full AI tutor access"),
-                    tooltip: i18n._("Get unlimited access to AI-powered language practice"),
+                    tooltip: i18n._(
+                      "Get unlimited access to AI-powered language practice",
+                    ),
                     icon: Sparkles,
                   },
                   {
                     title: i18n._("Role-play scenarios"),
                     tooltip: i18n._(
-                      "Engage in real-life conversations like job interviews or ordering food"
+                      "Engage in real-life conversations like job interviews or ordering food",
                     ),
                     icon: UsersRound,
                   },
                   {
                     title: i18n._("Conversation practice"),
-                    tooltip: i18n._("Improve fluency with interactive chat sessions"),
+                    tooltip: i18n._(
+                      "Improve fluency with interactive chat sessions",
+                    ),
                     icon: Speech,
                   },
                   {
                     title: i18n._("Progress tracking"),
-                    tooltip: i18n._("See your improvements and track your learning journey"),
+                    tooltip: i18n._(
+                      "See your improvements and track your learning journey",
+                    ),
                     icon: ChartNoAxesCombined,
                   },
                   {
@@ -364,13 +390,15 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                   {
                     title: i18n._("New Grammar Rules"),
-                    tooltip: i18n._("By practicing, you will get personal grammar rules from AI"),
+                    tooltip: i18n._(
+                      "By practicing, you will get personal grammar rules from AI",
+                    ),
                     icon: GraduationCap,
                   },
                   {
                     title: i18n._("Advanced Personalization"),
                     tooltip: i18n._(
-                      "With time, AI will adapt to your learning style and it will be more personalized"
+                      "With time, AI will adapt to your learning style and it will be more personalized",
                     ),
                     icon: Lightbulb,
                   },
@@ -402,7 +430,9 @@ export const PricePage = ({ lang }: PricePageProps) => {
                     </Typography>
                   </Stack>
                 }
-                priceSubDescription={i18n._("Frequent users who need more value")}
+                priceSubDescription={i18n._(
+                  "Frequent users who need more value",
+                )}
                 listTitle={i18n._("What I can do for you:")}
                 listItems={[
                   {

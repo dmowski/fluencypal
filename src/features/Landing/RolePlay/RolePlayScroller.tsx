@@ -12,17 +12,26 @@ export const RolePlayScroller = () => {
   const isFocus = useRef(false);
 
   const scrollTick = () => {
-    if (!containerRef.current || isHover.current || isTouched.current || isFocus.current) return;
+    if (
+      !containerRef.current ||
+      isHover.current ||
+      isTouched.current ||
+      isFocus.current
+    )
+      return;
 
     const currentScroll = containerRef.current.scrollLeft;
-    const nextPosition = isScrollingToRight.current ? currentScroll + 1 : currentScroll - 1;
+    const nextPosition = isScrollingToRight.current
+      ? currentScroll + 1
+      : currentScroll - 1;
 
     if (nextPosition <= 0) {
       containerRef.current.scrollTo({ left: 0 });
       isScrollingToRight.current = true;
     }
 
-    const maxScrollLeft = containerRef.current.scrollWidth - containerRef.current.clientWidth;
+    const maxScrollLeft =
+      containerRef.current.scrollWidth - containerRef.current.clientWidth;
 
     if (maxScrollLeft < 100) {
       return;

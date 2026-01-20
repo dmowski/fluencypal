@@ -9,7 +9,12 @@ export async function POST(request: Request) {
   const userId = userInfo.uid;
   const db = getDB();
   const [logsHours, logsDays] = await Promise.all([
-    db.collection("users").doc(userId).collection("payments").where("type", "==", "welcome").get(),
+    db
+      .collection("users")
+      .doc(userId)
+      .collection("payments")
+      .where("type", "==", "welcome")
+      .get(),
     db
       .collection("users")
       .doc(userId)

@@ -26,7 +26,9 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   });
 }
 
-export default async function Page(props: { params: Promise<{ lang: string }> }) {
+export default async function Page(props: {
+  params: Promise<{ lang: string }>;
+}) {
   const lang = (await props.params).lang;
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   const rolePlayInfo = getRolePlayScenarios(supportedLang);

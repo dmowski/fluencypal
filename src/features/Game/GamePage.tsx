@@ -36,7 +36,9 @@ const TabLabel = ({
           component={"span"}
           sx={{
             color: badgeHighlight ? "#ff3d00" : "inherit",
-            border: badgeHighlight ? "1px solid #ff3d00" : "1px solid rgba(255, 255, 255, 0.2)",
+            border: badgeHighlight
+              ? "1px solid #ff3d00"
+              : "1px solid rgba(255, 255, 255, 0.2)",
             fontWeight: 400,
             borderRadius: "6px",
             fontSize: "11px",
@@ -55,7 +57,8 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const game = useGame();
   const { i18n } = useLingui();
   const settings = useSettings();
-  const isGameOnboardingCompleted = settings.userSettings?.isGameOnboardingCompleted;
+  const isGameOnboardingCompleted =
+    settings.userSettings?.isGameOnboardingCompleted;
   const [isShowOnboarding, setIsShowOnboarding] = useState(false);
 
   const chatList = useChatList();
@@ -67,11 +70,9 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
     game.playGame();
   };
 
-  const [activeTab, setActiveTab] = useUrlState<"rate" | "chat" | "dm" | "game">(
-    "space",
-    "chat",
-    false
-  );
+  const [activeTab, setActiveTab] = useUrlState<
+    "rate" | "chat" | "dm" | "game"
+  >("space", "chat", false);
 
   return (
     <>
@@ -117,7 +118,9 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                   <TabLabel
                     label={i18n._(`Chat`)}
                     badgeNumber={
-                      chatList.unreadCountGlobal ? chatList.unreadCountGlobal : undefined
+                      chatList.unreadCountGlobal
+                        ? chatList.unreadCountGlobal
+                        : undefined
                     }
                     badgeHighlight
                   />
@@ -147,7 +150,11 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                 label={
                   <TabLabel
                     label={i18n._(`My Chats`)}
-                    badgeNumber={chatList.myUnreadCount ? chatList.myUnreadCount : undefined}
+                    badgeNumber={
+                      chatList.myUnreadCount
+                        ? chatList.myUnreadCount
+                        : undefined
+                    }
                     badgeHighlight
                   />
                 }
@@ -161,7 +168,9 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
 
             {activeTab === "rate" && <GameStats />}
             {activeTab === "chat" && <ChatPage type="public" />}
-            {activeTab === "dm" && <ChatPage type="private" isFullContentByDefault />}
+            {activeTab === "dm" && (
+              <ChatPage type="private" isFullContentByDefault />
+            )}
             {activeTab === "game" && (
               <Stack
                 sx={{
@@ -207,11 +216,15 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                     >
                       <Typography variant="h5">{i18n._(`Game`)}</Typography>
                       <Typography variant="body2">
-                        {i18n._(`Ready to test your knowledge and climb the leaderboard?`)}
+                        {i18n._(
+                          `Ready to test your knowledge and climb the leaderboard?`,
+                        )}
                       </Typography>
                       <Button
                         variant={"contained"}
-                        startIcon={game.loadingQuestions ? <Loader /> : <Swords />}
+                        startIcon={
+                          game.loadingQuestions ? <Loader /> : <Swords />
+                        }
                         color="info"
                         onClick={onPlayClick}
                         disabled={game.loadingQuestions}
@@ -223,7 +236,9 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                           },
                         }}
                       >
-                        {game.loadingQuestions ? i18n._(`Loading...`) : i18n._(`Play`)}
+                        {game.loadingQuestions
+                          ? i18n._(`Loading...`)
+                          : i18n._(`Play`)}
                       </Button>
                     </Stack>
 
@@ -240,7 +255,9 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                           opacity: 0.7,
                         }}
                       >
-                        {i18n._(`Answer questions correctly to climb the leaderboard!`)}
+                        {i18n._(
+                          `Answer questions correctly to climb the leaderboard!`,
+                        )}
                       </Typography>
                       <PositionChanged />
                     </Stack>

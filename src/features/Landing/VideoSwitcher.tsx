@@ -17,7 +17,9 @@ export function useIsVisible(ref?: RefObject<HTMLDivElement | null> | null) {
     if (!ref || !ref.current) {
       return;
     }
-    const observer = new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting));
+    const observer = new IntersectionObserver(([entry]) =>
+      setIntersecting(entry.isIntersecting),
+    );
 
     observer.observe(ref.current);
     return () => {
@@ -48,7 +50,9 @@ export const VideoSwitcher: React.FC<VideoSwitcherProps> = ({ blocks }) => {
     if (!videoNode) return;
 
     const timeUpdateHandler = () => {
-      const percentage = Math.round((videoNode.currentTime / videoNode.duration) * 100);
+      const percentage = Math.round(
+        (videoNode.currentTime / videoNode.duration) * 100,
+      );
       if (percentage >= 99) {
         onPlayNext();
       }

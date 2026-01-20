@@ -8,7 +8,9 @@ export interface ListInterviewPageProps {
   }>;
 }
 
-export async function generateListMetadata(props: ListInterviewPageProps): Promise<Metadata> {
+export async function generateListMetadata(
+  props: ListInterviewPageProps,
+): Promise<Metadata> {
   const searchParam = await props.searchParams;
   const category = searchParam.category || "";
 

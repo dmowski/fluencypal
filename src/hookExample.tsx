@@ -13,9 +13,15 @@ function useProvideNameHook(): NameHookContextType {
   };
 }
 
-export function NameHookProvider({ children }: { children: ReactNode }): JSX.Element {
+export function NameHookProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideNameHook();
-  return <NameHookContext.Provider value={hook}>{children}</NameHookContext.Provider>;
+  return (
+    <NameHookContext.Provider value={hook}>{children}</NameHookContext.Provider>
+  );
 }
 
 export const useNameHook = (): NameHookContextType => {

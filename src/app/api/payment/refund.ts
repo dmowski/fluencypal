@@ -15,7 +15,9 @@ review if email_count_for_card_all_time < 3
 */
 
 export const refundPayment = async (chargeId: string): Promise<boolean> => {
-  sentSupportTelegramMessage({ message: "Refund requested for charge: " + chargeId });
+  sentSupportTelegramMessage({
+    message: "Refund requested for charge: " + chargeId,
+  });
   if (!stripeConfig.STRIPE_WEBHOOK_SECRET) {
     sentSupportTelegramMessage({ message: "Stripe webhook secret is not set" });
     throw new Error("Stripe webhook secret is not set");
@@ -48,7 +50,8 @@ export const refundPayment = async (chargeId: string): Promise<boolean> => {
   } catch (error) {
     sentSupportTelegramMessage({ message: "Refund failed: " + chargeId });
     sentSupportTelegramMessage({
-      message: "Refund failed error: " + (error as Error).message || "Unknown error",
+      message:
+        "Refund failed error: " + (error as Error).message || "Unknown error",
     });
     console.error(error);
     return false;

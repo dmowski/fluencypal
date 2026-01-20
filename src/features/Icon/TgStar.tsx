@@ -1,6 +1,11 @@
 export const TgGoldStar = ({ size }: { size?: string }) => {
   return (
-    <svg width={size || "20"} height={size || "20"} viewBox="0 0 20 20" fill="none">
+    <svg
+      width={size || "20"}
+      height={size || "20"}
+      viewBox="0 0 20 20"
+      fill="none"
+    >
       <g clipPath="url(#clip0_4913_7387)">
         <mask
           id="svg-men9i7eecws11x3m1uo-mask1"
@@ -11,7 +16,10 @@ export const TgGoldStar = ({ size }: { size?: string }) => {
           height="24"
           style={{ maskType: "luminance" }}
         >
-          <path d="M21.416 -1.42493H-1.08398V21.0751H21.416V-1.42493Z" fill="white"></path>
+          <path
+            d="M21.416 -1.42493H-1.08398V21.0751H21.416V-1.42493Z"
+            fill="white"
+          ></path>
         </mask>
         <g mask="url(#svg-men9i7eecws11x3m1uo-mask1)">
           <mask
@@ -23,7 +31,10 @@ export const TgGoldStar = ({ size }: { size?: string }) => {
             height="24"
             style={{ maskType: "luminance" }}
           >
-            <path d="M-1.08398 -1.42493H21.416V21.0751H-1.08398V-1.42493Z" fill="white"></path>
+            <path
+              d="M-1.08398 -1.42493H21.416V21.0751H-1.08398V-1.42493Z"
+              fill="white"
+            ></path>
           </mask>
           <g mask="url(#svg-men9i7eecws11x3m1uo-mask2)">
             <path

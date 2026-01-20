@@ -33,7 +33,8 @@ export const UIProgressBar = ({
 
       <Stack
         sx={{
-          background: "linear-gradient(to top, rgba(10, 18, 30, 0), rgba(10, 18, 30, 1))",
+          background:
+            "linear-gradient(to top, rgba(10, 18, 30, 0), rgba(10, 18, 30, 1))",
           position: "fixed",
           width: "100dvw",
 

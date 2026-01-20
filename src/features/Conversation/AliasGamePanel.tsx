@@ -15,18 +15,29 @@ interface AliasGamePanelProps {
   gameWords: GuessGameStat | null;
 }
 
-export const AliasGamePanel: React.FC<AliasGamePanelProps> = ({ conversation, gameWords }) => {
+export const AliasGamePanel: React.FC<AliasGamePanelProps> = ({
+  conversation,
+  gameWords,
+}) => {
   const wordsUserToDescribe = useMemo(() => {
-    return gameWords?.wordsUserToDescribe?.map((w) => w.toLowerCase().trim()) || [];
+    return (
+      gameWords?.wordsUserToDescribe?.map((w) => w.toLowerCase().trim()) || []
+    );
   }, [gameWords?.wordsUserToDescribe]);
 
   const wordsAiToDescribe = useMemo(() => {
-    return gameWords?.wordsAiToDescribe.map((w) => w.toLowerCase().trim()) || [];
+    return (
+      gameWords?.wordsAiToDescribe.map((w) => w.toLowerCase().trim()) || []
+    );
   }, [gameWords?.wordsAiToDescribe]);
 
-  const [describedByUserWords, setDescribedByUserWords] = useState<string[]>([]);
+  const [describedByUserWords, setDescribedByUserWords] = useState<string[]>(
+    [],
+  );
   const [describedByAiWords, setDescribedByAiWords] = useState<string[]>([]);
-  const [usersMarkedWords, setUsersMarkedWords] = useState<Record<string, boolean | undefined>>({});
+  const [usersMarkedWords, setUsersMarkedWords] = useState<
+    Record<string, boolean | undefined>
+  >({});
 
   const isWordIsInChatHistory = (word: string) => {
     const lowerCaseWord = word.toLowerCase().trim();
@@ -54,8 +65,12 @@ export const AliasGamePanel: React.FC<AliasGamePanelProps> = ({ conversation, ga
       .filter((word) => isWordIsInChatHistory(word))
       .map((word) => word.toLowerCase());
 
-    setDescribedByUserWords(uniq([...describedByUserWords, ...newDescribedByUserWords]));
-    setDescribedByAiWords(uniq([...describedByAiWords, ...newDescribedByAiWords]));
+    setDescribedByUserWords(
+      uniq([...describedByUserWords, ...newDescribedByUserWords]),
+    );
+    setDescribedByAiWords(
+      uniq([...describedByAiWords, ...newDescribedByAiWords]),
+    );
   };
 
   useEffect(() => {
@@ -80,7 +95,9 @@ type AliasGamePanelUIProps = {
   describedByUserWords: string[];
   describedByAiWords: string[];
   usersMarkedWords: Record<string, boolean | undefined>;
-  setUsersMarkedWords: React.Dispatch<React.SetStateAction<Record<string, boolean | undefined>>>;
+  setUsersMarkedWords: React.Dispatch<
+    React.SetStateAction<Record<string, boolean | undefined>>
+  >;
 };
 
 export const AliasGamePanelUI = ({
@@ -129,7 +146,8 @@ export const AliasGamePanelUI = ({
               const isDescribed = describedByUserWords.includes(trimWord);
               const isMarkedByUser = usersMarkedWords[trimWord] === true;
               const isUnmarkedByUser = usersMarkedWords[trimWord] === false;
-              const isDone = (isDescribed && !isUnmarkedByUser) || isMarkedByUser;
+              const isDone =
+                (isDescribed && !isUnmarkedByUser) || isMarkedByUser;
 
               return (
                 <Stack
@@ -148,7 +166,9 @@ export const AliasGamePanelUI = ({
                     },
                   }}
                   key={index}
-                  onClick={(e) => translator.translateWithModal(trimWord, e.currentTarget)}
+                  onClick={(e) =>
+                    translator.translateWithModal(trimWord, e.currentTarget)
+                  }
                 >
                   <Typography
                     key={index}
@@ -167,7 +187,12 @@ export const AliasGamePanelUI = ({
             })}
 
           {!isShowAll && (
-            <Button size="small" onClick={showAll} variant="text" endIcon={<ChevronRight />}>
+            <Button
+              size="small"
+              onClick={showAll}
+              variant="text"
+              endIcon={<ChevronRight />}
+            >
               {i18n._(`More options`)}
             </Button>
           )}
@@ -177,7 +202,8 @@ export const AliasGamePanelUI = ({
       {!!describedByAiWords.length && false && (
         <Stack sx={{ flexDirection: "column", gap: "10px" }}>
           <Typography variant="caption" sx={{ opacity: 0.9 }}>
-            {i18n._(`Guessed words:`)} {describedByAiWords.length}/{wordsAiToDescribe.length}
+            {i18n._(`Guessed words:`)} {describedByAiWords.length}/
+            {wordsAiToDescribe.length}
           </Typography>
           <Stack sx={{ flexDirection: "row", gap: "5px", flexWrap: "wrap" }}>
             {wordsAiToDescribe

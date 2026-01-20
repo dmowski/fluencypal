@@ -2,7 +2,9 @@ import { StepInfoCardSection } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
-export const getBackendStepInfoSection = (lang: SupportedLanguage): StepInfoCardSection => {
+export const getBackendStepInfoSection = (
+  lang: SupportedLanguage,
+): StepInfoCardSection => {
   const i18n = getI18nInstance(lang);
 
   return {
@@ -20,7 +22,9 @@ export const getBackendStepInfoSection = (lang: SupportedLanguage): StepInfoCard
         iconName: "brain",
         label: i18n._("Step 2"),
         title: i18n._("AI feedback that matters"),
-        description: i18n._("Improve architecture, data, and resiliency answers."),
+        description: i18n._(
+          "Improve architecture, data, and resiliency answers.",
+        ),
       },
       {
         iconName: "file-text",

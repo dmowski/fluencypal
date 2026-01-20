@@ -113,7 +113,9 @@ export const supportedLanguagesToLearn: SupportedLanguage[] = [
 
 export const getUserLangCode = (): SupportedLanguage[] => {
   const userLang = navigator.languages;
-  const langCodes = supportedLanguages.filter((lang) => userLang.includes(lang));
+  const langCodes = supportedLanguages.filter((lang) =>
+    userLang.includes(lang),
+  );
   return langCodes;
 };
 

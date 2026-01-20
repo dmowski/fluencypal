@@ -3,7 +3,7 @@ import { CheckPaymentRequest, CheckPaymentResponse } from "./types";
 
 export const sendCheckPaymentRequest = async (
   input: CheckPaymentRequest,
-  auth: string
+  auth: string,
 ): Promise<CheckPaymentResponse> => {
   const response = await fetch("/api/crypto/checkPayment", {
     method: "POST",

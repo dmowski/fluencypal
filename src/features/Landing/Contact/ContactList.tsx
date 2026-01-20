@@ -38,7 +38,11 @@ export const ContactList = () => {
           }}
         />
         <Typography>
-          <Link href={`${CONTACTS.instagram}`} target="_blank" rel="noopener noreferrer">
+          <Link
+            href={`${CONTACTS.instagram}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             dmowskii
           </Link>
         </Typography>

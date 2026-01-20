@@ -3,4 +3,7 @@ export interface GuessGameStat {
   wordsAiToDescribe: string[];
 }
 
-export type RecordingUserMessageMode = "VAD" | "PushToTalk" | "RealTimeConversation";
+export type RecordingUserMessageMode =
+  | "VAD"
+  | "PushToTalk"
+  | "RealTimeConversation";

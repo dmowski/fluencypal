@@ -48,7 +48,9 @@ export function Message({
   const [isDeleting, setIsDeleting] = useState(false);
   const { i18n } = useLingui();
   const translator = useTranslate();
-  const [isShowFullContent, setIsShowFullContent] = useState(isFullContentByDefault);
+  const [isShowFullContent, setIsShowFullContent] = useState(
+    isFullContentByDefault,
+  );
 
   const isDeleted = message.isDeleted || false;
 
@@ -56,7 +58,8 @@ export function Message({
     setIsShowFullContent(isFullContentByDefault);
   }, [isFullContentByDefault]);
 
-  const isLimitedMessage = message.content.length > limitMessages && !isShowFullContent;
+  const isLimitedMessage =
+    message.content.length > limitMessages && !isShowFullContent;
 
   const auth = useAuth();
   const game = useGame();
@@ -78,7 +81,9 @@ export function Message({
 
   const commentsCount = chat.commentsInfo[message.id] || 0;
 
-  const isLikedByMe = chat.messagesLikes[message.id]?.some((like) => like.userId === myUserId);
+  const isLikedByMe = chat.messagesLikes[message.id]?.some(
+    (like) => like.userId === myUserId,
+  );
 
   const updatedAgo = dayjs(message.updatedAtIso).fromNow();
 
@@ -95,7 +100,9 @@ export function Message({
     setMenuAnchorEl(null);
     e.preventDefault();
     e.stopPropagation();
-    const isConfirmed = window.confirm(i18n._("Are you sure you want to delete this message?"));
+    const isConfirmed = window.confirm(
+      i18n._("Are you sure you want to delete this message?"),
+    );
     if (!isConfirmed) {
       return;
     }
@@ -136,16 +143,23 @@ export function Message({
     }
 
     setIsTranslating(true);
-    const translatedText = await translator.translateText({ text: message.content });
+    const translatedText = await translator.translateText({
+      text: message.content,
+    });
     setIsShowFullContent(true);
     setTranslation(translatedText);
     setIsShowTranslation(true);
     setIsTranslating(false);
   };
 
-  const contentToShow = isShowTranslation && translation ? translation : message.content;
-  const lastVisit = game.gameLastVisit ? game.gameLastVisit[message.senderId] : null;
-  const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 5 : false;
+  const contentToShow =
+    isShowTranslation && translation ? translation : message.content;
+  const lastVisit = game.gameLastVisit
+    ? game.gameLastVisit[message.senderId]
+    : null;
+  const isOnline = lastVisit
+    ? dayjs().diff(dayjs(lastVisit), "minute") < 5
+    : false;
 
   const onClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (isEditing) return;
@@ -171,7 +185,9 @@ export function Message({
       sx={{
         padding: isDeleted ? "20px 0" : "10px",
 
-        backgroundColor: isDeleted ? "rgba(0, 0, 0, 0.2)" : "rgba(255, 255, 255, 0.01)",
+        backgroundColor: isDeleted
+          ? "rgba(0, 0, 0, 0.2)"
+          : "rgba(255, 255, 255, 0.01)",
 
         position: "relative",
         width: "100%",
@@ -208,7 +224,11 @@ export function Message({
           opacity: isDeleted ? 0 : 1,
         }}
       >
-        <Avatar avatarSize={avatarSize} url={userAvatarUrl} isOnline={isOnline} />
+        <Avatar
+          avatarSize={avatarSize}
+          url={userAvatarUrl}
+          isOnline={isOnline}
+        />
       </Stack>
 
       {isEditing ? (
@@ -239,7 +259,11 @@ export function Message({
             >
               {isDeleting ? <CircularProgress size={20} /> : i18n._("Save")}
             </Button>
-            <Button size="small" onClick={() => setIsEditing(false)} disabled={isDeleting}>
+            <Button
+              size="small"
+              onClick={() => setIsEditing(false)}
+              disabled={isDeleting}
+            >
               {i18n._("Cancel")}
             </Button>
           </Stack>
@@ -298,14 +322,26 @@ export function Message({
                   }}
                 >
                   {updatedAgo}
-                  {message.updatedAtIso !== message.createdAtIso && <i>{i18n._("edited")}</i>}
+                  {message.updatedAtIso !== message.createdAtIso && (
+                    <i>{i18n._("edited")}</i>
+                  )}
                 </Typography>
               </Stack>
             )}
 
             {isOwnMessage && (
-              <Stack sx={{ flexDirection: "row", opacity: 0.7, alignItems: "center", gap: "1px" }}>
-                <IconButton onClick={(e) => setMenuAnchorEl(e.currentTarget)} size="small">
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  opacity: 0.7,
+                  alignItems: "center",
+                  gap: "1px",
+                }}
+              >
+                <IconButton
+                  onClick={(e) => setMenuAnchorEl(e.currentTarget)}
+                  size="small"
+                >
                   <CircleEllipsis
                     size={"20px"}
                     style={{
@@ -353,7 +389,9 @@ export function Message({
 
               fontSize: "15px",
               lineHeight: "21px",
-              color: isDeleted ? "rgba(243, 245, 247, 0.3)" : "rgba(243, 245, 247, 1)",
+              color: isDeleted
+                ? "rgba(243, 245, 247, 0.3)"
+                : "rgba(243, 245, 247, 1)",
               fontWeight: 350,
               paddingLeft: isContentWide ? "0px" : contentLeftPadding,
               paddingTop: isContentWide ? "20px" : 0,

@@ -40,7 +40,8 @@ export const ConversationError = ({
             {i18n._(`Oops! Something went wrong`)}
           </Typography>
           <Typography color="error">
-            {errorMessage || i18n._(`Please refresh the page and try one more time`)}
+            {errorMessage ||
+              i18n._(`Please refresh the page and try one more time`)}
           </Typography>
 
           <Typography variant="caption">

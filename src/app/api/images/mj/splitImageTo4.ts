@@ -22,12 +22,17 @@ export const splitImageTo4 = async (imageUrl: string): Promise<Buffer[]> => {
       { left: 0, top: 0, width: halfWidth, height: halfHeight }, // Top-left
       { left: halfWidth, top: 0, width: halfWidth, height: halfHeight }, // Top-right
       { left: 0, top: halfHeight, width: halfWidth, height: halfHeight }, // Bottom-left
-      { left: halfWidth, top: halfHeight, width: halfWidth, height: halfHeight }, // Bottom-right
+      {
+        left: halfWidth,
+        top: halfHeight,
+        width: halfWidth,
+        height: halfHeight,
+      }, // Bottom-right
     ];
 
     // Process each region
     const pieces = await Promise.all(
-      regions.map((region) => sharp(imageBuffer).extract(region).toBuffer())
+      regions.map((region) => sharp(imageBuffer).extract(region).toBuffer()),
     );
 
     return pieces;

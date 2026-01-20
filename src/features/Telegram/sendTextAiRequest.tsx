@@ -1,6 +1,9 @@
 import { TelegramRequest, TelegramResponse } from "@/common/requests";
 
-export const sendTelegramRequest = async (request: TelegramRequest, authToken: string) => {
+export const sendTelegramRequest = async (
+  request: TelegramRequest,
+  authToken: string,
+) => {
   const response = await fetch("/api/telegram", {
     method: "POST",
     body: JSON.stringify(request),

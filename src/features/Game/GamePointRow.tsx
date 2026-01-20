@@ -1,7 +1,13 @@
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export const GamePointRow = ({ points, isTop }: { points: number; isTop: boolean }) => {
+export const GamePointRow = ({
+  points,
+  isTop,
+}: {
+  points: number;
+  isTop: boolean;
+}) => {
   const [zoomIn, setZoomIn] = useState(false);
   const [internalPoints, setInternalPoints] = useState(points);
 

@@ -1,5 +1,9 @@
 import { Stack, Typography } from "@mui/material";
-import { maxContentWidth, subTitleFontStyle, titleFontStyle } from "../Landing/landingSettings";
+import {
+  maxContentWidth,
+  subTitleFontStyle,
+  titleFontStyle,
+} from "../Landing/landingSettings";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
@@ -75,7 +79,7 @@ export const ListBlogIntro = ({ lang }: ListBlogIntroProps) => {
               }}
             >
               {i18n._(
-                `Get inspired and learn about the latest trends in language learning, teaching, and technology.`
+                `Get inspired and learn about the latest trends in language learning, teaching, and technology.`,
               )}
             </Typography>
           </Stack>

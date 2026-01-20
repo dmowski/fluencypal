@@ -58,9 +58,11 @@ const QuizQuestions = () => {
     systemLanguagesTitle: i18n._(`System languages`),
   });
 
-  const learningLanguageName = fullLanguageName[languageToLearn].toLocaleLowerCase();
+  const learningLanguageName =
+    fullLanguageName[languageToLearn].toLocaleLowerCase();
   const nativeLanguageName =
-    languageGroups.find((g) => g.languageCode === nativeLanguage)?.nativeName || "";
+    languageGroups.find((g) => g.languageCode === nativeLanguage)?.nativeName ||
+    "";
 
   const router = useRouter();
   const [redirecting, setRedirecting] = useState(false);
@@ -140,7 +142,9 @@ const QuizQuestions = () => {
             <AuthWall>
               <InfoStep
                 title={i18n._(`Pick your teacher`)}
-                subTitle={i18n._(`Select a voice and look that feels right for you.`)}
+                subTitle={i18n._(
+                  `Select a voice and look that feels right for you.`,
+                )}
                 actionButtonTitle={i18n._(`Continue`)}
                 subComponent={
                   <Stack
@@ -217,14 +221,16 @@ const QuizQuestions = () => {
                 subTitle={
                   languageToLearn === nativeLanguage ? (
                     <Trans>
-                      Record 2-3 minutes story using <b>{learningLanguageName}</b>. This will help
-                      me to create a personalized practice plan.
+                      Record 2-3 minutes story using{" "}
+                      <b>{learningLanguageName}</b>. This will help me to create
+                      a personalized practice plan.
                     </Trans>
                   ) : (
                     <Trans>
-                      Record 2-3 minutes story using <b>{learningLanguageName}</b> or{" "}
-                      <b>{nativeLanguageName}</b>. This will help me to create a personalized
-                      practice plan.
+                      Record 2-3 minutes story using{" "}
+                      <b>{learningLanguageName}</b> or{" "}
+                      <b>{nativeLanguageName}</b>. This will help me to create a
+                      personalized practice plan.
                     </Trans>
                   )
                 }
@@ -266,7 +272,9 @@ const QuizQuestions = () => {
             <AuthWall>
               <InfoStep
                 title={i18n._(`Let's continue...`)}
-                subTitle={i18n._(`I'll ask you two more questions before I make your plan.`)}
+                subTitle={i18n._(
+                  `I'll ask you two more questions before I make your plan.`,
+                )}
                 onClick={next}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
@@ -302,7 +310,9 @@ const QuizQuestions = () => {
             <AuthWall>
               <InfoStep
                 title={i18n._(`Next question`)}
-                subTitle={i18n._(`The last question before we create your plan`)}
+                subTitle={i18n._(
+                  `The last question before we create your plan`,
+                )}
                 onClick={next}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
@@ -360,7 +370,9 @@ const QuizQuestions = () => {
                       isFullAccess={true}
                       isSelected={isFullAccess}
                       onSelect={() => setIsFullAccess(true)}
-                      aiAvatar={getAiVoiceByVoice(settings.userSettings?.teacherVoice || "shimmer")}
+                      aiAvatar={getAiVoiceByVoice(
+                        settings.userSettings?.teacherVoice || "shimmer",
+                      )}
                       title={i18n._(`Full Access`)}
                       description={i18n._(
                         `Unlock full access to personalized practice plans and real-time conversations with AI.`,
@@ -372,9 +384,13 @@ const QuizQuestions = () => {
                       isFullAccess={false}
                       isSelected={!isFullAccess}
                       onSelect={() => setIsFullAccess(false)}
-                      aiAvatar={getAiVoiceByVoice(settings.userSettings?.teacherVoice || "shimmer")}
+                      aiAvatar={getAiVoiceByVoice(
+                        settings.userSettings?.teacherVoice || "shimmer",
+                      )}
                       title={i18n._(`Limited Access`)}
-                      description={i18n._(`Basic exercises and text-only practice.`)}
+                      description={i18n._(
+                        `Basic exercises and text-only practice.`,
+                      )}
                     />
                   </Stack>
                 }
@@ -400,7 +416,9 @@ const QuizQuestions = () => {
             <AuthWall>
               <InfoStep
                 title={i18n._(`Call mode`)}
-                subTitle={i18n._(`Don't forget to try call mode in the practice section!`)}
+                subTitle={i18n._(
+                  `Don't forget to try call mode in the practice section!`,
+                )}
                 imageUrl="/quiz/callMode.jpg"
                 onClick={next}
                 actionButtonTitle={i18n._("Go to Practice")}
@@ -416,7 +434,9 @@ const QuizQuestions = () => {
               <AuthWall>
                 <WelcomeChatMessage
                   title={i18n._(`Send a message to the community`)}
-                  subTitle={i18n._(`Record a welcome message to our community of learners.`)}
+                  subTitle={i18n._(
+                    `Record a welcome message to our community of learners.`,
+                  )}
                   done={next}
                   isLoading={isStepLoading}
                   exampleToRecord={survey?.exampleOfWelcomeMessage || ""}
@@ -480,12 +500,16 @@ const QuizQuestions = () => {
                           iconSize="22px"
                           listItems={[
                             {
-                              title: i18n._("Listening practice. You can hear AI responses"),
+                              title: i18n._(
+                                "Listening practice. You can hear AI responses",
+                              ),
                               iconName: "volume-2",
                             },
 
                             {
-                              title: i18n._("Real-time conversations with AI using voice"),
+                              title: i18n._(
+                                "Real-time conversations with AI using voice",
+                              ),
                               iconName: "audio-lines",
                             },
                           ]}
@@ -586,7 +610,10 @@ const AccessSelector = ({
           overflow: "hidden",
         }}
       >
-        <AiAvatarVideo aiVideo={aiAvatar} isSpeaking={isFullAccess && isSelected} />
+        <AiAvatarVideo
+          aiVideo={aiAvatar}
+          isSpeaking={isFullAccess && isSelected}
+        />
         {!isFullAccess && (
           <Stack
             sx={{

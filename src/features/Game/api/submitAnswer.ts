@@ -1,4 +1,8 @@
-import { GameUsersPoints, SubmitAnswerRequest, SubmitAnswerResponse } from "@/features/Game/types";
+import {
+  GameUsersPoints,
+  SubmitAnswerRequest,
+  SubmitAnswerResponse,
+} from "@/features/Game/types";
 import { getQuestionById, setQuestion } from "./getQuestion";
 import { getGameUsersPoints, increaseUserPoints } from "./statsResources";
 import { generateTextWithAi } from "@/app/api/ai/generateTextWithAi";

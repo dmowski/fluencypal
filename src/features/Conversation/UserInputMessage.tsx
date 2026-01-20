@@ -36,16 +36,17 @@ export const UserInputMessage = ({
     setDescription(null);
     setCorrectedMessage(null);
     try {
-      const { sourceMessage, correctedMessage, description } = await analyzeUserMessage(message);
+      const { sourceMessage, correctedMessage, description } =
+        await analyzeUserMessage(message);
       if (message !== sourceMessage) {
         return;
       }
 
       setLevel(
-        correctedMessage.toLowerCase().trim() === sourceMessage.toLowerCase().trim() ||
-          !correctedMessage.trim()
+        correctedMessage.toLowerCase().trim() ===
+          sourceMessage.toLowerCase().trim() || !correctedMessage.trim()
           ? "great"
-          : "bad"
+          : "bad",
       );
 
       setCorrectedMessage(correctedMessage || null);
@@ -71,7 +72,8 @@ export const UserInputMessage = ({
     }
   }, [message, isLowBalance]);
 
-  const isNeedToShowCorrection = level === "bad" && description && correctedMessage?.trim();
+  const isNeedToShowCorrection =
+    level === "bad" && description && correctedMessage?.trim();
 
   return (
     <Stack
@@ -159,7 +161,9 @@ export const UserInputMessage = ({
             alignItems: "center",
           }}
         >
-          <Typography sx={{}}>{description || "Everything is great!"}</Typography>
+          <Typography sx={{}}>
+            {description || "Everything is great!"}
+          </Typography>
           {isNeedToShowCorrection ? (
             <FlaskConical color="#fa8500" size={"14px"} />
           ) : (

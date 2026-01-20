@@ -2,13 +2,31 @@ import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useLingui } from "@lingui/react";
-import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
-import { Check, ChevronLast, Languages, Loader, Mic, Trash } from "lucide-react";
+import {
+  Button,
+  IconButton,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import {
+  Check,
+  ChevronLast,
+  Languages,
+  Loader,
+  Mic,
+  Trash,
+} from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { StringDiff } from "react-string-diff";
-import { FinishButton, GameContainer, SkipButton, TaskTitle } from "./gameCoreUI";
+import {
+  FinishButton,
+  GameContainer,
+  SkipButton,
+  TaskTitle,
+} from "./gameCoreUI";
 import { useGame } from "../useGame";
 
 export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
@@ -17,8 +35,12 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
   const [isShowStats, setIsShowStats] = useState(false);
 
   const [textAnswer, setTextAnswer] = useState<string>("");
-  const [answerDescription, setAnswerDescription] = useState<string | null>(null);
-  const [answerCorrectedMessage, setAnswerCorrectedMessage] = useState<string | null>(null);
+  const [answerDescription, setAnswerDescription] = useState<string | null>(
+    null,
+  );
+  const [answerCorrectedMessage, setAnswerCorrectedMessage] = useState<
+    string | null
+  >(null);
 
   const game = useGame();
   const recorder = useAudioRecorder();
@@ -41,7 +63,10 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
     setIsShowStats(true);
-    const { isCorrect, description } = await game.submitAnswer(question?.id || "", answer);
+    const { isCorrect, description } = await game.submitAnswer(
+      question?.id || "",
+      answer,
+    );
 
     const splitDescription = (description || "").split("|");
     if (splitDescription.length > 1) {
@@ -69,7 +94,10 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
         }}
       >
         <TaskTitle />
-        <img src={question.imageUrl} style={{ width: "100%", objectFit: "cover" }} />
+        <img
+          src={question.imageUrl}
+          style={{ width: "100%", objectFit: "cover" }}
+        />
       </Stack>
 
       <Stack
@@ -141,66 +169,68 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
           </Stack>
         )}
 
-        {!recorder.transcription && !recorder.isTranscribing && isUseMicrophone && (
-          <Stack
-            sx={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              width: "100%",
-            }}
-          >
-            {recorder.isRecording ? (
-              <>
-                <Button
-                  startIcon={<Check />}
-                  variant="contained"
-                  size="large"
-                  onClick={() => recorder.stopRecording()}
-                >
-                  {i18n._(`Done`)}
-                </Button>
+        {!recorder.transcription &&
+          !recorder.isTranscribing &&
+          isUseMicrophone && (
+            <Stack
+              sx={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                width: "100%",
+              }}
+            >
+              {recorder.isRecording ? (
+                <>
+                  <Button
+                    startIcon={<Check />}
+                    variant="contained"
+                    size="large"
+                    onClick={() => recorder.stopRecording()}
+                  >
+                    {i18n._(`Done`)}
+                  </Button>
+                  <Stack
+                    sx={{
+                      width: "100%",
+                      maxWidth: "200px",
+                    }}
+                  >
+                    {recorder.visualizerComponent}
+                  </Stack>
+                  <IconButton
+                    onClick={() => {
+                      recorder.cancelRecording();
+                      recorder.removeTranscript();
+                    }}
+                  >
+                    <Trash size={20} />
+                  </IconButton>
+                </>
+              ) : (
                 <Stack
                   sx={{
-                    width: "100%",
-                    maxWidth: "200px",
+                    flexDirection: "row",
+                    gap: "10px",
+                    alignItems: "center",
                   }}
                 >
-                  {recorder.visualizerComponent}
+                  <Button
+                    startIcon={<Mic />}
+                    size="large"
+                    variant="contained"
+                    disabled={isCorrect !== null}
+                    onClick={() => {
+                      recorder.removeTranscript();
+                      recorder.startRecording();
+                    }}
+                  >
+                    {i18n._("Record")}
+                  </Button>
+                  <SkipButton disabled={isCorrect !== null} />
                 </Stack>
-                <IconButton
-                  onClick={() => {
-                    recorder.cancelRecording();
-                    recorder.removeTranscript();
-                  }}
-                >
-                  <Trash size={20} />
-                </IconButton>
-              </>
-            ) : (
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  gap: "10px",
-                  alignItems: "center",
-                }}
-              >
-                <Button
-                  startIcon={<Mic />}
-                  size="large"
-                  variant="contained"
-                  disabled={isCorrect !== null}
-                  onClick={() => {
-                    recorder.removeTranscript();
-                    recorder.startRecording();
-                  }}
-                >
-                  {i18n._("Record")}
-                </Button>
-                <SkipButton disabled={isCorrect !== null} />
-              </Stack>
-            )}
-          </Stack>
-        )}
+              )}
+            </Stack>
+          )}
 
         {!recorder.transcription &&
           !recorder.isTranscribing &&
@@ -309,7 +339,10 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
                   >
                     <IconButton
                       onClick={(e) => {
-                        translator.translateWithModal(answerCorrectedMessage, e.currentTarget);
+                        translator.translateWithModal(
+                          answerCorrectedMessage,
+                          e.currentTarget,
+                        );
                       }}
                     >
                       <Languages size={"16px"} color="#eee" />

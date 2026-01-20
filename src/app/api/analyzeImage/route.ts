@@ -1,6 +1,10 @@
 import OpenAI from "openai";
 import { AiImageRequest, AiImageResponse } from "@/common/requests";
-import { calculateTextUsagePrice, TextAiModel, TextUsageEvent } from "@/common/ai";
+import {
+  calculateTextUsagePrice,
+  TextAiModel,
+  TextUsageEvent,
+} from "@/common/ai";
 import { validateAuthToken } from "../config/firebase";
 
 export async function POST(request: Request) {

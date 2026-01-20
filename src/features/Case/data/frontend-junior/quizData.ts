@@ -10,9 +10,11 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
       {
         type: "info",
         id: "intro-step",
-        title: i18n._("Welcome to Your Junior Frontend Developer Interview Prep"),
+        title: i18n._(
+          "Welcome to Your Junior Frontend Developer Interview Prep",
+        ),
         subTitle: i18n._(
-          "In this session, you'll answer questions designed for junior frontend roles. After responding, you'll receive feedback to help you improve your answers, confidence, and interview structure."
+          "In this session, you'll answer questions designed for junior frontend roles. After responding, you'll receive feedback to help you improve your answers, confidence, and interview structure.",
         ),
         buttonTitle: i18n._("Start Test"),
         listItems: [
@@ -43,7 +45,7 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
 
         title: i18n._("Microphone Access"),
         subTitle: i18n._(
-          "In the next step, you'll record audio. Please check your microphone and allow access when asked."
+          "In the next step, you'll record audio. Please check your microphone and allow access when asked.",
         ),
         listItems: [],
         buttonTitle: i18n._("Continue"),
@@ -54,7 +56,7 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         id: "introduce-yourself-step",
         title: i18n._("Introduce Yourself"),
         subTitle: i18n._(
-          "Tell us about your background, what you've learned so far, and what you want to improve as a Junior Frontend Developer."
+          "Tell us about your background, what you've learned so far, and what you want to improve as a Junior Frontend Developer.",
         ),
         buttonTitle: i18n._("Record Answer"),
         listItems: [
@@ -62,8 +64,14 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
             title: i18n._("Mention your tech stack (React/JS/HTML/CSS)"),
             iconName: "history",
           },
-          { title: i18n._("Describe 1–2 small projects you've built"), iconName: "folder-code" },
-          { title: i18n._("Share what you're currently learning"), iconName: "sparkles" },
+          {
+            title: i18n._("Describe 1–2 small projects you've built"),
+            iconName: "folder-code",
+          },
+          {
+            title: i18n._("Share what you're currently learning"),
+            iconName: "sparkles",
+          },
         ],
       },
 
@@ -72,7 +80,7 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         id: "technical-question-step",
         title: i18n._("Technical Question"),
         subTitle: i18n._(
-          "In React, what's the difference between state and props? Give a simple example."
+          "In React, what's the difference between state and props? Give a simple example.",
         ),
         buttonTitle: i18n._("Record Answer"),
         listItems: [
@@ -84,7 +92,10 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
             title: i18n._("Give a small example (counter, input, button)"),
             iconName: "puzzle",
           },
-          { title: i18n._("Mention re-render behavior briefly"), iconName: "refresh-cw" },
+          {
+            title: i18n._("Mention re-render behavior briefly"),
+            iconName: "refresh-cw",
+          },
         ],
       },
 
@@ -93,19 +104,24 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         id: "behavioral-question-step",
         title: i18n._("Behavioral Question"),
         subTitle: i18n._(
-          "Tell about a time you were stuck on a bug. How did you find the cause and fix it?"
+          "Tell about a time you were stuck on a bug. How did you find the cause and fix it?",
         ),
         buttonTitle: i18n._("Record Answer"),
         listItems: [
           {
-            title: i18n._("Explain your steps (reproduce, isolate, fix, verify)"),
+            title: i18n._(
+              "Explain your steps (reproduce, isolate, fix, verify)",
+            ),
             iconName: "route",
           },
           {
             title: i18n._("Mention tools you used (console, DevTools, logs)"),
             iconName: "wrench",
           },
-          { title: i18n._("Finish with what you learned"), iconName: "graduation-cap" },
+          {
+            title: i18n._("Finish with what you learned"),
+            iconName: "graduation-cap",
+          },
         ],
       },
 
@@ -144,7 +160,7 @@ Return only the JSON, nothing else. Your response will be passed into javascript
         id: "score-intro-step",
         title: i18n._("Before we start"),
         subTitle: i18n._(
-          "On the next steps, you'll receive a detailed analysis of your answers and example responses to help you improve."
+          "On the next steps, you'll receive a detailed analysis of your answers and example responses to help you improve.",
         ),
         imageAspectRatio: "16/9",
         listItems: [
@@ -177,7 +193,7 @@ Return only the JSON, nothing else. Your response will be passed into javascript
         type: "analyze-inputs",
         title: i18n._("Preparation plan") + " {FOR_USER_NAME}",
         subTitle: i18n._(
-          "Here's a personalized training plan you'll follow. Step by step, you'll strengthen fundamentals, improve your answers, and feel more confident in junior interviews."
+          "Here's a personalized training plan you'll follow. Step by step, you'll strengthen fundamentals, improve your answers, and feel more confident in junior interviews.",
         ),
         buttonTitle: i18n._("Continue"),
         aiSystemPrompt: `
@@ -202,7 +218,9 @@ Finish the plan with a simple negotiation section (how to talk about junior sala
         type: "analyze-inputs",
         id: "ai-feedback-step-2",
         title: i18n._("AI Feedback on Your Answers"),
-        subTitle: i18n._("Here's the rest of your personalized feedback to help you improve."),
+        subTitle: i18n._(
+          "Here's the rest of your personalized feedback to help you improve.",
+        ),
         buttonTitle: i18n._("Continue"),
         aiSystemPrompt: `Provide a score breakdown of the user's answers for a Junior Frontend Developer interview, focusing on fundamentals, clarity, and structure. Return improved answers and give hints on how to answer such questions better.
 
@@ -241,7 +259,7 @@ Structure your response as follows:
         id: "done",
         title: i18n._("You're All Set!"),
         subTitle: i18n._(
-          "Thank you for completing the Junior Frontend Developer interview prep. You can now open your dashboard and keep practicing. Good luck!"
+          "Thank you for completing the Junior Frontend Developer interview prep. You can now open your dashboard and keep practicing. Good luck!",
         ),
         listItems: [],
         buttonTitle: i18n._("Open Dashboard"),

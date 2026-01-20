@@ -21,7 +21,8 @@ import { getFunctions } from "firebase/functions";
 import { getStorage } from "firebase/storage";
 
 const isNodeEnv = typeof window === "undefined";
-const isSafari = !isNodeEnv && /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+const isSafari =
+  !isNodeEnv && /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const app = initializeApp(firebaseConfig);
 
 const firestore =
@@ -57,4 +58,11 @@ async function deleteCollectionDocs(collectionPath: string): Promise<void> {
   await Promise.all(deletions);
 }
 
-export { auth, firestore, storage, setCookiesGDPR, deleteCollectionDocs, functions };
+export {
+  auth,
+  firestore,
+  storage,
+  setCookiesGDPR,
+  deleteCollectionDocs,
+  functions,
+};

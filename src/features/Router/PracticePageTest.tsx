@@ -26,9 +26,13 @@ for (let i = 0; i < 7; i++) {
   });
 }
 
-export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) {
+export function PracticePageTest({
+  rolePlayInfo,
+  lang,
+}: PracticePageTestProps) {
   const aiUserInfo = useAiUserInfo();
-  const [testMessage, setTestMessage] = useState<ChatMessage[]>(startTestMessages);
+  const [testMessage, setTestMessage] =
+    useState<ChatMessage[]>(startTestMessages);
 
   const showGame = false;
   const gameStat: GuessGameStat | null = showGame
@@ -138,7 +142,8 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
   };
 
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
-  const [conversationMode, setConversationMode] = useState<ConversationMode>("call");
+  const [conversationMode, setConversationMode] =
+    useState<ConversationMode>("call");
 
   const addMessage = async (message: string) => {
     setTestMessage((prevMessages) => [
@@ -161,7 +166,10 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         };
         return [...prevMessages.slice(0, -1), updatedMessage];
       } else {
-        return [...prevMessages, { isBot: false, text: delta, id: `${Date.now()}` }];
+        return [
+          ...prevMessages,
+          { isBot: false, text: delta, id: `${Date.now()}` },
+        ];
       }
     });
   };
@@ -213,7 +221,8 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
           whatUserDidWell: "You spoke clearly and confidently.",
           shortSummaryOfLesson:
             "In this lesson, we discussed the importance of clear communication and practiced speaking on various topics.",
-          whatUserCanImprove: "Work on expanding your vocabulary and using idiomatic expressions.",
+          whatUserCanImprove:
+            "Work on expanding your vocabulary and using idiomatic expressions.",
         }}
         closeConversation={async () => alert("Close conversation")}
         analyzeConversation={async () => {}}
@@ -228,7 +237,9 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         isAiSpeaking={isAiSpeaking}
         conversationMode={conversationMode}
         voice="shimmer"
-        toggleConversationMode={(mode: ConversationMode): void => setConversationMode(mode)}
+        toggleConversationMode={(mode: ConversationMode): void =>
+          setConversationMode(mode)
+        }
         openNextLesson={() => {}}
         recordingVoiceMode="VAD"
       />

@@ -32,16 +32,23 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
   };
 
   const [refundMessage, setRefundMessage] = useState(
-    "I would like to request a refund for my recent payment."
+    "I would like to request a refund for my recent payment.",
   );
 
   const [isRefundSubmitting, setIsRefundSubmitting] = useState(false);
 
   const onSubmitRefundRequest = async () => {
     setIsRefundSubmitting(true);
-    sendFeedbackMessageRequest({ message: "REFUND: " + refundMessage }, await auth.getToken());
+    sendFeedbackMessageRequest(
+      { message: "REFUND: " + refundMessage },
+      await auth.getToken(),
+    );
     setIsShowRefund(false);
-    alert(i18n._(`Your refund request has been submitted. We will get back to you soon.`));
+    alert(
+      i18n._(
+        `Your refund request has been submitted. We will get back to you soon.`,
+      ),
+    );
     setIsRefundSubmitting(false);
   };
 
@@ -107,13 +114,15 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
               {usage.paymentLogs
                 .sort((a, b) => b.createdAt - a.createdAt)
                 .filter((log) => {
-                  const isTrial = log.type === "trial-days" || log.type === "welcome";
+                  const isTrial =
+                    log.type === "trial-days" || log.type === "welcome";
                   return !isTrial;
                 })
                 .map((log) => {
                   const humanDate = dayjs(log.createdAt).format("DD MMM YYYY");
                   const humanTime = dayjs(log.createdAt).format("HH:mm");
-                  const isTrial = log.type === "trial-days" || log.type === "welcome";
+                  const isTrial =
+                    log.type === "trial-days" || log.type === "welcome";
 
                   return (
                     <Stack
@@ -149,10 +158,14 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
                           </Typography>
                         )}
                         {!!log.amountOfDays && (
-                          <Typography variant="body2">{log.amountOfDays} days</Typography>
+                          <Typography variant="body2">
+                            {log.amountOfDays} days
+                          </Typography>
                         )}
                         {!!log.amountOfMonth && (
-                          <Typography variant="body2">{log.amountOfMonth} months</Typography>
+                          <Typography variant="body2">
+                            {log.amountOfMonth} months
+                          </Typography>
                         )}
                         <Typography
                           variant="caption"
@@ -203,7 +216,9 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
                   {i18n._(`Refund form`)}
                 </Typography>
                 <Typography variant="body2" sx={{ marginBottom: "10px" }}>
-                  {i18n._(`You can add some details regarding your refund request below:`)}
+                  {i18n._(
+                    `You can add some details regarding your refund request below:`,
+                  )}
                 </Typography>
               </Stack>
 
@@ -249,7 +264,9 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
               >
                 <Button
                   variant="outlined"
-                  disabled={usage.paymentLogs?.length === 0 || isRefundSubmitting}
+                  disabled={
+                    usage.paymentLogs?.length === 0 || isRefundSubmitting
+                  }
                   startIcon={<BanknoteX />}
                   onClick={() => setIsShowRefund(true)}
                 >

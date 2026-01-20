@@ -24,7 +24,10 @@ import {
 import { useSettings } from "../Settings/useSettings";
 import { ChatMessage } from "@/common/conversation";
 import { useTextAi } from "../Ai/useTextAi";
-import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
+import {
+  fullEnglishLanguageName,
+  SupportedLanguage,
+} from "@/features/Lang/lang";
 import { GoalQuiz } from "@/app/api/goal/types";
 import { uniq } from "@/libs/uniq";
 import { useUrlState } from "../Url/useUrlParam";
@@ -89,7 +92,10 @@ interface PlanContextType {
   isCraftingError: boolean;
   setActiveGoal: (goalId: string) => Promise<void>;
 
-  finishGoalElement: (goalElementId: string, results: ConversationResult) => Promise<void>;
+  finishGoalElement: (
+    goalElementId: string,
+    results: ConversationResult,
+  ) => Promise<void>;
   startGoalElement: (goalElementId: string) => Promise<void>;
 
   generateMoreElements: () => Promise<void>;
@@ -123,7 +129,9 @@ function useProvidePlan(): PlanContextType {
     await setDoc(docRef, goalPlan, { merge: true });
   };
 
-  const generateGoalTitle = async (input: GenerateGoalProps): Promise<string> => {
+  const generateGoalTitle = async (
+    input: GenerateGoalProps,
+  ): Promise<string> => {
     const fullLangName = fullEnglishLanguageName[input.languageCode];
     const systemMessage = `
 You are professional ${fullLangName || "English"} Teacher. 
@@ -157,7 +165,9 @@ ${input.conversationMessages.map((message) => {
     return goal;
   };
 
-  const generateElements = async (input: GenerateGoalProps): Promise<PlanElement[]> => {
+  const generateElements = async (
+    input: GenerateGoalProps,
+  ): Promise<PlanElement[]> => {
     const fullLangName = fullEnglishLanguageName[input.languageCode];
 
     const systemMessageTop =
@@ -251,34 +261,36 @@ ${JSON.stringify(input.progress, null, 2)}
       details: string;
     }
 
-    const formattedElements: PlanElement[] = parsedElements.map((element, index) => {
-      const type = `${element?.type || ""}`.toLowerCase();
-      const elementMode: PlanElementMode = type.includes("conversation")
-        ? "conversation"
-        : type.includes("words")
-          ? "words"
-          : type.includes("play")
-            ? "play"
-            : type.includes("rule")
-              ? "rule"
-              : "conversation";
+    const formattedElements: PlanElement[] = parsedElements.map(
+      (element, index) => {
+        const type = `${element?.type || ""}`.toLowerCase();
+        const elementMode: PlanElementMode = type.includes("conversation")
+          ? "conversation"
+          : type.includes("words")
+            ? "words"
+            : type.includes("play")
+              ? "play"
+              : type.includes("rule")
+                ? "rule"
+                : "conversation";
 
-      const randomId = `${index}_${elementMode}_${Math.random().toString(36).substring(2, 15)}`;
-      const details = `${element?.details || ""}`;
-      const description = `${element?.description || ""}`;
-      const title = `${element?.title || ""}`;
+        const randomId = `${index}_${elementMode}_${Math.random().toString(36).substring(2, 15)}`;
+        const details = `${element?.details || ""}`;
+        const description = `${element?.description || ""}`;
+        const title = `${element?.title || ""}`;
 
-      const planElement: PlanElement = {
-        id: randomId,
-        title: title,
-        subTitle: "",
-        details: details,
-        mode: elementMode,
-        description: description,
-        startCount: 0,
-      };
-      return planElement;
-    });
+        const planElement: PlanElement = {
+          id: randomId,
+          title: title,
+          subTitle: "",
+          details: details,
+          mode: elementMode,
+          description: description,
+          startCount: 0,
+        };
+        return planElement;
+      },
+    );
 
     return formattedElements;
   };
@@ -362,7 +374,9 @@ ${JSON.stringify(input.progress, null, 2)}
     if (!activeGoal?.id) return;
 
     const existingProgress = activeGoal.progress || [];
-    const cleanProgress = existingProgress.filter((p) => p.elementId !== data.elementId);
+    const cleanProgress = existingProgress.filter(
+      (p) => p.elementId !== data.elementId,
+    );
     cleanProgress.push(data);
 
     const docRef = doc(goalsCollectionRef, activeGoal.id);
@@ -375,13 +389,19 @@ ${JSON.stringify(input.progress, null, 2)}
 
   const startGoalElement = async (goalElementId: string) => {
     if (!activeGoal) return;
-    const elementNotFound = !activeGoal.elements.find((el) => el.id === goalElementId);
+    const elementNotFound = !activeGoal.elements.find(
+      (el) => el.id === goalElementId,
+    );
     if (elementNotFound) {
-      throw new Error("startGoalElement error: Goal element not found in active goal");
+      throw new Error(
+        "startGoalElement error: Goal element not found in active goal",
+      );
     }
 
     const existingProgress = activeGoal.progress || [];
-    const elementProgress = existingProgress.find((p) => p.elementId === goalElementId);
+    const elementProgress = existingProgress.find(
+      (p) => p.elementId === goalElementId,
+    );
 
     const newProgress: GoalElementProgress = {
       elementId: goalElementId,
@@ -394,16 +414,25 @@ ${JSON.stringify(input.progress, null, 2)}
     await updateActiveGoalProgress(newProgress);
   };
 
-  const finishGoalElement = async (goalElementId: string, results: ConversationResult) => {
+  const finishGoalElement = async (
+    goalElementId: string,
+    results: ConversationResult,
+  ) => {
     if (!activeGoal) return;
 
-    const elementNotFound = !activeGoal.elements.find((el) => el.id === goalElementId);
+    const elementNotFound = !activeGoal.elements.find(
+      (el) => el.id === goalElementId,
+    );
     if (elementNotFound) {
-      throw new Error("startGoalElement error: Goal element not found in active goal");
+      throw new Error(
+        "startGoalElement error: Goal element not found in active goal",
+      );
     }
 
     const existingProgress = activeGoal.progress || [];
-    const elementProgress = existingProgress.find((p) => p.elementId === goalElementId);
+    const elementProgress = existingProgress.find(
+      (p) => p.elementId === goalElementId,
+    );
 
     const newProgress: GoalElementProgress = {
       elementId: goalElementId,
@@ -419,7 +448,9 @@ ${JSON.stringify(input.progress, null, 2)}
     if (!activeGoal) return false;
     const existingProgress = activeGoal.progress || [];
     const completedElements = uniq(
-      existingProgress.filter((p) => p.state === "completed").map((p) => p.elementId)
+      existingProgress
+        .filter((p) => p.state === "completed")
+        .map((p) => p.elementId),
     );
 
     return completedElements.length >= activeGoal.elements.length - 3;
@@ -456,7 +487,10 @@ ${JSON.stringify(input.progress, null, 2)}
     }
   }, [isNeededToExtendActiveGoal]);
 
-  const increaseStartCount = async (plan: GoalPlan, goalElement: PlanElement) => {
+  const increaseStartCount = async (
+    plan: GoalPlan,
+    goalElement: PlanElement,
+  ) => {
     if (!goalsCollectionRef) {
       return;
     }
@@ -465,7 +499,9 @@ ${JSON.stringify(input.progress, null, 2)}
     const elementId = goalElement.id;
     const planData = goals?.find((goal) => goal.id === planId);
     if (!planData) return;
-    const element = planData.elements.find((element) => element.id === elementId);
+    const element = planData.elements.find(
+      (element) => element.id === elementId,
+    );
     if (!element) return;
     element.startCount = (element.startCount || 0) + 1;
 
@@ -477,13 +513,21 @@ ${JSON.stringify(input.progress, null, 2)}
     if (!activeGoal) return [];
     const existingProgress = activeGoal.progress || [];
     const completedElements = uniq(
-      existingProgress.filter((p) => p.state === "completed").map((p) => p.elementId)
+      existingProgress
+        .filter((p) => p.state === "completed")
+        .map((p) => p.elementId),
     );
-    const activeEls = activeGoal.elements.filter((el) => !completedElements.includes(el.id));
+    const activeEls = activeGoal.elements.filter(
+      (el) => !completedElements.includes(el.id),
+    );
     return activeEls;
   }, [activeGoal]);
 
-  const [activeElementId, setActiveElementId] = useUrlState("plan-id", "", false);
+  const [activeElementId, setActiveElementId] = useUrlState(
+    "plan-id",
+    "",
+    false,
+  );
 
   const activeGoalElementInfo = useMemo(() => {
     if (!activeGoal || !activeElementId) return null;
@@ -536,7 +580,11 @@ ${JSON.stringify(input.progress, null, 2)}
   };
 }
 
-export function PlanProvider({ children }: { children: ReactNode }): JSX.Element {
+export function PlanProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvidePlan();
   return <PlanContext.Provider value={hook}>{children}</PlanContext.Provider>;
 }

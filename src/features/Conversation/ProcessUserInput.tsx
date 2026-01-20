@@ -24,12 +24,14 @@ export const ProcessUserInput = ({
   previousBotMessage: string;
 }) => {
   const { i18n } = useLingui();
-  const [isNeedToShowCorrection, setIsNeedToShowCorrection] = useState<boolean>(false);
+  const [isNeedToShowCorrection, setIsNeedToShowCorrection] =
+    useState<boolean>(false);
 
   const messageAnalyzing = useRef("");
   const translator = useTranslate();
 
-  const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] = useState(false);
+  const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] =
+    useState(false);
   const [description, setDescription] = useState<string | null>(null);
   const [correctedMessage, setCorrectedMessage] = useState<string | null>(null);
   const corrections = useCorrections();
@@ -74,7 +76,8 @@ export const ProcessUserInput = ({
       const isBad =
         !!description &&
         !!correctedMessage?.trim() &&
-        correctedMessage.toLowerCase().trim() !== sourceMessage.toLowerCase().trim();
+        correctedMessage.toLowerCase().trim() !==
+          sourceMessage.toLowerCase().trim();
       setIsCorrection(isBad);
       setRate(rate);
 
@@ -110,11 +113,15 @@ export const ProcessUserInput = ({
 
   const contentToShow = description || "";
   const limitMessages = 120;
-  const isLimitedMessage = contentToShow.length > limitMessages && !isShowFullContent;
+  const isLimitedMessage =
+    contentToShow.length > limitMessages && !isShowFullContent;
   const messagesFontSize = userMessage.length < 320 ? "1.1rem" : "0.9rem";
 
-  const [isTranslatingCorrectedMessage, setIsTranslatingCorrectedMessage] = useState(false);
-  const [translatedCorrectedMessage, setTranslatedCorrectedMessage] = useState<string | null>(null);
+  const [isTranslatingCorrectedMessage, setIsTranslatingCorrectedMessage] =
+    useState(false);
+  const [translatedCorrectedMessage, setTranslatedCorrectedMessage] = useState<
+    string | null
+  >(null);
 
   const onTranslateCorrectedMessage = async () => {
     if (!correctedMessage) return;
@@ -123,7 +130,9 @@ export const ProcessUserInput = ({
       return;
     }
     setIsTranslatingCorrectedMessage(true);
-    const translated = await translator.translateText({ text: correctedMessage || "" });
+    const translated = await translator.translateText({
+      text: correctedMessage || "",
+    });
     setTranslatedCorrectedMessage(translated);
     setIsTranslatingCorrectedMessage(false);
   };
@@ -142,7 +151,9 @@ export const ProcessUserInput = ({
       >
         {isAnalyzingError && (
           <Typography color="error">
-            {i18n._("An error occurred while analyzing the message. Please try again.")}
+            {i18n._(
+              "An error occurred while analyzing the message. Please try again.",
+            )}
           </Typography>
         )}
         <Stack
@@ -239,9 +250,16 @@ export const ProcessUserInput = ({
                     <Button
                       size="small"
                       onClick={() => setIsShowFullContent(!isShowFullContent)}
-                      sx={{ textTransform: "none", marginLeft: "5px", padding: 0, minWidth: 0 }}
+                      sx={{
+                        textTransform: "none",
+                        marginLeft: "5px",
+                        padding: 0,
+                        minWidth: 0,
+                      }}
                     >
-                      {isShowFullContent ? i18n._("Show less") : i18n._("Show more")}
+                      {isShowFullContent
+                        ? i18n._("Show less")
+                        : i18n._("Show more")}
                     </Button>
                   </>
                 ) : (
@@ -287,8 +305,16 @@ export const ProcessUserInput = ({
                 }}
               >
                 <StringDiff
-                  oldValue={isTranscribing ? i18n._("Transcribing...") : userMessage || ""}
-                  newValue={isTranscribing ? i18n._("Transcribing...") : userMessage || ""}
+                  oldValue={
+                    isTranscribing
+                      ? i18n._("Transcribing...")
+                      : userMessage || ""
+                  }
+                  newValue={
+                    isTranscribing
+                      ? i18n._("Transcribing...")
+                      : userMessage || ""
+                  }
                 />
               </Typography>
             </Stack>
@@ -321,7 +347,11 @@ export const ProcessUserInput = ({
                 <Typography
                   variant="body2"
                   component={"div"}
-                  className={isTranscribing || isAnalyzingResponse ? "loading-shimmer" : ""}
+                  className={
+                    isTranscribing || isAnalyzingResponse
+                      ? "loading-shimmer"
+                      : ""
+                  }
                   sx={{
                     fontWeight: 400,
                     fontSize: messagesFontSize,

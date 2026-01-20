@@ -26,19 +26,24 @@ export const MonthProgressBlock: React.FC<MonthProgressBlockProps> = ({
   const startDate = dayjs().year(year).month(month).date(1);
   const endDate = dayjs().year(year).month(month).date(daysInMonth);
 
-  const thisMonthDays = Array.from({ length: daysInMonth }, (_, i) => startDate.add(i, "day"));
+  const thisMonthDays = Array.from({ length: daysInMonth }, (_, i) =>
+    startDate.add(i, "day"),
+  );
   const weekDayFirstDay = startDate.day() === 0 ? 6 : startDate.day() - 1;
   const weekDayLastDay = endDate.day() === 0 ? 6 : endDate.day() - 1;
   const isNeedToRemoveLastWeek = weekDayLastDay !== 6;
 
   const needGhostDays = weekDayFirstDay;
   const ghostBeforeDays = Array.from({ length: needGhostDays }, (_, i) =>
-    startDate.subtract(i + 1, "day")
+    startDate.subtract(i + 1, "day"),
   );
 
   const days = [...ghostBeforeDays.reverse(), ...thisMonthDays];
-  const numberOfColumns = Math.ceil(days.length / 7) - (isNeedToRemoveLastWeek ? 1 : 0);
-  const daysToShow = isNeedToRemoveLastWeek ? days.length - weekDayLastDay - 1 : days.length;
+  const numberOfColumns =
+    Math.ceil(days.length / 7) - (isNeedToRemoveLastWeek ? 1 : 0);
+  const daysToShow = isNeedToRemoveLastWeek
+    ? days.length - weekDayLastDay - 1
+    : days.length;
 
   const currentDayString = dayjs(currentDateTimeStamp).format("DD.MM.YYYY");
 
@@ -66,7 +71,10 @@ export const MonthProgressBlock: React.FC<MonthProgressBlockProps> = ({
           .filter((_, index) => index < daysToShow)
           .map((date, index) => {
             const dateString = date.format("DD.MM.YYYY");
-            const level = Math.min(getDateStat(dateString), colorMap.length - 1);
+            const level = Math.min(
+              getDateStat(dateString),
+              colorMap.length - 1,
+            );
 
             const dateTooltipLabel = date.format("DD MMM");
 

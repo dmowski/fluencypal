@@ -10,7 +10,7 @@ export const getCoreData = (lang: SupportedLanguage): InterviewCoreData => {
     jobTitle: i18n._("Junior Frontend Developer"),
     title: i18n._("Mock Frontend Interviews with AI to Get Offers"),
     subTitle: i18n._(
-      "Practice real junior frontend interviews, fix critical gaps, and walk into interviews confident and prepared."
+      "Practice real junior frontend interviews, fix critical gaps, and walk into interviews confident and prepared.",
     ),
     keywords: [
       i18n._("junior frontend interview"),

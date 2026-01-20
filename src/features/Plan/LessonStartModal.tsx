@@ -83,7 +83,8 @@ export const LessonStartModal = ({
   const wordsLoadingRef = useRef(isWordsLoading);
   const translator = useTranslate();
 
-  const [isLessonPlanLoading, setIsLessonPlanLoading] = useState<boolean>(false);
+  const [isLessonPlanLoading, setIsLessonPlanLoading] =
+    useState<boolean>(false);
   const isLoadingLessonPlanRef = useRef(false);
 
   const loadLessonPlan = async ({
@@ -107,7 +108,10 @@ export const LessonStartModal = ({
   const loadWords = async (knownWords?: string[]) => {
     setIsWordsLoading(true);
     wordsLoadingRef.current = true;
-    const wordsList = await words.getNewWordsToLearn(goalInfo, knownWords || []);
+    const wordsList = await words.getNewWordsToLearn(
+      goalInfo,
+      knownWords || [],
+    );
 
     setWordsToLearn(wordsList);
     loadLessonPlan({ words: wordsList, skipCache: true });
@@ -150,7 +154,12 @@ export const LessonStartModal = ({
     const isWords = steps.includes("words");
     const isRules = steps.includes("rules");
 
-    if (steps.includes("plan") && !isLoadingLessonPlanRef.current && !isWords && !isRules)
+    if (
+      steps.includes("plan") &&
+      !isLoadingLessonPlanRef.current &&
+      !isWords &&
+      !isRules
+    )
       loadLessonPlan({});
 
     if (steps.includes("words") && !wordsLoadingRef.current) loadWords();
@@ -166,7 +175,8 @@ export const LessonStartModal = ({
   };
 
   const [imageDescription, setImageDescription] = useState<string>("");
-  const [loadingImageDescription, setLoadingImageDescription] = useState<boolean>(false);
+  const [loadingImageDescription, setLoadingImageDescription] =
+    useState<boolean>(false);
 
   const doneWebCamSetup = async () => {
     let tempDescription = "";
@@ -177,7 +187,9 @@ export const LessonStartModal = ({
     }, 500);
 
     try {
-      tempDescription = allowWebCam ? (await webcam.getImageDescription()) || "" : "";
+      tempDescription = allowWebCam
+        ? (await webcam.getImageDescription()) || ""
+        : "";
     } catch (error) {
       console.error("Error getting image description:", error);
     }
@@ -231,7 +243,9 @@ export const LessonStartModal = ({
         {step === "intro" && (
           <InfoStep
             title={goalInfo.goalElement.title}
-            subTitle={goalInfo.goalElement.subTitle || goalInfo.goalElement.description}
+            subTitle={
+              goalInfo.goalElement.subTitle || goalInfo.goalElement.description
+            }
             subComponent={
               <Typography
                 sx={{
@@ -264,11 +278,21 @@ export const LessonStartModal = ({
                     padding: "10px 20px",
                   }}
                   startIcon={<MicIcon />}
-                  endIcon={isMicAllowed === null ? <></> : isMicAllowed ? <Check /> : <></>}
+                  endIcon={
+                    isMicAllowed === null ? (
+                      <></>
+                    ) : isMicAllowed ? (
+                      <Check />
+                    ) : (
+                      <></>
+                    )
+                  }
                   disabled={isMicAllowed === true}
                   onClick={async () => {
                     try {
-                      await navigator.mediaDevices.getUserMedia({ audio: true });
+                      await navigator.mediaDevices.getUserMedia({
+                        audio: true,
+                      });
                       setIsMicAllowed(true);
                     } catch (error) {
                       setIsMicAllowed(false);
@@ -279,7 +303,9 @@ export const LessonStartModal = ({
                 </Button>
                 {isMicAllowed === false && (
                   <Typography sx={{ color: "red", marginTop: "10px" }}>
-                    {i18n._(`Microphone access denied. Please enable it in your browser settings.`)}
+                    {i18n._(
+                      `Microphone access denied. Please enable it in your browser settings.`,
+                    )}
                   </Typography>
                 )}
               </Stack>
@@ -371,7 +397,12 @@ export const LessonStartModal = ({
                 {wordsToLearn.map((word, index) => {
                   const isLastWord = index === wordsToLearn.length - 1;
                   return (
-                    <Typography key={index} className="decor-text" variant="h3" align="center">
+                    <Typography
+                      key={index}
+                      className="decor-text"
+                      variant="h3"
+                      align="center"
+                    >
                       {word}
                       {!isLastWord ? "," : ""}
                     </Typography>
@@ -406,7 +437,8 @@ export const LessonStartModal = ({
                 <Markdown
                   onWordClick={
                     translator.isTranslateAvailable
-                      ? (word, element) => translator.translateWithModal(word, element)
+                      ? (word, element) =>
+                          translator.translateWithModal(word, element)
                       : undefined
                   }
                   variant="conversation"
@@ -446,7 +478,16 @@ export const LessonStartModal = ({
                     }}
                   >
                     <LoadingShapes
-                      sizes={["20px", "100px", "20px", "100px", "20px", "100px", "20px", "100px"]}
+                      sizes={[
+                        "20px",
+                        "100px",
+                        "20px",
+                        "100px",
+                        "20px",
+                        "100px",
+                        "20px",
+                        "100px",
+                      ]}
                     />
                   </Stack>
                 )}
@@ -509,9 +550,13 @@ export const LessonStartModal = ({
         {step === "start" && (
           <InfoStep
             title={
-              isStarting || loadingImageDescription ? i18n._(`Loading`) : i18n._(`Start Lesson`)
+              isStarting || loadingImageDescription
+                ? i18n._(`Loading`)
+                : i18n._(`Start Lesson`)
             }
-            subTitle={loadingImageDescription ? "" : i18n._(`We're ready to begin!`)}
+            subTitle={
+              loadingImageDescription ? "" : i18n._(`We're ready to begin!`)
+            }
             actionButtonTitle={i18n._(`Start Call`)}
             disabled={isStarting || loadingImageDescription}
             onClick={onStart}

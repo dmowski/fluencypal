@@ -8,7 +8,11 @@ import { useAuth } from "../Auth/useAuth";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import { useLingui } from "@lingui/react";
-import { fullLanguageName, getPageLangCode, SupportedLanguage } from "../Lang/lang";
+import {
+  fullLanguageName,
+  getPageLangCode,
+  SupportedLanguage,
+} from "../Lang/lang";
 import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
 import { ConversationResult } from "../Plan/types";
 import { useLessonPlan } from "../LessonPlan/useLessonPlan";
@@ -28,19 +32,24 @@ export const useConversationsAnalysis = () => {
 
   const pageLangCode = useMemo(() => getPageLangCode(), []);
   const planNativeLanguage = plan.activeGoal?.goalQuiz?.nativeLanguageCode;
-  const nativeLanguageCode = pageLangCode !== learningLanguage ? pageLangCode : planNativeLanguage;
+  const nativeLanguageCode =
+    pageLangCode !== learningLanguage ? pageLangCode : planNativeLanguage;
   const fullNativeLanguage = nativeLanguageCode
-    ? fullLanguageName[nativeLanguageCode as SupportedLanguage] || nativeLanguageCode
+    ? fullLanguageName[nativeLanguageCode as SupportedLanguage] ||
+      nativeLanguageCode
     : nativeLanguageCode;
 
   const [conversationAnalysisMap, setConversationAnalysisMap] = useState<
     Record<string, ConversationResult | null>
   >({});
 
-  const [gamePointsEarnMap, setGamePointsEarnMap] = useState<Record<string, number>>({});
+  const [gamePointsEarnMap, setGamePointsEarnMap] = useState<
+    Record<string, number>
+  >({});
 
   const activeConversationId = aiConversation.conversationId || "";
-  const conversationAnalysis = conversationAnalysisMap[activeConversationId] || null;
+  const conversationAnalysis =
+    conversationAnalysisMap[activeConversationId] || null;
   const gamePointsEarned = gamePointsEarnMap[activeConversationId] || 0;
 
   const analyzeConversation = async () => {
@@ -49,7 +58,9 @@ export const useConversationsAnalysis = () => {
     }
 
     if (!conversationAnalysis) {
-      const usersMessages = aiConversation.conversation.filter((msg) => !msg.isBot);
+      const usersMessages = aiConversation.conversation.filter(
+        (msg) => !msg.isBot,
+      );
       if (usersMessages.length > 3) {
         const pointsEarned = usersMessages.length;
         setGamePointsEarnMap((prev) => {
@@ -63,7 +74,7 @@ export const useConversationsAnalysis = () => {
             aiConversationPoints: pointsEarned,
             aiConversationUserId: auth.uid || "",
           },
-          await auth.getToken()
+          await auth.getToken(),
         );
       }
     }

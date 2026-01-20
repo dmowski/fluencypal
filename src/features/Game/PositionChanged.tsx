@@ -23,13 +23,17 @@ export const PositionChanged = () => {
   const countToShow = 3;
 
   const statsToShow = gameStats.filter((stat, index) => {
-    return index >= myStatIndex - countToShow && index <= myStatIndex + countToShow;
+    return (
+      index >= myStatIndex - countToShow && index <= myStatIndex + countToShow
+    );
   });
 
   const myActualPosition = game.getRealPosition(myUserId);
 
   const statsToPositions = game.stats.filter((stat, index) => {
-    return index >= myStatIndex - countToShow && index <= myStatIndex + countToShow;
+    return (
+      index >= myStatIndex - countToShow && index <= myStatIndex + countToShow
+    );
   });
 
   const positions: Record<string, number> = {};

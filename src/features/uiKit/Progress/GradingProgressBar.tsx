@@ -25,7 +25,9 @@ const GradientLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
 }));
 
-export const GradingProgressBar: React.FC<GradingProgressBarProps> = ({ value }) => {
+export const GradingProgressBar: React.FC<GradingProgressBarProps> = ({
+  value,
+}) => {
   return (
     <Box
       width="100%"

@@ -26,7 +26,10 @@ function useProvideTasks(): TasksContextType {
   const settings = useSettings();
   const userId = auth.uid;
 
-  const userTasksStatsDocRef = db.documents.userTasksStats(userId, settings.languageCode);
+  const userTasksStatsDocRef = db.documents.userTasksStats(
+    userId,
+    settings.languageCode,
+  );
 
   const [userTasksStats, loading] = useDocumentData(userTasksStatsDocRef);
   const dayFormat = "DD.MM.YYYY";
@@ -51,7 +54,7 @@ function useProvideTasks(): TasksContextType {
           },
         },
       },
-      { merge: true }
+      { merge: true },
     );
   };
 
@@ -63,10 +66,16 @@ function useProvideTasks(): TasksContextType {
   };
 }
 
-export function TasksProvider({ children }: { children: ReactNode }): JSX.Element {
+export function TasksProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const settings = useProvideTasks();
 
-  return <tasksContext.Provider value={settings}>{children}</tasksContext.Provider>;
+  return (
+    <tasksContext.Provider value={settings}>{children}</tasksContext.Provider>
+  );
 }
 
 export const useTasks = (): TasksContextType => {

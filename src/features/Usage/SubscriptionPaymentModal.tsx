@@ -85,9 +85,14 @@ const WalletButton = ({
 
       if (order.error) {
         console.log("error during payment", order);
-        notifications.show(i18n._("Error creating payment session") + " - " + order.error.message, {
-          severity: "error",
-        });
+        notifications.show(
+          i18n._("Error creating payment session") +
+            " - " +
+            order.error.message,
+          {
+            severity: "error",
+          },
+        );
         setIsLoading(false);
         return;
       }
@@ -181,7 +186,8 @@ export const SubscriptionPaymentModal = () => {
   const [isTermsChecked, setIsTermsChecked] = useState(false);
   const [isMarketingChecked, setIsMarketingChecked] = useState(false);
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
-  const [isTelegramPaymentOptions, setIsTelegramPaymentOptions] = useState(false);
+  const [isTelegramPaymentOptions, setIsTelegramPaymentOptions] =
+    useState(false);
   const [isPriceInStars, setIsPriceInStars] = useState(false);
 
   const [isShowWaiting, setIsShowWaiting] = useState(false);
@@ -194,7 +200,10 @@ export const SubscriptionPaymentModal = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const scrollTop = () => {
-    containerRef.current?.parentElement?.parentElement?.parentElement?.scrollTo(0, 0);
+    containerRef.current?.parentElement?.parentElement?.parentElement?.scrollTo(
+      0,
+      0,
+    );
   };
 
   const showWaiter = () => {
@@ -241,9 +250,12 @@ export const SubscriptionPaymentModal = () => {
       } else if (!checkoutInfo.invoice_link) {
         console.log("checkoutInfo", checkoutInfo);
         setIsRedirecting(false);
-        notifications.show(i18n._("Error creating payment session. Try again later."), {
-          severity: "error",
-        });
+        notifications.show(
+          i18n._("Error creating payment session. Try again later."),
+          {
+            severity: "error",
+          },
+        );
         return;
       } else {
         setInitActiveTill(usage.activeSubscriptionTill || "");
@@ -281,7 +293,9 @@ export const SubscriptionPaymentModal = () => {
     }
   };
 
-  const [duration, setDuration] = useState<"day" | "week" | "month" | "year">("day");
+  const [duration, setDuration] = useState<"day" | "week" | "month" | "year">(
+    "day",
+  );
 
   const yearPrice = PRICE_PER_MONTH_USD * 12;
 
@@ -294,7 +308,8 @@ export const SubscriptionPaymentModal = () => {
           ? yearPrice
           : PRICE_PER_DAY_USD * 7;
 
-  const priceInCurrency = Math.round(currency.rate * durationPriceUsd * 10) / 10;
+  const priceInCurrency =
+    Math.round(currency.rate * durationPriceUsd * 10) / 10;
 
   const analytics = useAnalytics();
 
@@ -324,7 +339,9 @@ export const SubscriptionPaymentModal = () => {
       if (!checkoutInfo.sessionUrl) {
         setIsRedirecting(false);
         notifications.show(
-          i18n._("Error creating payment session. Notification sent to support. Try again later."),
+          i18n._(
+            "Error creating payment session. Notification sent to support. Try again later.",
+          ),
           {
             severity: "error",
           },
@@ -374,7 +391,9 @@ export const SubscriptionPaymentModal = () => {
   };
 
   const isActiveSubscription = usage.isFullAccess;
-  const isTrial = !usage.paymentLogs?.find((log) => log.type === "user" || "subscription-full-v1");
+  const isTrial = !usage.paymentLogs?.find(
+    (log) => log.type === "user" || "subscription-full-v1",
+  );
   const activeTill = usage.activeSubscriptionTill
     ? `${dayjs(usage.activeSubscriptionTill).format("DD MMMM")}`
     : null;
@@ -452,7 +471,9 @@ export const SubscriptionPaymentModal = () => {
                 </Typography>
 
                 {currency.currency !== "USD" && allowCrypto && (
-                  <Typography variant="caption">{CRYPTO_MONTHLY_PRICE_TON} TON</Typography>
+                  <Typography variant="caption">
+                    {CRYPTO_MONTHLY_PRICE_TON} TON
+                  </Typography>
                 )}
               </Stack>
               <Stack
@@ -489,7 +510,9 @@ export const SubscriptionPaymentModal = () => {
                     </Typography>
 
                     <WalletButton
-                      onPressPay={() => setInitActiveTill(usage.activeSubscriptionTill || "")}
+                      onPressPay={() =>
+                        setInitActiveTill(usage.activeSubscriptionTill || "")
+                      }
                       onShowWaiter={() => showWaiter()}
                     />
                   </>
@@ -581,7 +604,10 @@ export const SubscriptionPaymentModal = () => {
                   label={
                     <Typography variant="caption">
                       {i18n._(`I accept the`)}{" "}
-                      <Link target="_blank" href={`${getUrlStart(supportedLang)}terms`}>
+                      <Link
+                        target="_blank"
+                        href={`${getUrlStart(supportedLang)}terms`}
+                      >
                         {i18n._(`Terms and Conditions`)}
                       </Link>{" "}
                       {i18n._(`of the Website operated by Fundacja Rozwoju Przedsiębiorczości "Twój
@@ -601,7 +627,9 @@ export const SubscriptionPaymentModal = () => {
                   control={<Checkbox />}
                   label={
                     <Typography variant="caption">
-                      {i18n._(`I want to receive commercial and marketing content`)}
+                      {i18n._(
+                        `I want to receive commercial and marketing content`,
+                      )}
                     </Typography>
                   }
                 />
@@ -676,17 +704,21 @@ export const SubscriptionPaymentModal = () => {
                   }}
                   align="center"
                 >
-                  {!isActiveSubscription && <>{i18n._(`You do not have full access.`)}</>}
+                  {!isActiveSubscription && (
+                    <>{i18n._(`You do not have full access.`)}</>
+                  )}
 
                   {isActiveSubscription && !isTrial && activeTill && (
                     <>
-                      {i18n._(`Your full access is active until`)} <b>{activeTill || "-"}</b>
+                      {i18n._(`Your full access is active until`)}{" "}
+                      <b>{activeTill || "-"}</b>
                     </>
                   )}
 
                   {isActiveSubscription && !isTrial && !activeTill && (
                     <>
-                      {i18n._(`You have`)} <b>{usage.balanceHours.toFixed(1)}</b>{" "}
+                      {i18n._(`You have`)}{" "}
+                      <b>{usage.balanceHours.toFixed(1)}</b>{" "}
                       {i18n._(`AI hours left in your balance.`)}
                     </>
                   )}
@@ -715,7 +747,9 @@ export const SubscriptionPaymentModal = () => {
                       alignItems: "center",
                     }}
                   >
-                    <Typography variant="h6">{i18n._(`Full Access`)}</Typography>
+                    <Typography variant="h6">
+                      {i18n._(`Full Access`)}
+                    </Typography>
                     {activeTill && (
                       <Stack
                         sx={{
@@ -731,7 +765,12 @@ export const SubscriptionPaymentModal = () => {
                         <Check size={"18px"} />
                         <Typography
                           variant="body2"
-                          sx={{ padding: 0, margin: 0, color: "#fff", fontWeight: 600 }}
+                          sx={{
+                            padding: 0,
+                            margin: 0,
+                            color: "#fff",
+                            fontWeight: 600,
+                          }}
                         >
                           {i18n._(`Active`)}
                         </Typography>
@@ -772,7 +811,9 @@ export const SubscriptionPaymentModal = () => {
                           >
                             {i18n._(`Stars`)} /
                           </Typography>
-                          <Typography variant="caption">{i18n._("month")}</Typography>
+                          <Typography variant="caption">
+                            {i18n._("month")}
+                          </Typography>
                         </Stack>
                       </Stack>
                     </>
@@ -801,28 +842,36 @@ export const SubscriptionPaymentModal = () => {
                         >
                           <Button
                             fullWidth
-                            variant={duration === "day" ? "contained" : "outlined"}
+                            variant={
+                              duration === "day" ? "contained" : "outlined"
+                            }
                             onClick={() => setDuration("day")}
                           >
                             {i18n._("Day")}
                           </Button>
                           <Button
                             fullWidth
-                            variant={duration === "week" ? "contained" : "outlined"}
+                            variant={
+                              duration === "week" ? "contained" : "outlined"
+                            }
                             onClick={() => setDuration("week")}
                           >
                             {i18n._("Week")}
                           </Button>
                           <Button
                             fullWidth
-                            variant={duration === "month" ? "contained" : "outlined"}
+                            variant={
+                              duration === "month" ? "contained" : "outlined"
+                            }
                             onClick={() => setDuration("month")}
                           >
                             {i18n._("Month")}
                           </Button>
                           <Button
                             fullWidth
-                            variant={duration === "year" ? "contained" : "outlined"}
+                            variant={
+                              duration === "year" ? "contained" : "outlined"
+                            }
                             onClick={() => setDuration("year")}
                           >
                             {i18n._("Year")}
@@ -908,9 +957,12 @@ export const SubscriptionPaymentModal = () => {
                     {activeTill && (
                       <>
                         <Typography variant="body2" align="left">
-                          {i18n._(`Your full access is active until {activeTill}`, {
-                            activeTill: activeTill,
-                          })}
+                          {i18n._(
+                            `Your full access is active until {activeTill}`,
+                            {
+                              activeTill: activeTill,
+                            },
+                          )}
                         </Typography>
                         <Typography
                           variant="body2"

@@ -75,7 +75,11 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
                     variant="h4"
                     className="decor-text"
                     sx={{
-                      color: isCorrect ? "#4ADE80" : isCorrect === false ? "#F87171" : "#fff",
+                      color: isCorrect
+                        ? "#4ADE80"
+                        : isCorrect === false
+                          ? "#F87171"
+                          : "#fff",
                     }}
                   >
                     {word}
@@ -85,7 +89,9 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
             })}
 
             {isCorrect === true && <Check size={"18px"} color="#4ADE80" />}
-            {isCorrect === false && <ShieldAlert size={"18px"} color="#F87171" />}
+            {isCorrect === false && (
+              <ShieldAlert size={"18px"} color="#F87171" />
+            )}
 
             {selectedWords.length > 0 && isCorrect === null && (
               <IconButton

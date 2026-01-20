@@ -8,7 +8,9 @@ async function getCurrencyByIP(): Promise<string> {
 }
 
 async function getConversionRate(toCurrency: string): Promise<number> {
-  const res = await fetch(`https://api.frankfurter.app/latest?from=USD&to=${toCurrency}`);
+  const res = await fetch(
+    `https://api.frankfurter.app/latest?from=USD&to=${toCurrency}`,
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch conversion rate");
@@ -30,7 +32,10 @@ export async function POST(request: NextRequest) {
   try {
     const { amountInUsd } = (await request.json()) as ConvertPriceRequest;
     if (amountInUsd < 0) {
-      return NextResponse.json({ error: "Amount can't be negative" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Amount can't be negative" },
+        { status: 400 },
+      );
     }
 
     const currency = await getCurrencyByIP();
@@ -54,6 +59,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(response);
   } catch (error) {
     console.error("Conversion error:", error);
-    return NextResponse.json({ error: (error as Error).message }, { status: 500 });
+    return NextResponse.json(
+      { error: (error as Error).message },
+      { status: 500 },
+    );
   }
 }

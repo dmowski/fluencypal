@@ -25,7 +25,11 @@ import { ChatListProvider } from "@/features/Chat/useChatList";
 import { LessonPlanProvider } from "@/features/LessonPlan/useLessonPlan";
 import { ConversationAudioProvider } from "@/features/Audio/useConversationAudio";
 
-export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
+export const PracticeProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element => {
   return (
     <Suspense>
       <TelegramProvider>

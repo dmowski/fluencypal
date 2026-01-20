@@ -1,6 +1,8 @@
 import OpenAI from "openai";
 
-export const generateImageBuffer = async (description: string): Promise<Buffer<ArrayBuffer>> => {
+export const generateImageBuffer = async (
+  description: string,
+): Promise<Buffer<ArrayBuffer>> => {
   const openAIKey = process.env.OPENAI_API_KEY;
   if (!openAIKey) {
     throw new Error("OpenAI API key is not set");

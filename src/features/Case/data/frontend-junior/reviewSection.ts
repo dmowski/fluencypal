@@ -8,14 +8,16 @@ export const getReviewSection = (lang: SupportedLanguage): ReviewSection => {
   return {
     type: "review",
     title: i18n._("Real people. Real job offers."),
-    subTitle: i18n._("Join candidates who transformed their interview performance"),
+    subTitle: i18n._(
+      "Join candidates who transformed their interview performance",
+    ),
     reviews: [
       {
         name: "Sarah M.",
         jobTitle: "Frontend Developer",
         rate: 5,
         review: i18n._(
-          "I finally got 3 offers after months of silence. The React component challenges were exactly what I needed."
+          "I finally got 3 offers after months of silence. The React component challenges were exactly what I needed.",
         ),
       },
       {
@@ -23,7 +25,7 @@ export const getReviewSection = (lang: SupportedLanguage): ReviewSection => {
         jobTitle: "Senior Frontend Engineer",
         rate: 5,
         review: i18n._(
-          "I was confident and clear — FluencyPal prepared me better than any coach for technical discussions about state management."
+          "I was confident and clear — FluencyPal prepared me better than any coach for technical discussions about state management.",
         ),
       },
       {
@@ -31,7 +33,7 @@ export const getReviewSection = (lang: SupportedLanguage): ReviewSection => {
         jobTitle: "UI/UX Engineer",
         rate: 5,
         review: i18n._(
-          "It helped me answer questions about accessibility and performance optimization without panic."
+          "It helped me answer questions about accessibility and performance optimization without panic.",
         ),
       },
       {
@@ -39,7 +41,7 @@ export const getReviewSection = (lang: SupportedLanguage): ReviewSection => {
         jobTitle: "React Developer",
         rate: 4,
         review: i18n._(
-          "The personalized feedback showed me exactly what I was doing wrong in my technical explanations. Game changer."
+          "The personalized feedback showed me exactly what I was doing wrong in my technical explanations. Game changer.",
         ),
       },
       {
@@ -47,7 +49,7 @@ export const getReviewSection = (lang: SupportedLanguage): ReviewSection => {
         jobTitle: "Frontend Tech Lead",
         rate: 5,
         review: i18n._(
-          "Within 2 weeks I went from nervous to confident discussing architecture decisions. Got the job I wanted."
+          "Within 2 weeks I went from nervous to confident discussing architecture decisions. Got the job I wanted.",
         ),
       },
       {
@@ -55,7 +57,7 @@ export const getReviewSection = (lang: SupportedLanguage): ReviewSection => {
         jobTitle: "Full Stack Developer",
         rate: 5,
         review: i18n._(
-          "The AI feedback on my CSS and JavaScript answers was spot-on. I improved my responses immediately."
+          "The AI feedback on my CSS and JavaScript answers was spot-on. I improved my responses immediately.",
         ),
       },
     ],

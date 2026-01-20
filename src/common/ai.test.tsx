@@ -30,7 +30,7 @@ describe("Calculate real time price", () => {
           audio_tokens: 23,
         },
       },
-      modelGpt4o
+      modelGpt4o,
     );
 
     expect(price).toBeDefined();
@@ -63,7 +63,7 @@ describe("Calculate real time price", () => {
           audio_tokens: 0,
         },
       },
-      modelGpt4o
+      modelGpt4o,
     );
     const aiPrice = 20;
     const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
@@ -95,7 +95,7 @@ describe("Calculate real time price", () => {
           audio_tokens: 0,
         },
       },
-      modelGpt4o
+      modelGpt4o,
     );
     const aiPrice = 40;
     const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
@@ -126,7 +126,7 @@ describe("Calculate real time price", () => {
           audio_tokens: 0,
         },
       },
-      modelGpt4o
+      modelGpt4o,
     );
     const aiPrice = 2.5;
     const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
@@ -148,7 +148,7 @@ describe("Calculate text price", () => {
         text_input: 1_000_000,
         text_output: 0,
       },
-      modelGpt4o
+      modelGpt4o,
     );
 
     expect(price).toBeDefined();
@@ -167,7 +167,7 @@ describe("Calculate text price", () => {
         text_input: 1_000_000,
         text_output: 1_000_000,
       },
-      modelGpt4o
+      modelGpt4o,
     );
 
     expect(price).toBeDefined();
@@ -185,7 +185,7 @@ describe("Calculate text price", () => {
         text_input: 1_000_000,
         text_output: 1_000_000,
       },
-      modelGpt4o
+      modelGpt4o,
     );
 
     expect(price).toBeDefined();
@@ -204,7 +204,7 @@ describe("Calculate text price", () => {
         text_input: 1_000_000,
         text_output: 0,
       },
-      modelGpt4o
+      modelGpt4o,
     );
 
     expect(price).toBeDefined();

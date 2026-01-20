@@ -116,7 +116,9 @@ export const DailyQuestionBadgeComponent = ({
         height: "auto",
         cursor: isOpen ? "initial" : "pointer",
 
-        background: isOpen ? "rgba(115, 25, 35, 0.2)" : "rgba(115, 25, 35, 0.31)",
+        background: isOpen
+          ? "rgba(115, 25, 35, 0.2)"
+          : "rgba(115, 25, 35, 0.31)",
         boxShadow: isOpen
           ? "0px 0px 0px 1px rgba(255, 255, 255, 0.2)"
           : "0px 0px 0px 1px rgba(255, 255, 255, 0.031)",
@@ -158,7 +160,13 @@ export const DailyQuestionBadgeComponent = ({
           >
             <img
               src="/icons/flame-icon.svg"
-              style={{ width: 20, height: 20, position: "relative", top: "-2px", left: "-1px" }}
+              style={{
+                width: 20,
+                height: 20,
+                position: "relative",
+                top: "-2px",
+                left: "-1px",
+              }}
             />
             <Typography
               variant="body2"
@@ -190,7 +198,9 @@ export const DailyQuestionBadgeComponent = ({
             }}
           >
             <Stack>
-              <Typography variant="h6">{i18n._(`Community Responses:`)}</Typography>
+              <Typography variant="h6">
+                {i18n._(`Community Responses:`)}
+              </Typography>
               <Typography
                 variant="body2"
                 sx={{
@@ -204,7 +214,9 @@ export const DailyQuestionBadgeComponent = ({
             <ChatSection
               placeholder={i18n._("What do you think?")}
               titleContent={<Stack>{content}</Stack>}
-              contextForAiAnalysis={todaysQuestion.title + ". " + todaysQuestion.description}
+              contextForAiAnalysis={
+                todaysQuestion.title + ". " + todaysQuestion.description
+              }
               addNewPostButtonText={i18n._("Add Response")}
             />
           </Stack>

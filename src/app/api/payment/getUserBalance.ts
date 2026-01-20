@@ -9,7 +9,12 @@ export const getUserBalance = async (userId: string) => {
   }
   const db = getDB();
   const isGameWinnerRequest = isUserIsGameWinner(userId);
-  const doc = await db.collection("users").doc(userId).collection("usage").doc("totalUsage").get();
+  const doc = await db
+    .collection("users")
+    .doc(userId)
+    .collection("usage")
+    .doc("totalUsage")
+    .get();
   const totalUsageData = doc.data() as TotalUsageInfo | undefined;
   const balanceHours: number = totalUsageData?.balanceHours || 0;
   const usedBalanceHours: number = totalUsageData?.usedHours || 0;

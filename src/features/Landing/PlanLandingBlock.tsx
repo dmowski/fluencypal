@@ -1,5 +1,9 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { buttonStyle, maxLandingWidth, subTitleFontStyle } from "./landingSettings";
+import {
+  buttonStyle,
+  maxLandingWidth,
+  subTitleFontStyle,
+} from "./landingSettings";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { cardColors, modeCardProps } from "../Plan/data";
@@ -195,7 +199,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
       title: i18n._(`Psychology`),
       subTitle: i18n._(`Mental Health Vocabulary`),
       mode: "words",
-      description: i18n._(`Essential words for discussing mental health and psychology.`),
+      description: i18n._(
+        `Essential words for discussing mental health and psychology.`,
+      ),
       details: "",
       startCount: 0,
     },
@@ -204,7 +210,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
       title: i18n._(`Diagnosis`),
       subTitle: i18n._(`Medical Talk Simulation`),
       mode: "play",
-      description: i18n._(`Practice medical conversations through simulated scenarios.`),
+      description: i18n._(
+        `Practice medical conversations through simulated scenarios.`,
+      ),
       details: "",
       startCount: 0,
     },
@@ -213,7 +221,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
       title: i18n._(`Reflex`),
       subTitle: i18n._(`Fast Answer Practice`),
       mode: "play",
-      description: i18n._(`Improve your ability to answer quickly and clearly in conversations.`),
+      description: i18n._(
+        `Improve your ability to answer quickly and clearly in conversations.`,
+      ),
       details: "",
       startCount: 0,
     },
@@ -249,7 +259,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
       title: i18n._(`Grammar`),
       subTitle: i18n._(`Advanced Academic Usage`),
       mode: "rule",
-      description: i18n._(`Learn grammar used in academic writing and speaking.`),
+      description: i18n._(
+        `Learn grammar used in academic writing and speaking.`,
+      ),
       details: "",
       startCount: 0,
     },
@@ -259,7 +271,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
       title: i18n._(`Wellness`),
       subTitle: i18n._(`Mental Health Talk`),
       mode: "conversation",
-      description: i18n._(`Explore techniques to talk about wellness and mental well-being.`),
+      description: i18n._(
+        `Explore techniques to talk about wellness and mental well-being.`,
+      ),
       details: "",
       startCount: 0,
     },
@@ -268,7 +282,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
       title: i18n._(`Essays`),
       subTitle: i18n._(`Formal Writing Practice`),
       mode: "rule",
-      description: i18n._(`Develop formal writing skills for academic success.`),
+      description: i18n._(
+        `Develop formal writing skills for academic success.`,
+      ),
       details: "",
       startCount: 0,
     },
@@ -316,7 +332,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         }}
       >
         <H2 align="center">{i18n._(`How It Works`)}</H2>
-        <SubTitle align="center">{i18n._(`From Onboarding to Confidence`)}</SubTitle>
+        <SubTitle align="center">
+          {i18n._(`From Onboarding to Confidence`)}
+        </SubTitle>
       </Stack>
 
       <Stack
@@ -391,7 +409,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             label={i18n._(`Step 1`)}
             title={i18n._(`Smart Start`)}
             description={i18n._(
-              `Fill out a onboarding quiz to help FluencyPal understand your goals and preferences.`
+              `Fill out a onboarding quiz to help FluencyPal understand your goals and preferences.`,
             )}
             actionButtonPostfixLabel={i18n._(`16 languages to practice`)}
             actionButtonLabel={i18n._(`Start Test`)}
@@ -428,7 +446,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             label={i18n._(`Step 2`)}
             title={i18n._(`Personal Plan`)}
             description={i18n._(
-              `Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you.`
+              `Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you.`,
             )}
             actionButtonPostfixLabel={""}
             actionButtonLabel={i18n._(`Create a plan`)}
@@ -498,13 +516,16 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                     const colorIndex = index % cardColors.length;
                     const cardColor = cardColors[colorIndex];
                     const elementsWithSameMode =
-                      planElements.filter((element) => element.mode === planElement.mode) || [];
+                      planElements.filter(
+                        (element) => element.mode === planElement.mode,
+                      ) || [];
                     const currentElementIndex = elementsWithSameMode.findIndex(
-                      (element) => element.id === planElement.id
+                      (element) => element.id === planElement.id,
                     );
 
                     const imageVariants = cardInfo.imgUrl;
-                    const imageIndex = currentElementIndex % imageVariants.length;
+                    const imageIndex =
+                      currentElementIndex % imageVariants.length;
                     const imageUrl = imageVariants[imageIndex];
 
                     return (
@@ -583,7 +604,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             label={i18n._(`Step 3`)}
             title={i18n._(`Practice`)}
             description={i18n._(
-              `Jump into your tailored learning path and build real skills through engaging practice with AI voice chat.`
+              `Jump into your tailored learning path and build real skills through engaging practice with AI voice chat.`,
             )}
             actionButtonPostfixLabel={""}
             actionButtonLabel={i18n._(`Start Practicing`)}

@@ -10,7 +10,10 @@ import { getConfirmEmailTemplate } from "./getConfirmEmailTemplate";
 
 const stripe = new Stripe(stripeConfig.STRIPE_SECRET_KEY!);
 
-const markUserAsCreditCardConfirmed = async (userId: string, isConfirmed: boolean) => {
+const markUserAsCreditCardConfirmed = async (
+  userId: string,
+  isConfirmed: boolean,
+) => {
   await updateUserInfo(userId, { isCreditCardConfirmed: isConfirmed });
 };
 
@@ -33,7 +36,11 @@ export async function POST(request: Request) {
   let event: Stripe.Event;
   try {
     const body = await request.text(); // raw body for signature verification
-    event = stripe.webhooks.constructEvent(body, sig, stripeConfig.STRIPE_WEBHOOK_SECRET);
+    event = stripe.webhooks.constructEvent(
+      body,
+      sig,
+      stripeConfig.STRIPE_WEBHOOK_SECRET,
+    );
   } catch (error: any) {
     const message = `Error verifying Stripe signature: ${error.message}`;
     sentSupportTelegramMessage({ message });
@@ -53,7 +60,9 @@ export async function POST(request: Request) {
 
       let firebaseUid: string | undefined;
       if (customerId) {
-        const customer = (await stripe.customers.retrieve(customerId)) as Stripe.Customer;
+        const customer = (await stripe.customers.retrieve(
+          customerId,
+        )) as Stripe.Customer;
         firebaseUid = customer?.metadata?.firebaseUid;
         console.log("firebaseUid", firebaseUid);
       }
@@ -76,12 +85,17 @@ export async function POST(request: Request) {
     }
 
     // Optional: inform/support on explicit failures/cancelations
-    if (event.type === "setup_intent.setup_failed" || event.type === "setup_intent.canceled") {
+    if (
+      event.type === "setup_intent.setup_failed" ||
+      event.type === "setup_intent.canceled"
+    ) {
       const si = event.data.object as Stripe.SetupIntent;
       const customerId = si.customer as string | null;
       let firebaseUid: string | undefined;
       if (customerId) {
-        const customer = (await stripe.customers.retrieve(customerId)) as Stripe.Customer;
+        const customer = (await stripe.customers.retrieve(
+          customerId,
+        )) as Stripe.Customer;
         firebaseUid = customer?.metadata?.firebaseUid;
       }
       sentSupportTelegramMessage({
@@ -95,7 +109,8 @@ export async function POST(request: Request) {
 
     // --- existing handlers you already had ---
     if (event.type == "radar.early_fraud_warning.created") {
-      const earlyFraudWarning = event.data.object as Stripe.Radar.EarlyFraudWarning;
+      const earlyFraudWarning = event.data
+        .object as Stripe.Radar.EarlyFraudWarning;
       const chargeId = earlyFraudWarning.charge as string;
       await refundPayment(chargeId);
     }
@@ -108,7 +123,8 @@ export async function POST(request: Request) {
       const currency = session.currency;
 
       const paymentIntentId = session.payment_intent as string;
-      const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+      const paymentIntent =
+        await stripe.paymentIntents.retrieve(paymentIntentId);
       const charges = paymentIntent.latest_charge;
       if (!charges) throw new Error("No charges in payment intent");
       if (!userId) throw new Error("No userId in metadata");
@@ -157,7 +173,8 @@ export async function POST(request: Request) {
           monthsCount: monthsCount,
         });
       } else {
-        const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? "0") || 1;
+        const amountOfHours =
+          parseFloat(session.metadata?.amountOfHours ?? "0") || 1;
 
         const tgMessage = `User ${userEmail} purchased ${amountOfHours} hours.`;
         sentSupportTelegramMessage({ message: tgMessage, userId });

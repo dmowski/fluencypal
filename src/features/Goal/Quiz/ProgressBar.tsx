@@ -4,7 +4,13 @@ import { useQuiz } from "./useQuiz";
 import { QuizProgressBar } from "./components/QuizProgressBar";
 
 export const ProgressBar = () => {
-  const { navigateToMainPage, isCanGoToMainPage, isFirstStep, prevStep, progress } = useQuiz();
+  const {
+    navigateToMainPage,
+    isCanGoToMainPage,
+    isFirstStep,
+    prevStep,
+    progress,
+  } = useQuiz();
 
   return (
     <QuizProgressBar

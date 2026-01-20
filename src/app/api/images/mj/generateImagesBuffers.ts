@@ -3,7 +3,7 @@ import { splitImageTo4 } from "./splitImageTo4";
 
 export const generateImagesBuffers = async (
   client: Midjourney,
-  prompt: string
+  prompt: string,
 ): Promise<Buffer[]> => {
   return new Promise<Buffer[]>(async (resolve) => {
     const timeout = setTimeout(() => {
@@ -11,9 +11,12 @@ export const generateImagesBuffers = async (
       resolve([]);
     }, 4 * 60_000);
 
-    const Imagine = await client.Imagine(prompt.trim(), (uri: string, progress: string) => {
-      console.log(`image generating:`, progress);
-    });
+    const Imagine = await client.Imagine(
+      prompt.trim(),
+      (uri: string, progress: string) => {
+        console.log(`image generating:`, progress);
+      },
+    );
 
     if (!Imagine || !Imagine.id) {
       console.log("No message");

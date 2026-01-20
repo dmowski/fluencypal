@@ -8,7 +8,13 @@ export interface ListItem {
   href?: string;
 }
 
-export const IconTextList = ({ listItems, gap }: { listItems: ListItem[]; gap?: string }) => {
+export const IconTextList = ({
+  listItems,
+  gap,
+}: {
+  listItems: ListItem[];
+  gap?: string;
+}) => {
   if (listItems.length === 0) {
     return null;
   }
@@ -36,7 +42,11 @@ export const IconTextList = ({ listItems, gap }: { listItems: ListItem[]; gap?: 
             }}
           >
             {item.iconName && (
-              <DynamicIcon name={item.iconName} size={iconSize} style={iconStyle} />
+              <DynamicIcon
+                name={item.iconName}
+                size={iconSize}
+                style={iconStyle}
+              />
             )}
             <Typography
               variant="body2"

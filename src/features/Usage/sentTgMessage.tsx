@@ -19,6 +19,6 @@ export const sentPaymentTgMessage = async ({
     {
       message: message,
     },
-    token
+    token,
   );
 };

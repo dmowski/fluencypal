@@ -44,7 +44,8 @@ export const ProgressBoard = () => {
           <Stack
             sx={{
               borderRadius: "50%",
-              background: "linear-gradient(45deg,rgb(69, 141, 230) 0%,rgb(109, 111, 209) 100%)",
+              background:
+                "linear-gradient(45deg,rgb(69, 141, 230) 0%,rgb(109, 111, 209) 100%)",
               height: "60px",
               width: "60px",
 

@@ -21,7 +21,9 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
   startIcon,
 }) => {
   const [isSignInToLanguage, setIsSignInToLanguage] = useState("");
-  const openMyPracticeLink = isSignInToLanguage ? getUrlStart(isSignInToLanguage) + "practice" : "";
+  const openMyPracticeLink = isSignInToLanguage
+    ? getUrlStart(isSignInToLanguage) + "practice"
+    : "";
 
   useEffect(() => {
     const isWindow = typeof window !== "undefined";
@@ -70,7 +72,9 @@ export const WelcomeScreenButton: React.FC<FirstEnterButtonProps> = ({
   startIcon,
 }) => {
   const [isSignInToLanguage, setIsSignInToLanguage] = useState("");
-  const openMyPracticeLink = isSignInToLanguage ? getUrlStart(isSignInToLanguage) + "practice" : "";
+  const openMyPracticeLink = isSignInToLanguage
+    ? getUrlStart(isSignInToLanguage) + "practice"
+    : "";
 
   useEffect(() => {
     const isWindow = typeof window !== "undefined";

@@ -3,7 +3,10 @@ import { TextToAudioModal } from "@/common/ai";
 import { getBucket, validateAuthToken } from "../config/firebase";
 import { TextToAudioRequest, TextToAudioResponse } from "./types";
 import { createHash } from "crypto";
-import { fullEnglishLanguageName, supportedLanguages } from "@/features/Lang/lang";
+import {
+  fullEnglishLanguageName,
+  supportedLanguages,
+} from "@/features/Lang/lang";
 
 const getHash = (text: string) => {
   const hash = createHash("sha256")
@@ -53,10 +56,13 @@ export async function POST(request: Request) {
   const start3 = Date.now();
 
   const supportedLang =
-    supportedLanguages.find((lang) => lang === aiRequest.languageCode.toLowerCase()) || "en";
+    supportedLanguages.find(
+      (lang) => lang === aiRequest.languageCode.toLowerCase(),
+    ) || "en";
 
   const model: TextToAudioModal = "gpt-4o-mini-tts";
-  const instruction = aiRequest.instructions || "Speak in a cheerful and positive tone.";
+  const instruction =
+    aiRequest.instructions || "Speak in a cheerful and positive tone.";
   const combinedInstructions = `${instruction}. Use ${fullEnglishLanguageName[supportedLang]} language`;
   const mp3 = await client.audio.speech.create({
     model: model,
@@ -69,11 +75,17 @@ export async function POST(request: Request) {
 
   const start4 = Date.now();
   const arrayBuffer = await mp3.arrayBuffer();
-  console.log("AUDIO GENERATOR: ArrayBuffer creation time", Date.now() - start4);
+  console.log(
+    "AUDIO GENERATOR: ArrayBuffer creation time",
+    Date.now() - start4,
+  );
 
   const startBuffer = Date.now();
   const buffer = Buffer.from(arrayBuffer);
-  console.log("AUDIO GENERATOR: Buffer creation time", Date.now() - startBuffer);
+  console.log(
+    "AUDIO GENERATOR: Buffer creation time",
+    Date.now() - startBuffer,
+  );
 
   const start5 = Date.now();
 

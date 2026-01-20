@@ -28,13 +28,17 @@ export const QuestionComment = ({
   const isMyAnswer = answer.authorUserId === auth.uid;
   const likesCollectionRef = db.collections.dailyQuestionsAnswersLikes(
     auth.uid || undefined,
-    answerDocId
+    answerDocId,
   );
-  const [likesSnapshot, loadingLikes, errorLikes] = useCollection(likesCollectionRef);
+  const [likesSnapshot, loadingLikes, errorLikes] =
+    useCollection(likesCollectionRef);
 
   const myLike = useMemo(() => {
     if (!likesSnapshot || !auth.uid) return null;
-    return likesSnapshot.docs.find((doc) => doc.data().likeUserId === auth.uid) || null;
+    return (
+      likesSnapshot.docs.find((doc) => doc.data().likeUserId === auth.uid) ||
+      null
+    );
   }, [likesSnapshot, auth.uid]);
 
   const likeCount = useMemo(() => {
@@ -117,10 +121,14 @@ export const QuestionComment = ({
               gap: "10px",
             }}
           >
-            <Typography variant="caption">{i18n._("This is your answer")}</Typography>
+            <Typography variant="caption">
+              {i18n._("This is your answer")}
+            </Typography>
             <Stack
               sx={{
-                backgroundColor: answer.isPublished ? "#4caf50" : "rgba(255, 255, 255, 0.2)",
+                backgroundColor: answer.isPublished
+                  ? "#4caf50"
+                  : "rgba(255, 255, 255, 0.2)",
                 padding: "2px 10px",
                 borderRadius: "6px",
                 flexDirection: "row",
@@ -128,14 +136,20 @@ export const QuestionComment = ({
                 gap: "6px",
               }}
             >
-              {answer.isPublished ? <Eye size={"12px"} /> : <EyeOff size={"12px"} />}
+              {answer.isPublished ? (
+                <Eye size={"12px"} />
+              ) : (
+                <EyeOff size={"12px"} />
+              )}
               <Typography
                 variant="caption"
                 sx={{
                   textTransform: "uppercase",
                 }}
               >
-                {answer.isPublished ? i18n._("published") : i18n._("not published")}{" "}
+                {answer.isPublished
+                  ? i18n._("published")
+                  : i18n._("not published")}{" "}
               </Typography>
             </Stack>
           </Stack>
@@ -168,7 +182,10 @@ export const QuestionComment = ({
               {myLike ? (
                 <FavoriteIcon color="error" fontSize="small" />
               ) : (
-                <FavoriteBorderOutlinedIcon style={{ opacity: 0.5 }} fontSize="small" />
+                <FavoriteBorderOutlinedIcon
+                  style={{ opacity: 0.5 }}
+                  fontSize="small"
+                />
               )}
             </IconButton>
           </Stack>
@@ -183,13 +200,21 @@ export const QuestionComment = ({
         {isMyAnswer ? (
           <>
             <Button
-              startIcon={answer.isPublished ? <EyeOff size={"15px"} /> : <Eye size={"15px"} />}
+              startIcon={
+                answer.isPublished ? (
+                  <EyeOff size={"15px"} />
+                ) : (
+                  <Eye size={"15px"} />
+                )
+              }
               onClick={() => {
                 togglePublish();
               }}
               variant={answer.isPublished ? "outlined" : "contained"}
             >
-              {answer.isPublished ? i18n._("Unpublish") : i18n._("Publish an answer")}
+              {answer.isPublished
+                ? i18n._("Unpublish")
+                : i18n._("Publish an answer")}
             </Button>
           </>
         ) : (

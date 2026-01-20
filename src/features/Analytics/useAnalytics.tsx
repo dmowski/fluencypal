@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, useContext, useEffect, ReactNode, useRef, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  ReactNode,
+  useRef,
+  useState,
+} from "react";
 import { isDev } from "./isDev";
 import { useAuth } from "../Auth/useAuth";
 import { initHotjar } from "./initHotjar";
@@ -15,7 +22,9 @@ interface AnalyticsContextType {
   confirmGtag: () => Promise<void>;
 }
 
-const AnalyticsContext = createContext<AnalyticsContextType | undefined>(undefined);
+const AnalyticsContext = createContext<AnalyticsContextType | undefined>(
+  undefined,
+);
 
 export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
   const auth = useAuth();
@@ -23,7 +32,12 @@ export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const isWindow = typeof window !== "undefined";
-    if ((isDev() && !RUN_ON_DEV_ENV) || !auth.uid || isInitialized || !isWindow) {
+    if (
+      (isDev() && !RUN_ON_DEV_ENV) ||
+      !auth.uid ||
+      isInitialized ||
+      !isWindow
+    ) {
       return;
     }
 
@@ -43,7 +57,11 @@ export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
     confirmGtag,
   };
 
-  return <AnalyticsContext.Provider value={data}>{children}</AnalyticsContext.Provider>;
+  return (
+    <AnalyticsContext.Provider value={data}>
+      {children}
+    </AnalyticsContext.Provider>
+  );
 };
 
 export const useAnalytics = () => {

@@ -38,7 +38,10 @@ export default async function Page(props: PageProps) {
     <html lang={supportedLang}>
       <body>
         <PracticeProvider>
-          <QuizPage2 lang={supportedLang} defaultLangToLearn={languageToLearn} />
+          <QuizPage2
+            lang={supportedLang}
+            defaultLangToLearn={languageToLearn}
+          />
         </PracticeProvider>
       </body>
     </html>

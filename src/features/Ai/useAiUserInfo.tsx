@@ -61,7 +61,9 @@ If not relevant information found, return empty array.
     return fixJson.parseJson<string[]>(summaryFromConversation);
   };
 
-  const extractUserRecords = async (conversation: ChatMessage[]): Promise<string[]> => {
+  const extractUserRecords = async (
+    conversation: ChatMessage[],
+  ): Promise<string[]> => {
     try {
       const systemMessage = `Given conversation with user and language teacher.
 Your goal is to extract information about user from this conversation.
@@ -76,7 +78,7 @@ If not relevant information found, return empty array.`;
             author: message.isBot ? "Teacher" : "User",
             text: message.text,
           };
-        })
+        }),
       );
 
       const parsedSummary = await textAi.generateJson<string[]>({
@@ -113,7 +115,7 @@ If not relevant information found, return empty array.`;
         createdAt: userInfo?.createdAt || Date.now(),
         updatedAt: Date.now(),
       },
-      { merge: true }
+      { merge: true },
     );
   };
 
@@ -133,7 +135,9 @@ If not relevant information found, return empty array.`;
 
   const addFirstConversationMessage = async (message: string) => {
     if (!dbDocRef) {
-      throw new Error("dbDocRef is not defined | useAiUserInfo.addFirstConversationMessage");
+      throw new Error(
+        "dbDocRef is not defined | useAiUserInfo.addFirstConversationMessage",
+      );
     }
 
     const record: FirstBotConversationMessage = {
@@ -149,17 +153,21 @@ If not relevant information found, return empty array.`;
         firstBotMessages: updatedFirstMessages,
         updatedAt: Date.now(),
       },
-      { merge: true }
+      { merge: true },
     );
   };
 
   const getLastFirstMessage = async (count: number) => {
     if (!dbDocRef) {
-      throw new Error("dbDocRef is not defined | useAiUserInfo.getLastFirstMessage");
+      throw new Error(
+        "dbDocRef is not defined | useAiUserInfo.getLastFirstMessage",
+      );
     }
 
     const firstMessages = userInfo?.firstBotMessages || [];
-    const sortedMessage = firstMessages.sort((a, b) => b.createdAt - a.createdAt);
+    const sortedMessage = firstMessages.sort(
+      (a, b) => b.createdAt - a.createdAt,
+    );
     const lastMessages = sortedMessage.slice(0, count);
 
     const lastMessagesText = lastMessages.map((message) => {
@@ -241,9 +249,17 @@ ${firstMessages.length === 0 ? "None" : firstMessages.map((msg, i) => `${i + 1}.
   };
 }
 
-export function AiUserInfoProvider({ children }: { children: ReactNode }): JSX.Element {
+export function AiUserInfoProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideAiUserInfo();
-  return <AiUserInfoContext.Provider value={hook}>{children}</AiUserInfoContext.Provider>;
+  return (
+    <AiUserInfoContext.Provider value={hook}>
+      {children}
+    </AiUserInfoContext.Provider>
+  );
 }
 
 export const useAiUserInfo = (): AiUserInfoContextType => {

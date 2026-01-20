@@ -21,7 +21,13 @@ export const InterviewPlanPreview = ({ plan }: PlanPreviewProps) => {
         }}
       >
         {plan.elements.map((planElement, index) => {
-          return <PlanCardPreview planElement={planElement} key={index} index={index} />;
+          return (
+            <PlanCardPreview
+              planElement={planElement}
+              key={index}
+              index={index}
+            />
+          );
         })}
       </Stack>
     </Stack>
@@ -179,7 +185,11 @@ export const PlanCardPreview = ({
               },
             }}
           >
-            {isOpen ? <ChevronUp size={"18px"} /> : <ChevronDown size={"18px"} />}
+            {isOpen ? (
+              <ChevronUp size={"18px"} />
+            ) : (
+              <ChevronDown size={"18px"} />
+            )}
           </Stack>
         </Stack>
       </Stack>

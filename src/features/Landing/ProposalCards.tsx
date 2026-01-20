@@ -1,6 +1,10 @@
 import { Card, CardContent, Stack, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { maxLandingWidth, subTitleFontStyle, titleFontStyle } from "./landingSettings";
+import {
+  maxLandingWidth,
+  subTitleFontStyle,
+  titleFontStyle,
+} from "./landingSettings";
 
 interface ProposalInfo {
   category: string;
@@ -140,7 +144,11 @@ interface ProposalCardsProps {
   title: string;
   subTitle: string;
 }
-export const ProposalCards: React.FC<ProposalCardsProps> = ({ title, subTitle, infoCards }) => {
+export const ProposalCards: React.FC<ProposalCardsProps> = ({
+  title,
+  subTitle,
+  infoCards,
+}) => {
   return (
     <Stack
       sx={{

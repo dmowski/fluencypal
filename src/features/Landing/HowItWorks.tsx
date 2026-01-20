@@ -78,7 +78,12 @@ export const HowItWorks = (props: HowItWorksProps) => {
         </Stack>
       </Stack>
 
-      <Stack sx={{ gap: "100px", "@media (max-width: 900px)": { gap: "20px", padding: "0 15px" } }}>
+      <Stack
+        sx={{
+          gap: "100px",
+          "@media (max-width: 900px)": { gap: "20px", padding: "0 15px" },
+        }}
+      >
         {props.cards.map((card, index) => {
           return (
             <Stack
@@ -134,7 +139,8 @@ export const HowItWorks = (props: HowItWorksProps) => {
                     fontWeight: 400,
                     lineHeight: "24px",
                     color: card.subTitleColor,
-                    margin: "0px var(--horizontal-padding) 0 var(--horizontal-padding)",
+                    margin:
+                      "0px var(--horizontal-padding) 0 var(--horizontal-padding)",
                   }}
                 >
                   {card.subTitle}

@@ -1,6 +1,8 @@
 "use client";
 
-export const sendDeleteMyAccountRequest = async (auth: string): Promise<void> => {
+export const sendDeleteMyAccountRequest = async (
+  auth: string,
+): Promise<void> => {
   const response = await fetch("/api/deleteAccount", {
     method: "POST",
     headers: {

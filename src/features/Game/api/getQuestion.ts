@@ -7,7 +7,10 @@ interface getQuestionProps {
   gameQuestionId: string;
 }
 
-export const getQuestionById = async ({ userId, gameQuestionId }: getQuestionProps) => {
+export const getQuestionById = async ({
+  userId,
+  gameQuestionId,
+}: getQuestionProps) => {
   const db = getDB();
   const questionDoc = await db
     .collection("users")
@@ -40,7 +43,7 @@ export const setQuestion = async ({ userId, question }: setQuestionProps) => {
 
 export const getUnansweredQuestions = async (
   userId: string,
-  learningLanguage: SupportedLanguage
+  learningLanguage: SupportedLanguage,
 ) => {
   const db = getDB();
   const questionsSnapshot = await db
@@ -60,7 +63,9 @@ export const getUnansweredQuestions = async (
   return questions;
 };
 
-export const convertFullQuestionToShort = (question: GameQuestionFull): GameQuestionShort => {
+export const convertFullQuestionToShort = (
+  question: GameQuestionFull,
+): GameQuestionShort => {
   const shortQuestion: GameQuestionShort = {
     id: question.id,
     type: question.type,

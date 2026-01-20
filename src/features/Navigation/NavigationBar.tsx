@@ -21,7 +21,9 @@ export interface IconProps {
 
 interface NavigationItem {
   name: PageType;
-  icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >;
   badge?: number;
   title: string;
 }
@@ -84,14 +86,17 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
         },
       ],
     }),
-    [appMode, chatList.myUnreadCount, chatList.unreadCountGlobal]
+    [appMode, chatList.myUnreadCount, chatList.unreadCountGlobal],
   );
 
-  const navigationItems: NavigationItem[] = navigationItemsByMode[appMode || "learning"];
+  const navigationItems: NavigationItem[] =
+    navigationItemsByMode[appMode || "learning"];
 
   const navigateTo = (
-    e: React.MouseEvent<HTMLAnchorElement> | React.TouchEvent<HTMLAnchorElement>,
-    item: NavigationItem
+    e:
+      | React.MouseEvent<HTMLAnchorElement>
+      | React.TouchEvent<HTMLAnchorElement>,
+    item: NavigationItem,
   ) => {
     e.preventDefault();
     appNavigation.setCurrentPage(item.name);
@@ -196,7 +201,10 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                     },
                   }}
                 >
-                  <Badge color="error" badgeContent={isActiveBadge ? item.badge : 0}>
+                  <Badge
+                    color="error"
+                    badgeContent={isActiveBadge ? item.badge : 0}
+                  >
                     {isProfile && userPhoto ? (
                       <Avatar
                         avatarSize="20px"
@@ -218,7 +226,11 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                       width: "100%",
                     }}
                   >
-                    <Typography variant="caption" component={"span"} align="center">
+                    <Typography
+                      variant="caption"
+                      component={"span"}
+                      align="center"
+                    >
                       {item.title}
                     </Typography>
                   </Stack>

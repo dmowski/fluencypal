@@ -14,7 +14,8 @@ export async function POST(req: Request) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) return new Response("Missing OPENAI_API_KEY", { status: 500 });
 
-  const { input, voice, instructions, languageName } = (await req.json()) as Body;
+  const { input, voice, instructions, languageName } =
+    (await req.json()) as Body;
 
   const text = (input ?? "").trim();
   if (!text) return new Response("Missing input", { status: 400 });

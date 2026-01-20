@@ -10,17 +10,24 @@ interface ListRolePlayProps {
   selectedCategoryId?: string;
   lang: SupportedLanguage;
 }
-export const ListRolePlay = ({ lang, selectedCategoryId }: ListRolePlayProps) => {
-  const { rolePlayScenarios, categoriesList, allCategory } = getRolePlayScenarios(lang);
+export const ListRolePlay = ({
+  lang,
+  selectedCategoryId,
+}: ListRolePlayProps) => {
+  const { rolePlayScenarios, categoriesList, allCategory } =
+    getRolePlayScenarios(lang);
   const i18n = getI18nInstance(lang);
 
   const title = selectedCategoryId
-    ? categoriesList.find((category) => category.categoryId === selectedCategoryId)
-        ?.categoryTitle || i18n._("Unknown category")
+    ? categoriesList.find(
+        (category) => category.categoryId === selectedCategoryId,
+      )?.categoryTitle || i18n._("Unknown category")
     : i18n._(`Role Play Scenarios`);
 
   const listToDisplay = selectedCategoryId
-    ? rolePlayScenarios.filter((scenario) => scenario.category.categoryId === selectedCategoryId)
+    ? rolePlayScenarios.filter(
+        (scenario) => scenario.category.categoryId === selectedCategoryId,
+      )
     : rolePlayScenarios;
 
   return (
@@ -74,8 +81,10 @@ export const ListRolePlay = ({ lang, selectedCategoryId }: ListRolePlayProps) =>
             {categoriesList.map((category, index) => {
               const isSelected =
                 selectedCategoryId === category.categoryId ||
-                (!selectedCategoryId && category.categoryId === allCategory.categoryId);
-              const isAllScenarios = category.categoryId === allCategory.categoryId;
+                (!selectedCategoryId &&
+                  category.categoryId === allCategory.categoryId);
+              const isAllScenarios =
+                category.categoryId === allCategory.categoryId;
               return (
                 <Link
                   key={index}
@@ -91,7 +100,9 @@ export const ListRolePlay = ({ lang, selectedCategoryId }: ListRolePlayProps) =>
                     borderRadius: "7px",
                     textDecoration: "none",
                     fontWeight: 300,
-                    backgroundColor: isSelected ? "rgba(0, 0, 0, 0.05)" : "transparent",
+                    backgroundColor: isSelected
+                      ? "rgba(0, 0, 0, 0.05)"
+                      : "transparent",
                     ":hover": {
                       backgroundColor: "rgba(0, 0, 0, 0.02)",
                     },

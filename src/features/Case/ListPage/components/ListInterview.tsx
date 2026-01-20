@@ -10,18 +10,25 @@ interface ListInterviewProps {
   selectedCategoryId?: string;
   lang: SupportedLanguage;
 }
-export const ListInterview = ({ lang, selectedCategoryId }: ListInterviewProps) => {
+export const ListInterview = ({
+  lang,
+  selectedCategoryId,
+}: ListInterviewProps) => {
   const { interviews, allCategory, categoriesList } = getAllInterviews(lang);
   const i18n = getI18nInstance(lang);
 
-  const selectedCategory = categoriesList.find((c) => c.categoryId === selectedCategoryId);
+  const selectedCategory = categoriesList.find(
+    (c) => c.categoryId === selectedCategoryId,
+  );
 
   const title = selectedCategoryId
     ? selectedCategory?.categoryTitle || i18n._("Unknown category")
     : allCategory.categoryTitle;
 
   const listToDisplay = selectedCategoryId
-    ? interviews.filter((item) => item.coreData.category.categoryId === selectedCategoryId)
+    ? interviews.filter(
+        (item) => item.coreData.category.categoryId === selectedCategoryId,
+      )
     : interviews;
 
   return (
@@ -75,8 +82,10 @@ export const ListInterview = ({ lang, selectedCategoryId }: ListInterviewProps) 
             {categoriesList.map((category, index) => {
               const isSelected =
                 selectedCategoryId === category.categoryId ||
-                (!selectedCategoryId && category.categoryId === allCategory.categoryId);
-              const isAllScenarios = category.categoryId === allCategory.categoryId;
+                (!selectedCategoryId &&
+                  category.categoryId === allCategory.categoryId);
+              const isAllScenarios =
+                category.categoryId === allCategory.categoryId;
               return (
                 <Link
                   key={index}
@@ -92,7 +101,9 @@ export const ListInterview = ({ lang, selectedCategoryId }: ListInterviewProps) 
                     borderRadius: "7px",
                     textDecoration: "none",
                     fontWeight: 300,
-                    backgroundColor: isSelected ? "rgba(0, 0, 0, 0.05)" : "transparent",
+                    backgroundColor: isSelected
+                      ? "rgba(0, 0, 0, 0.05)"
+                      : "transparent",
                     ":hover": {
                       backgroundColor: "rgba(0, 0, 0, 0.02)",
                     },

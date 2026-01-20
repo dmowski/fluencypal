@@ -24,7 +24,9 @@ export const GlobalModals: React.FC = () => {
   const teacherSettings = useTeacherSettings();
 
   const activeUserProfile = useMemo(() => {
-    return game.modalUserId ? game.stats.find((s) => s.userId === game.modalUserId) : null;
+    return game.modalUserId
+      ? game.stats.find((s) => s.userId === game.modalUserId)
+      : null;
   }, [game.modalUserId, auth.uid, game.isLoading]);
 
   return (
@@ -32,7 +34,10 @@ export const GlobalModals: React.FC = () => {
       {usage.isShowPaymentModal && <SubscriptionPaymentModal />}
 
       {activeUserProfile && (
-        <UserProfileModal stat={activeUserProfile} onClose={() => game.showUserInModal("")} />
+        <UserProfileModal
+          stat={activeUserProfile}
+          onClose={() => game.showUserInModal("")}
+        />
       )}
 
       {teacherSettings.isSettingsModalOpen && (
@@ -46,7 +51,9 @@ export const GlobalModals: React.FC = () => {
             }}
           >
             <Stack>
-              <Typography variant="h5">{i18n._("Your AI teacher voice:")}</Typography>
+              <Typography variant="h5">
+                {i18n._("Your AI teacher voice:")}
+              </Typography>
               <Typography
                 sx={{
                   opacity: 0.7,
@@ -54,7 +61,7 @@ export const GlobalModals: React.FC = () => {
                 variant="body2"
               >
                 {i18n._(
-                  "Select the voice your AI teacher will use during conversations. You can change this anytime."
+                  "Select the voice your AI teacher will use during conversations. You can change this anytime.",
                 )}
               </Typography>
             </Stack>

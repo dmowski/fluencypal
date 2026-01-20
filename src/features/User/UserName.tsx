@@ -48,7 +48,15 @@ export const UserName = ({
   );
 };
 
-const Badge = ({ size, isShow, opacity }: { size?: Size; isShow: boolean; opacity?: number }) => {
+const Badge = ({
+  size,
+  isShow,
+  opacity,
+}: {
+  size?: Size;
+  isShow: boolean;
+  opacity?: number;
+}) => {
   if (!isShow) return null;
   return (
     <VerifiedIcon

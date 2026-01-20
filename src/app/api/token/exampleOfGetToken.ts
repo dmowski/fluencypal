@@ -1,4 +1,7 @@
-import { GetEphemeralTokenRequest, GetEphemeralTokenResponse } from "@/common/requests";
+import {
+  GetEphemeralTokenRequest,
+  GetEphemeralTokenResponse,
+} from "@/common/requests";
 import { getEphemeralToken } from "./getEphemeralToken";
 
 export async function exampleOfPost(request: Request) {

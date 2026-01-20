@@ -5,7 +5,10 @@ interface KeyboardButtonProps {
   onClick: () => void;
 }
 
-export const KeyboardButton: React.FC<KeyboardButtonProps> = ({ isEnabled, onClick }) => {
+export const KeyboardButton: React.FC<KeyboardButtonProps> = ({
+  isEnabled,
+  onClick,
+}) => {
   return (
     <button
       style={{

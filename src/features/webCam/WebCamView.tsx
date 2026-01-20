@@ -16,7 +16,9 @@ export const WebCamView = () => {
     if (!isWindow) return;
 
     const now = Date.now();
-    const diff = isInitializingTime.current ? now - isInitializingTime.current : null;
+    const diff = isInitializingTime.current
+      ? now - isInitializingTime.current
+      : null;
 
     if (diff && diff < 1000) {
       return;
@@ -66,9 +68,13 @@ export const WebCamView = () => {
           }}
         >
           <Loader color="rgba(255, 255, 255, 0.2)" size={"22px"} />
-          <Typography variant="caption">{i18n._("Starting webcam... ")}</Typography>
           <Typography variant="caption">
-            {i18n._("Make sure to allow webcam access in your browser settings.")}
+            {i18n._("Starting webcam... ")}
+          </Typography>
+          <Typography variant="caption">
+            {i18n._(
+              "Make sure to allow webcam access in your browser settings.",
+            )}
           </Typography>
         </Stack>
       )}
@@ -87,9 +93,12 @@ export const WebCamView = () => {
             src="/instruction/webCamAccess.png"
             sx={{ width: "300px", borderRadius: "10px" }}
           />
-          <Typography variant="caption" style={{ color: "white", textAlign: "center" }}>
+          <Typography
+            variant="caption"
+            style={{ color: "white", textAlign: "center" }}
+          >
             {i18n._(
-              "Webcam access denied. Please enable webcam permissions in your browser settings."
+              "Webcam access denied. Please enable webcam permissions in your browser settings.",
             )}
           </Typography>
         </Stack>

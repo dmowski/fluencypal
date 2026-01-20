@@ -3,7 +3,12 @@ import { WebcamDemoSection } from "../../types";
 import { Theme, themeMap } from "./theme";
 import { H2, SubTitle } from "./Typography";
 import { ColorIconTextList } from "@/features/Survey/ColorIconTextList";
-import { CircleArrowRight, CircleCheckBig, MoveRight, Users } from "lucide-react";
+import {
+  CircleArrowRight,
+  CircleCheckBig,
+  MoveRight,
+  Users,
+} from "lucide-react";
 
 import CallEndIcon from "@mui/icons-material/CallEnd";
 import MicOffIcon from "@mui/icons-material/MicOff";
@@ -240,7 +245,10 @@ export const WebcamSection = (props: WebcamSectionProps) => {
             >
               {props.data.content}
             </Typography>
-            <ColorIconTextList listItems={props.data.infoList} iconSize="22px" />
+            <ColorIconTextList
+              listItems={props.data.infoList}
+              iconSize="22px"
+            />
 
             {props.data.buttonTitle && props.buttonHref && (
               <Stack>
@@ -298,7 +306,9 @@ const NavigationBlock = ({
       }}
     >
       {isDone && <CircleCheckBig size={"27px"} color="rgb(96, 165, 250)" />}
-      {!isDone && <CircleArrowRight size={"27px"} color="rgba(255, 255, 255, 0.6)" />}
+      {!isDone && (
+        <CircleArrowRight size={"27px"} color="rgba(255, 255, 255, 0.6)" />
+      )}
 
       <Typography
         align="center"

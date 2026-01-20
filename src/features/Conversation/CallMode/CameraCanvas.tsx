@@ -86,12 +86,17 @@ export const CameraCanvas = ({
 
   const auth = useAuth();
   const userPhoto = auth.userInfo?.photoURL || "";
-  const myUserName = auth.userInfo?.displayName || auth.userInfo?.email || "You";
+  const myUserName =
+    auth.userInfo?.displayName || auth.userInfo?.email || "You";
   const aiVideo: AiAvatar | null = getAiVoiceByVoice(voice);
   const footerHeight = `calc(80px + ${sizes.bottomOffset})`;
 
-  const topHeight = isSubtitlesEnabled ? `50dvh` : `calc(97dvh - ${footerHeight})`;
-  const topHeightMobile = isSubtitlesEnabled ? `22dvh` : `calc(95dvh - ${footerHeight})`;
+  const topHeight = isSubtitlesEnabled
+    ? `50dvh`
+    : `calc(97dvh - ${footerHeight})`;
+  const topHeightMobile = isSubtitlesEnabled
+    ? `22dvh`
+    : `calc(95dvh - ${footerHeight})`;
 
   const isTimeToScreenshots =
     isWebCamEnabled &&
@@ -216,7 +221,11 @@ export const CameraCanvas = ({
             </Stack>
             {isWebCamEnabled && <WebCamView />}
             {!isWebCamEnabled && (
-              <UserPreviewStatic bgUrl={"/blur/5.jpg"} avatarUrl={userPhoto} isSpeaking={false} />
+              <UserPreviewStatic
+                bgUrl={"/blur/5.jpg"}
+                avatarUrl={userPhoto}
+                isSpeaking={false}
+              />
             )}
 
             <WebCamFooter name={myUserName || i18n._("You")} />

@@ -127,7 +127,10 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
             }}
           >
             {supportedLanguages.map((lang, index) => {
-              const href = [getUrlStartWithoutLastSlash(lang), pathWithoutFirstSlash]
+              const href = [
+                getUrlStartWithoutLastSlash(lang),
+                pathWithoutFirstSlash,
+              ]
                 .filter((part) => part)
                 .join("/")
                 .replace(/\/+/g, "/");

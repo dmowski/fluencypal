@@ -63,7 +63,8 @@ export const BattleActionModal = ({
     }
 
     const isLastQuestion =
-      battle.questionsIds.indexOf(activeQuestionId) === battle.questionsIds.length - 1;
+      battle.questionsIds.indexOf(activeQuestionId) ===
+      battle.questionsIds.length - 1;
 
     if (isLastQuestion) {
       setIsShowLastStep(true);
@@ -77,7 +78,8 @@ export const BattleActionModal = ({
   };
 
   const activeQuestionsAnswer = battle.answers.find(
-    (answer) => answer.questionId === activeQuestionId && answer.userId === auth.uid
+    (answer) =>
+      answer.questionId === activeQuestionId && answer.userId === auth.uid,
   );
 
   const activeTranscript = activeQuestionsAnswer?.answer || "";
@@ -164,12 +166,20 @@ export const BattleActionModal = ({
                                   fontWeight: 600,
                                 }}
                               >
-                                {isWinner ? i18n._("Winner!") : i18n._("Second Place")}
+                                {isWinner
+                                  ? i18n._("Winner!")
+                                  : i18n._("Second Place")}
                               </Typography>
                               {isWinner ? (
-                                <Crown color="rgba(255, 255, 255, 1)" size="24px" />
+                                <Crown
+                                  color="rgba(255, 255, 255, 1)"
+                                  size="24px"
+                                />
                               ) : (
-                                <HatGlasses color="rgba(255, 255, 255, 1)" size="24px" />
+                                <HatGlasses
+                                  color="rgba(255, 255, 255, 1)"
+                                  size="24px"
+                                />
                               )}
                             </Stack>
 
@@ -189,7 +199,9 @@ export const BattleActionModal = ({
                                 {battle.questionsIds.map((questionId) => {
                                   const question = questions[questionId];
                                   const answerObj = battle.answers.find(
-                                    (a) => a.questionId === questionId && a.userId === stat.userId
+                                    (a) =>
+                                      a.questionId === questionId &&
+                                      a.userId === stat.userId,
                                   );
                                   return (
                                     <Stack
@@ -199,8 +211,12 @@ export const BattleActionModal = ({
                                       }}
                                     >
                                       <Stack>
-                                        <Typography variant="caption">{question.topic}</Typography>
-                                        <Typography variant="h5">{question.description}</Typography>
+                                        <Typography variant="caption">
+                                          {question.topic}
+                                        </Typography>
+                                        <Typography variant="h5">
+                                          {question.description}
+                                        </Typography>
                                       </Stack>
                                       <Typography
                                         sx={{
@@ -265,7 +281,9 @@ export const BattleActionModal = ({
                         }}
                       >
                         <Markdown>
-                          {"\n" + (battle.winnerDescription || i18n._("No reason provided."))}
+                          {"\n" +
+                            (battle.winnerDescription ||
+                              i18n._("No reason provided."))}
                         </Markdown>
                       </Stack>
                     </Stack>
@@ -278,7 +296,9 @@ export const BattleActionModal = ({
                       }}
                     >
                       <Stack>
-                        <Typography variant="h6">{i18n._(`Comments:`)}</Typography>
+                        <Typography variant="h6">
+                          {i18n._(`Comments:`)}
+                        </Typography>
                         <Typography
                           variant="body2"
                           sx={{
@@ -305,14 +325,18 @@ export const BattleActionModal = ({
 
           {!isWinnerDeclared && isShowLastStep && (
             <InfoStep
-              title={isSubmitting ? i18n._("Processing answers...") : i18n._("Almost there!")}
+              title={
+                isSubmitting
+                  ? i18n._("Processing answers...")
+                  : i18n._("Almost there!")
+              }
               subTitle={
                 isSubmitting
                   ? i18n._(
-                      "You have answered all the questions. Submitting your answers now... Don't close this window."
+                      "You have answered all the questions. Submitting your answers now... Don't close this window.",
                     )
                   : i18n._(
-                      "You have completed all the questions. Submit your answers now and wait for the results."
+                      "You have completed all the questions. Submit your answers now and wait for the results.",
                     )
               }
               actionButtonTitle={i18n._("Submit Answers")}
@@ -324,76 +348,86 @@ export const BattleActionModal = ({
             />
           )}
 
-          {!isWinnerDeclared && !isShowLastStep && activeQuestion && activeQuestionId && (
-            <Stack>
-              <RecordUserAudio
-                title={activeQuestion.description}
-                subTitle={activeQuestion.topic}
-                listItems={[
-                  {
-                    title: i18n._("Use your learning language ({lang})", {
-                      lang: fullLanguageName[lang],
-                    }),
-                    iconName: "languages",
-                  },
-                  {
-                    title: i18n._("Your goal is not to be perfect, but to surpass your opponent."),
-                    iconName: "rocket",
-                  },
-                  {
-                    title: i18n._("The answer should not take more than 300 words. ~2 minutes."),
-                    iconName: "timer",
-                  },
-                ]}
-                transcript={activeTranscript}
-                minWords={30}
-                maxWords={300}
-                subTitleComponent={<></>}
-                nextStep={nextQuestion}
-                updateTranscript={async (combinedTranscript) => {
-                  console.log("combinedTranscript", combinedTranscript);
-                  await battles.updateAnswerTranscription({
-                    battleId: battle.battleId,
-                    questionId: activeQuestionId,
-                    transcription: combinedTranscript,
-                  });
-                }}
-              />
-              <Stack
-                sx={{
-                  width: "100%",
-                  gap: "15px",
-                  padding: "20px 10px 0 10px",
-                  display: "none",
-                }}
-              >
-                <Typography variant="caption">
-                  {i18n._("You can use text to answer if you prefer.")}
-                </Typography>
-                <TextField
-                  label={i18n._("Your answer")}
-                  placeholder={i18n._("Type your answer here...")}
-                  value={textAnswer}
-                  onChange={(e) => setTextAnswer(e.target.value)}
-                  multiline
-                  minRows={3}
-                />
-                <Button
-                  onClick={async () => {
+          {!isWinnerDeclared &&
+            !isShowLastStep &&
+            activeQuestion &&
+            activeQuestionId && (
+              <Stack>
+                <RecordUserAudio
+                  title={activeQuestion.description}
+                  subTitle={activeQuestion.topic}
+                  listItems={[
+                    {
+                      title: i18n._("Use your learning language ({lang})", {
+                        lang: fullLanguageName[lang],
+                      }),
+                      iconName: "languages",
+                    },
+                    {
+                      title: i18n._(
+                        "Your goal is not to be perfect, but to surpass your opponent.",
+                      ),
+                      iconName: "rocket",
+                    },
+                    {
+                      title: i18n._(
+                        "The answer should not take more than 300 words. ~2 minutes.",
+                      ),
+                      iconName: "timer",
+                    },
+                  ]}
+                  transcript={activeTranscript}
+                  minWords={30}
+                  maxWords={300}
+                  subTitleComponent={<></>}
+                  nextStep={nextQuestion}
+                  updateTranscript={async (combinedTranscript) => {
+                    console.log("combinedTranscript", combinedTranscript);
                     await battles.updateAnswerTranscription({
                       battleId: battle.battleId,
                       questionId: activeQuestionId,
-                      transcription: textAnswer,
+                      transcription: combinedTranscript,
                     });
                   }}
-                  variant="text"
-                  disabled={textAnswer === activeTranscript || textAnswer.trim().length === 0}
+                />
+                <Stack
+                  sx={{
+                    width: "100%",
+                    gap: "15px",
+                    padding: "20px 10px 0 10px",
+                    display: "none",
+                  }}
                 >
-                  {i18n._("Add Text Answer")}
-                </Button>
+                  <Typography variant="caption">
+                    {i18n._("You can use text to answer if you prefer.")}
+                  </Typography>
+                  <TextField
+                    label={i18n._("Your answer")}
+                    placeholder={i18n._("Type your answer here...")}
+                    value={textAnswer}
+                    onChange={(e) => setTextAnswer(e.target.value)}
+                    multiline
+                    minRows={3}
+                  />
+                  <Button
+                    onClick={async () => {
+                      await battles.updateAnswerTranscription({
+                        battleId: battle.battleId,
+                        questionId: activeQuestionId,
+                        transcription: textAnswer,
+                      });
+                    }}
+                    variant="text"
+                    disabled={
+                      textAnswer === activeTranscript ||
+                      textAnswer.trim().length === 0
+                    }
+                  >
+                    {i18n._("Add Text Answer")}
+                  </Button>
+                </Stack>
               </Stack>
-            </Stack>
-          )}
+            )}
 
           {!isWinnerDeclared && !isShowLastStep && !activeQuestionId && (
             <InfoStep
@@ -410,12 +444,14 @@ export const BattleActionModal = ({
                 },
                 {
                   title: i18n._(
-                    "Your answers will be visible to your opponent after you submit them."
+                    "Your answers will be visible to your opponent after you submit them.",
                   ),
                   iconName: "eye",
                 },
                 {
-                  title: i18n._("AI will evaluate answers and determine the winner."),
+                  title: i18n._(
+                    "AI will evaluate answers and determine the winner.",
+                  ),
                   iconName: "crown",
                 },
               ]}

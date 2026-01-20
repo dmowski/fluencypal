@@ -6,7 +6,10 @@ import { ReactNode, useEffect } from "react";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { getWordsCount } from "@/libs/words";
 import { RecordUserAudioAnswer } from "../../Survey/RecordUserAudioAnswer";
-import { ColorIconTextList, ColorIconTextListItem } from "@/features/Survey/ColorIconTextList";
+import {
+  ColorIconTextList,
+  ColorIconTextListItem,
+} from "@/features/Survey/ColorIconTextList";
 import { InterviewQuizButton } from "./InterviewQuizButton";
 
 export const RecordUserAudio = ({
@@ -37,7 +40,9 @@ export const RecordUserAudio = ({
 
   useEffect(() => {
     if (recorder.transcription) {
-      const combinedTranscript = [transcript, recorder.transcription].filter(Boolean).join(" ");
+      const combinedTranscript = [transcript, recorder.transcription]
+        .filter(Boolean)
+        .join(" ");
       updateTranscript(combinedTranscript);
     }
   }, [recorder.transcription]);
@@ -50,7 +55,8 @@ export const RecordUserAudio = ({
 
   const wordsCount = getWordsCount(transcript || "");
 
-  const isInLimits = wordsCount >= minWords && (!maxWords || wordsCount <= maxWords);
+  const isInLimits =
+    wordsCount >= minWords && (!maxWords || wordsCount <= maxWords);
 
   return (
     <Stack
@@ -105,7 +111,11 @@ export const RecordUserAudio = ({
                     paddingTop: "10px",
                   }}
                 >
-                  <ColorIconTextList listItems={listItems} iconSize="18px" gap="10px" />
+                  <ColorIconTextList
+                    listItems={listItems}
+                    iconSize="18px"
+                    gap="10px"
+                  />
                 </Stack>
               )}
             </Stack>
@@ -129,7 +139,13 @@ export const RecordUserAudio = ({
 
         <InterviewQuizButton
           onClick={nextStep}
-          color={recorder.isRecording && !isInLimits ? "error" : isInLimits ? "success" : "primary"}
+          color={
+            recorder.isRecording && !isInLimits
+              ? "error"
+              : isInLimits
+                ? "success"
+                : "primary"
+          }
           disabled={isLoading || !isInLimits || recorder.isTranscribing}
           title={i18n._("Next")}
         />

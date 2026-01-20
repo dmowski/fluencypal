@@ -63,7 +63,7 @@ export const generateMetadataInfo = ({
   if (currentPath === "contacts") {
     title = i18n._(`Contacts`) + " | " + APP_NAME;
     description = i18n._(
-      `Get in touch with the FluencyPal for any inquiries, support, or feedback.`
+      `Get in touch with the FluencyPal for any inquiries, support, or feedback.`,
     );
     keywords = [];
   }
@@ -73,7 +73,7 @@ export const generateMetadataInfo = ({
     const languageToLearnPlan = languageLearningMap[languageToLearn || "en"];
     title = languageToLearnPlan + " | " + APP_NAME;
     description = i18n._(
-      `Create a personalized language learning plan with FluencyPal. Set your fluency goals, focus on specific skills like speaking or listening, and track your progress to master English effectively.`
+      `Create a personalized language learning plan with FluencyPal. Set your fluency goals, focus on specific skills like speaking or listening, and track your progress to master English effectively.`,
     );
     keywords = [];
   }
@@ -83,9 +83,11 @@ export const generateMetadataInfo = ({
     const interview = interviewList.find((i) => i.coreData.id === interviewId);
     needIndex = !!interview;
 
-    title = `${interview?.coreData.title || "Interview Quiz"} - ` + i18n._(`| FluencyPal`);
+    title =
+      `${interview?.coreData.title || "Interview Quiz"} - ` +
+      i18n._(`| FluencyPal`);
     description = i18n._(
-      `Test your interview skills with FluencyPal's AI-powered interview quiz. Practice answering common questions, receive instant feedback, and boost your confidence for real interviews.`
+      `Test your interview skills with FluencyPal's AI-powered interview quiz. Practice answering common questions, receive instant feedback, and boost your confidence for real interviews.`,
     );
     keywords = [
       ...(interview?.coreData.keywords || []),
@@ -103,7 +105,7 @@ export const generateMetadataInfo = ({
     const languageToLearnPlan = languageLearningMap[languageToLearn || "en"];
     title = languageToLearnPlan + " | " + APP_NAME;
     description = i18n._(
-      `Create a personalized language learning plan with FluencyPal. Create your goal, focus on specific skills like speaking or listening.`
+      `Create a personalized language learning plan with FluencyPal. Create your goal, focus on specific skills like speaking or listening.`,
     );
     keywords = [];
   }
@@ -113,7 +115,7 @@ export const generateMetadataInfo = ({
     const languageToLearnPlan = languageLearningMap[languageToLearn || "en"];
     title = languageToLearnPlan + " | " + " Telegram Mini App " + APP_NAME;
     description = i18n._(
-      `Create a personalized language learning plan with FluencyPal. Set your fluency goals, focus on specific skills like speaking or listening, and track your progress to master English effectively.`
+      `Create a personalized language learning plan with FluencyPal. Set your fluency goals, focus on specific skills like speaking or listening, and track your progress to master English effectively.`,
     );
     keywords = [];
   }
@@ -121,7 +123,7 @@ export const generateMetadataInfo = ({
   if (currentPath === "practice") {
     title = i18n._(`Practice`) + " | " + APP_NAME;
     description = i18n._(
-      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`
+      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
     );
     keywords = [
       i18n._(`AI language tutor pricing`),
@@ -137,7 +139,7 @@ export const generateMetadataInfo = ({
   if (currentPath === "pricing") {
     title = i18n._(`Affordable AI Language Learning`) + " | " + APP_NAME;
     description = i18n._(
-      `Get flexible pricing with FluencyPal. Start with 3 free days, and enjoy AI-powered language practice with no subscriptions or hidden fees.`
+      `Get flexible pricing with FluencyPal. Start with 3 free days, and enjoy AI-powered language practice with no subscriptions or hidden fees.`,
     );
     keywords = [
       i18n._(`AI language tutor pricing`),
@@ -150,7 +152,7 @@ export const generateMetadataInfo = ({
   if (currentPath === "privacy") {
     title = i18n._(`Privacy Policy`) + " | " + APP_NAME;
     description = i18n._(
-      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`
+      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
     );
     keywords = [];
   }
@@ -158,7 +160,7 @@ export const generateMetadataInfo = ({
   if (currentPath === "cookies") {
     title = i18n._(`Cookies Policy`) + " | " + APP_NAME;
     description = i18n._(
-      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`
+      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
     );
     keywords = [];
   }
@@ -166,7 +168,7 @@ export const generateMetadataInfo = ({
   if (currentPath === "terms") {
     title = i18n._(`Terms of Use`) + " | " + APP_NAME;
     description = i18n._(
-      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`
+      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
     );
     keywords = [];
   }
@@ -176,7 +178,9 @@ export const generateMetadataInfo = ({
 
     if (category) {
       const rolePlayScenarios = getRolePlayScenarios(supportedLang);
-      const categoryInfo = rolePlayScenarios.categoriesList.find((c) => c.categoryId === category);
+      const categoryInfo = rolePlayScenarios.categoriesList.find(
+        (c) => c.categoryId === category,
+      );
       if (!categoryInfo) {
         needIndex = false;
       }
@@ -191,7 +195,7 @@ export const generateMetadataInfo = ({
       " | " +
       APP_NAME;
     description = i18n._(
-      `Practice realistic English conversations with FluencyPal’s AI tutor. From job interviews to casual chats, build fluency and confidence through immersive role-play scenarios designed for intermediate and advanced learners.`
+      `Practice realistic English conversations with FluencyPal’s AI tutor. From job interviews to casual chats, build fluency and confidence through immersive role-play scenarios designed for intermediate and advanced learners.`,
     );
     keywords = [
       i18n._(`English Role-Play`),
@@ -210,7 +214,9 @@ export const generateMetadataInfo = ({
 
     if (category) {
       const items = getBlogs(supportedLang);
-      const categoryInfo = items.categoriesList.find((c) => c.categoryId === category);
+      const categoryInfo = items.categoriesList.find(
+        (c) => c.categoryId === category,
+      );
       if (!categoryInfo) {
         needIndex = false;
       }
@@ -220,9 +226,12 @@ export const generateMetadataInfo = ({
     }
 
     title =
-      i18n._(`Learning Blog`) + (categoryTitle ? " - " + categoryTitle : "") + " | " + APP_NAME;
+      i18n._(`Learning Blog`) +
+      (categoryTitle ? " - " + categoryTitle : "") +
+      " | " +
+      APP_NAME;
     description = i18n._(
-      `Read the latest articles on language learning, English practice tips, and AI tutor updates. Stay informed, motivated, and inspired to reach your fluency goals with FluencyPal.`
+      `Read the latest articles on language learning, English practice tips, and AI tutor updates. Stay informed, motivated, and inspired to reach your fluency goals with FluencyPal.`,
     );
     keywords = [
       i18n._(`Language Learning Blog`),
@@ -243,7 +252,8 @@ export const generateMetadataInfo = ({
     }
 
     title =
-      `${blog?.title || "Blog"} - ` + i18n._(`Practice English Conversation with AI | FluencyPal`);
+      `${blog?.title || "Blog"} - ` +
+      i18n._(`Practice English Conversation with AI | FluencyPal`);
     description = blog?.subTitle || "";
     keywords = blog?.keywords || [];
     openGraphImageUrl = blog?.imagePreviewUrl || openGraphImageUrl;
@@ -251,7 +261,9 @@ export const generateMetadataInfo = ({
 
   if (currentPath === "scenarios" && scenarioId) {
     const rolePlayScenarios = getRolePlayScenarios(supportedLang);
-    const scenario = rolePlayScenarios.rolePlayScenarios.find((s) => s.id === scenarioId);
+    const scenario = rolePlayScenarios.rolePlayScenarios.find(
+      (s) => s.id === scenarioId,
+    );
 
     if (!scenario) {
       needIndex = false;
@@ -273,7 +285,9 @@ export const generateMetadataInfo = ({
       i18n._(`English Speaking Exercises`),
     ];
 
-    openGraphImageUrl = scenario?.imageSrc ? `${siteUrl}${scenario.imageSrc}` : openGraphImageUrl;
+    openGraphImageUrl = scenario?.imageSrc
+      ? `${siteUrl}${scenario.imageSrc}`
+      : openGraphImageUrl;
   }
 
   if (currentPath === "case" && !interviewId) {
@@ -281,7 +295,9 @@ export const generateMetadataInfo = ({
 
     if (category) {
       const items = getAllInterviews(supportedLang);
-      const categoryInfo = items.categoriesList.find((c) => c.categoryId === category);
+      const categoryInfo = items.categoriesList.find(
+        (c) => c.categoryId === category,
+      );
       if (!categoryInfo) {
         needIndex = false;
       }
@@ -296,7 +312,7 @@ export const generateMetadataInfo = ({
       " | " +
       APP_NAME;
     description = i18n._(
-      `Prepare for your interviews with AI-powered tools that help you practice and improve your answers.`
+      `Prepare for your interviews with AI-powered tools that help you practice and improve your answers.`,
     );
     keywords = [
       i18n._(`Prepare for the Interview`),
@@ -313,16 +329,20 @@ export const generateMetadataInfo = ({
     const item = interviews.find((b) => b.coreData.id === interviewId);
     needIndex = !!item;
 
-    title = `${item?.coreData.title || "Interview not found"} - ` + i18n._(`| FluencyPal`);
+    title =
+      `${item?.coreData.title || "Interview not found"} - ` +
+      i18n._(`| FluencyPal`);
     description = item?.coreData.subTitle || "";
     keywords = item?.coreData.keywords || [];
     openGraphImageUrl = openGraphImageUrl;
   }
 
   if (currentPath === "") {
-    title = i18n._(`FluencyPal – AI English Speaking Practice for Fluency & Confidence`);
+    title = i18n._(
+      `FluencyPal – AI English Speaking Practice for Fluency & Confidence`,
+    );
     description = i18n._(
-      `Practice conversational English with FluencyPal, your 24/7 AI English tutor and speaking coach. Improve fluency, pronunciation, and confidence through real-life role-play scenarios with instant feedback.`
+      `Practice conversational English with FluencyPal, your 24/7 AI English tutor and speaking coach. Improve fluency, pronunciation, and confidence through real-life role-play scenarios with instant feedback.`,
     );
     keywords = [
       i18n._(`ai English tutor`),
@@ -398,10 +418,11 @@ export function getMetadataUrls({
 
   supportedLang: SupportedLanguage;
 }) {
-  const pathWithId = pagePath + (id ? "/" + id : "") + (afterIdPage ? "/" + afterIdPage : "");
+  const pathWithId =
+    pagePath + (id ? "/" + id : "") + (afterIdPage ? "/" + afterIdPage : "");
 
   const queryList = Object.entries(queries).map(([key, value]) =>
-    value ? `${key}=` + encodeURIComponent(value) : ""
+    value ? `${key}=` + encodeURIComponent(value) : "",
   );
   const query = queryList.filter(Boolean).join("&");
 
@@ -492,11 +513,12 @@ export const generateAlternatesTags = ({
 }) => {
   const hreflangLinks = supportedLanguages.reduce(
     (acc, lang) => {
-      acc[lang] = `${siteUrl}${lang === "en" ? "" : lang + (path ? "/" : "")}${path}`;
+      acc[lang] =
+        `${siteUrl}${lang === "en" ? "" : lang + (path ? "/" : "")}${path}`;
 
       return acc;
     },
-    {} as Record<SupportedLanguage, string>
+    {} as Record<SupportedLanguage, string>,
   );
 
   return {

@@ -37,7 +37,7 @@ export const getOrderById = async (orderId: string): Promise<Order | null> => {
 
 export const updateOrder = async (
   orderId: string,
-  updates: Partial<Order>
+  updates: Partial<Order>,
 ): Promise<Order | null> => {
   const db = getDB();
   const orderRef = db.collection("orders").doc(orderId);
@@ -46,9 +46,14 @@ export const updateOrder = async (
   return updatedOrder;
 };
 
-export const getOrderByComment = async (comment: string): Promise<Order | null> => {
+export const getOrderByComment = async (
+  comment: string,
+): Promise<Order | null> => {
   const db = getDB();
-  const ordersDocs = await db.collection("orders").where("comment", "==", comment).get();
+  const ordersDocs = await db
+    .collection("orders")
+    .where("comment", "==", comment)
+    .get();
 
   const orders: Order[] = ordersDocs.docs.map((doc) => {
     const data: Order = doc.data() as Order;

@@ -2,7 +2,9 @@ import { CallToActionSection } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
-export const getCallToActionSection = (lang: SupportedLanguage): CallToActionSection => {
+export const getCallToActionSection = (
+  lang: SupportedLanguage,
+): CallToActionSection => {
   const i18n = getI18nInstance(lang);
 
   return {

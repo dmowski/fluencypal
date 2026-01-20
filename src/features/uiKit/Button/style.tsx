@@ -1,6 +1,10 @@
 export type GetTypeOfProperty<T, Field extends keyof T> = T[Field];
 
-import { Components, ComponentsOverrides, ComponentsVariants } from "@mui/material";
+import {
+  Components,
+  ComponentsOverrides,
+  ComponentsVariants,
+} from "@mui/material";
 
 declare module "@mui/material/Button" {
   interface ButtonPropsSizeOverrides {

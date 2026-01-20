@@ -13,7 +13,9 @@ export const useAudioRecorder = () => {
   const learnLanguageCode = settings.languageCode || "en";
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcription, setTranscription] = useState<string | null>(null);
-  const [transcriptionError, setTranscriptionError] = useState<string | null>(null);
+  const [transcriptionError, setTranscriptionError] = useState<string | null>(
+    null,
+  );
   const recorderControls = useVoiceVisualizer();
   const [recordingSeconds, setRecordingSeconds] = useState(0);
   const recordingMilliSeconds = recorderControls.recordingTime;
@@ -32,10 +34,13 @@ export const useAudioRecorder = () => {
     getRecordTranscript(recorderControls.recordedBlob, format);
   }, [recorderControls.recordedBlob]);
   const isCancel = useRef(false);
-  const getRecordTranscript = async (recordedAudioBlog: Blob, format: string) => {
+  const getRecordTranscript = async (
+    recordedAudioBlog: Blob,
+    format: string,
+  ) => {
     if (format.includes("ogg")) {
       setTranscriptionError(
-        "Sorry, transcription is not available for your audio. Try another browser."
+        "Sorry, transcription is not available for your audio. Try another browser.",
       );
       setIsTranscribing(false);
       recorderControls.clearCanvas();
@@ -74,7 +79,7 @@ export const useAudioRecorder = () => {
       const requestResult = await requestMicrophoneAccess();
       if (!requestResult) {
         alert(
-          "Microphone access is denied. Please allow microphone access in your browser settings."
+          "Microphone access is denied. Please allow microphone access in your browser settings.",
         );
         return;
       }

@@ -13,7 +13,10 @@ export const CookiesPopup = () => {
   const no = "No";
   const privacy = "Policy";
 
-  const [isClosedStore, setClosedStore] = useLocalStorage("cookiesPopup_v1", false);
+  const [isClosedStore, setClosedStore] = useLocalStorage(
+    "cookiesPopup_v1",
+    false,
+  );
   const [isClosed, setClosed] = useState(true);
   const pathname = usePathname();
   const pathParts = pathname.split("/");

@@ -16,7 +16,9 @@ export async function InterviewQuizPageNext({
   const lang = (langParam || "en") as SupportedLanguage;
   const allInterviews = getAllInterviews(lang);
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
-  const interviewData = allInterviews.interviews.find((interview) => interview.coreData.id === id);
+  const interviewData = allInterviews.interviews.find(
+    (interview) => interview.coreData.id === id,
+  );
 
   if (!interviewData) {
     return <NotFoundPage lang={supportedLang} />;

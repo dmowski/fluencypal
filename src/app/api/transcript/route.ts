@@ -37,10 +37,15 @@ export async function POST(request: Request) {
   const userId = userInfo.uid || "";
 
   const supportedLang =
-    supportedLanguages.find((lang) => lang === languageCodeString.toLowerCase()) || "en";
+    supportedLanguages.find(
+      (lang) => lang === languageCodeString.toLowerCase(),
+    ) || "en";
 
   const audioDurationString = urlParams.get("audioDuration") || "";
-  const audioDuration = Math.min(Math.max(parseFloat(audioDurationString) || 0, 4), 50);
+  const audioDuration = Math.min(
+    Math.max(parseFloat(audioDurationString) || 0, 4),
+    50,
+  );
 
   const model: TranscriptAiModel = "gpt-4o-transcribe";
   const responseData = await transcribeAudioFileWithOpenAI({

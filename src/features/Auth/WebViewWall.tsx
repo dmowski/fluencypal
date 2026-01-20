@@ -55,7 +55,13 @@ export const WebViewWall = ({
   if (isShowInstruction) {
     return (
       <Stack sx={{}}>
-        <Stack sx={{ alignItems: "flex-end", gap: "10px", padding: "20px 15px 40px 10px" }}>
+        <Stack
+          sx={{
+            alignItems: "flex-end",
+            gap: "10px",
+            padding: "20px 15px 40px 10px",
+          }}
+        >
           <ArrowUp
             style={{
               opacity: 0.7,
@@ -123,7 +129,9 @@ export const WebViewWall = ({
             </Typography>
             <Button
               color={isCopied ? "success" : "primary"}
-              startIcon={isCopied ? <Check size="16px" /> : <Copy size="16px" />}
+              startIcon={
+                isCopied ? <Check size="16px" /> : <Copy size="16px" />
+              }
               variant="outlined"
               size="small"
               onClick={() => copyToClipboard(pageUrl)}

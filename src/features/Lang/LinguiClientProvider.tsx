@@ -12,8 +12,13 @@ type Props = {
   initialMessages: Messages;
 };
 
-export function LinguiClientProvider({ children, initialLocale, initialMessages }: Props) {
-  const supportedLang = supportedLanguages.find((l) => l === initialLocale) || "en";
+export function LinguiClientProvider({
+  children,
+  initialLocale,
+  initialMessages,
+}: Props) {
+  const supportedLang =
+    supportedLanguages.find((l) => l === initialLocale) || "en";
   const [i18n] = useState(() => {
     initDayJsLocale(supportedLang);
     return setupI18n({

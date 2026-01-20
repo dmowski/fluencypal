@@ -119,7 +119,7 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
               `Record a message in Community Chat and get {points} points in the leaderboard`,
               {
                 points: CHAT_MESSAGE_POINTS,
-              }
+              },
             )}
             .
           </Typography>

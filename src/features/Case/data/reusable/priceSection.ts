@@ -18,7 +18,7 @@ export const getPriceSection = (lang: SupportedLanguage): PriceSection => {
         priceUsd: PRICE_PER_MONTH_USD,
         priceLabel: i18n._("/ month"),
         description: i18n._(
-          "Consistent improvement with structured interview coaching and personalized practice."
+          "Consistent improvement with structured interview coaching and personalized practice.",
         ),
         points: [
           i18n._("Full access to all simulations"),
@@ -36,7 +36,7 @@ export const getPriceSection = (lang: SupportedLanguage): PriceSection => {
         priceValue: i18n._("Custom pricing"),
         label: i18n._("Advanced Plan"),
         description: i18n._(
-          "For people seeking long-term career growth and comprehensive interview preparation."
+          "For people seeking long-term career growth and comprehensive interview preparation.",
         ),
         points: [
           i18n._("Custom interview roadmap"),

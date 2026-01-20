@@ -12,7 +12,10 @@ import {
 } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { getDoc } from "firebase/firestore";
-import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
+import {
+  useCollectionData,
+  useDocumentData,
+} from "react-firebase-hooks/firestore";
 import { PaymentLog, TotalUsageInfo, UsageLog } from "@/common/usage";
 import { db } from "../Firebase/firebaseDb";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -39,7 +42,8 @@ function useProvideUsage(): UsageContextType {
   const [usageLogs, setUsageLogs] = useState<UsageLog[]>([]);
   const [isShowPaymentModal, setIsShowPaymentModal] = useState(false);
   const [isSuccessPayment, setIsSuccessPayment] = useState(false);
-  const [isWelcomeBalanceInitialized, setIsWelcomeBalanceInitialized] = useState(false);
+  const [isWelcomeBalanceInitialized, setIsWelcomeBalanceInitialized] =
+    useState(false);
   const searchParams = useSearchParams();
   const isPaymentModalInUrl = searchParams.get("paymentModal") === "true";
   const router = useRouter();
@@ -86,16 +90,19 @@ function useProvideUsage(): UsageContextType {
 
   const totalUsageDoc = db.documents.totalUsage(userId);
   const paymentLogCollection = db.collections.paymentLog(userId);
-  const [paymentLogs] = useCollectionData(paymentLogCollection ? paymentLogCollection : null);
+  const [paymentLogs] = useCollectionData(
+    paymentLogCollection ? paymentLogCollection : null,
+  );
 
-  const [totalUsage, loadingTotalUsage] = useDocumentData<TotalUsageInfo>(totalUsageDoc);
+  const [totalUsage, loadingTotalUsage] =
+    useDocumentData<TotalUsageInfo>(totalUsageDoc);
   const saveLogs = async (logs: UsageLog[]) => {
     if (!userId) return;
 
     await Promise.all(
       logs.map(async (log) => {
         await createUsageLog({ usageLog: log }, await auth.getToken());
-      })
+      }),
     );
   };
 
@@ -138,7 +145,8 @@ function useProvideUsage(): UsageContextType {
     ? dayjs(totalUsage.activeSubscriptionTill).isAfter(dayjs())
     : false;
   const isFullAccess =
-    activeSubscriptionTill || (!!totalUsage?.balanceHours && totalUsage.balanceHours > 0);
+    activeSubscriptionTill ||
+    (!!totalUsage?.balanceHours && totalUsage.balanceHours > 0);
 
   return {
     isFullAccess: isFullAccess,
@@ -160,9 +168,15 @@ function useProvideUsage(): UsageContextType {
   };
 }
 
-export function UsageProvider({ children }: { children: ReactNode }): JSX.Element {
+export function UsageProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const usage = useProvideUsage();
-  return <UsageContext.Provider value={usage}>{children}</UsageContext.Provider>;
+  return (
+    <UsageContext.Provider value={usage}>{children}</UsageContext.Provider>
+  );
 }
 
 export const useUsage = (): UsageContextType => {

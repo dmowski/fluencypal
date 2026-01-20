@@ -17,7 +17,8 @@ export const isInAppBrowser = (ua: string): boolean => {
 export const getIsTelegram = () => {
   return {
     isTgAndroid: "TelegramWebview" in window,
-    isTgIos: "TelegramWebviewProxy" in window || "TelegramWebviewProxyProto" in window,
+    isTgIos:
+      "TelegramWebviewProxy" in window || "TelegramWebviewProxyProto" in window,
   };
 };
 
@@ -57,7 +58,8 @@ export const useIsWebView = () => {
       );*/
 
     const isTiktokWebView = isTikTokWebView();
-    const isTelegramWebView = isTelegramData.isTgAndroid || isTelegramData.isTgIos;
+    const isTelegramWebView =
+      isTelegramData.isTgAndroid || isTelegramData.isTgIos;
 
     if (!isTelegramApp) {
       setIsWebView(isTelegramWebView || isInAppBrowser(ua) || isTiktokWebView);

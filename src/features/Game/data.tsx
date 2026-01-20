@@ -19,7 +19,7 @@ const achievementMap: Record<GameAchievement, boolean> = {
 };
 
 export const allAchievementTypes: GameAchievement[] = Object.keys(
-  achievementMap
+  achievementMap,
 ) as GameAchievement[];
 
 export const achievementsMaxPoints: Record<GameAchievement, number> = {

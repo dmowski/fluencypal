@@ -59,7 +59,13 @@ export const AuthWallBasic = ({
     }
   }, [email, isValidEmailAddress, isValidEmailError]);
 
-  const steps = ["features", "agreement", "auth", "email", "email-send"] as const;
+  const steps = [
+    "features",
+    "agreement",
+    "auth",
+    "email",
+    "email-send",
+  ] as const;
   const [step, setStep] = useState<(typeof steps)[number]>(steps[0]);
 
   const nextStep = () => {
@@ -117,7 +123,7 @@ export const AuthWallBasic = ({
           <InfoStep
             title={i18n._("Check your email")}
             subTitle={i18n._(
-              "We sent a sign-in link to your email. Please check your inbox and click the link to sign in."
+              "We sent a sign-in link to your email. Please check your inbox and click the link to sign in.",
             )}
             subComponent={
               <Stack
@@ -144,7 +150,9 @@ export const AuthWallBasic = ({
         {step === "email" && (
           <InfoStep
             actionButtonTitle={
-              isEmailSignInLoading ? i18n._("Sending...") : i18n._("Send me sign-in link")
+              isEmailSignInLoading
+                ? i18n._("Sending...")
+                : i18n._("Send me sign-in link")
             }
             title={i18n._("Sign in with email")}
             subTitle={i18n._("Enter your email to get a sign-in link")}
@@ -194,14 +202,18 @@ export const AuthWallBasic = ({
             imageUrl={agreementImageUrl}
             width={width}
             title={i18n._("We will speak freely")}
-            subTitle={i18n._("So we need your agreement with that and our policies")}
+            subTitle={i18n._(
+              "So we need your agreement with that and our policies",
+            )}
             listItems={[
               {
                 title: i18n._("We process your voice using AI"),
                 iconName: "shield-check",
               },
               {
-                title: i18n._("Your transcripts are securely stored in our service"),
+                title: i18n._(
+                  "Your transcripts are securely stored in our service",
+                ),
                 iconName: "shield-check",
               },
               {

@@ -24,7 +24,9 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
   const lastVisitAgo = lastVisit ? dayjs(lastVisit).fromNow() : null;
 
   const avatar = game.gameAvatars[stat.userId] || defaultAvatar;
-  const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 5 : false;
+  const isOnline = lastVisit
+    ? dayjs().diff(dayjs(lastVisit), "minute") < 5
+    : false;
 
   const actualPosition = realPosition + 1;
 
@@ -46,7 +48,9 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
           padding: "0px 20px 0 1px",
           height: "54px",
           borderRadius: "12px",
-          backgroundColor: isMe ? "rgba(41, 179, 229, 0.17)" : "rgba(255, 255, 255, 0.04)",
+          backgroundColor: isMe
+            ? "rgba(41, 179, 229, 0.17)"
+            : "rgba(255, 255, 255, 0.04)",
           border: "none",
           textAlign: "left",
           color: "#fff",

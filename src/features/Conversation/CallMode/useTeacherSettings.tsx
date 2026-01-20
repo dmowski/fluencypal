@@ -4,7 +4,7 @@ export const useTeacherSettings = () => {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useUrlState(
     "teacherSettings",
     false,
-    false
+    false,
   );
 
   const openSettingsModal = () => {

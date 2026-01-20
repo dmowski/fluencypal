@@ -29,7 +29,9 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
 
   const isDone =
     myPoints > 1 ||
-    chat.messages.some((msg) => msg.senderId === myUserIds && msg.content.trim().length > 0);
+    chat.messages.some(
+      (msg) => msg.senderId === myUserIds && msg.content.trim().length > 0,
+    );
 
   const exampleToRecord = props.exampleToRecord ? (
     <Stack

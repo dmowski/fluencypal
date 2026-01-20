@@ -20,7 +20,9 @@ function useProvideRules(): RulesContextType {
   const getUserMessages = async () => {
     const data = await chatHistory.getLastConversations(20);
     const userMessages = data
-      .map((conversation) => conversation.messages.filter((m) => !m.isBot).map((m) => m.text))
+      .map((conversation) =>
+        conversation.messages.filter((m) => !m.isBot).map((m) => m.text),
+      )
       .flat()
       .join("\n");
     if (userMessages.length > 1000) {
@@ -60,7 +62,11 @@ function useProvideRules(): RulesContextType {
   };
 }
 
-export function RulesProvider({ children }: { children: ReactNode }): JSX.Element {
+export function RulesProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideRules();
   return <RulesContext.Provider value={hook}>{children}</RulesContext.Provider>;
 }

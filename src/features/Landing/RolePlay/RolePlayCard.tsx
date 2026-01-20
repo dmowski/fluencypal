@@ -11,7 +11,12 @@ interface RolePlayCardProps {
   lang: string;
 }
 
-export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, height, variant }) => {
+export const RolePlayCard: React.FC<RolePlayCardProps> = ({
+  scenario,
+  lang,
+  height,
+  variant,
+}) => {
   const i18n = getI18nInstance(lang);
   return (
     <Stack
@@ -42,7 +47,9 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
           border: "1px solid rgba(0, 0, 0, 0.3)",
           ".role-play-image": {
             backgroundImage:
-              variant === "highlight" && scenario.videoSrc ? "" : `url(${scenario.imageSrc})`,
+              variant === "highlight" && scenario.videoSrc
+                ? ""
+                : `url(${scenario.imageSrc})`,
 
             video: {
               opacity: 1,
@@ -125,7 +132,9 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
               fontSize: variant === "highlight" ? "1.1rem" : "1rem",
             }}
           >
-            {variant === "highlight" ? scenario.landingHighlight : scenario.subTitle}
+            {variant === "highlight"
+              ? scenario.landingHighlight
+              : scenario.subTitle}
           </Typography>
         </Stack>
         {variant === "highlight" && (

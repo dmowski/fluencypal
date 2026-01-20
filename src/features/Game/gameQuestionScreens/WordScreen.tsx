@@ -67,10 +67,14 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
       >
         {question.options.map((answer, index) => {
           const isCorrectOption =
-            question.type === "translate" && isCorrect && selectedAnswer === answer;
+            question.type === "translate" &&
+            isCorrect &&
+            selectedAnswer === answer;
 
           const isInCorrectOption =
-            question.type === "translate" && isCorrect === false && selectedAnswer === answer;
+            question.type === "translate" &&
+            isCorrect === false &&
+            selectedAnswer === answer;
 
           return (
             <Stack key={index} sx={{}}>
@@ -83,7 +87,13 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
                     <Loader />
                   ) : null
                 }
-                color={isCorrectOption ? "success" : isInCorrectOption ? "error" : "primary"}
+                color={
+                  isCorrectOption
+                    ? "success"
+                    : isInCorrectOption
+                      ? "error"
+                      : "primary"
+                }
                 onClick={() => {
                   if (isCorrect !== null) {
                     return;
@@ -105,7 +115,11 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
           gap: "5px",
         }}
       >
-        <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} isShowStats={isShowStats} />
+        <FinishButton
+          isCorrect={isCorrect}
+          setIsCorrect={setIsCorrect}
+          isShowStats={isShowStats}
+        />
       </Stack>
     </Stack>
   );

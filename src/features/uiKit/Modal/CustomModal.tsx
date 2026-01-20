@@ -9,7 +9,11 @@ interface CustomModalProps {
   children: React.ReactNode;
 }
 
-export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JSX.Element => {
+export const CustomModal = ({
+  isOpen,
+  onClose,
+  children,
+}: CustomModalProps): JSX.Element => {
   const sizes = useWindowSizes();
   if (!isOpen) return <></>;
 

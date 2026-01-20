@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, useContext, ReactNode, JSX, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  JSX,
+  useState,
+  useEffect,
+} from "react";
 import {
   AiRolePlayInstructionCreator,
   InputStructureForUser,
@@ -34,7 +41,7 @@ Use only ${fullLanguageName} language during conversation.`;
 
 const createAdditionalInstructionFormUserInput = (
   scenario: RolePlayInstruction,
-  rolePlayInputs: RolePlayInputResult[]
+  rolePlayInputs: RolePlayInputResult[],
 ) => {
   const additionalInfo = rolePlayInputs
     ? rolePlayInputs
@@ -64,10 +71,13 @@ ${additionalInfo}`
 const getDefaultInstruction: AiRolePlayInstructionCreator = (
   scenario,
   fullLanguageName,
-  userInput
+  userInput,
 ) => {
   const instruction = getStartDefaultInstruction(fullLanguageName);
-  const additionalInfo = createAdditionalInstructionFormUserInput(scenario, userInput);
+  const additionalInfo = createAdditionalInstructionFormUserInput(
+    scenario,
+    userInput,
+  );
   return `${instruction}
 ${additionalInfo}`;
 };
@@ -77,7 +87,9 @@ interface RolePlayContextType {
   closeRolePlay: () => void;
   selectedRolePlayScenario: RolePlayInstruction | null;
   userInputs: Record<string, string> | undefined;
-  setUserInputs: React.Dispatch<React.SetStateAction<Record<string, string> | undefined>>;
+  setUserInputs: React.Dispatch<
+    React.SetStateAction<Record<string, string> | undefined>
+  >;
   isStarting: boolean;
   selectedTab: string;
   onSetTab: (tab: string) => void;
@@ -120,24 +132,33 @@ function useProvideRolePlay({
     setSelectedTab(tab);
     const newSearchParam = new URLSearchParams(window.location.search);
     newSearchParam.set("rolePlayTab", tab);
-    router.push(`${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`, {
-      scroll: false,
-    });
+    router.push(
+      `${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`,
+      {
+        scroll: false,
+      },
+    );
   };
 
   const setRolePlayId = (id?: string) => {
     if (id) {
       const newSearchParam = new URLSearchParams(window.location.search);
       newSearchParam.set("rolePlayId", id);
-      router.push(`${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`, {
-        scroll: false,
-      });
+      router.push(
+        `${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`,
+        {
+          scroll: false,
+        },
+      );
     } else {
       const newSearchParam = new URLSearchParams(window.location.search);
       newSearchParam.delete("rolePlayId");
-      router.push(`${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`, {
-        scroll: false,
-      });
+      router.push(
+        `${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`,
+        {
+          scroll: false,
+        },
+      );
     }
   };
 
@@ -157,14 +178,18 @@ function useProvideRolePlay({
 
   const visibleScenarios =
     selectedTab === allCategoriesLabel
-      ? rolePlayInfo.rolePlayScenarios.filter((_, index) => !isLimited || index < firstLimit)
+      ? rolePlayInfo.rolePlayScenarios.filter(
+          (_, index) => !isLimited || index < firstLimit,
+        )
       : rolePlayInfo.rolePlayScenarios.filter(
-          (scenario) => scenario.category.categoryTitle === selectedTab
+          (scenario) => scenario.category.categoryTitle === selectedTab,
         );
 
   const allTabs = uniq([
     allCategoriesLabel,
-    ...rolePlayInfo.rolePlayScenarios.map((scenario) => scenario.category.categoryTitle),
+    ...rolePlayInfo.rolePlayScenarios.map(
+      (scenario) => scenario.category.categoryTitle,
+    ),
   ]);
 
   useEffect(() => {
@@ -177,7 +202,9 @@ function useProvideRolePlay({
       return;
     }
 
-    const scenario = rolePlayInfo.rolePlayScenarios.find((scenario) => scenario.id === rolePlayId);
+    const scenario = rolePlayInfo.rolePlayScenarios.find(
+      (scenario) => scenario.id === rolePlayId,
+    );
     if (scenario) {
       setSelectedRolePlayScenario(scenario);
     }
@@ -190,7 +217,7 @@ function useProvideRolePlay({
 
   const [userInputs, setUserInputs] = useLocalStorage<Record<string, string>>(
     "rolePlayUserInputs",
-    {}
+    {},
   );
 
   const onStartRolePlay = ({
@@ -207,7 +234,7 @@ function useProvideRolePlay({
     const instruction = getDefaultInstruction(
       scenario,
       settings.fullLanguageName || "English",
-      rolePlayInputs
+      rolePlayInputs,
     );
     aiConversation.startConversation({
       mode: "role-play",
@@ -225,7 +252,7 @@ function useProvideRolePlay({
     lengthToTriggerSummary: number,
     requiredFields: string[],
     isNeedUserInfo: boolean,
-    cacheAiSummary: boolean
+    cacheAiSummary: boolean,
   ) => {
     if (!aiSummarizingInstruction || value.length < lengthToTriggerSummary) {
       return value;
@@ -235,7 +262,8 @@ function useProvideRolePlay({
       isNeedUserInfo && userInfo.userInfo?.records.length
         ? "\n\nUser Info:" + userInfo.userInfo?.records.join(", ")
         : "";
-    const systemMessage = aiSummarizingInstruction + requiredFields.join(", ") + userInfoString;
+    const systemMessage =
+      aiSummarizingInstruction + requiredFields.join(", ") + userInfoString;
 
     console.log("systemMessage", systemMessage);
     const aiResult = await textAi.generate({
@@ -254,30 +282,45 @@ function useProvideRolePlay({
       input: InputStructureForUser,
       userValue: string,
       lengthToTriggerSummary: number,
-      requiredFields: string[]
+      requiredFields: string[],
     ) => Promise<string>
   > = {
-    textarea: async (input, userValue, lengthToTriggerSummary, requiredFields) => {
+    textarea: async (
+      input,
+      userValue,
+      lengthToTriggerSummary,
+      requiredFields,
+    ) => {
       return processInputWithAi(
         input.aiSummarizingInstruction || "",
         userValue,
         lengthToTriggerSummary,
         requiredFields,
         input.injectUserInfoToSummary || false,
-        input.cacheAiSummary !== undefined ? input.cacheAiSummary : true
+        input.cacheAiSummary !== undefined ? input.cacheAiSummary : true,
       );
     },
-    "text-input": async (input, userValue, lengthToTriggerSummary, requiredFields) => {
+    "text-input": async (
+      input,
+      userValue,
+      lengthToTriggerSummary,
+      requiredFields,
+    ) => {
       return processInputWithAi(
         input.aiSummarizingInstruction || "",
         userValue,
         lengthToTriggerSummary,
         requiredFields,
         input.injectUserInfoToSummary || false,
-        input.cacheAiSummary !== undefined ? input.cacheAiSummary : true
+        input.cacheAiSummary !== undefined ? input.cacheAiSummary : true,
       );
     },
-    options: async (input, userValue, lengthToTriggerSummary, requiredFields) => {
+    options: async (
+      input,
+      userValue,
+      lengthToTriggerSummary,
+      requiredFields,
+    ) => {
       const aiOptions = input.optionsAiDescriptions || {};
       const value = aiOptions[userValue] || userValue;
 
@@ -287,11 +330,16 @@ function useProvideRolePlay({
         lengthToTriggerSummary,
         requiredFields,
         input.injectUserInfoToSummary || false,
-        input.cacheAiSummary !== undefined ? input.cacheAiSummary : true
+        input.cacheAiSummary !== undefined ? input.cacheAiSummary : true,
       );
     },
 
-    checkbox: async (input, userValue, lengthToTriggerSummary, requiredFields) => {
+    checkbox: async (
+      input,
+      userValue,
+      lengthToTriggerSummary,
+      requiredFields,
+    ) => {
       if (userValue === "true") {
         return input.labelForAi;
       } else {
@@ -310,7 +358,9 @@ function useProvideRolePlay({
 
         const requiredFieldsIdsToSummary = input.requiredFieldsToSummary || [];
         const requiredFields = requiredFieldsIdsToSummary.map((fieldId) => {
-          const field = selectedRolePlayScenario.input.find((input) => input.id === fieldId);
+          const field = selectedRolePlayScenario.input.find(
+            (input) => input.id === fieldId,
+          );
           return `${field?.labelForAi || ""}: ${userInputs?.[selectedRolePlayScenario.id + "-" + fieldId]}`;
         });
 
@@ -318,7 +368,7 @@ function useProvideRolePlay({
           input,
           userValue,
           input.lengthToTriggerSummary || 400,
-          requiredFields
+          requiredFields,
         );
 
         if (processedUserValue) {
@@ -328,7 +378,7 @@ function useProvideRolePlay({
           };
           return inputRecord;
         }
-      })
+      }),
     );
 
     return rolePlayInputs.filter((input) => input) as RolePlayInputResult[];
@@ -380,7 +430,9 @@ function useProvideRolePlay({
     const isNeedToGenerateWords = selectedRolePlayScenario.gameMode === "alias";
     if (isNeedToGenerateWords) {
       const wordsInfo = await generateRandomWord(
-        rolePlayInputs.map((input) => input.labelForAi + ":" + input.userValue).join(", ")
+        rolePlayInputs
+          .map((input) => input.labelForAi + ":" + input.userValue)
+          .join(", "),
       );
 
       onStartRolePlay({
@@ -425,7 +477,9 @@ export function RolePlayProvider({
   rolePlayInfo: RolePlayScenariosInfo;
 }): JSX.Element {
   const hook = useProvideRolePlay({ rolePlayInfo });
-  return <RolePlayContext.Provider value={hook}>{children}</RolePlayContext.Provider>;
+  return (
+    <RolePlayContext.Provider value={hook}>{children}</RolePlayContext.Provider>
+  );
 }
 
 export const useRolePlay = (): RolePlayContextType => {

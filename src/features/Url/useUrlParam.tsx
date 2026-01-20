@@ -1,5 +1,9 @@
 import { scrollTopFast } from "@/libs/scroll";
-import { ReadonlyURLSearchParams, useRouter, useSearchParams } from "next/navigation";
+import {
+  ReadonlyURLSearchParams,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 export const useUrlParam = (paramName: string) => {
@@ -42,7 +46,11 @@ export const useUrlParam = (paramName: string) => {
   return [internalValue, setValue, isLoading] as const;
 };
 
-export const useUrlState = <T,>(paramName: string, defaultValue: T, scrollToTop: boolean) => {
+export const useUrlState = <T,>(
+  paramName: string,
+  defaultValue: T,
+  scrollToTop: boolean,
+) => {
   const [internalValue, setInternalValue] = useState<T>(defaultValue);
   const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
@@ -91,13 +99,17 @@ export interface SetUrlStateOptions {
   redirect?: boolean;
 }
 
-export const useUrlMapState = (defaultValue: Record<string, string>, scrollToTop: boolean) => {
-  const [internalValue, setInternalValue] = useState<Record<string, string>>(defaultValue);
+export const useUrlMapState = (
+  defaultValue: Record<string, string>,
+  scrollToTop: boolean,
+) => {
+  const [internalValue, setInternalValue] =
+    useState<Record<string, string>>(defaultValue);
   const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
   const urlPage = useMemo(
     () => convertSearchParamToMap(searchParams, defaultValue),
-    [searchParams.toString(), defaultValue]
+    [searchParams.toString(), defaultValue],
   );
   const router = useRouter();
 
@@ -108,7 +120,10 @@ export const useUrlMapState = (defaultValue: Record<string, string>, scrollToTop
   }, [urlPage]);
 
   const setValue = useCallback(
-    async (patchValue: Record<string, string>, options?: SetUrlStateOptions) => {
+    async (
+      patchValue: Record<string, string>,
+      options?: SetUrlStateOptions,
+    ) => {
       const value = { ...internalValue, ...patchValue };
       if (isEqualMaps(value, internalValue)) return Promise.resolve(null);
       setInternalValue(value);
@@ -130,13 +145,16 @@ export const useUrlMapState = (defaultValue: Record<string, string>, scrollToTop
         }, 20);
       });
     },
-    [internalValue, router, defaultValue, scrollToTop]
+    [internalValue, router, defaultValue, scrollToTop],
   );
 
   return [internalValue, setValue, isLoading] as const;
 };
 
-const isEqualMaps = (map1: Record<string, string>, map2: Record<string, string>) => {
+const isEqualMaps = (
+  map1: Record<string, string>,
+  map2: Record<string, string>,
+) => {
   const keys1 = Object.keys(map1);
   const keys2 = Object.keys(map2);
   if (keys1.length !== keys2.length) return false;
@@ -148,7 +166,7 @@ const isEqualMaps = (map1: Record<string, string>, map2: Record<string, string>)
 
 const convertSearchParamToMap = (
   searchParams: ReadonlyURLSearchParams,
-  defaultMap: Record<string, string>
+  defaultMap: Record<string, string>,
 ) => {
   const keys = Object.keys(defaultMap);
 
@@ -161,7 +179,10 @@ const convertSearchParamToMap = (
   return urlMap;
 };
 
-const convertMapToNewUrl = (record: Record<string, string>, defaultMap: Record<string, string>) => {
+const convertMapToNewUrl = (
+  record: Record<string, string>,
+  defaultMap: Record<string, string>,
+) => {
   const newSearchParams = new URLSearchParams(window.location.search);
   for (const key in record) {
     const isDefault = record[key] === defaultMap[key];

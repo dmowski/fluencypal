@@ -1,6 +1,11 @@
 import React from "react";
 
-import { FilterOptionsState, Stack, Typography, createFilterOptions } from "@mui/material";
+import {
+  FilterOptionsState,
+  Stack,
+  Typography,
+  createFilterOptions,
+} from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
@@ -9,7 +14,7 @@ const filter = createFilterOptions<string>();
 const filterHandler = (
   options: string[],
   params: FilterOptionsState<string>,
-  isStrict?: boolean
+  isStrict?: boolean,
 ) => {
   const filtered = filter(options, params);
   const { inputValue } = params;
@@ -117,7 +122,9 @@ const SuggestInput: React.FC<SuggestInputProps> = ({
         />
       )}
       onChange={(_, newValue) => onChange(newValue || "")}
-      filterOptions={(options, params) => filterHandler(options, params, strict)}
+      filterOptions={(options, params) =>
+        filterHandler(options, params, strict)
+      }
     />
   );
 };

@@ -74,7 +74,9 @@ export const GoalReview = ({
                 textTransform: "uppercase",
               }}
             >
-              {username ? i18n._(`Plan for`) + " " + username : i18n._(`Your practice plan`)}
+              {username
+                ? i18n._(`Plan for`) + " " + username
+                : i18n._(`Your practice plan`)}
             </Typography>
 
             <Typography
@@ -97,53 +99,60 @@ export const GoalReview = ({
             }}
           >
             {isLoading ? (
-              <LoadingShapes sizes={["100px", "100px", "100px", "100px", "100px", "100px"]} />
+              <LoadingShapes
+                sizes={["100px", "100px", "100px", "100px", "100px", "100px"]}
+              />
             ) : (
               <Stack
                 sx={{
                   gap: "15px",
                 }}
               >
-                {goalData?.elements.map((planElement, index, sortedElements) => {
-                  const cardInfo = modeCardProps[planElement.mode];
-                  const colorIndex = index % cardColors.length;
-                  const cardColor = cardColors[colorIndex];
-                  const elementsWithSameMode =
-                    sortedElements.filter((element) => element.mode === planElement.mode) || [];
-                  const currentElementIndex = elementsWithSameMode.findIndex(
-                    (element) => element.id === planElement.id
-                  );
+                {goalData?.elements.map(
+                  (planElement, index, sortedElements) => {
+                    const cardInfo = modeCardProps[planElement.mode];
+                    const colorIndex = index % cardColors.length;
+                    const cardColor = cardColors[colorIndex];
+                    const elementsWithSameMode =
+                      sortedElements.filter(
+                        (element) => element.mode === planElement.mode,
+                      ) || [];
+                    const currentElementIndex = elementsWithSameMode.findIndex(
+                      (element) => element.id === planElement.id,
+                    );
 
-                  const imageVariants = cardInfo.imgUrl;
-                  const imageIndex = currentElementIndex % imageVariants.length;
-                  const imageUrl = imageVariants[imageIndex];
-                  return (
-                    <Stack key={index} sx={{}}>
-                      <PlanCard
-                        key={planElement.id}
-                        delayToShow={index * 80}
-                        title={planElement.title}
-                        subTitle={modeLabels[planElement.mode]}
-                        details={planElement.details}
-                        isDone={false}
-                        isActive={false}
-                        isContinueLabel={false}
-                        viewOnly
-                        startColor={cardColor.startColor}
-                        endColor={cardColor.endColor}
-                        bgColor={cardColor.bgColor}
-                        isLast={index === sortedElements.length - 1}
-                        icon={
-                          <Stack>
-                            <Stack className="avatar">
-                              <img src={imageUrl} alt="" />
+                    const imageVariants = cardInfo.imgUrl;
+                    const imageIndex =
+                      currentElementIndex % imageVariants.length;
+                    const imageUrl = imageVariants[imageIndex];
+                    return (
+                      <Stack key={index} sx={{}}>
+                        <PlanCard
+                          key={planElement.id}
+                          delayToShow={index * 80}
+                          title={planElement.title}
+                          subTitle={modeLabels[planElement.mode]}
+                          details={planElement.details}
+                          isDone={false}
+                          isActive={false}
+                          isContinueLabel={false}
+                          viewOnly
+                          startColor={cardColor.startColor}
+                          endColor={cardColor.endColor}
+                          bgColor={cardColor.bgColor}
+                          isLast={index === sortedElements.length - 1}
+                          icon={
+                            <Stack>
+                              <Stack className="avatar">
+                                <img src={imageUrl} alt="" />
+                              </Stack>
                             </Stack>
-                          </Stack>
-                        }
-                      />
-                    </Stack>
-                  );
-                })}
+                          }
+                        />
+                      </Stack>
+                    );
+                  },
+                )}
               </Stack>
             )}
           </Stack>

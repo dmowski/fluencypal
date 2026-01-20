@@ -14,7 +14,9 @@ export const ListBlog = ({ lang, selectedCategoryId }: ListBlogProps) => {
   const { blogs, allCategory, categoriesList } = getBlogs(lang);
   const i18n = getI18nInstance(lang);
 
-  const selectedCategory = categoriesList.find((c) => c.categoryId === selectedCategoryId);
+  const selectedCategory = categoriesList.find(
+    (c) => c.categoryId === selectedCategoryId,
+  );
 
   const title = selectedCategoryId
     ? selectedCategory?.categoryTitle || i18n._("Unknown category")
@@ -75,8 +77,10 @@ export const ListBlog = ({ lang, selectedCategoryId }: ListBlogProps) => {
             {categoriesList.map((category, index) => {
               const isSelected =
                 selectedCategoryId === category.categoryId ||
-                (!selectedCategoryId && category.categoryId === allCategory.categoryId);
-              const isAllScenarios = category.categoryId === allCategory.categoryId;
+                (!selectedCategoryId &&
+                  category.categoryId === allCategory.categoryId);
+              const isAllScenarios =
+                category.categoryId === allCategory.categoryId;
               return (
                 <Link
                   key={index}
@@ -92,7 +96,9 @@ export const ListBlog = ({ lang, selectedCategoryId }: ListBlogProps) => {
                     borderRadius: "7px",
                     textDecoration: "none",
                     fontWeight: 300,
-                    backgroundColor: isSelected ? "rgba(0, 0, 0, 0.05)" : "transparent",
+                    backgroundColor: isSelected
+                      ? "rgba(0, 0, 0, 0.05)"
+                      : "transparent",
                     ":hover": {
                       backgroundColor: "rgba(0, 0, 0, 0.02)",
                     },

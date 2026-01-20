@@ -175,14 +175,16 @@ export function Dashboard({ lang }: DashboardProps) {
                 }}
               >
                 <Stack>
-                  <Typography variant="h6">{i18n._("Conversation with AI")}</Typography>
+                  <Typography variant="h6">
+                    {i18n._("Conversation with AI")}
+                  </Typography>
                   <Typography
                     sx={{
                       opacity: 0.7,
                     }}
                   >
                     {i18n._(
-                      "Start a casual call to practice your communication skills. This is a no-strings-attached conversation if you'd like to chat in a casual setting."
+                      "Start a casual call to practice your communication skills. This is a no-strings-attached conversation if you'd like to chat in a casual setting.",
                     )}
                   </Typography>
                 </Stack>

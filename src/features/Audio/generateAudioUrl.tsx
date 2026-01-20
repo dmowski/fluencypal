@@ -1,6 +1,9 @@
 import { GetAudioUrlResponse, GetAudioUrlRequest } from "@/common/requests";
 
-export const generateAudioUrl = async (conversationDate: GetAudioUrlRequest, auth: string) => {
+export const generateAudioUrl = async (
+  conversationDate: GetAudioUrlRequest,
+  auth: string,
+) => {
   const response = await fetch("/api/audio", {
     method: "POST",
     body: JSON.stringify(conversationDate),

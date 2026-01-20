@@ -21,15 +21,19 @@ export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
   return data;
 };
 
-export const getGameUsersAchievements = async (): Promise<GameUsersAchievements> => {
-  const db = getDB();
-  const userDoc = await db.collection("game2").doc("gameUserAchievements").get();
-  if (!userDoc.exists) {
-    return {};
-  }
-  const data = userDoc.data() as GameUsersAchievements;
-  return data;
-};
+export const getGameUsersAchievements =
+  async (): Promise<GameUsersAchievements> => {
+    const db = getDB();
+    const userDoc = await db
+      .collection("game2")
+      .doc("gameUserAchievements")
+      .get();
+    if (!userDoc.exists) {
+      return {};
+    }
+    const data = userDoc.data() as GameUsersAchievements;
+    return data;
+  };
 
 export const getGameUsersAvatars = async (): Promise<GameAvatars> => {
   const db = getDB();
@@ -61,7 +65,9 @@ export const getGameUsersUserNames = async (): Promise<GameUserNames> => {
   return data;
 };
 
-export const setGameUsersPoints = async (points: GameUsersPoints): Promise<void> => {
+export const setGameUsersPoints = async (
+  points: GameUsersPoints,
+): Promise<void> => {
   const db = getDB();
   await db.collection("game2").doc("gamePoints").set(points, { merge: true });
 };
@@ -82,7 +88,7 @@ export const renameUserNameById = async ({
       {
         [userId]: newUsername,
       },
-      { merge: true }
+      { merge: true },
     );
 };
 
@@ -95,7 +101,7 @@ export const deleteAvatarByUserId = async (userId: string) => {
       {
         [userId]: firebaseAdmin.firestore.FieldValue.delete(),
       },
-      { merge: true }
+      { merge: true },
     );
 };
 
@@ -108,7 +114,7 @@ export const deleteUserLastVisitStatByUserId = async (userId: string) => {
       {
         [userId]: firebaseAdmin.firestore.FieldValue.delete(),
       },
-      { merge: true }
+      { merge: true },
     );
 };
 
@@ -121,7 +127,7 @@ export const deleteGamePointsStatByUserId = async (userId: string) => {
       {
         [userId]: firebaseAdmin.firestore.FieldValue.delete(),
       },
-      { merge: true }
+      { merge: true },
     );
 };
 export const deleteGameUserNameById = async (userId: string) => {
@@ -133,7 +139,7 @@ export const deleteGameUserNameById = async (userId: string) => {
       {
         [userId]: firebaseAdmin.firestore.FieldValue.delete(),
       },
-      { merge: true }
+      { merge: true },
     );
 };
 
@@ -148,7 +154,9 @@ export const deleteGameUserById = async (userId: string) => {
 
 export const isUserIsGameWinner = async (userId: string): Promise<boolean> => {
   const points = await getGameUsersPoints();
-  const sortedUserIds = Object.keys(points).sort((a, b) => (points[b] || 0) - (points[a] || 0));
+  const sortedUserIds = Object.keys(points).sort(
+    (a, b) => (points[b] || 0) - (points[a] || 0),
+  );
 
   const userIndex = sortedUserIds.indexOf(userId);
   const isTop5 = userIndex !== -1 && userIndex < 5;

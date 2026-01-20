@@ -29,7 +29,10 @@ export async function POST(req: Request) {
     const q = update.pre_checkout_query;
     console.log("Approve pre-checkout:", q);
 
-    await call("answerPreCheckoutQuery", { pre_checkout_query_id: q.id, ok: true });
+    await call("answerPreCheckoutQuery", {
+      pre_checkout_query_id: q.id,
+      ok: true,
+    });
     return new Response("ok");
   }
 

@@ -6,7 +6,11 @@ interface TextareaProps {
   onSubmit: () => void;
 }
 
-export const Textarea: React.FC<TextareaProps> = ({ value, onChange, onSubmit }) => {
+export const Textarea: React.FC<TextareaProps> = ({
+  value,
+  onChange,
+  onSubmit,
+}) => {
   return (
     <TextField
       sx={{

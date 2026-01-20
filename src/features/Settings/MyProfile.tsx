@@ -1,6 +1,11 @@
 "use client";
 
-import { useState, useEffect, ForwardRefExoticComponent, RefAttributes } from "react";
+import {
+  useState,
+  useEffect,
+  ForwardRefExoticComponent,
+  RefAttributes,
+} from "react";
 import { useAuth } from "../Auth/useAuth";
 import { Avatar, Button, Stack, Typography } from "@mui/material";
 import {
@@ -52,7 +57,8 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
 
   const [isShowHelpModal, setIsShowHelpModal] = useUrlParam("help");
   const [isShowRefundModal, setIsShowRefundModal] = useUrlParam("refund");
-  const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] = useUrlParam("paymentHistory");
+  const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] =
+    useUrlParam("paymentHistory");
   const [isShowFeedbackModal, setIsShowFeedbackModal] = useUrlParam("feedback");
 
   const usage = useUsage();
@@ -62,7 +68,9 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   interface MenuItem {
     title: string;
     subTitle: string;
-    icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+    icon: ForwardRefExoticComponent<
+      Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+    >;
     onClick: () => void;
   }
 
@@ -205,7 +213,8 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
                   gap: "10px",
                   gridTemplateColumns: "max-content 1fr max-content",
                   alignItems: "center",
-                  borderTop: index > 0 ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
+                  borderTop:
+                    index > 0 ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
                 }}
               >
                 <item.icon size="30px" color="rgba(255, 255, 255, 0.7)" />
@@ -234,15 +243,21 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
         </Stack>
       </Stack>
 
-      {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} lang={lang} />}
+      {isShowHelpModal && (
+        <NeedHelpModal onClose={() => setIsShowHelpModal(false)} lang={lang} />
+      )}
       {isShowPaymentHistoryModal && (
-        <PaymentHistoryModal onClose={() => setIsShowPaymentHistoryModal(false)} />
+        <PaymentHistoryModal
+          onClose={() => setIsShowPaymentHistoryModal(false)}
+        />
       )}
 
       {isShowRefundModal && (
         <ContactMessageModal
           title={i18n._(`Refund`)}
-          subTitle={i18n._(`Add some info why you want a refund and we will do it.`)}
+          subTitle={i18n._(
+            `Add some info why you want a refund and we will do it.`,
+          )}
           placeholder={i18n._(`Leave your message`)}
           onClose={() => setIsShowRefundModal(false)}
         />
@@ -261,7 +276,9 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
         isHidden
         isAuth={auth.isAuthorized}
         langToLearn={settings.languageCode || "en"}
-        setLanguageToLearn={settings.appMode === "learning" ? settings.setLanguage : undefined}
+        setLanguageToLearn={
+          settings.appMode === "learning" ? settings.setLanguage : undefined
+        }
         setPageLanguage={settings.setPageLanguage}
         nativeLang={settings.userSettings?.nativeLanguageCode || "en"}
         setNativeLanguage={settings.setNativeLanguage}

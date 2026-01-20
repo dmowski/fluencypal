@@ -20,7 +20,9 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
   const rolePlayId = searchParams.get("rolePlayId");
 
   const scenario = rolePlayId
-    ? rolePlayInfo.rolePlayScenarios.find((scenario) => scenario.id === rolePlayId)
+    ? rolePlayInfo.rolePlayScenarios.find(
+        (scenario) => scenario.id === rolePlayId,
+      )
     : null;
 
   const pageTitle = goalId

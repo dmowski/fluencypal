@@ -7,7 +7,10 @@ export async function GET(request: Request) {
   const description = queryParams.get("description");
   const fileName = queryParams.get("fileName");
   if (!description) {
-    return Response.json({ error: "Description parameter is required" }, { status: 400 });
+    return Response.json(
+      { error: "Description parameter is required" },
+      { status: 400 },
+    );
   }
 
   console.log("Generating image for description:", description);

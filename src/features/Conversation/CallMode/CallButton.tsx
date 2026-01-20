@@ -24,10 +24,14 @@ export const CallButton = ({
     >
       <IconButton
         sx={{
-          backgroundColor: isActive ? "rgba(100, 100, 100, 0.4)" : "rgb(250 222 220)",
+          backgroundColor: isActive
+            ? "rgba(100, 100, 100, 0.4)"
+            : "rgb(250 222 220)",
           color: isActive ? "#fff" : "#222",
           ":hover": {
-            backgroundColor: isActive ? "rgba(100, 100, 100, 0.2)" : "rgba(250, 222, 220, 0.8)",
+            backgroundColor: isActive
+              ? "rgba(100, 100, 100, 0.2)"
+              : "rgba(250, 222, 220, 0.8)",
           },
         }}
         size="large"

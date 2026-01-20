@@ -44,7 +44,10 @@ interface DayJsRelativeTimes {
   yy: string;
 }
 
-export const dayJsRelativeShortTimeMap: Record<SupportedLanguage, DayJsRelativeTimes> = {
+export const dayJsRelativeShortTimeMap: Record<
+  SupportedLanguage,
+  DayJsRelativeTimes
+> = {
   en: {
     future: "in %s",
     past: "%s",

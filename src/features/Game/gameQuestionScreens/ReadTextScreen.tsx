@@ -7,7 +7,12 @@ import { useTranslate } from "@/features/Translation/useTranslate";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { getWordsFromText } from "@/libs/getWordsFromText";
 import { useLingui } from "@lingui/react";
-import { FinishButton, GameContainer, SkipButton, TaskTitle } from "./gameCoreUI";
+import {
+  FinishButton,
+  GameContainer,
+  SkipButton,
+  TaskTitle,
+} from "./gameCoreUI";
 import { useGame } from "../useGame";
 
 const READ_TEXT_ACCEPTED_PERCENTAGE = 60;
@@ -135,7 +140,12 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
 
             {translator.isTranslateAvailable && (
               <IconButton
-                onClick={(e) => translator.translateWithModal(question.question, e.currentTarget)}
+                onClick={(e) =>
+                  translator.translateWithModal(
+                    question.question,
+                    e.currentTarget,
+                  )
+                }
               >
                 <Languages size={"16px"} color="#eee" />
               </IconButton>
@@ -172,7 +182,8 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
                   right: "0px",
                   width: "100%",
                   boxSizing: "border-box",
-                  background: "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))",
+                  background:
+                    "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))",
                   padding: "10px 10px 120px 10px",
                   borderRadius: "10px",
                 }}
@@ -240,7 +251,9 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
                   variant="contained"
                   size="large"
                   startIcon={isSubmitting ? <Loader /> : <Check />}
-                  disabled={percentage < READ_TEXT_ACCEPTED_PERCENTAGE || isSubmitting}
+                  disabled={
+                    percentage < READ_TEXT_ACCEPTED_PERCENTAGE || isSubmitting
+                  }
                   onClick={() => handleAnswerSubmit(question.question)}
                 >
                   {i18n._("Submit")}
@@ -250,7 +263,11 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
             )}
 
             {!userTranscript && (
-              <Button variant="contained" size="large" onClick={() => submitBackupRecorder()}>
+              <Button
+                variant="contained"
+                size="large"
+                onClick={() => submitBackupRecorder()}
+              >
                 {i18n._("Done")}
               </Button>
             )}
@@ -266,16 +283,18 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
               </Stack>
             )}
 
-            {!isRecording && userTranscript && percentage < READ_TEXT_ACCEPTED_PERCENTAGE && (
-              <Button
-                startIcon={<Mic />}
-                variant="contained"
-                size="large"
-                onClick={() => startRecording()}
-              >
-                {i18n._("Re-record")}
-              </Button>
-            )}
+            {!isRecording &&
+              userTranscript &&
+              percentage < READ_TEXT_ACCEPTED_PERCENTAGE && (
+                <Button
+                  startIcon={<Mic />}
+                  variant="contained"
+                  size="large"
+                  onClick={() => startRecording()}
+                >
+                  {i18n._("Re-record")}
+                </Button>
+              )}
 
             <IconButton
               onClick={() => {
@@ -325,7 +344,11 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
           </Typography>
         )}
 
-        <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} isShowStats={isShowStats} />
+        <FinishButton
+          isCorrect={isCorrect}
+          setIsCorrect={setIsCorrect}
+          isShowStats={isShowStats}
+        />
       </Stack>
     </GameContainer>
   );

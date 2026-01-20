@@ -5,7 +5,10 @@ export interface GetDataFromCacheProps {
   storageSpace: string;
 }
 
-export const getDataFromCache = async ({ inputValue, storageSpace }: GetDataFromCacheProps) => {
+export const getDataFromCache = async ({
+  inputValue,
+  storageSpace,
+}: GetDataFromCacheProps) => {
   const uniqId = fnv1aHash(inputValue);
 
   const cachedStore = (localStorage.getItem(storageSpace) || "{}") as string;

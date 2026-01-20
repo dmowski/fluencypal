@@ -10,7 +10,9 @@ export interface StripeUserInfo {
   customerId: string;
 }
 
-export const getStripeUserInfo = async (userId: string): Promise<StripeUserInfo | null> => {
+export const getStripeUserInfo = async (
+  userId: string,
+): Promise<StripeUserInfo | null> => {
   const db = getDB();
   const stripeDoc = await db
     .collection("users")
@@ -27,7 +29,10 @@ export const getStripeUserInfo = async (userId: string): Promise<StripeUserInfo 
   return data;
 };
 
-export const setStripeUserInfo = async (userId: string, info: StripeUserInfo): Promise<void> => {
+export const setStripeUserInfo = async (
+  userId: string,
+  info: StripeUserInfo,
+): Promise<void> => {
   const db = getDB();
   await db
     .collection("users")
@@ -47,7 +52,10 @@ export const getUserInfo = async (userId: string) => {
   return { ...data, id: userDoc.id };
 };
 
-export const updateUserInfo = async (userId: string, info: Partial<UserSettings>) => {
+export const updateUserInfo = async (
+  userId: string,
+  info: Partial<UserSettings>,
+) => {
   const db = getDB();
   await db.collection("users").doc(userId).set(info, { merge: true });
 };
@@ -74,7 +82,11 @@ export const getAllUsersWithIds = async ({ limits }: { limits?: number }) => {
   const usersCollection =
     limits === undefined
       ? await db.collection("users").get()
-      : await db.collection("users").orderBy("lastLoginAtDateTime", "desc").limit(limits).get();
+      : await db
+          .collection("users")
+          .orderBy("lastLoginAtDateTime", "desc")
+          .limit(limits)
+          .get();
 
   const users: UserSettingsWithId[] = usersCollection.docs.map((doc) => {
     const data = doc.data() as UserSettings;
@@ -83,9 +95,15 @@ export const getAllUsersWithIds = async ({ limits }: { limits?: number }) => {
   return users;
 };
 
-export const getUsersQuizSurvey = async (userId: string): Promise<QuizSurvey2[]> => {
+export const getUsersQuizSurvey = async (
+  userId: string,
+): Promise<QuizSurvey2[]> => {
   const db = getDB();
-  const quizCollection = await db.collection("users").doc(userId).collection("quiz2").get();
+  const quizCollection = await db
+    .collection("users")
+    .doc(userId)
+    .collection("quiz2")
+    .get();
   const data: QuizSurvey2[] = quizCollection.docs.map((doc) => {
     const data = doc.data() as QuizSurvey2;
     return { ...data };
@@ -94,9 +112,15 @@ export const getUsersQuizSurvey = async (userId: string): Promise<QuizSurvey2[]>
   return data;
 };
 
-export const getUsersInterviewSurvey = async (userId: string): Promise<InterviewQuizSurvey[]> => {
+export const getUsersInterviewSurvey = async (
+  userId: string,
+): Promise<InterviewQuizSurvey[]> => {
   const db = getDB();
-  const quizCollection = await db.collection("users").doc(userId).collection("interview").get();
+  const quizCollection = await db
+    .collection("users")
+    .doc(userId)
+    .collection("interview")
+    .get();
   const data: InterviewQuizSurvey[] = quizCollection.docs.map((doc) => {
     const data = doc.data() as InterviewQuizSurvey;
     return { ...data };
@@ -105,7 +129,9 @@ export const getUsersInterviewSurvey = async (userId: string): Promise<Interview
   return data;
 };
 
-export const getUserConversationsMeta = async (userId: string): Promise<UserConversationsMeta> => {
+export const getUserConversationsMeta = async (
+  userId: string,
+): Promise<UserConversationsMeta> => {
   const db = getDB();
   const conversationsCollection = await db
     .collection("users")
@@ -114,25 +140,34 @@ export const getUserConversationsMeta = async (userId: string): Promise<UserConv
     .orderBy("createdAt", "desc")
     .get();
 
-  const docs = conversationsCollection.docs.map((doc) => doc.data() as Conversation);
+  const docs = conversationsCollection.docs.map(
+    (doc) => doc.data() as Conversation,
+  );
 
   const conversationCount = docs.length || 0;
   const lastConversationDate = docs[0]?.updatedAtIso || null;
-  const totalMessages = docs.reduce((acc, doc) => acc + (doc.messages.length || 0), 0);
+  const totalMessages = docs.reduce(
+    (acc, doc) => acc + (doc.messages.length || 0),
+    0,
+  );
 
   const today = dayjs().subtract(24, "hour");
 
-  const todayConversations = docs.filter((doc) => dayjs(doc.updatedAtIso).isAfter(today));
+  const todayConversations = docs.filter((doc) =>
+    dayjs(doc.updatedAtIso).isAfter(today),
+  );
   const todayMessages = todayConversations.reduce(
     (acc, doc) => acc + (doc.messages.length || 0),
-    0
+    0,
   );
 
   const lastHour = dayjs().subtract(1, "hour");
-  const lastHourConversations = docs.filter((doc) => dayjs(doc.updatedAtIso).isAfter(lastHour));
+  const lastHourConversations = docs.filter((doc) =>
+    dayjs(doc.updatedAtIso).isAfter(lastHour),
+  );
   const lastHourMessages = lastHourConversations.reduce(
     (acc, doc) => acc + (doc.messages.length || 0),
-    0
+    0,
   );
 
   return {

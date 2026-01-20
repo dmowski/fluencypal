@@ -2,7 +2,9 @@ import { firebaseConfig } from "@/common/firebaseConfig";
 import firebaseAdmin from "firebase-admin";
 import { AuthUserInfo } from "./type";
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS as string);
+const serviceAccount = JSON.parse(
+  process.env.FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS as string,
+);
 
 const initApp = () => {
   return firebaseAdmin.initializeApp(
@@ -14,7 +16,7 @@ const initApp = () => {
       }),
       storageBucket: firebaseConfig.storageBucket,
     },
-    firebaseConfig.projectId + Date.now()
+    firebaseConfig.projectId + Date.now(),
   );
 };
 
@@ -91,7 +93,10 @@ const getAuthUser = async (userId: string): Promise<UserInfo | null> => {
   }
 };
 
-const updateAuthUser = async (userId: string, userInfo: Partial<UserInfo>): Promise<UserInfo> => {
+const updateAuthUser = async (
+  userId: string,
+  userInfo: Partial<UserInfo>,
+): Promise<UserInfo> => {
   const updated = await getAuth().updateUser(userId, {
     displayName: userInfo.displayName ?? undefined,
     email: userInfo.email ?? undefined,
@@ -112,12 +117,15 @@ const updateAuthUser = async (userId: string, userInfo: Partial<UserInfo>): Prom
 
 const createAuthCustomToken = async (
   userId: string,
-  customClaims?: Record<string, any>
+  customClaims?: Record<string, any>,
 ): Promise<string> => {
   return getAuth().createCustomToken(userId, customClaims);
 };
 
-const createAuthUser = async (uid: string, user: Omit<UserInfo, "uid">): Promise<UserInfo> => {
+const createAuthUser = async (
+  uid: string,
+  user: Omit<UserInfo, "uid">,
+): Promise<UserInfo> => {
   const created = await getAuth().createUser({
     uid,
     displayName: user.displayName ?? undefined,

@@ -9,7 +9,11 @@ import { getAllInterviews } from "../data";
 import fs from "fs";
 import path from "path";
 import { SupportedLanguage } from "@/features/Lang/lang";
-import type { InterviewData, TechStackSection, TechItem } from "@/features/Case/types";
+import type {
+  InterviewData,
+  TechStackSection,
+  TechItem,
+} from "@/features/Case/types";
 
 // Helper to check basic URL validity
 const isValidUrl = (url: string): boolean => {
@@ -54,7 +58,7 @@ describe("Tech stack image URLs", () => {
                 const url: string = item.logoUrl;
                 if (!url) {
                   failures.push(
-                    `${interview.coreData.id} :: Missing logoUrl for item: ${item.label}`
+                    `${interview.coreData.id} :: Missing logoUrl for item: ${item.label}`,
                   );
                   return;
                 }
@@ -62,14 +66,18 @@ describe("Tech stack image URLs", () => {
                 if (url.startsWith("/")) {
                   const publicPath = path.join(process.cwd(), "public", url);
                   if (!fs.existsSync(publicPath)) {
-                    failures.push(`${interview.coreData.id} :: Missing public file: ${publicPath}`);
+                    failures.push(
+                      `${interview.coreData.id} :: Missing public file: ${publicPath}`,
+                    );
                   }
                   return; // skip network request for local files
                 }
 
                 // Basic format check for external URLs
                 if (!isValidUrl(url)) {
-                  failures.push(`${interview.coreData.id} :: Invalid URL format: ${url}`);
+                  failures.push(
+                    `${interview.coreData.id} :: Invalid URL format: ${url}`,
+                  );
                   return;
                 }
 
@@ -78,13 +86,13 @@ describe("Tech stack image URLs", () => {
                   .then((res) => {
                     if (!res.ok) {
                       failures.push(
-                        `${interview.coreData.id} :: Unreachable URL (${res.status}): ${url}`
+                        `${interview.coreData.id} :: Unreachable URL (${res.status}): ${url}`,
                       );
                     }
                   })
                   .catch((err) => {
                     failures.push(
-                      `${interview.coreData.id} :: Request failed: ${url} :: ${String(err)}`
+                      `${interview.coreData.id} :: Request failed: ${url} :: ${String(err)}`,
                     );
                   });
                 requests.push(p);

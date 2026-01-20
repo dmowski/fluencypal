@@ -101,7 +101,8 @@ const Galaxy: React.FC = () => {
       for (let i = 0; i < parameters.count; i++) {
         const i3 = i * 3;
         const radius = Math.random() * parameters.radius;
-        const branchAngle = ((i % parameters.branches) / parameters.branches) * Math.PI * 2;
+        const branchAngle =
+          ((i % parameters.branches) / parameters.branches) * Math.PI * 2;
 
         positions[i3] = Math.cos(branchAngle) * radius;
         positions[i3 + 1] = 0;
@@ -137,10 +138,16 @@ const Galaxy: React.FC = () => {
         scales[i] = Math.random();
       }
 
-      geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      geometry.setAttribute(
+        "position",
+        new THREE.BufferAttribute(positions, 3),
+      );
       geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
       geometry.setAttribute("aScale", new THREE.BufferAttribute(scales, 1));
-      geometry.setAttribute("aRandom", new THREE.BufferAttribute(randomness, 3));
+      geometry.setAttribute(
+        "aRandom",
+        new THREE.BufferAttribute(randomness, 3),
+      );
 
       material = new THREE.ShaderMaterial({
         depthWrite: false,
@@ -169,12 +176,16 @@ const Galaxy: React.FC = () => {
       gui.add(parameters, "radius", 0.01, 20, 0.01).onChange(generateGalaxy);
       gui.add(parameters, "branches", 2, 20, 1).onChange(generateGalaxy);
       gui.add(parameters, "randomness", 0, 2, 0.001).onChange(generateGalaxy);
-      gui.add(parameters, "randomnessPower", 1, 10, 0.001).onChange(generateGalaxy);
+      gui
+        .add(parameters, "randomnessPower", 1, 10, 0.001)
+        .onChange(generateGalaxy);
       gui.addColor(parameters, "insideColor").onChange(generateGalaxy);
       gui.addColor(parameters, "outsideColor").onChange(generateGalaxy);
       gui
         .addColor(parameters, "bgColor")
-        .onChange((value: string) => renderer.setClearColor(new THREE.Color(value)));
+        .onChange((value: string) =>
+          renderer.setClearColor(new THREE.Color(value)),
+        );
     }
 
     // Resize handler

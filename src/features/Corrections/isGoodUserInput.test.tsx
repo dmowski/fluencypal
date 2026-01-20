@@ -15,11 +15,15 @@ describe("Check is isGoodUserInput", () => {
   });
 
   it("Empty corrections", () => {
-    expect(isGoodUserInput({ input: "Hello", correctedMessage: "" })).toBe(true);
+    expect(isGoodUserInput({ input: "Hello", correctedMessage: "" })).toBe(
+      true,
+    );
   });
 
   it("Almost equal", () => {
-    expect(isGoodUserInput({ input: "Hello", correctedMessage: "hello" })).toBe(true);
+    expect(isGoodUserInput({ input: "Hello", correctedMessage: "hello" })).toBe(
+      true,
+    );
   });
 
   it("Almost equal with symbols", () => {
@@ -27,7 +31,7 @@ describe("Check is isGoodUserInput", () => {
       isGoodUserInput({
         input: "Hello, are   -you, here",
         correctedMessage: "Hello? Are, you here",
-      })
+      }),
     ).toBe(true);
   });
 
@@ -36,7 +40,7 @@ describe("Check is isGoodUserInput", () => {
       isGoodUserInput({
         input: "Yeah, I feel I can do it,thanks.",
         correctedMessage: "Yeah, I feel I can do it, thanks.",
-      })
+      }),
     ).toBe(true);
   });
 });

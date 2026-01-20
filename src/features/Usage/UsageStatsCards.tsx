@@ -1,7 +1,13 @@
 "use client";
 import { Stack, Typography } from "@mui/material";
 import { useUsage } from "./useUsage";
-import { BicepsFlexed, BookType, Fish, MessagesSquare, Sprout } from "lucide-react";
+import {
+  BicepsFlexed,
+  BookType,
+  Fish,
+  MessagesSquare,
+  Sprout,
+} from "lucide-react";
 import { useWords } from "../Words/useWords";
 import { useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
@@ -100,7 +106,9 @@ export const UsageStatsCards = () => {
                   opacity: 0.7,
                 }}
               >
-                {i18n._("Here are the words you used the most in your conversations.")}
+                {i18n._(
+                  "Here are the words you used the most in your conversations.",
+                )}
               </Typography>
             </Stack>
             <Stack
@@ -181,7 +189,10 @@ export const UsageStatsCards = () => {
 
       {isOpenConversations && (
         <>
-          <CustomModal onClose={() => setIsOpenConversations(false)} isOpen={true}>
+          <CustomModal
+            onClose={() => setIsOpenConversations(false)}
+            isOpen={true}
+          >
             <Stack
               sx={{
                 gap: "40px",
@@ -198,7 +209,9 @@ export const UsageStatsCards = () => {
                     opacity: 0.7,
                   }}
                 >
-                  {i18n._("Here are the conversations you had with FluencyPal.")}
+                  {i18n._(
+                    "Here are the conversations you had with FluencyPal.",
+                  )}
                 </Typography>
               </Stack>
 
@@ -270,7 +283,9 @@ export const UsageStatsCards = () => {
                             >
                               {isBot ? i18n._("Teacher:") : i18n._("You:")}
                             </Typography>
-                            <Markdown variant="small">{message.text || ""}</Markdown>
+                            <Markdown variant="small">
+                              {message.text || ""}
+                            </Markdown>
                           </Stack>
                         );
                       })}
@@ -285,7 +300,10 @@ export const UsageStatsCards = () => {
 
       {isShowCorrectionStats && (
         <>
-          <CustomModal onClose={() => setIsShowCorrectionStats(false)} isOpen={true}>
+          <CustomModal
+            onClose={() => setIsShowCorrectionStats(false)}
+            isOpen={true}
+          >
             <Stack
               sx={{
                 gap: "40px",
@@ -302,7 +320,9 @@ export const UsageStatsCards = () => {
                     opacity: 0.7,
                   }}
                 >
-                  {i18n._("Here are the corrections you had in your conversations.")}
+                  {i18n._(
+                    "Here are the corrections you had in your conversations.",
+                  )}
                 </Typography>
               </Stack>
 
@@ -402,7 +422,9 @@ export const UsageStatsCards = () => {
                         >
                           {i18n._("Description:")}
                         </Typography>
-                        <Typography sx={{}}>{correctionStat.description}</Typography>
+                        <Typography sx={{}}>
+                          {correctionStat.description}
+                        </Typography>
                       </Stack>
                     </Stack>
                   );
@@ -426,7 +448,8 @@ export const UsageStatsCards = () => {
           <Stack
             sx={{
               borderRadius: "50%",
-              background: "linear-gradient(45deg,rgb(15, 92, 51) 0%,rgb(149, 222, 179) 100%)",
+              background:
+                "linear-gradient(45deg,rgb(15, 92, 51) 0%,rgb(149, 222, 179) 100%)",
               height: "60px",
               width: "60px",
 
@@ -462,7 +485,8 @@ export const UsageStatsCards = () => {
                   height: "100%",
                   boxSizing: "border-box",
                   alignItems: "center",
-                  justifyContent: wordsStatSorted.length === 0 ? "center" : "flex-start",
+                  justifyContent:
+                    wordsStatSorted.length === 0 ? "center" : "flex-start",
                 }}
               >
                 {wordsStatSorted.length === 0 && (

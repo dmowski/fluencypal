@@ -21,12 +21,14 @@ export const getBackendTechData = (lang: SupportedLanguage) => {
 
   const csharp: TechItem = {
     label: i18n._("C#"),
-    logoUrl: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Logo_C_sharp.svg",
+    logoUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/b/bd/Logo_C_sharp.svg",
   };
 
   const sql: TechItem = {
     label: i18n._("SQL"),
-    logoUrl: "https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png",
+    logoUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png",
   };
 
   const nosql: TechItem = {

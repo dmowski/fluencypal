@@ -70,7 +70,11 @@ export const ClickCard: React.FC<ClickCardProps> = ({
                   : "rgba(10, 18, 30, 0.6)"
             }
           >
-            {lockedText ? <Lock size={"30px"} color="#888" /> : buttonIcon || <></>}
+            {lockedText ? (
+              <Lock size={"30px"} color="#888" />
+            ) : (
+              buttonIcon || <></>
+            )}
             <Stack
               sx={{
                 gap: "16px",
@@ -84,7 +88,13 @@ export const ClickCard: React.FC<ClickCardProps> = ({
                   right: "16px",
                 }}
               >
-                {isDone ? <BadgeCheck strokeWidth={"2px"} color="#558fdb" size={"24px"} /> : null}
+                {isDone ? (
+                  <BadgeCheck
+                    strokeWidth={"2px"}
+                    color="#558fdb"
+                    size={"24px"}
+                  />
+                ) : null}
               </Stack>
               <Stack>
                 <Typography

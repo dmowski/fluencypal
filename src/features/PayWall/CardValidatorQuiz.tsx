@@ -56,7 +56,7 @@ export const CardValidatorQuiz = ({
       <InfoStep
         title={i18n._("Credit Card Already Confirmed")}
         subTitle={i18n._(
-          "Your credit card has already been confirmed. You can proceed to the next step."
+          "Your credit card has already been confirmed. You can proceed to the next step.",
         )}
         onClick={() => onNextStep()}
       />
@@ -67,7 +67,7 @@ export const CardValidatorQuiz = ({
       <InfoStep
         title={i18n._("Unlock full interview preparation")}
         subTitle={i18n._(
-          "Get full access to all features. Practice real interviews, get AI feedback, and see your full analysis. We use a card to prevent abuse and give you uninterrupted access to all features."
+          "Get full access to all features. Practice real interviews, get AI feedback, and see your full analysis. We use a card to prevent abuse and give you uninterrupted access to all features.",
         )}
         actionButtonTitle={i18n._("Continue to free access")}
         width={"700px"}
@@ -100,7 +100,9 @@ export const CardValidatorQuiz = ({
         }}
       >
         {isLoading && <CircularProgress />}
-        {isShowForm && clientSecret && <VerifyCard lang={lang} clientSecret={clientSecret} />}
+        {isShowForm && clientSecret && (
+          <VerifyCard lang={lang} clientSecret={clientSecret} />
+        )}
       </Stack>
     </Stack>
   );

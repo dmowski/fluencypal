@@ -27,7 +27,9 @@ interface AnalyzeUserMessageOutput {
 }
 
 interface CorrectionsContextType {
-  analyzeUserMessage: (input: AnalyzeUserMessageInput) => Promise<AnalyzeUserMessageOutput>;
+  analyzeUserMessage: (
+    input: AnalyzeUserMessageInput,
+  ) => Promise<AnalyzeUserMessageOutput>;
 
   correctionStats: PhraseCorrection[];
 }
@@ -37,13 +39,15 @@ const CorrectionContext = createContext<CorrectionsContextType | null>(null);
 function useProvideCorrections(): CorrectionsContextType {
   const auth = useAuth();
   const settings = useSettings();
-  const correctionStatsDocRef = auth.uid ? db.collections.phraseCorrections(auth.uid) : null;
+  const correctionStatsDocRef = auth.uid
+    ? db.collections.phraseCorrections(auth.uid)
+    : null;
   const [correctionStats, loading] = useCollectionData(correctionStatsDocRef);
   const textAi = useTextAi();
   const words = useWords();
 
   const analyzeUserMessage = async (
-    input: AnalyzeUserMessageInput
+    input: AnalyzeUserMessageInput,
   ): Promise<AnalyzeUserMessageOutput> => {
     try {
       const newWordsStatsRequest = words.addWordsStatFromText(input.message);
@@ -83,7 +87,9 @@ ${input.previousBotMessage}
         attempts: 3,
       });
 
-      const correctedMessage = parsedResult ? (parsedResult?.correctedMessage as string) || "" : "";
+      const correctedMessage = parsedResult
+        ? (parsedResult?.correctedMessage as string) || ""
+        : "";
       const suggestion = parsedResult ? parsedResult?.suggestion || "" : "";
 
       const isGood = isGoodUserInput({
@@ -130,9 +136,17 @@ ${input.previousBotMessage}
   };
 }
 
-export function CorrectionsProvider({ children }: { children: ReactNode }): JSX.Element {
+export function CorrectionsProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideCorrections();
-  return <CorrectionContext.Provider value={hook}>{children}</CorrectionContext.Provider>;
+  return (
+    <CorrectionContext.Provider value={hook}>
+      {children}
+    </CorrectionContext.Provider>
+  );
 }
 
 export const useCorrections = (): CorrectionsContextType => {

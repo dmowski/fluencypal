@@ -19,7 +19,9 @@ export function MessageChain({
   isFullContentByDefault,
 }: MessageChainProps) {
   const chat = useChat();
-  const rootMessage = parentId ? chat.messages.find((m) => m.id === parentId) : null;
+  const rootMessage = parentId
+    ? chat.messages.find((m) => m.id === parentId)
+    : null;
 
   const messages = parentId
     ? chat.messages
@@ -65,7 +67,8 @@ export function MessageChain({
   return (
     <Stack
       sx={{
-        borderBottom: isLast || topLevel ? "none" : "1px solid rgba(255, 255, 255, 0.1)",
+        borderBottom:
+          isLast || topLevel ? "none" : "1px solid rgba(255, 255, 255, 0.1)",
       }}
     >
       {rootMessage && (

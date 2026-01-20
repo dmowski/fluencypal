@@ -72,7 +72,10 @@ export async function POST(request: NextRequest) {
     // 5) Safe error
     const errorResponse: CreateCryptoOrderResponse = {
       ...base,
-      error: { code: "SERVER_ERROR", message: e?.message || "Unexpected server error" },
+      error: {
+        code: "SERVER_ERROR",
+        message: e?.message || "Unexpected server error",
+      },
     };
     return Response.json(errorResponse);
   }

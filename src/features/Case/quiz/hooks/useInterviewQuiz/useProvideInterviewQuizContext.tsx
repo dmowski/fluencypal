@@ -1,7 +1,11 @@
 "use client";
 
 import { useAuth } from "@/features/Auth/useAuth";
-import { InterviewQuizContextType, InterviewQuizProps, QuizStep } from "./types";
+import {
+  InterviewQuizContextType,
+  InterviewQuizProps,
+  QuizStep,
+} from "./types";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { useQuizCore } from "../useQuizCore";
 import { db } from "@/features/Firebase/firebaseDb";
@@ -72,12 +76,13 @@ export function useProvideInterviewQuizContext({
     settings.setConversationMode("call");
   }, [settings.loading, appMode, auth.uid]);
 
-  const currentStep = quiz.steps.find((step) => step.id === core.currentStepId) || null;
+  const currentStep =
+    quiz.steps.find((step) => step.id === core.currentStepId) || null;
 
   const updateAnswerTranscription = async (
     survey: InterviewQuizSurvey,
     stepId: string,
-    fullAnswerTranscription: string
+    fullAnswerTranscription: string,
   ): Promise<InterviewQuizSurvey> => {
     const answerData: InterviewQuizAnswer = {
       stepId,
@@ -94,11 +99,18 @@ export function useProvideInterviewQuizContext({
       },
     };
 
-    return await data.updateSurvey(updatedSurvey, `Update answer transcription for step ${stepId}`);
+    return await data.updateSurvey(
+      updatedSurvey,
+      `Update answer transcription for step ${stepId}`,
+    );
   };
 
-  const [isAnalyzingInputs, setIsAnalyzingInputs] = useState<Record<string, boolean>>({});
-  const [isAnalyzingInputsError, setIsAnalyzingInputsError] = useState<Record<string, string>>({});
+  const [isAnalyzingInputs, setIsAnalyzingInputs] = useState<
+    Record<string, boolean>
+  >({});
+  const [isAnalyzingInputsError, setIsAnalyzingInputsError] = useState<
+    Record<string, string>
+  >({});
 
   const analyzeInputs = async ({
     step,
@@ -121,7 +133,10 @@ export function useProvideInterviewQuizContext({
 
     const currentStepIndex = quiz.steps.findIndex((s) => s.id === step.id);
     const previousSteps = quiz.steps.filter((step, index) => {
-      return index < currentStepIndex && (step.type === "record-audio" || step.type === "options");
+      return (
+        index < currentStepIndex &&
+        (step.type === "record-audio" || step.type === "options")
+      );
     });
     const previousStepsIdsToAnswer = previousSteps.map((s) => s.id);
 
@@ -130,16 +145,23 @@ export function useProvideInterviewQuizContext({
       return userAnswersIds.includes(answerStepId);
     });
 
-    const inEnoughDataToAnalyze = goodAnswersIds.length === previousStepsIdsToAnswer.length;
+    const inEnoughDataToAnalyze =
+      goodAnswersIds.length === previousStepsIdsToAnswer.length;
     const survey = data.survey;
     if (!survey) {
-      setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: "Survey data is not loaded." }));
+      setIsAnalyzingInputsError((prev) => ({
+        ...prev,
+        [stepId]: "Survey data is not loaded.",
+      }));
       setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
       return;
     }
     if (!inEnoughDataToAnalyze) {
       const errorMessage = "Not enough data to analyze inputs.";
-      setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: errorMessage }));
+      setIsAnalyzingInputsError((prev) => ({
+        ...prev,
+        [stepId]: errorMessage,
+      }));
       setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
       return;
     }
@@ -148,7 +170,9 @@ export function useProvideInterviewQuizContext({
       .map((id) => {
         const questionStep = quiz.steps.find((step) => step.id === id);
 
-        const questionTitle = questionStep ? questionStep.title : "Unknown question";
+        const questionTitle = questionStep
+          ? questionStep.title
+          : "Unknown question";
         const questionSubTitle = questionStep ? questionStep.subTitle : "";
 
         const questionHeader = `Question: ${questionTitle}\n${questionSubTitle}\nAnswer:`;
@@ -167,7 +191,8 @@ export function useProvideInterviewQuizContext({
 
     const stepSystemMessage = step.aiSystemPrompt || "";
     const systemMessageWrapper = "Return the response in Markdown format.";
-    const systemMessage = `${stepSystemMessage}\n${systemMessageWrapper}`.trim();
+    const systemMessage =
+      `${stepSystemMessage}\n${systemMessageWrapper}`.trim();
 
     try {
       const outputFormat = step.aiResponseFormat;
@@ -197,7 +222,9 @@ export function useProvideInterviewQuizContext({
           .map((id) => {
             const questionStep = quiz.steps.find((step) => step.id === id);
 
-            const questionTitle = questionStep ? questionStep.title : "Unknown question";
+            const questionTitle = questionStep
+              ? questionStep.title
+              : "Unknown question";
             const questionSubTitle = questionStep ? questionStep.subTitle : "";
 
             const question = `${questionTitle}\n${questionSubTitle}:`;
@@ -210,7 +237,8 @@ export function useProvideInterviewQuizContext({
           })
           .flat();
 
-        const userRecords = await userInfo.extractUserRecords(conversationMessages);
+        const userRecords =
+          await userInfo.extractUserRecords(conversationMessages);
         const goal = await plan.generateGoal({
           languageCode: lang,
           conversationMessages: conversationMessages,
@@ -236,9 +264,15 @@ export function useProvideInterviewQuizContext({
         },
       };
 
-      await data.updateSurvey(updatedSurvey, `Update analysis results for step ${stepId}`);
+      await data.updateSurvey(
+        updatedSurvey,
+        `Update analysis results for step ${stepId}`,
+      );
     } catch (error) {
-      setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: String(error) }));
+      setIsAnalyzingInputsError((prev) => ({
+        ...prev,
+        [stepId]: String(error),
+      }));
     } finally {
       setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
     }
@@ -287,7 +321,7 @@ export function useProvideInterviewQuizContext({
   const updateSelectedOptionsForStep = async (
     survey: InterviewQuizSurvey,
     stepId: string,
-    selectedOptions: QuizOption[]
+    selectedOptions: QuizOption[],
   ): Promise<InterviewQuizSurvey> => {
     const step = quiz.steps.find((s) => s.id === stepId);
     if (!step) {
@@ -309,7 +343,10 @@ export function useProvideInterviewQuizContext({
       },
     };
 
-    return await data.updateSurvey(updatedSurvey, `Update selected options for step ${stepId}`);
+    return await data.updateSurvey(
+      updatedSurvey,
+      `Update selected options for step ${stepId}`,
+    );
   };
 
   const router = useRouter();
@@ -323,7 +360,7 @@ export function useProvideInterviewQuizContext({
 
     if (!planData) {
       alert(
-        "No practice plan available to open the app. Try going back and re-generating the plan."
+        "No practice plan available to open the app. Try going back and re-generating the plan.",
       );
       return;
     }

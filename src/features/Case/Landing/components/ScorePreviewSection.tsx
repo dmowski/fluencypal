@@ -25,9 +25,19 @@ export interface ScorePreviewSectionProps {
   theme: Theme;
 }
 
-const scoreColors: string[] = ["#EF4444", "#F59E0B", "#10B981", "#3B82F6", "#8B5CF6"];
+const scoreColors: string[] = [
+  "#EF4444",
+  "#F59E0B",
+  "#10B981",
+  "#3B82F6",
+  "#8B5CF6",
+];
 
-export const ScorePreviewCard = ({ scorePreview }: { scorePreview: ScorePreview }) => {
+export const ScorePreviewCard = ({
+  scorePreview,
+}: {
+  scorePreview: ScorePreview;
+}) => {
   return (
     <Stack
       sx={{
@@ -250,7 +260,11 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
                   }}
                 >
                   <BadgeCheck color="#60A5FA" size={"30px"} />
-                  <Typography key={index} variant="body2" sx={{ fontSize: "16px" }}>
+                  <Typography
+                    key={index}
+                    variant="body2"
+                    sx={{ fontSize: "16px" }}
+                  >
                     {info}
                   </Typography>
                 </Stack>

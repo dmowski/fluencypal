@@ -36,7 +36,8 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
   }
 
   const relatedCards = rolePlayScenarios.filter(
-    (scenario) => scenario.category === item.category && item.id !== scenario.id
+    (scenario) =>
+      scenario.category === item.category && item.id !== scenario.id,
   );
 
   return (
@@ -263,7 +264,9 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     },
                   }}
                 >
-                  {item.contentPage && <Markdown variant="small">{`${item.contentPage}`}</Markdown>}
+                  {item.contentPage && (
+                    <Markdown variant="small">{`${item.contentPage}`}</Markdown>
+                  )}
                   {item.contendElement}
 
                   {item.youTubeVideoUrl && (
@@ -359,7 +362,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     }}
                   >
                     {i18n._(
-                      `Role play allows you to practice real-life scenarios in a safe environment, helping you build confidence and improve your language skills.`
+                      `Role play allows you to practice real-life scenarios in a safe environment, helping you build confidence and improve your language skills.`,
                     )}
                   </Typography>
                 </Stack>
@@ -381,7 +384,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     }}
                   >
                     {i18n._(
-                      `With FluencyPal, you can improve your learning experience with personalized feedback, real-time corrections, and a supportive community.`
+                      `With FluencyPal, you can improve your learning experience with personalized feedback, real-time corrections, and a supportive community.`,
                     )}
                   </Typography>
                   <FeatureList />
@@ -407,7 +410,9 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                         {i18n._(`Available languages:`)}
                       </Typography>
                       <Typography variant="body2" component={"p"}>
-                        {supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}
+                        {supportedLanguages
+                          .map((code) => fullEnglishLanguageName[code])
+                          .join(", ")}
                       </Typography>
                     </Stack>
                   </Stack>
@@ -454,7 +459,12 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                 >
                   {relatedCards.map((scenario, index) => {
                     return (
-                      <RolePlayCard key={index} scenario={scenario} lang={lang} height="400px" />
+                      <RolePlayCard
+                        key={index}
+                        scenario={scenario}
+                        lang={lang}
+                        height="400px"
+                      />
                     );
                   })}
                 </Stack>

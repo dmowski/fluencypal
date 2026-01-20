@@ -164,13 +164,16 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   const bottomSectionHeight = `${height + 40}px`;
 
   const messageAnalyzing = useRef("");
-  const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] = useState(false);
+  const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] =
+    useState(false);
   const [isNeedToShowCorrection, setIsNeedToShowCorrection] = useState(false);
   const [internalUserInput, setInternalUserInput] = useState<string>("");
-  const [isConfirmedUserKeyboardInput, setIsConfirmedUserKeyboardInput] = useState(false);
+  const [isConfirmedUserKeyboardInput, setIsConfirmedUserKeyboardInput] =
+    useState(false);
 
   const confirmedUserInput =
-    transcriptMessage || (isConfirmedUserKeyboardInput ? internalUserInput : "");
+    transcriptMessage ||
+    (isConfirmedUserKeyboardInput ? internalUserInput : "");
   const isAnalyzingResponse = isAnalyzingMessageWithAi || isTranscribing;
 
   const analyzeUserKeyboardInput = async () => {
@@ -205,9 +208,12 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
     };
   }, [conversation, isAnalyzingResponse, isRecording, isCallMode]);
 
-  const [isShowAnalyzeConversationModal, setIsShowAnalyzeConversationModal] = useState(false);
-  const [isConversationContinueAfterAnalyze, setIsConversationContinueAfterAnalyze] =
+  const [isShowAnalyzeConversationModal, setIsShowAnalyzeConversationModal] =
     useState(false);
+  const [
+    isConversationContinueAfterAnalyze,
+    setIsConversationContinueAfterAnalyze,
+  ] = useState(false);
 
   const showAnalyzeConversationModal = () => {
     analyzeConversation();
@@ -216,7 +222,8 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
   const translator = useTranslate();
 
-  const [isOpenHelpModelAnchor, setIsOpenHelpModelAnchor] = useState<HTMLElement | null>(null);
+  const [isOpenHelpModelAnchor, setIsOpenHelpModelAnchor] =
+    useState<HTMLElement | null>(null);
   const [helpMessage, setHelpMessage] = useState("");
   const openHelpAnswer = async (element: HTMLElement) => {
     setHelpMessage("");
@@ -283,14 +290,19 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                 variant="conversation"
                 onWordClick={
                   translator.isTranslateAvailable
-                    ? (word, element) => translator.translateWithModal(word, element)
+                    ? (word, element) =>
+                        translator.translateWithModal(word, element)
                     : undefined
                 }
               >
                 {!helpMessage ? loadingMessage : helpMessage}
               </Markdown>
               {helpMessage && (
-                <AudioPlayIcon text={helpMessage} instructions="Calm and clear" voice={"shimmer"} />
+                <AudioPlayIcon
+                  text={helpMessage}
+                  instructions="Calm and clear"
+                  voice={"shimmer"}
+                />
               )}
             </Stack>
           </Stack>
@@ -305,7 +317,9 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             closeConversation();
             openNextLesson();
           }}
-          setIsConversationContinueAfterAnalyze={setIsConversationContinueAfterAnalyze}
+          setIsConversationContinueAfterAnalyze={
+            setIsConversationContinueAfterAnalyze
+          }
           pointsEarned={pointsEarned}
           openCommunityPage={() => {
             setIsShowAnalyzeConversationModal(false);
@@ -490,7 +504,10 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                       overflowY: "auto",
                     }}
                   >
-                    <AliasGamePanel gameWords={gameWords} conversation={conversation} />
+                    <AliasGamePanel
+                      gameWords={gameWords}
+                      conversation={conversation}
+                    />
                   </Stack>
                 </Stack>
               )}
@@ -523,12 +540,15 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                         boxSizing: "border-box",
                       }}
                     >
-                      {recordingError || i18n._("Error during analyzing message")}
+                      {recordingError ||
+                        i18n._("Error during analyzing message")}
                     </Alert>
                   </Stack>
                 )}
 
-                {(confirmedUserInput || isTranscribing || isAnalyzingResponse) && (
+                {(confirmedUserInput ||
+                  isTranscribing ||
+                  isAnalyzingResponse) && (
                   <ProcessUserInput
                     isTranscribing={isTranscribing}
                     userMessage={confirmedUserInput}
@@ -579,23 +599,25 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                         </Button>
                       )}
 
-                      {confirmedUserInput && !isRecording && !isAnalyzingResponse && (
-                        <Button
-                          startIcon={<ArrowUp />}
-                          size="large"
-                          variant={"contained"}
-                          sx={{
-                            minWidth: "200px",
-                          }}
-                          onClick={async () => {
-                            addUserMessage(confirmedUserInput);
-                            setIsConfirmedUserKeyboardInput(false);
-                            setInternalUserInput("");
-                          }}
-                        >
-                          {i18n._("Send")}
-                        </Button>
-                      )}
+                      {confirmedUserInput &&
+                        !isRecording &&
+                        !isAnalyzingResponse && (
+                          <Button
+                            startIcon={<ArrowUp />}
+                            size="large"
+                            variant={"contained"}
+                            sx={{
+                              minWidth: "200px",
+                            }}
+                            onClick={async () => {
+                              addUserMessage(confirmedUserInput);
+                              setIsConfirmedUserKeyboardInput(false);
+                              setInternalUserInput("");
+                            }}
+                          >
+                            {i18n._("Send")}
+                          </Button>
+                        )}
 
                       {transcriptMessage &&
                         !isRecording &&
@@ -654,7 +676,9 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                               {i18n._("Record Message")}
                             </Button>
 
-                            <IconButton onClick={(e) => setAnchorElUser(e.currentTarget)}>
+                            <IconButton
+                              onClick={(e) => setAnchorElUser(e.currentTarget)}
+                            >
                               <CircleEllipsis />
                             </IconButton>
                           </Stack>
@@ -693,7 +717,9 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
                         <MenuItem
                           disabled={
-                            isRecording || isAnalyzingResponse || (!isCallMode && !isChatMode)
+                            isRecording ||
+                            isAnalyzingResponse ||
+                            (!isCallMode && !isChatMode)
                           }
                           onClick={() => {
                             toggleConversationMode("record");
@@ -704,7 +730,9 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                             <Mic />
                           </ListItemIcon>
                           <ListItemText>
-                            <Typography>{i18n._("Voice record mode")}</Typography>
+                            <Typography>
+                              {i18n._("Voice record mode")}
+                            </Typography>
                           </ListItemText>
 
                           {!isCallMode && !isChatMode && (
@@ -716,7 +744,9 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
                         <MenuItem
                           sx={{}}
-                          disabled={isRecording || isAnalyzingResponse || isChatMode}
+                          disabled={
+                            isRecording || isAnalyzingResponse || isChatMode
+                          }
                           onClick={() => {
                             toggleConversationMode("chat");
                             closeMenus();
@@ -738,7 +768,9 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
                         <MenuItem
                           sx={{}}
-                          disabled={isRecording || isAnalyzingResponse || isCallMode}
+                          disabled={
+                            isRecording || isAnalyzingResponse || isCallMode
+                          }
                           onClick={() => {
                             toggleConversationMode("call");
                             closeMenus();
@@ -761,7 +793,9 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                         <Divider />
                         <MenuItem
                           sx={{}}
-                          disabled={isRecording || isAnalyzingResponse || isLimited}
+                          disabled={
+                            isRecording || isAnalyzingResponse || isLimited
+                          }
                           onClick={(e) => {
                             openHelpAnswer(e.currentTarget);
                             closeMenus();
@@ -771,7 +805,9 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                             <Lightbulb />
                           </ListItemIcon>
                           <ListItemText>
-                            <Typography>{i18n._("Help with answer")}</Typography>
+                            <Typography>
+                              {i18n._("Help with answer")}
+                            </Typography>
                           </ListItemText>
                         </MenuItem>
                       </Menu>
@@ -792,12 +828,15 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                             <TextField
                               autoFocus
                               value={internalUserInput}
-                              onChange={(e) => setInternalUserInput(e.target.value)}
+                              onChange={(e) =>
+                                setInternalUserInput(e.target.value)
+                              }
                               placeholder={i18n._("Your message...")}
                               multiline
                               minRows={1}
                               onKeyDown={(e) => {
-                                const isEnter = e.key === "Enter" && !e.shiftKey;
+                                const isEnter =
+                                  e.key === "Enter" && !e.shiftKey;
                                 if (isEnter) {
                                   e.preventDefault();
                                   analyzeUserKeyboardInput();
@@ -829,7 +868,9 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                               <Send size={"20px"} />
                             </IconButton>
 
-                            <IconButton onClick={(e) => setAnchorElUser(e.currentTarget)}>
+                            <IconButton
+                              onClick={(e) => setAnchorElUser(e.currentTarget)}
+                            >
                               <CircleEllipsis />
                             </IconButton>
                           </Stack>
@@ -976,7 +1017,8 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                               >
                                 <IconButton
                                   sx={{
-                                    boxShadow: "0 0 0 1px rgba(255, 255, 255, 0.11)",
+                                    boxShadow:
+                                      "0 0 0 1px rgba(255, 255, 255, 0.11)",
                                     background:
                                       "linear-gradient(130deg, rgba(229, 8, 8, 0.77), rgba(240, 128, 24, 0.93))",
                                   }}

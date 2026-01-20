@@ -57,7 +57,9 @@ function rmsToDb(rms: number) {
   return 20 * Math.log10(v); // ~ dBFS-ish (negative)
 }
 
-export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderReturn {
+export function useVadRecorder(
+  options: UseVadRecorderOptions,
+): UseVadRecorderReturn {
   const {
     onChunk,
     silenceMs = 3000,
@@ -181,7 +183,8 @@ export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderRe
       });
       streamRef.current = stream;
 
-      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+      const AudioCtx =
+        window.AudioContext || (window as any).webkitAudioContext;
       const audioCtx = new AudioCtx();
       audioCtxRef.current = audioCtx;
 
@@ -192,9 +195,13 @@ export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderRe
       source.connect(analyser);
 
       const mimeType = pickMimeType();
-      if (!window.MediaRecorder) throw new Error("MediaRecorder is not supported in this browser.");
+      if (!window.MediaRecorder)
+        throw new Error("MediaRecorder is not supported in this browser.");
 
-      const rec = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
+      const rec = new MediaRecorder(
+        stream,
+        mimeType ? { mimeType } : undefined,
+      );
       recorderRef.current = rec;
 
       rec.ondataavailable = (e) => {
@@ -234,7 +241,8 @@ export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderRe
           const rms = computeRms(analyserNow);
           const rawLevel = rmsToMeter01(rms, meterRmsMin, meterRmsMax);
           smoothLevelRef.current =
-            levelSmoothing * smoothLevelRef.current + (1 - levelSmoothing) * rawLevel;
+            levelSmoothing * smoothLevelRef.current +
+            (1 - levelSmoothing) * rawLevel;
           setInputLevel01(smoothLevelRef.current);
           setInputDb(rmsToDb(rms));
 
@@ -248,7 +256,8 @@ export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderRe
         // Update meter every tick
         const rawLevel = rmsToMeter01(rms, meterRmsMin, meterRmsMax);
         smoothLevelRef.current =
-          levelSmoothing * smoothLevelRef.current + (1 - levelSmoothing) * rawLevel;
+          levelSmoothing * smoothLevelRef.current +
+          (1 - levelSmoothing) * rawLevel;
         setInputLevel01(smoothLevelRef.current);
         setInputDb(rmsToDb(rms));
 
@@ -300,5 +309,13 @@ export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderRe
     };
   }, [cleanup]);
 
-  return { start, stop, isRunning, isSpeaking, lastError, inputLevel01, inputDb };
+  return {
+    start,
+    stop,
+    isRunning,
+    isSpeaking,
+    lastError,
+    inputLevel01,
+    inputDb,
+  };
 }

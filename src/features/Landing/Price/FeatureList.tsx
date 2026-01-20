@@ -17,7 +17,9 @@ import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 interface ListItem {
   title: string;
-  icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >;
 }
 
 interface FeatureListProps {

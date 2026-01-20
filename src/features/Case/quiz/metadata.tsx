@@ -22,7 +22,7 @@ export async function generateInterviewQuizStaticParams() {
 }
 
 export async function generateInterviewQuizMetadata(
-  props: InterviewQuizPageProps
+  props: InterviewQuizPageProps,
 ): Promise<Metadata> {
   const params = await props.params;
   const id = params.id;

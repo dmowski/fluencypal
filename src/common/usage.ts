@@ -61,7 +61,12 @@ export type UsageLog =
   | TranscriptUsageLog
   | TextToAudioUsageLog;
 
-export type PaymentLogType = "welcome" | "user" | "gift" | "subscription-full-v1" | "trial-days";
+export type PaymentLogType =
+  | "welcome"
+  | "user"
+  | "gift"
+  | "subscription-full-v1"
+  | "trial-days";
 
 export const WELCOME_BONUS = 6;
 export interface PaymentLog {

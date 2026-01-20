@@ -8,7 +8,10 @@ interface ButtonProps {
 
 export const VolumeButton: React.FC<ButtonProps> = ({ isEnabled, onClick }) => {
   return (
-    <Tooltip title={isEnabled ? "Mute audio output" : "Enable audio response"} arrow>
+    <Tooltip
+      title={isEnabled ? "Mute audio output" : "Enable audio response"}
+      arrow
+    >
       <Stack>
         <button
           style={{

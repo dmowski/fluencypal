@@ -2,7 +2,9 @@ import { NativeLangCode } from "@/libs/language/type";
 import { TranslationServiceClient } from "@google-cloud/translate";
 
 const getTranslateClient = () => {
-  const serviceAccount = JSON.parse(process.env.GOOGLE_TRANSlATE_SERVICE_ACCOUNT_CREDS as string);
+  const serviceAccount = JSON.parse(
+    process.env.GOOGLE_TRANSlATE_SERVICE_ACCOUNT_CREDS as string,
+  );
   return new TranslationServiceClient({
     credentials: {
       client_email: serviceAccount.client_email,

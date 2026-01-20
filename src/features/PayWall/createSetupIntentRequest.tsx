@@ -1,9 +1,12 @@
 "use client";
-import { SetupIntentRequest, SetupIntentResponse } from "@/app/api/payment/type";
+import {
+  SetupIntentRequest,
+  SetupIntentResponse,
+} from "@/app/api/payment/type";
 
 export const createSetupIntentRequest = async (
   req: SetupIntentRequest,
-  authToken: string
+  authToken: string,
 ): Promise<SetupIntentResponse> => {
   const response = await fetch("/api/payment/createSetupIntent", {
     method: "POST",

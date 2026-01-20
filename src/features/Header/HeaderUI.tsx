@@ -19,7 +19,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { HeaderUIProps } from "./types";
 import { getUrlStart } from "../Lang/getUrlStart";
 
-function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }: HeaderUIProps) {
+function HeaderUIComponent({
+  lang,
+  links,
+  buttons,
+  transparentOnTop,
+  logoHref,
+}: HeaderUIProps) {
   const [isOpenMainMenu, setIsOpenMainMenu] = useState(false);
   const [isHighlightJoin, setIsHighlightJoin] = useState(false);
   const [isBlurHeader, setIsBlurHeader] = useState(false);
@@ -31,10 +37,15 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
       return;
     }
 
-    const urlsForNormalHeader = [getUrlStart(lang) + "blog", getUrlStart(lang) + "scenarios"];
+    const urlsForNormalHeader = [
+      getUrlStart(lang) + "blog",
+      getUrlStart(lang) + "scenarios",
+    ];
 
     const urlPath = location.pathname;
-    const isStaticHeader = !urlsForNormalHeader.find((url) => urlPath.startsWith(url));
+    const isStaticHeader = !urlsForNormalHeader.find((url) =>
+      urlPath.startsWith(url),
+    );
     setIsFixedHeader(isStaticHeader);
 
     const onScrollHandler = () => {
@@ -87,8 +98,11 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
           zIndex: 999,
           //backgroundColor: "rgba(10, 18, 30, 0.7)",
           backgroundColor:
-            transparentOnTop && !isBlurHeader ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0.6)",
-          backdropFilter: transparentOnTop && !isBlurHeader ? "blur(0px)" : "blur(10px)",
+            transparentOnTop && !isBlurHeader
+              ? "rgba(0, 0, 0, 0)"
+              : "rgba(0, 0, 0, 0.6)",
+          backdropFilter:
+            transparentOnTop && !isBlurHeader ? "blur(0px)" : "blur(10px)",
           //borderBottom: isActiveConversation ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
 
           transition: "all 0.3s ease-in-out",
@@ -165,8 +179,20 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
                 },
               }}
             >
-              <img src="/logo.svg" alt="logo" width="160px" height="67px" className="big_logo" />
-              <img src="/logo.svg" alt="logo" width="112px" height="47px" className="small_logo" />
+              <img
+                src="/logo.svg"
+                alt="logo"
+                width="160px"
+                height="67px"
+                className="big_logo"
+              />
+              <img
+                src="/logo.svg"
+                alt="logo"
+                width="112px"
+                height="47px"
+                className="small_logo"
+              />
             </Stack>
 
             {links.map((link) => (
@@ -223,7 +249,11 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
         </Stack>
       </Stack>
 
-      <Drawer open={isOpenMainMenu} onClose={() => setIsOpenMainMenu(false)} anchor="right">
+      <Drawer
+        open={isOpenMainMenu}
+        onClose={() => setIsOpenMainMenu(false)}
+        anchor="right"
+      >
         <Stack
           sx={{
             width: "240px",
@@ -240,7 +270,11 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
               alignItems: "flex-end",
             }}
           >
-            <IconButton onClick={() => setIsOpenMainMenu(false)} title="Close main menu" sx={{}}>
+            <IconButton
+              onClick={() => setIsOpenMainMenu(false)}
+              title="Close main menu"
+              sx={{}}
+            >
               <X />
             </IconButton>
           </Stack>

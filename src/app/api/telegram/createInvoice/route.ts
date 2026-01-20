@@ -1,7 +1,10 @@
 import { NextRequest } from "next/server";
 import { envConfig } from "../../config/envConfig";
 import crypto from "node:crypto";
-import { CreateTelegramInvoiceRequest, CreateTelegramInvoiceResponse } from "./types";
+import {
+  CreateTelegramInvoiceRequest,
+  CreateTelegramInvoiceResponse,
+} from "./types";
 import { validateAuthToken } from "../../config/firebase";
 import { TELEGRAM_MONTHLY_PRICE_START } from "@/features/Telegram/starPrices";
 
@@ -44,7 +47,10 @@ export async function POST(request: NextRequest) {
     if (!envConfig.telegramBotKey || !TG_API) {
       const response: CreateTelegramInvoiceResponse = {
         ...base,
-        error: { code: "SERVER_MISCONFIGURED", message: "Telegram env config is missing" },
+        error: {
+          code: "SERVER_MISCONFIGURED",
+          message: "Telegram env config is missing",
+        },
       };
       return Response.json(response);
     }
@@ -107,7 +113,10 @@ export async function POST(request: NextRequest) {
     // 5) Safe error
     const errorResponse: CreateTelegramInvoiceResponse = {
       ...base,
-      error: { code: "SERVER_ERROR", message: e?.message || "Unexpected server error" },
+      error: {
+        code: "SERVER_ERROR",
+        message: e?.message || "Unexpected server error",
+      },
     };
     return Response.json(errorResponse);
   }

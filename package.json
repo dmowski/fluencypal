@@ -21,7 +21,8 @@
     "ai-translate": "node --env-file=.env.tool updateLanguage.mjs",
     "lang": "lingui extract && npm run ai-translate && lingui compile",
     "lang-clean": "lingui extract --clean && npm run lang",
-    "stripe-hook": "stripe listen --forward-to localhost:3000/api/webhooks/stripe"
+    "stripe-hook": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
+    "fix-prettier": "prettier --write ."
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
@@ -70,6 +71,7 @@
     "negotiator": "^1.0.0",
     "next": "16.0.10",
     "openai": "^6.16.0",
+    "prettier": "^3.8.0",
     "raw-loader": "^4.0.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",

@@ -12,7 +12,14 @@ import { IconTextList } from "@/features/Survey/IconTextList";
 import { CardValidatorQuiz } from "@/features/PayWall/CardValidatorQuiz";
 import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
-import { BadgeCheck, Check, ChevronRight, Clock, LayoutDashboard, Trash } from "lucide-react";
+import {
+  BadgeCheck,
+  Check,
+  ChevronRight,
+  Clock,
+  LayoutDashboard,
+  Trash,
+} from "lucide-react";
 import { useDeleteAccount } from "@/features/Auth/useDeleteAccount";
 import { ScorePreviewCard } from "../Landing/components/ScorePreviewSection";
 import { InterviewAuthWall } from "@/features/Auth/InterviewAuthWall";
@@ -37,9 +44,11 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
   const markdownFeedback =
     survey?.results[quiz.currentStep?.id || ""]?.markdownFeedback || undefined;
 
-  const plan = survey?.results[quiz.currentStep?.id || ""]?.practicePlan || undefined;
+  const plan =
+    survey?.results[quiz.currentStep?.id || ""]?.practicePlan || undefined;
 
-  const isAnalyzingInputs = !!quiz.currentStep && !!quiz.isAnalyzingInputs[quiz.currentStep.id];
+  const isAnalyzingInputs =
+    !!quiz.currentStep && !!quiz.isAnalyzingInputs[quiz.currentStep.id];
 
   if (quiz.isRedirecting) {
     return <QuizPageLoader />;
@@ -90,17 +99,21 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
               subTitle={quiz.currentStep.subTitle || ""}
               actionButtonTitle={quiz.currentStep.buttonTitle || i18n._("Next")}
               width={width}
-              disabled={quiz.survey?.answers[quiz.currentStep.id] ? false : true}
+              disabled={
+                quiz.survey?.answers[quiz.currentStep.id] ? false : true
+              }
               onClick={() => quiz.nextStep()}
               options={quiz.currentStep.options}
               multipleSelection={quiz.currentStep.multipleSelection}
-              selectedOptions={quiz.getSelectedOptionsForStep(quiz.currentStep.id)}
+              selectedOptions={quiz.getSelectedOptionsForStep(
+                quiz.currentStep.id,
+              )}
               onSelectOptionsChange={(selectedOptions) => {
                 if (!quiz.survey) return;
                 quiz.updateSelectedOptionsForStep(
                   quiz.survey,
                   quiz.currentStep?.id || "",
-                  selectedOptions
+                  selectedOptions,
                 );
               }}
             />
@@ -122,7 +135,7 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
                 await quiz.updateAnswerTranscription(
                   quiz.survey,
                   quiz.currentStep?.id || "",
-                  combinedTranscript
+                  combinedTranscript,
                 );
               }}
             />
@@ -143,8 +156,12 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
                 >
                   {!isAnalyzingInputs && (
                     <Stack>
-                      {markdownFeedback && <Markdown>{markdownFeedback || ""}</Markdown>}
-                      {jsonScoreFeedback && <ScorePreviewCard scorePreview={jsonScoreFeedback} />}
+                      {markdownFeedback && (
+                        <Markdown>{markdownFeedback || ""}</Markdown>
+                      )}
+                      {jsonScoreFeedback && (
+                        <ScorePreviewCard scorePreview={jsonScoreFeedback} />
+                      )}
                       {plan && <InterviewPlanPreview plan={plan} />}
                     </Stack>
                   )}
@@ -163,7 +180,9 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
                       >
                         {i18n._("Analyzing your inputs...")}
                       </Typography>
-                      <LoadingShapes sizes={["20px", "100px", "20px", "100px"]} />
+                      <LoadingShapes
+                        sizes={["20px", "100px", "20px", "100px"]}
+                      />
                     </Stack>
                   )}
 

@@ -23,7 +23,9 @@ interface UrlDefinition {
 const baseUrl = "https://www.fluencypal.com";
 
 const generateUrl = (url: UrlDefinition) => {
-  const isLangLanding = supportedLanguages.includes(url.path as unknown as SupportedLanguage);
+  const isLangLanding = supportedLanguages.includes(
+    url.path as unknown as SupportedLanguage,
+  );
 
   const path = url.path === "" ? "/" : `/${url.path}`;
 
@@ -38,7 +40,9 @@ const generateUrl = (url: UrlDefinition) => {
 ${supportedLanguages
   .filter((lang) => lang !== "en")
   .map((lang) => {
-    const pathWithLang = isLangLanding ? `${lang}` : `${lang}${url.path === "" ? "" : path}`;
+    const pathWithLang = isLangLanding
+      ? `${lang}`
+      : `${lang}${url.path === "" ? "" : path}`;
     return `        <xhtml:link rel="alternate" hreflang="${lang}" href="${baseUrl}/${pathWithLang}"/>`;
   })
   .join("\n")}

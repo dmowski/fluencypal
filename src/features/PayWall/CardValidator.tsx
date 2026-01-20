@@ -3,15 +3,26 @@
 import { Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { useMemo, useState } from "react";
-import { loadStripe, StripeElementLocale, StripeElementsOptions } from "@stripe/stripe-js";
-import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import {
+  loadStripe,
+  StripeElementLocale,
+  StripeElementsOptions,
+} from "@stripe/stripe-js";
+import {
+  Elements,
+  PaymentElement,
+  useElements,
+  useStripe,
+} from "@stripe/react-stripe-js";
 import { useAuth } from "../Auth/useAuth";
 import { stripeLocaleMap, SupportedLanguage } from "../Lang/lang";
 import { useAnalytics } from "../Analytics/useAnalytics";
 import { InterviewQuizButton } from "../Goal/Quiz/InterviewQuizButton";
 import { sendFeedbackMessageRequest } from "@/app/api/telegram/sendFeedbackMessageRequest";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
+);
 
 function SetupForm({ clientSecret }: { clientSecret: string }) {
   const stripe = useStripe();
@@ -54,7 +65,7 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
               "✅ Card verified via SetupIntent in client for user: " +
               (auth.userInfo?.email || auth.uid),
           },
-          await auth.getToken()
+          await auth.getToken(),
         );
       }
     } finally {
@@ -77,7 +88,7 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
           </Typography>
           <Typography sx={{}}>
             {i18n._(
-              "Your card is used only to activate secure access and will not be billed unless you decide to continue."
+              "Your card is used only to activate secure access and will not be billed unless you decide to continue.",
             )}
           </Typography>
         </Stack>
@@ -90,9 +101,12 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
             }}
           />
 
-          <Typography variant="caption" sx={{ paddingTop: "5px", opacity: 0.9 }}>
+          <Typography
+            variant="caption"
+            sx={{ paddingTop: "5px", opacity: 0.9 }}
+          >
             {i18n._(
-              "A small temporary authorization may appear on your statement and will be released automatically by your bank."
+              "A small temporary authorization may appear on your statement and will be released automatically by your bank.",
             )}{" "}
             {i18n._("By continuing, you agree to our")}{" "}
             <a
@@ -165,7 +179,7 @@ export function VerifyCard({
         },
       },
     }),
-    [clientSecret]
+    [clientSecret],
   );
 
   if (!clientSecret) return null;

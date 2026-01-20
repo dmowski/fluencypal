@@ -12,7 +12,10 @@ import {
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useAuth } from "../Auth/useAuth";
 import { db } from "../Firebase/firebaseDb";
-import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
+import {
+  useCollectionData,
+  useDocumentData,
+} from "react-firebase-hooks/firestore";
 import {
   ChatLike,
   ChatLikeType,
@@ -38,7 +41,10 @@ interface ChatContextType {
 
   commentsInfo: Record<string, number>;
 
-  addMessage: ({ messageContent, parentMessageId }: AddMessageProps) => Promise<void>;
+  addMessage: ({
+    messageContent,
+    parentMessageId,
+  }: AddMessageProps) => Promise<void>;
   deleteMessage: (messageId: string) => Promise<void>;
   editMessage: (messageId: string, newContent: string) => Promise<void>;
 
@@ -67,11 +73,14 @@ const getIsCanRead = ({
   return (
     chatMetadata &&
     userId &&
-    (chatMetadata.isPrivate === false || chatMetadata.allowedUserIds?.includes(userId))
+    (chatMetadata.isPrivate === false ||
+      chatMetadata.allowedUserIds?.includes(userId))
   );
 };
 
-function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextType {
+function useProvideChat(
+  propsChatMetadata: UserChatMetadataStatic,
+): ChatContextType {
   const auth = useAuth();
   const userId = auth.uid;
 
@@ -119,14 +128,21 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       : null;
   };
 
-  const { messages, topLevelMessages, commentsInfo, secondLevelSingleCommentsIds } = useMemo<{
+  const {
+    messages,
+    topLevelMessages,
+    commentsInfo,
+    secondLevelSingleCommentsIds,
+  } = useMemo<{
     messages: UserChatMessage[];
     topLevelMessages: UserChatMessage[];
     commentsInfo: Record<string, number>;
     secondLevelSingleCommentsIds: string[];
   }>(() => {
     const sortedMessages = messagesData
-      ? [...messagesData].sort((a, b) => b.createdAtIso.localeCompare(a.createdAtIso))
+      ? [...messagesData].sort((a, b) =>
+          b.createdAtIso.localeCompare(a.createdAtIso),
+        )
       : [];
 
     const topLevel = sortedMessages.filter((msg) => {
@@ -139,7 +155,8 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     const topLevelMap: Record<string, string[]> = {};
 
     sortedMessages.forEach((msg) => {
-      const isSecondLevel = msg.parentMessageId && topLevelIds.includes(msg.parentMessageId);
+      const isSecondLevel =
+        msg.parentMessageId && topLevelIds.includes(msg.parentMessageId);
       if (!isSecondLevel) return;
 
       const topLevelBucket = topLevelMap[msg.parentMessageId];
@@ -187,8 +204,10 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
 
     if (
       metaData.totalMessages === realTotalMessages &&
-      (metaData?.totalTopLevelMessagesIds?.length || 0) === totalTopLevelMessagesIds.length &&
-      secondLevelSingleCommentsIds.length === (metaData?.secondLevelSingleCommentsIds?.length || 0)
+      (metaData?.totalTopLevelMessagesIds?.length || 0) ===
+        totalTopLevelMessagesIds.length &&
+      secondLevelSingleCommentsIds.length ===
+        (metaData?.secondLevelSingleCommentsIds?.length || 0)
     ) {
       return;
     }
@@ -226,7 +245,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     const likeId = `${userId}-${messageId}`;
     const likeDoc = doc(likesRef, likeId);
     const isExistingLike = likes?.find(
-      (like) => like.messageId === messageId && like.userId === userId
+      (like) => like.messageId === messageId && like.userId === userId,
     );
 
     if (isExistingLike) {
@@ -245,7 +264,10 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
 
   const isSending = useRef<string>("");
 
-  const addMessage = async ({ messageContent, parentMessageId }: AddMessageProps) => {
+  const addMessage = async ({
+    messageContent,
+    parentMessageId,
+  }: AddMessageProps) => {
     if (isSending.current) {
       console.log("Already sending message:", isSending.current);
       return;
@@ -260,7 +282,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
         {
           message: `💬 New message in global chat:\n\n${messageContent}\n\n${url}`,
         },
-        await auth.getToken()
+        await auth.getToken(),
       );
     }
     const messagesRefInternal = await initMetadataIfNeeded();
@@ -289,7 +311,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
           chatMessage: messageContent,
           chatUserId: auth.uid || "",
         },
-        await auth.getToken()
+        await auth.getToken(),
       );
     } else {
       console.log("Do not add points for dev");
@@ -301,7 +323,9 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
   const deleteMessage = async (messageId: string) => {
     if (!messagesRef || !userId) return;
 
-    const isChildExisting = messages.find((m) => m.parentMessageId === messageId);
+    const isChildExisting = messages.find(
+      (m) => m.parentMessageId === messageId,
+    );
     if (isChildExisting) {
       const messageDoc = doc(messagesRef, messageId);
       const updatedMessage: Partial<UserChatMessage> = {
@@ -338,13 +362,16 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
           [message.id]: true,
         },
       };
-      const isAlreadyViewed = myMetaDataSnap?.[propsChatMetadata.spaceId]?.[message.id];
+      const isAlreadyViewed =
+        myMetaDataSnap?.[propsChatMetadata.spaceId]?.[message.id];
       if (!isAlreadyViewed) {
         await setDoc(myMetaRef, partialMyMeta, { merge: true });
       }
     }
 
-    const isAlreadyViewed = message.viewsUserIds ? message.viewsUserIds?.includes(userId) : false;
+    const isAlreadyViewed = message.viewsUserIds
+      ? message.viewsUserIds?.includes(userId)
+      : false;
     if (isAlreadyViewed) return;
     if (!messagesRef) return;
     const messageToRead = messages.find((msg) => msg.id === message.id);
@@ -354,11 +381,20 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       ? [...messageToRead.viewsUserIds, userId]
       : [userId];
     const messageDoc = doc(messagesRef, message.id);
-    await setDoc(messageDoc, { viewsUserIds: updatedViewsUserIds }, { merge: true });
+    await setDoc(
+      messageDoc,
+      { viewsUserIds: updatedViewsUserIds },
+      { merge: true },
+    );
   };
 
-  const readMessagesCount = Object.keys(myMetaDataSnap?.[propsChatMetadata.spaceId] || {}).length;
-  const unreadMessagesCount = Math.max(0, (metaData?.totalMessages || 0) - readMessagesCount);
+  const readMessagesCount = Object.keys(
+    myMetaDataSnap?.[propsChatMetadata.spaceId] || {},
+  ).length;
+  const unreadMessagesCount = Math.max(
+    0,
+    (metaData?.totalMessages || 0) - readMessagesCount,
+  );
 
   return {
     messages,
@@ -388,7 +424,11 @@ export function ChatProvider({
 }): JSX.Element {
   const chatHistoryData = useProvideChat(metadata);
 
-  return <ChatContext.Provider value={chatHistoryData}>{children}</ChatContext.Provider>;
+  return (
+    <ChatContext.Provider value={chatHistoryData}>
+      {children}
+    </ChatContext.Provider>
+  );
 }
 
 export function useChat(): ChatContextType {

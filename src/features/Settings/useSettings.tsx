@@ -12,7 +12,12 @@ import { db } from "../Firebase/firebaseDb";
 import { useCurrency } from "../User/useCurrency";
 import { getCountryByIP } from "../User/getCountry";
 import { countries } from "@/libs/countries";
-import { AppMode, ConversationMode, InitUserSettings, UserSettings } from "@/common/user";
+import {
+  AppMode,
+  ConversationMode,
+  InitUserSettings,
+  UserSettings,
+} from "@/common/user";
 import { NativeLangCode } from "@/libs/language/type";
 import { useUserSource } from "../Analytics/useUserSource";
 import { isActiveBrowserTab } from "@/libs/isActiveBrowserTab";
@@ -74,8 +79,13 @@ function useProvideSettings(): SettingsContextType {
 
   const setLanguage = async (languageCode: SupportedLanguage) => {
     if (!userSettingsDoc) return "en";
-    const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || "en";
-    await setDoc(userSettingsDoc, { languageCode: langCodeValidated }, { merge: true });
+    const langCodeValidated =
+      supportedLanguages.find((lang) => lang === languageCode) || "en";
+    await setDoc(
+      userSettingsDoc,
+      { languageCode: langCodeValidated },
+      { merge: true },
+    );
     return langCodeValidated;
   };
 
@@ -144,12 +154,17 @@ function useProvideSettings(): SettingsContextType {
 
     const country = await getCountryByIP();
     const countryName = country
-      ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || "Unknown"
+      ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name ||
+        "Unknown"
       : "-";
 
     const photoUrl = auth.userInfo?.photoURL || "";
     const displayName = auth.userInfo?.displayName || "";
-    await setDoc(userSettingsDoc, { country, countryName, photoUrl, displayName }, { merge: true });
+    await setDoc(
+      userSettingsDoc,
+      { country, countryName, photoUrl, displayName },
+      { merge: true },
+    );
   };
 
   useEffect(() => {
@@ -170,18 +185,31 @@ function useProvideSettings(): SettingsContextType {
 
   const setPageLanguage = async (languageCode: SupportedLanguage) => {
     if (!userSettingsDoc) return;
-    const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || "en";
-    await setDoc(userSettingsDoc, { pageLanguageCode: langCodeValidated }, { merge: true });
+    const langCodeValidated =
+      supportedLanguages.find((lang) => lang === languageCode) || "en";
+    await setDoc(
+      userSettingsDoc,
+      { pageLanguageCode: langCodeValidated },
+      { merge: true },
+    );
   };
 
   const setNativeLanguage = async (languageCode: NativeLangCode) => {
     if (!userSettingsDoc) return;
-    await setDoc(userSettingsDoc, { nativeLanguageCode: languageCode }, { merge: true });
+    await setDoc(
+      userSettingsDoc,
+      { nativeLanguageCode: languageCode },
+      { merge: true },
+    );
   };
 
   const onDoneGameOnboarding = () => {
     if (!userSettingsDoc) return;
-    setDoc(userSettingsDoc, { isGameOnboardingCompleted: true }, { merge: true });
+    setDoc(
+      userSettingsDoc,
+      { isGameOnboardingCompleted: true },
+      { merge: true },
+    );
   };
 
   const pageLanguageCode = userSettings?.pageLanguageCode || "";
@@ -206,7 +234,8 @@ function useProvideSettings(): SettingsContextType {
     fullLanguageName: userSettings?.languageCode
       ? fullEnglishLanguageName[userSettings.languageCode]
       : null,
-    loading: loading || !userId || !userSettingsDoc || !userSettings || !userCreatedAt,
+    loading:
+      loading || !userId || !userSettingsDoc || !userSettings || !userCreatedAt,
     setLanguage,
     setPageLanguage,
     userSettings: userSettings || null,
@@ -227,10 +256,18 @@ const clearAppMode = (mode: string): AppMode => {
   return "learning";
 };
 
-export function SettingsProvider({ children }: { children: ReactNode }): JSX.Element {
+export function SettingsProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const settings = useProvideSettings();
 
-  return <settingsContext.Provider value={settings}>{children}</settingsContext.Provider>;
+  return (
+    <settingsContext.Provider value={settings}>
+      {children}
+    </settingsContext.Provider>
+  );
 }
 
 export const useSettings = (): SettingsContextType => {
@@ -243,7 +280,8 @@ export const useSettings = (): SettingsContextType => {
 
 const getBrowserInfo = (): string => {
   try {
-    const navigatorInfo = typeof navigator !== "undefined" ? navigator.userAgent : "unknown";
+    const navigatorInfo =
+      typeof navigator !== "undefined" ? navigator.userAgent : "unknown";
     return navigatorInfo;
   } catch (error) {
     console.error("Error getting browser info:", error);

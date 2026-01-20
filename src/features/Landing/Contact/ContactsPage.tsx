@@ -101,7 +101,7 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                 }}
               >
                 {i18n._(
-                  `My name is Alex, I am the creator of this website. I am a software engineer and I am passionate about learning languages and career development. I created this website to help people learn languages in a fun and interactive way, as well as prepare effectively for job interviews. I hope you enjoy using it!`
+                  `My name is Alex, I am the creator of this website. I am a software engineer and I am passionate about learning languages and career development. I created this website to help people learn languages in a fun and interactive way, as well as prepare effectively for job interviews. I hope you enjoy using it!`,
                 )}
               </Typography>
 
@@ -114,7 +114,7 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                 }}
               >
                 {i18n._(
-                  `Feel free to reach out to me with any questions or feedback. I'm always happy to help!`
+                  `Feel free to reach out to me with any questions or feedback. I'm always happy to help!`,
                 )}
               </Typography>
             </Stack>

@@ -36,7 +36,9 @@ const sendSdpOffer = async (
     });
 
     if (!sdpResponse.ok) {
-      throw new Error(`Failed to send SDP Offer: ${sdpResponse.status} ${sdpResponse.statusText}`);
+      throw new Error(
+        `Failed to send SDP Offer: ${sdpResponse.status} ${sdpResponse.statusText}`,
+      );
     }
 
     const response: SendSdpOfferResponse = await sdpResponse.json();
@@ -64,7 +66,8 @@ const updateSession = async ({
   languageCode,
   modalities,
 }: UpdateSessionProps) => {
-  if (!dataChannel) throw Error("Error on updateSession. dataChannel is not available");
+  if (!dataChannel)
+    throw Error("Error on updateSession. dataChannel is not available");
 
   const event = {
     type: "session.update",
@@ -88,8 +91,13 @@ const updateSession = async ({
   await sleep(100);
 };
 
-const monitorWebRtcAudio = (stream: MediaStream, setIsAiSpeaking: (speaking: boolean) => void) => {
-  const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+const monitorWebRtcAudio = (
+  stream: MediaStream,
+  setIsAiSpeaking: (speaking: boolean) => void,
+) => {
+  const audioContext = new (
+    window.AudioContext || (window as any).webkitAudioContext
+  )();
   const analyser = audioContext.createAnalyser();
   analyser.fftSize = 512;
 
@@ -142,7 +150,9 @@ export const initWebRtcConversation = async ({
   webCamDescription,
 }: ConversationConfig): Promise<ConversationInstance> => {
   const audioId = "audio_for_llm";
-  const existingAudio = document.getElementById(audioId) as HTMLAudioElement | null;
+  const existingAudio = document.getElementById(
+    audioId,
+  ) as HTMLAudioElement | null;
   let audioEl = existingAudio;
   if (!audioEl) {
     audioEl = document.createElement("audio");
@@ -247,7 +257,9 @@ export const initWebRtcConversation = async ({
         .map((item: any) => {
           return (
             item?.content
-              ?.map((content: any) => content?.transcript || content?.text || "")
+              ?.map(
+                (content: any) => content?.transcript || content?.text || "",
+              )
               .join(" ")
               .trim() || ""
           );
@@ -310,7 +322,9 @@ export const initWebRtcConversation = async ({
       .join("\n");
   };
 
-  const updateInstruction = async (partial: Partial<InstructionState>): Promise<void> => {
+  const updateInstruction = async (
+    partial: Partial<InstructionState>,
+  ): Promise<void> => {
     const isCorrectionExistsBefore = Boolean(instructionState.correction);
     Object.assign(instructionState, partial);
     const updatedInstruction = getInstruction();
@@ -420,7 +434,9 @@ export const initWebRtcConversation = async ({
   const sendWebCamDescription = async (description: string) => {
     const isCorrectionExistsBefore = Boolean(instructionState.correction);
     if (isCorrectionExistsBefore) {
-      console.log("Ignoring webcam description update due to existing correction.");
+      console.log(
+        "Ignoring webcam description update due to existing correction.",
+      );
       return;
     }
     updateInstruction({ webCamDescription: description });

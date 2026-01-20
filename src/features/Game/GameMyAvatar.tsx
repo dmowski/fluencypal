@@ -9,7 +9,8 @@ import { Avatar } from "./Avatar";
 
 export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
   const game = useGame();
-  const [isShowAvatarSelector, setIsShowAvatarSelector] = useUrlParam("showAvatarSelector");
+  const [isShowAvatarSelector, setIsShowAvatarSelector] =
+    useUrlParam("showAvatarSelector");
   const { i18n } = useLingui();
   const auth = useAuth();
   const myAuthAvatar = auth.userInfo?.photoURL;
@@ -17,7 +18,10 @@ export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
   return (
     <>
       {isShowAvatarSelector && (
-        <CustomModal onClose={() => setIsShowAvatarSelector(false)} isOpen={isShowAvatarSelector}>
+        <CustomModal
+          onClose={() => setIsShowAvatarSelector(false)}
+          isOpen={isShowAvatarSelector}
+        >
           <Stack
             sx={{
               gap: "30px",
@@ -48,27 +52,29 @@ export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
                 justifyContent: "center",
               }}
             >
-              {[myAuthAvatar || "", ...avatars].filter(Boolean).map((avatar, index) => {
-                const isSelected = avatar === game.myAvatar;
-                return (
-                  <Stack
-                    key={index}
-                    sx={{
-                      cursor: "pointer",
-                    }}
-                  >
-                    <Avatar
-                      url={avatar}
-                      avatarSize="80px"
-                      isSelected={isSelected}
-                      onClick={() => {
-                        game.setAvatar(avatar);
-                        setIsShowAvatarSelector(false);
+              {[myAuthAvatar || "", ...avatars]
+                .filter(Boolean)
+                .map((avatar, index) => {
+                  const isSelected = avatar === game.myAvatar;
+                  return (
+                    <Stack
+                      key={index}
+                      sx={{
+                        cursor: "pointer",
                       }}
-                    />
-                  </Stack>
-                );
-              })}
+                    >
+                      <Avatar
+                        url={avatar}
+                        avatarSize="80px"
+                        isSelected={isSelected}
+                        onClick={() => {
+                          game.setAvatar(avatar);
+                          setIsShowAvatarSelector(false);
+                        }}
+                      />
+                    </Stack>
+                  );
+                })}
             </Stack>
           </Stack>
         </CustomModal>

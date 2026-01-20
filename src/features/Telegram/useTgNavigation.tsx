@@ -56,7 +56,9 @@ function useProvideTgNavigation(): TgNavigationContextType {
 
   const [backStack, setBackStack] = useState<(() => void)[]>([]);
   const backHandler = () => {
-    const lastHandler = backStack.length ? backStack[backStack.length - 1] : null;
+    const lastHandler = backStack.length
+      ? backStack[backStack.length - 1]
+      : null;
     if (lastHandler) {
       lastHandler();
     } else {
@@ -120,15 +122,25 @@ function useProvideTgNavigation(): TgNavigationContextType {
   return { addBackHandler };
 }
 
-export function TgNavigationProvider({ children }: { children: ReactNode }): JSX.Element {
+export function TgNavigationProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideTgNavigation();
-  return <TgNavigationContext.Provider value={hook}>{children}</TgNavigationContext.Provider>;
+  return (
+    <TgNavigationContext.Provider value={hook}>
+      {children}
+    </TgNavigationContext.Provider>
+  );
 }
 
 export const useTgNavigation = (): TgNavigationContextType => {
   const context = useContext(TgNavigationContext);
   if (!context) {
-    throw new Error("useTgNavigation must be used within a TgNavigationProvider");
+    throw new Error(
+      "useTgNavigation must be used within a TgNavigationProvider",
+    );
   }
   return context;
 };

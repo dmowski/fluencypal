@@ -27,19 +27,26 @@ export const useTranslate = () => {
   const planNativeLanguage = plan.activeGoal?.goalQuiz?.nativeLanguageCode;
 
   const targetLanguage = useMemo(() => {
-    const targetCandidates = [nativeLanguageCode, planNativeLanguage, pageLangCode].filter(Boolean);
+    const targetCandidates = [
+      nativeLanguageCode,
+      planNativeLanguage,
+      pageLangCode,
+    ].filter(Boolean);
 
     const candidate =
       targetCandidates.find(
-        (lang) => lang && lang !== learningLanguage && fullLanguagesMap[lang]
+        (lang) => lang && lang !== learningLanguage && fullLanguagesMap[lang],
       ) || null;
 
-    const candidateLangCode = candidate ? fullLanguagesMap[candidate] || null : null;
+    const candidateLangCode = candidate
+      ? fullLanguagesMap[candidate] || null
+      : null;
 
     return candidateLangCode?.languageCode || null;
   }, [nativeLanguageCode, planNativeLanguage, pageLangCode]);
 
-  const isTranslateAvailable = targetLanguage && targetLanguage !== learningLanguage;
+  const isTranslateAvailable =
+    targetLanguage && targetLanguage !== learningLanguage;
 
   const translateText = async ({ text }: { text: string }) => {
     if (!targetLanguage) {
@@ -145,7 +152,9 @@ export const useTranslate = () => {
               >
                 <Markdown variant="conversation">
                   {translatedText?.source ||
-                    (isTranslating ? i18n._("Loading...") : i18n._("No text to translate"))}
+                    (isTranslating
+                      ? i18n._("Loading...")
+                      : i18n._("No text to translate"))}
                 </Markdown>
                 <AudioPlayIcon
                   text={translatedText?.source || ""}
@@ -160,7 +169,8 @@ export const useTranslate = () => {
                 <LoadingShapes sizes={["30px"]} />
               ) : (
                 <Markdown variant="conversation">
-                  {translatedText?.translated || i18n._("No translation available")}
+                  {translatedText?.translated ||
+                    i18n._("No translation available")}
                 </Markdown>
               )}
             </Stack>

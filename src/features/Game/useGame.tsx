@@ -43,7 +43,7 @@ interface GameContextType {
   activeQuestion: GameQuestionShort | null;
   submitAnswer: (
     questionId: string,
-    answer: string
+    answer: string,
   ) => Promise<{ isCorrect: boolean; description: string | null }>;
   nextQuestion: () => void;
   myPosition: number | null;
@@ -83,17 +83,28 @@ function useProvideGame(): GameContextType {
   const settings = useSettings();
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [questions, setQuestions] = useState<GameQuestionShort[]>([]);
-  const [activeQuestion, setActiveQuestion] = useState<GameQuestionShort | null>(null);
+  const [activeQuestion, setActiveQuestion] =
+    useState<GameQuestionShort | null>(null);
 
-  const [modalUserId, setModalUserId] = useUrlState<string | null>("userId", "", false);
+  const [modalUserId, setModalUserId] = useUrlState<string | null>(
+    "userId",
+    "",
+    false,
+  );
 
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
   const [gameRate, gameRateLoading] = useDocumentData(db.documents.gameRate2);
-  const [gameLastVisit, gameLastVisitLoading] = useDocumentData(db.documents.gameLastVisit2);
-  const [gameAvatars, gameAvatarsLoading] = useDocumentData(db.documents.gameAvatars2);
-  const [userNames, userNamesLoading] = useDocumentData(db.documents.gameUserNames2);
+  const [gameLastVisit, gameLastVisitLoading] = useDocumentData(
+    db.documents.gameLastVisit2,
+  );
+  const [gameAvatars, gameAvatarsLoading] = useDocumentData(
+    db.documents.gameAvatars2,
+  );
+  const [userNames, userNamesLoading] = useDocumentData(
+    db.documents.gameUserNames2,
+  );
   const [userAchievements, userAchievementsLoading] = useDocumentData(
-    db.documents.gameUserAchievements2
+    db.documents.gameUserAchievements2,
   );
   const isLoading =
     gameRateLoading ||
@@ -172,7 +183,7 @@ function useProvideGame(): GameContextType {
       {
         [userId]: new Date().toISOString(),
       },
-      { merge: true }
+      { merge: true },
     );
     resetPointsIfNeeded();
   };
@@ -185,7 +196,7 @@ function useProvideGame(): GameContextType {
       {
         [userId]: avatarUrl,
       },
-      { merge: true }
+      { merge: true },
     );
   };
 
@@ -240,7 +251,7 @@ function useProvideGame(): GameContextType {
       {
         nativeLanguageCode,
       },
-      await auth.getToken()
+      await auth.getToken(),
     );
 
     const uniqQuestions = generatedQuestions
@@ -269,12 +280,14 @@ function useProvideGame(): GameContextType {
         questionId,
         answer,
       },
-      await auth.getToken()
+      await auth.getToken(),
     );
     const isCorrect = response.isCorrect;
     const description = response.description;
     if (isCorrect) {
-      const newQuestions = questions.filter((question) => question.id !== questionId);
+      const newQuestions = questions.filter(
+        (question) => question.id !== questionId,
+      );
       setQuestions(newQuestions);
       const isFewQuestions = newQuestions.length < 10;
       if (isFewQuestions) {
@@ -287,7 +300,7 @@ function useProvideGame(): GameContextType {
 
   const nextQuestion = () => {
     const randomArray = shuffleArray(questions).filter(
-      (question) => question.id !== activeQuestion?.id
+      (question) => question.id !== activeQuestion?.id,
     );
     const nextQuestion = randomArray[0] || null;
     setActiveQuestion(nextQuestion);
@@ -304,7 +317,7 @@ function useProvideGame(): GameContextType {
       {
         [userId]: username,
       },
-      { merge: true }
+      { merge: true },
     );
   };
 
@@ -359,7 +372,11 @@ function useProvideGame(): GameContextType {
   };
 }
 
-export function GameProvider({ children }: { children: ReactNode }): JSX.Element {
+export function GameProvider({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const hook = useProvideGame();
   return <GameContext.Provider value={hook}>{children}</GameContext.Provider>;
 }

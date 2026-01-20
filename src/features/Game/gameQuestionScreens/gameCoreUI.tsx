@@ -88,7 +88,9 @@ export const TaskTitle = () => {
         width: "100%",
       }}
     >
-      <Typography variant="body2">{i18n._(typeTitleMap[question.type])}</Typography>
+      <Typography variant="body2">
+        {i18n._(typeTitleMap[question.type])}
+      </Typography>
 
       <Stack
         sx={{
@@ -133,7 +135,9 @@ export const FinishButton = ({
           variant="contained"
           size="large"
           color={isCorrect === null ? "info" : isCorrect ? "success" : "error"}
-          startIcon={isCorrect === null ? <Loader /> : isCorrect ? <Crown /> : <X />}
+          startIcon={
+            isCorrect === null ? <Loader /> : isCorrect ? <Crown /> : <X />
+          }
           endIcon={<ChevronRight />}
           disabled={isCorrect === null}
           onClick={() => {

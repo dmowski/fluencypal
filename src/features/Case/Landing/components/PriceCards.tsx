@@ -1,7 +1,10 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { CircleCheck } from "lucide-react";
 import { H2, SubTitle } from "./Typography";
-import { CurrencyToDisplay, PriceDisplay } from "@/features/Landing/Price/PriceDisplay";
+import {
+  CurrencyToDisplay,
+  PriceDisplay,
+} from "@/features/Landing/Price/PriceDisplay";
 
 export interface Price {
   id: string;
@@ -136,7 +139,10 @@ export const PriceCards = ({
                       {price.label}
                     </Typography>
 
-                    <Stack direction="row" sx={{ alignItems: "baseline", gap: "8px" }}>
+                    <Stack
+                      direction="row"
+                      sx={{ alignItems: "baseline", gap: "8px" }}
+                    >
                       <Stack
                         sx={{
                           flexDirection: "row",
@@ -155,7 +161,9 @@ export const PriceCards = ({
                             },
                           }}
                         >
-                          {price.priceUsd && <PriceDisplay amountInUsd={price.priceUsd} />}
+                          {price.priceUsd && (
+                            <PriceDisplay amountInUsd={price.priceUsd} />
+                          )}
                           {price.priceValue && price.priceValue}
                         </Typography>
 
@@ -169,7 +177,9 @@ export const PriceCards = ({
                             >
                               <CurrencyToDisplay />
                             </Typography>
-                            <Typography variant="caption">{price.priceLabel}</Typography>
+                            <Typography variant="caption">
+                              {price.priceLabel}
+                            </Typography>
                           </Stack>
                         )}
                       </Stack>

@@ -24,10 +24,16 @@ export const ChatPage = ({
   const auth = useAuth();
   const game = useGame();
 
-  const [activeChatId, setActiveChatId] = useUrlState<string>("activeChatId", "", false);
+  const [activeChatId, setActiveChatId] = useUrlState<string>(
+    "activeChatId",
+    "",
+    false,
+  );
   const chatList = useChatList();
 
-  const chatMetadata = chatList.myChats.find((chat) => chat.spaceId === activeChatId);
+  const chatMetadata = chatList.myChats.find(
+    (chat) => chat.spaceId === activeChatId,
+  );
 
   const activeChatBgImage =
     game.gameAvatars[
@@ -50,7 +56,10 @@ export const ChatPage = ({
             type: "global",
           }}
         >
-          <ChatSection contextForAiAnalysis="" isFullContentByDefault={isFullContentByDefault} />
+          <ChatSection
+            contextForAiAnalysis=""
+            isFullContentByDefault={isFullContentByDefault}
+          />
         </ChatProvider>
       ) : (
         <>
@@ -204,7 +213,8 @@ export const ChatPage = ({
                       }}
                     >
                       {chatList.myChats.map((chat, index) => {
-                        const unreadCount = chatList.unreadSpaces[chat.spaceId] || 0;
+                        const unreadCount =
+                          chatList.unreadSpaces[chat.spaceId] || 0;
                         return (
                           <Stack
                             key={chat.spaceId || index}
@@ -281,7 +291,9 @@ const ChatHeaderList = ({ chat }: { chat: UserChatMetadata }) => {
   );
 
   const isOnlyOneUser = allUserIds.length <= 1;
-  const userIds = allUserIds.filter((userId) => isOnlyOneUser || userId !== auth.uid);
+  const userIds = allUserIds.filter(
+    (userId) => isOnlyOneUser || userId !== auth.uid,
+  );
 
   return (
     <>
@@ -320,7 +332,15 @@ const ChatHeaderList = ({ chat }: { chat: UserChatMetadata }) => {
         <Stack>
           {userIds.map((userId) => {
             const userName = game.getUserName(userId);
-            return <UserName size="normal" key={userId} bold userId={userId} userName={userName} />;
+            return (
+              <UserName
+                size="normal"
+                key={userId}
+                bold
+                userId={userId}
+                userName={userName}
+              />
+            );
           })}
         </Stack>
       </Stack>
@@ -343,7 +363,9 @@ const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
   );
 
   const isOnlyOneUser = allUserIds.length <= 1;
-  const userIds = allUserIds.filter((userId) => isOnlyOneUser || userId !== auth.uid);
+  const userIds = allUserIds.filter(
+    (userId) => isOnlyOneUser || userId !== auth.uid,
+  );
   const lastVisited = dayjs(
     userIds
       .map((userId) => game.gameLastVisit?.[userId])
@@ -396,7 +418,13 @@ const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
           {userIds.map((userId) => {
             const userName = game.getUserName(userId);
             return (
-              <UserName size="large" key={userId} userId={userId} userName={userName} center />
+              <UserName
+                size="large"
+                key={userId}
+                userId={userId}
+                userName={userName}
+                center
+              />
             );
           })}
         </Stack>

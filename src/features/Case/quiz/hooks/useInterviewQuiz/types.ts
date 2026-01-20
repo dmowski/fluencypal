@@ -26,11 +26,14 @@ export interface InterviewQuizContextType {
   isCanGoToMainPage: boolean;
   isFirstLoading: boolean;
   survey: InterviewQuizSurvey | null;
-  updateSurvey: (surveyDoc: InterviewQuizSurvey, label: string) => Promise<InterviewQuizSurvey>;
+  updateSurvey: (
+    surveyDoc: InterviewQuizSurvey,
+    label: string,
+  ) => Promise<InterviewQuizSurvey>;
   updateAnswerTranscription: (
     survey: InterviewQuizSurvey,
     stepId: string,
-    answerTranscription: string
+    answerTranscription: string,
   ) => Promise<InterviewQuizSurvey>;
   isAnalyzingInputs: Record<string, boolean>;
   isAnalyzingInputsError: Record<string, string>;
@@ -41,7 +44,7 @@ export interface InterviewQuizContextType {
   updateSelectedOptionsForStep: (
     survey: InterviewQuizSurvey,
     stepId: string,
-    selectedOptions: QuizOption[]
+    selectedOptions: QuizOption[],
   ) => Promise<InterviewQuizSurvey>;
 
   isRedirecting: boolean;
