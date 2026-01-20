@@ -124,7 +124,7 @@ export async function POST(request: Request) {
       const months = session.metadata?.amountOfMonths;
       const days = session.metadata?.amountOfDays;
 
-      if (days) {
+      if (days && days !== "0") {
         const daysCount = parseInt(days, 10);
         if (daysCount <= 0) throw new Error("Amount of days is not set");
 
@@ -140,7 +140,7 @@ export async function POST(request: Request) {
           receiptUrl,
           daysCount: daysCount,
         });
-      } else if (months) {
+      } else if (months && months !== "0") {
         const monthsCount = parseInt(months, 10);
         if (monthsCount <= 0) throw new Error("Amount of months is not set");
 
