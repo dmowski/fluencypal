@@ -419,7 +419,7 @@ VISUAL_CONTEXT (latest): ${description}
 ${lessonPlan.steps
   .map(
     (step: LessonPlanStep, index: number) =>
-      `${index + 1}. ${step.stepTitle}\n${step.teacherInstructions}`
+      `${index + 1}. ${step.stepTitle}\n${step.teacherInstructions}`,
   )
   .join("\n")}
 `
@@ -523,7 +523,7 @@ Don't focus solely on one topic. Try to cover a variety of topics (Example\n${po
 ${openerInfoPrompt}
 Do not teach or explain rules—just talk.
 You should be friendly and engaging.
-Don't make user feel like they are being tested and feel stupid.
+Don't make user feel like they are being tested and feel stupid. Ask only one question at a time or even without questions.
 If you feel that the user is struggling, you can propose a new topic.
 Engage in a natural conversation without making it feel like a lesson.
 
@@ -536,6 +536,8 @@ ${
 ${voiceInstructions}
 
 ${getConversationStarterMessagePrompt(startFirstMessage)}
+
+During conversation ask only one question at a time or even without questions.
     `,
       };
     }
@@ -693,7 +695,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
       setErrorInitiating(
         isNotAllowedError
           ? "Please enable microphone access to start the conversation. Error code:" + `${e}`
-          : "Please check you microphone access and try to refresh page. Error code:" + `${e}`
+          : "Please check you microphone access and try to refresh page. Error code:" + `${e}`,
       );
       setIsInitializing("");
       throw e;
