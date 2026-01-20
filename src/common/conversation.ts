@@ -13,6 +13,7 @@ export interface ChatMessage {
   isBot: boolean;
   text: string;
   previousId?: string | null;
+  isInProgress?: boolean;
 }
 
 export interface UserConversationsMeta {
