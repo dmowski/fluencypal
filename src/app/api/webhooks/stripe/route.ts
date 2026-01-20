@@ -157,8 +157,7 @@ export async function POST(request: Request) {
           monthsCount: monthsCount,
         });
       } else {
-        const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? "0");
-        if (amountOfHours <= 0) throw new Error("Amount of hours is not set");
+        const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? "0") || 1;
 
         const tgMessage = `User ${userEmail} purchased ${amountOfHours} hours.`;
         sentSupportTelegramMessage({ message: tgMessage, userId });
