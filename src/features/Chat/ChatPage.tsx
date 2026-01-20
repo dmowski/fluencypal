@@ -11,6 +11,7 @@ import { Avatar } from "../Game/Avatar";
 import { uniq } from "@/libs/uniq";
 import { UserChatMetadata } from "./type";
 import dayjs from "dayjs";
+import { UserName } from "../User/UserName";
 
 export const ChatPage = ({
   type,
@@ -276,12 +277,11 @@ const ChatHeaderList = ({ chat }: { chat: UserChatMetadata }) => {
       if (a === auth.uid) return -1;
       if (b === auth.uid) return 1;
       return 0;
-    }) || []
+    }) || [],
   );
 
   const isOnlyOneUser = allUserIds.length <= 1;
   const userIds = allUserIds.filter((userId) => isOnlyOneUser || userId !== auth.uid);
-  const userNames = userIds.map((userId) => game.getUserName(userId)).join(", ");
 
   return (
     <>
@@ -317,14 +317,12 @@ const ChatHeaderList = ({ chat }: { chat: UserChatMetadata }) => {
 
           {!chat.type && i18n._("Chat")}
         </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            fontWeight: 600,
-          }}
-        >
-          {userNames}
-        </Typography>
+        <Stack>
+          {userIds.map((userId) => {
+            const userName = game.getUserName(userId);
+            return <UserName size="normal" key={userId} bold userId={userId} userName={userName} />;
+          })}
+        </Stack>
       </Stack>
     </>
   );
@@ -341,17 +339,16 @@ const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
       if (a === auth.uid) return -1;
       if (b === auth.uid) return 1;
       return 0;
-    }) || []
+    }) || [],
   );
 
   const isOnlyOneUser = allUserIds.length <= 1;
   const userIds = allUserIds.filter((userId) => isOnlyOneUser || userId !== auth.uid);
-  const userNames = userIds.map((userId) => game.getUserName(userId)).join(", ");
   const lastVisited = dayjs(
     userIds
       .map((userId) => game.gameLastVisit?.[userId])
       .sort()
-      .reverse()[0] || Date.now()
+      .reverse()[0] || Date.now(),
   ).fromNow();
 
   return (
@@ -370,7 +367,13 @@ const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
                 marginLeft: index === 0 ? "0" : "-30px",
               }}
             >
-              <Avatar url={game.getUserAvatarUrl(userId)} avatarSize={"90px"} />
+              <Avatar
+                url={game.getUserAvatarUrl(userId)}
+                avatarSize={"90px"}
+                onClick={() => {
+                  game.showUserInModal(userId);
+                }}
+              />
             </Stack>
           );
         })}
@@ -389,17 +392,14 @@ const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
           {!chat.type && i18n._("Chat")}
         </Typography>
 
-        <Typography
-          variant="h4"
-          sx={{
-            //fontWeight: 600,
-            "@media (max-width: 600px)": {
-              fontSize: "23px",
-            },
-          }}
-        >
-          {userNames}
-        </Typography>
+        <Stack>
+          {userIds.map((userId) => {
+            const userName = game.getUserName(userId);
+            return (
+              <UserName size="large" key={userId} userId={userId} userName={userName} center />
+            );
+          })}
+        </Stack>
 
         <Typography
           variant="caption"

@@ -25,6 +25,7 @@ import { MessageActionButton } from "./MessageActionButton";
 import { useTranslate } from "../Translation/useTranslate";
 import { Avatar } from "../Game/Avatar";
 import { CircleEllipsis } from "lucide-react";
+import { UserName } from "../User/UserName";
 
 const limitMessages = 300;
 
@@ -270,7 +271,8 @@ export function Message({
                   backgroundColor: "transparent",
                   color: "inherit",
                   border: "none",
-                  padding: isContentWide ? "10px 0" : "0",
+                  padding: isContentWide ? "10px 0" : "0 0 0 0",
+                  paddingBottom: "4px",
                   ":focus": {
                     outline: "none",
                     boxShadow: "0 0 0 2px rgba(41, 179, 229, 0.5)",
@@ -279,18 +281,13 @@ export function Message({
                 component={"button"}
                 onClick={() => game.showUserInModal(message.senderId)}
               >
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontWeight: 600,
-                  }}
-                >
-                  {userName}
-                </Typography>
+                <UserName userId={message.senderId} userName={userName} bold />
+
                 <Typography
                   variant="caption"
                   sx={{
                     opacity: 0.6,
+                    lineHeight: "1",
 
                     i: {
                       fontStyle: "normal",
@@ -300,8 +297,7 @@ export function Message({
                     span: {},
                   }}
                 >
-                  <span>{updatedAgo}</span>
-
+                  {updatedAgo}
                   {message.updatedAtIso !== message.createdAtIso && <i>{i18n._("edited")}</i>}
                 </Typography>
               </Stack>

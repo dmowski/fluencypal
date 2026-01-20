@@ -9,6 +9,7 @@ import { UsersStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { GamePointRow } from "./GamePointRow";
 import { Avatar } from "./Avatar";
+import { UserName } from "../User/UserName";
 
 export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
   const game = useGame();
@@ -83,14 +84,8 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
             justifyContent: "center",
           }}
         >
-          <Typography
-            variant="body1"
-            sx={{
-              lineHeight: "1",
-            }}
-          >
-            {userName}
-          </Typography>
+          <UserName userId={stat.userId} userName={userName} />
+
           <Stack
             sx={{
               flexDirection: "row",
