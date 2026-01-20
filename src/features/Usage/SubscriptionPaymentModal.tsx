@@ -371,14 +371,6 @@ export const SubscriptionPaymentModal = () => {
     if (isDevEmail) {
       return;
     }
-
-    if (!isTelegramApp) {
-      sentPaymentTgMessage({
-        message: "Event: Press on Pay Button",
-        email: auth?.userInfo?.email || "unknownEmail",
-        token: await auth.getToken(),
-      });
-    }
   };
 
   const isActiveSubscription = usage.isFullAccess;
