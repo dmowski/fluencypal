@@ -99,7 +99,7 @@ interface ConversationCanvasProps {
   openNextLesson: () => void;
 
   addTranscriptDelta: (transcripts: string) => void;
-  triggerResponse: () => void;
+  completeUserMessageDelta: () => void;
 
   recordingVoiceMode: RecordingUserMessageMode;
 }
@@ -145,7 +145,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   lessonPlanAnalysis,
   openNextLesson,
 
-  triggerResponse,
+  completeUserMessageDelta,
   addTranscriptDelta,
 
   recordingVoiceMode,
@@ -361,7 +361,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             showAnalyzeConversationModal();
           }}
           addTranscriptDelta={addTranscriptDelta}
-          triggerResponse={triggerResponse}
+          completeUserMessageDelta={completeUserMessageDelta}
         />
       </Modal>
     );

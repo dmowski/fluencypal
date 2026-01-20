@@ -40,4 +40,7 @@ export type ConversationInstance = {
   toggleVolume: (isVolumeOn: boolean) => void;
   sendWebCamDescription: (description: string) => void;
   sendCorrectionInstruction: (correction: string) => void;
+
+  addUserMessageDelta: (delta: string) => void;
+  completeUserMessageDelta: () => void;
 };

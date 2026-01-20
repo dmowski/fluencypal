@@ -14,7 +14,7 @@ import { ConversationConfig, ConversationInstance } from "./types";
 const sendSdpOffer = async (
   offer: RTCSessionDescriptionInit,
   model: RealTimeModel,
-  getAuthToken: () => Promise<string>
+  getAuthToken: () => Promise<string>,
 ): Promise<string> => {
   try {
     if (!offer.sdp) {
@@ -430,6 +430,16 @@ export const initWebRtcConversation = async ({
     updateInstruction({ correction });
   };
 
+  const addUserMessageDelta = (delta: string) => {
+    // not supported in WebRTC mode
+    console.warn("addUserMessageDelta is not supported in WebRTC mode");
+  };
+
+  const completeUserMessageDelta = () => {
+    // not supported in WebRTC mode
+    console.warn("completeUserMessageDelta is not supported in WebRTC mode");
+  };
+
   return {
     closeHandler,
 
@@ -441,5 +451,7 @@ export const initWebRtcConversation = async ({
 
     sendWebCamDescription,
     sendCorrectionInstruction,
+    addUserMessageDelta,
+    completeUserMessageDelta,
   };
 };
