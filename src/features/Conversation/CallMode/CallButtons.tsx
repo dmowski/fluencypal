@@ -23,7 +23,7 @@ import { useVadAudioRecorder } from "@/features/Audio/useVadAudioRecorder";
 import { CallButton } from "./CallButton";
 import { useTextAi } from "@/features/Ai/useTextAi";
 
-const IS_USE_VAD = false;
+const IS_USE_VAD = true;
 
 export const CallButtons = ({
   isMuted,
@@ -460,7 +460,7 @@ Examples:
                 />
               )}
 
-              {isRealTimeConversation && (
+              {isRealTimeConversation && !IS_USE_VAD && (
                 <CallButton
                   activeButton={<MicIcon />}
                   inactiveButton={<MicOffIcon />}
@@ -470,7 +470,7 @@ Examples:
                 />
               )}
 
-              {!isRealTimeConversation && (
+              {!isRealTimeConversation && !IS_USE_VAD && (
                 <CallButton
                   activeButton={<MicIcon />}
                   inactiveButton={<MicOffIcon />}
