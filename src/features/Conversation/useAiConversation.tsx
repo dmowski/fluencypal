@@ -13,7 +13,7 @@ import { ChatMessage, ConversationType, MessagesOrderMap } from "@/common/conver
 import { useTasks } from "../Tasks/useTasks";
 import { sleep } from "@/libs/sleep";
 import { ConversationIdea, useAiUserInfo } from "../Ai/useAiUserInfo";
-import { GuessGameStat } from "./types";
+import { GuessGameStat, RecordingUserMessageMode } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { firstAiMessage } from "@/features/Lang/lang";
 import { GoalElementInfo } from "../Plan/types";
@@ -101,6 +101,7 @@ interface AiConversationContextType {
 
   lessonPlanAnalysis: LessonPlanAnalysis | null;
   setLessonPlanAnalysis: (analysis: LessonPlanAnalysis | null) => void;
+  recordingVoiceMode: RecordingUserMessageMode;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -122,6 +123,8 @@ function useProvideAiConversation(): AiConversationContextType {
   const [voice, setVoice] = useState<AiVoice | null>(null);
   const [lessonPlanAnalysis, setLessonPlanAnalysis] = useState<LessonPlanAnalysis | null>(null);
   const [lessonPlan, setLessonPlan] = useState<LessonPlan | null>(null);
+
+  const [recordingVoiceMode, setRecordingVoiceMode] = useState<RecordingUserMessageMode>("VAD");
 
   const updateLessonPlanAnalysis = async (analysis: LessonPlanAnalysis | null) => {
     setLessonPlanAnalysis(analysis);
@@ -671,6 +674,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
       }
 
       const isUseRtc = input.mode === "talk";
+      setRecordingVoiceMode(isUseRtc ? "RealTimeConversation" : "PushToTalk");
+
       const initConversation = isUseRtc ? initWebRtcConversation : initTextConversation;
 
       const conversation = await initConversation({
@@ -766,6 +771,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 
     lessonPlanAnalysis,
     setLessonPlanAnalysis: updateLessonPlanAnalysis,
+
+    recordingVoiceMode,
   };
 }
 

@@ -230,7 +230,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         voice="shimmer"
         toggleConversationMode={(mode: ConversationMode): void => setConversationMode(mode)}
         openNextLesson={() => {}}
-        isRealTimeConversation={false}
+        recordingVoiceMode="VAD"
       />
     </Stack>
   );

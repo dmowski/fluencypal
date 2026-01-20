@@ -36,7 +36,7 @@ import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 
 import { AliasGamePanel } from "./AliasGamePanel";
 import { ChatMessage, MessagesOrderMap } from "@/common/conversation";
-import { GuessGameStat } from "./types";
+import { GuessGameStat, RecordingUserMessageMode } from "./types";
 import dayjs from "dayjs";
 import { useLingui } from "@lingui/react";
 import { ConversationResult } from "../Plan/types";
@@ -97,10 +97,11 @@ interface ConversationCanvasProps {
   lessonPlanAnalysis: LessonPlanAnalysis | null;
 
   openNextLesson: () => void;
-  isRealTimeConversation: boolean;
 
   addTranscriptDelta: (transcripts: string) => void;
   triggerResponse: () => void;
+
+  recordingVoiceMode: RecordingUserMessageMode;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -143,10 +144,11 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
   lessonPlanAnalysis,
   openNextLesson,
-  isRealTimeConversation,
 
   triggerResponse,
   addTranscriptDelta,
+
+  recordingVoiceMode,
 }) => {
   const { i18n } = useLingui();
   const isChatMode = conversationMode === "chat";
@@ -353,7 +355,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
           onLimitedClick={onLimitedClick}
           onSubmitTranscription={addUserMessage}
           isCompletedLesson={isCompletedLesson}
-          isRealTimeConversation={isRealTimeConversation}
+          recordingVoiceMode={recordingVoiceMode}
           onShowAnalyzeConversationModal={() => {
             toggleConversationMode("record");
             showAnalyzeConversationModal();

@@ -17,6 +17,7 @@ import { ScanLine } from "lucide-react";
 import { sleep } from "@/libs/sleep";
 import { LessonPlanAnalysis } from "@/features/LessonPlan/type";
 import { getAiVoiceByVoice } from "./voiceAvatar";
+import { RecordingUserMessageMode } from "../types";
 
 export const CameraCanvas = ({
   conversation,
@@ -38,9 +39,10 @@ export const CameraCanvas = ({
   isCompletedLesson,
   onShowAnalyzeConversationModal,
   lessonPlanAnalysis,
-  isRealTimeConversation,
+
   addTranscriptDelta,
   triggerResponse,
+  recordingVoiceMode,
 }: {
   conversation: ChatMessage[];
   stopCallMode: () => void;
@@ -63,10 +65,10 @@ export const CameraCanvas = ({
 
   lessonPlanAnalysis: LessonPlanAnalysis | null;
 
-  isRealTimeConversation: boolean;
-
   addTranscriptDelta: (transcripts: string) => void;
   triggerResponse: () => void;
+
+  recordingVoiceMode: RecordingUserMessageMode;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -268,7 +270,7 @@ export const CameraCanvas = ({
           <CallButtons
             isMuted={isMuted}
             setIsMuted={setIsMuted}
-            isRealTimeConversation={isRealTimeConversation}
+            recordingVoiceMode={recordingVoiceMode}
             isWebCamEnabled={isWebCamEnabled}
             toggleWebCam={(isToggleOn: boolean) => {
               if (isToggleOn) {

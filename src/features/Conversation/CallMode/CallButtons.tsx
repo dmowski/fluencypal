@@ -22,8 +22,7 @@ import { useLessonPlan } from "@/features/LessonPlan/useLessonPlan";
 import { useVadAudioRecorder } from "@/features/Audio/useVadAudioRecorder";
 import { CallButton } from "./CallButton";
 import { useTextAi } from "@/features/Ai/useTextAi";
-
-const IS_USE_VAD = true;
+import { RecordingUserMessageMode } from "../types";
 
 export const CallButtons = ({
   isMuted,
@@ -45,10 +44,10 @@ export const CallButtons = ({
 
   lessonPlanAnalysis,
   onShowAnalyzeConversationModal,
-  isRealTimeConversation,
 
   addTranscriptDelta,
   triggerResponse,
+  recordingVoiceMode,
 }: {
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
@@ -69,10 +68,10 @@ export const CallButtons = ({
   lessonPlanAnalysis: LessonPlanAnalysis | null;
   onShowAnalyzeConversationModal: () => void;
 
-  isRealTimeConversation: boolean;
-
   addTranscriptDelta: (transcripts: string) => void;
   triggerResponse: () => void;
+
+  recordingVoiceMode: RecordingUserMessageMode;
 }) => {
   const { i18n } = useLingui();
 
@@ -398,7 +397,7 @@ Examples:
             </>
           ) : (
             <>
-              {IS_USE_VAD && (
+              {recordingVoiceMode === "VAD" && (
                 <CallButton
                   activeButton={
                     <Stack
@@ -460,17 +459,17 @@ Examples:
                 />
               )}
 
-              {isRealTimeConversation && !IS_USE_VAD && (
+              {recordingVoiceMode === "RealTimeConversation" && (
                 <CallButton
                   activeButton={<MicIcon />}
                   inactiveButton={<MicOffIcon />}
                   isActive={isMuted === false}
-                  label={i18n._("Record Message")}
+                  label={i18n._("Enable microphone")}
                   onClick={() => setIsMuted(false)}
                 />
               )}
 
-              {!isRealTimeConversation && !IS_USE_VAD && (
+              {recordingVoiceMode === "PushToTalk" && (
                 <CallButton
                   activeButton={<MicIcon />}
                   inactiveButton={<MicOffIcon />}

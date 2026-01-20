@@ -93,7 +93,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
       <ConversationCanvas
         addTranscriptDelta={() => {}}
         triggerResponse={() => {}}
-        isRealTimeConversation={aiConversation.currentMode === "talk"}
+        recordingVoiceMode={aiConversation.recordingVoiceMode}
         pointsEarned={conversationAnalysis.gamePointsEarned}
         analyzeConversation={conversationAnalysis.analyzeConversation}
         conversationAnalysisResult={conversationAnalysis.conversationAnalysis}
