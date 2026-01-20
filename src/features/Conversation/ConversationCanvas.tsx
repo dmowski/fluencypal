@@ -98,6 +98,9 @@ interface ConversationCanvasProps {
 
   openNextLesson: () => void;
   isRealTimeConversation: boolean;
+
+  addTranscriptDelta: (transcripts: string) => void;
+  triggerResponse: () => void;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -141,6 +144,9 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   lessonPlanAnalysis,
   openNextLesson,
   isRealTimeConversation,
+
+  triggerResponse,
+  addTranscriptDelta,
 }) => {
   const { i18n } = useLingui();
   const isChatMode = conversationMode === "chat";
@@ -352,6 +358,8 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             toggleConversationMode("record");
             showAnalyzeConversationModal();
           }}
+          addTranscriptDelta={addTranscriptDelta}
+          triggerResponse={triggerResponse}
         />
       </Modal>
     );
