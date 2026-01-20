@@ -102,6 +102,9 @@ interface AiConversationContextType {
   lessonPlanAnalysis: LessonPlanAnalysis | null;
   setLessonPlanAnalysis: (analysis: LessonPlanAnalysis | null) => void;
   recordingVoiceMode: RecordingUserMessageMode;
+
+  completeUserMessageDelta: () => void;
+  addUserMessageDelta: (delta: string) => void;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -139,6 +142,14 @@ function useProvideAiConversation(): AiConversationContextType {
       //const correctionInstruction = getCorrectionInstruction(correction);
       //communicatorRef.current?.sendCorrectionInstruction(correctionInstruction);
     }
+  };
+
+  const completeUserMessageDelta = () => {
+    communicatorRef.current?.completeUserMessageDelta();
+  };
+
+  const addUserMessageDelta = (delta: string) => {
+    communicatorRef.current?.addUserMessageDelta(delta);
   };
 
   const aiModal = MODELS.REALTIME_CONVERSATION;
@@ -674,7 +685,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
       }
 
       const isUseRtc = input.mode === "talk";
-      setRecordingVoiceMode(isUseRtc ? "RealTimeConversation" : "PushToTalk");
+      setRecordingVoiceMode(isUseRtc ? "RealTimeConversation" : "VAD");
 
       const initConversation = isUseRtc ? initWebRtcConversation : initTextConversation;
 
@@ -773,6 +784,9 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     setLessonPlanAnalysis: updateLessonPlanAnalysis,
 
     recordingVoiceMode,
+
+    completeUserMessageDelta,
+    addUserMessageDelta,
   };
 }
 

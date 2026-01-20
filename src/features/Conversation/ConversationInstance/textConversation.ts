@@ -43,7 +43,7 @@ export const initTextConversation = async ({
 
   // Generate unique message ID
   const generateMessageId = (): string => {
-    return `msg_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+    return `${Date.now()}`;
   };
 
   // Build system message from instruction parts
@@ -155,13 +155,17 @@ export const initTextConversation = async ({
     }
   };
 
+  const getLastMessageId = (): string | null => {
+    if (conversationHistory.length === 0) {
+      return null;
+    }
+    return conversationHistory[conversationHistory.length - 1].id;
+  };
+
   // Add user message
   const addUserChatMessage = (message: string): void => {
     const userMessageId = generateMessageId();
-    const previousMessageId =
-      conversationHistory.length > 0
-        ? conversationHistory[conversationHistory.length - 1].id
-        : null;
+    const previousMessageId = getLastMessageId();
 
     const userMessage: ChatMessage = {
       id: userMessageId,
@@ -226,6 +230,42 @@ export const initTextConversation = async ({
     onOpen();
   }, 10);
 
+  const addUserMessageDelta = (delta: string) => {
+    const lastMessage = conversationHistory[conversationHistory.length - 1];
+    if (lastMessage && !lastMessage.isBot) {
+      lastMessage.text = `${lastMessage.text} ${delta}`.trim();
+      onMessage(lastMessage);
+    } else {
+      const previousMessageId = getLastMessageId();
+      const messageId = generateMessageId();
+      const newMessage: ChatMessage = {
+        isBot: false,
+        text: delta,
+        id: messageId,
+        isInProgress: true,
+        previousId: previousMessageId,
+      };
+      if (previousMessageId) {
+        onMessageOrder({
+          [previousMessageId]: messageId,
+        });
+      }
+      conversationHistory.push(newMessage);
+      onMessage(newMessage);
+    }
+  };
+
+  const completeUserMessageDelta = () => {
+    const lastMessage = conversationHistory[conversationHistory.length - 1];
+    if (lastMessage && lastMessage.isInProgress) {
+      const updatedMessage: ChatMessage = {
+        ...lastMessage,
+        isInProgress: false,
+      };
+      onMessage(updatedMessage);
+    }
+  };
+
   return {
     closeHandler,
     addUserChatMessage,
@@ -234,5 +274,7 @@ export const initTextConversation = async ({
     toggleVolume,
     sendWebCamDescription,
     sendCorrectionInstruction,
+    addUserMessageDelta,
+    completeUserMessageDelta,
   };
 };

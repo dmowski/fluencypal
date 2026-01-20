@@ -91,8 +91,8 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   return (
     <Stack>
       <ConversationCanvas
-        addTranscriptDelta={() => {}}
-        triggerResponse={() => {}}
+        addTranscriptDelta={aiConversation.addUserMessageDelta}
+        completeUserMessageDelta={aiConversation.completeUserMessageDelta}
         recordingVoiceMode={aiConversation.recordingVoiceMode}
         pointsEarned={conversationAnalysis.gamePointsEarned}
         analyzeConversation={conversationAnalysis.analyzeConversation}

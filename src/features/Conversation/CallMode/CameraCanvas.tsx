@@ -41,7 +41,7 @@ export const CameraCanvas = ({
   lessonPlanAnalysis,
 
   addTranscriptDelta,
-  triggerResponse,
+  completeUserMessageDelta,
   recordingVoiceMode,
 }: {
   conversation: ChatMessage[];
@@ -66,7 +66,7 @@ export const CameraCanvas = ({
   lessonPlanAnalysis: LessonPlanAnalysis | null;
 
   addTranscriptDelta: (transcripts: string) => void;
-  triggerResponse: () => void;
+  completeUserMessageDelta: () => void;
 
   recordingVoiceMode: RecordingUserMessageMode;
 }) => {
@@ -290,7 +290,7 @@ export const CameraCanvas = ({
             onShowAnalyzeConversationModal={onShowAnalyzeConversationModal}
             lessonPlanAnalysis={lessonPlanAnalysis}
             addTranscriptDelta={addTranscriptDelta}
-            triggerResponse={triggerResponse}
+            completeUserMessageDelta={completeUserMessageDelta}
           />
         </Stack>
       </Stack>

@@ -83,7 +83,7 @@ function useProvideLessonPlan(): LessonPlanContextType {
   const activeConversation = getActiveConversation();
 
   const generateAnalysis = async (
-    temporaryUserMessage?: string
+    temporaryUserMessage?: string,
   ): Promise<LessonPlanAnalysis | null> => {
     if (!activeLessonPlan || !isActiveConversation) {
       return null;
@@ -174,8 +174,9 @@ ${JSON.stringify(previousProgress, null, 2)}
   const isAnalyzingConversationInProgress = useRef(false);
 
   const analyzeActiveConversation = async () => {
-    const isLastConversationBot = activeConversation.lastMessage?.isBot;
-    if (isLastConversationBot) {
+    const isSkipMessage =
+      activeConversation.lastMessage?.isBot || activeConversation.lastMessage?.isInProgress;
+    if (isSkipMessage) {
       console.log("Waiting for user message to analyze...");
       return;
     }

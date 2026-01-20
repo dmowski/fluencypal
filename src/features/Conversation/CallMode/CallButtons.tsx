@@ -46,7 +46,7 @@ export const CallButtons = ({
   onShowAnalyzeConversationModal,
 
   addTranscriptDelta,
-  triggerResponse,
+  completeUserMessageDelta,
   recordingVoiceMode,
 }: {
   isMuted: boolean;
@@ -69,7 +69,7 @@ export const CallButtons = ({
   onShowAnalyzeConversationModal: () => void;
 
   addTranscriptDelta: (transcripts: string) => void;
-  triggerResponse: () => void;
+  completeUserMessageDelta: () => void;
 
   recordingVoiceMode: RecordingUserMessageMode;
 }) => {
@@ -91,9 +91,9 @@ Examples:
 'In my opinion,': 6500
 'No': 2000
 'Yes, I agree.': 2000
-'I think the answer is 42.': 1000
+'I think the answer is 42.': 2000
 'I think the answer is 42, because': 5000
-'Hello, how are you?': 1500
+'Hello, how are you?': 2500
 `,
       userMessage: message,
       model: "gpt-4o",
@@ -101,7 +101,7 @@ Examples:
 
     console.log("response:", response, message);
 
-    return parseInt(response.trim());
+    return Math.max(2000, parseInt(response.trim()));
   };
 
   const [isShowVolumeWarning, setIsShowVolumeWarning] = useState(false);
@@ -207,6 +207,8 @@ Examples:
         const newTranscript = prev + " " + transcript;
         return newTranscript;
       });
+
+      await lessonPlan.generateAnalysis(updatedTranscript);
     },
 
     silenceMs: 400,
@@ -247,7 +249,7 @@ Examples:
     const tick = 100;
 
     if (beforeSendingTimeout <= tick) {
-      triggerResponse();
+      completeUserMessageDelta();
       setTranscriptStack("");
       setBeforeSendingTimeout(null);
       return;
@@ -414,7 +416,7 @@ Examples:
 
                       <Stack
                         sx={{
-                          opacity: waitingPercent > 0 ? 0.7 : 0,
+                          opacity: waitingPercent > 0 ? 0.4 : 0,
                           position: "absolute",
                           top: "-13px",
                           left: "-13px",
