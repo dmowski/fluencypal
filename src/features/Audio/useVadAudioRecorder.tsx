@@ -37,7 +37,7 @@ export const useVadAudioRecorder = ({
       const transcriptResponse = await sendTranscriptRequest({
         audioBlob: recordedAudioBlog,
         authKey: token,
-        languageCode: "ru",
+        languageCode: learnLanguageCode,
         audioDuration: durationSeconds,
         format,
       });
