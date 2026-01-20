@@ -181,7 +181,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
     <Stack>
       <ConversationCanvas
         addTranscriptDelta={addTranscriptDelta}
-        triggerResponse={triggerResponse}
+        completeUserMessageDelta={triggerResponse}
         openCommunityPage={() => {}}
         pointsEarned={12}
         messageOrder={{}}
