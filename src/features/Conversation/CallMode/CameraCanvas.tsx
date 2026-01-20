@@ -122,7 +122,7 @@ export const CameraCanvas = ({
 
   useEffect(() => {
     if (!isTimeToScreenshots) return;
-    analyzeWebcam();
+    // analyzeWebcam();
   }, [isTimeToScreenshots, screenshotTimer]);
 
   useEffect(() => {
