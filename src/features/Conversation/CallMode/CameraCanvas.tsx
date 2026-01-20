@@ -39,6 +39,8 @@ export const CameraCanvas = ({
   onShowAnalyzeConversationModal,
   lessonPlanAnalysis,
   isRealTimeConversation,
+  addTranscriptDelta,
+  triggerResponse,
 }: {
   conversation: ChatMessage[];
   stopCallMode: () => void;
@@ -62,6 +64,9 @@ export const CameraCanvas = ({
   lessonPlanAnalysis: LessonPlanAnalysis | null;
 
   isRealTimeConversation: boolean;
+
+  addTranscriptDelta: (transcripts: string) => void;
+  triggerResponse: () => void;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -282,6 +287,8 @@ export const CameraCanvas = ({
             toggleSubtitles={(isToggleOn) => setIsSubtitlesEnabled(isToggleOn)}
             onShowAnalyzeConversationModal={onShowAnalyzeConversationModal}
             lessonPlanAnalysis={lessonPlanAnalysis}
+            addTranscriptDelta={addTranscriptDelta}
+            triggerResponse={triggerResponse}
           />
         </Stack>
       </Stack>

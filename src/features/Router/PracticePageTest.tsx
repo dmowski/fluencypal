@@ -151,9 +151,37 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
     ]);
   };
 
+  const addTranscriptDelta = (delta: string) => {
+    setTestMessage((prevMessages) => {
+      const lastMessage = prevMessages[prevMessages.length - 1];
+      if (lastMessage && !lastMessage.isBot) {
+        const updatedMessage = {
+          ...lastMessage,
+          text: `${lastMessage.text} ${delta}`.trim(),
+        };
+        return [...prevMessages.slice(0, -1), updatedMessage];
+      } else {
+        return [...prevMessages, { isBot: false, text: delta, id: `${Date.now()}` }];
+      }
+    });
+  };
+
+  const triggerResponse = async () => {
+    setTestMessage((prevMessages) => [
+      ...prevMessages,
+      {
+        isBot: true,
+        text: `Got it. Let me think about that..`,
+        id: `${Date.now()}`,
+      },
+    ]);
+  };
+
   return (
     <Stack>
       <ConversationCanvas
+        addTranscriptDelta={addTranscriptDelta}
+        triggerResponse={triggerResponse}
         openCommunityPage={() => {}}
         pointsEarned={12}
         messageOrder={{}}
