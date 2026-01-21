@@ -69,7 +69,7 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick: () => void 
                 iconName: 'volume-2',
               },
               {
-                title: i18n._('Voice conversations without delays'),
+                title: i18n._('Voice conversations'),
                 iconName: 'mic',
               },
             ]}
