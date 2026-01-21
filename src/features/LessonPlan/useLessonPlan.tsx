@@ -38,7 +38,7 @@ function useProvideLessonPlan(): LessonPlanContextType {
 
   const isActiveConversation = aiConversation.conversation.length > 0 && aiConversation.isStarted;
 
-  const [lessonAnalysisResult, setLessonAnalysisResult] = useState<
+  const lessonAnalysisResult = useRef<
     Record<string, Promise<LessonPlanAnalysis> | null | undefined>
   >({});
 
@@ -95,7 +95,7 @@ function useProvideLessonPlan(): LessonPlanContextType {
 
     const key = `${activeConversation.lastMessageIndex}_${activeConversation.lastMessageText}`;
 
-    const activeResult = lessonAnalysisResult[key];
+    const activeResult = lessonAnalysisResult.current[key];
     if (activeResult) {
       return activeResult;
     }
@@ -152,7 +152,11 @@ ${JSON.stringify(previousProgress, null, 2)}
         });
         const end = Date.now();
 
-        console.log(`result ${(end - start) / 1000} seconds`, JSON.stringify({ result }, null, 2));
+        console.log(
+          `result ${(end - start) / 1000} seconds`,
+          '|' + activeConversation.lastMessageText + '|',
+          JSON.stringify({ result }, null, 2),
+        );
 
         if (result) {
           resolve(result);
@@ -164,10 +168,7 @@ ${JSON.stringify(previousProgress, null, 2)}
       }
     });
 
-    setLessonAnalysisResult((prev) => ({
-      ...prev,
-      [key]: process,
-    }));
+    lessonAnalysisResult.current[key] = process;
     return process;
   };
 
