@@ -692,7 +692,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       const isUseRtc = input.mode === 'talk';
       // "VAD"
       // "PushToTalk"
-      setRecordingVoiceMode(isUseRtc ? 'RealTimeConversation' : 'PushToTalk');
+      setRecordingVoiceMode(isUseRtc ? 'RealTimeConversation' : 'VAD');
 
       const initConversation = isUseRtc ? initWebRtcConversation : initTextConversation;
 
