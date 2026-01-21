@@ -127,7 +127,8 @@ function useProvideAiConversation(): AiConversationContextType {
   const [lessonPlanAnalysis, setLessonPlanAnalysis] = useState<LessonPlanAnalysis | null>(null);
   const [lessonPlan, setLessonPlan] = useState<LessonPlan | null>(null);
 
-  const [recordingVoiceMode, setRecordingVoiceMode] = useState<RecordingUserMessageMode>('VAD');
+  const [recordingVoiceMode, setRecordingVoiceMode] =
+    useState<RecordingUserMessageMode>('PushToTalk');
 
   const updateLessonPlanAnalysis = async (analysis: LessonPlanAnalysis | null) => {
     setLessonPlanAnalysis(analysis);
