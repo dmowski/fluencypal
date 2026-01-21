@@ -8,7 +8,6 @@ import {
   fullEnglishLanguageName,
   SupportedLanguage,
   supportedLanguages,
-  supportedLanguagesToLearn,
 } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
 import { getUrlStart } from '../Lang/getUrlStart';
@@ -197,7 +196,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             subTitle2={i18n._(`Build fluency and confidence with daily speaking practice.`)}
             buttonTitle={i18n._(`Start Speaking`)}
             openMyPracticeLinkTitle={i18n._(`Start Speaking`)}
-            buttonHref={`${getUrlStart(lang)}quiz`}
+            buttonHref={`${getUrlStart(lang)}practice`}
             cards={[
               {
                 videoUrl: '/landing/preview/grammar2.webm',
@@ -263,7 +262,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 },
                 buttonTitle: i18n._('Start speaking practice'),
               }}
-              buttonHref={`${getUrlStart(lang)}quiz`}
+              buttonHref={`${getUrlStart(lang)}practice`}
             />
 
             <HowItWorks
