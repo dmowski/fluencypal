@@ -694,13 +694,16 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 `;
       }
 
-      const userIdsToTestVad = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2', '4GJOfstBzBQ51TCliI8jDFGwUKV2'];
+      const userIdsToSkipVad = ['K1S4bliZw4hYbpftEC6sG5s9WYj2'];
+      //const userIdsToSkipVad = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2'];
 
-      const isUseVad = input.mode === 'talk' && userIdsToTestVad.includes(auth.uid || '');
-      const isUseRealtime = input.mode === 'talk' && !userIdsToTestVad.includes(auth.uid || '');
+      const isUseVad = input.mode === 'talk' && !userIdsToSkipVad.includes(auth.uid || '');
+      console.log('isUseVad', isUseVad);
+
+      const isUseRealtime = input.mode === 'talk' && !isUseVad;
 
       setRecordingVoiceMode(
-        isUseVad ? 'VAD' : isUseRealtime ? 'RealTimeConversation' : 'PushToTalk',
+        isUseRealtime ? 'RealTimeConversation' : isUseVad ? 'VAD' : 'PushToTalk',
       );
 
       const initConversation = isUseRealtime ? initWebRtcConversation : initTextConversation;
