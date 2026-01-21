@@ -1,12 +1,12 @@
-import { supportedLanguages } from "@/features/Lang/lang";
-import LandingPage from "@/features/Landing/LandingPage";
-import { Metadata } from "next";
-import linguiConfig from "../../../lingui.config";
-import { generateMetadataInfo } from "@/features/SEO/metadata";
+import { supportedLanguages } from '@/features/Lang/lang';
+import LandingPage from '@/features/Landing/LandingPage';
+import { Metadata } from 'next';
+import linguiConfig from '../../../lingui.config';
+import { generateMetadataInfo } from '@/features/SEO/metadata';
 
 const notFoundMetadata: Metadata = {
-  title: "Not Found",
-  description: "Not Found",
+  title: 'Not Found',
+  description: 'Not Found',
   robots: {
     index: false,
     follow: false,
@@ -30,17 +30,15 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   }
 
   return generateMetadataInfo({
-    lang: supportedLanguages.find((l) => l === lang) || "en",
-    currentPath: "",
+    lang: supportedLanguages.find((l) => l === lang) || 'en',
+    currentPath: '',
   });
 }
 
-export default async function Page(props: {
-  params: Promise<{ lang: string }>;
-}) {
+export default async function Page(props: { params: Promise<{ lang: string }> }) {
   const params = await props.params;
   const lang = params.lang;
-  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
 
   return <LandingPage lang={supportedLang} />;
 }

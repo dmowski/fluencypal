@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import { supportedLanguages } from "@/features/Lang/lang";
-import { generateMetadataInfo } from "@/features/SEO/metadata";
-import { BlogsPage } from "@/features/Blog/BlogsPage";
+import type { Metadata } from 'next';
+import { supportedLanguages } from '@/features/Lang/lang';
+import { generateMetadataInfo } from '@/features/SEO/metadata';
+import { BlogsPage } from '@/features/Blog/BlogsPage';
 
 export async function generateStaticParams() {
   return [];
@@ -16,11 +16,11 @@ interface PageProps {
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const searchParam = await props.searchParams;
-  const category = searchParam.category || "";
+  const category = searchParam.category || '';
 
   return generateMetadataInfo({
     lang: (await props.params).lang,
-    currentPath: "blog",
+    currentPath: 'blog',
     category,
   });
 }
@@ -36,7 +36,7 @@ export default async function BlogFullPage(props: BlogPageProps) {
   const category = params.category;
 
   const lang = (await props.params).lang;
-  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
 
   return (
     <html lang={supportedLang}>

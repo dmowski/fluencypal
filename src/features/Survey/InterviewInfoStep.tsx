@@ -1,10 +1,10 @@
-"use client";
-import { Stack, Typography } from "@mui/material";
-import { useWindowSizes } from "../Layout/useWindowSizes";
-import { useLingui } from "@lingui/react";
-import { ReactNode } from "react";
-import { FooterButton } from "./FooterButton";
-import { ArrowRight } from "lucide-react";
+'use client';
+import { Stack, Typography } from '@mui/material';
+import { useWindowSizes } from '../Layout/useWindowSizes';
+import { useLingui } from '@lingui/react';
+import { ReactNode } from 'react';
+import { FooterButton } from './FooterButton';
+import { ArrowRight } from 'lucide-react';
 
 export const InterviewInfoStep = ({
   message,
@@ -40,37 +40,37 @@ export const InterviewInfoStep = ({
   return (
     <Stack
       sx={{
-        gap: "0px",
+        gap: '0px',
       }}
     >
       <Stack
         sx={{
-          width: "100%",
-          justifyContent: "center",
-          gap: "10px",
-          padding: "0 10px",
+          width: '100%',
+          justifyContent: 'center',
+          gap: '10px',
+          padding: '0 10px',
           minHeight: `calc(100dvh - ${sizes.topOffset} - ${sizes.bottomOffset} - 190px)`,
         }}
       >
         {imageUrl && (
           <Stack
-            component={"img"}
+            component={'img'}
             src={imageUrl}
             sx={{
-              width: "90%",
-              aspectRatio: imageAspectRatio || "16/9",
-              borderRadius: "8px",
-              objectFit: "cover",
-              "@media (max-width: 600px)": {
-                width: "100%",
+              width: '90%',
+              aspectRatio: imageAspectRatio || '16/9',
+              borderRadius: '8px',
+              objectFit: 'cover',
+              '@media (max-width: 600px)': {
+                width: '100%',
               },
             }}
           />
         )}
         <Stack
           sx={{
-            width: "100%",
-            gap: "10px",
+            width: '100%',
+            gap: '10px',
           }}
         >
           {message && (
@@ -78,7 +78,7 @@ export const InterviewInfoStep = ({
               variant="h5"
               sx={{
                 fontWeight: 660,
-                lineHeight: "1.2",
+                lineHeight: '1.2',
               }}
             >
               {message}
@@ -104,7 +104,7 @@ export const InterviewInfoStep = ({
           !isStepLoading && onClick();
         }}
         startIcon={actionButtonStartIcon}
-        title={actionButtonTitle || i18n._("Next")}
+        title={actionButtonTitle || i18n._('Next')}
         aboveButtonComponent={aboveButtonComponent}
         endIcon={actionButtonEndIcon || <ArrowRight />}
         width={width}

@@ -1,10 +1,10 @@
-"use client";
-import { Stack } from "@mui/material";
-import { useLingui } from "@lingui/react";
+'use client';
+import { Stack } from '@mui/material';
+import { useLingui } from '@lingui/react';
 
-import { PlanCard } from "@/features/Plan/PlanCard";
-import { GoalPlan, PlanElementMode } from "@/features/Plan/types";
-import { cardColors, modeCardProps } from "@/features/Plan/data";
+import { PlanCard } from '@/features/Plan/PlanCard';
+import { GoalPlan, PlanElementMode } from '@/features/Plan/types';
+import { cardColors, modeCardProps } from '@/features/Plan/data';
 
 interface PlanPreviewProps {
   plan: GoalPlan;
@@ -23,12 +23,12 @@ export const PlanPreview = ({ plan }: PlanPreviewProps) => {
   return (
     <Stack
       sx={{
-        width: "100%",
+        width: '100%',
       }}
     >
       <Stack
         sx={{
-          gap: "15px",
+          gap: '15px',
         }}
       >
         {plan.elements.map((planElement, index, sortedElements) => {
@@ -36,9 +36,7 @@ export const PlanPreview = ({ plan }: PlanPreviewProps) => {
           const colorIndex = index % cardColors.length;
           const cardColor = cardColors[colorIndex];
           const elementsWithSameMode =
-            sortedElements.filter(
-              (element) => element.mode === planElement.mode,
-            ) || [];
+            sortedElements.filter((element) => element.mode === planElement.mode) || [];
           const currentElementIndex = elementsWithSameMode.findIndex(
             (element) => element.id === planElement.id,
           );

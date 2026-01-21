@@ -1,9 +1,9 @@
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
-import { InterviewCategory, InterviewData } from "../types";
-import getFrontendLandingData from "./frontend-senior/landing";
-import getJuniorFrontendLandingData from "./frontend-junior/landing";
-import getCsharpBackendDeveloperData from "./backendCSharp/landing";
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getI18nInstance } from '@/appRouterI18n';
+import { InterviewCategory, InterviewData } from '../types';
+import getFrontendLandingData from './frontend-senior/landing';
+import getJuniorFrontendLandingData from './frontend-junior/landing';
+import getCsharpBackendDeveloperData from './backendCSharp/landing';
 
 export interface InterviewAllData {
   interviews: InterviewData[];
@@ -385,7 +385,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
 
   const allCategory = {
     categoryTitle: i18n._(`All Interviews`),
-    categoryId: "all",
+    categoryId: 'all',
     isAllResources: true,
   };
 

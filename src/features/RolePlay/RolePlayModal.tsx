@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   Button,
   ButtonGroup,
@@ -10,13 +10,13 @@ import {
   Stack,
   TextField,
   Typography,
-} from "@mui/material";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
+} from '@mui/material';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
 
-import { RolePlayInputType } from "./types";
+import { RolePlayInputType } from './types';
 
-import { useRolePlay } from "./useRolePlay";
-import { useLingui } from "@lingui/react";
+import { useRolePlay } from './useRolePlay';
+import { useLingui } from '@lingui/react';
 
 export const RolePlayModal = () => {
   const {
@@ -36,24 +36,24 @@ export const RolePlayModal = () => {
         <CustomModal isOpen={true} onClose={() => closeRolePlay()}>
           <Stack
             sx={{
-              width: "100%",
-              maxWidth: "600px",
+              width: '100%',
+              maxWidth: '600px',
             }}
           >
             <Stack
               sx={{
-                width: "100%",
-                height: "400px",
-                boxSizing: "border-box",
+                width: '100%',
+                height: '400px',
+                boxSizing: 'border-box',
               }}
             >
               <Stack
                 sx={{
                   backgroundImage: `url(${selectedRolePlayScenario.imageSrc})`,
-                  width: "100%",
+                  width: '100%',
                   height: `100%`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
                 }}
               >
                 {selectedRolePlayScenario.videoSrc && (
@@ -65,10 +65,10 @@ export const RolePlayModal = () => {
                     muted={true}
                     playsInline
                     style={{
-                      width: "100%",
-                      backgroundColor: "rgb(10, 18, 30)",
-                      height: "100%",
-                      objectFit: "cover",
+                      width: '100%',
+                      backgroundColor: 'rgb(10, 18, 30)',
+                      height: '100%',
+                      objectFit: 'cover',
                     }}
                   />
                 )}
@@ -76,14 +76,14 @@ export const RolePlayModal = () => {
             </Stack>
 
             <Stack
-              component={"form"}
+              component={'form'}
               sx={{
-                padding: "35px 0",
-                gap: "30px",
-                boxSizing: "border-box",
-                alignItems: "flex-start",
-                "@media (max-width: 600px)": {
-                  padding: "20px 20px",
+                padding: '35px 0',
+                gap: '30px',
+                boxSizing: 'border-box',
+                alignItems: 'flex-start',
+                '@media (max-width: 600px)': {
+                  padding: '20px 20px',
                 },
               }}
               onSubmit={onSubmit}
@@ -93,8 +93,8 @@ export const RolePlayModal = () => {
                   variant="h5"
                   component="h2"
                   sx={{
-                    color: "#fff",
-                    textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
+                    color: '#fff',
+                    textShadow: '1px 1px 3px rgba(0, 0, 0, 0.2)',
                   }}
                 >
                   {selectedRolePlayScenario.title}
@@ -102,9 +102,9 @@ export const RolePlayModal = () => {
                 <Typography
                   variant="body2"
                   sx={{
-                    color: "#fff",
+                    color: '#fff',
                     opacity: 0.7,
-                    textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
+                    textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7)',
                   }}
                 >
                   {selectedRolePlayScenario.subTitle}
@@ -114,22 +114,17 @@ export const RolePlayModal = () => {
               {selectedRolePlayScenario.input.length > 0 && (
                 <Stack
                   sx={{
-                    gap: "15px",
-                    width: "100%",
-                    maxWidth: "600px",
+                    gap: '15px',
+                    width: '100%',
+                    maxWidth: '600px',
                   }}
                 >
                   {selectedRolePlayScenario.input.map((input, index) => {
                     const type = input.type;
-                    const inputId =
-                      selectedRolePlayScenario.id + "-" + input.id;
-                    const value =
-                      userInputs?.[inputId] || input.defaultValue || "";
-                    const inputRenderMap: Record<
-                      RolePlayInputType,
-                      React.ReactElement
-                    > = {
-                      "text-input": (
+                    const inputId = selectedRolePlayScenario.id + '-' + input.id;
+                    const value = userInputs?.[inputId] || input.defaultValue || '';
+                    const inputRenderMap: Record<RolePlayInputType, React.ReactElement> = {
+                      'text-input': (
                         <TextField
                           key={index}
                           value={value}
@@ -151,13 +146,11 @@ export const RolePlayModal = () => {
                           key={index}
                           control={
                             <Checkbox
-                              checked={value === "true"}
+                              checked={value === 'true'}
                               onChange={(e) => {
                                 setUserInputs({
                                   ...userInputs,
-                                  [inputId]: e.target.checked
-                                    ? "true"
-                                    : "false",
+                                  [inputId]: e.target.checked ? 'true' : 'false',
                                 });
                               }}
                               disabled={isStarting}
@@ -190,8 +183,8 @@ export const RolePlayModal = () => {
                         <Stack
                           key={index}
                           sx={{
-                            gap: "3px",
-                            paddingBottom: "5px",
+                            gap: '3px',
+                            paddingBottom: '5px',
                           }}
                         >
                           <Typography
@@ -205,9 +198,9 @@ export const RolePlayModal = () => {
 
                           <FormControl
                             sx={{
-                              display: "none",
-                              "@media (max-width: 600px)": {
-                                display: "flex",
+                              display: 'none',
+                              '@media (max-width: 600px)': {
+                                display: 'flex',
                               },
                             }}
                           >
@@ -233,8 +226,8 @@ export const RolePlayModal = () => {
 
                           <ButtonGroup
                             sx={{
-                              "@media (max-width: 600px)": {
-                                display: "none",
+                              '@media (max-width: 600px)': {
+                                display: 'none',
                               },
                             }}
                           >
@@ -247,9 +240,7 @@ export const RolePlayModal = () => {
                                     [inputId]: option,
                                   });
                                 }}
-                                variant={
-                                  value === option ? "contained" : "outlined"
-                                }
+                                variant={value === option ? 'contained' : 'outlined'}
                               >
                                 {option}
                               </Button>
@@ -266,7 +257,7 @@ export const RolePlayModal = () => {
 
               <Button
                 sx={{
-                  padding: "10px 30px",
+                  padding: '10px 30px',
                 }}
                 size="large"
                 variant="contained"

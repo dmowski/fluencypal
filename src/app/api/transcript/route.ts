@@ -2,52 +2,47 @@ import {
   calculateAudioTranscriptionPrice,
   convertUsdToHours,
   TranscriptAiModel,
-} from "@/common/ai";
-import { validateAuthToken } from "../config/firebase";
-import { TranscriptResponse } from "./types";
-import { supportedLanguages } from "@/features/Lang/lang";
-import { TranscriptUsageLog } from "@/common/usage";
-import { addUsage } from "../payment/addUsage";
-import { transcribeAudioFileWithOpenAI } from "./transcribeAudioFileWithOpenAI";
+} from '@/common/ai';
+import { validateAuthToken } from '../config/firebase';
+import { TranscriptResponse } from './types';
+import { supportedLanguages } from '@/features/Lang/lang';
+import { TranscriptUsageLog } from '@/common/usage';
+import { addUsage } from '../payment/addUsage';
+import { transcribeAudioFileWithOpenAI } from './transcribeAudioFileWithOpenAI';
 
 export async function POST(request: Request) {
   const openAIKey = process.env.OPENAI_API_KEY;
   if (!openAIKey) {
-    throw new Error("OpenAI API key is not set");
+    throw new Error('OpenAI API key is not set');
   }
 
   const data = await request.formData();
-  const file = data.get("audio") as File | null;
+  const file = data.get('audio') as File | null;
 
   if (!file) {
     const errorResponse: TranscriptResponse = {
-      error: "File not found",
-      transcript: "",
+      error: 'File not found',
+      transcript: '',
     };
     return Response.json(errorResponse);
   }
 
-  const urlQueryParams = request.url.split("?")[1];
+  const urlQueryParams = request.url.split('?')[1];
   const urlParams = new URLSearchParams(urlQueryParams);
-  const languageCodeString = urlParams.get("lang") || "";
-  const format = urlParams.get("format") || "webm";
+  const languageCodeString = urlParams.get('lang') || '';
+  const format = urlParams.get('format') || 'webm';
 
   const userInfo = await validateAuthToken(request);
-  const userEmail = userInfo.email || "";
-  const userId = userInfo.uid || "";
+  const userEmail = userInfo.email || '';
+  const userId = userInfo.uid || '';
 
   const supportedLang =
-    supportedLanguages.find(
-      (lang) => lang === languageCodeString.toLowerCase(),
-    ) || "en";
+    supportedLanguages.find((lang) => lang === languageCodeString.toLowerCase()) || 'en';
 
-  const audioDurationString = urlParams.get("audioDuration") || "";
-  const audioDuration = Math.min(
-    Math.max(parseFloat(audioDurationString) || 0, 4),
-    50,
-  );
+  const audioDurationString = urlParams.get('audioDuration') || '';
+  const audioDuration = Math.min(Math.max(parseFloat(audioDurationString) || 0, 4), 50);
 
-  const model: TranscriptAiModel = "gpt-4o-transcribe";
+  const model: TranscriptAiModel = 'gpt-4o-transcribe';
   const responseData = await transcribeAudioFileWithOpenAI({
     file,
     model,
@@ -66,7 +61,7 @@ export async function POST(request: Request) {
       createdAt: Date.now(),
       priceUsd,
       priceHours,
-      type: "transcript",
+      type: 'transcript',
       model: model,
       duration: audioDuration,
       transcriptSize: responseData.transcript.length || 0,

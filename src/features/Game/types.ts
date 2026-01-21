@@ -1,13 +1,13 @@
-import { NativeLangCode } from "@/libs/language/type";
-import { SupportedLanguage } from "../Lang/lang";
-import { GameBattle } from "./Battle/types";
+import { NativeLangCode } from '@/libs/language/type';
+import { SupportedLanguage } from '../Lang/lang';
+import { GameBattle } from './Battle/types';
 
 export type GameQuestionType =
-  | "translate"
-  | "sentence"
-  | "describe_image"
-  | "topic_to_discuss"
-  | "read_text";
+  | 'translate'
+  | 'sentence'
+  | 'describe_image'
+  | 'topic_to_discuss'
+  | 'read_text';
 
 export interface GameQuestionShort {
   id: string;
@@ -60,10 +60,7 @@ export interface SubmitAnswerResponse {
   description: string | null;
 }
 
-export type GameAchievement =
-  | GameQuestionType
-  | "chat_message"
-  | "ai_conversation";
+export type GameAchievement = GameQuestionType | 'chat_message' | 'ai_conversation';
 
 export type GameAchievements = Partial<Record<GameAchievement, number>>;
 

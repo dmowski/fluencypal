@@ -1,5 +1,5 @@
-import { AiVoice } from "@/common/ai";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { AiVoice } from '@/common/ai';
+import { SupportedLanguage } from '@/features/Lang/lang';
 
 export interface TextToAudioRequest {
   input: string;

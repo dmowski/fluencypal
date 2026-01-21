@@ -1,15 +1,15 @@
-"use client";
-import { Divider, Stack } from "@mui/material";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
-import { sleep } from "@/libs/sleep";
-import { ConversationCanvas } from "../Conversation/ConversationCanvas";
-import { ChatMessage } from "@/common/conversation";
-import { GuessGameStat } from "../Conversation/types";
-import { useEffect, useState } from "react";
-import { useAiConversation } from "../Conversation/useAiConversation";
-import { useAiUserInfo } from "../Ai/useAiUserInfo";
-import { ConversationMode } from "@/common/user";
+'use client';
+import { Divider, Stack } from '@mui/material';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { RolePlayScenariosInfo } from '../RolePlay/rolePlayData';
+import { sleep } from '@/libs/sleep';
+import { ConversationCanvas } from '../Conversation/ConversationCanvas';
+import { ChatMessage } from '@/common/conversation';
+import { GuessGameStat } from '../Conversation/types';
+import { useEffect, useState } from 'react';
+import { useAiConversation } from '../Conversation/useAiConversation';
+import { useAiUserInfo } from '../Ai/useAiUserInfo';
+import { ConversationMode } from '@/common/user';
 
 interface PracticePageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -26,34 +26,30 @@ for (let i = 0; i < 7; i++) {
   });
 }
 
-export function PracticePageTest({
-  rolePlayInfo,
-  lang,
-}: PracticePageTestProps) {
+export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) {
   const aiUserInfo = useAiUserInfo();
-  const [testMessage, setTestMessage] =
-    useState<ChatMessage[]>(startTestMessages);
+  const [testMessage, setTestMessage] = useState<ChatMessage[]>(startTestMessages);
 
   const showGame = false;
   const gameStat: GuessGameStat | null = showGame
     ? {
         wordsUserToDescribe: [
-          "Dog",
-          "Cat",
-          "Elephant",
-          "Metal",
-          "Wood",
-          "Plastic",
-          "Paper",
-          "Rock",
+          'Dog',
+          'Cat',
+          'Elephant',
+          'Metal',
+          'Wood',
+          'Plastic',
+          'Paper',
+          'Rock',
         ],
-        wordsAiToDescribe: ["Dog", "polite"],
+        wordsAiToDescribe: ['Dog', 'polite'],
       }
     : null;
 
   const aiConversation = useAiConversation();
   useEffect(() => {
-    const isWindows = typeof window !== "undefined";
+    const isWindows = typeof window !== 'undefined';
     if (!isWindows) {
       return;
     }
@@ -65,15 +61,15 @@ export function PracticePageTest({
   const recordVisualizerComponent = (
     <Stack
       sx={{
-        width: "200px",
-        height: "40px",
-        alignItems: "center",
-        justifyContent: "center",
+        width: '200px',
+        height: '40px',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <Divider
         sx={{
-          width: "100%",
+          width: '100%',
         }}
       />
     </Stack>
@@ -87,7 +83,7 @@ export function PracticePageTest({
         id: `${Date.now()}`,
       },
     ]);
-    const responseString = await aiUserInfo.generateFirstMessageText("");
+    const responseString = await aiUserInfo.generateFirstMessageText('');
 
     if (responseString) {
       setTestMessage([
@@ -114,36 +110,35 @@ export function PracticePageTest({
   };
 
   const a = {
-    id: "",
-    title: "Improve Spontaneous Speaking",
+    id: '',
+    title: 'Improve Spontaneous Speaking',
     elements: [
       {
-        id: "1",
-        title: "Public speaking",
-        subTitle: "",
-        mode: "conversation",
-        description: "",
+        id: '1',
+        title: 'Public speaking',
+        subTitle: '',
+        mode: 'conversation',
+        description: '',
         startCount: 0,
-        details: "",
+        details: '',
       },
 
       {
-        id: "1",
-        title: "Software Development",
-        subTitle: "",
-        mode: "conversation",
-        description: "",
+        id: '1',
+        title: 'Software Development',
+        subTitle: '',
+        mode: 'conversation',
+        description: '',
         startCount: 0,
-        details: "",
+        details: '',
       },
     ],
     createdAt: 0,
-    languageCode: "en",
+    languageCode: 'en',
   };
 
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
-  const [conversationMode, setConversationMode] =
-    useState<ConversationMode>("call");
+  const [conversationMode, setConversationMode] = useState<ConversationMode>('call');
 
   const addMessage = async (message: string) => {
     setTestMessage((prevMessages) => [
@@ -166,10 +161,7 @@ export function PracticePageTest({
         };
         return [...prevMessages.slice(0, -1), updatedMessage];
       } else {
-        return [
-          ...prevMessages,
-          { isBot: false, text: delta, id: `${Date.now()}` },
-        ];
+        return [...prevMessages, { isBot: false, text: delta, id: `${Date.now()}` }];
       }
     });
   };
@@ -200,7 +192,7 @@ export function PracticePageTest({
         isClosing={false}
         addUserMessage={addMessage}
         balanceHours={0.2}
-        togglePaymentModal={() => alert("Payment modal toggled")}
+        togglePaymentModal={() => alert('Payment modal toggled')}
         isLimited={false}
         onLimitedClick={() => {}}
         isRecording={false}
@@ -211,25 +203,24 @@ export function PracticePageTest({
         transcriptMessage=""
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
-        recordingError={""}
+        recordingError={''}
         isShowMessageProgress={true}
         lessonPlanAnalysis={{
           progress: 99,
         }}
         conversationAnalysisResult={{
-          whatToFocusOnNextTime: "Try to use more complex sentences.",
-          whatUserDidWell: "You spoke clearly and confidently.",
+          whatToFocusOnNextTime: 'Try to use more complex sentences.',
+          whatUserDidWell: 'You spoke clearly and confidently.',
           shortSummaryOfLesson:
-            "In this lesson, we discussed the importance of clear communication and practiced speaking on various topics.",
-          whatUserCanImprove:
-            "Work on expanding your vocabulary and using idiomatic expressions.",
+            'In this lesson, we discussed the importance of clear communication and practiced speaking on various topics.',
+          whatUserCanImprove: 'Work on expanding your vocabulary and using idiomatic expressions.',
         }}
-        closeConversation={async () => alert("Close conversation")}
+        closeConversation={async () => alert('Close conversation')}
         analyzeConversation={async () => {}}
         onWebCamDescription={() => {}}
         generateHelpMessage={async () => {
           await sleep(2000);
-          return "Nice to see you here";
+          return 'Nice to see you here';
         }}
         setIsMuted={() => setIsAiSpeaking(!isAiSpeaking)}
         isVolumeOn={true}
@@ -237,9 +228,7 @@ export function PracticePageTest({
         isAiSpeaking={isAiSpeaking}
         conversationMode={conversationMode}
         voice="shimmer"
-        toggleConversationMode={(mode: ConversationMode): void =>
-          setConversationMode(mode)
-        }
+        toggleConversationMode={(mode: ConversationMode): void => setConversationMode(mode)}
         openNextLesson={() => {}}
         recordingVoiceMode="VAD"
       />

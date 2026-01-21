@@ -1,6 +1,6 @@
-import { Button, Stack, Typography } from "@mui/material";
-import { Question } from "../../types";
-import { H2, SubTitle } from "./Typography";
+import { Button, Stack, Typography } from '@mui/material';
+import { Question } from '../../types';
+import { H2, SubTitle } from './Typography';
 
 export interface ExampleQuestionsProps {
   id: string;
@@ -16,28 +16,28 @@ export const ExampleQuestionsSection = (props: ExampleQuestionsProps) => {
     <Stack
       id={props.id}
       sx={{
-        padding: "150px 0",
-        alignItems: "center",
-        width: "100%",
+        padding: '150px 0',
+        alignItems: 'center',
+        width: '100%',
 
-        "@media (max-width: 600px)": {
-          padding: "90px 0 50px 0",
+        '@media (max-width: 600px)': {
+          padding: '90px 0 50px 0',
         },
       }}
     >
       <Stack
         sx={{
-          maxWidth: "1300px",
-          width: "100%",
-          gap: "24px",
-          padding: "0 10px",
+          maxWidth: '1300px',
+          width: '100%',
+          gap: '24px',
+          padding: '0 10px',
         }}
       >
         <Stack
           sx={{
-            alignItems: "center",
-            gap: "10px",
-            textAlign: "center",
+            alignItems: 'center',
+            gap: '10px',
+            textAlign: 'center',
           }}
         >
           <H2>{props.title}</H2>
@@ -46,57 +46,57 @@ export const ExampleQuestionsSection = (props: ExampleQuestionsProps) => {
 
         <Stack
           sx={{
-            display: "grid",
+            display: 'grid',
             gridTemplateColumns: {
-              xs: "1fr",
-              sm: "1fr 1fr",
+              xs: '1fr',
+              sm: '1fr 1fr',
             },
-            gap: "30px",
-            marginTop: "32px",
+            gap: '30px',
+            marginTop: '32px',
           }}
         >
           {props.questions.map((question, index) => (
             <Stack
               key={index}
               sx={{
-                padding: "16px 18px",
-                borderRadius: "12px",
-                border: "1px solid rgba(255,255,255,0.06)",
-                backgroundColor: "rgba(255,255,255,0.03)",
-                gap: "10px",
-                justifyContent: "space-between",
+                padding: '16px 18px',
+                borderRadius: '12px',
+                border: '1px solid rgba(255,255,255,0.06)',
+                backgroundColor: 'rgba(255,255,255,0.03)',
+                gap: '10px',
+                justifyContent: 'space-between',
               }}
             >
               <Typography
                 variant="body1"
-                sx={{ marginTop: "4px", fontSize: "18px", lineHeight: 1.5 }}
+                sx={{ marginTop: '4px', fontSize: '18px', lineHeight: 1.5 }}
               >
                 {question.question}
               </Typography>
 
               <Stack
                 sx={{
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                  gap: "25px",
-                  borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-                  padding: "15px 0 0 4px",
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  gap: '25px',
+                  borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+                  padding: '15px 0 0 4px',
                 }}
               >
                 {question.techItems.map((item, itemIndex) => (
                   <Stack
                     key={itemIndex}
                     sx={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                      gap: "11px",
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: '11px',
                     }}
                   >
                     {item.logoUrl && (
                       <img
                         src={item.logoUrl}
                         alt={item.label}
-                        style={{ width: "20px", height: "auto" }}
+                        style={{ width: '20px', height: 'auto' }}
                       />
                     )}
                     <Typography
@@ -122,9 +122,9 @@ export const ExampleQuestionsSection = (props: ExampleQuestionsProps) => {
               size="large"
               color="info"
               sx={{
-                marginTop: "32px",
-                borderRadius: "48px",
-                fontSize: "16px",
+                marginTop: '32px',
+                borderRadius: '48px',
+                fontSize: '16px',
               }}
             >
               {props.buttonTitle}

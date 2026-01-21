@@ -1,6 +1,6 @@
-import Stripe from "stripe";
-import { stripeConfig } from "./config";
-import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
+import Stripe from 'stripe';
+import { stripeConfig } from './config';
+import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 /*
 
 review if card_count_for_email_all_time < 5
@@ -16,17 +16,17 @@ review if email_count_for_card_all_time < 3
 
 export const refundPayment = async (chargeId: string): Promise<boolean> => {
   sentSupportTelegramMessage({
-    message: "Refund requested for charge: " + chargeId,
+    message: 'Refund requested for charge: ' + chargeId,
   });
   if (!stripeConfig.STRIPE_WEBHOOK_SECRET) {
-    sentSupportTelegramMessage({ message: "Stripe webhook secret is not set" });
-    throw new Error("Stripe webhook secret is not set");
+    sentSupportTelegramMessage({ message: 'Stripe webhook secret is not set' });
+    throw new Error('Stripe webhook secret is not set');
   }
 
   const stripeKey = stripeConfig.STRIPE_SECRET_KEY;
   if (!stripeKey) {
-    sentSupportTelegramMessage({ message: "Stripe API key is not set" });
-    throw new Error("Stripe API key is not set");
+    sentSupportTelegramMessage({ message: 'Stripe API key is not set' });
+    throw new Error('Stripe API key is not set');
   }
 
   const stripe = new Stripe(stripeKey);
@@ -36,22 +36,21 @@ export const refundPayment = async (chargeId: string): Promise<boolean> => {
       charge: chargeId,
     });
 
-    const status = refundResult.status || "-";
+    const status = refundResult.status || '-';
     sentSupportTelegramMessage({
       message:
-        "Refund successful: " +
+        'Refund successful: ' +
         chargeId +
-        " | " +
-        (refundResult.failure_reason || "") +
-        " | Status: " +
+        ' | ' +
+        (refundResult.failure_reason || '') +
+        ' | Status: ' +
         status,
     });
     return true;
   } catch (error) {
-    sentSupportTelegramMessage({ message: "Refund failed: " + chargeId });
+    sentSupportTelegramMessage({ message: 'Refund failed: ' + chargeId });
     sentSupportTelegramMessage({
-      message:
-        "Refund failed error: " + (error as Error).message || "Unknown error",
+      message: 'Refund failed error: ' + (error as Error).message || 'Unknown error',
     });
     console.error(error);
     return false;

@@ -1,15 +1,15 @@
-import { Button, Link, Stack, TextField, Typography } from "@mui/material";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { Button, Link, Stack, TextField, Typography } from '@mui/material';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
 
-import { useLingui } from "@lingui/react";
-import { useUsage } from "../Usage/useUsage";
-import dayjs from "dayjs";
-import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
-import { PaymentLogType } from "@/common/usage";
-import { useState } from "react";
-import { BanknoteX } from "lucide-react";
-import { sendFeedbackMessageRequest } from "@/app/api/telegram/sendFeedbackMessageRequest";
-import { useAuth } from "../Auth/useAuth";
+import { useLingui } from '@lingui/react';
+import { useUsage } from '../Usage/useUsage';
+import dayjs from 'dayjs';
+import { convertHoursToHumanFormat } from '@/libs/convertHoursToHumanFormat';
+import { PaymentLogType } from '@/common/usage';
+import { useState } from 'react';
+import { BanknoteX } from 'lucide-react';
+import { sendFeedbackMessageRequest } from '@/app/api/telegram/sendFeedbackMessageRequest';
+import { useAuth } from '../Auth/useAuth';
 
 interface PaymentHistoryModalProps {
   onClose: () => void;
@@ -27,28 +27,21 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
     welcome: i18n._(`Trial balance`),
     user: i18n._(`Payment`),
     gift: i18n._(`Gift`),
-    "subscription-full-v1": i18n._(`Subscription (1 month)`),
-    "trial-days": i18n._(`Trial days`),
+    'subscription-full-v1': i18n._(`Subscription (1 month)`),
+    'trial-days': i18n._(`Trial days`),
   };
 
   const [refundMessage, setRefundMessage] = useState(
-    "I would like to request a refund for my recent payment.",
+    'I would like to request a refund for my recent payment.',
   );
 
   const [isRefundSubmitting, setIsRefundSubmitting] = useState(false);
 
   const onSubmitRefundRequest = async () => {
     setIsRefundSubmitting(true);
-    sendFeedbackMessageRequest(
-      { message: "REFUND: " + refundMessage },
-      await auth.getToken(),
-    );
+    sendFeedbackMessageRequest({ message: 'REFUND: ' + refundMessage }, await auth.getToken());
     setIsShowRefund(false);
-    alert(
-      i18n._(
-        `Your refund request has been submitted. We will get back to you soon.`,
-      ),
-    );
+    alert(i18n._(`Your refund request has been submitted. We will get back to you soon.`));
     setIsRefundSubmitting(false);
   };
 
@@ -56,9 +49,9 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
     <CustomModal isOpen={true} onClose={() => onClose()}>
       <Stack
         sx={{
-          gap: "30px",
-          width: "100%",
-          maxWidth: "600px",
+          gap: '30px',
+          width: '100%',
+          maxWidth: '600px',
         }}
       >
         <Stack>
@@ -78,15 +71,15 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
 
         <Stack
           sx={{
-            gap: "10px",
-            width: "100%",
+            gap: '10px',
+            width: '100%',
           }}
         >
           {!usage.paymentLogs && (
             <Typography
               variant="caption"
               sx={{
-                color: "#999",
+                color: '#999',
               }}
             >
               {i18n._(`Loading...`)}
@@ -97,7 +90,7 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
             <Typography
               variant="caption"
               sx={{
-                color: "#999",
+                color: '#999',
               }}
             >
               {i18n._(`No payments...`)}
@@ -107,41 +100,39 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
           {usage.paymentLogs && (
             <Stack
               sx={{
-                width: "100%",
-                gap: "10px",
+                width: '100%',
+                gap: '10px',
               }}
             >
               {usage.paymentLogs
                 .sort((a, b) => b.createdAt - a.createdAt)
                 .filter((log) => {
-                  const isTrial =
-                    log.type === "trial-days" || log.type === "welcome";
+                  const isTrial = log.type === 'trial-days' || log.type === 'welcome';
                   return !isTrial;
                 })
                 .map((log) => {
-                  const humanDate = dayjs(log.createdAt).format("DD MMM YYYY");
-                  const humanTime = dayjs(log.createdAt).format("HH:mm");
-                  const isTrial =
-                    log.type === "trial-days" || log.type === "welcome";
+                  const humanDate = dayjs(log.createdAt).format('DD MMM YYYY');
+                  const humanTime = dayjs(log.createdAt).format('HH:mm');
+                  const isTrial = log.type === 'trial-days' || log.type === 'welcome';
 
                   return (
                     <Stack
                       key={log.id}
                       sx={{
-                        padding: "10px 15px",
-                        boxSizing: "border-box",
-                        display: "flex",
-                        flexDirection: "row",
-                        width: "100%",
-                        maxWidth: "100%",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        borderRadius: "10px",
+                        padding: '10px 15px',
+                        boxSizing: 'border-box',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        width: '100%',
+                        maxWidth: '100%',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        borderRadius: '10px',
                         border: `1px solid rgba(255, 255, 255, 0.3)`,
-                        "@media (max-width: 320px)": {
-                          flexDirection: "column",
-                          alignItems: "flex-start",
-                          gap: "20px",
+                        '@media (max-width: 320px)': {
+                          flexDirection: 'column',
+                          alignItems: 'flex-start',
+                          gap: '20px',
                         },
                       }}
                     >
@@ -158,14 +149,10 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
                           </Typography>
                         )}
                         {!!log.amountOfDays && (
-                          <Typography variant="body2">
-                            {log.amountOfDays} days
-                          </Typography>
+                          <Typography variant="body2">{log.amountOfDays} days</Typography>
                         )}
                         {!!log.amountOfMonth && (
-                          <Typography variant="body2">
-                            {log.amountOfMonth} months
-                          </Typography>
+                          <Typography variant="body2">{log.amountOfMonth} months</Typography>
                         )}
                         <Typography
                           variant="caption"
@@ -179,9 +166,9 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
 
                       <Stack
                         sx={{
-                          alignItems: "flex-end",
-                          "@media (max-width: 320px)": {
-                            alignItems: "flex-start",
+                          alignItems: 'flex-end',
+                          '@media (max-width: 320px)': {
+                            alignItems: 'flex-start',
                           },
                         }}
                       >
@@ -202,23 +189,21 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
           {isShowRefund ? (
             <Stack
               sx={{
-                marginTop: "20px",
-                paddingTop: "20px",
-                padding: "30px 15px",
-                borderRadius: "10px",
-                backgroundColor: "rgba(255, 255, 255, 0.02)",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-                gap: "10px",
+                marginTop: '20px',
+                paddingTop: '20px',
+                padding: '30px 15px',
+                borderRadius: '10px',
+                backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                gap: '10px',
               }}
             >
               <Stack>
-                <Typography variant="h4" sx={{ marginBottom: "10px" }}>
+                <Typography variant="h4" sx={{ marginBottom: '10px' }}>
                   {i18n._(`Refund form`)}
                 </Typography>
-                <Typography variant="body2" sx={{ marginBottom: "10px" }}>
-                  {i18n._(
-                    `You can add some details regarding your refund request below:`,
-                  )}
+                <Typography variant="body2" sx={{ marginBottom: '10px' }}>
+                  {i18n._(`You can add some details regarding your refund request below:`)}
                 </Typography>
               </Stack>
 
@@ -231,9 +216,9 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
               />
               <Stack
                 sx={{
-                  marginTop: "10px",
-                  gap: "10px",
-                  flexDirection: "row",
+                  marginTop: '10px',
+                  gap: '10px',
+                  flexDirection: 'row',
                 }}
               >
                 <Button
@@ -256,17 +241,15 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
             <>
               <Stack
                 sx={{
-                  alignItems: "center",
-                  width: "100%",
-                  flexDirection: "row",
-                  paddingTop: "20px",
+                  alignItems: 'center',
+                  width: '100%',
+                  flexDirection: 'row',
+                  paddingTop: '20px',
                 }}
               >
                 <Button
                   variant="outlined"
-                  disabled={
-                    usage.paymentLogs?.length === 0 || isRefundSubmitting
-                  }
+                  disabled={usage.paymentLogs?.length === 0 || isRefundSubmitting}
                   startIcon={<BanknoteX />}
                   onClick={() => setIsShowRefund(true)}
                 >

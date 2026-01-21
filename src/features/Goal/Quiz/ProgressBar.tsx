@@ -1,16 +1,10 @@
-"use client";
+'use client';
 
-import { useQuiz } from "./useQuiz";
-import { QuizProgressBar } from "./components/QuizProgressBar";
+import { useQuiz } from './useQuiz';
+import { QuizProgressBar } from './components/QuizProgressBar';
 
 export const ProgressBar = () => {
-  const {
-    navigateToMainPage,
-    isCanGoToMainPage,
-    isFirstStep,
-    prevStep,
-    progress,
-  } = useQuiz();
+  const { navigateToMainPage, isCanGoToMainPage, isFirstStep, prevStep, progress } = useQuiz();
 
   return (
     <QuizProgressBar

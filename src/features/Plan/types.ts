@@ -1,7 +1,7 @@
-import { GoalQuiz } from "@/app/api/goal/types";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { GoalQuiz } from '@/app/api/goal/types';
+import { SupportedLanguage } from '@/features/Lang/lang';
 
-export type PlanElementMode = "conversation" | "words" | "play" | "rule";
+export type PlanElementMode = 'conversation' | 'words' | 'play' | 'rule';
 
 export interface PlanElement {
   id: string;
@@ -13,7 +13,7 @@ export interface PlanElement {
   startCount: number;
 }
 
-export type GoalElementProgressState = "in_progress" | "completed" | "started";
+export type GoalElementProgressState = 'in_progress' | 'completed' | 'started';
 
 export interface ConversationResult {
   shortSummaryOfLesson: string;

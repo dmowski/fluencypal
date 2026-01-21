@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { SetUrlStateOptions, useUrlMapState } from "@/features/Url/useUrlParam";
-import { isTMA } from "@telegram-apps/sdk-react";
-import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { SetUrlStateOptions, useUrlMapState } from '@/features/Url/useUrlParam';
+import { isTMA } from '@telegram-apps/sdk-react';
+import { useRouter } from 'next/navigation';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 export function useQuizCore<Step extends string>({
   path,
@@ -32,14 +32,8 @@ export function useQuizCore<Step extends string>({
   );
 
   const setState = useCallback(
-    async (
-      partial: Partial<QuizCoreUrlState>,
-      options?: SetUrlStateOptions,
-    ) => {
-      return await setStateInput(
-        partial as unknown as Record<string, string>,
-        options,
-      );
+    async (partial: Partial<QuizCoreUrlState>, options?: SetUrlStateOptions) => {
+      return await setStateInput(partial as unknown as Record<string, string>, options);
     },
     [setStateInput],
   );
@@ -53,9 +47,7 @@ export function useQuizCore<Step extends string>({
   const state = stateInput as unknown as QuizCoreUrlState;
 
   const currentStepIndex =
-    path.indexOf(state.currentStepId) > -1
-      ? path.indexOf(state.currentStepId)
-      : 0;
+    path.indexOf(state.currentStepId) > -1 ? path.indexOf(state.currentStepId) : 0;
 
   const router = useRouter();
   const nextStep = async () => {
@@ -68,7 +60,7 @@ export function useQuizCore<Step extends string>({
       redirect: false,
     });
 
-    router.push(url || "", { scroll: false });
+    router.push(url || '', { scroll: false });
   };
 
   const prevStep = useCallback(() => {

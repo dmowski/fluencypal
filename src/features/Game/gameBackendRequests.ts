@@ -4,12 +4,8 @@ import {
   IncreaseGamePointsRequest,
   IncreaseGamePointsResponse,
   UsersStat,
-} from "@/features/Game/types";
-import {
-  GetGameQuestionsRequest,
-  SubmitAnswerRequest,
-  SubmitAnswerResponse,
-} from "./types";
+} from '@/features/Game/types';
+import { GetGameQuestionsRequest, SubmitAnswerRequest, SubmitAnswerResponse } from './types';
 
 export const getSortedStatsFromData = (userPoints: GameUsersPoints) => {
   const userIds = Object.keys(userPoints);
@@ -39,9 +35,9 @@ export const getGameQuestionsRequest = async (
   authKey: string,
 ) => {
   const response = await fetch(`/api/game/getQuestions`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${authKey}`,
     },
     body: JSON.stringify(requests),
@@ -50,14 +46,11 @@ export const getGameQuestionsRequest = async (
   return data;
 };
 
-export const submitAnswerRequest = async (
-  request: SubmitAnswerRequest,
-  authKey: string,
-) => {
+export const submitAnswerRequest = async (request: SubmitAnswerRequest, authKey: string) => {
   const response = await fetch(`/api/game/submitAnswer`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${authKey}`,
     },
     body: JSON.stringify(request),
@@ -71,9 +64,9 @@ export const increaseGamePointsRequest = async (
   authKey: string,
 ) => {
   const response = await fetch(`/api/game/increasePoints`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${authKey}`,
     },
     body: JSON.stringify(request),

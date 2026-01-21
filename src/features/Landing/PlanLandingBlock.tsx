@@ -1,16 +1,12 @@
-import { Button, Stack, Typography } from "@mui/material";
-import {
-  buttonStyle,
-  maxLandingWidth,
-  subTitleFontStyle,
-} from "./landingSettings";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
-import { cardColors, modeCardProps } from "../Plan/data";
-import { PlanElement, PlanElementMode } from "../Plan/types";
-import { getUrlStart } from "../Lang/getUrlStart";
-import { PlanLandingCard } from "../Plan/PlanLandingCard";
-import { H2, SubTitle } from "../Case/Landing/components/Typography";
+import { Button, Stack, Typography } from '@mui/material';
+import { buttonStyle, maxLandingWidth, subTitleFontStyle } from './landingSettings';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getI18nInstance } from '@/appRouterI18n';
+import { cardColors, modeCardProps } from '../Plan/data';
+import { PlanElement, PlanElementMode } from '../Plan/types';
+import { getUrlStart } from '../Lang/getUrlStart';
+import { PlanLandingCard } from '../Plan/PlanLandingCard';
+import { H2, SubTitle } from '../Case/Landing/components/Typography';
 
 interface ColorCardProps {
   imgUrl: string;
@@ -38,81 +34,81 @@ const ColorCard = ({
   return (
     <Stack
       sx={{
-        padding: "30px",
-        alignItems: "flex-start",
-        justifyContent: "center",
-        gap: "20px",
-        boxSizing: "border-box",
-        width: "437px",
-        height: "322px",
-        position: "relative",
-        borderRadius: "20px",
+        padding: '30px',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        gap: '20px',
+        boxSizing: 'border-box',
+        width: '437px',
+        height: '322px',
+        position: 'relative',
+        borderRadius: '20px',
 
         zIndex: 1,
-        ".bgCardImg": {
-          position: "absolute",
-          top: "0",
-          left: "0",
-          width: "100%",
-          height: "100%",
+        '.bgCardImg': {
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          width: '100%',
+          height: '100%',
           zIndex: 0,
           opacity: 0.7,
-          transform: "rotate(90deg) scale(1.365)",
-          transformOrigin: "center",
+          transform: 'rotate(90deg) scale(1.365)',
+          transformOrigin: 'center',
         },
-        "@media (max-width:1000px)": {
+        '@media (max-width:1000px)': {
           zIndex: hideVideoOnMobile ? 2 : 1,
         },
 
-        "@media (max-width:500px)": {
-          transform: "scale(0.9)",
+        '@media (max-width:500px)': {
+          transform: 'scale(0.9)',
         },
 
-        "@media (max-width:400px)": {
-          transform: "scale(0.8)",
+        '@media (max-width:400px)': {
+          transform: 'scale(0.8)',
         },
 
-        "@media (max-width:360px)": {
-          transform: "scale(0.7)",
+        '@media (max-width:360px)': {
+          transform: 'scale(0.7)',
         },
-        "@media (max-width:330px)": {
-          transform: "scale(0.6)",
+        '@media (max-width:330px)': {
+          transform: 'scale(0.6)',
         },
       }}
     >
       <Stack
         sx={{
-          position: "absolute",
-          "--space": "0px",
-          top: "calc(var(--space) * -1)",
-          left: "calc(var(--space) * -1)",
-          width: "calc(100% + var(--space) * 2)",
-          height: "calc(100% + var(--space) * 2)",
+          position: 'absolute',
+          '--space': '0px',
+          top: 'calc(var(--space) * -1)',
+          left: 'calc(var(--space) * -1)',
+          width: 'calc(100% + var(--space) * 2)',
+          height: 'calc(100% + var(--space) * 2)',
           boxShadow: `40px 50px 220px 1px ${accentBorderColor}, 0 0 0 1px ${accentBorderColor}`,
           opacity: 0.2,
-          borderRadius: "21px",
+          borderRadius: '21px',
           zIndex: 1,
-          pointerEvents: "none",
+          pointerEvents: 'none',
         }}
       />
       <img src={imgUrl} alt="" className="bgCardImg" />
 
       <Stack
         sx={{
-          gap: "0px",
-          alignItems: "flex-start",
-          position: "relative",
+          gap: '0px',
+          alignItems: 'flex-start',
+          position: 'relative',
           zIndex: 1,
         }}
       >
         <Typography
           sx={{
-            color: "#fff",
-            fontSize: "1rem",
-            maxWidth: "500px",
+            color: '#fff',
+            fontSize: '1rem',
+            maxWidth: '500px',
             fontWeight: 300,
             opacity: 0.8,
-            textTransform: "uppercase",
+            textTransform: 'uppercase',
           }}
         >
           {label}
@@ -121,14 +117,14 @@ const ColorCard = ({
         <Typography
           align="left"
           variant="h4"
-          component={"h3"}
+          component={'h3'}
           sx={{
-            width: "100%",
-            fontSize: "2rem",
-            color: "#fff",
+            width: '100%',
+            fontSize: '2rem',
+            color: '#fff',
             fontWeight: 800,
-            "@media (max-width: 500px)": {
-              fontSize: "1.9rem",
+            '@media (max-width: 500px)': {
+              fontSize: '1.9rem',
             },
           }}
         >
@@ -136,9 +132,9 @@ const ColorCard = ({
         </Typography>
         <Typography
           sx={{
-            color: "#fff",
-            fontSize: "1rem",
-            maxWidth: "500px",
+            color: '#fff',
+            fontSize: '1rem',
+            maxWidth: '500px',
             fontWeight: 300,
             opacity: 0.9,
           }}
@@ -148,24 +144,24 @@ const ColorCard = ({
 
         <Stack
           sx={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "20px",
-            marginTop: "20px",
-            "@media (max-width: 500px)": {
-              flexWrap: "wrap",
-              gap: "20px",
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '20px',
+            marginTop: '20px',
+            '@media (max-width: 500px)': {
+              flexWrap: 'wrap',
+              gap: '20px',
             },
           }}
         >
           <Button
             variant="outlined"
             sx={{
-              color: "rgba(255, 255, 255, 0.9)",
+              color: 'rgba(255, 255, 255, 0.9)',
               fontWeight: 400,
-              padding: "7px 25px",
+              padding: '7px 25px',
 
-              borderColor: "rgba(255, 255, 255, 0.5)",
+              borderColor: 'rgba(255, 255, 255, 0.5)',
             }}
             href={actionButtonHref}
           >
@@ -176,7 +172,7 @@ const ColorCard = ({
             variant="caption"
             sx={{
               fontWeight: 400,
-              color: "rgb(1, 162, 255)",
+              color: 'rgb(1, 162, 255)',
             }}
           >
             {actionButtonPostfixLabel}
@@ -195,97 +191,85 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
 
   const planElements: PlanElement[] = [
     {
-      id: "psychology-vocab",
+      id: 'psychology-vocab',
       title: i18n._(`Psychology`),
       subTitle: i18n._(`Mental Health Vocabulary`),
-      mode: "words",
-      description: i18n._(
-        `Essential words for discussing mental health and psychology.`,
-      ),
-      details: "",
+      mode: 'words',
+      description: i18n._(`Essential words for discussing mental health and psychology.`),
+      details: '',
       startCount: 0,
     },
     {
-      id: "medical-roleplay",
+      id: 'medical-roleplay',
       title: i18n._(`Diagnosis`),
       subTitle: i18n._(`Medical Talk Simulation`),
-      mode: "play",
-      description: i18n._(
-        `Practice medical conversations through simulated scenarios.`,
-      ),
-      details: "",
+      mode: 'play',
+      description: i18n._(`Practice medical conversations through simulated scenarios.`),
+      details: '',
       startCount: 0,
     },
     {
-      id: "quick-thinking",
+      id: 'quick-thinking',
       title: i18n._(`Reflex`),
       subTitle: i18n._(`Fast Answer Practice`),
-      mode: "play",
-      description: i18n._(
-        `Improve your ability to answer quickly and clearly in conversations.`,
-      ),
-      details: "",
+      mode: 'play',
+      description: i18n._(`Improve your ability to answer quickly and clearly in conversations.`),
+      details: '',
       startCount: 0,
     },
     {
-      id: "confidence",
+      id: 'confidence',
       title: i18n._(`Speaking`),
       subTitle: i18n._(`Public Talk Skills`),
-      mode: "conversation",
+      mode: 'conversation',
       description: i18n._(`Boost your confidence in public speaking.`),
-      details: "",
+      details: '',
       startCount: 0,
     },
     {
-      id: "toefl-vocab",
+      id: 'toefl-vocab',
       title: i18n._(`TOEFL`),
       subTitle: i18n._(`Academic Word List`),
-      mode: "words",
+      mode: 'words',
       description: i18n._(`Master high-frequency TOEFL vocabulary.`),
-      details: "",
+      details: '',
       startCount: 0,
     },
     {
-      id: "toefl-sim",
+      id: 'toefl-sim',
       title: i18n._(`Mock`),
       subTitle: i18n._(`TOEFL Speaking Tasks`),
-      mode: "play",
+      mode: 'play',
       description: i18n._(`Simulate speaking tasks from the TOEFL exam.`),
-      details: "",
+      details: '',
       startCount: 0,
     },
     {
-      id: "grammar-academic",
+      id: 'grammar-academic',
       title: i18n._(`Grammar`),
       subTitle: i18n._(`Advanced Academic Usage`),
-      mode: "rule",
-      description: i18n._(
-        `Learn grammar used in academic writing and speaking.`,
-      ),
-      details: "",
+      mode: 'rule',
+      description: i18n._(`Learn grammar used in academic writing and speaking.`),
+      details: '',
       startCount: 0,
     },
 
     {
-      id: "health-strategies",
+      id: 'health-strategies',
       title: i18n._(`Wellness`),
       subTitle: i18n._(`Mental Health Talk`),
-      mode: "conversation",
-      description: i18n._(
-        `Explore techniques to talk about wellness and mental well-being.`,
-      ),
-      details: "",
+      mode: 'conversation',
+      description: i18n._(`Explore techniques to talk about wellness and mental well-being.`),
+      details: '',
       startCount: 0,
     },
     {
-      id: "academic-style",
+      id: 'academic-style',
       title: i18n._(`Essays`),
       subTitle: i18n._(`Formal Writing Practice`),
-      mode: "rule",
-      description: i18n._(
-        `Develop formal writing skills for academic success.`,
-      ),
-      details: "",
+      mode: 'rule',
+      description: i18n._(`Develop formal writing skills for academic success.`),
+      details: '',
       startCount: 0,
     },
   ];
@@ -300,103 +284,101 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
   return (
     <Stack
       sx={{
-        width: "100%",
-        padding: "60px 0 180px 0",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "0px",
+        width: '100%',
+        padding: '60px 0 180px 0',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '0px',
         backgroundColor: `#10131a`,
         //backgroundColor: `red`,
-        position: "relative",
+        position: 'relative',
         zIndex: 1,
-        overflow: "hidden",
+        overflow: 'hidden',
       }}
     >
       <Stack
         sx={{
-          alignItems: "center",
-          padding: "0 30px 0px 30px",
-          width: "100%",
-          gap: "10px",
-          justifyContent: "center",
-          textAlign: "center",
+          alignItems: 'center',
+          padding: '0 30px 0px 30px',
+          width: '100%',
+          gap: '10px',
+          justifyContent: 'center',
+          textAlign: 'center',
 
-          position: "relative",
+          position: 'relative',
           zIndex: 2,
-          "*": {
-            textAlign: "center",
+          '*': {
+            textAlign: 'center',
           },
-          "@media (max-width: 1660px)": {
-            paddingBottom: "40px",
+          '@media (max-width: 1660px)': {
+            paddingBottom: '40px',
           },
         }}
       >
         <H2 align="center">{i18n._(`How It Works`)}</H2>
-        <SubTitle align="center">
-          {i18n._(`From Onboarding to Confidence`)}
-        </SubTitle>
+        <SubTitle align="center">{i18n._(`From Onboarding to Confidence`)}</SubTitle>
       </Stack>
 
       <Stack
         sx={{
-          alignItems: "center",
-          width: "100%",
-          gap: "70px",
-          "@media (max-width: 500px)": {
-            gap: "50px",
+          alignItems: 'center',
+          width: '100%',
+          gap: '70px',
+          '@media (max-width: 500px)': {
+            gap: '50px',
           },
-          "@media (max-width: 400px)": {
-            gap: "0px",
+          '@media (max-width: 400px)': {
+            gap: '0px',
           },
         }}
         className="sections-and-title"
       >
         <Stack
           sx={{
-            display: "flex",
-            width: "100%",
-            boxSizing: "border-box",
-            padding: "0 10px",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "40px",
-            "@media (max-width: 1000px)": {
-              flexDirection: "column",
-              gap: "30px",
+            display: 'flex',
+            width: '100%',
+            boxSizing: 'border-box',
+            padding: '0 10px',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '40px',
+            '@media (max-width: 1000px)': {
+              flexDirection: 'column',
+              gap: '30px',
             },
-            position: "relative",
+            position: 'relative',
           }}
         >
           <Stack
             sx={{
-              width: "calc(50vw - 10px)",
-              border: "0px solid red",
-              boxSizing: "border-box",
-              height: "600px",
-              justifyContent: "center",
-              alignItems: "flex-end",
-              overflow: "hidden",
-              position: "relative",
+              width: 'calc(50vw - 10px)',
+              border: '0px solid red',
+              boxSizing: 'border-box',
+              height: '600px',
+              justifyContent: 'center',
+              alignItems: 'flex-end',
+              overflow: 'hidden',
+              position: 'relative',
               zIndex: 2,
               img: {
-                width: "700px",
-                height: "auto",
+                width: '700px',
+                height: 'auto',
               },
-              "@media (max-width:1650px)": {
-                height: "400px",
+              '@media (max-width:1650px)': {
+                height: '400px',
               },
 
-              "@media (max-width:1200px)": {
+              '@media (max-width:1200px)': {
                 img: {
-                  width: "500px",
+                  width: '500px',
                 },
               },
 
-              "@media (max-width:1000px)": {
+              '@media (max-width:1000px)': {
                 opacity: 0,
-                position: "absolute",
-                top: "0px",
-                left: "0px",
+                position: 'absolute',
+                top: '0px',
+                left: '0px',
                 zIndex: -1,
               },
             }}
@@ -404,8 +386,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             <img src="/landing/quiz.webp" alt="" />
           </Stack>
           <ColorCard
-            accentBorderColor={"#3b82f6"}
-            imgUrl={"/landing/blue.svg"}
+            accentBorderColor={'#3b82f6'}
+            imgUrl={'/landing/blue.svg'}
             label={i18n._(`Step 1`)}
             title={i18n._(`Smart Start`)}
             description={i18n._(
@@ -419,36 +401,36 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
 
         <Stack
           sx={{
-            display: "flex",
-            flexDirection: "row",
-            width: "100%",
-            padding: "10px 10px",
-            boxSizing: "border-box",
-            alignItems: "center",
-            justifyContent: "flex-end",
-            gap: "140px",
+            display: 'flex',
+            flexDirection: 'row',
+            width: '100%',
+            padding: '10px 10px',
+            boxSizing: 'border-box',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            gap: '140px',
 
-            "@media (max-width: 1200px)": {
-              gap: "70px",
+            '@media (max-width: 1200px)': {
+              gap: '70px',
             },
 
-            "@media (max-width: 1000px)": {
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "0px",
+            '@media (max-width: 1000px)': {
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '0px',
             },
-            position: "relative",
+            position: 'relative',
           }}
         >
           <ColorCard
-            imgUrl={"/landing/green.svg"}
-            accentBorderColor={"#10b981"}
+            imgUrl={'/landing/green.svg'}
+            accentBorderColor={'#10b981'}
             label={i18n._(`Step 2`)}
             title={i18n._(`Personal Plan`)}
             description={i18n._(
               `Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you.`,
             )}
-            actionButtonPostfixLabel={""}
+            actionButtonPostfixLabel={''}
             actionButtonLabel={i18n._(`Create a plan`)}
             actionButtonHref={`${getUrlStart(lang)}quiz`}
             hideVideoOnMobile={true}
@@ -456,54 +438,54 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
 
           <Stack
             sx={{
-              position: "relative",
+              position: 'relative',
               zIndex: 2,
-              width: "calc(50vw - 10px)",
-              border: "0px solid red",
-              "@media (max-width: 1000px)": {
-                display: "none",
+              width: 'calc(50vw - 10px)',
+              border: '0px solid red',
+              '@media (max-width: 1000px)': {
+                display: 'none',
               },
-              justifyContent: "flex-start",
-              alignItems: "flex-start",
+              justifyContent: 'flex-start',
+              alignItems: 'flex-start',
             }}
           >
             <Stack
               sx={{
-                width: "568px",
-                height: "max-content",
-                justifyContent: "center",
-                alignItems: "flex-end",
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "20px",
-                transform: "scale(0.78) translateY(-10px) translateX(35px)",
-                transformOrigin: "left",
+                width: '568px',
+                height: 'max-content',
+                justifyContent: 'center',
+                alignItems: 'flex-end',
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '20px',
+                transform: 'scale(0.78) translateY(-10px) translateX(35px)',
+                transformOrigin: 'left',
 
-                "@media (max-width: 1250px)": {
-                  transform: "scale(0.8) translateY(-10px) translateX(35px)",
-                  gridTemplateColumns: "1fr 1fr",
-                  position: "relative",
+                '@media (max-width: 1250px)': {
+                  transform: 'scale(0.8) translateY(-10px) translateX(35px)',
+                  gridTemplateColumns: '1fr 1fr',
+                  position: 'relative',
                 },
 
-                "@media (max-width: 500px)": {
-                  gridTemplateColumns: "1fr",
+                '@media (max-width: 500px)': {
+                  gridTemplateColumns: '1fr',
                 },
 
-                "@media (max-width: 1000px)": {
-                  transform: "scale(1)",
-                  padding: "30px",
-                  boxSizing: "border-box",
-                  maxHeight: "520px",
-                  ".plan-landing-card": {
-                    height: "150px",
+                '@media (max-width: 1000px)': {
+                  transform: 'scale(1)',
+                  padding: '30px',
+                  boxSizing: 'border-box',
+                  maxHeight: '520px',
+                  '.plan-landing-card': {
+                    height: '150px',
                   },
-                  "&:after": {
-                    bottom: "-10px",
-                    left: "0px",
-                    width: "100%",
-                    height: "100%",
+                  '&:after': {
+                    bottom: '-10px',
+                    left: '0px',
+                    width: '100%',
+                    height: '100%',
                     background:
-                      "linear-gradient(0deg, rgba(10, 18, 30, 1), rgba(10, 18, 30, 0), rgba(10, 18, 30, 1))",
+                      'linear-gradient(0deg, rgba(10, 18, 30, 1), rgba(10, 18, 30, 0), rgba(10, 18, 30, 1))',
                   },
                 },
               }}
@@ -516,16 +498,13 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                     const colorIndex = index % cardColors.length;
                     const cardColor = cardColors[colorIndex];
                     const elementsWithSameMode =
-                      planElements.filter(
-                        (element) => element.mode === planElement.mode,
-                      ) || [];
+                      planElements.filter((element) => element.mode === planElement.mode) || [];
                     const currentElementIndex = elementsWithSameMode.findIndex(
                       (element) => element.id === planElement.id,
                     );
 
                     const imageVariants = cardInfo.imgUrl;
-                    const imageIndex =
-                      currentElementIndex % imageVariants.length;
+                    const imageIndex = currentElementIndex % imageVariants.length;
                     const imageUrl = imageVariants[imageIndex];
 
                     return (
@@ -556,57 +535,57 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
 
         <Stack
           sx={{
-            display: "flex",
-            width: "100%",
-            boxSizing: "border-box",
-            padding: "0 10px",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "100px",
-            "@media (max-width: 1000px)": {
-              flexDirection: "column",
-              gap: "30px",
+            display: 'flex',
+            width: '100%',
+            boxSizing: 'border-box',
+            padding: '0 10px',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '100px',
+            '@media (max-width: 1000px)': {
+              flexDirection: 'column',
+              gap: '30px',
             },
-            position: "relative",
+            position: 'relative',
           }}
         >
           <Stack
             sx={{
-              width: "calc(50vw - 60px)",
-              border: "0px solid red",
-              boxSizing: "border-box",
-              height: "600px",
-              justifyContent: "center",
-              alignItems: "flex-end",
-              overflow: "hidden",
-              position: "relative",
+              width: 'calc(50vw - 60px)',
+              border: '0px solid red',
+              boxSizing: 'border-box',
+              height: '600px',
+              justifyContent: 'center',
+              alignItems: 'flex-end',
+              overflow: 'hidden',
+              position: 'relative',
               zIndex: 2,
               img: {
-                width: "600px",
-                height: "auto",
+                width: '600px',
+                height: 'auto',
               },
-              "@media (max-width:1200px)": {
+              '@media (max-width:1200px)': {
                 img: {
-                  width: "500px",
+                  width: '500px',
                 },
               },
 
-              "@media (max-width:1000px)": {
-                display: "none",
+              '@media (max-width:1000px)': {
+                display: 'none',
               },
             }}
           >
             <img src="/landing/uiChat.webp" alt="uiChat" />
           </Stack>
           <ColorCard
-            imgUrl={"/landing/purple.svg"}
-            accentBorderColor={"#8b5cf6"}
+            imgUrl={'/landing/purple.svg'}
+            accentBorderColor={'#8b5cf6'}
             label={i18n._(`Step 3`)}
             title={i18n._(`Practice`)}
             description={i18n._(
               `Jump into your tailored learning path and build real skills through engaging practice with AI voice chat.`,
             )}
-            actionButtonPostfixLabel={""}
+            actionButtonPostfixLabel={''}
             actionButtonLabel={i18n._(`Start Practicing`)}
             actionButtonHref={`${getUrlStart(lang)}quiz`}
           />
@@ -615,12 +594,12 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
 
       <Stack
         sx={{
-          gap: "20px",
+          gap: '20px',
           maxWidth: maxLandingWidth,
-          boxSizing: "border-box",
-          alignItems: "center",
-          padding: "60px 10px 20px 10px",
-          position: "relative",
+          boxSizing: 'border-box',
+          alignItems: 'center',
+          padding: '60px 10px 20px 10px',
+          position: 'relative',
           zIndex: 3,
         }}
       >
@@ -628,8 +607,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
           align="center"
           variant="body1"
           sx={{
-            maxWidth: "810px",
-            color: "#fff",
+            maxWidth: '810px',
+            color: '#fff',
             ...subTitleFontStyle,
           }}
         >
@@ -638,9 +617,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         <Button
           sx={{
             ...buttonStyle,
-            padding: "10px 70px",
-            color: "#000",
-            backgroundColor: "#05acff",
+            padding: '10px 70px',
+            color: '#000',
+            backgroundColor: '#05acff',
           }}
           variant="contained"
           size="large"

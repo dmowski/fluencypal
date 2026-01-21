@@ -1,18 +1,18 @@
-"use client";
-import { createContext, useContext, ReactNode, JSX } from "react";
-import { ChatMessage } from "@/common/conversation";
-import { AiUserInfo, FirstBotConversationMessage } from "@/common/userInfo";
-import { useAuth } from "../Auth/useAuth";
-import { db } from "../Firebase/firebaseDb";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { useTextAi } from "./useTextAi";
-import { setDoc } from "firebase/firestore";
-import dayjs from "dayjs";
-import duration from "dayjs/plugin/duration";
-import relativeTime from "dayjs/plugin/relativeTime";
-import { useSettings } from "../Settings/useSettings";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { useFixJson } from "./useFixJson";
+'use client';
+import { createContext, useContext, ReactNode, JSX } from 'react';
+import { ChatMessage } from '@/common/conversation';
+import { AiUserInfo, FirstBotConversationMessage } from '@/common/userInfo';
+import { useAuth } from '../Auth/useAuth';
+import { db } from '../Firebase/firebaseDb';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { useTextAi } from './useTextAi';
+import { setDoc } from 'firebase/firestore';
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { useSettings } from '../Settings/useSettings';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { useFixJson } from './useFixJson';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
@@ -37,7 +37,7 @@ const AiUserInfoContext = createContext<AiUserInfoContextType | null>(null);
 function useProvideAiUserInfo(): AiUserInfoContextType {
   const auth = useAuth();
   const settings = useSettings();
-  const languageCode = settings.languageCode || "en";
+  const languageCode = settings.languageCode || 'en';
   const textAi = useTextAi();
   const fixJson = useFixJson();
   const dbDocRef = db.documents.aiUserInfo(auth.uid);
@@ -55,15 +55,13 @@ If not relevant information found, return empty array.
     const summaryFromConversation = await textAi.generate({
       userMessage: aiUserMessage,
       systemMessage,
-      model: "gpt-4o",
+      model: 'gpt-4o',
       languageCode,
     });
     return fixJson.parseJson<string[]>(summaryFromConversation);
   };
 
-  const extractUserRecords = async (
-    conversation: ChatMessage[],
-  ): Promise<string[]> => {
+  const extractUserRecords = async (conversation: ChatMessage[]): Promise<string[]> => {
     try {
       const systemMessage = `Given conversation with user and language teacher.
 Your goal is to extract information about user from this conversation.
@@ -75,7 +73,7 @@ If not relevant information found, return empty array.`;
       const aiUserMessage = JSON.stringify(
         conversation.map((message) => {
           return {
-            author: message.isBot ? "Teacher" : "User",
+            author: message.isBot ? 'Teacher' : 'User',
             text: message.text,
           };
         }),
@@ -84,7 +82,7 @@ If not relevant information found, return empty array.`;
       const parsedSummary = await textAi.generateJson<string[]>({
         userMessage: aiUserMessage,
         systemMessage,
-        model: "gpt-4o",
+        model: 'gpt-4o',
         languageCode,
         attempts: 4,
       });
@@ -98,14 +96,14 @@ If not relevant information found, return empty array.`;
 
       return updatedRecords;
     } catch (e) {
-      console.error("Error during extractUserRecords", e);
+      console.error('Error during extractUserRecords', e);
       return userInfo?.records || [];
     }
   };
 
   const saveUserInfo = async (updatedRecords: string[]) => {
     if (!dbDocRef) {
-      throw new Error("dbDocRef is not defined | useAiUserInfo.updateUserInfo");
+      throw new Error('dbDocRef is not defined | useAiUserInfo.updateUserInfo');
     }
 
     await setDoc(
@@ -121,7 +119,7 @@ If not relevant information found, return empty array.`;
 
   const updateUserInfo = async (conversation: ChatMessage[]) => {
     if (!dbDocRef) {
-      throw new Error("dbDocRef is not defined | useAiUserInfo.updateUserInfo");
+      throw new Error('dbDocRef is not defined | useAiUserInfo.updateUserInfo');
     }
 
     const updatedRecords = await extractUserRecords(conversation);
@@ -135,9 +133,7 @@ If not relevant information found, return empty array.`;
 
   const addFirstConversationMessage = async (message: string) => {
     if (!dbDocRef) {
-      throw new Error(
-        "dbDocRef is not defined | useAiUserInfo.addFirstConversationMessage",
-      );
+      throw new Error('dbDocRef is not defined | useAiUserInfo.addFirstConversationMessage');
     }
 
     const record: FirstBotConversationMessage = {
@@ -159,15 +155,11 @@ If not relevant information found, return empty array.`;
 
   const getLastFirstMessage = async (count: number) => {
     if (!dbDocRef) {
-      throw new Error(
-        "dbDocRef is not defined | useAiUserInfo.getLastFirstMessage",
-      );
+      throw new Error('dbDocRef is not defined | useAiUserInfo.getLastFirstMessage');
     }
 
     const firstMessages = userInfo?.firstBotMessages || [];
-    const sortedMessage = firstMessages.sort(
-      (a, b) => b.createdAt - a.createdAt,
-    );
+    const sortedMessage = firstMessages.sort((a, b) => b.createdAt - a.createdAt);
     const lastMessages = sortedMessage.slice(0, count);
 
     const lastMessagesText = lastMessages.map((message) => {
@@ -196,9 +188,9 @@ Important that your guess should be not straightforward, but interesting and fun
 `,
         userMessage: `
 ### User Info (Use this to guess the interest):
-${infoNotes.map((note) => `- ${note}`).join("\n")}
+${infoNotes.map((note) => `- ${note}`).join('\n')}
 `,
-        model: "gpt-4o",
+        model: 'gpt-4o',
         cache: false,
         languageCode,
       }));
@@ -214,23 +206,23 @@ No emojis or symbols. Keep it lightweight, casual, and fresh.
 ${potentialTopicsToDiscuss}
 
 ### Task:
-Write ONE extremely short (≤10 words), playful message starting with "Hey", "Hi", or a funny greeting phrase. Use a DIFFERENT, SINGLE interest. Language: ${settings.fullLanguageName || "English"}.
+Write ONE extremely short (≤10 words), playful message starting with "Hey", "Hi", or a funny greeting phrase. Use a DIFFERENT, SINGLE interest. Language: ${settings.fullLanguageName || 'English'}.
     `;
 
     const userMessage = `
 ### Recent topics (Already discussed. Strictly avoid them):
-${firstMessages.length === 0 ? "None" : firstMessages.map((msg, i) => `${i + 1}. ${msg}`).join("\n")}
+${firstMessages.length === 0 ? 'None' : firstMessages.map((msg, i) => `${i + 1}. ${msg}`).join('\n')}
 `;
 
     const response = await textAi.generate({
       systemMessage,
       userMessage,
-      model: "gpt-4o",
+      model: 'gpt-4o',
       cache: false,
       languageCode,
     });
 
-    const responseString = response || "";
+    const responseString = response || '';
 
     await addFirstConversationMessage(responseString);
 
@@ -249,23 +241,15 @@ ${firstMessages.length === 0 ? "None" : firstMessages.map((msg, i) => `${i + 1}.
   };
 }
 
-export function AiUserInfoProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function AiUserInfoProvider({ children }: { children: ReactNode }): JSX.Element {
   const hook = useProvideAiUserInfo();
-  return (
-    <AiUserInfoContext.Provider value={hook}>
-      {children}
-    </AiUserInfoContext.Provider>
-  );
+  return <AiUserInfoContext.Provider value={hook}>{children}</AiUserInfoContext.Provider>;
 }
 
 export const useAiUserInfo = (): AiUserInfoContextType => {
   const context = useContext(AiUserInfoContext);
   if (!context) {
-    throw new Error("useAiUserInfo must be used within a AiUserInfoProvider");
+    throw new Error('useAiUserInfo must be used within a AiUserInfoProvider');
   }
   return context;
 };

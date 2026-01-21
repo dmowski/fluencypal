@@ -1,20 +1,12 @@
-"use client";
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  JSX,
-  useState,
-  useEffect,
-  useRef,
-} from "react";
-import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from "./type";
-import { useAiConversation } from "../Conversation/useAiConversation";
-import { useTextAi } from "../Ai/useTextAi";
-import { getSortedMessages } from "../Conversation/getSortedMessages";
-import { GoalElementInfo } from "../Plan/types";
-import { useAiUserInfo } from "../Ai/useAiUserInfo";
-import { useSettings } from "../Settings/useSettings";
+'use client';
+import { createContext, useContext, ReactNode, JSX, useState, useEffect, useRef } from 'react';
+import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from './type';
+import { useAiConversation } from '../Conversation/useAiConversation';
+import { useTextAi } from '../Ai/useTextAi';
+import { getSortedMessages } from '../Conversation/getSortedMessages';
+import { GoalElementInfo } from '../Plan/types';
+import { useAiUserInfo } from '../Ai/useAiUserInfo';
+import { useSettings } from '../Settings/useSettings';
 
 interface LessonPlanContextType {
   loading: boolean;
@@ -32,25 +24,19 @@ interface LessonPlanContextType {
     words?: string[];
     rule?: string;
   }) => Promise<LessonPlan>;
-  generateAnalysis: (
-    temporaryUserMessage?: string,
-  ) => Promise<LessonPlanAnalysis | null>;
+  generateAnalysis: (temporaryUserMessage?: string) => Promise<LessonPlanAnalysis | null>;
 }
 
 const LessonPlanContext = createContext<LessonPlanContextType | null>(null);
 
 function useProvideLessonPlan(): LessonPlanContextType {
-  const [activeLessonPlan, setActiveLessonPlan] = useState<LessonPlan | null>(
-    null,
-  );
+  const [activeLessonPlan, setActiveLessonPlan] = useState<LessonPlan | null>(null);
   const aiConversation = useAiConversation();
 
-  const [activeProgress, setActiveProgress] =
-    useState<LessonPlanAnalysis | null>(null);
+  const [activeProgress, setActiveProgress] = useState<LessonPlanAnalysis | null>(null);
   const settings = useSettings();
 
-  const isActiveConversation =
-    aiConversation.conversation.length > 0 && aiConversation.isStarted;
+  const isActiveConversation = aiConversation.conversation.length > 0 && aiConversation.isStarted;
 
   const [lessonAnalysisResult, setLessonAnalysisResult] = useState<
     Record<string, Promise<LessonPlanAnalysis> | null | undefined>
@@ -59,7 +45,7 @@ function useProvideLessonPlan(): LessonPlanContextType {
   const ai = useTextAi();
 
   const getActivePlanAsText = (): string => {
-    if (!activeLessonPlan || !isActiveConversation) return "";
+    if (!activeLessonPlan || !isActiveConversation) return '';
     let planText = `## Lesson Plan:\n\n`;
     activeLessonPlan.steps.forEach((step, index) => {
       planText += `Step ${index}: ${step.stepTitle}\n Teacher instructions:\n${step.teacherInstructions}\nDescription For Student:\n${step.stepDescriptionForStudent}\n`;
@@ -75,7 +61,7 @@ function useProvideLessonPlan(): LessonPlanContextType {
 
     if (temporaryUserMessage) {
       sortedMessages.push({
-        id: "temporary_user_message",
+        id: 'temporary_user_message',
         text: temporaryUserMessage,
         isBot: false,
       });
@@ -83,14 +69,12 @@ function useProvideLessonPlan(): LessonPlanContextType {
 
     const lastMessageIndex = sortedMessages.length - 1;
     const lastMessage =
-      sortedMessages.length > 0
-        ? sortedMessages[sortedMessages.length - 1]
-        : null;
-    const lastMessageText = lastMessage ? lastMessage.text : "";
+      sortedMessages.length > 0 ? sortedMessages[sortedMessages.length - 1] : null;
+    const lastMessageText = lastMessage ? lastMessage.text : '';
 
     let conversationText = `## Conversation so far:\n\n`;
     sortedMessages.forEach((message) => {
-      conversationText += `${message.isBot ? "Teacher" : "Student"}: ${message.text}\n`;
+      conversationText += `${message.isBot ? 'Teacher' : 'Student'}: ${message.text}\n`;
     });
 
     return { conversationText, lastMessageText, lastMessage, lastMessageIndex };
@@ -107,9 +91,7 @@ function useProvideLessonPlan(): LessonPlanContextType {
 
     const activePlan = getActivePlanAsText();
     const activeConversation = getActiveConversation(temporaryUserMessage);
-    const firstBotMessage = aiConversation.conversation.find(
-      (msg) => msg.isBot,
-    );
+    const firstBotMessage = aiConversation.conversation.find((msg) => msg.isBot);
 
     const key = `${activeConversation.lastMessageIndex}_${activeConversation.lastMessageText}`;
 
@@ -118,20 +100,17 @@ function useProvideLessonPlan(): LessonPlanContextType {
       return activeResult;
     }
 
-    const process: Promise<LessonPlanAnalysis> = new Promise(
-      async (resolve, reject) => {
-        console.log("Analyzing lesson plan...");
-        const initActiveProgress: LessonPlanAnalysis = {
-          progress: 0,
-          isFollowingPlan: true,
-          teacherResponse: firstBotMessage?.text
-            ? `${firstBotMessage.text}`
-            : "",
-        };
+    const process: Promise<LessonPlanAnalysis> = new Promise(async (resolve, reject) => {
+      console.log('Analyzing lesson plan...');
+      const initActiveProgress: LessonPlanAnalysis = {
+        progress: 0,
+        isFollowingPlan: true,
+        teacherResponse: firstBotMessage?.text ? `${firstBotMessage.text}` : '',
+      };
 
-        const previousProgress = activeProgress || initActiveProgress;
+      const previousProgress = activeProgress || initActiveProgress;
 
-        const systemInstructions = `You are supervisor AI directing the teacher to follow the lesson plan.
+      const systemInstructions = `You are supervisor AI directing the teacher to follow the lesson plan.
 
 Analyze the conversation between the AI tutor that can only talk and listen and the student based on the lesson plan provided. 
 
@@ -161,33 +140,29 @@ If lesson is done (progress is 100), provide last teacherResponse to properly en
 The previous analysis was:
 ${JSON.stringify(previousProgress, null, 2)}
 `;
-        const userMessage = `${activeConversation.conversationText}\n\nPlease provide your analysis.`;
+      const userMessage = `${activeConversation.conversationText}\n\nPlease provide your analysis.`;
 
-        const start = Date.now();
-        try {
-          const result = await ai.generateJson<LessonPlanAnalysis>({
-            systemMessage: systemInstructions,
-            userMessage: userMessage,
-            attempts: 2,
-            model: "gpt-4o",
-          });
-          const end = Date.now();
+      const start = Date.now();
+      try {
+        const result = await ai.generateJson<LessonPlanAnalysis>({
+          systemMessage: systemInstructions,
+          userMessage: userMessage,
+          attempts: 2,
+          model: 'gpt-4o',
+        });
+        const end = Date.now();
 
-          console.log(
-            `result ${(end - start) / 1000} seconds`,
-            JSON.stringify({ result }, null, 2),
-          );
+        console.log(`result ${(end - start) / 1000} seconds`, JSON.stringify({ result }, null, 2));
 
-          if (result) {
-            resolve(result);
-            return;
-          }
-        } catch (error) {
-          console.error("Error during lesson plan analysis:", error);
-          reject(error);
+        if (result) {
+          resolve(result);
+          return;
         }
-      },
-    );
+      } catch (error) {
+        console.error('Error during lesson plan analysis:', error);
+        reject(error);
+      }
+    });
 
     setLessonAnalysisResult((prev) => ({
       ...prev,
@@ -200,15 +175,14 @@ ${JSON.stringify(previousProgress, null, 2)}
 
   const analyzeActiveConversation = async () => {
     const isSkipMessage =
-      activeConversation.lastMessage?.isBot ||
-      activeConversation.lastMessage?.isInProgress;
+      activeConversation.lastMessage?.isBot || activeConversation.lastMessage?.isInProgress;
     if (isSkipMessage) {
-      console.log("Waiting for user message to analyze...");
+      console.log('Waiting for user message to analyze...');
       return;
     }
 
     if (isAnalyzingConversationInProgress.current) {
-      console.log("Analysis already in progress, skipping...");
+      console.log('Analysis already in progress, skipping...');
       return;
     }
 
@@ -241,14 +215,14 @@ ${JSON.stringify(previousProgress, null, 2)}
       return storagePlan;
     }
 
-    const userInfo = (aiUserInfo.userInfo?.records || []).join(". ");
+    const userInfo = (aiUserInfo.userInfo?.records || []).join('. ');
 
     const mainGoal = goalInfo.goalPlan.title;
     const elementTitle = goalInfo.goalElement.title;
     const elementDescription = goalInfo.goalElement.description;
     const elementDetails = goalInfo.goalElement.details;
 
-    const numberOfSteps = "4";
+    const numberOfSteps = '4';
 
     const systemMessage = `Your goal is to create a detailed lesson plan for a speech lesson.
 
@@ -266,9 +240,9 @@ ${elementDescription}
 The lesson details:
 ${elementDetails}
 
-${words ? `Words to learn: ${words.join(", ")}` : ""}
+${words ? `Words to learn: ${words.join(', ')}` : ''}
 
-${rule ? `Rule to learn: ${rule}` : ""}
+${rule ? `Rule to learn: ${rule}` : ''}
 
 Info about student:
 ${userInfo}
@@ -278,7 +252,7 @@ Provide a step-by-step lesson plan with clear objectives and activities.
 Plan should contain ${numberOfSteps} steps.
 On the first step in teacherInstructions, include a start message to introduce the topic to the student.
 
-Student language is ${settings.userSettings?.nativeLanguageCode || "en"}. And he is learning ${settings.fullLanguageName || "English"}.
+Student language is ${settings.userSettings?.nativeLanguageCode || 'en'}. And he is learning ${settings.fullLanguageName || 'English'}.
 
 Format the response as a JSON array with each step containing "stepTitle", "stepDescriptionForStudent", and "teacherInstructions".
   `;
@@ -287,7 +261,7 @@ Format the response as a JSON array with each step containing "stepTitle", "step
       systemMessage,
       userMessage: `Create the lesson plan as specified.`,
       attempts: 2,
-      model: "gpt-4o",
+      model: 'gpt-4o',
     });
 
     const plan: LessonPlan = { steps: response };
@@ -318,7 +292,7 @@ Format the response as a JSON array with each step containing "stepTitle", "step
     if (!activeLessonPlan || !isActiveConversation) {
       return;
     }
-    console.log("analysis from submit");
+    console.log('analysis from submit');
     analyzeActiveConversation();
   }, [lastMessageUpdateTime, isReadyToAnalyze, activeLessonPlan]);
 
@@ -332,23 +306,15 @@ Format the response as a JSON array with each step containing "stepTitle", "step
   };
 }
 
-export function LessonPlanProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function LessonPlanProvider({ children }: { children: ReactNode }): JSX.Element {
   const hook = useProvideLessonPlan();
-  return (
-    <LessonPlanContext.Provider value={hook}>
-      {children}
-    </LessonPlanContext.Provider>
-  );
+  return <LessonPlanContext.Provider value={hook}>{children}</LessonPlanContext.Provider>;
 }
 
 export const useLessonPlan = (): LessonPlanContextType => {
   const context = useContext(LessonPlanContext);
   if (!context) {
-    throw new Error("useLessonPlan must be used within a LessonPlanProvider");
+    throw new Error('useLessonPlan must be used within a LessonPlanProvider');
   }
   return context;
 };
@@ -360,7 +326,7 @@ const getLessonPlanFromStorage = (elementId: string): LessonPlan | null => {
       const plan: LessonPlan = JSON.parse(stored);
       return plan;
     } catch (error) {
-      console.error("Error parsing lesson plan from storage:", error);
+      console.error('Error parsing lesson plan from storage:', error);
       return null;
     }
   }

@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import { supportedLanguages } from "@/features/Lang/lang";
-import { generateMetadataInfo } from "@/features/SEO/metadata";
-import { getBlogs } from "@/features/Blog/blogData";
-import { BlogOnePage } from "@/features/Blog/BlogOnePage";
+import type { Metadata } from 'next';
+import { supportedLanguages } from '@/features/Lang/lang';
+import { generateMetadataInfo } from '@/features/SEO/metadata';
+import { getBlogs } from '@/features/Blog/blogData';
+import { BlogOnePage } from '@/features/Blog/BlogOnePage';
 
 interface BlogProps {
   id: string;
@@ -10,7 +10,7 @@ interface BlogProps {
 }
 
 export async function generateStaticParams() {
-  const { blogs } = getBlogs("en");
+  const { blogs } = getBlogs('en');
   return supportedLanguages
     .map((lang: string) => {
       return blogs.map((item) => {
@@ -28,7 +28,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   return generateMetadataInfo({
     lang: (await props.params).lang,
     blogId: (await props.params).id,
-    currentPath: "blog",
+    currentPath: 'blog',
   });
 }
 
@@ -37,7 +37,7 @@ export default async function BlogOneFullPage(props: PageProps) {
   const id = params.id;
 
   const lang = (await props.params).lang;
-  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
 
   return <BlogOnePage id={id} lang={supportedLang} />;
 }

@@ -1,6 +1,6 @@
-import { GetGameQuestionsRequest } from "@/features/Game/types";
-import { validateAuthToken } from "../../config/firebase";
-import { generateUsersQuestions } from "@/features/Game/api/generateUsersQuestions";
+import { GetGameQuestionsRequest } from '@/features/Game/types';
+import { validateAuthToken } from '../../config/firebase';
+import { generateUsersQuestions } from '@/features/Game/api/generateUsersQuestions';
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);

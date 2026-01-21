@@ -1,18 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 import {
   InterviewPageProps,
   generateInterviewStaticParams,
   generateInterviewMetadata,
   InterviewLandingPageNext,
-} from "@/features/Case/Landing/InterviewLandingPageNext";
+} from '@/features/Case/Landing/InterviewLandingPageNext';
 
 export async function generateStaticParams() {
   return generateInterviewStaticParams();
 }
 
-export async function generateMetadata(
-  props: InterviewPageProps,
-): Promise<Metadata> {
+export async function generateMetadata(props: InterviewPageProps): Promise<Metadata> {
   return generateInterviewMetadata(props);
 }
 

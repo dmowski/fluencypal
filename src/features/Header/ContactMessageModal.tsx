@@ -1,10 +1,10 @@
-import { Button, Stack, TextField, Typography } from "@mui/material";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { Button, Stack, TextField, Typography } from '@mui/material';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
 
-import { useLingui } from "@lingui/react";
-import { useState } from "react";
-import { useAuth } from "../Auth/useAuth";
-import { sendFeedbackMessageRequest } from "@/app/api/telegram/sendFeedbackMessageRequest";
+import { useLingui } from '@lingui/react';
+import { useState } from 'react';
+import { useAuth } from '../Auth/useAuth';
+import { sendFeedbackMessageRequest } from '@/app/api/telegram/sendFeedbackMessageRequest';
 
 interface ContactMessageModalProps {
   onClose: () => void;
@@ -20,7 +20,7 @@ export const ContactMessageModal = ({
   placeholder,
 }: ContactMessageModalProps) => {
   const { i18n } = useLingui();
-  const [feedback, setFeedback] = useState("");
+  const [feedback, setFeedback] = useState('');
   const auth = useAuth();
   const [isSending, setIsSending] = useState(false);
   const onSendFeedback = async () => {
@@ -33,14 +33,14 @@ export const ContactMessageModal = ({
         await auth.getToken(),
       );
     } catch (error) {
-      console.error("Error sending feedback:", error);
+      console.error('Error sending feedback:', error);
       alert(i18n._(`Failed to send feedback. Please try again later.`));
       setIsSending(false);
       throw error;
     }
 
     alert(i18n._(`Thank you for your feedback!`));
-    setFeedback("");
+    setFeedback('');
     setIsSending(false);
   };
 
@@ -48,11 +48,11 @@ export const ContactMessageModal = ({
     <CustomModal isOpen={true} onClose={() => onClose()}>
       <Stack
         sx={{
-          gap: "20px",
-          boxSizing: "border-box",
-          width: "100%",
-          maxWidth: "600px",
-          "@media (max-width: 600px)": {},
+          gap: '20px',
+          boxSizing: 'border-box',
+          width: '100%',
+          maxWidth: '600px',
+          '@media (max-width: 600px)': {},
         }}
       >
         <Stack>
@@ -72,10 +72,10 @@ export const ContactMessageModal = ({
 
         <Stack
           sx={{
-            width: "100%",
-            gap: "10px",
+            width: '100%',
+            gap: '10px',
           }}
-          component={"form"}
+          component={'form'}
           onSubmit={(e) => {
             e.preventDefault();
             onSendFeedback();
@@ -83,14 +83,14 @@ export const ContactMessageModal = ({
         >
           <Stack
             sx={{
-              width: "100%",
-              gap: "20px",
-              alignItems: "flex-start",
+              width: '100%',
+              gap: '20px',
+              alignItems: 'flex-start',
             }}
           >
             <TextField
               sx={{
-                width: "100%",
+                width: '100%',
               }}
               value={feedback}
               required
@@ -101,7 +101,7 @@ export const ContactMessageModal = ({
             />
             <Stack
               sx={{
-                width: "100%",
+                width: '100%',
               }}
             >
               <Button
@@ -110,7 +110,7 @@ export const ContactMessageModal = ({
                 color="info"
                 disabled={isSending}
                 sx={{
-                  minWidth: "300px",
+                  minWidth: '300px',
                 }}
               >
                 {isSending ? i18n._(`Sending...`) : i18n._(`Send`)}

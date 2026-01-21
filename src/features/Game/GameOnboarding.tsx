@@ -1,11 +1,11 @@
-import { Button, Stack, Typography } from "@mui/material";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useState } from "react";
-import { GameMyAvatar } from "./GameMyAvatar";
-import { GameMyUsername } from "./GameMyUsername";
-import { useLingui } from "@lingui/react";
-import { ArrowRight, LucideSwords } from "lucide-react";
-import { CHAT_MESSAGE_POINTS } from "../Chat/data";
+import { Button, Stack, Typography } from '@mui/material';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { useState } from 'react';
+import { GameMyAvatar } from './GameMyAvatar';
+import { GameMyUsername } from './GameMyUsername';
+import { useLingui } from '@lingui/react';
+import { ArrowRight, LucideSwords } from 'lucide-react';
+import { CHAT_MESSAGE_POINTS } from '../Chat/data';
 
 export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
   const [step, setStep] = useState(0);
@@ -23,24 +23,24 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
       <span></span>
       <Stack
         sx={{
-          alignItems: "center",
-          justifyContent: "center",
-          width: "100%",
-          gap: "10px",
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          gap: '10px',
         }}
       >
         <img
-          src={"/avatar/map.webp"}
+          src={'/avatar/map.webp'}
           onClick={() => {
             setStep(1);
           }}
           alt="Map"
-          style={{ width: "150px", height: "150px" }}
+          style={{ width: '150px', height: '150px' }}
         />
         <Stack
           sx={{
-            alignItems: "center",
-            minHeight: "120px",
+            alignItems: 'center',
+            minHeight: '120px',
           }}
         >
           <Typography align="center" variant="h6">
@@ -73,7 +73,7 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
         color="info"
         size="large"
         sx={{
-          minWidth: "200px",
+          minWidth: '200px',
         }}
         endIcon={<ArrowRight />}
       >
@@ -85,22 +85,22 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
       <span></span>
       <Stack
         sx={{
-          alignItems: "center",
-          justifyContent: "center",
-          width: "100%",
-          gap: "10px",
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          gap: '10px',
         }}
       >
         <img
-          src={"/avatar/talk3.webp"}
+          src={'/avatar/talk3.webp'}
           onClick={() => setStep(0)}
           alt="Map"
-          style={{ width: "150px", height: "150px" }}
+          style={{ width: '150px', height: '150px' }}
         />
         <Stack
           sx={{
-            alignItems: "center",
-            minHeight: "120px",
+            alignItems: 'center',
+            minHeight: '120px',
           }}
         >
           <Typography align="center" variant="h6">
@@ -112,7 +112,7 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
             align="center"
             sx={{
               opacity: 0.9,
-              maxWidth: "400px",
+              maxWidth: '400px',
             }}
           >
             {i18n._(
@@ -131,7 +131,7 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
         color="info"
         size="large"
         sx={{
-          minWidth: "200px",
+          minWidth: '200px',
         }}
         endIcon={<ArrowRight />}
       >
@@ -142,7 +142,7 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
     <>
       <Stack
         sx={{
-          gap: "0px",
+          gap: '0px',
         }}
       >
         <Typography
@@ -151,8 +151,8 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
             setStep(1);
           }}
           sx={{
-            padding: "0 10px",
-            minHeight: "66px",
+            padding: '0 10px',
+            minHeight: '66px',
           }}
           align="center"
         >
@@ -161,9 +161,9 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
 
         <Stack
           sx={{
-            paddingTop: "10px",
-            alignItems: "center",
-            gap: "10px",
+            paddingTop: '10px',
+            alignItems: 'center',
+            gap: '10px',
           }}
         >
           <Typography variant="caption" sx={{ opacity: 0.9 }}>
@@ -173,7 +173,7 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
 
           <Stack
             sx={{
-              paddingTop: "25px",
+              paddingTop: '25px',
             }}
           >
             <GameMyUsername align="center" />
@@ -188,8 +188,8 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
         color="info"
         size="large"
         sx={{
-          minWidth: "200px",
-          marginTop: "15px",
+          minWidth: '200px',
+          marginTop: '15px',
         }}
       >
         {i18n._(`Ready to Play`)}
@@ -201,23 +201,23 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
     <CustomModal isOpen={true}>
       <Stack
         sx={{
-          width: "100%",
-          boxSizing: "border-box",
-          gap: "20px",
-          alignItems: "center",
-          height: "100%",
+          width: '100%',
+          boxSizing: 'border-box',
+          gap: '20px',
+          alignItems: 'center',
+          height: '100%',
         }}
       >
         <Stack
           sx={{
-            width: "100%",
-            maxWidth: "500px",
-            height: "100%",
-            maxHeight: "700px",
-            gap: "20px",
-            justifyContent: "center",
-            alignItems: "center",
-            paddingBottom: "40px",
+            width: '100%',
+            maxWidth: '500px',
+            height: '100%',
+            maxHeight: '700px',
+            gap: '20px',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingBottom: '40px',
           }}
         >
           {stepsContent[step]}

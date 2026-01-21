@@ -1,4 +1,4 @@
-import { ChatMessage, MessagesOrderMap } from "@/common/conversation";
+import { ChatMessage, MessagesOrderMap } from '@/common/conversation';
 
 export const getSortedMessages = ({
   conversation,

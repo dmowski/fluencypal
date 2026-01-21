@@ -1,8 +1,8 @@
-import { Stack, Typography, Button, Box } from "@mui/material";
-import { H2, SubTitle } from "./Typography";
-import { DemoSnippetItem } from "../../types";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
+import { Stack, Typography, Button, Box } from '@mui/material';
+import { H2, SubTitle } from './Typography';
+import { DemoSnippetItem } from '../../types';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getI18nInstance } from '@/appRouterI18n';
 
 export interface DemoSnippetSectionProps {
   id: string;
@@ -20,32 +20,32 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
     <Stack
       id={props.id}
       sx={{
-        padding: "150px 0",
-        alignItems: "center",
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
-        width: "100%",
+        padding: '150px 0',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        width: '100%',
 
-        "@media (max-width: 600px)": {
-          padding: "90px 0 50px 0",
+        '@media (max-width: 600px)': {
+          padding: '90px 0 50px 0',
         },
       }}
     >
       <Stack
         sx={{
-          maxWidth: "1300px",
-          width: "100%",
-          gap: "32px",
-          padding: "0 10px",
-          "@media (max-width: 600px)": {
-            gap: "10px",
+          maxWidth: '1300px',
+          width: '100%',
+          gap: '32px',
+          padding: '0 10px',
+          '@media (max-width: 600px)': {
+            gap: '10px',
           },
         }}
       >
         <Stack
           sx={{
-            alignItems: "center",
-            gap: "10px",
-            textAlign: "center",
+            alignItems: 'center',
+            gap: '10px',
+            textAlign: 'center',
           }}
         >
           <H2>{props.title}</H2>
@@ -54,15 +54,15 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
 
         <Stack
           sx={{
-            display: "grid",
+            display: 'grid',
             gridTemplateColumns: {
-              xs: "1fr",
-              md: "1fr 1fr",
+              xs: '1fr',
+              md: '1fr 1fr',
             },
-            gap: "32px",
-            marginTop: "24px",
-            "@media (max-width: 600px)": {
-              gap: "60px",
+            gap: '32px',
+            marginTop: '24px',
+            '@media (max-width: 600px)': {
+              gap: '60px',
             },
           }}
         >
@@ -70,33 +70,33 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
             <Stack
               key={index}
               sx={{
-                gap: "20px",
-                padding: "30px 20px 24px 20px",
-                borderRadius: "16px",
-                border: "1px solid rgba(255,255,255,0.06)",
+                gap: '20px',
+                padding: '30px 20px 24px 20px',
+                borderRadius: '16px',
+                border: '1px solid rgba(255,255,255,0.06)',
                 background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.0))",
-                "@media (max-width: 600px)": {
-                  borderRadius: "12px",
-                  padding: "0",
-                  border: "none",
-                  background: "transparent",
+                  'linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.0))',
+                '@media (max-width: 600px)': {
+                  borderRadius: '12px',
+                  padding: '0',
+                  border: 'none',
+                  background: 'transparent',
                 },
               }}
             >
               <Stack
                 sx={{
-                  alignSelf: "flex-start",
-                  maxWidth: "85%",
+                  alignSelf: 'flex-start',
+                  maxWidth: '85%',
                 }}
               >
                 <Stack
                   sx={{
-                    gap: "6px",
-                    padding: "12px 16px",
-                    borderRadius: "12px 12px 12px 2px",
-                    backgroundColor: "rgba(33,98,166,0.15)",
-                    border: "1px solid rgba(33,98,166,0.35)",
+                    gap: '6px',
+                    padding: '12px 16px',
+                    borderRadius: '12px 12px 12px 2px',
+                    backgroundColor: 'rgba(33,98,166,0.15)',
+                    border: '1px solid rgba(33,98,166,0.35)',
                   }}
                 >
                   <Typography
@@ -116,17 +116,17 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
 
               <Stack
                 sx={{
-                  alignSelf: "flex-end",
-                  maxWidth: "85%",
+                  alignSelf: 'flex-end',
+                  maxWidth: '85%',
                 }}
               >
                 <Stack
                   sx={{
-                    gap: "6px",
-                    padding: "12px 16px",
-                    borderRadius: "12px 12px 2px 12px",
-                    backgroundColor: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.1)",
+                    gap: '6px',
+                    padding: '12px 16px',
+                    borderRadius: '12px 12px 2px 12px',
+                    backgroundColor: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.1)',
                   }}
                 >
                   <Typography
@@ -139,10 +139,7 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
                   >
                     {i18n._(`Candidate's answer`)}
                   </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{ lineHeight: 1.5, opacity: 0.95 }}
-                  >
+                  <Typography variant="body1" sx={{ lineHeight: 1.5, opacity: 0.95 }}>
                     {item.userAnswerShort}
                   </Typography>
                 </Stack>
@@ -150,17 +147,17 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
 
               <Stack
                 sx={{
-                  alignSelf: "flex-start",
-                  maxWidth: "100%",
+                  alignSelf: 'flex-start',
+                  maxWidth: '100%',
                 }}
               >
                 <Stack
                   sx={{
-                    padding: "12px 16px",
-                    borderRadius: "12px 12px 12px 2px",
-                    backgroundColor: "rgba(33,98,166,0.15)",
-                    border: "1px solid rgba(33,98,166,0.35)",
-                    gap: "6px",
+                    padding: '12px 16px',
+                    borderRadius: '12px 12px 12px 2px',
+                    backgroundColor: 'rgba(33,98,166,0.15)',
+                    border: '1px solid rgba(33,98,166,0.35)',
+                    gap: '6px',
                   }}
                 >
                   <Typography
@@ -189,9 +186,9 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
               size="large"
               color="info"
               sx={{
-                marginTop: "8px",
-                borderRadius: "48px",
-                fontSize: "16px",
+                marginTop: '8px',
+                borderRadius: '48px',
+                fontSize: '16px',
               }}
             >
               {props.buttonTitle}

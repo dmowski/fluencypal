@@ -1,8 +1,8 @@
-import { NotFoundPage } from "@/features/NotFound/NotFoundPage";
+import { NotFoundPage } from '@/features/NotFound/NotFoundPage';
 
 export const metadata = {
-  title: "Not Found",
-  description: "Not Found",
+  title: 'Not Found',
+  description: 'Not Found',
   robots: {
     index: false,
     follow: false,
@@ -10,6 +10,6 @@ export const metadata = {
 };
 
 export default function NotFound() {
-  const supportedLang = "en";
+  const supportedLang = 'en';
   return <NotFoundPage lang={supportedLang} />;
 }

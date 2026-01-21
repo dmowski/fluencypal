@@ -36,7 +36,7 @@ export function goFullScreen() {
       element.webkitRequestFullscreen();
     }
   } catch (error) {
-    console.error("Error entering fullscreen mode:", error);
+    console.error('Error entering fullscreen mode:', error);
   }
 }
 
@@ -61,6 +61,6 @@ export function exitFullScreen() {
       document.webkitExitFullscreen();
     }
   } catch (error) {
-    console.error("Error exiting fullscreen mode:", error);
+    console.error('Error exiting fullscreen mode:', error);
   }
 }

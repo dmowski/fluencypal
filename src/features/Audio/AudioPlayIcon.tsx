@@ -1,9 +1,9 @@
-"use client";
-import { useState } from "react";
-import { IconButton } from "@mui/material";
-import { Loader, Pause, Volume2 } from "lucide-react";
-import { useConversationAudio } from "./useConversationAudio";
-import { AiVoice } from "@/common/ai";
+'use client';
+import { useState } from 'react';
+import { IconButton } from '@mui/material';
+import { Loader, Pause, Volume2 } from 'lucide-react';
+import { useConversationAudio } from './useConversationAudio';
+import { AiVoice } from '@/common/ai';
 
 export interface AudioPlayIconProps {
   text: string;
@@ -58,15 +58,15 @@ export const AudioPlayIcon = ({
       onClick={togglePlay}
       sx={{
         opacity: 0.7,
-        border: borderColor ? `1px solid ${borderColor}` : "none",
+        border: borderColor ? `1px solid ${borderColor}` : 'none',
       }}
     >
       {isLoading ? (
-        <Loader size={"18px"} />
+        <Loader size={'18px'} />
       ) : isPlaying ? (
-        <Pause size={"18px"} />
+        <Pause size={'18px'} />
       ) : (
-        <Volume2 size={"18px"} />
+        <Volume2 size={'18px'} />
       )}
     </IconButton>
   );

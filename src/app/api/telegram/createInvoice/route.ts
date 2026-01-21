@@ -1,19 +1,16 @@
-import { NextRequest } from "next/server";
-import { envConfig } from "../../config/envConfig";
-import crypto from "node:crypto";
-import {
-  CreateTelegramInvoiceRequest,
-  CreateTelegramInvoiceResponse,
-} from "./types";
-import { validateAuthToken } from "../../config/firebase";
-import { TELEGRAM_MONTHLY_PRICE_START } from "@/features/Telegram/starPrices";
+import { NextRequest } from 'next/server';
+import { envConfig } from '../../config/envConfig';
+import crypto from 'node:crypto';
+import { CreateTelegramInvoiceRequest, CreateTelegramInvoiceResponse } from './types';
+import { validateAuthToken } from '../../config/firebase';
+import { TELEGRAM_MONTHLY_PRICE_START } from '@/features/Telegram/starPrices';
 
 const BOT_TOKEN = envConfig.telegramBotKey;
 const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}`;
 
 function makeOrderPayload(uid: string, monthCount: number) {
   // Use a signed/unguessable payload so you can verify later in webhook
-  const nonce = crypto.randomBytes(6).toString("hex");
+  const nonce = crypto.randomBytes(6).toString('hex');
   return `order:user=${uid};months=${monthCount};nonce=${nonce}`;
 }
 
@@ -39,7 +36,7 @@ export async function POST(request: NextRequest) {
     if (!user?.uid) {
       const response: CreateTelegramInvoiceResponse = {
         ...base,
-        error: { code: "UNAUTHORIZED", message: "User is not authenticated" },
+        error: { code: 'UNAUTHORIZED', message: 'User is not authenticated' },
       };
       return Response.json(response);
     }
@@ -48,8 +45,8 @@ export async function POST(request: NextRequest) {
       const response: CreateTelegramInvoiceResponse = {
         ...base,
         error: {
-          code: "SERVER_MISCONFIGURED",
-          message: "Telegram env config is missing",
+          code: 'SERVER_MISCONFIGURED',
+          message: 'Telegram env config is missing',
         },
       };
       return Response.json(response);
@@ -67,15 +64,15 @@ export async function POST(request: NextRequest) {
     // This creates a one-time invoice for X months. If you want subscriptions, use
     // `subscription_period: 2592000` (30d) and require monthCount === 1.
     const tgRes = await fetch(`${TG_API}/createInvoiceLink`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         title: `FluencyPal Full Access`,
-        description: `${monthCount} month${monthCount > 1 ? "s" : ""} of premium features`,
+        description: `${monthCount} month${monthCount > 1 ? 's' : ''} of premium features`,
         payload, // echoed back in successful_payment
-        provider_token: "", // Stars => empty
-        currency: "XTR", // Stars currency
-        prices: [{ label: "Access", amount: amountStars }],
+        provider_token: '', // Stars => empty
+        currency: 'XTR', // Stars currency
+        prices: [{ label: 'Access', amount: amountStars }],
         // Optional visuals:
         // photo_url: "https://your.cdn/cover.jpg",
         // Optional: if you strictly do subs and want exactly 30 days:
@@ -84,7 +81,7 @@ export async function POST(request: NextRequest) {
     });
 
     const data = await tgRes.json();
-    console.log("Invoice data", data);
+    console.log('Invoice data', data);
 
     if (!data?.ok || !data?.result) {
       const response: CreateTelegramInvoiceResponse = {
@@ -93,8 +90,8 @@ export async function POST(request: NextRequest) {
         monthCount,
         payload,
         error: {
-          code: "TG_API_ERROR",
-          message: data?.description || "Failed to create invoice link",
+          code: 'TG_API_ERROR',
+          message: data?.description || 'Failed to create invoice link',
         },
       };
       return Response.json(response);
@@ -114,8 +111,8 @@ export async function POST(request: NextRequest) {
     const errorResponse: CreateTelegramInvoiceResponse = {
       ...base,
       error: {
-        code: "SERVER_ERROR",
-        message: e?.message || "Unexpected server error",
+        code: 'SERVER_ERROR',
+        message: e?.message || 'Unexpected server error',
       },
     };
     return Response.json(errorResponse);

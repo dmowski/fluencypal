@@ -1,11 +1,11 @@
-import { Stack, Typography } from "@mui/material";
-import { voiceAvatarMap } from "./voiceAvatar";
-import { AiVoice } from "@/common/ai";
-import { AiAvatarVideo } from "./AiAvatarVideo";
-import { AiAvatar } from "./types";
-import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
-import { useConversationAudio } from "@/features/Audio/useConversationAudio";
-import { useState } from "react";
+import { Stack, Typography } from '@mui/material';
+import { voiceAvatarMap } from './voiceAvatar';
+import { AiVoice } from '@/common/ai';
+import { AiAvatarVideo } from './AiAvatarVideo';
+import { AiAvatar } from './types';
+import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
+import { useConversationAudio } from '@/features/Audio/useConversationAudio';
+import { useState } from 'react';
 
 export const SelectTeacher = ({
   selectedVoice,
@@ -19,13 +19,13 @@ export const SelectTeacher = ({
   return (
     <Stack
       sx={{
-        width: "100%",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        aspectRatio: "4 / 3",
-        gap: "15px",
-        "@media (max-width:600px)": {
-          aspectRatio: "3 / 3",
+        width: '100%',
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        aspectRatio: '4 / 3',
+        gap: '15px',
+        '@media (max-width:600px)': {
+          aspectRatio: '3 / 3',
         },
       }}
     >
@@ -62,38 +62,35 @@ export const AvatarCard = ({
   return (
     <Stack
       sx={{
-        position: "relative",
-        padding: "4px",
+        position: 'relative',
+        padding: '4px',
       }}
     >
       <Stack
         sx={{
           boxShadow: isSelected
-            ? "0px 0px 0px 4px rgba(0, 0, 0, 1), 0px 0px 0px 7px rgba(0, 185, 252, 1)"
-            : "0px 0px 0px 1px rgb(51, 51, 51, 0)",
-          borderRadius: isSelected ? "3px" : 0,
-          overflow: "hidden",
-          cursor: "pointer",
-          width: "100%",
-          height: "100%",
-          position: "relative",
-          border: "none",
+            ? '0px 0px 0px 4px rgba(0, 0, 0, 1), 0px 0px 0px 7px rgba(0, 185, 252, 1)'
+            : '0px 0px 0px 1px rgb(51, 51, 51, 0)',
+          borderRadius: isSelected ? '3px' : 0,
+          overflow: 'hidden',
+          cursor: 'pointer',
+          width: '100%',
+          height: '100%',
+          position: 'relative',
+          border: 'none',
         }}
-        component={"button"}
+        component={'button'}
         onClick={onToggle}
       >
-        <AiAvatarVideo
-          aiVideo={aiAvatar}
-          isSpeaking={audio.isPlaying && isPlayingThisVoice}
-        />
+        <AiAvatarVideo aiVideo={aiAvatar} isSpeaking={audio.isPlaying && isPlayingThisVoice} />
       </Stack>
 
       <Stack
         sx={{
-          position: "absolute",
-          bottom: "10px",
-          left: "15px",
-          textTransform: "capitalize",
+          position: 'absolute',
+          bottom: '10px',
+          left: '15px',
+          textTransform: 'capitalize',
         }}
       >
         <Typography variant="body2">{voice}</Typography>
@@ -101,12 +98,12 @@ export const AvatarCard = ({
 
       <Stack
         sx={{
-          position: "absolute",
-          top: "12px",
-          left: "12px",
-          backgroundColor: "rgba(0,0,0,0.8)",
-          borderRadius: "50%",
-          padding: "4px",
+          position: 'absolute',
+          top: '12px',
+          left: '12px',
+          backgroundColor: 'rgba(0,0,0,0.8)',
+          borderRadius: '50%',
+          padding: '4px',
         }}
       >
         <AudioPlayIcon

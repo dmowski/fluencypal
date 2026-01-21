@@ -1,13 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import {
-  FilterOptionsState,
-  Stack,
-  Typography,
-  createFilterOptions,
-} from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
+import { FilterOptionsState, Stack, Typography, createFilterOptions } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 
 const filter = createFilterOptions<string>();
 
@@ -63,7 +58,7 @@ const SuggestInput: React.FC<SuggestInputProps> = ({
         groups
           ? (option) => {
               const group = groups.find((group) => group.value === option);
-              return group?.groupTitle || "Other";
+              return group?.groupTitle || 'Other';
             }
           : undefined
       }
@@ -80,7 +75,7 @@ const SuggestInput: React.FC<SuggestInputProps> = ({
           <Stack key={params.key}>
             <Typography
               sx={{
-                padding: "8px 10px",
+                padding: '8px 10px',
               }}
               variant="caption"
             >
@@ -88,7 +83,7 @@ const SuggestInput: React.FC<SuggestInputProps> = ({
             </Typography>
             <Stack
               sx={{
-                paddingLeft: "0px",
+                paddingLeft: '0px',
               }}
             >
               {params.children}
@@ -99,11 +94,11 @@ const SuggestInput: React.FC<SuggestInputProps> = ({
       renderOption={(props, option) => (
         <li {...props} key={option}>
           <Stack
-            direction={"row"}
-            gap={"8px"}
-            alignItems={"center"}
+            direction={'row'}
+            gap={'8px'}
+            alignItems={'center'}
             sx={{
-              padding: groups ? "3px 10px" : "3 0px",
+              padding: groups ? '3px 10px' : '3 0px',
             }}
           >
             {option}
@@ -121,10 +116,8 @@ const SuggestInput: React.FC<SuggestInputProps> = ({
           onBlur={(e) => onChange(e.target.value)}
         />
       )}
-      onChange={(_, newValue) => onChange(newValue || "")}
-      filterOptions={(options, params) =>
-        filterHandler(options, params, strict)
-      }
+      onChange={(_, newValue) => onChange(newValue || '')}
+      filterOptions={(options, params) => filterHandler(options, params, strict)}
     />
   );
 };

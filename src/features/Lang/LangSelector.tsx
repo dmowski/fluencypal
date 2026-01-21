@@ -6,10 +6,10 @@ import {
   langFlags,
   SupportedLanguage,
   supportedLanguages,
-} from "@/features/Lang/lang";
-import { JSX, useMemo } from "react";
-import { MenuItem, Select, Stack, Typography } from "@mui/material";
-import { CheckIcon, GraduationCap } from "lucide-react";
+} from '@/features/Lang/lang';
+import { JSX, useMemo } from 'react';
+import { MenuItem, Select, Stack, Typography } from '@mui/material';
+import { CheckIcon, GraduationCap } from 'lucide-react';
 
 interface LangSelectorProps {
   value: SupportedLanguage | null;
@@ -29,9 +29,9 @@ export const LangSelector = ({
       return {
         label: getLabelFromCode(lang),
         langCode: lang,
-        englishFullName: fullEnglishLanguageName[lang] || "",
+        englishFullName: fullEnglishLanguageName[lang] || '',
         isSystemLang: userCodes.includes(lang),
-        fullName: fullLanguageName[lang] || "",
+        fullName: fullLanguageName[lang] || '',
       };
     })
     .sort((a, b) => a.label.localeCompare(b.label));
@@ -45,22 +45,22 @@ export const LangSelector = ({
       return;
     }
 
-    const langCode = supportedLanguages.find((lang) => lang === code) || "en";
+    const langCode = supportedLanguages.find((lang) => lang === code) || 'en';
     onChange(langCode);
   };
 
   return (
     <Stack
       sx={{
-        width: "100%",
-        gap: "20px",
-        color: "#323",
+        width: '100%',
+        gap: '20px',
+        color: '#323',
       }}
     >
       <Select
         value={value}
         variant="outlined"
-        onChange={(e) => onChangeLanguage(e.target.value || "")}
+        onChange={(e) => onChangeLanguage(e.target.value || '')}
       >
         {optionsFull.map((option) => {
           return (
@@ -68,28 +68,28 @@ export const LangSelector = ({
               key={option.langCode}
               value={option.langCode}
               sx={{
-                padding: "20px",
+                padding: '20px',
               }}
             >
               <Stack
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
-                  flexDirection: "row",
-                  width: "100%",
-                  justifyContent: "flex-start",
-                  padding: "0px 5px",
-                  gap: "15px",
-                  minHeight: "42px",
+                  alignItems: 'center',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  width: '100%',
+                  justifyContent: 'flex-start',
+                  padding: '0px 5px',
+                  gap: '15px',
+                  minHeight: '42px',
                 }}
               >
                 <img
                   src={langFlags[option.langCode]}
                   alt={option.label}
                   style={{
-                    width: "50px",
-                    border: "1px solid rgba(0, 0, 0, 0.15)",
-                    borderRadius: "1px",
+                    width: '50px',
+                    border: '1px solid rgba(0, 0, 0, 0.15)',
+                    borderRadius: '1px',
                   }}
                 />
                 <Typography>{option.englishFullName}</Typography>
@@ -126,62 +126,56 @@ export const LanguageButton = ({
   flagImageUrl?: string;
   disabled?: boolean;
   isFlag?: boolean;
-  flagSize?: "small" | "normal" | "large";
+  flagSize?: 'small' | 'normal' | 'large';
   isShowFullName?: boolean;
 }) => {
   return (
     <Stack
       sx={{
-        padding: "10px 12px",
-        borderRadius: "8px",
-        color: "#fff",
-        outline: "none",
-        cursor: "pointer",
-        backgroundColor: isSelected
-          ? "rgba(255, 255, 255, 0.1)"
-          : "rgba(255, 255, 255, 0.01)",
-        border: isSelected
-          ? "2px solid #1f74be"
-          : "2px solid rgba(255, 255, 255, 0.03)",
+        padding: '10px 12px',
+        borderRadius: '8px',
+        color: '#fff',
+        outline: 'none',
+        cursor: 'pointer',
+        backgroundColor: isSelected ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.01)',
+        border: isSelected ? '2px solid #1f74be' : '2px solid rgba(255, 255, 255, 0.03)',
 
-        "@media (min-width: 550px)": {
+        '@media (min-width: 550px)': {
           // hover only on larger screens
-          "&:hover": {
-            backgroundColor: isSelected
-              ? "rgba(255, 255, 255, 0.1)"
-              : "rgba(255, 255, 255, 0.05)",
+          '&:hover': {
+            backgroundColor: isSelected ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.05)',
           },
         },
 
-        "&:disabled": {
-          border: "2px solid rgba(255, 255, 255, 0.1)",
-          backgroundColor: "rgba(255, 255, 255, 0)",
-          cursor: "not-allowed",
-          color: "rgba(255, 255, 255, 0.5)",
+        '&:disabled': {
+          border: '2px solid rgba(255, 255, 255, 0.1)',
+          backgroundColor: 'rgba(255, 255, 255, 0)',
+          cursor: 'not-allowed',
+          color: 'rgba(255, 255, 255, 0.5)',
         },
       }}
-      component={"button"}
+      component={'button'}
       aria-label={langCode}
       disabled={disabled}
       onClick={() => onClick(langCode)}
     >
       <Stack
         sx={{
-          alignItems: "center",
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          justifyContent: "space-between",
-          padding: "0px 5px",
-          gap: "15px",
-          minHeight: "42px",
+          alignItems: 'center',
+          display: 'flex',
+          flexDirection: 'row',
+          width: '100%',
+          justifyContent: 'space-between',
+          padding: '0px 5px',
+          gap: '15px',
+          minHeight: '42px',
         }}
       >
         <Stack
           sx={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "14px",
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '14px',
           }}
         >
           {flagImageUrl && (
@@ -189,20 +183,15 @@ export const LanguageButton = ({
               src={flagImageUrl}
               alt={label}
               style={{
-                width:
-                  flagSize === "small"
-                    ? "30px"
-                    : flagSize === "large"
-                      ? "70px"
-                      : "50px",
-                border: "1px solid rgba(0, 0, 0, 0.15)",
-                borderRadius: flagSize === "small" ? "4px" : "1px",
+                width: flagSize === 'small' ? '30px' : flagSize === 'large' ? '70px' : '50px',
+                border: '1px solid rgba(0, 0, 0, 0.15)',
+                borderRadius: flagSize === 'small' ? '4px' : '1px',
               }}
             />
           )}
           <Stack
             sx={{
-              alignItems: "flex-start",
+              alignItems: 'flex-start',
             }}
           >
             <Typography>{englishFullName}</Typography>
@@ -222,25 +211,25 @@ export const LanguageButton = ({
         {isFlag && (
           <Stack
             sx={{
-              padding: "4px",
-              backgroundColor: "#1f3428ff",
-              borderRadius: "22px",
-              color: "#fff",
+              padding: '4px',
+              backgroundColor: '#1f3428ff',
+              borderRadius: '22px',
+              color: '#fff',
             }}
           >
-            <GraduationCap size={"18px"} />
+            <GraduationCap size={'18px'} />
           </Stack>
         )}
 
         {isSelected && (
           <Stack
             sx={{
-              padding: "4px",
-              backgroundColor: "#1f74be",
-              borderRadius: "22px",
+              padding: '4px',
+              backgroundColor: '#1f74be',
+              borderRadius: '22px',
             }}
           >
-            <CheckIcon size={"18px"} />
+            <CheckIcon size={'18px'} />
           </Stack>
         )}
       </Stack>
@@ -260,9 +249,9 @@ export const LangSelectorFullScreen = ({
       return {
         label: getLabelFromCode(lang),
         langCode: lang,
-        englishFullName: fullEnglishLanguageName[lang] || "",
+        englishFullName: fullEnglishLanguageName[lang] || '',
         isSystemLang: userCodes.includes(lang),
-        fullName: fullLanguageName[lang] || "",
+        fullName: fullLanguageName[lang] || '',
       };
     })
     .sort((a, b) => a.label.localeCompare(b.label));
@@ -276,15 +265,15 @@ export const LangSelectorFullScreen = ({
       return;
     }
 
-    const langCode = supportedLanguages.find((lang) => lang === code) || "en";
+    const langCode = supportedLanguages.find((lang) => lang === code) || 'en';
     onChange(langCode);
   };
 
   return (
     <Stack
       sx={{
-        width: "100%",
-        gap: "4px",
+        width: '100%',
+        gap: '4px',
       }}
     >
       {optionsFull.map((option) => {

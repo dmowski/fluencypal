@@ -1,15 +1,12 @@
-import { GameQuestionShort, GameQuestionFull } from "@/features/Game/types";
-import {
-  fullEnglishLanguageName,
-  SupportedLanguage,
-} from "@/features/Lang/lang";
-import { generateTextWithAi } from "../../../app/api/ai/generateTextWithAi";
-import { shuffleArray } from "@/libs/array";
-import { imageDescriptions } from "@/features/Game/ImagesDescriptions";
-import { fullLanguagesMap } from "@/libs/language/languages";
-import { topicsToDiscuss } from "./topics";
-import { translateText } from "@/app/api/translate/translateText";
-import { NativeLangCode } from "@/libs/language/type";
+import { GameQuestionShort, GameQuestionFull } from '@/features/Game/types';
+import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang';
+import { generateTextWithAi } from '../../../app/api/ai/generateTextWithAi';
+import { shuffleArray } from '@/libs/array';
+import { imageDescriptions } from '@/features/Game/ImagesDescriptions';
+import { fullLanguagesMap } from '@/libs/language/languages';
+import { topicsToDiscuss } from './topics';
+import { translateText } from '@/app/api/translate/translateText';
+import { NativeLangCode } from '@/libs/language/type';
 
 interface QuestionOutput {
   fullQuestions: GameQuestionFull;
@@ -22,9 +19,7 @@ const getUserInfoForAi = ({
   learningLanguage,
 }: generateRandomQuestionsProps): string => {
   const userInfo =
-    userInfoRecords.length > 0
-      ? `Info about the user: ${userInfoRecords.join(", ")}`
-      : "";
+    userInfoRecords.length > 0 ? `Info about the user: ${userInfoRecords.join(', ')}` : '';
 
   const nativeLanguageTitle =
     fullLanguagesMap[nativeLanguage]?.englishName ||
@@ -36,7 +31,7 @@ const getUserInfoForAi = ({
 
   const userInfoForAi = [userInfo, userNativeLanguage, userLearningLanguage]
     .filter(Boolean)
-    .join("\n");
+    .join('\n');
   return userInfoForAi;
 };
 
@@ -55,30 +50,28 @@ const generateImageQuestions = async ({
 }: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
   const shuffledImages = shuffleArray(imageDescriptions);
   const limitedImageDescriptions = shuffledImages.slice(0, 10);
-  const allQuestions: QuestionOutput[] = limitedImageDescriptions.map(
-    (image) => {
-      const shortQuestion: GameQuestionShort = {
-        id: `${Date.now()}_img_${image.id}`,
-        type: "describe_image",
-        question: image.shortDescription,
-        imageUrl: image.url,
-        options: [],
-      };
+  const allQuestions: QuestionOutput[] = limitedImageDescriptions.map((image) => {
+    const shortQuestion: GameQuestionShort = {
+      id: `${Date.now()}_img_${image.id}`,
+      type: 'describe_image',
+      question: image.shortDescription,
+      imageUrl: image.url,
+      options: [],
+    };
 
-      const fullQuestion: GameQuestionFull = {
-        ...shortQuestion,
-        createdAt: Date.now(),
-        answeredAt: null,
-        isAnsweredCorrectly: null,
-        learningLanguage: learningLanguage,
-        correctAnswer: image.fullImageDescription,
-      };
-      return {
-        fullQuestions: fullQuestion,
-        shortQuestions: shortQuestion,
-      };
-    },
-  );
+    const fullQuestion: GameQuestionFull = {
+      ...shortQuestion,
+      createdAt: Date.now(),
+      answeredAt: null,
+      isAnsweredCorrectly: null,
+      learningLanguage: learningLanguage,
+      correctAnswer: image.fullImageDescription,
+    };
+    return {
+      fullQuestions: fullQuestion,
+      shortQuestions: shortQuestion,
+    };
+  });
   return allQuestions;
 };
 
@@ -91,17 +84,17 @@ const generateTextToReadQuestions = async ({
   const allQuestions: QuestionOutput[] = await Promise.all(
     limitedImageDescriptions.map(async (image) => {
       let textToRead = image.fullImageDescription;
-      const isNeedToTranslate = learningLanguage !== "en";
+      const isNeedToTranslate = learningLanguage !== 'en';
       if (isNeedToTranslate) {
         textToRead = await translateText({
           text: textToRead,
           targetLanguage: learningLanguage,
-          sourceLanguage: "en",
+          sourceLanguage: 'en',
         });
       }
       const shortQuestion: GameQuestionShort = {
         id: `${Date.now()}_read_${image.id}`,
-        type: "read_text",
+        type: 'read_text',
         question: textToRead,
         imageUrl: image.url,
         options: [],
@@ -141,12 +134,12 @@ Be creative and use different words from different parts of user's life.
 Use only ${fullEnglishLanguageName[learningLanguage]} language for generate words.
 
 Generate 20 words.
-Each word should be generated along with 4 ${isSameLanguage ? "synonyms" : "translation"} options. First of them should be correct.
+Each word should be generated along with 4 ${isSameLanguage ? 'synonyms' : 'translation'} options. First of them should be correct.
 Do not wrap your answer in any intro or outro.
 
 Example of your response:
-* Dog = ${isSameLanguage ? "animal, bird, helicopter" : "пес, кошка, кот, зебра"}
-* Wolf = ${isSameLanguage ? "animal, bird, helicopter" : "волк, стакан, лиса, медведь"}
+* Dog = ${isSameLanguage ? 'animal, bird, helicopter' : 'пес, кошка, кот, зебра'}
+* Wolf = ${isSameLanguage ? 'animal, bird, helicopter' : 'волк, стакан, лиса, медведь'}
 
 
 Format of your response:
@@ -155,31 +148,28 @@ Format of your response:
 Strictly follow the formate, because it will be parsed by the code.
 `,
     userMessage: userInfo,
-    model: "gpt-4o",
+    model: 'gpt-4o',
   });
 
-  console.log("Words output");
+  console.log('Words output');
   console.log(output);
 
-  const lines = output
-    .split("\n")
-    .filter((line) => line.trim().length > 0 && line.includes("="));
+  const lines = output.split('\n').filter((line) => line.trim().length > 0 && line.includes('='));
 
   const allQuestions: QuestionOutput[] = lines.map((line, index) => {
-    const wordAndOptions = line.split("=");
-    let word = wordAndOptions[0]?.trim() || "";
-    word = word.replace(/[*]/g, "").trim(); // Remove any asterisks if present
+    const wordAndOptions = line.split('=');
+    let word = wordAndOptions[0]?.trim() || '';
+    word = word.replace(/[*]/g, '').trim(); // Remove any asterisks if present
     // remove start number if present
-    word = word.replace(/^\d+\.\s*/, "").trim(); // Remove any leading numbers and dots
+    word = word.replace(/^\d+\.\s*/, '').trim(); // Remove any leading numbers and dots
 
-    const options =
-      wordAndOptions[1]?.split(",").map((option) => option.trim()) || [];
+    const options = wordAndOptions[1]?.split(',').map((option) => option.trim()) || [];
 
-    const correctOption = options?.[0] || "";
+    const correctOption = options?.[0] || '';
 
     const shortQuestion: GameQuestionShort = {
       id: `${Date.now()}_word_${index}`,
-      type: "translate",
+      type: 'translate',
       question: word,
       options: shuffleArray(options),
     };
@@ -221,20 +211,18 @@ Sentences should be grammatically correct and meaningful.
 Do not wrap your answer in any intro text.
 `,
     userMessage: userInfo,
-    model: "gpt-4o",
+    model: 'gpt-4o',
   });
-  console.log("Sentences output");
+  console.log('Sentences output');
   console.log(output);
-  console.log("-----------------------------------");
+  console.log('-----------------------------------');
 
-  const sentences = splitTextIntoSentences(output).filter(
-    (sentence) => sentence.trim().length > 3,
-  );
+  const sentences = splitTextIntoSentences(output).filter((sentence) => sentence.trim().length > 3);
 
   const allQuestions: QuestionOutput[] = sentences.map((sentence, index) => {
     const shortQuestion: GameQuestionShort = {
       id: `${Date.now()}_sent_${index}`,
-      type: "sentence",
+      type: 'sentence',
       question: sentence,
       options: shuffleArray(splitSentenceIntoWords(sentence)),
     };
@@ -263,7 +251,7 @@ const generateTopicToDiscuss = async ({
 }: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
   const shuffled = shuffleArray(topicsToDiscuss);
   const selectedTopics = shuffled.slice(0, 5);
-  const isNeedToTranslate = learningLanguage !== "en";
+  const isNeedToTranslate = learningLanguage !== 'en';
 
   return await Promise.all(
     selectedTopics.map(async (topic, index) => {
@@ -272,14 +260,14 @@ const generateTopicToDiscuss = async ({
       const translatedTask = isNeedToTranslate
         ? await translateText({
             text: task,
-            sourceLanguage: "en",
-            targetLanguage: "pl",
+            sourceLanguage: 'en',
+            targetLanguage: 'pl',
           })
         : task;
 
       const shortQuestion: GameQuestionShort = {
         id: `${Date.now()}_topic_${index}`,
-        type: "topic_to_discuss",
+        type: 'topic_to_discuss',
         question: translatedTask,
         options: [],
       };

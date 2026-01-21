@@ -1,24 +1,24 @@
 export type RealTimeModel =
-  | "gpt-4o-realtime-preview"
-  | "gpt-4o-mini-realtime-preview"
-  | "gpt-realtime-mini"
-  | "gpt-realtime";
+  | 'gpt-4o-realtime-preview'
+  | 'gpt-4o-mini-realtime-preview'
+  | 'gpt-realtime-mini'
+  | 'gpt-realtime';
 
-const SMALL_CONVERSATION_MODEL: RealTimeModel = "gpt-realtime-mini";
-const ADVANCED_REALTIME_CONVERSATION_MODEL: RealTimeModel = "gpt-realtime";
+const SMALL_CONVERSATION_MODEL: RealTimeModel = 'gpt-realtime-mini';
+const ADVANCED_REALTIME_CONVERSATION_MODEL: RealTimeModel = 'gpt-realtime';
 
-export type TextAiModel = "gpt-4o" | "gpt-4o-mini";
+export type TextAiModel = 'gpt-4o' | 'gpt-4o-mini';
 
-export type TranscriptAiModel = "gpt-4o-transcribe" | "gpt-4o-mini-transcribe";
+export type TranscriptAiModel = 'gpt-4o-transcribe' | 'gpt-4o-mini-transcribe';
 
-export type AiVoice = "ash" | "shimmer" | "marin" | "verse";
+export type AiVoice = 'ash' | 'shimmer' | 'marin' | 'verse';
 
-export type TextToAudioModal = "gpt-4o-mini-tts";
+export type TextToAudioModal = 'gpt-4o-mini-tts';
 
 export const MODELS = {
   REALTIME_CONVERSATION: SMALL_CONVERSATION_MODEL,
-  gpt_4o_mini: "gpt-4o-mini",
-  gpt_4o: "gpt-4o",
+  gpt_4o_mini: 'gpt-4o-mini',
+  gpt_4o: 'gpt-4o',
 } as const;
 
 export const PROJECT_PROFIT_MARGIN = 0.3; //X
@@ -44,16 +44,13 @@ interface TextUsagePrice {
 
 const MILLION = 1_000_000;
 
-export const textModalPricePerMillionTokens: Record<
-  TextAiModel,
-  TextUsagePrice
-> = {
-  "gpt-4o": {
+export const textModalPricePerMillionTokens: Record<TextAiModel, TextUsagePrice> = {
+  'gpt-4o': {
     text_input: 2.5,
     text_cached_input: 1.25,
     text_output: 10,
   },
-  "gpt-4o-mini": {
+  'gpt-4o-mini': {
     text_input: 0.15,
     text_cached_input: 0.075,
     text_output: 0.6,
@@ -66,10 +63,7 @@ export interface TextUsageEvent {
   text_output: number;
 }
 
-export const calculateTextUsagePrice = (
-  usageEvent: TextUsageEvent,
-  model: TextAiModel,
-) => {
+export const calculateTextUsagePrice = (usageEvent: TextUsageEvent, model: TextAiModel) => {
   const cachedTextInput = usageEvent.text_cached_input;
   const textInput = usageEvent.text_input - cachedTextInput;
 
@@ -96,11 +90,8 @@ interface RealtimeUsagePrice {
 // USD
 // https://openai.com/api/pricing/
 // Realtime API
-export const modalPricePerMillionTokens: Record<
-  RealTimeModel,
-  RealtimeUsagePrice
-> = {
-  "gpt-4o-realtime-preview": {
+export const modalPricePerMillionTokens: Record<RealTimeModel, RealtimeUsagePrice> = {
+  'gpt-4o-realtime-preview': {
     text_input: 5,
     text_cached_input: 2.5,
     text_output: 20,
@@ -109,7 +100,7 @@ export const modalPricePerMillionTokens: Record<
     audio_output: 80,
   },
 
-  "gpt-realtime": {
+  'gpt-realtime': {
     text_input: 4,
     text_cached_input: 0.4,
     text_output: 16,
@@ -118,7 +109,7 @@ export const modalPricePerMillionTokens: Record<
     audio_output: 64,
   },
 
-  "gpt-4o-mini-realtime-preview": {
+  'gpt-4o-mini-realtime-preview': {
     text_input: 0.6,
     text_cached_input: 0.3,
     text_output: 2.4,
@@ -127,7 +118,7 @@ export const modalPricePerMillionTokens: Record<
     audio_output: 20,
   },
 
-  "gpt-realtime-mini": {
+  'gpt-realtime-mini': {
     text_input: 0.6,
     text_cached_input: 0.06,
     text_output: 2.4,
@@ -149,29 +140,21 @@ const calculateOutputPrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
 // USD
 const calculateInputPrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
   const price = modalPricePerMillionTokens[model];
-  const cachedTextInput =
-    usageEvent.input_token_details.cached_tokens_details.text_tokens;
-  const fullTextInput =
-    usageEvent.input_token_details.text_tokens - cachedTextInput;
+  const cachedTextInput = usageEvent.input_token_details.cached_tokens_details.text_tokens;
+  const fullTextInput = usageEvent.input_token_details.text_tokens - cachedTextInput;
   const fullTextPrice = (fullTextInput / MILLION) * price.text_input;
   const cachedTextPrice = (cachedTextInput / MILLION) * price.text_cached_input;
 
-  const cachedAudioInput =
-    usageEvent.input_token_details.cached_tokens_details.audio_tokens;
-  const audioInput =
-    usageEvent.input_token_details.audio_tokens - cachedAudioInput;
+  const cachedAudioInput = usageEvent.input_token_details.cached_tokens_details.audio_tokens;
+  const audioInput = usageEvent.input_token_details.audio_tokens - cachedAudioInput;
   const fullAudioPrice = (audioInput / MILLION) * price.audio_input;
-  const cachedAudioPrice =
-    (cachedAudioInput / MILLION) * price.audio_cached_input;
+  const cachedAudioPrice = (cachedAudioInput / MILLION) * price.audio_cached_input;
 
   return fullTextPrice + cachedTextPrice + fullAudioPrice + cachedAudioPrice;
 };
 
 // USD
-export const calculateUsagePrice = (
-  usageEvent: UsageEvent,
-  model: RealTimeModel,
-) => {
+export const calculateUsagePrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
   const inputPrice = calculateInputPrice(usageEvent, model);
   const outputPrice = calculateOutputPrice(usageEvent, model);
   const usagePrice = inputPrice + outputPrice;
@@ -187,8 +170,8 @@ export const convertUsdToHours = (money: number) => {
 };
 
 const audioTranscriptionPricePerMinute: Record<TranscriptAiModel, number> = {
-  "gpt-4o-transcribe": 0.006,
-  "gpt-4o-mini-transcribe": 0.003,
+  'gpt-4o-transcribe': 0.006,
+  'gpt-4o-mini-transcribe': 0.003,
 };
 
 export const calculateAudioTranscriptionPrice = (
@@ -206,13 +189,10 @@ export const calculateAudioTranscriptionPrice = (
 };
 
 const textToAudioPricePerMinute: Record<TextToAudioModal, number> = {
-  "gpt-4o-mini-tts": 0.015,
+  'gpt-4o-mini-tts': 0.015,
 };
 
-export const calculateTextToAudioPrice = (
-  durationSeconds: number,
-  model: TextToAudioModal,
-) => {
+export const calculateTextToAudioPrice = (durationSeconds: number, model: TextToAudioModal) => {
   const pricePerMinute = textToAudioPricePerMinute[model];
   const durationInMinutes = durationSeconds / 60;
   const basePrice = pricePerMinute * durationInMinutes;

@@ -1,8 +1,8 @@
-import { useLingui } from "@lingui/react";
-import { Button, Stack, Typography } from "@mui/material";
-import { useUsage } from "./useUsage";
-import { useEffect, useState } from "react";
-import { CheckCheck, Landmark } from "lucide-react";
+import { useLingui } from '@lingui/react';
+import { Button, Stack, Typography } from '@mui/material';
+import { useUsage } from './useUsage';
+import { useEffect, useState } from 'react';
+import { CheckCheck, Landmark } from 'lucide-react';
 
 export const SubscriptionWaiter = ({
   onClose,
@@ -25,24 +25,24 @@ export const SubscriptionWaiter = ({
   return (
     <Stack
       sx={{
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100%",
-        width: "100%",
-        minHeight: "100dvh",
-        maxWidth: "100dvw",
-        position: "fixed",
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        width: '100%',
+        minHeight: '100dvh',
+        maxWidth: '100dvw',
+        position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
       }}
     >
-      <Stack sx={{ alignItems: "center", gap: "20px", padding: "0 10px" }}>
+      <Stack sx={{ alignItems: 'center', gap: '20px', padding: '0 10px' }}>
         {isChanged ? (
           <>
-            <CheckCheck size={"40px"} color="#4caf50" />
-            <Stack sx={{ alignItems: "center", gap: "0px" }}>
+            <CheckCheck size={'40px'} color="#4caf50" />
+            <Stack sx={{ alignItems: 'center', gap: '0px' }}>
               <Typography variant="h6" align="center">
                 {i18n._(`Done`)}
               </Typography>
@@ -62,8 +62,8 @@ export const SubscriptionWaiter = ({
           </>
         ) : (
           <>
-            <Landmark size={"40px"} />
-            <Stack sx={{ alignItems: "center", gap: "0px" }}>
+            <Landmark size={'40px'} />
+            <Stack sx={{ alignItems: 'center', gap: '0px' }}>
               <Typography variant="h6" align="center">
                 {i18n._(`Waiting for payment...`)}
               </Typography>

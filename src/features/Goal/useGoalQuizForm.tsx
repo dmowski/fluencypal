@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { SupportedLanguage } from "../Lang/lang";
-import { NativeLangCode } from "@/libs/language/type";
+import { useEffect, useState } from 'react';
+import { SupportedLanguage } from '../Lang/lang';
+import { NativeLangCode } from '@/libs/language/type';
 
 interface GoalQuizData {
   description: string;
@@ -10,7 +10,7 @@ interface GoalQuizData {
   level: string;
 }
 
-const STORAGE_KEY = "goalQuizData";
+const STORAGE_KEY = 'goalQuizData';
 
 export const useGoalQuizForm = (defaultData: GoalQuizData) => {
   const [data, setData] = useState<GoalQuizData>(defaultData);
@@ -25,7 +25,7 @@ export const useGoalQuizForm = (defaultData: GoalQuizData) => {
       try {
         return JSON.parse(storageData) as GoalQuizData;
       } catch (error) {
-        console.error("Failed to parse goal quiz data from storage:", error);
+        console.error('Failed to parse goal quiz data from storage:', error);
         return null;
       }
     }
@@ -33,7 +33,7 @@ export const useGoalQuizForm = (defaultData: GoalQuizData) => {
   };
 
   useEffect(() => {
-    const isWindow = typeof window !== "undefined";
+    const isWindow = typeof window !== 'undefined';
     if (!isWindow) {
       return;
     }

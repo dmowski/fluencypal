@@ -1,13 +1,9 @@
-import {
-  GameUsersPoints,
-  SubmitAnswerRequest,
-  SubmitAnswerResponse,
-} from "@/features/Game/types";
-import { getQuestionById, setQuestion } from "./getQuestion";
-import { getGameUsersPoints, increaseUserPoints } from "./statsResources";
-import { generateTextWithAi } from "@/app/api/ai/generateTextWithAi";
-import { AuthUserInfo } from "@/app/api/config/type";
-import { pointsIncreaseMap } from "../points";
+import { GameUsersPoints, SubmitAnswerRequest, SubmitAnswerResponse } from '@/features/Game/types';
+import { getQuestionById, setQuestion } from './getQuestion';
+import { getGameUsersPoints, increaseUserPoints } from './statsResources';
+import { generateTextWithAi } from '@/app/api/ai/generateTextWithAi';
+import { AuthUserInfo } from '@/app/api/config/type';
+import { pointsIncreaseMap } from '../points';
 
 export const submitAnswer = async ({
   data,
@@ -26,7 +22,7 @@ export const submitAnswer = async ({
     const response: SubmitAnswerResponse = {
       isCorrect: false,
       updatedUserPoints,
-      description: "Question not found or already answered.",
+      description: 'Question not found or already answered.',
     };
     return response;
   }
@@ -34,9 +30,9 @@ export const submitAnswer = async ({
   let updatedStats: GameUsersPoints | null = null;
 
   let isCorrect = false;
-  let description = "";
+  let description = '';
   isCorrect = question?.correctAnswer === data.answer;
-  const isImageDescriptionCorrect = question.type === "describe_image";
+  const isImageDescriptionCorrect = question.type === 'describe_image';
   if (isImageDescriptionCorrect && data.answer) {
     const answer = data.answer.trim();
 
@@ -64,27 +60,27 @@ Example of your response:
 true|A group of people is seen singing a song.|Your description is correct because it captures the essence of a group of friends singing.  
 
 `;
-    console.log("systemMessage", systemMessage);
+    console.log('systemMessage', systemMessage);
     const aiResult = await generateTextWithAi({
       systemMessage: systemMessage,
       userMessage: `User's description: "${answer}".`,
-      model: "gpt-4o",
+      model: 'gpt-4o',
     });
-    console.log("AI Result:", aiResult.output);
+    console.log('AI Result:', aiResult.output);
 
-    isCorrect = aiResult.output.toLowerCase().trim().startsWith("true");
-    console.log("aiResult.output", aiResult.output);
+    isCorrect = aiResult.output.toLowerCase().trim().startsWith('true');
+    console.log('aiResult.output', aiResult.output);
     const trimmedOutput = aiResult.output
       .trim()
-      .replace(/^true/i, "")
-      .replace(/^false/i, "")
+      .replace(/^true/i, '')
+      .replace(/^false/i, '')
       .trim()
-      .replace(/^\|/, "");
+      .replace(/^\|/, '');
 
-    description = trimmedOutput || "No description provided by AI.";
+    description = trimmedOutput || 'No description provided by AI.';
   }
 
-  const isTopicToDiscuss = question.type === "topic_to_discuss";
+  const isTopicToDiscuss = question.type === 'topic_to_discuss';
   if (isTopicToDiscuss && data.answer) {
     const answer = data.answer.trim();
 
@@ -111,24 +107,24 @@ Example of your response:
 true|A group of people is seen singing a song.|Your speech is correct because it captures the essence of a group of friends singing.  
 
 `;
-    console.log("systemMessage", systemMessage);
+    console.log('systemMessage', systemMessage);
     const aiResult = await generateTextWithAi({
       systemMessage: systemMessage,
       userMessage: `User's description: "${answer}".`,
-      model: "gpt-4o",
+      model: 'gpt-4o',
     });
-    console.log("AI Result:", aiResult.output);
+    console.log('AI Result:', aiResult.output);
 
-    isCorrect = aiResult.output.toLowerCase().trim().startsWith("true");
-    console.log("aiResult.output", aiResult.output);
+    isCorrect = aiResult.output.toLowerCase().trim().startsWith('true');
+    console.log('aiResult.output', aiResult.output);
     const trimmedOutput = aiResult.output
       .trim()
-      .replace(/^true/i, "")
-      .replace(/^false/i, "")
+      .replace(/^true/i, '')
+      .replace(/^false/i, '')
       .trim()
-      .replace(/^\|/, "");
+      .replace(/^\|/, '');
 
-    description = trimmedOutput || "No description provided by AI.";
+    description = trimmedOutput || 'No description provided by AI.';
   }
 
   if (isCorrect && question.answeredAt === null) {

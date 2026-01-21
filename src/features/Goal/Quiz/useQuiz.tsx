@@ -1,13 +1,9 @@
-"use client";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
-import {
-  fullLanguageName,
-  SupportedLanguage,
-  supportedLanguages,
-} from "@/features/Lang/lang";
-import { SetUrlStateOptions, useUrlMapState } from "@/features/Url/useUrlParam";
+'use client';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { fullLanguageName, SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
+import { SetUrlStateOptions, useUrlMapState } from '@/features/Url/useUrlParam';
 
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 import {
   createContext,
   useContext,
@@ -18,97 +14,97 @@ import {
   useEffect,
   useRef,
   useCallback,
-} from "react";
-import { useLanguageGroup } from "../useLanguageGroup";
-import { useLingui } from "@lingui/react";
-import { getCountryByIP } from "@/features/User/getCountry";
-import { replaceUrlToLang } from "@/features/Lang/replaceLangInUrl";
-import { isTMA } from "@telegram-apps/sdk-react";
-import { scrollToLangButton } from "@/libs/scroll";
-import { sleep } from "@/libs/sleep";
-import { useAuth } from "@/features/Auth/useAuth";
-import { db } from "@/features/Firebase/firebaseDb";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { getDoc, setDoc } from "firebase/firestore";
-import { QuizSurvey2, QuizSurvey2FollowUpQuestion } from "./types";
-import * as Sentry from "@sentry/nextjs";
-import { useTextAi } from "@/features/Ai/useTextAi";
-import { useSettings } from "@/features/Settings/useSettings";
-import { usePlan } from "@/features/Plan/usePlan";
-import { ChatMessage } from "@/common/conversation";
-import { useAiUserInfo } from "@/features/Ai/useAiUserInfo";
-import { fnv1aHash } from "@/libs/hash";
-import { getWordsCount } from "@/libs/words";
-import { NativeLangCode } from "@/libs/language/type";
-import { guessLanguagesByCountry } from "@/libs/language/languageByCountry";
+} from 'react';
+import { useLanguageGroup } from '../useLanguageGroup';
+import { useLingui } from '@lingui/react';
+import { getCountryByIP } from '@/features/User/getCountry';
+import { replaceUrlToLang } from '@/features/Lang/replaceLangInUrl';
+import { isTMA } from '@telegram-apps/sdk-react';
+import { scrollToLangButton } from '@/libs/scroll';
+import { sleep } from '@/libs/sleep';
+import { useAuth } from '@/features/Auth/useAuth';
+import { db } from '@/features/Firebase/firebaseDb';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { getDoc, setDoc } from 'firebase/firestore';
+import { QuizSurvey2, QuizSurvey2FollowUpQuestion } from './types';
+import * as Sentry from '@sentry/nextjs';
+import { useTextAi } from '@/features/Ai/useTextAi';
+import { useSettings } from '@/features/Settings/useSettings';
+import { usePlan } from '@/features/Plan/usePlan';
+import { ChatMessage } from '@/common/conversation';
+import { useAiUserInfo } from '@/features/Ai/useAiUserInfo';
+import { fnv1aHash } from '@/libs/hash';
+import { getWordsCount } from '@/libs/words';
+import { NativeLangCode } from '@/libs/language/type';
+import { guessLanguagesByCountry } from '@/libs/language/languageByCountry';
 
 type QuizStep =
-  | "before_nativeLanguage"
-  | "learnLanguage"
-  | "nativeLanguage"
-  | "before_pageLanguage"
-  | "pageLanguage"
-  | "before_recordAbout"
-  | "recordAbout"
-  | "before_recordAboutFollowUp"
-  | "recordAboutFollowUp"
-  | "before_recordAboutFollowUp2"
-  | "recordAboutFollowUp2"
-  | "reviewAbout"
-  | "before_goalReview"
-  | "callMode"
-  | "paidVsFree"
-  | "writeWelcomeMessageInChat"
-  | "teacherSelection"
-  | "accessPlan"
-  | "goalReview";
+  | 'before_nativeLanguage'
+  | 'learnLanguage'
+  | 'nativeLanguage'
+  | 'before_pageLanguage'
+  | 'pageLanguage'
+  | 'before_recordAbout'
+  | 'recordAbout'
+  | 'before_recordAboutFollowUp'
+  | 'recordAboutFollowUp'
+  | 'before_recordAboutFollowUp2'
+  | 'recordAboutFollowUp2'
+  | 'reviewAbout'
+  | 'before_goalReview'
+  | 'callMode'
+  | 'paidVsFree'
+  | 'writeWelcomeMessageInChat'
+  | 'teacherSelection'
+  | 'accessPlan'
+  | 'goalReview';
 
 const stepsViews: QuizStep[] = [
-  "learnLanguage",
-  "before_nativeLanguage",
-  "nativeLanguage",
+  'learnLanguage',
+  'before_nativeLanguage',
+  'nativeLanguage',
 
-  "before_pageLanguage",
-  "pageLanguage",
+  'before_pageLanguage',
+  'pageLanguage',
 
-  "before_recordAbout",
-  "recordAbout",
-  "teacherSelection",
+  'before_recordAbout',
+  'recordAbout',
+  'teacherSelection',
 
-  "before_recordAboutFollowUp",
-  "recordAboutFollowUp",
+  'before_recordAboutFollowUp',
+  'recordAboutFollowUp',
 
-  "before_recordAboutFollowUp2",
-  "recordAboutFollowUp2",
+  'before_recordAboutFollowUp2',
+  'recordAboutFollowUp2',
 
-  "before_goalReview",
-  "goalReview",
-  "accessPlan",
+  'before_goalReview',
+  'goalReview',
+  'accessPlan',
   //"writeWelcomeMessageInChat",
 ];
 
 export const MIN_WORDS_FOR_ANSWER = 30;
 
 const getHash = (input: string) => {
-  if (!input) return "";
+  if (!input) return '';
 
   return fnv1aHash(input);
 };
 
 const isAboutRecorded = (survey: QuizSurvey2) => {
-  const transcript = survey.aboutUserTranscription || "";
+  const transcript = survey.aboutUserTranscription || '';
   const wordsCount = getWordsCount(transcript);
   return wordsCount >= MIN_WORDS_FOR_ANSWER;
 };
 
 const isAboutFollowUpRecord = (survey: QuizSurvey2) => {
-  const transcript = survey.aboutUserFollowUpTranscription || "";
+  const transcript = survey.aboutUserFollowUpTranscription || '';
   const wordsCount = getWordsCount(transcript);
   return wordsCount >= MIN_WORDS_FOR_ANSWER;
 };
 
 const isGoalIsRecorded = (survey: QuizSurvey2) => {
-  const transcript = survey.goalUserTranscription || "";
+  const transcript = survey.goalUserTranscription || '';
   const wordsCount = getWordsCount(transcript);
   return wordsCount >= MIN_WORDS_FOR_ANSWER;
 };
@@ -166,7 +162,7 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   const [isFirstLoading, setIsFirstLoading] = useState(true);
   const defaultState: QuizUrlState = useMemo(
     () => ({
-      learn: "en",
+      learn: 'en',
       nativeLang: pageLang,
       pageLang,
       currentStep: stepsViews[0],
@@ -192,10 +188,7 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
 
   const setState = useCallback(
     async (partial: Partial<QuizUrlState>, options?: SetUrlStateOptions) => {
-      return await setStateInput(
-        partial as unknown as Record<string, string>,
-        options,
-      );
+      return await setStateInput(partial as unknown as Record<string, string>, options);
     },
     [setStateInput],
   );
@@ -213,32 +206,29 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
 
   const updateSurvey = async (surveyDoc: QuizSurvey2, label: string) => {
     if (!surveyDocRef) {
-      throw new Error("updateSurvey | No survey doc ref");
+      throw new Error('updateSurvey | No survey doc ref');
     }
     const updatedSurvey: QuizSurvey2 = {
       ...surveyDoc,
       updatedAtIso: new Date().toISOString(),
     };
     await setDoc(surveyDocRef, updatedSurvey, { merge: true });
-    console.log("✅ Survey doc updated: " + label);
+    console.log('✅ Survey doc updated: ' + label);
     return updatedSurvey;
   };
 
   const test = async () => {};
 
-  const [isGeneratingFollowUpMap, setIsGeneratingFollowUpMap] = useState<
-    Record<string, boolean>
-  >({});
-  const isFollowUpGenerating = Object.values(isGeneratingFollowUpMap).some(
-    (v) => v,
+  const [isGeneratingFollowUpMap, setIsGeneratingFollowUpMap] = useState<Record<string, boolean>>(
+    {},
   );
+  const isFollowUpGenerating = Object.values(isGeneratingFollowUpMap).some((v) => v);
 
   const processAbout = async (
     survey: QuizSurvey2,
     hash: string,
   ): Promise<QuizSurvey2FollowUpQuestion> => {
-    const learningLanguageFullName =
-      fullLanguageName[survey.learningLanguageCode];
+    const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
     const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
 The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses.
 
@@ -265,7 +255,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     }>({
       systemMessage,
       userMessage: survey.aboutUserTranscription,
-      model: "gpt-4o",
+      model: 'gpt-4o',
       attempts: 4,
     });
 
@@ -273,7 +263,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
       sourceTranscription: survey.aboutUserTranscription,
       title: parsedResult.question,
       subtitle: parsedResult.subTitle,
-      description: parsedResult.description || "",
+      description: parsedResult.description || '',
       hash,
     };
 
@@ -289,32 +279,28 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
       return;
     }
 
-    const initHash = getHash(survey.aboutUserTranscription || "");
+    const initHash = getHash(survey.aboutUserTranscription || '');
 
     if (initHash === survey.aboutUserFollowUpQuestion.hash) {
-      console.log("⏩ generatingFollowUp | Already generated, skipping");
+      console.log('⏩ generatingFollowUp | Already generated, skipping');
       return;
     }
 
     if (isGeneratingFollowUpMap[initHash]) {
-      console.log("⏩ generatingFollowUp | In progress, skipping");
+      console.log('⏩ generatingFollowUp | In progress, skipping');
       return;
     }
 
     setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: true }));
 
     try {
-      console.log("🦄 generatingFollowUp ");
+      console.log('🦄 generatingFollowUp ');
       const newAnswer = await processAbout(survey, initHash);
 
-      const afterHash = getHash(
-        surveyRef.current?.aboutUserTranscription || "",
-      );
+      const afterHash = getHash(surveyRef.current?.aboutUserTranscription || '');
 
       if (afterHash !== initHash) {
-        console.log(
-          "⏩ generatingFollowUp | User about changed, skipping analysis",
-        );
+        console.log('⏩ generatingFollowUp | User about changed, skipping analysis');
         setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
         return;
       }
@@ -324,14 +310,14 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
           ...survey,
           aboutUserFollowUpQuestion: newAnswer,
         },
-        "generatingFollowUp",
+        'generatingFollowUp',
       );
       setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
     } catch (e) {
-      console.error("❌ generatingFollowUp | Error during analysis", e);
+      console.error('❌ generatingFollowUp | Error during analysis', e);
       Sentry.captureException(e, {
         extra: {
-          title: "Error in generatingFollowUp",
+          title: 'Error in generatingFollowUp',
           text: survey.aboutUserFollowUpTranscription,
           survey,
         },
@@ -340,18 +326,16 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     }
   };
 
-  const [isGeneratingGoalFollowUpMap, setIsGeneratingGoalFollowUpMap] =
-    useState<Record<string, boolean>>({});
-  const isGoalQuestionGenerating = Object.values(
-    isGeneratingGoalFollowUpMap,
-  ).some((v) => v);
+  const [isGeneratingGoalFollowUpMap, setIsGeneratingGoalFollowUpMap] = useState<
+    Record<string, boolean>
+  >({});
+  const isGoalQuestionGenerating = Object.values(isGeneratingGoalFollowUpMap).some((v) => v);
 
   const createGoalQuestion = async (
     survey: QuizSurvey2,
     hash: string,
   ): Promise<QuizSurvey2FollowUpQuestion> => {
-    const learningLanguageFullName =
-      fullLanguageName[survey.learningLanguageCode];
+    const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
     const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves and their answer to question then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
 The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand ${learningLanguageFullName} well.
 
@@ -385,7 +369,7 @@ ${survey.aboutUserFollowUpQuestion.title} (${survey.aboutUserFollowUpQuestion.de
 
 ${survey.aboutUserFollowUpTranscription}
 `,
-      model: "gpt-4o",
+      model: 'gpt-4o',
       attempts: 4,
     });
 
@@ -393,7 +377,7 @@ ${survey.aboutUserFollowUpTranscription}
       sourceTranscription: survey.aboutUserFollowUpTranscription,
       title: parsedResult.question,
       subtitle: parsedResult.subTitle,
-      description: parsedResult.description || "",
+      description: parsedResult.description || '',
       hash,
     };
 
@@ -420,7 +404,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 `;
 
     const usersInfo = [
-      "AboutUser:",
+      'AboutUser:',
       survey.aboutUserTranscription,
       survey.aboutUserFollowUpQuestion.title,
       survey.aboutUserFollowUpTranscription,
@@ -429,12 +413,12 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     ]
       .map((text) => text.trim())
       .filter((text) => text.length > 0)
-      .join(" ");
+      .join(' ');
 
     const aiResponse = await textAi.generate({
       systemMessage: systemPrompt,
       userMessage: usersInfo,
-      model: "gpt-4o",
+      model: 'gpt-4o',
     });
 
     return aiResponse;
@@ -449,38 +433,28 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       return;
     }
 
-    const initHash = getHash(survey.aboutUserFollowUpTranscription || "");
+    const initHash = getHash(survey.aboutUserFollowUpTranscription || '');
 
     if (initHash === survey.goalFollowUpQuestion.hash) {
-      console.log(
-        `⏩ generatingGoalQuestion | Goal followup already generated, skipping`,
-      );
+      console.log(`⏩ generatingGoalQuestion | Goal followup already generated, skipping`);
       return;
     }
 
     if (isGeneratingGoalFollowUpMap[initHash]) {
-      console.log(
-        `⏩ generatingGoalQuestion | Goal followup already in progress, skipping`,
-      );
+      console.log(`⏩ generatingGoalQuestion | Goal followup already in progress, skipping`);
       return;
     }
 
-    console.log(
-      `🦄 generatingGoalQuestion | Starting analysis for text length`,
-    );
+    console.log(`🦄 generatingGoalQuestion | Starting analysis for text length`);
     setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: true }));
 
     try {
       const newGoalQuestion = await createGoalQuestion(survey, initHash);
 
-      const afterHash = getHash(
-        surveyRef.current?.aboutUserFollowUpTranscription || "",
-      );
+      const afterHash = getHash(surveyRef.current?.aboutUserFollowUpTranscription || '');
 
       if (afterHash !== initHash) {
-        console.log(
-          `⏩ generatingGoalQuestion | User about followup changed, skipping analysis`,
-        );
+        console.log(`⏩ generatingGoalQuestion | User about followup changed, skipping analysis`);
         setIsGeneratingGoalFollowUpMap((prev) => ({
           ...prev,
           [initHash]: false,
@@ -493,7 +467,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
           ...(surveyRef.current || survey),
           goalFollowUpQuestion: newGoalQuestion,
         },
-        "generatingGoalQuestion",
+        'generatingGoalQuestion',
       );
       setIsGeneratingGoalFollowUpMap((prev) => ({
         ...prev,
@@ -501,10 +475,10 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       }));
       return;
     } catch (e) {
-      console.error("❌ generatingGoalQuestion | Error during analysis", e);
+      console.error('❌ generatingGoalQuestion | Error during analysis', e);
       Sentry.captureException(e, {
         extra: {
-          title: "Error in generatingGoalQuestion",
+          title: 'Error in generatingGoalQuestion',
           text: survey.aboutUserFollowUpTranscription,
           survey,
         },
@@ -516,9 +490,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     }
   };
 
-  const [isGoalGeneratingMap, setIsGoalGeneratingMap] = useState<
-    Record<string, boolean>
-  >({});
+  const [isGoalGeneratingMap, setIsGoalGeneratingMap] = useState<Record<string, boolean>>({});
   const isGoalGenerating = Object.values(isGoalGeneratingMap).some((v) => v);
 
   const generateGoal = async () => {
@@ -529,13 +501,13 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
     const isReadyToGenerateGoal = isGoalIsRecorded(survey);
     if (!isReadyToGenerateGoal) {
-      console.log("⏩ generateGoal | not ready");
+      console.log('⏩ generateGoal | not ready');
       return;
     }
 
-    const initialSurveyHash = getHash(survey.goalUserTranscription || "");
+    const initialSurveyHash = getHash(survey.goalUserTranscription || '');
     if (initialSurveyHash === survey.goalHash) {
-      console.log("⏩ generateGoal | Survey not changed");
+      console.log('⏩ generateGoal | Survey not changed');
       return;
     }
 
@@ -550,29 +522,29 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
         id: `about_user_followup_question`,
         isBot: true,
         text: `${survey.aboutUserFollowUpQuestion.title}\n${
-          survey.aboutUserFollowUpQuestion.description || ""
+          survey.aboutUserFollowUpQuestion.description || ''
         }`,
       },
       {
         id: `about_user_followup_answer`,
         isBot: false,
-        text: `${survey.aboutUserFollowUpTranscription || "No answer provided"}`,
+        text: `${survey.aboutUserFollowUpTranscription || 'No answer provided'}`,
       },
       {
         id: `goal_followup_question`,
         isBot: true,
         text: `${survey.goalFollowUpQuestion.title}\n${
-          survey.goalFollowUpQuestion.description || ""
+          survey.goalFollowUpQuestion.description || ''
         }`,
       },
       {
         id: `goal_followup_answer`,
         isBot: false,
-        text: `${survey.goalUserTranscription || "No answer provided"}`,
+        text: `${survey.goalUserTranscription || 'No answer provided'}`,
       },
     ];
 
-    console.log("🦄 generateGoal | Starting goal generation.");
+    console.log('🦄 generateGoal | Starting goal generation.');
     const generateExampleRequest = generateWelcomeMessage();
 
     const userRecords = await userInfo.extractUserRecords(conversationMessages);
@@ -585,13 +557,9 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
     setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
 
-    const finalSurveyHash = getHash(
-      surveyRef.current?.goalUserTranscription || "",
-    );
+    const finalSurveyHash = getHash(surveyRef.current?.goalUserTranscription || '');
     if (initialSurveyHash !== finalSurveyHash) {
-      console.log(
-        "🦄 generateGoal | Survey changed during goal generation, skipping update",
-      );
+      console.log('🦄 generateGoal | Survey changed during goal generation, skipping update');
       return;
     }
     if (!surveyRef.current) return;
@@ -602,11 +570,9 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
         goalHash: finalSurveyHash,
         userRecords: userRecords,
         exampleOfWelcomeMessage:
-          exampleOfWelcomeMessage ||
-          (surveyRef.current || survey).exampleOfWelcomeMessage ||
-          "",
+          exampleOfWelcomeMessage || (surveyRef.current || survey).exampleOfWelcomeMessage || '',
       },
-      "generateGoal",
+      'generateGoal',
     );
   };
 
@@ -653,7 +619,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
             nativeLanguageCode: nativeLanguage,
             pageLanguageCode: pageLanguage,
           },
-          "ensureSurveyDocExists",
+          'ensureSurveyDocExists',
         );
 
         await syncWithSettings(survey);
@@ -661,11 +627,11 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       return;
     }
     if (!auth.uid) {
-      throw new Error("ensureSurveyDocExists | No auth uid");
+      throw new Error('ensureSurveyDocExists | No auth uid');
     }
 
     if (!surveyDocRef) {
-      throw new Error("ensureSurveyDocExists | No survey doc ref");
+      throw new Error('ensureSurveyDocExists | No survey doc ref');
     }
 
     const doc = await getDoc(surveyDocRef);
@@ -675,29 +641,29 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
         learningLanguageCode: languageToLearn,
         nativeLanguageCode: nativeLanguage,
         pageLanguageCode: pageLanguage,
-        exampleOfWelcomeMessage: "",
+        exampleOfWelcomeMessage: '',
 
-        aboutUserTranscription: "",
+        aboutUserTranscription: '',
         aboutUserFollowUpQuestion: {
-          sourceTranscription: "",
-          title: "",
-          subtitle: "",
-          description: "",
-          hash: "",
+          sourceTranscription: '',
+          title: '',
+          subtitle: '',
+          description: '',
+          hash: '',
         },
-        aboutUserFollowUpTranscription: "",
+        aboutUserFollowUpTranscription: '',
 
-        goalUserTranscription: "",
+        goalUserTranscription: '',
         goalFollowUpQuestion: {
-          sourceTranscription: "",
-          title: "",
-          subtitle: "",
-          description: "",
-          hash: "",
+          sourceTranscription: '',
+          title: '',
+          subtitle: '',
+          description: '',
+          hash: '',
         },
 
         goalData: null,
-        goalHash: "",
+        goalHash: '',
         userRecords: userInfo.userInfo?.records || [],
 
         updatedAtIso: new Date().toISOString(),
@@ -705,7 +671,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       };
       await setDoc(surveyDocRef, initSurvey);
       await syncWithSettings(initSurvey);
-      console.log("✅ Survey doc created", initSurvey);
+      console.log('✅ Survey doc created', initSurvey);
     } else {
       const updatedSurvey = await updateSurvey(
         {
@@ -714,7 +680,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
           nativeLanguageCode: nativeLanguage,
           pageLanguageCode: pageLanguage,
         },
-        "ensureSurveyDocExists",
+        'ensureSurveyDocExists',
       );
       await syncWithSettings(updatedSurvey);
     }
@@ -726,9 +692,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     systemLanguagesTitle: i18n._(`System languages`),
   });
 
-  const preFindNativeLanguage = async (
-    langToLearn: string,
-  ): Promise<Partial<QuizUrlState>> => {
+  const preFindNativeLanguage = async (langToLearn: string): Promise<Partial<QuizUrlState>> => {
     try {
       if (nativeLanguage !== langToLearn) {
         return {};
@@ -739,7 +703,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       );
       const goodSystemLang = systemLanguages[0]?.languageCode;
       if (goodSystemLang) {
-        console.log("Found system lang", goodSystemLang);
+        console.log('Found system lang', goodSystemLang);
         return {
           nativeLang: goodSystemLang,
         };
@@ -750,15 +714,13 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
         ? guessLanguagesByCountry(countryCode)
         : [];
 
-      const filteredLanguagesCodes = languagesByCountryCode.filter(
-        (code) => code !== langToLearn,
-      );
+      const filteredLanguagesCodes = languagesByCountryCode.filter((code) => code !== langToLearn);
       const languageByCountry = filteredLanguagesCodes.filter((code) =>
         languageGroups.find((lang) => lang.languageCode === code),
       )[0];
 
       if (languageByCountry) {
-        console.log("Found country by IP", languageByCountry);
+        console.log('Found country by IP', languageByCountry);
         return {
           nativeLang: languageByCountry,
         };
@@ -769,7 +731,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       console.error(e);
       Sentry.captureException(e, {
         extra: {
-          title: "Error in preFindNativeLanguage",
+          title: 'Error in preFindNativeLanguage',
         },
       });
     }
@@ -815,12 +777,12 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
   };
 
   const path = useMemo(() => {
-    const isNativeLanguageIsSupportedLanguage = (
-      supportedLanguages as string[]
-    ).includes(nativeLanguage);
+    const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
+      nativeLanguage,
+    );
 
     const path = stepsViews.filter((viewStep) => {
-      if (viewStep === "pageLanguage" || viewStep === "before_pageLanguage") {
+      if (viewStep === 'pageLanguage' || viewStep === 'before_pageLanguage') {
         if (isNativeLanguageIsSupportedLanguage) {
           return false;
         } else {
@@ -833,8 +795,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
     return path;
   }, [nativeLanguage]);
-  const currentStepIndex =
-    path.indexOf(currentStep) === -1 ? 0 : path.indexOf(currentStep);
+  const currentStepIndex = path.indexOf(currentStep) === -1 ? 0 : path.indexOf(currentStep);
 
   const [isGTagConfirmed, setIsGTagConfirmed] = useState(false);
 
@@ -843,18 +804,18 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     const nextStep = path[nextStepIndex];
 
     const confirmGTagSteps: QuizStep[] = [
-      "recordAboutFollowUp",
-      "before_recordAboutFollowUp2",
-      "recordAboutFollowUp2",
-      "before_goalReview",
-      "goalReview",
+      'recordAboutFollowUp',
+      'before_recordAboutFollowUp2',
+      'recordAboutFollowUp2',
+      'before_goalReview',
+      'goalReview',
     ];
     if (!isGTagConfirmed && confirmGTagSteps.includes(currentStep)) {
       setIsGTagConfirmed(true);
       // confirmGtag();
     }
 
-    if (currentStep === "before_recordAbout") {
+    if (currentStep === 'before_recordAbout') {
       ensureSurveyDocExists();
     }
 
@@ -862,7 +823,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       currentStep: nextStep,
     };
 
-    if (currentStep === "learnLanguage") {
+    if (currentStep === 'learnLanguage') {
       const langPatch = await preFindNativeLanguage(languageToLearn);
       newStatePatch = {
         ...newStatePatch,
@@ -873,15 +834,15 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       redirect: false,
     });
 
-    if (url && currentStep === "nativeLanguage") {
-      const isNativeLanguageIsSupportedLanguage = (
-        supportedLanguages as string[]
-      ).includes(nativeLanguage);
+    if (url && currentStep === 'nativeLanguage') {
+      const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
+        nativeLanguage,
+      );
       if (isNativeLanguageIsSupportedLanguage && pageLang !== nativeLanguage) {
         url = replaceUrlToLang(nativeLanguage, url);
       }
     }
-    router.push(url || "", { scroll: false });
+    router.push(url || '', { scroll: false });
   };
 
   const prevStep = useCallback(() => {
@@ -899,7 +860,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
   const confirmPlan = async () => {
     if (!surveyRef.current?.goalData) {
-      alert("Please complete the goal before confirming your plan.");
+      alert('Please complete the goal before confirming your plan.');
       return;
     }
 
@@ -955,7 +916,7 @@ export function QuizProvider({
 export const useQuiz = (): QuizContextType => {
   const context = useContext(QuizContext);
   if (!context) {
-    throw new Error("useQuiz must be used within a QuizProvider");
+    throw new Error('useQuiz must be used within a QuizProvider');
   }
   return context;
 };

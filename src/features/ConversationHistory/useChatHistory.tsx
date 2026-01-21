@@ -1,24 +1,17 @@
-"use client";
-import { createContext, useContext, ReactNode, JSX } from "react";
-import {
-  getDocs,
-  limit,
-  orderBy,
-  query,
-  setDoc,
-  where,
-} from "firebase/firestore";
-import { useAuth } from "../Auth/useAuth";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { db } from "../Firebase/firebaseDb";
+'use client';
+import { createContext, useContext, ReactNode, JSX } from 'react';
+import { getDocs, limit, orderBy, query, setDoc, where } from 'firebase/firestore';
+import { useAuth } from '../Auth/useAuth';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { db } from '../Firebase/firebaseDb';
 import {
   ChatMessage,
   Conversation,
   ConversationType,
   MessagesOrderMap,
-} from "@/common/conversation";
-import { useSettings } from "../Settings/useSettings";
-import { useCollectionData } from "react-firebase-hooks/firestore";
+} from '@/common/conversation';
+import { useSettings } from '../Settings/useSettings';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 interface ChatHistoryContextType {
   createConversation: (params: {
@@ -26,10 +19,7 @@ interface ChatHistoryContextType {
     languageCode: SupportedLanguage;
     mode: ConversationType;
   }) => Promise<void>;
-  setMessages: (
-    conversationId: string,
-    messages: ChatMessage[],
-  ) => Promise<void>;
+  setMessages: (conversationId: string, messages: ChatMessage[]) => Promise<void>;
   saveConversation: (
     conversationId: string,
     messages: ChatMessage[],
@@ -52,7 +42,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
   const getConversationDoc = (conversationId: string) => {
     const docRef = db.documents.conversation(userId, conversationId);
     if (!docRef) {
-      throw new Error("❌ Conversation ID and userId are required");
+      throw new Error('❌ Conversation ID and userId are required');
     }
     return docRef;
   };
@@ -60,16 +50,16 @@ function useProvideChatHistory(): ChatHistoryContextType {
   const getLastConversations = async (count: number) => {
     const languageCode = settings.languageCode;
     if (!languageCode) {
-      throw new Error("❌ languageCode is not defined | getLastConversations");
+      throw new Error('❌ languageCode is not defined | getLastConversations');
     }
 
     if (!collectionRef) {
-      throw new Error("❌ collectionRef is not defined | getLastConversations");
+      throw new Error('❌ collectionRef is not defined | getLastConversations');
     }
     const queryRef = query(
       collectionRef,
-      where("languageCode", "==", languageCode),
-      orderBy("updatedAt", "desc"),
+      where('languageCode', '==', languageCode),
+      orderBy('updatedAt', 'desc'),
       limit(count),
     );
     const snapshot = await getDocs(queryRef);
@@ -77,10 +67,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
     return data;
   };
 
-  const setMessages = async (
-    conversationId: string,
-    messages: ChatMessage[],
-  ) => {
+  const setMessages = async (conversationId: string, messages: ChatMessage[]) => {
     const conversationDoc = getConversationDoc(conversationId);
     await setDoc(
       conversationDoc,
@@ -148,24 +135,18 @@ function useProvideChatHistory(): ChatHistoryContextType {
   };
 }
 
-export function ChatHistoryProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function ChatHistoryProvider({ children }: { children: ReactNode }): JSX.Element {
   const chatHistoryData = useProvideChatHistory();
 
   return (
-    <ChatHistoryContext.Provider value={chatHistoryData}>
-      {children}
-    </ChatHistoryContext.Provider>
+    <ChatHistoryContext.Provider value={chatHistoryData}>{children}</ChatHistoryContext.Provider>
   );
 }
 
 export function useChatHistory(): ChatHistoryContextType {
   const context = useContext(ChatHistoryContext);
   if (!context) {
-    throw new Error("useChatHistory must be used within a ChatHistoryProvider");
+    throw new Error('useChatHistory must be used within a ChatHistoryProvider');
   }
   return context;
 }

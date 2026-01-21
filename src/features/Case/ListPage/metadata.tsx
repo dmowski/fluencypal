@@ -1,5 +1,5 @@
-import { generateMetadataInfo } from "@/features/SEO/metadata";
-import type { Metadata } from "next";
+import { generateMetadataInfo } from '@/features/SEO/metadata';
+import type { Metadata } from 'next';
 
 export interface ListInterviewPageProps {
   params: Promise<{ lang: string }>;
@@ -8,15 +8,13 @@ export interface ListInterviewPageProps {
   }>;
 }
 
-export async function generateListMetadata(
-  props: ListInterviewPageProps,
-): Promise<Metadata> {
+export async function generateListMetadata(props: ListInterviewPageProps): Promise<Metadata> {
   const searchParam = await props.searchParams;
-  const category = searchParam.category || "";
+  const category = searchParam.category || '';
 
   return generateMetadataInfo({
     lang: (await props.params).lang,
-    currentPath: "case",
+    currentPath: 'case',
     category,
   });
 }

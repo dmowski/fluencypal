@@ -1,6 +1,6 @@
-import { SubmitAnswerRequest } from "@/features/Game/types";
-import { validateAuthToken } from "../../config/firebase";
-import { submitAnswer } from "@/features/Game/api/submitAnswer";
+import { SubmitAnswerRequest } from '@/features/Game/types';
+import { validateAuthToken } from '../../config/firebase';
+import { submitAnswer } from '@/features/Game/api/submitAnswer';
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);

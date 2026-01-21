@@ -1,15 +1,15 @@
-"use client";
-import { Link, Stack, Typography } from "@mui/material";
-import { maxLandingWidth } from "./landingSettings";
+'use client';
+import { Link, Stack, Typography } from '@mui/material';
+import { maxLandingWidth } from './landingSettings';
 import {
   fullEnglishLanguageName,
   SupportedLanguage,
   supportedLanguages,
-} from "@/features/Lang/lang";
-import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useLingui } from "@lingui/react";
-import { Suspense } from "react";
+} from '@/features/Lang/lang';
+import { getUrlStart, getUrlStartWithoutLastSlash } from '../Lang/getUrlStart';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useLingui } from '@lingui/react';
+import { Suspense } from 'react';
 
 interface FooterProps {
   lang: SupportedLanguage;
@@ -18,66 +18,66 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
   const { i18n } = useLingui();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const onlyPathname = pathname || "/";
-  const onlyQuery = searchParams.toString() || "";
+  const onlyPathname = pathname || '/';
+  const onlyQuery = searchParams.toString() || '';
 
-  const pathNameAndQuery = onlyPathname + (onlyQuery ? `?${onlyQuery}` : "");
+  const pathNameAndQuery = onlyPathname + (onlyQuery ? `?${onlyQuery}` : '');
 
   const pathnameWithoutLang =
-    lang === "en" && !pathNameAndQuery.startsWith("/en")
-      ? pathNameAndQuery || "/"
-      : pathNameAndQuery.replace(`/${lang}`, "") || "/";
+    lang === 'en' && !pathNameAndQuery.startsWith('/en')
+      ? pathNameAndQuery || '/'
+      : pathNameAndQuery.replace(`/${lang}`, '') || '/';
 
-  const pathWithoutFirstSlash = pathnameWithoutLang.startsWith("/")
+  const pathWithoutFirstSlash = pathnameWithoutLang.startsWith('/')
     ? pathnameWithoutLang.slice(1)
     : pathnameWithoutLang;
   return (
     <Stack
-      component={"footer"}
+      component={'footer'}
       sx={{
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "50px 0 50px 0",
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '50px 0 50px 0',
         //backgroundColor: "#070f1a",
         backgroundColor: `#0a121e`,
         //backgroundColor: `rgba(10, 18, 30, 1)`,
-        borderTop: "1px solid rgba(255, 255, 255, 0.2)",
-        marginTop: "0px",
-        position: "relative",
+        borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+        marginTop: '0px',
+        position: 'relative',
         zIndex: 1,
       }}
     >
       <Stack
         sx={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1.5fr 1fr",
-          alignItems: "center",
-          padding: "0 10px",
+          display: 'grid',
+          gridTemplateColumns: '1fr 1.5fr 1fr',
+          alignItems: 'center',
+          padding: '0 10px',
 
-          boxSizing: "border-box",
-          gap: "25px",
-          width: "100%",
-          justifyContent: "space-between",
+          boxSizing: 'border-box',
+          gap: '25px',
+          width: '100%',
+          justifyContent: 'space-between',
           maxWidth: maxLandingWidth,
-          position: "relative",
+          position: 'relative',
           zIndex: 9999,
-          "@media (max-width: 900px)": {
-            gridTemplateColumns: "1fr",
-            gap: "70px",
+          '@media (max-width: 900px)': {
+            gridTemplateColumns: '1fr',
+            gap: '70px',
           },
         }}
       >
         <Stack
           sx={{
-            alignItems: "flex-start",
-            justifyContent: "flex-start",
-            gap: "10px",
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            gap: '10px',
             a: {
               fontWeight: 500,
-              color: "#fff",
-              textUnderlineOffset: "3px",
-              textDecorationColor: "#fff",
+              color: '#fff',
+              textUnderlineOffset: '3px',
+              textDecorationColor: '#fff',
             },
           }}
         >
@@ -97,10 +97,10 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
 
         <Stack
           sx={{
-            gap: "10px",
-            alignItems: "center",
-            "@media (max-width: 900px)": {
-              alignItems: "flex-start",
+            gap: '10px',
+            alignItems: 'center',
+            '@media (max-width: 900px)': {
+              alignItems: 'flex-start',
             },
           }}
         >
@@ -116,24 +116,21 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
 
           <Stack
             sx={{
-              flexDirection: "row",
-              gap: "0 10px",
-              flexWrap: "wrap",
-              alignItems: "center",
-              justifyContent: "center",
-              "@media (max-width: 900px)": {
-                justifyContent: "flex-start",
+              flexDirection: 'row',
+              gap: '0 10px',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'center',
+              '@media (max-width: 900px)': {
+                justifyContent: 'flex-start',
               },
             }}
           >
             {supportedLanguages.map((lang, index) => {
-              const href = [
-                getUrlStartWithoutLastSlash(lang),
-                pathWithoutFirstSlash,
-              ]
+              const href = [getUrlStartWithoutLastSlash(lang), pathWithoutFirstSlash]
                 .filter((part) => part)
-                .join("/")
-                .replace(/\/+/g, "/");
+                .join('/')
+                .replace(/\/+/g, '/');
               return (
                 <Link
                   key={lang}
@@ -143,7 +140,7 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
                   aria-label={`Switch to ${fullEnglishLanguageName[lang]}`}
                 >
                   {fullEnglishLanguageName[lang]}
-                  {index !== supportedLanguages.length - 1 && ","}
+                  {index !== supportedLanguages.length - 1 && ','}
                 </Link>
               );
             })}
@@ -151,10 +148,10 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
         </Stack>
         <Stack
           sx={{
-            alignItems: "flex-end",
-            justifyContent: "center",
-            "@media (max-width: 900px)": {
-              alignItems: "flex-start",
+            alignItems: 'flex-end',
+            justifyContent: 'center',
+            '@media (max-width: 900px)': {
+              alignItems: 'flex-start',
             },
           }}
         >
@@ -162,11 +159,11 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
           <Typography variant="body1">© 2026</Typography>
           <Stack
             sx={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              gap: "2px 10px",
-              flexWrap: "wrap",
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              gap: '2px 10px',
+              flexWrap: 'wrap',
             }}
           >
             <Link
@@ -174,7 +171,7 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
               variant="body1"
               align="right"
               sx={{
-                color: "#fff",
+                color: '#fff',
               }}
             >
               {i18n._(`Terms of Use`)}
@@ -184,7 +181,7 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
               variant="body1"
               align="right"
               sx={{
-                color: "#fff",
+                color: '#fff',
               }}
             >
               {i18n._(`Privacy Policy`)}

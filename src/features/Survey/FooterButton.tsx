@@ -1,7 +1,7 @@
-"use client";
-import { Button, Stack } from "@mui/material";
-import { useWindowSizes } from "../Layout/useWindowSizes";
-import { ReactNode } from "react";
+'use client';
+import { Button, Stack } from '@mui/material';
+import { useWindowSizes } from '../Layout/useWindowSizes';
+import { ReactNode } from 'react';
 
 export const FooterButton = ({
   disabled,
@@ -18,7 +18,7 @@ export const FooterButton = ({
   onClick: () => void;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
-  color?: "primary" | "success" | "error";
+  color?: 'primary' | 'success' | 'error';
   aboveButtonComponent?: ReactNode;
   width?: string;
 }) => {
@@ -27,28 +27,28 @@ export const FooterButton = ({
     <>
       <Stack
         sx={{
-          display: "block",
-          width: "100%",
+          display: 'block',
+          width: '100%',
           minHeight: `calc(${bottomOffset} + 95px)`,
         }}
       />
 
       <Stack
         sx={{
-          flexDirection: "column",
-          gap: "10px",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "fixed",
-          width: "100dvw",
-          left: "0",
+          flexDirection: 'column',
+          gap: '10px',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'fixed',
+          width: '100dvw',
+          left: '0',
 
-          padding: "30px 0 0 0",
+          padding: '30px 0 0 0',
           bottom: 0,
-          right: "0px",
+          right: '0px',
 
           paddingBottom: `calc(${bottomOffset} + 35px)`,
-          "@media (max-width: 600px)": {
+          '@media (max-width: 600px)': {
             paddingBottom: `calc(${bottomOffset} + 15px)`,
           },
         }}
@@ -56,7 +56,7 @@ export const FooterButton = ({
         {aboveButtonComponent && (
           <Stack
             sx={{
-              width: "min(590px, calc(100dvw - 0px))",
+              width: 'min(590px, calc(100dvw - 0px))',
             }}
           >
             {aboveButtonComponent}
@@ -65,14 +65,14 @@ export const FooterButton = ({
         <Button
           onClick={onClick}
           variant="contained"
-          color={color || "primary"}
+          color={color || 'primary'}
           disabled={disabled}
           size="large"
           sx={{
-            width: `min(${width || "600px"}, calc(100dvw - 20px))`,
-            paddingTop: "12px",
-            paddingBottom: "12px",
-            borderRadius: "16px",
+            width: `min(${width || '600px'}, calc(100dvw - 20px))`,
+            paddingTop: '12px',
+            paddingBottom: '12px',
+            borderRadius: '16px',
           }}
           fullWidth
           startIcon={startIcon}
@@ -82,11 +82,10 @@ export const FooterButton = ({
         </Button>
         <Stack
           sx={{
-            width: "100%",
-            height: "100%",
-            background:
-              "linear-gradient(to top, rgba(10, 18, 30, 0.9), rgba(10, 18, 30, 0))",
-            position: "absolute",
+            width: '100%',
+            height: '100%',
+            background: 'linear-gradient(to top, rgba(10, 18, 30, 0.9), rgba(10, 18, 30, 0))',
+            position: 'absolute',
             bottom: 0,
             left: 0,
             right: 0,

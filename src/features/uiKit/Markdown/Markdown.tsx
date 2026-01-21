@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { Checkbox, Link, Stack, Typography } from "@mui/material";
-import { MarkdownToJSX, default as MarkdownTool } from "markdown-to-jsx";
-import React from "react";
+import { Checkbox, Link, Stack, Typography } from '@mui/material';
+import { MarkdownToJSX, default as MarkdownTool } from 'markdown-to-jsx';
+import React from 'react';
 
 export interface MarkdownProps {
   children: string;
-  variant?: "small" | "normal" | "conversation" | "blog";
+  variant?: 'small' | 'normal' | 'conversation' | 'blog';
   onWordClick?: (word: string, element: HTMLElement) => void;
 }
 
 const processStringChild = (child: string, index: number) => {
-  const words = child.split(" ");
+  const words = child.split(' ');
   return words.map((word, wordIndex) => (
     <span key={`${index}-${wordIndex}`} className="conversation-word">
-      {word}{" "}
+      {word}{' '}
     </span>
   ));
 };
@@ -22,7 +22,7 @@ const processStringChild = (child: string, index: number) => {
 const wrapChildrenWithTranslateWrapper = (children: React.ReactNode) => {
   const isChildrenIsArray = Array.isArray(children);
   if (!isChildrenIsArray) {
-    const isString = typeof children === "string";
+    const isString = typeof children === 'string';
     if (isString) {
       return processStringChild(children, 0);
     }
@@ -31,7 +31,7 @@ const wrapChildrenWithTranslateWrapper = (children: React.ReactNode) => {
   }
 
   const processedChildren = children.map((child, index) => {
-    if (typeof child === "string") {
+    if (typeof child === 'string') {
       return processStringChild(child, index);
     }
     return child;
@@ -46,7 +46,7 @@ const markdownComponents: MarkdownToJSX.Overrides = {
     <Typography
       variant="h2"
       sx={{
-        paddingTop: "20px",
+        paddingTop: '20px',
       }}
     >
       {children}
@@ -55,9 +55,9 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   h3: ({ children }) => (
     <Typography
       variant="h4"
-      component={"h3"}
+      component={'h3'}
       sx={{
-        paddingTop: "20px",
+        paddingTop: '20px',
       }}
     >
       {children}
@@ -66,9 +66,9 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   h4: ({ children }) => (
     <Typography
       variant="h5"
-      component={"h4"}
+      component={'h4'}
       sx={{
-        paddingTop: "20px",
+        paddingTop: '20px',
       }}
     >
       {children}
@@ -80,8 +80,8 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   p: ({ children }) => (
     <Typography
       sx={{
-        padding: "3px 0 5px 0",
-        fontSize: "18px",
+        padding: '3px 0 5px 0',
+        fontSize: '18px',
       }}
     >
       {children}
@@ -90,8 +90,8 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   span: ({ children }) => (
     <Typography
       sx={{
-        padding: "3px 0 5px 0",
-        fontSize: "18px",
+        padding: '3px 0 5px 0',
+        fontSize: '18px',
       }}
     >
       {children}
@@ -105,8 +105,8 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   ul: ({ children }) => (
     <ul
       style={{
-        padding: "0 0 0 20px",
-        margin: "5px 0",
+        padding: '0 0 0 20px',
+        margin: '5px 0',
       }}
     >
       {children}
@@ -115,20 +115,20 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   ol: ({ children }) => (
     <ol
       style={{
-        padding: "0 0 0 20px",
-        margin: "5px 0",
+        padding: '0 0 0 20px',
+        margin: '5px 0',
       }}
     >
       {children}
     </ol>
   ),
-  li: ({ children }) => <Typography component={"li"}>{children}</Typography>,
+  li: ({ children }) => <Typography component={'li'}>{children}</Typography>,
   input: ({ checked }) => (
     <Checkbox
       checked={checked}
       disabled
       sx={{
-        padding: "0",
+        padding: '0',
       }}
     />
   ),
@@ -138,9 +138,9 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   blockquote: ({ children }) => (
     <blockquote
       style={{
-        margin: "10px 10px 10px 0",
-        padding: "5px 10px 5px 15px",
-        borderLeft: "4px solid rgba(0, 0, 0, 0.1)",
+        margin: '10px 10px 10px 0',
+        padding: '5px 10px 5px 15px',
+        borderLeft: '4px solid rgba(0, 0, 0, 0.1)',
       }}
     >
       {children}
@@ -154,7 +154,7 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   th: ({ children }) => <th>{children}</th>,
   td: ({ children }) => <td>{children}</td>,
   table: ({ children }) => <table>{children}</table>,
-  img: (props) => <img {...props} style={{ maxWidth: "90%" }} />,
+  img: (props) => <img {...props} style={{ maxWidth: '90%' }} />,
 };
 
 const markdownComponentsSmall: MarkdownToJSX.Overrides = {
@@ -162,7 +162,7 @@ const markdownComponentsSmall: MarkdownToJSX.Overrides = {
   p: ({ children }) => (
     <Typography
       sx={{
-        padding: "2px 0 2px 0",
+        padding: '2px 0 2px 0',
       }}
     >
       {children}
@@ -175,8 +175,8 @@ const markdownComponentsBlog: MarkdownToJSX.Overrides = {
   p: ({ children }) => (
     <Typography
       sx={{
-        padding: "5px 0 10px 0",
-        fontSize: "1.15rem",
+        padding: '5px 0 10px 0',
+        fontSize: '1.15rem',
       }}
       variant="body1"
     >
@@ -186,30 +186,28 @@ const markdownComponentsBlog: MarkdownToJSX.Overrides = {
   blockquote: ({ children }) => (
     <blockquote
       style={{
-        margin: "10px 10px 10px 0",
-        padding: "5px 10px 5px 15px",
-        borderLeft: "4px solid rgba(0, 0, 0, 0.1)",
+        margin: '10px 10px 10px 0',
+        padding: '5px 10px 5px 15px',
+        borderLeft: '4px solid rgba(0, 0, 0, 0.1)',
       }}
     >
       {children}
     </blockquote>
   ),
-  img: (props) => <img {...props} style={{ maxWidth: "100%" }} />,
+  img: (props) => <img {...props} style={{ maxWidth: '100%' }} />,
 };
 
 const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   ...markdownComponents,
 
   h1: ({ children }) => (
-    <Typography variant="h1">
-      {wrapChildrenWithTranslateWrapper(children)}
-    </Typography>
+    <Typography variant="h1">{wrapChildrenWithTranslateWrapper(children)}</Typography>
   ),
   h2: ({ children }) => (
     <Typography
       variant="h2"
       sx={{
-        paddingTop: "20px",
+        paddingTop: '20px',
       }}
     >
       {wrapChildrenWithTranslateWrapper(children)}
@@ -218,9 +216,9 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   h3: ({ children }) => (
     <Typography
       variant="h4"
-      component={"h3"}
+      component={'h3'}
       sx={{
-        paddingTop: "20px",
+        paddingTop: '20px',
       }}
     >
       {wrapChildrenWithTranslateWrapper(children)}
@@ -229,23 +227,19 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   h4: ({ children }) => (
     <Typography
       variant="h5"
-      component={"h4"}
+      component={'h4'}
       sx={{
-        paddingTop: "20px",
+        paddingTop: '20px',
       }}
     >
       {wrapChildrenWithTranslateWrapper(children)}
     </Typography>
   ),
   h5: ({ children }) => (
-    <Typography variant="h5">
-      {wrapChildrenWithTranslateWrapper(children)}
-    </Typography>
+    <Typography variant="h5">{wrapChildrenWithTranslateWrapper(children)}</Typography>
   ),
   h6: ({ children }) => (
-    <Typography variant="h6">
-      {wrapChildrenWithTranslateWrapper(children)}
-    </Typography>
+    <Typography variant="h6">{wrapChildrenWithTranslateWrapper(children)}</Typography>
   ),
 
   a: ({ href, children }) => (
@@ -256,8 +250,8 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   ul: ({ children }) => (
     <ul
       style={{
-        padding: "0 0 0 20px",
-        margin: "5px 0",
+        padding: '0 0 0 20px',
+        margin: '5px 0',
       }}
     >
       {wrapChildrenWithTranslateWrapper(children)}
@@ -266,34 +260,28 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   ol: ({ children }) => (
     <ol
       style={{
-        padding: "0 0 0 20px",
-        margin: "5px 0",
+        padding: '0 0 0 20px',
+        margin: '5px 0',
       }}
     >
       {wrapChildrenWithTranslateWrapper(children)}
     </ol>
   ),
   li: ({ children }) => (
-    <Typography component={"li"}>
-      {wrapChildrenWithTranslateWrapper(children)}
-    </Typography>
+    <Typography component={'li'}>{wrapChildrenWithTranslateWrapper(children)}</Typography>
   ),
   input: ({ checked }) => (
     <Checkbox
       checked={checked}
       disabled
       sx={{
-        padding: "0",
+        padding: '0',
       }}
     />
   ),
-  small: ({ children }) => (
-    <Typography>{wrapChildrenWithTranslateWrapper(children)}</Typography>
-  ),
+  small: ({ children }) => <Typography>{wrapChildrenWithTranslateWrapper(children)}</Typography>,
   em: ({ children }) => <em>{wrapChildrenWithTranslateWrapper(children)}</em>,
-  strong: ({ children }) => (
-    <strong>{wrapChildrenWithTranslateWrapper(children)}</strong>
-  ),
+  strong: ({ children }) => <strong>{wrapChildrenWithTranslateWrapper(children)}</strong>,
   blockquote: ({ children }) => (
     <blockquote>{wrapChildrenWithTranslateWrapper(children)}</blockquote>
   ),
@@ -309,7 +297,7 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
     return (
       <Typography
         sx={{
-          fontSize: "21px",
+          fontSize: '21px',
           fontWeight: 350,
         }}
       >
@@ -322,7 +310,7 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
     return (
       <Typography
         sx={{
-          fontSize: "21px",
+          fontSize: '21px',
         }}
       >
         {wrapChildrenWithTranslateWrapper(children)}
@@ -331,27 +319,23 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   },
 };
 
-export const Markdown: React.FC<MarkdownProps> = ({
-  children,
-  onWordClick,
-  variant,
-}) => {
+export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, variant }) => {
   const styleComponents =
-    variant === "small"
+    variant === 'small'
       ? markdownComponentsSmall
-      : variant === "conversation"
+      : variant === 'conversation'
         ? markdownComponentsConversation
-        : variant === "blog"
+        : variant === 'blog'
           ? markdownComponentsBlog
           : markdownComponents;
   return (
     <Stack
       sx={{
-        ".conversation-word": onWordClick
+        '.conversation-word': onWordClick
           ? {
-              ":hover": {
-                cursor: "pointer",
-                borderBottom: "1px dashed #fff",
+              ':hover': {
+                cursor: 'pointer',
+                borderBottom: '1px dashed #fff',
               },
             }
           : {},
@@ -360,8 +344,8 @@ export const Markdown: React.FC<MarkdownProps> = ({
         onWordClick
           ? (e) => {
               const target = e.target as HTMLElement;
-              if (target.classList.contains("conversation-word")) {
-                const word = target.textContent || "";
+              if (target.classList.contains('conversation-word')) {
+                const word = target.textContent || '';
                 const element = target;
                 onWordClick(word.trim(), element);
               }
@@ -369,9 +353,7 @@ export const Markdown: React.FC<MarkdownProps> = ({
           : undefined
       }
     >
-      <MarkdownTool options={{ overrides: styleComponents }}>
-        {children}
-      </MarkdownTool>
+      <MarkdownTool options={{ overrides: styleComponents }}>{children}</MarkdownTool>
     </Stack>
   );
 };

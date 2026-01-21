@@ -1,40 +1,37 @@
-import { Stack } from "@mui/material";
+import { Stack } from '@mui/material';
 
-import { Footer } from "../Footer";
+import { Footer } from '../Footer';
 
-import { CtaBlock } from "../ctaBlock";
-import { ListRolePlayIntro } from "./ListRolePlayIntro";
-import { ListRolePlay } from "./ListRolePlay";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { HeaderStatic } from "@/features/Header/HeaderStatic";
+import { CtaBlock } from '../ctaBlock';
+import { ListRolePlayIntro } from './ListRolePlayIntro';
+import { ListRolePlay } from './ListRolePlay';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getI18nInstance } from '@/appRouterI18n';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { HeaderStatic } from '@/features/Header/HeaderStatic';
 
 interface ScenariosPageProps {
   selectedCategory?: string;
   lang: SupportedLanguage;
 }
 
-export const ScenariosPage = ({
-  selectedCategory,
-  lang,
-}: ScenariosPageProps) => {
+export const ScenariosPage = ({ selectedCategory, lang }: ScenariosPageProps) => {
   const i18n = getI18nInstance(lang);
   return (
     <>
       <HeaderStatic lang={lang} />
       <div
         style={{
-          width: "100%",
+          width: '100%',
           margin: 0,
         }}
       >
         <Stack
           sx={{
-            alignItems: "center",
-            width: "100%",
+            alignItems: 'center',
+            width: '100%',
           }}
-          component={"main"}
+          component={'main'}
         >
           <ListRolePlayIntro lang={lang} />
           <ListRolePlay selectedCategoryId={selectedCategory} lang={lang} />

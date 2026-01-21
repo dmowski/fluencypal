@@ -1,7 +1,7 @@
-import { Stack, Typography } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
-import { BadgeAlert, FlaskConical } from "lucide-react";
-import { StringDiff } from "react-string-diff";
+import { Stack, Typography } from '@mui/material';
+import { useEffect, useRef, useState } from 'react';
+import { BadgeAlert, FlaskConical } from 'lucide-react';
+import { StringDiff } from 'react-string-diff';
 
 interface UserInputMessageProps {
   message: string;
@@ -12,18 +12,18 @@ interface UserInputMessageProps {
   }>;
   balanceHours: number;
 }
-type MessageQuality = "loading" | "great" | "bad" | "error";
+type MessageQuality = 'loading' | 'great' | 'bad' | 'error';
 
 export const UserInputMessage = ({
   message,
   analyzeUserMessage,
   balanceHours,
 }: UserInputMessageProps) => {
-  const [level, setLevel] = useState<MessageQuality>("loading");
+  const [level, setLevel] = useState<MessageQuality>('loading');
   const [correctedMessage, setCorrectedMessage] = useState<string | null>(null);
   const [description, setDescription] = useState<string | null>(null);
 
-  const messageAnalyzing = useRef("");
+  const messageAnalyzing = useRef('');
 
   const analyzeMessage = async () => {
     if (message === messageAnalyzing.current) {
@@ -32,27 +32,26 @@ export const UserInputMessage = ({
 
     messageAnalyzing.current = message;
 
-    setLevel("loading");
+    setLevel('loading');
     setDescription(null);
     setCorrectedMessage(null);
     try {
-      const { sourceMessage, correctedMessage, description } =
-        await analyzeUserMessage(message);
+      const { sourceMessage, correctedMessage, description } = await analyzeUserMessage(message);
       if (message !== sourceMessage) {
         return;
       }
 
       setLevel(
-        correctedMessage.toLowerCase().trim() ===
-          sourceMessage.toLowerCase().trim() || !correctedMessage.trim()
-          ? "great"
-          : "bad",
+        correctedMessage.toLowerCase().trim() === sourceMessage.toLowerCase().trim() ||
+          !correctedMessage.trim()
+          ? 'great'
+          : 'bad',
       );
 
       setCorrectedMessage(correctedMessage || null);
       setDescription(description || null);
     } catch (error) {
-      setLevel("error");
+      setLevel('error');
       throw error;
     }
   };
@@ -61,7 +60,7 @@ export const UserInputMessage = ({
 
   useEffect(() => {
     if (isLowBalance) {
-      setLevel("loading");
+      setLevel('loading');
       setDescription(null);
       setCorrectedMessage(null);
       return;
@@ -72,14 +71,13 @@ export const UserInputMessage = ({
     }
   }, [message, isLowBalance]);
 
-  const isNeedToShowCorrection =
-    level === "bad" && description && correctedMessage?.trim();
+  const isNeedToShowCorrection = level === 'bad' && description && correctedMessage?.trim();
 
   return (
     <Stack
       sx={{
-        gap: "10px",
-        paddingBottom: "10px",
+        gap: '10px',
+        paddingBottom: '10px',
       }}
     >
       <Stack>
@@ -106,38 +104,38 @@ export const UserInputMessage = ({
           </Typography>
           <Stack
             sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "flex-end",
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'flex-end',
             }}
           >
             <Stack
               sx={{
-                width: "100%",
-                gap: "5px",
+                width: '100%',
+                gap: '5px',
               }}
             >
               <Typography
                 variant="body2"
-                component={"div"}
+                component={'div'}
                 sx={{
                   fontWeight: 400,
-                  fontSize: "20px",
+                  fontSize: '20px',
                 }}
               >
                 <StringDiff
                   styles={{
                     added: {
-                      color: "#81e381",
+                      color: '#81e381',
                       fontWeight: 600,
                     },
                     removed: {
-                      display: "none",
+                      display: 'none',
                     },
                     default: {},
                   }}
-                  oldValue={message || ""}
-                  newValue={correctedMessage || message || ""}
+                  oldValue={message || ''}
+                  newValue={correctedMessage || message || ''}
                 />
               </Typography>
             </Stack>
@@ -156,18 +154,16 @@ export const UserInputMessage = ({
         </Typography>
         <Stack
           sx={{
-            flexDirection: "row",
-            gap: "10px",
-            alignItems: "center",
+            flexDirection: 'row',
+            gap: '10px',
+            alignItems: 'center',
           }}
         >
-          <Typography sx={{}}>
-            {description || "Everything is great!"}
-          </Typography>
+          <Typography sx={{}}>{description || 'Everything is great!'}</Typography>
           {isNeedToShowCorrection ? (
-            <FlaskConical color="#fa8500" size={"14px"} />
+            <FlaskConical color="#fa8500" size={'14px'} />
           ) : (
-            <BadgeAlert color="#81e381" size={"14px"} />
+            <BadgeAlert color="#81e381" size={'14px'} />
           )}
         </Stack>
       </Stack>

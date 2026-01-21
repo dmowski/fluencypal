@@ -1,5 +1,5 @@
-import { Stack, Typography } from "@mui/material";
-import { DynamicIcon, IconName } from "lucide-react/dynamic";
+import { Stack, Typography } from '@mui/material';
+import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 
 export const MessageActionButton = ({
   isActive,
@@ -16,36 +16,36 @@ export const MessageActionButton = ({
   iconName: IconName;
   leftShift?: string;
 }) => {
-  const color = isActive ? "#ff0034" : "inherit";
+  const color = isActive ? '#ff0034' : 'inherit';
   return (
     <Stack
       onClick={(e) => onClick(e.currentTarget)}
-      component={"button"}
+      component={'button'}
       aria-label={label}
       sx={{
-        flexDirection: "row",
-        gap: "6px",
-        alignItems: "center",
-        border: "none",
-        background: "rgba(255, 255, 255, 0)",
-        color: "inherit",
-        cursor: "pointer",
-        padding: "6px 10px 6px 12px",
-        position: "relative",
-        left: leftShift || "-12px",
-        borderRadius: "28px",
-        ":hover": {
-          backgroundColor: "rgba(255, 255, 255, 0.1)",
+        flexDirection: 'row',
+        gap: '6px',
+        alignItems: 'center',
+        border: 'none',
+        background: 'rgba(255, 255, 255, 0)',
+        color: 'inherit',
+        cursor: 'pointer',
+        padding: '6px 10px 6px 12px',
+        position: 'relative',
+        left: leftShift || '-12px',
+        borderRadius: '28px',
+        ':hover': {
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
         },
       }}
     >
       <DynamicIcon
         name={iconName}
-        size={"20px"}
+        size={'20px'}
         style={{
           opacity: isActive ? 1 : 0.7,
           color: color,
-          fill: isActive ? color : "none",
+          fill: isActive ? color : 'none',
         }}
       />
       {count !== undefined && (
@@ -55,7 +55,7 @@ export const MessageActionButton = ({
             opacity: isActive ? 1 : 0.7,
             color: color,
             fontWeight: 400,
-            fontVariantNumeric: "tabular-nums",
+            fontVariantNumeric: 'tabular-nums',
           }}
         >
           {count || 0}

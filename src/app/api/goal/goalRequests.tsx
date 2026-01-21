@@ -1,11 +1,11 @@
-import { CreateGoalRequest, CreateGoalResponse, GoalQuiz } from "./types";
+import { CreateGoalRequest, CreateGoalResponse, GoalQuiz } from './types';
 
 export const sendCreateGoalRequest = async (data: CreateGoalRequest) => {
   const response = await fetch(`/api/goal`, {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(data),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
   const dataResponse = (await response.json()) as CreateGoalResponse;
@@ -14,9 +14,9 @@ export const sendCreateGoalRequest = async (data: CreateGoalRequest) => {
 
 export const getGoalQuiz = async (id: string) => {
   const response = await fetch(`/api/goal?id=${id}`, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
   const dataResponse = (await response.json()) as GoalQuiz | null;
@@ -25,9 +25,9 @@ export const getGoalQuiz = async (id: string) => {
 
 export const deleteGoalQuiz = async (id: string) => {
   const response = await fetch(`/api/goal?id=${id}`, {
-    method: "DELETE",
+    method: 'DELETE',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
   const dataResponse = (await response.json()) as GoalQuiz | null;

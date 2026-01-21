@@ -1,11 +1,11 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography } from '@mui/material';
 import {
   maxContentWidth,
   subTitleFontStyle,
   titleFontStyle,
-} from "../../../Landing/landingSettings";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
+} from '../../../Landing/landingSettings';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getI18nInstance } from '@/appRouterI18n';
 
 interface ListInterviewIntroProps {
   lang: SupportedLanguage;
@@ -16,54 +16,54 @@ export const ListInterviewIntro = ({ lang }: ListInterviewIntroProps) => {
   return (
     <Stack
       sx={{
-        width: "100%",
-        padding: "120px 0 0px 0",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "100px",
+        width: '100%',
+        padding: '120px 0 0px 0',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '100px',
         backgroundColor: `#ecf6f2`,
-        position: "relative",
+        position: 'relative',
         zIndex: 1,
       }}
     >
       <Stack
         sx={{
-          alignItems: "center",
-          gap: "50px",
+          alignItems: 'center',
+          gap: '50px',
         }}
       >
         <Stack
           sx={{
             maxWidth: maxContentWidth,
-            boxSizing: "border-box",
-            alignItems: "center",
-            padding: "0 10px",
-            display: "grid",
-            gridTemplateColumns: "3fr 1fr",
-            gap: "60px",
-            "@media (max-width: 800px)": {
-              gridTemplateColumns: "1fr",
-              gap: "0px",
+            boxSizing: 'border-box',
+            alignItems: 'center',
+            padding: '0 10px',
+            display: 'grid',
+            gridTemplateColumns: '3fr 1fr',
+            gap: '60px',
+            '@media (max-width: 800px)': {
+              gridTemplateColumns: '1fr',
+              gap: '0px',
             },
           }}
         >
           <Stack
-            gap={"10px"}
+            gap={'10px'}
             sx={{
-              paddingBottom: "50px",
-              position: "relative",
+              paddingBottom: '50px',
+              position: 'relative',
               zIndex: 1,
             }}
           >
             <Typography
               variant="h3"
-              component={"h2"}
+              component={'h2'}
               sx={{
                 ...titleFontStyle,
-                fontSize: "2.8rem",
-                color: "#000",
-                "@media (max-width: 800px)": {
-                  fontSize: "2.2rem",
+                fontSize: '2.8rem',
+                color: '#000',
+                '@media (max-width: 800px)': {
+                  fontSize: '2.2rem',
                 },
               }}
             >
@@ -72,10 +72,10 @@ export const ListInterviewIntro = ({ lang }: ListInterviewIntroProps) => {
             <Typography
               variant="body1"
               sx={{
-                maxWidth: "810px",
-                color: "#000",
+                maxWidth: '810px',
+                color: '#000',
                 ...subTitleFontStyle,
-                fontSize: "1.1rem",
+                fontSize: '1.1rem',
               }}
             >
               {i18n._(
@@ -85,14 +85,14 @@ export const ListInterviewIntro = ({ lang }: ListInterviewIntroProps) => {
           </Stack>
           <Stack
             sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "flex-end",
-              "@media (max-width: 1100px)": {
+              display: 'flex',
+              justifyContent: 'flex-end',
+              alignItems: 'flex-end',
+              '@media (max-width: 1100px)': {
                 zIndex: 0,
-                maxHeight: "230px",
-                alignItems: "center",
-                justifyContent: "flex-start",
+                maxHeight: '230px',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
               },
             }}
           >
@@ -100,9 +100,9 @@ export const ListInterviewIntro = ({ lang }: ListInterviewIntroProps) => {
               src="/blog.jpg"
               alt="Illustration of people reading"
               style={{
-                width: "max-content",
-                maxWidth: "90vw",
-                height: "370px",
+                width: 'max-content',
+                maxWidth: '90vw',
+                height: '370px',
                 opacity: 0.9,
               }}
             />

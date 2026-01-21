@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   createContext,
   useContext,
@@ -8,8 +8,8 @@ import {
   useEffect,
   useMemo,
   useRef,
-} from "react";
-import { useAuth } from "../Auth/useAuth";
+} from 'react';
+import { useAuth } from '../Auth/useAuth';
 import {
   GameAvatars,
   GameLastVisit,
@@ -17,23 +17,23 @@ import {
   GameUserNames,
   GameUsersAchievements,
   UsersStat,
-} from "./types";
+} from './types';
 import {
   getGameQuestionsRequest,
   getSortedStatsFromData,
   resetGamePointsRequest,
   submitAnswerRequest,
-} from "@/features/Game/gameBackendRequests";
+} from '@/features/Game/gameBackendRequests';
 
-import { useSettings } from "../Settings/useSettings";
-import { shuffleArray } from "@/libs/array";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { db } from "../Firebase/firebaseDb";
-import { setDoc } from "firebase/firestore";
-import { avatars } from "./avatars";
-import { generateRandomUsername } from "./userNames";
-import { useUrlState } from "../Url/useUrlParam";
-import { isActiveBrowserTab } from "@/libs/isActiveBrowserTab";
+import { useSettings } from '../Settings/useSettings';
+import { shuffleArray } from '@/libs/array';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { db } from '../Firebase/firebaseDb';
+import { setDoc } from 'firebase/firestore';
+import { avatars } from './avatars';
+import { generateRandomUsername } from './userNames';
+import { useUrlState } from '../Url/useUrlParam';
+import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
 
 interface GameContextType {
   stats: UsersStat[];
@@ -83,26 +83,15 @@ function useProvideGame(): GameContextType {
   const settings = useSettings();
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [questions, setQuestions] = useState<GameQuestionShort[]>([]);
-  const [activeQuestion, setActiveQuestion] =
-    useState<GameQuestionShort | null>(null);
+  const [activeQuestion, setActiveQuestion] = useState<GameQuestionShort | null>(null);
 
-  const [modalUserId, setModalUserId] = useUrlState<string | null>(
-    "userId",
-    "",
-    false,
-  );
+  const [modalUserId, setModalUserId] = useUrlState<string | null>('userId', '', false);
 
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
   const [gameRate, gameRateLoading] = useDocumentData(db.documents.gameRate2);
-  const [gameLastVisit, gameLastVisitLoading] = useDocumentData(
-    db.documents.gameLastVisit2,
-  );
-  const [gameAvatars, gameAvatarsLoading] = useDocumentData(
-    db.documents.gameAvatars2,
-  );
-  const [userNames, userNamesLoading] = useDocumentData(
-    db.documents.gameUserNames2,
-  );
+  const [gameLastVisit, gameLastVisitLoading] = useDocumentData(db.documents.gameLastVisit2);
+  const [gameAvatars, gameAvatarsLoading] = useDocumentData(db.documents.gameAvatars2);
+  const [userNames, userNamesLoading] = useDocumentData(db.documents.gameUserNames2);
   const [userAchievements, userAchievementsLoading] = useDocumentData(
     db.documents.gameUserAchievements2,
   );
@@ -114,7 +103,7 @@ function useProvideGame(): GameContextType {
     userAchievementsLoading;
   const [isGamePlaying, setIsGamePlaying] = useState(false);
 
-  const myAvatar = gameAvatars?.[userId || ""] || "";
+  const myAvatar = gameAvatars?.[userId || ''] || '';
 
   const playGame = () => {
     generateQuestions();
@@ -285,9 +274,7 @@ function useProvideGame(): GameContextType {
     const isCorrect = response.isCorrect;
     const description = response.description;
     if (isCorrect) {
-      const newQuestions = questions.filter(
-        (question) => question.id !== questionId,
-      );
+      const newQuestions = questions.filter((question) => question.id !== questionId);
       setQuestions(newQuestions);
       const isFewQuestions = newQuestions.length < 10;
       if (isFewQuestions) {
@@ -322,18 +309,18 @@ function useProvideGame(): GameContextType {
   };
 
   const myPoints = myStats !== null ? myStats.points : null;
-  const myUserName = userNames?.[userId || ""] || null;
+  const myUserName = userNames?.[userId || ''] || null;
 
   const getRealPosition = (userId: string) => {
     return positionMap[userId] ?? -1;
   };
 
   const getUserName = (userId: string) => {
-    return userNames?.[userId] || "Unknown";
+    return userNames?.[userId] || 'Unknown';
   };
 
   const getUserAvatarUrl = (userId: string) => {
-    return gameAvatars?.[userId] || "";
+    return gameAvatars?.[userId] || '';
   };
 
   return {
@@ -367,16 +354,12 @@ function useProvideGame(): GameContextType {
     getUserAvatarUrl,
     getUserName,
 
-    modalUserId: modalUserId || "",
+    modalUserId: modalUserId || '',
     showUserInModal: setModalUserId,
   };
 }
 
-export function GameProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function GameProvider({ children }: { children: ReactNode }): JSX.Element {
   const hook = useProvideGame();
   return <GameContext.Provider value={hook}>{children}</GameContext.Provider>;
 }
@@ -384,7 +367,7 @@ export function GameProvider({
 export const useGame = (): GameContextType => {
   const context = useContext(GameContext);
   if (!context) {
-    throw new Error("useGame must be used within a UsageProvider");
+    throw new Error('useGame must be used within a UsageProvider');
   }
   return context;
 };

@@ -1,13 +1,11 @@
-import { ForwardRefExoticComponent, RefAttributes } from "react";
-import { LucideProps } from "lucide-react";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { ForwardRefExoticComponent, RefAttributes } from 'react';
+import { LucideProps } from 'lucide-react';
+import { SupportedLanguage } from '@/features/Lang/lang';
 
 export interface HeaderLink {
   title: string;
   href: string;
-  icon: ForwardRefExoticComponent<
-    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
-  >;
+  icon: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>;
 }
 
 export interface HeaderButton {

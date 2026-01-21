@@ -1,31 +1,21 @@
-"use client";
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  JSX,
-  useMemo,
-  useState,
-} from "react";
-import { useAuth } from "../Auth/useAuth";
-import { setDoc } from "firebase/firestore";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { db } from "../Firebase/firebaseDb";
-import { WordsStats } from "@/common/words";
-import { getWordsFromText } from "@/libs/getWordsFromText";
-import { useSettings } from "../Settings/useSettings";
-import { useTextAi } from "../Ai/useTextAi";
-import { GoalElementInfo } from "../Plan/types";
+'use client';
+import { createContext, useContext, ReactNode, JSX, useMemo, useState } from 'react';
+import { useAuth } from '../Auth/useAuth';
+import { setDoc } from 'firebase/firestore';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { db } from '../Firebase/firebaseDb';
+import { WordsStats } from '@/common/words';
+import { getWordsFromText } from '@/libs/getWordsFromText';
+import { useSettings } from '../Settings/useSettings';
+import { useTextAi } from '../Ai/useTextAi';
+import { GoalElementInfo } from '../Plan/types';
 
 interface WordsContextType {
   wordsStats: WordsStats | null;
   loading: boolean;
   addWordsStatFromText: (text: string) => Promise<string[]>;
   totalWordsCount: number;
-  getNewWordsToLearn: (
-    goal: GoalElementInfo,
-    knownWords: string[],
-  ) => Promise<string[]>;
+  getNewWordsToLearn: (goal: GoalElementInfo, knownWords: string[]) => Promise<string[]>;
 }
 
 const WordsContext = createContext<WordsContextType | null>(null);
@@ -33,10 +23,7 @@ const WordsContext = createContext<WordsContextType | null>(null);
 function useProvideWords(): WordsContextType {
   const auth = useAuth();
   const settings = useSettings();
-  const wordsStatsDocRef = db.documents.userWordsStats(
-    auth.uid,
-    settings.languageCode,
-  );
+  const wordsStatsDocRef = db.documents.userWordsStats(auth.uid, settings.languageCode);
 
   const [wordsStats, loading] = useDocumentData(wordsStatsDocRef);
   const textAi = useTextAi();
@@ -49,7 +36,7 @@ function useProvideWords(): WordsContextType {
 
   const addWords = async (newWords: Record<string, number>) => {
     if (!wordsStatsDocRef) {
-      throw new Error("Words stats doc ref is not defined");
+      throw new Error('Words stats doc ref is not defined');
     }
 
     const newWordsList: string[] = [];
@@ -84,14 +71,9 @@ function useProvideWords(): WordsContextType {
     return await addWords(stat);
   };
 
-  const getNewWordsToLearn = async (
-    goal?: GoalElementInfo,
-    knownWords: string[] = [],
-  ) => {
+  const getNewWordsToLearn = async (goal?: GoalElementInfo, knownWords: string[] = []) => {
     const dictionary = wordsStats?.dictionary || {};
-    const knownWordsFromDictionary = Object.keys(dictionary).filter(
-      (word) => dictionary[word] > 3,
-    );
+    const knownWordsFromDictionary = Object.keys(dictionary).filter((word) => dictionary[word] > 3);
     const knownWordsTotal = [...knownWordsFromDictionary, ...knownWords];
 
     if (knownWordsTotal.length > 0) {
@@ -111,23 +93,23 @@ Words should be useful for daily basis usage and not too difficult.
 ${
   goal
     ? `Follow this topic: ${goal.goalElement.title} - ${goal.goalElement.description} (${goal.goalElement.details})`
-    : ""
+    : ''
 }
 Return info in JSON format. Example: ["word1", "word2", "word3"].
 
-Users known words: ${knownWordsTotal.join(", ")}
+Users known words: ${knownWordsTotal.join(', ')}
 
 Do not wrap answer with any wrapper phrases.
 Your response will be sent to JSON.parse() function.
 `,
-      ].join(" ");
+      ].join(' ');
 
       //console.log("systemInstruction", systemInstruction);
       const response = await textAi.generate({
         systemMessage: systemInstruction,
-        userMessage: knownWords.join(" "),
-        model: "gpt-4o",
-        languageCode: settings.languageCode || "en",
+        userMessage: knownWords.join(' '),
+        model: 'gpt-4o',
+        languageCode: settings.languageCode || 'en',
       });
       const newWordsToLearn = JSON.parse(response) as string[];
       setWordsToLearn(newWordsToLearn.map((word) => word.toLowerCase()));
@@ -147,11 +129,7 @@ Your response will be sent to JSON.parse() function.
   };
 }
 
-export function WordsProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function WordsProvider({ children }: { children: ReactNode }): JSX.Element {
   const hook = useProvideWords();
   return <WordsContext.Provider value={hook}>{children}</WordsContext.Provider>;
 }
@@ -159,7 +137,7 @@ export function WordsProvider({
 export const useWords = (): WordsContextType => {
   const context = useContext(WordsContext);
   if (!context) {
-    throw new Error("useWords must be used within a UsageProvider");
+    throw new Error('useWords must be used within a UsageProvider');
   }
   return context;
 };

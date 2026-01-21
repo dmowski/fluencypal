@@ -1,7 +1,7 @@
-import { AiVoice, RealTimeModel } from "@/common/ai";
-import { ChatMessage, MessagesOrderMap } from "@/common/conversation";
-import { UsageLog } from "@/common/usage";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { AiVoice, RealTimeModel } from '@/common/ai';
+import { ChatMessage, MessagesOrderMap } from '@/common/conversation';
+import { UsageLog } from '@/common/usage';
+import { SupportedLanguage } from '@/features/Lang/lang';
 
 export interface ConversationConfig {
   model: RealTimeModel;
@@ -23,16 +23,9 @@ export interface ConversationConfig {
   // used for sendSdpOffer: WebRTC auth
   getAuthToken: () => Promise<string>;
 
-  generateTextWithAi: ({}: {
-    userMessage: string;
-    systemMessage: string;
-  }) => Promise<string>;
+  generateTextWithAi: ({}: { userMessage: string; systemMessage: string }) => Promise<string>;
 
-  playAudio: (
-    textToPlay: string,
-    voice: AiVoice,
-    instruction: string,
-  ) => Promise<void>;
+  playAudio: (textToPlay: string, voice: AiVoice, instruction: string) => Promise<void>;
 }
 
 export type ConversationInstance = {

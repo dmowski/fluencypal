@@ -1,11 +1,11 @@
-import { NextRequest } from "next/server";
-import { envConfig } from "../../config/envConfig";
-import crypto from "node:crypto";
-import { CreateCryptoOrderRequest, CreateCryptoOrderResponse } from "./types";
-import { validateAuthToken } from "../../config/firebase";
-import { CRYPTO_MONTHLY_PRICE_TON } from "@/features/Telegram/cryptoPrice";
-import { Order } from "../../payment/type";
-import { createOrder } from "../../payment/order";
+import { NextRequest } from 'next/server';
+import { envConfig } from '../../config/envConfig';
+import crypto from 'node:crypto';
+import { CreateCryptoOrderRequest, CreateCryptoOrderResponse } from './types';
+import { validateAuthToken } from '../../config/firebase';
+import { CRYPTO_MONTHLY_PRICE_TON } from '@/features/Telegram/cryptoPrice';
+import { Order } from '../../payment/type';
+import { createOrder } from '../../payment/order';
 
 function clampMonthCount(n: number) {
   if (!Number.isFinite(n)) return 1;
@@ -20,8 +20,8 @@ export async function POST(request: NextRequest) {
     orderId: null,
     merchantAddress: envConfig.merchantTonAddress || null,
     monthCount: 0,
-    amountNano: "",
-    comment: "",
+    amountNano: '',
+    comment: '',
   };
 
   try {
@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     if (!user?.uid) {
       const response: CreateCryptoOrderResponse = {
         ...base,
-        error: { code: "UNAUTHORIZED", message: "User is not authenticated" },
+        error: { code: 'UNAUTHORIZED', message: 'User is not authenticated' },
       };
       return Response.json(response);
     }
@@ -38,11 +38,11 @@ export async function POST(request: NextRequest) {
     const body = (await request.json()) as CreateCryptoOrderRequest;
     const monthCount = clampMonthCount(body?.monthCount);
 
-    const orderId = crypto.randomBytes(6).toString("hex");
-    console.log("CREATE CRYPTO orderId", orderId);
+    const orderId = crypto.randomBytes(6).toString('hex');
+    console.log('CREATE CRYPTO orderId', orderId);
     const comment = `order:${orderId}`;
 
-    const currency = "TON";
+    const currency = 'TON';
 
     const order: Order = {
       id: orderId,
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
       comment,
       amount: CRYPTO_MONTHLY_PRICE_TON,
       currency,
-      status: "pending",
+      status: 'pending',
       createdAtIso: new Date().toISOString(),
       updatedAtIso: new Date().toISOString(),
     };
@@ -73,8 +73,8 @@ export async function POST(request: NextRequest) {
     const errorResponse: CreateCryptoOrderResponse = {
       ...base,
       error: {
-        code: "SERVER_ERROR",
-        message: e?.message || "Unexpected server error",
+        code: 'SERVER_ERROR',
+        message: e?.message || 'Unexpected server error',
       },
     };
     return Response.json(errorResponse);

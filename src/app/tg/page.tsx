@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import { supportedLanguages } from "@/features/Lang/lang";
-import { initLingui } from "@/initLingui";
-import { allMessages } from "@/appRouterI18n";
-import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
-import { generateMetadataInfo } from "@/features/SEO/metadata";
-import { TgAppPage } from "@/features/Telegram/TgAppPage";
-import { PracticeProvider } from "@/app/practiceProvider";
+import type { Metadata } from 'next';
+import { supportedLanguages } from '@/features/Lang/lang';
+import { initLingui } from '@/initLingui';
+import { allMessages } from '@/appRouterI18n';
+import { LinguiClientProvider } from '@/features/Lang/LinguiClientProvider';
+import { generateMetadataInfo } from '@/features/SEO/metadata';
+import { TgAppPage } from '@/features/Telegram/TgAppPage';
+import { PracticeProvider } from '@/app/practiceProvider';
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
@@ -20,11 +20,11 @@ interface PageProps {
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const searchParam = await props.searchParams;
-  const toLearn = searchParam.learn || "";
-  const languageToLearn = supportedLanguages.find((l) => l === toLearn) || "en";
+  const toLearn = searchParam.learn || '';
+  const languageToLearn = supportedLanguages.find((l) => l === toLearn) || 'en';
   return generateMetadataInfo({
     lang: (await props.params).lang,
-    currentPath: "tg-app",
+    currentPath: 'tg-app',
     languageToLearn,
   });
 }
@@ -32,7 +32,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 export default async function Page(props: PageProps) {
   const lang = (await props.params).lang;
 
-  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
   initLingui(supportedLang);
 
   return (

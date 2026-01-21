@@ -1,31 +1,31 @@
-"use client";
+'use client';
 
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from '@mui/material';
 
-import { ProgressBoard } from "./Progress/ProgressBoard";
-import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
-import { UsageStatsCards } from "../Usage/UsageStatsCards";
-import { PlanDashboardCards } from "./PlanDashboardCards";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { GameBadge } from "../Game/GameBadge";
-import { NavigationBar } from "../Navigation/NavigationBar";
-import { MyProfile } from "../Settings/MyProfile";
-import { useAppNavigation } from "../Navigation/useAppNavigation";
-import { DashboardBlur } from "./DashboardBlur";
-import { RolePlayModal } from "../RolePlay/RolePlayModal";
-import { DailyQuestionBadge } from "../Game/DailyQuestion/DailyQuestionBadge";
-import { BattleSection } from "../Game/Battle/BattleSection";
-import { usePlan } from "../Plan/usePlan";
-import { LessonStartModal } from "../Plan/LessonStartModal";
-import { useLingui } from "@lingui/react";
-import { Gem, Origami, VolumeOff } from "lucide-react";
-import { useAiConversation } from "../Conversation/useAiConversation";
-import { useState } from "react";
-import { useSettings } from "../Settings/useSettings";
-import { useAccess } from "../Usage/useAccess";
-import { useUsage } from "../Usage/useUsage";
-import SettingsIcon from "@mui/icons-material/Settings";
-import { useTeacherSettings } from "../Conversation/CallMode/useTeacherSettings";
+import { ProgressBoard } from './Progress/ProgressBoard';
+import { RolePlayBoard } from '../RolePlay/RolePlayBoard';
+import { UsageStatsCards } from '../Usage/UsageStatsCards';
+import { PlanDashboardCards } from './PlanDashboardCards';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { GameBadge } from '../Game/GameBadge';
+import { NavigationBar } from '../Navigation/NavigationBar';
+import { MyProfile } from '../Settings/MyProfile';
+import { useAppNavigation } from '../Navigation/useAppNavigation';
+import { DashboardBlur } from './DashboardBlur';
+import { RolePlayModal } from '../RolePlay/RolePlayModal';
+import { DailyQuestionBadge } from '../Game/DailyQuestion/DailyQuestionBadge';
+import { BattleSection } from '../Game/Battle/BattleSection';
+import { usePlan } from '../Plan/usePlan';
+import { LessonStartModal } from '../Plan/LessonStartModal';
+import { useLingui } from '@lingui/react';
+import { Gem, Origami, VolumeOff } from 'lucide-react';
+import { useAiConversation } from '../Conversation/useAiConversation';
+import { useState } from 'react';
+import { useSettings } from '../Settings/useSettings';
+import { useAccess } from '../Usage/useAccess';
+import { useUsage } from '../Usage/useUsage';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -54,11 +54,11 @@ export function Dashboard({ lang }: DashboardProps) {
     }
 
     setIsCallStarting(true);
-    await settings.setConversationMode("call");
+    await settings.setConversationMode('call');
     conversation.startConversation({
-      conversationMode: "call",
-      mode: "talk",
-      voice: settings.userSettings?.teacherVoice || "shimmer",
+      conversationMode: 'call',
+      mode: 'talk',
+      voice: settings.userSettings?.teacherVoice || 'shimmer',
     });
   };
 
@@ -76,53 +76,53 @@ export function Dashboard({ lang }: DashboardProps) {
 
       <Stack
         sx={{
-          alignItems: "center",
-          paddingBottom: "120px",
-          paddingTop: "30px",
+          alignItems: 'center',
+          paddingBottom: '120px',
+          paddingTop: '30px',
         }}
       >
         <Stack
           sx={{
-            maxWidth: "700px",
-            padding: "0 10px",
-            gap: "40px",
-            width: "100%",
-            "@media (max-width:600px)": {
-              padding: "0px",
+            maxWidth: '700px',
+            padding: '0 10px',
+            gap: '40px',
+            width: '100%',
+            '@media (max-width:600px)': {
+              padding: '0px',
             },
           }}
         >
-          {appNavigation.currentPage === "home" && (
+          {appNavigation.currentPage === 'home' && (
             <>
               {!access.isFullAppAccess && (
                 <Stack
                   sx={{
-                    marginBottom: "20px",
-                    alignItems: "center",
-                    gap: "10px",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
+                    marginBottom: '20px',
+                    alignItems: 'center',
+                    gap: '10px',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
 
-                    width: "100%",
-                    borderRadius: "16px",
-                    padding: "20px",
-                    backgroundColor: "rgba(138, 25, 138, 0.099)",
-                    border: "1px solid rgba(138, 25, 138, 0.2)",
-                    flexWrap: "wrap",
-                    "@media (max-width:600px)": {
-                      borderRadius: "0px",
-                      padding: "20px 10px",
-                      border: "none",
+                    width: '100%',
+                    borderRadius: '16px',
+                    padding: '20px',
+                    backgroundColor: 'rgba(138, 25, 138, 0.099)',
+                    border: '1px solid rgba(138, 25, 138, 0.2)',
+                    flexWrap: 'wrap',
+                    '@media (max-width:600px)': {
+                      borderRadius: '0px',
+                      padding: '20px 10px',
+                      border: 'none',
                     },
                   }}
                 >
                   <Stack>
                     <Stack
                       sx={{
-                        flexDirection: "row",
-                        alignItems: "center",
+                        flexDirection: 'row',
+                        alignItems: 'center',
                         //justifyContent: "center",
-                        gap: "15px",
+                        gap: '15px',
                       }}
                     >
                       <Typography
@@ -131,9 +131,9 @@ export function Dashboard({ lang }: DashboardProps) {
                           fontWeight: 600,
                         }}
                       >
-                        {i18n._("Limited access")}
+                        {i18n._('Limited access')}
                       </Typography>
-                      <VolumeOff size={"20px"} />
+                      <VolumeOff size={'20px'} />
                     </Stack>
                     <Typography
                       sx={{
@@ -141,7 +141,7 @@ export function Dashboard({ lang }: DashboardProps) {
                       }}
                       variant="caption"
                     >
-                      {i18n._("The AI voice is disabled.")}
+                      {i18n._('The AI voice is disabled.')}
                     </Typography>
                   </Stack>
                   <Button
@@ -150,34 +150,32 @@ export function Dashboard({ lang }: DashboardProps) {
                     variant="contained"
                     endIcon={<Gem />}
                     sx={{
-                      padding: "10px 30px",
+                      padding: '10px 30px',
                     }}
                   >
-                    {i18n._("Upgrade Now")}
+                    {i18n._('Upgrade Now')}
                   </Button>
                 </Stack>
               )}
 
               <Stack
                 sx={{
-                  marginBottom: "20px",
-                  alignItems: "flex-start",
-                  gap: "20px",
+                  marginBottom: '20px',
+                  alignItems: 'flex-start',
+                  gap: '20px',
 
-                  width: "100%",
-                  borderRadius: "16px",
-                  padding: "20px",
-                  backgroundColor: "rgba(255, 255, 255, 0.04)",
-                  "@media (max-width:600px)": {
-                    borderRadius: "0px",
-                    padding: "20px 10px",
+                  width: '100%',
+                  borderRadius: '16px',
+                  padding: '20px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                  '@media (max-width:600px)': {
+                    borderRadius: '0px',
+                    padding: '20px 10px',
                   },
                 }}
               >
                 <Stack>
-                  <Typography variant="h6">
-                    {i18n._("Conversation with AI")}
-                  </Typography>
+                  <Typography variant="h6">{i18n._('Conversation with AI')}</Typography>
                   <Typography
                     sx={{
                       opacity: 0.7,
@@ -190,9 +188,9 @@ export function Dashboard({ lang }: DashboardProps) {
                 </Stack>
                 <Stack
                   sx={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: "15px",
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: '15px',
                   }}
                 >
                   <Button
@@ -202,10 +200,10 @@ export function Dashboard({ lang }: DashboardProps) {
                     disabled={isCallStarting}
                     variant="contained"
                     sx={{
-                      padding: "10px 30px",
+                      padding: '10px 30px',
                     }}
                   >
-                    {i18n._("Just to Talk")}
+                    {i18n._('Just to Talk')}
                   </Button>
                   <IconButton size="small" sx={{}}>
                     <SettingsIcon onClick={teacherSettings.openSettingsModal} />
@@ -220,9 +218,9 @@ export function Dashboard({ lang }: DashboardProps) {
             </>
           )}
 
-          {appNavigation.currentPage === "role-play" && <RolePlayBoard />}
+          {appNavigation.currentPage === 'role-play' && <RolePlayBoard />}
 
-          {appNavigation.currentPage === "profile" && (
+          {appNavigation.currentPage === 'profile' && (
             <>
               <MyProfile lang={lang} />
 
@@ -230,9 +228,9 @@ export function Dashboard({ lang }: DashboardProps) {
 
               <Stack
                 sx={{
-                  gap: "20px",
-                  display: "grid",
-                  gridTemplateColumns: "1fr",
+                  gap: '20px',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr',
                 }}
               >
                 <ProgressBoard />

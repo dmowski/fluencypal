@@ -1,6 +1,6 @@
-"use client";
-import { Stack } from "@mui/material";
-import { useWindowSizes } from "./useWindowSizes";
+'use client';
+import { Stack } from '@mui/material';
+import { useWindowSizes } from './useWindowSizes';
 
 export const TopOffset = () => {
   const { topOffset } = useWindowSizes();
@@ -9,7 +9,7 @@ export const TopOffset = () => {
     <>
       <Stack
         sx={{
-          width: "100%",
+          width: '100%',
           height: topOffset,
         }}
       />

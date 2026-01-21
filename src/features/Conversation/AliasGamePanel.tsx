@@ -1,49 +1,38 @@
-import { Button, IconButton, Stack, Typography } from "@mui/material";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import { Button, IconButton, Stack, Typography } from '@mui/material';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
-import { useEffect, useMemo, useState } from "react";
-import { uniq } from "@/libs/uniq";
-import { ChatMessage } from "@/common/conversation";
-import { GuessGameStat } from "./types";
-import { useTranslate } from "../Translation/useTranslate";
-import { ChevronRight, Languages } from "lucide-react";
-import { useLingui } from "@lingui/react";
+import { useEffect, useMemo, useState } from 'react';
+import { uniq } from '@/libs/uniq';
+import { ChatMessage } from '@/common/conversation';
+import { GuessGameStat } from './types';
+import { useTranslate } from '../Translation/useTranslate';
+import { ChevronRight, Languages } from 'lucide-react';
+import { useLingui } from '@lingui/react';
 
 interface AliasGamePanelProps {
   conversation: ChatMessage[];
   gameWords: GuessGameStat | null;
 }
 
-export const AliasGamePanel: React.FC<AliasGamePanelProps> = ({
-  conversation,
-  gameWords,
-}) => {
+export const AliasGamePanel: React.FC<AliasGamePanelProps> = ({ conversation, gameWords }) => {
   const wordsUserToDescribe = useMemo(() => {
-    return (
-      gameWords?.wordsUserToDescribe?.map((w) => w.toLowerCase().trim()) || []
-    );
+    return gameWords?.wordsUserToDescribe?.map((w) => w.toLowerCase().trim()) || [];
   }, [gameWords?.wordsUserToDescribe]);
 
   const wordsAiToDescribe = useMemo(() => {
-    return (
-      gameWords?.wordsAiToDescribe.map((w) => w.toLowerCase().trim()) || []
-    );
+    return gameWords?.wordsAiToDescribe.map((w) => w.toLowerCase().trim()) || [];
   }, [gameWords?.wordsAiToDescribe]);
 
-  const [describedByUserWords, setDescribedByUserWords] = useState<string[]>(
-    [],
-  );
+  const [describedByUserWords, setDescribedByUserWords] = useState<string[]>([]);
   const [describedByAiWords, setDescribedByAiWords] = useState<string[]>([]);
-  const [usersMarkedWords, setUsersMarkedWords] = useState<
-    Record<string, boolean | undefined>
-  >({});
+  const [usersMarkedWords, setUsersMarkedWords] = useState<Record<string, boolean | undefined>>({});
 
   const isWordIsInChatHistory = (word: string) => {
     const lowerCaseWord = word.toLowerCase().trim();
 
     const wordFoundResult = conversation.find((message) => {
-      const chatMessage = message.text || "";
+      const chatMessage = message.text || '';
       const lowerCaseMessage = chatMessage.toLowerCase();
       const isFound = lowerCaseMessage.indexOf(lowerCaseWord) > -1;
       return isFound;
@@ -65,12 +54,8 @@ export const AliasGamePanel: React.FC<AliasGamePanelProps> = ({
       .filter((word) => isWordIsInChatHistory(word))
       .map((word) => word.toLowerCase());
 
-    setDescribedByUserWords(
-      uniq([...describedByUserWords, ...newDescribedByUserWords]),
-    );
-    setDescribedByAiWords(
-      uniq([...describedByAiWords, ...newDescribedByAiWords]),
-    );
+    setDescribedByUserWords(uniq([...describedByUserWords, ...newDescribedByUserWords]));
+    setDescribedByAiWords(uniq([...describedByAiWords, ...newDescribedByAiWords]));
   };
 
   useEffect(() => {
@@ -95,9 +80,7 @@ type AliasGamePanelUIProps = {
   describedByUserWords: string[];
   describedByAiWords: string[];
   usersMarkedWords: Record<string, boolean | undefined>;
-  setUsersMarkedWords: React.Dispatch<
-    React.SetStateAction<Record<string, boolean | undefined>>
-  >;
+  setUsersMarkedWords: React.Dispatch<React.SetStateAction<Record<string, boolean | undefined>>>;
 };
 
 export const AliasGamePanelUI = ({
@@ -117,28 +100,28 @@ export const AliasGamePanelUI = ({
   return (
     <Stack
       sx={{
-        gap: "20px",
-        padding: "10px",
-        maxWidth: "100dvw",
-        overflowX: "auto",
+        gap: '20px',
+        padding: '10px',
+        maxWidth: '100dvw',
+        overflowX: 'auto',
       }}
     >
       {translator.translateModal}
       <Stack
         sx={{
-          flexDirection: "row",
-          gap: "10px",
-          alignItems: "center",
-          "@media (max-width:600px)": {
-            flexDirection: "column",
-            alignItems: "flex-start",
+          flexDirection: 'row',
+          gap: '10px',
+          alignItems: 'center',
+          '@media (max-width:600px)': {
+            flexDirection: 'column',
+            alignItems: 'flex-start',
           },
         }}
       >
-        <Typography variant="caption" sx={{ opacity: 1, color: "#ddd" }}>
+        <Typography variant="caption" sx={{ opacity: 1, color: '#ddd' }}>
           {i18n._(`Describe these words:`)}
         </Typography>
-        <Stack sx={{ flexDirection: "row", gap: "5px", flexWrap: "wrap" }}>
+        <Stack sx={{ flexDirection: 'row', gap: '5px', flexWrap: 'wrap' }}>
           {wordsUserToDescribe
             .filter((_, index) => index < limit)
             .map((word, index, list) => {
@@ -146,53 +129,45 @@ export const AliasGamePanelUI = ({
               const isDescribed = describedByUserWords.includes(trimWord);
               const isMarkedByUser = usersMarkedWords[trimWord] === true;
               const isUnmarkedByUser = usersMarkedWords[trimWord] === false;
-              const isDone =
-                (isDescribed && !isUnmarkedByUser) || isMarkedByUser;
+              const isDone = (isDescribed && !isUnmarkedByUser) || isMarkedByUser;
 
               return (
                 <Stack
                   sx={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: "6px",
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: '6px',
                     opacity: isDone ? 0.3 : 1,
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                    padding: "3px 8px 3px 10px",
-                    ":hover": {
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                    padding: '3px 8px 3px 10px',
+                    ':hover': {
                       backgroundColor: isDone
-                        ? "rgba(255, 255, 70, 0.1)"
-                        : "rgba(255, 255, 255, 0.1)",
+                        ? 'rgba(255, 255, 70, 0.1)'
+                        : 'rgba(255, 255, 255, 0.1)',
                     },
                   }}
                   key={index}
-                  onClick={(e) =>
-                    translator.translateWithModal(trimWord, e.currentTarget)
-                  }
+                  onClick={(e) => translator.translateWithModal(trimWord, e.currentTarget)}
                 >
                   <Typography
                     key={index}
                     sx={{
-                      textDecoration: isDone ? "line-through" : "none",
+                      textDecoration: isDone ? 'line-through' : 'none',
 
-                      textTransform: "capitalize",
-                      cursor: "pointer",
+                      textTransform: 'capitalize',
+                      cursor: 'pointer',
                     }}
                   >
                     {trimWord}
                   </Typography>
-                  <Languages size={"16px"} color="#eee" />
+                  <Languages size={'16px'} color="#eee" />
                 </Stack>
               );
             })}
 
           {!isShowAll && (
-            <Button
-              size="small"
-              onClick={showAll}
-              variant="text"
-              endIcon={<ChevronRight />}
-            >
+            <Button size="small" onClick={showAll} variant="text" endIcon={<ChevronRight />}>
               {i18n._(`More options`)}
             </Button>
           )}
@@ -200,12 +175,11 @@ export const AliasGamePanelUI = ({
       </Stack>
 
       {!!describedByAiWords.length && false && (
-        <Stack sx={{ flexDirection: "column", gap: "10px" }}>
+        <Stack sx={{ flexDirection: 'column', gap: '10px' }}>
           <Typography variant="caption" sx={{ opacity: 0.9 }}>
-            {i18n._(`Guessed words:`)} {describedByAiWords.length}/
-            {wordsAiToDescribe.length}
+            {i18n._(`Guessed words:`)} {describedByAiWords.length}/{wordsAiToDescribe.length}
           </Typography>
-          <Stack sx={{ flexDirection: "row", gap: "5px", flexWrap: "wrap" }}>
+          <Stack sx={{ flexDirection: 'row', gap: '5px', flexWrap: 'wrap' }}>
             {wordsAiToDescribe
               .filter((word) => {
                 const trimWord = word.trim().toLowerCase();
@@ -224,11 +198,11 @@ export const AliasGamePanelUI = ({
                     key={index}
                     sx={{
                       opacity: isGuessed ? 1 : 0.3,
-                      textTransform: "capitalize",
+                      textTransform: 'capitalize',
                     }}
                   >
-                    {isGuessed ? word : "*".repeat(word.length)}
-                    {isLast ? "" : ","}
+                    {isGuessed ? word : '*'.repeat(word.length)}
+                    {isLast ? '' : ','}
                   </Typography>
                 );
               })}

@@ -1,10 +1,10 @@
-import { supportedLanguages } from "@/features/Lang/lang";
-import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
-import { Metadata } from "next";
-import { generateMetadataInfo } from "@/features/SEO/metadata";
-import { PracticePageTest } from "@/features/Router/PracticePageTest";
-import { PracticeProvider } from "../practiceProvider";
-import { TopOffset } from "@/features/Layout/TopOffset";
+import { supportedLanguages } from '@/features/Lang/lang';
+import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
+import { Metadata } from 'next';
+import { generateMetadataInfo } from '@/features/SEO/metadata';
+import { PracticePageTest } from '@/features/Router/PracticePageTest';
+import { PracticeProvider } from '../practiceProvider';
+import { TopOffset } from '@/features/Layout/TopOffset';
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
@@ -22,7 +22,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   return {
     ...generateMetadataInfo({
       lang: (await props.params).lang,
-      currentPath: "practice",
+      currentPath: 'practice',
       rolePlayId,
     }),
     robots: {
@@ -32,11 +32,9 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   };
 }
 
-export default async function Page(props: {
-  params: Promise<{ lang: string }>;
-}) {
+export default async function Page(props: { params: Promise<{ lang: string }> }) {
   const lang = (await props.params).lang;
-  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
   const rolePlayInfo = getRolePlayScenarios(supportedLang);
 
   return (
@@ -45,10 +43,7 @@ export default async function Page(props: {
         <PracticeProvider>
           <TopOffset />
           <main>
-            <PracticePageTest
-              rolePlayInfo={rolePlayInfo}
-              lang={supportedLang}
-            />
+            <PracticePageTest rolePlayInfo={rolePlayInfo} lang={supportedLang} />
           </main>
         </PracticeProvider>
       </body>

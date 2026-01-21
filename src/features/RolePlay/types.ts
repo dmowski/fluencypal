@@ -1,12 +1,8 @@
-import { AiVoice } from "@/common/ai";
-import { ResourceCategory } from "@/common/category";
-import { JSX } from "react";
+import { AiVoice } from '@/common/ai';
+import { ResourceCategory } from '@/common/category';
+import { JSX } from 'react';
 
-export type RolePlayInputType =
-  | "text-input"
-  | "textarea"
-  | "options"
-  | "checkbox";
+export type RolePlayInputType = 'text-input' | 'textarea' | 'options' | 'checkbox';
 export interface InputStructureForUser {
   id: string;
   labelForUser: string;
@@ -52,6 +48,6 @@ export interface RolePlayInstruction {
   input: InputStructureForUser[];
   contendElement?: JSX.Element;
   contentPage: string;
-  gameMode?: "alias";
+  gameMode?: 'alias';
   analyzeResultAiInstruction?: string;
 }

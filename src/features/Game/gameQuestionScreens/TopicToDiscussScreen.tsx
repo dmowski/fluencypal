@@ -1,39 +1,24 @@
-import { useEffect, useState } from "react";
-import { GameQuestionScreenProps } from "./type";
-import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
-import { useLingui } from "@lingui/react";
-import {
-  Button,
-  IconButton,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { Check, Languages, Loader, Mic, Trash } from "lucide-react";
-import { useTranslate } from "@/features/Translation/useTranslate";
-import { Markdown } from "@/features/uiKit/Markdown/Markdown";
-import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
-import { StringDiff } from "react-string-diff";
-import {
-  FinishButton,
-  GameContainer,
-  SkipButton,
-  TaskTitle,
-} from "./gameCoreUI";
-import { useGame } from "../useGame";
+import { useEffect, useState } from 'react';
+import { GameQuestionScreenProps } from './type';
+import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
+import { useLingui } from '@lingui/react';
+import { Button, IconButton, Stack, TextField, Typography } from '@mui/material';
+import { Check, Languages, Loader, Mic, Trash } from 'lucide-react';
+import { useTranslate } from '@/features/Translation/useTranslate';
+import { Markdown } from '@/features/uiKit/Markdown/Markdown';
+import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
+import { StringDiff } from 'react-string-diff';
+import { FinishButton, GameContainer, SkipButton, TaskTitle } from './gameCoreUI';
+import { useGame } from '../useGame';
 
 export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isShowStats, setIsShowStats] = useState(false);
 
-  const [textAnswer, setTextAnswer] = useState<string>("");
-  const [answerDescription, setAnswerDescription] = useState<string | null>(
-    null,
-  );
-  const [answerCorrectedMessage, setAnswerCorrectedMessage] = useState<
-    string | null
-  >(null);
+  const [textAnswer, setTextAnswer] = useState<string>('');
+  const [answerDescription, setAnswerDescription] = useState<string | null>(null);
+  const [answerCorrectedMessage, setAnswerCorrectedMessage] = useState<string | null>(null);
 
   const recorder = useAudioRecorder();
   const [isUseMicrophone, setIsUseMicrophone] = useState<boolean>(false);
@@ -44,7 +29,7 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
 
   useEffect(() => {
     setIsCorrect(null);
-    setTextAnswer("");
+    setTextAnswer('');
     setAnswerDescription(null);
     setAnswerCorrectedMessage(null);
     recorder.removeTranscript();
@@ -56,12 +41,9 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
     setIsShowStats(true);
-    const { isCorrect, description } = await game.submitAnswer(
-      question?.id || "",
-      answer,
-    );
+    const { isCorrect, description } = await game.submitAnswer(question?.id || '', answer);
 
-    const splitDescription = (description || "").split("|");
+    const splitDescription = (description || '').split('|');
     if (splitDescription.length > 1) {
       setAnswerCorrectedMessage(splitDescription[0].trim() || null);
       setAnswerDescription(splitDescription[1].trim() || null);
@@ -76,43 +58,38 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
 
   const { i18n } = useLingui();
 
-  if (question?.type !== "topic_to_discuss") return <></>;
+  if (question?.type !== 'topic_to_discuss') return <></>;
   return (
     <GameContainer>
       {translator.translateModal}
       <Stack
         sx={{
-          width: "100%",
-          gap: "10px",
+          width: '100%',
+          gap: '10px',
         }}
       >
         <TaskTitle />
         <Stack
           sx={{
-            gap: "10px",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "100%",
+            gap: '10px',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
           }}
         >
           <Typography
             variant="h4"
             className="decor-text"
             sx={{
-              width: "100%",
+              width: '100%',
             }}
           >
             {question.question}
             {translator.isTranslateAvailable && (
               <IconButton
-                onClick={(e) =>
-                  translator.translateWithModal(
-                    question.question,
-                    e.currentTarget,
-                  )
-                }
+                onClick={(e) => translator.translateWithModal(question.question, e.currentTarget)}
               >
-                <Languages size={"16px"} color="#eee" />
+                <Languages size={'16px'} color="#eee" />
               </IconButton>
             )}
           </Typography>
@@ -121,8 +98,8 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
 
       <Stack
         sx={{
-          width: "100%",
-          gap: "5px",
+          width: '100%',
+          gap: '5px',
         }}
       >
         {recorder.isTranscribing && (
@@ -130,7 +107,7 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
             variant="caption"
             sx={{
               opacity: 0.7,
-              width: "100%",
+              width: '100%',
             }}
           >
             {i18n._(`Transcribing...`)}
@@ -155,12 +132,12 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
         {recorder.transcription && isCorrect === null && (
           <Stack
             sx={{
-              flexDirection: "row",
-              alignItems: "center",
-              width: "100%",
-              gap: "10px",
-              boxSizing: "border-box",
-              justifyContent: "space-between",
+              flexDirection: 'row',
+              alignItems: 'center',
+              width: '100%',
+              gap: '10px',
+              boxSizing: 'border-box',
+              justifyContent: 'space-between',
             }}
           >
             <Button
@@ -171,10 +148,10 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
                 !recorder?.transcription ||
                 recorder.transcription.length < 3
               }
-              onClick={() => handleAnswerSubmit(recorder?.transcription || "")}
+              onClick={() => handleAnswerSubmit(recorder?.transcription || '')}
               endIcon={isSubmitting ? <Loader /> : <Check />}
             >
-              {i18n._("Submit answer")}
+              {i18n._('Submit answer')}
             </Button>
             <IconButton
               onClick={() => {
@@ -187,68 +164,66 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
           </Stack>
         )}
 
-        {!recorder.transcription &&
-          !recorder.isTranscribing &&
-          isUseMicrophone && (
-            <Stack
-              sx={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                width: "100%",
-              }}
-            >
-              {recorder.isRecording ? (
-                <>
-                  <Button
-                    startIcon={<Check />}
-                    variant="contained"
-                    size="large"
-                    onClick={() => recorder.stopRecording()}
-                  >
-                    {i18n._(`Done`)}
-                  </Button>
-                  <Stack
-                    sx={{
-                      width: "100%",
-                      maxWidth: "200px",
-                    }}
-                  >
-                    {recorder.visualizerComponent}
-                  </Stack>
-                  <IconButton
-                    onClick={() => {
-                      recorder.cancelRecording();
-                      recorder.removeTranscript();
-                    }}
-                  >
-                    <Trash size={20} />
-                  </IconButton>
-                </>
-              ) : (
+        {!recorder.transcription && !recorder.isTranscribing && isUseMicrophone && (
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: '100%',
+            }}
+          >
+            {recorder.isRecording ? (
+              <>
+                <Button
+                  startIcon={<Check />}
+                  variant="contained"
+                  size="large"
+                  onClick={() => recorder.stopRecording()}
+                >
+                  {i18n._(`Done`)}
+                </Button>
                 <Stack
                   sx={{
-                    flexDirection: "row",
-                    gap: "10px",
-                    alignItems: "center",
+                    width: '100%',
+                    maxWidth: '200px',
                   }}
                 >
-                  <Button
-                    startIcon={<Mic />}
-                    size="large"
-                    variant="contained"
-                    disabled={isCorrect !== null}
-                    onClick={() => {
-                      recorder.removeTranscript();
-                      recorder.startRecording();
-                    }}
-                  >
-                    {i18n._("Record")}
-                  </Button>
-                  <SkipButton disabled={isCorrect !== null} />
+                  {recorder.visualizerComponent}
                 </Stack>
-              )}
-            </Stack>
-          )}
+                <IconButton
+                  onClick={() => {
+                    recorder.cancelRecording();
+                    recorder.removeTranscript();
+                  }}
+                >
+                  <Trash size={20} />
+                </IconButton>
+              </>
+            ) : (
+              <Stack
+                sx={{
+                  flexDirection: 'row',
+                  gap: '10px',
+                  alignItems: 'center',
+                }}
+              >
+                <Button
+                  startIcon={<Mic />}
+                  size="large"
+                  variant="contained"
+                  disabled={isCorrect !== null}
+                  onClick={() => {
+                    recorder.removeTranscript();
+                    recorder.startRecording();
+                  }}
+                >
+                  {i18n._('Record')}
+                </Button>
+                <SkipButton disabled={isCorrect !== null} />
+              </Stack>
+            )}
+          </Stack>
+        )}
 
         {!recorder.transcription &&
           !recorder.isTranscribing &&
@@ -256,22 +231,22 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
           isCorrect === null && (
             <Stack
               sx={{
-                width: "100%",
-                gap: "10px",
+                width: '100%',
+                gap: '10px',
               }}
             >
               <TextField
                 value={textAnswer}
                 onChange={(e) => setTextAnswer(e.target.value)}
-                placeholder={i18n._("Describe the topic in your own words...")}
+                placeholder={i18n._('Describe the topic in your own words...')}
                 fullWidth
                 disabled={isSubmitting || isCorrect !== null}
               />
               <Stack
                 sx={{
-                  flexDirection: "row",
-                  width: "100%",
-                  gap: "10px",
+                  flexDirection: 'row',
+                  width: '100%',
+                  gap: '10px',
                 }}
               >
                 <Button
@@ -280,7 +255,7 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
                   endIcon={isSubmitting ? <Loader /> : <Check />}
                   variant="contained"
                 >
-                  {i18n._("Submit answer")}
+                  {i18n._('Submit answer')}
                 </Button>
                 <SkipButton disabled={isCorrect !== null} />
               </Stack>
@@ -291,8 +266,8 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
           <Typography
             variant="caption"
             sx={{
-              color: "red",
-              paddingTop: "10px",
+              color: 'red',
+              paddingTop: '10px',
             }}
           >
             {i18n._(`Error: `) + recorder.error}
@@ -302,58 +277,55 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
         {isCorrect !== null && (
           <Stack
             sx={{
-              gap: "5px",
-              alignItems: "flex-start",
-              maxWidth: "600px",
-              width: "100%",
+              gap: '5px',
+              alignItems: 'flex-start',
+              maxWidth: '600px',
+              width: '100%',
             }}
           >
             <Stack
               sx={{
-                width: "100%",
-                paddingBottom: "30px",
+                width: '100%',
+                paddingBottom: '30px',
               }}
             >
               {answerCorrectedMessage && (
                 <Stack
                   sx={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    paddingBottom: "15px",
-                    gap: "10px",
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    paddingBottom: '15px',
+                    gap: '10px',
                   }}
                 >
                   <StringDiff
                     styles={{
                       added: {
-                        color: "#81e381",
+                        color: '#81e381',
                         fontWeight: 600,
                       },
                       removed: {
-                        display: "none",
-                        textDecoration: "line-through",
+                        display: 'none',
+                        textDecoration: 'line-through',
                         opacity: 0.4,
                       },
                       default: {},
                     }}
-                    oldValue={recorder.transcription || ""}
+                    oldValue={recorder.transcription || ''}
                     newValue={answerCorrectedMessage}
                   />
 
                   <IconButton
                     onClick={(e) => {
-                      translator.translateWithModal(
-                        answerCorrectedMessage,
-                        e.currentTarget,
-                      );
+                      translator.translateWithModal(answerCorrectedMessage, e.currentTarget);
                     }}
                   >
-                    <Languages size={"16px"} color="#eee" />
+                    <Languages size={'16px'} color="#eee" />
                   </IconButton>
                   <AudioPlayIcon
                     text={answerCorrectedMessage}
                     instructions="Calm and clear"
-                    voice={"shimmer"}
+                    voice={'shimmer'}
                   />
                 </Stack>
               )}

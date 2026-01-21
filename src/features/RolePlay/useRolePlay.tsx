@@ -1,38 +1,31 @@
-"use client";
+'use client';
 
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  JSX,
-  useState,
-  useEffect,
-} from "react";
+import { createContext, useContext, ReactNode, JSX, useState, useEffect } from 'react';
 import {
   AiRolePlayInstructionCreator,
   InputStructureForUser,
   RolePlayInputResult,
   RolePlayInputType,
   RolePlayInstruction,
-} from "./types";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useAiUserInfo } from "../Ai/useAiUserInfo";
-import { supportedLanguages } from "../Lang/lang";
-import { getUrlStart } from "../Lang/getUrlStart";
-import { useAiConversation } from "../Conversation/useAiConversation";
-import { useTextAi } from "../Ai/useTextAi";
-import { useSettings } from "../Settings/useSettings";
-import { RolePlayScenariosInfo } from "./rolePlayData";
-import { useLocalStorage } from "react-use";
-import { GuessGameStat } from "../Conversation/types";
-import { MODELS } from "@/common/ai";
-import { uniq } from "@/libs/uniq";
-import { ConversationMode } from "@/common/user";
-import { useConversationAudio } from "../Audio/useConversationAudio";
+} from './types';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useAiUserInfo } from '../Ai/useAiUserInfo';
+import { supportedLanguages } from '../Lang/lang';
+import { getUrlStart } from '../Lang/getUrlStart';
+import { useAiConversation } from '../Conversation/useAiConversation';
+import { useTextAi } from '../Ai/useTextAi';
+import { useSettings } from '../Settings/useSettings';
+import { RolePlayScenariosInfo } from './rolePlayData';
+import { useLocalStorage } from 'react-use';
+import { GuessGameStat } from '../Conversation/types';
+import { MODELS } from '@/common/ai';
+import { uniq } from '@/libs/uniq';
+import { ConversationMode } from '@/common/user';
+import { useConversationAudio } from '../Audio/useConversationAudio';
 
 const firstLimit = 6;
 
-const allCategoriesLabel = "All";
+const allCategoriesLabel = 'All';
 
 const getStartDefaultInstruction = (fullLanguageName: string) => {
   return `You are playing role-play conversation with user.
@@ -47,8 +40,8 @@ const createAdditionalInstructionFormUserInput = (
     ? rolePlayInputs
         .filter((userInput) => userInput.userValue)
         .map((userInput) => `${userInput.labelForAi}: ${userInput.userValue}`)
-        .join("\n")
-    : "";
+        .join('\n')
+    : '';
   const additionalInstruction = `------
 Role-play: ${scenario.title}
 
@@ -62,7 +55,7 @@ ${
   additionalInfo
     ? `Additional info:
 ${additionalInfo}`
-    : ""
+    : ''
 }
 `;
   return additionalInstruction;
@@ -74,10 +67,7 @@ const getDefaultInstruction: AiRolePlayInstructionCreator = (
   userInput,
 ) => {
   const instruction = getStartDefaultInstruction(fullLanguageName);
-  const additionalInfo = createAdditionalInstructionFormUserInput(
-    scenario,
-    userInput,
-  );
+  const additionalInfo = createAdditionalInstructionFormUserInput(scenario, userInput);
   return `${instruction}
 ${additionalInfo}`;
 };
@@ -87,9 +77,7 @@ interface RolePlayContextType {
   closeRolePlay: () => void;
   selectedRolePlayScenario: RolePlayInstruction | null;
   userInputs: Record<string, string> | undefined;
-  setUserInputs: React.Dispatch<
-    React.SetStateAction<Record<string, string> | undefined>
-  >;
+  setUserInputs: React.Dispatch<React.SetStateAction<Record<string, string> | undefined>>;
   isStarting: boolean;
   selectedTab: string;
   onSetTab: (tab: string) => void;
@@ -114,11 +102,11 @@ function useProvideRolePlay({
 
   const userInfo = useAiUserInfo();
   const pathname = usePathname();
-  const locale = pathname?.split("/")[1] as string;
-  const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
+  const locale = pathname?.split('/')[1] as string;
+  const supportedLang = supportedLanguages.find((l) => l === locale) || 'en';
 
-  const rolePlayId = searchParams.get("rolePlayId");
-  const selectedTabUrl = searchParams.get("rolePlayTab") || allCategoriesLabel;
+  const rolePlayId = searchParams.get('rolePlayId');
+  const selectedTabUrl = searchParams.get('rolePlayTab') || allCategoriesLabel;
 
   const [selectedTab, setSelectedTab] = useState(selectedTabUrl);
 
@@ -131,34 +119,25 @@ function useProvideRolePlay({
   const onSetTab = (tab: string) => {
     setSelectedTab(tab);
     const newSearchParam = new URLSearchParams(window.location.search);
-    newSearchParam.set("rolePlayTab", tab);
-    router.push(
-      `${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`,
-      {
-        scroll: false,
-      },
-    );
+    newSearchParam.set('rolePlayTab', tab);
+    router.push(`${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`, {
+      scroll: false,
+    });
   };
 
   const setRolePlayId = (id?: string) => {
     if (id) {
       const newSearchParam = new URLSearchParams(window.location.search);
-      newSearchParam.set("rolePlayId", id);
-      router.push(
-        `${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`,
-        {
-          scroll: false,
-        },
-      );
+      newSearchParam.set('rolePlayId', id);
+      router.push(`${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`, {
+        scroll: false,
+      });
     } else {
       const newSearchParam = new URLSearchParams(window.location.search);
-      newSearchParam.delete("rolePlayId");
-      router.push(
-        `${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`,
-        {
-          scroll: false,
-        },
-      );
+      newSearchParam.delete('rolePlayId');
+      router.push(`${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`, {
+        scroll: false,
+      });
     }
   };
 
@@ -178,18 +157,14 @@ function useProvideRolePlay({
 
   const visibleScenarios =
     selectedTab === allCategoriesLabel
-      ? rolePlayInfo.rolePlayScenarios.filter(
-          (_, index) => !isLimited || index < firstLimit,
-        )
+      ? rolePlayInfo.rolePlayScenarios.filter((_, index) => !isLimited || index < firstLimit)
       : rolePlayInfo.rolePlayScenarios.filter(
           (scenario) => scenario.category.categoryTitle === selectedTab,
         );
 
   const allTabs = uniq([
     allCategoriesLabel,
-    ...rolePlayInfo.rolePlayScenarios.map(
-      (scenario) => scenario.category.categoryTitle,
-    ),
+    ...rolePlayInfo.rolePlayScenarios.map((scenario) => scenario.category.categoryTitle),
   ]);
 
   useEffect(() => {
@@ -202,9 +177,7 @@ function useProvideRolePlay({
       return;
     }
 
-    const scenario = rolePlayInfo.rolePlayScenarios.find(
-      (scenario) => scenario.id === rolePlayId,
-    );
+    const scenario = rolePlayInfo.rolePlayScenarios.find((scenario) => scenario.id === rolePlayId);
     if (scenario) {
       setSelectedRolePlayScenario(scenario);
     }
@@ -216,7 +189,7 @@ function useProvideRolePlay({
   };
 
   const [userInputs, setUserInputs] = useLocalStorage<Record<string, string>>(
-    "rolePlayUserInputs",
+    'rolePlayUserInputs',
     {},
   );
 
@@ -233,11 +206,11 @@ function useProvideRolePlay({
   }) => {
     const instruction = getDefaultInstruction(
       scenario,
-      settings.fullLanguageName || "English",
+      settings.fullLanguageName || 'English',
       rolePlayInputs,
     );
     aiConversation.startConversation({
-      mode: "role-play",
+      mode: 'role-play',
       customInstruction: instruction,
       voice: scenario.voice,
       gameWords: gameStat,
@@ -260,18 +233,17 @@ function useProvideRolePlay({
 
     const userInfoString =
       isNeedUserInfo && userInfo.userInfo?.records.length
-        ? "\n\nUser Info:" + userInfo.userInfo?.records.join(", ")
-        : "";
-    const systemMessage =
-      aiSummarizingInstruction + requiredFields.join(", ") + userInfoString;
+        ? '\n\nUser Info:' + userInfo.userInfo?.records.join(', ')
+        : '';
+    const systemMessage = aiSummarizingInstruction + requiredFields.join(', ') + userInfoString;
 
-    console.log("systemMessage", systemMessage);
+    console.log('systemMessage', systemMessage);
     const aiResult = await textAi.generate({
       systemMessage: systemMessage,
       userMessage: value,
       model: MODELS.gpt_4o,
       cache: cacheAiSummary,
-      languageCode: settings.languageCode || "en",
+      languageCode: settings.languageCode || 'en',
     });
     return aiResult || value;
   };
@@ -285,14 +257,9 @@ function useProvideRolePlay({
       requiredFields: string[],
     ) => Promise<string>
   > = {
-    textarea: async (
-      input,
-      userValue,
-      lengthToTriggerSummary,
-      requiredFields,
-    ) => {
+    textarea: async (input, userValue, lengthToTriggerSummary, requiredFields) => {
       return processInputWithAi(
-        input.aiSummarizingInstruction || "",
+        input.aiSummarizingInstruction || '',
         userValue,
         lengthToTriggerSummary,
         requiredFields,
@@ -300,14 +267,9 @@ function useProvideRolePlay({
         input.cacheAiSummary !== undefined ? input.cacheAiSummary : true,
       );
     },
-    "text-input": async (
-      input,
-      userValue,
-      lengthToTriggerSummary,
-      requiredFields,
-    ) => {
+    'text-input': async (input, userValue, lengthToTriggerSummary, requiredFields) => {
       return processInputWithAi(
-        input.aiSummarizingInstruction || "",
+        input.aiSummarizingInstruction || '',
         userValue,
         lengthToTriggerSummary,
         requiredFields,
@@ -315,17 +277,12 @@ function useProvideRolePlay({
         input.cacheAiSummary !== undefined ? input.cacheAiSummary : true,
       );
     },
-    options: async (
-      input,
-      userValue,
-      lengthToTriggerSummary,
-      requiredFields,
-    ) => {
+    options: async (input, userValue, lengthToTriggerSummary, requiredFields) => {
       const aiOptions = input.optionsAiDescriptions || {};
       const value = aiOptions[userValue] || userValue;
 
       return processInputWithAi(
-        input.aiSummarizingInstruction || "",
+        input.aiSummarizingInstruction || '',
         value,
         lengthToTriggerSummary,
         requiredFields,
@@ -334,16 +291,11 @@ function useProvideRolePlay({
       );
     },
 
-    checkbox: async (
-      input,
-      userValue,
-      lengthToTriggerSummary,
-      requiredFields,
-    ) => {
-      if (userValue === "true") {
+    checkbox: async (input, userValue, lengthToTriggerSummary, requiredFields) => {
+      if (userValue === 'true') {
         return input.labelForAi;
       } else {
-        return "";
+        return '';
       }
     },
   };
@@ -353,15 +305,13 @@ function useProvideRolePlay({
 
     const rolePlayInputs = await Promise.all(
       selectedRolePlayScenario.input.map(async (input) => {
-        const inputId = selectedRolePlayScenario.id + "-" + input.id;
-        const userValue = userInputs?.[inputId] || input.defaultValue || "";
+        const inputId = selectedRolePlayScenario.id + '-' + input.id;
+        const userValue = userInputs?.[inputId] || input.defaultValue || '';
 
         const requiredFieldsIdsToSummary = input.requiredFieldsToSummary || [];
         const requiredFields = requiredFieldsIdsToSummary.map((fieldId) => {
-          const field = selectedRolePlayScenario.input.find(
-            (input) => input.id === fieldId,
-          );
-          return `${field?.labelForAi || ""}: ${userInputs?.[selectedRolePlayScenario.id + "-" + fieldId]}`;
+          const field = selectedRolePlayScenario.input.find((input) => input.id === fieldId);
+          return `${field?.labelForAi || ''}: ${userInputs?.[selectedRolePlayScenario.id + '-' + fieldId]}`;
         });
 
         let processedUserValue = await modeProcessors[input.type](
@@ -393,16 +343,16 @@ function useProvideRolePlay({
       `Return your words with comma separated.`,
       `Example of response format (lowercased words comma separated): apple, banana, orange`,
       `You are part for software. You need to response strictly follow formate of response, because it's part of another software. Don't add any wrapper words or phrases`,
-    ].join(" ");
+    ].join(' ');
 
     const response = await textAi.generate({
       systemMessage,
       userMessage: `Generate 18 words. Use ${settings.fullLanguageName} language. User language level: ${userLevelInfo}`,
-      model: "gpt-4o",
-      languageCode: settings.languageCode || "en",
+      model: 'gpt-4o',
+      languageCode: settings.languageCode || 'en',
     });
-    console.log("generateRandomWord:", response);
-    const words = response.split(",");
+    console.log('generateRandomWord:', response);
+    const words = response.split(',');
     const shuffledWords = words.sort(() => Math.random() - 0.5);
     const wordsAiToDescribe: string[] = [];
     const wordsUserToDescribe: string[] = [];
@@ -427,25 +377,23 @@ function useProvideRolePlay({
     setIsStarting(true);
     const rolePlayInputs = await prepareUserInputs();
 
-    const isNeedToGenerateWords = selectedRolePlayScenario.gameMode === "alias";
+    const isNeedToGenerateWords = selectedRolePlayScenario.gameMode === 'alias';
     if (isNeedToGenerateWords) {
       const wordsInfo = await generateRandomWord(
-        rolePlayInputs
-          .map((input) => input.labelForAi + ":" + input.userValue)
-          .join(", "),
+        rolePlayInputs.map((input) => input.labelForAi + ':' + input.userValue).join(', '),
       );
 
       onStartRolePlay({
         scenario: selectedRolePlayScenario,
         rolePlayInputs,
         gameStat: wordsInfo,
-        conversationMode: "record",
+        conversationMode: 'record',
       });
     } else {
       onStartRolePlay({
         scenario: selectedRolePlayScenario,
         rolePlayInputs,
-        conversationMode: "record",
+        conversationMode: 'record',
       });
     }
     setIsStarting(false);
@@ -477,15 +425,13 @@ export function RolePlayProvider({
   rolePlayInfo: RolePlayScenariosInfo;
 }): JSX.Element {
   const hook = useProvideRolePlay({ rolePlayInfo });
-  return (
-    <RolePlayContext.Provider value={hook}>{children}</RolePlayContext.Provider>
-  );
+  return <RolePlayContext.Provider value={hook}>{children}</RolePlayContext.Provider>;
 }
 
 export const useRolePlay = (): RolePlayContextType => {
   const context = useContext(RolePlayContext);
   if (!context) {
-    throw new Error("useRolePlay must be used within a RolePlayProvider");
+    throw new Error('useRolePlay must be used within a RolePlayProvider');
   }
   return context;
 };

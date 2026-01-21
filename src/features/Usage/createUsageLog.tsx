@@ -1,14 +1,11 @@
-import { AddUsageLogRequest, AddUsageLogResponse } from "@/common/requests";
+import { AddUsageLogRequest, AddUsageLogResponse } from '@/common/requests';
 
-export const createUsageLog = async (
-  requestData: AddUsageLogRequest,
-  auth: string,
-) => {
-  const response = await fetch("/api/addUsageLog", {
-    method: "POST",
+export const createUsageLog = async (requestData: AddUsageLogRequest, auth: string) => {
+  const response = await fetch('/api/addUsageLog', {
+    method: 'POST',
     body: JSON.stringify(requestData),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${auth}`,
     },
   });

@@ -1,1 +1,1 @@
-export const DEV_EMAILS = ["dmowski.alex@gmail.com"];
+export const DEV_EMAILS = ['dmowski.alex@gmail.com'];

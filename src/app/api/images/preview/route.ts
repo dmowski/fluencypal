@@ -1,10 +1,10 @@
-import { imageDescriptions } from "@/features/Game/ImagesDescriptions";
+import { imageDescriptions } from '@/features/Game/ImagesDescriptions';
 const defaultSize = 700;
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
-  const size = parseInt(searchParams.get("size") || `${defaultSize}`);
+  const size = parseInt(searchParams.get('size') || `${defaultSize}`);
   const maxWidth = Math.min(size, defaultSize); // Ensure max width is no more than 500px
 
   const htmlContent = `
@@ -26,20 +26,20 @@ export async function GET(request: Request) {
           .map(
             (img) => `
           <div class="image-container">
-            <img src="${img.url || "/placeholder-image.jpg"}" alt="${img.shortDescription}" />
+            <img src="${img.url || '/placeholder-image.jpg'}" alt="${img.shortDescription}" />
             <p>${img.shortDescription}</p>
             <p><small>${img.fullImageDescription}</small></p>
           </div>
         `,
           )
-          .join("")}
+          .join('')}
       </body>
     </html>
   `;
 
   return new Response(htmlContent, {
     headers: {
-      "Content-Type": "text/html",
+      'Content-Type': 'text/html',
     },
   });
 }

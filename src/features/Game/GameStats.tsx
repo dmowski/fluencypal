@@ -1,22 +1,15 @@
-"use client";
+'use client';
 
-import {
-  Button,
-  IconButton,
-  Menu,
-  MenuItem,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { useGame } from "./useGame";
-import { GameStatRow } from "./GameStatRow";
-import { useState } from "react";
-import { useLingui } from "@lingui/react";
-import { ChevronDown } from "lucide-react";
+import { Button, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { useGame } from './useGame';
+import { GameStatRow } from './GameStatRow';
+import { useState } from 'react';
+import { useLingui } from '@lingui/react';
+import { ChevronDown } from 'lucide-react';
 
 export const GameStats = () => {
   const game = useGame();
-  const [sort, setSort] = useState<"score" | "lastVisit">("score");
+  const [sort, setSort] = useState<'score' | 'lastVisit'>('score');
   const { i18n } = useLingui();
   const [limit, setLimit] = useState(50);
 
@@ -25,39 +18,39 @@ export const GameStats = () => {
   return (
     <Stack
       sx={{
-        gap: "10px",
+        gap: '10px',
 
-        borderRadius: "12px",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
-        backgroundColor: "rgba(255, 255, 255, 0.03)",
+        borderRadius: '12px',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        backgroundColor: 'rgba(255, 255, 255, 0.03)',
 
-        "@media (max-width: 600px)": {
-          gap: "3px",
-          border: "none",
-          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+        '@media (max-width: 600px)': {
+          gap: '3px',
+          border: 'none',
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
           borderRadius: 0,
-          padding: "0",
+          padding: '0',
         },
       }}
     >
       <Stack
         sx={{
-          padding: "18px 10px 10px 18px",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          width: "100%",
-          gap: "5px",
-          "@media (max-width: 600px)": {
-            border: "none",
+          padding: '18px 10px 10px 18px',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '100%',
+          gap: '5px',
+          '@media (max-width: 600px)': {
+            border: 'none',
           },
         }}
       >
         <Stack
           sx={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "5px",
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '5px',
           }}
         >
           <Typography
@@ -66,16 +59,13 @@ export const GameStats = () => {
               opacity: 0.8,
             }}
           >
-            {sort == "lastVisit" ? i18n._("Last Visit") : i18n._("Score")}
+            {sort == 'lastVisit' ? i18n._('Last Visit') : i18n._('Score')}
           </Typography>
-          <IconButton
-            size="small"
-            onClick={(e) => setMenuAnchorEl(e.currentTarget)}
-          >
+          <IconButton size="small" onClick={(e) => setMenuAnchorEl(e.currentTarget)}>
             <ChevronDown
-              size={"22px"}
+              size={'22px'}
               style={{
-                paddingTop: "1px",
+                paddingTop: '1px',
               }}
             />
           </IconButton>
@@ -83,14 +73,14 @@ export const GameStats = () => {
 
         <Stack
           sx={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "8px",
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '8px',
             opacity: 0.8,
-            paddingRight: "12px",
+            paddingRight: '12px',
           }}
         >
-          <Typography variant="body2">{i18n._("Players:")}</Typography>
+          <Typography variant="body2">{i18n._('Players:')}</Typography>
           <Typography
             variant="body2"
             sx={{
@@ -108,25 +98,25 @@ export const GameStats = () => {
         >
           <MenuItem
             onClick={() => {
-              setSort("score");
+              setSort('score');
               setMenuAnchorEl(null);
             }}
           >
-            {i18n._("Score")}
+            {i18n._('Score')}
           </MenuItem>
           <MenuItem
             onClick={() => {
-              setSort("lastVisit");
+              setSort('lastVisit');
               setMenuAnchorEl(null);
             }}
           >
-            {i18n._("Last Visit")}
+            {i18n._('Last Visit')}
           </MenuItem>
         </Menu>
       </Stack>
       {game.stats
         .sort((a, b) => {
-          if (sort === "score") {
+          if (sort === 'score') {
             return b.points - a.points;
           } else {
             const aLastVisit = game.gameLastVisit?.[a.userId];
@@ -143,9 +133,7 @@ export const GameStats = () => {
         })}
 
       {limit < game.stats.length && (
-        <Button onClick={() => setLimit((prev) => prev + 500)}>
-          {i18n._("Load More")}
-        </Button>
+        <Button onClick={() => setLimit((prev) => prev + 500)}>{i18n._('Load More')}</Button>
       )}
     </Stack>
   );

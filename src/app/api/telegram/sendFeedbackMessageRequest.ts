@@ -1,16 +1,13 @@
-"use client";
+'use client';
 
-import { TelegramRequest, TelegramResponse } from "@/common/requests";
+import { TelegramRequest, TelegramResponse } from '@/common/requests';
 
-export const sendFeedbackMessageRequest = async (
-  message: TelegramRequest,
-  auth: string,
-) => {
-  const response = await fetch("/api/telegram", {
-    method: "POST",
+export const sendFeedbackMessageRequest = async (message: TelegramRequest, auth: string) => {
+  const response = await fetch('/api/telegram', {
+    method: 'POST',
     body: JSON.stringify(message),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${auth}`,
     },
   });

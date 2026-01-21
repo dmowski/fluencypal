@@ -1,10 +1,10 @@
-import { useLingui } from "@lingui/react";
-import { IconButton, Stack, Typography } from "@mui/material";
-import { useMemo, useState } from "react";
-import { useSettings } from "../Settings/useSettings";
-import { useLanguageGroup } from "../Goal/useLanguageGroup";
-import { PencilIcon } from "lucide-react";
-import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
+import { useLingui } from '@lingui/react';
+import { IconButton, Stack, Typography } from '@mui/material';
+import { useMemo, useState } from 'react';
+import { useSettings } from '../Settings/useSettings';
+import { useLanguageGroup } from '../Goal/useLanguageGroup';
+import { PencilIcon } from 'lucide-react';
+import LanguageAutocomplete from '../Lang/LanguageAutocomplete';
 
 export const GameNativeLanguageSelector = () => {
   const settings = useSettings();
@@ -13,8 +13,7 @@ export const GameNativeLanguageSelector = () => {
 
   const nativeLang = settings.userSettings?.nativeLanguageCode;
 
-  const isNativeLanguageIsTheSameAsGameLanguage =
-    nativeLang === settings.languageCode;
+  const isNativeLanguageIsTheSameAsGameLanguage = nativeLang === settings.languageCode;
 
   const { languageGroups } = useLanguageGroup({
     defaultGroupTitle: i18n._(`Other languages`),
@@ -27,35 +26,31 @@ export const GameNativeLanguageSelector = () => {
   );
 
   const nativeLanguageFullName = selectedNativeLanguage?.nativeName;
-  const isShowLangSelector =
-    isShowLangSelectorState || isNativeLanguageIsTheSameAsGameLanguage;
+  const isShowLangSelector = isShowLangSelectorState || isNativeLanguageIsTheSameAsGameLanguage;
 
   return (
     <Stack
       sx={{
-        gap: "5px",
-        width: "100%",
-        alignItems: "center",
+        gap: '5px',
+        width: '100%',
+        alignItems: 'center',
       }}
     >
       <Typography variant="body2">
         {!isShowLangSelector && (
           <Stack
-            component={"span"}
+            component={'span'}
             sx={{
-              width: "20px",
-              display: "inline-block",
+              width: '20px',
+              display: 'inline-block',
             }}
           />
         )}
-        {i18n._("Your Native Language:")}
-        {!isShowLangSelector ? " " + nativeLanguageFullName : ""}
+        {i18n._('Your Native Language:')}
+        {!isShowLangSelector ? ' ' + nativeLanguageFullName : ''}
         {!isShowLangSelector && (
-          <IconButton
-            size="small"
-            onClick={() => setIsShowLangSelector(!isShowLangSelector)}
-          >
-            <PencilIcon size={"11px"} />
+          <IconButton size="small" onClick={() => setIsShowLangSelector(!isShowLangSelector)}>
+            <PencilIcon size={'11px'} />
           </IconButton>
         )}
       </Typography>

@@ -1,12 +1,12 @@
-import { SupportedLanguage } from "../features/Lang/lang";
+import { SupportedLanguage } from '../features/Lang/lang';
 
 export type ConversationType =
-  | "talk"
-  | "words"
-  | "rule"
-  | "role-play"
-  | "goal-role-play"
-  | "goal-talk";
+  | 'talk'
+  | 'words'
+  | 'rule'
+  | 'role-play'
+  | 'goal-role-play'
+  | 'goal-talk';
 
 export interface ChatMessage {
   id: string;

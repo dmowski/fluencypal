@@ -1,21 +1,21 @@
-import { IconButton, Stack, Typography } from "@mui/material";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useLingui } from "@lingui/react";
-import { PositionChanged } from "../Game/PositionChanged";
-import { ConversationResult } from "../Plan/types";
-import { useState } from "react";
-import { InfoStep } from "../Survey/InfoStep";
-import { useTranslate } from "../Translation/useTranslate";
-import { Languages } from "lucide-react";
-import { Markdown } from "../uiKit/Markdown/Markdown";
+import { IconButton, Stack, Typography } from '@mui/material';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { useLingui } from '@lingui/react';
+import { PositionChanged } from '../Game/PositionChanged';
+import { ConversationResult } from '../Plan/types';
+import { useState } from 'react';
+import { InfoStep } from '../Survey/InfoStep';
+import { useTranslate } from '../Translation/useTranslate';
+import { Languages } from 'lucide-react';
+import { Markdown } from '../uiKit/Markdown/Markdown';
 
 type Step =
-  | "game"
-  | "shortSummaryOfLesson"
-  | "whatToFocusOnNextTime"
-  | "whatUserCanImprove"
-  | "whatUserDidWell"
-  | "finish";
+  | 'game'
+  | 'shortSummaryOfLesson'
+  | 'whatToFocusOnNextTime'
+  | 'whatUserCanImprove'
+  | 'whatUserDidWell'
+  | 'finish';
 
 export const ConversationReviewModal = ({
   setIsShowAnalyzeConversationModal,
@@ -46,12 +46,12 @@ export const ConversationReviewModal = ({
   };
 
   const steps: Step[] = [
-    "game",
-    "shortSummaryOfLesson",
-    "whatToFocusOnNextTime",
-    "whatUserCanImprove",
-    "whatUserDidWell",
-    "finish",
+    'game',
+    'shortSummaryOfLesson',
+    'whatToFocusOnNextTime',
+    'whatUserCanImprove',
+    'whatUserDidWell',
+    'finish',
   ];
   const [step, setStep] = useState<Step>(steps[0]);
 
@@ -69,21 +69,18 @@ export const ConversationReviewModal = ({
   };
 
   return (
-    <CustomModal
-      isOpen={true}
-      onClose={() => setIsShowAnalyzeConversationModal(false)}
-    >
+    <CustomModal isOpen={true} onClose={() => setIsShowAnalyzeConversationModal(false)}>
       {translator.translateModal}
 
       <Stack
         sx={{
-          maxWidth: "700px",
-          width: "100%",
+          maxWidth: '700px',
+          width: '100%',
         }}
       >
-        {step == "game" && (
+        {step == 'game' && (
           <InfoStep
-            title={i18n._("Leaderboard")}
+            title={i18n._('Leaderboard')}
             subTitle={i18n._(
               `Points earned: {pointsEarned}. Keep practicing to improve your score!`,
               {
@@ -95,16 +92,13 @@ export const ConversationReviewModal = ({
           />
         )}
 
-        {step == "shortSummaryOfLesson" && (
+        {step == 'shortSummaryOfLesson' && (
           <InfoStep
-            title={i18n._("Summary")}
+            title={i18n._('Summary')}
             isStepLoading={!conversationAnalysisResult}
             subComponent={
               <TranslatableComponent
-                message={
-                  conversationAnalysisResult?.shortSummaryOfLesson ||
-                  i18n._("Loading...")
-                }
+                message={conversationAnalysisResult?.shortSummaryOfLesson || i18n._('Loading...')}
                 isLoading={!conversationAnalysisResult}
               />
             }
@@ -113,16 +107,13 @@ export const ConversationReviewModal = ({
           />
         )}
 
-        {step == "whatToFocusOnNextTime" && (
+        {step == 'whatToFocusOnNextTime' && (
           <InfoStep
             isStepLoading={!conversationAnalysisResult}
-            title={i18n._("What to focus on next time")}
+            title={i18n._('What to focus on next time')}
             subComponent={
               <TranslatableComponent
-                message={
-                  conversationAnalysisResult?.whatToFocusOnNextTime ||
-                  i18n._("Loading...")
-                }
+                message={conversationAnalysisResult?.whatToFocusOnNextTime || i18n._('Loading...')}
                 isLoading={!conversationAnalysisResult}
               />
             }
@@ -131,16 +122,13 @@ export const ConversationReviewModal = ({
           />
         )}
 
-        {step == "whatUserCanImprove" && (
+        {step == 'whatUserCanImprove' && (
           <InfoStep
             isStepLoading={!conversationAnalysisResult}
-            title={i18n._("What you can improve")}
+            title={i18n._('What you can improve')}
             subComponent={
               <TranslatableComponent
-                message={
-                  conversationAnalysisResult?.whatUserCanImprove ||
-                  i18n._("Loading...")
-                }
+                message={conversationAnalysisResult?.whatUserCanImprove || i18n._('Loading...')}
                 isLoading={!conversationAnalysisResult}
               />
             }
@@ -149,16 +137,13 @@ export const ConversationReviewModal = ({
           />
         )}
 
-        {step == "whatUserDidWell" && (
+        {step == 'whatUserDidWell' && (
           <InfoStep
-            title={i18n._("What you did well")}
+            title={i18n._('What you did well')}
             isStepLoading={!conversationAnalysisResult}
             subComponent={
               <TranslatableComponent
-                message={
-                  conversationAnalysisResult?.whatUserDidWell ||
-                  i18n._("Loading...")
-                }
+                message={conversationAnalysisResult?.whatUserDidWell || i18n._('Loading...')}
                 isLoading={!conversationAnalysisResult}
               />
             }
@@ -167,20 +152,20 @@ export const ConversationReviewModal = ({
           />
         )}
 
-        {step == "finish" && (
+        {step == 'finish' && (
           <InfoStep
             isStepLoading={!conversationAnalysisResult}
-            title={i18n._("Next Step")}
+            title={i18n._('Next Step')}
             subComponent={
               <TranslatableComponent
-                message={i18n._("Continue practicing to improve your skills.")}
+                message={i18n._('Continue practicing to improve your skills.')}
                 isLoading={!conversationAnalysisResult}
                 skipTranslation
               />
             }
             disabled={!conversationAnalysisResult}
             onClick={onNext}
-            actionButtonTitle={i18n._("Next Lesson")}
+            actionButtonTitle={i18n._('Next Lesson')}
           />
         )}
       </Stack>
@@ -199,30 +184,30 @@ const TranslatableComponent = ({
 }) => {
   const translator = useTranslate();
 
-  const [translatedText, setTranslatedText] = useState("");
+  const [translatedText, setTranslatedText] = useState('');
   const [isTranslating, setIsTranslating] = useState(false);
 
   const toggleTranslation = async () => {
     if (isLoading) return;
     setIsTranslating(true);
     if (translatedText) {
-      setTranslatedText("");
+      setTranslatedText('');
     } else {
-      const result = await translator.translateText({ text: message || "" });
-      setTranslatedText("\n" + result.trim());
+      const result = await translator.translateText({ text: message || '' });
+      setTranslatedText('\n' + result.trim());
     }
     setIsTranslating(false);
   };
 
-  const text = translatedText || "\n" + (message || "").trim();
+  const text = translatedText || '\n' + (message || '').trim();
 
   return (
     <Stack
       sx={{
-        gap: "0px",
-        alignItems: "flex-start",
+        gap: '0px',
+        alignItems: 'flex-start',
       }}
-      className={`${isLoading ? "loading-shimmer" : ""}`}
+      className={`${isLoading ? 'loading-shimmer' : ''}`}
     >
       {translator.translateModal}
       <Markdown
@@ -246,10 +231,7 @@ const TranslatableComponent = ({
             opacity: isLoading ? 0.5 : 1,
           }}
         >
-          <Languages
-            size={"16px"}
-            color={isTranslating ? "#4cd1fdff" : "#eee"}
-          />
+          <Languages size={'16px'} color={isTranslating ? '#4cd1fdff' : '#eee'} />
         </IconButton>
       )}
     </Stack>

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, {
   createContext,
@@ -8,11 +8,11 @@ import React, {
   useRef,
   ReactNode,
   JSX,
-} from "react";
-import { useSettings } from "../Settings/useSettings";
-import { useAuth } from "../Auth/useAuth";
-import { sendTextToAudioRequest } from "@/app/api/textToAudio/sendTextToAudioRequest";
-import { AiVoice } from "@/common/ai";
+} from 'react';
+import { useSettings } from '../Settings/useSettings';
+import { useAuth } from '../Auth/useAuth';
+import { sendTextToAudioRequest } from '@/app/api/textToAudio/sendTextToAudioRequest';
+import { AiVoice } from '@/common/ai';
 
 /**
  * What this gives you:
@@ -63,8 +63,7 @@ interface ConversationAudioContextType {
   isPlaying: boolean;
 }
 
-const ConversationAudioContext =
-  createContext<ConversationAudioContextType | null>(null);
+const ConversationAudioContext = createContext<ConversationAudioContextType | null>(null);
 
 class AudioQueuePlayer {
   private ctx: AudioContext | null = null;
@@ -89,29 +88,29 @@ class AudioQueuePlayer {
       this.gain.connect(this.ctx.destination);
     }
 
-    if (this.ctx.state === "suspended") {
+    if (this.ctx.state === 'suspended') {
       await this.ctx.resume();
     }
 
     // Create audio element + connect it to gain (so fade/volume works)
     if (!this.streamEl) {
       const el = new Audio();
-      el.preload = "auto";
+      el.preload = 'auto';
       this.streamNode = this.ctx!.createMediaElementSource(el);
       this.streamNode.connect(this.gain!);
       this.streamEl = el;
 
       // Listen to real audio playback events
-      el.addEventListener("playing", () => {
+      el.addEventListener('playing', () => {
         this._isPlaying = true;
       });
-      el.addEventListener("waiting", () => {
+      el.addEventListener('waiting', () => {
         this._isPlaying = false;
       });
-      el.addEventListener("pause", () => {
+      el.addEventListener('pause', () => {
         this._isPlaying = false;
       });
-      el.addEventListener("ended", () => {
+      el.addEventListener('ended', () => {
         this._isPlaying = false;
       });
     }
@@ -120,7 +119,7 @@ class AudioQueuePlayer {
   }
 
   isUnlocked(): boolean {
-    return this.unlocked && !!this.ctx && this.ctx.state !== "closed";
+    return this.unlocked && !!this.ctx && this.ctx.state !== 'closed';
   }
 
   setVolume(value01: number) {
@@ -135,11 +134,9 @@ class AudioQueuePlayer {
 
   async playStreamUrl(url: string): Promise<void> {
     if (!this.ctx || !this.gain || !this.streamEl) {
-      throw new Error(
-        "AudioQueuePlayer: not unlocked. Call unlockFromGesture() first.",
-      );
+      throw new Error('AudioQueuePlayer: not unlocked. Call unlockFromGesture() first.');
     }
-    if (this.ctx.state === "suspended") await this.ctx.resume();
+    if (this.ctx.state === 'suspended') await this.ctx.resume();
 
     // Stop previous audio instantly
     this.stopStream();
@@ -152,17 +149,16 @@ class AudioQueuePlayer {
 
     await new Promise<void>((resolve, reject) => {
       const onEnded = () => cleanup(resolve);
-      const onError = () =>
-        cleanup(() => reject(new Error("Stream audio error")));
+      const onError = () => cleanup(() => reject(new Error('Stream audio error')));
 
       const cleanup = (done: () => void) => {
-        el.removeEventListener("ended", onEnded);
-        el.removeEventListener("error", onError);
+        el.removeEventListener('ended', onEnded);
+        el.removeEventListener('error', onError);
         done();
       };
 
-      el.addEventListener("ended", onEnded);
-      el.addEventListener("error", onError);
+      el.addEventListener('ended', onEnded);
+      el.addEventListener('error', onError);
     });
   }
 
@@ -173,7 +169,7 @@ class AudioQueuePlayer {
     try {
       el.pause();
       el.currentTime = 0;
-      el.removeAttribute("src");
+      el.removeAttribute('src');
       el.load();
     } catch {}
   }
@@ -187,7 +183,7 @@ class AudioQueuePlayer {
       this.interrupt();
       return;
     }
-    if (this.ctx.state === "suspended") await this.ctx.resume();
+    if (this.ctx.state === 'suspended') await this.ctx.resume();
 
     const now = this.ctx.currentTime;
     const g = this.gain.gain;
@@ -207,7 +203,7 @@ class AudioQueuePlayer {
 
   dispose(): void {
     this.interrupt();
-    if (this.ctx && this.ctx.state !== "closed") {
+    if (this.ctx && this.ctx.state !== 'closed') {
       this.ctx.close().catch(() => {});
     }
     this.ctx = null;
@@ -236,14 +232,12 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     async (text: string, instructions: string, voice: AiVoice) => {
       const languageCode = settings.languageCode;
       if (!languageCode) {
-        throw new Error(
-          "Language is not set | useProvideConversationAudio.getAudioUrl",
-        );
+        throw new Error('Language is not set | useProvideConversationAudio.getAudioUrl');
       }
 
       const response = await sendTextToAudioRequest(
         {
-          languageCode: languageCode || "en",
+          languageCode: languageCode || 'en',
           input: text.trim(),
           instructions,
           voice,
@@ -252,7 +246,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       );
 
       const audioUrl = response.audioUrl;
-      if (!audioUrl) throw new Error("Failed to generate audio");
+      if (!audioUrl) throw new Error('Failed to generate audio');
       return audioUrl;
     },
     [settings.languageCode, auth],
@@ -270,12 +264,11 @@ function useProvideConversationAudio(): ConversationAudioContextType {
   const speak = useCallback(async (text: string, opts: SpeakOptions) => {
     const maxLength = 600;
     text = text.trim();
-    const trimmedText =
-      text.length > maxLength ? text.slice(0, maxLength) : text;
+    const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
     const q = new URLSearchParams({
       input: trimmedText,
       voice: opts.voice,
-      instructions: opts.instructions ?? "",
+      instructions: opts.instructions ?? '',
     });
 
     await playerRef.current!.playStreamUrl(`/api/ttsStream?${q}`);
@@ -344,25 +337,17 @@ function useProvideConversationAudio(): ConversationAudioContextType {
   );
 }
 
-export function ConversationAudioProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function ConversationAudioProvider({ children }: { children: ReactNode }): JSX.Element {
   const hook = useProvideConversationAudio();
   return (
-    <ConversationAudioContext.Provider value={hook}>
-      {children}
-    </ConversationAudioContext.Provider>
+    <ConversationAudioContext.Provider value={hook}>{children}</ConversationAudioContext.Provider>
   );
 }
 
 export const useConversationAudio = (): ConversationAudioContextType => {
   const context = useContext(ConversationAudioContext);
   if (!context) {
-    throw new Error(
-      "useConversationAudio must be used within a ConversationAudioProvider",
-    );
+    throw new Error('useConversationAudio must be used within a ConversationAudioProvider');
   }
   return context;
 };

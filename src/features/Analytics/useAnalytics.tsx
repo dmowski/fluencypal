@@ -1,19 +1,12 @@
-"use client";
+'use client';
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  ReactNode,
-  useRef,
-  useState,
-} from "react";
-import { isDev } from "./isDev";
-import { useAuth } from "../Auth/useAuth";
-import { initHotjar } from "./initHotjar";
-import { initSentry } from "./initSentry";
-import { initGTag } from "./initGTag";
-import { confirmGtag } from "./confirmGtag";
+import { createContext, useContext, useEffect, ReactNode, useRef, useState } from 'react';
+import { isDev } from './isDev';
+import { useAuth } from '../Auth/useAuth';
+import { initHotjar } from './initHotjar';
+import { initSentry } from './initSentry';
+import { initGTag } from './initGTag';
+import { confirmGtag } from './confirmGtag';
 
 const RUN_ON_DEV_ENV = false;
 
@@ -22,26 +15,19 @@ interface AnalyticsContextType {
   confirmGtag: () => Promise<void>;
 }
 
-const AnalyticsContext = createContext<AnalyticsContextType | undefined>(
-  undefined,
-);
+const AnalyticsContext = createContext<AnalyticsContextType | undefined>(undefined);
 
 export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
   const auth = useAuth();
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    const isWindow = typeof window !== "undefined";
-    if (
-      (isDev() && !RUN_ON_DEV_ENV) ||
-      !auth.uid ||
-      isInitialized ||
-      !isWindow
-    ) {
+    const isWindow = typeof window !== 'undefined';
+    if ((isDev() && !RUN_ON_DEV_ENV) || !auth.uid || isInitialized || !isWindow) {
       return;
     }
 
-    const isDeveloper = auth.userInfo?.email?.includes("dmowski") || false;
+    const isDeveloper = auth.userInfo?.email?.includes('dmowski') || false;
     if (isDeveloper) {
       return;
     }
@@ -57,17 +43,13 @@ export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
     confirmGtag,
   };
 
-  return (
-    <AnalyticsContext.Provider value={data}>
-      {children}
-    </AnalyticsContext.Provider>
-  );
+  return <AnalyticsContext.Provider value={data}>{children}</AnalyticsContext.Provider>;
 };
 
 export const useAnalytics = () => {
   const context = useContext(AnalyticsContext);
   if (context === undefined) {
-    throw new Error("useAnalytics must be used within a AnalyticsProvider");
+    throw new Error('useAnalytics must be used within a AnalyticsProvider');
   }
   return context;
 };

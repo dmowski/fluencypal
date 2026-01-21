@@ -1,6 +1,6 @@
-import { useLingui } from "@lingui/react";
-import { ConversationCard } from "./ConversationCard";
-import { Stack } from "@mui/material";
+import { useLingui } from '@lingui/react';
+import { ConversationCard } from './ConversationCard';
+import { Stack } from '@mui/material';
 
 interface GoalCardProps {
   startOnboarding: () => void;
@@ -18,7 +18,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({ startOnboarding }) => {
       icon={
         <Stack>
           <Stack
-            style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
+            style={{ width: 'var(--icon-size)', height: 'var(--icon-size)' }}
             className="avatar"
           >
             <img src="/avatar/map.webp" alt="AI Bot" />

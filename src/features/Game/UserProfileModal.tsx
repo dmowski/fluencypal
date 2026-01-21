@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { Button, Stack } from "@mui/material";
-import { useGame } from "./useGame";
-import { Typography } from "@mui/material";
-import { defaultAvatar } from "./avatars";
-import dayjs from "dayjs";
-import { GameAchievement, UsersStat } from "./types";
-import { useAuth } from "../Auth/useAuth";
-import { useState } from "react";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useLingui } from "@lingui/react";
-import { DynamicIcon, IconName } from "lucide-react/dynamic";
-import { achievementsMaxPoints, allAchievementTypes } from "./data";
-import { Swords, X } from "lucide-react";
-import { InfoStep } from "../Survey/InfoStep";
-import { useBattle } from "./Battle/useBattle";
-import { BATTLE_WIN_POINTS } from "./Battle/data";
-import { ChatProvider } from "../Chat/useChat";
-import { ChatSection } from "../Chat/ChatSection";
+import { Button, Stack } from '@mui/material';
+import { useGame } from './useGame';
+import { Typography } from '@mui/material';
+import { defaultAvatar } from './avatars';
+import dayjs from 'dayjs';
+import { GameAchievement, UsersStat } from './types';
+import { useAuth } from '../Auth/useAuth';
+import { useState } from 'react';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { useLingui } from '@lingui/react';
+import { DynamicIcon, IconName } from 'lucide-react/dynamic';
+import { achievementsMaxPoints, allAchievementTypes } from './data';
+import { Swords, X } from 'lucide-react';
+import { InfoStep } from '../Survey/InfoStep';
+import { useBattle } from './Battle/useBattle';
+import { BATTLE_WIN_POINTS } from './Battle/data';
+import { ChatProvider } from '../Chat/useChat';
+import { ChatSection } from '../Chat/ChatSection';
 
 interface IconColor {
   iconColor: string;
@@ -27,56 +27,50 @@ interface IconColor {
 
 const iconColors: IconColor[] = [
   {
-    iconColor: "#fff",
-    bgColor: "#c020dcff",
-    borderColor: "rgba(156, 39, 176, 0.5)",
+    iconColor: '#fff',
+    bgColor: '#c020dcff',
+    borderColor: 'rgba(156, 39, 176, 0.5)',
   },
 
   {
-    iconColor: "#fff",
-    bgColor: "rgba(29, 136, 243, 1)",
-    borderColor: "rgba(25, 118, 210, 0.5)",
+    iconColor: '#fff',
+    bgColor: 'rgba(29, 136, 243, 1)',
+    borderColor: 'rgba(25, 118, 210, 0.5)',
   },
   {
-    iconColor: "#fff",
-    bgColor: "#ff9800",
-    borderColor: "rgba(255, 152, 0, 0.5)",
+    iconColor: '#fff',
+    bgColor: '#ff9800',
+    borderColor: 'rgba(255, 152, 0, 0.5)',
   },
   {
-    iconColor: "#fff",
-    bgColor: "#4caf50",
-    borderColor: "rgba(76, 175, 80, 0.5)",
+    iconColor: '#fff',
+    bgColor: '#4caf50',
+    borderColor: 'rgba(76, 175, 80, 0.5)',
   },
 ];
 
 const zeroColor: IconColor = {
-  iconColor: "#fff",
-  bgColor: "rgba(100, 100, 100, 0.5)",
-  borderColor: "rgba(80, 80, 80, 0.5)",
+  iconColor: '#fff',
+  bgColor: 'rgba(100, 100, 100, 0.5)',
+  borderColor: 'rgba(80, 80, 80, 0.5)',
 };
 
 const achievementsIconMap: Record<GameAchievement, IconName> = {
-  translate: "languages",
-  sentence: "pickaxe",
-  describe_image: "image",
-  topic_to_discuss: "messages-square",
-  read_text: "book-open-text",
-  chat_message: "message-circle",
-  ai_conversation: "bot-message-square",
+  translate: 'languages',
+  sentence: 'pickaxe',
+  describe_image: 'image',
+  topic_to_discuss: 'messages-square',
+  read_text: 'book-open-text',
+  chat_message: 'message-circle',
+  ai_conversation: 'bot-message-square',
 };
 
-export const UserProfileModal = ({
-  stat,
-  onClose,
-}: {
-  stat: UsersStat;
-  onClose: () => void;
-}) => {
+export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: () => void }) => {
   const game = useGame();
   const auth = useAuth();
   const battle = useBattle();
-  const userId = auth.uid || "";
-  const userName = game.userNames?.[stat.userId] || "";
+  const userId = auth.uid || '';
+  const userName = game.userNames?.[stat.userId] || '';
 
   const isMe = stat.userId === userId;
   const lastVisit = game.gameLastVisit ? game.gameLastVisit[stat.userId] : null;
@@ -84,9 +78,7 @@ export const UserProfileModal = ({
 
   const avatar = game.gameAvatars[stat.userId] || defaultAvatar;
 
-  const achievements = game.userAchievements
-    ? game.userAchievements[stat.userId] || {}
-    : {};
+  const achievements = game.userAchievements ? game.userAchievements[stat.userId] || {} : {};
   const achievementsKeys: GameAchievement[] = allAchievementTypes.sort(
     (a, b) => (achievements[b] || 0) - (achievements[a] || 0),
   );
@@ -96,13 +88,13 @@ export const UserProfileModal = ({
   const position = game.getRealPosition(stat.userId);
 
   const achievementsLabelMap: Record<GameAchievement, string> = {
-    translate: i18n._("Translates"),
-    sentence: i18n._("Sentences"),
-    describe_image: i18n._("Images"),
-    topic_to_discuss: i18n._("Discussions"),
-    read_text: i18n._("Reader"),
-    chat_message: i18n._("Chat"),
-    ai_conversation: i18n._("AI"),
+    translate: i18n._('Translates'),
+    sentence: i18n._('Sentences'),
+    describe_image: i18n._('Images'),
+    topic_to_discuss: i18n._('Discussions'),
+    read_text: i18n._('Reader'),
+    chat_message: i18n._('Chat'),
+    ai_conversation: i18n._('AI'),
   };
 
   const [isAskForDebates, setIsAskForDebates] = useState(false);
@@ -118,14 +110,10 @@ export const UserProfileModal = ({
   };
 
   const isAlreadyAskedForBattle = battle.battles.some((b) => {
-    return (
-      b.usersIds.includes(userId) &&
-      b.usersIds.includes(stat.userId) &&
-      !b.winnerUserId
-    );
+    return b.usersIds.includes(userId) && b.usersIds.includes(stat.userId) && !b.winnerUserId;
   });
 
-  const chatSpace = `u_${[stat.userId, userId].sort((a, b) => a.localeCompare(b)).join("_")}`;
+  const chatSpace = `u_${[stat.userId, userId].sort((a, b) => a.localeCompare(b)).join('_')}`;
 
   if (!userId) return <></>;
   return (
@@ -134,26 +122,26 @@ export const UserProfileModal = ({
         <CustomModal isOpen={true} onClose={() => setIsAskForDebates(false)}>
           <Stack
             sx={{
-              width: "100%",
-              alignItems: "center",
+              width: '100%',
+              alignItems: 'center',
             }}
           >
             <Stack
               sx={{
-                width: "100%",
-                maxWidth: "600px",
+                width: '100%',
+                maxWidth: '600px',
               }}
             >
               <>
                 {isBattleRequested ? (
                   <InfoStep
-                    title={i18n._("Debate Request Sent!")}
-                    subTitle={i18n._("Waiting for {userName} to respond.", {
+                    title={i18n._('Debate Request Sent!')}
+                    subTitle={i18n._('Waiting for {userName} to respond.', {
                       userName,
                     })}
-                    actionButtonTitle={i18n._("Close")}
+                    actionButtonTitle={i18n._('Close')}
                     actionButtonEndIcon={<X />}
-                    width={"600px"}
+                    width={'600px'}
                     onClick={() => {
                       setIsAskForDebates(false);
                       setIsBattleRequested(false);
@@ -162,43 +150,34 @@ export const UserProfileModal = ({
                   />
                 ) : (
                   <InfoStep
-                    title={i18n._("Debate Request")}
-                    subTitle={i18n._(
-                      "Discuss and improve your skills together!",
-                    )}
+                    title={i18n._('Debate Request')}
+                    subTitle={i18n._('Discuss and improve your skills together!')}
                     disabled={isCreatingBattle}
-                    actionButtonTitle={i18n._("Send Request")}
+                    actionButtonTitle={i18n._('Send Request')}
                     actionButtonStartIcon={<Swords />}
                     actionButtonEndIcon={<></>}
-                    width={"600px"}
+                    width={'600px'}
                     listItems={[
                       {
-                        title: i18n._("The winner gets {points} game points!", {
+                        title: i18n._('The winner gets {points} game points!', {
                           points: BATTLE_WIN_POINTS,
                         }),
-                        iconName: "crown",
+                        iconName: 'crown',
                       },
                       {
-                        title: i18n._(
-                          "The request will be sent to user {userName}.",
-                          {
-                            userName,
-                          },
-                        ),
-                        iconName: "message-circle",
+                        title: i18n._('The request will be sent to user {userName}.', {
+                          userName,
+                        }),
+                        iconName: 'message-circle',
                       },
                       {
-                        title: i18n._(
-                          "Debate topics will be selected randomly.",
-                        ),
-                        iconName: "messages-square",
+                        title: i18n._('Debate topics will be selected randomly.'),
+                        iconName: 'messages-square',
                       },
 
                       {
-                        title: i18n._(
-                          "You can track the progress on the main page.",
-                        ),
-                        iconName: "bell",
+                        title: i18n._('You can track the progress on the main page.'),
+                        iconName: 'bell',
                       },
                     ]}
                     onClick={sendDebateRequest}
@@ -214,38 +193,38 @@ export const UserProfileModal = ({
         <CustomModal isOpen={true} onClose={() => onClose()}>
           <Stack
             sx={{
-              alignItems: "center",
-              gap: "30px",
-              width: "100%",
-              padding: "0 10px 80px 10px",
-              maxWidth: "700px",
+              alignItems: 'center',
+              gap: '30px',
+              width: '100%',
+              padding: '0 10px 80px 10px',
+              maxWidth: '700px',
             }}
           >
             <Stack
               sx={{
-                gap: "10px",
-                width: "100%",
-                alignItems: "center",
+                gap: '10px',
+                width: '100%',
+                alignItems: 'center',
               }}
             >
               <Stack
                 component="img"
                 src={avatar}
                 sx={{
-                  width: "100px",
-                  height: "100px",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                  position: "relative",
+                  width: '100px',
+                  height: '100px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  position: 'relative',
                   zIndex: 1,
                 }}
               />
               <Stack
                 sx={{
-                  width: "100%",
-                  padding: "5px 0",
-                  alignItems: "center",
+                  width: '100%',
+                  padding: '5px 0',
+                  alignItems: 'center',
                 }}
               >
                 <Typography variant="h5">{userName}</Typography>
@@ -269,120 +248,113 @@ export const UserProfileModal = ({
                 startIcon={<Swords />}
                 onClick={() => setIsAskForDebates(true)}
               >
-                {i18n._("Invite to a debate")}
+                {i18n._('Invite to a debate')}
               </Button>
             )}
 
             <Stack
               sx={{
-                flexDirection: "row",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-                borderRadius: "10px",
-                justifyContent: "space-between",
-                width: "100%",
-                padding: "20px 30px",
-                backgroundColor: "rgba(255, 255, 255, 0.02)",
+                flexDirection: 'row',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '10px',
+                justifyContent: 'space-between',
+                width: '100%',
+                padding: '20px 30px',
+                backgroundColor: 'rgba(255, 255, 255, 0.02)',
               }}
             >
               <Stack
                 sx={{
-                  alignItems: "center",
+                  alignItems: 'center',
                 }}
               >
                 <Typography variant="h4">{position + 1}</Typography>
                 <Typography
                   variant="body2"
                   sx={{
-                    textTransform: "uppercase",
+                    textTransform: 'uppercase',
                     opacity: 0.7,
                   }}
                 >
-                  {i18n._("Position")}
+                  {i18n._('Position')}
                 </Typography>
               </Stack>
 
               <Stack
                 sx={{
-                  alignItems: "center",
+                  alignItems: 'center',
                 }}
               >
                 <Typography variant="h4">{stat.points}</Typography>
                 <Typography
                   variant="body2"
                   sx={{
-                    textTransform: "uppercase",
+                    textTransform: 'uppercase',
                     opacity: 0.7,
                   }}
                 >
-                  {i18n._("Points")}
+                  {i18n._('Points')}
                 </Typography>
               </Stack>
             </Stack>
 
-            <Stack sx={{ width: "100%", gap: "6px" }}>
+            <Stack sx={{ width: '100%', gap: '6px' }}>
               <Typography
                 variant="caption"
                 sx={{
                   opacity: 0.7,
                 }}
               >
-                {i18n._("Achievements")}
+                {i18n._('Achievements')}
               </Typography>
 
               <Stack
                 sx={{
-                  width: "100%",
-                  gap: "10px",
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr 1fr 1fr",
-                  "@media (max-width: 700px)": {
-                    gridTemplateColumns: "1fr 1fr 1fr",
+                  width: '100%',
+                  gap: '10px',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr 1fr 1fr',
+                  '@media (max-width: 700px)': {
+                    gridTemplateColumns: '1fr 1fr 1fr',
                   },
-                  "@media (max-width: 450px)": {
-                    gridTemplateColumns: "1fr 1fr",
+                  '@media (max-width: 450px)': {
+                    gridTemplateColumns: '1fr 1fr',
                   },
                 }}
               >
                 {achievementsKeys.map((achievementsKey) => {
                   const achievementPoints = achievements[achievementsKey] || 0;
 
-                  const maxPoints =
-                    achievementsMaxPoints[achievementsKey] || 50;
+                  const maxPoints = achievementsMaxPoints[achievementsKey] || 50;
 
-                  const achievementPercent =
-                    (achievementPoints / maxPoints) * 100;
+                  const achievementPercent = (achievementPoints / maxPoints) * 100;
 
                   // Max Percent - zero points, Min Percent - max points
                   const colorPosition = Math.min(
                     iconColors.length - 1,
-                    Math.floor(
-                      ((100 - achievementPercent) / 100) * iconColors.length,
-                    ),
+                    Math.floor(((100 - achievementPercent) / 100) * iconColors.length),
                   );
 
-                  const color =
-                    achievementPoints === 0
-                      ? zeroColor
-                      : iconColors[colorPosition];
+                  const color = achievementPoints === 0 ? zeroColor : iconColors[colorPosition];
 
                   return (
                     <Stack
                       key={achievementsKey}
                       sx={{
-                        width: "100%",
-                        borderRadius: "8px",
+                        width: '100%',
+                        borderRadius: '8px',
                         backgroundColor: color.borderColor,
                         border: `1px solid ${color.bgColor}`,
-                        alignItems: "center",
-                        padding: "20px 10px 10px 10px",
-                        justifyContent: "space-between",
-                        gap: "15px",
+                        alignItems: 'center',
+                        padding: '20px 10px 10px 10px',
+                        justifyContent: 'space-between',
+                        gap: '15px',
                       }}
                     >
                       <DynamicIcon
                         name={achievementsIconMap[achievementsKey]}
-                        size={"30px"}
-                        strokeWidth={"1px"}
+                        size={'30px'}
+                        strokeWidth={'1px'}
                         color={color.iconColor}
                       />
 
@@ -395,7 +367,7 @@ export const UserProfileModal = ({
                           variant="caption"
                           align="center"
                           sx={{
-                            textTransform: "uppercase",
+                            textTransform: 'uppercase',
                           }}
                         >
                           {achievementsLabelMap[achievementsKey]}
@@ -408,8 +380,8 @@ export const UserProfileModal = ({
             </Stack>
             <Stack
               sx={{
-                width: "100%",
-                gap: "6px",
+                width: '100%',
+                gap: '6px',
               }}
             >
               <Typography
@@ -418,7 +390,7 @@ export const UserProfileModal = ({
                   opacity: 0.7,
                 }}
               >
-                {i18n._("Chat between you and {userName}", { userName })}
+                {i18n._('Chat between you and {userName}', { userName })}
               </Typography>
               <Stack>
                 <ChatProvider
@@ -426,7 +398,7 @@ export const UserProfileModal = ({
                     spaceId: chatSpace,
                     allowedUserIds: [stat.userId, userId],
                     isPrivate: true,
-                    type: "privateChat",
+                    type: 'privateChat',
                   }}
                 >
                   <ChatSection contextForAiAnalysis="" />

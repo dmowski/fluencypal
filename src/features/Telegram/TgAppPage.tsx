@@ -1,22 +1,22 @@
-"use client";
-import { Button, Stack, Typography } from "@mui/material";
+'use client';
+import { Button, Stack, Typography } from '@mui/material';
 
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { maxContentWidth } from "../Landing/landingSettings";
-import { useEffect, useRef, useState } from "react";
-import { sendTelegramTokenRequest } from "@/app/api/telegram/token/sendTelegramTokenRequest";
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { maxContentWidth } from '../Landing/landingSettings';
+import { useEffect, useRef, useState } from 'react';
+import { sendTelegramTokenRequest } from '@/app/api/telegram/token/sendTelegramTokenRequest';
 import {
   initDataRaw as _initDataRaw,
   initDataState as _initDataState,
   useSignal,
   isTMA,
-} from "@telegram-apps/sdk-react";
-import { useAuth } from "../Auth/useAuth";
-import { usePlan } from "../Plan/usePlan";
-import { useSettings } from "../Settings/useSettings";
-import { useRouter } from "next/navigation";
-import { getUrlStart } from "../Lang/getUrlStart";
-import { useLingui } from "@lingui/react";
+} from '@telegram-apps/sdk-react';
+import { useAuth } from '../Auth/useAuth';
+import { usePlan } from '../Plan/usePlan';
+import { useSettings } from '../Settings/useSettings';
+import { useRouter } from 'next/navigation';
+import { getUrlStart } from '../Lang/getUrlStart';
+import { useLingui } from '@lingui/react';
 
 interface TgAppPageProps {
   lang: SupportedLanguage;
@@ -72,17 +72,17 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
       const res = await sendTelegramTokenRequest({ initData });
       if (res.error) {
         setError(
-          `${res.error.code}: ${res.error.message}${res.error.reason ? ` (${res.error.reason})` : ""}`,
+          `${res.error.code}: ${res.error.message}${res.error.reason ? ` (${res.error.reason})` : ''}`,
         );
       } else {
         const token = res.token;
         const result = await auth.signInWithCustomToken(token);
         if (result.error) {
-          setError(result.error || i18n._("Unknown error during sign-in"));
+          setError(result.error || i18n._('Unknown error during sign-in'));
         }
       }
     } catch (err: any) {
-      setError(err?.message || i18n._("Unknown error"));
+      setError(err?.message || i18n._('Unknown error'));
     } finally {
       setIsTelegramAuthLoading(false);
     }
@@ -91,7 +91,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   useEffect(() => {
     const isTelegramApp = isTMA();
     if (!isTelegramApp) {
-      setError(i18n._("Wrong Link"));
+      setError(i18n._('Wrong Link'));
       return;
     }
   }, []);
@@ -101,8 +101,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
       return;
     }
 
-    const sleep = (ms: number) =>
-      new Promise((resolve) => setTimeout(resolve, ms));
+    const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
     if (raw) {
       isInitializing.current = true;
@@ -110,7 +109,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
         void initToken(raw);
       });
     } else {
-      setError(i18n._("Not running inside Telegram App"));
+      setError(i18n._('Not running inside Telegram App'));
     }
   }, [raw, auth.isAuthorized, auth.loading]);
 
@@ -118,39 +117,39 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
     <Stack sx={{}}>
       <div
         style={{
-          width: "100%",
+          width: '100%',
           margin: 0,
         }}
       >
         <Stack
-          component={"main"}
+          component={'main'}
           sx={{
-            alignItems: "center",
-            width: "100%",
-            color: "#fff",
-            height: "max-content",
-            minHeight: "100dvh",
-            maxHeight: "2000px",
-            position: "relative",
-            paddingTop: "200px",
+            alignItems: 'center',
+            width: '100%',
+            color: '#fff',
+            height: 'max-content',
+            minHeight: '100dvh',
+            maxHeight: '2000px',
+            position: 'relative',
+            paddingTop: '200px',
           }}
         >
           <Stack
             sx={{
-              width: "100%",
+              width: '100%',
               maxWidth: maxContentWidth,
 
-              padding: "30px 20px 250px 20px",
-              gap: "40px",
-              alignItems: "center",
-              boxSizing: "border-box",
+              padding: '30px 20px 250px 20px',
+              gap: '40px',
+              alignItems: 'center',
+              boxSizing: 'border-box',
               opacity: 1,
             }}
           >
             <Stack
-              gap={"30px"}
+              gap={'30px'}
               sx={{
-                width: "100%",
+                width: '100%',
               }}
             >
               <Typography
@@ -160,10 +159,10 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
                 align="center"
               >
                 {auth.loading
-                  ? i18n._("Loading.")
+                  ? i18n._('Loading.')
                   : isTelegramAuthLoading
-                    ? i18n._("Loading..")
-                    : i18n._("Loading...")}
+                    ? i18n._('Loading..')
+                    : i18n._('Loading...')}
               </Typography>
 
               {error && <Typography color="error">❌ {error}</Typography>}
@@ -181,7 +180,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
                     opacity: 0.5,
                   }}
                 >
-                  {i18n._("Refresh")}
+                  {i18n._('Refresh')}
                 </Button>
               )}
             </Stack>

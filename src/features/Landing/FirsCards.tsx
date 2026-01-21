@@ -1,5 +1,5 @@
-import { Stack, Typography } from "@mui/material";
-import { GradientCard } from "../uiKit/Card/GradientCard";
+import { Stack, Typography } from '@mui/material';
+import { GradientCard } from '../uiKit/Card/GradientCard';
 
 interface ShortCard {
   title: string;
@@ -7,16 +7,16 @@ interface ShortCard {
 }
 
 const ShortCard: React.FC<ShortCard> = ({ title, description }) => {
-  const startColor = "rgba(5, 172, 255, 1)";
-  const endColor = "rgba(5, 172, 255, 0.9)";
+  const startColor = 'rgba(5, 172, 255, 1)';
+  const endColor = 'rgba(5, 172, 255, 0.9)';
   return (
     <GradientCard startColor={startColor} endColor={endColor} strokeWidth="1px">
       <Typography
         variant="h5"
-        component={"h2"}
+        component={'h2'}
         sx={{
-          fontWeight: "400",
-          width: "100%",
+          fontWeight: '400',
+          width: '100%',
         }}
       >
         {title}
@@ -37,25 +37,25 @@ export const FirsCards = () => {
   return (
     <Stack
       sx={{
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <Stack
         sx={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
-          padding: "0 30px",
-          boxSizing: "border-box",
-          gap: "25px",
-          width: "100%",
-          justifyContent: "space-between",
-          maxWidth: "1400px",
-          position: "relative",
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr 1fr',
+          padding: '0 30px',
+          boxSizing: 'border-box',
+          gap: '25px',
+          width: '100%',
+          justifyContent: 'space-between',
+          maxWidth: '1400px',
+          position: 'relative',
           zIndex: 1,
-          "@media (max-width: 800px)": {
-            gridTemplateColumns: "1fr",
+          '@media (max-width: 800px)': {
+            gridTemplateColumns: '1fr',
           },
         }}
       >

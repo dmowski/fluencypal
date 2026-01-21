@@ -1,12 +1,12 @@
-import { Stack } from "@mui/material";
-import { Footer } from "../Landing/Footer";
-import { CtaBlock } from "../Landing/ctaBlock";
-import { ListBlogIntro } from "./ListBlogIntro";
-import { ListBlog } from "./ListBlog";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { HeaderStatic } from "../Header/HeaderStatic";
+import { Stack } from '@mui/material';
+import { Footer } from '../Landing/Footer';
+import { CtaBlock } from '../Landing/ctaBlock';
+import { ListBlogIntro } from './ListBlogIntro';
+import { ListBlog } from './ListBlog';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getI18nInstance } from '@/appRouterI18n';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { HeaderStatic } from '../Header/HeaderStatic';
 
 interface BlogsPageProps {
   selectedCategory?: string;
@@ -20,16 +20,16 @@ export const BlogsPage = ({ selectedCategory, lang }: BlogsPageProps) => {
       <HeaderStatic lang={lang} />
       <div
         style={{
-          width: "100%",
+          width: '100%',
           margin: 0,
         }}
       >
         <Stack
           sx={{
-            alignItems: "center",
-            width: "100%",
+            alignItems: 'center',
+            width: '100%',
           }}
-          component={"main"}
+          component={'main'}
         >
           <ListBlogIntro lang={lang} />
           <ListBlog selectedCategoryId={selectedCategory} lang={lang} />

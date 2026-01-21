@@ -1,6 +1,6 @@
-import { HeaderComponentStatic } from "./HeaderComponentStatic";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
+import { HeaderComponentStatic } from './HeaderComponentStatic';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getI18nInstance } from '@/appRouterI18n';
 
 export function HeaderStatic({
   lang,

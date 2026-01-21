@@ -1,7 +1,7 @@
 // useSound.ts
-import { useRef } from "react";
+import { useRef } from 'react';
 
-const basePath = "/sounds/";
+const basePath = '/sounds/';
 
 const soundsMap = {
   win1: `${basePath}mixkit-fantasy-game-success-notification-270.wav`,
@@ -32,7 +32,7 @@ export function useSound(): UseSoundReturn {
     const clonedAudio = audio.cloneNode() as HTMLAudioElement;
     clonedAudio.volume = volume;
     clonedAudio.play().catch((err) => {
-      console.error("Error playing sound:", err);
+      console.error('Error playing sound:', err);
     });
   };
 

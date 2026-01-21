@@ -1,19 +1,15 @@
 // Mock i18n to avoid top-level await issues in test environment
-jest.mock("@/appRouterI18n", () => ({
+jest.mock('@/appRouterI18n', () => ({
   getI18nInstance: () => ({
     _: (s: string) => s,
   }),
 }));
 
-import { getAllInterviews } from "../data";
-import fs from "fs";
-import path from "path";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import type {
-  InterviewData,
-  TechStackSection,
-  TechItem,
-} from "@/features/Case/types";
+import { getAllInterviews } from '../data';
+import fs from 'fs';
+import path from 'path';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import type { InterviewData, TechStackSection, TechItem } from '@/features/Case/types';
 
 // Helper to check basic URL validity
 const isValidUrl = (url: string): boolean => {
@@ -28,17 +24,17 @@ const isValidUrl = (url: string): boolean => {
 // Prefer HEAD to avoid downloading full images; fallback to GET if HEAD not allowed
 const requestUrl = async (url: string): Promise<Response> => {
   try {
-    const res = await fetch(url, { method: "HEAD" });
+    const res = await fetch(url, { method: 'HEAD' });
     if (res.ok) return res;
     // Some CDNs may not support HEAD properly; try GET
-    return await fetch(url, { method: "GET" });
+    return await fetch(url, { method: 'GET' });
   } catch (e) {
     throw e;
   }
 };
 
-describe("Tech stack image URLs", () => {
-  const languages: SupportedLanguage[] = ["en"];
+describe('Tech stack image URLs', () => {
+  const languages: SupportedLanguage[] = ['en'];
 
   languages.forEach((lang) => {
     test(`all tech image URLs are valid and reachable [${lang}]`, async () => {
@@ -50,7 +46,7 @@ describe("Tech stack image URLs", () => {
 
       interviews.forEach((interview: InterviewData) => {
         interview.sections.forEach((section) => {
-          if (section.type === "techStack") {
+          if (section.type === 'techStack') {
             const techSection = section as TechStackSection;
             const groups = techSection.techGroups || [];
             groups.forEach((group) => {
@@ -63,21 +59,17 @@ describe("Tech stack image URLs", () => {
                   return;
                 }
                 // If local asset, ensure it exists in public folder
-                if (url.startsWith("/")) {
-                  const publicPath = path.join(process.cwd(), "public", url);
+                if (url.startsWith('/')) {
+                  const publicPath = path.join(process.cwd(), 'public', url);
                   if (!fs.existsSync(publicPath)) {
-                    failures.push(
-                      `${interview.coreData.id} :: Missing public file: ${publicPath}`,
-                    );
+                    failures.push(`${interview.coreData.id} :: Missing public file: ${publicPath}`);
                   }
                   return; // skip network request for local files
                 }
 
                 // Basic format check for external URLs
                 if (!isValidUrl(url)) {
-                  failures.push(
-                    `${interview.coreData.id} :: Invalid URL format: ${url}`,
-                  );
+                  failures.push(`${interview.coreData.id} :: Invalid URL format: ${url}`);
                   return;
                 }
 
@@ -106,7 +98,7 @@ describe("Tech stack image URLs", () => {
       await Promise.all(requests);
 
       if (failures.length) {
-        const message = failures.join("\n");
+        const message = failures.join('\n');
         throw new Error(`Invalid tech image URLs found:\n${message}`);
       }
     }, 30000);

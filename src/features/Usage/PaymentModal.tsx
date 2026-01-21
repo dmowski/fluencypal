@@ -7,34 +7,34 @@ import {
   Stack,
   TextField,
   Typography,
-} from "@mui/material";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useUsage } from "./useUsage";
-import { useNotifications } from "@toolpad/core/useNotifications";
-import AddCardIcon from "@mui/icons-material/AddCard";
-import { useState } from "react";
-import { useAuth } from "../Auth/useAuth";
-import { sendTelegramRequest } from "../Telegram/sendTextAiRequest";
-import dayjs from "dayjs";
-import { PaymentLogType } from "@/common/usage";
-import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
-import { createStripeCheckout } from "./createStripeCheckout";
-import { CircleCheck } from "lucide-react";
-import { usePathname } from "next/navigation";
-import { supportedLanguages } from "@/features/Lang/lang";
-import { useLingui } from "@lingui/react";
-import { getUrlStart } from "../Lang/getUrlStart";
-import { useCurrency } from "../User/useCurrency";
-import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
-import { pricePerHour } from "@/common/ai";
-import { TRIAL_DAYS } from "@/common/subscription";
+} from '@mui/material';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { useUsage } from './useUsage';
+import { useNotifications } from '@toolpad/core/useNotifications';
+import AddCardIcon from '@mui/icons-material/AddCard';
+import { useState } from 'react';
+import { useAuth } from '../Auth/useAuth';
+import { sendTelegramRequest } from '../Telegram/sendTextAiRequest';
+import dayjs from 'dayjs';
+import { PaymentLogType } from '@/common/usage';
+import AssuredWorkloadIcon from '@mui/icons-material/AssuredWorkload';
+import { createStripeCheckout } from './createStripeCheckout';
+import { CircleCheck } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { supportedLanguages } from '@/features/Lang/lang';
+import { useLingui } from '@lingui/react';
+import { getUrlStart } from '../Lang/getUrlStart';
+import { useCurrency } from '../User/useCurrency';
+import { convertHoursToHumanFormat } from '@/libs/convertHoursToHumanFormat';
+import { pricePerHour } from '@/common/ai';
+import { TRIAL_DAYS } from '@/common/subscription';
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
-  welcome: "Trial balance",
-  user: "Payment",
-  gift: "Gift",
-  "subscription-full-v1": "Subscription (1 month)",
-  "trial-days": `Trial (${TRIAL_DAYS} days)`,
+  welcome: 'Trial balance',
+  user: 'Payment',
+  gift: 'Gift',
+  'subscription-full-v1': 'Subscription (1 month)',
+  'trial-days': `Trial (${TRIAL_DAYS} days)`,
 };
 
 export const PaymentModal = () => {
@@ -42,7 +42,7 @@ export const PaymentModal = () => {
   const auth = useAuth();
   const { i18n } = useLingui();
   const currency = useCurrency();
-  const devEmails = ["dmowski.alex@gmail.com"];
+  const devEmails = ['dmowski.alex@gmail.com'];
   const notifications = useNotifications();
   const [looseRightChecked, setLooseRightChecked] = useState(false);
   const [isTermsChecked, setIsTermsChecked] = useState(false);
@@ -51,11 +51,11 @@ export const PaymentModal = () => {
   const [isShowAmountInput, setIsShowAmountInput] = useState(false);
 
   const pathname = usePathname();
-  const locale = pathname?.split("/")[1] as string;
-  const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
+  const locale = pathname?.split('/')[1] as string;
+  const supportedLang = supportedLanguages.find((l) => l === locale) || 'en';
 
   const sentTgMessage = async (message: string) => {
-    const isDevEmail = devEmails.includes(auth?.userInfo?.email || "");
+    const isDevEmail = devEmails.includes(auth?.userInfo?.email || '');
     if (isDevEmail) {
       return;
     }
@@ -79,9 +79,9 @@ export const PaymentModal = () => {
       await auth.getToken(),
     );
     if (!checkoutInfo.sessionUrl) {
-      console.log("checkoutInfo", checkoutInfo);
-      notifications.show("Error creating payment session", {
-        severity: "error",
+      console.log('checkoutInfo', checkoutInfo);
+      notifications.show('Error creating payment session', {
+        severity: 'error',
       });
       return;
     } else {
@@ -90,33 +90,30 @@ export const PaymentModal = () => {
   };
 
   const onShowAmountInput = () => {
-    const isDevEmail = auth?.userInfo?.email?.includes("dmowski");
+    const isDevEmail = auth?.userInfo?.email?.includes('dmowski');
     if (isDevEmail) {
       return;
     }
-    sentTgMessage("Event: Press on Pay Button");
+    sentTgMessage('Event: Press on Pay Button');
     setIsShowAmountInput(true);
   };
 
   if (!usage.isShowPaymentModal) return null;
 
   return (
-    <CustomModal
-      isOpen={true && auth.isAuthorized}
-      onClose={() => usage.togglePaymentModal(false)}
-    >
+    <CustomModal isOpen={true && auth.isAuthorized} onClose={() => usage.togglePaymentModal(false)}>
       {isShowAmountInput ? (
         <>
           <Stack
             sx={{
-              width: "100%",
-              gap: "30px",
-              alignItems: "flex-start",
+              width: '100%',
+              gap: '30px',
+              alignItems: 'flex-start',
             }}
-            component={"form"}
-            action={"#"}
+            component={'form'}
+            action={'#'}
             onSubmit={(e) => {
-              console.log("e", e);
+              console.log('e', e);
               e.preventDefault();
               clickOnConfirmRequest();
             }}
@@ -137,24 +134,24 @@ export const PaymentModal = () => {
 
             <Stack
               sx={{
-                width: "100%",
-                gap: "20px",
-                flexDirection: "row",
-                "@media (max-width: 600px)": {
-                  flexDirection: "column",
-                  alignItems: "flex-start",
+                width: '100%',
+                gap: '20px',
+                flexDirection: 'row',
+                '@media (max-width: 600px)': {
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
                 },
               }}
             >
               <Stack
                 sx={{
-                  flexDirection: "column",
-                  gap: "5px",
+                  flexDirection: 'column',
+                  gap: '5px',
                 }}
               >
                 <TextField
                   label={i18n._(`Amount hours to buy`)}
-                  value={amountToAdd ? amountToAdd : ""}
+                  value={amountToAdd ? amountToAdd : ''}
                   type="text"
                   onChange={(e) => {
                     if (!e.target.value) {
@@ -170,15 +167,15 @@ export const PaymentModal = () => {
                 />
                 <Stack
                   sx={{
-                    flexDirection: "row",
-                    gap: "10px",
+                    flexDirection: 'row',
+                    gap: '10px',
                   }}
                 >
                   {[1, 2, 5].map((amount) => (
                     <Button
                       key={amount}
                       onClick={() => setAmountToAdd(amount)}
-                      variant={amount == amountToAdd ? "contained" : "outlined"}
+                      variant={amount == amountToAdd ? 'contained' : 'outlined'}
                     >
                       {amount}
                     </Button>
@@ -188,14 +185,14 @@ export const PaymentModal = () => {
 
               <Stack
                 sx={{
-                  width: "100%",
-                  gap: "5px",
+                  width: '100%',
+                  gap: '5px',
                 }}
               >
                 <Typography
                   variant="caption"
                   sx={{
-                    paddingBottom: "10px",
+                    paddingBottom: '10px',
                   }}
                 >
                   <b>{i18n._(`What one hour means?`)}</b>
@@ -208,7 +205,7 @@ export const PaymentModal = () => {
                 <Typography
                   variant="caption"
                   sx={{
-                    paddingBottom: "10px",
+                    paddingBottom: '10px',
                   }}
                 >
                   <b>{i18n._(`How long will my hours last?`)}</b>
@@ -221,7 +218,7 @@ export const PaymentModal = () => {
                 <Typography
                   variant="caption"
                   sx={{
-                    paddingBottom: "10px",
+                    paddingBottom: '10px',
                   }}
                 >
                   <b>{i18n._(`What's included?`)}</b>
@@ -235,13 +232,13 @@ export const PaymentModal = () => {
 
             <Stack
               sx={{
-                width: "100%",
+                width: '100%',
               }}
             >
               <Divider />
               <Stack
                 sx={{
-                  padding: "6px 0",
+                  padding: '6px 0',
                 }}
               >
                 <Typography
@@ -249,22 +246,20 @@ export const PaymentModal = () => {
                     opacity: 0.9,
                   }}
                 >
-                  {i18n._(`Price per one AI hour:`)}{" "}
+                  {i18n._(`Price per one AI hour:`)}{' '}
                   <b>{currency.convertUsdToCurrency(pricePerHour)}</b>
                 </Typography>
 
                 <Typography variant="h5">
-                  {i18n._(`Total:`)}{" "}
-                  <b>
-                    {currency.convertUsdToCurrency(amountToAdd * pricePerHour)}
-                  </b>
+                  {i18n._(`Total:`)}{' '}
+                  <b>{currency.convertUsdToCurrency(amountToAdd * pricePerHour)}</b>
                 </Typography>
               </Stack>
               <Divider />
             </Stack>
 
             <Stack>
-              <Stack gap={"10px"}>
+              <Stack gap={'10px'}>
                 {amountToAdd > 400 && (
                   <Typography variant="caption" color="error">
                     {i18n._(
@@ -273,12 +268,12 @@ export const PaymentModal = () => {
                   </Typography>
                 )}
 
-                <Stack gap={"2px"}>
+                <Stack gap={'2px'}>
                   <FormControlLabel
                     required
                     sx={{
-                      ".MuiFormControlLabel-asterisk": {
-                        color: "#f24",
+                      '.MuiFormControlLabel-asterisk': {
+                        color: '#f24',
                       },
                     }}
                     checked={looseRightChecked}
@@ -295,8 +290,8 @@ export const PaymentModal = () => {
                   <FormControlLabel
                     required
                     sx={{
-                      ".MuiFormControlLabel-asterisk": {
-                        color: "#f24",
+                      '.MuiFormControlLabel-asterisk': {
+                        color: '#f24',
                       },
                     }}
                     checked={isTermsChecked}
@@ -304,13 +299,10 @@ export const PaymentModal = () => {
                     control={<Checkbox />}
                     label={
                       <Typography variant="caption">
-                        {i18n._(`I accept the`)}{" "}
-                        <Link
-                          target="_blank"
-                          href={`${getUrlStart(supportedLang)}terms`}
-                        >
+                        {i18n._(`I accept the`)}{' '}
+                        <Link target="_blank" href={`${getUrlStart(supportedLang)}terms`}>
                           {i18n._(`Terms and Conditions`)}
-                        </Link>{" "}
+                        </Link>{' '}
                         {i18n._(`of the Website operated by Fundacja Rozwoju Przedsiębiorczości "Twój
                         StartUp" with its registered office in Warsaw.`)}
                       </Typography>
@@ -319,8 +311,8 @@ export const PaymentModal = () => {
 
                   <FormControlLabel
                     sx={{
-                      ".MuiFormControlLabel-asterisk": {
-                        color: "#f24",
+                      '.MuiFormControlLabel-asterisk': {
+                        color: '#f24',
                       },
                     }}
                     checked={isMarketingChecked}
@@ -328,9 +320,7 @@ export const PaymentModal = () => {
                     control={<Checkbox />}
                     label={
                       <Typography variant="caption">
-                        {i18n._(
-                          `I want to receive commercial and marketing content`,
-                        )}
+                        {i18n._(`I want to receive commercial and marketing content`)}
                       </Typography>
                     }
                   />
@@ -338,8 +328,8 @@ export const PaymentModal = () => {
 
                 <Stack
                   sx={{
-                    flexDirection: "row",
-                    gap: "10px",
+                    flexDirection: 'row',
+                    gap: '10px',
                   }}
                 >
                   <Button
@@ -348,12 +338,12 @@ export const PaymentModal = () => {
                     color="info"
                     type="submit"
                     sx={{
-                      padding: "10px 25px",
+                      padding: '10px 25px',
                     }}
                     disabled={amountToAdd <= 0 || amountToAdd > 400}
                     variant="contained"
                   >
-                    {i18n._(`Continue to payment`)} |{" "}
+                    {i18n._(`Continue to payment`)} |{' '}
                     {currency.convertUsdToCurrency(amountToAdd * pricePerHour)}
                   </Button>
                   <Button
@@ -374,11 +364,8 @@ export const PaymentModal = () => {
                   Przedsiębiorczości "Twój StartUp". The data will be processed in order to provide
                   the service and for marketing purposes – in the case of consent. We would like to
                   inform you about the possibility of withdrawing your consent. For full information
-                  on data processing and your rights, see the`)}{" "}
-                  <Link
-                    target="_blank"
-                    href={`${getUrlStart(supportedLang)}privacy`}
-                  >
+                  on data processing and your rights, see the`)}{' '}
+                  <Link target="_blank" href={`${getUrlStart(supportedLang)}privacy`}>
                     {i18n._(`privacy policy`)}
                   </Link>
                   .
@@ -391,16 +378,16 @@ export const PaymentModal = () => {
         <>
           <Stack
             sx={{
-              width: "100%",
-              gap: "20px",
-              alignItems: "flex-start",
+              width: '100%',
+              gap: '20px',
+              alignItems: 'flex-start',
             }}
           >
             <Stack
               sx={{
-                width: "100%",
-                gap: "30px",
-                alignItems: "flex-start",
+                width: '100%',
+                gap: '30px',
+                alignItems: 'flex-start',
               }}
             >
               <Stack>
@@ -408,16 +395,16 @@ export const PaymentModal = () => {
                   <>
                     <Stack
                       sx={{
-                        flexDirection: "row",
-                        gap: "10px",
-                        color: "#2ecc71",
-                        alignItems: "center",
+                        flexDirection: 'row',
+                        gap: '10px',
+                        color: '#2ecc71',
+                        alignItems: 'center',
                       }}
                     >
                       <Typography variant="h4" component="h2">
                         {i18n._(`Success!`)}
                       </Typography>
-                      <CircleCheck size={"1.6rem"} />
+                      <CircleCheck size={'1.6rem'} />
                     </Stack>
                     <Typography
                       variant="caption"
@@ -425,9 +412,7 @@ export const PaymentModal = () => {
                         opacity: 0.7,
                       }}
                     >
-                      {i18n._(
-                        `Your payment was successful, but updates might take a few minutes`,
-                      )}
+                      {i18n._(`Your payment was successful, but updates might take a few minutes`)}
                     </Typography>
                   </>
                 ) : (
@@ -441,23 +426,21 @@ export const PaymentModal = () => {
 
               <Stack
                 sx={{
-                  gap: "20px",
-                  width: "100%",
-                  alignItems: "flex-start",
+                  gap: '20px',
+                  width: '100%',
+                  alignItems: 'flex-start',
                 }}
               >
                 <Stack
                   sx={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "center",
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
                   }}
                 >
                   <Stack>
                     <Typography variant="h3">
-                      {convertHoursToHumanFormat(
-                        Math.max(0, usage.balanceHours),
-                      )}
+                      {convertHoursToHumanFormat(Math.max(0, usage.balanceHours))}
                     </Typography>
                     <Typography variant="caption">
                       {i18n._(`Current Balance of AI usage`)}
@@ -477,25 +460,24 @@ export const PaymentModal = () => {
 
               {!isShowAmountInput && (
                 <Stack
-                  gap={"10px"}
+                  gap={'10px'}
                   sx={{
-                    width: "100%",
+                    width: '100%',
                   }}
                 >
                   <Typography
                     variant="body2"
                     sx={{
-                      color: "#c2c2c2",
+                      color: '#c2c2c2',
                     }}
                   >
-                    {i18n._(`Total used:`)}{" "}
-                    <b>{convertHoursToHumanFormat(usage.usedHours)}</b>
+                    {i18n._(`Total used:`)} <b>{convertHoursToHumanFormat(usage.usedHours)}</b>
                   </Typography>
 
                   <Stack
                     sx={{
-                      gap: "10px",
-                      width: "100%",
+                      gap: '10px',
+                      width: '100%',
                     }}
                   >
                     <Typography
@@ -510,7 +492,7 @@ export const PaymentModal = () => {
                       <Typography
                         variant="caption"
                         sx={{
-                          color: "#999",
+                          color: '#999',
                         }}
                       >
                         {i18n._(`Loading...`)}
@@ -521,7 +503,7 @@ export const PaymentModal = () => {
                       <Typography
                         variant="caption"
                         sx={{
-                          color: "#999",
+                          color: '#999',
                         }}
                       >
                         {i18n._(`No payments...`)}
@@ -531,49 +513,42 @@ export const PaymentModal = () => {
                     {usage.paymentLogs && (
                       <Stack
                         sx={{
-                          width: "100%",
-                          gap: "10px",
+                          width: '100%',
+                          gap: '10px',
                         }}
                       >
                         {usage.paymentLogs
                           .sort((a, b) => b.createdAt - a.createdAt)
                           .map((log) => {
-                            const humanDate = dayjs(log.createdAt).format(
-                              "DD MMM YYYY",
-                            );
-                            const humanTime = dayjs(log.createdAt).format(
-                              "HH:mm",
-                            );
+                            const humanDate = dayjs(log.createdAt).format('DD MMM YYYY');
+                            const humanTime = dayjs(log.createdAt).format('HH:mm');
                             return (
                               <Stack
                                 key={log.id}
                                 sx={{
-                                  padding: "10px 15px",
-                                  boxSizing: "border-box",
-                                  display: "flex",
-                                  flexDirection: "row",
-                                  width: "400px",
-                                  maxWidth: "100%",
-                                  justifyContent: "space-between",
-                                  alignItems: "center",
-                                  borderRadius: "10px",
+                                  padding: '10px 15px',
+                                  boxSizing: 'border-box',
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  width: '400px',
+                                  maxWidth: '100%',
+                                  justifyContent: 'space-between',
+                                  alignItems: 'center',
+                                  borderRadius: '10px',
                                   border: `1px solid rgba(255, 255, 255, 0.3)`,
-                                  "@media (max-width: 320px)": {
-                                    flexDirection: "column",
-                                    alignItems: "flex-start",
-                                    gap: "20px",
+                                  '@media (max-width: 320px)': {
+                                    flexDirection: 'column',
+                                    alignItems: 'flex-start',
+                                    gap: '20px',
                                   },
                                 }}
                               >
                                 <Stack>
                                   <Typography variant="h6">
-                                    {log.currency.toUpperCase()}{" "}
-                                    {log.amountAdded}
+                                    {log.currency.toUpperCase()} {log.amountAdded}
                                   </Typography>
                                   <Typography variant="body2">
-                                    {convertHoursToHumanFormat(
-                                      log.amountOfHours,
-                                    )}
+                                    {convertHoursToHumanFormat(log.amountOfHours)}
                                   </Typography>
                                   <Typography
                                     variant="caption"
@@ -587,23 +562,17 @@ export const PaymentModal = () => {
 
                                 <Stack
                                   sx={{
-                                    alignItems: "flex-end",
-                                    "@media (max-width: 320px)": {
-                                      alignItems: "flex-start",
+                                    alignItems: 'flex-end',
+                                    '@media (max-width: 320px)': {
+                                      alignItems: 'flex-start',
                                     },
                                   }}
                                 >
-                                  <Typography variant="caption">
-                                    {humanTime}
-                                  </Typography>
-                                  <Typography variant="body2">
-                                    {humanDate}
-                                  </Typography>
+                                  <Typography variant="caption">{humanTime}</Typography>
+                                  <Typography variant="body2">{humanDate}</Typography>
                                   {log.receiptUrl && (
                                     <Link href={log.receiptUrl} target="_blank">
-                                      <Typography variant="body2">
-                                        Receipt
-                                      </Typography>
+                                      <Typography variant="body2">Receipt</Typography>
                                     </Link>
                                   )}
                                 </Stack>

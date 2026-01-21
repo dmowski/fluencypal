@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useCurrency } from "../../User/useCurrency";
+import React from 'react';
+import { useCurrency } from '../../User/useCurrency';
 
 interface PriceDisplayProps {
   amountInUsd: number;

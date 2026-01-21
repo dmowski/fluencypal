@@ -1,5 +1,5 @@
-import { useGame } from "../Game/useGame";
-import { useUsage } from "./useUsage";
+import { useGame } from '../Game/useGame';
+import { useUsage } from './useUsage';
 
 export const useAccess = () => {
   const game = useGame();

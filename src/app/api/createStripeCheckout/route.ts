@@ -1,17 +1,14 @@
-import { supportedLanguages } from "@/features/Lang/lang";
-import {
-  StripeCreateCheckoutRequest,
-  StripeCreateCheckoutResponse,
-} from "@/common/requests";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
-import Stripe from "stripe";
-import { validateAuthToken } from "../config/firebase";
-import { stripeConfig } from "../payment/config";
-import { pricePerHour } from "@/common/ai";
-import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD } from "@/common/subscription";
+import { supportedLanguages } from '@/features/Lang/lang';
+import { StripeCreateCheckoutRequest, StripeCreateCheckoutResponse } from '@/common/requests';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
+import Stripe from 'stripe';
+import { validateAuthToken } from '../config/firebase';
+import { stripeConfig } from '../payment/config';
+import { pricePerHour } from '@/common/ai';
+import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD } from '@/common/subscription';
 
 async function getConversionRate(toCurrency: string): Promise<number> {
-  const isToCurrencyIsUsd = toCurrency.toLowerCase() === "usd";
+  const isToCurrencyIsUsd = toCurrency.toLowerCase() === 'usd';
   if (isToCurrencyIsUsd) {
     return 1;
   }
@@ -21,7 +18,7 @@ async function getConversionRate(toCurrency: string): Promise<number> {
   );
 
   if (!res.ok) {
-    throw new Error("Failed to fetch conversion rate");
+    throw new Error('Failed to fetch conversion rate');
   }
 
   const data = await res.json();
@@ -38,33 +35,32 @@ async function getConversionRate(toCurrency: string): Promise<number> {
 export async function POST(request: Request) {
   try {
     const stripeKey = stripeConfig.STRIPE_SECRET_KEY;
-    const siteUrl = request.headers.get("origin");
+    const siteUrl = request.headers.get('origin');
 
     const userInfo = await validateAuthToken(request);
     if (!userInfo.uid) {
-      throw new Error("User is not authenticated");
+      throw new Error('User is not authenticated');
     }
 
     if (!siteUrl) {
-      throw new Error("Origin header is not set");
+      throw new Error('Origin header is not set');
     }
     if (!stripeKey) {
-      throw new Error("Stripe API key is not set");
+      throw new Error('Stripe API key is not set');
     }
     const stripe = new Stripe(stripeKey);
     const requestData = (await request.json()) as StripeCreateCheckoutRequest;
     const { userId, currency } = requestData;
-    const supportedLang =
-      supportedLanguages.find((l) => l === requestData.languageCode) || "en";
+    const supportedLang = supportedLanguages.find((l) => l === requestData.languageCode) || 'en';
     const rate = await getConversionRate(currency.toLowerCase());
 
-    if ("amountOfHours" in requestData) {
+    if ('amountOfHours' in requestData) {
       const amountOfHours = requestData.amountOfHours;
       const pricePerHourInCurrency = pricePerHour * rate;
       if (amountOfHours > 400) {
         const response: StripeCreateCheckoutResponse = {
           sessionUrl: null,
-          error: "Amount is too large",
+          error: 'Amount is too large',
         };
         return Response.json(response);
       }
@@ -72,7 +68,7 @@ export async function POST(request: Request) {
       if (amountOfHours < 0) {
         const response: StripeCreateCheckoutResponse = {
           sessionUrl: null,
-          error: "Amount is too small",
+          error: 'Amount is too small',
         };
         return Response.json(response);
       }
@@ -83,9 +79,9 @@ export async function POST(request: Request) {
         line_items: [
           {
             price_data: {
-              currency: currency.toLowerCase() || "pln",
+              currency: currency.toLowerCase() || 'pln',
               product_data: {
-                name: "Balance Top-up",
+                name: 'Balance Top-up',
                 description: `Add ${amountOfHours} hours to your account balance`,
               },
               unit_amount: money,
@@ -93,13 +89,13 @@ export async function POST(request: Request) {
             quantity: 1,
           },
         ],
-        mode: "payment",
+        mode: 'payment',
         success_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true&paymentSuccess=true&session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true&paymentCanceled=true`,
         metadata: {
           userId,
-          termsAccepted: "true",
-          immediateServiceConsent: "true",
+          termsAccepted: 'true',
+          immediateServiceConsent: 'true',
           amountOfHours,
         },
       });
@@ -117,7 +113,7 @@ export async function POST(request: Request) {
       if (months > 34 || days > 120) {
         const response: StripeCreateCheckoutResponse = {
           sessionUrl: null,
-          error: "Count is too large",
+          error: 'Count is too large',
         };
         return Response.json(response);
       }
@@ -125,21 +121,15 @@ export async function POST(request: Request) {
       if (months < 0 && days < 0) {
         const response: StripeCreateCheckoutResponse = {
           sessionUrl: null,
-          error: "Count is too small",
+          error: 'Count is too small',
         };
         return Response.json(response);
       }
 
       // Calculate total price
-      const totalMonthStripeMoney = Math.round(
-        PRICE_PER_MONTH_USD * rate * months * 100,
-      );
-      const totalDayStripeMoney = Math.round(
-        PRICE_PER_DAY_USD * rate * days * 100,
-      );
-      const totalStripeMoney = days
-        ? totalDayStripeMoney
-        : totalMonthStripeMoney;
+      const totalMonthStripeMoney = Math.round(PRICE_PER_MONTH_USD * rate * months * 100);
+      const totalDayStripeMoney = Math.round(PRICE_PER_DAY_USD * rate * days * 100);
+      const totalStripeMoney = days ? totalDayStripeMoney : totalMonthStripeMoney;
 
       const description = days
         ? `Add ${days} day(s) to your account balance`
@@ -149,9 +139,9 @@ export async function POST(request: Request) {
         line_items: [
           {
             price_data: {
-              currency: currency.toLowerCase() || "pln",
+              currency: currency.toLowerCase() || 'pln',
               product_data: {
-                name: "Full Access",
+                name: 'Full Access',
                 description: description,
               },
               unit_amount: totalStripeMoney,
@@ -159,13 +149,13 @@ export async function POST(request: Request) {
             quantity: 1,
           },
         ],
-        mode: "payment",
+        mode: 'payment',
         success_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true&paymentSuccess=true&session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true&paymentCanceled=true`,
         metadata: {
           userId,
-          termsAccepted: "true",
-          immediateServiceConsent: "true",
+          termsAccepted: 'true',
+          immediateServiceConsent: 'true',
           amountOfHours: 0,
           amountOfMonths: months,
           amountOfDays: days,

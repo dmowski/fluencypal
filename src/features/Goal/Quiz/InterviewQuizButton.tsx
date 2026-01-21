@@ -1,15 +1,15 @@
-import React from "react";
-import { Button, Stack } from "@mui/material";
-import { ArrowRight } from "lucide-react";
+import React from 'react';
+import { Button, Stack } from '@mui/material';
+import { ArrowRight } from 'lucide-react';
 
 export const InterviewQuizButton: React.FC<{
   onClick?: () => void;
-  color: "primary" | "error" | "success";
+  color: 'primary' | 'error' | 'success';
   disabled?: boolean;
   title: string;
   endIcon?: React.ReactNode;
   startIcon?: React.ReactNode;
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
 
   secondButtonTitle?: string;
   onSecondButtonClick?: () => void;
@@ -33,12 +33,12 @@ export const InterviewQuizButton: React.FC<{
   return (
     <Stack
       sx={{
-        paddingTop: "20px",
-        paddingBottom: "40px",
-        flexDirection: "row",
-        gap: "16px",
-        justifyContent: "flex-start",
-        flexWrap: "wrap",
+        paddingTop: '20px',
+        paddingBottom: '40px',
+        flexDirection: 'row',
+        gap: '16px',
+        justifyContent: 'flex-start',
+        flexWrap: 'wrap',
       }}
     >
       <Button
@@ -50,11 +50,11 @@ export const InterviewQuizButton: React.FC<{
         size="large"
         sx={{
           width: `max-content`,
-          minWidth: "200px",
-          paddingTop: "12px",
-          paddingBottom: "12px",
-          borderRadius: "128px",
-          textAlign: "left",
+          minWidth: '200px',
+          paddingTop: '12px',
+          paddingBottom: '12px',
+          borderRadius: '128px',
+          textAlign: 'left',
         }}
         fullWidth
         endIcon={endIcon || <ArrowRight />}
@@ -72,12 +72,12 @@ export const InterviewQuizButton: React.FC<{
           disabled={secondButtonDisabled}
           sx={{
             width: `max-content`,
-            paddingTop: "12px",
-            paddingLeft: "24px",
-            paddingRight: "24px",
-            paddingBottom: "12px",
-            borderRadius: "128px",
-            textAlign: "left",
+            paddingTop: '12px',
+            paddingLeft: '24px',
+            paddingRight: '24px',
+            paddingBottom: '12px',
+            borderRadius: '128px',
+            textAlign: 'left',
           }}
           fullWidth
           endIcon={secondButtonEndIcon}

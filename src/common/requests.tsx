@@ -1,6 +1,6 @@
-import { TextAiModel, TextUsageEvent } from "./ai";
-import { SupportedLanguage } from "../features/Lang/lang";
-import { UsageLog } from "./usage";
+import { TextAiModel, TextUsageEvent } from './ai';
+import { SupportedLanguage } from '../features/Lang/lang';
+import { UsageLog } from './usage';
 
 export interface AddUsageLogRequest {
   usageLog: UsageLog;

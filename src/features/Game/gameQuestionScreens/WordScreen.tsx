@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { GameQuestionScreenProps } from "./type";
-import { Button, Stack, Typography } from "@mui/material";
-import { Check, Loader } from "lucide-react";
-import { FinishButton, TaskTitle } from "./gameCoreUI";
-import { useGame } from "../useGame";
+import { useEffect, useState } from 'react';
+import { GameQuestionScreenProps } from './type';
+import { Button, Stack, Typography } from '@mui/material';
+import { Check, Loader } from 'lucide-react';
+import { FinishButton, TaskTitle } from './gameCoreUI';
+import { useGame } from '../useGame';
 
 export const WordScreen = ({}: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -24,24 +24,24 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
     setIsShowStats(true);
-    const { isCorrect } = await game.submitAnswer(question?.id || "", answer);
+    const { isCorrect } = await game.submitAnswer(question?.id || '', answer);
     setIsSubmitting(false);
     setIsCorrect(isCorrect);
   };
 
-  if (question?.type !== "translate") return <></>;
+  if (question?.type !== 'translate') return <></>;
   return (
     <Stack
       sx={{
-        gap: "25px",
-        maxWidth: "600px",
-        width: "100%",
-        padding: "0px 10px",
+        gap: '25px',
+        maxWidth: '600px',
+        width: '100%',
+        padding: '0px 10px',
       }}
     >
       <Stack
         sx={{
-          gap: "10px",
+          gap: '10px',
         }}
       >
         <TaskTitle />
@@ -49,8 +49,8 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
         <Typography
           variant="h4"
           sx={{
-            fontSize: "2.5rem",
-            width: "100%",
+            fontSize: '2.5rem',
+            width: '100%',
           }}
           className="decor-text"
         >
@@ -60,26 +60,22 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
 
       <Stack
         sx={{
-          flexDirection: "row",
-          flexWrap: "wrap",
-          gap: "10px",
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: '10px',
         }}
       >
         {question.options.map((answer, index) => {
           const isCorrectOption =
-            question.type === "translate" &&
-            isCorrect &&
-            selectedAnswer === answer;
+            question.type === 'translate' && isCorrect && selectedAnswer === answer;
 
           const isInCorrectOption =
-            question.type === "translate" &&
-            isCorrect === false &&
-            selectedAnswer === answer;
+            question.type === 'translate' && isCorrect === false && selectedAnswer === answer;
 
           return (
             <Stack key={index} sx={{}}>
               <Button
-                variant={selectedAnswer === answer ? "contained" : "outlined"}
+                variant={selectedAnswer === answer ? 'contained' : 'outlined'}
                 startIcon={
                   isCorrectOption ? (
                     <Check />
@@ -87,13 +83,7 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
                     <Loader />
                   ) : null
                 }
-                color={
-                  isCorrectOption
-                    ? "success"
-                    : isInCorrectOption
-                      ? "error"
-                      : "primary"
-                }
+                color={isCorrectOption ? 'success' : isInCorrectOption ? 'error' : 'primary'}
                 onClick={() => {
                   if (isCorrect !== null) {
                     return;
@@ -111,15 +101,11 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
 
       <Stack
         sx={{
-          width: "100%",
-          gap: "5px",
+          width: '100%',
+          gap: '5px',
         }}
       >
-        <FinishButton
-          isCorrect={isCorrect}
-          setIsCorrect={setIsCorrect}
-          isShowStats={isShowStats}
-        />
+        <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} isShowStats={isShowStats} />
       </Stack>
     </Stack>
   );

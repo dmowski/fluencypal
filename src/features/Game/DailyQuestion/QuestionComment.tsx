@@ -1,17 +1,17 @@
-import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { useLingui } from "@lingui/react";
-import { useMemo } from "react";
-import dayjs from "dayjs";
-import { Eye, EyeOff } from "lucide-react";
-import { useAuth } from "@/features/Auth/useAuth";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { db } from "@/features/Firebase/firebaseDb";
-import { DailyQuestionAnswer, DailyQuestionLike, LikeType } from "./types";
-import { useGame } from "../useGame";
-import { deleteDoc, doc, setDoc } from "firebase/firestore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { Avatar } from "../Avatar";
+import { Button, IconButton, Stack, Typography } from '@mui/material';
+import { useLingui } from '@lingui/react';
+import { useMemo } from 'react';
+import dayjs from 'dayjs';
+import { Eye, EyeOff } from 'lucide-react';
+import { useAuth } from '@/features/Auth/useAuth';
+import { useCollection } from 'react-firebase-hooks/firestore';
+import { db } from '@/features/Firebase/firebaseDb';
+import { DailyQuestionAnswer, DailyQuestionLike, LikeType } from './types';
+import { useGame } from '../useGame';
+import { deleteDoc, doc, setDoc } from 'firebase/firestore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { Avatar } from '../Avatar';
 
 export const QuestionComment = ({
   answerDocId,
@@ -30,15 +30,11 @@ export const QuestionComment = ({
     auth.uid || undefined,
     answerDocId,
   );
-  const [likesSnapshot, loadingLikes, errorLikes] =
-    useCollection(likesCollectionRef);
+  const [likesSnapshot, loadingLikes, errorLikes] = useCollection(likesCollectionRef);
 
   const myLike = useMemo(() => {
     if (!likesSnapshot || !auth.uid) return null;
-    return (
-      likesSnapshot.docs.find((doc) => doc.data().likeUserId === auth.uid) ||
-      null
-    );
+    return likesSnapshot.docs.find((doc) => doc.data().likeUserId === auth.uid) || null;
   }, [likesSnapshot, auth.uid]);
 
   const likeCount = useMemo(() => {
@@ -72,26 +68,26 @@ export const QuestionComment = ({
   return (
     <Stack
       sx={{
-        gap: "10px",
-        backgroundColor: "rgba(255, 255, 255, 0.05)",
-        padding: "18px 18px",
-        borderRadius: "8px",
+        gap: '10px',
+        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        padding: '18px 18px',
+        borderRadius: '8px',
       }}
     >
       <Stack
         sx={{
-          flexDirection: "row",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-          gap: "10px",
-          flexWrap: "wrap",
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+          justifyContent: 'space-between',
+          gap: '10px',
+          flexWrap: 'wrap',
         }}
       >
         <Stack
           sx={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "10px",
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '10px',
           }}
         >
           <Stack sx={{}}>
@@ -105,7 +101,7 @@ export const QuestionComment = ({
           </Stack>
           <Stack>
             <Typography variant="body2" sx={{ fontWeight: 600 }}>
-              {game.userNames?.[answer.authorUserId] || "Unknown User"}
+              {game.userNames?.[answer.authorUserId] || 'Unknown User'}
             </Typography>
             <Typography variant="caption" color="text.secondary">
               {dayjs(answer.updatedAtIso).fromNow()}
@@ -116,49 +112,39 @@ export const QuestionComment = ({
         {isMyAnswer ? (
           <Stack
             sx={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: "10px",
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '10px',
             }}
           >
-            <Typography variant="caption">
-              {i18n._("This is your answer")}
-            </Typography>
+            <Typography variant="caption">{i18n._('This is your answer')}</Typography>
             <Stack
               sx={{
-                backgroundColor: answer.isPublished
-                  ? "#4caf50"
-                  : "rgba(255, 255, 255, 0.2)",
-                padding: "2px 10px",
-                borderRadius: "6px",
-                flexDirection: "row",
-                alignItems: "center",
-                gap: "6px",
+                backgroundColor: answer.isPublished ? '#4caf50' : 'rgba(255, 255, 255, 0.2)',
+                padding: '2px 10px',
+                borderRadius: '6px',
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: '6px',
               }}
             >
-              {answer.isPublished ? (
-                <Eye size={"12px"} />
-              ) : (
-                <EyeOff size={"12px"} />
-              )}
+              {answer.isPublished ? <Eye size={'12px'} /> : <EyeOff size={'12px'} />}
               <Typography
                 variant="caption"
                 sx={{
-                  textTransform: "uppercase",
+                  textTransform: 'uppercase',
                 }}
               >
-                {answer.isPublished
-                  ? i18n._("published")
-                  : i18n._("not published")}{" "}
+                {answer.isPublished ? i18n._('published') : i18n._('not published')}{' '}
               </Typography>
             </Stack>
           </Stack>
         ) : (
           <Stack
             sx={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: "5px",
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '5px',
             }}
           >
             <Typography
@@ -175,17 +161,14 @@ export const QuestionComment = ({
                 if (myLike) {
                   removeMyLike();
                 } else {
-                  addMyLike("like");
+                  addMyLike('like');
                 }
               }}
             >
               {myLike ? (
                 <FavoriteIcon color="error" fontSize="small" />
               ) : (
-                <FavoriteBorderOutlinedIcon
-                  style={{ opacity: 0.5 }}
-                  fontSize="small"
-                />
+                <FavoriteBorderOutlinedIcon style={{ opacity: 0.5 }} fontSize="small" />
               )}
             </IconButton>
           </Stack>
@@ -194,27 +177,19 @@ export const QuestionComment = ({
       <Typography variant="body2">{answer.transcript}</Typography>
       <Stack
         sx={{
-          flexDirection: "row",
+          flexDirection: 'row',
         }}
       >
         {isMyAnswer ? (
           <>
             <Button
-              startIcon={
-                answer.isPublished ? (
-                  <EyeOff size={"15px"} />
-                ) : (
-                  <Eye size={"15px"} />
-                )
-              }
+              startIcon={answer.isPublished ? <EyeOff size={'15px'} /> : <Eye size={'15px'} />}
               onClick={() => {
                 togglePublish();
               }}
-              variant={answer.isPublished ? "outlined" : "contained"}
+              variant={answer.isPublished ? 'outlined' : 'contained'}
             >
-              {answer.isPublished
-                ? i18n._("Unpublish")
-                : i18n._("Publish an answer")}
+              {answer.isPublished ? i18n._('Unpublish') : i18n._('Publish an answer')}
             </Button>
           </>
         ) : (

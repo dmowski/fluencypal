@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   createContext,
   useContext,
@@ -8,11 +8,11 @@ import {
   useState,
   useRef,
   useEffect,
-} from "react";
-import { useAuth } from "../Auth/useAuth";
-import { deleteDoc, doc, setDoc } from "firebase/firestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { db } from "../Firebase/firebaseDb";
+} from 'react';
+import { useAuth } from '../Auth/useAuth';
+import { deleteDoc, doc, setDoc } from 'firebase/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { db } from '../Firebase/firebaseDb';
 import {
   GoalElementProgress,
   ConversationResult,
@@ -20,17 +20,14 @@ import {
   PlanElement,
   PlanElementMode,
   GoalElementInfo,
-} from "./types";
-import { useSettings } from "../Settings/useSettings";
-import { ChatMessage } from "@/common/conversation";
-import { useTextAi } from "../Ai/useTextAi";
-import {
-  fullEnglishLanguageName,
-  SupportedLanguage,
-} from "@/features/Lang/lang";
-import { GoalQuiz } from "@/app/api/goal/types";
-import { uniq } from "@/libs/uniq";
-import { useUrlState } from "../Url/useUrlParam";
+} from './types';
+import { useSettings } from '../Settings/useSettings';
+import { ChatMessage } from '@/common/conversation';
+import { useTextAi } from '../Ai/useTextAi';
+import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang';
+import { GoalQuiz } from '@/app/api/goal/types';
+import { uniq } from '@/libs/uniq';
+import { useUrlState } from '../Url/useUrlParam';
 
 const appActivities = `The app supports the following activity types:
 * words: Practice vocabulary related to a specific topic
@@ -92,10 +89,7 @@ interface PlanContextType {
   isCraftingError: boolean;
   setActiveGoal: (goalId: string) => Promise<void>;
 
-  finishGoalElement: (
-    goalElementId: string,
-    results: ConversationResult,
-  ) => Promise<void>;
+  finishGoalElement: (goalElementId: string, results: ConversationResult) => Promise<void>;
   startGoalElement: (goalElementId: string) => Promise<void>;
 
   generateMoreElements: () => Promise<void>;
@@ -123,24 +117,22 @@ function useProvidePlan(): PlanContextType {
 
   const addGoalPlan = async (goalPlan: GoalPlan) => {
     if (!goalsCollectionRef) {
-      throw new Error("goalsCollectionRef ref is not defined");
+      throw new Error('goalsCollectionRef ref is not defined');
     }
     const docRef = doc(goalsCollectionRef, goalPlan.id);
     await setDoc(docRef, goalPlan, { merge: true });
   };
 
-  const generateGoalTitle = async (
-    input: GenerateGoalProps,
-  ): Promise<string> => {
+  const generateGoalTitle = async (input: GenerateGoalProps): Promise<string> => {
     const fullLangName = fullEnglishLanguageName[input.languageCode];
     const systemMessage = `
-You are professional ${fullLangName || "English"} Teacher. 
+You are professional ${fullLangName || 'English'} Teacher. 
 Here is student/teacher conversation. Based on student's lever and their goal, formulate learning goal. 
 
 Goal should me simple and clear. Max 3-4 words.
 Example: Pass Job Interview
 Return only goal without any wrapper phrases, because your response will be used as title on UI.
-Use ${fullLangName || "English"} language for generating goal.
+Use ${fullLangName || 'English'} language for generating goal.
 If you can't formulate goal, return "General Practice" as goal.
 `;
 
@@ -149,7 +141,7 @@ If you can't formulate goal, return "General Practice" as goal.
 Conversation:
 ${input.conversationMessages.map((message) => {
   const isBot = message.isBot;
-  const author = isBot ? "Teacher" : "Student";
+  const author = isBot ? 'Teacher' : 'Student';
   const text = message.text;
   return `${author}: ${text}`;
 })}
@@ -158,16 +150,14 @@ ${input.conversationMessages.map((message) => {
     const goal = await textAi.generate({
       systemMessage,
       userMessage,
-      model: "gpt-4o",
+      model: 'gpt-4o',
       languageCode: input.languageCode,
     });
 
     return goal;
   };
 
-  const generateElements = async (
-    input: GenerateGoalProps,
-  ): Promise<PlanElement[]> => {
+  const generateElements = async (input: GenerateGoalProps): Promise<PlanElement[]> => {
     const fullLangName = fullEnglishLanguageName[input.languageCode];
 
     const systemMessageTop =
@@ -191,7 +181,7 @@ The plan should include at least 8 elements and must cover each type of activity
     const userMessage = `Conversation:
 ${input.conversationMessages.map((message) => {
   const isBot = message.isBot;
-  const author = isBot ? "Teacher" : "Student";
+  const author = isBot ? 'Teacher' : 'Student';
   const text = message.text;
   return `${author}: ${text}`;
 })}
@@ -249,7 +239,7 @@ ${JSON.stringify(input.progress, null, 2)}
     const parsedElements = await textAi.generateJson<AiGeneratedElement[]>({
       systemMessage: input.systemMessage,
       userMessage: input.userMessage,
-      model: "gpt-4o",
+      model: 'gpt-4o',
       languageCode: input.languageCode,
       attempts: 4,
     });
@@ -261,43 +251,41 @@ ${JSON.stringify(input.progress, null, 2)}
       details: string;
     }
 
-    const formattedElements: PlanElement[] = parsedElements.map(
-      (element, index) => {
-        const type = `${element?.type || ""}`.toLowerCase();
-        const elementMode: PlanElementMode = type.includes("conversation")
-          ? "conversation"
-          : type.includes("words")
-            ? "words"
-            : type.includes("play")
-              ? "play"
-              : type.includes("rule")
-                ? "rule"
-                : "conversation";
+    const formattedElements: PlanElement[] = parsedElements.map((element, index) => {
+      const type = `${element?.type || ''}`.toLowerCase();
+      const elementMode: PlanElementMode = type.includes('conversation')
+        ? 'conversation'
+        : type.includes('words')
+          ? 'words'
+          : type.includes('play')
+            ? 'play'
+            : type.includes('rule')
+              ? 'rule'
+              : 'conversation';
 
-        const randomId = `${index}_${elementMode}_${Math.random().toString(36).substring(2, 15)}`;
-        const details = `${element?.details || ""}`;
-        const description = `${element?.description || ""}`;
-        const title = `${element?.title || ""}`;
+      const randomId = `${index}_${elementMode}_${Math.random().toString(36).substring(2, 15)}`;
+      const details = `${element?.details || ''}`;
+      const description = `${element?.description || ''}`;
+      const title = `${element?.title || ''}`;
 
-        const planElement: PlanElement = {
-          id: randomId,
-          title: title,
-          subTitle: "",
-          details: details,
-          mode: elementMode,
-          description: description,
-          startCount: 0,
-        };
-        return planElement;
-      },
-    );
+      const planElement: PlanElement = {
+        id: randomId,
+        title: title,
+        subTitle: '',
+        details: details,
+        mode: elementMode,
+        description: description,
+        startCount: 0,
+      };
+      return planElement;
+    });
 
     return formattedElements;
   };
 
   const generateGoal = async (input: GenerateGoalProps): Promise<GoalPlan> => {
     if (!goalsCollectionRef) {
-      throw new Error("goalsCollectionRef ref is not defined");
+      throw new Error('goalsCollectionRef ref is not defined');
     }
     setIsCraftingGoal(true);
     setIsCraftingError(false);
@@ -325,7 +313,7 @@ ${JSON.stringify(input.progress, null, 2)}
   const setActiveGoal = async (goalId: string) => {
     // Just update updatedAt to make it the latest
     if (!goalsCollectionRef) {
-      throw new Error("goalsCollectionRef ref is not defined");
+      throw new Error('goalsCollectionRef ref is not defined');
     }
     const docRef = doc(goalsCollectionRef, goalId);
     await setDoc(docRef, { updatedAt: Date.now() }, { merge: true });
@@ -361,7 +349,7 @@ ${JSON.stringify(input.progress, null, 2)}
 
   const deleteGoals = async () => {
     if (!goalsCollectionRef || !auth.uid) {
-      throw new Error("goalsCollectionRef ref is not defined");
+      throw new Error('goalsCollectionRef ref is not defined');
     }
     if (!activeGoal?.id) return;
     await deleteDoc(doc(goalsCollectionRef, activeGoal.id));
@@ -369,14 +357,12 @@ ${JSON.stringify(input.progress, null, 2)}
 
   const updateActiveGoalProgress = async (data: GoalElementProgress) => {
     if (!goalsCollectionRef || !auth.uid) {
-      throw new Error("goalsCollectionRef ref is not defined");
+      throw new Error('goalsCollectionRef ref is not defined');
     }
     if (!activeGoal?.id) return;
 
     const existingProgress = activeGoal.progress || [];
-    const cleanProgress = existingProgress.filter(
-      (p) => p.elementId !== data.elementId,
-    );
+    const cleanProgress = existingProgress.filter((p) => p.elementId !== data.elementId);
     cleanProgress.push(data);
 
     const docRef = doc(goalsCollectionRef, activeGoal.id);
@@ -389,19 +375,13 @@ ${JSON.stringify(input.progress, null, 2)}
 
   const startGoalElement = async (goalElementId: string) => {
     if (!activeGoal) return;
-    const elementNotFound = !activeGoal.elements.find(
-      (el) => el.id === goalElementId,
-    );
+    const elementNotFound = !activeGoal.elements.find((el) => el.id === goalElementId);
     if (elementNotFound) {
-      throw new Error(
-        "startGoalElement error: Goal element not found in active goal",
-      );
+      throw new Error('startGoalElement error: Goal element not found in active goal');
     }
 
     const existingProgress = activeGoal.progress || [];
-    const elementProgress = existingProgress.find(
-      (p) => p.elementId === goalElementId,
-    );
+    const elementProgress = existingProgress.find((p) => p.elementId === goalElementId);
 
     const newProgress: GoalElementProgress = {
       elementId: goalElementId,
@@ -409,37 +389,28 @@ ${JSON.stringify(input.progress, null, 2)}
       completedAtIso: null,
       results: null,
       ...elementProgress,
-      state: "in_progress",
+      state: 'in_progress',
     };
     await updateActiveGoalProgress(newProgress);
   };
 
-  const finishGoalElement = async (
-    goalElementId: string,
-    results: ConversationResult,
-  ) => {
+  const finishGoalElement = async (goalElementId: string, results: ConversationResult) => {
     if (!activeGoal) return;
 
-    const elementNotFound = !activeGoal.elements.find(
-      (el) => el.id === goalElementId,
-    );
+    const elementNotFound = !activeGoal.elements.find((el) => el.id === goalElementId);
     if (elementNotFound) {
-      throw new Error(
-        "startGoalElement error: Goal element not found in active goal",
-      );
+      throw new Error('startGoalElement error: Goal element not found in active goal');
     }
 
     const existingProgress = activeGoal.progress || [];
-    const elementProgress = existingProgress.find(
-      (p) => p.elementId === goalElementId,
-    );
+    const elementProgress = existingProgress.find((p) => p.elementId === goalElementId);
 
     const newProgress: GoalElementProgress = {
       elementId: goalElementId,
       startedAtIso: elementProgress?.startedAtIso || new Date().toISOString(),
       completedAtIso: new Date().toISOString(),
       results: results,
-      state: "completed",
+      state: 'completed',
     };
     await updateActiveGoalProgress(newProgress);
   };
@@ -448,9 +419,7 @@ ${JSON.stringify(input.progress, null, 2)}
     if (!activeGoal) return false;
     const existingProgress = activeGoal.progress || [];
     const completedElements = uniq(
-      existingProgress
-        .filter((p) => p.state === "completed")
-        .map((p) => p.elementId),
+      existingProgress.filter((p) => p.state === 'completed').map((p) => p.elementId),
     );
 
     return completedElements.length >= activeGoal.elements.length - 3;
@@ -462,13 +431,13 @@ ${JSON.stringify(input.progress, null, 2)}
     if (isGeneratingExtenderGoal.current) return;
     if (!activeGoal || !goalsCollectionRef) return;
 
-    console.log("Generating extended goal elements...");
+    console.log('Generating extended goal elements...');
     const newElements = await generateExtenderElements({
       languageCode: activeGoal.languageCode,
       existingElements: activeGoal.elements,
       progress: activeGoal.progress || [],
     });
-    console.log("New elements", newElements);
+    console.log('New elements', newElements);
 
     const updatedElements = [...activeGoal.elements, ...newElements];
     const docRef = doc(goalsCollectionRef, activeGoal.id);
@@ -487,10 +456,7 @@ ${JSON.stringify(input.progress, null, 2)}
     }
   }, [isNeededToExtendActiveGoal]);
 
-  const increaseStartCount = async (
-    plan: GoalPlan,
-    goalElement: PlanElement,
-  ) => {
+  const increaseStartCount = async (plan: GoalPlan, goalElement: PlanElement) => {
     if (!goalsCollectionRef) {
       return;
     }
@@ -499,9 +465,7 @@ ${JSON.stringify(input.progress, null, 2)}
     const elementId = goalElement.id;
     const planData = goals?.find((goal) => goal.id === planId);
     if (!planData) return;
-    const element = planData.elements.find(
-      (element) => element.id === elementId,
-    );
+    const element = planData.elements.find((element) => element.id === elementId);
     if (!element) return;
     element.startCount = (element.startCount || 0) + 1;
 
@@ -513,21 +477,13 @@ ${JSON.stringify(input.progress, null, 2)}
     if (!activeGoal) return [];
     const existingProgress = activeGoal.progress || [];
     const completedElements = uniq(
-      existingProgress
-        .filter((p) => p.state === "completed")
-        .map((p) => p.elementId),
+      existingProgress.filter((p) => p.state === 'completed').map((p) => p.elementId),
     );
-    const activeEls = activeGoal.elements.filter(
-      (el) => !completedElements.includes(el.id),
-    );
+    const activeEls = activeGoal.elements.filter((el) => !completedElements.includes(el.id));
     return activeEls;
   }, [activeGoal]);
 
-  const [activeElementId, setActiveElementId] = useUrlState(
-    "plan-id",
-    "",
-    false,
-  );
+  const [activeElementId, setActiveElementId] = useUrlState('plan-id', '', false);
 
   const activeGoalElementInfo = useMemo(() => {
     if (!activeGoal || !activeElementId) return null;
@@ -544,7 +500,7 @@ ${JSON.stringify(input.progress, null, 2)}
   const nextElement = activeElements[0];
 
   const openNextLesson = (): void => {
-    openElementModal(nextElement?.id || "");
+    openElementModal(nextElement?.id || '');
   };
 
   const openElementModal = (goalElementId: string): void => {
@@ -552,7 +508,7 @@ ${JSON.stringify(input.progress, null, 2)}
   };
 
   const closeElementModal = (): void => {
-    setActiveElementId("");
+    setActiveElementId('');
   };
 
   return {
@@ -580,11 +536,7 @@ ${JSON.stringify(input.progress, null, 2)}
   };
 }
 
-export function PlanProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function PlanProvider({ children }: { children: ReactNode }): JSX.Element {
   const hook = useProvidePlan();
   return <PlanContext.Provider value={hook}>{children}</PlanContext.Provider>;
 }
@@ -592,7 +544,7 @@ export function PlanProvider({
 export const usePlan = (): PlanContextType => {
   const context = useContext(PlanContext);
   if (!context) {
-    throw new Error("usePlan must be used within a UsageProvider");
+    throw new Error('usePlan must be used within a UsageProvider');
   }
   return context;
 };

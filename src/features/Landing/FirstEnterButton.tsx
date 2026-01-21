@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Button, Stack } from "@mui/material";
-import { buttonStyle } from "./landingSettings";
-import { useEffect, useState } from "react";
-import { getUrlStart } from "../Lang/getUrlStart";
+import { Button, Stack } from '@mui/material';
+import { buttonStyle } from './landingSettings';
+import { useEffect, useState } from 'react';
+import { getUrlStart } from '../Lang/getUrlStart';
 
 interface FirstEnterButtonProps {
   getStartedTitle: string;
@@ -20,15 +20,13 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
   endIcon,
   startIcon,
 }) => {
-  const [isSignInToLanguage, setIsSignInToLanguage] = useState("");
-  const openMyPracticeLink = isSignInToLanguage
-    ? getUrlStart(isSignInToLanguage) + "practice"
-    : "";
+  const [isSignInToLanguage, setIsSignInToLanguage] = useState('');
+  const openMyPracticeLink = isSignInToLanguage ? getUrlStart(isSignInToLanguage) + 'practice' : '';
 
   useEffect(() => {
-    const isWindow = typeof window !== "undefined";
+    const isWindow = typeof window !== 'undefined';
     if (!isWindow) return;
-    const storedLanguage = localStorage.getItem("pageLanguageCode");
+    const storedLanguage = localStorage.getItem('pageLanguageCode');
     if (storedLanguage) {
       setTimeout(() => {
         setIsSignInToLanguage(storedLanguage);
@@ -39,18 +37,18 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
   return (
     <Stack
       sx={{
-        alignItems: "center",
-        gap: "5px",
-        position: "relative",
+        alignItems: 'center',
+        gap: '5px',
+        position: 'relative',
         zIndex: 1,
       }}
     >
       <Button
         sx={{
           ...buttonStyle,
-          padding: "10px 70px",
-          color: "#000",
-          backgroundColor: "#05acff",
+          padding: '10px 70px',
+          color: '#000',
+          backgroundColor: '#05acff',
         }}
         variant="contained"
         size="large"
@@ -71,15 +69,13 @@ export const WelcomeScreenButton: React.FC<FirstEnterButtonProps> = ({
   endIcon,
   startIcon,
 }) => {
-  const [isSignInToLanguage, setIsSignInToLanguage] = useState("");
-  const openMyPracticeLink = isSignInToLanguage
-    ? getUrlStart(isSignInToLanguage) + "practice"
-    : "";
+  const [isSignInToLanguage, setIsSignInToLanguage] = useState('');
+  const openMyPracticeLink = isSignInToLanguage ? getUrlStart(isSignInToLanguage) + 'practice' : '';
 
   useEffect(() => {
-    const isWindow = typeof window !== "undefined";
+    const isWindow = typeof window !== 'undefined';
     if (!isWindow) return;
-    const storedLanguage = localStorage.getItem("pageLanguageCode");
+    const storedLanguage = localStorage.getItem('pageLanguageCode');
     if (storedLanguage) {
       setTimeout(() => {
         setIsSignInToLanguage(storedLanguage);
@@ -90,19 +86,19 @@ export const WelcomeScreenButton: React.FC<FirstEnterButtonProps> = ({
   return (
     <Stack
       sx={{
-        alignItems: "center",
-        gap: "5px",
-        position: "relative",
+        alignItems: 'center',
+        gap: '5px',
+        position: 'relative',
         zIndex: 1,
       }}
     >
       <Button
         sx={{
           ...buttonStyle,
-          padding: "10px 70px",
-          backgroundColor: "#3dbeffff",
-          color: "#111",
-          fontSize: "1.25rem",
+          padding: '10px 70px',
+          backgroundColor: '#3dbeffff',
+          color: '#111',
+          fontSize: '1.25rem',
         }}
         variant="contained"
         size="large"

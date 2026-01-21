@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
-const scrollerId = "role-play-scenarios-scroller";
+const scrollerId = 'role-play-scenarios-scroller';
 
 export const RolePlayScroller = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,26 +12,17 @@ export const RolePlayScroller = () => {
   const isFocus = useRef(false);
 
   const scrollTick = () => {
-    if (
-      !containerRef.current ||
-      isHover.current ||
-      isTouched.current ||
-      isFocus.current
-    )
-      return;
+    if (!containerRef.current || isHover.current || isTouched.current || isFocus.current) return;
 
     const currentScroll = containerRef.current.scrollLeft;
-    const nextPosition = isScrollingToRight.current
-      ? currentScroll + 1
-      : currentScroll - 1;
+    const nextPosition = isScrollingToRight.current ? currentScroll + 1 : currentScroll - 1;
 
     if (nextPosition <= 0) {
       containerRef.current.scrollTo({ left: 0 });
       isScrollingToRight.current = true;
     }
 
-    const maxScrollLeft =
-      containerRef.current.scrollWidth - containerRef.current.clientWidth;
+    const maxScrollLeft = containerRef.current.scrollWidth - containerRef.current.clientWidth;
 
     if (maxScrollLeft < 100) {
       return;
@@ -67,18 +58,18 @@ export const RolePlayScroller = () => {
       isFocus.current = false;
     };
 
-    scroller.addEventListener("mouseenter", mouseenterListener);
-    scroller.addEventListener("mouseleave", mouseleaveListener);
-    scroller.addEventListener("touchstart", touchstartListener);
-    scroller.addEventListener("focus", focusListener);
-    scroller.addEventListener("blur", blurListener);
+    scroller.addEventListener('mouseenter', mouseenterListener);
+    scroller.addEventListener('mouseleave', mouseleaveListener);
+    scroller.addEventListener('touchstart', touchstartListener);
+    scroller.addEventListener('focus', focusListener);
+    scroller.addEventListener('blur', blurListener);
 
     return () => {
-      scroller.removeEventListener("mouseenter", mouseenterListener);
-      scroller.removeEventListener("mouseleave", mouseleaveListener);
-      scroller.removeEventListener("touchstart", touchstartListener);
-      scroller.removeEventListener("focus", focusListener);
-      scroller.removeEventListener("blur", blurListener);
+      scroller.removeEventListener('mouseenter', mouseenterListener);
+      scroller.removeEventListener('mouseleave', mouseleaveListener);
+      scroller.removeEventListener('touchstart', touchstartListener);
+      scroller.removeEventListener('focus', focusListener);
+      scroller.removeEventListener('blur', blurListener);
     };
   };
 

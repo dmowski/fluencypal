@@ -1,10 +1,8 @@
-import { firebaseConfig } from "@/common/firebaseConfig";
-import firebaseAdmin from "firebase-admin";
-import { AuthUserInfo } from "./type";
+import { firebaseConfig } from '@/common/firebaseConfig';
+import firebaseAdmin from 'firebase-admin';
+import { AuthUserInfo } from './type';
 
-const serviceAccount = JSON.parse(
-  process.env.FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS as string,
-);
+const serviceAccount = JSON.parse(process.env.FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS as string);
 
 const initApp = () => {
   return firebaseAdmin.initializeApp(
@@ -43,13 +41,13 @@ const getDB = () => {
 };
 
 const validateAuthToken = async (req: Request): Promise<AuthUserInfo> => {
-  const authHeader = req.headers.get("authorization");
+  const authHeader = req.headers.get('authorization');
   if (!authHeader) {
-    throw new Error("Authorization header is required");
+    throw new Error('Authorization header is required');
   }
-  const token = authHeader.split("Bearer ")[1];
+  const token = authHeader.split('Bearer ')[1];
   if (!token) {
-    throw new Error("Token is required");
+    throw new Error('Token is required');
   }
 
   try {
@@ -58,10 +56,10 @@ const validateAuthToken = async (req: Request): Promise<AuthUserInfo> => {
 
     const { uid, email } = decodedToken;
 
-    return { uid, email: email || "" };
+    return { uid, email: email || '' };
   } catch (error) {
-    console.error("Error validating token", error);
-    throw new Error("Invalid token");
+    console.error('Error validating token', error);
+    throw new Error('Invalid token');
   }
 };
 
@@ -88,15 +86,12 @@ const getAuthUser = async (userId: string): Promise<UserInfo | null> => {
       disabled: userRecord.disabled,
     };
   } catch (error) {
-    console.error("Error fetching user", error);
+    console.error('Error fetching user', error);
     return null;
   }
 };
 
-const updateAuthUser = async (
-  userId: string,
-  userInfo: Partial<UserInfo>,
-): Promise<UserInfo> => {
+const updateAuthUser = async (userId: string, userInfo: Partial<UserInfo>): Promise<UserInfo> => {
   const updated = await getAuth().updateUser(userId, {
     displayName: userInfo.displayName ?? undefined,
     email: userInfo.email ?? undefined,
@@ -122,10 +117,7 @@ const createAuthCustomToken = async (
   return getAuth().createCustomToken(userId, customClaims);
 };
 
-const createAuthUser = async (
-  uid: string,
-  user: Omit<UserInfo, "uid">,
-): Promise<UserInfo> => {
+const createAuthUser = async (uid: string, user: Omit<UserInfo, 'uid'>): Promise<UserInfo> => {
   const created = await getAuth().createUser({
     uid,
     displayName: user.displayName ?? undefined,

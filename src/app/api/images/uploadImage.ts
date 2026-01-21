@@ -1,4 +1,4 @@
-import { getBucket } from "../config/firebase";
+import { getBucket } from '../config/firebase';
 
 export const uploadImage = async ({
   extension,
@@ -7,7 +7,7 @@ export const uploadImage = async ({
 }: {
   imageBuffer: Buffer<ArrayBufferLike>;
   name?: string;
-  extension: "webp" | "jpeg" | "png";
+  extension: 'webp' | 'jpeg' | 'png';
 }): Promise<string> => {
   const bucket = getBucket();
   const randomName = Date.now().toString(10);

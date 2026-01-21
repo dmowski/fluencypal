@@ -1,4 +1,4 @@
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage } from '@/features/Lang/lang';
 
 export interface DailyQuestion {
   id: string;
@@ -29,7 +29,7 @@ export interface DailyQuestionAnswer {
   updatedAtIso: string;
 }
 
-export type LikeType = "like" | "star";
+export type LikeType = 'like' | 'star';
 export interface DailyQuestionLike {
   answerId: string;
   likeUserId: string;

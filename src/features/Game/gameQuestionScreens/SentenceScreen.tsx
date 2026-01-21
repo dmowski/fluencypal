@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { GameQuestionScreenProps } from "./type";
-import { useLingui } from "@lingui/react";
-import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { Check, Delete, Loader, ShieldAlert } from "lucide-react";
-import { FinishButton, GameContainer, TaskTitle } from "./gameCoreUI";
-import { useGame } from "../useGame";
+import { useEffect, useState } from 'react';
+import { GameQuestionScreenProps } from './type';
+import { useLingui } from '@lingui/react';
+import { Button, IconButton, Stack, Typography } from '@mui/material';
+import { Check, Delete, Loader, ShieldAlert } from 'lucide-react';
+import { FinishButton, GameContainer, TaskTitle } from './gameCoreUI';
+import { useGame } from '../useGame';
 
 export const SentenceScreen = ({}: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -24,42 +24,42 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
   const handleAnswerSubmit = async (answer: string) => {
     setIsShowStats(true);
     setIsSubmitting(true);
-    const { isCorrect } = await game.submitAnswer(question?.id || "", answer);
+    const { isCorrect } = await game.submitAnswer(question?.id || '', answer);
     setIsSubmitting(false);
     setIsCorrect(isCorrect);
   };
 
   const { i18n } = useLingui();
 
-  if (question?.type !== "sentence") return <></>;
+  if (question?.type !== 'sentence') return <></>;
   return (
     <GameContainer>
       <Stack
         sx={{
-          gap: "10px",
+          gap: '10px',
         }}
       >
         <TaskTitle />
         <Stack
           sx={{
-            gap: "10px",
-            width: "100%",
-            boxSizing: "border-box",
+            gap: '10px',
+            width: '100%',
+            boxSizing: 'border-box',
           }}
         >
           <Stack
             sx={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              alignItems: "center",
-              justifyContent: "flex-start",
-              gap: "0 7px",
-              padding: "10px",
-              width: "100%",
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-              borderRadius: "10px",
-              boxSizing: "border-box",
-              minHeight: "70px",
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              gap: '0 7px',
+              padding: '10px',
+              width: '100%',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              borderRadius: '10px',
+              boxSizing: 'border-box',
+              minHeight: '70px',
             }}
           >
             {selectedWords.map((word, index) => {
@@ -67,19 +67,15 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
                 <Stack
                   key={index}
                   sx={{
-                    padding: "0px",
-                    borderRadius: "3px",
+                    padding: '0px',
+                    borderRadius: '3px',
                   }}
                 >
                   <Typography
                     variant="h4"
                     className="decor-text"
                     sx={{
-                      color: isCorrect
-                        ? "#4ADE80"
-                        : isCorrect === false
-                          ? "#F87171"
-                          : "#fff",
+                      color: isCorrect ? '#4ADE80' : isCorrect === false ? '#F87171' : '#fff',
                     }}
                   >
                     {word}
@@ -88,10 +84,8 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
               );
             })}
 
-            {isCorrect === true && <Check size={"18px"} color="#4ADE80" />}
-            {isCorrect === false && (
-              <ShieldAlert size={"18px"} color="#F87171" />
-            )}
+            {isCorrect === true && <Check size={'18px'} color="#4ADE80" />}
+            {isCorrect === false && <ShieldAlert size={'18px'} color="#F87171" />}
 
             {selectedWords.length > 0 && isCorrect === null && (
               <IconButton
@@ -105,7 +99,7 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
                   });
                 }}
               >
-                <Delete size={"15px"} />
+                <Delete size={'15px'} />
               </IconButton>
             )}
           </Stack>
@@ -114,24 +108,24 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
 
       <Stack
         sx={{
-          width: "100%",
-          gap: "25px",
+          width: '100%',
+          gap: '25px',
         }}
       >
         <Stack
           sx={{
-            flexDirection: "row",
-            flexWrap: "wrap",
-            gap: "10px",
-            paddingTop: "10px",
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            gap: '10px',
+            paddingTop: '10px',
           }}
         >
           <Stack
             sx={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              gap: "10px",
-              paddingTop: "10px",
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              gap: '10px',
+              paddingTop: '10px',
             }}
           >
             {question.options.map((answer, index) => {
@@ -141,7 +135,7 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
                 <Stack key={index} sx={{}}>
                   <Button
                     disabled={isSelected}
-                    variant={"outlined"}
+                    variant={'outlined'}
                     onClick={() => {
                       if (isCorrect !== null) {
                         return;
@@ -154,7 +148,7 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
                       });
                     }}
                     sx={{
-                      textTransform: "none",
+                      textTransform: 'none',
                     }}
                   >
                     {answer}
@@ -175,9 +169,9 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
               selectedWords.length === 0 ||
               question.options.length !== selectedWords.length
             }
-            onClick={() => handleAnswerSubmit(selectedWords.join(" "))}
+            onClick={() => handleAnswerSubmit(selectedWords.join(' '))}
           >
-            {i18n._("Submit answer")}
+            {i18n._('Submit answer')}
           </Button>
         )}
 

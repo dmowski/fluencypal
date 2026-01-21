@@ -1,51 +1,32 @@
-"use client";
+'use client';
 
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  JSX,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { AiVoice, MODELS } from "@/common/ai";
+import { createContext, useContext, ReactNode, JSX, useEffect, useRef, useState } from 'react';
+import { AiVoice, MODELS } from '@/common/ai';
 
-import { initWebRtcConversation } from "./ConversationInstance/webRtc";
+import { initWebRtcConversation } from './ConversationInstance/webRtc';
 
-import { useChatHistory } from "../ConversationHistory/useChatHistory";
-import { useUsage } from "../Usage/useUsage";
-import { useSettings } from "../Settings/useSettings";
-import { UsageLog } from "@/common/usage";
-import {
-  ChatMessage,
-  ConversationType,
-  MessagesOrderMap,
-} from "@/common/conversation";
-import { useTasks } from "../Tasks/useTasks";
-import { sleep } from "@/libs/sleep";
-import { ConversationIdea, useAiUserInfo } from "../Ai/useAiUserInfo";
-import { GuessGameStat, RecordingUserMessageMode } from "./types";
-import { useAuth } from "../Auth/useAuth";
-import { firstAiMessage } from "@/features/Lang/lang";
-import { GoalElementInfo } from "../Plan/types";
-import { usePlan } from "../Plan/usePlan";
-import * as Sentry from "@sentry/nextjs";
-import { ConversationMode } from "@/common/user";
-import { useAccess } from "../Usage/useAccess";
-import {
-  LessonPlan,
-  LessonPlanAnalysis,
-  LessonPlanStep,
-} from "../LessonPlan/type";
-import {
-  ConversationConfig,
-  ConversationInstance,
-} from "./ConversationInstance/types";
-import { useTextAi } from "../Ai/useTextAi";
-import { initTextConversation } from "./ConversationInstance/textConversation";
-import { useConversationAudio } from "../Audio/useConversationAudio";
-import { getAiVoiceByVoice } from "./CallMode/voiceAvatar";
+import { useChatHistory } from '../ConversationHistory/useChatHistory';
+import { useUsage } from '../Usage/useUsage';
+import { useSettings } from '../Settings/useSettings';
+import { UsageLog } from '@/common/usage';
+import { ChatMessage, ConversationType, MessagesOrderMap } from '@/common/conversation';
+import { useTasks } from '../Tasks/useTasks';
+import { sleep } from '@/libs/sleep';
+import { ConversationIdea, useAiUserInfo } from '../Ai/useAiUserInfo';
+import { GuessGameStat, RecordingUserMessageMode } from './types';
+import { useAuth } from '../Auth/useAuth';
+import { firstAiMessage } from '@/features/Lang/lang';
+import { GoalElementInfo } from '../Plan/types';
+import { usePlan } from '../Plan/usePlan';
+import * as Sentry from '@sentry/nextjs';
+import { ConversationMode } from '@/common/user';
+import { useAccess } from '../Usage/useAccess';
+import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from '../LessonPlan/type';
+import { ConversationConfig, ConversationInstance } from './ConversationInstance/types';
+import { useTextAi } from '../Ai/useTextAi';
+import { initTextConversation } from './ConversationInstance/textConversation';
+import { useConversationAudio } from '../Audio/useConversationAudio';
+import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
 
 const getVoiceInstructions = (voice: AiVoice): string => {
   const voiceAvatar = getAiVoiceByVoice(voice);
@@ -56,7 +37,7 @@ ${voiceAvatar.voiceInstruction}`;
 
 const getConversationStarterMessagePrompt = (startMessage: string): string => {
   if (!startMessage) {
-    return "";
+    return '';
   }
   return `## Conversation Start
 Start the conversation with message like this: ${startMessage}.`;
@@ -126,41 +107,33 @@ interface AiConversationContextType {
   addUserMessageDelta: (delta: string) => void;
 }
 
-const AiConversationContext = createContext<AiConversationContextType | null>(
-  null,
-);
+const AiConversationContext = createContext<AiConversationContextType | null>(null);
 
-const modesToExtractUserInfo: ConversationType[] = ["talk", "goal-talk"];
+const modesToExtractUserInfo: ConversationType[] = ['talk', 'goal-talk'];
 
 function useProvideAiConversation(): AiConversationContextType {
-  const [isInitializing, setIsInitializing] = useState("");
+  const [isInitializing, setIsInitializing] = useState('');
   const history = useChatHistory();
   const auth = useAuth();
   const settings = useSettings();
   const aiUserInfo = useAiUserInfo();
   const ai = useTextAi();
-  const firstPotentialBotMessage = useRef("");
-  const userInfo = aiUserInfo.userInfo?.records?.join(". ") || "";
-  const fullLanguageName = settings.fullLanguageName || "English";
-  const languageCode = settings.languageCode || "en";
+  const firstPotentialBotMessage = useRef('');
+  const userInfo = aiUserInfo.userInfo?.records?.join('. ') || '';
+  const fullLanguageName = settings.fullLanguageName || 'English';
+  const languageCode = settings.languageCode || 'en';
   const [isVolumeOn, setIsVolumeOn] = useState(true);
   const [voice, setVoice] = useState<AiVoice | null>(null);
-  const [lessonPlanAnalysis, setLessonPlanAnalysis] =
-    useState<LessonPlanAnalysis | null>(null);
+  const [lessonPlanAnalysis, setLessonPlanAnalysis] = useState<LessonPlanAnalysis | null>(null);
   const [lessonPlan, setLessonPlan] = useState<LessonPlan | null>(null);
 
-  const [recordingVoiceMode, setRecordingVoiceMode] =
-    useState<RecordingUserMessageMode>("VAD");
+  const [recordingVoiceMode, setRecordingVoiceMode] = useState<RecordingUserMessageMode>('VAD');
 
-  const updateLessonPlanAnalysis = async (
-    analysis: LessonPlanAnalysis | null,
-  ) => {
+  const updateLessonPlanAnalysis = async (analysis: LessonPlanAnalysis | null) => {
     setLessonPlanAnalysis(analysis);
 
     if (analysis?.teacherResponse) {
-      communicatorRef.current?.sendCorrectionInstruction(
-        analysis.teacherResponse,
-      );
+      communicatorRef.current?.sendCorrectionInstruction(analysis.teacherResponse);
       // await sleep(30);
       //await communicatorRef.current?.triggerAiResponse();
       //setIsWaitingForCorrection(false);
@@ -192,7 +165,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const getWebCamDescriptionInstruction = (description: string): string => {
     if (!description || description.trim().length === 0) {
-      return "";
+      return '';
     }
     const message = `
 VISUAL_CONTEXT is sensor data from the user's webcam. You can use it during the conversation to better understand user's emotions and reactions.
@@ -203,12 +176,9 @@ VISUAL_CONTEXT (latest): ${description}
   };
 
   const setWebCamDescription = async (description: string) => {
-    const webCamDescriptionWithInstruction =
-      getWebCamDescriptionInstruction(description);
+    const webCamDescriptionWithInstruction = getWebCamDescriptionInstruction(description);
     if (!webCamDescriptionWithInstruction) return;
-    communicatorRef.current?.sendWebCamDescription(
-      webCamDescriptionWithInstruction,
-    );
+    communicatorRef.current?.sendWebCamDescription(webCamDescriptionWithInstruction);
   };
 
   const usage = useUsage();
@@ -233,7 +203,7 @@ VISUAL_CONTEXT (latest): ${description}
   const appMode = settings.appMode;
 
   const aiPersona =
-    appMode === "learning"
+    appMode === 'learning'
       ? `You are an ${fullLanguageName} teacher.`
       : `You are an job interview coach.`;
 
@@ -250,27 +220,21 @@ VISUAL_CONTEXT (latest): ${description}
     history.setMessages(conversationId, conversation);
 
     if (conversation.length === 2) {
-      if (currentMode === "words") {
-        tasks.completeTask("words");
-      } else if (currentMode === "rule") {
-        tasks.completeTask("rule");
+      if (currentMode === 'words') {
+        tasks.completeTask('words');
+      } else if (currentMode === 'rule') {
+        tasks.completeTask('rule');
       } else {
-        tasks.completeTask("lesson");
+        tasks.completeTask('lesson');
       }
     }
 
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
-    if (
-      isNeedToSaveUserInfo &&
-      conversation.length >= 3 &&
-      conversation.length % 4 === 0
-    ) {
+    if (isNeedToSaveUserInfo && conversation.length >= 3 && conversation.length % 4 === 0) {
       aiUserInfo.updateUserInfo(conversation);
     }
 
-    const usersMessagesCount = conversation.filter(
-      (message) => !message.isBot,
-    ).length;
+    const usersMessagesCount = conversation.filter((message) => !message.isBot).length;
     if (usersMessagesCount === planMessageCount && goalInfo) {
       plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
     }
@@ -312,7 +276,7 @@ VISUAL_CONTEXT (latest): ${description}
     //await sleep(100);
     communicatorRef.current?.triggerAiResponse();
     await sleep(1000);
-    setIsInitializing("");
+    setIsInitializing('');
     setIsStarted(true);
   };
 
@@ -320,15 +284,15 @@ VISUAL_CONTEXT (latest): ${description}
     const isLimited = !access.isFullAppAccess;
     settings.setConversationMode(mode);
 
-    if (mode === "call") {
+    if (mode === 'call') {
       toggleMute(isLimited ? true : false);
     }
 
-    if (mode === "chat") {
+    if (mode === 'chat') {
       toggleMute(true);
     }
 
-    if (mode === "record") {
+    if (mode === 'record') {
       toggleMute(true);
     }
 
@@ -348,20 +312,17 @@ VISUAL_CONTEXT (latest): ${description}
       }
 
       const isEmptyChat = prev.length === 0;
-      const isEmptyNewMessage = message.text.trim() === "";
+      const isEmptyNewMessage = message.text.trim() === '';
       const isErrorState = isEmptyChat && isEmptyNewMessage;
       if (isErrorState) {
-        console.error("❌ Empty message from AI. Restarting conversation...");
-        console.log("message", message);
-        Sentry.captureException(
-          new Error("Empty message from AI. Restarting conversation..."),
-          {
-            extra: {
-              conversationId,
-              conversation,
-            },
+        console.error('❌ Empty message from AI. Restarting conversation...');
+        console.log('message', message);
+        Sentry.captureException(new Error('Empty message from AI. Restarting conversation...'), {
+          extra: {
+            conversationId,
+            conversation,
           },
-        );
+        });
       }
 
       return [
@@ -370,7 +331,7 @@ VISUAL_CONTEXT (latest): ${description}
           ...message,
           text:
             isEmptyChat && isEmptyNewMessage
-              ? firstPotentialBotMessage.current || "..."
+              ? firstPotentialBotMessage.current || '...'
               : message.text,
         },
       ];
@@ -413,17 +374,14 @@ VISUAL_CONTEXT (latest): ${description}
     });
   };
   const audio = useConversationAudio();
-  const [
-    isAiSpeakingStartedFromConversation,
-    setIsAiSpeakingStartedFromConversation,
-  ] = useState(false);
-  const isSpeakingFromConversation =
-    isAiSpeakingStartedFromConversation && audio.isPlaying;
+  const [isAiSpeakingStartedFromConversation, setIsAiSpeakingStartedFromConversation] =
+    useState(false);
+  const isSpeakingFromConversation = isAiSpeakingStartedFromConversation && audio.isPlaying;
 
   const getBaseRtcConfig = async () => {
     const baseConfig: ConversationConfig = {
       model: aiModal,
-      initInstruction: "",
+      initInstruction: '',
       onOpen,
       onMessage,
       onAddDelta,
@@ -431,24 +389,19 @@ VISUAL_CONTEXT (latest): ${description}
       setIsUserSpeaking,
       isMuted,
       isVolumeOn,
-      onAddUsage: (usageLog: UsageLog) =>
-        usage.setUsageLogs((prev) => [...prev, usageLog]),
-      languageCode: settings.languageCode || "en",
+      onAddUsage: (usageLog: UsageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
+      languageCode: settings.languageCode || 'en',
       getAuthToken: async () => await auth.getToken(),
       onMessageOrder: updateMessageOrder,
       generateTextWithAi: async ({ userMessage, systemMessage }) => {
         return await ai.generate({
           userMessage,
           systemMessage,
-          languageCode: settings.languageCode || "en",
-          model: "gpt-4o",
+          languageCode: settings.languageCode || 'en',
+          model: 'gpt-4o',
         });
       },
-      playAudio: async (
-        textToPlay: string,
-        voice: AiVoice,
-        instruction: string,
-      ) => {
+      playAudio: async (textToPlay: string, voice: AiVoice, instruction: string) => {
         await audio.interruptWithFade(120);
         setIsAiSpeakingStartedFromConversation(true);
         await audio.speak(textToPlay, { instructions: instruction, voice });
@@ -482,33 +435,30 @@ ${lessonPlan.steps
     (step: LessonPlanStep, index: number) =>
       `${index + 1}. ${step.stepTitle}\n${step.teacherInstructions}`,
   )
-  .join("\n")}
+  .join('\n')}
 `
-      : "";
+      : '';
 
-    const goalTitle = goal?.goalPlan.title || "";
-    const elementTitle = goal?.goalElement.title || "";
-    const elementDescription = goal?.goalElement.description || "";
+    const goalTitle = goal?.goalPlan.title || '';
+    const elementTitle = goal?.goalElement.title || '';
+    const elementDescription = goal?.goalElement.description || '';
     const goalInfo = `${goalTitle} - ${elementTitle} - ${elementDescription}`;
-    const elementDetails = goal?.goalElement.details || "";
+    const elementDetails = goal?.goalElement.details || '';
 
-    let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : "";
+    let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
 
     // GOAL TALK, conversation
-    if (mode === "goal-talk") {
+    if (mode === 'goal-talk') {
       if (!goal) {
-        throw new Error("Goal is not set for goal-talk mode");
+        throw new Error('Goal is not set for goal-talk mode');
       }
       setIsInitializing(`Analyzing Goal Lesson...`);
       const firstMessage =
-        ideas?.firstMessage ||
-        (await aiUserInfo.generateFirstMessageText(goalInfo)).firstMessage;
+        ideas?.firstMessage || (await aiUserInfo.generateFirstMessageText(goalInfo)).firstMessage;
       firstPotentialBotMessage.current = firstMessage;
       let startFirstMessage = `"${firstMessage}".`;
 
-      let userInfoPrompt = userInfo
-        ? `## Info about Student:\n${userInfo}.`
-        : "";
+      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
 
       setIsInitializing(`Starting conversation...`);
 
@@ -531,9 +481,9 @@ ${voiceInstructions}`,
       };
     }
     // GOAL ROLE PLAY
-    if (mode === "goal-role-play") {
+    if (mode === 'goal-role-play') {
       if (!goal) {
-        throw new Error("Goal is not set for goal-talk mode");
+        throw new Error('Goal is not set for goal-talk mode');
       }
       setIsInitializing(`Starting Role Play...`);
       return {
@@ -558,14 +508,14 @@ ${voiceInstructions}
       };
     }
 
-    if (mode === "talk") {
+    if (mode === 'talk') {
       let startFirstMessage = `"${firstAiMessage[languageCode]}"`;
 
-      let openerInfoPrompt = "Ask the student to describe their day.";
+      let openerInfoPrompt = 'Ask the student to describe their day.';
 
       if (userInfo && userInfo.length > 0) {
         setIsInitializing(`Analyzing info...`);
-        const first = ideas || (await aiUserInfo.generateFirstMessageText(""));
+        const first = ideas || (await aiUserInfo.generateFirstMessageText(''));
         const { firstMessage, potentialTopics } = first;
 
         firstPotentialBotMessage.current = firstMessage;
@@ -593,8 +543,8 @@ Engage in a natural conversation without making it feel like a lesson.
 
 ${
   userInfo
-    ? ""
-    : "After the first user response, introduce yourself, your role and ask user to describe their day."
+    ? ''
+    : 'After the first user response, introduce yourself, your role and ask user to describe their day.'
 }
 
 ${voiceInstructions}
@@ -607,7 +557,7 @@ During conversation ask only one question at a time or even without questions.
     }
 
     // SCENARIOS. OLD FEATURE
-    if (mode === "role-play") {
+    if (mode === 'role-play') {
       return {
         ...baseConfig,
         voice,
@@ -616,10 +566,8 @@ During conversation ask only one question at a time or even without questions.
       };
     }
 
-    if (mode === "rule") {
-      let userInfoPrompt = userInfo
-        ? `## Info about Student:\n${userInfo}.`
-        : "";
+    if (mode === 'rule') {
+      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
       return {
         ...baseConfig,
         voice,
@@ -637,10 +585,8 @@ ${voiceInstructions}
       };
     }
 
-    if (mode === "words") {
-      let userInfoPrompt = userInfo
-        ? `## Info about Student:\n${userInfo}.`
-        : "";
+    if (mode === 'words') {
+      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
       return {
         ...baseConfig,
         model: aiModal,
@@ -662,17 +608,16 @@ ${voiceInstructions}
     throw new Error(`Unknown mode: ${mode}`);
   };
 
-  const [currentMode, setCurrentMode] = useState<ConversationType>("talk");
+  const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
 
   const startConversation = async (input: StartConversationProps) => {
-    if (!settings.languageCode)
-      throw new Error("Language is not set | startConversation");
+    if (!settings.languageCode) throw new Error('Language is not set | startConversation');
     setMessageOrder({});
 
     setLessonPlan(input.lessonPlan || null);
 
     let isMutedInternal = isMuted;
-    const isRecordingNeedMute = !isMuted && input.conversationMode === "record";
+    const isRecordingNeedMute = !isMuted && input.conversationMode === 'record';
     const isLimitedAccessNeedMute = !isMuted && !access.isFullAppAccess;
 
     if (isRecordingNeedMute || isLimitedAccessNeedMute) {
@@ -687,17 +632,14 @@ ${voiceInstructions}
       isVolumeOnInternal = false;
     }
 
-    console.log("START", {
+    console.log('START', {
       isVolumeOnInternal,
       isMutedInternal,
       mode: input.mode,
     });
 
     if (input.analyzeResultAiInstruction) {
-      console.log(
-        "analyzeResultAiInstruction",
-        input.analyzeResultAiInstruction,
-      );
+      console.log('analyzeResultAiInstruction', input.analyzeResultAiInstruction);
     }
 
     setGameStat(input.gameWords ? input.gameWords : null);
@@ -710,22 +652,22 @@ ${voiceInstructions}
       setConversation([]);
       setIsClosing(false);
       setIsClosed(false);
-      setErrorInitiating("");
+      setErrorInitiating('');
 
-      firstPotentialBotMessage.current = "";
+      firstPotentialBotMessage.current = '';
       const conversationConfig = await getConversationConfig({
         mode: input.mode,
         goal: input.goal,
         ideas: input.ideas,
         lessonPlan: input.lessonPlan,
-        voice: input.voice || "shimmer",
+        voice: input.voice || 'shimmer',
       });
       let instruction = conversationConfig.initInstruction;
 
       if (input.wordsToLearn?.length) {
         instruction += `
 ## Words to learn:
-${input.wordsToLearn.join(" ")}
+${input.wordsToLearn.join(' ')}
 `;
       }
 
@@ -742,18 +684,16 @@ ${input.ruleToLearn}
 
       if (input.gameWords) {
         instruction += `
-Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
+Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 `;
       }
 
-      const isUseRtc = input.mode === "talk";
+      const isUseRtc = input.mode === 'talk';
       // "VAD"
       // "PushToTalk"
-      setRecordingVoiceMode(isUseRtc ? "RealTimeConversation" : "PushToTalk");
+      setRecordingVoiceMode(isUseRtc ? 'RealTimeConversation' : 'PushToTalk');
 
-      const initConversation = isUseRtc
-        ? initWebRtcConversation
-        : initTextConversation;
+      const initConversation = isUseRtc ? initWebRtcConversation : initTextConversation;
 
       const conversation = await initConversation({
         ...conversationConfig,
@@ -761,7 +701,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
         voice: conversationConfig.voice || input.voice,
         isMuted: isMutedInternal,
         isVolumeOn: isVolumeOnInternal,
-        webCamDescription: input.webCamDescription || "",
+        webCamDescription: input.webCamDescription || '',
       });
       setVoice(conversationConfig.voice || input.voice || null);
       history.createConversation({
@@ -772,18 +712,14 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
       setCommunicator(conversation);
     } catch (e) {
       console.error(e);
-      const isNotAllowedError = (e as Error)
-        .toString()
-        .includes("NotAllowedError");
-      console.log("isNotAllowedError", isNotAllowedError);
+      const isNotAllowedError = (e as Error).toString().includes('NotAllowedError');
+      console.log('isNotAllowedError', isNotAllowedError);
       setErrorInitiating(
         isNotAllowedError
-          ? "Please enable microphone access to start the conversation. Error code:" +
-              `${e}`
-          : "Please check you microphone access and try to refresh page. Error code:" +
-              `${e}`,
+          ? 'Please enable microphone access to start the conversation. Error code:' + `${e}`
+          : 'Please check you microphone access and try to refresh page. Error code:' + `${e}`,
       );
-      setIsInitializing("");
+      setIsInitializing('');
       throw e;
     }
   };
@@ -792,7 +728,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     await audio.interruptWithFade(120);
     setIsClosing(true);
     setIsStarted(false);
-    setIsInitializing("");
+    setIsInitializing('');
     communicator?.closeHandler();
     setLessonPlanAnalysis(null);
 
@@ -802,7 +738,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
         await aiUserInfo.updateUserInfo(conversation);
       }
     } catch (e) {
-      console.error("Error saving user info:", e);
+      console.error('Error saving user info:', e);
       Sentry.captureException(e, {
         extra: {
           conversationId,
@@ -825,7 +761,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 
   return {
     currentMode,
-    voice: voice || "shimmer",
+    voice: voice || 'shimmer',
     conversationId,
     isInitializing,
     isStarted,
@@ -860,11 +796,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
   };
 }
 
-export function AiConversationProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function AiConversationProvider({ children }: { children: ReactNode }): JSX.Element {
   const aiConversationData = useProvideAiConversation();
   return (
     <AiConversationContext.Provider value={aiConversationData}>
@@ -876,9 +808,7 @@ export function AiConversationProvider({
 export function useAiConversation(): AiConversationContextType {
   const context = useContext(AiConversationContext);
   if (!context) {
-    throw new Error(
-      "useAiConversation must be used within an AiConversationProvider",
-    );
+    throw new Error('useAiConversation must be used within an AiConversationProvider');
   }
   return context;
 }

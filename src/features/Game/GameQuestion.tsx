@@ -1,11 +1,11 @@
-import { GameQuestionScreenProps } from "./gameQuestionScreens/type";
-import { DescribeImageScreen } from "./gameQuestionScreens/ImageScreen";
-import { WordScreen } from "./gameQuestionScreens/WordScreen";
-import { SentenceScreen } from "./gameQuestionScreens/SentenceScreen";
-import { TopicToDiscussScreen } from "./gameQuestionScreens/TopicToDiscussScreen";
-import { GameQuestionType } from "./types";
-import { ReadTextScreen } from "./gameQuestionScreens/ReadTextScreen";
-import { useGame } from "./useGame";
+import { GameQuestionScreenProps } from './gameQuestionScreens/type';
+import { DescribeImageScreen } from './gameQuestionScreens/ImageScreen';
+import { WordScreen } from './gameQuestionScreens/WordScreen';
+import { SentenceScreen } from './gameQuestionScreens/SentenceScreen';
+import { TopicToDiscussScreen } from './gameQuestionScreens/TopicToDiscussScreen';
+import { GameQuestionType } from './types';
+import { ReadTextScreen } from './gameQuestionScreens/ReadTextScreen';
+import { useGame } from './useGame';
 
 const ScreenMap: Record<GameQuestionType, React.FC<GameQuestionScreenProps>> = {
   describe_image: DescribeImageScreen,

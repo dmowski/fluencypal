@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState, MouseEvent, useEffect, Suspense } from "react";
+import { useState, MouseEvent, useEffect, Suspense } from 'react';
 import {
   Button,
   Drawer,
@@ -12,40 +12,29 @@ import {
   ListItemIcon,
   ListItemText,
   Stack,
-} from "@mui/material";
-import { X } from "lucide-react";
-import { useRouter } from "next/navigation";
-import MenuIcon from "@mui/icons-material/Menu";
-import { HeaderUIProps } from "./types";
-import { getUrlStart } from "../Lang/getUrlStart";
+} from '@mui/material';
+import { X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import MenuIcon from '@mui/icons-material/Menu';
+import { HeaderUIProps } from './types';
+import { getUrlStart } from '../Lang/getUrlStart';
 
-function HeaderUIComponent({
-  lang,
-  links,
-  buttons,
-  transparentOnTop,
-  logoHref,
-}: HeaderUIProps) {
+function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }: HeaderUIProps) {
   const [isOpenMainMenu, setIsOpenMainMenu] = useState(false);
   const [isHighlightJoin, setIsHighlightJoin] = useState(false);
   const [isBlurHeader, setIsBlurHeader] = useState(false);
   const [isFixedHeader, setIsFixedHeader] = useState(true);
 
   useEffect(() => {
-    const isWindow = typeof window !== "undefined";
+    const isWindow = typeof window !== 'undefined';
     if (!isWindow) {
       return;
     }
 
-    const urlsForNormalHeader = [
-      getUrlStart(lang) + "blog",
-      getUrlStart(lang) + "scenarios",
-    ];
+    const urlsForNormalHeader = [getUrlStart(lang) + 'blog', getUrlStart(lang) + 'scenarios'];
 
     const urlPath = location.pathname;
-    const isStaticHeader = !urlsForNormalHeader.find((url) =>
-      urlPath.startsWith(url),
-    );
+    const isStaticHeader = !urlsForNormalHeader.find((url) => urlPath.startsWith(url));
     setIsFixedHeader(isStaticHeader);
 
     const onScrollHandler = () => {
@@ -62,9 +51,9 @@ function HeaderUIComponent({
       }
     };
 
-    window.addEventListener("scroll", onScrollHandler);
+    window.addEventListener('scroll', onScrollHandler);
     return () => {
-      window.removeEventListener("scroll", onScrollHandler);
+      window.removeEventListener('scroll', onScrollHandler);
     };
   }, []);
 
@@ -86,113 +75,98 @@ function HeaderUIComponent({
   return (
     <>
       <Stack
-        component={"header"}
+        component={'header'}
         sx={{
-          width: "100%",
-          alignItems: "center",
-          justifyContent: "center",
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
 
-          position: isFixedHeader ? "fixed" : "absolute",
+          position: isFixedHeader ? 'fixed' : 'absolute',
           top: 0,
           left: 0,
           zIndex: 999,
           //backgroundColor: "rgba(10, 18, 30, 0.7)",
           backgroundColor:
-            transparentOnTop && !isBlurHeader
-              ? "rgba(0, 0, 0, 0)"
-              : "rgba(0, 0, 0, 0.6)",
-          backdropFilter:
-            transparentOnTop && !isBlurHeader ? "blur(0px)" : "blur(10px)",
+            transparentOnTop && !isBlurHeader ? 'rgba(0, 0, 0, 0)' : 'rgba(0, 0, 0, 0.6)',
+          backdropFilter: transparentOnTop && !isBlurHeader ? 'blur(0px)' : 'blur(10px)',
           //borderBottom: isActiveConversation ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
 
-          transition: "all 0.3s ease-in-out",
+          transition: 'all 0.3s ease-in-out',
 
-          ".menu-link": {
-            height: "60px",
+          '.menu-link': {
+            height: '60px',
             fontWeight: 360,
-            color: "#eee",
-            display: "flex",
-            alignItems: "center",
-            minHeight: "100%",
-            textDecoration: "none",
-            padding: "0 20px",
-            borderRadius: "5px",
-            ":hover": {
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
+            color: '#eee',
+            display: 'flex',
+            alignItems: 'center',
+            minHeight: '100%',
+            textDecoration: 'none',
+            padding: '0 20px',
+            borderRadius: '5px',
+            ':hover': {
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
             },
           },
-          "@media (max-width: 650px)": {
-            position: isFixedHeader ? "fixed" : "absolute",
-            ".hideOnMobile": {
-              display: "none !important",
+          '@media (max-width: 650px)': {
+            position: isFixedHeader ? 'fixed' : 'absolute',
+            '.hideOnMobile': {
+              display: 'none !important',
             },
           },
         }}
       >
         <Stack
           sx={{
-            maxWidth: "1300px",
-            width: "100%",
-            gap: "10px",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "5px 10px",
-            boxSizing: "border-box",
+            maxWidth: '1300px',
+            width: '100%',
+            gap: '10px',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '5px 10px',
+            boxSizing: 'border-box',
           }}
         >
           <Stack
             sx={{
-              flexDirection: "row",
-              gap: "0px",
-              height: "100%",
+              flexDirection: 'row',
+              gap: '0px',
+              height: '100%',
             }}
           >
             <Stack
-              component={"a"}
+              component={'a'}
               href={logoHref}
               onClick={(e) => navigateTo(logoHref, e)}
               className="menu-link"
               sx={{
-                marginRight: "40px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                ".big_logo": {
-                  display: "block",
+                marginRight: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                '.big_logo': {
+                  display: 'block',
                 },
-                ".small_logo": {
-                  display: "none",
+                '.small_logo': {
+                  display: 'none',
                 },
-                "@media (max-width: 1000px)": {
-                  marginRight: "0px",
+                '@media (max-width: 1000px)': {
+                  marginRight: '0px',
                 },
-                "@media (max-width: 850px)": {
-                  paddingLeft: "0 !important",
-                  paddingRight: "0 !important",
-                  ".big_logo": {
-                    display: "none",
+                '@media (max-width: 850px)': {
+                  paddingLeft: '0 !important',
+                  paddingRight: '0 !important',
+                  '.big_logo': {
+                    display: 'none',
                   },
-                  ".small_logo": {
-                    display: "block",
+                  '.small_logo': {
+                    display: 'block',
                   },
                 },
               }}
             >
-              <img
-                src="/logo.svg"
-                alt="logo"
-                width="160px"
-                height="67px"
-                className="big_logo"
-              />
-              <img
-                src="/logo.svg"
-                alt="logo"
-                width="112px"
-                height="47px"
-                className="small_logo"
-              />
+              <img src="/logo.svg" alt="logo" width="160px" height="67px" className="big_logo" />
+              <img src="/logo.svg" alt="logo" width="112px" height="47px" className="small_logo" />
             </Stack>
 
             {links.map((link) => (
@@ -209,10 +183,10 @@ function HeaderUIComponent({
 
           <Stack
             sx={{
-              flexDirection: "row",
-              gap: "10px",
-              alignItems: "center",
-              height: "100%",
+              flexDirection: 'row',
+              gap: '10px',
+              alignItems: 'center',
+              height: '100%',
             }}
           >
             {buttons.map((button) => (
@@ -220,11 +194,11 @@ function HeaderUIComponent({
                 key={button.href}
                 href={`${button.href}`}
                 onClick={(e) => navigateTo(`${button.href}`, e)}
-                variant={isHighlightJoin ? "contained" : "outlined"}
+                variant={isHighlightJoin ? 'contained' : 'outlined'}
                 color="info"
-                className={button.isSolid ? "" : "hideOnMobile"}
+                className={button.isSolid ? '' : 'hideOnMobile'}
                 sx={{
-                  minWidth: "max-content",
+                  minWidth: 'max-content',
                 }}
               >
                 {button.title}
@@ -235,11 +209,11 @@ function HeaderUIComponent({
               onClick={() => setIsOpenMainMenu(true)}
               title="Open main menu"
               sx={{
-                display: "none",
-                "@media (max-width: 650px)": {
-                  display: "block",
-                  marginTop: "3px",
-                  marginRight: "10px",
+                display: 'none',
+                '@media (max-width: 650px)': {
+                  display: 'block',
+                  marginTop: '3px',
+                  marginRight: '10px',
                 },
               }}
             >
@@ -249,39 +223,31 @@ function HeaderUIComponent({
         </Stack>
       </Stack>
 
-      <Drawer
-        open={isOpenMainMenu}
-        onClose={() => setIsOpenMainMenu(false)}
-        anchor="right"
-      >
+      <Drawer open={isOpenMainMenu} onClose={() => setIsOpenMainMenu(false)} anchor="right">
         <Stack
           sx={{
-            width: "240px",
-            height: "100svh",
-            boxSizing: "border-box",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            padding: "0px",
+            width: '240px',
+            height: '100svh',
+            boxSizing: 'border-box',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '0px',
           }}
           onClick={() => setIsOpenMainMenu(false)}
         >
           <Stack
             sx={{
-              alignItems: "flex-end",
+              alignItems: 'flex-end',
             }}
           >
-            <IconButton
-              onClick={() => setIsOpenMainMenu(false)}
-              title="Close main menu"
-              sx={{}}
-            >
+            <IconButton onClick={() => setIsOpenMainMenu(false)} title="Close main menu" sx={{}}>
               <X />
             </IconButton>
           </Stack>
 
           <List
             sx={{
-              padding: "0 0 0 10px",
+              padding: '0 0 0 10px',
             }}
           >
             {links.map((link) => (
@@ -292,7 +258,7 @@ function HeaderUIComponent({
                     setIsOpenMainMenu(false);
                   }}
                 >
-                  <ListItemIcon sx={{ paddingRight: "0", minWidth: "40px" }}>
+                  <ListItemIcon sx={{ paddingRight: '0', minWidth: '40px' }}>
                     <link.icon />
                   </ListItemIcon>
                   <ListItemText primary={link.title} />
@@ -303,7 +269,7 @@ function HeaderUIComponent({
 
           <Stack
             sx={{
-              padding: "10px",
+              padding: '10px',
             }}
           >
             {buttons.map((button) => (
@@ -315,7 +281,7 @@ function HeaderUIComponent({
                   navigateTo(`${button.href}`, e);
                 }}
                 sx={{
-                  padding: "10px 20px",
+                  padding: '10px 20px',
                 }}
                 variant="contained"
                 color="info"

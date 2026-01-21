@@ -1,27 +1,22 @@
-"use client";
-import { createContext, useContext, ReactNode, JSX, useEffect } from "react";
-import { useAuth } from "../Auth/useAuth";
-import { getDoc, setDoc } from "firebase/firestore";
-import { useDocumentData } from "react-firebase-hooks/firestore";
+'use client';
+import { createContext, useContext, ReactNode, JSX, useEffect } from 'react';
+import { useAuth } from '../Auth/useAuth';
+import { getDoc, setDoc } from 'firebase/firestore';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
 import {
   fullEnglishLanguageName,
   SupportedLanguage,
   supportedLanguages,
-} from "@/features/Lang/lang";
-import { db } from "../Firebase/firebaseDb";
-import { useCurrency } from "../User/useCurrency";
-import { getCountryByIP } from "../User/getCountry";
-import { countries } from "@/libs/countries";
-import {
-  AppMode,
-  ConversationMode,
-  InitUserSettings,
-  UserSettings,
-} from "@/common/user";
-import { NativeLangCode } from "@/libs/language/type";
-import { useUserSource } from "../Analytics/useUserSource";
-import { isActiveBrowserTab } from "@/libs/isActiveBrowserTab";
-import { AiVoice } from "@/common/ai";
+} from '@/features/Lang/lang';
+import { db } from '../Firebase/firebaseDb';
+import { useCurrency } from '../User/useCurrency';
+import { getCountryByIP } from '../User/getCountry';
+import { countries } from '@/libs/countries';
+import { AppMode, ConversationMode, InitUserSettings, UserSettings } from '@/common/user';
+import { NativeLangCode } from '@/libs/language/type';
+import { useUserSource } from '../Analytics/useUserSource';
+import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
+import { AiVoice } from '@/common/ai';
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -52,17 +47,17 @@ export const settingsContext = createContext<SettingsContextType>({
   loading: true,
 
   userCreatedAt: null,
-  setLanguage: async () => "en",
+  setLanguage: async () => 'en',
   setPageLanguage: async () => {},
   setNativeLanguage: async () => {},
   userSettings: null,
   onDoneGameOnboarding: () => {
-    throw new Error("onDoneGameOnboarding function is not implemented");
+    throw new Error('onDoneGameOnboarding function is not implemented');
   },
   setAppMode: async () => {},
-  appMode: "learning",
+  appMode: 'learning',
 
-  conversationMode: "record",
+  conversationMode: 'record',
   setConversationMode: async () => {},
   setVoice: async () => {},
 });
@@ -78,14 +73,9 @@ function useProvideSettings(): SettingsContextType {
   const [userSettings, loading] = useDocumentData(userSettingsDoc);
 
   const setLanguage = async (languageCode: SupportedLanguage) => {
-    if (!userSettingsDoc) return "en";
-    const langCodeValidated =
-      supportedLanguages.find((lang) => lang === languageCode) || "en";
-    await setDoc(
-      userSettingsDoc,
-      { languageCode: langCodeValidated },
-      { merge: true },
-    );
+    if (!userSettingsDoc) return 'en';
+    const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || 'en';
+    await setDoc(userSettingsDoc, { languageCode: langCodeValidated }, { merge: true });
     return langCodeValidated;
   };
 
@@ -154,17 +144,12 @@ function useProvideSettings(): SettingsContextType {
 
     const country = await getCountryByIP();
     const countryName = country
-      ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name ||
-        "Unknown"
-      : "-";
+      ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || 'Unknown'
+      : '-';
 
-    const photoUrl = auth.userInfo?.photoURL || "";
-    const displayName = auth.userInfo?.displayName || "";
-    await setDoc(
-      userSettingsDoc,
-      { country, countryName, photoUrl, displayName },
-      { merge: true },
-    );
+    const photoUrl = auth.userInfo?.photoURL || '';
+    const displayName = auth.userInfo?.displayName || '';
+    await setDoc(userSettingsDoc, { country, countryName, photoUrl, displayName }, { merge: true });
   };
 
   useEffect(() => {
@@ -185,40 +170,27 @@ function useProvideSettings(): SettingsContextType {
 
   const setPageLanguage = async (languageCode: SupportedLanguage) => {
     if (!userSettingsDoc) return;
-    const langCodeValidated =
-      supportedLanguages.find((lang) => lang === languageCode) || "en";
-    await setDoc(
-      userSettingsDoc,
-      { pageLanguageCode: langCodeValidated },
-      { merge: true },
-    );
+    const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || 'en';
+    await setDoc(userSettingsDoc, { pageLanguageCode: langCodeValidated }, { merge: true });
   };
 
   const setNativeLanguage = async (languageCode: NativeLangCode) => {
     if (!userSettingsDoc) return;
-    await setDoc(
-      userSettingsDoc,
-      { nativeLanguageCode: languageCode },
-      { merge: true },
-    );
+    await setDoc(userSettingsDoc, { nativeLanguageCode: languageCode }, { merge: true });
   };
 
   const onDoneGameOnboarding = () => {
     if (!userSettingsDoc) return;
-    setDoc(
-      userSettingsDoc,
-      { isGameOnboardingCompleted: true },
-      { merge: true },
-    );
+    setDoc(userSettingsDoc, { isGameOnboardingCompleted: true }, { merge: true });
   };
 
-  const pageLanguageCode = userSettings?.pageLanguageCode || "";
+  const pageLanguageCode = userSettings?.pageLanguageCode || '';
 
   useEffect(() => {
-    const isWindow = typeof window !== "undefined";
+    const isWindow = typeof window !== 'undefined';
     if (!isWindow || !pageLanguageCode) return;
 
-    localStorage.setItem("pageLanguageCode", pageLanguageCode);
+    localStorage.setItem('pageLanguageCode', pageLanguageCode);
   }, [pageLanguageCode]);
 
   const setVoice = async (voice: AiVoice) => {
@@ -234,57 +206,47 @@ function useProvideSettings(): SettingsContextType {
     fullLanguageName: userSettings?.languageCode
       ? fullEnglishLanguageName[userSettings.languageCode]
       : null,
-    loading:
-      loading || !userId || !userSettingsDoc || !userSettings || !userCreatedAt,
+    loading: loading || !userId || !userSettingsDoc || !userSettings || !userCreatedAt,
     setLanguage,
     setPageLanguage,
     userSettings: userSettings || null,
     onDoneGameOnboarding,
     setAppMode,
-    appMode: clearAppMode(userSettings?.appMode || ""),
+    appMode: clearAppMode(userSettings?.appMode || ''),
 
-    conversationMode: userSettings?.conversationMode || "record",
+    conversationMode: userSettings?.conversationMode || 'record',
     setConversationMode,
     setVoice,
   };
 }
 
 const clearAppMode = (mode: string): AppMode => {
-  if (mode === "interview" || mode === "learning") {
+  if (mode === 'interview' || mode === 'learning') {
     return mode;
   }
-  return "learning";
+  return 'learning';
 };
 
-export function SettingsProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function SettingsProvider({ children }: { children: ReactNode }): JSX.Element {
   const settings = useProvideSettings();
 
-  return (
-    <settingsContext.Provider value={settings}>
-      {children}
-    </settingsContext.Provider>
-  );
+  return <settingsContext.Provider value={settings}>{children}</settingsContext.Provider>;
 }
 
 export const useSettings = (): SettingsContextType => {
   const context = useContext(settingsContext);
   if (!context) {
-    throw new Error("useSettings must be used within a SettingsProvider");
+    throw new Error('useSettings must be used within a SettingsProvider');
   }
   return context;
 };
 
 const getBrowserInfo = (): string => {
   try {
-    const navigatorInfo =
-      typeof navigator !== "undefined" ? navigator.userAgent : "unknown";
+    const navigatorInfo = typeof navigator !== 'undefined' ? navigator.userAgent : 'unknown';
     return navigatorInfo;
   } catch (error) {
-    console.error("Error getting browser info:", error);
-    return "unknown";
+    console.error('Error getting browser info:', error);
+    return 'unknown';
   }
 };

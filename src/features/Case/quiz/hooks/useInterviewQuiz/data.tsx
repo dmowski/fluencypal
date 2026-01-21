@@ -1,4 +1,4 @@
-import { InterviewQuizSurvey } from "@/features/Case/types";
+import { InterviewQuizSurvey } from '@/features/Case/types';
 
 export const MIN_CHARACTERS_FOR_TRANSCRIPT = 20;
 

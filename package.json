@@ -22,7 +22,9 @@
     "lang": "lingui extract && npm run ai-translate && lingui compile",
     "lang-clean": "lingui extract --clean && npm run lang",
     "stripe-hook": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
-    "fix-prettier": "prettier --write ."
+    "fix-prettier": "prettier --write .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",

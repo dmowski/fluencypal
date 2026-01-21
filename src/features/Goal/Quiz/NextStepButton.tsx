@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useLingui } from "@lingui/react";
-import { ArrowRight } from "lucide-react";
-import { useQuiz } from "./useQuiz";
-import { FooterButton } from "../../Survey/FooterButton";
+import { useLingui } from '@lingui/react';
+import { ArrowRight } from 'lucide-react';
+import { useQuiz } from './useQuiz';
+import { FooterButton } from '../../Survey/FooterButton';
 
 export const NextStepButton = ({
   disabled,
@@ -21,7 +21,7 @@ export const NextStepButton = ({
       onClick={() => {
         !isStepLoading && nextStep();
       }}
-      title={actionButtonTitle || i18n._("Next")}
+      title={actionButtonTitle || i18n._('Next')}
       endIcon={<ArrowRight />}
     />
   );

@@ -1,11 +1,11 @@
-import { Button, Stack } from "@mui/material";
-import { useBattle } from "./useBattle";
-import { BattleCard } from "./BattleCard";
-import { useState } from "react";
-import { useLingui } from "@lingui/react";
-import { ChevronDown } from "lucide-react";
-import { useAuth } from "@/features/Auth/useAuth";
-import { ChatProvider } from "@/features/Chat/useChat";
+import { Button, Stack } from '@mui/material';
+import { useBattle } from './useBattle';
+import { BattleCard } from './BattleCard';
+import { useState } from 'react';
+import { useLingui } from '@lingui/react';
+import { ChevronDown } from 'lucide-react';
+import { useAuth } from '@/features/Auth/useAuth';
+import { ChatProvider } from '@/features/Chat/useChat';
 
 const defaultLimit = 1;
 
@@ -28,9 +28,7 @@ export const BattleSection = () => {
     });
 
   const battlesToShow = actualBattles
-    .filter(
-      (battle) => !isLimited || !battle.hiddenByUsersIds?.includes(userId),
-    )
+    .filter((battle) => !isLimited || !battle.hiddenByUsersIds?.includes(userId))
     .filter((battle, index) => !isLimited || index < defaultLimit)
     .sort((a, b) => {
       const isAHidden = a.hiddenByUsersIds?.includes(userId) ? 1 : 0;
@@ -51,14 +49,14 @@ export const BattleSection = () => {
   return (
     <Stack
       sx={{
-        gap: "5px",
-        width: "100%",
-        paddingBottom: "20px",
+        gap: '5px',
+        width: '100%',
+        paddingBottom: '20px',
       }}
     >
       <Stack
         sx={{
-          gap: "30px",
+          gap: '30px',
         }}
       >
         {battlesToShow.map((battle) => (
@@ -69,7 +67,7 @@ export const BattleSection = () => {
                 allowedUserIds: battle.usersIds,
                 debateId: battle.battleId,
                 isPrivate: true,
-                type: "debate",
+                type: 'debate',
               }}
             >
               <BattleCard battle={battle} />
@@ -80,9 +78,7 @@ export const BattleSection = () => {
 
       {isNeedToShowMoreButton && (
         <Button onClick={() => setIsLimited(false)} endIcon={<ChevronDown />}>
-          {battlesToShow.length === 0
-            ? i18n._(`Show Debates`)
-            : i18n._(`Show More`)}
+          {battlesToShow.length === 0 ? i18n._(`Show Debates`) : i18n._(`Show More`)}
         </Button>
       )}
     </Stack>

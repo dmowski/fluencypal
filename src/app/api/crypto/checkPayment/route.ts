@@ -1,9 +1,9 @@
-import { NextRequest } from "next/server";
-import { CheckPaymentRequest, CheckPaymentResponse } from "./types";
-import { validateAuthToken } from "../../config/firebase";
-import { getOrders, updateOrder } from "../../payment/order";
-import { isCryptoPaid } from "../isCryptoPaid";
-import { addPaymentLog } from "../../payment/addPaymentLog";
+import { NextRequest } from 'next/server';
+import { CheckPaymentRequest, CheckPaymentResponse } from './types';
+import { validateAuthToken } from '../../config/firebase';
+import { getOrders, updateOrder } from '../../payment/order';
+import { isCryptoPaid } from '../isCryptoPaid';
+import { addPaymentLog } from '../../payment/addPaymentLog';
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,18 +13,18 @@ export async function POST(request: NextRequest) {
       const response: CheckPaymentResponse = {
         isPaymentPending: false,
         isRecentlyPaid: false,
-        error: { code: "UNAUTHORIZED", message: "User is not authenticated" },
+        error: { code: 'UNAUTHORIZED', message: 'User is not authenticated' },
       };
       return Response.json(response);
     }
     // 2) Parse input
     const body = (await request.json()) as CheckPaymentRequest;
-    console.log("CHECK CRYPTO PAYMENT", body);
+    console.log('CHECK CRYPTO PAYMENT', body);
     const userId = user.uid;
     let isRecentlyPaid = false;
     let isPaymentPending = false;
 
-    const userOrders = await getOrders({ userId, status: "pending" });
+    const userOrders = await getOrders({ userId, status: 'pending' });
 
     for (const order of userOrders) {
       const comment = order.comment;
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
       if (isOldPayment) {
         console.log(`ORDER:${order.id} = isOldPayment`, isOldPayment);
         await updateOrder(order.id, {
-          status: "outdated",
+          status: 'outdated',
           updatedAtIso: new Date().toISOString(),
         });
         continue;
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
       console.log(`ORDER:${order.id} = isPaid`, isPaid);
       if (isPaid) {
         await updateOrder(order.id, {
-          status: "paid",
+          status: 'paid',
           updatedAtIso: new Date().toISOString(),
         });
         await addPaymentLog({
@@ -57,8 +57,8 @@ export async function POST(request: NextRequest) {
           paymentId: order.id,
           currency: order.currency,
           amountOfHours: 0,
-          type: "subscription-full-v1",
-          receiptUrl: "",
+          type: 'subscription-full-v1',
+          receiptUrl: '',
           monthsCount: order.monthCount || undefined,
         });
         isRecentlyPaid = true;
@@ -77,8 +77,8 @@ export async function POST(request: NextRequest) {
       isPaymentPending: false,
       isRecentlyPaid: false,
       error: {
-        code: "SERVER_ERROR",
-        message: e?.message || "Unexpected server error",
+        code: 'SERVER_ERROR',
+        message: e?.message || 'Unexpected server error',
       },
     };
     return Response.json(errorResponse);

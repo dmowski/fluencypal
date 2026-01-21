@@ -1,53 +1,53 @@
-"use client";
-import { Button, Stack, Typography } from "@mui/material";
-import { Check, RefreshCw } from "lucide-react";
+'use client';
+import { Button, Stack, Typography } from '@mui/material';
+import { Check, RefreshCw } from 'lucide-react';
 
-import { useEffect, useRef, useState } from "react";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useLingui } from "@lingui/react";
-import { useWebCam } from "../webCam/useWebCam";
-import { WebCamView } from "../webCam/WebCamView";
-import VideocamIcon from "@mui/icons-material/Videocam";
-import MicIcon from "@mui/icons-material/Mic";
-import { GoalElementInfo, PlanElementMode } from "./types";
-import { useSettings } from "../Settings/useSettings";
-import { useWords } from "../Words/useWords";
-import { useAiConversation } from "../Conversation/useAiConversation";
-import { useRules } from "../Rules/useRules";
-import { InfoStep } from "../Survey/InfoStep";
-import { ConversationMode } from "@/common/user";
-import { ConversationType } from "@/common/conversation";
-import { Markdown } from "../uiKit/Markdown/Markdown";
-import { useTranslate } from "../Translation/useTranslate";
-import { ConversationIdea, useAiUserInfo } from "../Ai/useAiUserInfo";
-import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
-import { useLessonPlan } from "../LessonPlan/useLessonPlan";
-import { useAuth } from "../Auth/useAuth";
-import { useConversationAudio } from "../Audio/useConversationAudio";
-import { usePlan } from "./usePlan";
+import { useEffect, useRef, useState } from 'react';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { useLingui } from '@lingui/react';
+import { useWebCam } from '../webCam/useWebCam';
+import { WebCamView } from '../webCam/WebCamView';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import MicIcon from '@mui/icons-material/Mic';
+import { GoalElementInfo, PlanElementMode } from './types';
+import { useSettings } from '../Settings/useSettings';
+import { useWords } from '../Words/useWords';
+import { useAiConversation } from '../Conversation/useAiConversation';
+import { useRules } from '../Rules/useRules';
+import { InfoStep } from '../Survey/InfoStep';
+import { ConversationMode } from '@/common/user';
+import { ConversationType } from '@/common/conversation';
+import { Markdown } from '../uiKit/Markdown/Markdown';
+import { useTranslate } from '../Translation/useTranslate';
+import { ConversationIdea, useAiUserInfo } from '../Ai/useAiUserInfo';
+import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
+import { useLessonPlan } from '../LessonPlan/useLessonPlan';
+import { useAuth } from '../Auth/useAuth';
+import { useConversationAudio } from '../Audio/useConversationAudio';
+import { usePlan } from './usePlan';
 
-type Step = "intro" | "mic" | "webcam" | "words" | "rules" | "start" | "plan";
+type Step = 'intro' | 'mic' | 'webcam' | 'words' | 'rules' | 'start' | 'plan';
 
 const elementSteps: Record<PlanElementMode, Step[]> = {
-  conversation: ["intro", "mic", "webcam", "plan", "start"],
-  words: ["intro", "mic", "words", "plan", "start"],
-  play: ["intro", "mic", "webcam", "plan", "start"],
-  rule: ["intro", "mic", "rules", "plan", "start"],
+  conversation: ['intro', 'mic', 'webcam', 'plan', 'start'],
+  words: ['intro', 'mic', 'words', 'plan', 'start'],
+  play: ['intro', 'mic', 'webcam', 'plan', 'start'],
+  rule: ['intro', 'mic', 'rules', 'plan', 'start'],
 };
 
 const conversationModes: Record<PlanElementMode, ConversationMode> = {
-  conversation: "call",
-  words: "record",
-  play: "call",
-  rule: "record",
+  conversation: 'call',
+  words: 'record',
+  play: 'call',
+  rule: 'record',
 };
 
 // AI Conversation types
 const conversationTypes: Record<PlanElementMode, ConversationType> = {
-  conversation: "goal-talk",
-  words: "words",
-  play: "goal-role-play",
-  rule: "rule",
+  conversation: 'goal-talk',
+  words: 'words',
+  play: 'goal-role-play',
+  rule: 'rule',
 };
 
 export const LessonStartModal = ({
@@ -83,8 +83,7 @@ export const LessonStartModal = ({
   const wordsLoadingRef = useRef(isWordsLoading);
   const translator = useTranslate();
 
-  const [isLessonPlanLoading, setIsLessonPlanLoading] =
-    useState<boolean>(false);
+  const [isLessonPlanLoading, setIsLessonPlanLoading] = useState<boolean>(false);
   const isLoadingLessonPlanRef = useRef(false);
 
   const loadLessonPlan = async ({
@@ -108,10 +107,7 @@ export const LessonStartModal = ({
   const loadWords = async (knownWords?: string[]) => {
     setIsWordsLoading(true);
     wordsLoadingRef.current = true;
-    const wordsList = await words.getNewWordsToLearn(
-      goalInfo,
-      knownWords || [],
-    );
+    const wordsList = await words.getNewWordsToLearn(goalInfo, knownWords || []);
 
     setWordsToLearn(wordsList);
     loadLessonPlan({ words: wordsList, skipCache: true });
@@ -123,7 +119,7 @@ export const LessonStartModal = ({
     loadWords(wordsToLearn);
   };
 
-  const [ruleToLearn, setRuleToLearn] = useState<string>("");
+  const [ruleToLearn, setRuleToLearn] = useState<string>('');
   const [isRuleLoading, setIsRuleLoading] = useState<boolean>(false);
   const isRuleLoadingRef = useRef(isRuleLoading);
   const loadRule = async () => {
@@ -141,9 +137,9 @@ export const LessonStartModal = ({
 
   const loadIdeas = async () => {
     isLoadingIdeasRef.current = true;
-    const goalTitle = goalInfo.goalPlan.title || "";
-    const elementTitle = goalInfo.goalElement.title || "";
-    const elementDescription = goalInfo.goalElement.description || "";
+    const goalTitle = goalInfo.goalPlan.title || '';
+    const elementTitle = goalInfo.goalElement.title || '';
+    const elementDescription = goalInfo.goalElement.description || '';
     const goalInfoString = `${goalTitle} - ${elementTitle} - ${elementDescription}`;
     const result = await aiUserInfo.generateFirstMessageText(goalInfoString);
     setIdeas(result);
@@ -151,19 +147,14 @@ export const LessonStartModal = ({
   };
 
   useEffect(() => {
-    const isWords = steps.includes("words");
-    const isRules = steps.includes("rules");
+    const isWords = steps.includes('words');
+    const isRules = steps.includes('rules');
 
-    if (
-      steps.includes("plan") &&
-      !isLoadingLessonPlanRef.current &&
-      !isWords &&
-      !isRules
-    )
+    if (steps.includes('plan') && !isLoadingLessonPlanRef.current && !isWords && !isRules)
       loadLessonPlan({});
 
-    if (steps.includes("words") && !wordsLoadingRef.current) loadWords();
-    if (steps.includes("rules") && !isRuleLoadingRef.current) loadRule();
+    if (steps.includes('words') && !wordsLoadingRef.current) loadWords();
+    if (steps.includes('rules') && !isRuleLoadingRef.current) loadRule();
     if (!isLoadingIdeasRef.current) loadIdeas();
   }, []);
 
@@ -174,12 +165,11 @@ export const LessonStartModal = ({
     }
   };
 
-  const [imageDescription, setImageDescription] = useState<string>("");
-  const [loadingImageDescription, setLoadingImageDescription] =
-    useState<boolean>(false);
+  const [imageDescription, setImageDescription] = useState<string>('');
+  const [loadingImageDescription, setLoadingImageDescription] = useState<boolean>(false);
 
   const doneWebCamSetup = async () => {
-    let tempDescription = "";
+    let tempDescription = '';
     setLoadingImageDescription(true);
 
     setTimeout(async () => {
@@ -187,11 +177,9 @@ export const LessonStartModal = ({
     }, 500);
 
     try {
-      tempDescription = allowWebCam
-        ? (await webcam.getImageDescription()) || ""
-        : "";
+      tempDescription = allowWebCam ? (await webcam.getImageDescription()) || '' : '';
     } catch (error) {
-      console.error("Error getting image description:", error);
+      console.error('Error getting image description:', error);
     }
 
     if (tempDescription) {
@@ -219,7 +207,7 @@ export const LessonStartModal = ({
       ruleToLearn,
       ideas: ideas || undefined,
       lessonPlan: lessonPlan.activeLessonPlan || undefined,
-      voice: settings.userSettings?.teacherVoice || "shimmer",
+      voice: settings.userSettings?.teacherVoice || 'shimmer',
     });
 
     setIsStarting(false);
@@ -228,28 +216,26 @@ export const LessonStartModal = ({
     plan.startGoalElement(goalInfo.goalElement.id);
   };
   const auth = useAuth();
-  const isDev = auth.userInfo?.email?.includes("dmowski");
+  const isDev = auth.userInfo?.email?.includes('dmowski');
 
   return (
     <CustomModal isOpen={true} onClose={() => onClose()}>
       <Stack
         sx={{
-          maxWidth: "700px",
-          width: "100%",
+          maxWidth: '700px',
+          width: '100%',
         }}
       >
         {translator.translateModal}
 
-        {step === "intro" && (
+        {step === 'intro' && (
           <InfoStep
             title={goalInfo.goalElement.title}
-            subTitle={
-              goalInfo.goalElement.subTitle || goalInfo.goalElement.description
-            }
+            subTitle={goalInfo.goalElement.subTitle || goalInfo.goalElement.description}
             subComponent={
               <Typography
                 sx={{
-                  marginTop: "10px",
+                  marginTop: '10px',
                 }}
               >
                 {goalInfo.goalElement.details}
@@ -259,34 +245,26 @@ export const LessonStartModal = ({
           />
         )}
 
-        {step === "mic" && (
+        {step === 'mic' && (
           <InfoStep
             title={i18n._(`Microphone Setup`)}
             subTitle={i18n._(`Make sure your microphone is working properly.`)}
             subComponent={
               <Stack
                 sx={{
-                  gap: "10px",
-                  paddingTop: "10px",
-                  alignItems: "flex-start",
+                  gap: '10px',
+                  paddingTop: '10px',
+                  alignItems: 'flex-start',
                 }}
               >
                 <Button
                   variant="contained"
                   color="info"
                   sx={{
-                    padding: "10px 20px",
+                    padding: '10px 20px',
                   }}
                   startIcon={<MicIcon />}
-                  endIcon={
-                    isMicAllowed === null ? (
-                      <></>
-                    ) : isMicAllowed ? (
-                      <Check />
-                    ) : (
-                      <></>
-                    )
-                  }
+                  endIcon={isMicAllowed === null ? <></> : isMicAllowed ? <Check /> : <></>}
                   disabled={isMicAllowed === true}
                   onClick={async () => {
                     try {
@@ -302,10 +280,8 @@ export const LessonStartModal = ({
                   {i18n._(`Allow Microphone Access`)}
                 </Button>
                 {isMicAllowed === false && (
-                  <Typography sx={{ color: "red", marginTop: "10px" }}>
-                    {i18n._(
-                      `Microphone access denied. Please enable it in your browser settings.`,
-                    )}
+                  <Typography sx={{ color: 'red', marginTop: '10px' }}>
+                    {i18n._(`Microphone access denied. Please enable it in your browser settings.`)}
                   </Typography>
                 )}
               </Stack>
@@ -315,45 +291,45 @@ export const LessonStartModal = ({
           />
         )}
 
-        {step === "webcam" && (
+        {step === 'webcam' && (
           <InfoStep
             title={i18n._(`Webcam Setup`)}
             subTitle={i18n._(`Make sure your webcam is working properly.`)}
             subComponent={
               <Stack
                 sx={{
-                  gap: "10px",
-                  alignItems: "flex-start",
+                  gap: '10px',
+                  alignItems: 'flex-start',
                 }}
               >
                 <Stack
                   sx={{
-                    maxWidth: "350px",
-                    width: "100%",
-                    height: "220px",
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
-                    backgroundColor: "rgba(0, 0, 0, 0.2)",
-                    borderRadius: "9px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    margin: "20px 0",
-                    position: "relative",
-                    overflow: "hidden",
+                    maxWidth: '350px',
+                    width: '100%',
+                    height: '220px',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                    borderRadius: '9px',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    margin: '20px 0',
+                    position: 'relative',
+                    overflow: 'hidden',
                   }}
                 >
                   {allowWebCam === true && <WebCamView />}
                   {allowWebCam === null && (
                     <Stack
                       sx={{
-                        gap: "5px",
-                        alignItems: "center",
+                        gap: '5px',
+                        alignItems: 'center',
                       }}
                     >
                       <Button
                         color="info"
                         variant="contained"
                         sx={{
-                          padding: "10px 20px",
+                          padding: '10px 20px',
                         }}
                         onClick={() => setAllowWebCam(true)}
                         startIcon={<VideocamIcon />}
@@ -379,32 +355,27 @@ export const LessonStartModal = ({
           />
         )}
 
-        {step === "words" && (
+        {step === 'words' && (
           <InfoStep
             title={i18n._(`Words to Learn`)}
             subTitle={i18n._(`Here are some new words for you to learn:`)}
             subComponent={
               <Stack
                 sx={{
-                  width: "100%",
-                  flexDirection: "row",
-                  gap: "0px 12px",
-                  flexWrap: "wrap",
-                  padding: "20px 0",
+                  width: '100%',
+                  flexDirection: 'row',
+                  gap: '0px 12px',
+                  flexWrap: 'wrap',
+                  padding: '20px 0',
                 }}
-                className={isWordsLoading ? "loading-shimmer" : ""}
+                className={isWordsLoading ? 'loading-shimmer' : ''}
               >
                 {wordsToLearn.map((word, index) => {
                   const isLastWord = index === wordsToLearn.length - 1;
                   return (
-                    <Typography
-                      key={index}
-                      className="decor-text"
-                      variant="h3"
-                      align="center"
-                    >
+                    <Typography key={index} className="decor-text" variant="h3" align="center">
                       {word}
-                      {!isLastWord ? "," : ""}
+                      {!isLastWord ? ',' : ''}
                     </Typography>
                   );
                 })}
@@ -414,31 +385,30 @@ export const LessonStartModal = ({
             onClick={onNext}
             secondButtonTitle={i18n._(`I know these`)}
             secondButtonDisabled={isWordsLoading}
-            secondButtonEndIcon={<RefreshCw size={"18px"} />}
+            secondButtonEndIcon={<RefreshCw size={'18px'} />}
             onSecondButtonClick={() => refreshWords()}
           />
         )}
 
-        {step === "rules" && (
+        {step === 'rules' && (
           <InfoStep
             title={i18n._(`Rules to Learn`)}
             subTitle={i18n._(`Here are some new rules for you to learn:`)}
             subComponent={
               <Stack
                 sx={{
-                  width: "100%",
-                  flexDirection: "row",
-                  gap: "0px 12px",
-                  flexWrap: "wrap",
-                  padding: "20px 0",
+                  width: '100%',
+                  flexDirection: 'row',
+                  gap: '0px 12px',
+                  flexWrap: 'wrap',
+                  padding: '20px 0',
                 }}
-                className={isRuleLoading ? "loading-shimmer" : ""}
+                className={isRuleLoading ? 'loading-shimmer' : ''}
               >
                 <Markdown
                   onWordClick={
                     translator.isTranslateAvailable
-                      ? (word, element) =>
-                          translator.translateWithModal(word, element)
+                      ? (word, element) => translator.translateWithModal(word, element)
                       : undefined
                   }
                   variant="conversation"
@@ -451,43 +421,34 @@ export const LessonStartModal = ({
             onClick={onNext}
             secondButtonTitle={i18n._(`Refresh`)}
             secondButtonDisabled={isRuleLoading}
-            secondButtonEndIcon={<RefreshCw size={"18px"} />}
+            secondButtonEndIcon={<RefreshCw size={'18px'} />}
             onSecondButtonClick={() => loadRule()}
           />
         )}
 
-        {step === "plan" && (
+        {step === 'plan' && (
           <InfoStep
             title={i18n._(`Lesson Plan`)}
             subTitle={i18n._(`Here is the lesson plan for this session:`)}
             subComponent={
               <Stack
                 sx={{
-                  width: "100%",
-                  flexDirection: "row",
-                  gap: "30px",
-                  flexWrap: "wrap",
-                  padding: "20px 0",
+                  width: '100%',
+                  flexDirection: 'row',
+                  gap: '30px',
+                  flexWrap: 'wrap',
+                  padding: '20px 0',
                 }}
               >
                 {(!lessonPlan.activeLessonPlan ||
                   lessonPlan.activeLessonPlan.steps.length === 0) && (
                   <Stack
                     sx={{
-                      width: "100%",
+                      width: '100%',
                     }}
                   >
                     <LoadingShapes
-                      sizes={[
-                        "20px",
-                        "100px",
-                        "20px",
-                        "100px",
-                        "20px",
-                        "100px",
-                        "20px",
-                        "100px",
-                      ]}
+                      sizes={['20px', '100px', '20px', '100px', '20px', '100px', '20px', '100px']}
                     />
                   </Stack>
                 )}
@@ -495,35 +456,35 @@ export const LessonStartModal = ({
                 {lessonPlan.activeLessonPlan?.steps.map((planStep, index) => (
                   <Stack
                     key={index}
-                    className={isLessonPlanLoading ? "loading-shimmer" : ""}
+                    className={isLessonPlanLoading ? 'loading-shimmer' : ''}
                     sx={{
-                      width: "100%",
+                      width: '100%',
                     }}
                   >
-                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                    <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
                       {index + 1}. {planStep.stepTitle}
                     </Typography>
-                    <Typography sx={{ marginTop: "5px" }}>
+                    <Typography sx={{ marginTop: '5px' }}>
                       {planStep.stepDescriptionForStudent}
                     </Typography>
                     {isDev && (
                       <details
                         style={{
-                          display: "none",
+                          display: 'none',
                         }}
                       >
                         <summary
                           style={{
-                            marginTop: "8px",
-                            cursor: "pointer",
-                            color: "rgba(255, 255, 255, 0.7)",
+                            marginTop: '8px',
+                            cursor: 'pointer',
+                            color: 'rgba(255, 255, 255, 0.7)',
                           }}
                         >
                           {i18n._(`Teacher Instructions`)}
                         </summary>
                         <Typography
                           sx={{
-                            marginTop: "5px",
+                            marginTop: '5px',
                           }}
                         >
                           {planStep.teacherInstructions}
@@ -538,7 +499,7 @@ export const LessonStartModal = ({
             onClick={onNext}
             secondButtonDisabled={isLessonPlanLoading}
             secondButtonTitle={i18n._(`Refresh`)}
-            secondButtonEndIcon={<RefreshCw size={"18px"} />}
+            secondButtonEndIcon={<RefreshCw size={'18px'} />}
             onSecondButtonClick={() =>
               loadLessonPlan({
                 skipCache: true,
@@ -547,16 +508,12 @@ export const LessonStartModal = ({
           />
         )}
 
-        {step === "start" && (
+        {step === 'start' && (
           <InfoStep
             title={
-              isStarting || loadingImageDescription
-                ? i18n._(`Loading`)
-                : i18n._(`Start Lesson`)
+              isStarting || loadingImageDescription ? i18n._(`Loading`) : i18n._(`Start Lesson`)
             }
-            subTitle={
-              loadingImageDescription ? "" : i18n._(`We're ready to begin!`)
-            }
+            subTitle={loadingImageDescription ? '' : i18n._(`We're ready to begin!`)}
             actionButtonTitle={i18n._(`Start Call`)}
             disabled={isStarting || loadingImageDescription}
             onClick={onStart}

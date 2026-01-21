@@ -1,46 +1,39 @@
-import Stripe from "stripe";
-import { addPaymentLog } from "../../payment/addPaymentLog";
-import { sentSupportTelegramMessage } from "../../telegram/sendTelegramMessage";
-import { stripeConfig } from "../../payment/config";
-import { sendEmail } from "../../email/sendEmail";
-import { appName } from "@/common/metadata";
-import { getUserInfo, updateUserInfo } from "../../user/getUserInfo";
-import { refundPayment } from "../../payment/refund";
-import { getConfirmEmailTemplate } from "./getConfirmEmailTemplate";
+import Stripe from 'stripe';
+import { addPaymentLog } from '../../payment/addPaymentLog';
+import { sentSupportTelegramMessage } from '../../telegram/sendTelegramMessage';
+import { stripeConfig } from '../../payment/config';
+import { sendEmail } from '../../email/sendEmail';
+import { appName } from '@/common/metadata';
+import { getUserInfo, updateUserInfo } from '../../user/getUserInfo';
+import { refundPayment } from '../../payment/refund';
+import { getConfirmEmailTemplate } from './getConfirmEmailTemplate';
 
 const stripe = new Stripe(stripeConfig.STRIPE_SECRET_KEY!);
 
-const markUserAsCreditCardConfirmed = async (
-  userId: string,
-  isConfirmed: boolean,
-) => {
+const markUserAsCreditCardConfirmed = async (userId: string, isConfirmed: boolean) => {
   await updateUserInfo(userId, { isCreditCardConfirmed: isConfirmed });
 };
 
 export async function POST(request: Request) {
   if (!stripeConfig.STRIPE_WEBHOOK_SECRET) {
-    sentSupportTelegramMessage({ message: "Stripe webhook secret is not set" });
-    return new Response("Stripe webhook secret is not set", { status: 500 });
+    sentSupportTelegramMessage({ message: 'Stripe webhook secret is not set' });
+    return new Response('Stripe webhook secret is not set', { status: 500 });
   }
   if (!stripeConfig.STRIPE_SECRET_KEY) {
-    sentSupportTelegramMessage({ message: "Stripe API key is not set" });
-    return new Response("Stripe API key is not set", { status: 500 });
+    sentSupportTelegramMessage({ message: 'Stripe API key is not set' });
+    return new Response('Stripe API key is not set', { status: 500 });
   }
 
-  const sig = request.headers.get("stripe-signature");
+  const sig = request.headers.get('stripe-signature');
   if (!sig) {
-    sentSupportTelegramMessage({ message: "Stripe signature is not set" });
-    return new Response("Stripe signature is not set", { status: 400 });
+    sentSupportTelegramMessage({ message: 'Stripe signature is not set' });
+    return new Response('Stripe signature is not set', { status: 400 });
   }
 
   let event: Stripe.Event;
   try {
     const body = await request.text(); // raw body for signature verification
-    event = stripe.webhooks.constructEvent(
-      body,
-      sig,
-      stripeConfig.STRIPE_WEBHOOK_SECRET,
-    );
+    event = stripe.webhooks.constructEvent(body, sig, stripeConfig.STRIPE_WEBHOOK_SECRET);
   } catch (error: any) {
     const message = `Error verifying Stripe signature: ${error.message}`;
     sentSupportTelegramMessage({ message });
@@ -50,32 +43,30 @@ export async function POST(request: Request) {
   const responseData: Record<string, string> = {};
 
   try {
-    console.log("event.type", event.type);
+    console.log('event.type', event.type);
     // --- NEW: SetupIntent handling for card verification ---
-    if (event.type === "setup_intent.succeeded") {
+    if (event.type === 'setup_intent.succeeded') {
       const si = event.data.object as Stripe.SetupIntent;
       const customerId = si.customer as string | null;
-      console.log("customerId setup_intent.succeeded", customerId);
+      console.log('customerId setup_intent.succeeded', customerId);
       responseData.event = event.type;
 
       let firebaseUid: string | undefined;
       if (customerId) {
-        const customer = (await stripe.customers.retrieve(
-          customerId,
-        )) as Stripe.Customer;
+        const customer = (await stripe.customers.retrieve(customerId)) as Stripe.Customer;
         firebaseUid = customer?.metadata?.firebaseUid;
-        console.log("firebaseUid", firebaseUid);
+        console.log('firebaseUid', firebaseUid);
       }
 
       if (firebaseUid) {
-        responseData.start_intent = "marking user as credit card confirmed";
+        responseData.start_intent = 'marking user as credit card confirmed';
         await markUserAsCreditCardConfirmed(firebaseUid, true);
-        console.log("Marked user as credit card confirmed:", firebaseUid);
+        console.log('Marked user as credit card confirmed:', firebaseUid);
         await sentSupportTelegramMessage({
           message: `✅ Card verified via SetupIntent for user ${firebaseUid}`,
           userId: firebaseUid,
         });
-        console.log("Sent Telegram message for user:", firebaseUid);
+        console.log('Sent Telegram message for user:', firebaseUid);
       } else {
         // No uid on customer; nothing to update, but notify so you can investigate.
         sentSupportTelegramMessage({
@@ -85,22 +76,17 @@ export async function POST(request: Request) {
     }
 
     // Optional: inform/support on explicit failures/cancelations
-    if (
-      event.type === "setup_intent.setup_failed" ||
-      event.type === "setup_intent.canceled"
-    ) {
+    if (event.type === 'setup_intent.setup_failed' || event.type === 'setup_intent.canceled') {
       const si = event.data.object as Stripe.SetupIntent;
       const customerId = si.customer as string | null;
       let firebaseUid: string | undefined;
       if (customerId) {
-        const customer = (await stripe.customers.retrieve(
-          customerId,
-        )) as Stripe.Customer;
+        const customer = (await stripe.customers.retrieve(customerId)) as Stripe.Customer;
         firebaseUid = customer?.metadata?.firebaseUid;
       }
       sentSupportTelegramMessage({
         message: `❌ Card verification failed: ${event.type} (customer: ${customerId}, uid: ${
-          firebaseUid ?? "n/a"
+          firebaseUid ?? 'n/a'
         })`,
         userId: firebaseUid,
       });
@@ -108,14 +94,13 @@ export async function POST(request: Request) {
     }
 
     // --- existing handlers you already had ---
-    if (event.type == "radar.early_fraud_warning.created") {
-      const earlyFraudWarning = event.data
-        .object as Stripe.Radar.EarlyFraudWarning;
+    if (event.type == 'radar.early_fraud_warning.created') {
+      const earlyFraudWarning = event.data.object as Stripe.Radar.EarlyFraudWarning;
       const chargeId = earlyFraudWarning.charge as string;
       await refundPayment(chargeId);
     }
 
-    if (event.type === "checkout.session.completed") {
+    if (event.type === 'checkout.session.completed') {
       const session = event.data.object as Stripe.Checkout.Session;
       const paymentId = session.id;
 
@@ -123,26 +108,25 @@ export async function POST(request: Request) {
       const currency = session.currency;
 
       const paymentIntentId = session.payment_intent as string;
-      const paymentIntent =
-        await stripe.paymentIntents.retrieve(paymentIntentId);
+      const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
       const charges = paymentIntent.latest_charge;
-      if (!charges) throw new Error("No charges in payment intent");
-      if (!userId) throw new Error("No userId in metadata");
+      if (!charges) throw new Error('No charges in payment intent');
+      if (!userId) throw new Error('No userId in metadata');
 
       const userInfo = await getUserInfo(userId);
       const userEmail = userInfo.email;
 
       const chargeObject = await stripe.charges.retrieve(charges.toString());
-      const receiptUrl = chargeObject.receipt_url || "";
-      const receiptId = chargeObject.receipt_number || "";
+      const receiptUrl = chargeObject.receipt_url || '';
+      const receiptId = chargeObject.receipt_number || '';
       const amountPaid = (session.amount_total ?? 0) / 100;
 
       const months = session.metadata?.amountOfMonths;
       const days = session.metadata?.amountOfDays;
 
-      if (days && days !== "0") {
+      if (days && days !== '0') {
         const daysCount = parseInt(days, 10);
-        if (daysCount <= 0) throw new Error("Amount of days is not set");
+        if (daysCount <= 0) throw new Error('Amount of days is not set');
 
         const tgMessage = `🤑 User ${userEmail} subscribed for ${daysCount} days.`;
         sentSupportTelegramMessage({ message: tgMessage, userId });
@@ -150,15 +134,15 @@ export async function POST(request: Request) {
           amount: amountPaid,
           userId: userId,
           paymentId,
-          currency: currency || "pln",
+          currency: currency || 'pln',
           amountOfHours: 0,
-          type: "subscription-full-v1",
+          type: 'subscription-full-v1',
           receiptUrl,
           daysCount: daysCount,
         });
-      } else if (months && months !== "0") {
+      } else if (months && months !== '0') {
         const monthsCount = parseInt(months, 10);
-        if (monthsCount <= 0) throw new Error("Amount of months is not set");
+        if (monthsCount <= 0) throw new Error('Amount of months is not set');
 
         const tgMessage = `User ${userEmail} subscribed for ${monthsCount} months.`;
         sentSupportTelegramMessage({ message: tgMessage, userId });
@@ -166,15 +150,14 @@ export async function POST(request: Request) {
           amount: amountPaid,
           userId: userId,
           paymentId,
-          currency: currency || "pln",
+          currency: currency || 'pln',
           amountOfHours: 0,
-          type: "subscription-full-v1",
+          type: 'subscription-full-v1',
           receiptUrl,
           monthsCount: monthsCount,
         });
       } else {
-        const amountOfHours =
-          parseFloat(session.metadata?.amountOfHours ?? "0") || 1;
+        const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? '0') || 1;
 
         const tgMessage = `User ${userEmail} purchased ${amountOfHours} hours.`;
         sentSupportTelegramMessage({ message: tgMessage, userId });
@@ -182,9 +165,9 @@ export async function POST(request: Request) {
           amount: amountPaid,
           userId: userId,
           paymentId,
-          currency: currency || "usd",
+          currency: currency || 'usd',
           amountOfHours,
-          type: "user",
+          type: 'user',
           receiptUrl,
         });
       }

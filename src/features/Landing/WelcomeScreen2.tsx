@@ -1,8 +1,8 @@
-import { Stack, SxProps, Typography } from "@mui/material";
-import { WelcomeScreenButton } from "./FirstEnterButton";
-import { PageLabel2 } from "../Case/Landing/components/Typography";
-import { ArrowRight, MoveRight } from "lucide-react";
-import { maxLandingWidth } from "./landingSettings";
+import { Stack, SxProps, Typography } from '@mui/material';
+import { WelcomeScreenButton } from './FirstEnterButton';
+import { PageLabel2 } from '../Case/Landing/components/Typography';
+import { ArrowRight, MoveRight } from 'lucide-react';
+import { maxLandingWidth } from './landingSettings';
 
 interface PreviewCard {
   imageUrl?: string;
@@ -32,49 +32,49 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
   openMyPracticeLinkTitle,
 }) => {
   //const bgUrl = "https://cdn.midjourney.com/7813fa3b-6e7f-42c6-b04d-ee77a5058aad/0_0.png";
-  const bgUrl = "/landing/preview/space2.webp";
+  const bgUrl = '/landing/preview/space2.webp';
   return (
     <Stack
       sx={{
-        width: "100%",
-        alignItems: "center",
-        position: "relative",
-        overflow: "hidden",
-        padding: "30px 0 20px 0",
-        "@media (max-width: 1100px)": {
-          paddingBottom: "10px",
+        width: '100%',
+        alignItems: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        padding: '30px 0 20px 0',
+        '@media (max-width: 1100px)': {
+          paddingBottom: '10px',
         },
       }}
     >
       <Stack
         sx={{
-          position: "absolute",
+          position: 'absolute',
           bottom: 0,
-          width: "100vw",
+          width: '100vw',
           left: 0,
-          height: "170px",
+          height: '170px',
           background: `linear-gradient(180deg, rgba(16, 19, 26, 0) 0%, rgba(16, 19, 26, 1) 100%)`,
           zIndex: 1,
           opacity: 1,
-          "@media (max-width: 600px)": {
-            height: "100px",
+          '@media (max-width: 600px)': {
+            height: '100px',
           },
         }}
       />
 
       <Stack
         sx={{
-          position: "absolute",
+          position: 'absolute',
           backgroundColor: `#10131a`,
           top: 0,
-          left: "0px",
-          margin: "0 auto",
-          width: "100vw",
-          overflow: "hidden",
-          height: "100%",
+          left: '0px',
+          margin: '0 auto',
+          width: '100vw',
+          overflow: 'hidden',
+          height: '100%',
           zIndex: -2,
           background: `url('${bgUrl}') no-repeat center center`,
-          backgroundSize: "cover",
+          backgroundSize: 'cover',
           opacity: 0.5,
         }}
       />
@@ -82,66 +82,66 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
       <Stack
         sx={{
           maxWidth: maxLandingWidth,
-          padding: "120px 10px 0px 10px",
-          height: "max-content",
-          width: "100%",
+          padding: '120px 10px 0px 10px',
+          height: 'max-content',
+          width: '100%',
 
-          boxSizing: "border-box",
-          alignItems: "center",
+          boxSizing: 'border-box',
+          alignItems: 'center',
 
-          gap: "100px",
-          position: "relative",
-          "@media (max-width: 600px)": {
-            gap: "20px",
-            padding: "90px 0px 0 0px",
+          gap: '100px',
+          position: 'relative',
+          '@media (max-width: 600px)': {
+            gap: '20px',
+            padding: '90px 0px 0 0px',
           },
-          "@media (max-width: 500px)": {
-            padding: "50px 0px 0 0px",
+          '@media (max-width: 500px)': {
+            padding: '50px 0px 0 0px',
           },
         }}
       >
         <Stack
           sx={{
-            flexDirection: "row",
-            gap: "10px",
-            width: "100%",
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingBottom: "100px",
-            "@media (max-width: 1100px)": {
-              flexDirection: "column",
-              gap: "150px",
+            flexDirection: 'row',
+            gap: '10px',
+            width: '100%',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingBottom: '100px',
+            '@media (max-width: 1100px)': {
+              flexDirection: 'column',
+              gap: '150px',
             },
           }}
         >
           <Stack
             sx={{
-              gap: "20px",
+              gap: '20px',
 
-              alignItems: "flex-start",
+              alignItems: 'flex-start',
 
-              "@media (max-width: 1100px)": {
-                alignItems: "center",
+              '@media (max-width: 1100px)': {
+                alignItems: 'center',
               },
             }}
           >
             <PageLabel2>{label}</PageLabel2>
             <Typography
               variant="h1"
-              component={"h1"}
+              component={'h1'}
               sx={{
                 fontWeight: 900,
-                fontSize: "96px",
-                lineHeight: "100px",
-                maxWidth: "800px",
-                "@media (max-width: 1100px)": {
-                  textAlign: "center",
-                  maxWidth: "100%",
+                fontSize: '96px',
+                lineHeight: '100px',
+                maxWidth: '800px',
+                '@media (max-width: 1100px)': {
+                  textAlign: 'center',
+                  maxWidth: '100%',
                 },
-                "@media (max-width: 800px)": {
-                  fontSize: "64px",
-                  lineHeight: "70px",
-                  padding: "0 20px",
+                '@media (max-width: 800px)': {
+                  fontSize: '64px',
+                  lineHeight: '70px',
+                  padding: '0 20px',
                 },
               }}
             >
@@ -149,21 +149,21 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
             </Typography>
             <Stack
               sx={{
-                gap: "5px",
+                gap: '5px',
               }}
             >
               <Typography
                 sx={{
-                  maxWidth: "500px",
-                  padding: "10px 10px 0 0",
-                  fontSize: "1.1rem",
-                  textShadow: "0 0 5px rgba(0, 0, 0, 0.71)",
-                  "@media (max-width: 600px)": {
-                    fontSize: "0.9rem",
+                  maxWidth: '500px',
+                  padding: '10px 10px 0 0',
+                  fontSize: '1.1rem',
+                  textShadow: '0 0 5px rgba(0, 0, 0, 0.71)',
+                  '@media (max-width: 600px)': {
+                    fontSize: '0.9rem',
                   },
-                  "@media (max-width: 1100px)": {
-                    textAlign: "center",
-                    padding: "0px 10px 0 10px",
+                  '@media (max-width: 1100px)': {
+                    textAlign: 'center',
+                    padding: '0px 10px 0 10px',
                   },
                   b: {
                     fontWeight: 600,
@@ -176,39 +176,37 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
 
             <Stack
               sx={{
-                paddingTop: "40px",
+                paddingTop: '40px',
               }}
             >
               <WelcomeScreenButton
                 getStartedTitle={buttonTitle}
                 practiceLink={buttonHref}
                 openMyPracticeLinkTitle={openMyPracticeLinkTitle}
-                endIcon={<MoveRight size={"27px"} />}
+                endIcon={<MoveRight size={'27px'} />}
               />
             </Stack>
           </Stack>
 
           <Stack
             sx={{
-              flexDirection: "row",
+              flexDirection: 'row',
             }}
           >
             {cards.map((card, index) => {
               const isCenter = index === 1;
-              const borderRadius = "19px";
-              const borderRadiusMobile = "12px";
+              const borderRadius = '19px';
+              const borderRadiusMobile = '12px';
 
               const contentStyle: SxProps = {
-                height: "580px",
+                height: '580px',
                 borderRadius: borderRadius,
-                position: "relative",
+                position: 'relative',
                 zIndex: 2,
-                boxShadow: isCenter
-                  ? "0 3px 70px rgba(0, 0, 0, 1)"
-                  : "0 4px 85px rgba(0, 0, 0, 1)",
+                boxShadow: isCenter ? '0 3px 70px rgba(0, 0, 0, 1)' : '0 4px 85px rgba(0, 0, 0, 1)',
 
-                "@media (max-width: 700px)": {
-                  height: "400px",
+                '@media (max-width: 700px)': {
+                  height: '400px',
                   borderRadius: borderRadiusMobile,
                 },
               };
@@ -217,34 +215,29 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                 <Stack
                   key={index}
                   sx={{
-                    position: "relative",
+                    position: 'relative',
                     zIndex: isCenter ? 1 : 0,
                     transform: `scale(${isCenter ? 1.05 : 0.9})`,
-                    marginLeft: index > 0 ? "-100px" : "0",
-                    transition: "transform 0.3s ease-in-out",
+                    marginLeft: index > 0 ? '-100px' : '0',
+                    transition: 'transform 0.3s ease-in-out',
                   }}
                 >
                   {card.imageUrl && !card.videoUrl && (
-                    <Stack
-                      component={"img"}
-                      alt={card.alt}
-                      src={card.imageUrl}
-                      sx={contentStyle}
-                    />
+                    <Stack component={'img'} alt={card.alt} src={card.imageUrl} sx={contentStyle} />
                   )}
                   {card.videoUrl && (
                     <>
                       {card.imageUrl && (
                         <Stack
-                          component={"img"}
+                          component={'img'}
                           alt={card.alt}
                           src={card.imageUrl}
                           sx={{
                             ...contentStyle,
-                            aspectRatio: "411 / 896",
-                            boxShadow: "none",
-                            width: "100%",
-                            position: "absolute",
+                            aspectRatio: '411 / 896',
+                            boxShadow: 'none',
+                            width: '100%',
+                            position: 'absolute',
                             top: 0,
                             left: 0,
                             zIndex: 1,
@@ -253,7 +246,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                         />
                       )}
                       <Stack
-                        component={"video"}
+                        component={'video'}
                         autoPlay
                         loop
                         playsInline
@@ -261,7 +254,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                         muted
                         sx={{
                           ...contentStyle,
-                          aspectRatio: "411 / 896",
+                          aspectRatio: '411 / 896',
                         }}
                         src={card.videoUrl}
                       />
@@ -270,16 +263,15 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                   <Stack
                     sx={{
                       background: `#000`,
-                      position: "absolute",
-                      "--padding": "0px",
-                      width: "calc(100% + var(--padding) * 2)",
-                      height: "calc(100% + var(--padding) * 2)",
-                      top: "calc(0px - var(--padding))",
-                      left: "calc(0px - var(--padding))",
-                      boxShadow:
-                        "0 0 0 0px rgba(0, 0, 0, 1), 0 0 0 1px rgba(255, 255, 255, 1)",
+                      position: 'absolute',
+                      '--padding': '0px',
+                      width: 'calc(100% + var(--padding) * 2)',
+                      height: 'calc(100% + var(--padding) * 2)',
+                      top: 'calc(0px - var(--padding))',
+                      left: 'calc(0px - var(--padding))',
+                      boxShadow: '0 0 0 0px rgba(0, 0, 0, 1), 0 0 0 1px rgba(255, 255, 255, 1)',
                       borderRadius: borderRadius,
-                      "@media (max-width: 700px)": {
+                      '@media (max-width: 700px)': {
                         borderRadius: borderRadiusMobile,
                       },
                     }}

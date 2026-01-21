@@ -1,25 +1,25 @@
-import { validateAuthToken } from "../config/firebase";
-import { DEV_EMAILS } from "@/common/dev";
-import { AdminStatsRequest, AdminStatsResponse, UserStat } from "./types";
+import { validateAuthToken } from '../config/firebase';
+import { DEV_EMAILS } from '@/common/dev';
+import { AdminStatsRequest, AdminStatsResponse, UserStat } from './types';
 import {
   getAllUsersWithIds,
   getUserAiInfo,
   getUserConversationsMeta,
   getUsersInterviewSurvey,
   getUsersQuizSurvey,
-} from "../user/getUserInfo";
-import { getUserBalance } from "../payment/getUserBalance";
+} from '../user/getUserInfo';
+import { getUserBalance } from '../payment/getUserBalance';
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
   const reqBody = (await request.json()) as AdminStatsRequest;
   const isFullExport = reqBody.isFullExport;
   if (!userInfo.uid) {
-    throw new Error("User is not authenticated");
+    throw new Error('User is not authenticated');
   }
   const isAdmin = DEV_EMAILS.includes(userInfo.email);
   if (!isAdmin) {
-    throw new Error("User is not authorized");
+    throw new Error('User is not authorized');
   }
 
   const allUsers = await getAllUsersWithIds({
@@ -28,14 +28,13 @@ export async function POST(request: Request) {
 
   const userStats = await Promise.all(
     allUsers.map(async (user) => {
-      const [conversationMeta, goalQuiz2, interviewStats, balance, aiUserInfo] =
-        await Promise.all([
-          getUserConversationsMeta(user.id),
-          getUsersQuizSurvey(user.id),
-          getUsersInterviewSurvey(user.id),
-          getUserBalance(user.id),
-          getUserAiInfo(user.id),
-        ]);
+      const [conversationMeta, goalQuiz2, interviewStats, balance, aiUserInfo] = await Promise.all([
+        getUserConversationsMeta(user.id),
+        getUsersQuizSurvey(user.id),
+        getUsersInterviewSurvey(user.id),
+        getUserBalance(user.id),
+        getUserAiInfo(user.id),
+      ]);
 
       const userStat: UserStat = {
         userData: user,

@@ -1,34 +1,28 @@
-import CallEndIcon from "@mui/icons-material/CallEnd";
-import MicOffIcon from "@mui/icons-material/MicOff";
-import MicIcon from "@mui/icons-material/Mic";
-import VideocamIcon from "@mui/icons-material/Videocam";
-import VideocamOffIcon from "@mui/icons-material/VideocamOff";
-import {
-  Button,
-  CircularProgress,
-  IconButton,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { useLingui } from "@lingui/react";
-import VolumeOffIcon from "@mui/icons-material/VolumeOff";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import { Trophy } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { CustomModal } from "@/features/uiKit/Modal/CustomModal";
-import { FeatureBlocker } from "@/features/Usage/FeatureBlocker";
-import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
-import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
-import ClosedCaptionDisabledIcon from "@mui/icons-material/ClosedCaptionDisabled";
-import { LessonPlanAnalysis } from "@/features/LessonPlan/type";
-import { sleep } from "@/libs/sleep";
-import CloseIcon from "@mui/icons-material/Close";
-import DoneIcon from "@mui/icons-material/Done";
-import { useLessonPlan } from "@/features/LessonPlan/useLessonPlan";
-import { useVadAudioRecorder } from "@/features/Audio/useVadAudioRecorder";
-import { CallButton } from "./CallButton";
-import { useTextAi } from "@/features/Ai/useTextAi";
-import { RecordingUserMessageMode } from "../types";
+import CallEndIcon from '@mui/icons-material/CallEnd';
+import MicOffIcon from '@mui/icons-material/MicOff';
+import MicIcon from '@mui/icons-material/Mic';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import VideocamOffIcon from '@mui/icons-material/VideocamOff';
+import { Button, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
+import { useLingui } from '@lingui/react';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import { Trophy } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
+import { FeatureBlocker } from '@/features/Usage/FeatureBlocker';
+import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
+import ClosedCaptionIcon from '@mui/icons-material/ClosedCaption';
+import ClosedCaptionDisabledIcon from '@mui/icons-material/ClosedCaptionDisabled';
+import { LessonPlanAnalysis } from '@/features/LessonPlan/type';
+import { sleep } from '@/libs/sleep';
+import CloseIcon from '@mui/icons-material/Close';
+import DoneIcon from '@mui/icons-material/Done';
+import { useLessonPlan } from '@/features/LessonPlan/useLessonPlan';
+import { useVadAudioRecorder } from '@/features/Audio/useVadAudioRecorder';
+import { CallButton } from './CallButton';
+import { useTextAi } from '@/features/Ai/useTextAi';
+import { RecordingUserMessageMode } from '../types';
 
 export const CallButtons = ({
   isMuted,
@@ -102,10 +96,10 @@ Examples:
 'Hello, how are you?': 2500
 `,
       userMessage: message,
-      model: "gpt-4o",
+      model: 'gpt-4o',
     });
 
-    console.log("response:", response, message);
+    console.log('response:', response, message);
 
     return Math.max(2000, parseInt(response.trim()));
   };
@@ -128,8 +122,7 @@ Examples:
 
   const lessonPlan = useLessonPlan();
 
-  const [isProcessingTranscription, setIsProcessingTranscription] =
-    useState(false);
+  const [isProcessingTranscription, setIsProcessingTranscription] = useState(false);
 
   const submitTranscription = async () => {
     const transcription = recorder.transcription;
@@ -191,33 +184,27 @@ Examples:
     setIsRecordingByButton(false);
   }, [isRecordingByButton, recorder.transcription]);
 
-  const [transcriptStack, setTranscriptStack] = useState("");
-  const transcriptStackRef = useRef("");
+  const [transcriptStack, setTranscriptStack] = useState('');
+  const transcriptStackRef = useRef('');
   transcriptStackRef.current = transcriptStack;
   const WAIT_BEFORE_SEND = 6000;
 
   const vadAudioRecorder = useVadAudioRecorder({
     onStop: () => {
-      console.log("ON STOP");
+      console.log('ON STOP');
       setIsVadEnabled(false);
     },
     onTranscription: async (transcript: string) => {
       if (!transcript) return;
 
       addTranscriptDelta(transcript);
-      const updatedTranscript = (
-        transcriptStackRef.current +
-        " " +
-        transcript
-      ).trim();
-      const toWait = updatedTranscript
-        ? await howMuchToWait(updatedTranscript)
-        : WAIT_BEFORE_SEND;
+      const updatedTranscript = (transcriptStackRef.current + ' ' + transcript).trim();
+      const toWait = updatedTranscript ? await howMuchToWait(updatedTranscript) : WAIT_BEFORE_SEND;
       setBeforeSendingTimeout(toWait);
       setOriginBeforeSendingTimeout(toWait);
 
       setTranscriptStack((prev) => {
-        const newTranscript = prev + " " + transcript;
+        const newTranscript = prev + ' ' + transcript;
         return newTranscript;
       });
 
@@ -227,11 +214,9 @@ Examples:
     silenceMs: 1000,
   });
 
-  const isReallySpeaking =
-    vadAudioRecorder.isSpeaking && vadAudioRecorder.speakingLevel > 0.6;
+  const isReallySpeaking = vadAudioRecorder.isSpeaking && vadAudioRecorder.speakingLevel > 0.6;
   const isSpeakingRef = useRef(false);
-  isSpeakingRef.current =
-    vadAudioRecorder.isSpeaking || vadAudioRecorder.isTranscribing;
+  isSpeakingRef.current = vadAudioRecorder.isSpeaking || vadAudioRecorder.isTranscribing;
 
   useEffect(() => {
     if (isReallySpeaking) {
@@ -241,18 +226,13 @@ Examples:
     }
   }, [isReallySpeaking]);
 
-  const [beforeSendingTimeout, setBeforeSendingTimeout] = useState<
-    number | null
-  >(null);
-  const [originBeforeSendingTimeout, setOriginBeforeSendingTimeout] = useState<
-    number | null
-  >(null);
+  const [beforeSendingTimeout, setBeforeSendingTimeout] = useState<number | null>(null);
+  const [originBeforeSendingTimeout, setOriginBeforeSendingTimeout] = useState<number | null>(null);
 
   //
   const waitingPercent = beforeSendingTimeout
     ? Math.round(
-        (((originBeforeSendingTimeout || WAIT_BEFORE_SEND) -
-          beforeSendingTimeout) /
+        (((originBeforeSendingTimeout || WAIT_BEFORE_SEND) - beforeSendingTimeout) /
           (originBeforeSendingTimeout || WAIT_BEFORE_SEND)) *
           100,
       )
@@ -270,7 +250,7 @@ Examples:
 
     if (beforeSendingTimeout <= tick) {
       completeUserMessageDelta();
-      setTranscriptStack("");
+      setTranscriptStack('');
       setBeforeSendingTimeout(null);
       return;
     }
@@ -304,50 +284,46 @@ Examples:
     }
   };
 
-  const speakingVolumePercent = Math.max(
-    10,
-    Math.round(vadAudioRecorder.speakingLevel * 100),
-  );
+  const speakingVolumePercent = Math.max(10, Math.round(vadAudioRecorder.speakingLevel * 100));
   const inActivePercent = 100 - speakingVolumePercent;
 
   return (
     <Stack
       sx={{
-        backgroundColor: "rgba(10, 18, 30, 1)",
-        borderRadius: "20px 20px 0 0 ",
-        boxShadow: "0 0 0 1px rgba(255, 255, 255, 0.3)",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "10px",
-        width: "max-content",
-        padding: "10px 10px 21px 10px",
-        position: "relative",
-        bottom: "-1px",
+        backgroundColor: 'rgba(10, 18, 30, 1)',
+        borderRadius: '20px 20px 0 0 ',
+        boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.3)',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '10px',
+        width: 'max-content',
+        padding: '10px 10px 21px 10px',
+        position: 'relative',
+        bottom: '-1px',
       }}
     >
       <Stack
         sx={{
-          position: "absolute",
-          bottom: "0px",
-          left: "0px",
-          width: "calc(100% - 0px)",
-          height: "9px",
-          borderRadius: "0",
-          overflow: "hidden",
+          position: 'absolute',
+          bottom: '0px',
+          left: '0px',
+          width: 'calc(100% - 0px)',
+          height: '9px',
+          borderRadius: '0',
+          overflow: 'hidden',
           opacity: lessonPlanAnalysis ? 1 : 0,
         }}
       >
         <Stack
           sx={{
             width: `${progress}%`,
-            height: "100%",
-            position: "absolute",
+            height: '100%',
+            position: 'absolute',
             top: 0,
-            left: "0px",
-            background:
-              "linear-gradient(90deg, rgba(46, 193, 233, 1), rgba(0, 166, 255, 1))",
-            transition: "width 0.3s ease-in-out",
+            left: '0px',
+            background: 'linear-gradient(90deg, rgba(46, 193, 233, 1), rgba(0, 166, 255, 1))',
+            transition: 'width 0.3s ease-in-out',
           }}
         />
       </Stack>
@@ -359,15 +335,15 @@ Examples:
           color="info"
           variant="contained"
           sx={{
-            height: "48px",
-            minWidth: "250px",
+            height: '48px',
+            minWidth: '250px',
           }}
           onClick={() => {
             stopVad();
             onShowAnalyzeConversationModal();
           }}
         >
-          {i18n._("Open results")}
+          {i18n._('Open results')}
         </Button>
       ) : (
         <>
@@ -376,26 +352,26 @@ Examples:
               <CallButton
                 activeButton={
                   recorder.isTranscribing || isProcessingTranscription ? (
-                    <CircularProgress size={"24px"} />
+                    <CircularProgress size={'24px'} />
                   ) : (
                     <DoneIcon />
                   )
                 }
                 inactiveButton={
                   recorder.isTranscribing || isProcessingTranscription ? (
-                    <CircularProgress size={"24px"} />
+                    <CircularProgress size={'24px'} />
                   ) : (
                     <DoneIcon />
                   )
                 }
                 isActive={recorder.isTranscribing || isProcessingTranscription}
-                label={i18n._("Done recording")}
+                label={i18n._('Done recording')}
                 onClick={onDoneRecordingUsingButton}
               />
 
               <Stack
                 sx={{
-                  width: "185px",
+                  width: '185px',
                 }}
               >
                 {recorder.visualizerComponent}
@@ -417,39 +393,39 @@ Examples:
                   )
                 }
                 isActive={true}
-                label={i18n._("Cancel recording")}
+                label={i18n._('Cancel recording')}
                 onClick={cancelRecordingUsingButton}
               />
             </>
           ) : (
             <>
-              {recordingVoiceMode === "VAD" && (
+              {recordingVoiceMode === 'VAD' && (
                 <CallButton
                   activeButton={
                     <Stack
                       sx={{
-                        position: "relative",
+                        position: 'relative',
                       }}
                     >
                       <MicIcon
                         sx={{
-                          fontWeight: "bold",
-                          color: "#ff3d3d",
+                          fontWeight: 'bold',
+                          color: '#ff3d3d',
                         }}
                       />
 
                       <Stack
                         sx={{
                           opacity: waitingPercent > 0 ? 0.4 : 0,
-                          position: "absolute",
-                          top: "-13px",
-                          left: "-13px",
-                          height: "50px",
-                          width: "50px",
+                          position: 'absolute',
+                          top: '-13px',
+                          left: '-13px',
+                          height: '50px',
+                          width: '50px',
                         }}
                       >
                         <CircularProgress
-                          size={"50px"}
+                          size={'50px'}
                           thickness={1}
                           value={waitingPercent}
                           variant="determinate"
@@ -458,21 +434,21 @@ Examples:
 
                       <Stack
                         sx={{
-                          position: "absolute",
+                          position: 'absolute',
                           top: 0,
                           left: 0,
-                          overflow: "hidden",
-                          height: inActivePercent + "%",
-                          width: "100%",
+                          overflow: 'hidden',
+                          height: inActivePercent + '%',
+                          width: '100%',
                         }}
                       >
                         <MicIcon
                           sx={{
-                            fontWeight: "bold",
-                            position: "absolute",
+                            fontWeight: 'bold',
+                            position: 'absolute',
                             top: 0,
                             left: 0,
-                            color: "#fff",
+                            color: '#fff',
                           }}
                         />
                       </Stack>
@@ -480,27 +456,27 @@ Examples:
                   }
                   inactiveButton={<MicOffIcon />}
                   isActive={isVadEnabled}
-                  label={i18n._("Record Message")}
+                  label={i18n._('Record Message')}
                   onClick={toggleVad}
                 />
               )}
 
-              {recordingVoiceMode === "RealTimeConversation" && (
+              {recordingVoiceMode === 'RealTimeConversation' && (
                 <CallButton
                   activeButton={<MicIcon />}
                   inactiveButton={<MicOffIcon />}
                   isActive={isMuted === false}
-                  label={i18n._("Enable microphone")}
+                  label={i18n._('Enable microphone')}
                   onClick={() => setIsMuted(false)}
                 />
               )}
 
-              {recordingVoiceMode === "PushToTalk" && (
+              {recordingVoiceMode === 'PushToTalk' && (
                 <CallButton
                   activeButton={<MicIcon />}
                   inactiveButton={<MicOffIcon />}
                   isActive={false}
-                  label={i18n._("Record Message")}
+                  label={i18n._('Record Message')}
                   onClick={startRecordingUsingButton}
                 />
               )}
@@ -509,11 +485,7 @@ Examples:
                 activeButton={<VolumeUpIcon />}
                 inactiveButton={<VolumeOffIcon />}
                 isActive={isVolumeOnToDisplay}
-                label={
-                  isVolumeOnToDisplay
-                    ? i18n._("Turn off volume")
-                    : i18n._("Turn on volume")
-                }
+                label={isVolumeOnToDisplay ? i18n._('Turn off volume') : i18n._('Turn on volume')}
                 onClick={toggleVolume}
                 isLocked={isLimited}
               />
@@ -523,9 +495,7 @@ Examples:
                 inactiveButton={<ClosedCaptionDisabledIcon />}
                 isActive={isSubtitlesEnabled}
                 label={
-                  isSubtitlesEnabled
-                    ? i18n._("Turn off subtitles")
-                    : i18n._("Turn on subtitles")
+                  isSubtitlesEnabled ? i18n._('Turn off subtitles') : i18n._('Turn on subtitles')
                 }
                 onClick={() => toggleSubtitles(!isSubtitlesEnabled)}
               />
@@ -534,11 +504,7 @@ Examples:
                 activeButton={<VideocamIcon />}
                 inactiveButton={<VideocamOffIcon />}
                 isActive={isWebCamEnabled}
-                label={
-                  isWebCamEnabled
-                    ? i18n._("Turn off video")
-                    : i18n._("Turn on video")
-                }
+                label={isWebCamEnabled ? i18n._('Turn off video') : i18n._('Turn on video')}
                 onClick={() => toggleWebCam(!isWebCamEnabled)}
               />
 
@@ -549,10 +515,10 @@ Examples:
                   exit();
                 }}
                 sx={{
-                  width: "70px",
-                  borderRadius: "30px",
-                  backgroundColor: "#dc362e",
-                  ":hover": { backgroundColor: "rgba(255, 0, 0, 0.7)" },
+                  width: '70px',
+                  borderRadius: '30px',
+                  backgroundColor: '#dc362e',
+                  ':hover': { backgroundColor: 'rgba(255, 0, 0, 0.7)' },
                 }}
               >
                 <CallEndIcon />
@@ -571,22 +537,20 @@ Examples:
             >
               <Stack
                 sx={{
-                  maxWidth: "600px",
-                  gap: "40px",
-                  alignItems: "center",
-                  paddingTop: "25px",
+                  maxWidth: '600px',
+                  gap: '40px',
+                  alignItems: 'center',
+                  paddingTop: '25px',
                 }}
               >
                 <Stack
                   sx={{
-                    maxWidth: "600px",
-                    gap: "0px",
+                    maxWidth: '600px',
+                    gap: '0px',
                   }}
                 >
                   <Typography variant="h5">
-                    {isShowVolumeWarning
-                      ? i18n._("AI voice")
-                      : i18n._("Real-time conversation")}
+                    {isShowVolumeWarning ? i18n._('AI voice') : i18n._('Real-time conversation')}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -596,10 +560,10 @@ Examples:
                   >
                     {isShowVolumeWarning
                       ? i18n._(
-                          "Enabling ai voice is a premium feature. Please upgrade your plan to access this feature.",
+                          'Enabling ai voice is a premium feature. Please upgrade your plan to access this feature.',
                         )
                       : i18n._(
-                          "Using real-time microphone is a premium feature. Please upgrade your plan to access this feature or use recorded audio.",
+                          'Using real-time microphone is a premium feature. Please upgrade your plan to access this feature or use recorded audio.',
                         )}
                   </Typography>
                 </Stack>
@@ -611,7 +575,7 @@ Examples:
                     setIsShowVolumeWarning(false);
                   }}
                 >
-                  {i18n._("Close")}
+                  {i18n._('Close')}
                 </Button>
               </Stack>
             </CustomModal>

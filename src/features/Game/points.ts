@@ -1,4 +1,4 @@
-import { GameQuestionType } from "./types";
+import { GameQuestionType } from './types';
 
 export const pointsIncreaseMap: Record<GameQuestionType, number> = {
   describe_image: 3,

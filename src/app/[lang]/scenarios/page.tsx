@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import { ScenariosPage } from "@/features/Landing/RolePlay/ScenariosPage";
-import { supportedLanguages } from "@/features/Lang/lang";
-import { initLingui } from "@/initLingui";
-import { allMessages } from "@/appRouterI18n";
-import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
-import { generateMetadataInfo } from "@/features/SEO/metadata";
+import type { Metadata } from 'next';
+import { ScenariosPage } from '@/features/Landing/RolePlay/ScenariosPage';
+import { supportedLanguages } from '@/features/Lang/lang';
+import { initLingui } from '@/initLingui';
+import { allMessages } from '@/appRouterI18n';
+import { LinguiClientProvider } from '@/features/Lang/LinguiClientProvider';
+import { generateMetadataInfo } from '@/features/SEO/metadata';
 
 interface PageProps {
   params: Promise<{ lang: string }>;
@@ -18,10 +18,10 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const category = (await props.searchParams).category || "";
+  const category = (await props.searchParams).category || '';
   return generateMetadataInfo({
     lang: (await props.params).lang,
-    currentPath: "scenarios",
+    currentPath: 'scenarios',
     category,
   });
 }
@@ -37,7 +37,7 @@ export default async function ScenariosFullPage(props: ScenariosPageProps) {
   const category = params.category;
 
   const lang = (await props.params).lang;
-  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
 
   return <ScenariosPage selectedCategory={category} lang={supportedLang} />;
 }

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { I18nProvider } from "@lingui/react";
-import { type Messages, setupI18n } from "@lingui/core";
-import { useState } from "react";
-import { supportedLanguages } from "@/features/Lang/lang";
-import { initDayJsLocale } from "./dayJsLang";
+import { I18nProvider } from '@lingui/react';
+import { type Messages, setupI18n } from '@lingui/core';
+import { useState } from 'react';
+import { supportedLanguages } from '@/features/Lang/lang';
+import { initDayJsLocale } from './dayJsLang';
 
 type Props = {
   children: React.ReactNode;
@@ -12,13 +12,8 @@ type Props = {
   initialMessages: Messages;
 };
 
-export function LinguiClientProvider({
-  children,
-  initialLocale,
-  initialMessages,
-}: Props) {
-  const supportedLang =
-    supportedLanguages.find((l) => l === initialLocale) || "en";
+export function LinguiClientProvider({ children, initialLocale, initialMessages }: Props) {
+  const supportedLang = supportedLanguages.find((l) => l === initialLocale) || 'en';
   const [i18n] = useState(() => {
     initDayJsLocale(supportedLang);
     return setupI18n({

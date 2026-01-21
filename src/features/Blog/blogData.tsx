@@ -1,8 +1,8 @@
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { BlogPost } from "./types";
-import { getI18nInstance } from "@/appRouterI18n";
-import { ResourceCategory } from "@/common/category";
-import { PhrasesArticles } from "./Articles/phrases-for-an-interview";
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { BlogPost } from './types';
+import { getI18nInstance } from '@/appRouterI18n';
+import { ResourceCategory } from '@/common/category';
+import { PhrasesArticles } from './Articles/phrases-for-an-interview';
 
 export interface BlogInfo {
   blogs: BlogPost[];
@@ -14,24 +14,24 @@ export const getBlogs = (lang: SupportedLanguage): BlogInfo => {
   const i18n = getI18nInstance(lang);
   const blogs: BlogPost[] = [
     {
-      id: "no-projections-available",
-      title: i18n._("No Projections Available"),
-      subTitle: i18n._("A silence at the end of the algorithm"),
+      id: 'no-projections-available',
+      title: i18n._('No Projections Available'),
+      subTitle: i18n._('A silence at the end of the algorithm'),
       keywords: [
-        i18n._("speculative fiction"),
-        i18n._("short story"),
-        i18n._("AI and identity"),
-        i18n._("parallel lives"),
-        i18n._("existential fiction"),
-        i18n._("modern literature"),
-        i18n._("Warsaw"),
-        i18n._("alternate timelines"),
+        i18n._('speculative fiction'),
+        i18n._('short story'),
+        i18n._('AI and identity'),
+        i18n._('parallel lives'),
+        i18n._('existential fiction'),
+        i18n._('modern literature'),
+        i18n._('Warsaw'),
+        i18n._('alternate timelines'),
       ],
-      imagePreviewUrl: "/blog/dog/dog-park.webp",
+      imagePreviewUrl: '/blog/dog/dog-park.webp',
       publishedAt: Date.now(),
       category: {
-        categoryTitle: i18n._("Literature & Fiction"),
-        categoryId: "literature_fiction",
+        categoryTitle: i18n._('Literature & Fiction'),
+        categoryId: 'literature_fiction',
       },
       relatedRolePlays: [],
       content:
@@ -139,42 +139,40 @@ And for the first time in weeks, I didn’t want to be anywhere else.
 `),
     },
     {
-      id: "phrases-for-an-interview-in-english",
+      id: 'phrases-for-an-interview-in-english',
       title: i18n._(`Phrases for an interview in English`),
       subTitle: i18n._(
-        "Master essential phrases for interviews in English and boost your confidence with FluencyPal.",
+        'Master essential phrases for interviews in English and boost your confidence with FluencyPal.',
       ),
       keywords: [
-        i18n._("Interview English"),
-        i18n._("Business English"),
-        i18n._("Job Interview Tips"),
-        i18n._("Phrases for an interview in English"),
+        i18n._('Interview English'),
+        i18n._('Business English'),
+        i18n._('Job Interview Tips'),
+        i18n._('Phrases for an interview in English'),
       ],
-      content: "",
+      content: '',
       contendElement: <PhrasesArticles lang={lang} />,
-      imagePreviewUrl: "/blog/ceb0e1b7-9c34-47c0-ae09-4086fb734da4.webp",
+      imagePreviewUrl: '/blog/ceb0e1b7-9c34-47c0-ae09-4086fb734da4.webp',
       publishedAt: Date.now(),
       category: {
-        categoryTitle: i18n._("Interview Tips"),
-        categoryId: "interview_tips",
+        categoryTitle: i18n._('Interview Tips'),
+        categoryId: 'interview_tips',
       },
-      relatedRolePlays: ["job-interview"],
+      relatedRolePlays: ['job-interview'],
     },
     {
-      id: "15-business-english-phrases-interview",
-      title: i18n._(
-        "15 Must-Know Business English Phrases to Ace Your Next Job Interview",
-      ),
+      id: '15-business-english-phrases-interview',
+      title: i18n._('15 Must-Know Business English Phrases to Ace Your Next Job Interview'),
       subTitle: i18n._(
-        "Master these essential phrases and boost your confidence in any professional interview setting.",
+        'Master these essential phrases and boost your confidence in any professional interview setting.',
       ),
       keywords: [
-        i18n._("Business English"),
-        i18n._("Interview English"),
-        i18n._("Job Interview Tips"),
-        i18n._("English for Professionals"),
-        i18n._("FluencyPal"),
-        i18n._("Intermediate English Learners"),
+        i18n._('Business English'),
+        i18n._('Interview English'),
+        i18n._('Job Interview Tips'),
+        i18n._('English for Professionals'),
+        i18n._('FluencyPal'),
+        i18n._('Intermediate English Learners'),
       ],
       content: i18n._(
         `Walking into a job interview can feel intimidating, especially when English is your second language. But with the right preparation, you can confidently navigate the conversation and impress your interviewer. Here are 15 essential Business English phrases you should know to excel in your next interview.
@@ -217,50 +215,50 @@ Leave a lasting positive impression:
 The best way to master these phrases is by practicing them in realistic scenarios. FluencyPal’s AI-powered mock interviews provide real-time feedback, helping you perfect your responses and gain the confidence you need to succeed. Why not start practicing today?`,
       ),
 
-      imagePreviewUrl: "/blog/3c18e767-f547-4b15-88fd-9ce1f92fa1c4.webp",
+      imagePreviewUrl: '/blog/3c18e767-f547-4b15-88fd-9ce1f92fa1c4.webp',
       publishedAt: Date.now(),
       category: {
-        categoryTitle: i18n._("Business English"),
-        categoryId: "business_english",
+        categoryTitle: i18n._('Business English'),
+        categoryId: 'business_english',
       },
-      relatedRolePlays: ["job-interview"],
+      relatedRolePlays: ['job-interview'],
     },
 
     {
-      id: "immerse-yourself-business-english-daily",
-      title: i18n._("Immerse Yourself in Business English Daily"),
+      id: 'immerse-yourself-business-english-daily',
+      title: i18n._('Immerse Yourself in Business English Daily'),
       subTitle: i18n._(
-        "Discover effective daily habits to improve your business English skills effortlessly and quickly.",
+        'Discover effective daily habits to improve your business English skills effortlessly and quickly.',
       ),
       keywords: [
-        i18n._("Business English"),
-        i18n._("Daily Language Practice"),
-        i18n._("Improve English Skills"),
-        i18n._("FluencyPal"),
-        i18n._("English for Professionals"),
-        i18n._("Intermediate English Learners"),
+        i18n._('Business English'),
+        i18n._('Daily Language Practice'),
+        i18n._('Improve English Skills'),
+        i18n._('FluencyPal'),
+        i18n._('English for Professionals'),
+        i18n._('Intermediate English Learners'),
       ],
       content: i18n._(
         `Improving your Business English skills doesn't have to feel overwhelming or time-consuming. In fact, the most effective approach is consistent, daily practice that naturally integrates into your everyday routine. Here’s how you can effortlessly immerse yourself in Business English every day, enhancing your proficiency and confidence.\n\n## Start Your Day with English Content\nBegin each morning by listening to podcasts or watching videos related to your industry. This habit helps you tune your ear to professional vocabulary and common expressions. Sources such as TED Talks, industry-specific YouTube channels, or reputable news outlets like BBC Business or CNBC can be incredibly beneficial.\n\n## Engage with English News and Articles\nRegularly reading business news articles from respected publications like The Wall Street Journal, Financial Times, or Bloomberg will significantly enhance your comprehension and vocabulary. Try summarizing key points of an article in your own words or discuss them with colleagues to reinforce what you’ve learned.\n\n## Participate in English Discussions Online\nJoining forums, LinkedIn groups, or professional communities online provides practical opportunities to practice written and spoken English. Engaging in meaningful discussions helps you apply new vocabulary and expressions contextually, making them easier to remember and use.\n\n## Incorporate English into Your Workday\nUse English whenever possible in your professional environment. Whether it's sending emails, preparing presentations, or participating in meetings, actively choosing English reinforces your skills and boosts your confidence in real-world situations.\n\n## Practice Role-Play Scenarios\nSimulate workplace scenarios by practicing role-play exercises. Role-playing common situations such as negotiations, client meetings, or team discussions sharpens your verbal agility and prepares you for genuine interactions. FluencyPal provides realistic, AI-driven role-play scenarios tailored to your skill level, offering instant feedback to accelerate your learning.\n\n## Set Small, Daily Goals\nRather than focusing on extensive, less frequent study sessions, set achievable daily goals such as learning three new business phrases or practicing ten minutes of conversation each day. These manageable milestones foster motivation and consistent improvement.\n\n## Keep a Vocabulary Journal\nMaintaining a notebook or digital document to record new words and phrases you encounter is a highly effective way to expand your professional vocabulary. Regularly reviewing and practicing this vocabulary ensures these new terms become a natural part of your everyday communication.\n\n## Leverage Technology to Stay Consistent\nUse language apps and platforms like FluencyPal to maintain daily engagement with English. AI-powered apps offer convenient, personalized practice sessions that adapt to your pace, making your daily practice enjoyable and stress-free.\n\n## Take Action Today\nDaily immersion is the key to mastering Business English. With consistent practice and the right tools, you’ll see significant improvement in your language skills, professional confidence, and career opportunities. Start integrating these simple daily habits today and elevate your business communication with FluencyPal.`,
       ),
-      imagePreviewUrl: "/blog/e6b6f478-7092-4d5c-aea9-a9bcf4775733.webp",
+      imagePreviewUrl: '/blog/e6b6f478-7092-4d5c-aea9-a9bcf4775733.webp',
       publishedAt: Date.now(),
       category: {
-        categoryTitle: i18n._("Business English"),
-        categoryId: "business_english",
+        categoryTitle: i18n._('Business English'),
+        categoryId: 'business_english',
       },
       relatedRolePlays: [
-        "job-interview",
-        "instant-correction",
-        "alias-game",
-        "small-talk-with-a-stranger",
-        "calling-technical-support",
+        'job-interview',
+        'instant-correction',
+        'alias-game',
+        'small-talk-with-a-stranger',
+        'calling-technical-support',
       ],
     },
     {
-      id: "how-to-ace-english-job-interview-guide",
+      id: 'how-to-ace-english-job-interview-guide',
       title: i18n._(
-        "How to Ace Your English Job Interview: A Step-by-Step Guide for Intermediate Learners (2026)",
+        'How to Ace Your English Job Interview: A Step-by-Step Guide for Intermediate Learners (2026)',
       ),
       subTitle: i18n._(
         `Master your next English job interview with this step-by-step guide! Learn key strategies for Business English learners to boost confidence, vocabulary, and performance.`,
@@ -347,41 +345,39 @@ Simulate the real experience with a **free mock interview on FluencyPal**—your
 `,
       ),
       keywords: [
-        i18n._("English job interview tips"),
-        i18n._("Business English interview preparation"),
-        i18n._("Mock interview practice"),
-        i18n._("Interview vocabulary for intermediate learners"),
-        i18n._("How to prepare for an interview in English"),
+        i18n._('English job interview tips'),
+        i18n._('Business English interview preparation'),
+        i18n._('Mock interview practice'),
+        i18n._('Interview vocabulary for intermediate learners'),
+        i18n._('How to prepare for an interview in English'),
       ],
       relatedRolePlays: [
-        "job-interview",
-        "instant-correction",
-        "alias-game",
-        "small-talk-with-a-stranger",
-        "calling-technical-support",
+        'job-interview',
+        'instant-correction',
+        'alias-game',
+        'small-talk-with-a-stranger',
+        'calling-technical-support',
       ],
-      imagePreviewUrl: "/blog/387a5e43-45d9-4d5c-9427-87db51c49b62.webp",
+      imagePreviewUrl: '/blog/387a5e43-45d9-4d5c-9427-87db51c49b62.webp',
       publishedAt: Date.now(),
       category: {
-        categoryTitle: i18n._("Business English"),
-        categoryId: "business_english",
+        categoryTitle: i18n._('Business English'),
+        categoryId: 'business_english',
       },
     },
     {
-      id: "5-common-english-job-interview-mistakes",
-      title: i18n._(
-        "5 Common English Job Interview Mistakes (and How to Fix Them)",
-      ),
+      id: '5-common-english-job-interview-mistakes',
+      title: i18n._('5 Common English Job Interview Mistakes (and How to Fix Them)'),
       subTitle: i18n._(
-        "Identify and correct these frequent errors to enhance your interview performance.",
+        'Identify and correct these frequent errors to enhance your interview performance.',
       ),
       keywords: [
-        i18n._("English interview mistakes"),
-        i18n._("job interview tips"),
-        i18n._("non-native English speakers"),
-        i18n._("intermediate English learners"),
-        i18n._("FluencyPal"),
-        i18n._("interview preparation"),
+        i18n._('English interview mistakes'),
+        i18n._('job interview tips'),
+        i18n._('non-native English speakers'),
+        i18n._('intermediate English learners'),
+        i18n._('FluencyPal'),
+        i18n._('interview preparation'),
       ],
       content: i18n._(
         `Even the most prepared candidates can inadvertently make mistakes during English job interviews, especially if they're non-native speakers. These common pitfalls can hinder your chances of making a positive impression. However, with awareness and practice, you can overcome them. Avoiding these five mistakes can be the difference between a shaky interview and a stellar one.
@@ -424,29 +420,29 @@ These mistakes are common, but with conscious effort, they can be avoided. Exten
 
 To put these fixes into practice, consider using FluencyPal for your next mock interview. Training in a realistic, supportive setting can help you overcome these mistakes and approach your real interview with greater confidence.`,
       ),
-      imagePreviewUrl: "/blog/6683b332-6af9-4697-bd47-7df9fd582c9d.webp",
+      imagePreviewUrl: '/blog/6683b332-6af9-4697-bd47-7df9fd582c9d.webp',
       publishedAt: Date.now(),
       category: {
-        categoryTitle: i18n._("Interview Tips"),
-        categoryId: "interview_tips",
+        categoryTitle: i18n._('Interview Tips'),
+        categoryId: 'interview_tips',
       },
-      relatedRolePlays: ["job-interview", "instant-correction", "alias-game"],
+      relatedRolePlays: ['job-interview', 'instant-correction', 'alias-game'],
     },
     {
-      id: "6-ways-busy-professionals-improve-english-fluency-job-interviews",
+      id: '6-ways-busy-professionals-improve-english-fluency-job-interviews',
       title: i18n._(
-        "6 Ways Busy Professionals Can Improve Their English Fluency for Job Interviews",
+        '6 Ways Busy Professionals Can Improve Their English Fluency for Job Interviews',
       ),
       subTitle: i18n._(
-        "Effective strategies to enhance your English speaking skills amidst a hectic schedule.",
+        'Effective strategies to enhance your English speaking skills amidst a hectic schedule.',
       ),
       keywords: [
-        i18n._("English fluency"),
-        i18n._("job interview preparation"),
-        i18n._("busy professionals"),
-        i18n._("improve English speaking"),
-        i18n._("FluencyPal"),
-        i18n._("business English"),
+        i18n._('English fluency'),
+        i18n._('job interview preparation'),
+        i18n._('busy professionals'),
+        i18n._('improve English speaking'),
+        i18n._('FluencyPal'),
+        i18n._('business English'),
       ],
       content: i18n._(
         `In today's globalized business environment, possessing strong English communication skills is crucial for career advancement. However, for busy professionals, finding time to enhance these skills can be challenging. The good news is that achieving fluency doesn't require perfection; even modest improvements can significantly boost your confidence and clarity during job interviews. Here are six practical strategies to seamlessly integrate English practice into your hectic schedule.
@@ -521,17 +517,13 @@ Enhancing English fluency as a busy professional is achievable through consisten
 
 Begin your journey toward more fluent interviews by trying FluencyPal for free. Engage in interactive practice sessions and receive real-time feedback to refine your skills. Start today, and let your future self—and your career—reap the benefits of your dedication.`,
       ),
-      imagePreviewUrl: "/blog/11862161-1c49-4166-8254-5f875ee5d95e.webp",
+      imagePreviewUrl: '/blog/11862161-1c49-4166-8254-5f875ee5d95e.webp',
       publishedAt: Date.now(),
       category: {
-        categoryTitle: i18n._("Professional Development"),
-        categoryId: "professional_development",
+        categoryTitle: i18n._('Professional Development'),
+        categoryId: 'professional_development',
       },
-      relatedRolePlays: [
-        "job-interview",
-        "instant-correction",
-        "small-talk-with-a-stranger",
-      ],
+      relatedRolePlays: ['job-interview', 'instant-correction', 'small-talk-with-a-stranger'],
     },
   ];
 
@@ -546,7 +538,7 @@ Begin your journey toward more fluent interviews by trying FluencyPal for free. 
 
   const allCategory = {
     categoryTitle: i18n._(`All Blogs`),
-    categoryId: "all",
+    categoryId: 'all',
     isAllResources: true,
   };
 

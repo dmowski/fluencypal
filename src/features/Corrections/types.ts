@@ -1,4 +1,4 @@
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage } from '@/features/Lang/lang';
 
 export interface PhraseCorrection {
   botMessage: string;

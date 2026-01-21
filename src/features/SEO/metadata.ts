@@ -1,31 +1,31 @@
-import "server-only";
+import 'server-only';
 
-import { getI18nInstance } from "@/appRouterI18n";
-import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
-import { siteUrl } from "@/common/metadata";
-import { APP_NAME } from "@/features/Landing/landingSettings";
-import { initLingui } from "@/initLingui";
-import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
-import { getBlogs } from "@/features/Blog/blogData";
-import { getLangLearnPlanLabels } from "@/features/Lang/getLabels";
-import { getAllInterviews } from "../Case/data/data";
+import { getI18nInstance } from '@/appRouterI18n';
+import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
+import { siteUrl } from '@/common/metadata';
+import { APP_NAME } from '@/features/Landing/landingSettings';
+import { initLingui } from '@/initLingui';
+import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
+import { getBlogs } from '@/features/Blog/blogData';
+import { getLangLearnPlanLabels } from '@/features/Lang/getLabels';
+import { getAllInterviews } from '../Case/data/data';
 
 type Page =
-  | "contacts"
-  | "quiz"
-  | "quiz2"
-  | "tg-app"
-  | "practice"
-  | "pricing"
-  | "privacy"
-  | "cookies"
-  | "terms"
-  | "scenarios"
-  | "blog"
-  | "case"
-  | "";
+  | 'contacts'
+  | 'quiz'
+  | 'quiz2'
+  | 'tg-app'
+  | 'practice'
+  | 'pricing'
+  | 'privacy'
+  | 'cookies'
+  | 'terms'
+  | 'scenarios'
+  | 'blog'
+  | 'case'
+  | '';
 
-type AfterIdPage = "quiz";
+type AfterIdPage = 'quiz';
 
 interface generateMetadataInfoProps {
   lang: string;
@@ -50,7 +50,7 @@ export const generateMetadataInfo = ({
   interviewId,
   afterIdPage,
 }: generateMetadataInfoProps) => {
-  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
   initLingui(supportedLang);
   let keywords: string[] = [];
 
@@ -58,34 +58,32 @@ export const generateMetadataInfo = ({
   let needIndex = true;
 
   let openGraphImageUrl = `${siteUrl}openGraph.webp`;
-  let title = "";
-  let description = "";
-  if (currentPath === "contacts") {
-    title = i18n._(`Contacts`) + " | " + APP_NAME;
+  let title = '';
+  let description = '';
+  if (currentPath === 'contacts') {
+    title = i18n._(`Contacts`) + ' | ' + APP_NAME;
     description = i18n._(
       `Get in touch with the FluencyPal for any inquiries, support, or feedback.`,
     );
     keywords = [];
   }
 
-  if (currentPath === "quiz") {
+  if (currentPath === 'quiz') {
     const languageLearningMap = getLangLearnPlanLabels(supportedLang);
-    const languageToLearnPlan = languageLearningMap[languageToLearn || "en"];
-    title = languageToLearnPlan + " | " + APP_NAME;
+    const languageToLearnPlan = languageLearningMap[languageToLearn || 'en'];
+    title = languageToLearnPlan + ' | ' + APP_NAME;
     description = i18n._(
       `Create a personalized language learning plan with FluencyPal. Set your fluency goals, focus on specific skills like speaking or listening, and track your progress to master English effectively.`,
     );
     keywords = [];
   }
 
-  if (currentPath === "case" && interviewId && afterIdPage === "quiz") {
-    const interviewList = getAllInterviews("en").interviews;
+  if (currentPath === 'case' && interviewId && afterIdPage === 'quiz') {
+    const interviewList = getAllInterviews('en').interviews;
     const interview = interviewList.find((i) => i.coreData.id === interviewId);
     needIndex = !!interview;
 
-    title =
-      `${interview?.coreData.title || "Interview Quiz"} - ` +
-      i18n._(`| FluencyPal`);
+    title = `${interview?.coreData.title || 'Interview Quiz'} - ` + i18n._(`| FluencyPal`);
     description = i18n._(
       `Test your interview skills with FluencyPal's AI-powered interview quiz. Practice answering common questions, receive instant feedback, and boost your confidence for real interviews.`,
     );
@@ -100,28 +98,28 @@ export const generateMetadataInfo = ({
     ];
   }
 
-  if (currentPath === "quiz2") {
+  if (currentPath === 'quiz2') {
     const languageLearningMap = getLangLearnPlanLabels(supportedLang);
-    const languageToLearnPlan = languageLearningMap[languageToLearn || "en"];
-    title = languageToLearnPlan + " | " + APP_NAME;
+    const languageToLearnPlan = languageLearningMap[languageToLearn || 'en'];
+    title = languageToLearnPlan + ' | ' + APP_NAME;
     description = i18n._(
       `Create a personalized language learning plan with FluencyPal. Create your goal, focus on specific skills like speaking or listening.`,
     );
     keywords = [];
   }
 
-  if (currentPath === "tg-app") {
+  if (currentPath === 'tg-app') {
     const languageLearningMap = getLangLearnPlanLabels(supportedLang);
-    const languageToLearnPlan = languageLearningMap[languageToLearn || "en"];
-    title = languageToLearnPlan + " | " + " Telegram Mini App " + APP_NAME;
+    const languageToLearnPlan = languageLearningMap[languageToLearn || 'en'];
+    title = languageToLearnPlan + ' | ' + ' Telegram Mini App ' + APP_NAME;
     description = i18n._(
       `Create a personalized language learning plan with FluencyPal. Set your fluency goals, focus on specific skills like speaking or listening, and track your progress to master English effectively.`,
     );
     keywords = [];
   }
 
-  if (currentPath === "practice") {
-    title = i18n._(`Practice`) + " | " + APP_NAME;
+  if (currentPath === 'practice') {
+    title = i18n._(`Practice`) + ' | ' + APP_NAME;
     description = i18n._(
       `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
     );
@@ -136,8 +134,8 @@ export const generateMetadataInfo = ({
     ];
   }
 
-  if (currentPath === "pricing") {
-    title = i18n._(`Affordable AI Language Learning`) + " | " + APP_NAME;
+  if (currentPath === 'pricing') {
+    title = i18n._(`Affordable AI Language Learning`) + ' | ' + APP_NAME;
     description = i18n._(
       `Get flexible pricing with FluencyPal. Start with 3 free days, and enjoy AI-powered language practice with no subscriptions or hidden fees.`,
     );
@@ -149,50 +147,48 @@ export const generateMetadataInfo = ({
     ];
   }
 
-  if (currentPath === "privacy") {
-    title = i18n._(`Privacy Policy`) + " | " + APP_NAME;
+  if (currentPath === 'privacy') {
+    title = i18n._(`Privacy Policy`) + ' | ' + APP_NAME;
     description = i18n._(
       `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
     );
     keywords = [];
   }
 
-  if (currentPath === "cookies") {
-    title = i18n._(`Cookies Policy`) + " | " + APP_NAME;
+  if (currentPath === 'cookies') {
+    title = i18n._(`Cookies Policy`) + ' | ' + APP_NAME;
     description = i18n._(
       `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
     );
     keywords = [];
   }
 
-  if (currentPath === "terms") {
-    title = i18n._(`Terms of Use`) + " | " + APP_NAME;
+  if (currentPath === 'terms') {
+    title = i18n._(`Terms of Use`) + ' | ' + APP_NAME;
     description = i18n._(
       `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
     );
     keywords = [];
   }
 
-  if (currentPath === "scenarios" && !scenarioId) {
-    let categoryTitle = "";
+  if (currentPath === 'scenarios' && !scenarioId) {
+    let categoryTitle = '';
 
     if (category) {
       const rolePlayScenarios = getRolePlayScenarios(supportedLang);
-      const categoryInfo = rolePlayScenarios.categoriesList.find(
-        (c) => c.categoryId === category,
-      );
+      const categoryInfo = rolePlayScenarios.categoriesList.find((c) => c.categoryId === category);
       if (!categoryInfo) {
         needIndex = false;
       }
 
       categoryTitle = categoryInfo
-        ? " - " + categoryInfo.categoryTitle
+        ? ' - ' + categoryInfo.categoryTitle
         : i18n._(`Unknown category`);
     }
     title =
       i18n._(`Real-Life English Role-Play Scenarios`) +
-      (categoryTitle ? " - " + categoryTitle : "") +
-      " | " +
+      (categoryTitle ? ' - ' + categoryTitle : '') +
+      ' | ' +
       APP_NAME;
     description = i18n._(
       `Practice realistic English conversations with FluencyPal’s AI tutor. From job interviews to casual chats, build fluency and confidence through immersive role-play scenarios designed for intermediate and advanced learners.`,
@@ -209,27 +205,22 @@ export const generateMetadataInfo = ({
     ];
   }
 
-  if (currentPath === "blog" && !blogId) {
-    let categoryTitle = "";
+  if (currentPath === 'blog' && !blogId) {
+    let categoryTitle = '';
 
     if (category) {
       const items = getBlogs(supportedLang);
-      const categoryInfo = items.categoriesList.find(
-        (c) => c.categoryId === category,
-      );
+      const categoryInfo = items.categoriesList.find((c) => c.categoryId === category);
       if (!categoryInfo) {
         needIndex = false;
       }
       categoryTitle = categoryInfo
-        ? " - " + categoryInfo.categoryTitle
+        ? ' - ' + categoryInfo.categoryTitle
         : i18n._(`Unknown category`);
     }
 
     title =
-      i18n._(`Learning Blog`) +
-      (categoryTitle ? " - " + categoryTitle : "") +
-      " | " +
-      APP_NAME;
+      i18n._(`Learning Blog`) + (categoryTitle ? ' - ' + categoryTitle : '') + ' | ' + APP_NAME;
     description = i18n._(
       `Read the latest articles on language learning, English practice tips, and AI tutor updates. Stay informed, motivated, and inspired to reach your fluency goals with FluencyPal.`,
     );
@@ -244,7 +235,7 @@ export const generateMetadataInfo = ({
     ];
   }
 
-  if (currentPath === "blog" && blogId) {
+  if (currentPath === 'blog' && blogId) {
     const { blogs } = getBlogs(supportedLang);
     const blog = blogs.find((b) => b.id === blogId);
     if (!blog) {
@@ -252,27 +243,24 @@ export const generateMetadataInfo = ({
     }
 
     title =
-      `${blog?.title || "Blog"} - ` +
-      i18n._(`Practice English Conversation with AI | FluencyPal`);
-    description = blog?.subTitle || "";
+      `${blog?.title || 'Blog'} - ` + i18n._(`Practice English Conversation with AI | FluencyPal`);
+    description = blog?.subTitle || '';
     keywords = blog?.keywords || [];
     openGraphImageUrl = blog?.imagePreviewUrl || openGraphImageUrl;
   }
 
-  if (currentPath === "scenarios" && scenarioId) {
+  if (currentPath === 'scenarios' && scenarioId) {
     const rolePlayScenarios = getRolePlayScenarios(supportedLang);
-    const scenario = rolePlayScenarios.rolePlayScenarios.find(
-      (s) => s.id === scenarioId,
-    );
+    const scenario = rolePlayScenarios.rolePlayScenarios.find((s) => s.id === scenarioId);
 
     if (!scenario) {
       needIndex = false;
     }
 
     title =
-      `${scenario?.title || "Scenario"} - ` +
+      `${scenario?.title || 'Scenario'} - ` +
       i18n._(`Practice English Conversation with AI | FluencyPal`);
-    description = scenario?.subTitle || "";
+    description = scenario?.subTitle || '';
     keywords = [
       i18n._(`AI English Tutor`),
       i18n._(`English Role-Play`),
@@ -285,31 +273,27 @@ export const generateMetadataInfo = ({
       i18n._(`English Speaking Exercises`),
     ];
 
-    openGraphImageUrl = scenario?.imageSrc
-      ? `${siteUrl}${scenario.imageSrc}`
-      : openGraphImageUrl;
+    openGraphImageUrl = scenario?.imageSrc ? `${siteUrl}${scenario.imageSrc}` : openGraphImageUrl;
   }
 
-  if (currentPath === "case" && !interviewId) {
-    let categoryTitle = "";
+  if (currentPath === 'case' && !interviewId) {
+    let categoryTitle = '';
 
     if (category) {
       const items = getAllInterviews(supportedLang);
-      const categoryInfo = items.categoriesList.find(
-        (c) => c.categoryId === category,
-      );
+      const categoryInfo = items.categoriesList.find((c) => c.categoryId === category);
       if (!categoryInfo) {
         needIndex = false;
       }
       categoryTitle = categoryInfo
-        ? " - " + categoryInfo.categoryTitle
+        ? ' - ' + categoryInfo.categoryTitle
         : i18n._(`Unknown category`);
     }
 
     title =
       i18n._(`Prepare for the Interview`) +
-      (categoryTitle ? " - " + categoryTitle : "") +
-      " | " +
+      (categoryTitle ? ' - ' + categoryTitle : '') +
+      ' | ' +
       APP_NAME;
     description = i18n._(
       `Prepare for your interviews with AI-powered tools that help you practice and improve your answers.`,
@@ -324,23 +308,19 @@ export const generateMetadataInfo = ({
       i18n._(`Career Advancement`),
     ];
   }
-  if (currentPath === "case" && interviewId) {
+  if (currentPath === 'case' && interviewId) {
     const { interviews } = getAllInterviews(supportedLang);
     const item = interviews.find((b) => b.coreData.id === interviewId);
     needIndex = !!item;
 
-    title =
-      `${item?.coreData.title || "Interview not found"} - ` +
-      i18n._(`| FluencyPal`);
-    description = item?.coreData.subTitle || "";
+    title = `${item?.coreData.title || 'Interview not found'} - ` + i18n._(`| FluencyPal`);
+    description = item?.coreData.subTitle || '';
     keywords = item?.coreData.keywords || [];
     openGraphImageUrl = openGraphImageUrl;
   }
 
-  if (currentPath === "") {
-    title = i18n._(
-      `FluencyPal – AI English Speaking Practice for Fluency & Confidence`,
-    );
+  if (currentPath === '') {
+    title = i18n._(`FluencyPal – AI English Speaking Practice for Fluency & Confidence`);
     description = i18n._(
       `Practice conversational English with FluencyPal, your 24/7 AI English tutor and speaking coach. Improve fluency, pronunciation, and confidence through real-life role-play scenarios with instant feedback.`,
     );
@@ -389,7 +369,7 @@ export const generateMetadataInfo = ({
       openGraphImageUrl,
     }),
     other: {
-      google: "notranslate",
+      google: 'notranslate',
     },
     robots: {
       index: needIndex,
@@ -418,20 +398,19 @@ export function getMetadataUrls({
 
   supportedLang: SupportedLanguage;
 }) {
-  const pathWithId =
-    pagePath + (id ? "/" + id : "") + (afterIdPage ? "/" + afterIdPage : "");
+  const pathWithId = pagePath + (id ? '/' + id : '') + (afterIdPage ? '/' + afterIdPage : '');
 
   const queryList = Object.entries(queries).map(([key, value]) =>
-    value ? `${key}=` + encodeURIComponent(value) : "",
+    value ? `${key}=` + encodeURIComponent(value) : '',
   );
-  const query = queryList.filter(Boolean).join("&");
+  const query = queryList.filter(Boolean).join('&');
 
-  const pathWithQueries = pathWithId + (query ? "?" + query : "");
+  const pathWithQueries = pathWithId + (query ? '?' + query : '');
   const alternates = generateAlternatesTags({
     path: pathWithQueries,
     lang: supportedLang,
   });
-  const ogUrl = alternates.languages[supportedLang || "en"];
+  const ogUrl = alternates.languages[supportedLang || 'en'];
 
   return {
     ogUrl,
@@ -451,11 +430,11 @@ export function getTwitterCard({
 }) {
   const image = openGraphImageUrl || `${siteUrl}openGraph.webp`;
   return {
-    card: "summary_large_image",
+    card: 'summary_large_image',
     title: title,
     description: description,
     images: [image],
-    creator: "@dmowskii",
+    creator: '@dmowskii',
   };
 }
 
@@ -485,20 +464,20 @@ export function getOpenGraph({
         alt: alt,
       },
     ],
-    type: "website",
+    type: 'website',
   };
 }
 
 export function getMetadataIcons() {
   return {
     icon: [
-      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-26x26.png", sizes: "26x26", type: "image/png" },
-      { url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-26x26.png', sizes: '26x26', type: 'image/png' },
+      { url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
-    apple: [{ url: "/logo192.png" }],
+    apple: [{ url: '/logo192.png' }],
   };
 }
 
@@ -513,8 +492,7 @@ export const generateAlternatesTags = ({
 }) => {
   const hreflangLinks = supportedLanguages.reduce(
     (acc, lang) => {
-      acc[lang] =
-        `${siteUrl}${lang === "en" ? "" : lang + (path ? "/" : "")}${path}`;
+      acc[lang] = `${siteUrl}${lang === 'en' ? '' : lang + (path ? '/' : '')}${path}`;
 
       return acc;
     },
@@ -525,7 +503,7 @@ export const generateAlternatesTags = ({
     canonical: hreflangLinks[lang],
     languages: {
       ...hreflangLinks,
-      "x-default": hreflangLinks["en"], // Use the English version of the current page
+      'x-default': hreflangLinks['en'], // Use the English version of the current page
     },
   };
 };

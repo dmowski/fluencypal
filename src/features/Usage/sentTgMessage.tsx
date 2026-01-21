@@ -1,6 +1,6 @@
-import { sendTelegramRequest } from "../Telegram/sendTextAiRequest";
+import { sendTelegramRequest } from '../Telegram/sendTextAiRequest';
 
-const devEmails = ["dmowski.alex@gmail.com"];
+const devEmails = ['dmowski.alex@gmail.com'];
 export const sentPaymentTgMessage = async ({
   message,
   email,

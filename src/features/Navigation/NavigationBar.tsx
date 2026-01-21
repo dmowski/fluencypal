@@ -1,18 +1,18 @@
-"use client";
-import { Badge, Link, Stack, Typography } from "@mui/material";
-import { Home, LucideProps, User, Users, VenetianMask } from "lucide-react";
-import { ForwardRefExoticComponent, RefAttributes, useMemo } from "react";
-import { SupportedLanguage } from "../Lang/lang";
-import { useLingui } from "@lingui/react";
-import { useWindowSizes } from "../Layout/useWindowSizes";
-import { PageType } from "./types";
-import { useAppNavigation } from "./useAppNavigation";
-import { useAuth } from "../Auth/useAuth";
-import { useGame } from "../Game/useGame";
-import { useSettings } from "../Settings/useSettings";
-import { AppMode } from "@/common/user";
-import { Avatar } from "../Game/Avatar";
-import { useChatList } from "../Chat/useChatList";
+'use client';
+import { Badge, Link, Stack, Typography } from '@mui/material';
+import { Home, LucideProps, User, Users, VenetianMask } from 'lucide-react';
+import { ForwardRefExoticComponent, RefAttributes, useMemo } from 'react';
+import { SupportedLanguage } from '../Lang/lang';
+import { useLingui } from '@lingui/react';
+import { useWindowSizes } from '../Layout/useWindowSizes';
+import { PageType } from './types';
+import { useAppNavigation } from './useAppNavigation';
+import { useAuth } from '../Auth/useAuth';
+import { useGame } from '../Game/useGame';
+import { useSettings } from '../Settings/useSettings';
+import { AppMode } from '@/common/user';
+import { Avatar } from '../Game/Avatar';
+import { useChatList } from '../Chat/useChatList';
 
 export interface IconProps {
   color?: string;
@@ -21,9 +21,7 @@ export interface IconProps {
 
 interface NavigationItem {
   name: PageType;
-  icon: ForwardRefExoticComponent<
-    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
-  >;
+  icon: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>;
   badge?: number;
   title: string;
 }
@@ -32,8 +30,8 @@ export interface NavigationProps {
   lang: SupportedLanguage;
 }
 
-const activeColor = "#29b6f6"; // Define the active color for the icon
-const inactiveColor = "#A0A0A0"; // Define the inactive color for the icon
+const activeColor = '#29b6f6'; // Define the active color for the icon
+const inactiveColor = '#A0A0A0'; // Define the inactive color for the icon
 
 export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
   const appNavigation = useAppNavigation();
@@ -43,7 +41,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
   const auth = useAuth();
   const settings = useSettings();
   const appMode = settings.appMode;
-  const userPhoto = game.gameAvatars?.[auth.uid] || "";
+  const userPhoto = game.gameAvatars?.[auth.uid] || '';
   const { bottomOffset } = useWindowSizes();
   const chatList = useChatList();
 
@@ -51,51 +49,48 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
     () => ({
       interview: [
         {
-          name: "home",
+          name: 'home',
           icon: Home,
-          title: i18n._("Home"),
+          title: i18n._('Home'),
         },
 
         {
-          name: "profile",
+          name: 'profile',
           icon: User,
-          title: i18n._("Profile"),
+          title: i18n._('Profile'),
         },
       ],
       learning: [
         {
-          name: "home",
+          name: 'home',
           icon: Home,
-          title: i18n._("Home"),
+          title: i18n._('Home'),
         },
         {
-          name: "community",
+          name: 'community',
           icon: Users,
-          title: i18n._("Community"),
+          title: i18n._('Community'),
           badge: chatList.myUnreadCount + chatList.unreadCountGlobal,
         },
         {
-          name: "role-play",
+          name: 'role-play',
           icon: VenetianMask,
-          title: i18n._("Role Play"),
+          title: i18n._('Role Play'),
         },
         {
-          name: "profile",
+          name: 'profile',
           icon: User,
-          title: i18n._("Profile"),
+          title: i18n._('Profile'),
         },
       ],
     }),
     [appMode, chatList.myUnreadCount, chatList.unreadCountGlobal],
   );
 
-  const navigationItems: NavigationItem[] =
-    navigationItemsByMode[appMode || "learning"];
+  const navigationItems: NavigationItem[] = navigationItemsByMode[appMode || 'learning'];
 
   const navigateTo = (
-    e:
-      | React.MouseEvent<HTMLAnchorElement>
-      | React.TouchEvent<HTMLAnchorElement>,
+    e: React.MouseEvent<HTMLAnchorElement> | React.TouchEvent<HTMLAnchorElement>,
     item: NavigationItem,
   ) => {
     e.preventDefault();
@@ -104,35 +99,35 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
 
   return (
     <Stack
-      component={"nav"}
+      component={'nav'}
       sx={{
-        width: "100%",
-        alignItems: "center",
-        position: "relative",
+        width: '100%',
+        alignItems: 'center',
+        position: 'relative',
         zIndex: 999,
 
-        borderTop: "1px solid rgba(255, 255, 255, 0.07)",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.07)",
-        marginBottom: "40px",
-        "@media (max-width: 700px)": {
-          backgroundColor: "rgba(0, 0, 0, 0.9)",
-          borderBottom: "none",
-          marginBottom: "0px",
-          position: "fixed",
+        borderTop: '1px solid rgba(255, 255, 255, 0.07)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
+        marginBottom: '40px',
+        '@media (max-width: 700px)': {
+          backgroundColor: 'rgba(0, 0, 0, 0.9)',
+          borderBottom: 'none',
+          marginBottom: '0px',
+          position: 'fixed',
           bottom: 0,
           left: 0,
         },
       }}
     >
-      <Stack sx={{ width: "100%", maxWidth: "700px", padding: "0 10px" }}>
+      <Stack sx={{ width: '100%', maxWidth: '700px', padding: '0 10px' }}>
         <Stack
           sx={{
-            flexDirection: "row",
-            justifyContent: "space-around",
-            borderLeft: "1px solid rgba(255, 255, 255, 0.07)",
-            borderRight: "1px solid rgba(255, 255, 255, 0.07)",
-            "@media (max-width: 900px)": {
-              border: "none",
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            borderLeft: '1px solid rgba(255, 255, 255, 0.07)',
+            borderRight: '1px solid rgba(255, 255, 255, 0.07)',
+            '@media (max-width: 900px)': {
+              border: 'none',
             },
           }}
         >
@@ -142,22 +137,22 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
 
             const isActiveBadge = item.badge !== undefined && item.badge > 0;
 
-            const isProfile = item.name === "profile";
+            const isProfile = item.name === 'profile';
             return (
               <Stack
                 key={item.name}
                 sx={{
-                  listStyle: "none",
+                  listStyle: 'none',
                   color: color,
-                  height: "100%",
-                  padding: "0",
-                  margin: "0",
-                  width: "100%",
-                  textDecoration: "none",
+                  height: '100%',
+                  padding: '0',
+                  margin: '0',
+                  width: '100%',
+                  textDecoration: 'none',
 
                   ...(isActive
                     ? {
-                        fontWeight: "bold",
+                        fontWeight: 'bold',
                       }
                     : {}),
                 }}
@@ -168,43 +163,40 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                   onTouchStart={(e) => navigateTo(e, item)}
                   onMouseDown={(e) => navigateTo(e, item)}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") {
+                    if (e.key === 'Enter') {
                       e.preventDefault();
                       appNavigation.setCurrentPage(item.name);
                     }
                   }}
                   sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    border: "none",
-                    height: "100%",
-                    width: "100%",
-                    background: "none",
-                    color: "inherit",
-                    textDecoration: "none",
-                    padding: "0",
-                    boxSizing: "border-box",
-                    paddingTop: "15px",
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: 'none',
+                    height: '100%',
+                    width: '100%',
+                    background: 'none',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    padding: '0',
+                    boxSizing: 'border-box',
+                    paddingTop: '15px',
                     paddingBottom: `calc(10px + ${bottomOffset})`,
-                    margin: "0",
-                    gap: "5px",
-                    transition: "background-color 0.3s ease",
-                    ":hover": {
-                      backgroundColor: "rgba(255, 255, 255, 0.07)",
+                    margin: '0',
+                    gap: '5px',
+                    transition: 'background-color 0.3s ease',
+                    ':hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.07)',
                     },
-                    "@media (max-width: 700px)": {
-                      ":hover": {
-                        backgroundColor: "transparent",
+                    '@media (max-width: 700px)': {
+                      ':hover': {
+                        backgroundColor: 'transparent',
                       },
                     },
                   }}
                 >
-                  <Badge
-                    color="error"
-                    badgeContent={isActiveBadge ? item.badge : 0}
-                  >
+                  <Badge color="error" badgeContent={isActiveBadge ? item.badge : 0}>
                     {isProfile && userPhoto ? (
                       <Avatar
                         avatarSize="20px"
@@ -213,24 +205,20 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                         activeColor={activeColor}
                       />
                     ) : (
-                      <item.icon color={color} width={"20px"} height={"20px"} />
+                      <item.icon color={color} width={'20px'} height={'20px'} />
                     )}
                   </Badge>
 
                   <Stack
                     sx={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "3px",
-                      width: "100%",
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '3px',
+                      width: '100%',
                     }}
                   >
-                    <Typography
-                      variant="caption"
-                      component={"span"}
-                      align="center"
-                    >
+                    <Typography variant="caption" component={'span'} align="center">
                       {item.title}
                     </Typography>
                   </Stack>

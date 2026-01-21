@@ -1,7 +1,7 @@
-import { PaymentLog, PaymentLogType } from "@/common/usage";
-import { getDB } from "../config/firebase";
-import { addToTotalBalance } from "./addToTotalBalance";
-import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
+import { PaymentLog, PaymentLogType } from '@/common/usage';
+import { getDB } from '../config/firebase';
+import { addToTotalBalance } from './addToTotalBalance';
+import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 
 interface AddPaymentLogParams {
   amount: number;
@@ -33,10 +33,10 @@ export const addPaymentLog = async ({
     id: paymentId,
     amountAdded: amount,
     createdAt: Date.now(),
-    type: type || "user",
+    type: type || 'user',
     currency,
     amountOfHours,
-    receiptUrl: receiptUrl || "",
+    receiptUrl: receiptUrl || '',
     amountOfDays: daysCount || 0,
     amountOfMonth: monthsCount || 0,
   };
@@ -44,9 +44,9 @@ export const addPaymentLog = async ({
   const db = getDB();
 
   const isAlreadyPaid = await db
-    .collection("users")
+    .collection('users')
     .doc(userId)
-    .collection("payments")
+    .collection('payments')
     .doc(paymentId)
     .get()
     .then((doc) => doc.exists);
@@ -56,9 +56,9 @@ export const addPaymentLog = async ({
   }
 
   await db
-    .collection("users")
+    .collection('users')
     .doc(userId)
-    .collection("payments")
+    .collection('payments')
     .doc(paymentLog.id)
     .set(paymentLog);
 

@@ -1,13 +1,8 @@
-"use client";
+'use client';
 
-import {
-  useState,
-  useEffect,
-  ForwardRefExoticComponent,
-  RefAttributes,
-} from "react";
-import { useAuth } from "../Auth/useAuth";
-import { Avatar, Button, Stack, Typography } from "@mui/material";
+import { useState, useEffect, ForwardRefExoticComponent, RefAttributes } from 'react';
+import { useAuth } from '../Auth/useAuth';
+import { Avatar, Button, Stack, Typography } from '@mui/material';
 import {
   ChevronRight,
   Landmark,
@@ -18,24 +13,24 @@ import {
   Speech,
   Star,
   Wallet,
-} from "lucide-react";
+} from 'lucide-react';
 
-import { useUsage } from "../Usage/useUsage";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { useLingui } from "@lingui/react";
-import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
-import { useSettings } from "./useSettings";
-import { isTMA } from "@telegram-apps/sdk-react";
-import { useUrlParam } from "../Url/useUrlParam";
-import { NeedHelpModal } from "../Header/NeedHelpModal";
-import { PaymentHistoryModal } from "../Header/PaymentHistoryModal";
-import { ContactMessageModal } from "../Header/ContactMessageModal";
-import { Trans } from "@lingui/react/macro";
-import { useRouter } from "next/navigation";
-import { getUrlStart } from "../Lang/getUrlStart";
-import { GameMyAvatar } from "../Game/GameMyAvatar";
-import { GameMyUsername } from "../Game/GameMyUsername";
-import { useTeacherSettings } from "../Conversation/CallMode/useTeacherSettings";
+import { useUsage } from '../Usage/useUsage';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { useLingui } from '@lingui/react';
+import { LanguageSwitcher } from '../Lang/LanguageSwitcher';
+import { useSettings } from './useSettings';
+import { isTMA } from '@telegram-apps/sdk-react';
+import { useUrlParam } from '../Url/useUrlParam';
+import { NeedHelpModal } from '../Header/NeedHelpModal';
+import { PaymentHistoryModal } from '../Header/PaymentHistoryModal';
+import { ContactMessageModal } from '../Header/ContactMessageModal';
+import { Trans } from '@lingui/react/macro';
+import { useRouter } from 'next/navigation';
+import { getUrlStart } from '../Lang/getUrlStart';
+import { GameMyAvatar } from '../Game/GameMyAvatar';
+import { GameMyUsername } from '../Game/GameMyUsername';
+import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 
 export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -55,22 +50,19 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
     }, 10);
   }, []);
 
-  const [isShowHelpModal, setIsShowHelpModal] = useUrlParam("help");
-  const [isShowRefundModal, setIsShowRefundModal] = useUrlParam("refund");
-  const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] =
-    useUrlParam("paymentHistory");
-  const [isShowFeedbackModal, setIsShowFeedbackModal] = useUrlParam("feedback");
+  const [isShowHelpModal, setIsShowHelpModal] = useUrlParam('help');
+  const [isShowRefundModal, setIsShowRefundModal] = useUrlParam('refund');
+  const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] = useUrlParam('paymentHistory');
+  const [isShowFeedbackModal, setIsShowFeedbackModal] = useUrlParam('feedback');
 
   const usage = useUsage();
-  const [_, setIsShowModal] = useUrlParam("lang-selection");
+  const [_, setIsShowModal] = useUrlParam('lang-selection');
   const router = useRouter();
 
   interface MenuItem {
     title: string;
     subTitle: string;
-    icon: ForwardRefExoticComponent<
-      Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
-    >;
+    icon: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>;
     onClick: () => void;
   }
 
@@ -142,25 +134,25 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
     <>
       <Stack
         sx={{
-          width: "100%",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "0px 10px 0 10px",
-          gap: "50px",
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '0px 10px 0 10px',
+          gap: '50px',
         }}
       >
         <Stack
           sx={{
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '10px',
           }}
         >
           <Stack
             sx={{
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "20px",
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '20px',
             }}
           >
             <GameMyAvatar />
@@ -172,7 +164,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
             align="center"
             sx={{
               opacity: 0.7,
-              padding: "0 10px 20px 10px",
+              padding: '0 10px 20px 10px',
             }}
           >
             {i18n._(`Manage your profile settings and check your progress`)}
@@ -181,14 +173,14 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
 
         <Stack
           sx={{
-            width: "100%",
-            maxWidth: "700px",
-            gap: "0px",
-            backgroundColor: "rgba(32, 40, 50, 0.21)",
+            width: '100%',
+            maxWidth: '700px',
+            gap: '0px',
+            backgroundColor: 'rgba(32, 40, 50, 0.21)',
 
-            borderRadius: "8px",
-            boxShadow: "0 0 0 1px rgba(250, 250, 250, 0.1)",
-            padding: "0",
+            borderRadius: '8px',
+            boxShadow: '0 0 0 1px rgba(250, 250, 250, 0.1)',
+            padding: '0',
           }}
         >
           {menuItems.map((item, index) => {
@@ -200,29 +192,28 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
                 key={item.title}
                 onClick={item.onClick}
                 sx={{
-                  borderTopLeftRadius: isFirst ? "8px" : "0px",
-                  borderTopRightRadius: isFirst ? "8px" : "0px",
-                  borderBottomLeftRadius: isLast ? "8px" : "0px",
-                  borderBottomRightRadius: isLast ? "8px" : "0px",
+                  borderTopLeftRadius: isFirst ? '8px' : '0px',
+                  borderTopRightRadius: isFirst ? '8px' : '0px',
+                  borderBottomLeftRadius: isLast ? '8px' : '0px',
+                  borderBottomRightRadius: isLast ? '8px' : '0px',
 
-                  padding: "15px 20px",
-                  ":hover": {
-                    backgroundColor: "rgba(250, 250, 250, 0.1)",
+                  padding: '15px 20px',
+                  ':hover': {
+                    backgroundColor: 'rgba(250, 250, 250, 0.1)',
                   },
-                  display: "grid",
-                  gap: "10px",
-                  gridTemplateColumns: "max-content 1fr max-content",
-                  alignItems: "center",
-                  borderTop:
-                    index > 0 ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
+                  display: 'grid',
+                  gap: '10px',
+                  gridTemplateColumns: 'max-content 1fr max-content',
+                  alignItems: 'center',
+                  borderTop: index > 0 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
                 }}
               >
                 <item.icon size="30px" color="rgba(255, 255, 255, 0.7)" />
                 <Stack
                   sx={{
-                    alignItems: "flex-start",
-                    paddingLeft: "10px",
-                    color: "#fff",
+                    alignItems: 'flex-start',
+                    paddingLeft: '10px',
+                    color: '#fff',
                   }}
                 >
                   <Typography align="left">{item.title}</Typography>
@@ -243,21 +234,15 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
         </Stack>
       </Stack>
 
-      {isShowHelpModal && (
-        <NeedHelpModal onClose={() => setIsShowHelpModal(false)} lang={lang} />
-      )}
+      {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} lang={lang} />}
       {isShowPaymentHistoryModal && (
-        <PaymentHistoryModal
-          onClose={() => setIsShowPaymentHistoryModal(false)}
-        />
+        <PaymentHistoryModal onClose={() => setIsShowPaymentHistoryModal(false)} />
       )}
 
       {isShowRefundModal && (
         <ContactMessageModal
           title={i18n._(`Refund`)}
-          subTitle={i18n._(
-            `Add some info why you want a refund and we will do it.`,
-          )}
+          subTitle={i18n._(`Add some info why you want a refund and we will do it.`)}
           placeholder={i18n._(`Leave your message`)}
           onClose={() => setIsShowRefundModal(false)}
         />
@@ -275,12 +260,10 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       <LanguageSwitcher
         isHidden
         isAuth={auth.isAuthorized}
-        langToLearn={settings.languageCode || "en"}
-        setLanguageToLearn={
-          settings.appMode === "learning" ? settings.setLanguage : undefined
-        }
+        langToLearn={settings.languageCode || 'en'}
+        setLanguageToLearn={settings.appMode === 'learning' ? settings.setLanguage : undefined}
         setPageLanguage={settings.setPageLanguage}
-        nativeLang={settings.userSettings?.nativeLanguageCode || "en"}
+        nativeLang={settings.userSettings?.nativeLanguageCode || 'en'}
         setNativeLanguage={settings.setNativeLanguage}
       />
     </>

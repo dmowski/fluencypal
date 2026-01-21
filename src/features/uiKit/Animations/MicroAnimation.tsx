@@ -1,8 +1,8 @@
-"use client";
-import dynamic from "next/dynamic";
-import microAnimation from "./data/micro.json";
+'use client';
+import dynamic from 'next/dynamic';
+import microAnimation from './data/micro.json';
 
-const Lottie = dynamic(() => import("react-lottie-player"), {
+const Lottie = dynamic(() => import('react-lottie-player'), {
   ssr: false,
 });
 

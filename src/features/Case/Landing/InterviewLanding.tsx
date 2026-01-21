@@ -1,24 +1,24 @@
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { InterviewData } from "../types";
-import { Stack, Typography } from "@mui/material";
-import { InterviewHeader } from "./components/InterviewHeader";
-import { MainTitleSection } from "./components/MainTitleSection";
-import { InfoCards } from "./components/InfoCards";
-import { ScorePreviewSection } from "./components/ScorePreviewSection";
-import { StepInfoCards } from "./components/StepsInfoCards";
-import { ReviewCards } from "./components/ReviewCards";
-import { PriceCards } from "./components/PriceCards";
-import { GeneralFaqBlock } from "@/features/Landing/FAQ/GeneralFaqBlock";
-import { CtaBlock } from "@/features/Landing/ctaBlock";
-import { Footer } from "./components/Footer";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { ExampleQuestionsSection } from "./components/ExampleQuestionsSection";
-import { TechStackSection } from "./components/TechStackSection";
-import { TextListSection } from "./components/TextListSection";
-import { DemoSnippetSection } from "./components/DemoSnippetSection";
-import { FaqScript } from "./components/FaqScript";
-import { Theme } from "./components/theme";
-import { WebcamSection } from "./components/WebcamSection";
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { InterviewData } from '../types';
+import { Stack, Typography } from '@mui/material';
+import { InterviewHeader } from './components/InterviewHeader';
+import { MainTitleSection } from './components/MainTitleSection';
+import { InfoCards } from './components/InfoCards';
+import { ScorePreviewSection } from './components/ScorePreviewSection';
+import { StepInfoCards } from './components/StepsInfoCards';
+import { ReviewCards } from './components/ReviewCards';
+import { PriceCards } from './components/PriceCards';
+import { GeneralFaqBlock } from '@/features/Landing/FAQ/GeneralFaqBlock';
+import { CtaBlock } from '@/features/Landing/ctaBlock';
+import { Footer } from './components/Footer';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { ExampleQuestionsSection } from './components/ExampleQuestionsSection';
+import { TechStackSection } from './components/TechStackSection';
+import { TextListSection } from './components/TextListSection';
+import { DemoSnippetSection } from './components/DemoSnippetSection';
+import { FaqScript } from './components/FaqScript';
+import { Theme } from './components/theme';
+import { WebcamSection } from './components/WebcamSection';
 
 export async function InterviewLanding({
   lang,
@@ -33,19 +33,15 @@ export async function InterviewLanding({
   const quizLink = `${pageUrl}/quiz`;
 
   return (
-    <Stack sx={{ width: "100%" }}>
-      <InterviewHeader
-        lang={lang}
-        startTrialHref={quizLink}
-        pageUrl={pageUrl}
-      />
-      <main style={{ width: "100%", margin: 0 }}>
-        <Stack sx={{ alignItems: "center", gap: "0" }}>
+    <Stack sx={{ width: '100%' }}>
+      <InterviewHeader lang={lang} startTrialHref={quizLink} pageUrl={pageUrl} />
+      <main style={{ width: '100%', margin: 0 }}>
+        <Stack sx={{ alignItems: 'center', gap: '0' }}>
           {interviewData.sections.map((section, index) => {
-            const themeOrder: Theme[] = ["dark-blue", "dark-red"];
+            const themeOrder: Theme[] = ['dark-blue', 'dark-red'];
             const theme = themeOrder[index % themeOrder.length];
 
-            if (section.type === "firstScreen") {
+            if (section.type === 'firstScreen') {
               return (
                 <MainTitleSection
                   key={index}
@@ -59,7 +55,7 @@ export async function InterviewLanding({
               );
             }
 
-            if (section.type === "infoCards") {
+            if (section.type === 'infoCards') {
               return (
                 <InfoCards
                   key={index}
@@ -74,7 +70,7 @@ export async function InterviewLanding({
               );
             }
 
-            if (section.type === "webcamDemo") {
+            if (section.type === 'webcamDemo') {
               return (
                 <WebcamSection
                   key={index}
@@ -86,7 +82,7 @@ export async function InterviewLanding({
               );
             }
 
-            if (section.type === "scorePreview") {
+            if (section.type === 'scorePreview') {
               return (
                 <ScorePreviewSection
                   key={index}
@@ -102,7 +98,7 @@ export async function InterviewLanding({
               );
             }
 
-            if (section.type === "stepInfoCard") {
+            if (section.type === 'stepInfoCard') {
               return (
                 <StepInfoCards
                   theme={theme}
@@ -115,7 +111,7 @@ export async function InterviewLanding({
               );
             }
 
-            if (section.type === "review") {
+            if (section.type === 'review') {
               return (
                 <ReviewCards
                   key={index}
@@ -127,22 +123,22 @@ export async function InterviewLanding({
               );
             }
 
-            if (section.type === "exampleQuestions") {
+            if (section.type === 'exampleQuestions') {
               return (
                 <ExampleQuestionsSection
                   key={index}
                   title={section.title}
                   subTitle={section.subTitle}
                   questions={section.questions}
-                  id={"example-questions"}
+                  id={'example-questions'}
                 />
               );
             }
 
-            if (section.type === "techStack") {
+            if (section.type === 'techStack') {
               return (
                 <TechStackSection
-                  id={"tech-stack"}
+                  id={'tech-stack'}
                   key={index}
                   title={section.title}
                   subTitle={section.subTitle}
@@ -152,10 +148,10 @@ export async function InterviewLanding({
               );
             }
 
-            if (section.type === "textList") {
+            if (section.type === 'textList') {
               return (
                 <TextListSection
-                  id={"text-list"}
+                  id={'text-list'}
                   key={index}
                   title={section.title}
                   subTitle={section.subTitle}
@@ -167,10 +163,10 @@ export async function InterviewLanding({
               );
             }
 
-            if (section.type === "demoSnippet") {
+            if (section.type === 'demoSnippet') {
               return (
                 <DemoSnippetSection
-                  id={"demo-snippet"}
+                  id={'demo-snippet'}
                   key={index}
                   title={section.title}
                   subTitle={section.subTitle}
@@ -180,7 +176,7 @@ export async function InterviewLanding({
               );
             }
 
-            if (section.type === "price") {
+            if (section.type === 'price') {
               return (
                 <PriceCards
                   key={index}
@@ -193,13 +189,13 @@ export async function InterviewLanding({
               );
             }
 
-            if (section.type === "faq") {
+            if (section.type === 'faq') {
               return (
                 <div key={index}>
                   <GeneralFaqBlock
                     key={index}
                     id="faq"
-                    padding={"150px 0 90px 0"}
+                    padding={'150px 0 90px 0'}
                     title={section.title}
                     items={section.faqItems.map((faq) => ({
                       question: faq.question,
@@ -217,7 +213,7 @@ export async function InterviewLanding({
               );
             }
 
-            if (section.type === "callToAction") {
+            if (section.type === 'callToAction') {
               return (
                 <CtaBlock
                   key={index}

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   backButton,
   isTMA,
@@ -6,8 +6,8 @@ import {
   closingBehavior,
   requestFullscreen,
   isFullscreen,
-} from "@telegram-apps/sdk-react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+} from '@telegram-apps/sdk-react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import {
   createContext,
   useContext,
@@ -17,7 +17,7 @@ import {
   useRef,
   useCallback,
   useState,
-} from "react";
+} from 'react';
 
 interface TgNavigationContextType {
   addBackHandler: (handler: () => void) => () => void;
@@ -37,9 +37,9 @@ function useProvideTgNavigation(): TgNavigationContextType {
       return;
     }
 
-    const isQuiz = path.endsWith("/quiz");
+    const isQuiz = path.endsWith('/quiz');
     if (isQuiz) {
-      const quizStep = searchParams.get("currentStep");
+      const quizStep = searchParams.get('currentStep');
       if (quizStep) {
         backButton.show();
       } else {
@@ -56,9 +56,7 @@ function useProvideTgNavigation(): TgNavigationContextType {
 
   const [backStack, setBackStack] = useState<(() => void)[]>([]);
   const backHandler = () => {
-    const lastHandler = backStack.length
-      ? backStack[backStack.length - 1]
-      : null;
+    const lastHandler = backStack.length ? backStack[backStack.length - 1] : null;
     if (lastHandler) {
       lastHandler();
     } else {
@@ -97,7 +95,7 @@ function useProvideTgNavigation(): TgNavigationContextType {
         requestFullscreen();
       }
     } catch (e) {
-      console.log("Failed to switch to fullscreen", e);
+      console.log('Failed to switch to fullscreen', e);
     }
 
     return () => {
@@ -122,25 +120,15 @@ function useProvideTgNavigation(): TgNavigationContextType {
   return { addBackHandler };
 }
 
-export function TgNavigationProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function TgNavigationProvider({ children }: { children: ReactNode }): JSX.Element {
   const hook = useProvideTgNavigation();
-  return (
-    <TgNavigationContext.Provider value={hook}>
-      {children}
-    </TgNavigationContext.Provider>
-  );
+  return <TgNavigationContext.Provider value={hook}>{children}</TgNavigationContext.Provider>;
 }
 
 export const useTgNavigation = (): TgNavigationContextType => {
   const context = useContext(TgNavigationContext);
   if (!context) {
-    throw new Error(
-      "useTgNavigation must be used within a TgNavigationProvider",
-    );
+    throw new Error('useTgNavigation must be used within a TgNavigationProvider');
   }
   return context;
 };

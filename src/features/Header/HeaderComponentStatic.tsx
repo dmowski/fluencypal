@@ -1,8 +1,8 @@
-"use client";
-import { BookMarked, Gem, MessageCircleQuestion, Rss } from "lucide-react";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { HeaderUI } from "./HeaderUI";
-import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
+'use client';
+import { BookMarked, Gem, MessageCircleQuestion, Rss } from 'lucide-react';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { HeaderUI } from './HeaderUI';
+import { getUrlStart, getUrlStartWithoutLastSlash } from '../Lang/getUrlStart';
 
 export interface HeaderStaticProps {
   lang: SupportedLanguage;
@@ -33,29 +33,29 @@ export function HeaderComponentStatic({
       links={[
         {
           title: rolePlayTitle,
-          href: getUrlStart(lang) + "scenarios",
+          href: getUrlStart(lang) + 'scenarios',
           icon: BookMarked,
         },
         {
           title: contactsTitle,
-          href: getUrlStart(lang) + "contacts",
+          href: getUrlStart(lang) + 'contacts',
           icon: MessageCircleQuestion,
         },
         {
           title: blogTitle,
-          href: getUrlStart(lang) + "blog",
+          href: getUrlStart(lang) + 'blog',
           icon: Rss,
         },
         {
           title: priceTitle,
-          href: getUrlStart(lang) + "pricing",
+          href: getUrlStart(lang) + 'pricing',
           icon: Gem,
         },
       ]}
       buttons={[
         {
           title: signInTitle,
-          href: getUrlStart(lang) + "practice",
+          href: getUrlStart(lang) + 'practice',
           isSolid: true,
         },
       ]}

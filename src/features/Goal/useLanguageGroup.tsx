@@ -1,5 +1,5 @@
-import { fullLanguagesList } from "@/libs/language/languages";
-import { useEffect, useMemo, useState } from "react";
+import { fullLanguagesList } from '@/libs/language/languages';
+import { useEffect, useMemo, useState } from 'react';
 
 export const useLanguageGroup = ({
   defaultGroupTitle,
@@ -12,20 +12,18 @@ export const useLanguageGroup = ({
 
   useEffect(() => {
     setTimeout(() => {
-      const isWindow = typeof window !== "undefined";
+      const isWindow = typeof window !== 'undefined';
       if (!isWindow) {
         return;
       }
 
-      const userLang = [...navigator.languages].map((lang) =>
-        lang.toLowerCase(),
-      );
+      const userLang = [...navigator.languages].map((lang) => lang.toLowerCase());
       setUserLanguages(userLang);
     }, 20);
   }, []);
 
   const languageGroups = useMemo(() => {
-    const isWindow = typeof window !== "undefined";
+    const isWindow = typeof window !== 'undefined';
     if (!isWindow) {
       return [];
     }
@@ -35,24 +33,16 @@ export const useLanguageGroup = ({
         const isSystemLanguage = userLanguages.includes(lang.languageCode);
         return {
           ...lang,
-          groupTitle: isSystemLanguage
-            ? systemLanguagesTitle
-            : defaultGroupTitle,
+          groupTitle: isSystemLanguage ? systemLanguagesTitle : defaultGroupTitle,
           isSystemLanguage,
         };
       })
       .sort((a, b) => {
         // system languages first
-        if (
-          a.groupTitle === systemLanguagesTitle &&
-          b.groupTitle !== systemLanguagesTitle
-        ) {
+        if (a.groupTitle === systemLanguagesTitle && b.groupTitle !== systemLanguagesTitle) {
           return -1;
         }
-        if (
-          a.groupTitle !== systemLanguagesTitle &&
-          b.groupTitle === systemLanguagesTitle
-        ) {
+        if (a.groupTitle !== systemLanguagesTitle && b.groupTitle === systemLanguagesTitle) {
           return 1;
         }
 

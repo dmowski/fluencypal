@@ -1,19 +1,24 @@
-# Ignore artifacts:
+# Build and coverage artifacts
 build
 coverage
+.next
+out
+dist
+playwright-report
 
-# Ignore all HTML files:
-**/*.html
+# Dependencies
+node_modules
 
+# VCS folders
+.git
+.svn
+.hg
+
+# Public assets
 public
 
-**/.git
-**/.svn
-**/.hg
-**/node_modules
-
-**/.git
-**/.svn
-**/.hg
-
+# Optionally ignore generated locales
 src/locales
+
+# Ignore all HTML files (if not meant for Prettier)
+**/*.html

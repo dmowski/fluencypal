@@ -1,22 +1,22 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from '@mui/material';
 
-import { Footer } from "../Landing/Footer";
+import { Footer } from '../Landing/Footer';
 
-import { CtaBlock } from "../Landing/ctaBlock";
+import { CtaBlock } from '../Landing/ctaBlock';
 import {
   buttonStyle,
   maxLandingWidth,
   subTitleFontStyle,
   titleFontStyle,
-} from "../Landing/landingSettings";
-import { Markdown } from "@/features/uiKit/Markdown/Markdown";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { getBlogs } from "./blogData";
-import { getRolePlayScenarios } from "../RolePlay/rolePlayData";
-import { RolePlayCard } from "../Landing/RolePlay/RolePlayCard";
-import { HeaderStatic } from "../Header/HeaderStatic";
+} from '../Landing/landingSettings';
+import { Markdown } from '@/features/uiKit/Markdown/Markdown';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getI18nInstance } from '@/appRouterI18n';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getBlogs } from './blogData';
+import { getRolePlayScenarios } from '../RolePlay/rolePlayData';
+import { RolePlayCard } from '../Landing/RolePlay/RolePlayCard';
+import { HeaderStatic } from '../Header/HeaderStatic';
 
 interface BlogOnePageProps {
   id?: string;
@@ -42,52 +42,52 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
       <HeaderStatic lang={lang} />
       <div
         style={{
-          width: "100%",
+          width: '100%',
           margin: 0,
         }}
       >
         <Stack
-          component={"main"}
+          component={'main'}
           sx={{
-            alignItems: "center",
-            width: "100%",
+            alignItems: 'center',
+            width: '100%',
             backgroundColor: `#fff`,
           }}
         >
           <Stack
             sx={{
-              width: "100%",
-              alignItems: "center",
-              backgroundColor: "rgba(255, 255, 255, 0.9)",
+              width: '100%',
+              alignItems: 'center',
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
             }}
           >
             <Stack
               sx={{
                 maxWidth: maxLandingWidth,
-                width: "100%",
-                boxSizing: "border-box",
-                alignItems: "center",
-                padding: "110px 10px 20px 10px",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                gap: "10px",
-                flexWrap: "wrap",
+                width: '100%',
+                boxSizing: 'border-box',
+                alignItems: 'center',
+                padding: '110px 10px 20px 10px',
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                gap: '10px',
+                flexWrap: 'wrap',
               }}
             >
               <Stack
-                gap={"0px"}
+                gap={'0px'}
                 sx={{
-                  width: "max-content",
-                  maxWidth: "1000px",
+                  width: 'max-content',
+                  maxWidth: '1000px',
                 }}
               >
                 <Typography
-                  component={"h1"}
+                  component={'h1'}
                   sx={{
                     ...titleFontStyle,
-                    fontSize: "2rem",
-                    color: "#000",
+                    fontSize: '2rem',
+                    color: '#000',
                   }}
                 >
                   {item.title}
@@ -95,11 +95,11 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                 <Typography
                   variant="body1"
                   sx={{
-                    maxWidth: "810px",
+                    maxWidth: '810px',
 
                     ...subTitleFontStyle,
-                    color: "#666",
-                    fontSize: "1.1rem",
+                    color: '#666',
+                    fontSize: '1.1rem',
                   }}
                 >
                   {item.subTitle}
@@ -108,15 +108,15 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
 
               <Stack
                 sx={{
-                  width: "max-content",
-                  flexDirection: "row",
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  alignItems: "center",
-                  gap: "10px",
-                  flexWrap: "wrap",
-                  "@media (max-width: 900px)": {
-                    justifyContent: "flex-start",
+                  width: 'max-content',
+                  flexDirection: 'row',
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  alignItems: 'center',
+                  gap: '10px',
+                  flexWrap: 'wrap',
+                  '@media (max-width: 900px)': {
+                    justifyContent: 'flex-start',
                   },
                 }}
               >
@@ -125,14 +125,14 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                   href={`${getUrlStart(lang)}blog`}
                   sx={{
                     ...buttonStyle,
-                    borderRadius: "4px",
-                    height: "3rem",
+                    borderRadius: '4px',
+                    height: '3rem',
 
-                    color: "rgb(43 35 88)",
-                    borderColor: "rgb(43 35 88)",
-                    borderWidth: "1px",
+                    color: 'rgb(43 35 88)',
+                    borderColor: 'rgb(43 35 88)',
+                    borderWidth: '1px',
 
-                    backgroundColor: "#fff",
+                    backgroundColor: '#fff',
                   }}
                 >
                   {i18n._(`View all posts`)}
@@ -142,64 +142,64 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
           </Stack>
           <Stack
             sx={{
-              width: "100%",
-              padding: "0px 0 90px 0",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "40px",
+              width: '100%',
+              padding: '0px 0 90px 0',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '40px',
               backgroundColor: `#fff`,
-              position: "relative",
+              position: 'relative',
               zIndex: 1,
             }}
           >
             <Stack
               sx={{
-                color: "#222",
+                color: '#222',
                 maxWidth: maxLandingWidth,
-                width: "100%",
-                padding: "10px",
-                gap: "60px",
-                boxSizing: "border-box",
-                display: "grid",
-                gridTemplateColumns: "3fr 1.3fr",
-                "@media (max-width: 900px)": {
-                  gridTemplateColumns: "1fr",
+                width: '100%',
+                padding: '10px',
+                gap: '60px',
+                boxSizing: 'border-box',
+                display: 'grid',
+                gridTemplateColumns: '3fr 1.3fr',
+                '@media (max-width: 900px)': {
+                  gridTemplateColumns: '1fr',
                 },
               }}
             >
               <Stack
                 sx={{
-                  gap: "40px",
+                  gap: '40px',
                 }}
               >
                 <Stack
                   sx={{
-                    maxWidth: "800px",
-                    boxSizing: "border-box",
-                    width: "100%",
+                    maxWidth: '800px',
+                    boxSizing: 'border-box',
+                    width: '100%',
                     color: `#222`,
-                    padding: "0px 0px",
-                    gap: "20px",
-                    alignItems: "flex-start",
+                    padding: '0px 0px',
+                    gap: '20px',
+                    alignItems: 'flex-start',
                     h2: {
-                      fontSize: "1.2rem",
+                      fontSize: '1.2rem',
                       fontWeight: 600,
-                      paddingBottom: "10px",
-                      paddingTop: "30px",
+                      paddingBottom: '10px',
+                      paddingTop: '30px',
                     },
                   }}
                 >
                   <Stack
                     sx={{
-                      maxHeight: "400px",
-                      overflow: "hidden",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      borderRadius: "20px",
-                      boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.15)",
-                      "@media (max-width: 800px)": {
+                      maxHeight: '400px',
+                      overflow: 'hidden',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: '20px',
+                      boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.15)',
+                      '@media (max-width: 800px)': {
                         borderRadius: 0,
-                        boxShadow: "none",
+                        boxShadow: 'none',
                       },
                     }}
                   >
@@ -208,10 +208,10 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                       className="blog-image"
                       alt={`Illustration for ${item.title}`}
                       style={{
-                        width: "100%",
+                        width: '100%',
 
-                        height: "auto",
-                        position: "relative",
+                        height: 'auto',
+                        position: 'relative',
                       }}
                     />
                   </Stack>
@@ -220,8 +220,8 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                   {item.contendElement && (
                     <Stack
                       sx={{
-                        width: "100%",
-                        maxWidth: "800px",
+                        width: '100%',
+                        maxWidth: '800px',
                       }}
                     >
                       {item.contendElement}
@@ -234,17 +234,17 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
             {relatedCards.length > 0 && (
               <Stack
                 sx={{
-                  color: "#222",
+                  color: '#222',
                   maxWidth: maxLandingWidth,
-                  width: "100%",
-                  padding: "10px",
-                  gap: "20px",
-                  boxSizing: "border-box",
+                  width: '100%',
+                  padding: '10px',
+                  gap: '20px',
+                  boxSizing: 'border-box',
                 }}
               >
                 <Typography
                   variant="h6"
-                  component={"h2"}
+                  component={'h2'}
                   sx={{
                     fontWeight: 600,
                   }}
@@ -254,28 +254,23 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
 
                 <Stack
                   sx={{
-                    display: "grid",
-                    width: "100%",
-                    gap: "20px",
-                    gridTemplateColumns: "1fr 1fr 1fr",
-                    justifyContent: "space-between",
-                    "@media (max-width: 1224px)": {
-                      gridTemplateColumns: "1fr 1fr",
+                    display: 'grid',
+                    width: '100%',
+                    gap: '20px',
+                    gridTemplateColumns: '1fr 1fr 1fr',
+                    justifyContent: 'space-between',
+                    '@media (max-width: 1224px)': {
+                      gridTemplateColumns: '1fr 1fr',
                     },
 
-                    "@media (max-width: 724px)": {
-                      gridTemplateColumns: "1fr",
+                    '@media (max-width: 724px)': {
+                      gridTemplateColumns: '1fr',
                     },
                   }}
                 >
                   {relatedCards.map((scenario, index) => {
                     return (
-                      <RolePlayCard
-                        key={index}
-                        scenario={scenario}
-                        lang={lang}
-                        height="400px"
-                      />
+                      <RolePlayCard key={index} scenario={scenario} lang={lang} height="400px" />
                     );
                   })}
                 </Stack>

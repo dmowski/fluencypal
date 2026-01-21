@@ -1,8 +1,8 @@
-import { Stack, Typography } from "@mui/material";
-import { LegalContainer } from "./LegalContainer";
-import Markdown from "markdown-to-jsx";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
+import { Stack, Typography } from '@mui/material';
+import { LegalContainer } from './LegalContainer';
+import Markdown from 'markdown-to-jsx';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getI18nInstance } from '@/appRouterI18n';
 
 interface PageProps {
   lang: SupportedLanguage;
@@ -16,9 +16,9 @@ export const CookiesPolicy = ({ lang }: PageProps) => {
       <Typography>Effective Date: Mar 17, 2025</Typography>
       <Stack
         sx={{
-          fontSize: "20px",
-          fontFamily: "Intel, Roboto, Arial, sans-serif",
-          color: "rgba(222, 222, 222, 0.9)",
+          fontSize: '20px',
+          fontFamily: 'Intel, Roboto, Arial, sans-serif',
+          color: 'rgba(222, 222, 222, 0.9)',
           hr: {
             opacity: 0.1,
           },

@@ -1,43 +1,43 @@
-import fs from "fs";
-import gettextParser from "gettext-parser";
-import OpenAI from "openai";
-import { promisify } from "util";
+import fs from 'fs';
+import gettextParser from 'gettext-parser';
+import OpenAI from 'openai';
+import { promisify } from 'util';
 
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 if (!OPENAI_API_KEY) {
-  throw new Error("OPENAI_API_KEY is not defined. Please set it in .env file");
+  throw new Error('OPENAI_API_KEY is not defined. Please set it in .env file');
 }
 
 const openAi = new OpenAI({ apiKey: OPENAI_API_KEY });
-const TRANSLATE_MODEL = "gpt-4o";
+const TRANSLATE_MODEL = 'gpt-4o';
 
-const localesFolder = "./src/locales";
+const localesFolder = './src/locales';
 const languages = [
-  { path: `${localesFolder}/ru.po`, language: "Russian" },
-  { path: `${localesFolder}/es.po`, language: "Spanish" },
-  { path: `${localesFolder}/en.po`, language: "English" },
-  { path: `${localesFolder}/de.po`, language: "German" },
-  { path: `${localesFolder}/pl.po`, language: "Polish" },
-  { path: `${localesFolder}/uk.po`, language: "Ukrainian" },
-  { path: `${localesFolder}/fr.po`, language: "French" },
-  { path: `${localesFolder}/ar.po`, language: "Arabic" },
-  { path: `${localesFolder}/id.po`, language: "Indonesian" },
-  { path: `${localesFolder}/it.po`, language: "Italian" },
-  { path: `${localesFolder}/ja.po`, language: "Japanese" },
-  { path: `${localesFolder}/ko.po`, language: "Korean" },
-  { path: `${localesFolder}/ms.po`, language: "Malay" },
-  { path: `${localesFolder}/pt.po`, language: "Portuguese" },
-  { path: `${localesFolder}/th.po`, language: "Thai" },
-  { path: `${localesFolder}/tr.po`, language: "Turkish" },
-  { path: `${localesFolder}/vi.po`, language: "Vietnamese" },
-  { path: `${localesFolder}/zh.po`, language: "Chinese" },
-  { path: `${localesFolder}/da.po`, language: "Danish" },
-  { path: `${localesFolder}/no.po`, language: "Norwegian" },
-  { path: `${localesFolder}/sv.po`, language: "Swedish" },
-  { path: `${localesFolder}/be.po`, language: "Belarusian" },
+  { path: `${localesFolder}/ru.po`, language: 'Russian' },
+  { path: `${localesFolder}/es.po`, language: 'Spanish' },
+  { path: `${localesFolder}/en.po`, language: 'English' },
+  { path: `${localesFolder}/de.po`, language: 'German' },
+  { path: `${localesFolder}/pl.po`, language: 'Polish' },
+  { path: `${localesFolder}/uk.po`, language: 'Ukrainian' },
+  { path: `${localesFolder}/fr.po`, language: 'French' },
+  { path: `${localesFolder}/ar.po`, language: 'Arabic' },
+  { path: `${localesFolder}/id.po`, language: 'Indonesian' },
+  { path: `${localesFolder}/it.po`, language: 'Italian' },
+  { path: `${localesFolder}/ja.po`, language: 'Japanese' },
+  { path: `${localesFolder}/ko.po`, language: 'Korean' },
+  { path: `${localesFolder}/ms.po`, language: 'Malay' },
+  { path: `${localesFolder}/pt.po`, language: 'Portuguese' },
+  { path: `${localesFolder}/th.po`, language: 'Thai' },
+  { path: `${localesFolder}/tr.po`, language: 'Turkish' },
+  { path: `${localesFolder}/vi.po`, language: 'Vietnamese' },
+  { path: `${localesFolder}/zh.po`, language: 'Chinese' },
+  { path: `${localesFolder}/da.po`, language: 'Danish' },
+  { path: `${localesFolder}/no.po`, language: 'Norwegian' },
+  { path: `${localesFolder}/sv.po`, language: 'Swedish' },
+  { path: `${localesFolder}/be.po`, language: 'Belarusian' },
 ];
 
 const translateBlock = async (blockText, lang) => {
@@ -49,20 +49,20 @@ const translateBlock = async (blockText, lang) => {
     `Ensure high-quality translation.`,
     `Do not add or modify any text, and avoid wrapping the text unnecessarily.`,
     `Preserve all newline breaks (\\n symbols) exactly as they appear in the input.`,
-  ].join(" ");
+  ].join(' ');
 
   const chatCompletion = await openAi.chat.completions.create({
     messages: [
-      { role: "system", content: prompt },
-      { role: "user", content: blockText },
+      { role: 'system', content: prompt },
+      { role: 'user', content: blockText },
     ],
     model: TRANSLATE_MODEL,
   });
 
   let result = chatCompletion.choices[0].message.content;
 
-  result = result?.startsWith("```") ? result.slice(3) : result || "";
-  result = result.endsWith("```") ? result.slice(0, -3) : result;
+  result = result?.startsWith('```') ? result.slice(3) : result || '';
+  result = result.endsWith('```') ? result.slice(0, -3) : result;
 
   return result || blockText;
 };
@@ -115,13 +115,13 @@ function sortTranslation(poData) {
 
 const processLang = async (lang, path) => {
   const sourceContent = await readFileAsync(path, {
-    encoding: "utf-8",
+    encoding: 'utf-8',
   });
   const po = gettextParser.po.parse(sourceContent);
   await processTranslations(po, lang);
   sortTranslation(po);
   const updatedPo = gettextParser.po.compile(po);
-  await writeFileAsync(path, updatedPo, { encoding: "utf-8" });
+  await writeFileAsync(path, updatedPo, { encoding: 'utf-8' });
 };
 
 const main = async () => {

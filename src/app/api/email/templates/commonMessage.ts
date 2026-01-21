@@ -1,12 +1,12 @@
-import { appName, siteUrl } from "@/common/metadata";
+import { appName, siteUrl } from '@/common/metadata';
 
 export const templateConfig = {
   projectUrl: siteUrl,
-  logoWhiteBgImgUrl: siteUrl + "logo_white.jpg",
-  logoGrayBlueBgImgUrl: siteUrl + "logo_gray_blue_bg.jpg",
+  logoWhiteBgImgUrl: siteUrl + 'logo_white.jpg',
+  logoGrayBlueBgImgUrl: siteUrl + 'logo_gray_blue_bg.jpg',
 
-  instagramImageUrl: "https://images.prohiring.dev/emailImages/instagram.jpg",
-  instagramUrl: "https://www.instagram.com/dmowskii",
+  instagramImageUrl: 'https://images.prohiring.dev/emailImages/instagram.jpg',
+  instagramUrl: 'https://www.instagram.com/dmowskii',
 };
 
 interface EmailTemplate {

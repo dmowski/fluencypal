@@ -5,8 +5,8 @@ import {
   TextUsageEvent,
   TranscriptAiModel,
   UsageEvent,
-} from "./ai";
-import { SupportedLanguage } from "../features/Lang/lang";
+} from './ai';
+import { SupportedLanguage } from '../features/Lang/lang';
 
 export interface TotalUsageInfo {
   lastUpdatedAt: number;
@@ -23,32 +23,32 @@ interface BaseUsageLog {
   languageCode: SupportedLanguage;
 }
 export interface RealtimeUsageLog extends BaseUsageLog {
-  type: "realtime";
+  type: 'realtime';
   usageEvent: UsageEvent;
   model: RealTimeModel;
 }
 
 export interface TextUsageLog extends BaseUsageLog {
-  type: "text";
+  type: 'text';
   usageEvent: TextUsageEvent;
   model: TextAiModel;
 }
 
 export interface AudioUsageLog extends BaseUsageLog {
-  type: "audio";
+  type: 'audio';
   size: number;
   duration: number;
 }
 
 export interface TranscriptUsageLog extends BaseUsageLog {
-  type: "transcript";
+  type: 'transcript';
   duration: number;
   transcriptSize: number;
   model: TranscriptAiModel;
 }
 
 export interface TextToAudioUsageLog extends BaseUsageLog {
-  type: "text_to_audio";
+  type: 'text_to_audio';
   duration: number;
   transcriptSize: number;
   model: TextToAudioModal;
@@ -61,12 +61,7 @@ export type UsageLog =
   | TranscriptUsageLog
   | TextToAudioUsageLog;
 
-export type PaymentLogType =
-  | "welcome"
-  | "user"
-  | "gift"
-  | "subscription-full-v1"
-  | "trial-days";
+export type PaymentLogType = 'welcome' | 'user' | 'gift' | 'subscription-full-v1' | 'trial-days';
 
 export const WELCOME_BONUS = 6;
 export interface PaymentLog {

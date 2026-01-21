@@ -1,7 +1,7 @@
-import { GradientCard } from "../uiKit/Card/GradientCard";
-import { Stack, Tooltip, Typography } from "@mui/material";
-import { Lock, BadgeCheck } from "lucide-react";
-import { JSX } from "react";
+import { GradientCard } from '../uiKit/Card/GradientCard';
+import { Stack, Tooltip, Typography } from '@mui/material';
+import { Lock, BadgeCheck } from 'lucide-react';
+import { JSX } from 'react';
 
 interface ClickCardProps {
   isDone: boolean;
@@ -25,23 +25,23 @@ export const ClickCard: React.FC<ClickCardProps> = ({
     <Tooltip title={lockedText} placement="top" arrow>
       <Stack>
         <Stack
-          component={"button"}
+          component={'button'}
           disabled={!!lockedText}
           onClick={() => onStart()}
           sx={{
-            backgroundColor: "transparent",
-            padding: "0",
-            border: "none",
-            display: "flex",
-            alignItems: "flex-start",
-            textAlign: "left",
-            cursor: lockedText ? "not-allowed" : "pointer",
-            width: "100%",
-            color: "#fff",
-            height: "max-content",
-            ":hover,:focus": {
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-              borderRadius: "16px",
+            backgroundColor: 'transparent',
+            padding: '0',
+            border: 'none',
+            display: 'flex',
+            alignItems: 'flex-start',
+            textAlign: 'left',
+            cursor: lockedText ? 'not-allowed' : 'pointer',
+            width: '100%',
+            color: '#fff',
+            height: 'max-content',
+            ':hover,:focus': {
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              borderRadius: '16px',
             },
           }}
         >
@@ -50,51 +50,41 @@ export const ClickCard: React.FC<ClickCardProps> = ({
             strokeWidth="2px"
             startColor={
               isDone
-                ? "#fa8500"
+                ? '#fa8500'
                 : lockedText
-                  ? "rgba(255, 255, 255, 0.09)"
-                  : "rgba(255, 255, 255, 0.2)"
+                  ? 'rgba(255, 255, 255, 0.09)'
+                  : 'rgba(255, 255, 255, 0.2)'
             }
             endColor={
               isDone
-                ? "#05acff"
+                ? '#05acff'
                 : lockedText
-                  ? "rgba(255, 255, 255, 0.09)"
-                  : "rgba(255, 255, 255, 0.3)"
+                  ? 'rgba(255, 255, 255, 0.09)'
+                  : 'rgba(255, 255, 255, 0.3)'
             }
             backgroundColor={
               isDone
-                ? "rgba(10, 18, 30, 1)"
+                ? 'rgba(10, 18, 30, 1)'
                 : lockedText
-                  ? "rgba(10, 18, 30, 0.2)"
-                  : "rgba(10, 18, 30, 0.6)"
+                  ? 'rgba(10, 18, 30, 0.2)'
+                  : 'rgba(10, 18, 30, 0.6)'
             }
           >
-            {lockedText ? (
-              <Lock size={"30px"} color="#888" />
-            ) : (
-              buttonIcon || <></>
-            )}
+            {lockedText ? <Lock size={'30px'} color="#888" /> : buttonIcon || <></>}
             <Stack
               sx={{
-                gap: "16px",
-                alignItems: "flex-start",
+                gap: '16px',
+                alignItems: 'flex-start',
               }}
             >
               <Stack
                 sx={{
-                  position: "absolute",
-                  top: "16px",
-                  right: "16px",
+                  position: 'absolute',
+                  top: '16px',
+                  right: '16px',
                 }}
               >
-                {isDone ? (
-                  <BadgeCheck
-                    strokeWidth={"2px"}
-                    color="#558fdb"
-                    size={"24px"}
-                  />
-                ) : null}
+                {isDone ? <BadgeCheck strokeWidth={'2px'} color="#558fdb" size={'24px'} /> : null}
               </Stack>
               <Stack>
                 <Typography

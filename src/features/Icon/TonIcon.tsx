@@ -1,8 +1,8 @@
 export const TonIcon = ({ size }: { size?: string }) => {
   return (
     <svg
-      width={size || "56"}
-      height={size || "56"}
+      width={size || '56'}
+      height={size || '56'}
       viewBox="0 0 56 56"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

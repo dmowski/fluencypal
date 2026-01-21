@@ -1,10 +1,8 @@
-import { NativeLangCode } from "@/libs/language/type";
-import { TranslationServiceClient } from "@google-cloud/translate";
+import { NativeLangCode } from '@/libs/language/type';
+import { TranslationServiceClient } from '@google-cloud/translate';
 
 const getTranslateClient = () => {
-  const serviceAccount = JSON.parse(
-    process.env.GOOGLE_TRANSlATE_SERVICE_ACCOUNT_CREDS as string,
-  );
+  const serviceAccount = JSON.parse(process.env.GOOGLE_TRANSlATE_SERVICE_ACCOUNT_CREDS as string);
   return new TranslationServiceClient({
     credentials: {
       client_email: serviceAccount.client_email,
@@ -25,14 +23,14 @@ export const translateText = async ({
   targetLanguage,
 }: TranslateTextProps) => {
   const client = getTranslateClient();
-  const projectId = "dark-lang";
-  const location = "global";
+  const projectId = 'dark-lang';
+  const location = 'global';
 
   try {
     const translatedTextResponse = await client.translateText({
       parent: `projects/${projectId}/locations/${location}`,
       contents: [text],
-      mimeType: "text/plain",
+      mimeType: 'text/plain',
       sourceLanguageCode: sourceLanguage,
       targetLanguageCode: targetLanguage,
     });
@@ -42,10 +40,10 @@ export const translateText = async ({
         ?.map((t) => {
           return t.translatedText;
         })
-        .join("") || "Translation failed";
+        .join('') || 'Translation failed';
     return translatedText;
   } catch (error) {
-    console.error("Translation error:", error);
-    return "Translation error";
+    console.error('Translation error:', error);
+    return 'Translation error';
   }
 };

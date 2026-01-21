@@ -1,4 +1,4 @@
-import { TranscriptResponse } from "./types";
+import { TranscriptResponse } from './types';
 
 interface SendTranscriptRequestProps {
   languageCode: string;
@@ -15,19 +15,19 @@ export const sendTranscriptRequest = async ({
   format,
 }: SendTranscriptRequestProps) => {
   const formData = new FormData();
-  const extension = format.includes("webm")
-    ? "webm"
-    : format.includes("mp4")
-      ? "mp4"
-      : format.includes("ogg")
-        ? "ogg"
-        : "mp3";
+  const extension = format.includes('webm')
+    ? 'webm'
+    : format.includes('mp4')
+      ? 'mp4'
+      : format.includes('ogg')
+        ? 'ogg'
+        : 'mp3';
 
-  formData.append("audio", audioBlob, `recording.${extension}`);
+  formData.append('audio', audioBlob, `recording.${extension}`);
   const response = await fetch(
     `/api/transcript?lang=${languageCode}&audioDuration=${audioDuration}&format=${format}`,
     {
-      method: "POST",
+      method: 'POST',
       body: formData,
       headers: {
         Authorization: `Bearer ${authKey}`,

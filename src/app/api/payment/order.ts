@@ -1,9 +1,9 @@
-import { getDB } from "../config/firebase";
-import { Order, OrderStatus } from "./type";
+import { getDB } from '../config/firebase';
+import { Order, OrderStatus } from './type';
 
 export const createOrder = async (order: Order): Promise<Order> => {
   const db = getDB();
-  await db.collection("orders").doc(order.id).set(order);
+  await db.collection('orders').doc(order.id).set(order);
   return order;
 };
 
@@ -16,9 +16,9 @@ export const getOrders = async ({
 }): Promise<Order[]> => {
   const db = getDB();
   const ordersDocs = await db
-    .collection("orders")
-    .where("userId", "==", userId)
-    .where("status", "==", status)
+    .collection('orders')
+    .where('userId', '==', userId)
+    .where('status', '==', status)
     .get();
 
   const orders: Order[] = ordersDocs.docs.map((doc) => {
@@ -30,7 +30,7 @@ export const getOrders = async ({
 
 export const getOrderById = async (orderId: string): Promise<Order | null> => {
   const db = getDB();
-  const orderRef = db.collection("orders").doc(orderId);
+  const orderRef = db.collection('orders').doc(orderId);
   const orderSnapshot = await orderRef.get();
   return orderSnapshot.exists ? (orderSnapshot.data() as Order) : null;
 };
@@ -40,20 +40,15 @@ export const updateOrder = async (
   updates: Partial<Order>,
 ): Promise<Order | null> => {
   const db = getDB();
-  const orderRef = db.collection("orders").doc(orderId);
+  const orderRef = db.collection('orders').doc(orderId);
   await orderRef.update(updates);
   const updatedOrder = await getOrderById(orderId);
   return updatedOrder;
 };
 
-export const getOrderByComment = async (
-  comment: string,
-): Promise<Order | null> => {
+export const getOrderByComment = async (comment: string): Promise<Order | null> => {
   const db = getDB();
-  const ordersDocs = await db
-    .collection("orders")
-    .where("comment", "==", comment)
-    .get();
+  const ordersDocs = await db.collection('orders').where('comment', '==', comment).get();
 
   const orders: Order[] = ordersDocs.docs.map((doc) => {
     const data: Order = doc.data() as Order;

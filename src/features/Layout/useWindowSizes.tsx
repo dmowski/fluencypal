@@ -1,22 +1,15 @@
-"use client";
+'use client';
 import {
   useSignal,
   viewportContentSafeAreaInsetTop,
   viewportSafeAreaInsetTop,
   viewportContentSafeAreaInsetBottom,
   viewportSafeAreaInsetBottom,
-} from "@telegram-apps/sdk-react";
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  JSX,
-  useState,
-  useEffect,
-} from "react";
+} from '@telegram-apps/sdk-react';
+import { createContext, useContext, ReactNode, JSX, useState, useEffect } from 'react';
 
-const DEFAULT_TOP = "0px";
-const DEFAULT_BOTTOM = "0px";
+const DEFAULT_TOP = '0px';
+const DEFAULT_BOTTOM = '0px';
 
 interface WindowSizesContextType {
   topOffset: string;
@@ -41,14 +34,11 @@ function useProvideWindowSizes(): WindowSizesContextType {
   }, []);
 
   const combinedOffset = contentSafeTop + safeAreaInsetTop;
-  const topOffset =
-    isAllowApply && combinedOffset ? `${combinedOffset + 0}px` : DEFAULT_TOP;
+  const topOffset = isAllowApply && combinedOffset ? `${combinedOffset + 0}px` : DEFAULT_TOP;
 
   const combinedBottomOffset = contentSafeBottom + safeAreaInsetBottom;
   const bottomOffset =
-    isAllowApply && combinedBottomOffset
-      ? `${combinedBottomOffset + 0}px`
-      : DEFAULT_BOTTOM;
+    isAllowApply && combinedBottomOffset ? `${combinedBottomOffset + 0}px` : DEFAULT_BOTTOM;
 
   return {
     topOffset,
@@ -58,23 +48,15 @@ function useProvideWindowSizes(): WindowSizesContextType {
   };
 }
 
-export function WindowSizesProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function WindowSizesProvider({ children }: { children: ReactNode }): JSX.Element {
   const hook = useProvideWindowSizes();
-  return (
-    <WindowSizesContext.Provider value={hook}>
-      {children}
-    </WindowSizesContext.Provider>
-  );
+  return <WindowSizesContext.Provider value={hook}>{children}</WindowSizesContext.Provider>;
 }
 
 export const useWindowSizes = (): WindowSizesContextType => {
   const context = useContext(WindowSizesContext);
   if (!context) {
-    throw new Error("useWindowSizes must be used within a WindowSizesProvider");
+    throw new Error('useWindowSizes must be used within a WindowSizesProvider');
   }
   return context;
 };

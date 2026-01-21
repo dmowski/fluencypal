@@ -1,8 +1,8 @@
-import { supportedLanguages } from "@/features/Lang/lang";
-import NotFound from "../not-found";
-import { initLingui } from "@/initLingui";
-import { allMessages } from "@/appRouterI18n";
-import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
+import { supportedLanguages } from '@/features/Lang/lang';
+import NotFound from '../not-found';
+import { initLingui } from '@/initLingui';
+import { allMessages } from '@/appRouterI18n';
+import { LinguiClientProvider } from '@/features/Lang/LinguiClientProvider';
 
 export default async function Page(props: {
   params: Promise<{ lang: string }>;

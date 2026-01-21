@@ -1,11 +1,11 @@
-import { GoalPlan } from "../Plan/types";
-import { ColorIconTextListItem } from "../Survey/ColorIconTextList";
-import { InfoCard } from "./Landing/components/InfoCards";
-import { Price } from "./Landing/components/PriceCards";
-import { Review } from "./Landing/components/ReviewCards";
-import { ScorePreview } from "./Landing/components/ScorePreviewSection";
-import { StepInfoCard } from "./Landing/components/StepsInfoCards";
-import { IconName } from "lucide-react/dynamic";
+import { GoalPlan } from '../Plan/types';
+import { ColorIconTextListItem } from '../Survey/ColorIconTextList';
+import { InfoCard } from './Landing/components/InfoCards';
+import { Price } from './Landing/components/PriceCards';
+import { Review } from './Landing/components/ReviewCards';
+import { ScorePreview } from './Landing/components/ScorePreviewSection';
+import { StepInfoCard } from './Landing/components/StepsInfoCards';
+import { IconName } from 'lucide-react/dynamic';
 
 export interface InterviewCategory {
   categoryId: string;
@@ -14,14 +14,14 @@ export interface InterviewCategory {
 }
 
 export interface ReviewSection {
-  type: "review";
+  type: 'review';
   title: string;
   subTitle: string;
   reviews: Review[];
 }
 
 export interface PriceSection {
-  type: "price";
+  type: 'price';
   title: string;
   subTitle: string;
   prices: Price[];
@@ -33,14 +33,14 @@ export interface FaqItem {
 }
 
 export interface FaqSection {
-  type: "faq";
+  type: 'faq';
   title: string;
   subTitle: string;
   faqItems: FaqItem[];
 }
 
 export interface ScorePreviewSection {
-  type: "scorePreview";
+  type: 'scorePreview';
   title: string;
   subTitle: string;
   infoList: string[];
@@ -50,14 +50,14 @@ export interface ScorePreviewSection {
 
 //steps
 export interface StepInfoCardSection {
-  type: "stepInfoCard";
+  type: 'stepInfoCard';
   title: string;
   subTitle: string;
   stepInfoCards: StepInfoCard[];
 }
 
 export interface InfoCardsSection {
-  type: "infoCards";
+  type: 'infoCards';
   title: string;
   subTitle: string;
   buttonTitle: string;
@@ -65,13 +65,13 @@ export interface InfoCardsSection {
 }
 
 export interface CallToActionSection {
-  type: "callToAction";
+  type: 'callToAction';
   title: string;
   buttonTitle: string;
 }
 
 export interface FirstScreenSection {
-  type: "firstScreen";
+  type: 'firstScreen';
   title: string;
   subTitle: string;
   bgImageUrl?: string;
@@ -86,7 +86,7 @@ export interface Question {
 
 // New: Examples of real interview questions
 export interface ExampleQuestionsSection {
-  type: "exampleQuestions";
+  type: 'exampleQuestions';
   title: string;
   subTitle: string;
   questions: Question[];
@@ -104,7 +104,7 @@ export interface TechStackGroup {
 }
 
 export interface TechStackSection {
-  type: "techStack";
+  type: 'techStack';
   title: string;
   subTitle: string;
   keyPoints: string[];
@@ -119,7 +119,7 @@ export interface TextListItem {
 
 // New: “Who this is for” section
 export interface TextListSection {
-  type: "textList";
+  type: 'textList';
   title: string;
   subTitle: string;
   textList: TextListItem[];
@@ -133,7 +133,7 @@ export interface DemoSnippetItem {
 }
 
 export interface DemoSnippetSection {
-  type: "demoSnippet";
+  type: 'demoSnippet';
   title: string;
   subTitle: string;
   demoItems: DemoSnippetItem[];
@@ -152,7 +152,7 @@ export interface WebCamPreview {
 }
 
 export interface WebcamDemoSection {
-  type: "webcamDemo";
+  type: 'webcamDemo';
 
   title: string;
   subTitle: string;
@@ -188,7 +188,7 @@ export interface QuizListItem {
 
 /** Basic info to inform the user about the next step and general info */
 export interface InfoQuizStep {
-  type: "info";
+  type: 'info';
   id: string;
 
   imageUrl?: string;
@@ -202,7 +202,7 @@ export interface InfoQuizStep {
 
 /** Final step when user will see that he has completed all steps */
 export interface WaitlistDoneQuizStep {
-  type: "waitlist-done";
+  type: 'waitlist-done';
   id: string;
 
   title: string;
@@ -214,7 +214,7 @@ export interface WaitlistDoneQuizStep {
 }
 
 export interface DoneQuizStep {
-  type: "done";
+  type: 'done';
   id: string;
 
   title: string;
@@ -226,7 +226,7 @@ export interface DoneQuizStep {
 
 /** On this step user will record audio answer to interview question. */
 export interface RecordAudioQuizStep {
-  type: "record-audio";
+  type: 'record-audio';
   id: string;
 
   title: string;
@@ -245,7 +245,7 @@ export interface RecordAudioQuizStep {
  * And will be intrigued to proceed further
  */
 export interface AnalyzeInputsQuizStep {
-  type: "analyze-inputs";
+  type: 'analyze-inputs';
   id: string;
 
   title: string;
@@ -255,7 +255,7 @@ export interface AnalyzeInputsQuizStep {
 
   // Should return Markdown or JSON content
   aiSystemPrompt: string;
-  aiResponseFormat: "markdown" | "json-scope" | "practice-plan";
+  aiResponseFormat: 'markdown' | 'json-scope' | 'practice-plan';
 }
 
 /**
@@ -263,7 +263,7 @@ export interface AnalyzeInputsQuizStep {
  * Usually after seeing AI analysis of his answers.
  */
 export interface PaywallQuizStep {
-  type: "paywall";
+  type: 'paywall';
   id: string;
 
   title: string;
@@ -280,7 +280,7 @@ export interface QuizOption {
 }
 
 export interface OptionsQuizStep {
-  type: "options";
+  type: 'options';
   id: string;
 
   title: string;

@@ -1,4 +1,4 @@
-import { Midjourney } from "midjourney";
+import { Midjourney } from 'midjourney';
 
 let internalClient: Midjourney | null = null;
 
@@ -7,7 +7,7 @@ export const getClient = async () => {
     return internalClient;
   }
 
-  console.log("Creating new Midjourney client");
+  console.log('Creating new Midjourney client');
   const client = new Midjourney({
     ServerId: process.env.MJ_SERVER_ID,
     ChannelId: process.env.MJ_CHANNEL_ID,

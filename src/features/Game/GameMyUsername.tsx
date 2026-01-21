@@ -1,16 +1,12 @@
-import { IconButton, Stack, TextField, Typography } from "@mui/material";
-import { useGame } from "./useGame";
-import { useLingui } from "@lingui/react";
-import { useEffect, useState } from "react";
-import { CheckIcon, PencilIcon } from "lucide-react";
+import { IconButton, Stack, TextField, Typography } from '@mui/material';
+import { useGame } from './useGame';
+import { useLingui } from '@lingui/react';
+import { useEffect, useState } from 'react';
+import { CheckIcon, PencilIcon } from 'lucide-react';
 
-export const GameMyUsername = ({
-  align,
-}: {
-  align: "flex-start" | "center";
-}) => {
+export const GameMyUsername = ({ align }: { align: 'flex-start' | 'center' }) => {
   const game = useGame();
-  const myUsername = game.myUserName || "";
+  const myUsername = game.myUserName || '';
   const { i18n } = useLingui();
 
   const [isEditUsername, setIsEditUsername] = useState(false);
@@ -45,7 +41,7 @@ export const GameMyUsername = ({
   return (
     <Stack
       sx={{
-        alignItems: align || "center",
+        alignItems: align || 'center',
       }}
     >
       <Typography
@@ -54,19 +50,19 @@ export const GameMyUsername = ({
           opacity: 0.8,
         }}
       >
-        {i18n._("Username:")}
+        {i18n._('Username:')}
       </Typography>
       <Stack
         sx={{
-          flexDirection: "row",
-          alignItems: "center",
-          gap: "10px",
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: '10px',
         }}
       >
-        {align === "center" && (
+        {align === 'center' && (
           <Stack
             sx={{
-              width: "10px",
+              width: '10px',
             }}
           ></Stack>
         )}
@@ -77,28 +73,26 @@ export const GameMyUsername = ({
               size="small"
               value={internalUsername}
               onChange={(e) => setInternalUsername(e.target.value)}
-              sx={{ width: "220px" }}
-              color={isAlreadyTaken ? "error" : "primary"}
-              helperText={
-                isAlreadyTaken ? i18n._("Username is already taken") : ""
-              }
+              sx={{ width: '220px' }}
+              color={isAlreadyTaken ? 'error' : 'primary'}
+              helperText={isAlreadyTaken ? i18n._('Username is already taken') : ''}
             />
             <IconButton
               onClick={() => saveUsername()}
               disabled={internalUsername.length < 3 || isAlreadyTaken}
             >
-              <CheckIcon size={"18px"} />
+              <CheckIcon size={'18px'} />
             </IconButton>
           </>
         ) : (
           <>
-            <Typography variant="h6">{myUsername || "-"} </Typography>
+            <Typography variant="h6">{myUsername || '-'} </Typography>
             <IconButton
               disabled={game.isLoading}
               size="small"
               onClick={() => setIsEditUsername(!isEditUsername)}
             >
-              <PencilIcon size={"11px"} />
+              <PencilIcon size={'11px'} />
             </IconButton>
           </>
         )}

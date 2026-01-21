@@ -1,1 +1,1 @@
-export type PageType = "home" | "role-play" | "community" | "profile";
+export type PageType = 'home' | 'role-play' | 'community' | 'profile';

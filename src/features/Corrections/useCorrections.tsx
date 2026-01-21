@@ -1,16 +1,16 @@
-"use client";
-import { createContext, useContext, ReactNode, JSX } from "react";
-import { useAuth } from "../Auth/useAuth";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { db } from "../Firebase/firebaseDb";
+'use client';
+import { createContext, useContext, ReactNode, JSX } from 'react';
+import { useAuth } from '../Auth/useAuth';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { db } from '../Firebase/firebaseDb';
 
-import { useSettings } from "../Settings/useSettings";
-import { useTextAi } from "../Ai/useTextAi";
-import { MODELS } from "@/common/ai";
-import { useWords } from "../Words/useWords";
-import { PhraseCorrection } from "./types";
-import { doc, setDoc } from "firebase/firestore";
-import { isGoodUserInput } from "./isGoodUserInput";
+import { useSettings } from '../Settings/useSettings';
+import { useTextAi } from '../Ai/useTextAi';
+import { MODELS } from '@/common/ai';
+import { useWords } from '../Words/useWords';
+import { PhraseCorrection } from './types';
+import { doc, setDoc } from 'firebase/firestore';
+import { isGoodUserInput } from './isGoodUserInput';
 
 interface AnalyzeUserMessageInput {
   previousBotMessage: string;
@@ -27,9 +27,7 @@ interface AnalyzeUserMessageOutput {
 }
 
 interface CorrectionsContextType {
-  analyzeUserMessage: (
-    input: AnalyzeUserMessageInput,
-  ) => Promise<AnalyzeUserMessageOutput>;
+  analyzeUserMessage: (input: AnalyzeUserMessageInput) => Promise<AnalyzeUserMessageOutput>;
 
   correctionStats: PhraseCorrection[];
 }
@@ -39,9 +37,7 @@ const CorrectionContext = createContext<CorrectionsContextType | null>(null);
 function useProvideCorrections(): CorrectionsContextType {
   const auth = useAuth();
   const settings = useSettings();
-  const correctionStatsDocRef = auth.uid
-    ? db.collections.phraseCorrections(auth.uid)
-    : null;
+  const correctionStatsDocRef = auth.uid ? db.collections.phraseCorrections(auth.uid) : null;
   const [correctionStats, loading] = useCollectionData(correctionStatsDocRef);
   const textAi = useTextAi();
   const words = useWords();
@@ -52,7 +48,7 @@ function useProvideCorrections(): CorrectionsContextType {
     try {
       const newWordsStatsRequest = words.addWordsStatFromText(input.message);
 
-      const fullLanguageName = settings.fullLanguageName || "English";
+      const fullLanguageName = settings.fullLanguageName || 'English';
 
       const systemMessage = `You are speech checker system.
 User gives a audio transcript, your role is to analyze it from the voice speech prospective. 
@@ -72,7 +68,7 @@ rate: rate the original user input from 1 to 10, where 10 is perfect.
 Return info in JSON format.
 Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
 
-${input.previousBotMessage.trim() ? "For context, here is the previous message:" : ""}
+${input.previousBotMessage.trim() ? 'For context, here is the previous message:' : ''}
 ${input.previousBotMessage}
 `.trim();
 
@@ -87,10 +83,8 @@ ${input.previousBotMessage}
         attempts: 3,
       });
 
-      const correctedMessage = parsedResult
-        ? (parsedResult?.correctedMessage as string) || ""
-        : "";
-      const suggestion = parsedResult ? parsedResult?.suggestion || "" : "";
+      const correctedMessage = parsedResult ? (parsedResult?.correctedMessage as string) || '' : '';
+      const suggestion = parsedResult ? parsedResult?.suggestion || '' : '';
 
       const isGood = isGoodUserInput({
         input: input.message,
@@ -100,12 +94,12 @@ ${input.previousBotMessage}
       if (correctionStatsDocRef && !isGood) {
         const correctionDoc = doc(correctionStatsDocRef);
         const correctionInfo: PhraseCorrection = {
-          botMessage: input.previousBotMessage || "",
-          userMessage: input.message || "",
-          correctedMessage: correctedMessage || "",
-          description: suggestion || "",
-          languageCode: settings.languageCode || "en",
-          conversationId: input.conversationId || "",
+          botMessage: input.previousBotMessage || '',
+          userMessage: input.message || '',
+          correctedMessage: correctedMessage || '',
+          description: suggestion || '',
+          languageCode: settings.languageCode || 'en',
+          conversationId: input.conversationId || '',
           createdAtIso: new Date().toISOString(),
         };
         await setDoc(correctionDoc, correctionInfo);
@@ -113,16 +107,16 @@ ${input.previousBotMessage}
 
       return {
         correctedMessage: isGood ? input.message : correctedMessage,
-        description: isGood ? "" : suggestion,
+        description: isGood ? '' : suggestion,
         sourceMessage: input.message,
         newWords: await newWordsStatsRequest,
         rate: parsedResult?.rate || 0,
       };
     } catch (error) {
-      console.error("Error analyzing message:", error);
+      console.error('Error analyzing message:', error);
       return {
-        correctedMessage: "",
-        description: "",
+        correctedMessage: '',
+        description: '',
         sourceMessage: input.message,
         newWords: [],
         rate: 0,
@@ -136,23 +130,15 @@ ${input.previousBotMessage}
   };
 }
 
-export function CorrectionsProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function CorrectionsProvider({ children }: { children: ReactNode }): JSX.Element {
   const hook = useProvideCorrections();
-  return (
-    <CorrectionContext.Provider value={hook}>
-      {children}
-    </CorrectionContext.Provider>
-  );
+  return <CorrectionContext.Provider value={hook}>{children}</CorrectionContext.Provider>;
 }
 
 export const useCorrections = (): CorrectionsContextType => {
   const context = useContext(CorrectionContext);
   if (!context) {
-    throw new Error("useCorrections must be used within a UsageProvider");
+    throw new Error('useCorrections must be used within a UsageProvider');
   }
   return context;
 };

@@ -1,6 +1,6 @@
-"use client";
-import { ChatMessage } from "@/common/conversation";
-import { ConversationConfig, ConversationInstance } from "./types";
+'use client';
+import { ChatMessage } from '@/common/conversation';
+import { ConversationConfig, ConversationInstance } from './types';
 
 interface InstructionState {
   baseInitInstruction: string;
@@ -32,8 +32,8 @@ export const initTextConversation = async ({
 
   const instructionState: InstructionState = {
     baseInitInstruction: initInstruction,
-    webCamDescription: webCamDescription || "",
-    correction: "",
+    webCamDescription: webCamDescription || '',
+    correction: '',
   };
 
   const audioState = {
@@ -58,27 +58,27 @@ export const initTextConversation = async ({
       instructionState.webCamDescription,
     ]
       .filter((part) => part && part.length > 0)
-      .join("\n");
+      .join('\n');
   };
 
   // Convert conversation history to text format for AI
   const formatConversationHistory = (): string => {
     if (conversationHistory.length === 0) {
-      return "";
+      return '';
     }
 
     return conversationHistory
       .map((msg) => {
-        const role = msg.isBot ? "Assistant" : "User";
+        const role = msg.isBot ? 'Assistant' : 'User';
         return `${role}: ${msg.text}`;
       })
-      .join("\n");
+      .join('\n');
   };
 
   // Trigger AI response
   const triggerAiResponse = async (teacherMessage?: string): Promise<void> => {
     if (isProcessingAiResponse) {
-      console.log("AI response already in progress, skipping trigger");
+      console.log('AI response already in progress, skipping trigger');
       return;
     }
 
@@ -86,9 +86,7 @@ export const initTextConversation = async ({
 
     const botMessageId = generateMessageId();
     const previousMessage =
-      conversationHistory.length > 0
-        ? conversationHistory[conversationHistory.length - 1]
-        : null;
+      conversationHistory.length > 0 ? conversationHistory[conversationHistory.length - 1] : null;
     const previousMessageId = previousMessage ? previousMessage?.id : null;
 
     try {
@@ -98,7 +96,7 @@ export const initTextConversation = async ({
       //console.log("System message:", systemMessage);
       // console.log("Conversation history:", userMessage);
 
-      onAddDelta(botMessageId, "...", true);
+      onAddDelta(botMessageId, '...', true);
 
       const aiResponse =
         teacherMessage ||
@@ -129,13 +127,13 @@ export const initTextConversation = async ({
       if (voice && audioState.isVolumeOn) {
         const instruction = previousMessage?.text
           ? `Please read the following text aloud in response to: "${previousMessage.text}"`
-          : "Please read the following text aloud:";
+          : 'Please read the following text aloud:';
         playAudio(aiResponse, voice, instruction);
       }
     } catch (error: any) {
-      console.error("Error generating AI response:", error);
+      console.error('Error generating AI response:', error);
 
-      const errorMessage = `Error: ${error.message || "Unknown error occurred"}`;
+      const errorMessage = `Error: ${error.message || 'Unknown error occurred'}`;
       const errorBotMessage: ChatMessage = {
         id: botMessageId,
         isBot: true,
@@ -190,14 +188,12 @@ export const initTextConversation = async ({
   };
 
   // Send correction instruction
-  const sendCorrectionInstruction = async (
-    correction: string,
-  ): Promise<void> => {
-    console.log("Updating correction instruction:", correction);
+  const sendCorrectionInstruction = async (correction: string): Promise<void> => {
+    console.log('Updating correction instruction:', correction);
     // instructionState.correction = correction;
     if (correction) {
-      if (correction.startsWith("Assistant:")) {
-        correction = correction.replace("Assistant:", "").trim();
+      if (correction.startsWith('Assistant:')) {
+        correction = correction.replace('Assistant:', '').trim();
       }
       triggerAiResponse(correction);
     }
@@ -207,9 +203,7 @@ export const initTextConversation = async ({
   const sendWebCamDescription = async (description: string): Promise<void> => {
     const isCorrectionExists = Boolean(instructionState.correction);
     if (isCorrectionExists) {
-      console.log(
-        "Ignoring webcam description update due to existing correction.",
-      );
+      console.log('Ignoring webcam description update due to existing correction.');
       return;
     }
     //console.log("Updating webcam description:", description);
@@ -218,7 +212,7 @@ export const initTextConversation = async ({
 
   // Cleanup handler
   const closeHandler = (): void => {
-    console.log("Closing text conversation");
+    console.log('Closing text conversation');
     conversationHistory.length = 0;
     isProcessingAiResponse = false;
   };

@@ -1,7 +1,7 @@
-import { TotalUsageInfo } from "@/common/usage";
-import { getDB } from "../config/firebase";
-import { getUserBalance } from "./getUserBalance";
-import dayjs from "dayjs";
+import { TotalUsageInfo } from '@/common/usage';
+import { getDB } from '../config/firebase';
+import { getUserBalance } from './getUserBalance';
+import dayjs from 'dayjs';
 
 interface AddToTotalBalanceProps {
   userId: string;
@@ -36,20 +36,18 @@ export const addToTotalBalance = async ({
     minutesCount !== undefined
   ) {
     const isActiveSubscriptions = !!balance.activeSubscriptionTill;
-    const lastDate = isActiveSubscriptions
-      ? dayjs(balance.activeSubscriptionTill)
-      : dayjs();
+    const lastDate = isActiveSubscriptions ? dayjs(balance.activeSubscriptionTill) : dayjs();
 
     const endDate = monthsCount
-      ? lastDate.add(monthsCount, "month")
+      ? lastDate.add(monthsCount, 'month')
       : hoursCount
-        ? lastDate.add(hoursCount, "hour")
+        ? lastDate.add(hoursCount, 'hour')
         : minutesCount
-          ? lastDate.add(minutesCount, "minute")
-          : lastDate.add(daysCount || 0, "day");
+          ? lastDate.add(minutesCount, 'minute')
+          : lastDate.add(daysCount || 0, 'day');
     const endDateIso = endDate.toISOString();
 
-    console.log("endDateIso", endDateIso);
+    console.log('endDateIso', endDateIso);
     newTotalUsage.activeSubscriptionTill = endDateIso;
   } else {
     const newBalance = balance.balanceHours + amountToAddHours;
@@ -64,9 +62,9 @@ export const addToTotalBalance = async ({
   }
 
   await db
-    .collection("users")
+    .collection('users')
     .doc(userId)
-    .collection("usage")
-    .doc("totalUsage")
+    .collection('usage')
+    .doc('totalUsage')
     .set(newTotalUsage, { merge: true });
 };

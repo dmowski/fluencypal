@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography } from '@mui/material';
 import {
   fullEnglishLanguageName,
   fullLanguageName,
@@ -9,13 +9,13 @@ import {
   langFlags,
   SupportedLanguage,
   supportedLanguages,
-} from "@/features/Lang/lang";
-import { useLingui } from "@lingui/react";
-import { Globe } from "lucide-react";
-import { LanguageButton } from "@/features/Lang/LangSelector";
-import { useQuiz } from "./useQuiz";
-import { useMemo } from "react";
-import { NextStepButton } from "./NextStepButton";
+} from '@/features/Lang/lang';
+import { useLingui } from '@lingui/react';
+import { Globe } from 'lucide-react';
+import { LanguageButton } from '@/features/Lang/LangSelector';
+import { useQuiz } from './useQuiz';
+import { useMemo } from 'react';
+import { NextStepButton } from './NextStepButton';
 
 export const PageLanguageSelector = () => {
   const { i18n } = useLingui();
@@ -29,9 +29,9 @@ export const PageLanguageSelector = () => {
       return {
         label: getLabelFromCode(lang),
         langCode: lang,
-        englishFullName: fullEnglishLanguageName[lang] || "",
+        englishFullName: fullEnglishLanguageName[lang] || '',
         isSystemLang: userCodes.includes(lang),
-        fullName: fullLanguageName[lang] || "",
+        fullName: fullLanguageName[lang] || '',
       };
     })
     .sort((a, b) => a.label.localeCompare(b.label));
@@ -45,32 +45,32 @@ export const PageLanguageSelector = () => {
       return;
     }
 
-    const langCode = supportedLanguages.find((lang) => lang === code) || "en";
+    const langCode = supportedLanguages.find((lang) => lang === code) || 'en';
     setPageLanguage(langCode);
   };
   return (
     <Stack
       sx={{
-        gap: "20px",
+        gap: '20px',
       }}
     >
       <Stack
         sx={{
-          width: "100%",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "10px",
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '10px',
         }}
       >
-        <Globe size={"30px"} />
+        <Globe size={'30px'} />
         <Typography
           variant="h3"
           align="center"
           sx={{
             fontWeight: 500,
-            fontSize: "1.1rem",
-            boxSizing: "border-box",
-            lineHeight: "1.1",
+            fontSize: '1.1rem',
+            boxSizing: 'border-box',
+            lineHeight: '1.1',
           }}
         >
           {i18n._(`Page Language`)}
@@ -79,8 +79,8 @@ export const PageLanguageSelector = () => {
 
       <Stack
         sx={{
-          width: "100%",
-          gap: "4px",
+          width: '100%',
+          gap: '4px',
         }}
       >
         {optionsFull.map((option) => {

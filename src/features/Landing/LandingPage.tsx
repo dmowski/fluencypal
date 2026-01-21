@@ -1,26 +1,23 @@
-import { Button, Stack, Typography } from "@mui/material";
-import { Footer } from "./Footer";
-import { GeneralFaqBlock } from "./FAQ/GeneralFaqBlock";
-import { CtaBlock } from "./ctaBlock";
-import { ProposalCards } from "./ProposalCards";
-import { RolePlayDemo } from "./RolePlay/RolePlayDemo";
+import { Button, Stack, Typography } from '@mui/material';
+import { Footer } from './Footer';
+import { GeneralFaqBlock } from './FAQ/GeneralFaqBlock';
+import { CtaBlock } from './ctaBlock';
+import { ProposalCards } from './ProposalCards';
+import { RolePlayDemo } from './RolePlay/RolePlayDemo';
 import {
   fullEnglishLanguageName,
   SupportedLanguage,
   supportedLanguages,
   supportedLanguagesToLearn,
-} from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
-import { getUrlStart } from "../Lang/getUrlStart";
-import Script from "next/script";
-import { HeaderStatic } from "../Header/HeaderStatic";
-import {
-  WebCamButtons,
-  WebcamSection,
-} from "../Case/Landing/components/WebcamSection";
-import { HowItWorks } from "./HowItWorks";
-import { DynamicIcon } from "lucide-react/dynamic";
-import { WelcomeScreen2 } from "./WelcomeScreen2";
+} from '@/features/Lang/lang';
+import { getI18nInstance } from '@/appRouterI18n';
+import { getUrlStart } from '../Lang/getUrlStart';
+import Script from 'next/script';
+import { HeaderStatic } from '../Header/HeaderStatic';
+import { WebCamButtons, WebcamSection } from '../Case/Landing/components/WebcamSection';
+import { HowItWorks } from './HowItWorks';
+import { DynamicIcon } from 'lucide-react/dynamic';
+import { WelcomeScreen2 } from './WelcomeScreen2';
 
 interface FAQItem {
   question: string;
@@ -77,9 +74,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
     },
 
     {
-      question: i18n._(
-        `Can FluencyPal create a personal practice plan for me?`,
-      ),
+      question: i18n._(`Can FluencyPal create a personal practice plan for me?`),
       answer: i18n._(
         `Yes. FluencyPal generates a personalized practice plan based on your goals and proficiency level. Your daily sessions focus on relevant vocabulary, grammar, and real-life conversations. You can interact with the AI using voice or text.`,
       ),
@@ -97,8 +92,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
       answer:
         i18n._(
           `Yes. FluencyPal supports multiple languages and adapts conversations to your selected language and proficiency level. Available languages include:`,
-        ) +
-        ` ${supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}`,
+        ) + ` ${supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(', ')}`,
     },
 
     {
@@ -157,31 +151,31 @@ export default function LandingPage({ lang }: LandingPageProps) {
       ),
     },
   ];
-  const pageUrl = "https://www.fluencypal.com" + getUrlStart(lang);
+  const pageUrl = 'https://www.fluencypal.com' + getUrlStart(lang);
 
   const seoFaqItems = faqItems.map((item) => ({
-    "@type": "Question",
+    '@type': 'Question',
     name: item.question, // must be plain string
     acceptedAnswer: {
-      "@type": "Answer",
+      '@type': 'Answer',
       text: item.answer, // must be plain string
     },
   }));
 
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
     name: i18n._(`FluencyPal – Your AI English Speaking Partner`),
     url: pageUrl,
     inLanguage: lang,
     mainEntity: seoFaqItems,
     publisher: {
-      "@type": "Organization",
-      name: "FluencyPal",
-      url: "https://www.fluencypal.com",
+      '@type': 'Organization',
+      name: 'FluencyPal',
+      url: 'https://www.fluencypal.com',
       logo: {
-        "@type": "ImageObject",
-        url: "https://www.fluencypal.com/logo.png",
+        '@type': 'ImageObject',
+        url: 'https://www.fluencypal.com/logo.png',
       },
     },
   };
@@ -194,82 +188,80 @@ export default function LandingPage({ lang }: LandingPageProps) {
         strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <main style={{ width: "100%", margin: 0 }}>
-        <Stack sx={{ alignItems: "center" }}>
+      <main style={{ width: '100%', margin: 0 }}>
+        <Stack sx={{ alignItems: 'center' }}>
           <WelcomeScreen2
             label={i18n._(`Practice with AI`)}
             title={i18n._(`Speaking practice`)}
             subTitle1={i18n._(`Don’t let mistakes stop you.`)}
-            subTitle2={i18n._(
-              `Build fluency and confidence with daily speaking practice.`,
-            )}
+            subTitle2={i18n._(`Build fluency and confidence with daily speaking practice.`)}
             buttonTitle={i18n._(`Start Speaking`)}
             openMyPracticeLinkTitle={i18n._(`Start Speaking`)}
             buttonHref={`${getUrlStart(lang)}quiz`}
             cards={[
               {
-                videoUrl: "/landing/preview/grammar2.webm",
-                imageUrl: "/landing/preview/grammar2.webp",
-                alt: i18n._("Grammar Correction Preview"),
+                videoUrl: '/landing/preview/grammar2.webm',
+                imageUrl: '/landing/preview/grammar2.webp',
+                alt: i18n._('Grammar Correction Preview'),
               },
               {
-                videoUrl: "/landing/preview/camera2.webm",
-                imageUrl: "/landing/preview/camera2.webp",
-                alt: i18n._("Webcam Feedback Preview"),
+                videoUrl: '/landing/preview/camera2.webm',
+                imageUrl: '/landing/preview/camera2.webp',
+                alt: i18n._('Webcam Feedback Preview'),
               },
               {
-                imageUrl: "/landing/preview/roleplay.webp",
-                alt: i18n._("Roleplay Preview"),
+                imageUrl: '/landing/preview/roleplay.webp',
+                alt: i18n._('Roleplay Preview'),
               },
             ]}
           />
 
           <Stack
             sx={{
-              width: "100%",
+              width: '100%',
             }}
           >
             <WebcamSection
-              theme={"gray"}
+              theme={'gray'}
               id="webcam-section"
               data={{
-                type: "webcamDemo",
-                title: i18n._("Practice Speaking with AI"),
+                type: 'webcamDemo',
+                title: i18n._('Practice Speaking with AI'),
                 subTitle: i18n._(
-                  "Get instant AI feedback on clarity, vocabulary, and flow — while you speak.",
+                  'Get instant AI feedback on clarity, vocabulary, and flow — while you speak.',
                 ),
                 content: i18n._(
-                  "Practice real conversations and explain your thoughts out loud in a safe, pressure-free environment — without fear of mistakes.",
+                  'Practice real conversations and explain your thoughts out loud in a safe, pressure-free environment — without fear of mistakes.',
                 ),
                 infoList: [
                   {
-                    title: i18n._("Speak naturally, without overthinking"),
-                    iconName: "mic",
-                    iconColor: "#c2c2c2",
+                    title: i18n._('Speak naturally, without overthinking'),
+                    iconName: 'mic',
+                    iconColor: '#c2c2c2',
                   },
                   {
-                    title: i18n._("Get clear, actionable AI feedback"),
-                    iconName: "message-circle",
-                    iconColor: "#c2c2c2",
+                    title: i18n._('Get clear, actionable AI feedback'),
+                    iconName: 'message-circle',
+                    iconColor: '#c2c2c2',
                   },
                   {
-                    title: i18n._("Build confidence through real practice"),
-                    iconName: "chart-bar",
-                    iconColor: "#c2c2c2",
+                    title: i18n._('Build confidence through real practice'),
+                    iconName: 'chart-bar',
+                    iconColor: '#c2c2c2',
                   },
                 ],
                 webCamPreview: {
-                  videoUrl: "/interview/interviewWebPreview2.webm",
-                  title: i18n._("Conversation Practice"),
-                  participants: i18n._("AI conversation"),
+                  videoUrl: '/interview/interviewWebPreview2.webm',
+                  title: i18n._('Conversation Practice'),
+                  participants: i18n._('AI conversation'),
 
-                  beforeSectionTitle: i18n._("Warm-up"),
-                  beforeSectionSubTitle: i18n._("Done"),
+                  beforeSectionTitle: i18n._('Warm-up'),
+                  beforeSectionSubTitle: i18n._('Done'),
 
-                  afterSectionTitle: i18n._("Free Conversation"),
-                  afterSectionSubTitle: i18n._("Next"),
+                  afterSectionTitle: i18n._('Free Conversation'),
+                  afterSectionSubTitle: i18n._('Next'),
                 },
-                buttonTitle: i18n._("Start speaking practice"),
+                buttonTitle: i18n._('Start speaking practice'),
               }}
               buttonHref={`${getUrlStart(lang)}quiz`}
             />
@@ -282,28 +274,28 @@ export default function LandingPage({ lang }: LandingPageProps) {
               )}
               cards={[
                 {
-                  imageUrl: "/quiz/step1.webp",
-                  bgColor: "#e9e9e9ff",
+                  imageUrl: '/quiz/step1.webp',
+                  bgColor: '#e9e9e9ff',
 
-                  title: i18n._("Smart Start"),
-                  titleColor: "#fff",
-                  titleBgColor: "#111",
+                  title: i18n._('Smart Start'),
+                  titleColor: '#fff',
+                  titleBgColor: '#111',
                   subTitle: i18n._(
                     `Fill out a onboarding quiz to help FluencyPal understand your goals and preferences.`,
                   ),
-                  subTitleColor: "#515154ff",
+                  subTitleColor: '#515154ff',
                   footerButton: (
                     <>
                       <Stack
                         sx={{
-                          position: "absolute",
-                          bottom: "110px",
-                          width: "100%",
-                          alignItems: "center",
-                          "@media (max-width: 600px)": {
+                          position: 'absolute',
+                          bottom: '110px',
+                          width: '100%',
+                          alignItems: 'center',
+                          '@media (max-width: 600px)': {
                             bottom: 0,
-                            height: "auto",
-                            aspectRatio: "160 / 46",
+                            height: 'auto',
+                            aspectRatio: '160 / 46',
                           },
                         }}
                       >
@@ -313,20 +305,20 @@ export default function LandingPage({ lang }: LandingPageProps) {
                           size="large"
                           color="info"
                           sx={{
-                            padding: "10px 30px",
-                            backgroundColor: "#29A9FF",
-                            color: "#fff",
+                            padding: '10px 30px',
+                            backgroundColor: '#29A9FF',
+                            color: '#fff',
                             fontWeight: 600,
-                            borderRadius: "2px",
-                            fontSize: "16px",
-                            boxShadow: "none",
-                            minWidth: "240px",
-                            "@media (max-width: 600px)": {
-                              boxShadow: "4px 4px 30px rgba(0, 0, 0, 0.3)",
-                              borderRadius: "1px",
+                            borderRadius: '2px',
+                            fontSize: '16px',
+                            boxShadow: 'none',
+                            minWidth: '240px',
+                            '@media (max-width: 600px)': {
+                              boxShadow: '4px 4px 30px rgba(0, 0, 0, 0.3)',
+                              borderRadius: '1px',
                             },
                           }}
-                          endIcon={<DynamicIcon name={"arrow-right"} />}
+                          endIcon={<DynamicIcon name={'arrow-right'} />}
                         >
                           {i18n._(`Get My Plan`)}
                         </Button>
@@ -336,38 +328,38 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 },
 
                 {
-                  quizAnimation: "step2",
-                  bgColor: "#02b1ff",
+                  quizAnimation: 'step2',
+                  bgColor: '#02b1ff',
 
-                  title: i18n._("Personal Plan"),
-                  titleColor: "#111",
-                  titleBgColor: "#fff",
+                  title: i18n._('Personal Plan'),
+                  titleColor: '#111',
+                  titleBgColor: '#fff',
 
                   subTitle: i18n._(
-                    "Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you.",
+                    'Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you.',
                   ),
-                  subTitleColor: "#fff",
+                  subTitleColor: '#fff',
                 },
 
                 {
-                  videoUrl: "/call/verse/sit.webm",
-                  bgColor: "rgb(169, 129, 255)",
+                  videoUrl: '/call/verse/sit.webm',
+                  bgColor: 'rgb(169, 129, 255)',
 
-                  title: i18n._("Practice"),
-                  titleColor: "#111",
-                  titleBgColor: "#fff",
+                  title: i18n._('Practice'),
+                  titleColor: '#111',
+                  titleBgColor: '#fff',
 
                   subTitle: i18n._(
-                    "Jump into your tailored learning path and build real skills through engaging practice with AI voice chat.",
+                    'Jump into your tailored learning path and build real skills through engaging practice with AI voice chat.',
                   ),
-                  subTitleColor: "#fff",
+                  subTitleColor: '#fff',
                   footerButton: <WebCamButtons />,
                 },
               ]}
               buttonTitle={i18n._(`Start Practicing`)}
               buttonHref={`${getUrlStart(lang)}quiz`}
-              theme={"dark-red"}
-              id={"how-it-works"}
+              theme={'dark-red'}
+              id={'how-it-works'}
             />
           </Stack>
 
@@ -383,7 +375,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Practice realistic conversations tailored to your skill level. FluencyPal responds naturally, highlights areas for improvement, and builds your confidence.`,
                 ),
-                img: "/landing/talk.webp",
+                img: '/landing/talk.webp',
                 href: `${getUrlStart(lang)}quiz`,
                 actionButtonTitle: i18n._(`Start Speaking Practice`),
               },
@@ -393,7 +385,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Get immediate feedback and explanations on your grammar mistakes as you practice. Enhance your speaking accuracy naturally.`,
                 ),
-                img: "/landing/rules.webp",
+                img: '/landing/rules.webp',
                 href: `${getUrlStart(lang)}quiz`,
                 actionButtonTitle: i18n._(`Enhance Your Grammar`),
               },
@@ -403,7 +395,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Receive personalized vocabulary tailored to your conversational needs. Use new words immediately to reinforce learning.`,
                 ),
-                img: "/landing/words.webp",
+                img: '/landing/words.webp',
                 href: `${getUrlStart(lang)}quiz`,
                 actionButtonTitle: i18n._(`Expand Your Vocabulary`),
               },
@@ -413,7 +405,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Visualize your daily progress with intuitive tracking. Stay motivated by clearly seeing your improvements.`,
                 ),
-                img: "/landing/progress.webp",
+                img: '/landing/progress.webp',
                 href: `${getUrlStart(lang)}quiz`,
                 actionButtonTitle: i18n._(`Check Your Progress`),
               },

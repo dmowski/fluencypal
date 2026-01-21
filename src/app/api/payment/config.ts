@@ -1,4 +1,4 @@
-const isStripeLive = process.env.STRIPE_IS_LIVE === "live";
+const isStripeLive = process.env.STRIPE_IS_LIVE === 'live';
 
 export const stripeConfig = {
   isStripeLive,

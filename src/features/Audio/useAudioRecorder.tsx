@@ -1,21 +1,19 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
-import { sendTranscriptRequest } from "@/app/api/transcript/sendTranscriptRequest";
-import { useVoiceVisualizer, VoiceVisualizer } from "react-voice-visualizer";
-import { useIsWebView } from "../Auth/useIsWebView";
-import { isAllowedMicrophone, requestMicrophoneAccess } from "@/libs/mic";
-import { useAuth } from "../Auth/useAuth";
-import { useSettings } from "../Settings/useSettings";
+'use client';
+import { useEffect, useRef, useState } from 'react';
+import { sendTranscriptRequest } from '@/app/api/transcript/sendTranscriptRequest';
+import { useVoiceVisualizer, VoiceVisualizer } from 'react-voice-visualizer';
+import { useIsWebView } from '../Auth/useIsWebView';
+import { isAllowedMicrophone, requestMicrophoneAccess } from '@/libs/mic';
+import { useAuth } from '../Auth/useAuth';
+import { useSettings } from '../Settings/useSettings';
 
 export const useAudioRecorder = () => {
   const auth = useAuth();
   const settings = useSettings();
-  const learnLanguageCode = settings.languageCode || "en";
+  const learnLanguageCode = settings.languageCode || 'en';
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcription, setTranscription] = useState<string | null>(null);
-  const [transcriptionError, setTranscriptionError] = useState<string | null>(
-    null,
-  );
+  const [transcriptionError, setTranscriptionError] = useState<string | null>(null);
   const recorderControls = useVoiceVisualizer();
   const [recordingSeconds, setRecordingSeconds] = useState(0);
   const recordingMilliSeconds = recorderControls.recordingTime;
@@ -27,20 +25,17 @@ export const useAudioRecorder = () => {
   useEffect(() => {
     if (!recorderControls.recordedBlob) return;
     if (isCancel.current) {
-      console.log("Cancelled recording");
+      console.log('Cancelled recording');
       return;
     }
     const format = recorderControls.recordedBlob.type.toLowerCase();
     getRecordTranscript(recorderControls.recordedBlob, format);
   }, [recorderControls.recordedBlob]);
   const isCancel = useRef(false);
-  const getRecordTranscript = async (
-    recordedAudioBlog: Blob,
-    format: string,
-  ) => {
-    if (format.includes("ogg")) {
+  const getRecordTranscript = async (recordedAudioBlog: Blob, format: string) => {
+    if (format.includes('ogg')) {
       setTranscriptionError(
-        "Sorry, transcription is not available for your audio. Try another browser.",
+        'Sorry, transcription is not available for your audio. Try another browser.',
       );
       setIsTranscribing(false);
       recorderControls.clearCanvas();
@@ -68,7 +63,7 @@ export const useAudioRecorder = () => {
         setTranscriptionError(transcriptResponse.error);
       }
     } catch (error) {
-      setTranscriptionError("Error during transcription");
+      setTranscriptionError('Error during transcription');
     }
     recorderControls.clearCanvas();
     setIsTranscribing(false);
@@ -79,14 +74,14 @@ export const useAudioRecorder = () => {
       const requestResult = await requestMicrophoneAccess();
       if (!requestResult) {
         alert(
-          "Microphone access is denied. Please allow microphone access in your browser settings.",
+          'Microphone access is denied. Please allow microphone access in your browser settings.',
         );
         return;
       }
     }
-    console.log("Start recording");
+    console.log('Start recording');
     recorderControls.startRecording();
-    console.log("Recording started");
+    console.log('Recording started');
     isCancel.current = false;
   };
   const stopRecording = async () => {
@@ -120,20 +115,20 @@ export const useAudioRecorder = () => {
     isRecording,
     isTranscribing,
     transcription,
-    error: recorderControls.error?.message || transcriptionError || "",
+    error: recorderControls.error?.message || transcriptionError || '',
     recordingMilliSeconds: recordingSeconds * 1000,
     isAbleToRecord: !inWebView,
     removeTranscript,
     visualizerComponent: recorderControls.isRecordingInProgress ? (
       <VoiceVisualizer
         controls={recorderControls}
-        height={"40px"}
+        height={'40px'}
         isControlPanelShown={false}
         speed={1}
         fullscreen={true}
         barWidth={3}
         gap={1}
-        width={"100%"}
+        width={'100%'}
       />
     ) : null,
   };

@@ -1,15 +1,9 @@
-"use client";
+'use client';
 
-import { UserSource } from "@/common/analytics";
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  useEffect,
-  useState,
-} from "react";
+import { UserSource } from '@/common/analytics';
+import { createContext, useContext, ReactNode, useEffect, useState } from 'react';
 
-const SOURCE_STORAGE_KEY = "user_source_info";
+const SOURCE_STORAGE_KEY = 'user_source_info';
 
 interface UserSourceContextType {
   userSource: UserSource | null;
@@ -30,7 +24,7 @@ const UserSourceContext = createContext<UserSourceContextType | null>(null);
 
 function useProvideUserSource(): UserSourceContextType {
   const [userSource, setUserSource] = useState<UserSource | null>(null);
-  const isWindow = typeof window !== "undefined";
+  const isWindow = typeof window !== 'undefined';
 
   const getUrlParam = (param: string): string | null => {
     if (!isWindow) return null;
@@ -42,22 +36,22 @@ function useProvideUserSource(): UserSourceContextType {
     if (!isWindow) return null;
 
     const url = new URL(window.location.href);
-    const referrer = document.referrer || "";
+    const referrer = document.referrer || '';
 
     return {
       urlPath: url.pathname + url.search,
       referrer,
 
-      utmSource: getUrlParam("utm_source"),
-      utmMedium: getUrlParam("utm_medium"),
-      utmCampaign: getUrlParam("utm_campaign"),
-      utmTerm: getUrlParam("utm_term"),
-      utmContent: getUrlParam("utm_content"),
+      utmSource: getUrlParam('utm_source'),
+      utmMedium: getUrlParam('utm_medium'),
+      utmCampaign: getUrlParam('utm_campaign'),
+      utmTerm: getUrlParam('utm_term'),
+      utmContent: getUrlParam('utm_content'),
 
       // New Google Ads params
-      gclid: getUrlParam("gclid"),
-      gbraid: getUrlParam("gbraid"),
-      wbraid: getUrlParam("wbraid"),
+      gclid: getUrlParam('gclid'),
+      gbraid: getUrlParam('gbraid'),
+      wbraid: getUrlParam('wbraid'),
     };
   };
 
@@ -87,17 +81,13 @@ function useProvideUserSource(): UserSourceContextType {
 
 export function UserSourceProvider({ children }: { children: ReactNode }) {
   const hook = useProvideUserSource();
-  return (
-    <UserSourceContext.Provider value={hook}>
-      {children}
-    </UserSourceContext.Provider>
-  );
+  return <UserSourceContext.Provider value={hook}>{children}</UserSourceContext.Provider>;
 }
 
 export const useUserSource = (): UserSourceContextType => {
   const context = useContext(UserSourceContext);
   if (!context) {
-    throw new Error("useUserSource must be used within a UserSourceProvider");
+    throw new Error('useUserSource must be used within a UserSourceProvider');
   }
   return context;
 };

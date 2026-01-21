@@ -1,6 +1,6 @@
-import { IncreaseGamePointsRequest } from "@/features/Game/types";
-import { validateAuthToken } from "../../config/firebase";
-import { increaseGamePoints } from "@/features/Game/api/increaseGamePoints";
+import { IncreaseGamePointsRequest } from '@/features/Game/types';
+import { validateAuthToken } from '../../config/firebase';
+import { increaseGamePoints } from '@/features/Game/api/increaseGamePoints';
 
 export async function POST(request: Request) {
   await validateAuthToken(request);

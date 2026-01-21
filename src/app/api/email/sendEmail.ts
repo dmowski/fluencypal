@@ -1,7 +1,7 @@
-import { Resend } from "resend";
-import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
+import { Resend } from 'resend';
+import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 
-const resendKey = process.env.RESEND_API || "";
+const resendKey = process.env.RESEND_API || '';
 
 interface SendEmailProps {
   emailTo: string;
@@ -17,19 +17,19 @@ export const sendEmail = async ({
   title,
 }: SendEmailProps): Promise<void> => {
   if (!resendKey) {
-    throw new Error("Resend key not found");
+    throw new Error('Resend key not found');
   }
   const resend = new Resend(resendKey);
   try {
     const sendResult = await resend.emails.send({
       to: emailTo,
-      from: "contact@fluencypal.com",
+      from: 'contact@fluencypal.com',
       subject: title,
       text: messageText,
       html: messageHtml,
     });
     console.log(`Send email to: ${emailTo}. ${messageText}`);
-    console.log("result", JSON.stringify(sendResult));
+    console.log('result', JSON.stringify(sendResult));
   } catch (e) {
     console.error(`Error sending email: ${e}`);
     sentSupportTelegramMessage({

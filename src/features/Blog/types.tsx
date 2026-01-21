@@ -1,5 +1,5 @@
-import { ResourceCategory } from "@/common/category";
-import { JSX } from "react";
+import { ResourceCategory } from '@/common/category';
+import { JSX } from 'react';
 
 export interface BlogPost {
   id: string;

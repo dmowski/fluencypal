@@ -1,25 +1,20 @@
-import { InitBalanceResponse } from "@/common/requests";
-import { getDB, validateAuthToken } from "../config/firebase";
-import { WELCOME_BONUS } from "@/common/usage";
-import { addPaymentLog } from "../payment/addPaymentLog";
-import { TRIAL_MINUTES } from "@/common/subscription";
+import { InitBalanceResponse } from '@/common/requests';
+import { getDB, validateAuthToken } from '../config/firebase';
+import { WELCOME_BONUS } from '@/common/usage';
+import { addPaymentLog } from '../payment/addPaymentLog';
+import { TRIAL_MINUTES } from '@/common/subscription';
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
   const userId = userInfo.uid;
   const db = getDB();
   const [logsHours, logsDays] = await Promise.all([
+    db.collection('users').doc(userId).collection('payments').where('type', '==', 'welcome').get(),
     db
-      .collection("users")
+      .collection('users')
       .doc(userId)
-      .collection("payments")
-      .where("type", "==", "welcome")
-      .get(),
-    db
-      .collection("users")
-      .doc(userId)
-      .collection("payments")
-      .where("type", "==", "trial-days")
+      .collection('payments')
+      .where('type', '==', 'trial-days')
       .get(),
   ]);
 
@@ -28,12 +23,12 @@ export async function POST(request: Request) {
   }
 
   await addPaymentLog({
-    type: "trial-days",
+    type: 'trial-days',
     amount: WELCOME_BONUS,
     userId: userInfo.uid,
-    currency: "usd",
+    currency: 'usd',
     amountOfHours: 0,
-    paymentId: "trial-days",
+    paymentId: 'trial-days',
     minutesCount: TRIAL_MINUTES,
   });
 

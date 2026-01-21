@@ -1,39 +1,33 @@
-import { Alert, Badge, Button, Stack, Typography } from "@mui/material";
-import { ChatSection } from "./ChatSection";
-import { ChatProvider } from "./useChat";
-import { useLingui } from "@lingui/react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useChatList } from "./useChatList";
-import { useUrlState } from "../Url/useUrlParam";
-import { useAuth } from "../Auth/useAuth";
-import { useGame } from "../Game/useGame";
-import { Avatar } from "../Game/Avatar";
-import { uniq } from "@/libs/uniq";
-import { UserChatMetadata } from "./type";
-import dayjs from "dayjs";
-import { UserName } from "../User/UserName";
+import { Alert, Badge, Button, Stack, Typography } from '@mui/material';
+import { ChatSection } from './ChatSection';
+import { ChatProvider } from './useChat';
+import { useLingui } from '@lingui/react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useChatList } from './useChatList';
+import { useUrlState } from '../Url/useUrlParam';
+import { useAuth } from '../Auth/useAuth';
+import { useGame } from '../Game/useGame';
+import { Avatar } from '../Game/Avatar';
+import { uniq } from '@/libs/uniq';
+import { UserChatMetadata } from './type';
+import dayjs from 'dayjs';
+import { UserName } from '../User/UserName';
 
 export const ChatPage = ({
   type,
   isFullContentByDefault,
 }: {
-  type: "public" | "private";
+  type: 'public' | 'private';
   isFullContentByDefault?: boolean;
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const game = useGame();
 
-  const [activeChatId, setActiveChatId] = useUrlState<string>(
-    "activeChatId",
-    "",
-    false,
-  );
+  const [activeChatId, setActiveChatId] = useUrlState<string>('activeChatId', '', false);
   const chatList = useChatList();
 
-  const chatMetadata = chatList.myChats.find(
-    (chat) => chat.spaceId === activeChatId,
-  );
+  const chatMetadata = chatList.myChats.find((chat) => chat.spaceId === activeChatId);
 
   const activeChatBgImage =
     game.gameAvatars[
@@ -42,99 +36,96 @@ export const ChatPage = ({
         if (a === auth.uid) return 1;
         if (b === auth.uid) return -1;
         return 0;
-      })?.[0] || ""
+      })?.[0] || ''
     ];
 
   return (
     <Stack>
-      {type === "public" ? (
+      {type === 'public' ? (
         <ChatProvider
           metadata={{
-            spaceId: "global",
+            spaceId: 'global',
             allowedUserIds: null,
             isPrivate: false,
-            type: "global",
+            type: 'global',
           }}
         >
-          <ChatSection
-            contextForAiAnalysis=""
-            isFullContentByDefault={isFullContentByDefault}
-          />
+          <ChatSection contextForAiAnalysis="" isFullContentByDefault={isFullContentByDefault} />
         </ChatProvider>
       ) : (
         <>
           {activeChatId ? (
             <Stack
               sx={{
-                gap: "0px",
+                gap: '0px',
                 backgroundColor: `rgba(255, 255, 255, 0.02)`,
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-                borderRadius: "15px",
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '15px',
               }}
             >
               {chatMetadata ? (
                 <>
                   <Stack
                     sx={{
-                      padding: "60px 2px 50px 2px",
-                      width: "100%",
-                      gap: "20px",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      position: "relative",
+                      padding: '60px 2px 50px 2px',
+                      width: '100%',
+                      gap: '20px',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      position: 'relative',
                     }}
                   >
                     <Stack
                       sx={{
-                        position: "absolute",
-                        top: "0",
-                        left: "0",
-                        width: "100%",
-                        height: "100%",
-                        overflow: "hidden",
-                        borderRadius: "15px 15px 0 0",
+                        position: 'absolute',
+                        top: '0',
+                        left: '0',
+                        width: '100%',
+                        height: '100%',
+                        overflow: 'hidden',
+                        borderRadius: '15px 15px 0 0',
                         zIndex: -1,
                       }}
                     >
                       <Stack
                         sx={{
                           background: `url('${activeChatBgImage}') no-repeat center center`,
-                          width: "calc(100% + 30px)",
-                          height: "calc(100% + 20px)",
-                          position: "relative",
-                          top: "-15px",
-                          left: "-15px",
-                          backgroundPosition: "center",
-                          backgroundSize: "cover",
+                          width: 'calc(100% + 30px)',
+                          height: 'calc(100% + 20px)',
+                          position: 'relative',
+                          top: '-15px',
+                          left: '-15px',
+                          backgroundPosition: 'center',
+                          backgroundSize: 'cover',
                           opacity: 0.1,
-                          filter: "blur(22px)",
-                          overflow: "hidden",
-                          border: "10px solid red",
+                          filter: 'blur(22px)',
+                          overflow: 'hidden',
+                          border: '10px solid red',
                         }}
                       />
                     </Stack>
 
                     <Stack
                       sx={{
-                        alignItems: "center",
-                        position: "absolute",
-                        top: "10px",
-                        left: "10px",
+                        alignItems: 'center',
+                        position: 'absolute',
+                        top: '10px',
+                        left: '10px',
                       }}
                     >
                       <Button
                         color="info"
                         variant="outlined"
-                        onClick={() => setActiveChatId("")}
+                        onClick={() => setActiveChatId('')}
                         startIcon={<ChevronLeft />}
                       >
-                        {i18n._("Back")}
+                        {i18n._('Back')}
                       </Button>
                     </Stack>
                     <Stack
                       sx={{
-                        alignItems: "center",
-                        gap: "20px",
+                        alignItems: 'center',
+                        gap: '20px',
                       }}
                     >
                       <ChatHeaderFull chat={chatMetadata} />
@@ -151,25 +142,25 @@ export const ChatPage = ({
               ) : (
                 <Stack
                   sx={{
-                    padding: "20px",
-                    gap: "20px",
-                    alignItems: "flex-start",
+                    padding: '20px',
+                    gap: '20px',
+                    alignItems: 'flex-start',
                   }}
                 >
                   <Alert
                     severity="error"
                     sx={{
-                      width: "100%",
+                      width: '100%',
                     }}
                   >
                     {i18n._("Chat not found or you don't have access to it.")}
                   </Alert>
                   <Button
                     startIcon={<ChevronLeft />}
-                    onClick={() => setActiveChatId("")}
+                    onClick={() => setActiveChatId('')}
                     variant="outlined"
                   >
-                    {i18n._("Back to chat list")}
+                    {i18n._('Back to chat list')}
                   </Button>
                 </Stack>
               )}
@@ -183,7 +174,7 @@ export const ChatPage = ({
                   {chatList.myChats.length === 0 ? (
                     <Stack
                       sx={{
-                        paddingTop: "10px",
+                        paddingTop: '10px',
                       }}
                     >
                       <Typography
@@ -192,69 +183,68 @@ export const ChatPage = ({
                           opacity: 0.7,
                         }}
                       >
-                        {i18n._("You have no chats yet.")}
+                        {i18n._('You have no chats yet.')}
                       </Typography>
                     </Stack>
                   ) : (
                     <Stack
                       sx={{
-                        gap: "10px",
-                        padding: "15px 0 20px 0",
+                        gap: '10px',
+                        padding: '15px 0 20px 0',
 
-                        borderRadius: "12px",
-                        border: "1px solid rgba(255, 255, 255, 0.1)",
-                        backgroundColor: "rgba(255, 255, 255, 0.03)",
-                        "@media (max-width: 600px)": {
-                          gap: "3px",
-                          border: "none",
+                        borderRadius: '12px',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                        '@media (max-width: 600px)': {
+                          gap: '3px',
+                          border: 'none',
                           borderRadius: 0,
-                          padding: "0",
+                          padding: '0',
                         },
                       }}
                     >
                       {chatList.myChats.map((chat, index) => {
-                        const unreadCount =
-                          chatList.unreadSpaces[chat.spaceId] || 0;
+                        const unreadCount = chatList.unreadSpaces[chat.spaceId] || 0;
                         return (
                           <Stack
                             key={chat.spaceId || index}
-                            component={"button"}
+                            component={'button'}
                             onClick={() => {
                               setActiveChatId(chat.spaceId);
                             }}
                             sx={{
-                              borderRadius: "3px",
-                              padding: "10px 20px 10px 12px",
+                              borderRadius: '3px',
+                              padding: '10px 20px 10px 12px',
                               backgroundColor: `rgba(255, 255, 255, 0.05)`,
-                              flexDirection: "row",
-                              alignItems: "center",
-                              justifyContent: "space-between",
-                              border: "none",
-                              color: "inherit",
-                              cursor: "pointer",
-                              textAlign: "left",
-                              ":hover": {
+                              flexDirection: 'row',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              border: 'none',
+                              color: 'inherit',
+                              cursor: 'pointer',
+                              textAlign: 'left',
+                              ':hover': {
                                 backgroundColor: `rgba(255, 255, 255, 0.1)`,
                               },
-                              "@media (max-width: 600px)": {
+                              '@media (max-width: 600px)': {
                                 borderRadius: 0,
                               },
                             }}
                           >
                             <Stack
                               sx={{
-                                flexDirection: "row",
-                                alignItems: "center",
-                                gap: "10px",
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                gap: '10px',
                               }}
                             >
                               <ChatHeaderList chat={chat} />
                             </Stack>
                             <Stack
                               sx={{
-                                flexDirection: "row",
-                                alignItems: "center",
-                                gap: "10px",
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                gap: '10px',
                               }}
                             >
                               <Badge color="error" badgeContent={unreadCount}>
@@ -291,16 +281,14 @@ const ChatHeaderList = ({ chat }: { chat: UserChatMetadata }) => {
   );
 
   const isOnlyOneUser = allUserIds.length <= 1;
-  const userIds = allUserIds.filter(
-    (userId) => isOnlyOneUser || userId !== auth.uid,
-  );
+  const userIds = allUserIds.filter((userId) => isOnlyOneUser || userId !== auth.uid);
 
   return (
     <>
       <Stack
         sx={{
-          flexDirection: "row",
-          minWidth: "50px",
+          flexDirection: 'row',
+          minWidth: '50px',
         }}
       >
         {userIds.map((userId, index) => {
@@ -308,39 +296,31 @@ const ChatHeaderList = ({ chat }: { chat: UserChatMetadata }) => {
             <Stack
               key={userId}
               sx={{
-                marginLeft: index === 0 ? "0" : "-30px",
+                marginLeft: index === 0 ? '0' : '-30px',
               }}
             >
-              <Avatar url={game.getUserAvatarUrl(userId)} avatarSize={"44px"} />
+              <Avatar url={game.getUserAvatarUrl(userId)} avatarSize={'44px'} />
             </Stack>
           );
         })}
       </Stack>
       <Stack
         sx={{
-          alignItems: "flex-start",
+          alignItems: 'flex-start',
         }}
       >
         <Typography variant="caption">
-          {chat.type === "debate" && i18n._("Debate Chat")}
-          {chat.type === "dailyQuestion" && i18n._("Daily Question Chat")}
-          {chat.type === "global" && i18n._("Global Chat")}
-          {chat.type === "privateChat" && i18n._("Chat")}
+          {chat.type === 'debate' && i18n._('Debate Chat')}
+          {chat.type === 'dailyQuestion' && i18n._('Daily Question Chat')}
+          {chat.type === 'global' && i18n._('Global Chat')}
+          {chat.type === 'privateChat' && i18n._('Chat')}
 
-          {!chat.type && i18n._("Chat")}
+          {!chat.type && i18n._('Chat')}
         </Typography>
         <Stack>
           {userIds.map((userId) => {
             const userName = game.getUserName(userId);
-            return (
-              <UserName
-                size="normal"
-                key={userId}
-                bold
-                userId={userId}
-                userName={userName}
-              />
-            );
+            return <UserName size="normal" key={userId} bold userId={userId} userName={userName} />;
           })}
         </Stack>
       </Stack>
@@ -363,9 +343,7 @@ const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
   );
 
   const isOnlyOneUser = allUserIds.length <= 1;
-  const userIds = allUserIds.filter(
-    (userId) => isOnlyOneUser || userId !== auth.uid,
-  );
+  const userIds = allUserIds.filter((userId) => isOnlyOneUser || userId !== auth.uid);
   const lastVisited = dayjs(
     userIds
       .map((userId) => game.gameLastVisit?.[userId])
@@ -377,8 +355,8 @@ const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
     <>
       <Stack
         sx={{
-          flexDirection: "row",
-          minWidth: "44px",
+          flexDirection: 'row',
+          minWidth: '44px',
         }}
       >
         {userIds.map((userId, index) => {
@@ -386,12 +364,12 @@ const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
             <Stack
               key={userId}
               sx={{
-                marginLeft: index === 0 ? "0" : "-30px",
+                marginLeft: index === 0 ? '0' : '-30px',
               }}
             >
               <Avatar
                 url={game.getUserAvatarUrl(userId)}
-                avatarSize={"90px"}
+                avatarSize={'90px'}
                 onClick={() => {
                   game.showUserInModal(userId);
                 }}
@@ -402,29 +380,23 @@ const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
       </Stack>
       <Stack
         sx={{
-          alignItems: "center",
+          alignItems: 'center',
         }}
       >
         <Typography variant="caption">
-          {chat.type === "debate" && i18n._("Debate Chat")}
-          {chat.type === "dailyQuestion" && i18n._("Daily Question Chat")}
-          {chat.type === "global" && i18n._("Global Chat")}
-          {chat.type === "privateChat" && i18n._("Chat")}
+          {chat.type === 'debate' && i18n._('Debate Chat')}
+          {chat.type === 'dailyQuestion' && i18n._('Daily Question Chat')}
+          {chat.type === 'global' && i18n._('Global Chat')}
+          {chat.type === 'privateChat' && i18n._('Chat')}
 
-          {!chat.type && i18n._("Chat")}
+          {!chat.type && i18n._('Chat')}
         </Typography>
 
         <Stack>
           {userIds.map((userId) => {
             const userName = game.getUserName(userId);
             return (
-              <UserName
-                size="large"
-                key={userId}
-                userId={userId}
-                userName={userName}
-                center
-              />
+              <UserName size="large" key={userId} userId={userId} userName={userName} center />
             );
           })}
         </Stack>
@@ -433,13 +405,13 @@ const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
           variant="caption"
           sx={{
             opacity: 0.7,
-            paddingTop: "4px",
-            position: "absolute",
-            top: "10px",
-            right: "15px",
+            paddingTop: '4px',
+            position: 'absolute',
+            top: '10px',
+            right: '15px',
           }}
         >
-          {i18n._("Last visited: {lastVisited}", { lastVisited })}
+          {i18n._('Last visited: {lastVisited}', { lastVisited })}
         </Typography>
       </Stack>
     </>

@@ -1,8 +1,8 @@
-"use client";
-import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { ReactNode } from "react";
-import { AiAvatarVideo } from "@/features/Conversation/CallMode/AiAvatarVideo";
-import { AiAvatar } from "@/features/Conversation/CallMode/types";
+'use client';
+import { Button, IconButton, Stack, Typography } from '@mui/material';
+import { ReactNode } from 'react';
+import { AiAvatarVideo } from '@/features/Conversation/CallMode/AiAvatarVideo';
+import { AiAvatar } from '@/features/Conversation/CallMode/types';
 
 interface ActiveLessonCardProps {
   title: string;
@@ -38,39 +38,39 @@ export const ActiveLessonCard = ({
   return (
     <Stack
       sx={{
-        backgroundColor: "rgba(255, 255, 255, 0.02)",
-        textDecoration: "none",
+        backgroundColor: 'rgba(255, 255, 255, 0.02)',
+        textDecoration: 'none',
 
-        borderRadius: "16px",
-        gap: "20px",
-        alignItems: "center",
-        justifyContent: "center",
-        border: "1px solid rgba(255, 255, 255, 0.08)",
-        position: "relative",
-        overflow: "hidden",
+        borderRadius: '16px',
+        gap: '20px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        position: 'relative',
+        overflow: 'hidden',
 
-        minHeight: "380px",
+        minHeight: '380px',
         opacity: 0,
         animation: `fadeInOpacity  1.2s ease ${delayToShow}ms forwards`,
 
-        userSelect: "text",
-        color: "#fff",
+        userSelect: 'text',
+        color: '#fff',
 
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
 
-        padding: "0px 20px 0px 0px",
-        gridTemplateRows: "auto",
+        padding: '0px 20px 0px 0px',
+        gridTemplateRows: 'auto',
         gridTemplateAreas: `
 					'preview content'
 				`,
-        "@media (max-width: 600px)": {
-          border: "none",
-          borderRadius: "0",
-          backgroundColor: "rgba(255, 255, 255, 0.01)",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-          padding: "0px 0px 25px 0px",
-          gridTemplateColumns: "1fr",
+        '@media (max-width: 600px)': {
+          border: 'none',
+          borderRadius: '0',
+          backgroundColor: 'rgba(255, 255, 255, 0.01)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          padding: '0px 0px 25px 0px',
+          gridTemplateColumns: '1fr',
 
           gridTemplateAreas: `
 						'preview'
@@ -83,23 +83,23 @@ export const ActiveLessonCard = ({
       <Stack
         className="preview"
         sx={{
-          gridArea: "preview",
-          position: "relative",
-          borderRadius: "16px",
-          overflow: "hidden",
-          minHeight: "300px",
-          height: "100%",
-          backgroundColor: "#0a121e",
-          boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.06)",
-          transition: "transform 0.3s ease",
-          "@media (max-width: 600px)": {
-            borderRadius: "0px",
+          gridArea: 'preview',
+          position: 'relative',
+          borderRadius: '16px',
+          overflow: 'hidden',
+          minHeight: '300px',
+          height: '100%',
+          backgroundColor: '#0a121e',
+          boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)',
+          transition: 'transform 0.3s ease',
+          '@media (max-width: 600px)': {
+            borderRadius: '0px',
           },
         }}
       >
         <Stack
           sx={{
-            position: "absolute",
+            position: 'absolute',
             inset: 0,
           }}
         >
@@ -111,13 +111,13 @@ export const ActiveLessonCard = ({
             <IconButton
               onClick={onSettingsClick}
               sx={{
-                position: "absolute",
-                top: "10px",
-                left: "10px",
-                color: "#fff",
-                backgroundColor: "rgba(0,0,0,0.3)",
-                "&:hover": {
-                  backgroundColor: "rgba(0,0,0,0.5)",
+                position: 'absolute',
+                top: '10px',
+                left: '10px',
+                color: '#fff',
+                backgroundColor: 'rgba(0,0,0,0.3)',
+                '&:hover': {
+                  backgroundColor: 'rgba(0,0,0,0.5)',
                 },
               }}
             >
@@ -130,15 +130,15 @@ export const ActiveLessonCard = ({
       {/* Right content */}
       <Stack
         sx={{
-          gridArea: "content",
-          gap: "16px",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-          position: "relative",
+          gridArea: 'content',
+          gap: '16px',
+          alignItems: 'flex-start',
+          justifyContent: 'space-between',
+          position: 'relative',
           zIndex: 2,
-          padding: "10px",
-          "@media (max-width: 600px)": {
-            padding: "20px 15px 0px 15px",
+          padding: '10px',
+          '@media (max-width: 600px)': {
+            padding: '20px 15px 0px 15px',
           },
         }}
       >
@@ -146,8 +146,8 @@ export const ActiveLessonCard = ({
           <Typography
             sx={{
               fontWeight: 400,
-              fontSize: "0.92rem",
-              textTransform: "uppercase",
+              fontSize: '0.92rem',
+              textTransform: 'uppercase',
               opacity: 0.7,
             }}
           >
@@ -158,12 +158,12 @@ export const ActiveLessonCard = ({
             component="h3"
             sx={{
               fontWeight: 700,
-              fontSize: "1.9rem",
-              lineHeight: "2.3rem",
-              paddingTop: "6px",
-              "@media (max-width: 750px)": {
-                fontSize: "1.6rem",
-                lineHeight: "1.9rem",
+              fontSize: '1.9rem',
+              lineHeight: '2.3rem',
+              paddingTop: '6px',
+              '@media (max-width: 750px)': {
+                fontSize: '1.6rem',
+                lineHeight: '1.9rem',
               },
             }}
           >
@@ -174,9 +174,9 @@ export const ActiveLessonCard = ({
             <Typography
               sx={{
                 opacity: 0.85,
-                paddingTop: "10px",
-                fontSize: "1.05rem",
-                lineHeight: "1.5rem",
+                paddingTop: '10px',
+                fontSize: '1.05rem',
+                lineHeight: '1.5rem',
               }}
             >
               {descriptionTop}
@@ -187,9 +187,9 @@ export const ActiveLessonCard = ({
             <Typography
               sx={{
                 opacity: 0.85,
-                paddingTop: "10px",
-                fontSize: "1.05rem",
-                lineHeight: "1.5rem",
+                paddingTop: '10px',
+                fontSize: '1.05rem',
+                lineHeight: '1.5rem',
               }}
             >
               {descriptionBottom}
@@ -197,7 +197,7 @@ export const ActiveLessonCard = ({
           )}
         </Stack>
 
-        <Stack sx={{ paddingTop: "6px" }}>
+        <Stack sx={{ paddingTop: '6px' }}>
           <Button
             startIcon={startIcon}
             endIcon={endIcon}
@@ -205,7 +205,7 @@ export const ActiveLessonCard = ({
             onClick={onAction}
             size="large"
             sx={{
-              minWidth: "130px",
+              minWidth: '130px',
               //borderRadius: "14px",
               //padding: "14px 22px",
               //fontWeight: 600,

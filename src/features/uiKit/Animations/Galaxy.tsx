@@ -1,13 +1,13 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import GUI from "lil-gui";
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import GUI from 'lil-gui';
 // @ts-expect-error - glslify-loader is not supported by TS
-import galaxyVertexShader from "./vertex.glsl";
+import galaxyVertexShader from './vertex.glsl';
 // @ts-expect-error - glslify-loader is not supported by TS
-import galaxyFragmentShader from "./fragment.glsl";
-import { isBot } from "@/libs/isBot";
+import galaxyFragmentShader from './fragment.glsl';
+import { isBot } from '@/libs/isBot';
 
 interface GalaxyParameters {
   count: number;
@@ -27,7 +27,7 @@ const Galaxy: React.FC = () => {
   const [isSupported, setIsSupported] = useState(false);
 
   const init = async () => {
-    const isServer = typeof window === "undefined";
+    const isServer = typeof window === 'undefined';
     if (isServer) return;
 
     const isAndroid = /Android/i.test(navigator.userAgent);
@@ -55,9 +55,9 @@ const Galaxy: React.FC = () => {
     spin: 1,
     randomness: 0.5,
     randomnessPower: 3,
-    insideColor: "#fa8500",
-    outsideColor: "#05acff",
-    bgColor: "#0a121e",
+    insideColor: '#fa8500',
+    outsideColor: '#05acff',
+    bgColor: '#0a121e',
   });
 
   useEffect(() => {
@@ -101,8 +101,7 @@ const Galaxy: React.FC = () => {
       for (let i = 0; i < parameters.count; i++) {
         const i3 = i * 3;
         const radius = Math.random() * parameters.radius;
-        const branchAngle =
-          ((i % parameters.branches) / parameters.branches) * Math.PI * 2;
+        const branchAngle = ((i % parameters.branches) / parameters.branches) * Math.PI * 2;
 
         positions[i3] = Math.cos(branchAngle) * radius;
         positions[i3 + 1] = 0;
@@ -138,16 +137,10 @@ const Galaxy: React.FC = () => {
         scales[i] = Math.random();
       }
 
-      geometry.setAttribute(
-        "position",
-        new THREE.BufferAttribute(positions, 3),
-      );
-      geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
-      geometry.setAttribute("aScale", new THREE.BufferAttribute(scales, 1));
-      geometry.setAttribute(
-        "aRandom",
-        new THREE.BufferAttribute(randomness, 3),
-      );
+      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+      geometry.setAttribute('aScale', new THREE.BufferAttribute(scales, 1));
+      geometry.setAttribute('aRandom', new THREE.BufferAttribute(randomness, 3));
 
       material = new THREE.ShaderMaterial({
         depthWrite: false,
@@ -172,20 +165,16 @@ const Galaxy: React.FC = () => {
     let gui: GUI;
     if (isNeedGUI) {
       gui = new GUI();
-      gui.add(parameters, "count", 100, 1000000, 100).onChange(generateGalaxy);
-      gui.add(parameters, "radius", 0.01, 20, 0.01).onChange(generateGalaxy);
-      gui.add(parameters, "branches", 2, 20, 1).onChange(generateGalaxy);
-      gui.add(parameters, "randomness", 0, 2, 0.001).onChange(generateGalaxy);
+      gui.add(parameters, 'count', 100, 1000000, 100).onChange(generateGalaxy);
+      gui.add(parameters, 'radius', 0.01, 20, 0.01).onChange(generateGalaxy);
+      gui.add(parameters, 'branches', 2, 20, 1).onChange(generateGalaxy);
+      gui.add(parameters, 'randomness', 0, 2, 0.001).onChange(generateGalaxy);
+      gui.add(parameters, 'randomnessPower', 1, 10, 0.001).onChange(generateGalaxy);
+      gui.addColor(parameters, 'insideColor').onChange(generateGalaxy);
+      gui.addColor(parameters, 'outsideColor').onChange(generateGalaxy);
       gui
-        .add(parameters, "randomnessPower", 1, 10, 0.001)
-        .onChange(generateGalaxy);
-      gui.addColor(parameters, "insideColor").onChange(generateGalaxy);
-      gui.addColor(parameters, "outsideColor").onChange(generateGalaxy);
-      gui
-        .addColor(parameters, "bgColor")
-        .onChange((value: string) =>
-          renderer.setClearColor(new THREE.Color(value)),
-        );
+        .addColor(parameters, 'bgColor')
+        .onChange((value: string) => renderer.setClearColor(new THREE.Color(value)));
     }
 
     // Resize handler
@@ -196,7 +185,7 @@ const Galaxy: React.FC = () => {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     // Animation
     const clock = new THREE.Clock();
@@ -217,7 +206,7 @@ const Galaxy: React.FC = () => {
 
     // Cleanup
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
       if (isNeedGUI && gui) {
         gui.destroy();
       }

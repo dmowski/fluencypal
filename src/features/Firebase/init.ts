@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { firebaseConfig } from "@/common/firebaseConfig";
-import { initializeApp } from "firebase/app";
+import { firebaseConfig } from '@/common/firebaseConfig';
+import { initializeApp } from 'firebase/app';
 import {
   browserLocalPersistence,
   browserPopupRedirectResolver,
   getAuth,
   initializeAuth,
-} from "firebase/auth";
+} from 'firebase/auth';
 import {
   collection,
   deleteDoc,
@@ -16,13 +16,12 @@ import {
   initializeFirestore,
   persistentLocalCache,
   persistentMultipleTabManager,
-} from "firebase/firestore";
-import { getFunctions } from "firebase/functions";
-import { getStorage } from "firebase/storage";
+} from 'firebase/firestore';
+import { getFunctions } from 'firebase/functions';
+import { getStorage } from 'firebase/storage';
 
-const isNodeEnv = typeof window === "undefined";
-const isSafari =
-  !isNodeEnv && /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+const isNodeEnv = typeof window === 'undefined';
+const isSafari = !isNodeEnv && /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const app = initializeApp(firebaseConfig);
 
 const firestore =
@@ -58,11 +57,4 @@ async function deleteCollectionDocs(collectionPath: string): Promise<void> {
   await Promise.all(deletions);
 }
 
-export {
-  auth,
-  firestore,
-  storage,
-  setCookiesGDPR,
-  deleteCollectionDocs,
-  functions,
-};
+export { auth, firestore, storage, setCookiesGDPR, deleteCollectionDocs, functions };

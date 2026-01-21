@@ -1,9 +1,9 @@
-import { Stack, Typography } from "@mui/material";
-import VerifiedIcon from "@mui/icons-material/Verified";
+import { Stack, Typography } from '@mui/material';
+import VerifiedIcon from '@mui/icons-material/Verified';
 
-const verifiedUserIds = ["Mq2HfU3KrXTjNyOpPXqHSPg5izV2"];
+const verifiedUserIds = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2'];
 
-type Size = "normal" | "large";
+type Size = 'normal' | 'large';
 
 export const UserName = ({
   userId,
@@ -23,21 +23,21 @@ export const UserName = ({
   return (
     <Stack
       sx={{
-        flexDirection: "row",
-        alignItems: "center",
-        gap: size === "large" ? "6px" : "5px",
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: size === 'large' ? '6px' : '5px',
       }}
     >
       {center && <Badge size={size} isShow={isVerified} opacity={0} />}
       <Typography
-        variant={size === "large" ? "h4" : "body1"}
+        variant={size === 'large' ? 'h4' : 'body1'}
         sx={{
-          lineHeight: "1",
-          fontSize: size === "large" ? "27px" : "1rem",
-          fontWeight: bold ? "600" : "400",
+          lineHeight: '1',
+          fontSize: size === 'large' ? '27px' : '1rem',
+          fontWeight: bold ? '600' : '400',
 
-          "@media (max-width: 600px)": {
-            fontSize: size === "large" ? "18px" : "1rem",
+          '@media (max-width: 600px)': {
+            fontSize: size === 'large' ? '18px' : '1rem',
           },
         }}
       >
@@ -48,23 +48,15 @@ export const UserName = ({
   );
 };
 
-const Badge = ({
-  size,
-  isShow,
-  opacity,
-}: {
-  size?: Size;
-  isShow: boolean;
-  opacity?: number;
-}) => {
+const Badge = ({ size, isShow, opacity }: { size?: Size; isShow: boolean; opacity?: number }) => {
   if (!isShow) return null;
   return (
     <VerifiedIcon
       sx={{
-        color: "#29b3e5",
-        fontSize: size === "large" ? "20px" : "15px",
+        color: '#29b3e5',
+        fontSize: size === 'large' ? '20px' : '15px',
         opacity: opacity ?? 1,
-        marginTop: size === "large" ? "3px" : "0",
+        marginTop: size === 'large' ? '3px' : '0',
       }}
     />
   );

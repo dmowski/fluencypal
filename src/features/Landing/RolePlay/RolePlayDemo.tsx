@@ -1,16 +1,16 @@
-import { Button, Link, Stack, Typography } from "@mui/material";
+import { Button, Link, Stack, Typography } from '@mui/material';
 import {
   buttonStyle,
   maxLandingWidth,
   subTitleFontStyle,
   titleFontStyle,
-} from "../landingSettings";
-import { getRolePlayScenarios } from "../../RolePlay/rolePlayData";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { RolePlayScroller } from "./RolePlayScroller";
-import { RolePlayCard } from "./RolePlayCard";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
+} from '../landingSettings';
+import { getRolePlayScenarios } from '../../RolePlay/rolePlayData';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { RolePlayScroller } from './RolePlayScroller';
+import { RolePlayCard } from './RolePlayCard';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
 
 interface RolePlayDemoProps {
   title: string;
@@ -32,46 +32,44 @@ export const RolePlayDemo = ({
   lang,
 }: RolePlayDemoProps) => {
   const { rolePlayScenarios } = getRolePlayScenarios(lang);
-  const importantRoles = rolePlayScenarios.filter(
-    (scenario) => scenario.landingHighlight,
-  );
+  const importantRoles = rolePlayScenarios.filter((scenario) => scenario.landingHighlight);
 
   return (
     <Stack
       sx={{
-        width: "100%",
-        padding: "50px 0 120px 0",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "100px",
+        width: '100%',
+        padding: '50px 0 120px 0',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '100px',
         backgroundColor: `rgb(255, 253, 249, 1)`,
-        position: "relative",
+        position: 'relative',
         zIndex: 1,
-        overflow: "hidden",
+        overflow: 'hidden',
       }}
     >
       <Stack
         sx={{
-          alignItems: "center",
-          gap: "50px",
+          alignItems: 'center',
+          gap: '50px',
         }}
       >
         <Stack
           sx={{
-            gap: "20px",
+            gap: '20px',
             maxWidth: maxLandingWidth,
-            boxSizing: "border-box",
-            alignItems: "center",
-            padding: "0 10px",
+            boxSizing: 'border-box',
+            alignItems: 'center',
+            padding: '0 10px',
           }}
         >
           <Typography
             align="center"
             variant="h3"
-            component={"h2"}
+            component={'h2'}
             sx={{
               ...titleFontStyle,
-              color: "#000",
+              color: '#000',
             }}
           >
             {title}
@@ -80,8 +78,8 @@ export const RolePlayDemo = ({
             align="center"
             variant="body1"
             sx={{
-              maxWidth: "810px",
-              color: "#000",
+              maxWidth: '810px',
+              color: '#000',
               ...subTitleFontStyle,
             }}
           >
@@ -90,41 +88,41 @@ export const RolePlayDemo = ({
         </Stack>
         <Stack
           sx={{
-            gap: "20px",
+            gap: '20px',
             maxWidth: maxLandingWidth,
-            boxSizing: "border-box",
-            alignItems: "center",
-            padding: "0 10px",
+            boxSizing: 'border-box',
+            alignItems: 'center',
+            padding: '0 10px',
           }}
         >
           <Stack
             sx={{
-              width: "100vw",
-              height: "410px",
-              overflow: "hidden",
+              width: '100vw',
+              height: '410px',
+              overflow: 'hidden',
             }}
           >
             <Stack
               sx={{
-                maxWidth: "100vw",
-                height: "500px",
-                overflowY: "hidden",
-                overflowX: "auto",
-                paddingBottom: "40px",
-                paddingTop: "10px",
-                scrollbarWidth: "none",
+                maxWidth: '100vw',
+                height: '500px',
+                overflowY: 'hidden',
+                overflowX: 'auto',
+                paddingBottom: '40px',
+                paddingTop: '10px',
+                scrollbarWidth: 'none',
               }}
               id="role-play-scenarios-scroller"
             >
               <Stack
                 sx={{
-                  gap: "30px",
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  width: "max-content",
-                  "@media (max-width: 400px)": {
-                    gap: "10px",
+                  gap: '30px',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  width: 'max-content',
+                  '@media (max-width: 400px)': {
+                    gap: '10px',
                   },
                 }}
               >
@@ -135,15 +133,10 @@ export const RolePlayDemo = ({
                       <Stack
                         key={index}
                         sx={{
-                          maxWidth: "400px",
+                          maxWidth: '400px',
                         }}
                       >
-                        <RolePlayCard
-                          key={index}
-                          scenario={scenario}
-                          lang={lang}
-                          height="400px"
-                        />
+                        <RolePlayCard key={index} scenario={scenario} lang={lang} height="400px" />
                       </Stack>
                     );
                   })}
@@ -153,10 +146,10 @@ export const RolePlayDemo = ({
           <RolePlayScroller />
           <Stack
             sx={{
-              alignItems: "center",
-              color: "#000",
-              paddingTop: "30px",
-              gap: "50px",
+              alignItems: 'center',
+              color: '#000',
+              paddingTop: '30px',
+              gap: '50px',
             }}
           >
             <Button
@@ -173,13 +166,13 @@ export const RolePlayDemo = ({
 
             <Stack
               sx={{
-                alignItems: "center",
-                gap: "0px",
+                alignItems: 'center',
+                gap: '0px',
               }}
             >
               <Typography
                 variant="h6"
-                component={"p"}
+                component={'p'}
                 sx={{
                   fontWeight: 320,
                 }}
@@ -189,28 +182,28 @@ export const RolePlayDemo = ({
 
               <Link
                 sx={{
-                  color: "#000",
-                  textDecoration: "none",
-                  padding: "10px 20px",
+                  color: '#000',
+                  textDecoration: 'none',
+                  padding: '10px 20px',
                 }}
                 href={`${getUrlStart(lang)}scenarios/custom`}
               >
                 <Stack
                   sx={{
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                    flexDirection: "row",
-                    gap: "5px",
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+                    flexDirection: 'row',
+                    gap: '5px',
                   }}
                 >
                   <Typography
                     sx={{
-                      textDecoration: "underline",
-                      textUnderlineOffset: "8px",
+                      textDecoration: 'underline',
+                      textUnderlineOffset: '8px',
                       fontWeight: 500,
                     }}
                     variant="h6"
-                    component={"span"}
+                    component={'span'}
                     className="link-text"
                   >
                     {footerLinkTitle}
@@ -218,10 +211,10 @@ export const RolePlayDemo = ({
                   <ArrowForwardIcon
                     className="link-icon"
                     sx={{
-                      position: "relative",
-                      left: "0px",
-                      fontSize: "16px",
-                      transition: "left 0.3s",
+                      position: 'relative',
+                      left: '0px',
+                      fontSize: '16px',
+                      transition: 'left 0.3s',
                     }}
                   />
                 </Stack>
@@ -232,20 +225,20 @@ export const RolePlayDemo = ({
 
         <Stack
           sx={{
-            gap: "20px",
+            gap: '20px',
             maxWidth: maxLandingWidth,
-            boxSizing: "border-box",
-            alignItems: "center",
-            padding: "80px 10px 0 10px",
+            boxSizing: 'border-box',
+            alignItems: 'center',
+            padding: '80px 10px 0 10px',
           }}
         >
           <Typography
             align="center"
             variant="h3"
-            component={"h2"}
+            component={'h2'}
             sx={{
               ...titleFontStyle,
-              color: "#000",
+              color: '#000',
             }}
           >
             {importantRolesTitleAfterFooter}
@@ -254,21 +247,21 @@ export const RolePlayDemo = ({
             align="center"
             variant="body1"
             sx={{
-              maxWidth: "810px",
-              color: "#000",
+              maxWidth: '810px',
+              color: '#000',
               ...subTitleFontStyle,
             }}
           ></Typography>
 
           <Stack
             sx={{
-              display: "grid",
-              gap: "20px",
-              padding: "0 10px",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              "@media (max-width: 900px)": {
-                gridTemplateColumns: "1fr",
-                gap: "50px",
+              display: 'grid',
+              gap: '20px',
+              padding: '0 10px',
+              gridTemplateColumns: '1fr 1fr 1fr',
+              '@media (max-width: 900px)': {
+                gridTemplateColumns: '1fr',
+                gap: '50px',
               },
             }}
           >
@@ -279,7 +272,7 @@ export const RolePlayDemo = ({
                   scenario={scenario}
                   variant="highlight"
                   lang={lang}
-                  height={"100%"}
+                  height={'100%'}
                 />
               );
             })}

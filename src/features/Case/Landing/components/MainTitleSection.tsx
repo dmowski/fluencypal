@@ -1,6 +1,6 @@
-import { Button, Stack, Typography } from "@mui/material";
-import { H1, H1SubTitle, PageLabel } from "./Typography";
-import { MoveRight } from "lucide-react";
+import { Button, Stack, Typography } from '@mui/material';
+import { H1, H1SubTitle, PageLabel } from './Typography';
+import { MoveRight } from 'lucide-react';
 
 export interface MainTitleSectionProps {
   label: string;
@@ -16,15 +16,15 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
   return (
     <Stack
       sx={{
-        paddingTop: "200px",
-        paddingBottom: "150px",
+        paddingTop: '200px',
+        paddingBottom: '150px',
 
-        alignItems: "center",
-        "@media (max-width: 600px)": {
-          paddingTop: "100px",
+        alignItems: 'center',
+        '@media (max-width: 600px)': {
+          paddingTop: '100px',
         },
-        width: "100%",
-        position: "relative",
+        width: '100%',
+        position: 'relative',
       }}
     >
       {props.bgImageUrl && (
@@ -33,12 +33,12 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
           src={props.bgImageUrl}
           alt="Background"
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 0,
             left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
             zIndex: -1,
             opacity: 0.9,
           }}
@@ -46,12 +46,12 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
       )}
       <Stack
         sx={{
-          maxWidth: "1300px",
-          gap: "15px",
-          padding: "0 10px",
-          alignItems: "center",
-          "@media (max-width: 600px)": {
-            alignItems: "flex-start",
+          maxWidth: '1300px',
+          gap: '15px',
+          padding: '0 10px',
+          alignItems: 'center',
+          '@media (max-width: 600px)': {
+            alignItems: 'flex-start',
           },
         }}
       >
@@ -65,10 +65,10 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
           size="large"
           color="info"
           sx={{
-            marginTop: "32px",
-            padding: "14px 45px 14px 48px",
-            borderRadius: "48px",
-            fontSize: "18px",
+            marginTop: '32px',
+            padding: '14px 45px 14px 48px',
+            borderRadius: '48px',
+            fontSize: '18px',
           }}
           endIcon={<MoveRight />}
         >

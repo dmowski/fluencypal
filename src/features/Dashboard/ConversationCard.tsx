@@ -1,7 +1,7 @@
-import { Stack, Typography } from "@mui/material";
-import { Lock } from "lucide-react";
+import { Stack, Typography } from '@mui/material';
+import { Lock } from 'lucide-react';
 
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 interface ConversationCardProps {
   title: string;
@@ -33,54 +33,54 @@ export const ConversationCard = ({
   return (
     <Stack
       onClick={onClick}
-      component={href ? "a" : "button"}
+      component={href ? 'a' : 'button'}
       href={href}
       sx={{
-        backgroundColor: "transparent",
-        textDecoration: "none",
-        padding: "20px 20px 20px 20px",
-        borderRadius: "16px",
-        gap: "0px",
-        alignItems: "flex-start",
-        justifyContent: "center",
+        backgroundColor: 'transparent',
+        textDecoration: 'none',
+        padding: '20px 20px 20px 20px',
+        borderRadius: '16px',
+        gap: '0px',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
         border: disabled
-          ? "1px solid rgba(255, 255, 255, 0.2)"
-          : "1px solid rgba(255, 255, 255, 0.0)",
-        position: "relative",
-        overflow: "hidden",
-        transition: "transform 0.3s ease",
-        cursor: "pointer",
+          ? '1px solid rgba(255, 255, 255, 0.2)'
+          : '1px solid rgba(255, 255, 255, 0.0)',
+        position: 'relative',
+        overflow: 'hidden',
+        transition: 'transform 0.3s ease',
+        cursor: 'pointer',
 
         // allow text selection
-        userSelect: "text",
+        userSelect: 'text',
 
-        color: "#fff",
+        color: '#fff',
         opacity: disabled ? 0.8 : 1,
 
-        ".mini-card": {
-          position: "absolute",
-          bottom: "0px",
-          right: "20px",
-          width: "200px",
-          height: "140px",
-          boxSizing: "border-box",
-          transition: "all 0.3s ease",
-          boxShadow: "0px 0px 26px rgba(0, 0, 0, 0.3)",
-          backgroundColor: "#1E1E1E",
-          padding: "20px",
-          borderRadius: "16px 16px 0 0",
-          "@media (max-width: 750px)": {
-            width: "250px",
+        '.mini-card': {
+          position: 'absolute',
+          bottom: '0px',
+          right: '20px',
+          width: '200px',
+          height: '140px',
+          boxSizing: 'border-box',
+          transition: 'all 0.3s ease',
+          boxShadow: '0px 0px 26px rgba(0, 0, 0, 0.3)',
+          backgroundColor: '#1E1E1E',
+          padding: '20px',
+          borderRadius: '16px 16px 0 0',
+          '@media (max-width: 750px)': {
+            width: '250px',
           },
-          "@media (max-width: 450px)": {
-            width: "150px",
+          '@media (max-width: 450px)': {
+            width: '150px',
           },
         },
 
-        ":hover": {
-          transform: !disabled ? "scale(1.02)" : "none",
-          ".avatar": {
-            transform: !disabled ? "scale(1.08) rotate(1deg)" : "none",
+        ':hover': {
+          transform: !disabled ? 'scale(1.02)' : 'none',
+          '.avatar': {
+            transform: !disabled ? 'scale(1.08) rotate(1deg)' : 'none',
           },
         },
       }}
@@ -91,8 +91,8 @@ export const ConversationCard = ({
         sx={{
           fontWeight: 300,
           opacity: disabled ? 0.7 : 1,
-          textTransform: "uppercase",
-          position: "relative",
+          textTransform: 'uppercase',
+          position: 'relative',
           zIndex: 2,
         }}
       >
@@ -103,13 +103,13 @@ export const ConversationCard = ({
         align="left"
         sx={{
           fontWeight: 800,
-          textTransform: "uppercase",
-          fontSize: "1.8rem",
-          position: "relative",
+          textTransform: 'uppercase',
+          fontSize: '1.8rem',
+          position: 'relative',
           zIndex: 2,
           opacity: disabled ? 0.5 : 1,
-          "@media (max-width: 450px)": {
-            fontSize: "1.4rem",
+          '@media (max-width: 450px)': {
+            fontSize: '1.4rem',
           },
         }}
       >
@@ -118,19 +118,19 @@ export const ConversationCard = ({
 
       <Stack
         sx={{
-          flexDirection: "row",
-          gap: "8px",
-          alignItems: "center",
-          padding: "70px 14px 0px 0px",
-          borderRadius: "8px",
+          flexDirection: 'row',
+          gap: '8px',
+          alignItems: 'center',
+          padding: '70px 14px 0px 0px',
+          borderRadius: '8px',
           opacity: disabled ? 0.7 : 1,
-          position: "relative",
+          position: 'relative',
           zIndex: 2,
         }}
       >
         {disabled ? (
           <>
-            <Lock size={"18px"} />
+            <Lock size={'18px'} />
             <Typography variant="body2">{disabledLabel}</Typography>
           </>
         ) : (
@@ -140,19 +140,19 @@ export const ConversationCard = ({
 
       <Stack
         sx={{
-          paddingTop: "0px",
-          width: "max-content",
-          position: "absolute",
-          bottom: "0px",
-          right: "0px",
+          paddingTop: '0px',
+          width: 'max-content',
+          position: 'absolute',
+          bottom: '0px',
+          right: '0px',
           zIndex: 2,
 
-          ".avatar": {
-            transition: "all 0.4s ease",
+          '.avatar': {
+            transition: 'all 0.4s ease',
             opacity: disabled ? 0.9 : 1,
             img: {
-              width: "150px",
-              height: "150px",
+              width: '150px',
+              height: '150px',
             },
           },
         }}
@@ -163,14 +163,14 @@ export const ConversationCard = ({
       <Stack
         sx={{
           backgroundColor: startColor,
-          width: "320px",
-          height: "120px",
-          borderRadius: "40px",
-          filter: "blur(50px)",
+          width: '320px',
+          height: '120px',
+          borderRadius: '40px',
+          filter: 'blur(50px)',
 
-          position: "absolute",
-          top: "-40px",
-          left: "-20px",
+          position: 'absolute',
+          top: '-40px',
+          left: '-20px',
           zIndex: 1,
           opacity: disabled ? 0.06 : 0.9,
         }}
@@ -179,14 +179,14 @@ export const ConversationCard = ({
       <Stack
         sx={{
           backgroundColor: endColor,
-          width: "320px",
-          height: "120px",
-          borderRadius: "40px",
-          filter: "blur(80px)",
+          width: '320px',
+          height: '120px',
+          borderRadius: '40px',
+          filter: 'blur(80px)',
 
-          position: "absolute",
-          bottom: "-40px",
-          right: "-20px",
+          position: 'absolute',
+          bottom: '-40px',
+          right: '-20px',
           zIndex: 1,
           opacity: disabled ? 0.06 : 0.9,
         }}
@@ -195,12 +195,12 @@ export const ConversationCard = ({
       <Stack
         sx={{
           backgroundColor: bgColor,
-          width: "100%",
-          height: "100%",
+          width: '100%',
+          height: '100%',
 
-          position: "absolute",
-          bottom: "0px",
-          left: "0px",
+          position: 'absolute',
+          bottom: '0px',
+          left: '0px',
           zIndex: 0,
           opacity: disabled ? 0.06 : 0.1,
         }}
@@ -208,13 +208,13 @@ export const ConversationCard = ({
 
       <Stack
         sx={{
-          backgroundColor: "rgba(10, 18, 30, 1)",
-          width: "100%",
-          height: "100%",
+          backgroundColor: 'rgba(10, 18, 30, 1)',
+          width: '100%',
+          height: '100%',
 
-          position: "absolute",
-          bottom: "0px",
-          left: "0px",
+          position: 'absolute',
+          bottom: '0px',
+          left: '0px',
           zIndex: -1,
           opacity: 1,
         }}

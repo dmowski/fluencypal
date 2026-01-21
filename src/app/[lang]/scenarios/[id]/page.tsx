@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
-import { ScenarioOnePage } from "@/features/Landing/RolePlay/ScenarioOnePage";
-import { supportedLanguages } from "@/features/Lang/lang";
-import { generateMetadataInfo } from "@/features/SEO/metadata";
+import type { Metadata } from 'next';
+import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
+import { ScenarioOnePage } from '@/features/Landing/RolePlay/ScenarioOnePage';
+import { supportedLanguages } from '@/features/Lang/lang';
+import { generateMetadataInfo } from '@/features/SEO/metadata';
 
 interface ScenarioProps {
   id: string;
@@ -10,7 +10,7 @@ interface ScenarioProps {
 }
 
 export async function generateStaticParams() {
-  const rolePlayScenarios = getRolePlayScenarios("en");
+  const rolePlayScenarios = getRolePlayScenarios('en');
   return supportedLanguages
     .map((lang: string) => {
       return rolePlayScenarios.rolePlayScenarios.map((scenario) => {
@@ -28,7 +28,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   return generateMetadataInfo({
     lang: (await props.params).lang,
     scenarioId: (await props.params).id,
-    currentPath: "scenarios",
+    currentPath: 'scenarios',
   });
 }
 
@@ -37,7 +37,7 @@ export default async function ScenarioOneFullPage(props: PageProps) {
   const id = params.id;
 
   const lang = (await props.params).lang;
-  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
 
   return <ScenarioOnePage id={id} lang={supportedLang} />;
 }

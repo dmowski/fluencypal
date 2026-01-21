@@ -1,24 +1,22 @@
-import { UserSettings, UserSettingsWithId } from "@/common/user";
-import { getDB } from "../config/firebase";
-import { AiUserInfo } from "@/common/userInfo";
-import { Conversation, UserConversationsMeta } from "@/common/conversation";
-import { QuizSurvey2 } from "@/features/Goal/Quiz/types";
-import { InterviewQuizSurvey } from "@/features/Case/types";
-import dayjs from "dayjs";
+import { UserSettings, UserSettingsWithId } from '@/common/user';
+import { getDB } from '../config/firebase';
+import { AiUserInfo } from '@/common/userInfo';
+import { Conversation, UserConversationsMeta } from '@/common/conversation';
+import { QuizSurvey2 } from '@/features/Goal/Quiz/types';
+import { InterviewQuizSurvey } from '@/features/Case/types';
+import dayjs from 'dayjs';
 
 export interface StripeUserInfo {
   customerId: string;
 }
 
-export const getStripeUserInfo = async (
-  userId: string,
-): Promise<StripeUserInfo | null> => {
+export const getStripeUserInfo = async (userId: string): Promise<StripeUserInfo | null> => {
   const db = getDB();
   const stripeDoc = await db
-    .collection("users")
+    .collection('users')
     .doc(userId)
-    .collection("paymentInfo")
-    .doc("stripeInfo")
+    .collection('paymentInfo')
+    .doc('stripeInfo')
     .get();
 
   if (!stripeDoc.exists) {
@@ -29,44 +27,38 @@ export const getStripeUserInfo = async (
   return data;
 };
 
-export const setStripeUserInfo = async (
-  userId: string,
-  info: StripeUserInfo,
-): Promise<void> => {
+export const setStripeUserInfo = async (userId: string, info: StripeUserInfo): Promise<void> => {
   const db = getDB();
   await db
-    .collection("users")
+    .collection('users')
     .doc(userId)
-    .collection("paymentInfo")
-    .doc("stripeInfo")
+    .collection('paymentInfo')
+    .doc('stripeInfo')
     .set(info, { merge: true });
 };
 
 export const getUserInfo = async (userId: string) => {
   const db = getDB();
-  const userDoc = await db.collection("users").doc(userId).get();
+  const userDoc = await db.collection('users').doc(userId).get();
   if (!userDoc.exists) {
-    throw new Error("User not found");
+    throw new Error('User not found');
   }
   const data = userDoc.data() as UserSettings;
   return { ...data, id: userDoc.id };
 };
 
-export const updateUserInfo = async (
-  userId: string,
-  info: Partial<UserSettings>,
-) => {
+export const updateUserInfo = async (userId: string, info: Partial<UserSettings>) => {
   const db = getDB();
-  await db.collection("users").doc(userId).set(info, { merge: true });
+  await db.collection('users').doc(userId).set(info, { merge: true });
 };
 
 export const getUserAiInfo = async (userId: string) => {
   const db = getDB();
   const userDoc = await db
-    .collection("users")
+    .collection('users')
     .doc(userId)
-    .collection("stats")
-    .doc("aiUserInfo")
+    .collection('stats')
+    .doc('aiUserInfo')
     .get();
   if (!userDoc.exists) {
     return null;
@@ -81,12 +73,8 @@ export const getAllUsersWithIds = async ({ limits }: { limits?: number }) => {
 
   const usersCollection =
     limits === undefined
-      ? await db.collection("users").get()
-      : await db
-          .collection("users")
-          .orderBy("lastLoginAtDateTime", "desc")
-          .limit(limits)
-          .get();
+      ? await db.collection('users').get()
+      : await db.collection('users').orderBy('lastLoginAtDateTime', 'desc').limit(limits).get();
 
   const users: UserSettingsWithId[] = usersCollection.docs.map((doc) => {
     const data = doc.data() as UserSettings;
@@ -95,15 +83,9 @@ export const getAllUsersWithIds = async ({ limits }: { limits?: number }) => {
   return users;
 };
 
-export const getUsersQuizSurvey = async (
-  userId: string,
-): Promise<QuizSurvey2[]> => {
+export const getUsersQuizSurvey = async (userId: string): Promise<QuizSurvey2[]> => {
   const db = getDB();
-  const quizCollection = await db
-    .collection("users")
-    .doc(userId)
-    .collection("quiz2")
-    .get();
+  const quizCollection = await db.collection('users').doc(userId).collection('quiz2').get();
   const data: QuizSurvey2[] = quizCollection.docs.map((doc) => {
     const data = doc.data() as QuizSurvey2;
     return { ...data };
@@ -112,15 +94,9 @@ export const getUsersQuizSurvey = async (
   return data;
 };
 
-export const getUsersInterviewSurvey = async (
-  userId: string,
-): Promise<InterviewQuizSurvey[]> => {
+export const getUsersInterviewSurvey = async (userId: string): Promise<InterviewQuizSurvey[]> => {
   const db = getDB();
-  const quizCollection = await db
-    .collection("users")
-    .doc(userId)
-    .collection("interview")
-    .get();
+  const quizCollection = await db.collection('users').doc(userId).collection('interview').get();
   const data: InterviewQuizSurvey[] = quizCollection.docs.map((doc) => {
     const data = doc.data() as InterviewQuizSurvey;
     return { ...data };
@@ -129,42 +105,31 @@ export const getUsersInterviewSurvey = async (
   return data;
 };
 
-export const getUserConversationsMeta = async (
-  userId: string,
-): Promise<UserConversationsMeta> => {
+export const getUserConversationsMeta = async (userId: string): Promise<UserConversationsMeta> => {
   const db = getDB();
   const conversationsCollection = await db
-    .collection("users")
+    .collection('users')
     .doc(userId)
-    .collection("conversations")
-    .orderBy("createdAt", "desc")
+    .collection('conversations')
+    .orderBy('createdAt', 'desc')
     .get();
 
-  const docs = conversationsCollection.docs.map(
-    (doc) => doc.data() as Conversation,
-  );
+  const docs = conversationsCollection.docs.map((doc) => doc.data() as Conversation);
 
   const conversationCount = docs.length || 0;
   const lastConversationDate = docs[0]?.updatedAtIso || null;
-  const totalMessages = docs.reduce(
-    (acc, doc) => acc + (doc.messages.length || 0),
-    0,
-  );
+  const totalMessages = docs.reduce((acc, doc) => acc + (doc.messages.length || 0), 0);
 
-  const today = dayjs().subtract(24, "hour");
+  const today = dayjs().subtract(24, 'hour');
 
-  const todayConversations = docs.filter((doc) =>
-    dayjs(doc.updatedAtIso).isAfter(today),
-  );
+  const todayConversations = docs.filter((doc) => dayjs(doc.updatedAtIso).isAfter(today));
   const todayMessages = todayConversations.reduce(
     (acc, doc) => acc + (doc.messages.length || 0),
     0,
   );
 
-  const lastHour = dayjs().subtract(1, "hour");
-  const lastHourConversations = docs.filter((doc) =>
-    dayjs(doc.updatedAtIso).isAfter(lastHour),
-  );
+  const lastHour = dayjs().subtract(1, 'hour');
+  const lastHourConversations = docs.filter((doc) => dayjs(doc.updatedAtIso).isAfter(lastHour));
   const lastHourMessages = lastHourConversations.reduce(
     (acc, doc) => acc + (doc.messages.length || 0),
     0,

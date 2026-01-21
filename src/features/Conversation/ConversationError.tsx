@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from '@mui/material';
 
-import { useLingui } from "@lingui/react";
+import { useLingui } from '@lingui/react';
 
 export const ConversationError = ({
   errorMessage,
@@ -15,33 +15,32 @@ export const ConversationError = ({
   return (
     <Stack
       sx={{
-        width: "100%",
-        height: "100vh",
-        justifyContent: "center",
-        alignItems: "center",
+        width: '100%',
+        height: '100vh',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <Stack
         sx={{
-          width: "100%",
-          maxWidth: "500px",
-          padding: "20px",
-          boxSizing: "border-box",
-          gap: "20px",
-          alignItems: "flex-start",
+          width: '100%',
+          maxWidth: '500px',
+          padding: '20px',
+          boxSizing: 'border-box',
+          gap: '20px',
+          alignItems: 'flex-start',
         }}
       >
         <Stack
           sx={{
-            width: "100%",
+            width: '100%',
           }}
         >
           <Typography variant="h4" className="decor-text">
             {i18n._(`Oops! Something went wrong`)}
           </Typography>
           <Typography color="error">
-            {errorMessage ||
-              i18n._(`Please refresh the page and try one more time`)}
+            {errorMessage || i18n._(`Please refresh the page and try one more time`)}
           </Typography>
 
           <Typography variant="caption">
@@ -52,7 +51,7 @@ export const ConversationError = ({
           variant="contained"
           onClick={() => onRetry()}
           sx={{
-            padding: "10px 40px",
+            padding: '10px 40px',
           }}
         >
           {i18n._(`Reload page`)}

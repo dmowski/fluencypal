@@ -1,11 +1,6 @@
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Typography,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import React from "react";
+import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import React from 'react';
 
 export interface FaqItemInfo {
   question: string;
@@ -20,9 +15,9 @@ export const FaqItem = (info: { info: FaqItemInfo }) => {
           component="span"
           variant="h5"
           sx={{
-            padding: "10px",
+            padding: '10px',
             fontWeight: 600,
-            fontSize: "1.4rem",
+            fontSize: '1.4rem',
           }}
         >
           {question}
@@ -30,7 +25,7 @@ export const FaqItem = (info: { info: FaqItemInfo }) => {
       </AccordionSummary>
       <AccordionDetails
         sx={{
-          padding: "10px 30px 30px 30px",
+          padding: '10px 30px 30px 30px',
         }}
       >
         {answer}

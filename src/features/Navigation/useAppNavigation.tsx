@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { createContext, useContext, ReactNode, JSX } from "react";
-import { PageType } from "./types";
-import { useUrlState } from "../Url/useUrlParam";
-import { useSearchParams } from "next/navigation";
+import { createContext, useContext, ReactNode, JSX } from 'react';
+import { PageType } from './types';
+import { useUrlState } from '../Url/useUrlParam';
+import { useSearchParams } from 'next/navigation';
 
 interface AppNavigationContextType {
   currentPage: PageType;
@@ -12,21 +12,15 @@ interface AppNavigationContextType {
   pageUrl: (page: PageType) => string;
 }
 
-const AppNavigationContext = createContext<AppNavigationContextType | null>(
-  null,
-);
+const AppNavigationContext = createContext<AppNavigationContextType | null>(null);
 
 function useProvideAppNavigation(): AppNavigationContextType {
-  const [internalValue, setValue, isLoading] = useUrlState<PageType>(
-    "page",
-    "home",
-    true,
-  );
+  const [internalValue, setValue, isLoading] = useUrlState<PageType>('page', 'home', true);
   const searchParams = useSearchParams();
 
   const pageUrl = (page: PageType) => {
-    const searchParamsNew = new URLSearchParams(searchParams?.toString() || "");
-    searchParamsNew.set("page", page);
+    const searchParamsNew = new URLSearchParams(searchParams?.toString() || '');
+    searchParamsNew.set('page', page);
     return `${window.location.pathname}?${searchParamsNew.toString()}`;
   };
 
@@ -38,25 +32,15 @@ function useProvideAppNavigation(): AppNavigationContextType {
   };
 }
 
-export function AppNavigationProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function AppNavigationProvider({ children }: { children: ReactNode }): JSX.Element {
   const hook = useProvideAppNavigation();
-  return (
-    <AppNavigationContext.Provider value={hook}>
-      {children}
-    </AppNavigationContext.Provider>
-  );
+  return <AppNavigationContext.Provider value={hook}>{children}</AppNavigationContext.Provider>;
 }
 
 export const useAppNavigation = (): AppNavigationContextType => {
   const context = useContext(AppNavigationContext);
   if (!context) {
-    throw new Error(
-      "useAppNavigation must be used within a AppNavigationProvider",
-    );
+    throw new Error('useAppNavigation must be used within a AppNavigationProvider');
   }
   return context;
 };

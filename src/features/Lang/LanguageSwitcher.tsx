@@ -1,26 +1,26 @@
-"use client";
+'use client';
 
-import { useMemo, useState } from "react";
-import { useLingui } from "@lingui/react";
-import { usePathname, useRouter } from "next/navigation";
-import { Button, Stack, Typography } from "@mui/material";
+import { useMemo, useState } from 'react';
+import { useLingui } from '@lingui/react';
+import { usePathname, useRouter } from 'next/navigation';
+import { Button, Stack, Typography } from '@mui/material';
 import {
   availableOnLabelMap,
   getUserLangCode,
   SupportedLanguage,
   supportedLanguages,
   supportedLanguagesToLearn,
-} from "@/features/Lang/lang";
-import { getUrlStart } from "./getUrlStart";
-import { Globe, GraduationCap } from "lucide-react";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useLocalStorage } from "react-use";
-import { parseLangFromUrl } from "./parseLangFromUrl";
-import { LangSelector, LangSelectorFullScreen } from "./LangSelector";
-import LanguageAutocomplete from "./LanguageAutocomplete";
-import { useLanguageGroup } from "../Goal/useLanguageGroup";
-import { useUrlParam } from "../Url/useUrlParam";
-import { NativeLangCode } from "@/libs/language/type";
+} from '@/features/Lang/lang';
+import { getUrlStart } from './getUrlStart';
+import { Globe, GraduationCap } from 'lucide-react';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { useLocalStorage } from 'react-use';
+import { parseLangFromUrl } from './parseLangFromUrl';
+import { LangSelector, LangSelectorFullScreen } from './LangSelector';
+import LanguageAutocomplete from './LanguageAutocomplete';
+import { useLanguageGroup } from '../Goal/useLanguageGroup';
+import { useUrlParam } from '../Url/useUrlParam';
+import { NativeLangCode } from '@/libs/language/type';
 
 interface LanguageSwitcherProps {
   isHidden?: boolean;
@@ -47,34 +47,32 @@ export function LanguageSwitcher({
   const pathname = usePathname();
 
   const { i18n } = useLingui();
-  const [isShowModal, setIsShowModal] = useUrlParam("lang-selection");
+  const [isShowModal, setIsShowModal] = useUrlParam('lang-selection');
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSawLangSelector, setIsSawLangSelector] = useLocalStorage<boolean>(
-    "isUserSawLangSelector",
+    'isUserSawLangSelector',
     false,
   );
 
   const pageLang = useMemo(() => parseLangFromUrl(pathname), [pathname]);
   const [locale, setLocale] = useState<SupportedLanguage>(pageLang);
-  const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
+  const supportedLang = supportedLanguages.find((l) => l === locale) || 'en';
 
   const updatePageLanguage = (newLang: SupportedLanguage) => {
     setIsLoading(true);
-    const sliceNumber =
-      locale !== "en" ? 2 : pathname.startsWith("/en") ? 2 : 1;
+    const sliceNumber = locale !== 'en' ? 2 : pathname.startsWith('/en') ? 2 : 1;
 
-    const pathNameWithoutLocale =
-      pathname?.split("/")?.slice(sliceNumber) ?? [];
+    const pathNameWithoutLocale = pathname?.split('/')?.slice(sliceNumber) ?? [];
 
     const query = new URLSearchParams(window.location.search);
 
     if (!isAuth) {
-      query.delete("lang-selection");
+      query.delete('lang-selection');
     }
 
-    const newPath = `${getUrlStart(newLang)}${pathNameWithoutLocale.join("/")}${
-      query ? `?${query.toString()}` : ""
+    const newPath = `${getUrlStart(newLang)}${pathNameWithoutLocale.join('/')}${
+      query ? `?${query.toString()}` : ''
     }`;
     router.push(newPath);
     setPageLanguage?.(newLang);
@@ -87,15 +85,11 @@ export function LanguageSwitcher({
   };
 
   const systemLangs = useMemo(() => getUserLangCode(), []);
-  const isCurrentPageLangIsSystem =
-    systemLangs.length && systemLangs.includes(supportedLang);
+  const isCurrentPageLangIsSystem = systemLangs.length && systemLangs.includes(supportedLang);
   const supportedLangCodeLabel =
-    systemLangs.length &&
-    !isCurrentPageLangIsSystem &&
-    !isAuth &&
-    !isSawLangSelector
+    systemLangs.length && !isCurrentPageLangIsSystem && !isAuth && !isSawLangSelector
       ? availableOnLabelMap[systemLangs[0]]
-      : "";
+      : '';
 
   const onOpenModal = () => {
     if (!isSawLangSelector) {
@@ -123,12 +117,12 @@ export function LanguageSwitcher({
             <Button
               onClick={onOpenModal}
               sx={{
-                fontSize: "0.8rem",
-                textAlign: "end",
-                lineHeight: "1.2",
+                fontSize: '0.8rem',
+                textAlign: 'end',
+                lineHeight: '1.2',
 
-                textTransform: "none",
-                color: "#fff",
+                textTransform: 'none',
+                color: '#fff',
                 fontWeight: 400,
               }}
               endIcon={
@@ -149,14 +143,14 @@ export function LanguageSwitcher({
               color="info"
               startIcon={
                 <Globe
-                  size={"18px"}
+                  size={'18px'}
                   style={{
                     opacity: 0.8,
                   }}
                 />
               }
               sx={{
-                textTransform: "uppercase",
+                textTransform: 'uppercase',
               }}
             >
               {pageLang}
@@ -167,10 +161,10 @@ export function LanguageSwitcher({
       <CustomModal isOpen={isShowModal} onClose={() => setIsShowModal(false)}>
         <Stack
           sx={{
-            width: "100%",
-            maxWidth: "600px",
-            gap: "30px",
-            boxSizing: "border-box",
+            width: '100%',
+            maxWidth: '600px',
+            gap: '30px',
+            boxSizing: 'border-box',
           }}
         >
           <Typography variant="h5" component="h2" align="center">
@@ -178,33 +172,33 @@ export function LanguageSwitcher({
           </Typography>
           <Stack
             sx={{
-              width: "100%",
-              gap: "46px",
+              width: '100%',
+              gap: '46px',
               opacity: isLoading ? 0.2 : 1,
             }}
           >
             <Stack
-              gap={"30px"}
+              gap={'30px'}
               sx={{
-                maxWidth: "600px",
-                minWidth: "250px",
+                maxWidth: '600px',
+                minWidth: '250px',
               }}
             >
               {isAuth && setLanguageToLearn && langToLearn && (
                 <Stack
                   sx={{
-                    width: "100%",
-                    alignItems: "flex-start",
-                    gap: "10px",
-                    paddingTop: "20px",
+                    width: '100%',
+                    alignItems: 'flex-start',
+                    gap: '10px',
+                    paddingTop: '20px',
                   }}
                 >
                   <Stack
                     sx={{
-                      alignItems: "center",
-                      flexDirection: "row",
-                      gap: "10px",
-                      paddingLeft: "3px",
+                      alignItems: 'center',
+                      flexDirection: 'row',
+                      gap: '10px',
+                      paddingLeft: '3px',
                     }}
                   >
                     <Typography
@@ -212,14 +206,14 @@ export function LanguageSwitcher({
                       align="left"
                       sx={{
                         fontWeight: 500,
-                        fontSize: "1rem",
-                        boxSizing: "border-box",
-                        lineHeight: "1.1",
+                        fontSize: '1rem',
+                        boxSizing: 'border-box',
+                        lineHeight: '1.1',
                       }}
                     >
                       {i18n._(`Language to Learn`)}
                     </Typography>
-                    <GraduationCap size={"18px"} />
+                    <GraduationCap size={'18px'} />
                   </Stack>
                   <LangSelector
                     value={langToLearn}
@@ -232,18 +226,18 @@ export function LanguageSwitcher({
               {isAuth && setNativeLanguage && nativeLang && (
                 <Stack
                   sx={{
-                    width: "100%",
-                    alignItems: "flex-start",
-                    gap: "10px",
-                    paddingTop: "20px",
+                    width: '100%',
+                    alignItems: 'flex-start',
+                    gap: '10px',
+                    paddingTop: '20px',
                   }}
                 >
                   <Stack
                     sx={{
-                      alignItems: "center",
-                      flexDirection: "row",
-                      gap: "10px",
-                      paddingLeft: "3px",
+                      alignItems: 'center',
+                      flexDirection: 'row',
+                      gap: '10px',
+                      paddingLeft: '3px',
                     }}
                   >
                     <Typography
@@ -251,9 +245,9 @@ export function LanguageSwitcher({
                       align="left"
                       sx={{
                         fontWeight: 500,
-                        fontSize: "1rem",
-                        boxSizing: "border-box",
-                        lineHeight: "1.1",
+                        fontSize: '1rem',
+                        boxSizing: 'border-box',
+                        lineHeight: '1.1',
                       }}
                     >
                       {i18n._(`Native Language`)}
@@ -274,18 +268,18 @@ export function LanguageSwitcher({
 
               <Stack
                 sx={{
-                  width: "100%",
-                  alignItems: "flex-start",
-                  gap: "10px",
-                  paddingTop: "20px",
+                  width: '100%',
+                  alignItems: 'flex-start',
+                  gap: '10px',
+                  paddingTop: '20px',
                 }}
               >
                 <Stack
                   sx={{
-                    alignItems: "center",
-                    flexDirection: "row",
-                    gap: "10px",
-                    paddingLeft: "3px",
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                    gap: '10px',
+                    paddingLeft: '3px',
                   }}
                 >
                   <Typography
@@ -293,9 +287,9 @@ export function LanguageSwitcher({
                     align="left"
                     sx={{
                       fontWeight: 500,
-                      fontSize: "1rem",
-                      boxSizing: "border-box",
-                      lineHeight: "1.1",
+                      fontSize: '1rem',
+                      boxSizing: 'border-box',
+                      lineHeight: '1.1',
                     }}
                   >
                     {i18n._(`Page Language`)}
@@ -303,12 +297,12 @@ export function LanguageSwitcher({
                 </Stack>
                 {isAuth ? (
                   <LangSelector
-                    value={pageLang || "en"}
+                    value={pageLang || 'en'}
                     onChange={(newLang) => updatePageLanguage(newLang)}
                   />
                 ) : (
                   <LangSelectorFullScreen
-                    value={pageLang || "en"}
+                    value={pageLang || 'en'}
                     onChange={(newLang) => {
                       updatePageLanguage(newLang);
                       //setIsShowModal(false);

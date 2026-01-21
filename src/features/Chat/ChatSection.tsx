@@ -1,19 +1,19 @@
-"use client";
-import { Button, Popover, Stack, Typography } from "@mui/material";
-import { useChat } from "./useChat";
-import { useAuth } from "../Auth/useAuth";
-import { SubmitForm } from "./SubmitForm";
-import { useMemo, useState } from "react";
-import { useUrlState } from "../Url/useUrlParam";
-import { ChevronLeft, Eye } from "lucide-react";
-import { useLingui } from "@lingui/react";
-import { Message } from "./Message";
-import { useGame } from "../Game/useGame";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { Avatar } from "../Game/Avatar";
-import AddIcon from "@mui/icons-material/Add";
-import { MessageChain } from "./MessageChain";
-import { GameStatRow } from "../Game/GameStatRow";
+'use client';
+import { Button, Popover, Stack, Typography } from '@mui/material';
+import { useChat } from './useChat';
+import { useAuth } from '../Auth/useAuth';
+import { SubmitForm } from './SubmitForm';
+import { useMemo, useState } from 'react';
+import { useUrlState } from '../Url/useUrlParam';
+import { ChevronLeft, Eye } from 'lucide-react';
+import { useLingui } from '@lingui/react';
+import { Message } from './Message';
+import { useGame } from '../Game/useGame';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { Avatar } from '../Game/Avatar';
+import AddIcon from '@mui/icons-material/Add';
+import { MessageChain } from './MessageChain';
+import { GameStatRow } from '../Game/GameStatRow';
 
 export const ChatSection = ({
   placeholder,
@@ -34,9 +34,9 @@ export const ChatSection = ({
   const chat = useChat();
   const game = useGame();
   const { i18n } = useLingui();
-  const userId = auth.uid || "anonymous";
+  const userId = auth.uid || 'anonymous';
 
-  const [activeMessageId, setActiveMessageId] = useUrlState("post", "", false);
+  const [activeMessageId, setActiveMessageId] = useUrlState('post', '', false);
   const activeMessage = chat.messages.find((msg) => msg.id === activeMessageId);
 
   const messageToComment = useMemo(() => {
@@ -50,38 +50,35 @@ export const ChatSection = ({
 
   const onCloseRecordMessageModal = () => {
     if (isActiveRecording) {
-      alert(i18n._("Please stop the recording before closing the window."));
+      alert(i18n._('Please stop the recording before closing the window.'));
       return;
     }
-    chat.setActiveCommentMessageId("");
+    chat.setActiveCommentMessageId('');
     setIsNewPostModalOpen(false);
   };
 
-  const [showViewsAnchorEl, setShowViewsAnchorEl] =
-    useState<null | HTMLElement>(null);
+  const [showViewsAnchorEl, setShowViewsAnchorEl] = useState<null | HTMLElement>(null);
 
   return (
     <Stack
       sx={{
-        borderRadius: "12px",
-        backgroundColor: "rgba(255, 255, 255, 0.03)",
+        borderRadius: '12px',
+        backgroundColor: 'rgba(255, 255, 255, 0.03)',
       }}
     >
       {isModalOpen && (
         <CustomModal onClose={onCloseRecordMessageModal} isOpen={true}>
           <Stack
             sx={{
-              maxWidth: "600px",
-              gap: "20px",
-              width: "100%",
+              maxWidth: '600px',
+              gap: '20px',
+              width: '100%',
             }}
           >
-            <Stack sx={{ marginBottom: "10px" }}>
+            <Stack sx={{ marginBottom: '10px' }}>
               {!titleContent && (
                 <Typography variant="h6">
-                  {isNewPostModalOpen
-                    ? i18n._("Add New Post")
-                    : i18n._("Add Comment")}
+                  {isNewPostModalOpen ? i18n._('Add New Post') : i18n._('Add Comment')}
                 </Typography>
               )}
 
@@ -92,7 +89,7 @@ export const ChatSection = ({
                     opacity: 0.7,
                   }}
                 >
-                  {i18n._("Share your thoughts and get feedback!")}
+                  {i18n._('Share your thoughts and get feedback!')}
                 </Typography>
               )}
 
@@ -101,9 +98,9 @@ export const ChatSection = ({
 
             <Stack
               sx={{
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-                borderRadius: "16px",
-                backgroundColor: "rgba(30, 38, 50, 0.9)",
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '16px',
+                backgroundColor: 'rgba(30, 38, 50, 0.9)',
               }}
             >
               {messageToComment && (
@@ -122,21 +119,15 @@ export const ChatSection = ({
                     onCloseRecordMessageModal();
                     await chat.addMessage({
                       messageContent,
-                      parentMessageId: messageToComment?.id
-                        ? messageToComment.id
-                        : "",
+                      parentMessageId: messageToComment?.id ? messageToComment.id : '',
                     });
                   }}
                   isLoading={chat.loading}
                   recordMessageTitle={
-                    messageToComment?.id
-                      ? i18n._("Add a reply")
-                      : i18n._("Record a message")
+                    messageToComment?.id ? i18n._('Add a reply') : i18n._('Record a message')
                   }
                   previousBotMessage={
-                    messageToComment
-                      ? messageToComment.content
-                      : contextForAiAnalysis || ""
+                    messageToComment ? messageToComment.content : contextForAiAnalysis || ''
                   }
                 />
               </Stack>
@@ -147,56 +138,52 @@ export const ChatSection = ({
       {activeMessage ? (
         <Stack
           sx={{
-            border: "1px solid rgba(255, 255, 255, 0.1)",
-            borderRadius: "12px",
-            gap: "0px",
-            "@media (max-width: 700px)": {
-              borderRadius: "0px",
-              border: "none",
-              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRadius: '12px',
+            gap: '0px',
+            '@media (max-width: 700px)': {
+              borderRadius: '0px',
+              border: 'none',
+              borderTop: '1px solid rgba(255, 255, 255, 0.1)',
             },
           }}
         >
           <Stack
             sx={{
-              flexDirection: "row",
-              alignItems: "center",
-              padding: "10px 10px",
-              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-              backgroundColor: "rgba(255, 255, 255, 0.031)",
-              borderRadius: "12px 12px 0 0",
-              gap: "10px",
-              width: "100%",
-              justifyContent: "space-between",
+              flexDirection: 'row',
+              alignItems: 'center',
+              padding: '10px 10px',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+              backgroundColor: 'rgba(255, 255, 255, 0.031)',
+              borderRadius: '12px 12px 0 0',
+              gap: '10px',
+              width: '100%',
+              justifyContent: 'space-between',
             }}
           >
             <Button
               startIcon={<ChevronLeft />}
-              onClick={() =>
-                setActiveMessageId(activeMessage.parentMessageId || "")
-              }
+              onClick={() => setActiveMessageId(activeMessage.parentMessageId || '')}
             >
-              {i18n._("Back")}
+              {i18n._('Back')}
             </Button>
 
             <Stack
               sx={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: "10px",
-                paddingRight: "8px",
-                color: "rgba(255, 255, 255, 0.5)",
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: '10px',
+                paddingRight: '8px',
+                color: 'rgba(255, 255, 255, 0.5)',
               }}
               onClick={(e) => setShowViewsAnchorEl(e.currentTarget)}
             >
-              <Typography variant="caption">
-                {activeMessage.viewsUserIds?.length || 0}
-              </Typography>
+              <Typography variant="caption">{activeMessage.viewsUserIds?.length || 0}</Typography>
               <Eye
-                size={"18px"}
+                size={'18px'}
                 style={{
                   opacity: 0.7,
-                  color: "inherit",
+                  color: 'inherit',
                 }}
               />
             </Stack>
@@ -208,38 +195,29 @@ export const ChatSection = ({
               slotProps={{
                 backdrop: {
                   sx: {
-                    backgroundColor: "rgba(0, 0, 0, 0.8)",
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
                   },
                 },
               }}
             >
               <Stack
                 sx={{
-                  padding: "10px 10px",
-                  maxWidth: "600px",
-                  maxHeight: "400px",
-                  overflowY: "auto",
-                  gap: "10px",
+                  padding: '10px 10px',
+                  maxWidth: '600px',
+                  maxHeight: '400px',
+                  overflowY: 'auto',
+                  gap: '10px',
                 }}
               >
-                <Typography variant="body2">
-                  {i18n._("Users who viewed this post")}
-                </Typography>
-                {activeMessage.viewsUserIds &&
-                activeMessage.viewsUserIds.length > 0 ? (
+                <Typography variant="body2">{i18n._('Users who viewed this post')}</Typography>
+                {activeMessage.viewsUserIds && activeMessage.viewsUserIds.length > 0 ? (
                   activeMessage.viewsUserIds.map((uid) => {
-                    const userStat = game.stats.find(
-                      (stat) => stat.userId === uid,
-                    );
-                    return (
-                      <Stack key={uid}>
-                        {userStat && <GameStatRow stat={userStat} />}
-                      </Stack>
-                    );
+                    const userStat = game.stats.find((stat) => stat.userId === uid);
+                    return <Stack key={uid}>{userStat && <GameStatRow stat={userStat} />}</Stack>;
                   })
                 ) : (
                   <Typography variant="caption" sx={{ opacity: 0.7 }}>
-                    {i18n._("No views yet. Be the first to view this post!")}
+                    {i18n._('No views yet. Be the first to view this post!')}
                   </Typography>
                 )}
               </Stack>
@@ -254,38 +232,36 @@ export const ChatSection = ({
       ) : (
         <Stack
           sx={{
-            border: "1px solid rgba(255, 255, 255, 0.1)",
-            borderRadius: "12px",
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRadius: '12px',
 
-            "@media (max-width: 700px)": {
-              borderRadius: "0px",
-              border: "none",
-              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+            '@media (max-width: 700px)': {
+              borderRadius: '0px',
+              border: 'none',
+              borderTop: '1px solid rgba(255, 255, 255, 0.1)',
             },
           }}
         >
           <Stack
             sx={{
               borderBottom:
-                chat.messages.length > 0
-                  ? "1px solid rgba(255, 255, 255, 0.1)"
-                  : "none",
-              flexDirection: "row",
-              alignItems: "center",
-              padding: "20px 20px 20px 15px",
-              gap: "15px",
+                chat.messages.length > 0 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+              flexDirection: 'row',
+              alignItems: 'center',
+              padding: '20px 20px 20px 15px',
+              gap: '15px',
             }}
             onClick={() => setIsNewPostModalOpen(true)}
           >
             <Avatar url={game.getUserAvatarUrl(userId)} avatarSize="35px" />
             <Stack
               sx={{
-                width: "100%",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                flexWrap: "wrap",
-                gap: "10px",
+                width: '100%',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '10px',
               }}
             >
               <Stack>
@@ -311,34 +287,30 @@ export const ChatSection = ({
                 variant="contained"
                 color="info"
                 sx={{
-                  width: "auto",
+                  width: 'auto',
                 }}
                 startIcon={<AddIcon />}
                 onClick={() => setIsNewPostModalOpen(true)}
               >
-                {addNewPostButtonText || i18n._("Add Post")}
+                {addNewPostButtonText || i18n._('Add Post')}
               </Button>
             </Stack>
           </Stack>
 
-          <MessageChain
-            topLevel
-            parentId={""}
-            limitTopMessages={limitTopMessages}
-          />
+          <MessageChain topLevel parentId={''} limitTopMessages={limitTopMessages} />
         </Stack>
       )}
 
       {chat.messages.length === 0 && (
         <Stack
           sx={{
-            padding: "30px 20px 20px 20px",
-            marginTop: "-10px",
-            justifyContent: "center",
+            padding: '30px 20px 20px 20px',
+            marginTop: '-10px',
+            justifyContent: 'center',
           }}
         >
           <Typography variant="body2" sx={{ opacity: 0.7 }}>
-            {i18n._("No messages yet. Be the first to share your thoughts!")}
+            {i18n._('No messages yet. Be the first to share your thoughts!')}
           </Typography>
         </Stack>
       )}

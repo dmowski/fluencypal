@@ -1,7 +1,7 @@
-import { Stack, Typography } from "@mui/material";
-import { Lock } from "lucide-react";
+import { Stack, Typography } from '@mui/material';
+import { Lock } from 'lucide-react';
 
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 interface ConversationCardProps {
   title: string;
@@ -30,51 +30,51 @@ export const ConversationLandingCard = ({
   return (
     <Stack
       onClick={onClick}
-      component={href ? "a" : "button"}
+      component={href ? 'a' : 'button'}
       href={href}
       sx={{
-        textDecoration: "none",
-        padding: "20px 20px 20px 20px",
-        borderRadius: "16px",
-        gap: "0px",
-        alignItems: "flex-start",
-        backgroundColor: "rgba(10, 18, 30, 1)",
-        justifyContent: "center",
-        position: "relative",
-        overflow: "hidden",
-        transition: "transform 0.3s ease",
-        cursor: "pointer",
+        textDecoration: 'none',
+        padding: '20px 20px 20px 20px',
+        borderRadius: '16px',
+        gap: '0px',
+        alignItems: 'flex-start',
+        backgroundColor: 'rgba(10, 18, 30, 1)',
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        transition: 'transform 0.3s ease',
+        cursor: 'pointer',
 
         // allow text selection
-        userSelect: "text",
+        userSelect: 'text',
 
-        color: "#fff",
+        color: '#fff',
         opacity: 1,
 
-        ".mini-card": {
-          position: "absolute",
-          bottom: "0px",
-          right: "20px",
-          width: "200px",
-          height: "140px",
-          boxSizing: "border-box",
-          transition: "all 0.3s ease",
-          boxShadow: "0px 0px 26px rgba(0, 0, 0, 0.3)",
-          backgroundColor: "#1E1E1E",
-          padding: "20px",
-          borderRadius: "16px 16px 0 0",
-          "@media (max-width: 750px)": {
-            width: "250px",
+        '.mini-card': {
+          position: 'absolute',
+          bottom: '0px',
+          right: '20px',
+          width: '200px',
+          height: '140px',
+          boxSizing: 'border-box',
+          transition: 'all 0.3s ease',
+          boxShadow: '0px 0px 26px rgba(0, 0, 0, 0.3)',
+          backgroundColor: '#1E1E1E',
+          padding: '20px',
+          borderRadius: '16px 16px 0 0',
+          '@media (max-width: 750px)': {
+            width: '250px',
           },
-          "@media (max-width: 450px)": {
-            width: "150px",
+          '@media (max-width: 450px)': {
+            width: '150px',
           },
         },
 
-        ":hover": {
-          transform: "scale(1.02)",
-          ".avatar": {
-            transform: "scale(1.08) rotate(1deg)",
+        ':hover': {
+          transform: 'scale(1.02)',
+          '.avatar': {
+            transform: 'scale(1.08) rotate(1deg)',
           },
         },
       }}
@@ -85,8 +85,8 @@ export const ConversationLandingCard = ({
         sx={{
           fontWeight: 300,
           opacity: 1,
-          textTransform: "uppercase",
-          position: "relative",
+          textTransform: 'uppercase',
+          position: 'relative',
           zIndex: 2,
         }}
       >
@@ -97,13 +97,13 @@ export const ConversationLandingCard = ({
         align="left"
         sx={{
           fontWeight: 800,
-          textTransform: "uppercase",
-          fontSize: "1.8rem",
-          position: "relative",
+          textTransform: 'uppercase',
+          fontSize: '1.8rem',
+          position: 'relative',
           zIndex: 2,
           opacity: 1,
-          "@media (max-width: 450px)": {
-            fontSize: "1.4rem",
+          '@media (max-width: 450px)': {
+            fontSize: '1.4rem',
           },
         }}
       >
@@ -112,13 +112,13 @@ export const ConversationLandingCard = ({
 
       <Stack
         sx={{
-          flexDirection: "row",
-          gap: "8px",
-          alignItems: "center",
-          padding: "70px 14px 0px 0px",
-          borderRadius: "8px",
+          flexDirection: 'row',
+          gap: '8px',
+          alignItems: 'center',
+          padding: '70px 14px 0px 0px',
+          borderRadius: '8px',
           opacity: 1,
-          position: "relative",
+          position: 'relative',
           zIndex: 2,
         }}
       >
@@ -127,19 +127,19 @@ export const ConversationLandingCard = ({
 
       <Stack
         sx={{
-          paddingTop: "0px",
-          width: "max-content",
-          position: "absolute",
-          bottom: "0px",
-          right: "0px",
+          paddingTop: '0px',
+          width: 'max-content',
+          position: 'absolute',
+          bottom: '0px',
+          right: '0px',
           zIndex: 2,
 
-          ".avatar": {
-            transition: "all 0.4s ease",
+          '.avatar': {
+            transition: 'all 0.4s ease',
             opacity: 1,
             img: {
-              width: "150px",
-              height: "150px",
+              width: '150px',
+              height: '150px',
             },
           },
         }}
@@ -150,14 +150,14 @@ export const ConversationLandingCard = ({
       <Stack
         sx={{
           backgroundColor: startColor,
-          width: "320px",
-          height: "120px",
-          borderRadius: "40px",
-          filter: "blur(50px)",
+          width: '320px',
+          height: '120px',
+          borderRadius: '40px',
+          filter: 'blur(50px)',
 
-          position: "absolute",
-          top: "-40px",
-          left: "-20px",
+          position: 'absolute',
+          top: '-40px',
+          left: '-20px',
           zIndex: 1,
           opacity: 0.9,
         }}
@@ -166,14 +166,14 @@ export const ConversationLandingCard = ({
       <Stack
         sx={{
           backgroundColor: endColor,
-          width: "320px",
-          height: "120px",
-          borderRadius: "40px",
-          filter: "blur(80px)",
+          width: '320px',
+          height: '120px',
+          borderRadius: '40px',
+          filter: 'blur(80px)',
 
-          position: "absolute",
-          bottom: "-40px",
-          right: "-20px",
+          position: 'absolute',
+          bottom: '-40px',
+          right: '-20px',
           zIndex: 1,
           opacity: 0.9,
         }}
@@ -182,12 +182,12 @@ export const ConversationLandingCard = ({
       <Stack
         sx={{
           backgroundColor: bgColor,
-          width: "100%",
-          height: "100%",
+          width: '100%',
+          height: '100%',
 
-          position: "absolute",
-          bottom: "0px",
-          left: "0px",
+          position: 'absolute',
+          bottom: '0px',
+          left: '0px',
           zIndex: 0,
           opacity: 0.1,
         }}
@@ -195,12 +195,12 @@ export const ConversationLandingCard = ({
 
       <Stack
         sx={{
-          width: "100%",
-          height: "100%",
+          width: '100%',
+          height: '100%',
 
-          position: "absolute",
-          bottom: "0px",
-          left: "0px",
+          position: 'absolute',
+          bottom: '0px',
+          left: '0px',
           zIndex: -1,
           opacity: 1,
         }}

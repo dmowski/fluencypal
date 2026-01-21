@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { AiAvatar } from "./types";
-import { Stack } from "@mui/material";
+import { useEffect, useState } from 'react';
+import { AiAvatar } from './types';
+import { Stack } from '@mui/material';
 
 export const AiAvatarVideo = ({
   aiVideo,
@@ -28,16 +28,16 @@ export const AiAvatarVideo = ({
         const isActive = index === sitIndex;
         return (
           <Stack
-            component={"video"}
+            component={'video'}
             key={url}
             src={url}
             sx={{
-              position: "absolute",
-              top: "0",
-              left: "0",
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
+              position: 'absolute',
+              top: '0',
+              left: '0',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
               opacity: isActive ? 1 : 0,
             }}
             autoPlay
@@ -53,18 +53,18 @@ export const AiAvatarVideo = ({
         const isActive = index === talkIndex;
         return (
           <Stack
-            component={"video"}
+            component={'video'}
             key={url}
             src={url}
             sx={{
-              position: "absolute",
-              top: "0",
-              left: "0",
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
+              position: 'absolute',
+              top: '0',
+              left: '0',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
               opacity: isSpeaking && isActive ? 1 : 0,
-              transition: "opacity 0.4s ease-in-out",
+              transition: 'opacity 0.4s ease-in-out',
             }}
             autoPlay
             controls={false}

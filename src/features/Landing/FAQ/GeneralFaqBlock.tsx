@@ -1,7 +1,7 @@
-import { Stack, Typography } from "@mui/material";
-import React from "react";
-import { FaqItem, FaqItemInfo } from "./FaqItem";
-import { titleFontStyle } from "../landingSettings";
+import { Stack, Typography } from '@mui/material';
+import React from 'react';
+import { FaqItem, FaqItemInfo } from './FaqItem';
+import { titleFontStyle } from '../landingSettings';
 
 interface GeneralFaqBlockProps {
   items: FaqItemInfo[];
@@ -9,44 +9,39 @@ interface GeneralFaqBlockProps {
   padding?: string;
   id?: string;
 }
-export const GeneralFaqBlock = ({
-  items,
-  title,
-  padding,
-  id,
-}: GeneralFaqBlockProps) => {
+export const GeneralFaqBlock = ({ items, title, padding, id }: GeneralFaqBlockProps) => {
   return (
     <Stack
       id={id}
       sx={{
-        width: "100%",
-        padding: padding || "120px 0 100px 0",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "100px",
+        width: '100%',
+        padding: padding || '120px 0 100px 0',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '100px',
         backgroundColor: `#0a121e`,
-        position: "relative",
+        position: 'relative',
         zIndex: 1,
-        overflow: "hidden",
+        overflow: 'hidden',
       }}
     >
       <Stack
         sx={{
-          alignItems: "center",
-          gap: "50px",
+          alignItems: 'center',
+          gap: '50px',
         }}
       >
         <Stack
           sx={{
-            maxWidth: "890px",
-            gap: "20px",
-            alignItems: "center",
+            maxWidth: '890px',
+            gap: '20px',
+            alignItems: 'center',
           }}
         >
           <Typography
             align="center"
             variant="h3"
-            component={"h2"}
+            component={'h2'}
             sx={{
               ...titleFontStyle,
             }}
@@ -57,11 +52,11 @@ export const GeneralFaqBlock = ({
 
         <Stack
           sx={{
-            flexDirection: "column",
-            gap: "0px",
-            alignItems: "stretch",
-            maxWidth: "800px",
-            width: "100%",
+            flexDirection: 'column',
+            gap: '0px',
+            alignItems: 'stretch',
+            maxWidth: '800px',
+            width: '100%',
           }}
         >
           {items.map((item, index) => (

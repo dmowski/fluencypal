@@ -1,6 +1,6 @@
-import { UsageLog } from "@/common/usage";
-import { addToTotalBalance } from "./addToTotalBalance";
-import { getDB } from "../config/firebase";
+import { UsageLog } from '@/common/usage';
+import { addToTotalBalance } from './addToTotalBalance';
+import { getDB } from '../config/firebase';
 
 export const addUsage = async (userId: string, usage: UsageLog) => {
   await addToTotalBalance({
@@ -15,9 +15,6 @@ export const addUsage = async (userId: string, usage: UsageLog) => {
 
 export const isUsageLogExists = async (userId: string, usageId: string) => {
   const db = getDB();
-  const doc = await db
-    .collection(`users/${userId}/usageLogs`)
-    .doc(usageId)
-    .get();
+  const doc = await db.collection(`users/${userId}/usageLogs`).doc(usageId).get();
   return doc.exists;
 };

@@ -1,14 +1,11 @@
-import { TextToAudioRequest, TextToAudioResponse } from "./types";
+import { TextToAudioRequest, TextToAudioResponse } from './types';
 
-export const sendTextToAudioRequest = async (
-  options: TextToAudioRequest,
-  authKey: string,
-) => {
+export const sendTextToAudioRequest = async (options: TextToAudioRequest, authKey: string) => {
   const response = await fetch(`/api/textToAudio`, {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(options),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${authKey}`,
     },
   });

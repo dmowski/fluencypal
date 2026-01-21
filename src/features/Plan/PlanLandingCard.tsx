@@ -1,7 +1,7 @@
-"use client";
-import { Stack, Typography } from "@mui/material";
+'use client';
+import { Stack, Typography } from '@mui/material';
 
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 interface PlanCardProps {
   title: string;
@@ -35,80 +35,80 @@ export const PlanLandingCard = ({
   return (
     <Stack
       onClick={onClick}
-      component={href ? "a" : onClick ? "button" : "div"}
+      component={href ? 'a' : onClick ? 'button' : 'div'}
       href={href}
       className="plan-landing-card"
       sx={{
-        backgroundColor: "transparent",
-        textDecoration: "none",
-        padding: "20px 20px 20px 20px",
-        borderRadius: "16px",
-        gap: "0px",
-        alignItems: "flex-start",
-        justifyContent: "space-between",
-        border: "1px solid rgba(255, 255, 255, 0.08)",
-        position: "relative",
-        overflow: "hidden",
+        backgroundColor: 'transparent',
+        textDecoration: 'none',
+        padding: '20px 20px 20px 20px',
+        borderRadius: '16px',
+        gap: '0px',
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        position: 'relative',
+        overflow: 'hidden',
 
-        cursor: href || onClick ? "pointer" : "default",
-        height: "200px",
+        cursor: href || onClick ? 'pointer' : 'default',
+        height: '200px',
         opacity: 0,
-        transition: "transform 0.3s ease",
-        transform: "scale(1)",
+        transition: 'transform 0.3s ease',
+        transform: 'scale(1)',
         animation: `fadeInOpacity  1.6s ease ${delayToShow}ms forwards`,
-        "@media (max-width: 750px)": {
-          height: "230px",
+        '@media (max-width: 750px)': {
+          height: '230px',
         },
 
-        userSelect: "text",
+        userSelect: 'text',
 
-        color: "#fff",
+        color: '#fff',
 
-        ".mini-card": {
-          position: "absolute",
-          bottom: "0px",
-          right: "20px",
-          width: "200px",
-          height: "140px",
-          boxSizing: "border-box",
-          transition: "all 0.3s ease",
-          boxShadow: "0px 0px 26px rgba(0, 0, 0, 0.3)",
-          backgroundColor: "#1E1E1E",
-          padding: "20px",
-          borderRadius: "16px 16px 0 0",
-          "@media (max-width: 750px)": {
-            width: "250px",
+        '.mini-card': {
+          position: 'absolute',
+          bottom: '0px',
+          right: '20px',
+          width: '200px',
+          height: '140px',
+          boxSizing: 'border-box',
+          transition: 'all 0.3s ease',
+          boxShadow: '0px 0px 26px rgba(0, 0, 0, 0.3)',
+          backgroundColor: '#1E1E1E',
+          padding: '20px',
+          borderRadius: '16px 16px 0 0',
+          '@media (max-width: 750px)': {
+            width: '250px',
           },
-          "@media (max-width: 450px)": {
-            width: "150px",
+          '@media (max-width: 450px)': {
+            width: '150px',
           },
         },
 
-        ":hover": {
-          transform: "scale(1.02)",
-          ".avatar": {
-            transform: "scale(1.08) rotate(1deg)",
+        ':hover': {
+          transform: 'scale(1.02)',
+          '.avatar': {
+            transform: 'scale(1.08) rotate(1deg)',
           },
         },
       }}
     >
       <Stack
         sx={{
-          width: "100%",
-          maxWidth: "90%",
+          width: '100%',
+          maxWidth: '90%',
         }}
       >
         <Typography
           align="left"
           sx={{
             fontWeight: 600,
-            fontSize: "1.2rem",
-            position: "relative",
+            fontSize: '1.2rem',
+            position: 'relative',
             zIndex: 2,
             opacity: 1,
 
-            "@media (max-width: 450px)": {
-              fontSize: "1.4rem",
+            '@media (max-width: 450px)': {
+              fontSize: '1.4rem',
             },
           }}
         >
@@ -120,7 +120,7 @@ export const PlanLandingCard = ({
           align="left"
           sx={{
             opacity: 0.8,
-            position: "relative",
+            position: 'relative',
             zIndex: 2,
           }}
         >
@@ -131,13 +131,13 @@ export const PlanLandingCard = ({
       <Stack>
         <Stack
           sx={{
-            flexDirection: "row",
-            gap: "8px",
-            alignItems: "center",
-            padding: "0px 14px 0px 0px",
-            borderRadius: "8px",
+            flexDirection: 'row',
+            gap: '8px',
+            alignItems: 'center',
+            padding: '0px 14px 0px 0px',
+            borderRadius: '8px',
             opacity: 1,
-            position: "relative",
+            position: 'relative',
             zIndex: 2,
           }}
         >
@@ -145,8 +145,8 @@ export const PlanLandingCard = ({
             <Typography
               sx={{
                 fontWeight: 400,
-                fontSize: "1rem",
-                borderRadius: "8px",
+                fontSize: '1rem',
+                borderRadius: '8px',
                 // padding: "10px 20px",
                 // border: "1px solid rgba(255, 255, 255, 0.5)",
                 opacity: 0.8,
@@ -161,19 +161,19 @@ export const PlanLandingCard = ({
 
       <Stack
         sx={{
-          paddingTop: "0px",
-          width: "max-content",
-          position: "absolute",
-          bottom: "0px",
-          right: "0px",
+          paddingTop: '0px',
+          width: 'max-content',
+          position: 'absolute',
+          bottom: '0px',
+          right: '0px',
           zIndex: 2,
 
-          ".avatar": {
-            transition: "all 0.4s ease",
+          '.avatar': {
+            transition: 'all 0.4s ease',
             opacity: 1,
             img: {
-              width: "90px",
-              height: "90px",
+              width: '90px',
+              height: '90px',
             },
           },
         }}
@@ -184,14 +184,14 @@ export const PlanLandingCard = ({
       <Stack
         sx={{
           backgroundColor: startColor,
-          width: "320px",
-          height: "120px",
-          borderRadius: "40px",
-          filter: "blur(50px)",
+          width: '320px',
+          height: '120px',
+          borderRadius: '40px',
+          filter: 'blur(50px)',
 
-          position: "absolute",
-          top: "-40px",
-          left: "-20px",
+          position: 'absolute',
+          top: '-40px',
+          left: '-20px',
           zIndex: 1,
           opacity: 0.9,
         }}
@@ -200,14 +200,14 @@ export const PlanLandingCard = ({
       <Stack
         sx={{
           backgroundColor: endColor,
-          width: "320px",
-          height: "120px",
-          borderRadius: "40px",
-          filter: "blur(80px)",
+          width: '320px',
+          height: '120px',
+          borderRadius: '40px',
+          filter: 'blur(80px)',
 
-          position: "absolute",
-          bottom: "-40px",
-          right: "-20px",
+          position: 'absolute',
+          bottom: '-40px',
+          right: '-20px',
           zIndex: 1,
           opacity: 0.9,
         }}
@@ -216,12 +216,12 @@ export const PlanLandingCard = ({
       <Stack
         sx={{
           backgroundColor: bgColor,
-          width: "100%",
-          height: "100%",
+          width: '100%',
+          height: '100%',
 
-          position: "absolute",
-          bottom: "0px",
-          left: "0px",
+          position: 'absolute',
+          bottom: '0px',
+          left: '0px',
           zIndex: 0,
           opacity: 0.1,
         }}
@@ -229,13 +229,13 @@ export const PlanLandingCard = ({
 
       <Stack
         sx={{
-          backgroundColor: "rgba(10, 18, 30, 1)",
-          width: "100%",
-          height: "100%",
+          backgroundColor: 'rgba(10, 18, 30, 1)',
+          width: '100%',
+          height: '100%',
 
-          position: "absolute",
-          bottom: "0px",
-          left: "0px",
+          position: 'absolute',
+          bottom: '0px',
+          left: '0px',
           zIndex: -1,
           opacity: 1,
         }}

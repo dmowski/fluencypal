@@ -1,6 +1,6 @@
-import { test } from "@playwright/test";
-import { playAudit } from "playwright-lighthouse";
-import type { Page } from "@playwright/test";
+import { test } from '@playwright/test';
+import { playAudit } from 'playwright-lighthouse';
+import type { Page } from '@playwright/test';
 
 const SETTINGS = {
   port: 9222,
@@ -8,21 +8,21 @@ const SETTINGS = {
     formats: {
       html: true,
     },
-    name: "lighthouse-report",
-    directory: "test-results/lighthouse-reports",
+    name: 'lighthouse-report',
+    directory: 'test-results/lighthouse-reports',
   },
 };
 
-test.describe("Lighthouse Audit", () => {
+test.describe('Lighthouse Audit', () => {
   test.setTimeout(120000);
 
   const isDevMode = async (page: Page) => {
-    const devModeButton = await page.$("#devtools-indicator");
+    const devModeButton = await page.$('#devtools-indicator');
     return devModeButton !== null;
   };
 
-  test("Home page (EN)", async ({ page }: { page: Page }) => {
-    await page.goto("/");
+  test('Home page (EN)', async ({ page }: { page: Page }) => {
+    await page.goto('/');
     if (await isDevMode(page)) return;
 
     await playAudit({
@@ -31,14 +31,14 @@ test.describe("Lighthouse Audit", () => {
         seo: 100,
         performance: 61,
         accessibility: 96,
-        "best-practices": 100,
+        'best-practices': 100,
       },
       ...SETTINGS,
     });
   });
 
-  test("Home page (RU)", async ({ page }: { page: Page }) => {
-    await page.goto("/ru");
+  test('Home page (RU)', async ({ page }: { page: Page }) => {
+    await page.goto('/ru');
     if (await isDevMode(page)) return;
 
     await playAudit({
@@ -47,14 +47,14 @@ test.describe("Lighthouse Audit", () => {
         seo: 100,
         performance: 61,
         accessibility: 96,
-        "best-practices": 100,
+        'best-practices': 100,
       },
       ...SETTINGS,
     });
   });
 
-  test("Interview Landing page (EN)", async ({ page }: { page: Page }) => {
-    await page.goto("/case/senior-frontend-developer");
+  test('Interview Landing page (EN)', async ({ page }: { page: Page }) => {
+    await page.goto('/case/senior-frontend-developer');
     if (await isDevMode(page)) return;
 
     await playAudit({
@@ -63,7 +63,7 @@ test.describe("Lighthouse Audit", () => {
         seo: 100,
         performance: 79,
         accessibility: 100,
-        "best-practices": 77,
+        'best-practices': 77,
       },
       ...SETTINGS,
     });

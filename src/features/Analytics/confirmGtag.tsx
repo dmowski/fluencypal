@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { isDev } from "./isDev";
-import * as Sentry from "@sentry/nextjs";
-import { getParamsFromStorage } from "./useUserSource";
+import { isDev } from './isDev';
+import * as Sentry from '@sentry/nextjs';
+import { getParamsFromStorage } from './useUserSource';
 
 export const confirmGtag = async () => {
   if (isDev()) {
-    console.log("Skipping gtag in dev mode");
+    console.log('Skipping gtag in dev mode');
     return;
   }
 
-  const isWindow = typeof window !== "undefined";
+  const isWindow = typeof window !== 'undefined';
   if (!isWindow) {
-    console.error("confirmGtag called without window");
+    console.error('confirmGtag called without window');
     return;
   }
 
@@ -20,32 +20,26 @@ export const confirmGtag = async () => {
 
   const gtag = (window as any).gtag;
   if (!gtag) {
-    console.error("gtag is not defined");
-    Sentry.captureException("gtag is not defined");
+    console.error('gtag is not defined');
+    Sentry.captureException('gtag is not defined');
     return;
   }
 
   try {
-    console.log("Sending gtag conversion event");
+    console.log('Sending gtag conversion event');
 
     // Optional: log if we have Google Ads click IDs or not
     if (storeInfo) {
-      const hasClickId =
-        storeInfo.gclid || storeInfo.gbraid || storeInfo.wbraid;
-      console.log(
-        "Stored user source:",
-        storeInfo,
-        "hasClickId:",
-        !!hasClickId,
-      );
+      const hasClickId = storeInfo.gclid || storeInfo.gbraid || storeInfo.wbraid;
+      console.log('Stored user source:', storeInfo, 'hasClickId:', !!hasClickId);
     } else {
-      console.log("No stored user source found in localStorage");
+      console.log('No stored user source found in localStorage');
     }
 
     const conversionParams: Record<string, any> = {
-      send_to: "AW-16463260124/wRIsCLS2o7kaENzTpao9",
+      send_to: 'AW-16463260124/wRIsCLS2o7kaENzTpao9',
       value: 1.0,
-      currency: "PLN",
+      currency: 'PLN',
     };
 
     if (storeInfo) {
@@ -66,9 +60,9 @@ export const confirmGtag = async () => {
 
     function gtag_report_conversion() {
       const callback = function (...args: any[]) {
-        console.log("GTag conversion event sent successfully", ...args);
+        console.log('GTag conversion event sent successfully', ...args);
       };
-      gtag("event", "conversion", {
+      gtag('event', 'conversion', {
         ...conversionParams,
         event_callback: callback,
       });
@@ -77,7 +71,7 @@ export const confirmGtag = async () => {
 
     gtag_report_conversion();
   } catch (error) {
-    console.error("Error sending gtag event:", error);
+    console.error('Error sending gtag event:', error);
     Sentry.captureException(error);
   }
 };

@@ -1,18 +1,15 @@
-import OpenAI from "openai";
-import { TextToAudioModal } from "@/common/ai";
-import { getBucket, validateAuthToken } from "../config/firebase";
-import { TextToAudioRequest, TextToAudioResponse } from "./types";
-import { createHash } from "crypto";
-import {
-  fullEnglishLanguageName,
-  supportedLanguages,
-} from "@/features/Lang/lang";
+import OpenAI from 'openai';
+import { TextToAudioModal } from '@/common/ai';
+import { getBucket, validateAuthToken } from '../config/firebase';
+import { TextToAudioRequest, TextToAudioResponse } from './types';
+import { createHash } from 'crypto';
+import { fullEnglishLanguageName, supportedLanguages } from '@/features/Lang/lang';
 
 const getHash = (text: string) => {
-  const hash = createHash("sha256")
+  const hash = createHash('sha256')
     .update(text)
-    .digest("base64")
-    .replace(/[^a-zA-Z0-9]/g, "");
+    .digest('base64')
+    .replace(/[^a-zA-Z0-9]/g, '');
   return hash.slice(0, 20); // return only first 20 characters
 };
 
@@ -20,11 +17,11 @@ export async function POST(request: Request) {
   const start1 = Date.now();
   const openAIKey = process.env.OPENAI_API_KEY;
   if (!openAIKey) {
-    throw new Error("OpenAI API key is not set");
+    throw new Error('OpenAI API key is not set');
   }
 
   await validateAuthToken(request);
-  console.log("AUDIO GENERATOR: Validate token time", Date.now() - start1);
+  console.log('AUDIO GENERATOR: Validate token time', Date.now() - start1);
 
   const client = new OpenAI({
     apiKey: openAIKey,
@@ -33,7 +30,7 @@ export async function POST(request: Request) {
   const start2 = Date.now();
   const aiRequest = (await request.json()) as TextToAudioRequest;
 
-  const fileName = getHash(getHash(JSON.stringify(aiRequest))) + ".mp3";
+  const fileName = getHash(getHash(JSON.stringify(aiRequest))) + '.mp3';
   const filePath = `textToAudio/${fileName}`;
 
   const bucket = getBucket();
@@ -47,22 +44,19 @@ export async function POST(request: Request) {
       error: null,
       audioUrl: url,
     };
-    console.log("AUDIO GENERATOR: Check file time", Date.now() - start2);
+    console.log('AUDIO GENERATOR: Check file time', Date.now() - start2);
     return Response.json(response);
   }
 
-  console.log("AUDIO GENERATOR: Check file time", Date.now() - start2);
+  console.log('AUDIO GENERATOR: Check file time', Date.now() - start2);
 
   const start3 = Date.now();
 
   const supportedLang =
-    supportedLanguages.find(
-      (lang) => lang === aiRequest.languageCode.toLowerCase(),
-    ) || "en";
+    supportedLanguages.find((lang) => lang === aiRequest.languageCode.toLowerCase()) || 'en';
 
-  const model: TextToAudioModal = "gpt-4o-mini-tts";
-  const instruction =
-    aiRequest.instructions || "Speak in a cheerful and positive tone.";
+  const model: TextToAudioModal = 'gpt-4o-mini-tts';
+  const instruction = aiRequest.instructions || 'Speak in a cheerful and positive tone.';
   const combinedInstructions = `${instruction}. Use ${fullEnglishLanguageName[supportedLang]} language`;
   const mp3 = await client.audio.speech.create({
     model: model,
@@ -71,35 +65,29 @@ export async function POST(request: Request) {
     instructions: combinedInstructions,
   });
 
-  console.log("AUDIO GENERATOR: Generate audio time", Date.now() - start3);
+  console.log('AUDIO GENERATOR: Generate audio time', Date.now() - start3);
 
   const start4 = Date.now();
   const arrayBuffer = await mp3.arrayBuffer();
-  console.log(
-    "AUDIO GENERATOR: ArrayBuffer creation time",
-    Date.now() - start4,
-  );
+  console.log('AUDIO GENERATOR: ArrayBuffer creation time', Date.now() - start4);
 
   const startBuffer = Date.now();
   const buffer = Buffer.from(arrayBuffer);
-  console.log(
-    "AUDIO GENERATOR: Buffer creation time",
-    Date.now() - startBuffer,
-  );
+  console.log('AUDIO GENERATOR: Buffer creation time', Date.now() - startBuffer);
 
   const start5 = Date.now();
 
   const audioStorageFile = bucket.file(filePath);
   await audioStorageFile.save(buffer, {
-    contentType: "audio/mpeg",
+    contentType: 'audio/mpeg',
     resumable: false,
   });
-  console.log("AUDIO GENERATOR: File save time", Date.now() - start5);
+  console.log('AUDIO GENERATOR: File save time', Date.now() - start5);
 
   const start6 = Date.now();
   await audioStorageFile.makePublic();
   const url = audioStorageFile.publicUrl();
-  console.log("AUDIO GENERATOR: Make public time", Date.now() - start6);
+  console.log('AUDIO GENERATOR: Make public time', Date.now() - start6);
 
   const response: TextToAudioResponse = {
     error: null,

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   createContext,
   useContext,
@@ -8,14 +8,11 @@ import {
   useState,
   useEffect,
   useRef,
-} from "react";
-import { deleteDoc, doc, setDoc } from "firebase/firestore";
-import { useAuth } from "../Auth/useAuth";
-import { db } from "../Firebase/firebaseDb";
-import {
-  useCollectionData,
-  useDocumentData,
-} from "react-firebase-hooks/firestore";
+} from 'react';
+import { deleteDoc, doc, setDoc } from 'firebase/firestore';
+import { useAuth } from '../Auth/useAuth';
+import { db } from '../Firebase/firebaseDb';
+import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import {
   ChatLike,
   ChatLikeType,
@@ -23,10 +20,10 @@ import {
   UserChatMessage,
   UserChatMetadata,
   UserChatMetadataStatic,
-} from "./type";
-import { increaseGamePointsRequest } from "../Game/gameBackendRequests";
-import { useUrlState } from "../Url/useUrlParam";
-import { sendFeedbackMessageRequest } from "@/app/api/telegram/sendFeedbackMessageRequest";
+} from './type';
+import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
+import { useUrlState } from '../Url/useUrlParam';
+import { sendFeedbackMessageRequest } from '@/app/api/telegram/sendFeedbackMessageRequest';
 
 interface AddMessageProps {
   messageContent: string;
@@ -41,10 +38,7 @@ interface ChatContextType {
 
   commentsInfo: Record<string, number>;
 
-  addMessage: ({
-    messageContent,
-    parentMessageId,
-  }: AddMessageProps) => Promise<void>;
+  addMessage: ({ messageContent, parentMessageId }: AddMessageProps) => Promise<void>;
   deleteMessage: (messageId: string) => Promise<void>;
   editMessage: (messageId: string, newContent: string) => Promise<void>;
 
@@ -73,14 +67,11 @@ const getIsCanRead = ({
   return (
     chatMetadata &&
     userId &&
-    (chatMetadata.isPrivate === false ||
-      chatMetadata.allowedUserIds?.includes(userId))
+    (chatMetadata.isPrivate === false || chatMetadata.allowedUserIds?.includes(userId))
   );
 };
 
-function useProvideChat(
-  propsChatMetadata: UserChatMetadataStatic,
-): ChatContextType {
+function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextType {
   const auth = useAuth();
   const userId = auth.uid;
 
@@ -94,8 +85,8 @@ function useProvideChat(
     : null;
   const [messagesData, loading] = useCollectionData(messagesRef);
 
-  const [activeCommentMessageId, setActiveCommentMessageId] = useState("");
-  const [activeMessageId, setActiveMessageId] = useUrlState("post", "", false);
+  const [activeCommentMessageId, setActiveCommentMessageId] = useState('');
+  const [activeMessageId, setActiveMessageId] = useUrlState('post', '', false);
 
   const initMetadataIfNeeded = async () => {
     if (metaData) {
@@ -103,7 +94,7 @@ function useProvideChat(
     }
 
     if (metaRef && userId) {
-      console.log("Init metadata");
+      console.log('Init metadata');
       await setDoc(metaRef, {
         ...propsChatMetadata,
         totalMessages: 0,
@@ -128,21 +119,14 @@ function useProvideChat(
       : null;
   };
 
-  const {
-    messages,
-    topLevelMessages,
-    commentsInfo,
-    secondLevelSingleCommentsIds,
-  } = useMemo<{
+  const { messages, topLevelMessages, commentsInfo, secondLevelSingleCommentsIds } = useMemo<{
     messages: UserChatMessage[];
     topLevelMessages: UserChatMessage[];
     commentsInfo: Record<string, number>;
     secondLevelSingleCommentsIds: string[];
   }>(() => {
     const sortedMessages = messagesData
-      ? [...messagesData].sort((a, b) =>
-          b.createdAtIso.localeCompare(a.createdAtIso),
-        )
+      ? [...messagesData].sort((a, b) => b.createdAtIso.localeCompare(a.createdAtIso))
       : [];
 
     const topLevel = sortedMessages.filter((msg) => {
@@ -155,8 +139,7 @@ function useProvideChat(
     const topLevelMap: Record<string, string[]> = {};
 
     sortedMessages.forEach((msg) => {
-      const isSecondLevel =
-        msg.parentMessageId && topLevelIds.includes(msg.parentMessageId);
+      const isSecondLevel = msg.parentMessageId && topLevelIds.includes(msg.parentMessageId);
       if (!isSecondLevel) return;
 
       const topLevelBucket = topLevelMap[msg.parentMessageId];
@@ -204,10 +187,8 @@ function useProvideChat(
 
     if (
       metaData.totalMessages === realTotalMessages &&
-      (metaData?.totalTopLevelMessagesIds?.length || 0) ===
-        totalTopLevelMessagesIds.length &&
-      secondLevelSingleCommentsIds.length ===
-        (metaData?.secondLevelSingleCommentsIds?.length || 0)
+      (metaData?.totalTopLevelMessagesIds?.length || 0) === totalTopLevelMessagesIds.length &&
+      secondLevelSingleCommentsIds.length === (metaData?.secondLevelSingleCommentsIds?.length || 0)
     ) {
       return;
     }
@@ -262,21 +243,18 @@ function useProvideChat(
     await setDoc(likeDoc, newLike);
   };
 
-  const isSending = useRef<string>("");
+  const isSending = useRef<string>('');
 
-  const addMessage = async ({
-    messageContent,
-    parentMessageId,
-  }: AddMessageProps) => {
+  const addMessage = async ({ messageContent, parentMessageId }: AddMessageProps) => {
     if (isSending.current) {
-      console.log("Already sending message:", isSending.current);
+      console.log('Already sending message:', isSending.current);
       return;
     }
     isSending.current = messageContent;
 
-    const isDev = auth.userInfo?.email?.includes("dmowski");
+    const isDev = auth.userInfo?.email?.includes('dmowski');
 
-    if (propsChatMetadata.type === "global" && !isDev) {
+    if (propsChatMetadata.type === 'global' && !isDev) {
       const url = `https://www.fluencypal.com/ru/practice?page=community`;
       sendFeedbackMessageRequest(
         {
@@ -288,7 +266,7 @@ function useProvideChat(
     const messagesRefInternal = await initMetadataIfNeeded();
 
     if (!messagesRefInternal || !userId) {
-      isSending.current = "";
+      isSending.current = '';
       return;
     }
 
@@ -309,27 +287,25 @@ function useProvideChat(
       await increaseGamePointsRequest(
         {
           chatMessage: messageContent,
-          chatUserId: auth.uid || "",
+          chatUserId: auth.uid || '',
         },
         await auth.getToken(),
       );
     } else {
-      console.log("Do not add points for dev");
+      console.log('Do not add points for dev');
     }
 
-    isSending.current = "";
+    isSending.current = '';
   };
 
   const deleteMessage = async (messageId: string) => {
     if (!messagesRef || !userId) return;
 
-    const isChildExisting = messages.find(
-      (m) => m.parentMessageId === messageId,
-    );
+    const isChildExisting = messages.find((m) => m.parentMessageId === messageId);
     if (isChildExisting) {
       const messageDoc = doc(messagesRef, messageId);
       const updatedMessage: Partial<UserChatMessage> = {
-        content: "[deleted]",
+        content: '[deleted]',
         isDeleted: true,
         updatedAtIso: new Date().toISOString(),
       };
@@ -362,16 +338,13 @@ function useProvideChat(
           [message.id]: true,
         },
       };
-      const isAlreadyViewed =
-        myMetaDataSnap?.[propsChatMetadata.spaceId]?.[message.id];
+      const isAlreadyViewed = myMetaDataSnap?.[propsChatMetadata.spaceId]?.[message.id];
       if (!isAlreadyViewed) {
         await setDoc(myMetaRef, partialMyMeta, { merge: true });
       }
     }
 
-    const isAlreadyViewed = message.viewsUserIds
-      ? message.viewsUserIds?.includes(userId)
-      : false;
+    const isAlreadyViewed = message.viewsUserIds ? message.viewsUserIds?.includes(userId) : false;
     if (isAlreadyViewed) return;
     if (!messagesRef) return;
     const messageToRead = messages.find((msg) => msg.id === message.id);
@@ -381,20 +354,11 @@ function useProvideChat(
       ? [...messageToRead.viewsUserIds, userId]
       : [userId];
     const messageDoc = doc(messagesRef, message.id);
-    await setDoc(
-      messageDoc,
-      { viewsUserIds: updatedViewsUserIds },
-      { merge: true },
-    );
+    await setDoc(messageDoc, { viewsUserIds: updatedViewsUserIds }, { merge: true });
   };
 
-  const readMessagesCount = Object.keys(
-    myMetaDataSnap?.[propsChatMetadata.spaceId] || {},
-  ).length;
-  const unreadMessagesCount = Math.max(
-    0,
-    (metaData?.totalMessages || 0) - readMessagesCount,
-  );
+  const readMessagesCount = Object.keys(myMetaDataSnap?.[propsChatMetadata.spaceId] || {}).length;
+  const unreadMessagesCount = Math.max(0, (metaData?.totalMessages || 0) - readMessagesCount);
 
   return {
     messages,
@@ -424,17 +388,13 @@ export function ChatProvider({
 }): JSX.Element {
   const chatHistoryData = useProvideChat(metadata);
 
-  return (
-    <ChatContext.Provider value={chatHistoryData}>
-      {children}
-    </ChatContext.Provider>
-  );
+  return <ChatContext.Provider value={chatHistoryData}>{children}</ChatContext.Provider>;
 }
 
 export function useChat(): ChatContextType {
   const context = useContext(ChatContext);
   if (!context) {
-    throw new Error("useChat must be used within a ChatProvider");
+    throw new Error('useChat must be used within a ChatProvider');
   }
   return context;
 }

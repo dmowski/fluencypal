@@ -7,23 +7,20 @@ import {
   Stack,
   styled,
   Typography,
-} from "@mui/material";
-import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import { useLingui } from "@lingui/react";
-import PsychologyIcon from "@mui/icons-material/Psychology";
-import { useWebCam } from "../webCam/useWebCam";
-import { useState } from "react";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { Camera } from "lucide-react";
-import { useTextAi } from "../Ai/useTextAi";
-import {
-  fullEnglishLanguageName,
-  supportedLanguages,
-} from "@/features/Lang/lang";
-import React from "react";
-import { sleep } from "@/libs/sleep";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { getUrlStart } from "../Lang/getUrlStart";
+} from '@mui/material';
+import { DashboardCard } from '../uiKit/Card/DashboardCard';
+import { useLingui } from '@lingui/react';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import { useWebCam } from '../webCam/useWebCam';
+import { useState } from 'react';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { Camera } from 'lucide-react';
+import { useTextAi } from '../Ai/useTextAi';
+import { fullEnglishLanguageName, supportedLanguages } from '@/features/Lang/lang';
+import React from 'react';
+import { sleep } from '@/libs/sleep';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { getUrlStart } from '../Lang/getUrlStart';
 
 interface GradingProgressBarProps {
   value: number; // from 0 to 100
@@ -35,24 +32,24 @@ const GradientLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 20,
   borderRadius: 10,
   [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 10,
-    backgroundImage: "linear-gradient(90deg, #e01cd5 0%, #1CB5E0 100%)",
+    backgroundImage: 'linear-gradient(90deg, #e01cd5 0%, #1CB5E0 100%)',
   },
 }));
 
 export const GradingProgressBar: React.FC<GradingProgressBarProps> = ({
   value,
-  label = "Grading in progress...",
+  label = 'Grading in progress...',
   height = 20,
 }) => {
   return (
     <Box
       width="100%"
       sx={{
-        boxSizing: "border-box",
+        boxSizing: 'border-box',
       }}
     >
       {label && (
@@ -67,7 +64,7 @@ export const GradingProgressBar: React.FC<GradingProgressBarProps> = ({
       )}
       <GradientLinearProgress
         sx={{
-          height: height || "20px",
+          height: height || '20px',
         }}
         variant="determinate"
         value={value}
@@ -84,10 +81,10 @@ export const BrainCard = () => {
   const router = useRouter();
 
   const pathname = usePathname();
-  const locale = pathname?.split("/")[1] as string;
-  const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
+  const locale = pathname?.split('/')[1] as string;
+  const supportedLang = supportedLanguages.find((l) => l === locale) || 'en';
 
-  const isShowPreparingModal = searchParams.get("brain") === "true";
+  const isShowPreparingModal = searchParams.get('brain') === 'true';
 
   const setIsShowPreparingModal = (value: boolean) => {
     if (value) {
@@ -99,7 +96,7 @@ export const BrainCard = () => {
       setIsAnalyzing(false);
       setIsInstalling(false);
       setInstallProgress(0);
-      setImageDescription("");
+      setImageDescription('');
       setLanguagesToLearn([]);
       setIsError(false);
       router.push(`${getUrlStart(supportedLang)}practice`, { scroll: false });
@@ -107,7 +104,7 @@ export const BrainCard = () => {
   };
 
   const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [imageDescription, setImageDescription] = useState("");
+  const [imageDescription, setImageDescription] = useState('');
   const [isError, setIsError] = useState(false);
   const [languagesToLearn, setLanguagesToLearn] = useState<string[]>([]);
 
@@ -146,24 +143,18 @@ export const BrainCard = () => {
       }, 2000);
 
       setTimeout(() => {
-        setImageDescription(
-          i18n._(`Processing existing knowledge in that brain...`),
-        );
+        setImageDescription(i18n._(`Processing existing knowledge in that brain...`));
       }, 3000);
 
       const newImageDescription = await webCam.getImageDescription();
-      setImageDescription(
-        i18n._(`Thinking about which languages might be good to install...`),
-      );
+      setImageDescription(i18n._(`Thinking about which languages might be good to install...`));
       if (!newImageDescription) {
         setImageDescription(i18n._(`Brain connection failed.`));
         setIsAnalyzing(false);
         return;
       }
 
-      const fullLangList = supportedLanguages
-        .map((l) => fullEnglishLanguageName[l])
-        .join(", ");
+      const fullLangList = supportedLanguages.map((l) => fullEnglishLanguageName[l]).join(', ');
       const t2 = setTimeout(() => {
         setImageDescription(i18n._(`Finalizing decision ...`));
       }, 1000);
@@ -175,8 +166,8 @@ Return the list in a comma-separated format. On the next line, write a short and
 Address directly to the user.
 `,
         userMessage: newImageDescription,
-        model: "gpt-4o",
-        languageCode: "en",
+        model: 'gpt-4o',
+        languageCode: 'en',
       });
       clearTimeout(t2);
       if (!languagesToLearnText) {
@@ -187,13 +178,12 @@ Address directly to the user.
       setImageDescription(i18n._(`Brain connection successful!`));
 
       const languagesToLearnList = languagesToLearnText
-        .split("\n")[0]
-        .split(",")
+        .split('\n')[0]
+        .split(',')
         .map((l) => l.trim());
       setLanguagesToLearn(languagesToLearnList);
-      const [_, ...languagesToLearnDescription] =
-        languagesToLearnText.split("\n");
-      setImageDescription(languagesToLearnDescription.join(" ").trim());
+      const [_, ...languagesToLearnDescription] = languagesToLearnText.split('\n');
+      setImageDescription(languagesToLearnDescription.join(' ').trim());
     } catch (error) {
       setIsError(true);
     }
@@ -206,81 +196,78 @@ Address directly to the user.
 
   return (
     <DashboardCard>
-      <CustomModal
-        isOpen={isShowPreparingModal}
-        onClose={() => setIsShowPreparingModal(false)}
-      >
+      <CustomModal isOpen={isShowPreparingModal} onClose={() => setIsShowPreparingModal(false)}>
         <Stack
           sx={{
-            alignItems: "flex-start",
-            gap: "20px",
-            width: "100%",
-            position: "relative",
+            alignItems: 'flex-start',
+            gap: '20px',
+            width: '100%',
+            position: 'relative',
             zIndex: 0,
           }}
         >
           <Stack
             sx={{
-              flexDirection: "column",
-              gap: "5px",
-              alignItems: "center",
-              width: "100%",
+              flexDirection: 'column',
+              gap: '5px',
+              alignItems: 'center',
+              width: '100%',
             }}
           >
             <Stack
               sx={{
-                width: "100%",
-                height: "90dvh",
-                backgroundColor: "#121215",
-                borderRadius: "16px",
-                overflow: "hidden",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-                "@media (max-height: 800px)": {
-                  height: "100dvh",
+                width: '100%',
+                height: '90dvh',
+                backgroundColor: '#121215',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                '@media (max-height: 800px)': {
+                  height: '100dvh',
                 },
               }}
             >
               {webCam.isWebCamEnabled && (
                 <Stack
                   sx={{
-                    alignItems: "center",
-                    justifyContent: "flex-end",
-                    gap: "10px",
+                    alignItems: 'center',
+                    justifyContent: 'flex-end',
+                    gap: '10px',
                     zIndex: 1,
-                    width: "100%",
-                    height: "100%",
-                    padding: "0px",
+                    width: '100%',
+                    height: '100%',
+                    padding: '0px',
                   }}
                 >
                   {imageDescription && !isInstallComplete && (
                     <Stack
                       sx={{
-                        backgroundColor: "rgba(10, 18, 30, 0.91)",
-                        border: "1px solid rgba(255, 255, 255, 0.2)",
-                        borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-                        borderRadius: "0 0 16px 16px",
-                        boxSizing: "border-box",
-                        width: "100%",
-                        padding: "20px 20px",
-                        gap: "20px",
+                        backgroundColor: 'rgba(10, 18, 30, 0.91)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                        borderRadius: '0 0 16px 16px',
+                        boxSizing: 'border-box',
+                        width: '100%',
+                        padding: '20px 20px',
+                        gap: '20px',
                       }}
                     >
                       {languagesToLearn.length > 0 ? (
                         <Stack
                           sx={{
-                            gap: "5px",
-                            paddingBottom: "5px",
+                            gap: '5px',
+                            paddingBottom: '5px',
                           }}
                         >
                           <Typography
                             sx={{
-                              width: "calc(100% - 30px)",
-                              boxSizing: "border-box",
-                              borderRadius: "5px",
-                              fontSize: "1.7rem",
-                              lineHeight: "1.7rem",
+                              width: 'calc(100% - 30px)',
+                              boxSizing: 'border-box',
+                              borderRadius: '5px',
+                              fontSize: '1.7rem',
+                              lineHeight: '1.7rem',
                               zIndex: 1,
                               fontWeight: 600,
                             }}
@@ -292,10 +279,10 @@ Address directly to the user.
                           <Typography
                             variant="body2"
                             sx={{
-                              width: "calc(100% - 30px)",
-                              boxSizing: "border-box",
-                              borderRadius: "5px",
-                              fontSize: "0.9rem",
+                              width: 'calc(100% - 30px)',
+                              boxSizing: 'border-box',
+                              borderRadius: '5px',
+                              fontSize: '0.9rem',
                               fontWeight: 400,
                             }}
                           >
@@ -308,11 +295,11 @@ Address directly to the user.
                             align="center"
                             className="decor-text"
                             sx={{
-                              width: "calc(100% - 30px)",
-                              boxSizing: "border-box",
-                              borderRadius: "5px",
-                              fontSize: "1.6rem",
-                              lineHeight: "2rem",
+                              width: 'calc(100% - 30px)',
+                              boxSizing: 'border-box',
+                              borderRadius: '5px',
+                              fontSize: '1.6rem',
+                              lineHeight: '2rem',
                               zIndex: 1,
                             }}
                           >
@@ -324,24 +311,24 @@ Address directly to the user.
                       {languagesToLearn.length > 0 && !isInstalling && (
                         <Button
                           sx={{
-                            width: "max-content",
-                            padding: "10px 30px",
-                            "@media (max-width: 800px)": {
-                              width: "100%",
-                              padding: "10px 20px",
-                              display: "flex",
+                            width: 'max-content',
+                            padding: '10px 30px',
+                            '@media (max-width: 800px)': {
+                              width: '100%',
+                              padding: '10px 20px',
+                              display: 'flex',
                             },
 
-                            "@media (max-width: 500px)": {
-                              justifyContent: "center",
-                              flexDirection: "column",
+                            '@media (max-width: 500px)': {
+                              justifyContent: 'center',
+                              flexDirection: 'column',
                             },
                           }}
                           startIcon={
                             <PsychologyIcon
                               sx={{
-                                width: "2rem",
-                                height: "2rem",
+                                width: '2rem',
+                                height: '2rem',
                               }}
                             />
                           }
@@ -350,14 +337,14 @@ Address directly to the user.
                           onClick={async () => startInstall()}
                         >
                           {i18n._(`Install languages into my brain`)}
-                          {" | "}
+                          {' | '}
                           <b
                             style={{
                               fontWeight: 800,
-                              padding: "0px 5px",
+                              padding: '0px 5px',
                             }}
                           >
-                            {languagesToLearn.join(", ")}
+                            {languagesToLearn.join(', ')}
                           </b>
                         </Button>
                       )}
@@ -365,8 +352,8 @@ Address directly to the user.
                       {isInstalling && (
                         <Stack
                           sx={{
-                            padding: "0px 0px",
-                            width: "calc(100% - 20px)",
+                            padding: '0px 0px',
+                            width: 'calc(100% - 20px)',
                           }}
                         >
                           <GradingProgressBar
@@ -381,26 +368,26 @@ Address directly to the user.
                   {isInstallComplete && (
                     <Stack
                       sx={{
-                        height: "100%",
-                        width: "100%",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        height: '100%',
+                        width: '100%',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         backgroundColor: `rgba(10, 18, 30, 0.91)`,
-                        padding: "30px",
-                        gap: "20px",
+                        padding: '30px',
+                        gap: '20px',
                       }}
                     >
                       <PsychologyIcon
                         sx={{
-                          fontSize: "4rem",
-                          width: "4rem",
-                          height: "4rem",
+                          fontSize: '4rem',
+                          width: '4rem',
+                          height: '4rem',
                         }}
                       />
                       <Stack
                         sx={{
-                          alignItems: "center",
-                          gap: "25px",
+                          alignItems: 'center',
+                          gap: '25px',
                         }}
                       >
                         <Typography
@@ -414,7 +401,7 @@ Address directly to the user.
 
                         <Stack
                           sx={{
-                            alignItems: "center",
+                            alignItems: 'center',
                           }}
                         >
                           <Typography align="center">
@@ -423,11 +410,11 @@ Address directly to the user.
                           <Typography
                             align="center"
                             sx={{
-                              fontSize: "2rem",
+                              fontSize: '2rem',
                               fontWeight: 900,
                             }}
                           >
-                            {languagesToLearn.join(", ")}
+                            {languagesToLearn.join(', ')}
                           </Typography>
                         </Stack>
                       </Stack>
@@ -435,9 +422,9 @@ Address directly to the user.
                       <Stack
                         className="fade-in-delayed"
                         sx={{
-                          alignItems: "center",
-                          gap: "5px",
-                          paddingTop: "10px",
+                          alignItems: 'center',
+                          gap: '5px',
+                          paddingTop: '10px',
                         }}
                       >
                         <Typography align="center" sx={{}} variant="caption">
@@ -445,7 +432,7 @@ Address directly to the user.
                         </Typography>
                         <Button
                           sx={{
-                            padding: "20px 90px",
+                            padding: '20px 90px',
                           }}
                           variant="contained"
                           onClick={async () => setIsShowPreparingModal(false)}
@@ -466,119 +453,109 @@ Address directly to the user.
                     </Stack>
                   )}
 
-                  {!isInstalling &&
-                    !isAnalyzing &&
-                    !languagesToLearn.length && (
-                      <Stack
+                  {!isInstalling && !isAnalyzing && !languagesToLearn.length && (
+                    <Stack
+                      sx={{
+                        width: 'max-content',
+                        paddingBottom: '20px',
+                      }}
+                    >
+                      <Button
                         sx={{
-                          width: "max-content",
-                          paddingBottom: "20px",
+                          width: '100%',
+                          padding: '0px 20px',
+                          transition: 'transform 0.3s',
+                          '&:hover': {
+                            transform: 'scale(1.02)',
+                          },
+                        }}
+                        color="info"
+                        startIcon={
+                          <PsychologyIcon
+                            sx={{
+                              width: '3rem',
+                              height: '4rem',
+                            }}
+                          />
+                        }
+                        variant="contained"
+                        disabled={isAnalyzing}
+                        onClick={async () => {
+                          if (isAnalyzing) {
+                            return;
+                          }
+                          if (languagesToLearn.length > 0) {
+                            startInstall();
+                            return;
+                          }
+
+                          descriptionFromWebCam();
                         }}
                       >
-                        <Button
-                          sx={{
-                            width: "100%",
-                            padding: "0px 20px",
-                            transition: "transform 0.3s",
-                            "&:hover": {
-                              transform: "scale(1.02)",
-                            },
-                          }}
-                          color="info"
-                          startIcon={
-                            <PsychologyIcon
-                              sx={{
-                                width: "3rem",
-                                height: "4rem",
-                              }}
-                            />
-                          }
-                          variant="contained"
-                          disabled={isAnalyzing}
-                          onClick={async () => {
-                            if (isAnalyzing) {
-                              return;
-                            }
-                            if (languagesToLearn.length > 0) {
-                              startInstall();
-                              return;
-                            }
-
-                            descriptionFromWebCam();
-                          }}
-                        >
-                          {languagesToLearn.length > 0
-                            ? i18n._(`Install:`) +
-                              " " +
-                              languagesToLearn.join(", ")
-                            : isAnalyzing
-                              ? i18n._(`Connecting...`)
-                              : i18n._(`Initiate brain connection`)}
-                        </Button>
-                      </Stack>
-                    )}
+                        {languagesToLearn.length > 0
+                          ? i18n._(`Install:`) + ' ' + languagesToLearn.join(', ')
+                          : isAnalyzing
+                            ? i18n._(`Connecting...`)
+                            : i18n._(`Initiate brain connection`)}
+                      </Button>
+                    </Stack>
+                  )}
                 </Stack>
               )}
 
               {!webCam.isWebCamEnabled && (
                 <Stack
                   sx={{
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "50px",
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '50px',
                     zIndex: 1,
-                    "@media (max-width: 800px)": {
-                      padding: "0px 10px",
+                    '@media (max-width: 800px)': {
+                      padding: '0px 10px',
                     },
                   }}
                 >
                   <Stack
                     sx={{
-                      maxWidth: "500px",
-                      gap: "10px",
+                      maxWidth: '500px',
+                      gap: '10px',
                     }}
                   >
                     <PsychologyIcon
                       sx={{
-                        fontSize: "4rem",
-                        width: "4rem",
-                        height: "4rem",
+                        fontSize: '4rem',
+                        width: '4rem',
+                        height: '4rem',
                       }}
                     />
                     <Stack
                       sx={{
-                        paddingBottom: "20px",
+                        paddingBottom: '20px',
                       }}
                     >
-                      <Typography
-                        variant="h3"
-                        component="h2"
-                        className="decor-text"
-                      >
+                      <Typography variant="h3" component="h2" className="decor-text">
                         {i18n._(`Preparing the brain`)}
                       </Typography>
 
                       <Typography>
-                        {i18n._(
-                          `Upload language skills directly to your brain`,
-                        )}
+                        {i18n._(`Upload language skills directly to your brain`)}
                       </Typography>
                     </Stack>
 
                     <Button
                       sx={{
-                        width: "100%",
-                        padding: "20px 90px",
-                        transition: "transform 0.3s",
-                        "&:hover": {
-                          transform: "scale(1.02)",
+                        width: '100%',
+                        padding: '20px 90px',
+                        transition: 'transform 0.3s',
+                        '&:hover': {
+                          transform: 'scale(1.02)',
                         },
-                        "@media (max-width: 800px)": {
-                          width: "100%",
-                          padding: "20px 0px",
+                        '@media (max-width: 800px)': {
+                          width: '100%',
+                          padding: '20px 0px',
                         },
                       }}
-                      startIcon={<Camera size={"25px"} />}
+                      startIcon={<Camera size={'25px'} />}
                       variant="contained"
                       color="info"
                       onClick={async () => {
@@ -590,27 +567,25 @@ Address directly to the user.
 
                     <Typography
                       sx={{
-                        paddingTop: "60px",
+                        paddingTop: '60px',
                       }}
                       variant="h5"
                     >
                       How does it work?
                     </Typography>
                     <Typography variant="caption">
-                      Our AI-powered Neural Sync Engine analyzes your cognitive
-                      signature using your webcam feed — inspired by recent
-                      research in neuro-symbolic AI and brain-computer
-                      interfaces (BCI). Based on your focus, micro-expressions,
-                      and language exposure history, the system recommends
-                      optimal language packs and begins real-time skill
-                      embedding.{" "}
+                      Our AI-powered Neural Sync Engine analyzes your cognitive signature using your
+                      webcam feed — inspired by recent research in neuro-symbolic AI and
+                      brain-computer interfaces (BCI). Based on your focus, micro-expressions, and
+                      language exposure history, the system recommends optimal language packs and
+                      begins real-time skill embedding.{' '}
                       <Link
                         variant="caption"
                         href="https://en.wikipedia.org/wiki/Brain%E2%80%93computer_interface"
                       >
                         Learn more
-                      </Link>{" "}
-                      •{" "}
+                      </Link>{' '}
+                      •{' '}
                       <Link
                         variant="caption"
                         href="https://www.nature.com/articles/d41586-025-01001-6"
@@ -633,34 +608,34 @@ Address directly to the user.
         <Typography
           sx={{
             fontWeight: 400,
-            color: "rgb(206, 249, 229)",
-            paddingTop: "10px",
-            width: "max-content",
-            alignItems: "center",
-            border: "1px solid rgb(206, 249, 229)",
-            backgroundColor: "rgb(206, 249, 229, 0.05)",
-            fontSize: "0.9rem",
-            lineHeight: "0.9rem",
-            padding: "5px 12px 5px 10px",
-            borderRadius: "5px",
+            color: 'rgb(206, 249, 229)',
+            paddingTop: '10px',
+            width: 'max-content',
+            alignItems: 'center',
+            border: '1px solid rgb(206, 249, 229)',
+            backgroundColor: 'rgb(206, 249, 229, 0.05)',
+            fontSize: '0.9rem',
+            lineHeight: '0.9rem',
+            padding: '5px 12px 5px 10px',
+            borderRadius: '5px',
           }}
-          textAlign={"center"}
+          textAlign={'center'}
         >
           🧪 Experimental AI
         </Typography>
       </Stack>
       <Stack
         sx={{
-          gap: "20px",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          width: "max-content",
-          flexDirection: "row",
-          "@media (max-width: 800px)": {
-            flexDirection: "column",
-            width: "100%",
-            alignItems: "flex-start",
-            justifyContent: "flex-start",
+          gap: '20px',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          width: 'max-content',
+          flexDirection: 'row',
+          '@media (max-width: 800px)': {
+            flexDirection: 'column',
+            width: '100%',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
           },
         }}
       >
@@ -671,26 +646,26 @@ Address directly to the user.
             webCam.disconnect();
           }}
           sx={{
-            padding: "15px 100px",
-            borderRadius: "4px",
-            fontSize: "1.2rem",
+            padding: '15px 100px',
+            borderRadius: '4px',
+            fontSize: '1.2rem',
             fontWeight: 990,
-            transition: "transform 0.3s",
-            "&:hover": {
-              transform: "scale(1.02)",
+            transition: 'transform 0.3s',
+            '&:hover': {
+              transform: 'scale(1.02)',
             },
-            "@media (max-width: 800px)": {
-              width: "100%",
-              padding: "15px 20px",
-              fontSize: "1rem",
+            '@media (max-width: 800px)': {
+              width: '100%',
+              padding: '15px 20px',
+              fontSize: '1rem',
             },
           }}
           startIcon={
             <PsychologyIcon
               sx={{
-                fontSize: "3rem",
-                width: "3rem",
-                height: "3rem",
+                fontSize: '3rem',
+                width: '3rem',
+                height: '3rem',
               }}
             />
           }
@@ -707,19 +682,13 @@ Address directly to the user.
             href="https://en.wikipedia.org/wiki/Brain%E2%80%93computer_interface"
           >
             Ogtopenetic activations
-          </Link>{" "}
-          •{" "}
-          <Link
-            variant="caption"
-            href="https://www.nature.com/articles/d41586-025-01001-6"
-          >
+          </Link>{' '}
+          •{' '}
+          <Link variant="caption" href="https://www.nature.com/articles/d41586-025-01001-6">
             Brain Transferring Research Paper
           </Link>
-          •{" "}
-          <Link
-            variant="caption"
-            href="https://www.nature.com/articles/d41586-025-01001-6"
-          >
+          •{' '}
+          <Link variant="caption" href="https://www.nature.com/articles/d41586-025-01001-6">
             Research paper
           </Link>
         </Typography>

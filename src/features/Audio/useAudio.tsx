@@ -1,16 +1,12 @@
-"use client";
-import { createContext, useContext, ReactNode, JSX } from "react";
-import { useSettings } from "../Settings/useSettings";
-import { useAuth } from "../Auth/useAuth";
-import { sendTextToAudioRequest } from "@/app/api/textToAudio/sendTextToAudioRequest";
-import { AiVoice } from "@/common/ai";
+'use client';
+import { createContext, useContext, ReactNode, JSX } from 'react';
+import { useSettings } from '../Settings/useSettings';
+import { useAuth } from '../Auth/useAuth';
+import { sendTextToAudioRequest } from '@/app/api/textToAudio/sendTextToAudioRequest';
+import { AiVoice } from '@/common/ai';
 
 interface AudioContextType {
-  getAudioUrl: (
-    text: string,
-    instructions: string,
-    voice: AiVoice,
-  ) => Promise<string>;
+  getAudioUrl: (text: string, instructions: string, voice: AiVoice) => Promise<string>;
 }
 
 const AudioContext = createContext<AudioContextType | null>(null);
@@ -19,19 +15,15 @@ function useProvideAudio(): AudioContextType {
   const settings = useSettings();
   const auth = useAuth();
 
-  const getAudioUrl = async (
-    text: string,
-    instructions: string,
-    voice: AiVoice,
-  ) => {
+  const getAudioUrl = async (text: string, instructions: string, voice: AiVoice) => {
     const languageCode = settings.languageCode;
     if (!languageCode) {
-      throw new Error("Language is not set | useProvideAudio.getAudioUrl");
+      throw new Error('Language is not set | useProvideAudio.getAudioUrl');
     }
 
     const response = await sendTextToAudioRequest(
       {
-        languageCode: settings.languageCode || "en",
+        languageCode: settings.languageCode || 'en',
         input: text.trim(),
         instructions,
         voice,
@@ -40,7 +32,7 @@ function useProvideAudio(): AudioContextType {
     );
     const audioUrl = response.audioUrl;
     if (!audioUrl) {
-      throw new Error("Failed to generate audio");
+      throw new Error('Failed to generate audio');
     }
     return audioUrl;
   };
@@ -50,11 +42,7 @@ function useProvideAudio(): AudioContextType {
   };
 }
 
-export function AudioProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function AudioProvider({ children }: { children: ReactNode }): JSX.Element {
   const hook = useProvideAudio();
   return <AudioContext.Provider value={hook}>{children}</AudioContext.Provider>;
 }
@@ -62,7 +50,7 @@ export function AudioProvider({
 export const useAudio = (): AudioContextType => {
   const context = useContext(AudioContext);
   if (!context) {
-    throw new Error("useAudio must be used within a UsageProvider");
+    throw new Error('useAudio must be used within a UsageProvider');
   }
   return context;
 };

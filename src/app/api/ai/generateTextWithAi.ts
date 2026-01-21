@@ -1,5 +1,5 @@
-import { TextAiModel } from "@/common/ai";
-import OpenAI from "openai";
+import { TextAiModel } from '@/common/ai';
+import OpenAI from 'openai';
 
 interface generateTextWithAiProps {
   systemMessage: string;
@@ -13,7 +13,7 @@ export const generateTextWithAi = async ({
 }: generateTextWithAiProps) => {
   const openAIKey = process.env.OPENAI_API_KEY;
   if (!openAIKey) {
-    throw new Error("OpenAI API key is not set");
+    throw new Error('OpenAI API key is not set');
   }
 
   const client = new OpenAI({
@@ -22,15 +22,15 @@ export const generateTextWithAi = async ({
   const chatCompletion = await client.chat.completions.create({
     messages: [
       {
-        role: "system",
+        role: 'system',
         content: systemMessage,
       },
-      { role: "user", content: userMessage },
+      { role: 'user', content: userMessage },
     ],
     model: model,
   });
 
-  const output = chatCompletion.choices[0].message.content || "";
+  const output = chatCompletion.choices[0].message.content || '';
   const usage = chatCompletion.usage;
 
   return {

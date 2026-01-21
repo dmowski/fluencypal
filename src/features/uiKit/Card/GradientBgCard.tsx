@@ -1,6 +1,6 @@
-"use client";
-import { Stack, Typography } from "@mui/material";
-import { JSX } from "react";
+'use client';
+import { Stack, Typography } from '@mui/material';
+import { JSX } from 'react';
 
 interface GradientBgCardProps {
   title: string;
@@ -27,47 +27,47 @@ export const GradientBgCard = ({
   return (
     <Stack
       onClick={onClick}
-      component={"button"}
+      component={'button'}
       sx={{
-        backgroundColor: "transparent",
-        padding: "20px 20px 20px 20px",
-        paddingBottom: miniCard ? "70px" : "20px",
-        borderRadius: "16px",
-        gap: "0px",
-        alignItems: "flex-start",
-        justifyContent: "center",
-        border: "1px solid rgba(255, 255, 255, 0.04)",
-        position: "relative",
-        overflow: "hidden",
-        transition: "transform 0.3s ease",
-        cursor: "pointer",
-        color: "#fff",
+        backgroundColor: 'transparent',
+        padding: '20px 20px 20px 20px',
+        paddingBottom: miniCard ? '70px' : '20px',
+        borderRadius: '16px',
+        gap: '0px',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        border: '1px solid rgba(255, 255, 255, 0.04)',
+        position: 'relative',
+        overflow: 'hidden',
+        transition: 'transform 0.3s ease',
+        cursor: 'pointer',
+        color: '#fff',
 
-        ".mini-card": {
-          position: "absolute",
-          bottom: "0px",
-          right: "20px",
-          width: "200px",
-          height: "140px",
-          boxSizing: "border-box",
-          transition: "all 0.3s ease",
-          boxShadow: "0px 0px 26px rgba(0, 0, 0, 0.3)",
-          backgroundColor: "#1E1E1E",
-          padding: "20px",
-          borderRadius: "16px 16px 0 0",
-          "@media (max-width: 750px)": {
-            width: "250px",
+        '.mini-card': {
+          position: 'absolute',
+          bottom: '0px',
+          right: '20px',
+          width: '200px',
+          height: '140px',
+          boxSizing: 'border-box',
+          transition: 'all 0.3s ease',
+          boxShadow: '0px 0px 26px rgba(0, 0, 0, 0.3)',
+          backgroundColor: '#1E1E1E',
+          padding: '20px',
+          borderRadius: '16px 16px 0 0',
+          '@media (max-width: 750px)': {
+            width: '250px',
           },
-          "@media (max-width: 450px)": {
-            width: "150px",
+          '@media (max-width: 450px)': {
+            width: '150px',
           },
         },
 
-        ":hover": {
-          transform: "scale(1.02)",
-          ".mini-card": {
-            transform: "scale(1.01)",
-            height: "150px",
+        ':hover': {
+          transform: 'scale(1.02)',
+          '.mini-card': {
+            transform: 'scale(1.01)',
+            height: '150px',
           },
         },
       }}
@@ -78,7 +78,7 @@ export const GradientBgCard = ({
         sx={{
           fontWeight: 300,
           opacity: 0.9,
-          textTransform: "uppercase",
+          textTransform: 'uppercase',
         }}
       >
         {subTitle}
@@ -89,8 +89,8 @@ export const GradientBgCard = ({
         sx={{
           fontWeight: 800,
           opacity: 0.9,
-          textTransform: "uppercase",
-          fontSize: "1.4rem",
+          textTransform: 'uppercase',
+          fontSize: '1.4rem',
         }}
       >
         {title}
@@ -98,7 +98,7 @@ export const GradientBgCard = ({
       <Typography
         sx={{
           fontWeight: 900,
-          fontSize: "4rem",
+          fontSize: '4rem',
         }}
       >
         {value}
@@ -110,14 +110,14 @@ export const GradientBgCard = ({
       <Stack
         sx={{
           backgroundColor: startColor,
-          width: "320px",
-          height: "120px",
-          borderRadius: "40px",
-          filter: "blur(50px)",
+          width: '320px',
+          height: '120px',
+          borderRadius: '40px',
+          filter: 'blur(50px)',
 
-          position: "absolute",
-          top: "-40px",
-          left: "-20px",
+          position: 'absolute',
+          top: '-40px',
+          left: '-20px',
           zIndex: -1,
           opacity: 0.9,
         }}
@@ -126,14 +126,14 @@ export const GradientBgCard = ({
       <Stack
         sx={{
           backgroundColor: endColor,
-          width: "320px",
-          height: "120px",
-          borderRadius: "40px",
-          filter: "blur(80px)",
+          width: '320px',
+          height: '120px',
+          borderRadius: '40px',
+          filter: 'blur(80px)',
 
-          position: "absolute",
-          bottom: "-40px",
-          right: "-20px",
+          position: 'absolute',
+          bottom: '-40px',
+          right: '-20px',
           zIndex: -1,
           opacity: 0.9,
         }}
@@ -142,12 +142,12 @@ export const GradientBgCard = ({
       <Stack
         sx={{
           backgroundColor: bgColor,
-          width: "100%",
-          height: "100%",
+          width: '100%',
+          height: '100%',
 
-          position: "absolute",
-          bottom: "0px",
-          left: "0px",
+          position: 'absolute',
+          bottom: '0px',
+          left: '0px',
           zIndex: -2,
           opacity: 0.1,
         }}
@@ -171,27 +171,27 @@ export const GradientBgImageCard = ({
   return (
     <Stack
       onClick={onClick}
-      component={"button"}
+      component={'button'}
       sx={{
-        backgroundColor: backgroundColor || "transparent",
+        backgroundColor: backgroundColor || 'transparent',
         backgroundImage: `url(${src})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
 
-        padding: "0",
-        borderRadius: "16px",
-        gap: "0px",
-        alignItems: "center",
-        justifyContent: "center",
-        border: "1px solid rgba(255, 255, 255, 0.04)",
-        position: "relative",
-        overflow: "hidden",
-        transition: "transform 0.3s ease",
-        cursor: "pointer",
-        color: "#fff",
-        ":hover": {
-          transform: "scale(1.02)",
+        padding: '0',
+        borderRadius: '16px',
+        gap: '0px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        border: '1px solid rgba(255, 255, 255, 0.04)',
+        position: 'relative',
+        overflow: 'hidden',
+        transition: 'transform 0.3s ease',
+        cursor: 'pointer',
+        color: '#fff',
+        ':hover': {
+          transform: 'scale(1.02)',
         },
       }}
     >

@@ -1,8 +1,8 @@
-import { Button, Stack } from "@mui/material";
-import { Theme, themeMap } from "../Case/Landing/components/theme";
-import { H2, PageLabel, SubTitle } from "../Case/Landing/components/Typography";
-import { MoveRight } from "lucide-react";
-import { QuizAnimation } from "../uiKit/Animations/QuizAnimation";
+import { Button, Stack } from '@mui/material';
+import { Theme, themeMap } from '../Case/Landing/components/theme';
+import { H2, PageLabel, SubTitle } from '../Case/Landing/components/Typography';
+import { MoveRight } from 'lucide-react';
+import { QuizAnimation } from '../uiKit/Animations/QuizAnimation';
 
 export interface CardData {
   videoUrl?: string;
@@ -42,33 +42,33 @@ export const HowItWorks = (props: HowItWorksProps) => {
     <Stack
       id={props.id}
       sx={{
-        padding: "150px 0",
+        padding: '150px 0',
         backgroundColor: colors.sectionBgColor,
         color: colors.textColor,
-        alignItems: "center",
-        width: "100%",
-        gap: "90px",
-        "@media (max-width: 600px)": {
-          padding: "90px 0 50px 0",
+        alignItems: 'center',
+        width: '100%',
+        gap: '90px',
+        '@media (max-width: 600px)': {
+          padding: '90px 0 50px 0',
         },
       }}
     >
       <Stack
         sx={{
-          maxWidth: "1300px",
-          width: "100%",
-          gap: "15px",
-          padding: "0 10px",
-          alignItems: "center",
+          maxWidth: '1300px',
+          width: '100%',
+          gap: '15px',
+          padding: '0 10px',
+          alignItems: 'center',
         }}
       >
         <Stack
           sx={{
-            alignItems: "center",
-            gap: "10px",
-            padding: "0 12px 0 10px",
-            "*": {
-              textAlign: "center",
+            alignItems: 'center',
+            gap: '10px',
+            padding: '0 12px 0 10px',
+            '*': {
+              textAlign: 'center',
             },
           }}
         >
@@ -80,8 +80,8 @@ export const HowItWorks = (props: HowItWorksProps) => {
 
       <Stack
         sx={{
-          gap: "100px",
-          "@media (max-width: 900px)": { gap: "20px", padding: "0 15px" },
+          gap: '100px',
+          '@media (max-width: 900px)': { gap: '20px', padding: '0 15px' },
         }}
       >
         {props.cards.map((card, index) => {
@@ -89,45 +89,45 @@ export const HowItWorks = (props: HowItWorksProps) => {
             <Stack
               key={index}
               sx={{
-                width: "100%",
-                maxWidth: "560px",
-                minHeight: "650px",
+                width: '100%',
+                maxWidth: '560px',
+                minHeight: '650px',
 
                 //overflow: "hidden",
-                boxShadow: "0 1px 42px rgba(0, 0, 0, 0.71)",
+                boxShadow: '0 1px 42px rgba(0, 0, 0, 0.71)',
                 backgroundColor: card.bgColor,
-                position: "sticky",
-                justifyContent: "space-between",
+                position: 'sticky',
+                justifyContent: 'space-between',
                 top: `${100 + index * 30}px`,
-                "--radius": "40px",
-                "--horizontal-padding": "40px",
-                "--top-padding": "60px",
-                borderRadius: "var(--radius)",
-                "@media (max-width: 900px)": {
-                  minHeight: "auto",
+                '--radius': '40px',
+                '--horizontal-padding': '40px',
+                '--top-padding': '60px',
+                borderRadius: 'var(--radius)',
+                '@media (max-width: 900px)': {
+                  minHeight: 'auto',
                   top: `${72 + index * 30}px`,
-                  "--radius": "20px",
-                  "--top-padding": "20px",
-                  "--horizontal-padding": "12px",
+                  '--radius': '20px',
+                  '--top-padding': '20px',
+                  '--horizontal-padding': '12px',
                 },
               }}
             >
               <Stack
                 sx={{
-                  padding: "20px",
-                  gap: "10px",
+                  padding: '20px',
+                  gap: '10px',
                 }}
               >
                 <Stack
                   sx={{
-                    fontSize: "20px",
+                    fontSize: '20px',
                     fontWeight: 600,
                     color: card.titleColor,
                     backgroundColor: card.titleBgColor,
-                    alignSelf: "flex-start",
-                    padding: "3px 5px",
+                    alignSelf: 'flex-start',
+                    padding: '3px 5px',
                     margin:
-                      "var(--top-padding) var(--horizontal-padding) 0 var(--horizontal-padding)",
+                      'var(--top-padding) var(--horizontal-padding) 0 var(--horizontal-padding)',
                   }}
                 >
                   {card.title}
@@ -135,12 +135,11 @@ export const HowItWorks = (props: HowItWorksProps) => {
 
                 <Stack
                   sx={{
-                    fontSize: "18px",
+                    fontSize: '18px',
                     fontWeight: 400,
-                    lineHeight: "24px",
+                    lineHeight: '24px',
                     color: card.subTitleColor,
-                    margin:
-                      "0px var(--horizontal-padding) 0 var(--horizontal-padding)",
+                    margin: '0px var(--horizontal-padding) 0 var(--horizontal-padding)',
                   }}
                 >
                   {card.subTitle}
@@ -149,14 +148,14 @@ export const HowItWorks = (props: HowItWorksProps) => {
 
               <Stack
                 sx={{
-                  overflow: "hidden",
-                  borderRadius: "0 0 var(--radius) var(--radius)",
-                  position: "relative",
+                  overflow: 'hidden',
+                  borderRadius: '0 0 var(--radius) var(--radius)',
+                  position: 'relative',
                 }}
               >
                 {card.videoUrl && (
                   <Stack
-                    component={"video"}
+                    component={'video'}
                     src={card.videoUrl}
                     autoPlay
                     loop
@@ -164,26 +163,26 @@ export const HowItWorks = (props: HowItWorksProps) => {
                     controls={false}
                     playsInline
                     sx={{
-                      width: "100%",
-                      height: "auto",
-                      objectFit: "cover",
-                      position: "relative",
-                      top: "3px",
-                      marginTop: "30px",
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                      position: 'relative',
+                      top: '3px',
+                      marginTop: '30px',
                     }}
                   />
                 )}
 
                 {card.imageUrl && (
                   <Stack
-                    component={"img"}
+                    component={'img'}
                     src={card.imageUrl}
                     alt=""
                     sx={{
-                      width: "100%",
-                      position: "relative",
-                      top: "3px",
-                      marginTop: "30px",
+                      width: '100%',
+                      position: 'relative',
+                      top: '3px',
+                      marginTop: '30px',
                     }}
                   />
                 )}
@@ -191,9 +190,9 @@ export const HowItWorks = (props: HowItWorksProps) => {
                 {card.quizAnimation && (
                   <Stack
                     sx={{
-                      borderRadius: "0 0 var(--radius) var(--radius)",
-                      overflow: "hidden",
-                      marginTop: "30px",
+                      borderRadius: '0 0 var(--radius) var(--radius)',
+                      overflow: 'hidden',
+                      marginTop: '30px',
                     }}
                   >
                     <QuizAnimation />
@@ -213,10 +212,10 @@ export const HowItWorks = (props: HowItWorksProps) => {
         size="large"
         color="info"
         sx={{
-          marginTop: "32px",
-          padding: "14px 45px 14px 48px",
-          borderRadius: "48px",
-          fontSize: "1.1rem",
+          marginTop: '32px',
+          padding: '14px 45px 14px 48px',
+          borderRadius: '48px',
+          fontSize: '1.1rem',
         }}
         endIcon={<MoveRight />}
       >

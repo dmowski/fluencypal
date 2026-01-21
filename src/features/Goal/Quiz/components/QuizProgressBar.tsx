@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useWindowSizes } from "@/features/Layout/useWindowSizes";
-import { UIProgressBar } from "@/features/Survey/UIProgressBar";
-import { useTgNavigation } from "@/features/Telegram/useTgNavigation";
-import { useEffect } from "react";
+import { useWindowSizes } from '@/features/Layout/useWindowSizes';
+import { UIProgressBar } from '@/features/Survey/UIProgressBar';
+import { useTgNavigation } from '@/features/Telegram/useTgNavigation';
+import { useEffect } from 'react';
 
 export const QuizProgressBar = ({
   navigateToMainPage,

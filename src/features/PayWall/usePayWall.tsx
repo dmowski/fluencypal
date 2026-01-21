@@ -1,16 +1,8 @@
-"use client";
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  JSX,
-  useState,
-  useEffect,
-  useRef,
-} from "react";
-import { useGame } from "../Game/useGame";
-import { useUsage } from "../Usage/useUsage";
-import { useAiConversation } from "../Conversation/useAiConversation";
+'use client';
+import { createContext, useContext, ReactNode, JSX, useState, useEffect, useRef } from 'react';
+import { useGame } from '../Game/useGame';
+import { useUsage } from '../Usage/useUsage';
+import { useAiConversation } from '../Conversation/useAiConversation';
 
 interface PayWallContextType {
   isShowPayWall: boolean;
@@ -20,7 +12,7 @@ interface PayWallContextType {
 export const payWallContext = createContext<PayWallContextType>({
   isShowPayWall: false,
   temporaryClosePayWall: () => {
-    console.warn("temporaryClosePayWall function is not implemented");
+    console.warn('temporaryClosePayWall function is not implemented');
   },
 });
 
@@ -35,10 +27,7 @@ function useProvidePayWall(): PayWallContextType {
 
   const isNeedToShowPayWall = useRef(false);
   isNeedToShowPayWall.current =
-    usage.balanceHours <= 0.01 &&
-    !usage.isFullAccess &&
-    !game.isGameWinner &&
-    isInPaidArea;
+    usage.balanceHours <= 0.01 && !usage.isFullAccess && !game.isGameWinner && isInPaidArea;
 
   useEffect(() => {
     if (usage.loading || game.isLoading) {
@@ -65,10 +54,10 @@ function useProvidePayWall(): PayWallContextType {
     setIsShowPayWall(false);
     setTimeout(() => {
       if (isNeedToShowPayWall.current) {
-        console.log("Setting paywall back to true");
+        console.log('Setting paywall back to true');
         setIsShowPayWall(true);
       } else {
-        console.log("Not setting paywall back to true, conditions not met");
+        console.log('Not setting paywall back to true, conditions not met');
       }
     }, 30_000);
   };
@@ -79,24 +68,16 @@ function useProvidePayWall(): PayWallContextType {
   };
 }
 
-export function PayWallProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function PayWallProvider({ children }: { children: ReactNode }): JSX.Element {
   const settings = useProvidePayWall();
 
-  return (
-    <payWallContext.Provider value={settings}>
-      {children}
-    </payWallContext.Provider>
-  );
+  return <payWallContext.Provider value={settings}>{children}</payWallContext.Provider>;
 }
 
 export const usePayWall = (): PayWallContextType => {
   const context = useContext(payWallContext);
   if (!context) {
-    throw new Error("usePayWall must be used within a PayWallProvider");
+    throw new Error('usePayWall must be used within a PayWallProvider');
   }
   return context;
 };

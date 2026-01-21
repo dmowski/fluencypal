@@ -8,34 +8,27 @@ import {
   MenuItem,
   Stack,
   Typography,
-} from "@mui/material";
-import {
-  ChevronDown,
-  Flag,
-  LandPlot,
-  MoveRight,
-  Plus,
-  Sparkle,
-} from "lucide-react";
-import { useLingui } from "@lingui/react";
-import { usePlan } from "../Plan/usePlan";
-import { PlanElementMode } from "../Plan/types";
-import { PlanCard } from "../Plan/PlanCard";
+} from '@mui/material';
+import { ChevronDown, Flag, LandPlot, MoveRight, Plus, Sparkle } from 'lucide-react';
+import { useLingui } from '@lingui/react';
+import { usePlan } from '../Plan/usePlan';
+import { PlanElementMode } from '../Plan/types';
+import { PlanCard } from '../Plan/PlanCard';
 
-import { cardColors, modeCardProps } from "../Plan/data";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { useMemo, useState } from "react";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { getUrlStart } from "../Lang/getUrlStart";
-import { useUrlParam } from "../Url/useUrlParam";
-import { useSettings } from "../Settings/useSettings";
-import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import { ActiveLessonCard } from "../Plan/ActiveLessonCard";
-import VideocamIcon from "@mui/icons-material/Videocam";
-import { getAiVoiceByVoice } from "../Conversation/CallMode/voiceAvatar";
-import SettingsIcon from "@mui/icons-material/Settings";
-import { useTeacherSettings } from "../Conversation/CallMode/useTeacherSettings";
+import { cardColors, modeCardProps } from '../Plan/data';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { useMemo, useState } from 'react';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { getUrlStart } from '../Lang/getUrlStart';
+import { useUrlParam } from '../Url/useUrlParam';
+import { useSettings } from '../Settings/useSettings';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import { ActiveLessonCard } from '../Plan/ActiveLessonCard';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import { getAiVoiceByVoice } from '../Conversation/CallMode/voiceAvatar';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -43,16 +36,13 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const teacherSettings = useTeacherSettings();
   const settings = useSettings();
 
-  const [selectGoalModalAnchorEl, setSelectGoalModalAnchorEl] =
-    useState<null | HTMLElement>(null);
+  const [selectGoalModalAnchorEl, setSelectGoalModalAnchorEl] = useState<null | HTMLElement>(null);
 
   const isGoalSet = !!plan.activeGoal?.elements?.length;
 
   const deletePlans = async () => {
     const confirmResult = confirm(
-      i18n._(
-        `Are you sure you want to delete your goal? This action cannot be undone.`,
-      ),
+      i18n._(`Are you sure you want to delete your goal? This action cannot be undone.`),
     );
     if (!confirmResult) {
       return;
@@ -61,7 +51,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     plan.deleteGoals();
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
@@ -72,7 +62,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     rule: i18n._(`Rule`),
   };
 
-  const goalDescription = plan.activeGoal?.goalQuiz?.description || "";
+  const goalDescription = plan.activeGoal?.goalQuiz?.description || '';
 
   const sortedElements = useMemo(() => {
     return plan.activeGoal?.elements || [];
@@ -82,19 +72,17 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
   sortedElements.forEach((element, index) => {
     const isCompleted =
-      plan.activeGoal?.progress?.find((part) => part.elementId === element.id)
-        ?.state === "completed";
+      plan.activeGoal?.progress?.find((part) => part.elementId === element.id)?.state ===
+      'completed';
     if (!isCompleted && activeIndex === null) {
       activeIndex = index;
     }
   });
-  const [isShowMoreModal, setIsShowMoreModal] = useUrlParam("showMoreModal");
+  const [isShowMoreModal, setIsShowMoreModal] = useUrlParam('showMoreModal');
 
   const doneLessonsCount = sortedElements.reduce((acc, element) => {
-    const progress = plan.activeGoal?.progress?.find(
-      (part) => part.elementId === element.id,
-    );
-    const isDone = progress?.state === "completed";
+    const progress = plan.activeGoal?.progress?.find((part) => part.elementId === element.id);
+    const isDone = progress?.state === 'completed';
     if (isDone) {
       return acc + 1;
     }
@@ -116,11 +104,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       setIsLearningPlanUpdating(false);
       setIsShowMoreModal(false);
     } catch (error) {
-      alert(
-        i18n._(
-          `Something went wrong while generating more lessons. Please try again later.`,
-        ),
-      );
+      alert(i18n._(`Something went wrong while generating more lessons. Please try again later.`));
       setIsLearningPlanUpdating(false);
 
       throw error;
@@ -140,35 +124,34 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     <Stack gap="20px">
       <Stack
         sx={{
-          display: "grid",
-          alignItems: "center",
-          gridTemplateColumns: "1fr",
-          gap: "5px",
-          paddingTop: "40px",
+          display: 'grid',
+          alignItems: 'center',
+          gridTemplateColumns: '1fr',
+          gap: '5px',
+          paddingTop: '40px',
         }}
       >
         <Stack
           sx={{
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "20px",
-            flexWrap: "wrap",
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '20px',
+            flexWrap: 'wrap',
           }}
         >
           <Stack
             sx={{
-              borderRadius: "50%",
-              background:
-                "linear-gradient(45deg,rgb(120, 13, 220) 0%,rgb(199, 13, 236) 100%)",
-              height: "60px",
-              width: "60px",
+              borderRadius: '50%',
+              background: 'linear-gradient(45deg,rgb(120, 13, 220) 0%,rgb(199, 13, 236) 100%)',
+              height: '60px',
+              width: '60px',
 
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
             }}
           >
-            <Flag size={"27px"} />
+            <Flag size={'27px'} />
           </Stack>
           <Stack>
             <Typography
@@ -176,24 +159,24 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               align="center"
               sx={{
                 opacity: 0.7,
-                textTransform: "uppercase",
+                textTransform: 'uppercase',
               }}
             >
               {i18n._(`Learning Plan`)}
             </Typography>
             <Stack
               sx={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "5px",
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '5px',
               }}
             >
               {languageGoals.length > 1 && (
                 <IconButton
                   size="small"
                   sx={{
-                    visibility: "hidden",
+                    visibility: 'hidden',
                   }}
                 >
                   <ChevronDown />
@@ -208,9 +191,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               {languageGoals.length > 1 && (
                 <IconButton
                   size="small"
-                  onClick={(event) =>
-                    setSelectGoalModalAnchorEl(event.currentTarget)
-                  }
+                  onClick={(event) => setSelectGoalModalAnchorEl(event.currentTarget)}
                 >
                   <ChevronDown />
                 </IconButton>
@@ -219,12 +200,12 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               {selectGoalModalAnchorEl && (
                 <Menu
                   sx={{
-                    marginBottom: "130px",
+                    marginBottom: '130px',
                   }}
                   anchorEl={selectGoalModalAnchorEl}
                   anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "left",
+                    vertical: 'bottom',
+                    horizontal: 'left',
                   }}
                   keepMounted
                   open={Boolean(selectGoalModalAnchorEl)}
@@ -243,11 +224,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                         }}
                       >
                         <ListItemIcon>
-                          {isActive ? (
-                            <RadioButtonCheckedIcon />
-                          ) : (
-                            <RadioButtonUncheckedIcon />
-                          )}
+                          {isActive ? <RadioButtonCheckedIcon /> : <RadioButtonUncheckedIcon />}
                         </ListItemIcon>
                         <ListItemText>
                           <Typography>{goal.title}</Typography>
@@ -260,7 +237,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
                   <MenuItem
                     onClick={() => {
-                      window.location.href = `${getUrlStart(lang)}quiz?learn=${settings.languageCode || "en"}`;
+                      window.location.href = `${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}`;
                     }}
                   >
                     <ListItemIcon>
@@ -278,19 +255,19 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
         <Stack
           sx={{
-            flexDirection: "row",
-            gap: "5px",
-            alignItems: "center",
-            justifyContent: "space-between",
-            width: "100%",
+            flexDirection: 'row',
+            gap: '5px',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            width: '100%',
           }}
         >
           <Stack
             sx={{
-              flexDirection: "column",
-              alignItems: "center",
-              width: "100%",
-              justifyContent: "center",
+              flexDirection: 'column',
+              alignItems: 'center',
+              width: '100%',
+              justifyContent: 'center',
             }}
           >
             {goalDescription && (
@@ -311,19 +288,17 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       {plan.nextElement && nextElementId && (
         <Stack
           sx={{
-            paddingBottom: "50px",
-            gap: "0px",
+            paddingBottom: '50px',
+            gap: '0px',
           }}
         >
           <ActiveLessonCard
-            subTitle={i18n._("Current Lesson")}
+            subTitle={i18n._('Current Lesson')}
             title={plan.nextElement.title}
             descriptionTop={plan.nextElement.description}
             descriptionBottom={plan.nextElement.subTitle}
-            actionLabel={i18n._("Start")}
-            aiVideo={getAiVoiceByVoice(
-              settings.userSettings?.teacherVoice || "shimmer",
-            )}
+            actionLabel={i18n._('Start')}
+            aiVideo={getAiVoiceByVoice(settings.userSettings?.teacherVoice || 'shimmer')}
             startIcon={<VideocamIcon />}
             onAction={() => plan.openElementModal(nextElementId)}
             settingsIcon={<SettingsIcon />}
@@ -335,8 +310,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       {isGoalSet && plan.activeGoal ? (
         <Stack
           sx={{
-            gap: "20px",
-            width: "100%",
+            gap: '20px',
+            width: '100%',
           }}
         >
           {sortedElements.map((planElement, index, all) => {
@@ -344,9 +319,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             const colorIndex = index % cardColors.length;
             const cardColor = cardColors[colorIndex];
             const elementsWithSameMode =
-              sortedElements.filter(
-                (element) => element.mode === planElement.mode,
-              ) || [];
+              sortedElements.filter((element) => element.mode === planElement.mode) || [];
             const currentElementIndex = elementsWithSameMode.findIndex(
               (element) => element.id === planElement.id,
             );
@@ -356,9 +329,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             const imageUrl = imageVariants[imageIndex];
 
             const isDone =
-              plan.activeGoal?.progress?.find(
-                (part) => part.elementId === planElement.id,
-              )?.state === "completed";
+              plan.activeGoal?.progress?.find((part) => part.elementId === planElement.id)
+                ?.state === 'completed';
 
             const isActive = index === activeIndex;
 
@@ -389,13 +361,13 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           })}
           <Stack
             sx={{
-              alignItems: "center",
-              maxWidth: "700px",
-              paddingTop: "10px",
+              alignItems: 'center',
+              maxWidth: '700px',
+              paddingTop: '10px',
             }}
           >
             <Button
-              startIcon={<Sparkle size={"14px"} />}
+              startIcon={<Sparkle size={'14px'} />}
               variant="outlined"
               onClick={() => setIsShowMoreModal(true)}
             >
@@ -407,9 +379,9 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         <Stack sx={{}}>
           <Button
             startIcon={<LandPlot />}
-            href={`${getUrlStart(lang)}quiz?learn=${settings.languageCode || "en"}`}
+            href={`${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}`}
             sx={{
-              padding: "20px",
+              padding: '20px',
             }}
             variant="contained"
           >
@@ -422,15 +394,15 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         <CustomModal isOpen={true} onClose={() => setIsShowMoreModal(false)}>
           <Stack
             sx={{
-              gap: "10px",
-              alignItems: "center",
-              width: "100%",
-              maxWidth: "600px",
+              gap: '10px',
+              alignItems: 'center',
+              width: '100%',
+              maxWidth: '600px',
             }}
           >
             <Stack
               sx={{
-                gap: "20px",
+                gap: '20px',
               }}
             >
               <Typography
@@ -443,37 +415,26 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 {i18n._(`More unique lessons`)}
               </Typography>
               <Stack>
-                <Typography
-                  variant="h4"
-                  align="center"
-                  component="h2"
-                  className="decor-text"
-                >
+                <Typography variant="h4" align="center" component="h2" className="decor-text">
                   {plan.activeGoal?.title || i18n._(`Goal`)}
                 </Typography>
-                <Typography
-                  sx={{ paddingTop: "5px" }}
-                  align="center"
-                  variant="caption"
-                >
+                <Typography sx={{ paddingTop: '5px' }} align="center" variant="caption">
                   {plan.activeGoal?.goalQuiz?.description ||
-                    i18n._(
-                      `Generate more lessons to achieve your goal faster.`,
-                    )}
+                    i18n._(`Generate more lessons to achieve your goal faster.`)}
                 </Typography>
               </Stack>
             </Stack>
 
             <Stack
               sx={{
-                gap: "2px",
+                gap: '2px',
               }}
             >
               <Button
                 sx={{
-                  width: "100%",
-                  marginTop: "20px",
-                  padding: "10px 20px",
+                  width: '100%',
+                  marginTop: '20px',
+                  padding: '10px 20px',
                 }}
                 onClick={() => {
                   deletePlans();
@@ -489,9 +450,9 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
               <Button
                 sx={{
-                  width: "100%",
-                  marginTop: "10px",
-                  padding: "10px 20px",
+                  width: '100%',
+                  marginTop: '10px',
+                  padding: '10px 20px',
                 }}
                 onClick={generateMoreLessons}
                 disabled={!isAbleToExpand || isLearningPlanUpdating}

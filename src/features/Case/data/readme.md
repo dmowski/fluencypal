@@ -41,18 +41,18 @@ All generators receive `lang: SupportedLanguage` and call `getI18nInstance(lang)
 Keep tech labels and logos centralized and localized once per helper, then reuse across sections:
 
 ```ts
-import { TechItem } from "../../types";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
+import { TechItem } from '../../types';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getI18nInstance } from '@/appRouterI18n';
 
 export const getBackendTechData = (lang: SupportedLanguage) => {
   const i18n = getI18nInstance(lang);
   const dotnet: TechItem = {
-    label: i18n._(".NET"),
-    logoUrl: "https://cdn.simpleicons.org/dotnet/512BD4",
+    label: i18n._('.NET'),
+    logoUrl: 'https://cdn.simpleicons.org/dotnet/512BD4',
   };
   // ... other tech items
-  return { dotnet, "aspnet-core": aspnetCore /* etc. */ } as const;
+  return { dotnet, 'aspnet-core': aspnetCore /* etc. */ } as const;
 };
 ```
 
@@ -62,10 +62,10 @@ Usage inside sections to keep section code clean and localized:
 const tech = getBackendTechData(lang);
 
 // tech stack grouping
-items: [tech.dotnet, tech["aspnet-core"], tech["ef-core"], tech.csharp];
+items: [tech.dotnet, tech['aspnet-core'], tech['ef-core'], tech.csharp];
 
 // example questions
-techItems: [tech["system-design"], tech.redis];
+techItems: [tech['system-design'], tech.redis];
 ```
 
 ## `src/features/Interview/data/data.tsx`
@@ -99,50 +99,46 @@ Backend example: `src/features/Interview/data/backend/quizData.ts`.
 Both export a function with the signature `getXyzQuizData(lang: SupportedLanguage): InterviewQuiz` and return localized steps:
 
 ```ts
-export const getCsharpBackendDeveloperQuizData = (
-  lang: SupportedLanguage,
-): InterviewQuiz => {
+export const getCsharpBackendDeveloperQuizData = (lang: SupportedLanguage): InterviewQuiz => {
   const i18n = getI18nInstance(lang);
   return {
     steps: [
       {
-        type: "info",
-        id: "intro",
-        title: i18n._("C# Backend Interview Readiness Test"),
-        subTitle: i18n._(
-          "Assess readiness across APIs, databases, concurrency, and design.",
-        ),
-        buttonTitle: i18n._("Start"),
+        type: 'info',
+        id: 'intro',
+        title: i18n._('C# Backend Interview Readiness Test'),
+        subTitle: i18n._('Assess readiness across APIs, databases, concurrency, and design.'),
+        buttonTitle: i18n._('Start'),
       },
       {
-        type: "record-audio",
-        id: "q-intro-yourself",
-        title: i18n._("Introduce yourself"),
-        subTitle: i18n._("Describe your backend experience in .NET."),
-        buttonTitle: i18n._("Record answer"),
+        type: 'record-audio',
+        id: 'q-intro-yourself',
+        title: i18n._('Introduce yourself'),
+        subTitle: i18n._('Describe your backend experience in .NET.'),
+        buttonTitle: i18n._('Record answer'),
       },
       {
-        type: "analyze-inputs",
-        id: "ai-analysis-1",
-        title: i18n._("Preliminary analysis"),
-        subTitle: i18n._("See strengths and gaps."),
-        buttonTitle: i18n._("Continue"),
-        aiSystemPrompt: "Analyze backend interview answers in markdown.",
-        aiResponseFormat: "markdown",
+        type: 'analyze-inputs',
+        id: 'ai-analysis-1',
+        title: i18n._('Preliminary analysis'),
+        subTitle: i18n._('See strengths and gaps.'),
+        buttonTitle: i18n._('Continue'),
+        aiSystemPrompt: 'Analyze backend interview answers in markdown.',
+        aiResponseFormat: 'markdown',
       },
       {
-        type: "paywall",
-        id: "upgrade",
-        title: i18n._("Unlock full analysis"),
-        subTitle: i18n._("Get detailed feedback and practice."),
-        buttonTitle: i18n._("Continue"),
+        type: 'paywall',
+        id: 'upgrade',
+        title: i18n._('Unlock full analysis'),
+        subTitle: i18n._('Get detailed feedback and practice.'),
+        buttonTitle: i18n._('Continue'),
       },
       {
-        type: "waitlist-done",
-        id: "done",
+        type: 'waitlist-done',
+        id: 'done',
         title: i18n._("You're set!"),
-        subTitle: i18n._("Next steps are ready."),
-        buttonTitle: i18n._("Finish"),
+        subTitle: i18n._('Next steps are ready.'),
+        buttonTitle: i18n._('Finish'),
       },
     ],
   };

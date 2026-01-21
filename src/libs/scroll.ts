@@ -5,16 +5,16 @@ export const scrollTopFast = () => {
 export const scrollTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: "smooth",
+    behavior: 'smooth',
   });
 };
 
 export const scrollToLangButton = async (langCode: string) => {
-  const isWindow = typeof window !== "undefined";
+  const isWindow = typeof window !== 'undefined';
   if (!isWindow) return;
 
   const element = document.querySelector(`button[aria-label='${langCode}']`);
   if (element) {
-    element.scrollIntoView({ behavior: "instant", block: "center" });
+    element.scrollIntoView({ behavior: 'instant', block: 'center' });
   }
 };

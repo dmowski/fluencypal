@@ -1,16 +1,16 @@
-import Stripe from "stripe";
-import { SetupIntentResponse } from "../type";
-import { validateAuthToken } from "../../config/firebase";
+import Stripe from 'stripe';
+import { SetupIntentResponse } from '../type';
+import { validateAuthToken } from '../../config/firebase';
 import {
   getStripeUserInfo,
   getUserInfo,
   setStripeUserInfo,
   StripeUserInfo,
-} from "../../user/getUserInfo";
+} from '../../user/getUserInfo';
 
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || "";
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || '';
 if (!STRIPE_SECRET_KEY) {
-  throw new Error("Missing STRIPE_SECRET_KEY environment variable");
+  throw new Error('Missing STRIPE_SECRET_KEY environment variable');
 }
 const stripe = new Stripe(STRIPE_SECRET_KEY);
 
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
   try {
     const authed = await validateAuthToken(request);
     if (!authed) {
-      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
         status: 401,
       });
     }
@@ -56,15 +56,15 @@ export async function POST(request: Request) {
     const setupIntent = await stripe.setupIntents.create(
       {
         customer: customerId,
-        usage: "off_session",
+        usage: 'off_session',
         // Explicit but optional:
         payment_method_options: {
-          card: { request_three_d_secure: "automatic" },
+          card: { request_three_d_secure: 'automatic' },
         },
         // You can tag the SI too, if you want to trace:
         metadata: {
           firebaseUid: userId,
-          purpose: "fluencypal_card_verification",
+          purpose: 'fluencypal_card_verification',
         },
       },
       {
@@ -79,10 +79,9 @@ export async function POST(request: Request) {
   } catch (err: any) {
     // Map Stripe errors to 4xx where appropriate
     const code = err?.statusCode ?? 500;
-    const message =
-      err?.raw?.message || err?.message || "Unable to create SetupIntent";
+    const message = err?.raw?.message || err?.message || 'Unable to create SetupIntent';
     // Log safe context (no secrets)
-    console.error("createSetupIntent error:", { code, message });
+    console.error('createSetupIntent error:', { code, message });
     return new Response(JSON.stringify({ error: message }), { status: code });
   }
 }

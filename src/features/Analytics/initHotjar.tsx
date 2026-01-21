@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 export const initHotjar = () => {
   (function (h: any, o: any, t: any, j: any, a?: any, r?: any) {
@@ -8,10 +8,10 @@ export const initHotjar = () => {
         (h.hj.q = h.hj.q || []).push(arguments);
       };
     h._hjSettings = { hjid: 6370217, hjsv: 6 };
-    a = o.getElementsByTagName("head")[0];
-    r = o.createElement("script");
+    a = o.getElementsByTagName('head')[0];
+    r = o.createElement('script');
     r.async = 1;
     r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
     a.appendChild(r);
-  })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+  })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
 };

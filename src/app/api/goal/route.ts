@@ -1,6 +1,6 @@
-import { getDB } from "../config/firebase";
+import { getDB } from '../config/firebase';
 
-import { CreateGoalRequest, CreateGoalResponse, GoalQuiz } from "./types";
+import { CreateGoalRequest, CreateGoalResponse, GoalQuiz } from './types';
 
 export async function POST(request: Request) {
   const data = (await request.json()) as CreateGoalRequest;
@@ -9,14 +9,14 @@ export async function POST(request: Request) {
   const docRef = db.collection(`goals`).doc();
 
   const dateToDB: GoalQuiz = {
-    languageToLearn: data.languageToLearn || "en",
-    level: data.level || "A2",
-    description: data.description || "",
+    languageToLearn: data.languageToLearn || 'en',
+    level: data.level || 'A2',
+    description: data.description || '',
     isCreated: false,
     id: docRef.id || Date.now().toString(),
     createdAtHuman: new Date().toLocaleString(),
     createdAt: Date.now(),
-    nativeLanguageCode: data.nativeLanguageCode || "en",
+    nativeLanguageCode: data.nativeLanguageCode || 'en',
   };
 
   await docRef.set(dateToDB);
@@ -32,7 +32,7 @@ export async function GET(request: Request) {
   const db = getDB();
 
   const queryParams = new URL(request.url).searchParams;
-  const id = queryParams.get("id");
+  const id = queryParams.get('id');
   if (!id) {
     return Response.json(null, { status: 400 });
   }
@@ -51,7 +51,7 @@ export async function DELETE(request: Request) {
   const db = getDB();
 
   const queryParams = new URL(request.url).searchParams;
-  const id = queryParams.get("id");
+  const id = queryParams.get('id');
   if (!id) {
     return Response.json(null, { status: 400 });
   }

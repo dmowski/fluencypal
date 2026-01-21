@@ -1,30 +1,30 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-const localStorageCurrencyKey = "currency_ipapi";
+const localStorageCurrencyKey = 'currency_ipapi';
 const getFromLocalStorage = () => {
-  if (typeof window === "undefined") return null;
+  if (typeof window === 'undefined') return null;
   return localStorage.getItem(localStorageCurrencyKey);
 };
 const setToLocalStorage = (currency: string) => {
-  if (typeof window === "undefined") return;
+  if (typeof window === 'undefined') return;
   localStorage.setItem(localStorageCurrencyKey, currency);
 };
 
 async function getCurrencyByIP(): Promise<string> {
-  const isWindow = typeof window !== "undefined";
+  const isWindow = typeof window !== 'undefined';
   if (isWindow) {
     const localCurrency = getFromLocalStorage();
     if (localCurrency) {
       return localCurrency;
     }
   }
-  console.log("getCurrencyByIP");
+  console.log('getCurrencyByIP');
   const res = await fetch(`https://ipapi.co/currency/`);
-  if (!res.ok) throw new Error("Failed to fetch currency from IP");
+  if (!res.ok) throw new Error('Failed to fetch currency from IP');
   const currency = (await res.text()).trim();
-  console.log("currency", currency);
+  console.log('currency', currency);
 
   if (isWindow && currency) {
     setToLocalStorage(currency);
@@ -34,7 +34,7 @@ async function getCurrencyByIP(): Promise<string> {
 }
 
 async function getConversionRate(toCurrency: string): Promise<number> {
-  const isToCurrencyIsUsd = toCurrency.toLowerCase() === "usd";
+  const isToCurrencyIsUsd = toCurrency.toLowerCase() === 'usd';
   if (isToCurrencyIsUsd) {
     return 1;
   }
@@ -44,7 +44,7 @@ async function getConversionRate(toCurrency: string): Promise<number> {
   );
 
   if (!res.ok) {
-    throw new Error("Failed to fetch conversion rate");
+    throw new Error('Failed to fetch conversion rate');
   }
 
   const data = await res.json();
@@ -60,7 +60,7 @@ async function getConversionRate(toCurrency: string): Promise<number> {
 
 export const useCurrency = () => {
   const [rate, setRate] = useState<number>(1);
-  const [currency, setCurrency] = useState<string>("USD");
+  const [currency, setCurrency] = useState<string>('USD');
 
   useEffect(() => {
     const convertCurrency = async () => {
@@ -73,7 +73,7 @@ export const useCurrency = () => {
           setCurrency(currency);
         }
       } catch (error) {
-        console.error("Failed to convert currency:", error);
+        console.error('Failed to convert currency:', error);
       }
     };
 
@@ -83,8 +83,8 @@ export const useCurrency = () => {
   const convertUsdToCurrency = (amountInUsd: number) => {
     const convertedAmount = amountInUsd * rate;
 
-    const formattedAmount = new Intl.NumberFormat("en-US", {
-      style: "currency",
+    const formattedAmount = new Intl.NumberFormat('en-US', {
+      style: 'currency',
       currency,
       maximumFractionDigits: 2,
     }).format(convertedAmount);
@@ -94,7 +94,7 @@ export const useCurrency = () => {
 
   return {
     rate,
-    currency: `${currency || "USD"}`.toLowerCase(),
+    currency: `${currency || 'USD'}`.toLowerCase(),
     convertUsdToCurrency,
   };
 };

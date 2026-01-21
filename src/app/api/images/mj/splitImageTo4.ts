@@ -1,5 +1,5 @@
-import sharp from "sharp";
-import { convertImageUrlToBuffer } from "./convertImageUrlToBuffer";
+import sharp from 'sharp';
+import { convertImageUrlToBuffer } from './convertImageUrlToBuffer';
 
 export const splitImageTo4 = async (imageUrl: string): Promise<Buffer[]> => {
   try {
@@ -10,7 +10,7 @@ export const splitImageTo4 = async (imageUrl: string): Promise<Buffer[]> => {
     const { width, height } = await sharp(imageBuffer).metadata();
 
     if (!width || !height) {
-      throw new Error("Could not retrieve image dimensions.");
+      throw new Error('Could not retrieve image dimensions.');
     }
 
     // Calculate dimensions for splitting
@@ -37,7 +37,7 @@ export const splitImageTo4 = async (imageUrl: string): Promise<Buffer[]> => {
 
     return pieces;
   } catch (error) {
-    console.error("Error splitting image:", error);
+    console.error('Error splitting image:', error);
     throw error;
   }
 };

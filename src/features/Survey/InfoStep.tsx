@@ -1,17 +1,14 @@
-"use client";
-import { Checkbox, Stack, Typography } from "@mui/material";
-import { useLingui } from "@lingui/react";
-import { ReactNode } from "react";
-import { ArrowRight } from "lucide-react";
-import { ColorIconTextList, ColorIconTextListItem } from "./ColorIconTextList";
-import { InterviewQuizButton } from "../Goal/Quiz/InterviewQuizButton";
-import { QuizOption } from "../Case/types";
-import { useAuth } from "../Auth/useAuth";
+'use client';
+import { Checkbox, Stack, Typography } from '@mui/material';
+import { useLingui } from '@lingui/react';
+import { ReactNode } from 'react';
+import { ArrowRight } from 'lucide-react';
+import { ColorIconTextList, ColorIconTextListItem } from './ColorIconTextList';
+import { InterviewQuizButton } from '../Goal/Quiz/InterviewQuizButton';
+import { QuizOption } from '../Case/types';
+import { useAuth } from '../Auth/useAuth';
 
-const replacePlaceholders = (
-  text: string,
-  placeholders: Record<string, string>,
-) => {
+const replacePlaceholders = (text: string, placeholders: Record<string, string>) => {
   let replacedText = text;
   const keys = Object.keys(placeholders);
   keys.forEach((key) => {
@@ -71,44 +68,44 @@ export const InfoStep = ({
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
-  const userName = auth.userInfo?.displayName || "";
+  const userName = auth.userInfo?.displayName || '';
 
   const forUserNameValue = i18n._(`for {USER_NAME}`, { USER_NAME: userName });
 
   const titleWithTemplate = title
     ? replacePlaceholders(title, {
-        "{FOR_USER_NAME}": userName ? forUserNameValue : "",
+        '{FOR_USER_NAME}': userName ? forUserNameValue : '',
       })
     : title;
 
   return (
     <Stack
       sx={{
-        gap: "30px",
-        paddingBottom: "20px",
+        gap: '30px',
+        paddingBottom: '20px',
       }}
     >
       <Stack
         sx={{
-          width: "100%",
-          gap: "10px",
-          padding: "0 10px",
+          width: '100%',
+          gap: '10px',
+          padding: '0 10px',
         }}
       >
         <Stack
           sx={{
-            width: "100%",
-            gap: "5px",
-            paddingTop: "40px",
+            width: '100%',
+            gap: '5px',
+            paddingTop: '40px',
           }}
         >
           {titleWithTemplate && (
             <Typography
               variant="h4"
-              className={`${isStepLoading ? "loading-shimmer" : ""}`}
+              className={`${isStepLoading ? 'loading-shimmer' : ''}`}
               sx={{
                 fontWeight: 660,
-                lineHeight: "1.2",
+                lineHeight: '1.2',
               }}
             >
               {titleWithTemplate}
@@ -117,10 +114,10 @@ export const InfoStep = ({
           {subTitle && (
             <Typography
               variant="body1"
-              className={`${isStepLoading ? "loading-shimmer" : ""}`}
+              className={`${isStepLoading ? 'loading-shimmer' : ''}`}
               sx={{
                 opacity: 0.9,
-                paddingTop: "10px",
+                paddingTop: '10px',
               }}
             >
               {subTitle}
@@ -132,14 +129,10 @@ export const InfoStep = ({
           {!!listItems?.length && (
             <Stack
               sx={{
-                paddingTop: "30px",
+                paddingTop: '30px',
               }}
             >
-              <ColorIconTextList
-                listItems={listItems}
-                iconSize="26px"
-                gap="23px"
-              />
+              <ColorIconTextList listItems={listItems} iconSize="26px" gap="23px" />
             </Stack>
           )}
 
@@ -147,8 +140,8 @@ export const InfoStep = ({
             <>
               <Stack
                 sx={{
-                  paddingTop: "30px",
-                  gap: "10px",
+                  paddingTop: '30px',
+                  gap: '10px',
                 }}
               >
                 {options.map((option) => {
@@ -158,7 +151,7 @@ export const InfoStep = ({
                   return (
                     <Stack
                       key={option.label}
-                      component={"button"}
+                      component={'button'}
                       onClick={() => {
                         let newSelectedOptions: QuizOption[] = [];
                         if (multipleSelection) {
@@ -168,10 +161,7 @@ export const InfoStep = ({
                                 (selected) => selected.label !== option.label,
                               ) || [];
                           } else {
-                            newSelectedOptions = [
-                              ...(selectedOptions || []),
-                              option,
-                            ];
+                            newSelectedOptions = [...(selectedOptions || []), option];
                           }
                         } else {
                           newSelectedOptions = isSelected ? [] : [option];
@@ -179,50 +169,46 @@ export const InfoStep = ({
                         onSelectOptionsChange(newSelectedOptions);
                       }}
                       sx={{
-                        cursor: "pointer",
-                        color: "inherit",
-                        padding: "5px 8px",
-                        flexDirection: "row",
-                        gap: "5px",
-                        alignItems: "center",
-                        textAlign: "left",
-                        borderRadius: "8px",
+                        cursor: 'pointer',
+                        color: 'inherit',
+                        padding: '5px 8px',
+                        flexDirection: 'row',
+                        gap: '5px',
+                        alignItems: 'center',
+                        textAlign: 'left',
+                        borderRadius: '8px',
                         border: isSelected
-                          ? "2px solid rgb(96, 165, 250)"
-                          : "2px solid rgba(96, 165, 250, 0.1)",
-                        backgroundColor: isSelected
-                          ? "rgba(96, 165, 250, 0.1)"
-                          : "transparent",
-                        "&:hover": {
+                          ? '2px solid rgb(96, 165, 250)'
+                          : '2px solid rgba(96, 165, 250, 0.1)',
+                        backgroundColor: isSelected ? 'rgba(96, 165, 250, 0.1)' : 'transparent',
+                        '&:hover': {
                           backgroundColor: isSelected
-                            ? "rgba(96, 165, 250, 0.15)"
-                            : "rgba(255, 255, 255, 0.05)",
+                            ? 'rgba(96, 165, 250, 0.15)'
+                            : 'rgba(255, 255, 255, 0.05)',
                         },
                       }}
                     >
                       <Checkbox
                         checked={isSelected}
                         sx={{
-                          pointerEvents: "none",
+                          pointerEvents: 'none',
                         }}
                       />
                       <Stack
                         sx={{
-                          width: "100%",
-                          flexDirection: "row",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          paddingRight: "10px",
+                          width: '100%',
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          paddingRight: '10px',
                         }}
                       >
                         <Stack
                           sx={{
-                            alignItems: "flex-start",
+                            alignItems: 'flex-start',
                           }}
                         >
-                          <Typography variant="body1">
-                            {option.label}
-                          </Typography>
+                          <Typography variant="body1">{option.label}</Typography>
                           {option.subTitle && (
                             <Typography
                               variant="body2"
@@ -236,13 +222,13 @@ export const InfoStep = ({
                         </Stack>
                         {option.iconImageUrl && (
                           <Stack
-                            component={"img"}
+                            component={'img'}
                             src={option.iconImageUrl}
                             sx={{
-                              width: "20px",
-                              height: "20px",
-                              objectFit: "cover",
-                              backgroundColor: "rgba(255,0,0,0.05)",
+                              width: '20px',
+                              height: '20px',
+                              objectFit: 'cover',
+                              backgroundColor: 'rgba(255,0,0,0.05)',
                             }}
                           />
                         )}
@@ -257,20 +243,20 @@ export const InfoStep = ({
           {imageUrl && (
             <Stack
               sx={{
-                paddingTop: "10px",
+                paddingTop: '10px',
               }}
             >
               <Stack
-                component={"img"}
+                component={'img'}
                 src={imageUrl}
                 sx={{
-                  width: "90%",
-                  aspectRatio: imageAspectRatio || "16/9",
-                  borderRadius: "8px",
-                  objectFit: "cover",
-                  backgroundColor: "rgba(255,255,255,0.05)",
-                  "@media (max-width: 600px)": {
-                    width: "100%",
+                  width: '90%',
+                  aspectRatio: imageAspectRatio || '16/9',
+                  borderRadius: '8px',
+                  objectFit: 'cover',
+                  backgroundColor: 'rgba(255,255,255,0.05)',
+                  '@media (max-width: 600px)': {
+                    width: '100%',
                   },
                 }}
               />
@@ -282,8 +268,8 @@ export const InfoStep = ({
           onClick={() => {
             !isStepLoading && onClick();
           }}
-          color={"primary"}
-          title={actionButtonTitle || i18n._("Next")}
+          color={'primary'}
+          title={actionButtonTitle || i18n._('Next')}
           disabled={disabled}
           startIcon={actionButtonStartIcon}
           endIcon={actionButtonEndIcon || <ArrowRight />}

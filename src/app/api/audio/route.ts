@@ -1,30 +1,22 @@
-import { convertUsdToHours, PROJECT_PROFIT_MARGIN } from "@/common/ai";
-import { GetAudioUrlRequest, GetAudioUrlResponse } from "@/common/requests";
-import { validateAuthToken } from "../config/firebase";
-import {
-  getPublicTextToAudioByVoiceIdUrl,
-  voiceMap,
-} from "./getPublicTextToAudioByVoiceIdUrl";
-import { AudioUsageLog } from "@/common/usage";
-import { addUsage } from "../payment/addUsage";
-import { getUserBalance } from "../payment/getUserBalance";
+import { convertUsdToHours, PROJECT_PROFIT_MARGIN } from '@/common/ai';
+import { GetAudioUrlRequest, GetAudioUrlResponse } from '@/common/requests';
+import { validateAuthToken } from '../config/firebase';
+import { getPublicTextToAudioByVoiceIdUrl, voiceMap } from './getPublicTextToAudioByVoiceIdUrl';
+import { AudioUsageLog } from '@/common/usage';
+import { addUsage } from '../payment/addUsage';
+import { getUserBalance } from '../payment/getUserBalance';
 
 export async function POST(request: Request) {
   const requestData = (await request.json()) as GetAudioUrlRequest;
   const languageCode = requestData.languageCode;
 
   const userInfo = await validateAuthToken(request);
-  const balance = await getUserBalance(userInfo.uid || "");
+  const balance = await getUserBalance(userInfo.uid || '');
   if (!balance.isFullAccess) {
-    console.error("Insufficient balance.");
+    console.error('Insufficient balance.');
   }
 
-  const audioInfo = await getPublicTextToAudioByVoiceIdUrl(
-    requestData.text,
-    voiceMap.f,
-    0.5,
-    "en",
-  );
+  const audioInfo = await getPublicTextToAudioByVoiceIdUrl(requestData.text, voiceMap.f, 0.5, 'en');
   // eleven_turbo_v2_5 Model
   // 100,000 characters = 30$
   // 1 character = 0.0003$
@@ -43,7 +35,7 @@ export async function POST(request: Request) {
     createdAt: Date.now(),
     priceUsd,
     priceHours,
-    type: "audio",
+    type: 'audio',
     size: requestData.text.length,
     duration: audioInfo.duration,
   };

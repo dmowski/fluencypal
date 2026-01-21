@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { JSX, ReactNode } from "react";
-import { InterviewCoreData, InterviewQuiz } from "../../../types";
-import { useProvideInterviewQuizContext } from "./useProvideInterviewQuizContext";
-import { QuizContext } from "./QuizContext";
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { JSX, ReactNode } from 'react';
+import { InterviewCoreData, InterviewQuiz } from '../../../types';
+import { useProvideInterviewQuizContext } from './useProvideInterviewQuizContext';
+import { QuizContext } from './QuizContext';
 
 export function InterviewQuizProvider({
   interviewId,

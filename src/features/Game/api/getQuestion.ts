@@ -1,21 +1,18 @@
-import { GameQuestionFull, GameQuestionShort } from "@/features/Game/types";
-import { getDB } from "../../../app/api/config/firebase";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { GameQuestionFull, GameQuestionShort } from '@/features/Game/types';
+import { getDB } from '../../../app/api/config/firebase';
+import { SupportedLanguage } from '@/features/Lang/lang';
 
 interface getQuestionProps {
   userId: string;
   gameQuestionId: string;
 }
 
-export const getQuestionById = async ({
-  userId,
-  gameQuestionId,
-}: getQuestionProps) => {
+export const getQuestionById = async ({ userId, gameQuestionId }: getQuestionProps) => {
   const db = getDB();
   const questionDoc = await db
-    .collection("users")
+    .collection('users')
     .doc(userId)
-    .collection("gameQuestions")
+    .collection('gameQuestions')
     .doc(gameQuestionId)
     .get();
   if (!questionDoc.exists) {
@@ -34,9 +31,9 @@ export const setQuestion = async ({ userId, question }: setQuestionProps) => {
   const db = getDB();
   const questionId = question.id;
   await db
-    .collection("users")
+    .collection('users')
     .doc(userId)
-    .collection("gameQuestions")
+    .collection('gameQuestions')
     .doc(questionId)
     .set(question);
 };
@@ -47,10 +44,10 @@ export const getUnansweredQuestions = async (
 ) => {
   const db = getDB();
   const questionsSnapshot = await db
-    .collection("users")
+    .collection('users')
     .doc(userId)
-    .collection("gameQuestions")
-    .where("answeredAt", "==", null)
+    .collection('gameQuestions')
+    .where('answeredAt', '==', null)
     .get();
 
   const questions: GameQuestionFull[] = [];
@@ -63,9 +60,7 @@ export const getUnansweredQuestions = async (
   return questions;
 };
 
-export const convertFullQuestionToShort = (
-  question: GameQuestionFull,
-): GameQuestionShort => {
+export const convertFullQuestionToShort = (question: GameQuestionFull): GameQuestionShort => {
   const shortQuestion: GameQuestionShort = {
     id: question.id,
     type: question.type,

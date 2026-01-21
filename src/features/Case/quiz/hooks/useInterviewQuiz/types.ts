@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage } from '@/features/Lang/lang';
 import {
   InterviewCoreData,
   InterviewQuiz,
   InterviewQuizStep,
   InterviewQuizSurvey,
   QuizOption,
-} from "../../../types";
+} from '../../../types';
 
 export type QuizStep = string;
 
@@ -26,10 +26,7 @@ export interface InterviewQuizContextType {
   isCanGoToMainPage: boolean;
   isFirstLoading: boolean;
   survey: InterviewQuizSurvey | null;
-  updateSurvey: (
-    surveyDoc: InterviewQuizSurvey,
-    label: string,
-  ) => Promise<InterviewQuizSurvey>;
+  updateSurvey: (surveyDoc: InterviewQuizSurvey, label: string) => Promise<InterviewQuizSurvey>;
   updateAnswerTranscription: (
     survey: InterviewQuizSurvey,
     stepId: string,

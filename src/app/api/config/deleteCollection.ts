@@ -1,11 +1,10 @@
-import { getDB } from "./firebase";
+import { getDB } from './firebase';
 
 export async function deleteCollection(collectionPath: string): Promise<void> {
   const db = getDB();
   const citiesRef = db.collection(collectionPath);
   const snapshot = await citiesRef.get();
-  const docs: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>[] =
-    [];
+  const docs: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>[] = [];
   snapshot.forEach((doc) => docs.push(doc));
 
   const resultOfDelete = docs.map(async (doc) => {

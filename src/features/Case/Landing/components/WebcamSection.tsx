@@ -1,40 +1,35 @@
-import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { WebcamDemoSection } from "../../types";
-import { Theme, themeMap } from "./theme";
-import { H2, SubTitle } from "./Typography";
-import { ColorIconTextList } from "@/features/Survey/ColorIconTextList";
-import {
-  CircleArrowRight,
-  CircleCheckBig,
-  MoveRight,
-  Users,
-} from "lucide-react";
+import { Button, IconButton, Stack, Typography } from '@mui/material';
+import { WebcamDemoSection } from '../../types';
+import { Theme, themeMap } from './theme';
+import { H2, SubTitle } from './Typography';
+import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
+import { CircleArrowRight, CircleCheckBig, MoveRight, Users } from 'lucide-react';
 
-import CallEndIcon from "@mui/icons-material/CallEnd";
-import MicOffIcon from "@mui/icons-material/MicOff";
+import CallEndIcon from '@mui/icons-material/CallEnd';
+import MicOffIcon from '@mui/icons-material/MicOff';
 
-import VideocamIcon from "@mui/icons-material/Videocam";
+import VideocamIcon from '@mui/icons-material/Videocam';
 
 export const WebCamButtons = () => {
   return (
     <Stack
       sx={{
-        position: "absolute",
-        left: "0px",
-        bottom: "0px",
-        alignItems: "center",
-        width: "100%",
-        padding: "10px 0",
-        flexDirection: "row",
-        justifyContent: "center",
-        gap: "10px",
+        position: 'absolute',
+        left: '0px',
+        bottom: '0px',
+        alignItems: 'center',
+        width: '100%',
+        padding: '10px 0',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        gap: '10px',
       }}
     >
       <IconButton
         aria-label="Turn microphone"
         sx={{
-          backgroundColor: "rgba(100, 100, 100, 0.4)",
-          color: "#fff",
+          backgroundColor: 'rgba(100, 100, 100, 0.4)',
+          color: '#fff',
         }}
         size="large"
       >
@@ -45,10 +40,10 @@ export const WebCamButtons = () => {
         size="large"
         aria-label="End call"
         sx={{
-          width: "70px",
-          borderRadius: "30px",
-          backgroundColor: "#dc362e",
-          ":hover": { backgroundColor: "rgba(255, 0, 0, 0.7)" },
+          width: '70px',
+          borderRadius: '30px',
+          backgroundColor: '#dc362e',
+          ':hover': { backgroundColor: 'rgba(255, 0, 0, 0.7)' },
         }}
       >
         <CallEndIcon />
@@ -57,8 +52,8 @@ export const WebCamButtons = () => {
       <IconButton
         aria-label="Turn camera"
         sx={{
-          backgroundColor: "rgba(100, 100, 100, 0.4)",
-          color: "#fff",
+          backgroundColor: 'rgba(100, 100, 100, 0.4)',
+          color: '#fff',
         }}
         size="large"
       >
@@ -81,30 +76,30 @@ export const WebcamSection = (props: WebcamSectionProps) => {
     <Stack
       id={props.id}
       sx={{
-        padding: "150px 0",
-        alignItems: "center",
-        width: "100%",
+        padding: '150px 0',
+        alignItems: 'center',
+        width: '100%',
         backgroundColor: colors.sectionBgColor,
         color: colors.textColor,
 
-        "@media (max-width: 600px)": {
-          padding: "90px 0 50px 0",
+        '@media (max-width: 600px)': {
+          padding: '90px 0 50px 0',
         },
       }}
     >
       <Stack
         sx={{
-          maxWidth: "1300px",
-          width: "100%",
-          gap: "24px",
-          padding: "0 10px",
-          alignItems: "center",
+          maxWidth: '1300px',
+          width: '100%',
+          gap: '24px',
+          padding: '0 10px',
+          alignItems: 'center',
         }}
       >
         <Stack
           sx={{
-            alignItems: "center",
-            gap: "10px",
+            alignItems: 'center',
+            gap: '10px',
           }}
         >
           <H2>{props.data.title}</H2>
@@ -113,46 +108,46 @@ export const WebcamSection = (props: WebcamSectionProps) => {
 
         <Stack
           sx={{
-            gap: "14px",
-            marginTop: "26px",
-            alignItems: "center",
-            width: "100%",
+            gap: '14px',
+            marginTop: '26px',
+            alignItems: 'center',
+            width: '100%',
           }}
         >
           <Stack
             sx={{
               //backgroundColor: "rgba(0, 0, 0, 1)",
-              position: "relative",
+              position: 'relative',
             }}
           >
             <Stack
               sx={{
-                position: "relative",
+                position: 'relative',
                 zIndex: 1,
               }}
             >
               <Stack
-                component={"video"}
+                component={'video'}
                 autoPlay
                 loop
                 playsInline
                 controls={false}
                 muted
                 sx={{
-                  width: "864px",
-                  aspectRatio: "16/9",
-                  maxWidth: "100%",
-                  borderRadius: "12px",
-                  objectFit: "cover",
-                  boxShadow: "0 0 20px rgba(0, 0, 0, 1)",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
-                  "@media (max-width: 1300px)": {
-                    width: "calc(100vw - 420px)",
+                  width: '864px',
+                  aspectRatio: '16/9',
+                  maxWidth: '100%',
+                  borderRadius: '12px',
+                  objectFit: 'cover',
+                  boxShadow: '0 0 20px rgba(0, 0, 0, 1)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                  '@media (max-width: 1300px)': {
+                    width: 'calc(100vw - 420px)',
                   },
 
-                  "@media (max-width: 1000px)": {
-                    width: "100%",
-                    borderRadius: "12px 12px 0 0",
+                  '@media (max-width: 1000px)': {
+                    width: '100%',
+                    borderRadius: '12px 12px 0 0',
                   },
                 }}
                 src={props.data.webCamPreview.videoUrl}
@@ -162,19 +157,19 @@ export const WebcamSection = (props: WebcamSectionProps) => {
 
             <Stack
               sx={{
-                alignItems: "center",
-                justifyContent: "space-between",
-                flexDirection: "row",
-                position: "absolute",
-                top: "calc(50% - 60px)",
-                left: "-200px",
-                width: "calc(100% + 400px)",
-                "@media (max-width: 1000px)": {
-                  position: "relative",
-                  top: "0",
-                  left: "0",
-                  width: "100%",
-                  gap: "1px",
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                position: 'absolute',
+                top: 'calc(50% - 60px)',
+                left: '-200px',
+                width: 'calc(100% + 400px)',
+                '@media (max-width: 1000px)': {
+                  position: 'relative',
+                  top: '0',
+                  left: '0',
+                  width: '100%',
+                  gap: '1px',
                 },
               }}
             >
@@ -192,23 +187,23 @@ export const WebcamSection = (props: WebcamSectionProps) => {
 
             <Stack
               sx={{
-                position: "absolute",
-                top: "15px",
-                left: "20px",
+                position: 'absolute',
+                top: '15px',
+                left: '20px',
                 zIndex: 1,
               }}
             >
-              <Typography variant="h6" component={"span"}>
+              <Typography variant="h6" component={'span'}>
                 {props.data.webCamPreview.title}
               </Typography>
               <Stack
                 sx={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "7px",
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: '7px',
                 }}
               >
-                <Users size={"12px"} />
+                <Users size={'12px'} />
                 <Typography
                   variant="caption"
                   sx={{
@@ -222,33 +217,30 @@ export const WebcamSection = (props: WebcamSectionProps) => {
           </Stack>
           <Stack
             sx={{
-              width: "auto",
-              gap: "25px",
-              paddingTop: "20px",
+              width: 'auto',
+              gap: '25px',
+              paddingTop: '20px',
             }}
           >
             <Typography
               align="left"
               sx={{
-                display: "flex",
-                width: "100%",
+                display: 'flex',
+                width: '100%',
 
-                fontSize: "20px",
-                maxWidth: "864px",
-                "@media (max-width: 1300px)": {
-                  maxWidth: "calc(100vw - 420px)",
+                fontSize: '20px',
+                maxWidth: '864px',
+                '@media (max-width: 1300px)': {
+                  maxWidth: 'calc(100vw - 420px)',
                 },
-                "@media (max-width: 1000px)": {
-                  maxWidth: "100vw",
+                '@media (max-width: 1000px)': {
+                  maxWidth: '100vw',
                 },
               }}
             >
               {props.data.content}
             </Typography>
-            <ColorIconTextList
-              listItems={props.data.infoList}
-              iconSize="22px"
-            />
+            <ColorIconTextList listItems={props.data.infoList} iconSize="22px" />
 
             {props.data.buttonTitle && props.buttonHref && (
               <Stack>
@@ -258,11 +250,11 @@ export const WebcamSection = (props: WebcamSectionProps) => {
                   size="large"
                   color="info"
                   sx={{
-                    marginTop: "12px",
-                    width: "max-content",
-                    borderRadius: "48px",
-                    fontSize: "1rem",
-                    padding: "12px 30px",
+                    marginTop: '12px',
+                    width: 'max-content',
+                    borderRadius: '48px',
+                    fontSize: '1rem',
+                    padding: '12px 30px',
                   }}
                   startIcon={<VideocamIcon />}
                   endIcon={<MoveRight />}
@@ -290,34 +282,32 @@ const NavigationBlock = ({
   return (
     <Stack
       sx={{
-        alignItems: "center",
-        backgroundColor: "rgba(255, 255, 255, 0.1)",
-        padding: "20px 12px 18px 12px",
-        borderRadius: isDone ? "12px 0 0 12px" : "0 12px 12px 0",
-        width: "200px",
-        position: "relative",
+        alignItems: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        padding: '20px 12px 18px 12px',
+        borderRadius: isDone ? '12px 0 0 12px' : '0 12px 12px 0',
+        width: '200px',
+        position: 'relative',
         zIndex: 0,
-        "@media (max-width: 1000px)": {
-          width: "100%",
-          borderRadius: isDone ? "0 0 0 12px" : "0 0 12px 0",
-          padding: "32px 5px 18px 5px",
-          marginTop: "-10px",
+        '@media (max-width: 1000px)': {
+          width: '100%',
+          borderRadius: isDone ? '0 0 0 12px' : '0 0 12px 0',
+          padding: '32px 5px 18px 5px',
+          marginTop: '-10px',
         },
       }}
     >
-      {isDone && <CircleCheckBig size={"27px"} color="rgb(96, 165, 250)" />}
-      {!isDone && (
-        <CircleArrowRight size={"27px"} color="rgba(255, 255, 255, 0.6)" />
-      )}
+      {isDone && <CircleCheckBig size={'27px'} color="rgb(96, 165, 250)" />}
+      {!isDone && <CircleArrowRight size={'27px'} color="rgba(255, 255, 255, 0.6)" />}
 
       <Typography
         align="center"
         sx={{
-          fontSize: "18px",
+          fontSize: '18px',
           fontWeight: 500,
-          paddingTop: "10px",
-          "@media (max-width: 1100px)": {
-            fontSize: "16px",
+          paddingTop: '10px',
+          '@media (max-width: 1100px)': {
+            fontSize: '16px',
           },
         }}
       >
@@ -328,7 +318,7 @@ const NavigationBlock = ({
         variant="caption"
         align="center"
         sx={{
-          textTransform: "uppercase",
+          textTransform: 'uppercase',
           opacity: 0.6,
         }}
       >

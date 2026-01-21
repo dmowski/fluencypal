@@ -1,14 +1,10 @@
-"use client";
+'use client';
 
-import { useAuth } from "@/features/Auth/useAuth";
-import {
-  InterviewQuizContextType,
-  InterviewQuizProps,
-  QuizStep,
-} from "./types";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { useQuizCore } from "../useQuizCore";
-import { db } from "@/features/Firebase/firebaseDb";
+import { useAuth } from '@/features/Auth/useAuth';
+import { InterviewQuizContextType, InterviewQuizProps, QuizStep } from './types';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { useQuizCore } from '../useQuizCore';
+import { db } from '@/features/Firebase/firebaseDb';
 import {
   AnalyzeInputsQuizStep,
   InterviewQuizAnswer,
@@ -17,22 +13,22 @@ import {
   QuizAnswers,
   QuizOption,
   QuizResults,
-} from "../../../types";
-import { useQuizSurveyData } from "../useQuizSurveyData";
-import { useEffect, useState } from "react";
-import { initEmptyData } from "./data";
-import { getHash } from "./hash";
-import { useTextAi } from "@/features/Ai/useTextAi";
-import { MODELS } from "@/common/ai";
-import { useAnalytics } from "@/features/Analytics/useAnalytics";
-import { ScorePreview } from "@/features/Case/Landing/components/ScorePreviewSection";
-import { GoalPlan } from "@/features/Plan/types";
-import { usePlan } from "@/features/Plan/usePlan";
-import { useAiUserInfo } from "@/features/Ai/useAiUserInfo";
-import { ChatMessage } from "@/common/conversation";
-import { useSettings } from "@/features/Settings/useSettings";
-import { useRouter } from "next/navigation";
-import { sleep } from "@/libs/sleep";
+} from '../../../types';
+import { useQuizSurveyData } from '../useQuizSurveyData';
+import { useEffect, useState } from 'react';
+import { initEmptyData } from './data';
+import { getHash } from './hash';
+import { useTextAi } from '@/features/Ai/useTextAi';
+import { MODELS } from '@/common/ai';
+import { useAnalytics } from '@/features/Analytics/useAnalytics';
+import { ScorePreview } from '@/features/Case/Landing/components/ScorePreviewSection';
+import { GoalPlan } from '@/features/Plan/types';
+import { usePlan } from '@/features/Plan/usePlan';
+import { useAiUserInfo } from '@/features/Ai/useAiUserInfo';
+import { ChatMessage } from '@/common/conversation';
+import { useSettings } from '@/features/Settings/useSettings';
+import { useRouter } from 'next/navigation';
+import { sleep } from '@/libs/sleep';
 
 export function useProvideInterviewQuizContext({
   coreData,
@@ -68,16 +64,15 @@ export function useProvideInterviewQuizContext({
       settings.loading ||
       !auth.uid ||
       !settings.userSettings?.createdAt ||
-      (appMode === "interview" && settings.conversationMode === "call")
+      (appMode === 'interview' && settings.conversationMode === 'call')
     ) {
       return;
     }
-    settings.setAppMode("interview");
-    settings.setConversationMode("call");
+    settings.setAppMode('interview');
+    settings.setConversationMode('call');
   }, [settings.loading, appMode, auth.uid]);
 
-  const currentStep =
-    quiz.steps.find((step) => step.id === core.currentStepId) || null;
+  const currentStep = quiz.steps.find((step) => step.id === core.currentStepId) || null;
 
   const updateAnswerTranscription = async (
     survey: InterviewQuizSurvey,
@@ -86,7 +81,7 @@ export function useProvideInterviewQuizContext({
   ): Promise<InterviewQuizSurvey> => {
     const answerData: InterviewQuizAnswer = {
       stepId,
-      question: currentStep?.title || "",
+      question: currentStep?.title || '',
       answer: fullAnswerTranscription,
     };
 
@@ -99,18 +94,11 @@ export function useProvideInterviewQuizContext({
       },
     };
 
-    return await data.updateSurvey(
-      updatedSurvey,
-      `Update answer transcription for step ${stepId}`,
-    );
+    return await data.updateSurvey(updatedSurvey, `Update answer transcription for step ${stepId}`);
   };
 
-  const [isAnalyzingInputs, setIsAnalyzingInputs] = useState<
-    Record<string, boolean>
-  >({});
-  const [isAnalyzingInputsError, setIsAnalyzingInputsError] = useState<
-    Record<string, string>
-  >({});
+  const [isAnalyzingInputs, setIsAnalyzingInputs] = useState<Record<string, boolean>>({});
+  const [isAnalyzingInputsError, setIsAnalyzingInputsError] = useState<Record<string, string>>({});
 
   const analyzeInputs = async ({
     step,
@@ -129,14 +117,11 @@ export function useProvideInterviewQuizContext({
     }
 
     setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: true }));
-    setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: "" }));
+    setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: '' }));
 
     const currentStepIndex = quiz.steps.findIndex((s) => s.id === step.id);
     const previousSteps = quiz.steps.filter((step, index) => {
-      return (
-        index < currentStepIndex &&
-        (step.type === "record-audio" || step.type === "options")
-      );
+      return index < currentStepIndex && (step.type === 'record-audio' || step.type === 'options');
     });
     const previousStepsIdsToAnswer = previousSteps.map((s) => s.id);
 
@@ -145,19 +130,18 @@ export function useProvideInterviewQuizContext({
       return userAnswersIds.includes(answerStepId);
     });
 
-    const inEnoughDataToAnalyze =
-      goodAnswersIds.length === previousStepsIdsToAnswer.length;
+    const inEnoughDataToAnalyze = goodAnswersIds.length === previousStepsIdsToAnswer.length;
     const survey = data.survey;
     if (!survey) {
       setIsAnalyzingInputsError((prev) => ({
         ...prev,
-        [stepId]: "Survey data is not loaded.",
+        [stepId]: 'Survey data is not loaded.',
       }));
       setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
       return;
     }
     if (!inEnoughDataToAnalyze) {
-      const errorMessage = "Not enough data to analyze inputs.";
+      const errorMessage = 'Not enough data to analyze inputs.';
       setIsAnalyzingInputsError((prev) => ({
         ...prev,
         [stepId]: errorMessage,
@@ -170,36 +154,33 @@ export function useProvideInterviewQuizContext({
       .map((id) => {
         const questionStep = quiz.steps.find((step) => step.id === id);
 
-        const questionTitle = questionStep
-          ? questionStep.title
-          : "Unknown question";
-        const questionSubTitle = questionStep ? questionStep.subTitle : "";
+        const questionTitle = questionStep ? questionStep.title : 'Unknown question';
+        const questionSubTitle = questionStep ? questionStep.subTitle : '';
 
         const questionHeader = `Question: ${questionTitle}\n${questionSubTitle}\nAnswer:`;
-        const answer = answers[id]?.answer || "";
+        const answer = answers[id]?.answer || '';
         return `${questionHeader}\n${answer}`;
       })
-      .join("\n\n");
+      .join('\n\n');
 
     const inputDataHash = getHash(combinedAnswers + step.aiSystemPrompt);
     const isAlreadyAnswered = inputDataHash === results[step.id]?.inputHash;
     if (isAlreadyAnswered) {
       setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
-      setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: "" }));
+      setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: '' }));
       return;
     }
 
-    const stepSystemMessage = step.aiSystemPrompt || "";
-    const systemMessageWrapper = "Return the response in Markdown format.";
-    const systemMessage =
-      `${stepSystemMessage}\n${systemMessageWrapper}`.trim();
+    const stepSystemMessage = step.aiSystemPrompt || '';
+    const systemMessageWrapper = 'Return the response in Markdown format.';
+    const systemMessage = `${stepSystemMessage}\n${systemMessageWrapper}`.trim();
 
     try {
       const outputFormat = step.aiResponseFormat;
-      let markdownFeedback = "";
+      let markdownFeedback = '';
       let jsonScoreFeedback: ScorePreview | null = null;
       let practicePlan: GoalPlan | null = null;
-      if (outputFormat === "markdown") {
+      if (outputFormat === 'markdown') {
         const response = await ai.generate({
           systemMessage,
           userMessage: combinedAnswers,
@@ -207,7 +188,7 @@ export function useProvideInterviewQuizContext({
         });
         markdownFeedback = response.trim();
       }
-      if (outputFormat === "json-scope") {
+      if (outputFormat === 'json-scope') {
         const response = await ai.generateJson<ScorePreview>({
           systemMessage,
           userMessage: combinedAnswers,
@@ -217,28 +198,25 @@ export function useProvideInterviewQuizContext({
         jsonScoreFeedback = response || null;
       }
 
-      if (outputFormat === "practice-plan") {
+      if (outputFormat === 'practice-plan') {
         const conversationMessages: ChatMessage[] = goodAnswersIds
           .map((id) => {
             const questionStep = quiz.steps.find((step) => step.id === id);
 
-            const questionTitle = questionStep
-              ? questionStep.title
-              : "Unknown question";
-            const questionSubTitle = questionStep ? questionStep.subTitle : "";
+            const questionTitle = questionStep ? questionStep.title : 'Unknown question';
+            const questionSubTitle = questionStep ? questionStep.subTitle : '';
 
             const question = `${questionTitle}\n${questionSubTitle}:`;
-            const answer = answers[id]?.answer || "";
+            const answer = answers[id]?.answer || '';
 
             return [
-              { id: "", isBot: true, text: `${question}` },
-              { id: "", isBot: false, text: `${answer}` },
+              { id: '', isBot: true, text: `${question}` },
+              { id: '', isBot: false, text: `${answer}` },
             ];
           })
           .flat();
 
-        const userRecords =
-          await userInfo.extractUserRecords(conversationMessages);
+        const userRecords = await userInfo.extractUserRecords(conversationMessages);
         const goal = await plan.generateGoal({
           languageCode: lang,
           conversationMessages: conversationMessages,
@@ -264,10 +242,7 @@ export function useProvideInterviewQuizContext({
         },
       };
 
-      await data.updateSurvey(
-        updatedSurvey,
-        `Update analysis results for step ${stepId}`,
-      );
+      await data.updateSurvey(updatedSurvey, `Update analysis results for step ${stepId}`);
     } catch (error) {
       setIsAnalyzingInputsError((prev) => ({
         ...prev,
@@ -282,7 +257,7 @@ export function useProvideInterviewQuizContext({
   const results = data.survey?.results || null;
 
   useEffect(() => {
-    if (currentStep?.type === "analyze-inputs" && quizAnswers && results) {
+    if (currentStep?.type === 'analyze-inputs' && quizAnswers && results) {
       analyzeInputs({ step: currentStep, answers: quizAnswers, results });
     }
   }, [currentStep, quizAnswers, results]);
@@ -293,15 +268,15 @@ export function useProvideInterviewQuizContext({
     if (!analytics.isInitialized || isConfirmedGTag) {
       return;
     }
-    const isDev = auth.userInfo?.email?.includes("dmowski") || false;
+    const isDev = auth.userInfo?.email?.includes('dmowski') || false;
     if (isDev) {
       //return;
     }
 
-    if (auth.uid && currentStepType === "done") {
+    if (auth.uid && currentStepType === 'done') {
       setTimeout(() => {
         // analytics.confirmGtag();
-        console.log("GTag confirmed for interview quiz");
+        console.log('GTag confirmed for interview quiz');
         setIsConfirmedGTag(true);
       }, 1000);
     }
@@ -330,7 +305,7 @@ export function useProvideInterviewQuizContext({
 
     const answerData: InterviewQuizAnswer = {
       stepId,
-      question: step.title || "",
+      question: step.title || '',
       answer: JSON.stringify(selectedOptions),
     };
 
@@ -343,10 +318,7 @@ export function useProvideInterviewQuizContext({
       },
     };
 
-    return await data.updateSurvey(
-      updatedSurvey,
-      `Update selected options for step ${stepId}`,
-    );
+    return await data.updateSurvey(updatedSurvey, `Update selected options for step ${stepId}`);
   };
 
   const router = useRouter();
@@ -360,13 +332,13 @@ export function useProvideInterviewQuizContext({
 
     if (!planData) {
       alert(
-        "No practice plan available to open the app. Try going back and re-generating the plan.",
+        'No practice plan available to open the app. Try going back and re-generating the plan.',
       );
       return;
     }
     setIsRedirectingToApp(true);
     await plan.addGoalPlan(planData);
-    const appUrl = getUrlStart(lang) + "practice";
+    const appUrl = getUrlStart(lang) + 'practice';
     router.push(appUrl);
 
     await sleep(2000);

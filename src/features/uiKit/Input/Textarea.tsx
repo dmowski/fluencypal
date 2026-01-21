@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { TextField } from '@mui/material';
 
 interface TextareaProps {
   value: string;
@@ -6,23 +6,19 @@ interface TextareaProps {
   onSubmit: () => void;
 }
 
-export const Textarea: React.FC<TextareaProps> = ({
-  value,
-  onChange,
-  onSubmit,
-}) => {
+export const Textarea: React.FC<TextareaProps> = ({ value, onChange, onSubmit }) => {
   return (
     <TextField
       sx={{
-        width: "600px",
-        maxWidth: "calc(100vw - 80px)",
+        width: '600px',
+        maxWidth: 'calc(100vw - 80px)',
       }}
       value={value}
       multiline
       placeholder="Type your message here..."
       onChange={(e) => onChange(e.target.value)}
       onKeyDown={(e) => {
-        const isEnter = e.key === "Enter";
+        const isEnter = e.key === 'Enter';
         const isCtrl = e.ctrlKey;
         const isCommand = e.metaKey;
         if (isEnter && (isCtrl || isCommand)) {

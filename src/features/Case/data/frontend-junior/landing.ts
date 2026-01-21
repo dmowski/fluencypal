@@ -1,20 +1,20 @@
-import { InterviewData } from "../../types";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getQuizData } from "./quizData";
-import { getPriceSection } from "../reusable/priceSection";
-import { getFaqSection } from "./faqSection";
-import { getStepInfoSection } from "./stepInfoSection";
-import { getScorePreviewSection } from "./scorePreviewSection";
-import { getCallToActionSection } from "./callToActionSection";
-import { getInfoCardsSection } from "./infoCardsSection";
-import { getFirstScreenSection } from "./firstScreenSection";
-import { getExampleQuestionsSection } from "./exampleQuestionsSection";
-import { getTechStackSection } from "./techStackSection";
-import { getWhoIsThisForSection } from "./whoIsThisForSection";
-import { getDemoSnippetSection } from "./demoSnippetSection";
-import { getCoreData } from "./coreData";
-import { getPainSection } from "./painSection";
-import { getWebcamDemoSection } from "./webcamDemoSection";
+import { InterviewData } from '../../types';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getQuizData } from './quizData';
+import { getPriceSection } from '../reusable/priceSection';
+import { getFaqSection } from './faqSection';
+import { getStepInfoSection } from './stepInfoSection';
+import { getScorePreviewSection } from './scorePreviewSection';
+import { getCallToActionSection } from './callToActionSection';
+import { getInfoCardsSection } from './infoCardsSection';
+import { getFirstScreenSection } from './firstScreenSection';
+import { getExampleQuestionsSection } from './exampleQuestionsSection';
+import { getTechStackSection } from './techStackSection';
+import { getWhoIsThisForSection } from './whoIsThisForSection';
+import { getDemoSnippetSection } from './demoSnippetSection';
+import { getCoreData } from './coreData';
+import { getPainSection } from './painSection';
+import { getWebcamDemoSection } from './webcamDemoSection';
 
 export default function getLandingData(lang: SupportedLanguage): InterviewData {
   return {

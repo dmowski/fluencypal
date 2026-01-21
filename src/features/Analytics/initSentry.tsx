@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import * as Sentry from "@sentry/nextjs";
+import * as Sentry from '@sentry/nextjs';
 
 export const initSentry = () => {
   Sentry.init({
-    dsn: "https://f683d729da9d8855c7742f03c0caaf55@o4506187426103296.ingest.us.sentry.io/4508885116452864",
+    dsn: 'https://f683d729da9d8855c7742f03c0caaf55@o4506187426103296.ingest.us.sentry.io/4508885116452864',
 
     // Add optional integrations for additional features
     integrations: [],

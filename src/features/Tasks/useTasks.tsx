@@ -1,12 +1,12 @@
-"use client";
-import { createContext, useContext, ReactNode, JSX } from "react";
-import { useAuth } from "../Auth/useAuth";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { db } from "../Firebase/firebaseDb";
-import { DaysTasks, DayTasks, UserTaskType } from "@/common/userTask";
-import dayjs from "dayjs";
-import { setDoc } from "firebase/firestore";
-import { useSettings } from "../Settings/useSettings";
+'use client';
+import { createContext, useContext, ReactNode, JSX } from 'react';
+import { useAuth } from '../Auth/useAuth';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { db } from '../Firebase/firebaseDb';
+import { DaysTasks, DayTasks, UserTaskType } from '@/common/userTask';
+import dayjs from 'dayjs';
+import { setDoc } from 'firebase/firestore';
+import { useSettings } from '../Settings/useSettings';
 
 interface TasksContextType {
   loading: boolean;
@@ -26,20 +26,17 @@ function useProvideTasks(): TasksContextType {
   const settings = useSettings();
   const userId = auth.uid;
 
-  const userTasksStatsDocRef = db.documents.userTasksStats(
-    userId,
-    settings.languageCode,
-  );
+  const userTasksStatsDocRef = db.documents.userTasksStats(userId, settings.languageCode);
 
   const [userTasksStats, loading] = useDocumentData(userTasksStatsDocRef);
-  const dayFormat = "DD.MM.YYYY";
+  const dayFormat = 'DD.MM.YYYY';
   const todayDate = dayjs().format(dayFormat);
 
   const todayStats = userTasksStats?.daysTasks?.[todayDate];
 
   const completeTask = async (taskType: UserTaskType) => {
     if (!userId || !userTasksStatsDocRef) {
-      throw new Error("User not found. completeTask failed.");
+      throw new Error('User not found. completeTask failed.');
     }
 
     const isAlreadyCompleted = todayStats?.[taskType];
@@ -66,22 +63,16 @@ function useProvideTasks(): TasksContextType {
   };
 }
 
-export function TasksProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function TasksProvider({ children }: { children: ReactNode }): JSX.Element {
   const settings = useProvideTasks();
 
-  return (
-    <tasksContext.Provider value={settings}>{children}</tasksContext.Provider>
-  );
+  return <tasksContext.Provider value={settings}>{children}</tasksContext.Provider>;
 }
 
 export const useTasks = (): TasksContextType => {
   const context = useContext(tasksContext);
   if (!context) {
-    throw new Error("useSettings must be used within a SettingsProvider");
+    throw new Error('useSettings must be used within a SettingsProvider');
   }
   return context;
 };

@@ -6,14 +6,14 @@ import {
   GameUserNames,
   GameUsersAchievements,
   GameUsersPoints,
-} from "@/features/Game/types";
-import { getDB } from "../../../app/api/config/firebase";
+} from '@/features/Game/types';
+import { getDB } from '../../../app/api/config/firebase';
 
-import firebaseAdmin from "firebase-admin";
+import firebaseAdmin from 'firebase-admin';
 
 export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
   const db = getDB();
-  const userDoc = await db.collection("game2").doc("gamePoints").get();
+  const userDoc = await db.collection('game2').doc('gamePoints').get();
   if (!userDoc.exists) {
     return {};
   }
@@ -21,23 +21,19 @@ export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
   return data;
 };
 
-export const getGameUsersAchievements =
-  async (): Promise<GameUsersAchievements> => {
-    const db = getDB();
-    const userDoc = await db
-      .collection("game2")
-      .doc("gameUserAchievements")
-      .get();
-    if (!userDoc.exists) {
-      return {};
-    }
-    const data = userDoc.data() as GameUsersAchievements;
-    return data;
-  };
+export const getGameUsersAchievements = async (): Promise<GameUsersAchievements> => {
+  const db = getDB();
+  const userDoc = await db.collection('game2').doc('gameUserAchievements').get();
+  if (!userDoc.exists) {
+    return {};
+  }
+  const data = userDoc.data() as GameUsersAchievements;
+  return data;
+};
 
 export const getGameUsersAvatars = async (): Promise<GameAvatars> => {
   const db = getDB();
-  const userDoc = await db.collection("game2").doc("gameAvatars").get();
+  const userDoc = await db.collection('game2').doc('gameAvatars').get();
   if (!userDoc.exists) {
     return {};
   }
@@ -47,7 +43,7 @@ export const getGameUsersAvatars = async (): Promise<GameAvatars> => {
 
 export const getGameUsersLastVisit = async (): Promise<GameLastVisit> => {
   const db = getDB();
-  const userDoc = await db.collection("game2").doc("gameLastVisit").get();
+  const userDoc = await db.collection('game2').doc('gameLastVisit').get();
   if (!userDoc.exists) {
     return {};
   }
@@ -57,7 +53,7 @@ export const getGameUsersLastVisit = async (): Promise<GameLastVisit> => {
 
 export const getGameUsersUserNames = async (): Promise<GameUserNames> => {
   const db = getDB();
-  const userDoc = await db.collection("game2").doc("gameUserNames").get();
+  const userDoc = await db.collection('game2').doc('gameUserNames').get();
   if (!userDoc.exists) {
     return {};
   }
@@ -65,11 +61,9 @@ export const getGameUsersUserNames = async (): Promise<GameUserNames> => {
   return data;
 };
 
-export const setGameUsersPoints = async (
-  points: GameUsersPoints,
-): Promise<void> => {
+export const setGameUsersPoints = async (points: GameUsersPoints): Promise<void> => {
   const db = getDB();
-  await db.collection("game2").doc("gamePoints").set(points, { merge: true });
+  await db.collection('game2').doc('gamePoints').set(points, { merge: true });
 };
 
 export const renameUserNameById = async ({
@@ -82,8 +76,8 @@ export const renameUserNameById = async ({
   const db = getDB();
 
   await db
-    .collection("game2")
-    .doc("gameUserNames")
+    .collection('game2')
+    .doc('gameUserNames')
     .set(
       {
         [userId]: newUsername,
@@ -95,8 +89,8 @@ export const renameUserNameById = async ({
 export const deleteAvatarByUserId = async (userId: string) => {
   const db = getDB();
   await db
-    .collection("game2")
-    .doc("gameAvatars")
+    .collection('game2')
+    .doc('gameAvatars')
     .set(
       {
         [userId]: firebaseAdmin.firestore.FieldValue.delete(),
@@ -108,8 +102,8 @@ export const deleteAvatarByUserId = async (userId: string) => {
 export const deleteUserLastVisitStatByUserId = async (userId: string) => {
   const db = getDB();
   await db
-    .collection("game2")
-    .doc("gameLastVisit")
+    .collection('game2')
+    .doc('gameLastVisit')
     .set(
       {
         [userId]: firebaseAdmin.firestore.FieldValue.delete(),
@@ -121,8 +115,8 @@ export const deleteUserLastVisitStatByUserId = async (userId: string) => {
 export const deleteGamePointsStatByUserId = async (userId: string) => {
   const db = getDB();
   await db
-    .collection("game2")
-    .doc("gamePoints")
+    .collection('game2')
+    .doc('gamePoints')
     .set(
       {
         [userId]: firebaseAdmin.firestore.FieldValue.delete(),
@@ -133,8 +127,8 @@ export const deleteGamePointsStatByUserId = async (userId: string) => {
 export const deleteGameUserNameById = async (userId: string) => {
   const db = getDB();
   await db
-    .collection("game2")
-    .doc("gameUserNames")
+    .collection('game2')
+    .doc('gameUserNames')
     .set(
       {
         [userId]: firebaseAdmin.firestore.FieldValue.delete(),
@@ -154,9 +148,7 @@ export const deleteGameUserById = async (userId: string) => {
 
 export const isUserIsGameWinner = async (userId: string): Promise<boolean> => {
   const points = await getGameUsersPoints();
-  const sortedUserIds = Object.keys(points).sort(
-    (a, b) => (points[b] || 0) - (points[a] || 0),
-  );
+  const sortedUserIds = Object.keys(points).sort((a, b) => (points[b] || 0) - (points[a] || 0));
 
   const userIndex = sortedUserIds.indexOf(userId);
   const isTop5 = userIndex !== -1 && userIndex < 5;
@@ -193,13 +185,13 @@ export const increaseUserPoints = async ({
 
   await Promise.all([
     db
-      .collection("game2")
-      .doc("gameUserAchievements")
+      .collection('game2')
+      .doc('gameUserAchievements')
       .set({ [userId]: newUserAchievements }, { merge: true }),
 
     db
-      .collection("game2")
-      .doc("gamePoints")
+      .collection('game2')
+      .doc('gamePoints')
       .set({ [userId]: newValue }, { merge: true }),
   ]);
 

@@ -1,11 +1,11 @@
-import { TelegramRequest, TelegramResponse } from "@/common/requests";
-import { validateAuthToken } from "../config/firebase";
-import { sentSupportTelegramMessage } from "./sendTelegramMessage";
+import { TelegramRequest, TelegramResponse } from '@/common/requests';
+import { validateAuthToken } from '../config/firebase';
+import { sentSupportTelegramMessage } from './sendTelegramMessage';
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
   if (!userInfo.uid) {
-    throw new Error("User is not authenticated");
+    throw new Error('User is not authenticated');
   }
   const userId = userInfo.uid;
   const tgRequest = (await request.json()) as TelegramRequest;
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
   });
   */
   const answer: TelegramResponse = {
-    error: "",
+    error: '',
   };
   return Response.json(answer);
 }

@@ -1,17 +1,9 @@
-"use client";
-import {
-  createContext,
-  useContext,
-  useRef,
-  useState,
-  ReactNode,
-  JSX,
-  RefObject,
-} from "react";
-import { useAuth } from "../Auth/useAuth";
-import { sendImageAiRequest } from "../Ai/sendImageAiRequest";
-import { useSettings } from "../Settings/useSettings";
-import { sleep } from "@/libs/sleep";
+'use client';
+import { createContext, useContext, useRef, useState, ReactNode, JSX, RefObject } from 'react';
+import { useAuth } from '../Auth/useAuth';
+import { sendImageAiRequest } from '../Ai/sendImageAiRequest';
+import { useSettings } from '../Settings/useSettings';
+import { sleep } from '@/libs/sleep';
 
 interface WebCamContextType {
   init: () => Promise<void>;
@@ -52,7 +44,7 @@ function useProvideWebCam(): WebCamContextType {
         await videoRef.current.play();
       }
     } catch (err) {
-      console.log("Error accessing webcam:", err);
+      console.log('Error accessing webcam:', err);
       setIsError(true);
     } finally {
       setTimeout(() => {
@@ -65,15 +57,15 @@ function useProvideWebCam(): WebCamContextType {
     if (!videoRef.current) return null;
 
     const video = videoRef.current;
-    const canvas = document.createElement("canvas");
+    const canvas = document.createElement('canvas');
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return null;
 
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    return canvas.toDataURL("image/png");
+    return canvas.toDataURL('image/png');
   };
 
   const getImageDescription = async () => {
@@ -83,18 +75,18 @@ function useProvideWebCam(): WebCamContextType {
 
     const authKey = await auth.getToken();
     if (!authKey) {
-      console.error("No auth key available");
-      return "";
+      console.error('No auth key available');
+      return '';
     }
     const start = performance.now();
     const screenShot = screenshot();
 
     if (!screenShot) {
-      console.error("No screenshot available");
-      return "";
+      console.error('No screenshot available');
+      return '';
     }
 
-    const languageCode = settings.languageCode || "en";
+    const languageCode = settings.languageCode || 'en';
 
     const response = await sendImageAiRequest(
       {
@@ -135,11 +127,11 @@ function useProvideWebCam(): WebCamContextType {
       <video
         ref={videoRef}
         style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          transform: "scaleX(-1)",
-          display: stream ? "block" : "none",
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          transform: 'scaleX(-1)',
+          display: stream ? 'block' : 'none',
         }}
         autoPlay
         controls={false}
@@ -150,21 +142,15 @@ function useProvideWebCam(): WebCamContextType {
   };
 }
 
-export function WebCamProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function WebCamProvider({ children }: { children: ReactNode }): JSX.Element {
   const hook = useProvideWebCam();
-  return (
-    <WebCamContext.Provider value={hook}>{children}</WebCamContext.Provider>
-  );
+  return <WebCamContext.Provider value={hook}>{children}</WebCamContext.Provider>;
 }
 
 export const useWebCam = (): WebCamContextType => {
   const context = useContext(WebCamContext);
   if (!context) {
-    throw new Error("useWebCam must be used within a WebCamProvider");
+    throw new Error('useWebCam must be used within a WebCamProvider');
   }
   return context;
 };

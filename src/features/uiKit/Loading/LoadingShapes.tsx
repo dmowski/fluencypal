@@ -1,10 +1,10 @@
-import { Stack } from "@mui/material";
+import { Stack } from '@mui/material';
 
 export const LoadingShapes = ({ sizes }: { sizes: string[] }) => {
   return (
     <Stack
       sx={{
-        gap: "10px",
+        gap: '10px',
       }}
     >
       {sizes.map((size, index) => (
@@ -13,7 +13,7 @@ export const LoadingShapes = ({ sizes }: { sizes: string[] }) => {
           className="loading-shimmer-shape"
           sx={{
             minHeight: size,
-            borderRadius: "6px",
+            borderRadius: '6px',
           }}
         />
       ))}

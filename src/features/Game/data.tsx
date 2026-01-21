@@ -1,11 +1,11 @@
-import { GameAchievement, GameQuestionType } from "./types";
+import { GameAchievement, GameQuestionType } from './types';
 
 export const allGameTypes: GameQuestionType[] = [
-  "translate",
-  "sentence",
-  "describe_image",
-  "topic_to_discuss",
-  "read_text",
+  'translate',
+  'sentence',
+  'describe_image',
+  'topic_to_discuss',
+  'read_text',
 ];
 
 const achievementMap: Record<GameAchievement, boolean> = {

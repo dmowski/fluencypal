@@ -1,11 +1,11 @@
-import { withSentryConfig } from "@sentry/nextjs";
-import type { NextConfig } from "next";
+import { withSentryConfig } from '@sentry/nextjs';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   experimental: {
     swcPlugins: [
       [
-        "@lingui/swc-plugin",
+        '@lingui/swc-plugin',
         {
           // optional:
           // runtimeModules: { i18n: ["@lingui/core","i18n"], trans: ["@lingui/react","Trans"] },
@@ -16,26 +16,26 @@ const nextConfig: NextConfig = {
   },
   turbopack: {
     rules: {
-      "*.{glsl,vs,fs,vert,frag}": {
-        loaders: ["raw-loader", "glslify-loader"],
-        as: "*.js",
+      '*.{glsl,vs,fs,vert,frag}': {
+        loaders: ['raw-loader', 'glslify-loader'],
+        as: '*.js',
       },
-      "*.po": {
-        loaders: ["@lingui/loader"],
-        as: "*.js",
+      '*.po': {
+        loaders: ['@lingui/loader'],
+        as: '*.js',
       },
     },
   },
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.(glsl|vs|fs|vert|frag)$/,
-      use: ["raw-loader", "glslify-loader"],
+      use: ['raw-loader', 'glslify-loader'],
     });
 
     config.module.rules.push({
       test: /\.po$/,
       use: {
-        loader: "@lingui/loader", // https://github.com/lingui/js-lingui/issues/1782
+        loader: '@lingui/loader', // https://github.com/lingui/js-lingui/issues/1782
       },
     });
 
@@ -46,8 +46,8 @@ export default withSentryConfig(nextConfig, {
   // For all available options, see:
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
-  org: "profolio-ln",
-  project: "dark-lang",
+  org: 'profolio-ln',
+  project: 'dark-lang',
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
@@ -67,7 +67,7 @@ export default withSentryConfig(nextConfig, {
   // This can increase your server load as well as your hosting bill.
   // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
   // side errors will fail.
-  tunnelRoute: "/monitoring",
+  tunnelRoute: '/monitoring',
 
   // Automatically tree-shake Sentry logger statements to reduce bundle size
   disableLogger: true,

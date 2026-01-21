@@ -1,11 +1,11 @@
-import { getUrlStart } from "./getUrlStart";
-import { SupportedLanguage, supportedLanguages } from "./lang";
+import { getUrlStart } from './getUrlStart';
+import { SupportedLanguage, supportedLanguages } from './lang';
 
 export const replaceUrlToLang = (lang: string, urlPath: string) => {
   const newStartPath = getUrlStart(lang);
 
-  const pathWithoutFirstSlash = urlPath.replace(/^\//, "");
-  const pathParts = pathWithoutFirstSlash.split("/");
+  const pathWithoutFirstSlash = urlPath.replace(/^\//, '');
+  const pathParts = pathWithoutFirstSlash.split('/');
 
   const filteredParts = pathParts.filter((part, index) => {
     if (index === 0) {
@@ -19,6 +19,6 @@ export const replaceUrlToLang = (lang: string, urlPath: string) => {
     return true;
   });
 
-  const finalUrl = `${newStartPath}${filteredParts.join("/")}`;
+  const finalUrl = `${newStartPath}${filteredParts.join('/')}`;
   return finalUrl;
 };

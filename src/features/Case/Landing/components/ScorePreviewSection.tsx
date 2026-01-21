@@ -1,6 +1,6 @@
-import { Button, Stack, Typography } from "@mui/material";
-import { BadgeCheck } from "lucide-react";
-import { Theme, themeMap } from "./theme";
+import { Button, Stack, Typography } from '@mui/material';
+import { BadgeCheck } from 'lucide-react';
+import { Theme, themeMap } from './theme';
 
 export interface ScoreMetric {
   title: string;
@@ -25,99 +25,89 @@ export interface ScorePreviewSectionProps {
   theme: Theme;
 }
 
-const scoreColors: string[] = [
-  "#EF4444",
-  "#F59E0B",
-  "#10B981",
-  "#3B82F6",
-  "#8B5CF6",
-];
+const scoreColors: string[] = ['#EF4444', '#F59E0B', '#10B981', '#3B82F6', '#8B5CF6'];
 
-export const ScorePreviewCard = ({
-  scorePreview,
-}: {
-  scorePreview: ScorePreview;
-}) => {
+export const ScorePreviewCard = ({ scorePreview }: { scorePreview: ScorePreview }) => {
   return (
     <Stack
       sx={{
-        alignItems: "center",
-        justifyContent: "center",
-        color: "#fff",
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#fff',
       }}
     >
       <Stack
         sx={{
-          position: "relative",
-          overflow: "hidden",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "30px",
-          width: "100%",
-          borderRadius: "16px",
-          "@media (max-width: 600px)": {
-            padding: "12px",
+          position: 'relative',
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '30px',
+          width: '100%',
+          borderRadius: '16px',
+          '@media (max-width: 600px)': {
+            padding: '12px',
           },
-          "&::before": {
+          '&::before': {
             content: '""',
-            display: "block",
+            display: 'block',
             background:
-              "linear-gradient(90deg, hsla(197, 100%, 64%, 1) 0%, hsla(339, 100%, 55%, 1) 100%)",
-            height: "100%",
-            width: "100%",
-            position: "absolute",
-            animation: "rotate 4s linear infinite",
+              'linear-gradient(90deg, hsla(197, 100%, 64%, 1) 0%, hsla(339, 100%, 55%, 1) 100%)',
+            height: '100%',
+            width: '100%',
+            position: 'absolute',
+            animation: 'rotate 4s linear infinite',
             zIndex: 0,
-            filter: "blur(1px)",
-            "--zoom": "1.9",
-            "@media (max-width: 600px)": {
-              "--zoom": "3",
+            filter: 'blur(1px)',
+            '--zoom': '1.9',
+            '@media (max-width: 600px)': {
+              '--zoom': '3',
             },
           },
-          "@keyframes rotate": {
+          '@keyframes rotate': {
             from: {
-              transform: "rotate(0deg) scale(var(--zoom))",
+              transform: 'rotate(0deg) scale(var(--zoom))',
             },
             to: {
-              transform: "rotate(360deg) scale(var(--zoom))",
+              transform: 'rotate(360deg) scale(var(--zoom))',
             },
           },
         }}
       >
         <Stack
           sx={{
-            position: "relative",
+            position: 'relative',
             //zIndex: 1,
-            width: "100%",
-            padding: "40px",
-            borderRadius: "12px",
-            backgroundColor: "rgba(34, 34, 34, 1)",
-            boxShadow: "2px 4px 6px rgba(0, 0, 0, 0.2)",
-            gap: "20px",
-            "@media (max-width: 600px)": {
-              padding: "25px",
+            width: '100%',
+            padding: '40px',
+            borderRadius: '12px',
+            backgroundColor: 'rgba(34, 34, 34, 1)',
+            boxShadow: '2px 4px 6px rgba(0, 0, 0, 0.2)',
+            gap: '20px',
+            '@media (max-width: 600px)': {
+              padding: '25px',
             },
           }}
         >
           <Typography
             variant="h5"
-            component={"span"}
+            component={'span'}
             sx={{
               fontWeight: 600,
-              color: "#fff",
-              fontSize: "16px",
+              color: '#fff',
+              fontSize: '16px',
             }}
           >
             {scorePreview.label}
           </Typography>
           <Typography
             variant="h2"
-            component={"span"}
+            component={'span'}
             sx={{
               fontWeight: 600,
-              fontSize: "48px",
-              color: "#fff",
+              fontSize: '48px',
+              color: '#fff',
             }}
           >
             {scorePreview.totalScore}%
@@ -125,14 +115,14 @@ export const ScorePreviewCard = ({
           <Typography variant="body1">{scorePreview.description}</Typography>
           <Stack
             sx={{
-              width: "100%",
-              borderTop: "1px solid rgba(229, 231, 235, 0.4)",
+              width: '100%',
+              borderTop: '1px solid rgba(229, 231, 235, 0.4)',
             }}
           />
 
           <Stack
             sx={{
-              gap: "10px",
+              gap: '10px',
             }}
           >
             {scorePreview.scoreMetrics.map((metric, index) => (
@@ -140,8 +130,8 @@ export const ScorePreviewCard = ({
                 <Stack
                   key={index}
                   sx={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
                   }}
                 >
                   <Typography variant="body1">{metric.title}</Typography>
@@ -149,21 +139,21 @@ export const ScorePreviewCard = ({
                 </Stack>
                 <Stack
                   sx={{
-                    width: "100%",
-                    height: "11px",
-                    backgroundColor: "rgba(229, 231, 235, 0.3)",
-                    borderRadius: "14px",
-                    overflow: "hidden",
-                    marginTop: "8px",
-                    marginBottom: "16px",
+                    width: '100%',
+                    height: '11px',
+                    backgroundColor: 'rgba(229, 231, 235, 0.3)',
+                    borderRadius: '14px',
+                    overflow: 'hidden',
+                    marginTop: '8px',
+                    marginBottom: '16px',
                   }}
                 >
                   <Stack
                     sx={{
                       width: `${metric.score}%`,
-                      height: "100%",
+                      height: '100%',
                       backgroundColor: scoreColors[index % scoreColors.length],
-                      borderRadius: "14px",
+                      borderRadius: '14px',
                     }}
                   />
                 </Stack>
@@ -182,89 +172,85 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
     <Stack
       id={props.id}
       sx={{
-        padding: "150px 0",
-        alignItems: "center",
-        width: "100%",
+        padding: '150px 0',
+        alignItems: 'center',
+        width: '100%',
         backgroundColor: colors.sectionBgColor,
         color: colors.textColor,
-        "@media (max-width: 600px)": {
-          padding: "90px 0 50px 0",
+        '@media (max-width: 600px)': {
+          padding: '90px 0 50px 0',
         },
       }}
     >
       <Stack
         sx={{
-          maxWidth: "1300px",
-          width: "100%",
-          gap: "15px",
-          padding: "0 10px",
-          alignItems: "center",
+          maxWidth: '1300px',
+          width: '100%',
+          gap: '15px',
+          padding: '0 10px',
+          alignItems: 'center',
         }}
       >
         <Stack
           sx={{
-            display: "grid",
+            display: 'grid',
             gridTemplateColumns: `4fr 3fr`,
-            alignItems: "center",
-            gap: "100px",
-            width: "100%",
-            "@media (max-width: 1000px)": {
+            alignItems: 'center',
+            gap: '100px',
+            width: '100%',
+            '@media (max-width: 1000px)': {
               gridTemplateColumns: `3fr 3fr`,
-              gap: "20px",
+              gap: '20px',
             },
-            "@media (max-width: 850px)": {
+            '@media (max-width: 850px)': {
               gridTemplateColumns: `1fr`,
-              gap: "40px",
+              gap: '40px',
             },
           }}
         >
           <ScorePreviewCard scorePreview={props.scorePreview} />
           <Stack
             sx={{
-              gap: "10px",
-              alignItems: "flex-start",
+              gap: '10px',
+              alignItems: 'flex-start',
             }}
           >
             <Typography
               variant="h2"
               sx={{
                 fontWeight: 700,
-                fontSize: "42px",
-                "@media (max-width: 600px)": {
-                  fontSize: "34px",
+                fontSize: '42px',
+                '@media (max-width: 600px)': {
+                  fontSize: '34px',
                 },
               }}
             >
               {props.title}
             </Typography>
 
-            <Typography variant="body1" sx={{ opacity: 0.8, fontSize: "20px" }}>
+            <Typography variant="body1" sx={{ opacity: 0.8, fontSize: '20px' }}>
               {props.subTitle}
             </Typography>
 
             <Stack
               sx={{
-                marginTop: "30px",
-                gap: "20px",
-                maxWidth: "550px",
+                marginTop: '30px',
+                gap: '20px',
+                maxWidth: '550px',
               }}
             >
               {props.infoList.map((info, index) => (
                 <Stack
                   key={index}
                   sx={{
-                    display: "grid",
-                    gridTemplateColumns: "auto 1fr",
-                    gap: "20px",
-                    alignItems: "center",
+                    display: 'grid',
+                    gridTemplateColumns: 'auto 1fr',
+                    gap: '20px',
+                    alignItems: 'center',
                   }}
                 >
-                  <BadgeCheck color="#60A5FA" size={"30px"} />
-                  <Typography
-                    key={index}
-                    variant="body2"
-                    sx={{ fontSize: "16px" }}
-                  >
+                  <BadgeCheck color="#60A5FA" size={'30px'} />
+                  <Typography key={index} variant="body2" sx={{ fontSize: '16px' }}>
                     {info}
                   </Typography>
                 </Stack>
@@ -277,10 +263,10 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
               size="large"
               color="info"
               sx={{
-                marginTop: "40px",
-                borderRadius: "48px",
-                fontSize: "16px",
-                padding: "10px 46px",
+                marginTop: '40px',
+                borderRadius: '48px',
+                fontSize: '16px',
+                padding: '10px 46px',
               }}
             >
               {props.buttonTitle}

@@ -1,29 +1,29 @@
-"use client";
+'use client';
 
-import { useAiConversation } from "@/features/Conversation/useAiConversation";
-import { useAuth } from "../Auth/useAuth";
-import { Stack } from "@mui/material";
-import { SignInForm } from "../Auth/SignInForm";
-import { useUsage } from "../Usage/useUsage";
-import { useSettings } from "../Settings/useSettings";
-import { Dashboard } from "../Dashboard/Dashboard";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
-import { ConversationCanvas } from "../Conversation/ConversationCanvas";
-import { useAudioRecorder } from "../Audio/useAudioRecorder";
-import { useLingui } from "@lingui/react";
-import { InfoBlockedSection } from "../Dashboard/InfoBlockedSection";
-import { useEffect } from "react";
-import { SelectLanguage } from "../Dashboard/SelectLanguage";
-import { ConversationError } from "../Conversation/ConversationError";
-import { GamePage } from "../Game/GamePage";
-import { useConversationsAnalysis } from "../Conversation/useConversationsAnalysis";
-import { useAppNavigation } from "../Navigation/useAppNavigation";
-import { RolePlayProvider } from "../RolePlay/useRolePlay";
-import { useAccess } from "../Usage/useAccess";
-import { useLessonPlan } from "../LessonPlan/useLessonPlan";
-import { usePlan } from "../Plan/usePlan";
-import { usePageLangRedirect } from "./usePageLangRedirect";
+import { useAiConversation } from '@/features/Conversation/useAiConversation';
+import { useAuth } from '../Auth/useAuth';
+import { Stack } from '@mui/material';
+import { SignInForm } from '../Auth/SignInForm';
+import { useUsage } from '../Usage/useUsage';
+import { useSettings } from '../Settings/useSettings';
+import { Dashboard } from '../Dashboard/Dashboard';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { RolePlayScenariosInfo } from '../RolePlay/rolePlayData';
+import { ConversationCanvas } from '../Conversation/ConversationCanvas';
+import { useAudioRecorder } from '../Audio/useAudioRecorder';
+import { useLingui } from '@lingui/react';
+import { InfoBlockedSection } from '../Dashboard/InfoBlockedSection';
+import { useEffect } from 'react';
+import { SelectLanguage } from '../Dashboard/SelectLanguage';
+import { ConversationError } from '../Conversation/ConversationError';
+import { GamePage } from '../Game/GamePage';
+import { useConversationsAnalysis } from '../Conversation/useConversationsAnalysis';
+import { useAppNavigation } from '../Navigation/useAppNavigation';
+import { RolePlayProvider } from '../RolePlay/useRolePlay';
+import { useAccess } from '../Usage/useAccess';
+import { useLessonPlan } from '../LessonPlan/useLessonPlan';
+import { usePlan } from '../Plan/usePlan';
+import { usePageLangRedirect } from './usePageLangRedirect';
 
 interface PracticePageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -53,41 +53,29 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   }, [aiConversation.isClosing]);
 
   useEffect(() => {
-    if (recorder.transcription)
-      lessonPlan.generateAnalysis(recorder.transcription);
+    if (recorder.transcription) lessonPlan.generateAnalysis(recorder.transcription);
   }, [recorder.transcription]);
 
   if (auth.loading) return <InfoBlockedSection title={i18n._(`Loading...`)} />;
-  if (!auth.isAuthorized)
-    return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
+  if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
 
-  if (
-    settings.loading ||
-    auth.loading ||
-    !auth.uid ||
-    !usage.isWelcomeBalanceInitialized
-  ) {
+  if (settings.loading || auth.loading || !auth.uid || !usage.isWelcomeBalanceInitialized) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
 
-  if (appNavigation.currentPage === "community")
-    return <GamePage lang={lang} />;
+  if (appNavigation.currentPage === 'community') return <GamePage lang={lang} />;
 
   if (aiConversation.errorInitiating) {
     return (
       <ConversationError
-        errorMessage={aiConversation.errorInitiating || ""}
+        errorMessage={aiConversation.errorInitiating || ''}
         onRetry={() => window.location.reload()}
       />
     );
   }
 
   if (aiConversation.isInitializing) {
-    return (
-      <InfoBlockedSection
-        title={aiConversation.isInitializing || i18n._(`Loading...`)}
-      />
-    );
+    return <InfoBlockedSection title={aiConversation.isInitializing || i18n._(`Loading...`)} />;
   }
 
   if (!settings.languageCode) return <SelectLanguage pageLang={lang} />;
@@ -111,7 +99,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         conversationAnalysisResult={conversationAnalysis.conversationAnalysis}
         generateHelpMessage={conversationAnalysis.generateNextUserMessage}
         lessonPlanAnalysis={aiConversation.lessonPlanAnalysis}
-        openCommunityPage={() => appNavigation.setCurrentPage("community")}
+        openCommunityPage={() => appNavigation.setCurrentPage('community')}
         conversation={aiConversation.conversation}
         isAiSpeaking={aiConversation.isAiSpeaking}
         gameWords={aiConversation.gameWords}
@@ -124,7 +112,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         openNextLesson={() => plan.openNextLesson()}
         balanceHours={usage.balanceHours}
         togglePaymentModal={usage.togglePaymentModal}
-        transcriptMessage={recorder.transcription || ""}
+        transcriptMessage={recorder.transcription || ''}
         setIsVolumeOn={aiConversation.toggleVolume}
         startRecording={async () => {
           aiConversation.toggleVolume(false);
@@ -148,7 +136,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
           await aiConversation.closeConversation();
           window.scrollTo({
             top: 0,
-            behavior: "smooth",
+            behavior: 'smooth',
           });
         }}
         isShowMessageProgress={!!aiConversation.goalInfo?.goalElement}

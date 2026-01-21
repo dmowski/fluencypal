@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { FilterOptionsState, Stack, Typography } from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
-import { LanguageInfo, NativeLangCode } from "@/libs/language/type";
+import { FilterOptionsState, Stack, Typography } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+import { LanguageInfo, NativeLangCode } from '@/libs/language/type';
 
 const isOptionAvailable = (option: SelectGroupItem, inputValue: string) => {
   return (
@@ -12,14 +12,9 @@ const isOptionAvailable = (option: SelectGroupItem, inputValue: string) => {
   );
 };
 
-const filterHandler = (
-  options: SelectGroupItem[],
-  params: FilterOptionsState<SelectGroupItem>,
-) => {
+const filterHandler = (options: SelectGroupItem[], params: FilterOptionsState<SelectGroupItem>) => {
   const { inputValue } = params;
-  const filtered = options.filter((option) =>
-    isOptionAvailable(option, inputValue),
-  );
+  const filtered = options.filter((option) => isOptionAvailable(option, inputValue));
   return filtered;
 };
 
@@ -55,13 +50,11 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
       options={options}
       disabled={disabled}
       sx={{
-        width: "100%",
+        width: '100%',
       }}
       groupBy={(option) => {
-        const group = options.find(
-          (group) => group.languageCode === option.languageCode,
-        );
-        return group?.groupTitle || "Other";
+        const group = options.find((group) => group.languageCode === option.languageCode);
+        return group?.groupTitle || 'Other';
       }}
       getOptionLabel={(option) => {
         return option.englishName;
@@ -71,7 +64,7 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
           <Stack key={params.key}>
             <Typography
               sx={{
-                padding: "8px 10px",
+                padding: '8px 10px',
               }}
               variant="caption"
             >
@@ -79,7 +72,7 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
             </Typography>
             <Stack
               sx={{
-                paddingLeft: "0px",
+                paddingLeft: '0px',
               }}
             >
               {params.children}
@@ -90,30 +83,28 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
       renderOption={(props, option) => (
         <li {...props} key={option.languageCode}>
           <Stack
-            direction={"row"}
-            gap={"8px"}
-            alignItems={"center"}
+            direction={'row'}
+            gap={'8px'}
+            alignItems={'center'}
             sx={{
-              padding: "3px 10px",
+              padding: '3px 10px',
             }}
           >
             <Stack
               sx={{
-                alignItems: "center",
-                display: "flex",
-                flexDirection: "row",
-                width: "100%",
-                justifyContent: "flex-start",
-                padding: "0px 5px",
-                gap: "15px",
-                minHeight: showSubtitle ? "42px" : "auto",
+                alignItems: 'center',
+                display: 'flex',
+                flexDirection: 'row',
+                width: '100%',
+                justifyContent: 'flex-start',
+                padding: '0px 5px',
+                gap: '15px',
+                minHeight: showSubtitle ? '42px' : 'auto',
               }}
             >
               <Stack>
                 <Typography>{option.englishName}</Typography>
-                {showSubtitle && (
-                  <Typography variant="caption">{option.nativeName}</Typography>
-                )}
+                {showSubtitle && <Typography variant="caption">{option.nativeName}</Typography>}
               </Stack>
             </Stack>
           </Stack>
@@ -137,9 +128,7 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
           }}
         />
       )}
-      onChange={(_, newValue) =>
-        newValue?.languageCode && onChange(newValue?.languageCode)
-      }
+      onChange={(_, newValue) => newValue?.languageCode && onChange(newValue?.languageCode)}
       filterOptions={(options, params) => filterHandler(options, params)}
     />
   );

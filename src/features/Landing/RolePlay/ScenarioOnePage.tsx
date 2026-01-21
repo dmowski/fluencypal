@@ -1,26 +1,26 @@
-import { Button, Link, Stack, Typography } from "@mui/material";
+import { Button, Link, Stack, Typography } from '@mui/material';
 
-import { Footer } from "../Footer";
+import { Footer } from '../Footer';
 
-import { CtaBlock } from "../ctaBlock";
-import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
+import { CtaBlock } from '../ctaBlock';
+import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
 import {
   buttonStyle,
   maxContentWidth,
   subTitleFontStyle,
   titleFontStyle,
-} from "../landingSettings";
-import { Markdown } from "@/features/uiKit/Markdown/Markdown";
-import { RolePlayCard } from "./RolePlayCard";
+} from '../landingSettings';
+import { Markdown } from '@/features/uiKit/Markdown/Markdown';
+import { RolePlayCard } from './RolePlayCard';
 import {
   fullEnglishLanguageName,
   SupportedLanguage,
   supportedLanguages,
-} from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { HeaderStatic } from "@/features/Header/HeaderStatic";
-import { FeatureList } from "../Price/FeatureList";
+} from '@/features/Lang/lang';
+import { getI18nInstance } from '@/appRouterI18n';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { HeaderStatic } from '@/features/Header/HeaderStatic';
+import { FeatureList } from '../Price/FeatureList';
 
 interface ScenarioOnePageProps {
   id?: string;
@@ -36,8 +36,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
   }
 
   const relatedCards = rolePlayScenarios.filter(
-    (scenario) =>
-      scenario.category === item.category && item.id !== scenario.id,
+    (scenario) => scenario.category === item.category && item.id !== scenario.id,
   );
 
   return (
@@ -45,61 +44,61 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
       <HeaderStatic lang={lang} />
       <div
         style={{
-          width: "100%",
+          width: '100%',
           margin: 0,
         }}
       >
         <Stack
-          component={"main"}
+          component={'main'}
           sx={{
-            alignItems: "center",
-            width: "100%",
+            alignItems: 'center',
+            width: '100%',
             backgroundColor: `#fff`,
           }}
         >
           <Stack
             sx={{
-              width: "100%",
-              alignItems: "center",
-              backgroundColor: "rgba(255, 255, 255, 0.9)",
-              backdropFilter: "blur(10px)",
+              width: '100%',
+              alignItems: 'center',
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              backdropFilter: 'blur(10px)',
               zIndex: 2,
-              top: "-10px",
-              "@media (max-width: 900px)": {
-                position: "relative",
+              top: '-10px',
+              '@media (max-width: 900px)': {
+                position: 'relative',
               },
-              "@media (max-height: 600px)": {
-                position: "relative",
+              '@media (max-height: 600px)': {
+                position: 'relative',
               },
             }}
           >
             <Stack
               sx={{
                 maxWidth: maxContentWidth,
-                width: "100%",
-                boxSizing: "border-box",
-                alignItems: "center",
-                padding: "110px 10px 20px 10px",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                gap: "10px",
+                width: '100%',
+                boxSizing: 'border-box',
+                alignItems: 'center',
+                padding: '110px 10px 20px 10px',
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                gap: '10px',
 
-                flexWrap: "wrap",
+                flexWrap: 'wrap',
               }}
             >
               <Stack
-                gap={"0px"}
+                gap={'0px'}
                 sx={{
-                  width: "max-content",
+                  width: 'max-content',
                 }}
               >
                 <Typography
-                  component={"h1"}
+                  component={'h1'}
                   sx={{
                     ...titleFontStyle,
-                    fontSize: "2rem",
-                    color: "#000",
+                    fontSize: '2rem',
+                    color: '#000',
                   }}
                 >
                   {item.title}
@@ -107,11 +106,11 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                 <Typography
                   variant="body1"
                   sx={{
-                    maxWidth: "810px",
+                    maxWidth: '810px',
 
                     ...subTitleFontStyle,
-                    color: "#666",
-                    fontSize: "1.1rem",
+                    color: '#666',
+                    fontSize: '1.1rem',
                   }}
                 >
                   {item.subTitle}
@@ -119,15 +118,15 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
               </Stack>
               <Stack
                 sx={{
-                  width: "max-content",
-                  flexDirection: "row",
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  alignItems: "center",
-                  gap: "10px",
-                  flexWrap: "wrap",
-                  "@media (max-width: 900px)": {
-                    justifyContent: "flex-start",
+                  width: 'max-content',
+                  flexDirection: 'row',
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  alignItems: 'center',
+                  gap: '10px',
+                  flexWrap: 'wrap',
+                  '@media (max-width: 900px)': {
+                    justifyContent: 'flex-start',
                   },
                 }}
               >
@@ -136,14 +135,14 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   href={`${getUrlStart(lang)}scenarios`}
                   sx={{
                     ...buttonStyle,
-                    borderRadius: "4px",
-                    height: "3rem",
+                    borderRadius: '4px',
+                    height: '3rem',
 
-                    color: "rgb(43 35 88)",
-                    borderColor: "rgb(43 35 88)",
-                    borderWidth: "1px",
+                    color: 'rgb(43 35 88)',
+                    borderColor: 'rgb(43 35 88)',
+                    borderWidth: '1px',
 
-                    backgroundColor: "#fff",
+                    backgroundColor: '#fff',
                   }}
                 >
                   {i18n._(`View all`)}
@@ -152,8 +151,8 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}`}
                   sx={{
                     ...buttonStyle,
-                    height: "3rem",
-                    borderRadius: "4px",
+                    height: '3rem',
+                    borderRadius: '4px',
                   }}
                   variant="contained"
                 >
@@ -164,63 +163,63 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
           </Stack>
           <Stack
             sx={{
-              width: "100%",
-              padding: "0px 0 90px 0",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "40px",
+              width: '100%',
+              padding: '0px 0 90px 0',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '40px',
               backgroundColor: `#fff`,
-              position: "relative",
+              position: 'relative',
               zIndex: 1,
             }}
           >
             <Stack
               sx={{
-                alignItems: "center",
-                gap: "20px",
-                width: "100%",
+                alignItems: 'center',
+                gap: '20px',
+                width: '100%',
               }}
             >
               <Stack
                 sx={{
-                  width: "100%",
-                  backgroundColor: "rgba(125, 123, 74, 0.4)",
-                  alignItems: "center",
-                  borderRadius: "20px",
-                  padding: "40px 15px 0 15px",
-                  boxSizing: "border-box",
+                  width: '100%',
+                  backgroundColor: 'rgba(125, 123, 74, 0.4)',
+                  alignItems: 'center',
+                  borderRadius: '20px',
+                  padding: '40px 15px 0 15px',
+                  boxSizing: 'border-box',
                   maxWidth: maxContentWidth,
-                  overflow: "hidden",
-                  maxHeight: "300px",
-                  position: "relative",
+                  overflow: 'hidden',
+                  maxHeight: '300px',
+                  position: 'relative',
                 }}
               >
                 <img
                   src={item.imageSrc}
                   alt="Role Play Scenarios"
                   style={{
-                    width: "max-content",
-                    maxWidth: "100%",
-                    height: "400px",
-                    borderRadius: "20px 20px 0 0",
-                    boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.3)",
-                    position: "relative",
+                    width: 'max-content',
+                    maxWidth: '100%',
+                    height: '400px',
+                    borderRadius: '20px 20px 0 0',
+                    boxShadow: '0px 0px 20px 0px rgba(0,0,0,0.3)',
+                    position: 'relative',
                     //zIndex: 0,
                   }}
                 />
                 <Stack
                   sx={{
                     backgroundImage: `url(${item.imageSrc})`,
-                    filter: "blur(50px)",
-                    backgroundSize: "cover",
+                    filter: 'blur(50px)',
+                    backgroundSize: 'cover',
                     opacity: 0.5,
-                    position: "absolute",
+                    position: 'absolute',
                     bottom: 0,
-                    left: "-50%",
-                    top: "-50%",
+                    left: '-50%',
+                    top: '-50%',
 
-                    width: "200%",
-                    height: "200%",
+                    width: '200%',
+                    height: '200%',
                     zIndex: -1,
                   }}
                 ></Stack>
@@ -229,44 +228,42 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
 
             <Stack
               sx={{
-                color: "#222",
+                color: '#222',
                 maxWidth: maxContentWidth,
-                width: "100%",
-                padding: "10px",
-                gap: "60px",
-                boxSizing: "border-box",
-                display: "grid",
-                gridTemplateColumns: "3fr 1.3fr",
-                "@media (max-width: 900px)": {
-                  gridTemplateColumns: "1fr",
+                width: '100%',
+                padding: '10px',
+                gap: '60px',
+                boxSizing: 'border-box',
+                display: 'grid',
+                gridTemplateColumns: '3fr 1.3fr',
+                '@media (max-width: 900px)': {
+                  gridTemplateColumns: '1fr',
                 },
               }}
             >
               <Stack
                 sx={{
-                  gap: "30px",
+                  gap: '30px',
                 }}
               >
                 <Stack
                   sx={{
-                    maxWidth: "800px",
-                    boxSizing: "border-box",
-                    width: "100%",
+                    maxWidth: '800px',
+                    boxSizing: 'border-box',
+                    width: '100%',
                     color: `#222`,
-                    padding: "0px 0px",
-                    gap: "20px",
-                    alignItems: "flex-start",
+                    padding: '0px 0px',
+                    gap: '20px',
+                    alignItems: 'flex-start',
                     h2: {
-                      fontSize: "1.2rem",
+                      fontSize: '1.2rem',
                       fontWeight: 600,
-                      paddingBottom: "0px",
-                      paddingTop: "30px",
+                      paddingBottom: '0px',
+                      paddingTop: '30px',
                     },
                   }}
                 >
-                  {item.contentPage && (
-                    <Markdown variant="small">{`${item.contentPage}`}</Markdown>
-                  )}
+                  {item.contentPage && <Markdown variant="small">{`${item.contentPage}`}</Markdown>}
                   {item.contendElement}
 
                   {item.youTubeVideoUrl && (
@@ -274,7 +271,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                       width="100%"
                       height="600px"
                       src="https://www.youtube.com/embed/e_1NupxxPcQ"
-                      title={"YouTube video player of the scenario"}
+                      title={'YouTube video player of the scenario'}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     ></iframe>
                   )}
@@ -283,27 +280,27 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                 {item.exampleOfFirstMessageFromAi && (
                   <Stack
                     sx={{
-                      maxWidth: "800px",
-                      boxSizing: "border-box",
-                      width: "100%",
-                      alignItems: "flex-start",
-                      gap: "15px",
+                      maxWidth: '800px',
+                      boxSizing: 'border-box',
+                      width: '100%',
+                      alignItems: 'flex-start',
+                      gap: '15px',
                     }}
                   >
                     <Stack>
                       <Typography
                         variant="h6"
-                        component={"h2"}
+                        component={'h2'}
                         sx={{
                           fontWeight: 600,
-                          fontSize: "1.2rem",
+                          fontSize: '1.2rem',
                         }}
                       >
                         {i18n._(`Ready to play?`)}
                       </Typography>
                       <Typography
                         sx={{
-                          fontSize: "1rem",
+                          fontSize: '1rem',
                         }}
                       >
                         {item.exampleOfFirstMessageFromAi}
@@ -311,17 +308,17 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     </Stack>
                     <Stack
                       sx={{
-                        flexDirection: "column",
-                        gap: "5px 20px",
-                        flexWrap: "wrap",
-                        alignItems: "center",
+                        flexDirection: 'column',
+                        gap: '5px 20px',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
                       }}
                     >
                       <Button
                         variant="outlined"
                         sx={{
                           ...buttonStyle,
-                          minWidth: "300px",
+                          minWidth: '300px',
                         }}
                         href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}`}
                       >
@@ -329,8 +326,8 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                       </Button>
                       <Stack
                         sx={{
-                          flexDirection: "column",
-                          gap: "1px",
+                          flexDirection: 'column',
+                          gap: '1px',
                         }}
                       >
                         <Typography variant="caption">
@@ -343,22 +340,22 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
 
                 <Stack
                   sx={{
-                    gap: "5px",
+                    gap: '5px',
                   }}
                 >
                   <Typography
                     variant="h6"
-                    component={"h2"}
+                    component={'h2'}
                     sx={{
                       fontWeight: 600,
-                      fontSize: "1.2rem",
+                      fontSize: '1.2rem',
                     }}
                   >
                     {i18n._(`Benefits of Role Play`)}: {item.shortTitle}
                   </Typography>
                   <Typography
                     sx={{
-                      fontSize: "1rem",
+                      fontSize: '1rem',
                     }}
                   >
                     {i18n._(
@@ -369,18 +366,18 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                 <Stack>
                   <Typography
                     variant="h6"
-                    component={"h2"}
+                    component={'h2'}
                     sx={{
                       fontWeight: 600,
-                      fontSize: "1.2rem",
+                      fontSize: '1.2rem',
                     }}
                   >
                     {i18n._(`Anything else?`)}
                   </Typography>
                   <Typography
                     sx={{
-                      fontSize: "1rem",
-                      paddingBottom: "10px",
+                      fontSize: '1rem',
+                      paddingBottom: '10px',
                     }}
                   >
                     {i18n._(
@@ -390,29 +387,27 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   <FeatureList />
                   <Stack
                     sx={{
-                      width: "100%",
+                      width: '100%',
                     }}
                   >
                     <Stack
                       sx={{
-                        gap: "0px",
+                        gap: '0px',
                       }}
                     >
                       <Typography
                         variant="h6"
-                        component={"h2"}
+                        component={'h2'}
                         sx={{
-                          fontSize: "1.2rem",
+                          fontSize: '1.2rem',
                           fontWeight: 600,
-                          paddingBottom: "5px",
+                          paddingBottom: '5px',
                         }}
                       >
                         {i18n._(`Available languages:`)}
                       </Typography>
-                      <Typography variant="body2" component={"p"}>
-                        {supportedLanguages
-                          .map((code) => fullEnglishLanguageName[code])
-                          .join(", ")}
+                      <Typography variant="body2" component={'p'}>
+                        {supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(', ')}
                       </Typography>
                     </Stack>
                   </Stack>
@@ -423,17 +418,17 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
             {relatedCards.length > 0 && (
               <Stack
                 sx={{
-                  color: "#222",
+                  color: '#222',
                   maxWidth: maxContentWidth,
-                  width: "100%",
-                  padding: "10px",
-                  gap: "20px",
-                  boxSizing: "border-box",
+                  width: '100%',
+                  padding: '10px',
+                  gap: '20px',
+                  boxSizing: 'border-box',
                 }}
               >
                 <Typography
                   variant="h6"
-                  component={"h2"}
+                  component={'h2'}
                   sx={{
                     fontWeight: 600,
                   }}
@@ -443,28 +438,23 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
 
                 <Stack
                   sx={{
-                    display: "grid",
-                    width: "100%",
-                    gap: "20px",
-                    gridTemplateColumns: "1fr 1fr 1fr",
-                    justifyContent: "space-between",
-                    "@media (max-width: 1224px)": {
-                      gridTemplateColumns: "1fr 1fr",
+                    display: 'grid',
+                    width: '100%',
+                    gap: '20px',
+                    gridTemplateColumns: '1fr 1fr 1fr',
+                    justifyContent: 'space-between',
+                    '@media (max-width: 1224px)': {
+                      gridTemplateColumns: '1fr 1fr',
                     },
 
-                    "@media (max-width: 724px)": {
-                      gridTemplateColumns: "1fr",
+                    '@media (max-width: 724px)': {
+                      gridTemplateColumns: '1fr',
                     },
                   }}
                 >
                   {relatedCards.map((scenario, index) => {
                     return (
-                      <RolePlayCard
-                        key={index}
-                        scenario={scenario}
-                        lang={lang}
-                        height="400px"
-                      />
+                      <RolePlayCard key={index} scenario={scenario} lang={lang} height="400px" />
                     );
                   })}
                 </Stack>

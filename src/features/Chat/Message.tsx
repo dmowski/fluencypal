@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   Stack,
   Typography,
@@ -11,21 +11,21 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
-} from "@mui/material";
-import { UserChatMessage } from "./type";
-import { useEffect, useState } from "react";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import dayjs from "dayjs";
-import { useLingui } from "@lingui/react";
-import { useChat } from "./useChat";
-import { useAuth } from "../Auth/useAuth";
-import { useGame } from "../Game/useGame";
-import { MessageActionButton } from "./MessageActionButton";
-import { useTranslate } from "../Translation/useTranslate";
-import { Avatar } from "../Game/Avatar";
-import { CircleEllipsis } from "lucide-react";
-import { UserName } from "../User/UserName";
+} from '@mui/material';
+import { UserChatMessage } from './type';
+import { useEffect, useState } from 'react';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import dayjs from 'dayjs';
+import { useLingui } from '@lingui/react';
+import { useChat } from './useChat';
+import { useAuth } from '../Auth/useAuth';
+import { useGame } from '../Game/useGame';
+import { MessageActionButton } from './MessageActionButton';
+import { useTranslate } from '../Translation/useTranslate';
+import { Avatar } from '../Game/Avatar';
+import { CircleEllipsis } from 'lucide-react';
+import { UserName } from '../User/UserName';
 
 const limitMessages = 300;
 
@@ -48,9 +48,7 @@ export function Message({
   const [isDeleting, setIsDeleting] = useState(false);
   const { i18n } = useLingui();
   const translator = useTranslate();
-  const [isShowFullContent, setIsShowFullContent] = useState(
-    isFullContentByDefault,
-  );
+  const [isShowFullContent, setIsShowFullContent] = useState(isFullContentByDefault);
 
   const isDeleted = message.isDeleted || false;
 
@@ -58,8 +56,7 @@ export function Message({
     setIsShowFullContent(isFullContentByDefault);
   }, [isFullContentByDefault]);
 
-  const isLimitedMessage =
-    message.content.length > limitMessages && !isShowFullContent;
+  const isLimitedMessage = message.content.length > limitMessages && !isShowFullContent;
 
   const auth = useAuth();
   const game = useGame();
@@ -81,9 +78,7 @@ export function Message({
 
   const commentsCount = chat.commentsInfo[message.id] || 0;
 
-  const isLikedByMe = chat.messagesLikes[message.id]?.some(
-    (like) => like.userId === myUserId,
-  );
+  const isLikedByMe = chat.messagesLikes[message.id]?.some((like) => like.userId === myUserId);
 
   const updatedAgo = dayjs(message.updatedAtIso).fromNow();
 
@@ -100,9 +95,7 @@ export function Message({
     setMenuAnchorEl(null);
     e.preventDefault();
     e.stopPropagation();
-    const isConfirmed = window.confirm(
-      i18n._("Are you sure you want to delete this message?"),
-    );
+    const isConfirmed = window.confirm(i18n._('Are you sure you want to delete this message?'));
     if (!isConfirmed) {
       return;
     }
@@ -119,7 +112,7 @@ export function Message({
     setIsEditing(true);
   };
 
-  const avatarSize = "35px";
+  const avatarSize = '35px';
   const contentLeftPadding = `calc(${avatarSize} + 22px)`;
   const chainLeftPadding = `calc(calc(${avatarSize} / 2) + 14px)`;
   const chainTop = `calc(${avatarSize} + 26px)`;
@@ -152,14 +145,9 @@ export function Message({
     setIsTranslating(false);
   };
 
-  const contentToShow =
-    isShowTranslation && translation ? translation : message.content;
-  const lastVisit = game.gameLastVisit
-    ? game.gameLastVisit[message.senderId]
-    : null;
-  const isOnline = lastVisit
-    ? dayjs().diff(dayjs(lastVisit), "minute") < 5
-    : false;
+  const contentToShow = isShowTranslation && translation ? translation : message.content;
+  const lastVisit = game.gameLastVisit ? game.gameLastVisit[message.senderId] : null;
+  const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), 'minute') < 5 : false;
 
   const onClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (isEditing) return;
@@ -169,10 +157,10 @@ export function Message({
 
     const target = e.target as HTMLElement;
     if (
-      target.closest("button") ||
-      target.closest("a") ||
-      target.closest("input") ||
-      target.closest("textarea")
+      target.closest('button') ||
+      target.closest('a') ||
+      target.closest('input') ||
+      target.closest('textarea')
     ) {
       return;
     }
@@ -183,61 +171,55 @@ export function Message({
   return (
     <Stack
       sx={{
-        padding: isDeleted ? "20px 0" : "10px",
+        padding: isDeleted ? '20px 0' : '10px',
 
-        backgroundColor: isDeleted
-          ? "rgba(0, 0, 0, 0.2)"
-          : "rgba(255, 255, 255, 0.01)",
+        backgroundColor: isDeleted ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.01)',
 
-        position: "relative",
-        width: "100%",
-        flexDirection: "row",
+        position: 'relative',
+        width: '100%',
+        flexDirection: 'row',
         zIndex: 1,
-        gap: "0px",
+        gap: '0px',
         // cursor: isEditing || isDeleted ? "default" : "pointer",
-        ".open-message-button:focus": {
-          boxShadow: "inset 0 0 0 2px rgba(41, 179, 229, 0.5)",
-          borderRadius: "12px",
+        '.open-message-button:focus': {
+          boxShadow: 'inset 0 0 0 2px rgba(41, 179, 229, 0.5)',
+          borderRadius: '12px',
         },
       }}
     >
       {isChain && (
         <Stack
           sx={{
-            position: "absolute",
+            position: 'absolute',
             top: chainTop,
             left: chainLeftPadding,
 
             height: chainHeight,
-            width: "2px",
-            backgroundColor: "rgba(255, 255, 255, 0.3)",
-            borderRadius: "2px",
+            width: '2px',
+            backgroundColor: 'rgba(255, 255, 255, 0.3)',
+            borderRadius: '2px',
           }}
         />
       )}
 
       <Stack
         sx={{
-          position: "absolute",
-          top: "15px",
-          left: "15px",
+          position: 'absolute',
+          top: '15px',
+          left: '15px',
           opacity: isDeleted ? 0 : 1,
         }}
       >
-        <Avatar
-          avatarSize={avatarSize}
-          url={userAvatarUrl}
-          isOnline={isOnline}
-        />
+        <Avatar avatarSize={avatarSize} url={userAvatarUrl} isOnline={isOnline} />
       </Stack>
 
       {isEditing ? (
         <Stack
           sx={{
-            width: "100%",
-            position: "relative",
+            width: '100%',
+            position: 'relative',
             zIndex: 1,
-            gap: "10px",
+            gap: '10px',
           }}
         >
           <TextField
@@ -246,25 +228,21 @@ export function Message({
             maxRows={12}
             value={editedContent}
             onChange={(e) => setEditedContent(e.target.value)}
-            sx={{ marginTop: "10px", backgroundColor: "rgba(10, 18, 30, 1)" }}
+            sx={{ marginTop: '10px', backgroundColor: 'rgba(10, 18, 30, 1)' }}
             disabled={isDeleting}
           />
 
-          <Stack sx={{ gap: "10px", flexDirection: "row" }}>
+          <Stack sx={{ gap: '10px', flexDirection: 'row' }}>
             <Button
               size="small"
               onClick={handleSaveEdit}
               disabled={isDeleting || !editedContent.trim()}
               variant="contained"
             >
-              {isDeleting ? <CircularProgress size={20} /> : i18n._("Save")}
+              {isDeleting ? <CircularProgress size={20} /> : i18n._('Save')}
             </Button>
-            <Button
-              size="small"
-              onClick={() => setIsEditing(false)}
-              disabled={isDeleting}
-            >
-              {i18n._("Cancel")}
+            <Button size="small" onClick={() => setIsEditing(false)} disabled={isDeleting}>
+              {i18n._('Cancel')}
             </Button>
           </Stack>
         </Stack>
@@ -272,15 +250,15 @@ export function Message({
         <Stack
           sx={{
             //border: isContentWide ? "1px solid red" : "1px solid green",
-            width: "100%",
+            width: '100%',
           }}
         >
           <Stack
             sx={{
-              width: "100%",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
+              width: '100%',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
               paddingLeft: contentLeftPadding,
             }}
           >
@@ -289,20 +267,20 @@ export function Message({
             ) : (
               <Stack
                 sx={{
-                  flexDirection: "row",
-                  gap: "16px",
-                  alignItems: "flex-end",
-                  backgroundColor: "transparent",
-                  color: "inherit",
-                  border: "none",
-                  padding: isContentWide ? "10px 0" : "0 0 0 0",
-                  paddingBottom: "4px",
-                  ":focus": {
-                    outline: "none",
-                    boxShadow: "0 0 0 2px rgba(41, 179, 229, 0.5)",
+                  flexDirection: 'row',
+                  gap: '16px',
+                  alignItems: 'flex-end',
+                  backgroundColor: 'transparent',
+                  color: 'inherit',
+                  border: 'none',
+                  padding: isContentWide ? '10px 0' : '0 0 0 0',
+                  paddingBottom: '4px',
+                  ':focus': {
+                    outline: 'none',
+                    boxShadow: '0 0 0 2px rgba(41, 179, 229, 0.5)',
                   },
                 }}
-                component={"button"}
+                component={'button'}
                 onClick={() => game.showUserInModal(message.senderId)}
               >
                 <UserName userId={message.senderId} userName={userName} bold />
@@ -311,20 +289,18 @@ export function Message({
                   variant="caption"
                   sx={{
                     opacity: 0.6,
-                    lineHeight: "1",
+                    lineHeight: '1',
 
                     i: {
-                      fontStyle: "normal",
+                      fontStyle: 'normal',
                       opacity: 0.6,
-                      paddingLeft: "10px",
+                      paddingLeft: '10px',
                     },
                     span: {},
                   }}
                 >
                   {updatedAgo}
-                  {message.updatedAtIso !== message.createdAtIso && (
-                    <i>{i18n._("edited")}</i>
-                  )}
+                  {message.updatedAtIso !== message.createdAtIso && <i>{i18n._('edited')}</i>}
                 </Typography>
               </Stack>
             )}
@@ -332,18 +308,15 @@ export function Message({
             {isOwnMessage && (
               <Stack
                 sx={{
-                  flexDirection: "row",
+                  flexDirection: 'row',
                   opacity: 0.7,
-                  alignItems: "center",
-                  gap: "1px",
+                  alignItems: 'center',
+                  gap: '1px',
                 }}
               >
-                <IconButton
-                  onClick={(e) => setMenuAnchorEl(e.currentTarget)}
-                  size="small"
-                >
+                <IconButton onClick={(e) => setMenuAnchorEl(e.currentTarget)} size="small">
                   <CircleEllipsis
-                    size={"20px"}
+                    size={'20px'}
                     style={{
                       opacity: 0.7,
                     }}
@@ -352,8 +325,8 @@ export function Message({
                 <Menu
                   anchorEl={menuAnchorEl}
                   anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "left",
+                    vertical: 'bottom',
+                    horizontal: 'left',
                   }}
                   keepMounted
                   open={Boolean(menuAnchorEl)}
@@ -364,7 +337,7 @@ export function Message({
                       <EditIcon />
                     </ListItemIcon>
                     <ListItemText>
-                      <Typography>{i18n._("Edit")}</Typography>
+                      <Typography>{i18n._('Edit')}</Typography>
                     </ListItemText>
                   </MenuItem>
                   <Divider />
@@ -373,7 +346,7 @@ export function Message({
                       <DeleteIcon color="error" />
                     </ListItemIcon>
                     <ListItemText>
-                      <Typography color="error">{i18n._("Delete")}</Typography>
+                      <Typography color="error">{i18n._('Delete')}</Typography>
                     </ListItemText>
                   </MenuItem>
                 </Menu>
@@ -383,18 +356,16 @@ export function Message({
 
           <Typography
             sx={{
-              wordBreak: "break-word",
-              whiteSpace: "pre-wrap",
-              width: "100%",
+              wordBreak: 'break-word',
+              whiteSpace: 'pre-wrap',
+              width: '100%',
 
-              fontSize: "15px",
-              lineHeight: "21px",
-              color: isDeleted
-                ? "rgba(243, 245, 247, 0.3)"
-                : "rgba(243, 245, 247, 1)",
+              fontSize: '15px',
+              lineHeight: '21px',
+              color: isDeleted ? 'rgba(243, 245, 247, 0.3)' : 'rgba(243, 245, 247, 1)',
               fontWeight: 350,
-              paddingLeft: isContentWide ? "0px" : contentLeftPadding,
-              paddingTop: isContentWide ? "20px" : 0,
+              paddingLeft: isContentWide ? '0px' : contentLeftPadding,
+              paddingTop: isContentWide ? '20px' : 0,
             }}
           >
             {contentToShow.length > limitMessages &&
@@ -404,15 +375,15 @@ export function Message({
               <>
                 <span onClick={() => setIsShowFullContent(!isShowFullContent)}>
                   {isLimitedMessage
-                    ? contentToShow.slice(0, limitMessages) + "... "
+                    ? contentToShow.slice(0, limitMessages) + '... '
                     : contentToShow}
                 </span>
                 <Button
                   size="small"
                   onClick={() => setIsShowFullContent(!isShowFullContent)}
-                  sx={{ textTransform: "none", padding: 0, minWidth: 0 }}
+                  sx={{ textTransform: 'none', padding: 0, minWidth: 0 }}
                 >
-                  {i18n._("Show more")}
+                  {i18n._('Show more')}
                 </Button>
               </>
             ) : (
@@ -423,35 +394,35 @@ export function Message({
           {!isDeleted && (
             <Stack
               sx={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: "8px",
-                paddingTop: "5px",
-                paddingLeft: isContentWide ? "0px" : contentLeftPadding,
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: '8px',
+                paddingTop: '5px',
+                paddingLeft: isContentWide ? '0px' : contentLeftPadding,
               }}
             >
               <MessageActionButton
                 isActive={isLikedByMe}
-                onClick={() => chat.toggleLike(message.id, "like")}
-                label={i18n._("Like")}
+                onClick={() => chat.toggleLike(message.id, 'like')}
+                label={i18n._('Like')}
                 count={chat.messagesLikes[message.id]?.length || 0}
-                iconName={"heart"}
+                iconName={'heart'}
               />
 
               <MessageActionButton
                 isActive={false}
                 onClick={() => chat.setActiveCommentMessageId(message.id)}
-                label={i18n._("Comment")}
+                label={i18n._('Comment')}
                 count={commentsCount}
-                iconName={"message-circle"}
+                iconName={'message-circle'}
               />
 
               {translator.isTranslateAvailable && (
                 <MessageActionButton
                   isActive={isTranslating}
                   onClick={() => toggleTranslation()}
-                  label={i18n._("Translate")}
-                  iconName={"languages"}
+                  label={i18n._('Translate')}
+                  iconName={'languages'}
                 />
               )}
               {translator.translateModal}
@@ -462,19 +433,19 @@ export function Message({
 
       {!isEditing && (
         <Stack
-          component={"button"}
+          component={'button'}
           onClick={() => chat.onOpen(message.id)}
           className="open-message-button"
           sx={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
             top: 0,
             left: 0,
-            border: "none",
-            backgroundColor: "rgba(0,0,0,0)",
+            border: 'none',
+            backgroundColor: 'rgba(0,0,0,0)',
             zIndex: -1,
-            outline: "none",
+            outline: 'none',
           }}
         />
       )}

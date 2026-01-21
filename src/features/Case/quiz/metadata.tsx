@@ -1,7 +1,7 @@
-import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
-import { getAllInterviews } from "../data/data";
-import type { Metadata } from "next";
-import { generateMetadataInfo } from "@/features/SEO/metadata";
+import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
+import { getAllInterviews } from '../data/data';
+import type { Metadata } from 'next';
+import { generateMetadataInfo } from '@/features/SEO/metadata';
 
 export interface InterviewQuizPageProps {
   params: Promise<{
@@ -11,7 +11,7 @@ export interface InterviewQuizPageProps {
 }
 
 export async function generateInterviewQuizStaticParams() {
-  const { interviews } = getAllInterviews("en");
+  const { interviews } = getAllInterviews('en');
   return supportedLanguages
     .map((lang: string) => {
       return interviews.map((item) => {
@@ -26,13 +26,13 @@ export async function generateInterviewQuizMetadata(
 ): Promise<Metadata> {
   const params = await props.params;
   const id = params.id;
-  const lang = (params.lang || "en") as SupportedLanguage;
-  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  const lang = (params.lang || 'en') as SupportedLanguage;
+  const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
 
   return generateMetadataInfo({
     lang: supportedLang,
     interviewId: id,
-    currentPath: "case",
-    afterIdPage: "quiz",
+    currentPath: 'case',
+    afterIdPage: 'quiz',
   });
 }

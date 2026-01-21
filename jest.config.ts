@@ -3,21 +3,21 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type { Config } from "jest";
+import type { Config } from 'jest';
 
 const config: Config = {
   clearMocks: true,
-  coverageProvider: "v8",
+  coverageProvider: 'v8',
 
-  preset: "ts-jest",
-  testEnvironment: "node",
+  preset: 'ts-jest',
+  testEnvironment: 'node',
   transform: {
-    "^.+\\.tsx?$": "ts-jest",
+    '^.+\\.tsx?$': 'ts-jest',
   },
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1",
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
-  testPathIgnorePatterns: ["/node_modules/", "/e2e/"],
+  testPathIgnorePatterns: ['/node_modules/', '/e2e/'],
 };
 
 export default config;

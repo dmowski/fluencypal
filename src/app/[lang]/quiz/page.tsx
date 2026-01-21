@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import { supportedLanguages } from "@/features/Lang/lang";
-import { generateMetadataInfo } from "@/features/SEO/metadata";
-import { PracticeProvider } from "@/app/practiceProvider";
-import { QuizPage2 } from "@/features/Goal/Quiz/QuizPage2";
+import type { Metadata } from 'next';
+import { supportedLanguages } from '@/features/Lang/lang';
+import { generateMetadataInfo } from '@/features/SEO/metadata';
+import { PracticeProvider } from '@/app/practiceProvider';
+import { QuizPage2 } from '@/features/Goal/Quiz/QuizPage2';
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
@@ -17,11 +17,11 @@ interface PageProps {
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const searchParam = await props.searchParams;
-  const toLearn = searchParam.learn || "";
-  const languageToLearn = supportedLanguages.find((l) => l === toLearn) || "en";
+  const toLearn = searchParam.learn || '';
+  const languageToLearn = supportedLanguages.find((l) => l === toLearn) || 'en';
   return generateMetadataInfo({
     lang: (await props.params).lang,
-    currentPath: "quiz",
+    currentPath: 'quiz',
     languageToLearn,
   });
 }
@@ -29,11 +29,11 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 export default async function Page(props: PageProps) {
   const lang = (await props.params).lang;
 
-  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
 
   const searchParam = await props.searchParams;
-  const toLearn = searchParam.learn || "";
-  const languageToLearn = supportedLanguages.find((l) => l === toLearn) || "en";
+  const toLearn = searchParam.learn || '';
+  const languageToLearn = supportedLanguages.find((l) => l === toLearn) || 'en';
 
   return (
     <PracticeProvider>

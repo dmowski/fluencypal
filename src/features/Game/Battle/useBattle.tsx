@@ -1,16 +1,16 @@
-"use client";
-import { createContext, useContext, ReactNode, JSX, useMemo } from "react";
-import { deleteDoc, doc, setDoc } from "firebase/firestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { GameBattle, GameBattleAnswer } from "./types";
-import { useAuth } from "@/features/Auth/useAuth";
-import { db } from "@/features/Firebase/firebaseDb";
-import { BATTLE_WIN_POINTS } from "./data";
-import { useBattleQuestions } from "./useBattleQuestions";
-import { uniq } from "@/libs/uniq";
-import { useTextAi } from "@/features/Ai/useTextAi";
-import { useGame } from "../useGame";
-import { increaseGamePointsRequest } from "../gameBackendRequests";
+'use client';
+import { createContext, useContext, ReactNode, JSX, useMemo } from 'react';
+import { deleteDoc, doc, setDoc } from 'firebase/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { GameBattle, GameBattleAnswer } from './types';
+import { useAuth } from '@/features/Auth/useAuth';
+import { db } from '@/features/Firebase/firebaseDb';
+import { BATTLE_WIN_POINTS } from './data';
+import { useBattleQuestions } from './useBattleQuestions';
+import { uniq } from '@/libs/uniq';
+import { useTextAi } from '@/features/Ai/useTextAi';
+import { useGame } from '../useGame';
+import { increaseGamePointsRequest } from '../gameBackendRequests';
 
 interface SubmitResult {
   isWinnerExists: boolean;
@@ -57,11 +57,7 @@ function useProvideBattle(): BattleContextType {
   };
 
   const sortedBattles = useMemo(() => {
-    return battles
-      ? [...battles].sort((a, b) =>
-          a.createdAtIso.localeCompare(b.createdAtIso),
-        )
-      : [];
+    return battles ? [...battles].sort((a, b) => a.createdAtIso.localeCompare(b.createdAtIso)) : [];
   }, [battles]);
 
   const addBattle = async (battle: GameBattle) => {
@@ -107,7 +103,7 @@ function useProvideBattle(): BattleContextType {
       submittedUsersIds: [],
       winnerUserId: null,
       hiddenByUsersIds: [],
-      winnerDescription: "",
+      winnerDescription: '',
     };
     const battleDoc = doc(battlesRef, id);
     await setDoc(battleDoc, newBattle);
@@ -130,10 +126,7 @@ function useProvideBattle(): BattleContextType {
     const battle = battles?.find((b) => b.battleId === battleId);
     if (!battle) return;
 
-    const updatedHiddenByUsersIds = uniq([
-      ...(battle.hiddenByUsersIds || []),
-      userId,
-    ]);
+    const updatedHiddenByUsersIds = uniq([...(battle.hiddenByUsersIds || []), userId]);
 
     await editBattle(battleId, {
       ...battle,
@@ -160,8 +153,7 @@ function useProvideBattle(): BattleContextType {
       updatedAtIso: new Date().toISOString(),
     };
     const cleanAnswers = battle.answers.filter((a) => {
-      const isCurrentAnswer =
-        a.questionId === questionId && a.userId === userId;
+      const isCurrentAnswer = a.questionId === questionId && a.userId === userId;
       return !isCurrentAnswer;
     });
     const updatedAnswers = [...cleanAnswers, answer];
@@ -176,10 +168,7 @@ function useProvideBattle(): BattleContextType {
     const battle = battles?.find((b) => b.battleId === battleId);
     if (!battle) return { isWinnerExists: false };
 
-    const updatedSubmittedUsersIds = uniq([
-      ...battle.submittedUsersIds,
-      userId,
-    ]);
+    const updatedSubmittedUsersIds = uniq([...battle.submittedUsersIds, userId]);
 
     await editBattle(battleId, {
       ...battle,
@@ -191,7 +180,7 @@ function useProvideBattle(): BattleContextType {
     );
 
     const getUserUsername = (userId: string) => {
-      return game.userNames?.[userId] || "-";
+      return game.userNames?.[userId] || '-';
     };
 
     if (isReadyToDecideWinner) {
@@ -209,25 +198,25 @@ ${battle.usersIds
         const question = questions[a.questionId];
         return `Question: ${question.topic}. ${question.description}\nAnswer: ${a.answer}\n`;
       })
-      .join("\n");
+      .join('\n');
 
     return participantHeader + participantAnswers;
   })
-  .join("\n\n")}
+  .join('\n\n')}
 
 Please provide your decision in the following JSON format:
 {"winnerUserId": "userId", "reason": "A brief explanation of why the selected participant won. Do not mention userId in the reason."}`;
 
-      console.log("systemMessage", systemMessage);
+      console.log('systemMessage', systemMessage);
 
       const result = await ai.generateJson<{
         winnerUserId: string;
         reason: string;
       }>({
         systemMessage,
-        userMessage: "Decide the winner based on the provided answers.",
+        userMessage: 'Decide the winner based on the provided answers.',
         attempts: 3,
-        model: "gpt-4o",
+        model: 'gpt-4o',
       });
 
       const winnerUserId = result.winnerUserId || battle.usersIds[0];
@@ -269,23 +258,15 @@ Please provide your decision in the following JSON format:
   };
 }
 
-export function BattleProvider({
-  children,
-}: {
-  children: ReactNode;
-}): JSX.Element {
+export function BattleProvider({ children }: { children: ReactNode }): JSX.Element {
   const battleData = useProvideBattle();
-  return (
-    <BattleContext.Provider value={battleData}>
-      {children}
-    </BattleContext.Provider>
-  );
+  return <BattleContext.Provider value={battleData}>{children}</BattleContext.Provider>;
 }
 
 export function useBattle(): BattleContextType {
   const context = useContext(BattleContext);
   if (!context) {
-    throw new Error("useBattle must be used within a BattleProvider");
+    throw new Error('useBattle must be used within a BattleProvider');
   }
   return context;
 }

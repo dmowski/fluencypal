@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 type UseVadRecorderOptions = {
   onChunk: (blob: Blob, format: string, durationSeconds: number) => void;
@@ -32,7 +32,7 @@ type UseVadRecorderReturn = {
 };
 
 function pickMimeType(): string | undefined {
-  const candidates = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4"];
+  const candidates = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4'];
   for (const c of candidates) {
     // @ts-ignore
     if (window.MediaRecorder?.isTypeSupported?.(c)) return c;
@@ -57,9 +57,7 @@ function rmsToDb(rms: number) {
   return 20 * Math.log10(v); // ~ dBFS-ish (negative)
 }
 
-export function useVadRecorder(
-  options: UseVadRecorderOptions,
-): UseVadRecorderReturn {
+export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderReturn {
   const {
     onChunk,
     silenceMs = 3000,
@@ -113,9 +111,9 @@ export function useVadRecorder(
     const rec = recorderRef.current;
     recorderRef.current = null;
 
-    if (rec && rec.state !== "inactive") {
+    if (rec && rec.state !== 'inactive') {
       await new Promise<void>((resolve) => {
-        rec.addEventListener("stop", () => resolve(), { once: true });
+        rec.addEventListener('stop', () => resolve(), { once: true });
         rec.stop();
       });
     }
@@ -157,7 +155,7 @@ export function useVadRecorder(
     recordingRef.current = false;
     setIsSpeaking(false);
 
-    if (rec.state !== "inactive") rec.stop();
+    if (rec.state !== 'inactive') rec.stop();
   }, []);
 
   const startNewUtterance = useCallback(() => {
@@ -183,8 +181,7 @@ export function useVadRecorder(
       });
       streamRef.current = stream;
 
-      const AudioCtx =
-        window.AudioContext || (window as any).webkitAudioContext;
+      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
       const audioCtx = new AudioCtx();
       audioCtxRef.current = audioCtx;
 
@@ -195,13 +192,9 @@ export function useVadRecorder(
       source.connect(analyser);
 
       const mimeType = pickMimeType();
-      if (!window.MediaRecorder)
-        throw new Error("MediaRecorder is not supported in this browser.");
+      if (!window.MediaRecorder) throw new Error('MediaRecorder is not supported in this browser.');
 
-      const rec = new MediaRecorder(
-        stream,
-        mimeType ? { mimeType } : undefined,
-      );
+      const rec = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
       recorderRef.current = rec;
 
       rec.ondataavailable = (e) => {
@@ -220,7 +213,7 @@ export function useVadRecorder(
         if (!speechStartedAt || !lastVoiceAt) return;
         const speechDur = lastVoiceAt - speechStartedAt;
         if (speechDur < minSpeechMs) return;
-        const format = rec.mimeType || "audio/webm";
+        const format = rec.mimeType || 'audio/webm';
 
         const blob = new Blob(parts, { type: format });
 
@@ -241,8 +234,7 @@ export function useVadRecorder(
           const rms = computeRms(analyserNow);
           const rawLevel = rmsToMeter01(rms, meterRmsMin, meterRmsMax);
           smoothLevelRef.current =
-            levelSmoothing * smoothLevelRef.current +
-            (1 - levelSmoothing) * rawLevel;
+            levelSmoothing * smoothLevelRef.current + (1 - levelSmoothing) * rawLevel;
           setInputLevel01(smoothLevelRef.current);
           setInputDb(rmsToDb(rms));
 
@@ -256,8 +248,7 @@ export function useVadRecorder(
         // Update meter every tick
         const rawLevel = rmsToMeter01(rms, meterRmsMin, meterRmsMax);
         smoothLevelRef.current =
-          levelSmoothing * smoothLevelRef.current +
-          (1 - levelSmoothing) * rawLevel;
+          levelSmoothing * smoothLevelRef.current + (1 - levelSmoothing) * rawLevel;
         setInputLevel01(smoothLevelRef.current);
         setInputDb(rmsToDb(rms));
 
@@ -280,7 +271,7 @@ export function useVadRecorder(
         }
       }, tickMs);
     } catch (e: any) {
-      setLastError(e?.message || "Failed to start mic/VAD.");
+      setLastError(e?.message || 'Failed to start mic/VAD.');
       await cleanup();
     }
   }, [

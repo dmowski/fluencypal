@@ -1,13 +1,13 @@
-import { Button, Link, Stack, Typography } from "@mui/material";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { Cookie, ReceiptText, Trash } from "lucide-react";
-import { useState } from "react";
-import { ContactList } from "../Landing/Contact/ContactList";
-import { SupportedLanguage } from "@/features/Lang/lang";
-import { getUrlStart } from "../Lang/getUrlStart";
-import { useLingui } from "@lingui/react";
-import { useDeleteAccount } from "../Auth/useDeleteAccount";
-import { isTMA } from "@telegram-apps/sdk-react";
+import { Button, Link, Stack, Typography } from '@mui/material';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { Cookie, ReceiptText, Trash } from 'lucide-react';
+import { useState } from 'react';
+import { ContactList } from '../Landing/Contact/ContactList';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { getUrlStart } from '../Lang/getUrlStart';
+import { useLingui } from '@lingui/react';
+import { useDeleteAccount } from '../Auth/useDeleteAccount';
+import { isTMA } from '@telegram-apps/sdk-react';
 
 interface NeedHelpModalProps {
   onClose: () => void;
@@ -16,25 +16,22 @@ interface NeedHelpModalProps {
 
 export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
   const isTelegramApp = isTMA();
-  const urlPathToRedirect = isTelegramApp
-    ? getUrlStart(lang) + "tg"
-    : getUrlStart(lang);
+  const urlPathToRedirect = isTelegramApp ? getUrlStart(lang) + 'tg' : getUrlStart(lang);
 
   const deleteAccount = useDeleteAccount({
     onClose,
     startPage: urlPathToRedirect,
   });
   const { i18n } = useLingui();
-  const [isShowDeleteAccountModal, setIsShowDeleteAccountModal] =
-    useState(false);
+  const [isShowDeleteAccountModal, setIsShowDeleteAccountModal] = useState(false);
 
   return (
     <CustomModal isOpen={true} onClose={() => onClose()}>
       <Stack
         sx={{
-          gap: "30px",
-          width: "100%",
-          maxWidth: "600px",
+          gap: '30px',
+          width: '100%',
+          maxWidth: '600px',
         }}
       >
         <Stack>
@@ -55,20 +52,20 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
 
         <Stack
           sx={{
-            flexDirection: "row",
-            gap: "50px",
-            width: "100%",
-            maxWidth: "800px",
-            "@media (max-width: 600px)": {
-              flexDirection: "column",
-              gap: "50px",
+            flexDirection: 'row',
+            gap: '50px',
+            width: '100%',
+            maxWidth: '800px',
+            '@media (max-width: 600px)': {
+              flexDirection: 'column',
+              gap: '50px',
             },
           }}
         >
           <Stack
-            gap={"10px"}
+            gap={'10px'}
             sx={{
-              width: "100%",
+              width: '100%',
             }}
           >
             <Typography>{i18n._(`Contacts:`)}</Typography>
@@ -77,9 +74,9 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
           </Stack>
 
           <Stack
-            gap={"10px"}
+            gap={'10px'}
             sx={{
-              width: "100%",
+              width: '100%',
             }}
           >
             <Typography
@@ -90,34 +87,30 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
               {i18n._(`Legal:`)}
             </Typography>
 
-            <Stack gap={"10px"}>
+            <Stack gap={'10px'}>
               <Stack
                 sx={{
-                  alignItems: "center",
-                  flexDirection: "row",
-                  gap: "10px",
+                  alignItems: 'center',
+                  flexDirection: 'row',
+                  gap: '10px',
                 }}
               >
                 <ReceiptText />
                 <Typography>
-                  <Link href={`${getUrlStart(lang)}terms`}>
-                    {i18n._(`Terms of Use`)}
-                  </Link>
+                  <Link href={`${getUrlStart(lang)}terms`}>{i18n._(`Terms of Use`)}</Link>
                 </Typography>
               </Stack>
 
               <Stack
                 sx={{
-                  alignItems: "center",
-                  flexDirection: "row",
-                  gap: "10px",
+                  alignItems: 'center',
+                  flexDirection: 'row',
+                  gap: '10px',
                 }}
               >
                 <Cookie />
                 <Typography>
-                  <Link href={`${getUrlStart(lang)}privacy`}>
-                    {i18n._(`Privacy Policy`)}
-                  </Link>
+                  <Link href={`${getUrlStart(lang)}privacy`}>{i18n._(`Privacy Policy`)}</Link>
                 </Typography>
               </Stack>
             </Stack>
@@ -126,20 +119,18 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
         {isShowDeleteAccountModal ? (
           <Stack
             sx={{
-              width: "100%",
-              alignItems: "flex-start",
-              gap: "20px",
-              marginTop: "20px",
-              maxWidth: "800px",
+              width: '100%',
+              alignItems: 'flex-start',
+              gap: '20px',
+              marginTop: '20px',
+              maxWidth: '800px',
             }}
           >
             <Stack>
               <Typography variant="h5">
                 {i18n._(`Are you sure you want to delete your account?`)}
               </Typography>
-              <Typography variant="caption">
-                {i18n._(`This action is irreversible.`)}
-              </Typography>
+              <Typography variant="caption">{i18n._(`This action is irreversible.`)}</Typography>
               <Typography variant="caption">
                 {i18n._(`We will delete your data, but information about your balance will be stored for one
               year.`)}
@@ -153,8 +144,8 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
 
             <Stack
               sx={{
-                flexDirection: "row",
-                gap: "10px",
+                flexDirection: 'row',
+                gap: '10px',
               }}
             >
               <Button
@@ -162,7 +153,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
                 onClick={() => deleteAccount.onDeleteAccount()}
                 color="error"
                 variant="contained"
-                startIcon={<Trash size={"18px"} />}
+                startIcon={<Trash size={'18px'} />}
               >
                 {deleteAccount.isDeletingAccount
                   ? i18n._(`Deleting...`)
@@ -174,7 +165,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
                 onClick={() => {
                   setIsShowDeleteAccountModal(false);
                 }}
-                startIcon={<Trash size={"18px"} />}
+                startIcon={<Trash size={'18px'} />}
               >
                 {i18n._(`Cancel`)}
               </Button>
@@ -183,10 +174,10 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
         ) : (
           <Stack
             sx={{
-              flexDirection: "row",
-              width: "100%",
-              justifyContent: "space-between",
-              paddingTop: "20px",
+              flexDirection: 'row',
+              width: '100%',
+              justifyContent: 'space-between',
+              paddingTop: '20px',
             }}
           >
             <Button onClick={onClose} variant="outlined" color="primary">
@@ -196,7 +187,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
               disabled={deleteAccount.isDeletingAccount}
               onClick={() => setIsShowDeleteAccountModal(true)}
               color="error"
-              startIcon={<Trash size={"18px"} />}
+              startIcon={<Trash size={'18px'} />}
             >
               {deleteAccount.isDeletingAccount
                 ? i18n._(`Deleting...`)

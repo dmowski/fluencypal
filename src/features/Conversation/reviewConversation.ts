@@ -1,10 +1,10 @@
-import { ChatMessage } from "@/common/conversation";
+import { ChatMessage } from '@/common/conversation';
 
 export const reviewConversation = async (chatHistory: ChatMessage[]) => {
-  const response = await fetch("/api/review-conversation", {
-    method: "POST",
+  const response = await fetch('/api/review-conversation', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(chatHistory),
   });
