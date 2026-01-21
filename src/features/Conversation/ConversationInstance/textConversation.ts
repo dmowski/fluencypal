@@ -107,12 +107,13 @@ export const initTextConversation = async ({
 
       onAddDelta(botMessageId, '...', true);
 
-      const aiResponse =
+      const aiResponse = fixOutputText(
         teacherMessage ||
-        (await generateTextWithAi({
-          systemMessage,
-          userMessage,
-        }));
+          (await generateTextWithAi({
+            systemMessage,
+            userMessage,
+          })),
+      );
 
       const botMessage: ChatMessage = {
         id: botMessageId,
@@ -196,19 +197,31 @@ export const initTextConversation = async ({
     onMessage(userMessage);
   };
 
+  const fixOutputText = (text: string): string => {
+    let fixedText = text.trim();
+
+    // Remove leading "Assistant:" or "Shimmer:" if present
+    if (fixedText.startsWith('Assistant:')) {
+      fixedText = fixedText.replace('Assistant:', '').trim();
+    }
+
+    if (fixedText.startsWith('Shimmer:')) {
+      fixedText = fixedText.replace('Shimmer:', '').trim();
+    }
+
+    if (voice && fixedText.toLowerCase().startsWith(voice.toLowerCase() + ':')) {
+      fixedText = fixedText.replace(voice + ':', '').trim();
+    }
+
+    return fixedText.trim();
+  };
+
   // Send correction instruction
   const sendCorrectionInstruction = async (correction: string): Promise<void> => {
     console.log('Updating correction instruction:', correction);
     // instructionState.correction = correction;
     if (correction) {
-      if (correction.startsWith('Assistant:')) {
-        correction = correction.replace('Assistant:', '').trim();
-      }
-
-      if (correction.startsWith('Shimmer:')) {
-        correction = correction.replace('Shimmer:', '').trim();
-      }
-      triggerAiResponse(correction);
+      triggerAiResponse(fixOutputText(correction));
     }
   };
 

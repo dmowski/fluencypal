@@ -473,7 +473,7 @@ ${lessonPlan.steps
         model: aiModal,
         voice,
         initInstruction: `# Overview
-You are an ${fullLanguageName} speaking teacher. Your name is "Shimmer".
+You are an ${fullLanguageName} speaking teacher. Your name is "${voice}".
 Your role is to make user talks on a topic: ${elementTitle}. ${elementDescription}. (${elementDetails}).
 You win the goal if user will talk with you. Keep in mind to change topic if user stuck at some point
 
@@ -497,7 +497,7 @@ ${voiceInstructions}`,
         model: aiModal,
         voice,
         initInstruction: `# Overview
-You are an ${fullLanguageName} speaking teacher. Your name is "Shimmer".
+You are an ${fullLanguageName} speaking teacher. Your name is "${voice}".
 Your role is to play a Role Play game on this topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
 You win the goal if user will talk with you. Keep in mind to change topic if user stuck at some point
 
@@ -539,7 +539,7 @@ Don't focus solely on one topic. Try to cover a variety of topics (Example\n${po
         ...baseConfig,
         model: aiModal,
         voice,
-        initInstruction: `${aiPersona} Your name is "Shimmer". Your role is to make user talks.
+        initInstruction: `${aiPersona} Your name is ${voice}. Your role is to make user talks.
 ${openerInfoPrompt}
 Do not teach or explain rules—just talk.
 You should be friendly and engaging.
