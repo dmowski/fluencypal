@@ -27,7 +27,7 @@ export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    const isDeveloper = auth.userInfo?.email?.includes('dmowski') || false;
+    const isDeveloper = auth.isDev;
     if (isDeveloper) {
       return;
     }
