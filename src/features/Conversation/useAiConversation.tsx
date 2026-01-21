@@ -693,7 +693,9 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 `;
       }
 
-      const isUseVad = input.mode === 'talk';
+      const userIdsToTestVad = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2', '4GJOfstBzBQ51TCliI8jDFGwUKV2'];
+
+      const isUseVad = input.mode === 'talk' && userIdsToTestVad.includes(auth.uid || '');
       setRecordingVoiceMode(isUseVad ? 'VAD' : 'PushToTalk');
 
       const initConversation = initTextConversation;
