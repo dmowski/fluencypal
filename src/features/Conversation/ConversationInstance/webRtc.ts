@@ -453,5 +453,11 @@ export const initWebRtcConversation = async ({
     sendCorrectionInstruction,
     addUserMessageDelta,
     completeUserMessageDelta,
+    lockVolume: () => {
+      console.log('lockVolume is not implemented in WebRTC mode');
+    },
+    unlockVolume: () => {
+      console.log('unlockVolume is not implemented in WebRTC mode');
+    },
   };
 };

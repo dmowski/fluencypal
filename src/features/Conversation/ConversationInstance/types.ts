@@ -38,6 +38,8 @@ export type ConversationInstance = {
   triggerAiResponse: () => Promise<void>;
   toggleMute: (mute: boolean) => void;
   toggleVolume: (isVolumeOn: boolean) => void;
+  lockVolume: () => void;
+  unlockVolume: () => void;
   sendWebCamDescription: (description: string) => void;
   sendCorrectionInstruction: (correction: string) => void;
 

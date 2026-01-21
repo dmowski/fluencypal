@@ -39,6 +39,7 @@ export const initTextConversation = async ({
   const audioState = {
     isMuted: isMuted,
     isVolumeOn: isVolumeOn,
+    lockVolume: false,
   };
 
   // Generate unique message ID
@@ -229,7 +230,19 @@ export const initTextConversation = async ({
   };
 
   const toggleVolume = (isVolumeOn: boolean): void => {
+    if (audioState.lockVolume) {
+      return;
+    }
+
     audioState.isVolumeOn = isVolumeOn;
+  };
+
+  const lockVolume = (): void => {
+    audioState.lockVolume = true;
+  };
+
+  const unlockVolume = (): void => {
+    audioState.lockVolume = false;
   };
 
   setTimeout(() => {
@@ -280,5 +293,7 @@ export const initTextConversation = async ({
     sendCorrectionInstruction,
     addUserMessageDelta,
     completeUserMessageDelta,
+    lockVolume,
+    unlockVolume,
   };
 };

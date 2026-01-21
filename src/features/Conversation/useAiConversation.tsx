@@ -346,20 +346,21 @@ VISUAL_CONTEXT (latest): ${description}
   const access = useAccess();
   const isLowBalance = !access.isFullAppAccess;
 
-  const [isMutedDueToNoBalance, setIsMutedDueToNoBalance] = useState(false);
+  const [isVolumeOffDueToNoBalance, setIsVolumeOffDueToNoBalance] = useState(false);
   useEffect(() => {
-    const isRestoredBalance = isMutedDueToNoBalance && !isLowBalance;
+    const isRestoredBalance = isVolumeOffDueToNoBalance && !isLowBalance;
     if (isRestoredBalance) {
-      communicatorRef.current?.toggleMute(isMuted);
-      setIsMutedDueToNoBalance(false);
+      communicatorRef.current?.toggleVolume(true);
+      communicatorRef.current?.unlockVolume();
+      setIsVolumeOffDueToNoBalance(false);
     }
 
     if (!isLowBalance) {
       return;
     }
-
-    communicatorRef.current?.toggleMute(true);
-    setIsMutedDueToNoBalance(true);
+    communicatorRef.current?.toggleVolume(false);
+    communicatorRef.current?.lockVolume();
+    setIsVolumeOffDueToNoBalance(true);
   }, [isLowBalance]);
 
   useEffect(() => {
