@@ -1,7 +1,7 @@
 import { IconButton, Stack } from '@mui/material';
 import { CircleQuestionMark } from 'lucide-react';
 
-export const CallButton = ({
+export const FooterButton = ({
   label,
   onClick,
   activeButton,

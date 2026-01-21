@@ -20,7 +20,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from '@mui/icons-material/Done';
 import { useLessonPlan } from '@/features/LessonPlan/useLessonPlan';
 import { useVadAudioRecorder } from '@/features/Audio/useVadAudioRecorder';
-import { CallButton } from './CallButton';
+import { FooterButton } from './FooterButton';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { RecordingUserMessageMode } from '../types';
 
@@ -349,7 +349,7 @@ Examples:
         <>
           {isRecordingByButton || isProcessingTranscription ? (
             <>
-              <CallButton
+              <FooterButton
                 activeButton={
                   recorder.isTranscribing || isProcessingTranscription ? (
                     <CircularProgress size={'24px'} />
@@ -377,7 +377,7 @@ Examples:
                 {recorder.visualizerComponent}
               </Stack>
 
-              <CallButton
+              <FooterButton
                 activeButton={
                   recorder.isTranscribing || isProcessingTranscription ? (
                     <CloseIcon style={{ opacity: 0.2 }} />
@@ -400,7 +400,7 @@ Examples:
           ) : (
             <>
               {recordingVoiceMode === 'VAD' && (
-                <CallButton
+                <FooterButton
                   activeButton={
                     <Stack
                       sx={{
@@ -462,7 +462,7 @@ Examples:
               )}
 
               {recordingVoiceMode === 'RealTimeConversation' && (
-                <CallButton
+                <FooterButton
                   activeButton={<MicIcon />}
                   inactiveButton={<MicOffIcon />}
                   isActive={isMuted === false}
@@ -472,7 +472,7 @@ Examples:
               )}
 
               {recordingVoiceMode === 'PushToTalk' && (
-                <CallButton
+                <FooterButton
                   activeButton={<MicIcon />}
                   inactiveButton={<MicOffIcon />}
                   isActive={false}
@@ -481,7 +481,7 @@ Examples:
                 />
               )}
 
-              <CallButton
+              <FooterButton
                 activeButton={<VolumeUpIcon />}
                 inactiveButton={<VolumeOffIcon />}
                 isActive={isVolumeOnToDisplay}
@@ -490,7 +490,7 @@ Examples:
                 isLocked={isLimited}
               />
 
-              <CallButton
+              <FooterButton
                 activeButton={<ClosedCaptionIcon />}
                 inactiveButton={<ClosedCaptionDisabledIcon />}
                 isActive={isSubtitlesEnabled}
@@ -500,7 +500,7 @@ Examples:
                 onClick={() => toggleSubtitles(!isSubtitlesEnabled)}
               />
 
-              <CallButton
+              <FooterButton
                 activeButton={<VideocamIcon />}
                 inactiveButton={<VideocamOffIcon />}
                 isActive={isWebCamEnabled}
