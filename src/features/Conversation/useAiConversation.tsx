@@ -696,9 +696,12 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       const userIdsToTestVad = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2', '4GJOfstBzBQ51TCliI8jDFGwUKV2'];
 
       const isUseVad = input.mode === 'talk' && userIdsToTestVad.includes(auth.uid || '');
-      setRecordingVoiceMode(isUseVad ? 'VAD' : 'PushToTalk');
+      const isUseRealtime = input.mode === 'talk' && !userIdsToTestVad.includes(auth.uid || '');
+      setRecordingVoiceMode(
+        isUseVad ? 'VAD' : isUseRealtime ? 'RealTimeConversation' : 'PushToTalk',
+      );
 
-      const initConversation = initTextConversation;
+      const initConversation = isUseRealtime ? initWebRtcConversation : initTextConversation;
 
       const conversation = await initConversation({
         ...conversationConfig,
