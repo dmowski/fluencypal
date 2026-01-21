@@ -82,19 +82,25 @@ export const initTextConversation = async ({
       return;
     }
 
-    isProcessingAiResponse = true;
-
-    const botMessageId = generateMessageId();
     const previousMessage =
       conversationHistory.length > 0 ? conversationHistory[conversationHistory.length - 1] : null;
     const previousMessageId = previousMessage ? previousMessage?.id : null;
+
+    if (previousMessage?.isBot) {
+      console.log('Previous message is from bot, skipping AI response trigger');
+      return;
+    }
+
+    isProcessingAiResponse = true;
+
+    const botMessageId = generateMessageId();
 
     try {
       const systemMessage = getSystemMessage();
       const userMessage = formatConversationHistory();
 
       //console.log("System message:", systemMessage);
-      // console.log("Conversation history:", userMessage);
+      console.log('Conversation history:', userMessage);
 
       onAddDelta(botMessageId, '...', true);
 
@@ -232,7 +238,7 @@ export const initTextConversation = async ({
 
   const addUserMessageDelta = (delta: string) => {
     const lastMessage = conversationHistory[conversationHistory.length - 1];
-    if (lastMessage && !lastMessage.isBot) {
+    if (lastMessage && !lastMessage.isBot && lastMessage.isInProgress) {
       lastMessage.text = `${lastMessage.text} ${delta}`.trim();
       onMessage(lastMessage);
     } else {
@@ -257,12 +263,10 @@ export const initTextConversation = async ({
 
   const completeUserMessageDelta = () => {
     const lastMessage = conversationHistory[conversationHistory.length - 1];
+    console.log('completeUserMessageDelta', lastMessage);
     if (lastMessage && lastMessage.isInProgress) {
-      const updatedMessage: ChatMessage = {
-        ...lastMessage,
-        isInProgress: false,
-      };
-      onMessage(updatedMessage);
+      lastMessage.isInProgress = false;
+      onMessage(lastMessage);
     }
   };
 
