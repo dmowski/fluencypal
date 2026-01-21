@@ -49,8 +49,8 @@ export function Dashboard({ lang }: DashboardProps) {
     const isLimited = !access.isFullAppAccess;
 
     if (isLimited) {
-      usage.togglePaymentModal(true);
-      return;
+      // usage.togglePaymentModal(true);
+      // return;
     }
 
     setIsCallStarting(true);
