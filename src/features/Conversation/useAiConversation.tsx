@@ -694,7 +694,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 `;
       }
 
-      const userIdsToSkipVad = ['K1S4bliZw4hYbpftEC6sG5s9WYj2'];
+      const userIdsToSkipVad = ['K1S4bliZw4hYbpftEC6sG5s9WYj2', 'WpDWCIdffeTOWyndAMpUOn3PUuY2'];
       //const userIdsToSkipVad = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2'];
 
       const isUseVad = input.mode === 'talk' && !userIdsToSkipVad.includes(auth.uid || '');
