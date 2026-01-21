@@ -217,7 +217,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
 
         {isActiveSubscriber && (
           <Tooltip
-            title={`Subscriber till: ${dayjs(activeSubscriptionTill).format('DD MMMM h')}` + 'h'}
+            title={`Subscriber till: ${dayjs(activeSubscriptionTill).format('DD MMMM HH:mm')}`}
           >
             <Stack
               sx={{

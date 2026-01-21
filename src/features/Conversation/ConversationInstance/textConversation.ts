@@ -53,13 +53,15 @@ export const initTextConversation = async ({
       return instructionState.correction;
     }
 
-    return [
-      instructionState.correction,
-      instructionState.baseInitInstruction,
-      instructionState.webCamDescription,
-    ]
-      .filter((part) => part && part.length > 0)
-      .join('\n');
+    return (
+      [
+        instructionState.correction,
+        instructionState.baseInitInstruction,
+        instructionState.webCamDescription,
+      ]
+        .filter((part) => part && part.length > 0)
+        .join('\n') + 'Res'
+    );
   };
 
   // Convert conversation history to text format for AI
@@ -201,6 +203,10 @@ export const initTextConversation = async ({
     if (correction) {
       if (correction.startsWith('Assistant:')) {
         correction = correction.replace('Assistant:', '').trim();
+      }
+
+      if (correction.startsWith('Shimmer:')) {
+        correction = correction.replace('Shimmer:', '').trim();
       }
       triggerAiResponse(correction);
     }
