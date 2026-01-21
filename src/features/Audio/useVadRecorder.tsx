@@ -13,6 +13,8 @@ type UseVadRecorderOptions = {
 
   /** RMS range mapping for meter; tune for your env. */
   meterRmsMin?: number; // default 0.003
+
+  //  meterRmsMax
   meterRmsMax?: number; // default 0.08
   onStop?: () => void;
 };
@@ -60,12 +62,21 @@ function rmsToDb(rms: number) {
 export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderReturn {
   const {
     onChunk,
+    // silenceMs is how long to wait after speech ends before finalizing utterance
     silenceMs = 3000,
+
+    // tickMs is how often to check for speech
     tickMs = 50,
+
+    // rmsThreshold is the minimum RMS to consider "speaking"
     rmsThreshold = 0.02,
+
+    // minSpeechMs is the minimum duration of speech to consider valid
     minSpeechMs = 250,
+
     gateRecording,
 
+    // levelSmoothing
     levelSmoothing = 0.85,
     meterRmsMin = 0.003,
     meterRmsMax = 0.08,

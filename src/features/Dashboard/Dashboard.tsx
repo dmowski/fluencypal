@@ -26,6 +26,7 @@ import { useAccess } from '../Usage/useAccess';
 import { useUsage } from '../Usage/useUsage';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
+import { useConversationAudio } from '../Audio/useConversationAudio';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -44,14 +45,10 @@ export function Dashboard({ lang }: DashboardProps) {
   const settings = useSettings();
   const access = useAccess();
   const usage = useUsage();
+  const audio = useConversationAudio();
 
   const startJustTalk = async () => {
-    const isLimited = !access.isFullAppAccess;
-
-    if (isLimited) {
-      // usage.togglePaymentModal(true);
-      // return;
-    }
+    audio.startConversationAudio();
 
     setIsCallStarting(true);
     await settings.setConversationMode('call');

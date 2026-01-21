@@ -99,8 +99,6 @@ Examples:
       model: 'gpt-4o',
     });
 
-    console.log('response:', response, message);
-
     return Math.max(2000, parseInt(response.trim()));
   };
 

@@ -82,9 +82,13 @@ function useProvideLessonPlan(): LessonPlanContextType {
 
   const activeConversation = getActiveConversation();
 
-  const generateAnalysis = async (
-    temporaryUserMessage?: string,
-  ): Promise<LessonPlanAnalysis | null> => {
+  const generateAnalysis = async ({
+    temporaryUserMessage,
+    label,
+  }: {
+    temporaryUserMessage?: string;
+    label: string;
+  }): Promise<LessonPlanAnalysis | null> => {
     if (!activeLessonPlan || !isActiveConversation) {
       return null;
     }
@@ -94,6 +98,7 @@ function useProvideLessonPlan(): LessonPlanContextType {
     const firstBotMessage = aiConversation.conversation.find((msg) => msg.isBot);
 
     const key = `${activeConversation.lastMessageIndex}_${activeConversation.lastMessageText}`;
+    console.log('key label', key, '|', label);
 
     const activeResult = lessonAnalysisResult.current[key];
     if (activeResult) {
@@ -101,7 +106,7 @@ function useProvideLessonPlan(): LessonPlanContextType {
     }
 
     const process: Promise<LessonPlanAnalysis> = new Promise(async (resolve, reject) => {
-      console.log('Analyzing lesson plan...');
+      console.log('Analyzing lesson plan| ', label);
       const initActiveProgress: LessonPlanAnalysis = {
         progress: 0,
         isFollowingPlan: true,
@@ -154,6 +159,7 @@ ${JSON.stringify(previousProgress, null, 2)}
 
         console.log(
           `result ${(end - start) / 1000} seconds`,
+          label,
           '|' + activeConversation.lastMessageText + '|',
           JSON.stringify({ result }, null, 2),
         );
@@ -178,7 +184,6 @@ ${JSON.stringify(previousProgress, null, 2)}
     const isSkipMessage =
       activeConversation.lastMessage?.isBot || activeConversation.lastMessage?.isInProgress;
     if (isSkipMessage) {
-      console.log('Waiting for user message to analyze...');
       return;
     }
 
@@ -189,7 +194,9 @@ ${JSON.stringify(previousProgress, null, 2)}
 
     isAnalyzingConversationInProgress.current = true;
 
-    const result = await generateAnalysis();
+    const result = await generateAnalysis({
+      label: 'From conversation update',
+    });
     if (!result) return;
 
     setActiveProgress(result);
@@ -293,7 +300,6 @@ Format the response as a JSON array with each step containing "stepTitle", "step
     if (!activeLessonPlan || !isActiveConversation) {
       return;
     }
-    console.log('analysis from submit');
     analyzeActiveConversation();
   }, [lastMessageUpdateTime, isReadyToAnalyze, activeLessonPlan]);
 
@@ -303,7 +309,11 @@ Format the response as a JSON array with each step containing "stepTitle", "step
     activeProgress,
     setActiveLessonPlan,
     createLessonPlan,
-    generateAnalysis,
+    generateAnalysis: (message?: string) =>
+      generateAnalysis({
+        temporaryUserMessage: message,
+        label: 'From external call',
+      }),
   };
 }
 
