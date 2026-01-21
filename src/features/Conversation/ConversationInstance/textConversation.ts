@@ -99,8 +99,8 @@ export const initTextConversation = async ({
       const systemMessage = getSystemMessage();
       const userMessage = formatConversationHistory();
 
-      //console.log("System message:", systemMessage);
-      console.log('Conversation history:', userMessage);
+      // console.log("System message:", systemMessage);
+      // console.log('Conversation history:', userMessage);
 
       onAddDelta(botMessageId, '...', true);
 
