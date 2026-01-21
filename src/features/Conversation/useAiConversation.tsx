@@ -148,7 +148,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const completeUserMessageDelta = async ({ triggerResponse }: { triggerResponse?: boolean }) => {
     communicatorRef.current?.completeUserMessageDelta();
     if (triggerResponse) {
-      await sleep(30);
+      await sleep(300);
       communicatorRef.current?.triggerAiResponse();
     }
   };

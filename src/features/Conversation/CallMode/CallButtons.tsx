@@ -238,8 +238,12 @@ Examples:
 
   useEffect(() => {
     if (!transcriptStack) return;
+    if (vadAudioRecorder.isTranscribing || isReallySpeaking) {
+      setBeforeSendingTimeout(null);
+      return;
+    }
     setBeforeSendingTimeout(originBeforeSendingTimeout);
-  }, [isReallySpeaking]);
+  }, [isReallySpeaking, vadAudioRecorder.isTranscribing]);
 
   useEffect(() => {
     if (beforeSendingTimeout === null) return;
