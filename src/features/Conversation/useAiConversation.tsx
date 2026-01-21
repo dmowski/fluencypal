@@ -103,7 +103,7 @@ interface AiConversationContextType {
   setLessonPlanAnalysis: (analysis: LessonPlanAnalysis | null) => void;
   recordingVoiceMode: RecordingUserMessageMode;
 
-  completeUserMessageDelta: () => void;
+  completeUserMessageDelta: (params: { triggerResponse?: boolean }) => Promise<void>;
   addUserMessageDelta: (delta: string) => void;
 }
 
@@ -145,8 +145,12 @@ function useProvideAiConversation(): AiConversationContextType {
     }
   };
 
-  const completeUserMessageDelta = () => {
+  const completeUserMessageDelta = async ({ triggerResponse }: { triggerResponse?: boolean }) => {
     communicatorRef.current?.completeUserMessageDelta();
+    if (triggerResponse) {
+      await sleep(30);
+      communicatorRef.current?.triggerAiResponse();
+    }
   };
 
   const addUserMessageDelta = (delta: string) => {
@@ -689,7 +693,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 `;
       }
 
-      const isUseRtc = input.mode === 'talk';
+      const isUseRtc = false; //input.mode === 'talk';
       // "VAD"
       // "PushToTalk"
       setRecordingVoiceMode(isUseRtc ? 'RealTimeConversation' : 'VAD');
