@@ -27,7 +27,9 @@ export function MessageChain({
         .sort((a, b) => a.createdAtIso.localeCompare(b.createdAtIso))
     : chat.messages
         .filter((m) => !m.parentMessageId)
-        .sort((a, b) => b.createdAtIso.localeCompare(a.createdAtIso));
+        .sort((a, b) =>
+          chat.getLastActivityOnMessage(b.id).localeCompare(chat.getLastActivityOnMessage(a.id)),
+        );
 
   if (!parentId) {
     return (

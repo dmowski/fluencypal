@@ -24,6 +24,7 @@ import {
 import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
 import { useUrlState } from '../Url/useUrlParam';
 import { sendFeedbackMessageRequest } from '@/app/api/telegram/sendFeedbackMessageRequest';
+import dayjs from 'dayjs';
 
 interface AddMessageProps {
   messageContent: string;
@@ -53,6 +54,7 @@ interface ChatContextType {
 
   activeMessageId: string;
   onOpen: (messageId: string) => void;
+  getLastActivityOnMessage: (messageId: string) => string;
 }
 
 const ChatContext = createContext<ChatContextType | null>(null);
@@ -357,11 +359,31 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     await setDoc(messageDoc, { viewsUserIds: updatedViewsUserIds }, { merge: true });
   };
 
+  const getAllChildMessages = (messageId: string): UserChatMessage[] => {
+    const directChild = messages.filter((msg) => msg.parentMessageId === messageId);
+    const allChild = [...directChild];
+    directChild.forEach((childMsg) => {
+      const childMessages = getAllChildMessages(childMsg.id);
+      allChild.push(...childMessages);
+    });
+    return allChild;
+  };
+
+  const getLastActivityOnMessage = (messageId: string): string => {
+    const message = messages.find((msg) => msg.id === messageId);
+    if (!message) return dayjs().toISOString();
+    const childMessages = getAllChildMessages(messageId);
+    const dates = [message.updatedAtIso, ...childMessages.map((msg) => msg.updatedAtIso)];
+    const recentDate = dates.sort((a, b) => b.localeCompare(a))[0];
+    return recentDate;
+  };
+
   const readMessagesCount = Object.keys(myMetaDataSnap?.[propsChatMetadata.spaceId] || {}).length;
   const unreadMessagesCount = Math.max(0, (metaData?.totalMessages || 0) - readMessagesCount);
 
   return {
     messages,
+    getLastActivityOnMessage,
     topLevelMessages,
     messagesLikes,
     editMessage,
