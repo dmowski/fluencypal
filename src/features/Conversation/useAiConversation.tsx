@@ -702,16 +702,17 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
         'K1S4bliZw4hYbpftEC6sG5s9WYj2',
         'WpDWCIdffeTOWyndAMpUOn3PUuY2',
         '5LRw3ARnx1NL2navOPjIqEzdWip1', //Daniel
-        'Mq2HfU3KrXTjNyOpPXqHSPg5izV2', //- My
+        //'Mq2HfU3KrXTjNyOpPXqHSPg5izV2', //- My
         '6x9zLTu7svdkHqm9huJ8Sx2On1T2', // My safari
       ];
       //const userIdsToSkipVad = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2'];
 
-      const isUseVad =
-        (input.mode === 'talk' || input.mode === 'role-play') &&
-        !userIdsToSkipVad.includes(auth.uid || '');
+      const modesToUseRrc: ConversationType[] = ['talk', 'role-play'];
 
-      const isUseRealtime = (input.mode === 'talk' || input.mode === 'role-play') && !isUseVad;
+      const isUseVad =
+        modesToUseRrc.includes(input.mode) && !userIdsToSkipVad.includes(auth.uid || '');
+
+      const isUseRealtime = modesToUseRrc.includes(input.mode) && !isUseVad;
 
       setRecordingVoiceMode(
         isUseRealtime ? 'RealTimeConversation' : isUseVad ? 'VAD' : 'PushToTalk',
