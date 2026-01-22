@@ -368,10 +368,7 @@ function useProvideRolePlay({
     return { wordsUserToDescribe, wordsAiToDescribe };
   };
 
-  //const audio = useConversationAudio();
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    //await audio.startConversationAudio();
-
     e.preventDefault();
     if (!selectedRolePlayScenario) return;
     setIsStarting(true);

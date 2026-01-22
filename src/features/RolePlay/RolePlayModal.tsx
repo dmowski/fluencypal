@@ -17,6 +17,7 @@ import { RolePlayInputType } from './types';
 
 import { useRolePlay } from './useRolePlay';
 import { useLingui } from '@lingui/react';
+import { useConversationAudio } from '../Audio/useConversationAudio';
 
 export const RolePlayModal = () => {
   const {
@@ -29,6 +30,7 @@ export const RolePlayModal = () => {
   } = useRolePlay();
 
   const { i18n } = useLingui();
+  const audio = useConversationAudio();
 
   return (
     <>
@@ -263,6 +265,9 @@ export const RolePlayModal = () => {
                 variant="contained"
                 type="submit"
                 disabled={isStarting}
+                onClick={async () => {
+                  await audio.startConversationAudio();
+                }}
               >
                 {isStarting ? i18n._(`Loading...`) : i18n._(`Start`)}
               </Button>
