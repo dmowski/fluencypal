@@ -222,7 +222,6 @@ VISUAL_CONTEXT (latest): ${description}
 
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
-    history.setMessages(conversationId, conversation);
 
     if (conversation.length === 2) {
       if (currentMode === 'words') {
@@ -244,6 +243,11 @@ VISUAL_CONTEXT (latest): ${description}
       plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
     }
   }, [conversation.length]);
+
+  useEffect(() => {
+    if (!conversationId || conversation.length === 0) return;
+    history.setMessages(conversationId, conversation);
+  }, [conversation]);
 
   const onAddDelta = (id: string, delta: string, isBot: boolean) => {
     setConversation((prev) => {
