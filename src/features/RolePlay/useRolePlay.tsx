@@ -204,6 +204,10 @@ function useProvideRolePlay({
     gameStat?: GuessGameStat;
     conversationMode: ConversationMode;
   }) => {
+    if (settings.conversationMode !== conversationMode) {
+      settings.setConversationMode(conversationMode);
+    }
+
     const instruction = getDefaultInstruction(
       scenario,
       settings.fullLanguageName || 'English',
