@@ -463,6 +463,51 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           gap: '10px',
         }}
       >
+        {conversations.length === 0 && (
+          <Typography
+            sx={{
+              opacity: 0.6,
+            }}
+          >
+            No conversations
+          </Typography>
+        )}
+        {conversations
+          .sort((a, b) => {
+            return (b.updatedAtIso || '').localeCompare(a.updatedAtIso || '');
+          })
+          .filter((_, index) => index < 23)
+          .map((conversation) => {
+            return (
+              <Stack
+                key={conversation.id}
+                sx={{
+                  backgroundColor: 'rgba(229, 229, 229, 0.21)',
+                  padding: '10px 15px',
+                  cursor: 'pointer',
+                  borderRadius: '8px',
+                  display: 'grid',
+                  gridTemplateColumns: '140px 200px 200px',
+                  gap: '10px',
+                  ':hover': { backgroundColor: 'rgba(229, 229, 229, 0.35)' },
+                }}
+                onClick={() => setShowConversation(conversation)}
+              >
+                <Typography sx={{}}>
+                  <b>{conversation.messagesCount} messages</b>
+                </Typography>
+
+                <Typography sx={{}}>{conversation.mode}</Typography>
+
+                <Typography sx={{}}>
+                  {dayjs(conversation.updatedAtIso).format('DD MMM')} |{' '}
+                  {dayjs(conversation.createdAtIso || conversation.createdAt).format('HH:mm')} -
+                  {dayjs(conversation.updatedAtIso).format('HH:mm')}
+                </Typography>
+              </Stack>
+            );
+          })}
+
         <Stack
           sx={{
             backgroundColor: 'rgba(20, 79, 146, 1)',
@@ -546,51 +591,6 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             )}
           </Stack>
         </Stack>
-
-        {conversations.length === 0 && (
-          <Typography
-            sx={{
-              opacity: 0.6,
-            }}
-          >
-            No conversations
-          </Typography>
-        )}
-        {conversations
-          .sort((a, b) => {
-            return (b.updatedAtIso || '').localeCompare(a.updatedAtIso || '');
-          })
-          .filter((_, index) => index < 23)
-          .map((conversation) => {
-            return (
-              <Stack
-                key={conversation.id}
-                sx={{
-                  backgroundColor: 'rgba(229, 229, 229, 0.21)',
-                  padding: '10px 15px',
-                  cursor: 'pointer',
-                  borderRadius: '8px',
-                  display: 'grid',
-                  gridTemplateColumns: '140px 200px 200px',
-                  gap: '10px',
-                  ':hover': { backgroundColor: 'rgba(229, 229, 229, 0.35)' },
-                }}
-                onClick={() => setShowConversation(conversation)}
-              >
-                <Typography sx={{}}>
-                  <b>{conversation.messagesCount} messages</b>
-                </Typography>
-
-                <Typography sx={{}}>{conversation.mode}</Typography>
-
-                <Typography sx={{}}>
-                  {dayjs(conversation.updatedAtIso).format('DD MMM')} |{' '}
-                  {dayjs(conversation.createdAtIso || conversation.createdAt).format('HH:mm')} -
-                  {dayjs(conversation.updatedAtIso).format('HH:mm')}
-                </Typography>
-              </Stack>
-            );
-          })}
       </Stack>
 
       {allTextInfo && !!false && (
