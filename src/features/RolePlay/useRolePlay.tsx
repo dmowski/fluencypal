@@ -212,7 +212,7 @@ function useProvideRolePlay({
     aiConversation.startConversation({
       mode: 'role-play',
       customInstruction: instruction,
-      voice: scenario.voice,
+      voice: scenario.voice || 'shimmer',
       gameWords: gameStat,
       analyzeResultAiInstruction: scenario.analyzeResultAiInstruction,
       conversationMode: conversationMode,
@@ -368,9 +368,9 @@ function useProvideRolePlay({
     return { wordsUserToDescribe, wordsAiToDescribe };
   };
 
-  const audio = useConversationAudio();
+  //const audio = useConversationAudio();
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    await audio.startConversationAudio();
+    //await audio.startConversationAudio();
 
     e.preventDefault();
     if (!selectedRolePlayScenario) return;
@@ -393,7 +393,7 @@ function useProvideRolePlay({
       onStartRolePlay({
         scenario: selectedRolePlayScenario,
         rolePlayInputs,
-        conversationMode: 'record',
+        conversationMode: 'call',
       });
     }
     setIsStarting(false);

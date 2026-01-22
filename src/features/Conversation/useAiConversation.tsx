@@ -706,9 +706,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       //const userIdsToSkipVad = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2'];
 
       const isUseVad = input.mode === 'talk' && !userIdsToSkipVad.includes(auth.uid || '');
-      console.log('isUseVad', isUseVad);
 
-      const isUseRealtime = input.mode === 'talk' && !isUseVad;
+      const isUseRealtime = (input.mode === 'talk' && !isUseVad) || input.mode === 'role-play';
 
       setRecordingVoiceMode(
         isUseRealtime ? 'RealTimeConversation' : isUseVad ? 'VAD' : 'PushToTalk',
