@@ -1,5 +1,5 @@
 export const getEphemeralToken = async (model: string) => {
-  const openAIKey = process.env.OPENAI_API_KEY;
+  const openAIKey = process.env.OPENAI_API_KEY_WEB_RTC;
   if (!openAIKey) {
     throw new Error('Unable to create ephemeral token. Open AI env key is missing');
   }
