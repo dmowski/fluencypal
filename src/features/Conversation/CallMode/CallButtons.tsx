@@ -469,7 +469,7 @@ Examples:
                   inactiveButton={<MicOffIcon />}
                   isActive={isMuted === false}
                   label={i18n._('Enable microphone')}
-                  onClick={() => setIsMuted(false)}
+                  onClick={() => setIsMuted(!isMuted)}
                 />
               )}
 
