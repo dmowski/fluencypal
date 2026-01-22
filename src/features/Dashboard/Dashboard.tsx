@@ -27,6 +27,8 @@ import { useUsage } from '../Usage/useUsage';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 import { useConversationAudio } from '../Audio/useConversationAudio';
+import dayjs from 'dayjs';
+import { AccessBadge } from './AccessBadge';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -92,67 +94,23 @@ export function Dashboard({ lang }: DashboardProps) {
           {appNavigation.currentPage === 'home' && (
             <>
               {!access.isFullAppAccess && (
-                <Stack
-                  sx={{
-                    marginBottom: '20px',
-                    alignItems: 'center',
-                    gap: '10px',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
+                <AccessBadge
+                  title={i18n._('Limited access')}
+                  subTitle={i18n._('The AI voice is disabled.')}
+                />
+              )}
 
-                    width: '100%',
-                    borderRadius: '16px',
-                    padding: '20px',
-                    backgroundColor: 'rgba(138, 25, 138, 0.099)',
-                    border: '1px solid rgba(138, 25, 138, 0.2)',
-                    flexWrap: 'wrap',
-                    '@media (max-width:600px)': {
-                      borderRadius: '0px',
-                      padding: '20px 10px',
-                      border: 'none',
-                    },
-                  }}
-                >
-                  <Stack>
-                    <Stack
-                      sx={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        //justifyContent: "center",
-                        gap: '15px',
-                      }}
-                    >
-                      <Typography
-                        variant="h5"
-                        sx={{
-                          fontWeight: 600,
-                        }}
-                      >
-                        {i18n._('Limited access')}
-                      </Typography>
-                      <VolumeOff size={'20px'} />
-                    </Stack>
-                    <Typography
-                      sx={{
-                        opacity: 0.7,
-                      }}
-                      variant="caption"
-                    >
-                      {i18n._('The AI voice is disabled.')}
-                    </Typography>
-                  </Stack>
-                  <Button
-                    color="warning"
-                    onClick={() => usage.togglePaymentModal(true)}
-                    variant="contained"
-                    endIcon={<Gem />}
-                    sx={{
-                      padding: '10px 30px',
-                    }}
-                  >
-                    {i18n._('Upgrade Now')}
-                  </Button>
-                </Stack>
+              {access.isFullAppAccess && access.isExpiringSoon && (
+                <AccessBadge
+                  title={i18n._('Full access - Expiring soon')}
+                  subTitle={
+                    access.activeSubscriptionTill
+                      ? i18n._('Your unlimited access is active until {date}', {
+                          date: dayjs(access.activeSubscriptionTill).format('MMM D, YYYY HH:mm'),
+                        })
+                      : i18n._('Your unlimited access is about to expire soon.')
+                  }
+                />
               )}
 
               <Stack
