@@ -37,6 +37,7 @@ import { fnv1aHash } from '@/libs/hash';
 import { getWordsCount } from '@/libs/words';
 import { NativeLangCode } from '@/libs/language/type';
 import { guessLanguagesByCountry } from '@/libs/language/languageByCountry';
+import { useAccess } from '@/features/Usage/useAccess';
 
 type QuizStep =
   | 'before_nativeLanguage'
@@ -58,30 +59,6 @@ type QuizStep =
   | 'teacherSelection'
   | 'accessPlan'
   | 'goalReview';
-
-const stepsViews: QuizStep[] = [
-  'learnLanguage',
-  'before_nativeLanguage',
-  'nativeLanguage',
-
-  'before_pageLanguage',
-  'pageLanguage',
-
-  'before_recordAbout',
-  'recordAbout',
-  'teacherSelection',
-
-  'before_recordAboutFollowUp',
-  'recordAboutFollowUp',
-
-  'before_recordAboutFollowUp2',
-  'recordAboutFollowUp2',
-
-  'before_goalReview',
-  'goalReview',
-  'accessPlan',
-  //"writeWelcomeMessageInChat",
-];
 
 export const MIN_WORDS_FOR_ANSWER = 30;
 
@@ -158,6 +135,30 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   const settings = useSettings();
   const plan = usePlan();
   const userInfo = useAiUserInfo();
+
+  const stepsViews: QuizStep[] = [
+    'learnLanguage',
+    'before_nativeLanguage',
+    'nativeLanguage',
+
+    'before_pageLanguage',
+    'pageLanguage',
+
+    'before_recordAbout',
+    'recordAbout',
+    'teacherSelection',
+
+    'before_recordAboutFollowUp',
+    'recordAboutFollowUp',
+
+    'before_recordAboutFollowUp2',
+    'recordAboutFollowUp2',
+
+    'before_goalReview',
+    'goalReview',
+    'accessPlan',
+    //"writeWelcomeMessageInChat",
+  ];
 
   const [isFirstLoading, setIsFirstLoading] = useState(true);
   const defaultState: QuizUrlState = useMemo(
@@ -776,12 +777,18 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     }
   };
 
+  const access = useAccess();
+  const isFullAppAccess = access.isFullAppAccess;
   const path = useMemo(() => {
     const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
       nativeLanguage,
     );
 
     const path = stepsViews.filter((viewStep) => {
+      if (isFullAppAccess && viewStep === 'accessPlan') {
+        return false;
+      }
+
       if (viewStep === 'pageLanguage' || viewStep === 'before_pageLanguage') {
         if (isNativeLanguageIsSupportedLanguage) {
           return false;
@@ -794,7 +801,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     });
 
     return path;
-  }, [nativeLanguage]);
+  }, [nativeLanguage, isFullAppAccess]);
   const currentStepIndex = path.indexOf(currentStep) === -1 ? 0 : path.indexOf(currentStep);
 
   const [isGTagConfirmed, setIsGTagConfirmed] = useState(false);
