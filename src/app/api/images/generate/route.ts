@@ -18,6 +18,8 @@ const isImageGenerated = async (url: string): Promise<boolean> => {
 };
 
 export async function GET(request: Request) {
+  return Response.json({});
+  /*
   const useOpenAi = false;
   if (useOpenAi) {
     let generatedImages = await Promise.all(
@@ -93,5 +95,5 @@ export async function GET(request: Request) {
       console.log('All images are already generated');
       return Response.json({ generatedImages });
     }
-  }
+  }*/
 }
