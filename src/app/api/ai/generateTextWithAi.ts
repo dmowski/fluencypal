@@ -1,6 +1,15 @@
 import { TextAiModel } from '@/common/ai';
 import OpenAI from 'openai';
 
+const openAIKey = process.env.OPENAI_API_KEY;
+if (!openAIKey) {
+  throw new Error('OpenAI API key is not set');
+}
+
+const client = new OpenAI({
+  apiKey: openAIKey,
+});
+
 interface generateTextWithAiProps {
   systemMessage: string;
   userMessage: string;
@@ -11,14 +20,6 @@ export const generateTextWithAi = async ({
   userMessage,
   model,
 }: generateTextWithAiProps) => {
-  const openAIKey = process.env.OPENAI_API_KEY;
-  if (!openAIKey) {
-    throw new Error('OpenAI API key is not set');
-  }
-
-  const client = new OpenAI({
-    apiKey: openAIKey,
-  });
   const chatCompletion = await client.chat.completions.create({
     messages: [
       {

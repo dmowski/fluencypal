@@ -4,8 +4,19 @@ import { AuthUserInfo } from './type';
 
 const serviceAccount = JSON.parse(process.env.FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS as string);
 
-const initApp = () => {
-  return firebaseAdmin.initializeApp(
+let cacheApp: firebaseAdmin.app.App | null = null;
+
+const initApp = (): firebaseAdmin.app.App => {
+  let fApp = firebaseAdmin.apps[0];
+  if (fApp) {
+    return fApp;
+  }
+
+  if (cacheApp) {
+    return cacheApp;
+  }
+
+  const app = firebaseAdmin.initializeApp(
     {
       credential: firebaseAdmin.credential.cert({
         projectId: serviceAccount.project_id,
@@ -16,6 +27,10 @@ const initApp = () => {
     },
     firebaseConfig.projectId + Date.now(),
   );
+
+  cacheApp = app;
+
+  return app;
 };
 
 const getBucket = () => {

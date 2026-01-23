@@ -1,20 +1,22 @@
 import { AiRequest, AiResponse } from '@/common/requests';
-import { calculateTextUsagePrice, convertUsdToHours, TextUsageEvent } from '@/common/ai';
+import { TextUsageEvent } from '@/common/ai';
 import { validateAuthToken } from '../config/firebase';
-import { getUserBalance } from '../payment/getUserBalance';
-import { TextUsageLog } from '@/common/usage';
-import { addUsage } from '../payment/addUsage';
 import { generateTextWithAi } from './generateTextWithAi';
+
 export const maxDuration = 60;
 
 export async function POST(request: Request) {
-  const userInfo = await validateAuthToken(request);
+  const start = Date.now();
+  await validateAuthToken(request);
+  console.log('Duration', Date.now() - start);
+  /*
+
   const balance = await getUserBalance(userInfo.uid || '');
   if (!balance.isFullAccess) {
     console.error('Insufficient balance.');
-  }
+  }*/
   const aiRequest = (await request.json()) as AiRequest;
-  const languageCode = aiRequest.languageCode || 'en';
+  //const languageCode = aiRequest.languageCode || 'en';
   const { output, usage } = await generateTextWithAi({
     systemMessage: aiRequest.systemMessage,
     userMessage: aiRequest.userMessage,
@@ -31,6 +33,7 @@ export async function POST(request: Request) {
     usageEvent,
   };
 
+  /*
   const priceUsd = calculateTextUsagePrice(usageEvent, aiRequest.model);
   const priceHours = convertUsdToHours(priceUsd);
   const usageLog: TextUsageLog = {
@@ -47,6 +50,7 @@ export async function POST(request: Request) {
   if (!balance.isGameWinner) {
     await addUsage(userInfo.uid, usageLog);
   }
+*/
 
   return Response.json(answer);
 }
