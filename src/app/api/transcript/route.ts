@@ -11,11 +11,6 @@ import { addUsage } from '../payment/addUsage';
 import { transcribeAudioFileWithOpenAI } from './transcribeAudioFileWithOpenAI';
 
 export async function POST(request: Request) {
-  const openAIKey = process.env.OPENAI_API_KEY;
-  if (!openAIKey) {
-    throw new Error('OpenAI API key is not set');
-  }
-
   const data = await request.formData();
   const file = data.get('audio') as File | null;
 

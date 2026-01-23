@@ -6,6 +6,15 @@ import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 import { fullLanguageName, SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
 import { sleep } from '@/libs/sleep';
 
+const openAIKey = process.env.OPENAI_API_KEY;
+if (!openAIKey) {
+  throw new Error('OpenAI API key is not set');
+}
+
+const client = new OpenAI({
+  apiKey: openAIKey,
+});
+
 export const transcribeAudioFileWithOpenAI = async ({
   file,
   model,
@@ -21,11 +30,6 @@ export const transcribeAudioFileWithOpenAI = async ({
   format: string;
   languageCode: SupportedLanguage;
 }): Promise<TranscriptResponse> => {
-  const openAIKey = process.env.OPENAI_API_KEY;
-  if (!openAIKey) {
-    throw new Error('OpenAI API key is not set');
-  }
-
   const actualFileSize = file?.size || 0;
   const actualFileSizeMb = actualFileSize / (1024 * 1024);
   const maxFileSize = 20 * 1024 * 1024; // 14 MB
@@ -48,10 +52,6 @@ export const transcribeAudioFileWithOpenAI = async ({
     };
     return errorResponse;
   }
-
-  const client = new OpenAI({
-    apiKey: openAIKey,
-  });
 
   try {
     const languagePrompt = languageCode
