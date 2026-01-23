@@ -188,10 +188,7 @@ Examples:
   const WAIT_BEFORE_SEND = 6000;
 
   const vadAudioRecorder = useVadAudioRecorder({
-    onStop: () => {
-      console.log('ON STOP');
-      setIsVadEnabled(false);
-    },
+    onStop: () => setIsVadEnabled(false),
     onTranscription: async (transcript: string) => {
       if (!transcript) return;
 

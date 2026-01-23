@@ -7,7 +7,14 @@ export type RealTimeModel =
 const SMALL_CONVERSATION_MODEL: RealTimeModel = 'gpt-realtime-mini';
 const ADVANCED_REALTIME_CONVERSATION_MODEL: RealTimeModel = 'gpt-realtime';
 
-export type TextAiModel = 'gpt-4o' | 'gpt-4o-mini';
+export type TextAiModel =
+  | 'gpt-4o'
+  | 'gpt-4o-mini'
+  | 'gpt-5'
+  | 'gpt-5-mini'
+  | 'gpt-5.1'
+  | 'gpt-5-nano'
+  | 'chatgpt-4o-latest';
 
 export type TranscriptAiModel = 'gpt-4o-transcribe' | 'gpt-4o-mini-transcribe';
 
@@ -54,6 +61,33 @@ export const textModalPricePerMillionTokens: Record<TextAiModel, TextUsagePrice>
     text_input: 0.15,
     text_cached_input: 0.075,
     text_output: 0.6,
+  },
+  'gpt-5': {
+    text_input: 1.25,
+    text_cached_input: 0.125,
+    text_output: 10,
+  },
+  'gpt-5-mini': {
+    text_input: 0.25,
+    text_cached_input: 0.025,
+    text_output: 2,
+  },
+  'gpt-5.1': {
+    text_input: 1.25,
+    text_cached_input: 0.125,
+    text_output: 10,
+  },
+
+  'gpt-5-nano': {
+    text_input: 0.05,
+    text_cached_input: 0.005,
+    text_output: 0.4,
+  },
+
+  'chatgpt-4o-latest': {
+    text_input: 5,
+    text_cached_input: 5,
+    text_output: 15,
   },
 };
 
