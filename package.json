@@ -24,7 +24,8 @@
     "stripe-hook": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
     "fix-prettier": "prettier --write .",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "prod": "vercel build --prod && vercel deploy --prebuilt --prod --archive=tgz"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
