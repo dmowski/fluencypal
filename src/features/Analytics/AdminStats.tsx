@@ -501,8 +501,10 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
 
                 <Typography sx={{}}>
                   {dayjs(conversation.updatedAtIso).format('DD MMM')} |{' '}
-                  {dayjs(conversation.createdAtIso || conversation.createdAt).format('HH:mm')} -
-                  {dayjs(conversation.updatedAtIso).format('HH:mm')}
+                  {conversation.createdAtIso
+                    ? dayjs(conversation.createdAtIso).format('HH:mm')
+                    : '-'}{' '}
+                  -{dayjs(conversation.updatedAtIso).format('HH:mm')}
                 </Typography>
               </Stack>
             );

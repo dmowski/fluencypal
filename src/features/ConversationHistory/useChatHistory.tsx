@@ -75,6 +75,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
         messages,
         messagesCount: messages.length,
         updatedAt: Date.now(),
+        updatedAtIso: new Date().toISOString(),
       },
       { merge: true },
     );
