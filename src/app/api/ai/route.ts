@@ -6,9 +6,7 @@ import { generateTextWithAi } from './generateTextWithAi';
 export const maxDuration = 60;
 
 export async function POST(request: Request) {
-  const start = Date.now();
   await validateAuthToken(request);
-  console.log('Duration', Date.now() - start);
   /*
 
   const balance = await getUserBalance(userInfo.uid || '');
