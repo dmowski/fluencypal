@@ -36,6 +36,7 @@ interface BattleContextType {
   closeBattle: (battleId: string) => Promise<void>;
 
   loading: boolean;
+  countOfBattlesNeedToAttention: number;
 }
 
 const BattleContext = createContext<BattleContextType | null>(null);
@@ -242,19 +243,37 @@ Please provide your decision in the following JSON format:
     return { isWinnerExists: false };
   };
 
+  const countOfBattlesNeedToAttention = useMemo(() => {
+    if (!battles) return 0;
+
+    const myBattles = battles.filter((battle) => battle.usersIds.includes(userId));
+    const activeBattles = myBattles.filter(
+      (battle) => !battle.winnerUserId && !battle.hiddenByUsersIds.includes(userId),
+    );
+
+    const needMyApprovalIds = activeBattles
+      .filter(
+        (battle) =>
+          !battle.approvedUsersIds.includes(userId) && !battle.rejectedUsersIds.includes(userId),
+      )
+      .map((b) => b.battleId);
+
+    const uniqIds = uniq([...needMyApprovalIds]);
+
+    return uniqIds?.length || 0;
+  }, [battles, userId]);
+
   return {
     battles: sortedBattles,
     loading,
     acceptBattle,
-
     closeBattle,
-
     createBattle: addBattle,
     deleteBattle,
     createBattleWithUser,
     updateAnswerTranscription,
-
     submitAnswers,
+    countOfBattlesNeedToAttention,
   };
 }
 

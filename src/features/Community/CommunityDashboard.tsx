@@ -17,12 +17,14 @@ import { CommunityPageRouter } from './CommunityPage';
 import { CommunityPage } from './types';
 import { useChatList } from '../Chat/useChatList';
 import { useLingui } from '@lingui/react';
+import { useBattle } from '../Game/Battle/useBattle';
 
 export const CommunityDashboard = () => {
   const iconFontSize = '40px';
 
   const chatList = useChatList();
   const { i18n } = useLingui();
+  const battles = useBattle();
 
   const [activePage, setActivePage] = useUrlState<CommunityPage | ''>('section', '', false);
 
@@ -84,6 +86,7 @@ export const CommunityDashboard = () => {
                 />
                 <CommunityCard
                   title="Debates"
+                  badgeNumber={battles.countOfBattlesNeedToAttention}
                   onClick={() => setActivePage('debates')}
                   icon={<UsersRound size={iconFontSize} />}
                 />
