@@ -10,10 +10,10 @@ import { useLingui } from '@lingui/react';
 import { Message } from './Message';
 import { useGame } from '../Game/useGame';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { Avatar } from '../Game/Avatar';
-import AddIcon from '@mui/icons-material/Add';
+
 import { MessageChain } from './MessageChain';
 import { GameStatRow } from '../Game/GameStatRow';
+import { ChatSectionHeader } from './ChatSectionHeader';
 
 export const ChatSection = ({
   placeholder,
@@ -244,60 +244,11 @@ export const ChatSection = ({
             },
           }}
         >
-          <Stack
-            sx={{
-              borderBottom:
-                chat.messages.length > 0 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
-              flexDirection: 'row',
-              alignItems: 'center',
-              padding: '20px 20px 20px 15px',
-              gap: '15px',
-            }}
-            onClick={() => setIsNewPostModalOpen(true)}
-          >
-            <Avatar url={game.getUserAvatarUrl(userId)} avatarSize="35px" />
-            <Stack
-              sx={{
-                width: '100%',
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                flexWrap: 'wrap',
-                gap: '10px',
-              }}
-            >
-              <Stack>
-                <Typography
-                  sx={{
-                    //opacity: 0.6,
-                    fontWeight: 600,
-                  }}
-                >
-                  {game.myUserName}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    opacity: 0.6,
-                  }}
-                >
-                  {placeholder || i18n._("What's new?")}
-                </Typography>
-              </Stack>
-
-              <Button
-                variant="contained"
-                color="info"
-                sx={{
-                  width: 'auto',
-                }}
-                startIcon={<AddIcon />}
-                onClick={() => setIsNewPostModalOpen(true)}
-              >
-                {addNewPostButtonText || i18n._('Add Post')}
-              </Button>
-            </Stack>
-          </Stack>
+          <ChatSectionHeader
+            setIsNewPostModalOpen={setIsNewPostModalOpen}
+            addNewPostButtonText={addNewPostButtonText}
+            placeholder={placeholder}
+          />
 
           <MessageChain topLevel parentId={''} limitTopMessages={limitTopMessages} />
         </Stack>
