@@ -43,9 +43,17 @@ export const CommunityDashboard = () => {
           sx={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr 1fr',
+            paddingBottom: '100px',
             gap: '20px',
             width: '100%',
             maxWidth: '680px',
+            '@media (max-width: 600px)': {
+              gridTemplateColumns: '1fr 1fr',
+              paddingTop: '20px',
+            },
+            '@media (max-width: 400px)': {
+              gridTemplateColumns: '1fr',
+            },
           }}
         >
           <CommunityCard
