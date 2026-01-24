@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { BanknoteX } from 'lucide-react';
 import { sendFeedbackMessageRequest } from '@/app/api/telegram/sendFeedbackMessageRequest';
 import { useAuth } from '../Auth/useAuth';
+import { SupportPage } from '../Community/SupportPage';
 
 interface PaymentHistoryModalProps {
   onClose: () => void;
@@ -243,7 +244,6 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
                 sx={{
                   alignItems: 'center',
                   width: '100%',
-                  flexDirection: 'row',
                   paddingTop: '20px',
                 }}
               >
@@ -258,6 +258,13 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
               </Stack>
             </>
           )}
+        </Stack>
+        <Stack
+          sx={{
+            gap: '20px',
+          }}
+        >
+          <SupportPage />
         </Stack>
       </Stack>
     </CustomModal>
