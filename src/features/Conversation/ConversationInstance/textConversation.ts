@@ -78,6 +78,21 @@ export const initTextConversation = async ({
       .join('\n');
   };
 
+  const generateResponseText = async (teacherMessage?: string): Promise<string> => {
+    const systemMessage = getSystemMessage();
+    const userMessage = formatConversationHistory();
+
+    const aiResponse = fixOutputText(
+      teacherMessage ||
+        (await generateTextWithAi({
+          systemMessage,
+          userMessage,
+        })),
+    );
+
+    return aiResponse;
+  };
+
   // Trigger AI response
   const triggerAiResponse = async (teacherMessage?: string): Promise<void> => {
     if (isProcessingAiResponse) {
@@ -85,49 +100,49 @@ export const initTextConversation = async ({
       return;
     }
 
-    const previousMessage =
-      conversationHistory.length > 0 ? conversationHistory[conversationHistory.length - 1] : null;
-    const previousMessageId = previousMessage ? previousMessage?.id : null;
+    const previousMessageStart = getLastMessage();
+    const previousMessageStartId = previousMessageStart ? previousMessageStart.id : null;
 
-    if (previousMessage?.isBot) {
+    if (previousMessageStart?.isBot) {
       console.log('Previous message is from bot, skipping AI response trigger');
       return;
     }
+
+    const responseToStart = previousMessageStart ? previousMessageStart.text : '';
 
     isProcessingAiResponse = true;
 
     const botMessageId = generateMessageId();
 
     try {
-      const systemMessage = getSystemMessage();
-      const userMessage = formatConversationHistory();
+      const aiResponse = await generateResponseText(teacherMessage);
 
-      // console.log("System message:", systemMessage);
-      // console.log('Conversation history:', userMessage);
-
-      onAddDelta(botMessageId, '...', true);
-
-      const aiResponse = fixOutputText(
-        teacherMessage ||
-          (await generateTextWithAi({
-            systemMessage,
-            userMessage,
-          })),
-      );
+      const previousMessageLatest = getLastMessage();
+      const previousMessageText = previousMessageLatest ? previousMessageLatest.text : '';
+      if (previousMessageText !== responseToStart) {
+        console.log(
+          'Conversation changed during AI response generation, Triggering new AI response.',
+          {
+            before: responseToStart,
+            after: previousMessageText,
+          },
+        );
+        isProcessingAiResponse = false;
+        return triggerAiResponse(teacherMessage);
+      }
 
       const botMessage: ChatMessage = {
         id: botMessageId,
         isBot: true,
         text: aiResponse,
-        previousId: previousMessageId,
+        previousId: previousMessageStartId,
       };
-
       conversationHistory.push(botMessage);
 
       // Update message ordering
-      if (previousMessageId) {
+      if (previousMessageStartId) {
         onMessageOrder({
-          [previousMessageId]: botMessageId,
+          [previousMessageStartId]: botMessageId,
         });
       }
 
@@ -135,8 +150,8 @@ export const initTextConversation = async ({
       onMessage(botMessage);
 
       if (voice && audioState.isVolumeOn) {
-        const instruction = previousMessage?.text
-          ? `Please read the following text aloud in response to: "${previousMessage.text}"`
+        const instruction = previousMessageStart?.text
+          ? `Please read the following text aloud in response to: "${previousMessageStart.text}"`
           : 'Please read the following text aloud:';
         playAudio(aiResponse, voice, instruction);
       }
@@ -148,14 +163,14 @@ export const initTextConversation = async ({
         id: botMessageId,
         isBot: true,
         text: errorMessage,
-        previousId: previousMessageId,
+        previousId: previousMessageStartId,
       };
 
       conversationHistory.push(errorBotMessage);
 
-      if (previousMessageId) {
+      if (previousMessageStartId) {
         onMessageOrder({
-          [previousMessageId]: botMessageId,
+          [previousMessageStartId]: botMessageId,
         });
       }
 
@@ -165,17 +180,17 @@ export const initTextConversation = async ({
     }
   };
 
-  const getLastMessageId = (): string | null => {
+  const getLastMessage = (): ChatMessage | null => {
     if (conversationHistory.length === 0) {
       return null;
     }
-    return conversationHistory[conversationHistory.length - 1].id;
+    return conversationHistory[conversationHistory.length - 1];
   };
 
   // Add user message
   const addUserChatMessage = (message: string): void => {
     const userMessageId = generateMessageId();
-    const previousMessageId = getLastMessageId();
+    const previousMessageId = getLastMessage()?.id;
 
     const userMessage: ChatMessage = {
       id: userMessageId,
@@ -274,7 +289,7 @@ export const initTextConversation = async ({
       lastMessage.text = `${lastMessage.text} ${delta}`.trim();
       onMessage(lastMessage);
     } else {
-      const previousMessageId = getLastMessageId();
+      const previousMessageId = getLastMessage()?.id;
       const messageId = generateMessageId();
       const newMessage: ChatMessage = {
         isBot: false,
