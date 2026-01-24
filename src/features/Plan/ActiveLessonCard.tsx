@@ -35,6 +35,7 @@ export const ActiveLessonCard = ({
   settingsIcon,
   onSettingsClick,
 }: ActiveLessonCardProps) => {
+  const photoIndex = title.length % 5;
   return (
     <Stack
       sx={{
@@ -49,7 +50,7 @@ export const ActiveLessonCard = ({
         position: 'relative',
         overflow: 'hidden',
 
-        minHeight: '380px',
+        minHeight: '330px',
         opacity: 0,
         animation: `fadeInOpacity  1.2s ease ${delayToShow}ms forwards`,
 
@@ -85,9 +86,8 @@ export const ActiveLessonCard = ({
         sx={{
           gridArea: 'preview',
           position: 'relative',
-          borderRadius: '16px',
           overflow: 'hidden',
-          minHeight: '300px',
+          minHeight: '250px',
           height: '100%',
           backgroundColor: '#0a121e',
           boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)',
@@ -103,7 +103,7 @@ export const ActiveLessonCard = ({
             inset: 0,
           }}
         >
-          <AiAvatarVideo aiVideo={aiVideo} isSpeaking={false} />
+          <AiAvatarVideo aiVideo={aiVideo} isSpeaking={false} isUsePhoto photoIndex={photoIndex} />
         </Stack>
 
         {settingsIcon && (

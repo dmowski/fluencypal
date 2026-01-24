@@ -1,14 +1,14 @@
 import { AiVoice } from '@/common/ai';
 import { AiAvatar } from './types';
-import { PlanElementMode } from '@/features/Plan/types';
 
 export const voiceAvatarMap: Record<AiVoice, AiAvatar> = {
   // man. young man
   ash: {
-    sitVideoUrl: ['/call/ash/sit.webm'],
-    talkVideoUrl: ['/call/ash/talk.webm'],
-    voiceInstruction: `Your voice is deep, with a steady tone that commands attention. Your speech is articulate and purposeful, with natural pauses that emphasize your points.`,
+    sitVideoUrl: ['/call/ash/sit2.webm', '/call/ash/sit.webm'],
+    talkVideoUrl: ['/call/ash/talk1.webm', '/call/ash/talk3.webm', '/call/ash/talk2.webm'],
+    photoUrls: ['/call/ash/photo.webp', '/call/ash/photo2.webp'],
 
+    voiceInstruction: `Your voice is deep, with a steady tone that commands attention. Your speech is articulate and purposeful, with natural pauses that emphasize your points.`,
     helloPhrases: ['Hello, I’m Ash. I’ll help you speak clearly and with confidence.'],
   },
   // girl

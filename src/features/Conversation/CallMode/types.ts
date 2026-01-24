@@ -5,4 +5,6 @@ export interface AiAvatar {
   voiceInstruction: string;
 
   helloPhrases: string[];
+
+  photoUrls?: string[];
 }
