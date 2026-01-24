@@ -14,7 +14,13 @@ export const DailyQuestionBadge = () => {
   const todaysQuestion = dailyQuestions[todayIsoDate];
   const questionId = todaysQuestion?.id;
 
-  if (!todaysQuestion) return null;
+  if (!todaysQuestion)
+    return (
+      <Stack>
+        <Typography>No daily question for today.</Typography>
+      </Stack>
+    );
+
   return (
     <ChatProvider
       metadata={{
