@@ -47,6 +47,7 @@ import { sleep } from '@/libs/sleep';
 import { Check, CirclePlus, Plus } from 'lucide-react';
 import { FaqItem } from '../Landing/FAQ/FaqItem';
 import { useAnalytics } from '../Analytics/useAnalytics';
+import { useUrlState } from '../Url/useUrlParam';
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
@@ -186,6 +187,8 @@ export const SubscriptionPaymentModal = () => {
 
   const [isShowWaiting, setIsShowWaiting] = useState(false);
   const [initActiveTill, setInitActiveTill] = useState<string>('');
+
+  const [isPaymentSuccess, setPaymentSuccess] = useUrlState('paymentSuccess', '', false);
 
   const pathname = usePathname();
   const locale = pathname?.split('/')[1] as string;
@@ -386,6 +389,36 @@ export const SubscriptionPaymentModal = () => {
   }, []);
 
   if (!usage.isShowPaymentModal) return null;
+
+  const closePaymentSuccessModal = async () => {
+    await setPaymentSuccess('');
+    await sleep(50);
+    usage.togglePaymentModal(false);
+  };
+
+  if (isPaymentSuccess) {
+    return (
+      <CustomModal isOpen={!!isPaymentSuccess} onClose={closePaymentSuccessModal}>
+        <Stack
+          sx={{
+            alignItems: 'flex-start',
+            gap: '30px',
+          }}
+        >
+          <Stack>
+            <Typography variant="h4">{i18n._('Payment successful!')}</Typography>
+            <Typography>
+              {i18n._('Thank you for your purchase. Your subscription is now active.')}
+            </Typography>
+          </Stack>
+          <Button variant="contained" color="info" size="large" onClick={closePaymentSuccessModal}>
+            {i18n._('Start using full access')}
+          </Button>
+        </Stack>
+      </CustomModal>
+    );
+  }
+
   return (
     <CustomModal
       isOpen={true && auth.isAuthorized}
