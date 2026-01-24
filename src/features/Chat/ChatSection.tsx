@@ -22,6 +22,7 @@ export const ChatSection = ({
   addNewPostButtonText,
   limitTopMessages,
   isFullContentByDefault,
+  noMessagesPlaceholder,
 }: {
   placeholder?: string;
   titleContent?: React.ReactNode;
@@ -29,6 +30,7 @@ export const ChatSection = ({
   addNewPostButtonText?: string;
   limitTopMessages?: number;
   isFullContentByDefault?: boolean;
+  noMessagesPlaceholder?: string;
 }) => {
   const auth = useAuth();
   const chat = useChat();
@@ -310,7 +312,8 @@ export const ChatSection = ({
           }}
         >
           <Typography variant="body2" sx={{ opacity: 0.7 }}>
-            {i18n._('No messages yet. Be the first to share your thoughts!')}
+            {noMessagesPlaceholder ||
+              i18n._('No messages yet. Be the first to share your thoughts!')}
           </Typography>
         </Stack>
       )}
