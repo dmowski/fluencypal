@@ -7,23 +7,19 @@ import { RolePlayBoard } from '../RolePlay/RolePlayBoard';
 import { UsageStatsCards } from '../Usage/UsageStatsCards';
 import { PlanDashboardCards } from './PlanDashboardCards';
 import { SupportedLanguage } from '@/features/Lang/lang';
-import { GameBadge } from '../Game/GameBadge';
 import { NavigationBar } from '../Navigation/NavigationBar';
 import { MyProfile } from '../Settings/MyProfile';
 import { useAppNavigation } from '../Navigation/useAppNavigation';
 import { DashboardBlur } from './DashboardBlur';
 import { RolePlayModal } from '../RolePlay/RolePlayModal';
-import { DailyQuestionBadge } from '../Game/DailyQuestion/DailyQuestionBadge';
-import { BattleSection } from '../Game/Battle/BattleSection';
 import { usePlan } from '../Plan/usePlan';
 import { LessonStartModal } from '../Plan/LessonStartModal';
 import { useLingui } from '@lingui/react';
-import { Gem, Origami, VolumeOff } from 'lucide-react';
+import { Origami, VolumeOff } from 'lucide-react';
 import { useAiConversation } from '../Conversation/useAiConversation';
 import { useState } from 'react';
 import { useSettings } from '../Settings/useSettings';
 import { useAccess } from '../Usage/useAccess';
-import { useUsage } from '../Usage/useUsage';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 import { useConversationAudio } from '../Audio/useConversationAudio';
@@ -36,7 +32,6 @@ interface DashboardProps {
 
 export function Dashboard({ lang }: DashboardProps) {
   const appNavigation = useAppNavigation();
-  const IS_SHOW_DAILY_QUESTION_BADGE = true;
 
   const plan = usePlan();
   const { i18n } = useLingui();
@@ -165,21 +160,15 @@ export function Dashboard({ lang }: DashboardProps) {
                 </Stack>
               </Stack>
 
-              {IS_SHOW_DAILY_QUESTION_BADGE && <DailyQuestionBadge />}
-              {!IS_SHOW_DAILY_QUESTION_BADGE && <GameBadge />}
               <PlanDashboardCards lang={lang} />
-              <BattleSection />
             </>
           )}
 
           {appNavigation.currentPage === 'role-play' && <RolePlayBoard />}
-
           {appNavigation.currentPage === 'profile' && (
             <>
               <MyProfile lang={lang} />
-
               <UsageStatsCards />
-
               <Stack
                 sx={{
                   gap: '20px',
