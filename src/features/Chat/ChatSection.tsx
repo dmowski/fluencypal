@@ -12,6 +12,7 @@ import { ChatSectionContainer } from './ChatSectionContainer';
 import { MessageViewsIcon } from './MessageViewsIcon';
 import { ActiveMessageHeaderContainer } from './ActiveMessageHeaderContainer';
 import { ChatReplyModal } from './ChatReplyModal';
+import { ChartSortMode } from './type';
 
 export const ChatSection = ({
   placeholder,
@@ -21,6 +22,7 @@ export const ChatSection = ({
   limitTopMessages,
   isFullContentByDefault,
   noMessagesPlaceholder,
+  sortMode = 'all',
 }: {
   placeholder?: string;
   titleContent?: React.ReactNode;
@@ -29,6 +31,7 @@ export const ChatSection = ({
   limitTopMessages?: number;
   isFullContentByDefault?: boolean;
   noMessagesPlaceholder?: string;
+  sortMode?: ChartSortMode;
 }) => {
   const chat = useChat();
   const { i18n } = useLingui();
@@ -99,7 +102,12 @@ export const ChatSection = ({
             placeholder={placeholder}
           />
 
-          <MessageChain topLevel parentId={''} limitTopMessages={limitTopMessages} />
+          <MessageChain
+            topLevel
+            parentId={''}
+            limitTopMessages={limitTopMessages}
+            sortMode={sortMode}
+          />
         </ChatSectionContainer>
       )}
 
