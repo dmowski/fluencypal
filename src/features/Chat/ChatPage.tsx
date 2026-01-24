@@ -1,4 +1,4 @@
-import { Alert, Badge, Button, Stack, Typography } from '@mui/material';
+import { Alert, Badge, Button, Stack, Tab, Tabs, Typography } from '@mui/material';
 import { ChatSection } from './ChatSection';
 import { ChatProvider } from './useChat';
 import { useLingui } from '@lingui/react';
@@ -9,9 +9,10 @@ import { useAuth } from '../Auth/useAuth';
 import { useGame } from '../Game/useGame';
 import { Avatar } from '../Game/Avatar';
 import { uniq } from '@/libs/uniq';
-import { UserChatMetadata } from './type';
+import { ChartSortMode, UserChatMetadata } from './type';
 import dayjs from 'dayjs';
 import { UserName } from '../User/UserName';
+import { TabLabel } from '../Game/TabLabel';
 
 export const ChatPage = ({
   type,
@@ -27,6 +28,8 @@ export const ChatPage = ({
   const [activeChatId, setActiveChatId] = useUrlState<string>('activeChatId', '', false);
   const chatList = useChatList();
 
+  const [sortMode, setSortMode] = useUrlState<ChartSortMode>('chatSortMode', 'all', false);
+
   const chatMetadata = chatList.myChats.find((chat) => chat.spaceId === activeChatId);
 
   const activeChatBgImage =
@@ -39,6 +42,8 @@ export const ChatPage = ({
       })?.[0] || ''
     ];
 
+  const isDev = auth.isDev;
+
   return (
     <Stack>
       {type === 'public' ? (
@@ -50,7 +55,61 @@ export const ChatPage = ({
             type: 'global',
           }}
         >
-          <ChatSection contextForAiAnalysis="" isFullContentByDefault={isFullContentByDefault} />
+          <Stack
+            sx={{
+              width: '100%',
+            }}
+          >
+            {isDev && (
+              <Stack>
+                <Stack
+                  sx={{
+                    gap: '0px',
+                    width: '100%',
+                  }}
+                >
+                  <Tabs
+                    value={sortMode}
+                    onChange={(event, newId) => setSortMode(newId)}
+                    sx={{
+                      marginLeft: '10px',
+                    }}
+                  >
+                    <Tab
+                      sx={{
+                        padding: '0 10px 0 10px',
+                        minWidth: 'unset',
+                      }}
+                      label={
+                        <TabLabel label={i18n._(`All`)} badgeNumber={undefined} badgeHighlight />
+                      }
+                      value={'all'}
+                    />
+
+                    <Tab
+                      label={
+                        <TabLabel
+                          label={i18n._(`Replies`)}
+                          badgeNumber={undefined}
+                          badgeHighlight
+                        />
+                      }
+                      value={'updates'}
+                      sx={{
+                        padding: '0 10px 0 10px',
+                        minWidth: 'unset',
+                      }}
+                    />
+                  </Tabs>
+                </Stack>
+              </Stack>
+            )}
+            <ChatSection
+              contextForAiAnalysis=""
+              isFullContentByDefault={isFullContentByDefault}
+              sortMode={sortMode}
+            />
+          </Stack>
         </ChatProvider>
       ) : (
         <>
