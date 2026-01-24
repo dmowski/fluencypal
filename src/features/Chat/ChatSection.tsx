@@ -15,6 +15,7 @@ import { MessageChain } from './MessageChain';
 import { GameStatRow } from '../Game/GameStatRow';
 import { ChatSectionHeader } from './ChatSectionHeader';
 import { NoMessagesPlaceholder } from './NoMessagesPlaceholder';
+import { ChatSectionContainer } from './ChatSectionContainer';
 
 export const ChatSection = ({
   placeholder,
@@ -233,18 +234,7 @@ export const ChatSection = ({
           />
         </Stack>
       ) : (
-        <Stack
-          sx={{
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            borderRadius: '12px',
-
-            '@media (max-width: 700px)': {
-              borderRadius: '0px',
-              border: 'none',
-              borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-            },
-          }}
-        >
+        <ChatSectionContainer>
           <ChatSectionHeader
             setIsNewPostModalOpen={setIsNewPostModalOpen}
             addNewPostButtonText={addNewPostButtonText}
@@ -252,7 +242,7 @@ export const ChatSection = ({
           />
 
           <MessageChain topLevel parentId={''} limitTopMessages={limitTopMessages} />
-        </Stack>
+        </ChatSectionContainer>
       )}
 
       {chat.messages.length === 0 && (
