@@ -49,6 +49,7 @@ export const CommunityCard = ({
           fontSize: '15px',
           textTransform: 'uppercase',
           opacity: 0.8,
+          textAlign: 'center',
         }}
       >
         {title}

@@ -92,12 +92,12 @@ export const CommunityDashboard = () => {
                 />
 
                 {/*
-              <CommunityCard
-                title="Daily Questions"
-                onClick={() => setActivePage('daily-questions')}
-                icon={<PsychologyIcon sx={{ fontSize: '60px' }} />}
-              />
-              */}
+                <CommunityCard
+                  title="Daily Questions"
+                  onClick={() => setActivePage('daily-questions')}
+                  icon={<PsychologyIcon sx={{ fontSize: '60px' }} />}
+                />
+                */}
 
                 <CommunityCard
                   title="Leaderboards"
