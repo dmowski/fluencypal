@@ -144,7 +144,7 @@ export async function POST(request: Request) {
         const monthsCount = parseInt(months, 10);
         if (monthsCount <= 0) throw new Error('Amount of months is not set');
 
-        const tgMessage = `User ${userEmail} subscribed for ${monthsCount} months.`;
+        const tgMessage = `🤑🤑 User ${userEmail} subscribed for ${monthsCount} months.`;
         sentSupportTelegramMessage({ message: tgMessage, userId });
         await addPaymentLog({
           amount: amountPaid,
