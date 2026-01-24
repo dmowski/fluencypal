@@ -765,7 +765,7 @@ msgstr ""
 "Ein Fehler ist bei der Analyse der Nachricht aufgetreten. Bitte versuchen "
 "Sie es erneut."
 
-#: src/features/Conversation/ConversationCanvas.tsx:578
+#: src/features/Conversation/ConversationCanvas.tsx:579
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analysieren"
@@ -1220,7 +1220,11 @@ msgstr "C# Backend Interview Bereitschaftstest"
 msgid "Caching Strategies"
 msgstr "Caching-Strategien"
 
-#: src/features/Conversation/ConversationCanvas.tsx:751
+#: src/features/Conversation/RecordingCanvasMenu.tsx:125
+#. js-lingui-explicit-id
+msgid "Call"
+msgstr "Anruf"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:402
 #. js-lingui-explicit-id
 msgid "Call mode"
@@ -1277,7 +1281,7 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:395
-#: src/features/Conversation/ConversationCanvas.tsx:953
+#: src/features/Conversation/ConversationCanvas.tsx:853
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Aufnahme abbrechen"
@@ -2459,7 +2463,7 @@ msgstr "Vergessen Sie nicht, den Anrufmodus im Übungsbereich auszuprobieren!"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:627
+#: src/features/Conversation/ConversationCanvas.tsx:628
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:254
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
@@ -2801,7 +2805,7 @@ msgstr ""
 msgid "Error creating plan. Please try again."
 msgstr "Fehler beim Erstellen des Plans. Bitte versuchen Sie es erneut."
 
-#: src/features/Conversation/ConversationCanvas.tsx:526
+#: src/features/Conversation/ConversationCanvas.tsx:527
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Fehler bei der Analyse der Nachricht"
@@ -3057,6 +3061,11 @@ msgstr "Alles, was Sie brauchen, um aufzufallen und den Job zu bekommen"
 msgid "existential fiction"
 msgstr "existenzielle Fiktion"
 
+#: src/features/Conversation/RecordingCanvasMenu.tsx:94
+#. js-lingui-explicit-id
+msgid "Exit"
+msgstr "Beenden"
+
 #: src/features/Landing/LandingPage.tsx:399
 #. js-lingui-explicit-id
 msgid "Expand Your Vocabulary"
@@ -3231,11 +3240,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
 msgstr "Entscheidung finalisieren ..."
-
-#: src/features/Conversation/ConversationCanvas.tsx:688
-#. js-lingui-explicit-id
-msgid "Finish"
-msgstr "Fertigstellen"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:118
 #. js-lingui-explicit-id
@@ -4091,7 +4095,7 @@ msgstr "Gesundheit"
 msgid "Help"
 msgstr "Hilfe"
 
-#: src/features/Conversation/ConversationCanvas.tsx:774
+#: src/features/Conversation/RecordingCanvasMenu.tsx:149
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Hilfe bei der Antwort"
@@ -4845,7 +4849,7 @@ msgstr ""
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "Ich werde Ihnen zwei weitere Fragen stellen, bevor ich Ihren Plan erstelle."
 
-#: src/features/Conversation/ConversationCanvas.tsx:271
+#: src/features/Conversation/ConversationCanvas.tsx:272
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "Idee für Ihre Nachricht"
@@ -5823,10 +5827,10 @@ msgstr ""
 "Schlüsselerfolg und Ihr Interesse an der Firma. Üben Sie Ihre "
 "Selbstvorstellung, damit Sie klingen"
 
-#: src/features/Conversation/ConversationCanvas.tsx:729
+#: src/features/Conversation/RecordingCanvasMenu.tsx:114
 #. js-lingui-explicit-id
-msgid "Keyboard mode"
-msgstr "Tastaturmodus"
+msgid "Keyboard"
+msgstr "Tastatur"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
 #. js-lingui-explicit-id
@@ -6112,7 +6116,7 @@ msgid "Loading.."
 msgstr "Wird geladen..."
 
 #: src/features/Chat/SubmitForm.tsx:81
-#: src/features/Conversation/ConversationCanvas.tsx:228
+#: src/features/Conversation/ConversationCanvas.tsx:229
 #: src/features/Conversation/ConversationReviewModal.tsx:101
 #: src/features/Conversation/ConversationReviewModal.tsx:116
 #: src/features/Conversation/ConversationReviewModal.tsx:131
@@ -6340,7 +6344,7 @@ msgstr "Mikrofoneinrichtung"
 msgid "Minutes"
 msgstr "Minuten"
 
-#: src/features/Conversation/ConversationCanvas.tsx:845
+#: src/features/Conversation/ConversationCanvas.tsx:745
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Mission abgeschlossen"
@@ -6859,7 +6863,7 @@ msgid "Open personal plan"
 msgstr "Persönlichen Plan öffnen"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:345
-#: src/features/Conversation/ConversationCanvas.tsx:853
+#: src/features/Conversation/ConversationCanvas.tsx:753
 #: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7731,14 +7735,14 @@ msgid "Rating"
 msgstr "Bewertung"
 
 #: src/features/Chat/SubmitForm.tsx:299
-#: src/features/Conversation/ConversationCanvas.tsx:613
-#: src/features/Conversation/ConversationCanvas.tsx:867
+#: src/features/Conversation/ConversationCanvas.tsx:614
+#: src/features/Conversation/ConversationCanvas.tsx:767
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Neu aufnehmen"
 
-#: src/features/Conversation/ConversationCanvas.tsx:883
+#: src/features/Conversation/ConversationCanvas.tsx:783
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Um-schreiben"
@@ -8019,7 +8023,7 @@ msgstr "Antwort aufzeichnen"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:458
 #: src/features/Conversation/CallMode/CallButtons.tsx:478
-#: src/features/Conversation/ConversationCanvas.tsx:654
+#: src/features/Conversation/ConversationCanvas.tsx:655
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Nachricht aufzeichnen"
@@ -8368,7 +8372,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantisches HTML"
 
-#: src/features/Conversation/ConversationCanvas.tsx:596
+#: src/features/Conversation/ConversationCanvas.tsx:597
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -9927,10 +9931,10 @@ msgstr "Wortschatz-Herausforderungen"
 msgid "Voice conversations"
 msgstr "Sprachunterhaltungen"
 
-#: src/features/Conversation/ConversationCanvas.tsx:707
+#: src/features/Conversation/RecordingCanvasMenu.tsx:103
 #. js-lingui-explicit-id
-msgid "Voice record mode"
-msgstr "Sprachaufnahmemodus"
+msgid "Voice records"
+msgstr "Sprachnotizen"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14
@@ -11004,7 +11008,7 @@ msgstr "Ihr Sprachniveau"
 msgid "Your Message"
 msgstr "Ihre Nachricht"
 
-#: src/features/Conversation/ConversationCanvas.tsx:796
+#: src/features/Conversation/ConversationCanvas.tsx:696
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Ihre Nachricht..."
@@ -11089,6 +11093,26 @@ msgstr ""
 "— es ist wichtig, sich in dieses kurze Gespräch zu vertiefen, bevor man "
 "professionelle Themen anspricht. Hier sind einige nützliche englische "
 "Redewendungen, um das Interview zu beginnen:"
+
+#: src/features/Conversation/RecordingCanvasMenu.tsx:94
+#. js-lingui-explicit-id
+#~ msgid "Done & Exit"
+#~ msgstr "Fertig & Beenden"
+
+#: src/features/Conversation/ConversationCanvas.tsx:688
+#. js-lingui-explicit-id
+#~ msgid "Finish"
+#~ msgstr "Fertigstellen"
+
+#: src/features/Conversation/ConversationCanvas.tsx:729
+#. js-lingui-explicit-id
+#~ msgid "Keyboard mode"
+#~ msgstr "Tastaturmodus"
+
+#: src/features/Conversation/ConversationCanvas.tsx:707
+#. js-lingui-explicit-id
+#~ msgid "Voice record mode"
+#~ msgstr "Sprachaufnahmemodus"
 
 #: src/features/Conversation/CallMode/FooterButton.tsx:32
 #. js-lingui-explicit-id

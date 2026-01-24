@@ -50,6 +50,7 @@ import { ProcessUserInput } from './ProcessUserInput';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { ConversationReviewModal } from './ConversationReviewModal';
 import { LessonPlanAnalysis } from '../LessonPlan/type';
+import { RecordingCanvasMenu } from './RecordingCanvasMenu';
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -660,121 +661,20 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                           </Stack>
                         )}
 
-                      <Menu
-                        sx={{
-                          marginBottom: '130px',
-                        }}
-                        anchorEl={anchorElUser}
-                        anchorOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'left',
-                        }}
-                        keepMounted
-                        open={Boolean(anchorElUser)}
-                        onClose={() => setAnchorElUser(null)}
-                      >
-                        <MenuItem
-                          sx={{}}
-                          disabled={isFinishingProcess}
-                          onClick={() => {
-                            closeConversation();
-                            closeMenus();
-                          }}
-                        >
-                          <ListItemIcon>
-                            <LogOut />
-                          </ListItemIcon>
-                          <ListItemText>
-                            <Typography>{i18n._('Finish')}</Typography>
-                          </ListItemText>
-                        </MenuItem>
-
-                        <Divider />
-
-                        <MenuItem
-                          disabled={
-                            isRecording || isAnalyzingResponse || (!isCallMode && !isChatMode)
-                          }
-                          onClick={() => {
-                            toggleConversationMode('record');
-                            closeMenus();
-                          }}
-                        >
-                          <ListItemIcon>
-                            <Mic />
-                          </ListItemIcon>
-                          <ListItemText>
-                            <Typography>{i18n._('Voice record mode')}</Typography>
-                          </ListItemText>
-
-                          {!isCallMode && !isChatMode && (
-                            <ListItemIcon>
-                              <Check />
-                            </ListItemIcon>
-                          )}
-                        </MenuItem>
-
-                        <MenuItem
-                          sx={{}}
-                          disabled={isRecording || isAnalyzingResponse || isChatMode}
-                          onClick={() => {
-                            toggleConversationMode('chat');
-                            closeMenus();
-                          }}
-                        >
-                          <ListItemIcon>
-                            <Keyboard />
-                          </ListItemIcon>
-                          <ListItemText>
-                            <Typography>{i18n._('Keyboard mode')}</Typography>
-                          </ListItemText>
-
-                          {isChatMode && (
-                            <ListItemIcon>
-                              <Check />
-                            </ListItemIcon>
-                          )}
-                        </MenuItem>
-
-                        <MenuItem
-                          sx={{}}
-                          disabled={isRecording || isAnalyzingResponse || isCallMode}
-                          onClick={() => {
-                            toggleConversationMode('call');
-                            closeMenus();
-                          }}
-                        >
-                          <ListItemIcon>
-                            <VideocamIcon />
-                          </ListItemIcon>
-                          <ListItemText>
-                            <Typography>{i18n._('Call mode')}</Typography>
-                          </ListItemText>
-
-                          {isCallMode && (
-                            <ListItemIcon>
-                              <Check />
-                            </ListItemIcon>
-                          )}
-                        </MenuItem>
-
-                        <Divider />
-                        <MenuItem
-                          sx={{}}
-                          disabled={isRecording || isAnalyzingResponse || isLimited}
-                          onClick={(e) => {
-                            openHelpAnswer(e.currentTarget);
-                            closeMenus();
-                          }}
-                        >
-                          <ListItemIcon>
-                            <Lightbulb />
-                          </ListItemIcon>
-                          <ListItemText>
-                            <Typography>{i18n._('Help with answer')}</Typography>
-                          </ListItemText>
-                        </MenuItem>
-                      </Menu>
+                      <RecordingCanvasMenu
+                        anchorElUser={anchorElUser}
+                        setAnchorElUser={setAnchorElUser}
+                        isFinishingProcess={isFinishingProcess}
+                        isRecording={isRecording}
+                        isAnalyzingResponse={isAnalyzingResponse}
+                        isCallMode={isCallMode}
+                        isChatMode={isChatMode}
+                        isLimited={isLimited}
+                        toggleConversationMode={toggleConversationMode}
+                        closeConversation={closeConversation}
+                        closeMenus={closeMenus}
+                        openHelpAnswer={openHelpAnswer}
+                      />
 
                       {!confirmedUserInput &&
                         !isRecording &&

@@ -744,7 +744,7 @@ msgstr "المبلغ كبير جداً. أقدر دعمك، ولكن دعنا ن
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "حدث خطأ أثناء تحليل الرسالة. يرجى المحاولة مرة أخرى."
 
-#: src/features/Conversation/ConversationCanvas.tsx:578
+#: src/features/Conversation/ConversationCanvas.tsx:579
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "تحليل"
@@ -1189,7 +1189,11 @@ msgstr "اختبار جاهزية المقابلة للجهة الخلفية ب�
 msgid "Caching Strategies"
 msgstr "استراتيجيات التخزين المؤقت"
 
-#: src/features/Conversation/ConversationCanvas.tsx:751
+#: src/features/Conversation/RecordingCanvasMenu.tsx:125
+#. js-lingui-explicit-id
+msgid "Call"
+msgstr "اتصال"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:402
 #. js-lingui-explicit-id
 msgid "Call mode"
@@ -1248,7 +1252,7 @@ msgid "Cancel"
 msgstr "إلغاء"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:395
-#: src/features/Conversation/ConversationCanvas.tsx:953
+#: src/features/Conversation/ConversationCanvas.tsx:853
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "إلغاء التسجيل"
@@ -2387,7 +2391,7 @@ msgstr ""
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:627
+#: src/features/Conversation/ConversationCanvas.tsx:628
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:254
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
@@ -2709,7 +2713,7 @@ msgstr "خطأ في إنشاء جلسة الدفع. حاول مرة أخرى ل�
 msgid "Error creating plan. Please try again."
 msgstr "خطأ في إنشاء الخطة. يرجى المحاولة مرة أخرى."
 
-#: src/features/Conversation/ConversationCanvas.tsx:526
+#: src/features/Conversation/ConversationCanvas.tsx:527
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "خطأ أثناء تحليل الرسالة"
@@ -2941,6 +2945,11 @@ msgstr "كل ما تحتاجه للتميز والحصول على الوظيفة
 msgid "existential fiction"
 msgstr "خيال وجودي"
 
+#: src/features/Conversation/RecordingCanvasMenu.tsx:94
+#. js-lingui-explicit-id
+msgid "Exit"
+msgstr "خروج"
+
 #: src/features/Landing/LandingPage.tsx:399
 #. js-lingui-explicit-id
 msgid "Expand Your Vocabulary"
@@ -3104,11 +3113,6 @@ msgstr "املأ استبيان الترحيب لمساعدة FluencyPal في ف
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
 msgstr "اتخاذ القرار النهائي ..."
-
-#: src/features/Conversation/ConversationCanvas.tsx:688
-#. js-lingui-explicit-id
-msgid "Finish"
-msgstr "إنهاء"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:118
 #. js-lingui-explicit-id
@@ -3936,7 +3940,7 @@ msgstr "الصحة"
 msgid "Help"
 msgstr "مساعدة"
 
-#: src/features/Conversation/ConversationCanvas.tsx:774
+#: src/features/Conversation/RecordingCanvasMenu.tsx:149
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "مساعدة في الإجابة"
@@ -4645,7 +4649,7 @@ msgstr ""
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "سأسألك سؤالين آخرين قبل أن أضع خطتك."
 
-#: src/features/Conversation/ConversationCanvas.tsx:271
+#: src/features/Conversation/ConversationCanvas.tsx:272
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "فكرة لرسالتك"
@@ -5559,10 +5563,10 @@ msgstr ""
 "ركز جوابك: الموقف الحالي أو الأخير، إنجاز مهم، واهتمامك بالشركة. مارس تقديم "
 "نفسك حتى تبدو"
 
-#: src/features/Conversation/ConversationCanvas.tsx:729
+#: src/features/Conversation/RecordingCanvasMenu.tsx:114
 #. js-lingui-explicit-id
-msgid "Keyboard mode"
-msgstr "وضع لوحة المفاتيح"
+msgid "Keyboard"
+msgstr "لوحة المفاتيح"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
 #. js-lingui-explicit-id
@@ -5838,7 +5842,7 @@ msgid "Loading.."
 msgstr "جارٍ التحميل.."
 
 #: src/features/Chat/SubmitForm.tsx:81
-#: src/features/Conversation/ConversationCanvas.tsx:228
+#: src/features/Conversation/ConversationCanvas.tsx:229
 #: src/features/Conversation/ConversationReviewModal.tsx:101
 #: src/features/Conversation/ConversationReviewModal.tsx:116
 #: src/features/Conversation/ConversationReviewModal.tsx:131
@@ -6056,7 +6060,7 @@ msgstr "إعداد الميكروفون"
 msgid "Minutes"
 msgstr "دقائق"
 
-#: src/features/Conversation/ConversationCanvas.tsx:845
+#: src/features/Conversation/ConversationCanvas.tsx:745
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "تم إكمال المهمة"
@@ -6578,7 +6582,7 @@ msgid "Open personal plan"
 msgstr "افتح الخطة الشخصية"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:345
-#: src/features/Conversation/ConversationCanvas.tsx:853
+#: src/features/Conversation/ConversationCanvas.tsx:753
 #: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7425,14 +7429,14 @@ msgid "Rating"
 msgstr "التقييم"
 
 #: src/features/Chat/SubmitForm.tsx:299
-#: src/features/Conversation/ConversationCanvas.tsx:613
-#: src/features/Conversation/ConversationCanvas.tsx:867
+#: src/features/Conversation/ConversationCanvas.tsx:614
+#: src/features/Conversation/ConversationCanvas.tsx:767
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "أعد التسجيل"
 
-#: src/features/Conversation/ConversationCanvas.tsx:883
+#: src/features/Conversation/ConversationCanvas.tsx:783
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "أعد الكتابة"
@@ -7700,7 +7704,7 @@ msgstr "سجل الإجابة"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:458
 #: src/features/Conversation/CallMode/CallButtons.tsx:478
-#: src/features/Conversation/ConversationCanvas.tsx:654
+#: src/features/Conversation/ConversationCanvas.tsx:655
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "سجل الرسالة"
@@ -8047,7 +8051,7 @@ msgstr ""
 "markdown\n"
 "HTML الدلالي\n"
 
-#: src/features/Conversation/ConversationCanvas.tsx:596
+#: src/features/Conversation/ConversationCanvas.tsx:597
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -9568,10 +9572,10 @@ msgstr "تحديات المفردات"
 msgid "Voice conversations"
 msgstr "محادثات صوتية"
 
-#: src/features/Conversation/ConversationCanvas.tsx:707
+#: src/features/Conversation/RecordingCanvasMenu.tsx:103
 #. js-lingui-explicit-id
-msgid "Voice record mode"
-msgstr "وضع تسجيل الصوت"
+msgid "Voice records"
+msgstr "سجلات صوتية"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14
@@ -10611,7 +10615,7 @@ msgstr "مستوى لغتك"
 msgid "Your Message"
 msgstr "رسالتك"
 
-#: src/features/Conversation/ConversationCanvas.tsx:796
+#: src/features/Conversation/ConversationCanvas.tsx:696
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "رسالتك..."
@@ -10693,6 +10697,26 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/Conversation/RecordingCanvasMenu.tsx:94
+#. js-lingui-explicit-id
+#~ msgid "Done & Exit"
+#~ msgstr "تم و خروج"
+
+#: src/features/Conversation/ConversationCanvas.tsx:688
+#. js-lingui-explicit-id
+#~ msgid "Finish"
+#~ msgstr "إنهاء"
+
+#: src/features/Conversation/ConversationCanvas.tsx:729
+#. js-lingui-explicit-id
+#~ msgid "Keyboard mode"
+#~ msgstr "وضع لوحة المفاتيح"
+
+#: src/features/Conversation/ConversationCanvas.tsx:707
+#. js-lingui-explicit-id
+#~ msgid "Voice record mode"
+#~ msgstr "وضع تسجيل الصوت"
 
 #: src/features/Conversation/CallMode/FooterButton.tsx:32
 #. js-lingui-explicit-id

@@ -744,7 +744,7 @@ msgstr ""
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "Der opstod en fejl under analysen af meddelelsen. Prøv venligst igen."
 
-#: src/features/Conversation/ConversationCanvas.tsx:578
+#: src/features/Conversation/ConversationCanvas.tsx:579
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analyserer"
@@ -1194,7 +1194,11 @@ msgstr "C# Backend Interview Readiness Test"
 msgid "Caching Strategies"
 msgstr "Caching-strategier"
 
-#: src/features/Conversation/ConversationCanvas.tsx:751
+#: src/features/Conversation/RecordingCanvasMenu.tsx:125
+#. js-lingui-explicit-id
+msgid "Call"
+msgstr "Opkald"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:402
 #. js-lingui-explicit-id
 msgid "Call mode"
@@ -1251,7 +1255,7 @@ msgid "Cancel"
 msgstr "Annuller"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:395
-#: src/features/Conversation/ConversationCanvas.tsx:953
+#: src/features/Conversation/ConversationCanvas.tsx:853
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Annuller optagelse"
@@ -2410,7 +2414,7 @@ msgstr "Glem ikke at prøve opkaldstilstand i øvelsessektionen!"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:627
+#: src/features/Conversation/ConversationCanvas.tsx:628
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:254
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
@@ -2737,7 +2741,7 @@ msgstr "Fejl ved oprettelse af betalingssession. Prøv igen senere."
 msgid "Error creating plan. Please try again."
 msgstr "Fejl ved oprettelse af plan. Prøv venligst igen."
 
-#: src/features/Conversation/ConversationCanvas.tsx:526
+#: src/features/Conversation/ConversationCanvas.tsx:527
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Fejl under analysering af besked"
@@ -2976,6 +2980,11 @@ msgstr "Alt du behøver for at skille dig ud og få jobbet"
 msgid "existential fiction"
 msgstr "eksistentiel fiktion"
 
+#: src/features/Conversation/RecordingCanvasMenu.tsx:94
+#. js-lingui-explicit-id
+msgid "Exit"
+msgstr "Afslut"
+
 #: src/features/Landing/LandingPage.tsx:399
 #. js-lingui-explicit-id
 msgid "Expand Your Vocabulary"
@@ -3141,11 +3150,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
 msgstr "Træffer endelig beslutning ..."
-
-#: src/features/Conversation/ConversationCanvas.tsx:688
-#. js-lingui-explicit-id
-msgid "Finish"
-msgstr "Afslut"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:118
 #. js-lingui-explicit-id
@@ -3976,7 +3980,7 @@ msgstr "Sundhed"
 msgid "Help"
 msgstr "Hjælp"
 
-#: src/features/Conversation/ConversationCanvas.tsx:774
+#: src/features/Conversation/RecordingCanvasMenu.tsx:149
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Hjælp med svar"
@@ -4715,7 +4719,7 @@ msgstr ""
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "Jeg vil stille dig to spørgsmål mere, før jeg laver din plan."
 
-#: src/features/Conversation/ConversationCanvas.tsx:271
+#: src/features/Conversation/ConversationCanvas.tsx:272
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "Idé til din besked"
@@ -5651,10 +5655,10 @@ msgstr ""
 "nøglepræstation, og din interesse i virksomheden. Øv din selvintroduktion, "
 "så du lyder"
 
-#: src/features/Conversation/ConversationCanvas.tsx:729
+#: src/features/Conversation/RecordingCanvasMenu.tsx:114
 #. js-lingui-explicit-id
-msgid "Keyboard mode"
-msgstr "Tastaturtilstand"
+msgid "Keyboard"
+msgstr "Tastatur"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
 #. js-lingui-explicit-id
@@ -5933,7 +5937,7 @@ msgid "Loading.."
 msgstr "Indlæser.."
 
 #: src/features/Chat/SubmitForm.tsx:81
-#: src/features/Conversation/ConversationCanvas.tsx:228
+#: src/features/Conversation/ConversationCanvas.tsx:229
 #: src/features/Conversation/ConversationReviewModal.tsx:101
 #: src/features/Conversation/ConversationReviewModal.tsx:116
 #: src/features/Conversation/ConversationReviewModal.tsx:131
@@ -6159,7 +6163,7 @@ msgstr "Opsætning af mikrofon"
 msgid "Minutes"
 msgstr "Minutter"
 
-#: src/features/Conversation/ConversationCanvas.tsx:845
+#: src/features/Conversation/ConversationCanvas.tsx:745
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Mission fuldført"
@@ -6673,7 +6677,7 @@ msgid "Open personal plan"
 msgstr "Åbn personlig plan"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:345
-#: src/features/Conversation/ConversationCanvas.tsx:853
+#: src/features/Conversation/ConversationCanvas.tsx:753
 #: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7522,14 +7526,14 @@ msgid "Rating"
 msgstr "Bedømmelse"
 
 #: src/features/Chat/SubmitForm.tsx:299
-#: src/features/Conversation/ConversationCanvas.tsx:613
-#: src/features/Conversation/ConversationCanvas.tsx:867
+#: src/features/Conversation/ConversationCanvas.tsx:614
+#: src/features/Conversation/ConversationCanvas.tsx:767
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Genindspil"
 
-#: src/features/Conversation/ConversationCanvas.tsx:883
+#: src/features/Conversation/ConversationCanvas.tsx:783
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Gen-skriv"
@@ -7802,7 +7806,7 @@ msgstr "Optag svar"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:458
 #: src/features/Conversation/CallMode/CallButtons.tsx:478
-#: src/features/Conversation/ConversationCanvas.tsx:654
+#: src/features/Conversation/ConversationCanvas.tsx:655
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Optag besked"
@@ -8152,7 +8156,7 @@ msgstr ""
 "plaintext\n"
 "Semantisk HTML\n"
 
-#: src/features/Conversation/ConversationCanvas.tsx:596
+#: src/features/Conversation/ConversationCanvas.tsx:597
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -9683,10 +9687,10 @@ msgstr "Ordforråd udfordringer"
 msgid "Voice conversations"
 msgstr "Stemmesamtaler"
 
-#: src/features/Conversation/ConversationCanvas.tsx:707
+#: src/features/Conversation/RecordingCanvasMenu.tsx:103
 #. js-lingui-explicit-id
-msgid "Voice record mode"
-msgstr "Stem optagelsestilstand"
+msgid "Voice records"
+msgstr "Stemmeroptagelser"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14
@@ -10736,7 +10740,7 @@ msgstr "Din Sprog Niveau"
 msgid "Your Message"
 msgstr "Din besked"
 
-#: src/features/Conversation/ConversationCanvas.tsx:796
+#: src/features/Conversation/ConversationCanvas.tsx:696
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Din besked..."
@@ -10817,6 +10821,26 @@ msgstr ""
 "— det er vigtigt at deltage i denne korte samtale, før man hopper ind i "
 "professionelle emner. Her er nogle nyttige engelske vendinger til at starte "
 "interviewet:"
+
+#: src/features/Conversation/RecordingCanvasMenu.tsx:94
+#. js-lingui-explicit-id
+#~ msgid "Done & Exit"
+#~ msgstr "Udført & Afslut"
+
+#: src/features/Conversation/ConversationCanvas.tsx:688
+#. js-lingui-explicit-id
+#~ msgid "Finish"
+#~ msgstr "Afslut"
+
+#: src/features/Conversation/ConversationCanvas.tsx:729
+#. js-lingui-explicit-id
+#~ msgid "Keyboard mode"
+#~ msgstr "Tastaturtilstand"
+
+#: src/features/Conversation/ConversationCanvas.tsx:707
+#. js-lingui-explicit-id
+#~ msgid "Voice record mode"
+#~ msgstr "Stem optagelsestilstand"
 
 #: src/features/Conversation/CallMode/FooterButton.tsx:32
 #. js-lingui-explicit-id
