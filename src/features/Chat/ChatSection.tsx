@@ -1,16 +1,13 @@
 'use client';
 import { Button, Stack, Typography } from '@mui/material';
 import { useChat } from './useChat';
-import { useAuth } from '../Auth/useAuth';
 import { SubmitForm } from './SubmitForm';
 import { useMemo, useState } from 'react';
 import { useUrlState } from '../Url/useUrlParam';
 import { ChevronLeft } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { Message } from './Message';
-import { useGame } from '../Game/useGame';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-
 import { MessageChain } from './MessageChain';
 import { ChatSectionHeader } from './ChatSectionHeader';
 import { NoMessagesPlaceholder } from './NoMessagesPlaceholder';
@@ -34,11 +31,8 @@ export const ChatSection = ({
   isFullContentByDefault?: boolean;
   noMessagesPlaceholder?: string;
 }) => {
-  const auth = useAuth();
   const chat = useChat();
-  const game = useGame();
   const { i18n } = useLingui();
-  const userId = auth.uid || 'anonymous';
 
   const [activeMessageId, setActiveMessageId] = useUrlState('post', '', false);
   const activeMessage = chat.messages.find((msg) => msg.id === activeMessageId);
