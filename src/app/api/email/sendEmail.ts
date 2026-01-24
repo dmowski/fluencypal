@@ -23,7 +23,7 @@ export const sendEmail = async ({
   try {
     const sendResult = await resend.emails.send({
       to: emailTo,
-      from: 'contact@fluencypal.com',
+      from: 'no-reply@fluencypal.com',
       subject: title,
       text: messageText,
       html: messageHtml,
@@ -33,7 +33,7 @@ export const sendEmail = async ({
   } catch (e) {
     console.error(`Error sending email: ${e}`);
     sentSupportTelegramMessage({
-      message: `Error sending email to ${emailTo}`,
+      message: `Error sending email to ${emailTo}: ${e}`,
     });
     sentSupportTelegramMessage({
       message: `Email error: ${e}`,
