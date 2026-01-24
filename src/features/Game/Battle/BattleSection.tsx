@@ -6,6 +6,7 @@ import { useLingui } from '@lingui/react';
 import { ChevronDown } from 'lucide-react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { ChatProvider } from '@/features/Chat/useChat';
+import { PageContainer } from '@/features/Community/PageContainer';
 
 const defaultLimit = 1;
 
@@ -45,19 +46,24 @@ export const BattleSection = () => {
 
   const isNeedToShowMoreButton = battlesToShow.length < actualBattles.length;
 
-  if (actualBattles.length !== 0)
+  if (actualBattles.length === 0)
     return (
-      <Stack
-        sx={{
-          gap: '5px',
-        }}
-      >
-        <Typography variant="h6">{i18n._('No debates yet')}</Typography>
-        <Typography variant="body2">
-          {i18n._('Open someones profile and press "Invite to a debate" button to start a debate!')}
-        </Typography>
-      </Stack>
+      <PageContainer>
+        <Stack
+          sx={{
+            gap: '5px',
+          }}
+        >
+          <Typography variant="h6">{i18n._('No debates yet')}</Typography>
+          <Typography variant="body2">
+            {i18n._(
+              'Open someones profile and press "Invite to a debate" button to start a debate!',
+            )}
+          </Typography>
+        </Stack>
+      </PageContainer>
     );
+
   return (
     <Stack
       sx={{

@@ -8,6 +8,7 @@ import { GamePage } from './GamePage';
 import { DebatesPage } from './DebatesPage';
 import { DailyQuestionBadge } from '../Game/DailyQuestion/DailyQuestionBadge';
 import { SupportPage } from './SupportPage';
+import { PageContainer } from './PageContainer';
 
 export const CommunityPageRouter = ({
   activePage,
@@ -65,7 +66,12 @@ const CommunityPageContent = ({ activePage }: { activePage: CommunityPage }) => 
   if (activePage == 'game') return <GamePage />;
   if (activePage == 'debates') return <DebatesPage />;
   if (activePage == 'daily-questions') return <DailyQuestionBadge />;
-  if (activePage == 'tech-support') return <SupportPage />;
+  if (activePage == 'tech-support')
+    return (
+      <PageContainer>
+        <SupportPage />
+      </PageContainer>
+    );
   if (activePage == 'leaderboards') return <GameStats />;
 
   return <></>;

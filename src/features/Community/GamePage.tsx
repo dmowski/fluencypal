@@ -39,10 +39,10 @@ export const GamePage = () => {
             alignItems: 'flex-start',
             justifyContent: 'space-between',
             gap: '20px',
+
             borderRadius: '12px',
             border: '1px solid rgba(255, 255, 255, 0.1)',
             backgroundColor: 'rgba(255, 255, 255, 0.03)',
-
             padding: '15px 20px',
             boxSizing: 'border-box',
 
