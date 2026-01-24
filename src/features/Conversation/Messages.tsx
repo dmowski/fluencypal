@@ -9,15 +9,20 @@ import { useLingui } from '@lingui/react';
 import { useTranslate } from '../Translation/useTranslate';
 import { useMemo, useState } from 'react';
 import { getSortedMessages } from './getSortedMessages';
+import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
+import { AiVoice } from '@/common/ai';
+import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
 
 export const Messages = ({
   conversation,
   messageOrder,
   isAiSpeaking,
+  voice,
 }: {
   conversation: ChatMessage[];
   messageOrder: MessagesOrderMap;
   isAiSpeaking?: boolean;
+  voice: AiVoice;
 }) => {
   const translator = useTranslate();
 
@@ -44,6 +49,7 @@ export const Messages = ({
             <Message
               key={message.id}
               message={message}
+              voice={voice}
               isAiSpeaking={isThisIsLast && isLastIsBot && isAiSpeaking}
             />
           );
@@ -58,12 +64,16 @@ export const Messages = ({
 export const Message = ({
   message,
   isAiSpeaking,
+  voice,
 }: {
   message: ChatMessage;
   isAiSpeaking?: boolean;
+  voice: AiVoice;
 }) => {
   const { i18n } = useLingui();
   const translator = useTranslate();
+
+  const voiceInfo = getAiVoiceByVoice(voice);
 
   const isBot = message.isBot;
 
@@ -137,12 +147,25 @@ export const Message = ({
         >
           {text}
         </Markdown>
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            gap: '6px',
+          }}
+        >
+          {translator.isTranslateAvailable && text && (
+            <IconButton onClick={toggleTranslation} disabled={isTranslating}>
+              <Languages
+                size={'16px'}
+                color={isTranslating ? '#4cd1fdff' : 'rgba(255, 255, 255, 0.7)'}
+              />
+            </IconButton>
+          )}
 
-        {translator.isTranslateAvailable && text && (
-          <IconButton onClick={toggleTranslation} disabled={isTranslating}>
-            <Languages size={'16px'} color={isTranslating ? '#4cd1fdff' : '#eee'} />
-          </IconButton>
-        )}
+          <AudioPlayIcon text={text} voice={voice} instructions={voiceInfo.voiceInstruction} />
+        </Stack>
       </Stack>
       {translator.translateModal}
     </Stack>

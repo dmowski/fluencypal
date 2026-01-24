@@ -253,6 +253,7 @@ export const CameraCanvas = ({
               conversation={conversation}
               messageOrder={messageOrder}
               isAiSpeaking={isAiSpeaking}
+              voice={voice}
             />
           </Stack>
         </Stack>

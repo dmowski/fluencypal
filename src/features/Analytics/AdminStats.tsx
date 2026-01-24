@@ -154,6 +154,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           <Messages
             messageOrder={showConversation.messageOrder}
             conversation={showConversation.messages}
+            voice="ash"
           />
         </CustomModal>
       )}

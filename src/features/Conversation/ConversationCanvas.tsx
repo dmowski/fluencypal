@@ -420,6 +420,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                 conversation={conversation}
                 messageOrder={messageOrder}
                 isAiSpeaking={isAiSpeaking}
+                voice={voice}
               />
               <Stack
                 sx={{
