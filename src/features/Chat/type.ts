@@ -8,6 +8,8 @@ export interface ChatLike {
   createdAtIso: string;
 }
 
+export type ChartSortMode = 'all' | 'updates';
+
 export interface UserChatMetadataStatic {
   spaceId: string;
   allowedUserIds: string[] | null;
