@@ -13,6 +13,7 @@ import { ChatSectionHeader } from './ChatSectionHeader';
 import { NoMessagesPlaceholder } from './NoMessagesPlaceholder';
 import { ChatSectionContainer } from './ChatSectionContainer';
 import { MessageViewsIcon } from './MessageViewsIcon';
+import { ActiveMessageHeaderContainer } from './ActiveMessageHeaderContainer';
 
 export const ChatSection = ({
   placeholder,
@@ -131,32 +132,10 @@ export const ChatSection = ({
           </Stack>
         </CustomModal>
       )}
+
       {activeMessage ? (
-        <Stack
-          sx={{
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            borderRadius: '12px',
-            gap: '0px',
-            '@media (max-width: 700px)': {
-              borderRadius: '0px',
-              border: 'none',
-              borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-            },
-          }}
-        >
-          <Stack
-            sx={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              padding: '10px 10px',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-              backgroundColor: 'rgba(255, 255, 255, 0.031)',
-              borderRadius: '12px 12px 0 0',
-              gap: '10px',
-              width: '100%',
-              justifyContent: 'space-between',
-            }}
-          >
+        <ChatSectionContainer>
+          <ActiveMessageHeaderContainer>
             <Button
               startIcon={<ChevronLeft />}
               onClick={() => setActiveMessageId(activeMessage.parentMessageId || '')}
@@ -165,13 +144,14 @@ export const ChatSection = ({
             </Button>
 
             <MessageViewsIcon activeMessage={activeMessage} />
-          </Stack>
+          </ActiveMessageHeaderContainer>
+
           <MessageChain
             topLevel
             parentId={activeMessage.id}
             isFullContentByDefault={isFullContentByDefault}
           />
-        </Stack>
+        </ChatSectionContainer>
       ) : (
         <ChatSectionContainer>
           <ChatSectionHeader
