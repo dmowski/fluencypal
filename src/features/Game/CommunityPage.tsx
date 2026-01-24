@@ -9,7 +9,6 @@ import { GameStats } from './GameStats';
 import { exitFullScreen } from '@/libs/fullScreen';
 import { GameOnboarding } from './GameOnboarding';
 import { NavigationBar } from '../Navigation/NavigationBar';
-import { SupportedLanguage } from '../Lang/lang';
 import { useState } from 'react';
 import { useUrlState } from '../Url/useUrlParam';
 import { useSettings } from '../Settings/useSettings';
@@ -18,7 +17,7 @@ import { useChatList } from '../Chat/useChatList';
 import { PositionChanged } from './PositionChanged';
 import { TabLabel } from './TabLabel';
 
-export const CommunityPage = ({ lang }: { lang: SupportedLanguage }) => {
+export const CommunityPage = () => {
   const game = useGame();
   const { i18n } = useLingui();
   const settings = useSettings();
@@ -42,7 +41,7 @@ export const CommunityPage = ({ lang }: { lang: SupportedLanguage }) => {
 
   return (
     <>
-      <NavigationBar lang={lang} />
+      <NavigationBar />
 
       <Stack
         sx={{

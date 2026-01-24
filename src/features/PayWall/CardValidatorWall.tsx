@@ -4,7 +4,6 @@ import { Button, CircularProgress, Stack, Typography } from '@mui/material';
 import { useSettings } from '../Settings/useSettings';
 import { useLingui } from '@lingui/react';
 import { CreditCard, Gem } from 'lucide-react';
-import { useUsage } from '../Usage/useUsage';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../Auth/useAuth';
 import { isTMA } from '@telegram-apps/sdk-react';
@@ -67,7 +66,7 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
             },
           }}
         >
-          <NavigationBar lang={lang} />
+          <NavigationBar />
         </Stack>
         <Stack
           sx={{

@@ -26,14 +26,10 @@ interface NavigationItem {
   title: string;
 }
 
-export interface NavigationProps {
-  lang: SupportedLanguage;
-}
-
 const activeColor = '#29b6f6'; // Define the active color for the icon
 const inactiveColor = '#A0A0A0'; // Define the inactive color for the icon
 
-export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
+export const NavigationBar: React.FC = () => {
   const appNavigation = useAppNavigation();
 
   const { i18n } = useLingui();

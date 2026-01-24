@@ -24,6 +24,7 @@ import { useAccess } from '../Usage/useAccess';
 import { useLessonPlan } from '../LessonPlan/useLessonPlan';
 import { usePlan } from '../Plan/usePlan';
 import { usePageLangRedirect } from './usePageLangRedirect';
+import { CommunityDashboard } from '../Community/CommunityDashboard';
 
 interface PracticePageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -63,7 +64,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
 
-  if (appNavigation.currentPage === 'community') return <CommunityPage lang={lang} />;
+  if (appNavigation.currentPage === 'community') return <CommunityDashboard />;
 
   if (aiConversation.errorInitiating) {
     return (

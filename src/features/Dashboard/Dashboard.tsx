@@ -46,7 +46,6 @@ export function Dashboard({ lang }: DashboardProps) {
   const [isCallStarting, setIsCallStarting] = useState(false);
   const settings = useSettings();
   const access = useAccess();
-  const usage = useUsage();
   const audio = useConversationAudio();
 
   const startJustTalk = async () => {
@@ -63,7 +62,7 @@ export function Dashboard({ lang }: DashboardProps) {
 
   return (
     <>
-      <NavigationBar lang={lang} />
+      <NavigationBar />
       <RolePlayModal />
 
       {plan.activeGoalElementInfo && (
