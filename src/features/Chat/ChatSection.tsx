@@ -1,19 +1,17 @@
 'use client';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import { useChat } from './useChat';
-import { SubmitForm } from './SubmitForm';
 import { useMemo, useState } from 'react';
 import { useUrlState } from '../Url/useUrlParam';
 import { ChevronLeft } from 'lucide-react';
 import { useLingui } from '@lingui/react';
-import { Message } from './Message';
-import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { MessageChain } from './MessageChain';
 import { ChatSectionHeader } from './ChatSectionHeader';
 import { NoMessagesPlaceholder } from './NoMessagesPlaceholder';
 import { ChatSectionContainer } from './ChatSectionContainer';
 import { MessageViewsIcon } from './MessageViewsIcon';
 import { ActiveMessageHeaderContainer } from './ActiveMessageHeaderContainer';
+import { ChatReplyModal } from './ChatReplyModal';
 
 export const ChatSection = ({
   placeholder,
@@ -64,73 +62,14 @@ export const ChatSection = ({
       }}
     >
       {isModalOpen && (
-        <CustomModal onClose={onCloseRecordMessageModal} isOpen={true}>
-          <Stack
-            sx={{
-              maxWidth: '600px',
-              gap: '20px',
-              width: '100%',
-            }}
-          >
-            <Stack sx={{ marginBottom: '10px' }}>
-              {!titleContent && (
-                <Typography variant="h6">
-                  {isNewPostModalOpen ? i18n._('Add New Post') : i18n._('Add Comment')}
-                </Typography>
-              )}
-
-              {isNewPostModalOpen && !titleContent && (
-                <Typography
-                  variant="body2"
-                  sx={{
-                    opacity: 0.7,
-                  }}
-                >
-                  {i18n._('Share your thoughts and get feedback!')}
-                </Typography>
-              )}
-
-              {titleContent}
-            </Stack>
-
-            <Stack
-              sx={{
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: '16px',
-                backgroundColor: 'rgba(30, 38, 50, 0.9)',
-              }}
-            >
-              {messageToComment && (
-                <Message
-                  isContentWide
-                  key={messageToComment.id}
-                  message={messageToComment}
-                  isFullContentByDefault
-                />
-              )}
-
-              <Stack>
-                <SubmitForm
-                  setIsActiveRecording={setIsActiveRecording}
-                  onSubmit={async (messageContent) => {
-                    onCloseRecordMessageModal();
-                    await chat.addMessage({
-                      messageContent,
-                      parentMessageId: messageToComment?.id ? messageToComment.id : '',
-                    });
-                  }}
-                  isLoading={chat.loading}
-                  recordMessageTitle={
-                    messageToComment?.id ? i18n._('Add a reply') : i18n._('Record a message')
-                  }
-                  previousBotMessage={
-                    messageToComment ? messageToComment.content : contextForAiAnalysis || ''
-                  }
-                />
-              </Stack>
-            </Stack>
-          </Stack>
-        </CustomModal>
+        <ChatReplyModal
+          onCloseRecordMessageModal={onCloseRecordMessageModal}
+          isNewPostModalOpen={isNewPostModalOpen}
+          titleContent={titleContent}
+          messageToComment={messageToComment}
+          contextForAiAnalysis={contextForAiAnalysis}
+          setIsActiveRecording={setIsActiveRecording}
+        />
       )}
 
       {activeMessage ? (
