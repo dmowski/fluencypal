@@ -341,7 +341,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 },
 
                 {
-                  videoUrl: '/call/verse/sit.webm',
+                  videoUrl: '/call/verse/sit1.webm',
                   bgColor: 'rgb(169, 129, 255)',
 
                   title: i18n._('Practice'),

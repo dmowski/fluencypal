@@ -2,7 +2,7 @@ import { AiVoice } from '@/common/ai';
 import { AiAvatar } from './types';
 
 export const voiceAvatarMap: Record<AiVoice, AiAvatar> = {
-  // man. young man
+  // man. Confident voice
   ash: {
     sitVideoUrl: ['/call/ash/sit2.webm', '/call/ash/sit.webm'],
     talkVideoUrl: ['/call/ash/talk1.webm', '/call/ash/talk3.webm', '/call/ash/talk2.webm'],
@@ -11,6 +11,7 @@ export const voiceAvatarMap: Record<AiVoice, AiAvatar> = {
     voiceInstruction: `Your voice is deep, with a steady tone that commands attention. Your speech is articulate and purposeful, with natural pauses that emphasize your points.`,
     helloPhrases: ['Hello, I’m Ash. I’ll help you speak clearly and with confidence.'],
   },
+
   // girl
   shimmer: {
     sitVideoUrl: ['/call/shimmer/sit.webm', '/call/shimmer/sit2.webm'],
@@ -31,8 +32,9 @@ export const voiceAvatarMap: Record<AiVoice, AiAvatar> = {
 
   // man
   verse: {
-    sitVideoUrl: ['/call/verse/sit.webm'],
-    talkVideoUrl: ['/call/verse/talk.webm', '/call/verse/talk2.webm'],
+    sitVideoUrl: ['/call/verse/sit1.webm', '/call/verse/sit2.webm'],
+    photoUrls: ['/call/verse/photo1.webp', '/call/verse/photo2.webp'],
+    talkVideoUrl: ['/call/verse/talk1.webm', '/call/verse/talk2.webm'],
     voiceInstruction: `Your voice is deep, with a friendly and approachable tone. Your speech is clear and articulate, with natural pauses that make you easy to understand.`,
     helloPhrases: ['Hey! I’m Verse. I’m here to keep things light and motivating.'],
   },
