@@ -16,7 +16,6 @@ import { InfoBlockedSection } from '../Dashboard/InfoBlockedSection';
 import { useEffect } from 'react';
 import { SelectLanguage } from '../Dashboard/SelectLanguage';
 import { ConversationError } from '../Conversation/ConversationError';
-import { CommunityPage } from '../Game/CommunityPage';
 import { useConversationsAnalysis } from '../Conversation/useConversationsAnalysis';
 import { useAppNavigation } from '../Navigation/useAppNavigation';
 import { RolePlayProvider } from '../RolePlay/useRolePlay';
