@@ -14,6 +14,7 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { MessageChain } from './MessageChain';
 import { GameStatRow } from '../Game/GameStatRow';
 import { ChatSectionHeader } from './ChatSectionHeader';
+import { NoMessagesPlaceholder } from './NoMessagesPlaceholder';
 
 export const ChatSection = ({
   placeholder,
@@ -255,18 +256,7 @@ export const ChatSection = ({
       )}
 
       {chat.messages.length === 0 && (
-        <Stack
-          sx={{
-            padding: '30px 20px 20px 20px',
-            marginTop: '-10px',
-            justifyContent: 'center',
-          }}
-        >
-          <Typography variant="body2" sx={{ opacity: 0.7 }}>
-            {noMessagesPlaceholder ||
-              i18n._('No messages yet. Be the first to share your thoughts!')}
-          </Typography>
-        </Stack>
+        <NoMessagesPlaceholder noMessagesPlaceholder={noMessagesPlaceholder} />
       )}
     </Stack>
   );
