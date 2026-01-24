@@ -8,6 +8,7 @@ import { getUrlStart } from '../Lang/getUrlStart';
 import { useLingui } from '@lingui/react';
 import { useDeleteAccount } from '../Auth/useDeleteAccount';
 import { isTMA } from '@telegram-apps/sdk-react';
+import { SupportPage } from '../Community/SupportPage';
 
 interface NeedHelpModalProps {
   onClose: () => void;
@@ -116,6 +117,8 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
             </Stack>
           </Stack>
         </Stack>
+
+        <SupportPage />
         {isShowDeleteAccountModal ? (
           <Stack
             sx={{
