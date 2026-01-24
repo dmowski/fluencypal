@@ -79,29 +79,6 @@ export const CallButtons = ({
 
   const ai = useTextAi();
 
-  const howMuchToWait = async (message: string): Promise<number> => {
-    const start = Date.now();
-    const response = await ai.generate({
-      systemMessage: `User will provide a transcript from real-time conversation. Respond a number of milliseconds it worts to wait to user finish the message
-        
-Examples:
-'I went to the': 3000
-'Yesterday, I saw': 4500
-'The weather today is': 5000
-'In my opinion,': 6500
-'No': 2000
-'Yes, I agree.': 2000
-'I think the answer is 42.': 2000
-'I think the answer is 42, because': 5000
-'Hello, how are you?': 2500
-`,
-      userMessage: message,
-      model: 'gpt-4o',
-    });
-
-    return Math.max(2000, parseInt(response.trim()));
-  };
-
   const [isShowVolumeWarning, setIsShowVolumeWarning] = useState(false);
 
   const toggleVolume = () => {
@@ -186,6 +163,28 @@ Examples:
   const transcriptStackRef = useRef('');
   transcriptStackRef.current = transcriptStack;
   const WAIT_BEFORE_SEND = 6000;
+
+  const howMuchToWait = async (message: string): Promise<number> => {
+    const response = await ai.generate({
+      systemMessage: `User will provide a transcript from real-time conversation. Respond a number of milliseconds it worts to wait to user finish the message
+        
+Examples:
+'I went to the': 3000
+'Yesterday, I saw': 4500
+'The weather today is': 5000
+'In my opinion,': 6500
+'No': 2000
+'Yes, I agree.': 2000
+'I think the answer is 42.': 2000
+'I think the answer is 42, because': 5000
+'Hello, how are you?': 2500
+`,
+      userMessage: message,
+      model: 'gpt-4o',
+    });
+
+    return Math.max(2000, parseInt(response.trim()));
+  };
 
   const vadAudioRecorder = useVadAudioRecorder({
     onStop: () => setIsVadEnabled(false),
