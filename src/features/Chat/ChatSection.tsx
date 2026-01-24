@@ -5,7 +5,7 @@ import { useAuth } from '../Auth/useAuth';
 import { SubmitForm } from './SubmitForm';
 import { useMemo, useState } from 'react';
 import { useUrlState } from '../Url/useUrlParam';
-import { ChevronLeft, Eye } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { Message } from './Message';
 import { useGame } from '../Game/useGame';
