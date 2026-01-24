@@ -16,7 +16,7 @@ import { InfoBlockedSection } from '../Dashboard/InfoBlockedSection';
 import { useEffect } from 'react';
 import { SelectLanguage } from '../Dashboard/SelectLanguage';
 import { ConversationError } from '../Conversation/ConversationError';
-import { GamePage } from '../Game/GamePage';
+import { CommunityPage } from '../Game/CommunityPage';
 import { useConversationsAnalysis } from '../Conversation/useConversationsAnalysis';
 import { useAppNavigation } from '../Navigation/useAppNavigation';
 import { RolePlayProvider } from '../RolePlay/useRolePlay';
@@ -63,7 +63,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
 
-  if (appNavigation.currentPage === 'community') return <GamePage lang={lang} />;
+  if (appNavigation.currentPage === 'community') return <CommunityPage lang={lang} />;
 
   if (aiConversation.errorInitiating) {
     return (

@@ -7,8 +7,6 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { Loader, Swords } from 'lucide-react';
 import { GameStats } from './GameStats';
 import { exitFullScreen } from '@/libs/fullScreen';
-import { GameMyAvatar } from './GameMyAvatar';
-import { GameMyUsername } from './GameMyUsername';
 import { GameOnboarding } from './GameOnboarding';
 import { NavigationBar } from '../Navigation/NavigationBar';
 import { SupportedLanguage } from '../Lang/lang';
@@ -18,40 +16,9 @@ import { useSettings } from '../Settings/useSettings';
 import { ChatPage } from '../Chat/ChatPage';
 import { useChatList } from '../Chat/useChatList';
 import { PositionChanged } from './PositionChanged';
+import { TabLabel } from './TabLabel';
 
-const TabLabel = ({
-  badgeNumber,
-  label,
-  badgeHighlight,
-}: {
-  label: string;
-  badgeNumber?: number;
-  badgeHighlight?: boolean;
-}) => {
-  return (
-    <Stack sx={{ flexDirection: 'row', gap: '5px', alignItems: 'center' }}>
-      <Typography variant="caption">{label}</Typography>
-      {badgeNumber && (
-        <Typography
-          component={'span'}
-          sx={{
-            color: badgeHighlight ? '#ff3d00' : 'inherit',
-            border: badgeHighlight ? '1px solid #ff3d00' : '1px solid rgba(255, 255, 255, 0.2)',
-            fontWeight: 400,
-            borderRadius: '6px',
-            fontSize: '11px',
-            padding: '1px 3px',
-            minWidth: '16px',
-          }}
-        >
-          {badgeNumber}
-        </Typography>
-      )}
-    </Stack>
-  );
-};
-
-export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
+export const CommunityPage = ({ lang }: { lang: SupportedLanguage }) => {
   const game = useGame();
   const { i18n } = useLingui();
   const settings = useSettings();
