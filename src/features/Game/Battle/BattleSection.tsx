@@ -1,4 +1,4 @@
-import { Button, Stack } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { useBattle } from './useBattle';
 import { BattleCard } from './BattleCard';
 import { useState } from 'react';
@@ -45,7 +45,19 @@ export const BattleSection = () => {
 
   const isNeedToShowMoreButton = battlesToShow.length < actualBattles.length;
 
-  if (actualBattles.length === 0) return null;
+  if (actualBattles.length !== 0)
+    return (
+      <Stack
+        sx={{
+          gap: '5px',
+        }}
+      >
+        <Typography variant="h6">{i18n._('No debates yet')}</Typography>
+        <Typography variant="body2">
+          {i18n._('Open someones profile and press "Invite to a debate" button to start a debate!')}
+        </Typography>
+      </Stack>
+    );
   return (
     <Stack
       sx={{
