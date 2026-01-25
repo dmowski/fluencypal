@@ -13,6 +13,7 @@ import { useSettings } from '../Settings/useSettings';
 import { AppMode } from '@/common/user';
 import { Avatar } from '../Game/Avatar';
 import { useChatList } from '../Chat/useChatList';
+import { useBattle } from '../Game/Battle/useBattle';
 
 export interface IconProps {
   color?: string;
@@ -40,6 +41,7 @@ export const NavigationBar: React.FC = () => {
   const userPhoto = game.gameAvatars?.[auth.uid] || '';
   const { bottomOffset } = useWindowSizes();
   const chatList = useChatList();
+  const battles = useBattle();
 
   const navigationItemsByMode: Record<AppMode, NavigationItem[]> = useMemo(
     () => ({
@@ -66,7 +68,10 @@ export const NavigationBar: React.FC = () => {
           name: 'community',
           icon: Users,
           title: i18n._('Community'),
-          badge: chatList.myUnreadCount + chatList.unreadCountGlobal,
+          badge:
+            chatList.myUnreadCount +
+            chatList.unreadCountGlobal +
+            battles.countOfBattlesNeedToAttention,
         },
         {
           name: 'role-play',
@@ -80,7 +85,12 @@ export const NavigationBar: React.FC = () => {
         },
       ],
     }),
-    [appMode, chatList.myUnreadCount, chatList.unreadCountGlobal],
+    [
+      appMode,
+      chatList.myUnreadCount,
+      chatList.unreadCountGlobal,
+      battles.countOfBattlesNeedToAttention,
+    ],
   );
 
   const navigationItems: NavigationItem[] = navigationItemsByMode[appMode || 'learning'];
