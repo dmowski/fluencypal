@@ -89,7 +89,29 @@ export const NavigationBar: React.FC = () => {
     e: React.MouseEvent<HTMLAnchorElement> | React.TouchEvent<HTMLAnchorElement>,
     item: NavigationItem,
   ) => {
-    e.preventDefault();
+    const isTouchEvent = 'touches' in e;
+    if (isTouchEvent) {
+      e.stopPropagation();
+      const touchEvent = e as React.TouchEvent<HTMLAnchorElement>;
+      if (touchEvent.touches.length > 1) {
+        return;
+      }
+    }
+
+    try {
+      e.stopPropagation();
+    } catch (error) {
+      console.log('Navigate error, stop propagation', e);
+    }
+
+    if (!isTouchEvent) {
+      try {
+        e.preventDefault();
+      } catch (error) {
+        console.log('Navigate error, prevent default', e);
+      }
+    }
+
     appNavigation.setCurrentPage(item.name);
   };
 
