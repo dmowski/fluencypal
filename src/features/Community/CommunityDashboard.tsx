@@ -20,13 +20,17 @@ import { useLingui } from '@lingui/react';
 import { useBattle } from '../Game/Battle/useBattle';
 
 export const CommunityDashboard = () => {
-  const iconFontSize = '40px';
-
   const chatList = useChatList();
   const { i18n } = useLingui();
   const battles = useBattle();
 
   const [activePage, setActivePage] = useUrlState<CommunityPage | ''>('section', '', false);
+
+  const iconStyle = {
+    fontSize: 'var(--icon-size)',
+    width: 'var(--icon-size)',
+    height: 'var(--icon-size)',
+  };
 
   return (
     <>
@@ -37,12 +41,38 @@ export const CommunityDashboard = () => {
           width: '100%',
         }}
       >
-        <Stack sx={{ width: '100%', maxWidth: '680px' }}>
+        <Stack
+          sx={{
+            width: '100%',
+            maxWidth: '680px',
+            '@media (max-width: 600px)': {
+              maxWidth: '700px',
+            },
+          }}
+        >
           {activePage ? (
             <CommunityPageRouter activePage={activePage} onClose={() => setActivePage('')} />
           ) : (
-            <Stack sx={{ padding: '20px', gap: '20px' }}>
-              <Typography variant="body2">{i18n._('Community Hub')}</Typography>
+            <Stack
+              sx={{
+                padding: '20px',
+                gap: '10px',
+                '--icon-size': '50px',
+                '@media (max-width: 600px)': {
+                  padding: '20px 0 0 0',
+                  '--icon-size': '30px',
+                },
+              }}
+            >
+              <Typography
+                variant="body2"
+                sx={{
+                  opacity: 0.6,
+                  paddingLeft: '5px',
+                }}
+              >
+                {i18n._('Community Hub')}
+              </Typography>
 
               <Stack
                 sx={{
@@ -53,9 +83,9 @@ export const CommunityDashboard = () => {
 
                   '@media (max-width: 600px)': {
                     gridTemplateColumns: '1fr 1fr',
-                    paddingTop: '20px',
+                    gap: '10px',
                   },
-                  '@media (max-width: 400px)': {
+                  '@media (max-width: 320px)': {
                     gridTemplateColumns: '1fr',
                   },
                 }}
@@ -64,45 +94,45 @@ export const CommunityDashboard = () => {
                   title="Community Chat"
                   onClick={() => setActivePage('chat')}
                   badgeNumber={chatList.unreadCountGlobal}
-                  icon={<MessagesSquare size={iconFontSize} />}
+                  icon={<MessagesSquare style={iconStyle} />}
                 />
                 <CommunityCard
                   title="Game"
                   onClick={() => setActivePage('game')}
                   badgeNumber={0}
-                  icon={<Swords size={iconFontSize} />}
+                  icon={<Swords style={iconStyle} />}
                 />
 
                 <CommunityCard
                   title="Tech Support"
                   onClick={() => setActivePage('tech-support')}
-                  icon={<SupportAgentIcon sx={{ fontSize: '60px' }} />}
+                  icon={<SupportAgentIcon style={iconStyle} />}
                 />
                 <CommunityCard
                   title="Private Chat"
                   onClick={() => setActivePage('dm')}
                   badgeNumber={chatList.myUnreadCount}
-                  icon={<MessageCircle size={iconFontSize} />}
+                  icon={<MessageCircle style={iconStyle} />}
                 />
                 <CommunityCard
                   title="Debates"
                   badgeNumber={battles.countOfBattlesNeedToAttention}
                   onClick={() => setActivePage('debates')}
-                  icon={<UsersRound size={iconFontSize} />}
+                  icon={<UsersRound style={iconStyle} />}
                 />
 
                 {/*
                 <CommunityCard
                   title="Daily Questions"
                   onClick={() => setActivePage('daily-questions')}
-                  icon={<PsychologyIcon sx={{ fontSize: '60px' }} />}
+                  icon={<PsychologyIcon sx={{ fontSize: 'var(--icon-size)' }} />}
                 />
                 */}
 
                 <CommunityCard
                   title="Leaderboards"
                   onClick={() => setActivePage('leaderboards')}
-                  icon={<Crown size={iconFontSize} />}
+                  icon={<Crown style={iconStyle} />}
                 />
               </Stack>
             </Stack>

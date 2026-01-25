@@ -33,6 +33,13 @@ export const CommunityCard = ({
         ':hover': {
           background: 'rgba(255, 255, 255, 0.1)',
         },
+
+        '@media (max-width: 600px)': {
+          padding: '20px 10px',
+          gap: '10px',
+          borderRadius: '10px',
+          border: 'none',
+        },
       }}
     >
       <Badge color="error" badgeContent={badgeNumber ?? 0}>
@@ -50,6 +57,9 @@ export const CommunityCard = ({
           textTransform: 'uppercase',
           opacity: 0.8,
           textAlign: 'center',
+          '@media (max-width: 600px)': {
+            fontSize: '13px',
+          },
         }}
       >
         {title}

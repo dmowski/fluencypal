@@ -34,6 +34,7 @@ export const CommunityPageRouter = ({
         sx={{
           flexDirection: 'row',
           alignItems: 'center',
+          paddingTop: '10px',
 
           gap: '10px',
         }}
@@ -52,6 +53,7 @@ export const CommunityPageRouter = ({
       <Stack
         sx={{
           paddingTop: '20px',
+          paddingBottom: '100px',
         }}
       >
         <CommunityPageContent activePage={activePage} />
