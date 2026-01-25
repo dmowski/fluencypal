@@ -21,7 +21,7 @@ export const CommunityPageRouter = ({
   const titles: Record<CommunityPage, string> = {
     chat: i18n._('Community Chat'),
     game: i18n._('Game'),
-    dm: i18n._('Private Chat'),
+    dm: i18n._('Private Messages'),
     debates: i18n._('Debates'),
     'daily-questions': i18n._('Daily Questions'),
     'tech-support': i18n._('Tech Support'),

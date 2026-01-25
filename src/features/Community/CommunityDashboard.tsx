@@ -57,7 +57,7 @@ export const CommunityDashboard = () => {
               sx={{
                 padding: '20px',
                 gap: '10px',
-                '--icon-size': '50px',
+                '--icon-size': '40px',
                 '@media (max-width: 600px)': {
                   padding: '20px 0 0 0',
                   '--icon-size': '30px',
@@ -79,7 +79,7 @@ export const CommunityDashboard = () => {
                   display: 'grid',
                   gridTemplateColumns: '1fr 1fr 1fr',
                   paddingBottom: '100px',
-                  gap: '20px',
+                  gap: '15px',
 
                   '@media (max-width: 600px)': {
                     gridTemplateColumns: '1fr 1fr',
@@ -91,31 +91,31 @@ export const CommunityDashboard = () => {
                 }}
               >
                 <CommunityCard
-                  title="Community Chat"
+                  title={i18n._('Community Chat')}
                   onClick={() => setActivePage('chat')}
                   badgeNumber={chatList.unreadCountGlobal}
                   icon={<MessagesSquare style={iconStyle} />}
                 />
                 <CommunityCard
-                  title="Game"
+                  title={i18n._('Game')}
                   onClick={() => setActivePage('game')}
                   badgeNumber={0}
                   icon={<Swords style={iconStyle} />}
                 />
 
                 <CommunityCard
-                  title="Tech Support"
+                  title={i18n._('Tech Support')}
                   onClick={() => setActivePage('tech-support')}
                   icon={<SupportAgentIcon style={iconStyle} />}
                 />
                 <CommunityCard
-                  title="Private Chat"
+                  title={i18n._('Private Messages')}
                   onClick={() => setActivePage('dm')}
                   badgeNumber={chatList.myUnreadCount}
                   icon={<MessageCircle style={iconStyle} />}
                 />
                 <CommunityCard
-                  title="Debates"
+                  title={i18n._('Debates')}
                   badgeNumber={battles.countOfBattlesNeedToAttention}
                   onClick={() => setActivePage('debates')}
                   icon={<UsersRound style={iconStyle} />}
@@ -130,7 +130,7 @@ export const CommunityDashboard = () => {
                 */}
 
                 <CommunityCard
-                  title="Leaderboards"
+                  title={i18n._('Leaderboards')}
                   onClick={() => setActivePage('leaderboards')}
                   icon={<Crown style={iconStyle} />}
                 />
