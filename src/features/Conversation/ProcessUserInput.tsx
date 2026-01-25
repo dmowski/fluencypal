@@ -1,15 +1,15 @@
 'use client';
 
-import { Button, IconButton, Stack, Typography } from '@mui/material';
-import { Check, Languages, Loader, ShieldAlert } from 'lucide-react';
-
-import { StringDiff } from 'react-string-diff';
-import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
+import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useEffect, useRef, useState } from 'react';
 import { useCorrections } from '../Corrections/useCorrections';
 import { useTranslate } from '../Translation/useTranslate';
 import { ProcessHeader } from './ProcessUserInput/ProcessHeader';
+import { CorrectionDescription } from './ProcessUserInput/CorrectionDescription';
+import { UserMessageSection } from './ProcessUserInput/UserMessageSection';
+import { CorrectedMessageSection } from './ProcessUserInput/CorrectedMessageSection';
+import { CorrectedActions } from './ProcessUserInput/CorrectedActions';
 
 export const ProcessUserInput = ({
   isTranscribing,
@@ -105,9 +105,7 @@ export const ProcessUserInput = ({
 
   const isAnalyzingResponse = isAnalyzingMessageWithAi || isTranscribing;
 
-  const contentToShow = description || '';
   const limitMessages = 120;
-  const isLimitedMessage = contentToShow.length > limitMessages && !isShowFullContent;
   const messagesFontSize = userMessage.length < 320 ? '1.1rem' : '0.9rem';
 
   const [isTranslatingCorrectedMessage, setIsTranslatingCorrectedMessage] = useState(false);
@@ -126,6 +124,14 @@ export const ProcessUserInput = ({
     setTranslatedCorrectedMessage(translated);
     setIsTranslatingCorrectedMessage(false);
   };
+
+  const descriptionContent = description || '';
+  const yourMessageLabel = i18n._('Your Message');
+  const correctedLabel = i18n._('Corrected');
+  const transcribingLabel = i18n._('Transcribing...');
+  const analyzingLabel = i18n._('Analyzing...');
+  const showMoreLabel = i18n._('Show more');
+  const showLessLabel = i18n._('Show less');
 
   return (
     <Stack
@@ -150,40 +156,15 @@ export const ProcessUserInput = ({
           rate={rate}
         />
 
-        {isNeedToShowCorrection && (
-          <Stack>
-            {description && (
-              <Typography
-                variant="body2"
-                sx={{
-                  opacity: 0.87,
-                }}
-              >
-                {contentToShow.length > limitMessages ? (
-                  <>
-                    {isLimitedMessage
-                      ? contentToShow.slice(0, limitMessages) + '...'
-                      : contentToShow}
-
-                    <Button
-                      size="small"
-                      onClick={() => setIsShowFullContent(!isShowFullContent)}
-                      sx={{
-                        textTransform: 'none',
-                        marginLeft: '5px',
-                        padding: 0,
-                        minWidth: 0,
-                      }}
-                    >
-                      {isShowFullContent ? i18n._('Show less') : i18n._('Show more')}
-                    </Button>
-                  </>
-                ) : (
-                  contentToShow
-                )}
-              </Typography>
-            )}
-          </Stack>
+        {isNeedToShowCorrection && descriptionContent && (
+          <CorrectionDescription
+            content={descriptionContent}
+            limit={limitMessages}
+            isShowFullContent={isShowFullContent}
+            onToggleShowFullContent={() => setIsShowFullContent(!isShowFullContent)}
+            showMoreLabel={showMoreLabel}
+            showLessLabel={showLessLabel}
+          />
         )}
         <Stack
           sx={{
@@ -191,135 +172,34 @@ export const ProcessUserInput = ({
             paddingBottom: '10px',
           }}
         >
-          <Stack>
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-                fontWeight: 350,
-              }}
-            >
-              {i18n._('Your Message')}
-            </Typography>
-            <Stack
-              sx={{
-                width: '100%',
-                gap: '12px',
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}
-            >
-              <Typography
-                variant="body2"
-                component={'div'}
-                className={isTranscribing ? 'loading-shimmer' : ''}
-                sx={{
-                  fontWeight: 400,
-                  fontSize: messagesFontSize,
-                  paddingBottom: '3px',
-                  opacity: isTranscribing ? 0.7 : 0.9,
-                }}
-              >
-                <StringDiff
-                  oldValue={isTranscribing ? i18n._('Transcribing...') : userMessage || ''}
-                  newValue={isTranscribing ? i18n._('Transcribing...') : userMessage || ''}
-                />
-              </Typography>
-            </Stack>
-          </Stack>
+          <UserMessageSection
+            label={yourMessageLabel}
+            message={userMessage}
+            isTranscribing={isTranscribing}
+            fontSize={messagesFontSize}
+            transcribingLabel={transcribingLabel}
+          />
 
           {(isNeedToShowCorrection || isAnalyzingResponse) && (
-            <Stack
-              sx={{
-                paddingTop: '15px',
-              }}
-            >
-              <Typography
-                variant="caption"
-                sx={{
-                  opacity: 0.7,
-                  fontWeight: 350,
-                }}
-              >
-                {i18n._('Corrected')}
-              </Typography>
-
-              <Stack
-                sx={{
-                  width: '100%',
-                  gap: '12px',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                }}
-              >
-                <Typography
-                  variant="body2"
-                  component={'div'}
-                  className={isTranscribing || isAnalyzingResponse ? 'loading-shimmer' : ''}
-                  sx={{
-                    fontWeight: 400,
-                    fontSize: messagesFontSize,
-                    paddingBottom: '3px',
-                    opacity: isTranscribing || isAnalyzingResponse ? 0.7 : 0.9,
-                  }}
-                >
-                  <StringDiff
-                    styles={{
-                      added: {
-                        color: '#81e381',
-                        fontWeight: 600,
-                      },
-                      removed: {
-                        display: 'none',
-                        textDecoration: 'line-through',
-                        opacity: 0.4,
-                      },
-                      default: {},
-                    }}
-                    oldValue={
-                      translatedCorrectedMessage
-                        ? translatedCorrectedMessage
-                        : isTranscribing
-                          ? i18n._('Transcribing...')
-                          : isAnalyzingResponse
-                            ? i18n._('Analyzing...')
-                            : userMessage || ''
-                    }
-                    newValue={
-                      translatedCorrectedMessage
-                        ? translatedCorrectedMessage
-                        : isTranscribing
-                          ? i18n._('Transcribing...')
-                          : isAnalyzingResponse
-                            ? i18n._('Analyzing...')
-                            : correctedMessage || userMessage || ''
-                    }
-                  />
-                </Typography>
-              </Stack>
-            </Stack>
+            <CorrectedMessageSection
+              label={correctedLabel}
+              isTranscribing={isTranscribing}
+              isAnalyzing={isAnalyzingResponse}
+              translatedCorrectedMessage={translatedCorrectedMessage}
+              correctedMessage={correctedMessage}
+              userMessage={userMessage}
+              messagesFontSize={messagesFontSize}
+              transcribingLabel={transcribingLabel}
+              analyzingLabel={analyzingLabel}
+            />
           )}
 
           {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
-            <Stack
-              sx={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: '2px',
-              }}
-            >
-              <AudioPlayIcon
-                text={correctedMessage}
-                instructions="Calm and clear"
-                voice={'shimmer'}
-              />
-              <IconButton
-                onClick={onTranslateCorrectedMessage}
-                disabled={isTranslatingCorrectedMessage}
-              >
-                <Languages size={'16px'} style={{ opacity: 0.8 }} />
-              </IconButton>
-            </Stack>
+            <CorrectedActions
+              correctedMessage={correctedMessage}
+              onTranslate={onTranslateCorrectedMessage}
+              isTranslating={isTranslatingCorrectedMessage}
+            />
           )}
         </Stack>
       </Stack>
