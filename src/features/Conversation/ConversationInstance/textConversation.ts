@@ -1,6 +1,7 @@
 'use client';
 import { ChatMessage } from '@/common/conversation';
 import { ConversationConfig, ConversationInstance } from './types';
+import { getHash } from '@/libs/hash';
 
 interface InstructionState {
   baseInitInstruction: string;
@@ -78,19 +79,32 @@ export const initTextConversation = async ({
       .join('\n');
   };
 
+  const cacheProcessing: Record<string, Promise<string> | undefined> = {};
+
   const generateResponseText = async (teacherMessage?: string): Promise<string> => {
+    if (teacherMessage) {
+      return fixOutputText(teacherMessage);
+    }
+
     const systemMessage = getSystemMessage();
     const userMessage = formatConversationHistory();
+    const cacheKey = getHash(systemMessage + '\n' + userMessage);
 
-    const aiResponse = fixOutputText(
-      teacherMessage ||
-        (await generateTextWithAi({
-          systemMessage,
-          userMessage,
-        })),
-    );
+    const aiResponseRawCached = cacheProcessing[cacheKey];
 
-    return aiResponse;
+    const aiResponseRequest =
+      aiResponseRawCached ||
+      generateTextWithAi({
+        systemMessage,
+        userMessage,
+      });
+
+    if (!aiResponseRawCached) {
+      cacheProcessing[cacheKey] = aiResponseRequest;
+    }
+
+    const aiResponseProcessed = fixOutputText(await aiResponseRequest);
+    return aiResponseProcessed;
   };
 
   // Trigger AI response
@@ -306,11 +320,12 @@ export const initTextConversation = async ({
       conversationHistory.push(newMessage);
       onMessage(newMessage);
     }
+
+    generateResponseText();
   };
 
   const completeUserMessageDelta = () => {
     const lastMessage = conversationHistory[conversationHistory.length - 1];
-    console.log('completeUserMessageDelta', lastMessage);
     if (lastMessage && lastMessage.isInProgress) {
       lastMessage.isInProgress = false;
       onMessage(lastMessage);

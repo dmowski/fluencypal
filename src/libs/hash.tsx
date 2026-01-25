@@ -6,3 +6,7 @@ export const fnv1aHash = (input: string) => {
   }
   return (hash >>> 0).toString(16);
 };
+
+export const getHash = (input: string) => {
+  return fnv1aHash(input);
+};
