@@ -61,6 +61,8 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
 
   const isSubmittedByMe = battle.submittedUsersIds.includes(auth.uid || '');
 
+  const authorUserName = game.userNames?.[battle.authorUserId] || i18n._('-');
+
   return (
     <Stack
       sx={{
@@ -146,11 +148,24 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
           </Stack>
         </Stack>
         {!isAcceptedByMe && (
-          <Stack>
-            <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+          <Stack
+            sx={{
+              gap: '8px',
+            }}
+          >
+            <Typography variant="body1" sx={{ color: 'rgba(255, 255, 255, 1)' }}>
               {i18n._('{userName} challenges you to a debate!', {
-                userName: game.userNames?.[battle.authorUserId] || i18n._('-'),
+                userName: authorUserName,
               })}
+            </Typography>
+
+            <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+              {i18n._(
+                `Once the debate begins, you'll need to record down your answers. Then, AI will determine the winner! {userName} will see your answers too`,
+                {
+                  userName: authorUserName,
+                },
+              )}
             </Typography>
           </Stack>
         )}

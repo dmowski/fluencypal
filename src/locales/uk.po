@@ -244,7 +244,7 @@ msgstr "+{increasePoints} очок"
 msgid "+{points} points"
 msgstr "+{points} балів"
 
-#: src/features/Game/Battle/BattleCard.tsx:152
+#: src/features/Game/Battle/BattleCard.tsx:64
 #. js-lingui-explicit-id
 msgid "-"
 msgstr "-"
@@ -381,7 +381,7 @@ msgstr "Стандартна відповідь на \"Як справи?\""
 msgid "Academic Word List"
 msgstr "Академічний Список Слів"
 
-#: src/features/Game/Battle/BattleCard.tsx:267
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Прийняти"
@@ -862,7 +862,7 @@ msgstr "Ви впевнені, що хочете видалити свій ак�
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "Ви впевнені, що хочете видалити свою мету? Цю дію не можна скасувати."
 
-#: src/features/Game/Battle/BattleCard.tsx:361
+#: src/features/Game/Battle/BattleCard.tsx:376
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Ви впевнені, що хочете відхилити цей виклик?"
@@ -1530,7 +1530,7 @@ msgstr "Спілкуйтеся про компроміси у проектува
 msgid "Communication & Leadership"
 msgstr "Спілкування та Лідерство"
 
-#: src/features/Navigation/NavigationBar.tsx:68
+#: src/features/Navigation/NavigationBar.tsx:70
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Спільнота"
@@ -2044,7 +2044,7 @@ msgstr "День"
 msgid "day"
 msgstr "день"
 
-#: src/features/Game/Battle/BattleCard.tsx:134
+#: src/features/Game/Battle/BattleCard.tsx:136
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Дебати"
@@ -4153,7 +4153,7 @@ msgstr ""
 "Ось решта вашого персоналізованого зворотного зв'язку, щоб допомогти вам "
 "вдосконалитися."
 
-#: src/features/Game/Battle/BattleCard.tsx:297
+#: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "Сховати"
@@ -4189,8 +4189,8 @@ msgstr "Поради для підвищення вашої впевненост
 msgid "Hobbies or interests"
 msgstr "Хобі або інтереси"
 
-#: src/features/Navigation/NavigationBar.tsx:50
-#: src/features/Navigation/NavigationBar.tsx:63
+#: src/features/Navigation/NavigationBar.tsx:52
+#: src/features/Navigation/NavigationBar.tsx:65
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Додому"
@@ -6769,6 +6769,15 @@ msgstr ""
 "Після покупки, ваші години залишаються доступними до тих пір, поки ви їх "
 "використовуєте. Вони не мають терміну дії."
 
+#: src/features/Game/Battle/BattleCard.tsx:163
+#. js-lingui-explicit-id
+msgid ""
+"Once the debate begins, you'll need to record down your answers. Then, AI "
+"will determine the winner! {userName} will see your answers too"
+msgstr ""
+"Як тільки почнеться дебати, вам потрібно буде записати свої відповіді. "
+"Потім AI визначить переможця! {userName} також побачить ваші відповіді"
+
 #: src/features/Dashboard/BrainCard.tsx:431
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -6828,7 +6837,7 @@ msgstr "Відкрити персональний план"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:344
 #: src/features/Conversation/ConversationCanvas.tsx:754
-#: src/features/Game/Battle/BattleCard.tsx:312
+#: src/features/Game/Battle/BattleCard.tsx:327
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Відкрити результати"
@@ -7618,8 +7627,8 @@ msgstr "Професійний розвиток"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Фахівці, які переходять з інших галузей у frontend-розробку"
 
-#: src/features/Navigation/NavigationBar.tsx:56
-#: src/features/Navigation/NavigationBar.tsx:79
+#: src/features/Navigation/NavigationBar.tsx:58
+#: src/features/Navigation/NavigationBar.tsx:84
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Профіль"
@@ -8055,7 +8064,7 @@ msgstr "ПОВ’ЯЗАНІ СЦЕНАРІЇ"
 msgid "Reload page"
 msgstr "Перезавантажте сторінку"
 
-#: src/features/Game/Battle/BattleCard.tsx:370
+#: src/features/Game/Battle/BattleCard.tsx:385
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "Вилучити"
@@ -8139,7 +8148,7 @@ msgstr "Робот думає"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:74
+#: src/features/Navigation/NavigationBar.tsx:79
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
@@ -8803,7 +8812,7 @@ msgstr "Розпочати пробну співбесіду"
 msgid "Start Call"
 msgstr "Запустити дзвінок"
 
-#: src/features/Game/Battle/BattleCard.tsx:285
+#: src/features/Game/Battle/BattleCard.tsx:300
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Розпочати дебати"
@@ -9923,7 +9932,7 @@ msgstr "Голосові записи"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:279
+#: src/features/Game/Battle/BattleCard.tsx:294
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Очікування підтвердження від інших гравців..."
@@ -10383,7 +10392,7 @@ msgstr "Чому кандидати на позиції бекенду швид�
 msgid "Why candidates improve so quickly"
 msgstr "Чому кандидати покращують так швидко"
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:285
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Переможець отримує {points} очок"
@@ -10818,7 +10827,7 @@ msgstr ""
 msgid "You have no chats yet."
 msgstr "У вас ще немає чатів."
 
-#: src/features/Game/Battle/BattleCard.tsx:334
+#: src/features/Game/Battle/BattleCard.tsx:349
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Ви подали свої відповіді. Очікуємо на інших..."
@@ -11051,7 +11060,7 @@ msgstr ""
 "Вам пропонують **розробляти системи на місці**, але ніхто не пояснює, як "
 "виглядає \"добре\""
 
-#: src/features/Game/Battle/BattleCard.tsx:151
+#: src/features/Game/Battle/BattleCard.tsx:157
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
 msgstr "{userName} кидає вам виклик на дебати!"

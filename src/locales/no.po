@@ -240,7 +240,7 @@ msgstr "+{increasePoints} poeng"
 msgid "+{points} points"
 msgstr "+{poeng} poeng"
 
-#: src/features/Game/Battle/BattleCard.tsx:152
+#: src/features/Game/Battle/BattleCard.tsx:64
 #. js-lingui-explicit-id
 msgid "-"
 msgstr "-"
@@ -375,7 +375,7 @@ msgstr "Et standard svar på \"Hvordan har du det?\""
 msgid "Academic Word List"
 msgstr "Akademisk ordliste"
 
-#: src/features/Game/Battle/BattleCard.tsx:267
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Godta"
@@ -855,7 +855,7 @@ msgstr ""
 "Er du sikker på at du vil slette målet ditt? Denne handlingen kan ikke "
 "angres."
 
-#: src/features/Game/Battle/BattleCard.tsx:361
+#: src/features/Game/Battle/BattleCard.tsx:376
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Er du sikker på at du vil avslå denne kampen?"
@@ -1521,7 +1521,7 @@ msgstr "Kommuniser systemdesign-avveininger"
 msgid "Communication & Leadership"
 msgstr "Kommunikasjon & Lederskap"
 
-#: src/features/Navigation/NavigationBar.tsx:68
+#: src/features/Navigation/NavigationBar.tsx:70
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Fellesskap"
@@ -2034,7 +2034,7 @@ msgstr "Dag"
 msgid "day"
 msgstr "dag"
 
-#: src/features/Game/Battle/BattleCard.tsx:134
+#: src/features/Game/Battle/BattleCard.tsx:136
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Debatt"
@@ -4104,7 +4104,7 @@ msgstr ""
 "Her er resten av din personlige tilbakemelding for å hjelpe deg med å bli "
 "bedre."
 
-#: src/features/Game/Battle/BattleCard.tsx:297
+#: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "Skjul"
@@ -4140,8 +4140,8 @@ msgstr "Tips for å øke selvtilliten din"
 msgid "Hobbies or interests"
 msgstr "Hobbyer eller interesser"
 
-#: src/features/Navigation/NavigationBar.tsx:50
-#: src/features/Navigation/NavigationBar.tsx:63
+#: src/features/Navigation/NavigationBar.tsx:52
+#: src/features/Navigation/NavigationBar.tsx:65
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Hjem"
@@ -6700,6 +6700,15 @@ msgstr ""
 "Når du har kjøpt, forblir timene dine tilgjengelige til du bruker dem. Det "
 "er ingen utløpsdato."
 
+#: src/features/Game/Battle/BattleCard.tsx:163
+#. js-lingui-explicit-id
+msgid ""
+"Once the debate begins, you'll need to record down your answers. Then, AI "
+"will determine the winner! {userName} will see your answers too"
+msgstr ""
+"Når debatten begynner, må du notere svarene dine. Deretter vil AI avgjøre "
+"hvem som vinner! {userName} vil også se svarene dine"
+
 #: src/features/Dashboard/BrainCard.tsx:431
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -6759,7 +6768,7 @@ msgstr "Åpne personlig plan"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:344
 #: src/features/Conversation/ConversationCanvas.tsx:754
-#: src/features/Game/Battle/BattleCard.tsx:312
+#: src/features/Game/Battle/BattleCard.tsx:327
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Åpne resultater"
@@ -7532,8 +7541,8 @@ msgstr "Profesjonell Utvikling"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Profesjonelle som bytter fra andre felt til frontend-utvikling"
 
-#: src/features/Navigation/NavigationBar.tsx:56
-#: src/features/Navigation/NavigationBar.tsx:79
+#: src/features/Navigation/NavigationBar.tsx:58
+#: src/features/Navigation/NavigationBar.tsx:84
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
@@ -7965,7 +7974,7 @@ msgstr "Relaterte Scenarier"
 msgid "Reload page"
 msgstr "Last inn siden på nytt"
 
-#: src/features/Game/Battle/BattleCard.tsx:370
+#: src/features/Game/Battle/BattleCard.tsx:385
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "Fjern"
@@ -8049,7 +8058,7 @@ msgstr "Robot Tenker"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:74
+#: src/features/Navigation/NavigationBar.tsx:79
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
@@ -8708,7 +8717,7 @@ msgstr "Begynn en imitasjonsintervju"
 msgid "Start Call"
 msgstr "Start samtale"
 
-#: src/features/Game/Battle/BattleCard.tsx:285
+#: src/features/Game/Battle/BattleCard.tsx:300
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Start debatt"
@@ -9831,7 +9840,7 @@ msgstr "Stemmeanalyseringer"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:279
+#: src/features/Game/Battle/BattleCard.tsx:294
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Venter på at andre spillere skal akseptere..."
@@ -10289,7 +10298,7 @@ msgstr "Hvorfor backendkandidater forbedrer seg raskt"
 msgid "Why candidates improve so quickly"
 msgstr "Hvorfor kandidater forbedrer seg så raskt"
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:285
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Vinneren får {points} poeng"
@@ -10718,7 +10727,7 @@ msgstr ""
 msgid "You have no chats yet."
 msgstr "Du har ingen samtaler ennå."
 
-#: src/features/Game/Battle/BattleCard.tsx:334
+#: src/features/Game/Battle/BattleCard.tsx:349
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Du har sendt inn svarene dine. Venter på andre..."
@@ -10957,7 +10966,7 @@ msgstr ""
 "Du blir bedt om å **designe systemer på stedet**, men ingen forteller deg "
 "hvordan et \"godt\" system ser ut."
 
-#: src/features/Game/Battle/BattleCard.tsx:151
+#: src/features/Game/Battle/BattleCard.tsx:157
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
 msgstr "{userName} utfordrer deg til en debatt!"

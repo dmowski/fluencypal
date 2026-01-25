@@ -223,7 +223,7 @@ msgstr "+{increasePoints} 포인트"
 msgid "+{points} points"
 msgstr "+{points} 포인트"
 
-#: src/features/Game/Battle/BattleCard.tsx:152
+#: src/features/Game/Battle/BattleCard.tsx:64
 #. js-lingui-explicit-id
 msgid "-"
 msgstr "-"
@@ -354,7 +354,7 @@ msgstr "\"어떻게 지내세요?\"에 대한 표준적인 답변"
 msgid "Academic Word List"
 msgstr "학문적 단어 목록"
 
-#: src/features/Game/Battle/BattleCard.tsx:267
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "받기"
@@ -824,7 +824,7 @@ msgstr "정말로 계정을 삭제하시겠습니까?"
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "정말로 목표를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
 
-#: src/features/Game/Battle/BattleCard.tsx:361
+#: src/features/Game/Battle/BattleCard.tsx:376
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "이 전투를 거부하시겠습니까?"
@@ -1463,7 +1463,7 @@ msgstr "시스템 설계 트레이드오프를 전달하기"
 msgid "Communication & Leadership"
 msgstr "커뮤니케이션 & 리더십"
 
-#: src/features/Navigation/NavigationBar.tsx:68
+#: src/features/Navigation/NavigationBar.tsx:70
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "커뮤니티"
@@ -1957,7 +1957,7 @@ msgstr "일"
 msgid "day"
 msgstr "하루"
 
-#: src/features/Game/Battle/BattleCard.tsx:134
+#: src/features/Game/Battle/BattleCard.tsx:136
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "토론"
@@ -3863,7 +3863,7 @@ msgstr ""
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "개선을 돕기 위한 나머지 맞춤형 피드백을 제공합니다."
 
-#: src/features/Game/Battle/BattleCard.tsx:297
+#: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "숨기기"
@@ -3899,8 +3899,8 @@ msgstr "자신감을 높이기 위한 힌트"
 msgid "Hobbies or interests"
 msgstr "취미나 관심사"
 
-#: src/features/Navigation/NavigationBar.tsx:50
-#: src/features/Navigation/NavigationBar.tsx:63
+#: src/features/Navigation/NavigationBar.tsx:52
+#: src/features/Navigation/NavigationBar.tsx:65
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "집"
@@ -6281,6 +6281,15 @@ msgid ""
 "expiration."
 msgstr "구매하신 후에는 사용하기 전까지 그 시간을 사용할 수 있습니다. 만료기간이 없습니다."
 
+#: src/features/Game/Battle/BattleCard.tsx:163
+#. js-lingui-explicit-id
+msgid ""
+"Once the debate begins, you'll need to record down your answers. Then, AI "
+"will determine the winner! {userName} will see your answers too"
+msgstr ""
+"토론이 시작되면, 당신의 답변을 기록해야 합니다. 그러면 AI가 승자를 결정할 것입니다! {userName}도 당신의 답변을 볼 수 "
+"있습니다"
+
 #: src/features/Dashboard/BrainCard.tsx:431
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -6340,7 +6349,7 @@ msgstr "개인 계획 열기"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:344
 #: src/features/Conversation/ConversationCanvas.tsx:754
-#: src/features/Game/Battle/BattleCard.tsx:312
+#: src/features/Game/Battle/BattleCard.tsx:327
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "결과 열기"
@@ -7072,8 +7081,8 @@ msgstr "전문 개발"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "다른 분야에서 프론트엔드 엔지니어링으로 전환하는 전문가들"
 
-#: src/features/Navigation/NavigationBar.tsx:56
-#: src/features/Navigation/NavigationBar.tsx:79
+#: src/features/Navigation/NavigationBar.tsx:58
+#: src/features/Navigation/NavigationBar.tsx:84
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "프로필"
@@ -7489,7 +7498,7 @@ msgstr "관련 시나리오"
 msgid "Reload page"
 msgstr "페이지 새로고침"
 
-#: src/features/Game/Battle/BattleCard.tsx:370
+#: src/features/Game/Battle/BattleCard.tsx:385
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "제거"
@@ -7570,7 +7579,7 @@ msgstr "로봇 생각 중"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:74
+#: src/features/Navigation/NavigationBar.tsx:79
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
@@ -8192,7 +8201,7 @@ msgstr "모의 면접 시작"
 msgid "Start Call"
 msgstr "통화 시작"
 
-#: src/features/Game/Battle/BattleCard.tsx:285
+#: src/features/Game/Battle/BattleCard.tsx:300
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "토론 시작"
@@ -9248,7 +9257,7 @@ msgstr "음성 기록"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:279
+#: src/features/Game/Battle/BattleCard.tsx:294
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "다른 플레이어가 수락할 때까지 대기 중..."
@@ -9681,7 +9690,7 @@ msgstr "백엔드 후보자가 빠르게 향상되는 이유"
 msgid "Why candidates improve so quickly"
 msgstr "후보자들이 왜 그렇게 빨리 향상되는가"
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:285
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "승자는 {points} 점을 받습니다."
@@ -10060,7 +10069,7 @@ msgstr "모든 질문을 완료했습니다. 이제 답안을 제출하고 결�
 msgid "You have no chats yet."
 msgstr "대화 내역이 없습니다."
 
-#: src/features/Game/Battle/BattleCard.tsx:334
+#: src/features/Game/Battle/BattleCard.tsx:349
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "당신의 답변이 제출되었습니다. 다른 사람들을 기다리는 중..."
@@ -10277,7 +10286,7 @@ msgid ""
 "“good” looks like"
 msgstr "당신은 **즉석에서 시스템을 설계하라고 요청받지만**, 아무도 \"좋은\" 것이 무엇인지 말해주지 않습니다."
 
-#: src/features/Game/Battle/BattleCard.tsx:151
+#: src/features/Game/Battle/BattleCard.tsx:157
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
 msgstr "{userName}님이 토론에 도전합니다!"

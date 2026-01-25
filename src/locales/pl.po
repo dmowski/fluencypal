@@ -253,7 +253,7 @@ msgstr "+{increasePoints} punktów"
 msgid "+{points} points"
 msgstr "+{points} punktów"
 
-#: src/features/Game/Battle/BattleCard.tsx:152
+#: src/features/Game/Battle/BattleCard.tsx:64
 #. js-lingui-explicit-id
 msgid "-"
 msgstr "-"
@@ -392,7 +392,7 @@ msgstr "Standardowa odpowiedź na \"Jak się masz?\""
 msgid "Academic Word List"
 msgstr "Akademicka Lista Słów"
 
-#: src/features/Game/Battle/BattleCard.tsx:267
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Zaakceptuj"
@@ -872,7 +872,7 @@ msgstr "Czy na pewno chcesz usunąć swoje konto?"
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "Czy na pewno chcesz usunąć swój cel? Tej akcji nie można cofnąć."
 
-#: src/features/Game/Battle/BattleCard.tsx:361
+#: src/features/Game/Battle/BattleCard.tsx:376
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Czy na pewno chcesz odrzucić tę bitwę?"
@@ -1545,7 +1545,7 @@ msgstr "Komunikuj kompromisy projektowe systemu"
 msgid "Communication & Leadership"
 msgstr "Komunikacja i Przywództwo"
 
-#: src/features/Navigation/NavigationBar.tsx:68
+#: src/features/Navigation/NavigationBar.tsx:70
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Społeczność"
@@ -2062,7 +2062,7 @@ msgstr "Dzień"
 msgid "day"
 msgstr "dzień"
 
-#: src/features/Game/Battle/BattleCard.tsx:134
+#: src/features/Game/Battle/BattleCard.tsx:136
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Debata"
@@ -4164,7 +4164,7 @@ msgstr ""
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "Oto reszta twojej spersonalizowanej opinii, która pomoże ci się poprawić."
 
-#: src/features/Game/Battle/BattleCard.tsx:297
+#: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "Ukryj"
@@ -4200,8 +4200,8 @@ msgstr "Wskazówki, które zwiększą Twoją pewność siebie"
 msgid "Hobbies or interests"
 msgstr "Zainteresowania lub hobby"
 
-#: src/features/Navigation/NavigationBar.tsx:50
-#: src/features/Navigation/NavigationBar.tsx:63
+#: src/features/Navigation/NavigationBar.tsx:52
+#: src/features/Navigation/NavigationBar.tsx:65
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Dom"
@@ -6802,6 +6802,15 @@ msgstr ""
 "Po zakupie, twoje godziny są dostępne dopóki ich nie wykorzystasz. Nie mają "
 "one daty ważności."
 
+#: src/features/Game/Battle/BattleCard.tsx:163
+#. js-lingui-explicit-id
+msgid ""
+"Once the debate begins, you'll need to record down your answers. Then, AI "
+"will determine the winner! {userName} will see your answers too"
+msgstr ""
+"Gdy debata się rozpocznie, będziesz musiał zapisać swoje odpowiedzi. "
+"Następnie AI wyłoni zwycięzcę! {userName} również zobaczy twoje odpowiedzi"
+
 #: src/features/Dashboard/BrainCard.tsx:431
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -6861,7 +6870,7 @@ msgstr "Otwórz plan osobisty"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:344
 #: src/features/Conversation/ConversationCanvas.tsx:754
-#: src/features/Game/Battle/BattleCard.tsx:312
+#: src/features/Game/Battle/BattleCard.tsx:327
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Otwórz wyniki"
@@ -7657,8 +7666,8 @@ msgstr "Rozwój zawodowy"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Profesjonaliści przechodzący z innych dziedzin do inżynierii frontendowej"
 
-#: src/features/Navigation/NavigationBar.tsx:56
-#: src/features/Navigation/NavigationBar.tsx:79
+#: src/features/Navigation/NavigationBar.tsx:58
+#: src/features/Navigation/NavigationBar.tsx:84
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
@@ -8096,7 +8105,7 @@ msgstr "Powiązane scenariusze"
 msgid "Reload page"
 msgstr "Odśwież stronę"
 
-#: src/features/Game/Battle/BattleCard.tsx:370
+#: src/features/Game/Battle/BattleCard.tsx:385
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "Usuń"
@@ -8180,7 +8189,7 @@ msgstr "Robot Myśli"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:74
+#: src/features/Navigation/NavigationBar.tsx:79
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
@@ -8843,7 +8852,7 @@ msgstr "Rozpocznij próbny wywiad"
 msgid "Start Call"
 msgstr "Rozpocznij rozmowę"
 
-#: src/features/Game/Battle/BattleCard.tsx:285
+#: src/features/Game/Battle/BattleCard.tsx:300
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Rozpocznij debatę"
@@ -9971,7 +9980,7 @@ msgstr "Nagrania głosowe"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:279
+#: src/features/Game/Battle/BattleCard.tsx:294
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Czekanie na zaakceptowanie przez innych graczy..."
@@ -10436,7 +10445,7 @@ msgstr "Dlaczego kandydaci na programistów backendu szybko się poprawiają"
 msgid "Why candidates improve so quickly"
 msgstr "Dlaczego kandydaci poprawiają się tak szybko"
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:285
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Zwycięzca zdobywa {points} punktów"
@@ -10875,7 +10884,7 @@ msgstr ""
 msgid "You have no chats yet."
 msgstr "Nie masz jeszcze żadnych rozmów."
 
-#: src/features/Game/Battle/BattleCard.tsx:334
+#: src/features/Game/Battle/BattleCard.tsx:349
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Przesłałeś swoje odpowiedzi. Czekanie na innych..."
@@ -11112,7 +11121,7 @@ msgstr ""
 "Proszeni jesteście o **projektowanie systemów na miejscu**, ale nikt nie "
 "mówi wam, jak wygląda „dobro”"
 
-#: src/features/Game/Battle/BattleCard.tsx:151
+#: src/features/Game/Battle/BattleCard.tsx:157
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
 msgstr "{userName} wyzwał cię na debatę!"

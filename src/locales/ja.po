@@ -224,7 +224,7 @@ msgstr "+{increasePoints} ポイント"
 msgid "+{points} points"
 msgstr "+{points} ポイント"
 
-#: src/features/Game/Battle/BattleCard.tsx:152
+#: src/features/Game/Battle/BattleCard.tsx:64
 #. js-lingui-explicit-id
 msgid "-"
 msgstr "-"
@@ -355,7 +355,7 @@ msgstr "「お元気ですか？」への一般的な返答"
 msgid "Academic Word List"
 msgstr "アカデミックワードリスト"
 
-#: src/features/Game/Battle/BattleCard.tsx:267
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "受け入れる"
@@ -826,7 +826,7 @@ msgstr "あなたのアカウントを削除してもよろしいですか？"
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "あなたの目標を削除してもよろしいですか？ この操作は元に戻すことができません。"
 
-#: src/features/Game/Battle/BattleCard.tsx:361
+#: src/features/Game/Battle/BattleCard.tsx:376
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "このバトルを拒否してもよろしいですか？"
@@ -1463,7 +1463,7 @@ msgstr "システム設計のトレードオフを伝える"
 msgid "Communication & Leadership"
 msgstr "コミュニケーション & リーダーシップ"
 
-#: src/features/Navigation/NavigationBar.tsx:68
+#: src/features/Navigation/NavigationBar.tsx:70
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr ""
@@ -1960,7 +1960,7 @@ msgstr "日"
 msgid "day"
 msgstr "日"
 
-#: src/features/Game/Battle/BattleCard.tsx:134
+#: src/features/Game/Battle/BattleCard.tsx:136
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "討論"
@@ -3863,7 +3863,7 @@ msgstr ""
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "あなたの改善を助けるための個別フィードバックの続きはこちらです。"
 
-#: src/features/Game/Battle/BattleCard.tsx:297
+#: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "隠す"
@@ -3901,8 +3901,8 @@ msgstr ""
 msgid "Hobbies or interests"
 msgstr "趣味や関心"
 
-#: src/features/Navigation/NavigationBar.tsx:50
-#: src/features/Navigation/NavigationBar.tsx:63
+#: src/features/Navigation/NavigationBar.tsx:52
+#: src/features/Navigation/NavigationBar.tsx:65
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "ホーム"
@@ -6278,6 +6278,13 @@ msgid ""
 "expiration."
 msgstr "一度購入すると、使用するまでの時間が利用可能になります。有効期限はありません。"
 
+#: src/features/Game/Battle/BattleCard.tsx:163
+#. js-lingui-explicit-id
+msgid ""
+"Once the debate begins, you'll need to record down your answers. Then, AI "
+"will determine the winner! {userName} will see your answers too"
+msgstr "論戦が始まったら、答えを記録する必要があります。その後、AI が勝者を決定します！{userName}もあなたの答えを見ることができます。"
+
 #: src/features/Dashboard/BrainCard.tsx:431
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -6337,7 +6344,7 @@ msgstr "パーソナルプランを開く"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:344
 #: src/features/Conversation/ConversationCanvas.tsx:754
-#: src/features/Game/Battle/BattleCard.tsx:312
+#: src/features/Game/Battle/BattleCard.tsx:327
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "結果を開く"
@@ -7074,8 +7081,8 @@ msgstr "プロフェッショナル開発"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "他の分野からフロントエンドエンジニアリングに転職するプロフェッショナル"
 
-#: src/features/Navigation/NavigationBar.tsx:56
-#: src/features/Navigation/NavigationBar.tsx:79
+#: src/features/Navigation/NavigationBar.tsx:58
+#: src/features/Navigation/NavigationBar.tsx:84
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "プロフィール"
@@ -7493,7 +7500,7 @@ msgstr "関連シナリオ"
 msgid "Reload page"
 msgstr "ページを再読み込み"
 
-#: src/features/Game/Battle/BattleCard.tsx:370
+#: src/features/Game/Battle/BattleCard.tsx:385
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "削除"
@@ -7576,7 +7583,7 @@ msgstr "ロボット思考中"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:74
+#: src/features/Navigation/NavigationBar.tsx:79
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
@@ -8204,7 +8211,7 @@ msgstr ""
 "plaintext\n"
 "通話開始\n"
 
-#: src/features/Game/Battle/BattleCard.tsx:285
+#: src/features/Game/Battle/BattleCard.tsx:300
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "ディベートを開始"
@@ -9266,7 +9273,7 @@ msgstr "ボイスレコード"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:279
+#: src/features/Game/Battle/BattleCard.tsx:294
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "他のプレイヤーが承認するのを待っています..."
@@ -9702,7 +9709,7 @@ msgstr "なぜバックエンド候補者は速く成長するのか"
 msgid "Why candidates improve so quickly"
 msgstr "なぜ候補者はこんなに早く上達するのか"
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:285
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "勝者には{points}ポイントが与えられます"
@@ -10081,7 +10088,7 @@ msgstr "すべての質問に回答しました。今すぐ回答を提出し、
 msgid "You have no chats yet."
 msgstr "チャットはまだありません。"
 
-#: src/features/Game/Battle/BattleCard.tsx:334
+#: src/features/Game/Battle/BattleCard.tsx:349
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "回答を提出しました。他の人を待っています..."
@@ -10298,7 +10305,7 @@ msgid ""
 "“good” looks like"
 msgstr "その場で**システムを設計する**よう求められますが、「良い」ものが何であるかは誰も教えてくれません"
 
-#: src/features/Game/Battle/BattleCard.tsx:151
+#: src/features/Game/Battle/BattleCard.tsx:157
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
 msgstr "{userName} があなたにディベートを挑んでいます！"

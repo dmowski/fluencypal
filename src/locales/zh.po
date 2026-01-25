@@ -227,7 +227,7 @@ msgstr "+{increasePoints} 分"
 msgid "+{points} points"
 msgstr "+{points} 分"
 
-#: src/features/Game/Battle/BattleCard.tsx:152
+#: src/features/Game/Battle/BattleCard.tsx:64
 #. js-lingui-explicit-id
 msgid "-"
 msgstr "-"
@@ -358,7 +358,7 @@ msgstr "对“你好吗？”的标准回复"
 msgid "Academic Word List"
 msgstr "学术词汇列表"
 
-#: src/features/Game/Battle/BattleCard.tsx:267
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "接受"
@@ -828,7 +828,7 @@ msgstr "您确定要删除您的账户吗？"
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "您确定要删除您的目标吗？此操作无法撤销。"
 
-#: src/features/Game/Battle/BattleCard.tsx:361
+#: src/features/Game/Battle/BattleCard.tsx:376
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "您确定要拒绝这场对决吗？"
@@ -1459,7 +1459,7 @@ msgstr "传达系统设计权衡"
 msgid "Communication & Leadership"
 msgstr "沟通与领导力"
 
-#: src/features/Navigation/NavigationBar.tsx:68
+#: src/features/Navigation/NavigationBar.tsx:70
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "社区"
@@ -1948,7 +1948,7 @@ msgstr "天"
 msgid "day"
 msgstr "天"
 
-#: src/features/Game/Battle/BattleCard.tsx:134
+#: src/features/Game/Battle/BattleCard.tsx:136
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "辩论"
@@ -3811,7 +3811,7 @@ msgstr "这是一个您将遵循的个性化训练计划。一步一步地，您
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "这是您的个性化反馈的其余部分，以帮助您提高。"
 
-#: src/features/Game/Battle/BattleCard.tsx:297
+#: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "隐藏"
@@ -3847,8 +3847,8 @@ msgstr "提高自信心的提示"
 msgid "Hobbies or interests"
 msgstr "爱好或兴趣"
 
-#: src/features/Navigation/NavigationBar.tsx:50
-#: src/features/Navigation/NavigationBar.tsx:63
+#: src/features/Navigation/NavigationBar.tsx:52
+#: src/features/Navigation/NavigationBar.tsx:65
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "首页"
@@ -6164,6 +6164,13 @@ msgid ""
 "expiration."
 msgstr "一旦购买，您的小时数将一直保留，直到您使用它们为止。没有过期时间。"
 
+#: src/features/Game/Battle/BattleCard.tsx:163
+#. js-lingui-explicit-id
+msgid ""
+"Once the debate begins, you'll need to record down your answers. Then, AI "
+"will determine the winner! {userName} will see your answers too"
+msgstr "一旦辩论开始，你需要记录下你的答案。然后，AI 将决定胜者！{userName} 也会看到你的答案。"
+
 #: src/features/Dashboard/BrainCard.tsx:431
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -6223,7 +6230,7 @@ msgstr "打开个人计划"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:344
 #: src/features/Conversation/ConversationCanvas.tsx:754
-#: src/features/Game/Battle/BattleCard.tsx:312
+#: src/features/Game/Battle/BattleCard.tsx:327
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "打开结果"
@@ -6946,8 +6953,8 @@ msgstr "专业发展"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "正在从其他领域转向前端工程的专业人士"
 
-#: src/features/Navigation/NavigationBar.tsx:56
-#: src/features/Navigation/NavigationBar.tsx:79
+#: src/features/Navigation/NavigationBar.tsx:58
+#: src/features/Navigation/NavigationBar.tsx:84
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "个人资料"
@@ -7359,7 +7366,7 @@ msgstr "相关场景"
 msgid "Reload page"
 msgstr "重新加载页面"
 
-#: src/features/Game/Battle/BattleCard.tsx:370
+#: src/features/Game/Battle/BattleCard.tsx:385
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "移除"
@@ -7438,7 +7445,7 @@ msgstr "机器人思考中"
 #: src/features/Goal/Quiz/GoalReview.tsx:35
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:74
+#: src/features/Navigation/NavigationBar.tsx:79
 #: src/features/RolePlay/RolePlayBoard.tsx:49
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
@@ -8060,7 +8067,7 @@ msgstr "开始模拟面试"
 msgid "Start Call"
 msgstr "开始通话"
 
-#: src/features/Game/Battle/BattleCard.tsx:285
+#: src/features/Game/Battle/BattleCard.tsx:300
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "开始辩论"
@@ -9097,7 +9104,7 @@ msgstr "语音记录"
 msgid "Vue & Pinia"
 msgstr "Vue 和 Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:279
+#: src/features/Game/Battle/BattleCard.tsx:294
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "正在等待其他玩家接受..."
@@ -9527,7 +9534,7 @@ msgstr "为什么后端候选人进步快"
 msgid "Why candidates improve so quickly"
 msgstr "为什么候选人进步得如此之快"
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:285
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "获胜者获得{points}分"
@@ -9892,7 +9899,7 @@ msgstr "您已完成所有问题。现在提交您的答案并等待结果。"
 msgid "You have no chats yet."
 msgstr "您还没有聊天记录。"
 
-#: src/features/Game/Battle/BattleCard.tsx:334
+#: src/features/Game/Battle/BattleCard.tsx:349
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "您已提交答案。正在等待其他人……"
@@ -10109,7 +10116,7 @@ msgid ""
 "“good” looks like"
 msgstr "你被要求**现场设计系统**，但没有人告诉你“好”是什么样的。"
 
-#: src/features/Game/Battle/BattleCard.tsx:151
+#: src/features/Game/Battle/BattleCard.tsx:157
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
 msgstr "{userName} 向你发起了一场辩论挑战！"
