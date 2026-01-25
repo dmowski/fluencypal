@@ -25,7 +25,6 @@ export const useAudioRecorder = () => {
   useEffect(() => {
     if (!recorderControls.recordedBlob) return;
     if (isCancel.current) {
-      console.log('Cancelled recording');
       return;
     }
     const format = recorderControls.recordedBlob.type.toLowerCase();
@@ -79,9 +78,7 @@ export const useAudioRecorder = () => {
         return;
       }
     }
-    console.log('Start recording');
     recorderControls.startRecording();
-    console.log('Recording started');
     isCancel.current = false;
   };
   const stopRecording = async () => {
