@@ -1,25 +1,44 @@
-import { Badge, Button, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useMemo, useState } from 'react';
 import { dailyQuestions } from './dailyQuestions';
 import dayjs from 'dayjs';
-import { ChevronRight, MessageCircle, X } from 'lucide-react';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { ChatSection } from '@/features/Chat/ChatSection';
 import { ChatProvider, useChat } from '@/features/Chat/useChat';
 import { DailyQuestion } from './types';
+import { PageContainer } from '@/features/Community/PageContainer';
+import { useSettings } from '@/features/Settings/useSettings';
 
 export const DailyQuestionBadge = () => {
-  const todayIsoDate = dayjs().format('YYYY-MM-DD');
-  const todaysQuestion = dailyQuestions[todayIsoDate];
-  const questionId = todaysQuestion?.id;
+  const settings = useSettings();
+  const createdAt = settings.userSettings?.createdAtIso || settings.userSettings?.createdAt;
+  const daysSinceUserCreatedAccount = createdAt ? dayjs().diff(dayjs(createdAt), 'day') : 0;
+  const questionsKeys = Object.keys(dailyQuestions);
+  const questionIndex = daysSinceUserCreatedAccount % questionsKeys.length;
 
-  if (!todaysQuestion)
+  const todaysQuestion = dailyQuestions[questionsKeys[questionIndex]];
+  const questionId = todaysQuestion?.id;
+  const { i18n } = useLingui();
+
+  if (!todaysQuestion) {
     return (
-      <Stack>
-        <Typography>No daily question for today.</Typography>
-      </Stack>
+      <PageContainer>
+        <Stack
+          sx={{
+            gap: '5px',
+          }}
+        >
+          <Typography variant="h6">{i18n._('No daily question for today')}</Typography>
+          <Typography variant="body2">
+            {i18n._(
+              'Sorry, there is no daily question available for today. Please check back tomorrow!',
+            )}
+          </Typography>
+        </Stack>
+      </PageContainer>
     );
+  }
 
   return (
     <ChatProvider
