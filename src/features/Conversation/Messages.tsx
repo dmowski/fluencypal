@@ -146,10 +146,26 @@ export const Message = ({
         boxSizing: 'border-box',
         color: '#e1e1e1',
         width: '100%',
-        backgroundColor: isMessageInProgress ? 'rgba(255, 255, 255, 0.02)' : 'transparent',
         borderRadius: '8px',
+        position: 'relative',
       }}
     >
+      {isMessageInProgress && (
+        <Stack
+          sx={{
+            position: 'absolute',
+            top: '-10px',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: 'calc(100% + 20px)',
+            width: '100%',
+            backgroundColor: 'rgba(255, 255, 255, 0)',
+          }}
+        >
+          <LoadingShapes sizes={['100%']} containerHeight="100%" />
+        </Stack>
+      )}
       <Stack
         sx={{
           flexDirection: 'row',
