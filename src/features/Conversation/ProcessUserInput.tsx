@@ -22,6 +22,7 @@ export const ProcessUserInput = ({
   setIsAnalyzing: (value: boolean) => void;
   setIsNeedCorrection: (value: boolean) => void;
   previousBotMessage: string;
+  isRecording: boolean;
 }) => {
   const { i18n } = useLingui();
   const [isNeedToShowCorrection, setIsNeedToShowCorrection] = useState<boolean>(false);
