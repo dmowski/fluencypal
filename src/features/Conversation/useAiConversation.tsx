@@ -704,7 +704,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
         '5LRw3ARnx1NL2navOPjIqEzdWip1', //Daniel
         //'Mq2HfU3KrXTjNyOpPXqHSPg5izV2', //- My
         '6x9zLTu7svdkHqm9huJ8Sx2On1T2', // My safari
-        'zoNM4maGglUhJaB8pKFP4pTdwWB2',
+        'zoNM4maGglUhJaB8pKFP4pTdwWB2', // kubra kurt
       ];
       //const userIdsToSkipVad = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2'];
 
