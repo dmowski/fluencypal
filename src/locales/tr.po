@@ -421,12 +421,12 @@ msgstr "Kritik arka uç becerilerini geliştirmek için eylem planı"
 msgid "Active"
 msgstr "Aktif"
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Yanıt ekle"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "Yorum Ekle"
@@ -436,12 +436,12 @@ msgstr "Yorum Ekle"
 msgid "Add new goal"
 msgstr "Yeni hedef ekle"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "Yeni Gönderi Ekle"
 
-#: src/features/Chat/ChatSection.tsx:297
+#: src/features/Chat/ChatSectionHeader.tsx:72
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "Gönderi Ekle"
@@ -706,6 +706,11 @@ msgstr "Alias Oyun Kaydı"
 msgid "Alias Word Guessing Game"
 msgstr "Alias Kelime Tahmin Oyunu"
 
+#: src/features/Chat/ChatPage.tsx:81
+#. js-lingui-explicit-id
+msgid "All"
+msgstr "Hepsi"
+
 #: src/features/Blog/blogData.tsx:540
 #. js-lingui-explicit-id
 msgid "All Blogs"
@@ -918,13 +923,13 @@ msgstr ""
 "Bu hatalardan kaçınmak sizi daha profesyonel gösterecek ve başarı şansınızı "
 "artıracaktır."
 
-#: src/features/Chat/ChatPage.tsx:122
-#: src/features/Chat/ChatSection.tsx:170
+#: src/features/Chat/ChatPage.tsx:173
+#: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Geri"
 
-#: src/features/Chat/ChatPage.tsx:163
+#: src/features/Chat/ChatPage.tsx:214
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Sohbet listesine geri dön"
@@ -1318,10 +1323,10 @@ msgstr "Kariyer İlerlemesi"
 msgid "Career benefit:"
 msgstr "Kariyer faydası:"
 
-#: src/features/Chat/ChatPage.tsx:316
-#: src/features/Chat/ChatPage.tsx:318
-#: src/features/Chat/ChatPage.tsx:390
-#: src/features/Chat/ChatPage.tsx:392
+#: src/features/Chat/ChatPage.tsx:367
+#: src/features/Chat/ChatPage.tsx:369
+#: src/features/Chat/ChatPage.tsx:441
+#: src/features/Chat/ChatPage.tsx:443
 #: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1337,7 +1342,7 @@ msgstr "Senin ile {userName} arasında sohbet"
 msgid "Chat history"
 msgstr "Sohbet geçmişi"
 
-#: src/features/Chat/ChatPage.tsx:156
+#: src/features/Chat/ChatPage.tsx:207
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Sohbet bulunamadı veya bu sohbete erişiminiz yok."
@@ -1983,8 +1988,8 @@ msgstr "Günlük Dil Pratiği"
 msgid "Daily Question"
 msgstr "Günlük Soru"
 
-#: src/features/Chat/ChatPage.tsx:314
-#: src/features/Chat/ChatPage.tsx:388
+#: src/features/Chat/ChatPage.tsx:365
+#: src/features/Chat/ChatPage.tsx:439
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Günlük Soru Sohbeti"
@@ -2045,8 +2050,8 @@ msgstr "gün"
 msgid "Debate"
 msgstr "Tartışma"
 
-#: src/features/Chat/ChatPage.tsx:313
-#: src/features/Chat/ChatPage.tsx:387
+#: src/features/Chat/ChatPage.tsx:364
+#: src/features/Chat/ChatPage.tsx:438
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Tartışma Sohbeti"
@@ -3863,8 +3868,8 @@ msgstr "Küçük bir örnek ver (sayaç, giriş, düğme)"
 msgid "Give us your feedback"
 msgstr "Bize geri bildiriminizi verin"
 
-#: src/features/Chat/ChatPage.tsx:315
-#: src/features/Chat/ChatPage.tsx:389
+#: src/features/Chat/ChatPage.tsx:366
+#: src/features/Chat/ChatPage.tsx:440
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Global Sohbet"
@@ -5852,7 +5857,7 @@ msgstr "Beyninizde yüklü olan diller:"
 msgid "Last Visit"
 msgstr "Son Ziyaret"
 
-#: src/features/Chat/ChatPage.tsx:414
+#: src/features/Chat/ChatPage.tsx:465
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "Son ziyaret: {lastVisited}"
@@ -6531,7 +6536,7 @@ msgstr "Henüz tartışma yok"
 msgid "No interviews found"
 msgstr "Mülakat bulunamadı"
 
-#: src/features/Chat/ChatSection.tsx:316
+#: src/features/Chat/NoMessagesPlaceholder.tsx:19
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Henüz mesaj yok. Düşüncelerinizi paylaşan ilk kişi olun!"
@@ -6577,7 +6582,7 @@ msgstr "Çevrilecek metin yok"
 msgid "No translation available"
 msgstr "Çeviri mevcut değil"
 
-#: src/features/Chat/ChatSection.tsx:222
+#: src/features/Chat/MessageViewsIcon.tsx:65
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "Henüz görüntülenme yok. Bu gönderiyi ilk görüntüleyen sen ol!"
@@ -7077,7 +7082,7 @@ msgstr "Lütfen daha uzun bir mesaj kaydedin (en az birkaç kelime)."
 msgid "Please refresh the page and try one more time"
 msgstr "Lütfen sayfayı yenileyin ve bir kez daha deneyin"
 
-#: src/features/Chat/ChatSection.tsx:55
+#: src/features/Chat/ChatSection.tsx:53
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Lütfen pencereyi kapatmadan önce kaydı durdurun."
@@ -7886,7 +7891,7 @@ msgstr ""
 "<0>{learningLanguageName}</0> kullanarak 2-3 dakikalık bir hikaye kaydedin. "
 "Bu, kişiselleştirilmiş bir çalışma planı oluşturmama yardımcı olacaktır."
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Bir mesaj kaydet"
@@ -8010,6 +8015,11 @@ msgstr "Verileriniz kaldırılıyor..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "Rendering Performansı"
+
+#: src/features/Chat/ChatPage.tsx:88
+#. js-lingui-explicit-id
+msgid "Replies"
+msgstr "Yanıtlar"
 
 #: src/features/Header/PaymentHistoryModal.tsx:256
 #. js-lingui-explicit-id
@@ -8377,7 +8387,7 @@ msgstr "Kendiniz hakkında eğlenceli bilgiler paylaşın"
 msgid "Share what you're currently learning"
 msgstr "Şu anda ne öğreniyorsun paylaş"
 
-#: src/features/Chat/ChatSection.tsx:94
+#: src/features/Chat/ChatReplyModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "Düşüncelerinizi paylaşın ve geri bildirim alın!"
@@ -8446,6 +8456,11 @@ msgstr "Daha Fazla Göster"
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Daha fazla ders göster"
+
+#: src/features/Chat/MessageChain.tsx:190
+#. js-lingui-explicit-id
+msgid "Show previous"
+msgstr "Öncekini göster"
 
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
@@ -9728,7 +9743,7 @@ msgstr "Kullanıcı adı en az 3 karakter uzunluğunda olmalıdır."
 msgid "Username:"
 msgstr "Kullanıcı Adı:"
 
-#: src/features/Chat/ChatSection.tsx:214
+#: src/features/Chat/MessageViewsIcon.tsx:57
 #. js-lingui-explicit-id
 msgid "Users who viewed this post"
 msgstr "Bu gönderiyi görüntüleyen kullanıcılar"
@@ -10225,7 +10240,7 @@ msgstr "Ne elde edeceksiniz"
 msgid "What's included?"
 msgstr "Neler dahil?"
 
-#: src/features/Chat/ChatSection.tsx:284
+#: src/features/Chat/ChatSectionHeader.tsx:59
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "Yenilikler neler?"
@@ -10705,7 +10720,7 @@ msgstr ""
 "Tüm soruları tamamladınız. Cevaplarınızı şimdi gönderin ve sonuçları "
 "bekleyin."
 
-#: src/features/Chat/ChatPage.tsx:186
+#: src/features/Chat/ChatPage.tsx:237
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "Henüz bir sohbetiniz yok."

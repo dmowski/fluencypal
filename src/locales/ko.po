@@ -391,12 +391,12 @@ msgstr "백엔드 필수 기술 향상을 위한 실행 계획"
 msgid "Active"
 msgstr "활성화됨"
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "답글 추가"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "주석 추가"
@@ -406,12 +406,12 @@ msgstr "주석 추가"
 msgid "Add new goal"
 msgstr "새 목표 추가"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "새 게시물 추가"
 
-#: src/features/Chat/ChatSection.tsx:297
+#: src/features/Chat/ChatSectionHeader.tsx:72
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "게시물 추가"
@@ -668,6 +668,11 @@ msgstr "별명 게임 녹음"
 msgid "Alias Word Guessing Game"
 msgstr "별명 단어 추측 게임"
 
+#: src/features/Chat/ChatPage.tsx:81
+#. js-lingui-explicit-id
+msgid "All"
+msgstr "모두"
+
 #: src/features/Blog/blogData.tsx:540
 #. js-lingui-explicit-id
 msgid "All Blogs"
@@ -874,15 +879,15 @@ msgid ""
 "your chances of success."
 msgstr "이러한 실수를 피하면 당신이 더 전문적으로 보이게 하고 성공의 가능성을 높일 것입니다."
 
-#: src/features/Chat/ChatPage.tsx:122
-#: src/features/Chat/ChatSection.tsx:170
+#: src/features/Chat/ChatPage.tsx:173
+#: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr ""
 "\n"
 "돌아가기\n"
 
-#: src/features/Chat/ChatPage.tsx:163
+#: src/features/Chat/ChatPage.tsx:214
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr ""
@@ -1267,10 +1272,10 @@ msgstr "커리어 향상"
 msgid "Career benefit:"
 msgstr "직업적 이점:"
 
-#: src/features/Chat/ChatPage.tsx:316
-#: src/features/Chat/ChatPage.tsx:318
-#: src/features/Chat/ChatPage.tsx:390
-#: src/features/Chat/ChatPage.tsx:392
+#: src/features/Chat/ChatPage.tsx:367
+#: src/features/Chat/ChatPage.tsx:369
+#: src/features/Chat/ChatPage.tsx:441
+#: src/features/Chat/ChatPage.tsx:443
 #: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1286,7 +1291,7 @@ msgstr "{userName}님과의 채팅"
 msgid "Chat history"
 msgstr "채팅 기록"
 
-#: src/features/Chat/ChatPage.tsx:156
+#: src/features/Chat/ChatPage.tsx:207
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "채팅을 찾을 수 없거나 접근 권한이 없습니다."
@@ -1899,8 +1904,8 @@ msgstr "매일 언어 연습"
 msgid "Daily Question"
 msgstr "데일리 퀘스천"
 
-#: src/features/Chat/ChatPage.tsx:314
-#: src/features/Chat/ChatPage.tsx:388
+#: src/features/Chat/ChatPage.tsx:365
+#: src/features/Chat/ChatPage.tsx:439
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "일일 질문 채팅"
@@ -1960,8 +1965,8 @@ msgstr "하루"
 msgid "Debate"
 msgstr "토론"
 
-#: src/features/Chat/ChatPage.tsx:313
-#: src/features/Chat/ChatPage.tsx:387
+#: src/features/Chat/ChatPage.tsx:364
+#: src/features/Chat/ChatPage.tsx:438
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "토론 채팅"
@@ -3612,8 +3617,8 @@ msgstr "(카운터, 입력, 버튼)의 작은 예시를 제공하십시오."
 msgid "Give us your feedback"
 msgstr "피드백을 남겨주세요"
 
-#: src/features/Chat/ChatPage.tsx:315
-#: src/features/Chat/ChatPage.tsx:389
+#: src/features/Chat/ChatPage.tsx:366
+#: src/features/Chat/ChatPage.tsx:440
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "글로벌 채팅"
@@ -5431,7 +5436,7 @@ msgstr "당신의 두뇌에 설치된 언어들:"
 msgid "Last Visit"
 msgstr "마지막 방문"
 
-#: src/features/Chat/ChatPage.tsx:414
+#: src/features/Chat/ChatPage.tsx:465
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "마지막 방문: {lastVisited}"
@@ -6095,7 +6100,7 @@ msgstr "디베이트가 아직 없습니다"
 msgid "No interviews found"
 msgstr "인터뷰가 없습니다"
 
-#: src/features/Chat/ChatSection.tsx:316
+#: src/features/Chat/NoMessagesPlaceholder.tsx:19
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "아직 메시지가 없습니다. 가장 먼저 당신의 생각을 공유해보세요!"
@@ -6141,7 +6146,7 @@ msgstr "번역할 텍스트가 없습니다."
 msgid "No translation available"
 msgstr "번역할 수 없습니다"
 
-#: src/features/Chat/ChatSection.tsx:222
+#: src/features/Chat/MessageViewsIcon.tsx:65
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "아직 조회수 없음. 이 게시물을 처음으로 조회하세요!"
@@ -6611,7 +6616,7 @@ msgstr "좀 더 긴 메시지를 녹음해 주세요(적어도 몇 단어 이상
 msgid "Please refresh the page and try one more time"
 msgstr "페이지를 새로고침하고 한 번 더 시도해주세요"
 
-#: src/features/Chat/ChatSection.tsx:55
+#: src/features/Chat/ChatSection.tsx:53
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "창을 닫기 전에 녹음을 중지해 주세요."
@@ -7374,7 +7379,7 @@ msgstr ""
 "<0>{learningLanguageName}</0>로 2-3분짜리 이야기를 녹음하세요. 이는 개인 맞춤형 연습 계획을 만드는 데 "
 "도움이 됩니다."
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "메시지를 녹음하세요"
@@ -7493,6 +7498,11 @@ msgstr "데이터를 제거 중..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "렌더링 성능"
+
+#: src/features/Chat/ChatPage.tsx:88
+#. js-lingui-explicit-id
+msgid "Replies"
+msgstr "답글"
 
 #: src/features/Header/PaymentHistoryModal.tsx:256
 #. js-lingui-explicit-id
@@ -7842,7 +7852,7 @@ msgstr "재미있는 사실을 공유하세요"
 msgid "Share what you're currently learning"
 msgstr "현재 배우고 있는 내용을 공유하세요"
 
-#: src/features/Chat/ChatSection.tsx:94
+#: src/features/Chat/ChatReplyModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "생각을 공유하고 피드백을 받으세요!"
@@ -7907,6 +7917,11 @@ msgstr "더 보기"
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "더 많은 수업 보기"
+
+#: src/features/Chat/MessageChain.tsx:190
+#. js-lingui-explicit-id
+msgid "Show previous"
+msgstr "이전 보기"
 
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
@@ -9113,7 +9128,7 @@ msgstr "사용자 이름은 최소 3자 이상이어야 합니다."
 msgid "Username:"
 msgstr "사용자 이름:"
 
-#: src/features/Chat/ChatSection.tsx:214
+#: src/features/Chat/MessageViewsIcon.tsx:57
 #. js-lingui-explicit-id
 msgid "Users who viewed this post"
 msgstr "이 게시물을 본 사용자"
@@ -9589,7 +9604,7 @@ msgstr "당신이 성취할 것"
 msgid "What's included?"
 msgstr "무엇이 포함되어 있나요?"
 
-#: src/features/Chat/ChatSection.tsx:284
+#: src/features/Chat/ChatSectionHeader.tsx:59
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "무엇이 새로워졌나요?"
@@ -10016,7 +10031,7 @@ msgid ""
 "the results."
 msgstr "모든 질문을 완료했습니다. 이제 답안을 제출하고 결과를 기다리세요."
 
-#: src/features/Chat/ChatPage.tsx:186
+#: src/features/Chat/ChatPage.tsx:237
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "대화 내역이 없습니다."

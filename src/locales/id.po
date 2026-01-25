@@ -424,12 +424,12 @@ msgstr "Rencana aksi untuk meningkatkan keterampilan backend yang kritis"
 msgid "Active"
 msgstr "Aktif"
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Tambahkan balasan"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "Tambahkan Komentar"
@@ -439,12 +439,12 @@ msgstr "Tambahkan Komentar"
 msgid "Add new goal"
 msgstr "Tambahkan tujuan baru"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "Tambahkan Postingan Baru"
 
-#: src/features/Chat/ChatSection.tsx:297
+#: src/features/Chat/ChatSectionHeader.tsx:72
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "Tambahkan Pos"
@@ -711,6 +711,11 @@ msgstr "Rekaman Game Alias"
 msgid "Alias Word Guessing Game"
 msgstr "Permainan Tebak Kata Alias"
 
+#: src/features/Chat/ChatPage.tsx:81
+#. js-lingui-explicit-id
+msgid "All"
+msgstr "Semua"
+
 #: src/features/Blog/blogData.tsx:540
 #. js-lingui-explicit-id
 msgid "All Blogs"
@@ -929,13 +934,13 @@ msgstr ""
 "Menghindari kesalahan-kesalahan ini akan membuat Anda terlihat lebih "
 "profesional dan meningkatkan peluang Anda untuk sukses."
 
-#: src/features/Chat/ChatPage.tsx:122
-#: src/features/Chat/ChatSection.tsx:170
+#: src/features/Chat/ChatPage.tsx:173
+#: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Kembali"
 
-#: src/features/Chat/ChatPage.tsx:163
+#: src/features/Chat/ChatPage.tsx:214
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Kembali ke daftar obrolan"
@@ -1330,10 +1335,10 @@ msgstr "Kemajuan Karir"
 msgid "Career benefit:"
 msgstr "Manfaat karir:"
 
-#: src/features/Chat/ChatPage.tsx:316
-#: src/features/Chat/ChatPage.tsx:318
-#: src/features/Chat/ChatPage.tsx:390
-#: src/features/Chat/ChatPage.tsx:392
+#: src/features/Chat/ChatPage.tsx:367
+#: src/features/Chat/ChatPage.tsx:369
+#: src/features/Chat/ChatPage.tsx:441
+#: src/features/Chat/ChatPage.tsx:443
 #: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1349,7 +1354,7 @@ msgstr "Obrolan antara Anda dan {userName}"
 msgid "Chat history"
 msgstr "Riwayat obrolan"
 
-#: src/features/Chat/ChatPage.tsx:156
+#: src/features/Chat/ChatPage.tsx:207
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Obrolan tidak ditemukan atau Anda tidak memiliki akses ke dalamnya."
@@ -1995,8 +2000,8 @@ msgstr "Praktek Bahasa Sehari-hari"
 msgid "Daily Question"
 msgstr "Pertanyaan Harian"
 
-#: src/features/Chat/ChatPage.tsx:314
-#: src/features/Chat/ChatPage.tsx:388
+#: src/features/Chat/ChatPage.tsx:365
+#: src/features/Chat/ChatPage.tsx:439
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Obrolan Pertanyaan Harian"
@@ -2057,8 +2062,8 @@ msgstr "hari"
 msgid "Debate"
 msgstr "Debat"
 
-#: src/features/Chat/ChatPage.tsx:313
-#: src/features/Chat/ChatPage.tsx:387
+#: src/features/Chat/ChatPage.tsx:364
+#: src/features/Chat/ChatPage.tsx:438
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Obrolan Debat"
@@ -3894,8 +3899,8 @@ msgstr "Berikan contoh kecil (penghitung, masukan, tombol)"
 msgid "Give us your feedback"
 msgstr "Beri kami umpan balik Anda"
 
-#: src/features/Chat/ChatPage.tsx:315
-#: src/features/Chat/ChatPage.tsx:389
+#: src/features/Chat/ChatPage.tsx:366
+#: src/features/Chat/ChatPage.tsx:440
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Obrolan Global"
@@ -5932,7 +5937,7 @@ msgstr "Bahasa yang terpasang di otak Anda:"
 msgid "Last Visit"
 msgstr "Kunjungan Terakhir"
 
-#: src/features/Chat/ChatPage.tsx:414
+#: src/features/Chat/ChatPage.tsx:465
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "Terakhir dikunjungi: {lastVisited}"
@@ -6618,7 +6623,7 @@ msgstr "Belum ada perdebatan"
 msgid "No interviews found"
 msgstr "Tidak ada wawancara ditemukan"
 
-#: src/features/Chat/ChatSection.tsx:316
+#: src/features/Chat/NoMessagesPlaceholder.tsx:19
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Belum ada pesan. Jadilah yang pertama berbagi pemikiran Anda!"
@@ -6666,7 +6671,7 @@ msgstr "Tidak ada teks untuk diterjemahkan"
 msgid "No translation available"
 msgstr "Tidak ada terjemahan yang tersedia"
 
-#: src/features/Chat/ChatSection.tsx:222
+#: src/features/Chat/MessageViewsIcon.tsx:65
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "Belum ada tayangan. Jadilah yang pertama melihat postingan ini!"
@@ -7169,7 +7174,7 @@ msgstr "Silakan rekam pesan yang lebih panjang (setidaknya beberapa kata)."
 msgid "Please refresh the page and try one more time"
 msgstr "Silakan segarkan halaman dan coba sekali lagi"
 
-#: src/features/Chat/ChatSection.tsx:55
+#: src/features/Chat/ChatSection.tsx:53
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Harap hentikan perekaman sebelum menutup jendela."
@@ -7999,7 +8004,7 @@ msgstr ""
 "Rekam cerita 2-3 menit menggunakan <0>{learningLanguageName}</0>. Ini akan "
 "membantu saya membuat rencana latihan yang dipersonalisasi."
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Rekam pesan"
@@ -8123,6 +8128,11 @@ msgstr "Menghapus data Anda..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "Kinerja Rendering"
+
+#: src/features/Chat/ChatPage.tsx:88
+#. js-lingui-explicit-id
+msgid "Replies"
+msgstr "Balasan"
 
 #: src/features/Header/PaymentHistoryModal.tsx:256
 #. js-lingui-explicit-id
@@ -8494,7 +8504,7 @@ msgstr "Bagikan fakta menyenangkan tentang dirimu"
 msgid "Share what you're currently learning"
 msgstr "Bagikan apa yang sedang Anda pelajari"
 
-#: src/features/Chat/ChatSection.tsx:94
+#: src/features/Chat/ChatReplyModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "Bagikan pemikiran Anda dan dapatkan masukan!"
@@ -8563,6 +8573,11 @@ msgstr "Tampilkan Lebih"
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Tampilkan lebih banyak pelajaran"
+
+#: src/features/Chat/MessageChain.tsx:190
+#. js-lingui-explicit-id
+msgid "Show previous"
+msgstr "Tampilkan sebelumnya"
 
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
@@ -9857,7 +9872,7 @@ msgstr "Nama pengguna harus setidaknya 3 karakter."
 msgid "Username:"
 msgstr "Nama Pengguna:"
 
-#: src/features/Chat/ChatSection.tsx:214
+#: src/features/Chat/MessageViewsIcon.tsx:57
 #. js-lingui-explicit-id
 msgid "Users who viewed this post"
 msgstr "Pengguna yang melihat postingan ini"
@@ -10364,7 +10379,7 @@ msgstr "Apa yang akan Anda capai"
 msgid "What's included?"
 msgstr "Apa yang termasuk?"
 
-#: src/features/Chat/ChatSection.tsx:284
+#: src/features/Chat/ChatSectionHeader.tsx:59
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "Apa yang baru?"
@@ -10859,7 +10874,7 @@ msgstr ""
 "Anda telah menyelesaikan semua pertanyaan. Kirimkan jawaban Anda sekarang "
 "dan tunggu hasilnya."
 
-#: src/features/Chat/ChatPage.tsx:186
+#: src/features/Chat/ChatPage.tsx:237
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "Anda belum memiliki obrolan."

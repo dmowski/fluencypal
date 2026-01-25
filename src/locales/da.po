@@ -416,12 +416,12 @@ msgstr "Handlingsplan for at forbedre kritiske backend-færdigheder"
 msgid "Active"
 msgstr "Aktiv"
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Tilføj et svar"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "Tilføj Kommentar"
@@ -431,12 +431,12 @@ msgstr "Tilføj Kommentar"
 msgid "Add new goal"
 msgstr "Tilføj nyt mål"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "Tilføj nyt indlæg"
 
-#: src/features/Chat/ChatSection.tsx:297
+#: src/features/Chat/ChatSectionHeader.tsx:72
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "Tilføj Indlæg"
@@ -700,6 +700,11 @@ msgstr "Alias Spiloptagelse"
 msgid "Alias Word Guessing Game"
 msgstr "Alias Ordbogs Gætte Spil"
 
+#: src/features/Chat/ChatPage.tsx:81
+#. js-lingui-explicit-id
+msgid "All"
+msgstr "Alle"
+
 #: src/features/Blog/blogData.tsx:540
 #. js-lingui-explicit-id
 msgid "All Blogs"
@@ -914,13 +919,13 @@ msgstr ""
 "Undgåelse af disse fejl vil få dig til at se mere professionel ud og øge "
 "dine chancer for succes."
 
-#: src/features/Chat/ChatPage.tsx:122
-#: src/features/Chat/ChatSection.tsx:170
+#: src/features/Chat/ChatPage.tsx:173
+#: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Tilbage"
 
-#: src/features/Chat/ChatPage.tsx:163
+#: src/features/Chat/ChatPage.tsx:214
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Tilbage til chatliste"
@@ -1316,10 +1321,10 @@ msgstr "Karrierefremme"
 msgid "Career benefit:"
 msgstr "Karriere fordel:"
 
-#: src/features/Chat/ChatPage.tsx:316
-#: src/features/Chat/ChatPage.tsx:318
-#: src/features/Chat/ChatPage.tsx:390
-#: src/features/Chat/ChatPage.tsx:392
+#: src/features/Chat/ChatPage.tsx:367
+#: src/features/Chat/ChatPage.tsx:369
+#: src/features/Chat/ChatPage.tsx:441
+#: src/features/Chat/ChatPage.tsx:443
 #: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1335,7 +1340,7 @@ msgstr "Chat mellem dig og {userName}"
 msgid "Chat history"
 msgstr "Chat historik"
 
-#: src/features/Chat/ChatPage.tsx:156
+#: src/features/Chat/ChatPage.tsx:207
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Chat ikke fundet, eller du har ikke adgang til det."
@@ -1981,8 +1986,8 @@ msgstr "Daglig Sprogpraksis"
 msgid "Daily Question"
 msgstr "Dagligt spørgsmål"
 
-#: src/features/Chat/ChatPage.tsx:314
-#: src/features/Chat/ChatPage.tsx:388
+#: src/features/Chat/ChatPage.tsx:365
+#: src/features/Chat/ChatPage.tsx:439
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Dagligt spørgsmål chat"
@@ -2043,8 +2048,8 @@ msgstr "dag"
 msgid "Debate"
 msgstr "Debat"
 
-#: src/features/Chat/ChatPage.tsx:313
-#: src/features/Chat/ChatPage.tsx:387
+#: src/features/Chat/ChatPage.tsx:364
+#: src/features/Chat/ChatPage.tsx:438
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Debat Chat"
@@ -3830,8 +3835,8 @@ msgstr "Giv et lille eksempel (tæller, input, knap)"
 msgid "Give us your feedback"
 msgstr "Giv os din feedback"
 
-#: src/features/Chat/ChatPage.tsx:315
-#: src/features/Chat/ChatPage.tsx:389
+#: src/features/Chat/ChatPage.tsx:366
+#: src/features/Chat/ChatPage.tsx:440
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Global Chat"
@@ -5820,7 +5825,7 @@ msgstr "Sprog installeret i din hjerne:"
 msgid "Last Visit"
 msgstr "Sidste besøg"
 
-#: src/features/Chat/ChatPage.tsx:414
+#: src/features/Chat/ChatPage.tsx:465
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "Sidst besøgt: {lastVisited}"
@@ -6504,7 +6509,7 @@ msgstr "Ingen debatter endnu"
 msgid "No interviews found"
 msgstr "Ingen interviews fundet"
 
-#: src/features/Chat/ChatSection.tsx:316
+#: src/features/Chat/NoMessagesPlaceholder.tsx:19
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Ingen beskeder endnu. Vær den første til at dele dine tanker!"
@@ -6550,7 +6555,7 @@ msgstr "Ingen tekst til oversættelse"
 msgid "No translation available"
 msgstr "Ingen oversættelse tilgængelig"
 
-#: src/features/Chat/ChatSection.tsx:222
+#: src/features/Chat/MessageViewsIcon.tsx:65
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "Ingen visninger endnu. Vær den første til at se dette opslag!"
@@ -7046,7 +7051,7 @@ msgstr "Venligst optag en længere besked (mindst nogle få ord)."
 msgid "Please refresh the page and try one more time"
 msgstr "Opdater venligst siden og prøv en gang til"
 
-#: src/features/Chat/ChatSection.tsx:55
+#: src/features/Chat/ChatSection.tsx:53
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Stop venligst optagelsen, inden du lukker vinduet."
@@ -7854,7 +7859,7 @@ msgstr ""
 "Optag en 2-3 minutters historie ved hjælp af <0>{learningLanguageName}</0>. "
 "Dette vil hjælpe mig med at skabe en personlig øvelsesplan."
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Optag en besked"
@@ -7976,6 +7981,11 @@ msgstr "Fjerner dine data..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "Ydeevne ved gengivelse"
+
+#: src/features/Chat/ChatPage.tsx:88
+#. js-lingui-explicit-id
+msgid "Replies"
+msgstr "Svar"
 
 #: src/features/Header/PaymentHistoryModal.tsx:256
 #. js-lingui-explicit-id
@@ -8345,7 +8355,7 @@ msgstr "Del sjove fakta om dig selv"
 msgid "Share what you're currently learning"
 msgstr "Del, hvad du i øjeblikket lærer"
 
-#: src/features/Chat/ChatSection.tsx:94
+#: src/features/Chat/ChatReplyModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "Del dine tanker og få feedback!"
@@ -8412,6 +8422,11 @@ msgstr "Vis Mere"
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Vis flere lektioner"
+
+#: src/features/Chat/MessageChain.tsx:190
+#. js-lingui-explicit-id
+msgid "Show previous"
+msgstr "Vis forrige"
 
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
@@ -9687,7 +9702,7 @@ msgstr "Brugernavn skal være mindst 3 tegn langt."
 msgid "Username:"
 msgstr "Brugernavn:"
 
-#: src/features/Chat/ChatSection.tsx:214
+#: src/features/Chat/MessageViewsIcon.tsx:57
 #. js-lingui-explicit-id
 msgid "Users who viewed this post"
 msgstr "Brugere der har set dette opslag"
@@ -10185,7 +10200,7 @@ msgstr "Hvad du vil opnå"
 msgid "What's included?"
 msgstr "Hvad er inkluderet?"
 
-#: src/features/Chat/ChatSection.tsx:284
+#: src/features/Chat/ChatSectionHeader.tsx:59
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "Hvad er nyt?"
@@ -10664,7 +10679,7 @@ msgstr ""
 "Du har besvaret alle spørgsmålene. Indsend dine svar nu, og vent på "
 "resultaterne."
 
-#: src/features/Chat/ChatPage.tsx:186
+#: src/features/Chat/ChatPage.tsx:237
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "Du har ingen chats endnu."

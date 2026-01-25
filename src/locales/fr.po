@@ -431,12 +431,12 @@ msgstr "Plan d'action pour améliorer les compétences back-end critiques"
 msgid "Active"
 msgstr "Actif"
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Ajouter une réponse"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "Ajouter un commentaire"
@@ -446,12 +446,12 @@ msgstr "Ajouter un commentaire"
 msgid "Add new goal"
 msgstr "Ajouter un nouvel objectif"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "Ajouter un nouveau post"
 
-#: src/features/Chat/ChatSection.tsx:297
+#: src/features/Chat/ChatSectionHeader.tsx:72
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "Ajouter un post"
@@ -717,6 +717,11 @@ msgstr "Enregistrement du Jeu Alias"
 msgid "Alias Word Guessing Game"
 msgstr "Jeu de Devinette de Mots Alias"
 
+#: src/features/Chat/ChatPage.tsx:81
+#. js-lingui-explicit-id
+msgid "All"
+msgstr "Tous"
+
 #: src/features/Blog/blogData.tsx:540
 #. js-lingui-explicit-id
 msgid "All Blogs"
@@ -933,13 +938,13 @@ msgstr ""
 "Éviter ces erreurs vous rendra plus professionnel et augmentera vos chances "
 "de réussite."
 
-#: src/features/Chat/ChatPage.tsx:122
-#: src/features/Chat/ChatSection.tsx:170
+#: src/features/Chat/ChatPage.tsx:173
+#: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Retour"
 
-#: src/features/Chat/ChatPage.tsx:163
+#: src/features/Chat/ChatPage.tsx:214
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Retour à la liste de discussions"
@@ -1340,10 +1345,10 @@ msgstr "Avancement de Carrière"
 msgid "Career benefit:"
 msgstr "Avantage de carrière:"
 
-#: src/features/Chat/ChatPage.tsx:316
-#: src/features/Chat/ChatPage.tsx:318
-#: src/features/Chat/ChatPage.tsx:390
-#: src/features/Chat/ChatPage.tsx:392
+#: src/features/Chat/ChatPage.tsx:367
+#: src/features/Chat/ChatPage.tsx:369
+#: src/features/Chat/ChatPage.tsx:441
+#: src/features/Chat/ChatPage.tsx:443
 #: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1359,7 +1364,7 @@ msgstr "Chat entre vous et {userName}"
 msgid "Chat history"
 msgstr "Historique de chat"
 
-#: src/features/Chat/ChatPage.tsx:156
+#: src/features/Chat/ChatPage.tsx:207
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Chat introuvable ou vous n'y avez pas accès."
@@ -2014,8 +2019,8 @@ msgstr "Pratique Quotidienne de la Langue"
 msgid "Daily Question"
 msgstr "Question quotidienne"
 
-#: src/features/Chat/ChatPage.tsx:314
-#: src/features/Chat/ChatPage.tsx:388
+#: src/features/Chat/ChatPage.tsx:365
+#: src/features/Chat/ChatPage.tsx:439
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Chat des questions quotidiennes"
@@ -2076,8 +2081,8 @@ msgstr "jour"
 msgid "Debate"
 msgstr "Débat"
 
-#: src/features/Chat/ChatPage.tsx:313
-#: src/features/Chat/ChatPage.tsx:387
+#: src/features/Chat/ChatPage.tsx:364
+#: src/features/Chat/ChatPage.tsx:438
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Chat de Débat"
@@ -3922,8 +3927,8 @@ msgstr "Donnez un petit exemple (compteur, entrée, bouton)"
 msgid "Give us your feedback"
 msgstr "Donnez-nous votre avis"
 
-#: src/features/Chat/ChatPage.tsx:315
-#: src/features/Chat/ChatPage.tsx:389
+#: src/features/Chat/ChatPage.tsx:366
+#: src/features/Chat/ChatPage.tsx:440
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Chat Mondial"
@@ -5994,7 +5999,7 @@ msgstr "Langues installées dans votre cerveau:"
 msgid "Last Visit"
 msgstr "Dernière visite"
 
-#: src/features/Chat/ChatPage.tsx:414
+#: src/features/Chat/ChatPage.tsx:465
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "Dernière visite : {lastVisited}"
@@ -6693,7 +6698,7 @@ msgstr "Pas encore de débats"
 msgid "No interviews found"
 msgstr "Aucune interview trouvée"
 
-#: src/features/Chat/ChatSection.tsx:316
+#: src/features/Chat/NoMessagesPlaceholder.tsx:19
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Aucun message pour le moment. Soyez le premier à partager vos idées !"
@@ -6739,7 +6744,7 @@ msgstr "Aucun texte à traduire"
 msgid "No translation available"
 msgstr "Aucune traduction disponible"
 
-#: src/features/Chat/ChatSection.tsx:222
+#: src/features/Chat/MessageViewsIcon.tsx:65
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "Aucune vue pour l'instant. Soyez le premier à voir ce post !"
@@ -7249,7 +7254,7 @@ msgstr "Veuillez enregistrer un message plus long (au moins quelques mots)."
 msgid "Please refresh the page and try one more time"
 msgstr "Veuillez rafraîchir la page et essayer une fois de plus"
 
-#: src/features/Chat/ChatSection.tsx:55
+#: src/features/Chat/ChatSection.tsx:53
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Veuillez arrêter l'enregistrement avant de fermer la fenêtre."
@@ -8093,7 +8098,7 @@ msgstr ""
 "<0>{learningLanguageName}</0>. Cela m'aidera à créer un plan de pratique "
 "personnalisé."
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Enregistrer un message"
@@ -8217,6 +8222,11 @@ msgstr "Retrait de vos données..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "Rendu des Performances"
+
+#: src/features/Chat/ChatPage.tsx:88
+#. js-lingui-explicit-id
+msgid "Replies"
+msgstr "Réponses"
 
 #: src/features/Header/PaymentHistoryModal.tsx:256
 #. js-lingui-explicit-id
@@ -8592,7 +8602,7 @@ msgstr "Partagez des anecdotes amusantes sur vous-même"
 msgid "Share what you're currently learning"
 msgstr "Partagez ce que vous apprenez actuellement"
 
-#: src/features/Chat/ChatSection.tsx:94
+#: src/features/Chat/ChatReplyModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "Partagez vos idées et obtenez des retours !"
@@ -8663,6 +8673,11 @@ msgstr "Afficher plus"
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Afficher plus de leçons"
+
+#: src/features/Chat/MessageChain.tsx:190
+#. js-lingui-explicit-id
+msgid "Show previous"
+msgstr "Afficher précédent"
 
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
@@ -9961,7 +9976,7 @@ msgstr "Le nom d'utilisateur doit comporter au moins 3 caractères."
 msgid "Username:"
 msgstr "Nom d'utilisateur :"
 
-#: src/features/Chat/ChatSection.tsx:214
+#: src/features/Chat/MessageViewsIcon.tsx:57
 #. js-lingui-explicit-id
 msgid "Users who viewed this post"
 msgstr "Utilisateurs qui ont consulté cette publication"
@@ -10473,7 +10488,7 @@ msgstr "Ce que vous allez accomplir"
 msgid "What's included?"
 msgstr "Qu'est-ce qui est inclus ?"
 
-#: src/features/Chat/ChatSection.tsx:284
+#: src/features/Chat/ChatSectionHeader.tsx:59
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "Quoi de neuf ?"
@@ -10976,7 +10991,7 @@ msgstr ""
 "Vous avez terminé toutes les questions. Soumettez vos réponses maintenant "
 "et attendez les résultats."
 
-#: src/features/Chat/ChatPage.tsx:186
+#: src/features/Chat/ChatPage.tsx:237
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "Vous n'avez pas encore de discussions."

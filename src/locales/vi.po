@@ -425,12 +425,12 @@ msgstr "Kế hoạch hành động để cải thiện kỹ năng backend quan t
 msgid "Active"
 msgstr "Đang hoạt động"
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Thêm trả lời"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "Thêm bình luận"
@@ -440,12 +440,12 @@ msgstr "Thêm bình luận"
 msgid "Add new goal"
 msgstr "Thêm mục tiêu mới"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "Thêm Bài Viết Mới"
 
-#: src/features/Chat/ChatSection.tsx:297
+#: src/features/Chat/ChatSectionHeader.tsx:72
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "Thêm Bài Viết"
@@ -708,6 +708,11 @@ msgstr "Ghi Âm Trò Chơi Alias"
 msgid "Alias Word Guessing Game"
 msgstr "Alias Trò Chơi Đoán Từ"
 
+#: src/features/Chat/ChatPage.tsx:81
+#. js-lingui-explicit-id
+msgid "All"
+msgstr "Tất cả"
+
 #: src/features/Blog/blogData.tsx:540
 #. js-lingui-explicit-id
 msgid "All Blogs"
@@ -922,13 +927,13 @@ msgstr ""
 "Tránh những sai lầm này sẽ khiến bạn trông chuyên nghiệp hơn và tăng cơ hội "
 "thành công của bạn."
 
-#: src/features/Chat/ChatPage.tsx:122
-#: src/features/Chat/ChatSection.tsx:170
+#: src/features/Chat/ChatPage.tsx:173
+#: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Quay lại"
 
-#: src/features/Chat/ChatPage.tsx:163
+#: src/features/Chat/ChatPage.tsx:214
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Quay lại danh sách trò chuyện"
@@ -1322,10 +1327,10 @@ msgstr "Sự Thăng Tiến Trong Sự Nghiệp"
 msgid "Career benefit:"
 msgstr "Lợi ích nghề nghiệp:"
 
-#: src/features/Chat/ChatPage.tsx:316
-#: src/features/Chat/ChatPage.tsx:318
-#: src/features/Chat/ChatPage.tsx:390
-#: src/features/Chat/ChatPage.tsx:392
+#: src/features/Chat/ChatPage.tsx:367
+#: src/features/Chat/ChatPage.tsx:369
+#: src/features/Chat/ChatPage.tsx:441
+#: src/features/Chat/ChatPage.tsx:443
 #: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1341,7 +1346,7 @@ msgstr "Cuộc trò chuyện giữa bạn và {userName}"
 msgid "Chat history"
 msgstr "Lịch sử trò chuyện"
 
-#: src/features/Chat/ChatPage.tsx:156
+#: src/features/Chat/ChatPage.tsx:207
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Cuộc trò chuyện không được tìm thấy hoặc bạn không có quyền truy cập vào nó."
@@ -1986,8 +1991,8 @@ msgstr "Thực Hành Ngôn Ngữ Hàng Ngày"
 msgid "Daily Question"
 msgstr "Câu Hỏi Hàng Ngày"
 
-#: src/features/Chat/ChatPage.tsx:314
-#: src/features/Chat/ChatPage.tsx:388
+#: src/features/Chat/ChatPage.tsx:365
+#: src/features/Chat/ChatPage.tsx:439
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr ""
@@ -2050,8 +2055,8 @@ msgstr "ngày"
 msgid "Debate"
 msgstr "Tranh luận"
 
-#: src/features/Chat/ChatPage.tsx:313
-#: src/features/Chat/ChatPage.tsx:387
+#: src/features/Chat/ChatPage.tsx:364
+#: src/features/Chat/ChatPage.tsx:438
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Trò chuyện tranh luận"
@@ -3879,8 +3884,8 @@ msgstr "Đưa ra một ví dụ nhỏ (bộ đếm, đầu vào, nút bấm)"
 msgid "Give us your feedback"
 msgstr "Hãy cho chúng tôi phản hồi của bạn"
 
-#: src/features/Chat/ChatPage.tsx:315
-#: src/features/Chat/ChatPage.tsx:389
+#: src/features/Chat/ChatPage.tsx:366
+#: src/features/Chat/ChatPage.tsx:440
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Phòng Trò Chuyện Toàn Cầu"
@@ -5875,7 +5880,7 @@ msgstr "Ngôn ngữ được cài đặt trong não của bạn:"
 msgid "Last Visit"
 msgstr "Lần Ghé Thăm Cuối"
 
-#: src/features/Chat/ChatPage.tsx:414
+#: src/features/Chat/ChatPage.tsx:465
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "Lần cuối ghé thăm: {lastVisited}"
@@ -6559,7 +6564,7 @@ msgstr "Chưa có tranh luận nào"
 msgid "No interviews found"
 msgstr "Không tìm thấy buổi phỏng vấn nào"
 
-#: src/features/Chat/ChatSection.tsx:316
+#: src/features/Chat/NoMessagesPlaceholder.tsx:19
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Chưa có tin nhắn nào. Hãy là người đầu tiên chia sẻ suy nghĩ của bạn!"
@@ -6605,7 +6610,7 @@ msgstr "Không có văn bản để dịch"
 msgid "No translation available"
 msgstr "Không có bản dịch nào có sẵn"
 
-#: src/features/Chat/ChatSection.tsx:222
+#: src/features/Chat/MessageViewsIcon.tsx:65
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "Chưa có lượt xem. Hãy là người đầu tiên xem bài viết này!"
@@ -7108,7 +7113,7 @@ msgstr "Vui lòng ghi lại một thông điệp dài hơn (ít nhất vài từ
 msgid "Please refresh the page and try one more time"
 msgstr "Vui lòng làm mới trang và thử một lần nữa"
 
-#: src/features/Chat/ChatSection.tsx:55
+#: src/features/Chat/ChatSection.tsx:53
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Vui lòng dừng ghi âm trước khi đóng cửa sổ."
@@ -7930,7 +7935,7 @@ msgstr ""
 "Ghi lại câu chuyện dài 2-3 phút bằng <0>{learningLanguageName}</0>. Điều "
 "này sẽ giúp tôi tạo ra một kế hoạch luyện tập cá nhân hóa."
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Ghi âm một tin nhắn"
@@ -8054,6 +8059,11 @@ msgstr "Đang xóa dữ liệu của bạn..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "Hiệu Suất Kết Xuất"
+
+#: src/features/Chat/ChatPage.tsx:88
+#. js-lingui-explicit-id
+msgid "Replies"
+msgstr "Phản hồi"
 
 #: src/features/Header/PaymentHistoryModal.tsx:256
 #. js-lingui-explicit-id
@@ -8426,7 +8436,7 @@ msgstr "Chia sẻ những thông tin thú vị về bản thân bạn"
 msgid "Share what you're currently learning"
 msgstr "Chia sẻ những gì bạn đang học hiện tại"
 
-#: src/features/Chat/ChatSection.tsx:94
+#: src/features/Chat/ChatReplyModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "Chia sẻ ý kiến của bạn và nhận phản hồi!"
@@ -8495,6 +8505,11 @@ msgstr "Hiển thị thêm"
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Hiển thị thêm bài học"
+
+#: src/features/Chat/MessageChain.tsx:190
+#. js-lingui-explicit-id
+msgid "Show previous"
+msgstr "Hiển thị trước"
 
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
@@ -9785,7 +9800,7 @@ msgstr "Tên người dùng phải dài ít nhất 3 ký tự."
 msgid "Username:"
 msgstr "Tên người dùng:"
 
-#: src/features/Chat/ChatSection.tsx:214
+#: src/features/Chat/MessageViewsIcon.tsx:57
 #. js-lingui-explicit-id
 msgid "Users who viewed this post"
 msgstr "Người dùng đã xem bài viết này"
@@ -10290,7 +10305,7 @@ msgstr "Bạn sẽ đạt được gì?"
 msgid "What's included?"
 msgstr "Điều gì được bao gồm?"
 
-#: src/features/Chat/ChatSection.tsx:284
+#: src/features/Chat/ChatSectionHeader.tsx:59
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "Có gì mới?"
@@ -10773,7 +10788,7 @@ msgstr ""
 "Bạn đã hoàn thành tất cả các câu hỏi. Gửi câu trả lời của bạn ngay bây giờ "
 "và chờ đợi kết quả."
 
-#: src/features/Chat/ChatPage.tsx:186
+#: src/features/Chat/ChatPage.tsx:237
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "Bạn chưa có cuộc trò chuyện nào."

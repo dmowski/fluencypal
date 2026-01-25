@@ -424,12 +424,12 @@ msgstr "План дзеянняў для паляпшэння крытычных
 msgid "Active"
 msgstr "Актыўны"
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Дадаць адказ"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add Comment"
 msgstr "Дадаць каментарый"
@@ -439,12 +439,12 @@ msgstr "Дадаць каментарый"
 msgid "Add new goal"
 msgstr "Дадаць новую мэту"
 
-#: src/features/Chat/ChatSection.tsx:83
+#: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add New Post"
 msgstr "Дадаць новы пост"
 
-#: src/features/Chat/ChatSection.tsx:297
+#: src/features/Chat/ChatSectionHeader.tsx:72
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "Дадаць паст"
@@ -709,6 +709,11 @@ msgstr "Запіс Гульні Alias"
 msgid "Alias Word Guessing Game"
 msgstr "Гульня ў адгадванне аліясаў"
 
+#: src/features/Chat/ChatPage.tsx:81
+#. js-lingui-explicit-id
+msgid "All"
+msgstr "Усё"
+
 #: src/features/Blog/blogData.tsx:540
 #. js-lingui-explicit-id
 msgid "All Blogs"
@@ -925,13 +930,13 @@ msgstr ""
 "Уніканне гэтых памылак зробіць вас болей прафесійным і павялічыць шансы на "
 "паспяху."
 
-#: src/features/Chat/ChatPage.tsx:122
-#: src/features/Chat/ChatSection.tsx:170
+#: src/features/Chat/ChatPage.tsx:173
+#: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Назад"
 
-#: src/features/Chat/ChatPage.tsx:163
+#: src/features/Chat/ChatPage.tsx:214
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Вярнуцца да спісу чатаў"
@@ -1329,10 +1334,10 @@ msgstr "Прасоўванне па Кар'еры"
 msgid "Career benefit:"
 msgstr "Кар'ерны выгад:"
 
-#: src/features/Chat/ChatPage.tsx:316
-#: src/features/Chat/ChatPage.tsx:318
-#: src/features/Chat/ChatPage.tsx:390
-#: src/features/Chat/ChatPage.tsx:392
+#: src/features/Chat/ChatPage.tsx:367
+#: src/features/Chat/ChatPage.tsx:369
+#: src/features/Chat/ChatPage.tsx:441
+#: src/features/Chat/ChatPage.tsx:443
 #: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1348,7 +1353,7 @@ msgstr "Чат паміж вамі і {userName}"
 msgid "Chat history"
 msgstr "Гісторыя чата"
 
-#: src/features/Chat/ChatPage.tsx:156
+#: src/features/Chat/ChatPage.tsx:207
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Чат не знойдзены або ў вас няма доступу да яго."
@@ -1995,8 +2000,8 @@ msgstr "Шкодныя моўныя практыкі"
 msgid "Daily Question"
 msgstr "Штодзённае пытанне"
 
-#: src/features/Chat/ChatPage.tsx:314
-#: src/features/Chat/ChatPage.tsx:388
+#: src/features/Chat/ChatPage.tsx:365
+#: src/features/Chat/ChatPage.tsx:439
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Штодзённая дыскусія па пытаннях"
@@ -2057,8 +2062,8 @@ msgstr "дзень"
 msgid "Debate"
 msgstr "Дэбаты"
 
-#: src/features/Chat/ChatPage.tsx:313
-#: src/features/Chat/ChatPage.tsx:387
+#: src/features/Chat/ChatPage.tsx:364
+#: src/features/Chat/ChatPage.tsx:438
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Дэбаты Чат"
@@ -3877,8 +3882,8 @@ msgstr "Дайце невялікі прыклад (лічыльнік, увах
 msgid "Give us your feedback"
 msgstr "Дайце нам вашы водгукі"
 
-#: src/features/Chat/ChatPage.tsx:315
-#: src/features/Chat/ChatPage.tsx:389
+#: src/features/Chat/ChatPage.tsx:366
+#: src/features/Chat/ChatPage.tsx:440
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Глабальны чат"
@@ -5881,7 +5886,7 @@ msgstr "Мовы, усталяваныя ў вашым мозгу:"
 msgid "Last Visit"
 msgstr "Апошні візіт"
 
-#: src/features/Chat/ChatPage.tsx:414
+#: src/features/Chat/ChatPage.tsx:465
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "Апошні візіт: {lastVisited}"
@@ -6565,7 +6570,7 @@ msgstr "Яшчэ няма дэбатаў"
 msgid "No interviews found"
 msgstr "Интэрв'ю не знойдзеныя"
 
-#: src/features/Chat/ChatSection.tsx:316
+#: src/features/Chat/NoMessagesPlaceholder.tsx:19
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Яшчэ няма паведамленняў. Станьце першым, хто падзеліцца сваімі думкамі!"
@@ -6611,7 +6616,7 @@ msgstr "Няма тэксту для перакладу"
 msgid "No translation available"
 msgstr "Няма перакладу"
 
-#: src/features/Chat/ChatSection.tsx:222
+#: src/features/Chat/MessageViewsIcon.tsx:65
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "Яшчэ няма праглядаў. Станьце першым, хто праглядзіць гэты пост!"
@@ -7115,7 +7120,7 @@ msgstr "Калі ласка, запішыце больш доўгае павед
 msgid "Please refresh the page and try one more time"
 msgstr "Калі ласка, абнавіце старонку і паспрабуйце яшчэ раз"
 
-#: src/features/Chat/ChatSection.tsx:55
+#: src/features/Chat/ChatSection.tsx:53
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Калі ласка, спыніце запіс перад закрыццём акна."
@@ -7935,7 +7940,7 @@ msgstr ""
 "<0>{learningLanguageName}</0>. Гэта дапаможа мне стварыць персаналізаваны "
 "план практыкі."
 
-#: src/features/Chat/ChatSection.tsx:129
+#: src/features/Chat/ChatReplyModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Запісаць паведамленне"
@@ -8059,6 +8064,11 @@ msgstr "Выдаленне вашых даных..."
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
 msgstr "Прадукцыйнасць візуалізацыі"
+
+#: src/features/Chat/ChatPage.tsx:88
+#. js-lingui-explicit-id
+msgid "Replies"
+msgstr "Адказы"
 
 #: src/features/Header/PaymentHistoryModal.tsx:256
 #. js-lingui-explicit-id
@@ -8427,7 +8437,7 @@ msgstr "Падзяліцеся цікавымі фактамі пра сябе"
 msgid "Share what you're currently learning"
 msgstr "Падзяліцеся, што вы зараз вывучаеце"
 
-#: src/features/Chat/ChatSection.tsx:94
+#: src/features/Chat/ChatReplyModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Share your thoughts and get feedback!"
 msgstr "Падзяліцеся сваімі думкамі і атрымайце водгукі!"
@@ -8496,6 +8506,11 @@ msgstr "Паказаць больш"
 #. js-lingui-explicit-id
 msgid "Show more lessons"
 msgstr "Паказаць больш урокаў"
+
+#: src/features/Chat/MessageChain.tsx:190
+#. js-lingui-explicit-id
+msgid "Show previous"
+msgstr "Паказаць папярэдняе"
 
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
@@ -9783,7 +9798,7 @@ msgstr "Імя карыстальніка павінна быць не менш 
 msgid "Username:"
 msgstr "Імя карыстальніка:"
 
-#: src/features/Chat/ChatSection.tsx:214
+#: src/features/Chat/MessageViewsIcon.tsx:57
 #. js-lingui-explicit-id
 msgid "Users who viewed this post"
 msgstr "Карыстальнікі, якія праглядалі гэты пост"
@@ -10287,7 +10302,7 @@ msgstr "Што вы дасягнеце"
 msgid "What's included?"
 msgstr "Што ўключана?"
 
-#: src/features/Chat/ChatSection.tsx:284
+#: src/features/Chat/ChatSectionHeader.tsx:59
 #. js-lingui-explicit-id
 msgid "What's new?"
 msgstr "Што новага?"
@@ -10773,7 +10788,7 @@ msgid ""
 "the results."
 msgstr "Вы завяршылі ўсе пытанні. Адпраўце свае адказы цяпер і чакайце вынікаў."
 
-#: src/features/Chat/ChatPage.tsx:186
+#: src/features/Chat/ChatPage.tsx:237
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "У вас пакуль няма чатаў."
