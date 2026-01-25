@@ -218,10 +218,6 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         closeConversation={async () => alert('Close conversation')}
         analyzeConversation={async () => {}}
         onWebCamDescription={() => {}}
-        generateHelpMessage={async () => {
-          await sleep(2000);
-          return 'Nice to see you here';
-        }}
         setIsMuted={() => setIsAiSpeaking(!isAiSpeaking)}
         isVolumeOn={true}
         setIsVolumeOn={() => {}}

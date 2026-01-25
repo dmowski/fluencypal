@@ -28,7 +28,6 @@ export const RecordingCanvasMenu = ({
   toggleConversationMode,
   closeConversation,
   closeMenus,
-  openHelpAnswer,
 }: {
   anchorElUser: HTMLElement | null;
   setAnchorElUser: (el: HTMLElement | null) => void;
@@ -41,7 +40,6 @@ export const RecordingCanvasMenu = ({
   toggleConversationMode: (mode: ConversationMode) => void;
   closeConversation: () => void;
   closeMenus: () => void;
-  openHelpAnswer: (anchorEl: HTMLElement) => void;
 }) => {
   const { i18n } = useLingui();
 
@@ -130,25 +128,6 @@ export const RecordingCanvasMenu = ({
         }}
         disabled={isRecording || isAnalyzingResponse || isCallMode}
       />
-
-      <Divider />
-      <MenuItem
-        sx={{
-          padding: 'var(--item-padding)',
-        }}
-        disabled={isRecording || isAnalyzingResponse || isLimited}
-        onClick={(e) => {
-          openHelpAnswer(e.currentTarget);
-          closeMenus();
-        }}
-      >
-        <ListItemIcon>
-          <Lightbulb />
-        </ListItemIcon>
-        <ListItemText>
-          <Typography>{i18n._('Help with answer')}</Typography>
-        </ListItemText>
-      </MenuItem>
     </Menu>
   );
 };

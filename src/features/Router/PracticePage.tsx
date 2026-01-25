@@ -101,7 +101,6 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         pointsEarned={conversationAnalysis.gamePointsEarned}
         analyzeConversation={conversationAnalysis.analyzeConversation}
         conversationAnalysisResult={conversationAnalysis.conversationAnalysis}
-        generateHelpMessage={conversationAnalysis.generateNextUserMessage}
         lessonPlanAnalysis={aiConversation.lessonPlanAnalysis}
         openCommunityPage={() => appNavigation.setCurrentPage('community')}
         conversation={aiConversation.conversation}

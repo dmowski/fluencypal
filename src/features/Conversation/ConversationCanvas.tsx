@@ -79,7 +79,6 @@ interface ConversationCanvasProps {
   isShowMessageProgress: boolean;
   conversationAnalysisResult: ConversationResult | null;
   analyzeConversation: () => Promise<void>;
-  generateHelpMessage: () => Promise<string>;
   toggleConversationMode: (mode: ConversationMode) => void;
   conversationMode: ConversationMode;
   voice: AiVoice;
@@ -129,8 +128,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   closeConversation,
   conversationAnalysisResult,
   analyzeConversation,
-
-  generateHelpMessage,
 
   isVolumeOn,
   setIsVolumeOn,
@@ -217,15 +214,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
   const translator = useTranslate();
 
-  const [isOpenHelpModelAnchor, setIsOpenHelpModelAnchor] = useState<HTMLElement | null>(null);
-  const [helpMessage, setHelpMessage] = useState('');
-  const openHelpAnswer = async (element: HTMLElement) => {
-    setHelpMessage('');
-    setIsOpenHelpModelAnchor(element);
-    const mess = await generateHelpMessage();
-    setHelpMessage(mess);
-  };
-
   const loadingMessage = i18n._(`Loading...`);
 
   const lastBotMessage = useMemo(() => {
@@ -240,63 +228,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   const modals = (
     <>
       {translator.translateModal}
-      {isOpenHelpModelAnchor && (
-        <Popover
-          anchorEl={isOpenHelpModelAnchor}
-          open={!!isOpenHelpModelAnchor}
-          onClose={() => setIsOpenHelpModelAnchor(null)}
-          slotProps={{
-            backdrop: {
-              sx: {
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-              },
-            },
-          }}
-        >
-          <Stack
-            sx={{
-              gap: '0px',
-              backgroundColor: '#333',
-              boxSizing: 'border-box',
-              width: '100%',
-              maxWidth: '600px',
-              padding: '10px 15px',
-            }}
-          >
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              {i18n._('Idea for your message')}
-            </Typography>
-
-            <Stack
-              className={`decor-text ${!helpMessage ? 'loading-shimmer' : ''}`}
-              sx={{
-                flexDirection: 'row',
-                gap: '10px',
-                minHeight: '35px',
-              }}
-            >
-              <Markdown
-                variant="conversation"
-                onWordClick={
-                  translator.isTranslateAvailable
-                    ? (word, element) => translator.translateWithModal(word, element)
-                    : undefined
-                }
-              >
-                {!helpMessage ? loadingMessage : helpMessage}
-              </Markdown>
-              {helpMessage && (
-                <AudioPlayIcon text={helpMessage} instructions="Calm and clear" voice={'shimmer'} />
-              )}
-            </Stack>
-          </Stack>
-        </Popover>
-      )}
       {isShowAnalyzeConversationModal && (
         <ConversationReviewModal
           setIsShowAnalyzeConversationModal={setIsShowAnalyzeConversationModal}
@@ -674,7 +605,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                         toggleConversationMode={toggleConversationMode}
                         closeConversation={closeConversation}
                         closeMenus={closeMenus}
-                        openHelpAnswer={openHelpAnswer}
                       />
 
                       {!confirmedUserInput &&

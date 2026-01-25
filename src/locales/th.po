@@ -740,7 +740,7 @@ msgstr "อนุญาตการเข้าถึงไมโครโฟน
 msgid "Allow WebCam"
 msgstr "อนุญาตกล้องเว็บแคม"
 
-#: src/features/Conversation/ProcessUserInput.tsx:194
+#: src/features/Conversation/ProcessUserInput.tsx:195
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "เกือบถูก"
@@ -773,12 +773,12 @@ msgstr ""
 "จำนวนเงินมากเกินไป ฉันขอขอบคุณการสนับสนุนของคุณ แต่มาทำให้มันอยู่ใต้ 400 "
 "ดอลลาร์"
 
-#: src/features/Conversation/ProcessUserInput.tsx:147
+#: src/features/Conversation/ProcessUserInput.tsx:148
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "เกิดข้อผิดพลาดระหว่างการวิเคราะห์ข้อความ กรุณาลองใหม่อีกครั้ง"
 
-#: src/features/Conversation/ConversationCanvas.tsx:580
+#: src/features/Conversation/ConversationCanvas.tsx:511
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "การวิเคราะห์"
@@ -788,9 +788,9 @@ msgstr "การวิเคราะห์"
 msgid "Analyzing your inputs..."
 msgstr "กำลังวิเคราะห์ข้อมูลของคุณ..."
 
-#: src/features/Conversation/ProcessUserInput.tsx:206
-#: src/features/Conversation/ProcessUserInput.tsx:358
-#: src/features/Conversation/ProcessUserInput.tsx:367
+#: src/features/Conversation/ProcessUserInput.tsx:207
+#: src/features/Conversation/ProcessUserInput.tsx:359
+#: src/features/Conversation/ProcessUserInput.tsx:368
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "กำลังวิเคราะห์..."
@@ -1233,7 +1233,7 @@ msgstr "การทดสอบความพร้อมสัมภาษณ
 msgid "Caching Strategies"
 msgstr "นโยบายการแคช"
 
-#: src/features/Conversation/RecordingCanvasMenu.tsx:125
+#: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #. js-lingui-explicit-id
 msgid "Call"
 msgstr "โทร"
@@ -1296,7 +1296,7 @@ msgid "Cancel"
 msgstr "ยกเลิก"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:394
-#: src/features/Conversation/ConversationCanvas.tsx:854
+#: src/features/Conversation/ConversationCanvas.tsx:784
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "ยกเลิกการบันทึก"
@@ -1804,7 +1804,7 @@ msgstr "คัดลอกลิงก์หน้า"
 msgid "Core Web Vitals"
 msgstr "Core Web Vitals"
 
-#: src/features/Conversation/ProcessUserInput.tsx:317
+#: src/features/Conversation/ProcessUserInput.tsx:318
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "แก้ไขแล้ว"
@@ -2474,7 +2474,7 @@ msgstr "อย่าลืมลองโหมดการโทรในส่
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:629
+#: src/features/Conversation/ConversationCanvas.tsx:560
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:254
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
@@ -2802,7 +2802,7 @@ msgstr "เกิดข้อผิดพลาดในการสร้าง
 msgid "Error creating plan. Please try again."
 msgstr "ข้อผิดพลาดในการสร้างแผน กรุณาลองใหม่อีกครั้ง"
 
-#: src/features/Conversation/ConversationCanvas.tsx:528
+#: src/features/Conversation/ConversationCanvas.tsx:459
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "ข้อผิดพลาดในระหว่างการวิเคราะห์ข้อความ"
@@ -3042,7 +3042,7 @@ msgstr "ทุกสิ่งที่คุณต้องการเพื่
 msgid "existential fiction"
 msgstr "นวนิยายเชิงปรัชญาการดำรงอยู่"
 
-#: src/features/Conversation/RecordingCanvasMenu.tsx:94
+#: src/features/Conversation/RecordingCanvasMenu.tsx:92
 #. js-lingui-explicit-id
 msgid "Exit"
 msgstr "ออก"
@@ -3990,7 +3990,7 @@ msgstr "การแก้ไขไวยากรณ์"
 msgid "Grammar corrections to boost your confidence"
 msgstr "การแก้ไขไวยากรณ์เพื่อเพิ่มความมั่นใจของคุณ"
 
-#: src/features/Conversation/ProcessUserInput.tsx:209
+#: src/features/Conversation/ProcessUserInput.tsx:210
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "ที่สุด!"
@@ -4075,11 +4075,6 @@ msgstr "สุขภาพ"
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "ขอความช่วยเหลือ"
-
-#: src/features/Conversation/RecordingCanvasMenu.tsx:149
-#. js-lingui-explicit-id
-msgid "Help with answer"
-msgstr "ช่วยเหลือเรื่องคำตอบ"
 
 #: src/features/Plan/LessonStartModal.tsx:396
 #. js-lingui-explicit-id
@@ -4812,11 +4807,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "ฉันจะถามคุณอีกสองคำถามก่อนที่จะสร้างแผนของคุณ"
-
-#: src/features/Conversation/ConversationCanvas.tsx:272
-#. js-lingui-explicit-id
-msgid "Idea for your message"
-msgstr "ความคิดสำหรับข้อความของคุณ"
 
 #: src/features/Chat/SubmitForm.tsx:152
 #. js-lingui-explicit-id
@@ -5773,7 +5763,7 @@ msgstr ""
 "ความสำเร็จที่สำคัญ, และความสนใจในบริษัท ฝึกการแนะนำตัวของคุณเพื่อให้ม "
 "sounding sounding"
 
-#: src/features/Conversation/RecordingCanvasMenu.tsx:114
+#: src/features/Conversation/RecordingCanvasMenu.tsx:112
 #. js-lingui-explicit-id
 msgid "Keyboard"
 msgstr "คีย์บอร์ด"
@@ -6066,7 +6056,7 @@ msgstr "กำลังโหลด.."
 
 #: src/features/Chat/SubmitForm.tsx:81
 #: src/features/Community/GamePage.tsx:90
-#: src/features/Conversation/ConversationCanvas.tsx:229
+#: src/features/Conversation/ConversationCanvas.tsx:217
 #: src/features/Conversation/ConversationReviewModal.tsx:101
 #: src/features/Conversation/ConversationReviewModal.tsx:116
 #: src/features/Conversation/ConversationReviewModal.tsx:131
@@ -6289,7 +6279,7 @@ msgstr "การตั้งค่าไมโครโฟน"
 msgid "Minutes"
 msgstr "นาที"
 
-#: src/features/Conversation/ConversationCanvas.tsx:746
+#: src/features/Conversation/ConversationCanvas.tsx:676
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "ภารกิจเสร็จสิ้น"
@@ -6814,7 +6804,7 @@ msgid "Open personal plan"
 msgstr "เปิดแผนส่วนบุคคล"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:344
-#: src/features/Conversation/ConversationCanvas.tsx:754
+#: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/Battle/BattleCard.tsx:327
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7678,14 +7668,14 @@ msgid "Rank in top 5 to get full access to all features!"
 msgstr "จัดอยู่อันดับ 5 สูงสุดเพื่อเข้าถึงคุณสมบัติทั้งหมด!"
 
 #: src/features/Chat/SubmitForm.tsx:299
-#: src/features/Conversation/ConversationCanvas.tsx:615
-#: src/features/Conversation/ConversationCanvas.tsx:768
+#: src/features/Conversation/ConversationCanvas.tsx:546
+#: src/features/Conversation/ConversationCanvas.tsx:698
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "บันทึกใหม่"
 
-#: src/features/Conversation/ConversationCanvas.tsx:784
+#: src/features/Conversation/ConversationCanvas.tsx:714
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "เขียนใหม่"
@@ -7952,7 +7942,7 @@ msgstr "บันทึกคำตอบ"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:457
 #: src/features/Conversation/CallMode/CallButtons.tsx:477
-#: src/features/Conversation/ConversationCanvas.tsx:656
+#: src/features/Conversation/ConversationCanvas.tsx:587
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "บันทึกข้อความ"
@@ -8302,7 +8292,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "HTML ความหมาย"
 
-#: src/features/Conversation/ConversationCanvas.tsx:598
+#: src/features/Conversation/ConversationCanvas.tsx:529
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -8454,14 +8444,14 @@ msgstr "แสดงการอภิปราย"
 msgid "Show knowledge of the company and genuine interest. For example:"
 msgstr "แสดงความรู้เกี่ยวกับบริษัทและความสนใจที่แท้จริง. ยกตัวอย่างเช่น:"
 
-#: src/features/Conversation/ProcessUserInput.tsx:251
+#: src/features/Conversation/ProcessUserInput.tsx:252
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "แสดงน้อยลง"
 
 #: src/features/Chat/Message.tsx:386
-#: src/features/Conversation/ProcessUserInput.tsx:251
+#: src/features/Conversation/ProcessUserInput.tsx:252
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -9181,7 +9171,7 @@ msgstr "ครู"
 msgid "Teacher Instructions"
 msgstr "คำแนะนำสำหรับครู"
 
-#: src/features/Conversation/Messages.tsx:121
+#: src/features/Conversation/Messages.tsx:161
 #: src/features/Usage/UsageStatsCards.tsx:271
 #. js-lingui-explicit-id
 msgid "Teacher:"
@@ -9548,10 +9538,10 @@ msgstr "ทั้งหมด:"
 msgid "Track Your Fluency Progress"
 msgstr "ติดตามความก้าวหน้าในการพูดคล่องของคุณ"
 
-#: src/features/Conversation/ProcessUserInput.tsx:297
 #: src/features/Conversation/ProcessUserInput.tsx:298
-#: src/features/Conversation/ProcessUserInput.tsx:356
-#: src/features/Conversation/ProcessUserInput.tsx:365
+#: src/features/Conversation/ProcessUserInput.tsx:299
+#: src/features/Conversation/ProcessUserInput.tsx:357
+#: src/features/Conversation/ProcessUserInput.tsx:366
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:224
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
@@ -9858,7 +9848,7 @@ msgstr "ท้าทายคำศัพท์"
 msgid "Voice conversations"
 msgstr "การสนทนาด้วยเสียง"
 
-#: src/features/Conversation/RecordingCanvasMenu.tsx:103
+#: src/features/Conversation/RecordingCanvasMenu.tsx:101
 #. js-lingui-explicit-id
 msgid "Voice records"
 msgstr "บันทึกเสียง"
@@ -10226,6 +10216,11 @@ msgstr "อะไรที่ทำให้คุณมีความสุข
 msgid "What to focus on next time"
 msgstr "ควรเน้นอะไรในครั้งถัดไป"
 
+#: src/features/Conversation/Messages.tsx:231
+#. js-lingui-explicit-id
+msgid "What to say?"
+msgstr "จะพูดอะไรดี?"
+
 #: src/features/Case/data/frontend-junior/faqSection.ts:14
 #: src/features/Case/data/frontend-senior/faqSection.ts:14
 #. js-lingui-explicit-id
@@ -10236,6 +10231,11 @@ msgstr "ฉันสามารถฝึกซ้อมสำหรับกา
 #. js-lingui-explicit-id
 msgid "What you can improve"
 msgstr "สิ่งที่คุณสามารถปรับปรุงได้"
+
+#: src/features/Conversation/Messages.tsx:264
+#. js-lingui-explicit-id
+msgid "What you can say:"
+msgstr "สิ่งที่คุณสามารถพูด:"
 
 #: src/features/Conversation/ConversationReviewModal.tsx:142
 #. js-lingui-explicit-id
@@ -10819,7 +10819,7 @@ msgstr ""
 msgid "You've made amazing progress. Let’s keep going."
 msgstr "คุณพัฒนาความสามารถไปได้ดีมาก โปรดทำต่อไป"
 
-#: src/features/Conversation/Messages.tsx:121
+#: src/features/Conversation/Messages.tsx:161
 #: src/features/Usage/UsageStatsCards.tsx:271
 #. js-lingui-explicit-id
 msgid "You:"
@@ -10919,12 +10919,12 @@ msgid "Your Language Level"
 msgstr "ระดับภาษาของคุณ"
 
 #: src/features/Chat/SubmitForm.tsx:162
-#: src/features/Conversation/ProcessUserInput.tsx:275
+#: src/features/Conversation/ProcessUserInput.tsx:276
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "ข้อความของคุณ"
 
-#: src/features/Conversation/ConversationCanvas.tsx:697
+#: src/features/Conversation/ConversationCanvas.tsx:627
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "ข้อความของคุณ..."
@@ -11004,6 +11004,16 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Conversation/RecordingCanvasMenu.tsx:149
+#. js-lingui-explicit-id
+#~ msgid "Help with answer"
+#~ msgstr "ช่วยเหลือเรื่องคำตอบ"
+
+#: src/features/Conversation/ConversationCanvas.tsx:272
+#. js-lingui-explicit-id
+#~ msgid "Idea for your message"
+#~ msgstr "ความคิดสำหรับข้อความของคุณ"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:84
 #. js-lingui-explicit-id
