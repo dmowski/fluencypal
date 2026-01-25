@@ -54,7 +54,6 @@ export const Messages = ({
               message={message}
               voice={voice}
               isAiSpeaking={isThisIsLast && isLastIsBot && isAiSpeaking}
-              previousMessages={[...all].slice(0, index)}
               isLastMessage={isThisIsLast}
             />
           );
@@ -70,13 +69,11 @@ export const Message = ({
   message,
   isAiSpeaking,
   voice,
-  previousMessages,
   isLastMessage,
 }: {
   message: ChatMessage;
   isAiSpeaking?: boolean;
   voice: AiVoice;
-  previousMessages: ChatMessage[];
   isLastMessage: boolean;
 }) => {
   const { i18n } = useLingui();
