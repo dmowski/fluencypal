@@ -127,6 +127,7 @@ Provide only the message user can send, without any additional explanation or co
             setIsAnalyzing={setIsAnalyzingMessageWithAi}
             setIsNeedCorrection={() => {}}
             previousBotMessage={previousBotMessage}
+            isRecording={recorder.isRecording}
           />
         </Stack>
       )}

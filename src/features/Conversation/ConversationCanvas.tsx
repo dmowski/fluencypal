@@ -468,6 +468,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                     setIsAnalyzing={setIsAnalyzingMessageWithAi}
                     setIsNeedCorrection={setIsNeedToShowCorrection}
                     previousBotMessage={lastBotMessage}
+                    isRecording={isRecording}
                   />
                 )}
 
