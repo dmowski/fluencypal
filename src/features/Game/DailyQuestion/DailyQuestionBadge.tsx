@@ -1,15 +1,13 @@
-import { Button, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { useMemo, useState } from 'react';
 import { dailyQuestions } from './dailyQuestions';
 import dayjs from 'dayjs';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { ChatSection } from '@/features/Chat/ChatSection';
-import { ChatProvider, useChat } from '@/features/Chat/useChat';
+import { ChatProvider } from '@/features/Chat/useChat';
 import { DailyQuestion } from './types';
 import { PageContainer } from '@/features/Community/PageContainer';
 import { useSettings } from '@/features/Settings/useSettings';
-import { ChevronDown } from 'lucide-react';
 
 export const DailyQuestionBadge = () => {
   const settings = useSettings();
@@ -43,27 +41,21 @@ export const DailyQuestionBadge = () => {
   return (
     <Stack
       sx={{
-        gap: '40px',
+        gap: '90px',
       }}
     >
       <QuestionSection question={todaysQuestion} isOld={false} />
 
-      <Stack
-        sx={{
-          gap: '45px',
-        }}
-      >
-        {questionsKeys
-          .filter((key, index) => index < questionIndex)
-          .map((key) => {
-            const question = dailyQuestions[key];
-            return (
-              <Stack key={question.id}>
-                <QuestionSection question={question} isOld={true} />
-              </Stack>
-            );
-          })}
-      </Stack>
+      {questionsKeys
+        .filter((key, index) => index < questionIndex)
+        .map((key) => {
+          const question = dailyQuestions[key];
+          return (
+            <Stack key={question.id}>
+              <QuestionSection question={question} isOld={true} />
+            </Stack>
+          );
+        })}
     </Stack>
   );
 };
@@ -93,13 +85,6 @@ export const DailyQuestionBadgeComponent = ({
   isOld: boolean;
 }) => {
   const { i18n } = useLingui();
-  const todayIsoDate = dayjs().format('YYYY-MM-DD');
-
-  const now = useMemo(() => new Date(), []);
-  const timeLeft = dayjs(todayIsoDate).endOf('day').diff(now);
-  const hoursLeft = Math.max(0, Math.floor(timeLeft / (1000 * 60 * 60)));
-
-  const chat = useChat();
 
   const content = (
     <>
@@ -134,7 +119,6 @@ export const DailyQuestionBadgeComponent = ({
 
   return (
     <Stack
-      key={todayIsoDate}
       sx={{
         padding: '21px 20px 24px 20px',
         color: '#fff',
@@ -145,8 +129,8 @@ export const DailyQuestionBadgeComponent = ({
         height: 'auto',
         cursor: 'initial',
 
-        background: isOld ? 'rgba(24, 12, 54, 0.1)' : 'rgba(115, 25, 35, 0.2)',
-        boxShadow: '0px 0px 0px 1px rgba(255, 255, 255, 0.2)',
+        background: isOld ? 'rgba(25, 88, 115, 0.2)' : 'rgba(115, 25, 35, 0.2)',
+        boxShadow: '0px 0px 0px 1px rgba(255, 255, 255, 0)',
         flexDirection: 'row',
         transition: 'all 0.3s ease',
         gap: '20px',
@@ -228,20 +212,22 @@ export const DailyQuestionBadgeComponent = ({
         <Stack
           sx={{
             gap: '20px',
-            padding: '40px 0 20px 0',
+            padding: '40px 0 0px 0',
           }}
         >
-          <Stack>
-            <Typography variant="h6">{i18n._(`Community Responses:`)}</Typography>
-            <Typography
-              variant="body2"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              {i18n._(`You can discuss the daily question here.`)}
-            </Typography>
-          </Stack>
+          {!isOld && (
+            <Stack>
+              <Typography variant="h6">{i18n._(`Community Responses:`)}</Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._(`You can discuss the daily question here.`)}
+              </Typography>
+            </Stack>
+          )}
 
           <ChatSection
             placeholder={i18n._('What do you think?')}
