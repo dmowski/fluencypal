@@ -162,14 +162,12 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   const bottomSectionHeight = `${height + 40}px`;
 
   const messageAnalyzing = useRef('');
-  const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] = useState(false);
-  const [isNeedToShowCorrection, setIsNeedToShowCorrection] = useState(false);
   const [internalUserInput, setInternalUserInput] = useState<string>('');
   const [isConfirmedUserKeyboardInput, setIsConfirmedUserKeyboardInput] = useState(false);
 
   const confirmedUserInput =
     transcriptMessage || (isConfirmedUserKeyboardInput ? internalUserInput : '');
-  const isAnalyzingResponse = isAnalyzingMessageWithAi || isTranscribing;
+  const isAnalyzingResponse = isTranscribing;
 
   const analyzeUserKeyboardInput = async () => {
     if (internalUserInput === messageAnalyzing.current || !internalUserInput) {
@@ -465,8 +463,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                   <ProcessUserInput
                     isTranscribing={isTranscribing}
                     userMessage={confirmedUserInput}
-                    setIsAnalyzing={setIsAnalyzingMessageWithAi}
-                    setIsNeedCorrection={setIsNeedToShowCorrection}
                     previousBotMessage={lastBotMessage}
                     isRecording={isRecording}
                   />
@@ -530,23 +526,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                           {i18n._('Send')}
                         </Button>
                       )}
-
-                      {transcriptMessage &&
-                        !isRecording &&
-                        !isAnalyzingResponse &&
-                        isNeedToShowCorrection && (
-                          <Button
-                            size="large"
-                            variant="outlined"
-                            startIcon={<Mic />}
-                            onClick={async () => await startRecording()}
-                            sx={{
-                              minWidth: '200px',
-                            }}
-                          >
-                            {i18n._('Re-record')}
-                          </Button>
-                        )}
 
                       {isRecording && !isAnalyzingResponse && (
                         <Button
@@ -687,34 +666,28 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                         </Stack>
                       )}
 
-                      {transcriptMessage &&
-                        !isRecording &&
-                        !isAnalyzingResponse &&
-                        !isNeedToShowCorrection && (
-                          <Button
-                            size="large"
-                            startIcon={<Mic />}
-                            onClick={async () => await startRecording()}
-                          >
-                            {i18n._('Re-record')}
-                          </Button>
-                        )}
+                      {transcriptMessage && !isRecording && !isAnalyzingResponse && (
+                        <Button
+                          size="large"
+                          startIcon={<Mic />}
+                          onClick={async () => await startRecording()}
+                        >
+                          {i18n._('Re-record')}
+                        </Button>
+                      )}
 
-                      {confirmedUserInput &&
-                        !isRecording &&
-                        !transcriptMessage &&
-                        isNeedToShowCorrection && (
-                          <Button
-                            size="large"
-                            startIcon={<Keyboard />}
-                            onClick={async () => {
-                              setIsConfirmedUserKeyboardInput(false);
-                              messageAnalyzing.current = '';
-                            }}
-                          >
-                            {i18n._('Re-write')}
-                          </Button>
-                        )}
+                      {confirmedUserInput && !isRecording && !transcriptMessage && (
+                        <Button
+                          size="large"
+                          startIcon={<Keyboard />}
+                          onClick={async () => {
+                            setIsConfirmedUserKeyboardInput(false);
+                            messageAnalyzing.current = '';
+                          }}
+                        >
+                          {i18n._('Re-write')}
+                        </Button>
+                      )}
 
                       {isRecording && (
                         <Stack
@@ -768,7 +741,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                       )}
                     </Stack>
 
-                    {(isRecording || isLimited) && (
+                    {(isRecording || isLimited || transcriptMessage) && (
                       <Stack
                         sx={{
                           width: 'max-content',
@@ -781,7 +754,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                           },
                         }}
                       >
-                        {isRecording ? (
+                        {isRecording || transcriptMessage ? (
                           <Tooltip title={i18n._('Cancel recording')}>
                             <Stack>
                               <IconButton

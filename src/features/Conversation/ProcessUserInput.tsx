@@ -2,8 +2,8 @@
 
 import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { useEffect, useRef, useState } from 'react';
-import { useCorrections } from '../Corrections/useCorrections';
+import { useEffect, useState } from 'react';
+import { AnalyzeUserMessageOutput, useCorrections } from '../Corrections/useCorrections';
 import { useTranslate } from '../Translation/useTranslate';
 import { ProcessHeader } from './ProcessUserInput/ProcessHeader';
 import { CorrectionDescription } from './ProcessUserInput/CorrectionDescription';
@@ -11,83 +11,70 @@ import { UserMessageSection } from './ProcessUserInput/UserMessageSection';
 import { CorrectedMessageSection } from './ProcessUserInput/CorrectedMessageSection';
 import { CorrectedActions } from './ProcessUserInput/CorrectedActions';
 
+interface Result {
+  analysis: AnalyzeUserMessageOutput | null;
+  isNeedCorrection: boolean;
+  error: string;
+}
+
 export const ProcessUserInput = ({
   isTranscribing,
   userMessage,
-  setIsAnalyzing,
-  setIsNeedCorrection,
   previousBotMessage,
 }: {
   isTranscribing: boolean;
   userMessage: string;
-  setIsAnalyzing: (value: boolean) => void;
-  setIsNeedCorrection: (value: boolean) => void;
   previousBotMessage: string;
   isRecording: boolean;
 }) => {
   const { i18n } = useLingui();
-  const [isNeedToShowCorrection, setIsNeedToShowCorrection] = useState<boolean>(false);
-
-  const messageAnalyzing = useRef('');
   const translator = useTranslate();
-
-  const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] = useState(false);
-  const [description, setDescription] = useState<string | null>(null);
-  const [correctedMessage, setCorrectedMessage] = useState<string | null>(null);
   const corrections = useCorrections();
-  const [isAnalyzingError, setIsAnalyzingError] = useState(false);
+
+  const [results, setResults] = useState<Record<string, Result | null>>({});
 
   const [isShowFullContent, setIsShowFullContent] = useState(false);
-  const [rate, setRate] = useState<number | null>(null);
 
-  const setIsAnalyzingMessage = (value: boolean) => {
-    setIsAnalyzingMessageWithAi(value);
-    setIsAnalyzing(value);
-  };
-
-  const setIsCorrection = (value: boolean) => {
-    setIsNeedCorrection(value);
-    setIsNeedToShowCorrection(value);
-  };
+  const actualResult = results[userMessage];
 
   const analyzeUserInput = async (usersNewMessage: string) => {
-    messageAnalyzing.current = usersNewMessage;
-    setIsAnalyzingError(false);
-
-    setIsAnalyzingMessage(true);
-    setIsCorrection(false);
-    setDescription(null);
-    setCorrectedMessage(null);
-    setRate(null);
+    if (results[usersNewMessage]) {
+      return;
+    }
 
     try {
       const userMessage = usersNewMessage;
 
-      const { sourceMessage, correctedMessage, description, rate } =
-        await corrections.analyzeUserMessage({
-          previousBotMessage,
-          message: userMessage,
-          conversationId: 'chat',
-        });
-      if (usersNewMessage !== sourceMessage) {
-        return;
-      }
+      const aiSummary = await corrections.analyzeUserMessage({
+        previousBotMessage,
+        message: userMessage,
+        conversationId: 'chat',
+      });
 
       const isBad =
-        !!description &&
-        !!correctedMessage?.trim() &&
-        correctedMessage.toLowerCase().trim() !== sourceMessage.toLowerCase().trim();
-      setIsCorrection(isBad);
-      setRate(rate);
-
-      setCorrectedMessage(isBad ? correctedMessage || null : null);
-      setDescription(isBad ? description || null : null);
-      setIsAnalyzingMessage(false);
+        !!aiSummary.description &&
+        !!aiSummary.correctedMessage?.trim() &&
+        aiSummary.correctedMessage.toLowerCase().trim() !==
+          aiSummary.sourceMessage.toLowerCase().trim();
+      const result: Result = {
+        analysis: aiSummary,
+        isNeedCorrection: isBad,
+        error: '',
+      };
+      setResults((prevResults) => ({
+        ...prevResults,
+        [usersNewMessage]: result,
+      }));
     } catch (error) {
       console.error('Error during analyzing message', error);
-      setIsAnalyzingError(true);
-      setIsAnalyzingMessage(false);
-      throw error;
+      setResults((prevResults) => ({
+        ...prevResults,
+        [usersNewMessage]: {
+          analysis: null,
+          isNeedCorrection: false,
+          error: 'Analysis error',
+        },
+      }));
     }
   };
 
@@ -95,15 +82,8 @@ export const ProcessUserInput = ({
     const isEmpty = userMessage.trim().length === 0;
     if (!isEmpty) {
       analyzeUserInput(userMessage);
-    } else {
-      setIsAnalyzingMessage(false);
-      setIsCorrection(false);
-      setDescription(null);
-      setCorrectedMessage(null);
     }
   }, [userMessage]);
-
-  const isAnalyzingResponse = isAnalyzingMessageWithAi || isTranscribing;
 
   const limitMessages = 120;
   const messagesFontSize = userMessage.length < 320 ? '1.1rem' : '0.9rem';
@@ -112,20 +92,19 @@ export const ProcessUserInput = ({
   const [translatedCorrectedMessage, setTranslatedCorrectedMessage] = useState<string | null>(null);
 
   const onTranslateCorrectedMessage = async () => {
-    if (!correctedMessage) return;
+    if (!actualResult) return;
     if (translatedCorrectedMessage) {
       setTranslatedCorrectedMessage(null);
       return;
     }
     setIsTranslatingCorrectedMessage(true);
     const translated = await translator.translateText({
-      text: correctedMessage || '',
+      text: actualResult.analysis?.correctedMessage || '',
     });
     setTranslatedCorrectedMessage(translated);
     setIsTranslatingCorrectedMessage(false);
   };
 
-  const descriptionContent = description || '';
   const yourMessageLabel = i18n._('Your Message');
   const correctedLabel = i18n._('Corrected');
   const transcribingLabel = i18n._('Transcribing...');
@@ -145,20 +124,22 @@ export const ProcessUserInput = ({
           gap: '15px',
         }}
       >
-        {isAnalyzingError && (
+        {actualResult?.error && (
           <Typography color="error">
             {i18n._('An error occurred while analyzing the message. Please try again.')}
           </Typography>
         )}
 
         <ProcessHeader
-          state={isAnalyzingResponse ? 'loading' : isNeedToShowCorrection ? 'incorrect' : 'correct'}
-          rate={rate}
+          state={
+            !actualResult ? 'loading' : actualResult.isNeedCorrection ? 'incorrect' : 'correct'
+          }
+          rate={actualResult?.analysis?.rate}
         />
 
-        {isNeedToShowCorrection && descriptionContent && (
+        {actualResult?.analysis?.description && (
           <CorrectionDescription
-            content={descriptionContent}
+            content={actualResult?.analysis?.description}
             limit={limitMessages}
             isShowFullContent={isShowFullContent}
             onToggleShowFullContent={() => setIsShowFullContent(!isShowFullContent)}
@@ -180,13 +161,13 @@ export const ProcessUserInput = ({
             transcribingLabel={transcribingLabel}
           />
 
-          {(isNeedToShowCorrection || isAnalyzingResponse) && (
+          {(actualResult?.isNeedCorrection || !actualResult) && (
             <CorrectedMessageSection
               label={correctedLabel}
               isTranscribing={isTranscribing}
-              isAnalyzing={isAnalyzingResponse}
+              isAnalyzing={!actualResult}
               translatedCorrectedMessage={translatedCorrectedMessage}
-              correctedMessage={correctedMessage}
+              correctedMessage={actualResult?.analysis?.correctedMessage || ''}
               userMessage={userMessage}
               messagesFontSize={messagesFontSize}
               transcribingLabel={transcribingLabel}
@@ -194,9 +175,9 @@ export const ProcessUserInput = ({
             />
           )}
 
-          {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
+          {!isTranscribing && !!actualResult && (
             <CorrectedActions
-              correctedMessage={correctedMessage}
+              correctedMessage={actualResult.analysis?.correctedMessage || ''}
               onTranslate={onTranslateCorrectedMessage}
               isTranslating={isTranslatingCorrectedMessage}
             />

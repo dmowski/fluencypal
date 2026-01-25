@@ -128,6 +128,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         cancelRecording={async () => {
           aiConversation.toggleVolume(true);
           recorder.cancelRecording();
+          recorder.removeTranscript();
         }}
         isTranscribing={recorder.isTranscribing}
         isRecording={recorder.isRecording}

@@ -50,8 +50,7 @@ export function SubmitForm({
 
   const needMoreText = !!recorder?.transcription?.length && recorder.transcription.length < 4;
 
-  const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] = useState(false);
-  const isAnalyzingResponse = isAnalyzingMessageWithAi || recorder.isTranscribing;
+  const isAnalyzingResponse = recorder.isTranscribing;
 
   const [isTextMode, setIsTextMode] = useState(false);
   const [textMessage, setTextMessage] = useState('');
@@ -124,8 +123,6 @@ Provide only the message user can send, without any additional explanation or co
           <ProcessUserInput
             isTranscribing={recorder.isTranscribing}
             userMessage={(isTextMode ? preSubmitTextMessage : recorder.transcription || '') || ''}
-            setIsAnalyzing={setIsAnalyzingMessageWithAi}
-            setIsNeedCorrection={() => {}}
             previousBotMessage={previousBotMessage}
             isRecording={recorder.isRecording}
           />

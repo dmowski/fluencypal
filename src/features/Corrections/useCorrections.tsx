@@ -18,7 +18,7 @@ interface AnalyzeUserMessageInput {
   conversationId: string;
 }
 
-interface AnalyzeUserMessageOutput {
+export interface AnalyzeUserMessageOutput {
   correctedMessage: string;
   description: string;
   sourceMessage: string;
