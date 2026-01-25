@@ -1,8 +1,8 @@
 'use client';
 
 import { Markdown } from '../uiKit/Markdown/Markdown';
-import { IconButton, Stack, Typography } from '@mui/material';
-import { AudioLines, AudioWaveform, Languages } from 'lucide-react';
+import { Button, Divider, IconButton, Stack, Typography } from '@mui/material';
+import { AudioLines, AudioWaveform, Languages, Loader, Sparkles } from 'lucide-react';
 
 import { ChatMessage, MessagesOrderMap } from '@/common/conversation';
 import { useLingui } from '@lingui/react';
@@ -13,6 +13,8 @@ import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { AiVoice } from '@/common/ai';
 import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
 import { useAccess } from '../Usage/useAccess';
+import { useTextAi } from '../Ai/useTextAi';
+import { useConversationsAnalysis } from './useConversationsAnalysis';
 
 export const Messages = ({
   conversation,
@@ -52,6 +54,8 @@ export const Messages = ({
               message={message}
               voice={voice}
               isAiSpeaking={isThisIsLast && isLastIsBot && isAiSpeaking}
+              previousMessages={[...all].slice(0, index)}
+              isLastMessage={isThisIsLast}
             />
           );
         })}
@@ -66,18 +70,20 @@ export const Message = ({
   message,
   isAiSpeaking,
   voice,
+  previousMessages,
+  isLastMessage,
 }: {
   message: ChatMessage;
   isAiSpeaking?: boolean;
   voice: AiVoice;
+  previousMessages: ChatMessage[];
+  isLastMessage: boolean;
 }) => {
   const { i18n } = useLingui();
   const translator = useTranslate();
   const access = useAccess();
-  const isFullAccess = !access.isFullAppAccess;
-
+  const isFullAccess = access.isFullAppAccess;
   const voiceInfo = getAiVoiceByVoice(voice);
-
   const isBot = message.isBot;
 
   const [translatedText, setTranslatedText] = useState('');
@@ -97,6 +103,40 @@ export const Message = ({
   };
 
   const text = translatedText || '\n' + (message.text || '').trim();
+  const isAbleToGenerateHelpAnswer = message.isBot && isLastMessage;
+
+  const conversationAnalysis = useConversationsAnalysis();
+
+  const [proposedAnswer, setProposedAnswer] = useState<string | null>(null);
+  const [proposedAnswerTranslation, setProposedAnswerTranslation] = useState<string | null>(null);
+  const [isProposedAnswerLoading, setIsProposedAnswerLoading] = useState(false);
+
+  const scrollToBottom = () => {
+    setTimeout(() => {
+      const lastProposedAnswersAll = document.querySelectorAll('.proposed-answer');
+      const lastProposedAnswers = lastProposedAnswersAll?.[lastProposedAnswersAll.length - 1];
+      if (lastProposedAnswers) {
+        lastProposedAnswers.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 30);
+  };
+
+  const generateProposedAnswer = async () => {
+    setIsProposedAnswerLoading(true);
+
+    const nextAnswer = await conversationAnalysis.generateNextUserMessage();
+    const translatedAnswer =
+      translator.isTranslateAvailable && nextAnswer
+        ? await translator.translateText({
+            text: nextAnswer,
+          })
+        : '';
+
+    setProposedAnswer('\n' + nextAnswer);
+    setProposedAnswerTranslation(translatedAnswer ? '\n' + translatedAnswer.trim() : null);
+    setIsProposedAnswerLoading(false);
+    scrollToBottom();
+  };
 
   return (
     <Stack
@@ -177,8 +217,77 @@ export const Message = ({
           >
             <AudioPlayIcon text={text} voice={voice} instructions={voiceInfo.voiceInstruction} />
           </Stack>
+
+          {isAbleToGenerateHelpAnswer && !proposedAnswer && (
+            <Button
+              variant="text"
+              disabled={isProposedAnswerLoading || proposedAnswer !== null}
+              onClick={generateProposedAnswer}
+              startIcon={
+                isProposedAnswerLoading ? <Loader size={'12px'} /> : <Sparkles size={'12px'} />
+              }
+              sx={{
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                padding: '2px 12px',
+              }}
+            >
+              {i18n._('What to say?')}
+            </Button>
+          )}
         </Stack>
       </Stack>
+
+      {proposedAnswer && (
+        <Stack
+          sx={{
+            marginTop: '30px',
+            padding: '14px 15px 15px 15px',
+            alignItems: 'flex-start',
+            backgroundColor: 'rgba(172, 65, 141, 0.2)',
+
+            borderRadius: '8px',
+            gap: '10px',
+            width: '100%',
+          }}
+          className="proposed-answer"
+        >
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '10px',
+            }}
+          >
+            <Sparkles size={'16px'} />
+            <Typography
+              sx={{
+                fontWeight: '600',
+              }}
+            >
+              {i18n._('What you can say:')}
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              gap: '5px',
+              width: '100%',
+            }}
+          >
+            <Markdown>{proposedAnswer}</Markdown>
+            {proposedAnswerTranslation && <Divider />}
+            {proposedAnswerTranslation && (
+              <Stack
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                <Markdown variant="small">{proposedAnswerTranslation}</Markdown>
+              </Stack>
+            )}
+          </Stack>
+        </Stack>
+      )}
+
       {translator.translateModal}
     </Stack>
   );

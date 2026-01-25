@@ -159,7 +159,7 @@ The user is learning ${settings.fullLanguageName}.
 
 Your goal is to generate potential user's answer to last "AI" message. User is struggling with answering it.
 
-Provide only potential answer, without any kind of wrapper/started/intro words. Just return answer. Generate one not long sentence
+Provide only potential answer, without any kind of wrapper/started/intro words. Just return answer. Generate one sentence
 `;
 
     try {
