@@ -258,7 +258,18 @@ Please provide your decision in the following JSON format:
       )
       .map((b) => b.battleId);
 
-    const uniqIds = uniq([...needMyApprovalIds]);
+    const approvedByAllAndNeedMySubmissionIds = activeBattles
+      .filter((battle) => {
+        const amIApproved = battle.approvedUsersIds.includes(userId);
+        const areAllApproved = battle.usersIds.every((id) => battle.approvedUsersIds.includes(id));
+        const haveISubmitted = battle.submittedUsersIds.includes(userId);
+        return amIApproved && areAllApproved && !haveISubmitted;
+      })
+      .map((b) => b.battleId);
+
+    const needMyAttentionIds = [...needMyApprovalIds, ...approvedByAllAndNeedMySubmissionIds];
+
+    const uniqIds = uniq([...needMyAttentionIds]);
 
     return uniqIds?.length || 0;
   }, [battles, userId]);
