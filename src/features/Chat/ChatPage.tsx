@@ -42,8 +42,6 @@ export const ChatPage = ({
       })?.[0] || ''
     ];
 
-  const isDev = auth.isDev;
-
   return (
     <Stack>
       {type === 'public' ? (
@@ -60,50 +58,44 @@ export const ChatPage = ({
               width: '100%',
             }}
           >
-            {isDev && (
-              <Stack>
-                <Stack
+            <Stack>
+              <Stack
+                sx={{
+                  gap: '0px',
+                  width: '100%',
+                }}
+              >
+                <Tabs
+                  value={sortMode}
+                  onChange={(event, newId) => setSortMode(newId)}
                   sx={{
-                    gap: '0px',
-                    width: '100%',
+                    marginLeft: '10px',
                   }}
                 >
-                  <Tabs
-                    value={sortMode}
-                    onChange={(event, newId) => setSortMode(newId)}
+                  <Tab
                     sx={{
-                      marginLeft: '10px',
+                      padding: '0 10px 0 10px',
+                      minWidth: 'unset',
                     }}
-                  >
-                    <Tab
-                      sx={{
-                        padding: '0 10px 0 10px',
-                        minWidth: 'unset',
-                      }}
-                      label={
-                        <TabLabel label={i18n._(`All`)} badgeNumber={undefined} badgeHighlight />
-                      }
-                      value={'all'}
-                    />
+                    label={
+                      <TabLabel label={i18n._(`All`)} badgeNumber={undefined} badgeHighlight />
+                    }
+                    value={'all'}
+                  />
 
-                    <Tab
-                      label={
-                        <TabLabel
-                          label={i18n._(`Replies`)}
-                          badgeNumber={undefined}
-                          badgeHighlight
-                        />
-                      }
-                      value={'updates'}
-                      sx={{
-                        padding: '0 10px 0 10px',
-                        minWidth: 'unset',
-                      }}
-                    />
-                  </Tabs>
-                </Stack>
+                  <Tab
+                    label={
+                      <TabLabel label={i18n._(`Replies`)} badgeNumber={undefined} badgeHighlight />
+                    }
+                    value={'updates'}
+                    sx={{
+                      padding: '0 10px 0 10px',
+                      minWidth: 'unset',
+                    }}
+                  />
+                </Tabs>
               </Stack>
-            )}
+            </Stack>
             <ChatSection
               contextForAiAnalysis=""
               isFullContentByDefault={isFullContentByDefault}
