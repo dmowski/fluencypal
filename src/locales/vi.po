@@ -450,7 +450,7 @@ msgstr "Thêm Bài Viết Mới"
 msgid "Add Post"
 msgstr "Thêm Bài Viết"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:220
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:271
 #. js-lingui-explicit-id
 msgid "Add Response"
 msgstr "Thêm Phản Hồi"
@@ -1538,19 +1538,19 @@ msgstr ""
 msgid "Community"
 msgstr "Cộng đồng"
 
-#: src/features/Community/CommunityDashboard.tsx:94
+#: src/features/Community/CommunityDashboard.tsx:95
 #: src/features/Community/CommunityPage.tsx:22
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "Community Chat -> Trò chuyện Cộng đồng"
 
-#: src/features/Community/CommunityDashboard.tsx:74
+#: src/features/Community/CommunityDashboard.tsx:75
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Trang chủ Cộng đồng"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:205
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:256
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "Phản hồi từ cộng đồng:"
@@ -1987,11 +1987,6 @@ msgstr "Phỏng vấn hàng ngày mà không sợ bị đánh giá"
 msgid "Daily Language Practice"
 msgstr "Thực Hành Ngôn Ngữ Hàng Ngày"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:182
-#. js-lingui-explicit-id
-msgid "Daily Question"
-msgstr "Câu Hỏi Hàng Ngày"
-
 #: src/features/Chat/ChatPage.tsx:329
 #: src/features/Chat/ChatPage.tsx:403
 #. js-lingui-explicit-id
@@ -2000,6 +1995,7 @@ msgstr ""
 "\n"
 "Trò chuyện Câu hỏi Hàng ngày\n"
 
+#: src/features/Community/CommunityDashboard.tsx:126
 #: src/features/Community/CommunityPage.tsx:26
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2087,7 +2083,7 @@ msgstr "Cuộc tranh luận đã bắt đầu!"
 msgid "Debate topics will be selected randomly."
 msgstr "Các chủ đề tranh luận sẽ được chọn ngẫu nhiên."
 
-#: src/features/Community/CommunityDashboard.tsx:118
+#: src/features/Community/CommunityDashboard.tsx:119
 #: src/features/Community/CommunityPage.tsx:25
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -3620,7 +3616,7 @@ msgstr "Truy cập đầy đủ huấn luyện viên phỏng vấn AI"
 msgid "Full AI tutor access"
 msgstr "Truy cập đầy đủ vào gia sư AI"
 
-#: src/features/Community/CommunityDashboard.tsx:100
+#: src/features/Community/CommunityDashboard.tsx:101
 #: src/features/Community/CommunityPage.tsx:23
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -5904,7 +5900,7 @@ msgstr "Tải Lười Biếng"
 msgid "Leaderboard"
 msgstr "Bảng xếp hạng"
 
-#: src/features/Community/CommunityDashboard.tsx:133
+#: src/features/Community/CommunityDashboard.tsx:132
 #: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -6557,6 +6553,11 @@ msgstr "Chưa có sửa chữa nào"
 #. js-lingui-explicit-id
 msgid "No credit card required"
 msgstr "Không cần thẻ tín dụng"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:35
+#. js-lingui-explicit-id
+msgid "No daily question for today"
+msgstr "Không có câu hỏi hàng ngày cho hôm nay"
 
 #: src/features/Game/Battle/BattleSection.tsx:57
 #. js-lingui-explicit-id
@@ -7520,6 +7521,11 @@ msgstr ""
 msgid "Preparing the brain"
 msgstr "Chuẩn bị cho bộ não"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:226
+#. js-lingui-explicit-id
+msgid "Previous Question"
+msgstr "Câu hỏi trước"
+
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -7558,7 +7564,7 @@ msgstr "chính sách bảo mật"
 msgid "Privacy Policy"
 msgstr "Chính sách Bảo mật"
 
-#: src/features/Community/CommunityDashboard.tsx:112
+#: src/features/Community/CommunityDashboard.tsx:113
 #: src/features/Community/CommunityPage.tsx:24
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -8516,6 +8522,11 @@ msgstr "Hiển thị thêm bài học"
 msgid "Show previous"
 msgstr "Hiển thị trước"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:84
+#. js-lingui-explicit-id
+msgid "Show previous questions"
+msgstr "Hiển thị các câu hỏi trước đó"
+
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
 msgid "Show problem-solving skills"
@@ -8701,6 +8712,13 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "Đã xảy ra lỗi trong quá trình tạo thêm bài học. Vui lòng thử lại sau."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:37
+#. js-lingui-explicit-id
+msgid ""
+"Sorry, there is no daily question available for today. Please check back "
+"tomorrow!"
+msgstr "Xin lỗi, không có câu hỏi nào cho hôm nay. Vui lòng quay lại vào ngày mai!"
 
 #: src/features/Lang/getLabels.tsx:10
 #. js-lingui-explicit-id
@@ -9240,7 +9258,7 @@ msgstr "Phỏng vấn công nghệ với nhà phát triển giao diện AI"
 msgid "Tech stack covered"
 msgstr "Ngăn xếp công nghệ được đề cập"
 
-#: src/features/Community/CommunityDashboard.tsx:107
+#: src/features/Community/CommunityDashboard.tsx:108
 #: src/features/Community/CommunityPage.tsx:27
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -9548,6 +9566,11 @@ msgstr ""
 "Để sử dụng FluencyPal, bạn cần một trình duyệt internet hiện đại và một "
 "micro. Webcam là tùy chọn và chỉ được sử dụng nếu bạn kích hoạt phản hồi "
 "webcam. Không cần cài đặt."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:226
+#. js-lingui-explicit-id
+msgid "Today's Question"
+msgstr "Câu hỏi hôm nay"
 
 #: src/features/Landing/PlanLandingBlock.tsx:231
 #. js-lingui-explicit-id
@@ -10195,7 +10218,7 @@ msgstr "Tôi nhận được gì với gói trả phí?"
 msgid "What do I need to use FluencyPal?"
 msgstr "Tôi cần gì để sử dụng FluencyPal?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:217
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:268
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "Bạn nghĩ sao?"
@@ -10678,7 +10701,7 @@ msgstr "Bạn có thể xóa dữ liệu cá nhân của mình bất kỳ lúc n
 msgid "You can discuss the battle here."
 msgstr "Bạn có thể thảo luận về trận chiến ở đây."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:212
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:263
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "Bạn có thể thảo luận câu hỏi hàng ngày ở đây."
@@ -11057,6 +11080,11 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:182
+#. js-lingui-explicit-id
+#~ msgid "Daily Question"
+#~ msgstr "Câu Hỏi Hàng Ngày"
 
 #: src/features/Community/CommunityPage.tsx:24
 #. js-lingui-explicit-id

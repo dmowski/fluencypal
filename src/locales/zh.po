@@ -420,7 +420,7 @@ msgstr "添加新帖子"
 msgid "Add Post"
 msgstr "添加帖子"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:220
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:271
 #. js-lingui-explicit-id
 msgid "Add Response"
 msgstr "添加响应"
@@ -1464,19 +1464,19 @@ msgstr "沟通与领导力"
 msgid "Community"
 msgstr "社区"
 
-#: src/features/Community/CommunityDashboard.tsx:94
+#: src/features/Community/CommunityDashboard.tsx:95
 #: src/features/Community/CommunityPage.tsx:22
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "社区聊天"
 
-#: src/features/Community/CommunityDashboard.tsx:74
+#: src/features/Community/CommunityDashboard.tsx:75
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "社区中心"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:205
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:256
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "社区回复："
@@ -1893,17 +1893,13 @@ msgstr "每天面试，无需担心评判"
 msgid "Daily Language Practice"
 msgstr "日常语言练习"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:182
-#. js-lingui-explicit-id
-msgid "Daily Question"
-msgstr "每日问题"
-
 #: src/features/Chat/ChatPage.tsx:329
 #: src/features/Chat/ChatPage.tsx:403
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "每日问题聊天"
 
+#: src/features/Community/CommunityDashboard.tsx:126
 #: src/features/Community/CommunityPage.tsx:26
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -1988,7 +1984,7 @@ msgstr "辩论开始了！"
 msgid "Debate topics will be selected randomly."
 msgstr "辩论话题将被随机选择。"
 
-#: src/features/Community/CommunityDashboard.tsx:118
+#: src/features/Community/CommunityDashboard.tsx:119
 #: src/features/Community/CommunityPage.tsx:25
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -3341,7 +3337,7 @@ msgstr "完全AI面试教练访问权限"
 msgid "Full AI tutor access"
 msgstr "全功能 AI 辅导员访问权限"
 
-#: src/features/Community/CommunityDashboard.tsx:100
+#: src/features/Community/CommunityDashboard.tsx:101
 #: src/features/Community/CommunityPage.tsx:23
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -5353,7 +5349,7 @@ msgstr "延迟加载"
 msgid "Leaderboard"
 msgstr "排行榜"
 
-#: src/features/Community/CommunityDashboard.tsx:133
+#: src/features/Community/CommunityDashboard.tsx:132
 #: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -5983,6 +5979,11 @@ msgstr "暂无修正"
 #. js-lingui-explicit-id
 msgid "No credit card required"
 msgstr "无需信用卡"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:35
+#. js-lingui-explicit-id
+msgid "No daily question for today"
+msgstr "今天没有每日问题"
 
 #: src/features/Game/Battle/BattleSection.tsx:57
 #. js-lingui-explicit-id
@@ -6854,6 +6855,11 @@ msgstr "准备英语面试需要时间，但它会有回报。使用本文的提
 msgid "Preparing the brain"
 msgstr "准备大脑"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:226
+#. js-lingui-explicit-id
+msgid "Previous Question"
+msgstr "上一个问题"
+
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -6892,7 +6898,7 @@ msgstr "隐私政策"
 msgid "Privacy Policy"
 msgstr "隐私政策"
 
-#: src/features/Community/CommunityDashboard.tsx:112
+#: src/features/Community/CommunityDashboard.tsx:113
 #: src/features/Community/CommunityPage.tsx:24
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -7796,6 +7802,11 @@ msgstr "显示更多课程"
 msgid "Show previous"
 msgstr "显示上一个"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:84
+#. js-lingui-explicit-id
+msgid "Show previous questions"
+msgstr "显示之前的问题"
+
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
 msgid "Show problem-solving skills"
@@ -7964,6 +7975,13 @@ msgstr "对 ASP.NET Core 和 EF Core 有扎实的知识。在韧性模式和可�
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "在生成更多课程时出现了问题。请稍后再试。"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:37
+#. js-lingui-explicit-id
+msgid ""
+"Sorry, there is no daily question available for today. Please check back "
+"tomorrow!"
+msgstr "对不起，今天没有可用的每日问题。请明天再来查看！"
 
 #: src/features/Lang/getLabels.tsx:10
 #. js-lingui-explicit-id
@@ -8464,7 +8482,7 @@ msgstr "与AI前端开发人员的技术面试"
 msgid "Tech stack covered"
 msgstr "所采用的技术栈"
 
-#: src/features/Community/CommunityDashboard.tsx:107
+#: src/features/Community/CommunityDashboard.tsx:108
 #: src/features/Community/CommunityPage.tsx:27
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -8734,6 +8752,11 @@ msgid ""
 "webcam is optional and only used if you enable webcam feedback. No "
 "installation is required."
 msgstr "要使用 FluencyPal，您需要一个现代的网络浏览器和一个麦克风。摄像头是可选的，只有在您启用摄像头反馈时才会使用。无需安装。"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:226
+#. js-lingui-explicit-id
+msgid "Today's Question"
+msgstr "今天的问题"
 
 #: src/features/Landing/PlanLandingBlock.tsx:231
 #. js-lingui-explicit-id
@@ -9343,7 +9366,7 @@ msgstr "我在付费计划中能得到什么？"
 msgid "What do I need to use FluencyPal?"
 msgstr "我使用FluencyPal需要什么？"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:217
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:268
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "你怎么看？"
@@ -9770,7 +9793,7 @@ msgstr "您可以随时删除您的个人数据"
 msgid "You can discuss the battle here."
 msgstr "您可以在这里讨论战斗。"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:212
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:263
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "您可以在这里讨论每日问题。"
@@ -10109,6 +10132,11 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:182
+#. js-lingui-explicit-id
+#~ msgid "Daily Question"
+#~ msgstr "每日问题"
 
 #: src/features/Community/CommunityPage.tsx:24
 #. js-lingui-explicit-id

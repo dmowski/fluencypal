@@ -19,10 +19,7 @@ export const DailyQuestionBadge = () => {
   const questionIndex = daysSinceUserCreatedAccount % questionsKeys.length;
 
   const todaysQuestion = dailyQuestions[questionsKeys[questionIndex]];
-  const questionId = todaysQuestion?.id;
   const { i18n } = useLingui();
-
-  const [isShowAllQuestions, setIsShowAllQuestions] = useState(false);
 
   if (!todaysQuestion) {
     return (
@@ -51,40 +48,22 @@ export const DailyQuestionBadge = () => {
     >
       <QuestionSection question={todaysQuestion} isOld={false} />
 
-      {isShowAllQuestions && (
-        <Stack
-          sx={{
-            gap: '45px',
-          }}
-        >
-          {questionsKeys
-            .filter((key, index) => index < questionIndex)
-            .map((key) => {
-              const question = dailyQuestions[key];
-              return (
-                <Stack key={question.id}>
-                  <QuestionSection question={question} isOld={true} />
-                </Stack>
-              );
-            })}
-        </Stack>
-      )}
-
-      {!isShowAllQuestions && (
-        <Stack
-          sx={{
-            alignItems: 'flex-start',
-          }}
-        >
-          <Button
-            variant="outlined"
-            onClick={() => setIsShowAllQuestions(true)}
-            endIcon={<ChevronDown size={'16px'} />}
-          >
-            {i18n._('Show previous questions')}
-          </Button>
-        </Stack>
-      )}
+      <Stack
+        sx={{
+          gap: '45px',
+        }}
+      >
+        {questionsKeys
+          .filter((key, index) => index < questionIndex)
+          .map((key) => {
+            const question = dailyQuestions[key];
+            return (
+              <Stack key={question.id}>
+                <QuestionSection question={question} isOld={true} />
+              </Stack>
+            );
+          })}
+      </Stack>
     </Stack>
   );
 };
@@ -121,8 +100,6 @@ export const DailyQuestionBadgeComponent = ({
   const hoursLeft = Math.max(0, Math.floor(timeLeft / (1000 * 60 * 60)));
 
   const chat = useChat();
-  const commentsCount = chat.messages.length;
-  const unreadComments = chat.unreadMessagesCount || 0;
 
   const content = (
     <>
@@ -206,16 +183,18 @@ export const DailyQuestionBadgeComponent = ({
               gap: '6px',
             }}
           >
-            <img
-              src="/icons/flame-icon.svg"
-              style={{
-                width: 20,
-                height: 20,
-                position: 'relative',
-                top: '-2px',
-                left: '-1px',
-              }}
-            />
+            {!isOld && (
+              <img
+                src="/icons/flame-icon.svg"
+                style={{
+                  width: 20,
+                  height: 20,
+                  position: 'relative',
+                  top: '-2px',
+                  left: '-1px',
+                }}
+              />
+            )}
             <Typography
               variant="body2"
               sx={{
@@ -223,26 +202,32 @@ export const DailyQuestionBadgeComponent = ({
                 fontWeight: 500,
               }}
             >
-              {i18n._('Daily Question')}
+              {isOld ? i18n._('Previous Question') : i18n._("Today's Question")}
             </Typography>
           </Stack>
-          {!isOld && (
-            <Typography
-              variant="body2"
-              sx={{
-                color: '#faae98',
-              }}
-            >
-              {hoursLeft}h left
-            </Typography>
-          )}
         </Stack>
 
         {content}
 
         <Stack
           sx={{
-            gap: '10px',
+            padding: '45px 0 10px 0',
+            color: 'rgba(255, 255, 255, 0.9)',
+          }}
+        >
+          <ColorIconTextList
+            gap="8px"
+            listItems={todaysQuestion.hints.map((hint) => ({
+              iconColor: 'rgba(255, 255, 255, 0.9)',
+              title: hint,
+              iconName: 'lightbulb',
+            }))}
+          />
+        </Stack>
+
+        <Stack
+          sx={{
+            gap: '20px',
             padding: '40px 0 20px 0',
           }}
         >

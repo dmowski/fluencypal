@@ -417,7 +417,7 @@ msgstr "新しい投稿を追加"
 msgid "Add Post"
 msgstr "投稿を追加"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:220
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:271
 #. js-lingui-explicit-id
 msgid "Add Response"
 msgstr "レスポンスを追加"
@@ -1470,19 +1470,19 @@ msgstr ""
 "\n"
 "コミュニティ\n"
 
-#: src/features/Community/CommunityDashboard.tsx:94
+#: src/features/Community/CommunityDashboard.tsx:95
 #: src/features/Community/CommunityPage.tsx:22
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "コミュニティチャット"
 
-#: src/features/Community/CommunityDashboard.tsx:74
+#: src/features/Community/CommunityDashboard.tsx:75
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "コミュニティハブ"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:205
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:256
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "コミュニティの回答:"
@@ -1905,17 +1905,13 @@ msgstr "ジャッジされることなく、毎日のインタビュー"
 msgid "Daily Language Practice"
 msgstr "毎日の言語練習"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:182
-#. js-lingui-explicit-id
-msgid "Daily Question"
-msgstr "デイリークエスチョン"
-
 #: src/features/Chat/ChatPage.tsx:329
 #: src/features/Chat/ChatPage.tsx:403
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "デイリークエスチョンチャット"
 
+#: src/features/Community/CommunityDashboard.tsx:126
 #: src/features/Community/CommunityPage.tsx:26
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2000,7 +1996,7 @@ msgstr "ディベートが始まりました！"
 msgid "Debate topics will be selected randomly."
 msgstr "ランダムにディベートトピックが選ばれます。"
 
-#: src/features/Community/CommunityDashboard.tsx:118
+#: src/features/Community/CommunityDashboard.tsx:119
 #: src/features/Community/CommunityPage.tsx:25
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -3380,7 +3376,7 @@ msgstr "フル AI 面接コーチアクセス"
 msgid "Full AI tutor access"
 msgstr "フルAIチューターアクセス"
 
-#: src/features/Community/CommunityDashboard.tsx:100
+#: src/features/Community/CommunityDashboard.tsx:101
 #: src/features/Community/CommunityPage.tsx:23
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -5454,7 +5450,7 @@ msgstr "遅延読み込み"
 msgid "Leaderboard"
 msgstr "リーダーボード"
 
-#: src/features/Community/CommunityDashboard.tsx:133
+#: src/features/Community/CommunityDashboard.tsx:132
 #: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -6091,6 +6087,11 @@ msgstr "まだ訂正はありません"
 #. js-lingui-explicit-id
 msgid "No credit card required"
 msgstr "クレジットカードは必要ありません"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:35
+#. js-lingui-explicit-id
+msgid "No daily question for today"
+msgstr "今日のデイリークエスチョンはありません"
 
 #: src/features/Game/Battle/BattleSection.tsx:57
 #. js-lingui-explicit-id
@@ -6978,6 +6979,11 @@ msgstr ""
 msgid "Preparing the brain"
 msgstr "脳を準備する"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:226
+#. js-lingui-explicit-id
+msgid "Previous Question"
+msgstr "前の質問"
+
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -7016,7 +7022,7 @@ msgstr "プライバシーポリシー"
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 
-#: src/features/Community/CommunityDashboard.tsx:112
+#: src/features/Community/CommunityDashboard.tsx:113
 #: src/features/Community/CommunityPage.tsx:24
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -7936,6 +7942,11 @@ msgstr "レッスンをもっと表示"
 msgid "Show previous"
 msgstr "前のものを表示"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:84
+#. js-lingui-explicit-id
+msgid "Show previous questions"
+msgstr "以前の質問を表示"
+
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
 msgid "Show problem-solving skills"
@@ -8106,6 +8117,13 @@ msgstr "ASP.NET CoreとEF Coreに関する確かな知識があります。回�
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "レッスンの追加生成中に何か問題が発生しました。後でもう一度お試しください。"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:37
+#. js-lingui-explicit-id
+msgid ""
+"Sorry, there is no daily question available for today. Please check back "
+"tomorrow!"
+msgstr "申し訳ありませんが、本日利用可能なデイリークエスチョンはありません。明日またチェックしてください！"
 
 #: src/features/Lang/getLabels.tsx:10
 #. js-lingui-explicit-id
@@ -8617,7 +8635,7 @@ msgstr "AIフロントエンド開発者との技術面接"
 msgid "Tech stack covered"
 msgstr "カバーされている技術スタック"
 
-#: src/features/Community/CommunityDashboard.tsx:107
+#: src/features/Community/CommunityDashboard.tsx:108
 #: src/features/Community/CommunityPage.tsx:27
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -8899,6 +8917,11 @@ msgid ""
 msgstr ""
 "FluencyPalを使用するには、最新のインターネットブラウザとマイクが必要です。ウェブカメラはオプションで、ウェブカメラフィードバックを有効にした場"
 "合のみ使用されます。インストールは不要です。"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:226
+#. js-lingui-explicit-id
+msgid "Today's Question"
+msgstr "本日の質問"
 
 #: src/features/Landing/PlanLandingBlock.tsx:231
 #. js-lingui-explicit-id
@@ -9515,7 +9538,7 @@ msgstr "有料プランで何が得られますか？"
 msgid "What do I need to use FluencyPal?"
 msgstr "FluencyPalを利用するには何が必要ですか?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:217
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:268
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "何を考えていますか？"
@@ -9957,7 +9980,7 @@ msgstr "個人データはいつでも削除できます"
 msgid "You can discuss the battle here."
 msgstr "ここで戦いについて話し合うことができます。"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:212
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:263
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "日々の質問をここで議論できます。"
@@ -10298,6 +10321,11 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:182
+#. js-lingui-explicit-id
+#~ msgid "Daily Question"
+#~ msgstr "デイリークエスチョン"
 
 #: src/features/Community/CommunityPage.tsx:24
 #. js-lingui-explicit-id

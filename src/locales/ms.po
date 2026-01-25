@@ -451,7 +451,7 @@ msgstr "Tambah Pos Baru"
 msgid "Add Post"
 msgstr "Tambah Siaran"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:220
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:271
 #. js-lingui-explicit-id
 msgid "Add Response"
 msgstr "Tambah Tindak Balas"
@@ -1550,19 +1550,19 @@ msgstr "Komunikasi & Kepimpinan"
 msgid "Community"
 msgstr "Komuniti"
 
-#: src/features/Community/CommunityDashboard.tsx:94
+#: src/features/Community/CommunityDashboard.tsx:95
 #: src/features/Community/CommunityPage.tsx:22
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "Sembang Komuniti"
 
-#: src/features/Community/CommunityDashboard.tsx:74
+#: src/features/Community/CommunityDashboard.tsx:75
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Pusat Komuniti"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:205
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:256
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "Tindak Balas Komuniti:"
@@ -2009,17 +2009,13 @@ msgstr "Temu bual harian tanpa rasa takut dinilai"
 msgid "Daily Language Practice"
 msgstr "Amalan Bahasa Harian"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:182
-#. js-lingui-explicit-id
-msgid "Daily Question"
-msgstr "Soalan Harian"
-
 #: src/features/Chat/ChatPage.tsx:329
 #: src/features/Chat/ChatPage.tsx:403
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Sembang Soalan Harian"
 
+#: src/features/Community/CommunityDashboard.tsx:126
 #: src/features/Community/CommunityPage.tsx:26
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2108,7 +2104,7 @@ msgstr "Perdebatan bermula!"
 msgid "Debate topics will be selected randomly."
 msgstr "Topik perdebatan akan dipilih secara rawak."
 
-#: src/features/Community/CommunityDashboard.tsx:118
+#: src/features/Community/CommunityDashboard.tsx:119
 #: src/features/Community/CommunityPage.tsx:25
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -3650,7 +3646,7 @@ msgstr "Akses penuh jurulatih temu duga AI"
 msgid "Full AI tutor access"
 msgstr "Akses penuh tutor AI"
 
-#: src/features/Community/CommunityDashboard.tsx:100
+#: src/features/Community/CommunityDashboard.tsx:101
 #: src/features/Community/CommunityPage.tsx:23
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -5986,7 +5982,7 @@ msgstr "Memuat Malas"
 msgid "Leaderboard"
 msgstr "Papan Pendahulu"
 
-#: src/features/Community/CommunityDashboard.tsx:133
+#: src/features/Community/CommunityDashboard.tsx:132
 #: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -6648,6 +6644,11 @@ msgstr "Belum ada pembetulan"
 #. js-lingui-explicit-id
 msgid "No credit card required"
 msgstr "Tiada kad kredit diperlukan"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:35
+#. js-lingui-explicit-id
+msgid "No daily question for today"
+msgstr "Tiada soalan harian untuk hari ini"
 
 #: src/features/Game/Battle/BattleSection.tsx:57
 #. js-lingui-explicit-id
@@ -7615,6 +7616,11 @@ msgstr ""
 msgid "Preparing the brain"
 msgstr "Menyediakan otak"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:226
+#. js-lingui-explicit-id
+msgid "Previous Question"
+msgstr "Soalan Sebelumnya"
+
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -7653,7 +7659,7 @@ msgstr "dasar privasi"
 msgid "Privacy Policy"
 msgstr "Dasar Privasi"
 
-#: src/features/Community/CommunityDashboard.tsx:112
+#: src/features/Community/CommunityDashboard.tsx:113
 #: src/features/Community/CommunityPage.tsx:24
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -8602,6 +8608,11 @@ msgstr "Tunjukkan lebih banyak pelajaran"
 msgid "Show previous"
 msgstr "Tunjukkan sebelumnya"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:84
+#. js-lingui-explicit-id
+msgid "Show previous questions"
+msgstr "Tunjukkan soalan-soalan sebelumnya"
+
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
 msgid "Show problem-solving skills"
@@ -8786,6 +8797,13 @@ msgid "Something went wrong while generating more lessons. Please try again late
 msgstr ""
 "Sesuatu telah berlaku salah semasa menjana lebih banyak pelajaran. Sila "
 "cuba lagi kemudian."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:37
+#. js-lingui-explicit-id
+msgid ""
+"Sorry, there is no daily question available for today. Please check back "
+"tomorrow!"
+msgstr "Maaf, tiada soalan harian tersedia untuk hari ini. Sila semak semula esok!"
 
 #: src/features/Lang/getLabels.tsx:10
 #. js-lingui-explicit-id
@@ -9324,7 +9342,7 @@ msgstr "Temuduga teknik dengan pemaju fronend AI"
 msgid "Tech stack covered"
 msgstr "Tumpuan timbunan teknologi"
 
-#: src/features/Community/CommunityDashboard.tsx:107
+#: src/features/Community/CommunityDashboard.tsx:108
 #: src/features/Community/CommunityPage.tsx:27
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -9632,6 +9650,11 @@ msgstr ""
 "Untuk menggunakan FluencyPal, anda memerlukan pelayar internet moden dan "
 "mikrofon. Webcam adalah pilihan dan hanya digunakan jika anda mengaktifkan "
 "maklum balas webcam. Tiada pemasangan diperlukan."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:226
+#. js-lingui-explicit-id
+msgid "Today's Question"
+msgstr "Soalan Hari Ini"
 
 #: src/features/Landing/PlanLandingBlock.tsx:231
 #. js-lingui-explicit-id
@@ -10280,7 +10303,7 @@ msgstr "Apakah yang saya dapatkan dengan pelan berbayar?"
 msgid "What do I need to use FluencyPal?"
 msgstr "Apakah yang saya perlukan untuk menggunakan FluencyPal?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:217
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:268
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "Apa pendapat anda?"
@@ -10774,7 +10797,7 @@ msgstr "Anda boleh memadam data peribadi anda pada bila-bila masa"
 msgid "You can discuss the battle here."
 msgstr "Anda boleh membincangkan pertempuran di sini."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:212
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:263
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "Anda boleh membincangkan soalan harian di sini."
@@ -11155,6 +11178,11 @@ msgstr ""
 "— sangat penting untuk melibatkan diri dalam perbualan pendek ini sebelum "
 "melompat ke topik profesional. Berikut adalah beberapa frasa Inggeris yang "
 "berguna untuk memulakan temuduga:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:182
+#. js-lingui-explicit-id
+#~ msgid "Daily Question"
+#~ msgstr "Soalan Harian"
 
 #: src/features/Community/CommunityPage.tsx:24
 #. js-lingui-explicit-id

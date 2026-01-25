@@ -446,7 +446,7 @@ msgstr "Yeni Gönderi Ekle"
 msgid "Add Post"
 msgstr "Gönderi Ekle"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:220
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:271
 #. js-lingui-explicit-id
 msgid "Add Response"
 msgstr "Yanıt Ekle"
@@ -1532,19 +1532,19 @@ msgstr "İletişim ve Liderlik"
 msgid "Community"
 msgstr "Topluluk"
 
-#: src/features/Community/CommunityDashboard.tsx:94
+#: src/features/Community/CommunityDashboard.tsx:95
 #: src/features/Community/CommunityPage.tsx:22
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "Topluluk Sohbeti"
 
-#: src/features/Community/CommunityDashboard.tsx:74
+#: src/features/Community/CommunityDashboard.tsx:75
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Topluluk Merkezi"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:205
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:256
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "Topluluk Yanıtları:"
@@ -1984,17 +1984,13 @@ msgstr "Yargılanma korkusu olmadan günlük röportaj"
 msgid "Daily Language Practice"
 msgstr "Günlük Dil Pratiği"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:182
-#. js-lingui-explicit-id
-msgid "Daily Question"
-msgstr "Günlük Soru"
-
 #: src/features/Chat/ChatPage.tsx:329
 #: src/features/Chat/ChatPage.tsx:403
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Günlük Soru Sohbeti"
 
+#: src/features/Community/CommunityDashboard.tsx:126
 #: src/features/Community/CommunityPage.tsx:26
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2082,7 +2078,7 @@ msgstr "Tartışma başladı!"
 msgid "Debate topics will be selected randomly."
 msgstr "Tartışma konuları rastgele seçilecektir."
 
-#: src/features/Community/CommunityDashboard.tsx:118
+#: src/features/Community/CommunityDashboard.tsx:119
 #: src/features/Community/CommunityPage.tsx:25
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -3602,7 +3598,7 @@ msgstr "Tam AI mülakat koçu erişimi"
 msgid "Full AI tutor access"
 msgstr "Tam AI öğretmen erişimi"
 
-#: src/features/Community/CommunityDashboard.tsx:100
+#: src/features/Community/CommunityDashboard.tsx:101
 #: src/features/Community/CommunityPage.tsx:23
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -5881,7 +5877,7 @@ msgstr "Tembel Yükleme"
 msgid "Leaderboard"
 msgstr "Lider Tablosu"
 
-#: src/features/Community/CommunityDashboard.tsx:133
+#: src/features/Community/CommunityDashboard.tsx:132
 #: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -6529,6 +6525,11 @@ msgstr "Henüz bir düzeltme yok"
 #. js-lingui-explicit-id
 msgid "No credit card required"
 msgstr "Kredi kartı gerekli değil"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:35
+#. js-lingui-explicit-id
+msgid "No daily question for today"
+msgstr "Bugün için günlük soru yok"
 
 #: src/features/Game/Battle/BattleSection.tsx:57
 #. js-lingui-explicit-id
@@ -7484,6 +7485,11 @@ msgstr ""
 msgid "Preparing the brain"
 msgstr "Beyni hazırlama"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:226
+#. js-lingui-explicit-id
+msgid "Previous Question"
+msgstr "Önceki Soru"
+
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -7522,7 +7528,7 @@ msgstr "gizlilik politikası"
 msgid "Privacy Policy"
 msgstr "Gizlilik Politikası"
 
-#: src/features/Community/CommunityDashboard.tsx:112
+#: src/features/Community/CommunityDashboard.tsx:113
 #: src/features/Community/CommunityPage.tsx:24
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -8467,6 +8473,11 @@ msgstr "Daha fazla ders göster"
 msgid "Show previous"
 msgstr "Öncekini göster"
 
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:84
+#. js-lingui-explicit-id
+msgid "Show previous questions"
+msgstr "Önceki soruları göster"
+
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
 msgid "Show problem-solving skills"
@@ -8650,6 +8661,15 @@ msgid "Something went wrong while generating more lessons. Please try again late
 msgstr ""
 "Daha fazla ders oluşturulurken bir şeyler yanlış gitti. Lütfen daha sonra "
 "tekrar deneyin."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:37
+#. js-lingui-explicit-id
+msgid ""
+"Sorry, there is no daily question available for today. Please check back "
+"tomorrow!"
+msgstr ""
+"Üzgünüz, bugün için mevcut günlük bir soru yok. Lütfen yarın tekrar kontrol "
+"edin!"
 
 #: src/features/Lang/getLabels.tsx:10
 #. js-lingui-explicit-id
@@ -9188,7 +9208,7 @@ msgstr "Yapay Zeka ön yüz geliştirici ile teknik mülakat"
 msgid "Tech stack covered"
 msgstr "Kapsanan teknoloji yığını"
 
-#: src/features/Community/CommunityDashboard.tsx:107
+#: src/features/Community/CommunityDashboard.tsx:108
 #: src/features/Community/CommunityPage.tsx:27
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -9494,6 +9514,11 @@ msgstr ""
 "FluencyPal kullanmak için modern bir internet tarayıcısına ve bir mikrofona "
 "ihtiyacınız var. Web kamerası isteğe bağlıdır ve sadece web kamerası geri "
 "bildirimini etkinleştirirseniz kullanılır. Kurulum gerekmez."
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:226
+#. js-lingui-explicit-id
+msgid "Today's Question"
+msgstr "Bugünün Sorusu"
 
 #: src/features/Landing/PlanLandingBlock.tsx:231
 #. js-lingui-explicit-id
@@ -10132,7 +10157,7 @@ msgstr "Ücretli planla ne elde ederim?"
 msgid "What do I need to use FluencyPal?"
 msgstr "FluencyPal'i kullanmak için neye ihtiyacım var?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:217
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:268
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "Ne düşünüyorsun?"
@@ -10610,7 +10635,7 @@ msgstr "Kişisel verilerinizi istediğiniz zaman silebilirsiniz"
 msgid "You can discuss the battle here."
 msgstr "Savaşı burada tartışabilirsiniz."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:212
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:263
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "Günlük soruyu burada tartışabilirsiniz."
@@ -10986,6 +11011,11 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:182
+#. js-lingui-explicit-id
+#~ msgid "Daily Question"
+#~ msgstr "Günlük Soru"
 
 #: src/features/Community/CommunityPage.tsx:24
 #. js-lingui-explicit-id
