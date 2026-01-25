@@ -9,6 +9,7 @@ import { useLingui } from '@lingui/react';
 import { useEffect, useRef, useState } from 'react';
 import { useCorrections } from '../Corrections/useCorrections';
 import { useTranslate } from '../Translation/useTranslate';
+import { ProcessHeader } from './ProcessUserInput/ProcessHeader';
 
 export const ProcessUserInput = ({
   isTranscribing,
@@ -143,81 +144,11 @@ export const ProcessUserInput = ({
             {i18n._('An error occurred while analyzing the message. Please try again.')}
           </Typography>
         )}
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: '15px',
-            width: '100%',
-            justifyContent: 'space-between',
-          }}
-        >
-          <Stack
-            sx={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: '15px',
-            }}
-          >
-            <Stack
-              sx={{
-                height: '40px',
-                width: '40px',
-                borderRadius: '50%',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: isAnalyzingResponse
-                  ? 'rgba(255, 255, 255, 0.06)'
-                  : isNeedToShowCorrection
-                    ? 'linear-gradient(45deg, #2b3cadff 0%, #4e5ec3ff 100%)'
-                    : 'linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)',
-              }}
-            >
-              {isNeedToShowCorrection && !isAnalyzingResponse ? (
-                <ShieldAlert color="#fff" size={'21px'} strokeWidth={'2.3px'} />
-              ) : (
-                <>
-                  {isAnalyzingResponse ? (
-                    <Loader color="#fff" size={'21px'} strokeWidth={'4px'} />
-                  ) : (
-                    <Check color="#fff" size={'21px'} strokeWidth={'4px'} />
-                  )}
-                </>
-              )}
-            </Stack>
 
-            {isNeedToShowCorrection && !isAnalyzingResponse ? (
-              <Typography variant="h6">{i18n._('Almost correct')}</Typography>
-            ) : (
-              <>
-                {isAnalyzingResponse ? (
-                  <Typography
-                    className="loading-shimmer"
-                    sx={{
-                      color: '#fff',
-                      display: 'inline',
-                    }}
-                    variant="h6"
-                  >
-                    {i18n._('Analyzing...')}
-                  </Typography>
-                ) : (
-                  <Typography variant="h6">{i18n._('Great!')}</Typography>
-                )}
-              </>
-            )}
-          </Stack>
-          {!!rate && (
-            <Typography
-              variant="body2"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              {rate}/10
-            </Typography>
-          )}
-        </Stack>
+        <ProcessHeader
+          state={isAnalyzingResponse ? 'loading' : isNeedToShowCorrection ? 'incorrect' : 'correct'}
+          rate={rate}
+        />
 
         {isNeedToShowCorrection && (
           <Stack>
