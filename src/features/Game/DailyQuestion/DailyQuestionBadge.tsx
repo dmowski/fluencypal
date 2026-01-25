@@ -47,7 +47,7 @@ export const DailyQuestionBadge = () => {
       <QuestionSection question={todaysQuestion} isOld={false} />
 
       {questionsKeys
-        .filter((key, index) => index < questionIndex)
+        .filter((key) => key !== questionsKeys[questionIndex])
         .map((key) => {
           const question = dailyQuestions[key];
           return (
