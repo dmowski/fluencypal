@@ -270,7 +270,20 @@ export const Message = ({
               width: '100%',
             }}
           >
-            <Markdown>{proposedAnswer}</Markdown>
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+              }}
+            >
+              <Markdown>{proposedAnswer}</Markdown>
+              <AudioPlayIcon
+                text={proposedAnswer}
+                voice={voice}
+                instructions={voiceInfo.voiceInstruction}
+              />
+            </Stack>
             {proposedAnswerTranslation && <Divider />}
             {proposedAnswerTranslation && (
               <Stack
