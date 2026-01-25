@@ -11,6 +11,7 @@ import {
   UsersRound,
 } from 'lucide-react';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import PsychologyIcon from '@mui/icons-material/Psychology';
 import { useUrlState } from '../Url/useUrlParam';
 import { CommunityCard } from './CommunityCard';
 import { CommunityPageRouter } from './CommunityPage';
@@ -121,13 +122,11 @@ export const CommunityDashboard = () => {
                   icon={<UsersRound style={iconStyle} />}
                 />
 
-                {/*
                 <CommunityCard
-                  title="Daily Questions"
+                  title={i18n._('Daily Questions')}
                   onClick={() => setActivePage('daily-questions')}
-                  icon={<PsychologyIcon sx={{ fontSize: 'var(--icon-size)' }} />}
+                  icon={<PsychologyIcon style={iconStyle} />}
                 />
-                */}
 
                 <CommunityCard
                   title={i18n._('Leaderboards')}
