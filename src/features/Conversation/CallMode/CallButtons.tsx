@@ -417,7 +417,7 @@ Examples:
 
                       <Stack
                         sx={{
-                          opacity: waitingPercent > 0 ? 0.4 : 0,
+                          opacity: waitingPercent > 0 ? 0.6 : 0,
                           position: 'absolute',
                           top: '-13px',
                           left: '-13px',
