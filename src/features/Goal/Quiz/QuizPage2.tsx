@@ -29,6 +29,7 @@ import { SelectTeacher } from '@/features/Conversation/CallMode/SelectTeacher';
 import { AiAvatarVideo } from '@/features/Conversation/CallMode/AiAvatarVideo';
 import { getAiVoiceByVoice } from '@/features/Conversation/CallMode/voiceAvatar';
 import { AiAvatar } from '@/features/Conversation/CallMode/types';
+import { useAccess } from '@/features/Usage/useAccess';
 
 const QuizQuestions = () => {
   const {
@@ -50,8 +51,9 @@ const QuizQuestions = () => {
   const { i18n } = useLingui();
 
   const settings = useSettings();
+  const access = useAccess();
 
-  const [isFullAccess, setIsFullAccess] = useState(true);
+  const [isFullAccessRedirect, setIsFullAccessRedirect] = useState(true);
 
   const { languageGroups } = useLanguageGroup({
     defaultGroupTitle: i18n._(`Other languages`),
@@ -68,7 +70,7 @@ const QuizQuestions = () => {
   const doneQuiz = async () => {
     setRedirecting(true);
 
-    const queryParams = isFullAccess ? '?paymentModal=true' : '';
+    const queryParams = isFullAccessRedirect && !access.isFullAppAccess ? '?paymentModal=true' : '';
     try {
       await confirmPlan();
       const goalTalkModeElement = survey?.goalData?.elements.find(
@@ -358,8 +360,8 @@ const QuizQuestions = () => {
                     <AccessSelector
                       isSpeaking={true}
                       isFullAccess={true}
-                      isSelected={isFullAccess}
-                      onSelect={() => setIsFullAccess(true)}
+                      isSelected={isFullAccessRedirect}
+                      onSelect={() => setIsFullAccessRedirect(true)}
                       aiAvatar={getAiVoiceByVoice(settings.userSettings?.teacherVoice || 'shimmer')}
                       title={i18n._(`Full Access`)}
                       description={i18n._(
@@ -370,8 +372,8 @@ const QuizQuestions = () => {
                     <AccessSelector
                       isSpeaking={false}
                       isFullAccess={false}
-                      isSelected={!isFullAccess}
-                      onSelect={() => setIsFullAccess(false)}
+                      isSelected={!isFullAccessRedirect}
+                      onSelect={() => setIsFullAccessRedirect(false)}
                       aiAvatar={getAiVoiceByVoice(settings.userSettings?.teacherVoice || 'shimmer')}
                       title={i18n._(`Limited Access`)}
                       description={i18n._(`Basic exercises and text-only practice.`)}
