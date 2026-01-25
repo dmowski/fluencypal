@@ -183,7 +183,7 @@ Examples:
       model: 'gpt-4o',
     });
 
-    return Math.max(2000, parseInt(response.trim()));
+    return Math.min(5000, Math.max(2000, parseInt(response.trim())));
   };
 
   const vadAudioRecorder = useVadAudioRecorder({
