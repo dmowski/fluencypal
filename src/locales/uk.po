@@ -734,7 +734,7 @@ msgstr "Дозволити доступ до мікрофона"
 msgid "Allow WebCam"
 msgstr "Дозволити веб-камеру"
 
-#: src/features/Conversation/ProcessUserInput.tsx:195
+#: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:35
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Майже вірно"
@@ -767,12 +767,12 @@ msgstr ""
 "Сума занадто велика. Я ціную вашу підтримку, але давайте триматися межі в "
 "$400"
 
-#: src/features/Conversation/ProcessUserInput.tsx:148
+#: src/features/Conversation/ProcessUserInput.tsx:129
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "Під час аналізу повідомлення сталася помилка. Будь ласка, спробуйте ще раз."
 
-#: src/features/Conversation/ConversationCanvas.tsx:511
+#: src/features/Conversation/ConversationCanvas.tsx:508
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Аналіз"
@@ -782,9 +782,8 @@ msgstr "Аналіз"
 msgid "Analyzing your inputs..."
 msgstr "Аналізуємо ваші введення..."
 
-#: src/features/Conversation/ProcessUserInput.tsx:207
-#: src/features/Conversation/ProcessUserInput.tsx:359
-#: src/features/Conversation/ProcessUserInput.tsx:368
+#: src/features/Conversation/ProcessUserInput.tsx:111
+#: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:47
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Аналізуємо..."
@@ -1286,7 +1285,7 @@ msgid "Cancel"
 msgstr "Скасувати"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:394
-#: src/features/Conversation/ConversationCanvas.tsx:784
+#: src/features/Conversation/ConversationCanvas.tsx:758
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Скасувати запис"
@@ -1796,7 +1795,7 @@ msgstr "Скопіювати посилання на сторінку"
 msgid "Core Web Vitals"
 msgstr "Основні показники веб-життєдіяльності"
 
-#: src/features/Conversation/ProcessUserInput.tsx:318
+#: src/features/Conversation/ProcessUserInput.tsx:109
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Виправлено"
@@ -2460,7 +2459,7 @@ msgstr "Не забудьте спробувати режим дзвінка в 
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:560
+#: src/features/Conversation/ConversationCanvas.tsx:540
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:254
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
@@ -2792,7 +2791,7 @@ msgstr "Помилка створення платіжної сесії. Спр�
 msgid "Error creating plan. Please try again."
 msgstr "Помилка створення плану. Будь ласка, спробуйте ще раз."
 
-#: src/features/Conversation/ConversationCanvas.tsx:459
+#: src/features/Conversation/ConversationCanvas.tsx:457
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Помилка під час аналізу повідомлення"
@@ -4002,7 +4001,7 @@ msgstr "Виправлення Граматики"
 msgid "Grammar corrections to boost your confidence"
 msgstr "Граматичні виправлення для підвищення вашої впевненості"
 
-#: src/features/Conversation/ProcessUserInput.tsx:210
+#: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:50
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Чудово!"
@@ -4832,7 +4831,7 @@ msgstr ""
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "Я задам вам ще два запитання, перш ніж підготую ваш план."
 
-#: src/features/Chat/SubmitForm.tsx:152
+#: src/features/Chat/SubmitForm.tsx:150
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Ідея для вашого повідомлення:"
@@ -6068,9 +6067,9 @@ msgstr "Завантаження."
 msgid "Loading.."
 msgstr "Завантаження..."
 
-#: src/features/Chat/SubmitForm.tsx:81
+#: src/features/Chat/SubmitForm.tsx:80
 #: src/features/Community/GamePage.tsx:90
-#: src/features/Conversation/ConversationCanvas.tsx:217
+#: src/features/Conversation/ConversationCanvas.tsx:215
 #: src/features/Conversation/ConversationReviewModal.tsx:101
 #: src/features/Conversation/ConversationReviewModal.tsx:116
 #: src/features/Conversation/ConversationReviewModal.tsx:131
@@ -6297,7 +6296,7 @@ msgstr "Налаштування мікрофона"
 msgid "Minutes"
 msgstr "Хвилини"
 
-#: src/features/Conversation/ConversationCanvas.tsx:676
+#: src/features/Conversation/ConversationCanvas.tsx:656
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Місію виконано"
@@ -6826,7 +6825,7 @@ msgid "Open personal plan"
 msgstr "Відкрити персональний план"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:344
-#: src/features/Conversation/ConversationCanvas.tsx:684
+#: src/features/Conversation/ConversationCanvas.tsx:664
 #: src/features/Game/Battle/BattleCard.tsx:327
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7116,7 +7115,7 @@ msgstr ""
 msgid "Please enter a valid email address"
 msgstr "Будь ласка, введіть дійсну електронну адресу"
 
-#: src/features/Chat/SubmitForm.tsx:385
+#: src/features/Chat/SubmitForm.tsx:383
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Будь ласка, запишіть довше повідомлення (щонайменше кілька слів)."
@@ -7697,15 +7696,14 @@ msgstr "Увійдіть до топ 5, щоб отримати додаток �
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Досягніть топ-5, щоб отримати повний доступ до всіх функцій!"
 
-#: src/features/Chat/SubmitForm.tsx:299
-#: src/features/Conversation/ConversationCanvas.tsx:546
-#: src/features/Conversation/ConversationCanvas.tsx:698
+#: src/features/Chat/SubmitForm.tsx:297
+#: src/features/Conversation/ConversationCanvas.tsx:675
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Перезаписати"
 
-#: src/features/Conversation/ConversationCanvas.tsx:714
+#: src/features/Conversation/ConversationCanvas.tsx:688
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Перепишіть"
@@ -7988,7 +7986,7 @@ msgstr "Записати відповідь"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:457
 #: src/features/Conversation/CallMode/CallButtons.tsx:477
-#: src/features/Conversation/ConversationCanvas.tsx:587
+#: src/features/Conversation/ConversationCanvas.tsx:567
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Записати повідомлення"
@@ -8345,7 +8343,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Семантична HTML"
 
-#: src/features/Conversation/ConversationCanvas.tsx:529
+#: src/features/Conversation/ConversationCanvas.tsx:526
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -8366,8 +8364,8 @@ msgstr "Надіслати електронний лист ще раз"
 msgid "Send me sign-in link"
 msgstr "Надішліть мені посилання для входу"
 
-#: src/features/Chat/SubmitForm.tsx:201
-#: src/features/Chat/SubmitForm.tsx:315
+#: src/features/Chat/SubmitForm.tsx:199
+#: src/features/Chat/SubmitForm.tsx:313
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Надіслати повідомлення"
@@ -8378,7 +8376,7 @@ msgid "Send Request"
 msgstr "Надіслати запит"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:315
+#: src/features/Chat/SubmitForm.tsx:313
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -8495,14 +8493,14 @@ msgstr "Показати дебати"
 msgid "Show knowledge of the company and genuine interest. For example:"
 msgstr "Показуйте знання компанії та щиру зацікавленість. Наприклад:"
 
-#: src/features/Conversation/ProcessUserInput.tsx:252
+#: src/features/Conversation/ProcessUserInput.tsx:113
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Показати менше"
 
 #: src/features/Chat/Message.tsx:386
-#: src/features/Conversation/ProcessUserInput.tsx:252
+#: src/features/Conversation/ProcessUserInput.tsx:112
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -8999,7 +8997,7 @@ msgstr ""
 "практикувати подання чітких, переконливих відповідей, які допоможуть вам "
 "виділитися на будь-якому робочому інтерв'ю."
 
-#: src/features/Chat/SubmitForm.tsx:275
+#: src/features/Chat/SubmitForm.tsx:273
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Стоп"
@@ -9598,10 +9596,7 @@ msgstr "Всього:"
 msgid "Track Your Fluency Progress"
 msgstr "Слідкуйте за своїм прогресом у володінні мовою"
 
-#: src/features/Conversation/ProcessUserInput.tsx:298
-#: src/features/Conversation/ProcessUserInput.tsx:299
-#: src/features/Conversation/ProcessUserInput.tsx:357
-#: src/features/Conversation/ProcessUserInput.tsx:366
+#: src/features/Conversation/ProcessUserInput.tsx:110
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:224
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
@@ -10992,13 +10987,13 @@ msgstr "Ваш партнер з підготовки до співбесіди 
 msgid "Your Language Level"
 msgstr "Ваш рівень мови"
 
-#: src/features/Chat/SubmitForm.tsx:162
-#: src/features/Conversation/ProcessUserInput.tsx:276
+#: src/features/Chat/SubmitForm.tsx:160
+#: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Ваше Повідомлення"
 
-#: src/features/Conversation/ConversationCanvas.tsx:627
+#: src/features/Conversation/ConversationCanvas.tsx:607
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Ваше повідомлення..."

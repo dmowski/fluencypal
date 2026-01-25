@@ -698,7 +698,7 @@ msgstr "마이크 액세스 허용"
 msgid "Allow WebCam"
 msgstr "웹캠 허용"
 
-#: src/features/Conversation/ProcessUserInput.tsx:195
+#: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:35
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "거의 맞습니다"
@@ -729,12 +729,12 @@ msgstr "구입할 시간의 양"
 msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
 msgstr "금액이 너무 큽니다. 지원해 주신 점 감사드리나, $400 이하로 유지합시다"
 
-#: src/features/Conversation/ProcessUserInput.tsx:148
+#: src/features/Conversation/ProcessUserInput.tsx:129
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "메시지를 분석하는 중에 오류가 발생했습니다. 다시 시도해 주세요."
 
-#: src/features/Conversation/ConversationCanvas.tsx:511
+#: src/features/Conversation/ConversationCanvas.tsx:508
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "분석 중"
@@ -744,9 +744,8 @@ msgstr "분석 중"
 msgid "Analyzing your inputs..."
 msgstr "입력을 분석 중입니다..."
 
-#: src/features/Conversation/ProcessUserInput.tsx:207
-#: src/features/Conversation/ProcessUserInput.tsx:359
-#: src/features/Conversation/ProcessUserInput.tsx:368
+#: src/features/Conversation/ProcessUserInput.tsx:111
+#: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:47
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "분석 중..."
@@ -1234,7 +1233,7 @@ msgid "Cancel"
 msgstr "취소"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:394
-#: src/features/Conversation/ConversationCanvas.tsx:784
+#: src/features/Conversation/ConversationCanvas.tsx:758
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "녹음 취소"
@@ -1724,7 +1723,7 @@ msgstr "페이지 링크 복사"
 msgid "Core Web Vitals"
 msgstr "코어 웹 바이탈"
 
-#: src/features/Conversation/ProcessUserInput.tsx:318
+#: src/features/Conversation/ProcessUserInput.tsx:109
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "수정됨"
@@ -2335,7 +2334,7 @@ msgstr "연습 섹션에서 통화 모드를 꼭 시도해 보세요!"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:560
+#: src/features/Conversation/ConversationCanvas.tsx:540
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:254
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
@@ -2648,7 +2647,7 @@ msgstr "결제 세션 생성 중 오류가 발생했습니다. 나중에 다시 
 msgid "Error creating plan. Please try again."
 msgstr "플랜 생성 오류. 다시 시도해 주세요."
 
-#: src/features/Conversation/ConversationCanvas.tsx:459
+#: src/features/Conversation/ConversationCanvas.tsx:457
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "메시지 분석 중 오류"
@@ -3723,7 +3722,7 @@ msgstr "문법 수정"
 msgid "Grammar corrections to boost your confidence"
 msgstr "자신감을 높여주는 문법 수정"
 
-#: src/features/Conversation/ProcessUserInput.tsx:210
+#: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:50
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "대박!"
@@ -4481,7 +4480,7 @@ msgstr ""
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "당신의 계획을 세우기 전에 두 가지 질문을 더 드리겠습니다."
 
-#: src/features/Chat/SubmitForm.tsx:152
+#: src/features/Chat/SubmitForm.tsx:150
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "메시지에 대한 아이디어:"
@@ -5619,9 +5618,9 @@ msgstr "로딩 중."
 msgid "Loading.."
 msgstr "로딩 중.."
 
-#: src/features/Chat/SubmitForm.tsx:81
+#: src/features/Chat/SubmitForm.tsx:80
 #: src/features/Community/GamePage.tsx:90
-#: src/features/Conversation/ConversationCanvas.tsx:217
+#: src/features/Conversation/ConversationCanvas.tsx:215
 #: src/features/Conversation/ConversationReviewModal.tsx:101
 #: src/features/Conversation/ConversationReviewModal.tsx:116
 #: src/features/Conversation/ConversationReviewModal.tsx:131
@@ -5836,7 +5835,7 @@ msgstr "마이크 설정"
 msgid "Minutes"
 msgstr "분"
 
-#: src/features/Conversation/ConversationCanvas.tsx:676
+#: src/features/Conversation/ConversationCanvas.tsx:656
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "미션 완료"
@@ -6338,7 +6337,7 @@ msgid "Open personal plan"
 msgstr "개인 계획 열기"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:344
-#: src/features/Conversation/ConversationCanvas.tsx:684
+#: src/features/Conversation/ConversationCanvas.tsx:664
 #: src/features/Game/Battle/BattleCard.tsx:327
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -6610,7 +6609,7 @@ msgstr "모든 기능에 액세스하려면 신용카드를 확인해 주세요.
 msgid "Please enter a valid email address"
 msgstr "유효한 이메일 주소를 입력하세요"
 
-#: src/features/Chat/SubmitForm.tsx:385
+#: src/features/Chat/SubmitForm.tsx:383
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "좀 더 긴 메시지를 녹음해 주세요(적어도 몇 단어 이상)."
@@ -7151,15 +7150,14 @@ msgstr "상위 5위 안에 들면 앱을 무료로 받을 수 있습니다"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "상위 5위에 랭크하여 모든 기능에 대한 전체 액세스 권한을 받으세요!"
 
-#: src/features/Chat/SubmitForm.tsx:299
-#: src/features/Conversation/ConversationCanvas.tsx:546
-#: src/features/Conversation/ConversationCanvas.tsx:698
+#: src/features/Chat/SubmitForm.tsx:297
+#: src/features/Conversation/ConversationCanvas.tsx:675
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "다시 녹음하다"
 
-#: src/features/Conversation/ConversationCanvas.tsx:714
+#: src/features/Conversation/ConversationCanvas.tsx:688
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "재작성"
@@ -7425,7 +7423,7 @@ msgstr "기록된 답변"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:457
 #: src/features/Conversation/CallMode/CallButtons.tsx:477
-#: src/features/Conversation/ConversationCanvas.tsx:587
+#: src/features/Conversation/ConversationCanvas.tsx:567
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "메시지 기록"
@@ -7763,7 +7761,7 @@ msgstr "독학 개발자가 HTML, CSS, JavaScript 지식을 검증하고자 함"
 msgid "Semantic HTML"
 msgstr "시맨틱 HTML"
 
-#: src/features/Conversation/ConversationCanvas.tsx:529
+#: src/features/Conversation/ConversationCanvas.tsx:526
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -7784,8 +7782,8 @@ msgstr "이메일 다시 보내기"
 msgid "Send me sign-in link"
 msgstr "로그인 링크 보내기"
 
-#: src/features/Chat/SubmitForm.tsx:201
-#: src/features/Chat/SubmitForm.tsx:315
+#: src/features/Chat/SubmitForm.tsx:199
+#: src/features/Chat/SubmitForm.tsx:313
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "메시지 보내기"
@@ -7796,7 +7794,7 @@ msgid "Send Request"
 msgstr "요청 보내기"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:315
+#: src/features/Chat/SubmitForm.tsx:313
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -7905,14 +7903,14 @@ msgstr "토론 보기"
 msgid "Show knowledge of the company and genuine interest. For example:"
 msgstr "회사에 대한 지식을 보여주고 진정한 관심을 보여주세요. 예를 들면:"
 
-#: src/features/Conversation/ProcessUserInput.tsx:252
+#: src/features/Conversation/ProcessUserInput.tsx:113
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "덜 보기"
 
 #: src/features/Chat/Message.tsx:386
-#: src/features/Conversation/ProcessUserInput.tsx:252
+#: src/features/Conversation/ProcessUserInput.tsx:112
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -8376,7 +8374,7 @@ msgstr ""
 "역할에 대한 동기에 대해 질문을 받게 될 것이고, AI는 여러분의 응답에 기반하여 난이도를 조절합니다. 질문에 대해 간결하고 설득력 "
 "있는 답변을 제공하는 연습을 위해 프롬프트를 사용하세요. 어떤 직업 인터뷰에서든 돋보일 수 있도록 도움이 될 것입니다."
 
-#: src/features/Chat/SubmitForm.tsx:275
+#: src/features/Chat/SubmitForm.tsx:273
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "정지"
@@ -8936,10 +8934,7 @@ msgstr "총계:"
 msgid "Track Your Fluency Progress"
 msgstr "자신의 유창성 진행 상황 추적하기"
 
-#: src/features/Conversation/ProcessUserInput.tsx:298
-#: src/features/Conversation/ProcessUserInput.tsx:299
-#: src/features/Conversation/ProcessUserInput.tsx:357
-#: src/features/Conversation/ProcessUserInput.tsx:366
+#: src/features/Conversation/ProcessUserInput.tsx:110
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:224
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
@@ -10222,13 +10217,13 @@ msgstr "당신의 면접 준비 파트너"
 msgid "Your Language Level"
 msgstr "당신의 언어 수준"
 
-#: src/features/Chat/SubmitForm.tsx:162
-#: src/features/Conversation/ProcessUserInput.tsx:276
+#: src/features/Chat/SubmitForm.tsx:160
+#: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "당신의 메시지"
 
-#: src/features/Conversation/ConversationCanvas.tsx:627
+#: src/features/Conversation/ConversationCanvas.tsx:607
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "당신의 메시지..."

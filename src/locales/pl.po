@@ -744,7 +744,7 @@ msgstr "Zezwól na dostęp do mikrofonu"
 msgid "Allow WebCam"
 msgstr "Zezwól na kamerę internetową"
 
-#: src/features/Conversation/ProcessUserInput.tsx:195
+#: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:35
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Prawie poprawne"
@@ -777,12 +777,12 @@ msgstr ""
 "Kwota jest zbyt duża. Doceniam Twoje wsparcie, ale utrzymajmy to poniżej "
 "400$"
 
-#: src/features/Conversation/ProcessUserInput.tsx:148
+#: src/features/Conversation/ProcessUserInput.tsx:129
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "Wystąpił błąd podczas analizowania wiadomości. Proszę spróbować ponownie."
 
-#: src/features/Conversation/ConversationCanvas.tsx:511
+#: src/features/Conversation/ConversationCanvas.tsx:508
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analizowanie"
@@ -792,9 +792,8 @@ msgstr "Analizowanie"
 msgid "Analyzing your inputs..."
 msgstr "Analizowanie twoich danych wejściowych..."
 
-#: src/features/Conversation/ProcessUserInput.tsx:207
-#: src/features/Conversation/ProcessUserInput.tsx:359
-#: src/features/Conversation/ProcessUserInput.tsx:368
+#: src/features/Conversation/ProcessUserInput.tsx:111
+#: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:47
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Analizowanie..."
@@ -1300,7 +1299,7 @@ msgid "Cancel"
 msgstr "Anuluj"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:394
-#: src/features/Conversation/ConversationCanvas.tsx:784
+#: src/features/Conversation/ConversationCanvas.tsx:758
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Anuluj nagrywanie"
@@ -1811,7 +1810,7 @@ msgstr "Skopiuj link strony"
 msgid "Core Web Vitals"
 msgstr "Podstawowe parametry internetowe"
 
-#: src/features/Conversation/ProcessUserInput.tsx:318
+#: src/features/Conversation/ProcessUserInput.tsx:109
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Poprawione"
@@ -2483,7 +2482,7 @@ msgstr ""
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:560
+#: src/features/Conversation/ConversationCanvas.tsx:540
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:254
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
@@ -2818,7 +2817,7 @@ msgstr "Błąd podczas tworzenia sesji płatności. Spróbuj ponownie później.
 msgid "Error creating plan. Please try again."
 msgstr "Błąd podczas tworzenia planu. Proszę spróbować ponownie."
 
-#: src/features/Conversation/ConversationCanvas.tsx:459
+#: src/features/Conversation/ConversationCanvas.tsx:457
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Błąd podczas analizy wiadomości"
@@ -4016,7 +4015,7 @@ msgstr "Poprawki gramatyczne"
 msgid "Grammar corrections to boost your confidence"
 msgstr "Poprawki gramatyczne, aby zwiększyć Twoją pewność siebie"
 
-#: src/features/Conversation/ProcessUserInput.tsx:210
+#: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:50
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Świetnie!"
@@ -4837,7 +4836,7 @@ msgstr ""
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "Zadam ci jeszcze dwa pytania, zanim stworzę twój plan."
 
-#: src/features/Chat/SubmitForm.tsx:152
+#: src/features/Chat/SubmitForm.tsx:150
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Pomysł na Twoją wiadomość:"
@@ -6097,9 +6096,9 @@ msgstr "Ładowanie."
 msgid "Loading.."
 msgstr "Ładowanie.."
 
-#: src/features/Chat/SubmitForm.tsx:81
+#: src/features/Chat/SubmitForm.tsx:80
 #: src/features/Community/GamePage.tsx:90
-#: src/features/Conversation/ConversationCanvas.tsx:217
+#: src/features/Conversation/ConversationCanvas.tsx:215
 #: src/features/Conversation/ConversationReviewModal.tsx:101
 #: src/features/Conversation/ConversationReviewModal.tsx:116
 #: src/features/Conversation/ConversationReviewModal.tsx:131
@@ -6328,7 +6327,7 @@ msgstr "Konfiguracja mikrofonu"
 msgid "Minutes"
 msgstr "Minuty"
 
-#: src/features/Conversation/ConversationCanvas.tsx:676
+#: src/features/Conversation/ConversationCanvas.tsx:656
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Misja zakończona"
@@ -6859,7 +6858,7 @@ msgid "Open personal plan"
 msgstr "Otwórz plan osobisty"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:344
-#: src/features/Conversation/ConversationCanvas.tsx:684
+#: src/features/Conversation/ConversationCanvas.tsx:664
 #: src/features/Game/Battle/BattleCard.tsx:327
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7149,7 +7148,7 @@ msgstr ""
 msgid "Please enter a valid email address"
 msgstr "Proszę wprowadzić prawidłowy adres e-mail"
 
-#: src/features/Chat/SubmitForm.tsx:385
+#: src/features/Chat/SubmitForm.tsx:383
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Proszę nagrać dłuższą wiadomość (przynajmniej kilka słów)."
@@ -7736,15 +7735,14 @@ msgstr "Znajdź się w pierwszej piątce, aby otrzymać aplikację za darmo"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Ranguj w pierwszej piątce, aby uzyskać pełny dostęp do wszystkich funkcji!"
 
-#: src/features/Chat/SubmitForm.tsx:299
-#: src/features/Conversation/ConversationCanvas.tsx:546
-#: src/features/Conversation/ConversationCanvas.tsx:698
+#: src/features/Chat/SubmitForm.tsx:297
+#: src/features/Conversation/ConversationCanvas.tsx:675
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Nagraj ponownie"
 
-#: src/features/Conversation/ConversationCanvas.tsx:714
+#: src/features/Conversation/ConversationCanvas.tsx:688
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Przepisz"
@@ -8029,7 +8027,7 @@ msgstr "Nagraj odpowiedź"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:457
 #: src/features/Conversation/CallMode/CallButtons.tsx:477
-#: src/features/Conversation/ConversationCanvas.tsx:587
+#: src/features/Conversation/ConversationCanvas.tsx:567
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Nagraj Wiadomość"
@@ -8384,7 +8382,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantyczny HTML"
 
-#: src/features/Conversation/ConversationCanvas.tsx:529
+#: src/features/Conversation/ConversationCanvas.tsx:526
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -8405,8 +8403,8 @@ msgstr "Wyślij e-mail ponownie"
 msgid "Send me sign-in link"
 msgstr "Wyślij mi link do logowania"
 
-#: src/features/Chat/SubmitForm.tsx:201
-#: src/features/Chat/SubmitForm.tsx:315
+#: src/features/Chat/SubmitForm.tsx:199
+#: src/features/Chat/SubmitForm.tsx:313
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Wyślij wiadomość"
@@ -8417,7 +8415,7 @@ msgid "Send Request"
 msgstr "Wyślij Żądanie"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:315
+#: src/features/Chat/SubmitForm.tsx:313
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -8534,14 +8532,14 @@ msgstr "Pokaż Debaty"
 msgid "Show knowledge of the company and genuine interest. For example:"
 msgstr "Pokaż wiedzę na temat firmy i autentyczne zainteresowanie. Na przykład:"
 
-#: src/features/Conversation/ProcessUserInput.tsx:252
+#: src/features/Conversation/ProcessUserInput.tsx:113
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Pokaż mniej"
 
 #: src/features/Chat/Message.tsx:386
-#: src/features/Conversation/ProcessUserInput.tsx:252
+#: src/features/Conversation/ProcessUserInput.tsx:112
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -9040,7 +9038,7 @@ msgstr ""
 "zwięzłych, przekonujących odpowiedzi, które pomogą Ci wyróżnić się na "
 "każdym wywiadzie kwalifikacyjnym."
 
-#: src/features/Chat/SubmitForm.tsx:275
+#: src/features/Chat/SubmitForm.tsx:273
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Zatrzymaj"
@@ -9646,10 +9644,7 @@ msgstr "Razem:"
 msgid "Track Your Fluency Progress"
 msgstr "Śledź swój postęp w biegłości"
 
-#: src/features/Conversation/ProcessUserInput.tsx:298
-#: src/features/Conversation/ProcessUserInput.tsx:299
-#: src/features/Conversation/ProcessUserInput.tsx:357
-#: src/features/Conversation/ProcessUserInput.tsx:366
+#: src/features/Conversation/ProcessUserInput.tsx:110
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:224
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
@@ -11053,13 +11048,13 @@ msgstr "Twój partner w przygotowaniu do rozmowy kwalifikacyjnej"
 msgid "Your Language Level"
 msgstr "Twój poziom językowy"
 
-#: src/features/Chat/SubmitForm.tsx:162
-#: src/features/Conversation/ProcessUserInput.tsx:276
+#: src/features/Chat/SubmitForm.tsx:160
+#: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Twoja wiadomość"
 
-#: src/features/Conversation/ConversationCanvas.tsx:627
+#: src/features/Conversation/ConversationCanvas.tsx:607
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Twoja wiadomość..."

@@ -736,7 +736,7 @@ msgstr "Mikrofona Erişime İzin Ver"
 msgid "Allow WebCam"
 msgstr "WebCam'e İzin Ver"
 
-#: src/features/Conversation/ProcessUserInput.tsx:195
+#: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:35
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Neredeyse doğru"
@@ -769,12 +769,12 @@ msgstr ""
 "Miktar çok büyük. Desteğinizi takdir ediyorum, ancak bunu 400 doların "
 "altında tutalım."
 
-#: src/features/Conversation/ProcessUserInput.tsx:148
+#: src/features/Conversation/ProcessUserInput.tsx:129
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "Mesajı analiz ederken bir hata oluştu. Lütfen tekrar deneyin."
 
-#: src/features/Conversation/ConversationCanvas.tsx:511
+#: src/features/Conversation/ConversationCanvas.tsx:508
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analiz ediliyor"
@@ -784,9 +784,8 @@ msgstr "Analiz ediliyor"
 msgid "Analyzing your inputs..."
 msgstr "Girdi verilerinizi analiz ediliyor..."
 
-#: src/features/Conversation/ProcessUserInput.tsx:207
-#: src/features/Conversation/ProcessUserInput.tsx:359
-#: src/features/Conversation/ProcessUserInput.tsx:368
+#: src/features/Conversation/ProcessUserInput.tsx:111
+#: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:47
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Analiz ediliyor..."
@@ -1283,7 +1282,7 @@ msgid "Cancel"
 msgstr "İptal"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:394
-#: src/features/Conversation/ConversationCanvas.tsx:784
+#: src/features/Conversation/ConversationCanvas.tsx:758
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Kaydı iptal et"
@@ -1793,7 +1792,7 @@ msgstr "Sayfa bağlantısını kopyala"
 msgid "Core Web Vitals"
 msgstr "Çekirdek Web Canlıları"
 
-#: src/features/Conversation/ProcessUserInput.tsx:318
+#: src/features/Conversation/ProcessUserInput.tsx:109
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Düzeltildi"
@@ -2462,7 +2461,7 @@ msgstr "Unutmayın, pratik bölümündeki arama modunu da deneyin!"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/ConversationCanvas.tsx:560
+#: src/features/Conversation/ConversationCanvas.tsx:540
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:254
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
@@ -2796,7 +2795,7 @@ msgstr "Ödeme oturumu oluşturulurken hata oluştu. Lütfen daha sonra tekrar d
 msgid "Error creating plan. Please try again."
 msgstr "Plan oluşturulurken hata oluştu. Lütfen tekrar deneyin."
 
-#: src/features/Conversation/ConversationCanvas.tsx:459
+#: src/features/Conversation/ConversationCanvas.tsx:457
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Mesaj analizi sırasında hata"
@@ -3984,7 +3983,7 @@ msgstr "Dilbilgisi Düzeltmeleri"
 msgid "Grammar corrections to boost your confidence"
 msgstr "Gramer düzeltmeleri ile güveninizi artırın"
 
-#: src/features/Conversation/ProcessUserInput.tsx:210
+#: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:50
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Harika!"
@@ -4809,7 +4808,7 @@ msgstr ""
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "Planınızı yapmadan önce size iki soru daha soracağım."
 
-#: src/features/Chat/SubmitForm.tsx:152
+#: src/features/Chat/SubmitForm.tsx:150
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Mesajınız için fikir:"
@@ -6042,9 +6041,9 @@ msgstr "Yükleniyor."
 msgid "Loading.."
 msgstr "Yükleniyor.."
 
-#: src/features/Chat/SubmitForm.tsx:81
+#: src/features/Chat/SubmitForm.tsx:80
 #: src/features/Community/GamePage.tsx:90
-#: src/features/Conversation/ConversationCanvas.tsx:217
+#: src/features/Conversation/ConversationCanvas.tsx:215
 #: src/features/Conversation/ConversationReviewModal.tsx:101
 #: src/features/Conversation/ConversationReviewModal.tsx:116
 #: src/features/Conversation/ConversationReviewModal.tsx:131
@@ -6266,7 +6265,7 @@ msgstr "Mikrofon Kurulumu"
 msgid "Minutes"
 msgstr "Dakikalar"
 
-#: src/features/Conversation/ConversationCanvas.tsx:676
+#: src/features/Conversation/ConversationCanvas.tsx:656
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Görev tamamlandı"
@@ -6788,7 +6787,7 @@ msgid "Open personal plan"
 msgstr "Kişisel planı aç"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:344
-#: src/features/Conversation/ConversationCanvas.tsx:684
+#: src/features/Conversation/ConversationCanvas.tsx:664
 #: src/features/Game/Battle/BattleCard.tsx:327
 #. js-lingui-explicit-id
 msgid "Open results"
@@ -7076,7 +7075,7 @@ msgstr "Lütfen tüm özelliklere erişmek için kredi kartınızı doğrulayın
 msgid "Please enter a valid email address"
 msgstr "Lütfen geçerli bir e-posta adresi giriniz"
 
-#: src/features/Chat/SubmitForm.tsx:385
+#: src/features/Chat/SubmitForm.tsx:383
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Lütfen daha uzun bir mesaj kaydedin (en az birkaç kelime)."
@@ -7655,15 +7654,14 @@ msgstr "İlk 5 içinde yer alın ve uygulamayı ücretsiz olarak edinin"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "İlk 5'te yer alarak tüm özelliklere tam erişim sağlayın!"
 
-#: src/features/Chat/SubmitForm.tsx:299
-#: src/features/Conversation/ConversationCanvas.tsx:546
-#: src/features/Conversation/ConversationCanvas.tsx:698
+#: src/features/Chat/SubmitForm.tsx:297
+#: src/features/Conversation/ConversationCanvas.tsx:675
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Yeniden kaydet"
 
-#: src/features/Conversation/ConversationCanvas.tsx:714
+#: src/features/Conversation/ConversationCanvas.tsx:688
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Yeniden yaz"
@@ -7939,7 +7937,7 @@ msgstr "Cevabı kaydet"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:457
 #: src/features/Conversation/CallMode/CallButtons.tsx:477
-#: src/features/Conversation/ConversationCanvas.tsx:587
+#: src/features/Conversation/ConversationCanvas.tsx:567
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Mesaj Kaydet"
@@ -8294,7 +8292,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantik HTML"
 
-#: src/features/Conversation/ConversationCanvas.tsx:529
+#: src/features/Conversation/ConversationCanvas.tsx:526
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -8315,8 +8313,8 @@ msgstr "E-postayı tekrar gönder"
 msgid "Send me sign-in link"
 msgstr "Bana giriş bağlantısını gönder"
 
-#: src/features/Chat/SubmitForm.tsx:201
-#: src/features/Chat/SubmitForm.tsx:315
+#: src/features/Chat/SubmitForm.tsx:199
+#: src/features/Chat/SubmitForm.tsx:313
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Mesaj Gönder"
@@ -8327,7 +8325,7 @@ msgid "Send Request"
 msgstr "İsteği Gönder"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:315
+#: src/features/Chat/SubmitForm.tsx:313
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -8444,14 +8442,14 @@ msgstr ""
 "Şirket hakkındaki bilgilerinizi gösterin ve samimi bir ilgi gösterin. "
 "Örneğin:"
 
-#: src/features/Conversation/ProcessUserInput.tsx:252
+#: src/features/Conversation/ProcessUserInput.tsx:113
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Daha az göster"
 
 #: src/features/Chat/Message.tsx:386
-#: src/features/Conversation/ProcessUserInput.tsx:252
+#: src/features/Conversation/ProcessUserInput.tsx:112
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -8947,7 +8945,7 @@ msgstr ""
 "sizi öne çıkaracak, özlü ve ikna edici yanıtlar sunma pratiği yapmak için "
 "istemleri kullanın.\n"
 
-#: src/features/Chat/SubmitForm.tsx:275
+#: src/features/Chat/SubmitForm.tsx:273
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Dur"
@@ -9545,10 +9543,7 @@ msgstr "Toplam:"
 msgid "Track Your Fluency Progress"
 msgstr "Akıcılık Gelişiminizi Takip Edin"
 
-#: src/features/Conversation/ProcessUserInput.tsx:298
-#: src/features/Conversation/ProcessUserInput.tsx:299
-#: src/features/Conversation/ProcessUserInput.tsx:357
-#: src/features/Conversation/ProcessUserInput.tsx:366
+#: src/features/Conversation/ProcessUserInput.tsx:110
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:224
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
@@ -10929,13 +10924,13 @@ msgstr "İş görüşmesi hazırlık ortağınız"
 msgid "Your Language Level"
 msgstr "Dil Seviyeniz"
 
-#: src/features/Chat/SubmitForm.tsx:162
-#: src/features/Conversation/ProcessUserInput.tsx:276
+#: src/features/Chat/SubmitForm.tsx:160
+#: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Mesajınız"
 
-#: src/features/Conversation/ConversationCanvas.tsx:627
+#: src/features/Conversation/ConversationCanvas.tsx:607
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Mesajınız..."
