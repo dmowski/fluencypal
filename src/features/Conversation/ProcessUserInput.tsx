@@ -90,7 +90,8 @@ export const ProcessUserInput = ({
   };
 
   useEffect(() => {
-    if (userMessage) {
+    const isEmpty = userMessage.trim().length === 0;
+    if (isEmpty) {
       analyzeUserInput(userMessage);
     } else {
       setIsAnalyzingMessage(false);
