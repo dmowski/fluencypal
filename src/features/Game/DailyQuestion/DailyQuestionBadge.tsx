@@ -93,7 +93,7 @@ export const DailyQuestionBadgeComponent = ({
           paddingTop: '10px',
           fontSize: '1.7rem',
           fontWeight: 560,
-          lineHeight: 1.2,
+          lineHeight: 1.3,
           '@media (max-width:600px)': {
             fontSize: '1.5rem',
           },
@@ -104,10 +104,10 @@ export const DailyQuestionBadgeComponent = ({
 
       <Typography
         sx={{
-          paddingTop: '5px',
+          paddingTop: '10px',
           fontSize: '0.9rem',
           fontWeight: 350,
-          lineHeight: 1.2,
+          lineHeight: 1.3,
           color: '#fff',
           opacity: 0.96,
         }}
@@ -157,6 +157,7 @@ export const DailyQuestionBadgeComponent = ({
             flexDirection: 'row',
             alignItems: 'center',
             color: '#feb985ff',
+            paddingBottom: '5px',
           }}
         >
           <Stack
@@ -182,7 +183,6 @@ export const DailyQuestionBadgeComponent = ({
             <Typography
               variant="body2"
               sx={{
-                textTransform: 'uppercase',
                 fontWeight: 500,
               }}
             >
@@ -195,7 +195,7 @@ export const DailyQuestionBadgeComponent = ({
 
         <Stack
           sx={{
-            padding: '45px 0 10px 0',
+            padding: '20px 0 10px 0',
             color: 'rgba(255, 255, 255, 0.9)',
           }}
         >
