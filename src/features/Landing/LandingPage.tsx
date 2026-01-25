@@ -190,7 +190,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
       <main style={{ width: '100%', margin: 0 }}>
         <Stack sx={{ alignItems: 'center' }}>
           <WelcomeScreen2
-            label={i18n._(`Practice with AI`)}
+            label={i18n._(`Real time conversation with AI`)}
             title={i18n._(`Speaking practice`)}
             subTitle1={i18n._(`Don’t let mistakes stop you.`)}
             subTitle2={i18n._(`Build fluency and confidence with daily speaking practice.`)}
@@ -341,7 +341,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 },
 
                 {
-                  videoUrl: '/call/verse/sit1.webm',
+                  videoUrl: '/call/ash/talk1.webm',
                   bgColor: 'rgb(169, 129, 255)',
 
                   title: i18n._('Practice'),
