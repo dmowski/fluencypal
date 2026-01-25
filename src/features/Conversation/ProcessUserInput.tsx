@@ -91,7 +91,7 @@ export const ProcessUserInput = ({
 
   useEffect(() => {
     const isEmpty = userMessage.trim().length === 0;
-    if (isEmpty) {
+    if (!isEmpty) {
       analyzeUserInput(userMessage);
     } else {
       setIsAnalyzingMessage(false);
@@ -100,12 +100,6 @@ export const ProcessUserInput = ({
       setCorrectedMessage(null);
     }
   }, [userMessage]);
-
-  useEffect(() => {
-    if (isTranscribing) {
-      setIsAnalyzingMessage(true);
-    }
-  }, [isTranscribing]);
 
   const isAnalyzingResponse = isAnalyzingMessageWithAi || isTranscribing;
 
