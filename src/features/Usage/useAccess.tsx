@@ -16,5 +16,6 @@ export const useAccess = () => {
     isFullAppAccess: game.isGameWinner || usage.isFullAccess,
     isExpiringSoon,
     activeSubscriptionTill: usage.activeSubscriptionTill,
+    showPaymentModal: () => usage.togglePaymentModal(true),
   };
 };

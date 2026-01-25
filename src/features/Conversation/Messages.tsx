@@ -12,6 +12,7 @@ import { getSortedMessages } from './getSortedMessages';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { AiVoice } from '@/common/ai';
 import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
+import { useAccess } from '../Usage/useAccess';
 
 export const Messages = ({
   conversation,
@@ -72,6 +73,8 @@ export const Message = ({
 }) => {
   const { i18n } = useLingui();
   const translator = useTranslate();
+  const access = useAccess();
+  const isFullAccess = !access.isFullAppAccess;
 
   const voiceInfo = getAiVoiceByVoice(voice);
 
@@ -164,7 +167,16 @@ export const Message = ({
             </IconButton>
           )}
 
-          <AudioPlayIcon text={text} voice={voice} instructions={voiceInfo.voiceInstruction} />
+          <Stack
+            onClick={(e) => {
+              if (isFullAccess) return;
+              e.stopPropagation();
+              e.preventDefault();
+              access.showPaymentModal();
+            }}
+          >
+            <AudioPlayIcon text={text} voice={voice} instructions={voiceInfo.voiceInstruction} />
+          </Stack>
         </Stack>
       </Stack>
       {translator.translateModal}
