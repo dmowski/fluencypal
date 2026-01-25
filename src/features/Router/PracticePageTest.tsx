@@ -193,7 +193,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         addUserMessage={addMessage}
         balanceHours={0.2}
         togglePaymentModal={() => alert('Payment modal toggled')}
-        isLimited={true}
+        isLimited={false}
         onLimitedClick={() => {}}
         isRecording={false}
         startRecording={async () => {}}

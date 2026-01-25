@@ -188,6 +188,9 @@ Examples:
 
   const vadAudioRecorder = useVadAudioRecorder({
     onStop: () => setIsVadEnabled(false),
+    onTranscriptionStart: () => {
+      addTranscriptDelta(' ');
+    },
     onTranscription: async (transcript: string) => {
       if (!transcript) return;
 

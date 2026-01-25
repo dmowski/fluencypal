@@ -9,8 +9,10 @@ import { useState } from 'react';
 export const useVadAudioRecorder = ({
   silenceMs,
   onTranscription,
+  onTranscriptionStart,
   onStop,
 }: {
+  onTranscriptionStart: () => void;
   onTranscription: (transcript: string) => void;
   silenceMs?: number;
   onStop?: () => void;
@@ -32,6 +34,8 @@ export const useVadAudioRecorder = ({
     if (!recordedAudioBlog) {
       return;
     }
+
+    onTranscriptionStart();
 
     const token = await auth.getToken();
     try {

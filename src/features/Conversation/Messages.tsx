@@ -13,8 +13,8 @@ import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { AiVoice } from '@/common/ai';
 import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
 import { useAccess } from '../Usage/useAccess';
-import { useTextAi } from '../Ai/useTextAi';
 import { useConversationsAnalysis } from './useConversationsAnalysis';
+import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
 
 export const Messages = ({
   conversation,
@@ -135,14 +135,19 @@ export const Message = ({
     scrollToBottom();
   };
 
+  const isUserIsRecordingStart = !message.isBot && message.text === ' ';
+  const isMessageInProgress = !message.isBot && message.isInProgress;
+
   return (
     <Stack
       key={message.id}
       sx={{
-        padding: '0 20px',
+        padding: '3px 20px',
         boxSizing: 'border-box',
         color: '#e1e1e1',
         width: '100%',
+        backgroundColor: isMessageInProgress ? 'rgba(255, 255, 255, 0.02)' : 'transparent',
+        borderRadius: '8px',
       }}
     >
       <Stack
@@ -175,18 +180,28 @@ export const Message = ({
           display: 'inline-block',
         }}
       >
-        <Markdown
-          onWordClick={
-            translator.isTranslateAvailable && !translatedText
-              ? (word, element) => {
-                  translator.translateWithModal(word, element);
-                }
-              : undefined
-          }
-          variant="conversation"
-        >
-          {text}
-        </Markdown>
+        {isUserIsRecordingStart ? (
+          <Stack
+            sx={{
+              padding: '6px 0 10px 0',
+            }}
+          >
+            <LoadingShapes sizes={['30px']} />
+          </Stack>
+        ) : (
+          <Markdown
+            onWordClick={
+              translator.isTranslateAvailable && !translatedText
+                ? (word, element) => {
+                    translator.translateWithModal(word, element);
+                  }
+                : undefined
+            }
+            variant="conversation"
+          >
+            {text}
+          </Markdown>
+        )}
         <Stack
           sx={{
             flexDirection: 'row',
