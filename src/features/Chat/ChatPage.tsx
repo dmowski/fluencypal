@@ -13,6 +13,7 @@ import { ChartSortMode, UserChatMetadata } from './type';
 import dayjs from 'dayjs';
 import { UserName } from '../User/UserName';
 import { TabLabel } from '../Game/TabLabel';
+import { GlobalChatTabs } from './GlobalChatTabs';
 
 export const ChatPage = ({
   type,
@@ -58,44 +59,7 @@ export const ChatPage = ({
               width: '100%',
             }}
           >
-            <Stack>
-              <Stack
-                sx={{
-                  gap: '0px',
-                  width: '100%',
-                }}
-              >
-                <Tabs
-                  value={sortMode}
-                  onChange={(event, newId) => setSortMode(newId)}
-                  sx={{
-                    marginLeft: '10px',
-                  }}
-                >
-                  <Tab
-                    sx={{
-                      padding: '0 10px 0 10px',
-                      minWidth: 'unset',
-                    }}
-                    label={
-                      <TabLabel label={i18n._(`All`)} badgeNumber={undefined} badgeHighlight />
-                    }
-                    value={'all'}
-                  />
-
-                  <Tab
-                    label={
-                      <TabLabel label={i18n._(`Replies`)} badgeNumber={undefined} badgeHighlight />
-                    }
-                    value={'updates'}
-                    sx={{
-                      padding: '0 10px 0 10px',
-                      minWidth: 'unset',
-                    }}
-                  />
-                </Tabs>
-              </Stack>
-            </Stack>
+            <GlobalChatTabs sortMode={sortMode} setSortMode={setSortMode} />
             <ChatSection
               contextForAiAnalysis=""
               isFullContentByDefault={isFullContentByDefault}
