@@ -233,8 +233,6 @@ Return ONLY the number.
       userMessage: userMessage,
       model: 'gpt-4o',
     });
-    console.log('duration of generate waiting', Date.now() - start);
-    console.log('Waiting time', response);
 
     return Math.min(5000, Math.max(2000, parseInt(response.trim())));
   };
