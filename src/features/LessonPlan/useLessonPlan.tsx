@@ -7,6 +7,8 @@ import { getSortedMessages } from '../Conversation/getSortedMessages';
 import { GoalElementInfo } from '../Plan/types';
 import { useAiUserInfo } from '../Ai/useAiUserInfo';
 import { useSettings } from '../Settings/useSettings';
+import { getHash } from '@/libs/hash';
+import { MessagesOrderMap } from '@/common/conversation';
 
 interface LessonPlanContextType {
   loading: boolean;
@@ -53,18 +55,62 @@ function useProvideLessonPlan(): LessonPlanContextType {
     return planText;
   };
 
+  const summaryMapRef = useRef<Record<string, Promise<string>>>({});
+
+  const messageOrderRef = useRef<MessagesOrderMap>({});
+  messageOrderRef.current = aiConversation.messageOrder;
+  const conversationRef = useRef(aiConversation.conversation);
+  conversationRef.current = aiConversation.conversation;
+
   const getActiveConversation = async (temporaryUserMessage?: string) => {
     const sortedMessages = getSortedMessages({
-      conversation: aiConversation.conversation,
-      messageOrder: aiConversation.messageOrder,
+      conversation: conversationRef.current,
+      messageOrder: messageOrderRef.current,
     });
 
+    const messageCountToSummarize = 5;
+    let summary: string | null = null;
+
+    if (sortedMessages.length > messageCountToSummarize + 2) {
+      const summarySystemMessage = `You are an AI assistant that summarizes conversations between a teacher and a student for a language learning lesson plan.
+Your task is to create a shorter version of conversation.
+
+Format the summary as a explicit facts what user and teacher said.`;
+
+      let conversationToSummarize = `## Conversation:\n\n`;
+      sortedMessages
+        .filter((_, index) => index < messageCountToSummarize)
+        .forEach((message) => {
+          conversationToSummarize += `${message.isBot ? 'Teacher' : 'Student'}: ${message.text}\n`;
+        });
+
+      const conversationKey = getHash(conversationToSummarize);
+
+      const userMessage = `Please provide a concise summary of the following conversation:\n\n${conversationToSummarize}`;
+
+      if (!summaryMapRef.current[conversationKey]) {
+        const summaryRequest = ai.generate({
+          systemMessage: summarySystemMessage,
+          userMessage: userMessage,
+          model: 'gpt-4o',
+        });
+        summaryMapRef.current[conversationKey] = summaryRequest;
+        summary = await summaryRequest;
+        console.log('SUMMARY', summary);
+      } else {
+        summary = await summaryMapRef.current[conversationKey];
+      }
+    }
+
     if (temporaryUserMessage) {
-      sortedMessages.push({
-        id: 'temporary_user_message',
-        text: temporaryUserMessage,
-        isBot: false,
-      });
+      const lastMessage = sortedMessages.length ? sortedMessages[sortedMessages.length - 1] : null;
+      if (lastMessage && !lastMessage.isBot && lastMessage.text !== temporaryUserMessage) {
+        sortedMessages.push({
+          id: 'temporary_user_message',
+          text: temporaryUserMessage,
+          isBot: false,
+        });
+      }
     }
 
     const lastMessageIndex = sortedMessages.length - 1;
@@ -72,10 +118,12 @@ function useProvideLessonPlan(): LessonPlanContextType {
       sortedMessages.length > 0 ? sortedMessages[sortedMessages.length - 1] : null;
     const lastMessageText = lastMessage ? lastMessage.text : '';
 
-    let conversationText = `## Conversation so far:\n\n`;
-    sortedMessages.forEach((message) => {
-      conversationText += `${message.isBot ? 'Teacher' : 'Student'}: ${message.text}\n`;
-    });
+    let conversationText = `## Conversation so far:\n\n${summary ? 'Summary of previous messages:\n' + summary + '\n\n' : ''}`;
+    sortedMessages
+      .filter((_, index) => (summary ? index >= messageCountToSummarize : true))
+      .forEach((message) => {
+        conversationText += `${message.isBot ? 'Teacher' : 'Student'}: ${message.text}\n`;
+      });
 
     return { conversationText, lastMessageText, lastMessage, lastMessageIndex };
   };
@@ -90,13 +138,10 @@ function useProvideLessonPlan(): LessonPlanContextType {
     if (!activeLessonPlan || !isActiveConversation) {
       return null;
     }
-
-    const activePlan = getActivePlanAsText();
     const activeConversation = await getActiveConversation(temporaryUserMessage);
-    const firstBotMessage = aiConversation.conversation.find((msg) => msg.isBot);
-
     const key = `${activeConversation.lastMessageIndex}_${activeConversation.lastMessageText}`;
-    console.log('key label', key, '|', label);
+
+    console.log('key label', key, '|', label, 'temporaryUserMessage:', temporaryUserMessage);
 
     const activeResult = lessonAnalysisResult.current[key];
     if (activeResult) {
@@ -105,12 +150,14 @@ function useProvideLessonPlan(): LessonPlanContextType {
 
     const process: Promise<LessonPlanAnalysis> = new Promise(async (resolve, reject) => {
       console.log('Analyzing lesson plan| ', label);
+      const firstBotMessage = aiConversation.conversation.find((msg) => msg.isBot);
       const initActiveProgress: LessonPlanAnalysis = {
         progress: 0,
         isFollowingPlan: true,
         teacherResponse: firstBotMessage?.text ? `${firstBotMessage.text}` : '',
       };
 
+      const activePlan = getActivePlanAsText();
       const previousProgress = activeProgress || initActiveProgress;
 
       const systemInstructions = `You are supervisor AI directing the teacher to follow the lesson plan.
@@ -159,7 +206,7 @@ ${JSON.stringify(previousProgress, null, 2)}
           `result ${(end - start) / 1000} seconds`,
           label,
           '|' + activeConversation.lastMessageText + '|',
-          JSON.stringify({ result }, null, 2),
+          { result, userMessage },
         );
 
         if (result) {
