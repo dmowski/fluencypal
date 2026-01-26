@@ -80,8 +80,6 @@ function useProvideLessonPlan(): LessonPlanContextType {
     return { conversationText, lastMessageText, lastMessage, lastMessageIndex };
   };
 
-  const activeConversation = getActiveConversation();
-
   const generateAnalysis = async ({
     temporaryUserMessage,
     label,
@@ -181,6 +179,7 @@ ${JSON.stringify(previousProgress, null, 2)}
   const isAnalyzingConversationInProgress = useRef(false);
 
   const analyzeActiveConversation = async () => {
+    const activeConversation = getActiveConversation();
     const isSkipMessage =
       activeConversation.lastMessage?.isBot || activeConversation.lastMessage?.isInProgress;
     if (isSkipMessage) {
@@ -285,6 +284,7 @@ Format the response as a JSON array with each step containing "stepTitle", "step
   useEffect(() => {
     setLastMessageUpdateTime(Date.now());
     setIsReadyToAnalyze(false);
+    const activeConversation = getActiveConversation();
     const timeoutTime = activeConversation.lastMessage?.isBot ? 3000 : 10;
 
     const timer = setTimeout(() => {
