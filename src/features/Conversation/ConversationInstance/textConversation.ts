@@ -247,7 +247,7 @@ export const initTextConversation = async ({
 
   // Send correction instruction
   const sendCorrectionInstruction = async (correction: string): Promise<void> => {
-    console.log('Updating correction instruction:', correction);
+    //console.log('Updating correction instruction:', correction);
     // instructionState.correction = correction;
     if (correction) {
       triggerAiResponse(fixOutputText(correction));
