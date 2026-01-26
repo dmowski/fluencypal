@@ -48,35 +48,90 @@ export const initTextConversation = async ({
     return `${Date.now()}`;
   };
 
+  // --- Progressive summary config ---
+  const SUMMARY_CHUNK_SIZE = 5;
+  const SUMMARY_KEEP_LAST = 4;
+
+  // Cache for chunk summaries (separate from response cacheProcessing)
+  const summaryCache: Record<string, Promise<string> | undefined> = {};
+
+  const summarySystemMessage = `You are an AI assistant that summarizes conversations between a teacher and a student.
+Your task is to create a shorter version of conversation.
+Format the summary as explicit facts: what user and teacher said.`;
+
   // Build system message from instruction parts
   const getSystemMessage = (): string => {
     if (instructionState.correction) {
       return instructionState.correction;
     }
 
-    return (
-      [
-        instructionState.correction,
-        instructionState.baseInitInstruction,
-        instructionState.webCamDescription,
-      ]
-        .filter((part) => part && part.length > 0)
-        .join('\n') + 'Res'
-    );
+    return [
+      instructionState.correction,
+      instructionState.baseInitInstruction,
+      instructionState.webCamDescription,
+    ]
+      .filter((part) => part && part.length > 0)
+      .join('\n');
   };
 
-  // Convert conversation history to text format for AI
-  const formatConversationHistory = (): string => {
-    if (conversationHistory.length === 0) {
-      return '';
+  const formatConversationHistoryAsync = async (): Promise<string> => {
+    if (conversationHistory.length === 0) return '';
+
+    const messages = conversationHistory;
+    const total = messages.length;
+
+    const summarizableCount = Math.max(0, total - SUMMARY_KEEP_LAST);
+    const chunkCount = Math.floor(summarizableCount / SUMMARY_CHUNK_SIZE);
+
+    const roleLabel = (msg: ConversationMessage) => (msg.isBot ? 'Assistant' : 'User');
+
+    const formatRangeAsText = (start: number, endExclusive: number) => {
+      return messages
+        .slice(start, endExclusive)
+        .map((msg) => `${roleLabel(msg)}: ${msg.text}`)
+        .join('\n');
+    };
+
+    const summarizeChunk = (chunkText: string): Promise<string> => {
+      const key = getHash(chunkText);
+
+      if (!summaryCache[key]) {
+        summaryCache[key] = generateTextWithAi({
+          systemMessage: summarySystemMessage,
+          userMessage: `Please provide a concise summary of the following conversation chunk:\n\n${chunkText}`,
+        }).then((raw) => raw.trim());
+      }
+
+      return summaryCache[key]!;
+    };
+
+    // If no full chunks, return everything verbatim
+    if (chunkCount === 0) {
+      return messages.map((msg) => `${roleLabel(msg)}: ${msg.text}`).join('\n');
     }
 
-    return conversationHistory
-      .map((msg) => {
-        const role = msg.isBot ? 'Assistant' : 'User';
-        return `${role}: ${msg.text}`;
-      })
-      .join('\n');
+    // Summarize full chunks progressively
+    const summaries: string[] = [];
+    for (let chunkIndex = 0; chunkIndex < chunkCount; chunkIndex++) {
+      const start = chunkIndex * SUMMARY_CHUNK_SIZE;
+      const end = start + SUMMARY_CHUNK_SIZE;
+
+      const chunkText = formatRangeAsText(start, end);
+      const s = await summarizeChunk(chunkText);
+
+      // Keep it compact; you can change formatting if you want
+      summaries.push(`- Messages ${start + 1}-${end}: ${s}`);
+    }
+
+    const summarizedUntil = chunkCount * SUMMARY_CHUNK_SIZE; // exclusive
+    const remainingVerbatimText = formatRangeAsText(summarizedUntil, total);
+
+    const summaryBlock = summaries.join('\n');
+
+    return [
+      `Summary of earlier conversation:\n${summaryBlock}`,
+      `\nConversation (latest messages verbatim):\n${remainingVerbatimText}`,
+    ].join('\n');
   };
 
   const cacheProcessing: Record<string, Promise<string> | undefined> = {};
@@ -87,7 +142,7 @@ export const initTextConversation = async ({
     }
 
     const systemMessage = getSystemMessage();
-    const userMessage = formatConversationHistory();
+    const userMessage = await formatConversationHistoryAsync();
     const cacheKey = getHash(systemMessage + '\n' + userMessage);
 
     const aiResponseRawCached = cacheProcessing[cacheKey];
