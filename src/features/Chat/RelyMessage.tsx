@@ -4,14 +4,14 @@ import { ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 import { getAllParentMessages } from './getAllParentMessages';
 import { Message } from './Message';
-import { UserChatMessage } from './type';
+import { ThreadsMessage } from './type';
 
 export const RelyMessage = ({
   message,
   messages,
 }: {
-  message: UserChatMessage;
-  messages: UserChatMessage[];
+  message: ThreadsMessage;
+  messages: ThreadsMessage[];
 }) => {
   const parent = message.parentMessageId
     ? messages.find((m) => m.id === message.parentMessageId)

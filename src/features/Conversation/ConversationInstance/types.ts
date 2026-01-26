@@ -1,5 +1,5 @@
 import { AiVoice, RealTimeModel } from '@/common/ai';
-import { ChatMessage, MessagesOrderMap } from '@/common/conversation';
+import { ConversationMessage, MessagesOrderMap } from '@/common/conversation';
 import { UsageLog } from '@/common/usage';
 import { SupportedLanguage } from '@/features/Lang/lang';
 
@@ -7,7 +7,7 @@ export interface ConversationConfig {
   model: RealTimeModel;
   initInstruction: string;
   onOpen: () => void;
-  onMessage: (message: ChatMessage) => void;
+  onMessage: (message: ConversationMessage) => void;
   onAddDelta: (id: string, delta: string, isBot: boolean) => void;
   setIsAiSpeaking: (speaking: boolean) => void;
   setIsUserSpeaking: (speaking: boolean) => void;
@@ -29,7 +29,7 @@ export interface ConversationConfig {
 }
 
 export type ConversationInstance = {
-  addUserChatMessage: (message: string) => void;
+  addThreadsMessage: (message: string) => void;
 
   // Terminate the conversation and clean up resources
   closeHandler: () => void;

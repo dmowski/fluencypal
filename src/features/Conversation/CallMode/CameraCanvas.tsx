@@ -1,5 +1,5 @@
 import { AiVoice } from '@/common/ai';
-import { ChatMessage, MessagesOrderMap } from '@/common/conversation';
+import { ConversationMessage, MessagesOrderMap } from '@/common/conversation';
 import { useWindowSizes } from '../../Layout/useWindowSizes';
 import { useLingui } from '@lingui/react';
 import { useWebCam } from '../../webCam/useWebCam';
@@ -44,7 +44,7 @@ export const CameraCanvas = ({
   completeUserMessageDelta,
   recordingVoiceMode,
 }: {
-  conversation: ChatMessage[];
+  conversation: ConversationMessage[];
   stopCallMode: () => void;
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
@@ -269,6 +269,7 @@ export const CameraCanvas = ({
           }}
         >
           <CallButtons
+            messages={conversation}
             isMuted={isMuted}
             setIsMuted={setIsMuted}
             recordingVoiceMode={recordingVoiceMode}

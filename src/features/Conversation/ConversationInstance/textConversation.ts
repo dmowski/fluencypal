@@ -1,5 +1,5 @@
 'use client';
-import { ChatMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/common/conversation';
 import { ConversationConfig, ConversationInstance } from './types';
 import { getHash } from '@/libs/hash';
 
@@ -28,7 +28,7 @@ export const initTextConversation = async ({
   playAudio,
 }: ConversationConfig): Promise<ConversationInstance> => {
   // State management
-  const conversationHistory: ChatMessage[] = [];
+  const conversationHistory: ConversationMessage[] = [];
   let isProcessingAiResponse = false;
 
   const instructionState: InstructionState = {
@@ -145,7 +145,7 @@ export const initTextConversation = async ({
         return triggerAiResponse(teacherMessage);
       }
 
-      const botMessage: ChatMessage = {
+      const botMessage: ConversationMessage = {
         id: botMessageId,
         isBot: true,
         text: aiResponse,
@@ -173,7 +173,7 @@ export const initTextConversation = async ({
       console.error('Error generating AI response:', error);
 
       const errorMessage = `Error: ${error.message || 'Unknown error occurred'}`;
-      const errorBotMessage: ChatMessage = {
+      const errorBotMessage: ConversationMessage = {
         id: botMessageId,
         isBot: true,
         text: errorMessage,
@@ -194,7 +194,7 @@ export const initTextConversation = async ({
     }
   };
 
-  const getLastMessage = (): ChatMessage | null => {
+  const getLastMessage = (): ConversationMessage | null => {
     if (conversationHistory.length === 0) {
       return null;
     }
@@ -202,11 +202,11 @@ export const initTextConversation = async ({
   };
 
   // Add user message
-  const addUserChatMessage = (message: string): void => {
+  const addThreadsMessage = (message: string): void => {
     const userMessageId = generateMessageId();
     const previousMessageId = getLastMessage()?.id;
 
-    const userMessage: ChatMessage = {
+    const userMessage: ConversationMessage = {
       id: userMessageId,
       isBot: false,
       text: message,
@@ -305,7 +305,7 @@ export const initTextConversation = async ({
     } else {
       const previousMessageId = getLastMessage()?.id;
       const messageId = generateMessageId();
-      const newMessage: ChatMessage = {
+      const newMessage: ConversationMessage = {
         isBot: false,
         text: delta,
         id: messageId,
@@ -334,7 +334,7 @@ export const initTextConversation = async ({
 
   return {
     closeHandler,
-    addUserChatMessage,
+    addThreadsMessage,
     triggerAiResponse,
     toggleMute,
     toggleVolume,

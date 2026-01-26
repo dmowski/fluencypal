@@ -9,7 +9,7 @@ import {
 import { firestore } from './init';
 import { PaymentLog, TotalUsageInfo, UsageLog } from '@/common/usage';
 import { UserSettings } from '@/common/user';
-import { ChatMessage, Conversation } from '@/common/conversation';
+import { ConversationMessage, Conversation } from '@/common/conversation';
 import { Homework } from '@/common/homework';
 import { UserTaskStats } from '@/common/userTask';
 import { WordsStats } from '@/common/words';
@@ -30,7 +30,7 @@ import { InterviewQuizSurvey } from '../Case/types';
 import {
   ChatLike,
   ChatSpaceUserReadMetadata,
-  UserChatMessage,
+  ThreadsMessage,
   UserChatMetadata,
 } from '../Chat/type';
 import { GameBattle } from '../Game/Battle/types';
@@ -82,7 +82,7 @@ export const db = {
       userId ? dataPointCollection<UserChatMetadata>(`chat`) : null,
 
     usersChatMessages: (space: string, userId: string) =>
-      userId ? dataPointCollection<UserChatMessage>(`chat/${space}/messages`) : null,
+      userId ? dataPointCollection<ThreadsMessage>(`chat/${space}/messages`) : null,
 
     usersChatLikes: (space: string, userId: string) =>
       userId ? dataPointCollection<ChatLike>(`chat/${space}/likes`) : null,

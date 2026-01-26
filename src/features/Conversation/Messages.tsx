@@ -2,9 +2,9 @@
 
 import { Markdown } from '../uiKit/Markdown/Markdown';
 import { Button, Divider, IconButton, Stack, Typography } from '@mui/material';
-import { AudioLines, AudioWaveform, Languages, Loader, Sparkles } from 'lucide-react';
+import { AudioLines, Languages, Loader, Sparkles } from 'lucide-react';
 
-import { ChatMessage, MessagesOrderMap } from '@/common/conversation';
+import { ConversationMessage, MessagesOrderMap } from '@/common/conversation';
 import { useLingui } from '@lingui/react';
 import { useTranslate } from '../Translation/useTranslate';
 import { useMemo, useState } from 'react';
@@ -22,7 +22,7 @@ export const Messages = ({
   isAiSpeaking,
   voice,
 }: {
-  conversation: ChatMessage[];
+  conversation: ConversationMessage[];
   messageOrder: MessagesOrderMap;
   isAiSpeaking?: boolean;
   voice: AiVoice;
@@ -71,7 +71,7 @@ export const Message = ({
   voice,
   isLastMessage,
 }: {
-  message: ChatMessage;
+  message: ConversationMessage;
   isAiSpeaking?: boolean;
   voice: AiVoice;
   isLastMessage: boolean;

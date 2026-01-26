@@ -35,7 +35,7 @@ export interface ChatSpaceUserReadMetadata {
   };
 }
 
-export interface UserChatMessage {
+export interface ThreadsMessage {
   id: string;
   senderId: string;
   content: string;

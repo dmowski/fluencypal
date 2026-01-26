@@ -12,7 +12,7 @@ import {
   ListItemText,
   Divider,
 } from '@mui/material';
-import { UserChatMessage } from './type';
+import { ThreadsMessage } from './type';
 import { useEffect, useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -30,7 +30,7 @@ import { UserName } from '../User/UserName';
 const limitMessages = 300;
 
 interface MessageProps {
-  message: UserChatMessage;
+  message: ThreadsMessage;
 
   isContentWide?: boolean;
   isChain?: boolean;

@@ -23,6 +23,7 @@ import { useVadAudioRecorder } from '@/features/Audio/useVadAudioRecorder';
 import { FooterButton } from './FooterButton';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { RecordingUserMessageMode } from '../types';
+import { ConversationMessage } from '@/common/conversation';
 
 export const CallButtons = ({
   isMuted,
@@ -48,6 +49,7 @@ export const CallButtons = ({
   addTranscriptDelta,
   completeUserMessageDelta,
   recordingVoiceMode,
+  messages,
 }: {
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
@@ -72,6 +74,7 @@ export const CallButtons = ({
   completeUserMessageDelta: () => void;
 
   recordingVoiceMode: RecordingUserMessageMode;
+  messages: ConversationMessage[];
 }) => {
   const { i18n } = useLingui();
 

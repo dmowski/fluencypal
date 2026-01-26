@@ -31,7 +31,7 @@ import * as Sentry from '@sentry/nextjs';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { useSettings } from '@/features/Settings/useSettings';
 import { usePlan } from '@/features/Plan/usePlan';
-import { ChatMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/common/conversation';
 import { useAiUserInfo } from '@/features/Ai/useAiUserInfo';
 import { fnv1aHash } from '@/libs/hash';
 import { getWordsCount } from '@/libs/words';
@@ -513,7 +513,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     }
 
     setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: true }));
-    const conversationMessages: ChatMessage[] = [
+    const conversationMessages: ConversationMessage[] = [
       {
         id: `about_user`,
         isBot: false,

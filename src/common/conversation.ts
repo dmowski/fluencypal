@@ -8,7 +8,7 @@ export type ConversationType =
   | 'goal-role-play'
   | 'goal-talk';
 
-export interface ChatMessage {
+export interface ConversationMessage {
   id: string;
   isBot: boolean;
   text: string;
@@ -31,7 +31,7 @@ export type MessagesOrderMap = Record<string, string>;
 export interface Conversation {
   id: string;
   messagesCount: number;
-  messages: ChatMessage[];
+  messages: ConversationMessage[];
 
   // parent-child relationships
   messageOrder: MessagesOrderMap;

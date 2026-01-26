@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { UserChatMessage } from './type';
+import { ThreadsMessage } from './type';
 import { useLingui } from '@lingui/react';
 import { useGame } from '../Game/useGame';
 import { Stack, Typography, Popover } from '@mui/material';
 import { Eye } from 'lucide-react';
 import { GameStatRow } from '../Game/GameStatRow';
 
-export const MessageViewsIcon = ({ activeMessage }: { activeMessage: UserChatMessage }) => {
+export const MessageViewsIcon = ({ activeMessage }: { activeMessage: ThreadsMessage }) => {
   const [showViewsAnchorEl, setShowViewsAnchorEl] = useState<null | HTMLElement>(null);
   const { i18n } = useLingui();
   const game = useGame();

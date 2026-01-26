@@ -25,7 +25,7 @@ import { ScorePreview } from '@/features/Case/Landing/components/ScorePreviewSec
 import { GoalPlan } from '@/features/Plan/types';
 import { usePlan } from '@/features/Plan/usePlan';
 import { useAiUserInfo } from '@/features/Ai/useAiUserInfo';
-import { ChatMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/common/conversation';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useRouter } from 'next/navigation';
 import { sleep } from '@/libs/sleep';
@@ -199,7 +199,7 @@ export function useProvideInterviewQuizContext({
       }
 
       if (outputFormat === 'practice-plan') {
-        const conversationMessages: ChatMessage[] = goodAnswersIds
+        const conversationMessages: ConversationMessage[] = goodAnswersIds
           .map((id) => {
             const questionStep = quiz.steps.find((step) => step.id === id);
 

@@ -1,10 +1,10 @@
-import { ChatMessage, MessagesOrderMap } from '@/common/conversation';
+import { ConversationMessage, MessagesOrderMap } from '@/common/conversation';
 
 export const getSortedMessages = ({
   conversation,
   messageOrder,
 }: {
-  conversation: ChatMessage[];
+  conversation: ConversationMessage[];
   messageOrder: MessagesOrderMap;
 }) => {
   // --- 1. Build sortedIds ---

@@ -4,14 +4,14 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 import { useEffect, useMemo, useState } from 'react';
 import { uniq } from '@/libs/uniq';
-import { ChatMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/common/conversation';
 import { GuessGameStat } from './types';
 import { useTranslate } from '../Translation/useTranslate';
 import { ChevronRight, Languages } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 
 interface AliasGamePanelProps {
-  conversation: ChatMessage[];
+  conversation: ConversationMessage[];
   gameWords: GuessGameStat | null;
 }
 

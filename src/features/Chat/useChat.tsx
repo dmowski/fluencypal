@@ -17,7 +17,7 @@ import {
   ChatLike,
   ChatLikeType,
   ChatSpaceUserReadMetadata,
-  UserChatMessage,
+  ThreadsMessage,
   UserChatMetadata,
   UserChatMetadataStatic,
 } from './type';
@@ -32,8 +32,8 @@ interface AddMessageProps {
 }
 
 interface ChatContextType {
-  messages: UserChatMessage[];
-  topLevelMessages: UserChatMessage[];
+  messages: ThreadsMessage[];
+  topLevelMessages: ThreadsMessage[];
   messagesLikes: Record<string, ChatLike[]>;
   toggleLike: (messageId: string, type: ChatLikeType) => Promise<void>;
 
@@ -43,7 +43,7 @@ interface ChatContextType {
   deleteMessage: (messageId: string) => Promise<void>;
   editMessage: (messageId: string, newContent: string) => Promise<void>;
 
-  viewMessage: (message: UserChatMessage) => Promise<void>;
+  viewMessage: (message: ThreadsMessage) => Promise<void>;
 
   unreadMessagesCount: number;
 
@@ -122,8 +122,8 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
   };
 
   const { messages, topLevelMessages, commentsInfo, secondLevelSingleCommentsIds } = useMemo<{
-    messages: UserChatMessage[];
-    topLevelMessages: UserChatMessage[];
+    messages: ThreadsMessage[];
+    topLevelMessages: ThreadsMessage[];
     commentsInfo: Record<string, number>;
     secondLevelSingleCommentsIds: string[];
   }>(() => {
@@ -273,7 +273,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     }
 
     const createdAtIso = new Date().toISOString();
-    const newMessage: UserChatMessage = {
+    const newMessage: ThreadsMessage = {
       id: `${Date.now()}`,
       senderId: userId,
       content: messageContent,
@@ -306,7 +306,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     const isChildExisting = messages.find((m) => m.parentMessageId === messageId);
     if (isChildExisting) {
       const messageDoc = doc(messagesRef, messageId);
-      const updatedMessage: Partial<UserChatMessage> = {
+      const updatedMessage: Partial<ThreadsMessage> = {
         content: '[deleted]',
         isDeleted: true,
         updatedAtIso: new Date().toISOString(),
@@ -321,7 +321,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
   const editMessage = async (messageId: string, newContent: string) => {
     if (!messagesRef || !userId) return;
     const messageDoc = doc(messagesRef, messageId);
-    const updatedMessage: Partial<UserChatMessage> = {
+    const updatedMessage: Partial<ThreadsMessage> = {
       content: newContent,
       updatedAtIso: new Date().toISOString(),
     };
@@ -331,7 +331,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
   const myMetaRef = db.documents.chatSpaceUserReadMetadata(userId);
   const [myMetaDataSnap] = useDocumentData(myMetaRef);
 
-  const viewMessage = async (message: UserChatMessage) => {
+  const viewMessage = async (message: ThreadsMessage) => {
     if (!userId) return;
 
     if (myMetaRef) {
@@ -359,7 +359,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     await setDoc(messageDoc, { viewsUserIds: updatedViewsUserIds }, { merge: true });
   };
 
-  const getAllChildMessages = (messageId: string): UserChatMessage[] => {
+  const getAllChildMessages = (messageId: string): ThreadsMessage[] => {
     const directChild = messages.filter((msg) => msg.parentMessageId === messageId);
     const allChild = [...directChild];
     directChild.forEach((childMsg) => {

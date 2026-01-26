@@ -379,7 +379,7 @@ export const initWebRtcConversation = async ({
     }
   };
 
-  const addUserChatMessage = (message: string) => {
+  const addThreadsMessage = (message: string) => {
     const event = {
       type: 'conversation.item.create',
       item: {
@@ -443,7 +443,7 @@ export const initWebRtcConversation = async ({
   return {
     closeHandler,
 
-    addUserChatMessage,
+    addThreadsMessage,
     triggerAiResponse,
 
     toggleMute,

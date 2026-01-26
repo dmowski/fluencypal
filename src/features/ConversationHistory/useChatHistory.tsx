@@ -5,7 +5,7 @@ import { useAuth } from '../Auth/useAuth';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { db } from '../Firebase/firebaseDb';
 import {
-  ChatMessage,
+  ConversationMessage,
   Conversation,
   ConversationType,
   MessagesOrderMap,
@@ -19,10 +19,10 @@ interface ChatHistoryContextType {
     languageCode: SupportedLanguage;
     mode: ConversationType;
   }) => Promise<void>;
-  setMessages: (conversationId: string, messages: ChatMessage[]) => Promise<void>;
+  setMessages: (conversationId: string, messages: ConversationMessage[]) => Promise<void>;
   saveConversation: (
     conversationId: string,
-    messages: ChatMessage[],
+    messages: ConversationMessage[],
     messageOrder: MessagesOrderMap,
   ) => Promise<void>;
   getLastConversations: (count: number) => Promise<Conversation[]>;
@@ -67,7 +67,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
     return data;
   };
 
-  const setMessages = async (conversationId: string, messages: ChatMessage[]) => {
+  const setMessages = async (conversationId: string, messages: ConversationMessage[]) => {
     const conversationDoc = getConversationDoc(conversationId);
     await setDoc(
       conversationDoc,
@@ -109,7 +109,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
 
   const saveConversation = async (
     conversationId: string,
-    messages: ChatMessage[],
+    messages: ConversationMessage[],
     messageOrder: MessagesOrderMap,
   ) => {
     const conversationDoc = getConversationDoc(conversationId);

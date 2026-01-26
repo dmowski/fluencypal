@@ -22,7 +22,7 @@ import {
   GoalElementInfo,
 } from './types';
 import { useSettings } from '../Settings/useSettings';
-import { ChatMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/common/conversation';
 import { useTextAi } from '../Ai/useTextAi';
 import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang';
 import { GoalQuiz } from '@/app/api/goal/types';
@@ -70,7 +70,7 @@ const exampleOfPlan = `Example of plan:
 ]`;
 
 interface GenerateGoalProps {
-  conversationMessages: ChatMessage[];
+  conversationMessages: ConversationMessage[];
   userInfo: string[];
   languageCode: SupportedLanguage;
   goalQuiz?: GoalQuiz;

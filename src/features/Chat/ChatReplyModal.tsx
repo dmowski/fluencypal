@@ -3,7 +3,7 @@ import { Stack, Typography } from '@mui/material';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { Message } from './Message';
 import { SubmitForm } from './SubmitForm';
-import { UserChatMessage } from './type';
+import { ThreadsMessage } from './type';
 import { useChat } from './useChat';
 
 export const ChatReplyModal = ({
@@ -17,7 +17,7 @@ export const ChatReplyModal = ({
   onCloseRecordMessageModal: () => void;
   isNewPostModalOpen: boolean;
   titleContent?: React.ReactNode;
-  messageToComment?: UserChatMessage;
+  messageToComment?: ThreadsMessage;
   contextForAiAnalysis: string;
   setIsActiveRecording: (isRecording: boolean) => void;
 }) => {

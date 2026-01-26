@@ -9,7 +9,7 @@ import { useChatHistory } from '../ConversationHistory/useChatHistory';
 import { useUsage } from '../Usage/useUsage';
 import { useSettings } from '../Settings/useSettings';
 import { UsageLog } from '@/common/usage';
-import { ChatMessage, ConversationType, MessagesOrderMap } from '@/common/conversation';
+import { ConversationMessage, ConversationType, MessagesOrderMap } from '@/common/conversation';
 import { useTasks } from '../Tasks/useTasks';
 import { sleep } from '@/libs/sleep';
 import { ConversationIdea, useAiUserInfo } from '../Ai/useAiUserInfo';
@@ -71,7 +71,7 @@ interface AiConversationContextType {
   setIsStarted: (isStarted: boolean) => void;
   startConversation: (params: StartConversationProps) => Promise<void>;
 
-  conversation: ChatMessage[];
+  conversation: ConversationMessage[];
   errorInitiating?: string;
   isClosing: boolean;
   isAiSpeaking: boolean;
@@ -194,7 +194,7 @@ VISUAL_CONTEXT (latest): ${description}
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
   const [goalInfo, setGoalInfo] = useState<GoalElementInfo | null>(null);
 
-  const [conversation, setConversation] = useState<ChatMessage[]>([]);
+  const [conversation, setConversation] = useState<ConversationMessage[]>([]);
   const [errorInitiating, setErrorInitiating] = useState<string>();
   const [isClosing, setIsClosing] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
@@ -308,7 +308,7 @@ VISUAL_CONTEXT (latest): ${description}
     toggleVolume(isLimited ? false : true);
   };
 
-  const onMessage = (message: ChatMessage) => {
+  const onMessage = (message: ConversationMessage) => {
     setConversation((prev) => {
       const isExisting = prev.find((m) => m.id === message.id);
 
@@ -785,7 +785,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
   };
 
   const addUserMessage = async (message: string) => {
-    communicator?.addUserChatMessage(message);
+    communicator?.addThreadsMessage(message);
     if (!lessonPlan) {
       await sleep(100);
       await communicatorRef.current?.triggerAiResponse();

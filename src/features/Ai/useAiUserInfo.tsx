@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useContext, ReactNode, JSX } from 'react';
-import { ChatMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/common/conversation';
 import { AiUserInfo, FirstBotConversationMessage } from '@/common/userInfo';
 import { useAuth } from '../Auth/useAuth';
 import { db } from '../Firebase/firebaseDb';
@@ -22,12 +22,12 @@ export interface ConversationIdea {
 }
 
 interface AiUserInfoContextType {
-  updateUserInfo: (conversation: ChatMessage[]) => Promise<{
+  updateUserInfo: (conversation: ConversationMessage[]) => Promise<{
     records: string[];
   }>;
   userInfo: AiUserInfo | null;
 
-  extractUserRecords: (conversation: ChatMessage[]) => Promise<string[]>;
+  extractUserRecords: (conversation: ConversationMessage[]) => Promise<string[]>;
   generateFirstMessageText: (topic: string) => Promise<ConversationIdea>;
   saveUserInfo: (updatedRecords: string[]) => Promise<void>;
 }
@@ -61,7 +61,7 @@ If not relevant information found, return empty array.
     return fixJson.parseJson<string[]>(summaryFromConversation);
   };
 
-  const extractUserRecords = async (conversation: ChatMessage[]): Promise<string[]> => {
+  const extractUserRecords = async (conversation: ConversationMessage[]): Promise<string[]> => {
     try {
       const systemMessage = `Given conversation with user and language teacher.
 Your goal is to extract information about user from this conversation.
@@ -117,7 +117,7 @@ If not relevant information found, return empty array.`;
     );
   };
 
-  const updateUserInfo = async (conversation: ChatMessage[]) => {
+  const updateUserInfo = async (conversation: ConversationMessage[]) => {
     if (!dbDocRef) {
       throw new Error('dbDocRef is not defined | useAiUserInfo.updateUserInfo');
     }

@@ -1,11 +1,11 @@
-import { UserChatMessage } from './type';
+import { ThreadsMessage } from './type';
 
 export const getAllChildrenMessages = (
-  message: UserChatMessage,
-  messages: UserChatMessage[],
-): UserChatMessage[] => {
-  const children: UserChatMessage[] = [];
-  const stack: UserChatMessage[] = [message];
+  message: ThreadsMessage,
+  messages: ThreadsMessage[],
+): ThreadsMessage[] => {
+  const children: ThreadsMessage[] = [];
+  const stack: ThreadsMessage[] = [message];
 
   while (stack.length > 0) {
     const currentMessage = stack.pop();

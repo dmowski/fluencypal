@@ -1,12 +1,8 @@
 'use client';
-import { Button, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import { Message } from './Message';
 import { useChat } from './useChat';
-import { ChartSortMode, UserChatMessage } from './type';
-import { useLingui } from '@lingui/react';
-import { ChevronUp } from 'lucide-react';
-import { useState } from 'react';
-import { getAllParentMessages } from './getAllParentMessages';
+import { ChartSortMode } from './type';
 import { RelyMessage } from './RelyMessage';
 
 interface MessageChainProps {

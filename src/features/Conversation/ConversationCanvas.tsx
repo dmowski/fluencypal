@@ -35,7 +35,7 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 
 import { AliasGamePanel } from './AliasGamePanel';
-import { ChatMessage, MessagesOrderMap } from '@/common/conversation';
+import { ConversationMessage, MessagesOrderMap } from '@/common/conversation';
 import { GuessGameStat, RecordingUserMessageMode } from './types';
 import dayjs from 'dayjs';
 import { useLingui } from '@lingui/react';
@@ -53,7 +53,7 @@ import { LessonPlanAnalysis } from '../LessonPlan/type';
 import { RecordingCanvasMenu } from './RecordingCanvasMenu';
 
 interface ConversationCanvasProps {
-  conversation: ChatMessage[];
+  conversation: ConversationMessage[];
   isAiSpeaking: boolean;
   gameWords: GuessGameStat | null;
   isClosed: boolean;

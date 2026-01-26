@@ -1,10 +1,10 @@
-import { UserChatMessage } from './type';
+import { ThreadsMessage } from './type';
 
 export const getAllParentMessages = (
-  message: UserChatMessage,
-  messages: UserChatMessage[],
-): UserChatMessage[] => {
-  const parents: UserChatMessage[] = [];
+  message: ThreadsMessage,
+  messages: ThreadsMessage[],
+): ThreadsMessage[] => {
+  const parents: ThreadsMessage[] = [];
   let currentMessage = message;
 
   while (currentMessage.parentMessageId) {

@@ -4,7 +4,7 @@ import { SupportedLanguage } from '@/features/Lang/lang';
 import { RolePlayScenariosInfo } from '../RolePlay/rolePlayData';
 import { sleep } from '@/libs/sleep';
 import { ConversationCanvas } from '../Conversation/ConversationCanvas';
-import { ChatMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/common/conversation';
 import { GuessGameStat } from '../Conversation/types';
 import { useEffect, useState } from 'react';
 import { useAiConversation } from '../Conversation/useAiConversation';
@@ -16,7 +16,7 @@ interface PracticePageTestProps {
   lang: SupportedLanguage;
 }
 
-const startTestMessages: ChatMessage[] = [];
+const startTestMessages: ConversationMessage[] = [];
 
 for (let i = 0; i < 7; i++) {
   startTestMessages.push({
@@ -28,7 +28,7 @@ for (let i = 0; i < 7; i++) {
 
 export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) {
   const aiUserInfo = useAiUserInfo();
-  const [testMessage, setTestMessage] = useState<ChatMessage[]>(startTestMessages);
+  const [testMessage, setTestMessage] = useState<ConversationMessage[]>(startTestMessages);
 
   const showGame = false;
   const gameStat: GuessGameStat | null = showGame
