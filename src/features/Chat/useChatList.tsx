@@ -2,7 +2,7 @@
 import { createContext, useContext, ReactNode, JSX, useMemo } from 'react';
 import { useAuth } from '../Auth/useAuth';
 import { db } from '../Firebase/firebaseDb';
-import { query, where } from 'firebase/firestore';
+import { deleteDoc, query, where } from 'firebase/firestore';
 import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { ChatSpaceUserReadMetadata, UserChatMetadata } from './type';
 
@@ -13,6 +13,7 @@ interface ChatListContextType {
   unreadSpaces: Record<string, number>;
   myUnreadCount: number;
   unreadCountGlobal: number;
+  deleteChat: (spaceId: string) => Promise<void>;
 }
 
 const ChatListContext = createContext<ChatListContextType | null>(null);
@@ -69,6 +70,21 @@ function useProvideChatList(): ChatListContextType {
     };
   }, [myChats, myReadStatsData, globalChat]);
 
+  const deleteChat = async (spaceId: string) => {
+    const chatRef = db.documents.chat(auth.uid, spaceId);
+    const isPublicChat = spaceId === 'global';
+
+    if (isPublicChat) {
+      console.warn('Cannot delete public global chat');
+      return;
+    }
+
+    if (!chatRef) {
+      return;
+    }
+    await deleteDoc(chatRef);
+  };
+
   return {
     loading: myChatsLoading,
     myChats: myChats || [],
@@ -76,6 +92,7 @@ function useProvideChatList(): ChatListContextType {
     unreadSpaces,
     myUnreadCount,
     unreadCountGlobal,
+    deleteChat,
   };
 }
 

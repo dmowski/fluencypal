@@ -1,8 +1,19 @@
-import { Alert, Badge, Button, Stack, Tab, Tabs, Typography } from '@mui/material';
+import {
+  Alert,
+  Badge,
+  Button,
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Stack,
+  Typography,
+} from '@mui/material';
 import { ChatSection } from './ChatSection';
 import { ChatProvider } from './useChat';
 import { useLingui } from '@lingui/react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CircleEllipsis } from 'lucide-react';
 import { useChatList } from './useChatList';
 import { useUrlState } from '../Url/useUrlParam';
 import { useAuth } from '../Auth/useAuth';
@@ -12,8 +23,10 @@ import { uniq } from '@/libs/uniq';
 import { ChartSortMode, UserChatMetadata } from './type';
 import dayjs from 'dayjs';
 import { UserName } from '../User/UserName';
-import { TabLabel } from '../Game/TabLabel';
 import { GlobalChatTabs } from './GlobalChatTabs';
+import { useState } from 'react';
+
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ChatPage = ({
   type,
@@ -143,7 +156,7 @@ export const ChatPage = ({
                         gap: '20px',
                       }}
                     >
-                      <ChatHeaderFull chat={chatMetadata} />
+                      <ChatHeaderFull chat={chatMetadata} close={() => setActiveChatId('')} />
                     </Stack>
                   </Stack>
 
@@ -343,10 +356,12 @@ const ChatHeaderList = ({ chat }: { chat: UserChatMetadata }) => {
   );
 };
 
-const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
+const ChatHeaderFull = ({ chat, close }: { chat: UserChatMetadata; close: () => void }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const game = useGame();
+
+  const chatList = useChatList();
 
   const allUserIds = uniq(
     chat.allowedUserIds?.sort((a, b) => {
@@ -365,6 +380,20 @@ const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
       .sort()
       .reverse()[0] || Date.now(),
   ).fromNow();
+
+  const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
+
+  const deleteChat = async () => {
+    const isConfirmed = window.confirm(
+      i18n._('Are you sure you want to delete this chat? This action cannot be undone.'),
+    );
+    if (isConfirmed) {
+      console.log('DELETING chat', chat.spaceId);
+      await chatList.deleteChat(chat.spaceId);
+      close();
+      setTimeout(() => alert(i18n._('Chat deleted successfully.')), 100);
+    }
+  };
 
   return (
     <>
@@ -416,18 +445,54 @@ const ChatHeaderFull = ({ chat }: { chat: UserChatMetadata }) => {
           })}
         </Stack>
 
-        <Typography
-          variant="caption"
+        <Stack
           sx={{
-            opacity: 0.7,
             paddingTop: '4px',
             position: 'absolute',
             top: '10px',
             right: '15px',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '5px',
           }}
         >
-          {i18n._('Last visited: {lastVisited}', { lastVisited })}
-        </Typography>
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: 0.7,
+            }}
+          >
+            {i18n._('Last visited: {lastVisited}', { lastVisited })}
+          </Typography>
+          <IconButton size="small" onClick={(e) => setMenuAnchorEl(e.currentTarget)}>
+            <CircleEllipsis size={'18px'} />
+          </IconButton>
+
+          <Menu
+            anchorEl={menuAnchorEl}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            keepMounted
+            open={Boolean(menuAnchorEl)}
+            onClose={() => setMenuAnchorEl(null)}
+          >
+            <MenuItem
+              onClick={() => {
+                deleteChat();
+                setMenuAnchorEl(null);
+              }}
+            >
+              <ListItemIcon>
+                <DeleteIcon color="error" />
+              </ListItemIcon>
+              <ListItemText>
+                <Typography color="error">{i18n._('Delete chat')}</Typography>
+              </ListItemText>
+            </MenuItem>
+          </Menu>
+        </Stack>
       </Stack>
     </>
   );
