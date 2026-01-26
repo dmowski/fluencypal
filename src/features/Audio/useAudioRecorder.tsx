@@ -62,7 +62,8 @@ export const useAudioRecorder = () => {
         setTranscriptionError(transcriptResponse.error);
       }
     } catch (error) {
-      setTranscriptionError('Error during transcription');
+      const errorString = error instanceof Error ? error.message : String(error);
+      setTranscriptionError('Error during transcription: ' + errorString);
     }
     recorderControls.clearCanvas();
     setIsTranscribing(false);
