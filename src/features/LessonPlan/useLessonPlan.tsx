@@ -61,47 +61,13 @@ function useProvideLessonPlan(): LessonPlanContextType {
   messageOrderRef.current = aiConversation.messageOrder;
   const conversationRef = useRef(aiConversation.conversation);
   conversationRef.current = aiConversation.conversation;
-
   const getActiveConversation = async (temporaryUserMessage?: string) => {
     const sortedMessages = getSortedMessages({
       conversation: conversationRef.current,
       messageOrder: messageOrderRef.current,
     });
 
-    const messageCountToSummarize = 5;
-    let summary: string | null = null;
-
-    if (sortedMessages.length > messageCountToSummarize + 2) {
-      const summarySystemMessage = `You are an AI assistant that summarizes conversations between a teacher and a student for a language learning lesson plan.
-Your task is to create a shorter version of conversation.
-
-Format the summary as a explicit facts what user and teacher said.`;
-
-      let conversationToSummarize = `## Conversation:\n\n`;
-      sortedMessages
-        .filter((_, index) => index < messageCountToSummarize)
-        .forEach((message) => {
-          conversationToSummarize += `${message.isBot ? 'Teacher' : 'Student'}: ${message.text}\n`;
-        });
-
-      const conversationKey = getHash(conversationToSummarize);
-
-      const userMessage = `Please provide a concise summary of the following conversation:\n\n${conversationToSummarize}`;
-
-      if (!summaryMapRef.current[conversationKey]) {
-        const summaryRequest = ai.generate({
-          systemMessage: summarySystemMessage,
-          userMessage: userMessage,
-          model: 'gpt-4o',
-        });
-        summaryMapRef.current[conversationKey] = summaryRequest;
-        summary = await summaryRequest;
-        console.log('SUMMARY', summary);
-      } else {
-        summary = await summaryMapRef.current[conversationKey];
-      }
-    }
-
+    // Add temporary user message BEFORE computing summary window
     if (temporaryUserMessage) {
       const lastMessage = sortedMessages.length ? sortedMessages[sortedMessages.length - 1] : null;
       if (lastMessage && !lastMessage.isBot && lastMessage.text !== temporaryUserMessage) {
@@ -113,17 +79,79 @@ Format the summary as a explicit facts what user and teacher said.`;
       }
     }
 
+    const keepLast = 4; // keep latest 4 messages as-is
+    const chunkSize = 5; // summarize in blocks of 5
+
+    const activePlan = getActivePlanAsText();
+
+    const summarySystemMessage = `You are an AI assistant that summarizes conversations between a teacher and a student for a language learning lesson plan.
+Your task is to create a shorter version of conversation.
+
+Format the summary as explicit facts: what the student and teacher said.
+And add info what was don according to the lesson plan:
+${activePlan}
+`;
+
+    const total = sortedMessages.length;
+    const summarizeCount = Math.max(0, total - keepLast);
+
+    // number of FULL 5-message chunks we can summarize
+    const chunkCount = Math.floor(summarizeCount / chunkSize);
+
+    let combinedSummary = '';
+
+    if (chunkCount > 0) {
+      const summaries: string[] = [];
+
+      for (let chunkIndex = 0; chunkIndex < chunkCount; chunkIndex++) {
+        const start = chunkIndex * chunkSize;
+        const end = start + chunkSize; // exclusive
+
+        let conversationToSummarize = `## Conversation chunk (${start + 1}-${end}):\n\n`;
+        for (let i = start; i < end; i++) {
+          const m = sortedMessages[i];
+          conversationToSummarize += `${m.isBot ? 'Teacher' : 'Student'}: ${m.text}\n`;
+        }
+
+        const conversationKey = getHash(conversationToSummarize);
+
+        const userMessage = `Please provide a concise summary of the following conversation chunk:\n\n${conversationToSummarize}`;
+
+        if (!summaryMapRef.current[conversationKey]) {
+          const summaryRequest = ai.generate({
+            systemMessage: summarySystemMessage,
+            userMessage,
+            model: 'gpt-4o',
+          });
+          summaryMapRef.current[conversationKey] = summaryRequest;
+        }
+
+        const chunkSummary = await summaryMapRef.current[conversationKey];
+        summaries.push(`Chunk ${chunkIndex + 1} (${start + 1}-${end}): ${chunkSummary}`);
+      }
+
+      combinedSummary = summaries.join('\n');
+    }
+
+    // After summarizing full chunks, keep the rest verbatim:
+    // - any leftover messages before the last 4 (not enough to form a full chunk)
+    // - plus the last 4 always
+    const summarizedUntilIndexExclusive = chunkCount * chunkSize; // e.g. 10 means [0..9] summarized
+    const messagesToKeepVerbatimFromIndex = summarizedUntilIndexExclusive;
+
     const lastMessageIndex = sortedMessages.length - 1;
-    const lastMessage =
-      sortedMessages.length > 0 ? sortedMessages[sortedMessages.length - 1] : null;
+    const lastMessage = sortedMessages.length > 0 ? sortedMessages[lastMessageIndex] : null;
     const lastMessageText = lastMessage ? lastMessage.text : '';
 
-    let conversationText = `## Conversation so far:\n\n${summary ? 'Summary of previous messages:\n' + summary + '\n\n' : ''}`;
-    sortedMessages
-      .filter((_, index) => (summary ? index >= messageCountToSummarize : true))
-      .forEach((message) => {
-        conversationText += `${message.isBot ? 'Teacher' : 'Student'}: ${message.text}\n`;
-      });
+    let conversationText = `## Conversation so far:\n\n`;
+    if (combinedSummary) {
+      conversationText += `Summary of previous messages (chunked):\n${combinedSummary}\n\n`;
+    }
+
+    for (let i = messagesToKeepVerbatimFromIndex; i < sortedMessages.length; i++) {
+      const m = sortedMessages[i];
+      conversationText += `${m.isBot ? 'Teacher' : 'Student'}: ${m.text}\n`;
+    }
 
     return { conversationText, lastMessageText, lastMessage, lastMessageIndex };
   };
@@ -210,7 +238,16 @@ ${JSON.stringify(previousProgress, null, 2)}
         );
 
         if (result) {
-          resolve(result);
+          resolve({
+            ...result,
+            progress:
+              result.progress && result.progress > 90
+                ? result.progress
+                : Math.max(
+                    result?.progress || previousProgress?.progress || 5,
+                    previousProgress.progress || 5,
+                  ),
+          });
           return;
         }
       } catch (error) {
