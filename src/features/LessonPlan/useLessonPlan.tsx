@@ -53,7 +53,7 @@ function useProvideLessonPlan(): LessonPlanContextType {
     return planText;
   };
 
-  const getActiveConversation = (temporaryUserMessage?: string) => {
+  const getActiveConversation = async (temporaryUserMessage?: string) => {
     const sortedMessages = getSortedMessages({
       conversation: aiConversation.conversation,
       messageOrder: aiConversation.messageOrder,
@@ -92,7 +92,7 @@ function useProvideLessonPlan(): LessonPlanContextType {
     }
 
     const activePlan = getActivePlanAsText();
-    const activeConversation = getActiveConversation(temporaryUserMessage);
+    const activeConversation = await getActiveConversation(temporaryUserMessage);
     const firstBotMessage = aiConversation.conversation.find((msg) => msg.isBot);
 
     const key = `${activeConversation.lastMessageIndex}_${activeConversation.lastMessageText}`;
@@ -179,7 +179,7 @@ ${JSON.stringify(previousProgress, null, 2)}
   const isAnalyzingConversationInProgress = useRef(false);
 
   const analyzeActiveConversation = async () => {
-    const activeConversation = getActiveConversation();
+    const activeConversation = await getActiveConversation();
     const isSkipMessage =
       activeConversation.lastMessage?.isBot || activeConversation.lastMessage?.isInProgress;
     if (isSkipMessage) {
@@ -284,8 +284,12 @@ Format the response as a JSON array with each step containing "stepTitle", "step
   useEffect(() => {
     setLastMessageUpdateTime(Date.now());
     setIsReadyToAnalyze(false);
-    const activeConversation = getActiveConversation();
-    const timeoutTime = activeConversation.lastMessage?.isBot ? 3000 : 10;
+    const sortedMessages = getSortedMessages({
+      conversation: aiConversation.conversation,
+      messageOrder: aiConversation.messageOrder,
+    });
+    const lastMessage = sortedMessages[sortedMessages.length - 1];
+    const timeoutTime = lastMessage?.isBot ? 3000 : 10;
 
     const timer = setTimeout(() => {
       setIsReadyToAnalyze(true);
