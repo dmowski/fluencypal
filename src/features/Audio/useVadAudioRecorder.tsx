@@ -20,7 +20,7 @@ export const useVadAudioRecorder = ({
   const auth = useAuth();
   const settings = useSettings();
   const learnLanguageCode = settings.languageCode || 'en';
-
+  const [isTranscribing, setIsTranscribing] = useState(false);
   const getRecordTranscript = async (
     recordedAudioBlog: Blob,
     format: string,
@@ -65,8 +65,6 @@ export const useVadAudioRecorder = ({
 
   const { inWebView } = useIsWebView();
 
-  const [isTranscribing, setIsTranscribing] = useState(false);
-
   return {
     isAbleToUse: !inWebView,
     isTranscribing,
@@ -75,5 +73,6 @@ export const useVadAudioRecorder = ({
     stop: recorderControls.stop,
     isRecording: recorderControls.isRunning,
     isSpeaking: recorderControls.isSpeaking,
+    error: recorderControls.lastError,
   };
 };
