@@ -847,6 +847,11 @@ msgstr "Mimarlık ve Dayanıklılık"
 msgid "Are there any hidden fees?"
 msgstr "Hiç gizli ücret var mı?"
 
+#: src/features/Chat/ChatPage.tsx:388
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete this chat? This action cannot be undone."
+msgstr "Bu sohbeti silmek istediğinizden emin misiniz? Bu işlem geri alınamaz."
+
 #: src/features/Chat/Message.tsx:98
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
@@ -922,13 +927,13 @@ msgstr ""
 "Bu hatalardan kaçınmak sizi daha profesyonel gösterecek ve başarı şansınızı "
 "artıracaktır."
 
-#: src/features/Chat/ChatPage.tsx:137
+#: src/features/Chat/ChatPage.tsx:150
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Geri"
 
-#: src/features/Chat/ChatPage.tsx:178
+#: src/features/Chat/ChatPage.tsx:191
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Sohbet listesine geri dön"
@@ -1322,10 +1327,10 @@ msgstr "Kariyer İlerlemesi"
 msgid "Career benefit:"
 msgstr "Kariyer faydası:"
 
-#: src/features/Chat/ChatPage.tsx:331
-#: src/features/Chat/ChatPage.tsx:333
-#: src/features/Chat/ChatPage.tsx:405
-#: src/features/Chat/ChatPage.tsx:407
+#: src/features/Chat/ChatPage.tsx:344
+#: src/features/Chat/ChatPage.tsx:346
+#: src/features/Chat/ChatPage.tsx:434
+#: src/features/Chat/ChatPage.tsx:436
 #: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1336,12 +1341,17 @@ msgstr "Sohbet"
 msgid "Chat between you and {userName}"
 msgstr "Senin ile {userName} arasında sohbet"
 
+#: src/features/Chat/ChatPage.tsx:394
+#. js-lingui-explicit-id
+msgid "Chat deleted successfully."
+msgstr "Sohbet başarıyla silindi."
+
 #: src/features/Usage/UsageStatsCards.tsx:193
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Sohbet geçmişi"
 
-#: src/features/Chat/ChatPage.tsx:171
+#: src/features/Chat/ChatPage.tsx:184
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Sohbet bulunamadı veya bu sohbete erişiminiz yok."
@@ -1531,14 +1541,14 @@ msgstr "İletişim ve Liderlik"
 msgid "Community"
 msgstr "Topluluk"
 
-#: src/features/Community/CommunityDashboard.tsx:95
+#: src/features/Community/CommunityDashboard.tsx:96
 #: src/features/Community/CommunityPage.tsx:22
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "Topluluk Sohbeti"
 
-#: src/features/Community/CommunityDashboard.tsx:75
+#: src/features/Community/CommunityDashboard.tsx:76
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Topluluk Merkezi"
@@ -1983,13 +1993,13 @@ msgstr "Yargılanma korkusu olmadan günlük röportaj"
 msgid "Daily Language Practice"
 msgstr "Günlük Dil Pratiği"
 
-#: src/features/Chat/ChatPage.tsx:329
-#: src/features/Chat/ChatPage.tsx:403
+#: src/features/Chat/ChatPage.tsx:342
+#: src/features/Chat/ChatPage.tsx:432
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Günlük Soru Sohbeti"
 
-#: src/features/Community/CommunityDashboard.tsx:126
+#: src/features/Community/CommunityDashboard.tsx:122
 #: src/features/Community/CommunityPage.tsx:26
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2046,8 +2056,8 @@ msgstr "gün"
 msgid "Debate"
 msgstr "Tartışma"
 
-#: src/features/Chat/ChatPage.tsx:328
-#: src/features/Chat/ChatPage.tsx:402
+#: src/features/Chat/ChatPage.tsx:341
+#: src/features/Chat/ChatPage.tsx:431
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Tartışma Sohbeti"
@@ -2077,7 +2087,7 @@ msgstr "Tartışma başladı!"
 msgid "Debate topics will be selected randomly."
 msgstr "Tartışma konuları rastgele seçilecektir."
 
-#: src/features/Community/CommunityDashboard.tsx:119
+#: src/features/Community/CommunityDashboard.tsx:115
 #: src/features/Community/CommunityPage.tsx:25
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -2102,6 +2112,11 @@ msgstr "Hesabı Sil"
 #. js-lingui-explicit-id
 msgid "Delete account (Total)"
 msgstr "Hesabı Sil (Toplam)"
+
+#: src/features/Chat/ChatPage.tsx:491
+#. js-lingui-explicit-id
+msgid "Delete chat"
+msgstr "Sohbeti sil"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:448
 #. js-lingui-explicit-id
@@ -3597,7 +3612,7 @@ msgstr "Tam AI mülakat koçu erişimi"
 msgid "Full AI tutor access"
 msgstr "Tam AI öğretmen erişimi"
 
-#: src/features/Community/CommunityDashboard.tsx:101
+#: src/features/Community/CommunityDashboard.tsx:102
 #: src/features/Community/CommunityPage.tsx:23
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -3866,8 +3881,8 @@ msgstr "Küçük bir örnek ver (sayaç, giriş, düğme)"
 msgid "Give us your feedback"
 msgstr "Bize geri bildiriminizi verin"
 
-#: src/features/Chat/ChatPage.tsx:330
-#: src/features/Chat/ChatPage.tsx:404
+#: src/features/Chat/ChatPage.tsx:343
+#: src/features/Chat/ChatPage.tsx:433
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Global Sohbet"
@@ -5845,7 +5860,7 @@ msgstr "Beyninizde yüklü olan diller:"
 msgid "Last Visit"
 msgstr "Son Ziyaret"
 
-#: src/features/Chat/ChatPage.tsx:429
+#: src/features/Chat/ChatPage.tsx:465
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "Son ziyaret: {lastVisited}"
@@ -5866,7 +5881,7 @@ msgstr "Tembel Yükleme"
 msgid "Leaderboard"
 msgstr "Lider Tablosu"
 
-#: src/features/Community/CommunityDashboard.tsx:132
+#: src/features/Community/CommunityDashboard.tsx:128
 #: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -7521,7 +7536,7 @@ msgstr "gizlilik politikası"
 msgid "Privacy Policy"
 msgstr "Gizlilik Politikası"
 
-#: src/features/Community/CommunityDashboard.tsx:113
+#: src/features/Community/CommunityDashboard.tsx:133
 #: src/features/Community/CommunityPage.tsx:24
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -9200,7 +9215,7 @@ msgstr "Yapay Zeka ön yüz geliştirici ile teknik mülakat"
 msgid "Tech stack covered"
 msgstr "Kapsanan teknoloji yığını"
 
-#: src/features/Community/CommunityDashboard.tsx:108
+#: src/features/Community/CommunityDashboard.tsx:109
 #: src/features/Community/CommunityPage.tsx:27
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -10750,7 +10765,7 @@ msgstr ""
 "Tüm soruları tamamladınız. Cevaplarınızı şimdi gönderin ve sonuçları "
 "bekleyin."
 
-#: src/features/Chat/ChatPage.tsx:201
+#: src/features/Chat/ChatPage.tsx:214
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "Henüz bir sohbetiniz yok."

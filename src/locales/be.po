@@ -852,6 +852,11 @@ msgstr "Архітэктура і Жываздольнасць"
 msgid "Are there any hidden fees?"
 msgstr "Ці ёсць якія-небудзь схаваныя зборы?"
 
+#: src/features/Chat/ChatPage.tsx:388
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete this chat? This action cannot be undone."
+msgstr "Ці ўпэўнены вы, што жадаеце выдаліць гэты чат? Гэта дзеянне нельга адмяніць."
+
 #: src/features/Chat/Message.tsx:98
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
@@ -929,13 +934,13 @@ msgstr ""
 "Уніканне гэтых памылак зробіць вас болей прафесійным і павялічыць шансы на "
 "паспяху."
 
-#: src/features/Chat/ChatPage.tsx:137
+#: src/features/Chat/ChatPage.tsx:150
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Назад"
 
-#: src/features/Chat/ChatPage.tsx:178
+#: src/features/Chat/ChatPage.tsx:191
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Вярнуцца да спісу чатаў"
@@ -1333,10 +1338,10 @@ msgstr "Прасоўванне па Кар'еры"
 msgid "Career benefit:"
 msgstr "Кар'ерны выгад:"
 
-#: src/features/Chat/ChatPage.tsx:331
-#: src/features/Chat/ChatPage.tsx:333
-#: src/features/Chat/ChatPage.tsx:405
-#: src/features/Chat/ChatPage.tsx:407
+#: src/features/Chat/ChatPage.tsx:344
+#: src/features/Chat/ChatPage.tsx:346
+#: src/features/Chat/ChatPage.tsx:434
+#: src/features/Chat/ChatPage.tsx:436
 #: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1347,12 +1352,17 @@ msgstr "Чат"
 msgid "Chat between you and {userName}"
 msgstr "Чат паміж вамі і {userName}"
 
+#: src/features/Chat/ChatPage.tsx:394
+#. js-lingui-explicit-id
+msgid "Chat deleted successfully."
+msgstr "Чат паспяхова выдалены."
+
 #: src/features/Usage/UsageStatsCards.tsx:193
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Гісторыя чата"
 
-#: src/features/Chat/ChatPage.tsx:171
+#: src/features/Chat/ChatPage.tsx:184
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Чат не знойдзены або ў вас няма доступу да яго."
@@ -1543,14 +1553,14 @@ msgstr "Камунікацыя і Лідэрства"
 msgid "Community"
 msgstr "Супольнасць"
 
-#: src/features/Community/CommunityDashboard.tsx:95
+#: src/features/Community/CommunityDashboard.tsx:96
 #: src/features/Community/CommunityPage.tsx:22
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "Супольнасць Чат"
 
-#: src/features/Community/CommunityDashboard.tsx:75
+#: src/features/Community/CommunityDashboard.tsx:76
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Супольнасць Hub"
@@ -1995,13 +2005,13 @@ msgstr "Штодзённае інтэрв'ю без страху асуджэн�
 msgid "Daily Language Practice"
 msgstr "Шкодныя моўныя практыкі"
 
-#: src/features/Chat/ChatPage.tsx:329
-#: src/features/Chat/ChatPage.tsx:403
+#: src/features/Chat/ChatPage.tsx:342
+#: src/features/Chat/ChatPage.tsx:432
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Штодзённая дыскусія па пытаннях"
 
-#: src/features/Community/CommunityDashboard.tsx:126
+#: src/features/Community/CommunityDashboard.tsx:122
 #: src/features/Community/CommunityPage.tsx:26
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2058,8 +2068,8 @@ msgstr "дзень"
 msgid "Debate"
 msgstr "Дэбаты"
 
-#: src/features/Chat/ChatPage.tsx:328
-#: src/features/Chat/ChatPage.tsx:402
+#: src/features/Chat/ChatPage.tsx:341
+#: src/features/Chat/ChatPage.tsx:431
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Дэбаты Чат"
@@ -2089,7 +2099,7 @@ msgstr "Дэбаты пачаліся!"
 msgid "Debate topics will be selected randomly."
 msgstr "Тэмы для дэбатаў будуць выбірацца выпадковым чынам."
 
-#: src/features/Community/CommunityDashboard.tsx:119
+#: src/features/Community/CommunityDashboard.tsx:115
 #: src/features/Community/CommunityPage.tsx:25
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -2116,6 +2126,11 @@ msgid "Delete account (Total)"
 msgstr ""
 "\n"
 "Выдаліць уліковы запіс (Усяго)\n"
+
+#: src/features/Chat/ChatPage.tsx:491
+#. js-lingui-explicit-id
+msgid "Delete chat"
+msgstr "Выдаліць размову"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:448
 #. js-lingui-explicit-id
@@ -3615,7 +3630,7 @@ msgstr "Поўны доступ да штучнага інтэлекту трэ�
 msgid "Full AI tutor access"
 msgstr "Поўны доступ да AI-тутара"
 
-#: src/features/Community/CommunityDashboard.tsx:101
+#: src/features/Community/CommunityDashboard.tsx:102
 #: src/features/Community/CommunityPage.tsx:23
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -3880,8 +3895,8 @@ msgstr "Дайце невялікі прыклад (лічыльнік, увах
 msgid "Give us your feedback"
 msgstr "Дайце нам вашы водгукі"
 
-#: src/features/Chat/ChatPage.tsx:330
-#: src/features/Chat/ChatPage.tsx:404
+#: src/features/Chat/ChatPage.tsx:343
+#: src/features/Chat/ChatPage.tsx:433
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Глабальны чат"
@@ -5874,7 +5889,7 @@ msgstr "Мовы, усталяваныя ў вашым мозгу:"
 msgid "Last Visit"
 msgstr "Апошні візіт"
 
-#: src/features/Chat/ChatPage.tsx:429
+#: src/features/Chat/ChatPage.tsx:465
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "Апошні візіт: {lastVisited}"
@@ -5895,7 +5910,7 @@ msgstr "Лянівое Загружэнне"
 msgid "Leaderboard"
 msgstr "Лідарборд"
 
-#: src/features/Community/CommunityDashboard.tsx:132
+#: src/features/Community/CommunityDashboard.tsx:128
 #: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -7563,7 +7578,7 @@ msgstr "палітыка прыватнасці"
 msgid "Privacy Policy"
 msgstr "Палітыка прыватнасці"
 
-#: src/features/Community/CommunityDashboard.tsx:113
+#: src/features/Community/CommunityDashboard.tsx:133
 #: src/features/Community/CommunityPage.tsx:24
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -9255,7 +9270,7 @@ msgstr "Інтэрв'ю з AI frontend распрацоўшчыкам тэхна
 msgid "Tech stack covered"
 msgstr "Тэхналагічны стэк ахоплены"
 
-#: src/features/Community/CommunityDashboard.tsx:108
+#: src/features/Community/CommunityDashboard.tsx:109
 #: src/features/Community/CommunityPage.tsx:27
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -10820,7 +10835,7 @@ msgid ""
 "the results."
 msgstr "Вы завяршылі ўсе пытанні. Адпраўце свае адказы цяпер і чакайце вынікаў."
 
-#: src/features/Chat/ChatPage.tsx:201
+#: src/features/Chat/ChatPage.tsx:214
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "У вас пакуль няма чатаў."
