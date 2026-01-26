@@ -135,8 +135,8 @@ export const Message = ({
     scrollToBottom();
   };
 
-  const isUserIsRecordingStart = !message.isBot && message.text === ' ';
-  const isMessageInProgress = !message.isBot && message.isInProgress;
+  const isUserIsRecordingStart = isLastMessage && !message.isBot && message.text === ' ';
+  const isMessageInProgress = isLastMessage && !message.isBot && message.isInProgress;
 
   return (
     <Stack
