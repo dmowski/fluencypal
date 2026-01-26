@@ -4,6 +4,7 @@ import { Badge, Stack, Typography } from '@mui/material';
 import { NavigationBar } from '../Navigation/NavigationBar';
 import {
   Crown,
+  Mail,
   MessageCircle,
   MessagesSquare,
   ShieldQuestionMark,
@@ -109,12 +110,7 @@ export const CommunityDashboard = () => {
                   onClick={() => setActivePage('tech-support')}
                   icon={<SupportAgentIcon style={iconStyle} />}
                 />
-                <CommunityCard
-                  title={i18n._('Private Messages')}
-                  onClick={() => setActivePage('dm')}
-                  badgeNumber={chatList.myUnreadCount}
-                  icon={<MessageCircle style={iconStyle} />}
-                />
+
                 <CommunityCard
                   title={i18n._('Debates')}
                   badgeNumber={battles.countOfBattlesNeedToAttention}
@@ -132,6 +128,12 @@ export const CommunityDashboard = () => {
                   title={i18n._('Leaderboards')}
                   onClick={() => setActivePage('leaderboards')}
                   icon={<Crown style={iconStyle} />}
+                />
+                <CommunityCard
+                  title={i18n._('Private Messages')}
+                  onClick={() => setActivePage('dm')}
+                  badgeNumber={chatList.myUnreadCount}
+                  icon={<Mail style={iconStyle} />}
                 />
               </Stack>
             </Stack>
