@@ -167,24 +167,74 @@ export const CallButtons = ({
   transcriptStackRef.current = transcriptStack;
   const WAIT_BEFORE_SEND = 6000;
 
+  const messagesRef = useRef<ConversationMessage[]>(messages);
+  messagesRef.current = messages;
+
   const howMuchToWait = async (message: string): Promise<number> => {
-    const response = await ai.generate({
-      systemMessage: `User will provide a transcript from real-time conversation. Respond a number of milliseconds it worts to wait to user finish the message
-        
+    const botMessages = messagesRef.current.filter((msg) => msg.isBot);
+    const lastBotMessage = botMessages?.[botMessages.length - 1] || null;
+    const previousBotMessage = lastBotMessage ? lastBotMessage.text : '';
+
+    const systemMessage = `You will receive a transcript from a real-time spoken conversation.
+
+Your task is to decide how long (in milliseconds) the AI should wait before responding,
+based on whether the user has finished speaking or is likely to continue.
+
+Rules:
+- Return ONLY a single number (milliseconds). No text, no explanation.
+- Minimum wait time: 1500 ms
+- Maximum wait time: 6000 ms
+
+Decision logic:
+- If the user's message feels logically complete, finished, or conclusive → return 1500
+- If the user sounds like they are still thinking, continuing, or building an idea → return a longer wait time
+- Add more wait time if:
+  - The sentence ends abruptly
+  - There are fillers (e.g. "uh", "um", "you know", long pauses implied)
+  - The message feels mid-thought, reflective, or exploratory
+- Use shorter wait time if:
+  - The message ends with a clear conclusion
+  - The user answers a question directly
+  - The tone sounds confident and finished
+
+Context:
+- The previous bot message may change over time and should be used only as conversational context.
+- Do NOT respond to the content itself — only estimate waiting time.
+
 Examples:
-'I went to the': 3000
-'Yesterday, I saw': 4500
-'The weather today is': 5000
-'In my opinion,': 6500
-'No': 2000
-'Yes, I agree.': 2000
-'I think the answer is 42.': 2000
-'I think the answer is 42, because': 5000
-'Hello, how are you?': 2500
-`,
-      userMessage: message,
+
+User transcript:
+"I think the idea works really well because it connects technology with nature."
+→ 1500
+
+User transcript:
+"I think the idea works really well because it connects technology with…"
+→ 4500
+
+User transcript:
+"Well, maybe one challenge could be… actually, I'm not sure, but like…"
+→ 5500
+
+User transcript:
+"Yes, I can imagine ethical dilemmas around resource usage."
+→ 1500
+
+Previous bot message:
+${previousBotMessage}
+
+Return ONLY the number.
+`;
+
+    const userMessage = message;
+
+    const start = Date.now();
+    const response = await ai.generate({
+      systemMessage: systemMessage,
+      userMessage: userMessage,
       model: 'gpt-4o',
     });
+    console.log('duration of generate waiting', Date.now() - start);
+    console.log('Waiting time', response);
 
     return Math.min(5000, Math.max(2000, parseInt(response.trim())));
   };
@@ -198,6 +248,7 @@ Examples:
       if (!transcript) return;
 
       addTranscriptDelta(transcript);
+      setBeforeSendingTimeout(null);
       const updatedTranscript = (transcriptStackRef.current + ' ' + transcript).trim();
       const toWait = updatedTranscript ? await howMuchToWait(updatedTranscript) : WAIT_BEFORE_SEND;
       setBeforeSendingTimeout(toWait);
@@ -229,7 +280,6 @@ Examples:
   const [beforeSendingTimeout, setBeforeSendingTimeout] = useState<number | null>(null);
   const [originBeforeSendingTimeout, setOriginBeforeSendingTimeout] = useState<number | null>(null);
 
-  //
   const waitingPercent = beforeSendingTimeout
     ? Math.round(
         (((originBeforeSendingTimeout || WAIT_BEFORE_SEND) - beforeSendingTimeout) /
@@ -244,7 +294,8 @@ Examples:
       setBeforeSendingTimeout(null);
       return;
     }
-    setBeforeSendingTimeout(originBeforeSendingTimeout);
+    setBeforeSendingTimeout(WAIT_BEFORE_SEND);
+    setOriginBeforeSendingTimeout(WAIT_BEFORE_SEND);
   }, [isReallySpeaking, vadAudioRecorder.isTranscribing]);
 
   useEffect(() => {
