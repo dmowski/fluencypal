@@ -4,6 +4,7 @@ import { useState, useEffect, ForwardRefExoticComponent, RefAttributes } from 'r
 import { useAuth } from '../Auth/useAuth';
 import { Avatar, Button, Stack, Typography } from '@mui/material';
 import {
+  Brain,
   ChevronRight,
   Landmark,
   Languages,
@@ -31,6 +32,7 @@ import { getUrlStart } from '../Lang/getUrlStart';
 import { GameMyAvatar } from '../Game/GameMyAvatar';
 import { GameMyUsername } from '../Game/GameMyUsername';
 import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
+import { AiKnowledgeModal } from '../Ai/AiKnowledgeModal';
 
 export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -54,6 +56,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const [isShowRefundModal, setIsShowRefundModal] = useUrlParam('refund');
   const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] = useUrlParam('paymentHistory');
   const [isShowFeedbackModal, setIsShowFeedbackModal] = useUrlParam('feedback');
+  const [isShowAiKnowledgeModal, setIsShowAiKnowledgeModal] = useUrlParam('ai-knowledge');
 
   const usage = useUsage();
   const [_, setIsShowModal] = useUrlParam('lang-selection');
@@ -73,6 +76,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       icon: Languages,
       onClick: () => setIsShowModal(true),
     },
+
     {
       title: i18n._(`AI Voice`),
       subTitle: i18n._(`Choose the voice for your AI teacher`),
@@ -89,6 +93,12 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       onClick: () => {
         usage.togglePaymentModal(true);
       },
+    },
+    {
+      title: i18n._(`AI knowledge about you`),
+      subTitle: i18n._(`Review and edit what the AI remembers`),
+      icon: Brain,
+      onClick: () => setIsShowAiKnowledgeModal(true),
     },
     {
       title: i18n._(`Feedback`),
@@ -255,6 +265,10 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
           placeholder={i18n._(`Leave your message`)}
           onClose={() => setIsShowFeedbackModal(false)}
         />
+      )}
+
+      {isShowAiKnowledgeModal && (
+        <AiKnowledgeModal onClose={() => setIsShowAiKnowledgeModal(false)} />
       )}
 
       <LanguageSwitcher

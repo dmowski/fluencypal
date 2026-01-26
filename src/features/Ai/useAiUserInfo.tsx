@@ -11,7 +11,6 @@ import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useSettings } from '../Settings/useSettings';
-import { SupportedLanguage } from '@/features/Lang/lang';
 import { useFixJson } from './useFixJson';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
@@ -30,6 +29,10 @@ interface AiUserInfoContextType {
   extractUserRecords: (conversation: ConversationMessage[]) => Promise<string[]>;
   generateFirstMessageText: (topic: string) => Promise<ConversationIdea>;
   saveUserInfo: (updatedRecords: string[]) => Promise<void>;
+  setUserRecords: (records: string[]) => Promise<void>;
+  addRecord: (record: string) => Promise<void>;
+  updateRecord: (index: number, record: string) => Promise<void>;
+  deleteRecord: (index: number) => Promise<void>;
 }
 
 const AiUserInfoContext = createContext<AiUserInfoContextType | null>(null);
@@ -103,7 +106,7 @@ If not relevant information found, return empty array.`;
 
   const saveUserInfo = async (updatedRecords: string[]) => {
     if (!dbDocRef) {
-      throw new Error('dbDocRef is not defined | useAiUserInfo.updateUserInfo');
+      throw new Error('dbDocRef is not defined | useAiUserInfo.saveUserInfo');
     }
 
     await setDoc(
@@ -129,6 +132,49 @@ If not relevant information found, return empty array.`;
     return {
       records: updatedRecords,
     };
+  };
+
+  const setUserRecords = async (records: string[]) => {
+    await saveUserInfo(records);
+  };
+
+  const addRecord = async (record: string) => {
+    if (!dbDocRef) {
+      throw new Error('dbDocRef is not defined | useAiUserInfo.addRecord');
+    }
+
+    const trimmedRecord = record.trim();
+    if (!trimmedRecord) return;
+
+    const existingRecords = userInfo?.records || [];
+    await saveUserInfo([...existingRecords, trimmedRecord]);
+  };
+
+  const updateRecord = async (index: number, record: string) => {
+    if (!dbDocRef) {
+      throw new Error('dbDocRef is not defined | useAiUserInfo.updateRecord');
+    }
+
+    const currentRecords = [...(userInfo?.records || [])];
+    if (index < 0 || index >= currentRecords.length) return;
+
+    const trimmedRecord = record.trim();
+    if (!trimmedRecord) return;
+
+    currentRecords[index] = trimmedRecord;
+    await saveUserInfo(currentRecords);
+  };
+
+  const deleteRecord = async (index: number) => {
+    if (!dbDocRef) {
+      throw new Error('dbDocRef is not defined | useAiUserInfo.deleteRecord');
+    }
+
+    const currentRecords = [...(userInfo?.records || [])];
+    if (index < 0 || index >= currentRecords.length) return;
+
+    const updatedRecords = currentRecords.filter((_, i) => i !== index);
+    await saveUserInfo(updatedRecords);
   };
 
   const addFirstConversationMessage = async (message: string) => {
@@ -238,6 +284,10 @@ ${firstMessages.length === 0 ? 'None' : firstMessages.map((msg, i) => `${i + 1}.
     extractUserRecords,
     updateUserInfo,
     saveUserInfo,
+    setUserRecords,
+    addRecord,
+    updateRecord,
+    deleteRecord,
   };
 }
 
