@@ -196,7 +196,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             subTitle2={i18n._(`Build fluency and confidence with daily speaking practice.`)}
             buttonTitle={i18n._(`Start Speaking`)}
             openMyPracticeLinkTitle={i18n._(`Start Speaking`)}
-            buttonHref={`${getUrlStart(lang)}quiz`}
+            buttonHref={`${getUrlStart(lang)}practice`}
             cards={[
               {
                 videoUrl: '/landing/preview/grammar2.webm',
@@ -262,7 +262,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 },
                 buttonTitle: i18n._('Start speaking practice'),
               }}
-              buttonHref={`${getUrlStart(lang)}quiz`}
+              buttonHref={`${getUrlStart(lang)}practice`}
             />
 
             <HowItWorks
@@ -299,7 +299,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                         }}
                       >
                         <Button
-                          href={`${getUrlStart(lang)}quiz`}
+                          href={`${getUrlStart(lang)}practice`}
                           variant="contained"
                           size="large"
                           color="info"
@@ -356,7 +356,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 },
               ]}
               buttonTitle={i18n._(`Start Practicing`)}
-              buttonHref={`${getUrlStart(lang)}quiz`}
+              buttonHref={`${getUrlStart(lang)}practice`}
               theme={'dark-red'}
               id={'how-it-works'}
             />
