@@ -65,13 +65,14 @@ Format the summary as explicit facts: what user and teacher said.`;
       return instructionState.correction;
     }
 
-    return [
+    const combinedPrompt = [
       instructionState.correction,
       instructionState.baseInitInstruction,
       instructionState.webCamDescription,
     ]
       .filter((part) => part && part.length > 0)
       .join('\n');
+    return (combinedPrompt + ' Do not use emojis in your responses.').trim();
   };
 
   const formatConversationHistoryAsync = async (): Promise<string> => {
