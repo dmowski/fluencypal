@@ -376,18 +376,16 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           </Stack>
         </Stack>
       ) : (
-        <Stack sx={{}}>
-          <Button
-            startIcon={<LandPlot />}
-            href={`${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}&currentStep=before_recordAbout`}
-            sx={{
-              padding: '20px',
-            }}
-            variant="contained"
-          >
-            Create a plan
-          </Button>
-        </Stack>
+        <Button
+          startIcon={<LandPlot size={'21px'} />}
+          href={`${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}&currentStep=before_recordAbout`}
+          sx={{
+            padding: '10px 20px',
+          }}
+          variant="outlined"
+        >
+          Create a plan
+        </Button>
       )}
 
       {isShowMoreModal && (
