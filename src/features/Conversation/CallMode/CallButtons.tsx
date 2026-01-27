@@ -238,29 +238,31 @@ Return ONLY the number.
   };
 
   const vadAudioRecorder = useVadAudioRecorder({
-    onTranscriptionStart: () => {
-      addTranscriptDelta(' ');
-    },
-    onTranscription: async (transcript: string) => {
-      if (!transcript) return;
-
-      addTranscriptDelta(transcript);
-      setBeforeSendingTimeout(null);
-      const updatedTranscript = (transcriptStackRef.current + ' ' + transcript).trim();
-      const toWait = updatedTranscript ? await howMuchToWait(updatedTranscript) : WAIT_BEFORE_SEND;
-      setBeforeSendingTimeout(toWait);
-      setOriginBeforeSendingTimeout(toWait);
-
-      setTranscriptStack((prev) => {
-        const newTranscript = prev + ' ' + transcript;
-        return newTranscript;
-      });
-
-      await lessonPlan.generateAnalysis(updatedTranscript);
-    },
-
+    onTranscriptionStart: () => addTranscriptDelta(' '),
     silenceMs: 1000,
   });
+
+  const processVadTranscript = async (transcript: string | null) => {
+    if (!transcript) return;
+
+    addTranscriptDelta(transcript);
+    setBeforeSendingTimeout(null);
+    const updatedTranscript = (transcriptStackRef.current + ' ' + transcript).trim();
+    const toWait = updatedTranscript ? await howMuchToWait(updatedTranscript) : WAIT_BEFORE_SEND;
+    setBeforeSendingTimeout(toWait);
+    setOriginBeforeSendingTimeout(toWait);
+
+    setTranscriptStack((prev) => {
+      const newTranscript = prev + ' ' + transcript;
+      return newTranscript;
+    });
+
+    await lessonPlan.generateAnalysis(updatedTranscript);
+  };
+
+  useEffect(() => {
+    processVadTranscript(vadAudioRecorder.lastTranscript);
+  }, [vadAudioRecorder.lastTranscript]);
 
   const isReallySpeaking = vadAudioRecorder.isSpeaking && vadAudioRecorder.speakingLevel > 0.6;
   const isSpeakingRef = useRef(false);

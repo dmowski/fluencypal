@@ -8,17 +8,17 @@ import { useState } from 'react';
 
 export const useVadAudioRecorder = ({
   silenceMs,
-  onTranscription,
   onTranscriptionStart,
 }: {
   onTranscriptionStart: () => void;
-  onTranscription: (transcript: string) => void;
+
   silenceMs?: number;
 }) => {
   const auth = useAuth();
   const settings = useSettings();
   const learnLanguageCode = settings.languageCode || 'en';
   const [isTranscribing, setIsTranscribing] = useState(false);
+  const [lastTranscript, setLastTranscript] = useState<string | null>(null);
 
   const getRecordTranscript = async (
     recordedAudioBlog: Blob,
@@ -47,8 +47,9 @@ export const useVadAudioRecorder = ({
         format,
       });
       if (transcriptResponse.transcript) {
-        onTranscription(transcriptResponse.transcript);
+        setLastTranscript(transcriptResponse.transcript);
       }
+
       setIsTranscribing(false);
     } catch (error) {
       console.error('Transcription error:', error);
@@ -76,5 +77,6 @@ export const useVadAudioRecorder = ({
     isSpeaking: recorderControls.isSpeaking,
     error: recorderControls.lastError,
     isEnabled,
+    lastTranscript,
   };
 };
