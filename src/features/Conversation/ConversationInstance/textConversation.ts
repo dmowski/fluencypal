@@ -80,8 +80,8 @@ Format the summary as explicit facts: what user and teacher said.`;
     const messages = conversationHistory;
     const total = messages.length;
 
-    const summarizableCount = Math.max(0, total - SUMMARY_KEEP_LAST);
-    const chunkCount = Math.floor(summarizableCount / SUMMARY_CHUNK_SIZE);
+    const summarizeCount = Math.max(0, total - SUMMARY_KEEP_LAST);
+    const chunkCount = Math.floor(summarizeCount / SUMMARY_CHUNK_SIZE);
 
     const roleLabel = (msg: ConversationMessage) => (msg.isBot ? 'Assistant' : 'User');
 
