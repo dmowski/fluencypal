@@ -48,7 +48,7 @@ export const initTextConversation = async ({
   };
 
   // --- Progressive summary config ---
-  const SUMMARY_CHUNK_SIZE = 5;
+  const SUMMARY_CHUNK_SIZE = 8;
   const SUMMARY_KEEP_LAST = 4;
 
   // Cache for chunk summaries (separate from response cacheProcessing)
