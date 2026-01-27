@@ -379,7 +379,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         <Stack sx={{}}>
           <Button
             startIcon={<LandPlot />}
-            href={`${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}`}
+            href={`${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}&currentStep=before_recordAbout`}
             sx={{
               padding: '20px',
             }}

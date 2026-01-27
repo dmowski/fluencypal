@@ -98,7 +98,7 @@ export const supportedLanguagesToLearn: SupportedLanguage[] = [
 
   'it',
   'pl',
-  //"ru",
+  'ru',
 
   //"uk",
   'id',
