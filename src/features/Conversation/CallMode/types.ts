@@ -7,4 +7,6 @@ export interface AiAvatar {
   helloPhrases: string[];
 
   photoUrls?: string[];
+
+  funnyPhrases: string[];
 }
