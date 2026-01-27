@@ -50,7 +50,7 @@ export const ActiveLessonCard = ({
         position: 'relative',
         overflow: 'hidden',
 
-        minHeight: '330px',
+        minHeight: '250px',
         opacity: 0,
         animation: `fadeInOpacity  1.2s ease ${delayToShow}ms forwards`,
 
@@ -58,7 +58,7 @@ export const ActiveLessonCard = ({
         color: '#fff',
 
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
+        gridTemplateColumns: '1fr 1.5fr',
 
         padding: '0px 20px 0px 0px',
         gridTemplateRows: 'auto',
@@ -87,13 +87,14 @@ export const ActiveLessonCard = ({
           gridArea: 'preview',
           position: 'relative',
           overflow: 'hidden',
-          minHeight: '250px',
+          minHeight: '120px',
           height: '100%',
           backgroundColor: '#0a121e',
           boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)',
           transition: 'transform 0.3s ease',
           '@media (max-width: 600px)': {
             borderRadius: '0px',
+            minHeight: '280px',
           },
         }}
       >
@@ -136,7 +137,7 @@ export const ActiveLessonCard = ({
           justifyContent: 'space-between',
           position: 'relative',
           zIndex: 2,
-          padding: '10px',
+          padding: '30px 10px',
           '@media (max-width: 600px)': {
             padding: '20px 15px 0px 15px',
           },
@@ -158,11 +159,11 @@ export const ActiveLessonCard = ({
             component="h3"
             sx={{
               fontWeight: 700,
-              fontSize: '1.9rem',
-              lineHeight: '2.3rem',
+              fontSize: '1.5rem',
+              lineHeight: '2rem',
               paddingTop: '6px',
               '@media (max-width: 750px)': {
-                fontSize: '1.6rem',
+                fontSize: '1.5rem',
                 lineHeight: '1.9rem',
               },
             }}
@@ -201,7 +202,7 @@ export const ActiveLessonCard = ({
           <Button
             startIcon={startIcon}
             endIcon={endIcon}
-            variant="contained"
+            variant="outlined"
             onClick={onAction}
             size="large"
             sx={{

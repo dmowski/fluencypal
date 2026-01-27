@@ -143,13 +143,13 @@ export function Dashboard({ lang }: DashboardProps) {
                   }}
                 >
                   <Button
-                    color="secondary"
+                    color="info"
                     startIcon={<Origami />}
                     onClick={startJustTalk}
                     disabled={isCallStarting}
                     variant="contained"
                     sx={{
-                      padding: '10px 30px',
+                      padding: '10px 35px',
                     }}
                   >
                     {i18n._('Just to Talk')}
