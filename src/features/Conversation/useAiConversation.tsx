@@ -103,7 +103,10 @@ interface AiConversationContextType {
   setLessonPlanAnalysis: (analysis: LessonPlanAnalysis | null) => void;
   recordingVoiceMode: RecordingUserMessageMode;
 
-  completeUserMessageDelta: (params: { triggerResponse?: boolean }) => Promise<void>;
+  completeUserMessageDelta: (params: {
+    triggerResponse?: boolean;
+    removeMessage?: boolean;
+  }) => Promise<void>;
   addUserMessageDelta: (delta: string) => void;
 }
 
@@ -145,8 +148,23 @@ function useProvideAiConversation(): AiConversationContextType {
     }
   };
 
-  const completeUserMessageDelta = async ({ triggerResponse }: { triggerResponse?: boolean }) => {
-    communicatorRef.current?.completeUserMessageDelta();
+  const completeUserMessageDelta = async ({
+    triggerResponse,
+    removeMessage,
+  }: {
+    triggerResponse?: boolean;
+    removeMessage?: boolean;
+  }) => {
+    if (removeMessage) {
+      communicatorRef.current?.completeUserMessageDelta({
+        removeMessage,
+      });
+      return;
+    }
+
+    communicatorRef.current?.completeUserMessageDelta({
+      removeMessage,
+    });
     if (triggerResponse) {
       await sleep(300);
       communicatorRef.current?.triggerAiResponse();

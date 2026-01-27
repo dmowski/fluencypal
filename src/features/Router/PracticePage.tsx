@@ -92,11 +92,12 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     <Stack>
       <ConversationCanvas
         addTranscriptDelta={aiConversation.addUserMessageDelta}
-        completeUserMessageDelta={() =>
+        completeUserMessageDelta={({ removeMessage }: { removeMessage?: boolean }) => {
           aiConversation.completeUserMessageDelta({
             triggerResponse: !lessonPlan.activeLessonPlan,
-          })
-        }
+            removeMessage,
+          });
+        }}
         recordingVoiceMode={aiConversation.recordingVoiceMode}
         pointsEarned={conversationAnalysis.gamePointsEarned}
         analyzeConversation={conversationAnalysis.analyzeConversation}

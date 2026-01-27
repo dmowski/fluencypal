@@ -66,7 +66,7 @@ export const CameraCanvas = ({
   lessonPlanAnalysis: LessonPlanAnalysis | null;
 
   addTranscriptDelta: (transcripts: string) => void;
-  completeUserMessageDelta: () => void;
+  completeUserMessageDelta: ({ removeMessage }: { removeMessage?: boolean }) => void;
 
   recordingVoiceMode: RecordingUserMessageMode;
 }) => {

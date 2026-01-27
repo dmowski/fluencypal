@@ -44,5 +44,5 @@ export type ConversationInstance = {
   sendCorrectionInstruction: (correction: string) => void;
 
   addUserMessageDelta: (delta: string) => void;
-  completeUserMessageDelta: () => void;
+  completeUserMessageDelta: ({ removeMessage }: { removeMessage?: boolean }) => void;
 };

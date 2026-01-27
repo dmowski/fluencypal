@@ -7,7 +7,7 @@ import { Button, CircularProgress, IconButton, Stack, Typography } from '@mui/ma
 import { useLingui } from '@lingui/react';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import { Trophy } from 'lucide-react';
+import { Trophy, Undo2 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { FeatureBlocker } from '@/features/Usage/FeatureBlocker';
@@ -71,7 +71,7 @@ export const CallButtons = ({
   onShowAnalyzeConversationModal: () => void;
 
   addTranscriptDelta: (transcripts: string) => void;
-  completeUserMessageDelta: () => void;
+  completeUserMessageDelta: ({ removeMessage }: { removeMessage?: boolean }) => void;
 
   recordingVoiceMode: RecordingUserMessageMode;
   messages: ConversationMessage[];
@@ -303,7 +303,7 @@ Return ONLY the number.
     const tick = 100;
 
     if (beforeSendingTimeout <= tick) {
-      completeUserMessageDelta();
+      completeUserMessageDelta({});
       setTranscriptStack('');
       setBeforeSendingTimeout(null);
       return;
@@ -329,6 +329,16 @@ Return ONLY the number.
 
   const speakingVolumePercent = Math.max(10, Math.round(vadAudioRecorder.speakingLevel * 100));
   const inActivePercent = 100 - speakingVolumePercent;
+
+  const cancelActiveMessage = () => {
+    setTranscriptStack('');
+    setBeforeSendingTimeout(null);
+    completeUserMessageDelta({
+      removeMessage: true,
+    });
+  };
+
+  const isShowUndo = recordingVoiceMode === 'VAD' && waitingPercent > 2;
 
   return (
     <Stack
@@ -504,6 +514,17 @@ Return ONLY the number.
                 />
               )}
 
+              {isShowUndo && (
+                <FooterButton
+                  activeButton={<Undo2 />}
+                  inactiveButton={<Undo2 />}
+                  isActive={true}
+                  label={i18n._('Undo active message')}
+                  onClick={cancelActiveMessage}
+                  isLocked={isLimited}
+                />
+              )}
+
               {recordingVoiceMode === 'RealTimeConversation' && (
                 <FooterButton
                   activeButton={<MicIcon />}
@@ -524,14 +545,16 @@ Return ONLY the number.
                 />
               )}
 
-              <FooterButton
-                activeButton={<VolumeUpIcon />}
-                inactiveButton={<VolumeOffIcon />}
-                isActive={isVolumeOnToDisplay}
-                label={isVolumeOnToDisplay ? i18n._('Turn off volume') : i18n._('Turn on volume')}
-                onClick={toggleVolume}
-                isLocked={isLimited}
-              />
+              {!isShowUndo && (
+                <FooterButton
+                  activeButton={<VolumeUpIcon />}
+                  inactiveButton={<VolumeOffIcon />}
+                  isActive={isVolumeOnToDisplay}
+                  label={isVolumeOnToDisplay ? i18n._('Turn off volume') : i18n._('Turn on volume')}
+                  onClick={toggleVolume}
+                  isLocked={isLimited}
+                />
+              )}
 
               <FooterButton
                 activeButton={<ClosedCaptionIcon />}

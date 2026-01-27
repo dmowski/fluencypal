@@ -177,11 +177,25 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
     ]);
   };
 
+  const completeUserMessageDelta = async ({ removeMessage }: { removeMessage?: boolean }) => {
+    if (removeMessage) {
+      setTestMessage((prevMessages) => {
+        const lastMessage = prevMessages[prevMessages.length - 1];
+        if (lastMessage && !lastMessage.isBot) {
+          return prevMessages.slice(0, -1);
+        }
+        return prevMessages;
+      });
+      return;
+    }
+    triggerResponse();
+  };
+
   return (
     <Stack>
       <ConversationCanvas
         addTranscriptDelta={addTranscriptDelta}
-        completeUserMessageDelta={triggerResponse}
+        completeUserMessageDelta={completeUserMessageDelta}
         openCommunityPage={() => {}}
         pointsEarned={12}
         messageOrder={{}}

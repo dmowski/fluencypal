@@ -21,7 +21,6 @@ export const initTextConversation = async ({
   languageCode,
   voice,
   isVolumeOn,
-  getAuthToken,
   onMessageOrder,
   webCamDescription,
   generateTextWithAi,
@@ -380,7 +379,15 @@ Format the summary as explicit facts: what user and teacher said.`;
     generateResponseText();
   };
 
-  const completeUserMessageDelta = () => {
+  const completeUserMessageDelta = ({ removeMessage = false }: { removeMessage?: boolean }) => {
+    if (removeMessage) {
+      const lastMessage = conversationHistory[conversationHistory.length - 1];
+      if (lastMessage && !lastMessage.isBot && lastMessage.isInProgress) {
+        lastMessage.text = ' ';
+        onMessage(lastMessage);
+      }
+      return;
+    }
     const lastMessage = conversationHistory[conversationHistory.length - 1];
     if (lastMessage && lastMessage.isInProgress) {
       lastMessage.isInProgress = false;

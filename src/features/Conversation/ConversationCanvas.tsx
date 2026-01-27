@@ -99,7 +99,7 @@ interface ConversationCanvasProps {
   openNextLesson: () => void;
 
   addTranscriptDelta: (transcripts: string) => void;
-  completeUserMessageDelta: () => void;
+  completeUserMessageDelta: ({ removeMessage }: { removeMessage?: boolean }) => void;
 
   recordingVoiceMode: RecordingUserMessageMode;
 }
