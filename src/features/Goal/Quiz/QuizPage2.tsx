@@ -21,7 +21,7 @@ import { useState } from 'react';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { sleep } from '@/libs/sleep';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
-import { BotOff, Check, LockOpen } from 'lucide-react';
+import { BotOff, Check, ChevronsRight, LockOpen } from 'lucide-react';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { WelcomeChatMessage } from './WelcomeChatMessage';
 import { useSettings } from '@/features/Settings/useSettings';
@@ -66,6 +66,14 @@ const QuizQuestions = () => {
 
   const router = useRouter();
   const [redirecting, setRedirecting] = useState(false);
+
+  const redirectToPractice = async () => {
+    setRedirecting(true);
+    const url = `${getUrlStart(pageLanguage)}practice`;
+    router.push(url);
+    await sleep(9000);
+    setRedirecting(false);
+  };
 
   const doneQuiz = async () => {
     setRedirecting(true);
@@ -177,6 +185,21 @@ const QuizQuestions = () => {
           )}
 
           {currentStep === 'pageLanguage' && <PageLanguageSelector />}
+
+          {currentStep === 'quizOrSkip' && (
+            <InfoStep
+              title={i18n._(`Do you need a personalized plan?`)}
+              subTitle={i18n._(
+                `If you want more tailored practice, I can create a plan based on your goals. Otherwise, you can skip this step and start practicing right away!`,
+              )}
+              onClick={next}
+              disabled={isStepLoading}
+              isStepLoading={isStepLoading}
+              secondButtonTitle={i18n._('Skip all')}
+              secondButtonEndIcon={<ChevronsRight />}
+              onSecondButtonClick={redirectToPractice}
+            />
+          )}
 
           {currentStep === 'before_recordAbout' && (
             <AuthWall>

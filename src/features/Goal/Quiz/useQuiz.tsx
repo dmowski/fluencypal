@@ -42,6 +42,7 @@ import { useAccess } from '@/features/Usage/useAccess';
 type QuizStep =
   | 'before_nativeLanguage'
   | 'learnLanguage'
+  | 'quizOrSkip'
   | 'nativeLanguage'
   | 'before_pageLanguage'
   | 'pageLanguage'
@@ -137,6 +138,7 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   const userInfo = useAiUserInfo();
 
   const stepsViews: QuizStep[] = [
+    'quizOrSkip',
     'learnLanguage',
     'before_nativeLanguage',
     'nativeLanguage',
