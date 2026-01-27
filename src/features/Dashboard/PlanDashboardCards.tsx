@@ -25,7 +25,7 @@ import { useSettings } from '../Settings/useSettings';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import { ActiveLessonCard } from '../Plan/ActiveLessonCard';
-import VideocamIcon from '@mui/icons-material/Videocam';
+
 import { getAiVoiceByVoice } from '../Conversation/CallMode/voiceAvatar';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
@@ -299,7 +299,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             descriptionBottom={plan.nextElement.subTitle}
             actionLabel={i18n._('Start')}
             aiVideo={getAiVoiceByVoice(settings.userSettings?.teacherVoice || 'shimmer')}
-            startIcon={<VideocamIcon />}
             onAction={() => plan.openElementModal(nextElementId)}
             settingsIcon={<SettingsIcon />}
             onSettingsClick={() => teacherSettings.openSettingsModal()}

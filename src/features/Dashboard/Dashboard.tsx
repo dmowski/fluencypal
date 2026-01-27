@@ -25,6 +25,7 @@ import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings'
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import dayjs from 'dayjs';
 import { AccessBadge } from './AccessBadge';
+import VideocamIcon from '@mui/icons-material/Videocam';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -144,7 +145,7 @@ export function Dashboard({ lang }: DashboardProps) {
                 >
                   <Button
                     color="info"
-                    startIcon={<Origami />}
+                    startIcon={<VideocamIcon />}
                     onClick={startJustTalk}
                     disabled={isCallStarting}
                     variant="contained"
@@ -152,7 +153,7 @@ export function Dashboard({ lang }: DashboardProps) {
                       padding: '10px 35px',
                     }}
                   >
-                    {i18n._('Just to Talk')}
+                    {i18n._('Start a call')}
                   </Button>
                   <IconButton size="small" sx={{}}>
                     <SettingsIcon onClick={teacherSettings.openSettingsModal} />
