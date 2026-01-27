@@ -238,7 +238,6 @@ Return ONLY the number.
   };
 
   const vadAudioRecorder = useVadAudioRecorder({
-    onStop: () => setIsVadEnabled(false),
     onTranscriptionStart: () => {
       addTranscriptDelta(' ');
     },
@@ -318,22 +317,11 @@ Return ONLY the number.
     return () => clearTimeout(timeout);
   }, [beforeSendingTimeout]);
 
-  const [isVadEnabled, setIsVadEnabled] = useState(false);
-  const startVad = () => {
-    setIsVadEnabled(true);
-    vadAudioRecorder.start();
-  };
-
-  const stopVad = () => {
-    setIsVadEnabled(false);
-    vadAudioRecorder.stop();
-  };
-
   const toggleVad = () => {
-    if (isVadEnabled) {
-      stopVad();
+    if (vadAudioRecorder.isEnabled) {
+      vadAudioRecorder.stop();
     } else {
-      startVad();
+      vadAudioRecorder.start();
     }
   };
 
@@ -392,7 +380,7 @@ Return ONLY the number.
             minWidth: '250px',
           }}
           onClick={() => {
-            stopVad();
+            vadAudioRecorder.stop();
             onShowAnalyzeConversationModal();
           }}
         >
@@ -508,7 +496,7 @@ Return ONLY the number.
                     </Stack>
                   }
                   inactiveButton={<MicOffIcon />}
-                  isActive={isVadEnabled}
+                  isActive={vadAudioRecorder.isEnabled}
                   label={i18n._('Record Message')}
                   onClick={toggleVad}
                 />

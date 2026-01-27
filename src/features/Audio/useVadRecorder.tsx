@@ -17,6 +17,7 @@ type UseVadRecorderOptions = {
   //  meterRmsMax
   meterRmsMax?: number; // default 0.08
   onStop?: () => void;
+  onStart?: () => void;
 };
 
 type UseVadRecorderReturn = {
@@ -81,6 +82,7 @@ export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderRe
     meterRmsMin = 0.003,
     meterRmsMax = 0.08,
     onStop,
+    onStart,
   } = options;
 
   const [isRunning, setIsRunning] = useState(false);
@@ -180,6 +182,7 @@ export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderRe
 
   const start = useCallback(async () => {
     setLastError(null);
+    onStart && onStart();
     if (isRunning) return;
 
     try {

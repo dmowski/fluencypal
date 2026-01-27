@@ -10,17 +10,16 @@ export const useVadAudioRecorder = ({
   silenceMs,
   onTranscription,
   onTranscriptionStart,
-  onStop,
 }: {
   onTranscriptionStart: () => void;
   onTranscription: (transcript: string) => void;
   silenceMs?: number;
-  onStop?: () => void;
 }) => {
   const auth = useAuth();
   const settings = useSettings();
   const learnLanguageCode = settings.languageCode || 'en';
   const [isTranscribing, setIsTranscribing] = useState(false);
+
   const getRecordTranscript = async (
     recordedAudioBlog: Blob,
     format: string,
@@ -57,10 +56,12 @@ export const useVadAudioRecorder = ({
     }
   };
 
+  const [isEnabled, setIsEnabled] = useState(false);
   const recorderControls = useVadRecorder({
     onChunk: getRecordTranscript,
     silenceMs,
-    onStop: onStop,
+    onStop: () => setIsEnabled(false),
+    onStart: () => setIsEnabled(true),
   });
 
   const { inWebView } = useIsWebView();
@@ -74,5 +75,6 @@ export const useVadAudioRecorder = ({
     isRecording: recorderControls.isRunning,
     isSpeaking: recorderControls.isSpeaking,
     error: recorderControls.lastError,
+    isEnabled,
   };
 };
