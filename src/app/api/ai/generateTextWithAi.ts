@@ -57,7 +57,7 @@ export const generateChatWithAi = async ({
     },
     ...chatMessages.map((msg) => ({
       role: msg.isBot ? ('assistant' as const) : ('user' as const),
-      content: msg.content,
+      content: msg.text,
     })),
   ];
 

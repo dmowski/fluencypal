@@ -20,7 +20,7 @@ export interface AiRequest {
 
 export interface AiChatMessage {
   isBot: boolean;
-  content: string;
+  text: string;
 }
 
 export interface AiChatRequest {
