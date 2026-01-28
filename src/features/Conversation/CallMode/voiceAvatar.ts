@@ -53,7 +53,7 @@ export const voiceAvatarMap: Record<AiVoice, AiAvatar> = {
   shimmer: {
     sitVideoUrl: ['/call/shimmer/sit.webm', '/call/shimmer/sit2.webm'],
     talkVideoUrl: ['/call/shimmer/talk.webm', '/call/shimmer/talk2.webm'],
-    photoUrls: ['/call/shimmer/girl2.png'],
+    photoUrls: ['/call/shimmer/girl2.webp'],
     voiceInstruction: `Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking  These pauses should feel natural and reflective, as if you're savoring the moment.`,
     helloPhrases: [
       'Hello, I’m Shimmer. Let’s take it slow and make your speech sound smooth and natural.',
