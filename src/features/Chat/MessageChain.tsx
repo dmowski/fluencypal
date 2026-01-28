@@ -1,9 +1,12 @@
 'use client';
-import { Stack } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import { Message } from './Message';
 import { useChat } from './useChat';
 import { ChartSortMode } from './type';
 import { RelyMessage } from './RelyMessage';
+import { useState } from 'react';
+import { useLingui } from '@lingui/react';
+import { ChevronDown } from 'lucide-react';
 
 interface MessageChainProps {
   parentId: string | null;
@@ -23,7 +26,11 @@ export function MessageChain({
   sortMode,
 }: MessageChainProps) {
   const chat = useChat();
+  const { i18n } = useLingui();
   const rootMessage = parentId ? chat.messages.find((m) => m.id === parentId) : null;
+  const [limit, setLimit] = useState<number | undefined>(
+    (limitTopMessages ?? topLevel) ? 2 : undefined,
+  );
 
   const messages = parentId
     ? chat.messages
@@ -48,27 +55,39 @@ export function MessageChain({
   }
 
   if (!parentId) {
+    const messagesToShow = messages.filter((_, index) => {
+      if (limit) {
+        return index < limit;
+      }
+      return true;
+    });
+    const isNeedToShowLoadMore = limit && messages.length > limit;
+
     return (
       <Stack>
-        {messages
-          .filter((_, index) => {
-            if (limitTopMessages) {
-              return index < limitTopMessages;
-            }
-            return true;
-          })
-          .map((message, index, all) => {
-            const isLast = index === all.length - 1;
-            return (
-              <MessageChain
-                key={message.id}
-                parentId={message.id}
-                topLevel={false}
-                isLast={isLast}
-                isFullContentByDefault={isFullContentByDefault}
-              />
-            );
-          })}
+        {messagesToShow.map((message, index, all) => {
+          const isLast = index === all.length - 1;
+          return (
+            <MessageChain
+              key={message.id}
+              parentId={message.id}
+              topLevel={false}
+              isLast={isLast}
+              isFullContentByDefault={isFullContentByDefault}
+            />
+          );
+        })}
+        {isNeedToShowLoadMore && (
+          <Stack
+            sx={{
+              padding: '10px 20px',
+            }}
+          >
+            <Button endIcon={<ChevronDown size={16} />} onClick={() => setLimit((limit ?? 0) + 20)}>
+              {i18n._('Load more')}
+            </Button>
+          </Stack>
+        )}
       </Stack>
     );
   }
