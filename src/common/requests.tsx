@@ -27,6 +27,7 @@ export interface AiChatRequest {
   systemMessage: string;
   chatMessages: AiChatMessage[];
   model: TextAiModel;
+  conversationId?: string;
 }
 
 export interface AiResponse {

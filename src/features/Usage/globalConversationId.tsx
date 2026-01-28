@@ -1,11 +1,11 @@
-export const getGlobalConversationId = (): string | null => {
+export const getGlobalConversationId = (): string => {
   const isWindow = typeof window !== 'undefined';
   if (!isWindow) {
-    return null;
+    return '';
   }
   // @ts-ignore
   const conversionId = window['__GLOBAL_CONVERSATION_ID__'];
-  return conversionId || null;
+  return conversionId || '';
 };
 
 export const setGlobalConversationId = (conversationId: string | null) => {
@@ -14,5 +14,5 @@ export const setGlobalConversationId = (conversationId: string | null) => {
     return;
   }
   // @ts-ignore
-  window['__GLOBAL_CONVERSATION_ID__'] = conversationId || null;
+  window['__GLOBAL_CONVERSATION_ID__'] = conversationId || '';
 };
