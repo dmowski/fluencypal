@@ -82,7 +82,16 @@ export const AvatarCard = ({
         component={'button'}
         onClick={onToggle}
       >
-        <AiAvatarVideo aiVideo={aiAvatar} isSpeaking={audio.isPlaying && isPlayingThisVoice} />
+        <Stack
+          sx={{
+            transform: 'scale(1.1)',
+            width: '100%',
+            height: '100%',
+            backgroundColor: '#222',
+          }}
+        >
+          <AiAvatarVideo aiVideo={aiAvatar} isSpeaking={audio.isPlaying && isPlayingThisVoice} />
+        </Stack>
       </Stack>
 
       <Stack
