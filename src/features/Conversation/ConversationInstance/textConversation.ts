@@ -96,9 +96,11 @@ Format the summary as explicit facts: what user and teacher said.`;
       const key = getHash(chunkText);
 
       if (!summaryCache[key]) {
+        const userMessage = `Please provide a concise summary of the following conversation chunk:\n\n${chunkText}`;
+        console.log('Generate summary', { userMessage });
         summaryCache[key] = generateTextWithAi({
           systemMessage: summarySystemMessage,
-          userMessage: `Please provide a concise summary of the following conversation chunk:\n\n${chunkText}`,
+          userMessage: userMessage,
         }).then((raw) => raw.trim());
       }
 
@@ -354,12 +356,15 @@ Format the summary as explicit facts: what user and teacher said.`;
 
   const addUserMessageDelta = (delta: string) => {
     const lastMessage = conversationHistory[conversationHistory.length - 1];
+    let userMessage = '';
     if (lastMessage && !lastMessage.isBot && lastMessage.isInProgress) {
       lastMessage.text = `${lastMessage.text} ${delta}`.trim();
+      userMessage = lastMessage.text;
       onMessage(lastMessage);
     } else {
       const previousMessageId = getLastMessage()?.id;
       const messageId = generateMessageId();
+      userMessage = delta;
       const newMessage: ConversationMessage = {
         isBot: false,
         text: delta,
@@ -376,6 +381,9 @@ Format the summary as explicit facts: what user and teacher said.`;
       onMessage(newMessage);
     }
 
+    if (userMessage.trim().length === 0) {
+      return;
+    }
     generateResponseText();
   };
 
