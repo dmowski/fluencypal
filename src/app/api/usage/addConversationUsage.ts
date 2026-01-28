@@ -17,15 +17,19 @@ export const addConversationUsage = async ({
     return;
   }
 
-  const db = getDB();
-  const docRef = db.collection(`users/${userId}/conversations`).doc(conversationId);
+  try {
+    const db = getDB();
+    const docRef = db.collection(`users/${userId}/conversations`).doc(conversationId);
 
-  await docRef.set(
-    {
-      usage: {
-        [usageLabel]: FieldValue.increment(usageUsd),
+    await docRef.set(
+      {
+        usage: {
+          [usageLabel]: FieldValue.increment(usageUsd),
+        },
       },
-    },
-    { merge: true },
-  );
+      { merge: true },
+    );
+  } catch (error) {
+    console.error('Error adding conversation usage:', error);
+  }
 };
