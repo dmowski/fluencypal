@@ -252,8 +252,16 @@ VISUAL_CONTEXT (latest): ${description}
     }
 
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
-    if (isNeedToSaveUserInfo && conversation.length >= 3 && conversation.length % 4 === 0) {
-      aiUserInfo.updateUserInfo(conversation);
+    const messageCountToCheck = 10;
+    if (
+      isNeedToSaveUserInfo &&
+      conversation.length >= 3 &&
+      conversation.length % messageCountToCheck === 0
+    ) {
+      const lastMessagesToCheck = conversation.filter(
+        (_, index, all) => index >= all.length - messageCountToCheck,
+      );
+      aiUserInfo.updateUserInfo(lastMessagesToCheck);
     }
 
     const usersMessagesCount = conversation.filter((message) => !message.isBot).length;
@@ -781,22 +789,6 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
     setIsInitializing('');
     communicator?.closeHandler();
     setLessonPlanAnalysis(null);
-
-    try {
-      const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
-      if (isNeedToSaveUserInfo && conversation.length > 4) {
-        await aiUserInfo.updateUserInfo(conversation);
-      }
-    } catch (e) {
-      console.error('Error saving user info:', e);
-      Sentry.captureException(e, {
-        extra: {
-          conversationId,
-          conversationLength: conversation.length,
-          currentMode,
-        },
-      });
-    }
 
     setConversationId(`${Date.now()}`);
     setConversation([]);
