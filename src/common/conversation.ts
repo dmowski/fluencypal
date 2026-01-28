@@ -42,4 +42,9 @@ export interface Conversation {
   updatedAtIso: string;
   languageCode: SupportedLanguage;
   mode: ConversationType;
+  usage?: ConversationUsage;
+}
+
+export interface ConversationUsage {
+  [label: string]: number;
 }

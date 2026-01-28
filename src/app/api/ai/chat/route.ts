@@ -2,11 +2,12 @@ import { AiChatRequest, AiResponse } from '@/common/requests';
 import { calculateTextUsagePrice, TextUsageEvent } from '@/common/ai';
 import { validateAuthToken } from '../../config/firebase';
 import { generateChatWithAi } from './../generateTextWithAi';
+import { addConversationUsage } from '../../usage/addConversationUsage';
 
 export const maxDuration = 60;
 
 export async function POST(request: Request) {
-  await validateAuthToken(request);
+  const userInfo = await validateAuthToken(request);
 
   const aiRequest = (await request.json()) as AiChatRequest;
   const { output, usage } = await generateChatWithAi({
@@ -30,6 +31,13 @@ export async function POST(request: Request) {
     systemMessage: aiRequest.systemMessage,
     userMessage: aiRequest.chatMessages,
     result: output,
+  });
+
+  await addConversationUsage({
+    userId: userInfo.uid,
+    conversationId: aiRequest.conversationId || '',
+    usageLabel: 'aiChat',
+    usageUsd: priceUsd,
   });
   /*const priceHours = convertUsdToHours(priceUsd);
   const usageLog: TextUsageLog = {
