@@ -518,9 +518,8 @@ ${voiceInstructions}`,
     }
     // GOAL ROLE PLAY
     if (mode === 'goal-role-play') {
-      if (!goal) {
-        throw new Error('Goal is not set for goal-talk mode');
-      }
+      if (!goal) throw new Error('Goal is not set for goal-role-play mode');
+
       setIsInitializing(`Starting Role Play...`);
       return {
         ...baseConfig,
