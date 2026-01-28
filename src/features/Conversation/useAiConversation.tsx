@@ -485,9 +485,8 @@ ${lessonPlan.steps
 
     // GOAL TALK, conversation
     if (mode === 'goal-talk') {
-      if (!goal) {
-        throw new Error('Goal is not set for goal-talk mode');
-      }
+      if (!goal) throw new Error('Goal is not set for goal-talk mode');
+
       setIsInitializing(`Analyzing Goal Lesson...`);
       const firstMessage =
         ideas?.firstMessage || (await aiUserInfo.generateFirstMessageText(goalInfo)).firstMessage;
