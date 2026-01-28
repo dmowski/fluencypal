@@ -2,6 +2,11 @@
 import { ConversationMessage } from '@/common/conversation';
 import { ConversationConfig, ConversationInstance } from './types';
 import { getHash } from '@/libs/hash';
+import { clientSendAiChatRequest } from '@/app/api/ai/chat/clientSendAiChatRequest';
+
+// --- Progressive summary config ---
+const SUMMARY_CHUNK_SIZE = 8;
+const SUMMARY_KEEP_LAST = 7;
 
 interface InstructionState {
   baseInitInstruction: string;
@@ -25,6 +30,7 @@ export const initTextConversation = async ({
   webCamDescription,
   generateTextWithAi,
   playAudio,
+  getAuthToken,
 }: ConversationConfig): Promise<ConversationInstance> => {
   // State management
   const conversationHistory: ConversationMessage[] = [];
@@ -46,10 +52,6 @@ export const initTextConversation = async ({
   const generateMessageId = (): string => {
     return `${Date.now()}`;
   };
-
-  // --- Progressive summary config ---
-  const SUMMARY_CHUNK_SIZE = 10;
-  const SUMMARY_KEEP_LAST = 15;
 
   // Cache for chunk summaries (separate from response cacheProcessing)
   const summaryCache: Record<string, Promise<string> | undefined> = {};
@@ -74,8 +76,44 @@ Format the summary as explicit facts: what user and teacher said.`;
     return (combinedPrompt + ' Do not use emojis in your responses.').trim();
   };
 
-  const formatConversationHistoryAsync = async (): Promise<string> => {
-    if (conversationHistory.length === 0) return '';
+  const generateNextBotAnswer = async ({
+    systemMessage,
+    previousConversationSummary,
+    latestMessages,
+  }: {
+    systemMessage: string;
+    previousConversationSummary: string;
+    latestMessages?: ConversationMessage[];
+  }): Promise<string> => {
+    const token = await getAuthToken();
+
+    const result = await clientSendAiChatRequest(
+      {
+        chatMessages: latestMessages || [],
+        systemMessage:
+          systemMessage +
+          (previousConversationSummary
+            ? `\n\nConversation history:\n${previousConversationSummary}`
+            : ''),
+        model: 'gpt-4o',
+      },
+      token,
+    );
+
+    return result.aiResponse.trim();
+  };
+
+  const formatConversationHistoryAsync = async (): Promise<{
+    textConversation: string;
+    summaryBlock: string;
+    lastMessages: ConversationMessage[];
+  }> => {
+    if (conversationHistory.length === 0)
+      return {
+        textConversation: '',
+        summaryBlock: '',
+        lastMessages: [],
+      };
 
     const messages = conversationHistory;
     const total = messages.length;
@@ -90,6 +128,10 @@ Format the summary as explicit facts: what user and teacher said.`;
         .slice(start, endExclusive)
         .map((msg) => `${roleLabel(msg)}: ${msg.text}`)
         .join('\n');
+    };
+
+    const getConversationChunk = (start: number, endExclusive: number) => {
+      return messages.slice(start, endExclusive);
     };
 
     const summarizeChunk = (chunkText: string): Promise<string> => {
@@ -109,7 +151,9 @@ Format the summary as explicit facts: what user and teacher said.`;
 
     // If no full chunks, return everything verbatim
     if (chunkCount === 0) {
-      return messages.map((msg) => `${roleLabel(msg)}: ${msg.text}`).join('\n');
+      const textConversation = formatRangeAsText(0, total);
+      const lastMessages = getConversationChunk(0, total);
+      return { textConversation, summaryBlock: '', lastMessages };
     }
 
     // Summarize full chunks progressively
@@ -126,14 +170,17 @@ Format the summary as explicit facts: what user and teacher said.`;
     }
 
     const summarizedUntil = chunkCount * SUMMARY_CHUNK_SIZE; // exclusive
+    const lastMessages = getConversationChunk(summarizedUntil, total);
     const remainingVerbatimText = formatRangeAsText(summarizedUntil, total);
 
     const summaryBlock = summaries.join('\n');
 
-    return [
+    const textConversation = [
       `Summary of earlier conversation:\n${summaryBlock}`,
       `\nConversation (latest messages verbatim):\n${remainingVerbatimText}`,
     ].join('\n');
+
+    return { textConversation, summaryBlock, lastMessages };
   };
 
   const cacheProcessing: Record<string, Promise<string> | undefined> = {};
@@ -145,7 +192,7 @@ Format the summary as explicit facts: what user and teacher said.`;
 
     const systemMessage = getSystemMessage();
     const userMessage = await formatConversationHistoryAsync();
-    const cacheKey = getHash(systemMessage + '\n' + userMessage);
+    const cacheKey = getHash(systemMessage + '\n' + userMessage.textConversation);
 
     const aiResponseRawCached = cacheProcessing[cacheKey];
     if (!aiResponseRawCached) {
@@ -154,9 +201,10 @@ Format the summary as explicit facts: what user and teacher said.`;
 
     const aiResponseRequest =
       aiResponseRawCached ||
-      generateTextWithAi({
+      generateNextBotAnswer({
         systemMessage,
-        userMessage,
+        previousConversationSummary: userMessage.summaryBlock,
+        latestMessages: userMessage.lastMessages,
       });
 
     if (!aiResponseRawCached) {
