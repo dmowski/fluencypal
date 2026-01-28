@@ -510,8 +510,25 @@ const MessageContent = ({ children }: { children: string }) => {
     }
   };
 
+  const myUserName = game.myUserName;
+  const myHrefLink = `#user-${myUserName}`;
+
   return (
-    <Stack onClick={onClick}>
+    <Stack
+      onClick={onClick}
+      sx={{
+        a: {
+          color: '#fff',
+          textDecoration: 'none',
+          fontWeight: 500,
+        },
+
+        // if my user name is mentioned, make it bold
+        [`a[href="${myHrefLink}"]`]: {
+          color: '#29B3E5',
+        },
+      }}
+    >
       <Markdown variant="small">{contentToShow}</Markdown>
     </Stack>
   );
