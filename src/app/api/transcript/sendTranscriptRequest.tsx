@@ -1,3 +1,4 @@
+import { getGlobalConversationId } from '@/features/Usage/globalConversationId';
 import { TranscriptResponse } from './types';
 
 interface SendTranscriptRequestProps {
@@ -14,6 +15,7 @@ export const sendTranscriptRequest = async ({
   audioDuration,
   format,
 }: SendTranscriptRequestProps) => {
+  const conversationId = getGlobalConversationId();
   const formData = new FormData();
   const extension = format.includes('webm')
     ? 'webm'
@@ -25,7 +27,7 @@ export const sendTranscriptRequest = async ({
 
   formData.append('audio', audioBlob, `recording.${extension}`);
   const response = await fetch(
-    `/api/transcript?lang=${languageCode}&audioDuration=${audioDuration}&format=${format}`,
+    `/api/transcript?lang=${languageCode}&audioDuration=${audioDuration}&format=${format}&conversationId=${conversationId}`,
     {
       method: 'POST',
       body: formData,

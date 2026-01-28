@@ -9,6 +9,7 @@ import { supportedLanguages } from '@/features/Lang/lang';
 import { TranscriptUsageLog } from '@/common/usage';
 import { addUsage } from '../payment/addUsage';
 import { transcribeAudioFileWithOpenAI } from './transcribeAudioFileWithOpenAI';
+import { addConversationUsage } from '../usage/addConversationUsage';
 
 export async function POST(request: Request) {
   const data = await request.formData();
@@ -35,6 +36,7 @@ export async function POST(request: Request) {
     supportedLanguages.find((lang) => lang === languageCodeString.toLowerCase()) || 'en';
 
   const audioDurationString = urlParams.get('audioDuration') || '';
+  const conversationId = urlParams.get('conversationId') || '';
   const audioDuration = Math.min(Math.max(parseFloat(audioDurationString) || 0, 4), 50);
 
   const model: TranscriptAiModel = 'gpt-4o-transcribe';
@@ -49,6 +51,13 @@ export async function POST(request: Request) {
 
   if (!responseData.error && userId) {
     const priceUsd = calculateAudioTranscriptionPrice(audioDuration, model);
+    await addConversationUsage({
+      userId: userId,
+      conversationId: conversationId,
+      usageLabel: 'transcript',
+      usageUsd: priceUsd,
+    });
+
     const priceHours = convertUsdToHours(priceUsd);
     const usageLog: TranscriptUsageLog = {
       usageId: `${Date.now()}`,
