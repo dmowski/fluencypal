@@ -40,9 +40,19 @@ export const ChatPage = ({
   const game = useGame();
 
   const [activeChatId, setActiveChatId] = useUrlState<string>('activeChatId', '', false);
+  const [activePost, setActivePost] = useUrlState<string>('post', '', false);
   const chatList = useChatList();
 
   const [sortMode, setSortMode] = useUrlState<ChartSortMode>('chatSortMode', 'all', false);
+  const changePage = (newPage: ChartSortMode) => {
+    setSortMode(newPage);
+    if (activePost) {
+      console.log('Reset post');
+      setTimeout(() => setActivePost(''), 90);
+    } else {
+      console.log('No post');
+    }
+  };
 
   const chatMetadata = chatList.myChats.find((chat) => chat.spaceId === activeChatId);
 
@@ -72,7 +82,7 @@ export const ChatPage = ({
               width: '100%',
             }}
           >
-            <GlobalChatTabs sortMode={sortMode} setSortMode={setSortMode} />
+            <GlobalChatTabs sortMode={sortMode} setSortMode={changePage} />
             <ChatSection
               contextForAiAnalysis=""
               isFullContentByDefault={isFullContentByDefault}
