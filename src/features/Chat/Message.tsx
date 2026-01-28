@@ -26,6 +26,7 @@ import { useTranslate } from '../Translation/useTranslate';
 import { Avatar } from '../Game/Avatar';
 import { CircleEllipsis } from 'lucide-react';
 import { UserName } from '../User/UserName';
+import { Markdown } from '../uiKit/Markdown/Markdown';
 
 const limitMessages = 300;
 
@@ -60,6 +61,7 @@ export function Message({
 
   const auth = useAuth();
   const game = useGame();
+
   const userName = game.getUserName(message.senderId);
   const userAvatarUrl = game.getUserAvatarUrl(message.senderId);
   const myUserId = auth.uid;
@@ -355,6 +357,7 @@ export function Message({
           </Stack>
 
           <Typography
+            component={'div'}
             sx={{
               wordBreak: 'break-word',
               whiteSpace: 'pre-wrap',
@@ -373,11 +376,13 @@ export function Message({
             !isShowFullContent &&
             !isFullContentByDefault ? (
               <>
-                <span onClick={() => setIsShowFullContent(!isShowFullContent)}>
-                  {isLimitedMessage
-                    ? contentToShow.slice(0, limitMessages) + '... '
-                    : contentToShow}
-                </span>
+                <div onClick={() => setIsShowFullContent(!isShowFullContent)}>
+                  <Markdown>
+                    {isLimitedMessage
+                      ? contentToShow.slice(0, limitMessages) + '... '
+                      : contentToShow}
+                  </Markdown>
+                </div>
                 <Button
                   size="small"
                   onClick={() => setIsShowFullContent(!isShowFullContent)}
