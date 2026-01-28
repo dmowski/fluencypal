@@ -479,6 +479,12 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           })
           .filter((_, index) => index < 23)
           .map((conversation) => {
+            const usageKeys = Object.keys(conversation.usage || {});
+            const totalUsage = usageKeys.reduce((acc, key) => {
+              const price = conversation.usage?.[key] || 0;
+              return acc + price;
+            }, 0);
+
             return (
               <Stack
                 key={conversation.id}
@@ -488,7 +494,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                   cursor: 'pointer',
                   borderRadius: '8px',
                   display: 'grid',
-                  gridTemplateColumns: '140px 200px 200px',
+                  gridTemplateColumns: '140px 130px 220px 1fr',
                   gap: '10px',
                   ':hover': { backgroundColor: 'rgba(229, 229, 229, 0.35)' },
                 }}
@@ -505,8 +511,43 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                   {conversation.createdAtIso
                     ? dayjs(conversation.createdAtIso).format('HH:mm')
                     : '-'}{' '}
-                  -{dayjs(conversation.updatedAtIso).format('HH:mm')}
+                  - {dayjs(conversation.updatedAtIso).format('HH:mm')}
                 </Typography>
+
+                <Stack
+                  sx={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: '15px',
+                  }}
+                >
+                  <Tooltip
+                    slotProps={{
+                      tooltip: {
+                        sx: {
+                          backgroundColor: '#111',
+                          color: '#fff',
+                          padding: '10px 14px',
+                        },
+                      },
+                    }}
+                    title={
+                      <Stack
+                        sx={{
+                          gap: '5px',
+                        }}
+                      >
+                        {usageKeys.map((key) => (
+                          <Typography key={key}>
+                            {`${key}`}: {(conversation.usage?.[key] || 0).toFixed(4)}
+                          </Typography>
+                        ))}
+                      </Stack>
+                    }
+                  >
+                    <Typography>{totalUsage.toFixed(4)} USD</Typography>
+                  </Tooltip>
+                </Stack>
               </Stack>
             );
           })}
