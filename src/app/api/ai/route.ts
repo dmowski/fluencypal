@@ -1,5 +1,5 @@
 import { AiRequest, AiResponse } from '@/common/requests';
-import { TextUsageEvent } from '@/common/ai';
+import { calculateTextUsagePrice, TextUsageEvent } from '@/common/ai';
 import { validateAuthToken } from '../config/firebase';
 import { generateTextWithAi } from './generateTextWithAi';
 
@@ -31,9 +31,9 @@ export async function POST(request: Request) {
     usageEvent,
   };
 
-  /*
   const priceUsd = calculateTextUsagePrice(usageEvent, aiRequest.model);
-  const priceHours = convertUsdToHours(priceUsd);
+  console.log('priceUsd per 1000 requests', priceUsd * 100);
+  /*const priceHours = convertUsdToHours(priceUsd);
   const usageLog: TextUsageLog = {
     usageId: `${Date.now()}`,
     languageCode,
