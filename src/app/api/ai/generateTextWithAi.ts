@@ -61,9 +61,6 @@ export const generateChatWithAi = async ({
     })),
   ];
 
-  console.log('AI CHAT messages');
-  console.log(JSON.stringify(messages, null, 2));
-
   const chatCompletion = await client.chat.completions.create({
     messages: messages,
     model: model,
