@@ -93,9 +93,10 @@ If not relevant information found, return empty array.`;
       const oldRecords = userInfo?.records;
       const newRecords: string[] = parsedSummary;
 
-      const updatedRecords = oldRecords
-        ? await cleanUpSummary([...newRecords, ...oldRecords])
-        : newRecords;
+      const updatedRecords =
+        oldRecords && newRecords && newRecords.length > 0
+          ? await cleanUpSummary([...newRecords, ...oldRecords])
+          : newRecords;
 
       return updatedRecords;
     } catch (e) {
