@@ -29,7 +29,7 @@ export function MessageChain({
   const { i18n } = useLingui();
   const rootMessage = parentId ? chat.messages.find((m) => m.id === parentId) : null;
   const [limit, setLimit] = useState<number | undefined>(
-    (limitTopMessages ?? topLevel) ? 2 : undefined,
+    (limitTopMessages ?? topLevel) ? 10 : undefined,
   );
 
   const messages = parentId
@@ -43,13 +43,34 @@ export function MessageChain({
         );
 
   if (sortMode === 'updates') {
-    const messages = chat.messages.sort((a, b) => b.updatedAtIso.localeCompare(a.updatedAtIso));
+    const messagesToShow = chat.messages
+      .sort((a, b) => b.updatedAtIso.localeCompare(a.updatedAtIso))
+      .filter((_, index) => {
+        if (limit) {
+          return index < limit;
+        }
+        return true;
+      });
+
+    const isNeedToShowLoadMore = limit && messages.length > limit;
 
     return (
       <Stack sx={{ gap: '40px' }}>
-        {messages.map((message) => {
+        {messagesToShow.map((message) => {
           return <RelyMessage key={message.id} message={message} messages={messages} />;
         })}
+
+        {isNeedToShowLoadMore && (
+          <Stack
+            sx={{
+              padding: '10px 20px',
+            }}
+          >
+            <Button endIcon={<ChevronDown size={16} />} onClick={() => setLimit((limit ?? 0) + 10)}>
+              {i18n._('Load more')}
+            </Button>
+          </Stack>
+        )}
       </Stack>
     );
   }
@@ -83,7 +104,7 @@ export function MessageChain({
               padding: '10px 20px',
             }}
           >
-            <Button endIcon={<ChevronDown size={16} />} onClick={() => setLimit((limit ?? 0) + 20)}>
+            <Button endIcon={<ChevronDown size={16} />} onClick={() => setLimit((limit ?? 0) + 10)}>
               {i18n._('Load more')}
             </Button>
           </Stack>
