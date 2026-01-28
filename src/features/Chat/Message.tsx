@@ -13,7 +13,7 @@ import {
   Divider,
 } from '@mui/material';
 import { ThreadsMessage } from './type';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import dayjs from 'dayjs';
@@ -377,11 +377,11 @@ export function Message({
             !isFullContentByDefault ? (
               <>
                 <div onClick={() => setIsShowFullContent(!isShowFullContent)}>
-                  <Markdown>
+                  <MessageContent>
                     {isLimitedMessage
                       ? contentToShow.slice(0, limitMessages) + '... '
                       : contentToShow}
-                  </Markdown>
+                  </MessageContent>
                 </div>
                 <Button
                   size="small"
@@ -392,7 +392,9 @@ export function Message({
                 </Button>
               </>
             ) : (
-              <span onClick={onClick}>{contentToShow}</span>
+              <div onClick={onClick}>
+                <MessageContent>{contentToShow}</MessageContent>
+              </div>
             )}
           </Typography>
 
@@ -457,3 +459,60 @@ export function Message({
     </Stack>
   );
 }
+
+const MessageContent = ({ children }: { children: string }) => {
+  const game = useGame();
+
+  const onClickOnUserName = (userName: string) => {
+    if (!game.userNames) return;
+
+    const userIds = Object.keys(game.userNames || {});
+    const foundUserId = userIds.find((userId) => game.userNames?.[userId] === userName);
+    if (foundUserId) {
+      game.showUserInModal(foundUserId);
+    }
+  };
+
+  const wrapUserNamesAsLinks = (text: string) => {
+    let modifiedText = text;
+    // find text that starts with @ and is followed by word characters
+    const messageUserNames = modifiedText.match(/@(\w+)/g);
+
+    if (messageUserNames) {
+      messageUserNames.forEach((userNameWithAt) => {
+        const hrefLink = `#user-${userNameWithAt.substring(1)}`;
+        const markdownLink = `[${userNameWithAt}](${hrefLink})`;
+        modifiedText = modifiedText.replace(
+          new RegExp(`\\${userNameWithAt}\\b`, 'g'),
+          markdownLink,
+        );
+      });
+    }
+    return modifiedText;
+  };
+
+  const contentToShow = useMemo(() => {
+    return wrapUserNamesAsLinks(children);
+  }, [children]);
+
+  const onClick = (e: React.MouseEvent) => {
+    const isLink = (e.target as HTMLElement).tagName === 'A';
+    if (!isLink) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const href = (e.target as HTMLAnchorElement).getAttribute('href') || '';
+    const isUserLink = href?.startsWith('#user-');
+    if (isUserLink) {
+      const userName = href.replace('#user-', '');
+      onClickOnUserName(userName);
+    }
+  };
+
+  return (
+    <Stack onClick={onClick}>
+      <Markdown variant="small">{contentToShow}</Markdown>
+    </Stack>
+  );
+};
