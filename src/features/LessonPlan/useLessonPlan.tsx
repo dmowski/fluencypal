@@ -61,6 +61,7 @@ function useProvideLessonPlan(): LessonPlanContextType {
   messageOrderRef.current = aiConversation.messageOrder;
   const conversationRef = useRef(aiConversation.conversation);
   conversationRef.current = aiConversation.conversation;
+
   const getActiveConversation = async (temporaryUserMessage?: string) => {
     const sortedMessages = getSortedMessages({
       conversation: conversationRef.current,
@@ -176,14 +177,18 @@ ${activePlan}
       return activeResult;
     }
 
+    const initActiveProgress: LessonPlanAnalysis = {
+      progress: aiConversation.conversation.length + 2,
+      isFollowingPlan: true,
+      teacherResponse: '',
+    };
+
+    if (aiConversation.conversation.length <= 4) {
+      return initActiveProgress;
+    }
+
     const process: Promise<LessonPlanAnalysis> = new Promise(async (resolve, reject) => {
       console.log('Analyzing lesson plan| ', label);
-      const firstBotMessage = aiConversation.conversation.find((msg) => msg.isBot);
-      const initActiveProgress: LessonPlanAnalysis = {
-        progress: 0,
-        isFollowingPlan: true,
-        teacherResponse: firstBotMessage?.text ? `${firstBotMessage.text}` : '',
-      };
 
       const activePlan = getActivePlanAsText();
       const previousProgress = activeProgress || initActiveProgress;
