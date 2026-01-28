@@ -545,6 +545,7 @@ ${voiceInstructions}
     }
 
     if (mode === 'talk') {
+      // todo: Adjust to more creative
       let startFirstMessage = `"${firstAiMessage[languageCode]}"`;
 
       let openerInfoPrompt = 'Ask the student to describe their day.';
@@ -561,6 +562,7 @@ ${voiceInstructions}
 
 Ask the student to describe their day and try to cover new topics that used didn't mentioned before.
 Don't focus solely on one topic. Try to cover a variety of topics (Example\n${potentialTopics}).
+Use ${fullLanguageName} language in conversation.
   `;
         setIsInitializing(`Starting conversation...`);
       }
