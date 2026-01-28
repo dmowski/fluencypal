@@ -231,7 +231,7 @@ Return ONLY the number.
     const response = await ai.generate({
       systemMessage: systemMessage,
       userMessage: userMessage,
-      model: 'gpt-4o',
+      model: 'gpt-4o-mini',
     });
 
     return Math.min(5000, Math.max(2000, parseInt(response.trim())));
