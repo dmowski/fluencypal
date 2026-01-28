@@ -34,7 +34,7 @@ export const Avatar = ({
         height: avatarSize || '90px',
         width: avatarSize || '90px',
         position: 'relative',
-        cursor: 'pointer',
+        cursor: onClick ? 'pointer' : 'default',
         boxShadow: isActive
           ? `0px 0px 0px 2px ${activeColor || 'rgba(0, 185, 252, 1)'}`
           : isSelected

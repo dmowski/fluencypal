@@ -12,6 +12,7 @@ import { useConversationAudio } from '../Audio/useConversationAudio';
 import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 import { AiAvatarVideo } from '../Conversation/CallMode/AiAvatarVideo';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
+import { Avatar } from '../Game/Avatar';
 
 export const JustTalkCard = () => {
   const { i18n } = useLingui();
@@ -154,30 +155,7 @@ export const JustTalkCard = () => {
           },
         }}
       >
-        <Stack
-          sx={{
-            width: '45px',
-            height: '45px',
-            position: 'relative',
-            display: 'grid',
-            borderRadius: '122px',
-            overflow: 'hidden',
-            placeItems: 'center',
-          }}
-        >
-          <Stack
-            component={'img'}
-            src={aiAvatar.photoUrls?.[0] || ''}
-            sx={{
-              position: 'absolute',
-              top: '0',
-              left: '0',
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-            }}
-          />
-        </Stack>
+        <Avatar url={aiAvatar.photoUrls?.[0] || ''} avatarSize={'50px'} />
         <Stack
           sx={{
             paddingLeft: '15px',
