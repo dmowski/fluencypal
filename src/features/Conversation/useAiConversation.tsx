@@ -27,6 +27,7 @@ import { useTextAi } from '../Ai/useTextAi';
 import { initTextConversation } from './ConversationInstance/textConversation';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
+import { setGlobalConversationId } from '../Usage/globalConversationId';
 
 const getVoiceInstructions = (voice: AiVoice): string => {
   const voiceAvatar = getAiVoiceByVoice(voice);
@@ -86,7 +87,7 @@ interface AiConversationContextType {
   isVolumeOn: boolean;
   toggleVolume: (value: boolean) => void;
 
-  conversationId: string;
+  conversationId: string | null;
 
   goalInfo: GoalElementInfo | null;
 
@@ -209,7 +210,13 @@ VISUAL_CONTEXT (latest): ${description}
 
   const [isStarted, setIsStarted] = useState(false);
 
-  const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
+  const [conversationId, setConversationIdInternal] = useState<string | null>(null);
+
+  const setConversationId = (id: string | null) => {
+    setConversationIdInternal(id);
+    setGlobalConversationId(id);
+  };
+
   const [goalInfo, setGoalInfo] = useState<GoalElementInfo | null>(null);
 
   const [conversation, setConversation] = useState<ConversationMessage[]>([]);
@@ -395,14 +402,14 @@ VISUAL_CONTEXT (latest): ${description}
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if (conversation.length === 0) return;
+      if (conversation.length === 0 || !conversationId) return;
       history.saveConversation(conversationId, conversation, messageOrder);
     }, 2000);
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [isAiSpeaking]);
+  }, [isAiSpeaking, conversationId]);
 
   const updateMessageOrder = (orderPart: MessagesOrderMap) => {
     setMessageOrder((prev) => {
@@ -650,6 +657,9 @@ ${voiceInstructions}
   const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
 
   const startConversation = async (input: StartConversationProps) => {
+    const newConversationId = `${Date.now()}`;
+    setConversationId(newConversationId);
+
     if (!settings.languageCode) throw new Error('Language is not set | startConversation');
     setMessageOrder({});
 
@@ -766,7 +776,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       });
       setVoice(conversationConfig.voice || input.voice || null);
       history.createConversation({
-        conversationId,
+        conversationId: newConversationId,
         languageCode: settings.languageCode,
         mode: input.mode,
       });
@@ -793,7 +803,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
     communicator?.closeHandler();
     setLessonPlanAnalysis(null);
 
-    setConversationId(`${Date.now()}`);
+    setConversationId(null);
     setConversation([]);
   };
 

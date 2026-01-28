@@ -47,10 +47,8 @@ export const ChatPage = ({
   const changePage = (newPage: ChartSortMode) => {
     setSortMode(newPage);
     if (activePost) {
-      console.log('Reset post');
       setTimeout(() => setActivePost(''), 90);
     } else {
-      console.log('No post');
     }
   };
 
@@ -398,7 +396,6 @@ const ChatHeaderFull = ({ chat, close }: { chat: UserChatMetadata; close: () => 
       i18n._('Are you sure you want to delete this chat? This action cannot be undone.'),
     );
     if (isConfirmed) {
-      console.log('DELETING chat', chat.spaceId);
       await chatList.deleteChat(chat.spaceId);
       close();
       setTimeout(() => alert(i18n._('Chat deleted successfully.')), 100);
