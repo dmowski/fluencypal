@@ -48,8 +48,8 @@ export const initTextConversation = async ({
   };
 
   // --- Progressive summary config ---
-  const SUMMARY_CHUNK_SIZE = 20;
-  const SUMMARY_KEEP_LAST = 10;
+  const SUMMARY_CHUNK_SIZE = 10;
+  const SUMMARY_KEEP_LAST = 15;
 
   // Cache for chunk summaries (separate from response cacheProcessing)
   const summaryCache: Record<string, Promise<string> | undefined> = {};
@@ -148,6 +148,9 @@ Format the summary as explicit facts: what user and teacher said.`;
     const cacheKey = getHash(systemMessage + '\n' + userMessage);
 
     const aiResponseRawCached = cacheProcessing[cacheKey];
+    if (!aiResponseRawCached) {
+      console.log({ systemMessage, userMessage });
+    }
 
     const aiResponseRequest =
       aiResponseRawCached ||
