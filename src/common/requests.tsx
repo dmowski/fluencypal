@@ -18,6 +18,17 @@ export interface AiRequest {
   model: TextAiModel;
 }
 
+export interface AiChatMessage {
+  isBot: boolean;
+  content: string;
+}
+
+export interface AiChatRequest {
+  systemMessage: string;
+  chatMessages: AiChatMessage[];
+  model: TextAiModel;
+}
+
 export interface AiResponse {
   aiResponse: string;
   usageEvent: TextUsageEvent;
