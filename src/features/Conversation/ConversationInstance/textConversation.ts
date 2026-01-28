@@ -195,9 +195,6 @@ Format the summary as explicit facts: what user and teacher said.`;
     const cacheKey = getHash(systemMessage + '\n' + userMessage.textConversation);
 
     const aiResponseRawCached = cacheProcessing[cacheKey];
-    if (!aiResponseRawCached) {
-      console.log({ systemMessage, userMessage });
-    }
 
     const aiResponseRequest =
       aiResponseRawCached ||

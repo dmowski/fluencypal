@@ -26,7 +26,11 @@ export async function POST(request: Request) {
   };
 
   const priceUsd = calculateTextUsagePrice(usageEvent, aiRequest.model);
-  console.log('priceUsd per 1000 requests CHAT', priceUsd * 100);
+  console.log('1k requests CHAT $:', Math.round(priceUsd * 1000 * 100) / 100, {
+    systemMessage: aiRequest.systemMessage,
+    userMessage: aiRequest.chatMessages,
+    result: output,
+  });
   /*const priceHours = convertUsdToHours(priceUsd);
   const usageLog: TextUsageLog = {
     usageId: `${Date.now()}`,
