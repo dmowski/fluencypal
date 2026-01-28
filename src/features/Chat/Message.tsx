@@ -488,7 +488,7 @@ const MessageContent = ({ children }: { children: string }) => {
         );
       });
     }
-    return modifiedText;
+    return '\n' + modifiedText.trim();
   };
 
   const contentToShow = useMemo(() => {
@@ -526,6 +526,9 @@ const MessageContent = ({ children }: { children: string }) => {
         // if my user name is mentioned, make it bold
         [`a[href="${myHrefLink}"]`]: {
           color: '#29B3E5',
+        },
+        p: {
+          fontSize: '35px !important',
         },
       }}
     >
