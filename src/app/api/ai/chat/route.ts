@@ -36,7 +36,7 @@ export async function POST(request: Request) {
   await addConversationUsage({
     userId: userInfo.uid,
     conversationId: aiRequest.conversationId || '',
-    usageLabel: 'aiChat',
+    usageLabel: 'chatAi',
     usageUsd: priceUsd,
   });
   /*const priceHours = convertUsdToHours(priceUsd);

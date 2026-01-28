@@ -2,11 +2,12 @@ import { AiRequest, AiResponse } from '@/common/requests';
 import { calculateTextUsagePrice, TextUsageEvent } from '@/common/ai';
 import { validateAuthToken } from '../config/firebase';
 import { generateTextWithAi } from './generateTextWithAi';
+import { addConversationUsage } from '../usage/addConversationUsage';
 
 export const maxDuration = 60;
 
 export async function POST(request: Request) {
-  await validateAuthToken(request);
+  const userInfo = await validateAuthToken(request);
   /*
 
   const balance = await getUserBalance(userInfo.uid || '');
@@ -37,6 +38,14 @@ export async function POST(request: Request) {
     userMessage: aiRequest.userMessage,
     result: output,
   });
+
+  await addConversationUsage({
+    userId: userInfo.uid,
+    conversationId: aiRequest.conversationId || '',
+    usageLabel: 'textAi',
+    usageUsd: priceUsd,
+  });
+
   /*const priceHours = convertUsdToHours(priceUsd);
   const usageLog: TextUsageLog = {
     usageId: `${Date.now()}`,

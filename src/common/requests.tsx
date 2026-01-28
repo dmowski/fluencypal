@@ -16,6 +16,7 @@ export interface AiRequest {
   systemMessage: string;
   languageCode: SupportedLanguage;
   model: TextAiModel;
+  conversationId?: string;
 }
 
 export interface AiChatMessage {
