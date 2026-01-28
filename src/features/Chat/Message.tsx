@@ -527,8 +527,8 @@ const MessageContent = ({ children }: { children: string }) => {
         [`a[href="${myHrefLink}"]`]: {
           color: '#29B3E5',
         },
-        p: {
-          fontSize: '35px !important',
+        '* p': {
+          fontSize: '15px',
         },
       }}
     >
