@@ -20,6 +20,7 @@ import { CommunityPage } from './types';
 import { useChatList } from '../Chat/useChatList';
 import { useLingui } from '@lingui/react';
 import { useBattle } from '../Game/Battle/useBattle';
+import { DashboardBlur } from '../Dashboard/DashboardBlur';
 
 export const CommunityDashboard = () => {
   const chatList = useChatList();
@@ -139,6 +140,7 @@ export const CommunityDashboard = () => {
             </Stack>
           )}
         </Stack>
+        <DashboardBlur />
       </Stack>
     </>
   );
