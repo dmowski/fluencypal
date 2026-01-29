@@ -79,20 +79,17 @@ const PreviewCardComponent = () => {
           sx={{
             alignItems: 'center',
             justifyContent: 'center',
-            width: '50px',
+            width: '80px',
             height: '100%',
             position: 'absolute',
             zIndex: 122,
             top: 0,
             color: '#fff',
-            right: 0,
+            right: '-2px',
             border: 'none',
-            background: 'linear-gradient(90deg, rgba(18, 18, 20, 0) 0%, #11141C 100%)',
-            ':hover': {
-              cursor: 'pointer',
-              background:
-                'linear-gradient(90deg, rgba(18, 18, 20, 0.4) 0%, rgba(18, 18, 20, 1) 100%)',
-            },
+            background:
+              'linear-gradient(90deg, rgba(10, 18, 30, 0.1) 0%, rgba(10, 18, 30, 1) 90%, rgba(10, 18, 30, 1) 100%)',
+            cursor: 'pointer',
           }}
         >
           <Stack
