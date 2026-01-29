@@ -27,7 +27,7 @@ import { useTextAi } from '../Ai/useTextAi';
 import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang';
 import { GoalQuiz } from '@/app/api/goal/types';
 import { uniq } from '@/libs/uniq';
-import { useUrlState } from '../Url/useUrlParam';
+import { useUrlState } from '../Url/useUrlState';
 
 const appActivities = `The app supports the following activity types:
 * words: Practice vocabulary related to a specific topic

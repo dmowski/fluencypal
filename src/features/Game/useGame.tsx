@@ -32,7 +32,7 @@ import { db } from '../Firebase/firebaseDb';
 import { setDoc } from 'firebase/firestore';
 import { avatars } from './avatars';
 import { generateRandomUsername } from './userNames';
-import { useUrlState } from '../Url/useUrlParam';
+import { useUrlState } from '../Url/useUrlState';
 import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
 
 interface GameContextType {

@@ -9,7 +9,7 @@ import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { getAllChildrenMessages } from './getAllChildrenMessages';
 import { uniq } from '@/libs/uniq';
 import { useMemo } from 'react';
-import { useUrlState } from '../Url/useUrlParam';
+import { useUrlState } from '../Url/useUrlState';
 
 export const GlobalChatTabs = ({
   sortMode,

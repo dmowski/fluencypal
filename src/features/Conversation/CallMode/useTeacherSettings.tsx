@@ -1,4 +1,4 @@
-import { useUrlState } from '@/features/Url/useUrlParam';
+import { useUrlState } from '@/features/Url/useUrlState';
 
 export const useTeacherSettings = () => {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useUrlState(

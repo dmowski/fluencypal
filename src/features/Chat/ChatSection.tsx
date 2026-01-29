@@ -2,7 +2,7 @@
 import { Button, Stack } from '@mui/material';
 import { useChat } from './useChat';
 import { useMemo, useState } from 'react';
-import { useUrlState } from '../Url/useUrlParam';
+import { useUrlState } from '../Url/useUrlState';
 import { ChevronLeft } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { MessageChain } from './MessageChain';

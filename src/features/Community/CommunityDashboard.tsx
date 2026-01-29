@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import PsychologyIcon from '@mui/icons-material/Psychology';
-import { useUrlState } from '../Url/useUrlParam';
+import { useUrlState } from '../Url/useUrlState';
 import { CommunityCard } from './CommunityCard';
 import { CommunityPageRouter } from './CommunityPage';
 import { CommunityPage } from './types';

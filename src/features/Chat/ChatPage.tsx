@@ -15,7 +15,7 @@ import { ChatProvider } from './useChat';
 import { useLingui } from '@lingui/react';
 import { ChevronLeft, ChevronRight, CircleEllipsis } from 'lucide-react';
 import { useChatList } from './useChatList';
-import { useUrlState } from '../Url/useUrlParam';
+import { useUrlState } from '../Url/useUrlState';
 import { useAuth } from '../Auth/useAuth';
 import { useGame } from '../Game/useGame';
 import { Avatar } from '../Game/Avatar';

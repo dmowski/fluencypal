@@ -44,10 +44,10 @@ import { CRYPTO_MONTHLY_PRICE_TON } from '../Telegram/cryptoPrice';
 import { useSettings } from '../Settings/useSettings';
 import { StripeCreateCheckoutRequest } from '@/common/requests';
 import { sleep } from '@/libs/sleep';
-import { Check, CirclePlus, Plus } from 'lucide-react';
+import { Check, Plus } from 'lucide-react';
 import { FaqItem } from '../Landing/FAQ/FaqItem';
 import { useAnalytics } from '../Analytics/useAnalytics';
-import { useUrlState } from '../Url/useUrlParam';
+import { useUrlState } from '../Url/useUrlState';
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;

@@ -2,7 +2,7 @@
 
 import { createContext, useContext, ReactNode, JSX } from 'react';
 import { PageType } from './types';
-import { useUrlState } from '../Url/useUrlParam';
+import { useUrlState } from '../Url/useUrlState';
 import { useSearchParams } from 'next/navigation';
 
 interface AppNavigationContextType {

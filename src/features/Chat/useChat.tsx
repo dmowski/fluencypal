@@ -22,7 +22,7 @@ import {
   UserChatMetadataStatic,
 } from './type';
 import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
-import { useUrlState } from '../Url/useUrlParam';
+import { useUrlState } from '../Url/useUrlState';
 import { sendFeedbackMessageRequest } from '@/app/api/telegram/sendFeedbackMessageRequest';
 import dayjs from 'dayjs';
 

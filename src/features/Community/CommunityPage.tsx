@@ -9,7 +9,7 @@ import { DebatesPage } from './DebatesPage';
 import { DailyQuestionBadge } from '../Game/DailyQuestion/DailyQuestionBadge';
 import { SupportPage } from './SupportPage';
 import { PageContainer } from './PageContainer';
-import { useUrlState } from '../Url/useUrlParam';
+import { useUrlState } from '../Url/useUrlState';
 
 export const CommunityPageRouter = ({
   activePage,
