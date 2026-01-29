@@ -335,7 +335,10 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                     Math.floor(((100 - achievementPercent) / 100) * iconColors.length),
                   );
 
-                  const color = achievementPoints === 0 ? zeroColor : iconColors[colorPosition];
+                  const color =
+                    achievementPoints === 0
+                      ? zeroColor
+                      : iconColors[colorPosition] || iconColors[0];
 
                   return (
                     <Stack
