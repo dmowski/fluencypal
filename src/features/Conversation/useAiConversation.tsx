@@ -109,6 +109,9 @@ interface AiConversationContextType {
     removeMessage?: boolean;
   }) => Promise<void>;
   addUserMessageDelta: (delta: string) => void;
+
+  isLimitedAiVoice: boolean;
+  isLimitedRecording: boolean;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -379,9 +382,28 @@ VISUAL_CONTEXT (latest): ${description}
       ];
     });
   };
+  const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
 
   const access = useAccess();
   const isLowBalance = !access.isFullAppAccess;
+
+  const limitedGeneralConversations: ConversationType[] = ['role-play', 'talk'];
+  const isLimitedRecording = access.isFullAppAccess
+    ? false
+    : conversation.length >= 2 && limitedGeneralConversations.includes(currentMode);
+
+  useEffect(() => {
+    if (isLimitedRecording) {
+      toggleMute(true);
+    }
+  }, [isLimitedRecording]);
+
+  const isLimitedAiVoice = access.isFullAppAccess === false && conversation.length >= 2;
+  useEffect(() => {
+    if (isLimitedAiVoice) {
+      toggleVolume(false);
+    }
+  }, [isLimitedAiVoice]);
 
   const [isVolumeOffDueToNoBalance, setIsVolumeOffDueToNoBalance] = useState(false);
   useEffect(() => {
@@ -654,8 +676,6 @@ ${voiceInstructions}
     throw new Error(`Unknown mode: ${mode}`);
   };
 
-  const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
-
   const startConversation = async (input: StartConversationProps) => {
     const newConversationId = `${Date.now()}`;
     setConversationId(newConversationId);
@@ -810,6 +830,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
   };
 
   return {
+    isLimitedAiVoice,
+    isLimitedRecording,
     currentMode,
     voice: voice || 'shimmer',
     conversationId,

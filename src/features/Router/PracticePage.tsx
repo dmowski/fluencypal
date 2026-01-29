@@ -89,19 +89,11 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     );
   }
 
-  const limitedGeneralConversations: ConversationType[] = ['role-play', 'talk'];
-  const isBlockedSendMessages = access.isFullAppAccess
-    ? false
-    : aiConversation.conversation.length >= 8 &&
-      limitedGeneralConversations.includes(aiConversation.currentMode);
-
-  const isLimitedVoiceMode =
-    access.isFullAppAccess === false && aiConversation.conversation.length >= 4;
-
   return (
     <Stack>
       <ConversationCanvas
-        isSendMessagesBlocked={isBlockedSendMessages}
+        isSendMessagesBlocked={aiConversation.isLimitedRecording}
+        isLimitedVoice={aiConversation.isLimitedAiVoice}
         addTranscriptDelta={aiConversation.addUserMessageDelta}
         completeUserMessageDelta={({ removeMessage }: { removeMessage?: boolean }) => {
           aiConversation.completeUserMessageDelta({
@@ -164,7 +156,6 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         voice={aiConversation.voice}
         messageOrder={aiConversation.messageOrder}
         onWebCamDescription={aiConversation.setWebCamDescription}
-        isLimitedVoice={isLimitedVoiceMode}
         onLimitedClick={() => usage.togglePaymentModal(true)}
       />
     </Stack>

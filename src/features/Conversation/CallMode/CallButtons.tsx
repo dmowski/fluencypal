@@ -345,9 +345,8 @@ Return ONLY the number.
   const isShowUndo = recordingVoiceMode === 'VAD' && waitingPercent > 20;
 
   useEffect(() => {
-    if (isSendMessagesBlocked && !isMuted) {
+    if (isSendMessagesBlocked) {
       setTimeout(() => {
-        setIsMuted(true);
         vadAudioRecorder.stop();
       }, 200);
     }
