@@ -82,8 +82,8 @@ export const GoalReview = ({
             <Typography
               variant="h5"
               sx={{
-                fontWeight: 800,
-                fontSize: '32px',
+                fontWeight: 820,
+                fontSize: '38px',
                 lineHeight: '1.2',
               }}
               className={isLoading ? 'loading-shimmer' : ''}
@@ -136,7 +136,7 @@ export const GoalReview = ({
                     <Stack key={index} sx={{}}>
                       <PlanCard
                         key={planElement.id}
-                        delayToShow={index * 80}
+                        delayToShow={index * 180}
                         title={planElement.title}
                         subTitle={modeLabels[planElement.mode]}
                         details={planElement.details}
