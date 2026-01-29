@@ -25,6 +25,7 @@ import {
   Keyboard,
   Lightbulb,
   Loader,
+  LockIcon,
   LogOut,
   Mic,
   Send,
@@ -102,6 +103,8 @@ interface ConversationCanvasProps {
   completeUserMessageDelta: ({ removeMessage }: { removeMessage?: boolean }) => void;
 
   recordingVoiceMode: RecordingUserMessageMode;
+
+  isSendMessagesBlocked: boolean;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -147,6 +150,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   addTranscriptDelta,
 
   recordingVoiceMode,
+  isSendMessagesBlocked,
 }) => {
   const { i18n } = useLingui();
   const isChatMode = conversationMode === 'chat';
@@ -292,6 +296,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
           }}
           addTranscriptDelta={addTranscriptDelta}
           completeUserMessageDelta={completeUserMessageDelta}
+          isSendMessagesBlocked={isSendMessagesBlocked}
         />
       </Modal>
     );
@@ -557,12 +562,20 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                           >
                             <Button
                               startIcon={<Mic />}
+                              endIcon={isSendMessagesBlocked ? <LockIcon size="22px" /> : null}
                               size="large"
+                              color={isSendMessagesBlocked ? 'secondary' : 'primary'}
                               variant="contained"
                               sx={{
                                 minWidth: '200px',
                               }}
-                              onClick={async () => startRecording()}
+                              onClick={
+                                isSendMessagesBlocked
+                                  ? () => {
+                                      togglePaymentModal(true);
+                                    }
+                                  : async () => startRecording()
+                              }
                             >
                               {i18n._('Record Message')}
                             </Button>

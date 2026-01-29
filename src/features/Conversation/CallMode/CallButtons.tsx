@@ -24,6 +24,7 @@ import { FooterButton } from './FooterButton';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { RecordingUserMessageMode } from '../types';
 import { ConversationMessage } from '@/common/conversation';
+import { useAccess } from '@/features/Usage/useAccess';
 
 export const CallButtons = ({
   isMuted,
@@ -50,6 +51,7 @@ export const CallButtons = ({
   completeUserMessageDelta,
   recordingVoiceMode,
   messages,
+  isSendMessagesBlocked,
 }: {
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
@@ -75,6 +77,7 @@ export const CallButtons = ({
 
   recordingVoiceMode: RecordingUserMessageMode;
   messages: ConversationMessage[];
+  isSendMessagesBlocked: boolean;
 }) => {
   const { i18n } = useLingui();
 
@@ -83,6 +86,7 @@ export const CallButtons = ({
   const ai = useTextAi();
 
   const [isShowVolumeWarning, setIsShowVolumeWarning] = useState(false);
+  const access = useAccess();
 
   const toggleVolume = () => {
     if (isLimited) {
@@ -340,6 +344,15 @@ Return ONLY the number.
 
   const isShowUndo = recordingVoiceMode === 'VAD' && waitingPercent > 20;
 
+  useEffect(() => {
+    if (isSendMessagesBlocked && !isMuted) {
+      setTimeout(() => {
+        setIsMuted(true);
+        vadAudioRecorder.stop();
+      }, 200);
+    }
+  }, [isSendMessagesBlocked]);
+
   return (
     <Stack
       sx={{
@@ -509,8 +522,9 @@ Return ONLY the number.
                   }
                   inactiveButton={<MicOffIcon />}
                   isActive={vadAudioRecorder.isEnabled}
-                  label={i18n._('Record Message')}
-                  onClick={toggleVad}
+                  label={i18n._('Enable Microphone')}
+                  onClick={isSendMessagesBlocked ? access.showPaymentModal : toggleVad}
+                  isLocked={isSendMessagesBlocked}
                 />
               )}
 
@@ -530,7 +544,10 @@ Return ONLY the number.
                   inactiveButton={<MicOffIcon />}
                   isActive={isMuted === false}
                   label={i18n._('Enable microphone')}
-                  onClick={() => setIsMuted(!isMuted)}
+                  onClick={
+                    isSendMessagesBlocked ? access.showPaymentModal : () => setIsMuted(!isMuted)
+                  }
+                  isLocked={isSendMessagesBlocked}
                 />
               )}
 
@@ -540,7 +557,10 @@ Return ONLY the number.
                   inactiveButton={<MicOffIcon />}
                   isActive={false}
                   label={i18n._('Record Message')}
-                  onClick={startRecordingUsingButton}
+                  onClick={
+                    isSendMessagesBlocked ? access.showPaymentModal : startRecordingUsingButton
+                  }
+                  isLocked={isSendMessagesBlocked}
                 />
               )}
 

@@ -24,6 +24,7 @@ import { useLessonPlan } from '../LessonPlan/useLessonPlan';
 import { usePlan } from '../Plan/usePlan';
 import { usePageLangRedirect } from './usePageLangRedirect';
 import { CommunityDashboard } from '../Community/CommunityDashboard';
+import { ConversationType } from '@/common/conversation';
 
 interface PracticePageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -88,9 +89,16 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     );
   }
 
+  const limitedConversations: ConversationType[] = ['role-play', 'talk'];
+  const isBlockedSendMessages = access.isFullAppAccess
+    ? false
+    : aiConversation.conversation.length >= 6 &&
+      limitedConversations.includes(aiConversation.currentMode);
+
   return (
     <Stack>
       <ConversationCanvas
+        isSendMessagesBlocked={isBlockedSendMessages}
         addTranscriptDelta={aiConversation.addUserMessageDelta}
         completeUserMessageDelta={({ removeMessage }: { removeMessage?: boolean }) => {
           aiConversation.completeUserMessageDelta({

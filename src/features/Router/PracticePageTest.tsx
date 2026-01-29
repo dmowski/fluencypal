@@ -2,7 +2,6 @@
 import { Divider, Stack } from '@mui/material';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { RolePlayScenariosInfo } from '../RolePlay/rolePlayData';
-import { sleep } from '@/libs/sleep';
 import { ConversationCanvas } from '../Conversation/ConversationCanvas';
 import { ConversationMessage } from '@/common/conversation';
 import { GuessGameStat } from '../Conversation/types';
@@ -207,7 +206,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         addUserMessage={addMessage}
         balanceHours={0.2}
         togglePaymentModal={() => alert('Payment modal toggled')}
-        isLimited={false}
+        isLimited={true}
         onLimitedClick={() => {}}
         isRecording={false}
         startRecording={async () => {}}
@@ -241,6 +240,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         toggleConversationMode={(mode: ConversationMode): void => setConversationMode(mode)}
         openNextLesson={() => {}}
         recordingVoiceMode="VAD"
+        isSendMessagesBlocked
       />
     </Stack>
   );

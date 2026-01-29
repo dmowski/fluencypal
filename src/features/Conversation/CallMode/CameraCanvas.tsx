@@ -43,6 +43,7 @@ export const CameraCanvas = ({
   addTranscriptDelta,
   completeUserMessageDelta,
   recordingVoiceMode,
+  isSendMessagesBlocked,
 }: {
   conversation: ConversationMessage[];
   stopCallMode: () => void;
@@ -69,6 +70,7 @@ export const CameraCanvas = ({
   completeUserMessageDelta: ({ removeMessage }: { removeMessage?: boolean }) => void;
 
   recordingVoiceMode: RecordingUserMessageMode;
+  isSendMessagesBlocked: boolean;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -270,6 +272,7 @@ export const CameraCanvas = ({
         >
           <CallButtons
             messages={conversation}
+            isSendMessagesBlocked={isSendMessagesBlocked}
             isMuted={isMuted}
             setIsMuted={setIsMuted}
             recordingVoiceMode={recordingVoiceMode}
