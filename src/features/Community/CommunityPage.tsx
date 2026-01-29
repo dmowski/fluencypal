@@ -21,6 +21,7 @@ export const CommunityPageRouter = ({
   const { i18n } = useLingui();
 
   const [activeChatPost] = useUrlState<string | null>('post', null, false);
+  const [activeChatId] = useUrlState<string | null>('activeChatId', null, false);
 
   const titles: Record<CommunityPage, string> = {
     chat: i18n._('Community Chat'),
@@ -32,7 +33,7 @@ export const CommunityPageRouter = ({
     leaderboards: i18n._('Leaderboards'),
   };
 
-  const isShowHeader = !activeChatPost;
+  const isShowHeader = !activeChatPost && !activeChatId;
 
   return (
     <Stack>
