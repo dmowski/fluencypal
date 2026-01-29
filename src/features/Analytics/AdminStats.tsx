@@ -485,11 +485,18 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
               return acc + price;
             }, 0);
 
+            const isLastDayConversation =
+              conversation.updatedAtIso &&
+              dayjs().diff(dayjs(conversation.updatedAtIso), 'hour') < 24;
+            // xxx
+
             return (
               <Stack
                 key={conversation.id}
                 sx={{
-                  backgroundColor: 'rgba(229, 229, 229, 0.21)',
+                  backgroundColor: isLastDayConversation
+                    ? 'rgba(210, 138, 218, 0.21)'
+                    : 'rgba(229, 229, 229, 0.21)',
                   padding: '10px 15px',
                   cursor: 'pointer',
                   borderRadius: '8px',
