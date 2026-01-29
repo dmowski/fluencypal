@@ -1,6 +1,6 @@
 import { useLingui } from '@lingui/react';
-import { Stack, Button } from '@mui/material';
-import { ChevronUp } from 'lucide-react';
+import { Stack, Button, Typography } from '@mui/material';
+import { ArrowUp, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 import { getAllParentMessages } from './getAllParentMessages';
 import { Message } from './Message';
@@ -45,24 +45,58 @@ export const RelyMessage = ({
       {isMoreParents && !isShowAllParents && (
         <Stack
           sx={{
-            padding: '0px 10px 0 10px',
+            padding: '0px 0 0 0px',
           }}
         >
           <Stack
             sx={{
               backgroundColor: 'rgba(255, 255, 255, 0.01)',
               paddingTop: '12px',
+              paddingBottom: '3px',
             }}
           >
-            <Button
-              endIcon={<ChevronUp />}
-              size="small"
-              sx={{}}
-              variant="text"
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: '0px',
+                cursor: 'pointer',
+              }}
               onClick={() => setIsShowAllParents(true)}
             >
-              {i18n._('Show previous')}
-            </Button>
+              <Stack
+                sx={{
+                  width: '65px',
+                  paddingLeft: '0px',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Stack
+                  sx={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    border: '2px solid rgba(0, 0, 0, 1)',
+                    borderRadius: '50%',
+                    color: 'black',
+                    width: '22px',
+                    height: '22px',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <ArrowUp size={'14px'} strokeWidth={4} />
+                </Stack>
+              </Stack>
+
+              <Typography
+                sx={{
+                  opacity: 0.5,
+                }}
+                variant="body2"
+              >
+                {i18n._('Show previous')}
+              </Typography>
+            </Stack>
           </Stack>
         </Stack>
       )}
