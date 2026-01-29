@@ -177,6 +177,7 @@ export const NavigationBar: React.FC = () => {
                   margin: '0',
                   width: '100%',
                   textDecoration: 'none',
+                  position: 'relative',
 
                   ...(isActive
                     ? {
@@ -185,6 +186,63 @@ export const NavigationBar: React.FC = () => {
                     : {}),
                 }}
               >
+                {isActive && (
+                  <>
+                    <Stack
+                      sx={{
+                        height: '1px',
+                        width: 'calc(100% + 20px)',
+                        position: 'absolute',
+                        bottom: '-1px',
+                        left: '-10px',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        overflow: 'hidden',
+                        opacity: 0.8,
+                      }}
+                    >
+                      <Stack
+                        sx={{
+                          height: '11px',
+                          width: '80%',
+                          filter: 'blur(18px)',
+
+                          backgroundColor: activeColor,
+
+                          position: 'absolute',
+                          bottom: '-10px',
+                        }}
+                      />
+                    </Stack>
+
+                    <Stack
+                      sx={{
+                        pointerEvents: 'none',
+                        height: '40px',
+                        width: '100%',
+                        position: 'absolute',
+                        bottom: 0,
+                        overflow: 'hidden',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <Stack
+                        sx={{
+                          height: '29px',
+                          borderRadius: '40px',
+                          top: '42px',
+                          filter: 'blur(15px)',
+                          opacity: 0.3,
+                          width: '100px',
+                          backgroundColor: activeColor,
+
+                          position: 'relative',
+                        }}
+                      />
+                    </Stack>
+                  </>
+                )}
                 <Link
                   href={`${appNavigation.pageUrl(item.name)}`}
                   onClick={(e) => e.preventDefault()}
@@ -215,7 +273,7 @@ export const NavigationBar: React.FC = () => {
                     gap: '5px',
                     transition: 'background-color 0.3s ease',
                     ':hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.07)',
+                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
                     },
                     '@media (max-width: 700px)': {
                       ':hover': {
