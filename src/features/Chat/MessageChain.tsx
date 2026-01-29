@@ -57,7 +57,7 @@ export function MessageChain({
     return (
       <Stack sx={{ gap: '40px' }}>
         {messagesToShow.map((message) => {
-          return <RelyMessage key={message.id} message={message} messages={messages} />;
+          return <RelyMessage key={message.id} message={message} messages={chat.messages} />;
         })}
 
         {isNeedToShowLoadMore && (
