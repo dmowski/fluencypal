@@ -5,6 +5,7 @@ import { db } from '../Firebase/firebaseDb';
 import { deleteDoc, query, where } from 'firebase/firestore';
 import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { ChatSpaceUserReadMetadata, UserChatMetadata } from './type';
+import { useSettings } from '../Settings/useSettings';
 
 interface ChatListContextType {
   loading: boolean;
@@ -20,6 +21,8 @@ const ChatListContext = createContext<ChatListContextType | null>(null);
 
 function useProvideChatList(): ChatListContextType {
   const auth = useAuth();
+  const settings = useSettings();
+  const userCreatedAt = settings.userCreatedAt;
   const chatListRef = db.collections.userChatList(auth.uid || '');
 
   const myReadStatsRef = db.documents.chatSpaceUserReadMetadata(auth.uid || '');
@@ -55,20 +58,27 @@ function useProvideChatList(): ChatListContextType {
           unreadLocalData[chat.spaceId] = unreadCount;
         }
       });
-    const unreadCount = Object.values(unreadLocalData).reduce((a, b) => a + b, 0);
+    const myUnreadCount = Object.values(unreadLocalData).reduce((a, b) => a + b, 0);
 
-    const readGlobalIds = Object.keys(myReadStatsData?.['global'] || {});
-    const totalMessagesCountGlobal = [...(globalChat?.totalTopLevelMessagesIds || [])];
-    const unreadCountGlobal = totalMessagesCountGlobal.filter(
-      (id) => !readGlobalIds.includes(id),
+    const myGlobalReadMessagesIds = Object.keys(myReadStatsData?.['global'] || {});
+
+    const globalTopLevelMessages = [...(globalChat?.totalTopLevelMessagesIds || [])];
+    const myGlobalTopLevelMessages = globalTopLevelMessages.filter((id) => {
+      if (!userCreatedAt) return false;
+      const messageCreatedAtString = parseInt(id.split('-')?.[1] || id);
+      return messageCreatedAtString >= userCreatedAt;
+    });
+
+    const unreadCountGlobal = myGlobalTopLevelMessages.filter(
+      (id) => !myGlobalReadMessagesIds.includes(id),
     ).length;
 
     return {
       unreadSpaces: unreadLocalData,
-      myUnreadCount: unreadCount,
+      myUnreadCount: myUnreadCount,
       unreadCountGlobal,
     };
-  }, [myChats, myReadStatsData, globalChat]);
+  }, [myChats, myReadStatsData, globalChat, userCreatedAt]);
 
   const deleteChat = async (spaceId: string) => {
     const chatRef = db.documents.chat(auth.uid, spaceId);
