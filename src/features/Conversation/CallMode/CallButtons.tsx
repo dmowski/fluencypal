@@ -521,7 +521,6 @@ Return ONLY the number.
                   isActive={true}
                   label={i18n._('Undo active message')}
                   onClick={cancelActiveMessage}
-                  isLocked={isLimited}
                 />
               )}
 
