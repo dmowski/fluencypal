@@ -8,7 +8,7 @@ export interface ChatLike {
   createdAtIso: string;
 }
 
-export type ChartSortMode = 'all' | 'updates';
+export type ChartSortMode = 'all' | 'replies';
 
 export interface UserChatMetadataStatic {
   spaceId: string;

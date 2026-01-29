@@ -82,7 +82,7 @@ export const GlobalChatTabs = ({
                   badgeHighlight
                 />
               }
-              value={'updates'}
+              value={'replies'}
               sx={{
                 padding: '0 10px 0 10px',
                 minWidth: 'unset',

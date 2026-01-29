@@ -42,7 +42,7 @@ export function MessageChain({
           chat.getLastActivityOnMessage(b.id).localeCompare(chat.getLastActivityOnMessage(a.id)),
         );
 
-  if (sortMode === 'updates') {
+  if (sortMode === 'replies') {
     const messagesToShow = chat.messages
       .sort((a, b) => b.updatedAtIso.localeCompare(a.updatedAtIso))
       .filter((_, index) => {
