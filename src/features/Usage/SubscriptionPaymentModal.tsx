@@ -284,7 +284,7 @@ export const SubscriptionPaymentModal = () => {
     }
   };
 
-  const [duration, setDuration] = useState<'day' | 'week' | 'month' | 'year'>('week');
+  const [duration, setDuration] = useState<'day' | 'week' | 'month' | 'year'>('day');
 
   const yearPrice = PRICE_PER_MONTH_USD * 12;
 
