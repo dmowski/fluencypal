@@ -33,6 +33,8 @@ interface AddMessageProps {
 
 interface ChatContextType {
   messages: ThreadsMessage[];
+  previewMessages: ThreadsMessage[];
+
   topLevelMessages: ThreadsMessage[];
   messagesLikes: Record<string, ChatLike[]>;
   toggleLike: (messageId: string, type: ChatLikeType) => Promise<void>;
@@ -121,8 +123,20 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       : null;
   };
 
-  const { messages, topLevelMessages, commentsInfo, secondLevelSingleCommentsIds } = useMemo<{
+  const getRandomMessages = (messages: ThreadsMessage[], count: number) => {
+    const shuffled = [...messages].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  };
+
+  const {
+    messages,
+    previewMessages,
+    topLevelMessages,
+    commentsInfo,
+    secondLevelSingleCommentsIds,
+  } = useMemo<{
     messages: ThreadsMessage[];
+    previewMessages: ThreadsMessage[];
     topLevelMessages: ThreadsMessage[];
     commentsInfo: Record<string, number>;
     secondLevelSingleCommentsIds: string[];
@@ -175,6 +189,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       topLevelMessages: topLevel,
       commentsInfo: commentsMap,
       secondLevelSingleCommentsIds,
+      previewMessages: getRandomMessages(topLevel, 3),
     };
   }, [messagesData]);
 
@@ -383,6 +398,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
 
   return {
     messages,
+    previewMessages,
     getLastActivityOnMessage,
     topLevelMessages,
     messagesLikes,

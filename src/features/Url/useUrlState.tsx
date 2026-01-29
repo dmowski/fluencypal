@@ -10,7 +10,7 @@ export const useUrlState = <T,>(paramName: string, defaultValue: T, scrollToTop:
   const urlPage = (searchParams.get(paramName) || defaultValue) as T;
   const router = useRouter();
 
-  const internalValue = (urlStateMap[paramName] ?? defaultValue) as T;
+  const internalValue = (urlStateMap[paramName] || defaultValue) as T;
 
   useEffect(() => {
     if (urlPage !== internalValue) {

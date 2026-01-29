@@ -19,6 +19,7 @@ import { useAccess } from '../Usage/useAccess';
 import dayjs from 'dayjs';
 import { AccessBadge } from './AccessBadge';
 import { JustTalkCard } from './JustTalkCard';
+import { PreviewCard } from '../Chat/PreviewCard';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -85,6 +86,8 @@ export function Dashboard({ lang }: DashboardProps) {
               )}
 
               <JustTalkCard />
+
+              <PreviewCard />
 
               <PlanDashboardCards lang={lang} />
             </>

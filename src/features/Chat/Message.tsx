@@ -24,7 +24,7 @@ import { useGame } from '../Game/useGame';
 import { MessageActionButton } from './MessageActionButton';
 import { useTranslate } from '../Translation/useTranslate';
 import { Avatar } from '../Game/Avatar';
-import { CircleEllipsis } from 'lucide-react';
+import { CircleEllipsis, Heart, Languages, MessageCircle } from 'lucide-react';
 import { UserName } from '../User/UserName';
 import { Markdown } from '../uiKit/Markdown/Markdown';
 
@@ -460,7 +460,13 @@ export function Message({
   );
 }
 
-const MessageContent = ({ children }: { children: string }) => {
+export const MessageContent = ({
+  children,
+  contentFontSize,
+}: {
+  children: string;
+  contentFontSize?: string;
+}) => {
   const game = useGame();
 
   const onClickOnUserName = (userName: string) => {
@@ -528,11 +534,78 @@ const MessageContent = ({ children }: { children: string }) => {
           color: '#29B3E5',
         },
         '* p': {
-          fontSize: '15px',
+          fontSize: contentFontSize || '15px',
         },
       }}
     >
       <Markdown variant="small">{contentToShow}</Markdown>
+    </Stack>
+  );
+};
+
+export const PreviewMessage = ({
+  message,
+  onOpen,
+}: {
+  message: ThreadsMessage;
+  onOpen: (messageId: string) => void;
+}) => {
+  const game = useGame();
+  const userAvatarUrl = game.getUserAvatarUrl(message.senderId);
+  const userName = game.getUserName(message.senderId);
+  const contentLimit = 120;
+  const contentToShow =
+    message.content.length > contentLimit
+      ? message.content.slice(0, contentLimit) + '...'
+      : message.content;
+
+  const chat = useChat();
+  const auth = useAuth();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (message.id) {
+        chat.viewMessage(message);
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [message.id, auth.uid]);
+
+  return (
+    <Stack
+      key={message.id}
+      onClick={() => onOpen(message.id)}
+      sx={{
+        borderRadius: '12px',
+        padding: '15px',
+        backgroundColor: '#222327',
+        width: '255px',
+        gap: '10px',
+      }}
+    >
+      <Stack
+        sx={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: '10px',
+        }}
+      >
+        <Avatar avatarSize={'26px'} url={userAvatarUrl} />
+        <UserName userId={message.senderId} userName={userName} bold />
+      </Stack>
+      <MessageContent contentFontSize="14px">{contentToShow}</MessageContent>
+      <Stack
+        sx={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: '15px',
+        }}
+      >
+        <Heart size={'14px'} />
+
+        <MessageCircle size={'14px'} />
+        <Languages size={'14px'} />
+      </Stack>
     </Stack>
   );
 };
