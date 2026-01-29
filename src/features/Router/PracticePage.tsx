@@ -92,7 +92,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   const limitedConversations: ConversationType[] = ['role-play', 'talk'];
   const isBlockedSendMessages = access.isFullAppAccess
     ? false
-    : aiConversation.conversation.length >= 6 &&
+    : aiConversation.conversation.length >= 8 &&
       limitedConversations.includes(aiConversation.currentMode);
 
   return (
