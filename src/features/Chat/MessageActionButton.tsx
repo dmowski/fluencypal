@@ -8,6 +8,7 @@ export const MessageActionButton = ({
   count,
   iconName,
   leftShift,
+  iconSize,
 }: {
   isActive: boolean;
   onClick: (e: HTMLElement) => void;
@@ -15,6 +16,7 @@ export const MessageActionButton = ({
   count?: number;
   iconName: IconName;
   leftShift?: string;
+  iconSize?: string;
 }) => {
   const color = isActive ? '#ff0034' : 'inherit';
   return (
@@ -41,7 +43,7 @@ export const MessageActionButton = ({
     >
       <DynamicIcon
         name={iconName}
-        size={'20px'}
+        size={iconSize || '20px'}
         style={{
           opacity: isActive ? 1 : 0.7,
           color: color,

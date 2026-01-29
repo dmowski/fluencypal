@@ -399,41 +399,14 @@ export function Message({
           </Typography>
 
           {!isDeleted && (
-            <Stack
-              sx={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: '8px',
-                paddingTop: '5px',
-                paddingLeft: isContentWide ? '0px' : contentLeftPadding,
-              }}
-            >
-              <MessageActionButton
-                isActive={isLikedByMe}
-                onClick={() => chat.toggleLike(message.id, 'like')}
-                label={i18n._('Like')}
-                count={chat.messagesLikes[message.id]?.length || 0}
-                iconName={'heart'}
-              />
-
-              <MessageActionButton
-                isActive={false}
-                onClick={() => chat.setActiveCommentMessageId(message.id)}
-                label={i18n._('Comment')}
-                count={commentsCount}
-                iconName={'message-circle'}
-              />
-
-              {translator.isTranslateAvailable && (
-                <MessageActionButton
-                  isActive={isTranslating}
-                  onClick={() => toggleTranslation()}
-                  label={i18n._('Translate')}
-                  iconName={'languages'}
-                />
-              )}
-              {translator.translateModal}
-            </Stack>
+            <MessageFooter
+              message={message}
+              isContentWide={isContentWide}
+              contentLeftPadding={contentLeftPadding}
+              toggleTranslation={toggleTranslation}
+              isTranslateAvailable={translator.isTranslateAvailable ?? false}
+              isTranslating={isTranslating}
+            />
           )}
         </Stack>
       )}
@@ -459,6 +432,70 @@ export function Message({
     </Stack>
   );
 }
+
+const MessageFooter = ({
+  message,
+  isContentWide,
+  contentLeftPadding,
+  toggleTranslation,
+  isTranslateAvailable,
+  isTranslating,
+  gap,
+}: {
+  message: ThreadsMessage;
+  isContentWide: boolean;
+  contentLeftPadding: string;
+  toggleTranslation: () => void;
+  isTranslateAvailable: boolean;
+  isTranslating: boolean;
+  gap?: string;
+}) => {
+  const { i18n } = useLingui();
+  const chat = useChat();
+
+  const myUserId = useAuth().uid;
+  const commentsCount = chat.commentsInfo[message.id] || 0;
+  const isLikedByMe = chat.messagesLikes[message.id]?.some((like) => like.userId === myUserId);
+
+  return (
+    <Stack
+      sx={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: gap || '1px',
+        paddingTop: '5px',
+        paddingLeft: isContentWide ? '0px' : contentLeftPadding,
+      }}
+    >
+      <MessageActionButton
+        isActive={isLikedByMe}
+        onClick={() => chat.toggleLike(message.id, 'like')}
+        label={i18n._('Like')}
+        count={chat.messagesLikes[message.id]?.length || 0}
+        iconName={'heart'}
+      />
+
+      <MessageActionButton
+        isActive={false}
+        iconSize="17px"
+        onClick={() => chat.setActiveCommentMessageId(message.id)}
+        label={i18n._('Comment')}
+        count={commentsCount}
+        iconName={'message-circle'}
+      />
+
+      {isTranslateAvailable && (
+        <MessageActionButton
+          iconSize="17px"
+          isActive={isTranslating}
+          onClick={() => toggleTranslation()}
+          label={i18n._('Translate')}
+          iconName={'languages'}
+        />
+      )}
+    </Stack>
+  );
+};
 
 export const MessageContent = ({
   children,
@@ -577,10 +614,10 @@ export const PreviewMessage = ({
       onClick={() => onOpen(message.id)}
       sx={{
         borderRadius: '12px',
-        padding: '15px',
+        padding: '15px 15px 10px 15px',
         backgroundColor: '#222327',
         width: '255px',
-        gap: '10px',
+        gap: '0px',
       }}
     >
       <Stack
@@ -588,6 +625,7 @@ export const PreviewMessage = ({
           flexDirection: 'row',
           alignItems: 'center',
           gap: '10px',
+          paddingBottom: '10px',
         }}
       >
         <Avatar avatarSize={'26px'} url={userAvatarUrl} />
@@ -596,15 +634,18 @@ export const PreviewMessage = ({
       <MessageContent contentFontSize="14px">{contentToShow}</MessageContent>
       <Stack
         sx={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: '15px',
+          pointerEvents: 'none',
         }}
       >
-        <Heart size={'14px'} />
-
-        <MessageCircle size={'14px'} />
-        <Languages size={'14px'} />
+        <MessageFooter
+          message={message}
+          gap="0"
+          isContentWide={false}
+          contentLeftPadding={'0px'}
+          toggleTranslation={() => {}}
+          isTranslateAvailable={false}
+          isTranslating={false}
+        />
       </Stack>
     </Stack>
   );
