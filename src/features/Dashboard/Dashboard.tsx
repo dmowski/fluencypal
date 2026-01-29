@@ -68,7 +68,7 @@ export function Dashboard({ lang }: DashboardProps) {
               {!access.isFullAppAccess && (
                 <AccessBadge
                   title={i18n._('Limited access')}
-                  subTitle={i18n._('The AI voice is disabled.')}
+                  subTitle={i18n._('The AI voice is disabled. Limited messages per conversation.')}
                 />
               )}
 
