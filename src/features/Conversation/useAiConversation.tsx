@@ -385,42 +385,20 @@ VISUAL_CONTEXT (latest): ${description}
   const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
 
   const access = useAccess();
-  const isLowBalance = !access.isFullAppAccess;
-
-  const limitedGeneralConversations: ConversationType[] = ['role-play', 'talk'];
-  const isLimitedRecording = access.isFullAppAccess
+  const isFullAppAccess = access.isFullAppAccess;
+  const isLimitedRecording = isFullAppAccess
     ? false
-    : conversation.length >= 2 && limitedGeneralConversations.includes(currentMode);
+    : conversation.length >= 2 && ['role-play', 'talk'].includes(currentMode);
 
   useEffect(() => {
-    if (isLimitedRecording) {
-      toggleMute(true);
-    }
+    toggleMute(!isLimitedRecording);
   }, [isLimitedRecording]);
 
-  const isLimitedAiVoice = access.isFullAppAccess === false && conversation.length >= 2;
+  const isLimitedAiVoice = isFullAppAccess === false && conversation.length >= 2;
+
   useEffect(() => {
-    if (isLimitedAiVoice) {
-      toggleVolume(false);
-    }
+    toggleVolume(!isLimitedAiVoice);
   }, [isLimitedAiVoice]);
-
-  const [isVolumeOffDueToNoBalance, setIsVolumeOffDueToNoBalance] = useState(false);
-  useEffect(() => {
-    const isRestoredBalance = isVolumeOffDueToNoBalance && !isLowBalance;
-    if (isRestoredBalance) {
-      communicatorRef.current?.toggleVolume(true);
-      communicatorRef.current?.unlockVolume();
-      setIsVolumeOffDueToNoBalance(false);
-    }
-
-    if (!isLowBalance) {
-      return;
-    }
-    communicatorRef.current?.toggleVolume(false);
-    communicatorRef.current?.lockVolume();
-    setIsVolumeOffDueToNoBalance(true);
-  }, [isLowBalance]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {

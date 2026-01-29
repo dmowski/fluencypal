@@ -64,7 +64,7 @@ export const AccessBadge = ({ title, subTitle }: { title: string; subTitle: stri
           padding: '10px 30px',
         }}
       >
-        {i18n._('Upgrade Now')}
+        {i18n._('Get Full Access')}
       </Button>
     </Stack>
   );
