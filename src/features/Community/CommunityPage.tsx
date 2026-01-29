@@ -9,6 +9,7 @@ import { DebatesPage } from './DebatesPage';
 import { DailyQuestionBadge } from '../Game/DailyQuestion/DailyQuestionBadge';
 import { SupportPage } from './SupportPage';
 import { PageContainer } from './PageContainer';
+import { useUrlState } from '../Url/useUrlParam';
 
 export const CommunityPageRouter = ({
   activePage,
@@ -18,6 +19,9 @@ export const CommunityPageRouter = ({
   onClose: () => void;
 }) => {
   const { i18n } = useLingui();
+
+  const [activeChatPost] = useUrlState<string | null>('post', null, false);
+
   const titles: Record<CommunityPage, string> = {
     chat: i18n._('Community Chat'),
     game: i18n._('Game'),
@@ -28,31 +32,35 @@ export const CommunityPageRouter = ({
     leaderboards: i18n._('Leaderboards'),
   };
 
+  const isShowHeader = !activeChatPost;
+
   return (
     <Stack>
-      <Stack
-        sx={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          paddingTop: '10px',
-
-          gap: '10px',
-        }}
-        onClick={onClose}
-      >
-        <IconButton
+      {isShowHeader && (
+        <Stack
           sx={{
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            flexDirection: 'row',
+            alignItems: 'center',
+            paddingTop: '10px',
+
+            gap: '10px',
           }}
+          onClick={onClose}
         >
-          <ArrowLeft size={'18px'} />
-        </IconButton>
-        <Typography variant="body2">{titles[activePage]}</Typography>
-      </Stack>
+          <IconButton
+            sx={{
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+            }}
+          >
+            <ArrowLeft size={'18px'} />
+          </IconButton>
+          <Typography variant="body2">{titles[activePage]}</Typography>
+        </Stack>
+      )}
 
       <Stack
         sx={{
-          paddingTop: '20px',
+          paddingTop: isShowHeader ? '20px' : 0,
           paddingBottom: '100px',
         }}
       >

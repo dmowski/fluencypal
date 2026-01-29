@@ -9,6 +9,7 @@ import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { getAllChildrenMessages } from './getAllChildrenMessages';
 import { uniq } from '@/libs/uniq';
 import { useMemo } from 'react';
+import { useUrlState } from '../Url/useUrlParam';
 
 export const GlobalChatTabs = ({
   sortMode,
@@ -22,6 +23,7 @@ export const GlobalChatTabs = ({
   const auth = useAuth();
   const myReadStatsRef = db.documents.chatSpaceUserReadMetadata(auth.uid || '');
   const [myReadStatsData] = useDocumentData(myReadStatsRef);
+  const [activeChatPost] = useUrlState<string | null>('post', null, false);
 
   const unreadRepliesCount = useMemo(() => {
     const messages = chat.messages || [];
@@ -44,6 +46,8 @@ export const GlobalChatTabs = ({
     return unreadReplies.length;
   }, [chat.messages, auth.uid, myReadStatsData]);
 
+  const isShowTabs = !activeChatPost;
+
   return (
     <Stack>
       <Stack
@@ -52,37 +56,39 @@ export const GlobalChatTabs = ({
           width: '100%',
         }}
       >
-        <Tabs
-          value={sortMode}
-          onChange={(event, newId) => setSortMode(newId)}
-          sx={{
-            marginLeft: '10px',
-          }}
-        >
-          <Tab
+        {isShowTabs && (
+          <Tabs
+            value={sortMode}
+            onChange={(event, newId) => setSortMode(newId)}
             sx={{
-              padding: '0 10px 0 10px',
-              minWidth: 'unset',
+              marginLeft: '10px',
             }}
-            label={<TabLabel label={i18n._(`All`)} badgeNumber={undefined} badgeHighlight />}
-            value={'all'}
-          />
+          >
+            <Tab
+              sx={{
+                padding: '0 10px 0 10px',
+                minWidth: 'unset',
+              }}
+              label={<TabLabel label={i18n._(`All`)} badgeNumber={undefined} badgeHighlight />}
+              value={'all'}
+            />
 
-          <Tab
-            label={
-              <TabLabel
-                label={i18n._(`Replies`)}
-                badgeNumber={unreadRepliesCount > 0 ? unreadRepliesCount : undefined}
-                badgeHighlight
-              />
-            }
-            value={'updates'}
-            sx={{
-              padding: '0 10px 0 10px',
-              minWidth: 'unset',
-            }}
-          />
-        </Tabs>
+            <Tab
+              label={
+                <TabLabel
+                  label={i18n._(`Replies`)}
+                  badgeNumber={unreadRepliesCount > 0 ? unreadRepliesCount : undefined}
+                  badgeHighlight
+                />
+              }
+              value={'updates'}
+              sx={{
+                padding: '0 10px 0 10px',
+                minWidth: 'unset',
+              }}
+            />
+          </Tabs>
+        )}
       </Stack>
     </Stack>
   );

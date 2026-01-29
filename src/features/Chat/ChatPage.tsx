@@ -27,6 +27,7 @@ import { GlobalChatTabs } from './GlobalChatTabs';
 import { useState } from 'react';
 
 import DeleteIcon from '@mui/icons-material/Delete';
+import { sleep } from '@/libs/sleep';
 
 export const ChatPage = ({
   type,
@@ -63,6 +64,12 @@ export const ChatPage = ({
         return 0;
       })?.[0] || ''
     ];
+
+  const back = async () => {
+    setActiveChatId('');
+    await sleep(150);
+    setActivePost('');
+  };
 
   return (
     <Stack>
@@ -152,7 +159,7 @@ export const ChatPage = ({
                       <Button
                         color="info"
                         variant="outlined"
-                        onClick={() => setActiveChatId('')}
+                        onClick={back}
                         startIcon={<ChevronLeft />}
                       >
                         {i18n._('Back')}
@@ -164,7 +171,7 @@ export const ChatPage = ({
                         gap: '20px',
                       }}
                     >
-                      <ChatHeaderFull chat={chatMetadata} close={() => setActiveChatId('')} />
+                      <ChatHeaderFull chat={chatMetadata} close={back} />
                     </Stack>
                   </Stack>
 
@@ -191,11 +198,7 @@ export const ChatPage = ({
                   >
                     {i18n._("Chat not found or you don't have access to it.")}
                   </Alert>
-                  <Button
-                    startIcon={<ChevronLeft />}
-                    onClick={() => setActiveChatId('')}
-                    variant="outlined"
-                  >
+                  <Button startIcon={<ChevronLeft />} onClick={back} variant="outlined">
                     {i18n._('Back to chat list')}
                   </Button>
                 </Stack>
