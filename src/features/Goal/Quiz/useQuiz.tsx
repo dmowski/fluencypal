@@ -138,7 +138,7 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   const userInfo = useAiUserInfo();
 
   const stepsViews: QuizStep[] = [
-    'quizOrSkip',
+    //'quizOrSkip',
     'learnLanguage',
     'before_nativeLanguage',
     'nativeLanguage',
