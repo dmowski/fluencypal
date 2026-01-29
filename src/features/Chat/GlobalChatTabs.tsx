@@ -43,7 +43,8 @@ export const GlobalChatTabs = ({
       (id) => !myGlobalStatsReadMessagesIds.includes(id),
     );
 
-    return unreadReplies.length;
+    //return unreadReplies.length;
+    return 0;
   }, [chat.messages, auth.uid, myReadStatsData]);
 
   const isShowTabs = !activeChatPost;
