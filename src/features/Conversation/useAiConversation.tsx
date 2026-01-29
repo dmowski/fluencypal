@@ -29,8 +29,8 @@ import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
 import { setGlobalConversationId } from '../Usage/globalConversationId';
 
-const LIMITED_MESSAGES_COUNT = 10;
-const LIMITED_VOICE_MESSAGES_COUNT = 6;
+const LIMITED_MESSAGES_COUNT = 12;
+const LIMITED_VOICE_MESSAGES_COUNT = 7;
 
 const getVoiceInstructions = (voice: AiVoice): string => {
   const voiceAvatar = getAiVoiceByVoice(voice);
