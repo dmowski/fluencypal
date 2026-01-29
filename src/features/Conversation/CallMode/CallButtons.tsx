@@ -338,7 +338,7 @@ Return ONLY the number.
     });
   };
 
-  const isShowUndo = recordingVoiceMode === 'VAD' && waitingPercent > 2;
+  const isShowUndo = recordingVoiceMode === 'VAD' && waitingPercent > 20;
 
   return (
     <Stack
@@ -514,15 +514,15 @@ Return ONLY the number.
                 />
               )}
 
-              {isShowUndo && (
-                <FooterButton
-                  activeButton={<Undo2 />}
-                  inactiveButton={<Undo2 />}
-                  isActive={true}
-                  label={i18n._('Undo active message')}
-                  onClick={cancelActiveMessage}
-                />
-              )}
+              {/*
+              <FooterButton
+                activeButton={<Undo2 />}
+                inactiveButton={<Undo2 />}
+                isActive={true}
+                label={i18n._('Undo active message')}
+                onClick={isShowUndo ? cancelActiveMessage : () => {}}
+              />
+              */}
 
               {recordingVoiceMode === 'RealTimeConversation' && (
                 <FooterButton
@@ -544,16 +544,14 @@ Return ONLY the number.
                 />
               )}
 
-              {!isShowUndo && (
-                <FooterButton
-                  activeButton={<VolumeUpIcon />}
-                  inactiveButton={<VolumeOffIcon />}
-                  isActive={isVolumeOnToDisplay}
-                  label={isVolumeOnToDisplay ? i18n._('Turn off volume') : i18n._('Turn on volume')}
-                  onClick={toggleVolume}
-                  isLocked={isLimited}
-                />
-              )}
+              <FooterButton
+                activeButton={<VolumeUpIcon />}
+                inactiveButton={<VolumeOffIcon />}
+                isActive={isVolumeOnToDisplay}
+                label={isVolumeOnToDisplay ? i18n._('Turn off volume') : i18n._('Turn on volume')}
+                onClick={toggleVolume}
+                isLocked={isLimited}
+              />
 
               <FooterButton
                 activeButton={<ClosedCaptionIcon />}
