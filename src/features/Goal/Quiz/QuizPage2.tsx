@@ -379,7 +379,7 @@ const QuizQuestions = () => {
                   `Unlock human-like voice conversations and a curriculum tailored specifically to your goals.`,
                 )}
                 subComponent={
-                  <Stack sx={{ paddingTop: '30px', gap: '20px' }}>
+                  <Stack sx={{ paddingTop: '30px', gap: '30px' }}>
                     <AccessSelector
                       isSpeaking={true}
                       isFullAccess={true}
@@ -399,7 +399,7 @@ const QuizQuestions = () => {
                       onSelect={() => setIsFullAccessRedirect(false)}
                       aiAvatar={getAiVoiceByVoice(settings.userSettings?.teacherVoice || 'shimmer')}
                       title={i18n._(`Limited Access`)}
-                      description={i18n._(`Basic exercises and text-only practice.`)}
+                      description={i18n._(`Limited messages and voice features.`)}
                     />
                   </Stack>
                 }
@@ -579,10 +579,10 @@ const AccessSelector = ({
         flexDirection: 'row',
         textAlign: 'left',
         background: isFullAccess
-          ? 'linear-gradient(135deg, rgba(255, 0, 234, 0.3) 0%, rgba(0, 255, 163, 0) 100%)'
+          ? 'linear-gradient(135deg, rgba(255, 0, 251, 0.2) 0%, rgba(0, 255, 163, 0) 100%)'
           : 'transparent',
         border: 'none',
-        borderRadius: '8px',
+        borderRadius: '10px',
         color: 'inherit',
 
         alignItems: 'center',
@@ -591,11 +591,11 @@ const AccessSelector = ({
         gap: '20px',
         display: 'grid',
         gridTemplateColumns: 'auto 1fr',
-        padding: '5px 5px',
+        padding: '0px',
 
         boxShadow: isSelected
-          ? '0px 0px 0px 4px rgba(0, 185, 252, 1)'
-          : '0px 0px 0px 1px rgb(51, 51, 51, 0.9)',
+          ? '0px 0px 0px 7px rgba(0, 0, 0, 1), 0px 0px 0px 10px rgba(0, 185, 252, 1) '
+          : '0px 0px 0px 1px rgb(255, 255, 255, 0.15)',
       }}
     >
       <Stack
@@ -607,7 +607,7 @@ const AccessSelector = ({
           position: 'relative',
           boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
           justifyContent: 'center',
-          borderRadius: '8px',
+          borderRadius: '11px 0 0 11px',
           overflow: 'hidden',
         }}
       >
@@ -621,14 +621,13 @@ const AccessSelector = ({
               top: 0,
               left: 0,
 
-              padding: '5px',
               alignItems: 'center',
               justifyContent: 'center',
 
               backgroundColor: 'rgba(0, 0, 0, 0.7)',
             }}
           >
-            <BotOff color="white" size={52} />
+            <BotOff color="white" size={22} />
           </Stack>
         )}
       </Stack>
@@ -639,7 +638,14 @@ const AccessSelector = ({
           padding: '15px 10px 15px 0',
         }}
       >
-        <Typography variant="h6">{title}</Typography>
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 800,
+          }}
+        >
+          {title}
+        </Typography>
         <Typography
           sx={{
             opacity: isSelected ? 0.9 : 0.8,
