@@ -36,7 +36,7 @@ export const CallButtons = ({
 
   isVolumeOn,
   setIsVolumeOn,
-  isLimited,
+  isLimitedVoice,
   onLimitedClick,
 
   onSubmitTranscription,
@@ -61,7 +61,7 @@ export const CallButtons = ({
 
   isVolumeOn: boolean;
   setIsVolumeOn: (value: boolean) => void;
-  isLimited: boolean;
+  isLimitedVoice: boolean;
   onLimitedClick: () => void;
 
   onSubmitTranscription: (userMessage: string) => void;
@@ -89,7 +89,7 @@ export const CallButtons = ({
   const access = useAccess();
 
   const toggleVolume = () => {
-    if (isLimited) {
+    if (isLimitedVoice) {
       setIsShowVolumeWarning(true);
       return;
     }
@@ -570,7 +570,7 @@ Return ONLY the number.
                 isActive={isVolumeOnToDisplay}
                 label={isVolumeOnToDisplay ? i18n._('Turn off volume') : i18n._('Turn on volume')}
                 onClick={toggleVolume}
-                isLocked={isLimited}
+                isLocked={isLimitedVoice}
               />
 
               <FooterButton

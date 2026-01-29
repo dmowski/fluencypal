@@ -164,7 +164,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         voice={aiConversation.voice}
         messageOrder={aiConversation.messageOrder}
         onWebCamDescription={aiConversation.setWebCamDescription}
-        isLimited={!access.isFullAppAccess}
+        isLimitedVoice={isLimitedVoiceMode}
         onLimitedClick={() => usage.togglePaymentModal(true)}
       />
     </Stack>

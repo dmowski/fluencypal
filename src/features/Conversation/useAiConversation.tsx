@@ -667,19 +667,13 @@ ${voiceInstructions}
 
     let isMutedInternal = isMuted;
     const isRecordingNeedMute = !isMuted && input.conversationMode === 'record';
-    const isLimitedAccessNeedMute = !isMuted && !access.isFullAppAccess;
 
-    if (isRecordingNeedMute || isLimitedAccessNeedMute) {
+    if (isRecordingNeedMute) {
       toggleMute(true);
       isMutedInternal = true;
     }
 
     let isVolumeOnInternal = isVolumeOn;
-    const isLimitedAccessNeedVolumeOff = isVolumeOn && !access.isFullAppAccess;
-    if (isLimitedAccessNeedVolumeOff) {
-      toggleVolume(false);
-      isVolumeOnInternal = false;
-    }
 
     console.log('START', {
       isVolumeOnInternal,

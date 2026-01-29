@@ -24,7 +24,7 @@ export const RecordingCanvasMenu = ({
   isAnalyzingResponse,
   isCallMode,
   isChatMode,
-  isLimited,
+
   toggleConversationMode,
   closeConversation,
   closeMenus,
@@ -36,7 +36,7 @@ export const RecordingCanvasMenu = ({
   isAnalyzingResponse: boolean;
   isCallMode: boolean;
   isChatMode: boolean;
-  isLimited: boolean;
+
   toggleConversationMode: (mode: ConversationMode) => void;
   closeConversation: () => void;
   closeMenus: () => void;

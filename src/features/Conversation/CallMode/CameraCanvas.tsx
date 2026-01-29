@@ -31,7 +31,7 @@ export const CameraCanvas = ({
 
   isVolumeOn,
   setIsVolumeOn,
-  isLimited,
+  isLimitedVoice,
   onLimitedClick,
 
   onSubmitTranscription,
@@ -56,7 +56,7 @@ export const CameraCanvas = ({
 
   isVolumeOn: boolean;
   setIsVolumeOn: (value: boolean) => void;
-  isLimited: boolean;
+  isLimitedVoice: boolean;
   onLimitedClick: () => void;
 
   onSubmitTranscription: (userMessage: string) => void;
@@ -79,12 +79,8 @@ export const CameraCanvas = ({
   const [isSubtitlesEnabled, setIsSubtitlesEnabled] = useState<boolean>(true);
 
   useEffect(() => {
-    if (isLimited) {
-      setIsSubtitlesEnabled(true);
-    } else {
-      setIsSubtitlesEnabled(true);
-    }
-  }, [isLimited]);
+    setIsSubtitlesEnabled(true);
+  }, [isLimitedVoice]);
 
   const auth = useAuth();
   const userPhoto = auth.userInfo?.photoURL || '';
@@ -287,7 +283,7 @@ export const CameraCanvas = ({
             exit={stopCallMode}
             isVolumeOn={isVolumeOn}
             setIsVolumeOn={setIsVolumeOn}
-            isLimited={isLimited}
+            isLimitedVoice={isLimitedVoice}
             onLimitedClick={onLimitedClick}
             onSubmitTranscription={onSubmitTranscription}
             isSubtitlesEnabled={isSubtitlesEnabled}

@@ -90,7 +90,7 @@ interface ConversationCanvasProps {
 
   isVolumeOn: boolean;
   setIsVolumeOn: (value: boolean) => void;
-  isLimited: boolean;
+  isLimitedVoice: boolean;
   onLimitedClick: () => void;
   pointsEarned: number;
   openCommunityPage: () => void;
@@ -134,7 +134,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
   isVolumeOn,
   setIsVolumeOn,
-  isLimited,
+  isLimitedVoice,
   onLimitedClick,
   voice,
   messageOrder,
@@ -285,7 +285,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
           onWebCamDescription={onWebCamDescription}
           isVolumeOn={isVolumeOn}
           setIsVolumeOn={setIsVolumeOn}
-          isLimited={isLimited}
+          isLimitedVoice={isLimitedVoice}
           onLimitedClick={onLimitedClick}
           onSubmitTranscription={addUserMessage}
           isCompletedLesson={isCompletedLesson}
@@ -594,7 +594,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                         isAnalyzingResponse={isAnalyzingResponse}
                         isCallMode={isCallMode}
                         isChatMode={isChatMode}
-                        isLimited={isLimited}
                         toggleConversationMode={toggleConversationMode}
                         closeConversation={closeConversation}
                         closeMenus={closeMenus}
@@ -754,7 +753,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                       )}
                     </Stack>
 
-                    {(isRecording || isLimited || transcriptMessage) && (
+                    {(isRecording || isLimitedVoice || transcriptMessage) && (
                       <Stack
                         sx={{
                           width: 'max-content',
@@ -782,7 +781,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                           </Tooltip>
                         ) : (
                           <>
-                            {isLimited && (
+                            {isLimitedVoice && (
                               <Stack
                                 sx={{
                                   alignItems: 'flex-end',
