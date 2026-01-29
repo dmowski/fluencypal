@@ -57,20 +57,22 @@ export const GoalReview = ({
           paddingTop: '20px',
         }}
       >
-        <Avatar url={activeImageUrl} avatarSize="90px" />
         <Stack
           sx={{
-            alignItems: 'center',
+            flexDirection: 'row',
             width: '100%',
-            gap: '20px',
+            alignItems: 'center',
+            gap: '25px',
+            marginBottom: '20px',
+            justifyContent: 'space-between',
           }}
         >
           <Stack>
             <Typography
               variant="body1"
-              align="center"
               sx={{
-                opacity: 0.7,
+                opacity: 0.8,
+                fontSize: '15px',
                 textTransform: 'uppercase',
               }}
             >
@@ -79,18 +81,26 @@ export const GoalReview = ({
 
             <Typography
               variant="h5"
-              align="center"
               sx={{
-                fontWeight: 660,
+                fontWeight: 800,
+                fontSize: '32px',
                 lineHeight: '1.2',
-                paddingTop: '25px',
               }}
               className={isLoading ? 'loading-shimmer' : ''}
             >
               {isLoading ? i18n._('Loading..') : goalData?.title}
             </Typography>
           </Stack>
+          <Avatar url={activeImageUrl} avatarSize="60px" />
+        </Stack>
 
+        <Stack
+          sx={{
+            alignItems: 'center',
+            width: '100%',
+            gap: '20px',
+          }}
+        >
           <Stack
             sx={{
               width: '100%',
@@ -117,6 +127,11 @@ export const GoalReview = ({
                   const imageVariants = cardInfo.imgUrl;
                   const imageIndex = currentElementIndex % imageVariants.length;
                   const imageUrl = imageVariants[imageIndex];
+                  const isActive = index === 0;
+                  const onClickCard = () => {
+                    if (!isActive) return;
+                    onClick();
+                  };
                   return (
                     <Stack key={index} sx={{}}>
                       <PlanCard
@@ -126,13 +141,14 @@ export const GoalReview = ({
                         subTitle={modeLabels[planElement.mode]}
                         details={planElement.details}
                         isDone={false}
-                        isActive={false}
+                        isActive={isActive}
                         isContinueLabel={false}
-                        viewOnly
                         startColor={cardColor.startColor}
                         endColor={cardColor.endColor}
                         bgColor={cardColor.bgColor}
                         isLast={index === sortedElements.length - 1}
+                        onClick={onClickCard}
+                        viewOnly={!isActive}
                         icon={
                           <Stack>
                             <Stack className="avatar">
