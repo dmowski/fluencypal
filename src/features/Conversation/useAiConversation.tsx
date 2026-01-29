@@ -29,6 +29,9 @@ import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
 import { setGlobalConversationId } from '../Usage/globalConversationId';
 
+const LIMITED_MESSAGES_COUNT = 10;
+const LIMITED_VOICE_MESSAGES_COUNT = 6;
+
 const getVoiceInstructions = (voice: AiVoice): string => {
   const voiceAvatar = getAiVoiceByVoice(voice);
   const voiceInstructions = `## AI Voice
@@ -386,15 +389,17 @@ VISUAL_CONTEXT (latest): ${description}
 
   const access = useAccess();
   const isFullAppAccess = access.isFullAppAccess;
+
   const isLimitedRecording = isFullAppAccess
     ? false
-    : conversation.length >= 2 && ['role-play', 'talk'].includes(currentMode);
+    : conversation.length >= LIMITED_MESSAGES_COUNT && ['role-play', 'talk'].includes(currentMode);
 
   useEffect(() => {
     toggleMute(!isLimitedRecording);
   }, [isLimitedRecording]);
 
-  const isLimitedAiVoice = isFullAppAccess === false && conversation.length >= 2;
+  const isLimitedAiVoice =
+    isFullAppAccess === false && conversation.length >= LIMITED_VOICE_MESSAGES_COUNT;
 
   useEffect(() => {
     toggleVolume(!isLimitedAiVoice);
