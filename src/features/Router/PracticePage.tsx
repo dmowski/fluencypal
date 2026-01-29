@@ -89,11 +89,14 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     );
   }
 
-  const limitedConversations: ConversationType[] = ['role-play', 'talk'];
+  const limitedGeneralConversations: ConversationType[] = ['role-play', 'talk'];
   const isBlockedSendMessages = access.isFullAppAccess
     ? false
     : aiConversation.conversation.length >= 8 &&
-      limitedConversations.includes(aiConversation.currentMode);
+      limitedGeneralConversations.includes(aiConversation.currentMode);
+
+  const isLimitedVoiceMode =
+    access.isFullAppAccess === false && aiConversation.conversation.length >= 4;
 
   return (
     <Stack>
