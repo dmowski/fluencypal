@@ -36,7 +36,7 @@ export const ChatSection = ({
   const chat = useChat();
   const { i18n } = useLingui();
 
-  const [activeMessageId, setActiveMessageId] = useUrlState('post', '', false);
+  const [activeMessageId, setActiveMessageId] = useUrlState('post', '', true);
   const activeMessage = chat.messages.find((msg) => msg.id === activeMessageId);
 
   const messageToComment = useMemo(() => {

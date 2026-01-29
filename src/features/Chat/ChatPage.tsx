@@ -41,7 +41,7 @@ export const ChatPage = ({
   const game = useGame();
 
   const [activeChatId, setActiveChatId] = useUrlState<string>('activeChatId', '', false);
-  const [activePost, setActivePost] = useUrlState<string>('post', '', false);
+  const [activePost, setActivePost] = useUrlState<string>('post', '', true);
   const chatList = useChatList();
 
   const [sortMode, setSortMode] = useUrlState<ChartSortMode>('chatSortMode', 'all', false);

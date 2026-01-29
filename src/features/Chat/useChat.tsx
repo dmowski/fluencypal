@@ -90,7 +90,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
   const [messagesData, loading] = useCollectionData(messagesRef);
 
   const [activeCommentMessageId, setActiveCommentMessageId] = useState('');
-  const [activeMessageId, setActiveMessageId] = useUrlState('post', '', false);
+  const [activeMessageId, setActiveMessageId] = useUrlState('post', '', true);
 
   const initMetadataIfNeeded = async () => {
     if (metaData) {

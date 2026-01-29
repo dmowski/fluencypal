@@ -23,7 +23,7 @@ export const GlobalChatTabs = ({
   const auth = useAuth();
   const myReadStatsRef = db.documents.chatSpaceUserReadMetadata(auth.uid || '');
   const [myReadStatsData] = useDocumentData(myReadStatsRef);
-  const [activeChatPost] = useUrlState<string | null>('post', null, false);
+  const [activeChatPost] = useUrlState<string | null>('post', null, true);
 
   const unreadRepliesCount = useMemo(() => {
     const messages = chat.messages || [];
