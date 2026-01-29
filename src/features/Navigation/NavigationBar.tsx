@@ -186,63 +186,8 @@ export const NavigationBar: React.FC = () => {
                     : {}),
                 }}
               >
-                {isActive && (
-                  <>
-                    <Stack
-                      sx={{
-                        height: '1px',
-                        width: 'calc(100% + 20px)',
-                        position: 'absolute',
-                        bottom: '-1px',
-                        left: '-10px',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        overflow: 'hidden',
-                        opacity: 0.8,
-                      }}
-                    >
-                      <Stack
-                        sx={{
-                          height: '11px',
-                          width: '80%',
-                          filter: 'blur(18px)',
+                {isActive && <ActiveBottomBlur />}
 
-                          backgroundColor: activeColor,
-
-                          position: 'absolute',
-                          bottom: '-10px',
-                        }}
-                      />
-                    </Stack>
-
-                    <Stack
-                      sx={{
-                        pointerEvents: 'none',
-                        height: '40px',
-                        width: '100%',
-                        position: 'absolute',
-                        bottom: 0,
-                        overflow: 'hidden',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Stack
-                        sx={{
-                          height: '29px',
-                          borderRadius: '40px',
-                          top: '42px',
-                          filter: 'blur(15px)',
-                          opacity: 0.3,
-                          width: '100px',
-                          backgroundColor: activeColor,
-
-                          position: 'relative',
-                        }}
-                      />
-                    </Stack>
-                  </>
-                )}
                 <Link
                   href={`${appNavigation.pageUrl(item.name)}`}
                   onClick={(e) => e.preventDefault()}
@@ -315,5 +260,83 @@ export const NavigationBar: React.FC = () => {
         </Stack>
       </Stack>
     </Stack>
+  );
+};
+
+const ActiveBottomBlur: React.FC = () => {
+  return (
+    <>
+      <Stack
+        sx={{
+          height: '1px',
+          width: 'calc(100% + 20px)',
+          position: 'absolute',
+          bottom: '-1px',
+          left: '-10px',
+          alignItems: 'center',
+          justifyContent: 'center',
+          overflow: 'hidden',
+          opacity: 0.8,
+          '@media (max-width: 700px)': {
+            bottom: 'auto',
+            top: '-1px',
+            opacity: 1,
+          },
+        }}
+      >
+        <Stack
+          sx={{
+            height: '11px',
+            width: '80%',
+            filter: 'blur(18px)',
+
+            backgroundColor: activeColor,
+
+            position: 'absolute',
+            bottom: '-10px',
+          }}
+        />
+      </Stack>
+
+      <Stack
+        sx={{
+          pointerEvents: 'none',
+          height: '40px',
+          width: '100%',
+          position: 'absolute',
+          bottom: 0,
+          overflow: 'hidden',
+          alignItems: 'center',
+          justifyContent: 'center',
+          '@media (max-width: 700px)': {
+            bottom: 'auto',
+            top: '0px',
+            height: '100%',
+            justifyContent: 'flex-start',
+            zIndex: 21,
+          },
+        }}
+      >
+        <Stack
+          sx={{
+            height: '29px',
+            borderRadius: '40px',
+            top: '42px',
+            filter: 'blur(15px)',
+            opacity: 0.3,
+            width: '100px',
+            backgroundColor: activeColor,
+            position: 'relative',
+            '@media (max-width: 700px)': {
+              top: '-13px',
+              height: '10px',
+              width: '60px',
+              filter: 'blur(10px)',
+              opacity: 0.7,
+            },
+          }}
+        />
+      </Stack>
+    </>
   );
 };
