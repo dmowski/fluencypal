@@ -1,24 +1,27 @@
 import { scrollTopFast } from '@/libs/scroll';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useUrlStateContext } from './UrlStateContext';
 
 export const useUrlState = <T,>(paramName: string, defaultValue: T, scrollToTop: boolean) => {
-  const [internalValue, setInternalValue] = useState<T>(defaultValue);
+  const { urlStateMap, setUrlState } = useUrlStateContext();
   const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
   const urlPage = (searchParams.get(paramName) || defaultValue) as T;
   const router = useRouter();
 
+  const internalValue = (urlStateMap[paramName] ?? defaultValue) as T;
+
   useEffect(() => {
     if (urlPage !== internalValue) {
-      setInternalValue(urlPage);
+      setUrlState(paramName, urlPage);
     }
   }, [urlPage]);
 
   const setValue = async (value: T) => {
     if (value == internalValue) return;
 
-    setInternalValue(value);
+    setUrlState(paramName, value);
     const isDefault = value === defaultValue;
 
     return new Promise<void>((resolve) => {
