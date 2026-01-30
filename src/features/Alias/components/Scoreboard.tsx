@@ -58,11 +58,7 @@ export const Scoreboard: React.FC = () => {
     <Box sx={{ p: 2 }}>
       <Card sx={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
         <CardContent>
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{ mb: 2, fontWeight: 'bold' }}
-          >
+          <Typography variant="h5" component="h2" sx={{ mb: 2, fontWeight: 'bold' }}>
             Scoreboard
           </Typography>
 
@@ -70,16 +66,10 @@ export const Scoreboard: React.FC = () => {
             <Table>
               <TableHead sx={{ backgroundColor: '#f5f5f5' }}>
                 <TableRow>
-                  <TableCell
-                    sx={{ fontWeight: 'bold', width: '60%', pr: 1 }}
-                    align="left"
-                  >
+                  <TableCell sx={{ fontWeight: 'bold', width: '60%', pr: 1 }} align="left">
                     {isTeamsMode ? 'Team' : 'Player'}
                   </TableCell>
-                  <TableCell
-                    sx={{ fontWeight: 'bold', width: '40%', pr: 1 }}
-                    align="right"
-                  >
+                  <TableCell sx={{ fontWeight: 'bold', width: '40%', pr: 1 }} align="right">
                     Score
                   </TableCell>
                 </TableRow>
@@ -88,9 +78,7 @@ export const Scoreboard: React.FC = () => {
                 {scoresData.map((entry, index) => {
                   const isHighlight =
                     (isTeamsMode && entry.type === 'team' && entry.isCurrentTeam) ||
-                    (!isTeamsMode &&
-                      entry.type === 'player' &&
-                      entry.isCurrentPlayer);
+                    (!isTeamsMode && entry.type === 'player' && entry.isCurrentPlayer);
 
                   return (
                     <TableRow
@@ -103,9 +91,7 @@ export const Scoreboard: React.FC = () => {
                             ? 'white'
                             : '#fafafa',
                         '&:hover': {
-                          backgroundColor: isHighlight
-                            ? 'rgba(33, 150, 243, 0.15)'
-                            : '#f0f0f0',
+                          backgroundColor: isHighlight ? 'rgba(33, 150, 243, 0.15)' : '#f0f0f0',
                         },
                         transition: 'background-color 0.2s',
                       }}
@@ -122,12 +108,7 @@ export const Scoreboard: React.FC = () => {
                             {entry.name}
                           </Typography>
                           {isHighlight && (
-                            <Chip
-                              label="Now"
-                              size="small"
-                              color="primary"
-                              variant="outlined"
-                            />
+                            <Chip label="Now" size="small" color="primary" variant="outlined" />
                           )}
                         </Stack>
                       </TableCell>
@@ -150,10 +131,7 @@ export const Scoreboard: React.FC = () => {
             </Table>
           </TableContainer>
 
-          <Typography
-            variant="caption"
-            sx={{ mt: 2, display: 'block', color: '#666' }}
-          >
+          <Typography variant="caption" sx={{ mt: 2, display: 'block', color: '#666' }}>
             Round: {state.currentRound} / {state.settings?.numberOfRounds}
           </Typography>
 
