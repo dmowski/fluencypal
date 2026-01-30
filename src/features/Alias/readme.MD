@@ -4,6 +4,10 @@
 
 /e2e/alias.spec.ts
 
+### Implementation Plan
+
+src/features/Alias/implementationPlan.md
+
 ### Overview
 
 Create a responsive web application for playing an **Alias-style word explanation game in English**.
