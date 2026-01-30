@@ -47,9 +47,10 @@ const assignTeamsToPlayers = (players: Player[], teams: Team[]): Player[] => {
 
   return players.map((player, index) => ({
     ...player,
-    teamId: player.teamId && teams.some((t) => t.id === player.teamId)
-      ? player.teamId
-      : teams[index % teams.length].id,
+    teamId:
+      player.teamId && teams.some((t) => t.id === player.teamId)
+        ? player.teamId
+        : teams[index % teams.length].id,
   }));
 };
 
@@ -77,9 +78,7 @@ export const PlayersSetup = () => {
     let teams = baseSettings.teams;
 
     if (!players || players.length < MIN_PLAYERS) {
-      players = Array.from({ length: MIN_PLAYERS }, (_, index) =>
-        createPlayer(index + 1),
-      );
+      players = Array.from({ length: MIN_PLAYERS }, (_, index) => createPlayer(index + 1));
     }
 
     if (baseSettings.mode === 'teams') {
@@ -165,9 +164,7 @@ export const PlayersSetup = () => {
   const handleTeamNameChange = (teamId: string, name: string) => {
     if (!settings) return;
 
-    const updatedTeams = teams.map((team) =>
-      team.id === teamId ? { ...team, name } : team,
-    );
+    const updatedTeams = teams.map((team) => (team.id === teamId ? { ...team, name } : team));
 
     setSettings({ ...settings, teams: updatedTeams });
   };

@@ -96,5 +96,44 @@ test.describe('Alias Game', () => {
       await expect(page.getByTestId('player-team-0')).toBeVisible();
       await expect(page.getByTestId('player-team-1')).toBeVisible();
     });
+
+    test('navigates to language level on continue', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+
+      await page.getByTestId('players-continue').click();
+
+      await expect(page.getByTestId('language-level')).toBeVisible();
+    });
+  });
+
+  test.describe('Language Level', () => {
+    test('shows difficulty options and updates selection', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+
+      const simpleButton = page.getByTestId('language-simple');
+      const advancedButton = page.getByTestId('language-advanced');
+
+      await expect(simpleButton).toBeVisible();
+      await expect(advancedButton).toBeVisible();
+
+      await advancedButton.click();
+      await expect(advancedButton).toHaveAttribute('aria-pressed', 'true');
+
+      await simpleButton.click();
+      await expect(simpleButton).toHaveAttribute('aria-pressed', 'true');
+    });
+
+    test('navigates to category selection on continue', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+
+      await page.getByTestId('language-continue').click();
+
+      await expect(page.getByTestId('category-selection')).toBeVisible();
+    });
   });
 });

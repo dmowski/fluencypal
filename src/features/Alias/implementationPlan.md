@@ -140,22 +140,27 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 **Tasks:**
 
-- [ ] Create LanguageLevel component
-- [ ] Two buttons: "Simple" and "Advanced"
-- [ ] Display description of each level
-- [ ] Update game settings with selection
-- [ ] Back/Continue navigation
+- [x] Create LanguageLevel component
+- [x] Two buttons: "Simple" and "Advanced"
+- [x] Display description of each level
+- [x] Update game settings with selection
+- [x] Back/Continue navigation
 
-**Files to Create:**
+**Files Created:**
 
 - `src/features/Alias/components/LanguageLevel.tsx`
+- `src/features/Alias/components/CategorySelection.tsx` (placeholder)
+- Updated `src/features/Alias/AliasPage.tsx` to include new screens
+- Updated `e2e/alias.spec.ts` with language level tests
 
 **E2E Tests:**
 
-- Verify both difficulty options are displayed
-- Select "Simple" and verify state update
-- Select "Advanced" and verify state update
-- Verify back/continue navigation
+- ✓ Verify both difficulty options are displayed
+- ✓ Select "Simple" and verify selection state
+- ✓ Select "Advanced" and verify selection state
+- ✓ Verify back/continue navigation to category selection
+
+**Status:** COMPLETED
 
 ---
 
@@ -624,7 +629,7 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 ---
 
-## Current Status: Phase 4 Complete ✓
+## Current Status: Phase 5 Complete ✓
 
 **Completed Phases:**
 
@@ -632,5 +637,6 @@ Building a responsive web-based Alias word guessing game for English learning. T
 - ✓ Phase 2: Game State Management & Data Models
 - ✓ Phase 3: Mode Selection Screen
 - ✓ Phase 4: Players Setup Screen
+- ✓ Phase 5: Language Level Selection
 
-**Next Step:** Phase 5 - Language Level Selection
+**Next Step:** Phase 6 - Category Selection
