@@ -211,50 +211,55 @@ const AccessSelector = ({
                 ]
           }
         />
-
-        {isFullAccess && (
-          <Stack
-            sx={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: '8px',
-              backgroundColor: 'rgba(255, 255, 245, 0.02)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              color: '#fff',
-              padding: '5px 10px 5px 10px',
-              borderRadius: '8px',
-              width: 'fit-content',
-            }}
-            component={'span'}
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsShowRefundPolicy(!isShowRefundPolicy);
-            }}
-          >
-            <ShieldCheck size={21} color="rgb(231, 235, 252)" />
-            <Typography
-              variant="caption"
+        <Stack
+          sx={{
+            gap: '10px',
+          }}
+        >
+          {isFullAccess && (
+            <Stack
               sx={{
-                fontWeight: 500,
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: '8px',
+                backgroundColor: 'rgba(255, 255, 245, 0.02)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#fff',
+                padding: '5px 10px 5px 10px',
+                borderRadius: '8px',
+                width: 'fit-content',
+              }}
+              component={'span'}
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsShowRefundPolicy(!isShowRefundPolicy);
               }}
             >
-              {i18n._('Refund guarantee')}
+              <ShieldCheck size={21} color="rgb(231, 235, 252)" />
+              <Typography
+                variant="caption"
+                sx={{
+                  fontWeight: 500,
+                }}
+              >
+                {i18n._('Refund guarantee')}
+              </Typography>
+              {isShowRefundPolicy ? <ChevronUp /> : <ChevronDown />}
+            </Stack>
+          )}
+          {isShowRefundPolicy && isFullAccess && (
+            <Typography
+              variant="body1"
+              sx={{
+                color: 'rgba(255, 255, 255, 1)',
+              }}
+            >
+              {i18n._(
+                'If it doesn’t feel like the right fit for you, you can request a refund from your Profile → Payment history. No stress, no complicated steps.',
+              )}
             </Typography>
-            {isShowRefundPolicy ? <ChevronUp /> : <ChevronDown />}
-          </Stack>
-        )}
-        {isShowRefundPolicy && isFullAccess && (
-          <Typography
-            variant="body1"
-            sx={{
-              color: 'rgba(255, 255, 255, 1)',
-            }}
-          >
-            {i18n._(
-              'If it doesn’t feel like the right fit for you, you can request a refund from your Profile → Payment history. No stress, no complicated steps.',
-            )}
-          </Typography>
-        )}
+          )}
+        </Stack>
       </Stack>
     </Stack>
   );
