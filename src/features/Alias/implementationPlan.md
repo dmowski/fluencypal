@@ -67,28 +67,36 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 ---
 
-### Phase 3: Mode Selection Screen
+### Phase 3: Mode Selection Screen ✓
 
 **Goal:** Allow users to choose between Free-for-all and Teams mode
 
 **Tasks:**
 
-- [ ] Create ModeSelection component
-- [ ] Add two large buttons: "Free-for-all" and "Teams"
-- [ ] Update game state when mode is selected
-- [ ] Navigate to Players Setup on selection
-- [ ] Responsive design for mobile and desktop
+- [x] Create ModeSelection component
+- [x] Add two large buttons: "Free-for-all" and "Teams"
+- [x] Update game state when mode is selected
+- [x] Navigate to Players Setup on selection
+- [x] Responsive design for mobile and desktop
+- [x] Add icons and descriptions for each mode
+- [x] Touch-friendly button sizes (verified in tests)
 
-**Files to Create:**
+**Files Created:**
 
-- `src/features/Alias/components/ModeSelection.tsx`
+- ✓ `src/features/Alias/components/ModeSelection.tsx`
+- ✓ `src/features/Alias/components/PlayersSetup.tsx` (placeholder)
+- ✓ Updated `src/features/Alias/AliasPage.tsx` with screen routing
 
 **E2E Tests:**
 
-- Verify mode selection screen displays both options
-- Click "Free-for-all" button and verify state update
-- Click "Teams" button and verify state update
-- Verify navigation to next step occurs
+- ✓ Verify mode selection screen displays both options
+- ✓ Click "Free-for-all" button and verify navigation
+- ✓ Click "Teams" button and verify navigation
+- ✓ Verify button text and descriptions
+- ✓ Verify responsive design on mobile viewport (375x667)
+- ✓ Verify touch-friendly button sizes (>44px)
+
+**Status:** COMPLETED
 
 ---
 
@@ -617,7 +625,15 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 ---
 
-## Current Status: Phase 2 Complete ✓
+## Current Status: Phase 3 Complete ✓
+
+**Completed Phases:**
+
+- ✓ Phase 1: Project Setup & Basic Routing
+- ✓ Phase 2: Game State Management & Data Models
+- ✓ Phase 3: Mode Selection Screen
+
+**Next Step:** Phase 4 - Players Setup Screen
 
 **Completed Phases:**
 
