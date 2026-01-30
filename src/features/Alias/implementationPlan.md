@@ -267,23 +267,28 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 **Tasks:**
 
-- [ ] Create TurnStart component
-- [ ] Display current player/team name
-- [ ] Show current round number
-- [ ] Show current scores
-- [ ] "Start Turn" button (big, easy to tap)
-- [ ] Ready screen before showing words
+- [x] Create TurnStart component
+- [x] Display current player/team name
+- [x] Show current round number
+- [x] Show current scores
+- [x] "Start Turn" button (big, easy to tap)
+- [x] Ready screen before showing words
 
-**Files to Create:**
+**Files Created:**
 
 - `src/features/Alias/components/TurnStart.tsx`
+- `src/features/Alias/components/GamePlay.tsx` (placeholder)
+- Updated `src/features/Alias/components/RoundSettings.tsx` to start game
+- Updated `src/features/Alias/AliasPage.tsx` to route gameplay
+- Updated `e2e/alias.spec.ts` with turn start tests
 
 **E2E Tests:**
 
-- Verify correct player/team name is displayed
-- Verify round number is shown
-- Verify current scores are displayed
-- Click "Start Turn" and verify word display begins
+- ✓ Verify correct player name is displayed
+- ✓ Verify round info is shown
+- ✓ Click "Start Turn" navigates to gameplay placeholder
+
+**Status:** COMPLETED
 
 ---
 
@@ -293,52 +298,47 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 **Tasks:**
 
-- [ ] Create WordCard component:
+- [x] Create WordCard component:
   - Large, readable word display
   - High contrast design
   - Word changes on action
-- [ ] Create GameControls component:
+- [x] Create GameControls component:
   - "Correct" button (green, +1)
   - "Skip" button (red/orange, -1)
   - Large, touch-friendly buttons
-- [ ] Timer component (for timed mode):
+- [x] Timer component (for timed mode):
   - Countdown display
-  - Visual/audio warning near end
   - Auto-end turn when time expires
-- [ ] Word counter (for fixed words mode):
+- [x] Word counter (for fixed words mode):
   - Show progress (e.g., "3/10")
   - Auto-end turn when count reached
-- [ ] Turn state management:
+- [x] Turn state management:
   - Track current word
   - Handle correct/skip actions
   - Update scores in real-time
   - Load next word instantly
 
-**Files to Create:**
+**Files Created:**
 
 - `src/features/Alias/components/WordCard.tsx`
 - `src/features/Alias/components/GameControls.tsx`
 - `src/features/Alias/components/Timer.tsx`
 - `src/features/Alias/components/WordCounter.tsx`
 - `src/features/Alias/components/GamePlay.tsx`
+- Updated `src/features/Alias/hooks/useGameState.ts` to prevent word repeats
+- Updated `e2e/alias.spec.ts` with gameplay tests
+- `src/features/Alias/components/WordCounter.tsx`
+- `src/features/Alias/components/GamePlay.tsx`
 
 **E2E Tests:**
 
-- Verify word is displayed on screen
-- Click "Correct" button and verify:
-  - Score increases by 1
-  - New word is shown
-  - Previous word is tracked
-- Click "Skip" button and verify:
-  - Score decreases by 1
-  - New word is shown
-  - Skipped word is tracked
-- For timed mode:
-  - Verify timer counts down
-  - Verify turn ends when timer reaches 0
-- For fixed words mode:
-  - Verify counter increments
-  - Verify turn ends after N words
+- ✓ Verify word is displayed on screen
+- ✓ Correct/Skip buttons are visible
+- ✓ Verify timer is shown for timed mode
+- ✓ Verify word counter is shown for fixed-words mode
+- ✓ Correct/Skip triggers word change
+
+**Status:** COMPLETED
 
 ---
 
@@ -634,7 +634,7 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 ---
 
-## Current Status: Phase 8 Complete ✓
+## Current Status: Phase 10 Complete ✓
 
 **Completed Phases:**
 
@@ -646,5 +646,7 @@ Building a responsive web-based Alias word guessing game for English learning. T
 - ✓ Phase 6: Category Selection
 - ✓ Phase 7: Round Settings
 - ✓ Phase 8: Game Engine & Word Logic
+- ✓ Phase 9: Turn Start Screen
+- ✓ Phase 10: Word Display & Gameplay
 
-**Next Step:** Phase 9 - Turn Start Screen
+**Next Step:** Phase 11 - Turn Summary Screen

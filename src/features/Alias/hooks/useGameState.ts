@@ -11,7 +11,7 @@ import {
   initialGameSettings,
 } from '../types';
 import { categories } from '../data/categories';
-import { buildInitialWordPool, pickNextWord } from '../utils/gameEngine';
+import { buildInitialWordPool, pickNextWord, appendWordUsage } from '../utils/gameEngine';
 
 export const useGameState = () => {
   const { state, dispatch } = useGame();
@@ -123,7 +123,13 @@ export const useGameState = () => {
     dispatch({ type: 'RECORD_ACTION', payload: action });
 
     // Get and set next word
-    const nextWord = getNextWord();
+    const { usedWords, skippedWords } = appendWordUsage(
+      state.usedWords,
+      state.skippedWords,
+      word,
+      'correct',
+    );
+    const nextWord = pickNextWord(state.availableWords, usedWords, skippedWords);
     if (nextWord) {
       dispatch({ type: 'NEXT_WORD', payload: nextWord });
     }
@@ -138,7 +144,13 @@ export const useGameState = () => {
     dispatch({ type: 'RECORD_ACTION', payload: action });
 
     // Get and set next word
-    const nextWord = getNextWord();
+    const { usedWords, skippedWords } = appendWordUsage(
+      state.usedWords,
+      state.skippedWords,
+      word,
+      'skip',
+    );
+    const nextWord = pickNextWord(state.availableWords, usedWords, skippedWords);
     if (nextWord) {
       dispatch({ type: 'NEXT_WORD', payload: nextWord });
     }

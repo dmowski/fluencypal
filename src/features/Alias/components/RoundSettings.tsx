@@ -18,7 +18,7 @@ const wordCountOptions = [5, 10, 15];
 const roundOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export const RoundSettings = () => {
-  const { state, updateSettings, setScreen } = useGameState();
+  const { state, updateSettings, setScreen, startGame } = useGameState();
 
   const turnSettings = state.settings?.turnSettings ?? initialGameSettings.turnSettings;
   const numberOfRounds = state.settings?.numberOfRounds ?? initialGameSettings.numberOfRounds;
@@ -85,7 +85,11 @@ export const RoundSettings = () => {
   };
 
   const handleStart = () => {
-    setScreen('turn-start');
+    if (!state.settings) {
+      setScreen('turn-start');
+      return;
+    }
+    startGame();
   };
 
   return (

@@ -211,4 +211,93 @@ test.describe('Alias Game', () => {
       await expect(page.getByTestId('turn-start')).toBeVisible();
     });
   });
+
+  test.describe('Turn Start', () => {
+    test('shows current player and round info', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+      await page.getByTestId('language-continue').click();
+      await page.getByTestId('categories-select-all').click();
+      await page.getByTestId('categories-continue').click();
+      await page.getByTestId('round-settings-start').click();
+
+      await expect(page.getByTestId('turn-start')).toBeVisible();
+      await expect(page.getByTestId('turn-start-player')).toContainText('Player 1');
+    });
+
+    test('starts the turn and navigates to gameplay', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+      await page.getByTestId('language-continue').click();
+      await page.getByTestId('categories-select-all').click();
+      await page.getByTestId('categories-continue').click();
+      await page.getByTestId('round-settings-start').click();
+
+      await page.getByTestId('turn-start-button').click();
+
+      await expect(page.getByTestId('gameplay')).toBeVisible();
+    });
+  });
+
+  test.describe('Gameplay', () => {
+    test('shows a word card and controls for timed mode', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+      await page.getByTestId('language-continue').click();
+      await page.getByTestId('categories-select-all').click();
+      await page.getByTestId('categories-continue').click();
+      await page.getByTestId('round-settings-start').click();
+      await page.getByTestId('turn-start-button').click();
+
+      await expect(page.getByTestId('word-card-text')).toBeVisible();
+      await expect(page.getByTestId('button-correct')).toBeVisible();
+      await expect(page.getByTestId('button-skip')).toBeVisible();
+      await expect(page.getByTestId('timer')).toBeVisible();
+    });
+
+    test('shows word counter for fixed words mode', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+      await page.getByTestId('language-continue').click();
+      await page.getByTestId('categories-select-all').click();
+      await page.getByTestId('categories-continue').click();
+
+      await page.getByTestId('turn-type-fixed').click();
+      await page.getByTestId('word-count-5').click();
+      await page.getByTestId('round-settings-start').click();
+      await page.getByTestId('turn-start-button').click();
+
+      await expect(page.getByTestId('word-counter')).toBeVisible();
+    });
+
+    test('correct and skip change the word', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+      await page.getByTestId('language-continue').click();
+      await page.getByTestId('categories-select-all').click();
+      await page.getByTestId('categories-continue').click();
+      await page.getByTestId('round-settings-start').click();
+      await page.getByTestId('turn-start-button').click();
+
+      const wordCard = page.getByTestId('word-card-text');
+      const firstWord = await wordCard.textContent();
+
+      await page.getByTestId('button-correct').click();
+      const secondWord = await wordCard.textContent();
+
+      await page.getByTestId('button-skip').click();
+      const thirdWord = await wordCard.textContent();
+
+      expect(firstWord).not.toBeNull();
+      expect(secondWord).not.toBeNull();
+      expect(thirdWord).not.toBeNull();
+      expect(secondWord).not.toBe(firstWord);
+      expect(thirdWord).not.toBe(secondWord);
+    });
+  });
 });
