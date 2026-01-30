@@ -1,5 +1,9 @@
 ## Alias Game Web App (English Learning)
 
+### E2E tests
+
+/e2e/alias.spec.ts
+
 ### Overview
 
 Create a responsive web application for playing an **Alias-style word explanation game in English**.
