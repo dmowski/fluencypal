@@ -1,7 +1,15 @@
 'use client';
 
 import { useGame } from '../context/GameContext';
-import { GameScreen, GameSettings, Player, Team, TurnState, WordAction } from '../types';
+import {
+  GameScreen,
+  GameSettings,
+  Player,
+  Team,
+  TurnState,
+  WordAction,
+  initialGameSettings,
+} from '../types';
 import { getWordsFromCategories } from '../data/categories';
 
 export const useGameState = () => {
@@ -18,6 +26,12 @@ export const useGameState = () => {
   };
 
   const updateSettings = (partialSettings: Partial<GameSettings>) => {
+    if (!state.settings) {
+      const baseSettings = initialGameSettings as GameSettings;
+      dispatch({ type: 'SET_SETTINGS', payload: { ...baseSettings, ...partialSettings } });
+      return;
+    }
+
     dispatch({ type: 'UPDATE_SETTINGS', payload: partialSettings });
   };
 

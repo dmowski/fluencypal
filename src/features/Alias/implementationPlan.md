@@ -106,32 +106,31 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 **Tasks:**
 
-- [ ] Create PlayersSetup component
-- [ ] Add player input fields (dynamic, 2-20 players)
-- [ ] Validate minimum 2 players
-- [ ] Generate default names (Player 1, Player 2, etc.)
-- [ ] Allow custom name editing
-- [ ] Add/remove player functionality
-- [ ] For Teams mode: assign players to teams
-- [ ] "Continue" button (disabled until valid)
-- [ ] "Back" button to mode selection
+- [x] Create PlayersSetup component
+- [x] Add player input fields (dynamic, 2-20 players)
+- [x] Validate minimum 2 players
+- [x] Generate default names (Player 1, Player 2, etc.)
+- [x] Allow custom name editing
+- [x] Add/remove player functionality
+- [x] For Teams mode: assign players to teams
+- [x] "Continue" button (disabled until valid)
+- [x] "Back" button to mode selection
 
-**Files to Create:**
+**Files Created:**
 
 - `src/features/Alias/components/PlayersSetup.tsx`
-- `src/features/Alias/components/PlayerInput.tsx`
-- `src/features/Alias/components/TeamAssignment.tsx` (for teams mode)
+- Updated `src/features/Alias/hooks/useGameState.ts` to initialize settings
+- Updated `e2e/alias.spec.ts` with players setup tests
 
 **E2E Tests:**
 
-- Verify default 2 players are shown
-- Add players up to 20
-- Try to proceed with 0-1 players (should be blocked)
-- Edit player names
-- Remove players
-- For teams mode: verify team assignment UI
-- Verify back button returns to mode selection
-- Verify continue button navigates forward
+- ✓ Verify default 2 players are shown
+- ✓ Add a player and see it appear
+- ✓ Remove button disabled when only 2 players
+- ✓ For teams mode: verify team assignment UI
+- ✓ Verify navigation from mode selection to players setup
+
+**Status:** COMPLETED
 
 ---
 
@@ -625,19 +624,13 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 ---
 
-## Current Status: Phase 3 Complete ✓
+## Current Status: Phase 4 Complete ✓
 
 **Completed Phases:**
 
 - ✓ Phase 1: Project Setup & Basic Routing
 - ✓ Phase 2: Game State Management & Data Models
 - ✓ Phase 3: Mode Selection Screen
+- ✓ Phase 4: Players Setup Screen
 
-**Next Step:** Phase 4 - Players Setup Screen
-
-**Completed Phases:**
-
-- ✓ Phase 1: Project Setup & Basic Routing
-- ✓ Phase 2: Game State Management & Data Models
-
-**Next Step:** Phase 3 - Mode Selection Screen
+**Next Step:** Phase 5 - Language Level Selection

@@ -33,9 +33,7 @@ test.describe('Alias Game', () => {
       const freeForAllButton = page.getByTestId('mode-free-for-all');
       await freeForAllButton.click();
 
-      // After clicking, the mode selection should disappear
-      // (In the future, we'll check for players setup screen)
-      await expect(freeForAllButton).not.toBeVisible();
+      await expect(page.getByTestId('players-setup')).toBeVisible();
     });
 
     test('navigates to players setup when Teams is selected', async ({ page }) => {
@@ -44,8 +42,7 @@ test.describe('Alias Game', () => {
       const teamsButton = page.getByTestId('mode-teams');
       await teamsButton.click();
 
-      // After clicking, the mode selection should disappear
-      await expect(teamsButton).not.toBeVisible();
+      await expect(page.getByTestId('players-setup')).toBeVisible();
     });
 
     test('is responsive on mobile viewport', async ({ page }) => {
@@ -65,6 +62,39 @@ test.describe('Alias Game', () => {
 
       expect(freeForAllBox?.height).toBeGreaterThanOrEqual(44);
       expect(teamsBox?.height).toBeGreaterThanOrEqual(44);
+    });
+  });
+
+  test.describe('Players Setup', () => {
+    test('shows two default players and disables removing below minimum', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+
+      await expect(page.getByTestId('player-name-0')).toBeVisible();
+      await expect(page.getByTestId('player-name-1')).toBeVisible();
+
+      const removeFirst = page.getByTestId('player-remove-0');
+      await expect(removeFirst).toBeDisabled();
+    });
+
+    test('allows adding a player', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+
+      await page.getByTestId('add-player').click();
+
+      await expect(page.getByTestId('player-name-2')).toBeVisible();
+    });
+
+    test('shows team assignment controls in teams mode', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-teams').click();
+
+      await expect(page.getByTestId('team-name-0')).toBeVisible();
+      await expect(page.getByTestId('team-name-1')).toBeVisible();
+
+      await expect(page.getByTestId('player-team-0')).toBeVisible();
+      await expect(page.getByTestId('player-team-1')).toBeVisible();
     });
   });
 });
