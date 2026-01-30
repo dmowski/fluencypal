@@ -72,7 +72,7 @@ export const TurnStart = () => {
             data-testid="turn-start-player"
             textAlign="center"
           >
-            {isTeamsMode ? team?.name ?? 'Team' : player?.name ?? 'Player'}
+            {isTeamsMode ? (team?.name ?? 'Team') : (player?.name ?? 'Player')}
           </Typography>
           {isTeamsMode && player && (
             <Typography variant="body1" color="text.secondary">
