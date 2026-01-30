@@ -1,0 +1,295 @@
+'use client';
+
+import { useGame } from '../context/GameContext';
+import { GameScreen, GameSettings, Player, Team, TurnState, WordAction } from '../types';
+import { getWordsFromCategories } from '../data/categories';
+
+export const useGameState = () => {
+  const { state, dispatch } = useGame();
+
+  // Navigation
+  const setScreen = (screen: GameScreen) => {
+    dispatch({ type: 'SET_SCREEN', payload: screen });
+  };
+
+  // Settings management
+  const setSettings = (settings: GameSettings) => {
+    dispatch({ type: 'SET_SETTINGS', payload: settings });
+  };
+
+  const updateSettings = (partialSettings: Partial<GameSettings>) => {
+    dispatch({ type: 'UPDATE_SETTINGS', payload: partialSettings });
+  };
+
+  // Player management
+  const addPlayer = (player: Player) => {
+    dispatch({ type: 'ADD_PLAYER', payload: player });
+  };
+
+  const removePlayer = (playerId: string) => {
+    dispatch({ type: 'REMOVE_PLAYER', payload: playerId });
+  };
+
+  const updatePlayer = (player: Player) => {
+    dispatch({ type: 'UPDATE_PLAYER', payload: player });
+  };
+
+  // Team management
+  const addTeam = (team: Team) => {
+    dispatch({ type: 'ADD_TEAM', payload: team });
+  };
+
+  const updateTeam = (team: Team) => {
+    dispatch({ type: 'UPDATE_TEAM', payload: team });
+  };
+
+  // Game flow
+  const startGame = () => {
+    if (!state.settings) return;
+
+    const words = getWordsFromCategories(
+      state.settings.selectedCategoryIds,
+      state.settings.languageLevel,
+    );
+
+    // Shuffle words
+    const shuffledWords = [...words].sort(() => Math.random() - 0.5);
+
+    dispatch({ type: 'START_GAME', payload: { words: shuffledWords } });
+    dispatch({ type: 'START_ROUND' });
+  };
+
+  const startRound = () => {
+    dispatch({ type: 'START_ROUND' });
+  };
+
+  const startTurn = (playerId: string, teamId?: string) => {
+    const turn: TurnState = {
+      playerId,
+      teamId,
+      currentWord: '',
+      wordsShown: [],
+      actions: [],
+      correctCount: 0,
+      skipCount: 0,
+      score: 0,
+      startTime: Date.now(),
+      isActive: true,
+    };
+
+    dispatch({ type: 'START_TURN', payload: turn });
+  };
+
+  const endTurn = () => {
+    dispatch({ type: 'END_TURN' });
+  };
+
+  const endRound = () => {
+    dispatch({ type: 'END_ROUND' });
+  };
+
+  const endGame = (winner: string) => {
+    dispatch({ type: 'END_GAME', payload: { winner } });
+  };
+
+  const resetGame = () => {
+    dispatch({ type: 'RESET_GAME' });
+  };
+
+  // Word management
+  const getNextWord = (): string | null => {
+    const usedWordsSet = new Set(state.usedWords);
+    const skippedWordsSet = new Set(state.skippedWords);
+
+    // First, try to get a word that hasn't been used
+    const unusedWords = state.availableWords.filter((word) => !usedWordsSet.has(word));
+
+    if (unusedWords.length > 0) {
+      return unusedWords[Math.floor(Math.random() * unusedWords.length)];
+    }
+
+    // If all words have been used, try skipped words
+    const availableSkippedWords = state.availableWords.filter((word) => skippedWordsSet.has(word));
+
+    if (availableSkippedWords.length > 0) {
+      return availableSkippedWords[Math.floor(Math.random() * availableSkippedWords.length)];
+    }
+
+    // No words available
+    return null;
+  };
+
+  const setCurrentWord = (word: string) => {
+    dispatch({ type: 'SET_CURRENT_WORD', payload: word });
+  };
+
+  const recordCorrect = (word: string) => {
+    const action: WordAction = {
+      word,
+      action: 'correct',
+      timestamp: Date.now(),
+    };
+    dispatch({ type: 'RECORD_ACTION', payload: action });
+
+    // Get and set next word
+    const nextWord = getNextWord();
+    if (nextWord) {
+      dispatch({ type: 'NEXT_WORD', payload: nextWord });
+    }
+  };
+
+  const recordSkip = (word: string) => {
+    const action: WordAction = {
+      word,
+      action: 'skip',
+      timestamp: Date.now(),
+    };
+    dispatch({ type: 'RECORD_ACTION', payload: action });
+
+    // Get and set next word
+    const nextWord = getNextWord();
+    if (nextWord) {
+      dispatch({ type: 'NEXT_WORD', payload: nextWord });
+    }
+  };
+
+  // Getters
+  const getCurrentTurn = (): TurnState | null => {
+    const currentRound = state.rounds[state.rounds.length - 1];
+    if (!currentRound) return null;
+
+    const currentTurn = currentRound.turns[currentRound.turns.length - 1];
+    return currentTurn || null;
+  };
+
+  const getCurrentPlayer = (): Player | null => {
+    if (!state.settings) return null;
+
+    const currentTurn = getCurrentTurn();
+    if (!currentTurn) {
+      // Determine whose turn it should be
+      const totalPlayers = state.settings.players.length;
+      const playerIndex = state.currentTurnIndex % totalPlayers;
+      return state.settings.players[playerIndex];
+    }
+
+    return state.settings.players.find((p) => p.id === currentTurn.playerId) || null;
+  };
+
+  const getCurrentTeam = (): Team | null => {
+    if (!state.settings || state.settings.mode !== 'teams') return null;
+
+    const currentTurn = getCurrentTurn();
+    if (!currentTurn || !currentTurn.teamId) return null;
+
+    return state.settings.teams.find((t) => t.id === currentTurn.teamId) || null;
+  };
+
+  const getScores = (): { playerId: string; score: number }[] => {
+    if (!state.settings) return [];
+
+    const scores = state.settings.players.map((player) => {
+      let totalScore = 0;
+
+      state.rounds.forEach((round) => {
+        round.turns.forEach((turn) => {
+          if (turn.playerId === player.id) {
+            totalScore += turn.score;
+          }
+        });
+      });
+
+      return { playerId: player.id, score: totalScore };
+    });
+
+    return scores;
+  };
+
+  const getTeamScores = (): { teamId: string; score: number }[] => {
+    if (!state.settings || state.settings.mode !== 'teams') return [];
+
+    const scores = state.settings.teams.map((team) => {
+      let totalScore = 0;
+
+      state.rounds.forEach((round) => {
+        round.turns.forEach((turn) => {
+          if (turn.teamId === team.id) {
+            totalScore += turn.score;
+          }
+        });
+      });
+
+      return { teamId: team.id, score: totalScore };
+    });
+
+    return scores;
+  };
+
+  const getWinner = (): { type: 'player' | 'team'; id: string } | null => {
+    if (!state.settings) return null;
+
+    if (state.settings.mode === 'teams') {
+      const teamScores = getTeamScores();
+      if (teamScores.length === 0) return null;
+
+      const winner = teamScores.reduce((prev, current) =>
+        current.score > prev.score ? current : prev,
+      );
+
+      return { type: 'team', id: winner.teamId };
+    } else {
+      const playerScores = getScores();
+      if (playerScores.length === 0) return null;
+
+      const winner = playerScores.reduce((prev, current) =>
+        current.score > prev.score ? current : prev,
+      );
+
+      return { type: 'player', id: winner.playerId };
+    }
+  };
+
+  return {
+    // State
+    state,
+
+    // Navigation
+    setScreen,
+
+    // Settings
+    setSettings,
+    updateSettings,
+
+    // Players
+    addPlayer,
+    removePlayer,
+    updatePlayer,
+
+    // Teams
+    addTeam,
+    updateTeam,
+
+    // Game flow
+    startGame,
+    startRound,
+    startTurn,
+    endTurn,
+    endRound,
+    endGame,
+    resetGame,
+
+    // Words
+    getNextWord,
+    setCurrentWord,
+    recordCorrect,
+    recordSkip,
+
+    // Getters
+    getCurrentTurn,
+    getCurrentPlayer,
+    getCurrentTeam,
+    getScores,
+    getTeamScores,
+    getWinner,
+  };
+};
