@@ -395,7 +395,7 @@ VISUAL_CONTEXT (latest): ${description}
     : conversation.length >= LIMITED_MESSAGES_COUNT && ['role-play', 'talk'].includes(currentMode);
 
   useEffect(() => {
-    toggleMute(!isLimitedRecording);
+    toggleMute(isLimitedRecording);
   }, [isLimitedRecording]);
 
   const isLimitedAiVoice =
