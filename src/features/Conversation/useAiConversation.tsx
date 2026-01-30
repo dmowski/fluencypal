@@ -402,7 +402,14 @@ VISUAL_CONTEXT (latest): ${description}
     isFullAppAccess === false && conversation.length >= LIMITED_VOICE_MESSAGES_COUNT;
 
   useEffect(() => {
-    toggleVolume(!isLimitedAiVoice);
+    if (isLimitedAiVoice) {
+      toggleVolume(false);
+      communicatorRef.current?.lockVolume();
+      return;
+    } else {
+      communicatorRef.current?.unlockVolume();
+      toggleVolume(!isLimitedAiVoice);
+    }
   }, [isLimitedAiVoice]);
 
   useEffect(() => {
