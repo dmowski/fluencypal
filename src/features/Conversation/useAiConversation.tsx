@@ -756,7 +756,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       const isPremiumUser = premiumUsers.includes(auth.uid || '');
 
       // Talk Mode and only for premium users
-      const isUseRealtime = access.isFullAppAccess;
+      const isUseRealtime = modesToUseRrc.includes(input.mode) && access.isFullAppAccess;
 
       // any other users
       const isUseVad = !isUseRealtime;
