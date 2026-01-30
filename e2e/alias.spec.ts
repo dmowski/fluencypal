@@ -302,7 +302,9 @@ test.describe('Alias Game', () => {
   });
 
   test.describe('Turn Summary', () => {
-    test('shows accurate counts, score, and total scores after a fixed-words turn', async ({ page }) => {
+    test('shows accurate counts, score, and total scores after a fixed-words turn', async ({
+      page,
+    }) => {
       await page.goto('/alias');
       await page.getByTestId('mode-free-for-all').click();
       await page.getByTestId('players-continue').click();

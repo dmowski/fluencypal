@@ -23,7 +23,9 @@ export const TurnSummary = () => {
 
   const correctWords = useMemo(() => {
     if (!turn) return [];
-    return turn.actions.filter((action) => action.action === 'correct').map((action) => action.word);
+    return turn.actions
+      .filter((action) => action.action === 'correct')
+      .map((action) => action.word);
   }, [turn]);
 
   const scoreEntries = useMemo(() => {
@@ -60,10 +62,8 @@ export const TurnSummary = () => {
     );
   }
 
-  const playerName =
-    state.settings?.players.find((p) => p.id === turn.playerId)?.name ?? 'Player';
-  const teamName =
-    state.settings?.teams.find((t) => t.id === turn.teamId)?.name ?? 'Team';
+  const playerName = state.settings?.players.find((p) => p.id === turn.playerId)?.name ?? 'Player';
+  const teamName = state.settings?.teams.find((t) => t.id === turn.teamId)?.name ?? 'Team';
 
   const playerLabel = isTeamsMode ? teamName : playerName;
 
@@ -74,7 +74,12 @@ export const TurnSummary = () => {
           <Typography variant="h4" fontWeight="bold" textAlign="center">
             Turn Summary
           </Typography>
-          <Typography variant="body1" color="text.secondary" textAlign="center" data-testid="turn-summary-player">
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            textAlign="center"
+            data-testid="turn-summary-player"
+          >
             {playerLabel}
           </Typography>
         </Stack>
@@ -123,7 +128,10 @@ export const TurnSummary = () => {
 
         <Divider />
 
-        <Accordion expanded={showCorrectWords} onChange={() => setShowCorrectWords((prev) => !prev)}>
+        <Accordion
+          expanded={showCorrectWords}
+          onChange={() => setShowCorrectWords((prev) => !prev)}
+        >
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant="subtitle1" fontWeight="medium">
               Correct words ({correctWords.length})
@@ -175,7 +183,12 @@ export const TurnSummary = () => {
           </Stack>
         </Stack>
 
-        <Button variant="contained" size="large" onClick={handleNextTurn} data-testid="turn-summary-next">
+        <Button
+          variant="contained"
+          size="large"
+          onClick={handleNextTurn}
+          data-testid="turn-summary-next"
+        >
           Next Turn
         </Button>
       </Stack>
