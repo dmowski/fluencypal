@@ -8,7 +8,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { Check, Keyboard, Lightbulb, LogOut } from 'lucide-react';
+import { Check, Gem, Keyboard, Lightbulb, LogOut } from 'lucide-react';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import { ConversationMode } from '@/common/user';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
@@ -28,6 +28,8 @@ export const RecordingCanvasMenu = ({
   toggleConversationMode,
   closeConversation,
   closeMenus,
+  isLimited,
+  onOpenPaywall,
 }: {
   anchorElUser: HTMLElement | null;
   setAnchorElUser: (el: HTMLElement | null) => void;
@@ -40,6 +42,8 @@ export const RecordingCanvasMenu = ({
   toggleConversationMode: (mode: ConversationMode) => void;
   closeConversation: () => void;
   closeMenus: () => void;
+  isLimited: boolean;
+  onOpenPaywall: () => void;
 }) => {
   const { i18n } = useLingui();
 
@@ -95,6 +99,34 @@ export const RecordingCanvasMenu = ({
       </MenuItem>
 
       <Divider />
+
+      {isLimited && (
+        <MenuItem
+          sx={{
+            '--color': '#fbeafc',
+            padding: 'var(--item-padding)',
+          }}
+          onClick={() => {
+            onOpenPaywall();
+            closeMenus();
+          }}
+        >
+          <ListItemIcon>
+            <Gem color="var(--color)" />
+          </ListItemIcon>
+          <ListItemText>
+            <Typography
+              sx={{
+                color: 'var(--color)',
+              }}
+            >
+              {i18n._('Get Full Access')}
+            </Typography>
+          </ListItemText>
+        </MenuItem>
+      )}
+
+      {isLimited && <Divider />}
 
       <TogglerMenuItem
         icon={<MicIcon />}

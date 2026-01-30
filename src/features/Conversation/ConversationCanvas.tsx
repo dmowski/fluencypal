@@ -597,6 +597,8 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                         toggleConversationMode={toggleConversationMode}
                         closeConversation={closeConversation}
                         closeMenus={closeMenus}
+                        isLimited={isLimitedVoice || isSendMessagesBlocked}
+                        onOpenPaywall={() => togglePaymentModal(true)}
                       />
 
                       {!confirmedUserInput &&
@@ -616,7 +618,12 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                               autoFocus
                               value={internalUserInput}
                               onChange={(e) => setInternalUserInput(e.target.value)}
-                              placeholder={i18n._('Your message...')}
+                              disabled={isSendMessagesBlocked}
+                              placeholder={
+                                isSendMessagesBlocked
+                                  ? i18n._('Limited access...')
+                                  : i18n._('Your message...')
+                              }
                               multiline
                               minRows={1}
                               onKeyDown={(e) => {
