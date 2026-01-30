@@ -4,7 +4,7 @@ export const AliasPage = () => {
   return (
     <Stack>
       <Typography variant="h4" gutterBottom>
-        Alias Management
+        Alias Game
       </Typography>
     </Stack>
   );
