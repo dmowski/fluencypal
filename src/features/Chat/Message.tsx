@@ -542,14 +542,13 @@ export const MessageContent = ({
     const isLink = (e.target as HTMLElement).tagName === 'A';
     if (!isLink) return;
 
-    e.preventDefault();
-    e.stopPropagation();
-
     const href = (e.target as HTMLAnchorElement).getAttribute('href') || '';
     const isUserLink = href?.startsWith('#user-');
     if (isUserLink) {
       const userName = href.replace('#user-', '');
       onClickOnUserName(userName);
+      e.preventDefault();
+      e.stopPropagation();
     }
   };
 
