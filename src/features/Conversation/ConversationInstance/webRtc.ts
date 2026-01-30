@@ -140,6 +140,7 @@ export const initWebRtcConversation = async ({
   getAuthToken,
   onMessageOrder,
   webCamDescription,
+  conversationId,
 }: ConversationConfig): Promise<ConversationInstance> => {
   const audioId = 'audio_for_llm';
   const existingAudio = document.getElementById(audioId) as HTMLAudioElement | null;
@@ -171,7 +172,7 @@ export const initWebRtcConversation = async ({
   const messageHandler = (e: MessageEvent) => {
     const event = JSON.parse(e.data);
     const type = (event?.type || '') as string;
-    // console.log("Event type:", type, "|", event);
+    // console.log('Event type:', type, '|', event);
     //console.log(JSON.stringify(event, null, 2));
 
     const previousItemId = event?.previous_item_id as string | undefined;
@@ -197,6 +198,7 @@ export const initWebRtcConversation = async ({
           model,
           languageCode,
           type: 'realtime',
+          conversationId,
         });
       }
     }

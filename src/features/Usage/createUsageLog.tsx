@@ -1,7 +1,12 @@
 import { AddUsageLogRequest, AddUsageLogResponse } from '@/common/requests';
 
 export const createUsageLog = async (requestData: AddUsageLogRequest, auth: string) => {
-  /*const response = await fetch('/api/addUsageLog', {
+  if (requestData.usageLog.type === 'realtime' && requestData.usageLog.conversationId) {
+    console.log('REALTIME USAGE', requestData.usageLog.priceUsd);
+  }
+
+  return;
+  const response = await fetch('/api/addUsageLog', {
     method: 'POST',
     body: JSON.stringify(requestData),
     headers: {
@@ -11,5 +16,4 @@ export const createUsageLog = async (requestData: AddUsageLogRequest, auth: stri
   });
   const data = (await response.json()) as AddUsageLogResponse;
   return data;
-  */
 };

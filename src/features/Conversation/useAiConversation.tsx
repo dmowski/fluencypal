@@ -462,6 +462,7 @@ VISUAL_CONTEXT (latest): ${description}
         await audio.speak(textToPlay, { instructions: instruction, voice });
         setIsAiSpeakingStartedFromConversation(false);
       },
+      conversationId: conversationId || '',
     };
     return baseConfig;
   };
@@ -778,6 +779,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
         isMuted: isMutedInternal,
         isVolumeOn: isVolumeOnInternal,
         webCamDescription: input.webCamDescription || '',
+        conversationId: newConversationId,
       });
       setVoice(conversationConfig.voice || input.voice || null);
       history.createConversation({

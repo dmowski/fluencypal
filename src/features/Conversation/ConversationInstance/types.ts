@@ -26,6 +26,8 @@ export interface ConversationConfig {
   generateTextWithAi: ({}: { userMessage: string; systemMessage: string }) => Promise<string>;
 
   playAudio: (textToPlay: string, voice: AiVoice, instruction: string) => Promise<void>;
+
+  conversationId: string;
 }
 
 export type ConversationInstance = {

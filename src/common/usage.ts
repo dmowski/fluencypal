@@ -26,6 +26,7 @@ export interface RealtimeUsageLog extends BaseUsageLog {
   type: 'realtime';
   usageEvent: UsageEvent;
   model: RealTimeModel;
+  conversationId: string;
 }
 
 export interface TextUsageLog extends BaseUsageLog {
