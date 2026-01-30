@@ -10,7 +10,8 @@ import {
   WordAction,
   initialGameSettings,
 } from '../types';
-import { getWordsFromCategories } from '../data/categories';
+import { categories } from '../data/categories';
+import { buildInitialWordPool, pickNextWord } from '../utils/gameEngine';
 
 export const useGameState = () => {
   const { state, dispatch } = useGame();
@@ -61,15 +62,9 @@ export const useGameState = () => {
   const startGame = () => {
     if (!state.settings) return;
 
-    const words = getWordsFromCategories(
-      state.settings.selectedCategoryIds,
-      state.settings.languageLevel,
-    );
+    const words = buildInitialWordPool(categories, state.settings);
 
-    // Shuffle words
-    const shuffledWords = [...words].sort(() => Math.random() - 0.5);
-
-    dispatch({ type: 'START_GAME', payload: { words: shuffledWords } });
+    dispatch({ type: 'START_GAME', payload: { words } });
     dispatch({ type: 'START_ROUND' });
   };
 
@@ -112,25 +107,7 @@ export const useGameState = () => {
 
   // Word management
   const getNextWord = (): string | null => {
-    const usedWordsSet = new Set(state.usedWords);
-    const skippedWordsSet = new Set(state.skippedWords);
-
-    // First, try to get a word that hasn't been used
-    const unusedWords = state.availableWords.filter((word) => !usedWordsSet.has(word));
-
-    if (unusedWords.length > 0) {
-      return unusedWords[Math.floor(Math.random() * unusedWords.length)];
-    }
-
-    // If all words have been used, try skipped words
-    const availableSkippedWords = state.availableWords.filter((word) => skippedWordsSet.has(word));
-
-    if (availableSkippedWords.length > 0) {
-      return availableSkippedWords[Math.floor(Math.random() * availableSkippedWords.length)];
-    }
-
-    // No words available
-    return null;
+    return pickNextWord(state.availableWords, state.usedWords, state.skippedWords);
   };
 
   const setCurrentWord = (word: string) => {

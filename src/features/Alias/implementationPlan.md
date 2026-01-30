@@ -236,31 +236,28 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 **Tasks:**
 
-- [ ] Create game engine utilities:
+- [x] Create game engine utilities:
   - Word shuffling from selected categories
   - Filter words by difficulty level
   - Track shown/skipped words
   - Prevent immediate word repetition
   - Allow skipped words to reappear later
-- [ ] Round management:
-  - Track current round number
-  - Determine whose turn it is
-  - Calculate turn order (rotate through players/teams)
-- [ ] Scoring logic:
-  - +1 for correct
-  - -1 for skip
-  - Aggregate scores per player/team
+- [x] Round management helpers
+- [x] Scoring logic helpers
 
-**Files to Create:**
+**Files Created:**
 
 - `src/features/Alias/utils/gameEngine.ts`
 - `src/features/Alias/utils/wordManager.ts`
 - `src/features/Alias/utils/scoreCalculator.ts`
+- Updated `src/features/Alias/hooks/useGameState.ts` to use utilities
 
 **E2E Tests:**
 
-- No direct E2E tests (tested through gameplay)
+- No direct E2E tests (covered through gameplay flows)
 - Unit tests recommended for game logic
+
+**Status:** COMPLETED
 
 ---
 
@@ -637,7 +634,7 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 ---
 
-## Current Status: Phase 7 Complete ✓
+## Current Status: Phase 8 Complete ✓
 
 **Completed Phases:**
 
@@ -648,5 +645,6 @@ Building a responsive web-based Alias word guessing game for English learning. T
 - ✓ Phase 5: Language Level Selection
 - ✓ Phase 6: Category Selection
 - ✓ Phase 7: Round Settings
+- ✓ Phase 8: Game Engine & Word Logic
 
-**Next Step:** Phase 8 - Game Engine & Word Logic
+**Next Step:** Phase 9 - Turn Start Screen
