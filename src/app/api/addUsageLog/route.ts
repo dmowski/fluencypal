@@ -3,6 +3,7 @@ import { validateAuthToken } from '../config/firebase';
 import { addUsage, isUsageLogExists } from '../payment/addUsage';
 import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 import { getUserBalance } from '../payment/getUserBalance';
+import { addConversationUsage } from '../usage/addConversationUsage';
 
 export async function POST(request: Request) {
   try {
@@ -31,6 +32,16 @@ export async function POST(request: Request) {
     const balance = await getUserBalance(userInfo.uid || '');
     if (!balance.isGameWinner && !balance.isSubscriber) {
       await addUsage(userInfo.uid, logData);
+    }
+
+    const isRealtime = logData.type === 'realtime';
+    if (isRealtime && logData.conversationId) {
+      await addConversationUsage({
+        userId: userInfo.uid,
+        conversationId: logData.conversationId,
+        usageLabel: 'realtime',
+        usageUsd: logData.priceUsd,
+      });
     }
 
     const response: AddUsageLogResponse = {
