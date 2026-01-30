@@ -690,6 +690,10 @@ const AccessSelector = ({
                   title: i18n._('Limited voice features'),
                   iconName: 'lock',
                 },
+                {
+                  title: i18n._('Access to the community'),
+                  iconName: 'check',
+                },
               ]}
             />
           </Stack>
