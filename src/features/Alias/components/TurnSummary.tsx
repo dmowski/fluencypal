@@ -49,6 +49,10 @@ export const TurnSummary = () => {
     setScreen('turn-start');
   };
 
+  const handleViewScoreboard = () => {
+    setScreen('scoreboard');
+  };
+
   if (!turn || !state.settings) {
     return (
       <Container maxWidth="md" data-testid="turn-summary">
@@ -188,8 +192,17 @@ export const TurnSummary = () => {
           size="large"
           onClick={handleNextTurn}
           data-testid="turn-summary-next"
+          sx={{ mb: 1 }}
         >
           Next Turn
+        </Button>
+        <Button
+          variant="outlined"
+          size="large"
+          onClick={handleViewScoreboard}
+          data-testid="turn-summary-scoreboard"
+        >
+          View Scoreboard
         </Button>
       </Stack>
     </Container>

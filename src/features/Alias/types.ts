@@ -83,6 +83,7 @@ export type GameScreen =
   | 'turn-start'
   | 'gameplay'
   | 'turn-summary'
+  | 'scoreboard'
   | 'game-end';
 
 export interface GameState {
