@@ -2,11 +2,12 @@ import { AiVoice } from '@/common/ai';
 import { AiAvatarVideo } from '@/features/Conversation/CallMode/AiAvatarVideo';
 import { AiAvatar } from '@/features/Conversation/CallMode/types';
 import { getAiVoiceByVoice } from '@/features/Conversation/CallMode/voiceAvatar';
+import { Avatar } from '@/features/Game/Avatar';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { InfoStep } from '@/features/Survey/InfoStep';
 import { useLingui } from '@lingui/react';
 import { Stack, Typography } from '@mui/material';
-import { BotOff, ShieldCheck, ChevronUp, ChevronDown } from 'lucide-react';
+import { BotOff, ShieldCheck, ChevronUp, ChevronDown, Unlock } from 'lucide-react';
 import { useState } from 'react';
 
 export const AccessQuizStep = ({
@@ -37,10 +38,6 @@ export const AccessQuizStep = ({
             isSelected={isFullAccessRedirect}
             onSelect={() => setIsFullAccessRedirect(true)}
             aiAvatar={getAiVoiceByVoice(teacherVoice)}
-            title={i18n._(`Full Access`)}
-            description={i18n._(
-              `Unlock full access to personalized practice plans and real-time conversations with AI.`,
-            )}
           />
 
           <AccessSelector
@@ -49,8 +46,6 @@ export const AccessQuizStep = ({
             isSelected={!isFullAccessRedirect}
             onSelect={() => setIsFullAccessRedirect(false)}
             aiAvatar={getAiVoiceByVoice(teacherVoice)}
-            title={i18n._(`Free Access`)}
-            description={i18n._(`Not sure yet? Try the app for free first.`)}
           />
         </Stack>
       }
@@ -65,16 +60,14 @@ const AccessSelector = ({
   isSelected,
   onSelect,
   aiAvatar,
-  title,
-  description,
+
   isSpeaking,
   isFullAccess,
 }: {
   isSelected: boolean;
   onSelect: () => void;
   aiAvatar: AiAvatar;
-  title: string;
-  description: string;
+
   isSpeaking: boolean;
   isFullAccess: boolean;
 }) => {
@@ -85,28 +78,21 @@ const AccessSelector = ({
       component={'button'}
       onClick={onSelect}
       sx={{
-        flexDirection: 'row',
         textAlign: 'left',
         background: isFullAccess
-          ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(0, 255, 163, 0) 100%)'
+          ? 'linear-gradient(135deg, rgba(21, 101, 230, 0.26) 0%, rgba(0, 255, 163, 0) 100%)'
           : 'transparent',
         border: 'none',
         borderRadius: '10px',
         color: 'inherit',
 
-        alignItems: 'center',
-        justifyContent: 'center',
-
-        gap: '0px',
-        display: 'grid',
-        gridTemplateColumns: 'auto 1fr',
-        padding: '0px',
+        gap: '25px',
         // allow text selection
         userSelect: 'text',
 
         boxShadow: isSelected
           ? '0px 0px 0px 7px rgba(0, 0, 0, 1), 0px 0px 0px 10px rgba(0, 185, 252, 1) '
-          : '0px 0px 0px 1px rgb(255, 255, 255, 0.15)',
+          : '0px 0px 0px 1px rgb(255, 255, 255, 0.3)',
       }}
     >
       <Stack
@@ -114,100 +100,108 @@ const AccessSelector = ({
           height: '100%',
           boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
           justifyContent: 'flex-start',
-          padding: '20px',
+          padding: '20px 20px 0 20px',
+          alignItems: 'center',
+          flexDirection: 'row',
+          justifyItems: 'space-between',
+          gap: '5px',
         }}
       >
         <Stack
           sx={{
-            width: '70px',
-            height: '70px',
-            position: 'relative',
-            overflow: 'hidden',
-            borderRadius: '100px',
+            width: '100%',
           }}
         >
-          <AiAvatarVideo
-            aiVideo={aiAvatar}
-            isSpeaking={isFullAccess && isSelected && !isShowRefundPolicy}
-          />
-          {!isFullAccess && (
-            <Stack
-              sx={{
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                top: 0,
-                left: 0,
+          <Typography
+            variant="h4"
+            sx={{
+              fontSize: isFullAccess ? '42px' : '28px',
+              fontWeight: isFullAccess ? 800 : 600,
+              '@media (max-width: 600px)': {
+                fontSize: '30px',
+              },
+            }}
+          >
+            {isFullAccess ? i18n._(`Full Access`) : i18n._(`Free Access`)}
+          </Typography>
 
-                alignItems: 'center',
-                justifyContent: 'center',
-
-                backgroundColor: 'rgba(0, 0, 0, 0.7)',
-              }}
-            >
-              <BotOff color="white" size={22} />
-            </Stack>
-          )}
+          <Typography
+            sx={{
+              opacity: isSelected ? 0.9 : 0.8,
+              textWrap: 'balance',
+            }}
+          >
+            {isFullAccess
+              ? i18n._(`For focused, uninterrupted learning.`)
+              : i18n._(`If you want to try before you buy.`)}
+          </Typography>
         </Stack>
+        {isFullAccess && (
+          <Stack
+            sx={{
+              width: '70px',
+              minWidth: '70px',
+              height: '70px',
+              position: 'relative',
+              overflow: 'hidden',
+              //borderRadius: '100px',
+            }}
+          >
+            <Avatar url={aiAvatar.photoUrls[0]} avatarSize="70px" />
+          </Stack>
+        )}
       </Stack>
 
       <Stack
         sx={{
           width: '100%',
-          padding: '15px 15px 15px 0',
+          padding: '0 15px 15px 15px',
+          gap: '20px',
         }}
       >
-        <Typography
-          variant="h6"
-          sx={{
-            fontWeight: 800,
-          }}
-        >
-          {title}
-        </Typography>
-        <Typography
-          sx={{
-            opacity: isSelected ? 0.9 : 0.8,
-          }}
-        >
-          {i18n._(description)}
-        </Typography>
-
-        {!isFullAccess && (
-          <Stack
-            sx={{
-              marginTop: '15px',
-            }}
-          >
-            <ColorIconTextList
-              gap="10px"
-              listItems={[
-                {
-                  title: i18n._('Limited messages per conversation'),
-                  iconName: 'lock',
-                },
-                {
-                  title: i18n._('Limited voice features'),
-                  iconName: 'lock',
-                },
-                {
-                  title: i18n._('Access to the community'),
-                  iconName: 'check',
-                },
-              ]}
-            />
-          </Stack>
-        )}
+        <ColorIconTextList
+          gap="5px"
+          listItems={
+            isFullAccess
+              ? [
+                  {
+                    title: i18n._('Unlimited messages per conversation'),
+                    iconName: 'check',
+                  },
+                  {
+                    title: i18n._('Full voice features'),
+                    iconName: 'volume-2',
+                  },
+                  {
+                    title: i18n._('Access to the community'),
+                    iconName: 'users',
+                  },
+                ]
+              : [
+                  {
+                    title: i18n._('Limited messages per conversation'),
+                    iconName: 'lock',
+                  },
+                  {
+                    title: i18n._('Limited voice features'),
+                    iconName: 'volume-off',
+                  },
+                  {
+                    title: i18n._('Access to the community'),
+                    iconName: 'users',
+                  },
+                ]
+          }
+        />
 
         {isFullAccess && (
           <Stack
             sx={{
-              marginTop: '15px',
               flexDirection: 'row',
               alignItems: 'center',
               gap: '8px',
               backgroundColor: 'rgba(255, 255, 245, 0.02)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
               color: '#fff',
               padding: '5px 10px 5px 10px',
               borderRadius: '8px',
@@ -226,17 +220,16 @@ const AccessSelector = ({
                 fontWeight: 500,
               }}
             >
-              {i18n._('Refund policy')}
+              {i18n._('Refund guarantee')}
             </Typography>
             {isShowRefundPolicy ? <ChevronUp /> : <ChevronDown />}
           </Stack>
         )}
         {isShowRefundPolicy && isFullAccess && (
           <Typography
-            variant="body2"
+            variant="body1"
             sx={{
-              marginTop: '10px',
-              color: 'rgba(255, 255, 255, 0.7)',
+              color: 'rgba(255, 255, 255, 1)',
             }}
           >
             {i18n._(
