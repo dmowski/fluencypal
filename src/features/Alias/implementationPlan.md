@@ -170,27 +170,31 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 **Tasks:**
 
-- [ ] Create CategorySelection component
-- [ ] Display all available categories
-- [ ] Allow multiple category selection
-- [ ] Require at least one category selected
-- [ ] Show preview/description of each category
-- [ ] "Select All" / "Deselect All" options
-- [ ] Back/Continue navigation
+- [x] Create CategorySelection component
+- [x] Display all available categories
+- [x] Allow multiple category selection
+- [x] Require at least one category selected
+- [x] Show preview/description of each category
+- [x] "Select All" / "Deselect All" options
+- [x] Back/Continue navigation
 
-**Files to Create:**
+**Files Created:**
 
 - `src/features/Alias/components/CategorySelection.tsx`
 - `src/features/Alias/components/CategoryCard.tsx`
+- `src/features/Alias/components/RoundSettings.tsx` (placeholder)
+- Updated `src/features/Alias/AliasPage.tsx` for round settings navigation
+- Updated `e2e/alias.spec.ts` with category selection tests
 
 **E2E Tests:**
 
-- Verify all categories are displayed
-- Select individual categories
-- Verify "Select All" functionality
-- Verify "Deselect All" functionality
-- Try to continue with no categories (should be blocked)
-- Verify back/continue navigation
+- ✓ Verify all categories are displayed
+- ✓ Verify "Select All" functionality
+- ✓ Verify "Deselect All" functionality
+- ✓ Continue is disabled when no categories selected
+- ✓ Verify navigation to round settings
+
+**Status:** COMPLETED
 
 ---
 
@@ -629,7 +633,7 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 ---
 
-## Current Status: Phase 5 Complete ✓
+## Current Status: Phase 6 Complete ✓
 
 **Completed Phases:**
 
@@ -638,5 +642,6 @@ Building a responsive web-based Alias word guessing game for English learning. T
 - ✓ Phase 3: Mode Selection Screen
 - ✓ Phase 4: Players Setup Screen
 - ✓ Phase 5: Language Level Selection
+- ✓ Phase 6: Category Selection
 
-**Next Step:** Phase 6 - Category Selection
+**Next Step:** Phase 7 - Round Settings

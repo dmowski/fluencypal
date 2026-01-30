@@ -136,4 +136,46 @@ test.describe('Alias Game', () => {
       await expect(page.getByTestId('category-selection')).toBeVisible();
     });
   });
+
+  test.describe('Category Selection', () => {
+    test('displays all categories', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+      await page.getByTestId('language-continue').click();
+
+      await expect(page.getByTestId('category-animals')).toBeVisible();
+      await expect(page.getByTestId('category-food')).toBeVisible();
+      await expect(page.getByTestId('category-sports')).toBeVisible();
+      await expect(page.getByTestId('category-technology')).toBeVisible();
+    });
+
+    test('select all and deselect all controls work', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+      await page.getByTestId('language-continue').click();
+
+      const continueButton = page.getByTestId('categories-continue');
+      await expect(continueButton).toBeDisabled();
+
+      await page.getByTestId('categories-select-all').click();
+      await expect(continueButton).toBeEnabled();
+
+      await page.getByTestId('categories-deselect-all').click();
+      await expect(continueButton).toBeDisabled();
+    });
+
+    test('navigates to round settings on continue', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+      await page.getByTestId('language-continue').click();
+
+      await page.getByTestId('categories-select-all').click();
+      await page.getByTestId('categories-continue').click();
+
+      await expect(page.getByTestId('round-settings')).toBeVisible();
+    });
+  });
 });

@@ -5,6 +5,7 @@ import { ModeSelection } from './components/ModeSelection';
 import { PlayersSetup } from './components/PlayersSetup';
 import { LanguageLevel } from './components/LanguageLevel';
 import { CategorySelection } from './components/CategorySelection';
+import { RoundSettings } from './components/RoundSettings';
 
 const AliasGameContent = () => {
   const { state } = useGame();
@@ -19,6 +20,8 @@ const AliasGameContent = () => {
       return <LanguageLevel />;
     case 'category-selection':
       return <CategorySelection />;
+    case 'round-settings':
+      return <RoundSettings />;
     // TODO: Add other screens as we implement them
     default:
       return <ModeSelection />;
