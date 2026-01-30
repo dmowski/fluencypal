@@ -23,6 +23,7 @@ type Page =
   | 'scenarios'
   | 'blog'
   | 'case'
+  | 'alias'
   | '';
 
 type AfterIdPage = 'quiz';
@@ -144,6 +145,22 @@ export const generateMetadataInfo = ({
       i18n._(`subscription plans`),
       i18n._(`online English pricing`),
       i18n._(`AI tutor cost`),
+    ];
+  }
+
+  if (currentPath === 'alias') {
+    title = i18n._(`Alias Game`) + ' | ' + APP_NAME;
+    description = i18n._(`Practice vocabulary by creatively describing and guessing words`);
+    keywords = [
+      i18n._(`Alias Game`),
+      i18n._(`Vocabulary Practice`),
+      i18n._(`Word Guessing Game`),
+      i18n._(`Language Learning Game`),
+      i18n._(`English Vocabulary`),
+      i18n._(`Creative Description`),
+      i18n._(`alias game online`),
+      i18n._(`alias in english online`),
+      i18n._(`alias online english`),
     ];
   }
 
