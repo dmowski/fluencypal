@@ -178,4 +178,37 @@ test.describe('Alias Game', () => {
       await expect(page.getByTestId('round-settings')).toBeVisible();
     });
   });
+
+  test.describe('Round Settings', () => {
+    test('allows selecting timed and fixed word settings', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+      await page.getByTestId('language-continue').click();
+      await page.getByTestId('categories-select-all').click();
+      await page.getByTestId('categories-continue').click();
+
+      await expect(page.getByTestId('round-settings')).toBeVisible();
+
+      await page.getByTestId('turn-type-fixed').click();
+      await page.getByTestId('word-count-10').click();
+
+      await page.getByTestId('turn-type-timed').click();
+      await page.getByTestId('duration-90').click();
+    });
+
+    test('allows setting number of rounds and starting game', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+      await page.getByTestId('language-continue').click();
+      await page.getByTestId('categories-select-all').click();
+      await page.getByTestId('categories-continue').click();
+
+      await page.getByTestId('rounds-5').click();
+      await page.getByTestId('round-settings-start').click();
+
+      await expect(page.getByTestId('turn-start')).toBeVisible();
+    });
+  });
 });

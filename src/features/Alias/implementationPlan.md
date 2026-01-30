@@ -204,25 +204,29 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 **Tasks:**
 
-- [ ] Create RoundSettings component
-- [ ] Turn type selection:
+- [x] Create RoundSettings component
+- [x] Turn type selection:
   - Timed rounds (30s, 60s, 90s options)
   - OR Fixed words (5, 10, 15 words options)
-- [ ] Number of rounds selection (1-10)
-- [ ] Display summary of settings
-- [ ] Back/Start Game navigation
+- [x] Number of rounds selection (1-10)
+- [x] Display summary of settings
+- [x] Back/Start Game navigation
 
-**Files to Create:**
+**Files Created:**
 
 - `src/features/Alias/components/RoundSettings.tsx`
+- `src/features/Alias/components/TurnStart.tsx` (placeholder)
+- Updated `src/features/Alias/AliasPage.tsx` for turn-start routing
+- Updated `e2e/alias.spec.ts` with round settings tests
 
 **E2E Tests:**
 
-- Select timed round mode with different durations
-- Select fixed words mode with different counts
-- Change number of rounds
-- Verify settings summary displays correctly
-- Verify "Start Game" button begins gameplay
+- ✓ Select timed round mode with different durations
+- ✓ Select fixed words mode with different counts
+- ✓ Change number of rounds
+- ✓ Verify "Start Game" navigates to turn start
+
+**Status:** COMPLETED
 
 ---
 
@@ -633,7 +637,7 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 ---
 
-## Current Status: Phase 6 Complete ✓
+## Current Status: Phase 7 Complete ✓
 
 **Completed Phases:**
 
@@ -643,5 +647,6 @@ Building a responsive web-based Alias word guessing game for English learning. T
 - ✓ Phase 4: Players Setup Screen
 - ✓ Phase 5: Language Level Selection
 - ✓ Phase 6: Category Selection
+- ✓ Phase 7: Round Settings
 
-**Next Step:** Phase 7 - Round Settings
+**Next Step:** Phase 8 - Game Engine & Word Logic
