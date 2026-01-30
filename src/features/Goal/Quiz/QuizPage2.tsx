@@ -21,7 +21,15 @@ import { useState } from 'react';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { sleep } from '@/libs/sleep';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
-import { BotOff, Check, ChevronsRight, LockOpen } from 'lucide-react';
+import {
+  BotOff,
+  Check,
+  ChevronDown,
+  ChevronsRight,
+  ChevronUp,
+  LockOpen,
+  ShieldCheck,
+} from 'lucide-react';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { WelcomeChatMessage } from './WelcomeChatMessage';
 import { useSettings } from '@/features/Settings/useSettings';
@@ -398,8 +406,8 @@ const QuizQuestions = () => {
                       isSelected={!isFullAccessRedirect}
                       onSelect={() => setIsFullAccessRedirect(false)}
                       aiAvatar={getAiVoiceByVoice(settings.userSettings?.teacherVoice || 'shimmer')}
-                      title={i18n._(`Limited Access`)}
-                      description={i18n._(`Limited messages and voice features.`)}
+                      title={i18n._(`Free Access`)}
+                      description={i18n._(`Not sure yet? Try the app for free first.`)}
                     />
                   </Stack>
                 }
@@ -571,6 +579,7 @@ const AccessSelector = ({
   isFullAccess: boolean;
 }) => {
   const { i18n } = useLingui();
+  const [isShowRefundPolicy, setIsShowRefundPolicy] = useState(false);
   return (
     <Stack
       component={'button'}
@@ -579,7 +588,7 @@ const AccessSelector = ({
         flexDirection: 'row',
         textAlign: 'left',
         background: isFullAccess
-          ? 'linear-gradient(135deg, rgba(255, 0, 251, 0.2) 0%, rgba(0, 255, 163, 0) 100%)'
+          ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(0, 255, 163, 0) 100%)'
           : 'transparent',
         border: 'none',
         borderRadius: '10px',
@@ -588,10 +597,12 @@ const AccessSelector = ({
         alignItems: 'center',
         justifyContent: 'center',
 
-        gap: '20px',
+        gap: '0px',
         display: 'grid',
         gridTemplateColumns: 'auto 1fr',
         padding: '0px',
+        // allow text selection
+        userSelect: 'text',
 
         boxShadow: isSelected
           ? '0px 0px 0px 7px rgba(0, 0, 0, 1), 0px 0px 0px 10px rgba(0, 185, 252, 1) '
@@ -600,42 +611,50 @@ const AccessSelector = ({
     >
       <Stack
         sx={{
-          width: '100px',
           height: '100%',
-          aspectRatio: '1 / 1',
-
-          position: 'relative',
           boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-          justifyContent: 'center',
-          borderRadius: '11px 0 0 11px',
-          overflow: 'hidden',
+          justifyContent: 'flex-start',
+          padding: '20px',
         }}
       >
-        <AiAvatarVideo aiVideo={aiAvatar} isSpeaking={isFullAccess && isSelected} />
-        {!isFullAccess && (
-          <Stack
-            sx={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              top: 0,
-              left: 0,
+        <Stack
+          sx={{
+            width: '70px',
+            height: '70px',
+            position: 'relative',
+            overflow: 'hidden',
+            borderRadius: '100px',
+          }}
+        >
+          <AiAvatarVideo
+            aiVideo={aiAvatar}
+            isSpeaking={isFullAccess && isSelected && !isShowRefundPolicy}
+          />
+          {!isFullAccess && (
+            <Stack
+              sx={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
 
-              alignItems: 'center',
-              justifyContent: 'center',
+                alignItems: 'center',
+                justifyContent: 'center',
 
-              backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            }}
-          >
-            <BotOff color="white" size={22} />
-          </Stack>
-        )}
+                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+              }}
+            >
+              <BotOff color="white" size={22} />
+            </Stack>
+          )}
+        </Stack>
       </Stack>
 
       <Stack
         sx={{
           width: '100%',
-          padding: '15px 10px 15px 0',
+          padding: '15px 15px 15px 0',
         }}
       >
         <Typography
@@ -653,6 +672,74 @@ const AccessSelector = ({
         >
           {i18n._(description)}
         </Typography>
+
+        {!isFullAccess && (
+          <Stack
+            sx={{
+              marginTop: '15px',
+            }}
+          >
+            <ColorIconTextList
+              gap="10px"
+              listItems={[
+                {
+                  title: i18n._('Limited messages per conversation'),
+                  iconName: 'lock',
+                },
+                {
+                  title: i18n._('Limited voice features'),
+                  iconName: 'lock',
+                },
+              ]}
+            />
+          </Stack>
+        )}
+
+        {isFullAccess && (
+          <Stack
+            sx={{
+              marginTop: '15px',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '8px',
+              backgroundColor: 'rgba(255, 255, 245, 0.02)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              color: '#fff',
+              padding: '5px 10px 5px 10px',
+              borderRadius: '8px',
+              width: 'fit-content',
+            }}
+            component={'span'}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsShowRefundPolicy(!isShowRefundPolicy);
+            }}
+          >
+            <ShieldCheck size={21} color="rgb(231, 235, 252)" />
+            <Typography
+              variant="caption"
+              sx={{
+                fontWeight: 500,
+              }}
+            >
+              {i18n._('Refund policy')}
+            </Typography>
+            {isShowRefundPolicy ? <ChevronUp /> : <ChevronDown />}
+          </Stack>
+        )}
+        {isShowRefundPolicy && isFullAccess && (
+          <Typography
+            variant="body2"
+            sx={{
+              marginTop: '10px',
+              color: 'rgba(255, 255, 255, 0.7)',
+            }}
+          >
+            {i18n._(
+              'If it doesn’t feel like the right fit for you, you can request a refund from your Profile → Payment history. No stress, no complicated steps.',
+            )}
+          </Typography>
+        )}
       </Stack>
     </Stack>
   );
