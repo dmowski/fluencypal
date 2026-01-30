@@ -59,7 +59,11 @@ export const CategorySelection = () => {
           <Button variant="outlined" onClick={handleSelectAll} data-testid="categories-select-all">
             Select all
           </Button>
-          <Button variant="outlined" onClick={handleDeselectAll} data-testid="categories-deselect-all">
+          <Button
+            variant="outlined"
+            onClick={handleDeselectAll}
+            data-testid="categories-deselect-all"
+          >
             Deselect all
           </Button>
         </Stack>
