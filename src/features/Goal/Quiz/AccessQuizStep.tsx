@@ -89,6 +89,7 @@ const AccessSelector = ({
         gap: '25px',
         // allow text selection
         userSelect: 'text',
+        padding: '0px 0 5px 0',
 
         boxShadow: isSelected
           ? '0px 0px 0px 7px rgba(0, 0, 0, 1), 0px 0px 0px 10px rgba(0, 185, 252, 1) '
@@ -100,11 +101,17 @@ const AccessSelector = ({
           height: '100%',
           boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
           justifyContent: 'flex-start',
-          padding: '20px 20px 0 20px',
+
           alignItems: 'center',
           flexDirection: 'row',
           justifyItems: 'space-between',
           gap: '5px',
+          padding: '20px',
+          paddingBottom: '0px',
+          '@media (max-width: 600px)': {
+            padding: '15px',
+            paddingBottom: '0px',
+          },
         }}
       >
         <Stack
@@ -118,7 +125,11 @@ const AccessSelector = ({
               fontSize: isFullAccess ? '42px' : '28px',
               fontWeight: isFullAccess ? 800 : 600,
               '@media (max-width: 600px)': {
-                fontSize: '30px',
+                fontSize: isFullAccess ? '32px' : '24px',
+              },
+
+              '@media (max-width: 400px)': {
+                fontSize: isFullAccess ? '28px' : '22px',
               },
             }}
           >
@@ -128,7 +139,6 @@ const AccessSelector = ({
           <Typography
             sx={{
               opacity: isSelected ? 0.9 : 0.8,
-              textWrap: 'balance',
             }}
           >
             {isFullAccess
@@ -145,6 +155,9 @@ const AccessSelector = ({
               position: 'relative',
               overflow: 'hidden',
               //borderRadius: '100px',
+              '@media (max-width: 600px)': {
+                display: ' none',
+              },
             }}
           >
             <Avatar url={aiAvatar.photoUrls[0]} avatarSize="70px" />
@@ -155,17 +168,22 @@ const AccessSelector = ({
       <Stack
         sx={{
           width: '100%',
-          padding: '0 15px 15px 15px',
-          gap: '20px',
+          padding: '20px',
+          paddingTop: '0px',
+          '@media (max-width: 600px)': {
+            padding: '15px',
+            paddingTop: '0px',
+          },
+          gap: '30px',
         }}
       >
         <ColorIconTextList
-          gap="5px"
+          gap="10px"
           listItems={
             isFullAccess
               ? [
                   {
-                    title: i18n._('Unlimited messages per conversation'),
+                    title: i18n._('Unlimited messages'),
                     iconName: 'check',
                   },
                   {
@@ -179,7 +197,7 @@ const AccessSelector = ({
                 ]
               : [
                   {
-                    title: i18n._('Limited messages per conversation'),
+                    title: i18n._('Limited messages'),
                     iconName: 'lock',
                   },
                   {

@@ -396,7 +396,8 @@ msgstr ""
 "AI'nın bulunduğu uygulamadaki tüm işlevlere erişim: konuşma, analiz, rol "
 "oyunları, yeni kelimeler ve kurallar oluşturucu."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:694
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:176
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:190
 #. js-lingui-explicit-id
 msgid "Access to the community"
 msgstr "Topluluğa erişim"
@@ -645,7 +646,7 @@ msgstr "AI Dil Eğitmeni"
 msgid "AI language tutor pricing"
 msgstr "AI dil eğitmeni fiyatlandırması"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:497
+#: src/features/Goal/Quiz/QuizPage2.tsx:470
 #. js-lingui-explicit-id
 msgid "AI responses are text-only"
 msgstr "AI yanıtları yalnızca metin şeklindedir."
@@ -681,7 +682,7 @@ msgstr "AI Ses"
 msgid "AI voice"
 msgstr "AI sesi"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:492
+#: src/features/Goal/Quiz/QuizPage2.tsx:465
 #. js-lingui-explicit-id
 msgid "AI voice is disabled"
 msgstr "AI sesi devre dışı bırakıldı"
@@ -1248,7 +1249,7 @@ msgstr "Önbellekleme Stratejileri"
 msgid "Call"
 msgstr "Çağrı"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:435
+#: src/features/Goal/Quiz/QuizPage2.tsx:408
 #. js-lingui-explicit-id
 msgid "Call mode"
 msgstr "Çağrı modu"
@@ -1466,7 +1467,7 @@ msgstr ""
 "İzolasyon seviyelerini seçin, model toplamlarını oluşturun ve etkili "
 "sorgular yazın."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:186
+#: src/features/Goal/Quiz/QuizPage2.tsx:187
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "Site Dili Seçin"
@@ -1737,7 +1738,7 @@ msgstr "İletişim:"
 #: src/features/Case/data/frontend-senior/quizData.ts:292
 #: src/features/Case/data/frontend-senior/quizData.ts:315
 #: src/features/Dashboard/SelectLanguage.tsx:292
-#: src/features/Goal/Quiz/QuizPage2.tsx:162
+#: src/features/Goal/Quiz/QuizPage2.tsx:163
 #: src/features/PayWall/CardValidator.tsx:133
 #: src/features/Plan/PlanCard.tsx:208
 #: src/features/Usage/SubscriptionPaymentModal.tsx:681
@@ -1784,7 +1785,7 @@ msgstr "Konuşma Pratiği"
 msgid "Conversation practice"
 msgstr "Konuşma pratikleri"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:215
+#: src/features/Goal/Quiz/QuizPage2.tsx:216
 #. js-lingui-explicit-id
 msgid "Conversation preparation"
 msgstr "Konuşma hazırlığı"
@@ -2485,7 +2486,7 @@ msgstr "Gerçek bir görüşmeci ile zaman ayarlamam gerekiyor mu?"
 msgid "Do you cover databases and transactions?"
 msgstr "Veritabanları ve işlemleri kapsıyor musunuz?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:199
+#: src/features/Goal/Quiz/QuizPage2.tsx:200
 #. js-lingui-explicit-id
 msgid "Do you need a personalized plan?"
 msgstr "Kişiselleştirilmiş bir plana ihtiyacınız var mı?"
@@ -2500,7 +2501,7 @@ msgstr "Doktor"
 msgid "Dog Owner"
 msgstr "Köpek Sahibi"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:436
+#: src/features/Goal/Quiz/QuizPage2.tsx:409
 #. js-lingui-explicit-id
 msgid "Don't forget to try call mode in the practice section!"
 msgstr "Unutmayın, pratik bölümündeki arama modunu da deneyin!"
@@ -2842,7 +2843,7 @@ msgstr ""
 msgid "Error creating payment session. Try again later."
 msgstr "Ödeme oturumu oluşturulurken hata oluştu. Lütfen daha sonra tekrar deneyin."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:105
+#: src/features/Goal/Quiz/QuizPage2.tsx:106
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "Plan oluşturulurken hata oluştu. Lütfen tekrar deneyin."
@@ -3475,6 +3476,11 @@ msgstr ""
 msgid "For example:"
 msgstr "Örneğin:"
 
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:135
+#. js-lingui-explicit-id
+msgid "For focused, uninterrupted learning."
+msgstr "Odaklanmış, kesintisiz öğrenme için."
+
 #: src/features/Landing/Price/PricePage.tsx:230
 #. js-lingui-explicit-id
 msgid "For learners getting started"
@@ -3529,7 +3535,7 @@ msgstr "Frameworkler ve Kütüphaneler"
 msgid "Free"
 msgstr "Ücretsiz"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:409
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:125
 #. js-lingui-explicit-id
 msgid "Free Access"
 msgstr "Ücretsiz Erişim"
@@ -3539,7 +3545,7 @@ msgstr "Ücretsiz Erişim"
 msgid "Free Conversation"
 msgstr "Ücretsiz Konuşma"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:529
+#: src/features/Goal/Quiz/QuizPage2.tsx:502
 #. js-lingui-explicit-id
 msgid ""
 "Free plan is for speaking and writing practice. Paid plan unlocks listening "
@@ -3548,12 +3554,12 @@ msgstr ""
 "Ücretsiz plan konuşma ve yazma pratiği içindir. Ücretli plan, AI ile "
 "dinleme ve gerçek zamanlı konuşmaların kilidini açar."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:480
+#: src/features/Goal/Quiz/QuizPage2.tsx:453
 #. js-lingui-explicit-id
 msgid "Free plan:"
 msgstr "Ücretsiz plan:"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:465
+#: src/features/Goal/Quiz/QuizPage2.tsx:438
 #. js-lingui-explicit-id
 msgid "Free vs Paid Plan"
 msgstr "Ücretsiz vs Ücretli Plan"
@@ -3607,7 +3613,7 @@ msgstr "Önyüz Sistem Tasarımı"
 msgid "frontend system design interview"
 msgstr "frontend system tasarım mülakatı"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:397
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:125
 #: src/features/Landing/Price/PricePage.tsx:300
 #: src/features/Settings/MyProfile.tsx:90
 #: src/features/Usage/FeatureBlocker.tsx:51
@@ -3658,6 +3664,11 @@ msgstr "Tam AI mülakat koçu erişimi"
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Tam AI öğretmen erişimi"
+
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:172
+#. js-lingui-explicit-id
+msgid "Full voice features"
+msgstr "Tam ses özellikleri"
 
 #: src/features/Community/CommunityDashboard.tsx:103
 #: src/features/Community/CommunityPage.tsx:28
@@ -3936,13 +3947,13 @@ msgstr "Bize geri bildiriminizi verin"
 msgid "Global Chat"
 msgstr "Global Sohbet"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:439
-#: src/features/Goal/Quiz/QuizPage2.tsx:537
+#: src/features/Goal/Quiz/QuizPage2.tsx:412
+#: src/features/Goal/Quiz/QuizPage2.tsx:510
 #. js-lingui-explicit-id
 msgid "Go to Practice"
 msgstr "Pratik Yap"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:456
+#: src/features/Goal/Quiz/QuizPage2.tsx:429
 #. js-lingui-explicit-id
 msgid "Go to Practice with AI"
 msgstr "AI ile Pratik Yapmaya Git"
@@ -4223,8 +4234,8 @@ msgstr "İpucu:"
 msgid "Hints to boost your confidence"
 msgstr "Kendinize güveninizi artırmak için ipuçları"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:230
-#: src/features/Goal/Quiz/QuizPage2.tsx:270
+#: src/features/Goal/Quiz/QuizPage2.tsx:231
+#: src/features/Goal/Quiz/QuizPage2.tsx:271
 #. js-lingui-explicit-id
 msgid "Hobbies or interests"
 msgstr "Hobiler veya ilgi alanları"
@@ -4406,7 +4417,7 @@ msgstr ""
 "Bir React uygulamasının performansını hızlandırmak için nasıl "
 "iyileştirmeler yapardınız?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:385
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:29
 #. js-lingui-explicit-id
 msgid "How would you like to practice?"
 msgstr "Nasıl pratik yapmak istersiniz?"
@@ -4858,7 +4869,7 @@ msgstr "Bellek içi önbellekleme ekler ve veritabanı kaynaklarını artırır�
 msgid "I'd add retries with a longer timeout."
 msgstr "Tekrar denemeler ve daha uzun bir zaman aşımı süresi eklerdim."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:216
+#: src/features/Goal/Quiz/QuizPage2.tsx:217
 #. js-lingui-explicit-id
 msgid ""
 "I'll ask you a few questions to get to know you. Then, based on your "
@@ -4867,7 +4878,7 @@ msgstr ""
 "Sizi tanımak için size birkaç soru soracağım. Ardından, verdiğiniz "
 "cevaplara dayanarak size kişiselleştirilmiş bir çalışma planı oluşturacağım."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:302
+#: src/features/Goal/Quiz/QuizPage2.tsx:303
 #. js-lingui-explicit-id
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "Planınızı yapmadan önce size iki soru daha soracağım."
@@ -4886,7 +4897,7 @@ msgstr ""
 "Bu sık hataları tanıyın ve düzeltin, böylece mülakat performansınızı "
 "artırın."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:742
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:235
 #. js-lingui-explicit-id
 msgid ""
 "If it doesn’t feel like the right fit for you, you can request a refund "
@@ -4921,7 +4932,7 @@ msgstr ""
 "Ödeme geçmişinizle ilgili herhangi bir sorunuz varsa, buraya mesaj "
 "yazabilirsiniz. Size en kısa sürede yanıt vereceğiz."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:200
+#: src/features/Goal/Quiz/QuizPage2.tsx:201
 #. js-lingui-explicit-id
 msgid ""
 "If you want more tailored practice, I can create a plan based on your "
@@ -4939,6 +4950,11 @@ msgid ""
 msgstr ""
 "Tüm bilgilerinizi, bakiyeniz dahil olmak üzere silmek isterseniz, lütfen "
 "bizimle iletişime geçin."
+
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:136
+#. js-lingui-explicit-id
+msgid "If you want to try before you buy."
+msgstr "Satın almadan önce denemek istiyorsanız."
 
 #: src/features/Game/UserProfileModal.tsx:93
 #. js-lingui-explicit-id
@@ -5721,7 +5737,7 @@ msgstr ""
 "Erişilebilirlik ve performans optimizasyonu ile ilgili soruları panik "
 "yapmadan yanıtlamama yardımcı oldu."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:374
+#: src/features/Goal/Quiz/QuizPage2.tsx:375
 #. js-lingui-explicit-id
 msgid "It might take up to a minute."
 msgstr "Bir dakika kadar sürebilir."
@@ -6048,7 +6064,7 @@ msgstr "Hadi, bakiyenize biraz saat ekleyelim"
 msgid "Let's choose how to start practicing"
 msgstr "Haydi pratiğe nasıl başlayacağımızı seçelim"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:301
+#: src/features/Goal/Quiz/QuizPage2.tsx:302
 #. js-lingui-explicit-id
 msgid "Let's continue..."
 msgstr "Devam edelim..."
@@ -6089,17 +6105,17 @@ msgstr "Sınırlı erişim..."
 msgid "Limited messages and voice features"
 msgstr "Sınırlı mesajlar ve ses özellikleri"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:686
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:182
 #. js-lingui-explicit-id
 msgid "Limited messages per conversation"
 msgstr "Konuşma başına sınırlı mesajlar"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:690
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:186
 #. js-lingui-explicit-id
 msgid "Limited voice features"
 msgstr "Sınırlı ses özellikleri"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:516
+#: src/features/Goal/Quiz/QuizPage2.tsx:489
 #. js-lingui-explicit-id
 msgid "Listening practice. You can hear AI responses"
 msgstr "Dinleme pratiği. AI yanıtlarını duyabilirsiniz"
@@ -6185,7 +6201,7 @@ msgstr "Günlükleme/İzleme"
 msgid "Looking for something specific?"
 msgstr "Özel bir şey mi arıyorsunuz?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:221
+#: src/features/Goal/Quiz/QuizPage2.tsx:222
 #. js-lingui-explicit-id
 msgid "Main goal in learning"
 msgstr "Öğrenmede ana hedef"
@@ -6453,7 +6469,7 @@ msgstr ""
 "Çoğu mülakat, klasik \"güçlü yönler ve zayıf yönler\" sorusunu içerir. Bunu "
 "İngilizce'de iyi bir şekilde ele almak özellikle önemlidir."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:235
+#: src/features/Goal/Quiz/QuizPage2.tsx:236
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
 msgstr "Filmler, kitaplar veya müzik"
@@ -6551,7 +6567,7 @@ msgstr "Yeni Kelimeler"
 #: src/features/Game/GameOnboarding.tsx:138
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
-#: src/features/Goal/Quiz/QuizPage2.tsx:427
+#: src/features/Goal/Quiz/QuizPage2.tsx:400
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:261
 #: src/features/Survey/InfoStep.tsx:272
@@ -6565,7 +6581,7 @@ msgstr "İleri"
 msgid "Next Lesson"
 msgstr "Sonraki Ders"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:337
+#: src/features/Goal/Quiz/QuizPage2.tsx:338
 #. js-lingui-explicit-id
 msgid "Next question"
 msgstr "Sonraki soru"
@@ -6784,11 +6800,6 @@ msgstr "yayınlanmadı"
 msgid "Not running inside Telegram App"
 msgstr "Telegram Uygulaması içinde çalışmıyor"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:410
-#. js-lingui-explicit-id
-msgid "Not sure yet? Try the app for free first."
-msgstr "Henüz emin değil misiniz? Önce uygulamayı ücretsiz deneyin."
-
 #: src/features/Conversation/ConversationError.tsx:47
 #. js-lingui-explicit-id
 msgid "Notification was sent to the dev team. Sorry for that..."
@@ -6931,7 +6942,7 @@ msgstr "Diğer yaygın sorular şunları içerir:"
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
-#: src/features/Goal/Quiz/QuizPage2.tsx:67
+#: src/features/Goal/Quiz/QuizPage2.tsx:68
 #: src/features/Goal/Quiz/useQuiz.tsx:694
 #: src/features/Lang/LanguageSwitcher.tsx:103
 #. js-lingui-explicit-id
@@ -6987,7 +6998,7 @@ msgstr "Sayfa"
 msgid "Page Language"
 msgstr "Sayfa Dili"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:509
+#: src/features/Goal/Quiz/QuizPage2.tsx:482
 #. js-lingui-explicit-id
 msgid "Paid plan:"
 msgstr "Ücretli plan:"
@@ -7137,7 +7148,7 @@ msgstr ""
 msgid "Pick a level to start playing!"
 msgstr "Oynamaya başlamak için bir seviye seçin!"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:160
+#: src/features/Goal/Quiz/QuizPage2.tsx:161
 #. js-lingui-explicit-id
 msgid "Pick your teacher"
 msgstr "Öğretmeninizi seçin"
@@ -7948,7 +7959,7 @@ msgstr "Gerçek Hayat Rol Oynama ile İleri Düzey İngilizce Pratiği"
 msgid "Real-time conversation"
 msgstr "Gerçek zamanlı konuşma"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:521
+#: src/features/Goal/Quiz/QuizPage2.tsx:494
 #. js-lingui-explicit-id
 msgid "Real-time conversations with AI using voice"
 msgstr "Sesli AI ile gerçek zamanlı sohbetler"
@@ -7993,7 +8004,7 @@ msgstr ""
 msgid "Record"
 msgstr "Kaydet"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:257
+#: src/features/Goal/Quiz/QuizPage2.tsx:258
 msgid ""
 "Record 2-3 minutes story using <0>{learningLanguageName}</0> or "
 "<1>{nativeLanguageName}</1>. This will help me to create a personalized "
@@ -8003,7 +8014,7 @@ msgstr ""
 "2-3 dakikalık bir hikaye kaydedin. Bu, kişiselleştirilmiş bir pratik planı "
 "oluşturmama yardımcı olacak."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:252
+#: src/features/Goal/Quiz/QuizPage2.tsx:253
 msgid ""
 "Record 2-3 minutes story using <0>{learningLanguageName}</0>. This will "
 "help me to create a personalized practice plan."
@@ -8025,7 +8036,7 @@ msgstr ""
 "Topluluk Sohbetinde bir mesaj kaydedin ve liderlik tablosunda {points} puan "
 "kazanın"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:452
+#: src/features/Goal/Quiz/QuizPage2.tsx:425
 #. js-lingui-explicit-id
 msgid "Record a welcome message to our community of learners."
 msgstr "Öğrenci topluluğumuza hoş geldiniz mesajı kaydedin."
@@ -8104,10 +8115,10 @@ msgstr "İade"
 msgid "Refund form"
 msgstr "İade formu"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:729
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:223
 #. js-lingui-explicit-id
-msgid "Refund policy"
-msgstr "İade Politikası"
+msgid "Refund guarantee"
+msgstr "İade garantisi"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:436
 #. js-lingui-explicit-id
@@ -8372,7 +8383,7 @@ msgstr "Alacağınız geri bildirim türünü görün"
 msgid "See your improvements and track your learning journey"
 msgstr "İlerlemelerinizi görün ve öğrenme yolculuğunuzu izleyin"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:161
+#: src/features/Goal/Quiz/QuizPage2.tsx:162
 #. js-lingui-explicit-id
 msgid "Select a voice and look that feels right for you."
 msgstr "Sizin için doğru hissettiren bir ses ve görünüm seçin."
@@ -8427,7 +8438,7 @@ msgstr "Semantik HTML"
 msgid "Send"
 msgstr "Gönder"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:451
+#: src/features/Goal/Quiz/QuizPage2.tsx:424
 #. js-lingui-explicit-id
 msgid "Send a message to the community"
 msgstr "Topluluğa bir mesaj gönder"
@@ -8495,7 +8506,7 @@ msgstr "kıdemli ön uç görüşmesi"
 msgid "Sentences"
 msgstr "Cümleler"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:150
+#: src/features/Goal/Quiz/QuizPage2.tsx:151
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Dilimi Ayarla"
@@ -8698,7 +8709,7 @@ msgstr ""
 msgid "Skip"
 msgstr "Atla"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:206
+#: src/features/Goal/Quiz/QuizPage2.tsx:207
 #. js-lingui-explicit-id
 msgid "Skip all"
 msgstr "Hepsini atla"
@@ -8742,7 +8753,7 @@ msgstr ""
 "konuşun. Eğer mülakatçı, “Bize ulaşmakta herhangi bir zorluk yaşadınız mı?” "
 "diye sorarsa, şöyle diyebilirsiniz:"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:149
+#: src/features/Goal/Quiz/QuizPage2.tsx:150
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "Bu yüzden sizin için kelimeleri çevirebilirim"
@@ -8813,7 +8824,7 @@ msgstr "Kendi kendinize çok düşünmeden, doğal bir şekilde konuşun"
 msgid "Speaking"
 msgstr "Konuşma"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:487
+#: src/features/Goal/Quiz/QuizPage2.tsx:460
 #. js-lingui-explicit-id
 msgid "Speaking and writing practice"
 msgstr "Konuşma ve yazma pratiği"
@@ -9234,7 +9245,7 @@ msgstr "Ürün şirketlerinde üst düzeyde kullanılan sistem tasarım senaryol
 #: src/features/Dashboard/SelectLanguage.tsx:95
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:25
-#: src/features/Goal/Quiz/QuizPage2.tsx:68
+#: src/features/Goal/Quiz/QuizPage2.tsx:69
 #: src/features/Goal/Quiz/useQuiz.tsx:695
 #: src/features/Lang/LanguageSwitcher.tsx:104
 #. js-lingui-explicit-id
@@ -9371,7 +9382,7 @@ msgstr ""
 "Bir hata üzerinde takıldığınız bir zamanı anlatın. Sebebini nasıl buldunuz "
 "ve düzelttiniz?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:249
+#: src/features/Goal/Quiz/QuizPage2.tsx:250
 #. js-lingui-explicit-id
 msgid "Tell me about your goals"
 msgstr "Hedefleriniz hakkında bana bilgi verin"
@@ -9496,7 +9507,7 @@ msgstr ""
 "API sürümleme ve dayanıklılık uygulaması, sorularıma güvenle yanıt vermeme "
 "yardımcı oldu. İki hafta içinde bir teklif aldım."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:225
+#: src/features/Goal/Quiz/QuizPage2.tsx:226
 #. js-lingui-explicit-id
 msgid "The biggest challenge in learning"
 msgstr "Öğrenmede en büyük zorluk"
@@ -9533,12 +9544,12 @@ msgstr ""
 "aynı zamanda 'SmallTalk' olarak da bilinir. İşe alımcılar bu süreyi dostça "
 "bir atmosfer yaratmak ve sizi biraz daha iyi tanımak için kullanır."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:466
+#: src/features/Goal/Quiz/QuizPage2.tsx:439
 #. js-lingui-explicit-id
 msgid "The key differences between them."
 msgstr "Aralarındaki temel farklar."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:338
+#: src/features/Goal/Quiz/QuizPage2.tsx:339
 #. js-lingui-explicit-id
 msgid "The last question before we create your plan"
 msgstr "Planınızı oluşturmadan önceki son soru"
@@ -9599,7 +9610,7 @@ msgstr "Bu eylem geri alınamaz."
 msgid "This approach shows self-awareness and growth."
 msgstr "Bu yaklaşım, öz-farkındalığı ve gelişimi gösterir."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:187
+#: src/features/Goal/Quiz/QuizPage2.tsx:188
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "Bu, butonlarda ve menülerde gördüğünüz metindir."
@@ -9807,21 +9818,17 @@ msgstr "Oturum açma sırasında bilinmeyen hata"
 msgid "Unlimited answer reviews"
 msgstr "Sınırsız yanıt incelemesi"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:398
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:168
 #. js-lingui-explicit-id
-msgid ""
-"Unlock full access to personalized practice plans and real-time "
-"conversations with AI."
-msgstr ""
-"Yapay zeka ile kişiselleştirilmiş pratik planlarına ve gerçek zamanlı "
-"konuşmalara tam erişimi aç."
+msgid "Unlimited messages per conversation"
+msgstr "Sohbet başına sınırsız mesaj"
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:68
 #. js-lingui-explicit-id
 msgid "Unlock full interview preparation"
 msgstr "Tam görüşme hazırlığının kilidini aç"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:386
+#: src/features/Goal/Quiz/AccessQuizStep.tsx:30
 #. js-lingui-explicit-id
 msgid ""
 "Unlock human-like voice conversations and a curriculum tailored "
@@ -10151,7 +10158,7 @@ msgstr "WCAG Standartları"
 msgid "We appreciate your feedback!"
 msgstr "Geri bildiriminizi takdir ediyoruz!"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:373
+#: src/features/Goal/Quiz/QuizPage2.tsx:374
 #. js-lingui-explicit-id
 msgid "We are ready to craft your plan."
 msgstr "Planınızı oluşturmaya hazırız."
@@ -10260,7 +10267,7 @@ msgstr "Sağlık"
 msgid "What are HTML semantic elements and why are they important?"
 msgstr "HTML anlamsal öğeler nelerdir ve neden önemlidirler?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:266
+#: src/features/Goal/Quiz/QuizPage2.tsx:267
 #. js-lingui-explicit-id
 msgid "What challenges you face"
 msgstr "Karşılaştığınız zorluklar nelerdir?"
@@ -10320,7 +10327,7 @@ msgstr "FluencyPal'in ana odak noktası nedir?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "Ne tür backend görüşmeleri için alıştırma yapabilirim?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:148
+#: src/features/Goal/Quiz/QuizPage2.tsx:149
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "Hangi dili konuşuyorsun?"
@@ -10382,7 +10389,7 @@ msgstr "Ne yaptınız iyi"
 msgid "What you get with FluencyPal"
 msgstr "FluencyPal ile ne elde edersiniz?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:274
+#: src/features/Goal/Quiz/QuizPage2.tsx:275
 #. js-lingui-explicit-id
 msgid "What you want to achieve"
 msgstr "Ne elde etmek istiyorsunuz?"
@@ -11139,6 +11146,25 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:410
+#. js-lingui-explicit-id
+#~ msgid "Not sure yet? Try the app for free first."
+#~ msgstr "Henüz emin değil misiniz? Önce uygulamayı ücretsiz deneyin."
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:729
+#. js-lingui-explicit-id
+#~ msgid "Refund policy"
+#~ msgstr "İade Politikası"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:398
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Unlock full access to personalized practice plans and real-time "
+#~ "conversations with AI."
+#~ msgstr ""
+#~ "Yapay zeka ile kişiselleştirilmiş pratik planlarına ve gerçek zamanlı "
+#~ "konuşmalara tam erişimi aç."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:409
 #. js-lingui-explicit-id
