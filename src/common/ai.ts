@@ -156,6 +156,7 @@ export const modalPricePerMillionTokens: Record<RealTimeModel, RealtimeUsagePric
     text_input: 0.6,
     text_cached_input: 0.06,
     text_output: 2.4,
+
     audio_input: 10,
     audio_cached_input: 0.3,
     audio_output: 20,
