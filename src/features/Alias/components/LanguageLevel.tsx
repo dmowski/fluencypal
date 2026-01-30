@@ -93,7 +93,12 @@ export const LanguageLevel = () => {
           <Button variant="outlined" onClick={handleBack} fullWidth data-testid="language-back">
             Back
           </Button>
-          <Button variant="contained" onClick={handleContinue} fullWidth data-testid="language-continue">
+          <Button
+            variant="contained"
+            onClick={handleContinue}
+            fullWidth
+            data-testid="language-continue"
+          >
             Continue
           </Button>
         </Stack>
