@@ -169,7 +169,7 @@ export const useGameState = () => {
     if (!state.settings) return null;
 
     const currentTurn = getCurrentTurn();
-    if (!currentTurn) {
+    if (!currentTurn || !currentTurn.isActive) {
       // Determine whose turn it should be
       const totalPlayers = state.settings.players.length;
       const playerIndex = state.currentTurnIndex % totalPlayers;
@@ -183,9 +183,14 @@ export const useGameState = () => {
     if (!state.settings || state.settings.mode !== 'teams') return null;
 
     const currentTurn = getCurrentTurn();
-    if (!currentTurn || !currentTurn.teamId) return null;
+    if (currentTurn && currentTurn.isActive && currentTurn.teamId) {
+      return state.settings.teams.find((t) => t.id === currentTurn.teamId) || null;
+    }
 
-    return state.settings.teams.find((t) => t.id === currentTurn.teamId) || null;
+    const nextPlayer = getCurrentPlayer();
+    if (!nextPlayer?.teamId) return null;
+
+    return state.settings.teams.find((t) => t.id === nextPlayer.teamId) || null;
   };
 
   const getScores = (): { playerId: string; score: number }[] => {

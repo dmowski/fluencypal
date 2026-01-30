@@ -300,4 +300,76 @@ test.describe('Alias Game', () => {
       expect(thirdWord).not.toBe(secondWord);
     });
   });
+
+  test.describe('Turn Summary', () => {
+    test('shows accurate counts, score, and total scores after a fixed-words turn', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+      await page.getByTestId('language-continue').click();
+      await page.getByTestId('categories-select-all').click();
+      await page.getByTestId('categories-continue').click();
+
+      await page.getByTestId('turn-type-fixed').click();
+      await page.getByTestId('word-count-5').click();
+      await page.getByTestId('round-settings-start').click();
+      await page.getByTestId('turn-start-button').click();
+
+      const counter = page.getByTestId('word-counter');
+
+      // 3 correct, 2 skip => score 1
+      await page.getByTestId('button-correct').click();
+      await expect(counter).toContainText(/1\s*\/\s*5/);
+      await page.getByTestId('button-correct').click();
+      await expect(counter).toContainText(/2\s*\/\s*5/);
+      await page.getByTestId('button-correct').click();
+      await expect(counter).toContainText(/3\s*\/\s*5/);
+      await page.getByTestId('button-skip').click();
+      await expect(counter).toContainText(/4\s*\/\s*5/);
+      await page.getByTestId('button-skip').click();
+
+      await expect(page.getByTestId('turn-summary')).toBeVisible();
+
+      await expect(page.getByTestId('turn-summary-correct')).toContainText('3');
+      await expect(page.getByTestId('turn-summary-skip')).toContainText('2');
+      await expect(page.getByTestId('turn-summary-score')).toContainText('1');
+
+      await expect(page.getByTestId('turn-summary-player')).toContainText('Player 1');
+
+      const totalScoreEntry = page.getByTestId(/total-score-/).first();
+      await expect(totalScoreEntry).toContainText('1');
+    });
+
+    test('next turn shows the next player', async ({ page }) => {
+      await page.goto('/alias');
+      await page.getByTestId('mode-free-for-all').click();
+      await page.getByTestId('players-continue').click();
+      await page.getByTestId('language-continue').click();
+      await page.getByTestId('categories-select-all').click();
+      await page.getByTestId('categories-continue').click();
+
+      await page.getByTestId('turn-type-fixed').click();
+      await page.getByTestId('word-count-5').click();
+      await page.getByTestId('round-settings-start').click();
+      await page.getByTestId('turn-start-button').click();
+
+      const counter = page.getByTestId('word-counter');
+
+      await page.getByTestId('button-correct').click();
+      await expect(counter).toContainText(/1\s*\/\s*5/);
+      await page.getByTestId('button-correct').click();
+      await expect(counter).toContainText(/2\s*\/\s*5/);
+      await page.getByTestId('button-correct').click();
+      await expect(counter).toContainText(/3\s*\/\s*5/);
+      await page.getByTestId('button-correct').click();
+      await expect(counter).toContainText(/4\s*\/\s*5/);
+      await page.getByTestId('button-correct').click();
+
+      await expect(page.getByTestId('turn-summary')).toBeVisible();
+      await page.getByTestId('turn-summary-next').click();
+
+      await expect(page.getByTestId('turn-start')).toBeVisible();
+      await expect(page.getByTestId('turn-start-player')).toContainText('Player 2');
+    });
+  });
 });
