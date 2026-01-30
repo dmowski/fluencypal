@@ -342,38 +342,35 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 ---
 
-### Phase 11: Turn Summary Screen ✓
+### Phase 11: Turn Summary Screen
 
 **Goal:** Show results after each turn ends
 
 **Tasks:**
 
-- [x] Create TurnSummary component
-- [x] Display:
+- [ ] Create TurnSummary component
+- [ ] Display:
   - Player/team name
   - Words guessed correctly (count)
   - Words skipped (count)
   - Net score for this turn
   - Updated total scores
-- [x] List correct words (expandable/collapsible)
-- [x] "Next Player" or "Next Turn" button
-- [x] Auto-advance after delay (optional)
+- [ ] List correct words (expandable/collapsible)
+- [ ] "Next Player" or "Next Turn" button
+- [ ] Auto-advance after delay (optional)
 
-**Files Created:**
+**Files to Create:**
 
 - `src/features/Alias/components/TurnSummary.tsx`
 
 **E2E Tests:**
 
-- ✓ Complete a turn and verify summary displays
-- ✓ Verify correct word count is accurate
-- ✓ Verify skip count is accurate
-- ✓ Verify score calculations are correct
-- ✓ Click "Next Turn" and verify next player/team is shown
-- ✓ Verify total scores are updated correctly
-- ✓ All 23 E2E tests passing
-
-**Status:** COMPLETED
+- Complete a turn and verify summary displays
+- Verify correct word count is accurate
+- Verify skip count is accurate
+- Verify score calculations are correct
+- Click "Next Turn" and verify next player/team is shown
+- Verify total scores are updated correctly
 
 ---
 
@@ -637,7 +634,7 @@ Building a responsive web-based Alias word guessing game for English learning. T
 
 ---
 
-## Current Status: Phase 11 Complete ✓ → Phase 12 In Progress
+## Current Status: Phase 10 Complete ✓
 
 **Completed Phases:**
 
@@ -651,8 +648,5 @@ Building a responsive web-based Alias word guessing game for English learning. T
 - ✓ Phase 8: Game Engine & Word Logic
 - ✓ Phase 9: Turn Start Screen
 - ✓ Phase 10: Word Display & Gameplay
-- ✓ Phase 11: Turn Summary Screen
 
-**In Progress:** Phase 12 - Scoreboard Display
-
-**Next Step:** Phase 12 - Implement live scoreboard showing all players/teams with scores
+**Next Step:** Phase 11 - Turn Summary Screen
