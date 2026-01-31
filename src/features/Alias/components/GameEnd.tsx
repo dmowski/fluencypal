@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useMemo } from 'react';
+import { useLingui } from '@lingui/react';
 import {
   Box,
   Button,
@@ -21,6 +22,7 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { useGameState } from '../hooks/useGameState';
 
 export const GameEnd: React.FC = () => {
+  const { i18n } = useLingui();
   const { state, setScreen, initializeGame, getScores, getTeamScores } = useGameState();
 
   const isTeamsMode = state.settings?.mode === 'teams';
@@ -90,13 +92,13 @@ export const GameEnd: React.FC = () => {
           <EmojiEventsIcon sx={{ fontSize: 80, color: '#ffd700' }} data-testid="winner-trophy" />
           <Stack spacing={1} alignItems="center">
             <Typography variant="h4" fontWeight="bold">
-              Game Over!
+              {i18n._('Game Over!')}
             </Typography>
             <Typography variant="h5" color="primary" data-testid="winner-name">
-              {winner?.name} wins!
+              {i18n._(`${winner?.name} wins!`)}
             </Typography>
             <Typography variant="h6" data-testid="winner-score">
-              Final Score: {winner?.score}
+              {i18n._(`Final Score: ${winner?.score}`)}
             </Typography>
           </Stack>
         </Stack>
@@ -104,20 +106,20 @@ export const GameEnd: React.FC = () => {
         {/* Final Scoreboard */}
         <Box>
           <Typography variant="h6" sx={{ mb: 2 }}>
-            Final Standings
+            {i18n._('Final Standings')}
           </Typography>
           <TableContainer component={Paper} variant="outlined">
             <Table data-testid="final-scoreboard">
               <TableHead>
                 <TableRow>
                   <TableCell sx={{ fontWeight: 'bold' }} align="left">
-                    Rank
+                    {i18n._('Rank')}
                   </TableCell>
                   <TableCell sx={{ fontWeight: 'bold' }} align="left">
-                    {isTeamsMode ? 'Team' : 'Player'}
+                    {isTeamsMode ? i18n._('Team') : i18n._('Player')}
                   </TableCell>
                   <TableCell sx={{ fontWeight: 'bold' }} align="right">
-                    Score
+                    {i18n._('Score')}
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -165,13 +167,13 @@ export const GameEnd: React.FC = () => {
         {/* Game Statistics */}
         <Box>
           <Typography variant="h6" sx={{ mb: 2 }}>
-            Game Statistics
+            {i18n._('Game Statistics')}
           </Typography>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
             <Card sx={{ flex: 1 }}>
               <CardContent>
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                  Total Turns
+                  {i18n._('Total Turns')}
                 </Typography>
                 <Typography variant="h5" fontWeight="bold" data-testid="stat-turns">
                   {totalTurnsPlayed}
@@ -181,7 +183,7 @@ export const GameEnd: React.FC = () => {
             <Card sx={{ flex: 1 }}>
               <CardContent>
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                  Words Attempted
+                  {i18n._('Words Attempted')}
                 </Typography>
                 <Typography variant="h5" fontWeight="bold" data-testid="stat-words">
                   {totalWordsAttempted}
@@ -191,7 +193,7 @@ export const GameEnd: React.FC = () => {
             <Card sx={{ flex: 1 }}>
               <CardContent>
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                  Accuracy
+                  {i18n._('Accuracy')}
                 </Typography>
                 <Typography variant="h5" fontWeight="bold" data-testid="stat-accuracy">
                   {accuracy}%
@@ -210,7 +212,7 @@ export const GameEnd: React.FC = () => {
             data-testid="button-play-again"
             sx={{ flex: 1 }}
           >
-            Play Again
+            {i18n._('Play Again')}
           </Button>
           <Button
             variant="outlined"
@@ -219,7 +221,7 @@ export const GameEnd: React.FC = () => {
             data-testid="button-new-game"
             sx={{ flex: 1 }}
           >
-            New Game
+            {i18n._('New Game')}
           </Button>
         </Stack>
       </Stack>

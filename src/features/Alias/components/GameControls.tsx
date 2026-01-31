@@ -1,5 +1,6 @@
 'use client';
 
+import { useLingui } from '@lingui/react';
 import { Stack, Button } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
@@ -10,6 +11,7 @@ interface GameControlsProps {
 }
 
 export const GameControls = ({ onCorrect, onSkip }: GameControlsProps) => {
+  const { i18n } = useLingui();
   return (
     <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} width="100%" maxWidth={520}>
       <Button
@@ -21,7 +23,7 @@ export const GameControls = ({ onCorrect, onSkip }: GameControlsProps) => {
         data-testid="button-correct"
         sx={{ flex: 1, py: 2, fontSize: '1.1rem' }}
       >
-        Correct
+        {i18n._('Correct')}
       </Button>
       <Button
         variant="contained"
@@ -32,7 +34,7 @@ export const GameControls = ({ onCorrect, onSkip }: GameControlsProps) => {
         data-testid="button-skip"
         sx={{ flex: 1, py: 2, fontSize: '1.1rem' }}
       >
-        Skip
+        {i18n._('Skip')}
       </Button>
     </Stack>
   );
