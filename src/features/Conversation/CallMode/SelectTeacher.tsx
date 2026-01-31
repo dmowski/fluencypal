@@ -68,7 +68,6 @@ export const AvatarCard = ({
   const [isPlayingThisVoice, setIsPlayingThisVoice] = useState(false);
 
   const voiceInstructionWithSpeed = `${getVoiceSpeedInstruction(voiceSpeed)} ${aiAvatar.voiceInstruction} `;
-  if (isPlayingThisVoice) console.log('voiceInstructionWithSpeed', voiceInstructionWithSpeed);
   return (
     <Stack
       sx={{
