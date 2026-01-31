@@ -8,7 +8,7 @@ import { SubscriptionPaymentModal } from '../Usage/SubscriptionPaymentModal';
 import { useAuth } from '../Auth/useAuth';
 import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography, Select, MenuItem, FormControl } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { SelectTeacher } from '../Conversation/CallMode/SelectTeacher';
 import { useSettings } from '../Settings/useSettings';
@@ -50,32 +50,17 @@ export const TeacherVoiceModal: React.FC = () => {
             </Stack>
             <Stack>
               <Typography variant="caption">{i18n._('Voice speed')}</Typography>
-              <ButtonGroup>
-                <Button
-                  variant={voiceSpeed === 'extremely-slow' ? 'contained' : 'outlined'}
-                  onClick={() => settings.setAiVoiceSpeed('extremely-slow')}
+              <FormControl fullWidth>
+                <Select
+                  value={voiceSpeed}
+                  onChange={(e) => settings.setAiVoiceSpeed(e.target.value as any)}
                 >
-                  {i18n._('Extra Slow')}
-                </Button>
-                <Button
-                  variant={voiceSpeed === 'slow' ? 'contained' : 'outlined'}
-                  onClick={() => settings.setAiVoiceSpeed('slow')}
-                >
-                  {i18n._('Slow')}
-                </Button>
-                <Button
-                  variant={voiceSpeed === 'normal' ? 'contained' : 'outlined'}
-                  onClick={() => settings.setAiVoiceSpeed('normal')}
-                >
-                  {i18n._('Normal')}
-                </Button>
-                <Button
-                  variant={voiceSpeed === 'fast' ? 'contained' : 'outlined'}
-                  onClick={() => settings.setAiVoiceSpeed('fast')}
-                >
-                  {i18n._('Fast')}
-                </Button>
-              </ButtonGroup>
+                  <MenuItem value="extremely-slow">{i18n._('Extra Slow')}</MenuItem>
+                  <MenuItem value="slow">{i18n._('Slow')}</MenuItem>
+                  <MenuItem value="normal">{i18n._('Normal')}</MenuItem>
+                  <MenuItem value="fast">{i18n._('Fast')}</MenuItem>
+                </Select>
+              </FormControl>
             </Stack>
             <SelectTeacher
               selectedVoice={settings.userSettings?.teacherVoice}
