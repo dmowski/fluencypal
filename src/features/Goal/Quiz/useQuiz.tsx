@@ -115,6 +115,7 @@ interface QuizContextType {
   isFollowUpGenerating: boolean;
   isGoalQuestionGenerating: boolean;
   isGoalGenerating: boolean;
+  path: QuizStep[];
 }
 const QuizContext = createContext<QuizContextType | null>(null);
 
@@ -906,6 +907,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     isFollowUpGenerating,
     isGoalQuestionGenerating,
     isGoalGenerating,
+    path,
   };
 }
 

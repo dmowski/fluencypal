@@ -56,6 +56,7 @@ const QuizQuestions = () => {
     pageLanguage,
     isGoalGenerating,
     isLastStep,
+    path,
   } = useQuiz();
   const { i18n } = useLingui();
 
@@ -87,7 +88,11 @@ const QuizQuestions = () => {
   const doneQuiz = async () => {
     setRedirecting(true);
 
-    const queryParams = isFullAccessRedirect && !access.isFullAppAccess ? '?paymentModal=true' : '';
+    const isAccessStep = path.includes('accessPlan');
+
+    const queryParams =
+      isAccessStep && isFullAccessRedirect && !access.isFullAppAccess ? '?paymentModal=true' : '';
+
     try {
       await confirmPlan();
       const goalTalkModeElement = survey?.goalData?.elements.find(
