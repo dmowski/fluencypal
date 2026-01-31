@@ -12,7 +12,13 @@ import { db } from '../Firebase/firebaseDb';
 import { useCurrency } from '../User/useCurrency';
 import { getCountryByIP } from '../User/getCountry';
 import { countries } from '@/libs/countries';
-import { AppMode, ConversationMode, InitUserSettings, UserSettings } from '@/common/user';
+import {
+  AiVoiceSpeed,
+  AppMode,
+  ConversationMode,
+  InitUserSettings,
+  UserSettings,
+} from '@/common/user';
 import { NativeLangCode } from '@/libs/language/type';
 import { useUserSource } from '../Analytics/useUserSource';
 import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
@@ -39,6 +45,9 @@ interface SettingsContextType {
   setConversationMode: (mode: ConversationMode) => Promise<void>;
 
   setVoice: (voice: AiVoice) => Promise<void>;
+
+  aiVoiceSpeed: AiVoiceSpeed;
+  setAiVoiceSpeed: (speed: AiVoiceSpeed) => Promise<void>;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -60,6 +69,9 @@ export const settingsContext = createContext<SettingsContextType>({
   conversationMode: 'record',
   setConversationMode: async () => {},
   setVoice: async () => {},
+
+  aiVoiceSpeed: 'slow',
+  setAiVoiceSpeed: async () => {},
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -217,6 +229,12 @@ function useProvideSettings(): SettingsContextType {
     conversationMode: userSettings?.conversationMode || 'record',
     setConversationMode,
     setVoice,
+
+    aiVoiceSpeed: userSettings?.teacherVoiceSpeed || 'slow',
+    setAiVoiceSpeed: async (speed: AiVoiceSpeed) => {
+      if (!userSettingsDoc) return;
+      await setDoc(userSettingsDoc, { teacherVoiceSpeed: speed }, { merge: true });
+    },
   };
 }
 

@@ -18,6 +18,8 @@ export type AppMode = 'interview' | 'learning';
 
 export type ConversationMode = 'record' | 'call' | 'chat';
 
+export type AiVoiceSpeed = 'slow' | 'normal' | 'fast';
+
 export interface UserSettings extends InitUserSettings {
   languageCode: SupportedLanguage | null;
   pageLanguageCode: SupportedLanguage | null;
@@ -36,6 +38,8 @@ export interface UserSettings extends InitUserSettings {
   conversationMode: ConversationMode | null;
 
   browserInfo: string | null;
+
+  teacherVoiceSpeed?: AiVoiceSpeed;
 }
 
 export interface UserSettingsWithId extends UserSettings {
