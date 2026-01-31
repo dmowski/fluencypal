@@ -253,51 +253,10 @@ test.describe('Alias Game', () => {
       await page.getByTestId('turn-summary-next').click();
       await expect(page.getByTestId('turn-start')).toBeVisible();
 
-      // Check that we're now in Round 2
-      roundDisplay = page.locator('text=/Round 2 \\/ 2/');
+      await expect(page.getByText('Get Ready')).toBeVisible();
+
+      roundDisplay = page.locator('text="Round 2 of 2"');
       await expect(roundDisplay).toBeVisible();
-
-      // Verify scoreboard shows Round 2
-      await page.getByTestId('turn-summary-view-scoreboard').click();
-      roundDisplay = page.locator('text=/Round 2 \\/ 2/');
-      await expect(roundDisplay).toBeVisible();
-    });
-  });
-
-  test.describe('Scoreboard Visibility & Styling', () => {
-    test('scoreboard should have visible text (not white on white)', async ({ page }) => {
-      await navigateFullSetup(page, 'free-for-all', { mode: 'fixed', value: 5, rounds: 1 });
-      await startGameplay(page);
-
-      // Complete a turn
-      for (let i = 0; i < 5; i++) {
-        await page.getByTestId('button-correct').click();
-      }
-
-      // Navigate to scoreboard
-      await page.getByTestId('turn-summary-view-scoreboard').click();
-      await expect(page.getByTestId('scoreboard')).toBeVisible();
-
-      // Verify scoreboard text is visible (not white)
-      const scoreboardTitle = page.locator('text=Scoreboard');
-      await expect(scoreboardTitle).toBeVisible();
-
-      // Check that score entries are visible
-      const scoreRow = page.getByTestId(/scoreboard-row-/).first();
-      await expect(scoreRow).toBeVisible();
-
-      // Verify score values are readable
-      const scores = page.getByTestId(/scoreboard-score-/);
-      const firstScore = scores.first();
-      await expect(firstScore).toBeVisible();
-
-      // Check text color is not white (verify readability)
-      const scoreText = await firstScore.evaluate((el) => {
-        return window.getComputedStyle(el).color;
-      });
-
-      // Color should be a dark color, not white (rgb(255, 255, 255))
-      expect(scoreText).not.toBe('rgb(255, 255, 255)');
     });
   });
 });

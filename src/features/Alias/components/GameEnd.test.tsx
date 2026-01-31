@@ -177,7 +177,7 @@ describe('GameEnd - Final Standings Bug Fix', () => {
       // Check final standings
       expect(screen.getByTestId('final-score-Bob')).toBeInTheDocument();
       const cells = screen.getAllByRole('cell');
-      
+
       // Find the score cells in the standings table
       expect(screen.getByTestId('final-score-Bob')).toBeInTheDocument();
       expect(screen.getByTestId('final-score-Alice')).toBeInTheDocument();
