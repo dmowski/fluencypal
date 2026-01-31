@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import { useLingui } from '@lingui/react';
 import {
   Container,
   Stack,
@@ -18,6 +19,7 @@ const wordCountOptions = [5, 10, 15];
 const roundOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export const RoundSettings = () => {
+  const { i18n } = useLingui();
   const { state, updateSettings, setScreen, startGame } = useGameState();
 
   const turnSettings = state.settings?.turnSettings ?? initialGameSettings.turnSettings;
@@ -28,12 +30,21 @@ export const RoundSettings = () => {
   const selectedWordCount = turnSettings?.wordCount ?? 10;
 
   const summary = useMemo(() => {
-    const roundText = `${numberOfRounds} round${numberOfRounds === 1 ? '' : 's'}`;
+    const roundText = i18n._(`{count} round{plural}`, {
+      count: numberOfRounds,
+      plural: numberOfRounds === 1 ? '' : 's',
+    });
     if (isTimed) {
-      return `${roundText}, ${selectedDuration}s per turn`;
+      return i18n._(`{rounds}, {duration}s per turn`, {
+        rounds: roundText,
+        duration: selectedDuration,
+      });
     }
-    return `${roundText}, ${selectedWordCount} words per turn`;
-  }, [isTimed, numberOfRounds, selectedDuration, selectedWordCount]);
+    return i18n._(`{rounds}, {words} words per turn`, {
+      rounds: roundText,
+      words: selectedWordCount,
+    });
+  }, [isTimed, numberOfRounds, selectedDuration, selectedWordCount, i18n]);
 
   const handleTurnTypeChange = (_: unknown, value: 'timed' | 'fixed-words' | null) => {
     if (!value) return;
@@ -97,16 +108,16 @@ export const RoundSettings = () => {
       <Stack spacing={4} sx={{ py: 4 }}>
         <Stack spacing={1} alignItems="center">
           <Typography variant="h4" fontWeight="bold" textAlign="center">
-            Round Settings
+            {i18n._('Round Settings')}
           </Typography>
           <Typography variant="body1" color="text.secondary" textAlign="center">
-            Choose how long each turn lasts and how many rounds to play.
+            {i18n._('Choose how long each turn lasts and how many rounds to play.')}
           </Typography>
         </Stack>
 
         <Stack spacing={2}>
           <Typography variant="h6" fontWeight="medium">
-            Turn type
+            {i18n._('Turn type')}
           </Typography>
           <ToggleButtonGroup
             value={turnSettings?.type ?? 'timed'}
@@ -115,16 +126,16 @@ export const RoundSettings = () => {
             data-testid="turn-type"
           >
             <ToggleButton value="timed" data-testid="turn-type-timed">
-              Timed
+              {i18n._('Timed')}
             </ToggleButton>
             <ToggleButton value="fixed-words" data-testid="turn-type-fixed">
-              Fixed words
+              {i18n._('Fixed words')}
             </ToggleButton>
           </ToggleButtonGroup>
 
           {isTimed ? (
             <Stack spacing={2}>
-              <Typography variant="subtitle1">Duration</Typography>
+              <Typography variant="subtitle1">{i18n._('Duration')}</Typography>
               <ToggleButtonGroup
                 value={selectedDuration}
                 exclusive
@@ -133,14 +144,14 @@ export const RoundSettings = () => {
               >
                 {timedOptions.map((option) => (
                   <ToggleButton key={option} value={option} data-testid={`duration-${option}`}>
-                    {option}s
+                    {i18n._(`{duration}s`, { duration: option })}
                   </ToggleButton>
                 ))}
               </ToggleButtonGroup>
             </Stack>
           ) : (
             <Stack spacing={2}>
-              <Typography variant="subtitle1">Words per turn</Typography>
+              <Typography variant="subtitle1">{i18n._('Words per turn')}</Typography>
               <ToggleButtonGroup
                 value={selectedWordCount}
                 exclusive
@@ -149,7 +160,7 @@ export const RoundSettings = () => {
               >
                 {wordCountOptions.map((option) => (
                   <ToggleButton key={option} value={option} data-testid={`word-count-${option}`}>
-                    {option} words
+                    {i18n._(`{count} words`, { count: option })}
                   </ToggleButton>
                 ))}
               </ToggleButtonGroup>
@@ -161,7 +172,7 @@ export const RoundSettings = () => {
 
         <Stack spacing={2}>
           <Typography variant="h6" fontWeight="medium">
-            Number of rounds
+            {i18n._('Number of rounds')}
           </Typography>
           <ToggleButtonGroup
             value={numberOfRounds}
@@ -178,17 +189,17 @@ export const RoundSettings = () => {
         </Stack>
 
         <Typography variant="body2" color="text.secondary" textAlign="center">
-          Summary: {summary}
+          {i18n._(`Summary: {summary}`, { summary })}
         </Typography>
 
         <Divider />
 
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="space-between">
           <Button variant="outlined" onClick={handleBack} data-testid="round-settings-back">
-            Back
+            {i18n._('Back')}
           </Button>
           <Button variant="contained" onClick={handleStart} data-testid="round-settings-start">
-            Start game
+            {i18n._('Start game')}
           </Button>
         </Stack>
       </Stack>

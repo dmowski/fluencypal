@@ -1,10 +1,12 @@
 'use client';
 
 import { useMemo } from 'react';
+import { useLingui } from '@lingui/react';
 import { Container, Stack, Typography, Button, Divider, Box } from '@mui/material';
 import { useGameState } from '../hooks/useGameState';
 
 export const TurnStart = () => {
+  const { i18n } = useLingui();
   const { state, getCurrentPlayer, getCurrentTeam, getScores, getTeamScores, startTurn } =
     useGameState();
 
@@ -19,7 +21,7 @@ export const TurnStart = () => {
     if (isTeamsMode) {
       const teamScores = getTeamScores();
       return teamScores.map((score) => {
-        const teamName = state.settings?.teams.find((t) => t.id === score.teamId)?.name ?? 'Team';
+        const teamName = state.settings?.teams.find((t) => t.id === score.teamId)?.name ?? i18n._('Team');
         return { id: score.teamId, name: teamName, score: score.score };
       });
     }
@@ -27,10 +29,10 @@ export const TurnStart = () => {
     const playerScores = getScores();
     return playerScores.map((score) => {
       const playerName =
-        state.settings?.players.find((p) => p.id === score.playerId)?.name ?? 'Player';
+        state.settings?.players.find((p) => p.id === score.playerId)?.name ?? i18n._('Player');
       return { id: score.playerId, name: playerName, score: score.score };
     });
-  }, [getScores, getTeamScores, isTeamsMode, state.settings]);
+  }, [getScores, getTeamScores, isTeamsMode, state.settings, i18n]);
 
   const handleStartTurn = () => {
     if (!player) return;
@@ -41,9 +43,9 @@ export const TurnStart = () => {
     return (
       <Container maxWidth="md" data-testid="turn-start">
         <Stack spacing={3} alignItems="center" sx={{ py: 4 }}>
-          <Typography variant="h4">Turn Start</Typography>
+          <Typography variant="h4">{i18n._('Turn Start')}</Typography>
           <Typography variant="body1" color="text.secondary">
-            Game settings are missing. Please go back.
+            {i18n._('Game settings are missing. Please go back.')}
           </Typography>
         </Stack>
       </Container>
@@ -55,16 +57,19 @@ export const TurnStart = () => {
       <Stack spacing={4} sx={{ py: 4 }} alignItems="center">
         <Stack spacing={1} alignItems="center">
           <Typography variant="h4" fontWeight="bold" textAlign="center">
-            Get Ready
+            {i18n._('Get Ready')}
           </Typography>
           <Typography variant="body1" color="text.secondary" textAlign="center">
-            Round {roundNumber} of {totalRounds}
+            {i18n._(`Round {current} of {total}`, {
+              current: roundNumber,
+              total: totalRounds,
+            })}
           </Typography>
         </Stack>
 
         <Stack spacing={1} alignItems="center">
           <Typography variant="subtitle1" color="text.secondary">
-            {isTeamsMode ? 'Team' : 'Player'} up next
+            {isTeamsMode ? i18n._('Team up next') : i18n._('Player up next')}
           </Typography>
           <Typography
             variant="h3"
@@ -72,7 +77,7 @@ export const TurnStart = () => {
             data-testid="turn-start-player"
             textAlign="center"
           >
-            {isTeamsMode ? (team?.name ?? 'Team') : (player?.name ?? 'Player')}
+            {isTeamsMode ? (team?.name ?? i18n._('Team')) : (player?.name ?? i18n._('Player'))}
           </Typography>
           {isTeamsMode && player && (
             <Typography variant="body1" color="text.secondary">
@@ -85,7 +90,7 @@ export const TurnStart = () => {
 
         <Stack spacing={2} width="100%" maxWidth={520}>
           <Typography variant="h6" textAlign="center">
-            Current Scores
+            {i18n._('Current Scores')}
           </Typography>
           <Stack spacing={1}>
             {scores.map((entry) => (
@@ -116,7 +121,7 @@ export const TurnStart = () => {
           onClick={handleStartTurn}
           data-testid="turn-start-button"
         >
-          Start Turn
+          {i18n._('Start Turn')}
         </Button>
       </Stack>
     </Container>

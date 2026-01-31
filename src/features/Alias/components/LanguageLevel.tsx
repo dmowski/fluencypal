@@ -1,5 +1,6 @@
 'use client';
 
+import { useLingui } from '@lingui/react';
 import { Container, Stack, Typography, Button, Box } from '@mui/material';
 import SchoolIcon from '@mui/icons-material/School';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
@@ -7,6 +8,7 @@ import { useGameState } from '../hooks/useGameState';
 import { initialGameSettings } from '../types';
 
 export const LanguageLevel = () => {
+  const { i18n } = useLingui();
   const { state, updateSettings, setScreen } = useGameState();
 
   const currentLevel = state.settings?.languageLevel ?? initialGameSettings.languageLevel;
@@ -28,10 +30,10 @@ export const LanguageLevel = () => {
       <Stack spacing={4} alignItems="center" sx={{ py: 4 }}>
         <Stack spacing={1} alignItems="center">
           <Typography variant="h4" fontWeight="bold" textAlign="center">
-            Choose Language Level
+            {i18n._('Choose Language Level')}
           </Typography>
           <Typography variant="body1" color="text.secondary" textAlign="center">
-            Pick a difficulty that matches your group.
+            {i18n._('Pick a difficulty that matches your group.')}
           </Typography>
         </Stack>
 
@@ -54,10 +56,10 @@ export const LanguageLevel = () => {
             <SchoolIcon sx={{ fontSize: 40 }} />
             <Box textAlign="center">
               <Typography variant="h5" fontWeight="bold">
-                Simple
+                {i18n._('Simple')}
               </Typography>
               <Typography variant="body2" sx={{ opacity: 0.9, mt: 0.5 }}>
-                Shorter words and familiar vocabulary
+                {i18n._('Shorter words and familiar vocabulary')}
               </Typography>
             </Box>
           </Button>
@@ -80,10 +82,10 @@ export const LanguageLevel = () => {
             <RocketLaunchIcon sx={{ fontSize: 40 }} />
             <Box textAlign="center">
               <Typography variant="h5" fontWeight="bold">
-                Advanced
+                {i18n._('Advanced')}
               </Typography>
               <Typography variant="body2" sx={{ opacity: 0.9, mt: 0.5 }}>
-                Longer words and richer expressions
+                {i18n._('Longer words and richer expressions')}
               </Typography>
             </Box>
           </Button>
@@ -91,7 +93,7 @@ export const LanguageLevel = () => {
 
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} width="100%" maxWidth={520}>
           <Button variant="outlined" onClick={handleBack} fullWidth data-testid="language-back">
-            Back
+            {i18n._('Back')}
           </Button>
           <Button
             variant="contained"
@@ -99,7 +101,7 @@ export const LanguageLevel = () => {
             fullWidth
             data-testid="language-continue"
           >
-            Continue
+            {i18n._('Continue')}
           </Button>
         </Stack>
       </Stack>

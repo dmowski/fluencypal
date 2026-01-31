@@ -9,6 +9,7 @@ import { Scoreboard } from './Scoreboard';
 import { GameProvider } from '../context/GameContext';
 import { useGame } from '../context/GameContext';
 import { Player, Team, GameSettings, TurnState, RoundState, initialGameState } from '../types';
+import { renderWithI18n } from '../test-utils/i18nTestHelper';
 
 // Mock the useGameState hook
 jest.mock('../hooks/useGameState', () => ({
@@ -101,9 +102,11 @@ describe('Scoreboard - Free-for-all Mode Bug Fix', () => {
       });
 
       render(
-        <GameProvider>
-          <Scoreboard />
-        </GameProvider>,
+        renderWithI18n(
+          <GameProvider>
+            <Scoreboard />
+          </GameProvider>,
+        ),
       );
 
       // Check that Alice's score is correctly displayed as 2
@@ -255,9 +258,11 @@ describe('Scoreboard - Free-for-all Mode Bug Fix', () => {
       });
 
       render(
-        <GameProvider>
-          <Scoreboard />
-        </GameProvider>,
+        renderWithI18n(
+          <GameProvider>
+            <Scoreboard />
+          </GameProvider>,
+        ),
       );
 
       // Verify all scores are displayed correctly
@@ -354,9 +359,11 @@ describe('Scoreboard - Free-for-all Mode Bug Fix', () => {
       });
 
       render(
-        <GameProvider>
-          <Scoreboard />
-        </GameProvider>,
+        renderWithI18n(
+          <GameProvider>
+            <Scoreboard />
+          </GameProvider>,
+        ),
       );
 
       // Team A should show score 2

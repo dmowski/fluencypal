@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useMemo } from 'react';
+import { useLingui } from '@lingui/react';
 import {
   Box,
   Button,
@@ -21,6 +22,7 @@ import {
 import { useGameState } from '../hooks/useGameState';
 
 export const Scoreboard: React.FC = () => {
+  const { i18n } = useLingui();
   const { state, getCurrentPlayer, getCurrentTeam, setScreen, getScores, getTeamScores } =
     useGameState();
 
@@ -81,10 +83,13 @@ export const Scoreboard: React.FC = () => {
           <Stack spacing={3} sx={{ py: 2 }}>
             <Stack spacing={1} alignItems="center">
               <Typography variant="h5" fontWeight="bold">
-                Scoreboard
+                {i18n._('Scoreboard')}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Round {state.currentRound} / {state.settings?.numberOfRounds}
+                {i18n._(`Round {current} / {total}`, {
+                  current: state.currentRound,
+                  total: state.settings?.numberOfRounds,
+                })}
               </Typography>
             </Stack>
 
@@ -93,13 +98,13 @@ export const Scoreboard: React.FC = () => {
                 <TableHead>
                   <TableRow>
                     <TableCell sx={{ fontWeight: 'bold' }} align="left">
-                      Rank
+                      {i18n._('Rank')}
                     </TableCell>
                     <TableCell sx={{ fontWeight: 'bold' }} align="left">
-                      {isTeamsMode ? 'Team' : 'Player'}
+                      {isTeamsMode ? i18n._('Team') : i18n._('Player')}
                     </TableCell>
                     <TableCell sx={{ fontWeight: 'bold' }} align="right">
-                      Score
+                      {i18n._('Score')}
                     </TableCell>
                   </TableRow>
                 </TableHead>
@@ -138,7 +143,7 @@ export const Scoreboard: React.FC = () => {
                               {entry.name}
                             </Typography>
                             {isHighlight && (
-                              <Chip label="Now" size="small" color="primary" variant="outlined" />
+                              <Chip label={i18n._('Now')} size="small" color="primary" variant="outlined" />
                             )}
                           </Stack>
                         </TableCell>
@@ -167,7 +172,7 @@ export const Scoreboard: React.FC = () => {
               data-testid="scoreboard-continue"
               fullWidth
             >
-              Continue to Next Turn
+              {i18n._('Continue to Next Turn')}
             </Button>
           </Stack>
         </CardContent>

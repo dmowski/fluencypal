@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo } from 'react';
+import { useLingui } from '@lingui/react';
 import {
   Stack,
   Typography,
@@ -61,6 +62,7 @@ const syncTeamPlayerIds = (players: Player[], teams: Team[]): Team[] =>
   }));
 
 export const PlayersSetup = () => {
+  const { i18n } = useLingui();
   const { state, setSettings, setScreen } = useGameState();
 
   const settings = state.settings as GameSettings | null;
@@ -183,23 +185,23 @@ export const PlayersSetup = () => {
       <Stack spacing={4} sx={{ py: 4 }}>
         <Stack spacing={1} alignItems="center">
           <Typography variant="h4" fontWeight="bold">
-            Players Setup
+            {i18n._('Players Setup')}
           </Typography>
           <Typography variant="body1" color="text.secondary" textAlign="center">
-            Add between 2 and 20 players. Tap a name to edit it.
+            {i18n._('Add between 2 and 20 players. Tap a name to edit it.')}
           </Typography>
         </Stack>
 
         {isTeamsMode && teams.length > 0 && (
           <Stack spacing={2}>
             <Typography variant="h6" fontWeight="medium">
-              Teams
+              {i18n._('Teams')}
             </Typography>
             <Stack spacing={2}>
               {teams.map((team, index) => (
                 <TextField
                   key={team.id}
-                  label={`Team ${index + 1} name`}
+                  label={i18n._(`Team {index} name`, { index: index + 1 })}
                   value={team.name}
                   onChange={(event) => handleTeamNameChange(team.id, event.target.value)}
                   fullWidth
@@ -215,7 +217,7 @@ export const PlayersSetup = () => {
         <Stack spacing={2}>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Typography variant="h6" fontWeight="medium">
-              Players ({players.length}/{MAX_PLAYERS})
+              {i18n._(`Players ({current}/{max})`, { current: players.length, max: MAX_PLAYERS })}
             </Typography>
             <Button
               variant="outlined"
@@ -224,7 +226,7 @@ export const PlayersSetup = () => {
               disabled={players.length >= MAX_PLAYERS}
               data-testid="add-player"
             >
-              Add player
+              {i18n._('Add player')}
             </Button>
           </Stack>
 
@@ -240,7 +242,7 @@ export const PlayersSetup = () => {
                 alignItems="center"
               >
                 <TextField
-                  label={`Player ${index + 1}`}
+                  label={i18n._(`Player {index}`, { index: index + 1 })}
                   value={player.name}
                   onChange={(event) => handlePlayerNameChange(player.id, event.target.value)}
                   fullWidth
@@ -249,11 +251,11 @@ export const PlayersSetup = () => {
 
                 {isTeamsMode && (
                   <FormControl fullWidth>
-                    <InputLabel id={`team-select-label-${player.id}`}>Team</InputLabel>
+                    <InputLabel id={`team-select-label-${player.id}`}>{i18n._('Team')}</InputLabel>
                     <Select
                       labelId={`team-select-label-${player.id}`}
                       value={player.teamId ?? ''}
-                      label="Team"
+                      label={i18n._('Team')}
                       onChange={(event) => handleTeamChange(player.id, event.target.value)}
                       data-testid={`player-team-${index}`}
                     >
@@ -280,13 +282,16 @@ export const PlayersSetup = () => {
 
           {!validation.validCount && (
             <Typography variant="body2" color="error">
-              You need between {MIN_PLAYERS} and {MAX_PLAYERS} players.
+              {i18n._(`You need between {min} and {max} players.`, {
+                min: MIN_PLAYERS,
+                max: MAX_PLAYERS,
+              })}
             </Typography>
           )}
 
           {!validation.validNames && (
             <Typography variant="body2" color="error">
-              Please enter a name for every player.
+              {i18n._('Please enter a name for every player.')}
             </Typography>
           )}
         </Stack>
@@ -300,7 +305,7 @@ export const PlayersSetup = () => {
             onClick={handleBack}
             data-testid="players-back"
           >
-            Back
+            {i18n._('Back')}
           </Button>
           <Button
             variant="contained"
@@ -309,7 +314,7 @@ export const PlayersSetup = () => {
             disabled={!validation.canContinue}
             data-testid="players-continue"
           >
-            Continue
+            {i18n._('Continue')}
           </Button>
         </Stack>
       </Stack>
