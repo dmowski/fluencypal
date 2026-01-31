@@ -5,9 +5,11 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import PersonIcon from '@mui/icons-material/Person';
 import { useGameState } from '../hooks/useGameState';
 import { GameMode, initialGameSettings } from '../types';
+import { useLingui } from '@lingui/react';
 
 export const ModeSelection = () => {
   const { updateSettings, setScreen } = useGameState();
+  const { i18n } = useLingui();
 
   const handleModeSelect = (mode: GameMode) => {
     updateSettings({
@@ -27,10 +29,10 @@ export const ModeSelection = () => {
       >
         <Stack spacing={2} alignItems="center">
           <Typography variant="h3" component="h1" fontWeight="bold" textAlign="center">
-            Alias Game
+            {i18n._('Alias Game')}
           </Typography>
           <Typography variant="h6" color="text.secondary" textAlign="center" sx={{ maxWidth: 500 }}>
-            Choose your game mode
+            {i18n._('Choose your game mode')}
           </Typography>
         </Stack>
 
@@ -60,10 +62,10 @@ export const ModeSelection = () => {
             <PersonIcon sx={{ fontSize: 48 }} />
             <Box>
               <Typography variant="h5" fontWeight="bold">
-                Free-for-All
+                {i18n._('Free-for-All')}
               </Typography>
               <Typography variant="body2" sx={{ opacity: 0.9, mt: 0.5 }}>
-                Every player competes individually
+                {i18n._('Every player competes individually')}
               </Typography>
             </Box>
           </Button>
@@ -87,10 +89,10 @@ export const ModeSelection = () => {
             <GroupsIcon sx={{ fontSize: 48 }} />
             <Box>
               <Typography variant="h5" fontWeight="bold">
-                Teams
+                {i18n._('Teams')}
               </Typography>
               <Typography variant="body2" sx={{ opacity: 0.9, mt: 0.5 }}>
-                Players compete in teams
+                {i18n._('Players compete in teams')}
               </Typography>
             </Box>
           </Button>
@@ -102,8 +104,9 @@ export const ModeSelection = () => {
           textAlign="center"
           sx={{ maxWidth: 400, mt: 2 }}
         >
-          A fun word guessing game for 2-20 players. Explain words to your teammates without saying
-          the word itself!
+          {i18n._(
+            'A fun word guessing game for 2-20 players. Explain words to your teammates without saying the word itself!',
+          )}
         </Typography>
       </Stack>
     </Container>
