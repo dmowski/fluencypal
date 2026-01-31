@@ -57,13 +57,14 @@ export const GameEnd: React.FC = () => {
     (sum, round) =>
       sum +
       round.turns.reduce((turnSum, turn) => turnSum + (turn.correctCount + turn.skipCount), 0),
-    0
+    0,
   );
   const totalCorrect = state.rounds.reduce(
     (sum, round) => sum + round.turns.reduce((turnSum, turn) => turnSum + turn.correctCount, 0),
-    0
+    0,
   );
-  const accuracy = totalWordsAttempted > 0 ? Math.round((totalCorrect / totalWordsAttempted) * 100) : 0;
+  const accuracy =
+    totalWordsAttempted > 0 ? Math.round((totalCorrect / totalWordsAttempted) * 100) : 0;
 
   const handlePlayAgain = () => {
     initializeGame();

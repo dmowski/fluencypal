@@ -103,9 +103,7 @@ export const Scoreboard: React.FC = () => {
                               ? 'white'
                               : '#fafafa',
                           '&:hover': {
-                            backgroundColor: isHighlight
-                              ? 'rgba(33, 150, 243, 0.15)'
-                              : '#f0f0f0',
+                            backgroundColor: isHighlight ? 'rgba(33, 150, 243, 0.15)' : '#f0f0f0',
                           },
                           transition: 'background-color 0.2s',
                         }}
@@ -128,12 +126,7 @@ export const Scoreboard: React.FC = () => {
                           <Stack direction="row" spacing={1} alignItems="center">
                             <Typography variant="body2">{entry.name}</Typography>
                             {isHighlight && (
-                              <Chip
-                                label="Now"
-                                size="small"
-                                color="primary"
-                                variant="outlined"
-                              />
+                              <Chip label="Now" size="small" color="primary" variant="outlined" />
                             )}
                           </Stack>
                         </TableCell>
