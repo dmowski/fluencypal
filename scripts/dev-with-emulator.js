@@ -2,10 +2,10 @@
 
 /**
  * Development Server with Firebase Emulator
- * 
+ *
  * This script starts the Firebase Emulator Suite and waits for it to be ready,
  * then starts the Next.js development server.
- * 
+ *
  * Usage: node scripts/dev-with-emulator.js
  */
 
@@ -16,6 +16,57 @@ const http = require('http');
 const EMULATOR_UI_PORT = 4000;
 const EMULATOR_HUB_PORT = 4400;
 const READY_TIMEOUT = 60000; // 60 seconds
+const PORTS_TO_CLEAR = [3000, 4000, 4400, 8080, 9099, 9199];
+
+/**
+ * Kill process using a specific port
+ */
+function killPort(port) {
+  try {
+    spawnSync('lsof', ['-ti', `:${port}`], { encoding: 'utf-8' });
+    spawnSync(
+      'kill',
+      ['-9', spawnSync('lsof', ['-ti', `:${port}`], { encoding: 'utf-8' }).stdout.trim()],
+      {
+        stdio: 'ignore',
+      },
+    );
+  } catch (error) {
+    // Port is not in use, ignore
+  }
+}
+
+/**
+ * Clear all required ports before starting
+ */
+function clearPorts() {
+  console.log('🧹 Clearing ports...');
+  for (const port of PORTS_TO_CLEAR) {
+    try {
+      const pidOutput = spawnSync('lsof', ['-ti', `:${port}`], {
+        encoding: 'utf-8',
+        stdio: ['pipe', 'pipe', 'ignore'],
+      });
+
+      if (pidOutput.stdout) {
+        const pids = pidOutput.stdout.trim().split('\n');
+        for (const pid of pids) {
+          if (pid) {
+            try {
+              spawnSync('kill', ['-9', pid], { stdio: 'ignore' });
+              console.log(`  ✓ Killed process on port ${port}`);
+            } catch (e) {
+              // Ignore
+            }
+          }
+        }
+      }
+    } catch (error) {
+      // Port is not in use
+    }
+  }
+  console.log('');
+}
 
 /**
  * Check if emulator is ready by making HTTP requests
@@ -107,6 +158,9 @@ async function main() {
   let devProcess = null;
 
   try {
+    // Clear ports first
+    clearPorts();
+
     // Start emulator
     emulatorProcess = await startEmulator();
 
