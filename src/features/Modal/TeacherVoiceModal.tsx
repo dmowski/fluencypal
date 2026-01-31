@@ -54,6 +54,9 @@ export const TeacherVoiceModal: React.FC = () => {
                 <Select
                   value={voiceSpeed}
                   onChange={(e) => settings.setAiVoiceSpeed(e.target.value as any)}
+                  sx={{
+                    minWidth: '200px',
+                  }}
                 >
                   <MenuItem value="extremely-slow">{i18n._('Extra Slow')}</MenuItem>
                   <MenuItem value="slow">{i18n._('Slow')}</MenuItem>
