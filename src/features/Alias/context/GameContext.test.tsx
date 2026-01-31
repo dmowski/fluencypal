@@ -10,6 +10,10 @@ describe('GameContext - Round Logic', () => {
     <GameProvider>{children}</GameProvider>
   );
 
+  beforeEach(() => {
+    window.localStorage.clear();
+  });
+
   describe('INCREMENT_ROUND action', () => {
     it('should increment currentRound by 1', () => {
       const { result } = renderHook(() => useGame(), { wrapper });

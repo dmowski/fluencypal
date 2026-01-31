@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useReducer, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useReducer, ReactNode } from 'react';
 import {
   GameState,
   GameSettings,
@@ -12,6 +12,50 @@ import {
   WordAction,
   initialGameState,
 } from '../types';
+
+const STORAGE_KEY = 'alias-game-state-v1';
+
+const isBrowser = () => typeof window !== 'undefined';
+
+const isValidGameState = (value: unknown): value is GameState => {
+  if (!value || typeof value !== 'object') return false;
+  const state = value as GameState;
+
+  return (
+    typeof state.screen === 'string' &&
+    typeof state.currentRound === 'number' &&
+    typeof state.currentTurnIndex === 'number' &&
+    Array.isArray(state.rounds) &&
+    Array.isArray(state.availableWords) &&
+    Array.isArray(state.usedWords) &&
+    Array.isArray(state.skippedWords) &&
+    typeof state.isGameActive === 'boolean'
+  );
+};
+
+const loadPersistedState = (): GameState | null => {
+  if (!isBrowser()) return null;
+
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+
+    const parsed = JSON.parse(raw) as unknown;
+    return isValidGameState(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+};
+
+const persistState = (state: GameState) => {
+  if (!isBrowser()) return;
+
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch {
+    // Ignore write errors (quota, disabled storage, etc.)
+  }
+};
 
 // Action types
 type GameAction =
@@ -303,7 +347,15 @@ const GameContext = createContext<GameContextType | undefined>(undefined);
 
 // Provider
 export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [state, dispatch] = useReducer(gameReducer, initialGameState);
+  const [state, dispatch] = useReducer(
+    gameReducer,
+    initialGameState,
+    (baseState) => loadPersistedState() ?? baseState,
+  );
+
+  useEffect(() => {
+    persistState(state);
+  }, [state]);
 
   return <GameContext.Provider value={{ state, dispatch }}>{children}</GameContext.Provider>;
 };

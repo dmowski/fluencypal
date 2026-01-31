@@ -1,6 +1,14 @@
 import { expect, Page } from '@playwright/test';
 
+export async function resetStorage(page: Page) {
+  await page.addInitScript(() => {
+    window.localStorage.clear();
+    window.sessionStorage.clear();
+  });
+}
+
 export async function navigateToModeSelection(page: Page) {
+  await resetStorage(page);
   await page.goto('/alias');
   const htmlLang = await page.locator('html').getAttribute('lang');
   expect(htmlLang).toBe('en');

@@ -6,6 +6,7 @@ import {
   selectLanguageLevel,
   startGameplay,
   navigateFullSetup,
+  resetStorage,
 } from './helpers';
 
 test.describe('Alias Game', () => {
@@ -40,6 +41,7 @@ test.describe('Alias Game', () => {
       await expect(page.getByTestId('player-name-1')).toBeVisible();
 
       // Test Teams mode
+      await resetStorage(page);
       await page.goto('/alias');
       await selectGameMode(page, 'teams');
       await expect(page.getByTestId('team-name-0')).toBeVisible();
@@ -97,6 +99,7 @@ test.describe('Alias Game', () => {
 
       // Verify categories are displayed (we already know we're on category selection from helper)
       // Go back to test category display
+      await resetStorage(page);
       await page.goto('/alias');
       await selectGameMode(page, 'free-for-all');
       await setupPlayers(page);

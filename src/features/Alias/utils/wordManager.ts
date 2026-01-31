@@ -28,7 +28,7 @@ export const getNextWord = (
   const usedSet = new Set(usedWords);
   const skippedSet = new Set(skippedWords);
 
-  const unused = availableWords.filter((word) => !usedSet.has(word));
+  const unused = availableWords.filter((word) => !usedSet.has(word) && !skippedSet.has(word));
   if (unused.length > 0) {
     return unused[Math.floor(Math.random() * unused.length)];
   }
