@@ -230,7 +230,7 @@ function useProvideSettings(): SettingsContextType {
     setConversationMode,
     setVoice,
 
-    aiVoiceSpeed: userSettings?.teacherVoiceSpeed || 'slow',
+    aiVoiceSpeed: userSettings?.teacherVoiceSpeed || 'normal',
     setAiVoiceSpeed: async (speed: AiVoiceSpeed) => {
       if (!userSettingsDoc) return;
       await setDoc(userSettingsDoc, { teacherVoiceSpeed: speed }, { merge: true });

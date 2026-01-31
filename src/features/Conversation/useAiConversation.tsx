@@ -35,7 +35,7 @@ const LIMITED_VOICE_MESSAGES_COUNT = 7;
 const voiceSpeedInstructionsMap: Record<AiVoiceSpeed, string> = {
   'extremely-slow': 'Speak very slowly, with clear pronunciation and longer pauses between words.',
   slow: 'Speak slowly and clearly, with noticeable pauses between sentences.',
-  normal: 'Speak at a normal pace, with natural intonation and rhythm.',
+  normal: '',
   fast: 'Speak quickly but clearly, maintaining good pronunciation and energy.',
 };
 
