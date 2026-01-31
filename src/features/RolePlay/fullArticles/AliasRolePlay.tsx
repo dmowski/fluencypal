@@ -12,7 +12,7 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
       <Stack
         sx={{
           gap: '10px',
-          padding: '10px 0 70px 0',
+          padding: '15px 0 60px 0',
           '@media (max-width: 600px)': {
             gap: '20px',
           },
