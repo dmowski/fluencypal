@@ -3,6 +3,7 @@
 ### E2E tests
 
 /e2e/alias.spec.ts
+npx playwright test e2e/alias.spec.ts --reporter=line
 
 ### Implementation Plan
 
@@ -152,6 +153,7 @@ For detailed information about file structure, module responsibilities, and data
 👉 **See [FILE_STRUCTURE.md](./FILE_STRUCTURE.md)**
 
 Key sections:
+
 - Directory overview
 - Core module responsibilities (Context, Hooks, Utilities, Components)
 - Component reference tables

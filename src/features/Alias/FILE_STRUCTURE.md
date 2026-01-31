@@ -301,7 +301,7 @@ Game End
 ### Tests
 
 1. Unit tests for business logic (reducers, utilities)
-2. E2E tests for UI flows and user interactions
+2. E2E tests for UI flows and user interactions (npx playwright test e2e/alias.spec.ts --reporter=line)
 3. Test edge cases (round progression, game end conditions)
 
 ---
