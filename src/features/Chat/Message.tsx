@@ -625,8 +625,10 @@ export const PreviewMessage = ({
         sx={{
           flexDirection: 'row',
           alignItems: 'center',
-          gap: '10px',
+          gap: '8px',
           paddingBottom: '10px',
+          width: '100%',
+          overflow: 'hidden',
         }}
       >
         <Avatar avatarSize={'26px'} url={userAvatarUrl} />
