@@ -2,7 +2,22 @@ import { firebaseConfig } from '@/common/firebaseConfig';
 import firebaseAdmin from 'firebase-admin';
 import { AuthUserInfo } from './type';
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS as string);
+const isFirebaseEmulator = process.env.IS_FIREBASE_EMULATOR === 'true';
+
+// Set emulator environment variables if enabled
+if (isFirebaseEmulator) {
+  process.env.FIREBASE_AUTH_EMULATOR_HOST = 'localhost:9099';
+  process.env.FIRESTORE_EMULATOR_HOST = 'localhost:8080';
+  process.env.FIREBASE_STORAGE_EMULATOR_HOST = 'localhost:9199';
+}
+
+const serviceAccount = isFirebaseEmulator
+  ? {
+      project_id: 'dark-lang',
+      client_email: 'emulator@example.com',
+      private_key: 'emulator-key',
+    }
+  : JSON.parse(process.env.FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS as string);
 
 let cacheApp: firebaseAdmin.app.App | null = null;
 
