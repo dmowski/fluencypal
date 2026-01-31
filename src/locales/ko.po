@@ -258,6 +258,11 @@ msgstr ".NET 전문가가 API, 데이터 및 시스템 설계 라운드에 직�
 msgid "/ month"
 msgstr "/ 월"
 
+#: src/features/Alias/components/RoundSettings.tsx:34
+#. js-lingui-explicit-id
+msgid "1 round"
+msgstr "1 라운드"
+
 #: src/features/PayWall/CardValidatorWall.tsx:129
 #. js-lingui-explicit-id
 msgid "1. Confirm your credit card details"
@@ -954,7 +959,7 @@ msgstr "이러한 실수를 피하면 당신이 더 전문적으로 보이게 �
 #: src/features/Alias/components/CategorySelection.tsx:96
 #: src/features/Alias/components/LanguageLevel.tsx:96
 #: src/features/Alias/components/PlayersSetup.tsx:308
-#: src/features/Alias/components/RoundSettings.tsx:199
+#: src/features/Alias/components/RoundSettings.tsx:195
 #: src/features/Chat/ChatPage.tsx:165
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
@@ -1449,7 +1454,7 @@ msgstr "체크인"
 msgid "Chinese Learning Plan"
 msgstr "중국어 학습 계획"
 
-#: src/features/Alias/components/RoundSettings.tsx:114
+#: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
 msgstr "각 턴이 얼마나 지속될지와 몇 라운드를 플레이할지 선택하세요."
@@ -2508,7 +2513,7 @@ msgstr "실수를 두려워하지 마세요."
 msgid "Don’t skip small talk"
 msgstr "소소한 대화를 건너뛰지 마세요"
 
-#: src/features/Alias/components/RoundSettings.tsx:138
+#: src/features/Alias/components/RoundSettings.tsx:134
 #. js-lingui-explicit-id
 msgid "Duration"
 msgstr "지속 시간"
@@ -3219,7 +3224,7 @@ msgstr "결정 마무리 중 ..."
 msgid "Finish with what you learned"
 msgstr "배운 내용을 마무리하세요"
 
-#: src/features/Alias/components/RoundSettings.tsx:132
+#: src/features/Alias/components/RoundSettings.tsx:128
 #. js-lingui-explicit-id
 msgid "Fixed words"
 msgstr "고정 단어"
@@ -6572,7 +6577,7 @@ msgstr "개발 팀에 알림이 전송되었습니다. 죄송합니다..."
 msgid "Now"
 msgstr "지금"
 
-#: src/features/Alias/components/RoundSettings.tsx:175
+#: src/features/Alias/components/RoundSettings.tsx:171
 #. js-lingui-explicit-id
 msgid "Number of rounds"
 msgstr "라운드 수"
@@ -8059,7 +8064,7 @@ msgstr "역할 놀이"
 msgid "Roleplay Preview"
 msgstr "롤플레이 미리보기"
 
-#: src/features/Alias/components/RoundSettings.tsx:111
+#: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
 msgid "Round Settings"
 msgstr "라운드 설정"
@@ -8711,7 +8716,7 @@ msgstr "통화 시작"
 msgid "Start Debate"
 msgstr "토론 시작"
 
-#: src/features/Alias/components/RoundSettings.tsx:202
+#: src/features/Alias/components/RoundSettings.tsx:198
 #. js-lingui-explicit-id
 msgid "Start game"
 msgstr "게임 시작"
@@ -9022,10 +9027,10 @@ msgstr "성공!"
 msgid "Summary"
 msgstr "요약"
 
-#: src/features/Alias/components/RoundSettings.tsx:192
+#: src/features/Alias/components/RoundSettings.tsx:188
 #. js-lingui-explicit-id
-msgid "Summary: {summary}"
-msgstr "요약: {summary}"
+msgid "Summary:"
+msgstr "요약:"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -9456,7 +9461,7 @@ msgstr "티켓"
 msgid "Time left"
 msgstr "남은 시간"
 
-#: src/features/Alias/components/RoundSettings.tsx:129
+#: src/features/Alias/components/RoundSettings.tsx:125
 #. js-lingui-explicit-id
 msgid "Timed"
 msgstr "타이머 설정됨"
@@ -9617,7 +9622,7 @@ msgstr "턴 시작"
 msgid "Turn Summary"
 msgstr "턴 요약"
 
-#: src/features/Alias/components/RoundSettings.tsx:120
+#: src/features/Alias/components/RoundSettings.tsx:116
 #. js-lingui-explicit-id
 msgid "Turn type"
 msgstr "턴 타입"
@@ -10356,7 +10361,12 @@ msgstr "단어들"
 msgid "Words Attempted"
 msgstr "시도한 단어수"
 
-#: src/features/Alias/components/RoundSettings.tsx:154
+#: src/features/Alias/components/RoundSettings.tsx:43
+#. js-lingui-explicit-id
+msgid "words per turn"
+msgstr "턴당 단어 수"
+
+#: src/features/Alias/components/RoundSettings.tsx:150
 #. js-lingui-explicit-id
 msgid "Words per turn"
 msgstr "턴당 단어 수"
@@ -10915,30 +10925,25 @@ msgid ""
 "“good” looks like"
 msgstr "당신은 **즉석에서 시스템을 설계하라고 요청받지만**, 아무도 \"좋은\" 것이 무엇인지 말해주지 않습니다."
 
-#: src/features/Alias/components/RoundSettings.tsx:33
-#. js-lingui-explicit-id
-msgid "{count} round{plural}"
-msgstr "{count} 라운드{plural}"
-
-#: src/features/Alias/components/RoundSettings.tsx:163
+#: src/features/Alias/components/RoundSettings.tsx:159
 #. js-lingui-explicit-id
 msgid "{count} words"
 msgstr "{count} 단어"
 
-#: src/features/Alias/components/RoundSettings.tsx:147
+#: src/features/Alias/components/RoundSettings.tsx:40
+#. js-lingui-explicit-id
+msgid "{durationInSecond}s per turn"
+msgstr "턴당 {durationInSecond}초"
+
+#: src/features/Alias/components/RoundSettings.tsx:143
 #. js-lingui-explicit-id
 msgid "{duration}s"
 msgstr "{duration}초"
 
-#: src/features/Alias/components/RoundSettings.tsx:38
+#: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id
-msgid "{rounds}, {duration}s per turn"
-msgstr "{rounds}, 매 턴 {duration}초"
-
-#: src/features/Alias/components/RoundSettings.tsx:43
-#. js-lingui-explicit-id
-msgid "{rounds}, {words} words per turn"
-msgstr "{rounds}, 매 턴마다 {words} 단어"
+msgid "{numberOfRounds} rounds"
+msgstr "{numberOfRounds} 라운드"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

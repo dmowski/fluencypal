@@ -259,6 +259,11 @@ msgstr ".NETの専門家がAPI、データ、システム設計のラウンド�
 msgid "/ month"
 msgstr "/月"
 
+#: src/features/Alias/components/RoundSettings.tsx:34
+#. js-lingui-explicit-id
+msgid "1 round"
+msgstr "1回"
+
 #: src/features/PayWall/CardValidatorWall.tsx:129
 #. js-lingui-explicit-id
 msgid "1. Confirm your credit card details"
@@ -958,7 +963,7 @@ msgstr "これらのミスを避けることで、よりプロフェッショナ
 #: src/features/Alias/components/CategorySelection.tsx:96
 #: src/features/Alias/components/LanguageLevel.tsx:96
 #: src/features/Alias/components/PlayersSetup.tsx:308
-#: src/features/Alias/components/RoundSettings.tsx:199
+#: src/features/Alias/components/RoundSettings.tsx:195
 #: src/features/Chat/ChatPage.tsx:165
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
@@ -1451,7 +1456,7 @@ msgstr "チェックイン"
 msgid "Chinese Learning Plan"
 msgstr "中国語学習計画"
 
-#: src/features/Alias/components/RoundSettings.tsx:114
+#: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
 msgstr "各ターンの持続時間とプレイするラウンド数を選択してください。"
@@ -2512,7 +2517,7 @@ msgstr "ミスがあなたを止めることを許さないでください。"
 msgid "Don’t skip small talk"
 msgstr "小話をスキップしないでください"
 
-#: src/features/Alias/components/RoundSettings.tsx:138
+#: src/features/Alias/components/RoundSettings.tsx:134
 #. js-lingui-explicit-id
 msgid "Duration"
 msgstr "期間"
@@ -3215,7 +3220,7 @@ msgstr "決定を最終化しています..."
 msgid "Finish with what you learned"
 msgstr "学んだことを終える"
 
-#: src/features/Alias/components/RoundSettings.tsx:132
+#: src/features/Alias/components/RoundSettings.tsx:128
 #. js-lingui-explicit-id
 msgid "Fixed words"
 msgstr "固定された単語"
@@ -6572,7 +6577,7 @@ msgstr "デベロップメントチームに通知が送信されました。申
 msgid "Now"
 msgstr "今"
 
-#: src/features/Alias/components/RoundSettings.tsx:175
+#: src/features/Alias/components/RoundSettings.tsx:171
 #. js-lingui-explicit-id
 msgid "Number of rounds"
 msgstr "ラウンド数"
@@ -8065,7 +8070,7 @@ msgstr "ロールプレイ"
 msgid "Roleplay Preview"
 msgstr "ロールプレイ プレビュー"
 
-#: src/features/Alias/components/RoundSettings.tsx:111
+#: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
 msgid "Round Settings"
 msgstr "ラウンド設定"
@@ -8723,7 +8728,7 @@ msgstr ""
 msgid "Start Debate"
 msgstr "ディベートを開始"
 
-#: src/features/Alias/components/RoundSettings.tsx:202
+#: src/features/Alias/components/RoundSettings.tsx:198
 #. js-lingui-explicit-id
 msgid "Start game"
 msgstr "ゲーム開始"
@@ -9037,10 +9042,10 @@ msgstr "成功！"
 msgid "Summary"
 msgstr "要約"
 
-#: src/features/Alias/components/RoundSettings.tsx:192
+#: src/features/Alias/components/RoundSettings.tsx:188
 #. js-lingui-explicit-id
-msgid "Summary: {summary}"
-msgstr "サマリー: {summary}"
+msgid "Summary:"
+msgstr "サマリー:"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -9468,7 +9473,7 @@ msgstr ""
 "\n"
 "残り時間\n"
 
-#: src/features/Alias/components/RoundSettings.tsx:129
+#: src/features/Alias/components/RoundSettings.tsx:125
 #. js-lingui-explicit-id
 msgid "Timed"
 msgstr "時間制限付き"
@@ -9635,7 +9640,7 @@ msgstr "ターンスタート"
 msgid "Turn Summary"
 msgstr "ターンの概要"
 
-#: src/features/Alias/components/RoundSettings.tsx:120
+#: src/features/Alias/components/RoundSettings.tsx:116
 #. js-lingui-explicit-id
 msgid "Turn type"
 msgstr "ターンタイプ"
@@ -10383,7 +10388,14 @@ msgstr "単語"
 msgid "Words Attempted"
 msgstr "試行した単語"
 
-#: src/features/Alias/components/RoundSettings.tsx:154
+#: src/features/Alias/components/RoundSettings.tsx:43
+#. js-lingui-explicit-id
+msgid "words per turn"
+msgstr ""
+"\n"
+"ターンごとの単語数\n"
+
+#: src/features/Alias/components/RoundSettings.tsx:150
 #. js-lingui-explicit-id
 msgid "Words per turn"
 msgstr "各ターンごとの単語数"
@@ -10940,30 +10952,25 @@ msgid ""
 "“good” looks like"
 msgstr "その場で**システムを設計する**よう求められますが、「良い」ものが何であるかは誰も教えてくれません"
 
-#: src/features/Alias/components/RoundSettings.tsx:33
-#. js-lingui-explicit-id
-msgid "{count} round{plural}"
-msgstr "{count} ラウンド{plural}"
-
-#: src/features/Alias/components/RoundSettings.tsx:163
+#: src/features/Alias/components/RoundSettings.tsx:159
 #. js-lingui-explicit-id
 msgid "{count} words"
 msgstr "{count} 語"
 
-#: src/features/Alias/components/RoundSettings.tsx:147
+#: src/features/Alias/components/RoundSettings.tsx:40
+#. js-lingui-explicit-id
+msgid "{durationInSecond}s per turn"
+msgstr "{durationInSecond}秒ごとに順番"
+
+#: src/features/Alias/components/RoundSettings.tsx:143
 #. js-lingui-explicit-id
 msgid "{duration}s"
 msgstr "{duration}秒"
 
-#: src/features/Alias/components/RoundSettings.tsx:38
+#: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id
-msgid "{rounds}, {duration}s per turn"
-msgstr "{ラウンド数}, 各ターン{duration}秒"
-
-#: src/features/Alias/components/RoundSettings.tsx:43
-#. js-lingui-explicit-id
-msgid "{rounds}, {words} words per turn"
-msgstr "{ラウンド数}, {ワード数} 単語/ターン"
+msgid "{numberOfRounds} rounds"
+msgstr "{numberOfRounds} ラウンド"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

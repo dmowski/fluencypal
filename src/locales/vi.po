@@ -282,6 +282,11 @@ msgstr ""
 msgid "/ month"
 msgstr "/ tháng"
 
+#: src/features/Alias/components/RoundSettings.tsx:34
+#. js-lingui-explicit-id
+msgid "1 round"
+msgstr "1 vòng"
+
 #: src/features/PayWall/CardValidatorWall.tsx:129
 #. js-lingui-explicit-id
 msgid "1. Confirm your credit card details"
@@ -1006,7 +1011,7 @@ msgstr ""
 #: src/features/Alias/components/CategorySelection.tsx:96
 #: src/features/Alias/components/LanguageLevel.tsx:96
 #: src/features/Alias/components/PlayersSetup.tsx:308
-#: src/features/Alias/components/RoundSettings.tsx:199
+#: src/features/Alias/components/RoundSettings.tsx:195
 #: src/features/Chat/ChatPage.tsx:165
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
@@ -1517,7 +1522,7 @@ msgstr "Kiểm tra-In"
 msgid "Chinese Learning Plan"
 msgstr "Kế Hoạch Học Tiếng Trung"
 
-#: src/features/Alias/components/RoundSettings.tsx:114
+#: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
 msgstr "Chọn thời gian cho mỗi lượt và số vòng chơi."
@@ -2647,7 +2652,7 @@ msgstr "Đừng để những sai lầm ngăn cản bạn."
 msgid "Don’t skip small talk"
 msgstr "Đừng bỏ qua cuộc trò chuyện nhỏ"
 
-#: src/features/Alias/components/RoundSettings.tsx:138
+#: src/features/Alias/components/RoundSettings.tsx:134
 #. js-lingui-explicit-id
 msgid "Duration"
 msgstr "Thời lượng"
@@ -3425,7 +3430,7 @@ msgstr "Đang hoàn thiện quyết định ..."
 msgid "Finish with what you learned"
 msgstr "Hoàn thành với những gì bạn đã học được"
 
-#: src/features/Alias/components/RoundSettings.tsx:132
+#: src/features/Alias/components/RoundSettings.tsx:128
 #. js-lingui-explicit-id
 msgid "Fixed words"
 msgstr "Từ ngữ cố định"
@@ -7054,7 +7059,7 @@ msgstr "Thông báo đã được gửi đến nhóm phát triển. Xin lỗi v�
 msgid "Now"
 msgstr "Bây giờ"
 
-#: src/features/Alias/components/RoundSettings.tsx:175
+#: src/features/Alias/components/RoundSettings.tsx:171
 #. js-lingui-explicit-id
 msgid "Number of rounds"
 msgstr "Số vòng"
@@ -8639,7 +8644,7 @@ msgstr "Vai trò diễn xuất"
 msgid "Roleplay Preview"
 msgstr "Xem trước nhập vai"
 
-#: src/features/Alias/components/RoundSettings.tsx:111
+#: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
 msgid "Round Settings"
 msgstr "Cài Đặt Vòng Đấu"
@@ -9327,7 +9332,7 @@ msgstr "Bắt đầu cuộc gọi"
 msgid "Start Debate"
 msgstr "Khởi động Tranh luận"
 
-#: src/features/Alias/components/RoundSettings.tsx:202
+#: src/features/Alias/components/RoundSettings.tsx:198
 #. js-lingui-explicit-id
 msgid "Start game"
 msgstr "Bắt đầu trò chơi"
@@ -9662,10 +9667,10 @@ msgstr "Thành công!"
 msgid "Summary"
 msgstr "Tóm tắt"
 
-#: src/features/Alias/components/RoundSettings.tsx:192
+#: src/features/Alias/components/RoundSettings.tsx:188
 #. js-lingui-explicit-id
-msgid "Summary: {summary}"
-msgstr "Tóm tắt: {summary}"
+msgid "Summary:"
+msgstr "Tóm tắt:"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -10124,7 +10129,7 @@ msgstr "Vé"
 msgid "Time left"
 msgstr "Thời gian còn lại"
 
-#: src/features/Alias/components/RoundSettings.tsx:129
+#: src/features/Alias/components/RoundSettings.tsx:125
 #. js-lingui-explicit-id
 msgid "Timed"
 msgstr "Được hẹn giờ"
@@ -10289,7 +10294,7 @@ msgstr "Bắt đầu Bài học"
 msgid "Turn Summary"
 msgstr "Tóm tắt Lượt Chơi"
 
-#: src/features/Alias/components/RoundSettings.tsx:120
+#: src/features/Alias/components/RoundSettings.tsx:116
 #. js-lingui-explicit-id
 msgid "Turn type"
 msgstr "Loại lượt"
@@ -11073,7 +11078,12 @@ msgstr "Từ vựng"
 msgid "Words Attempted"
 msgstr "Từ đã thử"
 
-#: src/features/Alias/components/RoundSettings.tsx:154
+#: src/features/Alias/components/RoundSettings.tsx:43
+#. js-lingui-explicit-id
+msgid "words per turn"
+msgstr "số từ mỗi lượt"
+
+#: src/features/Alias/components/RoundSettings.tsx:150
 #. js-lingui-explicit-id
 msgid "Words per turn"
 msgstr "Số từ mỗi lượt"
@@ -11698,30 +11708,25 @@ msgstr ""
 "Bạn được yêu cầu **thiết kế hệ thống ngay lập tức**, nhưng không ai nói cho "
 "bạn biết “tốt” trông như thế nào"
 
-#: src/features/Alias/components/RoundSettings.tsx:33
-#. js-lingui-explicit-id
-msgid "{count} round{plural}"
-msgstr "{số} vòng{plural}"
-
-#: src/features/Alias/components/RoundSettings.tsx:163
+#: src/features/Alias/components/RoundSettings.tsx:159
 #. js-lingui-explicit-id
 msgid "{count} words"
 msgstr "{count} từ"
 
-#: src/features/Alias/components/RoundSettings.tsx:147
+#: src/features/Alias/components/RoundSettings.tsx:40
+#. js-lingui-explicit-id
+msgid "{durationInSecond}s per turn"
+msgstr "{durationInSecond}s mỗi lượt"
+
+#: src/features/Alias/components/RoundSettings.tsx:143
 #. js-lingui-explicit-id
 msgid "{duration}s"
 msgstr "{duration} giây"
 
-#: src/features/Alias/components/RoundSettings.tsx:38
+#: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id
-msgid "{rounds}, {duration}s per turn"
-msgstr "{rounds}, {duration}s mỗi lượt"
-
-#: src/features/Alias/components/RoundSettings.tsx:43
-#. js-lingui-explicit-id
-msgid "{rounds}, {words} words per turn"
-msgstr "{rounds}, {words} từ mỗi lượt"
+msgid "{numberOfRounds} rounds"
+msgstr "{sốVòng} vòng"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

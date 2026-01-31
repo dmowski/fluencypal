@@ -283,6 +283,11 @@ msgstr "Pakar .NET menghadapi pusingan API, data, dan reka bentuk sistem"
 msgid "/ month"
 msgstr "/bulan"
 
+#: src/features/Alias/components/RoundSettings.tsx:34
+#. js-lingui-explicit-id
+msgid "1 round"
+msgstr "1 pusingan"
+
 #: src/features/PayWall/CardValidatorWall.tsx:129
 #. js-lingui-explicit-id
 msgid "1. Confirm your credit card details"
@@ -1013,7 +1018,7 @@ msgstr ""
 #: src/features/Alias/components/CategorySelection.tsx:96
 #: src/features/Alias/components/LanguageLevel.tsx:96
 #: src/features/Alias/components/PlayersSetup.tsx:308
-#: src/features/Alias/components/RoundSettings.tsx:199
+#: src/features/Alias/components/RoundSettings.tsx:195
 #: src/features/Chat/ChatPage.tsx:165
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
@@ -1531,7 +1536,7 @@ msgstr "Daftar Masuk"
 msgid "Chinese Learning Plan"
 msgstr "Rancangan Pembelajaran Bahasa Cina"
 
-#: src/features/Alias/components/RoundSettings.tsx:114
+#: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
 msgstr ""
@@ -2669,7 +2674,7 @@ msgstr "Jangan biarkan kesilapan menghentikan anda."
 msgid "Don’t skip small talk"
 msgstr "Jangan abaikan perbualan ringan"
 
-#: src/features/Alias/components/RoundSettings.tsx:138
+#: src/features/Alias/components/RoundSettings.tsx:134
 #. js-lingui-explicit-id
 msgid "Duration"
 msgstr "Tempoh"
@@ -3455,7 +3460,7 @@ msgstr "Mengambil keputusan akhir ..."
 msgid "Finish with what you learned"
 msgstr "Selesaikan dengan apa yang anda pelajari"
 
-#: src/features/Alias/components/RoundSettings.tsx:132
+#: src/features/Alias/components/RoundSettings.tsx:128
 #. js-lingui-explicit-id
 msgid "Fixed words"
 msgstr "Perkataan tetap"
@@ -7152,7 +7157,7 @@ msgstr "Pemberitahuan telah dihantar kepada pasukan dev. Maaf atas perkara itu..
 msgid "Now"
 msgstr "Sekarang"
 
-#: src/features/Alias/components/RoundSettings.tsx:175
+#: src/features/Alias/components/RoundSettings.tsx:171
 #. js-lingui-explicit-id
 msgid "Number of rounds"
 msgstr "Bilangan pusingan"
@@ -8731,7 +8736,7 @@ msgstr "Peranan-Peranan"
 msgid "Roleplay Preview"
 msgstr "Pratonton Main Peranan"
 
-#: src/features/Alias/components/RoundSettings.tsx:111
+#: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
 msgid "Round Settings"
 msgstr "Tetapan Pusingan"
@@ -9417,7 +9422,7 @@ msgstr "Mulakan Panggilan"
 msgid "Start Debate"
 msgstr "Mulakan Perdebatan"
 
-#: src/features/Alias/components/RoundSettings.tsx:202
+#: src/features/Alias/components/RoundSettings.tsx:198
 #. js-lingui-explicit-id
 msgid "Start game"
 msgstr "Mulakan permainan"
@@ -9753,10 +9758,10 @@ msgstr "Kejayaan!"
 msgid "Summary"
 msgstr "Ringkasan"
 
-#: src/features/Alias/components/RoundSettings.tsx:192
+#: src/features/Alias/components/RoundSettings.tsx:188
 #. js-lingui-explicit-id
-msgid "Summary: {summary}"
-msgstr "Ringkasan: {summary}"
+msgid "Summary:"
+msgstr "Ringkasan:"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -10214,7 +10219,7 @@ msgstr "Tiket"
 msgid "Time left"
 msgstr "Masa yang tinggal"
 
-#: src/features/Alias/components/RoundSettings.tsx:129
+#: src/features/Alias/components/RoundSettings.tsx:125
 #. js-lingui-explicit-id
 msgid "Timed"
 msgstr "Masa"
@@ -10376,7 +10381,7 @@ msgstr "Mulakan Giliran"
 msgid "Turn Summary"
 msgstr "Ringkasan Giliran"
 
-#: src/features/Alias/components/RoundSettings.tsx:120
+#: src/features/Alias/components/RoundSettings.tsx:116
 #. js-lingui-explicit-id
 msgid "Turn type"
 msgstr "Jenis giliran"
@@ -11166,7 +11171,12 @@ msgstr "Kata-kata"
 msgid "Words Attempted"
 msgstr "Perkataan Dicuba"
 
-#: src/features/Alias/components/RoundSettings.tsx:154
+#: src/features/Alias/components/RoundSettings.tsx:43
+#. js-lingui-explicit-id
+msgid "words per turn"
+msgstr "perkataan setiap giliran"
+
+#: src/features/Alias/components/RoundSettings.tsx:150
 #. js-lingui-explicit-id
 msgid "Words per turn"
 msgstr "Perkataan setiap pertukaran"
@@ -11802,30 +11812,25 @@ msgstr ""
 "Anda diminta untuk **mereka bentuk sistem dengan serta-merta**, tetapi "
 "tiada siapa yang memberitahu anda bagaimana rupa \"baik\" "
 
-#: src/features/Alias/components/RoundSettings.tsx:33
-#. js-lingui-explicit-id
-msgid "{count} round{plural}"
-msgstr "{count} pusingan{plural}"
-
-#: src/features/Alias/components/RoundSettings.tsx:163
+#: src/features/Alias/components/RoundSettings.tsx:159
 #. js-lingui-explicit-id
 msgid "{count} words"
 msgstr "{count} perkataan"
 
-#: src/features/Alias/components/RoundSettings.tsx:147
+#: src/features/Alias/components/RoundSettings.tsx:40
+#. js-lingui-explicit-id
+msgid "{durationInSecond}s per turn"
+msgstr "{durationInSecond}s setiap pusingan"
+
+#: src/features/Alias/components/RoundSettings.tsx:143
 #. js-lingui-explicit-id
 msgid "{duration}s"
 msgstr "{duration}s"
 
-#: src/features/Alias/components/RoundSettings.tsx:38
+#: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id
-msgid "{rounds}, {duration}s per turn"
-msgstr "{rounds}, {duration}s setiap pusingan"
-
-#: src/features/Alias/components/RoundSettings.tsx:43
-#. js-lingui-explicit-id
-msgid "{rounds}, {words} words per turn"
-msgstr "{rounds}, {words} patah perkataan setiap giliran"
+msgid "{numberOfRounds} rounds"
+msgstr "{numberOfRounds} pusingan"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

@@ -29,22 +29,18 @@ export const RoundSettings = () => {
   const selectedDuration = turnSettings?.duration ?? 60;
   const selectedWordCount = turnSettings?.wordCount ?? 10;
 
-  const summary = useMemo(() => {
-    const roundText = i18n._(`{count} round{plural}`, {
-      count: numberOfRounds,
-      plural: numberOfRounds === 1 ? '' : 's',
-    });
-    if (isTimed) {
-      return i18n._(`{rounds}, {duration}s per turn`, {
-        rounds: roundText,
-        duration: selectedDuration,
-      });
-    }
-    return i18n._(`{rounds}, {words} words per turn`, {
-      rounds: roundText,
-      words: selectedWordCount,
-    });
-  }, [isTimed, numberOfRounds, selectedDuration, selectedWordCount, i18n]);
+  const roundText =
+    numberOfRounds === 1
+      ? i18n._('1 round')
+      : i18n._('{numberOfRounds} rounds', { numberOfRounds });
+
+  const summary = isTimed
+    ? roundText +
+      ', ' +
+      i18n._(`{durationInSecond}s per turn`, {
+        durationInSecond: selectedDuration,
+      })
+    : roundText + ', ' + selectedWordCount + ' ' + i18n._(`words per turn`);
 
   const handleTurnTypeChange = (_: unknown, value: 'timed' | 'fixed-words' | null) => {
     if (!value) return;
@@ -189,7 +185,7 @@ export const RoundSettings = () => {
         </Stack>
 
         <Typography variant="body2" color="text.secondary" textAlign="center">
-          {i18n._(`Summary: {summary}`, { summary })}
+          {i18n._(`Summary:`)} {summary}
         </Typography>
 
         <Divider />

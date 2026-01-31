@@ -275,6 +275,11 @@ msgstr ".NET-specialister som ställs inför API-, data- och systemdesignrundor"
 msgid "/ month"
 msgstr "/ månad"
 
+#: src/features/Alias/components/RoundSettings.tsx:34
+#. js-lingui-explicit-id
+msgid "1 round"
+msgstr "1 runda"
+
 #: src/features/PayWall/CardValidatorWall.tsx:129
 #. js-lingui-explicit-id
 msgid "1. Confirm your credit card details"
@@ -998,7 +1003,7 @@ msgstr ""
 #: src/features/Alias/components/CategorySelection.tsx:96
 #: src/features/Alias/components/LanguageLevel.tsx:96
 #: src/features/Alias/components/PlayersSetup.tsx:308
-#: src/features/Alias/components/RoundSettings.tsx:199
+#: src/features/Alias/components/RoundSettings.tsx:195
 #: src/features/Chat/ChatPage.tsx:165
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
@@ -1512,7 +1517,7 @@ msgstr "Incheckning"
 msgid "Chinese Learning Plan"
 msgstr "Kinesisk Läroplan"
 
-#: src/features/Alias/components/RoundSettings.tsx:114
+#: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
 msgstr "Välj hur länge varje omgång ska pågå och hur många rundor du vill spela."
@@ -2631,7 +2636,7 @@ msgstr "Låt inte misstag stoppa dig."
 msgid "Don’t skip small talk"
 msgstr "Hoppa inte över småpratet"
 
-#: src/features/Alias/components/RoundSettings.tsx:138
+#: src/features/Alias/components/RoundSettings.tsx:134
 #. js-lingui-explicit-id
 msgid "Duration"
 msgstr "Varaktighet"
@@ -3405,7 +3410,7 @@ msgstr "Slutför beslut ..."
 msgid "Finish with what you learned"
 msgstr "Avsluta med vad du har lärt dig"
 
-#: src/features/Alias/components/RoundSettings.tsx:132
+#: src/features/Alias/components/RoundSettings.tsx:128
 #. js-lingui-explicit-id
 msgid "Fixed words"
 msgstr "Fasta ord"
@@ -7009,7 +7014,7 @@ msgstr "Meddelandet skickades till utvecklingsteamet. Ledsen för det..."
 msgid "Now"
 msgstr "Nu"
 
-#: src/features/Alias/components/RoundSettings.tsx:175
+#: src/features/Alias/components/RoundSettings.tsx:171
 #. js-lingui-explicit-id
 msgid "Number of rounds"
 msgstr "Antal omgångar"
@@ -8563,7 +8568,7 @@ msgstr "Rollspel"
 msgid "Roleplay Preview"
 msgstr "Rollspelsförhandsvisning"
 
-#: src/features/Alias/components/RoundSettings.tsx:111
+#: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
 msgid "Round Settings"
 msgstr "Rundinställningar"
@@ -9244,7 +9249,7 @@ msgstr "Starta samtal"
 msgid "Start Debate"
 msgstr "Starta Debatt"
 
-#: src/features/Alias/components/RoundSettings.tsx:202
+#: src/features/Alias/components/RoundSettings.tsx:198
 #. js-lingui-explicit-id
 msgid "Start game"
 msgstr "Starta spel"
@@ -9579,10 +9584,10 @@ msgstr "Framgång!"
 msgid "Summary"
 msgstr "Sammanfattning"
 
-#: src/features/Alias/components/RoundSettings.tsx:192
+#: src/features/Alias/components/RoundSettings.tsx:188
 #. js-lingui-explicit-id
-msgid "Summary: {summary}"
-msgstr "Sammanfattning: {summary}"
+msgid "Summary:"
+msgstr "Sammanfattning:"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -10038,7 +10043,7 @@ msgstr "Biljett"
 msgid "Time left"
 msgstr "Tid kvar"
 
-#: src/features/Alias/components/RoundSettings.tsx:129
+#: src/features/Alias/components/RoundSettings.tsx:125
 #. js-lingui-explicit-id
 msgid "Timed"
 msgstr "Tidsbestämd"
@@ -10200,7 +10205,7 @@ msgstr "Vänd Start"
 msgid "Turn Summary"
 msgstr "Vänd Sammanfattning"
 
-#: src/features/Alias/components/RoundSettings.tsx:120
+#: src/features/Alias/components/RoundSettings.tsx:116
 #. js-lingui-explicit-id
 msgid "Turn type"
 msgstr "Skrivtyp"
@@ -10976,7 +10981,12 @@ msgstr "Ord"
 msgid "Words Attempted"
 msgstr "Ord Försökta"
 
-#: src/features/Alias/components/RoundSettings.tsx:154
+#: src/features/Alias/components/RoundSettings.tsx:43
+#. js-lingui-explicit-id
+msgid "words per turn"
+msgstr "ord per tur"
+
+#: src/features/Alias/components/RoundSettings.tsx:150
 #. js-lingui-explicit-id
 msgid "Words per turn"
 msgstr "Ord per omgång"
@@ -11589,30 +11599,25 @@ msgstr ""
 "Du ombeds att **designa system på plats**, men ingen talar om för dig hur "
 "ett \"bra\" system ser ut"
 
-#: src/features/Alias/components/RoundSettings.tsx:33
-#. js-lingui-explicit-id
-msgid "{count} round{plural}"
-msgstr "{count} omgång{plural}"
-
-#: src/features/Alias/components/RoundSettings.tsx:163
+#: src/features/Alias/components/RoundSettings.tsx:159
 #. js-lingui-explicit-id
 msgid "{count} words"
 msgstr "{count} ord"
 
-#: src/features/Alias/components/RoundSettings.tsx:147
+#: src/features/Alias/components/RoundSettings.tsx:40
+#. js-lingui-explicit-id
+msgid "{durationInSecond}s per turn"
+msgstr "{durationInSecond}s per omgång"
+
+#: src/features/Alias/components/RoundSettings.tsx:143
 #. js-lingui-explicit-id
 msgid "{duration}s"
 msgstr "{duration}s"
 
-#: src/features/Alias/components/RoundSettings.tsx:38
+#: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id
-msgid "{rounds}, {duration}s per turn"
-msgstr "{omgångar}, {varaktighet}s per runda"
-
-#: src/features/Alias/components/RoundSettings.tsx:43
-#. js-lingui-explicit-id
-msgid "{rounds}, {words} words per turn"
-msgstr "{rounds}, {words} ord per omgång"
+msgid "{numberOfRounds} rounds"
+msgstr "{numberOfRounds} omgångar"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

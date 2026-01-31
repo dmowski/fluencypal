@@ -283,6 +283,11 @@ msgstr ""
 msgid "/ month"
 msgstr "/ месяц"
 
+#: src/features/Alias/components/RoundSettings.tsx:34
+#. js-lingui-explicit-id
+msgid "1 round"
+msgstr "1 раунд"
+
 #: src/features/PayWall/CardValidatorWall.tsx:129
 #. js-lingui-explicit-id
 msgid "1. Confirm your credit card details"
@@ -1006,7 +1011,7 @@ msgstr ""
 #: src/features/Alias/components/CategorySelection.tsx:96
 #: src/features/Alias/components/LanguageLevel.tsx:96
 #: src/features/Alias/components/PlayersSetup.tsx:308
-#: src/features/Alias/components/RoundSettings.tsx:199
+#: src/features/Alias/components/RoundSettings.tsx:195
 #: src/features/Chat/ChatPage.tsx:165
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
@@ -1522,7 +1527,7 @@ msgstr "Регистрация"
 msgid "Chinese Learning Plan"
 msgstr "План изучения китайского"
 
-#: src/features/Alias/components/RoundSettings.tsx:114
+#: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
 msgstr "Выберите, сколько будет длиться каждый ход и сколько раундов сыграть."
@@ -2650,7 +2655,7 @@ msgstr "Не позволяйте ошибкам останавливать ва
 msgid "Don’t skip small talk"
 msgstr "Не пропускайте незначительные беседы"
 
-#: src/features/Alias/components/RoundSettings.tsx:138
+#: src/features/Alias/components/RoundSettings.tsx:134
 #. js-lingui-explicit-id
 msgid "Duration"
 msgstr "Продолжительность"
@@ -3427,7 +3432,7 @@ msgstr "Принятие решения..."
 msgid "Finish with what you learned"
 msgstr "Закончите с тем, что вы узнали"
 
-#: src/features/Alias/components/RoundSettings.tsx:132
+#: src/features/Alias/components/RoundSettings.tsx:128
 #. js-lingui-explicit-id
 msgid "Fixed words"
 msgstr "Фиксированные слова"
@@ -7076,7 +7081,7 @@ msgstr "Уведомление было отправлено команде ра
 msgid "Now"
 msgstr "Сейчас"
 
-#: src/features/Alias/components/RoundSettings.tsx:175
+#: src/features/Alias/components/RoundSettings.tsx:171
 #. js-lingui-explicit-id
 msgid "Number of rounds"
 msgstr "Количество раундов"
@@ -8659,7 +8664,7 @@ msgstr "Ролевые Игры"
 msgid "Roleplay Preview"
 msgstr "Предварительный просмотр ролевой игры"
 
-#: src/features/Alias/components/RoundSettings.tsx:111
+#: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
 msgid "Round Settings"
 msgstr "Настройки раунда"
@@ -9344,7 +9349,7 @@ msgstr "Начать звонок"
 msgid "Start Debate"
 msgstr "Начать дебаты"
 
-#: src/features/Alias/components/RoundSettings.tsx:202
+#: src/features/Alias/components/RoundSettings.tsx:198
 #. js-lingui-explicit-id
 msgid "Start game"
 msgstr "Начать игру"
@@ -9679,10 +9684,10 @@ msgstr "Успех!"
 msgid "Summary"
 msgstr "Резюме"
 
-#: src/features/Alias/components/RoundSettings.tsx:192
+#: src/features/Alias/components/RoundSettings.tsx:188
 #. js-lingui-explicit-id
-msgid "Summary: {summary}"
-msgstr "Summary: {summary}"
+msgid "Summary:"
+msgstr "Резюме:"
 
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
@@ -10141,7 +10146,7 @@ msgstr "Билет"
 msgid "Time left"
 msgstr "Оставшееся время"
 
-#: src/features/Alias/components/RoundSettings.tsx:129
+#: src/features/Alias/components/RoundSettings.tsx:125
 #. js-lingui-explicit-id
 msgid "Timed"
 msgstr "Время зафиксировано"
@@ -10303,7 +10308,7 @@ msgstr "Начать Учебу"
 msgid "Turn Summary"
 msgstr "Итоги хода"
 
-#: src/features/Alias/components/RoundSettings.tsx:120
+#: src/features/Alias/components/RoundSettings.tsx:116
 #. js-lingui-explicit-id
 msgid "Turn type"
 msgstr "Тип поворота"
@@ -11091,7 +11096,12 @@ msgstr "Слова"
 msgid "Words Attempted"
 msgstr "Слов попыток"
 
-#: src/features/Alias/components/RoundSettings.tsx:154
+#: src/features/Alias/components/RoundSettings.tsx:43
+#. js-lingui-explicit-id
+msgid "words per turn"
+msgstr "слов на ход"
+
+#: src/features/Alias/components/RoundSettings.tsx:150
 #. js-lingui-explicit-id
 msgid "Words per turn"
 msgstr "Слова за ход"
@@ -11717,30 +11727,25 @@ msgstr ""
 "Вас просят **разрабатывать системы на месте**, но никто не говорит вам, как "
 "выглядит «хорошо»"
 
-#: src/features/Alias/components/RoundSettings.tsx:33
-#. js-lingui-explicit-id
-msgid "{count} round{plural}"
-msgstr "{count} раунд{plural}"
-
-#: src/features/Alias/components/RoundSettings.tsx:163
+#: src/features/Alias/components/RoundSettings.tsx:159
 #. js-lingui-explicit-id
 msgid "{count} words"
 msgstr "{count} слов"
 
-#: src/features/Alias/components/RoundSettings.tsx:147
+#: src/features/Alias/components/RoundSettings.tsx:40
+#. js-lingui-explicit-id
+msgid "{durationInSecond}s per turn"
+msgstr "{durationInSecond} секунд за ход"
+
+#: src/features/Alias/components/RoundSettings.tsx:143
 #. js-lingui-explicit-id
 msgid "{duration}s"
 msgstr "{duration}с"
 
-#: src/features/Alias/components/RoundSettings.tsx:38
+#: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id
-msgid "{rounds}, {duration}s per turn"
-msgstr "{раунды}, {длительность}с на ход"
-
-#: src/features/Alias/components/RoundSettings.tsx:43
-#. js-lingui-explicit-id
-msgid "{rounds}, {words} words per turn"
-msgstr "{раунды}, {слова} слов за ход"
+msgid "{numberOfRounds} rounds"
+msgstr "{numberOfRounds} раундов"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id
