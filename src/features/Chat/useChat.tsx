@@ -189,7 +189,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       topLevelMessages: topLevel,
       commentsInfo: commentsMap,
       secondLevelSingleCommentsIds,
-      previewMessages: getRandomMessages(topLevel, 3),
+      previewMessages: getRandomMessages(topLevel, 5),
     };
   }, [messagesData]);
 

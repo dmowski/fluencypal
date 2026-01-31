@@ -39,7 +39,6 @@ const PreviewCardComponent = () => {
         marginTop: '20px',
 
         width: '100%',
-        overflowX: 'hidden',
         position: 'relative',
       }}
     >
@@ -52,33 +51,40 @@ const PreviewCardComponent = () => {
       >
         {i18n._('Community messages:')}
       </Typography>
+
       <Stack
         sx={{
           position: 'relative',
           width: '100%',
-          overflow: 'hidden',
+          height: 'calc(100% + 20px)',
         }}
       >
         <Stack
           sx={{
-            flexDirection: 'row',
-            alignItems: 'flex-start',
-            gap: '20px',
-            padding: '20px 15',
-            width: 'max-content',
+            overflow: 'scroll',
+            paddingBottom: '15px',
           }}
         >
-          {previewMessages.map((message, index) => {
-            return <PreviewMessage key={message.id} message={message} onOpen={openMessage} />;
-          })}
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              alignItems: 'flex-start',
+              gap: '20px',
+              padding: '20px 55px 20px 0px',
+              width: 'max-content',
+            }}
+          >
+            {previewMessages.map((message, index) => {
+              return <PreviewMessage key={message.id} message={message} onOpen={openMessage} />;
+            })}
+          </Stack>
         </Stack>
 
         <Stack
-          onClick={redirectToCommunity}
-          component={'button'}
           sx={{
             alignItems: 'center',
             justifyContent: 'center',
+            pointerEvents: 'none',
             width: '80px',
             height: '100%',
             position: 'absolute',
@@ -91,22 +97,7 @@ const PreviewCardComponent = () => {
               'linear-gradient(90deg, rgba(10, 18, 30, 0.1) 0%, rgba(10, 18, 30, 1) 90%, rgba(10, 18, 30, 1) 100%)',
             cursor: 'pointer',
           }}
-        >
-          <Stack
-            sx={{
-              borderRadius: '50%',
-              height: '40px',
-              width: '40px',
-              backgroundColor: '#0a0a0a',
-              border: '1px solid #ffffff98',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#fff',
-            }}
-          >
-            <ChevronRight size={'25px'} />
-          </Stack>
-        </Stack>
+        ></Stack>
       </Stack>
     </Stack>
   );
