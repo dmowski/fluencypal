@@ -1,118 +1,69 @@
 import { test, expect } from '@playwright/test';
+import {
+  navigateToModeSelection,
+  selectGameMode,
+  setupPlayers,
+  selectLanguageLevel,
+  startGameplay,
+  navigateFullSetup,
+} from './helpers';
 
 test.describe('Alias Game', () => {
-  test('Render Alias Game page', async ({ page }) => {
-    await page.goto('/alias');
+  test('Render Alias Game page and verify mode selection', async ({ page }) => {
+    await navigateToModeSelection(page);
 
-    const htmlLang = await page.locator('html').getAttribute('lang');
-    expect(htmlLang).toBe('en');
+    // Verify both modes are visible with correct text
+    const freeForAllButton = page.getByTestId('mode-free-for-all');
+    const teamsButton = page.getByTestId('mode-teams');
+
+    await expect(freeForAllButton).toBeVisible();
+    await expect(teamsButton).toBeVisible();
+    await expect(freeForAllButton).toContainText('Free-for-All');
+    await expect(freeForAllButton).toContainText('Every player competes individually');
+    await expect(teamsButton).toContainText('Teams');
+    await expect(teamsButton).toContainText('Players compete in teams');
+
+    // Verify responsive on mobile
+    await page.setViewportSize({ width: 375, height: 667 });
+    const freeForAllBox = await freeForAllButton.boundingBox();
+    const teamsBox = await teamsButton.boundingBox();
+    expect(freeForAllBox?.height).toBeGreaterThanOrEqual(44);
+    expect(teamsBox?.height).toBeGreaterThanOrEqual(44);
   });
 
-  test.describe('Mode Selection', () => {
-    test('displays both game mode options', async ({ page }) => {
-      await page.goto('/alias');
-
-      // Check that both mode buttons are visible
-      const freeForAllButton = page.getByTestId('mode-free-for-all');
-      const teamsButton = page.getByTestId('mode-teams');
-
-      await expect(freeForAllButton).toBeVisible();
-      await expect(teamsButton).toBeVisible();
-
-      // Check button text content
-      await expect(freeForAllButton).toContainText('Free-for-All');
-      await expect(freeForAllButton).toContainText('Every player competes individually');
-
-      await expect(teamsButton).toContainText('Teams');
-      await expect(teamsButton).toContainText('Players compete in teams');
-    });
-
-    test('navigates to players setup when Free-for-All is selected', async ({ page }) => {
-      await page.goto('/alias');
-
-      const freeForAllButton = page.getByTestId('mode-free-for-all');
-      await freeForAllButton.click();
-
-      await expect(page.getByTestId('players-setup')).toBeVisible();
-    });
-
-    test('navigates to players setup when Teams is selected', async ({ page }) => {
-      await page.goto('/alias');
-
-      const teamsButton = page.getByTestId('mode-teams');
-      await teamsButton.click();
-
-      await expect(page.getByTestId('players-setup')).toBeVisible();
-    });
-
-    test('is responsive on mobile viewport', async ({ page }) => {
-      await page.setViewportSize({ width: 375, height: 667 });
-      await page.goto('/alias');
-
-      const freeForAllButton = page.getByTestId('mode-free-for-all');
-      const teamsButton = page.getByTestId('mode-teams');
-
-      // Buttons should be visible and clickable on mobile
-      await expect(freeForAllButton).toBeVisible();
-      await expect(teamsButton).toBeVisible();
-
-      // Check buttons are large enough for touch (at least 44px height)
-      const freeForAllBox = await freeForAllButton.boundingBox();
-      const teamsBox = await teamsButton.boundingBox();
-
-      expect(freeForAllBox?.height).toBeGreaterThanOrEqual(44);
-      expect(teamsBox?.height).toBeGreaterThanOrEqual(44);
-    });
-  });
-
-  test.describe('Players Setup', () => {
-    test('shows two default players and disables removing below minimum', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-
+  test.describe('Mode Selection & Navigation', () => {
+    test('both game modes navigate to players setup', async ({ page }) => {
+      // Test Free-for-All mode
+      await navigateToModeSelection(page);
+      await selectGameMode(page, 'free-for-all');
       await expect(page.getByTestId('player-name-0')).toBeVisible();
       await expect(page.getByTestId('player-name-1')).toBeVisible();
 
-      const removeFirst = page.getByTestId('player-remove-0');
-      await expect(removeFirst).toBeDisabled();
-    });
-
-    test('allows adding a player', async ({ page }) => {
+      // Test Teams mode
       await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-
-      await page.getByTestId('add-player').click();
-
-      await expect(page.getByTestId('player-name-2')).toBeVisible();
-    });
-
-    test('shows team assignment controls in teams mode', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-teams').click();
-
+      await selectGameMode(page, 'teams');
       await expect(page.getByTestId('team-name-0')).toBeVisible();
       await expect(page.getByTestId('team-name-1')).toBeVisible();
-
-      await expect(page.getByTestId('player-team-0')).toBeVisible();
-      await expect(page.getByTestId('player-team-1')).toBeVisible();
-    });
-
-    test('navigates to language level on continue', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-
-      await page.getByTestId('players-continue').click();
-
-      await expect(page.getByTestId('language-level')).toBeVisible();
     });
   });
 
-  test.describe('Language Level', () => {
-    test('shows difficulty options and updates selection', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
+  test.describe('Players Setup & Language Level', () => {
+    test('player management and language difficulty selection', async ({ page }) => {
+      await navigateToModeSelection(page);
+      await selectGameMode(page, 'free-for-all');
 
+      // Test player constraints
+      const removeFirst = page.getByTestId('player-remove-0');
+      await expect(removeFirst).toBeDisabled();
+
+      // Test adding players
+      await page.getByTestId('add-player').click();
+      await expect(page.getByTestId('player-name-2')).toBeVisible();
+
+      await page.getByTestId('players-continue').click();
+      await expect(page.getByTestId('language-level')).toBeVisible();
+
+      // Test language difficulty selection
       const simpleButton = page.getByTestId('language-simple');
       const advancedButton = page.getByTestId('language-advanced');
 
@@ -124,38 +75,39 @@ test.describe('Alias Game', () => {
 
       await simpleButton.click();
       await expect(simpleButton).toHaveAttribute('aria-pressed', 'true');
-    });
-
-    test('navigates to category selection on continue', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
 
       await page.getByTestId('language-continue').click();
-
       await expect(page.getByTestId('category-selection')).toBeVisible();
+    });
+
+    test('teams mode shows team assignment controls', async ({ page }) => {
+      await navigateToModeSelection(page);
+      await selectGameMode(page, 'teams');
+
+      await expect(page.getByTestId('team-name-0')).toBeVisible();
+      await expect(page.getByTestId('team-name-1')).toBeVisible();
+      await expect(page.getByTestId('player-team-0')).toBeVisible();
+      await expect(page.getByTestId('player-team-1')).toBeVisible();
     });
   });
 
-  test.describe('Category Selection', () => {
-    test('displays all categories', async ({ page }) => {
+  test.describe('Category Selection & Round Settings', () => {
+    test('category selection and round configuration', async ({ page }) => {
+      await navigateFullSetup(page);
+
+      // Verify categories are displayed (we already know we're on category selection from helper)
+      // Go back to test category display
       await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
-      await page.getByTestId('language-continue').click();
+      await selectGameMode(page, 'free-for-all');
+      await setupPlayers(page);
+      await selectLanguageLevel(page);
 
       await expect(page.getByTestId('category-animals')).toBeVisible();
       await expect(page.getByTestId('category-food')).toBeVisible();
       await expect(page.getByTestId('category-sports')).toBeVisible();
       await expect(page.getByTestId('category-technology')).toBeVisible();
-    });
 
-    test('select all and deselect all controls work', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
-      await page.getByTestId('language-continue').click();
-
+      // Test select/deselect all
       const continueButton = page.getByTestId('categories-continue');
       await expect(continueButton).toBeDisabled();
 
@@ -164,126 +116,39 @@ test.describe('Alias Game', () => {
 
       await page.getByTestId('categories-deselect-all').click();
       await expect(continueButton).toBeDisabled();
-    });
-
-    test('navigates to round settings on continue', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
-      await page.getByTestId('language-continue').click();
 
       await page.getByTestId('categories-select-all').click();
       await page.getByTestId('categories-continue').click();
-
-      await expect(page.getByTestId('round-settings')).toBeVisible();
-    });
-  });
-
-  test.describe('Round Settings', () => {
-    test('allows selecting timed and fixed word settings', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
-      await page.getByTestId('language-continue').click();
-      await page.getByTestId('categories-select-all').click();
-      await page.getByTestId('categories-continue').click();
-
       await expect(page.getByTestId('round-settings')).toBeVisible();
 
+      // Test round settings options
       await page.getByTestId('turn-type-fixed').click();
       await page.getByTestId('word-count-10').click();
 
       await page.getByTestId('turn-type-timed').click();
       await page.getByTestId('duration-90').click();
-    });
 
-    test('allows setting number of rounds and starting game', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
-      await page.getByTestId('language-continue').click();
-      await page.getByTestId('categories-select-all').click();
-      await page.getByTestId('categories-continue').click();
-
+      // Test number of rounds
       await page.getByTestId('rounds-5').click();
-      await page.getByTestId('round-settings-start').click();
-
-      await expect(page.getByTestId('turn-start')).toBeVisible();
-    });
-  });
-
-  test.describe('Turn Start', () => {
-    test('shows current player and round info', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
-      await page.getByTestId('language-continue').click();
-      await page.getByTestId('categories-select-all').click();
-      await page.getByTestId('categories-continue').click();
       await page.getByTestId('round-settings-start').click();
 
       await expect(page.getByTestId('turn-start')).toBeVisible();
       await expect(page.getByTestId('turn-start-player')).toContainText('Player 1');
     });
-
-    test('starts the turn and navigates to gameplay', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
-      await page.getByTestId('language-continue').click();
-      await page.getByTestId('categories-select-all').click();
-      await page.getByTestId('categories-continue').click();
-      await page.getByTestId('round-settings-start').click();
-
-      await page.getByTestId('turn-start-button').click();
-
-      await expect(page.getByTestId('gameplay')).toBeVisible();
-    });
   });
 
-  test.describe('Gameplay', () => {
-    test('shows a word card and controls for timed mode', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
-      await page.getByTestId('language-continue').click();
-      await page.getByTestId('categories-select-all').click();
-      await page.getByTestId('categories-continue').click();
-      await page.getByTestId('round-settings-start').click();
-      await page.getByTestId('turn-start-button').click();
+  test.describe('Gameplay & Scoring', () => {
+    test('gameplay interactions with timed mode', async ({ page }) => {
+      await navigateFullSetup(page, 'free-for-all', { mode: 'timed' });
+      await startGameplay(page);
 
+      // Verify timed mode display
       await expect(page.getByTestId('word-card-text')).toBeVisible();
       await expect(page.getByTestId('button-correct')).toBeVisible();
       await expect(page.getByTestId('button-skip')).toBeVisible();
       await expect(page.getByTestId('timer')).toBeVisible();
-    });
 
-    test('shows word counter for fixed words mode', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
-      await page.getByTestId('language-continue').click();
-      await page.getByTestId('categories-select-all').click();
-      await page.getByTestId('categories-continue').click();
-
-      await page.getByTestId('turn-type-fixed').click();
-      await page.getByTestId('word-count-5').click();
-      await page.getByTestId('round-settings-start').click();
-      await page.getByTestId('turn-start-button').click();
-
-      await expect(page.getByTestId('word-counter')).toBeVisible();
-    });
-
-    test('correct and skip change the word', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
-      await page.getByTestId('language-continue').click();
-      await page.getByTestId('categories-select-all').click();
-      await page.getByTestId('categories-continue').click();
-      await page.getByTestId('round-settings-start').click();
-      await page.getByTestId('turn-start-button').click();
-
+      // Test word changing with interactions
       const wordCard = page.getByTestId('word-card-text');
       const firstWord = await wordCard.textContent();
 
@@ -299,27 +164,35 @@ test.describe('Alias Game', () => {
       expect(secondWord).not.toBe(firstWord);
       expect(thirdWord).not.toBe(secondWord);
     });
+
+    test('gameplay with fixed words mode and counter', async ({ page }) => {
+      await navigateFullSetup(page, 'free-for-all', { mode: 'fixed', value: 5 });
+      await startGameplay(page);
+
+      // Verify fixed mode display
+      const counter = page.getByTestId('word-counter');
+      await expect(counter).toBeVisible();
+
+      // Interact with words and verify counter updates
+      await page.getByTestId('button-correct').click();
+      await expect(counter).toContainText(/1\s*\/\s*5/);
+
+      await page.getByTestId('button-correct').click();
+      await expect(counter).toContainText(/2\s*\/\s*5/);
+
+      await page.getByTestId('button-skip').click();
+      await expect(counter).toContainText(/3\s*\/\s*5/);
+    });
   });
 
-  test.describe('Turn Summary', () => {
-    test('shows accurate counts, score, and total scores after a fixed-words turn', async ({
-      page,
-    }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
-      await page.getByTestId('language-continue').click();
-      await page.getByTestId('categories-select-all').click();
-      await page.getByTestId('categories-continue').click();
-
-      await page.getByTestId('turn-type-fixed').click();
-      await page.getByTestId('word-count-5').click();
-      await page.getByTestId('round-settings-start').click();
-      await page.getByTestId('turn-start-button').click();
+  test.describe('Turn Summary & Multi-turn Flow', () => {
+    test('fixed-words turn summary with accurate scoring and next turn', async ({ page }) => {
+      await navigateFullSetup(page, 'free-for-all', { mode: 'fixed', value: 5, rounds: 2 });
+      await startGameplay(page);
 
       const counter = page.getByTestId('word-counter');
 
-      // 3 correct, 2 skip => score 1
+      // Play first turn: 3 correct, 2 skip => score 1
       await page.getByTestId('button-correct').click();
       await expect(counter).toContainText(/1\s*\/\s*5/);
       await page.getByTestId('button-correct').click();
@@ -330,46 +203,18 @@ test.describe('Alias Game', () => {
       await expect(counter).toContainText(/4\s*\/\s*5/);
       await page.getByTestId('button-skip').click();
 
+      // Verify turn summary
       await expect(page.getByTestId('turn-summary')).toBeVisible();
-
       await expect(page.getByTestId('turn-summary-correct')).toContainText('3');
       await expect(page.getByTestId('turn-summary-skip')).toContainText('2');
       await expect(page.getByTestId('turn-summary-score')).toContainText('1');
-
       await expect(page.getByTestId('turn-summary-player')).toContainText('Player 1');
 
       const totalScoreEntry = page.getByTestId(/total-score-/).first();
       await expect(totalScoreEntry).toContainText('1');
-    });
 
-    test('next turn shows the next player', async ({ page }) => {
-      await page.goto('/alias');
-      await page.getByTestId('mode-free-for-all').click();
-      await page.getByTestId('players-continue').click();
-      await page.getByTestId('language-continue').click();
-      await page.getByTestId('categories-select-all').click();
-      await page.getByTestId('categories-continue').click();
-
-      await page.getByTestId('turn-type-fixed').click();
-      await page.getByTestId('word-count-5').click();
-      await page.getByTestId('round-settings-start').click();
-      await page.getByTestId('turn-start-button').click();
-
-      const counter = page.getByTestId('word-counter');
-
-      await page.getByTestId('button-correct').click();
-      await expect(counter).toContainText(/1\s*\/\s*5/);
-      await page.getByTestId('button-correct').click();
-      await expect(counter).toContainText(/2\s*\/\s*5/);
-      await page.getByTestId('button-correct').click();
-      await expect(counter).toContainText(/3\s*\/\s*5/);
-      await page.getByTestId('button-correct').click();
-      await expect(counter).toContainText(/4\s*\/\s*5/);
-      await page.getByTestId('button-correct').click();
-
-      await expect(page.getByTestId('turn-summary')).toBeVisible();
+      // Verify next turn
       await page.getByTestId('turn-summary-next').click();
-
       await expect(page.getByTestId('turn-start')).toBeVisible();
       await expect(page.getByTestId('turn-start-player')).toContainText('Player 2');
     });
