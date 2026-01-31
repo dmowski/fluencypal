@@ -30,7 +30,6 @@ const PreviewCardComponent = () => {
     const newUrl = `${window.location.pathname}?${newSearchParams.toString()}`;
     router.push(`${newUrl}`, { scroll: true });
   };
-
   return (
     <Stack
       sx={{
@@ -55,7 +54,8 @@ const PreviewCardComponent = () => {
       <Stack
         sx={{
           position: 'relative',
-          width: '100%',
+          width: '99%',
+          overflow: 'hidden',
           height: 'calc(100% + 20px)',
         }}
       >
