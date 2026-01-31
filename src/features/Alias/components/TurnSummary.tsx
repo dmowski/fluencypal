@@ -47,14 +47,16 @@ export const TurnSummary = () => {
     if (isTeamsMode) {
       const teamScores = getTeamScores();
       return teamScores.map((score) => {
-        const name = state.settings?.teams.find((t) => t.id === score.teamId)?.name ?? i18n._('Team');
+        const name =
+          state.settings?.teams.find((t) => t.id === score.teamId)?.name ?? i18n._('Team');
         return { id: score.teamId, name, score: score.score };
       });
     }
 
     const playerScores = getScores();
     return playerScores.map((score) => {
-      const name = state.settings?.players.find((p) => p.id === score.playerId)?.name ?? i18n._('Player');
+      const name =
+        state.settings?.players.find((p) => p.id === score.playerId)?.name ?? i18n._('Player');
       return { id: score.playerId, name, score: score.score };
     });
   }, [getScores, getTeamScores, isTeamsMode, state.settings, i18n]);
@@ -101,7 +103,8 @@ export const TurnSummary = () => {
     );
   }
 
-  const playerName = state.settings?.players.find((p) => p.id === turn.playerId)?.name ?? i18n._('Player');
+  const playerName =
+    state.settings?.players.find((p) => p.id === turn.playerId)?.name ?? i18n._('Player');
   const teamName = state.settings?.teams.find((t) => t.id === turn.teamId)?.name ?? i18n._('Team');
 
   const playerLabel = isTeamsMode ? teamName : playerName;
