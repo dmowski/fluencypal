@@ -78,7 +78,8 @@ type GameAction =
   | { type: 'NEXT_WORD'; payload: string }
   | { type: 'END_ROUND' }
   | { type: 'END_GAME'; payload: { winner: string } }
-  | { type: 'RESET_GAME' };
+  | { type: 'RESET_GAME' }
+  | { type: 'RESTORE_STATE'; payload: GameState };
 
 // Reducer function
 const gameReducer = (state: GameState, action: GameAction): GameState => {
@@ -332,6 +333,10 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
     case 'RESET_GAME':
       return initialGameState;
 
+    case 'RESTORE_STATE':
+      // Restore the full state from localStorage
+      return action.payload;
+
     default:
       return state;
   }
@@ -347,15 +352,24 @@ const GameContext = createContext<GameContextType | undefined>(undefined);
 
 // Provider
 export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [state, dispatch] = useReducer(
-    gameReducer,
-    initialGameState,
-    (baseState) => loadPersistedState() ?? baseState,
-  );
+  const [state, dispatch] = useReducer(gameReducer, initialGameState);
+  const [isHydrated, setIsHydrated] = React.useState(false);
 
+  // Load persisted state after hydration to avoid mismatch
   useEffect(() => {
-    persistState(state);
-  }, [state]);
+    const persistedState = loadPersistedState();
+    if (persistedState) {
+      dispatch({ type: 'RESTORE_STATE', payload: persistedState });
+    }
+    setIsHydrated(true);
+  }, []);
+
+  // Persist state only after hydration is complete
+  useEffect(() => {
+    if (isHydrated) {
+      persistState(state);
+    }
+  }, [state, isHydrated]);
 
   return <GameContext.Provider value={{ state, dispatch }}>{children}</GameContext.Provider>;
 };
