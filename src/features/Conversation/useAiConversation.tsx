@@ -327,7 +327,7 @@ VISUAL_CONTEXT (latest): ${description}
   }, []);
 
   const onOpen = async () => {
-    await sleep(100);
+    await sleep(300);
     communicatorRef.current?.triggerAiResponse();
     await sleep(1000);
     setIsInitializing('');
