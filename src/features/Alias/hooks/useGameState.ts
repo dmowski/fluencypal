@@ -257,6 +257,11 @@ export const useGameState = () => {
     }
   };
 
+  // Game initialization
+  const initializeGame = () => {
+    dispatch({ type: 'RESET_GAME' });
+  };
+
   return {
     // State
     state,
@@ -299,5 +304,8 @@ export const useGameState = () => {
     getScores,
     getTeamScores,
     getWinner,
+
+    // Game initialization
+    initializeGame,
   };
 };

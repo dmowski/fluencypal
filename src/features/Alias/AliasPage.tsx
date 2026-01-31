@@ -9,6 +9,8 @@ import { RoundSettings } from './components/RoundSettings';
 import { TurnStart } from './components/TurnStart';
 import { GamePlay } from './components/GamePlay';
 import { TurnSummary } from './components/TurnSummary';
+import { Scoreboard } from './components/Scoreboard';
+import { GameEnd } from './components/GameEnd';
 
 const AliasGameContent = () => {
   const { state } = useGame();
@@ -31,6 +33,10 @@ const AliasGameContent = () => {
       return <GamePlay />;
     case 'turn-summary':
       return <TurnSummary />;
+    case 'scoreboard':
+      return <Scoreboard />;
+    case 'game-end':
+      return <GameEnd />;
     // TODO: Add other screens as we implement them
     default:
       return <ModeSelection />;
