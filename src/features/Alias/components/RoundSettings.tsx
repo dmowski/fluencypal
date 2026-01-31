@@ -121,10 +121,22 @@ export const RoundSettings = () => {
             onChange={handleTurnTypeChange}
             data-testid="turn-type"
           >
-            <ToggleButton value="timed" data-testid="turn-type-timed">
+            <ToggleButton
+              value="timed"
+              data-testid="turn-type-timed"
+              sx={{
+                textTransform: 'none',
+              }}
+            >
               {i18n._('Timed')}
             </ToggleButton>
-            <ToggleButton value="fixed-words" data-testid="turn-type-fixed">
+            <ToggleButton
+              value="fixed-words"
+              data-testid="turn-type-fixed"
+              sx={{
+                textTransform: 'none',
+              }}
+            >
               {i18n._('Fixed words')}
             </ToggleButton>
           </ToggleButtonGroup>
@@ -139,7 +151,14 @@ export const RoundSettings = () => {
                 data-testid="turn-duration"
               >
                 {timedOptions.map((option) => (
-                  <ToggleButton key={option} value={option} data-testid={`duration-${option}`}>
+                  <ToggleButton
+                    key={option}
+                    value={option}
+                    data-testid={`duration-${option}`}
+                    sx={{
+                      textTransform: 'none',
+                    }}
+                  >
                     {i18n._(`{duration}s`, { duration: option })}
                   </ToggleButton>
                 ))}
@@ -155,7 +174,14 @@ export const RoundSettings = () => {
                 data-testid="turn-word-count"
               >
                 {wordCountOptions.map((option) => (
-                  <ToggleButton key={option} value={option} data-testid={`word-count-${option}`}>
+                  <ToggleButton
+                    key={option}
+                    value={option}
+                    data-testid={`word-count-${option}`}
+                    sx={{
+                      textTransform: 'none',
+                    }}
+                  >
                     {i18n._(`{count} words`, { count: option })}
                   </ToggleButton>
                 ))}
