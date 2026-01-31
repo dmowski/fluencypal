@@ -61,8 +61,21 @@ const PreviewCardComponent = () => {
       >
         <Stack
           sx={{
-            overflow: 'scroll',
+            overflowX: 'scroll',
             paddingBottom: '15px',
+            paddingRight: '35px',
+
+            // Scrollbar styles
+            '&::-webkit-scrollbar': {
+              height: '0px',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: 'rgba(100, 100, 100, 0.5)',
+              borderRadius: '4px',
+            },
+            '&::-webkit-scrollbar-thumb:hover': {
+              backgroundColor: 'rgba(100, 100, 100, 0.7)',
+            },
           }}
         >
           <Stack
