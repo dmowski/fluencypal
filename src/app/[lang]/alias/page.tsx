@@ -28,11 +28,9 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
   return (
     <html lang={supportedLang}>
       <body>
-        <PracticeProvider>
-          <main>
-            <AliasPage />
-          </main>
-        </PracticeProvider>
+        <main>
+          <AliasPage />
+        </main>
       </body>
     </html>
   );

@@ -1,13 +1,86 @@
 import { getI18nInstance } from '@/appRouterI18n';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { SupportedLanguage } from '@/features/Lang/lang';
-import { Stack, Typography } from '@mui/material';
-import { AudioLines, HandHeart, Heart, MessageCircleHeart, Speech, Zap } from 'lucide-react';
+import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
+import { AudioLines, ChevronRight, Heart, Speech, User, Users, Zap } from 'lucide-react';
 import { JSX } from 'react';
 
 export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Element => {
   const i18n = getI18nInstance(lang);
   return (
     <Stack>
+      <Stack
+        sx={{
+          gap: '10px',
+          padding: '10px 0 70px 0',
+          '@media (max-width: 600px)': {
+            gap: '20px',
+          },
+        }}
+      >
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            gap: '0 10px',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
+          <Button
+            href={getUrlStart(lang) + 'alias'}
+            startIcon={<Users size={'22px'} />}
+            endIcon={<ChevronRight size={'22px'} />}
+            variant="outlined"
+            sx={{
+              padding: '10px 25px',
+              color: 'white',
+              backgroundColor: '#d21963',
+            }}
+          >
+            {i18n._(`Play With Friends`)}
+          </Button>
+          <Typography
+            sx={{
+              paddingLeft: '5px',
+            }}
+          >
+            {i18n._(`Play Alias offline with friends in person`)}
+          </Typography>
+        </Stack>
+
+        <Stack
+          sx={{
+            flexDirection: 'row',
+
+            gap: '0 10px',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
+          <Button
+            href={getUrlStart(lang) + 'practice?rolePlayId=alias-game'}
+            startIcon={<User size={'22px'} />}
+            endIcon={<ChevronRight size={'22px'} />}
+            variant="outlined"
+            sx={{
+              padding: '10px 25px',
+
+              color: 'white',
+              backgroundColor: '#1976d2',
+            }}
+          >
+            {i18n._(`Play With AI`)}
+          </Button>
+          <Typography
+            sx={{
+              paddingLeft: '5px',
+            }}
+          >
+            {i18n._(`Single player mode with AI`)}
+          </Typography>
+        </Stack>
+      </Stack>
+
       <Typography>
         {i18n._(`Boost your English vocabulary and fluency by creatively describing and guessing words in
         this interactive AI-powered Alias game.`)}
