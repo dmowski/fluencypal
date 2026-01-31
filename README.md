@@ -23,11 +23,10 @@ FluencyPal is an AI-powered conversation practice application that helps interme
 ### Learning Modes
 
 - **Casual Conversation** - Uninterrupted speaking practice for fluency building
-- **Talk & Correct** - Instant grammar and pronunciation feedback during conversations
-- **Beginner Mode** - Slower, guided conversations for early learners
 - **Role-Play** - Simulated real-world scenarios (interviews, business, travel, etc.)
 - **Grammar Practice** - Focused exercises on specific grammar concepts
 - **Vocabulary Practice** - Topic-specific word learning and usage
+- **Personalized plan** - Take only the steps necessary to achieve your goal.
 
 ### Supported Languages
 
