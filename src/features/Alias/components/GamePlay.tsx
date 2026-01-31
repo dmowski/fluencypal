@@ -36,11 +36,16 @@ export const GamePlay = () => {
     if (!turn || !isTimed || !turn.isActive) return;
 
     const startTime = turn.startTime;
-    setRemainingSeconds(duration);
+    const turnDuration = duration;
+
+    // Calculate initial remaining time
+    const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+    const initialRemaining = Math.max(turnDuration - elapsedSeconds, 0);
+    setRemainingSeconds(initialRemaining);
 
     const interval = setInterval(() => {
-      const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-      const nextRemaining = Math.max(duration - elapsedSeconds, 0);
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      const nextRemaining = Math.max(turnDuration - elapsed, 0);
       setRemainingSeconds(nextRemaining);
       if (nextRemaining <= 0) {
         clearInterval(interval);
@@ -49,7 +54,7 @@ export const GamePlay = () => {
     }, 500);
 
     return () => clearInterval(interval);
-  }, [turn?.startTime, isTimed, duration, endTurn]);
+  }, [turn?.startTime, isTimed, duration]);
 
   useEffect(() => {
     if (!turn) return;
