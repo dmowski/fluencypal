@@ -28,6 +28,7 @@ type GameAction =
   | { type: 'START_TURN'; payload: TurnState }
   | { type: 'UPDATE_TURN'; payload: Partial<TurnState> }
   | { type: 'END_TURN' }
+  | { type: 'INCREMENT_ROUND' }
   | { type: 'RECORD_ACTION'; payload: WordAction }
   | { type: 'SET_CURRENT_WORD'; payload: string }
   | { type: 'NEXT_WORD'; payload: string }
@@ -259,6 +260,12 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
         ],
         currentTurnIndex: state.currentTurnIndex + 1,
         screen: 'turn-summary',
+      };
+
+    case 'INCREMENT_ROUND':
+      return {
+        ...state,
+        currentRound: state.currentRound + 1,
       };
 
     case 'END_ROUND':

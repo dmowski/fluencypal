@@ -16,7 +16,19 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useGameState } from '../hooks/useGameState';
 
 export const TurnSummary = () => {
-  const { state, getCurrentTurn, getScores, getTeamScores, setScreen } = useGameState();
+  const {
+    state,
+    getCurrentTurn,
+    getScores,
+    getTeamScores,
+    getWinner,
+    setScreen,
+    isRoundComplete,
+    incrementRound,
+    startRound,
+    endRound,
+    endGame,
+  } = useGameState();
   const turn = getCurrentTurn();
   const isTeamsMode = state.settings?.mode === 'teams';
   const [showCorrectWords, setShowCorrectWords] = useState(false);
@@ -46,6 +58,27 @@ export const TurnSummary = () => {
   }, [getScores, getTeamScores, isTeamsMode, state.settings]);
 
   const handleNextTurn = () => {
+    if (!state.settings) {
+      setScreen('turn-start');
+      return;
+    }
+
+    const totalRounds = state.settings.numberOfRounds ?? 1;
+    const isComplete = isRoundComplete();
+
+    if (isComplete) {
+      endRound();
+
+      if (state.currentRound >= totalRounds) {
+        const winner = getWinner();
+        endGame(winner?.id ?? '');
+        return;
+      }
+
+      incrementRound();
+      startRound();
+    }
+
     setScreen('turn-start');
   };
 
@@ -201,7 +234,7 @@ export const TurnSummary = () => {
             variant="outlined"
             size="large"
             onClick={handleViewScoreboard}
-            data-testid="turn-summary-scoreboard"
+            data-testid="turn-summary-view-scoreboard"
             sx={{ flex: 1 }}
           >
             View Scoreboard

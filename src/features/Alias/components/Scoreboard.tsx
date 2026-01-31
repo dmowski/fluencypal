@@ -61,7 +61,7 @@ export const Scoreboard: React.FC = () => {
 
   return (
     <Container maxWidth="md" data-testid="scoreboard">
-      <Card sx={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
+      <Card>
         <CardContent>
           <Stack spacing={3} sx={{ py: 2 }}>
             <Stack spacing={1} alignItems="center">
@@ -77,13 +77,13 @@ export const Scoreboard: React.FC = () => {
               <Table data-testid="scoreboard-table">
                 <TableHead sx={{ backgroundColor: '#f5f5f5' }}>
                   <TableRow>
-                    <TableCell sx={{ fontWeight: 'bold' }} align="left">
+                    <TableCell sx={{ fontWeight: 'bold', color: '#000' }} align="left">
                       Rank
                     </TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }} align="left">
+                    <TableCell sx={{ fontWeight: 'bold', color: '#000' }} align="left">
                       {isTeamsMode ? 'Team' : 'Player'}
                     </TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }} align="right">
+                    <TableCell sx={{ fontWeight: 'bold', color: '#000' }} align="right">
                       Score
                     </TableCell>
                   </TableRow>
@@ -100,7 +100,7 @@ export const Scoreboard: React.FC = () => {
                           backgroundColor: isHighlight
                             ? 'rgba(33, 150, 243, 0.1)'
                             : index % 2 === 0
-                              ? 'white'
+                              ? '#ffffff'
                               : '#fafafa',
                           '&:hover': {
                             backgroundColor: isHighlight ? 'rgba(33, 150, 243, 0.15)' : '#f0f0f0',
@@ -111,7 +111,7 @@ export const Scoreboard: React.FC = () => {
                         <TableCell
                           sx={{
                             fontWeight: isHighlight ? 'bold' : 'normal',
-                            color: isHighlight ? '#1976d2' : 'inherit',
+                            color: isHighlight ? '#1976d2' : '#000',
                             width: '60px',
                           }}
                         >
@@ -120,11 +120,13 @@ export const Scoreboard: React.FC = () => {
                         <TableCell
                           sx={{
                             fontWeight: isHighlight ? 'bold' : 'normal',
-                            color: isHighlight ? '#1976d2' : 'inherit',
+                            color: isHighlight ? '#1976d2' : '#000',
                           }}
                         >
                           <Stack direction="row" spacing={1} alignItems="center">
-                            <Typography variant="body2">{entry.name}</Typography>
+                            <Typography variant="body2" color={isHighlight ? '#1976d2' : '#000'}>
+                              {entry.name}
+                            </Typography>
                             {isHighlight && (
                               <Chip label="Now" size="small" color="primary" variant="outlined" />
                             )}
@@ -135,7 +137,7 @@ export const Scoreboard: React.FC = () => {
                           sx={{
                             fontWeight: isHighlight ? 'bold' : 'normal',
                             fontSize: isHighlight ? '1.1rem' : '1rem',
-                            color: isHighlight ? '#1976d2' : 'inherit',
+                            color: isHighlight ? '#1976d2' : '#000',
                           }}
                           data-testid={`scoreboard-score-${entry.name}`}
                         >

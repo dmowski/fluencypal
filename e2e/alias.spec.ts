@@ -219,4 +219,85 @@ test.describe('Alias Game', () => {
       await expect(page.getByTestId('turn-start-player')).toContainText('Player 2');
     });
   });
+
+  test.describe('Round Progression', () => {
+    test('should increment round after all players complete their turn', async ({ page }) => {
+      await navigateFullSetup(page, 'free-for-all', { mode: 'fixed', value: 5, rounds: 2 });
+      await startGameplay(page);
+
+      // Player 1 completes first turn
+      for (let i = 0; i < 5; i++) {
+        await page.getByTestId('button-correct').click();
+      }
+
+      // Go to scoreboard from turn summary
+      await page.getByTestId('turn-summary-view-scoreboard').click();
+      await expect(page.getByTestId('scoreboard')).toBeVisible();
+
+      // Verify scoreboard shows Round 1
+      let roundDisplay = page.locator('text=/Round 1 \\/ 2/');
+      await expect(roundDisplay).toBeVisible();
+
+      // Continue to next turn
+      await page.getByTestId('scoreboard-continue').click();
+      await expect(page.getByTestId('turn-start-player')).toContainText('Player 2');
+      await page.getByTestId('turn-start-button').click();
+      await expect(page.getByTestId('gameplay')).toBeVisible();
+
+      // Player 2 completes their turn
+      for (let i = 0; i < 5; i++) {
+        await page.getByTestId('button-correct').click();
+      }
+
+      // After round 1 completes, should go to turn start for new round
+      await page.getByTestId('turn-summary-next').click();
+      await expect(page.getByTestId('turn-start')).toBeVisible();
+
+      // Check that we're now in Round 2
+      roundDisplay = page.locator('text=/Round 2 \\/ 2/');
+      await expect(roundDisplay).toBeVisible();
+
+      // Verify scoreboard shows Round 2
+      await page.getByTestId('turn-summary-view-scoreboard').click();
+      roundDisplay = page.locator('text=/Round 2 \\/ 2/');
+      await expect(roundDisplay).toBeVisible();
+    });
+  });
+
+  test.describe('Scoreboard Visibility & Styling', () => {
+    test('scoreboard should have visible text (not white on white)', async ({ page }) => {
+      await navigateFullSetup(page, 'free-for-all', { mode: 'fixed', value: 5, rounds: 1 });
+      await startGameplay(page);
+
+      // Complete a turn
+      for (let i = 0; i < 5; i++) {
+        await page.getByTestId('button-correct').click();
+      }
+
+      // Navigate to scoreboard
+      await page.getByTestId('turn-summary-view-scoreboard').click();
+      await expect(page.getByTestId('scoreboard')).toBeVisible();
+
+      // Verify scoreboard text is visible (not white)
+      const scoreboardTitle = page.locator('text=Scoreboard');
+      await expect(scoreboardTitle).toBeVisible();
+
+      // Check that score entries are visible
+      const scoreRow = page.getByTestId(/scoreboard-row-/).first();
+      await expect(scoreRow).toBeVisible();
+
+      // Verify score values are readable
+      const scores = page.getByTestId(/scoreboard-score-/);
+      const firstScore = scores.first();
+      await expect(firstScore).toBeVisible();
+
+      // Check text color is not white (verify readability)
+      const scoreText = await firstScore.evaluate((el) => {
+        return window.getComputedStyle(el).color;
+      });
+
+      // Color should be a dark color, not white (rgb(255, 255, 255))
+      expect(scoreText).not.toBe('rgb(255, 255, 255)');
+    });
+  });
 });

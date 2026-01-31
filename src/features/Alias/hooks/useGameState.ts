@@ -72,6 +72,25 @@ export const useGameState = () => {
     dispatch({ type: 'START_ROUND' });
   };
 
+  const incrementRound = () => {
+    dispatch({ type: 'INCREMENT_ROUND' });
+  };
+
+  const isRoundComplete = (): boolean => {
+    if (!state.settings) return false;
+
+    const currentRound = state.rounds[state.rounds.length - 1];
+    if (!currentRound) return false;
+
+    // Get the number of players or teams
+    const numParticipants = state.settings.mode === 'teams'
+      ? state.settings.teams.length
+      : state.settings.players.length;
+
+    // Check if all participants have had a turn in this round
+    return currentRound.turns.length >= numParticipants;
+  };
+
   const startTurn = (playerId: string, teamId?: string) => {
     const turn: TurnState = {
       playerId,
@@ -285,6 +304,8 @@ export const useGameState = () => {
     // Game flow
     startGame,
     startRound,
+    incrementRound,
+    isRoundComplete,
     startTurn,
     endTurn,
     endRound,
