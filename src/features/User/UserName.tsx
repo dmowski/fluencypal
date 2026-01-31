@@ -3,7 +3,7 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 
 const verifiedUserIds = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2'];
 
-type Size = 'normal' | 'large';
+type Size = 'small' | 'normal' | 'large';
 
 export const UserName = ({
   userId,
@@ -33,7 +33,7 @@ export const UserName = ({
         variant={size === 'large' ? 'h4' : 'body1'}
         sx={{
           lineHeight: '1',
-          fontSize: size === 'large' ? '27px' : '1rem',
+          fontSize: size === 'small' ? '0.8rem' : size === 'large' ? '27px' : '1rem',
           fontWeight: bold ? '600' : '400',
 
           '@media (max-width: 600px)': {

@@ -628,7 +628,7 @@ export const PreviewMessage = ({
         }}
       >
         <Avatar avatarSize={'26px'} url={userAvatarUrl} />
-        <UserName userId={message.senderId} userName={userName} bold />
+        <UserName userId={message.senderId} userName={userName} bold size="small" />
       </Stack>
       <MessageContent contentFontSize="14px">{contentToShow}</MessageContent>
       <Stack
