@@ -83,9 +83,8 @@ export const useGameState = () => {
     if (!currentRound) return false;
 
     // Get the number of players or teams
-    const numParticipants = state.settings.mode === 'teams'
-      ? state.settings.teams.length
-      : state.settings.players.length;
+    const numParticipants =
+      state.settings.mode === 'teams' ? state.settings.teams.length : state.settings.players.length;
 
     // Check if all participants have had a turn in this round
     return currentRound.turns.length >= numParticipants;
