@@ -52,6 +52,12 @@ export const TeacherVoiceModal: React.FC = () => {
               <Typography variant="caption">{i18n._('Voice speed')}</Typography>
               <ButtonGroup>
                 <Button
+                  variant={voiceSpeed === 'extremely-slow' ? 'contained' : 'outlined'}
+                  onClick={() => settings.setAiVoiceSpeed('extremely-slow')}
+                >
+                  {i18n._('Extra Slow')}
+                </Button>
+                <Button
                   variant={voiceSpeed === 'slow' ? 'contained' : 'outlined'}
                   onClick={() => settings.setAiVoiceSpeed('slow')}
                 >

@@ -15,7 +15,7 @@ import { useWords } from '../Words/useWords';
 import { useAiConversation } from '../Conversation/useAiConversation';
 import { useRules } from '../Rules/useRules';
 import { InfoStep } from '../Survey/InfoStep';
-import { ConversationMode } from '@/common/user';
+import { ConversationMode } from '@/common/userSettings';
 import { ConversationType } from '@/common/conversation';
 import { Markdown } from '../uiKit/Markdown/Markdown';
 import { useTranslate } from '../Translation/useTranslate';

@@ -19,7 +19,7 @@ import { firstAiMessage } from '@/features/Lang/lang';
 import { GoalElementInfo } from '../Plan/types';
 import { usePlan } from '../Plan/usePlan';
 import * as Sentry from '@sentry/nextjs';
-import { ConversationMode } from '@/common/user';
+import { AiVoiceSpeed, ConversationMode } from '@/common/userSettings';
 import { useAccess } from '../Usage/useAccess';
 import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from '../LessonPlan/type';
 import { ConversationConfig, ConversationInstance } from './ConversationInstance/types';
@@ -32,10 +32,18 @@ import { setGlobalConversationId } from '../Usage/globalConversationId';
 const LIMITED_MESSAGES_COUNT = 12;
 const LIMITED_VOICE_MESSAGES_COUNT = 7;
 
-const getVoiceInstructions = (voice: AiVoice): string => {
+const voiceSpeedInstructionsMap: Record<AiVoiceSpeed, string> = {
+  'extremely-slow': 'Speak very slowly, with clear pronunciation and longer pauses between words.',
+  slow: 'Speak slowly and clearly, with noticeable pauses between sentences.',
+  normal: 'Speak at a normal pace, with natural intonation and rhythm.',
+  fast: 'Speak quickly but clearly, maintaining good pronunciation and energy.',
+};
+
+const getVoiceInstructions = (voice: AiVoice, voiceSpeed: AiVoiceSpeed): string => {
   const voiceAvatar = getAiVoiceByVoice(voice);
+  const speedInstruction = voiceSpeedInstructionsMap[voiceSpeed];
   const voiceInstructions = `## AI Voice
-${voiceAvatar.voiceInstruction}`;
+${voiceAvatar.voiceInstruction} ${speedInstruction}`;
   return voiceInstructions;
 };
 
@@ -136,6 +144,8 @@ function useProvideAiConversation(): AiConversationContextType {
   const [voice, setVoice] = useState<AiVoice | null>(null);
   const [lessonPlanAnalysis, setLessonPlanAnalysis] = useState<LessonPlanAnalysis | null>(null);
   const [lessonPlan, setLessonPlan] = useState<LessonPlan | null>(null);
+
+  const voiceSpeed = settings.aiVoiceSpeed;
 
   const [recordingVoiceMode, setRecordingVoiceMode] =
     useState<RecordingUserMessageMode>('PushToTalk');
@@ -482,7 +492,7 @@ VISUAL_CONTEXT (latest): ${description}
   }): Promise<ConversationConfig> => {
     const baseConfig = await getBaseRtcConfig();
 
-    const voiceInstructions = getVoiceInstructions(voice);
+    const voiceInstructions = getVoiceInstructions(voice, voiceSpeed);
 
     let lessonPlanPrompt = lessonPlan
       ? `## Lesson Plan:

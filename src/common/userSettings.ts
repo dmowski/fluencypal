@@ -18,7 +18,7 @@ export type AppMode = 'interview' | 'learning';
 
 export type ConversationMode = 'record' | 'call' | 'chat';
 
-export type AiVoiceSpeed = 'slow' | 'normal' | 'fast';
+export type AiVoiceSpeed = 'extremely-slow' | 'slow' | 'normal' | 'fast';
 
 export interface UserSettings extends InitUserSettings {
   languageCode: SupportedLanguage | null;

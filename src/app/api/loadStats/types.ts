@@ -1,5 +1,5 @@
 import { UserConversationsMeta } from '@/common/conversation';
-import { UserSettingsWithId } from '@/common/user';
+import { UserSettingsWithId } from '@/common/userSettings';
 import { AiUserInfo } from '@/common/userInfo';
 import { InterviewQuizSurvey } from '@/features/Case/types';
 import { QuizSurvey2 } from '@/features/Goal/Quiz/types';

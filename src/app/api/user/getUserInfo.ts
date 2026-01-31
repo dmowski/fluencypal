@@ -1,4 +1,4 @@
-import { UserSettings, UserSettingsWithId } from '@/common/user';
+import { UserSettings, UserSettingsWithId } from '@/common/userSettings';
 import { getDB } from '../config/firebase';
 import { AiUserInfo } from '@/common/userInfo';
 import { Conversation, UserConversationsMeta } from '@/common/conversation';

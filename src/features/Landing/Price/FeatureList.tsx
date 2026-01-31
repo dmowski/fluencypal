@@ -1,5 +1,5 @@
 'use client';
-import { AppMode } from '@/common/user';
+import { AppMode } from '@/common/userSettings';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { useLingui } from '@lingui/react';
 import { Stack, Typography } from '@mui/material';

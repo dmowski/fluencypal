@@ -18,7 +18,7 @@ import {
   ConversationMode,
   InitUserSettings,
   UserSettings,
-} from '@/common/user';
+} from '@/common/userSettings';
 import { NativeLangCode } from '@/libs/language/type';
 import { useUserSource } from '../Analytics/useUserSource';
 import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';

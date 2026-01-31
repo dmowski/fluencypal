@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { Check, Gem, Keyboard, Lightbulb, LogOut } from 'lucide-react';
 import VideocamIcon from '@mui/icons-material/Videocam';
-import { ConversationMode } from '@/common/user';
+import { ConversationMode } from '@/common/userSettings';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import MicIcon from '@mui/icons-material/Mic';

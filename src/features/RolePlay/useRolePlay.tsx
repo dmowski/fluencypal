@@ -20,7 +20,7 @@ import { useLocalStorage } from 'react-use';
 import { GuessGameStat } from '../Conversation/types';
 import { MODELS } from '@/common/ai';
 import { uniq } from '@/libs/uniq';
-import { ConversationMode } from '@/common/user';
+import { ConversationMode } from '@/common/userSettings';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 
 const firstLimit = 6;

@@ -8,7 +8,7 @@ import {
 } from 'firebase/firestore';
 import { firestore } from './init';
 import { PaymentLog, TotalUsageInfo, UsageLog } from '@/common/usage';
-import { UserSettings } from '@/common/user';
+import { UserSettings } from '@/common/userSettings';
 import { ConversationMessage, Conversation } from '@/common/conversation';
 import { Homework } from '@/common/homework';
 import { UserTaskStats } from '@/common/userTask';
