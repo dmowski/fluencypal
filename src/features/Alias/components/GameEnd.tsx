@@ -21,7 +21,7 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { useGameState } from '../hooks/useGameState';
 
 export const GameEnd: React.FC = () => {
-  const { state, setScreen, initializeGame } = useGameState();
+  const { state, setScreen, initializeGame, getScores, getTeamScores } = useGameState();
 
   const isTeamsMode = state.settings?.mode === 'teams';
 
@@ -29,27 +29,33 @@ export const GameEnd: React.FC = () => {
     if (!state.settings) return [];
 
     if (isTeamsMode && state.settings.teams) {
+      const teamScores = getTeamScores();
+      const scoreMap = new Map(teamScores.map((ts) => [ts.teamId, ts.score]));
+
       return state.settings.teams
         .map((team) => ({
           id: team.id,
           name: team.name,
-          score: team.score,
+          score: scoreMap.get(team.id) || 0,
           type: 'team' as const,
         }))
         .sort((a, b) => b.score - a.score);
     } else if (state.settings.players) {
+      const playerScores = getScores();
+      const scoreMap = new Map(playerScores.map((ps) => [ps.playerId, ps.score]));
+
       return state.settings.players
         .map((player) => ({
           id: player.id,
           name: player.name,
-          score: player.score || 0,
+          score: scoreMap.get(player.id) || 0,
           type: 'player' as const,
         }))
         .sort((a, b) => b.score - a.score);
     }
 
     return [];
-  }, [state.settings, isTeamsMode]);
+  }, [state.settings, state.rounds, isTeamsMode, getScores, getTeamScores]);
 
   const winner = finalScores[0];
   const totalTurnsPlayed = state.rounds.reduce((sum, round) => sum + round.turns.length, 0);
