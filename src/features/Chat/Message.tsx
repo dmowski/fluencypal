@@ -607,6 +607,8 @@ export const PreviewMessage = ({
     return () => clearTimeout(timer);
   }, [message.id, auth.uid]);
 
+  const ago = dayjs(message.createdAtIso).fromNow();
+
   return (
     <Stack
       key={message.id}
@@ -629,6 +631,15 @@ export const PreviewMessage = ({
       >
         <Avatar avatarSize={'26px'} url={userAvatarUrl} />
         <UserName userId={message.senderId} userName={userName} bold size="small" />
+        <Typography
+          variant="caption"
+          sx={{
+            opacity: 0.6,
+            marginLeft: 'auto',
+          }}
+        >
+          {ago}
+        </Typography>
       </Stack>
       <MessageContent contentFontSize="14px">{contentToShow}</MessageContent>
       <Stack
