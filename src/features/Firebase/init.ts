@@ -43,7 +43,7 @@ const firestore =
           });
         } catch (error: any) {
           // If initializeFirestore was already called, just use getFirestore
-          if (error.code === 'failed-precondition') {
+          if (error.code === 'failed-precondition' || error.message?.includes('already')) {
             return getFirestore(app);
           }
           throw error;
@@ -61,7 +61,7 @@ const auth =
           });
         } catch (error: any) {
           // If initializeAuth was already called, just use getAuth
-          if (error.code === 'failed-precondition') {
+          if (error.code === 'auth/already-initialized' || error.message?.includes('already')) {
             return getAuth(app);
           }
           throw error;
