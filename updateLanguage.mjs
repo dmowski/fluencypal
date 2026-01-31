@@ -8,7 +8,7 @@ const writeFileAsync = promisify(fs.writeFile);
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 if (!OPENAI_API_KEY) {
-  throw new Error('OPENAI_API_KEY is not defined. Please set it in .env file');
+  throw new Error('OPENAI_API_KEY is not defined. Please set it in .env.tool file');
 }
 
 const openAi = new OpenAI({ apiKey: OPENAI_API_KEY });
