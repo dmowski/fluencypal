@@ -5,7 +5,7 @@
 FluencyPal is an AI-powered conversation practice application that helps intermediate and advanced language learners improve their speaking fluency, pronunciation, and confidence through realistic conversations and instant feedback.
 
 [![Website](https://img.shields.io/badge/Website-fluencypal.com-blue)](https://www.fluencypal.com)
-[![License](https://img.shields.io/badge/License-Private-red)]()
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ## 🌟 Features
 
@@ -276,11 +276,36 @@ Test files are located in the `e2e/` directory and include:
 
 ## 🤝 Contributing
 
-This is a private project. For questions or collaboration inquiries, please contact the maintainers.
+Contributions are welcome ❤️
+
+If you’d like to contribute:
+
+- Open an issue to discuss ideas, bugs, or improvements
+- Submit a pull request with a clear description
+- Follow existing code style and project structure
+
+By contributing, you agree that your contributions will be licensed under the same license as this project.
 
 ## 📄 License
 
-Private - All rights reserved
+This project is open source and licensed under the **MIT License**.
+
+You are free to:
+
+- use
+- copy
+- modify
+- merge
+- publish
+- distribute
+- sublicense
+- and/or sell copies of the software
+
+subject to the conditions outlined in the [LICENSE](LICENSE) file.
+
+**Important note:**  
+This repository contains application source code only.  
+Running FluencyPal in production requires your own API keys, infrastructure, and compliance with third-party service terms (OpenAI, Firebase, Stripe, etc.).
 
 ## 🔗 Links
 
@@ -296,6 +321,12 @@ Built with:
 - Stripe for payment processing
 - Material-UI for UI components
 - Next.js for the web framework
+
+## ™ Trademark
+
+“FluencyPal” is a trademark of the project author.
+
+You may fork and deploy this software under a different name, but you may not use the “FluencyPal” name, logo, or branding for derivative or commercial offerings without explicit permission.
 
 ---
 
