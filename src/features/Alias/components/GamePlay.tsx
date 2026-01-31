@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { useLingui } from '@lingui/react';
 import { Container, Stack, Typography, Divider } from '@mui/material';
 import { useGameState } from '../hooks/useGameState';
 import { WordCard } from './WordCard';
@@ -9,6 +10,7 @@ import { Timer } from './Timer';
 import { WordCounter } from './WordCounter';
 
 export const GamePlay = () => {
+  const { i18n } = useLingui();
   const {
     state,
     getCurrentPlayer,
@@ -71,10 +73,10 @@ export const GamePlay = () => {
   const currentLabel = useMemo(() => {
     if (!state.settings) return '';
     if (state.settings.mode === 'teams') {
-      return team?.name ?? 'Team';
+      return team?.name ?? i18n._('Team');
     }
-    return player?.name ?? 'Player';
-  }, [state.settings, team?.name, player?.name]);
+    return player?.name ?? i18n._('Player');
+  }, [state.settings, team?.name, player?.name, i18n]);
 
   const handleCorrect = () => {
     if (!turn?.currentWord) return;
@@ -98,9 +100,9 @@ export const GamePlay = () => {
     return (
       <Container maxWidth="md" data-testid="gameplay">
         <Stack spacing={3} alignItems="center" sx={{ py: 4 }}>
-          <Typography variant="h4">Gameplay</Typography>
+          <Typography variant="h4">{i18n._('Gameplay')}</Typography>
           <Typography variant="body1" color="text.secondary">
-            Preparing your game...
+            {i18n._('Preparing your game...')}
           </Typography>
         </Stack>
       </Container>
@@ -112,7 +114,7 @@ export const GamePlay = () => {
       <Stack spacing={4} alignItems="center" sx={{ py: 4 }}>
         <Stack spacing={0.5} alignItems="center">
           <Typography variant="subtitle2" color="text.secondary">
-            {state.settings.mode === 'teams' ? 'Team' : 'Player'} turn
+            {state.settings.mode === 'teams' ? i18n._('Team turn') : i18n._('Player turn')}
           </Typography>
           <Typography variant="h5" fontWeight="bold" data-testid="gameplay-current-player">
             {currentLabel}
@@ -135,7 +137,7 @@ export const GamePlay = () => {
 
         {!canContinue && (
           <Typography variant="body2" color="text.secondary">
-            Loading a word...
+            {i18n._('Loading a word...')}
           </Typography>
         )}
       </Stack>
