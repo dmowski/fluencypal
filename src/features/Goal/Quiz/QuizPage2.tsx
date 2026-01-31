@@ -190,6 +190,7 @@ const QuizQuestions = () => {
                     <SelectTeacher
                       selectedVoice={settings.userSettings?.teacherVoice}
                       onSelectVoice={settings.setVoice}
+                      voiceSpeed={settings.aiVoiceSpeed}
                     />
                   </Stack>
                 }

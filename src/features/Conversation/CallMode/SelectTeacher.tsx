@@ -6,13 +6,17 @@ import { AiAvatar } from './types';
 import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
 import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 import { useState } from 'react';
+import { AiVoiceSpeed } from '@/common/userSettings';
+import { getVoiceSpeedInstruction } from './voiceSpeed';
 
 export const SelectTeacher = ({
   selectedVoice,
   onSelectVoice,
+  voiceSpeed,
 }: {
   selectedVoice?: AiVoice | null;
   onSelectVoice: (voice: AiVoice) => void;
+  voiceSpeed: AiVoiceSpeed;
 }) => {
   const voices = Object.keys(voiceAvatarMap) as AiVoice[];
 
@@ -39,6 +43,7 @@ export const SelectTeacher = ({
             isSelected={isSelected}
             onToggle={() => onSelectVoice(voice)}
             voice={voice}
+            voiceSpeed={voiceSpeed}
           />
         );
       })}
@@ -51,14 +56,19 @@ export const AvatarCard = ({
   isSelected,
   onToggle,
   voice,
+  voiceSpeed,
 }: {
   voice: AiVoice;
   aiAvatar: AiAvatar;
   isSelected: boolean;
   onToggle: () => void;
+  voiceSpeed: AiVoiceSpeed;
 }) => {
   const audio = useConversationAudio();
   const [isPlayingThisVoice, setIsPlayingThisVoice] = useState(false);
+
+  const voiceInstructionWithSpeed = `${getVoiceSpeedInstruction(voiceSpeed)} ${aiAvatar.voiceInstruction} `;
+  if (isPlayingThisVoice) console.log('voiceInstructionWithSpeed', voiceInstructionWithSpeed);
   return (
     <Stack
       sx={{
@@ -118,7 +128,7 @@ export const AvatarCard = ({
         <AudioPlayIcon
           text={aiAvatar.helloPhrases[0]}
           voice={voice}
-          instructions={aiAvatar.voiceInstruction}
+          instructions={voiceInstructionWithSpeed}
           onChangeState={setIsPlayingThisVoice}
         />
       </Stack>

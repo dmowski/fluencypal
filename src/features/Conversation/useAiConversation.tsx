@@ -28,20 +28,14 @@ import { initTextConversation } from './ConversationInstance/textConversation';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
 import { setGlobalConversationId } from '../Usage/globalConversationId';
+import { getVoiceSpeedInstruction } from './CallMode/voiceSpeed';
 
 const LIMITED_MESSAGES_COUNT = 12;
 const LIMITED_VOICE_MESSAGES_COUNT = 7;
 
-const voiceSpeedInstructionsMap: Record<AiVoiceSpeed, string> = {
-  'extremely-slow': 'Speak very slowly, with clear pronunciation and longer pauses between words.',
-  slow: 'Speak slowly and clearly, with noticeable pauses between sentences.',
-  normal: '',
-  fast: 'Speak quickly but clearly, maintaining good pronunciation and energy.',
-};
-
 const getVoiceInstructions = (voice: AiVoice, voiceSpeed: AiVoiceSpeed): string => {
   const voiceAvatar = getAiVoiceByVoice(voice);
-  const speedInstruction = voiceSpeedInstructionsMap[voiceSpeed];
+  const speedInstruction = getVoiceSpeedInstruction(voiceSpeed);
   const voiceInstructions = `## AI Voice
 ${voiceAvatar.voiceInstruction} ${speedInstruction}`;
   return voiceInstructions;

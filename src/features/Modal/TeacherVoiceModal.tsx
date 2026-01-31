@@ -68,6 +68,7 @@ export const TeacherVoiceModal: React.FC = () => {
             <SelectTeacher
               selectedVoice={settings.userSettings?.teacherVoice}
               onSelectVoice={settings.setVoice}
+              voiceSpeed={voiceSpeed}
             />
             <Button
               size="large"
