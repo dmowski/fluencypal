@@ -70,11 +70,11 @@ const PreviewCardComponent = () => {
               height: '0px',
             },
             '&::-webkit-scrollbar-thumb': {
-              backgroundColor: 'rgba(100, 100, 100, 0.5)',
+              backgroundColor: 'rgba(100, 100, 100, 0.1)',
               borderRadius: '4px',
             },
             '&::-webkit-scrollbar-thumb:hover': {
-              backgroundColor: 'rgba(100, 100, 100, 0.7)',
+              backgroundColor: 'rgba(100, 100, 100, 0.1)',
             },
           }}
         >
