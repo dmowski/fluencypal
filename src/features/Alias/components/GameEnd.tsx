@@ -102,7 +102,7 @@ export const GameEnd: React.FC = () => {
           </Typography>
           <TableContainer component={Paper} variant="outlined">
             <Table data-testid="final-scoreboard">
-              <TableHead sx={{ backgroundColor: '#f5f5f5' }}>
+              <TableHead>
                 <TableRow>
                   <TableCell sx={{ fontWeight: 'bold' }} align="left">
                     Rank
@@ -123,10 +123,10 @@ export const GameEnd: React.FC = () => {
                     sx={{
                       backgroundColor:
                         index === 0
-                          ? 'rgba(255, 215, 0, 0.1)'
+                          ? 'rgba(255, 215, 0, 0.02)'
                           : index % 2 === 0
-                            ? 'white'
-                            : '#fafafa',
+                            ? 'rgba(255, 215, 220, 0.1)'
+                            : 'rgba(255, 215, 220, 0.1)',
                     }}
                   >
                     <TableCell sx={{ fontWeight: index === 0 ? 'bold' : 'normal' }}>
