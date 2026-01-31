@@ -1,10 +1,5 @@
 import '@testing-library/jest-dom';
-import {
-  shuffleWords,
-  buildWordPool,
-  getNextWord,
-  getTurnOrder,
-} from './wordManager';
+import { shuffleWords, buildWordPool, getNextWord, getTurnOrder } from './wordManager';
 import { Category, Player, Team } from '../types';
 
 describe('Word Manager', () => {

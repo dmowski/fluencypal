@@ -1,9 +1,5 @@
 import '@testing-library/jest-dom';
-import {
-  calculateTurnScore,
-  calculatePlayerScore,
-  calculateTeamScore,
-} from './scoreCalculator';
+import { calculateTurnScore, calculatePlayerScore, calculateTeamScore } from './scoreCalculator';
 import { TurnState } from '../types';
 
 describe('Score Calculator', () => {
