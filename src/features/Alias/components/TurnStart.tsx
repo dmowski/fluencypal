@@ -21,7 +21,8 @@ export const TurnStart = () => {
     if (isTeamsMode) {
       const teamScores = getTeamScores();
       return teamScores.map((score) => {
-        const teamName = state.settings?.teams.find((t) => t.id === score.teamId)?.name ?? i18n._('Team');
+        const teamName =
+          state.settings?.teams.find((t) => t.id === score.teamId)?.name ?? i18n._('Team');
         return { id: score.teamId, name: teamName, score: score.score };
       });
     }

@@ -143,7 +143,12 @@ export const Scoreboard: React.FC = () => {
                               {entry.name}
                             </Typography>
                             {isHighlight && (
-                              <Chip label={i18n._('Now')} size="small" color="primary" variant="outlined" />
+                              <Chip
+                                label={i18n._('Now')}
+                                size="small"
+                                color="primary"
+                                variant="outlined"
+                              />
                             )}
                           </Stack>
                         </TableCell>
