@@ -83,7 +83,7 @@ const PreviewCardComponent = () => {
               flexDirection: 'row',
               alignItems: 'flex-start',
               gap: '20px',
-              padding: '20px 55px 20px 0px',
+              padding: '0px 55px 20px 0px',
               width: 'max-content',
             }}
           >

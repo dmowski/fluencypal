@@ -128,15 +128,8 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     return shuffled.slice(0, count);
   };
 
-  const {
-    messages,
-    previewMessages,
-    topLevelMessages,
-    commentsInfo,
-    secondLevelSingleCommentsIds,
-  } = useMemo<{
+  const { messages, topLevelMessages, commentsInfo, secondLevelSingleCommentsIds } = useMemo<{
     messages: ThreadsMessage[];
-    previewMessages: ThreadsMessage[];
     topLevelMessages: ThreadsMessage[];
     commentsInfo: Record<string, number>;
     secondLevelSingleCommentsIds: string[];
@@ -189,13 +182,18 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       topLevelMessages: topLevel,
       commentsInfo: commentsMap,
       secondLevelSingleCommentsIds,
-      previewMessages: getRandomMessages(topLevel, 5),
     };
   }, [messagesData]);
 
   useEffect(() => {
     updateTotalMessages();
   }, [messagesData, metaData]);
+
+  const previewMessageCount = 5;
+  const previewMessages = useMemo(() => {
+    if (topLevelMessages.length <= previewMessageCount) return topLevelMessages;
+    return getRandomMessages(topLevelMessages, previewMessageCount);
+  }, [topLevelMessages.length]);
 
   const updateTotalMessages = () => {
     if (!metaData || !metaRef || !messagesData) return;
