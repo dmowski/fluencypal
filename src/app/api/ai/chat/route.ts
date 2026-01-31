@@ -27,11 +27,6 @@ export async function POST(request: Request) {
   };
 
   const priceUsd = calculateTextUsagePrice(usageEvent, aiRequest.model);
-  console.log('1k requests CHAT $:', Math.round(priceUsd * 1000 * 100) / 100, {
-    systemMessage: aiRequest.systemMessage,
-    userMessage: aiRequest.chatMessages,
-    result: output,
-  });
 
   await addConversationUsage({
     userId: userInfo.uid,
