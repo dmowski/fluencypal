@@ -95,10 +95,10 @@ export const GameEnd: React.FC = () => {
               {i18n._('Game Over!')}
             </Typography>
             <Typography variant="h5" color="primary" data-testid="winner-name">
-              {i18n._(`${winner?.name} wins!`)}
+              {i18n._(`{winnerName} wins!`, { winnerName: winner?.name ?? '' })}
             </Typography>
             <Typography variant="h6" data-testid="winner-score">
-              {i18n._(`Final Score: ${winner?.score}`)}
+              {i18n._(`Final Score: {winnerScore}`, { winnerScore: winner?.score ?? 0 })}
             </Typography>
           </Stack>
         </Stack>

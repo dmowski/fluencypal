@@ -421,6 +421,11 @@ msgstr ""
 msgid "Access to the community"
 msgstr "Dostęp do społeczności"
 
+#: src/features/Alias/components/GameEnd.tsx:196
+#. js-lingui-explicit-id
+msgid "Accuracy"
+msgstr "Dokładność"
+
 #: src/features/Case/data/backendCSharp/firstScreenSection.ts:10
 #. js-lingui-explicit-id
 msgid "Ace your C# Backend Developer interview"
@@ -451,6 +456,11 @@ msgstr "Aktywne"
 msgid "Add a reply"
 msgstr "Dodaj odpowiedź"
 
+#: src/features/Alias/components/PlayersSetup.tsx:191
+#. js-lingui-explicit-id
+msgid "Add between 2 and 20 players. Tap a name to edit it."
+msgstr "Dodaj od 2 do 20 graczy. Stuknij w nazwę, aby ją edytować."
+
 #: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add Comment"
@@ -475,6 +485,11 @@ msgstr "Dodaj nowy post"
 #. js-lingui-explicit-id
 msgid "Add note"
 msgstr "Dodaj notatkę"
+
+#: src/features/Alias/components/PlayersSetup.tsx:229
+#. js-lingui-explicit-id
+msgid "Add player"
+msgstr "Dodaj gracza"
 
 #: src/features/Chat/ChatSectionHeader.tsx:72
 #. js-lingui-explicit-id
@@ -506,6 +521,7 @@ msgstr "Dodaj swój problem tutaj..."
 msgid "Address performance considerations"
 msgstr "Rozważania dotyczące wydajności"
 
+#: src/features/Alias/components/LanguageLevel.tsx:85
 #: src/features/Landing/Price/PricePage.tsx:382
 #. js-lingui-explicit-id
 msgid "Advanced"
@@ -991,6 +1007,10 @@ msgstr ""
 "Unikanie tych błędów sprawi, że będziesz wyglądać bardziej profesjonalnie i "
 "zwiększy szanse na sukces."
 
+#: src/features/Alias/components/CategorySelection.tsx:96
+#: src/features/Alias/components/LanguageLevel.tsx:96
+#: src/features/Alias/components/PlayersSetup.tsx:308
+#: src/features/Alias/components/RoundSettings.tsx:199
 #: src/features/Chat/ChatPage.tsx:165
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
@@ -1509,10 +1529,20 @@ msgstr "Zameldowanie"
 msgid "Chinese Learning Plan"
 msgstr "Plan Nauki Chińskiego"
 
+#: src/features/Alias/components/RoundSettings.tsx:114
+#. js-lingui-explicit-id
+msgid "Choose how long each turn lasts and how many rounds to play."
+msgstr "Wybierz, jak długo trwa każda tura i ile rund chcesz rozegrać."
+
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:24
 #. js-lingui-explicit-id
 msgid "Choose isolation levels, model aggregates, and write efficient queries."
 msgstr "Wybierz poziomy izolacji, modeluj agregaty i pisz wydajne zapytania."
+
+#: src/features/Alias/components/LanguageLevel.tsx:33
+#. js-lingui-explicit-id
+msgid "Choose Language Level"
+msgstr "Wybierz Poziom Języka"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:208
 #. js-lingui-explicit-id
@@ -1780,6 +1810,9 @@ msgstr "Kontakty"
 msgid "Contacts:"
 msgstr "Kontakty:"
 
+#: src/features/Alias/components/CategorySelection.tsx:104
+#: src/features/Alias/components/LanguageLevel.tsx:104
+#: src/features/Alias/components/PlayersSetup.tsx:317
 #: src/features/Case/data/backendCSharp/quizData.ts:56
 #: src/features/Case/data/frontend-junior/quizData.ts:49
 #: src/features/Case/data/frontend-junior/quizData.ts:129
@@ -1810,6 +1843,11 @@ msgstr "Kontynuuj ćwiczenia, aby doskonalić swoje umiejętności."
 msgid "Continue to free access"
 msgstr "Kontynuuj bezpłatny dostęp"
 
+#: src/features/Alias/components/Scoreboard.tsx:180
+#. js-lingui-explicit-id
+msgid "Continue to Next Turn"
+msgstr "Kontynuuj do następnej tury"
+
 #: src/features/Usage/PaymentModal.tsx:346
 #. js-lingui-explicit-id
 msgid "Continue to payment"
@@ -1828,16 +1866,16 @@ msgstr "Testy Umów"
 msgid "Conversation"
 msgstr "Rozmowa"
 
-#: src/features/Landing/LandingPage.tsx:254
-#. js-lingui-explicit-id
-msgid "Conversation Practice"
-msgstr "Ćwiczenia Konwersacyjne"
-
 #: src/features/Landing/Price/FeatureList.tsx:40
 #: src/features/Landing/Price/PricePage.tsx:351
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Praktyka rozmowy"
+
+#: src/features/Landing/LandingPage.tsx:254
+#. js-lingui-explicit-id
+msgid "Conversation Practice"
+msgstr "Ćwiczenia Konwersacyjne"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:237
 #. js-lingui-explicit-id
@@ -1881,6 +1919,17 @@ msgstr "Skopiuj link strony"
 #. js-lingui-explicit-id
 msgid "Core Web Vitals"
 msgstr "Podstawowe parametry internetowe"
+
+#: src/features/Alias/components/GameControls.tsx:26
+#: src/features/Alias/components/TurnSummary.tsx:137
+#. js-lingui-explicit-id
+msgid "Correct"
+msgstr "Poprawne"
+
+#: src/features/Alias/components/TurnSummary.tsx:179
+#. js-lingui-explicit-id
+msgid "Correct words ({count})"
+msgstr "Poprawne słowa ({count})"
 
 #: src/features/Conversation/ProcessUserInput.tsx:109
 #. js-lingui-explicit-id
@@ -2027,6 +2076,11 @@ msgstr "Aktualne saldo wykorzystania AI"
 #. js-lingui-explicit-id
 msgid "Current Lesson"
 msgstr "Obecna Lekcja"
+
+#: src/features/Alias/components/TurnStart.tsx:94
+#. js-lingui-explicit-id
+msgid "Current Scores"
+msgstr "Bieżące Wyniki"
 
 #: src/features/RolePlay/rolePlayData.tsx:686
 #: src/features/RolePlay/rolePlayData.tsx:713
@@ -2313,6 +2367,11 @@ msgstr "Opisz swój niestandardowy scenariusz tutaj..."
 msgid "Description:"
 msgstr "Opis:"
 
+#: src/features/Alias/components/CategorySelection.tsx:69
+#. js-lingui-explicit-id
+msgid "Deselect all"
+msgstr "Odznacz wszystkie"
+
 #: src/features/Case/data/backendCSharp/exampleQuestionsSection.ts:18
 #. js-lingui-explicit-id
 msgid ""
@@ -2596,6 +2655,11 @@ msgstr "Nie pozwól, aby błędy cię powstrzymywały."
 #. js-lingui-explicit-id
 msgid "Don’t skip small talk"
 msgstr "Nie pomijaj drobnej rozmowy"
+
+#: src/features/Alias/components/RoundSettings.tsx:138
+#. js-lingui-explicit-id
+msgid "Duration"
+msgstr "Czas trwania"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:832
 #. js-lingui-explicit-id
@@ -3354,6 +3418,16 @@ msgstr ""
 "Wypełnij quiz powitalny, aby pomóc FluencyPal zrozumieć Twoje cele i "
 "preferencje."
 
+#: src/features/Alias/components/GameEnd.tsx:101
+#. js-lingui-explicit-id
+msgid "Final Score: {winnerScore}"
+msgstr "Końcowy wynik: {winnerScore}"
+
+#: src/features/Alias/components/GameEnd.tsx:109
+#. js-lingui-explicit-id
+msgid "Final Standings"
+msgstr "Końcowa Klasyfikacja"
+
 #: src/features/Dashboard/BrainCard.tsx:159
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
@@ -3363,6 +3437,11 @@ msgstr "Kończenie decyzji ..."
 #. js-lingui-explicit-id
 msgid "Finish with what you learned"
 msgstr "Zakończ na tym, czego się nauczyłeś"
+
+#: src/features/Alias/components/RoundSettings.tsx:132
+#. js-lingui-explicit-id
+msgid "Fixed words"
+msgstr "Stałe słowa"
 
 #: src/features/SEO/metadata.ts:248
 #. js-lingui-explicit-id
@@ -3782,10 +3861,30 @@ msgstr "Pełne funkcje głosowe"
 msgid "Game"
 msgstr "Gra"
 
+#: src/features/Alias/components/GameEnd.tsx:95
+#. js-lingui-explicit-id
+msgid "Game Over!"
+msgstr "Game Over!"
+
+#: src/features/Alias/components/TurnStart.tsx:49
+#. js-lingui-explicit-id
+msgid "Game settings are missing. Please go back."
+msgstr "Ustawienia gry są brakujące. Proszę wrócić."
+
+#: src/features/Alias/components/GameEnd.tsx:170
+#. js-lingui-explicit-id
+msgid "Game Statistics"
+msgstr "Statystyki Gry"
+
 #: src/features/Landing/Price/PricePage.tsx:268
 #. js-lingui-explicit-id
 msgid "Game-based practice"
 msgstr "Praktyka oparta na grze"
+
+#: src/features/Alias/components/GamePlay.tsx:103
+#. js-lingui-explicit-id
+msgid "Gameplay"
+msgstr "Rozgrywka"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:420
 #. js-lingui-explicit-id
@@ -4002,6 +4101,11 @@ msgstr "Uzyskaj Mój Plan"
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "Poznaj nowe słowa i zwroty w kontekście"
+
+#: src/features/Alias/components/TurnStart.tsx:61
+#. js-lingui-explicit-id
+msgid "Get Ready"
+msgstr "Przygotuj się"
 
 #: src/features/Blog/BlogsPage.tsx:39
 #: src/features/Landing/Price/PricePage.tsx:193
@@ -6274,6 +6378,11 @@ msgstr "Załaduj więcej"
 msgid "Loading"
 msgstr "Ładowanie"
 
+#: src/features/Alias/components/GamePlay.tsx:140
+#. js-lingui-explicit-id
+msgid "Loading a word..."
+msgstr "Ładowanie słowa..."
+
 #: src/features/Telegram/TgAppPage.tsx:162
 #. js-lingui-explicit-id
 msgid "Loading."
@@ -6323,6 +6432,11 @@ msgstr "Wyloguj się ze swojego konta"
 #. js-lingui-explicit-id
 msgid "Logging/Tracing"
 msgstr "Rejestrowanie/Śledzenie"
+
+#: src/features/Alias/components/LanguageLevel.tsx:88
+#. js-lingui-explicit-id
+msgid "Longer words and richer expressions"
+msgstr "Dłuższe słowa i bogatsze wyrażenia"
 
 #: src/features/Landing/LandingPage.tsx:419
 #. js-lingui-explicit-id
@@ -6685,6 +6799,11 @@ msgstr "Nigdy nie mów „nie.” Przygotuj 2–3 mądre pytania z wyprzedzeniem
 msgid "New features & simulations added regularly"
 msgstr "Nowe funkcje i symulacje dodawane regularnie"
 
+#: src/features/Alias/components/GameEnd.tsx:224
+#. js-lingui-explicit-id
+msgid "New Game"
+msgstr "Nowa Gra"
+
 #: src/features/Landing/Price/FeatureList.tsx:52
 #: src/features/Landing/Price/PricePage.tsx:366
 #. js-lingui-explicit-id
@@ -6731,6 +6850,11 @@ msgstr "Następne pytanie"
 msgid "Next Step"
 msgstr "Następny Krok"
 
+#: src/features/Alias/components/TurnSummary.tsx:236
+#. js-lingui-explicit-id
+msgid "Next Turn"
+msgstr "Następna tura"
+
 #: src/features/Auth/InterviewAuthWall.tsx:39
 #. js-lingui-explicit-id
 msgid "No ads, no spam"
@@ -6760,6 +6884,11 @@ msgstr "Nie zostanie naliczona żadna opłata"
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Brak jakichkolwiek rozmów"
+
+#: src/features/Alias/components/TurnSummary.tsx:185
+#. js-lingui-explicit-id
+msgid "No correct words yet."
+msgstr "Jeszcze brak poprawnych słów."
 
 #: src/features/Usage/UsageStatsCards.tsx:327
 #. js-lingui-explicit-id
@@ -6838,6 +6967,11 @@ msgstr "Brak tekstu do tłumaczenia"
 #. js-lingui-explicit-id
 msgid "No translation available"
 msgstr "Brak tłumaczenia"
+
+#: src/features/Alias/components/TurnSummary.tsx:99
+#. js-lingui-explicit-id
+msgid "No turn data available."
+msgstr "Brak dostępnych danych o skrętach."
 
 #: src/features/Chat/MessageViewsIcon.tsx:65
 #. js-lingui-explicit-id
@@ -6953,6 +7087,16 @@ msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr ""
 "Powiadomienie zostało wysłane do zespołu deweloperskiego. Przepraszamy za "
 "to..."
+
+#: src/features/Alias/components/Scoreboard.tsx:147
+#. js-lingui-explicit-id
+msgid "Now"
+msgstr "Teraz"
+
+#: src/features/Alias/components/RoundSettings.tsx:175
+#. js-lingui-explicit-id
+msgid "Number of rounds"
+msgstr "Liczba rund"
 
 #: src/features/Usage/PaymentModal.tsx:306
 #: src/features/Usage/SubscriptionPaymentModal.tsx:620
@@ -7293,10 +7437,20 @@ msgstr ""
 "Wybierz 2-3 kluczowe cechy związane z pracą. Unikaj clichés i podaj "
 "przykłady. Na przykład:"
 
+#: src/features/Alias/components/LanguageLevel.tsx:36
+#. js-lingui-explicit-id
+msgid "Pick a difficulty that matches your group."
+msgstr "Wybierz poziom trudności odpowiadający Twojej grupie."
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:178
 #. js-lingui-explicit-id
 msgid "Pick a level to start playing!"
 msgstr "Wybierz poziom, aby zacząć grać!"
+
+#: src/features/Alias/components/CategorySelection.tsx:56
+#. js-lingui-explicit-id
+msgid "Pick one or more categories to build your word list."
+msgstr "Wybierz jedną lub więcej kategorii, aby stworzyć swoją listę słówek."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:161
 #. js-lingui-explicit-id
@@ -7317,6 +7471,11 @@ msgstr "Plan na"
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Graj"
+
+#: src/features/Alias/components/GameEnd.tsx:215
+#. js-lingui-explicit-id
+msgid "Play Again"
+msgstr "Zagraj Ponownie"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:47
 #. js-lingui-explicit-id
@@ -7348,10 +7507,46 @@ msgstr "Baw się z AI"
 msgid "Play With Friends"
 msgstr "Grać z przyjaciółmi"
 
+#: src/features/Alias/components/GameEnd.tsx:119
+#: src/features/Alias/components/GamePlay.tsx:78
+#: src/features/Alias/components/Scoreboard.tsx:104
+#: src/features/Alias/components/TurnStart.tsx:33
+#: src/features/Alias/components/TurnStart.tsx:81
+#: src/features/Alias/components/TurnSummary.tsx:59
+#: src/features/Alias/components/TurnSummary.tsx:107
+#. js-lingui-explicit-id
+msgid "Player"
+msgstr "Gracz"
+
+#: src/features/Alias/components/GamePlay.tsx:117
+#. js-lingui-explicit-id
+msgid "Player turn"
+msgstr "Tura gracza"
+
+#: src/features/Alias/components/TurnStart.tsx:73
+#. js-lingui-explicit-id
+msgid "Player up next"
+msgstr "Gracz następny w kolejce"
+
+#: src/features/Alias/components/PlayersSetup.tsx:245
+#. js-lingui-explicit-id
+msgid "Player {index}"
+msgstr "Gracz {index}"
+
+#: src/features/Alias/components/PlayersSetup.tsx:220
+#. js-lingui-explicit-id
+msgid "Players ({current}/{max})"
+msgstr "Gracze ({current}/{max})"
+
 #: src/features/Alias/components/ModeSelection.tsx:95
 #. js-lingui-explicit-id
 msgid "Players compete in teams"
 msgstr "Gracze rywalizują w zespołach"
+
+#: src/features/Alias/components/PlayersSetup.tsx:188
+#. js-lingui-explicit-id
+msgid "Players Setup"
+msgstr "Ustawienia graczy"
 
 #: src/features/Game/GameStats.tsx:83
 #. js-lingui-explicit-id
@@ -7364,6 +7559,11 @@ msgid "Please confirm your credit card to access all features."
 msgstr ""
 "Proszę potwierdzić swoją kartę kredytową, aby uzyskać dostęp do wszystkich "
 "funkcji."
+
+#: src/features/Alias/components/PlayersSetup.tsx:294
+#. js-lingui-explicit-id
+msgid "Please enter a name for every player."
+msgstr "Proszę podać imię każdego gracza."
 
 #: src/features/Auth/AuthWallBasic.tsx:166
 #. js-lingui-explicit-id
@@ -7379,6 +7579,11 @@ msgstr "Proszę nagrać dłuższą wiadomość (przynajmniej kilka słów)."
 #. js-lingui-explicit-id
 msgid "Please refresh the page and try one more time"
 msgstr "Proszę odświeżyć stronę i spróbować jeszcze raz"
+
+#: src/features/Alias/components/CategorySelection.tsx:88
+#. js-lingui-explicit-id
+msgid "Please select at least one category."
+msgstr "Proszę wybrać przynajmniej jedną kategorię."
 
 #: src/features/Chat/ChatSection.tsx:53
 #. js-lingui-explicit-id
@@ -7782,6 +7987,11 @@ msgstr ""
 msgid "Preparing the brain"
 msgstr "Przygotowanie mózgu"
 
+#: src/features/Alias/components/GamePlay.tsx:105
+#. js-lingui-explicit-id
+msgid "Preparing your game..."
+msgstr "Przygotowywanie twojej gry..."
+
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:189
 #. js-lingui-explicit-id
 msgid "Previous Question"
@@ -7884,17 +8094,17 @@ msgstr "Profil"
 msgid "Progress Calendar"
 msgstr "Kalendarz Postępów"
 
-#: src/features/Landing/LandingPage.tsx:402
-#. js-lingui-explicit-id
-msgid "Progress Tracking"
-msgstr "Śledzenie Postępów"
-
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
 #: src/features/Landing/Price/PricePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Śledzenie postępów"
+
+#: src/features/Landing/LandingPage.tsx:402
+#. js-lingui-explicit-id
+msgid "Progress Tracking"
+msgstr "Śledzenie Postępów"
 
 #: src/features/RolePlay/rolePlayData.tsx:617
 #. js-lingui-explicit-id
@@ -7947,6 +8157,12 @@ msgstr "Pytania, które będziesz ćwiczyć"
 #. js-lingui-explicit-id
 msgid "Queues"
 msgstr "Kolejki"
+
+#: src/features/Alias/components/GameEnd.tsx:116
+#: src/features/Alias/components/Scoreboard.tsx:101
+#. js-lingui-explicit-id
+msgid "Rank"
+msgstr "Ranga"
 
 #: src/features/Game/GameBadge.tsx:81
 #. js-lingui-explicit-id
@@ -8464,6 +8680,21 @@ msgstr "Role-Playe"
 msgid "Roleplay Preview"
 msgstr "Podgląd odgrywania ról"
 
+#: src/features/Alias/components/RoundSettings.tsx:111
+#. js-lingui-explicit-id
+msgid "Round Settings"
+msgstr "Ustawienia Rundy"
+
+#: src/features/Alias/components/Scoreboard.tsx:89
+#. js-lingui-explicit-id
+msgid "Round {current} / {total}"
+msgstr "Runda {current} / {total}"
+
+#: src/features/Alias/components/TurnStart.tsx:64
+#. js-lingui-explicit-id
+msgid "Round {current} of {total}"
+msgstr "Runda {current} z {total}"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:39
 #. js-lingui-explicit-id
 msgid "Routing"
@@ -8529,11 +8760,18 @@ msgstr ""
 msgid "Scenario Description"
 msgstr "Opis scenariusza"
 
+#: src/features/Alias/components/GameEnd.tsx:122
+#: src/features/Alias/components/Scoreboard.tsx:107
 #: src/features/Game/GameStats.tsx:62
 #: src/features/Game/GameStats.tsx:105
 #. js-lingui-explicit-id
 msgid "Score"
 msgstr "Wynik"
+
+#: src/features/Alias/components/Scoreboard.tsx:86
+#. js-lingui-explicit-id
+msgid "Scoreboard"
+msgstr "Tablica wyników"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:39
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:39
@@ -8577,6 +8815,16 @@ msgstr "Zobacz swoje postępy i śledź swoją ścieżkę nauki"
 #. js-lingui-explicit-id
 msgid "Select a voice and look that feels right for you."
 msgstr "Wybierz głos i wygląd, który Ci odpowiada."
+
+#: src/features/Alias/components/CategorySelection.tsx:62
+#. js-lingui-explicit-id
+msgid "Select all"
+msgstr "Zaznacz wszystko"
+
+#: src/features/Alias/components/CategorySelection.tsx:53
+#. js-lingui-explicit-id
+msgid "Select Categories"
+msgstr "Wybierz Kategorie"
 
 #: src/features/Dashboard/SelectLanguage.tsx:158
 #. js-lingui-explicit-id
@@ -8755,6 +9003,11 @@ msgstr ""
 msgid "short story"
 msgstr "krótka opowieść"
 
+#: src/features/Alias/components/LanguageLevel.tsx:62
+#. js-lingui-explicit-id
+msgid "Shorter words and familiar vocabulary"
+msgstr "Krótsze słowa i znane słownictwo"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
 #. js-lingui-explicit-id
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
@@ -8845,6 +9098,11 @@ msgstr "Zaloguj się za pomocą e-maila"
 msgid "Sign in with Google"
 msgstr "Zaloguj się przez Google"
 
+#: src/features/Alias/components/LanguageLevel.tsx:59
+#. js-lingui-explicit-id
+msgid "Simple"
+msgstr "Prosty"
+
 #: src/features/Landing/LandingPage.tsx:269
 #. js-lingui-explicit-id
 msgid "Simple & Effective"
@@ -8900,6 +9158,7 @@ msgstr ""
 "Narysuj prostą architekturę mikrousług z bramą API, uwierzytelnianiem, "
 "usługami i komunikacją asynchroniczną."
 
+#: src/features/Alias/components/GameControls.tsx:37
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:61
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:244
 #. js-lingui-explicit-id
@@ -8915,6 +9174,11 @@ msgstr "Pomiń wszystko"
 #. js-lingui-explicit-id
 msgid "Skip for now"
 msgstr "Pomiń na razie"
+
+#: src/features/Alias/components/TurnSummary.tsx:150
+#. js-lingui-explicit-id
+msgid "Skipped"
+msgstr "Pominięto"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
 #. js-lingui-explicit-id
@@ -9106,6 +9370,11 @@ msgstr "Rozpocznij rozmowę"
 msgid "Start Debate"
 msgstr "Rozpocznij debatę"
 
+#: src/features/Alias/components/RoundSettings.tsx:202
+#. js-lingui-explicit-id
+msgid "Start game"
+msgstr "Rozpocznij grę"
+
 #: src/features/Landing/PlanLandingBlock.tsx:628
 #. js-lingui-explicit-id
 msgid "Start Learning"
@@ -9158,6 +9427,13 @@ msgstr "Rozpocznij praktykę mówienia"
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "Rozpocznij Test"
+
+#: src/features/Alias/components/TurnStart.tsx:125
+#. js-lingui-explicit-id
+msgid "Start Turn"
+msgstr ""
+"\n"
+"Rozpocznij rundę\n"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:415
 #. js-lingui-explicit-id
@@ -9431,6 +9707,11 @@ msgstr "Sukces!"
 msgid "Summary"
 msgstr "Podsumowanie"
 
+#: src/features/Alias/components/RoundSettings.tsx:192
+#. js-lingui-explicit-id
+msgid "Summary: {summary}"
+msgstr "Podsumowanie: {summary}"
+
 #: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
 msgid "Swedish Learning Plan"
@@ -9538,7 +9819,36 @@ msgstr "Instrukcje dla nauczyciela"
 msgid "Teacher:"
 msgstr "Nauczyciel:"
 
+#: src/features/Alias/components/GameEnd.tsx:119
+#: src/features/Alias/components/GamePlay.tsx:76
+#: src/features/Alias/components/PlayersSetup.tsx:254
+#: src/features/Alias/components/PlayersSetup.tsx:258
+#: src/features/Alias/components/Scoreboard.tsx:104
+#: src/features/Alias/components/TurnStart.tsx:25
+#: src/features/Alias/components/TurnStart.tsx:81
+#: src/features/Alias/components/TurnSummary.tsx:51
+#: src/features/Alias/components/TurnSummary.tsx:108
+#. js-lingui-explicit-id
+msgid "Team"
+msgstr "Zespół"
+
+#: src/features/Alias/components/GamePlay.tsx:117
+#. js-lingui-explicit-id
+msgid "Team turn"
+msgstr "Tura drużyny"
+
+#: src/features/Alias/components/TurnStart.tsx:73
+#. js-lingui-explicit-id
+msgid "Team up next"
+msgstr "Zespół następny"
+
+#: src/features/Alias/components/PlayersSetup.tsx:204
+#. js-lingui-explicit-id
+msgid "Team {index} name"
+msgstr "Nazwa zespołu {index}"
+
 #: src/features/Alias/components/ModeSelection.tsx:92
+#: src/features/Alias/components/PlayersSetup.tsx:198
 #. js-lingui-explicit-id
 msgid "Teams"
 msgstr "Zespoły"
@@ -9857,6 +10167,16 @@ msgstr "To pokazuje wyniki i wyróżnia Cię."
 msgid "Ticket"
 msgstr "Bilet"
 
+#: src/features/Alias/components/Timer.tsx:15
+#. js-lingui-explicit-id
+msgid "Time left"
+msgstr "Pozostały czas"
+
+#: src/features/Alias/components/RoundSettings.tsx:129
+#. js-lingui-explicit-id
+msgid "Timed"
+msgstr "Czasowy"
+
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
 msgid ""
@@ -9888,6 +10208,16 @@ msgstr "Zadania z mówienia TOEFL"
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Razem"
+
+#: src/features/Alias/components/TurnSummary.tsx:203
+#. js-lingui-explicit-id
+msgid "Total Scores"
+msgstr "Całkowite wyniki"
+
+#: src/features/Alias/components/GameEnd.tsx:176
+#. js-lingui-explicit-id
+msgid "Total Turns"
+msgstr "Całkowita liczba tur"
 
 #: src/features/Usage/PaymentModal.tsx:474
 #. js-lingui-explicit-id
@@ -9988,6 +10318,27 @@ msgstr "Włącz wideo"
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "Włącz głośność"
+
+#: src/features/Alias/components/TurnSummary.tsx:163
+#. js-lingui-explicit-id
+msgid "Turn score"
+msgstr "Wynik rundy"
+
+#: src/features/Alias/components/TurnStart.tsx:47
+#. js-lingui-explicit-id
+msgid "Turn Start"
+msgstr "Rozpocznij rozgrywkę"
+
+#: src/features/Alias/components/TurnSummary.tsx:97
+#: src/features/Alias/components/TurnSummary.tsx:117
+#. js-lingui-explicit-id
+msgid "Turn Summary"
+msgstr "Podsumowanie Ruchu"
+
+#: src/features/Alias/components/RoundSettings.tsx:120
+#. js-lingui-explicit-id
+msgid "Turn type"
+msgstr "Typ tury"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:375
 #. js-lingui-explicit-id
@@ -10171,6 +10522,11 @@ msgstr "Zobacz wszystko"
 #. js-lingui-explicit-id
 msgid "View all posts"
 msgstr "Zobacz wszystkie posty"
+
+#: src/features/Alias/components/TurnSummary.tsx:245
+#. js-lingui-explicit-id
+msgid "View Scoreboard"
+msgstr "Wyświetl tablicę wyników"
 
 #: src/features/Header/PaymentHistoryModal.tsx:69
 #. js-lingui-explicit-id
@@ -10752,6 +11108,7 @@ msgstr "Gra w zgadywanie słów"
 msgid "Word Stats"
 msgstr "Statystyki słów"
 
+#: src/features/Alias/components/WordCounter.tsx:16
 #: src/features/Dashboard/PlanDashboardCards.tsx:61
 #: src/features/Goal/Quiz/GoalReview.tsx:36
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
@@ -10761,6 +11118,16 @@ msgstr "Statystyki słów"
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Słowa"
+
+#: src/features/Alias/components/GameEnd.tsx:186
+#. js-lingui-explicit-id
+msgid "Words Attempted"
+msgstr "Wyrazy Podejmowane"
+
+#: src/features/Alias/components/RoundSettings.tsx:154
+#. js-lingui-explicit-id
+msgid "Words per turn"
+msgstr "Słowa na turę"
 
 #: src/features/Plan/LessonStartModal.tsx:360
 #. js-lingui-explicit-id
@@ -11161,6 +11528,11 @@ msgstr ""
 "Znasz technologię, ale **masz trudności z jasnym wyjaśnieniem decyzji pod "
 "presją**"
 
+#: src/features/Alias/components/PlayersSetup.tsx:285
+#. js-lingui-explicit-id
+msgid "You need between {min} and {max} players."
+msgstr "Potrzebujesz między {min} a {max} graczy."
+
 #: src/features/Usage/PaymentModal.tsx:200
 #. js-lingui-explicit-id
 msgid ""
@@ -11384,10 +11756,45 @@ msgstr ""
 "Proszeni jesteście o **projektowanie systemów na miejscu**, ale nikt nie "
 "mówi wam, jak wygląda „dobro”"
 
+#: src/features/Alias/components/RoundSettings.tsx:33
+#. js-lingui-explicit-id
+msgid "{count} round{plural}"
+msgstr "{count} rund{plural}"
+
+#: src/features/Alias/components/RoundSettings.tsx:163
+#. js-lingui-explicit-id
+msgid "{count} words"
+msgstr "{count} słów"
+
+#: src/features/Alias/components/RoundSettings.tsx:147
+#. js-lingui-explicit-id
+msgid "{duration}s"
+msgstr "{szerokość}s"
+
+#: src/features/Alias/components/RoundSettings.tsx:38
+#. js-lingui-explicit-id
+msgid "{rounds}, {duration}s per turn"
+msgstr "{rounds}, {duration}s na turę"
+
+#: src/features/Alias/components/RoundSettings.tsx:43
+#. js-lingui-explicit-id
+msgid "{rounds}, {words} words per turn"
+msgstr "{rounds}, {words} słów na rundę"
+
+#: src/features/Alias/components/Timer.tsx:18
+#. js-lingui-explicit-id
+msgid "{seconds}s"
+msgstr "{seconds}s"
+
 #: src/features/Game/Battle/BattleCard.tsx:157
 #. js-lingui-explicit-id
 msgid "{userName} challenges you to a debate!"
 msgstr "{userName} wyzwał cię na debatę!"
+
+#: src/features/Alias/components/GameEnd.tsx:98
+#. js-lingui-explicit-id
+msgid "{winnerName} wins!"
+msgstr "{winnerName} wygrywa!"
 
 #: src/features/SEO/metadata.ts:87
 #: src/features/SEO/metadata.ts:333
@@ -11405,6 +11812,11 @@ msgstr ""
 "— ważne jest, aby zaangażować się w tę krótką rozmowę przed poruszeniem "
 "tematów zawodowych. Oto kilka przydatnych angielskich zwrotów, które pomogą "
 "rozpocząć wywiad:"
+
+#: src/features/Alias/components/WordCounter.tsx:19
+#. js-lingui-explicit-id
+#~ msgid "{current}/{total}"
+#~ msgstr "{obecny}/{całkowity}"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:182
 #. js-lingui-explicit-id

@@ -16,7 +16,7 @@ export const WordCounter = ({ current, total }: WordCounterProps) => {
         {i18n._('Words')}
       </Typography>
       <Typography variant="h4" fontWeight="bold">
-        {i18n._(`{current}/{total}`, { current, total })}
+        {current}/{total}
       </Typography>
     </Stack>
   );
