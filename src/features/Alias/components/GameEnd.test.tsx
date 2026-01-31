@@ -8,6 +8,7 @@ import { render, screen } from '@testing-library/react';
 import { GameEnd } from './GameEnd';
 import { GameProvider } from '../context/GameContext';
 import { Player, Team, GameSettings, TurnState, RoundState } from '../types';
+import { renderWithI18n } from '../test-utils/i18nTestHelper';
 
 // Mock the useGameState hook
 jest.mock('../hooks/useGameState', () => ({
@@ -165,9 +166,11 @@ describe('GameEnd - Final Standings Bug Fix', () => {
       });
 
       render(
-        <GameProvider>
-          <GameEnd />
-        </GameProvider>,
+        renderWithI18n(
+          <GameProvider>
+            <GameEnd />
+          </GameProvider>,
+        ),
       );
 
       // Check winner
@@ -269,9 +272,11 @@ describe('GameEnd - Final Standings Bug Fix', () => {
       });
 
       render(
-        <GameProvider>
-          <GameEnd />
-        </GameProvider>,
+        renderWithI18n(
+          <GameProvider>
+            <GameEnd />
+          </GameProvider>,
+        ),
       );
 
       // Check winner
@@ -361,9 +366,11 @@ describe('GameEnd - Final Standings Bug Fix', () => {
       });
 
       render(
-        <GameProvider>
-          <GameEnd />
-        </GameProvider>,
+        renderWithI18n(
+          <GameProvider>
+            <GameEnd />
+          </GameProvider>,
+        ),
       );
 
       // Total Turns: 2

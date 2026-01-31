@@ -5,6 +5,7 @@
 import '@testing-library/jest-dom';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import { GamePlay } from './GamePlay';
+import { renderWithI18n } from '../test-utils/i18nTestHelper';
 
 // Mock the useGameState hook
 jest.mock('../hooks/useGameState', () => ({
@@ -59,7 +60,7 @@ describe('GamePlay - Timer Behavior', () => {
       endTurn: mockEndTurn,
     });
 
-    render(<GamePlay />);
+    render(renderWithI18n(<GamePlay />));
 
     // Initial state - should show 60 seconds
     expect(screen.getByTestId('timer')).toHaveTextContent('60s');
@@ -132,7 +133,7 @@ describe('GamePlay - Timer Behavior', () => {
       endTurn: mockEndTurn,
     }));
 
-    const { rerender } = render(<GamePlay />);
+    const { rerender } = render(renderWithI18n(<GamePlay />));
 
     // Wait for timer to countdown
     act(() => {
@@ -145,7 +146,7 @@ describe('GamePlay - Timer Behavior', () => {
 
     // Simulate word change (this often triggers re-renders)
     currentWord = 'second-word';
-    rerender(<GamePlay />);
+    rerender(renderWithI18n(<GamePlay />));
 
     // Timer should NOT reset to 60
     await waitFor(() => {
@@ -197,7 +198,7 @@ describe('GamePlay - Timer Behavior', () => {
       endTurn: mockEndTurn,
     });
 
-    render(<GamePlay />);
+    render(renderWithI18n(<GamePlay />));
 
     const timerValues: string[] = [];
 
@@ -271,7 +272,7 @@ describe('GamePlay - Timer Behavior', () => {
       endTurn: endTurnFunc,
     }));
 
-    const { rerender } = render(<GamePlay />);
+    const { rerender } = render(renderWithI18n(<GamePlay />));
 
     // Let timer countdown
     act(() => {
@@ -314,7 +315,7 @@ describe('GamePlay - Timer Behavior', () => {
     }));
 
     // Force re-render
-    rerender(<GamePlay />);
+    rerender(renderWithI18n(<GamePlay />));
 
     // Timer should NOT reset to 60 when endTurn reference changes
     await waitFor(() => {
