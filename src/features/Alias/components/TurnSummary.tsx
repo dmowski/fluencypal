@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { useLingui } from '@lingui/react';
 import {
   Accordion,
   AccordionDetails,
@@ -16,6 +17,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useGameState } from '../hooks/useGameState';
 
 export const TurnSummary = () => {
+  const { i18n } = useLingui();
   const {
     state,
     getCurrentTurn,
@@ -45,17 +47,17 @@ export const TurnSummary = () => {
     if (isTeamsMode) {
       const teamScores = getTeamScores();
       return teamScores.map((score) => {
-        const name = state.settings?.teams.find((t) => t.id === score.teamId)?.name ?? 'Team';
+        const name = state.settings?.teams.find((t) => t.id === score.teamId)?.name ?? i18n._('Team');
         return { id: score.teamId, name, score: score.score };
       });
     }
 
     const playerScores = getScores();
     return playerScores.map((score) => {
-      const name = state.settings?.players.find((p) => p.id === score.playerId)?.name ?? 'Player';
+      const name = state.settings?.players.find((p) => p.id === score.playerId)?.name ?? i18n._('Player');
       return { id: score.playerId, name, score: score.score };
     });
-  }, [getScores, getTeamScores, isTeamsMode, state.settings]);
+  }, [getScores, getTeamScores, isTeamsMode, state.settings, i18n]);
 
   const handleNextTurn = () => {
     if (!state.settings) {
@@ -90,17 +92,17 @@ export const TurnSummary = () => {
     return (
       <Container maxWidth="md" data-testid="turn-summary">
         <Stack spacing={3} alignItems="center" sx={{ py: 4 }}>
-          <Typography variant="h4">Turn Summary</Typography>
+          <Typography variant="h4">{i18n._('Turn Summary')}</Typography>
           <Typography variant="body1" color="text.secondary">
-            No turn data available.
+            {i18n._('No turn data available.')}
           </Typography>
         </Stack>
       </Container>
     );
   }
 
-  const playerName = state.settings?.players.find((p) => p.id === turn.playerId)?.name ?? 'Player';
-  const teamName = state.settings?.teams.find((t) => t.id === turn.teamId)?.name ?? 'Team';
+  const playerName = state.settings?.players.find((p) => p.id === turn.playerId)?.name ?? i18n._('Player');
+  const teamName = state.settings?.teams.find((t) => t.id === turn.teamId)?.name ?? i18n._('Team');
 
   const playerLabel = isTeamsMode ? teamName : playerName;
 
@@ -109,7 +111,7 @@ export const TurnSummary = () => {
       <Stack spacing={4} sx={{ py: 4 }}>
         <Stack spacing={1} alignItems="center">
           <Typography variant="h4" fontWeight="bold" textAlign="center">
-            Turn Summary
+            {i18n._('Turn Summary')}
           </Typography>
           <Typography
             variant="body1"
@@ -129,7 +131,7 @@ export const TurnSummary = () => {
             data-testid="turn-summary-correct"
           >
             <Typography variant="subtitle2" color="text.secondary">
-              Correct
+              {i18n._('Correct')}
             </Typography>
             <Typography variant="h5" fontWeight="bold">
               {turn.correctCount}
@@ -142,7 +144,7 @@ export const TurnSummary = () => {
             data-testid="turn-summary-skip"
           >
             <Typography variant="subtitle2" color="text.secondary">
-              Skipped
+              {i18n._('Skipped')}
             </Typography>
             <Typography variant="h5" fontWeight="bold">
               {turn.skipCount}
@@ -155,7 +157,7 @@ export const TurnSummary = () => {
             data-testid="turn-summary-score"
           >
             <Typography variant="subtitle2" color="text.secondary">
-              Turn score
+              {i18n._('Turn score')}
             </Typography>
             <Typography variant="h5" fontWeight="bold">
               {turn.score}
@@ -171,13 +173,13 @@ export const TurnSummary = () => {
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant="subtitle1" fontWeight="medium">
-              Correct words ({correctWords.length})
+              {i18n._(`Correct words ({count})`, { count: correctWords.length })}
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             {correctWords.length === 0 ? (
               <Typography variant="body2" color="text.secondary">
-                No correct words yet.
+                {i18n._('No correct words yet.')}
               </Typography>
             ) : (
               <Stack spacing={1} data-testid="turn-summary-correct-words">
@@ -195,7 +197,7 @@ export const TurnSummary = () => {
 
         <Stack spacing={2}>
           <Typography variant="h6" textAlign="center">
-            Total Scores
+            {i18n._('Total Scores')}
           </Typography>
           <Stack spacing={1}>
             {scoreEntries.map((entry) => (
@@ -228,7 +230,7 @@ export const TurnSummary = () => {
             data-testid="turn-summary-next"
             sx={{ flex: 1 }}
           >
-            Next Turn
+            {i18n._('Next Turn')}
           </Button>
           <Button
             variant="outlined"
@@ -237,7 +239,7 @@ export const TurnSummary = () => {
             data-testid="turn-summary-view-scoreboard"
             sx={{ flex: 1 }}
           >
-            View Scoreboard
+            {i18n._('View Scoreboard')}
           </Button>
         </Stack>
       </Stack>
