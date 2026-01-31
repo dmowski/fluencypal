@@ -142,3 +142,20 @@ Alias is a word guessing game:
 - Responsive (desktop + mobile)
 - SPA-like behavior
 - No external services required
+
+---
+
+## Architecture & Project Organization
+
+For detailed information about file structure, module responsibilities, and data flow:
+
+👉 **See [FILE_STRUCTURE.md](./FILE_STRUCTURE.md)**
+
+Key sections:
+- Directory overview
+- Core module responsibilities (Context, Hooks, Utilities, Components)
+- Component reference tables
+- Data flow architecture
+- Screen flow diagram
+- Module communication patterns
+- Guidelines for adding new features
