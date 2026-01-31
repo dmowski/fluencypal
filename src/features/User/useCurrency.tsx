@@ -3,13 +3,38 @@
 import { useState, useEffect } from 'react';
 
 const localStorageCurrencyKey = 'currency_ipapi';
+
 const getFromLocalStorage = () => {
   if (typeof window === 'undefined') return null;
   return localStorage.getItem(localStorageCurrencyKey);
 };
+
 const setToLocalStorage = (currency: string) => {
   if (typeof window === 'undefined') return;
   localStorage.setItem(localStorageCurrencyKey, currency);
+};
+
+type RequestsSingletonCache = Record<
+  'currency_requests' | 'currency_rate',
+  Promise<string> | undefined
+>;
+
+const getRequestsCache = (): RequestsSingletonCache => {
+  if (typeof window === 'undefined')
+    return {
+      currency_requests: undefined,
+      currency_rate: undefined,
+    };
+
+  return window as unknown as RequestsSingletonCache;
+};
+
+const getCurrencyRequest = async () => {
+  const isWindow = typeof window !== 'undefined';
+  const res = await fetch(`https://ipapi.co/currency/`);
+  if (!res.ok) throw new Error('Failed to fetch currency from IP');
+  const currency = (await res.text()).trim();
+  return currency;
 };
 
 async function getCurrencyByIP(): Promise<string> {
@@ -21,10 +46,11 @@ async function getCurrencyByIP(): Promise<string> {
     }
   }
   console.log('getCurrencyByIP');
-  const res = await fetch(`https://ipapi.co/currency/`);
-  if (!res.ok) throw new Error('Failed to fetch currency from IP');
-  const currency = (await res.text()).trim();
-  console.log('currency', currency);
+
+  const currencyRequest = getRequestsCache().currency_requests || getCurrencyRequest();
+  getRequestsCache().currency_requests = currencyRequest;
+
+  const currency = await currencyRequest;
 
   if (isWindow && currency) {
     setToLocalStorage(currency);
@@ -33,29 +59,28 @@ async function getCurrencyByIP(): Promise<string> {
   return currency;
 }
 
+const getRateRequest = async (toCurrency: string): Promise<string> => {
+  const res = await fetch(
+    `https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}`,
+  );
+  const data = await res.json();
+  const rate = data.rates[toCurrency.toUpperCase()];
+  return `${rate}`;
+};
+
 async function getConversionRate(toCurrency: string): Promise<number> {
   const isToCurrencyIsUsd = toCurrency.toLowerCase() === 'usd';
   if (isToCurrencyIsUsd) {
     return 1;
   }
 
-  const res = await fetch(
-    `https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}`,
-  );
+  const requestRate = getRequestsCache().currency_rate || getRateRequest(toCurrency);
+  getRequestsCache().currency_rate = requestRate;
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch conversion rate');
-  }
+  const rateStr = await requestRate;
+  const rate = parseFloat(rateStr);
 
-  const data = await res.json();
-
-  const rate = data.rates[toCurrency.toUpperCase()];
-
-  if (!rate) {
-    throw new Error(`Conversion rate for ${toCurrency} not found`);
-  }
-
-  return rate as number;
+  return rate;
 }
 
 export const useCurrency = () => {
