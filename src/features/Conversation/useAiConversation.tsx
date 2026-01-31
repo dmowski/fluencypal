@@ -339,7 +339,7 @@ VISUAL_CONTEXT (latest): ${description}
     settings.setConversationMode(mode);
 
     if (mode === 'call') {
-      toggleMute(isLimited ? true : false);
+      toggleMute(true);
     }
 
     if (mode === 'chat') {
@@ -401,7 +401,9 @@ VISUAL_CONTEXT (latest): ${description}
     : conversation.length >= LIMITED_MESSAGES_COUNT && ['role-play', 'talk'].includes(currentMode);
 
   useEffect(() => {
-    toggleMute(isLimitedRecording);
+    if (isLimitedRecording) {
+      toggleMute(true);
+    }
   }, [isLimitedRecording]);
 
   const isLimitedAiVoice =
@@ -682,7 +684,7 @@ ${voiceInstructions}
 
     setLessonPlan(input.lessonPlan || null);
 
-    let isMutedInternal = isMuted;
+    let isMutedInternal = true;
     const isRecordingNeedMute = !isMuted && input.conversationMode === 'record';
 
     if (isRecordingNeedMute) {
