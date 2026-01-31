@@ -34,19 +34,39 @@ if (isFirebaseEmulator) {
 const firestore =
   isSafari || isNodeEnv
     ? getFirestore(app)
-    : initializeFirestore(app, {
-        localCache: persistentLocalCache({
-          tabManager: persistentMultipleTabManager(),
-        }),
-      });
+    : (() => {
+        try {
+          return initializeFirestore(app, {
+            localCache: persistentLocalCache({
+              tabManager: persistentMultipleTabManager(),
+            }),
+          });
+        } catch (error: any) {
+          // If initializeFirestore was already called, just use getFirestore
+          if (error.code === 'failed-precondition') {
+            return getFirestore(app);
+          }
+          throw error;
+        }
+      })();
 
 const auth =
   isSafari || isNodeEnv
     ? getAuth(app)
-    : initializeAuth(app, {
-        persistence: browserLocalPersistence,
-        popupRedirectResolver: browserPopupRedirectResolver,
-      });
+    : (() => {
+        try {
+          return initializeAuth(app, {
+            persistence: browserLocalPersistence,
+            popupRedirectResolver: browserPopupRedirectResolver,
+          });
+        } catch (error: any) {
+          // If initializeAuth was already called, just use getAuth
+          if (error.code === 'failed-precondition') {
+            return getAuth(app);
+          }
+          throw error;
+        }
+      })();
 
 const storage = getStorage(app);
 const functions = getFunctions(app);

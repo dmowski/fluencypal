@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "node scripts/dev-with-emulator.js",
+    "dev:only": "next dev --turbopack",
     "dev:https": "next dev --turbopack --experimental-https",
     "dev:firebase-emulator": "node scripts/start-firebase-emulator.js",
     "tg": "ngrok http --domain tapir-valid-pelican.ngrok-free.app 3000",
