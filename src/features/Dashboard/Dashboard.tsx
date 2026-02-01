@@ -66,7 +66,6 @@ export function Dashboard({ lang }: DashboardProps) {
         >
           {appNavigation.currentPage === 'home' && (
             <>
-              {true && <StreaksDaysBadge />}
               {!access.isFullAppAccess && (
                 <AccessBadge
                   title={i18n._('Limited access')}
@@ -88,6 +87,7 @@ export function Dashboard({ lang }: DashboardProps) {
               )}
 
               <JustTalkCard />
+              <StreaksDaysBadge />
 
               <PreviewCard />
 
