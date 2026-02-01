@@ -30,6 +30,9 @@ const PreviewCardComponent = () => {
     const newUrl = `${window.location.pathname}?${newSearchParams.toString()}`;
     router.push(`${newUrl}`, { scroll: true });
   };
+  if (previewMessages.length === 0) {
+    return null;
+  }
   return (
     <Stack
       sx={{
