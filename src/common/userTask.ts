@@ -1,4 +1,4 @@
-export type UserTaskType = 'lesson' | 'words' | 'rule' | 'feedback';
+export type UserTaskType = 'lesson' | 'words' | 'rule' | 'feedback' | 'chat';
 
 export type DayTasks = Record<UserTaskType, number | undefined>;
 export type DaysTasks = Record<string, DayTasks>;

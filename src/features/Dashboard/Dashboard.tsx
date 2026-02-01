@@ -20,6 +20,7 @@ import dayjs from 'dayjs';
 import { AccessBadge } from './AccessBadge';
 import { JustTalkCard } from './JustTalkCard';
 import { PreviewCard } from '../Chat/PreviewCard';
+import { StreaksDaysBadge } from './StreaksDaysBadge';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -65,6 +66,7 @@ export function Dashboard({ lang }: DashboardProps) {
         >
           {appNavigation.currentPage === 'home' && (
             <>
+              {true && <StreaksDaysBadge />}
               {!access.isFullAppAccess && (
                 <AccessBadge
                   title={i18n._('Limited access')}
