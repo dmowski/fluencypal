@@ -1,6 +1,5 @@
 import { Stack, Tooltip, Typography } from '@mui/material';
 import { ChevronDown, Circle, CircleCheckBig, Flame } from 'lucide-react';
-import { useUsage } from '../Usage/useUsage';
 import { useLingui } from '@lingui/react';
 import dayjs from 'dayjs';
 import { useTasks } from '../Tasks/useTasks';
@@ -61,7 +60,7 @@ export const StreaksDaysBadge = () => {
       sx={{
         marginBottom: '20px',
         alignItems: 'center',
-        gap: '10px',
+        gap: '10px 10px',
         flexDirection: 'row',
         justifyContent: 'space-between',
 
@@ -73,7 +72,7 @@ export const StreaksDaysBadge = () => {
         flexWrap: 'wrap',
         '@media (max-width:600px)': {
           borderRadius: '0px',
-          padding: '5px 20px 5px 20px',
+          padding: '5px 20px 20px 20px',
           border: 'none',
         },
       }}
