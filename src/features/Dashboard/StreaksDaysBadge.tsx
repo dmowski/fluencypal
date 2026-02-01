@@ -128,12 +128,13 @@ const DayIcon = ({
   // ISO date string
   dateStr: string;
 }) => {
+  const { i18n } = useLingui();
   const taskLabels: Record<UserTaskType, string> = {
-    lesson: 'Lesson',
-    words: 'Words',
-    rule: 'Rule',
-    feedback: 'Feedback',
-    chat: 'Community Chat',
+    lesson: i18n._('Conversation'),
+    words: i18n._('Words'),
+    rule: i18n._('Rule'),
+    feedback: i18n._('Feedback'),
+    chat: i18n._('Community Chat'),
   };
   const tasksToShowInTooltip: UserTaskType[] = ['lesson', 'words', 'rule', 'chat'];
   const activeColor = '#FF3F89';
@@ -141,7 +142,7 @@ const DayIcon = ({
   const tooltipContent = (
     <Stack
       sx={{
-        gap: '20px',
+        gap: '15px',
       }}
     >
       <Typography
@@ -151,14 +152,14 @@ const DayIcon = ({
         }}
       >
         {dayjs(dateStr).isSame(dayjs(), 'day')
-          ? "Today's Tasks"
+          ? i18n._("Today's Tasks")
           : dayjs(dateStr).isSame(dayjs().subtract(1, 'day'), 'day')
-            ? "Yesterday's Tasks"
+            ? i18n._('Yesterday')
             : dayjs(dateStr).format('MMMM D, YYYY')}
       </Typography>
       <Stack
         sx={{
-          gap: '10px',
+          gap: '15px',
         }}
       >
         {tasksToShowInTooltip.map((taskType) => {
@@ -167,13 +168,12 @@ const DayIcon = ({
               key={taskType}
               sx={{
                 flexDirection: 'row',
-                justifyContent: 'space-between',
+                //justifyContent: 'space-between',
                 width: '100%',
                 alignItems: 'center',
-                gap: '20px',
+                gap: '15px',
               }}
             >
-              <Typography variant="body2">{taskLabels[taskType]}</Typography>
               <Stack>
                 {taskData && taskData[taskType] ? (
                   <CircleCheckBig size={'20px'} color="rgb(96, 165, 250)" />
@@ -181,6 +181,7 @@ const DayIcon = ({
                   <Circle size={'20px'} color="rgba(255, 255, 255, 0.3)" />
                 )}
               </Stack>
+              <Typography variant="body2">{taskLabels[taskType]}</Typography>
             </Stack>
           );
         })}
@@ -195,8 +196,8 @@ const DayIcon = ({
         tooltip: {
           sx: {
             backgroundColor: '#202020',
-            padding: '23px',
-            borderRadius: '12px',
+            padding: '18px 23px 20px 23px',
+            borderRadius: '16px',
             border: '1px solid rgba(255, 255, 255, 0.1)',
             boxShadow: '0px 0px 22px rgba(0, 0, 0, 0.5)',
           },
