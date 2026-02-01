@@ -25,6 +25,7 @@ import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
 import { useUrlState } from '../Url/useUrlState';
 import { sendFeedbackMessageRequest } from '@/app/api/telegram/sendFeedbackMessageRequest';
 import dayjs from 'dayjs';
+import { useTasks } from '../Tasks/useTasks';
 
 interface AddMessageProps {
   messageContent: string;
@@ -259,6 +260,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
   };
 
   const isSending = useRef<string>('');
+  const tasks = useTasks();
 
   const addMessage = async ({ messageContent, parentMessageId }: AddMessageProps) => {
     if (isSending.current) {
@@ -299,6 +301,8 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     await setDoc(messageDoc, newMessage);
 
     if (!isDev) {
+      tasks.completeTask('chat');
+
       await increaseGamePointsRequest(
         {
           chatMessage: messageContent,
