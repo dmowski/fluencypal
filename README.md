@@ -82,7 +82,11 @@ Required environment variables:
 # OpenAI
 OPENAI_API_KEY=your_openai_key
 
-# Firebase
+# Enable database emulator locally
+IS_FIREBASE_EMULATOR=true
+NEXT_PUBLIC_IS_FIREBASE_EMULATOR=true
+
+# or use firebase credentials
 NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
 NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
