@@ -198,9 +198,7 @@ export const generateMetadataInfo = ({
         needIndex = false;
       }
 
-      categoryTitle = categoryInfo
-        ? ' - ' + categoryInfo.categoryTitle
-        : i18n._(`Unknown category`);
+      categoryTitle = categoryInfo ? categoryInfo.categoryTitle : i18n._(`Unknown category`);
     }
     title =
       i18n._(`Real-Life English Role-Play Scenarios`) +
@@ -231,9 +229,7 @@ export const generateMetadataInfo = ({
       if (!categoryInfo) {
         needIndex = false;
       }
-      categoryTitle = categoryInfo
-        ? ' - ' + categoryInfo.categoryTitle
-        : i18n._(`Unknown category`);
+      categoryTitle = categoryInfo ? categoryInfo.categoryTitle : i18n._(`Unknown category`);
     }
 
     title =
