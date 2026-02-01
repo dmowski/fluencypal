@@ -11,13 +11,23 @@ if (isFirebaseEmulator) {
   process.env.FIREBASE_STORAGE_EMULATOR_HOST = 'localhost:9199';
 }
 
+const rawServiceAccount = process.env.FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS;
 const serviceAccount = isFirebaseEmulator
   ? {
       project_id: 'dark-lang',
       client_email: 'emulator@example.com',
-      private_key: 'emulator-key',
+      private_key: '',
     }
-  : JSON.parse(process.env.FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS as string);
+  : (() => {
+      if (!rawServiceAccount) {
+        throw new Error('FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS is required');
+      }
+      const parsed = JSON.parse(rawServiceAccount);
+      return {
+        ...parsed,
+        private_key: (parsed.private_key as string | undefined)?.replace(/\\n/g, '\n') ?? '',
+      };
+    })();
 
 let cacheApp: firebaseAdmin.app.App | null = null;
 
@@ -31,17 +41,21 @@ const initApp = (): firebaseAdmin.app.App => {
     return cacheApp;
   }
 
-  const app = firebaseAdmin.initializeApp(
-    {
-      credential: firebaseAdmin.credential.cert({
+  const appOptions: firebaseAdmin.AppOptions = isFirebaseEmulator
+    ? {
         projectId: serviceAccount.project_id,
-        clientEmail: serviceAccount.client_email,
-        privateKey: serviceAccount.private_key,
-      }),
-      storageBucket: firebaseConfig.storageBucket,
-    },
-    firebaseConfig.projectId + Date.now(),
-  );
+        storageBucket: firebaseConfig.storageBucket,
+      }
+    : {
+        credential: firebaseAdmin.credential.cert({
+          projectId: serviceAccount.project_id,
+          clientEmail: serviceAccount.client_email,
+          privateKey: serviceAccount.private_key,
+        }),
+        storageBucket: firebaseConfig.storageBucket,
+      };
+
+  const app = firebaseAdmin.initializeApp(appOptions, firebaseConfig.projectId + Date.now());
 
   cacheApp = app;
 
