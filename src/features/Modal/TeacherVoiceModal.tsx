@@ -43,9 +43,7 @@ export const TeacherVoiceModal: React.FC = () => {
                 }}
                 variant="body2"
               >
-                {i18n._(
-                  'Select the voice your AI teacher will use during conversations. You can change this anytime.',
-                )}
+                {i18n._('Select the voice your AI teacher will use during conversations.')}
               </Typography>
             </Stack>
             <Stack>
