@@ -35,7 +35,7 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
             color: '#000',
             height: 'max-content',
             minHeight: '600px',
-            maxHeight: '2000px',
+            //maxHeight: '2000px',
             position: 'relative',
             '.contactIll': {
               width: '300px',
@@ -81,14 +81,16 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                 sx={{
                   fontWeight: 800,
                   fontSize: '6rem',
-                  '@media (max-width: 1300px)': {
-                    fontSize: '6rem',
-                  },
-                  '@media (max-width: 900px)': {
-                    fontSize: '4rem',
-                  },
                   '@media (max-width: 700px)': {
-                    fontSize: '2rem',
+                    fontSize: '5rem',
+                  },
+                  '@media (max-width: 500px)': {
+                    fontSize: '4rem',
+                    fontWeight: 850,
+                  },
+                  '@media (max-width: 400px)': {
+                    fontSize: '3.1rem',
+                    fontWeight: 900,
                   },
                 }}
               >
@@ -148,7 +150,7 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                   sx={{
                     width: '100%',
                     gap: '10px',
-                    padding: '70px 0 120px 0',
+                    padding: '30px 0 220px 0',
                   }}
                 >
                   <Typography
@@ -159,14 +161,8 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                       fontWeight: 800,
                       paddingTop: '40px',
                       fontSize: '4rem',
-                      '@media (max-width: 1300px)': {
-                        fontSize: '6rem',
-                      },
-                      '@media (max-width: 900px)': {
-                        fontSize: '4rem',
-                      },
                       '@media (max-width: 700px)': {
-                        fontSize: '2rem',
+                        fontSize: '3rem',
                       },
                     }}
                   >
