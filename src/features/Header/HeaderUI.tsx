@@ -31,7 +31,11 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
       return;
     }
 
-    const urlsForNormalHeader = [getUrlStart(lang) + 'blog', getUrlStart(lang) + 'scenarios'];
+    const urlsForNormalHeader = [
+      getUrlStart(lang) + 'blog',
+      getUrlStart(lang) + 'scenarios',
+      getUrlStart(lang) + 'contacts',
+    ];
 
     const urlPath = location.pathname;
     const isStaticHeader = !urlsForNormalHeader.find((url) => urlPath.startsWith(url));

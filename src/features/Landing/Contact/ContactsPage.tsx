@@ -92,7 +92,7 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                   },
                 }}
               >
-                {i18n._(`FluencyPal`)}
+                FluencyPal
               </Typography>
 
               <Stack
@@ -141,8 +141,31 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                   sx={{
                     width: '100%',
                     gap: '10px',
+                    padding: '70px 0 120px 0',
                   }}
                 >
+                  <Typography
+                    align="left"
+                    variant="h2"
+                    component={'h2'}
+                    sx={{
+                      fontWeight: 800,
+                      paddingTop: '40px',
+                      fontSize: '4rem',
+                      '@media (max-width: 1300px)': {
+                        fontSize: '6rem',
+                      },
+                      '@media (max-width: 900px)': {
+                        fontSize: '4rem',
+                      },
+                      '@media (max-width: 700px)': {
+                        fontSize: '2rem',
+                      },
+                    }}
+                  >
+                    {i18n._(`Contacts`)}
+                  </Typography>
+
                   <ContactParagraph>
                     {i18n._(`If you want to reach me, here are the ways:`)}
                   </ContactParagraph>
