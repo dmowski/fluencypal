@@ -151,7 +151,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
   const isFinishingProcess = isClosing || isClosed;
   const { ref, size } = useResizeElement<HTMLDivElement>();
-  const height = size.height || 0;
+  const height = size.height || 80;
 
   const bottomSectionHeight = `${height + 40}px`;
 
