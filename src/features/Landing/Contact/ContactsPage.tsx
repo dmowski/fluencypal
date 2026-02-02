@@ -105,32 +105,39 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                     `Hi. My name is Alex. I built this site so I can practice English and other languages. You can too, by the way.`,
                   )}
                 </ContactParagraph>
+
                 <ContactParagraph>
                   {i18n._(
                     `All the source code is open and publicly available. If you know how to code, you're welcome to improve it.`,
                   )}
                 </ContactParagraph>
+
                 <ContactParagraph>
                   {i18n._(
-                    `We don't have subscriptions — and I hope we never will. You buy access for a fixed period of time, and then you can extend it if you want.`,
+                    `There are no subscriptions — and I hope there never will be. You buy access for a fixed period of time, and then you can extend it if you want.`,
                   )}
                 </ContactParagraph>
+
                 <ContactParagraph>
                   {i18n._(
-                    `We have a community where you can talk about different topics and share what's on your mind.`,
+                    `There is a community here where you can talk about different topics and share what's on your mind.`,
                   )}
                 </ContactParagraph>
+
                 <ContactParagraph>
                   {i18n._(
-                    `We don't have investors. In some ways, that's a disadvantage — with investor money, we could buy ads, for example. But I really like the feeling of freedom. I like that no one demands the service make money or "pay back" investments. So I hope we never have investors. Freedom matters more.`,
+                    `There are no investors. In some ways, that's a disadvantage — with investor money, I could buy ads, for example. But I really like the feeling of freedom. I like that no one demands the service make money or "pay back" investments. So I hope there will never be investors. Freedom matters more.`,
                   )}
                 </ContactParagraph>
+
                 <ContactParagraph>
                   {i18n._(
-                    `I've been working on this project for about a year already, and I think I'll keep working on it for a long time. There's no risk of funding being cut or the project going bankrupt — because there is no funding. The project lives as long as there's money for servers. And if one day I'm poor enough that I can't afford them… well, we'll rent cheaper servers 🙂`,
+                    `I've been working on this project for about a year already, and I think I'll keep working on it for a long time. There's no risk of funding being cut or the project going bankrupt — because there is no funding. The project lives as long as there's money for servers. And if one day I'm poor enough that I can't afford them… well, I'll rent cheaper servers 🙂`,
                   )}
                 </ContactParagraph>
+
                 <ContactParagraph>{i18n._(`One more thing.`)}</ContactParagraph>
+
                 <ContactParagraph>
                   {i18n._(
                     `The main idea is to build a service that lives for a long time and stays fun. A service where, on the About page, I can write to you like a friend — not like a "user."`,

@@ -1731,6 +1731,7 @@ msgid "Contact us"
 msgstr "お問い合わせ"
 
 #: src/features/Case/Landing/components/Footer.tsx:125
+#: src/features/Landing/Contact/ContactsPage.tsx:173
 #: src/features/Landing/Footer.tsx:88
 #: src/features/SEO/metadata.ts:65
 #: src/features/Usage/SubscriptionPaymentModal.tsx:1018
@@ -3250,7 +3251,6 @@ msgstr "流暢さの向上"
 #: src/features/Blog/blogData.tsx:237
 #: src/features/Blog/blogData.tsx:379
 #: src/features/Blog/blogData.tsx:444
-#: src/features/Landing/Contact/ContactsPage.tsx:96
 #. js-lingui-explicit-id
 msgid "FluencyPal"
 msgstr "フルエンシーパル"
@@ -3867,11 +3867,6 @@ msgstr "無制限のAI駆動の言語練習へのアクセスを得る"
 msgid "Gift"
 msgstr "ギフト"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:173
-#. js-lingui-explicit-id
-msgid "Github Repository:"
-msgstr "GitHubリポジトリ:"
-
 #: src/features/Case/data/frontend-junior/quizData.ts:90
 #. js-lingui-explicit-id
 msgid "Give a small example (counter, input, button)"
@@ -4126,7 +4121,7 @@ msgstr ""
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "あなたの改善を助けるための個別フィードバックの続きはこちらです。"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:105
+#: src/features/Landing/Contact/ContactsPage.tsx:104
 #. js-lingui-explicit-id
 msgid ""
 "Hi. My name is Alex. I built this site so I can practice English and other "
@@ -4751,18 +4746,19 @@ msgstr "あなたを知るためにいくつか質問をします。その後、
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "プランを作成する前に、あなたにあと2つ質問します。"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:130
+#: src/features/Landing/Contact/ContactsPage.tsx:134
 #. js-lingui-explicit-id
 msgid ""
 "I've been working on this project for about a year already, and I think "
 "I'll keep working on it for a long time. There's no risk of funding being "
 "cut or the project going bankrupt — because there is no funding. The "
 "project lives as long as there's money for servers. And if one day I'm poor "
-"enough that I can't afford them… well, we'll rent cheaper servers 🙂"
+"enough that I can't afford them… well, I'll rent cheaper servers 🙂"
 msgstr ""
-"このプロジェクトにはすでに約1年携わっており、今後も長く取り組んでいくつもりです。資金が削減されるリスクや、プロジェクトが破産するリスクはありません "
-"— なぜなら資金がないからです。サーバーのためのお金がある限り、プロジェクトは続きます。そして、もしある日、サーバーを維持できないほど貧乏になったら… "
-"まあ、もっと安いサーバーを借りますね 🙂"
+"私はこのプロジェクトに約1"
+"年間取り組んできましたが、これからも長期間働き続けると思います。資金がカットされるリスクや、プロジェクトが破綻するリスクはありません。なぜなら、資金はな"
+"いからです。プロジェクトはサーバーのためのお金がある限り存続します。そして、もしある日、私がそれらを維持できないほど貧しくなったら…まあ、もっと安いサー"
+"バーを借ります 🙂"
 
 #: src/features/Chat/SubmitForm.tsx:150
 #. js-lingui-explicit-id
@@ -4814,7 +4810,7 @@ msgstr ""
 "目標に基づいてプランを作成することで、よりカスタマイズされた練習を提供できます。それ以外の場合、このステップをスキップしてすぐに練習を始めることもできま"
 "す！"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:148
+#: src/features/Landing/Contact/ContactsPage.tsx:177
 #. js-lingui-explicit-id
 msgid "If you want to reach me, here are the ways:"
 msgstr "私に連絡を取りたい場合は、以下の方法があります："
@@ -6651,7 +6647,7 @@ msgid ""
 "will determine the winner! {userName} will see your answers too"
 msgstr "論戦が始まったら、答えを記録する必要があります。その後、AI が勝者を決定します！{userName}もあなたの答えを見ることができます。"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:134
+#: src/features/Landing/Contact/ContactsPage.tsx:139
 #. js-lingui-explicit-id
 msgid "One more thing."
 msgstr "もう一つ。"
@@ -9417,7 +9413,7 @@ msgstr "彼らの主な違い。"
 msgid "The last question before we create your plan"
 msgstr "プランを作成する前の最後の質問"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:136
+#: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
 msgid ""
 "The main idea is to build a service that lives for a long time and stays "
@@ -9462,6 +9458,32 @@ msgstr "優勝者には {points} ゲームポイントが贈られます！"
 #. js-lingui-explicit-id
 msgid "The winner has been declared."
 msgstr "勝者が宣言されました。"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:128
+#. js-lingui-explicit-id
+msgid ""
+"There are no investors. In some ways, that's a disadvantage — with investor "
+"money, I could buy ads, for example. But I really like the feeling of "
+"freedom. I like that no one demands the service make money or \"pay back\" "
+"investments. So I hope there will never be investors. Freedom matters more."
+msgstr ""
+"投資家はいません。ある意味では、それは不利です。例えば、投資家の資金があれば広告を購入することができます。しかし、私は自由を感じるのがとても好きです。誰"
+"もサービスが利益を上げることや投資を「回収」することを要求しないのが気に入っています。ですから、投資家が現れることがないことを願っています。自由のほうが"
+"重要です。"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:116
+#. js-lingui-explicit-id
+msgid ""
+"There are no subscriptions — and I hope there never will be. You buy access "
+"for a fixed period of time, and then you can extend it if you want."
+msgstr "サブスクリプションはありません — そして将来もないことを願っています。固定期間のアクセスを購入し、必要に応じて延長することができます。"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"There is a community here where you can talk about different topics and "
+"share what's on your mind."
+msgstr "ここでは、さまざまなトピックについて話し合ったり、自分の考えを共有したりできるコミュニティがあります。"
 
 #: src/features/Dashboard/BrainCard.tsx:150
 #. js-lingui-explicit-id
@@ -10081,33 +10103,6 @@ msgstr "私たちはあなたのプランを作成する準備ができていま
 #. js-lingui-explicit-id
 msgid "We can send you marketing emails"
 msgstr "マーケティングメールをお送りすることができます"
-
-#: src/features/Landing/Contact/ContactsPage.tsx:125
-#. js-lingui-explicit-id
-msgid ""
-"We don't have investors. In some ways, that's a disadvantage — with "
-"investor money, we could buy ads, for example. But I really like the "
-"feeling of freedom. I like that no one demands the service make money or "
-"\"pay back\" investments. So I hope we never have investors. Freedom "
-"matters more."
-msgstr ""
-"投資家はいません。ある意味では、それは不利です。投資家の資金があれば、例えば広告を購入することができるでしょう。でも、私は自由な感じが本当に好きです。誰"
-"もがサービスに利益を上げることや投資の「回収」を要求しないことが気に入っています。だから、私は決して投資家を持たないことを望んでいます。自由がより重要で"
-"す。"
-
-#: src/features/Landing/Contact/ContactsPage.tsx:115
-#. js-lingui-explicit-id
-msgid ""
-"We don't have subscriptions — and I hope we never will. You buy access for "
-"a fixed period of time, and then you can extend it if you want."
-msgstr "購読制はありません ― 今後も導入したくありません。一定期間のアクセス権を購入し、必要であれば延長することができます。"
-
-#: src/features/Landing/Contact/ContactsPage.tsx:120
-#. js-lingui-explicit-id
-msgid ""
-"We have a community where you can talk about different topics and share "
-"what's on your mind."
-msgstr "私たちには、さまざまなトピックについて話したり、あなたの考えを共有したりすることができるコミュニティがあります。"
 
 #: src/features/Auth/AuthWallBasic.tsx:200
 #. js-lingui-explicit-id
@@ -11085,6 +11080,51 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Landing/Contact/ContactsPage.tsx:173
+#. js-lingui-explicit-id
+#~ msgid "Github Repository:"
+#~ msgstr "GitHubリポジトリ:"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:130
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "I've been working on this project for about a year already, and I think "
+#~ "I'll keep working on it for a long time. There's no risk of funding being "
+#~ "cut or the project going bankrupt — because there is no funding. The "
+#~ "project lives as long as there's money for servers. And if one day I'm poor "
+#~ "enough that I can't afford them… well, we'll rent cheaper servers 🙂"
+#~ msgstr ""
+#~ "このプロジェクトにはすでに約1年携わっており、今後も長く取り組んでいくつもりです。資金が削減されるリスクや、プロジェクトが破産するリスクはありません "
+#~ "— なぜなら資金がないからです。サーバーのためのお金がある限り、プロジェクトは続きます。そして、もしある日、サーバーを維持できないほど貧乏になったら… "
+#~ "まあ、もっと安いサーバーを借りますね 🙂"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:125
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "We don't have investors. In some ways, that's a disadvantage — with "
+#~ "investor money, we could buy ads, for example. But I really like the "
+#~ "feeling of freedom. I like that no one demands the service make money or "
+#~ "\"pay back\" investments. So I hope we never have investors. Freedom "
+#~ "matters more."
+#~ msgstr ""
+#~ "投資家はいません。ある意味では、それは不利です。投資家の資金があれば、例えば広告を購入することができるでしょう。でも、私は自由な感じが本当に好きです。誰"
+#~ "もがサービスに利益を上げることや投資の「回収」を要求しないことが気に入っています。だから、私は決して投資家を持たないことを望んでいます。自由がより重要で"
+#~ "す。"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:115
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "We don't have subscriptions — and I hope we never will. You buy access for "
+#~ "a fixed period of time, and then you can extend it if you want."
+#~ msgstr "購読制はありません ― 今後も導入したくありません。一定期間のアクセス権を購入し、必要であれば延長することができます。"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:120
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "We have a community where you can talk about different topics and share "
+#~ "what's on your mind."
+#~ msgstr "私たちには、さまざまなトピックについて話したり、あなたの考えを共有したりすることができるコミュニティがあります。"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:116
 #. js-lingui-explicit-id
