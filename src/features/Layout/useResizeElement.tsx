@@ -23,7 +23,17 @@ export const useResizeElement = <T extends HTMLElement>() => {
     };
   };
 
-  const isExists = ref.current !== null;
+  const [isExists, setIsExists] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsExists(!!ref.current);
+    }, 2_000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   useEffect(() => {
     if (!ref.current) return;

@@ -5,14 +5,8 @@ import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Alert,
   Button,
-  Divider,
   IconButton,
-  ListItemIcon,
-  ListItemText,
-  Menu,
-  MenuItem,
   Modal,
-  Popover,
   Stack,
   TextField,
   Tooltip,
@@ -23,16 +17,13 @@ import {
   Check,
   CircleEllipsis,
   Keyboard,
-  Lightbulb,
   Loader,
   LockIcon,
-  LogOut,
   Mic,
   Send,
   Trash2,
   Trophy,
 } from 'lucide-react';
-import VideocamIcon from '@mui/icons-material/Videocam';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 
 import { AliasGamePanel } from './AliasGamePanel';
@@ -48,7 +39,6 @@ import { AiVoice } from '@/common/ai';
 import { CameraCanvas } from './CallMode/CameraCanvas';
 import { ConversationMode } from '@/common/userSettings';
 import { ProcessUserInput } from './ProcessUserInput';
-import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { ConversationReviewModal } from './ConversationReviewModal';
 import { LessonPlanAnalysis } from '../LessonPlan/type';
 import { RecordingCanvasMenu } from './RecordingCanvasMenu';
