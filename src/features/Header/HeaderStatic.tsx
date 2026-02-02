@@ -15,7 +15,7 @@ export function HeaderStatic({
       lang={lang}
       practiceTitle={i18n._(`Practice`)}
       rolePlayTitle={i18n._(`Role-Plays`)}
-      contactsTitle={i18n._(`Contacts`)}
+      contactsTitle={i18n._(`About`)}
       priceTitle={i18n._(`Price`)}
       signInTitle={i18n._(`Sign In`)}
       balanceTitle={i18n._(`Balance`)}

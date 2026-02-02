@@ -36,15 +36,16 @@ export function HeaderComponentStatic({
           href: getUrlStart(lang) + 'scenarios',
           icon: BookMarked,
         },
-        {
-          title: contactsTitle,
-          href: getUrlStart(lang) + 'contacts',
-          icon: MessageCircleQuestion,
-        },
+
         {
           title: blogTitle,
           href: getUrlStart(lang) + 'blog',
           icon: Rss,
+        },
+        {
+          title: contactsTitle,
+          href: getUrlStart(lang) + 'contacts',
+          icon: MessageCircleQuestion,
         },
         {
           title: priceTitle,

@@ -1,12 +1,13 @@
 import { Stack, Typography } from '@mui/material';
 
-import { maxContentWidth, subTitleFontStyle } from '../landingSettings';
+import { maxContentWidth } from '../landingSettings';
 
 import { Footer } from '../Footer';
 import { ContactList } from './ContactList';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
+import { ContactParagraph } from './ContactParagraph';
 
 interface ContactsPageProps {
   lang: SupportedLanguage;
@@ -70,7 +71,7 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
               sx={{
                 width: '100%',
                 alignItems: 'flex-start',
-                gap: '10px',
+                gap: '20px',
               }}
             >
               <Typography
@@ -78,70 +79,88 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                 variant="h2"
                 component={'h1'}
                 sx={{
-                  fontWeight: 700,
+                  fontWeight: 800,
+                  fontSize: '6rem',
                   '@media (max-width: 1300px)': {
-                    fontSize: '4rem',
+                    fontSize: '6rem',
                   },
                   '@media (max-width: 900px)': {
-                    fontSize: '3rem',
+                    fontSize: '4rem',
                   },
                   '@media (max-width: 700px)': {
                     fontSize: '2rem',
                   },
                 }}
               >
-                {i18n._(`Contacts`)}
-              </Typography>
-              <Typography
-                align="left"
-                variant="body1"
-                sx={{
-                  maxWidth: '700px',
-                  ...subTitleFontStyle,
-                }}
-              >
-                {i18n._(
-                  `My name is Alex, I am the creator of this website. I am a software engineer and I am passionate about learning languages and career development. I created this website to help people learn languages in a fun and interactive way, as well as prepare effectively for job interviews. I hope you enjoy using it!`,
-                )}
+                {i18n._(`FluencyPal`)}
               </Typography>
 
-              <Typography
-                align="left"
-                variant="body1"
+              <Stack
                 sx={{
-                  maxWidth: '700px',
-                  ...subTitleFontStyle,
+                  gap: '20px',
                 }}
               >
-                {i18n._(
-                  `Feel free to reach out to me with any questions or feedback. I'm always happy to help!`,
-                )}
-              </Typography>
-            </Stack>
-          </Stack>
+                <ContactParagraph>
+                  {i18n._(
+                    `Hi. My name is Alex. I built this site so I can practice English and other languages. You can too, by the way.`,
+                  )}
+                </ContactParagraph>
+                <ContactParagraph>
+                  {i18n._(
+                    `All the source code is open and publicly available. If you know how to code, you're welcome to improve it.`,
+                  )}
+                </ContactParagraph>
+                <ContactParagraph>
+                  {i18n._(
+                    `We don't have subscriptions — and I hope we never will. You buy access for a fixed period of time, and then you can extend it if you want.`,
+                  )}
+                </ContactParagraph>
+                <ContactParagraph>
+                  {i18n._(
+                    `We have a community where you can talk about different topics and share what's on your mind.`,
+                  )}
+                </ContactParagraph>
+                <ContactParagraph>
+                  {i18n._(
+                    `We don't have investors. In some ways, that's a disadvantage — with investor money, we could buy ads, for example. But I really like the feeling of freedom. I like that no one demands the service make money or "pay back" investments. So I hope we never have investors. Freedom matters more.`,
+                  )}
+                </ContactParagraph>
+                <ContactParagraph>
+                  {i18n._(
+                    `I've been working on this project for about a year already, and I think I'll keep working on it for a long time. There's no risk of funding being cut or the project going bankrupt — because there is no funding. The project lives as long as there's money for servers. And if one day I'm poor enough that I can't afford them… well, we'll rent cheaper servers 🙂`,
+                  )}
+                </ContactParagraph>
+                <ContactParagraph>{i18n._(`One more thing.`)}</ContactParagraph>
+                <ContactParagraph>
+                  {i18n._(
+                    `The main idea is to build a service that lives for a long time and stays fun. A service where, on the About page, I can write to you like a friend — not like a "user."`,
+                  )}
+                </ContactParagraph>
 
-          <Stack
-            sx={{
-              width: '100%',
-              maxWidth: maxContentWidth,
-              padding: '0px 20px 100px 20px',
-              gap: '40px',
-              alignItems: 'center',
-              boxSizing: 'border-box',
-            }}
-          >
-            <Stack
-              gap={'30px'}
-              sx={{
-                width: '100%',
-                color: '#1f74be',
-                paddingBottom: '140px',
-                a: {
-                  color: '#1f74be',
-                },
-              }}
-            >
-              <ContactList />
+                <Stack
+                  sx={{
+                    width: '100%',
+                    gap: '10px',
+                  }}
+                >
+                  <ContactParagraph>
+                    {i18n._(`If you want to reach me, here are the ways:`)}
+                  </ContactParagraph>
+                  <Stack
+                    gap={'30px'}
+                    sx={{
+                      width: '100%',
+                      color: '#1f74be',
+
+                      a: {
+                        color: '#1f74be',
+                      },
+                    }}
+                  >
+                    <ContactList isShowGitHub />
+                  </Stack>
+                </Stack>
+              </Stack>
             </Stack>
           </Stack>
         </Stack>
