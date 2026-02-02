@@ -61,7 +61,7 @@ export const ContactList = ({ isShowGitHub = false }: { isShowGitHub?: boolean }
             }}
           />
           <Typography>
-            <Link href={`${CONTACTS.instagram}`} target="_blank" rel="noopener noreferrer">
+            <Link href={`${CONTACTS.github}`} target="_blank" rel="noopener noreferrer">
               dmowski/fluencypal
             </Link>
           </Typography>
