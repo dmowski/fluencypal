@@ -114,11 +114,12 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                   )}
                 </ContactParagraph>
 
-                <ContactParagraph>
+                {/*<ContactParagraph>
                   {i18n._(
                     `There are no subscriptions — and I hope there never will be. You buy access for a fixed period of time, and then you can extend it if you want.`,
                   )}
                 </ContactParagraph>
+                */}
 
                 <ContactParagraph>
                   {i18n._(
