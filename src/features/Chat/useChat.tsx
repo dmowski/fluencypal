@@ -193,7 +193,16 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
   const previewMessageCount = 5;
   const previewMessages = useMemo(() => {
     if (topLevelMessages.length <= previewMessageCount) return topLevelMessages;
-    return getRandomMessages(topLevelMessages, previewMessageCount);
+
+    const latestMessage = topLevelMessages
+      .slice()
+      .sort((a, b) => b.createdAtIso.localeCompare(a.createdAtIso))[0];
+
+    const otherMessages = topLevelMessages
+      .filter((msg) => msg.id !== latestMessage.id)
+      .filter((msg) => msg.senderId !== 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2');
+
+    return [latestMessage, ...getRandomMessages(otherMessages, previewMessageCount)];
   }, [topLevelMessages.length]);
 
   const updateTotalMessages = () => {
