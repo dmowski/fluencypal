@@ -187,8 +187,11 @@ export const initWebRtcConversation = async ({
       const usageId = event?.event_id || '';
       const usageEvent: UsageEvent | null = event?.response?.usage;
       if (usageEvent) {
+        // TODO: it doesn't work as you expect.
+        // calculating usage of realtime works weirdly
         const priceUsd = calculateUsagePrice(usageEvent, model);
         const priceHours = convertUsdToHours(priceUsd);
+
         onAddUsage({
           usageId,
           usageEvent,

@@ -1,10 +1,5 @@
 export const getEphemeralToken = async (model: string) => {
-  const isUseSeparateKey = true;
-  console.log('IS_FIREBASE_EMULATOR', isUseSeparateKey);
-
-  const openAIKey = isUseSeparateKey
-    ? process.env.OPENAI_API_KEY //OPENAI_API_KEY_WEB_RTC
-    : process.env.OPENAI_API_KEY;
+  const openAIKey = process.env.OPENAI_API_KEY;
   if (!openAIKey) {
     throw new Error('Unable to create ephemeral token. Open AI env key is missing');
   }
