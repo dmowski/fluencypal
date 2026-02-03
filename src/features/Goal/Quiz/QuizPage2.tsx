@@ -163,8 +163,8 @@ const QuizQuestions = () => {
           {currentStep === 'teacherSelection' && (
             <AuthWall>
               <InfoStep
-                title={i18n._(`Pick your teacher`)}
-                subTitle={i18n._(`Select a voice and look that feels right for you.`)}
+                title={i18n._(`Choose your interlocutor`)}
+                subTitle={i18n._(`A voice and style that suits you.`)}
                 actionButtonTitle={i18n._(`Continue`)}
                 subComponent={
                   <Stack
@@ -175,7 +175,7 @@ const QuizQuestions = () => {
                     }}
                   >
                     <Stack>
-                      <Typography variant="caption">{i18n._('Voice speed')}</Typography>
+                      <Typography variant="caption">{i18n._('Conversation speed')}:</Typography>
                       <FormControl fullWidth>
                         <Select
                           value={settings.aiVoiceSpeed}
@@ -277,14 +277,13 @@ const QuizQuestions = () => {
                 subTitle={
                   languageToLearn === nativeLanguage ? (
                     <Trans>
-                      Record 2-3 minutes story using <b>{learningLanguageName}</b>. This will help
-                      me to create a personalized practice plan.
+                      Record 2-3 minutes story. This will help me to create a personalized practice
+                      plan.
                     </Trans>
                   ) : (
                     <Trans>
-                      Record 2-3 minutes story using <b>{learningLanguageName}</b> or{' '}
-                      <b>{nativeLanguageName}</b>. This will help me to create a personalized
-                      practice plan.
+                      Record 2-3 minutes story. This will help me to create a personalized practice
+                      plan.
                     </Trans>
                   )
                 }
