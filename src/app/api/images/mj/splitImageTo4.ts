@@ -1,8 +1,11 @@
-import sharp from 'sharp';
-import { convertImageUrlToBuffer } from './convertImageUrlToBuffer';
+// import sharp from 'sharp';
+// import { convertImageUrlToBuffer } from './convertImageUrlToBuffer';
 
 export const splitImageTo4 = async (imageUrl: string): Promise<Buffer[]> => {
-  try {
+  return [];
+
+  /*try {
+
     // Convert image URL to buffer
     const imageBuffer = await convertImageUrlToBuffer(imageUrl);
 
@@ -40,4 +43,5 @@ export const splitImageTo4 = async (imageUrl: string): Promise<Buffer[]> => {
     console.error('Error splitting image:', error);
     throw error;
   }
+    */
 };
