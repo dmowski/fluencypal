@@ -13,6 +13,7 @@ import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 import { AiAvatarVideo } from '../Conversation/CallMode/AiAvatarVideo';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { Avatar } from '../Game/Avatar';
+import dayjs from 'dayjs';
 
 export const JustTalkCard = () => {
   const { i18n } = useLingui();
@@ -42,6 +43,8 @@ export const JustTalkCard = () => {
 
   const funnyPhrases = aiAvatar.funnyPhrases;
   const footnotePhrase = funnyPhrases[footnotePhraseIndex % funnyPhrases.length];
+
+  const isNewUser = dayjs(settings.userCreatedAt).isAfter(dayjs().subtract(2, 'day'));
 
   return (
     <Stack
@@ -92,16 +95,18 @@ export const JustTalkCard = () => {
             {i18n._('Conversation with AI')}
           </Typography>
 
-          <Typography
-            sx={{
-              opacity: 0.9,
-              textWrap: 'balance',
-            }}
-          >
-            {i18n._(
-              "Start a casual call to practice your communication skills. This is a no-strings-attached conversation if you'd like to chat in a casual setting.",
-            )}
-          </Typography>
+          {isNewUser && (
+            <Typography
+              sx={{
+                opacity: 0.9,
+                textWrap: 'balance',
+              }}
+            >
+              {i18n._(
+                "Start a casual call to practice your communication skills. This is a no-strings-attached conversation if you'd like to chat in a casual setting.",
+              )}
+            </Typography>
+          )}
         </Stack>
         <Stack
           sx={{
