@@ -7,6 +7,7 @@ import { useUrlParam } from '../Url/useUrlParam';
 import { useAuth } from '../Auth/useAuth';
 import { Avatar } from './Avatar';
 import { UploadImageButton } from './UploadImageButton';
+import { uniq } from '@/libs/uniq';
 
 export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
   const game = useGame();
@@ -19,6 +20,9 @@ export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
     game.setAvatar(url);
     setIsShowAvatarSelector(false);
   };
+  const avatarsToSelectFrom = uniq([game.myAvatar || '', myAuthAvatar || '', ...avatars]).filter(
+    Boolean,
+  );
 
   return (
     <>
@@ -55,7 +59,7 @@ export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
                 justifyContent: 'center',
               }}
             >
-              {[myAuthAvatar || '', ...avatars].filter(Boolean).map((avatar, index) => {
+              {avatarsToSelectFrom.map((avatar, index) => {
                 const isSelected = avatar === game.myAvatar;
                 return (
                   <Stack
