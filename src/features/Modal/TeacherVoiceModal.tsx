@@ -30,6 +30,7 @@ export const TeacherVoiceModal: React.FC = () => {
           <Stack
             sx={{
               gap: '30px',
+              width: '100%',
               maxWidth: '700px',
               padding: '20px 0px 30px 0px',
               alignItems: 'flex-start',
