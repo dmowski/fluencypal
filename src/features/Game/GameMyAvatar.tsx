@@ -6,6 +6,7 @@ import { useLingui } from '@lingui/react';
 import { useUrlParam } from '../Url/useUrlParam';
 import { useAuth } from '../Auth/useAuth';
 import { Avatar } from './Avatar';
+import { UploadImageButton } from './UploadImageButton';
 
 export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
   const game = useGame();
@@ -13,6 +14,11 @@ export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const myAuthAvatar = auth.userInfo?.photoURL;
+
+  const handleNewUploadUrl = (url: string) => {
+    game.setAvatar(url);
+    setIsShowAvatarSelector(false);
+  };
 
   return (
     <>
@@ -38,6 +44,7 @@ export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
               >
                 {i18n._('Select your game avatar')}
               </Typography>
+              <UploadImageButton onNewUploadUrl={handleNewUploadUrl} />
             </Stack>
 
             <Stack
