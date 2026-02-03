@@ -50,7 +50,7 @@ export const UploadImageButton = ({ onNewUploadUrl, maxSizePx }: UploadImageButt
       onNewUploadUrl(result.uploadUrl);
     } catch (error) {
       console.error('Error uploading image:', error);
-      alert(i18n._('Failed to upload image. Please try again.'));
+      alert(i18n._('Failed to upload image. Please try again.') + error);
     } finally {
       setIsUploading(false);
       // Reset input value to allow re-uploading the same file
