@@ -1,8 +1,9 @@
+import Image from 'next/image';
 import { Stack } from '@mui/material';
 
 export const Avatar = ({
   url,
-  avatarSize,
+  avatarSize = '90px',
   onClick,
   isSelected,
   isOnline,
@@ -10,7 +11,7 @@ export const Avatar = ({
   activeColor,
 }: {
   url: string;
-  avatarSize: string;
+  avatarSize?: string;
   onClick?: () => void;
   isSelected?: boolean;
   isOnline?: boolean;
@@ -19,44 +20,45 @@ export const Avatar = ({
 }) => {
   return (
     <Stack
+      onClick={onClick}
       sx={{
-        img: {
-          width: avatarSize || '90px',
-          height: avatarSize || '90px',
-          borderRadius: '50%',
-          objectFit: 'cover',
-          backgroundColor: 'rgba(255, 255, 255, 0.05)',
-          position: 'relative',
-          zIndex: 1,
-        },
-
+        width: avatarSize,
+        height: avatarSize,
         borderRadius: '50%',
-        height: avatarSize || '90px',
-        width: avatarSize || '90px',
         position: 'relative',
         cursor: onClick ? 'pointer' : 'default',
+
         boxShadow: isActive
           ? `0px 0px 0px 2px ${activeColor || 'rgba(0, 185, 252, 1)'}`
           : isSelected
             ? '0px 0px 0px 4px rgba(0, 0, 0, 1), 0px 0px 0px 7px rgba(0, 185, 252, 1)'
             : 'none',
 
+        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+
         ':after': {
           content: '""',
-          display: 'block',
           position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
+          inset: 0,
           zIndex: 2,
           borderRadius: '50%',
           boxShadow: 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1)',
         },
       }}
-      onClick={onClick}
     >
-      <img src={url || undefined} />
+      {url && (
+        <Image
+          src={url}
+          alt="Avatar"
+          fill
+          sizes={avatarSize}
+          style={{
+            objectFit: 'cover',
+            zIndex: 1,
+            borderRadius: '50%',
+          }}
+        />
+      )}
 
       {isOnline && (
         <Stack
