@@ -56,7 +56,7 @@ export async function POST(request: Request) {
     const timestamp = Date.now();
     const fileExtension = file.name.split('.').pop() || 'bin';
     const randomName = `${timestamp}-${userId}.${fileExtension}`;
-    const folderPrefix = type === 'video' ? 'videos' : 'images';
+    const folderPrefix = type === 'video' ? 'uploadedVideos' : 'uploadedImages';
     const filePath = `${folderPrefix}/${userId}/${randomName}`;
 
     const bucket = getBucket();
