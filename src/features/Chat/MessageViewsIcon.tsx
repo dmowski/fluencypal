@@ -11,6 +11,10 @@ export const MessageViewsIcon = ({ activeMessage }: { activeMessage: ThreadsMess
   const { i18n } = useLingui();
   const game = useGame();
 
+  const viewUserIds = activeMessage.viewsUserIdsMap
+    ? Object.keys(activeMessage.viewsUserIdsMap)
+    : [];
+
   return (
     <>
       <Stack
@@ -23,7 +27,7 @@ export const MessageViewsIcon = ({ activeMessage }: { activeMessage: ThreadsMess
         }}
         onClick={(e) => setShowViewsAnchorEl(e.currentTarget)}
       >
-        <Typography variant="caption">{activeMessage.viewsUserIds?.length || 0}</Typography>
+        <Typography variant="caption">{viewUserIds.length || 0}</Typography>
         <Eye
           size={'18px'}
           style={{
@@ -55,8 +59,8 @@ export const MessageViewsIcon = ({ activeMessage }: { activeMessage: ThreadsMess
           }}
         >
           <Typography variant="body2">{i18n._('Users who viewed this post')}</Typography>
-          {activeMessage.viewsUserIds && activeMessage.viewsUserIds.length > 0 ? (
-            activeMessage.viewsUserIds.map((uid) => {
+          {activeMessage.viewsUserIdsMap && viewUserIds.length > 0 ? (
+            viewUserIds.map((uid) => {
               const userStat = game.stats.find((stat) => stat.userId === uid);
               return <Stack key={uid}>{userStat && <GameStatRow stat={userStat} />}</Stack>;
             })

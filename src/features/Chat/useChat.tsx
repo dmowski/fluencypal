@@ -374,17 +374,22 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       }
     }
 
-    const isAlreadyViewed = message.viewsUserIds ? message.viewsUserIds?.includes(userId) : false;
+    const isAlreadyViewed = message.viewsUserIdsMap ? message.viewsUserIdsMap[userId] : false;
     if (isAlreadyViewed) return;
     if (!messagesRef) return;
     const messageToRead = messages.find((msg) => msg.id === message.id);
     if (!messageToRead) return;
 
-    const updatedViewsUserIds = messageToRead.viewsUserIds
-      ? [...messageToRead.viewsUserIds, userId]
-      : [userId];
     const messageDoc = doc(messagesRef, message.id);
-    await setDoc(messageDoc, { viewsUserIds: updatedViewsUserIds }, { merge: true });
+    await setDoc(
+      messageDoc,
+      {
+        viewsUserIdsMap: {
+          [userId]: true,
+        },
+      },
+      { merge: true },
+    );
   };
 
   const getAllChildMessages = (messageId: string): ThreadsMessage[] => {

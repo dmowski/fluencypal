@@ -46,7 +46,7 @@ export interface ThreadsMessage {
   createdAtUtc: number;
   updatedAtIso: string;
 
-  viewsUserIds?: string[];
+  viewsUserIdsMap?: Record<string, boolean>;
 
   isDeleted?: boolean;
 }
