@@ -29,6 +29,17 @@
     "format:check": "prettier --check .",
     "prod": "vercel build --prod && vercel deploy --prebuilt --prod --archive=tgz"
   },
+  "pnpm": {
+    "supportedArchitectures": {
+      "os": [
+        "linux",
+        "darwin"
+      ],
+      "cpu": [
+        "arm64"
+      ]
+    }
+  },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",

@@ -4,5 +4,23 @@
       "path": "/api/game/resetRate",
       "schedule": "0 0 * * *"
     }
-  ]
+  ],
+  "functions": {
+    "api/uploadFile": {
+      "excludeFiles": [
+        "node_modules/@img/sharp-libvips-darwin-*/**",
+        "node_modules/@img/sharp-libvips-linux-arm/**",
+        "node_modules/@img/sharp-libvips-linux-x64/**",
+        "node_modules/@img/sharp-libvips-linuxmusl-*/**",
+        "node_modules/@img/sharp-libvips-linux-ppc64/**",
+        "node_modules/@img/sharp-libvips-linux-riscv64/**",
+        "node_modules/@img/sharp-libvips-linux-s390x/**",
+        "node_modules/@img/sharp-linux-x64/**",
+        "node_modules/@img/sharp-linux-arm/**",
+        "node_modules/@img/sharp-linuxmusl-*/**",
+        "node_modules/@img/sharp-win32-*/**",
+        "node_modules/@img/sharp-darwin-*/**"
+      ]
+    }
+  }
 }
