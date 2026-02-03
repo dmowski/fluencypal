@@ -1,11 +1,8 @@
 import { getBucket } from '../config/firebase';
-import { resizeImage } from './resizeImage';
-
 interface UploadFileOptions {
   file: File;
   userId: string;
   type: 'image' | 'video';
-  maxSizePx?: number;
 }
 
 interface UploadFileResult {
@@ -18,7 +15,6 @@ export const uploadFileToStorage = async ({
   file,
   userId,
   type,
-  maxSizePx,
 }: UploadFileOptions): Promise<UploadFileResult> => {
   try {
     const timestamp = Date.now();
@@ -27,21 +23,6 @@ export const uploadFileToStorage = async ({
 
     const bucket = getBucket();
     let buffer: Buffer = Buffer.from(await file.arrayBuffer());
-
-    // Resize image if maxSizePx is provided and file is an image
-    if (type === 'image' && maxSizePx) {
-      const resizeResult = await resizeImage({ buffer, maxSizePx });
-      if (!resizeResult.success) {
-        return {
-          success: false,
-          error: resizeResult.error || 'Failed to resize image',
-        };
-      }
-      if (resizeResult.buffer) {
-        buffer = Buffer.from(resizeResult.buffer);
-        fileExtension = resizeResult.extension;
-      }
-    }
 
     const randomName = `${timestamp}-${userId}.${fileExtension}`;
     const folderPrefix = type === 'video' ? 'uploadedVideos' : 'uploadedImages';

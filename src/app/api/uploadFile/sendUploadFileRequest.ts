@@ -4,12 +4,7 @@ export const sendUploadFileRequest = async (data: UploadFileRequest, auth: strin
   const formData = new FormData();
   formData.append('file', data.file);
 
-  const params = new URLSearchParams({ type: data.type });
-  if (data.maxSizePx) {
-    params.append('maxSizePx', data.maxSizePx.toString());
-  }
-
-  const response = await fetch(`/api/uploadFile?${params.toString()}`, {
+  const response = await fetch(`/api/uploadFile?type=${data.type}`, {
     method: 'POST',
     body: formData,
     headers: {

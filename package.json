@@ -29,17 +29,6 @@
     "format:check": "prettier --check .",
     "prod": "vercel build --prod && vercel deploy --prebuilt --prod --archive=tgz"
   },
-  "pnpm": {
-    "supportedArchitectures": {
-      "os": [
-        "linux",
-        "darwin"
-      ],
-      "cpu": [
-        "arm64"
-      ]
-    }
-  },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
@@ -98,7 +87,6 @@
     "react-voice-visualizer": "^2.0.8",
     "require-in-the-middle": "^8.0.1",
     "resend": "^6.6.0",
-    "sharp": "^0.34.5",
     "simplex-noise": "^4.0.3",
     "stripe": "~20.3.0",
     "three": "^0.181.2",

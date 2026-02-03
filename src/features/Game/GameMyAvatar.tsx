@@ -48,7 +48,7 @@ export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
               >
                 {i18n._('Select your game avatar')}
               </Typography>
-              <UploadImageButton onNewUploadUrl={handleNewUploadUrl} maxSizePx={400} />
+              <UploadImageButton onNewUploadUrl={handleNewUploadUrl} />
             </Stack>
 
             <Stack
