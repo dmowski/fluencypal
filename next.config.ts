@@ -3,6 +3,20 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ['sharp'],
+  outputFileTracingExcludes: {
+    '*': [
+      'node_modules/@img/sharp-libvips-darwin-*/**',
+      'node_modules/@img/sharp-libvips-linux-arm/**',
+      'node_modules/@img/sharp-libvips-linuxmusl-*/**',
+      'node_modules/@img/sharp-libvips-linux-ppc64/**',
+      'node_modules/@img/sharp-libvips-linux-riscv64/**',
+      'node_modules/@img/sharp-libvips-linux-s390x/**',
+      'node_modules/@img/sharp-win32-*/**',
+      'node_modules/@img/sharp-libvips-win32-*/**',
+      'node_modules/@img/sharp-libvips-darwin-arm64/**',
+      'node_modules/@img/sharp-libvips-darwin-x64/**',
+    ],
+  },
   experimental: {
     swcPlugins: [
       [
