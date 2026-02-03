@@ -44,7 +44,7 @@ export const JustTalkCard = () => {
   const funnyPhrases = aiAvatar.funnyPhrases;
   const footnotePhrase = funnyPhrases[footnotePhraseIndex % funnyPhrases.length];
 
-  const isNewUser = dayjs(settings.userCreatedAt).isAfter(dayjs().subtract(2, 'day'));
+  const isNewUser = dayjs(settings.userCreatedAt).isAfter(dayjs().subtract(1, 'day'));
 
   return (
     <Stack
