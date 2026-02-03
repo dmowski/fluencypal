@@ -369,6 +369,8 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       const isAlreadyViewed = myMetaDataSnap?.[propsChatMetadata.spaceId]?.[message.id];
       if (!isAlreadyViewed) {
         await setDoc(myMetaRef, partialMyMeta, { merge: true });
+      } else {
+        return;
       }
     }
 
