@@ -1,6 +1,8 @@
-import { validateAuthToken, getBucket } from '../config/firebase';
+import { validateAuthToken } from '../config/firebase';
 import { UploadFileResponse } from './types';
 import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
+import { validateUploadFile } from './validateUploadFile';
+import { uploadFileToStorage } from './uploadFileToStorage';
 
 export async function POST(request: Request) {
   const data = await request.formData();
@@ -16,19 +18,16 @@ export async function POST(request: Request) {
 
   const urlQueryParams = request.url.split('?')[1];
   const urlParams = new URLSearchParams(urlQueryParams);
-  const type = urlParams.get('type') || 'image';
+  const type = (urlParams.get('type') || 'image') as 'image' | 'video';
 
-  // Validate file type
-  const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
-  const validVideoTypes = ['video/mp4', 'video/webm', 'video/quicktime'];
-  const validTypes = type === 'video' ? validVideoTypes : validImageTypes;
-
-  if (!validTypes.includes(file.type)) {
+  // Validate file
+  const validation = validateUploadFile(file, type);
+  if (!validation.isValid) {
     const errorResponse: UploadFileResponse = {
-      error: `Invalid file type. Expected ${type}`,
+      error: validation.error || 'Validation failed',
       uploadUrl: '',
     };
-    return Response.json(errorResponse, { status: 400 });
+    return Response.json(errorResponse, { status: validation.statusCode || 400 });
   }
 
   const userInfo = await validateAuthToken(request);
@@ -37,66 +36,39 @@ export async function POST(request: Request) {
 
   const actualFileSize = file?.size || 0;
   const actualFileSizeMb = actualFileSize / (1024 * 1024);
-  const maxFileSize = 50 * 1024 * 1024; // 50 MB
 
-  if (actualFileSize > maxFileSize) {
+  // Notify if file is too large
+  if (actualFileSize > 50 * 1024 * 1024) {
     sentSupportTelegramMessage({
       message: `User tried to upload huge ${type} file (${actualFileSizeMb.toFixed(2)}MB) | ${userEmail}`,
       userId,
     });
-
-    const errorResponse: UploadFileResponse = {
-      error: 'File size exceeds maximum limit of 50MB',
-      uploadUrl: '',
-    };
-    return Response.json(errorResponse, { status: 413 });
   }
 
-  try {
-    const timestamp = Date.now();
-    const fileExtension = file.name.split('.').pop() || 'bin';
-    const randomName = `${timestamp}-${userId}.${fileExtension}`;
-    const folderPrefix = type === 'video' ? 'uploadedVideos' : 'uploadedImages';
-    const filePath = `${folderPrefix}/${userId}/${randomName}`;
+  // Upload file to storage
+  const uploadResult = await uploadFileToStorage({
+    file,
+    userId,
+    type,
+  });
 
-    const bucket = getBucket();
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const storageFile = bucket.file(filePath);
-
-    await storageFile.save(buffer, {
-      contentType: file.type,
-      resumable: false,
-      metadata: {
-        metadata: {
-          uploadedAt: timestamp.toString(),
-          uploadedBy: userId,
-          originalName: file.name,
-        },
-      },
-    });
-
-    await storageFile.makePublic();
-    const url = storageFile.publicUrl();
-
-    const response: UploadFileResponse = {
-      uploadUrl: url,
-      error: null,
-    };
-
-    return Response.json(response);
-  } catch (error) {
-    console.error('Error during file upload:', error);
-    console.error(JSON.stringify(error, null, 2));
-
+  if (!uploadResult.success) {
     await sentSupportTelegramMessage({
       message: `Failed to upload ${type} file for user ${userEmail} (${actualFileSizeMb.toFixed(2)}MB)`,
       userId,
     });
 
     const errorResponse: UploadFileResponse = {
-      error: 'Error during file upload',
+      error: uploadResult.error || 'Error during file upload',
       uploadUrl: '',
     };
     return Response.json(errorResponse, { status: 500 });
   }
+
+  const response: UploadFileResponse = {
+    uploadUrl: uploadResult.uploadUrl || '',
+    error: null,
+  };
+
+  return Response.json(response);
 }
