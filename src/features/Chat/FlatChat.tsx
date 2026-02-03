@@ -5,6 +5,7 @@ import { useLingui } from '@lingui/react';
 import { Stack } from '@mui/material';
 import { Message } from './Message';
 import { ShowPreviousMessagesButton } from './ShowPreviousMessagesButton';
+import { SubmitForm } from './SubmitForm';
 
 export const FlatChat = ({}: {}) => {
   const chat = useChat();
@@ -56,6 +57,25 @@ export const FlatChat = ({}: {}) => {
               isChain={index < all.length - 1}
             />
           ))}
+
+          <Stack
+            sx={{
+              borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            }}
+          >
+            <SubmitForm
+              onSubmit={async (message: string) => {
+                await chat.addMessage({
+                  messageContent: message,
+                  parentMessageId: '',
+                });
+              }}
+              isLoading={false}
+              recordMessageTitle={i18n._('Record your message')}
+              setIsActiveRecording={() => {}}
+              previousBotMessage={''}
+            />
+          </Stack>
         </Stack>
       )}
       {chat.messages.length === 0 && (
