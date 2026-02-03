@@ -36,6 +36,8 @@ interface MessageProps {
   isContentWide?: boolean;
   isChain?: boolean;
   isFullContentByDefault?: boolean;
+  hideComments?: boolean;
+  preventOpen?: boolean;
 }
 
 export function Message({
@@ -43,6 +45,8 @@ export function Message({
   isContentWide = false,
   isChain = false,
   isFullContentByDefault = false,
+  hideComments,
+  preventOpen = false,
 }: MessageProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(message.content);
@@ -77,10 +81,6 @@ export function Message({
 
     return () => clearTimeout(timer);
   }, [message.id, auth.uid]);
-
-  const commentsCount = chat.commentsInfo[message.id] || 0;
-
-  const isLikedByMe = chat.messagesLikes[message.id]?.some((like) => like.userId === myUserId);
 
   const updatedAgo = dayjs(message.updatedAtIso).fromNow();
 
@@ -167,6 +167,7 @@ export function Message({
       return;
     }
 
+    if (preventOpen) return;
     chat.onOpen(message.id);
   };
 
@@ -406,6 +407,7 @@ export function Message({
               toggleTranslation={toggleTranslation}
               isTranslateAvailable={translator.isTranslateAvailable ?? false}
               isTranslating={isTranslating}
+              hideComments={hideComments}
             />
           )}
         </Stack>
@@ -441,6 +443,7 @@ const MessageFooter = ({
   isTranslateAvailable,
   isTranslating,
   gap,
+  hideComments,
 }: {
   message: ThreadsMessage;
   isContentWide: boolean;
@@ -449,6 +452,7 @@ const MessageFooter = ({
   isTranslateAvailable: boolean;
   isTranslating: boolean;
   gap?: string;
+  hideComments?: boolean;
 }) => {
   const { i18n } = useLingui();
   const chat = useChat();
@@ -475,14 +479,16 @@ const MessageFooter = ({
         iconName={'heart'}
       />
 
-      <MessageActionButton
-        isActive={false}
-        iconSize="17px"
-        onClick={() => chat.setActiveCommentMessageId(message.id)}
-        label={i18n._('Comment')}
-        count={commentsCount}
-        iconName={'message-circle'}
-      />
+      {!hideComments && (
+        <MessageActionButton
+          isActive={false}
+          iconSize="17px"
+          onClick={() => chat.setActiveCommentMessageId(message.id)}
+          label={i18n._('Comment')}
+          count={commentsCount}
+          iconName={'message-circle'}
+        />
+      )}
 
       {isTranslateAvailable && (
         <MessageActionButton

@@ -28,6 +28,7 @@ import { useState } from 'react';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import { sleep } from '@/libs/sleep';
+import { FlatChat } from './FlatChat';
 
 export const ChatPage = ({
   type,
@@ -176,10 +177,7 @@ export const ChatPage = ({
                   </Stack>
 
                   <ChatProvider metadata={chatMetadata}>
-                    <ChatSection
-                      contextForAiAnalysis=""
-                      isFullContentByDefault={isFullContentByDefault}
-                    />
+                    <FlatChat />
                   </ChatProvider>
                 </>
               ) : (
