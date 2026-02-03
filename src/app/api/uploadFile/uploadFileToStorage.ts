@@ -22,10 +22,8 @@ export const uploadFileToStorage = async ({
 }: UploadFileOptions): Promise<UploadFileResult> => {
   try {
     const timestamp = Date.now();
-    const fileExtension = file.name.split('.').pop() || 'bin';
-    const randomName = `${timestamp}-${userId}.${fileExtension}`;
-    const folderPrefix = type === 'video' ? 'uploadedVideos' : 'uploadedImages';
-    const filePath = `${folderPrefix}/${userId}/${randomName}`;
+
+    let fileExtension = file.name.split('.').pop() || 'bin';
 
     const bucket = getBucket();
     let buffer: Buffer = Buffer.from(await file.arrayBuffer());
@@ -41,9 +39,14 @@ export const uploadFileToStorage = async ({
       }
       if (resizeResult.buffer) {
         buffer = Buffer.from(resizeResult.buffer);
+        fileExtension = resizeResult.extension;
       }
     }
 
+    const randomName = `${timestamp}-${userId}.${fileExtension}`;
+    const folderPrefix = type === 'video' ? 'uploadedVideos' : 'uploadedImages';
+
+    const filePath = `${folderPrefix}/${userId}/${randomName}`;
     const storageFile = bucket.file(filePath);
 
     await storageFile.save(buffer, {

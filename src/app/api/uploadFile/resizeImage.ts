@@ -9,6 +9,7 @@ interface ResizeImageResult {
   success: boolean;
   buffer?: Buffer;
   error?: string;
+  extension: string;
 }
 
 export const resizeImage = async ({
@@ -27,6 +28,7 @@ export const resizeImage = async ({
       return {
         success: true,
         buffer,
+        extension: metadata.format || 'jpg',
       };
     }
 
@@ -48,18 +50,22 @@ export const resizeImage = async ({
         fit: 'inside',
         withoutEnlargement: true,
       })
-      .jpeg({ quality: 90 })
+      .webp({
+        quality: 80,
+      })
       .toBuffer();
 
     return {
       success: true,
       buffer: resizedBuffer,
+      extension: 'webp',
     };
   } catch (error) {
     console.error('Error resizing image:', error);
     return {
       success: false,
       error: 'Failed to resize image',
+      extension: 'jpg',
     };
   }
 };
