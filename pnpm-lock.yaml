@@ -179,9 +179,6 @@ importers:
       resend:
         specifier: ^6.6.0
         version: 6.6.0
-      sharp:
-        specifier: ^0.34.5
-        version: 0.34.5
       simplex-noise:
         specifier: ^4.0.3
         version: 4.0.3
@@ -7341,7 +7338,8 @@ snapshots:
 
   '@huggingface/tasks@0.12.30': {}
 
-  '@img/colour@1.0.0': {}
+  '@img/colour@1.0.0':
+    optional: true
 
   '@img/sharp-darwin-arm64@0.34.5':
     optionalDependencies:
@@ -10298,7 +10296,8 @@ snapshots:
     dependencies:
       webgl-constants: 1.1.1
 
-  detect-libc@2.1.2: {}
+  detect-libc@2.1.2:
+    optional: true
 
   detect-newline@3.1.0: {}
 
@@ -12681,6 +12680,7 @@ snapshots:
       '@img/sharp-win32-arm64': 0.34.5
       '@img/sharp-win32-ia32': 0.34.5
       '@img/sharp-win32-x64': 0.34.5
+    optional: true
 
   shebang-command@2.0.0:
     dependencies:
