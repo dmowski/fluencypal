@@ -1,7 +1,7 @@
 export interface UploadFileRequest {
   file: File;
   type: 'image' | 'video';
-  resizeImage?: boolean;
+  maxSizePx?: number;
 }
 
 export interface UploadFileResponse {

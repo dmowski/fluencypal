@@ -6,9 +6,10 @@ import { useRef, useState } from 'react';
 
 interface UploadImageButtonProps {
   onNewUploadUrl: (url: string) => void;
+  maxSizePx?: number;
 }
 
-export const UploadImageButton = ({ onNewUploadUrl }: UploadImageButtonProps) => {
+export const UploadImageButton = ({ onNewUploadUrl, maxSizePx }: UploadImageButtonProps) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -39,13 +40,13 @@ export const UploadImageButton = ({ onNewUploadUrl }: UploadImageButtonProps) =>
     try {
       setIsUploading(true);
       const authToken = await auth.getToken();
-      const result = await sendUploadFileRequest({ file, type: 'image' }, authToken);
+      const result = await sendUploadFileRequest({ file, type: 'image', maxSizePx }, authToken);
 
       if (result.error) {
         alert(i18n._('Failed to upload image. Please try again.'));
         return;
       }
-
+      console.log('result.uploadUrl', result.uploadUrl);
       onNewUploadUrl(result.uploadUrl);
     } catch (error) {
       console.error('Error uploading image:', error);

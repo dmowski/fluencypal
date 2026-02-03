@@ -19,6 +19,8 @@ export async function POST(request: Request) {
   const urlQueryParams = request.url.split('?')[1];
   const urlParams = new URLSearchParams(urlQueryParams);
   const type = (urlParams.get('type') || 'image') as 'image' | 'video';
+  const maxSizePxString = urlParams.get('maxSizePx');
+  const maxSizePx = maxSizePxString ? parseInt(maxSizePxString, 10) : undefined;
 
   // Validate file
   const validation = validateUploadFile(file, type);
@@ -50,6 +52,7 @@ export async function POST(request: Request) {
     file,
     userId,
     type,
+    maxSizePx,
   });
 
   if (!uploadResult.success) {
