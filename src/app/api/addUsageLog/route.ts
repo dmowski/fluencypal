@@ -34,6 +34,7 @@ export async function POST(request: Request) {
       await addUsage(userInfo.uid, logData);
     }
 
+    /*
     const isRealtime = logData.type === 'realtime';
     if (isRealtime && logData.conversationId) {
       await addConversationUsage({
@@ -43,6 +44,7 @@ export async function POST(request: Request) {
         usageUsd: logData.priceUsd,
       });
     }
+    */
 
     const response: AddUsageLogResponse = {
       done: true,
