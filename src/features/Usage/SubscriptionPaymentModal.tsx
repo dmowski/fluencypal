@@ -318,7 +318,7 @@ export const SubscriptionPaymentModal = () => {
       const checkoutInfo = await createStripeCheckout(dataToCheckout, token);
 
       await sentPaymentTgMessage({
-        message: 'Event: Redirect to stripe',
+        message: `Event: Redirect to stripe | ${duration}, ${currency.currency}`,
         email: auth?.userInfo?.email || 'unknownEmail',
         token,
       });
