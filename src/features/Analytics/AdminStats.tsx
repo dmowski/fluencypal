@@ -520,41 +520,6 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                     : '-'}{' '}
                   - {dayjs(conversation.updatedAtIso).format('HH:mm')}
                 </Typography>
-
-                <Stack
-                  sx={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    gap: '15px',
-                  }}
-                >
-                  <Tooltip
-                    slotProps={{
-                      tooltip: {
-                        sx: {
-                          backgroundColor: '#111',
-                          color: '#fff',
-                          padding: '10px 14px',
-                        },
-                      },
-                    }}
-                    title={
-                      <Stack
-                        sx={{
-                          gap: '5px',
-                        }}
-                      >
-                        {usageKeys.map((key) => (
-                          <Typography key={key}>
-                            {`${key}`}: {(conversation.usage?.[key] || 0).toFixed(4)}
-                          </Typography>
-                        ))}
-                      </Stack>
-                    }
-                  >
-                    <Typography>{totalUsage.toFixed(4)} USD</Typography>
-                  </Tooltip>
-                </Stack>
               </Stack>
             );
           })}
