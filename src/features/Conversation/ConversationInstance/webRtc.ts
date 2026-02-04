@@ -191,7 +191,6 @@ export const initWebRtcConversation = async ({
         // calculating usage of realtime works weirdly
         const priceUsd = calculateUsagePrice(usageEvent, model);
         const priceHours = convertUsdToHours(priceUsd);
-
         onAddUsage({
           usageId,
           usageEvent,

@@ -12,6 +12,7 @@ import { fullEnglishLanguageName, SupportedLanguage } from '../Lang/lang';
 import {
   ArrowRight,
   BadgeCheck,
+  Bot,
   Check,
   Copy,
   Crown,
@@ -20,6 +21,7 @@ import {
   House,
   LogIn,
   SquareArrowOutUpRight,
+  User,
   UserPlus,
 } from 'lucide-react';
 import { defaultAvatar } from '../Game/avatars';
@@ -479,6 +481,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           })
           .filter((_, index) => index < 23)
           .map((conversation) => {
+            const stats = getConversationsStats(conversation);
             const usageKeys = Object.keys(conversation.usage || {});
             const totalUsage = usageKeys.reduce((acc, key) => {
               const price = conversation.usage?.[key] || 0;
@@ -520,6 +523,37 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                     : '-'}{' '}
                   - {dayjs(conversation.updatedAtIso).format('HH:mm')}
                 </Typography>
+
+                <Stack
+                  sx={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: '20px',
+                  }}
+                >
+                  <Stack
+                    sx={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: '5px',
+                      minWidth: '60px',
+                    }}
+                  >
+                    <User />
+                    <Typography sx={{}}>{stats.userWords}</Typography>
+                  </Stack>
+                  <Stack
+                    sx={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: '5px',
+                      minWidth: '60px',
+                    }}
+                  >
+                    <Bot />
+                    <Typography sx={{}}>{stats.botWords}</Typography>
+                  </Stack>
+                </Stack>
               </Stack>
             );
           })}
@@ -1009,4 +1043,23 @@ export function parseBrowserInfo(userAgent?: string): BrowserInfo {
   }
 
   return { browserName, os };
+}
+
+function getConversationsStats(conversations: Conversation): {
+  userWords: number;
+  botWords: number;
+} {
+  let userWords = 0;
+  let botWords = 0;
+
+  conversations.messages.forEach((message) => {
+    const wordCount = message.text.trim().split(/\s+/).length;
+    if (!message.isBot) {
+      userWords += wordCount;
+    } else {
+      botWords += wordCount;
+    }
+  });
+
+  return { userWords, botWords };
 }
