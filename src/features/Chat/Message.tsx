@@ -230,6 +230,7 @@ export function Message({
             position: 'relative',
             zIndex: 1,
             gap: '10px',
+            paddingLeft: contentLeftPadding,
           }}
         >
           <TextField
@@ -255,6 +256,24 @@ export function Message({
               {i18n._('Cancel')}
             </Button>
           </Stack>
+
+          {message.attachments && message.attachments.length > 0 && (
+            <Stack sx={{}}>
+              <Attachments
+                attachments={message.attachments}
+                canDelete
+                onDeleteAttachment={(index) => {
+                  const isConfirmed = window.confirm(
+                    i18n._('Are you sure you want to delete this attachment?'),
+                  );
+                  if (!isConfirmed) {
+                    return;
+                  }
+                  chat.deleteMessageAttachment(message.id, index);
+                }}
+              />
+            </Stack>
+          )}
         </Stack>
       ) : (
         <Stack
@@ -412,11 +431,7 @@ export function Message({
                 paddingLeft: contentLeftPadding,
               }}
             >
-              <Attachments
-                attachments={message.attachments}
-                canDelete={isOwnMessage && isEditing}
-                onDeleteAttachment={onDeleteAttachment}
-              />
+              <Attachments attachments={message.attachments} />
             </Stack>
           )}
 
@@ -696,7 +711,7 @@ export const Attachments = ({
   onDeleteAttachment,
 }: {
   attachments: ThreadsMessageAttachment[];
-  onDeleteAttachment: (index: number) => void;
+  onDeleteAttachment?: (index: number) => void;
   canDelete?: boolean;
 }) => {
   return (
@@ -717,7 +732,7 @@ export const Attachments = ({
             key={index}
             url={attachment.url}
             canDelete={canDelete}
-            onDelete={() => onDeleteAttachment(index)}
+            onDelete={() => onDeleteAttachment?.(index)}
           />
         );
       })}
