@@ -198,7 +198,7 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                     padding: '3px',
                   }}
                 >
-                  <GameStatRow stat={stat} />
+                  <GameStatRow stat={stat} hidePosition />
                 </Stack>
 
                 {isWinnerDeclared ? (

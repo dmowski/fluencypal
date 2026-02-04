@@ -5,15 +5,18 @@ import { useGame } from '../Game/useGame';
 import { Stack, Typography, Popover } from '@mui/material';
 import { Eye } from 'lucide-react';
 import { GameStatRow } from '../Game/GameStatRow';
+import { uniq } from '@/libs/uniq';
 
 export const MessageViewsIcon = ({ activeMessage }: { activeMessage: ThreadsMessage }) => {
   const [showViewsAnchorEl, setShowViewsAnchorEl] = useState<null | HTMLElement>(null);
   const { i18n } = useLingui();
   const game = useGame();
 
-  const viewUserIds = activeMessage.viewsUserIdsMap
+  const viewUserIdsMap = activeMessage.viewsUserIdsMap
     ? Object.keys(activeMessage.viewsUserIdsMap)
     : [];
+
+  const viewUserIds = uniq([...viewUserIdsMap, ...(activeMessage.viewsUserIds || [])]);
 
   return (
     <>
@@ -59,10 +62,12 @@ export const MessageViewsIcon = ({ activeMessage }: { activeMessage: ThreadsMess
           }}
         >
           <Typography variant="body2">{i18n._('Users who viewed this post')}</Typography>
-          {activeMessage.viewsUserIdsMap && viewUserIds.length > 0 ? (
+          {viewUserIds && viewUserIds.length > 0 ? (
             viewUserIds.map((uid) => {
               const userStat = game.stats.find((stat) => stat.userId === uid);
-              return <Stack key={uid}>{userStat && <GameStatRow stat={userStat} />}</Stack>;
+              return (
+                <Stack key={uid}>{userStat && <GameStatRow stat={userStat} hidePosition />}</Stack>
+              );
             })
           ) : (
             <Typography variant="caption" sx={{ opacity: 0.7 }}>

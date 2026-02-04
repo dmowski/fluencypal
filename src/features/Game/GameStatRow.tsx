@@ -11,7 +11,13 @@ import { GamePointRow } from './GamePointRow';
 import { Avatar } from './Avatar';
 import { UserName } from '../User/UserName';
 
-export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
+export const GameStatRow = ({
+  stat,
+  hidePosition,
+}: {
+  stat: UsersStat;
+  hidePosition?: boolean;
+}) => {
   const game = useGame();
   const auth = useAuth();
   const userId = auth.uid || '';
@@ -60,16 +66,20 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
           },
         }}
       >
-        <Typography
-          sx={{
-            fontSize: '14px',
-            padding: '0 0 0 14px',
-            fontVariantNumeric: 'tabular-nums',
-            color: top5 ? '#70bfffff' : '#fff',
-          }}
-        >
-          {actualPosition}
-        </Typography>
+        {hidePosition ? (
+          <Stack sx={{ width: '1px' }} />
+        ) : (
+          <Typography
+            sx={{
+              fontSize: '14px',
+              padding: '0 0 0 14px',
+              fontVariantNumeric: 'tabular-nums',
+              color: top5 ? '#70bfffff' : '#fff',
+            }}
+          >
+            {actualPosition}
+          </Typography>
+        )}
 
         <Avatar avatarSize={'35px'} url={avatar} isOnline={isOnline} />
 

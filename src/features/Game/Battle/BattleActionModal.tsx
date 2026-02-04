@@ -179,7 +179,7 @@ export const BattleActionModal = ({
                                 gap: '40px',
                               }}
                             >
-                              <GameStatRow stat={stat} />
+                              <GameStatRow stat={stat} hidePosition />
                               <Stack
                                 sx={{
                                   gap: '50px',
@@ -428,7 +428,7 @@ export const BattleActionModal = ({
                     }}
                   >
                     {gameStats.map((stat) => (
-                      <GameStatRow stat={stat} key={stat.userId} />
+                      <GameStatRow stat={stat} key={stat.userId} hidePosition />
                     ))}
                   </Stack>
                 </>
