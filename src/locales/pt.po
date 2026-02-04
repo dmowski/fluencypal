@@ -456,7 +456,7 @@ msgstr "Plano de ação para melhorar habilidades críticas de backend"
 msgid "Active"
 msgstr "Ativo"
 
-#: src/features/Chat/ChatReplyModal.tsx:84
+#: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Adicionar uma resposta"
@@ -942,6 +942,11 @@ msgstr "Arquitetura & Resiliência"
 msgid "Are there any hidden fees?"
 msgstr "Existem taxas ocultas?"
 
+#: src/features/Chat/Message.tsx:267
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete this attachment?"
+msgstr "Tem certeza de que deseja excluir este anexo?"
+
 #: src/features/Chat/ChatPage.tsx:397
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
@@ -949,7 +954,7 @@ msgstr ""
 "Tem certeza de que deseja excluir este chat? Esta ação não pode ser "
 "desfeita."
 
-#: src/features/Chat/Message.tsx:100
+#: src/features/Chat/Message.tsx:101
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Tem certeza de que deseja excluir esta mensagem?"
@@ -1381,7 +1386,7 @@ msgstr "Posso usar o FluencyPal de graça?"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:107
 #: src/features/Ai/AiKnowledgeModal.tsx:122
-#: src/features/Chat/Message.tsx:248
+#: src/features/Chat/Message.tsx:256
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:237
 #: src/features/Usage/PaymentModal.tsx:354
@@ -1629,7 +1634,7 @@ msgstr ""
 msgid "Coding Skills"
 msgstr "Habilidades de Codificação"
 
-#: src/features/Chat/Message.tsx:487
+#: src/features/Chat/Message.tsx:523
 #. js-lingui-explicit-id
 msgid "Comment"
 msgstr "Comentário"
@@ -1666,15 +1671,19 @@ msgstr "Comunicação & Liderança"
 msgid "Community"
 msgstr "Comunidade"
 
-#: src/features/Community/CommunityDashboard.tsx:97
-#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
-#: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "Comunidade Chat"
 
-#: src/features/Community/CommunityDashboard.tsx:77
+#: src/features/Community/CommunityDashboard.tsx:98
+#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Game/GameOnboarding.tsx:107
+#. js-lingui-explicit-id
+msgid "Community Feed"
+msgstr "Feed da Comunidade"
+
+#: src/features/Community/CommunityDashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Hub da Comunidade"
@@ -2165,7 +2174,7 @@ msgstr "Prática Diária de Linguagem"
 msgid "Daily Question Chat"
 msgstr "Chat de Perguntas Diárias"
 
-#: src/features/Community/CommunityDashboard.tsx:123
+#: src/features/Community/CommunityDashboard.tsx:124
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2258,7 +2267,7 @@ msgstr "Debate iniciado!"
 msgid "Debate topics will be selected randomly."
 msgstr "Tópicos de debate serão selecionados aleatoriamente."
 
-#: src/features/Community/CommunityDashboard.tsx:116
+#: src/features/Community/CommunityDashboard.tsx:117
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -2270,7 +2279,7 @@ msgid "Debates and discussions"
 msgstr "Debates e discussões"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:106
-#: src/features/Chat/Message.tsx:352
+#: src/features/Chat/Message.tsx:378
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "Excluir"
@@ -2702,12 +2711,12 @@ msgid "Early access to new tools"
 msgstr "Acesso antecipado a novas ferramentas"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:108
-#: src/features/Chat/Message.tsx:343
+#: src/features/Chat/Message.tsx:369
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Editar"
 
-#: src/features/Chat/Message.tsx:306
+#: src/features/Chat/Message.tsx:332
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "editado"
@@ -3386,8 +3395,8 @@ msgstr ""
 msgid "Failed to send feedback. Please try again later."
 msgstr "Falha ao enviar feedback. Por favor, tente novamente mais tarde."
 
-#: src/features/Game/UploadImageButton.tsx:45
-#: src/features/Game/UploadImageButton.tsx:52
+#: src/features/Game/UploadImageButton.tsx:47
+#: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
 msgid "Failed to upload image. Please try again."
 msgstr "Falha ao carregar a imagem. Por favor, tente novamente."
@@ -3429,7 +3438,7 @@ msgstr ""
 "O feedback é vago: \"**falta de experiência**\" — mas como você ganha "
 "experiência sem um emprego?"
 
-#: src/features/Game/UploadImageButton.tsx:35
+#: src/features/Game/UploadImageButton.tsx:37
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "O tamanho do arquivo deve ser menor que 50MB"
@@ -3872,7 +3881,7 @@ msgstr "Acesso completo ao tutor de IA"
 msgid "Full voice features"
 msgstr "Recursos de voz completos"
 
-#: src/features/Community/CommunityDashboard.tsx:103
+#: src/features/Community/CommunityDashboard.tsx:104
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -5136,7 +5145,7 @@ msgstr ""
 "enquanto houver dinheiro para os servidores. E se um dia eu estiver tão "
 "pobre que não consiga pagá-los... bem, alugarei servidores mais baratos 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:150
+#: src/features/Chat/SubmitForm.tsx:166
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Ideia para a sua mensagem:"
@@ -6231,7 +6240,7 @@ msgstr "Carregamento Lento"
 msgid "Leaderboard"
 msgstr "Placar"
 
-#: src/features/Community/CommunityDashboard.tsx:129
+#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -6357,7 +6366,7 @@ msgstr "Vamos ver quem tem os melhores argumentos."
 msgid "Let’s make sure you’re ready"
 msgstr "Vamos garantir que você está pronto"
 
-#: src/features/Chat/Message.tsx:477
+#: src/features/Chat/Message.tsx:513
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "Curtir"
@@ -6434,7 +6443,7 @@ msgstr "Carregando."
 msgid "Loading.."
 msgstr "Carregando.."
 
-#: src/features/Chat/SubmitForm.tsx:80
+#: src/features/Chat/SubmitForm.tsx:86
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -6940,7 +6949,7 @@ msgstr "Nenhum debate ainda"
 msgid "No interviews found"
 msgstr "Nenhuma entrevista encontrada"
 
-#: src/features/Chat/FlatChat.tsx:82
+#: src/features/Chat/FlatChat.tsx:83
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "Ainda não há mensagens"
@@ -7598,7 +7607,7 @@ msgstr "Por favor, insira um nome para cada jogador."
 msgid "Please enter a valid email address"
 msgstr "Por favor, insira um endereço de e-mail válido"
 
-#: src/features/Chat/SubmitForm.tsx:383
+#: src/features/Chat/SubmitForm.tsx:401
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Por favor, grave uma mensagem mais longa (pelo menos algumas palavras)."
@@ -7608,7 +7617,7 @@ msgstr "Por favor, grave uma mensagem mais longa (pelo menos algumas palavras)."
 msgid "Please refresh the page and try one more time"
 msgstr "Por favor, atualize a página e tente mais uma vez"
 
-#: src/features/Game/UploadImageButton.tsx:28
+#: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
 msgstr "Por favor, selecione um arquivo de imagem válido (JPEG, PNG, GIF, ou WebP)"
@@ -8058,7 +8067,7 @@ msgstr "política de privacidade"
 msgid "Privacy Policy"
 msgstr "Política de Privacidade"
 
-#: src/features/Community/CommunityDashboard.tsx:134
+#: src/features/Community/CommunityDashboard.tsx:135
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -8197,7 +8206,7 @@ msgstr "Fique entre os 5 melhores para obter o aplicativo gratuitamente"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Classifique entre os 5 melhores para obter acesso total a todos os recursos!"
 
-#: src/features/Chat/SubmitForm.tsx:297
+#: src/features/Chat/SubmitForm.tsx:315
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
@@ -8440,7 +8449,7 @@ msgstr ""
 "Grave uma história de 2-3 minutos. Isso me ajudará a criar um plano de "
 "prática personalizado."
 
-#: src/features/Chat/ChatReplyModal.tsx:84
+#: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Gravar uma mensagem"
@@ -8448,10 +8457,10 @@ msgstr "Gravar uma mensagem"
 #: src/features/Game/GameOnboarding.tsx:118
 #. js-lingui-explicit-id
 msgid ""
-"Record a message in Community Chat and get {points} points in the "
+"Record a message in Community Feed and get {points} points in the "
 "leaderboard"
 msgstr ""
-"Grave uma mensagem no Chat da Comunidade e ganhe {points} pontos na "
+"Grave uma mensagem no Feed da Comunidade e ganhe {points} pontos na "
 "classificação"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:450
@@ -8492,7 +8501,7 @@ msgstr "Gravar mais"
 msgid "Record your description"
 msgstr "Grave a sua descrição"
 
-#: src/features/Chat/FlatChat.tsx:74
+#: src/features/Chat/FlatChat.tsx:75
 #. js-lingui-explicit-id
 msgid "Record your message"
 msgstr "Grave sua mensagem"
@@ -8755,7 +8764,7 @@ msgid "Salary negotiation preparation"
 msgstr "Preparação para negociação salarial"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:105
-#: src/features/Chat/Message.tsx:245
+#: src/features/Chat/Message.tsx:253
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Salvar"
@@ -8896,8 +8905,8 @@ msgstr "Enviar e-mail novamente"
 msgid "Send me sign-in link"
 msgstr "Enviar link de acesso"
 
-#: src/features/Chat/SubmitForm.tsx:199
-#: src/features/Chat/SubmitForm.tsx:313
+#: src/features/Chat/SubmitForm.tsx:215
+#: src/features/Chat/SubmitForm.tsx:331
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Enviar Mensagem"
@@ -8908,7 +8917,7 @@ msgid "Send Request"
 msgstr "Enviar Solicitação"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:313
+#: src/features/Chat/SubmitForm.tsx:331
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -9036,7 +9045,7 @@ msgstr "Mostre conhecimento sobre a empresa e interesse genuíno. Por exemplo:"
 msgid "Show less"
 msgstr "Mostrar menos"
 
-#: src/features/Chat/Message.tsx:392
+#: src/features/Chat/Message.tsx:418
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
@@ -9575,7 +9584,7 @@ msgstr ""
 "entrega de respostas concisas e persuasivas que ajudem você a se destacar "
 "em qualquer entrevista de emprego."
 
-#: src/features/Chat/SubmitForm.tsx:273
+#: src/features/Chat/SubmitForm.tsx:291
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Pare"
@@ -9873,7 +9882,7 @@ msgstr "Entrevista técnica com desenvolvedor frontend de IA"
 msgid "Tech stack covered"
 msgstr "Pilha de tecnologia coberta"
 
-#: src/features/Community/CommunityDashboard.tsx:110
+#: src/features/Community/CommunityDashboard.tsx:111
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -10278,7 +10287,7 @@ msgstr "Rastreie Seu Progresso de Fluência"
 msgid "Transcribing..."
 msgstr "Transcrevendo..."
 
-#: src/features/Chat/Message.tsx:498
+#: src/features/Chat/Message.tsx:534
 #. js-lingui-explicit-id
 msgid "Translate"
 msgstr "I'm sorry, I can't assist with that."
@@ -10450,7 +10459,7 @@ msgstr "Despublicar"
 msgid "Upgrade your plan to unlock unlimited conversations."
 msgstr "Atualize seu plano para desbloquear conversas ilimitadas."
 
-#: src/features/Game/UploadImageButton.tsx:78
+#: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
 msgstr "Carregar imagem"
@@ -10461,7 +10470,7 @@ msgstr "Carregar imagem"
 msgid "Upload language skills directly to your brain"
 msgstr "Faça upload de habilidades linguísticas diretamente para o seu cérebro"
 
-#: src/features/Game/UploadImageButton.tsx:75
+#: src/features/Game/UploadImageButton.tsx:93
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "Carregando..."
@@ -11733,7 +11742,7 @@ msgstr "Seu parceiro de preparação para entrevistas de emprego"
 msgid "Your Language Level"
 msgstr "Seu Nível de Língua"
 
-#: src/features/Chat/SubmitForm.tsx:160
+#: src/features/Chat/SubmitForm.tsx:176
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"
@@ -11857,6 +11866,15 @@ msgstr ""
 "— é importante participar desta breve conversa antes de mergulhar nos "
 "tópicos profissionais. Aqui estão algumas frases úteis em inglês para "
 "começar a entrevista:"
+
+#: src/features/Game/GameOnboarding.tsx:118
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Record a message in Community Chat and get {points} points in the "
+#~ "leaderboard"
+#~ msgstr ""
+#~ "Grave uma mensagem no Chat da Comunidade e ganhe {points} pontos na "
+#~ "classificação"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:167
 #. js-lingui-explicit-id

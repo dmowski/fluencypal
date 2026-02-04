@@ -459,7 +459,7 @@ msgstr "Rencana aksi untuk meningkatkan keterampilan backend yang kritis"
 msgid "Active"
 msgstr "Aktif"
 
-#: src/features/Chat/ChatReplyModal.tsx:84
+#: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Tambahkan balasan"
@@ -948,6 +948,11 @@ msgstr "Arsitektur & Ketahanan"
 msgid "Are there any hidden fees?"
 msgstr "Apakah ada biaya tersembunyi?"
 
+#: src/features/Chat/Message.tsx:267
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete this attachment?"
+msgstr "Apakah Anda yakin ingin menghapus lampiran ini?"
+
 #: src/features/Chat/ChatPage.tsx:397
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
@@ -955,7 +960,7 @@ msgstr ""
 "Apakah Anda yakin ingin menghapus percakapan ini? Tindakan ini tidak dapat "
 "dibatalkan."
 
-#: src/features/Chat/Message.tsx:100
+#: src/features/Chat/Message.tsx:101
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Apakah Anda yakin ingin menghapus pesan ini?"
@@ -1387,7 +1392,7 @@ msgstr "Bisakah saya menggunakan FluencyPal secara gratis?"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:107
 #: src/features/Ai/AiKnowledgeModal.tsx:122
-#: src/features/Chat/Message.tsx:248
+#: src/features/Chat/Message.tsx:256
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:237
 #: src/features/Usage/PaymentModal.tsx:354
@@ -1636,7 +1641,7 @@ msgstr ""
 msgid "Coding Skills"
 msgstr "Kemampuan Koding"
 
-#: src/features/Chat/Message.tsx:487
+#: src/features/Chat/Message.tsx:523
 #. js-lingui-explicit-id
 msgid "Comment"
 msgstr "Komentar"
@@ -1673,15 +1678,19 @@ msgstr "Komunikasi & Kepemimpinan"
 msgid "Community"
 msgstr "Komunitas"
 
-#: src/features/Community/CommunityDashboard.tsx:97
-#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
-#: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "Obrolan Komunitas"
 
-#: src/features/Community/CommunityDashboard.tsx:77
+#: src/features/Community/CommunityDashboard.tsx:98
+#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Game/GameOnboarding.tsx:107
+#. js-lingui-explicit-id
+msgid "Community Feed"
+msgstr "Umpan Komunitas"
+
+#: src/features/Community/CommunityDashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Pusat Komunitas"
@@ -2171,7 +2180,7 @@ msgstr "Praktek Bahasa Sehari-hari"
 msgid "Daily Question Chat"
 msgstr "Obrolan Pertanyaan Harian"
 
-#: src/features/Community/CommunityDashboard.tsx:123
+#: src/features/Community/CommunityDashboard.tsx:124
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2264,7 +2273,7 @@ msgstr "Debat dimulai!"
 msgid "Debate topics will be selected randomly."
 msgstr "Topik debat akan dipilih secara acak."
 
-#: src/features/Community/CommunityDashboard.tsx:116
+#: src/features/Community/CommunityDashboard.tsx:117
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -2276,7 +2285,7 @@ msgid "Debates and discussions"
 msgstr "Debat dan diskusi"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:106
-#: src/features/Chat/Message.tsx:352
+#: src/features/Chat/Message.tsx:378
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "Hapus"
@@ -2710,12 +2719,12 @@ msgid "Early access to new tools"
 msgstr "Akses awal ke alat baru"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:108
-#: src/features/Chat/Message.tsx:343
+#: src/features/Chat/Message.tsx:369
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Edit"
 
-#: src/features/Chat/Message.tsx:306
+#: src/features/Chat/Message.tsx:332
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "diedit"
@@ -3408,8 +3417,8 @@ msgstr "Gagal menghapus akun Anda. Silakan coba lagi nanti, atau hubungi pengemb
 msgid "Failed to send feedback. Please try again later."
 msgstr "Gagal mengirim umpan balik. Silakan coba lagi nanti."
 
-#: src/features/Game/UploadImageButton.tsx:45
-#: src/features/Game/UploadImageButton.tsx:52
+#: src/features/Game/UploadImageButton.tsx:47
+#: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
 msgid "Failed to upload image. Please try again."
 msgstr "Gagal mengunggah gambar. Silakan coba lagi."
@@ -3451,7 +3460,7 @@ msgstr ""
 "Umpan baliknya tidak jelas: \"**tidak cukup pengalaman**\" — tetapi "
 "bagaimana Anda bisa mendapatkan pengalaman tanpa pekerjaan?"
 
-#: src/features/Game/UploadImageButton.tsx:35
+#: src/features/Game/UploadImageButton.tsx:37
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Ukuran file harus kurang dari 50MB"
@@ -3897,7 +3906,7 @@ msgstr "Akses penuh tutor AI"
 msgid "Full voice features"
 msgstr "Fitur suara penuh"
 
-#: src/features/Community/CommunityDashboard.tsx:103
+#: src/features/Community/CommunityDashboard.tsx:104
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -5184,7 +5193,7 @@ msgstr ""
 "suatu hari saya cukup miskin sehingga tidak mampu membayar mereka... yah, "
 "saya akan menyewa server yang lebih murah 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:150
+#: src/features/Chat/SubmitForm.tsx:166
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Ide untuk pesan Anda:"
@@ -6295,7 +6304,7 @@ msgstr "Pemuatan Lambat"
 msgid "Leaderboard"
 msgstr "Papan Peringkat"
 
-#: src/features/Community/CommunityDashboard.tsx:129
+#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -6421,7 +6430,7 @@ msgstr "Mari kita lihat siapa yang memiliki argumen terbaik."
 msgid "Let’s make sure you’re ready"
 msgstr "Mari pastikan Anda siap"
 
-#: src/features/Chat/Message.tsx:477
+#: src/features/Chat/Message.tsx:513
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "Suka"
@@ -6498,7 +6507,7 @@ msgstr "Memuat."
 msgid "Loading.."
 msgstr "Memuat.."
 
-#: src/features/Chat/SubmitForm.tsx:80
+#: src/features/Chat/SubmitForm.tsx:86
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -6996,7 +7005,7 @@ msgstr "Belum ada perdebatan"
 msgid "No interviews found"
 msgstr "Tidak ada wawancara ditemukan"
 
-#: src/features/Chat/FlatChat.tsx:82
+#: src/features/Chat/FlatChat.tsx:83
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "Belum ada pesan"
@@ -7657,7 +7666,7 @@ msgstr "Silakan masukkan nama untuk setiap pemain."
 msgid "Please enter a valid email address"
 msgstr "Silakan masukkan alamat email yang valid"
 
-#: src/features/Chat/SubmitForm.tsx:383
+#: src/features/Chat/SubmitForm.tsx:401
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Silakan rekam pesan yang lebih panjang (setidaknya beberapa kata)."
@@ -7667,7 +7676,7 @@ msgstr "Silakan rekam pesan yang lebih panjang (setidaknya beberapa kata)."
 msgid "Please refresh the page and try one more time"
 msgstr "Silakan segarkan halaman dan coba sekali lagi"
 
-#: src/features/Game/UploadImageButton.tsx:28
+#: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
 msgstr "Silakan pilih file gambar yang valid (JPEG, PNG, GIF, atau WebP)"
@@ -8130,7 +8139,7 @@ msgstr "kebijakan privasi"
 msgid "Privacy Policy"
 msgstr "Kebijakan Privasi"
 
-#: src/features/Community/CommunityDashboard.tsx:134
+#: src/features/Community/CommunityDashboard.tsx:135
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -8272,7 +8281,7 @@ msgstr "Masuk dalam 5 besar untuk mendapatkan aplikasi ini secara gratis"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Masuk dalam peringkat 5 besar untuk mendapatkan akses penuh ke semua fitur!"
 
-#: src/features/Chat/SubmitForm.tsx:297
+#: src/features/Chat/SubmitForm.tsx:315
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
@@ -8516,7 +8525,7 @@ msgstr ""
 "Rekam cerita 2-3 menit. Ini akan membantu saya membuat rencana latihan yang "
 "dipersonalisasi."
 
-#: src/features/Chat/ChatReplyModal.tsx:84
+#: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Rekam pesan"
@@ -8524,11 +8533,9 @@ msgstr "Rekam pesan"
 #: src/features/Game/GameOnboarding.tsx:118
 #. js-lingui-explicit-id
 msgid ""
-"Record a message in Community Chat and get {points} points in the "
+"Record a message in Community Feed and get {points} points in the "
 "leaderboard"
-msgstr ""
-"Rekam pesan di Obrolan Komunitas dan dapatkan {points} poin di papan "
-"peringkat"
+msgstr "Rekam pesan di Umpan Komunitas dan dapatkan {points} poin di papan peringkat"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:450
 #. js-lingui-explicit-id
@@ -8568,7 +8575,7 @@ msgstr "Rekam lebih banyak"
 msgid "Record your description"
 msgstr "Rekam deskripsi Anda"
 
-#: src/features/Chat/FlatChat.tsx:74
+#: src/features/Chat/FlatChat.tsx:75
 #. js-lingui-explicit-id
 msgid "Record your message"
 msgstr "Rekam pesan Anda"
@@ -8833,7 +8840,7 @@ msgid "Salary negotiation preparation"
 msgstr "Persiapan negosiasi gaji"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:105
-#: src/features/Chat/Message.tsx:245
+#: src/features/Chat/Message.tsx:253
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Simpan"
@@ -8976,8 +8983,8 @@ msgstr "Kirim email lagi"
 msgid "Send me sign-in link"
 msgstr "Kirimkan saya tautan masuk"
 
-#: src/features/Chat/SubmitForm.tsx:199
-#: src/features/Chat/SubmitForm.tsx:313
+#: src/features/Chat/SubmitForm.tsx:215
+#: src/features/Chat/SubmitForm.tsx:331
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Kirim Pesan"
@@ -8988,7 +8995,7 @@ msgid "Send Request"
 msgstr "Kirim Permintaan"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:313
+#: src/features/Chat/SubmitForm.tsx:331
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -9118,7 +9125,7 @@ msgstr "Tunjukkan pengetahuan tentang perusahaan dan minat yang tulus. Misalnya:
 msgid "Show less"
 msgstr "Tampilkan lebih sedikit"
 
-#: src/features/Chat/Message.tsx:392
+#: src/features/Chat/Message.tsx:418
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
@@ -9660,7 +9667,7 @@ msgstr ""
 "petunjuk untuk berlatih menyampaikan jawaban yang singkat, persuasif yang "
 "membantu Anda menonjol dalam setiap wawancara kerja."
 
-#: src/features/Chat/SubmitForm.tsx:273
+#: src/features/Chat/SubmitForm.tsx:291
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Berhenti"
@@ -9956,7 +9963,7 @@ msgstr "Wawancara teknis dengan pengembang frontend AI"
 msgid "Tech stack covered"
 msgstr "Tumpukan teknologi yang dibahas"
 
-#: src/features/Community/CommunityDashboard.tsx:110
+#: src/features/Community/CommunityDashboard.tsx:111
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -10367,7 +10374,7 @@ msgstr "Lacak Kemajuan Kefasihan Anda"
 msgid "Transcribing..."
 msgstr "Mentranskripsi..."
 
-#: src/features/Chat/Message.tsx:498
+#: src/features/Chat/Message.tsx:534
 #. js-lingui-explicit-id
 msgid "Translate"
 msgstr "Menerjemahkan"
@@ -10541,7 +10548,7 @@ msgstr "Tidak Dipublikasikan"
 msgid "Upgrade your plan to unlock unlimited conversations."
 msgstr "Tingkatkan paket Anda untuk membuka percakapan tanpa batas."
 
-#: src/features/Game/UploadImageButton.tsx:78
+#: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
 msgstr "Unggah gambar"
@@ -10552,7 +10559,7 @@ msgstr "Unggah gambar"
 msgid "Upload language skills directly to your brain"
 msgstr "Unggah keterampilan bahasa langsung ke otak Anda"
 
-#: src/features/Game/UploadImageButton.tsx:75
+#: src/features/Game/UploadImageButton.tsx:93
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "Mengunggah..."
@@ -11842,7 +11849,7 @@ msgstr "Rekan persiapan wawancara kerja Anda"
 msgid "Your Language Level"
 msgstr "Tingkat Bahasa Anda"
 
-#: src/features/Chat/SubmitForm.tsx:160
+#: src/features/Chat/SubmitForm.tsx:176
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"
@@ -11970,6 +11977,15 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
+
+#: src/features/Game/GameOnboarding.tsx:118
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Record a message in Community Chat and get {points} points in the "
+#~ "leaderboard"
+#~ msgstr ""
+#~ "Rekam pesan di Obrolan Komunitas dan dapatkan {points} poin di papan "
+#~ "peringkat"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:167
 #. js-lingui-explicit-id
