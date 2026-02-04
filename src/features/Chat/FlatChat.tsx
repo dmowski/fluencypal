@@ -64,10 +64,11 @@ export const FlatChat = ({}: {}) => {
             }}
           >
             <SubmitForm
-              onSubmit={async (message: string) => {
+              onSubmit={async (message, attachments) => {
                 await chat.addMessage({
                   messageContent: message,
                   parentMessageId: '',
+                  attachments,
                 });
               }}
               isLoading={chat.loading}

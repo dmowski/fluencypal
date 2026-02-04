@@ -72,11 +72,12 @@ export const ChatReplyModal = ({
           <Stack>
             <SubmitForm
               setIsActiveRecording={setIsActiveRecording}
-              onSubmit={async (messageContent) => {
+              onSubmit={async (messageContent, attachments) => {
                 onCloseRecordMessageModal();
                 await chat.addMessage({
                   messageContent,
                   parentMessageId: messageToComment?.id ? messageToComment.id : '',
+                  attachments,
                 });
               }}
               isLoading={chat.loading}

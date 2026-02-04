@@ -20,6 +20,7 @@ import {
   ThreadsMessage,
   UserChatMetadata,
   UserChatMetadataStatic,
+  ThreadsMessageAttachment,
 } from './type';
 import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
 import { useUrlState } from '../Url/useUrlState';
@@ -30,6 +31,7 @@ import { useTasks } from '../Tasks/useTasks';
 interface AddMessageProps {
   messageContent: string;
   parentMessageId: string;
+  attachments: ThreadsMessageAttachment[];
 }
 
 interface ChatContextType {
@@ -42,7 +44,7 @@ interface ChatContextType {
 
   commentsInfo: Record<string, number>;
 
-  addMessage: ({ messageContent, parentMessageId }: AddMessageProps) => Promise<void>;
+  addMessage: (props: AddMessageProps) => Promise<void>;
   deleteMessage: (messageId: string) => Promise<void>;
   editMessage: (messageId: string, newContent: string) => Promise<void>;
 
@@ -271,7 +273,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
   const isSending = useRef<string>('');
   const tasks = useTasks();
 
-  const addMessage = async ({ messageContent, parentMessageId }: AddMessageProps) => {
+  const addMessage = async ({ messageContent, parentMessageId, attachments }: AddMessageProps) => {
     if (isSending.current) {
       console.log('Already sending message:', isSending.current);
       return;
@@ -305,6 +307,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       createdAtUtc: Date.now(),
       updatedAtIso: createdAtIso,
       parentMessageId: parentMessageId,
+      attachments,
     };
     const messageDoc = doc(messagesRefInternal, newMessage.id);
     await setDoc(messageDoc, newMessage);

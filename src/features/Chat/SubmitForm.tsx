@@ -11,9 +11,10 @@ import { ProcessUserInput } from '../Conversation/ProcessUserInput';
 import { Keyboard, Lightbulb, Mic, TextSearch, Trash } from 'lucide-react';
 import { GamePlusPoints } from '../Game/gameQuestionScreens/gameCoreUI';
 import { useTextAi } from '../Ai/useTextAi';
+import { ThreadsMessageAttachment } from './type';
 
 interface SubmitFormProps {
-  onSubmit: (message: string) => Promise<void>;
+  onSubmit: (message: string, attachments: ThreadsMessageAttachment[]) => Promise<void>;
   isLoading: boolean;
   recordMessageTitle: string;
   setIsActiveRecording: (isRecording: boolean) => void;
@@ -31,12 +32,14 @@ export function SubmitForm({
 
   const recorder = useAudioRecorder();
 
+  const [attachments, setAttachments] = useState<ThreadsMessageAttachment[]>([]);
+
   const [isSending, setIsSending] = useState(false);
   const ai = useTextAi();
 
   const submitTranscription = async () => {
     setIsSending(true);
-    await onSubmit(recorder.transcription || '');
+    await onSubmit(recorder.transcription || '', attachments);
     recorder.removeTranscript();
     recorder.cancelRecording();
     setIsSending(false);
@@ -68,7 +71,7 @@ export function SubmitForm({
     if (textMessage.trim() === '') {
       return;
     }
-    await onSubmit(textMessage.trim());
+    await onSubmit(textMessage.trim(), attachments);
     setTextMessage('');
     setPreSubmitTextMessage('');
   };
