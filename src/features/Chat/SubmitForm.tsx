@@ -1,17 +1,14 @@
 'use client';
 
-import Image from 'next/image';
 import { Stack, Typography, Button, IconButton, TextField } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAudioRecorder } from '../Audio/useAudioRecorder';
 import SendIcon from '@mui/icons-material/Send';
 import StopIcon from '@mui/icons-material/Stop';
 import MicIcon from '@mui/icons-material/Mic';
-import { CHAT_MESSAGE_POINTS } from './data';
 import { useEffect, useState } from 'react';
 import { ProcessUserInput } from '../Conversation/ProcessUserInput';
-import { ImagePlus, Keyboard, Lightbulb, Mic, TextSearch, Trash } from 'lucide-react';
-import { GamePlusPoints } from '../Game/gameQuestionScreens/gameCoreUI';
+import { Keyboard, Lightbulb, Mic, TextSearch, Trash } from 'lucide-react';
 import { useTextAi } from '../Ai/useTextAi';
 import { ThreadsMessageAttachment } from './type';
 import { UploadImageButton } from '../Game/UploadImageButton';
@@ -225,6 +222,8 @@ Provide only the message user can send, without any additional explanation or co
                 flexDirection: 'row',
               }}
             >
+              <UploadImageButton type="icon" onNewUploadUrl={(url) => addImage(url)} />
+
               <IconButton
                 onClick={generateIdeasForMessage}
                 disabled={isGeneratingIdea || !previousBotMessage}
