@@ -23,6 +23,7 @@ export const Avatar = ({
       onClick={onClick}
       sx={{
         width: avatarSize,
+        minWidth: avatarSize,
         height: avatarSize,
         borderRadius: '50%',
         position: 'relative',
