@@ -8,7 +8,7 @@ test.describe('Internationalization', () => {
     expect(htmlLang).toBe('ru');
 
     const contactLinks = page.getByRole('link', { name: 'Контакты' });
-    await expect(contactLinks).toHaveCount(2);
+    await expect(contactLinks).toHaveCount(1);
 
     for (const link of await contactLinks.all()) {
       await expect(link).toHaveAttribute('href', '/ru/contacts');
@@ -54,7 +54,7 @@ test.describe('Internationalization', () => {
     expect(content!.startsWith('Practice conversational English with FluencyPal')).toBe(true);
 
     const contactLinks = page.getByRole('link', { name: 'Contacts' });
-    await expect(contactLinks).toHaveCount(2);
+    await expect(contactLinks).toHaveCount(1);
 
     for (const link of await contactLinks.all()) {
       await expect(link).toHaveAttribute('href', '/contacts');
