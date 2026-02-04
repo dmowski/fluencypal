@@ -951,7 +951,7 @@ msgstr "Ці ёсць якія-небудзь схаваныя зборы?"
 msgid "Are you sure you want to delete this attachment?"
 msgstr "Вы ўпэўнены, што хочаце выдаліць гэты ўкладанне?"
 
-#: src/features/Chat/ChatPage.tsx:397
+#: src/features/Chat/ChatPage.tsx:399
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr "Ці ўпэўнены вы, што жадаеце выдаліць гэты чат? Гэта дзеянне нельга адмяніць."
@@ -985,6 +985,16 @@ msgid ""
 msgstr ""
 "Афармляйце маштабуючыя рашэнні, аптымізацыю прадукцыйнасці і ўзоры "
 "архітэктуры фронтэнда."
+
+#: src/features/Dashboard/MessagesToWinBadge.tsx:112
+#. js-lingui-explicit-id
+msgid "Ask a question you’d normally ask in real life"
+msgstr "Задайце пытанне, якое вы звычайна задаеце ў рэальным жыцці"
+
+#: src/features/Dashboard/MessagesToWinBadge.tsx:124
+#. js-lingui-explicit-id
+msgid "Ask how others practice speaking or pronunciation"
+msgstr "Спытайце, як іншыя практыкуюць маўленне ці вымаўленне"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:26
 #: src/features/Case/data/backendCSharp/techData.ts:13
@@ -1037,13 +1047,13 @@ msgstr ""
 #: src/features/Alias/components/LanguageLevel.tsx:96
 #: src/features/Alias/components/PlayersSetup.tsx:308
 #: src/features/Alias/components/RoundSettings.tsx:221
-#: src/features/Chat/ChatPage.tsx:166
+#: src/features/Chat/ChatPage.tsx:168
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Назад"
 
-#: src/features/Chat/ChatPage.tsx:200
+#: src/features/Chat/ChatPage.tsx:202
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Вярнуцца да спісу чатаў"
@@ -1438,10 +1448,10 @@ msgstr "Прасоўванне па Кар'еры"
 msgid "Career benefit:"
 msgstr "Кар'ерны выгад:"
 
-#: src/features/Chat/ChatPage.tsx:353
 #: src/features/Chat/ChatPage.tsx:355
-#: src/features/Chat/ChatPage.tsx:442
+#: src/features/Chat/ChatPage.tsx:357
 #: src/features/Chat/ChatPage.tsx:444
+#: src/features/Chat/ChatPage.tsx:446
 #: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1452,7 +1462,7 @@ msgstr "Чат"
 msgid "Chat between you and {userName}"
 msgstr "Чат паміж вамі і {userName}"
 
-#: src/features/Chat/ChatPage.tsx:402
+#: src/features/Chat/ChatPage.tsx:404
 #. js-lingui-explicit-id
 msgid "Chat deleted successfully."
 msgstr "Чат паспяхова выдалены."
@@ -1462,7 +1472,7 @@ msgstr "Чат паспяхова выдалены."
 msgid "Chat history"
 msgstr "Гісторыя чата"
 
-#: src/features/Chat/ChatPage.tsx:197
+#: src/features/Chat/ChatPage.tsx:199
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Чат не знойдзены або ў вас няма доступу да яго."
@@ -2172,8 +2182,8 @@ msgstr "Штодзённае інтэрв'ю без страху асуджэн�
 msgid "Daily Language Practice"
 msgstr "Шкодныя моўныя практыкі"
 
-#: src/features/Chat/ChatPage.tsx:351
-#: src/features/Chat/ChatPage.tsx:440
+#: src/features/Chat/ChatPage.tsx:353
+#: src/features/Chat/ChatPage.tsx:442
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Штодзённая дыскусія па пытаннях"
@@ -2240,8 +2250,8 @@ msgstr "дні запар!"
 msgid "Debate"
 msgstr "Дэбаты"
 
-#: src/features/Chat/ChatPage.tsx:350
-#: src/features/Chat/ChatPage.tsx:439
+#: src/features/Chat/ChatPage.tsx:352
+#: src/features/Chat/ChatPage.tsx:441
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Дэбаты Чат"
@@ -2300,7 +2310,7 @@ msgstr ""
 "\n"
 "Выдаліць уліковы запіс (Усяго)\n"
 
-#: src/features/Chat/ChatPage.tsx:499
+#: src/features/Chat/ChatPage.tsx:501
 #. js-lingui-explicit-id
 msgid "Delete chat"
 msgstr "Выдаліць размову"
@@ -4181,8 +4191,8 @@ msgstr "Дайце невялікі прыклад (лічыльнік, увах
 msgid "Give us your feedback"
 msgstr "Дайце нам вашы водгукі"
 
-#: src/features/Chat/ChatPage.tsx:352
-#: src/features/Chat/ChatPage.tsx:441
+#: src/features/Chat/ChatPage.tsx:354
+#: src/features/Chat/ChatPage.tsx:443
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Глабальны чат"
@@ -6230,7 +6240,7 @@ msgstr "Мовы, усталяваныя ў вашым мозгу:"
 msgid "Last Visit"
 msgstr "Апошні візіт"
 
-#: src/features/Chat/ChatPage.tsx:473
+#: src/features/Chat/ChatPage.tsx:475
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "Апошні візіт: {lastVisited}"
@@ -7122,6 +7132,11 @@ msgstr "не апублікавана"
 msgid "Not running inside Telegram App"
 msgstr "Не запушчана ў дадатку Telegram"
 
+#: src/features/Dashboard/MessagesToWinBadge.tsx:104
+#. js-lingui-explicit-id
+msgid "Not sure what to write? Try one of these:"
+msgstr "Не ведаеце, што напісаць? Паспрабуйце адно з наступных:"
+
 #: src/features/Conversation/ConversationError.tsx:47
 #. js-lingui-explicit-id
 msgid "Notification was sent to the dev team. Sorry for that..."
@@ -7675,6 +7690,20 @@ msgstr "План вучэбы партугальскай мовы"
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "Пазіцыя"
+
+#: src/features/Dashboard/MessagesToWinBadge.tsx:128
+#. js-lingui-explicit-id
+msgid "Post a short thought and ask: “Does this sound natural?”"
+msgstr "Апублікуйце кароткую думку і спытайце: \"Ці гэта гучыць натуральна?\""
+
+#: src/features/Dashboard/MessagesToWinBadge.tsx:73
+#. js-lingui-explicit-id
+msgid ""
+"Posting helps you grow in the FluencyPal leaderboard — and helps others "
+"learn too."
+msgstr ""
+"Публікацыя дапамагае вам расці ў рэйтынгу FluencyPal — і дапамагае вучыцца "
+"іншым."
 
 #: src/features/Case/data/frontend-junior/quizData.ts:172
 #. js-lingui-explicit-id
@@ -8442,6 +8471,11 @@ msgstr ""
 "Выпускнікі нядаўніх гадоў або выпускнікі курсаў, якія ўступаюць у "
 "распрацоўку фронтэнда"
 
+#: src/features/Dashboard/MessagesToWinBadge.tsx:120
+#. js-lingui-explicit-id
+msgid "Recommend a podcast, song, or video in your target language"
+msgstr "Рэкамендуйце падкаст, песню або відэа на мове вашай мэты"
+
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:310
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:220
@@ -8926,6 +8960,11 @@ msgstr "Адправіць паведамленне"
 msgid "Send Request"
 msgstr "Адправіць запыт"
 
+#: src/features/Dashboard/MessagesToWinBadge.tsx:62
+#. js-lingui-explicit-id
+msgid "Send {messagesNeeded} messages to unlock full access"
+msgstr "Адпраўце {messagesNeeded} паведамленняў, каб разблакаваць поўны доступ"
+
 #: src/features/Auth/AuthWallBasic.tsx:147
 #: src/features/Chat/SubmitForm.tsx:331
 #: src/features/Header/ContactMessageModal.tsx:116
@@ -8980,6 +9019,11 @@ msgstr "Усталяваць маю мову"
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
 msgstr "Выстаўце мэту вашага навучання"
+
+#: src/features/Dashboard/MessagesToWinBadge.tsx:116
+#. js-lingui-explicit-id
+msgid "Share a phrase you learned today (or one that confused you)"
+msgstr "Падзяліцеся фразай, якую вы вывучылі сёння (ці той, якая вас збянтэжыла)"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -10094,6 +10138,11 @@ msgstr ""
 msgid "The key differences between them."
 msgstr "Ключавыя адрозненні паміж імі."
 
+#: src/features/Dashboard/MessagesToWinBadge.tsx:139
+#. js-lingui-explicit-id
+msgid "The key: small posts are valid. One sentence is enough."
+msgstr "Ключ: малыя паведамленні сапраўдныя. Адно сказ дастаткова."
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:364
 #. js-lingui-explicit-id
 msgid "The last question before we create your plan"
@@ -10925,6 +10974,11 @@ msgstr "Благасостаянне"
 msgid "What are HTML semantic elements and why are they important?"
 msgstr "Што такое семантычныя элементы HTML і чаму яны важныя?"
 
+#: src/features/Dashboard/MessagesToWinBadge.tsx:88
+#. js-lingui-explicit-id
+msgid "What can I post?"
+msgstr "Што я магу апублікаваць?"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:292
 #. js-lingui-explicit-id
 msgid "What challenges you face"
@@ -11579,7 +11633,7 @@ msgid ""
 "the results."
 msgstr "Вы завяршылі ўсе пытанні. Адпраўце свае адказы цяпер і чакайце вынікаў."
 
-#: src/features/Chat/ChatPage.tsx:223
+#: src/features/Chat/ChatPage.tsx:225
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "У вас пакуль няма чатаў."

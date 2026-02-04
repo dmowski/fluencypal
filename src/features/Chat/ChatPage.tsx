@@ -29,6 +29,7 @@ import { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { sleep } from '@/libs/sleep';
 import { FlatChat } from './FlatChat';
+import { MessagesToWinBadge } from '../Dashboard/MessagesToWinBadge';
 
 export const ChatPage = ({
   type,
@@ -88,6 +89,7 @@ export const ChatPage = ({
               width: '100%',
             }}
           >
+            <MessagesToWinBadge />
             <GlobalChatTabs sortMode={sortMode} setSortMode={changePage} />
             <ChatSection
               contextForAiAnalysis=""

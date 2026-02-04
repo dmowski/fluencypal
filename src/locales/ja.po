@@ -906,7 +906,7 @@ msgstr "隠れた手数料はありますか？"
 msgid "Are you sure you want to delete this attachment?"
 msgstr "この添付ファイルを削除してもよろしいですか？"
 
-#: src/features/Chat/ChatPage.tsx:397
+#: src/features/Chat/ChatPage.tsx:399
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr "チャットを削除してもよろしいですか？この操作は元に戻せません。"
@@ -938,6 +938,16 @@ msgid ""
 "Articulate scalable solutions, performance optimization, and frontend "
 "architecture patterns."
 msgstr "スケーラブルなソリューション、パフォーマンスの最適化、フロントエンドのアーキテクチャパターンを説明します。"
+
+#: src/features/Dashboard/MessagesToWinBadge.tsx:112
+#. js-lingui-explicit-id
+msgid "Ask a question you’d normally ask in real life"
+msgstr "現実生活で通常尋ねる質問をしてください"
+
+#: src/features/Dashboard/MessagesToWinBadge.tsx:124
+#. js-lingui-explicit-id
+msgid "Ask how others practice speaking or pronunciation"
+msgstr "他の人がスピーキングや発音の練習をどうしているか尋ねましょう"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:26
 #: src/features/Case/data/backendCSharp/techData.ts:13
@@ -986,7 +996,7 @@ msgstr "これらのミスを避けることで、よりプロフェッショナ
 #: src/features/Alias/components/LanguageLevel.tsx:96
 #: src/features/Alias/components/PlayersSetup.tsx:308
 #: src/features/Alias/components/RoundSettings.tsx:221
-#: src/features/Chat/ChatPage.tsx:166
+#: src/features/Chat/ChatPage.tsx:168
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
@@ -994,7 +1004,7 @@ msgstr ""
 "\n"
 "戻る\n"
 
-#: src/features/Chat/ChatPage.tsx:200
+#: src/features/Chat/ChatPage.tsx:202
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "チャットリストに戻る"
@@ -1372,10 +1382,10 @@ msgstr "キャリアの向上"
 msgid "Career benefit:"
 msgstr "キャリアのメリット:"
 
-#: src/features/Chat/ChatPage.tsx:353
 #: src/features/Chat/ChatPage.tsx:355
-#: src/features/Chat/ChatPage.tsx:442
+#: src/features/Chat/ChatPage.tsx:357
 #: src/features/Chat/ChatPage.tsx:444
+#: src/features/Chat/ChatPage.tsx:446
 #: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -1388,7 +1398,7 @@ msgstr ""
 msgid "Chat between you and {userName}"
 msgstr "{userName}とのチャット"
 
-#: src/features/Chat/ChatPage.tsx:402
+#: src/features/Chat/ChatPage.tsx:404
 #. js-lingui-explicit-id
 msgid "Chat deleted successfully."
 msgstr "チャットが正常に削除されました。"
@@ -1398,7 +1408,7 @@ msgstr "チャットが正常に削除されました。"
 msgid "Chat history"
 msgstr "チャット履歴"
 
-#: src/features/Chat/ChatPage.tsx:197
+#: src/features/Chat/ChatPage.tsx:199
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "チャットが見つからない、またはあなたにはアクセス権がありません。"
@@ -2077,8 +2087,8 @@ msgstr "ジャッジされることなく、毎日のインタビュー"
 msgid "Daily Language Practice"
 msgstr "毎日の言語練習"
 
-#: src/features/Chat/ChatPage.tsx:351
-#: src/features/Chat/ChatPage.tsx:440
+#: src/features/Chat/ChatPage.tsx:353
+#: src/features/Chat/ChatPage.tsx:442
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "デイリークエスチョンチャット"
@@ -2142,8 +2152,8 @@ msgstr "連続日数!"
 msgid "Debate"
 msgstr "討論"
 
-#: src/features/Chat/ChatPage.tsx:350
-#: src/features/Chat/ChatPage.tsx:439
+#: src/features/Chat/ChatPage.tsx:352
+#: src/features/Chat/ChatPage.tsx:441
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "ディベートチャット"
@@ -2200,7 +2210,7 @@ msgstr "アカウントを削除する"
 msgid "Delete account (Total)"
 msgstr "アカウントを削除 (合計)"
 
-#: src/features/Chat/ChatPage.tsx:499
+#: src/features/Chat/ChatPage.tsx:501
 #. js-lingui-explicit-id
 msgid "Delete chat"
 msgstr "チャットを削除"
@@ -3912,8 +3922,8 @@ msgstr "小さな例を挙げる (カウンター、入力、ボタン)"
 msgid "Give us your feedback"
 msgstr "フィードバックをお寄せください"
 
-#: src/features/Chat/ChatPage.tsx:352
-#: src/features/Chat/ChatPage.tsx:441
+#: src/features/Chat/ChatPage.tsx:354
+#: src/features/Chat/ChatPage.tsx:443
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "グローバルチャット"
@@ -5764,7 +5774,7 @@ msgstr "あなたの脳にインストールされた言語:"
 msgid "Last Visit"
 msgstr "最終訪問"
 
-#: src/features/Chat/ChatPage.tsx:473
+#: src/features/Chat/ChatPage.tsx:475
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "最終訪問日: {lastVisited}"
@@ -6633,6 +6643,11 @@ msgstr "未公開"
 msgid "Not running inside Telegram App"
 msgstr "Telegramアプリ内で実行されていません"
 
+#: src/features/Dashboard/MessagesToWinBadge.tsx:104
+#. js-lingui-explicit-id
+msgid "Not sure what to write? Try one of these:"
+msgstr "何を書けばいいかわからない？次のいずれかを試してみてください："
+
 #: src/features/Conversation/ConversationError.tsx:47
 #. js-lingui-explicit-id
 msgid "Notification was sent to the dev team. Sorry for that..."
@@ -7158,6 +7173,18 @@ msgstr "ポルトガル語学習プラン"
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "位置"
+
+#: src/features/Dashboard/MessagesToWinBadge.tsx:128
+#. js-lingui-explicit-id
+msgid "Post a short thought and ask: “Does this sound natural?”"
+msgstr "短い考えを投稿して「これって自然に聞こえますか？」と尋ねてみましょう。"
+
+#: src/features/Dashboard/MessagesToWinBadge.tsx:73
+#. js-lingui-explicit-id
+msgid ""
+"Posting helps you grow in the FluencyPal leaderboard — and helps others "
+"learn too."
+msgstr "投稿することで、FluencyPal のリーダーボードで成長でき、他の人の学習にも役立ちます。"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:172
 #. js-lingui-explicit-id
@@ -7876,6 +7903,11 @@ msgstr "あなたの会話のニーズに合わせたパーソナライズされ
 msgid "Recent graduates or bootcamp alumni entering frontend development"
 msgstr "フロントエンド開発に参入する最近の卒業生やブートキャンプの卒業生"
 
+#: src/features/Dashboard/MessagesToWinBadge.tsx:120
+#. js-lingui-explicit-id
+msgid "Recommend a podcast, song, or video in your target language"
+msgstr "ターゲット言語でのポッドキャスト、曲、またはビデオを推薦してください。"
+
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:310
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:220
@@ -8345,6 +8377,11 @@ msgstr "メッセージを送信"
 msgid "Send Request"
 msgstr "リクエストを送信"
 
+#: src/features/Dashboard/MessagesToWinBadge.tsx:62
+#. js-lingui-explicit-id
+msgid "Send {messagesNeeded} messages to unlock full access"
+msgstr "{messagesNeeded} 件のメッセージを送信して、完全なアクセスを解除"
+
 #: src/features/Auth/AuthWallBasic.tsx:147
 #: src/features/Chat/SubmitForm.tsx:331
 #: src/features/Header/ContactMessageModal.tsx:116
@@ -8394,6 +8431,11 @@ msgstr "私の言語を設定する"
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
 msgstr "あなたの学習の目標を設定します"
+
+#: src/features/Dashboard/MessagesToWinBadge.tsx:116
+#. js-lingui-explicit-id
+msgid "Share a phrase you learned today (or one that confused you)"
+msgstr "今日学んだフレーズ（または混乱したもの）を共有してください"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -9439,6 +9481,11 @@ msgstr ""
 msgid "The key differences between them."
 msgstr "彼らの主な違い。"
 
+#: src/features/Dashboard/MessagesToWinBadge.tsx:139
+#. js-lingui-explicit-id
+msgid "The key: small posts are valid. One sentence is enough."
+msgstr "鍵：短い投稿が有効です。一文で十分です。"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:364
 #. js-lingui-explicit-id
 msgid "The last question before we create your plan"
@@ -10234,6 +10281,11 @@ msgstr "ウェルネス"
 msgid "What are HTML semantic elements and why are they important?"
 msgstr "HTMLのセマンティック要素とは何ですか、そしてなぜそれらが重要なのですか？"
 
+#: src/features/Dashboard/MessagesToWinBadge.tsx:88
+#. js-lingui-explicit-id
+msgid "What can I post?"
+msgstr "何を投稿できますか？"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:292
 #. js-lingui-explicit-id
 msgid "What challenges you face"
@@ -10833,7 +10885,7 @@ msgid ""
 "the results."
 msgstr "すべての質問に回答しました。今すぐ回答を提出し、結果をお待ちください。"
 
-#: src/features/Chat/ChatPage.tsx:223
+#: src/features/Chat/ChatPage.tsx:225
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "チャットはまだありません。"
