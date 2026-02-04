@@ -35,6 +35,15 @@ export interface ChatSpaceUserReadMetadata {
   };
 }
 
+export interface ThreadsMessageAttachment {
+  url: string;
+  type: 'image' | 'video' | 'file';
+
+  altText?: string;
+  name?: string;
+  sizeBytes?: number;
+}
+
 export interface ThreadsMessage {
   id: string;
   senderId: string;
@@ -50,4 +59,5 @@ export interface ThreadsMessage {
   viewsUserIds?: string[];
 
   isDeleted?: boolean;
+  attachments?: ThreadsMessageAttachment[];
 }
