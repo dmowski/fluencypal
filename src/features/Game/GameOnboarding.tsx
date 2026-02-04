@@ -104,7 +104,7 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
           }}
         >
           <Typography align="center" variant="h6">
-            {i18n._(`Community Chat`)}
+            {i18n._(`Community Feed`)}
           </Typography>
 
           <Typography
@@ -116,7 +116,7 @@ export const GameOnboarding = ({ onFinish }: { onFinish: () => void }) => {
             }}
           >
             {i18n._(
-              `Record a message in Community Chat and get {points} points in the leaderboard`,
+              `Record a message in Community Feed and get {points} points in the leaderboard`,
               {
                 points: CHAT_MESSAGE_POINTS,
               },

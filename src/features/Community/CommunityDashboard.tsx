@@ -7,6 +7,7 @@ import {
   Mail,
   MessageCircle,
   MessagesSquare,
+  Newspaper,
   ShieldQuestionMark,
   Swords,
   UsersRound,
@@ -94,10 +95,10 @@ export const CommunityDashboard = () => {
                 }}
               >
                 <CommunityCard
-                  title={i18n._('Community Chat')}
+                  title={i18n._('Community Feed')}
                   onClick={() => setActivePage('chat')}
                   badgeNumber={chatList.unreadCountGlobal}
-                  icon={<MessagesSquare style={iconStyle} />}
+                  icon={<Newspaper style={iconStyle} />}
                 />
                 <CommunityCard
                   title={i18n._('Game')}

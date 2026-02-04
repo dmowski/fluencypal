@@ -24,7 +24,7 @@ export const CommunityPageRouter = ({
   const [activeChatId] = useUrlState<string | null>('activeChatId', null, false);
 
   const titles: Record<CommunityPage, string> = {
-    chat: i18n._('Community Chat'),
+    chat: i18n._('Community Feed'),
     game: i18n._('Game'),
     dm: i18n._('Private Messages'),
     debates: i18n._('Debates'),
