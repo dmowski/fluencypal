@@ -72,7 +72,7 @@ export const CommunityPageRouter = ({
 };
 
 const CommunityPageContent = ({ activePage }: { activePage: CommunityPage }) => {
-  if (activePage == 'chat') return <ChatPage type="public" />;
+  if (activePage == 'chat') return <ChatPage type="public" isFullContentByDefault />;
   if (activePage == 'dm') return <ChatPage type="private" isFullContentByDefault />;
   if (activePage == 'game') return <GamePage />;
   if (activePage == 'debates') return <DebatesPage />;

@@ -107,6 +107,7 @@ export const ChatSection = ({
             parentId={''}
             limitTopMessages={limitTopMessages}
             sortMode={sortMode}
+            isFullContentByDefault={isFullContentByDefault}
           />
         </ChatSectionContainer>
       )}
