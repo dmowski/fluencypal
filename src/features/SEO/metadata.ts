@@ -120,7 +120,18 @@ export const generateMetadataInfo = ({
   }
 
   if (currentPath === 'practice') {
-    title = i18n._(`Practice`) + ' | ' + APP_NAME;
+    let titlePostfix = '';
+    if (rolePlayId) {
+      const rolePlayScenarios = getRolePlayScenarios(supportedLang);
+      const scenario = rolePlayScenarios.rolePlayScenarios.find((s) => s.id === rolePlayId);
+      const rolePlayTitle = scenario ? scenario.title : '';
+      const parts = [i18n._(`Practice`), rolePlayTitle].filter(Boolean).join(': ');
+
+      title = parts + ' | ' + APP_NAME;
+    } else {
+      title = i18n._(`Practice`) + titlePostfix + ' | ' + APP_NAME;
+    }
+
     description = i18n._(
       `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
     );
