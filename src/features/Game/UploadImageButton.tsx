@@ -1,14 +1,16 @@
-import { Button, CircularProgress } from '@mui/material';
+import { Button, CircularProgress, IconButton } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '../Auth/useAuth';
 import { sendUploadFileRequest } from '@/app/api/uploadFile/sendUploadFileRequest';
 import { useRef, useState } from 'react';
+import { ImagePlus } from 'lucide-react';
 
 interface UploadImageButtonProps {
   onNewUploadUrl: (url: string) => void;
+  type?: 'button' | 'icon';
 }
 
-export const UploadImageButton = ({ onNewUploadUrl }: UploadImageButtonProps) => {
+export const UploadImageButton = ({ onNewUploadUrl, type = 'button' }: UploadImageButtonProps) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -68,16 +70,33 @@ export const UploadImageButton = ({ onNewUploadUrl }: UploadImageButtonProps) =>
         style={{ display: 'none' }}
         onChange={handleFileSelect}
       />
-      <Button variant="contained" onClick={handleUploadClick} disabled={isUploading} sx={{ mt: 2 }}>
-        {isUploading ? (
-          <>
-            <CircularProgress size={20} sx={{ mr: 1 }} />
-            {i18n._('Uploading...')}
-          </>
-        ) : (
-          i18n._('Upload image')
-        )}
-      </Button>
+      {type === 'icon' ? (
+        <>
+          <IconButton onClick={handleUploadClick} disabled={isUploading}>
+            {isUploading ? (
+              <CircularProgress size={'18px'} />
+            ) : (
+              <ImagePlus size={'18px'} color="rgba(200, 200, 200, 1)" />
+            )}
+          </IconButton>
+        </>
+      ) : (
+        <Button
+          variant="contained"
+          onClick={handleUploadClick}
+          disabled={isUploading}
+          sx={{ mt: 2 }}
+        >
+          {isUploading ? (
+            <>
+              <CircularProgress size={20} sx={{ mr: 1 }} />
+              {i18n._('Uploading...')}
+            </>
+          ) : (
+            i18n._('Upload image')
+          )}
+        </Button>
+      )}
     </>
   );
 };

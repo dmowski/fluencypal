@@ -8,10 +8,12 @@ import MicIcon from '@mui/icons-material/Mic';
 import { CHAT_MESSAGE_POINTS } from './data';
 import { useEffect, useState } from 'react';
 import { ProcessUserInput } from '../Conversation/ProcessUserInput';
-import { Keyboard, Lightbulb, Mic, TextSearch, Trash } from 'lucide-react';
+import { ImagePlus, Keyboard, Lightbulb, Mic, TextSearch, Trash } from 'lucide-react';
 import { GamePlusPoints } from '../Game/gameQuestionScreens/gameCoreUI';
 import { useTextAi } from '../Ai/useTextAi';
 import { ThreadsMessageAttachment } from './type';
+import { Image } from 'lucide-react';
+import { UploadImageButton } from '../Game/UploadImageButton';
 
 interface SubmitFormProps {
   onSubmit: (message: string, attachments: ThreadsMessageAttachment[]) => Promise<void>;
@@ -346,7 +348,13 @@ Provide only the message user can send, without any additional explanation or co
                     },
                   }}
                 >
-                  <GamePlusPoints points={CHAT_MESSAGE_POINTS} />
+                  <UploadImageButton
+                    type="icon"
+                    onNewUploadUrl={(url) => {
+                      // Handle the new upload URL here
+                      console.log('url', url);
+                    }}
+                  />
                 </Stack>
               )}
 
