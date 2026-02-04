@@ -994,7 +994,7 @@ msgstr "Auth"
 msgid "Available languages:"
 msgstr "Available languages:"
 
-#: src/features/Game/GameMyAvatar.tsx:30
+#: src/features/Game/GameMyAvatar.tsx:40
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "Avatar"
@@ -2625,7 +2625,7 @@ msgstr "Don't forget to try call mode in the practice section!"
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:254
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
 #: src/features/Landing/LandingPage.tsx:258
-#: src/features/Modal/TeacherVoiceModal.tsx:78
+#: src/features/Modal/TeacherVoiceModal.tsx:79
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
 #: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
@@ -3311,7 +3311,7 @@ msgid "Expressing gratitude for the opportunity."
 msgstr "Expressing gratitude for the opportunity."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:187
-#: src/features/Modal/TeacherVoiceModal.tsx:59
+#: src/features/Modal/TeacherVoiceModal.tsx:60
 #. js-lingui-explicit-id
 msgid "Extra Slow"
 msgstr "Extra Slow"
@@ -3335,6 +3335,12 @@ msgstr ""
 msgid "Failed to send feedback. Please try again later."
 msgstr "Failed to send feedback. Please try again later."
 
+#: src/features/Game/UploadImageButton.tsx:45
+#: src/features/Game/UploadImageButton.tsx:52
+#. js-lingui-explicit-id
+msgid "Failed to upload image. Please try again."
+msgstr "Failed to upload image. Please try again."
+
 #: src/features/Case/data/backendCSharp/faqSection.ts:10
 #: src/features/Case/data/frontend-junior/faqSection.ts:10
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
@@ -3346,7 +3352,7 @@ msgid "FAQ"
 msgstr "FAQ"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:190
-#: src/features/Modal/TeacherVoiceModal.tsx:62
+#: src/features/Modal/TeacherVoiceModal.tsx:63
 #. js-lingui-explicit-id
 msgid "Fast"
 msgstr "Fast"
@@ -3371,6 +3377,11 @@ msgid ""
 msgstr ""
 "Feedback is vague: \"**not enough experience**\" — but how do you get "
 "experience without a job?"
+
+#: src/features/Game/UploadImageButton.tsx:35
+#. js-lingui-explicit-id
+msgid "File size must be less than 50MB"
+msgstr "File size must be less than 50MB"
 
 #: src/features/Landing/LandingPage.tsx:282
 #: src/features/Landing/PlanLandingBlock.tsx:393
@@ -6875,7 +6886,7 @@ msgstr "No translation available"
 msgid "No turn data available."
 msgstr "No turn data available."
 
-#: src/features/Chat/MessageViewsIcon.tsx:69
+#: src/features/Chat/MessageViewsIcon.tsx:74
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "No views yet. Be the first to view this post!"
@@ -6950,7 +6961,7 @@ msgid "non-native English speakers"
 msgstr "non-native English speakers"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:189
-#: src/features/Modal/TeacherVoiceModal.tsx:61
+#: src/features/Modal/TeacherVoiceModal.tsx:62
 #. js-lingui-explicit-id
 msgid "Normal"
 msgstr "Normal"
@@ -7471,6 +7482,11 @@ msgstr "Please record a longer message (at least a few words)."
 #. js-lingui-explicit-id
 msgid "Please refresh the page and try one more time"
 msgstr "Please refresh the page and try one more time"
+
+#: src/features/Game/UploadImageButton.tsx:28
+#. js-lingui-explicit-id
+msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
+msgstr "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
 
 #: src/features/Alias/components/CategorySelection.tsx:88
 #. js-lingui-explicit-id
@@ -8680,12 +8696,12 @@ msgstr "Select Categories"
 msgid "Select languages"
 msgstr "Select languages"
 
-#: src/features/Modal/TeacherVoiceModal.tsx:46
+#: src/features/Modal/TeacherVoiceModal.tsx:47
 #. js-lingui-explicit-id
 msgid "Select the voice your AI teacher will use during conversations."
 msgstr "Select the voice your AI teacher will use during conversations."
 
-#: src/features/Game/GameMyAvatar.tsx:39
+#: src/features/Game/GameMyAvatar.tsx:49
 #. js-lingui-explicit-id
 msgid "Select your game avatar"
 msgstr "Select your game avatar"
@@ -9027,7 +9043,7 @@ msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
 msgstr "Skipping small talk — Follow the interviewer’s lead and be friendly."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:188
-#: src/features/Modal/TeacherVoiceModal.tsx:60
+#: src/features/Modal/TeacherVoiceModal.tsx:61
 #. js-lingui-explicit-id
 msgid "Slow"
 msgstr "Slow"
@@ -10272,11 +10288,21 @@ msgstr "Unpublish"
 msgid "Upgrade your plan to unlock unlimited conversations."
 msgstr "Upgrade your plan to unlock unlimited conversations."
 
+#: src/features/Game/UploadImageButton.tsx:78
+#. js-lingui-explicit-id
+msgid "Upload image"
+msgstr "Upload image"
+
 #: src/features/Dashboard/BrainCard.tsx:541
 #: src/features/Dashboard/BrainCard.tsx:606
 #. js-lingui-explicit-id
 msgid "Upload language skills directly to your brain"
 msgstr "Upload language skills directly to your brain"
+
+#: src/features/Game/UploadImageButton.tsx:75
+#. js-lingui-explicit-id
+msgid "Uploading..."
+msgstr "Uploading..."
 
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -10322,7 +10348,7 @@ msgstr "Username must be at least 3 characters long."
 msgid "Username:"
 msgstr "Username:"
 
-#: src/features/Chat/MessageViewsIcon.tsx:61
+#: src/features/Chat/MessageViewsIcon.tsx:64
 #. js-lingui-explicit-id
 msgid "Users who viewed this post"
 msgstr "Users who viewed this post"
@@ -10426,7 +10452,7 @@ msgstr "Voice conversations"
 msgid "Voice records"
 msgstr "Voice records"
 
-#: src/features/Modal/TeacherVoiceModal.tsx:50
+#: src/features/Modal/TeacherVoiceModal.tsx:51
 #. js-lingui-explicit-id
 msgid "Voice speed"
 msgstr "Voice speed"
@@ -11448,7 +11474,7 @@ msgstr "Your achievements"
 msgid "Your AI speaking partner"
 msgstr "Your AI speaking partner"
 
-#: src/features/Modal/TeacherVoiceModal.tsx:39
+#: src/features/Modal/TeacherVoiceModal.tsx:40
 #. js-lingui-explicit-id
 msgid "Your AI teacher voice:"
 msgstr "Your AI teacher voice:"

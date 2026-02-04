@@ -1016,7 +1016,7 @@ msgstr "Auth"
 msgid "Available languages:"
 msgstr "Idiomas disponibles:"
 
-#: src/features/Game/GameMyAvatar.tsx:30
+#: src/features/Game/GameMyAvatar.tsx:40
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "Avatar"
@@ -2669,7 +2669,7 @@ msgstr "¡No olvides probar el modo de llamada en la sección de práctica!"
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:254
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
 #: src/features/Landing/LandingPage.tsx:258
-#: src/features/Modal/TeacherVoiceModal.tsx:78
+#: src/features/Modal/TeacherVoiceModal.tsx:79
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
 #: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
@@ -3372,7 +3372,7 @@ msgid "Expressing gratitude for the opportunity."
 msgstr "Expresando gratitud por la oportunidad."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:187
-#: src/features/Modal/TeacherVoiceModal.tsx:59
+#: src/features/Modal/TeacherVoiceModal.tsx:60
 #. js-lingui-explicit-id
 msgid "Extra Slow"
 msgstr "Extra lento"
@@ -3398,6 +3398,12 @@ msgstr ""
 "No se pudo enviar la retroalimentación. Por favor, inténtelo nuevamente más "
 "tarde."
 
+#: src/features/Game/UploadImageButton.tsx:45
+#: src/features/Game/UploadImageButton.tsx:52
+#. js-lingui-explicit-id
+msgid "Failed to upload image. Please try again."
+msgstr "No se pudo cargar la imagen. Por favor, inténtalo de nuevo."
+
 #: src/features/Case/data/backendCSharp/faqSection.ts:10
 #: src/features/Case/data/frontend-junior/faqSection.ts:10
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
@@ -3409,7 +3415,7 @@ msgid "FAQ"
 msgstr "FAQ"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:190
-#: src/features/Modal/TeacherVoiceModal.tsx:62
+#: src/features/Modal/TeacherVoiceModal.tsx:63
 #. js-lingui-explicit-id
 msgid "Fast"
 msgstr "Rápido"
@@ -3434,6 +3440,11 @@ msgid ""
 msgstr ""
 "La retroalimentación es vaga: \"**no tienes suficiente experiencia**\" — "
 "pero ¿cómo adquieres experiencia sin un trabajo?"
+
+#: src/features/Game/UploadImageButton.tsx:35
+#. js-lingui-explicit-id
+msgid "File size must be less than 50MB"
+msgstr "El tamaño del archivo debe ser menor de 50MB"
 
 #: src/features/Landing/LandingPage.tsx:282
 #: src/features/Landing/PlanLandingBlock.tsx:393
@@ -7012,7 +7023,7 @@ msgstr "No hay traducción disponible"
 msgid "No turn data available."
 msgstr "No hay datos de turnos disponibles."
 
-#: src/features/Chat/MessageViewsIcon.tsx:69
+#: src/features/Chat/MessageViewsIcon.tsx:74
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "Aún no hay vistas. ¡Sé el primero en ver esta publicación!"
@@ -7090,7 +7101,7 @@ msgid "non-native English speakers"
 msgstr "hablantes de inglés no nativos"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:189
-#: src/features/Modal/TeacherVoiceModal.tsx:61
+#: src/features/Modal/TeacherVoiceModal.tsx:62
 #. js-lingui-explicit-id
 msgid "Normal"
 msgstr "Normal"
@@ -7613,6 +7624,11 @@ msgstr "Por favor, graba un mensaje más largo (al menos unas pocas palabras)."
 #. js-lingui-explicit-id
 msgid "Please refresh the page and try one more time"
 msgstr "Por favor, refresca la página e intenta una vez más"
+
+#: src/features/Game/UploadImageButton.tsx:28
+#. js-lingui-explicit-id
+msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
+msgstr "Por favor, selecciona un archivo de imagen válido (JPEG, PNG, GIF o WebP)"
 
 #: src/features/Alias/components/CategorySelection.tsx:88
 #. js-lingui-explicit-id
@@ -8854,12 +8870,12 @@ msgstr "Seleccionar Categorías"
 msgid "Select languages"
 msgstr "Seleccionar idiomas"
 
-#: src/features/Modal/TeacherVoiceModal.tsx:46
+#: src/features/Modal/TeacherVoiceModal.tsx:47
 #. js-lingui-explicit-id
 msgid "Select the voice your AI teacher will use during conversations."
 msgstr "Seleccione la voz que usará su profesor de IA durante las conversaciones."
 
-#: src/features/Game/GameMyAvatar.tsx:39
+#: src/features/Game/GameMyAvatar.tsx:49
 #. js-lingui-explicit-id
 msgid "Select your game avatar"
 msgstr "Seleccione su avatar de juego"
@@ -9203,7 +9219,7 @@ msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
 msgstr "Saltándose las formalidades — Siga la guía del entrevistador y sea amigable."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:188
-#: src/features/Modal/TeacherVoiceModal.tsx:60
+#: src/features/Modal/TeacherVoiceModal.tsx:61
 #. js-lingui-explicit-id
 msgid "Slow"
 msgstr "Lento"
@@ -10467,11 +10483,21 @@ msgstr "Desteñir"
 msgid "Upgrade your plan to unlock unlimited conversations."
 msgstr "Actualiza tu plan para desbloquear conversaciones ilimitadas."
 
+#: src/features/Game/UploadImageButton.tsx:78
+#. js-lingui-explicit-id
+msgid "Upload image"
+msgstr "Subir imagen"
+
 #: src/features/Dashboard/BrainCard.tsx:541
 #: src/features/Dashboard/BrainCard.tsx:606
 #. js-lingui-explicit-id
 msgid "Upload language skills directly to your brain"
 msgstr "Carga habilidades lingüísticas directamente en tu cerebro"
+
+#: src/features/Game/UploadImageButton.tsx:75
+#. js-lingui-explicit-id
+msgid "Uploading..."
+msgstr "Subiendo..."
 
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -10519,7 +10545,7 @@ msgstr "El nombre de usuario debe tener al menos 3 caracteres de longitud."
 msgid "Username:"
 msgstr "Nombre de usuario:"
 
-#: src/features/Chat/MessageViewsIcon.tsx:61
+#: src/features/Chat/MessageViewsIcon.tsx:64
 #. js-lingui-explicit-id
 msgid "Users who viewed this post"
 msgstr "Usuarios que vieron esta publicación"
@@ -10623,7 +10649,7 @@ msgstr "Conversaciones de voz"
 msgid "Voice records"
 msgstr "Registros de voz"
 
-#: src/features/Modal/TeacherVoiceModal.tsx:50
+#: src/features/Modal/TeacherVoiceModal.tsx:51
 #. js-lingui-explicit-id
 msgid "Voice speed"
 msgstr "Velocidad de la voz"
@@ -11669,7 +11695,7 @@ msgstr "Tus logros"
 msgid "Your AI speaking partner"
 msgstr "Tu compañero de conversación de IA"
 
-#: src/features/Modal/TeacherVoiceModal.tsx:39
+#: src/features/Modal/TeacherVoiceModal.tsx:40
 #. js-lingui-explicit-id
 msgid "Your AI teacher voice:"
 msgstr "Tu voz de profesor de IA:"
