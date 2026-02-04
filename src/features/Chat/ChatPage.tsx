@@ -89,7 +89,7 @@ export const ChatPage = ({
               width: '100%',
             }}
           >
-            <MessagesToWinBadge />
+            {!activeChatId && !activePost && <MessagesToWinBadge />}
             <GlobalChatTabs sortMode={sortMode} setSortMode={changePage} />
             <ChatSection
               contextForAiAnalysis=""
