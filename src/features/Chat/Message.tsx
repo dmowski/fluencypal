@@ -12,7 +12,7 @@ import {
   ListItemText,
   Divider,
 } from '@mui/material';
-import { ThreadsMessage } from './type';
+import { ThreadsMessage, ThreadsMessageAttachment } from './type';
 import { useEffect, useMemo, useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -27,6 +27,7 @@ import { Avatar } from '../Game/Avatar';
 import { CircleEllipsis, Heart, Languages, MessageCircle } from 'lucide-react';
 import { UserName } from '../User/UserName';
 import { Markdown } from '../uiKit/Markdown/Markdown';
+import { AttachmentImage } from './AttachmentImage';
 
 const limitMessages = 300;
 
@@ -169,6 +170,12 @@ export function Message({
 
     if (preventOpen) return;
     chat.onOpen(message.id);
+  };
+
+  const onDeleteAttachment = async (attachmentIndex: number) => {
+    setIsDeleting(true);
+    await chat.deleteMessageAttachment(message.id, attachmentIndex);
+    setIsDeleting(false);
   };
 
   return (
@@ -398,6 +405,20 @@ export function Message({
               </div>
             )}
           </Typography>
+
+          {message.attachments && message.attachments.length > 0 && (
+            <Stack
+              sx={{
+                paddingLeft: contentLeftPadding,
+              }}
+            >
+              <Attachments
+                attachments={message.attachments}
+                canDelete={isOwnMessage && isEditing}
+                onDeleteAttachment={onDeleteAttachment}
+              />
+            </Stack>
+          )}
 
           {!isDeleted && (
             <MessageFooter
@@ -665,6 +686,41 @@ export const PreviewMessage = ({
           isTranslating={false}
         />
       </Stack>
+    </Stack>
+  );
+};
+
+export const Attachments = ({
+  canDelete = false,
+  attachments,
+  onDeleteAttachment,
+}: {
+  attachments: ThreadsMessageAttachment[];
+  onDeleteAttachment: (index: number) => void;
+  canDelete?: boolean;
+}) => {
+  return (
+    <Stack
+      sx={{
+        flexDirection: 'row',
+        gap: '10px',
+        flexWrap: 'wrap',
+        marginTop: '10px',
+      }}
+    >
+      {attachments.map((attachment, index) => {
+        if (attachment.type !== 'image') return null;
+
+        return (
+          <AttachmentImage
+            size="200px"
+            key={index}
+            url={attachment.url}
+            canDelete={canDelete}
+            onDelete={() => onDeleteAttachment(index)}
+          />
+        );
+      })}
     </Stack>
   );
 };

@@ -15,6 +15,7 @@ import { GamePlusPoints } from '../Game/gameQuestionScreens/gameCoreUI';
 import { useTextAi } from '../Ai/useTextAi';
 import { ThreadsMessageAttachment } from './type';
 import { UploadImageButton } from '../Game/UploadImageButton';
+import { AttachmentImage } from './AttachmentImage';
 
 interface SubmitFormProps {
   onSubmit: (message: string, attachments: ThreadsMessageAttachment[]) => Promise<void>;
@@ -116,69 +117,6 @@ Provide only the message user can send, without any additional explanation or co
       },
     ]);
   };
-
-  const attachmentComponent = (
-    <>
-      <Stack
-        sx={{
-          flexDirection: 'row',
-          gap: '10px',
-          alignItems: 'center',
-        }}
-      >
-        {attachments.map((attachment, index) => {
-          if (attachment.type === 'image') {
-            return (
-              <Stack
-                key={index}
-                sx={{
-                  position: 'relative',
-                }}
-              >
-                <Stack
-                  sx={{
-                    width: '80px',
-                    height: '80px',
-                  }}
-                >
-                  <Image
-                    src={attachment.url}
-                    alt="Avatar"
-                    fill
-                    sizes={'80px'}
-                    style={{
-                      objectFit: 'cover',
-                      zIndex: 1,
-                      borderRadius: '8px',
-                    }}
-                  />
-                </Stack>
-
-                <IconButton
-                  size="small"
-                  sx={{
-                    position: 'absolute',
-                    top: '-10px',
-                    zIndex: 2,
-
-                    right: '-10px',
-                    backgroundColor: 'rgba(0,0,0,1)',
-                    boxShadow: '0px 0px 0px 1px rgba(255, 255, 255, 0.1)',
-                  }}
-                  onClick={() => {
-                    setAttachments((prev) => prev.filter((_, attIndex) => attIndex !== index));
-                  }}
-                >
-                  <Trash size={'14px'} color="rgba(222, 222, 222, 1)" />
-                </IconButton>
-              </Stack>
-            );
-          }
-          return null;
-        })}
-      </Stack>
-    </>
-  );
 
   return (
     <Stack
@@ -474,7 +412,29 @@ Provide only the message user can send, without any additional explanation or co
             width: '100%',
           }}
         >
-          {attachmentComponent}
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              gap: '10px',
+              alignItems: 'center',
+            }}
+          >
+            {attachments.map((attachment, index) => {
+              if (attachment.type === 'image') {
+                return (
+                  <AttachmentImage
+                    key={index}
+                    url={attachment.url}
+                    canDelete={true}
+                    onDelete={() =>
+                      setAttachments((prev) => prev.filter((_, attIndex) => attIndex !== index))
+                    }
+                  />
+                );
+              }
+              return null;
+            })}
+          </Stack>
         </Stack>
       )}
     </Stack>

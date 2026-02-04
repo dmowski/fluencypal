@@ -60,6 +60,8 @@ interface ChatContextType {
   activeMessageId: string;
   onOpen: (messageId: string) => void;
   getLastActivityOnMessage: (messageId: string) => string;
+
+  deleteMessageAttachment: (messageId: string, attachmentIndex: number) => Promise<void>;
 }
 
 const ChatContext = createContext<ChatContextType | null>(null);
@@ -357,6 +359,24 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     await setDoc(messageDoc, updatedMessage, { merge: true });
   };
 
+  const deleteMessageAttachment = async (messageId: string, attachmentIndex: number) => {
+    if (!messagesRef || !userId) return;
+    const message = messages.find((msg) => msg.id === messageId);
+    if (!message) return;
+
+    const newAttachments = message.attachments ? [...message.attachments] : [];
+    if (attachmentIndex < 0 || attachmentIndex >= newAttachments.length) return;
+
+    newAttachments.splice(attachmentIndex, 1);
+
+    const messageDoc = doc(messagesRef, messageId);
+    const updatedMessage: Partial<ThreadsMessage> = {
+      attachments: newAttachments,
+      updatedAtIso: new Date().toISOString(),
+    };
+    await setDoc(messageDoc, updatedMessage, { merge: true });
+  };
+
   const myMetaRef = db.documents.chatSpaceUserReadMetadata(userId);
   const [myMetaDataSnap] = useDocumentData(myMetaRef);
 
@@ -435,6 +455,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     setActiveCommentMessageId,
     activeMessageId,
     onOpen: (messageId: string) => setActiveMessageId(messageId),
+    deleteMessageAttachment,
   };
 }
 
