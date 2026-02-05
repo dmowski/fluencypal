@@ -13,6 +13,17 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Usage/HoursPaymentModal/FounderMessage.tsx:27
+#. js-lingui-explicit-id
+msgid ""
+"\"Don't forget if something goes wrong you have always someone to help you. "
+"If you don't like our service or something else, just let me know and I "
+"will return your money without any questions.\""
+msgstr ""
+"\"อย่าลืมว่าถ้ามีอะไรผิดพลาด คุณมีคนที่สามารถช่วยคุณได้เสมอ "
+"ถ้าคุณไม่ชอบบริการของเราหรือสิ่งอื่น ๆ "
+"บอกฉันได้เลยและฉันจะคืนเงินให้คุณโดยไม่ถามคำถามใด ๆ\""
+
 #: src/features/Auth/WebViewWall.tsx:80
 #. js-lingui-explicit-id
 msgid "'Open in Chrome' to continue."
@@ -280,6 +291,11 @@ msgstr "ผู้เชี่ยวชาญ .NET เผชิญกับรอ
 msgid "/ month"
 msgstr "/ เดือน"
 
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:47
+#. js-lingui-explicit-id
+msgid "1 hour"
+msgstr "1 ชั่วโมง"
+
 #: src/features/Alias/components/RoundSettings.tsx:34
 #. js-lingui-explicit-id
 msgid "1 round"
@@ -308,6 +324,11 @@ msgstr "16 ภาษาให้ฝึกฝน"
 msgid "2. Complete the trial period"
 msgstr "2. เสร็จสิ้นช่วงทดลองใช้"
 
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:57
+#. js-lingui-explicit-id
+msgid "3 hours"
+msgstr "3 ชั่วโมง"
+
 #: src/features/PayWall/CardValidatorWall.tsx:137
 #. js-lingui-explicit-id
 msgid "3. Don't pay anything"
@@ -329,6 +350,11 @@ msgstr "4. เล่นเกมและกลายเป็นหนึ่ง
 msgid "5 Common English Job Interview Mistakes (and How to Fix Them)"
 msgstr "5 ข้อผิดพลาดทั่วไปในการสัมภาษณ์งานภาษาอังกฤษ (และวิธีการแก้ไข)"
 
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:64
+#. js-lingui-explicit-id
+msgid "5 hours"
+msgstr "5 ชั่วโมง"
+
 #: src/features/PayWall/CardValidatorWall.tsx:145
 #. js-lingui-explicit-id
 msgid "5. Winners get full access for free "
@@ -343,6 +369,11 @@ msgstr ""
 "6 "
 "วิธีที่ผู้มีอาชีพที่ยุ่งยากสามารถปรับปรุงความชำนาญในภาษาอังกฤษสำหรับการสัมภา"
 "ษณ์งาน"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:60
+#. js-lingui-explicit-id
+msgid "A bit more time to explore the app and create a habit."
+msgstr "ให้เวลาสำรวจแอปและสร้างนิสัยอีกสักหน่อย"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
 #. js-lingui-explicit-id
@@ -412,15 +443,6 @@ msgstr "รายชื่อคำศัพท์วิชาการ"
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "ยอมรับ"
-
-#: src/features/Usage/PaymentModal.tsx:226
-#. js-lingui-explicit-id
-msgid ""
-"Access to all functionalities on app where AI is present: speaking, "
-"analyzing, role-plays, new words and runles creator."
-msgstr ""
-"เข้าถึงฟังก์ชันทั้งหมดในแอปที่ AI อยู่: การพูด, การวิเคราะห์, การแสดงบทบาท, "
-"คำใหม่และการสร้างรันเลส"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:194
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:208
@@ -748,6 +770,11 @@ msgstr "คำติชมจาก AI เกี่ยวกับคำตอ�
 msgid "AI-powered interview preparation that helps you get more job offers."
 msgstr "การเตรียมตัวสัมภาษณ์ด้วย AI ที่ช่วยให้คุณได้รับข้อเสนองานมากขึ้น"
 
+#: src/features/Usage/HoursPaymentModal/FounderMessage.tsx:48
+#. js-lingui-explicit-id
+msgid "Alex Dmowski (Founder)"
+msgstr "อเล็กซ์ ดมอฟสกี้ (ผู้ก่อตั้ง)"
+
 #: src/features/RolePlay/rolePlayData.tsx:19
 #. js-lingui-explicit-id
 msgid "Alias"
@@ -854,18 +881,6 @@ msgstr "ทางเลือกของเส้นเวลา"
 #. js-lingui-explicit-id
 msgid "Always respond politely:"
 msgstr "ตอบสุภาพเสมอ:"
-
-#: src/features/Usage/PaymentModal.tsx:153
-#. js-lingui-explicit-id
-msgid "Amount hours to buy"
-msgstr "จำนวนชั่วโมงที่จะซื้อ"
-
-#: src/features/Usage/PaymentModal.tsx:265
-#. js-lingui-explicit-id
-msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
-msgstr ""
-"จำนวนเงินมากเกินไป ฉันขอขอบคุณการสนับสนุนของคุณ แต่มาทำให้มันอยู่ใต้ 400 "
-"ดอลลาร์"
 
 #: src/features/Conversation/ProcessUserInput.tsx:129
 #. js-lingui-explicit-id
@@ -992,10 +1007,20 @@ msgstr ""
 msgid "Ask a question you’d normally ask in real life"
 msgstr "ถามคำถามที่คุณมักจะถามในชีวิตจริง"
 
+#: src/features/Usage/HoursPaymentModal/PriceContact.tsx:33
+#. js-lingui-explicit-id
+msgid "Ask community"
+msgstr "ถามชุมชน"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:124
 #. js-lingui-explicit-id
 msgid "Ask how others practice speaking or pronunciation"
 msgstr "ถามคนอื่นว่าเขาฝึกพูดหรือการออกเสียงอย่างไร"
+
+#: src/features/Usage/HoursPaymentModal/PriceContact.tsx:40
+#. js-lingui-explicit-id
+msgid "Ask in support channel"
+msgstr "ถามในช่องสนับสนุน"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:26
 #: src/features/Case/data/backendCSharp/techData.ts:13
@@ -1087,7 +1112,7 @@ msgid "Backend-focused answers"
 msgstr "คำตอบที่เน้นด้านเบื้องหลัง"
 
 #: src/features/Header/HeaderStatic.tsx:21
-#: src/features/Usage/PaymentModal.tsx:421
+#: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "การทรงตัว"
@@ -1282,21 +1307,20 @@ msgstr "ผู้มีอาชีพที่ยุ่งยาก"
 msgid "Buy a subscription"
 msgstr "ซื้อสมาชิก"
 
-#: src/features/Usage/PaymentModal.tsx:457
 #: src/features/Usage/SubscriptionPaymentModal.tsx:942
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "ซื้อเพิ่มเติม"
 
-#: src/features/Usage/PaymentModal.tsx:123
-#. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "ซื้อชั่วโมงเพิ่มเติม"
-
 #: src/features/RolePlay/rolePlayData.tsx:323
 #. js-lingui-explicit-id
 msgid "Buying a Train Ticket"
 msgstr "การซื้อบัตรรถไฟ"
+
+#: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:120
+#. js-lingui-explicit-id
+msgid "Buying {hours} hour(s) of AI usage"
+msgstr "การซื้อการใช้งาน AI จำนวน {hours} ชั่วโมง"
 
 #: src/features/PayWall/CardValidator.tsx:97
 #. js-lingui-explicit-id
@@ -1371,11 +1395,13 @@ msgstr "FluencyPal สามารถสร้างแผนฝึกซ้อ�
 msgid "Can I customize my practice sessions?"
 msgstr "ฉันสามารถปรับแต่งเซสชันการฝึกฝนของฉันได้หรือไม่?"
 
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:52
 #: src/features/Usage/SubscriptionPaymentModal.tsx:1003
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "ฉันสามารถขอคืนเงินหลังจากซื้อได้หรือไม่?"
 
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
 #: src/features/Usage/SubscriptionPaymentModal.tsx:975
 #. js-lingui-explicit-id
 msgid "Can I get full access for free?"
@@ -1404,7 +1430,6 @@ msgstr "ฉันสามารถใช้ FluencyPal ได้ฟรีหร
 #: src/features/Chat/Message.tsx:256
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:237
-#: src/features/Usage/PaymentModal.tsx:354
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "ยกเลิก"
@@ -1766,6 +1791,7 @@ msgstr "การติดตามคะแนนความมั่นใจ
 msgid "Confirm Credit Card"
 msgstr "ยืนยันบัตรเครดิต"
 
+#: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
 #: src/features/Usage/SubscriptionPaymentModal.tsx:555
 #. js-lingui-explicit-id
 msgid "Confirm payment"
@@ -1888,11 +1914,6 @@ msgstr "ดำเนินการใช้บริการฟรีต่อ
 #. js-lingui-explicit-id
 msgid "Continue to Next Turn"
 msgstr "ดำเนินการต่อไปยังรอบต่อไป"
-
-#: src/features/Usage/PaymentModal.tsx:346
-#. js-lingui-explicit-id
-msgid "Continue to payment"
-msgstr "ดำเนินการไปยังการชำระเงิน"
 
 #: src/features/Case/data/backendCSharp/techData.ts:79
 #. js-lingui-explicit-id
@@ -2116,11 +2137,6 @@ msgstr "ตรวจสอบบัตรเครดิต"
 #. js-lingui-explicit-id
 msgid "csharp developer interview"
 msgstr "การสัมภาษณ์นักพัฒนาซีชาร์ป"
-
-#: src/features/Usage/PaymentModal.tsx:446
-#. js-lingui-explicit-id
-msgid "Current Balance of AI usage"
-msgstr "ยอดคงเหลือที่ใช้ AI ปัจจุบัน"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:296
 #. js-lingui-explicit-id
@@ -2688,7 +2704,7 @@ msgstr "อย่าลืมลองโหมดการโทรในส่
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:254
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
 #: src/features/Landing/LandingPage.tsx:258
-#: src/features/Modal/TeacherVoiceModal.tsx:79
+#: src/features/Modal/TeacherVoiceModal.tsx:70
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
 #: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
@@ -2719,6 +2735,21 @@ msgstr "ระยะเวลา"
 #. js-lingui-explicit-id
 msgid "Duration:"
 msgstr "ระยะเวลา:"
+
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:17
+#. js-lingui-explicit-id
+msgid ""
+"Each time you use AI features (like conversation or Role Play), it consumes "
+"a certain amount of computational power, which we measure in \"hours of AI "
+"usage.\" This allows us to fairly allocate resources based on your activity "
+"level. I call it \"AI hours\" because it`s approximate time of which you "
+"will consume the AI if you will use it continuously."
+msgstr ""
+"ทุกครั้งที่คุณใช้ฟีเจอร์ AI (เช่น การสนทนาหรือการเล่นบทบาทสมมติ) "
+"จะใช้พลังงานในการประมวลผลในปริมาณหนึ่ง ซึ่งเราวัดในหน่วย \"ชั่วโมงการใช้งาน "
+"AI\" นี่ช่วยให้เราจัดสรรทรัพยากรได้อย่างยุติธรรมตามระดับกิจกรรมของคุณ "
+"ฉันเรียกมันว่า \"ชั่วโมง AI\" เพราะเป็นเวลาประมาณคร่าวๆ ที่คุณจะใช้ AI "
+"หากคุณใช้อย่างต่อเนื่อง"
 
 #: src/features/Case/data/reusable/priceSection.ts:45
 #. js-lingui-explicit-id
@@ -2780,11 +2811,11 @@ msgstr "เปิดใช้งานไมโครโฟน"
 #: src/features/Conversation/CallMode/CallButtons.tsx:644
 #. js-lingui-explicit-id
 msgid ""
-"Enabling ai voice is a premium feature. Please upgrade your plan to access "
-"this feature."
+"Enabling ai voice is a premium feature. Please upgrade your balance to "
+"access this feature."
 msgstr ""
-"การเปิดใช้งานเสียง AI เป็นฟีเจอร์ระดับพรีเมียม "
-"กรุณาอัปเกรดแผนการใช้งานของคุณเพื่อเข้าถึงฟีเจอร์นี้"
+"การเปิดใช้งานเสียง AI เป็นฟีเจอร์พรีเมียม "
+"กรุณาอัปเกรดยอดเงินของคุณเพื่อเข้าถึงฟีเจอร์นี้"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
 #. js-lingui-explicit-id
@@ -3381,7 +3412,7 @@ msgid "Expressing gratitude for the opportunity."
 msgstr "แสดงความขอบคุณสำหรับโอกาสนี้."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:187
-#: src/features/Modal/TeacherVoiceModal.tsx:60
+#: src/features/Modal/TeacherVoiceModal.tsx:51
 #. js-lingui-explicit-id
 msgid "Extra Slow"
 msgstr "ช้ามากเป็นพิเศษ"
@@ -3420,7 +3451,7 @@ msgid "FAQ"
 msgstr "คำถามที่พบบ่อย"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:190
-#: src/features/Modal/TeacherVoiceModal.tsx:63
+#: src/features/Modal/TeacherVoiceModal.tsx:54
 #. js-lingui-explicit-id
 msgid "Fast"
 msgstr "เร็ว"
@@ -3798,6 +3829,7 @@ msgid "Frequent users who need more value"
 msgstr "ผู้ใช้ที่ใช้งานบ่อยซึ่งต้องการคุณค่ามากขึ้น"
 
 #: src/features/Community/SupportPage.tsx:59
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:11
 #. js-lingui-explicit-id
 msgid "Frequently Asked Questions"
 msgstr "คำถามที่พบบ่อย"
@@ -4077,7 +4109,7 @@ msgstr ""
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Dashboard/AccessBadge.tsx:67
-#: src/features/Usage/FeatureBlocker.tsx:97
+#: src/features/Usage/FeatureBlocker.tsx:99
 #: src/features/Usage/SubscriptionPaymentModal.tsx:930
 #. js-lingui-explicit-id
 msgid "Get Full Access"
@@ -4252,6 +4284,15 @@ msgstr ""
 "การแยกโค้ดผ่านการนำเข้าแบบไดนามิก, การจดจำตัวเลือกที่มีค่าใช้จ่ายสูง, "
 "การจำลองความจริงสำหรับรายการที่ยาว และการใช้การแคชและ CDN ของเบราว์เซอร์ "
 "ปิดท้ายด้วยวิธีที่คุณจะติดตามการปรับปรุงตามเวลา"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:51
+#. js-lingui-explicit-id
+msgid ""
+"Good for trying the service. It's about 3-5 short conversations with AI. Or "
+"one long practice session. You decide!"
+msgstr ""
+"เหมาะสำหรับการลองใช้บริการ เป็นการสนทนาสั้นๆ กับ AI ประมาณ 3-5 ครั้ง "
+"หรือหนึ่งเซสชั่นฝึกพูดยาว คุณเป็นคนตัดสินใจ!"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
 #. js-lingui-explicit-id
@@ -4449,6 +4490,13 @@ msgstr ""
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "นี่คือข้อเสนอแนะเฉพาะบุคคลของคุณ เพื่อช่วยให้คุณพัฒนาขึ้น"
 
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:32
+#. js-lingui-explicit-id
+msgid "Here`s you can buy extra hours of AI"
+msgstr ""
+"Here`s you can buy extra hours of AI\n"
+"ที่นี่คุณสามารถซื้อชั่วโมงเพิ่มเติมของ AI"
+
 #: src/features/Landing/Contact/ContactsPage.tsx:106
 #. js-lingui-explicit-id
 msgid ""
@@ -4596,11 +4644,6 @@ msgstr ""
 msgid "How it Works:"
 msgstr "วิธีการทำงาน:"
 
-#: src/features/Usage/PaymentModal.tsx:211
-#. js-lingui-explicit-id
-msgid "How long will my hours last?"
-msgstr "ชั่วโมงของฉันจะยาวนานเท่าไหร่?"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:292
 #. js-lingui-explicit-id
 msgid "How the battle went?"
@@ -4686,7 +4729,7 @@ msgstr ""
 "คุณจะจัดโครงสร้างการจัดการสถานะสำหรับแอปพลิเคชันที่ซับซ้อนซึ่งมีส่วนประกอบซ้"
 "อนและข้อมูลแบบอะซิงโครนัสอย่างไร?"
 
-#: src/features/Usage/PaymentModal.tsx:302
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:68
 #: src/features/Usage/SubscriptionPaymentModal.tsx:616
 #. js-lingui-explicit-id
 msgid "I accept the"
@@ -5052,7 +5095,20 @@ msgstr "ฉันรู้สิ่งเหล่านี้"
 msgid "I paid, but I still don’t have access."
 msgstr "ฉันชำระเงินแล้ว แต่ยังเข้าใช้งานไม่ได้"
 
-#: src/features/Usage/PaymentModal.tsx:284
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:50
+#. js-lingui-explicit-id
+msgid ""
+"I want the service to be provided immediately and I acknowledge that as "
+"soon\n"
+"                                  as the Fundacja Rozwoju "
+"Przedsiębiorczości \"Twój StartUp\" provides the\n"
+"                                  service, I will lose the right to "
+"terminate the contract."
+msgstr ""
+"ฉันต้องการให้บริการนี้โดยทันที และฉันรับทราบว่าทันทีที่ Fundacja Rozwoju "
+"Przedsiębiorczości \"Twój StartUp\" ให้บริการ \n"
+"ฉันจะสูญเสียสิทธิ์ในการยกเลิกสัญญา"
+
 #: src/features/Usage/SubscriptionPaymentModal.tsx:598
 #. js-lingui-explicit-id
 msgid ""
@@ -5073,7 +5129,7 @@ msgstr ""
 msgid "I want to learn..."
 msgstr "ฉันต้องการเรียนรู้..."
 
-#: src/features/Usage/PaymentModal.tsx:323
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:89
 #: src/features/Usage/SubscriptionPaymentModal.tsx:637
 #. js-lingui-explicit-id
 msgid "I want to receive commercial and marketing content"
@@ -5990,6 +6046,7 @@ msgstr "มีการทดลองใช้ฟรีไหม?"
 msgid "Is there content on resiliency and observability?"
 msgstr "มีเนื้อหาเกี่ยวกับความยืดหยุ่นและการสังเกตการณ์หรือไม่?"
 
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:33
 #: src/features/Usage/SubscriptionPaymentModal.tsx:984
 #. js-lingui-explicit-id
 msgid "Is this a subscription?"
@@ -6338,11 +6395,6 @@ msgstr "น้อยลง"
 msgid "Lesson Plan"
 msgstr "แผนการสอน"
 
-#: src/features/Usage/PaymentModal.tsx:131
-#. js-lingui-explicit-id
-msgid "Let's add some hours to your balance"
-msgstr "เรามาเพิ่มบางชั่วโมงไปยังยอดคงเหลือของคุณ"
-
 #: src/features/Auth/WebViewWall.tsx:190
 #. js-lingui-explicit-id
 msgid "Let's choose how to start practicing"
@@ -6408,7 +6460,7 @@ msgstr ""
 msgid "Listening practice. You can hear AI responses"
 msgstr "ฝึกการฟัง คุณสามารถได้ยินการตอบสนองของ AI"
 
-#: src/features/Usage/FeatureBlocker.tsx:68
+#: src/features/Usage/FeatureBlocker.tsx:70
 #. js-lingui-explicit-id
 msgid "Listening practice. You will hear AI responses"
 msgstr "การฝึกฝนการฟัง คุณจะได้ยินคำตอบจาก AI"
@@ -6469,7 +6521,6 @@ msgstr "กำลังโหลด.."
 #: src/features/Router/PracticePage.tsx:79
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
-#: src/features/Usage/PaymentModal.tsx:498
 #: src/features/Usage/SubscriptionPaymentModal.tsx:163
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -6963,7 +7014,6 @@ msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr "ยังไม่มีบันทึก เพิ่มรายละเอียดเล็กน้อยเพื่อให้ครู AI ของคุณรู้จักคุณดีขึ้น"
 
 #: src/features/Header/PaymentHistoryModal.tsx:97
-#: src/features/Usage/PaymentModal.tsx:509
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "ไม่มีการชำระเงิน..."
@@ -7032,6 +7082,15 @@ msgstr ""
 "ไม่มีการต่ออายุอัตโนมัติ "
 "คุณสามารถซื้อลิขสิทธิ์แบบเต็มอีกครั้งเมื่อช่วงเวลาปัจจุบันของคุณสิ้นสุดลง"
 
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:41
+#. js-lingui-explicit-id
+msgid ""
+"No, you purchase resources. There is no automatic renewal; you can purchase "
+"them again when you need more."
+msgstr ""
+"ไม่ คุณซื้อทรัพยากร จะไม่มีการต่ออายุอัตโนมัติ "
+"คุณสามารถซื้อเพิ่มเมื่อคุณต้องการอีกครั้ง"
+
 #: src/features/Case/data/frontend-junior/faqSection.ts:33
 #: src/features/Case/data/frontend-senior/faqSection.ts:33
 #. js-lingui-explicit-id
@@ -7087,7 +7146,7 @@ msgid "non-native English speakers"
 msgstr "ผู้พูดภาษาอังกฤษที่ไม่ใช่ภาษาแม่"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:189
-#: src/features/Modal/TeacherVoiceModal.tsx:62
+#: src/features/Modal/TeacherVoiceModal.tsx:53
 #. js-lingui-explicit-id
 msgid "Normal"
 msgstr "ปกติ"
@@ -7122,6 +7181,11 @@ msgstr "ไม่ได้ทำงานภายในแอป Telegram"
 msgid "Not sure what to write? Try one of these:"
 msgstr "ไม่แน่ใจว่าจะเขียนอะไร? ลองดูตัวเลือกเหล่านี้:"
 
+#: src/features/Usage/HoursPaymentModal/PriceContact.tsx:26
+#. js-lingui-explicit-id
+msgid "Not sure yet?"
+msgstr "ไม่แน่ใจหรือเปล่า?"
+
 #: src/features/Conversation/ConversationError.tsx:47
 #. js-lingui-explicit-id
 msgid "Notification was sent to the dev team. Sorry for that..."
@@ -7137,7 +7201,16 @@ msgstr "ตอนนี้"
 msgid "Number of rounds"
 msgstr "จำนวนรอบ"
 
-#: src/features/Usage/PaymentModal.tsx:306
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:72
+#. js-lingui-explicit-id
+msgid ""
+"of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
+"                                  StartUp\" with its registered office in "
+"Warsaw."
+msgstr ""
+"ของเว็บไซต์ที่ดำเนินการโดยกองทุนพัฒนาผู้ประกอบการ \"Twój StartUp\" "
+"ที่มีสำนักงานจดทะเบียนในกรุงวอร์ซอว์"
+
 #: src/features/Usage/SubscriptionPaymentModal.tsx:620
 #. js-lingui-explicit-id
 msgid ""
@@ -7166,15 +7239,6 @@ msgid ""
 msgstr ""
 "บนแพลตฟอร์มนี้ คุณสามารถอัพโหลดเรซูเม่ของคุณ ระบุงานที่คุณต้องการ "
 "และผ่านการสัมภาษณ์ที่เป็นจริงด้วยผู้สัมภาษณ์ AI"
-
-#: src/features/Usage/PaymentModal.tsx:213
-#. js-lingui-explicit-id
-msgid ""
-"Once purchased, your hours remain available until you use them. There is no "
-"expiration."
-msgstr ""
-"หลังจากที่คุณซื้อแล้ว ชั่วโมงของคุณจะพร้อมใช้งานจนกว่าคุณจะใช้มัน "
-"ไม่มีวันหมดอายุ"
 
 #: src/features/Game/Battle/BattleCard.tsx:163
 #. js-lingui-explicit-id
@@ -7360,6 +7424,10 @@ msgstr ""
 "วางข้อความประวัติย่อของคุณที่นี่ "
 "คุณยังสามารถเขียนสรุปประสบการณ์ของคุณได้สั้น ๆ"
 
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:49
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:59
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:66
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:125
 #: src/features/Usage/SubscriptionPaymentModal.tsx:681
 #. js-lingui-explicit-id
 msgid "Pay"
@@ -7391,16 +7459,12 @@ msgstr "การชำระเงินล้มเหลว! โปรดล�
 msgid "Payment History"
 msgstr "ประวัติการชำระเงิน"
 
-#: src/features/Usage/PaymentModal.tsx:488
-#. js-lingui-explicit-id
-msgid "Payment history:"
-msgstr "ประวัติการชำระเงิน:"
-
 #: src/features/Usage/SubscriptionPaymentModal.tsx:471
 #. js-lingui-explicit-id
 msgid "Payment option"
 msgstr "ตัวเลือกการชำระเงิน"
 
+#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:15
 #: src/features/Usage/SubscriptionPaymentModal.tsx:409
 #. js-lingui-explicit-id
 msgid "Payment successful!"
@@ -8044,20 +8108,10 @@ msgstr "คำถามก่อนหน้า"
 msgid "Price"
 msgstr "ราคา"
 
-#: src/features/Usage/PaymentModal.tsx:249
-#. js-lingui-explicit-id
-msgid "Price per one AI hour:"
-msgstr "ราคาต่อหนึ่งชั่วโมง AI:"
-
 #: src/features/Case/data/reusable/priceSection.ts:44
 #. js-lingui-explicit-id
 msgid "Priority support"
 msgstr "การสนับสนุนลำดับความสำคัญ"
-
-#: src/features/Usage/PaymentModal.tsx:369
-#. js-lingui-explicit-id
-msgid "privacy policy"
-msgstr "นโยบายความเป็นส่วนตัว"
 
 #: src/features/Auth/AuthWall.tsx:49
 #: src/features/Auth/AuthWallBasic.tsx:220
@@ -8850,7 +8904,7 @@ msgstr "เลือกหมวดหมู่"
 msgid "Select languages"
 msgstr "เลือกภาษา"
 
-#: src/features/Modal/TeacherVoiceModal.tsx:47
+#: src/features/Modal/TeacherVoiceModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Select the voice your AI teacher will use during conversations."
 msgstr "เลือกเสียงที่ครู AI ของคุณจะใช้ในการสนทนา"
@@ -9209,7 +9263,7 @@ msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
 msgstr "ข้ามการพูดคุยเล็กน้อย — ปฏิบัติตามผู้สัมภาษณ์และเป็นกันเอง"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:188
-#: src/features/Modal/TeacherVoiceModal.tsx:61
+#: src/features/Modal/TeacherVoiceModal.tsx:52
 #. js-lingui-explicit-id
 msgid "Slow"
 msgstr "ช้า"
@@ -9284,6 +9338,16 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "เกิดข้อผิดพลาดขณะสร้างบทเรียนเพิ่มเติม กรุณาลองใหม่ภายหลัง"
+
+#: src/features/Usage/FeatureBlocker.tsx:60
+#. js-lingui-explicit-id
+msgid ""
+"Sorry for that, but AI costs money... Unfortunately... But you can buy a "
+"short-term period to try the app and decide if it fits your needs."
+msgstr ""
+"ขออภัยสำหรับเรื่องนั้น แต่ AI มีค่าใช้จ่าย... น่าเสียดาย... "
+"แต่คุณสามารถซื้อช่วงเวลาสั้น ๆ "
+"เพื่อทดลองใช้แอปและตัดสินใจว่ามันเหมาะกับคุณหรือไม่"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:32
 #. js-lingui-explicit-id
@@ -9453,6 +9517,11 @@ msgstr "เริ่มรอบ"
 #. js-lingui-explicit-id
 msgid "Start using full access"
 msgstr "เริ่มใช้การเข้าถึงเต็มรูปแบบ"
+
+#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:19
+#. js-lingui-explicit-id
+msgid "Start using the app"
+msgstr "เริ่มใช้งานแอป"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:11
 #. js-lingui-explicit-id
@@ -9712,11 +9781,6 @@ msgstr ""
 "\n"
 "เรื่องราวความสำเร็จ\n"
 
-#: src/features/Usage/PaymentModal.tsx:405
-#. js-lingui-explicit-id
-msgid "Success!"
-msgstr "สำเร็จ!"
-
 #: src/features/Conversation/ConversationReviewModal.tsx:97
 #. js-lingui-explicit-id
 msgid "Summary"
@@ -9938,7 +10002,7 @@ msgstr ""
 "บอกเราเกี่ยวกับพื้นฐานของคุณ สิ่งที่คุณได้เรียนรู้มาแล้ว "
 "และสิ่งที่คุณต้องการพัฒนาในฐานะนักพัฒนา Frontend ระดับจูเนียร์"
 
-#: src/features/Usage/PaymentModal.tsx:304
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:70
 #: src/features/Usage/SubscriptionPaymentModal.tsx:618
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
@@ -10010,10 +10074,20 @@ msgstr ""
 msgid "Thank you for your feedback!"
 msgstr "ขอบคุณสำหรับคำติชมของคุณ!"
 
+#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:16
+#. js-lingui-explicit-id
+msgid "Thank you for your purchase."
+msgstr "ขอบคุณสำหรับการสั่งซื้อของคุณ"
+
 #: src/features/Usage/SubscriptionPaymentModal.tsx:411
 #. js-lingui-explicit-id
 msgid "Thank you for your purchase. Your subscription is now active."
 msgstr "ขอบคุณสำหรับการซื้อของคุณ การสมัครสมาชิกของคุณได้เริ่มใช้งานแล้ว"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:67
+#. js-lingui-explicit-id
+msgid "That's the strong weekly plan."
+msgstr "นั่นคือแผนรายสัปดาห์ที่เข้มแข็ง"
 
 #: src/features/Case/data/frontend-junior/reviewSection.ts:57
 #: src/features/Case/data/frontend-senior/reviewSection.ts:57
@@ -10044,25 +10118,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "The biggest challenge in learning"
 msgstr "ความท้าทายที่ใหญ่ที่สุดในการเรียนรู้"
-
-#: src/features/Usage/PaymentModal.tsx:363
-#. js-lingui-explicit-id
-msgid ""
-"The Controller of the data entered into the form is Fundacja Rozwoju\n"
-"                  Przedsiębiorczości \"Twój StartUp\". The data will be "
-"processed in order to provide\n"
-"                  the service and for marketing purposes – in the case of "
-"consent. We would like to\n"
-"                  inform you about the possibility of withdrawing your "
-"consent. For full information\n"
-"                  on data processing and your rights, see the"
-msgstr ""
-"ผู้ควบคุมข้อมูลที่ป้อนเข้าไปในแบบฟอร์มคือ Fundacja Rozwoju\n"
-"                  Przedsiębiorczości \"Twój StartUp\". "
-"ข้อมูลจะถูกประมวลผลเพื่อให้บริการและเพื่อวัตถุประสงค์ทางการตลาด - "
-"ในกรณีที่ได้รับความยินยอม "
-"ซึ่งเราต้องการแจ้งให้ทราบเกี่ยวกับความเป็นไปได้ในการถอนความยินยอมของคุณสำหรั"
-"บข้อมูลการประมวลผลทั้งหมดและสิทธิของคุณ โปรดดูที่"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
 #. js-lingui-explicit-id
@@ -10271,12 +10326,7 @@ msgstr ""
 "plaintext\n"
 "จำนวนรอบทั้งหมด\n"
 
-#: src/features/Usage/PaymentModal.tsx:474
-#. js-lingui-explicit-id
-msgid "Total used:"
-msgstr "ทั้งหมดที่ใช้:"
-
-#: src/features/Usage/PaymentModal.tsx:254
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:105
 #: src/features/Usage/SubscriptionPaymentModal.tsx:653
 #. js-lingui-explicit-id
 msgid "Total:"
@@ -10462,11 +10512,6 @@ msgstr ""
 msgid "Unpublish"
 msgstr "ไม่เผยแพร่"
 
-#: src/features/Usage/FeatureBlocker.tsx:60
-#. js-lingui-explicit-id
-msgid "Upgrade your plan to unlock unlimited conversations."
-msgstr "อัปเกรดแผนของคุณเพื่อปลดล็อกการสนทนาไม่จำกัด"
-
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
@@ -10533,11 +10578,11 @@ msgstr "ผู้ใช้ที่ดูโพสต์นี้"
 #: src/features/Conversation/CallMode/CallButtons.tsx:647
 #. js-lingui-explicit-id
 msgid ""
-"Using real-time microphone is a premium feature. Please upgrade your plan "
-"to access this feature or use recorded audio."
+"Using real-time microphone is a premium feature. Please upgrade your "
+"balance to access this feature or use recorded audio."
 msgstr ""
-"การใช้ไมโครโฟนแบบเรียลไทม์เป็นฟีเจอร์พิเศษ "
-"กรุณาอัปเกรดแผนของคุณเพื่อเข้าถึงฟีเจอร์นี้หรือใช้เสียงที่บันทึกไว้"
+"การใช้ไมโครโฟนแบบเรียลไทม์เป็นคุณสมบัติพรีเมียม "
+"กรุณาอัพเกรดยอดเงินของคุณเพื่อเข้าถึงคุณสมบัตินี้หรือใช้เสียงที่บันทึกไว้"
 
 #: src/features/Case/data/frontend-junior/techStackSection.ts:57
 #: src/features/Case/data/frontend-senior/techStackSection.ts:57
@@ -10621,7 +10666,7 @@ msgstr "ท้าทายคำศัพท์"
 msgid "Vocabulary Practice"
 msgstr "การฝึกศัพท์"
 
-#: src/features/Usage/FeatureBlocker.tsx:72
+#: src/features/Usage/FeatureBlocker.tsx:74
 #. js-lingui-explicit-id
 msgid "Voice conversations"
 msgstr "การสนทนาด้วยเสียง"
@@ -10631,7 +10676,7 @@ msgstr "การสนทนาด้วยเสียง"
 msgid "Voice records"
 msgstr "บันทึกเสียง"
 
-#: src/features/Modal/TeacherVoiceModal.tsx:51
+#: src/features/Modal/TeacherVoiceModal.tsx:42
 #. js-lingui-explicit-id
 msgid "Voice speed"
 msgstr "ความเร็วเสียง"
@@ -10989,10 +11034,10 @@ msgstr "โหมดการเรียนรู้อะไรบ้างท
 msgid "What level of speaking should I have?"
 msgstr "ระดับการพูดของฉันควรเป็นอย่างไร?"
 
-#: src/features/Usage/PaymentModal.tsx:198
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:16
 #. js-lingui-explicit-id
-msgid "What one hour means?"
-msgstr "หมายความว่าอะไรคือหนึ่งชั่วโมง?"
+msgid "What means \"hours of AI usage\"?"
+msgstr "\"ชั่วโมงการใช้งาน AI\" หมายความว่าอย่างไร?"
 
 #: src/features/Goal/Quiz/WelcomeChatMessage.tsx:59
 #. js-lingui-explicit-id
@@ -11047,11 +11092,6 @@ msgstr "สิ่งที่คุณต้องการบรรลุ"
 #. js-lingui-explicit-id
 msgid "What you will achieve"
 msgstr "สิ่งที่คุณจะบรรลุ"
-
-#: src/features/Usage/PaymentModal.tsx:224
-#. js-lingui-explicit-id
-msgid "What's included?"
-msgstr "อะไรบ้างที่รวมอยู่ในนั้น?"
 
 #: src/features/Chat/ChatSectionHeader.tsx:59
 #. js-lingui-explicit-id
@@ -11310,6 +11350,7 @@ msgstr ""
 "กรุณาติดต่อทีมสนับสนุนของเราผ่านทางแชทด้านบน "
 "และเราจะแนะนำวิธีการคืนเงินให้กับคุณ"
 
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:53
 #: src/features/Usage/SubscriptionPaymentModal.tsx:1004
 #. js-lingui-explicit-id
 msgid ""
@@ -11329,6 +11370,17 @@ msgstr ""
 "ใช่ เพียงแค่เล่นในหน้าชุมชนหรือส่งข้อความในแชทเพื่อรับแต้ม "
 "ผู้ใช้ห้าอันดับแรกจะได้รับสิทธิ์ใช้งานเต็มรูปแบบตราบใดที่พวกเขายังคงอยู่ในอั"
 "นดับสูงสุด!"
+
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:25
+#. js-lingui-explicit-id
+msgid ""
+"Yes. Simply play on the Community page or send messages in the community "
+"feed to earn points. The top five users will have full access as long as "
+"they remain at the top!"
+msgstr ""
+"ใช่ เพียงแค่เล่นในหน้าชุมชนหรือส่งข้อความในฟีดชุมชนเพื่อรับคะแนน "
+"ผู้ใช้ห้าอันดับแรกจะสามารถเข้าถึงได้อย่างเต็มรูปแบบตราบใดที่พวกเขายังคงอยู่ใ"
+"นอันดับต้น ๆ!"
 
 #: src/features/Landing/Price/PricePage.tsx:73
 #. js-lingui-explicit-id
@@ -11587,15 +11639,6 @@ msgstr ""
 msgid "You need between {min} and {max} players."
 msgstr "คุณต้องการผู้เล่นระหว่าง {min} และ {max} คน"
 
-#: src/features/Usage/PaymentModal.tsx:200
-#. js-lingui-explicit-id
-msgid ""
-"You only charged for when AI is actively working: speaking or analyzing "
-"your speech."
-msgstr ""
-"คุณจะถูกเรียกเก็บเงินเฉพาะเมื่อ AI ทำงานอย่างใช้งานอย่างแท้จริง: "
-"พูดหรือวิเคราะห์การพูดของคุณ."
-
 #: src/features/Case/data/backendCSharp/quizData.ts:14
 #. js-lingui-explicit-id
 msgid ""
@@ -11662,7 +11705,7 @@ msgstr "ความสำเร็จของคุณ"
 msgid "Your AI speaking partner"
 msgstr "คู่สนทนา AI ของคุณ"
 
-#: src/features/Modal/TeacherVoiceModal.tsx:40
+#: src/features/Modal/TeacherVoiceModal.tsx:31
 #. js-lingui-explicit-id
 msgid "Your AI teacher voice:"
 msgstr "เสียงครู AI ของคุณ:"
@@ -11755,11 +11798,6 @@ msgstr "ข้อความของคุณ..."
 #. js-lingui-explicit-id
 msgid "Your Native Language:"
 msgstr "ภาษาแม่ของคุณ:"
-
-#: src/features/Usage/PaymentModal.tsx:415
-#. js-lingui-explicit-id
-msgid "Your payment was successful, but updates might take a few minutes"
-msgstr "การชำระเงินของคุณสำเร็จแล้ว แต่อัปเดตอาจใช้เวลาสักครู่"
 
 #: src/features/Goal/Quiz/GoalReview.tsx:79
 #. js-lingui-explicit-id
@@ -11861,6 +11899,152 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Usage/PaymentModal.tsx:226
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Access to all functionalities on app where AI is present: speaking, "
+#~ "analyzing, role-plays, new words and runles creator."
+#~ msgstr ""
+#~ "เข้าถึงฟังก์ชันทั้งหมดในแอปที่ AI อยู่: การพูด, การวิเคราะห์, การแสดงบทบาท, "
+#~ "คำใหม่และการสร้างรันเลส"
+
+#: src/features/Usage/PaymentModal.tsx:153
+#. js-lingui-explicit-id
+#~ msgid "Amount hours to buy"
+#~ msgstr "จำนวนชั่วโมงที่จะซื้อ"
+
+#: src/features/Usage/PaymentModal.tsx:265
+#. js-lingui-explicit-id
+#~ msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
+#~ msgstr ""
+#~ "จำนวนเงินมากเกินไป ฉันขอขอบคุณการสนับสนุนของคุณ แต่มาทำให้มันอยู่ใต้ 400 "
+#~ "ดอลลาร์"
+
+#: src/features/Usage/PaymentModal.tsx:123
+#. js-lingui-explicit-id
+#~ msgid "Buy more hours"
+#~ msgstr "ซื้อชั่วโมงเพิ่มเติม"
+
+#: src/features/Usage/PaymentModal.tsx:346
+#. js-lingui-explicit-id
+#~ msgid "Continue to payment"
+#~ msgstr "ดำเนินการไปยังการชำระเงิน"
+
+#: src/features/Usage/PaymentModal.tsx:446
+#. js-lingui-explicit-id
+#~ msgid "Current Balance of AI usage"
+#~ msgstr "ยอดคงเหลือที่ใช้ AI ปัจจุบัน"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:644
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Enabling ai voice is a premium feature. Please upgrade your plan to access "
+#~ "this feature."
+#~ msgstr ""
+#~ "การเปิดใช้งานเสียง AI เป็นฟีเจอร์ระดับพรีเมียม "
+#~ "กรุณาอัปเกรดแผนการใช้งานของคุณเพื่อเข้าถึงฟีเจอร์นี้"
+
+#: src/features/Usage/PaymentModal.tsx:211
+#. js-lingui-explicit-id
+#~ msgid "How long will my hours last?"
+#~ msgstr "ชั่วโมงของฉันจะยาวนานเท่าไหร่?"
+
+#: src/features/Usage/PaymentModal.tsx:131
+#. js-lingui-explicit-id
+#~ msgid "Let's add some hours to your balance"
+#~ msgstr "เรามาเพิ่มบางชั่วโมงไปยังยอดคงเหลือของคุณ"
+
+#: src/features/Usage/PaymentModal.tsx:213
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Once purchased, your hours remain available until you use them. There is no "
+#~ "expiration."
+#~ msgstr ""
+#~ "หลังจากที่คุณซื้อแล้ว ชั่วโมงของคุณจะพร้อมใช้งานจนกว่าคุณจะใช้มัน "
+#~ "ไม่มีวันหมดอายุ"
+
+#: src/features/Usage/PaymentModal.tsx:488
+#. js-lingui-explicit-id
+#~ msgid "Payment history:"
+#~ msgstr "ประวัติการชำระเงิน:"
+
+#: src/features/Usage/PaymentModal.tsx:249
+#. js-lingui-explicit-id
+#~ msgid "Price per one AI hour:"
+#~ msgstr "ราคาต่อหนึ่งชั่วโมง AI:"
+
+#: src/features/Usage/PaymentModal.tsx:369
+#. js-lingui-explicit-id
+#~ msgid "privacy policy"
+#~ msgstr "นโยบายความเป็นส่วนตัว"
+
+#: src/features/Usage/PaymentModal.tsx:405
+#. js-lingui-explicit-id
+#~ msgid "Success!"
+#~ msgstr "สำเร็จ!"
+
+#: src/features/Usage/PaymentModal.tsx:363
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "The Controller of the data entered into the form is Fundacja Rozwoju\n"
+#~ "                  Przedsiębiorczości \"Twój StartUp\". The data will be "
+#~ "processed in order to provide\n"
+#~ "                  the service and for marketing purposes – in the case of "
+#~ "consent. We would like to\n"
+#~ "                  inform you about the possibility of withdrawing your "
+#~ "consent. For full information\n"
+#~ "                  on data processing and your rights, see the"
+#~ msgstr ""
+#~ "ผู้ควบคุมข้อมูลที่ป้อนเข้าไปในแบบฟอร์มคือ Fundacja Rozwoju\n"
+#~ "                  Przedsiębiorczości \"Twój StartUp\". "
+#~ "ข้อมูลจะถูกประมวลผลเพื่อให้บริการและเพื่อวัตถุประสงค์ทางการตลาด - "
+#~ "ในกรณีที่ได้รับความยินยอม "
+#~ "ซึ่งเราต้องการแจ้งให้ทราบเกี่ยวกับความเป็นไปได้ในการถอนความยินยอมของคุณสำหรั"
+#~ "บข้อมูลการประมวลผลทั้งหมดและสิทธิของคุณ โปรดดูที่"
+
+#: src/features/Usage/PaymentModal.tsx:474
+#. js-lingui-explicit-id
+#~ msgid "Total used:"
+#~ msgstr "ทั้งหมดที่ใช้:"
+
+#: src/features/Usage/FeatureBlocker.tsx:60
+#. js-lingui-explicit-id
+#~ msgid "Upgrade your plan to unlock unlimited conversations."
+#~ msgstr "อัปเกรดแผนของคุณเพื่อปลดล็อกการสนทนาไม่จำกัด"
+
+#: src/features/Conversation/CallMode/CallButtons.tsx:647
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Using real-time microphone is a premium feature. Please upgrade your plan "
+#~ "to access this feature or use recorded audio."
+#~ msgstr ""
+#~ "การใช้ไมโครโฟนแบบเรียลไทม์เป็นฟีเจอร์พิเศษ "
+#~ "กรุณาอัปเกรดแผนของคุณเพื่อเข้าถึงฟีเจอร์นี้หรือใช้เสียงที่บันทึกไว้"
+
+#: src/features/Usage/PaymentModal.tsx:198
+#. js-lingui-explicit-id
+#~ msgid "What one hour means?"
+#~ msgstr "หมายความว่าอะไรคือหนึ่งชั่วโมง?"
+
+#: src/features/Usage/PaymentModal.tsx:224
+#. js-lingui-explicit-id
+#~ msgid "What's included?"
+#~ msgstr "อะไรบ้างที่รวมอยู่ในนั้น?"
+
+#: src/features/Usage/PaymentModal.tsx:200
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "You only charged for when AI is actively working: speaking or analyzing "
+#~ "your speech."
+#~ msgstr ""
+#~ "คุณจะถูกเรียกเก็บเงินเฉพาะเมื่อ AI ทำงานอย่างใช้งานอย่างแท้จริง: "
+#~ "พูดหรือวิเคราะห์การพูดของคุณ."
+
+#: src/features/Usage/PaymentModal.tsx:415
+#. js-lingui-explicit-id
+#~ msgid "Your payment was successful, but updates might take a few minutes"
+#~ msgstr "การชำระเงินของคุณสำเร็จแล้ว แต่อัปเดตอาจใช้เวลาสักครู่"
 
 #: src/features/Game/GameOnboarding.tsx:118
 #. js-lingui-explicit-id
