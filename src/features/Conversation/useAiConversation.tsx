@@ -695,7 +695,7 @@ ${voiceInstructions}
       isMutedInternal = true;
     }
 
-    let isVolumeOnInternal = isVolumeOn;
+    let isVolumeOnInternal = true;
 
     console.log('START', {
       isVolumeOnInternal,
