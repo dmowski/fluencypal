@@ -208,11 +208,10 @@ function useProvideRolePlay({
       settings.setConversationMode(conversationMode);
     }
 
-    const instruction = getDefaultInstruction(
-      scenario,
-      settings.fullLanguageName || 'English',
-      rolePlayInputs,
-    );
+    const instruction = scenario.useInstructionOnly
+      ? scenario.instructionToAi
+      : getDefaultInstruction(scenario, settings.fullLanguageName || 'English', rolePlayInputs);
+
     aiConversation.startConversation({
       mode: 'role-play',
       customInstruction: instruction,

@@ -40,6 +40,7 @@ export interface RolePlayInstruction {
   shortTitle: string;
   subTitle: string;
   instructionToAi: string;
+  useInstructionOnly?: boolean;
   exampleOfFirstMessageFromAi: string;
   illustrationDescription: string;
   imageSrc: string;

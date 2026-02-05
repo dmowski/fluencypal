@@ -324,16 +324,6 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                       >
                         {i18n._(`Start`)} "{item.shortTitle}"
                       </Button>
-                      <Stack
-                        sx={{
-                          flexDirection: 'column',
-                          gap: '1px',
-                        }}
-                      >
-                        <Typography variant="caption">
-                          {i18n._(`No credit card required`)}
-                        </Typography>
-                      </Stack>
                     </Stack>
                   </Stack>
                 )}
