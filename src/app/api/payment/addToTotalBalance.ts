@@ -50,7 +50,8 @@ export const addToTotalBalance = async ({
     console.log('endDateIso', endDateIso);
     newTotalUsage.activeSubscriptionTill = endDateIso;
   } else {
-    const newBalance = balance.balanceHours + amountToAddHours;
+    const newBalance = Math.min(0, balance.balanceHours) + amountToAddHours;
+    console.log('newBalance', newBalance);
 
     const newUsedBalance =
       amountToAddHours < 0
@@ -59,6 +60,7 @@ export const addToTotalBalance = async ({
 
     newTotalUsage.balanceHours = newBalance;
     newTotalUsage.usedHours = newUsedBalance;
+    console.log('newTotalUsage.usedHours', newTotalUsage.usedHours);
   }
 
   await db
