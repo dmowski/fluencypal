@@ -193,7 +193,7 @@ export const calculateUsagePrice = (usageEvent: UsageEvent, model: RealTimeModel
   return price;
 };
 
-export const pricePerHourUsd = 2;
+export const pricePerHourUsd = 1.4;
 
 export const convertUsageUsdToBalanceHours = (usageUsd: number, userPricePerHour: number) => {
   const PROJECT_PROFIT_MARGIN = 1; // 100%
