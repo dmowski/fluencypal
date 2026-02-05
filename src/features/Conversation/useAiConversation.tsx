@@ -452,7 +452,9 @@ VISUAL_CONTEXT (latest): ${description}
       setIsUserSpeaking,
       isMuted,
       isVolumeOn,
-      onAddUsage: (usageLog: UsageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
+      onAddUsage: (usageLog: UsageLog) => {
+        usage.setUsageLogs((prev) => [...prev, usageLog]);
+      },
       languageCode: settings.languageCode || 'en',
       getAuthToken: async () => await auth.getToken(),
       onMessageOrder: updateMessageOrder,

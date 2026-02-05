@@ -30,11 +30,8 @@ export async function POST(request: Request) {
       return Response.json(response);
     }
     const balance = await getUserBalance(userInfo.uid || '');
-    if (!balance.isGameWinner && !balance.isSubscriber) {
-      await addUsage(userInfo.uid, logData);
-    }
+    await addUsage(userInfo.uid, logData);
 
-    /*
     const isRealtime = logData.type === 'realtime';
     if (isRealtime && logData.conversationId) {
       await addConversationUsage({
@@ -44,7 +41,6 @@ export async function POST(request: Request) {
         usageUsd: logData.priceUsd,
       });
     }
-    */
 
     const response: AddUsageLogResponse = {
       done: true,

@@ -9,6 +9,8 @@ export const getEphemeralToken = async (model: string, userId: string) => {
 
   if (!isDev) {
     await logUserTokenUsage(userId, openAIKeyConfig.id);
+  } else {
+    console.log('DEV TOKEN');
   }
 
   if (!openAIKey) {

@@ -31,6 +31,7 @@ import { Conversation } from '@/common/conversation';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { GoalPlan } from '../Plan/types';
 import { GoalReview } from '../Goal/Quiz/GoalReview';
+import { Avatar } from '../Game/Avatar';
 
 const copyToClipboard = async (text: string) => {
   try {
@@ -167,16 +168,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           gap: '10px',
         }}
       >
-        <img
-          src={photoUrl || '/logo192.png'}
-          alt={displayName}
-          style={{
-            borderRadius: '50%',
-            width: '60px',
-            height: '60px',
-            border: '1px solid  rgba(255, 255, 255, 0.1)',
-          }}
-        />
+        <Avatar url={photoUrl || '/logo192.png'} avatarSize="50px" />
 
         {isFromChatGpt && (
           <Stack
@@ -504,7 +496,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                   cursor: 'pointer',
                   borderRadius: '8px',
                   display: 'grid',
-                  gridTemplateColumns: '140px 130px 220px 1fr',
+                  gridTemplateColumns: '140px 130px 220px 1fr 1fr',
                   gap: '10px',
                   ':hover': { backgroundColor: 'rgba(229, 229, 229, 0.35)' },
                 }}
@@ -553,6 +545,41 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
                     <Bot />
                     <Typography sx={{}}>{stats.botWords}</Typography>
                   </Stack>
+                </Stack>
+
+                <Stack
+                  sx={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: '15px',
+                  }}
+                >
+                  <Tooltip
+                    slotProps={{
+                      tooltip: {
+                        sx: {
+                          backgroundColor: '#111',
+                          color: '#fff',
+                          padding: '10px 14px',
+                        },
+                      },
+                    }}
+                    title={
+                      <Stack
+                        sx={{
+                          gap: '5px',
+                        }}
+                      >
+                        {usageKeys.map((key) => (
+                          <Typography key={key}>
+                            {`${key}`}: {(conversation.usage?.[key] || 0).toFixed(4)}
+                          </Typography>
+                        ))}
+                      </Stack>
+                    }
+                  >
+                    <Typography>{totalUsage.toFixed(4)} USD</Typography>
+                  </Tooltip>
                 </Stack>
               </Stack>
             );
@@ -691,7 +718,8 @@ export function AdminStats() {
   const data = useMemo(() => {
     if (!sourceData) return null;
     const cleanUsers = sourceData?.users.filter((user) => {
-      return !user.userData.email?.includes('dmowski');
+      return true;
+      //return !user.userData.email?.includes('dmowski');
     });
     return { ...sourceData, users: cleanUsers || [] };
   }, [sourceData]);
