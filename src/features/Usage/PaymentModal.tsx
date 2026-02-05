@@ -671,6 +671,15 @@ export const FaqHours = () => {
       <Typography variant="h6" component="h3" sx={{ marginBottom: '10px' }}>
         {i18n._('Frequently Asked Questions')}
       </Typography>
+
+      <FaqItem
+        info={{
+          question: i18n._('What means "hours of AI usage"?'),
+          answer: i18n._(
+            'Each time you use AI features (like conversation or Role Play), it consumes a certain amount of computational power, which we measure in "hours of AI usage." This allows us to fairly allocate resources based on your activity level. I call it "AI hours" because it`s approximate time of which you will consume the AI if you will use it continuously.',
+          ),
+        }}
+      />
       <FaqItem
         info={{
           question: i18n._('Can I get full access for free?'),
@@ -691,7 +700,7 @@ export const FaqHours = () => {
             >
               <Typography>
                 {i18n._(
-                  'No, you are purchasing full access for a selected period of time. There is no auto-renewal, you can buy full access again when your current period ends.',
+                  'No, you are purchasing a resources. There is no auto-renewal, you can buy it again when you need more.',
                 )}
               </Typography>
             </Stack>
