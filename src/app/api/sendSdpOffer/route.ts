@@ -5,7 +5,9 @@ import { validateAuthToken } from '../config/firebase';
 export async function POST(request: Request) {
   const body = (await request.json()) as SendSdpOfferRequest;
 
-  await validateAuthToken(request);
+  const userInfo = await validateAuthToken(request);
+
+  console.log('REALTIME SDP OFFER', userInfo.uid);
 
   const ephemeralKey = await getEphemeralToken(body.model);
 
