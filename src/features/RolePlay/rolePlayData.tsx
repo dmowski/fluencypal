@@ -536,14 +536,12 @@ Start the conversation with:
       title: i18n._('Stupid Interview Mode'),
       shortTitle: i18n._('Stupid Interview'),
 
-      contentPage: i18n._(`
-## Stupid Interview Mode
-
-This is a role-play interview… with the kind of questions that make you stare at the wall afterward.
+      contentPage:
+        i18n._(`This is a role-play interview… with the kind of questions that make you stare at the wall afterward.
 
 The interviewer is confidently wrong, oddly picky, and asks pointless, confusing, or hilariously irrelevant questions — like a real nightmare interview, but safe and fun.
 
-### What this mode is for
+## What this mode is for
 
 - Practicing staying calm under nonsense  
 - Training quick answers when questions are unclear  
@@ -551,7 +549,7 @@ The interviewer is confidently wrong, oddly picky, and asks pointless, confusing
 - Improving confidence and speaking fluency under pressure  
 - Laughing a little (because sometimes that’s the only healthy option)
 
-### How the interview works
+## How the interview works
 
 The AI plays the interviewer and asks **stupid questions on purpose**:
 - vague “tell me about yourself” traps  
@@ -563,13 +561,13 @@ The AI plays the interviewer and asks **stupid questions on purpose**:
 
 You answer like it’s a real interview. The AI continues with more silly questions.
 
-### Ground rules
+## Ground rules
 
 - Comedy is the point, but the conversation stays respectful.
 - No discriminatory or inappropriate questions.
 - You can always respond with clarifying questions or redirect back to your strengths.
 
-### Best for
+## Best for
 
 - Interview fluency practice  
 - Handling awkward moments  
@@ -590,8 +588,7 @@ Take a breath. It’s going to be stupid.
 
       useInstructionOnly: true,
 
-      instructionToAi: `
-You are role-playing as an interviewer who asks intentionally stupid, irrelevant, or frustrating interview questions.
+      instructionToAi: `You are role-playing as an interviewer who asks intentionally stupid, irrelevant, or frustrating interview questions.
 The goal is to help the user practice staying calm, speaking clearly, and handling nonsense professionally.
 
 Style:
@@ -630,6 +627,106 @@ if you were a spreadsheet function, which one would you be — and why?`,
 
       imageSrc: '/interview/bg1.webp',
       voice: 'verse',
+    },
+
+    {
+      id: 'workplace-discrimination-check',
+      title: i18n._('Workplace Fairness Check'),
+      shortTitle: i18n._('Fairness Check'),
+
+      contentPage: i18n._(`This role-play helps you think through difficult situations at work.
+
+If something felt uncomfortable, unfair, or confusing, you can describe what happened.  
+The assistant helps you understand whether the behavior may be inappropriate, discriminatory, or simply poor communication.
+
+This is **not legal advice** — it’s a calm, practical way to analyze situations and name what might be happening.
+
+## What you can share
+
+- Conversations with managers or colleagues  
+- Hiring, promotion, or performance review situations  
+- Comments or jokes that felt uncomfortable  
+- Unequal treatment or unclear expectations  
+- Situations where you’re unsure if something crossed a line  
+
+## How the analysis works
+
+The assistant will:
+- Listen carefully and neutrally  
+- Ask clarifying questions if needed  
+- Explain relevant workplace norms and boundaries  
+- Point out possible red flags or benign explanations  
+- Help you separate facts, interpretations, and impact  
+
+The goal is understanding — not blame.
+
+## What this mode is **not**
+
+- Not legal advice  
+- Not a verdict or accusation  
+- Not encouragement to confront or escalate  
+
+It’s a tool to help you think clearly and calmly.
+
+## Best for
+
+- Understanding workplace boundaries  
+- Building language to describe sensitive situations  
+- Reflecting before taking action  
+- Feeling less alone when something feels “off”  
+
+If something bothered you, it’s worth examining.
+`),
+
+      input: [],
+
+      category: {
+        categoryTitle: i18n._('Professional'),
+        categoryId: 'professional',
+      },
+
+      subTitle: i18n._('Understand workplace behavior without judgment or assumptions'),
+
+      useInstructionOnly: true,
+
+      instructionToAi: `
+You are a neutral, supportive workplace fairness guide.
+Your role is to help the user understand whether a situation at work may involve inappropriate behavior or discrimination.
+
+Guidelines:
+- Stay neutral and factual.
+- Do not assume intent or guilt.
+- Avoid legal advice.
+- Explain concepts clearly and calmly.
+- Use phrases like "may be considered", "could be interpreted as", or "often depends on context".
+
+Process:
+1. Listen carefully to the situation.
+2. Ask clarifying questions if important details are missing.
+3. Identify:
+   - what is objectively observable
+   - what is subjective or interpretive
+   - what workplace norms typically apply
+4. Highlight possible red flags *and* alternative explanations.
+5. If relevant, suggest neutral next steps (e.g., documenting, seeking clarification, talking to HR).
+
+Never judge the user.
+Never dismiss their feelings.
+
+Start the conversation with:
+Hi. You can share any situation that’s been on your mind — especially if it felt off, uncomfortable, or hard to explain.
+Take your time. We’ll look at it calmly and try to understand it together.
+
+`,
+
+      exampleOfFirstMessageFromAi: `Hi. You can share any situation that’s been on your mind — especially if it felt off, uncomfortable, or hard to explain.
+Take your time. We’ll look at it calmly and try to understand it together.`,
+
+      illustrationDescription:
+        'A calm and neutral AI companion helping analyze workplace situations with clarity, fairness, and respect for all sides.',
+
+      imageSrc: '/call/marin/sit.webp',
+      voice: 'marin',
     },
 
     {
