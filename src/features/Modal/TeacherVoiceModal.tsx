@@ -1,11 +1,5 @@
 'use client';
 
-import { useMemo } from 'react';
-import { useGame } from '../Game/useGame';
-import { UserProfileModal } from '../Game/UserProfileModal';
-import { useUsage } from '../Usage/useUsage';
-import { SubscriptionPaymentModal } from '../Usage/SubscriptionPaymentModal';
-import { useAuth } from '../Auth/useAuth';
 import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { Button, Stack, Typography, Select, MenuItem, FormControl } from '@mui/material';
@@ -15,9 +9,6 @@ import { useSettings } from '../Settings/useSettings';
 import { Check } from 'lucide-react';
 
 export const TeacherVoiceModal: React.FC = () => {
-  const game = useGame();
-  const usage = useUsage();
-  const auth = useAuth();
   const { i18n } = useLingui();
   const settings = useSettings();
   const teacherSettings = useTeacherSettings();
