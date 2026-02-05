@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     }
 
     // Create ephemeral token (after auth + rate limit)
-    const ephemeralKey = await getEphemeralToken(body.model);
+    const ephemeralKey = await getEphemeralToken(body.model, userInfo.uid);
 
     // Call OpenAI realtime SDP endpoint
     const url = new URL('https://api.openai.com/v1/realtime');

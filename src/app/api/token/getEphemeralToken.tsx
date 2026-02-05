@@ -1,5 +1,11 @@
-export const getEphemeralToken = async (model: string) => {
-  const openAIKey = process.env.OPENAI_API_KEY;
+import { getRandomAiToken, logUserTokenUsage } from '../sendSdpOffer/getRanomToken';
+
+export const getEphemeralToken = async (model: string, userId: string) => {
+  const openAIKeyConfig = await getRandomAiToken();
+  const openAIKey = openAIKeyConfig.token;
+
+  await logUserTokenUsage(userId, openAIKeyConfig.id);
+
   if (!openAIKey) {
     throw new Error('Unable to create ephemeral token. Open AI env key is missing');
   }
