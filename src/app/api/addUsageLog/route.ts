@@ -20,12 +20,13 @@ export async function POST(request: Request) {
       });
       throw new Error("Price can't be negative");
     }
+
     if (isExists) {
       const response: AddUsageLogResponse = {
         done: true,
         message: 'Usage log already exists',
       };
-      console.warn('Usage log already exists');
+      console.warn('Usage log already exists', userId, logId);
       return Response.json(response);
     }
 
