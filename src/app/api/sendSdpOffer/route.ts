@@ -4,9 +4,10 @@ import { validateAuthToken } from '../config/firebase';
 
 export async function POST(request: Request) {
   const body = (await request.json()) as SendSdpOfferRequest;
-  const ephemeralKey = await getEphemeralToken(body.model);
 
   await validateAuthToken(request);
+
+  const ephemeralKey = await getEphemeralToken(body.model);
 
   const baseUrl = 'https://api.openai.com/v1/realtime';
   const sdpResponse = await fetch(`${baseUrl}?model=${body.model}`, {
