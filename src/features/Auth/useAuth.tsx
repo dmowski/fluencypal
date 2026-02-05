@@ -38,6 +38,7 @@ export interface AuthContext {
 
   signInWithEmail: (email: string) => Promise<SignInResult>;
   isDev: boolean;
+  isFounder: boolean;
 }
 
 const LOCALSTORAGE_EMAIL_KEY = 'emailForSignIn';
@@ -59,6 +60,7 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
     throw new Error('signInWithEmail not implemented');
   },
   isDev: false,
+  isFounder: false,
 });
 
 function useProvideAuth(): AuthContext {
@@ -235,6 +237,8 @@ function useProvideAuth(): AuthContext {
     return token || '';
   };
 
+  const userId = userInfo?.uid || '';
+
   return {
     isAuthorized,
     loading,
@@ -243,13 +247,14 @@ function useProvideAuth(): AuthContext {
     signInWithCustomToken,
 
     userInfo: userInfo || null,
-    uid: userInfo?.uid || '',
+    uid: userId,
 
     logout,
     getToken,
     signInWithEmail,
 
     isDev: isDev,
+    isFounder: userId === 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2',
   };
 }
 

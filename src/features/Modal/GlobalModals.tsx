@@ -8,13 +8,14 @@ import { SubscriptionPaymentModal } from '../Usage/SubscriptionPaymentModal';
 import { useAuth } from '../Auth/useAuth';
 import { TeacherVoiceModal } from './TeacherVoiceModal';
 import { HoursPaymentModal } from '../Usage/HoursPaymentModal/HoursPaymentModal';
-
-const isUsePerHourModal = true; // TODO: remove when per hour modal will be fully implemented
+import { useAccess } from '../Usage/useAccess';
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();
   const usage = useUsage();
   const auth = useAuth();
+  const access = useAccess();
+  const isUsePerHourModal = access.isHoursPaymentMode;
 
   const activeUserProfile = useMemo(() => {
     return game.modalUserId ? game.stats.find((s) => s.userId === game.modalUserId) : null;
