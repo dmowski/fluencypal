@@ -1,8 +1,15 @@
 import { AiChatRequest, AiResponse } from '@/common/requests';
-import { calculateTextUsagePrice, TextUsageEvent } from '@/common/ai';
+import {
+  calculateTextUsagePrice,
+  convertUsageUsdToBalanceHours,
+  TextUsageEvent,
+} from '@/common/ai';
 import { validateAuthToken } from '../../config/firebase';
 import { generateChatWithAi } from './../generateTextWithAi';
 import { addConversationUsage } from '../../usage/addConversationUsage';
+import { addUsage } from '../../payment/addUsage';
+import { TextUsageLog } from '@/common/usage';
+import { getUserPricePerHour } from '../../usage/getUserPricePerHour';
 
 export const maxDuration = 60;
 
@@ -34,10 +41,12 @@ export async function POST(request: Request) {
     usageLabel: 'chatAi',
     usageUsd: priceUsd,
   });
-  /*const priceHours = convertUsdToHours(priceUsd);
+
+  const userPricePerHour = await getUserPricePerHour(userInfo.uid);
+  const priceHours = convertUsageUsdToBalanceHours(priceUsd, userPricePerHour);
   const usageLog: TextUsageLog = {
     usageId: `${Date.now()}`,
-    languageCode,
+    languageCode: 'en',
     createdAt: Date.now(),
     priceUsd,
     priceHours,
@@ -45,11 +54,7 @@ export async function POST(request: Request) {
     model: aiRequest.model,
     usageEvent: usageEvent,
   };
-
-  if (!balance.isGameWinner) {
-    await addUsage(userInfo.uid, usageLog);
-  }
-*/
+  await addUsage(userInfo.uid, usageLog);
 
   return Response.json(answer);
 }
