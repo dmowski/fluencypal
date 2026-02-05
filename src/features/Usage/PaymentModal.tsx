@@ -19,8 +19,8 @@ import dayjs from 'dayjs';
 import { PaymentLogType } from '@/common/usage';
 import AssuredWorkloadIcon from '@mui/icons-material/AssuredWorkload';
 import { createStripeCheckout } from './createStripeCheckout';
-import { CircleCheck } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { CircleCheck, Headset, Users } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
 import { supportedLanguages } from '@/features/Lang/lang';
 import { useLingui } from '@lingui/react';
 import { getUrlStart } from '../Lang/getUrlStart';
@@ -30,6 +30,7 @@ import { pricePerHourUsd } from '@/common/ai';
 import { TRIAL_DAYS } from '@/common/subscription';
 import { sleep } from '@/libs/sleep';
 import { FaqItem } from '../Landing/FAQ/FaqItem';
+import { useSettings } from '../Settings/useSettings';
 
 export const PaymentModal = () => {
   const usage = useUsage();
@@ -129,6 +130,7 @@ export const PaymentModal = () => {
                 gridTemplateColumns: '1fr 1fr 1fr',
                 '@media (max-width: 600px)': {
                   gridTemplateColumns: '1fr',
+                  gap: '45px',
                 },
               }}
             >
@@ -138,6 +140,7 @@ export const PaymentModal = () => {
                 content={currency.convertUsdToCurrency(pricePerHourUsd)}
                 buttonTitle={i18n._('Pay')}
                 isRecommended={true}
+                footnote={i18n._('Good for trying the service')}
               />
 
               <HourCard
@@ -145,6 +148,7 @@ export const PaymentModal = () => {
                 label={i18n._('3 hours')}
                 content={currency.convertUsdToCurrency(pricePerHourUsd * 3)}
                 buttonTitle={i18n._('Pay')}
+                footnote={i18n._('If you feel it')}
               />
 
               <HourCard
@@ -152,11 +156,13 @@ export const PaymentModal = () => {
                 label={i18n._('5 hours')}
                 content={currency.convertUsdToCurrency(pricePerHourUsd * 5)}
                 buttonTitle={i18n._('Pay')}
+                footnote={i18n._('My appreciation')}
               />
             </Stack>
           </Stack>
 
           <FaqHours />
+          <PriceContact />
         </Stack>
       </CustomModal>
     );
@@ -521,12 +527,14 @@ export const HourCard = ({
   content,
   buttonTitle,
   isRecommended,
+  footnote,
 }: {
   onClick: () => void;
   label: string;
   buttonTitle: string;
   content: string;
   isRecommended?: boolean;
+  footnote: string;
 }) => {
   return (
     <Stack
@@ -594,7 +602,56 @@ export const HourCard = ({
             {buttonTitle}
           </Button>
         </Stack>
+
+        <Typography
+          sx={{
+            //width: '100%',
+            color: '#ffffff',
+            textAlign: 'center',
+            fontSize: '14px',
+          }}
+        >
+          {footnote}
+        </Typography>
       </Stack>
+    </Stack>
+  );
+};
+
+export const PriceContact = () => {
+  const { i18n } = useLingui();
+  const router = useRouter();
+  const settings = useSettings();
+  const language = settings.userSettings?.pageLanguageCode || 'en';
+
+  const communityUrl = getUrlStart(language) + 'practice?page=community&section=chat';
+  const supportUrl = getUrlStart(language) + 'practice?page=community&section=tech-support';
+
+  return (
+    <Stack
+      sx={{
+        gap: '5px',
+        width: '100%',
+        alignItems: 'flex-start',
+      }}
+    >
+      <Typography variant="h6" component="h3" sx={{ marginBottom: '0px' }}>
+        {i18n._('Not sure yet?')}
+      </Typography>
+      <Button
+        variant="text"
+        startIcon={<Users size={'14px'} />}
+        onClick={() => router.push(communityUrl)}
+      >
+        {i18n._('Ask community')}
+      </Button>
+      <Button
+        startIcon={<Headset size={'14px'} />}
+        variant="text"
+        onClick={() => router.push(supportUrl)}
+      >
+        {i18n._('Ask in support channel')}
+      </Button>
     </Stack>
   );
 };
