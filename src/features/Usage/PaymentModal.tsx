@@ -36,6 +36,12 @@ import { BalanceHeader } from './HoursPaymentModal/BalanceHeader';
 import { PriceContact } from './HoursPaymentModal/PriceContact';
 import { HourCard } from './HoursPaymentModal/HourCard';
 import { BalanceContent } from './HoursPaymentModal/BalanceContent';
+import { FeatureList } from '../Landing/Price/FeatureList';
+import { Avatar } from '../Game/Avatar';
+import { useGame } from '../Game/useGame';
+import { ConfirmPaymentForm } from './HoursPaymentModal/ConfirmPaymentForm';
+import { useUrlState } from '../Url/useUrlState';
+import { FounderMessage } from './HoursPaymentModal/FounderMessage';
 
 export const PaymentModal = () => {
   const usage = useUsage();
@@ -51,6 +57,8 @@ export const PaymentModal = () => {
   const [isShowAmountInput, setIsShowAmountInput] = useState(false);
 
   const pathname = usePathname();
+  const settings = useSettings();
+  const appMode = settings.appMode;
   const locale = pathname?.split('/')[1] as string;
   const supportedLang = supportedLanguages.find((l) => l === locale) || 'en';
 
@@ -67,8 +75,10 @@ export const PaymentModal = () => {
       await auth.getToken(),
     );
   };
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
   const clickOnConfirmRequest = async () => {
+    setIsRedirecting(true);
     const checkoutInfo = await createStripeCheckout(
       {
         userId: auth.uid,
@@ -78,11 +88,13 @@ export const PaymentModal = () => {
       },
       await auth.getToken(),
     );
+
     if (!checkoutInfo.sessionUrl) {
       console.log('checkoutInfo', checkoutInfo);
       notifications.show('Error creating payment session', {
         severity: 'error',
       });
+      setIsRedirecting(false);
       return;
     } else {
       window.location.href = checkoutInfo.sessionUrl;
@@ -93,10 +105,6 @@ export const PaymentModal = () => {
     setIsShowAmountInput(true);
   };
 
-  if (!usage.isShowPaymentModal) return null;
-
-  const balanceDetails = detailedHours(usage.balanceHours);
-
   const [isShowInitBalanceModal, setIsShowInitBalanceModal] = useState(true);
   const [isShowPaymentModal, setIsShowPaymentModal] = useState(false);
 
@@ -105,6 +113,71 @@ export const PaymentModal = () => {
     await sleep(50);
     setIsShowPaymentModal(true);
   };
+
+  const game = useGame();
+  const founderUserId = 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2';
+  const founderAvatar = game.gameAvatars[founderUserId] || '';
+
+  const [isPaymentSuccess, setPaymentSuccess] = useUrlState('paymentSuccess', '', false);
+
+  if (isShowPaymentModal) {
+    return (
+      <CustomModal
+        isOpen={true && auth.isAuthorized}
+        onClose={() => usage.togglePaymentModal(false)}
+      >
+        <Stack
+          sx={{
+            width: '100%',
+            maxWidth: '700px',
+            gap: '40px',
+          }}
+        >
+          <Stack
+            sx={{
+              maxWidth: '700px',
+              width: '100%',
+              boxSizing: 'border-box',
+              gap: '40px',
+              alignItems: 'center',
+            }}
+          >
+            <Stack
+              sx={{
+                width: '100%',
+              }}
+            >
+              <Typography
+                sx={{
+                  width: '100%',
+                }}
+                variant="h5"
+                component="h2"
+              >
+                {i18n._(`Confirm payment`)}
+              </Typography>
+
+              <Typography
+                sx={{
+                  width: '100%',
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._(`Buying {hours} hour(s) of AI usage`, { hours: amountToAdd })}
+              </Typography>
+            </Stack>
+
+            <ConfirmPaymentForm
+              isRedirecting={isRedirecting}
+              amountInUsd={amountToAdd * pricePerHourUsd}
+              onConfirmRequest={clickOnConfirmRequest}
+            />
+            <FounderMessage />
+          </Stack>
+        </Stack>
+      </CustomModal>
+    );
+  }
 
   if (isShowInitBalanceModal) {
     return (
@@ -231,14 +304,6 @@ export const PaymentModal = () => {
 
             <Stack>
               <Stack gap={'10px'}>
-                {amountToAdd > 400 && (
-                  <Typography variant="caption" color="error">
-                    {i18n._(
-                      `Amount is too large. I appreciate your support, but let's keep it under $400`,
-                    )}
-                  </Typography>
-                )}
-
                 <Stack gap={'2px'}>
                   <FormControlLabel
                     required
