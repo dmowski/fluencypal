@@ -146,7 +146,6 @@ export const PaymentModal = () => {
                 isRecommended={true}
                 footnote={i18n._('Good for trying the service')}
               />
-
               <HourCard
                 onClick={() => onSelectHourPackage(3)}
                 label={i18n._('3 hours')}
@@ -154,7 +153,6 @@ export const PaymentModal = () => {
                 buttonTitle={i18n._('Pay')}
                 footnote={i18n._('If you feel it')}
               />
-
               <HourCard
                 onClick={() => onSelectHourPackage(5)}
                 label={i18n._('5 hours')}
