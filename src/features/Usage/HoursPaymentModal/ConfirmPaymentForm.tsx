@@ -2,8 +2,7 @@ import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useCurrency } from '@/features/User/useCurrency';
 import { useLingui } from '@lingui/react';
-import { Stack, FormControlLabel, Checkbox, Typography, Button } from '@mui/material';
-import { Link } from 'lucide-react';
+import { Stack, FormControlLabel, Checkbox, Typography, Button, Link } from '@mui/material';
 import { useState } from 'react';
 
 export const ConfirmPaymentForm = ({
