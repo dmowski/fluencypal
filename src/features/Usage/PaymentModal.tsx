@@ -25,17 +25,11 @@ import { supportedLanguages } from '@/features/Lang/lang';
 import { useLingui } from '@lingui/react';
 import { getUrlStart } from '../Lang/getUrlStart';
 import { useCurrency } from '../User/useCurrency';
-import { convertHoursToHumanFormat } from '@/libs/convertHoursToHumanFormat';
+import { convertHoursToHumanFormat, detailedHours } from '@/libs/convertHoursToHumanFormat';
 import { pricePerHourUsd } from '@/common/ai';
 import { TRIAL_DAYS } from '@/common/subscription';
-
-const paymentTypeLabelMap: Record<PaymentLogType, string> = {
-  welcome: 'Trial balance',
-  user: 'Payment',
-  gift: 'Gift',
-  'subscription-full-v1': 'Subscription (1 month)',
-  'trial-days': `Trial (${TRIAL_DAYS} days)`,
-};
+import { sleep } from '@/libs/sleep';
+import { FaqItem } from '../Landing/FAQ/FaqItem';
 
 export const PaymentModal = () => {
   const usage = useUsage();
@@ -90,15 +84,83 @@ export const PaymentModal = () => {
   };
 
   const onShowAmountInput = () => {
-    const isDevEmail = auth?.userInfo?.email?.includes('dmowski');
-    if (isDevEmail) {
-      return;
-    }
-    sentTgMessage('Event: Press on Pay Button');
     setIsShowAmountInput(true);
   };
 
   if (!usage.isShowPaymentModal) return null;
+
+  const balanceDetails = detailedHours(usage.balanceHours);
+
+  const [isShowInitBalanceModal, setIsShowInitBalanceModal] = useState(true);
+  const [isShowPaymentModal, setIsShowPaymentModal] = useState(false);
+
+  const onSelectHourPackage = async (hours: number) => {
+    setAmountToAdd(hours);
+    await sleep(50);
+    setIsShowPaymentModal(true);
+  };
+
+  if (isShowInitBalanceModal) {
+    return (
+      <CustomModal
+        isOpen={true && auth.isAuthorized}
+        onClose={() => usage.togglePaymentModal(false)}
+      >
+        <Stack
+          sx={{
+            width: '100%',
+            maxWidth: '700px',
+            gap: '40px',
+          }}
+        >
+          <BalanceHeader />
+
+          <Stack
+            sx={{
+              gap: '10px',
+            }}
+          >
+            <Typography variant="body2">{i18n._('Buy more hours. Why not?')}</Typography>
+            <Stack
+              sx={{
+                width: '100%',
+                gap: '20px',
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr 1fr',
+                '@media (max-width: 600px)': {
+                  gridTemplateColumns: '1fr',
+                },
+              }}
+            >
+              <HourCard
+                onClick={() => onSelectHourPackage(1)}
+                label={i18n._('1 hour')}
+                content={currency.convertUsdToCurrency(pricePerHourUsd)}
+                buttonTitle={i18n._('Pay')}
+                isRecommended={true}
+              />
+
+              <HourCard
+                onClick={() => onSelectHourPackage(3)}
+                label={i18n._('3 hours')}
+                content={currency.convertUsdToCurrency(pricePerHourUsd * 3)}
+                buttonTitle={i18n._('Pay')}
+              />
+
+              <HourCard
+                onClick={() => onSelectHourPackage(5)}
+                label={i18n._('5 hours')}
+                content={currency.convertUsdToCurrency(pricePerHourUsd * 5)}
+                buttonTitle={i18n._('Pay')}
+              />
+            </Stack>
+          </Stack>
+
+          <FaqHours />
+        </Stack>
+      </CustomModal>
+    );
+  }
 
   return (
     <CustomModal isOpen={true && auth.isAuthorized} onClose={() => usage.togglePaymentModal(false)}>
@@ -181,52 +243,6 @@ export const PaymentModal = () => {
                     </Button>
                   ))}
                 </Stack>
-              </Stack>
-
-              <Stack
-                sx={{
-                  width: '100%',
-                  gap: '5px',
-                }}
-              >
-                <Typography
-                  variant="caption"
-                  sx={{
-                    paddingBottom: '10px',
-                  }}
-                >
-                  <b>{i18n._(`What one hour means?`)}</b>
-                  <br />
-                  {i18n._(
-                    `You only charged for when AI is actively working: speaking or analyzing your speech.`,
-                  )}
-                </Typography>
-
-                <Typography
-                  variant="caption"
-                  sx={{
-                    paddingBottom: '10px',
-                  }}
-                >
-                  <b>{i18n._(`How long will my hours last?`)}</b>
-                  <br />
-                  {i18n._(
-                    `Once purchased, your hours remain available until you use them. There is no expiration.`,
-                  )}
-                </Typography>
-
-                <Typography
-                  variant="caption"
-                  sx={{
-                    paddingBottom: '10px',
-                  }}
-                >
-                  <b>{i18n._(`What's included?`)}</b>
-                  <br />
-                  {i18n._(
-                    `Access to all functionalities on app where AI is present: speaking, analyzing, role-plays, new words and runles creator.`,
-                  )}
-                </Typography>
               </Stack>
             </Stack>
 
@@ -417,9 +433,7 @@ export const PaymentModal = () => {
                   </>
                 ) : (
                   <>
-                    <Typography variant="h4" component="h2">
-                      {i18n._(`Balance`)}
-                    </Typography>
+                    <BalanceHeader />
                   </>
                 )}
               </Stack>
@@ -457,137 +471,178 @@ export const PaymentModal = () => {
                   {i18n._(`Buy More`)}
                 </Button>
               </Stack>
-
-              {!isShowAmountInput && (
-                <Stack
-                  gap={'10px'}
-                  sx={{
-                    width: '100%',
-                  }}
-                >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: '#c2c2c2',
-                    }}
-                  >
-                    {i18n._(`Total used:`)} <b>{convertHoursToHumanFormat(usage.usedHours)}</b>
-                  </Typography>
-
-                  <Stack
-                    sx={{
-                      gap: '10px',
-                      width: '100%',
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontWeight: 500,
-                      }}
-                    >
-                      {i18n._(`Payment history:`)}
-                    </Typography>
-
-                    {!usage.paymentLogs && (
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          color: '#999',
-                        }}
-                      >
-                        {i18n._(`Loading...`)}
-                      </Typography>
-                    )}
-
-                    {usage.paymentLogs && usage.paymentLogs.length === 0 && (
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          color: '#999',
-                        }}
-                      >
-                        {i18n._(`No payments...`)}
-                      </Typography>
-                    )}
-
-                    {usage.paymentLogs && (
-                      <Stack
-                        sx={{
-                          width: '100%',
-                          gap: '10px',
-                        }}
-                      >
-                        {usage.paymentLogs
-                          .sort((a, b) => b.createdAt - a.createdAt)
-                          .map((log) => {
-                            const humanDate = dayjs(log.createdAt).format('DD MMM YYYY');
-                            const humanTime = dayjs(log.createdAt).format('HH:mm');
-                            return (
-                              <Stack
-                                key={log.id}
-                                sx={{
-                                  padding: '10px 15px',
-                                  boxSizing: 'border-box',
-                                  display: 'flex',
-                                  flexDirection: 'row',
-                                  width: '400px',
-                                  maxWidth: '100%',
-                                  justifyContent: 'space-between',
-                                  alignItems: 'center',
-                                  borderRadius: '10px',
-                                  border: `1px solid rgba(255, 255, 255, 0.3)`,
-                                  '@media (max-width: 320px)': {
-                                    flexDirection: 'column',
-                                    alignItems: 'flex-start',
-                                    gap: '20px',
-                                  },
-                                }}
-                              >
-                                <Stack>
-                                  <Typography variant="h6">
-                                    {log.currency.toUpperCase()} {log.amountAdded}
-                                  </Typography>
-                                  <Typography variant="body2">
-                                    {convertHoursToHumanFormat(log.amountOfHours)}
-                                  </Typography>
-                                  <Typography
-                                    variant="caption"
-                                    sx={{
-                                      opacity: 0.7,
-                                    }}
-                                  >
-                                    {paymentTypeLabelMap[log.type]}
-                                  </Typography>
-                                </Stack>
-
-                                <Stack
-                                  sx={{
-                                    alignItems: 'flex-end',
-                                    '@media (max-width: 320px)': {
-                                      alignItems: 'flex-start',
-                                    },
-                                  }}
-                                >
-                                  <Typography variant="caption">{humanTime}</Typography>
-                                  <Typography variant="body2">{humanDate}</Typography>
-                                  {log.receiptUrl && (
-                                    <Link href={log.receiptUrl} target="_blank">
-                                      <Typography variant="body2">Receipt</Typography>
-                                    </Link>
-                                  )}
-                                </Stack>
-                              </Stack>
-                            );
-                          })}
-                      </Stack>
-                    )}
-                  </Stack>
-                </Stack>
-              )}
             </Stack>
           </Stack>
         </>
       )}
     </CustomModal>
+  );
+};
+
+const BalanceHeader = () => {
+  const usage = useUsage();
+  const { i18n } = useLingui();
+  const balanceDetails = detailedHours(usage.balanceHours);
+
+  return (
+    <Stack
+      sx={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        gap: '20px',
+      }}
+    >
+      <Typography variant="h4">{i18n._(`Balance`)}</Typography>
+
+      <Stack
+        sx={{
+          borderRadius: '18px',
+          backgroundColor: '#0e84c3',
+          padding: '5px 15px',
+        }}
+      >
+        <Typography
+          variant="body1"
+          sx={{
+            fontWeight: 600,
+          }}
+        >
+          {balanceDetails.hours} hours {balanceDetails.minutes} minutes
+        </Typography>
+      </Stack>
+    </Stack>
+  );
+};
+
+export const HourCard = ({
+  onClick,
+  label,
+  content,
+  buttonTitle,
+  isRecommended,
+}: {
+  onClick: () => void;
+  label: string;
+  buttonTitle: string;
+  content: string;
+  isRecommended?: boolean;
+}) => {
+  return (
+    <Stack
+      sx={{
+        width: '100%',
+        backgroundColor: 'rgba(32, 137, 241, 0.1)',
+        borderRadius: '7px',
+      }}
+    >
+      <Stack
+        sx={{
+          backgroundColor: '#2089f1f7',
+          borderRadius: '7px 7px 0 0',
+          padding: '10px',
+          alignItems: 'center',
+          fontWeight: 600,
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: '18px',
+            fontWeight: 500,
+            color: '#fff',
+          }}
+        >
+          {label}
+        </Typography>
+      </Stack>
+
+      <Stack
+        sx={{
+          alignItems: 'center',
+          gap: '10px',
+          padding: '40px 10px 30px 10px',
+          justifyContent: 'center',
+        }}
+      >
+        <Typography
+          variant="h5"
+          sx={{
+            fontWeight: 600,
+          }}
+        >
+          {content}
+        </Typography>
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '10px 20px',
+            width: '100%',
+          }}
+        >
+          <Button
+            fullWidth
+            color="info"
+            variant={isRecommended ? 'contained' : 'outlined'}
+            onClick={onClick}
+            size="large"
+            sx={{
+              padding: '10px 0',
+            }}
+          >
+            {buttonTitle}
+          </Button>
+        </Stack>
+      </Stack>
+    </Stack>
+  );
+};
+
+export const FaqHours = () => {
+  const { i18n } = useLingui();
+
+  return (
+    <Stack>
+      <Typography variant="h6" component="h3" sx={{ marginBottom: '10px' }}>
+        {i18n._('Frequently Asked Questions')}
+      </Typography>
+      <FaqItem
+        info={{
+          question: i18n._('Can I get full access for free?'),
+          answer: i18n._(
+            'Yes. Simply play on the Community page or send messages in the chat to earn points. The top five users will have full access as long as they remain at the top!',
+          ),
+        }}
+      />
+
+      <FaqItem
+        info={{
+          question: i18n._('Is this a subscription?'),
+          answer: (
+            <Stack
+              sx={{
+                gap: '10px',
+              }}
+            >
+              <Typography>
+                {i18n._(
+                  'No, you are purchasing full access for a selected period of time. There is no auto-renewal, you can buy full access again when your current period ends.',
+                )}
+              </Typography>
+            </Stack>
+          ),
+        }}
+      />
+
+      <FaqItem
+        info={{
+          question: i18n._('Can I do a refund after purchase?'),
+          answer: i18n._(
+            'Yes. If you\'re not satisfied with the service, on "Profile/Payment history" page you can request a refund and we will discuss the details.',
+          ),
+        }}
+      />
+    </Stack>
   );
 };

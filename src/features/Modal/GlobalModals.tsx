@@ -7,6 +7,9 @@ import { useUsage } from '../Usage/useUsage';
 import { SubscriptionPaymentModal } from '../Usage/SubscriptionPaymentModal';
 import { useAuth } from '../Auth/useAuth';
 import { TeacherVoiceModal } from './TeacherVoiceModal';
+import { PaymentModal } from '../Usage/PaymentModal';
+
+const isUsePerHourModal = true; // TODO: remove when per hour modal will be fully implemented
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();
@@ -19,7 +22,8 @@ export const GlobalModals: React.FC = () => {
 
   return (
     <>
-      {usage.isShowPaymentModal && <SubscriptionPaymentModal />}
+      {usage.isShowPaymentModal && isUsePerHourModal && <PaymentModal />}
+      {usage.isShowPaymentModal && !isUsePerHourModal && <SubscriptionPaymentModal />}
 
       {activeUserProfile && (
         <UserProfileModal stat={activeUserProfile} onClose={() => game.showUserInModal('')} />
