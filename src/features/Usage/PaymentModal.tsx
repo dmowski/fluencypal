@@ -161,8 +161,15 @@ export const PaymentModal = () => {
             </Stack>
           </Stack>
 
-          <FaqHours />
-          <PriceContact />
+          <Stack
+            sx={{
+              paddingTop: '20px',
+              gap: '35px',
+            }}
+          >
+            <FaqHours />
+            <PriceContact />
+          </Stack>
         </Stack>
       </CustomModal>
     );
