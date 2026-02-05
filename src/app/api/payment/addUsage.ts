@@ -5,7 +5,7 @@ import { getUserBalance } from './getUserBalance';
 
 export const addUsage = async (userId: string, usage: UsageLog) => {
   const balance = await getUserBalance(userId);
-  if (balance.isGameWinner) {
+  if (!balance.isGameWinner) {
     await addToTotalBalance({
       userId,
       amountToAddHours: -usage.priceHours,
