@@ -8,40 +8,31 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { useUsage } from './useUsage';
+import { CustomModal } from '../../uiKit/Modal/CustomModal';
+import { useUsage } from '../useUsage';
 import { useNotifications } from '@toolpad/core/useNotifications';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import { useState } from 'react';
-import { useAuth } from '../Auth/useAuth';
-import { sendTelegramRequest } from '../Telegram/sendTextAiRequest';
-import dayjs from 'dayjs';
-import { PaymentLogType } from '@/common/usage';
+import { useAuth } from '../../Auth/useAuth';
+import { sendTelegramRequest } from '../../Telegram/sendTextAiRequest';
 import AssuredWorkloadIcon from '@mui/icons-material/AssuredWorkload';
-import { createStripeCheckout } from './createStripeCheckout';
-import { CircleCheck, Headset, Users } from 'lucide-react';
-import { usePathname, useRouter } from 'next/navigation';
+import { createStripeCheckout } from '../createStripeCheckout';
+import { CircleCheck } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { supportedLanguages } from '@/features/Lang/lang';
 import { useLingui } from '@lingui/react';
-import { getUrlStart } from '../Lang/getUrlStart';
-import { useCurrency } from '../User/useCurrency';
-import { convertHoursToHumanFormat, detailedHours } from '@/libs/convertHoursToHumanFormat';
+import { getUrlStart } from '../../Lang/getUrlStart';
+import { useCurrency } from '../../User/useCurrency';
+import { convertHoursToHumanFormat } from '@/libs/convertHoursToHumanFormat';
 import { pricePerHourUsd } from '@/common/ai';
-import { TRIAL_DAYS } from '@/common/subscription';
 import { sleep } from '@/libs/sleep';
-import { FaqItem } from '../Landing/FAQ/FaqItem';
-import { useSettings } from '../Settings/useSettings';
-import { FaqHours } from './HoursPaymentModal/FaqHours';
-import { BalanceHeader } from './HoursPaymentModal/BalanceHeader';
-import { PriceContact } from './HoursPaymentModal/PriceContact';
-import { HourCard } from './HoursPaymentModal/HourCard';
-import { BalanceContent } from './HoursPaymentModal/BalanceContent';
-import { FeatureList } from '../Landing/Price/FeatureList';
-import { Avatar } from '../Game/Avatar';
-import { useGame } from '../Game/useGame';
-import { ConfirmPaymentForm } from './HoursPaymentModal/ConfirmPaymentForm';
-import { useUrlState } from '../Url/useUrlState';
-import { FounderMessage } from './HoursPaymentModal/FounderMessage';
+import { useSettings } from '../../Settings/useSettings';
+import { BalanceHeader } from './BalanceHeader';
+import { BalanceContent } from './BalanceContent';
+import { useGame } from '../../Game/useGame';
+import { ConfirmPaymentForm } from './ConfirmPaymentForm';
+import { useUrlState } from '../../Url/useUrlState';
+import { FounderMessage } from './FounderMessage';
 
 export const HoursPaymentModal = () => {
   const usage = useUsage();

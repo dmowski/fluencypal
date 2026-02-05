@@ -7,7 +7,7 @@ import { useUsage } from '../Usage/useUsage';
 import { SubscriptionPaymentModal } from '../Usage/SubscriptionPaymentModal';
 import { useAuth } from '../Auth/useAuth';
 import { TeacherVoiceModal } from './TeacherVoiceModal';
-import { HoursPaymentModal } from '../Usage/HoursPaymentModal';
+import { HoursPaymentModal } from '../Usage/HoursPaymentModal/HoursPaymentModal';
 
 const isUsePerHourModal = true; // TODO: remove when per hour modal will be fully implemented
 
