@@ -26,7 +26,7 @@ import { useLingui } from '@lingui/react';
 import { getUrlStart } from '../Lang/getUrlStart';
 import { useCurrency } from '../User/useCurrency';
 import { convertHoursToHumanFormat } from '@/libs/convertHoursToHumanFormat';
-import { pricePerHour } from '@/common/ai';
+import { pricePerHourUsd } from '@/common/ai';
 import { TRIAL_DAYS } from '@/common/subscription';
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
@@ -247,12 +247,12 @@ export const PaymentModal = () => {
                   }}
                 >
                   {i18n._(`Price per one AI hour:`)}{' '}
-                  <b>{currency.convertUsdToCurrency(pricePerHour)}</b>
+                  <b>{currency.convertUsdToCurrency(pricePerHourUsd)}</b>
                 </Typography>
 
                 <Typography variant="h5">
                   {i18n._(`Total:`)}{' '}
-                  <b>{currency.convertUsdToCurrency(amountToAdd * pricePerHour)}</b>
+                  <b>{currency.convertUsdToCurrency(amountToAdd * pricePerHourUsd)}</b>
                 </Typography>
               </Stack>
               <Divider />
@@ -344,7 +344,7 @@ export const PaymentModal = () => {
                     variant="contained"
                   >
                     {i18n._(`Continue to payment`)} |{' '}
-                    {currency.convertUsdToCurrency(amountToAdd * pricePerHour)}
+                    {currency.convertUsdToCurrency(amountToAdd * pricePerHourUsd)}
                   </Button>
                   <Button
                     onClick={() => {

@@ -28,8 +28,6 @@ export const MODELS = {
   gpt_4o: 'gpt-4o',
 } as const;
 
-export const PROJECT_PROFIT_MARGIN = 0; //X
-
 export interface UsageEvent {
   total_tokens: number;
   input_tokens: number;
@@ -107,9 +105,7 @@ export const calculateTextUsagePrice = (usageEvent: TextUsageEvent, model: TextA
   const cachedTextPrice = (cachedTextInput / MILLION) * price.text_cached_input;
   const textOutputPrice = (textOutput / MILLION) * price.text_output;
   const usagePrice = fullTextPrice + cachedTextPrice + textOutputPrice;
-  const profit = usagePrice * PROJECT_PROFIT_MARGIN;
-  const priceWithMargin = usagePrice + profit;
-  return priceWithMargin;
+  return usagePrice;
 };
 
 interface RealtimeUsagePrice {
@@ -193,15 +189,17 @@ export const calculateUsagePrice = (usageEvent: UsageEvent, model: RealTimeModel
   const inputPrice = calculateInputPrice(usageEvent, model);
   const outputPrice = calculateOutputPrice(usageEvent, model);
   const usagePrice = inputPrice + outputPrice;
-  const profit = usagePrice * PROJECT_PROFIT_MARGIN;
-  const price = usagePrice + profit;
+  const price = usagePrice;
   return price;
 };
 
-export const pricePerHour = 3; // $3 is one hour
+export const pricePerHourUsd = 2;
 
-export const convertUsdToHours = (money: number) => {
-  return money / pricePerHour;
+export const convertUsageUsdToBalanceHours = (usageUsd: number, userPricePerHour: number) => {
+  const PROJECT_PROFIT_MARGIN = 1; // 100%
+  const profit = usageUsd * PROJECT_PROFIT_MARGIN;
+  const priceUsd = usageUsd + profit;
+  return priceUsd / userPricePerHour;
 };
 
 const audioTranscriptionPricePerMinute: Record<TranscriptAiModel, number> = {
@@ -217,10 +215,7 @@ export const calculateAudioTranscriptionPrice = (
   const durationInMinutes = durationSeconds / 60;
   const basePrice = pricePerMinute * durationInMinutes;
 
-  const profit = basePrice * PROJECT_PROFIT_MARGIN;
-  const priceWithMargin = basePrice + profit;
-
-  return priceWithMargin;
+  return basePrice;
 };
 
 const textToAudioPricePerMinute: Record<TextToAudioModal, number> = {
@@ -232,8 +227,5 @@ export const calculateTextToAudioPrice = (durationSeconds: number, model: TextTo
   const durationInMinutes = durationSeconds / 60;
   const basePrice = pricePerMinute * durationInMinutes;
 
-  const profit = basePrice * PROJECT_PROFIT_MARGIN;
-  const priceWithMargin = basePrice + profit;
-
-  return priceWithMargin;
+  return basePrice;
 };

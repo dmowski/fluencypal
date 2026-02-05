@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, ReactNode, JSX, useEffect, useRef, useState } from 'react';
-import { AiVoice, MODELS } from '@/common/ai';
+import { AiVoice, MODELS, pricePerHourUsd } from '@/common/ai';
 
 import { initWebRtcConversation } from './ConversationInstance/webRtc';
 
@@ -473,6 +473,7 @@ VISUAL_CONTEXT (latest): ${description}
         setIsAiSpeakingStartedFromConversation(false);
       },
       conversationId: conversationId || '',
+      userPricePerHourUsd: pricePerHourUsd,
     };
     return baseConfig;
   };

@@ -1,6 +1,6 @@
 import {
   calculateAudioTranscriptionPrice,
-  convertUsdToHours,
+  convertUsageUsdToBalanceHours,
   TranscriptAiModel,
 } from '@/common/ai';
 import { validateAuthToken } from '../config/firebase';
@@ -10,6 +10,7 @@ import { TranscriptUsageLog } from '@/common/usage';
 import { addUsage } from '../payment/addUsage';
 import { transcribeAudioFileWithOpenAI } from './transcribeAudioFileWithOpenAI';
 import { addConversationUsage } from '../usage/addConversationUsage';
+import { getUserPricePerHour } from '../usage/getUserPricePerHour';
 
 export async function POST(request: Request) {
   const data = await request.formData();
@@ -58,7 +59,8 @@ export async function POST(request: Request) {
       usageUsd: priceUsd,
     });
 
-    const priceHours = convertUsdToHours(priceUsd);
+    const userPricePerHour = await getUserPricePerHour(userId);
+    const priceHours = convertUsageUsdToBalanceHours(priceUsd, userPricePerHour);
     const usageLog: TranscriptUsageLog = {
       usageId: `${Date.now()}`,
       languageCode: supportedLang,

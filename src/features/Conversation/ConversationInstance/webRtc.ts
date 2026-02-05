@@ -2,7 +2,7 @@
 import {
   AiVoice,
   calculateUsagePrice,
-  convertUsdToHours,
+  convertUsageUsdToBalanceHours,
   RealTimeModel,
   UsageEvent,
 } from '@/common/ai';
@@ -141,6 +141,7 @@ export const initWebRtcConversation = async ({
   onMessageOrder,
   webCamDescription,
   conversationId,
+  userPricePerHourUsd,
 }: ConversationConfig): Promise<ConversationInstance> => {
   const audioId = 'audio_for_llm';
   const existingAudio = document.getElementById(audioId) as HTMLAudioElement | null;
@@ -187,10 +188,8 @@ export const initWebRtcConversation = async ({
       const usageId = event?.event_id || '';
       const usageEvent: UsageEvent | null = event?.response?.usage;
       if (usageEvent) {
-        // TODO: it doesn't work as you expect.
-        // calculating usage of realtime works weirdly
         const priceUsd = calculateUsagePrice(usageEvent, model);
-        const priceHours = convertUsdToHours(priceUsd);
+        const priceHours = convertUsageUsdToBalanceHours(priceUsd, userPricePerHourUsd);
         onAddUsage({
           usageId,
           usageEvent,

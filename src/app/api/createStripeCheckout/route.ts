@@ -4,8 +4,9 @@ import { getUrlStart } from '@/features/Lang/getUrlStart';
 import Stripe from 'stripe';
 import { validateAuthToken } from '../config/firebase';
 import { stripeConfig } from '../payment/config';
-import { pricePerHour } from '@/common/ai';
+import { pricePerHourUsd } from '@/common/ai';
 import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD } from '@/common/subscription';
+import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 
 async function getConversionRate(toCurrency: string): Promise<number> {
   const isToCurrencyIsUsd = toCurrency.toLowerCase() === 'usd';
@@ -51,13 +52,22 @@ export async function POST(request: Request) {
     const stripe = new Stripe(stripeKey);
     const requestData = (await request.json()) as StripeCreateCheckoutRequest;
     const { userId, currency } = requestData;
+    if (!currency) {
+      await sentSupportTelegramMessage({
+        message: `Currency is not set for user ${userId} in createStripeCheckout API`,
+        userId: userInfo.uid,
+      });
+
+      throw new Error('Currency is not set');
+    }
+
     const supportedLang = supportedLanguages.find((l) => l === requestData.languageCode) || 'en';
     const rate = await getConversionRate(currency.toLowerCase());
 
     if ('amountOfHours' in requestData) {
       const amountOfHours = requestData.amountOfHours;
-      const pricePerHourInCurrency = pricePerHour * rate;
-      if (amountOfHours > 400) {
+      const pricePerHourInCurrency = pricePerHourUsd * rate;
+      if (amountOfHours > 40) {
         const response: StripeCreateCheckoutResponse = {
           sessionUrl: null,
           error: 'Amount is too large',
@@ -79,7 +89,7 @@ export async function POST(request: Request) {
         line_items: [
           {
             price_data: {
-              currency: currency.toLowerCase() || 'pln',
+              currency: currency.toLowerCase() || 'usd',
               product_data: {
                 name: 'Balance Top-up',
                 description: `Add ${amountOfHours} hours to your account balance`,
@@ -139,7 +149,7 @@ export async function POST(request: Request) {
         line_items: [
           {
             price_data: {
-              currency: currency.toLowerCase() || 'pln',
+              currency: currency.toLowerCase() || 'usd',
               product_data: {
                 name: 'Full Access',
                 description: description,

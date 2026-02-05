@@ -1,11 +1,5 @@
 import '@testing-library/jest-dom';
-import {
-  calculateTextUsagePrice,
-  calculateUsagePrice,
-  pricePerHour,
-  PROJECT_PROFIT_MARGIN,
-  TextAiModel,
-} from './ai';
+import { calculateTextUsagePrice, calculateUsagePrice, TextAiModel } from './ai';
 
 describe('Calculate real time price', () => {
   const modelGpt4o = 'gpt-4o-realtime-preview';
@@ -38,7 +32,7 @@ describe('Calculate real time price', () => {
     expect(isFinite(price)).toBe(true);
 
     const aiPrice = 0.007585;
-    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+    const priceWithProfit = aiPrice;
 
     expect(price).toBe(priceWithProfit);
   });
@@ -66,7 +60,7 @@ describe('Calculate real time price', () => {
       modelGpt4o,
     );
     const aiPrice = 20;
-    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+    const priceWithProfit = aiPrice;
 
     expect(price).toBeDefined();
     expect(typeof price).toBe('number');
@@ -98,7 +92,7 @@ describe('Calculate real time price', () => {
       modelGpt4o,
     );
     const aiPrice = 40;
-    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+    const priceWithProfit = aiPrice;
     expect(price).toBeDefined();
     expect(typeof price).toBe('number');
     expect(isFinite(price)).toBe(true);
@@ -129,7 +123,7 @@ describe('Calculate real time price', () => {
       modelGpt4o,
     );
     const aiPrice = 2.5;
-    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+    const priceWithProfit = aiPrice;
     expect(price).toBeDefined();
     expect(typeof price).toBe('number');
     expect(isFinite(price)).toBe(true);
@@ -156,7 +150,7 @@ describe('Calculate text price', () => {
     expect(isFinite(price)).toBe(true);
 
     const aiPrice = 2.5;
-    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+    const priceWithProfit = aiPrice;
     expect(price).toBe(priceWithProfit);
   });
 
@@ -174,7 +168,7 @@ describe('Calculate text price', () => {
     expect(typeof price).toBe('number');
     expect(isFinite(price)).toBe(true);
     const aiPrice = 12.5;
-    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+    const priceWithProfit = aiPrice;
     expect(price).toBe(priceWithProfit);
   });
 
@@ -193,7 +187,7 @@ describe('Calculate text price', () => {
     expect(isFinite(price)).toBe(true);
 
     const aiPrice = 11.25;
-    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+    const priceWithProfit = aiPrice;
     expect(price).toBe(priceWithProfit);
   });
 
@@ -211,7 +205,7 @@ describe('Calculate text price', () => {
     expect(typeof price).toBe('number');
     expect(isFinite(price)).toBe(true);
     const aiPrice = 1.25;
-    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+    const priceWithProfit = aiPrice;
     expect(price).toBe(priceWithProfit);
   });
 });

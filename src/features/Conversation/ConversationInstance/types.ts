@@ -28,6 +28,7 @@ export interface ConversationConfig {
   playAudio: (textToPlay: string, voice: AiVoice, instruction: string) => Promise<void>;
 
   conversationId: string;
+  userPricePerHourUsd: number;
 }
 
 export type ConversationInstance = {
