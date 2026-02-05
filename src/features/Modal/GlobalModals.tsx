@@ -7,7 +7,7 @@ import { useUsage } from '../Usage/useUsage';
 import { SubscriptionPaymentModal } from '../Usage/SubscriptionPaymentModal';
 import { useAuth } from '../Auth/useAuth';
 import { TeacherVoiceModal } from './TeacherVoiceModal';
-import { PaymentModal } from '../Usage/PaymentModal';
+import { HoursPaymentModal } from '../Usage/HoursPaymentModal';
 
 const isUsePerHourModal = true; // TODO: remove when per hour modal will be fully implemented
 
@@ -22,7 +22,7 @@ export const GlobalModals: React.FC = () => {
 
   return (
     <>
-      {usage.isShowPaymentModal && isUsePerHourModal && <PaymentModal />}
+      {usage.isShowPaymentModal && isUsePerHourModal && <HoursPaymentModal />}
       {usage.isShowPaymentModal && !isUsePerHourModal && <SubscriptionPaymentModal />}
 
       {activeUserProfile && (

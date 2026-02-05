@@ -43,7 +43,7 @@ import { ConfirmPaymentForm } from './HoursPaymentModal/ConfirmPaymentForm';
 import { useUrlState } from '../Url/useUrlState';
 import { FounderMessage } from './HoursPaymentModal/FounderMessage';
 
-export const PaymentModal = () => {
+export const HoursPaymentModal = () => {
   const usage = useUsage();
   const auth = useAuth();
   const { i18n } = useLingui();
