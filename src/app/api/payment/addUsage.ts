@@ -5,12 +5,10 @@ import { getUserBalance } from './getUserBalance';
 
 export const addUsage = async (userId: string, usage: UsageLog) => {
   const balance = await getUserBalance(userId);
-  if (!balance.isGameWinner) {
-    await addToTotalBalance({
-      userId,
-      amountToAddHours: -usage.priceHours,
-    });
-  }
+  await addToTotalBalance({
+    userId,
+    amountToAddHours: balance.isGameWinner ? 0 : -usage.priceHours,
+  });
 
   const db = getDB();
   const docRef = db.collection(`users/${userId}/usageLogs`).doc(usage.usageId);
