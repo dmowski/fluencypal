@@ -29,7 +29,7 @@ export const BalanceContent = ({
           gap: '10px',
         }}
       >
-        <Typography variant="body2">{i18n._('Buy more hours. Why not?')}</Typography>
+        <Typography variant="body2">{i18n._('Here`s you can buy extra hours of AI')}</Typography>
         <Stack
           sx={{
             width: '100%',
@@ -48,21 +48,23 @@ export const BalanceContent = ({
             content={currency.convertUsdToCurrency(pricePerHourUsd)}
             buttonTitle={i18n._('Pay')}
             isRecommended={true}
-            footnote={i18n._('Good for trying the service')}
+            footnote={i18n._(
+              `Good for trying the service. It's about 3-5 short conversations with AI. Or one long practice session. You decide!`,
+            )}
           />
           <HourCard
             onClick={() => onSelectHourPackage(3)}
             label={i18n._('3 hours')}
             content={currency.convertUsdToCurrency(pricePerHourUsd * 3)}
             buttonTitle={i18n._('Pay')}
-            footnote={i18n._('If you feel it')}
+            footnote={i18n._('A bit more time to explore the app and create a habit.')}
           />
           <HourCard
             onClick={() => onSelectHourPackage(5)}
             label={i18n._('5 hours')}
             content={currency.convertUsdToCurrency(pricePerHourUsd * 5)}
             buttonTitle={i18n._('Pay')}
-            footnote={i18n._('My appreciation')}
+            footnote={i18n._(`That's the strong weekly plan.`)}
           />
         </Stack>
       </Stack>

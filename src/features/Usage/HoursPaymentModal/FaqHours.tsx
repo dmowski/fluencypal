@@ -23,7 +23,7 @@ export const FaqHours = () => {
         info={{
           question: i18n._('Can I get full access for free?'),
           answer: i18n._(
-            'Yes. Simply play on the Community page or send messages in the chat to earn points. The top five users will have full access as long as they remain at the top!',
+            'Yes. Simply play on the Community page or send messages in the community feed to earn points. The top five users will have full access as long as they remain at the top!',
           ),
         }}
       />
@@ -39,7 +39,7 @@ export const FaqHours = () => {
             >
               <Typography>
                 {i18n._(
-                  'No, you are purchasing a resources. There is no auto-renewal, you can buy it again when you need more.',
+                  'No, you purchase resources. There is no automatic renewal; you can purchase them again when you need more.',
                 )}
               </Typography>
             </Stack>

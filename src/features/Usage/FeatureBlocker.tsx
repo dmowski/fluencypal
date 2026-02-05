@@ -57,7 +57,9 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick: () => void 
               opacity: 0.7,
             }}
           >
-            {i18n._(`Upgrade your plan to unlock unlimited conversations.`)}
+            {i18n._(
+              `Sorry for that, but AI costs money... Unfortunately... But you can buy a short-term period to try the app and decide if it fits your needs.`,
+            )}
           </Typography>
         </Stack>
 
