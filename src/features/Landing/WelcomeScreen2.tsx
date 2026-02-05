@@ -202,6 +202,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                 height: '580px',
                 borderRadius: borderRadius,
                 position: 'relative',
+                aspectRatio: '411 / 896',
                 zIndex: 2,
                 boxShadow: isCenter ? '0 3px 70px rgba(0, 0, 0, 1)' : '0 4px 85px rgba(0, 0, 0, 1)',
 
