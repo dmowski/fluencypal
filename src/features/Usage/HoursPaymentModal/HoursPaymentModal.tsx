@@ -5,8 +5,6 @@ import { useNotifications } from '@toolpad/core/useNotifications';
 import { useState } from 'react';
 import { useAuth } from '../../Auth/useAuth';
 import { createStripeCheckout } from '../createStripeCheckout';
-import { usePathname } from 'next/navigation';
-import { supportedLanguages } from '@/features/Lang/lang';
 import { useLingui } from '@lingui/react';
 import { useCurrency } from '../../User/useCurrency';
 import { pricePerHourUsd } from '@/common/ai';
@@ -16,6 +14,7 @@ import { ConfirmPaymentForm } from './ConfirmPaymentForm';
 import { useUrlState } from '../../Url/useUrlState';
 import { FounderMessage } from './FounderMessage';
 import { PaymentSuccess } from './PaymentSuccess';
+import { useSettings } from '@/features/Settings/useSettings';
 
 export const HoursPaymentModal = () => {
   const usage = useUsage();
@@ -24,10 +23,7 @@ export const HoursPaymentModal = () => {
   const currency = useCurrency();
   const notifications = useNotifications();
   const [amountToAdd, setAmountToAdd] = useState(1);
-
-  const pathname = usePathname();
-  const locale = pathname?.split('/')[1] as string;
-  const supportedLang = supportedLanguages.find((l) => l === locale) || 'en';
+  const settings = useSettings();
 
   const [isRedirecting, setIsRedirecting] = useState(false);
 
@@ -37,7 +33,7 @@ export const HoursPaymentModal = () => {
       {
         userId: auth.uid,
         amountOfHours: amountToAdd,
-        languageCode: supportedLang,
+        languageCode: settings.pageLanguageCode,
         currency: currency.currency,
       },
       await auth.getToken(),

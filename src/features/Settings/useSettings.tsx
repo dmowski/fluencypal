@@ -48,6 +48,7 @@ interface SettingsContextType {
 
   aiVoiceSpeed: AiVoiceSpeed;
   setAiVoiceSpeed: (speed: AiVoiceSpeed) => Promise<void>;
+  pageLanguageCode: SupportedLanguage;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -72,6 +73,7 @@ export const settingsContext = createContext<SettingsContextType>({
 
   aiVoiceSpeed: 'slow',
   setAiVoiceSpeed: async () => {},
+  pageLanguageCode: 'en',
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -212,6 +214,7 @@ function useProvideSettings(): SettingsContextType {
 
   return {
     userCreatedAt,
+    pageLanguageCode: userSettings?.pageLanguageCode || 'en',
 
     setNativeLanguage,
     languageCode: userSettings?.languageCode || null,
