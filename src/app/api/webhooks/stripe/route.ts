@@ -159,7 +159,7 @@ export async function POST(request: Request) {
       } else {
         const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? '0') || 1;
 
-        const tgMessage = `User ${userEmail} purchased ${amountOfHours} hours.`;
+        const tgMessage = `🤑 User ${userEmail} purchased ${amountOfHours} hours.`;
         sentSupportTelegramMessage({ message: tgMessage, userId });
         await addPaymentLog({
           amount: amountPaid,
