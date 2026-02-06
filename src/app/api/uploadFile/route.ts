@@ -8,6 +8,8 @@ export async function POST(request: Request) {
   const data = await request.formData();
   const file = data.get('file') as File | null;
 
+  const isE2EBypass = process.env.E2E_UPLOAD_BYPASS === 'true';
+
   if (!file) {
     const errorResponse: UploadFileResponse = {
       error: 'File not found',
@@ -28,6 +30,17 @@ export async function POST(request: Request) {
       uploadUrl: '',
     };
     return Response.json(errorResponse, { status: validation.statusCode || 400 });
+  }
+
+  if (isE2EBypass) {
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const mimeType = file.type || (type === 'video' ? 'video/webm' : 'image/png');
+    const uploadUrl = `data:${mimeType};base64,${buffer.toString('base64')}`;
+    const response: UploadFileResponse = {
+      uploadUrl,
+      error: null,
+    };
+    return Response.json(response);
   }
 
   const userInfo = await validateAuthToken(request);
