@@ -29,12 +29,12 @@ export const activateAnalyticUser = () => {
   }
 };
 
-export const conversationStarted = () => {
+export const conversationStarted = (conversationId: string) => {
   try {
     if (typeof window === 'undefined') return;
 
     if (isDev()) {
-      console.log('[conversationStarted][dev]');
+      console.log('[conversationStarted][dev]', conversationId);
       return;
     }
 
@@ -43,7 +43,9 @@ export const conversationStarted = () => {
       return;
     }
 
-    window.gtag('event', 'ai_conversation_started');
+    window.gtag('event', 'ai_conversation_started', {
+      conversation_id: conversationId,
+    });
   } catch (error) {
     console.error('ai_conversation_started error:', error);
     Sentry.captureException(error);

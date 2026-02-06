@@ -290,23 +290,35 @@ VISUAL_CONTEXT (latest): ${description}
   }, [conversation.length]);
 
   const [isRestarting, setIsRestarting] = useState(false);
+  const isRestartingRef = useRef(isRestarting);
+  isRestartingRef.current = isRestarting;
   const restartConversation = async () => {
+    if (isRestartingRef.current) {
+      console.warn('Already restarting, skipping...');
+      return;
+    }
+    isRestartingRef.current = true;
     // current instance of conversation will restarted
 
     setIsRestarting(true);
     communicatorRef.current?.restartConversation();
     await sleep(500);
     setIsRestarting(false);
+    isRestartingRef.current = false;
   };
 
   const isStartedAnalyticLogged = useRef(false);
+
+  const messagesToRestart = 50;
 
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
     activateAnalyticUser();
     history.setMessages(conversationId, conversation);
 
-    if (conversation.length % 5 === 0 && currentMode === 'talk') {
+    const isActive = isSpeakingFromConversation || isAiSpeaking;
+    // xx
+    if (conversation.length % messagesToRestart === 0 && currentMode === 'talk' && !isActive) {
       // To prevent memory leak in case of very long conversations
       console.log('RESTART');
       restartConversation();

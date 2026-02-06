@@ -154,13 +154,16 @@ export const initWebRtcConversation = async ({
     document.body.appendChild(audioEl);
   }
 
+  let currentMuted = Boolean(isMuted);
+  let currentVolumeOn = Boolean(isVolumeOn);
+
   await sleep(2000); // Important for mobile devices
-  const userMedia = await navigator.mediaDevices.getUserMedia({
+  let userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
   await sleep(1000);
 
-  const peerConnection = new RTCPeerConnection();
+  let peerConnection = new RTCPeerConnection();
   peerConnection.ontrack = (e) => {
     const stream = e.streams[0];
     audioEl.srcObject = stream;
@@ -168,7 +171,7 @@ export const initWebRtcConversation = async ({
   };
   peerConnection.addTrack(userMedia.getTracks()[0]);
 
-  const dataChannel = peerConnection.createDataChannel('oai-events');
+  let dataChannel = peerConnection.createDataChannel('oai-events');
 
   const messageHandler = (e: MessageEvent) => {
     const event = JSON.parse(e.data);
@@ -314,32 +317,32 @@ export const initWebRtcConversation = async ({
   };
 
   const updateInstruction = async (partial: Partial<InstructionState>): Promise<void> => {
-    const isCorrectionExistsBefore = Boolean(instructionState.correction);
     Object.assign(instructionState, partial);
     const updatedInstruction = getInstruction();
     console.log('RTC updatedInstruction');
     console.log(updatedInstruction);
 
-    if (partial.correction || isCorrectionExistsBefore) {
-    }
-    await updateSession({
-      ...sessionPrompts,
-      initInstruction: updatedInstruction,
-    });
-  };
-
-  const sessionPrompts: UpdateSessionProps = {
-    dataChannel,
-    initInstruction: getInstruction(),
-    voice,
-    languageCode,
-    modalities: isVolumeOn ? ['audio', 'text'] : ['text'],
+    await updateSessionSafe(updatedInstruction);
   };
 
   const openHandler = async () => {
-    await sleep(600);
-    await updateInstruction({});
+    await sleep(200); // you can keep 600 if you want
+    await updateSessionSafe(); // send initial instruction for this NEW channel
     onOpen();
+  };
+
+  const addThreadsMessage = (message: string) => {
+    if (!dataChannel || dataChannel.readyState !== 'open') return;
+
+    const event = {
+      type: 'conversation.item.create',
+      item: {
+        type: 'message',
+        role: 'user',
+        content: [{ type: 'input_text', text: message }],
+      },
+    };
+    dataChannel.send(JSON.stringify(event));
   };
 
   dataChannel.addEventListener('message', messageHandler);
@@ -382,28 +385,9 @@ export const initWebRtcConversation = async ({
     }
   };
 
-  const addThreadsMessage = (message: string) => {
-    const event = {
-      type: 'conversation.item.create',
-      item: {
-        type: 'message',
-        role: 'user',
-        content: [
-          {
-            type: 'input_text',
-            text: message,
-          },
-        ],
-      },
-    };
-    dataChannel.send(JSON.stringify(event));
-  };
-
   const triggerAiResponse = async () => {
-    const event = {
-      type: 'response.create',
-    };
-    dataChannel.send(JSON.stringify(event));
+    if (!dataChannel || dataChannel.readyState !== 'open') return;
+    dataChannel.send(JSON.stringify({ type: 'response.create' }));
   };
 
   const toggleMute = (mute: boolean) => {
@@ -443,6 +427,95 @@ export const initWebRtcConversation = async ({
     console.warn('completeUserMessageDelta is not supported in WebRTC mode');
   };
 
+  let restartingPromise: Promise<void> | null = null;
+
+  // This function creates a brand new session (mic + pc + dc + SDP exchange)
+  const startWebRtc = async () => {
+    await sleep(2000); // your existing mobile warmup
+
+    userMedia = await navigator.mediaDevices.getUserMedia({ audio: true });
+    await sleep(1000);
+
+    peerConnection = new RTCPeerConnection();
+
+    peerConnection.ontrack = (e) => {
+      const stream = e.streams[0];
+      audioEl.srcObject = stream;
+      monitorWebRtcAudio(stream, setIsAiSpeaking);
+    };
+
+    peerConnection.addTrack(userMedia.getTracks()[0]);
+
+    dataChannel = peerConnection.createDataChannel('oai-events');
+
+    dataChannel.addEventListener('message', messageHandler);
+    dataChannel.addEventListener('open', openHandler);
+    dataChannel.addEventListener('close', closeEvent);
+    dataChannel.addEventListener('error', errorEvent);
+
+    const offer = await peerConnection.createOffer();
+    await peerConnection.setLocalDescription(offer);
+
+    const answer: RTCSessionDescriptionInit = {
+      type: 'answer',
+      sdp: await sendSdpOffer(offer, model, getAuthToken),
+    };
+
+    await peerConnection.setRemoteDescription(answer);
+
+    // Reapply states after connect attempt (safe even before open)
+    toggleMute(currentMuted);
+    await toggleVolume(currentVolumeOn);
+  };
+
+  const updateSessionSafe = async (partialInstructionOverride?: string) => {
+    if (!dataChannel || dataChannel.readyState !== 'open') return;
+
+    const event = {
+      type: 'session.update',
+      session: {
+        instructions: partialInstructionOverride ?? getInstruction(),
+        input_audio_transcription: {
+          model: 'gpt-4o-mini-transcribe',
+          language: languageCode,
+        },
+        voice,
+        modalities: currentVolumeOn ? ['audio', 'text'] : ['text'],
+        turn_detection: { type: 'semantic_vad', eagerness: 'auto' },
+      },
+    };
+
+    await sleep(100);
+    dataChannel.send(JSON.stringify(event));
+    await sleep(100);
+  };
+
+  const restartWebRpc = async () => {
+    if (restartingPromise) return restartingPromise;
+
+    restartingPromise = (async () => {
+      try {
+        // Close everything hard
+        closeHandler();
+
+        // Small cooldown helps prevent stuck ICE / rapid reconnect issues
+        await sleep(300);
+
+        // Start a fresh session
+        await startWebRtc();
+
+        // If you want to immediately force a session.update (even before "open"),
+        // do it after a short delay; openHandler will also do it.
+        //await sleep(250);
+        //await updateSessionSafe();
+      } finally {
+        restartingPromise = null;
+      }
+    })();
+
+    return restartingPromise;
+  };
+
   return {
     closeHandler,
 
@@ -462,5 +535,6 @@ export const initWebRtcConversation = async ({
     unlockVolume: () => {
       console.log('unlockVolume is not implemented in WebRTC mode');
     },
+    restartConversation: restartWebRpc,
   };
 };
