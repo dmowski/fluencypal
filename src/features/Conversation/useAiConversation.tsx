@@ -253,7 +253,7 @@ VISUAL_CONTEXT (latest): ${description}
   const communicatorRef = useRef(communicator);
   communicatorRef.current = communicator;
 
-  const planMessageCount = 40;
+  const planMessageCount = 10;
 
   const [isMuted, setIsMuted] = useState(true);
 
@@ -320,7 +320,7 @@ VISUAL_CONTEXT (latest): ${description}
 
   const isStartedAnalyticLogged = useRef(false);
 
-  const messagesToRestart = 50;
+  const messagesToRestart = 5;
 
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
@@ -329,7 +329,11 @@ VISUAL_CONTEXT (latest): ${description}
 
     const isActive = isSpeakingFromConversation || isAiSpeaking;
     // xx
-    if (conversation.length % messagesToRestart === 0 && currentMode === 'talk' && !isActive) {
+    if (
+      conversation.length % messagesToRestart === 0 &&
+      ['role-play', 'talk'].includes(currentMode) &&
+      !isActive
+    ) {
       // To prevent memory leak in case of very long conversations
       restartConversation();
       return;
