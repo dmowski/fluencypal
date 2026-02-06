@@ -13,8 +13,8 @@ export const MessagesToWinBadge = () => {
   const game = useGame();
   const access = useAccess();
   const pointsToMessage = 12;
-  const myCurrentPoints = game.myPoints || 0;
-  const top5PlayersPoints = game.stats.find((stat, index) => index === 5)?.points || 0;
+  const myCurrentPoints = (game.myPoints || 0) - 1;
+  const top5PlayersPoints = game.stats.find((stat, index) => index === 4)?.points || 0;
   const diff = top5PlayersPoints - myCurrentPoints;
   const messagesNeeded = Math.ceil(diff / pointsToMessage);
 
