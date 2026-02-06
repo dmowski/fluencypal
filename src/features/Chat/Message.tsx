@@ -28,6 +28,7 @@ import { CircleEllipsis, Heart, Languages, MessageCircle } from 'lucide-react';
 import { UserName } from '../User/UserName';
 import { Markdown } from '../uiKit/Markdown/Markdown';
 import { AttachmentImage } from './AttachmentImage';
+import { AttachmentVideo } from './AttachmentVideo';
 
 const limitMessages = 300;
 
@@ -724,17 +725,29 @@ export const Attachments = ({
       }}
     >
       {attachments.map((attachment, index) => {
-        if (attachment.type !== 'image') return null;
-
-        return (
-          <AttachmentImage
-            size="200px"
-            key={index}
-            url={attachment.url}
-            canDelete={canDelete}
-            onDelete={() => onDeleteAttachment?.(index)}
-          />
-        );
+        if (attachment.type === 'image') {
+          return (
+            <AttachmentImage
+              size="200px"
+              key={index}
+              url={attachment.url}
+              canDelete={canDelete}
+              onDelete={() => onDeleteAttachment?.(index)}
+            />
+          );
+        }
+        if (attachment.type === 'video') {
+          return (
+            <AttachmentVideo
+              size="200px"
+              key={index}
+              url={attachment.url}
+              canDelete={canDelete}
+              onDelete={() => onDeleteAttachment?.(index)}
+            />
+          );
+        }
+        return null;
       })}
     </Stack>
   );
