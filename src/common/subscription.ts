@@ -1,4 +1,4 @@
-export const PRICE_PER_MONTH_USD = 30;
+export const PRICE_PER_MONTH_USD = 35;
 
 export const PRICE_PER_DAY_USD = 2;
 
