@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'http://localhost:3000';
 // const BASE_URL = "https://fluencypal.com";
 
 /**
@@ -43,7 +43,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'pnpm run dev -- --port 3001',
+    command: 'pnpm run dev',
     url: BASE_URL,
     reuseExistingServer: true,
     timeout: 120000,
