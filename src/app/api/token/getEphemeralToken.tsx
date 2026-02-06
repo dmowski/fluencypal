@@ -3,15 +3,10 @@ import { getRandomAiToken, logUserTokenUsage } from '../sendSdpOffer/getRanomTok
 const openAIKeyDev = process.env.OPENAI_API_KEY_WEB_RTC || '';
 
 export const getEphemeralToken = async (model: string, userId: string) => {
-  const isDev = userId === 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2';
   const openAIKeyConfig = await getRandomAiToken();
-  const openAIKey = isDev ? openAIKeyDev : openAIKeyConfig.token;
+  const openAIKey = openAIKeyConfig.token;
 
-  if (!isDev) {
-    await logUserTokenUsage(userId, openAIKeyConfig.id);
-  } else {
-    console.log('DEV TOKEN');
-  }
+  await logUserTokenUsage(userId, openAIKeyConfig.id);
 
   if (!openAIKey) {
     throw new Error('Unable to create ephemeral token. Open AI env key is missing');
