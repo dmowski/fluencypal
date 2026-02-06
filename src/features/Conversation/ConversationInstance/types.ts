@@ -48,4 +48,6 @@ export type ConversationInstance = {
 
   addUserMessageDelta: (delta: string) => void;
   completeUserMessageDelta: ({ removeMessage }: { removeMessage?: boolean }) => void;
+
+  restartConversation: () => Promise<void>;
 };
