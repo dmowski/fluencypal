@@ -463,5 +463,6 @@ Format the summary as explicit facts: what user and teacher said.`;
     completeUserMessageDelta,
     lockVolume,
     unlockVolume,
+    restartConversation: async () => {},
   };
 };
