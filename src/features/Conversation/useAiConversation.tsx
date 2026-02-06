@@ -292,6 +292,12 @@ VISUAL_CONTEXT (latest): ${description}
     if (!conversationId || conversation.length === 0) return;
     activateAnalyticUser();
     history.setMessages(conversationId, conversation);
+
+    if (conversation.length > 100) {
+      // To prevent memory leak in case of very long conversations
+      closeConversation();
+      return;
+    }
     if (conversation.length === 1) {
       conversationStarted();
     }
