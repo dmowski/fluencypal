@@ -89,7 +89,8 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     );
   }
 
-  if (aiConversation.isRestarting) return <InfoBlockedSection title={i18n._(`Loading...`)} />;
+  if (aiConversation.isRestarting)
+    return <InfoBlockedSection title={i18n._(`Reloading conversation...`)} />;
 
   return (
     <Stack>

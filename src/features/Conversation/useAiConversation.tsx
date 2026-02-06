@@ -292,6 +292,7 @@ VISUAL_CONTEXT (latest): ${description}
   const [isRestarting, setIsRestarting] = useState(false);
   const isRestartingRef = useRef(isRestarting);
   isRestartingRef.current = isRestarting;
+
   const restartConversation = async () => {
     if (isRestartingRef.current) {
       console.warn('Already restarting, skipping...');
@@ -300,11 +301,21 @@ VISUAL_CONTEXT (latest): ${description}
     isRestartingRef.current = true;
     // current instance of conversation will restarted
 
+    toggleMute(true);
+    await sleep(1000);
     setIsRestarting(true);
-    communicatorRef.current?.restartConversation();
+
+    await sleep(10_000);
+
+    await communicatorRef.current?.restartConversation();
+
     await sleep(500);
+
     setIsRestarting(false);
-    isRestartingRef.current = false;
+
+    setTimeout(() => {
+      isRestartingRef.current = false;
+    }, 40_000);
   };
 
   const isStartedAnalyticLogged = useRef(false);
@@ -320,7 +331,6 @@ VISUAL_CONTEXT (latest): ${description}
     // xx
     if (conversation.length % messagesToRestart === 0 && currentMode === 'talk' && !isActive) {
       // To prevent memory leak in case of very long conversations
-      console.log('RESTART');
       restartConversation();
       return;
     }
@@ -489,6 +499,7 @@ VISUAL_CONTEXT (latest): ${description}
       isMuted,
       isVolumeOn,
       onAddUsage: (usageLog: UsageLog) => {
+        console.log(usageLog.priceUsd, usageLog);
         usage.setUsageLogs((prev) => [...prev, usageLog]);
       },
       languageCode: settings.languageCode || 'en',
