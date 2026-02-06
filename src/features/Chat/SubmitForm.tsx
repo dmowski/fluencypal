@@ -12,7 +12,9 @@ import { Keyboard, Lightbulb, Mic, TextSearch, Trash } from 'lucide-react';
 import { useTextAi } from '../Ai/useTextAi';
 import { ThreadsMessageAttachment } from './type';
 import { UploadImageButton } from '../Game/UploadImageButton';
+import { UploadVideoButton } from '../Game/UploadVideoButton';
 import { AttachmentImage } from './AttachmentImage';
+import { AttachmentVideo } from './AttachmentVideo';
 
 interface SubmitFormProps {
   onSubmit: (message: string, attachments: ThreadsMessageAttachment[]) => Promise<void>;
@@ -110,6 +112,16 @@ Provide only the message user can send, without any additional explanation or co
       ...prev,
       {
         type: 'image',
+        url,
+      },
+    ]);
+  };
+
+  const addVideo = (url: string) => {
+    setAttachments((prev) => [
+      ...prev,
+      {
+        type: 'video',
         url,
       },
     ]);
@@ -223,6 +235,7 @@ Provide only the message user can send, without any additional explanation or co
               }}
             >
               <UploadImageButton type="icon" onNewUploadUrl={(url) => addImage(url)} />
+              <UploadVideoButton type="icon" onNewUploadUrl={(url) => addVideo(url)} />
 
               <IconButton
                 onClick={generateIdeasForMessage}
@@ -359,9 +372,11 @@ Provide only the message user can send, without any additional explanation or co
                     '@media (max-width: 600px)': {
                       display: 'none',
                     },
+                    flexDirection: 'row',
                   }}
                 >
                   <UploadImageButton type="icon" onNewUploadUrl={(url) => addImage(url)} />
+                  <UploadVideoButton type="icon" onNewUploadUrl={(url) => addVideo(url)} />
                 </Stack>
               )}
 
@@ -416,12 +431,25 @@ Provide only the message user can send, without any additional explanation or co
               flexDirection: 'row',
               gap: '10px',
               alignItems: 'center',
+              flexWrap: 'wrap',
             }}
           >
             {attachments.map((attachment, index) => {
               if (attachment.type === 'image') {
                 return (
                   <AttachmentImage
+                    key={index}
+                    url={attachment.url}
+                    canDelete={true}
+                    onDelete={() =>
+                      setAttachments((prev) => prev.filter((_, attIndex) => attIndex !== index))
+                    }
+                  />
+                );
+              }
+              if (attachment.type === 'video') {
+                return (
+                  <AttachmentVideo
                     key={index}
                     url={attachment.url}
                     canDelete={true}
