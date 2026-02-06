@@ -1,7 +1,12 @@
-import { FFmpeg } from '@ffmpeg/ffmpeg';
-import { toBlobURL } from '@ffmpeg/util';
+/// <reference lib="webworker" />
+
 import type { WorkerResponse } from './types';
+import type { FFmpegLike } from './state';
 import { getFFmpeg, getIsLoading, setFFmpeg, setIsLoading } from './state';
+
+type FFmpegModule = {
+  FFmpeg: new () => FFmpegLike;
+};
 
 export async function loadFFmpeg(): Promise<void> {
   const existing = getFFmpeg();
@@ -30,54 +35,54 @@ export async function loadFFmpeg(): Promise<void> {
   setIsLoading(true);
 
   try {
+    console.log('[Worker] Loading FFmpeg ESM module from local public assets');
+
+    const baseURL = `${self.location.origin}/ffmpeg`;
+    const ffmpegModuleUrl = `${baseURL}/ffmpeg/index.js`;
+
+    let ffmpegModule: FFmpegModule | null = null;
+    try {
+      ffmpegModule = (await import(
+        /* webpackIgnore: true */ ffmpegModuleUrl
+      )) as FFmpegModule;
+    } catch (moduleError) {
+      const msg = moduleError instanceof Error ? moduleError.message : String(moduleError);
+      console.error('[Worker] Failed to import FFmpeg module:', ffmpegModuleUrl, msg);
+    }
+
+    if (!ffmpegModule?.FFmpeg) {
+      throw new Error('FFmpeg module failed to load from local assets');
+    }
+
     console.log('[Worker] Creating FFmpeg instance');
-    const ffmpeg = new FFmpeg();
+    const ffmpeg = new ffmpegModule.FFmpeg();
     setFFmpeg(ffmpeg);
 
     // Set up progress logging
     ffmpeg.on('log', ({ message }) => {
-      console.log('[FFmpeg Log]', message);
+      if (message) {
+        console.log('[FFmpeg Log]', message);
+      }
     });
 
     ffmpeg.on('progress', ({ progress, time }) => {
-      console.log('[FFmpeg Progress]', progress);
+      if (typeof progress === 'number') {
+        console.log('[FFmpeg Progress]', progress);
+      }
       self.postMessage({
         type: 'progress',
-        data: { progress: Math.round(progress * 100), time },
+        data: { progress: Math.round((progress ?? 0) * 100), time },
       } as WorkerResponse);
     });
 
-    // Load FFmpeg core from local service
-    // Use absolute URL with origin to ensure proper resolution in worker context
-    const baseURL = `${self.location.origin}/ffmpeg`;
-    console.log('[Worker] Loading FFmpeg core from local service:', baseURL);
+    // Load FFmpeg core files from local public assets
+    const coreURL = `${baseURL}/ffmpeg-core.js`;
+    const wasmURL = `${baseURL}/ffmpeg-core.wasm`;
+    const workerURL = `${baseURL}/ffmpeg/worker.js`;
+    console.log('[Worker] Using FFmpeg core URLs:', { coreURL, wasmURL, workerURL });
 
-    let coreURL: string;
     try {
-      coreURL = await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript');
-      console.log('[Worker] Core JS URL resolved:', coreURL);
-    } catch (urlError) {
-      const msg = urlError instanceof Error ? urlError.message : String(urlError);
-      console.error('[Worker] Failed to resolve core JS URL:', msg);
-      throw new Error(`Failed to load FFmpeg core JS: ${msg}`);
-    }
-
-    let wasmURL: string;
-    try {
-      wasmURL = await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm');
-      console.log('[Worker] Core WASM URL resolved:', wasmURL);
-    } catch (wasmError) {
-      const msg = wasmError instanceof Error ? wasmError.message : String(wasmError);
-      console.error('[Worker] Failed to resolve WASM URL:', msg);
-      throw new Error(`Failed to load FFmpeg WASM: ${msg}`);
-    }
-
-    console.log('[Worker] Calling ffmpeg.load()');
-    try {
-      await ffmpeg.load({
-        coreURL,
-        wasmURL,
-      });
+      await ffmpeg.load({ coreURL, wasmURL, workerURL });
     } catch (loadError) {
       const msg = loadError instanceof Error ? loadError.message : String(loadError);
       console.error('[Worker] FFmpeg.load() failed:', msg);
