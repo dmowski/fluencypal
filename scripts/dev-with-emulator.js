@@ -16,7 +16,7 @@ const http = require('http');
 const EMULATOR_UI_PORT = 4000;
 const EMULATOR_HUB_PORT = 4400;
 const READY_TIMEOUT = 60000; // 60 seconds
-const PORTS_TO_CLEAR = [3000, 4000, 4400, 8080, 9099, 9199];
+const PORTS_TO_CLEAR = [3000, 3001, 4000, 4400, 8080, 9099, 9199];
 
 /**
  * Kill process using a specific port
