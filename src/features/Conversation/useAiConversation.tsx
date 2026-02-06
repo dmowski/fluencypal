@@ -118,6 +118,7 @@ interface AiConversationContextType {
 
   isLimitedAiVoice: boolean;
   isLimitedRecording: boolean;
+  isRestarting: boolean;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -288,18 +289,32 @@ VISUAL_CONTEXT (latest): ${description}
     }
   }, [conversation.length]);
 
+  const [isRestarting, setIsRestarting] = useState(false);
+  const restartConversation = async () => {
+    // current instance of conversation will restarted
+
+    setIsRestarting(true);
+    communicatorRef.current?.restartConversation();
+    await sleep(500);
+    setIsRestarting(false);
+  };
+
+  const isStartedAnalyticLogged = useRef(false);
+
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
     activateAnalyticUser();
     history.setMessages(conversationId, conversation);
 
-    if (conversation.length > 100) {
+    if (conversation.length % 5 === 0 && currentMode === 'talk') {
       // To prevent memory leak in case of very long conversations
-      closeConversation();
+      console.log('RESTART');
+      restartConversation();
       return;
     }
-    if (conversation.length === 1) {
-      conversationStarted();
+    if (conversation.length === 1 && conversationId && isStartedAnalyticLogged.current === false) {
+      conversationStarted(conversationId);
+      isStartedAnalyticLogged.current = true;
     }
   }, [conversation]);
 
@@ -690,6 +705,7 @@ ${voiceInstructions}
   const startConversation = async (input: StartConversationProps) => {
     const newConversationId = `${Date.now()}`;
     setConversationId(newConversationId);
+    isStartedAnalyticLogged.current = false;
 
     if (!settings.languageCode) throw new Error('Language is not set | startConversation');
     setMessageOrder({});
@@ -878,6 +894,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 
     completeUserMessageDelta,
     addUserMessageDelta,
+    isRestarting,
   };
 }
 
