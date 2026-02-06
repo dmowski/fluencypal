@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'http://localhost:3001';
 // const BASE_URL = "https://fluencypal.com";
 
 /**
@@ -17,7 +17,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: 'line',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -43,10 +43,12 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'pnpm run build && pnpm run start',
-    //command: "pnpm run dev",
+    command: 'pnpm run dev -- --port 3001',
     url: BASE_URL,
     reuseExistingServer: true,
     timeout: 120000,
+    env: {
+      E2E_UPLOAD_BYPASS: 'true',
+    },
   },
 });
