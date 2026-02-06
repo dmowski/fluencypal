@@ -9,9 +9,14 @@ import { VideoConverter } from '../Video/videoConverter';
 interface UploadVideoButtonProps {
   onNewUploadUrl: (url: string) => void;
   type?: 'button' | 'icon';
+  uploadMode?: 'server' | 'mock';
 }
 
-export const UploadVideoButton = ({ onNewUploadUrl, type = 'button' }: UploadVideoButtonProps) => {
+export const UploadVideoButton = ({
+  onNewUploadUrl,
+  type = 'button',
+  uploadMode = 'server',
+}: UploadVideoButtonProps) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -45,6 +50,20 @@ export const UploadVideoButton = ({ onNewUploadUrl, type = 'button' }: UploadVid
       return;
     }
 
+    const blobToDataUrl = (blob: Blob) =>
+      new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          if (typeof reader.result === 'string') {
+            resolve(reader.result);
+            return;
+          }
+          reject(new Error('Failed to convert blob to data URL'));
+        };
+        reader.onerror = () => reject(new Error('Failed to read blob'));
+        reader.readAsDataURL(blob);
+      });
+
     try {
       setIsUploading(true);
 
@@ -58,6 +77,12 @@ export const UploadVideoButton = ({ onNewUploadUrl, type = 'button' }: UploadVid
 
       if (convertedFile.size > maxSize) {
         alert(i18n._('Converted file size must be less than 50MB'));
+        return;
+      }
+
+      if (uploadMode === 'mock') {
+        const dataUrl = await blobToDataUrl(convertedBlob);
+        onNewUploadUrl(dataUrl);
         return;
       }
 
