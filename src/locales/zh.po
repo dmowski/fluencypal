@@ -922,7 +922,7 @@ msgstr "架构与弹性"
 msgid "Are there any hidden fees?"
 msgstr "是否有任何隐藏费用？"
 
-#: src/features/Chat/Message.tsx:267
+#: src/features/Chat/Message.tsx:268
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
 msgstr "您确定要删除此附件吗？"
@@ -932,7 +932,7 @@ msgstr "您确定要删除此附件吗？"
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr "您确定要删除此聊天记录吗？此操作无法撤销。"
 
-#: src/features/Chat/Message.tsx:101
+#: src/features/Chat/Message.tsx:102
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "您确定要删除此消息吗？"
@@ -1375,7 +1375,7 @@ msgstr "FluencyPal 可以免费使用吗？"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:107
 #: src/features/Ai/AiKnowledgeModal.tsx:122
-#: src/features/Chat/Message.tsx:256
+#: src/features/Chat/Message.tsx:257
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:237
 #. js-lingui-explicit-id
@@ -1604,7 +1604,7 @@ msgstr "代码挑战与您实践过的**实际开发工作**感觉不同"
 msgid "Coding Skills"
 msgstr "编码技能"
 
-#: src/features/Chat/Message.tsx:523
+#: src/features/Chat/Message.tsx:524
 #. js-lingui-explicit-id
 msgid "Comment"
 msgstr "评论"
@@ -1897,6 +1897,11 @@ msgstr "对话英语练习"
 #. js-lingui-explicit-id
 msgid "conversational English practice"
 msgstr "对话英语练习"
+
+#: src/features/Game/UploadVideoButton.tsx:79
+#. js-lingui-explicit-id
+msgid "Converted file size must be less than 50MB"
+msgstr "转换后的文件大小必须小于50MB"
 
 #: src/features/Legal/CookiesPolicy.tsx:15
 #: src/features/Legal/LegalContainer.tsx:32
@@ -2224,7 +2229,7 @@ msgid "Debates and discussions"
 msgstr "辩论与讨论"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:106
-#: src/features/Chat/Message.tsx:378
+#: src/features/Chat/Message.tsx:379
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "删除"
@@ -2621,12 +2626,12 @@ msgid "Early access to new tools"
 msgstr "新的工具抢先体验"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:108
-#: src/features/Chat/Message.tsx:369
+#: src/features/Chat/Message.tsx:370
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "编辑"
 
-#: src/features/Chat/Message.tsx:332
+#: src/features/Chat/Message.tsx:333
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "已编辑"
@@ -3306,6 +3311,12 @@ msgstr "发送反馈失败。请稍后再试。"
 msgid "Failed to upload image. Please try again."
 msgstr "上传图片失败。请重试。"
 
+#: src/features/Game/UploadVideoButton.tsx:96
+#: src/features/Game/UploadVideoButton.tsx:103
+#. js-lingui-explicit-id
+msgid "Failed to upload video. Please try again."
+msgstr "无法上传视频。请再试一次。"
+
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
 msgid "Fairness Check"
@@ -3347,6 +3358,7 @@ msgid ""
 msgstr "反馈含糊不清：“**经验不足**”——但如果没有工作，你如何获得经验？"
 
 #: src/features/Game/UploadImageButton.tsx:37
+#: src/features/Game/UploadVideoButton.tsx:49
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "文件大小必须小于50MB"
@@ -4894,7 +4906,7 @@ msgstr ""
 "我已经在这个项目上工作了大约一年，我想我会继续长时间地工作下去。没有资金被削减或项目破产的风险——因为根本没有资金。只要有钱支付服务器费用，项目就能持续"
 "下去。而如果有一天我穷得支付不起了……好吧，我会租更便宜的服务器 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:166
+#: src/features/Chat/SubmitForm.tsx:178
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "您的消息创意："
@@ -5966,7 +5978,7 @@ msgstr "让我们看看谁的论据最好。"
 msgid "Let’s make sure you’re ready"
 msgstr "让我们确保你已做好准备"
 
-#: src/features/Chat/Message.tsx:513
+#: src/features/Chat/Message.tsx:514
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "喜欢"
@@ -6043,7 +6055,7 @@ msgstr "加载中。"
 msgid "Loading.."
 msgstr "加载中.."
 
-#: src/features/Chat/SubmitForm.tsx:86
+#: src/features/Chat/SubmitForm.tsx:88
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -6058,6 +6070,7 @@ msgstr "加载中.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Router/PracticePage.tsx:79
+#: src/features/Router/PracticePage.tsx:92
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
 #: src/features/Usage/SubscriptionPaymentModal.tsx:164
@@ -7145,7 +7158,7 @@ msgstr "请输入每位玩家的名字。"
 msgid "Please enter a valid email address"
 msgstr "请输入有效的电子邮件地址"
 
-#: src/features/Chat/SubmitForm.tsx:401
+#: src/features/Chat/SubmitForm.tsx:416
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "请录制一条较长的信息（至少几个字）。"
@@ -7159,6 +7172,11 @@ msgstr "请刷新页面并再试一次"
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
 msgstr "请选择一个有效的图像文件（JPEG、PNG、GIF 或 WebP）"
+
+#: src/features/Game/UploadVideoButton.tsx:43
+#. js-lingui-explicit-id
+msgid "Please select a valid video file (MP4, WebM, or MOV)"
+msgstr "请选择一个有效的视频文件 (MP4、WebM 或 MOV)"
 
 #: src/features/Alias/components/CategorySelection.tsx:88
 #. js-lingui-explicit-id
@@ -7709,7 +7727,7 @@ msgstr "在前5名中排名以免费获取该应用"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "排名前5以获得所有功能的完全访问权限！"
 
-#: src/features/Chat/SubmitForm.tsx:315
+#: src/features/Chat/SubmitForm.tsx:328
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
@@ -8241,7 +8259,7 @@ msgid "Salary negotiation preparation"
 msgstr "薪资谈判准备"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:105
-#: src/features/Chat/Message.tsx:253
+#: src/features/Chat/Message.tsx:254
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "保存"
@@ -8378,8 +8396,8 @@ msgstr "再次发送电子邮件"
 msgid "Send me sign-in link"
 msgstr "发送登录链接"
 
-#: src/features/Chat/SubmitForm.tsx:215
-#: src/features/Chat/SubmitForm.tsx:331
+#: src/features/Chat/SubmitForm.tsx:227
+#: src/features/Chat/SubmitForm.tsx:344
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "发送消息"
@@ -8395,7 +8413,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "发送 {messagesNeeded} 条消息以解锁完整访问权限"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:331
+#: src/features/Chat/SubmitForm.tsx:344
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -8525,7 +8543,7 @@ msgstr "展示对公司的了解和真诚的兴趣。例如:"
 msgid "Show less"
 msgstr "显示更少"
 
-#: src/features/Chat/Message.tsx:418
+#: src/features/Chat/Message.tsx:419
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
@@ -9035,7 +9053,7 @@ msgstr ""
 "在这个情境中，您将扮演一个求职者的角色，而我们的AI将扮演专业的招聘人员。您将被询问您的经验、技能和对这个角色的动机，AI会根据您的回答调整难度。利用提"
 "示来练习提供简洁、有说服力的答案，使您在任何工作面试中脱颖而出。"
 
-#: src/features/Chat/SubmitForm.tsx:291
+#: src/features/Chat/SubmitForm.tsx:304
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "停止"
@@ -9979,7 +9997,7 @@ msgstr "跟踪您的流利度进度"
 msgid "Transcribing..."
 msgstr "转录中..."
 
-#: src/features/Chat/Message.tsx:534
+#: src/features/Chat/Message.tsx:535
 #. js-lingui-explicit-id
 msgid "Translate"
 msgstr ""
@@ -10162,7 +10180,13 @@ msgstr "上传图片"
 msgid "Upload language skills directly to your brain"
 msgstr "将语言技能直接上传到你的大脑"
 
+#: src/features/Game/UploadVideoButton.tsx:142
+#. js-lingui-explicit-id
+msgid "Upload video"
+msgstr "上传视频"
+
 #: src/features/Game/UploadImageButton.tsx:93
+#: src/features/Game/UploadVideoButton.tsx:139
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "上传中..."
@@ -11322,7 +11346,7 @@ msgstr "你的工作面试准备伙伴"
 msgid "Your Language Level"
 msgstr "你的语言水平"
 
-#: src/features/Chat/SubmitForm.tsx:176
+#: src/features/Chat/SubmitForm.tsx:188
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"

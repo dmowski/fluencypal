@@ -967,7 +967,7 @@ msgstr "Архитектура и устойчивость"
 msgid "Are there any hidden fees?"
 msgstr "Есть ли скрытые сборы?"
 
-#: src/features/Chat/Message.tsx:267
+#: src/features/Chat/Message.tsx:268
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
 msgstr "Вы уверены, что хотите удалить это вложение?"
@@ -977,7 +977,7 @@ msgstr "Вы уверены, что хотите удалить это влож�
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr "Вы уверены, что хотите удалить этот чат? Это действие нельзя отменить."
 
-#: src/features/Chat/Message.tsx:101
+#: src/features/Chat/Message.tsx:102
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Вы уверены, что хотите удалить это сообщение?"
@@ -1442,7 +1442,7 @@ msgstr "Могу ли я использовать FluencyPal бесплатно?
 
 #: src/features/Ai/AiKnowledgeModal.tsx:107
 #: src/features/Ai/AiKnowledgeModal.tsx:122
-#: src/features/Chat/Message.tsx:256
+#: src/features/Chat/Message.tsx:257
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:237
 #. js-lingui-explicit-id
@@ -1690,7 +1690,7 @@ msgstr ""
 msgid "Coding Skills"
 msgstr "Навыки программирования"
 
-#: src/features/Chat/Message.tsx:523
+#: src/features/Chat/Message.tsx:524
 #. js-lingui-explicit-id
 msgid "Comment"
 msgstr "Комментарий"
@@ -1990,6 +1990,11 @@ msgstr "Практика разговорного английского"
 #. js-lingui-explicit-id
 msgid "conversational English practice"
 msgstr "практика разговорного английского"
+
+#: src/features/Game/UploadVideoButton.tsx:79
+#. js-lingui-explicit-id
+msgid "Converted file size must be less than 50MB"
+msgstr "Размер конвертированного файла должен быть меньше 50 МБ"
 
 #: src/features/Legal/CookiesPolicy.tsx:15
 #: src/features/Legal/LegalContainer.tsx:32
@@ -2338,7 +2343,7 @@ msgid "Debates and discussions"
 msgstr "Дебаты и обсуждения"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:106
-#: src/features/Chat/Message.tsx:378
+#: src/features/Chat/Message.tsx:379
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "Удалить"
@@ -2785,12 +2790,12 @@ msgid "Early access to new tools"
 msgstr "Ранний доступ к новым инструментам"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:108
-#: src/features/Chat/Message.tsx:369
+#: src/features/Chat/Message.tsx:370
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Редактировать"
 
-#: src/features/Chat/Message.tsx:332
+#: src/features/Chat/Message.tsx:333
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "отредактировано"
@@ -3548,6 +3553,12 @@ msgstr "Не удалось отправить отзыв. Пожалуйста,
 msgid "Failed to upload image. Please try again."
 msgstr "Не удалось загрузить изображение. Пожалуйста, попробуйте снова."
 
+#: src/features/Game/UploadVideoButton.tsx:96
+#: src/features/Game/UploadVideoButton.tsx:103
+#. js-lingui-explicit-id
+msgid "Failed to upload video. Please try again."
+msgstr "Не удалось загрузить видео. Пожалуйста, попробуйте еще раз."
+
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
 msgid "Fairness Check"
@@ -3591,6 +3602,7 @@ msgstr ""
 "опыт без работы?"
 
 #: src/features/Game/UploadImageButton.tsx:37
+#: src/features/Game/UploadVideoButton.tsx:49
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Размер файла должен быть меньше 50 МБ"
@@ -5339,7 +5351,7 @@ msgstr ""
 "стану настолько беден, что не смогу себе их позволить… что ж, я арендую "
 "дешевые сервера 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:166
+#: src/features/Chat/SubmitForm.tsx:178
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Идея для вашего сообщения:"
@@ -6562,7 +6574,7 @@ msgstr "Давайте посмотрим, у кого самые лучшие �
 msgid "Let’s make sure you’re ready"
 msgstr "Давайте убедимся, что вы готовы"
 
-#: src/features/Chat/Message.tsx:513
+#: src/features/Chat/Message.tsx:514
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "Нравится"
@@ -6639,7 +6651,7 @@ msgstr "Загрузка."
 msgid "Loading.."
 msgstr "Загрузка.."
 
-#: src/features/Chat/SubmitForm.tsx:86
+#: src/features/Chat/SubmitForm.tsx:88
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -6654,6 +6666,7 @@ msgstr "Загрузка.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Router/PracticePage.tsx:79
+#: src/features/Router/PracticePage.tsx:92
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
 #: src/features/Usage/SubscriptionPaymentModal.tsx:164
@@ -7815,7 +7828,7 @@ msgstr "Пожалуйста, введите имя каждого игрока.
 msgid "Please enter a valid email address"
 msgstr "Пожалуйста, введите действующий адрес электронной почты"
 
-#: src/features/Chat/SubmitForm.tsx:401
+#: src/features/Chat/SubmitForm.tsx:416
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Пожалуйста, запишите более длинное сообщение (как минимум несколько слов)."
@@ -7829,6 +7842,11 @@ msgstr "Пожалуйста, обновите страницу и попроб�
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
 msgstr "Пожалуйста, выберите допустимый файл изображения (JPEG, PNG, GIF или WebP)"
+
+#: src/features/Game/UploadVideoButton.tsx:43
+#. js-lingui-explicit-id
+msgid "Please select a valid video file (MP4, WebM, or MOV)"
+msgstr "Пожалуйста, выберите допустимый видео файл (MP4, WebM, или MOV)"
 
 #: src/features/Alias/components/CategorySelection.tsx:88
 #. js-lingui-explicit-id
@@ -8432,7 +8450,7 @@ msgstr "Войдите в топ-5, чтобы получить приложен
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Займите место в топ-5, чтобы получить полный доступ ко всем функциям!"
 
-#: src/features/Chat/SubmitForm.tsx:315
+#: src/features/Chat/SubmitForm.tsx:328
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
@@ -9002,7 +9020,7 @@ msgid "Salary negotiation preparation"
 msgstr "Подготовка к переговорам о зарплате"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:105
-#: src/features/Chat/Message.tsx:253
+#: src/features/Chat/Message.tsx:254
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Сохранить"
@@ -9145,8 +9163,8 @@ msgstr "Отправить письмо снова"
 msgid "Send me sign-in link"
 msgstr "Отправьте мне ссылку для входа"
 
-#: src/features/Chat/SubmitForm.tsx:215
-#: src/features/Chat/SubmitForm.tsx:331
+#: src/features/Chat/SubmitForm.tsx:227
+#: src/features/Chat/SubmitForm.tsx:344
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Отправить сообщение"
@@ -9162,7 +9180,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Отправьте {messagesNeeded} сообщений, чтобы разблокировать полный доступ"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:331
+#: src/features/Chat/SubmitForm.tsx:344
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -9300,7 +9318,7 @@ msgstr "Показывайте знание компании и искренни
 msgid "Show less"
 msgstr "Показать меньше"
 
-#: src/features/Chat/Message.tsx:418
+#: src/features/Chat/Message.tsx:419
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
@@ -9848,7 +9866,7 @@ msgstr ""
 "формулировке кратких, убедительных ответов, которые помогут вам выделиться "
 "на любом собеседовании."
 
-#: src/features/Chat/SubmitForm.tsx:291
+#: src/features/Chat/SubmitForm.tsx:304
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Стоп"
@@ -10869,7 +10887,7 @@ msgstr "Отслеживайте свой прогресс в свободном
 msgid "Transcribing..."
 msgstr "Транскрибация..."
 
-#: src/features/Chat/Message.tsx:534
+#: src/features/Chat/Message.tsx:535
 #. js-lingui-explicit-id
 msgid "Translate"
 msgstr "Перевести"
@@ -11052,7 +11070,13 @@ msgstr "Загрузить изображение"
 msgid "Upload language skills directly to your brain"
 msgstr "Загрузите знания языка прямо в ваш мозг"
 
+#: src/features/Game/UploadVideoButton.tsx:142
+#. js-lingui-explicit-id
+msgid "Upload video"
+msgstr "Загрузить видео"
+
 #: src/features/Game/UploadImageButton.tsx:93
+#: src/features/Game/UploadVideoButton.tsx:139
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "Загрузка..."
@@ -12340,7 +12364,7 @@ msgstr "Ваш партнёр по подготовке к собеседова�
 msgid "Your Language Level"
 msgstr "Ваш уровень языка"
 
-#: src/features/Chat/SubmitForm.tsx:176
+#: src/features/Chat/SubmitForm.tsx:188
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"

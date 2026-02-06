@@ -955,7 +955,7 @@ msgstr "Arkitektur & Modstandsdygtighed"
 msgid "Are there any hidden fees?"
 msgstr "Er der nogle skjulte gebyrer?"
 
-#: src/features/Chat/Message.tsx:267
+#: src/features/Chat/Message.tsx:268
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
 msgstr "Er du sikker på, at du vil slette denne vedhæftede fil?"
@@ -967,7 +967,7 @@ msgstr ""
 "Er du sikker på, at du vil slette denne chat? Denne handling kan ikke "
 "fortrydes."
 
-#: src/features/Chat/Message.tsx:101
+#: src/features/Chat/Message.tsx:102
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Er du sikker på, at du vil slette denne meddelelse?"
@@ -1427,7 +1427,7 @@ msgstr "Kan jeg bruge FluencyPal gratis?"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:107
 #: src/features/Ai/AiKnowledgeModal.tsx:122
-#: src/features/Chat/Message.tsx:256
+#: src/features/Chat/Message.tsx:257
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:237
 #. js-lingui-explicit-id
@@ -1677,7 +1677,7 @@ msgstr ""
 msgid "Coding Skills"
 msgstr "Kodningsfærdigheder"
 
-#: src/features/Chat/Message.tsx:523
+#: src/features/Chat/Message.tsx:524
 #. js-lingui-explicit-id
 msgid "Comment"
 msgstr "Kommentar"
@@ -1976,6 +1976,11 @@ msgstr "Samtaleengelsk Øvelse"
 #. js-lingui-explicit-id
 msgid "conversational English practice"
 msgstr "samtale engelsk praksis"
+
+#: src/features/Game/UploadVideoButton.tsx:79
+#. js-lingui-explicit-id
+msgid "Converted file size must be less than 50MB"
+msgstr "Den konverterede filstørrelse skal være mindre end 50 MB"
 
 #: src/features/Legal/CookiesPolicy.tsx:15
 #: src/features/Legal/LegalContainer.tsx:32
@@ -2321,7 +2326,7 @@ msgid "Debates and discussions"
 msgstr "Debatter og diskussioner"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:106
-#: src/features/Chat/Message.tsx:378
+#: src/features/Chat/Message.tsx:379
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "Slet"
@@ -2758,12 +2763,12 @@ msgid "Early access to new tools"
 msgstr "Tidlig adgang til nye værktøjer"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:108
-#: src/features/Chat/Message.tsx:369
+#: src/features/Chat/Message.tsx:370
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Rediger"
 
-#: src/features/Chat/Message.tsx:332
+#: src/features/Chat/Message.tsx:333
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "redigeret"
@@ -3507,6 +3512,12 @@ msgstr "Kunne ikke sende feedback. Prøv igen senere."
 msgid "Failed to upload image. Please try again."
 msgstr "Kunne ikke uploade billede. Prøv venligst igen."
 
+#: src/features/Game/UploadVideoButton.tsx:96
+#: src/features/Game/UploadVideoButton.tsx:103
+#. js-lingui-explicit-id
+msgid "Failed to upload video. Please try again."
+msgstr "Mislykkedes at uploade video. Prøv venligst igen."
+
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
 msgid "Fairness Check"
@@ -3550,6 +3561,7 @@ msgstr ""
 "uden et job?"
 
 #: src/features/Game/UploadImageButton.tsx:37
+#: src/features/Game/UploadVideoButton.tsx:49
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Filstørrelsen skal være mindre end 50 MB"
@@ -5287,7 +5299,7 @@ msgstr ""
 "serverne. Og hvis jeg en dag er fattig nok til, at jeg ikke har råd til "
 "dem... så lejer jeg bare billigere servere 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:166
+#: src/features/Chat/SubmitForm.tsx:178
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Idé til din besked:"
@@ -6489,7 +6501,7 @@ msgstr "Lad os se, hvem der har de bedste argumenter."
 msgid "Let’s make sure you’re ready"
 msgstr "Lad os sikre os, at du er klar"
 
-#: src/features/Chat/Message.tsx:513
+#: src/features/Chat/Message.tsx:514
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "Kan lide"
@@ -6566,7 +6578,7 @@ msgstr "Indlæser."
 msgid "Loading.."
 msgstr "Indlæser.."
 
-#: src/features/Chat/SubmitForm.tsx:86
+#: src/features/Chat/SubmitForm.tsx:88
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -6581,6 +6593,7 @@ msgstr "Indlæser.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Router/PracticePage.tsx:79
+#: src/features/Router/PracticePage.tsx:92
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
 #: src/features/Usage/SubscriptionPaymentModal.tsx:164
@@ -7727,7 +7740,7 @@ msgstr "Indtast venligst et navn for hver spiller."
 msgid "Please enter a valid email address"
 msgstr "Indtast venligst en gyldig e-mailadresse"
 
-#: src/features/Chat/SubmitForm.tsx:401
+#: src/features/Chat/SubmitForm.tsx:416
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Venligst optag en længere besked (mindst nogle få ord)."
@@ -7741,6 +7754,11 @@ msgstr "Opdater venligst siden og prøv en gang til"
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
 msgstr "Vælg venligst en gyldig billedfil (JPEG, PNG, GIF eller WebP)"
+
+#: src/features/Game/UploadVideoButton.tsx:43
+#. js-lingui-explicit-id
+msgid "Please select a valid video file (MP4, WebM, or MOV)"
+msgstr "Vælg venligst en gyldig videofil (MP4, WebM eller MOV)"
 
 #: src/features/Alias/components/CategorySelection.tsx:88
 #. js-lingui-explicit-id
@@ -8335,7 +8353,7 @@ msgstr "Rangér blandt top 5 for at få appen gratis"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Rangér i top 5 for at få fuld adgang til alle funktioner!"
 
-#: src/features/Chat/SubmitForm.tsx:315
+#: src/features/Chat/SubmitForm.tsx:328
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:276
 #. js-lingui-explicit-id
@@ -8893,7 +8911,7 @@ msgid "Salary negotiation preparation"
 msgstr "Forberedelse til lønforhandling"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:105
-#: src/features/Chat/Message.tsx:253
+#: src/features/Chat/Message.tsx:254
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Gem"
@@ -9036,8 +9054,8 @@ msgstr "Send e-mail igen"
 msgid "Send me sign-in link"
 msgstr "Send mig tilmeldingslink"
 
-#: src/features/Chat/SubmitForm.tsx:215
-#: src/features/Chat/SubmitForm.tsx:331
+#: src/features/Chat/SubmitForm.tsx:227
+#: src/features/Chat/SubmitForm.tsx:344
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Send besked"
@@ -9053,7 +9071,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Send {messagesNeeded} beskeder for at låse op for fuld adgang"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:331
+#: src/features/Chat/SubmitForm.tsx:344
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -9191,7 +9209,7 @@ msgstr "Vis viden om firmaet og ægte interesse. For eksempel:"
 msgid "Show less"
 msgstr "Vis mindre"
 
-#: src/features/Chat/Message.tsx:418
+#: src/features/Chat/Message.tsx:419
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
@@ -9736,7 +9754,7 @@ msgstr ""
 "præcise, overbevisende svar, der hjælper dig med at skille dig ud i ethvert "
 "jobinterview."
 
-#: src/features/Chat/SubmitForm.tsx:291
+#: src/features/Chat/SubmitForm.tsx:304
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Stop"
@@ -10751,7 +10769,7 @@ msgstr "Spor Dit Flydende Fremskridt"
 msgid "Transcribing..."
 msgstr "Transskriberer..."
 
-#: src/features/Chat/Message.tsx:534
+#: src/features/Chat/Message.tsx:535
 #. js-lingui-explicit-id
 msgid "Translate"
 msgstr "Translate"
@@ -10934,7 +10952,13 @@ msgstr "Upload billede"
 msgid "Upload language skills directly to your brain"
 msgstr "Upload sprogfærdigheder direkte til din hjerne"
 
+#: src/features/Game/UploadVideoButton.tsx:142
+#. js-lingui-explicit-id
+msgid "Upload video"
+msgstr "Upload video"
+
 #: src/features/Game/UploadImageButton.tsx:93
+#: src/features/Game/UploadVideoButton.tsx:139
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "Uploader..."
@@ -12202,7 +12226,7 @@ msgstr "Din jobsamtale forberedelsespartner"
 msgid "Your Language Level"
 msgstr "Din Sprog Niveau"
 
-#: src/features/Chat/SubmitForm.tsx:176
+#: src/features/Chat/SubmitForm.tsx:188
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"
