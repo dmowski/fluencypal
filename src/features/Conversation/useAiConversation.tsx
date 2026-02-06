@@ -29,7 +29,7 @@ import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
 import { setGlobalConversationId } from '../Usage/globalConversationId';
 import { getVoiceSpeedInstruction } from './CallMode/voiceSpeed';
-import { activateAnalyticUser } from '../Analytics/activationTracker';
+import { activateAnalyticUser, conversationStarted } from '../Analytics/activationTracker';
 
 const LIMITED_MESSAGES_COUNT = 12;
 const LIMITED_VOICE_MESSAGES_COUNT = 7;
@@ -292,6 +292,9 @@ VISUAL_CONTEXT (latest): ${description}
     if (!conversationId || conversation.length === 0) return;
     activateAnalyticUser();
     history.setMessages(conversationId, conversation);
+    if (conversation.length === 1) {
+      conversationStarted();
+    }
   }, [conversation]);
 
   const onAddDelta = (id: string, delta: string, isBot: boolean) => {

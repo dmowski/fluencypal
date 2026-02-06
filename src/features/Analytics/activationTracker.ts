@@ -28,3 +28,24 @@ export const activateAnalyticUser = () => {
     Sentry.captureException(error);
   }
 };
+
+export const conversationStarted = () => {
+  try {
+    if (typeof window === 'undefined') return;
+
+    if (isDev()) {
+      console.log('[conversationStarted][dev]');
+      return;
+    }
+
+    if (!window.gtag) {
+      console.warn('gtag not available, activation skipped');
+      return;
+    }
+
+    window.gtag('event', 'ai_conversation_started');
+  } catch (error) {
+    console.error('ai_conversation_started error:', error);
+    Sentry.captureException(error);
+  }
+};
