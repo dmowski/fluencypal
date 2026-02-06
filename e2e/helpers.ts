@@ -2,7 +2,10 @@ import { expect, Page } from '@playwright/test';
 
 export async function resetStorage(page: Page) {
   await page.addInitScript(() => {
+    // @ts-ignore-error 'window' is not defined in this context, but it will be when the script runs in the browser
     window.localStorage.clear();
+
+    // @ts-ignore-error 'window' is not defined in this context, but it will be when the script runs in the browser
     window.sessionStorage.clear();
   });
 }
