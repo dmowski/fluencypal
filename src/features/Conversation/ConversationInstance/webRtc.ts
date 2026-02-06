@@ -157,6 +157,10 @@ export const initWebRtcConversation = async ({
   let currentMuted = Boolean(isMuted);
   let currentVolumeOn = Boolean(isVolumeOn);
 
+  type SeedMsg = { isBot: boolean; text: string };
+
+  let lastMessages: SeedMsg[] = []; // update it from outside (see below)
+
   await sleep(2000); // Important for mobile devices
   let userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
@@ -244,6 +248,8 @@ export const initWebRtcConversation = async ({
         const id = event?.item_id as string;
         // console.log("TIMESTAMP CHECK event", event);
         onMessage({ isBot: false, text: userMessage, id });
+        // add message to localState
+        lastMessages.push({ isBot: false, text: userMessage });
       }
     }
 
@@ -264,6 +270,8 @@ export const initWebRtcConversation = async ({
       const id = event?.response?.output?.[0]?.id as string | undefined;
       if (id && botAnswer) {
         onMessage({ isBot: true, text: botAnswer || '', id });
+        // add message to localState
+        lastMessages.push({ isBot: true, text: botAnswer });
       }
     }
 
@@ -288,6 +296,9 @@ export const initWebRtcConversation = async ({
         if (userMessage && id) {
           // console.log("TIMESTAMP CHECK event", event);
           onMessage({ isBot: false, text: userMessage, id });
+
+          // add message to localState
+          lastMessages.push({ isBot: false, text: userMessage });
         }
       }
     }
@@ -326,9 +337,17 @@ export const initWebRtcConversation = async ({
   };
 
   const openHandler = async () => {
+    const last10 = lastMessages.slice(-10);
+    console.log('last10', last10);
+    if (last10.length > 0) {
+      await seedConversationItems(last10);
+    }
     await sleep(200); // you can keep 600 if you want
     await updateSessionSafe(); // send initial instruction for this NEW channel
-    onOpen();
+
+    if (last10.length === 0) {
+      onOpen();
+    }
   };
 
   const addThreadsMessage = (message: string) => {
@@ -514,6 +533,63 @@ export const initWebRtcConversation = async ({
     })();
 
     return restartingPromise;
+  };
+
+  const waitForDcOpen = async (timeoutMs = 5000) => {
+    const startedAt = Date.now();
+    while (!dataChannel || dataChannel.readyState !== 'open') {
+      await sleep(50);
+      if (Date.now() - startedAt > timeoutMs) return false;
+    }
+    return true;
+  };
+
+  const sendEvent = (event: any) => {
+    if (!dataChannel || dataChannel.readyState !== 'open') return false;
+    dataChannel.send(JSON.stringify(event));
+    return true;
+  };
+
+  const buildTranscript = (messages: SeedMsg[]) => {
+    // keep it short to avoid recreating the same cost problem
+    const MAX_CHARS_PER_MSG = 800;
+
+    return messages
+      .slice(-10)
+      .map((m) => {
+        const who = m.isBot ? 'Assistant' : 'User';
+        const text = (m.text || '').trim().slice(0, MAX_CHARS_PER_MSG);
+        return `${who}: ${text}`;
+      })
+      .join('\n');
+  };
+
+  // You’ll pass last10Messages from your app state into initWebRtcConversation,
+  // OR store them in a closure and update them via a setter.
+  // For now, assume you have them available as `lastMessages`.
+  const seedConversationItems = async (messages: SeedMsg[]) => {
+    const ok = await waitForDcOpen();
+    if (!ok) return;
+
+    const transcript = buildTranscript(messages);
+    if (!transcript) return;
+
+    sendEvent({
+      type: 'conversation.item.create',
+      item: {
+        type: 'message',
+        role: 'system',
+        content: [
+          {
+            type: 'input_text',
+            text:
+              `Conversation so far (most recent last):\n` +
+              transcript +
+              `\n\nContinue naturally from here.`,
+          },
+        ],
+      },
+    });
   };
 
   return {

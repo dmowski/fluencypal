@@ -320,7 +320,7 @@ VISUAL_CONTEXT (latest): ${description}
 
   const isStartedAnalyticLogged = useRef(false);
 
-  const messagesToRestart = 5;
+  const messagesToRestart = 100;
 
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
@@ -328,7 +328,6 @@ VISUAL_CONTEXT (latest): ${description}
     history.setMessages(conversationId, conversation);
 
     const isActive = isSpeakingFromConversation || isAiSpeaking;
-    // xx
     if (
       conversation.length % messagesToRestart === 0 &&
       ['role-play', 'talk'].includes(currentMode) &&
