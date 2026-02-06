@@ -24,25 +24,30 @@ export async function convertVideo(videoData: Uint8Array, _videoName: string): P
     let conversionPromise: Promise<number>;
     try {
       // Use VP8 (libvpx) instead of VP9 - more memory efficient for WASM
+      // Use 640:-2 scale without upscaling filter - input is 640x480 so this won't resize
       conversionPromise = ffmpeg.exec([
         '-i',
         inputName,
+        '-vf',
+        'scale=640:-2',
         '-c:v',
         'libvpx',
         '-b:v',
-        '1000k',
+        '300k',
         '-pix_fmt',
         'yuv420p',
+        '-deadline',
+        'realtime',
+        '-cpu-used',
+        '8',
+        '-threads',
+        '1',
         '-c:a',
         'libopus',
         '-b:a',
-        '128k',
+        '48k',
         '-ac',
-        '2',
-        '-quality',
-        'good',
-        '-cpu-used',
-        '5',
+        '1',
         outputName,
       ]);
     } catch (execError) {
