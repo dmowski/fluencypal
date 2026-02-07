@@ -360,11 +360,6 @@ function useProvideAiConversation(): AiConversationContextType {
     }
   }, [isLimitedAiVoice]);
 
-  const updateMessageOrder = (orderPart: MessagesOrderMap) => {
-    messages.setMessageOrder((prev) => {
-      return { ...prev, ...orderPart };
-    });
-  };
   const audio = useConversationAudio();
   const [isAiSpeakingStartedFromConversation, setIsAiSpeakingStartedFromConversation] =
     useState(false);
@@ -402,7 +397,7 @@ function useProvideAiConversation(): AiConversationContextType {
       },
       languageCode: settings.languageCode || 'en',
       getAuthToken: async () => await auth.getToken(),
-      onMessageOrder: updateMessageOrder,
+      onMessageOrder: messages.updateMessageOrder,
       generateTextWithAi: async ({ userMessage, systemMessage }) => {
         return await ai.generate({
           userMessage,
@@ -627,7 +622,7 @@ ${voiceInstructions}
     if (!settings.languageCode) throw new Error('Language is not set | startConversation');
 
     const newConversationId = messages.newConversation(input.mode);
-    messages.setMessageOrder({});
+    messages.resetMessageOrder();
 
     setLessonPlan(input.lessonPlan || null);
 

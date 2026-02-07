@@ -55,6 +55,12 @@ export const useAiConversationMessages = () => {
     return newConversationId;
   };
 
+  const updateMessageOrder = (orderPart: MessagesOrderMap) => {
+    setMessageOrder((prev) => {
+      return { ...prev, ...orderPart };
+    });
+  };
+
   return {
     conversation,
     conversationId,
@@ -62,6 +68,7 @@ export const useAiConversationMessages = () => {
     setConversation,
     newConversation,
     messageOrder,
-    setMessageOrder,
+    updateMessageOrder,
+    resetMessageOrder: () => setMessageOrder({}),
   };
 };
