@@ -349,7 +349,7 @@ VISUAL_CONTEXT (latest): ${description}
 
     await communicatorRef.current?.restartConversation();
     // xxx
-    const lastMessage = conversation[conversation.length - 1].text;
+    const lastMessage = conversation?.[conversation.length - 1]?.text;
     await sendTgMessage(`Restarting conversation. Last message before restart: ${lastMessage}`);
 
     await sleep(500);
@@ -376,7 +376,12 @@ VISUAL_CONTEXT (latest): ${description}
     const isActive = isSpeakingFromConversation || isAiSpeaking;
     const isModeForRestart = ['role-play', 'talk'].includes(currentMode);
 
-    if (conversation.length % messagesToRestart === 0 && isModeForRestart && !isActive) {
+    if (
+      conversation.length > 0 &&
+      conversation.length % messagesToRestart === 0 &&
+      isModeForRestart &&
+      !isActive
+    ) {
       // To prevent memory leak in case of very long conversations
       restartConversation();
       return;
