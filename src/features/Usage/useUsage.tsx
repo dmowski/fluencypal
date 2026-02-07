@@ -84,6 +84,25 @@ function useProvideUsage(): UsageContextType {
   const auth = useAuth();
   const userId = auth.uid;
 
+  const usageLogExistsRef = useRef<{ [usageId: string]: boolean }>({});
+
+  const createUsageLogWrapper = async (log: UsageLog) => {
+    if (usageLogExistsRef.current[log.usageId]) return;
+
+    const logDocRef = db.documents.usageLog(userId, log.usageId);
+    if (!logDocRef) return;
+
+    const dbLog = await getDoc(logDocRef);
+    const isExists = dbLog.exists();
+    if (isExists) {
+      usageLogExistsRef.current[log.usageId] = true;
+      return;
+    }
+
+    await createUsageLog({ usageLog: log }, await auth.getToken());
+    usageLogExistsRef.current[log.usageId] = true;
+  };
+
   const totalUsageDoc = db.documents.totalUsage(userId);
   const paymentLogCollection = db.collections.paymentLog(userId);
   const [paymentLogs] = useCollectionData(paymentLogCollection ? paymentLogCollection : null);
@@ -94,7 +113,7 @@ function useProvideUsage(): UsageContextType {
 
     await Promise.all(
       logs.map(async (log) => {
-        await createUsageLog({ usageLog: log }, await auth.getToken());
+        await createUsageLogWrapper(log);
       }),
     );
   };
@@ -104,14 +123,8 @@ function useProvideUsage(): UsageContextType {
       return;
     }
 
-    const lastUpdated = totalUsage?.lastUpdatedAt || 0;
-    const newUsageLogs = usageLogs.filter((log) => log.createdAt > lastUpdated);
-    if (newUsageLogs.length === 0) {
-      return;
-    }
-
-    saveLogs(newUsageLogs);
-  }, [totalUsage, usageLogs, userId, totalUsageDoc]);
+    saveLogs(usageLogs);
+  }, [usageLogs, userId, totalUsageDoc]);
 
   const isBalanceInit = useRef(false);
   const initWelcomeBalance = async () => {
