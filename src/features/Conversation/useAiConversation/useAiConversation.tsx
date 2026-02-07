@@ -157,6 +157,7 @@ function useProvideAiConversation(): AiConversationContextType {
       }
     }
 
+    // todo: move to useAiConversationMessages
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
     const messageCountToCheck = 10;
     if (
