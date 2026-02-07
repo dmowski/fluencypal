@@ -7,6 +7,8 @@ import { monitorWebRtcAudio } from './webRtc/monitorWebRtcAudio';
 import { InstructionState, SeedMsg, WebRtcState } from './webRtc/types';
 import { buildTranscript } from './webRtc/buildTranscript';
 import { getAudioEl } from './webRtc/getAudioEl';
+import { addThreadsMessage } from './webRtc/addThreadsMessage';
+import { triggerAiResponse } from './webRtc/triggerAiResponse';
 
 export const initWebRtcConversation = async ({
   model,
@@ -44,9 +46,7 @@ export const initWebRtcConversation = async ({
     audioEl: getAudioEl(),
   };
 
-  await sleep(2000); // Important for mobile devices
-
-  await sleep(1000);
+  await sleep(3000); // Important for mobile devices
 
   state.peerConnection.ontrack = (e) => {
     const stream = e.streams[0];
@@ -209,20 +209,6 @@ export const initWebRtcConversation = async ({
     }
   };
 
-  const addThreadsMessage = (message: string) => {
-    if (!state.dataChannel || state.dataChannel.readyState !== 'open') return;
-
-    const event = {
-      type: 'conversation.item.create',
-      item: {
-        type: 'message',
-        role: 'user',
-        content: [{ type: 'input_text', text: message }],
-      },
-    };
-    state.dataChannel.send(JSON.stringify(event));
-  };
-
   state.dataChannel.addEventListener('message', messageHandler);
   state.dataChannel.addEventListener('open', openHandler);
   state.dataChannel.addEventListener('close', closeEvent);
@@ -261,11 +247,6 @@ export const initWebRtcConversation = async ({
       state.peerConnection.close();
       console.log('Peer connection closed');
     }
-  };
-
-  const triggerAiResponse = async () => {
-    if (!state.dataChannel || state.dataChannel.readyState !== 'open') return;
-    state.dataChannel.send(JSON.stringify({ type: 'response.create' }));
   };
 
   const toggleMute = (mute: boolean) => {
@@ -428,9 +409,8 @@ export const initWebRtcConversation = async ({
   return {
     closeHandler,
 
-    addThreadsMessage,
-    triggerAiResponse,
-
+    addThreadsMessage: (message: string) => addThreadsMessage(message, state),
+    triggerAiResponse: async () => await triggerAiResponse(state),
     toggleMute,
     toggleVolume,
 
