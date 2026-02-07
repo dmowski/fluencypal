@@ -125,7 +125,7 @@ export class VideoConverter {
         this.loadReject = undefined;
         this.loadPromise = null;
         reject(new Error('FFmpeg loading timed out'));
-      }, 30000);
+      }, 120000);
 
       const originalResolve = resolve;
       this.loadResolve = () => {

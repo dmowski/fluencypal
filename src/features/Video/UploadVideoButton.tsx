@@ -76,11 +76,11 @@ export const UploadVideoButton = ({
       const result = await converterRef.current.convert(file, (progressData) => {
         setProgress(progressData.progress);
       });
-      const convertedBlob = new Blob([result.videoData.slice()], { type: 'video/webm' });
-      const convertedFile = new File([convertedBlob], result.videoName, { type: 'video/webm' });
+      const convertedBlob = new Blob([result.videoData.slice()], { type: 'video/mp4' });
+      const convertedFile = new File([convertedBlob], result.videoName, { type: 'video/mp4' });
 
       if (convertedFile.size > maxSize) {
-        alert(i18n._('Converted file size must be less than 50MB'));
+        alert(i18n._('Converted file size must be less than 250MB'));
         return;
       }
 

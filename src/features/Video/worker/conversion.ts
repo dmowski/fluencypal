@@ -10,7 +10,7 @@ export async function convertVideo(videoData: Uint8Array, _videoName: string): P
   }
 
   const inputName = 'input.mp4';
-  const outputName = 'output.webm';
+  const outputName = 'output.mp4';
 
   try {
     // Write input file to FFmpeg virtual file system
@@ -25,35 +25,30 @@ export async function convertVideo(videoData: Uint8Array, _videoName: string): P
     } as WorkerResponse);
 
     // Execute FFmpeg conversion with timeout
-    console.log('[Worker] Starting FFmpeg exec with optimized VP8 encoding');
+    console.log('[Worker] Starting FFmpeg exec with H.264 codec (memory efficient)');
 
     let conversionPromise: Promise<number>;
     try {
-      // Optimized VP8: better quality with faster processing
-      // cpu-used=5 balances quality and speed, deadline=good is faster than best
+      // Use H.264 (libx264) - most memory efficient for WASM
+      // Scale to 640p max to reduce memory usage
+      // CRF 28 balances quality and file size (lower = better, 0-51 range)
       conversionPromise = ffmpeg.exec([
         '-i',
         inputName,
         '-vf',
-        'scale=min(800\\,iw):-2',
+        'scale=min(640\\,iw):-2',
         '-c:v',
-        'libvpx',
-        '-b:v',
-        '700k',
+        'libx264',
+        '-preset',
+        'fast',
+        '-crf',
+        '24',
         '-pix_fmt',
         'yuv420p',
-        '-deadline',
-        'good',
-        '-cpu-used',
-        '5',
-        '-threads',
-        '1',
         '-c:a',
-        'libopus',
+        'aac',
         '-b:a',
-        '96k',
-        '-ac',
-        '2',
+        '128k',
         outputName,
       ]);
     } catch (execError) {
@@ -63,7 +58,7 @@ export async function convertVideo(videoData: Uint8Array, _videoName: string): P
     }
 
     const timeoutPromise = new Promise<number>((_, reject) =>
-      setTimeout(() => reject(new Error('FFmpeg conversion timeout after 120s')), 120000),
+      setTimeout(() => reject(new Error('FFmpeg conversion timeout after 600s')), 600000),
     );
 
     let exitCode: number;
@@ -105,7 +100,7 @@ export async function convertVideo(videoData: Uint8Array, _videoName: string): P
       const files = await ffmpeg.listDir('/');
       console.log('[Worker] Files in root:', files);
 
-      throw new Error(`Cannot read output.webm: ${readMsg}`);
+      throw new Error(`Cannot read output.mp4: ${readMsg}`);
     }
 
     // Clean up
