@@ -12,7 +12,7 @@ import { Keyboard, Lightbulb, Mic, TextSearch, Trash } from 'lucide-react';
 import { useTextAi } from '../Ai/useTextAi';
 import { ThreadsMessageAttachment } from './type';
 import { UploadImageButton } from '../Game/UploadImageButton';
-import { UploadVideoButton } from '../Game/UploadVideoButton';
+import { UploadVideoButton } from '../Video/UploadVideoButton';
 import { AttachmentImage } from './AttachmentImage';
 import { AttachmentVideo } from './AttachmentVideo';
 

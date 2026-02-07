@@ -4,7 +4,7 @@ import { useAuth } from '../Auth/useAuth';
 import { sendUploadFileRequest } from '@/app/api/uploadFile/sendUploadFileRequest';
 import { useEffect, useRef, useState } from 'react';
 import { Video } from 'lucide-react';
-import { VideoConverter } from '../Video/videoConverter';
+import { VideoConverter } from './videoConverter';
 
 interface UploadVideoButtonProps {
   onNewUploadUrl: (url: string) => void;

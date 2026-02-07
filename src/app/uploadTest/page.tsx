@@ -3,7 +3,7 @@
 import { Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 import { UploadImageButton } from '@/features/Game/UploadImageButton';
-import { UploadVideoButton } from '@/features/Game/UploadVideoButton';
+import { UploadVideoButton } from '@/features/Video/UploadVideoButton';
 
 export default function UploadTestPage() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
