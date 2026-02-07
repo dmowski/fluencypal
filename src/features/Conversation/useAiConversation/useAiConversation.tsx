@@ -5,7 +5,6 @@ import { AiVoice, MODELS, pricePerHourUsd } from '@/common/ai';
 
 import { initWebRtcConversation } from '../ConversationInstance/webRtc';
 
-import { useChatHistory } from '../../ConversationHistory/useChatHistory';
 import { useUsage } from '../../Usage/useUsage';
 import { useSettings } from '../../Settings/useSettings';
 import { UsageLog } from '@/common/usage';
@@ -26,15 +25,13 @@ import { ConversationConfig, ConversationInstance } from '../ConversationInstanc
 import { useTextAi } from '../../Ai/useTextAi';
 import { initTextConversation } from '../ConversationInstance/textConversation';
 import { useConversationAudio } from '../../Audio/useConversationAudio';
-import { setGlobalConversationId } from '../../Usage/globalConversationId';
-import { activateAnalyticUser, conversationStarted } from '../../Analytics/activationTracker';
-import { sendTelegramRequest } from '../../Telegram/sendTextAiRequest';
 import { showDebugInfoBadgeOnTopWindow } from './showDebugInfoBadgeOnTopWindow';
 import { AiConversationContextType, StartConversationProps } from './types';
 import { getVoiceInstructions } from './getVoiceInstructions';
 import { teacherRules } from './teacherRules';
 import { getConversationStarterMessagePrompt } from './getConversationStarterMessagePrompt';
 import { getWebCamDescriptionInstruction } from './getWebCamDescriptionInstruction';
+import { useAiConversationMessages } from './useAiConversationMessages';
 
 const LIMITED_MESSAGES_COUNT = 12;
 const LIMITED_VOICE_MESSAGES_COUNT = 7;
@@ -44,7 +41,6 @@ const AiConversationContext = createContext<AiConversationContextType | null>(nu
 
 function useProvideAiConversation(): AiConversationContextType {
   const [isInitializing, setIsInitializing] = useState('');
-  const history = useChatHistory();
   const auth = useAuth();
   const settings = useSettings();
   const aiUserInfo = useAiUserInfo();
@@ -121,16 +117,10 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const [isStarted, setIsStarted] = useState(false);
 
-  const [conversationId, setConversationIdInternal] = useState<string | null>(null);
-
-  const setConversationId = (id: string | null) => {
-    setConversationIdInternal(id);
-    setGlobalConversationId(id);
-  };
-
   const [goalInfo, setGoalInfo] = useState<GoalElementInfo | null>(null);
 
-  const [conversation, setConversation] = useState<ConversationMessage[]>([]);
+  const messages = useAiConversationMessages();
+
   const [errorInitiating, setErrorInitiating] = useState<string>();
   const [isClosing, setIsClosing] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
@@ -138,8 +128,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isUserSpeaking, setIsUserSpeaking] = useState(false);
   const tasks = useTasks();
   const plan = usePlan();
-
-  const [messageOrder, setMessageOrder] = useState<MessagesOrderMap>({});
 
   const appMode = settings.appMode;
 
@@ -157,9 +145,9 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
-    if (!conversationId || conversation.length === 0) return;
+    if (!messages.conversationId || messages.conversation.length === 0) return;
 
-    if (conversation.length === 2) {
+    if (messages.conversation.length === 2) {
       if (currentMode === 'words') {
         tasks.completeTask('words');
       } else if (currentMode === 'rule') {
@@ -173,20 +161,20 @@ function useProvideAiConversation(): AiConversationContextType {
     const messageCountToCheck = 10;
     if (
       isNeedToSaveUserInfo &&
-      conversation.length >= 3 &&
-      conversation.length % messageCountToCheck === 0
+      messages.conversation.length >= 3 &&
+      messages.conversation.length % messageCountToCheck === 0
     ) {
-      const lastMessagesToCheck = conversation.filter(
+      const lastMessagesToCheck = messages.conversation.filter(
         (_, index, all) => index >= all.length - messageCountToCheck,
       );
       aiUserInfo.updateUserInfo(lastMessagesToCheck);
     }
 
-    const usersMessagesCount = conversation.filter((message) => !message.isBot).length;
+    const usersMessagesCount = messages.conversation.filter((message) => !message.isBot).length;
     if (usersMessagesCount === planMessageCount && goalInfo) {
       plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
     }
-  }, [conversation.length]);
+  }, [messages.conversation.length]);
 
   const [isRestarting, setIsRestarting] = useState(false);
   const isRestartingRef = useRef(isRestarting);
@@ -217,7 +205,7 @@ function useProvideAiConversation(): AiConversationContextType {
     await sleep(10_000);
 
     await communicatorRef.current?.restartConversation();
-    const lastMessage = conversation?.[conversation.length - 1]?.text;
+    const lastMessage = messages.conversation?.[messages.conversation.length - 1]?.text;
     await auth.sendTgMessage(
       `Restarting conversation. Last message before restart: ${lastMessage}`,
     );
@@ -247,8 +235,8 @@ function useProvideAiConversation(): AiConversationContextType {
     const isModeForRestart = ['role-play', 'talk'].includes(currentMode);
 
     if (
-      conversation.length > 0 &&
-      conversation.length % messagesToRestart === 0 &&
+      messages.conversation.length > 0 &&
+      messages.conversation.length % messagesToRestart === 0 &&
       isModeForRestart &&
       !isActive
     ) {
@@ -256,22 +244,10 @@ function useProvideAiConversation(): AiConversationContextType {
       restartConversation();
       return;
     }
-  }, [conversation.length, messagesToRestart]);
-
-  const isStartedAnalyticLogged = useRef(false);
-  useEffect(() => {
-    if (!conversationId || conversation.length === 0) return;
-    activateAnalyticUser();
-    history.setMessages(conversationId, conversation);
-
-    if (conversation.length === 1 && conversationId && isStartedAnalyticLogged.current === false) {
-      conversationStarted(conversationId);
-      isStartedAnalyticLogged.current = true;
-    }
-  }, [conversation]);
+  }, [messages.conversation.length, messagesToRestart]);
 
   const onAddDelta = (id: string, delta: string, isBot: boolean) => {
-    setConversation((prev) => {
+    messages.setConversation((prev) => {
       let isNew = true;
 
       const newMessage = prev.map((message) => {
@@ -318,7 +294,7 @@ function useProvideAiConversation(): AiConversationContextType {
   };
 
   const onMessage = (message: ConversationMessage) => {
-    setConversation((prev) => {
+    messages.setConversation((prev) => {
       const isExisting = prev.find((m) => m.id === message.id);
 
       if (isExisting) {
@@ -336,8 +312,8 @@ function useProvideAiConversation(): AiConversationContextType {
         console.log('message', message);
         Sentry.captureException(new Error('Empty message from AI.'), {
           extra: {
-            conversationId,
-            conversation,
+            conversationId: messages.conversationId,
+            conversation: messages.conversation,
           },
         });
       }
@@ -361,7 +337,8 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const isLimitedRecording = isFullAppAccess
     ? false
-    : conversation.length >= LIMITED_MESSAGES_COUNT && ['role-play', 'talk'].includes(currentMode);
+    : messages.conversation.length >= LIMITED_MESSAGES_COUNT &&
+      ['role-play', 'talk'].includes(currentMode);
 
   useEffect(() => {
     if (isLimitedRecording) {
@@ -370,7 +347,7 @@ function useProvideAiConversation(): AiConversationContextType {
   }, [isLimitedRecording]);
 
   const isLimitedAiVoice =
-    isFullAppAccess === false && conversation.length >= LIMITED_VOICE_MESSAGES_COUNT;
+    isFullAppAccess === false && messages.conversation.length >= LIMITED_VOICE_MESSAGES_COUNT;
 
   useEffect(() => {
     if (isLimitedAiVoice) {
@@ -383,19 +360,8 @@ function useProvideAiConversation(): AiConversationContextType {
     }
   }, [isLimitedAiVoice]);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (conversation.length === 0 || !conversationId) return;
-      history.saveConversation(conversationId, conversation, messageOrder);
-    }, 2000);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [isAiSpeaking, conversationId]);
-
   const updateMessageOrder = (orderPart: MessagesOrderMap) => {
-    setMessageOrder((prev) => {
+    messages.setMessageOrder((prev) => {
       return { ...prev, ...orderPart };
     });
   };
@@ -451,7 +417,7 @@ function useProvideAiConversation(): AiConversationContextType {
         await audio.speak(textToPlay, { instructions: instruction, voice });
         setIsAiSpeakingStartedFromConversation(false);
       },
-      conversationId: conversationId || '',
+      conversationId: messages.conversationId || '',
       userPricePerHourUsd: pricePerHourUsd,
     };
     return baseConfig;
@@ -658,12 +624,10 @@ ${voiceInstructions}
   };
 
   const startConversation = async (input: StartConversationProps) => {
-    const newConversationId = `${Date.now()}`;
-    setConversationId(newConversationId);
-    isStartedAnalyticLogged.current = false;
-
     if (!settings.languageCode) throw new Error('Language is not set | startConversation');
-    setMessageOrder({});
+
+    const newConversationId = messages.newConversation(input.mode);
+    messages.setMessageOrder({});
 
     setLessonPlan(input.lessonPlan || null);
 
@@ -694,7 +658,7 @@ ${voiceInstructions}
       setIsStarted(true);
       setIsInitializing(`Loading...`);
       setCurrentMode(input.mode);
-      setConversation([]);
+      messages.setConversation([]);
       setIsClosing(false);
       setIsClosed(false);
       setErrorInitiating('');
@@ -757,11 +721,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
         conversationId: newConversationId,
       });
       setVoice(conversationConfig.voice || input.voice || null);
-      history.createConversation({
-        conversationId: newConversationId,
-        languageCode: settings.languageCode,
-        mode: input.mode,
-      });
+
       setCommunicator(conversation);
     } catch (e) {
       console.error(e);
@@ -785,8 +745,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
     communicator?.closeHandler();
     setLessonPlanAnalysis(null);
 
-    setConversationId(null);
-    setConversation([]);
+    messages.setConversationId(null);
+    messages.setConversation([]);
   };
 
   const addUserMessage = async (message: string) => {
@@ -802,11 +762,11 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
     isLimitedRecording,
     currentMode,
     voice: voice || 'shimmer',
-    conversationId,
+    conversationId: messages.conversationId,
     isInitializing,
     isStarted,
     startConversation,
-    conversation,
+    conversation: messages.conversation,
     errorInitiating,
     isClosing,
     isAiSpeaking: isSpeakingFromConversation || isAiSpeaking,
@@ -820,7 +780,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
     toggleVolume,
     setIsStarted,
     goalInfo,
-    messageOrder,
+    messageOrder: messages.messageOrder,
     setWebCamDescription,
     closeConversation,
     toggleConversationMode,

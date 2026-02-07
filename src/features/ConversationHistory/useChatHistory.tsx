@@ -19,7 +19,6 @@ interface ChatHistoryContextType {
     languageCode: SupportedLanguage;
     mode: ConversationType;
   }) => Promise<void>;
-  setMessages: (conversationId: string, messages: ConversationMessage[]) => Promise<void>;
   saveConversation: (
     conversationId: string,
     messages: ConversationMessage[],
@@ -67,7 +66,11 @@ function useProvideChatHistory(): ChatHistoryContextType {
     return data;
   };
 
-  const setMessages = async (conversationId: string, messages: ConversationMessage[]) => {
+  const saveConversation = async (
+    conversationId: string,
+    messages: ConversationMessage[],
+    messageOrder: MessagesOrderMap,
+  ) => {
     const conversationDoc = getConversationDoc(conversationId);
     await setDoc(
       conversationDoc,
@@ -76,6 +79,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
         messagesCount: messages.length,
         updatedAt: Date.now(),
         updatedAtIso: new Date().toISOString(),
+        messageOrder,
       },
       { merge: true },
     );
@@ -107,31 +111,11 @@ function useProvideChatHistory(): ChatHistoryContextType {
     await setDoc(conversationDoc, conversationInfo);
   };
 
-  const saveConversation = async (
-    conversationId: string,
-    messages: ConversationMessage[],
-    messageOrder: MessagesOrderMap,
-  ) => {
-    const conversationDoc = getConversationDoc(conversationId);
-    await setDoc(
-      conversationDoc,
-      {
-        messages,
-        messagesCount: messages.length,
-        updatedAtIso: new Date().toISOString(),
-        updatedAt: Date.now(),
-        messageOrder,
-      },
-      { merge: true },
-    );
-  };
-
   return {
     conversations: conversations || [],
     loading,
     createConversation,
     getLastConversations,
-    setMessages,
     saveConversation,
   };
 }
