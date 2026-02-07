@@ -12,26 +12,12 @@ import { toggleVolume } from './webRtc/toggleVolume';
 import { toggleMute } from './webRtc/toggleMute';
 import { closeHandler } from './webRtc/closeHandler';
 import { seedConversationItems } from './webRtc/seedConversationItems';
+import { getInstruction } from './webRtc/getInstruction';
+import { updateSessionSafe } from './webRtc/updateSessionSafe';
 
-export const initWebRtcConversation = async ({
-  model,
-  initInstruction,
-  onMessage,
-  onOpen,
-  setIsAiSpeaking,
-  setIsUserSpeaking,
-  isMuted,
-  onAddDelta,
-  onAddUsage,
-  languageCode,
-  voice,
-  isVolumeOn,
-  getAuthToken,
-  onMessageOrder,
-  webCamDescription,
-  conversationId,
-  userPricePerHourUsd,
-}: ConversationConfig): Promise<ConversationInstance> => {
+export const initWebRtcConversation = async (
+  config: ConversationConfig,
+): Promise<ConversationInstance> => {
   const state: WebRtcState = {
     dataChannel: null,
     peerConnection: new RTCPeerConnection(),
@@ -40,12 +26,12 @@ export const initWebRtcConversation = async ({
     }),
     lastMessages: [],
     instructionState: {
-      baseInitInstruction: initInstruction,
-      webCamDescription: webCamDescription || '',
+      baseInitInstruction: config.initInstruction,
+      webCamDescription: config.webCamDescription || '',
       correction: '',
     },
-    currentMuted: Boolean(isMuted),
-    currentVolumeOn: Boolean(isVolumeOn),
+    currentMuted: Boolean(config.isMuted),
+    currentVolumeOn: Boolean(config.isVolumeOn),
     audioEl: getAudioEl(),
     restartingPromise: null,
   };
@@ -55,7 +41,7 @@ export const initWebRtcConversation = async ({
   state.peerConnection.ontrack = (e) => {
     const stream = e.streams[0];
     state.audioEl.srcObject = stream;
-    monitorWebRtcAudio(stream, setIsAiSpeaking);
+    monitorWebRtcAudio(stream, config.setIsAiSpeaking);
   };
   state.peerConnection.addTrack(state.userMedia.getTracks()[0]);
   state.dataChannel = state.peerConnection.createDataChannel('oai-events');
@@ -69,7 +55,7 @@ export const initWebRtcConversation = async ({
     const previousItemId = event?.previous_item_id as string | undefined;
     const itemId = (event?.item_id || event.item?.id) as string | undefined;
     if (previousItemId && itemId) {
-      onMessageOrder({
+      config.onMessageOrder({
         [previousItemId]: itemId,
       });
     }
@@ -78,18 +64,18 @@ export const initWebRtcConversation = async ({
       const usageId = event?.event_id || '';
       const usageEvent: UsageEvent | null = event?.response?.usage;
       if (usageEvent) {
-        const priceUsd = calculateUsagePrice(usageEvent, model);
-        const priceHours = convertUsageUsdToBalanceHours(priceUsd, userPricePerHourUsd);
-        onAddUsage({
+        const priceUsd = calculateUsagePrice(usageEvent, config.model);
+        const priceHours = convertUsageUsdToBalanceHours(priceUsd, config.userPricePerHourUsd);
+        config.onAddUsage({
           usageId,
           usageEvent,
           priceUsd,
           priceHours,
           createdAt: Date.now(),
-          model,
-          languageCode,
+          model: config.model,
+          languageCode: config.languageCode,
           type: 'realtime',
-          conversationId,
+          conversationId: config.conversationId,
         });
       }
     }
@@ -100,7 +86,7 @@ export const initWebRtcConversation = async ({
       const deltaMessage = event?.delta as string;
       if (id && deltaMessage) {
         const isBot = false;
-        onAddDelta(id, deltaMessage, isBot);
+        config.onAddDelta(id, deltaMessage, isBot);
       }
     }
 
@@ -109,16 +95,16 @@ export const initWebRtcConversation = async ({
       const deltaMessage = event?.delta as string;
       if (id && deltaMessage) {
         const isBot = true;
-        onAddDelta(id, deltaMessage, isBot);
+        config.onAddDelta(id, deltaMessage, isBot);
       }
     }
 
     if (type === 'input_audio_buffer.speech_started') {
-      setIsUserSpeaking(true);
+      config.setIsUserSpeaking(true);
     }
 
     if (type === 'input_audio_buffer.speech_stopped') {
-      setIsUserSpeaking(false);
+      config.setIsUserSpeaking(false);
     }
 
     if (type === 'error') {
@@ -129,7 +115,7 @@ export const initWebRtcConversation = async ({
       const userMessage = event?.transcript || '';
       if (userMessage) {
         const id = event?.item_id as string;
-        onMessage({ isBot: false, text: userMessage, id });
+        config.onMessage({ isBot: false, text: userMessage, id });
         state.lastMessages.push({ isBot: false, text: userMessage });
       }
     }
@@ -149,7 +135,7 @@ export const initWebRtcConversation = async ({
 
       const id = event?.response?.output?.[0]?.id as string | undefined;
       if (id && botAnswer) {
-        onMessage({ isBot: true, text: botAnswer || '', id });
+        config.onMessage({ isBot: true, text: botAnswer || '', id });
         state.lastMessages.push({ isBot: true, text: botAnswer });
       }
     }
@@ -168,7 +154,7 @@ export const initWebRtcConversation = async ({
           .trim();
 
         if (userMessage && id) {
-          onMessage({ isBot: false, text: userMessage, id });
+          config.onMessage({ isBot: false, text: userMessage, id });
           state.lastMessages.push({ isBot: false, text: userMessage });
         }
       }
@@ -178,25 +164,11 @@ export const initWebRtcConversation = async ({
   const closeEvent = () => {};
   const errorEvent = (e: any) => console.error('Data channel error', e);
 
-  const getInstruction = (): string => {
-    if (state.instructionState.correction) {
-      return state.instructionState.correction;
-    }
-
-    return [
-      state.instructionState.correction,
-      state.instructionState.baseInitInstruction,
-      state.instructionState.webCamDescription,
-    ]
-      .filter((part) => part && part.length > 0)
-      .join('\n');
-  };
-
   const updateInstruction = async (partial: Partial<InstructionState>): Promise<void> => {
     Object.assign(state.instructionState, partial);
-    const updatedInstruction = getInstruction();
+    const updatedInstruction = getInstruction(state);
     console.log('RTC updatedInstruction:', updatedInstruction);
-    await updateSessionSafe(updatedInstruction);
+    await updateSessionSafe({ partialInstructionOverride: updatedInstruction, state, config });
   };
 
   const openHandler = async () => {
@@ -205,11 +177,13 @@ export const initWebRtcConversation = async ({
     if (last10.length > 0) {
       await seedConversationItems(last10, state);
     }
-    await sleep(200); // you can keep 600 if you want
-    await updateSessionSafe(); // send initial instruction for this NEW channel
+
+    await sleep(200);
+
+    await updateSessionSafe({ state, config });
 
     if (last10.length === 0) {
-      onOpen();
+      config.onOpen();
     }
   };
 
@@ -223,11 +197,11 @@ export const initWebRtcConversation = async ({
   await state.peerConnection.setLocalDescription(offer);
   const answer: RTCSessionDescriptionInit = {
     type: 'answer',
-    sdp: await sendSdpOffer(offer, model, getAuthToken),
+    sdp: await sendSdpOffer(offer, config.model, config.getAuthToken),
   };
   await state.peerConnection.setRemoteDescription(answer);
 
-  if (isMuted) toggleMute(true, state);
+  if (config.isMuted) toggleMute(true, state);
 
   const sendWebCamDescription = async (description: string) => {
     const isCorrectionExistsBefore = Boolean(state.instructionState.correction);
@@ -262,7 +236,7 @@ export const initWebRtcConversation = async ({
     state.peerConnection.ontrack = (e) => {
       const stream = e.streams[0];
       state.audioEl.srcObject = stream;
-      monitorWebRtcAudio(stream, setIsAiSpeaking);
+      monitorWebRtcAudio(stream, config.setIsAiSpeaking);
     };
 
     state.peerConnection.addTrack(state.userMedia.getTracks()[0]);
@@ -279,7 +253,7 @@ export const initWebRtcConversation = async ({
 
     const answer: RTCSessionDescriptionInit = {
       type: 'answer',
-      sdp: await sendSdpOffer(offer, model, getAuthToken),
+      sdp: await sendSdpOffer(offer, config.model, config.getAuthToken),
     };
 
     await state.peerConnection.setRemoteDescription(answer);
@@ -287,28 +261,6 @@ export const initWebRtcConversation = async ({
     // Reapply states after connect attempt (safe even before open)
     toggleMute(state.currentMuted, state);
     await toggleVolume(state.currentVolumeOn, state);
-  };
-
-  const updateSessionSafe = async (partialInstructionOverride?: string) => {
-    if (!state.dataChannel || state.dataChannel.readyState !== 'open') return;
-
-    const event = {
-      type: 'session.update',
-      session: {
-        instructions: partialInstructionOverride ?? getInstruction(),
-        input_audio_transcription: {
-          model: 'gpt-4o-mini-transcribe',
-          language: languageCode,
-        },
-        voice,
-        modalities: state.currentVolumeOn ? ['audio', 'text'] : ['text'],
-        turn_detection: { type: 'semantic_vad', eagerness: 'auto' },
-      },
-    };
-
-    await sleep(100);
-    state.dataChannel.send(JSON.stringify(event));
-    await sleep(100);
   };
 
   const restartWebRpc = async (state: WebRtcState) => {
