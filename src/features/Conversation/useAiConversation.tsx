@@ -548,9 +548,8 @@ VISUAL_CONTEXT (latest): ${description}
           const audioTokens = usageLog.usageEvent?.input_token_details?.audio_tokens || 0;
           const rawAudioInputs = audioTokens - cachedAudioTokens;
 
-          if (rawAudioInputs > 3000) {
+          if (rawAudioInputs > 5000) {
             // need to reset now
-
             setIsNeedToResetNow(true);
           }
 
