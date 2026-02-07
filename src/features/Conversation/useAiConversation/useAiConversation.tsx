@@ -201,17 +201,6 @@ function useProvideAiConversation(): AiConversationContextType {
     }
   }, [usageInfo, auth.isFounder]);
 
-  const sendTgMessage = async (message: string) => {
-    if (auth.isFounder) return;
-
-    await sendTelegramRequest(
-      {
-        message,
-      },
-      await auth.getToken(),
-    );
-  };
-
   // todo: Move restart functionality to separate hook
   const restartConversation = async () => {
     if (isRestartingRef.current) {
@@ -229,7 +218,9 @@ function useProvideAiConversation(): AiConversationContextType {
 
     await communicatorRef.current?.restartConversation();
     const lastMessage = conversation?.[conversation.length - 1]?.text;
-    await sendTgMessage(`Restarting conversation. Last message before restart: ${lastMessage}`);
+    await auth.sendTgMessage(
+      `Restarting conversation. Last message before restart: ${lastMessage}`,
+    );
 
     await sleep(500);
 

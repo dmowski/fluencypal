@@ -14,6 +14,7 @@ import { auth } from '../Firebase/init';
 import * as Sentry from '@sentry/nextjs';
 import { FirebaseError } from 'firebase/app';
 import { acceptAnalytics } from '../Analytics/initGTag';
+import { sendTelegramRequest } from '../Telegram/sendTextAiRequest';
 
 interface SignInResult {
   isDone: boolean;
@@ -39,6 +40,7 @@ export interface AuthContext {
   signInWithEmail: (email: string) => Promise<SignInResult>;
   isDev: boolean;
   isFounder: boolean;
+  sendTgMessage: (message: string) => Promise<void>;
 }
 
 const LOCALSTORAGE_EMAIL_KEY = 'emailForSignIn';
@@ -61,6 +63,7 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
   },
   isDev: false,
   isFounder: false,
+  sendTgMessage: async () => void 0,
 });
 
 function useProvideAuth(): AuthContext {
@@ -238,6 +241,18 @@ function useProvideAuth(): AuthContext {
   };
 
   const userId = userInfo?.uid || '';
+  const isFounder = userId === 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2';
+
+  const sendTgMessage = async (message: string) => {
+    if (isFounder) return;
+
+    await sendTelegramRequest(
+      {
+        message,
+      },
+      await getToken(),
+    );
+  };
 
   return {
     isAuthorized,
@@ -253,8 +268,9 @@ function useProvideAuth(): AuthContext {
     getToken,
     signInWithEmail,
 
-    isDev: isDev,
-    isFounder: userId === 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2',
+    isDev,
+    isFounder,
+    sendTgMessage,
   };
 }
 
