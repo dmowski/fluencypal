@@ -15,6 +15,7 @@ import { seedConversationItems } from './webRtc/seedConversationItems';
 import { getInstruction } from './webRtc/getInstruction';
 import { updateSessionSafe } from './webRtc/updateSessionSafe';
 import { startWebRtc } from './webRtc/startWebRtc';
+import { restartWebRtc } from './webRtc/restartWebRpc';
 
 export const initWebRtcConversation = async (
   config: ConversationConfig,
@@ -232,27 +233,6 @@ export const initWebRtcConversation = async (
     console.warn('completeUserMessageDelta is not supported in WebRTC mode');
   };
 
-  const restartWebRpc = async (state: WebRtcState) => {
-    if (state.restartingPromise) return state.restartingPromise;
-
-    state.restartingPromise = (async () => {
-      try {
-        closeHandler(state, {
-          messageHandler,
-          openHandler,
-          closeEvent,
-          errorEvent,
-        });
-        await sleep(300);
-        await startWebRtc(state, config, eventHandlers);
-      } finally {
-        state.restartingPromise = null;
-      }
-    })();
-
-    return state.restartingPromise;
-  };
-
   return {
     closeHandler: () => {
       closeHandler(state, {
@@ -278,6 +258,6 @@ export const initWebRtcConversation = async (
     unlockVolume: () => {
       console.log('unlockVolume is not implemented in WebRTC mode');
     },
-    restartConversation: () => restartWebRpc(state),
+    restartConversation: () => restartWebRtc(state, config, eventHandlers),
   };
 };
