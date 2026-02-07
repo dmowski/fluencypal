@@ -293,6 +293,34 @@ VISUAL_CONTEXT (latest): ${description}
   const isRestartingRef = useRef(isRestarting);
   isRestartingRef.current = isRestarting;
 
+  const [usageInfo, setUsageInfo] = useState<string>('');
+  const showDebugInfoBadgeOnTopWindow = (message: string) => {
+    const elementId = 'debug-info-badge';
+    let badge = document.getElementById(elementId);
+    if (!badge) {
+      badge = document.createElement('div');
+      badge.id = elementId;
+      badge.style.position = 'fixed';
+      badge.style.top = '10px';
+      badge.style.right = '10px';
+      badge.style.padding = '10px';
+      badge.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+      badge.style.color = 'white';
+      badge.style.zIndex = '9999';
+      badge.style.borderRadius = '5px';
+      document.body.appendChild(badge);
+    }
+
+    badge.innerText = message;
+  };
+
+  useEffect(() => {
+    if (!auth.isFounder) return;
+    if (usageInfo) {
+      showDebugInfoBadgeOnTopWindow(usageInfo);
+    }
+  }, [usageInfo, auth.isFounder]);
+
   const restartConversation = async () => {
     if (isRestartingRef.current) {
       console.warn('Already restarting, skipping...');
@@ -502,11 +530,8 @@ VISUAL_CONTEXT (latest): ${description}
       isVolumeOn,
       onAddUsage: (usageLog: UsageLog) => {
         if (usageLog.type === 'realtime') {
-          console.log(
-            usageLog.priceUsd,
-            usageLog.usageEvent.input_token_details.audio_tokens,
-            'Cache:',
-            usageLog.usageEvent.input_token_details.cached_tokens_details.audio_tokens,
+          setUsageInfo(
+            `$${usageLog.priceUsd.toFixed(4)} - I:${usageLog.usageEvent.input_token_details.audio_tokens} (C:${usageLog.usageEvent.input_token_details.cached_tokens_details.audio_tokens})`,
           );
         }
         usage.setUsageLogs((prev) => [...prev, usageLog]);
