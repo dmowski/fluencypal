@@ -502,7 +502,14 @@ VISUAL_CONTEXT (latest): ${description}
       isMuted,
       isVolumeOn,
       onAddUsage: (usageLog: UsageLog) => {
-        console.log(usageLog.priceUsd, usageLog);
+        if (usageLog.type === 'realtime') {
+          console.log(
+            usageLog.priceUsd,
+            usageLog.usageEvent.input_token_details.audio_tokens,
+            'Cache:',
+            usageLog.usageEvent.input_token_details.cached_tokens_details.audio_tokens,
+          );
+        }
         usage.setUsageLogs((prev) => [...prev, usageLog]);
       },
       languageCode: settings.languageCode || 'en',
