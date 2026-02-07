@@ -1,86 +1,9 @@
 'use client';
-import {
-  AiVoice,
-  calculateUsagePrice,
-  convertUsageUsdToBalanceHours,
-  RealTimeModel,
-  UsageEvent,
-} from '@/common/ai';
+import { calculateUsagePrice, convertUsageUsdToBalanceHours, UsageEvent } from '@/common/ai';
 import { sleep } from '@/libs/sleep';
-import { SupportedLanguage } from '@/features/Lang/lang';
 import { ConversationConfig, ConversationInstance } from './types';
 import { sendSdpOffer } from './webRtc/sendSdpOffer';
-
-type Modalities = 'audio' | 'text';
-
-interface UpdateSessionProps {
-  dataChannel: RTCDataChannel;
-  initInstruction?: string;
-  voice?: AiVoice;
-  languageCode: SupportedLanguage;
-  modalities: Modalities[];
-}
-
-const updateSession = async ({
-  dataChannel,
-  initInstruction,
-  voice,
-  languageCode,
-  modalities,
-}: UpdateSessionProps) => {
-  if (!dataChannel) throw Error('Error on updateSession. dataChannel is not available');
-
-  const event = {
-    type: 'session.update',
-    session: {
-      instructions: initInstruction,
-      input_audio_transcription: {
-        model: 'gpt-4o-mini-transcribe',
-        language: languageCode,
-      },
-      voice,
-      modalities,
-
-      turn_detection: {
-        type: 'semantic_vad',
-        eagerness: 'auto',
-      },
-    },
-  };
-  await sleep(100);
-  dataChannel.send(JSON.stringify(event));
-  await sleep(100);
-};
-
-const monitorWebRtcAudio = (stream: MediaStream, setIsAiSpeaking: (speaking: boolean) => void) => {
-  const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-  const analyser = audioContext.createAnalyser();
-  analyser.fftSize = 512;
-
-  const source = audioContext.createMediaStreamSource(stream);
-  source.connect(analyser);
-
-  const bufferLength = analyser.frequencyBinCount;
-  const dataArray = new Uint8Array(bufferLength);
-
-  let lastSpeakingState = false; // Store the previous state
-
-  const checkSpeaking = () => {
-    analyser.getByteFrequencyData(dataArray);
-    const volume = dataArray.reduce((sum, val) => sum + val, 0) / bufferLength;
-
-    const isSpeaking = volume > 10; // Adjust this threshold as needed
-
-    if (isSpeaking !== lastSpeakingState) {
-      setIsAiSpeaking(isSpeaking);
-      lastSpeakingState = isSpeaking;
-    }
-
-    setTimeout(checkSpeaking, 100);
-  };
-
-  checkSpeaking();
-};
+import { monitorWebRtcAudio } from './webRtc/monitorWebRtcAudio';
 
 interface InstructionState {
   baseInitInstruction: string;
