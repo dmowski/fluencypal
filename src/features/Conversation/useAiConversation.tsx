@@ -294,6 +294,7 @@ VISUAL_CONTEXT (latest): ${description}
   isRestartingRef.current = isRestarting;
 
   const [usageInfo, setUsageInfo] = useState<string>('');
+  // xxx
   const showDebugInfoBadgeOnTopWindow = (message: string) => {
     const elementId = 'debug-info-badge';
     let badge = document.getElementById(elementId);
@@ -530,8 +531,13 @@ VISUAL_CONTEXT (latest): ${description}
       isVolumeOn,
       onAddUsage: (usageLog: UsageLog) => {
         if (usageLog.type === 'realtime') {
+          const cachedAudioTokens =
+            usageLog.usageEvent?.input_token_details?.cached_tokens_details?.audio_tokens || 0;
+          const audioTokens = usageLog.usageEvent?.input_token_details?.audio_tokens || 0;
+          const rawAudioInputs = audioTokens - cachedAudioTokens;
+
           setUsageInfo(
-            `$${usageLog.priceUsd.toFixed(4)} - I:${usageLog.usageEvent.input_token_details.audio_tokens} (C:${usageLog.usageEvent.input_token_details.cached_tokens_details.audio_tokens})`,
+            `$${usageLog.priceUsd.toFixed(4)} - I:${audioTokens} (C:${cachedAudioTokens}) New:${rawAudioInputs}`,
           );
         }
         usage.setUsageLogs((prev) => [...prev, usageLog]);
