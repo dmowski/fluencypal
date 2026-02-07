@@ -84,7 +84,6 @@ export const AttachmentVideo = ({
               alignItems: 'center',
               justifyContent: 'center',
             }}
-            onClick={() => setIsModalOpen(false)}
           >
             <Stack
               sx={{
