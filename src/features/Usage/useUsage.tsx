@@ -84,8 +84,13 @@ function useProvideUsage(): UsageContextType {
   const auth = useAuth();
   const userId = auth.uid;
 
-  const usageLogExistsRef = useRef<{ [usageId: string]: boolean }>({});
+  const totalUsageDoc = db.documents.totalUsage(userId);
+  const paymentLogCollection = db.collections.paymentLog(userId);
+  const [paymentLogs] = useCollectionData(paymentLogCollection ? paymentLogCollection : null);
 
+  const [totalUsage, loadingTotalUsage] = useDocumentData<TotalUsageInfo>(totalUsageDoc);
+
+  const usageLogExistsRef = useRef<{ [usageId: string]: boolean }>({});
   const createUsageLogWrapper = async (log: UsageLog) => {
     if (usageLogExistsRef.current[log.usageId]) return;
 
@@ -103,11 +108,6 @@ function useProvideUsage(): UsageContextType {
     usageLogExistsRef.current[log.usageId] = true;
   };
 
-  const totalUsageDoc = db.documents.totalUsage(userId);
-  const paymentLogCollection = db.collections.paymentLog(userId);
-  const [paymentLogs] = useCollectionData(paymentLogCollection ? paymentLogCollection : null);
-
-  const [totalUsage, loadingTotalUsage] = useDocumentData<TotalUsageInfo>(totalUsageDoc);
   const saveLogs = async (logs: UsageLog[]) => {
     if (!userId) return;
 
@@ -119,12 +119,9 @@ function useProvideUsage(): UsageContextType {
   };
 
   useEffect(() => {
-    if (!userId || !totalUsageDoc) {
-      return;
-    }
-
+    if (!userId) return;
     saveLogs(usageLogs);
-  }, [usageLogs, userId, totalUsageDoc]);
+  }, [usageLogs, userId]);
 
   const isBalanceInit = useRef(false);
   const initWelcomeBalance = async () => {
