@@ -202,6 +202,8 @@ function useProvideAiConversation(): AiConversationContextType {
   }, [usageInfo, auth.isFounder]);
 
   const sendTgMessage = async (message: string) => {
+    if (auth.isFounder) return;
+
     await sendTelegramRequest(
       {
         message: message,
@@ -340,9 +342,8 @@ function useProvideAiConversation(): AiConversationContextType {
       const isEmptyNewMessage = message.text.trim() === '';
       const isErrorState = isEmptyChat && isEmptyNewMessage;
       if (isErrorState) {
-        console.error('❌ Empty message from AI. Restarting conversation...');
         console.log('message', message);
-        Sentry.captureException(new Error('Empty message from AI. Restarting conversation...'), {
+        Sentry.captureException(new Error('Empty message from AI.'), {
           extra: {
             conversationId,
             conversation,
