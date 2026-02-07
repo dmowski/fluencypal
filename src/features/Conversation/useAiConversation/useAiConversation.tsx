@@ -31,96 +31,14 @@ import { setGlobalConversationId } from '../../Usage/globalConversationId';
 import { getVoiceSpeedInstruction } from '../CallMode/voiceSpeed';
 import { activateAnalyticUser, conversationStarted } from '../../Analytics/activationTracker';
 import { sendTelegramRequest } from '../../Telegram/sendTextAiRequest';
+import { showDebugInfoBadgeOnTopWindow } from './showDebugInfoBadgeOnTopWindow';
+import { AiConversationContextType, StartConversationProps } from './types';
+import { getVoiceInstructions } from './getVoiceInstructions';
+import { teacherRules } from './teacherRules';
+import { getConversationStarterMessagePrompt } from './getConversationStarterMessagePrompt';
 
 const LIMITED_MESSAGES_COUNT = 12;
 const LIMITED_VOICE_MESSAGES_COUNT = 7;
-
-const getVoiceInstructions = (voice: AiVoice, voiceSpeed: AiVoiceSpeed): string => {
-  const voiceAvatar = getAiVoiceByVoice(voice);
-  const speedInstruction = getVoiceSpeedInstruction(voiceSpeed);
-  const voiceInstructions = `## AI Voice
-${voiceAvatar.voiceInstruction} ${speedInstruction}`;
-  return voiceInstructions;
-};
-
-const getConversationStarterMessagePrompt = (startMessage: string): string => {
-  if (!startMessage) {
-    return '';
-  }
-  return `## Conversation Start
-Start the conversation with message like this: ${startMessage}.`;
-};
-
-const teacherRules = `## Rules for speaking teacher
-Avoid focusing on teaching, asking others to repeat after you, or saying things along with you.
-Don't make user feel like they are being tested.
-You should be friendly and engaging.
-If you feel that the user is struggling, you can propose a new part of the topic.
-Engage in a natural conversation without making it feel like a lesson.`;
-
-interface StartConversationProps {
-  mode: ConversationType;
-  wordsToLearn?: string[];
-  ruleToLearn?: string;
-  voice?: AiVoice;
-  customInstruction?: string;
-  gameWords?: GuessGameStat;
-  analyzeResultAiInstruction?: string;
-  goal?: GoalElementInfo | null;
-  webCamDescription?: string;
-  conversationMode: ConversationMode;
-  ideas?: ConversationIdea;
-  lessonPlan?: LessonPlan;
-}
-
-interface AiConversationContextType {
-  isInitializing: string;
-  isStarted: boolean;
-  setIsStarted: (isStarted: boolean) => void;
-  startConversation: (params: StartConversationProps) => Promise<void>;
-
-  conversation: ConversationMessage[];
-  errorInitiating?: string;
-  isClosing: boolean;
-  isAiSpeaking: boolean;
-  isClosed: boolean;
-  isUserSpeaking: boolean;
-  toggleMute: (isMute: boolean) => void;
-  isMuted: boolean;
-  addUserMessage: (message: string) => Promise<void>;
-  currentMode: ConversationType;
-  gameWords: GuessGameStat | null;
-
-  isVolumeOn: boolean;
-  toggleVolume: (value: boolean) => void;
-
-  conversationId: string | null;
-
-  goalInfo: GoalElementInfo | null;
-
-  voice: AiVoice;
-
-  messageOrder: MessagesOrderMap;
-
-  setWebCamDescription: (description: string) => void;
-  closeConversation: () => Promise<void>;
-  toggleConversationMode: (mode: ConversationMode) => void;
-  conversationMode: ConversationMode;
-
-  lessonPlanAnalysis: LessonPlanAnalysis | null;
-  setLessonPlanAnalysis: (analysis: LessonPlanAnalysis | null) => void;
-  recordingVoiceMode: RecordingUserMessageMode;
-
-  completeUserMessageDelta: (params: {
-    triggerResponse?: boolean;
-    removeMessage?: boolean;
-  }) => Promise<void>;
-  addUserMessageDelta: (delta: string) => void;
-
-  isLimitedAiVoice: boolean;
-  isLimitedRecording: boolean;
-  isRestarting: boolean;
-}
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
 
@@ -295,27 +213,6 @@ VISUAL_CONTEXT (latest): ${description}
   isRestartingRef.current = isRestarting;
 
   const [usageInfo, setUsageInfo] = useState<string>('');
-
-  // todo: Move to separate file
-  const showDebugInfoBadgeOnTopWindow = (message: string) => {
-    const elementId = 'debug-info-badge';
-    let badge = document.getElementById(elementId);
-    if (!badge) {
-      badge = document.createElement('div');
-      badge.id = elementId;
-      badge.style.position = 'fixed';
-      badge.style.top = '10px';
-      badge.style.right = '10px';
-      badge.style.padding = '10px';
-      badge.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-      badge.style.color = 'white';
-      badge.style.zIndex = '9999';
-      badge.style.borderRadius = '5px';
-      document.body.appendChild(badge);
-    }
-
-    badge.innerText = message;
-  };
 
   useEffect(() => {
     if (!auth.isFounder) return;
