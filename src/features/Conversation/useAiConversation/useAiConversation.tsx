@@ -19,16 +19,14 @@ import { firstAiMessage } from '@/features/Lang/lang';
 import { GoalElementInfo } from '../../Plan/types';
 import { usePlan } from '../../Plan/usePlan';
 import * as Sentry from '@sentry/nextjs';
-import { AiVoiceSpeed, ConversationMode } from '@/common/userSettings';
+import { ConversationMode } from '@/common/userSettings';
 import { useAccess } from '../../Usage/useAccess';
 import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from '../../LessonPlan/type';
 import { ConversationConfig, ConversationInstance } from '../ConversationInstance/types';
 import { useTextAi } from '../../Ai/useTextAi';
 import { initTextConversation } from '../ConversationInstance/textConversation';
 import { useConversationAudio } from '../../Audio/useConversationAudio';
-import { getAiVoiceByVoice } from '../CallMode/voiceAvatar';
 import { setGlobalConversationId } from '../../Usage/globalConversationId';
-import { getVoiceSpeedInstruction } from '../CallMode/voiceSpeed';
 import { activateAnalyticUser, conversationStarted } from '../../Analytics/activationTracker';
 import { sendTelegramRequest } from '../../Telegram/sendTextAiRequest';
 import { showDebugInfoBadgeOnTopWindow } from './showDebugInfoBadgeOnTopWindow';
@@ -36,13 +34,13 @@ import { AiConversationContextType, StartConversationProps } from './types';
 import { getVoiceInstructions } from './getVoiceInstructions';
 import { teacherRules } from './teacherRules';
 import { getConversationStarterMessagePrompt } from './getConversationStarterMessagePrompt';
+import { getWebCamDescriptionInstruction } from './getWebCamDescriptionInstruction';
 
 const LIMITED_MESSAGES_COUNT = 12;
 const LIMITED_VOICE_MESSAGES_COUNT = 7;
+const modesToExtractUserInfo: ConversationType[] = ['talk', 'goal-talk'];
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
-
-const modesToExtractUserInfo: ConversationType[] = ['talk', 'goal-talk'];
 
 function useProvideAiConversation(): AiConversationContextType {
   const [isInitializing, setIsInitializing] = useState('');
@@ -67,16 +65,10 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const updateLessonPlanAnalysis = async (analysis: LessonPlanAnalysis | null) => {
     setLessonPlanAnalysis(analysis);
-
     if (analysis?.teacherResponse) {
       communicatorRef.current?.sendCorrectionInstruction(analysis.teacherResponse);
-      // await sleep(30);
-      //await communicatorRef.current?.triggerAiResponse();
-      //setIsWaitingForCorrection(false);
     } else {
       await communicatorRef.current?.triggerAiResponse();
-      //const correctionInstruction = getCorrectionInstruction(correction);
-      //communicatorRef.current?.sendCorrectionInstruction(correctionInstruction);
     }
   };
 
@@ -116,18 +108,6 @@ function useProvideAiConversation(): AiConversationContextType {
     if (!isOn && audio.isPlaying) {
       audio.interrupt();
     }
-  };
-
-  const getWebCamDescriptionInstruction = (description: string): string => {
-    if (!description || description.trim().length === 0) {
-      return '';
-    }
-    const message = `
-VISUAL_CONTEXT is sensor data from the user's webcam. You can use it during the conversation to better understand user's emotions and reactions.
-VISUAL_CONTEXT (latest): ${description}
-`;
-
-    return message;
   };
 
   const setWebCamDescription = async (description: string) => {
@@ -246,7 +226,6 @@ VISUAL_CONTEXT (latest): ${description}
     await sleep(10_000);
 
     await communicatorRef.current?.restartConversation();
-    // xxx
     const lastMessage = conversation?.[conversation.length - 1]?.text;
     await sendTgMessage(`Restarting conversation. Last message before restart: ${lastMessage}`);
 
