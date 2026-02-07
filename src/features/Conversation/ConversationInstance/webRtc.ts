@@ -4,7 +4,7 @@ import { sleep } from '@/libs/sleep';
 import { ConversationConfig, ConversationInstance } from './types';
 import { sendSdpOffer } from './webRtc/sendSdpOffer';
 import { monitorWebRtcAudio } from './webRtc/monitorWebRtcAudio';
-import { InstructionState, WebRtcState } from './webRtc/types';
+import { EventHandlers, InstructionState, WebRtcState } from './webRtc/types';
 import { getAudioEl } from './webRtc/getAudioEl';
 import { addThreadsMessage } from './webRtc/addThreadsMessage';
 import { triggerAiResponse } from './webRtc/triggerAiResponse';
@@ -14,6 +14,7 @@ import { closeHandler } from './webRtc/closeHandler';
 import { seedConversationItems } from './webRtc/seedConversationItems';
 import { getInstruction } from './webRtc/getInstruction';
 import { updateSessionSafe } from './webRtc/updateSessionSafe';
+import { startWebRtc } from './webRtc/startWebRtc';
 
 export const initWebRtcConversation = async (
   config: ConversationConfig,
@@ -187,10 +188,17 @@ export const initWebRtcConversation = async (
     }
   };
 
-  state.dataChannel.addEventListener('message', messageHandler);
-  state.dataChannel.addEventListener('open', openHandler);
-  state.dataChannel.addEventListener('close', closeEvent);
-  state.dataChannel.addEventListener('error', errorEvent);
+  const eventHandlers: EventHandlers = {
+    messageHandler,
+    openHandler,
+    closeEvent,
+    errorEvent,
+  };
+
+  state.dataChannel.addEventListener('message', eventHandlers.messageHandler);
+  state.dataChannel.addEventListener('open', eventHandlers.openHandler);
+  state.dataChannel.addEventListener('close', eventHandlers.closeEvent);
+  state.dataChannel.addEventListener('error', eventHandlers.errorEvent);
 
   const offer = await state.peerConnection.createOffer();
 
@@ -224,45 +232,6 @@ export const initWebRtcConversation = async (
     console.warn('completeUserMessageDelta is not supported in WebRTC mode');
   };
 
-  // This function creates a brand new session (mic + pc + dc + SDP exchange)
-  const startWebRtc = async () => {
-    await sleep(2000); // your existing mobile warmup
-
-    state.userMedia = await navigator.mediaDevices.getUserMedia({ audio: true });
-    await sleep(1000);
-
-    state.peerConnection = new RTCPeerConnection();
-
-    state.peerConnection.ontrack = (e) => {
-      const stream = e.streams[0];
-      state.audioEl.srcObject = stream;
-      monitorWebRtcAudio(stream, config.setIsAiSpeaking);
-    };
-
-    state.peerConnection.addTrack(state.userMedia.getTracks()[0]);
-
-    state.dataChannel = state.peerConnection.createDataChannel('oai-events');
-
-    state.dataChannel.addEventListener('message', messageHandler);
-    state.dataChannel.addEventListener('open', openHandler);
-    state.dataChannel.addEventListener('close', closeEvent);
-    state.dataChannel.addEventListener('error', errorEvent);
-
-    const offer = await state.peerConnection.createOffer();
-    await state.peerConnection.setLocalDescription(offer);
-
-    const answer: RTCSessionDescriptionInit = {
-      type: 'answer',
-      sdp: await sendSdpOffer(offer, config.model, config.getAuthToken),
-    };
-
-    await state.peerConnection.setRemoteDescription(answer);
-
-    // Reapply states after connect attempt (safe even before open)
-    toggleMute(state.currentMuted, state);
-    await toggleVolume(state.currentVolumeOn, state);
-  };
-
   const restartWebRpc = async (state: WebRtcState) => {
     if (state.restartingPromise) return state.restartingPromise;
 
@@ -275,7 +244,7 @@ export const initWebRtcConversation = async (
           errorEvent,
         });
         await sleep(300);
-        await startWebRtc();
+        await startWebRtc(state, config, eventHandlers);
       } finally {
         state.restartingPromise = null;
       }

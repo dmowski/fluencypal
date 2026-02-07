@@ -30,3 +30,10 @@ export interface WebRtcState {
   audioEl: HTMLAudioElement;
   restartingPromise: Promise<void> | null;
 }
+
+export interface EventHandlers {
+  messageHandler: (e: MessageEvent) => void;
+  openHandler: () => void;
+  closeEvent: () => void;
+  errorEvent: (e: Event) => void;
+}
