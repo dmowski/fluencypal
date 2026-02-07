@@ -294,6 +294,7 @@ VISUAL_CONTEXT (latest): ${description}
   isRestartingRef.current = isRestarting;
 
   const [usageInfo, setUsageInfo] = useState<string>('');
+
   // xxx
   const showDebugInfoBadgeOnTopWindow = (message: string) => {
     const elementId = 'debug-info-badge';
@@ -347,7 +348,17 @@ VISUAL_CONTEXT (latest): ${description}
     }, 40_000);
   };
 
-  const messagesToRestart = 100;
+  const messagesToRestart = auth.isFounder ? 10 : 100;
+  const [isNeedToResetNow, setIsNeedToResetNow] = useState(false);
+
+  useEffect(() => {
+    if (isNeedToResetNow) {
+      // To prevent memory leak in case of very long conversations
+      restartConversation();
+      return;
+    }
+  }, [isNeedToResetNow]);
+
   useEffect(() => {
     const isActive = isSpeakingFromConversation || isAiSpeaking;
     const isModeForRestart = ['role-play', 'talk'].includes(currentMode);
@@ -357,7 +368,7 @@ VISUAL_CONTEXT (latest): ${description}
       restartConversation();
       return;
     }
-  }, [conversation.length]);
+  }, [conversation.length, messagesToRestart]);
 
   const isStartedAnalyticLogged = useRef(false);
   useEffect(() => {
@@ -530,11 +541,18 @@ VISUAL_CONTEXT (latest): ${description}
       isMuted,
       isVolumeOn,
       onAddUsage: (usageLog: UsageLog) => {
+        // xxx
         if (usageLog.type === 'realtime') {
           const cachedAudioTokens =
             usageLog.usageEvent?.input_token_details?.cached_tokens_details?.audio_tokens || 0;
           const audioTokens = usageLog.usageEvent?.input_token_details?.audio_tokens || 0;
           const rawAudioInputs = audioTokens - cachedAudioTokens;
+
+          if (rawAudioInputs > 3000) {
+            // need to reset now
+
+            setIsNeedToResetNow(true);
+          }
 
           setUsageInfo(
             `$${usageLog.priceUsd.toFixed(4)} - I:${audioTokens} (C:${cachedAudioTokens}) New:${rawAudioInputs}`,
