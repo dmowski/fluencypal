@@ -12,3 +12,9 @@ export interface UpdateSessionProps {
 }
 
 export type SeedMsg = { isBot: boolean; text: string };
+
+export interface WebRtcState {
+  dataChannel: RTCDataChannel | null;
+  peerConnection: RTCPeerConnection | null;
+  userMedia: MediaStream;
+}

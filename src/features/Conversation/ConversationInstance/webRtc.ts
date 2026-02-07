@@ -4,11 +4,11 @@ import { sleep } from '@/libs/sleep';
 import { ConversationConfig, ConversationInstance } from './types';
 import { sendSdpOffer } from './webRtc/sendSdpOffer';
 import { monitorWebRtcAudio } from './webRtc/monitorWebRtcAudio';
-import { SeedMsg } from './webRtc/types';
+import { SeedMsg, WebRtcState } from './webRtc/types';
 import { buildTranscript } from './webRtc/buildTranscript';
 import { getAudioEl } from './webRtc/getAudioEl';
 
-interface InstructionState {
+export interface InstructionState {
   baseInitInstruction: string;
   webCamDescription: string;
   correction: string;
@@ -40,21 +40,27 @@ export const initWebRtcConversation = async ({
 
   let lastMessages: SeedMsg[] = []; // update it from outside (see below)
 
+  const state: WebRtcState = {
+    dataChannel: null,
+    peerConnection: null,
+    userMedia: await navigator.mediaDevices.getUserMedia({
+      audio: true,
+    }),
+  };
+
   await sleep(2000); // Important for mobile devices
-  let userMedia = await navigator.mediaDevices.getUserMedia({
-    audio: true,
-  });
+
   await sleep(1000);
 
-  let peerConnection = new RTCPeerConnection();
-  peerConnection.ontrack = (e) => {
+  state.peerConnection = new RTCPeerConnection();
+  state.peerConnection.ontrack = (e) => {
     const stream = e.streams[0];
     audioEl.srcObject = stream;
     monitorWebRtcAudio(stream, setIsAiSpeaking);
   };
-  peerConnection.addTrack(userMedia.getTracks()[0]);
+  state.peerConnection.addTrack(state.userMedia.getTracks()[0]);
 
-  let dataChannel = peerConnection.createDataChannel('oai-events');
+  state.dataChannel = state.peerConnection.createDataChannel('oai-events');
 
   const messageHandler = (e: MessageEvent) => {
     const event = JSON.parse(e.data);
@@ -216,7 +222,7 @@ export const initWebRtcConversation = async ({
   };
 
   const addThreadsMessage = (message: string) => {
-    if (!dataChannel || dataChannel.readyState !== 'open') return;
+    if (!state.dataChannel || state.dataChannel.readyState !== 'open') return;
 
     const event = {
       type: 'conversation.item.create',
@@ -226,56 +232,56 @@ export const initWebRtcConversation = async ({
         content: [{ type: 'input_text', text: message }],
       },
     };
-    dataChannel.send(JSON.stringify(event));
+    state.dataChannel.send(JSON.stringify(event));
   };
 
-  dataChannel.addEventListener('message', messageHandler);
-  dataChannel.addEventListener('open', openHandler);
-  dataChannel.addEventListener('close', closeEvent);
-  dataChannel.addEventListener('error', errorEvent);
+  state.dataChannel.addEventListener('message', messageHandler);
+  state.dataChannel.addEventListener('open', openHandler);
+  state.dataChannel.addEventListener('close', closeEvent);
+  state.dataChannel.addEventListener('error', errorEvent);
 
-  const offer = await peerConnection.createOffer();
+  const offer = await state.peerConnection.createOffer();
 
-  await peerConnection.setLocalDescription(offer);
+  await state.peerConnection.setLocalDescription(offer);
   const answer: RTCSessionDescriptionInit = {
     type: 'answer',
     sdp: await sendSdpOffer(offer, model, getAuthToken),
   };
-  await peerConnection.setRemoteDescription(answer);
+  await state.peerConnection.setRemoteDescription(answer);
 
   const closeHandler = () => {
-    if (dataChannel) {
-      dataChannel.removeEventListener('message', messageHandler);
-      dataChannel.removeEventListener('open', openHandler);
-      dataChannel.removeEventListener('close', closeEvent);
-      dataChannel.removeEventListener('error', errorEvent);
+    if (state.dataChannel) {
+      state.dataChannel.removeEventListener('message', messageHandler);
+      state.dataChannel.removeEventListener('open', openHandler);
+      state.dataChannel.removeEventListener('close', closeEvent);
+      state.dataChannel.removeEventListener('error', errorEvent);
 
-      if (dataChannel.readyState !== 'closed') {
-        dataChannel.close();
+      if (state.dataChannel.readyState !== 'closed') {
+        state.dataChannel.close();
         console.log('Data channel closed');
       }
     }
 
-    if (peerConnection && peerConnection.signalingState !== 'closed') {
-      peerConnection.getSenders().forEach((sender, index) => {
+    if (state.peerConnection && state.peerConnection.signalingState !== 'closed') {
+      state.peerConnection.getSenders().forEach((sender, index) => {
         if (sender.track) {
           sender.track.stop();
           console.log('Track stopped - #', index);
         }
       });
 
-      peerConnection.close();
+      state.peerConnection.close();
       console.log('Peer connection closed');
     }
   };
 
   const triggerAiResponse = async () => {
-    if (!dataChannel || dataChannel.readyState !== 'open') return;
-    dataChannel.send(JSON.stringify({ type: 'response.create' }));
+    if (!state.dataChannel || state.dataChannel.readyState !== 'open') return;
+    state.dataChannel.send(JSON.stringify({ type: 'response.create' }));
   };
 
   const toggleMute = (mute: boolean) => {
-    userMedia.getTracks().forEach((track) => {
+    state.userMedia.getTracks().forEach((track) => {
       track.enabled = !mute;
     });
   };
@@ -315,35 +321,35 @@ export const initWebRtcConversation = async ({
   const startWebRtc = async () => {
     await sleep(2000); // your existing mobile warmup
 
-    userMedia = await navigator.mediaDevices.getUserMedia({ audio: true });
+    state.userMedia = await navigator.mediaDevices.getUserMedia({ audio: true });
     await sleep(1000);
 
-    peerConnection = new RTCPeerConnection();
+    state.peerConnection = new RTCPeerConnection();
 
-    peerConnection.ontrack = (e) => {
+    state.peerConnection.ontrack = (e) => {
       const stream = e.streams[0];
       audioEl.srcObject = stream;
       monitorWebRtcAudio(stream, setIsAiSpeaking);
     };
 
-    peerConnection.addTrack(userMedia.getTracks()[0]);
+    state.peerConnection.addTrack(state.userMedia.getTracks()[0]);
 
-    dataChannel = peerConnection.createDataChannel('oai-events');
+    state.dataChannel = state.peerConnection.createDataChannel('oai-events');
 
-    dataChannel.addEventListener('message', messageHandler);
-    dataChannel.addEventListener('open', openHandler);
-    dataChannel.addEventListener('close', closeEvent);
-    dataChannel.addEventListener('error', errorEvent);
+    state.dataChannel.addEventListener('message', messageHandler);
+    state.dataChannel.addEventListener('open', openHandler);
+    state.dataChannel.addEventListener('close', closeEvent);
+    state.dataChannel.addEventListener('error', errorEvent);
 
-    const offer = await peerConnection.createOffer();
-    await peerConnection.setLocalDescription(offer);
+    const offer = await state.peerConnection.createOffer();
+    await state.peerConnection.setLocalDescription(offer);
 
     const answer: RTCSessionDescriptionInit = {
       type: 'answer',
       sdp: await sendSdpOffer(offer, model, getAuthToken),
     };
 
-    await peerConnection.setRemoteDescription(answer);
+    await state.peerConnection.setRemoteDescription(answer);
 
     // Reapply states after connect attempt (safe even before open)
     toggleMute(currentMuted);
@@ -351,7 +357,7 @@ export const initWebRtcConversation = async ({
   };
 
   const updateSessionSafe = async (partialInstructionOverride?: string) => {
-    if (!dataChannel || dataChannel.readyState !== 'open') return;
+    if (!state.dataChannel || state.dataChannel.readyState !== 'open') return;
 
     const event = {
       type: 'session.update',
@@ -368,7 +374,7 @@ export const initWebRtcConversation = async ({
     };
 
     await sleep(100);
-    dataChannel.send(JSON.stringify(event));
+    state.dataChannel.send(JSON.stringify(event));
     await sleep(100);
   };
 
@@ -390,7 +396,7 @@ export const initWebRtcConversation = async ({
 
   const waitForDcOpen = async (timeoutMs = 5000) => {
     const startedAt = Date.now();
-    while (!dataChannel || dataChannel.readyState !== 'open') {
+    while (!state.dataChannel || state.dataChannel.readyState !== 'open') {
       await sleep(50);
       if (Date.now() - startedAt > timeoutMs) return false;
     }
@@ -398,8 +404,8 @@ export const initWebRtcConversation = async ({
   };
 
   const sendEvent = (event: any) => {
-    if (!dataChannel || dataChannel.readyState !== 'open') return false;
-    dataChannel.send(JSON.stringify(event));
+    if (!state.dataChannel || state.dataChannel.readyState !== 'open') return false;
+    state.dataChannel.send(JSON.stringify(event));
     return true;
   };
 
