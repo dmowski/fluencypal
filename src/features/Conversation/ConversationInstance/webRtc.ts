@@ -4,16 +4,14 @@ import { sleep } from '@/libs/sleep';
 import { ConversationConfig, ConversationInstance } from './types';
 import { sendSdpOffer } from './webRtc/sendSdpOffer';
 import { monitorWebRtcAudio } from './webRtc/monitorWebRtcAudio';
-import { InstructionState, SeedMsg, WebRtcState } from './webRtc/types';
-import { buildTranscript } from './webRtc/buildTranscript';
+import { InstructionState, WebRtcState } from './webRtc/types';
 import { getAudioEl } from './webRtc/getAudioEl';
 import { addThreadsMessage } from './webRtc/addThreadsMessage';
 import { triggerAiResponse } from './webRtc/triggerAiResponse';
-import { sendEvent } from './webRtc/sendEvent';
-import { waitForDcOpen } from './webRtc/waitForDcOpen';
 import { toggleVolume } from './webRtc/toggleVolume';
 import { toggleMute } from './webRtc/toggleMute';
 import { closeHandler } from './webRtc/closeHandler';
+import { seedConversationItems } from './webRtc/seedConversationItems';
 
 export const initWebRtcConversation = async ({
   model,
@@ -204,7 +202,7 @@ export const initWebRtcConversation = async ({
     const last10 = state.lastMessages.slice(-10);
     console.log('last10', last10);
     if (last10.length > 0) {
-      await seedConversationItems(last10);
+      await seedConversationItems(last10, state);
     }
     await sleep(200); // you can keep 600 if you want
     await updateSessionSafe(); // send initial instruction for this NEW channel
@@ -333,37 +331,6 @@ export const initWebRtcConversation = async ({
     })();
 
     return restartingPromise;
-  };
-
-  // You’ll pass last10Messages from your app state into initWebRtcConversation,
-  // OR store them in a closure and update them via a setter.
-  // For now, assume you have them available as `lastMessages`.
-  const seedConversationItems = async (messages: SeedMsg[]) => {
-    const ok = await waitForDcOpen(5000, state);
-    if (!ok) return;
-
-    const transcript = buildTranscript(messages);
-    if (!transcript) return;
-
-    sendEvent(
-      {
-        type: 'conversation.item.create',
-        item: {
-          type: 'message',
-          role: 'system',
-          content: [
-            {
-              type: 'input_text',
-              text:
-                `Conversation so far (most recent last):\n` +
-                transcript +
-                `\n\nContinue naturally from here.`,
-            },
-          ],
-        },
-      },
-      state,
-    );
   };
 
   return {
