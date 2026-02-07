@@ -1989,10 +1989,10 @@ msgstr "Práctica de Inglés Conversacional"
 msgid "conversational English practice"
 msgstr "práctica de inglés conversacional"
 
-#: src/features/Game/UploadVideoButton.tsx:79
+#: src/features/Video/UploadVideoButton.tsx:84
 #. js-lingui-explicit-id
-msgid "Converted file size must be less than 50MB"
-msgstr "El tamaño del archivo convertido debe ser menor de 50 MB"
+msgid "Converted file size must be less than 250MB"
+msgstr "El tamaño del archivo convertido debe ser inferior a 250 MB"
 
 #: src/features/Legal/CookiesPolicy.tsx:15
 #: src/features/Legal/LegalContainer.tsx:32
@@ -3556,8 +3556,8 @@ msgstr ""
 msgid "Failed to upload image. Please try again."
 msgstr "No se pudo cargar la imagen. Por favor, inténtalo de nuevo."
 
-#: src/features/Game/UploadVideoButton.tsx:96
-#: src/features/Game/UploadVideoButton.tsx:103
+#: src/features/Video/UploadVideoButton.tsx:101
+#: src/features/Video/UploadVideoButton.tsx:108
 #. js-lingui-explicit-id
 msgid "Failed to upload video. Please try again."
 msgstr "No se pudo subir el video. Por favor, inténtalo de nuevo."
@@ -3604,8 +3604,12 @@ msgstr ""
 "La retroalimentación es vaga: \"**no tienes suficiente experiencia**\" — "
 "pero ¿cómo adquieres experiencia sin un trabajo?"
 
+#: src/features/Video/UploadVideoButton.tsx:50
+#. js-lingui-explicit-id
+msgid "File size must be less than 250MB"
+msgstr "El tamaño del archivo debe ser inferior a 250 MB"
+
 #: src/features/Game/UploadImageButton.tsx:37
-#: src/features/Game/UploadVideoButton.tsx:49
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "El tamaño del archivo debe ser menor de 50MB"
@@ -6669,7 +6673,6 @@ msgstr "Cargando.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Router/PracticePage.tsx:79
-#: src/features/Router/PracticePage.tsx:92
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
 #: src/features/Usage/SubscriptionPaymentModal.tsx:164
@@ -7838,7 +7841,7 @@ msgstr "Por favor, refresca la página e intenta una vez más"
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
 msgstr "Por favor, selecciona un archivo de imagen válido (JPEG, PNG, GIF o WebP)"
 
-#: src/features/Game/UploadVideoButton.tsx:43
+#: src/features/Video/UploadVideoButton.tsx:44
 #. js-lingui-explicit-id
 msgid "Please select a valid video file (MP4, WebM, or MOV)"
 msgstr "Por favor selecciona un archivo de vídeo válido (MP4, WebM o MOV)"
@@ -8808,6 +8811,11 @@ msgstr "Escenarios Relacionados"
 #. js-lingui-explicit-id
 msgid "Reload page"
 msgstr "Recargar página"
+
+#: src/features/Router/PracticePage.tsx:93
+#. js-lingui-explicit-id
+msgid "Reloading conversation..."
+msgstr "Recargando conversación..."
 
 #: src/features/Game/Battle/BattleCard.tsx:385
 #. js-lingui-explicit-id
@@ -11068,13 +11076,13 @@ msgstr "Subir imagen"
 msgid "Upload language skills directly to your brain"
 msgstr "Carga habilidades lingüísticas directamente en tu cerebro"
 
-#: src/features/Game/UploadVideoButton.tsx:142
+#: src/features/Video/UploadVideoButton.tsx:189
 #. js-lingui-explicit-id
 msgid "Upload video"
 msgstr "Subir video"
 
 #: src/features/Game/UploadImageButton.tsx:93
-#: src/features/Game/UploadVideoButton.tsx:139
+#: src/features/Video/UploadVideoButton.tsx:186
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "Subiendo..."
@@ -12490,6 +12498,11 @@ msgstr ""
 "— es importante participar en esta breve conversación antes de abordar "
 "temas profesionales. Aquí tienes algunas frases en inglés útiles para "
 "comenzar la entrevista:"
+
+#: src/features/Game/UploadVideoButton.tsx:79
+#. js-lingui-explicit-id
+#~ msgid "Converted file size must be less than 50MB"
+#~ msgstr "El tamaño del archivo convertido debe ser menor de 50 MB"
 
 #: src/features/RolePlay/rolePlayData.tsx:539
 #. js-lingui-explicit-id

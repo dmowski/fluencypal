@@ -1994,10 +1994,10 @@ msgstr "Latihan Bahasa Inggris Percakapan"
 msgid "conversational English practice"
 msgstr "praktik bahasa Inggris percakapan"
 
-#: src/features/Game/UploadVideoButton.tsx:79
+#: src/features/Video/UploadVideoButton.tsx:84
 #. js-lingui-explicit-id
-msgid "Converted file size must be less than 50MB"
-msgstr "Ukuran file yang dikonversi harus kurang dari 50MB"
+msgid "Converted file size must be less than 250MB"
+msgstr "Ukuran file yang dikonversi harus kurang dari 250MB"
 
 #: src/features/Legal/CookiesPolicy.tsx:15
 #: src/features/Legal/LegalContainer.tsx:32
@@ -3571,8 +3571,8 @@ msgstr "Gagal mengirim umpan balik. Silakan coba lagi nanti."
 msgid "Failed to upload image. Please try again."
 msgstr "Gagal mengunggah gambar. Silakan coba lagi."
 
-#: src/features/Game/UploadVideoButton.tsx:96
-#: src/features/Game/UploadVideoButton.tsx:103
+#: src/features/Video/UploadVideoButton.tsx:101
+#: src/features/Video/UploadVideoButton.tsx:108
 #. js-lingui-explicit-id
 msgid "Failed to upload video. Please try again."
 msgstr "Gagal mengunggah video. Silakan coba lagi."
@@ -3619,8 +3619,12 @@ msgstr ""
 "Umpan baliknya tidak jelas: \"**tidak cukup pengalaman**\" — tetapi "
 "bagaimana Anda bisa mendapatkan pengalaman tanpa pekerjaan?"
 
+#: src/features/Video/UploadVideoButton.tsx:50
+#. js-lingui-explicit-id
+msgid "File size must be less than 250MB"
+msgstr "Ukuran file harus kurang dari 250MB"
+
 #: src/features/Game/UploadImageButton.tsx:37
-#: src/features/Game/UploadVideoButton.tsx:49
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Ukuran file harus kurang dari 50MB"
@@ -6711,7 +6715,6 @@ msgstr "Memuat.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Router/PracticePage.tsx:79
-#: src/features/Router/PracticePage.tsx:92
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
 #: src/features/Usage/SubscriptionPaymentModal.tsx:164
@@ -7884,7 +7887,7 @@ msgstr "Silakan segarkan halaman dan coba sekali lagi"
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
 msgstr "Silakan pilih file gambar yang valid (JPEG, PNG, GIF, atau WebP)"
 
-#: src/features/Game/UploadVideoButton.tsx:43
+#: src/features/Video/UploadVideoButton.tsx:44
 #. js-lingui-explicit-id
 msgid "Please select a valid video file (MP4, WebM, or MOV)"
 msgstr "Silakan pilih file video yang valid (MP4, WebM, atau MOV)"
@@ -8860,6 +8863,11 @@ msgstr "Terkait Skenario"
 #. js-lingui-explicit-id
 msgid "Reload page"
 msgstr "Muat ulang halaman"
+
+#: src/features/Router/PracticePage.tsx:93
+#. js-lingui-explicit-id
+msgid "Reloading conversation..."
+msgstr "Memuat ulang percakapan..."
 
 #: src/features/Game/Battle/BattleCard.tsx:385
 #. js-lingui-explicit-id
@@ -11131,13 +11139,13 @@ msgstr "Unggah gambar"
 msgid "Upload language skills directly to your brain"
 msgstr "Unggah keterampilan bahasa langsung ke otak Anda"
 
-#: src/features/Game/UploadVideoButton.tsx:142
+#: src/features/Video/UploadVideoButton.tsx:189
 #. js-lingui-explicit-id
 msgid "Upload video"
 msgstr "Unggah video"
 
 #: src/features/Game/UploadImageButton.tsx:93
-#: src/features/Game/UploadVideoButton.tsx:139
+#: src/features/Video/UploadVideoButton.tsx:186
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "Mengunggah..."
@@ -12567,6 +12575,11 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
+
+#: src/features/Game/UploadVideoButton.tsx:79
+#. js-lingui-explicit-id
+#~ msgid "Converted file size must be less than 50MB"
+#~ msgstr "Ukuran file yang dikonversi harus kurang dari 50MB"
 
 #: src/features/RolePlay/rolePlayData.tsx:640
 #. js-lingui-explicit-id

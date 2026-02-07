@@ -1911,10 +1911,10 @@ msgstr "会話英語の練習"
 msgid "conversational English practice"
 msgstr "会話英語の練習"
 
-#: src/features/Game/UploadVideoButton.tsx:79
+#: src/features/Video/UploadVideoButton.tsx:84
 #. js-lingui-explicit-id
-msgid "Converted file size must be less than 50MB"
-msgstr "変換されたファイルのサイズは50MB未満でなければなりません"
+msgid "Converted file size must be less than 250MB"
+msgstr "変換後のファイルサイズは250MB未満でなければなりません"
 
 #: src/features/Legal/CookiesPolicy.tsx:15
 #: src/features/Legal/LegalContainer.tsx:32
@@ -3342,8 +3342,8 @@ msgstr "フィードバックの送信に失敗しました。後ほど再試行
 msgid "Failed to upload image. Please try again."
 msgstr "画像のアップロードに失敗しました。もう一度試してください。"
 
-#: src/features/Game/UploadVideoButton.tsx:96
-#: src/features/Game/UploadVideoButton.tsx:103
+#: src/features/Video/UploadVideoButton.tsx:101
+#: src/features/Video/UploadVideoButton.tsx:108
 #. js-lingui-explicit-id
 msgid "Failed to upload video. Please try again."
 msgstr "ビデオのアップロードに失敗しました。もう一度お試しください。"
@@ -3388,8 +3388,12 @@ msgid ""
 "experience without a job?"
 msgstr "フィードバックが曖昧です：「**経験が不足している**」 — しかし、仕事なしでどうやって経験を得るのですか？"
 
+#: src/features/Video/UploadVideoButton.tsx:50
+#. js-lingui-explicit-id
+msgid "File size must be less than 250MB"
+msgstr "ファイルサイズは250MB未満である必要があります"
+
 #: src/features/Game/UploadImageButton.tsx:37
-#: src/features/Game/UploadVideoButton.tsx:49
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "ファイルサイズは50MB未満でなければなりません"
@@ -6186,7 +6190,6 @@ msgstr "読み込み中.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Router/PracticePage.tsx:79
-#: src/features/Router/PracticePage.tsx:92
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
 #: src/features/Usage/SubscriptionPaymentModal.tsx:164
@@ -7302,7 +7305,7 @@ msgstr "ページを更新して、もう一度試してください"
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
 msgstr "有効な画像ファイルを選択してください (JPEG、PNG、GIF、または WebP)"
 
-#: src/features/Game/UploadVideoButton.tsx:43
+#: src/features/Video/UploadVideoButton.tsx:44
 #. js-lingui-explicit-id
 msgid "Please select a valid video file (MP4, WebM, or MOV)"
 msgstr "有効なビデオファイルを選択してください (MP4, WebM, または MOV)"
@@ -8210,6 +8213,11 @@ msgstr "関連シナリオ"
 #. js-lingui-explicit-id
 msgid "Reload page"
 msgstr "ページを再読み込み"
+
+#: src/features/Router/PracticePage.tsx:93
+#. js-lingui-explicit-id
+msgid "Reloading conversation..."
+msgstr "会話を再読み込みしています..."
 
 #: src/features/Game/Battle/BattleCard.tsx:385
 #. js-lingui-explicit-id
@@ -10369,13 +10377,13 @@ msgstr "画像をアップロード"
 msgid "Upload language skills directly to your brain"
 msgstr "あなたの脳に直接言語スキルをアップロードします"
 
-#: src/features/Game/UploadVideoButton.tsx:142
+#: src/features/Video/UploadVideoButton.tsx:189
 #. js-lingui-explicit-id
 msgid "Upload video"
 msgstr "ビデオをアップロード"
 
 #: src/features/Game/UploadImageButton.tsx:93
-#: src/features/Game/UploadVideoButton.tsx:139
+#: src/features/Video/UploadVideoButton.tsx:186
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "アップロード中..."
@@ -11680,6 +11688,11 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Game/UploadVideoButton.tsx:79
+#. js-lingui-explicit-id
+#~ msgid "Converted file size must be less than 50MB"
+#~ msgstr "変換されたファイルのサイズは50MB未満でなければなりません"
 
 #: src/features/RolePlay/rolePlayData.tsx:640
 #. js-lingui-explicit-id
