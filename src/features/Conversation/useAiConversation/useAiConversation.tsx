@@ -206,7 +206,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
     await sendTelegramRequest(
       {
-        message: message,
+        message,
       },
       await auth.getToken(),
     );
