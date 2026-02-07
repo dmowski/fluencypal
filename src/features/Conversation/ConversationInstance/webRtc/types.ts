@@ -11,11 +11,21 @@ export interface UpdateSessionProps {
   modalities: Modalities[];
 }
 
+export interface InstructionState {
+  baseInitInstruction: string;
+  webCamDescription: string;
+  correction: string;
+}
+
 export type SeedMsg = { isBot: boolean; text: string };
 
 export interface WebRtcState {
   dataChannel: RTCDataChannel | null;
-  peerConnection: RTCPeerConnection | null;
+  peerConnection: RTCPeerConnection;
   userMedia: MediaStream;
   lastMessages: SeedMsg[];
+  instructionState: InstructionState;
+  currentMuted: boolean;
+  currentVolumeOn: boolean;
+  audioEl: HTMLAudioElement;
 }

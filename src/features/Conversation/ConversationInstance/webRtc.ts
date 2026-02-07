@@ -4,15 +4,9 @@ import { sleep } from '@/libs/sleep';
 import { ConversationConfig, ConversationInstance } from './types';
 import { sendSdpOffer } from './webRtc/sendSdpOffer';
 import { monitorWebRtcAudio } from './webRtc/monitorWebRtcAudio';
-import { SeedMsg, WebRtcState } from './webRtc/types';
+import { InstructionState, SeedMsg, WebRtcState } from './webRtc/types';
 import { buildTranscript } from './webRtc/buildTranscript';
 import { getAudioEl } from './webRtc/getAudioEl';
-
-export interface InstructionState {
-  baseInitInstruction: string;
-  webCamDescription: string;
-  correction: string;
-}
 
 export const initWebRtcConversation = async ({
   model,
@@ -33,32 +27,33 @@ export const initWebRtcConversation = async ({
   conversationId,
   userPricePerHourUsd,
 }: ConversationConfig): Promise<ConversationInstance> => {
-  const audioEl = getAudioEl();
-
-  let currentMuted = Boolean(isMuted);
-  let currentVolumeOn = Boolean(isVolumeOn);
-
   const state: WebRtcState = {
     dataChannel: null,
-    peerConnection: null,
+    peerConnection: new RTCPeerConnection(),
     userMedia: await navigator.mediaDevices.getUserMedia({
       audio: true,
     }),
     lastMessages: [],
+    instructionState: {
+      baseInitInstruction: initInstruction,
+      webCamDescription: webCamDescription || '',
+      correction: '',
+    },
+    currentMuted: Boolean(isMuted),
+    currentVolumeOn: Boolean(isVolumeOn),
+    audioEl: getAudioEl(),
   };
 
   await sleep(2000); // Important for mobile devices
 
   await sleep(1000);
 
-  state.peerConnection = new RTCPeerConnection();
   state.peerConnection.ontrack = (e) => {
     const stream = e.streams[0];
-    audioEl.srcObject = stream;
+    state.audioEl.srcObject = stream;
     monitorWebRtcAudio(stream, setIsAiSpeaking);
   };
   state.peerConnection.addTrack(state.userMedia.getTracks()[0]);
-
   state.dataChannel = state.peerConnection.createDataChannel('oai-events');
 
   const messageHandler = (e: MessageEvent) => {
@@ -179,28 +174,22 @@ export const initWebRtcConversation = async ({
   const closeEvent = () => {};
   const errorEvent = (e: any) => console.error('Data channel error', e);
 
-  const instructionState: InstructionState = {
-    baseInitInstruction: initInstruction,
-    webCamDescription: webCamDescription || '',
-    correction: '',
-  };
-
   const getInstruction = (): string => {
-    if (instructionState.correction) {
-      return instructionState.correction;
+    if (state.instructionState.correction) {
+      return state.instructionState.correction;
     }
 
     return [
-      instructionState.correction,
-      instructionState.baseInitInstruction,
-      instructionState.webCamDescription,
+      state.instructionState.correction,
+      state.instructionState.baseInitInstruction,
+      state.instructionState.webCamDescription,
     ]
       .filter((part) => part && part.length > 0)
       .join('\n');
   };
 
   const updateInstruction = async (partial: Partial<InstructionState>): Promise<void> => {
-    Object.assign(instructionState, partial);
+    Object.assign(state.instructionState, partial);
     const updatedInstruction = getInstruction();
     console.log('RTC updatedInstruction:', updatedInstruction);
     await updateSessionSafe(updatedInstruction);
@@ -288,13 +277,13 @@ export const initWebRtcConversation = async ({
   if (isMuted) toggleMute(true);
 
   const toggleVolume = async (isVolumeOn: boolean) => {
-    if (!audioEl) return;
-    audioEl.muted = !isVolumeOn;
-    audioEl.volume = isVolumeOn ? 1 : 0;
+    if (!state.audioEl) return;
+    state.audioEl.muted = !isVolumeOn;
+    state.audioEl.volume = isVolumeOn ? 1 : 0;
   };
 
   const sendWebCamDescription = async (description: string) => {
-    const isCorrectionExistsBefore = Boolean(instructionState.correction);
+    const isCorrectionExistsBefore = Boolean(state.instructionState.correction);
     if (isCorrectionExistsBefore) {
       console.log('Ignoring webcam description update due to existing correction.');
       return;
@@ -327,7 +316,7 @@ export const initWebRtcConversation = async ({
 
     state.peerConnection.ontrack = (e) => {
       const stream = e.streams[0];
-      audioEl.srcObject = stream;
+      state.audioEl.srcObject = stream;
       monitorWebRtcAudio(stream, setIsAiSpeaking);
     };
 
@@ -351,8 +340,8 @@ export const initWebRtcConversation = async ({
     await state.peerConnection.setRemoteDescription(answer);
 
     // Reapply states after connect attempt (safe even before open)
-    toggleMute(currentMuted);
-    await toggleVolume(currentVolumeOn);
+    toggleMute(state.currentMuted);
+    await toggleVolume(state.currentVolumeOn);
   };
 
   const updateSessionSafe = async (partialInstructionOverride?: string) => {
@@ -367,7 +356,7 @@ export const initWebRtcConversation = async ({
           language: languageCode,
         },
         voice,
-        modalities: currentVolumeOn ? ['audio', 'text'] : ['text'],
+        modalities: state.currentVolumeOn ? ['audio', 'text'] : ['text'],
         turn_detection: { type: 'semantic_vad', eagerness: 'auto' },
       },
     };
