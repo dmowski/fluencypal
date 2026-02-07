@@ -47,6 +47,7 @@ export const initWebRtcConversation = async ({
     currentMuted: Boolean(isMuted),
     currentVolumeOn: Boolean(isVolumeOn),
     audioEl: getAudioEl(),
+    restartingPromise: null,
   };
 
   await sleep(3000); // Important for mobile devices
@@ -249,8 +250,6 @@ export const initWebRtcConversation = async ({
     console.warn('completeUserMessageDelta is not supported in WebRTC mode');
   };
 
-  let restartingPromise: Promise<void> | null = null;
-
   // This function creates a brand new session (mic + pc + dc + SDP exchange)
   const startWebRtc = async () => {
     await sleep(2000); // your existing mobile warmup
@@ -312,10 +311,10 @@ export const initWebRtcConversation = async ({
     await sleep(100);
   };
 
-  const restartWebRpc = async () => {
-    if (restartingPromise) return restartingPromise;
+  const restartWebRpc = async (state: WebRtcState) => {
+    if (state.restartingPromise) return state.restartingPromise;
 
-    restartingPromise = (async () => {
+    state.restartingPromise = (async () => {
       try {
         closeHandler(state, {
           messageHandler,
@@ -326,11 +325,11 @@ export const initWebRtcConversation = async ({
         await sleep(300);
         await startWebRtc();
       } finally {
-        restartingPromise = null;
+        state.restartingPromise = null;
       }
     })();
 
-    return restartingPromise;
+    return state.restartingPromise;
   };
 
   return {
@@ -358,6 +357,6 @@ export const initWebRtcConversation = async ({
     unlockVolume: () => {
       console.log('unlockVolume is not implemented in WebRTC mode');
     },
-    restartConversation: restartWebRpc,
+    restartConversation: () => restartWebRpc(state),
   };
 };

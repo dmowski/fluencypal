@@ -28,4 +28,5 @@ export interface WebRtcState {
   currentMuted: boolean;
   currentVolumeOn: boolean;
   audioEl: HTMLAudioElement;
+  restartingPromise: Promise<void> | null;
 }
