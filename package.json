@@ -28,7 +28,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "create-git-build": "git tag -a build-$(date +%Y-%m-%d--%H-%M-%S) -m 'Build at $(date)'",
-    "prod": "vercel build --prod && vercel deploy --prebuilt --prod --archive=tgz"
+    "prod": "vercel build --prod && vercel deploy --prebuilt --prod --archive=tgz && pnpm run create-git-build"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
