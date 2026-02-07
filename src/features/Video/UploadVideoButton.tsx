@@ -1,4 +1,4 @@
-import { Button, CircularProgress, IconButton, Typography } from '@mui/material';
+import { Button, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '../Auth/useAuth';
 import { sendUploadFileRequest } from '@/app/api/uploadFile/sendUploadFileRequest';
@@ -76,6 +76,7 @@ export const UploadVideoButton = ({
       const result = await converterRef.current.convert(file, (progressData) => {
         setProgress(progressData.progress);
       });
+      setProgress(100);
       const convertedBlob = new Blob([result.videoData.slice()], { type: 'video/mp4' });
       const convertedFile = new File([convertedBlob], result.videoName, { type: 'video/mp4' });
 
@@ -145,9 +146,17 @@ export const UploadVideoButton = ({
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                width: '18px',
+                height: '18px',
               }}
             >
-              <CircularProgress size={24} variant="determinate" value={progress} />
+              <Stack
+                sx={{
+                  transform: 'scale(1.4)',
+                }}
+              >
+                <CircularProgress size={18} variant="determinate" value={Math.max(4, progress)} />
+              </Stack>
               {progressText}
             </div>
           ) : (
