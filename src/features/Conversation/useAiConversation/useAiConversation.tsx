@@ -232,14 +232,12 @@ function useProvideAiConversation(): AiConversationContextType {
   }, [isNeedToResetNow]);
 
   useEffect(() => {
-    const isActive = isSpeakingFromConversation || isAiSpeaking;
     const isModeForRestart = ['role-play', 'talk'].includes(currentMode);
 
     if (
       messages.conversation.length > 0 &&
       messages.conversation.length % messagesToRestart === 0 &&
-      isModeForRestart &&
-      !isActive
+      isModeForRestart
     ) {
       // To prevent memory leak in case of very long conversations
       restartConversation();
