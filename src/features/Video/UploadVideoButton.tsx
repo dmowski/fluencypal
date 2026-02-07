@@ -1,4 +1,4 @@
-import { Button, CircularProgress, IconButton } from '@mui/material';
+import { Button, CircularProgress, IconButton, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '../Auth/useAuth';
 import { sendUploadFileRequest } from '@/app/api/uploadFile/sendUploadFileRequest';
@@ -45,9 +45,9 @@ export const UploadVideoButton = ({
       return;
     }
 
-    const maxSize = 50 * 1024 * 1024;
+    const maxSize = 250 * 1024 * 1024;
     if (file.size > maxSize) {
-      alert(i18n._('File size must be less than 50MB'));
+      alert(i18n._('File size must be less than 250MB'));
       return;
     }
 
@@ -114,6 +114,19 @@ export const UploadVideoButton = ({
     }
   };
 
+  const progressText = (
+    <Typography
+      style={{
+        position: 'absolute',
+        fontSize: '8px',
+        fontWeight: 500,
+        color: 'rgba(200, 200, 200, 1)',
+      }}
+    >
+      {Math.round(progress)}%
+    </Typography>
+  );
+
   return (
     <>
       <input
@@ -135,9 +148,7 @@ export const UploadVideoButton = ({
               }}
             >
               <CircularProgress size={24} variant="determinate" value={progress} />
-              <span style={{ position: 'absolute', fontSize: '10px', fontWeight: 'bold' }}>
-                {Math.round(progress)}%
-              </span>
+              {progressText}
             </div>
           ) : (
             <Video size={'18px'} color="rgba(200, 200, 200, 1)" />
@@ -161,9 +172,7 @@ export const UploadVideoButton = ({
                 }}
               >
                 <CircularProgress size={20} variant="determinate" value={progress} />
-                <span style={{ position: 'absolute', fontSize: '11px', fontWeight: 'bold' }}>
-                  {Math.round(progress)}%
-                </span>
+                {progressText}
               </div>
               {i18n._('Uploading...')}
             </>
