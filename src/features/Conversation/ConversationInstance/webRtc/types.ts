@@ -17,4 +17,5 @@ export interface WebRtcState {
   dataChannel: RTCDataChannel | null;
   peerConnection: RTCPeerConnection | null;
   userMedia: MediaStream;
+  lastMessages: SeedMsg[];
 }

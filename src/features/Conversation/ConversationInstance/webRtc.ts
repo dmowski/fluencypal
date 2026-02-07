@@ -38,14 +38,13 @@ export const initWebRtcConversation = async ({
   let currentMuted = Boolean(isMuted);
   let currentVolumeOn = Boolean(isVolumeOn);
 
-  let lastMessages: SeedMsg[] = []; // update it from outside (see below)
-
   const state: WebRtcState = {
     dataChannel: null,
     peerConnection: null,
     userMedia: await navigator.mediaDevices.getUserMedia({
       audio: true,
     }),
+    lastMessages: [],
   };
 
   await sleep(2000); // Important for mobile devices
@@ -132,7 +131,7 @@ export const initWebRtcConversation = async ({
       if (userMessage) {
         const id = event?.item_id as string;
         onMessage({ isBot: false, text: userMessage, id });
-        lastMessages.push({ isBot: false, text: userMessage });
+        state.lastMessages.push({ isBot: false, text: userMessage });
       }
     }
 
@@ -152,7 +151,7 @@ export const initWebRtcConversation = async ({
       const id = event?.response?.output?.[0]?.id as string | undefined;
       if (id && botAnswer) {
         onMessage({ isBot: true, text: botAnswer || '', id });
-        lastMessages.push({ isBot: true, text: botAnswer });
+        state.lastMessages.push({ isBot: true, text: botAnswer });
       }
     }
 
@@ -171,7 +170,7 @@ export const initWebRtcConversation = async ({
 
         if (userMessage && id) {
           onMessage({ isBot: false, text: userMessage, id });
-          lastMessages.push({ isBot: false, text: userMessage });
+          state.lastMessages.push({ isBot: false, text: userMessage });
         }
       }
     }
@@ -208,7 +207,7 @@ export const initWebRtcConversation = async ({
   };
 
   const openHandler = async () => {
-    const last10 = lastMessages.slice(-10);
+    const last10 = state.lastMessages.slice(-10);
     console.log('last10', last10);
     if (last10.length > 0) {
       await seedConversationItems(last10);
