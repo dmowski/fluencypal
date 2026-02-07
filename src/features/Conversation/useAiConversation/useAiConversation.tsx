@@ -296,7 +296,7 @@ VISUAL_CONTEXT (latest): ${description}
 
   const [usageInfo, setUsageInfo] = useState<string>('');
 
-  // xxx
+  // todo: Move to separate file
   const showDebugInfoBadgeOnTopWindow = (message: string) => {
     const elementId = 'debug-info-badge';
     let badge = document.getElementById(elementId);
@@ -333,6 +333,7 @@ VISUAL_CONTEXT (latest): ${description}
     );
   };
 
+  // todo: Move restart functionality to separate hook
   const restartConversation = async () => {
     if (isRestartingRef.current) {
       console.warn('Already restarting, skipping...');
@@ -443,19 +444,7 @@ VISUAL_CONTEXT (latest): ${description}
   const toggleConversationMode = (mode: ConversationMode) => {
     const isLimited = !access.isFullAppAccess;
     settings.setConversationMode(mode);
-
-    if (mode === 'call') {
-      toggleMute(true);
-    }
-
-    if (mode === 'chat') {
-      toggleMute(true);
-    }
-
-    if (mode === 'record') {
-      toggleMute(true);
-    }
-
+    toggleMute(true);
     toggleVolume(isLimited ? false : true);
   };
 
@@ -876,24 +865,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 `;
       }
 
-      const premiumUsers = [
-        'K1S4bliZw4hYbpftEC6sG5s9WYj2',
-        'WpDWCIdffeTOWyndAMpUOn3PUuY2',
-        '5LRw3ARnx1NL2navOPjIqEzdWip1', //Daniel
-        //'Mq2HfU3KrXTjNyOpPXqHSPg5izV2', //- My
-        '6x9zLTu7svdkHqm9huJ8Sx2On1T2', // My safari
-        'zoNM4maGglUhJaB8pKFP4pTdwWB2', // kubra kurt
-        'XHHrMO4bkBPzRc74TvJwlzxyo6i2',
-      ];
-      //const userIdsToSkipVad = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2'];
-
       const modesToUseRrc: ConversationType[] = ['talk', 'role-play'];
-      const isPremiumUser = premiumUsers.includes(auth.uid || '');
-
-      // Talk Mode and only for premium users
       const isUseRealtime = modesToUseRrc.includes(input.mode);
-
-      // any other users
       const isUseVad = !isUseRealtime;
 
       const newRecordingMode: RecordingUserMessageMode = isUseRealtime
