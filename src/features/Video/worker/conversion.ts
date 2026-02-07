@@ -25,35 +25,35 @@ export async function convertVideo(videoData: Uint8Array, _videoName: string): P
     } as WorkerResponse);
 
     // Execute FFmpeg conversion with timeout
-    console.log('[Worker] Starting FFmpeg exec with conservative VP8 settings');
+    console.log('[Worker] Starting FFmpeg exec with optimized VP8 encoding');
 
     let conversionPromise: Promise<number>;
     try {
-      // Use minimal VP8 settings to avoid WASM memory issues
-      // Focus on stability over quality to prevent out-of-bounds errors
+      // Optimized VP8: better quality with faster processing
+      // cpu-used=5 balances quality and speed, deadline=good is faster than best
       conversionPromise = ffmpeg.exec([
         '-i',
         inputName,
         '-vf',
-        'scale=min(720\\,iw):-2',
+        'scale=min(800\\,iw):-2',
         '-c:v',
         'libvpx',
         '-b:v',
-        '350k',
+        '700k',
         '-pix_fmt',
         'yuv420p',
         '-deadline',
-        'realtime',
+        'good',
         '-cpu-used',
-        '8',
+        '5',
         '-threads',
         '1',
         '-c:a',
         'libopus',
         '-b:a',
-        '48k',
+        '96k',
         '-ac',
-        '1',
+        '2',
         outputName,
       ]);
     } catch (execError) {
