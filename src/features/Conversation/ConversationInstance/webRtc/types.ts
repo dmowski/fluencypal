@@ -10,3 +10,5 @@ export interface UpdateSessionProps {
   languageCode: SupportedLanguage;
   modalities: Modalities[];
 }
+
+export type SeedMsg = { isBot: boolean; text: string };

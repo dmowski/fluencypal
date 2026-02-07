@@ -4,6 +4,8 @@ import { sleep } from '@/libs/sleep';
 import { ConversationConfig, ConversationInstance } from './types';
 import { sendSdpOffer } from './webRtc/sendSdpOffer';
 import { monitorWebRtcAudio } from './webRtc/monitorWebRtcAudio';
+import { SeedMsg } from './webRtc/types';
+import { buildTranscript } from './webRtc/buildTranscript';
 
 interface InstructionState {
   baseInitInstruction: string;
@@ -43,8 +45,6 @@ export const initWebRtcConversation = async ({
 
   let currentMuted = Boolean(isMuted);
   let currentVolumeOn = Boolean(isVolumeOn);
-
-  type SeedMsg = { isBot: boolean; text: string };
 
   let lastMessages: SeedMsg[] = []; // update it from outside (see below)
 
@@ -324,12 +324,10 @@ export const initWebRtcConversation = async ({
   };
 
   const addUserMessageDelta = (delta: string) => {
-    // not supported in WebRTC mode
     console.warn('addUserMessageDelta is not supported in WebRTC mode');
   };
 
   const completeUserMessageDelta = () => {
-    // not supported in WebRTC mode
     console.warn('completeUserMessageDelta is not supported in WebRTC mode');
   };
 
@@ -401,19 +399,9 @@ export const initWebRtcConversation = async ({
 
     restartingPromise = (async () => {
       try {
-        // Close everything hard
         closeHandler();
-
-        // Small cooldown helps prevent stuck ICE / rapid reconnect issues
         await sleep(300);
-
-        // Start a fresh session
         await startWebRtc();
-
-        // If you want to immediately force a session.update (even before "open"),
-        // do it after a short delay; openHandler will also do it.
-        //await sleep(250);
-        //await updateSessionSafe();
       } finally {
         restartingPromise = null;
       }
@@ -435,20 +423,6 @@ export const initWebRtcConversation = async ({
     if (!dataChannel || dataChannel.readyState !== 'open') return false;
     dataChannel.send(JSON.stringify(event));
     return true;
-  };
-
-  const buildTranscript = (messages: SeedMsg[]) => {
-    // keep it short to avoid recreating the same cost problem
-    const MAX_CHARS_PER_MSG = 800;
-
-    return messages
-      .slice(-10)
-      .map((m) => {
-        const who = m.isBot ? 'Assistant' : 'User';
-        const text = (m.text || '').trim().slice(0, MAX_CHARS_PER_MSG);
-        return `${who}: ${text}`;
-      })
-      .join('\n');
   };
 
   // You’ll pass last10Messages from your app state into initWebRtcConversation,
