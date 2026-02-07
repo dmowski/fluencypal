@@ -152,7 +152,7 @@ export const UploadVideoButton = ({
             >
               <Stack
                 sx={{
-                  transform: 'scale(1.4)',
+                  transform: 'scale(1.6)',
                 }}
               >
                 <CircularProgress size={18} variant="determinate" value={Math.max(4, progress)} />
