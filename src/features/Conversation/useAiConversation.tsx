@@ -348,7 +348,7 @@ VISUAL_CONTEXT (latest): ${description}
     }, 40_000);
   };
 
-  const messagesToRestart = auth.isFounder ? 10 : 100;
+  const messagesToRestart = auth.isFounder ? 10 : 130;
   const [isNeedToResetNow, setIsNeedToResetNow] = useState(false);
 
   useEffect(() => {
