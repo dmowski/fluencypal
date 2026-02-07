@@ -30,6 +30,7 @@ import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
 import { setGlobalConversationId } from '../Usage/globalConversationId';
 import { getVoiceSpeedInstruction } from './CallMode/voiceSpeed';
 import { activateAnalyticUser, conversationStarted } from '../Analytics/activationTracker';
+import { sendTelegramRequest } from '../Telegram/sendTextAiRequest';
 
 const LIMITED_MESSAGES_COUNT = 12;
 const LIMITED_VOICE_MESSAGES_COUNT = 7;
@@ -323,6 +324,15 @@ VISUAL_CONTEXT (latest): ${description}
     }
   }, [usageInfo, auth.isFounder]);
 
+  const sendTgMessage = async (message: string) => {
+    await sendTelegramRequest(
+      {
+        message: message,
+      },
+      await auth.getToken(),
+    );
+  };
+
   const restartConversation = async () => {
     if (isRestartingRef.current) {
       console.warn('Already restarting, skipping...');
@@ -338,6 +348,9 @@ VISUAL_CONTEXT (latest): ${description}
     await sleep(10_000);
 
     await communicatorRef.current?.restartConversation();
+    // xxx
+    const lastMessage = conversation[conversation.length - 1].text;
+    await sendTgMessage(`Restarting conversation. Last message before restart: ${lastMessage}`);
 
     await sleep(500);
 
