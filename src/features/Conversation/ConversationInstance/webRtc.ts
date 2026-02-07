@@ -6,6 +6,7 @@ import { sendSdpOffer } from './webRtc/sendSdpOffer';
 import { monitorWebRtcAudio } from './webRtc/monitorWebRtcAudio';
 import { SeedMsg } from './webRtc/types';
 import { buildTranscript } from './webRtc/buildTranscript';
+import { getAudioEl } from './webRtc/getAudioEl';
 
 interface InstructionState {
   baseInitInstruction: string;
@@ -32,16 +33,7 @@ export const initWebRtcConversation = async ({
   conversationId,
   userPricePerHourUsd,
 }: ConversationConfig): Promise<ConversationInstance> => {
-  const audioId = 'audio_for_llm';
-  const existingAudio = document.getElementById(audioId) as HTMLAudioElement | null;
-  let audioEl = existingAudio;
-  if (!audioEl) {
-    audioEl = document.createElement('audio');
-
-    audioEl.autoplay = true;
-    audioEl.id = audioId;
-    document.body.appendChild(audioEl);
-  }
+  const audioEl = getAudioEl();
 
   let currentMuted = Boolean(isMuted);
   let currentVolumeOn = Boolean(isVolumeOn);
@@ -133,15 +125,12 @@ export const initWebRtcConversation = async ({
       const userMessage = event?.transcript || '';
       if (userMessage) {
         const id = event?.item_id as string;
-        // console.log("TIMESTAMP CHECK event", event);
         onMessage({ isBot: false, text: userMessage, id });
-        // add message to localState
         lastMessages.push({ isBot: false, text: userMessage });
       }
     }
 
     if (type === 'response.done') {
-      //console.log("event?.response?.output", event?.response?.output);
       const botAnswer = event?.response?.output
         .map((item: any) => {
           return (
@@ -157,7 +146,6 @@ export const initWebRtcConversation = async ({
       const id = event?.response?.output?.[0]?.id as string | undefined;
       if (id && botAnswer) {
         onMessage({ isBot: true, text: botAnswer || '', id });
-        // add message to localState
         lastMessages.push({ isBot: true, text: botAnswer });
       }
     }
@@ -171,20 +159,12 @@ export const initWebRtcConversation = async ({
         const id = event.item.id as string;
         const content = event.item.content || [];
         const userMessage = content
-          .map((item: any) => {
-            if (item.type === 'input_text') {
-              return item.text || '';
-            }
-            return '';
-          })
+          .map((item: any) => (item.type === 'input_text' ? item.text || '' : ''))
           .join(' ')
           .trim();
 
         if (userMessage && id) {
-          // console.log("TIMESTAMP CHECK event", event);
           onMessage({ isBot: false, text: userMessage, id });
-
-          // add message to localState
           lastMessages.push({ isBot: false, text: userMessage });
         }
       }
@@ -217,9 +197,7 @@ export const initWebRtcConversation = async ({
   const updateInstruction = async (partial: Partial<InstructionState>): Promise<void> => {
     Object.assign(instructionState, partial);
     const updatedInstruction = getInstruction();
-    console.log('RTC updatedInstruction');
-    console.log(updatedInstruction);
-
+    console.log('RTC updatedInstruction:', updatedInstruction);
     await updateSessionSafe(updatedInstruction);
   };
 
