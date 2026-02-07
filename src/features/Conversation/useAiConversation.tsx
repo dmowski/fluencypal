@@ -318,25 +318,24 @@ VISUAL_CONTEXT (latest): ${description}
     }, 40_000);
   };
 
-  const isStartedAnalyticLogged = useRef(false);
-
   const messagesToRestart = 100;
+  useEffect(() => {
+    const isActive = isSpeakingFromConversation || isAiSpeaking;
+    const isModeForRestart = ['role-play', 'talk'].includes(currentMode);
 
+    if (conversation.length % messagesToRestart === 0 && isModeForRestart && !isActive) {
+      // To prevent memory leak in case of very long conversations
+      restartConversation();
+      return;
+    }
+  }, [conversation.length]);
+
+  const isStartedAnalyticLogged = useRef(false);
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
     activateAnalyticUser();
     history.setMessages(conversationId, conversation);
 
-    const isActive = isSpeakingFromConversation || isAiSpeaking;
-    if (
-      conversation.length % messagesToRestart === 0 &&
-      ['role-play', 'talk'].includes(currentMode) &&
-      !isActive
-    ) {
-      // To prevent memory leak in case of very long conversations
-      restartConversation();
-      return;
-    }
     if (conversation.length === 1 && conversationId && isStartedAnalyticLogged.current === false) {
       conversationStarted(conversationId);
       isStartedAnalyticLogged.current = true;
