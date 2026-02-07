@@ -9,6 +9,8 @@ import { buildTranscript } from './webRtc/buildTranscript';
 import { getAudioEl } from './webRtc/getAudioEl';
 import { addThreadsMessage } from './webRtc/addThreadsMessage';
 import { triggerAiResponse } from './webRtc/triggerAiResponse';
+import { sendEvent } from './webRtc/sendEvent';
+import { waitForDcOpen } from './webRtc/waitForDcOpen';
 
 export const initWebRtcConversation = async ({
   model,
@@ -363,47 +365,35 @@ export const initWebRtcConversation = async ({
     return restartingPromise;
   };
 
-  const waitForDcOpen = async (timeoutMs = 5000) => {
-    const startedAt = Date.now();
-    while (!state.dataChannel || state.dataChannel.readyState !== 'open') {
-      await sleep(50);
-      if (Date.now() - startedAt > timeoutMs) return false;
-    }
-    return true;
-  };
-
-  const sendEvent = (event: any) => {
-    if (!state.dataChannel || state.dataChannel.readyState !== 'open') return false;
-    state.dataChannel.send(JSON.stringify(event));
-    return true;
-  };
-
   // You’ll pass last10Messages from your app state into initWebRtcConversation,
   // OR store them in a closure and update them via a setter.
   // For now, assume you have them available as `lastMessages`.
   const seedConversationItems = async (messages: SeedMsg[]) => {
-    const ok = await waitForDcOpen();
+    const ok = await waitForDcOpen(5000, state);
     if (!ok) return;
 
     const transcript = buildTranscript(messages);
     if (!transcript) return;
 
-    sendEvent({
-      type: 'conversation.item.create',
-      item: {
-        type: 'message',
-        role: 'system',
-        content: [
-          {
-            type: 'input_text',
-            text:
-              `Conversation so far (most recent last):\n` +
-              transcript +
-              `\n\nContinue naturally from here.`,
-          },
-        ],
+    sendEvent(
+      {
+        type: 'conversation.item.create',
+        item: {
+          type: 'message',
+          role: 'system',
+          content: [
+            {
+              type: 'input_text',
+              text:
+                `Conversation so far (most recent last):\n` +
+                transcript +
+                `\n\nContinue naturally from here.`,
+            },
+          ],
+        },
       },
-    });
+      state,
+    );
   };
 
   return {
