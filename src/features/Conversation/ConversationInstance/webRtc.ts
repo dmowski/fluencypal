@@ -11,6 +11,9 @@ import { addThreadsMessage } from './webRtc/addThreadsMessage';
 import { triggerAiResponse } from './webRtc/triggerAiResponse';
 import { sendEvent } from './webRtc/sendEvent';
 import { waitForDcOpen } from './webRtc/waitForDcOpen';
+import { toggleVolume } from './webRtc/toggleVolume';
+import { toggleMute } from './webRtc/toggleMute';
+import { closeHandler } from './webRtc/closeHandler';
 
 export const initWebRtcConversation = async ({
   model,
@@ -225,45 +228,7 @@ export const initWebRtcConversation = async ({
   };
   await state.peerConnection.setRemoteDescription(answer);
 
-  const closeHandler = () => {
-    if (state.dataChannel) {
-      state.dataChannel.removeEventListener('message', messageHandler);
-      state.dataChannel.removeEventListener('open', openHandler);
-      state.dataChannel.removeEventListener('close', closeEvent);
-      state.dataChannel.removeEventListener('error', errorEvent);
-
-      if (state.dataChannel.readyState !== 'closed') {
-        state.dataChannel.close();
-        console.log('Data channel closed');
-      }
-    }
-
-    if (state.peerConnection && state.peerConnection.signalingState !== 'closed') {
-      state.peerConnection.getSenders().forEach((sender, index) => {
-        if (sender.track) {
-          sender.track.stop();
-          console.log('Track stopped - #', index);
-        }
-      });
-
-      state.peerConnection.close();
-      console.log('Peer connection closed');
-    }
-  };
-
-  const toggleMute = (mute: boolean) => {
-    state.userMedia.getTracks().forEach((track) => {
-      track.enabled = !mute;
-    });
-  };
-
-  if (isMuted) toggleMute(true);
-
-  const toggleVolume = async (isVolumeOn: boolean) => {
-    if (!state.audioEl) return;
-    state.audioEl.muted = !isVolumeOn;
-    state.audioEl.volume = isVolumeOn ? 1 : 0;
-  };
+  if (isMuted) toggleMute(true, state);
 
   const sendWebCamDescription = async (description: string) => {
     const isCorrectionExistsBefore = Boolean(state.instructionState.correction);
@@ -323,8 +288,8 @@ export const initWebRtcConversation = async ({
     await state.peerConnection.setRemoteDescription(answer);
 
     // Reapply states after connect attempt (safe even before open)
-    toggleMute(state.currentMuted);
-    await toggleVolume(state.currentVolumeOn);
+    toggleMute(state.currentMuted, state);
+    await toggleVolume(state.currentVolumeOn, state);
   };
 
   const updateSessionSafe = async (partialInstructionOverride?: string) => {
@@ -354,7 +319,12 @@ export const initWebRtcConversation = async ({
 
     restartingPromise = (async () => {
       try {
-        closeHandler();
+        closeHandler(state, {
+          messageHandler,
+          openHandler,
+          closeEvent,
+          errorEvent,
+        });
         await sleep(300);
         await startWebRtc();
       } finally {
@@ -397,12 +367,19 @@ export const initWebRtcConversation = async ({
   };
 
   return {
-    closeHandler,
+    closeHandler: () => {
+      closeHandler(state, {
+        messageHandler,
+        openHandler,
+        closeEvent,
+        errorEvent,
+      });
+    },
 
     addThreadsMessage: (message: string) => addThreadsMessage(message, state),
     triggerAiResponse: async () => await triggerAiResponse(state),
-    toggleMute,
-    toggleVolume,
+    toggleMute: (mute: boolean) => toggleMute(mute, state),
+    toggleVolume: async (isVolumeOn: boolean) => await toggleVolume(isVolumeOn, state),
 
     sendWebCamDescription,
     sendCorrectionInstruction,
