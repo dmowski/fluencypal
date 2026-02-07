@@ -12,7 +12,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useAiUserInfo } from '../Ai/useAiUserInfo';
 import { supportedLanguages } from '../Lang/lang';
 import { getUrlStart } from '../Lang/getUrlStart';
-import { useAiConversation } from '../Conversation/useAiConversation';
+import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useTextAi } from '../Ai/useTextAi';
 import { useSettings } from '../Settings/useSettings';
 import { RolePlayScenariosInfo } from './rolePlayData';

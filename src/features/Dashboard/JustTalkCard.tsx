@@ -5,7 +5,7 @@ import { Typography, Button } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import { AudioLines } from 'lucide-react';
 import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
-import { useAiConversation } from '../Conversation/useAiConversation';
+import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useState } from 'react';
 import { useSettings } from '../Settings/useSettings';
 import { useConversationAudio } from '../Audio/useConversationAudio';

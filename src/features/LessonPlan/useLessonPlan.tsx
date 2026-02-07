@@ -1,7 +1,7 @@
 'use client';
 import { createContext, useContext, ReactNode, JSX, useState, useEffect, useRef } from 'react';
 import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from './type';
-import { useAiConversation } from '../Conversation/useAiConversation';
+import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useTextAi } from '../Ai/useTextAi';
 import { getSortedMessages } from '../Conversation/getSortedMessages';
 import { GoalElementInfo } from '../Plan/types';

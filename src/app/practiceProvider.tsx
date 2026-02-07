@@ -2,7 +2,7 @@ import { AuthProvider } from '@/features/Auth/useAuth';
 import { SettingsProvider } from '@/features/Settings/useSettings';
 import { UsageProvider } from '@/features/Usage/useUsage';
 import { ChatHistoryProvider } from '@/features/ConversationHistory/useChatHistory';
-import { AiConversationProvider } from '@/features/Conversation/useAiConversation';
+import { AiConversationProvider } from '@/features/Conversation/useAiConversation/useAiConversation';
 import { TasksProvider } from '@/features/Tasks/useTasks';
 import { WordsProvider } from '@/features/Words/useWords';
 import { RulesProvider } from '@/features/Rules/useRules';

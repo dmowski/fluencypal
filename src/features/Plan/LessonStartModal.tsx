@@ -12,7 +12,7 @@ import MicIcon from '@mui/icons-material/Mic';
 import { GoalElementInfo, PlanElementMode } from './types';
 import { useSettings } from '../Settings/useSettings';
 import { useWords } from '../Words/useWords';
-import { useAiConversation } from '../Conversation/useAiConversation';
+import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useRules } from '../Rules/useRules';
 import { InfoStep } from '../Survey/InfoStep';
 import { ConversationMode } from '@/common/userSettings';

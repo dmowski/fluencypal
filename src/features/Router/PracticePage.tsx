@@ -1,6 +1,6 @@
 'use client';
 
-import { useAiConversation } from '@/features/Conversation/useAiConversation';
+import { useAiConversation } from '@/features/Conversation/useAiConversation/useAiConversation';
 import { useAuth } from '../Auth/useAuth';
 import { Stack } from '@mui/material';
 import { SignInForm } from '../Auth/SignInForm';

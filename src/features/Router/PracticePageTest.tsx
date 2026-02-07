@@ -6,7 +6,7 @@ import { ConversationCanvas } from '../Conversation/ConversationCanvas';
 import { ConversationMessage } from '@/common/conversation';
 import { GuessGameStat } from '../Conversation/types';
 import { useEffect, useState } from 'react';
-import { useAiConversation } from '../Conversation/useAiConversation';
+import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useAiUserInfo } from '../Ai/useAiUserInfo';
 import { ConversationMode } from '@/common/userSettings';
 

@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { useAiConversation } from './useAiConversation';
+import { useAiConversation } from './useAiConversation/useAiConversation';
 import { usePlan } from '../Plan/usePlan';
 import { useSettings } from '../Settings/useSettings';
 import { useTextAi } from '../Ai/useTextAi';

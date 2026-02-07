@@ -2,7 +2,7 @@
 import { createContext, useContext, ReactNode, JSX, useState, useEffect, useRef } from 'react';
 import { useGame } from '../Game/useGame';
 import { useUsage } from '../Usage/useUsage';
-import { useAiConversation } from '../Conversation/useAiConversation';
+import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 
 interface PayWallContextType {
   isShowPayWall: boolean;
