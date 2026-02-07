@@ -18,36 +18,42 @@ export async function convertVideo(videoData: Uint8Array, _videoName: string): P
     await ffmpeg.writeFile(inputName, videoData);
     console.log('[Worker] Input file written successfully');
 
+    // Send initial progress
+    self.postMessage({
+      type: 'progress',
+      data: { progress: 0 },
+    } as WorkerResponse);
+
     // Execute FFmpeg conversion with timeout
-    console.log('[Worker] Starting FFmpeg exec with VP8 codec and audio');
+    console.log('[Worker] Starting FFmpeg exec with VP8 codec for better quality');
 
     let conversionPromise: Promise<number>;
     try {
-      // Use VP8 (libvpx) instead of VP9 - more memory efficient for WASM
-      // Use 640:-2 scale without upscaling filter - input is 640x480 so this won't resize
+      // Use VP8 (libvpx) for better memory efficiency in WASM
+      // Higher quality than before while staying within memory bounds
       conversionPromise = ffmpeg.exec([
         '-i',
         inputName,
         '-vf',
-        'scale=640:-2',
+        'scale=min(960\\,iw):-2',
         '-c:v',
         'libvpx',
         '-b:v',
-        '300k',
+        '500k',
         '-pix_fmt',
         'yuv420p',
         '-deadline',
-        'realtime',
+        'good',
         '-cpu-used',
-        '8',
+        '4',
         '-threads',
-        '1',
+        '2',
         '-c:a',
         'libopus',
         '-b:a',
-        '48k',
+        '64k',
         '-ac',
-        '1',
+        '2',
         outputName,
       ]);
     } catch (execError) {
@@ -74,6 +80,12 @@ export async function convertVideo(videoData: Uint8Array, _videoName: string): P
     if (exitCode !== 0) {
       throw new Error(`FFmpeg conversion failed with exit code ${exitCode}`);
     }
+
+    // Send progress update before reading output
+    self.postMessage({
+      type: 'progress',
+      data: { progress: 75 },
+    } as WorkerResponse);
 
     // Add a small delay to ensure file is written
     await new Promise((resolve) => setTimeout(resolve, 100));
@@ -108,6 +120,12 @@ export async function convertVideo(videoData: Uint8Array, _videoName: string): P
         cleanupError instanceof Error ? cleanupError.message : String(cleanupError),
       );
     }
+
+    // Send completion progress
+    self.postMessage({
+      type: 'progress',
+      data: { progress: 100 },
+    } as WorkerResponse);
 
     // Send result back
     console.log('[Worker] Conversion complete, sending result');

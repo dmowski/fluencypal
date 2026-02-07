@@ -22,6 +22,7 @@ export const UploadVideoButton = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const converterRef = useRef<VideoConverter | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     return () => {
@@ -66,12 +67,15 @@ export const UploadVideoButton = ({
 
     try {
       setIsUploading(true);
+      setProgress(0);
 
       if (!converterRef.current) {
         converterRef.current = new VideoConverter();
       }
 
-      const result = await converterRef.current.convert(file);
+      const result = await converterRef.current.convert(file, (progressData) => {
+        setProgress(progressData.progress);
+      });
       const convertedBlob = new Blob([result.videoData.slice()], { type: 'video/webm' });
       const convertedFile = new File([convertedBlob], result.videoName, { type: 'video/webm' });
 
@@ -103,6 +107,7 @@ export const UploadVideoButton = ({
       alert(i18n._('Failed to upload video. Please try again.') + error);
     } finally {
       setIsUploading(false);
+      setProgress(0);
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
       }
@@ -121,7 +126,19 @@ export const UploadVideoButton = ({
       {type === 'icon' ? (
         <IconButton onClick={handleUploadClick} disabled={isUploading}>
           {isUploading ? (
-            <CircularProgress size={'18px'} />
+            <div
+              style={{
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <CircularProgress size={24} variant="determinate" value={progress} />
+              <span style={{ position: 'absolute', fontSize: '10px', fontWeight: 'bold' }}>
+                {Math.round(progress)}%
+              </span>
+            </div>
           ) : (
             <Video size={'18px'} color="rgba(200, 200, 200, 1)" />
           )}
@@ -135,7 +152,19 @@ export const UploadVideoButton = ({
         >
           {isUploading ? (
             <>
-              <CircularProgress size={20} sx={{ mr: 1 }} />
+              <div
+                style={{
+                  position: 'relative',
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginRight: '8px',
+                }}
+              >
+                <CircularProgress size={20} variant="determinate" value={progress} />
+                <span style={{ position: 'absolute', fontSize: '11px', fontWeight: 'bold' }}>
+                  {Math.round(progress)}%
+                </span>
+              </div>
               {i18n._('Uploading...')}
             </>
           ) : (
