@@ -47,8 +47,5 @@ export default defineConfig({
     url: BASE_URL,
     reuseExistingServer: true,
     timeout: 120000,
-    env: {
-      E2E_UPLOAD_BYPASS: 'true',
-    },
   },
 });
