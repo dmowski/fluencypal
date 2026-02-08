@@ -181,10 +181,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const [usageInfo, setUsageInfo] = useState<string>('');
 
   useEffect(() => {
-    if (!auth.isFounder) return;
-    if (usageInfo) {
-      showDebugInfoBadgeOnTopWindow(usageInfo);
-    }
+    if (usageInfo && auth.isFounder) showDebugInfoBadgeOnTopWindow(usageInfo);
   }, [usageInfo, auth.isFounder]);
 
   const toggleMute = (isMute: boolean) => {
