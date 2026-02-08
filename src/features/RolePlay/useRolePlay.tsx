@@ -8,10 +8,7 @@ import {
   RolePlayInputType,
   RolePlayInstruction,
 } from './types';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useAiUserInfo } from '../Ai/useAiUserInfo';
-import { supportedLanguages } from '../Lang/lang';
-import { getUrlStart } from '../Lang/getUrlStart';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useTextAi } from '../Ai/useTextAi';
 import { useSettings } from '../Settings/useSettings';
@@ -19,13 +16,8 @@ import { RolePlayScenariosInfo } from './rolePlayData';
 import { useLocalStorage } from 'react-use';
 import { GuessGameStat } from '../Conversation/types';
 import { MODELS } from '@/common/ai';
-import { uniq } from '@/libs/uniq';
 import { ConversationMode } from '@/common/userSettings';
-import { useConversationAudio } from '../Audio/useConversationAudio';
-
-const firstLimit = 6;
-
-const allCategoriesLabel = 'All';
+import { useUrlState } from '../Url/useUrlState';
 
 const getStartDefaultInstruction = (fullLanguageName: string) => {
   return `You are playing role-play conversation with user.
@@ -72,6 +64,11 @@ const getDefaultInstruction: AiRolePlayInstructionCreator = (
 ${additionalInfo}`;
 };
 
+interface TabInfo {
+  id: string;
+  title: string;
+}
+
 interface RolePlayContextType {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   closeRolePlay: () => void;
@@ -79,15 +76,11 @@ interface RolePlayContextType {
   userInputs: Record<string, string> | undefined;
   setUserInputs: React.Dispatch<React.SetStateAction<Record<string, string> | undefined>>;
   isStarting: boolean;
-  selectedTab: string;
-  onSetTab: (tab: string) => void;
-  allCategoriesLabel: string;
-  allTabs: string[];
+  selectedCategoryId: string;
+  setSelectedCategoryId: (tab: string) => void;
+  allTabs: TabInfo[];
   visibleScenarios: RolePlayInstruction[];
   selectScenario: (scenario: RolePlayInstruction) => void;
-
-  isLimited: boolean;
-  setIsLimited: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const RolePlayContext = createContext<RolePlayContextType | null>(null);
@@ -97,52 +90,17 @@ function useProvideRolePlay({
 }: {
   rolePlayInfo: RolePlayScenariosInfo;
 }): RolePlayContextType {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-
   const userInfo = useAiUserInfo();
-  const pathname = usePathname();
-  const locale = pathname?.split('/')[1] as string;
-  const supportedLang = supportedLanguages.find((l) => l === locale) || 'en';
 
-  const rolePlayId = searchParams.get('rolePlayId');
-  const selectedTabUrl = searchParams.get('rolePlayTab') || allCategoriesLabel;
-
-  const [selectedTab, setSelectedTab] = useState(selectedTabUrl);
-
-  useEffect(() => {
-    if (selectedTabUrl !== selectedTab) {
-      setSelectedTab(selectedTabUrl);
-    }
-  }, [selectedTabUrl]);
-
-  const onSetTab = (tab: string) => {
-    setSelectedTab(tab);
-    const newSearchParam = new URLSearchParams(window.location.search);
-    newSearchParam.set('rolePlayTab', tab);
-    router.push(`${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`, {
-      scroll: false,
-    });
-  };
-
-  const setRolePlayId = (id?: string) => {
-    if (id) {
-      const newSearchParam = new URLSearchParams(window.location.search);
-      newSearchParam.set('rolePlayId', id);
-      router.push(`${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`, {
-        scroll: false,
-      });
-    } else {
-      const newSearchParam = new URLSearchParams(window.location.search);
-      newSearchParam.delete('rolePlayId');
-      router.push(`${getUrlStart(supportedLang)}practice?${newSearchParam.toString()}`, {
-        scroll: false,
-      });
-    }
-  };
+  const [rolePlayId, setRolePlayId] = useUrlState('rolePlayId', '', true);
+  const [selectedCategoryId, setSelectedCategoryId] = useUrlState(
+    'rolePlayTab',
+    rolePlayInfo.allCategory.categoryId,
+    true,
+  );
 
   const closeRolePlay = () => {
-    setRolePlayId();
+    setRolePlayId('');
     setSelectedRolePlayScenario(null);
   };
 
@@ -150,22 +108,21 @@ function useProvideRolePlay({
   const textAi = useTextAi();
   const settings = useSettings();
 
-  const [isLimited, setIsLimited] = useState(true);
   const [isStarting, setIsStarting] = useState(false);
   const [selectedRolePlayScenario, setSelectedRolePlayScenario] =
     useState<RolePlayInstruction | null>(null);
 
   const visibleScenarios =
-    selectedTab === allCategoriesLabel
-      ? rolePlayInfo.rolePlayScenarios.filter((_, index) => !isLimited || index < firstLimit)
+    selectedCategoryId === rolePlayInfo.allCategory.categoryId
+      ? rolePlayInfo.rolePlayScenarios
       : rolePlayInfo.rolePlayScenarios.filter(
-          (scenario) => scenario.category.categoryTitle === selectedTab,
+          (scenario) => scenario.category.categoryId === selectedCategoryId,
         );
 
-  const allTabs = uniq([
-    allCategoriesLabel,
-    ...rolePlayInfo.rolePlayScenarios.map((scenario) => scenario.category.categoryTitle),
-  ]);
+  const allTabs: TabInfo[] = rolePlayInfo.categoriesList.map((category) => ({
+    id: category.categoryId,
+    title: category.categoryTitle,
+  }));
 
   useEffect(() => {
     if (!rolePlayId) {
@@ -406,14 +363,11 @@ function useProvideRolePlay({
     userInputs,
     setUserInputs,
     isStarting,
-    selectedTab,
-    onSetTab,
-    allCategoriesLabel,
+    selectedCategoryId,
+    setSelectedCategoryId,
     allTabs,
     visibleScenarios,
     selectScenario,
-    isLimited,
-    setIsLimited,
   };
 }
 

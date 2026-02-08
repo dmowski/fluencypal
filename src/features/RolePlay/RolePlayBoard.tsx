@@ -1,24 +1,18 @@
 'use client';
-import { Button, Stack, Tab, Tabs, Typography } from '@mui/material';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-
+import { Stack, Tab, Tabs, Typography } from '@mui/material';
 import { RolePlayCardApp } from './RolePlayCardApp';
-
 import { VenetianMask } from 'lucide-react';
 import { useRolePlay } from './useRolePlay';
 import { useLingui } from '@lingui/react';
 
 export const RolePlayBoard = () => {
   const {
-    onSetTab,
-    allCategoriesLabel,
+    selectedCategoryId,
+    setSelectedCategoryId,
+
     allTabs,
-    selectedTab,
     visibleScenarios,
     selectScenario,
-    isLimited,
-    setIsLimited,
   } = useRolePlay();
 
   const { i18n } = useLingui();
@@ -59,11 +53,11 @@ export const RolePlayBoard = () => {
           scrollButtons="auto"
           variant="scrollable"
           allowScrollButtonsMobile
-          value={selectedTab}
-          onChange={(event, newId) => onSetTab(`${newId || allCategoriesLabel}`)}
+          value={selectedCategoryId}
+          onChange={(event, newId) => setSelectedCategoryId(`${newId}`)}
         >
           {allTabs.map((tab, index) => {
-            return <Tab key={index} label={tab} value={tab} />;
+            return <Tab key={index} label={tab.title} value={tab.id} />;
           })}
         </Tabs>
 
@@ -89,14 +83,6 @@ export const RolePlayBoard = () => {
               );
             })}
           </Stack>
-          {selectedTab === allCategoriesLabel && (
-            <Button
-              startIcon={isLimited ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
-              onClick={() => setIsLimited(!isLimited)}
-            >
-              {isLimited ? i18n._(`Show more`) : i18n._(`Show less`)}
-            </Button>
-          )}
         </Stack>
       </Stack>
     </Stack>
