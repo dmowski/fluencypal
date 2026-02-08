@@ -91,16 +91,10 @@ function useProvideAiConversation(): AiConversationContextType {
     triggerResponse?: boolean;
     removeMessage?: boolean;
   }) => {
-    if (removeMessage) {
-      communicatorRef.current?.completeUserMessageDelta({
-        removeMessage,
-      });
-      return;
-    }
     communicatorRef.current?.completeUserMessageDelta({
       removeMessage,
     });
-    if (triggerResponse) {
+    if (triggerResponse && !removeMessage) {
       await sleep(300);
       communicatorRef.current?.triggerAiResponse();
     }
