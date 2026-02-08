@@ -270,15 +270,35 @@ msgstr ".NET 专家面临 API、数据和系统设计环节"
 msgid "/ month"
 msgstr "/月"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:38
+#. js-lingui-explicit-id
+msgid "1 day"
+msgstr "1 天"
+
 #: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:47
 #. js-lingui-explicit-id
 msgid "1 hour"
 msgstr "1 小时"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:55
+#. js-lingui-explicit-id
+msgid "1 month"
+msgstr "1 个月"
+
 #: src/features/Alias/components/RoundSettings.tsx:34
 #. js-lingui-explicit-id
 msgid "1 round"
 msgstr "1轮"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:47
+#. js-lingui-explicit-id
+msgid "1 week"
+msgstr "1 周"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:63
+#. js-lingui-explicit-id
+msgid "1 year"
+msgstr "1年"
 
 #: src/features/PayWall/CardValidatorWall.tsx:129
 #. js-lingui-explicit-id
@@ -444,7 +464,7 @@ msgstr "成就"
 msgid "Action plan to improve critical backend skills"
 msgstr "改进关键后端技能的行动计划"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:760
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:520
 #. js-lingui-explicit-id
 msgid "Active"
 msgstr "活跃"
@@ -641,7 +661,7 @@ msgstr "AI 对您的答案的反馈"
 msgid "AI feedback that matters"
 msgstr "AI 反馈非常重要"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:709
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:469
 #. js-lingui-explicit-id
 msgid "AI hours left in your balance."
 msgstr "您的余额中还剩AI小时。"
@@ -1154,10 +1174,23 @@ msgstr "玩Alias游戏的好处"
 msgid "Benefits of Role Play"
 msgstr "角色扮演的好处"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:59
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:67
+#. js-lingui-explicit-id
+msgid "Best for long-term access"
+msgstr ""
+"plaintext\n"
+"最适合长期使用\n"
+
 #: src/features/Case/data/reusable/priceSection.ts:16
 #. js-lingui-explicit-id
 msgid "Best for most job seekers"
 msgstr "对大多数求职者最有利"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:42
+#. js-lingui-explicit-id
+msgid "Best for trying out the full access"
+msgstr "最适合尝试完整访问权限"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1257,7 +1290,7 @@ msgstr "繁忙的专业人士"
 msgid "Buy a subscription"
 msgstr "购买订阅"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:928
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:688
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "购买更多"
@@ -1346,13 +1379,13 @@ msgid "Can I customize my practice sessions?"
 msgstr "我可以自定义我的练习课程吗？"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:52
-#: src/features/Usage/SubscriptionPaymentModal.tsx:989
+#: src/features/Usage/Subscription/FaqSubscription.tsx:43
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "购买后可以退款吗？"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
-#: src/features/Usage/SubscriptionPaymentModal.tsx:961
+#: src/features/Usage/Subscription/FaqSubscription.tsx:15
 #. js-lingui-explicit-id
 msgid "Can I get full access for free?"
 msgstr "我可以免费获得完整访问权限吗？"
@@ -1568,6 +1601,11 @@ msgstr "选择您的面试准备计划"
 msgid "Choose Your Language Level"
 msgstr "选择你的语言水平"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:23
+#. js-lingui-explicit-id
+msgid "Choose your next access plan"
+msgstr "选择您的下一个访问计划"
+
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
@@ -1731,7 +1769,8 @@ msgid "Confirm Credit Card"
 msgstr "确认信用卡"
 
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
-#: src/features/Usage/SubscriptionPaymentModal.tsx:541
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:42
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:407
 #. js-lingui-explicit-id
 msgid "Confirm payment"
 msgstr "确认付款"
@@ -1800,7 +1839,6 @@ msgstr "联系我们"
 #: src/features/Landing/Contact/ContactsPage.tsx:170
 #: src/features/Landing/Footer.tsx:88
 #: src/features/SEO/metadata.ts:65
-#: src/features/Usage/SubscriptionPaymentModal.tsx:1004
 #. js-lingui-explicit-id
 msgid "Contacts"
 msgstr "联系人"
@@ -1828,7 +1866,6 @@ msgstr "联系人："
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:133
 #: src/features/Plan/PlanCard.tsx:208
-#: src/features/Usage/SubscriptionPaymentModal.tsx:667
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "继续"
@@ -2166,14 +2203,15 @@ msgstr "数据与交易"
 msgid "Databases & Transactions"
 msgstr "数据库与事务"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:831
-#. js-lingui-explicit-id
-msgid "Day"
-msgstr "天"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:894
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:100
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "day"
+msgstr "天"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:591
+#. js-lingui-explicit-id
+msgid "Day"
 msgstr "天"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
@@ -2603,7 +2641,7 @@ msgstr "不要跳过闲聊"
 msgid "Duration"
 msgstr "时长"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:818
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:578
 #. js-lingui-explicit-id
 msgid "Duration:"
 msgstr "持续时间:"
@@ -2879,21 +2917,22 @@ msgstr "针对使用现代Web开发技术栈的初创公司或代理机构的入
 msgid "Error analyzing conversation"
 msgstr "分析对话时出现错误"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:90
-#: src/features/Usage/SubscriptionPaymentModal.tsx:109
-#: src/features/Usage/SubscriptionPaymentModal.tsx:241
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:107
+#: src/features/Usage/Subscription/TgWalletButton.tsx:50
+#: src/features/Usage/Subscription/TgWalletButton.tsx:69
 #. js-lingui-explicit-id
 msgid "Error creating payment session"
 msgstr "创建付款会话时出错"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:331
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:95
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:197
 #. js-lingui-explicit-id
 msgid ""
 "Error creating payment session. Notification sent to support. Try again "
 "later."
 msgstr "创建支付会话时出错。通知已发送给支持团队。请稍后再试。"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:248
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:114
 #. js-lingui-explicit-id
 msgid "Error creating payment session. Try again later."
 msgstr "创建支付会话时出错。请稍后再试。"
@@ -2908,13 +2947,14 @@ msgstr "创建计划时出错。请重试。"
 msgid "Error during analyzing message"
 msgstr "分析消息时出错"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:277
-#: src/features/Usage/SubscriptionPaymentModal.tsx:360
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:124
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:143
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:226
 #. js-lingui-explicit-id
 msgid "Error during payment process"
 msgstr "支付过程中出现错误"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:136
+#: src/features/Usage/Subscription/TgWalletButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Error processing payment"
 msgstr "支付处理错误"
@@ -3669,6 +3709,7 @@ msgstr "频繁使用者需要更多价值"
 
 #: src/features/Community/SupportPage.tsx:59
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:11
+#: src/features/Usage/Subscription/FaqSubscription.tsx:10
 #. js-lingui-explicit-id
 msgid "Frequently Asked Questions"
 msgstr "常见问题"
@@ -3710,8 +3751,8 @@ msgstr "前端系统设计面试"
 #: src/features/Landing/Price/PricePage.tsx:300
 #: src/features/Settings/MyProfile.tsx:90
 #: src/features/Usage/FeatureBlocker.tsx:51
-#: src/features/Usage/SubscriptionPaymentModal.tsx:689
-#: src/features/Usage/SubscriptionPaymentModal.tsx:737
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:449
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:497
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "完全访问权限"
@@ -3721,23 +3762,27 @@ msgstr "完全访问权限"
 msgid "Full access - Expiring soon"
 msgstr "完全访问 - 即将到期"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:556
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:57
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:422
 #. js-lingui-explicit-id
 msgid "Full Access for 1 day"
 msgstr "全天候访问 1 天"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:466
-#: src/features/Usage/SubscriptionPaymentModal.tsx:551
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:52
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:332
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:417
 #. js-lingui-explicit-id
 msgid "Full Access for 1 month"
 msgstr "全月无限访问权限"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:553
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:54
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:419
 #. js-lingui-explicit-id
 msgid "Full Access for 1 week"
 msgstr "一周的完全访问权限"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:555
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:56
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:421
 #. js-lingui-explicit-id
 msgid "Full Access for 1 year"
 msgstr "一年完全访问权限"
@@ -3920,7 +3965,7 @@ msgstr ""
 "你将扮演一位购物杂货的顾客。AI作为商店员工，会询问你在寻找什么，建议优惠，并引导你找到正确的产品。这个互动角色扮演模拟了一个真实的购物体验，帮助你建立"
 "基本的沟通技能。"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:902
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:662
 #. js-lingui-explicit-id
 msgid "Get confidence with AI support"
 msgstr "获得 AI 支持，增强自信"
@@ -3935,7 +3980,7 @@ msgstr "享受FluencyPal的灵活定价。从免费试用3天开始，享受无�
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Dashboard/AccessBadge.tsx:67
 #: src/features/Usage/FeatureBlocker.tsx:99
-#: src/features/Usage/SubscriptionPaymentModal.tsx:916
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:676
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "获取完全访问权限"
@@ -4495,7 +4540,6 @@ msgid ""
 msgstr "如何为具有嵌套组件和异步数据的复杂应用程序构建状态管理？"
 
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:68
-#: src/features/Usage/SubscriptionPaymentModal.tsx:602
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "我接受"
@@ -4827,26 +4871,12 @@ msgstr ""
 "我希望能够立即提供服务，并且我承认一旦Fundacja Rozwoju Przedsiębiorczości \"Twój "
 "StartUp\"提供了服务，我将失去终止合同的权利。"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:584
-#. js-lingui-explicit-id
-msgid ""
-"I want the service to be provided immediately and I acknowledge that as "
-"soon\n"
-"                        as the Fundacja Rozwoju Przedsiębiorczości \"Twój "
-"StartUp\" provides the\n"
-"                        service, I will lose the right to terminate the "
-"contract."
-msgstr ""
-"我希望立即提供服务，我承认，一旦Fundacja Rozwoju Przedsiębiorczości \"Twój StartUp\"提供了服务，\n"
-"                        我将失去解除合同的权利。"
-
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:38
 #. js-lingui-explicit-id
 msgid "I want to learn..."
 msgstr "我想学习..."
 
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:89
-#: src/features/Usage/SubscriptionPaymentModal.tsx:623
 #. js-lingui-explicit-id
 msgid "I want to receive commercial and marketing content"
 msgstr "我希望接收商业和营销内容"
@@ -5625,7 +5655,7 @@ msgid "Is there content on resiliency and observability?"
 msgstr "内容有关于韧性和可观测性的吗？"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:33
-#: src/features/Usage/SubscriptionPaymentModal.tsx:970
+#: src/features/Usage/Subscription/FaqSubscription.tsx:24
 #. js-lingui-explicit-id
 msgid "Is this a subscription?"
 msgstr "这是订阅吗？"
@@ -6076,7 +6106,8 @@ msgstr "加载中.."
 #: src/features/Router/PracticePage.tsx:79
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
-#: src/features/Usage/SubscriptionPaymentModal.tsx:164
+#: src/features/Usage/Subscription/BalanceStatus.tsx:55
+#: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "加载中..."
@@ -6325,13 +6356,14 @@ msgstr "现代文学"
 
 #: src/features/Landing/Price/PricePage.tsx:259
 #: src/features/Landing/Price/PricePage.tsx:330
-#: src/features/Usage/SubscriptionPaymentModal.tsx:799
-#: src/features/Usage/SubscriptionPaymentModal.tsx:889
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:95
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:559
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:649
 #. js-lingui-explicit-id
 msgid "month"
 msgstr "月"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:845
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:605
 #. js-lingui-explicit-id
 msgid "Month"
 msgstr "月"
@@ -6604,7 +6636,7 @@ msgstr "还没有浏览记录。成为第一个查看此帖的人吧！"
 msgid "No words used yet"
 msgstr "尚未使用任何单词"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:978
+#: src/features/Usage/Subscription/FaqSubscription.tsx:32
 #. js-lingui-explicit-id
 msgid ""
 "No, you are purchasing full access for a selected period of time. There is "
@@ -6724,15 +6756,6 @@ msgid ""
 "                                  StartUp\" with its registered office in "
 "Warsaw."
 msgstr "由 \"Twój StartUp\" 企业发展基金会经营的网站，其注册办事处位于华沙。"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:606
-#. js-lingui-explicit-id
-msgid ""
-"of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
-"                        StartUp\" with its registered office in Warsaw."
-msgstr ""
-"由\"Twój StartUp\"创业发展基金会运营的网站，\n"
-"                        其注册办公室位于华沙。"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -6925,17 +6948,17 @@ msgstr "将您的简历文本粘贴在这里。您还可以写一个简要的经
 #: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:59
 #: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:66
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:125
-#: src/features/Usage/SubscriptionPaymentModal.tsx:667
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:128
 #. js-lingui-explicit-id
 msgid "Pay"
 msgstr "支付"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:164
+#: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
 msgid "Pay with crypto"
 msgstr "使用加密货币支付"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:496
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:362
 #. js-lingui-explicit-id
 msgid "Pay with Stars"
 msgstr "用星星支付"
@@ -6945,7 +6968,7 @@ msgstr "用星星支付"
 msgid "Payment"
 msgstr "付款"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:264
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:130
 #. js-lingui-explicit-id
 msgid "Payment failed! Please try again."
 msgstr "支付失败！请重试。"
@@ -6956,12 +6979,12 @@ msgstr "支付失败！请重试。"
 msgid "Payment History"
 msgstr "付款历史"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:457
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:323
 #. js-lingui-explicit-id
 msgid "Payment option"
 msgstr "支付选项"
 
-#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:18
+#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:32
 #. js-lingui-explicit-id
 msgid "Payment successful!"
 msgstr "支付成功！"
@@ -7569,6 +7592,11 @@ msgstr "上一个问题"
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "价格"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:134
+#. js-lingui-explicit-id
+msgid "Price per day"
+msgstr "每日价格"
 
 #: src/features/Case/data/reusable/priceSection.ts:44
 #. js-lingui-explicit-id
@@ -8829,7 +8857,7 @@ msgstr "SQL"
 msgid "Stand out in behavioral rounds"
 msgstr "在行为面试中脱颖而出"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:797
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:557
 #. js-lingui-explicit-id
 msgid "Stars"
 msgstr "星星"
@@ -8938,7 +8966,7 @@ msgstr "开始测试"
 msgid "Start Turn"
 msgstr "开始回合"
 
-#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:28
+#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:45
 #. js-lingui-explicit-id
 msgid "Start using the app"
 msgstr "开始使用应用程序"
@@ -9396,7 +9424,6 @@ msgid ""
 msgstr "告诉我们你的背景，你迄今为止学到了什么，以及作为一名初级前端开发人员你希望改进什么。"
 
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:70
-#: src/features/Usage/SubscriptionPaymentModal.tsx:604
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "条款和条件"
@@ -9459,7 +9486,7 @@ msgstr "感谢您完成高级前端开发者面试准备。您现在可以访问
 msgid "Thank you for your feedback!"
 msgstr "感谢您的反馈！"
 
-#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:19
+#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:36
 #. js-lingui-explicit-id
 msgid "Thank you for your purchase."
 msgstr "感谢您的购买。"
@@ -9987,7 +10014,6 @@ msgid "Total Turns"
 msgstr "总回合数"
 
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:105
-#: src/features/Usage/SubscriptionPaymentModal.tsx:639
 #. js-lingui-explicit-id
 msgid "Total:"
 msgstr "总计："
@@ -10571,14 +10597,15 @@ msgstr "网络摄像头反馈预览"
 msgid "Webcam Setup"
 msgstr "网络摄像头设置"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:838
-#. js-lingui-explicit-id
-msgid "Week"
-msgstr "周"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:891
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:97
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:651
 #. js-lingui-explicit-id
 msgid "week"
+msgstr "周"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:598
+#. js-lingui-explicit-id
+msgid "Week"
 msgstr "周"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:13
@@ -10620,6 +10647,11 @@ msgstr "我在付费计划中能得到什么？"
 #. js-lingui-explicit-id
 msgid "What do I need to use FluencyPal?"
 msgstr "我使用FluencyPal需要什么？"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:209
+#. js-lingui-explicit-id
+msgid "What do you get with Full Access?"
+msgstr "您可以通过完全访问获得什么？"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:233
 #. js-lingui-explicit-id
@@ -10754,6 +10786,11 @@ msgstr "价格是多少？"
 #. js-lingui-explicit-id
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "何时使用 AsNoTracking 以及有哪些权衡？"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:51
+#. js-lingui-explicit-id
+msgid "When you need full access for a short period of time"
+msgstr "当您需要在短时间内完全访问时"
 
 #: src/features/Landing/LandingPage.tsx:42
 #. js-lingui-explicit-id
@@ -10916,14 +10953,15 @@ msgstr "以感激和信心结束面试。使用以下这些表达方式来以积
 msgid "Wrong Link"
 msgstr "错误链接"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:852
-#. js-lingui-explicit-id
-msgid "Year"
-msgstr "年"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:893
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:99
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:653
 #. js-lingui-explicit-id
 msgid "year"
+msgstr "年"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:612
+#. js-lingui-explicit-id
+msgid "Year"
 msgstr "年"
 
 #: src/features/Header/NeedHelpModal.tsx:80
@@ -10969,14 +11007,14 @@ msgid ""
 msgstr "是的。如果您对我们的服务不满意，您可以申请退款。请通过上方的聊天与我们的支持团队联系，我们将指导您完成退款流程。"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:53
-#: src/features/Usage/SubscriptionPaymentModal.tsx:990
+#: src/features/Usage/Subscription/FaqSubscription.tsx:44
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you're not satisfied with the service, on \"Profile/Payment "
 "history\" page you can request a refund and we will discuss the details."
 msgstr "是。如果您对服务不满意，可以在“个人资料/付款历史”页面申请退款，我们将讨论具体细节。"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:962
+#: src/features/Usage/Subscription/FaqSubscription.tsx:16
 #. js-lingui-explicit-id
 msgid ""
 "Yes. Simply play on the Community page or send messages in the chat to earn "
@@ -11067,6 +11105,13 @@ msgstr ""
 "你可以像在真实面试中一样回答问题，并获得即时反馈。AI会根据你的职业和经验调整问题。这种训练可以帮助你找出弱点，提升你的发音，并学会如何平静地应对出人意"
 "料的问题。你会注意到，随着每次尝试，你的语言变得更加流畅，你的回答也更加熟练。"
 
+#: src/features/Usage/Subscription/BalanceStatus.tsx:64
+#. js-lingui-explicit-id
+msgid ""
+"You are a leader in leaderboard! Full access is active until you are on the "
+"top-5"
+msgstr "您是排行榜中的领袖！完整访问权限有效，直至您处于前五名。"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -11128,7 +11173,14 @@ msgstr ""
 "您可以练习高级前端、领导和资深级别的面试，包括技术轮次、前端系统设计、现场编码，以及专注于 React、Vue、Angular、TypeScript "
 "和现代 Web 架构的行为面试。"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:946
+#: src/features/Usage/Subscription/BalanceStatus.tsx:80
+#. js-lingui-explicit-id
+msgid ""
+"You can purchase a full access plan or get full access for free (more "
+"details in the FAQ section below)."
+msgstr "您可以购买完整访问计划或免费获取完整访问权限（更多详情请见下方的常见问题部分）。"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:706
 #. js-lingui-explicit-id
 msgid ""
 "You can renew your full access any time before it expires to avoid\n"
@@ -11155,7 +11207,12 @@ msgstr "你可以使用任何你喜欢的语言"
 msgid "You can use text to answer if you prefer."
 msgstr "您可以使用文字回答，如果您愿意的话。"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:698
+#: src/features/Usage/Subscription/BalanceStatus.tsx:58
+#. js-lingui-explicit-id
+msgid "You do not have full access"
+msgstr "您没有完全访问权限"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:458
 #. js-lingui-explicit-id
 msgid "You do not have full access."
 msgstr "您没有完全访问权限。"
@@ -11174,7 +11231,7 @@ msgid ""
 "logging, tracing, and metrics to keep services reliable."
 msgstr "您将获得有关重试、熔断器、超时、回退、日志记录、跟踪和指标的场景，以保持服务的可靠性。"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:708
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:468
 #. js-lingui-explicit-id
 msgid "You have"
 msgstr "你有"
@@ -11193,6 +11250,11 @@ msgid ""
 "the results."
 msgstr "您已完成所有问题。现在提交您的答案并等待结果。"
 
+#: src/features/Usage/Subscription/BalanceStatus.tsx:57
+#. js-lingui-explicit-id
+msgid "You have full access"
+msgstr "你拥有完全访问权限"
+
 #: src/features/Chat/ChatPage.tsx:225
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
@@ -11202,6 +11264,11 @@ msgstr "您还没有聊天记录。"
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "您已提交答案。正在等待其他人……"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:74
+#. js-lingui-explicit-id
+msgid "You have {hours} AI hours on your balance"
+msgstr "您账户上有 {hours} 个AI小时"
 
 #: src/features/Case/data/frontend-senior/painSection.ts:23
 #. js-lingui-explicit-id
@@ -11261,6 +11328,11 @@ msgstr "你已经取得了惊人的进步。让我们继续前进。"
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "您："
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:34
+#. js-lingui-explicit-id
+msgid "Your access status"
+msgstr "您的访问状态"
 
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
@@ -11327,15 +11399,20 @@ msgstr "您期望的职位名称。例如：设计师，商店助理，健身教
 msgid "Your experience"
 msgstr "您的经验"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:702
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:462
 #. js-lingui-explicit-id
 msgid "Your full access is active until"
 msgstr "您的全面访问权限有效期至"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:935
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:695
 #. js-lingui-explicit-id
 msgid "Your full access is active until {activeTill}"
 msgstr "您的完全访问权限将保持有效直到 {activeTill}"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:70
+#. js-lingui-explicit-id
+msgid "Your full access is active until {date}"
+msgstr "您的完全访问权限有效期至 {date}"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:340
 #. js-lingui-explicit-id
@@ -11471,6 +11548,28 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:584
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "I want the service to be provided immediately and I acknowledge that as "
+#~ "soon\n"
+#~ "                        as the Fundacja Rozwoju Przedsiębiorczości \"Twój "
+#~ "StartUp\" provides the\n"
+#~ "                        service, I will lose the right to terminate the "
+#~ "contract."
+#~ msgstr ""
+#~ "我希望立即提供服务，我承认，一旦Fundacja Rozwoju Przedsiębiorczości \"Twój StartUp\"提供了服务，\n"
+#~ "                        我将失去解除合同的权利。"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:606
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
+#~ "                        StartUp\" with its registered office in Warsaw."
+#~ msgstr ""
+#~ "由\"Twój StartUp\"创业发展基金会运营的网站，\n"
+#~ "                        其注册办公室位于华沙。"
 
 #: src/features/Game/UploadVideoButton.tsx:79
 #. js-lingui-explicit-id

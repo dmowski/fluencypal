@@ -300,15 +300,35 @@ msgstr ""
 msgid "/ month"
 msgstr "/ mois"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:38
+#. js-lingui-explicit-id
+msgid "1 day"
+msgstr "1 jour"
+
 #: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:47
 #. js-lingui-explicit-id
 msgid "1 hour"
 msgstr "1 heure"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:55
+#. js-lingui-explicit-id
+msgid "1 month"
+msgstr "1 mois"
+
 #: src/features/Alias/components/RoundSettings.tsx:34
 #. js-lingui-explicit-id
 msgid "1 round"
 msgstr "1 tour"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:47
+#. js-lingui-explicit-id
+msgid "1 week"
+msgstr "1 semaine"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:63
+#. js-lingui-explicit-id
+msgid "1 year"
+msgstr "1 an"
 
 #: src/features/PayWall/CardValidatorWall.tsx:129
 #. js-lingui-explicit-id
@@ -484,7 +504,7 @@ msgstr "Réalisations"
 msgid "Action plan to improve critical backend skills"
 msgstr "Plan d'action pour améliorer les compétences back-end critiques"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:760
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:520
 #. js-lingui-explicit-id
 msgid "Active"
 msgstr "Actif"
@@ -688,7 +708,7 @@ msgstr "Retour d'IA sur vos réponses"
 msgid "AI feedback that matters"
 msgstr "Des commentaires d'IA qui comptent"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:709
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:469
 #. js-lingui-explicit-id
 msgid "AI hours left in your balance."
 msgstr "Heures IA restantes dans votre solde."
@@ -1226,10 +1246,21 @@ msgstr "Avantages de Jouer au Jeu Alias"
 msgid "Benefits of Role Play"
 msgstr "Avantages du jeu de rôle"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:59
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:67
+#. js-lingui-explicit-id
+msgid "Best for long-term access"
+msgstr "Meilleur pour un accès à long terme"
+
 #: src/features/Case/data/reusable/priceSection.ts:16
 #. js-lingui-explicit-id
 msgid "Best for most job seekers"
 msgstr "Meilleur pour la plupart des chercheurs d'emploi"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:42
+#. js-lingui-explicit-id
+msgid "Best for trying out the full access"
+msgstr "Meilleur pour essayer l'accès complet"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1336,7 +1367,7 @@ msgstr "professionnels occupés"
 msgid "Buy a subscription"
 msgstr "Achetez un abonnement"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:928
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:688
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Acheter Plus"
@@ -1427,13 +1458,13 @@ msgid "Can I customize my practice sessions?"
 msgstr "Puis-je personnaliser mes sessions d'entraînement ?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:52
-#: src/features/Usage/SubscriptionPaymentModal.tsx:989
+#: src/features/Usage/Subscription/FaqSubscription.tsx:43
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "Puis-je obtenir un remboursement après l'achat ?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
-#: src/features/Usage/SubscriptionPaymentModal.tsx:961
+#: src/features/Usage/Subscription/FaqSubscription.tsx:15
 #. js-lingui-explicit-id
 msgid "Can I get full access for free?"
 msgstr "Puis-je obtenir un accès complet gratuitement ?"
@@ -1668,6 +1699,11 @@ msgstr "Choisissez votre plan de préparation à l'entretien"
 msgid "Choose Your Language Level"
 msgstr "Choisissez Votre Niveau de Langue"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:23
+#. js-lingui-explicit-id
+msgid "Choose your next access plan"
+msgstr "Choisissez votre prochain plan d'accès"
+
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
@@ -1835,7 +1871,8 @@ msgid "Confirm Credit Card"
 msgstr "Confirmer la carte de crédit"
 
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
-#: src/features/Usage/SubscriptionPaymentModal.tsx:541
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:42
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:407
 #. js-lingui-explicit-id
 msgid "Confirm payment"
 msgstr "Confirmer le paiement"
@@ -1911,7 +1948,6 @@ msgstr "Contactez-nous"
 #: src/features/Landing/Contact/ContactsPage.tsx:170
 #: src/features/Landing/Footer.tsx:88
 #: src/features/SEO/metadata.ts:65
-#: src/features/Usage/SubscriptionPaymentModal.tsx:1004
 #. js-lingui-explicit-id
 msgid "Contacts"
 msgstr "Contacts"
@@ -1939,7 +1975,6 @@ msgstr "Contacts :"
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:133
 #: src/features/Plan/PlanCard.tsx:208
-#: src/features/Usage/SubscriptionPaymentModal.tsx:667
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Continuer"
@@ -2301,15 +2336,16 @@ msgstr "Données et transactions"
 msgid "Databases & Transactions"
 msgstr "Bases de données & Transactions"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:831
-#. js-lingui-explicit-id
-msgid "Day"
-msgstr "Jour"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:894
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:100
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "day"
 msgstr "jour"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:591
+#. js-lingui-explicit-id
+msgid "Day"
+msgstr "Jour"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
 #. js-lingui-explicit-id
@@ -2791,7 +2827,7 @@ msgstr "Ne sautez pas les petites discussions"
 msgid "Duration"
 msgstr "Durée"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:818
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:578
 #. js-lingui-explicit-id
 msgid "Duration:"
 msgstr "Durée :"
@@ -3101,14 +3137,15 @@ msgstr ""
 msgid "Error analyzing conversation"
 msgstr "Erreur d'analyse de conversation"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:90
-#: src/features/Usage/SubscriptionPaymentModal.tsx:109
-#: src/features/Usage/SubscriptionPaymentModal.tsx:241
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:107
+#: src/features/Usage/Subscription/TgWalletButton.tsx:50
+#: src/features/Usage/Subscription/TgWalletButton.tsx:69
 #. js-lingui-explicit-id
 msgid "Error creating payment session"
 msgstr "Erreur lors de la création de la session de paiement"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:331
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:95
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:197
 #. js-lingui-explicit-id
 msgid ""
 "Error creating payment session. Notification sent to support. Try again "
@@ -3117,7 +3154,7 @@ msgstr ""
 "Erreur lors de la création de la session de paiement. Notification envoyée "
 "au support. Veuillez réessayer plus tard."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:248
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:114
 #. js-lingui-explicit-id
 msgid "Error creating payment session. Try again later."
 msgstr ""
@@ -3134,13 +3171,14 @@ msgstr "Erreur lors de la création du plan. Veuillez réessayer."
 msgid "Error during analyzing message"
 msgstr "Erreur lors de l'analyse du message"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:277
-#: src/features/Usage/SubscriptionPaymentModal.tsx:360
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:124
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:143
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:226
 #. js-lingui-explicit-id
 msgid "Error during payment process"
 msgstr "Erreur lors du processus de paiement"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:136
+#: src/features/Usage/Subscription/TgWalletButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Error processing payment"
 msgstr "Erreur lors du traitement du paiement"
@@ -4003,6 +4041,7 @@ msgstr "Utilisateurs fréquents qui ont besoin de plus de valeur"
 
 #: src/features/Community/SupportPage.tsx:59
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:11
+#: src/features/Usage/Subscription/FaqSubscription.tsx:10
 #. js-lingui-explicit-id
 msgid "Frequently Asked Questions"
 msgstr "Questions Fréquemment Posées"
@@ -4044,8 +4083,8 @@ msgstr "entretien sur la conception de système frontend"
 #: src/features/Landing/Price/PricePage.tsx:300
 #: src/features/Settings/MyProfile.tsx:90
 #: src/features/Usage/FeatureBlocker.tsx:51
-#: src/features/Usage/SubscriptionPaymentModal.tsx:689
-#: src/features/Usage/SubscriptionPaymentModal.tsx:737
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:449
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:497
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "Accès Complet"
@@ -4055,23 +4094,27 @@ msgstr "Accès Complet"
 msgid "Full access - Expiring soon"
 msgstr "Accès complet - Expire bientôt"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:556
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:57
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:422
 #. js-lingui-explicit-id
 msgid "Full Access for 1 day"
 msgstr "Accès complet pour 1 jour"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:466
-#: src/features/Usage/SubscriptionPaymentModal.tsx:551
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:52
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:332
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:417
 #. js-lingui-explicit-id
 msgid "Full Access for 1 month"
 msgstr "Accès complet pendant 1 mois"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:553
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:54
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:419
 #. js-lingui-explicit-id
 msgid "Full Access for 1 week"
 msgstr "Accès complet pendant 1 semaine"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:555
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:56
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:421
 #. js-lingui-explicit-id
 msgid "Full Access for 1 year"
 msgstr "Accès complet pour 1 an"
@@ -4275,7 +4318,7 @@ msgstr ""
 "simule une expérience de shopping réaliste, vous aidant à développer des "
 "compétences de communication essentielles."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:902
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:662
 #. js-lingui-explicit-id
 msgid "Get confidence with AI support"
 msgstr "Obtenez de la confiance avec le soutien de l'IA"
@@ -4293,7 +4336,7 @@ msgstr ""
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Dashboard/AccessBadge.tsx:67
 #: src/features/Usage/FeatureBlocker.tsx:99
-#: src/features/Usage/SubscriptionPaymentModal.tsx:916
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:676
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "Obtenez un Accès Complet"
@@ -4924,7 +4967,6 @@ msgstr ""
 "avec des composants imbriqués et des données asynchrones ?"
 
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:68
-#: src/features/Usage/SubscriptionPaymentModal.tsx:602
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "J'accepte le"
@@ -5332,29 +5374,12 @@ msgstr ""
 "                                  service, je perdrai le droit de résilier "
 "le contrat."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:584
-#. js-lingui-explicit-id
-msgid ""
-"I want the service to be provided immediately and I acknowledge that as "
-"soon\n"
-"                        as the Fundacja Rozwoju Przedsiębiorczości \"Twój "
-"StartUp\" provides the\n"
-"                        service, I will lose the right to terminate the "
-"contract."
-msgstr ""
-"Je souhaite que le service soit fourni immédiatement et je reconnais que "
-"dès que\n"
-"                        la Fundacja Rozwoju Przedsiębiorczości \"Twój "
-"StartUp\" fournit le\n"
-"                        service, je perdrai le droit de résilier le contrat."
-
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:38
 #. js-lingui-explicit-id
 msgid "I want to learn..."
 msgstr "Je veux apprendre..."
 
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:89
-#: src/features/Usage/SubscriptionPaymentModal.tsx:623
 #. js-lingui-explicit-id
 msgid "I want to receive commercial and marketing content"
 msgstr "Je souhaite recevoir du contenu commercial et marketing"
@@ -6309,7 +6334,7 @@ msgid "Is there content on resiliency and observability?"
 msgstr "Y a-t-il du contenu sur la résilience et l'observabilité ?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:33
-#: src/features/Usage/SubscriptionPaymentModal.tsx:970
+#: src/features/Usage/Subscription/FaqSubscription.tsx:24
 #. js-lingui-explicit-id
 msgid "Is this a subscription?"
 msgstr "S'agit-il d'un abonnement ?"
@@ -6787,7 +6812,8 @@ msgstr "Chargement.."
 #: src/features/Router/PracticePage.tsx:79
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
-#: src/features/Usage/SubscriptionPaymentModal.tsx:164
+#: src/features/Usage/Subscription/BalanceStatus.tsx:55
+#: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Chargement..."
@@ -7056,13 +7082,14 @@ msgstr "littérature moderne"
 
 #: src/features/Landing/Price/PricePage.tsx:259
 #: src/features/Landing/Price/PricePage.tsx:330
-#: src/features/Usage/SubscriptionPaymentModal.tsx:799
-#: src/features/Usage/SubscriptionPaymentModal.tsx:889
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:95
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:559
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:649
 #. js-lingui-explicit-id
 msgid "month"
 msgstr "mois"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:845
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:605
 #. js-lingui-explicit-id
 msgid "Month"
 msgstr "Mois"
@@ -7344,7 +7371,7 @@ msgstr "Aucune vue pour l'instant. Soyez le premier à voir ce post !"
 msgid "No words used yet"
 msgstr "Aucun mot utilisé pour l'instant"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:978
+#: src/features/Usage/Subscription/FaqSubscription.tsx:32
 #. js-lingui-explicit-id
 msgid ""
 "No, you are purchasing full access for a selected period of time. There is "
@@ -7486,16 +7513,6 @@ msgid ""
 msgstr ""
 "du site Web exploité par la Fundacja Rozwoju Przedsiębiorczości \"Twój "
 "StartUp\" avec son siège social à Varsovie."
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:606
-#. js-lingui-explicit-id
-msgid ""
-"of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
-"                        StartUp\" with its registered office in Warsaw."
-msgstr ""
-"du site Web exploité par la Fondation pour le développement de "
-"l'entrepreneuriat \"Twój\n"
-"                        StartUp\", avec son siège à Varsovie."
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -7712,17 +7729,17 @@ msgstr ""
 #: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:59
 #: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:66
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:125
-#: src/features/Usage/SubscriptionPaymentModal.tsx:667
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:128
 #. js-lingui-explicit-id
 msgid "Pay"
 msgstr "Payer"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:164
+#: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
 msgid "Pay with crypto"
 msgstr "Payer avec des cryptomonnaies"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:496
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:362
 #. js-lingui-explicit-id
 msgid "Pay with Stars"
 msgstr "Payer avec des Étoiles"
@@ -7732,7 +7749,7 @@ msgstr "Payer avec des Étoiles"
 msgid "Payment"
 msgstr "Paiement"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:264
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:130
 #. js-lingui-explicit-id
 msgid "Payment failed! Please try again."
 msgstr "Échec du paiement ! Veuillez réessayer."
@@ -7743,12 +7760,12 @@ msgstr "Échec du paiement ! Veuillez réessayer."
 msgid "Payment History"
 msgstr "Historique des Paiements"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:457
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:323
 #. js-lingui-explicit-id
 msgid "Payment option"
 msgstr "Option de paiement"
 
-#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:18
+#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:32
 #. js-lingui-explicit-id
 msgid "Payment successful!"
 msgstr "Paiement réussi !"
@@ -8434,6 +8451,11 @@ msgstr "Question précédente"
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "Prix"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:134
+#. js-lingui-explicit-id
+msgid "Price per day"
+msgstr "Prix par jour"
 
 #: src/features/Case/data/reusable/priceSection.ts:44
 #. js-lingui-explicit-id
@@ -9775,7 +9797,7 @@ msgstr "SQL"
 msgid "Stand out in behavioral rounds"
 msgstr "Sortez du lot lors des tours de comportement"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:797
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:557
 #. js-lingui-explicit-id
 msgid "Stars"
 msgstr "Étoiles"
@@ -9891,7 +9913,7 @@ msgstr ""
 "\n"
 "Commencer le tour\n"
 
-#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:28
+#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:45
 #. js-lingui-explicit-id
 msgid "Start using the app"
 msgstr "Commencez à utiliser l'application"
@@ -10398,7 +10420,6 @@ msgstr ""
 "junior."
 
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:70
-#: src/features/Usage/SubscriptionPaymentModal.tsx:604
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "Conditions Générales"
@@ -10471,7 +10492,7 @@ msgstr ""
 msgid "Thank you for your feedback!"
 msgstr "Merci pour vos commentaires !"
 
-#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:19
+#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:36
 #. js-lingui-explicit-id
 msgid "Thank you for your purchase."
 msgstr "Merci pour votre achat."
@@ -11049,7 +11070,6 @@ msgid "Total Turns"
 msgstr "Total des tours"
 
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:105
-#: src/features/Usage/SubscriptionPaymentModal.tsx:639
 #. js-lingui-explicit-id
 msgid "Total:"
 msgstr "Total :"
@@ -11673,15 +11693,16 @@ msgstr "Aperçu du Retour Vidéo de la Webcam"
 msgid "Webcam Setup"
 msgstr "Configuration de la webcam"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:838
-#. js-lingui-explicit-id
-msgid "Week"
-msgstr "Semaine"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:891
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:97
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:651
 #. js-lingui-explicit-id
 msgid "week"
 msgstr "semaine"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:598
+#. js-lingui-explicit-id
+msgid "Week"
+msgstr "Semaine"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:13
 #. js-lingui-explicit-id
@@ -11726,6 +11747,11 @@ msgstr "Qu'obtiens-je avec le plan payant ?"
 #. js-lingui-explicit-id
 msgid "What do I need to use FluencyPal?"
 msgstr "De quoi ai-je besoin pour utiliser FluencyPal ?"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:209
+#. js-lingui-explicit-id
+msgid "What do you get with Full Access?"
+msgstr "Qu'obtenez-vous avec l'accès complet ?"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:233
 #. js-lingui-explicit-id
@@ -11862,6 +11888,11 @@ msgstr "Quel est le prix ?"
 #. js-lingui-explicit-id
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "Quand utilisez-vous AsNoTracking et quels sont les compromis ?"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:51
+#. js-lingui-explicit-id
+msgid "When you need full access for a short period of time"
+msgstr "Quand vous avez besoin d'un accès complet pour une courte période"
 
 #: src/features/Landing/LandingPage.tsx:42
 #. js-lingui-explicit-id
@@ -12049,15 +12080,16 @@ msgstr ""
 msgid "Wrong Link"
 msgstr "Lien incorrect"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:852
-#. js-lingui-explicit-id
-msgid "Year"
-msgstr "Année"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:893
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:99
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:653
 #. js-lingui-explicit-id
 msgid "year"
 msgstr "année"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:612
+#. js-lingui-explicit-id
+msgid "Year"
+msgstr "Année"
 
 #: src/features/Header/NeedHelpModal.tsx:80
 #. js-lingui-explicit-id
@@ -12113,7 +12145,7 @@ msgstr ""
 "ci-dessus, et nous vous guiderons à travers le processus de remboursement."
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:53
-#: src/features/Usage/SubscriptionPaymentModal.tsx:990
+#: src/features/Usage/Subscription/FaqSubscription.tsx:44
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you're not satisfied with the service, on \"Profile/Payment "
@@ -12123,7 +12155,7 @@ msgstr ""
 "\"Profil/Historique des paiements\", vous pouvez demander un remboursement "
 "et nous discuterons des détails."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:962
+#: src/features/Usage/Subscription/FaqSubscription.tsx:16
 #. js-lingui-explicit-id
 msgid ""
 "Yes. Simply play on the Community page or send messages in the chat to earn "
@@ -12245,6 +12277,15 @@ msgstr ""
 "remarquerez que votre discours devient plus fluide et que vos réponses sont "
 "de plus en plus soignées à chaque tentative."
 
+#: src/features/Usage/Subscription/BalanceStatus.tsx:64
+#. js-lingui-explicit-id
+msgid ""
+"You are a leader in leaderboard! Full access is active until you are on the "
+"top-5"
+msgstr ""
+"Vous êtes un leader dans le classement ! L'accès complet est actif jusqu'à "
+"ce que vous soyez dans le top 5"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -12319,7 +12360,16 @@ msgstr ""
 "entretiens comportementaux axés sur React, Vue, Angular, TypeScript et "
 "l'architecture web moderne."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:946
+#: src/features/Usage/Subscription/BalanceStatus.tsx:80
+#. js-lingui-explicit-id
+msgid ""
+"You can purchase a full access plan or get full access for free (more "
+"details in the FAQ section below)."
+msgstr ""
+"Vous pouvez acheter un plan d'accès complet ou obtenir un accès complet "
+"gratuitement (plus de détails dans la section FAQ ci-dessous)."
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:706
 #. js-lingui-explicit-id
 msgid ""
 "You can renew your full access any time before it expires to avoid\n"
@@ -12349,7 +12399,12 @@ msgstr "Vous pouvez utiliser la langue de votre choix"
 msgid "You can use text to answer if you prefer."
 msgstr "Vous pouvez utiliser le texte pour répondre si vous préférez."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:698
+#: src/features/Usage/Subscription/BalanceStatus.tsx:58
+#. js-lingui-explicit-id
+msgid "You do not have full access"
+msgstr "Vous n'avez pas un accès complet"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:458
 #. js-lingui-explicit-id
 msgid "You do not have full access."
 msgstr "Vous n'avez pas un accès complet."
@@ -12373,7 +12428,7 @@ msgstr ""
 "les délais d'attente, les solutions de repli, la journalisation, le traçage "
 "et les métriques pour maintenir les services fiables."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:708
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:468
 #. js-lingui-explicit-id
 msgid "You have"
 msgstr "Vous avez"
@@ -12396,6 +12451,11 @@ msgstr ""
 "Vous avez terminé toutes les questions. Soumettez vos réponses maintenant "
 "et attendez les résultats."
 
+#: src/features/Usage/Subscription/BalanceStatus.tsx:57
+#. js-lingui-explicit-id
+msgid "You have full access"
+msgstr "Vous avez un accès complet"
+
 #: src/features/Chat/ChatPage.tsx:225
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
@@ -12405,6 +12465,11 @@ msgstr "Vous n'avez pas encore de discussions."
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Vous avez soumis vos réponses. En attente des autres..."
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:74
+#. js-lingui-explicit-id
+msgid "You have {hours} AI hours on your balance"
+msgstr "Vous avez {hours} heures d'IA sur votre solde"
 
 #: src/features/Case/data/frontend-senior/painSection.ts:23
 #. js-lingui-explicit-id
@@ -12470,6 +12535,11 @@ msgstr "Vous avez fait des progrès incroyables. Continuons."
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Vous:"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:34
+#. js-lingui-explicit-id
+msgid "Your access status"
+msgstr "Votre statut d'accès"
 
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
@@ -12546,15 +12616,20 @@ msgstr ""
 msgid "Your experience"
 msgstr "Votre expérience"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:702
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:462
 #. js-lingui-explicit-id
 msgid "Your full access is active until"
 msgstr "Votre accès complet est actif jusqu'au"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:935
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:695
 #. js-lingui-explicit-id
 msgid "Your full access is active until {activeTill}"
 msgstr "Votre accès complet est actif jusqu'au {activeTill}"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:70
+#. js-lingui-explicit-id
+msgid "Your full access is active until {date}"
+msgstr "Votre accès complet est actif jusqu'au {date}"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:340
 #. js-lingui-explicit-id
@@ -12695,6 +12770,32 @@ msgstr ""
 "— il est important de s'engager dans cette courte conversation avant de "
 "plonger dans des sujets professionnels. Voici quelques expressions "
 "anglaises utiles pour commencer l'entretien :"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:584
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "I want the service to be provided immediately and I acknowledge that as "
+#~ "soon\n"
+#~ "                        as the Fundacja Rozwoju Przedsiębiorczości \"Twój "
+#~ "StartUp\" provides the\n"
+#~ "                        service, I will lose the right to terminate the "
+#~ "contract."
+#~ msgstr ""
+#~ "Je souhaite que le service soit fourni immédiatement et je reconnais que "
+#~ "dès que\n"
+#~ "                        la Fundacja Rozwoju Przedsiębiorczości \"Twój "
+#~ "StartUp\" fournit le\n"
+#~ "                        service, je perdrai le droit de résilier le contrat."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:606
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
+#~ "                        StartUp\" with its registered office in Warsaw."
+#~ msgstr ""
+#~ "du site Web exploité par la Fondation pour le développement de "
+#~ "l'entrepreneuriat \"Twój\n"
+#~ "                        StartUp\", avec son siège à Varsovie."
 
 #: src/features/Game/UploadVideoButton.tsx:79
 #. js-lingui-explicit-id

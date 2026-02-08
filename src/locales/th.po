@@ -291,15 +291,35 @@ msgstr "ผู้เชี่ยวชาญ .NET เผชิญกับรอ
 msgid "/ month"
 msgstr "/ เดือน"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:38
+#. js-lingui-explicit-id
+msgid "1 day"
+msgstr "1 วัน"
+
 #: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:47
 #. js-lingui-explicit-id
 msgid "1 hour"
 msgstr "1 ชั่วโมง"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:55
+#. js-lingui-explicit-id
+msgid "1 month"
+msgstr "1 เดือน"
+
 #: src/features/Alias/components/RoundSettings.tsx:34
 #. js-lingui-explicit-id
 msgid "1 round"
 msgstr "1 รอบ"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:47
+#. js-lingui-explicit-id
+msgid "1 week"
+msgstr "1 สัปดาห์"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:63
+#. js-lingui-explicit-id
+msgid "1 year"
+msgstr "1 ปี"
 
 #: src/features/PayWall/CardValidatorWall.tsx:129
 #. js-lingui-explicit-id
@@ -477,7 +497,7 @@ msgstr ""
 msgid "Action plan to improve critical backend skills"
 msgstr "แผนปฏิบัติการเพื่อพัฒนาทักษะเบื้องหลังที่สำคัญ"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:760
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:520
 #. js-lingui-explicit-id
 msgid "Active"
 msgstr "ทำงาน"
@@ -679,7 +699,7 @@ msgstr "ฟีดแบ็ก AI เกี่ยวกับคำตอบข�
 msgid "AI feedback that matters"
 msgstr "ข้อเสนอแนะของ AI ที่สำคัญ"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:709
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:469
 #. js-lingui-explicit-id
 msgid "AI hours left in your balance."
 msgstr "ชั่วโมง AI ที่เหลือในยอดคงเหลือของคุณ"
@@ -1214,10 +1234,21 @@ msgstr "ประโยชน์ของการเล่นเกม Alias"
 msgid "Benefits of Role Play"
 msgstr "ประโยชน์ของการเล่นบทบาท"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:59
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:67
+#. js-lingui-explicit-id
+msgid "Best for long-term access"
+msgstr "ดีที่สุดสำหรับการใช้งานระยะยาว"
+
 #: src/features/Case/data/reusable/priceSection.ts:16
 #. js-lingui-explicit-id
 msgid "Best for most job seekers"
 msgstr "ดีที่สุดสำหรับผู้หางานส่วนใหญ่"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:42
+#. js-lingui-explicit-id
+msgid "Best for trying out the full access"
+msgstr "ดีที่สุดสำหรับการทดลองใช้งานแบบเต็มรูปแบบ"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1322,7 +1353,7 @@ msgstr "ผู้มีอาชีพที่ยุ่งยาก"
 msgid "Buy a subscription"
 msgstr "ซื้อสมาชิก"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:928
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:688
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "ซื้อเพิ่มเติม"
@@ -1411,13 +1442,13 @@ msgid "Can I customize my practice sessions?"
 msgstr "ฉันสามารถปรับแต่งเซสชันการฝึกฝนของฉันได้หรือไม่?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:52
-#: src/features/Usage/SubscriptionPaymentModal.tsx:989
+#: src/features/Usage/Subscription/FaqSubscription.tsx:43
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "ฉันสามารถขอคืนเงินหลังจากซื้อได้หรือไม่?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
-#: src/features/Usage/SubscriptionPaymentModal.tsx:961
+#: src/features/Usage/Subscription/FaqSubscription.tsx:15
 #. js-lingui-explicit-id
 msgid "Can I get full access for free?"
 msgstr ""
@@ -1645,6 +1676,11 @@ msgstr "เลือกแผนการเตรียมตัวสำหร
 msgid "Choose Your Language Level"
 msgstr "เลือกระดับภาษาของคุณ"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:23
+#. js-lingui-explicit-id
+msgid "Choose your next access plan"
+msgstr "เลือกแผนการเข้าถึงถัดไปของคุณ"
+
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
@@ -1813,7 +1849,8 @@ msgid "Confirm Credit Card"
 msgstr "ยืนยันบัตรเครดิต"
 
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
-#: src/features/Usage/SubscriptionPaymentModal.tsx:541
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:42
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:407
 #. js-lingui-explicit-id
 msgid "Confirm payment"
 msgstr "ยืนยันการชำระเงิน"
@@ -1888,7 +1925,6 @@ msgstr "ติดต่อเรา"
 #: src/features/Landing/Contact/ContactsPage.tsx:170
 #: src/features/Landing/Footer.tsx:88
 #: src/features/SEO/metadata.ts:65
-#: src/features/Usage/SubscriptionPaymentModal.tsx:1004
 #. js-lingui-explicit-id
 msgid "Contacts"
 msgstr "ติดต่อเรา"
@@ -1916,7 +1952,6 @@ msgstr "ติดต่อ:"
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:133
 #: src/features/Plan/PlanCard.tsx:208
-#: src/features/Usage/SubscriptionPaymentModal.tsx:667
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "ต่อไป"
@@ -2281,14 +2316,15 @@ msgstr "ข้อมูล & ธุรกรรม"
 msgid "Databases & Transactions"
 msgstr "ฐานข้อมูล & ธุรกรรม"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:831
-#. js-lingui-explicit-id
-msgid "Day"
-msgstr "วัน"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:894
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:100
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "day"
+msgstr "วัน"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:591
+#. js-lingui-explicit-id
+msgid "Day"
 msgstr "วัน"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
@@ -2762,7 +2798,7 @@ msgstr "อย่าข้ามการพูดคุยเล็กๆ"
 msgid "Duration"
 msgstr "ระยะเวลา"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:818
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:578
 #. js-lingui-explicit-id
 msgid "Duration:"
 msgstr "ระยะเวลา:"
@@ -3065,14 +3101,15 @@ msgstr ""
 msgid "Error analyzing conversation"
 msgstr "ข้อผิดพลาดในการวิเคราะห์บทสนทนา"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:90
-#: src/features/Usage/SubscriptionPaymentModal.tsx:109
-#: src/features/Usage/SubscriptionPaymentModal.tsx:241
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:107
+#: src/features/Usage/Subscription/TgWalletButton.tsx:50
+#: src/features/Usage/Subscription/TgWalletButton.tsx:69
 #. js-lingui-explicit-id
 msgid "Error creating payment session"
 msgstr "ข้อผิดพลาดในการสร้างเซสชันการชำระเงิน"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:331
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:95
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:197
 #. js-lingui-explicit-id
 msgid ""
 "Error creating payment session. Notification sent to support. Try again "
@@ -3081,7 +3118,7 @@ msgstr ""
 "ข้อผิดพลาดในการสร้างการชำระเงิน การแจ้งเตือนถูกส่งไปยังฝ่ายสนับสนุนแล้ว "
 "กรุณาลองใหม่ภายหลัง"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:248
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:114
 #. js-lingui-explicit-id
 msgid "Error creating payment session. Try again later."
 msgstr "เกิดข้อผิดพลาดในการสร้างเซสชันการชำระเงิน กรุณาลองใหม่ภายหลัง"
@@ -3096,13 +3133,14 @@ msgstr "ข้อผิดพลาดในการสร้างแผน �
 msgid "Error during analyzing message"
 msgstr "ข้อผิดพลาดในระหว่างการวิเคราะห์ข้อความ"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:277
-#: src/features/Usage/SubscriptionPaymentModal.tsx:360
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:124
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:143
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:226
 #. js-lingui-explicit-id
 msgid "Error during payment process"
 msgstr "ข้อผิดพลาดระหว่างกระบวนการชำระเงิน"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:136
+#: src/features/Usage/Subscription/TgWalletButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Error processing payment"
 msgstr "ข้อผิดพลาดในการประมวลผลการชำระเงิน"
@@ -3948,6 +3986,7 @@ msgstr "ผู้ใช้ที่ใช้งานบ่อยซึ่งต
 
 #: src/features/Community/SupportPage.tsx:59
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:11
+#: src/features/Usage/Subscription/FaqSubscription.tsx:10
 #. js-lingui-explicit-id
 msgid "Frequently Asked Questions"
 msgstr "คำถามที่พบบ่อย"
@@ -3989,8 +4028,8 @@ msgstr "การสัมภาษณ์ออกแบบระบบส่ว
 #: src/features/Landing/Price/PricePage.tsx:300
 #: src/features/Settings/MyProfile.tsx:90
 #: src/features/Usage/FeatureBlocker.tsx:51
-#: src/features/Usage/SubscriptionPaymentModal.tsx:689
-#: src/features/Usage/SubscriptionPaymentModal.tsx:737
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:449
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:497
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "เข้าถึงเต็มรูปแบบ"
@@ -4002,27 +4041,31 @@ msgstr ""
 "\n"
 "การเข้าถึงเต็มรูปแบบ - กำลังจะหมดอายุในไม่ช้า\n"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:556
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:57
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:422
 #. js-lingui-explicit-id
 msgid "Full Access for 1 day"
 msgstr ""
 "Full Access for 1 day\n"
 "การเข้าถึงทั้งหมดเป็นเวลา 1 วัน"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:466
-#: src/features/Usage/SubscriptionPaymentModal.tsx:551
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:52
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:332
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:417
 #. js-lingui-explicit-id
 msgid "Full Access for 1 month"
 msgstr ""
 "\n"
 "เข้าถึงแบบเต็มรูปแบบ 1 เดือน\n"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:553
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:54
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:419
 #. js-lingui-explicit-id
 msgid "Full Access for 1 week"
 msgstr "เข้าถึงได้เต็มรูปแบบเป็นเวลา 1 สัปดาห์"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:555
+#: src/features/Usage/Subscription/ConfirmPayment.tsx:56
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:421
 #. js-lingui-explicit-id
 msgid "Full Access for 1 year"
 msgstr "เข้าถึงแบบเต็มรูปแบบเป็นเวลา 1 ปี"
@@ -4220,7 +4263,7 @@ msgstr ""
 "การแสดงบทบาทแบบโต้ตอบนี้จำลองประสบการณ์การช็อปปิ้งที่สมจริง "
 "ช่วยให้คุณพัฒนาทักษะการสื่อสารที่จำเป็น"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:902
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:662
 #. js-lingui-explicit-id
 msgid "Get confidence with AI support"
 msgstr "ได้รับความมั่นใจด้วยการสนับสนุนจาก AI"
@@ -4238,7 +4281,7 @@ msgstr ""
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Dashboard/AccessBadge.tsx:67
 #: src/features/Usage/FeatureBlocker.tsx:99
-#: src/features/Usage/SubscriptionPaymentModal.tsx:916
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:676
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "รับการเข้าถึงแบบเต็มรูปแบบ"
@@ -4858,7 +4901,6 @@ msgstr ""
 "อนและข้อมูลแบบอะซิงโครนัสอย่างไร?"
 
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:68
-#: src/features/Usage/SubscriptionPaymentModal.tsx:602
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "ฉันยอมรับ"
@@ -5237,28 +5279,12 @@ msgstr ""
 "Przedsiębiorczości \"Twój StartUp\" ให้บริการ \n"
 "ฉันจะสูญเสียสิทธิ์ในการยกเลิกสัญญา"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:584
-#. js-lingui-explicit-id
-msgid ""
-"I want the service to be provided immediately and I acknowledge that as "
-"soon\n"
-"                        as the Fundacja Rozwoju Przedsiębiorczości \"Twój "
-"StartUp\" provides the\n"
-"                        service, I will lose the right to terminate the "
-"contract."
-msgstr ""
-"ฉันต้องการให้บริการทันทีและฉันยอมรับว่าทันที่\n"
-"                        Fundacja Rozwoju Przedsiębiorczości \"Twój "
-"StartUp\" ให้บริการ\n"
-"                        ฉันจะสูญเสียสิทธิ์ในการยกเลิกสัญญา"
-
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:38
 #. js-lingui-explicit-id
 msgid "I want to learn..."
 msgstr "ฉันต้องการเรียนรู้..."
 
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:89
-#: src/features/Usage/SubscriptionPaymentModal.tsx:623
 #. js-lingui-explicit-id
 msgid "I want to receive commercial and marketing content"
 msgstr "ฉันต้องการรับเนื้อหาทางการค้าและการตลาด"
@@ -6175,7 +6201,7 @@ msgid "Is there content on resiliency and observability?"
 msgstr "มีเนื้อหาเกี่ยวกับความยืดหยุ่นและการสังเกตการณ์หรือไม่?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:33
-#: src/features/Usage/SubscriptionPaymentModal.tsx:970
+#: src/features/Usage/Subscription/FaqSubscription.tsx:24
 #. js-lingui-explicit-id
 msgid "Is this a subscription?"
 msgstr "นี่คือการสมัครสมาชิกหรือไม่?"
@@ -6649,7 +6675,8 @@ msgstr "กำลังโหลด.."
 #: src/features/Router/PracticePage.tsx:79
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
-#: src/features/Usage/SubscriptionPaymentModal.tsx:164
+#: src/features/Usage/Subscription/BalanceStatus.tsx:55
+#: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "กำลังโหลด..."
@@ -6909,13 +6936,14 @@ msgstr "วรรณกรรมสมัยใหม่"
 
 #: src/features/Landing/Price/PricePage.tsx:259
 #: src/features/Landing/Price/PricePage.tsx:330
-#: src/features/Usage/SubscriptionPaymentModal.tsx:799
-#: src/features/Usage/SubscriptionPaymentModal.tsx:889
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:95
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:559
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:649
 #. js-lingui-explicit-id
 msgid "month"
 msgstr "เดือน"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:845
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:605
 #. js-lingui-explicit-id
 msgid "Month"
 msgstr "เดือน"
@@ -7194,7 +7222,7 @@ msgstr "ยังไม่มีใครเข้าชม มาเป็น�
 msgid "No words used yet"
 msgstr "ยังไม่มีคำใดๆ ถูกใช้งานเลย"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:978
+#: src/features/Usage/Subscription/FaqSubscription.tsx:32
 #. js-lingui-explicit-id
 msgid ""
 "No, you are purchasing full access for a selected period of time. There is "
@@ -7333,15 +7361,6 @@ msgid ""
 msgstr ""
 "ของเว็บไซต์ที่ดำเนินการโดยกองทุนพัฒนาผู้ประกอบการ \"Twój StartUp\" "
 "ที่มีสำนักงานจดทะเบียนในกรุงวอร์ซอว์"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:606
-#. js-lingui-explicit-id
-msgid ""
-"of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
-"                        StartUp\" with its registered office in Warsaw."
-msgstr ""
-"ของเว็บไซต์ที่ดำเนินการโดย Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
-"                        StartUp\" ที่มีสำนักงานใหญ่อยู่ที่วอร์ซอ"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -7551,17 +7570,17 @@ msgstr ""
 #: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:59
 #: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:66
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:125
-#: src/features/Usage/SubscriptionPaymentModal.tsx:667
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:128
 #. js-lingui-explicit-id
 msgid "Pay"
 msgstr "ชำระเงิน"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:164
+#: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
 msgid "Pay with crypto"
 msgstr "ชำระเงินด้วยคริปโต"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:496
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:362
 #. js-lingui-explicit-id
 msgid "Pay with Stars"
 msgstr "จ่ายด้วยดาว"
@@ -7571,7 +7590,7 @@ msgstr "จ่ายด้วยดาว"
 msgid "Payment"
 msgstr "การชำระเงิน"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:264
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:130
 #. js-lingui-explicit-id
 msgid "Payment failed! Please try again."
 msgstr "การชำระเงินล้มเหลว! โปรดลองอีกครั้ง"
@@ -7582,12 +7601,12 @@ msgstr "การชำระเงินล้มเหลว! โปรดล�
 msgid "Payment History"
 msgstr "ประวัติการชำระเงิน"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:457
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:323
 #. js-lingui-explicit-id
 msgid "Payment option"
 msgstr "ตัวเลือกการชำระเงิน"
 
-#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:18
+#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:32
 #. js-lingui-explicit-id
 msgid "Payment successful!"
 msgstr "การชำระเงินสำเร็จ!"
@@ -8239,6 +8258,11 @@ msgstr "คำถามก่อนหน้า"
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "ราคา"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:134
+#. js-lingui-explicit-id
+msgid "Price per day"
+msgstr "ราคาต่อวัน"
 
 #: src/features/Case/data/reusable/priceSection.ts:44
 #. js-lingui-explicit-id
@@ -9546,7 +9570,7 @@ msgstr "SQL"
 msgid "Stand out in behavioral rounds"
 msgstr "โดดเด่นในการสัมภาษณ์แบบพฤติกรรม"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:797
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:557
 #. js-lingui-explicit-id
 msgid "Stars"
 msgstr "ดาว"
@@ -9657,7 +9681,7 @@ msgstr "เริ่มทดสอบ"
 msgid "Start Turn"
 msgstr "เริ่มรอบ"
 
-#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:28
+#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:45
 #. js-lingui-explicit-id
 msgid "Start using the app"
 msgstr "เริ่มใช้งานแอป"
@@ -10157,7 +10181,6 @@ msgstr ""
 "และสิ่งที่คุณต้องการพัฒนาในฐานะนักพัฒนา Frontend ระดับจูเนียร์"
 
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:70
-#: src/features/Usage/SubscriptionPaymentModal.tsx:604
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "ข้อกำหนดและเงื่อนไข"
@@ -10228,7 +10251,7 @@ msgstr ""
 msgid "Thank you for your feedback!"
 msgstr "ขอบคุณสำหรับคำติชมของคุณ!"
 
-#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:19
+#: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:36
 #. js-lingui-explicit-id
 msgid "Thank you for your purchase."
 msgstr "ขอบคุณสำหรับการสั่งซื้อของคุณ"
@@ -10797,7 +10820,6 @@ msgstr ""
 "จำนวนรอบทั้งหมด\n"
 
 #: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:105
-#: src/features/Usage/SubscriptionPaymentModal.tsx:639
 #. js-lingui-explicit-id
 msgid "Total:"
 msgstr "ทั้งหมด:"
@@ -11405,14 +11427,15 @@ msgstr "การแสดงตัวอย่างข้อเสนอแน
 msgid "Webcam Setup"
 msgstr "การตั้งค่าเว็บแคม"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:838
-#. js-lingui-explicit-id
-msgid "Week"
-msgstr "สัปดาห์"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:891
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:97
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:651
 #. js-lingui-explicit-id
 msgid "week"
+msgstr "สัปดาห์"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:598
+#. js-lingui-explicit-id
+msgid "Week"
 msgstr "สัปดาห์"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:13
@@ -11454,6 +11477,11 @@ msgstr "ฉันจะได้รับอะไรจากแผนการ
 #. js-lingui-explicit-id
 msgid "What do I need to use FluencyPal?"
 msgstr "ฉันต้องใช้อะไรบ้างในการใช้ FluencyPal?"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:209
+#. js-lingui-explicit-id
+msgid "What do you get with Full Access?"
+msgstr "คุณจะได้อะไรกับการเข้าถึงแบบเต็มรูปแบบ?"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:233
 #. js-lingui-explicit-id
@@ -11588,6 +11616,11 @@ msgstr "ราคาคือเท่าไหร่?"
 #. js-lingui-explicit-id
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "เมื่อใดที่คุณใช้ AsNoTracking และมีการแลกเปลี่ยนอะไรบ้าง?"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:51
+#. js-lingui-explicit-id
+msgid "When you need full access for a short period of time"
+msgstr "เมื่อคุณต้องการเข้าถึงแบบเต็มรูปแบบในช่วงเวลาสั้นๆ"
 
 #: src/features/Landing/LandingPage.tsx:42
 #. js-lingui-explicit-id
@@ -11773,14 +11806,15 @@ msgstr ""
 msgid "Wrong Link"
 msgstr "ลิงก์ผิด"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:852
-#. js-lingui-explicit-id
-msgid "Year"
-msgstr "ปี"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:893
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:99
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:653
 #. js-lingui-explicit-id
 msgid "year"
+msgstr "ปี"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:612
+#. js-lingui-explicit-id
+msgid "Year"
 msgstr "ปี"
 
 #: src/features/Header/NeedHelpModal.tsx:80
@@ -11837,7 +11871,7 @@ msgstr ""
 "และเราจะแนะนำวิธีการคืนเงินให้กับคุณ"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:53
-#: src/features/Usage/SubscriptionPaymentModal.tsx:990
+#: src/features/Usage/Subscription/FaqSubscription.tsx:44
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you're not satisfied with the service, on \"Profile/Payment "
@@ -11846,7 +11880,7 @@ msgstr ""
 "ใช่ ถ้าคุณไม่พอใจกับบริการ บนหน้าต่าง \"โปรไฟล์/ประวัติการชำระเงิน\" "
 "คุณสามารถขอคืนเงินได้และเราจะพูดคุยรายละเอียดกัน"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:962
+#: src/features/Usage/Subscription/FaqSubscription.tsx:16
 #. js-lingui-explicit-id
 msgid ""
 "Yes. Simply play on the Community page or send messages in the chat to earn "
@@ -11961,6 +11995,15 @@ msgstr ""
 "คุณจะสังเกตุการพูดของคุณเป็นไหลมากขึ้นและคำตอบของคุณดูมีการเตรียมมากขึ้นในทุ"
 "กครั้งที่ลอง"
 
+#: src/features/Usage/Subscription/BalanceStatus.tsx:64
+#. js-lingui-explicit-id
+msgid ""
+"You are a leader in leaderboard! Full access is active until you are on the "
+"top-5"
+msgstr ""
+"คุณเป็นผู้นำบนกระดานผู้นำ! "
+"การเข้าถึงแบบเต็มรูปแบบจะใช้งานได้จนกว่าคุณจะอยู่ใน 5 อันดับแรก"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -12028,7 +12071,16 @@ msgstr ""
 "และการสัมภาษณ์ทางพฤติกรรมที่เน้น React, Vue, Angular, TypeScript "
 "และสถาปัตยกรรมเว็บสมัยใหม่"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:946
+#: src/features/Usage/Subscription/BalanceStatus.tsx:80
+#. js-lingui-explicit-id
+msgid ""
+"You can purchase a full access plan or get full access for free (more "
+"details in the FAQ section below)."
+msgstr ""
+"คุณสามารถซื้อแผนการเข้าถึงเต็มรูปแบบหรือรับการเข้าถึงเต็มรูปแบบได้ฟรี "
+"(รายละเอียดเพิ่มเติมในส่วนคำถามที่พบบ่อยด้านล่าง)"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:706
 #. js-lingui-explicit-id
 msgid ""
 "You can renew your full access any time before it expires to avoid\n"
@@ -12058,7 +12110,12 @@ msgstr "คุณสามารถใช้ภาษาใดก็ได้ท
 msgid "You can use text to answer if you prefer."
 msgstr "คุณสามารถใช้ข้อความตอบกลับได้ถ้าคุณต้องการ"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:698
+#: src/features/Usage/Subscription/BalanceStatus.tsx:58
+#. js-lingui-explicit-id
+msgid "You do not have full access"
+msgstr "คุณไม่มีสิทธิ์เข้าถึงเต็มรูปแบบ"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:458
 #. js-lingui-explicit-id
 msgid "You do not have full access."
 msgstr "คุณยังไม่ได้รับสิทธิ์การเข้าถึงทั้งหมด"
@@ -12081,7 +12138,7 @@ msgstr ""
 "คุณจะได้รับสถานการณ์เกี่ยวกับการลองใหม่, circuit breakers, timeouts, "
 "fallbacks, การบันทึก, การติดตาม, และตัวชี้วัดเพื่อคงความน่าเชื่อถือของบริการ"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:708
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:468
 #. js-lingui-explicit-id
 msgid "You have"
 msgstr "คุณมี"
@@ -12100,6 +12157,11 @@ msgid ""
 "the results."
 msgstr "คุณได้ทำคำถามทั้งหมดเสร็จสิ้นแล้ว ส่งคำตอบของคุณตอนนี้และรอผลลัพธ์"
 
+#: src/features/Usage/Subscription/BalanceStatus.tsx:57
+#. js-lingui-explicit-id
+msgid "You have full access"
+msgstr "คุณมีสิทธิ์เข้าถึงทั้งหมด"
+
 #: src/features/Chat/ChatPage.tsx:225
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
@@ -12109,6 +12171,11 @@ msgstr "คุณยังไม่มีการแชท"
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "คุณได้ส่งคำตอบเรียบร้อยแล้ว กำลังรอผู้อื่น..."
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:74
+#. js-lingui-explicit-id
+msgid "You have {hours} AI hours on your balance"
+msgstr "คุณมี {hours} ชั่วโมง AI ในยอดคงเหลือของคุณ"
 
 #: src/features/Case/data/frontend-senior/painSection.ts:23
 #. js-lingui-explicit-id
@@ -12175,6 +12242,11 @@ msgstr "คุณพัฒนาความสามารถไปได้ด
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "คุณ:"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:34
+#. js-lingui-explicit-id
+msgid "Your access status"
+msgstr "สถานะการเข้าถึงของคุณ"
 
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
@@ -12247,15 +12319,20 @@ msgstr ""
 msgid "Your experience"
 msgstr "ประสบการณ์ของคุณ"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:702
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:462
 #. js-lingui-explicit-id
 msgid "Your full access is active until"
 msgstr "การเข้าถึงเต็มรูปแบบของคุณจะใช้งานได้ถึง"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:935
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:695
 #. js-lingui-explicit-id
 msgid "Your full access is active until {activeTill}"
 msgstr "การเข้าถึงแบบเต็มของคุณจะใช้งานได้จนถึง {activeTill}"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:70
+#. js-lingui-explicit-id
+msgid "Your full access is active until {date}"
+msgstr "การเข้าถึงเต็มรูปแบบของคุณจะใช้งานได้จนถึง {date}"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:340
 #. js-lingui-explicit-id
@@ -12395,6 +12472,30 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:584
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "I want the service to be provided immediately and I acknowledge that as "
+#~ "soon\n"
+#~ "                        as the Fundacja Rozwoju Przedsiębiorczości \"Twój "
+#~ "StartUp\" provides the\n"
+#~ "                        service, I will lose the right to terminate the "
+#~ "contract."
+#~ msgstr ""
+#~ "ฉันต้องการให้บริการทันทีและฉันยอมรับว่าทันที่\n"
+#~ "                        Fundacja Rozwoju Przedsiębiorczości \"Twój "
+#~ "StartUp\" ให้บริการ\n"
+#~ "                        ฉันจะสูญเสียสิทธิ์ในการยกเลิกสัญญา"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:606
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
+#~ "                        StartUp\" with its registered office in Warsaw."
+#~ msgstr ""
+#~ "ของเว็บไซต์ที่ดำเนินการโดย Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
+#~ "                        StartUp\" ที่มีสำนักงานใหญ่อยู่ที่วอร์ซอ"
 
 #: src/features/Game/UploadVideoButton.tsx:79
 #. js-lingui-explicit-id
