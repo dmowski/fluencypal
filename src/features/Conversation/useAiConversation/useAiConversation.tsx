@@ -3,9 +3,7 @@
 import { createContext, useContext, ReactNode, JSX, useEffect, useRef, useState } from 'react';
 import { AiVoice, MODELS, pricePerHourUsd } from '@/common/ai';
 import { initWebRtcConversation } from '../ConversationInstance/webRtc';
-import { useUsage } from '../../Usage/useUsage';
 import { useSettings } from '../../Settings/useSettings';
-import { UsageLog } from '@/common/usage';
 import { ConversationType } from '@/common/conversation';
 import { sleep } from '@/libs/sleep';
 import { ConversationIdea, useAiUserInfo } from '../../Ai/useAiUserInfo';
@@ -20,7 +18,6 @@ import { ConversationConfig, ConversationInstance } from '../ConversationInstanc
 import { useTextAi } from '../../Ai/useTextAi';
 import { initTextConversation } from '../ConversationInstance/textConversation';
 import { useConversationAudio } from '../../Audio/useConversationAudio';
-import { showDebugInfoBadgeOnTopWindow } from './showDebugInfoBadgeOnTopWindow';
 import { AiConversationContextType, StartConversationProps } from './types';
 import { getVoiceInstructions } from './getVoiceInstructions';
 import { teacherRules } from './teacherRules';
@@ -30,6 +27,7 @@ import { useAiConversationMessages } from './useAiConversationMessages';
 import { useRestart } from './useRestart';
 import { useConversationStat } from './useConversationStat';
 import { useLimits } from './useLimits';
+import { useConversationUsage } from './useConversationUsage';
 
 const aiModal = MODELS.REALTIME_CONVERSATION;
 
@@ -59,7 +57,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isClosed, setIsClosed] = useState(false);
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
   const [isUserSpeaking, setIsUserSpeaking] = useState(false);
-  const usage = useUsage();
   const messages = useAiConversationMessages();
   const [recordingVoiceMode, setRecordingVoiceMode] =
     useState<RecordingUserMessageMode>('PushToTalk');
@@ -67,7 +64,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const communicatorRef = useRef(communicator);
   communicatorRef.current = communicator;
   const [isMuted, setIsMuted] = useState(true);
-  const [usageInfo, setUsageInfo] = useState<string>('');
   const access = useAccess();
   const audio = useConversationAudio();
   const [isAiSpeakingStartedFromConversation, setIsAiSpeakingStartedFromConversation] =
@@ -131,10 +127,6 @@ function useProvideAiConversation(): AiConversationContextType {
 
   useConversationStat(messages.conversationId || '', messages.conversation, currentMode, goalInfo);
 
-  useEffect(() => {
-    if (usageInfo && auth.isFounder) showDebugInfoBadgeOnTopWindow(usageInfo);
-  }, [usageInfo, auth.isFounder]);
-
   const toggleMute = (isMute: boolean) => {
     communicator?.toggleMute(isMute);
     setIsMuted(isMute);
@@ -148,6 +140,7 @@ function useProvideAiConversation(): AiConversationContextType {
     messages.conversation,
     currentMode,
   );
+  const conversationUsage = useConversationUsage(setIsNeedToResetNow);
 
   useEffect(() => {
     return () => {
@@ -182,25 +175,7 @@ function useProvideAiConversation(): AiConversationContextType {
       setIsUserSpeaking,
       isMuted,
       isVolumeOn,
-      onAddUsage: (usageLog: UsageLog) => {
-        // xxx
-        if (usageLog.type === 'realtime') {
-          const cachedAudioTokens =
-            usageLog.usageEvent?.input_token_details?.cached_tokens_details?.audio_tokens || 0;
-          const audioTokens = usageLog.usageEvent?.input_token_details?.audio_tokens || 0;
-          const rawAudioInputs = audioTokens - cachedAudioTokens;
-
-          if (rawAudioInputs > 5000) {
-            // need to reset now
-            setIsNeedToResetNow(true);
-          }
-
-          setUsageInfo(
-            `$${usageLog.priceUsd.toFixed(4)} - I:${audioTokens} (C:${cachedAudioTokens}) New:${rawAudioInputs}`,
-          );
-        }
-        usage.setUsageLogs((prev) => [...prev, usageLog]);
-      },
+      onAddUsage: conversationUsage.onAddUsage,
       languageCode: settings.languageCode || 'en',
       getAuthToken: async () => await auth.getToken(),
       onMessageOrder: messages.updateMessageOrder,
