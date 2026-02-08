@@ -2,9 +2,7 @@
 
 import { createContext, useContext, ReactNode, JSX, useEffect, useRef, useState } from 'react';
 import { AiVoice, MODELS, pricePerHourUsd } from '@/common/ai';
-
 import { initWebRtcConversation } from '../ConversationInstance/webRtc';
-
 import { useUsage } from '../../Usage/useUsage';
 import { useSettings } from '../../Settings/useSettings';
 import { UsageLog } from '@/common/usage';
@@ -15,7 +13,6 @@ import { GuessGameStat, RecordingUserMessageMode } from '../types';
 import { useAuth } from '../../Auth/useAuth';
 import { firstAiMessage } from '@/features/Lang/lang';
 import { GoalElementInfo } from '../../Plan/types';
-
 import { ConversationMode } from '@/common/userSettings';
 import { useAccess } from '../../Usage/useAccess';
 import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from '../../LessonPlan/type';
