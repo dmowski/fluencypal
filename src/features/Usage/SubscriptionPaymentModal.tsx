@@ -45,7 +45,6 @@ import { useSettings } from '../Settings/useSettings';
 import { StripeCreateCheckoutRequest } from '@/common/requests';
 import { sleep } from '@/libs/sleep';
 import { Check, Plus } from 'lucide-react';
-import { FaqItem } from '../Landing/FAQ/FaqItem';
 import { useAnalytics } from '../Analytics/useAnalytics';
 import { useUrlState } from '../Url/useUrlState';
 import { PaymentSuccess } from './HoursPaymentModal/PaymentSuccess';
@@ -56,8 +55,6 @@ import { FounderMessage } from './HoursPaymentModal/FounderMessage';
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
-
-const devEmails = ['dmowski.alex@gmail.com'];
 
 const WalletButton = ({
   onShowWaiter,
@@ -183,9 +180,6 @@ export const SubscriptionPaymentModal = () => {
   const [allowCrypto, setAllowCrypto] = useState(allowCryptoFlag);
 
   const notifications = useNotifications();
-  const [looseRightChecked, setLooseRightChecked] = useState(false);
-  const [isTermsChecked, setIsTermsChecked] = useState(false);
-  const [isMarketingChecked, setIsMarketingChecked] = useState(false);
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
   const [isTelegramPaymentOptions, setIsTelegramPaymentOptions] = useState(false);
   const [isPriceInStars, setIsPriceInStars] = useState(false);
