@@ -336,8 +336,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const isLimitedRecording = isFullAppAccess
     ? false
-    : messages.conversation.length >= LIMITED_MESSAGES_COUNT &&
-      ['role-play', 'talk'].includes(currentMode);
+    : messages.conversation.length >= LIMITED_MESSAGES_COUNT;
 
   useEffect(() => {
     if (isLimitedRecording) {
