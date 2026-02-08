@@ -167,7 +167,13 @@ export function LanguageSwitcher({
             boxSizing: 'border-box',
           }}
         >
-          <Typography variant="h5" component="h2" align="center">
+          <Typography
+            component="h2"
+            variant="h3"
+            sx={{
+              fontWeight: 800,
+            }}
+          >
             {i18n._(`Languages`)}
           </Typography>
           <Stack

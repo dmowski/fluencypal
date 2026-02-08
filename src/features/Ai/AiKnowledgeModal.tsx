@@ -66,7 +66,14 @@ export const AiKnowledgeModal = ({ onClose }: AiKnowledgeModalProps) => {
         }}
       >
         <Stack>
-          <Typography variant="h5">{i18n._('AI knowledge about you')}</Typography>
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: 800,
+            }}
+          >
+            {i18n._('AI knowledge about you')}
+          </Typography>
           <Typography
             variant="body2"
             sx={{

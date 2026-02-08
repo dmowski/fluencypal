@@ -56,18 +56,15 @@ export const ContactMessageModal = ({
         }}
       >
         <Stack>
-          <Typography variant="h5" component="h2" align="center">
-            {title}
-          </Typography>
           <Typography
-            align="center"
-            variant="caption"
+            variant="h3"
             sx={{
-              opacity: 0.7,
+              fontWeight: 800,
             }}
           >
-            {subTitle}
+            {title}
           </Typography>
+          <Typography variant="caption">{subTitle}</Typography>
         </Stack>
 
         <Stack

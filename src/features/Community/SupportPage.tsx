@@ -28,7 +28,14 @@ export const SupportPage = () => {
           gap: '5px',
         }}
       >
-        <Typography variant="h5">{i18n._(`Need help?`)}</Typography>
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: 800,
+          }}
+        >
+          {i18n._(`Need help?`)}
+        </Typography>
         <Typography variant="caption">
           {i18n._(
             `If you have any questions regarding your payment history, you can write message here. We will answer you as soon as possible.`,

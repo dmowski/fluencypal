@@ -28,7 +28,14 @@ export const TeacherVoiceModal: React.FC = () => {
             }}
           >
             <Stack>
-              <Typography variant="h5">{i18n._('Your AI teacher voice:')}</Typography>
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: 800,
+                }}
+              >
+                {i18n._('Your AI teacher voice:')}
+              </Typography>
               <Typography
                 sx={{
                   opacity: 0.7,

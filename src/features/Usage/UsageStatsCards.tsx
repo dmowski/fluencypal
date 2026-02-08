@@ -91,15 +91,15 @@ export const UsageStatsCards = () => {
             }}
           >
             <Stack>
-              <Typography variant="h5" component={'h2'}>
-                {i18n._('Word Stats')}
-              </Typography>
               <Typography
-                variant="caption"
+                variant="h3"
                 sx={{
-                  opacity: 0.7,
+                  fontWeight: 800,
                 }}
               >
+                {i18n._('Word Stats')}
+              </Typography>
+              <Typography variant="caption" sx={{}}>
                 {i18n._('Here are the words you used the most in your conversations.')}
               </Typography>
             </Stack>
@@ -189,15 +189,15 @@ export const UsageStatsCards = () => {
               }}
             >
               <Stack>
-                <Typography variant="h5" component={'h2'}>
-                  {i18n._('Chat history')}
-                </Typography>
                 <Typography
-                  variant="caption"
+                  variant="h3"
                   sx={{
-                    opacity: 0.7,
+                    fontWeight: 800,
                   }}
                 >
+                  {i18n._('Chat history')}
+                </Typography>
+                <Typography variant="caption">
                   {i18n._('Here are the conversations you had with FluencyPal.')}
                 </Typography>
               </Stack>
@@ -251,7 +251,7 @@ export const UsageStatsCards = () => {
                         </Typography>
                       </Stack>
 
-                      {conversation.messages.map((message) => {
+                      {conversation?.messages?.map((message) => {
                         const isBot = message.isBot;
                         return (
                           <Stack
@@ -293,15 +293,15 @@ export const UsageStatsCards = () => {
               }}
             >
               <Stack>
-                <Typography variant="h5" component={'h2'}>
-                  {i18n._('Grammar Corrections')}
-                </Typography>
                 <Typography
-                  variant="caption"
+                  variant="h3"
                   sx={{
-                    opacity: 0.7,
+                    fontWeight: 800,
                   }}
                 >
+                  {i18n._('Grammar Corrections')}
+                </Typography>
+                <Typography variant="caption">
                   {i18n._('Here are the corrections you had in your conversations.')}
                 </Typography>
               </Stack>
