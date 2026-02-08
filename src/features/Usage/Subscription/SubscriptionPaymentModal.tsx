@@ -39,8 +39,6 @@ export const SubscriptionPaymentModal = () => {
   const notifications = useNotifications();
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
 
-  const [initActiveTill, setInitActiveTill] = useState<string>('');
-
   const [isPaymentSuccess, setPaymentSuccess] = useUrlState('paymentSuccess', '', false);
 
   const pathname = usePathname();
