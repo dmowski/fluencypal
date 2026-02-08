@@ -61,6 +61,27 @@ export const useAiConversationMessages = () => {
     });
   };
 
+  const onAddDelta = (id: string, delta: string, isBot: boolean) => {
+    setConversation((prev) => {
+      let isNew = true;
+
+      const newMessage = prev.map((message) => {
+        if (message.id === id) {
+          const oldText = message.text;
+          isNew = false;
+          return { ...message, text: oldText + delta };
+        }
+        return message;
+      });
+
+      if (isNew) {
+        newMessage.push({ id, text: delta, isBot });
+      }
+
+      return newMessage;
+    });
+  };
+
   return {
     conversation,
     conversationId,
@@ -70,5 +91,6 @@ export const useAiConversationMessages = () => {
     messageOrder,
     updateMessageOrder,
     resetMessageOrder: () => setMessageOrder({}),
+    onAddDelta,
   };
 };

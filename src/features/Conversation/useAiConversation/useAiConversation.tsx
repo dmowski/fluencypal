@@ -245,27 +245,6 @@ function useProvideAiConversation(): AiConversationContextType {
     }
   }, [messages.conversation.length, messagesToRestart]);
 
-  const onAddDelta = (id: string, delta: string, isBot: boolean) => {
-    messages.setConversation((prev) => {
-      let isNew = true;
-
-      const newMessage = prev.map((message) => {
-        if (message.id === id) {
-          const oldText = message.text;
-          isNew = false;
-          return { ...message, text: oldText + delta };
-        }
-        return message;
-      });
-
-      if (isNew) {
-        newMessage.push({ id, text: delta, isBot });
-      }
-
-      return newMessage;
-    });
-  };
-
   const toggleMute = (isMute: boolean) => {
     communicator?.toggleMute(isMute);
     setIsMuted(isMute);
@@ -369,7 +348,7 @@ function useProvideAiConversation(): AiConversationContextType {
       initInstruction: '',
       onOpen,
       onMessage,
-      onAddDelta,
+      onAddDelta: messages.onAddDelta,
       setIsAiSpeaking,
       setIsUserSpeaking,
       isMuted,
