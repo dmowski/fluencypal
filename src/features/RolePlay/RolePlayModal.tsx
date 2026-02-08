@@ -19,6 +19,7 @@ import { useRolePlay } from './useRolePlay';
 import { useLingui } from '@lingui/react';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { ChevronRight, Mic } from 'lucide-react';
+import { Markdown } from '../uiKit/Markdown/Markdown';
 
 export const RolePlayModal = () => {
   const {
@@ -32,6 +33,8 @@ export const RolePlayModal = () => {
 
   const { i18n } = useLingui();
   const audio = useConversationAudio();
+
+  const detailedContent = selectedRolePlayScenario?.contentPage.split('#')?.[0] || '';
 
   return (
     <>
@@ -116,6 +119,8 @@ export const RolePlayModal = () => {
                   )}
                 </Stack>
               </Stack>
+
+              {detailedContent && <Markdown variant="blog">{detailedContent}</Markdown>}
 
               {selectedRolePlayScenario.input.length > 0 && (
                 <Stack

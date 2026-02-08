@@ -678,7 +678,19 @@ It’s a tool to help you think clearly and calmly.
 If something bothered you, it’s worth examining.
 `),
 
-      input: [],
+      input: [
+        {
+          type: 'checkbox',
+          labelForAi: '',
+          labelForUser: i18n._(
+            'I aware that this is a simulation and not a real legal consultation.',
+          ),
+          id: 'aware',
+          placeholder: '',
+          defaultValue: '',
+          required: true,
+        },
+      ],
 
       category: {
         categoryTitle: i18n._('Professional'),
