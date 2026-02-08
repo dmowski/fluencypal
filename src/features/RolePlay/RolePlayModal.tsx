@@ -18,6 +18,7 @@ import { RolePlayInputType } from './types';
 import { useRolePlay } from './useRolePlay';
 import { useLingui } from '@lingui/react';
 import { useConversationAudio } from '../Audio/useConversationAudio';
+import { ChevronRight, Mic } from 'lucide-react';
 
 export const RolePlayModal = () => {
   const {
@@ -39,44 +40,9 @@ export const RolePlayModal = () => {
           <Stack
             sx={{
               width: '100%',
-              maxWidth: '600px',
+              maxWidth: '800px',
             }}
           >
-            <Stack
-              sx={{
-                width: '100%',
-                height: '400px',
-                boxSizing: 'border-box',
-              }}
-            >
-              <Stack
-                sx={{
-                  backgroundImage: `url(${selectedRolePlayScenario.imageSrc})`,
-                  width: '100%',
-                  height: `100%`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              >
-                {selectedRolePlayScenario.videoSrc && (
-                  <video
-                    src={selectedRolePlayScenario.videoSrc}
-                    loop
-                    autoPlay
-                    controls={false}
-                    muted={true}
-                    playsInline
-                    style={{
-                      width: '100%',
-                      backgroundColor: 'rgb(10, 18, 30)',
-                      height: '100%',
-                      objectFit: 'cover',
-                    }}
-                  />
-                )}
-              </Stack>
-            </Stack>
-
             <Stack
               component={'form'}
               sx={{
@@ -92,9 +58,10 @@ export const RolePlayModal = () => {
             >
               <Stack>
                 <Typography
-                  variant="h5"
+                  variant="h3"
                   component="h2"
                   sx={{
+                    fontWeight: 800,
                     color: '#fff',
                     textShadow: '1px 1px 3px rgba(0, 0, 0, 0.2)',
                   }}
@@ -105,12 +72,49 @@ export const RolePlayModal = () => {
                   variant="body2"
                   sx={{
                     color: '#fff',
-                    opacity: 0.7,
                     textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7)',
                   }}
                 >
                   {selectedRolePlayScenario.subTitle}
                 </Typography>
+              </Stack>
+
+              <Stack
+                sx={{
+                  width: '100%',
+                  height: '390px',
+                  boxSizing: 'border-box',
+                  '@media (max-width: 600px)': {
+                    height: '200px',
+                  },
+                }}
+              >
+                <Stack
+                  sx={{
+                    backgroundImage: `url(${selectedRolePlayScenario.imageSrc})`,
+                    width: '100%',
+                    height: `100%`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                >
+                  {selectedRolePlayScenario.videoSrc && (
+                    <video
+                      src={selectedRolePlayScenario.videoSrc}
+                      loop
+                      autoPlay
+                      controls={false}
+                      muted={true}
+                      playsInline
+                      style={{
+                        width: '100%',
+                        backgroundColor: 'rgb(10, 18, 30)',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  )}
+                </Stack>
               </Stack>
 
               {selectedRolePlayScenario.input.length > 0 && (
@@ -259,11 +263,13 @@ export const RolePlayModal = () => {
 
               <Button
                 sx={{
-                  padding: '10px 30px',
+                  padding: '10px 35px',
                 }}
                 size="large"
+                color="info"
                 variant="contained"
                 type="submit"
+                endIcon={<ChevronRight size={'18px'} />}
                 disabled={isStarting}
                 onClick={async () => {
                   await audio.startConversationAudio();
