@@ -96,7 +96,7 @@ function useProvideRolePlay({
   const [selectedCategoryId, setSelectedCategoryId] = useUrlState(
     'rolePlayTab',
     rolePlayInfo.allCategory.categoryId,
-    true,
+    false,
   );
 
   const closeRolePlay = () => {
