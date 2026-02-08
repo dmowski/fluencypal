@@ -7,7 +7,7 @@ export const useAccess = () => {
   const game = useGame();
   const usage = useUsage();
   const auth = useAuth();
-  const isHoursPaymentMode = auth.isFounder;
+  const isHoursPaymentMode = false; //auth.isFounder;
 
   const isExpiringSoon = game.isGameWinner
     ? false
