@@ -220,7 +220,7 @@ function useProvideAiConversation(): AiConversationContextType {
     }, 40_000);
   };
 
-  const messagesToRestart = auth.isFounder ? 14 : 130;
+  const messagesToRestart = auth.isFounder ? 40 : 130;
   const [isNeedToResetNow, setIsNeedToResetNow] = useState(false);
 
   useEffect(() => {
