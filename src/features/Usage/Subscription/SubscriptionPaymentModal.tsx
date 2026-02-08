@@ -14,7 +14,6 @@ import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD } from '@/common/subscription';
 import { sentPaymentTgMessage } from '../sentTgMessage';
 import dayjs from 'dayjs';
 import { FeatureList } from '../../Landing/Price/FeatureList';
-import { SubscriptionWaiter } from '../SubscriptionWaiter';
 import { useSettings } from '../../Settings/useSettings';
 import { StripeCreateCheckoutRequest } from '@/common/requests';
 import { sleep } from '@/libs/sleep';
@@ -24,8 +23,6 @@ import { useUrlState } from '../../Url/useUrlState';
 import { PaymentSuccess } from '../HoursPaymentModal/PaymentSuccess';
 import { FaqSubscription } from './FaqSubscription';
 import { PriceContact } from '../HoursPaymentModal/PriceContact';
-import { ConfirmPaymentForm } from '../HoursPaymentModal/ConfirmPaymentForm';
-import { FounderMessage } from '../HoursPaymentModal/FounderMessage';
 import { ConfirmPayment } from './ConfirmPayment';
 
 export const SubscriptionPaymentModal = () => {
