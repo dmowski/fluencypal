@@ -8,7 +8,7 @@ import { initWebRtcConversation } from '../ConversationInstance/webRtc';
 import { useUsage } from '../../Usage/useUsage';
 import { useSettings } from '../../Settings/useSettings';
 import { UsageLog } from '@/common/usage';
-import { ConversationMessage, ConversationType, MessagesOrderMap } from '@/common/conversation';
+import { ConversationType } from '@/common/conversation';
 import { useTasks } from '../../Tasks/useTasks';
 import { sleep } from '@/libs/sleep';
 import { ConversationIdea, useAiUserInfo } from '../../Ai/useAiUserInfo';
