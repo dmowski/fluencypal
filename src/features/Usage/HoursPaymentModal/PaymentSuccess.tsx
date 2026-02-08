@@ -15,7 +15,24 @@ export const PaymentSuccess = ({ onClose }: { onClose: () => void }) => {
       }}
     >
       <Stack>
-        <Typography variant="h4">{i18n._('Payment successful!')}</Typography>
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '15px',
+          }}
+        >
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: 800,
+            }}
+          >
+            {i18n._('Payment successful!')}
+          </Typography>
+        </Stack>
+
         <Typography>{i18n._('Thank you for your purchase.')}</Typography>
       </Stack>
       <Button

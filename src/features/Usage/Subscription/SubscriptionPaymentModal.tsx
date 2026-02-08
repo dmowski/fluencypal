@@ -1,5 +1,5 @@
 'use client';
-import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { useUsage } from '../useUsage';
 import { useNotifications } from '@toolpad/core/useNotifications';
@@ -10,20 +10,21 @@ import { usePathname } from 'next/navigation';
 import { supportedLanguages } from '@/features/Lang/lang';
 import { useLingui } from '@lingui/react';
 import { useCurrency } from '../../User/useCurrency';
-import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD } from '@/common/subscription';
 import { sentPaymentTgMessage } from '../sentTgMessage';
-import dayjs from 'dayjs';
 import { FeatureList } from '../../Landing/Price/FeatureList';
 import { useSettings } from '../../Settings/useSettings';
 import { StripeCreateCheckoutRequest } from '@/common/requests';
 import { sleep } from '@/libs/sleep';
-import { Check, Plus } from 'lucide-react';
 import { useAnalytics } from '../../Analytics/useAnalytics';
 import { useUrlState } from '../../Url/useUrlState';
 import { PaymentSuccess } from '../HoursPaymentModal/PaymentSuccess';
 import { FaqSubscription } from './FaqSubscription';
 import { PriceContact } from '../HoursPaymentModal/PriceContact';
 import { ConfirmPayment } from './ConfirmPayment';
+import { SubscriptionDuration } from './types';
+import { BalanceStatus } from './BalanceStatus';
+import { usePrices } from './usePrices';
+import { ActivePlanSelector } from './ActivePlanSelector';
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
@@ -60,18 +61,8 @@ export const SubscriptionPaymentModal = () => {
 
   const [duration, setDuration] = useState<'day' | 'week' | 'month' | 'year'>('week');
 
-  const yearPrice = PRICE_PER_MONTH_USD * 12;
-
-  const durationPriceUsd =
-    duration === 'month'
-      ? PRICE_PER_MONTH_USD
-      : duration === 'day'
-        ? PRICE_PER_DAY_USD
-        : duration === 'year'
-          ? yearPrice
-          : PRICE_PER_DAY_USD * 7;
-
-  const priceInCurrency = Math.round(currency.rate * durationPriceUsd * 10) / 10;
+  const prices = usePrices();
+  const durationPriceUsd = prices[duration].usdPrice;
 
   const analytics = useAnalytics();
 
@@ -150,18 +141,18 @@ export const SubscriptionPaymentModal = () => {
     }
   };
 
-  const isActiveSubscription = usage.isFullAccess;
-  const isTrial = !usage.paymentLogs?.find((log) => log.type === 'user' || 'subscription-full-v1');
-  const activeTill = usage.activeSubscriptionTill
-    ? `${dayjs(usage.activeSubscriptionTill).format('DD MMMM')}`
-    : null;
-
   if (!usage.isShowPaymentModal) return null;
 
   const closePaymentSuccessModal = async () => {
     await setPaymentSuccess('');
     await sleep(50);
     usage.togglePaymentModal(false);
+  };
+
+  const onSelectDuration = async (selectedDuration: SubscriptionDuration) => {
+    setDuration(selectedDuration);
+    await sleep(100);
+    showConfirmPage();
   };
 
   if (isPaymentSuccess) {
@@ -186,7 +177,7 @@ export const SubscriptionPaymentModal = () => {
       <Stack
         sx={{
           width: '100%',
-          maxWidth: '600px',
+          maxWidth: '800px',
         }}
         ref={containerRef}
       >
@@ -198,255 +189,37 @@ export const SubscriptionPaymentModal = () => {
             isRedirecting={isRedirecting}
           />
         ) : (
-          <>
-            <Stack
-              sx={{
-                width: '100%',
-                boxSizing: 'border-box',
-                gap: '40px',
-                alignItems: 'center',
-              }}
-            >
+          <Stack
+            sx={{
+              width: '100%',
+              boxSizing: 'border-box',
+              gap: '80px',
+            }}
+          >
+            <BalanceStatus />
+            <ActivePlanSelector onSelectDuration={onSelectDuration} />
+
+            <Stack gap="40px">
               <Stack
                 sx={{
-                  gap: '5px',
-                }}
-              >
-                <Typography align="center" variant="h5" component="h2">
-                  {i18n._(`Full Access`)}
-                </Typography>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.8,
-                  }}
-                  align="center"
-                >
-                  {!isActiveSubscription && <>{i18n._(`You do not have full access.`)}</>}
-
-                  {isActiveSubscription && !isTrial && activeTill && (
-                    <>
-                      {i18n._(`Your full access is active until`)} <b>{activeTill || '-'}</b>
-                    </>
-                  )}
-
-                  {isActiveSubscription && !isTrial && !activeTill && (
-                    <>
-                      {i18n._(`You have`)} <b>{usage.balanceHours.toFixed(1)}</b>{' '}
-                      {i18n._(`AI hours left in your balance.`)}
-                    </>
-                  )}
-                </Typography>
-              </Stack>
-
-              <Stack
-                sx={{
-                  borderRadius: '18px',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  backgroundColor: '#212121',
-                  maxWidth: '400px',
                   width: '100%',
                 }}
               >
-                <Stack
-                  sx={{
-                    padding: '24px',
-                    gap: '20px',
-                  }}
-                >
-                  <Stack
-                    sx={{
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <Typography variant="h6">{i18n._(`Full Access`)}</Typography>
-                    {activeTill && (
-                      <Stack
-                        sx={{
-                          padding: '3px 17px 3px 12px',
-                          borderRadius: '18px',
-                          backgroundColor: 'rgba(5, 172, 255, 0.4 )',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexDirection: 'row',
-                          gap: '6px',
-                        }}
-                      >
-                        <Check size={'18px'} />
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            padding: 0,
-                            margin: 0,
-                            color: '#fff',
-                            fontWeight: 600,
-                          }}
-                        >
-                          {i18n._(`Active`)}
-                        </Typography>
-                      </Stack>
-                    )}
-                  </Stack>
-
-                  <Stack sx={{ gap: '20px' }}>
-                    <Stack
-                      sx={{
-                        width: '100%',
-                        gap: '5px',
-                        //display: "none",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          width: '100%',
-                        }}
-                        variant="caption"
-                      >
-                        {i18n._('Duration:')}
-                      </Typography>
-                      <ButtonGroup
-                        aria-label="Basic button group"
-                        sx={{
-                          width: '100%',
-                        }}
-                      >
-                        <Button
-                          fullWidth
-                          variant={duration === 'day' ? 'contained' : 'outlined'}
-                          onClick={() => setDuration('day')}
-                        >
-                          {i18n._('Day')}
-                        </Button>
-                        <Button
-                          fullWidth
-                          variant={duration === 'week' ? 'contained' : 'outlined'}
-                          onClick={() => setDuration('week')}
-                        >
-                          {i18n._('Week')}
-                        </Button>
-                        <Button
-                          fullWidth
-                          variant={duration === 'month' ? 'contained' : 'outlined'}
-                          onClick={() => setDuration('month')}
-                        >
-                          {i18n._('Month')}
-                        </Button>
-                        <Button
-                          fullWidth
-                          variant={duration === 'year' ? 'contained' : 'outlined'}
-                          onClick={() => setDuration('year')}
-                        >
-                          {i18n._('Year')}
-                        </Button>
-                      </ButtonGroup>
-                    </Stack>
-
-                    <Stack
-                      sx={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        gap: '8px',
-                      }}
-                    >
-                      <Typography
-                        variant="h2"
-                        sx={{
-                          fontWeight: 500,
-                          fontSize: '3.6rem',
-                        }}
-                      >
-                        {priceInCurrency}
-                      </Typography>
-                      <Stack
-                        sx={{
-                          paddingTop: '18px',
-                          height: '100%',
-                        }}
-                      >
-                        <Typography
-                          variant="caption"
-                          sx={{
-                            textTransform: 'uppercase',
-                          }}
-                        >
-                          {currency.currency} /
-                        </Typography>
-                        <Typography variant="caption">
-                          {duration === 'month'
-                            ? i18n._('month')
-                            : duration === 'week'
-                              ? i18n._('week')
-                              : duration === 'year'
-                                ? i18n._('year')
-                                : i18n._('day')}
-                        </Typography>
-                      </Stack>
-                    </Stack>
-                  </Stack>
-
-                  <Typography variant="body1">
-                    {i18n._('Get confidence with AI support')}
-                  </Typography>
-                  <Stack
-                    sx={{
-                      gap: '5px',
-                    }}
-                  >
-                    {!activeTill && (
-                      <Button
-                        color="info"
-                        variant="contained"
-                        size="large"
-                        onClick={showConfirmPage}
-                      >
-                        {i18n._(`Get Full Access`)}
-                      </Button>
-                    )}
-
-                    {activeTill && (
-                      <Button
-                        color="info"
-                        variant="outlined"
-                        size="large"
-                        startIcon={<Plus />}
-                        onClick={showConfirmPage}
-                      >
-                        {i18n._(`Buy More`)}
-                      </Button>
-                    )}
-
-                    {activeTill && (
-                      <>
-                        <Typography variant="body2" align="left">
-                          {i18n._(`Your full access is active until {activeTill}`, {
-                            activeTill: activeTill,
-                          })}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          align="left"
-                          sx={{
-                            paddingBottom: '10px',
-                          }}
-                        >
-                          {i18n._(
-                            `You can renew your full access any time before it expires to avoid
-                          interruption of service.`,
-                          )}
-                        </Typography>
-                      </>
-                    )}
-                  </Stack>
-                  <FeatureList appMode={appMode} />
-                </Stack>
+                <Typography variant="h6" component="h3" sx={{ marginBottom: '10px' }}>
+                  {i18n._('What do you get with Full Access?')}
+                </Typography>
+                <FeatureList appMode={appMode} />
               </Stack>
-
-              <FaqSubscription />
-              <PriceContact />
+              <Stack
+                sx={{
+                  gap: '60px',
+                }}
+              >
+                <FaqSubscription />
+                <PriceContact />
+              </Stack>
             </Stack>
-          </>
+          </Stack>
         )}
       </Stack>
     </CustomModal>
