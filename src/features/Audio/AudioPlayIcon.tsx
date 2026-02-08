@@ -31,7 +31,6 @@ export const AudioPlayIcon = ({
     if (audio.isUnlocked() === false) {
       await audio.startConversationAudio();
     }
-
     if (isPlaying && audio.isPlaying) {
       audio.interrupt();
       setIsPlaying(false);

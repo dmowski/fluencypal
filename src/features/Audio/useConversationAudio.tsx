@@ -145,11 +145,19 @@ class AudioQueuePlayer {
     el.src = url;
 
     // Plays as soon as buffered enough (streaming)
-    await el.play();
+    try {
+      await el.play();
+    } catch (error) {
+      if (isAbortError(error)) return;
+      throw error;
+    }
 
     await new Promise<void>((resolve, reject) => {
       const onEnded = () => cleanup(resolve);
-      const onError = () => cleanup(() => reject(new Error('Stream audio error')));
+      const onError = () => cleanup(() => {
+        if (isAbortError(el.error)) return resolve();
+        reject(new Error('Stream audio error'));
+      });
 
       const cleanup = (done: () => void) => {
         el.removeEventListener('ended', onEnded);
@@ -217,6 +225,12 @@ class AudioQueuePlayer {
   isPlaying(): boolean {
     return this._isPlaying;
   }
+}
+
+function isAbortError(error: unknown): boolean {
+  if (!error) return false;
+  const name = (error as { name?: string }).name;
+  return name === 'AbortError';
 }
 
 function useProvideConversationAudio(): ConversationAudioContextType {
