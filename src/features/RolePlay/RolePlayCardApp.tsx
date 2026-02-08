@@ -37,6 +37,7 @@ export const RolePlayCardApp = ({ scenario, onClick }: RolePlayCardProps) => {
         },
         '@media (max-width: 600px)': {
           padding: '0px',
+          borderRadius: '0',
         },
       }}
       component={'button'}
@@ -97,7 +98,8 @@ export const RolePlayCardApp = ({ scenario, onClick }: RolePlayCardProps) => {
         <Stack gap="3px">
           <Typography
             sx={{
-              fontWeight: 300,
+              fontSize: '0.8rem',
+              fontWeight: 400,
               opacity: 0.8,
               textTransform: 'uppercase',
             }}
@@ -108,8 +110,9 @@ export const RolePlayCardApp = ({ scenario, onClick }: RolePlayCardProps) => {
             sx={{
               fontWeight: 800,
               opacity: 0.9,
-              textTransform: 'uppercase',
-              fontSize: '1.2rem',
+              lineHeight: 1.2,
+              //textTransform: 'uppercase',
+              fontSize: '2rem',
             }}
           >
             {scenario.shortTitle}

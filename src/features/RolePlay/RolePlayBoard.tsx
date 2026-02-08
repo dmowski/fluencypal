@@ -52,7 +52,7 @@ export const RolePlayBoard = () => {
       <Stack
         gap={'20px'}
         sx={{
-          maxWidth: 'calc(100dvw - 20px)',
+          maxWidth: '100%',
         }}
       >
         <Tabs
@@ -67,10 +67,16 @@ export const RolePlayBoard = () => {
           })}
         </Tabs>
 
-        <Stack gap="15px">
+        <Stack
+          gap="15px"
+          sx={{
+            width: '100%',
+          }}
+        >
           <Stack
             sx={{
               gap: '20px',
+              width: '100%',
             }}
           >
             {visibleScenarios.map((scenario, index) => {
