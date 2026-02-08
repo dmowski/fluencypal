@@ -115,7 +115,6 @@ export const SubscriptionPaymentModal = () => {
         });
         return;
       } else {
-        setIsRedirecting(false);
         window.location.href = checkoutInfo.sessionUrl;
       }
     } catch (error) {
