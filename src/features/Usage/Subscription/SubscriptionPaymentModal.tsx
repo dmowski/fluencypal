@@ -1,13 +1,5 @@
 'use client';
-import {
-  Button,
-  ButtonGroup,
-  Checkbox,
-  FormControlLabel,
-  Link,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { useUsage } from '../useUsage';
 import { useNotifications } from '@toolpad/core/useNotifications';
@@ -19,12 +11,10 @@ import { beginCell } from '@ton/core';
 import { usePathname } from 'next/navigation';
 import { supportedLanguages } from '@/features/Lang/lang';
 import { useLingui } from '@lingui/react';
-import { getUrlStart } from '../../Lang/getUrlStart';
 import { useCurrency } from '../../User/useCurrency';
 import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD } from '@/common/subscription';
 import { sentPaymentTgMessage } from '../sentTgMessage';
 import dayjs from 'dayjs';
-import { ContactList } from '../../Landing/Contact/ContactList';
 import { FeatureList } from '../../Landing/Price/FeatureList';
 import { isTMA, invoice } from '@telegram-apps/sdk-react';
 import { sendCreateTelegramInvoiceRequest } from '@/app/api/telegram/createInvoice/sendCreateTelegramInvoiceRequest';
