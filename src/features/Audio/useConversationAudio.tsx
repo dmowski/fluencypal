@@ -154,10 +154,11 @@ class AudioQueuePlayer {
 
     await new Promise<void>((resolve, reject) => {
       const onEnded = () => cleanup(resolve);
-      const onError = () => cleanup(() => {
-        if (isAbortError(el.error)) return resolve();
-        reject(new Error('Stream audio error'));
-      });
+      const onError = () =>
+        cleanup(() => {
+          if (isAbortError(el.error)) return resolve();
+          reject(new Error('Stream audio error'));
+        });
 
       const cleanup = (done: () => void) => {
         el.removeEventListener('ended', onEnded);
