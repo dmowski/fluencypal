@@ -3,6 +3,9 @@ import { supportedLanguages } from '@/features/Lang/lang';
 import { generateMetadataInfo } from '@/features/SEO/metadata';
 import { BlogsPage } from '@/features/Blog/BlogsPage';
 
+export const dynamicParams = true;
+export const revalidate = 3600;
+
 interface PageProps {
   params: Promise<{ lang: string }>;
   searchParams: Promise<{

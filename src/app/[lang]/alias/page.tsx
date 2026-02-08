@@ -4,9 +4,13 @@ import { generateMetadataInfo } from '@/features/SEO/metadata';
 import { PracticeProvider } from '../../practiceProvider';
 import { AliasPage } from '@/features/Alias/AliasPage';
 
+export const dynamicParams = true;
+export const revalidate = 3600;
+/*
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
 }
+  */
 
 interface PageProps {
   params: Promise<{ lang: string }>;

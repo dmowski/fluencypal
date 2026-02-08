@@ -6,9 +6,14 @@ import {
   InterviewLandingPageNext,
 } from '@/features/Case/Landing/InterviewLandingPageNext';
 
+export const dynamicParams = true;
+export const revalidate = 3600; // Revalidate every hour
+
+/*
 export async function generateStaticParams() {
   return generateInterviewStaticParams();
 }
+*/
 
 export async function generateMetadata(props: InterviewPageProps): Promise<Metadata> {
   return generateInterviewMetadata(props);

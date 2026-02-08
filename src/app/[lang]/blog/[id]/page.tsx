@@ -13,6 +13,7 @@ interface BlogProps {
 export const dynamicParams = true;
 export const revalidate = 3600; // Revalidate every hour
 
+/*
 export async function generateStaticParams() {
   const { blogs } = getBlogs('en');
   return supportedLanguages
@@ -23,6 +24,7 @@ export async function generateStaticParams() {
     })
     .flat();
 }
+*/
 
 interface PageProps {
   params: Promise<BlogProps>;

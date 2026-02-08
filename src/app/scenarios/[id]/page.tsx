@@ -9,6 +9,10 @@ interface ScenarioProps {
   lang: string;
 }
 
+export const dynamicParams = true;
+export const revalidate = 3600; // Revalidate every hour
+
+/*
 export async function generateStaticParams() {
   const rolePlayScenarios = getRolePlayScenarios('en');
   return supportedLanguages
@@ -19,6 +23,7 @@ export async function generateStaticParams() {
     })
     .flat();
 }
+*/
 
 interface PageProps {
   params: Promise<ScenarioProps>;

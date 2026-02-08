@@ -6,9 +6,13 @@ import {
 } from '@/features/Case/quiz/metadata';
 import { InterviewQuizPageNext } from '@/features/Case/quiz/InterviewQuizPageNext';
 
+export const dynamicParams = true;
+export const revalidate = 3600; // Revalidate every hour
+/*
 export async function generateStaticParams() {
   return generateInterviewQuizStaticParams();
 }
+*/
 
 export async function generateMetadata(props: InterviewQuizPageProps): Promise<Metadata> {
   return generateInterviewQuizMetadata(props);
