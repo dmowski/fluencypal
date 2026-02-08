@@ -9,14 +9,12 @@ import { useUsage } from '../../Usage/useUsage';
 import { useSettings } from '../../Settings/useSettings';
 import { UsageLog } from '@/common/usage';
 import { ConversationType } from '@/common/conversation';
-import { useTasks } from '../../Tasks/useTasks';
 import { sleep } from '@/libs/sleep';
 import { ConversationIdea, useAiUserInfo } from '../../Ai/useAiUserInfo';
 import { GuessGameStat, RecordingUserMessageMode } from '../types';
 import { useAuth } from '../../Auth/useAuth';
 import { firstAiMessage } from '@/features/Lang/lang';
 import { GoalElementInfo } from '../../Plan/types';
-import { usePlan } from '../../Plan/usePlan';
 
 import { ConversationMode } from '@/common/userSettings';
 import { useAccess } from '../../Usage/useAccess';
@@ -33,10 +31,11 @@ import { getConversationStarterMessagePrompt } from './getConversationStarterMes
 import { getWebCamDescriptionInstruction } from './getWebCamDescriptionInstruction';
 import { useAiConversationMessages } from './useAiConversationMessages';
 import { useRestart } from './useRestart';
+import { useConversationStat } from './useConversationStat';
 
 const LIMITED_MESSAGES_COUNT = 12;
 const LIMITED_VOICE_MESSAGES_COUNT = 7;
-const modesToExtractUserInfo: ConversationType[] = ['talk', 'goal-talk'];
+const aiModal = MODELS.REALTIME_CONVERSATION;
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
 
@@ -54,11 +53,42 @@ function useProvideAiConversation(): AiConversationContextType {
   const [voice, setVoice] = useState<AiVoice | null>(null);
   const [lessonPlanAnalysis, setLessonPlanAnalysis] = useState<LessonPlanAnalysis | null>(null);
   const [lessonPlan, setLessonPlan] = useState<LessonPlan | null>(null);
-
+  const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
   const voiceSpeed = settings.aiVoiceSpeed;
-
+  const [gameStat, setGameStat] = useState<GuessGameStat | null>(null);
+  const [isStarted, setIsStarted] = useState(false);
+  const [goalInfo, setGoalInfo] = useState<GoalElementInfo | null>(null);
+  const [errorInitiating, setErrorInitiating] = useState<string>();
+  const [isClosing, setIsClosing] = useState(false);
+  const [isClosed, setIsClosed] = useState(false);
+  const [isAiSpeaking, setIsAiSpeaking] = useState(false);
+  const [isUserSpeaking, setIsUserSpeaking] = useState(false);
+  const usage = useUsage();
+  const messages = useAiConversationMessages();
   const [recordingVoiceMode, setRecordingVoiceMode] =
     useState<RecordingUserMessageMode>('PushToTalk');
+  const [communicator, setCommunicator] = useState<ConversationInstance>();
+  const communicatorRef = useRef(communicator);
+  communicatorRef.current = communicator;
+  const [isMuted, setIsMuted] = useState(true);
+  const [usageInfo, setUsageInfo] = useState<string>('');
+  const access = useAccess();
+  const audio = useConversationAudio();
+  const [isAiSpeakingStartedFromConversation, setIsAiSpeakingStartedFromConversation] =
+    useState(false);
+  const isSpeakingFromConversation = isAiSpeakingStartedFromConversation && audio.isPlaying;
+  const appMode = settings.appMode;
+  const aiPersona =
+    appMode === 'learning'
+      ? `You are an ${fullLanguageName} teacher.`
+      : `You are an job interview coach.`;
+
+  const isLimitedRecording = access.isFullAppAccess
+    ? false
+    : messages.conversation.length >= LIMITED_MESSAGES_COUNT;
+  const isLimitedAiVoice =
+    access.isFullAppAccess === false &&
+    messages.conversation.length >= LIMITED_VOICE_MESSAGES_COUNT;
 
   const updateLessonPlanAnalysis = async (analysis: LessonPlanAnalysis | null) => {
     setLessonPlanAnalysis(analysis);
@@ -82,7 +112,6 @@ function useProvideAiConversation(): AiConversationContextType {
       });
       return;
     }
-
     communicatorRef.current?.completeUserMessageDelta({
       removeMessage,
     });
@@ -95,8 +124,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const addUserMessageDelta = (delta: string) => {
     communicatorRef.current?.addUserMessageDelta(delta);
   };
-
-  const aiModal = MODELS.REALTIME_CONVERSATION;
 
   const toggleVolume = (isOn: boolean) => {
     setIsVolumeOn(isOn);
@@ -113,72 +140,7 @@ function useProvideAiConversation(): AiConversationContextType {
     communicatorRef.current?.sendWebCamDescription(webCamDescriptionWithInstruction);
   };
 
-  const usage = useUsage();
-  const [gameStat, setGameStat] = useState<GuessGameStat | null>(null);
-
-  const [isStarted, setIsStarted] = useState(false);
-
-  const [goalInfo, setGoalInfo] = useState<GoalElementInfo | null>(null);
-
-  const messages = useAiConversationMessages();
-
-  const [errorInitiating, setErrorInitiating] = useState<string>();
-  const [isClosing, setIsClosing] = useState(false);
-  const [isClosed, setIsClosed] = useState(false);
-  const [isAiSpeaking, setIsAiSpeaking] = useState(false);
-  const [isUserSpeaking, setIsUserSpeaking] = useState(false);
-  const tasks = useTasks();
-  const plan = usePlan();
-
-  const appMode = settings.appMode;
-
-  const aiPersona =
-    appMode === 'learning'
-      ? `You are an ${fullLanguageName} teacher.`
-      : `You are an job interview coach.`;
-
-  const [communicator, setCommunicator] = useState<ConversationInstance>();
-  const communicatorRef = useRef(communicator);
-  communicatorRef.current = communicator;
-
-  const planMessageCount = 10;
-
-  const [isMuted, setIsMuted] = useState(true);
-
-  useEffect(() => {
-    if (!messages.conversationId || messages.conversation.length === 0) return;
-
-    if (messages.conversation.length === 2) {
-      if (currentMode === 'words') {
-        tasks.completeTask('words');
-      } else if (currentMode === 'rule') {
-        tasks.completeTask('rule');
-      } else {
-        tasks.completeTask('lesson');
-      }
-    }
-
-    // todo: move to useAiConversationMessages
-    const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
-    const messageCountToCheck = 10;
-    if (
-      isNeedToSaveUserInfo &&
-      messages.conversation.length >= 3 &&
-      messages.conversation.length % messageCountToCheck === 0
-    ) {
-      const lastMessagesToCheck = messages.conversation.filter(
-        (_, index, all) => index >= all.length - messageCountToCheck,
-      );
-      aiUserInfo.updateUserInfo(lastMessagesToCheck);
-    }
-
-    const usersMessagesCount = messages.conversation.filter((message) => !message.isBot).length;
-    if (usersMessagesCount === planMessageCount && goalInfo) {
-      plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
-    }
-  }, [messages.conversation.length]);
-
-  const [usageInfo, setUsageInfo] = useState<string>('');
+  useConversationStat(messages.conversationId || '', messages.conversation, currentMode, goalInfo);
 
   useEffect(() => {
     if (usageInfo && auth.isFounder) showDebugInfoBadgeOnTopWindow(usageInfo);
@@ -188,7 +150,6 @@ function useProvideAiConversation(): AiConversationContextType {
     communicator?.toggleMute(isMute);
     setIsMuted(isMute);
   };
-  const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
 
   const { setIsNeedToResetNow, isRestarting } = useRestart(
     communicatorRef,
@@ -218,21 +179,11 @@ function useProvideAiConversation(): AiConversationContextType {
     toggleVolume(isLimited ? false : true);
   };
 
-  const access = useAccess();
-  const isFullAppAccess = access.isFullAppAccess;
-
-  const isLimitedRecording = isFullAppAccess
-    ? false
-    : messages.conversation.length >= LIMITED_MESSAGES_COUNT;
-
   useEffect(() => {
     if (isLimitedRecording) {
       toggleMute(true);
     }
   }, [isLimitedRecording]);
-
-  const isLimitedAiVoice =
-    isFullAppAccess === false && messages.conversation.length >= LIMITED_VOICE_MESSAGES_COUNT;
 
   useEffect(() => {
     if (isLimitedAiVoice) {
@@ -244,11 +195,6 @@ function useProvideAiConversation(): AiConversationContextType {
       toggleVolume(!isLimitedAiVoice);
     }
   }, [isLimitedAiVoice]);
-
-  const audio = useConversationAudio();
-  const [isAiSpeakingStartedFromConversation, setIsAiSpeakingStartedFromConversation] =
-    useState(false);
-  const isSpeakingFromConversation = isAiSpeakingStartedFromConversation && audio.isPlaying;
 
   const getBaseRtcConfig = async () => {
     const baseConfig: ConversationConfig = {
