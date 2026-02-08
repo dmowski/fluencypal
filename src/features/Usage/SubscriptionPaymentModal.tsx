@@ -51,6 +51,8 @@ import { useUrlState } from '../Url/useUrlState';
 import { PaymentSuccess } from './HoursPaymentModal/PaymentSuccess';
 import { FaqSubscription } from './Subscription/FaqSubscription';
 import { PriceContact } from './HoursPaymentModal/PriceContact';
+import { ConfirmPaymentForm } from './HoursPaymentModal/ConfirmPaymentForm';
+import { FounderMessage } from './HoursPaymentModal/FounderMessage';
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
@@ -559,118 +561,12 @@ export const SubscriptionPaymentModal = () => {
               </Typography>
             </Stack>
 
-            <Stack
-              sx={{
-                gap: '20px',
-              }}
-              component={'form'}
-              action={'#'}
-              onSubmit={(e) => {
-                e.preventDefault();
-                clickOnConfirmRequest();
-              }}
-            >
-              <Stack gap={'12px'}>
-                <FormControlLabel
-                  required
-                  sx={{
-                    '.MuiFormControlLabel-asterisk': {
-                      color: '#f24',
-                    },
-                  }}
-                  checked={looseRightChecked}
-                  onChange={(e) => setLooseRightChecked(!looseRightChecked)}
-                  control={<Checkbox />}
-                  label={
-                    <Typography variant="caption">
-                      {i18n._(`I want the service to be provided immediately and I acknowledge that as soon
-                        as the Fundacja Rozwoju Przedsiębiorczości "Twój StartUp" provides the
-                        service, I will lose the right to terminate the contract.`)}
-                    </Typography>
-                  }
-                />
-                <FormControlLabel
-                  required
-                  sx={{
-                    '.MuiFormControlLabel-asterisk': {
-                      color: '#f24',
-                    },
-                  }}
-                  checked={isTermsChecked}
-                  onChange={(e) => setIsTermsChecked(!isTermsChecked)}
-                  control={<Checkbox />}
-                  label={
-                    <Typography variant="caption">
-                      {i18n._(`I accept the`)}{' '}
-                      <Link target="_blank" href={`${getUrlStart(supportedLang)}terms`}>
-                        {i18n._(`Terms and Conditions`)}
-                      </Link>{' '}
-                      {i18n._(`of the Website operated by Fundacja Rozwoju Przedsiębiorczości "Twój
-                        StartUp" with its registered office in Warsaw.`)}
-                    </Typography>
-                  }
-                />
-
-                <FormControlLabel
-                  sx={{
-                    '.MuiFormControlLabel-asterisk': {
-                      color: '#f24',
-                    },
-                  }}
-                  checked={isMarketingChecked}
-                  onChange={(e) => setIsMarketingChecked(!isMarketingChecked)}
-                  control={<Checkbox />}
-                  label={
-                    <Typography variant="caption">
-                      {i18n._(`I want to receive commercial and marketing content`)}
-                    </Typography>
-                  }
-                />
-              </Stack>
-              <Stack
-                sx={{
-                  width: '100%',
-                }}
-              >
-                <Stack
-                  sx={{
-                    padding: '6px 0',
-                  }}
-                >
-                  <Typography variant="h5">
-                    {i18n._(`Total:`)}{' '}
-                    {isTelegramApp ? (
-                      <>
-                        <b>{CRYPTO_MONTHLY_PRICE_TON} TON</b> | or{' '}
-                        <b>{TELEGRAM_MONTHLY_PRICE_START} Stars</b>
-                      </>
-                    ) : (
-                      <b>{currency.convertUsdToCurrency(durationPriceUsd)}</b>
-                    )}
-                  </Typography>
-                </Stack>
-              </Stack>
-              <Stack
-                sx={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '5px',
-                }}
-              >
-                <Button
-                  color="info"
-                  fullWidth
-                  variant="contained"
-                  disabled={isRedirecting}
-                  size="large"
-                  type="submit"
-                  name="submit"
-                >
-                  {isTelegramApp ? i18n._(`Continue`) : i18n._(`Pay`)}
-                </Button>
-              </Stack>
-            </Stack>
-            <FeatureList appMode={appMode} />
+            <ConfirmPaymentForm
+              amountInUsd={durationPriceUsd}
+              onConfirmRequest={() => clickOnConfirmRequest()}
+              isRedirecting={isRedirecting}
+            />
+            <FounderMessage />
           </Stack>
         ) : (
           <>
