@@ -3,7 +3,7 @@ import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { useUsage } from '../useUsage';
 import { useNotifications } from '@toolpad/core/useNotifications';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../../Auth/useAuth';
 import { createStripeCheckout } from '../createStripeCheckout';
 import { usePathname } from 'next/navigation';
@@ -14,7 +14,12 @@ import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD } from '@/common/subscription';
 import { sentPaymentTgMessage } from '../sentTgMessage';
 import dayjs from 'dayjs';
 import { FeatureList } from '../../Landing/Price/FeatureList';
+import { isTMA, invoice } from '@telegram-apps/sdk-react';
+import { sendCreateTelegramInvoiceRequest } from '@/app/api/telegram/createInvoice/sendCreateTelegramInvoiceRequest';
+import { TELEGRAM_MONTHLY_PRICE_START } from '../../Telegram/starPrices';
+import { TgGoldStar } from '../../Icon/TgStar';
 import { SubscriptionWaiter } from '../SubscriptionWaiter';
+import { CRYPTO_MONTHLY_PRICE_TON } from '../../Telegram/cryptoPrice';
 import { useSettings } from '../../Settings/useSettings';
 import { StripeCreateCheckoutRequest } from '@/common/requests';
 import { sleep } from '@/libs/sleep';
@@ -26,8 +31,13 @@ import { FaqSubscription } from './FaqSubscription';
 import { PriceContact } from '../HoursPaymentModal/PriceContact';
 import { ConfirmPaymentForm } from '../HoursPaymentModal/ConfirmPaymentForm';
 import { FounderMessage } from '../HoursPaymentModal/FounderMessage';
+import { TgWalletButton } from './TgWalletButton';
 
-export const SubscriptionPaymentModal = () => {
+const isTelegramApp = isTMA();
+const allowCryptoFlag = true;
+
+// Lust to keep code for history purposes
+export const TelegramSubscriptionPaymentModal = () => {
   const usage = useUsage();
   const auth = useAuth();
   const { i18n } = useLingui();
@@ -35,9 +45,14 @@ export const SubscriptionPaymentModal = () => {
   const settings = useSettings();
   const appMode = settings.appMode;
 
+  const [allowCrypto, setAllowCrypto] = useState(allowCryptoFlag);
+
   const notifications = useNotifications();
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
+  const [isTelegramPaymentOptions, setIsTelegramPaymentOptions] = useState(false);
+  const [isPriceInStars, setIsPriceInStars] = useState(false);
 
+  const [isShowWaiting, setIsShowWaiting] = useState(false);
   const [initActiveTill, setInitActiveTill] = useState<string>('');
 
   const [isPaymentSuccess, setPaymentSuccess] = useUrlState('paymentSuccess', '', false);
@@ -52,14 +67,88 @@ export const SubscriptionPaymentModal = () => {
     containerRef.current?.parentElement?.parentElement?.parentElement?.scrollTo(0, 0);
   };
 
+  const showWaiter = () => {
+    setIsShowWaiting(true);
+    setIsShowConfirmPayments(false);
+    setIsTelegramPaymentOptions(false);
+    scrollTop();
+  };
+
   const [isRedirecting, setIsRedirecting] = useState(false);
   const clickOnConfirmRequest = async () => {
-    clickOnConfirmRequestStripe();
+    if (isTelegramApp) {
+      setIsTelegramPaymentOptions(true);
+    } else {
+      clickOnConfirmRequestStripe();
+    }
   };
 
   const openMainSubscriptionPage = () => {
     setIsShowConfirmPayments(false);
+    setIsTelegramPaymentOptions(false);
     scrollTop();
+  };
+
+  const clickOnConfirmRequestTelegramStars = async () => {
+    const token = await auth.getToken();
+
+    try {
+      setIsRedirecting(true);
+      const checkoutInfo = await sendCreateTelegramInvoiceRequest(
+        {
+          monthCount: 1,
+        },
+        token,
+      );
+      console.log('checkoutInfo', checkoutInfo);
+      if (checkoutInfo.error) {
+        console.log('checkoutInfo', checkoutInfo);
+        setIsRedirecting(false);
+        notifications.show(i18n._('Error creating payment session'), {
+          severity: 'error',
+        });
+        return;
+      } else if (!checkoutInfo.invoice_link) {
+        console.log('checkoutInfo', checkoutInfo);
+        setIsRedirecting(false);
+        notifications.show(i18n._('Error creating payment session. Try again later.'), {
+          severity: 'error',
+        });
+        return;
+      } else {
+        setInitActiveTill(usage.activeSubscriptionTill || '');
+        const result = await invoice.open(checkoutInfo.invoice_link, 'url');
+        console.log('invoice.open - result', result);
+        if (result === 'paid') {
+          await sentPaymentTgMessage({
+            message: 'Event: Payment successful',
+            email: auth?.userInfo?.email || 'unknownEmail',
+            token: await auth.getToken(),
+          });
+          showWaiter();
+        } else {
+          notifications.show(i18n._('Payment failed! Please try again.'), {
+            severity: 'error',
+          });
+
+          scrollTop();
+          setIsShowConfirmPayments(false);
+          setIsTelegramPaymentOptions(false);
+        }
+        setIsRedirecting(false);
+      }
+    } catch (error) {
+      console.error('Error during payment process:', error);
+      setIsRedirecting(false);
+      notifications.show(i18n._('Error during payment process'), {
+        severity: 'error',
+      });
+      await sentPaymentTgMessage({
+        message: 'Error during payment process: Telegram stars',
+        email: auth?.userInfo?.email || 'unknownEmail',
+        token: await auth.getToken(),
+      });
+    }
   };
 
   const [duration, setDuration] = useState<'day' | 'week' | 'month' | 'year'>('week');
@@ -160,6 +249,12 @@ export const SubscriptionPaymentModal = () => {
     ? `${dayjs(usage.activeSubscriptionTill).format('DD MMMM')}`
     : null;
 
+  useEffect(() => {
+    const isTelegramApp = isTMA();
+    setIsPriceInStars(isTelegramApp);
+    setAllowCrypto(allowCryptoFlag && isTelegramApp);
+  }, []);
+
   if (!usage.isShowPaymentModal) return null;
 
   const closePaymentSuccessModal = async () => {
@@ -194,7 +289,100 @@ export const SubscriptionPaymentModal = () => {
         }}
         ref={containerRef}
       >
-        {isShowConfirmPayments ? (
+        {isShowWaiting ? (
+          <SubscriptionWaiter
+            initActiveTill={initActiveTill}
+            onClose={() => {
+              openMainSubscriptionPage();
+              setIsShowWaiting(false);
+            }}
+          />
+        ) : isTelegramApp && isTelegramPaymentOptions ? (
+          <>
+            <Stack
+              sx={{
+                maxWidth: '600px',
+                width: '100%',
+                boxSizing: 'border-box',
+                gap: '40px',
+                alignItems: 'center',
+              }}
+            >
+              <Stack
+                sx={{
+                  width: '100%',
+                }}
+              >
+                <Typography
+                  sx={{
+                    width: '100%',
+                  }}
+                  variant="h5"
+                  component="h2"
+                >
+                  {i18n._(`Payment option`)}
+                </Typography>
+
+                <Typography
+                  sx={{
+                    width: '100%',
+                    opacity: 0.7,
+                  }}
+                >
+                  {i18n._(`Full Access for 1 month`)}
+                </Typography>
+
+                <Typography variant="caption">
+                  {`${TELEGRAM_MONTHLY_PRICE_START} Stars`} <br />
+                </Typography>
+
+                {currency.currency !== 'USD' && allowCrypto && (
+                  <Typography variant="caption">{CRYPTO_MONTHLY_PRICE_TON} TON</Typography>
+                )}
+              </Stack>
+              <Stack
+                sx={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '12px',
+                  minWidth: '300px',
+                }}
+              >
+                <Button
+                  onClick={clickOnConfirmRequestTelegramStars}
+                  fullWidth
+                  color="info"
+                  variant="contained"
+                  disabled={isRedirecting}
+                  size="large"
+                  type="submit"
+                  name="submit"
+                  startIcon={<TgGoldStar size="25px" />}
+                >
+                  {i18n._(`Pay with Stars`)}
+                </Button>
+                {allowCrypto && (
+                  <>
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        opacity: 0.7,
+                        paddingTop: '15px',
+                      }}
+                    >
+                      or crypto
+                    </Typography>
+
+                    <TgWalletButton
+                      onPressPay={() => setInitActiveTill(usage.activeSubscriptionTill || '')}
+                      onShowWaiter={() => showWaiter()}
+                    />
+                  </>
+                )}
+              </Stack>
+            </Stack>
+          </>
+        ) : isShowConfirmPayments ? (
           <Stack
             sx={{
               maxWidth: '700px',
@@ -335,101 +523,140 @@ export const SubscriptionPaymentModal = () => {
                     )}
                   </Stack>
 
-                  <Stack sx={{ gap: '20px' }}>
-                    <Stack
-                      sx={{
-                        width: '100%',
-                        gap: '5px',
-                        //display: "none",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          width: '100%',
-                        }}
-                        variant="caption"
-                      >
-                        {i18n._('Duration:')}
-                      </Typography>
-                      <ButtonGroup
-                        aria-label="Basic button group"
-                        sx={{
-                          width: '100%',
-                        }}
-                      >
-                        <Button
-                          fullWidth
-                          variant={duration === 'day' ? 'contained' : 'outlined'}
-                          onClick={() => setDuration('day')}
-                        >
-                          {i18n._('Day')}
-                        </Button>
-                        <Button
-                          fullWidth
-                          variant={duration === 'week' ? 'contained' : 'outlined'}
-                          onClick={() => setDuration('week')}
-                        >
-                          {i18n._('Week')}
-                        </Button>
-                        <Button
-                          fullWidth
-                          variant={duration === 'month' ? 'contained' : 'outlined'}
-                          onClick={() => setDuration('month')}
-                        >
-                          {i18n._('Month')}
-                        </Button>
-                        <Button
-                          fullWidth
-                          variant={duration === 'year' ? 'contained' : 'outlined'}
-                          onClick={() => setDuration('year')}
-                        >
-                          {i18n._('Year')}
-                        </Button>
-                      </ButtonGroup>
-                    </Stack>
-
-                    <Stack
-                      sx={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        gap: '8px',
-                      }}
-                    >
-                      <Typography
-                        variant="h2"
-                        sx={{
-                          fontWeight: 500,
-                          fontSize: '3.6rem',
-                        }}
-                      >
-                        {priceInCurrency}
-                      </Typography>
+                  {isPriceInStars ? (
+                    <>
                       <Stack
                         sx={{
-                          paddingTop: '18px',
-                          height: '100%',
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          gap: '8px',
+                        }}
+                      >
+                        <TgGoldStar size="3.1rem" />
+                        <Typography
+                          variant="h2"
+                          sx={{
+                            fontWeight: 500,
+                            fontSize: '3.4rem',
+                          }}
+                        >
+                          {TELEGRAM_MONTHLY_PRICE_START}
+                        </Typography>
+                        <Stack
+                          sx={{
+                            paddingTop: '18px',
+                            height: '100%',
+                          }}
+                        >
+                          <Typography
+                            variant="caption"
+                            sx={{
+                              textTransform: 'uppercase',
+                            }}
+                          >
+                            {i18n._(`Stars`)} /
+                          </Typography>
+                          <Typography variant="caption">{i18n._('month')}</Typography>
+                        </Stack>
+                      </Stack>
+                    </>
+                  ) : (
+                    <Stack sx={{ gap: '20px' }}>
+                      <Stack
+                        sx={{
+                          width: '100%',
+                          gap: '5px',
+                          //display: "none",
                         }}
                       >
                         <Typography
-                          variant="caption"
                           sx={{
-                            textTransform: 'uppercase',
+                            width: '100%',
+                          }}
+                          variant="caption"
+                        >
+                          {i18n._('Duration:')}
+                        </Typography>
+                        <ButtonGroup
+                          aria-label="Basic button group"
+                          sx={{
+                            width: '100%',
                           }}
                         >
-                          {currency.currency} /
+                          <Button
+                            fullWidth
+                            variant={duration === 'day' ? 'contained' : 'outlined'}
+                            onClick={() => setDuration('day')}
+                          >
+                            {i18n._('Day')}
+                          </Button>
+                          <Button
+                            fullWidth
+                            variant={duration === 'week' ? 'contained' : 'outlined'}
+                            onClick={() => setDuration('week')}
+                          >
+                            {i18n._('Week')}
+                          </Button>
+                          <Button
+                            fullWidth
+                            variant={duration === 'month' ? 'contained' : 'outlined'}
+                            onClick={() => setDuration('month')}
+                          >
+                            {i18n._('Month')}
+                          </Button>
+                          <Button
+                            fullWidth
+                            variant={duration === 'year' ? 'contained' : 'outlined'}
+                            onClick={() => setDuration('year')}
+                          >
+                            {i18n._('Year')}
+                          </Button>
+                        </ButtonGroup>
+                      </Stack>
+
+                      <Stack
+                        sx={{
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          gap: '8px',
+                        }}
+                      >
+                        <Typography
+                          variant="h2"
+                          sx={{
+                            fontWeight: 500,
+                            fontSize: '3.6rem',
+                          }}
+                        >
+                          {priceInCurrency}
                         </Typography>
-                        <Typography variant="caption">
-                          {duration === 'month'
-                            ? i18n._('month')
-                            : duration === 'week'
-                              ? i18n._('week')
-                              : duration === 'year'
-                                ? i18n._('year')
-                                : i18n._('day')}
-                        </Typography>
+                        <Stack
+                          sx={{
+                            paddingTop: '18px',
+                            height: '100%',
+                          }}
+                        >
+                          <Typography
+                            variant="caption"
+                            sx={{
+                              textTransform: 'uppercase',
+                            }}
+                          >
+                            {currency.currency} /
+                          </Typography>
+                          <Typography variant="caption">
+                            {duration === 'month'
+                              ? i18n._('month')
+                              : duration === 'week'
+                                ? i18n._('week')
+                                : duration === 'year'
+                                  ? i18n._('year')
+                                  : i18n._('day')}
+                          </Typography>
+                        </Stack>
                       </Stack>
                     </Stack>
-                  </Stack>
+                  )}
 
                   <Typography variant="body1">
                     {i18n._('Get confidence with AI support')}
