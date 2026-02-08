@@ -612,6 +612,13 @@ export const MessageContent = ({
         [`a[href="${myHrefLink}"]`]: {
           color: '#29B3E5',
         },
+
+        // Link started with "/"
+        'a[href^="/"]': {
+          textDecoration: 'underline',
+          color: '#16bbf7',
+        },
+
         '* p': {
           fontSize: contentFontSize || '15px',
         },
