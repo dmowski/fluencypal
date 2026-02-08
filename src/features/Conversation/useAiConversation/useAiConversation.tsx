@@ -32,6 +32,7 @@ import { teacherRules } from './teacherRules';
 import { getConversationStarterMessagePrompt } from './getConversationStarterMessagePrompt';
 import { getWebCamDescriptionInstruction } from './getWebCamDescriptionInstruction';
 import { useAiConversationMessages } from './useAiConversationMessages';
+import { useRestart } from './useRestart';
 
 const LIMITED_MESSAGES_COUNT = 12;
 const LIMITED_VOICE_MESSAGES_COUNT = 7;
@@ -177,10 +178,6 @@ function useProvideAiConversation(): AiConversationContextType {
     }
   }, [messages.conversation.length]);
 
-  const [isRestarting, setIsRestarting] = useState(false);
-  const isRestartingRef = useRef(isRestarting);
-  isRestartingRef.current = isRestarting;
-
   const [usageInfo, setUsageInfo] = useState<string>('');
 
   useEffect(() => {
@@ -190,65 +187,18 @@ function useProvideAiConversation(): AiConversationContextType {
     }
   }, [usageInfo, auth.isFounder]);
 
-  // todo: Move restart functionality to separate hook
-  const restartConversation = async () => {
-    if (isRestartingRef.current) {
-      console.warn('Already restarting, skipping...');
-      return;
-    }
-    isRestartingRef.current = true;
-    // current instance of conversation will restarted
-
-    toggleMute(true);
-    await sleep(1000);
-    setIsRestarting(true);
-
-    await sleep(10_000);
-
-    await communicatorRef.current?.restartConversation();
-    const lastMessage = messages.conversation?.[messages.conversation.length - 1]?.text;
-    await auth.sendTgMessage(
-      `Restarting conversation. Last message before restart: ${lastMessage}`,
-    );
-
-    await sleep(500);
-
-    setIsRestarting(false);
-
-    setTimeout(() => {
-      isRestartingRef.current = false;
-    }, 40_000);
-  };
-
-  const messagesToRestart = auth.isFounder ? 40 : 130;
-  const [isNeedToResetNow, setIsNeedToResetNow] = useState(false);
-
-  useEffect(() => {
-    if (isNeedToResetNow) {
-      // To prevent memory leak in case of very long conversations
-      restartConversation();
-      return;
-    }
-  }, [isNeedToResetNow]);
-
-  useEffect(() => {
-    const isModeForRestart = ['role-play', 'talk'].includes(currentMode);
-
-    if (
-      messages.conversation.length > 0 &&
-      messages.conversation.length % messagesToRestart === 0 &&
-      isModeForRestart
-    ) {
-      // To prevent memory leak in case of very long conversations
-      restartConversation();
-      return;
-    }
-  }, [messages.conversation.length, messagesToRestart]);
-
   const toggleMute = (isMute: boolean) => {
     communicator?.toggleMute(isMute);
     setIsMuted(isMute);
   };
+  const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
+
+  const { setIsNeedToResetNow, isRestarting } = useRestart(
+    communicatorRef,
+    toggleMute,
+    messages.conversation,
+    currentMode,
+  );
 
   useEffect(() => {
     return () => {
@@ -270,8 +220,6 @@ function useProvideAiConversation(): AiConversationContextType {
     toggleMute(true);
     toggleVolume(isLimited ? false : true);
   };
-
-  const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
 
   const access = useAccess();
   const isFullAppAccess = access.isFullAppAccess;
