@@ -87,8 +87,7 @@ function useProvideAiConversation(): AiConversationContextType {
     ? false
     : messages.conversation.length >= LIMITED_MESSAGES_COUNT;
   const isLimitedAiVoice =
-    access.isFullAppAccess === false &&
-    messages.conversation.length >= LIMITED_VOICE_MESSAGES_COUNT;
+    !access.isFullAppAccess && messages.conversation.length >= LIMITED_VOICE_MESSAGES_COUNT;
 
   const updateLessonPlanAnalysis = async (analysis: LessonPlanAnalysis | null) => {
     setLessonPlanAnalysis(analysis);
@@ -134,10 +133,10 @@ function useProvideAiConversation(): AiConversationContextType {
     }
   };
 
-  const setWebCamDescription = async (description: string) => {
-    const webCamDescriptionWithInstruction = getWebCamDescriptionInstruction(description);
-    if (!webCamDescriptionWithInstruction) return;
-    communicatorRef.current?.sendWebCamDescription(webCamDescriptionWithInstruction);
+  const setWebCamDescription = async (webCamDescription: string) => {
+    const instruction = getWebCamDescriptionInstruction(webCamDescription);
+    if (!instruction) return;
+    communicatorRef.current?.sendWebCamDescription(instruction);
   };
 
   useConversationStat(messages.conversationId || '', messages.conversation, currentMode, goalInfo);
