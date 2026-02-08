@@ -6,6 +6,10 @@ import {
   InterviewLandingPageNext,
 } from '@/features/Case/Landing/InterviewLandingPageNext';
 
+// Generate pages on-demand to reduce deployment size
+export const dynamicParams = true;
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   return generateInterviewStaticParams();
 }

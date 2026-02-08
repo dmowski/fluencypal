@@ -9,6 +9,10 @@ interface BlogProps {
   lang: string;
 }
 
+// Generate pages on-demand instead of at build time to reduce deployment size
+export const dynamicParams = true;
+export const revalidate = 3600; // Revalidate every hour
+
 export async function generateStaticParams() {
   const { blogs } = getBlogs('en');
   return supportedLanguages
