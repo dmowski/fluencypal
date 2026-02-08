@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/nextjs';
 import { ConversationMessage, MessagesOrderMap, ConversationType } from '@/common/conversation';
 import { activateAnalyticUser, conversationStarted } from '@/features/Analytics/activationTracker';
 import { useChatHistory } from '@/features/ConversationHistory/useChatHistory';
@@ -82,6 +83,48 @@ export const useAiConversationMessages = () => {
     });
   };
 
+  const onMessage = (
+    message: ConversationMessage,
+    {
+      firstPotentialBotMessage,
+    }: {
+      firstPotentialBotMessage: string | null;
+    },
+  ) => {
+    setConversation((prev) => {
+      const isExisting = prev.find((m) => m.id === message.id);
+
+      if (isExisting) {
+        const isBot = message.isBot;
+        if (isBot) {
+          return [...prev.filter((m) => m.id !== message.id), message];
+        }
+        return prev.map((m) => (m.id === message.id ? message : m));
+      }
+
+      const isEmptyChat = prev.length === 0;
+      const isEmptyNewMessage = message.text.trim() === '';
+      const isErrorState = isEmptyChat && isEmptyNewMessage;
+      if (isErrorState) {
+        console.log('message', message);
+        Sentry.captureException(new Error('Empty message from AI.'), {
+          extra: {
+            conversationId: conversationId,
+            conversation: conversation,
+          },
+        });
+      }
+
+      return [
+        ...prev,
+        {
+          ...message,
+          text: isEmptyChat && isEmptyNewMessage ? firstPotentialBotMessage || '...' : message.text,
+        },
+      ];
+    });
+  };
+
   return {
     conversation,
     conversationId,
@@ -92,5 +135,6 @@ export const useAiConversationMessages = () => {
     updateMessageOrder,
     resetMessageOrder: () => setMessageOrder({}),
     onAddDelta,
+    onMessage,
   };
 };

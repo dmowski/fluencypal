@@ -17,7 +17,7 @@ import { useAuth } from '../../Auth/useAuth';
 import { firstAiMessage } from '@/features/Lang/lang';
 import { GoalElementInfo } from '../../Plan/types';
 import { usePlan } from '../../Plan/usePlan';
-import * as Sentry from '@sentry/nextjs';
+
 import { ConversationMode } from '@/common/userSettings';
 import { useAccess } from '../../Usage/useAccess';
 import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from '../../LessonPlan/type';
@@ -271,43 +271,6 @@ function useProvideAiConversation(): AiConversationContextType {
     toggleVolume(isLimited ? false : true);
   };
 
-  const onMessage = (message: ConversationMessage) => {
-    messages.setConversation((prev) => {
-      const isExisting = prev.find((m) => m.id === message.id);
-
-      if (isExisting) {
-        const isBot = message.isBot;
-        if (isBot) {
-          return [...prev.filter((m) => m.id !== message.id), message];
-        }
-        return prev.map((m) => (m.id === message.id ? message : m));
-      }
-
-      const isEmptyChat = prev.length === 0;
-      const isEmptyNewMessage = message.text.trim() === '';
-      const isErrorState = isEmptyChat && isEmptyNewMessage;
-      if (isErrorState) {
-        console.log('message', message);
-        Sentry.captureException(new Error('Empty message from AI.'), {
-          extra: {
-            conversationId: messages.conversationId,
-            conversation: messages.conversation,
-          },
-        });
-      }
-
-      return [
-        ...prev,
-        {
-          ...message,
-          text:
-            isEmptyChat && isEmptyNewMessage
-              ? firstPotentialBotMessage.current || '...'
-              : message.text,
-        },
-      ];
-    });
-  };
   const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
 
   const access = useAccess();
@@ -347,7 +310,8 @@ function useProvideAiConversation(): AiConversationContextType {
       model: aiModal,
       initInstruction: '',
       onOpen,
-      onMessage,
+      onMessage: (message) =>
+        messages.onMessage(message, { firstPotentialBotMessage: firstPotentialBotMessage.current }),
       onAddDelta: messages.onAddDelta,
       setIsAiSpeaking,
       setIsUserSpeaking,
