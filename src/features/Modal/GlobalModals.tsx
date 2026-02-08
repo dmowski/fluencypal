@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { useGame } from '../Game/useGame';
 import { UserProfileModal } from '../Game/UserProfileModal';
 import { useUsage } from '../Usage/useUsage';
-import { SubscriptionPaymentModal } from '../Usage/SubscriptionPaymentModal';
+import { SubscriptionPaymentModal } from '../Usage/Subscription/SubscriptionPaymentModal';
 import { useAuth } from '../Auth/useAuth';
 import { TeacherVoiceModal } from './TeacherVoiceModal';
 import { HoursPaymentModal } from '../Usage/HoursPaymentModal/HoursPaymentModal';

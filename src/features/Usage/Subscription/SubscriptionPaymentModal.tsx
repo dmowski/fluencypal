@@ -8,27 +8,27 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { useUsage } from './useUsage';
+import { CustomModal } from '../../uiKit/Modal/CustomModal';
+import { useUsage } from '../useUsage';
 import { useNotifications } from '@toolpad/core/useNotifications';
 import { useEffect, useRef, useState } from 'react';
-import { useAuth } from '../Auth/useAuth';
-import { createStripeCheckout } from './createStripeCheckout';
+import { useAuth } from '../../Auth/useAuth';
+import { createStripeCheckout } from '../createStripeCheckout';
 import { beginCell } from '@ton/core';
 
 import { usePathname } from 'next/navigation';
 import { supportedLanguages } from '@/features/Lang/lang';
 import { useLingui } from '@lingui/react';
-import { getUrlStart } from '../Lang/getUrlStart';
-import { useCurrency } from '../User/useCurrency';
+import { getUrlStart } from '../../Lang/getUrlStart';
+import { useCurrency } from '../../User/useCurrency';
 import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD } from '@/common/subscription';
-import { sentPaymentTgMessage } from './sentTgMessage';
+import { sentPaymentTgMessage } from '../sentTgMessage';
 import dayjs from 'dayjs';
-import { ContactList } from '../Landing/Contact/ContactList';
-import { FeatureList } from '../Landing/Price/FeatureList';
+import { ContactList } from '../../Landing/Contact/ContactList';
+import { FeatureList } from '../../Landing/Price/FeatureList';
 import { isTMA, invoice } from '@telegram-apps/sdk-react';
 import { sendCreateTelegramInvoiceRequest } from '@/app/api/telegram/createInvoice/sendCreateTelegramInvoiceRequest';
-import { TELEGRAM_MONTHLY_PRICE_START } from '../Telegram/starPrices';
+import { TELEGRAM_MONTHLY_PRICE_START } from '../../Telegram/starPrices';
 import {
   TonConnectButton,
   useTonWallet,
@@ -36,22 +36,22 @@ import {
   useTonConnectUI,
   CHAIN,
 } from '@tonconnect/ui-react';
-import { TgGoldStar } from '../Icon/TgStar';
-import { TonIcon } from '../Icon/TonIcon';
+import { TgGoldStar } from '../../Icon/TgStar';
+import { TonIcon } from '../../Icon/TonIcon';
 import { sendCreateCryptoOrderRequest } from '@/app/api/crypto/createOrder/sendCreateCryptoOrderRequest';
-import { SubscriptionWaiter } from './SubscriptionWaiter';
-import { CRYPTO_MONTHLY_PRICE_TON } from '../Telegram/cryptoPrice';
-import { useSettings } from '../Settings/useSettings';
+import { SubscriptionWaiter } from '../SubscriptionWaiter';
+import { CRYPTO_MONTHLY_PRICE_TON } from '../../Telegram/cryptoPrice';
+import { useSettings } from '../../Settings/useSettings';
 import { StripeCreateCheckoutRequest } from '@/common/requests';
 import { sleep } from '@/libs/sleep';
 import { Check, Plus } from 'lucide-react';
-import { useAnalytics } from '../Analytics/useAnalytics';
-import { useUrlState } from '../Url/useUrlState';
-import { PaymentSuccess } from './HoursPaymentModal/PaymentSuccess';
-import { FaqSubscription } from './Subscription/FaqSubscription';
-import { PriceContact } from './HoursPaymentModal/PriceContact';
-import { ConfirmPaymentForm } from './HoursPaymentModal/ConfirmPaymentForm';
-import { FounderMessage } from './HoursPaymentModal/FounderMessage';
+import { useAnalytics } from '../../Analytics/useAnalytics';
+import { useUrlState } from '../../Url/useUrlState';
+import { PaymentSuccess } from '../HoursPaymentModal/PaymentSuccess';
+import { FaqSubscription } from './FaqSubscription';
+import { PriceContact } from '../HoursPaymentModal/PriceContact';
+import { ConfirmPaymentForm } from '../HoursPaymentModal/ConfirmPaymentForm';
+import { FounderMessage } from '../HoursPaymentModal/FounderMessage';
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
