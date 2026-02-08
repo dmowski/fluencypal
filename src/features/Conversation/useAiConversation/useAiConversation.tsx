@@ -32,9 +32,8 @@ import { getWebCamDescriptionInstruction } from './getWebCamDescriptionInstructi
 import { useAiConversationMessages } from './useAiConversationMessages';
 import { useRestart } from './useRestart';
 import { useConversationStat } from './useConversationStat';
+import { useLimits } from './useLimits';
 
-const LIMITED_MESSAGES_COUNT = 12;
-const LIMITED_VOICE_MESSAGES_COUNT = 7;
 const aiModal = MODELS.REALTIME_CONVERSATION;
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -82,12 +81,6 @@ function useProvideAiConversation(): AiConversationContextType {
     appMode === 'learning'
       ? `You are an ${fullLanguageName} teacher.`
       : `You are an job interview coach.`;
-
-  const isLimitedRecording = access.isFullAppAccess
-    ? false
-    : messages.conversation.length >= LIMITED_MESSAGES_COUNT;
-  const isLimitedAiVoice =
-    !access.isFullAppAccess && messages.conversation.length >= LIMITED_VOICE_MESSAGES_COUNT;
 
   const updateLessonPlanAnalysis = async (analysis: LessonPlanAnalysis | null) => {
     setLessonPlanAnalysis(analysis);
@@ -150,6 +143,8 @@ function useProvideAiConversation(): AiConversationContextType {
     setIsMuted(isMute);
   };
 
+  const limits = useLimits(communicatorRef, messages.conversation, toggleMute, toggleVolume);
+
   const { setIsNeedToResetNow, isRestarting } = useRestart(
     communicatorRef,
     toggleMute,
@@ -177,23 +172,6 @@ function useProvideAiConversation(): AiConversationContextType {
     toggleMute(true);
     toggleVolume(isLimited ? false : true);
   };
-
-  useEffect(() => {
-    if (isLimitedRecording) {
-      toggleMute(true);
-    }
-  }, [isLimitedRecording]);
-
-  useEffect(() => {
-    if (isLimitedAiVoice) {
-      toggleVolume(false);
-      communicatorRef.current?.lockVolume();
-      return;
-    } else {
-      communicatorRef.current?.unlockVolume();
-      toggleVolume(!isLimitedAiVoice);
-    }
-  }, [isLimitedAiVoice]);
 
   const getBaseRtcConfig = async () => {
     const baseConfig: ConversationConfig = {
@@ -584,8 +562,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
   };
 
   return {
-    isLimitedAiVoice,
-    isLimitedRecording,
+    isLimitedAiVoice: limits.isLimitedAiVoice,
+    isLimitedRecording: limits.isLimitedRecording,
     currentMode,
     voice: voice || 'shimmer',
     conversationId: messages.conversationId,
