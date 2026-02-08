@@ -115,8 +115,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const setWebCamDescription = async (webCamDescription: string) => {
     const instruction = getWebCamDescriptionInstruction(webCamDescription);
-    if (!instruction) return;
-    communicatorRef.current?.sendWebCamDescription(instruction);
+    if (instruction) communicatorRef.current?.sendWebCamDescription(instruction);
   };
 
   useConversationStat(messages.conversationId || '', messages.conversation, currentMode, goalInfo);
@@ -137,9 +136,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const conversationUsage = useConversationUsage(setIsNeedToResetNow);
 
   useEffect(() => {
-    return () => {
-      communicator?.closeHandler();
-    };
+    return () => communicator?.closeHandler();
   }, []);
 
   const onOpen = async () => {
@@ -171,7 +168,7 @@ function useProvideAiConversation(): AiConversationContextType {
       isVolumeOn,
       onAddUsage: conversationUsage.onAddUsage,
       languageCode: settings.languageCode || 'en',
-      getAuthToken: async () => await auth.getToken(),
+      getAuthToken: () => auth.getToken(),
       onMessageOrder: messages.updateMessageOrder,
       generateTextWithAi: async ({ userMessage, systemMessage }) => {
         return await ai.generate({
