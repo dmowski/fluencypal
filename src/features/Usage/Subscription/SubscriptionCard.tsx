@@ -2,6 +2,7 @@ import { useLingui } from '@lingui/react';
 import { SubscriptionDuration } from './types';
 import { useCurrency } from '@/features/User/useCurrency';
 import { Stack, Typography, Button } from '@mui/material';
+import { ChevronRight } from 'lucide-react';
 
 export const SubscriptionCard = ({
   title,
@@ -32,6 +33,13 @@ export const SubscriptionCard = ({
           ? priceInUsd / 30
           : priceInUsd / 365;
   const pricePerDayCurrency = Math.round(currency.rate * pricePerDayUsd * 10) / 10;
+
+  const buttonLabels: Record<SubscriptionDuration, string> = {
+    day: i18n._('Get access for a day'),
+    week: i18n._('Get access for a week'),
+    month: i18n._('Get access for a month'),
+    year: i18n._('Get access for a year'),
+  };
 
   return (
     <Stack
@@ -120,12 +128,14 @@ export const SubscriptionCard = ({
               variant={isSuggested ? 'contained' : 'outlined'}
               size="large"
               onClick={onPay}
+              endIcon={<ChevronRight />}
               sx={{
-                fontSize: '1.2rem',
-                fontWeight: 500,
+                textAlign: 'left',
+                //fontWeight: 600,
+                //fontSize: '18px',
               }}
             >
-              {i18n._(`Pay`)}: {priceInCurrency} {currency.currency.toUpperCase()}
+              {buttonLabels[duration]}
             </Button>
           </Stack>
         </Stack>

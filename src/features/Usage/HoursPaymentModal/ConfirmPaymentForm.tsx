@@ -4,7 +4,7 @@ import { useSettings } from '@/features/Settings/useSettings';
 import { useCurrency } from '@/features/User/useCurrency';
 import { useLingui } from '@lingui/react';
 import { Stack, FormControlLabel, Checkbox, Typography, Button, Link } from '@mui/material';
-import { CreditCard } from 'lucide-react';
+import { ChevronRight, CreditCard, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
 
 export const ConfirmPaymentForm = ({
@@ -77,21 +77,7 @@ export const ConfirmPaymentForm = ({
           }
         />
       </Stack>
-      <Stack
-        sx={{
-          width: '100%',
-        }}
-      >
-        <Stack
-          sx={{
-            padding: '6px 0',
-          }}
-        >
-          <Typography variant="h5">
-            {i18n._(`Total:`)} <b>{currency.convertUsdToCurrency(amountInUsd)}</b>
-          </Typography>
-        </Stack>
-      </Stack>
+
       <Stack
         sx={{
           gap: '5px',
@@ -105,15 +91,36 @@ export const ConfirmPaymentForm = ({
           disabled={isRedirecting}
           size="large"
           type="submit"
-          endIcon={<CreditCard />}
+          endIcon={<ChevronRight />}
           name="submit"
           sx={{
             padding: '12px 60px',
-            fontSize: '16px',
+            fontSize: '18px',
+            fontWeight: 600,
+            textAlign: 'left',
+            marginTop: '20px',
+            '@media (max-width: 500px)': {
+              padding: '12px 30px',
+            },
           }}
         >
-          {i18n._(`Pay`)}
+          {i18n._(`Pay {amount}`, {
+            amount: currency.convertUsdToCurrency(amountInUsd),
+          })}
         </Button>
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '5px',
+            paddingTop: '2px',
+          }}
+        >
+          <ShieldCheck size={'16px'} />
+          <Typography variant="body2">
+            Secure checkout powered by <b>Stripe</b>
+          </Typography>
+        </Stack>
       </Stack>
       <Stack
         sx={{
