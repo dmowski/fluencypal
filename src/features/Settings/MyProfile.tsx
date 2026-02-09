@@ -71,6 +71,14 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
 
   const menuItems: MenuItem[] = [
     {
+      title: i18n._(`Full Access`),
+      subTitle: i18n._(`Manage your full access settings`),
+      icon: Wallet,
+      onClick: () => {
+        usage.togglePaymentModal(true);
+      },
+    },
+    {
       title: i18n._(`Language`),
       subTitle: i18n._(`Select your preferred language`),
       icon: Languages,
@@ -87,19 +95,12 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
     },
 
     {
-      title: i18n._(`Full Access`),
-      subTitle: i18n._(`Manage your full access settings`),
-      icon: Wallet,
-      onClick: () => {
-        usage.togglePaymentModal(true);
-      },
-    },
-    {
       title: i18n._(`AI knowledge about you`),
       subTitle: i18n._(`Review and edit what the AI remembers`),
       icon: Brain,
       onClick: () => setIsShowAiKnowledgeModal(true),
     },
+    /*
     {
       title: i18n._(`Feedback`),
       subTitle: i18n._(`Give us your feedback`),
@@ -107,7 +108,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       onClick: () => {
         setIsShowFeedbackModal(true);
       },
-    },
+    },*/
     {
       title: i18n._(`Help`),
       subTitle: i18n._(`Need help?`),
