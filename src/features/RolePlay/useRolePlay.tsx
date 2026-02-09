@@ -176,6 +176,7 @@ function useProvideRolePlay({
       gameWords: gameStat,
       analyzeResultAiInstruction: scenario.analyzeResultAiInstruction,
       conversationMode: conversationMode,
+      rolePlayId: scenario.id,
     });
   };
 

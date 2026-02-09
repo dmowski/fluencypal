@@ -19,6 +19,7 @@ export interface StartConversationProps {
   conversationMode: ConversationMode;
   ideas?: ConversationIdea;
   lessonPlan?: LessonPlan;
+  rolePlayId?: string;
 }
 
 export interface AiConversationContextType {

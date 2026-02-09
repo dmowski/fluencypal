@@ -43,6 +43,7 @@ export interface Conversation {
   languageCode: SupportedLanguage;
   mode: ConversationType;
   usage?: ConversationUsage;
+  rolePlayId: string | null;
 }
 
 export interface ConversationUsage {

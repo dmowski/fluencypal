@@ -393,7 +393,7 @@ ${voiceInstructions}
   const startConversation = async (input: StartConversationProps) => {
     if (!settings.languageCode) throw new Error('Language is not set | startConversation');
 
-    const newConversationId = messages.newConversation(input.mode);
+    const newConversationId = messages.newConversation(input.mode, input.rolePlayId || null);
     messages.resetMessageOrder();
 
     setLessonPlan(input.lessonPlan || null);

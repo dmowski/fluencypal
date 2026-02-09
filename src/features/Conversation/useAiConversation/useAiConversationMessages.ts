@@ -43,7 +43,7 @@ export const useAiConversationMessages = () => {
     };
   }, [conversationId, conversation, messageOrder]);
 
-  const newConversation = (mode: ConversationType) => {
+  const newConversation = (mode: ConversationType, rolePlayId: string | null) => {
     const newConversationId = `${Date.now()}`;
     setConversationId(newConversationId);
     isStartedAnalyticLogged.current = false;
@@ -52,6 +52,7 @@ export const useAiConversationMessages = () => {
       conversationId: newConversationId,
       languageCode: settings.languageCode || 'en',
       mode: mode,
+      rolePlayId,
     });
     return newConversationId;
   };

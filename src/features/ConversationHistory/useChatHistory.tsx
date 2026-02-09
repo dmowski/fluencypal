@@ -18,6 +18,7 @@ interface ChatHistoryContextType {
     conversationId: string;
     languageCode: SupportedLanguage;
     mode: ConversationType;
+    rolePlayId: string | null;
   }) => Promise<void>;
   saveConversation: (
     conversationId: string,
@@ -89,10 +90,12 @@ function useProvideChatHistory(): ChatHistoryContextType {
     conversationId,
     languageCode,
     mode,
+    rolePlayId,
   }: {
     conversationId: string;
     languageCode: SupportedLanguage;
     mode: ConversationType;
+    rolePlayId: string | null;
   }) => {
     const conversationDoc = getConversationDoc(conversationId);
     const conversationInfo: Conversation = {
@@ -106,6 +109,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
       createdAtIso: new Date().toISOString(),
       updatedAtIso: new Date().toISOString(),
       mode,
+      rolePlayId,
     };
 
     await setDoc(conversationDoc, conversationInfo);
