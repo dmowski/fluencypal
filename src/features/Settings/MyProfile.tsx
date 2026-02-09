@@ -208,9 +208,12 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
                   borderBottomRightRadius: isLast ? '8px' : '0px',
 
                   padding: '15px 20px',
-                  ':hover': {
-                    backgroundColor: 'rgba(250, 250, 250, 0.1)',
+                  '@media (max-width: 700px)': {
+                    ':hover': {
+                      backgroundColor: 'rgba(250, 0, 0, 0)',
+                    },
                   },
+
                   display: 'grid',
                   gap: '10px',
                   gridTemplateColumns: 'max-content 1fr max-content',
