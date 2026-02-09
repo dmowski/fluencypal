@@ -19,10 +19,6 @@ export const ActivePlanSelector = ({
         width: '100%',
       }}
     >
-      <Typography variant="h6" component="h3" sx={{ marginBottom: '10px' }}>
-        {i18n._('Choose your next access plan')}
-      </Typography>
-
       <Stack
         sx={{
           width: '100%',
