@@ -157,7 +157,8 @@ export const NavigationBar: React.FC = () => {
           borderBottom: 'none',
           marginBottom: '0px',
           position: 'fixed',
-          bottom: 0,
+          bottom: '-50px',
+          paddingBottom: '50px',
           left: 0,
         },
       }}
