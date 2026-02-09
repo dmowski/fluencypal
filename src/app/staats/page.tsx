@@ -2,7 +2,7 @@ import { supportedLanguages } from '@/features/Lang/lang';
 import { Metadata } from 'next';
 import { generateMetadataInfo } from '@/features/SEO/metadata';
 import { PracticeProvider } from '../practiceProvider';
-import { AdminStats } from '@/features/Analytics/AdminStats';
+import { AdminStats } from '@/features/Analytics/AdminStats/AdminStats';
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
