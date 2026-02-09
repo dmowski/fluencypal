@@ -6,8 +6,6 @@ import { useNotifications } from '@toolpad/core/useNotifications';
 import { useRef, useState } from 'react';
 import { useAuth } from '../../Auth/useAuth';
 import { createStripeCheckout } from '../createStripeCheckout';
-import { usePathname } from 'next/navigation';
-import { supportedLanguages } from '@/features/Lang/lang';
 import { useLingui } from '@lingui/react';
 import { useCurrency } from '../../User/useCurrency';
 import { sentPaymentTgMessage } from '../sentTgMessage';
@@ -33,16 +31,11 @@ export const SubscriptionPaymentModal = () => {
   const currency = useCurrency();
   const settings = useSettings();
   const appMode = settings.appMode;
-
   const notifications = useNotifications();
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
 
   const [isPaymentSuccess, setPaymentSuccess] = useUrlState('paymentSuccess', '', false);
-
-  const pathname = usePathname();
-  const locale = pathname?.split('/')[1] as string;
-  const supportedLang = supportedLanguages.find((l) => l === locale) || 'en';
-
+  const supportedLang = settings.pageLanguageCode || 'en';
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const scrollTop = () => {
@@ -50,30 +43,25 @@ export const SubscriptionPaymentModal = () => {
   };
 
   const [isRedirecting, setIsRedirecting] = useState(false);
-  const clickOnConfirmRequest = async () => {
-    clickOnConfirmRequestStripe();
-  };
 
   const openMainSubscriptionPage = () => {
     setIsShowConfirmPayments(false);
     scrollTop();
   };
 
-  const [duration, setDuration] = useState<'day' | 'week' | 'month' | 'year'>('week');
-
-  const prices = usePrices();
-  const durationPriceUsd = prices[duration].usdPrice;
+  const [subscriptionDuration, setSubscriptionDuration] = useState<SubscriptionDuration>('week');
+  const price = usePrices();
 
   const analytics = useAnalytics();
 
-  const clickOnConfirmRequestStripe = async () => {
+  const confirmSubscription = async (selectedDuration: SubscriptionDuration) => {
     const token = await auth.getToken();
 
     try {
       const dataToCheckout: StripeCreateCheckoutRequest = {
         userId: auth.uid,
-        months: duration === 'month' ? 1 : duration === 'year' ? 12 : 0,
-        days: duration === 'week' ? 7 : duration === 'day' ? 1 : 0,
+        months: selectedDuration === 'month' ? 1 : selectedDuration === 'year' ? 12 : 0,
+        days: selectedDuration === 'week' ? 7 : selectedDuration === 'day' ? 1 : 0,
         languageCode: supportedLang,
         currency: currency.currency,
       };
@@ -83,7 +71,7 @@ export const SubscriptionPaymentModal = () => {
       const checkoutInfo = await createStripeCheckout(dataToCheckout, token);
 
       await sentPaymentTgMessage({
-        message: `Event: Redirect to stripe | ${duration}, ${currency.currency}`,
+        message: `Event: Redirect to stripe | ${selectedDuration}, ${currency.currency}`,
         email: auth?.userInfo?.email || 'unknownEmail',
         token,
       });
@@ -149,7 +137,7 @@ export const SubscriptionPaymentModal = () => {
   };
 
   const onSelectDuration = async (selectedDuration: SubscriptionDuration) => {
-    setDuration(selectedDuration);
+    setSubscriptionDuration(selectedDuration);
     await sleep(100);
     showConfirmPage();
   };
@@ -182,9 +170,9 @@ export const SubscriptionPaymentModal = () => {
       >
         {isShowConfirmPayments ? (
           <ConfirmPayment
-            duration={duration}
-            durationPriceUsd={durationPriceUsd}
-            clickOnConfirmRequest={() => clickOnConfirmRequest()}
+            duration={subscriptionDuration}
+            durationPriceUsd={price.subscriptionPrices[subscriptionDuration].usdPrice}
+            clickOnConfirmRequest={() => confirmSubscription(subscriptionDuration)}
             isRedirecting={isRedirecting}
           />
         ) : (
