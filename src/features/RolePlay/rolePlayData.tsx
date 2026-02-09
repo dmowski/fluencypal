@@ -83,6 +83,7 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
         "Improve your vocabulary and speaking skills while having fun! Alias is a dynamic word-guessing game where you'll practice explaining and guessing words creatively, expanding your linguistic confidence.",
       ),
     },
+
     {
       id: 'small-talk-with-a-stranger',
       title: i18n._('Small Talk Practice'),
@@ -115,207 +116,6 @@ In this scenario, you’ll step into the role of someone meeting a new acquainta
       imageSrc: '/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c.webp',
       videoSrc: '/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c_1.mp4',
       voice: 'marin',
-    },
-    {
-      id: 'job-interview',
-      title: i18n._('Practice Job Interview'),
-      shortTitle: i18n._('Job Interview'),
-
-      landingHighlight: i18n._(
-        'Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.',
-      ),
-
-      contentPage:
-        i18n._(`Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.
-
-## Why You Should Play *Job Interview*  
-1. Master the art of professional communication, from introducing yourself to highlighting key skills.  
-2. Gain confidence navigating tricky interview questions and providing thoughtful, structured answers.  
-3. Learn how to present your achievements clearly, whether you have extensive experience or are just starting out.  
-4. Receive real-time feedback on tone, clarity, and overall presentation to refine your interview style.  
-5. Develop the poise and readiness you need for any real-life interview scenario.
-
-## How the Scenario Works  
-In this scenario, you’ll take on the role of a job candidate while our AI acts as a professional recruiter. You’ll be asked about your experience, skills, and motivations for the role, with the AI adjusting difficulty based on your responses. Use the prompts to practice delivering concise, persuasive answers that help you stand out in any job interview.
-`),
-      category: {
-        categoryTitle: i18n._('Professional'),
-        categoryId: 'professional',
-      },
-      analyzeResultAiInstruction: `Analyze the user's responses and provide constructive feedback on their interview performance. Highlight areas of strength and suggest improvements for future interviews.`,
-      input: [
-        {
-          id: 'cv',
-          labelForUser: i18n._(`Your experience`),
-          labelForAi: "User's CV text",
-          placeholder: i18n._(
-            `Paste your CV text here. You can also write a brief summary of your experience.`,
-          ),
-          type: 'textarea',
-          defaultValue: '',
-          lengthToTriggerSummary: 300,
-          aiSummarizingInstruction:
-            "Summarize the user's experience and skills. Return text no longer than 10 sentences.",
-          required: false,
-        },
-        {
-          id: 'job-title',
-          labelForUser: i18n._(`Desired Job Title`),
-          labelForAi: "User's desired Job Title",
-          placeholder: i18n._(
-            `Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc.`,
-          ),
-          type: 'text-input',
-          defaultValue: '',
-          required: true,
-        },
-        {
-          id: 'vacancy',
-          labelForUser: i18n._(`Vacancy description`),
-          labelForAi: 'Desired Job Vacancy Description',
-          placeholder: i18n._(
-            `Paste vacancy description if you have it. You can also write a brief summary of the job requirements.`,
-          ),
-          type: 'textarea',
-          defaultValue: '',
-
-          lengthToTriggerSummary: 10,
-          requiredFieldsToSummary: ['cv'],
-          aiSummarizingInstruction: `Summarize the vacancy description. Return vacancy description within 5 sentences.
-And create list of 10 questions to candidate based on vacancy and use candidate's CV to make questions more candidate oriented (mention info from CV if applicable).
-
-Response structure:
-Job Description: [Vacancy description]
-Questions to Candidate: [List of 10 questions]
-
-------
-
-Candidate's info below, don't include questions that are already answered by candidate in their CV.
-`,
-          required: false,
-        },
-      ],
-
-      subTitle: i18n._('Master answering common interview questions with AI'),
-      instructionToAi: `You are a professional recruiter conducting a job interview.
-Ask the user about their experience, skills, and why they want the job.
-Adjust difficulty based on responses.
-Leave feedback after each user message, as well as examples of best responses, taking into account the user's resume.
-Keep asking user different aspects of the job.
-`,
-      exampleOfFirstMessageFromAi:
-        "Hi, my name is Alloy. I'm a recruiter at XYZ. Thank you for coming in today. I’d love to learn more about your professional background and experiences. Could you start by telling me a bit about yourself?",
-      illustrationDescription:
-        "A professional recruiter sitting at a desk, reviewing a candidate's resume, while the candidate sits across, looking slightly nervous but engaged in conversation.",
-      imageSrc: '/role/07d20442-758f-42a9-81b2-3dc7bf4fe248.webp',
-      videoSrc: '/role/090f7de1-91bd-4210-a99c-4eb077c9efd7_1.mp4',
-      voice: 'marin',
-    },
-
-    /*{
-      id: "instant-correction",
-      category: { categoryTitle: i18n._("Speech"), categoryId: "speech" },
-      title: i18n._("Instant Speech Correction"),
-      subTitle: i18n._("Real-time feedback to improve your spoken English"),
-
-      instructionToAi: `You are a polite speech corrector.
-
-Choose a random topic from the provided list and politely ask the user to share their opinion or thoughts about it.
-
-After the user responds, provide clear, friendly feedback on their grammar and overall speech. Offer a corrected version of their response and politely ask them to repeat this corrected version.
-
-Do not spend too long on any single topic. Ask the user to repeat their corrected response a maximum of two times, then move to the next topic.
-
-Continue this process, moving smoothly from one topic to the next.`,
-      exampleOfFirstMessageFromAi: "Hello, I’m Ash, your polite speech corrector.",
-      illustrationDescription: "",
-      imageSrc: "/role/692781e2-a658-4a21-9dcb-5f10c7c35fe1.webp",
-      voice: "ash",
-
-      contentPage:
-        i18n._(`Improve your speaking skills with immediate, personalized feedback. Instant Speech Correction helps you express yourself clearly and confidently by correcting grammar, vocabulary, and pronunciation errors as you speak.
-
-## Why You Should Try *Instant Speech Correction*
-1. Receive real-time, friendly corrections that immediately improve your speech.
-2. Boost your confidence by practicing correct sentence structure and pronunciation.
-3. Quickly identify and correct common mistakes in grammar and vocabulary.
-4. Develop smoother and more fluent speaking abilities.
-5. Learn to speak naturally through repeated, corrected practice.
-
-## How the Scenario Works
-You'll be prompted to express your thoughts or opinions on various engaging topics. After your initial response, you'll get clear, polite feedback highlighting corrections in your grammar and pronunciation. You'll then practice by repeating the corrected response. Each topic moves quickly, keeping the experience dynamic and effective for rapid language improvement.
-`),
-      input: [
-        {
-          type: "options",
-          id: "languageLevel",
-
-          labelForAi: "Language level of user",
-          placeholder: "",
-          defaultValue: "Intermediate",
-          options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
-          lengthToTriggerSummary: 1,
-          injectUserInfoToSummary: true,
-          cacheAiSummary: false,
-          aiSummarizingInstruction: `Generate 20 topics to discuss based on user's language level and info about user.
-
-Return response in the following format:
-User Level: [User's language level]
-Topics to discuss: [List of topics to discuss]
-`,
-
-          labelForUser: i18n._(`Your Language Level`),
-          optionsAiDescriptions: {
-            Beginner: `Basic vocabulary and simple sentences. Use greetings and common phrases.
-
-Example of topics: weather, hobbies, family, work, travel, food, music, movies, sports, books, technology, fashion, health, education, environment, culture, politics, history, art, science, relationships, social media, current events, personal experiences, future plans, daily routines, childhood memories, favorite things, etc.
-`,
-            Intermediate: `Can hold conversations on familiar topics. Use idiomatic expressions and ask follow-up questions.
-
-Example of topics: weather, hobbies, family, work, travel, food, music, movies, sports, books, technology, fashion, health, education, environment, culture, politics, history, art, science, relationships, social media, current events, personal experiences, future plans, daily routines, childhood memories, favorite things, etc.`,
-            Advanced: `Comfortable with complex discussions. Use idiomatic expressions and ask open-ended questions.
-
-Example of topics: weather, hobbies, family, work, travel, food, music, movies, sports, books, technology, fashion, health, education, environment, culture, politics, history, art, science, relationships, social media, current events, personal experiences, future plans, daily routines, childhood memories, favorite things, etc.
-`,
-            Fluent: `Native or near-native proficiency. Use advanced vocabulary and ask for detailed opinions.
-
-Example of topics: weather, hobbies, family, work, travel, food, music, movies, sports, books, technology, fashion, health, education, environment, culture, politics, history, art, science, relationships, social media, current events, personal experiences, future plans, daily routines, childhood memories, favorite things, etc.`,
-          },
-          required: false,
-        },
-      ],
-    },*/
-
-    {
-      id: 'in-the-restaurant',
-      title: i18n._('In the Restaurant'),
-      shortTitle: i18n._('Restaurant'),
-      category: { categoryTitle: i18n._('Social'), categoryId: 'social' },
-      input: [],
-
-      subTitle: i18n._('Practice ordering food and interacting with a waiter in a restaurant'),
-      instructionToAi:
-        'You are a polite restaurant waiter. Ask the user for their order, offer recommendations, and respond to any requests.',
-      exampleOfFirstMessageFromAi:
-        'Hello, I’m Ash, your server for today. Welcome to our restaurant! Is there anything in particular you’re craving, or would you like me to suggest some popular dishes?',
-      illustrationDescription:
-        'A cozy restaurant setting with a waiter holding a notepad, attentively taking an order from a customer seated at a table with a menu in hand.',
-      imageSrc: '/role/acde68cd-1db6-4b69-be42-d2071b9ee1e8.webp',
-      voice: 'ash',
-
-      contentPage:
-        i18n._(`In this role-play, you’ll interact with a polite waiter, order food, and handle special requests—just like in a real restaurant. Perfect for practicing how to start conversations, ask about menu items, and address any dining-related concerns.  
-
-## Why You Should Play *In the Restaurant*  
-1. Hone your ordering skills and gain confidence speaking in a real-life dining situation.  
-2. Practice conversational etiquette, from small talk with the server to politely handling mistakes or special requests.  
-3. Learn key phrases and vocabulary related to dining, including menu items, dietary preferences, and payment options.  
-4. Enhance your listening abilities by responding to recommendations and clarifying any questions about your meal.  
-5. Build comfort in realistic interactions, making your next visit to a restaurant smoother and more enjoyable in any language.
-
-## How the Scenario Works  
-In this scenario, you’ll take on the role of a diner while the AI acts as your friendly waiter. You’ll be prompted to place an order, ask for recommendations, and respond to follow-up questions. As you converse, the AI adapts to your responses, creating an immersive experience that helps you practice practical dining interactions.
-`),
     },
 
     {
@@ -627,6 +427,207 @@ if you were a spreadsheet function, which one would you be — and why?`,
 
       imageSrc: '/interview/bg1.webp',
       voice: 'verse',
+    },
+    {
+      id: 'job-interview',
+      title: i18n._('Practice Job Interview'),
+      shortTitle: i18n._('Job Interview'),
+
+      landingHighlight: i18n._(
+        'Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.',
+      ),
+
+      contentPage:
+        i18n._(`Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.
+
+## Why You Should Play *Job Interview*  
+1. Master the art of professional communication, from introducing yourself to highlighting key skills.  
+2. Gain confidence navigating tricky interview questions and providing thoughtful, structured answers.  
+3. Learn how to present your achievements clearly, whether you have extensive experience or are just starting out.  
+4. Receive real-time feedback on tone, clarity, and overall presentation to refine your interview style.  
+5. Develop the poise and readiness you need for any real-life interview scenario.
+
+## How the Scenario Works  
+In this scenario, you’ll take on the role of a job candidate while our AI acts as a professional recruiter. You’ll be asked about your experience, skills, and motivations for the role, with the AI adjusting difficulty based on your responses. Use the prompts to practice delivering concise, persuasive answers that help you stand out in any job interview.
+`),
+      category: {
+        categoryTitle: i18n._('Professional'),
+        categoryId: 'professional',
+      },
+      analyzeResultAiInstruction: `Analyze the user's responses and provide constructive feedback on their interview performance. Highlight areas of strength and suggest improvements for future interviews.`,
+      input: [
+        {
+          id: 'cv',
+          labelForUser: i18n._(`Your experience`),
+          labelForAi: "User's CV text",
+          placeholder: i18n._(
+            `Paste your CV text here. You can also write a brief summary of your experience.`,
+          ),
+          type: 'textarea',
+          defaultValue: '',
+          lengthToTriggerSummary: 300,
+          aiSummarizingInstruction:
+            "Summarize the user's experience and skills. Return text no longer than 10 sentences.",
+          required: false,
+        },
+        {
+          id: 'job-title',
+          labelForUser: i18n._(`Desired Job Title`),
+          labelForAi: "User's desired Job Title",
+          placeholder: i18n._(
+            `Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc.`,
+          ),
+          type: 'text-input',
+          defaultValue: '',
+          required: true,
+        },
+        {
+          id: 'vacancy',
+          labelForUser: i18n._(`Vacancy description`),
+          labelForAi: 'Desired Job Vacancy Description',
+          placeholder: i18n._(
+            `Paste vacancy description if you have it. You can also write a brief summary of the job requirements.`,
+          ),
+          type: 'textarea',
+          defaultValue: '',
+
+          lengthToTriggerSummary: 10,
+          requiredFieldsToSummary: ['cv'],
+          aiSummarizingInstruction: `Summarize the vacancy description. Return vacancy description within 5 sentences.
+And create list of 10 questions to candidate based on vacancy and use candidate's CV to make questions more candidate oriented (mention info from CV if applicable).
+
+Response structure:
+Job Description: [Vacancy description]
+Questions to Candidate: [List of 10 questions]
+
+------
+
+Candidate's info below, don't include questions that are already answered by candidate in their CV.
+`,
+          required: false,
+        },
+      ],
+
+      subTitle: i18n._('Master answering common interview questions with AI'),
+      instructionToAi: `You are a professional recruiter conducting a job interview.
+Ask the user about their experience, skills, and why they want the job.
+Adjust difficulty based on responses.
+Leave feedback after each user message, as well as examples of best responses, taking into account the user's resume.
+Keep asking user different aspects of the job.
+`,
+      exampleOfFirstMessageFromAi:
+        "Hi, my name is Alloy. I'm a recruiter at XYZ. Thank you for coming in today. I’d love to learn more about your professional background and experiences. Could you start by telling me a bit about yourself?",
+      illustrationDescription:
+        "A professional recruiter sitting at a desk, reviewing a candidate's resume, while the candidate sits across, looking slightly nervous but engaged in conversation.",
+      imageSrc: '/role/07d20442-758f-42a9-81b2-3dc7bf4fe248.webp',
+      videoSrc: '/role/090f7de1-91bd-4210-a99c-4eb077c9efd7_1.mp4',
+      voice: 'marin',
+    },
+
+    /*{
+      id: "instant-correction",
+      category: { categoryTitle: i18n._("Speech"), categoryId: "speech" },
+      title: i18n._("Instant Speech Correction"),
+      subTitle: i18n._("Real-time feedback to improve your spoken English"),
+
+      instructionToAi: `You are a polite speech corrector.
+
+Choose a random topic from the provided list and politely ask the user to share their opinion or thoughts about it.
+
+After the user responds, provide clear, friendly feedback on their grammar and overall speech. Offer a corrected version of their response and politely ask them to repeat this corrected version.
+
+Do not spend too long on any single topic. Ask the user to repeat their corrected response a maximum of two times, then move to the next topic.
+
+Continue this process, moving smoothly from one topic to the next.`,
+      exampleOfFirstMessageFromAi: "Hello, I’m Ash, your polite speech corrector.",
+      illustrationDescription: "",
+      imageSrc: "/role/692781e2-a658-4a21-9dcb-5f10c7c35fe1.webp",
+      voice: "ash",
+
+      contentPage:
+        i18n._(`Improve your speaking skills with immediate, personalized feedback. Instant Speech Correction helps you express yourself clearly and confidently by correcting grammar, vocabulary, and pronunciation errors as you speak.
+
+## Why You Should Try *Instant Speech Correction*
+1. Receive real-time, friendly corrections that immediately improve your speech.
+2. Boost your confidence by practicing correct sentence structure and pronunciation.
+3. Quickly identify and correct common mistakes in grammar and vocabulary.
+4. Develop smoother and more fluent speaking abilities.
+5. Learn to speak naturally through repeated, corrected practice.
+
+## How the Scenario Works
+You'll be prompted to express your thoughts or opinions on various engaging topics. After your initial response, you'll get clear, polite feedback highlighting corrections in your grammar and pronunciation. You'll then practice by repeating the corrected response. Each topic moves quickly, keeping the experience dynamic and effective for rapid language improvement.
+`),
+      input: [
+        {
+          type: "options",
+          id: "languageLevel",
+
+          labelForAi: "Language level of user",
+          placeholder: "",
+          defaultValue: "Intermediate",
+          options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
+          lengthToTriggerSummary: 1,
+          injectUserInfoToSummary: true,
+          cacheAiSummary: false,
+          aiSummarizingInstruction: `Generate 20 topics to discuss based on user's language level and info about user.
+
+Return response in the following format:
+User Level: [User's language level]
+Topics to discuss: [List of topics to discuss]
+`,
+
+          labelForUser: i18n._(`Your Language Level`),
+          optionsAiDescriptions: {
+            Beginner: `Basic vocabulary and simple sentences. Use greetings and common phrases.
+
+Example of topics: weather, hobbies, family, work, travel, food, music, movies, sports, books, technology, fashion, health, education, environment, culture, politics, history, art, science, relationships, social media, current events, personal experiences, future plans, daily routines, childhood memories, favorite things, etc.
+`,
+            Intermediate: `Can hold conversations on familiar topics. Use idiomatic expressions and ask follow-up questions.
+
+Example of topics: weather, hobbies, family, work, travel, food, music, movies, sports, books, technology, fashion, health, education, environment, culture, politics, history, art, science, relationships, social media, current events, personal experiences, future plans, daily routines, childhood memories, favorite things, etc.`,
+            Advanced: `Comfortable with complex discussions. Use idiomatic expressions and ask open-ended questions.
+
+Example of topics: weather, hobbies, family, work, travel, food, music, movies, sports, books, technology, fashion, health, education, environment, culture, politics, history, art, science, relationships, social media, current events, personal experiences, future plans, daily routines, childhood memories, favorite things, etc.
+`,
+            Fluent: `Native or near-native proficiency. Use advanced vocabulary and ask for detailed opinions.
+
+Example of topics: weather, hobbies, family, work, travel, food, music, movies, sports, books, technology, fashion, health, education, environment, culture, politics, history, art, science, relationships, social media, current events, personal experiences, future plans, daily routines, childhood memories, favorite things, etc.`,
+          },
+          required: false,
+        },
+      ],
+    },*/
+
+    {
+      id: 'in-the-restaurant',
+      title: i18n._('In the Restaurant'),
+      shortTitle: i18n._('Restaurant'),
+      category: { categoryTitle: i18n._('Social'), categoryId: 'social' },
+      input: [],
+
+      subTitle: i18n._('Practice ordering food and interacting with a waiter in a restaurant'),
+      instructionToAi:
+        'You are a polite restaurant waiter. Ask the user for their order, offer recommendations, and respond to any requests.',
+      exampleOfFirstMessageFromAi:
+        'Hello, I’m Ash, your server for today. Welcome to our restaurant! Is there anything in particular you’re craving, or would you like me to suggest some popular dishes?',
+      illustrationDescription:
+        'A cozy restaurant setting with a waiter holding a notepad, attentively taking an order from a customer seated at a table with a menu in hand.',
+      imageSrc: '/role/acde68cd-1db6-4b69-be42-d2071b9ee1e8.webp',
+      voice: 'ash',
+
+      contentPage:
+        i18n._(`In this role-play, you’ll interact with a polite waiter, order food, and handle special requests—just like in a real restaurant. Perfect for practicing how to start conversations, ask about menu items, and address any dining-related concerns.  
+
+## Why You Should Play *In the Restaurant*  
+1. Hone your ordering skills and gain confidence speaking in a real-life dining situation.  
+2. Practice conversational etiquette, from small talk with the server to politely handling mistakes or special requests.  
+3. Learn key phrases and vocabulary related to dining, including menu items, dietary preferences, and payment options.  
+4. Enhance your listening abilities by responding to recommendations and clarifying any questions about your meal.  
+5. Build comfort in realistic interactions, making your next visit to a restaurant smoother and more enjoyable in any language.
+
+## How the Scenario Works  
+In this scenario, you’ll take on the role of a diner while the AI acts as your friendly waiter. You’ll be prompted to place an order, ask for recommendations, and respond to follow-up questions. As you converse, the AI adapts to your responses, creating an immersive experience that helps you practice practical dining interactions.
+`),
     },
 
     {
