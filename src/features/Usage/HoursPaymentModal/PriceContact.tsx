@@ -22,7 +22,7 @@ export const PriceContact = () => {
         alignItems: 'flex-start',
       }}
     >
-      <Typography variant="h6" component="h3" sx={{ marginBottom: '0px' }}>
+      <Typography variant="h4" component="h3" sx={{ marginBottom: '0px', fontWeight: 800 }}>
         {i18n._('Not sure yet?')}
       </Typography>
       <Button
