@@ -35,8 +35,9 @@ export const ConfirmPayment = ({
         <Typography
           sx={{
             width: '100%',
+            fontWeight: 800,
           }}
-          variant="h5"
+          variant="h3"
           component="h2"
         >
           {i18n._(`Confirm payment`)}
@@ -45,7 +46,6 @@ export const ConfirmPayment = ({
         <Typography
           sx={{
             width: '100%',
-            opacity: 0.7,
           }}
         >
           {duration === 'month'
@@ -63,7 +63,7 @@ export const ConfirmPayment = ({
         onConfirmRequest={() => clickOnConfirmRequest()}
         isRedirecting={isRedirecting}
       />
-      <FounderMessage />
+      {/* <FounderMessage /> */}
     </Stack>
   );
 };

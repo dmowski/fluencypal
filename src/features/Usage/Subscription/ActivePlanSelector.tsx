@@ -37,7 +37,7 @@ export const ActivePlanSelector = ({
         <SubscriptionCard
           title={i18n._('1 day')}
           onPay={() => onSelectDuration('day')}
-          priceInUsd={prices.day.usdPrice}
+          priceInUsd={prices.subscriptionPrices.day.usdPrice}
           duration={'day'}
           footnote={i18n._('Best for trying out the full access')}
           isSuggested
@@ -46,7 +46,7 @@ export const ActivePlanSelector = ({
         <SubscriptionCard
           title={i18n._('1 week')}
           onPay={() => onSelectDuration('week')}
-          priceInUsd={prices.week.usdPrice}
+          priceInUsd={prices.subscriptionPrices.week.usdPrice}
           duration={'week'}
           footnote={i18n._('When you need full access for a short period of time')}
         />
@@ -54,7 +54,7 @@ export const ActivePlanSelector = ({
         <SubscriptionCard
           title={i18n._('1 month')}
           onPay={() => onSelectDuration('month')}
-          priceInUsd={prices.month.usdPrice}
+          priceInUsd={prices.subscriptionPrices.month.usdPrice}
           duration={'month'}
           footnote={i18n._('Best for long-term access')}
         />
@@ -62,7 +62,7 @@ export const ActivePlanSelector = ({
         <SubscriptionCard
           title={i18n._('1 year')}
           onPay={() => onSelectDuration('year')}
-          priceInUsd={prices.year.usdPrice}
+          priceInUsd={prices.subscriptionPrices.year.usdPrice}
           duration={'year'}
           footnote={i18n._('Best for long-term access')}
         />
