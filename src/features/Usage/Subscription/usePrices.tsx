@@ -30,5 +30,5 @@ export const usePrices = () => {
     },
   };
 
-  return prices;
+  return { subscriptionPrices: prices };
 };
