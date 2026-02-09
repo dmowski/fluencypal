@@ -46,13 +46,13 @@ export const HourCard = ({
       <Stack
         sx={{
           alignItems: 'center',
-          gap: '10px',
+          gap: '0px',
           padding: '40px 10px 30px 10px',
           justifyContent: 'center',
         }}
       >
         <Typography
-          variant="h5"
+          variant="h4"
           sx={{
             fontWeight: 600,
           }}
@@ -64,7 +64,7 @@ export const HourCard = ({
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '10px 20px',
+            padding: '40px 20px 10px 20px',
             width: '100%',
           }}
         >
@@ -85,6 +85,7 @@ export const HourCard = ({
         <Typography
           sx={{
             //width: '100%',
+            opacity: 0.8,
             color: '#ffffff',
             textAlign: 'center',
             fontSize: '14px',
