@@ -51,7 +51,7 @@ export const RolePlayCardApp = ({ scenario, onClick }: RolePlayCardProps) => {
           right: '0',
           borderRadius: '0',
           bottom: '0',
-          boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.5)',
+          boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.3)',
           transition: 'all 0.3s ease',
           zIndex: 1,
           '@media (max-width: 600px)': {
@@ -125,9 +125,10 @@ export const RolePlayCardApp = ({ scenario, onClick }: RolePlayCardProps) => {
         <Stack
           className="role-play-button"
           sx={{
-            padding: '10px 34px',
+            padding: '7px 24px',
             borderRadius: '10px',
             backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
             transition: 'all 0.3s ease',
             width: 'fit-content',
           }}
@@ -139,9 +140,9 @@ export const RolePlayCardApp = ({ scenario, onClick }: RolePlayCardProps) => {
         sx={{
           backgroundImage: `url(${scenario.imageSrc})`,
           width: '100%',
-          filter: 'blur(70px) brightness(0.5) contrast(0.9)',
+          filter: 'blur(40px) brightness(0.5) contrast(0.9)',
           transform: 'scale(1.2) ',
-          opacity: 0.7,
+          opacity: 0.8,
           height: '100%',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
