@@ -1,5 +1,5 @@
 import { Stack, Tooltip, Typography } from '@mui/material';
-import { Bot, User } from 'lucide-react';
+import { Bot, MessageSquareCodeIcon, MessagesSquare, User } from 'lucide-react';
 import dayjs from 'dayjs';
 import { Conversation } from '@/common/conversation';
 import { getConversationsStats } from './getConversationsStats';
@@ -30,20 +30,24 @@ export function ConversationItem({ conversation, onClick }: ConversationItemProp
         cursor: 'pointer',
         borderRadius: '8px',
         display: 'grid',
-        gridTemplateColumns: '140px 130px 220px 1fr 1fr',
+        gridTemplateColumns: '80px 250px 220px 1fr 1fr',
         gap: '10px',
         ':hover': { backgroundColor: 'rgba(229, 229, 229, 0.35)' },
       }}
       onClick={onClick}
     >
-      <Typography sx={{}}>
-        <b>{conversation.messagesCount} messages</b>
-      </Typography>
+      <Stack
+        sx={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: '10px',
+        }}
+      >
+        <MessagesSquare size={'18px'} />
+        <Typography sx={{}}>{conversation.messagesCount}</Typography>
+      </Stack>
 
-      <Typography sx={{}}>
-        {conversation.mode}
-        {rolePlayId}
-      </Typography>
+      <Typography sx={{}}>{rolePlayId ? rolePlayId : conversation.mode}</Typography>
 
       <Typography sx={{}}>
         {dayjs(conversation.updatedAtIso).format('DD MMM')} |{' '}

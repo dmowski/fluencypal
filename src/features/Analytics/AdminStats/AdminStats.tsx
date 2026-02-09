@@ -25,7 +25,7 @@ export function AdminStats() {
   const data = useMemo(() => {
     if (!sourceData) return null;
     const cleanUsers = sourceData?.users.filter((user) => {
-      const isDev = user.userData.email?.includes('dmowski');
+      const isDev = false; // user.userData.email?.includes('dmowski');
       const isHasConversations = (user.conversationMeta.conversationCount || 0) > 0;
       return !isDev && isHasConversations;
     });
