@@ -5,3 +5,5 @@ export interface PriceInfo {
   localPrice: string;
   currency: string;
 }
+
+export type HoursPackage = 1 | 3 | 5;
