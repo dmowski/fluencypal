@@ -5,13 +5,13 @@ import { FounderMessage } from '../HoursPaymentModal/FounderMessage';
 import { SubscriptionDuration } from './types';
 
 export const ConfirmPayment = ({
-  duration,
-  durationPriceUsd,
+  subTitle,
+  amountInUsd,
   clickOnConfirmRequest,
   isRedirecting,
 }: {
-  duration: SubscriptionDuration;
-  durationPriceUsd: number;
+  subTitle: string;
+  amountInUsd: number;
   clickOnConfirmRequest: () => void;
   isRedirecting: boolean;
 }) => {
@@ -48,18 +48,12 @@ export const ConfirmPayment = ({
             width: '100%',
           }}
         >
-          {duration === 'month'
-            ? i18n._(`Full Access for 1 month`)
-            : duration === 'week'
-              ? i18n._(`Full Access for 1 week`)
-              : duration === 'year'
-                ? i18n._(`Full Access for 1 year`)
-                : i18n._(`Full Access for 1 day`)}
+          {subTitle}
         </Typography>
       </Stack>
 
       <ConfirmPaymentForm
-        amountInUsd={durationPriceUsd}
+        amountInUsd={amountInUsd}
         onConfirmRequest={() => clickOnConfirmRequest()}
         isRedirecting={isRedirecting}
       />

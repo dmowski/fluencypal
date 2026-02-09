@@ -1,5 +1,5 @@
 'use client';
-import { Stack, Typography } from '@mui/material';
+import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { useUsage } from '../useUsage';
 import { useNotifications } from '@toolpad/core/useNotifications';
@@ -19,10 +19,13 @@ import { PaymentSuccess } from '../HoursPaymentModal/PaymentSuccess';
 import { FaqSubscription } from './FaqSubscription';
 import { PriceContact } from '../HoursPaymentModal/PriceContact';
 import { ConfirmPayment } from './ConfirmPayment';
-import { SubscriptionDuration } from './types';
+import { HoursPackage, SubscriptionDuration } from './types';
 import { BalanceStatus } from './BalanceStatus';
 import { usePrices } from './usePrices';
 import { ActivePlanSelector } from './ActivePlanSelector';
+import { HoursSelector } from '../HoursPaymentModal/HourseSelector';
+import { pricePerHourUsd } from '@/common/ai';
+import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
@@ -37,12 +40,14 @@ export const SubscriptionPaymentModal = () => {
   const [isPaymentSuccess, setPaymentSuccess] = useUrlState('paymentSuccess', '', false);
   const supportedLang = settings.pageLanguageCode || 'en';
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [amountHoursToAdd, setAmountHoursToAdd] = useState<0 | HoursPackage>(0);
 
   const scrollTop = () => {
     containerRef.current?.parentElement?.parentElement?.parentElement?.scrollTo(0, 0);
   };
 
   const [isRedirecting, setIsRedirecting] = useState(false);
+  const [usageType, setUsageType] = useState<'subscription' | 'hours' | 'free'>('subscription');
 
   const openMainSubscriptionPage = () => {
     setIsShowConfirmPayments(false);
@@ -54,24 +59,61 @@ export const SubscriptionPaymentModal = () => {
 
   const analytics = useAnalytics();
 
-  const confirmSubscription = async (selectedDuration: SubscriptionDuration) => {
+  const onSelectHourPackage = async (hours: HoursPackage) => {
+    setAmountHoursToAdd(hours);
+    await sleep(50);
+    setIsShowConfirmPayments(true);
+  };
+
+  type confirmSubscriptionParams =
+    | {
+        selectedSubscriptionDuration: SubscriptionDuration;
+      }
+    | {
+        amountHoursToAdd: HoursPackage;
+      };
+
+  const confirmSubscription = async (props: confirmSubscriptionParams) => {
     const token = await auth.getToken();
 
     try {
-      const dataToCheckout: StripeCreateCheckoutRequest = {
-        userId: auth.uid,
-        months: selectedDuration === 'month' ? 1 : selectedDuration === 'year' ? 12 : 0,
-        days: selectedDuration === 'week' ? 7 : selectedDuration === 'day' ? 1 : 0,
-        languageCode: supportedLang,
-        currency: currency.currency,
-      };
+      const dataToCheckout: StripeCreateCheckoutRequest =
+        'selectedSubscriptionDuration' in props
+          ? {
+              userId: auth.uid,
+              months:
+                props.selectedSubscriptionDuration === 'month'
+                  ? 1
+                  : props.selectedSubscriptionDuration === 'year'
+                    ? 12
+                    : 0,
+              days:
+                props.selectedSubscriptionDuration === 'week'
+                  ? 7
+                  : props.selectedSubscriptionDuration === 'day'
+                    ? 1
+                    : 0,
+              languageCode: supportedLang,
+              currency: currency.currency,
+            }
+          : {
+              userId: auth.uid,
+              amountOfHours: props.amountHoursToAdd,
+              languageCode: settings.pageLanguageCode,
+              currency: currency.currency,
+            };
 
       setIsRedirecting(true);
 
       const checkoutInfo = await createStripeCheckout(dataToCheckout, token);
 
+      const tgInfo =
+        'selectedSubscriptionDuration' in props
+          ? props.selectedSubscriptionDuration
+          : `${props.amountHoursToAdd} hours`;
+
       await sentPaymentTgMessage({
-        message: `Event: Redirect to stripe | ${selectedDuration}, ${currency.currency}`,
+        message: `Event: Redirect to stripe | ${tgInfo}, ${currency.currency}`,
         email: auth?.userInfo?.email || 'unknownEmail',
         token,
       });
@@ -138,8 +180,37 @@ export const SubscriptionPaymentModal = () => {
 
   const onSelectDuration = async (selectedDuration: SubscriptionDuration) => {
     setSubscriptionDuration(selectedDuration);
+    setAmountHoursToAdd(0);
     await sleep(100);
     showConfirmPage();
+  };
+
+  const confirmAmountUsd = amountHoursToAdd
+    ? amountHoursToAdd * pricePerHourUsd
+    : price.subscriptionPrices[subscriptionDuration].usdPrice;
+
+  const hoursLabels: Record<HoursPackage, string> = {
+    1: i18n._('Buy 1 AI hour'),
+    3: i18n._('Buy 3 AI hours'),
+    5: i18n._('Buy 5 AI hours'),
+  };
+
+  const confirmationSubTitle = amountHoursToAdd
+    ? hoursLabels[amountHoursToAdd]
+    : subscriptionDuration === 'month'
+      ? i18n._(`Full Access for 1 month`)
+      : subscriptionDuration === 'week'
+        ? i18n._(`Full Access for 1 week`)
+        : subscriptionDuration === 'year'
+          ? i18n._(`Full Access for 1 year`)
+          : i18n._(`Full Access for 1 day`);
+
+  const onConfirm = () => {
+    if (amountHoursToAdd) {
+      confirmSubscription({ amountHoursToAdd });
+    } else {
+      confirmSubscription({ selectedSubscriptionDuration: subscriptionDuration });
+    }
   };
 
   if (isPaymentSuccess) {
@@ -170,9 +241,9 @@ export const SubscriptionPaymentModal = () => {
       >
         {isShowConfirmPayments ? (
           <ConfirmPayment
-            duration={subscriptionDuration}
-            durationPriceUsd={price.subscriptionPrices[subscriptionDuration].usdPrice}
-            clickOnConfirmRequest={() => confirmSubscription(subscriptionDuration)}
+            amountInUsd={confirmAmountUsd}
+            subTitle={confirmationSubTitle}
+            clickOnConfirmRequest={onConfirm}
             isRedirecting={isRedirecting}
           />
         ) : (
@@ -184,22 +255,127 @@ export const SubscriptionPaymentModal = () => {
             }}
           >
             <BalanceStatus />
-            <ActivePlanSelector onSelectDuration={onSelectDuration} />
-
-            <Stack gap="40px">
+            <Stack
+              sx={{
+                gap: '20px',
+              }}
+            >
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: 800,
+                }}
+              >
+                {i18n._('How to get Full Access?')}
+              </Typography>
               <Stack
                 sx={{
                   width: '100%',
                 }}
               >
-                <Typography variant="h6" component="h3" sx={{ marginBottom: '10px' }}>
+                <ButtonGroup>
+                  <Button
+                    onClick={() => setUsageType('subscription')}
+                    variant={usageType === 'subscription' ? 'contained' : 'outlined'}
+                  >
+                    {i18n._('Non-renewing subscription')}
+                  </Button>
+                  <Button
+                    onClick={() => setUsageType('hours')}
+                    variant={usageType === 'hours' ? 'contained' : 'outlined'}
+                  >
+                    {i18n._('AI tokens')}
+                  </Button>
+                </ButtonGroup>
+              </Stack>
+              {usageType === 'subscription' ? (
+                <Stack
+                  sx={{
+                    gap: '10px',
+                  }}
+                >
+                  <Typography>
+                    {i18n._(
+                      `Choose a plan that fits you and get full access for a week, a month, or a year.
+Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term commitment.`,
+                    )}
+                  </Typography>
+                  <ActivePlanSelector onSelectDuration={onSelectDuration} />
+                </Stack>
+              ) : usageType === 'hours' ? (
+                <Stack
+                  sx={{
+                    gap: '25px',
+                  }}
+                >
+                  <HoursSelector onSelectHourPackage={onSelectHourPackage} />
+
+                  <Stack>
+                    <ColorIconTextList
+                      gap="12px"
+                      iconSize="18px"
+                      listItems={[
+                        {
+                          title: i18n._(`Buy AI tokens and use them whenever you want.`),
+                          iconName: 'star',
+                        },
+                        {
+                          title: i18n._(`1 AI hour ≈ 1 hour of active conversation with the AI.`),
+                          iconName: 'hourglass',
+                        },
+                        {
+                          title: i18n._(
+                            `You get full access, just like a subscription — but with complete flexibility.`,
+                          ),
+                          iconName: 'biceps-flexed',
+                        },
+                        {
+                          title: i18n._(
+                            `Use it on weekends, for a short project, or whenever it fits you.`,
+                          ),
+                          iconName: 'sprout',
+                        },
+                        {
+                          title: i18n._(`Tokens don’t expire, so you can save them for later.`),
+                          iconName: 'landmark',
+                        },
+                      ]}
+                    />
+                  </Stack>
+                </Stack>
+              ) : (
+                <Stack
+                  sx={{
+                    width: '100%',
+                  }}
+                >
+                  <Typography>
+                    {i18n._(
+                      'Participate in Community activities like sharing posts in the Community Feed, discuss daily questions and play in the game. Top-5 most active users in the Community gets a Full Access until they in top-5',
+                    )}
+                  </Typography>
+                </Stack>
+              )}
+            </Stack>
+
+            <Stack gap="80px">
+              <Stack
+                sx={{
+                  width: '100%',
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  component="h3"
+                  sx={{ marginBottom: '10px', fontWeight: 800 }}
+                >
                   {i18n._('What do you get with Full Access?')}
                 </Typography>
                 <FeatureList appMode={appMode} />
               </Stack>
               <Stack
                 sx={{
-                  gap: '60px',
+                  gap: '100px',
                 }}
               >
                 <FaqSubscription />
