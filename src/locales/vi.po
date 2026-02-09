@@ -293,17 +293,22 @@ msgstr ""
 msgid "/ month"
 msgstr "/ tháng"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:38
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:30
+#. js-lingui-explicit-id
+msgid "1 AI hour"
+msgstr "1 giờ AI"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:323
+#. js-lingui-explicit-id
+msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
+msgstr "1 giờ AI ≈ 1 giờ trò chuyện tích cực với AI."
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:34
 #. js-lingui-explicit-id
 msgid "1 day"
 msgstr "1 ngày"
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:47
-#. js-lingui-explicit-id
-msgid "1 hour"
-msgstr "1 giờ"
-
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:55
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:51
 #. js-lingui-explicit-id
 msgid "1 month"
 msgstr "1 tháng"
@@ -313,12 +318,12 @@ msgstr "1 tháng"
 msgid "1 round"
 msgstr "1 vòng"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:47
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:43
 #. js-lingui-explicit-id
 msgid "1 week"
 msgstr "1 tuần"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:63
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:59
 #. js-lingui-explicit-id
 msgid "1 year"
 msgstr "1 năm"
@@ -345,10 +350,10 @@ msgstr "16 ngôn ngữ để luyện tập"
 msgid "2. Complete the trial period"
 msgstr "2. Hoàn thành thời gian dùng thử"
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:57
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:38
 #. js-lingui-explicit-id
-msgid "3 hours"
-msgstr "3 giờ"
+msgid "3 AI hours"
+msgstr "3 giờ AI"
 
 #: src/features/PayWall/CardValidatorWall.tsx:137
 #. js-lingui-explicit-id
@@ -366,17 +371,17 @@ msgstr "4 người tham gia"
 msgid "4. Play the game and become one of the top 5 players"
 msgstr "4. Chơi trò chơi và trở thành một trong 5 người chơi hàng đầu"
 
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:45
+#. js-lingui-explicit-id
+msgid "5 AI hours"
+msgstr "5 giờ AI"
+
 #: src/features/Blog/blogData.tsx:370
 #. js-lingui-explicit-id
 msgid "5 Common English Job Interview Mistakes (and How to Fix Them)"
 msgstr ""
 "5 Lỗi phổ biến trong phỏng vấn xin việc bằng tiếng Anh (và cách khắc phục "
 "chúng)"
-
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:64
-#. js-lingui-explicit-id
-msgid "5 hours"
-msgstr "5 giờ"
 
 #: src/features/PayWall/CardValidatorWall.tsx:145
 #. js-lingui-explicit-id
@@ -391,11 +396,6 @@ msgid ""
 msgstr ""
 "6 Cách Mà Những Người Làm Việc Bận Rộn Có Thể Cải Thiện Sự Lưu Loát Tiếng "
 "Anh Của Mình Cho Cuộc Phỏng Vấn Việc Làm"
-
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:60
-#. js-lingui-explicit-id
-msgid "A bit more time to explore the app and create a habit."
-msgstr "Thêm một chút thời gian để khám phá ứng dụng và tạo thói quen."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
 #. js-lingui-explicit-id
@@ -744,6 +744,11 @@ msgstr "Đối tác hội thoại AI"
 #. js-lingui-explicit-id
 msgid "AI Speaking Practice"
 msgstr "Luyện Nói Cùng AI"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:287
+#. js-lingui-explicit-id
+msgid "AI tokens"
+msgstr "Mã thông báo AI"
 
 #: src/features/SEO/metadata.ts:158
 #. js-lingui-explicit-id
@@ -1229,8 +1234,8 @@ msgstr "Lợi ích của việc chơi Trò chơi Alias"
 msgid "Benefits of Role Play"
 msgstr "Lợi ích của Việc Đóng Vai"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:59
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:67
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:55
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:63
 #. js-lingui-explicit-id
 msgid "Best for long-term access"
 msgstr "Tốt nhất cho việc truy cập dài hạn"
@@ -1240,7 +1245,7 @@ msgstr "Tốt nhất cho việc truy cập dài hạn"
 msgid "Best for most job seekers"
 msgstr "Phù hợp nhất cho hầu hết người tìm việc"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:42
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:38
 #. js-lingui-explicit-id
 msgid "Best for trying out the full access"
 msgstr "Tốt nhất để dùng thử quyền truy cập đầy đủ"
@@ -1343,10 +1348,30 @@ msgstr "Chuẩn bị phỏng vấn tiếng Anh thương mại"
 msgid "busy professionals"
 msgstr "người làm việc bận rộn"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:193
+#. js-lingui-explicit-id
+msgid "Buy 1 AI hour"
+msgstr "Mua 1 giờ AI"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:194
+#. js-lingui-explicit-id
+msgid "Buy 3 AI hours"
+msgstr "Mua 3 giờ AI"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:195
+#. js-lingui-explicit-id
+msgid "Buy 5 AI hours"
+msgstr "Mua 5 giờ AI"
+
 #: src/features/Usage/PayWall.tsx:104
 #. js-lingui-explicit-id
 msgid "Buy a subscription"
 msgstr "Mua gói đăng ký"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:319
+#. js-lingui-explicit-id
+msgid "Buy AI tokens and use them whenever you want."
+msgstr "Mua token AI và sử dụng chúng bất cứ khi nào bạn muốn."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:688
 #. js-lingui-explicit-id
@@ -1437,13 +1462,13 @@ msgid "Can I customize my practice sessions?"
 msgstr "Tôi có thể tùy chỉnh các buổi luyện tập của mình không?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:52
-#: src/features/Usage/Subscription/FaqSubscription.tsx:43
+#: src/features/Usage/Subscription/FaqSubscription.tsx:44
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "Tôi có thể hoàn tiền sau khi mua không?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
-#: src/features/Usage/Subscription/FaqSubscription.tsx:15
+#: src/features/Usage/Subscription/FaqSubscription.tsx:16
 #. js-lingui-explicit-id
 msgid "Can I get full access for free?"
 msgstr "Tôi có thể nhận quyền truy cập đầy đủ miễn phí không?"
@@ -1627,6 +1652,19 @@ msgstr "Kiểm tra-In"
 msgid "Chinese Learning Plan"
 msgstr "Kế Hoạch Học Tiếng Trung"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:298
+#. js-lingui-explicit-id
+msgid ""
+"Choose a plan that fits you and get full access for a week, a month, or a "
+"year.\n"
+"Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term "
+"commitment."
+msgstr ""
+"Chọn một gói phù hợp với bạn và nhận quyền truy cập đầy đủ trong một tuần, "
+"một tháng hoặc một năm.\n"
+"Các gói đăng ký không tự động gia hạn, vì vậy bạn có thể thử dùng "
+"FluencyPal mà không cần cam kết dài hạn."
+
 #: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
@@ -1671,11 +1709,6 @@ msgstr "Chọn gói chuẩn bị phỏng vấn của bạn"
 #. js-lingui-explicit-id
 msgid "Choose Your Language Level"
 msgstr "Chọn Trình độ Ngôn ngữ của Bạn"
-
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:23
-#. js-lingui-explicit-id
-msgid "Choose your next access plan"
-msgstr "Chọn gói truy cập tiếp theo của bạn"
 
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
@@ -1981,16 +2014,16 @@ msgstr "Kiểm Tra Hợp Đồng"
 msgid "Conversation"
 msgstr "Cuộc trò chuyện"
 
+#: src/features/Landing/LandingPage.tsx:254
+#. js-lingui-explicit-id
+msgid "Conversation Practice"
+msgstr "Thực hành Hội thoại"
+
 #: src/features/Landing/Price/FeatureList.tsx:40
 #: src/features/Landing/Price/PricePage.tsx:351
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Thực hành hội thoại"
-
-#: src/features/Landing/LandingPage.tsx:254
-#. js-lingui-explicit-id
-msgid "Conversation Practice"
-msgstr "Thực hành Hội thoại"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:242
 #. js-lingui-explicit-id
@@ -3110,7 +3143,7 @@ msgstr "Lỗi phân tích cuộc trò chuyện"
 msgid "Error creating payment session"
 msgstr "Lỗi khi tạo phiên thanh toán"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:83
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:125
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:197
 #. js-lingui-explicit-id
 msgid ""
@@ -3135,7 +3168,7 @@ msgstr "Lỗi khi tạo kế hoạch. Vui lòng thử lại."
 msgid "Error during analyzing message"
 msgstr "Lỗi trong quá trình phân tích tin nhắn"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:111
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:153
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:143
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:226
 #. js-lingui-explicit-id
@@ -3879,6 +3912,11 @@ msgstr ""
 "cận micro-frontend. Điều này cho thấy bạn suy nghĩ như một kiến trúc sư, "
 "không chỉ là một người thực hiện."
 
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:48
+#. js-lingui-explicit-id
+msgid "For active speaking"
+msgstr "Để nói chủ động"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
 #. js-lingui-explicit-id
 msgid "For example:"
@@ -4049,20 +4087,20 @@ msgstr ""
 "\n"
 "Truy cập đầy đủ - Sắp hết hạn\n"
 
-#: src/features/Usage/Subscription/ConfirmPayment.tsx:57
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:206
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:422
 #. js-lingui-explicit-id
 msgid "Full Access for 1 day"
 msgstr "Truy cập đầy đủ trong 1 ngày"
 
-#: src/features/Usage/Subscription/ConfirmPayment.tsx:52
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:201
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:332
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:417
 #. js-lingui-explicit-id
 msgid "Full Access for 1 month"
 msgstr "Truy cập đầy đủ trong 1 tháng"
 
-#: src/features/Usage/Subscription/ConfirmPayment.tsx:54
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:203
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:419
 #. js-lingui-explicit-id
 msgid "Full Access for 1 week"
@@ -4070,7 +4108,7 @@ msgstr ""
 "\n"
 "Quyền truy cập đầy đủ trong 1 tuần\n"
 
-#: src/features/Usage/Subscription/ConfirmPayment.tsx:56
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:205
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:421
 #. js-lingui-explicit-id
 msgid "Full Access for 1 year"
@@ -4479,14 +4517,10 @@ msgstr ""
 "của trình duyệt và CDN. Kết thúc với cách bạn sẽ theo dõi cải tiến theo "
 "thời gian."
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:51
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:34
 #. js-lingui-explicit-id
-msgid ""
-"Good for trying the service. It's about 3-5 short conversations with AI. Or "
-"one long practice session. You decide!"
-msgstr ""
-"Tốt cho việc thử nghiệm dịch vụ. Khoảng 3-5 cuộc hội thoại ngắn với AI. "
-"Hoặc một buổi luyện tập dài. Bạn quyết định!"
+msgid "Good for trying the service"
+msgstr "Tốt để thử dịch vụ"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
 #. js-lingui-explicit-id
@@ -4683,7 +4717,7 @@ msgstr ""
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "Dưới đây là phần còn lại của phản hồi cá nhân hóa giúp bạn cải thiện."
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:32
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:33
 #. js-lingui-explicit-id
 msgid "Here`s you can buy extra hours of AI"
 msgstr "Tại đây, bạn có thể mua thêm giờ của AI"
@@ -4845,6 +4879,13 @@ msgid ""
 msgstr ""
 "Cách Để Tạo Ấn Tượng Trong Buổi Phỏng Vấn Xin Việc Bằng Tiếng Anh: Hướng "
 "Dẫn Từng Bước Dành Cho Người Học Trung Cấp (2026)"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:269
+#. js-lingui-explicit-id
+msgid "How to get Full Access?"
+msgstr ""
+" \n"
+"Làm thế nào để có Quyền truy cập đầy đủ?\n"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:159
 #. js-lingui-explicit-id
@@ -6231,7 +6272,7 @@ msgid "Is there content on resiliency and observability?"
 msgstr "Có nội dung về khả năng phục hồi và khả năng quan sát không?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:33
-#: src/features/Usage/Subscription/FaqSubscription.tsx:24
+#: src/features/Usage/Subscription/FaqSubscription.tsx:25
 #. js-lingui-explicit-id
 msgid "Is this a subscription?"
 msgstr "Đây có phải là đăng ký không?"
@@ -7250,7 +7291,7 @@ msgstr "Chưa có lượt xem. Hãy là người đầu tiên xem bài viết n�
 msgid "No words used yet"
 msgstr "Chưa có từ nào được sử dụng"
 
-#: src/features/Usage/Subscription/FaqSubscription.tsx:32
+#: src/features/Usage/Subscription/FaqSubscription.tsx:33
 #. js-lingui-explicit-id
 msgid ""
 "No, you are purchasing full access for a selected period of time. There is "
@@ -7325,6 +7366,13 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "non-native English speakers"
 msgstr "người nói tiếng Anh không phải người bản xứ"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:281
+#. js-lingui-explicit-id
+msgid "Non-renewing subscription"
+msgstr ""
+"\n"
+"Đăng ký không tự động gia hạn\n"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:189
 #: src/features/Modal/TeacherVoiceModal.tsx:60
@@ -7584,6 +7632,18 @@ msgstr "Gói trả phí:"
 msgid "parallel lives"
 msgstr "cuộc sống song song"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:353
+#. js-lingui-explicit-id
+msgid ""
+"Participate in Community activities like sharing posts in the Community "
+"Feed, discuss daily questions and play in the game. Top-5 most active users "
+"in the Community gets a Full Access until they in top-5"
+msgstr ""
+"Tham gia vào các hoạt động Cộng đồng như chia sẻ bài viết trong Nguồn tin "
+"Cộng đồng, thảo luận các câu hỏi hàng ngày và chơi trong trò chơi. Top 5 "
+"người dùng hoạt động tích cực nhất trong Cộng đồng sẽ có quyền Truy cập Đầy "
+"đủ cho đến khi họ nằm trong top 5"
+
 #: src/features/RolePlay/rolePlayData.tsx:489
 #. js-lingui-explicit-id
 msgid ""
@@ -7601,13 +7661,6 @@ msgid ""
 msgstr ""
 "Dán văn bản CV của bạn vào đây. Bạn cũng có thể viết một tóm tắt ngắn gọn "
 "về kinh nghiệm của mình."
-
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:49
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:59
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:66
-#. js-lingui-explicit-id
-msgid "Pay"
-msgstr "Trả tiền"
 
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -8310,7 +8363,7 @@ msgstr "Câu hỏi trước"
 msgid "Price"
 msgstr "Giá"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:145
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:144
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "Giá mỗi ngày"
@@ -8395,17 +8448,17 @@ msgstr "Hồ sơ"
 msgid "Progress Calendar"
 msgstr "Lịch Trình Tiến Trình"
 
+#: src/features/Landing/LandingPage.tsx:402
+#. js-lingui-explicit-id
+msgid "Progress Tracking"
+msgstr "Theo dõi tiến độ"
+
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
 #: src/features/Landing/Price/PricePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Theo dõi tiến trình"
-
-#: src/features/Landing/LandingPage.tsx:402
-#. js-lingui-explicit-id
-msgid "Progress Tracking"
-msgstr "Theo dõi tiến độ"
 
 #: src/features/RolePlay/rolePlayData.tsx:1042
 #. js-lingui-explicit-id
@@ -8431,6 +8484,21 @@ msgstr "Xuất bản câu trả lời"
 #. js-lingui-explicit-id
 msgid "published"
 msgstr "đã xuất bản"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:32
+#. js-lingui-explicit-id
+msgid "Purchase 1 hour"
+msgstr "Mua 1 giờ"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:40
+#. js-lingui-explicit-id
+msgid "Purchase 3 hours"
+msgstr "Mua 3 giờ"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:47
+#. js-lingui-explicit-id
+msgid "Purchase 5 hours"
+msgstr "Mua 5 giờ"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
 #. js-lingui-explicit-id
@@ -8706,6 +8774,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Recommend a podcast, song, or video in your target language"
 msgstr "Đề xuất một podcast, bài hát, hoặc video bằng ngôn ngữ bạn đang học"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:41
+#. js-lingui-explicit-id
+msgid "Recommended"
+msgstr "Đề xuất"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:310
@@ -10333,11 +10406,6 @@ msgstr "Cảm ơn bạn đã phản hồi!"
 msgid "Thank you for your purchase."
 msgstr "Cảm ơn bạn đã mua hàng."
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:67
-#. js-lingui-explicit-id
-msgid "That's the strong weekly plan."
-msgstr "Đó là kế hoạch mạnh mẽ hàng tuần."
-
 #: src/features/Case/data/frontend-junior/reviewSection.ts:57
 #: src/features/Case/data/frontend-senior/reviewSection.ts:57
 #. js-lingui-explicit-id
@@ -10882,6 +10950,11 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "Nhiệm vụ Nói trong TOEFL"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:339
+#. js-lingui-explicit-id
+msgid "Tokens don’t expire, so you can save them for later."
+msgstr "Tokens không hết hạn, vì vậy bạn có thể lưu chúng để sử dụng sau."
+
 #: src/features/Usage/UsageStatsCards.tsx:569
 #. js-lingui-explicit-id
 msgid "Total"
@@ -11106,6 +11179,13 @@ msgstr "Tải video lên"
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "Đang tải lên..."
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:333
+#. js-lingui-explicit-id
+msgid "Use it on weekends, for a short project, or whenever it fits you."
+msgstr ""
+"Sử dụng nó vào cuối tuần, cho một dự án ngắn, hoặc bất cứ khi nào bạn cảm "
+"thấy phù hợp."
 
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -11563,7 +11643,7 @@ msgstr "Tôi nhận được gì với gói trả phí?"
 msgid "What do I need to use FluencyPal?"
 msgstr "Tôi cần gì để sử dụng FluencyPal?"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:196
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:372
 #. js-lingui-explicit-id
 msgid "What do you get with Full Access?"
 msgstr "Bạn nhận được gì khi có quyền truy cập đầy đủ?"
@@ -11704,7 +11784,7 @@ msgstr "Giá bao nhiêu?"
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "Khi nào bạn sử dụng AsNoTracking và các đánh đổi là gì?"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:51
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:47
 #. js-lingui-explicit-id
 msgid "When you need full access for a short period of time"
 msgstr "Khi bạn cần truy cập đầy đủ trong một khoảng thời gian ngắn"
@@ -11951,7 +12031,7 @@ msgstr ""
 "ở trên và chúng tôi sẽ hướng dẫn bạn qua quy trình hoàn tiền."
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:53
-#: src/features/Usage/Subscription/FaqSubscription.tsx:44
+#: src/features/Usage/Subscription/FaqSubscription.tsx:45
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you're not satisfied with the service, on \"Profile/Payment "
@@ -11960,7 +12040,7 @@ msgstr ""
 "Vâng. Nếu bạn không hài lòng với dịch vụ, trên trang \"Hồ sơ/Lịch sử thanh "
 "toán\" bạn có thể yêu cầu hoàn tiền và chúng tôi sẽ thảo luận về chi tiết."
 
-#: src/features/Usage/Subscription/FaqSubscription.tsx:16
+#: src/features/Usage/Subscription/FaqSubscription.tsx:17
 #. js-lingui-explicit-id
 msgid ""
 "Yes. Simply play on the Community page or send messages in the chat to earn "
@@ -12212,6 +12292,15 @@ msgid ""
 msgstr ""
 "Bạn nhận được phản hồi như “có kỹ năng kỹ thuật tốt, nhưng chưa **đủ kinh "
 "nghiệm**” — mà không có chi tiết cụ thể"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:327
+#. js-lingui-explicit-id
+msgid ""
+"You get full access, just like a subscription — but with complete "
+"flexibility."
+msgstr ""
+"Bạn có quyền truy cập đầy đủ, giống như một đăng ký — nhưng với sự linh "
+"hoạt hoàn toàn."
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:27
 #. js-lingui-explicit-id
@@ -12564,6 +12653,67 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Full Access for {amountHoursToAdd} AI hours"
+#~ msgstr "Quyền Truy Cập Đầy Đủ cho {amountHoursToAdd} giờ AI"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Confirm payment for {amountHoursToAdd} AI hours"
+#~ msgstr "Xác nhận thanh toán cho {amountHoursToAdd} giờ AI"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "A bit more time to explore the app and create a habit."
+#~ msgstr "Thêm một chút thời gian để khám phá ứng dụng và tạo thói quen."
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:33
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Good for trying the service. It's about 3-5 short conversations with AI. Or "
+#~ "one long practice session. You decide!"
+#~ msgstr ""
+#~ "Tốt cho việc thử nghiệm dịch vụ. Khoảng 3-5 cuộc hội thoại ngắn với AI. "
+#~ "Hoặc một buổi luyện tập dài. Bạn quyết định!"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "That's the strong weekly plan."
+#~ msgstr "Đó là kế hoạch mạnh mẽ hàng tuần."
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:274
+#. js-lingui-explicit-id
+#~ msgid "Buy AI tokens"
+#~ msgstr "Mua token AI"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:47
+#. js-lingui-explicit-id
+#~ msgid "1 hour"
+#~ msgstr "1 giờ"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:57
+#. js-lingui-explicit-id
+#~ msgid "3 hours"
+#~ msgstr "3 giờ"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:64
+#. js-lingui-explicit-id
+#~ msgid "5 hours"
+#~ msgstr "5 giờ"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:23
+#. js-lingui-explicit-id
+#~ msgid "Choose your next access plan"
+#~ msgstr "Chọn gói truy cập tiếp theo của bạn"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:49
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:59
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:66
+#. js-lingui-explicit-id
+#~ msgid "Pay"
+#~ msgstr "Trả tiền"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:38
 #. js-lingui-explicit-id

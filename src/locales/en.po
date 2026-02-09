@@ -286,17 +286,22 @@ msgstr ".NET specialists facing API, data, and system design rounds"
 msgid "/ month"
 msgstr "/ month"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:38
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:30
+#. js-lingui-explicit-id
+msgid "1 AI hour"
+msgstr "1 AI hour"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:323
+#. js-lingui-explicit-id
+msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
+msgstr "1 AI hour ≈ 1 hour of active conversation with the AI."
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:34
 #. js-lingui-explicit-id
 msgid "1 day"
 msgstr "1 day"
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:47
-#. js-lingui-explicit-id
-msgid "1 hour"
-msgstr "1 hour"
-
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:55
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:51
 #. js-lingui-explicit-id
 msgid "1 month"
 msgstr "1 month"
@@ -306,12 +311,12 @@ msgstr "1 month"
 msgid "1 round"
 msgstr "1 round"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:47
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:43
 #. js-lingui-explicit-id
 msgid "1 week"
 msgstr "1 week"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:63
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:59
 #. js-lingui-explicit-id
 msgid "1 year"
 msgstr "1 year"
@@ -336,10 +341,10 @@ msgstr "16 languages to practice"
 msgid "2. Complete the trial period"
 msgstr "2. Complete the trial period"
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:57
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:38
 #. js-lingui-explicit-id
-msgid "3 hours"
-msgstr "3 hours"
+msgid "3 AI hours"
+msgstr "3 AI hours"
 
 #: src/features/PayWall/CardValidatorWall.tsx:137
 #. js-lingui-explicit-id
@@ -357,15 +362,15 @@ msgstr "4 participants"
 msgid "4. Play the game and become one of the top 5 players"
 msgstr "4. Play the game and become one of the top 5 players"
 
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:45
+#. js-lingui-explicit-id
+msgid "5 AI hours"
+msgstr "5 AI hours"
+
 #: src/features/Blog/blogData.tsx:370
 #. js-lingui-explicit-id
 msgid "5 Common English Job Interview Mistakes (and How to Fix Them)"
 msgstr "5 Common English Job Interview Mistakes (and How to Fix Them)"
-
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:64
-#. js-lingui-explicit-id
-msgid "5 hours"
-msgstr "5 hours"
 
 #: src/features/PayWall/CardValidatorWall.tsx:145
 #. js-lingui-explicit-id
@@ -380,11 +385,6 @@ msgid ""
 msgstr ""
 "6 Ways Busy Professionals Can Improve Their English Fluency for Job "
 "Interviews"
-
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:60
-#. js-lingui-explicit-id
-msgid "A bit more time to explore the app and create a habit."
-msgstr "A bit more time to explore the app and create a habit."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
 #. js-lingui-explicit-id
@@ -733,6 +733,11 @@ msgstr "AI speaking partner"
 #. js-lingui-explicit-id
 msgid "AI Speaking Practice"
 msgstr "AI Speaking Practice"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:287
+#. js-lingui-explicit-id
+msgid "AI tokens"
+msgstr "AI tokens"
 
 #: src/features/SEO/metadata.ts:158
 #. js-lingui-explicit-id
@@ -1212,8 +1217,8 @@ msgstr "Benefits of Playing Alias Game"
 msgid "Benefits of Role Play"
 msgstr "Benefits of Role Play"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:59
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:67
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:55
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:63
 #. js-lingui-explicit-id
 msgid "Best for long-term access"
 msgstr "Best for long-term access"
@@ -1223,7 +1228,7 @@ msgstr "Best for long-term access"
 msgid "Best for most job seekers"
 msgstr "Best for most job seekers"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:42
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:38
 #. js-lingui-explicit-id
 msgid "Best for trying out the full access"
 msgstr "Best for trying out the full access"
@@ -1326,10 +1331,30 @@ msgstr "Business English interview preparation"
 msgid "busy professionals"
 msgstr "busy professionals"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:193
+#. js-lingui-explicit-id
+msgid "Buy 1 AI hour"
+msgstr "Buy 1 AI hour"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:194
+#. js-lingui-explicit-id
+msgid "Buy 3 AI hours"
+msgstr "Buy 3 AI hours"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:195
+#. js-lingui-explicit-id
+msgid "Buy 5 AI hours"
+msgstr "Buy 5 AI hours"
+
 #: src/features/Usage/PayWall.tsx:104
 #. js-lingui-explicit-id
 msgid "Buy a subscription"
 msgstr "Buy a subscription"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:319
+#. js-lingui-explicit-id
+msgid "Buy AI tokens and use them whenever you want."
+msgstr "Buy AI tokens and use them whenever you want."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:688
 #. js-lingui-explicit-id
@@ -1420,13 +1445,13 @@ msgid "Can I customize my practice sessions?"
 msgstr "Can I customize my practice sessions?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:52
-#: src/features/Usage/Subscription/FaqSubscription.tsx:43
+#: src/features/Usage/Subscription/FaqSubscription.tsx:44
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "Can I do a refund after purchase?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
-#: src/features/Usage/Subscription/FaqSubscription.tsx:15
+#: src/features/Usage/Subscription/FaqSubscription.tsx:16
 #. js-lingui-explicit-id
 msgid "Can I get full access for free?"
 msgstr "Can I get full access for free?"
@@ -1610,6 +1635,19 @@ msgstr "Check-In"
 msgid "Chinese Learning Plan"
 msgstr "Chinese Learning Plan"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:298
+#. js-lingui-explicit-id
+msgid ""
+"Choose a plan that fits you and get full access for a week, a month, or a "
+"year.\n"
+"Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term "
+"commitment."
+msgstr ""
+"Choose a plan that fits you and get full access for a week, a month, or a "
+"year.\n"
+"Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term "
+"commitment."
+
 #: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
@@ -1654,11 +1692,6 @@ msgstr "Choose your interview preparation plan"
 #. js-lingui-explicit-id
 msgid "Choose Your Language Level"
 msgstr "Choose Your Language Level"
-
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:23
-#. js-lingui-explicit-id
-msgid "Choose your next access plan"
-msgstr "Choose your next access plan"
 
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
@@ -1962,16 +1995,16 @@ msgstr "Contract Tests"
 msgid "Conversation"
 msgstr "Conversation"
 
+#: src/features/Landing/LandingPage.tsx:254
+#. js-lingui-explicit-id
+msgid "Conversation Practice"
+msgstr "Conversation Practice"
+
 #: src/features/Landing/Price/FeatureList.tsx:40
 #: src/features/Landing/Price/PricePage.tsx:351
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Conversation practice"
-
-#: src/features/Landing/LandingPage.tsx:254
-#. js-lingui-explicit-id
-msgid "Conversation Practice"
-msgstr "Conversation Practice"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:242
 #. js-lingui-explicit-id
@@ -3062,7 +3095,7 @@ msgstr "Error analyzing conversation"
 msgid "Error creating payment session"
 msgstr "Error creating payment session"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:83
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:125
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:197
 #. js-lingui-explicit-id
 msgid ""
@@ -3087,7 +3120,7 @@ msgstr "Error creating plan. Please try again."
 msgid "Error during analyzing message"
 msgstr "Error during analyzing message"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:111
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:153
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:143
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:226
 #. js-lingui-explicit-id
@@ -3817,6 +3850,11 @@ msgstr ""
 "and how you'd support gradual refactors or micro-frontend approaches. This "
 "shows you think like an architect, not just an implementer."
 
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:48
+#. js-lingui-explicit-id
+msgid "For active speaking"
+msgstr "For active speaking"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
 #. js-lingui-explicit-id
 msgid "For example:"
@@ -3983,26 +4021,26 @@ msgstr "Full Access"
 msgid "Full access - Expiring soon"
 msgstr "Full access - Expiring soon"
 
-#: src/features/Usage/Subscription/ConfirmPayment.tsx:57
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:206
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:422
 #. js-lingui-explicit-id
 msgid "Full Access for 1 day"
 msgstr "Full Access for 1 day"
 
-#: src/features/Usage/Subscription/ConfirmPayment.tsx:52
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:201
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:332
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:417
 #. js-lingui-explicit-id
 msgid "Full Access for 1 month"
 msgstr "Full Access for 1 month"
 
-#: src/features/Usage/Subscription/ConfirmPayment.tsx:54
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:203
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:419
 #. js-lingui-explicit-id
 msgid "Full Access for 1 week"
 msgstr "Full Access for 1 week"
 
-#: src/features/Usage/Subscription/ConfirmPayment.tsx:56
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:205
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:421
 #. js-lingui-explicit-id
 msgid "Full Access for 1 year"
@@ -4401,14 +4439,10 @@ msgstr ""
 "selectors, virtualization for long lists, and leveraging browser caching "
 "and a CDN. Close with how you'd monitor improvements over time."
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:51
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:34
 #. js-lingui-explicit-id
-msgid ""
-"Good for trying the service. It's about 3-5 short conversations with AI. Or "
-"one long practice session. You decide!"
-msgstr ""
-"Good for trying the service. It's about 3-5 short conversations with AI. Or "
-"one long practice session. You decide!"
+msgid "Good for trying the service"
+msgstr "Good for trying the service"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
 #. js-lingui-explicit-id
@@ -4603,7 +4637,7 @@ msgstr ""
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "Here's the rest of your personalized feedback to help you improve."
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:32
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:33
 #. js-lingui-explicit-id
 msgid "Here`s you can buy extra hours of AI"
 msgstr "Here`s you can buy extra hours of AI"
@@ -4763,6 +4797,11 @@ msgid ""
 msgstr ""
 "How to Ace Your English Job Interview: A Step-by-Step Guide for "
 "Intermediate Learners (2026)"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:269
+#. js-lingui-explicit-id
+msgid "How to get Full Access?"
+msgstr "How to get Full Access?"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:159
 #. js-lingui-explicit-id
@@ -6126,7 +6165,7 @@ msgid "Is there content on resiliency and observability?"
 msgstr "Is there content on resiliency and observability?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:33
-#: src/features/Usage/Subscription/FaqSubscription.tsx:24
+#: src/features/Usage/Subscription/FaqSubscription.tsx:25
 #. js-lingui-explicit-id
 msgid "Is this a subscription?"
 msgstr "Is this a subscription?"
@@ -7132,7 +7171,7 @@ msgstr "No views yet. Be the first to view this post!"
 msgid "No words used yet"
 msgstr "No words used yet"
 
-#: src/features/Usage/Subscription/FaqSubscription.tsx:32
+#: src/features/Usage/Subscription/FaqSubscription.tsx:33
 #. js-lingui-explicit-id
 msgid ""
 "No, you are purchasing full access for a selected period of time. There is "
@@ -7203,6 +7242,11 @@ msgstr "No. You can start the free plan without entering any payment details."
 #. js-lingui-explicit-id
 msgid "non-native English speakers"
 msgstr "non-native English speakers"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:281
+#. js-lingui-explicit-id
+msgid "Non-renewing subscription"
+msgstr "Non-renewing subscription"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:189
 #: src/features/Modal/TeacherVoiceModal.tsx:60
@@ -7458,6 +7502,17 @@ msgstr "Paid plan:"
 msgid "parallel lives"
 msgstr "parallel lives"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:353
+#. js-lingui-explicit-id
+msgid ""
+"Participate in Community activities like sharing posts in the Community "
+"Feed, discuss daily questions and play in the game. Top-5 most active users "
+"in the Community gets a Full Access until they in top-5"
+msgstr ""
+"Participate in Community activities like sharing posts in the Community "
+"Feed, discuss daily questions and play in the game. Top-5 most active users "
+"in the Community gets a Full Access until they in top-5"
+
 #: src/features/RolePlay/rolePlayData.tsx:489
 #. js-lingui-explicit-id
 msgid ""
@@ -7475,13 +7530,6 @@ msgid ""
 msgstr ""
 "Paste your CV text here. You can also write a brief summary of your "
 "experience."
-
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:49
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:59
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:66
-#. js-lingui-explicit-id
-msgid "Pay"
-msgstr "Pay"
 
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -8170,7 +8218,7 @@ msgstr "Previous Question"
 msgid "Price"
 msgstr "Price"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:145
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:144
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "Price per day"
@@ -8255,17 +8303,17 @@ msgstr "Profile"
 msgid "Progress Calendar"
 msgstr "Progress Calendar"
 
+#: src/features/Landing/LandingPage.tsx:402
+#. js-lingui-explicit-id
+msgid "Progress Tracking"
+msgstr "Progress Tracking"
+
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
 #: src/features/Landing/Price/PricePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Progress tracking"
-
-#: src/features/Landing/LandingPage.tsx:402
-#. js-lingui-explicit-id
-msgid "Progress Tracking"
-msgstr "Progress Tracking"
 
 #: src/features/RolePlay/rolePlayData.tsx:1042
 #. js-lingui-explicit-id
@@ -8291,6 +8339,21 @@ msgstr "Publish an answer"
 #. js-lingui-explicit-id
 msgid "published"
 msgstr "published"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:32
+#. js-lingui-explicit-id
+msgid "Purchase 1 hour"
+msgstr "Purchase 1 hour"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:40
+#. js-lingui-explicit-id
+msgid "Purchase 3 hours"
+msgstr "Purchase 3 hours"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:47
+#. js-lingui-explicit-id
+msgid "Purchase 5 hours"
+msgstr "Purchase 5 hours"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
 #. js-lingui-explicit-id
@@ -8556,6 +8619,11 @@ msgstr "Recent graduates or bootcamp alumni entering frontend development"
 #. js-lingui-explicit-id
 msgid "Recommend a podcast, song, or video in your target language"
 msgstr "Recommend a podcast, song, or video in your target language"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:41
+#. js-lingui-explicit-id
+msgid "Recommended"
+msgstr "Recommended"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:310
@@ -10155,11 +10223,6 @@ msgstr "Thank you for your feedback!"
 msgid "Thank you for your purchase."
 msgstr "Thank you for your purchase."
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:67
-#. js-lingui-explicit-id
-msgid "That's the strong weekly plan."
-msgstr "That's the strong weekly plan."
-
 #: src/features/Case/data/frontend-junior/reviewSection.ts:57
 #: src/features/Case/data/frontend-senior/reviewSection.ts:57
 #. js-lingui-explicit-id
@@ -10700,6 +10763,11 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "TOEFL Speaking Tasks"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:339
+#. js-lingui-explicit-id
+msgid "Tokens don’t expire, so you can save them for later."
+msgstr "Tokens don’t expire, so you can save them for later."
+
 #: src/features/Usage/UsageStatsCards.tsx:569
 #. js-lingui-explicit-id
 msgid "Total"
@@ -10921,6 +10989,11 @@ msgstr "Upload video"
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "Uploading..."
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:333
+#. js-lingui-explicit-id
+msgid "Use it on weekends, for a short project, or whenever it fits you."
+msgstr "Use it on weekends, for a short project, or whenever it fits you."
 
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -11369,7 +11442,7 @@ msgstr "What do I get with the paid plan?"
 msgid "What do I need to use FluencyPal?"
 msgstr "What do I need to use FluencyPal?"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:196
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:372
 #. js-lingui-explicit-id
 msgid "What do you get with Full Access?"
 msgstr "What do you get with Full Access?"
@@ -11508,7 +11581,7 @@ msgstr "What’s the price?"
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "When do you use AsNoTracking and what are the trade-offs?"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:51
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:47
 #. js-lingui-explicit-id
 msgid "When you need full access for a short period of time"
 msgstr "When you need full access for a short period of time"
@@ -11754,7 +11827,7 @@ msgstr ""
 "through the refund process."
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:53
-#: src/features/Usage/Subscription/FaqSubscription.tsx:44
+#: src/features/Usage/Subscription/FaqSubscription.tsx:45
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you're not satisfied with the service, on \"Profile/Payment "
@@ -11763,7 +11836,7 @@ msgstr ""
 "Yes. If you're not satisfied with the service, on \"Profile/Payment "
 "history\" page you can request a refund and we will discuss the details."
 
-#: src/features/Usage/Subscription/FaqSubscription.tsx:16
+#: src/features/Usage/Subscription/FaqSubscription.tsx:17
 #. js-lingui-explicit-id
 msgid ""
 "Yes. Simply play on the Community page or send messages in the chat to earn "
@@ -12012,6 +12085,15 @@ msgid ""
 msgstr ""
 "You get feedback like “strong technically, but not **senior enough**” — "
 "with no specifics"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:327
+#. js-lingui-explicit-id
+msgid ""
+"You get full access, just like a subscription — but with complete "
+"flexibility."
+msgstr ""
+"You get full access, just like a subscription — but with complete "
+"flexibility."
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:27
 #. js-lingui-explicit-id
@@ -12358,6 +12440,67 @@ msgstr ""
 "— it’s important to engage in this short conversation before jumping into "
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Full Access for {amountHoursToAdd} AI hours"
+#~ msgstr "Full Access for {amountHoursToAdd} AI hours"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Confirm payment for {amountHoursToAdd} AI hours"
+#~ msgstr "Confirm payment for {amountHoursToAdd} AI hours"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "A bit more time to explore the app and create a habit."
+#~ msgstr "A bit more time to explore the app and create a habit."
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:33
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Good for trying the service. It's about 3-5 short conversations with AI. Or "
+#~ "one long practice session. You decide!"
+#~ msgstr ""
+#~ "Good for trying the service. It's about 3-5 short conversations with AI. Or "
+#~ "one long practice session. You decide!"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "That's the strong weekly plan."
+#~ msgstr "That's the strong weekly plan."
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:274
+#. js-lingui-explicit-id
+#~ msgid "Buy AI tokens"
+#~ msgstr "Buy AI tokens"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:47
+#. js-lingui-explicit-id
+#~ msgid "1 hour"
+#~ msgstr "1 hour"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:57
+#. js-lingui-explicit-id
+#~ msgid "3 hours"
+#~ msgstr "3 hours"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:64
+#. js-lingui-explicit-id
+#~ msgid "5 hours"
+#~ msgstr "5 hours"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:23
+#. js-lingui-explicit-id
+#~ msgid "Choose your next access plan"
+#~ msgstr "Choose your next access plan"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:49
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:59
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:66
+#. js-lingui-explicit-id
+#~ msgid "Pay"
+#~ msgstr "Pay"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:38
 #. js-lingui-explicit-id

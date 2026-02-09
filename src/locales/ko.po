@@ -268,17 +268,22 @@ msgstr ".NET 전문가가 API, 데이터 및 시스템 설계 라운드에 직�
 msgid "/ month"
 msgstr "/ 월"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:38
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:30
+#. js-lingui-explicit-id
+msgid "1 AI hour"
+msgstr "1 AI 시간"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:323
+#. js-lingui-explicit-id
+msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
+msgstr "1 AI 시간 ≈ AI와의 적극적인 대화 1시간."
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:34
 #. js-lingui-explicit-id
 msgid "1 day"
 msgstr "1일"
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:47
-#. js-lingui-explicit-id
-msgid "1 hour"
-msgstr "1시간"
-
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:55
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:51
 #. js-lingui-explicit-id
 msgid "1 month"
 msgstr "1개월"
@@ -288,12 +293,12 @@ msgstr "1개월"
 msgid "1 round"
 msgstr "1 라운드"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:47
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:43
 #. js-lingui-explicit-id
 msgid "1 week"
 msgstr "1주일"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:63
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:59
 #. js-lingui-explicit-id
 msgid "1 year"
 msgstr "1년"
@@ -318,10 +323,10 @@ msgstr "연습할 수 있는 16개의 언어"
 msgid "2. Complete the trial period"
 msgstr "2. 체험 기간 완료하기"
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:57
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:38
 #. js-lingui-explicit-id
-msgid "3 hours"
-msgstr "3시간"
+msgid "3 AI hours"
+msgstr "3 AI 시간"
 
 #: src/features/PayWall/CardValidatorWall.tsx:137
 #. js-lingui-explicit-id
@@ -339,15 +344,15 @@ msgstr "4명의 참가자"
 msgid "4. Play the game and become one of the top 5 players"
 msgstr "4. 게임을 플레이하고 상위 5위 안의 플레이어가 되어보세요"
 
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:45
+#. js-lingui-explicit-id
+msgid "5 AI hours"
+msgstr "5 AI 시간"
+
 #: src/features/Blog/blogData.tsx:370
 #. js-lingui-explicit-id
 msgid "5 Common English Job Interview Mistakes (and How to Fix Them)"
 msgstr "5가지 일반적인 영어 면접 실수 (그리고 이를 수정하는 방법)"
-
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:64
-#. js-lingui-explicit-id
-msgid "5 hours"
-msgstr "5시간"
 
 #: src/features/PayWall/CardValidatorWall.tsx:145
 #. js-lingui-explicit-id
@@ -360,11 +365,6 @@ msgid ""
 "6 Ways Busy Professionals Can Improve Their English Fluency for Job "
 "Interviews"
 msgstr "6가지 바쁜 전문가들이 직업 면접을 위해 영어 유창성을 향상시킬 수 있는 방법"
-
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:60
-#. js-lingui-explicit-id
-msgid "A bit more time to explore the app and create a habit."
-msgstr "앱을 탐색하고 습관을 만드는 데 더 많은 시간이 필요합니다."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
 #. js-lingui-explicit-id
@@ -705,6 +705,11 @@ msgstr "AI 말하기 파트너"
 #. js-lingui-explicit-id
 msgid "AI Speaking Practice"
 msgstr "AI 말하기 연습"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:287
+#. js-lingui-explicit-id
+msgid "AI tokens"
+msgstr "AI 토큰"
 
 #: src/features/SEO/metadata.ts:158
 #. js-lingui-explicit-id
@@ -1178,8 +1183,8 @@ msgstr "Alias 게임을 하는 이점"
 msgid "Benefits of Role Play"
 msgstr "역할극의 이점"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:59
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:67
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:55
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:63
 #. js-lingui-explicit-id
 msgid "Best for long-term access"
 msgstr "장기 접근에 최적화"
@@ -1189,7 +1194,7 @@ msgstr "장기 접근에 최적화"
 msgid "Best for most job seekers"
 msgstr "대부분의 구직자에게 가장 적합"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:42
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:38
 #. js-lingui-explicit-id
 msgid "Best for trying out the full access"
 msgstr "전체 액세스를 체험하기에 최적입니다"
@@ -1287,10 +1292,30 @@ msgstr "비즈니스 영어 면접 준비"
 msgid "busy professionals"
 msgstr "바쁜 전문가들"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:193
+#. js-lingui-explicit-id
+msgid "Buy 1 AI hour"
+msgstr "1 AI 시간 구매"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:194
+#. js-lingui-explicit-id
+msgid "Buy 3 AI hours"
+msgstr "3시간 AI 구매"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:195
+#. js-lingui-explicit-id
+msgid "Buy 5 AI hours"
+msgstr "5개의 AI 시간을 구매하기"
+
 #: src/features/Usage/PayWall.tsx:104
 #. js-lingui-explicit-id
 msgid "Buy a subscription"
 msgstr "구독을 구매하십시오"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:319
+#. js-lingui-explicit-id
+msgid "Buy AI tokens and use them whenever you want."
+msgstr "AI 토큰을 구입하고 원할 때마다 사용하세요."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:688
 #. js-lingui-explicit-id
@@ -1381,13 +1406,13 @@ msgid "Can I customize my practice sessions?"
 msgstr "연습 세션을 맞춤 설정할 수 있나요?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:52
-#: src/features/Usage/Subscription/FaqSubscription.tsx:43
+#: src/features/Usage/Subscription/FaqSubscription.tsx:44
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "구매 후 환불이 가능한가요?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
-#: src/features/Usage/Subscription/FaqSubscription.tsx:15
+#: src/features/Usage/Subscription/FaqSubscription.tsx:16
 #. js-lingui-explicit-id
 msgid "Can I get full access for free?"
 msgstr "제가 무료로 전체 액세스를 받을 수 있나요?"
@@ -1560,6 +1585,17 @@ msgstr "체크인"
 msgid "Chinese Learning Plan"
 msgstr "중국어 학습 계획"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:298
+#. js-lingui-explicit-id
+msgid ""
+"Choose a plan that fits you and get full access for a week, a month, or a "
+"year.\n"
+"Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term "
+"commitment."
+msgstr ""
+"당신에게 맞는 플랜을 선택하고 일주일, 한 달, 혹은 1년 동안 전체 액세스를 받으세요.\n"
+"구독은 자동 갱신되지 않으므로 긴 기간에 얽매이지 않고 FluencyPal을 시도해 볼 수 있습니다."
+
 #: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
@@ -1604,11 +1640,6 @@ msgstr "인터뷰 준비 계획을 선택하세요"
 #. js-lingui-explicit-id
 msgid "Choose Your Language Level"
 msgstr "당신의 언어 레벨을 선택하세요"
-
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:23
-#. js-lingui-explicit-id
-msgid "Choose your next access plan"
-msgstr "다음 접근 계획을 선택하세요"
 
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
@@ -1904,15 +1935,15 @@ msgstr "계약 테스트"
 msgid "Conversation"
 msgstr "대화"
 
+#: src/features/Landing/LandingPage.tsx:254
+#. js-lingui-explicit-id
+msgid "Conversation Practice"
+msgstr "대화 연습"
+
 #: src/features/Landing/Price/FeatureList.tsx:40
 #: src/features/Landing/Price/PricePage.tsx:351
 #. js-lingui-explicit-id
 msgid "Conversation practice"
-msgstr "대화 연습"
-
-#: src/features/Landing/LandingPage.tsx:254
-#. js-lingui-explicit-id
-msgid "Conversation Practice"
 msgstr "대화 연습"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:242
@@ -2949,7 +2980,7 @@ msgstr "대화 분석 오류"
 msgid "Error creating payment session"
 msgstr "결제 세션 생성 오류"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:83
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:125
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:197
 #. js-lingui-explicit-id
 msgid ""
@@ -2972,7 +3003,7 @@ msgstr "플랜 생성 오류. 다시 시도해 주세요."
 msgid "Error during analyzing message"
 msgstr "메시지 분석 중 오류"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:111
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:153
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:143
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:226
 #. js-lingui-explicit-id
@@ -3641,6 +3672,11 @@ msgstr ""
 "데이터 페칭 전략(예: React Query 또는 SWR), 오류 처리, 점진적인 리팩토링 또는 마이크로 프론트엔드 방법론을 어떻게 "
 "지원할 것인지에 관한 결정을 언급하세요. 이는 당신이 단순한 구현자가 아닌, 아키텍트처럼 사고한다는 것을 보여줍니다."
 
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:48
+#. js-lingui-explicit-id
+msgid "For active speaking"
+msgstr "적극적으로 말하기 위해"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
 #. js-lingui-explicit-id
 msgid "For example:"
@@ -3805,26 +3841,26 @@ msgstr "전체 접근 권한"
 msgid "Full access - Expiring soon"
 msgstr "Full access - 곧 만료됩니다"
 
-#: src/features/Usage/Subscription/ConfirmPayment.tsx:57
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:206
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:422
 #. js-lingui-explicit-id
 msgid "Full Access for 1 day"
 msgstr "하루 동안 전체 액세스"
 
-#: src/features/Usage/Subscription/ConfirmPayment.tsx:52
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:201
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:332
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:417
 #. js-lingui-explicit-id
 msgid "Full Access for 1 month"
 msgstr "1개월 동안 전체 액세스"
 
-#: src/features/Usage/Subscription/ConfirmPayment.tsx:54
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:203
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:419
 #. js-lingui-explicit-id
 msgid "Full Access for 1 week"
 msgstr "1주일 동안 전체 액세스"
 
-#: src/features/Usage/Subscription/ConfirmPayment.tsx:56
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:205
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:421
 #. js-lingui-explicit-id
 msgid "Full Access for 1 year"
@@ -4200,12 +4236,10 @@ msgstr ""
 "구체적인 기법을 추가하여 답변을 강화하십시오: 동적 import를 통한 코드 분할, 높은 비용의 셀렉터를 메모이제이션, 긴 리스트에 "
 "대한 가상화, 브라우저 캐싱과 CDN 활용. 시간 경과에 따른 개선 사항을 어떻게 모니터링할지로 마무리하십시오."
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:51
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:34
 #. js-lingui-explicit-id
-msgid ""
-"Good for trying the service. It's about 3-5 short conversations with AI. Or "
-"one long practice session. You decide!"
-msgstr "서비스를 시도해 보세요. AI와의 짧은 대화 3-5개 정도, 혹은 하나의 긴 연습 세션을 할 수 있습니다. 당신이 선택하세요!"
+msgid "Good for trying the service"
+msgstr "서비스를 시도하기에 좋습니다"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
 #. js-lingui-explicit-id
@@ -4390,7 +4424,7 @@ msgstr ""
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "개선을 돕기 위한 나머지 맞춤형 피드백을 제공합니다."
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:32
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:33
 #. js-lingui-explicit-id
 msgid "Here`s you can buy extra hours of AI"
 msgstr "여기서 AI 추가 시간을 구매할 수 있습니다."
@@ -4544,6 +4578,11 @@ msgid ""
 "How to Ace Your English Job Interview: A Step-by-Step Guide for "
 "Intermediate Learners (2026)"
 msgstr "중급 학습자를 위한 영어 면접에서 성공하는 법: 단계별 가이드 (2026)"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:269
+#. js-lingui-explicit-id
+msgid "How to get Full Access?"
+msgstr "Full Access를 얻으려면 어떻게 해야 하나요?"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:159
 #. js-lingui-explicit-id
@@ -5780,7 +5819,7 @@ msgid "Is there content on resiliency and observability?"
 msgstr "복원력 및 관측 가능성에 관한 콘텐츠가 있습니까?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:33
-#: src/features/Usage/Subscription/FaqSubscription.tsx:24
+#: src/features/Usage/Subscription/FaqSubscription.tsx:25
 #. js-lingui-explicit-id
 msgid "Is this a subscription?"
 msgstr "이것은 구독 형태인가요?"
@@ -6768,7 +6807,7 @@ msgstr "아직 조회수 없음. 이 게시물을 처음으로 조회하세요!"
 msgid "No words used yet"
 msgstr "아직 사용된 단어 없음"
 
-#: src/features/Usage/Subscription/FaqSubscription.tsx:32
+#: src/features/Usage/Subscription/FaqSubscription.tsx:33
 #. js-lingui-explicit-id
 msgid ""
 "No, you are purchasing full access for a selected period of time. There is "
@@ -6830,6 +6869,11 @@ msgstr "아니요. 결제 정보를 입력하지 않고 무료 플랜을 시작�
 #. js-lingui-explicit-id
 msgid "non-native English speakers"
 msgstr "모국어가 영어가 아닌 사람들"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:281
+#. js-lingui-explicit-id
+msgid "Non-renewing subscription"
+msgstr "자동 갱신되지 않는 구독"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:189
 #: src/features/Modal/TeacherVoiceModal.tsx:60
@@ -7072,6 +7116,16 @@ msgstr "유료 플랜:"
 msgid "parallel lives"
 msgstr "평행한 삶"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:353
+#. js-lingui-explicit-id
+msgid ""
+"Participate in Community activities like sharing posts in the Community "
+"Feed, discuss daily questions and play in the game. Top-5 most active users "
+"in the Community gets a Full Access until they in top-5"
+msgstr ""
+"커뮤니티 피드에 게시물 공유하기, 일일 질문 토론하기, 게임 플레이하기와 같은 커뮤니티 활동에 참여하세요. 커뮤니티에서 가장 활발한 "
+"사용자 상위 5명은 상위 5명에 속해 있는 동안 전체 액세스를 받을 수 있습니다."
+
 #: src/features/RolePlay/rolePlayData.tsx:489
 #. js-lingui-explicit-id
 msgid ""
@@ -7085,13 +7139,6 @@ msgid ""
 "Paste your CV text here. You can also write a brief summary of your "
 "experience."
 msgstr "이력서 텍스트를 여기에 붙여넣으십시오. 경력에 대한 간단한 요약을 작성할 수도 있습니다."
-
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:49
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:59
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:66
-#. js-lingui-explicit-id
-msgid "Pay"
-msgstr "지불"
 
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -7747,7 +7794,7 @@ msgstr "이전 질문"
 msgid "Price"
 msgstr "가격"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:145
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:144
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "일일 가격"
@@ -7832,16 +7879,16 @@ msgstr "프로필"
 msgid "Progress Calendar"
 msgstr "진행 상황 캘린더"
 
+#: src/features/Landing/LandingPage.tsx:402
+#. js-lingui-explicit-id
+msgid "Progress Tracking"
+msgstr "진행 상황 추적"
+
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
 #: src/features/Landing/Price/PricePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Progress tracking"
-msgstr "진행 상황 추적"
-
-#: src/features/Landing/LandingPage.tsx:402
-#. js-lingui-explicit-id
-msgid "Progress Tracking"
 msgstr "진행 상황 추적"
 
 #: src/features/RolePlay/rolePlayData.tsx:1042
@@ -7868,6 +7915,21 @@ msgstr "답변 게시하기"
 #. js-lingui-explicit-id
 msgid "published"
 msgstr "게시됨"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:32
+#. js-lingui-explicit-id
+msgid "Purchase 1 hour"
+msgstr "1시간 구매"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:40
+#. js-lingui-explicit-id
+msgid "Purchase 3 hours"
+msgstr "3시간 구매"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:47
+#. js-lingui-explicit-id
+msgid "Purchase 5 hours"
+msgstr "5시간 구매"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
 #. js-lingui-explicit-id
@@ -8128,6 +8190,11 @@ msgstr "최근 졸업생 또는 부트캠프 졸업생이 프론트엔드 개발
 #. js-lingui-explicit-id
 msgid "Recommend a podcast, song, or video in your target language"
 msgstr "추천해 주세요: 당신의 목표 언어로 된 팟캐스트, 노래, 또는 비디오"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:41
+#. js-lingui-explicit-id
+msgid "Recommended"
+msgstr "추천됨"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:310
@@ -9664,11 +9731,6 @@ msgstr ""
 "Thank you for your purchase.   \n"
 "→ 귀하의 구매에 감사드립니다."
 
-#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:67
-#. js-lingui-explicit-id
-msgid "That's the strong weekly plan."
-msgstr "강력한 주간 계획입니다."
-
 #: src/features/Case/data/frontend-junior/reviewSection.ts:57
 #: src/features/Case/data/frontend-senior/reviewSection.ts:57
 #. js-lingui-explicit-id
@@ -10185,6 +10247,11 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "TOEFL 스피킹 과제들"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:339
+#. js-lingui-explicit-id
+msgid "Tokens don’t expire, so you can save them for later."
+msgstr "토큰은 만료되지 않으므로 나중을 위해 저장할 수 있습니다."
+
 #: src/features/Usage/UsageStatsCards.tsx:569
 #. js-lingui-explicit-id
 msgid "Total"
@@ -10404,6 +10471,11 @@ msgstr "비디오 업로드"
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "업로드 중..."
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:333
+#. js-lingui-explicit-id
+msgid "Use it on weekends, for a short project, or whenever it fits you."
+msgstr "주말이나 짧은 프로젝트, 혹은 당신에게 맞을 때 사용하세요."
 
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -10830,7 +10902,7 @@ msgstr "유료 플랜으로 무엇을 얻을 수 있습니까?"
 msgid "What do I need to use FluencyPal?"
 msgstr "FluencyPal을 사용하려면 무엇이 필요합니까?"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:196
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:372
 #. js-lingui-explicit-id
 msgid "What do you get with Full Access?"
 msgstr "전체 액세스로 무엇을 얻을 수 있나요?"
@@ -10969,7 +11041,7 @@ msgstr "가격이 얼마인가요?"
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "AsNoTracking을 언제 사용하고 어떤 장단점이 있는가?"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:51
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:47
 #. js-lingui-explicit-id
 msgid "When you need full access for a short period of time"
 msgstr "단기간 동안 전체 액세스가 필요할 때"
@@ -11196,7 +11268,7 @@ msgstr ""
 "드리겠습니다."
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:53
-#: src/features/Usage/Subscription/FaqSubscription.tsx:44
+#: src/features/Usage/Subscription/FaqSubscription.tsx:45
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you're not satisfied with the service, on \"Profile/Payment "
@@ -11205,7 +11277,7 @@ msgstr ""
 "예. 서비스에 만족하지 않으시는 경우, \"프로필/결제 내역\" 페이지에서 환불을 요청하실 수 있으며, 저희가 세부 사항을 논의할 "
 "것입니다."
 
-#: src/features/Usage/Subscription/FaqSubscription.tsx:16
+#: src/features/Usage/Subscription/FaqSubscription.tsx:17
 #. js-lingui-explicit-id
 msgid ""
 "Yes. Simply play on the Community page or send messages in the chat to earn "
@@ -11422,6 +11494,13 @@ msgid ""
 "You get feedback like “strong technically, but not **senior enough**” — "
 "with no specifics"
 msgstr "기술적으로는 강하지만, **충분히 시니어는 아닙니다**”라는 피드백을 받습니다 — 구체적인 사항 없이"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:327
+#. js-lingui-explicit-id
+msgid ""
+"You get full access, just like a subscription — but with complete "
+"flexibility."
+msgstr "구독처럼 전체 액세스를 얻을 수 있지만, 완전한 유연성을 제공합니다."
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:27
 #. js-lingui-explicit-id
@@ -11749,6 +11828,65 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Full Access for {amountHoursToAdd} AI hours"
+#~ msgstr "{amountHoursToAdd} 시간의 AI 사용을 위한 전체 액세스"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Confirm payment for {amountHoursToAdd} AI hours"
+#~ msgstr "{amountHoursToAdd} AI 시간을 위한 결제를 확인하십시오"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "A bit more time to explore the app and create a habit."
+#~ msgstr "앱을 탐색하고 습관을 만드는 데 더 많은 시간이 필요합니다."
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:33
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Good for trying the service. It's about 3-5 short conversations with AI. Or "
+#~ "one long practice session. You decide!"
+#~ msgstr "서비스를 시도해 보세요. AI와의 짧은 대화 3-5개 정도, 혹은 하나의 긴 연습 세션을 할 수 있습니다. 당신이 선택하세요!"
+
+#: src/features/Usage/HoursPaymentModal/HourseSelector.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "That's the strong weekly plan."
+#~ msgstr "강력한 주간 계획입니다."
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:274
+#. js-lingui-explicit-id
+#~ msgid "Buy AI tokens"
+#~ msgstr "AI 토큰 구매하기"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:47
+#. js-lingui-explicit-id
+#~ msgid "1 hour"
+#~ msgstr "1시간"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:57
+#. js-lingui-explicit-id
+#~ msgid "3 hours"
+#~ msgstr "3시간"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:64
+#. js-lingui-explicit-id
+#~ msgid "5 hours"
+#~ msgstr "5시간"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:23
+#. js-lingui-explicit-id
+#~ msgid "Choose your next access plan"
+#~ msgstr "다음 접근 계획을 선택하세요"
+
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:49
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:59
+#: src/features/Usage/HoursPaymentModal/BalanceContent.tsx:66
+#. js-lingui-explicit-id
+#~ msgid "Pay"
+#~ msgstr "지불"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:38
 #. js-lingui-explicit-id
