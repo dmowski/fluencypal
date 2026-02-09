@@ -1,8 +1,7 @@
 'use client';
 import { Badge, Link, Stack, Typography } from '@mui/material';
 import { Home, LucideProps, User, Users, VenetianMask } from 'lucide-react';
-import { ForwardRefExoticComponent, RefAttributes, useMemo } from 'react';
-import { SupportedLanguage } from '../Lang/lang';
+import { ForwardRefExoticComponent, RefAttributes, useEffect, useMemo, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { useWindowSizes } from '../Layout/useWindowSizes';
 import { PageType } from './types';
@@ -14,6 +13,7 @@ import { AppMode } from '@/common/userSettings';
 import { Avatar } from '../Game/Avatar';
 import { useChatList } from '../Chat/useChatList';
 import { useBattle } from '../Game/Battle/useBattle';
+import { sleep } from '@/libs/sleep';
 
 export interface IconProps {
   color?: string;
@@ -32,6 +32,21 @@ const inactiveColor = '#A0A0A0'; // Define the inactive color for the icon
 
 export const NavigationBar: React.FC = () => {
   const appNavigation = useAppNavigation();
+
+  const [internalPageType, setInternalPageType] = useState<PageType | null>(null);
+
+  const setCurrentPage = async (pageType: PageType) => {
+    setInternalPageType(pageType);
+    await sleep(10);
+    appNavigation.setCurrentPage(pageType);
+  };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setInternalPageType(null);
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, [internalPageType]);
 
   const { i18n } = useLingui();
   const game = useGame();
@@ -122,7 +137,7 @@ export const NavigationBar: React.FC = () => {
       }
     }
 
-    appNavigation.setCurrentPage(item.name);
+    setCurrentPage(item.name);
   };
 
   return (
@@ -160,7 +175,9 @@ export const NavigationBar: React.FC = () => {
           }}
         >
           {navigationItems.map((item) => {
-            const isActive = appNavigation.currentPage === item.name;
+            const isActive = internalPageType
+              ? internalPageType === item.name
+              : appNavigation.currentPage === item.name;
             const color = isActive ? activeColor : inactiveColor;
 
             const isActiveBadge = item.badge !== undefined && item.badge > 0;
@@ -196,7 +213,7 @@ export const NavigationBar: React.FC = () => {
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                       e.preventDefault();
-                      appNavigation.setCurrentPage(item.name);
+                      setCurrentPage(item.name);
                     }
                   }}
                   sx={{
