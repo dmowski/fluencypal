@@ -17,7 +17,12 @@ export const RolePlayBoard = () => {
 
   const { i18n } = useLingui();
   return (
-    <Stack gap={'40px'}>
+    <Stack
+      gap={'40px'}
+      sx={{
+        maxWidth: '100dvw',
+      }}
+    >
       <Stack
         sx={{
           flexDirection: 'column',

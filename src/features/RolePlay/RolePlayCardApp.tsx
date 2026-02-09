@@ -25,19 +25,14 @@ export const RolePlayCardApp = ({ scenario, onClick }: RolePlayCardProps) => {
         boxSizing: 'border-box',
         color: '#fff',
         transition: 'transform 0.3s ease',
-        ':hover': {
-          transform: 'scale(1.02)',
-          '.role-play-image': {
-            transform: 'scale(1.02)',
-            //height: "calc(100% - 80px)",
-          },
-          '.role-play-button': {
-            backgroundColor: 'rgba(255, 255, 255, 0.2)',
-          },
-        },
-        '@media (max-width: 600px)': {
+
+        '@media (max-width: 700px)': {
           padding: '0px',
           borderRadius: '0',
+        },
+        ':focus': {
+          outline: 'none',
+          boxShadow: '0 0 0 4px #111, 0 0 0 6px #278adc',
         },
       }}
       component={'button'}

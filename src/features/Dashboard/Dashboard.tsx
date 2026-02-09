@@ -96,6 +96,7 @@ export function Dashboard({ lang }: DashboardProps) {
           )}
 
           {appNavigation.currentPage === 'role-play' && <RolePlayBoard />}
+
           {appNavigation.currentPage === 'profile' && (
             <>
               <MyProfile lang={lang} />
