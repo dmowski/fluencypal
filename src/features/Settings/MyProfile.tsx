@@ -74,9 +74,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       title: i18n._(`Full Access`),
       subTitle: i18n._(`Manage your full access settings`),
       icon: Wallet,
-      onClick: () => {
-        usage.togglePaymentModal(true);
-      },
+      onClick: () => usage.togglePaymentModal(true),
     },
     {
       title: i18n._(`Language`),
@@ -89,9 +87,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       title: i18n._(`AI Voice`),
       subTitle: i18n._(`Choose the voice for your AI teacher`),
       icon: Speech,
-      onClick: () => {
-        teacherSettings.openSettingsModal();
-      },
+      onClick: () => teacherSettings.openSettingsModal(),
     },
 
     {
@@ -105,25 +101,19 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       title: i18n._(`Feedback`),
       subTitle: i18n._(`Give us your feedback`),
       icon: Star,
-      onClick: () => {
-        setIsShowFeedbackModal(true);
-      },
+      onClick: () => setIsShowFeedbackModal(true)
     },*/
     {
       title: i18n._(`Help`),
       subTitle: i18n._(`Need help?`),
       icon: MessageCircleQuestionMark,
-      onClick: () => {
-        setIsShowHelpModal(true);
-      },
+      onClick: () => setIsShowHelpModal(true),
     },
     {
       title: i18n._(`Payment History`),
       subTitle: i18n._(`View your payment history. Refunds`),
       icon: Landmark,
-      onClick: () => {
-        setIsShowPaymentHistoryModal(true);
-      },
+      onClick: () => setIsShowPaymentHistoryModal(true),
     },
   ];
 
