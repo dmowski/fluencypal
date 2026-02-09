@@ -308,8 +308,6 @@ Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term co
                     gap: '25px',
                   }}
                 >
-                  <HoursSelector onSelectHourPackage={onSelectHourPackage} />
-
                   <Stack>
                     <ColorIconTextList
                       gap="12px"
@@ -342,6 +340,7 @@ Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term co
                       ]}
                     />
                   </Stack>
+                  <HoursSelector onSelectHourPackage={onSelectHourPackage} />
                 </Stack>
               ) : (
                 <Stack
