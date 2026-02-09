@@ -1,8 +1,10 @@
+import { FeatureList } from '@/features/Landing/Price/FeatureList';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useCurrency } from '@/features/User/useCurrency';
 import { useLingui } from '@lingui/react';
 import { Stack, FormControlLabel, Checkbox, Typography, Button, Link } from '@mui/material';
+import { CreditCard } from 'lucide-react';
 import { useState } from 'react';
 
 export const ConfirmPaymentForm = ({
@@ -44,7 +46,7 @@ export const ConfirmPaymentForm = ({
           }}
           checked={looseRightChecked}
           onChange={(e) => setLooseRightChecked(!looseRightChecked)}
-          control={<Checkbox />}
+          control={<Checkbox size="large" />}
           label={
             <Typography variant="caption">
               {i18n._(`I want the service to be provided immediately and I acknowledge that as soon
@@ -62,7 +64,7 @@ export const ConfirmPaymentForm = ({
           }}
           checked={isTermsChecked}
           onChange={(e) => setIsTermsChecked(!isTermsChecked)}
-          control={<Checkbox />}
+          control={<Checkbox size="large" />}
           label={
             <Typography variant="caption">
               {i18n._(`I accept the`)}{' '}
@@ -71,22 +73,6 @@ export const ConfirmPaymentForm = ({
               </Link>{' '}
               {i18n._(`of the Website operated by Fundacja Rozwoju Przedsiębiorczości "Twój
                                   StartUp" with its registered office in Warsaw.`)}
-            </Typography>
-          }
-        />
-
-        <FormControlLabel
-          sx={{
-            '.MuiFormControlLabel-asterisk': {
-              color: '#f24',
-            },
-          }}
-          checked={isMarketingChecked}
-          onChange={(e) => setIsMarketingChecked(!isMarketingChecked)}
-          control={<Checkbox />}
-          label={
-            <Typography variant="caption">
-              {i18n._(`I want to receive commercial and marketing content`)}
             </Typography>
           }
         />
@@ -108,22 +94,33 @@ export const ConfirmPaymentForm = ({
       </Stack>
       <Stack
         sx={{
-          alignItems: 'center',
-          justifyContent: 'center',
           gap: '5px',
+          width: '100%',
+          alignItems: 'flex-start',
         }}
       >
         <Button
           color="info"
-          fullWidth
           variant="contained"
           disabled={isRedirecting}
           size="large"
           type="submit"
+          endIcon={<CreditCard />}
           name="submit"
+          sx={{
+            padding: '12px 60px',
+            fontSize: '16px',
+          }}
         >
           {i18n._(`Pay`)}
         </Button>
+      </Stack>
+      <Stack
+        sx={{
+          paddingTop: '20px',
+        }}
+      >
+        <FeatureList />
       </Stack>
     </Stack>
   );
