@@ -12,6 +12,7 @@ interface ConversationItemProps {
 export function ConversationItem({ conversation, onClick }: ConversationItemProps) {
   const stats = getConversationsStats(conversation);
   const usageKeys = Object.keys(conversation.usage || {});
+  const rolePlayId = conversation.rolePlayId;
   const totalUsage = usageKeys.reduce((acc, key) => {
     const price = conversation.usage?.[key] || 0;
     return acc + price;
@@ -39,7 +40,10 @@ export function ConversationItem({ conversation, onClick }: ConversationItemProp
         <b>{conversation.messagesCount} messages</b>
       </Typography>
 
-      <Typography sx={{}}>{conversation.mode}</Typography>
+      <Typography sx={{}}>
+        {conversation.mode}
+        {rolePlayId}
+      </Typography>
 
       <Typography sx={{}}>
         {dayjs(conversation.updatedAtIso).format('DD MMM')} |{' '}
