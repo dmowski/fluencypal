@@ -446,8 +446,10 @@ const QuizQuestions = () => {
             <>
               <AuthWall>
                 <WelcomeChatMessage
-                  title={i18n._(`Send a message to the community`)}
-                  subTitle={i18n._(`Record a welcome message to our community of learners.`)}
+                  title={i18n._(`Community`)}
+                  subTitle={i18n._(
+                    `Record a welcome message to our community of learners. It can be a great way to practice your speaking skills and introduce yourself to others!`,
+                  )}
                   done={next}
                   isLoading={isStepLoading}
                   exampleToRecord={survey?.exampleOfWelcomeMessage || ''}
