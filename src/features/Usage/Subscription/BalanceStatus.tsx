@@ -80,11 +80,7 @@ export const BalanceStatus = () => {
               })}
             </Typography>
           ) : (
-            <Typography variant="body1">
-              {i18n._(
-                'You can purchase a full access plan or get full access for free (more details in the FAQ section below).',
-              )}
-            </Typography>
+            <></>
           )}
         </Stack>
       </Stack>
