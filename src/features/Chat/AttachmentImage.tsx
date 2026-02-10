@@ -34,7 +34,7 @@ export const AttachmentImage = ({
         >
           <Image
             src={url}
-            alt="Avatar"
+            alt=""
             fill
             sizes={size}
             style={{
@@ -75,8 +75,8 @@ export const AttachmentImage = ({
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)',
-              width: '90vw',
-              height: '90vh',
+              width: '100vw',
+              height: '100vh',
               outline: 'none',
             }}
             onClick={() => setIsModalOpen(false)}
@@ -93,6 +93,7 @@ export const AttachmentImage = ({
                 alt="Full size image"
                 fill
                 sizes="1100px"
+                quality={100}
                 style={{
                   objectFit: 'contain',
                 }}

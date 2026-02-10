@@ -637,6 +637,7 @@ export const PreviewMessage = ({
   onOpen: (messageId: string) => void;
 }) => {
   const game = useGame();
+  const { i18n } = useLingui();
   const userAvatarUrl = game.getUserAvatarUrl(message.senderId);
   const userName = game.getUserName(message.senderId);
   const contentLimit = 120;
@@ -694,6 +695,11 @@ export const PreviewMessage = ({
         </Typography>
       </Stack>
       <MessageContent contentFontSize="14px">{contentToShow}</MessageContent>
+      {message.attachments && message.attachments.length > 0 && (
+        <Stack sx={{}}>
+          <Attachments attachments={message.attachments} canDelete={false} maxWidth="120px" />
+        </Stack>
+      )}
       <Stack
         sx={{
           pointerEvents: 'none',
@@ -717,10 +723,12 @@ export const Attachments = ({
   canDelete = false,
   attachments,
   onDeleteAttachment,
+  maxWidth = '200px',
 }: {
   attachments: ThreadsMessageAttachment[];
   onDeleteAttachment?: (index: number) => void;
   canDelete?: boolean;
+  maxWidth?: string;
 }) => {
   return (
     <Stack
@@ -735,7 +743,7 @@ export const Attachments = ({
         if (attachment.type === 'image') {
           return (
             <AttachmentImage
-              size="200px"
+              size={maxWidth}
               key={index}
               url={attachment.url}
               canDelete={canDelete}
@@ -746,7 +754,7 @@ export const Attachments = ({
         if (attachment.type === 'video') {
           return (
             <AttachmentVideo
-              size="200px"
+              size={maxWidth}
               key={index}
               url={attachment.url}
               canDelete={canDelete}
