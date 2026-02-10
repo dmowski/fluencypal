@@ -30,6 +30,7 @@ export const ConfirmPayment = ({
       <Stack
         sx={{
           width: '100%',
+          gap: '5px',
         }}
       >
         <Typography
@@ -46,6 +47,7 @@ export const ConfirmPayment = ({
         <Typography
           sx={{
             width: '100%',
+            fontSize: '22px',
           }}
         >
           {subTitle}
