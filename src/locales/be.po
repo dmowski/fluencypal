@@ -577,7 +577,6 @@ msgid "Address performance considerations"
 msgstr "Рашэнне пытанняў прадукцыйнасці"
 
 #: src/features/Alias/components/LanguageLevel.tsx:85
-#: src/features/Landing/Price/PricePage.tsx:382
 #. js-lingui-explicit-id
 msgid "Advanced"
 msgstr "Пашыраны"
@@ -600,7 +599,8 @@ msgstr "пашыранае англійскае размаўлянне"
 
 #: src/features/Landing/Price/FeatureList.tsx:56
 #: src/features/Landing/Price/FeatureList.tsx:80
-#: src/features/Landing/Price/PricePage.tsx:371
+#: src/features/Landing/Price/PricePage.tsx:377
+#: src/features/Landing/Price/PricePage.tsx:460
 #. js-lingui-explicit-id
 msgid "Advanced Personalization"
 msgstr "Пашыраная персаналізацыя"
@@ -1400,7 +1400,8 @@ msgstr "Набыццё {hours} гадзіны(гадзін) выкарыстан
 msgid "By continuing, you agree to our"
 msgstr "Працягваючы, вы згаджаецеся з нашымі"
 
-#: src/features/Landing/Price/PricePage.tsx:367
+#: src/features/Landing/Price/PricePage.tsx:373
+#: src/features/Landing/Price/PricePage.tsx:456
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "Праз практыку, вы атрымаеце асабістыя граматычныя правілы ад AI"
@@ -1473,6 +1474,11 @@ msgstr "Ці магу я наладзіць мае трэнінгі?"
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "Ці магу я зрабіць вяртанне пасля пакупкі?"
+
+#: src/features/Landing/Price/PricePage.tsx:92
+#. js-lingui-explicit-id
+msgid "Can I get a refund if I’m not satisfied?"
+msgstr "Ці магу я атрымаць зварот грошай, калі не задаволены?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
 #: src/features/Usage/Subscription/FaqSubscription.tsx:20
@@ -1942,17 +1948,6 @@ msgstr ""
 "Пастаяннае паляпшэнне з дапамогай структурнага навучання інтэрв'ю і "
 "персаналізаванай практыкі."
 
-#: src/features/Landing/Price/PricePage.tsx:401
-#. js-lingui-explicit-id
-msgid "Contact for pricing"
-msgstr "Кантакт для атрымання цэн"
-
-#: src/features/Landing/Price/PricePage.tsx:419
-#. Button title for contact me for advance pricing
-#. js-lingui-explicit-id
-msgid "Contact me"
-msgstr "Звярніцеся да мяне"
-
 #: src/features/Case/data/reusable/priceSection.ts:47
 #. js-lingui-explicit-id
 msgid "Contact us"
@@ -2028,7 +2023,8 @@ msgid "Conversation Practice"
 msgstr "Практыка размовы"
 
 #: src/features/Landing/Price/FeatureList.tsx:40
-#: src/features/Landing/Price/PricePage.tsx:351
+#: src/features/Landing/Price/PricePage.tsx:357
+#: src/features/Landing/Price/PricePage.tsx:440
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Практыка размовы"
@@ -2249,11 +2245,6 @@ msgstr "Бягучыя Балы"
 msgid "Custom"
 msgstr "Правіць"
 
-#: src/features/Landing/Price/PricePage.tsx:409
-#. js-lingui-explicit-id
-msgid "Custom features"
-msgstr "Спецыяльныя функцыі"
-
 #: src/features/Case/data/reusable/priceSection.ts:42
 #. js-lingui-explicit-id
 msgid "Custom interview roadmap"
@@ -2348,16 +2339,17 @@ msgstr "Дадзеныя і транзакцыі"
 msgid "Databases & Transactions"
 msgstr "Базы дадзеных і транзакцыі"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
+#. js-lingui-explicit-id
+msgid "Day"
+msgstr "Дзень"
+
+#: src/features/Landing/Price/PricePage.tsx:336
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:111
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "day"
 msgstr "дзень"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
-#. js-lingui-explicit-id
-msgid "Day"
-msgstr "Дзень"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
 #. js-lingui-explicit-id
@@ -2406,7 +2398,7 @@ msgstr "Тэмы для дэбатаў будуць выбірацца выпа�
 msgid "Debates"
 msgstr "Дэбаты"
 
-#: src/features/Landing/Price/PricePage.tsx:273
+#: src/features/Landing/Price/PricePage.tsx:279
 #. js-lingui-explicit-id
 msgid "Debates and discussions"
 msgstr "Дэбаты і дыскусіі"
@@ -2605,11 +2597,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Diagnosis"
 msgstr "Дыягноз"
-
-#: src/features/Landing/Price/PricePage.tsx:414
-#. js-lingui-explicit-id
-msgid "Discounted AI Usage"
-msgstr "Зніжанае выкарыстанне AI"
 
 #: src/features/Blog/ListBlog.tsx:72
 #: src/features/Case/ListPage/components/ListInterview.tsx:72
@@ -2992,8 +2979,9 @@ msgstr ""
 "Займіцеся прыемнай паўдзённай балачкай пра домашніх пітамцаў і шкодных "
 "рутынах"
 
-#: src/features/Landing/Price/PricePage.tsx:274
-#: src/features/Landing/Price/PricePage.tsx:345
+#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/Price/PricePage.tsx:351
+#: src/features/Landing/Price/PricePage.tsx:434
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr ""
@@ -3473,8 +3461,9 @@ msgstr ""
 "Яна дапаможа.  \n"
 "Яна проста будзе каментаваць аб чалавецтве, рабячы гэта."
 
-#: src/features/Landing/Price/PricePage.tsx:264
-#: src/features/Landing/Price/PricePage.tsx:335
+#: src/features/Landing/Price/PricePage.tsx:270
+#: src/features/Landing/Price/PricePage.tsx:341
+#: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
 msgid "Everything in Free, plus:"
 msgstr "Усё з Бясплатнага, плюс:"
@@ -3648,7 +3637,7 @@ msgstr "Праверка справядлівасці"
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
 #: src/features/Case/Landing/components/InterviewHeader.tsx:34
 #: src/features/Landing/LandingPage.tsx:425
-#: src/features/Landing/Price/PricePage.tsx:437
+#: src/features/Landing/Price/PricePage.tsx:482
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "ЧАП"
@@ -3891,7 +3880,7 @@ msgid "FluencyPal – AI English Speaking Practice for Fluency & Confidence"
 msgstr "FluencyPal - Практыка англійскай мовы з ШІ для ведання і самаўпэўненасці"
 
 #: src/features/Landing/LandingPage.tsx:167
-#: src/features/Landing/Price/PricePage.tsx:107
+#: src/features/Landing/Price/PricePage.tsx:113
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
 msgstr "FluencyPal – Ваш партнёр па ангельскай мове AI"
@@ -3936,12 +3925,12 @@ msgstr "For example:"
 msgid "For focused, uninterrupted learning."
 msgstr "Для засяроджанага, бесперапыннага навучання."
 
-#: src/features/Landing/Price/PricePage.tsx:230
+#: src/features/Landing/Price/PricePage.tsx:236
 #. js-lingui-explicit-id
 msgid "For learners getting started"
 msgstr "Для навучэнцаў, якія толькі пачынаюць"
 
-#: src/features/Landing/Price/PricePage.tsx:301
+#: src/features/Landing/Price/PricePage.tsx:390
 #. js-lingui-explicit-id
 msgid "For learners who want flexibility"
 msgstr "Для вучняў, якія хочуць гнучкасць"
@@ -3987,7 +3976,7 @@ msgstr "Інфармацыя спецыфічная для фреймворка�
 msgid "Frameworks & Libraries"
 msgstr "Фреймворкі і бібліятэкі"
 
-#: src/features/Landing/Price/PricePage.tsx:229
+#: src/features/Landing/Price/PricePage.tsx:235
 #. js-lingui-explicit-id
 msgid "Free"
 msgstr "Бясплатна"
@@ -4031,12 +4020,6 @@ msgstr "Вольны для ўсіх"
 msgid "French Learning Plan"
 msgstr "План вучэбы французскай мовы"
 
-#: src/features/Landing/Price/PricePage.tsx:383
-#: src/features/Landing/Price/PricePage.tsx:405
-#. js-lingui-explicit-id
-msgid "Frequent users who need more value"
-msgstr "Частыя карыстальнікі, якім патрэбнае большая вартасць"
-
 #: src/features/Community/SupportPage.tsx:66
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:11
 #: src/features/Usage/Subscription/FaqSubscription.tsx:10
@@ -4044,7 +4027,7 @@ msgstr "Частыя карыстальнікі, якім патрэбнае б�
 msgid "Frequently Asked Questions"
 msgstr "Часта Задаваемыя Пытанні"
 
-#: src/features/Landing/Price/PricePage.tsx:188
+#: src/features/Landing/Price/PricePage.tsx:194
 #. js-lingui-explicit-id
 msgid "From mistakes and hesitation to confident conversations"
 msgstr "Ад памылак і ваганняў да ўпэўненых размоў"
@@ -4080,7 +4063,6 @@ msgid "frontend system design interview"
 msgstr "фронтэнд сістэма дызайн інтэрв'ю"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:136
-#: src/features/Landing/Price/PricePage.tsx:300
 #: src/features/Settings/MyProfile.tsx:74
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:452
@@ -4115,6 +4097,16 @@ msgstr "Поўны доступ на 1 тыдзень"
 msgid "Full Access for 1 year"
 msgstr "Поўны доступ на 1 год"
 
+#: src/features/Landing/Price/PricePage.tsx:306
+#. js-lingui-explicit-id
+msgid "Full Access for a Day"
+msgstr "\"Поўны доступ на адзін дзень\""
+
+#: src/features/Landing/Price/PricePage.tsx:389
+#. js-lingui-explicit-id
+msgid "Full Access for a Month"
+msgstr "Поўны доступ на месяц"
+
 #: src/features/Case/data/reusable/priceSection.ts:24
 #. js-lingui-explicit-id
 msgid "Full access to all simulations"
@@ -4131,7 +4123,8 @@ msgid "Full AI interview coach access"
 msgstr "Поўны доступ да штучнага інтэлекту трэнера па інтэрв'ю"
 
 #: src/features/Landing/Price/FeatureList.tsx:32
-#: src/features/Landing/Price/PricePage.tsx:339
+#: src/features/Landing/Price/PricePage.tsx:345
+#: src/features/Landing/Price/PricePage.tsx:428
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Поўны доступ да AI-тутара"
@@ -4164,7 +4157,7 @@ msgstr "Налады гульні адсутнічаюць. Калі ласка,
 msgid "Game Statistics"
 msgstr "Статыстыка гульні"
 
-#: src/features/Landing/Price/PricePage.tsx:268
+#: src/features/Landing/Price/PricePage.tsx:274
 #. js-lingui-explicit-id
 msgid "Game-based practice"
 msgstr "Практыка на аснове гульні"
@@ -4233,11 +4226,6 @@ msgstr "Атрымаць доступ на тыдзень"
 #. js-lingui-explicit-id
 msgid "Get access for a year"
 msgstr "Атрымаць доступ на год"
-
-#: src/features/Landing/Price/PricePage.tsx:415
-#. js-lingui-explicit-id
-msgid "Get cheaper AI hours for bulk use"
-msgstr "Атрымаць больш танкія гадзіны AI за масавае выкарыстанне"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:24
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:24
@@ -4415,7 +4403,8 @@ msgstr ""
 msgid "Get My Plan"
 msgstr "Атрымаць мой план"
 
-#: src/features/Landing/Price/PricePage.tsx:362
+#: src/features/Landing/Price/PricePage.tsx:368
+#: src/features/Landing/Price/PricePage.tsx:451
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "Атрымлівайце новыя словы і фразы ў кантэксце"
@@ -4426,8 +4415,8 @@ msgid "Get Ready"
 msgstr "Падрыхтуйцеся"
 
 #: src/features/Blog/BlogsPage.tsx:39
-#: src/features/Landing/Price/PricePage.tsx:193
-#: src/features/Landing/Price/PricePage.tsx:452
+#: src/features/Landing/Price/PricePage.tsx:199
+#: src/features/Landing/Price/PricePage.tsx:497
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "Пачаць"
@@ -4437,13 +4426,14 @@ msgstr "Пачаць"
 msgid "Get Started Free"
 msgstr "Пачаць бясплатна"
 
-#: src/features/Landing/Price/PricePage.tsx:263
+#: src/features/Landing/Price/PricePage.tsx:269
 #. js-lingui-explicit-id
 msgid "Get started with basic features"
 msgstr "Пачніце з базавых функцый"
 
-#: src/features/Landing/Price/PricePage.tsx:269
-#: src/features/Landing/Price/PricePage.tsx:340
+#: src/features/Landing/Price/PricePage.tsx:275
+#: src/features/Landing/Price/PricePage.tsx:346
+#: src/features/Landing/Price/PricePage.tsx:429
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Атрымаць неабмежаваны доступ да практыкі мовы, якую падтрымлівае AI"
@@ -5547,10 +5537,11 @@ msgstr "Палепшыце навыкі англійскай мовы"
 msgid "improve English speaking"
 msgstr "палепшыць размаўлянне па-англійску"
 
-#: src/features/Landing/Price/PricePage.tsx:281
-#: src/features/Landing/Price/PricePage.tsx:286
-#: src/features/Landing/Price/PricePage.tsx:291
-#: src/features/Landing/Price/PricePage.tsx:352
+#: src/features/Landing/Price/PricePage.tsx:287
+#: src/features/Landing/Price/PricePage.tsx:292
+#: src/features/Landing/Price/PricePage.tsx:297
+#: src/features/Landing/Price/PricePage.tsx:358
+#: src/features/Landing/Price/PricePage.tsx:441
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "Палепшыце плавучасць з дапамогай інтэрактыўных сесій чату"
@@ -6565,7 +6556,7 @@ msgstr "Вучыцца"
 msgid "Learn anywhere, anytime"
 msgstr "Вучыцеся дзе-небудзь, калі-небудзь"
 
-#: src/features/Landing/Price/PricePage.tsx:334
+#: src/features/Landing/Price/PricePage.tsx:423
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "Вывучайце на поўнай хуткасці з поўным доступам"
@@ -7014,8 +7005,8 @@ msgstr "Інтэрв’ю па мадэлі "
 msgid "modern literature"
 msgstr "сучасная літаратура"
 
-#: src/features/Landing/Price/PricePage.tsx:259
-#: src/features/Landing/Price/PricePage.tsx:330
+#: src/features/Landing/Price/PricePage.tsx:265
+#: src/features/Landing/Price/PricePage.tsx:419
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:106
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
@@ -7124,13 +7115,15 @@ msgid "New Game"
 msgstr "Новая гульня"
 
 #: src/features/Landing/Price/FeatureList.tsx:52
-#: src/features/Landing/Price/PricePage.tsx:366
+#: src/features/Landing/Price/PricePage.tsx:372
+#: src/features/Landing/Price/PricePage.tsx:455
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "Новыя граматычныя правілы"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
-#: src/features/Landing/Price/PricePage.tsx:361
+#: src/features/Landing/Price/PricePage.tsx:367
+#: src/features/Landing/Price/PricePage.tsx:450
 #. js-lingui-explicit-id
 msgid "New Words"
 msgstr "Новыя словы"
@@ -7507,7 +7500,7 @@ msgstr "Практыка анлайн мовы"
 msgid "Oops! Something went wrong"
 msgstr "Ой! Нешта пайшло не так"
 
-#: src/features/Landing/Price/PricePage.tsx:195
+#: src/features/Landing/Price/PricePage.tsx:201
 #. js-lingui-explicit-id
 msgid "Open"
 msgstr "Адкрыць"
@@ -7796,7 +7789,7 @@ msgstr "Абярыце ўзровень, каб пачаць гуляць!"
 msgid "Pick one or more categories to build your word list."
 msgstr "Выберыце адну або некалькі катэгорый для стварэння свайго спісу слоў."
 
-#: src/features/Landing/Price/PricePage.tsx:290
+#: src/features/Landing/Price/PricePage.tsx:296
 #. js-lingui-explicit-id
 msgid "Place in the top 5 in the game to gain full access"
 msgstr "Займіце месца ў топ-5 у гульні, каб атрымаць поўны доступ"
@@ -8368,7 +8361,7 @@ msgstr "Папярэдняе пытанне"
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
 #: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:178
+#: src/features/Landing/Price/PricePage.tsx:184
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "Цана"
@@ -8467,7 +8460,8 @@ msgstr "Стежка за прагрэсам"
 
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
-#: src/features/Landing/Price/PricePage.tsx:356
+#: src/features/Landing/Price/PricePage.tsx:362
+#: src/features/Landing/Price/PricePage.tsx:445
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Сачыненне прагрэсу"
@@ -8626,7 +8620,7 @@ msgstr "Чытайце тэкст"
 msgid "Reader"
 msgstr "Чытач"
 
-#: src/features/Landing/Price/PricePage.tsx:285
+#: src/features/Landing/Price/PricePage.tsx:291
 #. js-lingui-explicit-id
 msgid "Reading practice"
 msgstr "Практыка чытання"
@@ -9046,7 +9040,8 @@ msgid "Role-Play"
 msgstr "Ролевая гульня"
 
 #: src/features/Landing/Price/FeatureList.tsx:36
-#: src/features/Landing/Price/PricePage.tsx:344
+#: src/features/Landing/Price/PricePage.tsx:350
+#: src/features/Landing/Price/PricePage.tsx:433
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "Ролевыя сцэнары"
@@ -9191,7 +9186,8 @@ msgstr "Паглядзіце, які від зваротнай сувязі ад
 msgid "See the type of feedback you'll get"
 msgstr "Паглядзіце, які тып зваротнай сувязі вы атрымаеце"
 
-#: src/features/Landing/Price/PricePage.tsx:357
+#: src/features/Landing/Price/PricePage.tsx:363
+#: src/features/Landing/Price/PricePage.tsx:446
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
 msgstr "Бачыце свае паляпшэнні і сачыце за сваім шляхам навучання"
@@ -9731,8 +9727,9 @@ msgstr "Зоркі"
 #: src/features/Dashboard/PlanDashboardCards.tsx:300
 #: src/features/Goal/Quiz/GoalReview.tsx:172
 #: src/features/Landing/PlanLandingBlock.tsx:527
-#: src/features/Landing/Price/PricePage.tsx:295
-#: src/features/Landing/Price/PricePage.tsx:378
+#: src/features/Landing/Price/PricePage.tsx:301
+#: src/features/Landing/Price/PricePage.tsx:384
+#: src/features/Landing/Price/PricePage.tsx:467
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:325
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:283
@@ -9857,7 +9854,7 @@ msgid "Start Your Interview Test"
 msgstr "Пачніце свой тэставы інтэрв'ю"
 
 #: src/features/Blog/BlogsPage.tsx:38
-#: src/features/Landing/Price/PricePage.tsx:451
+#: src/features/Landing/Price/PricePage.tsx:496
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:40
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
@@ -10157,11 +10154,6 @@ msgid ""
 msgstr ""
 "Спраўляйцеся з задачамі кадзіравання, эфектыўна выпраўляйце праблемы і "
 "выразна тлумачце свой ход думак."
-
-#: src/features/Landing/Price/PricePage.tsx:410
-#. js-lingui-explicit-id
-msgid "Tailor AI interactions to fit your needs"
-msgstr "Наладзьце ўзаемадзеянне з AI пад вашыя патрэбы"
 
 #: src/features/Case/data/backendCSharp/techStackSection.ts:13
 #. js-lingui-explicit-id
@@ -10921,6 +10913,11 @@ msgstr "Час, што застаўся"
 msgid "Timed"
 msgstr "Адлічаны"
 
+#: src/features/Landing/Price/PricePage.tsx:307
+#. js-lingui-explicit-id
+msgid "To try full features for a short time"
+msgstr "Каб паспрабаваць поўныя функцыі на кароткі час"
+
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
 msgid ""
@@ -11028,6 +11025,11 @@ msgstr "Паспрабуйце"
 #. js-lingui-explicit-id
 msgid "Try for free"
 msgstr "Паспрабуйце бясплатна"
+
+#: src/features/Landing/Price/PricePage.tsx:340
+#. js-lingui-explicit-id
+msgid "Try full features and decide if it’s right for you"
+msgstr "Паспрабуйце ўсе функцыі і вырашыце, ці падыходзіць яны вам"
 
 #: src/features/Lang/getLabels.tsx:27
 #. js-lingui-explicit-id
@@ -11320,7 +11322,7 @@ msgstr ""
 msgid "Vocabulary"
 msgstr "Слоўнік"
 
-#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/Price/PricePage.tsx:286
 #. js-lingui-explicit-id
 msgid "Vocabulary challenges"
 msgstr "Выклікі слоўнікавага запасу"
@@ -11589,16 +11591,16 @@ msgstr "Папярэдні прагляд зваротнай сувязі вэб
 msgid "Webcam Setup"
 msgstr "Наладка вэб-камеры"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
+#. js-lingui-explicit-id
+msgid "Week"
+msgstr "Тыдзень"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:108
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
 msgstr "тыдзень"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
-#. js-lingui-explicit-id
-msgid "Week"
-msgstr "Тыдзень"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:13
 #. js-lingui-explicit-id
@@ -11653,11 +11655,6 @@ msgstr "Што вы атрымаеце з поўным доступам?"
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "Што вы думаеце?"
-
-#: src/features/Landing/Price/PricePage.tsx:406
-#. js-lingui-explicit-id
-msgid "What I can do for you:"
-msgstr "Што я магу зрабіць для вас:"
 
 #: src/features/Landing/LandingPage.tsx:34
 #. js-lingui-explicit-id
@@ -11852,7 +11849,8 @@ msgstr ""
 "персаналізаванай зваротнай сувяззю, карэкцыяй у рэальным часе і "
 "падтрымліўчай супольнасцю."
 
-#: src/features/Landing/Price/PricePage.tsx:372
+#: src/features/Landing/Price/PricePage.tsx:378
+#: src/features/Landing/Price/PricePage.tsx:461
 #. js-lingui-explicit-id
 msgid ""
 "With time, AI will adapt to your learning style and it will be more "
@@ -11972,16 +11970,16 @@ msgstr ""
 msgid "Wrong Link"
 msgstr "Няправільная спасылка"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
+#. js-lingui-explicit-id
+msgid "Year"
+msgstr "Год"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:110
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
 msgstr "год"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
-#. js-lingui-explicit-id
-msgid "Year"
-msgstr "Год"
 
 #: src/features/Header/NeedHelpModal.tsx:80
 #. js-lingui-explicit-id
@@ -12044,6 +12042,17 @@ msgstr ""
 "Так. Калі вы не задаволены паслугай, на старонцы \"Профіль/Гісторыя "
 "плацяжоў\" вы можаце запатрабаваць вяртанне сродкаў, і мы абмяркуем "
 "падрабязнасці."
+
+#: src/features/Landing/Price/PricePage.tsx:93
+#. js-lingui-explicit-id
+msgid ""
+"Yes. If you’re not satisfied with the service, on \"Profile/Payment "
+"history\" page you can request a refund and we will discuss the details and "
+"return the amount paid."
+msgstr ""
+"Так. Калі вы не задаволены паслугай, на старонцы \"Профіль/Гісторыя "
+"плацяжоў\" вы можаце запытаць вяртанне грошай, і мы абмяркуем дэталі і "
+"вернем аплачаную суму."
 
 #: src/features/Usage/Subscription/FaqSubscription.tsx:21
 #. js-lingui-explicit-id
@@ -12648,6 +12657,48 @@ msgid ""
 msgstr ""
 "— важна заняцца гэтай кароткай размовай, перш чым прыступіць да прафесійных "
 "тэм. Вось некаторыя карысныя англійскія фразы для пачатку інтэрв'ю:"
+
+#: src/features/Landing/Price/PricePage.tsx:401
+#. js-lingui-explicit-id
+#~ msgid "Contact for pricing"
+#~ msgstr "Кантакт для атрымання цэн"
+
+#: src/features/Landing/Price/PricePage.tsx:419
+#. Button title for contact me for advance pricing
+#. js-lingui-explicit-id
+#~ msgid "Contact me"
+#~ msgstr "Звярніцеся да мяне"
+
+#: src/features/Landing/Price/PricePage.tsx:409
+#. js-lingui-explicit-id
+#~ msgid "Custom features"
+#~ msgstr "Спецыяльныя функцыі"
+
+#: src/features/Landing/Price/PricePage.tsx:414
+#. js-lingui-explicit-id
+#~ msgid "Discounted AI Usage"
+#~ msgstr "Зніжанае выкарыстанне AI"
+
+#: src/features/Landing/Price/PricePage.tsx:383
+#: src/features/Landing/Price/PricePage.tsx:405
+#. js-lingui-explicit-id
+#~ msgid "Frequent users who need more value"
+#~ msgstr "Частыя карыстальнікі, якім патрэбнае большая вартасць"
+
+#: src/features/Landing/Price/PricePage.tsx:415
+#. js-lingui-explicit-id
+#~ msgid "Get cheaper AI hours for bulk use"
+#~ msgstr "Атрымаць больш танкія гадзіны AI за масавае выкарыстанне"
+
+#: src/features/Landing/Price/PricePage.tsx:410
+#. js-lingui-explicit-id
+#~ msgid "Tailor AI interactions to fit your needs"
+#~ msgstr "Наладзьце ўзаемадзеянне з AI пад вашыя патрэбы"
+
+#: src/features/Landing/Price/PricePage.tsx:406
+#. js-lingui-explicit-id
+#~ msgid "What I can do for you:"
+#~ msgstr "Што я магу зрабіць для вас:"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:192
 #. js-lingui-explicit-id

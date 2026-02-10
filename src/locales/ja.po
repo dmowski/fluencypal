@@ -542,7 +542,6 @@ msgid "Address performance considerations"
 msgstr "パフォーマンスの考慮点に対応する"
 
 #: src/features/Alias/components/LanguageLevel.tsx:85
-#: src/features/Landing/Price/PricePage.tsx:382
 #. js-lingui-explicit-id
 msgid "Advanced"
 msgstr "高度な"
@@ -565,7 +564,8 @@ msgstr "高度な英会話"
 
 #: src/features/Landing/Price/FeatureList.tsx:56
 #: src/features/Landing/Price/FeatureList.tsx:80
-#: src/features/Landing/Price/PricePage.tsx:371
+#: src/features/Landing/Price/PricePage.tsx:377
+#: src/features/Landing/Price/PricePage.tsx:460
 #. js-lingui-explicit-id
 msgid "Advanced Personalization"
 msgstr "高度なパーソナライゼーション"
@@ -1339,7 +1339,8 @@ msgstr "AI使用{hours}時間の購入"
 msgid "By continuing, you agree to our"
 msgstr "続行することにより、あなたは当社のに同意したことになります"
 
-#: src/features/Landing/Price/PricePage.tsx:367
+#: src/features/Landing/Price/PricePage.tsx:373
+#: src/features/Landing/Price/PricePage.tsx:456
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "練習することで、AIから個人的な文法のルールを得ることができます"
@@ -1412,6 +1413,11 @@ msgstr "練習セッションをカスタマイズできますか？"
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "購入後に返金はできますか？"
+
+#: src/features/Landing/Price/PricePage.tsx:92
+#. js-lingui-explicit-id
+msgid "Can I get a refund if I’m not satisfied?"
+msgstr "満足できない場合、返金を受けることができますか？"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
 #: src/features/Usage/Subscription/FaqSubscription.tsx:20
@@ -1862,19 +1868,6 @@ msgid ""
 "practice."
 msgstr "構造化面接コーチングと個別練習で一貫した向上を。"
 
-#: src/features/Landing/Price/PricePage.tsx:401
-#. js-lingui-explicit-id
-msgid "Contact for pricing"
-msgstr "価格についてのお問い合わせ"
-
-#: src/features/Landing/Price/PricePage.tsx:419
-#. Button title for contact me for advance pricing
-#. js-lingui-explicit-id
-msgid "Contact me"
-msgstr ""
-"\n"
-"私に連絡してください\n"
-
 #: src/features/Case/data/reusable/priceSection.ts:47
 #. js-lingui-explicit-id
 msgid "Contact us"
@@ -1950,7 +1943,8 @@ msgid "Conversation Practice"
 msgstr "会話練習"
 
 #: src/features/Landing/Price/FeatureList.tsx:40
-#: src/features/Landing/Price/PricePage.tsx:351
+#: src/features/Landing/Price/PricePage.tsx:357
+#: src/features/Landing/Price/PricePage.tsx:440
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "会話練習"
@@ -2155,11 +2149,6 @@ msgstr "現在のスコア"
 msgid "Custom"
 msgstr "カスタム"
 
-#: src/features/Landing/Price/PricePage.tsx:409
-#. js-lingui-explicit-id
-msgid "Custom features"
-msgstr "カスタム機能"
-
 #: src/features/Case/data/reusable/priceSection.ts:42
 #. js-lingui-explicit-id
 msgid "Custom interview roadmap"
@@ -2251,15 +2240,16 @@ msgstr "データ & トランザクションズ"
 msgid "Databases & Transactions"
 msgstr "データベースとトランザクション"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
+#. js-lingui-explicit-id
+msgid "Day"
+msgstr "日"
+
+#: src/features/Landing/Price/PricePage.tsx:336
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:111
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "day"
-msgstr "日"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
-#. js-lingui-explicit-id
-msgid "Day"
 msgstr "日"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
@@ -2309,7 +2299,7 @@ msgstr "ランダムにディベートトピックが選ばれます。"
 msgid "Debates"
 msgstr "ディベート"
 
-#: src/features/Landing/Price/PricePage.tsx:273
+#: src/features/Landing/Price/PricePage.tsx:279
 #. js-lingui-explicit-id
 msgid "Debates and discussions"
 msgstr "ディベートとディスカッション"
@@ -2489,11 +2479,6 @@ msgstr "製品企業をターゲットにした開発者は、複雑なフロン
 #. js-lingui-explicit-id
 msgid "Diagnosis"
 msgstr "診断"
-
-#: src/features/Landing/Price/PricePage.tsx:414
-#. js-lingui-explicit-id
-msgid "Discounted AI Usage"
-msgstr "割引されたAI使用"
 
 #: src/features/Blog/ListBlog.tsx:72
 #: src/features/Case/ListPage/components/ListInterview.tsx:72
@@ -2828,8 +2813,9 @@ msgstr ""
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr "ペットや日常のルーチンについてのフレンドリーなスモールトークに参加しましょう。"
 
-#: src/features/Landing/Price/PricePage.tsx:274
-#: src/features/Landing/Price/PricePage.tsx:345
+#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/Price/PricePage.tsx:351
+#: src/features/Landing/Price/PricePage.tsx:434
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr "実際の会話に参加しましょう、例えば仕事の面接や食べ物の注文など。"
@@ -3271,8 +3257,9 @@ msgstr ""
 "彼女は助けてくれます。  \n"
 "ただし、人間性についてコメントしながらそれを行います。"
 
-#: src/features/Landing/Price/PricePage.tsx:264
-#: src/features/Landing/Price/PricePage.tsx:335
+#: src/features/Landing/Price/PricePage.tsx:270
+#: src/features/Landing/Price/PricePage.tsx:341
+#: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
 msgid "Everything in Free, plus:"
 msgstr "フリープランに加えて、以下の特典があります："
@@ -3435,7 +3422,7 @@ msgstr "フェアネスチェック"
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
 #: src/features/Case/Landing/components/InterviewHeader.tsx:34
 #: src/features/Landing/LandingPage.tsx:425
-#: src/features/Landing/Price/PricePage.tsx:437
+#: src/features/Landing/Price/PricePage.tsx:482
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "FAQ"
@@ -3649,7 +3636,7 @@ msgid "FluencyPal – AI English Speaking Practice for Fluency & Confidence"
 msgstr "FluencyPal – 流暢さと自信のためのAI英語スピーキング練習"
 
 #: src/features/Landing/LandingPage.tsx:167
-#: src/features/Landing/Price/PricePage.tsx:107
+#: src/features/Landing/Price/PricePage.tsx:113
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
 msgstr "FluencyPal – あなたのAI英会話パートナー"
@@ -3691,12 +3678,12 @@ msgstr "例えば:"
 msgid "For focused, uninterrupted learning."
 msgstr "フォーカスされた、途切れのない学習のために。"
 
-#: src/features/Landing/Price/PricePage.tsx:230
+#: src/features/Landing/Price/PricePage.tsx:236
 #. js-lingui-explicit-id
 msgid "For learners getting started"
 msgstr "学習者のためのスタートガイド"
 
-#: src/features/Landing/Price/PricePage.tsx:301
+#: src/features/Landing/Price/PricePage.tsx:390
 #. js-lingui-explicit-id
 msgid "For learners who want flexibility"
 msgstr "フレキシビリティを求める学習者のために"
@@ -3740,7 +3727,7 @@ msgstr "フレームワーク固有の洞察 (React, Vue, Angular)"
 msgid "Frameworks & Libraries"
 msgstr "フレームワークとライブラリ"
 
-#: src/features/Landing/Price/PricePage.tsx:229
+#: src/features/Landing/Price/PricePage.tsx:235
 #. js-lingui-explicit-id
 msgid "Free"
 msgstr "無料"
@@ -3784,12 +3771,6 @@ msgstr "フリーオール"
 msgid "French Learning Plan"
 msgstr "フランス語学習計画"
 
-#: src/features/Landing/Price/PricePage.tsx:383
-#: src/features/Landing/Price/PricePage.tsx:405
-#. js-lingui-explicit-id
-msgid "Frequent users who need more value"
-msgstr "頻繁に利用するユーザーがより多くの価値を必要とする"
-
 #: src/features/Community/SupportPage.tsx:66
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:11
 #: src/features/Usage/Subscription/FaqSubscription.tsx:10
@@ -3799,7 +3780,7 @@ msgstr ""
 "\n"
 "よくある質問\n"
 
-#: src/features/Landing/Price/PricePage.tsx:188
+#: src/features/Landing/Price/PricePage.tsx:194
 #. js-lingui-explicit-id
 msgid "From mistakes and hesitation to confident conversations"
 msgstr "間違いやためらいから自信を持った会話へ"
@@ -3833,7 +3814,6 @@ msgid "frontend system design interview"
 msgstr "フロントエンドシステム設計面接"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:136
-#: src/features/Landing/Price/PricePage.tsx:300
 #: src/features/Settings/MyProfile.tsx:74
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:452
@@ -3868,6 +3848,16 @@ msgstr "1週間のフルアクセス"
 msgid "Full Access for 1 year"
 msgstr "1年間のフルアクセス"
 
+#: src/features/Landing/Price/PricePage.tsx:306
+#. js-lingui-explicit-id
+msgid "Full Access for a Day"
+msgstr "1日フルアクセス"
+
+#: src/features/Landing/Price/PricePage.tsx:389
+#. js-lingui-explicit-id
+msgid "Full Access for a Month"
+msgstr "1ヶ月間のフルアクセス"
+
 #: src/features/Case/data/reusable/priceSection.ts:24
 #. js-lingui-explicit-id
 msgid "Full access to all simulations"
@@ -3884,7 +3874,8 @@ msgid "Full AI interview coach access"
 msgstr "フル AI 面接コーチアクセス"
 
 #: src/features/Landing/Price/FeatureList.tsx:32
-#: src/features/Landing/Price/PricePage.tsx:339
+#: src/features/Landing/Price/PricePage.tsx:345
+#: src/features/Landing/Price/PricePage.tsx:428
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "フルAIチューターアクセス"
@@ -3917,7 +3908,7 @@ msgstr "ゲーム設定がありません。戻ってください。"
 msgid "Game Statistics"
 msgstr "ゲーム統計"
 
-#: src/features/Landing/Price/PricePage.tsx:268
+#: src/features/Landing/Price/PricePage.tsx:274
 #. js-lingui-explicit-id
 msgid "Game-based practice"
 msgstr "ゲームベースの練習"
@@ -3986,11 +3977,6 @@ msgstr "1週間アクセスを取得"
 #. js-lingui-explicit-id
 msgid "Get access for a year"
 msgstr "1 年間のアクセスを取得"
-
-#: src/features/Landing/Price/PricePage.tsx:415
-#. js-lingui-explicit-id
-msgid "Get cheaper AI hours for bulk use"
-msgstr "バルク使用のためのより安価なAI時間を取得する"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:24
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:24
@@ -4141,7 +4127,8 @@ msgstr "構造、明瞭さ、上級レベルの推論についての即時AIフ�
 msgid "Get My Plan"
 msgstr "プランを取得"
 
-#: src/features/Landing/Price/PricePage.tsx:362
+#: src/features/Landing/Price/PricePage.tsx:368
+#: src/features/Landing/Price/PricePage.tsx:451
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "コンテキスト内で新しい単語とフレーズを習得する"
@@ -4152,8 +4139,8 @@ msgid "Get Ready"
 msgstr "準備する"
 
 #: src/features/Blog/BlogsPage.tsx:39
-#: src/features/Landing/Price/PricePage.tsx:193
-#: src/features/Landing/Price/PricePage.tsx:452
+#: src/features/Landing/Price/PricePage.tsx:199
+#: src/features/Landing/Price/PricePage.tsx:497
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "開始する"
@@ -4163,13 +4150,14 @@ msgstr "開始する"
 msgid "Get Started Free"
 msgstr "無料で始める"
 
-#: src/features/Landing/Price/PricePage.tsx:263
+#: src/features/Landing/Price/PricePage.tsx:269
 #. js-lingui-explicit-id
 msgid "Get started with basic features"
 msgstr "基本機能を使い始める"
 
-#: src/features/Landing/Price/PricePage.tsx:269
-#: src/features/Landing/Price/PricePage.tsx:340
+#: src/features/Landing/Price/PricePage.tsx:275
+#: src/features/Landing/Price/PricePage.tsx:346
+#: src/features/Landing/Price/PricePage.tsx:429
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "無制限のAI駆動の言語練習へのアクセスを得る"
@@ -5170,10 +5158,11 @@ msgstr "英語スキルを向上させる"
 msgid "improve English speaking"
 msgstr "英語の話す能力を向上させる"
 
-#: src/features/Landing/Price/PricePage.tsx:281
-#: src/features/Landing/Price/PricePage.tsx:286
-#: src/features/Landing/Price/PricePage.tsx:291
-#: src/features/Landing/Price/PricePage.tsx:352
+#: src/features/Landing/Price/PricePage.tsx:287
+#: src/features/Landing/Price/PricePage.tsx:292
+#: src/features/Landing/Price/PricePage.tsx:297
+#: src/features/Landing/Price/PricePage.tsx:358
+#: src/features/Landing/Price/PricePage.tsx:441
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "インタラクティブなチャットセッションで流暢さを向上させる"
@@ -6091,7 +6080,7 @@ msgstr "学ぶ"
 msgid "Learn anywhere, anytime"
 msgstr "いつでも、どこでも学ぶ"
 
-#: src/features/Landing/Price/PricePage.tsx:334
+#: src/features/Landing/Price/PricePage.tsx:423
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "完全なアクセスで全速力で学びましょう"
@@ -6531,8 +6520,8 @@ msgstr "模擬インタビュー"
 msgid "modern literature"
 msgstr "現代文学"
 
-#: src/features/Landing/Price/PricePage.tsx:259
-#: src/features/Landing/Price/PricePage.tsx:330
+#: src/features/Landing/Price/PricePage.tsx:265
+#: src/features/Landing/Price/PricePage.tsx:419
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:106
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
@@ -6639,13 +6628,15 @@ msgid "New Game"
 msgstr "新しいゲーム"
 
 #: src/features/Landing/Price/FeatureList.tsx:52
-#: src/features/Landing/Price/PricePage.tsx:366
+#: src/features/Landing/Price/PricePage.tsx:372
+#: src/features/Landing/Price/PricePage.tsx:455
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "新しい文法ルール"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
-#: src/features/Landing/Price/PricePage.tsx:361
+#: src/features/Landing/Price/PricePage.tsx:367
+#: src/features/Landing/Price/PricePage.tsx:450
 #. js-lingui-explicit-id
 msgid "New Words"
 msgstr "新しい単語"
@@ -7001,7 +6992,7 @@ msgstr "オンライン言語練習"
 msgid "Oops! Something went wrong"
 msgstr "おっと！何かが間違っています"
 
-#: src/features/Landing/Price/PricePage.tsx:195
+#: src/features/Landing/Price/PricePage.tsx:201
 #. js-lingui-explicit-id
 msgid "Open"
 msgstr "開く"
@@ -7272,7 +7263,7 @@ msgstr "プレイ開始のレベルを選んでください！"
 msgid "Pick one or more categories to build your word list."
 msgstr "一つ以上のカテゴリーを選んで、単語リストを作成しましょう。"
 
-#: src/features/Landing/Price/PricePage.tsx:290
+#: src/features/Landing/Price/PricePage.tsx:296
 #. js-lingui-explicit-id
 msgid "Place in the top 5 in the game to gain full access"
 msgstr "ゲームでトップ5に入ってフルアクセスを獲得してください"
@@ -7796,7 +7787,7 @@ msgstr "前の質問"
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
 #: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:178
+#: src/features/Landing/Price/PricePage.tsx:184
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "価格"
@@ -7897,7 +7888,8 @@ msgstr "進捗追跡"
 
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
-#: src/features/Landing/Price/PricePage.tsx:356
+#: src/features/Landing/Price/PricePage.tsx:362
+#: src/features/Landing/Price/PricePage.tsx:445
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "進行状況の追跡"
@@ -8055,7 +8047,7 @@ msgstr "テキストを読む"
 msgid "Reader"
 msgstr "リーダー"
 
-#: src/features/Landing/Price/PricePage.tsx:285
+#: src/features/Landing/Price/PricePage.tsx:291
 #. js-lingui-explicit-id
 msgid "Reading practice"
 msgstr "リーディング練習"
@@ -8454,7 +8446,8 @@ msgid "Role-Play"
 msgstr "役割演技"
 
 #: src/features/Landing/Price/FeatureList.tsx:36
-#: src/features/Landing/Price/PricePage.tsx:344
+#: src/features/Landing/Price/PricePage.tsx:350
+#: src/features/Landing/Price/PricePage.tsx:433
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "ロールプレイシナリオ"
@@ -8597,7 +8590,8 @@ msgstr "バックエンドフィードバックの種類をご覧ください"
 msgid "See the type of feedback you'll get"
 msgstr "受け取るフィードバックの種類をご覧ください"
 
-#: src/features/Landing/Price/PricePage.tsx:357
+#: src/features/Landing/Price/PricePage.tsx:363
+#: src/features/Landing/Price/PricePage.tsx:446
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
 msgstr "あなたの進歩を見て、学習の旅を追跡してください"
@@ -9109,8 +9103,9 @@ msgstr "スターズ"
 #: src/features/Dashboard/PlanDashboardCards.tsx:300
 #: src/features/Goal/Quiz/GoalReview.tsx:172
 #: src/features/Landing/PlanLandingBlock.tsx:527
-#: src/features/Landing/Price/PricePage.tsx:295
-#: src/features/Landing/Price/PricePage.tsx:378
+#: src/features/Landing/Price/PricePage.tsx:301
+#: src/features/Landing/Price/PricePage.tsx:384
+#: src/features/Landing/Price/PricePage.tsx:467
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:325
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:283
@@ -9240,7 +9235,7 @@ msgid "Start Your Interview Test"
 msgstr "インタビューテストを開始する"
 
 #: src/features/Blog/BlogsPage.tsx:38
-#: src/features/Landing/Price/PricePage.tsx:451
+#: src/features/Landing/Price/PricePage.tsx:496
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:40
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
@@ -9513,11 +9508,6 @@ msgid ""
 "Tackle coding challenges, debug issues effectively, and explain your "
 "thought process clearly."
 msgstr "コーディングチャレンジに取り組み、問題を効果的にデバッグし、あなたの思考過程を明確に説明してください。"
-
-#: src/features/Landing/Price/PricePage.tsx:410
-#. js-lingui-explicit-id
-msgid "Tailor AI interactions to fit your needs"
-msgstr "あなたのニーズに合わせてAIとのインタラクションを調整します"
 
 #: src/features/Case/data/backendCSharp/techStackSection.ts:13
 #. js-lingui-explicit-id
@@ -10235,6 +10225,11 @@ msgstr ""
 msgid "Timed"
 msgstr "時間制限付き"
 
+#: src/features/Landing/Price/PricePage.tsx:307
+#. js-lingui-explicit-id
+msgid "To try full features for a short time"
+msgstr "一時的にすべての機能を試す"
+
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
 msgid ""
@@ -10344,6 +10339,11 @@ msgstr "試してみてください"
 #. js-lingui-explicit-id
 msgid "Try for free"
 msgstr "無料で試してみる"
+
+#: src/features/Landing/Price/PricePage.tsx:340
+#. js-lingui-explicit-id
+msgid "Try full features and decide if it’s right for you"
+msgstr "完全な機能をお試しいただき、それがあなたに合っているかどうかを決めてください。"
 
 #: src/features/Lang/getLabels.tsx:27
 #. js-lingui-explicit-id
@@ -10625,7 +10625,7 @@ msgstr "あなたの毎日の進捗を直感的なトラッキングで可視化
 msgid "Vocabulary"
 msgstr "語彙"
 
-#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/Price/PricePage.tsx:286
 #. js-lingui-explicit-id
 msgid "Vocabulary challenges"
 msgstr "ボキャブラリーチャレンジ"
@@ -10876,6 +10876,11 @@ msgstr "ウェブカメラフィードバックプレビュー"
 msgid "Webcam Setup"
 msgstr "ウェブカメラのセットアップ"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
+#. js-lingui-explicit-id
+msgid "Week"
+msgstr "週間"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:108
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
@@ -10883,11 +10888,6 @@ msgid "week"
 msgstr ""
 "\n"
 "週\n"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
-#. js-lingui-explicit-id
-msgid "Week"
-msgstr "週間"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:13
 #. js-lingui-explicit-id
@@ -10938,11 +10938,6 @@ msgstr "フルアクセスで何が得られますか?"
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "何を考えていますか？"
-
-#: src/features/Landing/Price/PricePage.tsx:406
-#. js-lingui-explicit-id
-msgid "What I can do for you:"
-msgstr "私があなたのためにできること："
 
 #: src/features/Landing/LandingPage.tsx:34
 #. js-lingui-explicit-id
@@ -11132,7 +11127,8 @@ msgstr ""
 "FluencyPalを使用すれば、パーソナライズされたフィードバック、リアルタイムの訂正、そして支援的なコミュニティを通じて学習体験を向上させることがで"
 "きます。"
 
-#: src/features/Landing/Price/PricePage.tsx:372
+#: src/features/Landing/Price/PricePage.tsx:378
+#: src/features/Landing/Price/PricePage.tsx:461
 #. js-lingui-explicit-id
 msgid ""
 "With time, AI will adapt to your learning style and it will be more "
@@ -11246,15 +11242,15 @@ msgstr "インタビューを感謝と自信を持って締めくくりましょ
 msgid "Wrong Link"
 msgstr "リンクが間違っています"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
+#. js-lingui-explicit-id
+msgid "Year"
+msgstr "年"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:110
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
-msgstr "年"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
-#. js-lingui-explicit-id
-msgid "Year"
 msgstr "年"
 
 #: src/features/Header/NeedHelpModal.tsx:80
@@ -11307,6 +11303,16 @@ msgid ""
 "Yes. If you're not satisfied with the service, on \"Profile/Payment "
 "history\" page you can request a refund and we will discuss the details."
 msgstr "はい。サービスにご満足いただけない場合は、「プロフィール/支払い履歴」ページから返金をリクエストでき、詳しい内容についてお話し合いします。"
+
+#: src/features/Landing/Price/PricePage.tsx:93
+#. js-lingui-explicit-id
+msgid ""
+"Yes. If you’re not satisfied with the service, on \"Profile/Payment "
+"history\" page you can request a refund and we will discuss the details and "
+"return the amount paid."
+msgstr ""
+"はい。サービスにご満足いただけない場合は、「プロフィール/"
+"支払い履歴」ページで返金をリクエストでき、詳細についてご相談の上、お支払いいただいた金額を返金いたします。"
 
 #: src/features/Usage/Subscription/FaqSubscription.tsx:21
 #. js-lingui-explicit-id
@@ -11859,6 +11865,50 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Landing/Price/PricePage.tsx:401
+#. js-lingui-explicit-id
+#~ msgid "Contact for pricing"
+#~ msgstr "価格についてのお問い合わせ"
+
+#: src/features/Landing/Price/PricePage.tsx:419
+#. Button title for contact me for advance pricing
+#. js-lingui-explicit-id
+#~ msgid "Contact me"
+#~ msgstr ""
+#~ "\n"
+#~ "私に連絡してください\n"
+
+#: src/features/Landing/Price/PricePage.tsx:409
+#. js-lingui-explicit-id
+#~ msgid "Custom features"
+#~ msgstr "カスタム機能"
+
+#: src/features/Landing/Price/PricePage.tsx:414
+#. js-lingui-explicit-id
+#~ msgid "Discounted AI Usage"
+#~ msgstr "割引されたAI使用"
+
+#: src/features/Landing/Price/PricePage.tsx:383
+#: src/features/Landing/Price/PricePage.tsx:405
+#. js-lingui-explicit-id
+#~ msgid "Frequent users who need more value"
+#~ msgstr "頻繁に利用するユーザーがより多くの価値を必要とする"
+
+#: src/features/Landing/Price/PricePage.tsx:415
+#. js-lingui-explicit-id
+#~ msgid "Get cheaper AI hours for bulk use"
+#~ msgstr "バルク使用のためのより安価なAI時間を取得する"
+
+#: src/features/Landing/Price/PricePage.tsx:410
+#. js-lingui-explicit-id
+#~ msgid "Tailor AI interactions to fit your needs"
+#~ msgstr "あなたのニーズに合わせてAIとのインタラクションを調整します"
+
+#: src/features/Landing/Price/PricePage.tsx:406
+#. js-lingui-explicit-id
+#~ msgid "What I can do for you:"
+#~ msgstr "私があなたのためにできること："
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:192
 #. js-lingui-explicit-id

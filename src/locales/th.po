@@ -576,7 +576,6 @@ msgid "Address performance considerations"
 msgstr "จัดการข้อพิจารณาด้านประสิทธิภาพ"
 
 #: src/features/Alias/components/LanguageLevel.tsx:85
-#: src/features/Landing/Price/PricePage.tsx:382
 #. js-lingui-explicit-id
 msgid "Advanced"
 msgstr "ขั้นสูง"
@@ -599,7 +598,8 @@ msgstr "บทสนทนาภาษาอังกฤษขั้นสูง
 
 #: src/features/Landing/Price/FeatureList.tsx:56
 #: src/features/Landing/Price/FeatureList.tsx:80
-#: src/features/Landing/Price/PricePage.tsx:371
+#: src/features/Landing/Price/PricePage.tsx:377
+#: src/features/Landing/Price/PricePage.tsx:460
 #. js-lingui-explicit-id
 msgid "Advanced Personalization"
 msgstr "การปรับแต่งส่วนบุคคลอย่างละเอียด"
@@ -1400,7 +1400,8 @@ msgstr "การซื้อการใช้งาน AI จำนวน {hou
 msgid "By continuing, you agree to our"
 msgstr "ต่อไป คุณยอมรับข้อกำหนดและเงื่อนไขของเรา"
 
-#: src/features/Landing/Price/PricePage.tsx:367
+#: src/features/Landing/Price/PricePage.tsx:373
+#: src/features/Landing/Price/PricePage.tsx:456
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "โดยการฝึกฝน, คุณจะได้รับกฎการใช้ไวยากรณ์ส่วนบุคคลจาก AI"
@@ -1473,6 +1474,11 @@ msgstr "ฉันสามารถปรับแต่งเซสชันก
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "ฉันสามารถขอคืนเงินหลังจากซื้อได้หรือไม่?"
+
+#: src/features/Landing/Price/PricePage.tsx:92
+#. js-lingui-explicit-id
+msgid "Can I get a refund if I’m not satisfied?"
+msgstr "ฉันจะขอเงินคืนได้หรือไม่หากฉันไม่พึงพอใจ?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
 #: src/features/Usage/Subscription/FaqSubscription.tsx:20
@@ -1941,17 +1947,6 @@ msgstr ""
 "การพัฒนาอย่างต่อเนื่องด้วยการโค้ชชิ่งการสัมภาษณ์อย่างมีโครงสร้างและการฝึกฝนเ"
 "ฉพาะบุคคล"
 
-#: src/features/Landing/Price/PricePage.tsx:401
-#. js-lingui-explicit-id
-msgid "Contact for pricing"
-msgstr "ติดต่อสอบถามราคา"
-
-#: src/features/Landing/Price/PricePage.tsx:419
-#. Button title for contact me for advance pricing
-#. js-lingui-explicit-id
-msgid "Contact me"
-msgstr "ติดต่อฉัน"
-
 #: src/features/Case/data/reusable/priceSection.ts:47
 #. js-lingui-explicit-id
 msgid "Contact us"
@@ -2027,7 +2022,8 @@ msgid "Conversation Practice"
 msgstr "การฝึกสนทนา"
 
 #: src/features/Landing/Price/FeatureList.tsx:40
-#: src/features/Landing/Price/PricePage.tsx:351
+#: src/features/Landing/Price/PricePage.tsx:357
+#: src/features/Landing/Price/PricePage.tsx:440
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "การฝึกสนทนา"
@@ -2251,11 +2247,6 @@ msgstr "คะแนนปัจจุบัน"
 msgid "Custom"
 msgstr "กำหนดเอง"
 
-#: src/features/Landing/Price/PricePage.tsx:409
-#. js-lingui-explicit-id
-msgid "Custom features"
-msgstr "คุณสมบัติที่กำหนดเอง"
-
 #: src/features/Case/data/reusable/priceSection.ts:42
 #. js-lingui-explicit-id
 msgid "Custom interview roadmap"
@@ -2352,15 +2343,16 @@ msgstr "ข้อมูล & ธุรกรรม"
 msgid "Databases & Transactions"
 msgstr "ฐานข้อมูล & ธุรกรรม"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
+#. js-lingui-explicit-id
+msgid "Day"
+msgstr "วัน"
+
+#: src/features/Landing/Price/PricePage.tsx:336
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:111
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "day"
-msgstr "วัน"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
-#. js-lingui-explicit-id
-msgid "Day"
 msgstr "วัน"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
@@ -2412,7 +2404,7 @@ msgstr "หัวข้ออภิปรายจะถูกสุ่มเล
 msgid "Debates"
 msgstr "การโต้วาที"
 
-#: src/features/Landing/Price/PricePage.tsx:273
+#: src/features/Landing/Price/PricePage.tsx:279
 #. js-lingui-explicit-id
 msgid "Debates and discussions"
 msgstr "การโต้วาทีและการอภิปราย"
@@ -2610,11 +2602,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Diagnosis"
 msgstr "การวินิจฉัย"
-
-#: src/features/Landing/Price/PricePage.tsx:414
-#. js-lingui-explicit-id
-msgid "Discounted AI Usage"
-msgstr "ส่วนลดการใช้งาน AI"
 
 #: src/features/Blog/ListBlog.tsx:72
 #: src/features/Case/ListPage/components/ListInterview.tsx:72
@@ -2988,8 +2975,9 @@ msgstr ""
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr "สนทนาสั้น ๆ อย่างเป็นมิตรเกี่ยวกับสัตว์เลี้ยงและกิจวัตรประจำวัน"
 
-#: src/features/Landing/Price/PricePage.tsx:274
-#: src/features/Landing/Price/PricePage.tsx:345
+#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/Price/PricePage.tsx:351
+#: src/features/Landing/Price/PricePage.tsx:434
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr "มีส่วนร่วมในการสนทนาในชีวิตจริง เช่น สัมภาษณ์งานหรือสั่งอาหาร"
@@ -3465,8 +3453,9 @@ msgstr ""
 "เธอจะช่วย  \n"
 "เธอแค่แสดงความคิดเห็นเกี่ยวกับมนุษยชาติในขณะที่ทำมัน"
 
-#: src/features/Landing/Price/PricePage.tsx:264
-#: src/features/Landing/Price/PricePage.tsx:335
+#: src/features/Landing/Price/PricePage.tsx:270
+#: src/features/Landing/Price/PricePage.tsx:341
+#: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
 msgid "Everything in Free, plus:"
 msgstr "ทุกอย่างในแพ็คเกจฟรี บวกกับ:"
@@ -3637,7 +3626,7 @@ msgstr "การตรวจสอบความเป็นธรรม"
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
 #: src/features/Case/Landing/components/InterviewHeader.tsx:34
 #: src/features/Landing/LandingPage.tsx:425
-#: src/features/Landing/Price/PricePage.tsx:437
+#: src/features/Landing/Price/PricePage.tsx:482
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "คำถามที่พบบ่อย"
@@ -3878,7 +3867,7 @@ msgid "FluencyPal – AI English Speaking Practice for Fluency & Confidence"
 msgstr "FluencyPal – การฝึกพูดภาษาอังกฤษด้วย AI เพื่อความคล่องแคล่วและความมั่นใจ"
 
 #: src/features/Landing/LandingPage.tsx:167
-#: src/features/Landing/Price/PricePage.tsx:107
+#: src/features/Landing/Price/PricePage.tsx:113
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
 msgstr "FluencyPal – คู่สนทนาภาษาอังกฤษ AI ของคุณ"
@@ -3924,12 +3913,12 @@ msgstr "ตัวอย่าง:"
 msgid "For focused, uninterrupted learning."
 msgstr "เพื่อการเรียนรู้ที่มุ่งเน้นและไม่ถูกขัดจังหวะ"
 
-#: src/features/Landing/Price/PricePage.tsx:230
+#: src/features/Landing/Price/PricePage.tsx:236
 #. js-lingui-explicit-id
 msgid "For learners getting started"
 msgstr "สำหรับผู้เรียนที่เพิ่งเริ่มต้น"
 
-#: src/features/Landing/Price/PricePage.tsx:301
+#: src/features/Landing/Price/PricePage.tsx:390
 #. js-lingui-explicit-id
 msgid "For learners who want flexibility"
 msgstr "สำหรับผู้เรียนที่ต้องการความยืดหยุ่น"
@@ -3977,7 +3966,7 @@ msgstr ""
 "plaintext\n"
 "เฟรมเวิร์กและไลบรารี\n"
 
-#: src/features/Landing/Price/PricePage.tsx:229
+#: src/features/Landing/Price/PricePage.tsx:235
 #. js-lingui-explicit-id
 msgid "Free"
 msgstr "ฟรี"
@@ -4023,12 +4012,6 @@ msgstr "เปิดให้ใช้ฟรีสำหรับทุกคน
 msgid "French Learning Plan"
 msgstr "แผนการเรียนภาษาฝรั่งเศส"
 
-#: src/features/Landing/Price/PricePage.tsx:383
-#: src/features/Landing/Price/PricePage.tsx:405
-#. js-lingui-explicit-id
-msgid "Frequent users who need more value"
-msgstr "ผู้ใช้ที่ใช้งานบ่อยซึ่งต้องการคุณค่ามากขึ้น"
-
 #: src/features/Community/SupportPage.tsx:66
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:11
 #: src/features/Usage/Subscription/FaqSubscription.tsx:10
@@ -4036,7 +4019,7 @@ msgstr "ผู้ใช้ที่ใช้งานบ่อยซึ่งต
 msgid "Frequently Asked Questions"
 msgstr "คำถามที่พบบ่อย"
 
-#: src/features/Landing/Price/PricePage.tsx:188
+#: src/features/Landing/Price/PricePage.tsx:194
 #. js-lingui-explicit-id
 msgid "From mistakes and hesitation to confident conversations"
 msgstr "จากความผิดพลาดและความลังเลไปสู่การสนทนาที่มั่นใจ"
@@ -4070,7 +4053,6 @@ msgid "frontend system design interview"
 msgstr "การสัมภาษณ์ออกแบบระบบส่วนหน้าของผู้ใช้"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:136
-#: src/features/Landing/Price/PricePage.tsx:300
 #: src/features/Settings/MyProfile.tsx:74
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:452
@@ -4111,6 +4093,20 @@ msgstr "เข้าถึงได้เต็มรูปแบบเป็น
 msgid "Full Access for 1 year"
 msgstr "เข้าถึงแบบเต็มรูปแบบเป็นเวลา 1 ปี"
 
+#: src/features/Landing/Price/PricePage.tsx:306
+#. js-lingui-explicit-id
+msgid "Full Access for a Day"
+msgstr ""
+"\n"
+"การเข้าถึงแบบเต็มวัน\n"
+
+#: src/features/Landing/Price/PricePage.tsx:389
+#. js-lingui-explicit-id
+msgid "Full Access for a Month"
+msgstr ""
+"Full Access for a Month\n"
+"การเข้าถึงแบบเต็มรูปแบบเป็นเวลา 1 เดือน"
+
 #: src/features/Case/data/reusable/priceSection.ts:24
 #. js-lingui-explicit-id
 msgid "Full access to all simulations"
@@ -4129,7 +4125,8 @@ msgid "Full AI interview coach access"
 msgstr "การเข้าถึงผู้ฝึกสอนการสัมภาษณ์ด้วย AI ทั้งหมด"
 
 #: src/features/Landing/Price/FeatureList.tsx:32
-#: src/features/Landing/Price/PricePage.tsx:339
+#: src/features/Landing/Price/PricePage.tsx:345
+#: src/features/Landing/Price/PricePage.tsx:428
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "การเข้าถึงครูสอน AI เต็มรูปแบบ"
@@ -4162,7 +4159,7 @@ msgstr "การตั้งค่าเกมหายไป กรุณา�
 msgid "Game Statistics"
 msgstr "สถิติของเกม"
 
-#: src/features/Landing/Price/PricePage.tsx:268
+#: src/features/Landing/Price/PricePage.tsx:274
 #. js-lingui-explicit-id
 msgid "Game-based practice"
 msgstr "การฝึกฝนแบบเกม"
@@ -4231,11 +4228,6 @@ msgstr "ได้รับสิทธิ์ใช้งานเป็นเว
 #. js-lingui-explicit-id
 msgid "Get access for a year"
 msgstr "เข้าถึงได้หนึ่งปี"
-
-#: src/features/Landing/Price/PricePage.tsx:415
-#. js-lingui-explicit-id
-msgid "Get cheaper AI hours for bulk use"
-msgstr "รับชั่วโมง AI ราคาถูกกว่าสำหรับการใช้เป็นจำนวนมาก"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:24
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:24
@@ -4411,7 +4403,8 @@ msgstr ""
 msgid "Get My Plan"
 msgstr "รับแผนของฉัน"
 
-#: src/features/Landing/Price/PricePage.tsx:362
+#: src/features/Landing/Price/PricePage.tsx:368
+#: src/features/Landing/Price/PricePage.tsx:451
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "รับคำศัพท์และวลีใหม่ๆ ในบริบท"
@@ -4422,8 +4415,8 @@ msgid "Get Ready"
 msgstr "เตรียมพร้อม"
 
 #: src/features/Blog/BlogsPage.tsx:39
-#: src/features/Landing/Price/PricePage.tsx:193
-#: src/features/Landing/Price/PricePage.tsx:452
+#: src/features/Landing/Price/PricePage.tsx:199
+#: src/features/Landing/Price/PricePage.tsx:497
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "เริ่มต้น"
@@ -4433,13 +4426,14 @@ msgstr "เริ่มต้น"
 msgid "Get Started Free"
 msgstr "เริ่มต้นฟรี"
 
-#: src/features/Landing/Price/PricePage.tsx:263
+#: src/features/Landing/Price/PricePage.tsx:269
 #. js-lingui-explicit-id
 msgid "Get started with basic features"
 msgstr "เริ่มต้นด้วยคุณสมบัติพื้นฐาน"
 
-#: src/features/Landing/Price/PricePage.tsx:269
-#: src/features/Landing/Price/PricePage.tsx:340
+#: src/features/Landing/Price/PricePage.tsx:275
+#: src/features/Landing/Price/PricePage.tsx:346
+#: src/features/Landing/Price/PricePage.tsx:429
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "รับการเข้าถึงการฝึกฝนภาษาแบบไม่จำกัดที่ขับเคลื่อนด้วย AI"
@@ -5527,10 +5521,11 @@ msgstr "ปรับปรุงทักษะภาษาอังกฤษ"
 msgid "improve English speaking"
 msgstr "ปรับปรุงทักษะการพูดภาษาอังกฤษ"
 
-#: src/features/Landing/Price/PricePage.tsx:281
-#: src/features/Landing/Price/PricePage.tsx:286
-#: src/features/Landing/Price/PricePage.tsx:291
-#: src/features/Landing/Price/PricePage.tsx:352
+#: src/features/Landing/Price/PricePage.tsx:287
+#: src/features/Landing/Price/PricePage.tsx:292
+#: src/features/Landing/Price/PricePage.tsx:297
+#: src/features/Landing/Price/PricePage.tsx:358
+#: src/features/Landing/Price/PricePage.tsx:441
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "ปรับปรุงความคล่องแคล่วด้วยการสนทนาผ่านช่องทางสนทนาที่โต้ตอบได้"
@@ -6547,7 +6542,7 @@ msgstr "เรียนรู้"
 msgid "Learn anywhere, anytime"
 msgstr "เรียนได้ทุกที่ ทุกเวลา"
 
-#: src/features/Landing/Price/PricePage.tsx:334
+#: src/features/Landing/Price/PricePage.tsx:423
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "เรียนรู้ด้วยความเร็วสูงสุดด้วยการเข้าถึงทั้งหมด"
@@ -6998,8 +6993,8 @@ msgstr "การสัมภาษณ์ตัวอย่าง"
 msgid "modern literature"
 msgstr "วรรณกรรมสมัยใหม่"
 
-#: src/features/Landing/Price/PricePage.tsx:259
-#: src/features/Landing/Price/PricePage.tsx:330
+#: src/features/Landing/Price/PricePage.tsx:265
+#: src/features/Landing/Price/PricePage.tsx:419
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:106
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
@@ -7108,13 +7103,15 @@ msgid "New Game"
 msgstr "เกมใหม่"
 
 #: src/features/Landing/Price/FeatureList.tsx:52
-#: src/features/Landing/Price/PricePage.tsx:366
+#: src/features/Landing/Price/PricePage.tsx:372
+#: src/features/Landing/Price/PricePage.tsx:455
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "กฎไวยากรณ์ใหม่"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
-#: src/features/Landing/Price/PricePage.tsx:361
+#: src/features/Landing/Price/PricePage.tsx:367
+#: src/features/Landing/Price/PricePage.tsx:450
 #. js-lingui-explicit-id
 msgid "New Words"
 msgstr "คำศัพท์ใหม่"
@@ -7490,7 +7487,7 @@ msgstr "การฝึกภาษาทางออนไลน์"
 msgid "Oops! Something went wrong"
 msgstr "โอ๊ะ! มีบางอย่างผิดพลาด"
 
-#: src/features/Landing/Price/PricePage.tsx:195
+#: src/features/Landing/Price/PricePage.tsx:201
 #. js-lingui-explicit-id
 msgid "Open"
 msgstr "เปิด"
@@ -7774,7 +7771,7 @@ msgstr "เลือกระดับเพื่อเริ่มเล่น
 msgid "Pick one or more categories to build your word list."
 msgstr "เลือกหนึ่งหมวดหมู่หรือมากกว่านั้นเพื่อสร้างรายการคำของคุณ"
 
-#: src/features/Landing/Price/PricePage.tsx:290
+#: src/features/Landing/Price/PricePage.tsx:296
 #. js-lingui-explicit-id
 msgid "Place in the top 5 in the game to gain full access"
 msgstr "ติดอันดับใน 5 อันดับแรกในเกมเพื่อรับสิทธิ์เข้าถึงแบบเต็มรูปแบบ"
@@ -8331,7 +8328,7 @@ msgstr "คำถามก่อนหน้า"
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
 #: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:178
+#: src/features/Landing/Price/PricePage.tsx:184
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "ราคา"
@@ -8428,7 +8425,8 @@ msgstr "การติดตามความก้าวหน้า"
 
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
-#: src/features/Landing/Price/PricePage.tsx:356
+#: src/features/Landing/Price/PricePage.tsx:362
+#: src/features/Landing/Price/PricePage.tsx:445
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "การติดตามความคืบหน้า"
@@ -8589,7 +8587,7 @@ msgstr "อ่านข้อความ"
 msgid "Reader"
 msgstr "ผู้อ่าน"
 
-#: src/features/Landing/Price/PricePage.tsx:285
+#: src/features/Landing/Price/PricePage.tsx:291
 #. js-lingui-explicit-id
 msgid "Reading practice"
 msgstr "การฝึกอ่าน"
@@ -8998,7 +8996,8 @@ msgid "Role-Play"
 msgstr "บทบาทการเล่น"
 
 #: src/features/Landing/Price/FeatureList.tsx:36
-#: src/features/Landing/Price/PricePage.tsx:344
+#: src/features/Landing/Price/PricePage.tsx:350
+#: src/features/Landing/Price/PricePage.tsx:433
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "บทบาท-เล่นสถานการณ์"
@@ -9143,7 +9142,8 @@ msgstr "ดูประเภทของคำแนะนำจากทาง
 msgid "See the type of feedback you'll get"
 msgstr "ดูประเภทของคำติชมที่คุณจะได้รับ"
 
-#: src/features/Landing/Price/PricePage.tsx:357
+#: src/features/Landing/Price/PricePage.tsx:363
+#: src/features/Landing/Price/PricePage.tsx:446
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
 msgstr "ดูความคืบหน้าและติดตามการเรียนรู้ของคุณ"
@@ -9673,8 +9673,9 @@ msgstr "ดาว"
 #: src/features/Dashboard/PlanDashboardCards.tsx:300
 #: src/features/Goal/Quiz/GoalReview.tsx:172
 #: src/features/Landing/PlanLandingBlock.tsx:527
-#: src/features/Landing/Price/PricePage.tsx:295
-#: src/features/Landing/Price/PricePage.tsx:378
+#: src/features/Landing/Price/PricePage.tsx:301
+#: src/features/Landing/Price/PricePage.tsx:384
+#: src/features/Landing/Price/PricePage.tsx:467
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:325
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:283
@@ -9798,7 +9799,7 @@ msgid "Start Your Interview Test"
 msgstr "เริ่มการทดสอบสัมภาษณ์ของคุณ"
 
 #: src/features/Blog/BlogsPage.tsx:38
-#: src/features/Landing/Price/PricePage.tsx:451
+#: src/features/Landing/Price/PricePage.tsx:496
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:40
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
@@ -10099,11 +10100,6 @@ msgid ""
 msgstr ""
 "จัดการกับความท้าทายในการเขียนโค้ด แก้ไขปัญหาอย่างมีประสิทธิภาพ "
 "และอธิบายกระบวนการคิดของคุณอย่างชัดเจน"
-
-#: src/features/Landing/Price/PricePage.tsx:410
-#. js-lingui-explicit-id
-msgid "Tailor AI interactions to fit your needs"
-msgstr "ปรับแต่งการโต้ตอบของ AI ให้เหมาะกับความต้องการของคุณ"
 
 #: src/features/Case/data/backendCSharp/techStackSection.ts:13
 #. js-lingui-explicit-id
@@ -10859,6 +10855,11 @@ msgstr "เวลาที่เหลือ"
 msgid "Timed"
 msgstr "กำหนดเวลา"
 
+#: src/features/Landing/Price/PricePage.tsx:307
+#. js-lingui-explicit-id
+msgid "To try full features for a short time"
+msgstr "ลองใช้คุณสมบัติทั้งหมดในระยะเวลาสั้น ๆ"
+
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
 msgid ""
@@ -10966,6 +10967,11 @@ msgstr "ลอง"
 #. js-lingui-explicit-id
 msgid "Try for free"
 msgstr "ลองใช้ฟรี"
+
+#: src/features/Landing/Price/PricePage.tsx:340
+#. js-lingui-explicit-id
+msgid "Try full features and decide if it’s right for you"
+msgstr "ลองใช้คุณสมบัติทั้งหมดและตัดสินใจว่าเหมาะสำหรับคุณหรือไม่"
 
 #: src/features/Lang/getLabels.tsx:27
 #. js-lingui-explicit-id
@@ -11255,7 +11261,7 @@ msgstr ""
 msgid "Vocabulary"
 msgstr "คำศัพท์"
 
-#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/Price/PricePage.tsx:286
 #. js-lingui-explicit-id
 msgid "Vocabulary challenges"
 msgstr "ท้าทายคำศัพท์"
@@ -11523,15 +11529,15 @@ msgstr "การแสดงตัวอย่างข้อเสนอแน
 msgid "Webcam Setup"
 msgstr "การตั้งค่าเว็บแคม"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
+#. js-lingui-explicit-id
+msgid "Week"
+msgstr "สัปดาห์"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:108
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
-msgstr "สัปดาห์"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
-#. js-lingui-explicit-id
-msgid "Week"
 msgstr "สัปดาห์"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:13
@@ -11583,11 +11589,6 @@ msgstr "คุณจะได้อะไรกับการเข้าถึ
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "คุณคิดว่าอย่างไร?"
-
-#: src/features/Landing/Price/PricePage.tsx:406
-#. js-lingui-explicit-id
-msgid "What I can do for you:"
-msgstr "สิ่งที่ฉันสามารถทำให้คุณได้:"
 
 #: src/features/Landing/LandingPage.tsx:34
 #. js-lingui-explicit-id
@@ -11781,7 +11782,8 @@ msgstr ""
 "คุณสามารถเพิ่มประสบการณ์ในการเรียนรู้ของคุณด้วยคำติชมที่เป็นส่วนบุคคล, "
 "การแก้ไขแบบเรียลไทม์, และชุมชนที่สนับสนุน."
 
-#: src/features/Landing/Price/PricePage.tsx:372
+#: src/features/Landing/Price/PricePage.tsx:378
+#: src/features/Landing/Price/PricePage.tsx:461
 #. js-lingui-explicit-id
 msgid ""
 "With time, AI will adapt to your learning style and it will be more "
@@ -11902,15 +11904,15 @@ msgstr ""
 msgid "Wrong Link"
 msgstr "ลิงก์ผิด"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
+#. js-lingui-explicit-id
+msgid "Year"
+msgstr "ปี"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:110
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
-msgstr "ปี"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
-#. js-lingui-explicit-id
-msgid "Year"
 msgstr "ปี"
 
 #: src/features/Header/NeedHelpModal.tsx:80
@@ -11975,6 +11977,17 @@ msgid ""
 msgstr ""
 "ใช่ ถ้าคุณไม่พอใจกับบริการ บนหน้าต่าง \"โปรไฟล์/ประวัติการชำระเงิน\" "
 "คุณสามารถขอคืนเงินได้และเราจะพูดคุยรายละเอียดกัน"
+
+#: src/features/Landing/Price/PricePage.tsx:93
+#. js-lingui-explicit-id
+msgid ""
+"Yes. If you’re not satisfied with the service, on \"Profile/Payment "
+"history\" page you can request a refund and we will discuss the details and "
+"return the amount paid."
+msgstr ""
+"ใช่ หากคุณไม่พอใจกับบริการ คุณสามารถขอคืนเงินได้ที่หน้า "
+"\"ประวัติส่วนตัว/ประวัติการชำระเงิน\" "
+"โดยเราจะพูดคุยรายละเอียดและคืนเงินจำนวนที่ชำระแล้ว"
 
 #: src/features/Usage/Subscription/FaqSubscription.tsx:21
 #. js-lingui-explicit-id
@@ -12577,6 +12590,48 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Landing/Price/PricePage.tsx:401
+#. js-lingui-explicit-id
+#~ msgid "Contact for pricing"
+#~ msgstr "ติดต่อสอบถามราคา"
+
+#: src/features/Landing/Price/PricePage.tsx:419
+#. Button title for contact me for advance pricing
+#. js-lingui-explicit-id
+#~ msgid "Contact me"
+#~ msgstr "ติดต่อฉัน"
+
+#: src/features/Landing/Price/PricePage.tsx:409
+#. js-lingui-explicit-id
+#~ msgid "Custom features"
+#~ msgstr "คุณสมบัติที่กำหนดเอง"
+
+#: src/features/Landing/Price/PricePage.tsx:414
+#. js-lingui-explicit-id
+#~ msgid "Discounted AI Usage"
+#~ msgstr "ส่วนลดการใช้งาน AI"
+
+#: src/features/Landing/Price/PricePage.tsx:383
+#: src/features/Landing/Price/PricePage.tsx:405
+#. js-lingui-explicit-id
+#~ msgid "Frequent users who need more value"
+#~ msgstr "ผู้ใช้ที่ใช้งานบ่อยซึ่งต้องการคุณค่ามากขึ้น"
+
+#: src/features/Landing/Price/PricePage.tsx:415
+#. js-lingui-explicit-id
+#~ msgid "Get cheaper AI hours for bulk use"
+#~ msgstr "รับชั่วโมง AI ราคาถูกกว่าสำหรับการใช้เป็นจำนวนมาก"
+
+#: src/features/Landing/Price/PricePage.tsx:410
+#. js-lingui-explicit-id
+#~ msgid "Tailor AI interactions to fit your needs"
+#~ msgstr "ปรับแต่งการโต้ตอบของ AI ให้เหมาะกับความต้องการของคุณ"
+
+#: src/features/Landing/Price/PricePage.tsx:406
+#. js-lingui-explicit-id
+#~ msgid "What I can do for you:"
+#~ msgstr "สิ่งที่ฉันสามารถทำให้คุณได้:"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:192
 #. js-lingui-explicit-id

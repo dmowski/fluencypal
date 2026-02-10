@@ -576,7 +576,6 @@ msgid "Address performance considerations"
 msgstr "Xem xét các vấn đề về hiệu suất"
 
 #: src/features/Alias/components/LanguageLevel.tsx:85
-#: src/features/Landing/Price/PricePage.tsx:382
 #. js-lingui-explicit-id
 msgid "Advanced"
 msgstr "Cao cấp"
@@ -599,7 +598,8 @@ msgstr "cuộc trò chuyện tiếng Anh nâng cao"
 
 #: src/features/Landing/Price/FeatureList.tsx:56
 #: src/features/Landing/Price/FeatureList.tsx:80
-#: src/features/Landing/Price/PricePage.tsx:371
+#: src/features/Landing/Price/PricePage.tsx:377
+#: src/features/Landing/Price/PricePage.tsx:460
 #. js-lingui-explicit-id
 msgid "Advanced Personalization"
 msgstr "Tùy chỉnh cá nhân hóa cao cấp"
@@ -1395,7 +1395,8 @@ msgstr "Mua {hours} giờ sử dụng AI"
 msgid "By continuing, you agree to our"
 msgstr "Bằng cách tiếp tục, bạn đồng ý với việc của chúng tôi"
 
-#: src/features/Landing/Price/PricePage.tsx:367
+#: src/features/Landing/Price/PricePage.tsx:373
+#: src/features/Landing/Price/PricePage.tsx:456
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "Bằng cách thực hành, bạn sẽ nhận được quy tắc ngữ pháp cá nhân từ AI"
@@ -1468,6 +1469,11 @@ msgstr "Tôi có thể tùy chỉnh các buổi luyện tập của mình không
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "Tôi có thể hoàn tiền sau khi mua không?"
+
+#: src/features/Landing/Price/PricePage.tsx:92
+#. js-lingui-explicit-id
+msgid "Can I get a refund if I’m not satisfied?"
+msgstr "Tôi có thể được hoàn tiền nếu tôi không hài lòng không?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
 #: src/features/Usage/Subscription/FaqSubscription.tsx:20
@@ -1937,17 +1943,6 @@ msgstr ""
 "Cải thiện liên tục với buổi huấn luyện phỏng vấn có cấu trúc và thực hành "
 "cá nhân hóa."
 
-#: src/features/Landing/Price/PricePage.tsx:401
-#. js-lingui-explicit-id
-msgid "Contact for pricing"
-msgstr "Liên hệ để biết giá"
-
-#: src/features/Landing/Price/PricePage.tsx:419
-#. Button title for contact me for advance pricing
-#. js-lingui-explicit-id
-msgid "Contact me"
-msgstr "Liên hệ với tôi"
-
 #: src/features/Case/data/reusable/priceSection.ts:47
 #. js-lingui-explicit-id
 msgid "Contact us"
@@ -2023,7 +2018,8 @@ msgid "Conversation Practice"
 msgstr "Thực hành Hội thoại"
 
 #: src/features/Landing/Price/FeatureList.tsx:40
-#: src/features/Landing/Price/PricePage.tsx:351
+#: src/features/Landing/Price/PricePage.tsx:357
+#: src/features/Landing/Price/PricePage.tsx:440
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Thực hành hội thoại"
@@ -2240,11 +2236,6 @@ msgstr "Điểm Hiện Tại"
 msgid "Custom"
 msgstr "Tùy chỉnh"
 
-#: src/features/Landing/Price/PricePage.tsx:409
-#. js-lingui-explicit-id
-msgid "Custom features"
-msgstr "Tính năng tùy chỉnh"
-
 #: src/features/Case/data/reusable/priceSection.ts:42
 #. js-lingui-explicit-id
 msgid "Custom interview roadmap"
@@ -2341,16 +2332,17 @@ msgstr "Dữ liệu & Giao dịch"
 msgid "Databases & Transactions"
 msgstr "Cơ sở dữ liệu & Giao dịch"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
+#. js-lingui-explicit-id
+msgid "Day"
+msgstr "Ngày"
+
+#: src/features/Landing/Price/PricePage.tsx:336
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:111
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "day"
 msgstr "ngày"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
-#. js-lingui-explicit-id
-msgid "Day"
-msgstr "Ngày"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
 #. js-lingui-explicit-id
@@ -2401,7 +2393,7 @@ msgstr "Các chủ đề tranh luận sẽ được chọn ngẫu nhiên."
 msgid "Debates"
 msgstr "Tranh luận"
 
-#: src/features/Landing/Price/PricePage.tsx:273
+#: src/features/Landing/Price/PricePage.tsx:279
 #. js-lingui-explicit-id
 msgid "Debates and discussions"
 msgstr "Tranh luận và thảo luận"
@@ -2602,11 +2594,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Diagnosis"
 msgstr "Chẩn đoán"
-
-#: src/features/Landing/Price/PricePage.tsx:414
-#. js-lingui-explicit-id
-msgid "Discounted AI Usage"
-msgstr "Giá sử dụng AI đã giảm"
 
 #: src/features/Blog/ListBlog.tsx:72
 #: src/features/Case/ListPage/components/ListInterview.tsx:72
@@ -2988,8 +2975,9 @@ msgstr ""
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr "Tham gia vào cuộc trò chuyện thân thiện về thú cưng và thói quen hàng ngày"
 
-#: src/features/Landing/Price/PricePage.tsx:274
-#: src/features/Landing/Price/PricePage.tsx:345
+#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/Price/PricePage.tsx:351
+#: src/features/Landing/Price/PricePage.tsx:434
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr ""
@@ -3474,8 +3462,9 @@ msgstr ""
 "Cô ấy sẽ giúp.  \n"
 "Cô ấy sẽ chỉ đưa ra bình luận về nhân loại trong khi làm việc đó."
 
-#: src/features/Landing/Price/PricePage.tsx:264
-#: src/features/Landing/Price/PricePage.tsx:335
+#: src/features/Landing/Price/PricePage.tsx:270
+#: src/features/Landing/Price/PricePage.tsx:341
+#: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
 msgid "Everything in Free, plus:"
 msgstr "Tất cả trong phiên bản Miễn phí, cộng thêm:"
@@ -3651,7 +3640,7 @@ msgstr "Kiểm tra sự công bằng"
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
 #: src/features/Case/Landing/components/InterviewHeader.tsx:34
 #: src/features/Landing/LandingPage.tsx:425
-#: src/features/Landing/Price/PricePage.tsx:437
+#: src/features/Landing/Price/PricePage.tsx:482
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "Câu hỏi thường gặp"
@@ -3892,7 +3881,7 @@ msgid "FluencyPal – AI English Speaking Practice for Fluency & Confidence"
 msgstr "FluencyPal – AI Luyện Nói Tiếng Anh untuk Sự Lưu Loát & Tự Tin"
 
 #: src/features/Landing/LandingPage.tsx:167
-#: src/features/Landing/Price/PricePage.tsx:107
+#: src/features/Landing/Price/PricePage.tsx:113
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
 msgstr "FluencyPal – Đối tác Nói tiếng Anh AI của bạn"
@@ -3937,12 +3926,12 @@ msgstr "Ví dụ:"
 msgid "For focused, uninterrupted learning."
 msgstr "Để học tập tập trung, không bị gián đoạn."
 
-#: src/features/Landing/Price/PricePage.tsx:230
+#: src/features/Landing/Price/PricePage.tsx:236
 #. js-lingui-explicit-id
 msgid "For learners getting started"
 msgstr "Dành cho người học mới bắt đầu"
 
-#: src/features/Landing/Price/PricePage.tsx:301
+#: src/features/Landing/Price/PricePage.tsx:390
 #. js-lingui-explicit-id
 msgid "For learners who want flexibility"
 msgstr "Dành cho những người học muốn linh hoạt"
@@ -3988,7 +3977,7 @@ msgstr "Thông tin chi tiết theo khung (React, Vue, Angular)"
 msgid "Frameworks & Libraries"
 msgstr "Khung công tác & Thư viện"
 
-#: src/features/Landing/Price/PricePage.tsx:229
+#: src/features/Landing/Price/PricePage.tsx:235
 #. js-lingui-explicit-id
 msgid "Free"
 msgstr "Miễn phí"
@@ -4032,12 +4021,6 @@ msgstr "Miễn phí cho tất cả"
 msgid "French Learning Plan"
 msgstr "Kế Hoạch Học Tiếng Pháp"
 
-#: src/features/Landing/Price/PricePage.tsx:383
-#: src/features/Landing/Price/PricePage.tsx:405
-#. js-lingui-explicit-id
-msgid "Frequent users who need more value"
-msgstr "Những người dùng thường xuyên cần nhiều giá trị hơn"
-
 #: src/features/Community/SupportPage.tsx:66
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:11
 #: src/features/Usage/Subscription/FaqSubscription.tsx:10
@@ -4045,7 +4028,7 @@ msgstr "Những người dùng thường xuyên cần nhiều giá trị hơn"
 msgid "Frequently Asked Questions"
 msgstr "Các Câu Hỏi Thường Gặp"
 
-#: src/features/Landing/Price/PricePage.tsx:188
+#: src/features/Landing/Price/PricePage.tsx:194
 #. js-lingui-explicit-id
 msgid "From mistakes and hesitation to confident conversations"
 msgstr "Từ sai lầm và do dự đến những cuộc trò chuyện tự tin"
@@ -4081,7 +4064,6 @@ msgid "frontend system design interview"
 msgstr "phỏng vấn thiết kế hệ thống frontend"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:136
-#: src/features/Landing/Price/PricePage.tsx:300
 #: src/features/Settings/MyProfile.tsx:74
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:452
@@ -4120,6 +4102,16 @@ msgstr ""
 msgid "Full Access for 1 year"
 msgstr "Quyền truy cập đầy đủ trong 1 năm"
 
+#: src/features/Landing/Price/PricePage.tsx:306
+#. js-lingui-explicit-id
+msgid "Full Access for a Day"
+msgstr "Truy cập đầy đủ trong một ngày"
+
+#: src/features/Landing/Price/PricePage.tsx:389
+#. js-lingui-explicit-id
+msgid "Full Access for a Month"
+msgstr "Quyền Truy cập Đầy đủ trong một Tháng"
+
 #: src/features/Case/data/reusable/priceSection.ts:24
 #. js-lingui-explicit-id
 msgid "Full access to all simulations"
@@ -4138,7 +4130,8 @@ msgid "Full AI interview coach access"
 msgstr "Truy cập đầy đủ huấn luyện viên phỏng vấn AI"
 
 #: src/features/Landing/Price/FeatureList.tsx:32
-#: src/features/Landing/Price/PricePage.tsx:339
+#: src/features/Landing/Price/PricePage.tsx:345
+#: src/features/Landing/Price/PricePage.tsx:428
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Truy cập đầy đủ vào gia sư AI"
@@ -4171,7 +4164,7 @@ msgstr "Cài đặt trò chơi bị thiếu. Vui lòng quay lại."
 msgid "Game Statistics"
 msgstr "Thống Kê Trò Chơi"
 
-#: src/features/Landing/Price/PricePage.tsx:268
+#: src/features/Landing/Price/PricePage.tsx:274
 #. js-lingui-explicit-id
 msgid "Game-based practice"
 msgstr "Thực hành dựa trên trò chơi"
@@ -4240,11 +4233,6 @@ msgstr "Được truy cập trong một tuần"
 #. js-lingui-explicit-id
 msgid "Get access for a year"
 msgstr "Truy cập trong một năm"
-
-#: src/features/Landing/Price/PricePage.tsx:415
-#. js-lingui-explicit-id
-msgid "Get cheaper AI hours for bulk use"
-msgstr "Nhận giờ AI rẻ hơn khi sử dụng số lượng lớn"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:24
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:24
@@ -4424,7 +4412,8 @@ msgstr ""
 msgid "Get My Plan"
 msgstr "Nhận Kế Hoạch Của Tôi"
 
-#: src/features/Landing/Price/PricePage.tsx:362
+#: src/features/Landing/Price/PricePage.tsx:368
+#: src/features/Landing/Price/PricePage.tsx:451
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "Nhận từ vựng và cụm từ mới trong ngữ cảnh"
@@ -4435,8 +4424,8 @@ msgid "Get Ready"
 msgstr "Sẵn sàng"
 
 #: src/features/Blog/BlogsPage.tsx:39
-#: src/features/Landing/Price/PricePage.tsx:193
-#: src/features/Landing/Price/PricePage.tsx:452
+#: src/features/Landing/Price/PricePage.tsx:199
+#: src/features/Landing/Price/PricePage.tsx:497
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "Bắt Đầu"
@@ -4446,13 +4435,14 @@ msgstr "Bắt Đầu"
 msgid "Get Started Free"
 msgstr "Bắt đầu miễn phí"
 
-#: src/features/Landing/Price/PricePage.tsx:263
+#: src/features/Landing/Price/PricePage.tsx:269
 #. js-lingui-explicit-id
 msgid "Get started with basic features"
 msgstr "Bắt đầu với các tính năng cơ bản"
 
-#: src/features/Landing/Price/PricePage.tsx:269
-#: src/features/Landing/Price/PricePage.tsx:340
+#: src/features/Landing/Price/PricePage.tsx:275
+#: src/features/Landing/Price/PricePage.tsx:346
+#: src/features/Landing/Price/PricePage.tsx:429
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Nhận quyền truy cập không giới hạn vào việc thực hành ngôn ngữ hỗ trợ bởi AI"
@@ -5558,10 +5548,11 @@ msgstr "Nâng cao kỹ năng Tiếng Anh"
 msgid "improve English speaking"
 msgstr "cải thiện khả năng nói tiếng Anh"
 
-#: src/features/Landing/Price/PricePage.tsx:281
-#: src/features/Landing/Price/PricePage.tsx:286
-#: src/features/Landing/Price/PricePage.tsx:291
-#: src/features/Landing/Price/PricePage.tsx:352
+#: src/features/Landing/Price/PricePage.tsx:287
+#: src/features/Landing/Price/PricePage.tsx:292
+#: src/features/Landing/Price/PricePage.tsx:297
+#: src/features/Landing/Price/PricePage.tsx:358
+#: src/features/Landing/Price/PricePage.tsx:441
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "Cải thiện sự lưu loát với các phiên trò chuyện tương tác"
@@ -6567,7 +6558,7 @@ msgstr "Học"
 msgid "Learn anywhere, anytime"
 msgstr "Học ở bất cứ đâu, bất kì lúc nào"
 
-#: src/features/Landing/Price/PricePage.tsx:334
+#: src/features/Landing/Price/PricePage.tsx:423
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "Học tập với tốc độ cao với quyền truy cập đầy đủ"
@@ -7016,8 +7007,8 @@ msgstr "Phỏng Vấn Thử Nghiệm"
 msgid "modern literature"
 msgstr "văn học hiện đại"
 
-#: src/features/Landing/Price/PricePage.tsx:259
-#: src/features/Landing/Price/PricePage.tsx:330
+#: src/features/Landing/Price/PricePage.tsx:265
+#: src/features/Landing/Price/PricePage.tsx:419
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:106
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
@@ -7126,13 +7117,15 @@ msgid "New Game"
 msgstr "Trò Chơi Mới"
 
 #: src/features/Landing/Price/FeatureList.tsx:52
-#: src/features/Landing/Price/PricePage.tsx:366
+#: src/features/Landing/Price/PricePage.tsx:372
+#: src/features/Landing/Price/PricePage.tsx:455
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "Quy tắc ngữ pháp mới"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
-#: src/features/Landing/Price/PricePage.tsx:361
+#: src/features/Landing/Price/PricePage.tsx:367
+#: src/features/Landing/Price/PricePage.tsx:450
 #. js-lingui-explicit-id
 msgid "New Words"
 msgstr "Từ mới"
@@ -7513,7 +7506,7 @@ msgstr "Chăm Sóc Ngôn Ngữ Trực Tuyến"
 msgid "Oops! Something went wrong"
 msgstr "Rất tiếc! Đã xảy ra lỗi"
 
-#: src/features/Landing/Price/PricePage.tsx:195
+#: src/features/Landing/Price/PricePage.tsx:201
 #. js-lingui-explicit-id
 msgid "Open"
 msgstr "Mở"
@@ -7802,7 +7795,7 @@ msgstr "Chọn một cấp độ để bắt đầu chơi!"
 msgid "Pick one or more categories to build your word list."
 msgstr "Chọn một hoặc nhiều danh mục để xây dựng danh sách từ của bạn."
 
-#: src/features/Landing/Price/PricePage.tsx:290
+#: src/features/Landing/Price/PricePage.tsx:296
 #. js-lingui-explicit-id
 msgid "Place in the top 5 in the game to gain full access"
 msgstr "Đạt vị trí trong top 5 trong trò chơi để có quyền truy cập đầy đủ"
@@ -8371,7 +8364,7 @@ msgstr "Câu hỏi trước"
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
 #: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:178
+#: src/features/Landing/Price/PricePage.tsx:184
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "Giá"
@@ -8468,7 +8461,8 @@ msgstr "Theo dõi tiến độ"
 
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
-#: src/features/Landing/Price/PricePage.tsx:356
+#: src/features/Landing/Price/PricePage.tsx:362
+#: src/features/Landing/Price/PricePage.tsx:445
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Theo dõi tiến trình"
@@ -8629,7 +8623,7 @@ msgstr "Đọc văn bản"
 msgid "Reader"
 msgstr "Trình đọc"
 
-#: src/features/Landing/Price/PricePage.tsx:285
+#: src/features/Landing/Price/PricePage.tsx:291
 #. js-lingui-explicit-id
 msgid "Reading practice"
 msgstr "Thực hành đọc"
@@ -9054,7 +9048,8 @@ msgid "Role-Play"
 msgstr "Vai diễn"
 
 #: src/features/Landing/Price/FeatureList.tsx:36
-#: src/features/Landing/Price/PricePage.tsx:344
+#: src/features/Landing/Price/PricePage.tsx:350
+#: src/features/Landing/Price/PricePage.tsx:433
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "Kịch bản đóng vai"
@@ -9199,7 +9194,8 @@ msgstr "Xem loại phản hồi backend mà bạn sẽ nhận được"
 msgid "See the type of feedback you'll get"
 msgstr "Xem loại phản hồi bạn sẽ nhận được"
 
-#: src/features/Landing/Price/PricePage.tsx:357
+#: src/features/Landing/Price/PricePage.tsx:363
+#: src/features/Landing/Price/PricePage.tsx:446
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
 msgstr "Xem sự cải thiện của bạn và theo dõi hành trình học của bạn"
@@ -9737,8 +9733,9 @@ msgstr "Ngôi sao"
 #: src/features/Dashboard/PlanDashboardCards.tsx:300
 #: src/features/Goal/Quiz/GoalReview.tsx:172
 #: src/features/Landing/PlanLandingBlock.tsx:527
-#: src/features/Landing/Price/PricePage.tsx:295
-#: src/features/Landing/Price/PricePage.tsx:378
+#: src/features/Landing/Price/PricePage.tsx:301
+#: src/features/Landing/Price/PricePage.tsx:384
+#: src/features/Landing/Price/PricePage.tsx:467
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:325
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:283
@@ -9865,7 +9862,7 @@ msgid "Start Your Interview Test"
 msgstr "Bắt Đầu Bài Kiểm Tra Phỏng Vấn Của Bạn"
 
 #: src/features/Blog/BlogsPage.tsx:38
-#: src/features/Landing/Price/PricePage.tsx:451
+#: src/features/Landing/Price/PricePage.tsx:496
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:40
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
@@ -10165,11 +10162,6 @@ msgid ""
 msgstr ""
 "Giải quyết các thử thách mã hóa, gỡ lỗi hiệu quả và giải thích rõ ràng quá "
 "trình suy nghĩ của bạn."
-
-#: src/features/Landing/Price/PricePage.tsx:410
-#. js-lingui-explicit-id
-msgid "Tailor AI interactions to fit your needs"
-msgstr "Tùy chỉnh tương tác AI để phù hợp với nhu cầu của bạn"
 
 #: src/features/Case/data/backendCSharp/techStackSection.ts:13
 #. js-lingui-explicit-id
@@ -10932,6 +10924,11 @@ msgstr "Thời gian còn lại"
 msgid "Timed"
 msgstr "Được hẹn giờ"
 
+#: src/features/Landing/Price/PricePage.tsx:307
+#. js-lingui-explicit-id
+msgid "To try full features for a short time"
+msgstr "Để thử các tính năng đầy đủ trong một thời gian ngắn"
+
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
 msgid ""
@@ -11039,6 +11036,11 @@ msgstr "Cố gắng"
 #. js-lingui-explicit-id
 msgid "Try for free"
 msgstr "Dùng thử miễn phí"
+
+#: src/features/Landing/Price/PricePage.tsx:340
+#. js-lingui-explicit-id
+msgid "Try full features and decide if it’s right for you"
+msgstr "Dùng thử tất cả các tính năng và quyết định xem nó có phù hợp với bạn không"
 
 #: src/features/Lang/getLabels.tsx:27
 #. js-lingui-explicit-id
@@ -11334,7 +11336,7 @@ msgstr ""
 msgid "Vocabulary"
 msgstr "Từ vựng"
 
-#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/Price/PricePage.tsx:286
 #. js-lingui-explicit-id
 msgid "Vocabulary challenges"
 msgstr "Thử thách từ vựng"
@@ -11603,16 +11605,16 @@ msgstr "Xem trước Phản hồi Webcam"
 msgid "Webcam Setup"
 msgstr "Thiết lập Webcam"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
+#. js-lingui-explicit-id
+msgid "Week"
+msgstr "Tuần"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:108
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
 msgstr "tuần"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
-#. js-lingui-explicit-id
-msgid "Week"
-msgstr "Tuần"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:13
 #. js-lingui-explicit-id
@@ -11665,11 +11667,6 @@ msgstr "Bạn nhận được gì khi có quyền truy cập đầy đủ?"
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "Bạn nghĩ sao?"
-
-#: src/features/Landing/Price/PricePage.tsx:406
-#. js-lingui-explicit-id
-msgid "What I can do for you:"
-msgstr "Cái gì tôi có thể làm cho bạn:"
 
 #: src/features/Landing/LandingPage.tsx:34
 #. js-lingui-explicit-id
@@ -11863,7 +11860,8 @@ msgstr ""
 "Với FluencyPal, bạn có thể cải thiện trải nghiệm học của mình với phản hồi "
 "cá nhân hóa, sửa lỗi thời gian thực, và một cộng đồng hỗ trợ."
 
-#: src/features/Landing/Price/PricePage.tsx:372
+#: src/features/Landing/Price/PricePage.tsx:378
+#: src/features/Landing/Price/PricePage.tsx:461
 #. js-lingui-explicit-id
 msgid ""
 "With time, AI will adapt to your learning style and it will be more "
@@ -11981,16 +11979,16 @@ msgstr ""
 msgid "Wrong Link"
 msgstr "Liên kết sai"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
+#. js-lingui-explicit-id
+msgid "Year"
+msgstr "Năm"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:110
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
 msgstr "năm"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
-#. js-lingui-explicit-id
-msgid "Year"
-msgstr "Năm"
 
 #: src/features/Header/NeedHelpModal.tsx:80
 #. js-lingui-explicit-id
@@ -12052,6 +12050,17 @@ msgid ""
 msgstr ""
 "Vâng. Nếu bạn không hài lòng với dịch vụ, trên trang \"Hồ sơ/Lịch sử thanh "
 "toán\" bạn có thể yêu cầu hoàn tiền và chúng tôi sẽ thảo luận về chi tiết."
+
+#: src/features/Landing/Price/PricePage.tsx:93
+#. js-lingui-explicit-id
+msgid ""
+"Yes. If you’re not satisfied with the service, on \"Profile/Payment "
+"history\" page you can request a refund and we will discuss the details and "
+"return the amount paid."
+msgstr ""
+"Vâng. Nếu bạn không hài lòng với dịch vụ, trên trang \"Hồ sơ/Lịch sử thanh "
+"toán\" bạn có thể yêu cầu hoàn tiền và chúng tôi sẽ thảo luận chi tiết và "
+"hoàn trả số tiền đã thanh toán."
 
 #: src/features/Usage/Subscription/FaqSubscription.tsx:21
 #. js-lingui-explicit-id
@@ -12666,6 +12675,48 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Landing/Price/PricePage.tsx:401
+#. js-lingui-explicit-id
+#~ msgid "Contact for pricing"
+#~ msgstr "Liên hệ để biết giá"
+
+#: src/features/Landing/Price/PricePage.tsx:419
+#. Button title for contact me for advance pricing
+#. js-lingui-explicit-id
+#~ msgid "Contact me"
+#~ msgstr "Liên hệ với tôi"
+
+#: src/features/Landing/Price/PricePage.tsx:409
+#. js-lingui-explicit-id
+#~ msgid "Custom features"
+#~ msgstr "Tính năng tùy chỉnh"
+
+#: src/features/Landing/Price/PricePage.tsx:414
+#. js-lingui-explicit-id
+#~ msgid "Discounted AI Usage"
+#~ msgstr "Giá sử dụng AI đã giảm"
+
+#: src/features/Landing/Price/PricePage.tsx:383
+#: src/features/Landing/Price/PricePage.tsx:405
+#. js-lingui-explicit-id
+#~ msgid "Frequent users who need more value"
+#~ msgstr "Những người dùng thường xuyên cần nhiều giá trị hơn"
+
+#: src/features/Landing/Price/PricePage.tsx:415
+#. js-lingui-explicit-id
+#~ msgid "Get cheaper AI hours for bulk use"
+#~ msgstr "Nhận giờ AI rẻ hơn khi sử dụng số lượng lớn"
+
+#: src/features/Landing/Price/PricePage.tsx:410
+#. js-lingui-explicit-id
+#~ msgid "Tailor AI interactions to fit your needs"
+#~ msgstr "Tùy chỉnh tương tác AI để phù hợp với nhu cầu của bạn"
+
+#: src/features/Landing/Price/PricePage.tsx:406
+#. js-lingui-explicit-id
+#~ msgid "What I can do for you:"
+#~ msgstr "Cái gì tôi có thể làm cho bạn:"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:192
 #. js-lingui-explicit-id

@@ -26,7 +26,7 @@ import { getI18nInstance } from '@/appRouterI18n';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { CurrencyToDisplay, PriceDisplay } from './PriceDisplay';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
-import { PRICE_PER_MONTH_USD } from '@/common/subscription';
+import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD, PRICE_PER_WEEK_USD } from '@/common/subscription';
 import { GeneralFaqBlock } from '../FAQ/GeneralFaqBlock';
 
 interface PricePageProps {
@@ -86,6 +86,12 @@ export const PricePage = ({ lang }: PricePageProps) => {
       question: i18n._(`Are there any hidden fees?`),
       answer: i18n._(
         `No. The price shown is the full price. There are no hidden fees or surprise charges.`,
+      ),
+    },
+    {
+      question: i18n._(`Can I get a refund if I’m not satisfied?`),
+      answer: i18n._(
+        `Yes. If you’re not satisfied with the service, on "Profile/Payment history" page you can request a refund and we will discuss the details and return the amount paid.`,
       ),
     },
   ];
@@ -297,7 +303,90 @@ export const PricePage = ({ lang }: PricePageProps) => {
               />
 
               <PriceCard
-                title={i18n._('Full Access')}
+                title={i18n._('Full Access for a Day')}
+                subTitle={i18n._('To try full features for a short time')}
+                price={
+                  <Stack
+                    sx={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: '8px',
+                    }}
+                  >
+                    <Typography
+                      variant="h2"
+                      component={'span'}
+                      sx={{
+                        fontWeight: 600,
+                        fontSize: '3rem',
+                      }}
+                    >
+                      <PriceDisplay amountInUsd={PRICE_PER_DAY_USD} />
+                    </Typography>
+
+                    <Stack sx={{}}>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          textTransform: 'uppercase',
+                        }}
+                      >
+                        <CurrencyToDisplay />
+                      </Typography>
+                      <Typography variant="caption">/ {i18n._('day')}</Typography>
+                    </Stack>
+                  </Stack>
+                }
+                priceSubDescription={i18n._('Try full features and decide if it’s right for you')}
+                listTitle={i18n._('Everything in Free, plus:')}
+                isLightButton
+                listItems={[
+                  {
+                    title: i18n._('Full AI tutor access'),
+                    tooltip: i18n._('Get unlimited access to AI-powered language practice'),
+                    icon: Sparkles,
+                  },
+                  {
+                    title: i18n._('Role-play scenarios'),
+                    tooltip: i18n._(
+                      'Engage in real-life conversations like job interviews or ordering food',
+                    ),
+                    icon: UsersRound,
+                  },
+                  {
+                    title: i18n._('Conversation practice'),
+                    tooltip: i18n._('Improve fluency with interactive chat sessions'),
+                    icon: Speech,
+                  },
+                  {
+                    title: i18n._('Progress tracking'),
+                    tooltip: i18n._('See your improvements and track your learning journey'),
+                    icon: ChartNoAxesCombined,
+                  },
+                  {
+                    title: i18n._('New Words'),
+                    tooltip: i18n._('Get new words and phrases in context'),
+                    icon: BookType,
+                  },
+                  {
+                    title: i18n._('New Grammar Rules'),
+                    tooltip: i18n._('By practicing, you will get personal grammar rules from AI'),
+                    icon: GraduationCap,
+                  },
+                  {
+                    title: i18n._('Advanced Personalization'),
+                    tooltip: i18n._(
+                      'With time, AI will adapt to your learning style and it will be more personalized',
+                    ),
+                    icon: Lightbulb,
+                  },
+                ]}
+                buttonTitle={i18n._('Start')}
+                buttonLink={`${getUrlStart(lang)}quiz`}
+              />
+
+              <PriceCard
+                title={i18n._('Full Access for a Month')}
                 subTitle={i18n._('For learners who want flexibility')}
                 price={
                   <Stack
@@ -377,50 +466,6 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 ]}
                 buttonTitle={i18n._('Start')}
                 buttonLink={`${getUrlStart(lang)}quiz`}
-              />
-              <PriceCard
-                title={i18n._('Advanced')}
-                subTitle={i18n._('Frequent users who need more value')}
-                price={
-                  <Stack
-                    sx={{
-                      justifyContent: 'flex-end',
-                      height: '57px',
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      component={'span'}
-                      sx={{
-                        fontWeight: 700,
-                        opacity: 0.8,
-                        fontSize: '1.6rem',
-                        lineHeight: '1.15',
-                      }}
-                    >
-                      {i18n._('Contact for pricing')}
-                    </Typography>
-                  </Stack>
-                }
-                priceSubDescription={i18n._('Frequent users who need more value')}
-                listTitle={i18n._('What I can do for you:')}
-                listItems={[
-                  {
-                    title: i18n._('Custom features'),
-                    tooltip: i18n._('Tailor AI interactions to fit your needs'),
-                    icon: Blocks,
-                  },
-                  {
-                    title: i18n._('Discounted AI Usage'),
-                    tooltip: i18n._('Get cheaper AI hours for bulk use'),
-                    icon: Gem,
-                  },
-                ]}
-                buttonTitle={i18n._('Contact me', undefined, {
-                  comment: 'Button title for contact me for advance pricing',
-                })}
-                isLightButton
-                buttonLink={`${getUrlStart(lang)}contacts`}
               />
             </Stack>
           </Stack>

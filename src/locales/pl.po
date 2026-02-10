@@ -582,7 +582,6 @@ msgid "Address performance considerations"
 msgstr "Rozważania dotyczące wydajności"
 
 #: src/features/Alias/components/LanguageLevel.tsx:85
-#: src/features/Landing/Price/PricePage.tsx:382
 #. js-lingui-explicit-id
 msgid "Advanced"
 msgstr "Zaawansowany"
@@ -605,7 +604,8 @@ msgstr "zaawansowana konwersacja w języku angielskim"
 
 #: src/features/Landing/Price/FeatureList.tsx:56
 #: src/features/Landing/Price/FeatureList.tsx:80
-#: src/features/Landing/Price/PricePage.tsx:371
+#: src/features/Landing/Price/PricePage.tsx:377
+#: src/features/Landing/Price/PricePage.tsx:460
 #. js-lingui-explicit-id
 msgid "Advanced Personalization"
 msgstr "Zaawansowana Personalizacja"
@@ -1404,7 +1404,8 @@ msgstr "Kupno {hours} godziny/godzin(y) użytkowania AI"
 msgid "By continuing, you agree to our"
 msgstr "Kontynuując, zgadzasz się na nasze"
 
-#: src/features/Landing/Price/PricePage.tsx:367
+#: src/features/Landing/Price/PricePage.tsx:373
+#: src/features/Landing/Price/PricePage.tsx:456
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "Poprzez ćwiczenie, otrzymasz osobiste zasady gramatyki od AI"
@@ -1479,6 +1480,11 @@ msgstr "Czy mogę dostosować swoje sesje ćwiczeniowe?"
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "Czy mogę dokonać zwrotu po zakupie?"
+
+#: src/features/Landing/Price/PricePage.tsx:92
+#. js-lingui-explicit-id
+msgid "Can I get a refund if I’m not satisfied?"
+msgstr "Czy mogę otrzymać zwrot pieniędzy, jeśli nie będę zadowolony?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
 #: src/features/Usage/Subscription/FaqSubscription.tsx:20
@@ -1948,17 +1954,6 @@ msgstr ""
 "Stałe doskonalenie dzięki zorganizowanemu coachingu rozmów kwalifikacyjnych "
 "i spersonalizowanej praktyce."
 
-#: src/features/Landing/Price/PricePage.tsx:401
-#. js-lingui-explicit-id
-msgid "Contact for pricing"
-msgstr "Kontakt w sprawie cen"
-
-#: src/features/Landing/Price/PricePage.tsx:419
-#. Button title for contact me for advance pricing
-#. js-lingui-explicit-id
-msgid "Contact me"
-msgstr "Skontaktuj się ze mną"
-
 #: src/features/Case/data/reusable/priceSection.ts:47
 #. js-lingui-explicit-id
 msgid "Contact us"
@@ -2034,7 +2029,8 @@ msgid "Conversation Practice"
 msgstr "Ćwiczenia Konwersacyjne"
 
 #: src/features/Landing/Price/FeatureList.tsx:40
-#: src/features/Landing/Price/PricePage.tsx:351
+#: src/features/Landing/Price/PricePage.tsx:357
+#: src/features/Landing/Price/PricePage.tsx:440
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Praktyka rozmowy"
@@ -2255,11 +2251,6 @@ msgstr "Bieżące Wyniki"
 msgid "Custom"
 msgstr "Custom"
 
-#: src/features/Landing/Price/PricePage.tsx:409
-#. js-lingui-explicit-id
-msgid "Custom features"
-msgstr "Funkcje dostosowane"
-
 #: src/features/Case/data/reusable/priceSection.ts:42
 #. js-lingui-explicit-id
 msgid "Custom interview roadmap"
@@ -2354,16 +2345,17 @@ msgstr "Dane i transakcje"
 msgid "Databases & Transactions"
 msgstr "Bazy danych i transakcje"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
+#. js-lingui-explicit-id
+msgid "Day"
+msgstr "Dzień"
+
+#: src/features/Landing/Price/PricePage.tsx:336
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:111
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "day"
 msgstr "dzień"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
-#. js-lingui-explicit-id
-msgid "Day"
-msgstr "Dzień"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
 #. js-lingui-explicit-id
@@ -2412,7 +2404,7 @@ msgstr "Tematy debaty będą wybierane losowo."
 msgid "Debates"
 msgstr "Debaty"
 
-#: src/features/Landing/Price/PricePage.tsx:273
+#: src/features/Landing/Price/PricePage.tsx:279
 #. js-lingui-explicit-id
 msgid "Debates and discussions"
 msgstr "Debaty i dyskusje"
@@ -2611,11 +2603,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Diagnosis"
 msgstr "Diagnoza"
-
-#: src/features/Landing/Price/PricePage.tsx:414
-#. js-lingui-explicit-id
-msgid "Discounted AI Usage"
-msgstr "Przecenione korzystanie z AI"
 
 #: src/features/Blog/ListBlog.tsx:72
 #: src/features/Case/ListPage/components/ListInterview.tsx:72
@@ -2995,8 +2982,9 @@ msgstr ""
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr "Zainicjuj przyjazną rozmowę o zwierzętach i codziennych rutynach"
 
-#: src/features/Landing/Price/PricePage.tsx:274
-#: src/features/Landing/Price/PricePage.tsx:345
+#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/Price/PricePage.tsx:351
+#: src/features/Landing/Price/PricePage.tsx:434
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr ""
@@ -3481,8 +3469,9 @@ msgstr ""
 "Ona pomoże.  \n"
 "Po prostu podczas tego skomentuje ludzkość."
 
-#: src/features/Landing/Price/PricePage.tsx:264
-#: src/features/Landing/Price/PricePage.tsx:335
+#: src/features/Landing/Price/PricePage.tsx:270
+#: src/features/Landing/Price/PricePage.tsx:341
+#: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
 msgid "Everything in Free, plus:"
 msgstr "Wszystko w Free, plus:"
@@ -3657,7 +3646,7 @@ msgstr "Sprawdzanie Bezstronności"
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
 #: src/features/Case/Landing/components/InterviewHeader.tsx:34
 #: src/features/Landing/LandingPage.tsx:425
-#: src/features/Landing/Price/PricePage.tsx:437
+#: src/features/Landing/Price/PricePage.tsx:482
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "FAQ"
@@ -3904,7 +3893,7 @@ msgstr ""
 "siebie"
 
 #: src/features/Landing/LandingPage.tsx:167
-#: src/features/Landing/Price/PricePage.tsx:107
+#: src/features/Landing/Price/PricePage.tsx:113
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
 msgstr "FluencyPal – Twój AI partner do mówienia po angielsku"
@@ -3950,12 +3939,12 @@ msgstr "Na przykład:"
 msgid "For focused, uninterrupted learning."
 msgstr "Do skupionej, nieprzerwanej nauki."
 
-#: src/features/Landing/Price/PricePage.tsx:230
+#: src/features/Landing/Price/PricePage.tsx:236
 #. js-lingui-explicit-id
 msgid "For learners getting started"
 msgstr "Dla uczących się rozpoczynających naukę"
 
-#: src/features/Landing/Price/PricePage.tsx:301
+#: src/features/Landing/Price/PricePage.tsx:390
 #. js-lingui-explicit-id
 msgid "For learners who want flexibility"
 msgstr "Dla uczących się, którzy cenią sobie elastyczność"
@@ -4001,7 +3990,7 @@ msgstr "Spostrzeżenia specyficzne dla frameworków (React, Vue, Angular)"
 msgid "Frameworks & Libraries"
 msgstr "Frameworki i biblioteki"
 
-#: src/features/Landing/Price/PricePage.tsx:229
+#: src/features/Landing/Price/PricePage.tsx:235
 #. js-lingui-explicit-id
 msgid "Free"
 msgstr "Darmowe"
@@ -4045,12 +4034,6 @@ msgstr "Wolna dla wszystkich"
 msgid "French Learning Plan"
 msgstr "Plan Nauki Francuskiego"
 
-#: src/features/Landing/Price/PricePage.tsx:383
-#: src/features/Landing/Price/PricePage.tsx:405
-#. js-lingui-explicit-id
-msgid "Frequent users who need more value"
-msgstr "Częste użytkownicy, którzy potrzebują więcej wartości"
-
 #: src/features/Community/SupportPage.tsx:66
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:11
 #: src/features/Usage/Subscription/FaqSubscription.tsx:10
@@ -4058,7 +4041,7 @@ msgstr "Częste użytkownicy, którzy potrzebują więcej wartości"
 msgid "Frequently Asked Questions"
 msgstr "Najczęściej Zadawane Pytania"
 
-#: src/features/Landing/Price/PricePage.tsx:188
+#: src/features/Landing/Price/PricePage.tsx:194
 #. js-lingui-explicit-id
 msgid "From mistakes and hesitation to confident conversations"
 msgstr "Od błędów i wahania do pewnych siebie konwersacji"
@@ -4094,7 +4077,6 @@ msgid "frontend system design interview"
 msgstr "projektowanie systemu frontendowego - rozmowa kwalifikacyjna"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:136
-#: src/features/Landing/Price/PricePage.tsx:300
 #: src/features/Settings/MyProfile.tsx:74
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:452
@@ -4129,6 +4111,16 @@ msgstr "Pełen dostęp na 1 tydzień"
 msgid "Full Access for 1 year"
 msgstr "Pełny dostęp na 1 rok"
 
+#: src/features/Landing/Price/PricePage.tsx:306
+#. js-lingui-explicit-id
+msgid "Full Access for a Day"
+msgstr "Pełny dostęp na jeden dzień"
+
+#: src/features/Landing/Price/PricePage.tsx:389
+#. js-lingui-explicit-id
+msgid "Full Access for a Month"
+msgstr "Pełny dostęp na miesiąc"
+
 #: src/features/Case/data/reusable/priceSection.ts:24
 #. js-lingui-explicit-id
 msgid "Full access to all simulations"
@@ -4145,7 +4137,8 @@ msgid "Full AI interview coach access"
 msgstr "Pełny dostęp do coachingu z wykorzystaniem AI na rozmowy kwalifikacyjne"
 
 #: src/features/Landing/Price/FeatureList.tsx:32
-#: src/features/Landing/Price/PricePage.tsx:339
+#: src/features/Landing/Price/PricePage.tsx:345
+#: src/features/Landing/Price/PricePage.tsx:428
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Pełny dostęp do AI nauczyciela"
@@ -4178,7 +4171,7 @@ msgstr "Ustawienia gry są brakujące. Proszę wrócić."
 msgid "Game Statistics"
 msgstr "Statystyki Gry"
 
-#: src/features/Landing/Price/PricePage.tsx:268
+#: src/features/Landing/Price/PricePage.tsx:274
 #. js-lingui-explicit-id
 msgid "Game-based practice"
 msgstr "Praktyka oparta na grze"
@@ -4247,11 +4240,6 @@ msgstr "Uzyskaj dostęp na tydzień"
 #. js-lingui-explicit-id
 msgid "Get access for a year"
 msgstr "Uzyskaj dostęp na rok"
-
-#: src/features/Landing/Price/PricePage.tsx:415
-#. js-lingui-explicit-id
-msgid "Get cheaper AI hours for bulk use"
-msgstr "Uzyskaj tańsze godziny AI przy dużym zużyciu"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:24
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:24
@@ -4429,7 +4417,8 @@ msgstr ""
 msgid "Get My Plan"
 msgstr "Uzyskaj Mój Plan"
 
-#: src/features/Landing/Price/PricePage.tsx:362
+#: src/features/Landing/Price/PricePage.tsx:368
+#: src/features/Landing/Price/PricePage.tsx:451
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "Poznaj nowe słowa i zwroty w kontekście"
@@ -4440,8 +4429,8 @@ msgid "Get Ready"
 msgstr "Przygotuj się"
 
 #: src/features/Blog/BlogsPage.tsx:39
-#: src/features/Landing/Price/PricePage.tsx:193
-#: src/features/Landing/Price/PricePage.tsx:452
+#: src/features/Landing/Price/PricePage.tsx:199
+#: src/features/Landing/Price/PricePage.tsx:497
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "Rozpocznij"
@@ -4451,13 +4440,14 @@ msgstr "Rozpocznij"
 msgid "Get Started Free"
 msgstr "Zacznij za darmo"
 
-#: src/features/Landing/Price/PricePage.tsx:263
+#: src/features/Landing/Price/PricePage.tsx:269
 #. js-lingui-explicit-id
 msgid "Get started with basic features"
 msgstr "Rozpocznij przygodę z podstawowymi funkcjami"
 
-#: src/features/Landing/Price/PricePage.tsx:269
-#: src/features/Landing/Price/PricePage.tsx:340
+#: src/features/Landing/Price/PricePage.tsx:275
+#: src/features/Landing/Price/PricePage.tsx:346
+#: src/features/Landing/Price/PricePage.tsx:429
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Uzyskaj nieograniczony dostęp do językowej praktyki z AI."
@@ -5547,10 +5537,11 @@ msgstr "Udoskonal umiejętności języka angielskiego"
 msgid "improve English speaking"
 msgstr "popraw mówienie po angielsku"
 
-#: src/features/Landing/Price/PricePage.tsx:281
-#: src/features/Landing/Price/PricePage.tsx:286
-#: src/features/Landing/Price/PricePage.tsx:291
-#: src/features/Landing/Price/PricePage.tsx:352
+#: src/features/Landing/Price/PricePage.tsx:287
+#: src/features/Landing/Price/PricePage.tsx:292
+#: src/features/Landing/Price/PricePage.tsx:297
+#: src/features/Landing/Price/PricePage.tsx:358
+#: src/features/Landing/Price/PricePage.tsx:441
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "Popraw płynność dzięki interaktywnym sesjom czatu"
@@ -6582,7 +6573,7 @@ msgstr "Ucz się"
 msgid "Learn anywhere, anytime"
 msgstr "Ucz się gdziekolwiek, kiedykolwiek"
 
-#: src/features/Landing/Price/PricePage.tsx:334
+#: src/features/Landing/Price/PricePage.tsx:423
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "Ucz się pełną parą z pełnym dostępem"
@@ -7037,8 +7028,8 @@ msgstr "Symulowane Rozmowy Kwalifikacyjne"
 msgid "modern literature"
 msgstr "współczesna literatura"
 
-#: src/features/Landing/Price/PricePage.tsx:259
-#: src/features/Landing/Price/PricePage.tsx:330
+#: src/features/Landing/Price/PricePage.tsx:265
+#: src/features/Landing/Price/PricePage.tsx:419
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:106
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
@@ -7148,13 +7139,15 @@ msgid "New Game"
 msgstr "Nowa Gra"
 
 #: src/features/Landing/Price/FeatureList.tsx:52
-#: src/features/Landing/Price/PricePage.tsx:366
+#: src/features/Landing/Price/PricePage.tsx:372
+#: src/features/Landing/Price/PricePage.tsx:455
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "Nowe Reguły Gramatyki"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
-#: src/features/Landing/Price/PricePage.tsx:361
+#: src/features/Landing/Price/PricePage.tsx:367
+#: src/features/Landing/Price/PricePage.tsx:450
 #. js-lingui-explicit-id
 msgid "New Words"
 msgstr "Nowe Słowa"
@@ -7533,7 +7526,7 @@ msgstr "Online praktyka językowa"
 msgid "Oops! Something went wrong"
 msgstr "Ups! Coś poszło nie tak"
 
-#: src/features/Landing/Price/PricePage.tsx:195
+#: src/features/Landing/Price/PricePage.tsx:201
 #. js-lingui-explicit-id
 msgid "Open"
 msgstr "Otwórz"
@@ -7821,7 +7814,7 @@ msgstr "Wybierz poziom, aby zacząć grać!"
 msgid "Pick one or more categories to build your word list."
 msgstr "Wybierz jedną lub więcej kategorii, aby stworzyć swoją listę słówek."
 
-#: src/features/Landing/Price/PricePage.tsx:290
+#: src/features/Landing/Price/PricePage.tsx:296
 #. js-lingui-explicit-id
 msgid "Place in the top 5 in the game to gain full access"
 msgstr "Znajdź się w pierwszej piątce w grze, aby uzyskać pełny dostęp"
@@ -8397,7 +8390,7 @@ msgstr "Poprzednie Pytanie"
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
 #: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:178
+#: src/features/Landing/Price/PricePage.tsx:184
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "Cena"
@@ -8494,7 +8487,8 @@ msgstr "Śledzenie Postępów"
 
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
-#: src/features/Landing/Price/PricePage.tsx:356
+#: src/features/Landing/Price/PricePage.tsx:362
+#: src/features/Landing/Price/PricePage.tsx:445
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Śledzenie postępów"
@@ -8654,7 +8648,7 @@ msgstr "Przeczytaj tekst"
 msgid "Reader"
 msgstr "Czytnik"
 
-#: src/features/Landing/Price/PricePage.tsx:285
+#: src/features/Landing/Price/PricePage.tsx:291
 #. js-lingui-explicit-id
 msgid "Reading practice"
 msgstr "Praktyka czytania"
@@ -9076,7 +9070,8 @@ msgid "Role-Play"
 msgstr "Role-Play"
 
 #: src/features/Landing/Price/FeatureList.tsx:36
-#: src/features/Landing/Price/PricePage.tsx:344
+#: src/features/Landing/Price/PricePage.tsx:350
+#: src/features/Landing/Price/PricePage.tsx:433
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "Scenariusze odgrywania ról"
@@ -9223,7 +9218,8 @@ msgstr "Zobacz, jaki rodzaj informacji zwrotnych z backendu otrzymasz"
 msgid "See the type of feedback you'll get"
 msgstr "Zobacz, jaki rodzaj opinii otrzymasz"
 
-#: src/features/Landing/Price/PricePage.tsx:357
+#: src/features/Landing/Price/PricePage.tsx:363
+#: src/features/Landing/Price/PricePage.tsx:446
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
 msgstr "Zobacz swoje postępy i śledź swoją ścieżkę nauki"
@@ -9761,8 +9757,9 @@ msgstr "Gwiazdy"
 #: src/features/Dashboard/PlanDashboardCards.tsx:300
 #: src/features/Goal/Quiz/GoalReview.tsx:172
 #: src/features/Landing/PlanLandingBlock.tsx:527
-#: src/features/Landing/Price/PricePage.tsx:295
-#: src/features/Landing/Price/PricePage.tsx:378
+#: src/features/Landing/Price/PricePage.tsx:301
+#: src/features/Landing/Price/PricePage.tsx:384
+#: src/features/Landing/Price/PricePage.tsx:467
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:325
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:283
@@ -9889,7 +9886,7 @@ msgid "Start Your Interview Test"
 msgstr "Rozpocznij swój test rozmowy kwalifikacyjnej"
 
 #: src/features/Blog/BlogsPage.tsx:38
-#: src/features/Landing/Price/PricePage.tsx:451
+#: src/features/Landing/Price/PricePage.tsx:496
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:40
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
@@ -10191,11 +10188,6 @@ msgid ""
 msgstr ""
 "Stawiaj czoła wyzwaniom kodowania, skutecznie debuguj problemy i jasno "
 "wyjaśniaj swój tok myślenia."
-
-#: src/features/Landing/Price/PricePage.tsx:410
-#. js-lingui-explicit-id
-msgid "Tailor AI interactions to fit your needs"
-msgstr "Dopasuj interakcje AI do swoich potrzeb"
 
 #: src/features/Case/data/backendCSharp/techStackSection.ts:13
 #. js-lingui-explicit-id
@@ -10959,6 +10951,11 @@ msgstr "Pozostały czas"
 msgid "Timed"
 msgstr "Czasowy"
 
+#: src/features/Landing/Price/PricePage.tsx:307
+#. js-lingui-explicit-id
+msgid "To try full features for a short time"
+msgstr "Aby wypróbować pełne funkcje przez krótki czas"
+
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
 msgid ""
@@ -11064,6 +11061,11 @@ msgstr "Spróbuj"
 #. js-lingui-explicit-id
 msgid "Try for free"
 msgstr "Wypróbuj za darmo"
+
+#: src/features/Landing/Price/PricePage.tsx:340
+#. js-lingui-explicit-id
+msgid "Try full features and decide if it’s right for you"
+msgstr "Wypróbuj pełne funkcje i zdecyduj, czy to odpowiednie dla Ciebie"
 
 #: src/features/Lang/getLabels.tsx:27
 #. js-lingui-explicit-id
@@ -11354,7 +11356,7 @@ msgstr ""
 msgid "Vocabulary"
 msgstr "Słownictwo"
 
-#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/Price/PricePage.tsx:286
 #. js-lingui-explicit-id
 msgid "Vocabulary challenges"
 msgstr "Wyzwania słownikowe"
@@ -11627,16 +11629,16 @@ msgstr "Podgląd danych z kamery internetowej"
 msgid "Webcam Setup"
 msgstr "Konfiguracja kamery internetowej"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
+#. js-lingui-explicit-id
+msgid "Week"
+msgstr "Tydzień"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:108
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
 msgstr "tydzień"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
-#. js-lingui-explicit-id
-msgid "Week"
-msgstr "Tydzień"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:13
 #. js-lingui-explicit-id
@@ -11691,11 +11693,6 @@ msgstr "Co zapewnia pełny dostęp?"
 #. js-lingui-explicit-id
 msgid "What do you think?"
 msgstr "Co myślisz?"
-
-#: src/features/Landing/Price/PricePage.tsx:406
-#. js-lingui-explicit-id
-msgid "What I can do for you:"
-msgstr "Co mogę dla ciebie zrobić:"
 
 #: src/features/Landing/LandingPage.tsx:34
 #. js-lingui-explicit-id
@@ -11893,7 +11890,8 @@ msgstr ""
 "spersonalizowanym uwagom, korektom w czasie rzeczywistym i wsparciu "
 "społeczności."
 
-#: src/features/Landing/Price/PricePage.tsx:372
+#: src/features/Landing/Price/PricePage.tsx:378
+#: src/features/Landing/Price/PricePage.tsx:461
 #. js-lingui-explicit-id
 msgid ""
 "With time, AI will adapt to your learning style and it will be more "
@@ -12012,16 +12010,16 @@ msgstr ""
 msgid "Wrong Link"
 msgstr "Zły link"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
+#. js-lingui-explicit-id
+msgid "Year"
+msgstr "Rok"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:110
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
 msgstr "rok"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
-#. js-lingui-explicit-id
-msgid "Year"
-msgstr "Rok"
 
 #: src/features/Header/NeedHelpModal.tsx:80
 #. js-lingui-explicit-id
@@ -12084,6 +12082,17 @@ msgid ""
 msgstr ""
 "Tak. Jeśli nie jesteś zadowolony z usługi, na stronie \"Profil/Historia "
 "płatności\" możesz zażądać zwrotu pieniędzy, a my omówimy szczegóły."
+
+#: src/features/Landing/Price/PricePage.tsx:93
+#. js-lingui-explicit-id
+msgid ""
+"Yes. If you’re not satisfied with the service, on \"Profile/Payment "
+"history\" page you can request a refund and we will discuss the details and "
+"return the amount paid."
+msgstr ""
+"Tak. Jeśli nie jesteś zadowolony z usługi, na stronie \"Profil/Historia "
+"płatności\" możesz zażądać zwrotu pieniędzy, a my omówimy szczegóły i "
+"zwrócimy wpłaconą kwotę."
 
 #: src/features/Usage/Subscription/FaqSubscription.tsx:21
 #. js-lingui-explicit-id
@@ -12697,6 +12706,48 @@ msgstr ""
 "— ważne jest, aby zaangażować się w tę krótką rozmowę przed poruszeniem "
 "tematów zawodowych. Oto kilka przydatnych angielskich zwrotów, które pomogą "
 "rozpocząć wywiad:"
+
+#: src/features/Landing/Price/PricePage.tsx:401
+#. js-lingui-explicit-id
+#~ msgid "Contact for pricing"
+#~ msgstr "Kontakt w sprawie cen"
+
+#: src/features/Landing/Price/PricePage.tsx:419
+#. Button title for contact me for advance pricing
+#. js-lingui-explicit-id
+#~ msgid "Contact me"
+#~ msgstr "Skontaktuj się ze mną"
+
+#: src/features/Landing/Price/PricePage.tsx:409
+#. js-lingui-explicit-id
+#~ msgid "Custom features"
+#~ msgstr "Funkcje dostosowane"
+
+#: src/features/Landing/Price/PricePage.tsx:414
+#. js-lingui-explicit-id
+#~ msgid "Discounted AI Usage"
+#~ msgstr "Przecenione korzystanie z AI"
+
+#: src/features/Landing/Price/PricePage.tsx:383
+#: src/features/Landing/Price/PricePage.tsx:405
+#. js-lingui-explicit-id
+#~ msgid "Frequent users who need more value"
+#~ msgstr "Częste użytkownicy, którzy potrzebują więcej wartości"
+
+#: src/features/Landing/Price/PricePage.tsx:415
+#. js-lingui-explicit-id
+#~ msgid "Get cheaper AI hours for bulk use"
+#~ msgstr "Uzyskaj tańsze godziny AI przy dużym zużyciu"
+
+#: src/features/Landing/Price/PricePage.tsx:410
+#. js-lingui-explicit-id
+#~ msgid "Tailor AI interactions to fit your needs"
+#~ msgstr "Dopasuj interakcje AI do swoich potrzeb"
+
+#: src/features/Landing/Price/PricePage.tsx:406
+#. js-lingui-explicit-id
+#~ msgid "What I can do for you:"
+#~ msgstr "Co mogę dla ciebie zrobić:"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:192
 #. js-lingui-explicit-id
