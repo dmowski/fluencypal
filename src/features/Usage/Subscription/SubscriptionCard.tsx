@@ -144,6 +144,18 @@ export const SubscriptionCard = ({
           <Typography>
             {i18n._('Expires')}: <b>{dayjs(expiringDateIso).format('D MMMM')}</b>
           </Typography>
+
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: 0.9,
+            }}
+          >
+            {i18n._('Price per day')}:{' '}
+            <b>
+              {pricePerDayCurrency} {currency.currency}
+            </b>
+          </Typography>
         </Stack>
       </Stack>
     </Stack>
