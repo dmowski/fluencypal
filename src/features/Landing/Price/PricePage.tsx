@@ -89,7 +89,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
       ),
     },
     {
-      question: i18n._(`Can I get a refund if I’m not satisfied?`),
+      question: i18n._(`Can I do a refund after purchase?`),
       answer: i18n._(
         `Yes. If you’re not satisfied with the service, on "Profile/Payment history" page you can request a refund and we will discuss the details and return the amount paid.`,
       ),
