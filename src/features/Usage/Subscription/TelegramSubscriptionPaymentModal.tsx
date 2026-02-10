@@ -10,7 +10,12 @@ import { usePathname } from 'next/navigation';
 import { supportedLanguages } from '@/features/Lang/lang';
 import { useLingui } from '@lingui/react';
 import { useCurrency } from '../../User/useCurrency';
-import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD } from '@/common/subscription';
+import {
+  PRICE_PER_DAY_USD,
+  PRICE_PER_MONTH_USD,
+  PRICE_PER_WEEK_USD,
+  PRICE_PER_YEAR_USD,
+} from '@/common/subscription';
 import { sentPaymentTgMessage } from '../sentTgMessage';
 import dayjs from 'dayjs';
 import { FeatureList } from '../../Landing/Price/FeatureList';
@@ -153,16 +158,14 @@ export const TelegramSubscriptionPaymentModal = () => {
 
   const [duration, setDuration] = useState<'day' | 'week' | 'month' | 'year'>('week');
 
-  const yearPrice = PRICE_PER_MONTH_USD * 12;
-
   const durationPriceUsd =
     duration === 'month'
       ? PRICE_PER_MONTH_USD
       : duration === 'day'
         ? PRICE_PER_DAY_USD
         : duration === 'year'
-          ? yearPrice
-          : PRICE_PER_DAY_USD * 7;
+          ? PRICE_PER_YEAR_USD
+          : PRICE_PER_WEEK_USD;
 
   const priceInCurrency = Math.round(currency.rate * durationPriceUsd * 10) / 10;
 
