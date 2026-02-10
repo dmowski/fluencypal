@@ -14,12 +14,12 @@ export const AccessStatusIcon = ({ state }: { state: 'loading' | 'full-access' |
           state === 'loading'
             ? 'rgba(255, 255, 255, 0.06)'
             : state === 'no-access'
-              ? 'linear-gradient(45deg, rgb(173, 43, 119) 0%, rgb(161, 51, 139) 100%)'
+              ? 'linear-gradient(120deg, rgb(164, 17, 64) 0%, rgb(161, 51, 139) 100%)'
               : 'linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)',
       }}
     >
       {state === 'loading' && <Loader color="#fff" size={'21px'} strokeWidth={'4px'} />}
-      {state === 'no-access' && <X color="#fff" size={'21px'} strokeWidth={'2.3px'} />}
+      {state === 'no-access' && <X color="#fff" size={'21px'} strokeWidth={'2.5px'} />}
       {state === 'full-access' && <Check color="#fff" size={'21px'} strokeWidth={'4px'} />}
     </Stack>
   );

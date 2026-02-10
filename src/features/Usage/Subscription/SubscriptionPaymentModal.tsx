@@ -278,6 +278,7 @@ export const SubscriptionPaymentModal = () => {
               <Stack
                 sx={{
                   width: '100%',
+                  display: 'none',
                 }}
               >
                 <ButtonGroup>
