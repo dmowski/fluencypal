@@ -35,30 +35,38 @@ const WelcomeChatMessageComponent = (props: WelcomeChatMessageProps) => {
     <Stack
       sx={{
         alignItems: 'flex-start',
-        padding: '15px 15px',
-        borderRadius: '15px',
-        gap: '5px',
+        padding: '20px 22px',
+        borderRadius: '12px',
+        gap: '10px',
         backgroundColor: 'rgba(99, 177, 135, 0.1)',
       }}
     >
-      <Typography variant="h6">{i18n._(`Hint:`)}</Typography>
+      <Typography
+        variant="body2"
+        sx={{
+          fontWeight: 700,
+        }}
+      >
+        {i18n._(`Hint:`)}
+      </Typography>
       <ColorIconTextList
         gap="10px"
+        iconSize="18px"
         listItems={[
           {
             title: i18n._(`You can use any language you like`),
             iconName: 'languages',
-            iconColor: '#a8f3cbff',
+            iconColor: 'rgb(223, 250, 236)',
           },
           {
-            title: i18n._(`Share fun facts about yourself`),
+            title: i18n._(`Fun facts about yourself`),
             iconName: 'crown',
-            iconColor: '#a8f3cbff',
+            iconColor: 'rgb(223, 250, 236)',
           },
           {
             title: i18n._(`What recently made you happy?`),
             iconName: 'paw-print',
-            iconColor: '#a8f3cbff',
+            iconColor: 'rgb(223, 250, 236)',
           },
         ]}
       />

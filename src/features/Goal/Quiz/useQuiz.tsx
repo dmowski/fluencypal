@@ -160,7 +160,7 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
     'before_goalReview',
     'goalReview',
     //'accessPlan',
-    //"writeWelcomeMessageInChat",
+    'writeWelcomeMessageInChat',
   ];
 
   const [isFirstLoading, setIsFirstLoading] = useState(true);
