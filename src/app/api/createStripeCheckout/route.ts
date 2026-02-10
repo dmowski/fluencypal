@@ -5,7 +5,12 @@ import Stripe from 'stripe';
 import { validateAuthToken } from '../config/firebase';
 import { stripeConfig } from '../payment/config';
 import { pricePerHourUsd } from '@/common/ai';
-import { PRICE_PER_DAY_USD, PRICE_PER_MONTH_USD } from '@/common/subscription';
+import {
+  PRICE_PER_DAY_USD,
+  PRICE_PER_MONTH_USD,
+  PRICE_PER_WEEK_USD,
+  PRICE_PER_YEAR_USD,
+} from '@/common/subscription';
 import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 
 async function getConversionRate(toCurrency: string): Promise<number> {
@@ -136,14 +141,36 @@ export async function POST(request: Request) {
         return Response.json(response);
       }
 
+      const isWeek = days === 7;
+      const isYear = months === 12;
+
       // Calculate total price
       const totalMonthStripeMoney = Math.round(PRICE_PER_MONTH_USD * rate * months * 100);
+      const totalWeekStripeMoney = Math.round(PRICE_PER_WEEK_USD * rate * 100);
+      const totalYearStripeMoney = Math.round(PRICE_PER_YEAR_USD * rate * 100);
       const totalDayStripeMoney = Math.round(PRICE_PER_DAY_USD * rate * days * 100);
-      const totalStripeMoney = days ? totalDayStripeMoney : totalMonthStripeMoney;
 
-      const description = days
-        ? `Add ${days} day(s) to your account balance`
-        : `Add ${months} month(s) to your account balance`;
+      const totalStripeMoney = isYear
+        ? totalYearStripeMoney
+        : isWeek
+          ? totalWeekStripeMoney
+          : days
+            ? totalDayStripeMoney
+            : totalMonthStripeMoney;
+
+      const title = isYear
+        ? 'Full Access for a Year'
+        : isWeek
+          ? 'Full Access for a Week'
+          : days
+            ? `Full Access for ${days} day${days > 1 ? 's' : ''}`
+            : `Full Access for ${months} month${months > 1 ? 's' : ''}`;
+
+      const description = isWeek
+        ? `Add 1 week to your account balance`
+        : days
+          ? `Add ${days} day${days > 1 ? 's' : ''} to your account balance`
+          : `Add ${months} month${months > 1 ? 's' : ''} to your account balance`;
 
       const session = await stripe.checkout.sessions.create({
         line_items: [
@@ -151,7 +178,7 @@ export async function POST(request: Request) {
             price_data: {
               currency: currency.toLowerCase() || 'usd',
               product_data: {
-                name: 'Full Access',
+                name: title,
                 description: description,
               },
               unit_amount: totalStripeMoney,
