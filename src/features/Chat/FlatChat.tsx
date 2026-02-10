@@ -3,7 +3,7 @@ import { useChat } from './useChat';
 import { NoMessagesPlaceholder } from './NoMessagesPlaceholder';
 import { useLingui } from '@lingui/react';
 import { Stack } from '@mui/material';
-import { Message } from './Message';
+import { Message } from './Message/Message';
 import { ShowPreviousMessagesButton } from './ShowPreviousMessagesButton';
 import { SubmitForm } from './SubmitForm';
 

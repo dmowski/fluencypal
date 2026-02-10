@@ -13,8 +13,8 @@ import { useTextAi } from '../Ai/useTextAi';
 import { ThreadsMessageAttachment } from './type';
 import { UploadImageButton } from '../Game/UploadImageButton';
 import { UploadVideoButton } from '../Video/UploadVideoButton';
-import { AttachmentImage } from './AttachmentImage';
-import { AttachmentVideo } from './AttachmentVideo';
+import { AttachmentVideo } from './Message/AttachmentVideo';
+import { AttachmentImage } from './Message/AttachmentImage';
 
 interface SubmitFormProps {
   onSubmit: (message: string, attachments: ThreadsMessageAttachment[]) => Promise<void>;

@@ -19,7 +19,7 @@ import { useAccess } from '../Usage/useAccess';
 import dayjs from 'dayjs';
 import { AccessBadge } from './AccessBadge';
 import { JustTalkCard } from './JustTalkCard';
-import { PreviewCard } from '../Chat/PreviewCard';
+import { PreviewCard } from '../Chat/Message/PreviewCard';
 import { StreaksDaysBadge } from './StreaksDaysBadge';
 
 interface DashboardProps {

@@ -1,6 +1,6 @@
 'use client';
 import { Button, Stack } from '@mui/material';
-import { Message } from './Message';
+import { Message } from './Message/Message';
 import { useChat } from './useChat';
 import { ChartSortMode } from './type';
 import { RelyMessage } from './RelyMessage';

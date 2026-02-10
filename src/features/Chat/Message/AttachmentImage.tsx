@@ -2,7 +2,7 @@ import { IconButton, Modal, Stack } from '@mui/material';
 import { Trash, X } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
-import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { CustomModal } from '../../uiKit/Modal/CustomModal';
 
 export const AttachmentImage = ({
   url,
@@ -30,7 +30,10 @@ export const AttachmentImage = ({
             height: size,
             cursor: 'pointer',
           }}
-          onClick={() => setIsModalOpen(true)}
+          onMouseDown={(e) => {
+            e.preventDefault();
+            setIsModalOpen(true);
+          }}
         >
           <Image
             src={url}

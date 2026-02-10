@@ -1,7 +1,7 @@
 import { IconButton, Stack } from '@mui/material';
 import { Trash } from 'lucide-react';
 import { useState } from 'react';
-import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { CustomModal } from '../../uiKit/Modal/CustomModal';
 
 export const AttachmentVideo = ({
   url,

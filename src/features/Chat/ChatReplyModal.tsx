@@ -1,7 +1,7 @@
 import { useLingui } from '@lingui/react';
 import { Stack, Typography } from '@mui/material';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { Message } from './Message';
+import { Message } from './Message/Message';
 import { SubmitForm } from './SubmitForm';
 import { ThreadsMessage } from './type';
 import { useChat } from './useChat';

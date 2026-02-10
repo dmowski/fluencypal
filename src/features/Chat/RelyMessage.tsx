@@ -3,7 +3,7 @@ import { Stack, Button, Typography } from '@mui/material';
 import { ArrowUp, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 import { getAllParentMessages } from './getAllParentMessages';
-import { Message } from './Message';
+import { Message } from './Message/Message';
 import { ThreadsMessage } from './type';
 import { ShowPreviousMessagesButton } from './ShowPreviousMessagesButton';
 

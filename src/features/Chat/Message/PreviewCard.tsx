@@ -1,10 +1,9 @@
 import { useLingui } from '@lingui/react';
 import { Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { ChevronRight } from 'lucide-react';
-import { ChatProvider, useChat } from './useChat';
-import { PreviewMessage } from './Message';
+import { ChatProvider, useChat } from '../useChat';
 import { useRouter } from 'next/navigation';
+import { PreviewMessage } from './PreviewMessage';
 
 const PreviewCardComponent = () => {
   const { i18n } = useLingui();
@@ -22,14 +21,6 @@ const PreviewCardComponent = () => {
     router.push(`${newUrl}`, { scroll: true });
   };
 
-  const redirectToCommunity = async () => {
-    const newSearchParams = new URLSearchParams(window.location.search);
-    newSearchParams.set('post', ``);
-    newSearchParams.set('page', `community`);
-    newSearchParams.set('section', `chat`);
-    const newUrl = `${window.location.pathname}?${newSearchParams.toString()}`;
-    router.push(`${newUrl}`, { scroll: true });
-  };
   if (previewMessages.length === 0) {
     return null;
   }
