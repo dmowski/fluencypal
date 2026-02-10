@@ -26,6 +26,7 @@ import { ActivePlanSelector } from './ActivePlanSelector';
 import { HoursSelector } from '../HoursPaymentModal/HourseSelector';
 import { pricePerHourUsd } from '@/common/ai';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
+import { X } from 'lucide-react';
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
@@ -235,7 +236,7 @@ export const SubscriptionPaymentModal = () => {
       <Stack
         sx={{
           width: '100%',
-          maxWidth: '800px',
+          maxWidth: '1200px',
         }}
         ref={containerRef}
       >
@@ -294,7 +295,11 @@ export const SubscriptionPaymentModal = () => {
                     gap: '10px',
                   }}
                 >
-                  <Typography>
+                  <Typography
+                    sx={{
+                      maxWidth: '700px',
+                    }}
+                  >
                     {i18n._(
                       `Choose a plan that fits you and get full access for a week, a month, or a year.
 Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term commitment.`,
@@ -383,6 +388,17 @@ Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term co
             </Stack>
           </Stack>
         )}
+        <Stack
+          sx={{
+            paddingTop: '30px',
+            width: '100%',
+            alignItems: 'flex-start',
+          }}
+        >
+          <Button variant="outlined" endIcon={<X />}>
+            {i18n._('Close')}
+          </Button>
+        </Stack>
       </Stack>
     </CustomModal>
   );

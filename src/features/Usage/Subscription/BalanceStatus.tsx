@@ -58,7 +58,11 @@ export const BalanceStatus = () => {
                 : i18n._('You do not have full access')}
           </Typography>
         </Stack>
-        <Stack>
+        <Stack
+          sx={{
+            maxWidth: '700px',
+          }}
+        >
           {isGameWinner ? (
             <Typography variant="body1">
               {i18n._(

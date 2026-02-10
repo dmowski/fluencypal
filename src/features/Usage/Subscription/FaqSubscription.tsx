@@ -10,7 +10,11 @@ export const FaqSubscription = () => {
         {i18n._('Frequently Asked Questions')}
       </Typography>
 
-      <Stack>
+      <Stack
+        sx={{
+          maxWidth: '700px',
+        }}
+      >
         <FaqItem
           info={{
             question: i18n._('Can I get full access for free?'),
