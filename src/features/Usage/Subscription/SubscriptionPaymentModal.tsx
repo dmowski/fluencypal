@@ -307,8 +307,7 @@ export const SubscriptionPaymentModal = () => {
                     }}
                   >
                     {i18n._(
-                      `Choose a plan that fits you and get full access for a week, a month, or a year.
-Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term commitment.`,
+                      `Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term commitment.`,
                     )}
                   </Typography>
                   <ActivePlanSelector onSelectDuration={onSelectDuration} />
