@@ -3,6 +3,7 @@ import { SubscriptionDuration } from './types';
 import { useCurrency } from '@/features/User/useCurrency';
 import { Stack, Typography, Button } from '@mui/material';
 import { ChevronRight } from 'lucide-react';
+import dayjs from 'dayjs';
 
 export const SubscriptionCard = ({
   title,
@@ -11,6 +12,7 @@ export const SubscriptionCard = ({
   duration,
   footnote,
   isSuggested,
+  expiringDateIso,
 }: {
   title: string;
   onPay: () => void;
@@ -18,6 +20,7 @@ export const SubscriptionCard = ({
   duration: SubscriptionDuration;
   footnote: string;
   isSuggested?: boolean;
+  expiringDateIso: string;
 }) => {
   const { i18n } = useLingui();
 
@@ -131,18 +134,17 @@ export const SubscriptionCard = ({
               endIcon={<ChevronRight />}
               sx={{
                 textAlign: 'left',
-                //fontWeight: 600,
-                //fontSize: '18px',
               }}
             >
               {buttonLabels[duration]}
             </Button>
           </Stack>
         </Stack>
-
-        <Typography variant="caption">
-          {i18n._('Price per day')}: {pricePerDayCurrency} {currency.currency.toUpperCase()}
-        </Typography>
+        <Stack>
+          <Typography>
+            {i18n._('Expires')}: <b>{dayjs(expiringDateIso).format('D MMMM')}</b>
+          </Typography>
+        </Stack>
       </Stack>
     </Stack>
   );

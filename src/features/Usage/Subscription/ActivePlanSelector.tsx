@@ -3,6 +3,7 @@ import { Stack, Typography } from '@mui/material';
 import { SubscriptionCard } from './SubscriptionCard';
 import { SubscriptionDuration } from './types';
 import { usePrices } from './usePrices';
+import dayjs from 'dayjs';
 
 export const ActivePlanSelector = ({
   onSelectDuration,
@@ -40,6 +41,7 @@ export const ActivePlanSelector = ({
           duration={'day'}
           footnote={i18n._('Best for trying out the full access')}
           isSuggested
+          expiringDateIso={prices.subscriptionPrices.day.expiringDateIso}
         />
 
         <SubscriptionCard
@@ -48,6 +50,7 @@ export const ActivePlanSelector = ({
           priceInUsd={prices.subscriptionPrices.week.usdPrice}
           duration={'week'}
           footnote={i18n._('When you need full access for a short period of time')}
+          expiringDateIso={prices.subscriptionPrices.week.expiringDateIso}
         />
 
         <SubscriptionCard
@@ -56,6 +59,7 @@ export const ActivePlanSelector = ({
           priceInUsd={prices.subscriptionPrices.month.usdPrice}
           duration={'month'}
           footnote={i18n._('Best for long-term access')}
+          expiringDateIso={prices.subscriptionPrices.month.expiringDateIso}
         />
         {/*
         <SubscriptionCard

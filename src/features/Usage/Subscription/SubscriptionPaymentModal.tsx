@@ -27,6 +27,7 @@ import { HoursSelector } from '../HoursPaymentModal/HourseSelector';
 import { pricePerHourUsd } from '@/common/ai';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { X } from 'lucide-react';
+import dayjs from 'dayjs';
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
@@ -196,15 +197,20 @@ export const SubscriptionPaymentModal = () => {
     5: i18n._('Buy 5 AI hours'),
   };
 
+  const expiring = price.subscriptionPrices[subscriptionDuration].expiringDateIso;
+  const expiringFormatted = dayjs(expiring).locale(supportedLang).format('D MMMM');
+
+  const durationLabels: Record<SubscriptionDuration, string> = {
+    day: i18n._('1 day'),
+    week: i18n._('1 week'),
+    month: i18n._('1 month'),
+    year: i18n._('1 year'),
+  };
+  const label = subscriptionDuration ? durationLabels[subscriptionDuration] : '';
+
   const confirmationSubTitle = amountHoursToAdd
     ? hoursLabels[amountHoursToAdd]
-    : subscriptionDuration === 'month'
-      ? i18n._(`Full Access for 1 month`)
-      : subscriptionDuration === 'week'
-        ? i18n._(`Full Access for 1 week`)
-        : subscriptionDuration === 'year'
-          ? i18n._(`Full Access for 1 year`)
-          : i18n._(`Full Access for 1 day`);
+    : i18n._(`Full access until {tillDate}`, { tillDate: expiringFormatted }) + '. (' + label + ')';
 
   const onConfirm = () => {
     if (amountHoursToAdd) {
@@ -395,7 +401,17 @@ Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term co
             alignItems: 'flex-start',
           }}
         >
-          <Button variant="outlined" endIcon={<X />}>
+          <Button
+            variant="outlined"
+            endIcon={<X />}
+            onClick={() => {
+              if (isShowConfirmPayments) {
+                openMainSubscriptionPage();
+                return;
+              }
+              usage.togglePaymentModal(false);
+            }}
+          >
             {i18n._('Close')}
           </Button>
         </Stack>
