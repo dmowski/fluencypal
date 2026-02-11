@@ -3,7 +3,7 @@ import { RefObject, useEffect } from 'react';
 import { ConversationInstance } from '../ConversationInstance/types';
 import { useAccess } from '@/features/Usage/useAccess';
 
-const LIMITED_MESSAGES_COUNT = 20;
+const LIMITED_MESSAGES_COUNT = 6;
 const LIMITED_VOICE_MESSAGES_COUNT = 24;
 
 export const useLimits = (
