@@ -302,15 +302,22 @@ export const SubscriptionPaymentModal = () => {
                     gap: '10px',
                   }}
                 >
-                  <Typography
-                    sx={{
-                      maxWidth: '700px',
-                    }}
-                  >
-                    {i18n._(
-                      `Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term commitment.`,
-                    )}
-                  </Typography>
+                  <Stack>
+                    <Typography
+                      sx={{
+                        maxWidth: '700px',
+                      }}
+                    >
+                      {i18n._(`No auto-renewals. No hidden charges.`)}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        maxWidth: '700px',
+                      }}
+                    >
+                      {i18n._(`Choose how long you want access — and extend anytime.`)}
+                    </Typography>
+                  </Stack>
                   <ActivePlanSelector onSelectDuration={onSelectDuration} />
                 </Stack>
               ) : usageType === 'hours' ? (

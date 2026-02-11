@@ -1,5 +1,5 @@
 import { Stack } from '@mui/material';
-import { Loader, X, Check } from 'lucide-react';
+import { Loader, X, Check, MicOff } from 'lucide-react';
 
 export const AccessStatusIcon = ({ state }: { state: 'loading' | 'full-access' | 'no-access' }) => {
   return (
@@ -19,7 +19,7 @@ export const AccessStatusIcon = ({ state }: { state: 'loading' | 'full-access' |
       }}
     >
       {state === 'loading' && <Loader color="#fff" size={'21px'} strokeWidth={'4px'} />}
-      {state === 'no-access' && <X color="#fff" size={'21px'} strokeWidth={'2.5px'} />}
+      {state === 'no-access' && <MicOff color="#fff" size={'21px'} strokeWidth={'2.5px'} />}
       {state === 'full-access' && <Check color="#fff" size={'21px'} strokeWidth={'4px'} />}
     </Stack>
   );

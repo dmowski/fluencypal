@@ -31,7 +31,7 @@ export const BalanceStatus = () => {
       }}
     >
       <Typography variant="h3" component="h3" sx={{ marginBottom: '10px', fontWeight: 800 }}>
-        {i18n._('Your access status')}
+        {i18n._('Access Status')}
       </Typography>
 
       <Stack
@@ -50,13 +50,23 @@ export const BalanceStatus = () => {
           <AccessStatusIcon
             state={usage.loading ? 'loading' : isHaveAccess ? 'full-access' : 'no-access'}
           />
-          <Typography variant="h6" sx={{}}>
-            {usage.loading
-              ? i18n._('Loading...')
-              : isHaveAccess
-                ? i18n._('You have full access')
-                : i18n._('You do not have full access')}
-          </Typography>
+          <Stack>
+            <Typography variant="h6" sx={{}}>
+              {usage.loading
+                ? i18n._('Loading...')
+                : isHaveAccess
+                  ? i18n._('You have full access')
+                  : i18n._('Your access is currently limited')}
+            </Typography>
+
+            <Typography variant="body2" sx={{}}>
+              {usage.loading
+                ? i18n._('...')
+                : isHaveAccess
+                  ? i18n._('Enjoy unlimited AI conversations and all practice modes!')
+                  : i18n._('Upgrade to unlock unlimited AI conversations and all practice modes')}
+            </Typography>
+          </Stack>
         </Stack>
         <Stack
           sx={{

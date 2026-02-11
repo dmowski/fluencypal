@@ -10,7 +10,6 @@ export const SubscriptionCard = ({
   onPay,
   priceInUsd,
   duration,
-  footnote,
   isSuggested,
   expiringDateIso,
 }: {
@@ -18,7 +17,6 @@ export const SubscriptionCard = ({
   onPay: () => void;
   priceInUsd: number;
   duration: SubscriptionDuration;
-  footnote: string;
   isSuggested?: boolean;
   expiringDateIso: string;
 }) => {
@@ -38,11 +36,20 @@ export const SubscriptionCard = ({
   const pricePerDayCurrency = Math.round(currency.rate * pricePerDayUsd * 10) / 10;
 
   const buttonLabels: Record<SubscriptionDuration, string> = {
-    day: i18n._('Get access for a day'),
-    week: i18n._('Get access for a week'),
-    month: i18n._('Get access for a month'),
-    year: i18n._('Get access for a year'),
+    day: i18n._('Unlock for 1 day'),
+    week: i18n._('Unlock for 1 week'),
+    month: i18n._('Unlock for 1 month'),
+    year: i18n._('Unlock for 1 year'),
   };
+
+  const footnoteMap: Record<SubscriptionDuration, string> = {
+    day: i18n._('Perfect for testing everything — full access, zero commitment.'),
+    week: i18n._('Ideal for focused practice or preparing for an exam.'),
+    month: i18n._('Best value for consistent improvement.'),
+    year: i18n._('For those committed to long-term learning and growth'),
+  };
+
+  const footnote = footnoteMap[duration];
 
   return (
     <Stack
@@ -140,8 +147,16 @@ export const SubscriptionCard = ({
             </Button>
           </Stack>
         </Stack>
-        <Stack>
-          <Typography>
+        <Stack
+          sx={{
+            display: 'none',
+          }}
+        >
+          <Typography
+            sx={{
+              display: 'none',
+            }}
+          >
             {i18n._('Expires')}: <b>{dayjs(expiringDateIso).format('D MMMM')}</b>
           </Typography>
 
@@ -149,6 +164,7 @@ export const SubscriptionCard = ({
             variant="caption"
             sx={{
               opacity: 0.9,
+              display: 'none',
             }}
           >
             {i18n._('Price per day')}:{' '}

@@ -39,7 +39,6 @@ export const ActivePlanSelector = ({
           onPay={() => onSelectDuration('day')}
           priceInUsd={prices.subscriptionPrices.day.usdPrice}
           duration={'day'}
-          footnote={i18n._('Best for trying out the full access')}
           isSuggested
           expiringDateIso={prices.subscriptionPrices.day.expiringDateIso}
         />
@@ -49,7 +48,6 @@ export const ActivePlanSelector = ({
           onPay={() => onSelectDuration('week')}
           priceInUsd={prices.subscriptionPrices.week.usdPrice}
           duration={'week'}
-          footnote={i18n._('When you need full access for a short period of time')}
           expiringDateIso={prices.subscriptionPrices.week.expiringDateIso}
         />
 
@@ -58,7 +56,6 @@ export const ActivePlanSelector = ({
           onPay={() => onSelectDuration('month')}
           priceInUsd={prices.subscriptionPrices.month.usdPrice}
           duration={'month'}
-          footnote={i18n._('Best for long-term access')}
           expiringDateIso={prices.subscriptionPrices.month.expiringDateIso}
         />
         {/*
