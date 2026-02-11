@@ -17,9 +17,9 @@ export const FaqSubscription = () => {
       >
         <FaqItem
           info={{
-            question: i18n._('Can I get full access for free?'),
+            question: i18n._('Can I do a refund after purchase?'),
             answer: i18n._(
-              'Yes. Simply play on the Community page or send messages in the chat to earn points. The top five users will have full access as long as they remain at the top!',
+              'Yes. If you\'re not satisfied with the service, on "Profile/Payment history" page you can request a refund and we will discuss the details.',
             ),
           }}
         />
@@ -45,9 +45,9 @@ export const FaqSubscription = () => {
 
         <FaqItem
           info={{
-            question: i18n._('Can I do a refund after purchase?'),
+            question: i18n._('Can I get full access for free?'),
             answer: i18n._(
-              'Yes. If you\'re not satisfied with the service, on "Profile/Payment history" page you can request a refund and we will discuss the details.',
+              'Yes. Simply play on the Community page or send messages in the chat to earn points. The top five users will have full access as long as they remain at the top!',
             ),
           }}
         />

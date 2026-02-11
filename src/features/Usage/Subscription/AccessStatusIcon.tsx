@@ -1,5 +1,5 @@
 import { Stack } from '@mui/material';
-import { Loader, X, Check, MicOff } from 'lucide-react';
+import { Loader, Check, MicOff } from 'lucide-react';
 
 export const AccessStatusIcon = ({ state }: { state: 'loading' | 'full-access' | 'no-access' }) => {
   return (

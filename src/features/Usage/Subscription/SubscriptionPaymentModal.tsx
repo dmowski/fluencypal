@@ -28,6 +28,10 @@ import { pricePerHourUsd } from '@/common/ai';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { X } from 'lucide-react';
 import dayjs from 'dayjs';
+import { AccessStatusIcon } from './AccessStatusIcon';
+import { DynamicIcon, IconName } from 'lucide-react/dynamic';
+import { CONTACTS } from '@/features/Landing/Contact/data';
+import { FeatureItem } from './FeatureItem';
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
@@ -379,6 +383,7 @@ export const SubscriptionPaymentModal = () => {
               <Stack
                 sx={{
                   width: '100%',
+                  gap: '20px',
                 }}
               >
                 <Typography
@@ -386,18 +391,105 @@ export const SubscriptionPaymentModal = () => {
                   component="h3"
                   sx={{ marginBottom: '10px', fontWeight: 800 }}
                 >
-                  {i18n._('What do you get with Full Access?')}
+                  {i18n._('What do I get with Full Access?')}
                 </Typography>
-                <FeatureList appMode={appMode} />
+
+                <Stack sx={{ gap: '20px' }}>
+                  <FeatureItem
+                    iconName="star"
+                    title={i18n._('Unlimited AI speaking practice')}
+                    subTitle={i18n._(
+                      'Talk as much as you want — role-plays, assistants, and real conversations.',
+                    )}
+                    startColor="#8B5CF6"
+                    endColor="#EC4899"
+                  />
+
+                  <FeatureItem
+                    iconName="target"
+                    title={i18n._('Personal learning plan')}
+                    subTitle={i18n._('Get a clear path based on your level, goals, and progress.')}
+                    startColor="#22C55E"
+                    endColor="#84CC16"
+                  />
+
+                  <FeatureItem
+                    iconName="message-circle"
+                    title={i18n._('Feedback that helps')}
+                    subTitle={i18n._(
+                      'Instant corrections and better phrasing so you improve faster.',
+                    )}
+                    startColor="#06B6D4"
+                    endColor="#3B82F6"
+                  />
+
+                  <FeatureItem
+                    iconName="users"
+                    title={i18n._('Community access')}
+                    subTitle={i18n._('Ask questions, share progress, and find speaking partners.')}
+                    startColor="#F97316"
+                    endColor="#FACC15"
+                  />
+
+                  <FeatureItem
+                    iconName="shield"
+                    title={i18n._('No auto-renew. You stay in control')}
+                    subTitle={i18n._(
+                      'Pay once for a day, week, or month — extend only if you want.',
+                    )}
+                    startColor="#64748B"
+                    endColor="#94A3B8"
+                  />
+
+                  <FeatureItem
+                    iconName="life-buoy"
+                    title={i18n._('Priority support')}
+                    subTitle={i18n._('Get help faster if something breaks or you have questions.')}
+                    startColor="#EF4444"
+                    endColor="#FB7185"
+                  />
+                </Stack>
               </Stack>
-              <Stack
-                sx={{
-                  gap: '100px',
-                }}
-              >
-                <FaqSubscription />
-                <PriceContact />
+
+              <Stack sx={{ maxWidth: '700px', width: '100%', gap: '12px' }}>
+                <Typography
+                  variant="h4"
+                  component="h3"
+                  sx={{ marginBottom: '10px', fontWeight: 800 }}
+                >
+                  {i18n._('Not feeling confident yet?')}
+                </Typography>
+
+                <Stack
+                  sx={{
+                    borderRadius: '12px',
+                    p: '16px',
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.10)',
+                    gap: '8px',
+                  }}
+                >
+                  <Typography sx={{ fontWeight: 700 }}>
+                    {i18n._("You're covered by a refund guarantee.")}
+                  </Typography>
+
+                  <Typography sx={{ opacity: 0.9 }}>
+                    {i18n._(
+                      'If FluencyPal doesn’t help you feel more confident speaking, I’ll refund your purchase.',
+                    )}
+                  </Typography>
+
+                  <Stack component="ul" sx={{ pl: 2, m: 0, opacity: 0.9, gap: '4px' }}>
+                    <li>{i18n._('Request a refund within 14 days')}</li>
+                    <li>
+                      {i18n._('Just message me — no awkward questions')}: {CONTACTS.email}
+                    </li>
+                  </Stack>
+                </Stack>
               </Stack>
+
+              <FaqSubscription />
+              <PriceContact />
             </Stack>
           </Stack>
         )}
