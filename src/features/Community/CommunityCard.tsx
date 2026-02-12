@@ -35,10 +35,6 @@ export const CommunityCard = ({
         cursor: 'pointer',
         alignItems: 'center',
         position: 'relative',
-        //justifyContent: 'space-between',
-        ':hover': {
-          background: 'rgba(255, 255, 255, 0.1)',
-        },
 
         '@media (max-width: 600px)': {
           padding: '20px 15px 10px 15px',
