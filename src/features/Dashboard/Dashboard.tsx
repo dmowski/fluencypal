@@ -92,8 +92,6 @@ export function Dashboard({ lang }: DashboardProps) {
 
               <PlanDashboardCards lang={lang} />
 
-              <PreviewCard />
-
               <StreaksDaysBadge />
             </>
           )}
