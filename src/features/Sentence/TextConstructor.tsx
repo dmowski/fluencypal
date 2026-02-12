@@ -148,7 +148,7 @@ export function TextConstructor({
               key={word}
               onClick={() => handlePick(word)}
               variant="contained"
-              color={isWrongWord ? 'error' : 'primary'}
+              color={isWrongWord ? 'error' : 'info'}
               sx={{
                 textTransform: 'none',
                 borderRadius: '12px',
