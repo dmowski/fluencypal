@@ -12,12 +12,13 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useLingui } from '@lingui/react';
 import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 import { achievementsMaxPoints, allAchievementTypes } from './data';
-import { Swords, X } from 'lucide-react';
+import { Rocket, Swords, X } from 'lucide-react';
 import { InfoStep } from '../Survey/InfoStep';
 import { useBattle } from './Battle/useBattle';
 import { BATTLE_WIN_POINTS } from './Battle/data';
 import { ChatProvider } from '../Chat/useChat';
 import { ChatSection } from '../Chat/ChatSection';
+import { useAccess } from '../Usage/useAccess';
 
 interface IconColor {
   iconColor: string;
@@ -69,6 +70,7 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
   const game = useGame();
   const auth = useAuth();
   const battle = useBattle();
+  const access = useAccess();
   const userId = auth.uid || '';
   const userName = game.userNames?.[stat.userId] || '';
 
@@ -246,7 +248,13 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                 size="large"
                 disabled={isAlreadyAskedForBattle}
                 startIcon={<Swords />}
-                onClick={() => setIsAskForDebates(true)}
+                onClick={() => {
+                  if (access.isFullAppAccess) {
+                    setIsAskForDebates(true);
+                  } else {
+                    access.showPaymentModal();
+                  }
+                }}
               >
                 {i18n._('Invite to a debate')}
               </Button>
@@ -395,18 +403,39 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
               >
                 {i18n._('Chat between you and {userName}', { userName })}
               </Typography>
-              <Stack>
-                <ChatProvider
-                  metadata={{
-                    spaceId: chatSpace,
-                    allowedUserIds: [stat.userId, userId],
-                    isPrivate: true,
-                    type: 'privateChat',
+              {access.isFullAppAccess ? (
+                <Stack>
+                  <ChatProvider
+                    metadata={{
+                      spaceId: chatSpace,
+                      allowedUserIds: [stat.userId, userId],
+                      isPrivate: true,
+                      type: 'privateChat',
+                    }}
+                  >
+                    <ChatSection contextForAiAnalysis="" />
+                  </ChatProvider>
+                </Stack>
+              ) : (
+                <Stack
+                  sx={{
+                    alignItems: 'flex-start',
+                    gap: '10px',
                   }}
                 >
-                  <ChatSection contextForAiAnalysis="" />
-                </ChatProvider>
-              </Stack>
+                  <Typography variant="body1">
+                    {i18n._('Get full access to use the chat and many other features!')}
+                  </Typography>
+                  <Button
+                    variant="outlined"
+                    endIcon={<Rocket size={'16px'} />}
+                    color="primary"
+                    onClick={() => access.showPaymentModal()}
+                  >
+                    {i18n._('Get Full Access')}
+                  </Button>
+                </Stack>
+              )}
             </Stack>
           </Stack>
         </CustomModal>
