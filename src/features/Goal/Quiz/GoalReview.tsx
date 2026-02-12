@@ -166,42 +166,22 @@ export const GoalReview = ({
                   <Stack
                     sx={{
                       padding: '30px 0',
-                      gap: '30px',
+                      gap: '15px',
                     }}
                   >
-                    <Stack
+                    <Typography
+                      variant="h5"
                       sx={{
-                        alignItems: 'center',
-                        width: '100%',
-                        gap: '0px',
-                        justifyContent: 'center',
+                        fontWeight: 800,
+                        fontSize: '32px',
+                        //letterSpacing: '1.3px',
                       }}
                     >
-                      <Divider
-                        sx={{
-                          width: 'calc(100% - 20px)',
-                          borderColor: 'rgba(255, 255, 255, 0.2)',
-                        }}
-                      />
-                      <Typography
-                        className="decor-text"
-                        sx={{
-                          marginTop: '-16px',
-                          height: '30px',
-                          border: `1px solid rgba(255, 255, 255, 0.2)`,
-                          borderRadius: '9999px',
-                          padding: '3px 17px',
-                          fontSize: '16px',
-                          fontWeight: 500,
-                          backgroundColor: 'rgb(12, 21, 34)',
-                        }}
-                      >
-                        {i18n._('results review')}
-                      </Typography>
-                    </Stack>
+                      {i18n._('Results Assessment')}
+                    </Typography>
                     <PlanCard
                       delayToShow={goalData.elements.length * 180}
-                      subTitle={i18n._('Next step')}
+                      subTitle={i18n._('Next plan')}
                       title={i18n._('Assessing your progress')}
                       details={i18n._(
                         'AI will analyze your progress and, based on the results, create a plan for further action.',
