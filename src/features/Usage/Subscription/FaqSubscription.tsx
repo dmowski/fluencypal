@@ -42,15 +42,6 @@ export const FaqSubscription = () => {
             ),
           }}
         />
-
-        <FaqItem
-          info={{
-            question: i18n._('Can I get full access for free?'),
-            answer: i18n._(
-              'Yes. Simply play on the Community page or send messages in the chat to earn points. The top five users will have full access as long as they remain at the top!',
-            ),
-          }}
-        />
       </Stack>
     </Stack>
   );
