@@ -14,40 +14,50 @@ export const FeatureItem = ({
   startColor: string;
   endColor: string;
 }) => {
+  const iconContainerSize = '52px';
+  const iconSize = '21px';
   return (
     <Stack
       sx={{
         display: 'grid',
-        gridTemplateColumns: '45px 1fr',
+
+        gridTemplateColumns: `${iconContainerSize} 1fr`,
         gap: '20px',
-        alignItems: 'center',
+        alignItems: 'flex-start',
+        maxWidth: '700px',
       }}
     >
       <Stack
         sx={{
-          height: '45px',
-          width: '45px',
-          borderRadius: '50%',
+          height: iconContainerSize,
+          width: iconContainerSize,
+          borderRadius: '9px',
           alignItems: 'center',
           justifyContent: 'center',
           background: `linear-gradient(120deg, ${startColor} 0%, ${endColor} 100%)`,
         }}
       >
-        <DynamicIcon name={iconName} color="#fff" size={'21px'} />
+        <DynamicIcon name={iconName} color="#fff" size={iconSize} />
       </Stack>
-      <Stack>
+      <Stack
+        sx={{
+          gap: '6px',
+        }}
+      >
         <Typography
           variant="h6"
           sx={{
             lineHeight: '24px',
+            fontSize: '22px',
+            fontWeight: 650,
           }}
         >
           {title}
         </Typography>
         <Typography
-          variant="body2"
           sx={{
             opacity: 0.9,
+            fontSize: '16px',
           }}
         >
           {subTitle}

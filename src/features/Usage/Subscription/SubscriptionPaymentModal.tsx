@@ -379,13 +379,10 @@ export const SubscriptionPaymentModal = () => {
               )}
             </Stack>
 
-            <Stack gap="80px">
-              <ResultsSection />
-              <FeatureSection />
-
-              <FaqSubscription />
-              <PriceContact />
-            </Stack>
+            <ResultsSection />
+            <FeatureSection />
+            <FaqSubscription />
+            <PriceContact />
           </Stack>
         )}
         <Stack
@@ -414,14 +411,6 @@ export const SubscriptionPaymentModal = () => {
   );
 };
 
-const ResultRow = ({ icon, children }: { icon: IconName; children: React.ReactNode }) => (
-  <Stack direction="row" sx={{ gap: '10px', alignItems: 'center' }}>
-    <DynamicIcon name={icon} size={24} color="rgba(255,255,255,0.85)" />
-
-    <Typography sx={{ opacity: 0.92, lineHeight: 1.55 }}>{children}</Typography>
-  </Stack>
-);
-
 export const ResultsSection = () => {
   const { i18n } = useLingui();
 
@@ -441,7 +430,7 @@ export const ResultsSection = () => {
             'linear-gradient(180deg, rgba(15, 76, 147, 0.03) 0%, rgba(14, 55, 78, 0.17) 100%)',
         }}
       >
-        <Stack sx={{ gap: '25px', padding: '25px 25px' }}>
+        <Stack sx={{ gap: '30px', padding: '25px 25px' }}>
           <FeatureItem
             iconName="calendar-days"
             title={i18n._('Practice daily')}
@@ -511,7 +500,7 @@ export const FeatureSection = () => {
         {i18n._("What's included?")}
       </Typography>
 
-      <Stack sx={{ gap: '30px' }}>
+      <Stack sx={{ gap: '40px' }}>
         <FeatureItem
           iconName="star"
           title={i18n._('Unlimited AI speaking practice')}
