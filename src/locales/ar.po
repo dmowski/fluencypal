@@ -604,7 +604,7 @@ msgstr "محادثة إنجليزية متقدمة"
 
 #: src/features/Landing/Price/FeatureList.tsx:56
 #: src/features/Landing/Price/FeatureList.tsx:80
-#: src/features/Landing/Price/PricePage.tsx:377
+#: src/features/Landing/Price/PricePage.tsx:372
 #: src/features/Landing/Price/PricePage.tsx:460
 #. js-lingui-explicit-id
 msgid "Advanced Personalization"
@@ -1040,17 +1040,12 @@ msgstr "صياغة حلول قابلة للتوسع، تحسين الأداء، 
 msgid "Ask a question you’d normally ask in real life"
 msgstr "اسأل سؤالًا عادةً ما تسأله في الحياة اليومية"
 
-#: src/features/Usage/HoursPaymentModal/PriceContact.tsx:33
-#. js-lingui-explicit-id
-msgid "Ask community"
-msgstr "اسأل المجتمع"
-
 #: src/features/Dashboard/MessagesToWinBadge.tsx:124
 #. js-lingui-explicit-id
 msgid "Ask how others practice speaking or pronunciation"
 msgstr "اطلب من الآخرين كيفية ممارسة التحدث أو النطق"
 
-#: src/features/Usage/HoursPaymentModal/PriceContact.tsx:40
+#: src/features/Usage/HoursPaymentModal/PriceContact.tsx:33
 #. js-lingui-explicit-id
 msgid "Ask in support channel"
 msgstr "اطلب في قناة الدعم"
@@ -1061,6 +1056,7 @@ msgid "Ask questions, get explanations, and solve everyday problems"
 msgstr "اطرح الأسئلة، احصل على تفسيرات، وحل المشاكل اليومية"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:533
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:549
 #. js-lingui-explicit-id
 msgid "Ask questions, share progress, and find speaking partners."
 msgstr "اِطرح أسئلة، شارك تقدمك، وابحث عن شركاء للمحادثة."
@@ -1394,7 +1390,7 @@ msgstr "شراء {hours} ساعة من استخدام الذكاء الاصطن�
 msgid "By continuing, you agree to our"
 msgstr "بالاستمرار، فإنك توافق على شروطنا"
 
-#: src/features/Landing/Price/PricePage.tsx:373
+#: src/features/Landing/Price/PricePage.tsx:368
 #: src/features/Landing/Price/PricePage.tsx:456
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
@@ -1780,7 +1776,10 @@ msgstr "التواصل والقيادة"
 msgid "Community"
 msgstr "المجتمع"
 
+#: src/features/Landing/Price/PricePage.tsx:379
+#: src/features/Landing/Price/PricePage.tsx:467
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:532
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:548
 #. js-lingui-explicit-id
 msgid "Community access"
 msgstr "الوصول إلى المجتمع"
@@ -1790,7 +1789,7 @@ msgstr "الوصول إلى المجتمع"
 msgid "Community Chat"
 msgstr "دردشة المجتمع"
 
-#: src/features/Community/CommunityDashboard.tsx:98
+#: src/features/Community/CommunityDashboard.tsx:111
 #: src/features/Community/CommunityPage.tsx:27
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
@@ -1799,7 +1798,7 @@ msgstr ""
 "\n"
 "المجتمع\n"
 
-#: src/features/Community/CommunityDashboard.tsx:78
+#: src/features/Community/CommunityDashboard.tsx:81
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "محور المجتمع"
@@ -2007,7 +2006,7 @@ msgid "Conversation Practice"
 msgstr "ممارسة المحادثة"
 
 #: src/features/Landing/Price/FeatureList.tsx:40
-#: src/features/Landing/Price/PricePage.tsx:357
+#: src/features/Landing/Price/PricePage.tsx:352
 #: src/features/Landing/Price/PricePage.tsx:440
 #. js-lingui-explicit-id
 msgid "Conversation practice"
@@ -2279,7 +2278,7 @@ msgstr "الممارسة اليومية للغة"
 msgid "Daily Question Chat"
 msgstr "محادثة السؤال اليومي"
 
-#: src/features/Community/CommunityDashboard.tsx:124
+#: src/features/Community/CommunityDashboard.tsx:145
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2320,7 +2319,7 @@ msgstr "البيانات والمعاملات"
 msgid "Databases & Transactions"
 msgstr "قواعد البيانات والمعاملات"
 
-#: src/features/Landing/Price/PricePage.tsx:336
+#: src/features/Landing/Price/PricePage.tsx:330
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:118
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
@@ -2373,16 +2372,11 @@ msgstr "بدأ النقاش!"
 msgid "Debate topics will be selected randomly."
 msgstr "سيتم اختيار مواضيع النقاش بشكل عشوائي."
 
-#: src/features/Community/CommunityDashboard.tsx:117
+#: src/features/Community/CommunityDashboard.tsx:136
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
 msgstr "مناظرات"
-
-#: src/features/Landing/Price/PricePage.tsx:279
-#. js-lingui-explicit-id
-msgid "Debates and discussions"
-msgstr "المناظرات والمناقشات"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:113
 #: src/features/Chat/Message/Message.tsx:378
@@ -2931,12 +2925,17 @@ msgstr ""
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr "انخرط في حديث ودي صغير حول الحيوانات الأليفة والروتين اليومي"
 
-#: src/features/Landing/Price/PricePage.tsx:280
-#: src/features/Landing/Price/PricePage.tsx:351
+#: src/features/Landing/Price/PricePage.tsx:345
 #: src/features/Landing/Price/PricePage.tsx:434
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr "انخرط في محادثات الحياة الواقعية مثل مقابلات العمل أو طلب الطعام"
+
+#: src/features/Landing/Price/PricePage.tsx:380
+#: src/features/Landing/Price/PricePage.tsx:468
+#. js-lingui-explicit-id
+msgid "Engage with the community and participate in discussions"
+msgstr "التفاعل مع المجتمع والمشاركة في المناقشات"
 
 #: src/features/Case/data/backendCSharp/whoIsThisForSection.ts:29
 #. js-lingui-explicit-id
@@ -3407,7 +3406,7 @@ msgstr ""
 "فقط ستعلق على البشرية أثناء القيام بذلك."
 
 #: src/features/Landing/Price/PricePage.tsx:270
-#: src/features/Landing/Price/PricePage.tsx:341
+#: src/features/Landing/Price/PricePage.tsx:335
 #: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
 msgid "Everything in Free, plus:"
@@ -3578,7 +3577,7 @@ msgstr "التحقق من الإنصاف"
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
 #: src/features/Case/Landing/components/InterviewHeader.tsx:34
 #: src/features/Landing/LandingPage.tsx:425
-#: src/features/Landing/Price/PricePage.tsx:482
+#: src/features/Landing/Price/PricePage.tsx:487
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "أسئلة متكررة"
@@ -4024,7 +4023,7 @@ msgstr ""
 msgid "Full Access"
 msgstr "الوصول الكامل"
 
-#: src/features/Dashboard/Dashboard.tsx:81
+#: src/features/Dashboard/Dashboard.tsx:83
 #. js-lingui-explicit-id
 msgid "Full access - Expiring soon"
 msgstr "كامل الوصول - سينتهي قريبًا"
@@ -4056,7 +4055,7 @@ msgstr ""
 "\n"
 "وصول كامل لمدة سنة واحدة\n"
 
-#: src/features/Landing/Price/PricePage.tsx:306
+#: src/features/Landing/Price/PricePage.tsx:300
 #. js-lingui-explicit-id
 msgid "Full Access for a Day"
 msgstr "الوصول الكامل ليوم واحد"
@@ -4086,7 +4085,7 @@ msgid "Full AI interview coach access"
 msgstr "الوصول الكامل لمدرب المقابلات بالذكاء الاصطناعي"
 
 #: src/features/Landing/Price/FeatureList.tsx:32
-#: src/features/Landing/Price/PricePage.tsx:345
+#: src/features/Landing/Price/PricePage.tsx:339
 #: src/features/Landing/Price/PricePage.tsx:428
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
@@ -4102,7 +4101,7 @@ msgstr "ميزات الصوت الكاملة"
 msgid "Fun facts about yourself"
 msgstr "حقائق ممتعة عن نفسك"
 
-#: src/features/Community/CommunityDashboard.tsx:104
+#: src/features/Community/CommunityDashboard.tsx:119
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -4302,7 +4301,7 @@ msgstr ""
 "على تعليقات الذكاء الاصطناعي، وشاهد كامل تحليلك. نحن نستخدم بطاقة لمنع "
 "الإساءة ومنحك وصولاً غير منقطع إلى جميع الميزات."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:549
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:557
 #. js-lingui-explicit-id
 msgid "Get help faster if something breaks or you have questions."
 msgstr "احصل على المساعدة بشكل أسرع إذا حدث شيء غير طبيعي أو كان لديك استفسارات."
@@ -4352,7 +4351,7 @@ msgstr ""
 msgid "Get My Plan"
 msgstr "احصل على خطتي"
 
-#: src/features/Landing/Price/PricePage.tsx:368
+#: src/features/Landing/Price/PricePage.tsx:363
 #: src/features/Landing/Price/PricePage.tsx:451
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
@@ -4365,7 +4364,7 @@ msgstr "استعد"
 
 #: src/features/Blog/BlogsPage.tsx:39
 #: src/features/Landing/Price/PricePage.tsx:199
-#: src/features/Landing/Price/PricePage.tsx:497
+#: src/features/Landing/Price/PricePage.tsx:502
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "ابدأ"
@@ -4381,7 +4380,7 @@ msgid "Get started with basic features"
 msgstr "ابدأ باستخدام الميزات الأساسية"
 
 #: src/features/Landing/Price/PricePage.tsx:275
-#: src/features/Landing/Price/PricePage.tsx:346
+#: src/features/Landing/Price/PricePage.tsx:340
 #: src/features/Landing/Price/PricePage.tsx:429
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
@@ -5456,10 +5455,10 @@ msgstr "تحسين مهارات اللغة الإنجليزية"
 msgid "improve English speaking"
 msgstr "تحسين التحدث بالإنجليزية"
 
-#: src/features/Landing/Price/PricePage.tsx:287
-#: src/features/Landing/Price/PricePage.tsx:292
-#: src/features/Landing/Price/PricePage.tsx:297
-#: src/features/Landing/Price/PricePage.tsx:358
+#: src/features/Landing/Price/PricePage.tsx:281
+#: src/features/Landing/Price/PricePage.tsx:286
+#: src/features/Landing/Price/PricePage.tsx:291
+#: src/features/Landing/Price/PricePage.tsx:353
 #: src/features/Landing/Price/PricePage.tsx:441
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
@@ -6421,7 +6420,7 @@ msgstr "التحميل البطيء"
 msgid "Leaderboard"
 msgstr "لوحة المتصدرين"
 
-#: src/features/Community/CommunityDashboard.tsx:130
+#: src/features/Community/CommunityDashboard.tsx:153
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -6991,14 +6990,14 @@ msgid "New Game"
 msgstr "لعبة جديدة"
 
 #: src/features/Landing/Price/FeatureList.tsx:52
-#: src/features/Landing/Price/PricePage.tsx:372
+#: src/features/Landing/Price/PricePage.tsx:367
 #: src/features/Landing/Price/PricePage.tsx:455
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "قواعد النحو الجديدة"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
-#: src/features/Landing/Price/PricePage.tsx:367
+#: src/features/Landing/Price/PricePage.tsx:362
 #: src/features/Landing/Price/PricePage.tsx:450
 #. js-lingui-explicit-id
 msgid "New Words"
@@ -7701,7 +7700,7 @@ msgstr "اختر مستوى لبدء اللعب!"
 msgid "Pick one or more categories to build your word list."
 msgstr "اختر فئة أو أكثر لبناء قائمة كلماتك."
 
-#: src/features/Landing/Price/PricePage.tsx:296
+#: src/features/Landing/Price/PricePage.tsx:290
 #. js-lingui-explicit-id
 msgid "Place in the top 5 in the game to gain full access"
 msgstr "ضع نفسك ضمن الخمسة الأوائل في اللعبة للحصول على وصول كامل"
@@ -8275,7 +8274,7 @@ msgid "Price per day"
 msgstr "السعر لكل يوم"
 
 #: src/features/Case/data/reusable/priceSection.ts:44
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:548
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:556
 #. js-lingui-explicit-id
 msgid "Priority support"
 msgstr "الدعم ذو الأولوية"
@@ -8294,7 +8293,7 @@ msgstr "الدعم ذو الأولوية"
 msgid "Privacy Policy"
 msgstr "سياسة الخصوصية"
 
-#: src/features/Community/CommunityDashboard.tsx:135
+#: src/features/Community/CommunityDashboard.tsx:160
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -8364,7 +8363,7 @@ msgstr "تتبع التقدم"
 
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
-#: src/features/Landing/Price/PricePage.tsx:362
+#: src/features/Landing/Price/PricePage.tsx:357
 #: src/features/Landing/Price/PricePage.tsx:445
 #. js-lingui-explicit-id
 msgid "Progress tracking"
@@ -8524,7 +8523,7 @@ msgstr "اقرأ النص"
 msgid "Reader"
 msgstr "القارئ"
 
-#: src/features/Landing/Price/PricePage.tsx:291
+#: src/features/Landing/Price/PricePage.tsx:285
 #. js-lingui-explicit-id
 msgid "Reading practice"
 msgstr "ممارسة القراءة"
@@ -8839,7 +8838,7 @@ msgstr "جاري إزالة بياناتك..."
 msgid "Rendering Performance"
 msgstr "أداء العرض"
 
-#: src/features/Dashboard/Dashboard.tsx:89
+#: src/features/Dashboard/Dashboard.tsx:91
 #. js-lingui-explicit-id
 msgid "Renew Now"
 msgstr "تجديد الآن"
@@ -8947,7 +8946,7 @@ msgid "Role-Play"
 msgstr "تقمص الأدوار"
 
 #: src/features/Landing/Price/FeatureList.tsx:36
-#: src/features/Landing/Price/PricePage.tsx:350
+#: src/features/Landing/Price/PricePage.tsx:344
 #: src/features/Landing/Price/PricePage.tsx:433
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
@@ -9095,7 +9094,7 @@ msgstr "شاهد نوع التعليقات الخلفية التي ستحصل ع
 msgid "See the type of feedback you'll get"
 msgstr "شاهد نوع الملاحظات التي ستحصل عليها"
 
-#: src/features/Landing/Price/PricePage.tsx:363
+#: src/features/Landing/Price/PricePage.tsx:358
 #: src/features/Landing/Price/PricePage.tsx:446
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
@@ -9616,9 +9615,9 @@ msgstr "النجوم"
 #: src/features/Dashboard/PlanDashboardCards.tsx:300
 #: src/features/Goal/Quiz/GoalReview.tsx:172
 #: src/features/Landing/PlanLandingBlock.tsx:527
-#: src/features/Landing/Price/PricePage.tsx:301
+#: src/features/Landing/Price/PricePage.tsx:295
 #: src/features/Landing/Price/PricePage.tsx:384
-#: src/features/Landing/Price/PricePage.tsx:467
+#: src/features/Landing/Price/PricePage.tsx:472
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:325
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:283
@@ -9742,7 +9741,7 @@ msgid "Start Your Interview Test"
 msgstr "ابدأ اختبار المقابلة الخاص بك"
 
 #: src/features/Blog/BlogsPage.tsx:38
-#: src/features/Landing/Price/PricePage.tsx:496
+#: src/features/Landing/Price/PricePage.tsx:501
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:40
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
@@ -10152,7 +10151,7 @@ msgstr "مقابلة تقنية مع مطور واجهة أمامية للذكا
 msgid "Tech stack covered"
 msgstr "تكنولوجيا المُكوِّنة التي تم تغطيتها"
 
-#: src/features/Community/CommunityDashboard.tsx:111
+#: src/features/Community/CommunityDashboard.tsx:128
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -10779,7 +10778,7 @@ msgstr "الوقت المتبقي"
 msgid "Timed"
 msgstr "مؤقت"
 
-#: src/features/Landing/Price/PricePage.tsx:307
+#: src/features/Landing/Price/PricePage.tsx:301
 #. js-lingui-explicit-id
 msgid "To try full features for a short time"
 msgstr "لتجربة جميع المميزات لفترة قصيرة"
@@ -10892,7 +10891,7 @@ msgstr "حاول"
 msgid "Try for free"
 msgstr "جرب مجاناً"
 
-#: src/features/Landing/Price/PricePage.tsx:340
+#: src/features/Landing/Price/PricePage.tsx:334
 #. js-lingui-explicit-id
 msgid "Try full features and decide if it’s right for you"
 msgstr "جرب جميع الميزات وقرر ما إذا كانت مناسبة لك"
@@ -11038,7 +11037,8 @@ msgstr "افتح لمدة أسبوع واحد"
 msgid "Unlock for 1 year"
 msgstr "افتح لمدة 1 سنة"
 
-#: src/features/Dashboard/Dashboard.tsx:75
+#: src/features/Community/CommunityDashboard.tsx:90
+#: src/features/Dashboard/Dashboard.tsx:77
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "افتح الوصول الكامل"
@@ -11055,10 +11055,13 @@ msgid ""
 "specifically to your goals."
 msgstr "افتح محادثات صوتية شبيهة بالبشر ومنهجًا مُخصصًا لأهدافك تحديدًا."
 
+#: src/features/Community/CommunityDashboard.tsx:87
 #: src/features/Dashboard/Dashboard.tsx:74
 #. js-lingui-explicit-id
-msgid "Unlock unlimited speaking practice and all AI features."
-msgstr "افتح ممارسة التحدث غير المحدودة وجميع ميزات الذكاء الاصطناعي."
+msgid "Unlock unlimited speaking practice, all AI features and community access."
+msgstr ""
+"افتح ممارسة التحدث غير المحدودة، وجميع ميزات الذكاء الاصطناعي والوصول إلى "
+"المجتمع."
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -11229,7 +11232,7 @@ msgstr ""
 msgid "Vocabulary"
 msgstr "المفردات"
 
-#: src/features/Landing/Price/PricePage.tsx:286
+#: src/features/Landing/Price/PricePage.tsx:280
 #. js-lingui-explicit-id
 msgid "Vocabulary challenges"
 msgstr "تحديات المفردات"
@@ -11742,7 +11745,7 @@ msgstr ""
 "مع FluencyPal، يمكنك تحسين تجربة التعلم الخاصة بك من خلال الاستفادة من "
 "الردود المخصصة، التصحيحات الفورية، والمجتمع المتعاون."
 
-#: src/features/Landing/Price/PricePage.tsx:378
+#: src/features/Landing/Price/PricePage.tsx:373
 #: src/features/Landing/Price/PricePage.tsx:461
 #. js-lingui-explicit-id
 msgid ""
@@ -12469,12 +12472,12 @@ msgstr ""
 "plaintext\n"
 "يتم تخزين النصوص الخاصة بك بشكل آمن في خدمتنا\n"
 
-#: src/features/Dashboard/Dashboard.tsx:87
+#: src/features/Dashboard/Dashboard.tsx:89
 #. js-lingui-explicit-id
 msgid "Your unlimited access is about to expire soon."
 msgstr "اشتراكك في الوصول غير المحدود على وشك الانتهاء قريباً."
 
-#: src/features/Dashboard/Dashboard.tsx:84
+#: src/features/Dashboard/Dashboard.tsx:86
 #. js-lingui-explicit-id
 msgid "Your unlimited access is active until {date}"
 msgstr ""
@@ -12488,6 +12491,7 @@ msgid ""
 "“good” looks like"
 msgstr "أنت مطالب بـ **تصميم الأنظمة بشكل فوري**، لكن لا أحد يخبرك كيف يبدو \"الجيد\""
 
+#: src/features/Community/CommunityDashboard.tsx:86
 #: src/features/Dashboard/Dashboard.tsx:73
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
@@ -12543,6 +12547,21 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/Usage/HoursPaymentModal/PriceContact.tsx:33
+#. js-lingui-explicit-id
+#~ msgid "Ask community"
+#~ msgstr "اسأل المجتمع"
+
+#: src/features/Landing/Price/PricePage.tsx:279
+#. js-lingui-explicit-id
+#~ msgid "Debates and discussions"
+#~ msgstr "المناظرات والمناقشات"
+
+#: src/features/Dashboard/Dashboard.tsx:74
+#. js-lingui-explicit-id
+#~ msgid "Unlock unlimited speaking practice and all AI features."
+#~ msgstr "افتح ممارسة التحدث غير المحدودة وجميع ميزات الذكاء الاصطناعي."
 
 #: src/features/Dashboard/Dashboard.tsx:73
 #. js-lingui-explicit-id
