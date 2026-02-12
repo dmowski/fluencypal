@@ -544,6 +544,14 @@ export const FeatureSection = () => {
         />
 
         <FeatureItem
+          iconName="users"
+          title={i18n._('Community access')}
+          subTitle={i18n._('Ask questions, share progress, and find speaking partners.')}
+          startColor="#44b9ef"
+          endColor="#71a4fb"
+        />
+
+        <FeatureItem
           iconName="life-buoy"
           title={i18n._('Priority support')}
           subTitle={i18n._('Get help faster if something breaks or you have questions.')}

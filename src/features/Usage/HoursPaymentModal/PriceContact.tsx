@@ -26,13 +26,6 @@ export const PriceContact = () => {
         {i18n._('Not sure yet?')}
       </Typography>
       <Button
-        variant="text"
-        startIcon={<Users size={'14px'} />}
-        onClick={() => router.push(communityUrl)}
-      >
-        {i18n._('Ask community')}
-      </Button>
-      <Button
         startIcon={<Headset size={'14px'} />}
         variant="text"
         onClick={() => router.push(supportUrl)}
