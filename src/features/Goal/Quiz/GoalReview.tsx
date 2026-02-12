@@ -10,6 +10,7 @@ import { LoadingShapes } from '@/features/uiKit/Loading/LoadingShapes';
 import { FooterButton } from '../../Survey/FooterButton';
 import { useAuth } from '@/features/Auth/useAuth';
 import { Avatar } from '@/features/Game/Avatar';
+import { scrollTopFast } from '@/libs/scroll';
 
 export const GoalReview = ({
   onClick,
@@ -27,6 +28,11 @@ export const GoalReview = ({
   const { i18n } = useLingui();
   const sizes = useWindowSizes();
   const auth = useAuth();
+
+  const onClickHandler = () => {
+    scrollTopFast();
+    onClick();
+  };
 
   const activeImageUrl = auth.userInfo?.photoURL || '/avatar/map.webp';
 
@@ -130,7 +136,7 @@ export const GoalReview = ({
                   const isActive = index === 0;
                   const onClickCard = () => {
                     if (!isActive) return;
-                    onClick();
+                    onClickHandler();
                   };
                   return (
                     <Stack key={index} sx={{}}>
@@ -207,7 +213,7 @@ export const GoalReview = ({
 
       <FooterButton
         disabled={isLoading}
-        onClick={onClick}
+        onClick={onClickHandler}
         title={actionButtonLabel || i18n._('Start')}
         endIcon={actionButtonIcon || <ArrowRight />}
       />
