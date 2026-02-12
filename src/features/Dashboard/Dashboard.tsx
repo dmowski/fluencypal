@@ -66,6 +66,8 @@ export function Dashboard({ lang }: DashboardProps) {
         >
           {appNavigation.currentPage === 'home' && (
             <>
+              <JustTalkCard />
+
               {!access.isFullAppAccess && (
                 <AccessBadge
                   title={i18n._('You’re in preview mode')}
@@ -88,11 +90,9 @@ export function Dashboard({ lang }: DashboardProps) {
                 />
               )}
 
-              <JustTalkCard />
+              <PlanDashboardCards lang={lang} />
 
               <PreviewCard />
-
-              <PlanDashboardCards lang={lang} />
 
               <StreaksDaysBadge />
             </>
