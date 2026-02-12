@@ -56,14 +56,14 @@ export const PlanPreview = ({ plan }: PlanPreviewProps) => {
                 isActive={false}
                 isContinueLabel={false}
                 viewOnly
+                index={index}
                 startColor={cardColor.startColor}
                 endColor={cardColor.endColor}
                 bgColor={cardColor.bgColor}
-                isLast={index === sortedElements.length - 1}
                 icon={
                   <Stack>
                     <Stack className="avatar">
-                      <img src={imageUrl} alt="" />
+                      <img src={imageUrl} alt="" className="avatarContent" />
                     </Stack>
                   </Stack>
                 }

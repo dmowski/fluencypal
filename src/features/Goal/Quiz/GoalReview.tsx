@@ -1,5 +1,5 @@
 'use client';
-import { Stack, Typography } from '@mui/material';
+import { Divider, Stack, Typography } from '@mui/material';
 import { useWindowSizes } from '../../Layout/useWindowSizes';
 import { useLingui } from '@lingui/react';
 import { ArrowRight } from 'lucide-react';
@@ -146,13 +146,14 @@ export const GoalReview = ({
                         startColor={cardColor.startColor}
                         endColor={cardColor.endColor}
                         bgColor={cardColor.bgColor}
+                        index={index}
                         isLast={index === sortedElements.length - 1}
                         onClick={onClickCard}
                         viewOnly={!isActive}
                         icon={
                           <Stack>
                             <Stack className="avatar">
-                              <img src={imageUrl} alt="" />
+                              <img src={imageUrl} alt="" className="avatarContent" />
                             </Stack>
                           </Stack>
                         }
@@ -160,6 +161,64 @@ export const GoalReview = ({
                     </Stack>
                   );
                 })}
+
+                {goalData?.elements && (
+                  <Stack
+                    sx={{
+                      padding: '30px 0',
+                      gap: '30px',
+                    }}
+                  >
+                    <Stack
+                      sx={{
+                        alignItems: 'center',
+                        width: '100%',
+                        gap: '0px',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <Divider
+                        sx={{
+                          width: 'calc(100% - 20px)',
+                          borderColor: 'rgba(255, 255, 255, 0.2)',
+                        }}
+                      />
+                      <Typography
+                        className="decor-text"
+                        sx={{
+                          marginTop: '-16px',
+                          height: '30px',
+                          border: `1px solid rgba(255, 255, 255, 0.2)`,
+                          borderRadius: '9999px',
+                          padding: '3px 17px',
+                          fontSize: '16px',
+                          fontWeight: 500,
+                          backgroundColor: 'rgb(12, 21, 34)',
+                        }}
+                      >
+                        {i18n._('results review')}
+                      </Typography>
+                    </Stack>
+                    <PlanCard
+                      delayToShow={goalData.elements.length * 180}
+                      subTitle={i18n._('Next step')}
+                      title={i18n._('Assessing your progress')}
+                      details={i18n._(
+                        'AI will analyze your progress and, based on the results, create a plan for further action.',
+                      )}
+                      isDone={false}
+                      isActive={false}
+                      isContinueLabel={false}
+                      viewOnly
+                      index={goalData?.elements.length}
+                      startColor={cardColors[0].startColor}
+                      endColor={cardColors[0].endColor}
+                      bgColor={cardColors[0].bgColor}
+                      isLast={true}
+                      icon={<Stack></Stack>}
+                    />
+                  </Stack>
+                )}
               </Stack>
             )}
           </Stack>

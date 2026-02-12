@@ -19,6 +19,7 @@ interface PlanCardProps {
   isContinueLabel: boolean;
   viewOnly?: boolean;
   onClick?: () => void;
+  index: number;
 }
 
 export const PlanCard = ({
@@ -36,6 +37,7 @@ export const PlanCard = ({
   isContinueLabel,
   viewOnly = false,
   onClick,
+  index,
 }: PlanCardProps) => {
   const { i18n } = useLingui();
 
@@ -230,7 +232,7 @@ export const PlanCard = ({
           <Stack
             sx={{
               boxSizing: 'border-box',
-              padding: '10px 5px 0px 5px',
+              //padding: '10px 5px 0px 5px',
               width: 'max-content',
               bottom: '0px',
               right: '0px',
@@ -243,10 +245,15 @@ export const PlanCard = ({
               '.avatar': {
                 transition: 'all 0.4s ease',
                 opacity: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
 
-                img: {
+                '.avatarContent': {
                   width: '50px',
                   height: '50px',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '1px solid red',
                   '@media (max-width: 450px)': {
                     width: '35px',
                     height: '35px',
@@ -261,11 +268,55 @@ export const PlanCard = ({
                 zIndex: 2,
                 top: '0px',
                 left: '0px',
+                padding: '5px',
 
                 opacity: isActive || isDone ? 1 : 0.95,
               }}
             >
-              {icon}
+              <Stack
+                sx={{
+                  width: '50px',
+
+                  height: '50px',
+                  borderRadius: '100px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  //border: '1px solid red',
+                }}
+              >
+                <Stack
+                  sx={{
+                    paddingTop: '10px',
+
+                    gap: '2px',
+                  }}
+                >
+                  <Typography
+                    className="decor-text"
+                    sx={{
+                      fontWeight: 500,
+                      fontSize: '1.9rem',
+                      lineHeight: '1.3rem',
+                    }}
+                  >
+                    {index + 1}
+                  </Typography>
+                  <Typography
+                    variant="caption"
+                    ///className="decor-text"
+                    sx={{
+                      //display: 'none',
+                      textTransform: 'uppercase',
+                      fontWeight: 700,
+                      fontSize: '0.6rem',
+                      //opacity: 0.7,
+                    }}
+                  >
+                    day
+                  </Typography>
+                </Stack>
+              </Stack>
             </Stack>
 
             <Stack
@@ -356,17 +407,15 @@ export const PlanCard = ({
           <Typography
             align="left"
             sx={{
-              fontWeight: 500,
-              fontSize: '1.2rem',
+              fontWeight: 700,
+              fontSize: '1.3rem',
               lineHeight: '1.4rem',
               position: 'relative',
               zIndex: 2,
               opacity: isActive || isDone ? 1 : 0.9,
               paddingBottom: '3px',
 
-              '@media (max-width: 450px)': {
-                fontSize: '0.8rem',
-              },
+              '@media (max-width: 450px)': {},
             }}
           >
             {title}

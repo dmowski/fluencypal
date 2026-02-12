@@ -346,12 +346,13 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 startColor={cardColor.startColor}
                 endColor={cardColor.endColor}
                 bgColor={cardColor.bgColor}
+                index={index}
                 isLast={index === all.length - 1}
                 onClick={() => plan.openElementModal(planElement.id)}
                 icon={
                   <Stack>
                     <Stack className="avatar">
-                      <img src={imageUrl} alt="" />
+                      <img src={imageUrl} className="avatarContent" alt="" />
                     </Stack>
                   </Stack>
                 }
