@@ -256,6 +256,11 @@ msgstr "+{points} poäng"
 msgid "-"
 msgstr "-"
 
+#: src/features/Usage/Subscription/BalanceStatus.tsx:64
+#. js-lingui-explicit-id
+msgid "..."
+msgstr "..."
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -291,19 +296,19 @@ msgstr "/ månad"
 msgid "1 AI hour"
 msgstr "1 AI-timme"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:332
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:343
 #. js-lingui-explicit-id
 msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
 msgstr "1 AI-timme ≈ 1 timme av aktiv konversation med AI:n."
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:38
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:204
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:208
 #. js-lingui-explicit-id
 msgid "1 day"
 msgstr "1 dag"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:57
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:206
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:55
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:210
 #. js-lingui-explicit-id
 msgid "1 month"
 msgstr "1 månad"
@@ -313,13 +318,13 @@ msgstr "1 månad"
 msgid "1 round"
 msgstr "1 runda"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:48
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:205
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:47
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:209
 #. js-lingui-explicit-id
 msgid "1 week"
 msgstr "1 vecka"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:207
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:211
 #. js-lingui-explicit-id
 msgid "1 year"
 msgstr "1 år"
@@ -459,6 +464,11 @@ msgstr "Akademisk ordlista"
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Acceptera"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:34
+#. js-lingui-explicit-id
+msgid "Access Status"
+msgstr "Åtkomststatus"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:194
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:208
@@ -742,7 +752,7 @@ msgstr "AI samtalspartner"
 msgid "AI Speaking Practice"
 msgstr "AI Talövning"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:295
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:299
 #. js-lingui-explicit-id
 msgid "AI tokens"
 msgstr "AI-tokens"
@@ -1050,6 +1060,11 @@ msgstr "Fråga i supportkanalen"
 msgid "Ask questions, get explanations, and solve everyday problems"
 msgstr "Ställ frågor, få förklaringar och lös vardagliga problem"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:544
+#. js-lingui-explicit-id
+msgid "Ask questions, share progress, and find speaking partners."
+msgstr "Ställ frågor, dela framsteg och hitta samtalspartners."
+
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:26
 #: src/features/Case/data/backendCSharp/techData.ts:13
 #. js-lingui-explicit-id
@@ -1229,20 +1244,15 @@ msgstr "Fördelar med att Spela Alias-spelet"
 msgid "Benefits of Role Play"
 msgstr "Fördelar med Rollspel"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:61
-#. js-lingui-explicit-id
-msgid "Best for long-term access"
-msgstr "Bäst för långsiktig åtkomst"
-
 #: src/features/Case/data/reusable/priceSection.ts:16
 #. js-lingui-explicit-id
 msgid "Best for most job seekers"
 msgstr "Bäst för de flesta arbetssökande"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:42
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:48
 #. js-lingui-explicit-id
-msgid "Best for trying out the full access"
-msgstr "Bäst för att prova full åtkomst"
+msgid "Best value for consistent improvement."
+msgstr "Bästa värde för konsekvent förbättring."
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1342,17 +1352,17 @@ msgstr "Förberedelse för affärsengelsk intervju"
 msgid "busy professionals"
 msgstr "upptagna yrkesverksamma"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:195
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:199
 #. js-lingui-explicit-id
 msgid "Buy 1 AI hour"
 msgstr "Köp 1 AI-timme"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:196
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:200
 #. js-lingui-explicit-id
 msgid "Buy 3 AI hours"
 msgstr "Köp 3 AI-timmar"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:197
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:201
 #. js-lingui-explicit-id
 msgid "Buy 5 AI hours"
 msgstr "Köp 5 AI-timmar"
@@ -1362,7 +1372,7 @@ msgstr "Köp 5 AI-timmar"
 msgid "Buy a subscription"
 msgstr "Köp en prenumeration"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:328
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:339
 #. js-lingui-explicit-id
 msgid "Buy AI tokens and use them whenever you want."
 msgstr "Köp AI-tokens och använd dem när du vill."
@@ -1458,13 +1468,13 @@ msgstr "Kan jag anpassa mina övningssessioner?"
 
 #: src/features/Landing/Price/PricePage.tsx:92
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:52
-#: src/features/Usage/Subscription/FaqSubscription.tsx:48
+#: src/features/Usage/Subscription/FaqSubscription.tsx:20
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "Kan jag få en återbetalning efter köp?"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
-#: src/features/Usage/Subscription/FaqSubscription.tsx:20
+#: src/features/Usage/Subscription/FaqSubscription.tsx:48
 #. js-lingui-explicit-id
 msgid "Can I get full access for free?"
 msgstr "Kan jag få full tillgång gratis?"
@@ -1656,6 +1666,11 @@ msgstr "Kinesisk Läroplan"
 msgid "Choose how long each turn lasts and how many rounds to play."
 msgstr "Välj hur länge varje omgång ska pågå och hur många rundor du vill spela."
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
+#. js-lingui-explicit-id
+msgid "Choose how long you want access — and extend anytime."
+msgstr "Välj hur länge du vill ha åtkomst — och förläng när som helst."
+
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:24
 #. js-lingui-explicit-id
 msgid "Choose isolation levels, model aggregates, and write efficient queries."
@@ -1715,7 +1730,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:142
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:415
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:409
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
 #. js-lingui-explicit-id
@@ -1774,6 +1789,11 @@ msgstr "Kommunikation & Ledarskap"
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Gemenskap"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:543
+#. js-lingui-explicit-id
+msgid "Community access"
+msgstr "Community access -> Gemenskapsåtkomst"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #. js-lingui-explicit-id
@@ -2309,7 +2329,7 @@ msgid "Databases & Transactions"
 msgstr "Databaser & Transaktioner"
 
 #: src/features/Landing/Price/PricePage.tsx:336
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:111
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:118
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "day"
@@ -3072,6 +3092,11 @@ msgstr "Förbättra ditt ordförråd genom att beskriva ord på unika sätt."
 msgid "Enjoy the game and see how the AI guesses your description!"
 msgstr "Njut av spelet och se hur AI gissar din beskrivning!"
 
+#: src/features/Usage/Subscription/BalanceStatus.tsx:66
+#. js-lingui-explicit-id
+msgid "Enjoy unlimited AI conversations and all practice modes!"
+msgstr "Njut av obegränsade AI-samtal och alla övningslägen!"
+
 #: src/features/Auth/AuthWallBasic.tsx:150
 #. js-lingui-explicit-id
 msgid "Enter your email to get a sign-in link"
@@ -3099,7 +3124,7 @@ msgstr "Fel vid analys av konversation"
 msgid "Error creating payment session"
 msgstr "Fel vid skapande av betalningssession"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:127
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:131
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:200
 #. js-lingui-explicit-id
 msgid ""
@@ -3124,7 +3149,7 @@ msgstr "Fel vid skapande av plan. Försök igen."
 msgid "Error during analyzing message"
 msgstr "Fel under analys av meddelande"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:155
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:159
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:148
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:229
 #. js-lingui-explicit-id
@@ -3476,7 +3501,7 @@ msgstr ""
 "Oavsett om du är nybörjare eller avancerad elev, anpassar sig Bruno efter "
 "ditt tempo, rättar misstag och håller dig motiverad."
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:145
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:160
 #. js-lingui-explicit-id
 msgid "Expires"
 msgstr "Går ut"
@@ -3627,6 +3652,11 @@ msgid ""
 msgstr ""
 "Feedbacken är vag: \"**inte tillräckligt med erfarenhet**\" — men hur får "
 "man erfarenhet utan ett jobb?"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:535
+#. js-lingui-explicit-id
+msgid "Feedback that helps"
+msgstr "Feedback som hjälper"
 
 #: src/features/Video/UploadVideoButton.tsx:50
 #. js-lingui-explicit-id
@@ -3905,6 +3935,11 @@ msgstr ""
 "För människor som söker långsiktig karriärtillväxt och omfattande "
 "förberedelse för intervjuer."
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:49
+#. js-lingui-explicit-id
+msgid "For those committed to long-term learning and growth"
+msgstr "För dem som är engagerade i långsiktig lärande och utveckling"
+
 #: src/features/Survey/InfoStep.tsx:73
 #. js-lingui-explicit-id
 msgid "for {USER_NAME}"
@@ -3914,6 +3949,11 @@ msgstr "för {USER_NAME}"
 #. js-lingui-explicit-id
 msgid "Formal Writing Practice"
 msgstr "Formell Skrivövning"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:479
+#. js-lingui-explicit-id
+msgid "Founder"
+msgstr "Grundare"
 
 #: src/features/Landing/LandingPage.tsx:366
 #. js-lingui-explicit-id
@@ -4066,7 +4106,7 @@ msgstr "Full tillgång i en månad"
 msgid "Full access to all simulations"
 msgstr "Fullständig tillgång till alla simuleringar"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:213
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:217
 #. js-lingui-explicit-id
 msgid "Full access until {tillDate}"
 msgstr "Fullständig åtkomst till {tillDate}"
@@ -4158,6 +4198,11 @@ msgstr "Genererar..."
 msgid "German Learning Plan"
 msgstr "Tyska inlärningsplan"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+msgid "Get a clear path based on your level, goals, and progress."
+msgstr "Få en tydlig väg baserat på din nivå, dina mål och dina framsteg."
+
 #: src/features/Game/GameOnboarding.tsx:47
 #. js-lingui-explicit-id
 msgid "Get a full access for free!"
@@ -4167,26 +4212,6 @@ msgstr "Få fullständig tillgång gratis!"
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "Få en personlig grammatiksregel att lära dig"
-
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:41
-#. js-lingui-explicit-id
-msgid "Get access for a day"
-msgstr "Få åtkomst för en dag"
-
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:43
-#. js-lingui-explicit-id
-msgid "Get access for a month"
-msgstr "Få tillgång i en månad"
-
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:42
-#. js-lingui-explicit-id
-msgid "Get access for a week"
-msgstr "Få tillgång i en vecka"
-
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:44
-#. js-lingui-explicit-id
-msgid "Get access for a year"
-msgstr "Få tillgång i ett år"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:24
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:24
@@ -4316,6 +4341,11 @@ msgstr ""
 "AI-återkoppling och se din fullständiga analys. Vi använder ett kort för "
 "att förhindra missbruk och ge dig oavbruten åtkomst till alla funktioner."
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:560
+#. js-lingui-explicit-id
+msgid "Get help faster if something breaks or you have questions."
+msgstr "Få hjälp snabbare om något går sönder eller om du har frågor."
+
 #: src/features/Landing/LandingPage.tsx:384
 #. js-lingui-explicit-id
 msgid ""
@@ -4405,6 +4435,11 @@ msgstr "Gåva"
 #. js-lingui-explicit-id
 msgid "Give a small example (counter, input, button)"
 msgstr "Ge ett litet exempel (räknare, inmatning, knapp)"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:448
+#. js-lingui-explicit-id
+msgid "Give it a few weeks. That’s when real confidence builds."
+msgstr "Ge det några veckor. Det är då verklig självsäkerhet byggs upp."
 
 #: src/features/Chat/ChatPage.tsx:354
 #: src/features/Chat/ChatPage.tsx:443
@@ -4828,7 +4863,7 @@ msgstr ""
 "Hur du Bemästrar Din Engelska Anställningsintervju: En Steg-för-Steg Guide "
 "för Intermediära Studenter (2026)"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:276
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:280
 #. js-lingui-explicit-id
 msgid "How to get Full Access?"
 msgstr "Hur får man full tillgång?"
@@ -5385,6 +5420,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Idé för ditt meddelande:"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:47
+#. js-lingui-explicit-id
+msgid "Ideal for focused practice or preparing for an exam."
+msgstr "Perfekt för fokuserad träning eller förberedelse inför en examen."
 
 #: src/features/Blog/blogData.tsx:371
 #. js-lingui-explicit-id
@@ -6067,6 +6107,13 @@ msgstr "Installera:"
 msgid "Installing..."
 msgstr "Installerar..."
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:536
+#. js-lingui-explicit-id
+msgid "Instant corrections and better phrasing so you improve faster."
+msgstr ""
+"Omedelbara korrigeringar och bättre formuleringar så att du förbättras "
+"snabbare."
+
 #: src/features/Landing/LandingPage.tsx:383
 #. js-lingui-explicit-id
 msgid "Instant Grammar Corrections"
@@ -6243,6 +6290,11 @@ msgstr "Det kan ta upp till en minut."
 #. js-lingui-explicit-id
 msgid "Italian Learning Plan"
 msgstr "Italiensk inlärningsplan"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:456
+#. js-lingui-explicit-id
+msgid "I’ll return your money — no questions."
+msgstr "Jag kommer att återbetala dina pengar — inga frågor."
 
 #: src/features/Lang/getLabels.tsx:14
 #. js-lingui-explicit-id
@@ -6680,7 +6732,7 @@ msgstr "Laddar.."
 #: src/features/Router/PracticePage.tsx:79
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
-#: src/features/Usage/Subscription/BalanceStatus.tsx:55
+#: src/features/Usage/Subscription/BalanceStatus.tsx:56
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -6943,7 +6995,7 @@ msgstr "modern litteratur"
 
 #: src/features/Landing/Price/PricePage.tsx:265
 #: src/features/Landing/Price/PricePage.tsx:419
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:106
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:113
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
 #. js-lingui-explicit-id
@@ -7107,6 +7159,16 @@ msgstr "Nästa tur"
 #. js-lingui-explicit-id
 msgid "No ads, no spam"
 msgstr "Inga annonser, inget skräppost"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:551
+#. js-lingui-explicit-id
+msgid "No auto-renew. You stay in control"
+msgstr "Ingen automatisk förnyelse. Du behåller kontrollen"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:315
+#. js-lingui-explicit-id
+msgid "No auto-renewals. No hidden charges."
+msgstr "Inga automatisk förnyelse. Inga dolda avgifter."
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:77
 #. js-lingui-explicit-id
@@ -7306,7 +7368,7 @@ msgstr ""
 msgid "non-native English speakers"
 msgstr "icke-engelsktalande"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:289
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:293
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
 msgstr "Icke-förnyande prenumeration"
@@ -7326,6 +7388,11 @@ msgstr "Norska Läroplanen"
 #. js-lingui-explicit-id
 msgid "NoSQL"
 msgstr "NoSQL"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:455
+#. js-lingui-explicit-id
+msgid "Not feeling real progress?"
+msgstr "Känner du inte att du gör verkliga framsteg?"
 
 #: src/features/NotFound/NotFoundPage.tsx:28
 #. js-lingui-explicit-id
@@ -7565,7 +7632,7 @@ msgstr "Betald plan:"
 msgid "parallel lives"
 msgstr "parallella liv"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:363
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:374
 #. js-lingui-explicit-id
 msgid ""
 "Participate in Community activities like sharing posts in the Community "
@@ -7593,6 +7660,11 @@ msgid ""
 msgstr ""
 "Klistra in din CV-text här. Du kan också skriva en kort sammanställning av "
 "din erfarenhet."
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:552
+#. js-lingui-explicit-id
+msgid "Pay once for a day, week, or month — extend only if you want."
+msgstr "Betala en gång för en dag, vecka eller månad — förläng bara om du vill."
 
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -7635,6 +7707,11 @@ msgstr "Betalningsalternativ"
 msgid "Payment successful!"
 msgstr "Betalning lyckades!"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:46
+#. js-lingui-explicit-id
+msgid "Perfect for testing everything — full access, zero commitment."
+msgstr "Perfekt för att testa allt — full åtkomst, inget åtagande."
+
 #: src/features/Case/data/frontend-junior/techStackSection.ts:40
 #: src/features/Case/data/frontend-senior/techStackSection.ts:40
 #. js-lingui-explicit-id
@@ -7657,6 +7734,11 @@ msgstr "Prestandamått"
 #. js-lingui-explicit-id
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "Prestanda, motståndskraft och arkitekturmodeller"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:527
+#. js-lingui-explicit-id
+msgid "Personal learning plan"
+msgstr "Personlig lektionsplan"
 
 #: src/features/Landing/LandingPage.tsx:333
 #: src/features/Landing/PlanLandingBlock.tsx:429
@@ -7971,6 +8053,11 @@ msgstr ""
 "talcoach dygnet runt. Förbättra flyt, uttal och självförtroende genom "
 "verkliga rollspelscenarier med omedelbar feedback."
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:447
+#. js-lingui-explicit-id
+msgid "Practice daily"
+msgstr "Öva dagligen"
+
 #: src/features/SEO/metadata.ts:270
 #: src/features/SEO/metadata.ts:286
 #. js-lingui-explicit-id
@@ -8280,12 +8367,13 @@ msgstr "Föregående fråga"
 msgid "Price"
 msgstr "Pris"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:154
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:170
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "Pris per dag"
 
 #: src/features/Case/data/reusable/priceSection.ts:44
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:559
 #. js-lingui-explicit-id
 msgid "Priority support"
 msgstr "Prioriterad support"
@@ -8873,6 +8961,11 @@ msgstr "Motståndskraft & Observabilitet"
 #. js-lingui-explicit-id
 msgid "Restaurant"
 msgstr "Restaurang"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:431
+#. js-lingui-explicit-id
+msgid "Results"
+msgstr "Resultat"
 
 #: src/features/Landing/PlanLandingBlock.tsx:615
 #. js-lingui-explicit-id
@@ -9992,15 +10085,6 @@ msgstr "Prenumeration krävs"
 msgid "subscription plans"
 msgstr "prenumerationsplaner"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:310
-#. js-lingui-explicit-id
-msgid ""
-"Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term "
-"commitment."
-msgstr ""
-"Prenumerationer förnyas inte automatiskt, så du kan prova FluencyPal utan "
-"långsiktigt åtagande."
-
 #: src/features/Case/Landing/components/Footer.tsx:114
 #. js-lingui-explicit-id
 msgid "Success stories"
@@ -10084,6 +10168,11 @@ msgstr "Ta Backend-förberedelsestestet"
 #. js-lingui-explicit-id
 msgid "Take the Interview Readiness Test"
 msgstr "Ta intervjuredskapstest"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:518
+#. js-lingui-explicit-id
+msgid "Talk as much as you want — role-plays, assistants, and real conversations."
+msgstr "Prata så mycket du vill — rollspel, assistenter och riktiga samtal."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
 #. js-lingui-explicit-id
@@ -10852,7 +10941,7 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "TOEFL Talauppgifter"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:348
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:359
 #. js-lingui-explicit-id
 msgid "Tokens don’t expire, so you can save them for later."
 msgstr "Tokens löper inte ut, så du kan spara dem till senare."
@@ -11033,6 +11122,11 @@ msgstr "Okänt fel"
 msgid "Unknown error during sign-in"
 msgstr "Okänd fel vid inloggning"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:517
+#. js-lingui-explicit-id
+msgid "Unlimited AI speaking practice"
+msgstr "Obegränsad AI-talträning"
+
 #: src/features/Case/data/reusable/priceSection.ts:25
 #. js-lingui-explicit-id
 msgid "Unlimited answer reviews"
@@ -11042,6 +11136,26 @@ msgstr "Obegränsade svarsgranskningar"
 #. js-lingui-explicit-id
 msgid "Unlimited messages"
 msgstr "Obegränsade meddelanden"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:39
+#. js-lingui-explicit-id
+msgid "Unlock for 1 day"
+msgstr "Lås upp för 1 dag"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:41
+#. js-lingui-explicit-id
+msgid "Unlock for 1 month"
+msgstr "Lås upp i 1 månad"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:40
+#. js-lingui-explicit-id
+msgid "Unlock for 1 week"
+msgstr "Lås upp för 1 vecka"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:42
+#. js-lingui-explicit-id
+msgid "Unlock for 1 year"
+msgstr "Lås upp i 1 år"
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:68
 #. js-lingui-explicit-id
@@ -11061,6 +11175,13 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Unpublish"
 msgstr "Avpublicera"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:67
+#. js-lingui-explicit-id
+msgid "Upgrade to unlock unlimited AI conversations and all practice modes"
+msgstr ""
+"Uppgradera för att låsa upp obegränsade AI-konversationer och alla "
+"övningslägen"
 
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
@@ -11084,7 +11205,7 @@ msgstr "Ladda upp video"
 msgid "Uploading..."
 msgstr "Laddar upp..."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:342
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:353
 #. js-lingui-explicit-id
 msgid "Use it on weekends, for a short project, or whenever it fits you."
 msgstr "Använd den på helgerna, för ett kort projekt, eller när det passar dig."
@@ -11486,7 +11607,7 @@ msgstr "Webbkamera Förhandsgranskning av Feedback"
 msgid "Webcam Setup"
 msgstr "Webbkamera Inställning"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:108
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:115
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
@@ -11536,11 +11657,6 @@ msgstr "Vad får jag med betalplanen?"
 #. js-lingui-explicit-id
 msgid "What do I need to use FluencyPal?"
 msgstr "Vad behöver jag för att använda FluencyPal?"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:382
-#. js-lingui-explicit-id
-msgid "What do you get with Full Access?"
-msgstr "Vad får du med full åtkomst?"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:233
 #. js-lingui-explicit-id
@@ -11658,6 +11774,11 @@ msgstr "Vad du vill uppnå"
 msgid "What you will achieve"
 msgstr "Vad du kommer att uppnå"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:511
+#. js-lingui-explicit-id
+msgid "What's included?"
+msgstr "Vad ingår?"
+
 #: src/features/Chat/ChatSectionHeader.tsx:59
 #. js-lingui-explicit-id
 msgid "What's new?"
@@ -11672,11 +11793,6 @@ msgstr "Vad kostar det?"
 #. js-lingui-explicit-id
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "När använder du AsNoTracking och vilka är kompromisserna?"
-
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:52
-#. js-lingui-explicit-id
-msgid "When you need full access for a short period of time"
-msgstr "När du behöver fullständig åtkomst under en kort tidsperiod"
 
 #: src/features/Landing/LandingPage.tsx:42
 #. js-lingui-explicit-id
@@ -11858,7 +11974,7 @@ msgstr ""
 msgid "Wrong Link"
 msgstr "Fel länk"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:110
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:117
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
@@ -11921,7 +12037,7 @@ msgstr ""
 "dig genom återbetalningsprocessen."
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:53
-#: src/features/Usage/Subscription/FaqSubscription.tsx:49
+#: src/features/Usage/Subscription/FaqSubscription.tsx:21
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you're not satisfied with the service, on \"Profile/Payment "
@@ -11942,7 +12058,7 @@ msgstr ""
 "\"Profil/Betalningshistorik\" begära en återbetalning så kommer vi att "
 "diskutera detaljerna och återbetala det belopp som betalats."
 
-#: src/features/Usage/Subscription/FaqSubscription.tsx:21
+#: src/features/Usage/Subscription/FaqSubscription.tsx:49
 #. js-lingui-explicit-id
 msgid ""
 "Yes. Simply play on the Community page or send messages in the chat to earn "
@@ -12057,7 +12173,7 @@ msgstr ""
 "märka att ditt tal blir mer flytande och dina svar mer polerade vid varje "
 "försök."
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:68
+#: src/features/Usage/Subscription/BalanceStatus.tsx:78
 #. js-lingui-explicit-id
 msgid ""
 "You are a leader in leaderboard! Full access is active until you are on the "
@@ -12163,11 +12279,6 @@ msgstr "Du kan använda vilket språk du vill"
 msgid "You can use text to answer if you prefer."
 msgstr "Du kan använda text för att svara om du föredrar det."
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:58
-#. js-lingui-explicit-id
-msgid "You do not have full access"
-msgstr "Du har inte fullständig åtkomst"
-
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:461
 #. js-lingui-explicit-id
 msgid "You do not have full access."
@@ -12182,7 +12293,7 @@ msgstr ""
 "Du får feedback som \"stark tekniskt, men inte **tillräckligt senior**\" — "
 "utan några specifika detaljer"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:336
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:347
 #. js-lingui-explicit-id
 msgid ""
 "You get full access, just like a subscription — but with complete "
@@ -12221,7 +12332,7 @@ msgid ""
 "the results."
 msgstr "Du har besvarat alla frågor. Skicka in dina svar nu och vänta på resultaten."
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:57
+#: src/features/Usage/Subscription/BalanceStatus.tsx:58
 #. js-lingui-explicit-id
 msgid "You have full access"
 msgstr "Du har fullständig åtkomst"
@@ -12236,7 +12347,7 @@ msgstr "Du har inga chattar ännu."
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Du har skickat in dina svar. Väntar på andra..."
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:78
+#: src/features/Usage/Subscription/BalanceStatus.tsx:88
 #. js-lingui-explicit-id
 msgid "You have {hours} AI hours on your balance"
 msgstr "Du har {hours} AI-timmar på ditt saldo"
@@ -12306,10 +12417,10 @@ msgstr "Du har gjort fantastiska framsteg. Låt oss fortsätta."
 msgid "You:"
 msgstr "Du:"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:34
+#: src/features/Usage/Subscription/BalanceStatus.tsx:59
 #. js-lingui-explicit-id
-msgid "Your access status"
-msgstr "Din åtkomststatus"
+msgid "Your access is currently limited"
+msgstr "Din åtkomst är för närvarande begränsad"
 
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
@@ -12390,7 +12501,7 @@ msgstr "Din fullständiga åtkomst är aktiv till"
 msgid "Your full access is active until {activeTill}"
 msgstr "Din fullständiga tillgång är aktiv tills {activeTill}"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:74
+#: src/features/Usage/Subscription/BalanceStatus.tsx:84
 #. js-lingui-explicit-id
 msgid "Your full access is active until {date}"
 msgstr "Din fullständiga åtkomst är aktiv till {date}"
@@ -12536,6 +12647,85 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:476
+#. js-lingui-explicit-id
+#~ msgid "Alex Dmowski"
+#~ msgstr "Alex Dmowski"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:447
+#. js-lingui-explicit-id
+#~ msgid "Practice daily. Give it a few weeks."
+#~ msgstr "Öva dagligen. Ge det några veckor."
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:448
+#. js-lingui-explicit-id
+#~ msgid "That’s when real confidence builds."
+#~ msgstr "Det är då verklig självsäkerhet byggs upp."
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:456
+#. js-lingui-explicit-id
+#~ msgid "I’ll return your money — no awkward questions."
+#~ msgstr "Jag kommer att returnera dina pengar — inga pinsamma frågor."
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:61
+#. js-lingui-explicit-id
+#~ msgid "Best for long-term access"
+#~ msgstr "Bäst för långsiktig åtkomst"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Best for trying out the full access"
+#~ msgstr "Bäst för att prova full åtkomst"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:41
+#. js-lingui-explicit-id
+#~ msgid "Get access for a day"
+#~ msgstr "Få åtkomst för en dag"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:43
+#. js-lingui-explicit-id
+#~ msgid "Get access for a month"
+#~ msgstr "Få tillgång i en månad"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Get access for a week"
+#~ msgstr "Få tillgång i en vecka"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:44
+#. js-lingui-explicit-id
+#~ msgid "Get access for a year"
+#~ msgstr "Få tillgång i ett år"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:310
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term "
+#~ "commitment."
+#~ msgstr ""
+#~ "Prenumerationer förnyas inte automatiskt, så du kan prova FluencyPal utan "
+#~ "långsiktigt åtagande."
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:382
+#. js-lingui-explicit-id
+#~ msgid "What do you get with Full Access?"
+#~ msgstr "Vad får du med full åtkomst?"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:52
+#. js-lingui-explicit-id
+#~ msgid "When you need full access for a short period of time"
+#~ msgstr "När du behöver fullständig åtkomst under en kort tidsperiod"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:58
+#. js-lingui-explicit-id
+#~ msgid "You do not have full access"
+#~ msgstr "Du har inte fullständig åtkomst"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:34
+#. js-lingui-explicit-id
+#~ msgid "Your access status"
+#~ msgstr "Din åtkomststatus"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:450
 #. js-lingui-explicit-id
@@ -13060,11 +13250,6 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "What one hour means?"
 #~ msgstr "Vad betyder en timme?"
-
-#: src/features/Usage/PaymentModal.tsx:224
-#. js-lingui-explicit-id
-#~ msgid "What's included?"
-#~ msgstr "Vad ingår?"
 
 #: src/features/Usage/PaymentModal.tsx:200
 #. js-lingui-explicit-id

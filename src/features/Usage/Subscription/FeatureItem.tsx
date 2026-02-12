@@ -36,8 +36,22 @@ export const FeatureItem = ({
         <DynamicIcon name={iconName} color="#fff" size={'21px'} />
       </Stack>
       <Stack>
-        <Typography variant="h6">{title}</Typography>
-        <Typography variant="caption">{subTitle}</Typography>
+        <Typography
+          variant="h6"
+          sx={{
+            lineHeight: '24px',
+          }}
+        >
+          {title}
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            opacity: 0.9,
+          }}
+        >
+          {subTitle}
+        </Typography>
       </Stack>
     </Stack>
   );

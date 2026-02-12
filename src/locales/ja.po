@@ -239,6 +239,11 @@ msgstr "+{points} ポイント"
 msgid "-"
 msgstr "-"
 
+#: src/features/Usage/Subscription/BalanceStatus.tsx:64
+#. js-lingui-explicit-id
+msgid "..."
+msgstr "..."
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -274,19 +279,19 @@ msgstr "/月"
 msgid "1 AI hour"
 msgstr "1 AI時間"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:332
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:343
 #. js-lingui-explicit-id
 msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
 msgstr "1 AI時間 ≈ AIとのアクティブな会話の1時間。"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:38
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:204
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:208
 #. js-lingui-explicit-id
 msgid "1 day"
 msgstr "1日"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:57
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:206
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:55
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:210
 #. js-lingui-explicit-id
 msgid "1 month"
 msgstr "1ヶ月"
@@ -296,13 +301,13 @@ msgstr "1ヶ月"
 msgid "1 round"
 msgstr "1回"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:48
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:205
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:47
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:209
 #. js-lingui-explicit-id
 msgid "1 week"
 msgstr "1 週"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:207
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:211
 #. js-lingui-explicit-id
 msgid "1 year"
 msgstr "1年"
@@ -434,6 +439,11 @@ msgstr "アカデミックワードリスト"
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "受け入れる"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:34
+#. js-lingui-explicit-id
+msgid "Access Status"
+msgstr "アクセス状況"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:194
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:208
@@ -711,7 +721,7 @@ msgstr "AI 会話パートナー"
 msgid "AI Speaking Practice"
 msgstr "AIスピーキング練習"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:295
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:299
 #. js-lingui-explicit-id
 msgid "AI tokens"
 msgstr "AI トークン"
@@ -1015,6 +1025,11 @@ msgstr "サポートチャンネルで質問する"
 msgid "Ask questions, get explanations, and solve everyday problems"
 msgstr "質問をして、説明を受け、日常の問題を解決する"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:544
+#. js-lingui-explicit-id
+msgid "Ask questions, share progress, and find speaking partners."
+msgstr "質問をしたり、進捗を共有したり、スピーキングパートナーを見つけましょう。"
+
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:26
 #: src/features/Case/data/backendCSharp/techData.ts:13
 #. js-lingui-explicit-id
@@ -1186,20 +1201,15 @@ msgstr "Aliasゲームをプレイする利点"
 msgid "Benefits of Role Play"
 msgstr "役割演技の利点"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:61
-#. js-lingui-explicit-id
-msgid "Best for long-term access"
-msgstr "長期アクセスに最適"
-
 #: src/features/Case/data/reusable/priceSection.ts:16
 #. js-lingui-explicit-id
 msgid "Best for most job seekers"
 msgstr "ほとんどの求職者に最適"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:42
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:48
 #. js-lingui-explicit-id
-msgid "Best for trying out the full access"
-msgstr "完全アクセスを試すのに最適"
+msgid "Best value for consistent improvement."
+msgstr "一貫した改善に最適な価値。"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1294,17 +1304,17 @@ msgstr "ビジネス英語の面接準備"
 msgid "busy professionals"
 msgstr "忙しい専門家たち"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:195
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:199
 #. js-lingui-explicit-id
 msgid "Buy 1 AI hour"
 msgstr "AI 1時間を購入"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:196
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:200
 #. js-lingui-explicit-id
 msgid "Buy 3 AI hours"
 msgstr "3 AI時間を購入する"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:197
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:201
 #. js-lingui-explicit-id
 msgid "Buy 5 AI hours"
 msgstr "5時間のAIを購入する"
@@ -1314,7 +1324,7 @@ msgstr "5時間のAIを購入する"
 msgid "Buy a subscription"
 msgstr "サブスクリプションを購入する"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:328
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:339
 #. js-lingui-explicit-id
 msgid "Buy AI tokens and use them whenever you want."
 msgstr "AI トークンを購入して、好きなときに使ってみよう。"
@@ -1410,13 +1420,13 @@ msgstr "練習セッションをカスタマイズできますか？"
 
 #: src/features/Landing/Price/PricePage.tsx:92
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:52
-#: src/features/Usage/Subscription/FaqSubscription.tsx:48
+#: src/features/Usage/Subscription/FaqSubscription.tsx:20
 #. js-lingui-explicit-id
 msgid "Can I do a refund after purchase?"
 msgstr "購入後に返金はできますか？"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:24
-#: src/features/Usage/Subscription/FaqSubscription.tsx:20
+#: src/features/Usage/Subscription/FaqSubscription.tsx:48
 #. js-lingui-explicit-id
 msgid "Can I get full access for free?"
 msgstr "無料でフルアクセスを利用できますか？"
@@ -1596,6 +1606,11 @@ msgstr "中国語学習計画"
 msgid "Choose how long each turn lasts and how many rounds to play."
 msgstr "各ターンの持続時間とプレイするラウンド数を選択してください。"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
+#. js-lingui-explicit-id
+msgid "Choose how long you want access — and extend anytime."
+msgstr "選択した期間でアクセスできます — いつでも延長可能。"
+
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:24
 #. js-lingui-explicit-id
 msgid "Choose isolation levels, model aggregates, and write efficient queries."
@@ -1653,7 +1668,7 @@ msgstr "システムデザインの明確な構造。ついに寄り道せずに
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:142
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:415
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:409
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
 #. js-lingui-explicit-id
@@ -1712,6 +1727,11 @@ msgid "Community"
 msgstr ""
 "\n"
 "コミュニティ\n"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:543
+#. js-lingui-explicit-id
+msgid "Community access"
+msgstr "コミュニティアクセス"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #. js-lingui-explicit-id
@@ -2227,7 +2247,7 @@ msgid "Databases & Transactions"
 msgstr "データベースとトランザクション"
 
 #: src/features/Landing/Price/PricePage.tsx:336
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:111
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:118
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "day"
@@ -2925,6 +2945,11 @@ msgstr "ユニークな方法で単語を説明することにより、あなた
 msgid "Enjoy the game and see how the AI guesses your description!"
 msgstr "ゲームを楽しみ、AIがあなたの説明をどのように推測するかを見てみましょう！"
 
+#: src/features/Usage/Subscription/BalanceStatus.tsx:66
+#. js-lingui-explicit-id
+msgid "Enjoy unlimited AI conversations and all practice modes!"
+msgstr "無制限のAI会話とすべての練習モードをお楽しみください！"
+
 #: src/features/Auth/AuthWallBasic.tsx:150
 #. js-lingui-explicit-id
 msgid "Enter your email to get a sign-in link"
@@ -2950,7 +2975,7 @@ msgstr "会話の分析エラー"
 msgid "Error creating payment session"
 msgstr "支払いセッションの作成中にエラーが発生しました"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:127
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:131
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:200
 #. js-lingui-explicit-id
 msgid ""
@@ -2973,7 +2998,7 @@ msgstr "プランの作成中にエラーが発生しました。もう一度お
 msgid "Error during analyzing message"
 msgstr "メッセージの分析中にエラーが発生しました"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:155
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:159
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:148
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:229
 #. js-lingui-explicit-id
@@ -3295,7 +3320,7 @@ msgstr ""
 "次世代の言語練習を体験してください、あなたの友達のAIチューター、ブルーノと共に。初心者でも上級者でも、ブルーノはあなたのペースに合わせ、間違いを修正し"
 "、モチベーションを保ちます。"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:145
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:160
 #. js-lingui-explicit-id
 msgid "Expires"
 msgstr "期限切れ"
@@ -3436,6 +3461,11 @@ msgid ""
 "Feedback is vague: \"**not enough experience**\" — but how do you get "
 "experience without a job?"
 msgstr "フィードバックが曖昧です：「**経験が不足している**」 — しかし、仕事なしでどうやって経験を得るのですか？"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:535
+#. js-lingui-explicit-id
+msgid "Feedback that helps"
+msgstr "フィードバックが役立ちます"
 
 #: src/features/Video/UploadVideoButton.tsx:50
 #. js-lingui-explicit-id
@@ -3686,6 +3716,11 @@ msgid ""
 "preparation."
 msgstr "長期的なキャリア成長と包括的な面接準備を求める人々のために。"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:49
+#. js-lingui-explicit-id
+msgid "For those committed to long-term learning and growth"
+msgstr "長期的な学習と成長に専念する方へ"
+
 #: src/features/Survey/InfoStep.tsx:73
 #. js-lingui-explicit-id
 msgid "for {USER_NAME}"
@@ -3695,6 +3730,11 @@ msgstr "{USER_NAME} 用"
 #. js-lingui-explicit-id
 msgid "Formal Writing Practice"
 msgstr "フォーマルな文章作成の練習"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:479
+#. js-lingui-explicit-id
+msgid "Founder"
+msgstr "創設者"
 
 #: src/features/Landing/LandingPage.tsx:366
 #. js-lingui-explicit-id
@@ -3849,7 +3889,7 @@ msgstr "1ヶ月間のフルアクセス"
 msgid "Full access to all simulations"
 msgstr "すべてのシミュレーションへの完全アクセス"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:213
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:217
 #. js-lingui-explicit-id
 msgid "Full access until {tillDate}"
 msgstr "{tillDate} までフルアクセス"
@@ -3939,6 +3979,11 @@ msgstr "生成中..."
 msgid "German Learning Plan"
 msgstr "ドイツ語学習プラン"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:528
+#. js-lingui-explicit-id
+msgid "Get a clear path based on your level, goals, and progress."
+msgstr "あなたのレベル、目標、および進捗に基づいて明確な道筋を得ましょう。"
+
 #: src/features/Game/GameOnboarding.tsx:47
 #. js-lingui-explicit-id
 msgid "Get a full access for free!"
@@ -3948,26 +3993,6 @@ msgstr "無料でフルアクセスを取得！"
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "個人的な文法ルールを学ぶ"
-
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:41
-#. js-lingui-explicit-id
-msgid "Get access for a day"
-msgstr "1日のアクセス権を取得する"
-
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:43
-#. js-lingui-explicit-id
-msgid "Get access for a month"
-msgstr "1か月間アクセスを取得"
-
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:42
-#. js-lingui-explicit-id
-msgid "Get access for a week"
-msgstr "1週間アクセスを取得"
-
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:44
-#. js-lingui-explicit-id
-msgid "Get access for a year"
-msgstr "1 年間のアクセスを取得"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:24
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:24
@@ -4081,6 +4106,11 @@ msgstr ""
 "すべての機能へのフルアクセスを獲得しましょう。実際のインタビューを練習し、AIフィードバックを受け取り、完全な分析を確認できます。不正利用を防ぎ、すべて"
 "の機能に中断なくアクセスするためにカードを使用します。"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:560
+#. js-lingui-explicit-id
+msgid "Get help faster if something breaks or you have questions."
+msgstr "何か問題が発生したり質問がある場合は、より迅速にサポートを受けることができます。"
+
 #: src/features/Landing/LandingPage.tsx:384
 #. js-lingui-explicit-id
 msgid ""
@@ -4162,6 +4192,11 @@ msgstr "ギフト"
 #. js-lingui-explicit-id
 msgid "Give a small example (counter, input, button)"
 msgstr "小さな例を挙げる (カウンター、入力、ボタン)"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:448
+#. js-lingui-explicit-id
+msgid "Give it a few weeks. That’s when real confidence builds."
+msgstr "数週間待ってください。その時に本当の自信が築かれます。"
 
 #: src/features/Chat/ChatPage.tsx:354
 #: src/features/Chat/ChatPage.tsx:443
@@ -4567,7 +4602,7 @@ msgid ""
 "Intermediate Learners (2026)"
 msgstr "中級学習者のための英語での就職面接を成功させる方法：ステップバイステップガイド (2026)"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:276
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:280
 #. js-lingui-explicit-id
 msgid "How to get Full Access?"
 msgstr "フルアクセスを取得する方法は？"
@@ -5056,6 +5091,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "あなたのメッセージのアイデア："
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:47
+#. js-lingui-explicit-id
+msgid "Ideal for focused practice or preparing for an exam."
+msgstr "集中練習や試験準備に最適です。"
 
 #: src/features/Blog/blogData.tsx:371
 #. js-lingui-explicit-id
@@ -5657,6 +5697,11 @@ msgstr "インストール："
 msgid "Installing..."
 msgstr "インストール中..."
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:536
+#. js-lingui-explicit-id
+msgid "Instant corrections and better phrasing so you improve faster."
+msgstr "即時の訂正とより良い表現で、より速く改善することができます。"
+
 #: src/features/Landing/LandingPage.tsx:383
 #. js-lingui-explicit-id
 msgid "Instant Grammar Corrections"
@@ -5831,6 +5876,11 @@ msgstr "最大で1分かかる場合があります。"
 #. js-lingui-explicit-id
 msgid "Italian Learning Plan"
 msgstr "イタリア語学習プラン"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:456
+#. js-lingui-explicit-id
+msgid "I’ll return your money — no questions."
+msgstr "私はあなたのお金を返します — 質問はありません。"
 
 #: src/features/Lang/getLabels.tsx:14
 #. js-lingui-explicit-id
@@ -6261,7 +6311,7 @@ msgstr "読み込み中.."
 #: src/features/Router/PracticePage.tsx:79
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:148
-#: src/features/Usage/Subscription/BalanceStatus.tsx:55
+#: src/features/Usage/Subscription/BalanceStatus.tsx:56
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -6513,7 +6563,7 @@ msgstr "現代文学"
 
 #: src/features/Landing/Price/PricePage.tsx:265
 #: src/features/Landing/Price/PricePage.tsx:419
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:106
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:113
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
 #. js-lingui-explicit-id
@@ -6675,6 +6725,16 @@ msgstr "次のターン"
 #. js-lingui-explicit-id
 msgid "No ads, no spam"
 msgstr "広告なし、スパムなし"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:551
+#. js-lingui-explicit-id
+msgid "No auto-renew. You stay in control"
+msgstr "自動更新なし。あなたが管理します"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:315
+#. js-lingui-explicit-id
+msgid "No auto-renewals. No hidden charges."
+msgstr "オートリニューアルなし。隠れた料金なし。"
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:77
 #. js-lingui-explicit-id
@@ -6860,7 +6920,7 @@ msgstr "いいえ。支払い情報を入力せずに無料プランを始める
 msgid "non-native English speakers"
 msgstr "ネイティブでない英語話者"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:289
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:293
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
 msgstr "自動更新されないサブスクリプション"
@@ -6880,6 +6940,11 @@ msgstr "ノルウェー語学習プラン"
 #. js-lingui-explicit-id
 msgid "NoSQL"
 msgstr "NoSQL"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:455
+#. js-lingui-explicit-id
+msgid "Not feeling real progress?"
+msgstr "実際の進歩を感じていませんか？"
 
 #: src/features/NotFound/NotFoundPage.tsx:28
 #. js-lingui-explicit-id
@@ -7105,7 +7170,7 @@ msgstr "有料プラン:"
 msgid "parallel lives"
 msgstr "平行する人生"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:363
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:374
 #. js-lingui-explicit-id
 msgid ""
 "Participate in Community activities like sharing posts in the Community "
@@ -7128,6 +7193,11 @@ msgid ""
 "Paste your CV text here. You can also write a brief summary of your "
 "experience."
 msgstr "ここにあなたの履歴書のテキストを貼り付けてください。あなたの経験の簡単な概要を書くこともできます。"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:552
+#. js-lingui-explicit-id
+msgid "Pay once for a day, week, or month — extend only if you want."
+msgstr "1日、1週間、または1ヶ月分を一度だけ支払い — 延長は希望する場合にのみ。"
 
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -7170,6 +7240,11 @@ msgstr "支払いオプション"
 msgid "Payment successful!"
 msgstr "支払いが成功しました！"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:46
+#. js-lingui-explicit-id
+msgid "Perfect for testing everything — full access, zero commitment."
+msgstr "すべてをテストするのに最適 — フルアクセス、コミットメントなし。"
+
 #: src/features/Case/data/frontend-junior/techStackSection.ts:40
 #: src/features/Case/data/frontend-senior/techStackSection.ts:40
 #. js-lingui-explicit-id
@@ -7192,6 +7267,11 @@ msgstr "パフォーマンス指標"
 #. js-lingui-explicit-id
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "パフォーマンス、回復力、アーキテクチャパターン"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:527
+#. js-lingui-explicit-id
+msgid "Personal learning plan"
+msgstr "個人学習計画"
 
 #: src/features/Landing/LandingPage.tsx:333
 #: src/features/Landing/PlanLandingBlock.tsx:429
@@ -7502,6 +7582,11 @@ msgstr ""
 "時間年中無休のAI英語チューターおよびスピーキングコーチです。リアルなロールプレイシナリオを通じて、流暢さ、発音、自信を即時フィードバックで向上させまし"
 "ょう。"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:447
+#. js-lingui-explicit-id
+msgid "Practice daily"
+msgstr "毎日練習"
+
 #: src/features/SEO/metadata.ts:270
 #: src/features/SEO/metadata.ts:286
 #. js-lingui-explicit-id
@@ -7783,12 +7868,13 @@ msgstr "前の質問"
 msgid "Price"
 msgstr "価格"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:154
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:170
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "1日あたりの価格"
 
 #: src/features/Case/data/reusable/priceSection.ts:44
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:559
 #. js-lingui-explicit-id
 msgid "Priority support"
 msgstr "優先サポート"
@@ -8364,6 +8450,11 @@ msgstr "レジリエンシー＆オブザーバビリティ"
 #. js-lingui-explicit-id
 msgid "Restaurant"
 msgstr "レストラン"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:431
+#. js-lingui-explicit-id
+msgid "Results"
+msgstr "結果"
 
 #: src/features/Landing/PlanLandingBlock.tsx:615
 #. js-lingui-explicit-id
@@ -9437,13 +9528,6 @@ msgstr "サブスクリプションが必要です"
 msgid "subscription plans"
 msgstr "サブスクリプションプラン"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:310
-#. js-lingui-explicit-id
-msgid ""
-"Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term "
-"commitment."
-msgstr "サブスクリプションは自動更新されませんので、長期的なコミットメントなしでFluencyPalを試すことができます。"
-
 #: src/features/Case/Landing/components/Footer.tsx:114
 #. js-lingui-explicit-id
 msgid "Success stories"
@@ -9525,6 +9609,11 @@ msgstr "バックエンド準備テストを受ける"
 #. js-lingui-explicit-id
 msgid "Take the Interview Readiness Test"
 msgstr "インタビュー準備テストを受ける"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:518
+#. js-lingui-explicit-id
+msgid "Talk as much as you want — role-plays, assistants, and real conversations."
+msgstr "話したいだけ話そう — ロールプレイ、アシスタント、そして本物の会話。"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
 #. js-lingui-explicit-id
@@ -10250,7 +10339,7 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "TOEFLスピーキングタスク"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:348
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:359
 #. js-lingui-explicit-id
 msgid "Tokens don’t expire, so you can save them for later."
 msgstr "トークンは有効期限がないので、後で使うために保存することができます。"
@@ -10437,6 +10526,11 @@ msgstr "不明なエラー"
 msgid "Unknown error during sign-in"
 msgstr "サインイン中に不明なエラーが発生しました"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:517
+#. js-lingui-explicit-id
+msgid "Unlimited AI speaking practice"
+msgstr "無制限のAIスピーキング練習"
+
 #: src/features/Case/data/reusable/priceSection.ts:25
 #. js-lingui-explicit-id
 msgid "Unlimited answer reviews"
@@ -10446,6 +10540,26 @@ msgstr "無制限の回答レビュー"
 #. js-lingui-explicit-id
 msgid "Unlimited messages"
 msgstr "無制限のメッセージ"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:39
+#. js-lingui-explicit-id
+msgid "Unlock for 1 day"
+msgstr "1日アンロック"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:41
+#. js-lingui-explicit-id
+msgid "Unlock for 1 month"
+msgstr "1ヶ月間アンロック"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:40
+#. js-lingui-explicit-id
+msgid "Unlock for 1 week"
+msgstr "1週間のロック解除"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:42
+#. js-lingui-explicit-id
+msgid "Unlock for 1 year"
+msgstr "1年間のアンロック"
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:68
 #. js-lingui-explicit-id
@@ -10463,6 +10577,11 @@ msgstr "人間のような音声での会話と、あなたの目標に特化し
 #. js-lingui-explicit-id
 msgid "Unpublish"
 msgstr "非公開にする"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:67
+#. js-lingui-explicit-id
+msgid "Upgrade to unlock unlimited AI conversations and all practice modes"
+msgstr "アップグレードして無制限のAI会話とすべての練習モードをアンロック"
 
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
@@ -10486,7 +10605,7 @@ msgstr "ビデオをアップロード"
 msgid "Uploading..."
 msgstr "アップロード中..."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:342
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:353
 #. js-lingui-explicit-id
 msgid "Use it on weekends, for a short project, or whenever it fits you."
 msgstr "週末に使ったり、短期間のプロジェクトに使ったり、あなたに合う時に。"
@@ -10866,7 +10985,7 @@ msgstr "ウェブカメラフィードバックプレビュー"
 msgid "Webcam Setup"
 msgstr "ウェブカメラのセットアップ"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:108
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:115
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
@@ -10918,11 +11037,6 @@ msgstr "有料プランで何が得られますか？"
 #. js-lingui-explicit-id
 msgid "What do I need to use FluencyPal?"
 msgstr "FluencyPalを利用するには何が必要ですか?"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:382
-#. js-lingui-explicit-id
-msgid "What do you get with Full Access?"
-msgstr "フルアクセスで何が得られますか?"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:233
 #. js-lingui-explicit-id
@@ -11038,6 +11152,11 @@ msgstr "あなたが達成したいこと"
 msgid "What you will achieve"
 msgstr "達成すること"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:511
+#. js-lingui-explicit-id
+msgid "What's included?"
+msgstr "何が含まれていますか？"
+
 #: src/features/Chat/ChatSectionHeader.tsx:59
 #. js-lingui-explicit-id
 msgid "What's new?"
@@ -11054,11 +11173,6 @@ msgstr "価格はいくらですか？"
 #. js-lingui-explicit-id
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "AsNoTrackingを使用するのはいつで、どのようなトレードオフがありますか？"
-
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:52
-#. js-lingui-explicit-id
-msgid "When you need full access for a short period of time"
-msgstr "短期間でのフルアクセスが必要な場合"
 
 #: src/features/Landing/LandingPage.tsx:42
 #. js-lingui-explicit-id
@@ -11232,7 +11346,7 @@ msgstr "インタビューを感謝と自信を持って締めくくりましょ
 msgid "Wrong Link"
 msgstr "リンクが間違っています"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:110
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:117
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
@@ -11287,7 +11401,7 @@ msgid ""
 msgstr "はい。サービスにご満足いただけない場合は、返金をリクエストできます。上記のチャットを通してサポートチームにご連絡ください。返金手続きをご案内いたします。"
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:53
-#: src/features/Usage/Subscription/FaqSubscription.tsx:49
+#: src/features/Usage/Subscription/FaqSubscription.tsx:21
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you're not satisfied with the service, on \"Profile/Payment "
@@ -11304,7 +11418,7 @@ msgstr ""
 "はい。サービスにご満足いただけない場合は、「プロフィール/"
 "支払い履歴」ページで返金をリクエストでき、詳細についてご相談の上、お支払いいただいた金額を返金いたします。"
 
-#: src/features/Usage/Subscription/FaqSubscription.tsx:21
+#: src/features/Usage/Subscription/FaqSubscription.tsx:49
 #. js-lingui-explicit-id
 msgid ""
 "Yes. Simply play on the Community page or send messages in the chat to earn "
@@ -11403,7 +11517,7 @@ msgstr ""
 "、弱点を見つけ出し、発音の練習をする、そして予期しない質問に落ち着いて対処する方法を学ぶのに役立ちます。あなたはあなたの発言がより流暢になり、あなたの答"
 "えが試みるごとにより洗練されることに気付くでしょう。"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:68
+#: src/features/Usage/Subscription/BalanceStatus.tsx:78
 #. js-lingui-explicit-id
 msgid ""
 "You are a leader in leaderboard! Full access is active until you are on the "
@@ -11498,11 +11612,6 @@ msgstr "あなたは好きな言語を使用できます"
 msgid "You can use text to answer if you prefer."
 msgstr "テキストを使用して答えることができる場合、その方法を選んでください。"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:58
-#. js-lingui-explicit-id
-msgid "You do not have full access"
-msgstr "あなたは完全なアクセス権を持っていません"
-
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:461
 #. js-lingui-explicit-id
 msgid "You do not have full access."
@@ -11515,7 +11624,7 @@ msgid ""
 "with no specifics"
 msgstr "「技術的には強いが、**シニアレベルには達していない**」といったフィードバックを受けることがありますが、具体的な内容はありません。"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:336
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:347
 #. js-lingui-explicit-id
 msgid ""
 "You get full access, just like a subscription — but with complete "
@@ -11550,7 +11659,7 @@ msgid ""
 "the results."
 msgstr "すべての質問に回答しました。今すぐ回答を提出し、結果をお待ちください。"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:57
+#: src/features/Usage/Subscription/BalanceStatus.tsx:58
 #. js-lingui-explicit-id
 msgid "You have full access"
 msgstr "フルアクセスがあります"
@@ -11565,7 +11674,7 @@ msgstr "チャットはまだありません。"
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "回答を提出しました。他の人を待っています..."
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:78
+#: src/features/Usage/Subscription/BalanceStatus.tsx:88
 #. js-lingui-explicit-id
 msgid "You have {hours} AI hours on your balance"
 msgstr "あなたの残高には {hours} AI時間があります"
@@ -11629,10 +11738,10 @@ msgstr "あなたは素晴らしい進歩を遂げています。続けましょ
 msgid "You:"
 msgstr "あなた:"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:34
+#: src/features/Usage/Subscription/BalanceStatus.tsx:59
 #. js-lingui-explicit-id
-msgid "Your access status"
-msgstr "あなたのアクセス状況"
+msgid "Your access is currently limited"
+msgstr "現在、アクセスが制限されています"
 
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
@@ -11709,7 +11818,7 @@ msgstr "あなたのフルアクセスは以下の日付まで有効です"
 msgid "Your full access is active until {activeTill}"
 msgstr "あなたのフルアクセスは{activeTill}まで有効です"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:74
+#: src/features/Usage/Subscription/BalanceStatus.tsx:84
 #. js-lingui-explicit-id
 msgid "Your full access is active until {date}"
 msgstr "あなたのフルアクセスは {date} まで有効です。"
@@ -11848,6 +11957,83 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:476
+#. js-lingui-explicit-id
+#~ msgid "Alex Dmowski"
+#~ msgstr "アレックス・ドモウスキー"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:447
+#. js-lingui-explicit-id
+#~ msgid "Practice daily. Give it a few weeks."
+#~ msgstr "日々実践してください。数週間続けてみてください。"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:448
+#. js-lingui-explicit-id
+#~ msgid "That’s when real confidence builds."
+#~ msgstr "本当の自信が築かれるときです。"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:456
+#. js-lingui-explicit-id
+#~ msgid "I’ll return your money — no awkward questions."
+#~ msgstr "お金を返します — 気まずい質問はしません。"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:61
+#. js-lingui-explicit-id
+#~ msgid "Best for long-term access"
+#~ msgstr "長期アクセスに最適"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Best for trying out the full access"
+#~ msgstr "完全アクセスを試すのに最適"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:41
+#. js-lingui-explicit-id
+#~ msgid "Get access for a day"
+#~ msgstr "1日のアクセス権を取得する"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:43
+#. js-lingui-explicit-id
+#~ msgid "Get access for a month"
+#~ msgstr "1か月間アクセスを取得"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Get access for a week"
+#~ msgstr "1週間アクセスを取得"
+
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:44
+#. js-lingui-explicit-id
+#~ msgid "Get access for a year"
+#~ msgstr "1 年間のアクセスを取得"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:310
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Subscriptions don’t auto-renew, so you can try FluencyPal with no long-term "
+#~ "commitment."
+#~ msgstr "サブスクリプションは自動更新されませんので、長期的なコミットメントなしでFluencyPalを試すことができます。"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:382
+#. js-lingui-explicit-id
+#~ msgid "What do you get with Full Access?"
+#~ msgstr "フルアクセスで何が得られますか?"
+
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:52
+#. js-lingui-explicit-id
+#~ msgid "When you need full access for a short period of time"
+#~ msgstr "短期間でのフルアクセスが必要な場合"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:58
+#. js-lingui-explicit-id
+#~ msgid "You do not have full access"
+#~ msgstr "あなたは完全なアクセス権を持っていません"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:34
+#. js-lingui-explicit-id
+#~ msgid "Your access status"
+#~ msgstr "あなたのアクセス状況"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:450
 #. js-lingui-explicit-id
@@ -12349,11 +12535,6 @@ msgstr "— この短い会話に参加することは、専門的な話題に�
 #. js-lingui-explicit-id
 #~ msgid "What one hour means?"
 #~ msgstr "1時間とは何を意味しますか？"
-
-#: src/features/Usage/PaymentModal.tsx:224
-#. js-lingui-explicit-id
-#~ msgid "What's included?"
-#~ msgstr "何が含まれていますか？"
 
 #: src/features/Usage/PaymentModal.tsx:200
 #. js-lingui-explicit-id
