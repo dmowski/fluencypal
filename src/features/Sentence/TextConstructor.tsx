@@ -96,37 +96,50 @@ export function TextConstructor({
         width: '100%',
         maxWidth: 720,
         margin: '0 auto',
+        height: '100dvh',
+        maxHeight: 600,
         padding: { xs: '16px', sm: '24px' },
         gap: { xs: '16px', sm: '20px' },
+        justifyContent: 'flex-end',
+        overflow: 'hidden',
       }}
     >
-      <Stack sx={{ gap: '8px' }}>
-        <Typography variant="caption" sx={{ opacity: 0.75 }}>
-          Progress
-        </Typography>
-        <Typography
-          variant="h4"
-          className="progress"
-          sx={{
-            fontWeight: 700,
-            minHeight: { xs: 56, sm: 76 },
-            fontSize: { xs: 28, sm: 36 },
-            lineHeight: 1.2,
-            wordBreak: 'break-word',
-          }}
-        >
-          {progress || '...'}
-        </Typography>
+      <Stack sx={{ gap: { xs: '16px', sm: '20px' } }}>
+        <Stack sx={{ gap: '8px' }}>
+          <Typography variant="caption" sx={{ opacity: 0.75 }}>
+            Progress
+          </Typography>
+          <Typography
+            variant="h4"
+            className="progress"
+            sx={{
+              fontWeight: 700,
+              minHeight: { xs: 56, sm: 76 },
+              fontSize: { xs: 28, sm: 36 },
+              lineHeight: 1.2,
+              wordBreak: 'break-word',
+            }}
+          >
+            {progress || '...'}
+          </Typography>
+        </Stack>
+
+        <Stack sx={{ gap: '8px' }}>
+          <Typography variant="caption" sx={{ opacity: 0.75 }}>
+            Translation
+          </Typography>
+          <Typography variant="body1">{activePart?.activeTranslation ?? 'Completed ✅'}</Typography>
+        </Stack>
       </Stack>
 
-      <Stack sx={{ gap: '8px' }}>
-        <Typography variant="caption" sx={{ opacity: 0.75 }}>
-          Translation
-        </Typography>
-        <Typography variant="body1">{activePart?.activeTranslation ?? 'Completed ✅'}</Typography>
-      </Stack>
-
-      <Stack direction="row" sx={{ gap: '8px', flexWrap: 'wrap' }}>
+      <Stack
+        direction="row"
+        sx={{
+          gap: '8px',
+          flexWrap: 'wrap',
+          py: '8px',
+        }}
+      >
         {options.map((word) => {
           const isWrongWord = wrongWord === word;
 
