@@ -44,8 +44,6 @@ export const JustTalkCard = () => {
   const funnyPhrases = aiAvatar.funnyPhrases;
   const footnotePhrase = funnyPhrases[footnotePhraseIndex % funnyPhrases.length];
 
-  const isNewUser = dayjs(settings.userCreatedAt).isAfter(dayjs().subtract(1, 'day'));
-
   return (
     <Stack
       sx={{
@@ -95,18 +93,16 @@ export const JustTalkCard = () => {
             {i18n._('Conversation with AI')}
           </Typography>
 
-          {isNewUser && (
-            <Typography
-              sx={{
-                opacity: 0.9,
-                textWrap: 'balance',
-              }}
-            >
-              {i18n._(
-                "Start a casual call to practice your communication skills. This is a no-strings-attached conversation if you'd like to chat in a casual setting.",
-              )}
-            </Typography>
-          )}
+          <Typography
+            sx={{
+              opacity: 0.9,
+              textWrap: 'balance',
+            }}
+          >
+            {i18n._(
+              "Start a casual call to practice your communication skills. This is a no-strings-attached conversation if you'd like to chat in a casual setting.",
+            )}
+          </Typography>
         </Stack>
         <Stack
           sx={{
