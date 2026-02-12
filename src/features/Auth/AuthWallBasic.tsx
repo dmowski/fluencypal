@@ -201,6 +201,11 @@ export const AuthWallBasic = ({
                 iconName: 'shield-check',
               },
               {
+                title: i18n._('You confirm that you are at least 13 years old'),
+                iconName: 'shield-check',
+              },
+
+              {
                 title: i18n._('Your transcripts are securely stored in our service'),
                 iconName: 'shield-check',
               },
@@ -216,6 +221,7 @@ export const AuthWallBasic = ({
                 title: i18n._('We use cookies to enhance your experience'),
                 iconName: 'cookie',
               },
+
               {
                 title: i18n._('Privacy Policy'),
                 iconName: 'scroll-text',
