@@ -15,7 +15,7 @@ export const FeatureItem = ({
   endColor: string;
 }) => {
   const iconContainerSize = '52px';
-  const iconSize = '21px';
+  const iconSize = '24px';
   return (
     <Stack
       sx={{
