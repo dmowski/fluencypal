@@ -2,7 +2,7 @@
 
 import { useAiConversation } from '@/features/Conversation/useAiConversation/useAiConversation';
 import { useAuth } from '../Auth/useAuth';
-import { Stack } from '@mui/material';
+import { accordionClasses, Stack, Typography } from '@mui/material';
 import { SignInForm } from '../Auth/SignInForm';
 import { useUsage } from '../Usage/useUsage';
 import { useSettings } from '../Settings/useSettings';
@@ -25,6 +25,7 @@ import { usePlan } from '../Plan/usePlan';
 import { usePageLangRedirect } from './usePageLangRedirect';
 import { CommunityDashboard } from '../Community/CommunityDashboard';
 import { ConversationType } from '@/common/conversation';
+import { BlockedAccess } from './BlockedAccess';
 
 interface PracticePageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -79,6 +80,8 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     return <InfoBlockedSection title={aiConversation.isInitializing || i18n._(`Loading...`)} />;
   }
 
+  if (access.isBlocked) return <BlockedAccess />;
+
   if (!settings.languageCode) return <SelectLanguage pageLang={lang} />;
 
   if (!aiConversation.isStarted) {
@@ -89,8 +92,9 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     );
   }
 
-  if (aiConversation.isRestarting)
+  if (aiConversation.isRestarting) {
     return <InfoBlockedSection title={i18n._(`Reloading conversation...`)} />;
+  }
 
   return (
     <Stack>

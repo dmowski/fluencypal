@@ -40,6 +40,8 @@ export interface UserSettings extends InitUserSettings {
   browserInfo: string | null;
 
   teacherVoiceSpeed?: AiVoiceSpeed;
+
+  isBlockedByAge: boolean | null;
 }
 
 export interface UserSettingsWithId extends UserSettings {
