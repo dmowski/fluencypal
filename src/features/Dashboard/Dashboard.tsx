@@ -68,8 +68,9 @@ export function Dashboard({ lang }: DashboardProps) {
             <>
               {!access.isFullAppAccess && (
                 <AccessBadge
-                  title={i18n._('Limited access')}
-                  subTitle={i18n._('Limited messages and voice features')}
+                  title={i18n._('You’re in preview mode')}
+                  subTitle={i18n._('Unlock unlimited speaking practice and all AI features.')}
+                  buttonTitle={i18n._('Unlock Full Access')}
                 />
               )}
 
@@ -83,6 +84,7 @@ export function Dashboard({ lang }: DashboardProps) {
                         })
                       : i18n._('Your unlimited access is about to expire soon.')
                   }
+                  buttonTitle={i18n._('Renew Now')}
                 />
               )}
 

@@ -1,9 +1,17 @@
 import { Button, Stack, Typography } from '@mui/material';
-import { Gem } from 'lucide-react';
+import { Gem, Rocket, Sparkles } from 'lucide-react';
 import { useUsage } from '../Usage/useUsage';
 import { useLingui } from '@lingui/react';
 
-export const AccessBadge = ({ title, subTitle }: { title: string; subTitle: string }) => {
+export const AccessBadge = ({
+  title,
+  subTitle,
+  buttonTitle,
+}: {
+  title: string;
+  subTitle: string;
+  buttonTitle: string;
+}) => {
   const { i18n } = useLingui();
   const usage = useUsage();
   return (
@@ -59,12 +67,12 @@ export const AccessBadge = ({ title, subTitle }: { title: string; subTitle: stri
         color="warning"
         onClick={() => usage.togglePaymentModal(true)}
         variant="contained"
-        endIcon={<Gem />}
+        endIcon={<Rocket />}
         sx={{
           padding: '10px 30px',
         }}
       >
-        {i18n._('Get Full Access')}
+        {buttonTitle}
       </Button>
     </Stack>
   );
