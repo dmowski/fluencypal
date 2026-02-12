@@ -273,7 +273,7 @@ const QuizQuestions = () => {
           {currentStep === 'recordAbout' && (
             <AuthWall>
               <RecordUserAudio
-                title={i18n._('Tell me about your goals')}
+                title={i18n._('Tell me about yourself')}
                 subTitle={
                   languageToLearn === nativeLanguage ? (
                     <Trans>
@@ -289,13 +289,14 @@ const QuizQuestions = () => {
                 }
                 listItems={[
                   {
-                    title: i18n._('What challenges you face'),
-                    iconName: 'alert-triangle',
-                  },
-                  {
                     title: i18n._('Hobbies or interests'),
                     iconName: 'music',
                   },
+                  {
+                    title: i18n._('What challenges you face'),
+                    iconName: 'alert-triangle',
+                  },
+
                   {
                     title: i18n._('What you want to achieve'),
                     iconName: 'flag',
