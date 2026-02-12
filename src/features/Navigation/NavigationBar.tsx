@@ -85,7 +85,7 @@ export const NavigationBar: React.FC = () => {
           title: i18n._('Community'),
           badge:
             chatList.myUnreadCount +
-            chatList.unreadCountGlobal +
+            //chatList.unreadCountGlobal +
             battles.countOfBattlesNeedToAttention,
         },
         {
