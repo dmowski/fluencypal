@@ -275,13 +275,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                     tooltip: i18n._('Get unlimited access to AI-powered language practice'),
                     icon: Swords,
                   },
-                  {
-                    title: i18n._('Debates and discussions'),
-                    tooltip: i18n._(
-                      'Engage in real-life conversations like job interviews or ordering food',
-                    ),
-                    icon: UsersRound,
-                  },
+
                   {
                     title: i18n._('Vocabulary challenges'),
                     tooltip: i18n._('Improve fluency with interactive chat sessions'),
@@ -353,6 +347,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                     ),
                     icon: UsersRound,
                   },
+
                   {
                     title: i18n._('Conversation practice'),
                     tooltip: i18n._('Improve fluency with interactive chat sessions'),
@@ -379,6 +374,11 @@ export const PricePage = ({ lang }: PricePageProps) => {
                       'With time, AI will adapt to your learning style and it will be more personalized',
                     ),
                     icon: Lightbulb,
+                  },
+                  {
+                    title: i18n._('Community access'),
+                    tooltip: i18n._('Engage with the community and participate in discussions'),
+                    icon: UsersRound,
                   },
                 ]}
                 buttonTitle={i18n._('Start')}
@@ -462,6 +462,11 @@ export const PricePage = ({ lang }: PricePageProps) => {
                       'With time, AI will adapt to your learning style and it will be more personalized',
                     ),
                     icon: Lightbulb,
+                  },
+                  {
+                    title: i18n._('Community access'),
+                    tooltip: i18n._('Engage with the community and participate in discussions'),
+                    icon: UsersRound,
                   },
                 ]}
                 buttonTitle={i18n._('Start')}

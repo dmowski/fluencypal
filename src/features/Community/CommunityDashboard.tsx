@@ -22,11 +22,14 @@ import { useChatList } from '../Chat/useChatList';
 import { useLingui } from '@lingui/react';
 import { useBattle } from '../Game/Battle/useBattle';
 import { DashboardBlur } from '../Dashboard/DashboardBlur';
+import { AccessBadge } from '../Dashboard/AccessBadge';
+import { useAccess } from '../Usage/useAccess';
 
 export const CommunityDashboard = () => {
   const chatList = useChatList();
   const { i18n } = useLingui();
   const battles = useBattle();
+  const access = useAccess();
 
   const [activePage, setActivePage] = useUrlState<CommunityPage | ''>('section', '', false);
 
@@ -78,6 +81,16 @@ export const CommunityDashboard = () => {
                 {i18n._('Community Hub')}
               </Typography>
 
+              {!access.isFullAppAccess && (
+                <AccessBadge
+                  title={i18n._('You’re in preview mode')}
+                  subTitle={i18n._(
+                    'Unlock unlimited speaking practice, all AI features and community access.',
+                  )}
+                  buttonTitle={i18n._('Unlock Full Access')}
+                />
+              )}
+
               <Stack
                 sx={{
                   display: 'grid',
@@ -99,18 +112,24 @@ export const CommunityDashboard = () => {
                   onClick={() => setActivePage('chat')}
                   badgeNumber={chatList.unreadCountGlobal}
                   icon={<Newspaper style={iconStyle} />}
+                  isLocked={!access.isFullAppAccess}
+                  onLockedClick={() => access.showPaymentModal()}
                 />
                 <CommunityCard
                   title={i18n._('Game')}
                   onClick={() => setActivePage('game')}
                   badgeNumber={0}
                   icon={<Swords style={iconStyle} />}
+                  isLocked={false}
+                  onLockedClick={() => access.showPaymentModal()}
                 />
 
                 <CommunityCard
                   title={i18n._('Tech Support')}
                   onClick={() => setActivePage('tech-support')}
                   icon={<SupportAgentIcon style={iconStyle} />}
+                  isLocked={false}
+                  onLockedClick={() => access.showPaymentModal()}
                 />
 
                 <CommunityCard
@@ -118,24 +137,32 @@ export const CommunityDashboard = () => {
                   badgeNumber={battles.countOfBattlesNeedToAttention}
                   onClick={() => setActivePage('debates')}
                   icon={<UsersRound style={iconStyle} />}
+                  isLocked={!access.isFullAppAccess}
+                  onLockedClick={() => access.showPaymentModal()}
                 />
 
                 <CommunityCard
                   title={i18n._('Daily Questions')}
                   onClick={() => setActivePage('daily-questions')}
                   icon={<PsychologyIcon style={iconStyle} />}
+                  isLocked={!access.isFullAppAccess}
+                  onLockedClick={() => access.showPaymentModal()}
                 />
 
                 <CommunityCard
                   title={i18n._('Leaderboards')}
                   onClick={() => setActivePage('leaderboards')}
                   icon={<Crown style={iconStyle} />}
+                  isLocked={false}
+                  onLockedClick={() => access.showPaymentModal()}
                 />
                 <CommunityCard
                   title={i18n._('Private Messages')}
                   onClick={() => setActivePage('dm')}
                   badgeNumber={chatList.myUnreadCount}
                   icon={<Mail style={iconStyle} />}
+                  isLocked={!access.isFullAppAccess}
+                  onLockedClick={() => access.showPaymentModal()}
                 />
               </Stack>
             </Stack>

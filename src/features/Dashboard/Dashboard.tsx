@@ -71,7 +71,9 @@ export function Dashboard({ lang }: DashboardProps) {
               {!access.isFullAppAccess && (
                 <AccessBadge
                   title={i18n._('You’re in preview mode')}
-                  subTitle={i18n._('Unlock unlimited speaking practice and all AI features.')}
+                  subTitle={i18n._(
+                    'Unlock unlimited speaking practice, all AI features and community access.',
+                  )}
                   buttonTitle={i18n._('Unlock Full Access')}
                 />
               )}
