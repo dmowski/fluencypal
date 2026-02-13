@@ -9,7 +9,7 @@ import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './splitTextIntoSentences';
 import { TextConstructor } from './TextConstructor';
-import { Loader, Origami, RefreshCw, X } from 'lucide-react';
+import { FlaskConical, Loader, Origami, RefreshCw, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { shuffleArray } from '@/libs/array';
 
@@ -74,6 +74,31 @@ export const TextConstructorStories = () => {
         >
           {i18n._('Practice crafting sentences')}
         </Typography>
+        <Stack
+          sx={{
+            border: '1px solid #96a9fb',
+            color: '#96a9fb',
+            padding: '2px 6px',
+            borderRadius: '7px',
+            flexDirection: 'row',
+            gap: '4px',
+            alignItems: 'center',
+          }}
+        >
+          <FlaskConical size={'12px'} />
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: 1,
+              fontSize: '10px',
+              letterSpacing: '1.2px',
+              fontWeight: 400,
+              textTransform: 'uppercase',
+            }}
+          >
+            Experimental
+          </Typography>
+        </Stack>
       </Stack>
 
       <Stack
