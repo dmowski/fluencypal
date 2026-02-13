@@ -15,6 +15,7 @@ type TextConstructorProps = {
   sentencesTranslates: string[];
   progress: string;
   onContinue: (progress: string) => void;
+  onComplete?: () => void;
 };
 
 export function TextConstructor({
@@ -22,6 +23,7 @@ export function TextConstructor({
   sentencesTranslates,
   progress,
   onContinue,
+  onComplete,
 }: TextConstructorProps) {
   const [wrongWord, setWrongWord] = useState<string | null>(null);
   const { i18n } = useLingui();
@@ -78,15 +80,30 @@ export function TextConstructor({
     });
 
     onContinue(nextProgress);
+    if (onComplete && nextProgress === progress) {
+      onComplete();
+    }
   };
+
+  const progressPercent = useMemo(() => {
+    if (!activePart) {
+      return 0;
+    }
+
+    const totalWords = sentences[activePart.sentenceIndex].split(' ').length;
+    const completedWords =
+      activePart.sentenceIndex * totalWords + activePart.completedWordsInSentence;
+
+    const allWordsCount = sentences.reduce((acc, sentence) => acc + sentence.split(' ').length, 0);
+
+    return Math.round((completedWords / allWordsCount) * 100);
+  }, [activePart, sentences]);
 
   return (
     <Stack
       sx={{
         width: '100%',
-        margin: '0 auto',
         height: '100%',
-        padding: { xs: '16px', sm: '24px' },
         gap: { xs: '16px', sm: '20px' },
         justifyContent: 'flex-end',
         overflow: 'hidden',
@@ -95,7 +112,7 @@ export function TextConstructor({
       <Stack sx={{ gap: { xs: '16px', sm: '20px' } }}>
         <Stack sx={{ gap: '8px' }}>
           <Typography variant="caption" sx={{ opacity: 0.75 }}>
-            {i18n._('Progress')}
+            {i18n._('Progress')}: {progressPercent}%
           </Typography>
           <Typography
             variant="h4"

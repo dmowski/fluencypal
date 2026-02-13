@@ -9,7 +9,7 @@ import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './splitTextIntoSentences';
 import { TextConstructor } from './TextConstructor';
-import { Loader, Origami } from 'lucide-react';
+import { Loader, Origami, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { shuffleArray } from '@/libs/array';
 
@@ -188,13 +188,17 @@ const StoryModal = ({
   const [sentencesTranslates, setSentencesTranslates] = useState<string[]>([]);
 
   const userTargetLanguage = settings.fullLanguageName;
+  const [isCompleted, setIsCompleted] = useState(true);
+  const onComplete = () => {
+    setIsCompleted(true);
+  };
 
   const translator = useTranslate();
   const { i18n } = useLingui();
   const isTranslateAvailable = translator.isTranslateAvailable;
 
   const generateTextBasedOnImage = async (image: ImageDescription) => {
-    const prompt = `Write a short story in ${userTargetLanguage} based on the following image description: ${image.fullImageDescription}. The story should be around 200 words and suitable for language learners.`;
+    const prompt = `Write a short story in ${userTargetLanguage} based on the following image description: ${image.fullImageDescription}. The story should be around 40 words and suitable for language learners.`;
     const generatedText = await ai.generate({
       userMessage: prompt,
       systemMessage: `You are a helpful assistant for language learners. Generate engaging and simple stories based on image descriptions. The story should be in ${userTargetLanguage} and should be easy to understand for someone learning the language. Avoid complex vocabulary and grammar structures, and focus on creating a clear and enjoyable narrative that helps learners practice their reading skills.`,
@@ -304,7 +308,8 @@ const StoryModal = ({
                       textAlign={'center'}
                       sx={{
                         fontWeight: 800,
-                        maxWidth: '600px',
+                        maxWidth: '800px',
+                        textWrap: 'balance',
                       }}
                     >
                       {imageDescription.shortDescription}
@@ -350,6 +355,7 @@ const StoryModal = ({
             >
               <Stack
                 sx={{
+                  width: '100%',
                   maxWidth: '720px',
                   maxHeight: '800px',
                   height: '100%',
@@ -361,7 +367,58 @@ const StoryModal = ({
                   sentencesTranslates={sentencesTranslates}
                   progress={progress}
                   onContinue={setProgress}
+                  onComplete={onComplete}
                 />
+                {isCompleted && (
+                  <Stack
+                    sx={{
+                      width: '100%',
+                      alignItems: 'flex-start',
+                      gap: '20px',
+                    }}
+                  >
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        fontWeight: 800,
+                        marginTop: '20px',
+                      }}
+                    >
+                      {i18n._('Well done! You completed the story.')}
+                    </Typography>
+                    <Stack
+                      sx={{
+                        flexDirection: 'row',
+                        gap: '10px',
+                        alignItems: 'center',
+                        width: '100%',
+                      }}
+                    >
+                      <Button
+                        variant="contained"
+                        color="info"
+                        sx={{
+                          padding: '10px 30px',
+                        }}
+                        onClick={() => onClose()}
+                        endIcon={<Origami size={'20px'} />}
+                      >
+                        {i18n._('Try another image')}
+                      </Button>
+                      <Button
+                        variant="text"
+                        color="info"
+                        sx={{
+                          padding: '10px 30px',
+                        }}
+                        onClick={() => onClose()}
+                        endIcon={<X size={'20px'} />}
+                      >
+                        {i18n._('Close')}
+                      </Button>
+                    </Stack>
+                  </Stack>
+                )}
               </Stack>
               <Stack
                 sx={{
@@ -386,6 +443,7 @@ const StoryModal = ({
                   sx={{
                     position: 'absolute',
                     inset: 0,
+                    opacity: isCompleted ? 0.2 : 1,
                     background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(5, 10, 17) 100%)',
                   }}
                 />
