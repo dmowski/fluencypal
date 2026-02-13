@@ -3,29 +3,35 @@ import { Button, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
 import { ImageDescription, imageDescriptions } from '../Game/ImagesDescriptions';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTextAi } from '../Ai/useTextAi';
 import { useSettings } from '../Settings/useSettings';
-import { shuffleArray } from '@/libs/array';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './splitTextIntoSentences';
 import { TextConstructor } from './TextConstructor';
-import { Loader, Origami, RefreshCw } from 'lucide-react';
+import { Loader, Origami } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { shuffleArray } from '@/libs/array';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
-
   const [selectedImage, setSelectedImage] = useState<ImageDescription | null>(null);
-  const pickRandomImage = (): ImageDescription => {
-    const shuffledImages = shuffleArray(imageDescriptions);
-    return shuffledImages[0];
+
+  const [images, setImages] = useState<ImageDescription[]>([]);
+
+  const initImage = () => {
+    if (images.length > 0) {
+      return;
+    }
+    const randomImages = shuffleArray(imageDescriptions);
+    setImages(randomImages);
   };
 
-  const generateNewImage = () => {
-    const newImage = pickRandomImage();
-    setSelectedImage(newImage);
-  };
+  useEffect(() => {
+    const isWindow = typeof window !== 'undefined';
+    if (!isWindow) return;
+    initImage();
+  }, []);
 
   const closeStory = () => {
     setSelectedImage(null);
@@ -48,22 +54,14 @@ export const TextConstructorStories = () => {
           width: '100%',
           justifyContent: 'space-between',
           flexDirection: 'row',
+          padding: '5px 10px 0px 10px',
+          flexWrap: 'wrap',
         }}
       >
         <Typography
           variant="caption"
           sx={{
             opacity: 0.8,
-            padding: '5px 0 0px 10px',
-          }}
-        >
-          {i18n._('Stories:')}
-        </Typography>
-        <Typography
-          variant="caption"
-          sx={{
-            opacity: 0.8,
-            padding: '5px 0 0px 10px',
           }}
         >
           {i18n._('Practice crafting sentences')}
@@ -102,11 +100,11 @@ export const TextConstructorStories = () => {
               flexDirection: 'row',
               alignItems: 'flex-start',
               gap: '10px',
-              padding: '7px 15px 20px 0px',
+              padding: '7px 15px 20px 7px',
               width: 'max-content',
             }}
           >
-            {imageDescriptions.map((image, index) => {
+            {images.map((image, index) => {
               return (
                 <Stack
                   sx={{
@@ -265,7 +263,6 @@ const StoryModal = ({
         <Stack
           sx={{
             width: '100%',
-            maxWidth: '1000px',
             padding: '0',
             height: '100dvh',
             position: 'relative',
@@ -347,14 +344,25 @@ const StoryModal = ({
                 position: 'relative',
                 height: '100%',
                 width: '100%',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
-              <TextConstructor
-                sentences={sentences}
-                sentencesTranslates={sentencesTranslates}
-                progress={progress}
-                onContinue={setProgress}
-              />
+              <Stack
+                sx={{
+                  maxWidth: '720px',
+                  maxHeight: '800px',
+                  height: '100%',
+                  paddingBottom: '40px',
+                }}
+              >
+                <TextConstructor
+                  sentences={sentences}
+                  sentencesTranslates={sentencesTranslates}
+                  progress={progress}
+                  onContinue={setProgress}
+                />
+              </Stack>
               <Stack
                 sx={{
                   position: 'absolute',
