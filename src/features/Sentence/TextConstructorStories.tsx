@@ -9,7 +9,7 @@ import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './splitTextIntoSentences';
 import { TextConstructor } from './TextConstructor';
-import { Loader, Origami, X } from 'lucide-react';
+import { Loader, Origami, RefreshCw, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { shuffleArray } from '@/libs/array';
 import { sleep } from '@/libs/sleep';
@@ -39,8 +39,6 @@ export const TextConstructorStories = () => {
   };
 
   const onNext = async () => {
-    setSelectedImage(null);
-    await sleep(30);
     const currentIndex = images.findIndex((img) => img.url === selectedImage?.url);
     const nextIndex = (currentIndex + 1) % images.length;
     setSelectedImage(images[nextIndex]);
@@ -350,6 +348,22 @@ const StoryModal = ({
                       endIcon={initializing ? <Loader size={'20px'} /> : <Origami size={'20px'} />}
                     >
                       {initializing ? i18n._('Generating...') : i18n._('Create Story')}
+                    </Button>
+
+                    <Button
+                      sx={{
+                        padding: '10px 30px',
+                        color: '#fff',
+                      }}
+                      variant="text"
+                      color="info"
+                      onClick={() => {
+                        if (initializing) return;
+                        onNext();
+                      }}
+                      endIcon={<RefreshCw size={'20px'} />}
+                    >
+                      {i18n._('New Image')}
                     </Button>
                   </Stack>
                 </Stack>
