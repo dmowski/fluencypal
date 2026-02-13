@@ -4,11 +4,8 @@ export const splitTextIntoSentences = (text: string): string[] => {
   }
 
   const normalizedText = text.replace(/\s+/g, ' ').trim();
-  const sentenceMatches = normalizedText.match(/[^.!?]+(?:[.!?]+(?=\s|$)|$)/g);
+  const sentenceBoundary = /(?<=[.!?]["”’)\]]?)\s+(?=(?:[„"(\[]?[\p{Lu}\d]))/gu;
+  const sentences = normalizedText.split(sentenceBoundary).map((sentence) => sentence.trim()).filter(Boolean);
 
-  if (!sentenceMatches) {
-    return [normalizedText];
-  }
-
-  return sentenceMatches.map((sentence) => sentence.trim()).filter(Boolean);
+  return sentences;
 };
