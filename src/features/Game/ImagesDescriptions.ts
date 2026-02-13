@@ -3,7 +3,7 @@ interface ImageDescriptionShort {
   fullImageDescription: string;
 }
 
-interface ImageDescription {
+export interface ImageDescription {
   shortDescription: string;
   fullImageDescription: string;
   url: string;

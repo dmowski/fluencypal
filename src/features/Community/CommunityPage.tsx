@@ -10,6 +10,7 @@ import { DailyQuestionBadge } from '../Game/DailyQuestion/DailyQuestionBadge';
 import { SupportPage } from './SupportPage';
 import { PageContainer } from './PageContainer';
 import { useUrlState } from '../Url/useUrlState';
+import { TextConstructorSection } from '../Sentence/TextConstructorSection';
 
 export const CommunityPageRouter = ({
   activePage,
@@ -31,6 +32,7 @@ export const CommunityPageRouter = ({
     'daily-questions': i18n._('Daily Questions'),
     'tech-support': i18n._('Tech Support'),
     leaderboards: i18n._('Leaderboards'),
+    'sentence-constructor': i18n._('Sentence Constructor'),
   };
 
   const isShowHeader = !activeChatPost && !activeChatId;
@@ -84,6 +86,7 @@ const CommunityPageContent = ({ activePage }: { activePage: CommunityPage }) => 
       </PageContainer>
     );
   if (activePage == 'leaderboards') return <GameStats />;
+  if (activePage == 'sentence-constructor') return <TextConstructorSection />;
 
   return <></>;
 };
