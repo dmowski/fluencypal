@@ -21,6 +21,7 @@ import { AccessBadge } from './AccessBadge';
 import { JustTalkCard } from './JustTalkCard';
 import { PreviewCard } from '../Chat/Message/PreviewCard';
 import { StreaksDaysBadge } from './StreaksDaysBadge';
+import { TextConstructorStories } from '../Sentence/TextConstructorStories';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -67,6 +68,7 @@ export function Dashboard({ lang }: DashboardProps) {
           {appNavigation.currentPage === 'home' && (
             <>
               <JustTalkCard />
+              <TextConstructorStories />
 
               {!access.isFullAppAccess && (
                 <AccessBadge

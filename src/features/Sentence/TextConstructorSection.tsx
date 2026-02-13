@@ -24,6 +24,7 @@ export function TextConstructorSection() {
     const shuffledImages = shuffleArray(imageDescriptions);
     return shuffledImages[0];
   };
+
   const [imageToday, setImageToday] = useState<ImageDescription>(pickRandomImage());
 
   const generateNewImage = () => {

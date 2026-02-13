@@ -8,19 +8,7 @@ import {
   getActiveSentencePart,
 } from './textConstructor.utils';
 import { useLingui } from '@lingui/react';
-
-const createSeededRandom = (seedSource: string): (() => number) => {
-  let seed = 0;
-
-  for (let index = 0; index < seedSource.length; index += 1) {
-    seed = (seed * 31 + seedSource.charCodeAt(index)) >>> 0;
-  }
-
-  return () => {
-    seed = (seed * 1664525 + 1013904223) >>> 0;
-    return seed / 4294967296;
-  };
-};
+import { createSeededRandom } from './createSeededRandom';
 
 type TextConstructorProps = {
   sentences: string[];
@@ -96,9 +84,8 @@ export function TextConstructor({
     <Stack
       sx={{
         width: '100%',
-        maxWidth: 720,
         margin: '0 auto',
-        height: '700px',
+        height: '100%',
         padding: { xs: '16px', sm: '24px' },
         gap: { xs: '16px', sm: '20px' },
         justifyContent: 'flex-end',
