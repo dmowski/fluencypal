@@ -16,6 +16,7 @@ type TextConstructorProps = {
   progress: string;
   onContinue: (progress: string) => void;
   onComplete?: () => void;
+  onPlayAudio?: (audioText: string) => void;
 };
 
 export function TextConstructor({
@@ -24,6 +25,7 @@ export function TextConstructor({
   progress,
   onContinue,
   onComplete,
+  onPlayAudio,
 }: TextConstructorProps) {
   const [wrongWord, setWrongWord] = useState<string | null>(null);
   const { i18n } = useLingui();
@@ -75,6 +77,8 @@ export function TextConstructor({
       setWrongWord(word);
       return;
     }
+
+    onPlayAudio?.(activePart.nextWord);
 
     const nextProgress = constructFinalProgress({
       progress,

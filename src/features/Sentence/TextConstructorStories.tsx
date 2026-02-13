@@ -12,6 +12,9 @@ import { TextConstructor } from './TextConstructor';
 import { FlaskConical, Loader, Origami, RefreshCw, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { shuffleArray } from '@/libs/array';
+import { useConversationAudio } from '../Audio/useConversationAudio';
+import { getAiVoiceByVoice } from '../Conversation/CallMode/voiceAvatar';
+import { getVoiceSpeedInstruction } from '../Conversation/CallMode/voiceSpeed';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
@@ -218,6 +221,11 @@ const StoryModal = ({
   const [progress, setProgress] = useState('');
   const ai = useTextAi();
   const settings = useSettings();
+  const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
+  const voiceInfo = getAiVoiceByVoice(voiceName);
+
+  const voiceSpeed = settings.userSettings?.teacherVoiceSpeed || 'normal';
+
   const [sentences, setSentences] = useState<string[]>([]);
   const [sentencesTranslates, setSentencesTranslates] = useState<string[]>([]);
 
@@ -227,6 +235,8 @@ const StoryModal = ({
     setIsCompleted(true);
   };
 
+  const audio = useConversationAudio();
+
   useEffect(() => {
     setProgress('');
     setSentences([]);
@@ -235,6 +245,7 @@ const StoryModal = ({
   }, [imageDescription]);
 
   const translator = useTranslate();
+
   const { i18n } = useLingui();
   const isTranslateAvailable = translator.isTranslateAvailable;
 
@@ -265,6 +276,7 @@ const StoryModal = ({
   const [isReady, setIsReady] = useState(false);
   const initialize = async () => {
     if (!imageToday) return;
+    audio.startConversationAudio();
     setInitializing(true);
     const generatedText = await generateTextBasedOnImage(imageToday);
     console.log('generatedText', generatedText);
@@ -278,6 +290,13 @@ const StoryModal = ({
     setInitializing(false);
   };
   const imageToday = imageDescription;
+
+  const playAudio = (text: string) => {
+    audio.speak(text, {
+      voice: voiceName,
+      instructions: `${getVoiceSpeedInstruction(voiceSpeed)} ${voiceInfo.voiceInstruction}`.trim(),
+    });
+  };
 
   const imageBg = (
     <Image
@@ -426,6 +445,7 @@ const StoryModal = ({
                   progress={progress}
                   onContinue={setProgress}
                   onComplete={onComplete}
+                  //onPlayAudio={playAudio}
                 />
                 {isCompleted && (
                   <Stack

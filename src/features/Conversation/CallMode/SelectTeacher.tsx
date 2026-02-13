@@ -67,7 +67,8 @@ export const AvatarCard = ({
   const audio = useConversationAudio();
   const [isPlayingThisVoice, setIsPlayingThisVoice] = useState(false);
 
-  const voiceInstructionWithSpeed = `${getVoiceSpeedInstruction(voiceSpeed)} ${aiAvatar.voiceInstruction} `;
+  const voiceInstructionWithSpeed =
+    `${getVoiceSpeedInstruction(voiceSpeed)} ${aiAvatar.voiceInstruction}`.trim();
   return (
     <Stack
       sx={{

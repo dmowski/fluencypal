@@ -7,7 +7,6 @@ import { useUsage } from '../Usage/useUsage';
 import { SubscriptionPaymentModal } from '../Usage/Subscription/SubscriptionPaymentModal';
 import { useAuth } from '../Auth/useAuth';
 import { TeacherVoiceModal } from './TeacherVoiceModal';
-import { useAccess } from '../Usage/useAccess';
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();
