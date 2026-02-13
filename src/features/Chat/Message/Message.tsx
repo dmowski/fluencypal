@@ -16,6 +16,7 @@ import { ThreadsMessage } from '../type';
 import { useEffect, useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import dayjs from 'dayjs';
 import { useLingui } from '@lingui/react';
 import { useChat } from '../useChat';
@@ -28,6 +29,7 @@ import { UserName } from '../../User/UserName';
 import { Attachments } from './Attachments';
 import { MessageContent } from './MessageContent';
 import { MessageFooter } from './MessageFooter';
+import { ReportMessageModal } from './ReportMessageModal';
 
 const limitMessages = 300;
 
@@ -122,6 +124,8 @@ export function Message({
   const chainHeight = `calc(100% - ${avatarSize} - 20px)`;
 
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
+  const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+  const [isReporting, setIsReporting] = useState(false);
 
   const [translation, setTranslation] = useState<string | null>(null);
   const [isShowTranslation, setIsShowTranslation] = useState(false);
@@ -149,6 +153,9 @@ export function Message({
   };
 
   const contentToShow = isShowTranslation && translation ? translation : message.content;
+  const isHardReported = message.isReported === 'hard';
+  const hiddenContent = i18n._('Message hidden due to policy violation.');
+  const contentToRender = isHardReported ? hiddenContent : contentToShow;
   const lastVisit = game.gameLastVisit ? game.gameLastVisit[message.senderId] : null;
   const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), 'minute') < 5 : false;
 
@@ -176,6 +183,25 @@ export function Message({
     setIsDeleting(true);
     await chat.deleteMessageAttachment(message.id, attachmentIndex);
     setIsDeleting(false);
+  };
+
+  const onOpenReport = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    setMenuAnchorEl(null);
+    e.preventDefault();
+    e.stopPropagation();
+    setIsReportModalOpen(true);
+  };
+
+  const onSubmitReport = async (option: { label: string; level: 'soft' | 'hard' }) => {
+    setIsReporting(true);
+    await chat.reportMessage({
+      messageId: message.id,
+      reason: option.label,
+      level: option.level,
+    });
+    setIsReporting(false);
+    setIsReportModalOpen(false);
+    window.alert(i18n._('Report submitted. Thank you. We will review your request.'));
   };
 
   return (
@@ -257,7 +283,7 @@ export function Message({
             </Button>
           </Stack>
 
-          {message.attachments && message.attachments.length > 0 && (
+          {!isHardReported && message.attachments && message.attachments.length > 0 && (
             <Stack sx={{}}>
               <Attachments
                 attachments={message.attachments}
@@ -334,7 +360,7 @@ export function Message({
               </Stack>
             )}
 
-            {isOwnMessage && (
+            {!isDeleted && (
               <Stack
                 sx={{
                   flexDirection: 'row',
@@ -361,23 +387,37 @@ export function Message({
                   open={Boolean(menuAnchorEl)}
                   onClose={() => setMenuAnchorEl(null)}
                 >
-                  <MenuItem onClick={onEdit}>
-                    <ListItemIcon>
-                      <EditIcon />
-                    </ListItemIcon>
-                    <ListItemText>
-                      <Typography>{i18n._('Edit')}</Typography>
-                    </ListItemText>
-                  </MenuItem>
-                  <Divider />
-                  <MenuItem onClick={onDelete}>
-                    <ListItemIcon>
-                      <DeleteIcon color="error" />
-                    </ListItemIcon>
-                    <ListItemText>
-                      <Typography color="error">{i18n._('Delete')}</Typography>
-                    </ListItemText>
-                  </MenuItem>
+                  {isOwnMessage && !isHardReported && (
+                    <MenuItem onClick={onEdit}>
+                      <ListItemIcon>
+                        <EditIcon />
+                      </ListItemIcon>
+                      <ListItemText>
+                        <Typography>{i18n._('Edit')}</Typography>
+                      </ListItemText>
+                    </MenuItem>
+                  )}
+                  {!isOwnMessage && (
+                    <MenuItem onClick={onOpenReport}>
+                      <ListItemIcon>
+                        <ReportGmailerrorredIcon color="warning" />
+                      </ListItemIcon>
+                      <ListItemText>
+                        <Typography>{i18n._('Report')}</Typography>
+                      </ListItemText>
+                    </MenuItem>
+                  )}
+                  {isOwnMessage && <Divider />}
+                  {isOwnMessage && (
+                    <MenuItem onClick={onDelete}>
+                      <ListItemIcon>
+                        <DeleteIcon color="error" />
+                      </ListItemIcon>
+                      <ListItemText>
+                        <Typography color="error">{i18n._('Delete')}</Typography>
+                      </ListItemText>
+                    </MenuItem>
+                  )}
                 </Menu>
               </Stack>
             )}
@@ -398,16 +438,17 @@ export function Message({
               paddingTop: isContentWide ? '20px' : 0,
             }}
           >
-            {contentToShow.length > limitMessages &&
+            {contentToRender.length > limitMessages &&
             !isShowTranslation &&
             !isShowFullContent &&
-            !isFullContentByDefault ? (
+            !isFullContentByDefault &&
+            !isHardReported ? (
               <>
                 <div onClick={() => setIsShowFullContent(!isShowFullContent)}>
                   <MessageContent>
                     {isLimitedMessage
-                      ? contentToShow.slice(0, limitMessages) + '... '
-                      : contentToShow}
+                      ? contentToRender.slice(0, limitMessages) + '... '
+                      : contentToRender}
                   </MessageContent>
                 </div>
                 <Button
@@ -420,12 +461,12 @@ export function Message({
               </>
             ) : (
               <div onClick={onClick}>
-                <MessageContent>{contentToShow}</MessageContent>
+                <MessageContent>{contentToRender}</MessageContent>
               </div>
             )}
           </Typography>
 
-          {message.attachments && message.attachments.length > 0 && (
+          {!isHardReported && message.attachments && message.attachments.length > 0 && (
             <Stack
               sx={{
                 paddingLeft: contentLeftPadding,
@@ -435,7 +476,7 @@ export function Message({
             </Stack>
           )}
 
-          {!isDeleted && (
+          {!isDeleted && !isHardReported && (
             <MessageFooter
               message={message}
               isContentWide={isContentWide}
@@ -467,6 +508,13 @@ export function Message({
           }}
         />
       )}
+
+      <ReportMessageModal
+        isOpen={isReportModalOpen}
+        onClose={() => setIsReportModalOpen(false)}
+        onSubmit={onSubmitReport}
+        isSubmitting={isReporting}
+      />
     </Stack>
   );
 }

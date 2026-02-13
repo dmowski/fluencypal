@@ -34,6 +34,14 @@ interface AddMessageProps {
   attachments: ThreadsMessageAttachment[];
 }
 
+type ChatReportLevel = 'soft' | 'hard';
+
+interface ReportMessageProps {
+  messageId: string;
+  reason: string;
+  level: ChatReportLevel;
+}
+
 interface ChatContextType {
   messages: ThreadsMessage[];
   previewMessages: ThreadsMessage[];
@@ -47,6 +55,7 @@ interface ChatContextType {
   addMessage: (props: AddMessageProps) => Promise<void>;
   deleteMessage: (messageId: string) => Promise<void>;
   editMessage: (messageId: string, newContent: string) => Promise<void>;
+  reportMessage: (props: ReportMessageProps) => Promise<void>;
 
   viewMessage: (message: ThreadsMessage) => Promise<void>;
 
@@ -310,6 +319,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       updatedAtIso: createdAtIso,
       parentMessageId: parentMessageId,
       attachments,
+      isReported: null,
     };
     const messageDoc = doc(messagesRefInternal, newMessage.id);
     await setDoc(messageDoc, newMessage);
@@ -357,6 +367,39 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       updatedAtIso: new Date().toISOString(),
     };
     await setDoc(messageDoc, updatedMessage, { merge: true });
+  };
+
+  const reportMessage = async ({ messageId, reason, level }: ReportMessageProps) => {
+    if (!messagesRef || !userId) return;
+
+    const message = messages.find((msg) => msg.id === messageId);
+    if (!message) return;
+
+    const messageDoc = doc(messagesRef, messageId);
+    await setDoc(
+      messageDoc,
+      {
+        isReported: level,
+      },
+      { merge: true },
+    );
+
+    const attachmentsSummary = (message.attachments || [])
+      .map((attachment) => attachment.url)
+      .join('\n');
+
+    const reportMessageText = [
+      `🚨 Message report (${level.toUpperCase()})`,
+      `Reason: ${reason}`,
+      `SpaceId: ${propsChatMetadata.spaceId}`,
+      `CommentId: ${message.id}`,
+      `SenderId: ${message.senderId}`,
+      `ReportedBy: ${userId}`,
+      `Content: ${message.content}`,
+      attachmentsSummary ? `Attachments:\n${attachmentsSummary}` : 'Attachments: none',
+    ].join('\n');
+
+    await auth.sendTgMessage(reportMessageText);
   };
 
   const deleteMessageAttachment = async (messageId: string, attachmentIndex: number) => {
@@ -444,6 +487,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     topLevelMessages,
     messagesLikes,
     editMessage,
+    reportMessage,
     unreadMessagesCount: unreadMessagesCount,
     viewMessage,
     commentsInfo,

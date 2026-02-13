@@ -60,4 +60,6 @@ export interface ThreadsMessage {
 
   isDeleted?: boolean;
   attachments?: ThreadsMessageAttachment[];
+
+  isReported: 'soft' | 'hard' | null;
 }
