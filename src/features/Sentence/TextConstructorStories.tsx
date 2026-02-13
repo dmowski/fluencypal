@@ -261,7 +261,7 @@ const StoryModal = ({
   const isTranslateAvailable = translator.isTranslateAvailable;
 
   const generateTextBasedOnImage = async (image: ImageDescription) => {
-    const prompt = `Write a short story in ${userTargetLanguage} based on the following image description: ${image.fullImageDescription}. The story should be around 140 words and suitable for language learners.`;
+    const prompt = `Write a short story in ${userTargetLanguage} based on the following image description: ${image.fullImageDescription}. The story should be around 120 words and suitable for language learners.`;
     const generatedText = await ai.generate({
       userMessage: prompt,
       systemMessage: `You are a helpful assistant for language learners. Generate engaging and simple stories based on image descriptions. The story should be in ${userTargetLanguage} and should be easy to understand for someone learning the language. Avoid complex vocabulary and grammar structures, and focus on creating a clear and enjoyable narrative that helps learners practice their reading skills.`,
