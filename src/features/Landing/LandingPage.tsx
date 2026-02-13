@@ -196,7 +196,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             subTitle2={i18n._(`Build fluency and confidence with daily speaking practice.`)}
             buttonTitle={i18n._(`Start Speaking`)}
             openMyPracticeLinkTitle={i18n._(`Start Speaking`)}
-            buttonHref={`${getUrlStart(lang)}practice`}
+            buttonHref={`${getUrlStart(lang)}quiz`}
             cards={[
               {
                 videoUrl: '/landing/preview/grammar2.webm',
@@ -223,7 +223,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             <WebcamSection
               theme={'gray'}
               id="webcam-section"
-              buttonHref={`${getUrlStart(lang)}practice`}
+              buttonHref={`${getUrlStart(lang)}quiz`}
               data={{
                 type: 'webcamDemo',
                 title: i18n._('Practice Speaking with AI'),
@@ -356,7 +356,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 },
               ]}
               buttonTitle={i18n._(`Start Practicing`)}
-              buttonHref={`${getUrlStart(lang)}practice`}
+              buttonHref={`${getUrlStart(lang)}quiz`}
               theme={'dark-red'}
               id={'how-it-works'}
             />
