@@ -195,7 +195,6 @@ const StoryModal = ({
   const ai = useTextAi();
   const settings = useSettings();
   const [sentences, setSentences] = useState<string[]>([]);
-
   const [sentencesTranslates, setSentencesTranslates] = useState<string[]>([]);
 
   const userTargetLanguage = settings.fullLanguageName;
@@ -203,6 +202,13 @@ const StoryModal = ({
   const onComplete = () => {
     setIsCompleted(true);
   };
+
+  useEffect(() => {
+    setProgress('');
+    setSentences([]);
+    setSentencesTranslates([]);
+    setIsCompleted(false);
+  }, [imageDescription]);
 
   const translator = useTranslate();
   const { i18n } = useLingui();
@@ -387,7 +393,7 @@ const StoryModal = ({
                   maxWidth: '720px',
                   maxHeight: '800px',
                   height: '100%',
-                  paddingBottom: '40px',
+                  padding: ' 0 10px 40px 10px',
                 }}
               >
                 <TextConstructor
