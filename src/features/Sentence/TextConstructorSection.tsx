@@ -11,6 +11,7 @@ import { useSettings } from '../Settings/useSettings';
 import Image from 'next/image';
 import { useLingui } from '@lingui/react';
 import { Loader, Origami } from 'lucide-react';
+import { splitTextIntoSentences } from './splitTextIntoSentences';
 
 export function TextConstructorSection() {
   const [progress, setProgress] = useState('');
@@ -40,19 +41,6 @@ export function TextConstructorSection() {
       model: 'gpt-4o',
     });
     return generatedText;
-  };
-
-  const splitTextIntoSentences = (text: string) => {
-    const sentenceEndings = /([.!?])\s+/g;
-    const sentences = text.split(sentenceEndings).reduce((acc: string[], part) => {
-      if (part.match(sentenceEndings)) {
-        acc[acc.length - 1] += part; // Append punctuation to the last sentence
-      } else {
-        acc.push(part); // Start a new sentence
-      }
-      return acc;
-    }, []);
-    return sentences.filter((sentence) => sentence.trim().length > 0);
   };
 
   const translateSentence = async (sentence: string) => {
