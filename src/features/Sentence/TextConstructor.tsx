@@ -9,6 +9,8 @@ import {
 } from './textConstructor.utils';
 import { useLingui } from '@lingui/react';
 import { createSeededRandom } from './createSeededRandom';
+import { Markdown } from '../uiKit/Markdown/Markdown';
+import { useTranslate } from '../Translation/useTranslate';
 
 type TextConstructorProps = {
   sentences: string[];
@@ -112,6 +114,8 @@ export function TextConstructor({
       return;
     }
   }, [activePart, onComplete]);
+  const translator = useTranslate();
+  console.log('translator.isTranslateAvailable', translator.isTranslateAvailable);
 
   return (
     <Stack
@@ -128,20 +132,34 @@ export function TextConstructor({
           <Typography variant="caption" sx={{ opacity: 0.75 }}>
             {i18n._('Progress')}: {progressPercent}%
           </Typography>
-          <Typography
-            variant="h4"
+          {translator.translateModal}
+          <Stack
             className="progress"
             sx={{
-              fontWeight: 700,
-              minHeight: { xs: 56, sm: 76 },
-              fontSize: { xs: 28, sm: 36 },
-              lineHeight: 1.2,
-              wordBreak: 'break-word',
-              textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
+              '* p': {
+                fontWeight: '700 !important',
+                lineHeight: '1.2 !important',
+                textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
+                fontSize: '38px !important',
+                '@media (max-width:600px)': {
+                  fontSize: '28px !important',
+                },
+              },
             }}
           >
-            {progress || '...'}
-          </Typography>
+            <Markdown
+              onWordClick={
+                translator.isTranslateAvailable
+                  ? (word, element) => {
+                      translator.translateWithModal(word, element);
+                    }
+                  : undefined
+              }
+              variant="conversation"
+            >
+              {progress ? `\n${progress}` : '...'}
+            </Markdown>
+          </Stack>
         </Stack>
 
         <Stack sx={{ gap: '8px' }}>
@@ -177,10 +195,13 @@ export function TextConstructor({
               variant="contained"
               color={isWrongWord ? 'error' : 'info'}
               sx={{
+                fontWeight: 500,
                 textTransform: 'none',
-                borderRadius: '12px',
-                minHeight: '44px',
-                fontSize: '16px',
+                //borderRadius: '12px',
+                minHeight: '24px',
+                minWidth: '40px',
+                fontSize: '18px',
+                padding: '5px 20px',
               }}
             >
               {word}
