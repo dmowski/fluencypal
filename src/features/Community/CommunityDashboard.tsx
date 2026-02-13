@@ -1,17 +1,8 @@
 'use client';
 
-import { Badge, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { NavigationBar } from '../Navigation/NavigationBar';
-import {
-  Crown,
-  Mail,
-  MessageCircle,
-  MessagesSquare,
-  Newspaper,
-  ShieldQuestionMark,
-  Swords,
-  UsersRound,
-} from 'lucide-react';
+import { Crown, Mail, Newspaper, Origami, Swords, UsersRound } from 'lucide-react';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import { useUrlState } from '../Url/useUrlState';
@@ -167,7 +158,7 @@ export const CommunityDashboard = () => {
                 <CommunityCard
                   title={i18n._('Sentence Constructor')}
                   onClick={() => setActivePage('sentence-constructor')}
-                  icon={<Mail style={iconStyle} />}
+                  icon={<Origami style={iconStyle} />}
                   isLocked={false}
                   onLockedClick={() => access.showPaymentModal()}
                 />

@@ -10,7 +10,7 @@ import { shuffleArray } from '@/libs/array';
 import { useSettings } from '../Settings/useSettings';
 import Image from 'next/image';
 import { useLingui } from '@lingui/react';
-import { Loader, Origami } from 'lucide-react';
+import { Loader, Origami, RefreshCw } from 'lucide-react';
 import { splitTextIntoSentences } from './splitTextIntoSentences';
 
 export function TextConstructorSection() {
@@ -24,7 +24,12 @@ export function TextConstructorSection() {
     const shuffledImages = shuffleArray(imageDescriptions);
     return shuffledImages[0];
   };
-  const [imageToday] = useState<ImageDescription>(pickRandomImage());
+  const [imageToday, setImageToday] = useState<ImageDescription>(pickRandomImage());
+
+  const generateNewImage = () => {
+    const newImage = pickRandomImage();
+    setImageToday(newImage);
+  };
 
   const [sentencesTranslates, setSentencesTranslates] = useState<string[]>([]);
 
@@ -149,20 +154,41 @@ export function TextConstructorSection() {
                   {i18n._('Press the button below to generate a story based on this image')}
                 </Typography>
               </Stack>
-              <Button
+              <Stack
                 sx={{
-                  padding: '10px 30px',
+                  gap: '10px',
                 }}
-                variant="contained"
-                color="info"
-                onClick={() => {
-                  if (initializing) return;
-                  initialize();
-                }}
-                endIcon={initializing ? <Loader size={'20px'} /> : <Origami size={'20px'} />}
               >
-                {initializing ? i18n._('Generating...') : i18n._('Generate Story')}
-              </Button>
+                <Button
+                  sx={{
+                    padding: '10px 30px',
+                  }}
+                  variant="contained"
+                  color="info"
+                  onClick={() => {
+                    if (initializing) return;
+                    initialize();
+                  }}
+                  endIcon={initializing ? <Loader size={'20px'} /> : <Origami size={'20px'} />}
+                >
+                  {initializing ? i18n._('Generating...') : i18n._('Generate Story')}
+                </Button>
+                <Button
+                  sx={{
+                    padding: '10px 30px',
+                    color: '#fff',
+                  }}
+                  variant="text"
+                  color="info"
+                  onClick={() => {
+                    if (initializing) return;
+                    generateNewImage();
+                  }}
+                  endIcon={<RefreshCw size={'20px'} />}
+                >
+                  {i18n._('Another Image')}
+                </Button>
+              </Stack>
             </Stack>
           </Stack>
         </Stack>
