@@ -1772,6 +1772,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:144
 #: src/features/Header/NeedHelpModal.tsx:104
+#: src/features/Sentence/TextConstructorStories.tsx:451
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1893,7 +1894,7 @@ msgstr "Selesaikan tugas sebelumnya terlebih dahulu"
 msgid "Complete the sentence"
 msgstr "Lengkapkan ayat"
 
-#: src/features/Sentence/TextConstructor.tsx:133
+#: src/features/Sentence/TextConstructor.tsx:153
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Selesai ✅"
@@ -2245,7 +2246,8 @@ msgstr ""
 "selaras dengan tema senario anda. Format yang fleksibel ini membantu anda "
 "menguasai kemahiran komunikasi tepat yang anda perlukan."
 
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "Cipta Cerita"
@@ -4167,7 +4169,7 @@ msgstr "temu duga reka bentuk sistem frontend"
 msgid "Full Access"
 msgstr "Akses Penuh"
 
-#: src/features/Dashboard/Dashboard.tsx:83
+#: src/features/Dashboard/Dashboard.tsx:88
 #. js-lingui-explicit-id
 msgid "Full access - Expiring soon"
 msgstr "Akses penuh - Akan tamat tidak lama lagi"
@@ -4293,7 +4295,8 @@ msgid "Generate more unique lessons"
 msgstr "Hasilkan lebih banyak pelajaran yang unik"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Menghasilkan..."
@@ -7305,7 +7308,8 @@ msgstr "Permainan Baru"
 msgid "New Grammar Rules"
 msgstr "Peraturan Tatabahasa Baharu"
 
-#: src/features/Sentence/TextConstructorSection.tsx:187
+#: src/features/Sentence/TextConstructorSection.tsx:188
+#: src/features/Sentence/TextConstructorStories.tsx:371
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "Imej Baharu"
@@ -8280,6 +8284,11 @@ msgstr ""
 "keyakinan melalui senario main peranan kehidupan sebenar dengan maklumbalas "
 "segera."
 
+#: src/features/Sentence/TextConstructorStories.tsx:75
+#. js-lingui-explicit-id
+msgid "Practice crafting sentences"
+msgstr "Berlatih mencipta ayat"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
 #. js-lingui-explicit-id
 msgid "Practice daily"
@@ -8594,7 +8603,8 @@ msgstr "Menyediakan otak"
 msgid "Preparing your game..."
 msgstr "Sedang menyediakan permainan anda..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:152
+#: src/features/Sentence/TextConstructorSection.tsx:153
+#: src/features/Sentence/TextConstructorStories.tsx:335
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr "Tekan butang di bawah untuk menjana cerita berdasarkan imej ini"
@@ -8694,7 +8704,7 @@ msgstr "Profesional yang beralih dari bidang lain ke kejuruteraan frontend"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/Sentence/TextConstructor.tsx:111
+#: src/features/Sentence/TextConstructor.tsx:125
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "Kemajuan"
@@ -8876,7 +8886,7 @@ msgstr "Pembaca"
 msgid "Reading practice"
 msgstr "Amalan membaca"
 
-#: src/features/Sentence/TextConstructorSection.tsx:149
+#: src/features/Sentence/TextConstructorSection.tsx:150
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "Bersedia untuk cerita baru?"
@@ -9201,7 +9211,7 @@ msgstr "Mengeluarkan data anda..."
 msgid "Rendering Performance"
 msgstr "Prestasi Perenderan"
 
-#: src/features/Dashboard/Dashboard.tsx:91
+#: src/features/Dashboard/Dashboard.tsx:96
 #. js-lingui-explicit-id
 msgid "Renew Now"
 msgstr "Perbaharui Sekarang"
@@ -11316,7 +11326,7 @@ msgstr "Terjemahkan perkataan"
 msgid "Translates"
 msgstr "Terjemahan"
 
-#: src/features/Sentence/TextConstructor.tsx:130
+#: src/features/Sentence/TextConstructor.tsx:145
 #. js-lingui-explicit-id
 msgid "Translation"
 msgstr "Terjemahan"
@@ -11341,6 +11351,11 @@ msgstr "Hari percubaan"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Cuba"
+
+#: src/features/Sentence/TextConstructorStories.tsx:439
+#. js-lingui-explicit-id
+msgid "Try another image"
+msgstr "Cuba imej lain"
 
 #: src/features/Blog/BlogOnePage.tsx:284
 #. js-lingui-explicit-id
@@ -11490,7 +11505,7 @@ msgid "Unlock for 1 year"
 msgstr "Buka selama 1 tahun"
 
 #: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:82
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "Buka Akses Penuh"
@@ -11510,7 +11525,7 @@ msgstr ""
 "khusus untuk matlamat anda."
 
 #: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:74
+#: src/features/Dashboard/Dashboard.tsx:79
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr "Buka kunci latihan bercakap tanpa had, semua ciri AI dan akses komuniti."
@@ -11990,6 +12005,11 @@ msgstr "Selamat Datang ke Persediaan Temuduga Pembangun Frontend Junior Anda"
 #. js-lingui-explicit-id
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "Selamat Datang ke Persiapan Temuduga Pembangun Frontend Kanan Anda"
+
+#: src/features/Sentence/TextConstructorStories.tsx:420
+#. js-lingui-explicit-id
+msgid "Well done! You completed the story."
+msgstr "Tahniah! Anda telah melengkapkan cerita ini."
 
 #: src/features/Landing/PlanLandingBlock.tsx:259
 #. js-lingui-explicit-id
@@ -12952,12 +12972,12 @@ msgstr "Rakan Penunjang Anda"
 msgid "Your transcripts are securely stored in our service"
 msgstr "Transkrip anda disimpan dengan selamat dalam perkhidmatan kami"
 
-#: src/features/Dashboard/Dashboard.tsx:89
+#: src/features/Dashboard/Dashboard.tsx:94
 #. js-lingui-explicit-id
 msgid "Your unlimited access is about to expire soon."
 msgstr "Akses tanpa had anda akan tamat tidak lama lagi."
 
-#: src/features/Dashboard/Dashboard.tsx:86
+#: src/features/Dashboard/Dashboard.tsx:91
 #. js-lingui-explicit-id
 msgid "Your unlimited access is active until {date}"
 msgstr "Akses tanpa had anda aktif sehingga {date}"
@@ -12972,7 +12992,7 @@ msgstr ""
 "tiada siapa yang memberitahu anda bagaimana rupa \"baik\" "
 
 #: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:73
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "Anda berada dalam mod pratonton"

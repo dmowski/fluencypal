@@ -1759,6 +1759,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:144
 #: src/features/Header/NeedHelpModal.tsx:104
+#: src/features/Sentence/TextConstructorStories.tsx:451
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1878,7 +1879,7 @@ msgstr "ทำงานที่ยังไม่เสร็จให้เส
 msgid "Complete the sentence"
 msgstr "ทำให้ประโยคสมบูรณ์"
 
-#: src/features/Sentence/TextConstructor.tsx:133
+#: src/features/Sentence/TextConstructor.tsx:153
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "เสร็จสมบูรณ์ ✅"
@@ -2228,7 +2229,8 @@ msgstr ""
 "รูปแบบที่ยืดหยุ่นนี้จะช่วยให้คุณเชี่ยวชาญทักษะการสื่อสารที่คุณต้องการอย่างแท"
 "้จริง"
 
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "สร้างเรื่องราว"
@@ -4120,7 +4122,7 @@ msgstr "การสัมภาษณ์ออกแบบระบบส่ว
 msgid "Full Access"
 msgstr "เข้าถึงเต็มรูปแบบ"
 
-#: src/features/Dashboard/Dashboard.tsx:83
+#: src/features/Dashboard/Dashboard.tsx:88
 #. js-lingui-explicit-id
 msgid "Full access - Expiring soon"
 msgstr ""
@@ -4254,7 +4256,8 @@ msgid "Generate more unique lessons"
 msgstr "สร้างบทเรียนที่ไม่ซ้ำซ้อนมากขึ้น"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "กำลังสร้าง..."
@@ -7194,7 +7197,8 @@ msgstr "เกมใหม่"
 msgid "New Grammar Rules"
 msgstr "กฎไวยากรณ์ใหม่"
 
-#: src/features/Sentence/TextConstructorSection.tsx:187
+#: src/features/Sentence/TextConstructorSection.tsx:188
+#: src/features/Sentence/TextConstructorStories.tsx:371
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "ภาพใหม่"
@@ -8153,6 +8157,11 @@ msgstr ""
 "ที่ให้บริการตลอด 24 ชั่วโมงและโค้ชการพูด ปรับปรุงความคล่องแคล่ว การออกเสียง "
 "และความมั่นใจผ่านสถานการณ์การจำลองในชีวิตจริงพร้อมข้อเสนอแนะแบบทันที"
 
+#: src/features/Sentence/TextConstructorStories.tsx:75
+#. js-lingui-explicit-id
+msgid "Practice crafting sentences"
+msgstr "ฝึกฝนการสร้างประโยค"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
 #. js-lingui-explicit-id
 msgid "Practice daily"
@@ -8456,7 +8465,8 @@ msgstr "เตรียมสมอง"
 msgid "Preparing your game..."
 msgstr "กำลังเตรียมเกมของคุณ..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:152
+#: src/features/Sentence/TextConstructorSection.tsx:153
+#: src/features/Sentence/TextConstructorStories.tsx:335
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr "กดปุ่มด้านล่างเพื่อสร้างเรื่องราวจากภาพนี้"
@@ -8556,7 +8566,7 @@ msgstr "ผู้เชี่ยวชาญที่เปลี่ยนจา
 msgid "Profile"
 msgstr "โปรไฟล์"
 
-#: src/features/Sentence/TextConstructor.tsx:111
+#: src/features/Sentence/TextConstructor.tsx:125
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "ความก้าวหน้า"
@@ -8740,7 +8750,7 @@ msgstr "ผู้อ่าน"
 msgid "Reading practice"
 msgstr "การฝึกอ่าน"
 
-#: src/features/Sentence/TextConstructorSection.tsx:149
+#: src/features/Sentence/TextConstructorSection.tsx:150
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "พร้อมสำหรับเรื่องราวใหม่หรือยัง?"
@@ -9055,7 +9065,7 @@ msgstr "ลบข้อมูลของคุณ..."
 msgid "Rendering Performance"
 msgstr "ประสิทธิภาพการแสดงผล"
 
-#: src/features/Dashboard/Dashboard.tsx:91
+#: src/features/Dashboard/Dashboard.tsx:96
 #. js-lingui-explicit-id
 msgid "Renew Now"
 msgstr "ต่ออายุเดี๋ยวนี้"
@@ -11151,7 +11161,7 @@ msgstr "แปลคำว่า"
 msgid "Translates"
 msgstr "แปลภาษา"
 
-#: src/features/Sentence/TextConstructor.tsx:130
+#: src/features/Sentence/TextConstructor.tsx:145
 #. js-lingui-explicit-id
 msgid "Translation"
 msgstr "การแปล"
@@ -11176,6 +11186,11 @@ msgstr "วันทดลองใช้"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "ลอง"
+
+#: src/features/Sentence/TextConstructorStories.tsx:439
+#. js-lingui-explicit-id
+msgid "Try another image"
+msgstr "ลองภาพอื่น"
 
 #: src/features/Blog/BlogOnePage.tsx:284
 #. js-lingui-explicit-id
@@ -11325,7 +11340,7 @@ msgid "Unlock for 1 year"
 msgstr "ปลดล็อกเป็นเวลา 1 ปี"
 
 #: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:82
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "ปลดล็อกการเข้าถึงทั้งหมด"
@@ -11345,7 +11360,7 @@ msgstr ""
 "องคุณ"
 
 #: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:74
+#: src/features/Dashboard/Dashboard.tsx:79
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr "ปลดล็อกการฝึกพูดอย่างไม่จำกัด คุณสมบัติ AI ทั้งหมดและการเข้าถึงชุมชน"
@@ -11810,6 +11825,11 @@ msgstr "ยินดีต้อนรับสู่การเตรียม
 #. js-lingui-explicit-id
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "ยินดีต้อนรับสู่การเตรียมตัวสัมภาษณ์สำหรับนักพัฒนาฝั่งหน้าอาวุโสของคุณ"
+
+#: src/features/Sentence/TextConstructorStories.tsx:420
+#. js-lingui-explicit-id
+msgid "Well done! You completed the story."
+msgstr "เยี่ยมมาก! คุณได้เขียนเรื่องราวจนจบแล้ว"
 
 #: src/features/Landing/PlanLandingBlock.tsx:259
 #. js-lingui-explicit-id
@@ -12755,12 +12775,12 @@ msgstr "เพื่อนผู้สนับสนุนของคุณ"
 msgid "Your transcripts are securely stored in our service"
 msgstr "บันทึกการสนทนาของคุณถูกจัดเก็บอย่างปลอดภัยในบริการของเรา"
 
-#: src/features/Dashboard/Dashboard.tsx:89
+#: src/features/Dashboard/Dashboard.tsx:94
 #. js-lingui-explicit-id
 msgid "Your unlimited access is about to expire soon."
 msgstr "การเข้าถึงไม่จำกัดของคุณกำลังจะหมดอายุเร็ว ๆ นี้"
 
-#: src/features/Dashboard/Dashboard.tsx:86
+#: src/features/Dashboard/Dashboard.tsx:91
 #. js-lingui-explicit-id
 msgid "Your unlimited access is active until {date}"
 msgstr "การเข้าถึงแบบไม่จำกัดของคุณจะใช้งานได้จนถึง {date}"
@@ -12775,7 +12795,7 @@ msgstr ""
 "มันควรจะเป็นอย่างไร"
 
 #: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:73
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "คุณอยู่ในโหมดแสดงตัวอย่าง"

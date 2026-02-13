@@ -1682,6 +1682,7 @@ msgstr "명확한 시스템 설계 구조. 마침내 횡설수설하지 않고 �
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:144
 #: src/features/Header/NeedHelpModal.tsx:104
+#: src/features/Sentence/TextConstructorStories.tsx:451
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1801,7 +1802,7 @@ msgstr "이전 작업을 먼저 완료하세요."
 msgid "Complete the sentence"
 msgstr "문장을 완성하세요"
 
-#: src/features/Sentence/TextConstructor.tsx:133
+#: src/features/Sentence/TextConstructor.tsx:153
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "완료됨 ✅"
@@ -2130,7 +2131,8 @@ msgstr ""
 "설정, 캐릭터 및 주요 목표에 대한 간략한 설명을 제공하여 자신의 역할극을 구체화합니다. AI는 여러분의 맞춤형 지침에 따라 조정되며, "
 "시나리오의 주제에 맞는 대화에 참여합니다. 이 유연한 형식은 필요한 정확한 커뮤니케이션 기술을 마스터하는 데 도움을 줍니다."
 
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "스토리 생성하기"
@@ -3886,7 +3888,7 @@ msgstr "프론트엔드 시스템 설계 인터뷰"
 msgid "Full Access"
 msgstr "전체 접근 권한"
 
-#: src/features/Dashboard/Dashboard.tsx:83
+#: src/features/Dashboard/Dashboard.tsx:88
 #. js-lingui-explicit-id
 msgid "Full access - Expiring soon"
 msgstr "Full access - 곧 만료됩니다"
@@ -4008,7 +4010,8 @@ msgid "Generate more unique lessons"
 msgstr "더 많은 독특한 수업을 생성하세요"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "생성 중..."
@@ -6723,7 +6726,8 @@ msgstr "새 게임"
 msgid "New Grammar Rules"
 msgstr "새로운 문법 규칙"
 
-#: src/features/Sentence/TextConstructorSection.tsx:187
+#: src/features/Sentence/TextConstructorSection.tsx:188
+#: src/features/Sentence/TextConstructorStories.tsx:371
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "새 이미지"
@@ -7645,6 +7649,11 @@ msgstr ""
 "대화형 영어를 FluencyPal과 함께 연습하세요. 당신의 24시간 AI 영어 튜터이자 말하기 코치입니다. 실시간 피드백을 통해 실제 "
 "역할극 시나리오를 통해 유창함, 발음 및 자신감을 향상시켜 보세요."
 
+#: src/features/Sentence/TextConstructorStories.tsx:75
+#. js-lingui-explicit-id
+msgid "Practice crafting sentences"
+msgstr "문장 만들기 연습"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
 #. js-lingui-explicit-id
 msgid "Practice daily"
@@ -7918,7 +7927,8 @@ msgstr "두뇌 준비하기"
 msgid "Preparing your game..."
 msgstr "게임을 준비 중입니다..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:152
+#: src/features/Sentence/TextConstructorSection.tsx:153
+#: src/features/Sentence/TextConstructorStories.tsx:335
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr "아래 버튼을 눌러 이 이미지를 바탕으로 이야기를 생성하세요."
@@ -8018,7 +8028,7 @@ msgstr "다른 분야에서 프론트엔드 엔지니어링으로 전환하는 �
 msgid "Profile"
 msgstr "프로필"
 
-#: src/features/Sentence/TextConstructor.tsx:111
+#: src/features/Sentence/TextConstructor.tsx:125
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "진행"
@@ -8197,7 +8207,7 @@ msgstr "리더"
 msgid "Reading practice"
 msgstr "리딩 연습"
 
-#: src/features/Sentence/TextConstructorSection.tsx:149
+#: src/features/Sentence/TextConstructorSection.tsx:150
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "새로운 이야기를 들을 준비가 되었나요?"
@@ -8504,7 +8514,7 @@ msgstr "데이터를 제거 중..."
 msgid "Rendering Performance"
 msgstr "렌더링 성능"
 
-#: src/features/Dashboard/Dashboard.tsx:91
+#: src/features/Dashboard/Dashboard.tsx:96
 #. js-lingui-explicit-id
 msgid "Renew Now"
 msgstr "지금 갱신하기"
@@ -10508,7 +10518,7 @@ msgstr "단어를 번역하십시오"
 msgid "Translates"
 msgstr "번역"
 
-#: src/features/Sentence/TextConstructor.tsx:130
+#: src/features/Sentence/TextConstructor.tsx:145
 #. js-lingui-explicit-id
 msgid "Translation"
 msgstr "번역"
@@ -10533,6 +10543,11 @@ msgstr "시험 이용 기간"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "시도하다"
+
+#: src/features/Sentence/TextConstructorStories.tsx:439
+#. js-lingui-explicit-id
+msgid "Try another image"
+msgstr "다른 이미지를 시도하세요"
 
 #: src/features/Blog/BlogOnePage.tsx:284
 #. js-lingui-explicit-id
@@ -10682,7 +10697,7 @@ msgid "Unlock for 1 year"
 msgstr "1년 동안 잠금 해제"
 
 #: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:82
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "전체 액세스 잠금 해제"
@@ -10700,7 +10715,7 @@ msgid ""
 msgstr "인간과 같은 음성 대화와 귀하의 목표에 맞춘 커리큘럼을 잠금 해제하세요."
 
 #: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:74
+#: src/features/Dashboard/Dashboard.tsx:79
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr "무제한 말하기 연습, 모든 AI 기능 및 커뮤니티 접근을 잠금 해제하세요."
@@ -11141,6 +11156,11 @@ msgstr "주니어 프론트엔드 개발자 인터뷰 준비에 오신 것을 �
 #. js-lingui-explicit-id
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "당신의 시니어 프론트엔드 개발자 면접 준비에 오신 것을 환영합니다"
+
+#: src/features/Sentence/TextConstructorStories.tsx:420
+#. js-lingui-explicit-id
+msgid "Well done! You completed the story."
+msgstr "잘했어요! 이야기를 완성했습니다."
 
 #: src/features/Landing/PlanLandingBlock.tsx:259
 #. js-lingui-explicit-id
@@ -12012,12 +12032,12 @@ msgstr "당신의 지원자 친구"
 msgid "Your transcripts are securely stored in our service"
 msgstr "당신의 성적 증명서는 저희 서비스에 안전하게 저장됩니다."
 
-#: src/features/Dashboard/Dashboard.tsx:89
+#: src/features/Dashboard/Dashboard.tsx:94
 #. js-lingui-explicit-id
 msgid "Your unlimited access is about to expire soon."
 msgstr "무제한 액세스가 곧 만료됩니다."
 
-#: src/features/Dashboard/Dashboard.tsx:86
+#: src/features/Dashboard/Dashboard.tsx:91
 #. js-lingui-explicit-id
 msgid "Your unlimited access is active until {date}"
 msgstr "귀하의 무제한 액세스는 {date}까지 활성화되어 있습니다."
@@ -12030,7 +12050,7 @@ msgid ""
 msgstr "당신은 **즉석에서 시스템을 설계하라고 요청받지만**, 아무도 \"좋은\" 것이 무엇인지 말해주지 않습니다."
 
 #: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:73
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "프리뷰 모드입니다"

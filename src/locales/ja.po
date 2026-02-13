@@ -1684,6 +1684,7 @@ msgstr "システムデザインの明確な構造。ついに寄り道せずに
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:144
 #: src/features/Header/NeedHelpModal.tsx:104
+#: src/features/Sentence/TextConstructorStories.tsx:451
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1805,7 +1806,7 @@ msgstr "以前のタスクを最初に完了してください。"
 msgid "Complete the sentence"
 msgstr "文章を完成させてください"
 
-#: src/features/Sentence/TextConstructor.tsx:133
+#: src/features/Sentence/TextConstructor.tsx:153
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "完了 ✅"
@@ -2133,7 +2134,8 @@ msgstr ""
 "設定、キャラクター、主要な目的の簡単な説明を提供して、自分自身のロールプレイを作成します。AIはあなたのカスタム指示に適応し、シナリオのテーマに沿った対"
 "話に従事します。この柔軟なフォーマットは、あなたが必要とする正確なコミュニケーションスキルを習得するのに役立ちます。"
 
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "ストーリーを作成"
@@ -3882,7 +3884,7 @@ msgstr "フロントエンドシステム設計面接"
 msgid "Full Access"
 msgstr "フルアクセス"
 
-#: src/features/Dashboard/Dashboard.tsx:83
+#: src/features/Dashboard/Dashboard.tsx:88
 #. js-lingui-explicit-id
 msgid "Full access - Expiring soon"
 msgstr "完全アクセス - まもなく期限切れ"
@@ -4004,7 +4006,8 @@ msgid "Generate more unique lessons"
 msgstr "もっとユニークなレッスンを生成する"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "生成中..."
@@ -6720,7 +6723,8 @@ msgstr "新しいゲーム"
 msgid "New Grammar Rules"
 msgstr "新しい文法ルール"
 
-#: src/features/Sentence/TextConstructorSection.tsx:187
+#: src/features/Sentence/TextConstructorSection.tsx:188
+#: src/features/Sentence/TextConstructorStories.tsx:371
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "新しい画像"
@@ -7642,6 +7646,11 @@ msgstr ""
 "時間年中無休のAI英語チューターおよびスピーキングコーチです。リアルなロールプレイシナリオを通じて、流暢さ、発音、自信を即時フィードバックで向上させまし"
 "ょう。"
 
+#: src/features/Sentence/TextConstructorStories.tsx:75
+#. js-lingui-explicit-id
+msgid "Practice crafting sentences"
+msgstr "文を作成する練習"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
 #. js-lingui-explicit-id
 msgid "Practice daily"
@@ -7914,7 +7923,8 @@ msgstr "脳を準備する"
 msgid "Preparing your game..."
 msgstr "ゲームの準備中..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:152
+#: src/features/Sentence/TextConstructorSection.tsx:153
+#: src/features/Sentence/TextConstructorStories.tsx:335
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr "この画像に基づいてストーリーを生成するには、下のボタンを押してください"
@@ -8018,7 +8028,7 @@ msgstr "他の分野からフロントエンドエンジニアリングに転職
 msgid "Profile"
 msgstr "プロフィール"
 
-#: src/features/Sentence/TextConstructor.tsx:111
+#: src/features/Sentence/TextConstructor.tsx:125
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "進捗"
@@ -8199,7 +8209,7 @@ msgstr "リーダー"
 msgid "Reading practice"
 msgstr "リーディング練習"
 
-#: src/features/Sentence/TextConstructorSection.tsx:149
+#: src/features/Sentence/TextConstructorSection.tsx:150
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "新しい物語の準備はできましたか？"
@@ -8504,7 +8514,7 @@ msgstr "データを削除しています..."
 msgid "Rendering Performance"
 msgstr "レンダリングパフォーマンス"
 
-#: src/features/Dashboard/Dashboard.tsx:91
+#: src/features/Dashboard/Dashboard.tsx:96
 #. js-lingui-explicit-id
 msgid "Renew Now"
 msgstr ""
@@ -10521,7 +10531,7 @@ msgstr "単語を翻訳する"
 msgid "Translates"
 msgstr "翻訳"
 
-#: src/features/Sentence/TextConstructor.tsx:130
+#: src/features/Sentence/TextConstructor.tsx:145
 #. js-lingui-explicit-id
 msgid "Translation"
 msgstr "翻訳"
@@ -10546,6 +10556,11 @@ msgstr "試用日数"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "試してみてください"
+
+#: src/features/Sentence/TextConstructorStories.tsx:439
+#. js-lingui-explicit-id
+msgid "Try another image"
+msgstr "別の画像を試す"
 
 #: src/features/Blog/BlogOnePage.tsx:284
 #. js-lingui-explicit-id
@@ -10695,7 +10710,7 @@ msgid "Unlock for 1 year"
 msgstr "1年間のアンロック"
 
 #: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:82
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "フルアクセスのアンロック"
@@ -10713,7 +10728,7 @@ msgid ""
 msgstr "人間のような音声での会話と、あなたの目標に特化したカリキュラムを解放しましょう。"
 
 #: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:74
+#: src/features/Dashboard/Dashboard.tsx:79
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr "無制限のスピーキング練習、すべてのAI機能、コミュニティへのアクセスをアンロックしましょう。"
@@ -11157,6 +11172,11 @@ msgstr "ジュニアフロントエンド開発者インタビュー準備へよ
 #. js-lingui-explicit-id
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "あなたのシニアフロントエンド開発者面接準備へようこそ"
+
+#: src/features/Sentence/TextConstructorStories.tsx:420
+#. js-lingui-explicit-id
+msgid "Well done! You completed the story."
+msgstr "よくできました！ あなたは物語を完成させました。"
 
 #: src/features/Landing/PlanLandingBlock.tsx:259
 #. js-lingui-explicit-id
@@ -12034,12 +12054,12 @@ msgstr "あなたのサポート役"
 msgid "Your transcripts are securely stored in our service"
 msgstr "あなたの成績証明書は、当サービスで安全に保存されています。"
 
-#: src/features/Dashboard/Dashboard.tsx:89
+#: src/features/Dashboard/Dashboard.tsx:94
 #. js-lingui-explicit-id
 msgid "Your unlimited access is about to expire soon."
 msgstr "あなたの無制限アクセスはまもなく期限切れになります。"
 
-#: src/features/Dashboard/Dashboard.tsx:86
+#: src/features/Dashboard/Dashboard.tsx:91
 #. js-lingui-explicit-id
 msgid "Your unlimited access is active until {date}"
 msgstr "あなたの無制限アクセスは{date}までアクティブです"
@@ -12052,7 +12072,7 @@ msgid ""
 msgstr "その場で**システムを設計する**よう求められますが、「良い」ものが何であるかは誰も教えてくれません"
 
 #: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:73
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "プレビューモードになっています"

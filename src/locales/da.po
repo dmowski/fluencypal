@@ -1749,6 +1749,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:144
 #: src/features/Header/NeedHelpModal.tsx:104
+#: src/features/Sentence/TextConstructorStories.tsx:451
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1870,7 +1871,7 @@ msgstr "Fuldfør først de tidligere opgaver"
 msgid "Complete the sentence"
 msgstr "Fuldfør sætningen"
 
-#: src/features/Sentence/TextConstructor.tsx:133
+#: src/features/Sentence/TextConstructor.tsx:153
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Fuldført ✅"
@@ -2215,7 +2216,8 @@ msgstr ""
 "dit scenariets tema. Dette fleksible format hjælper dig med at mestre de "
 "præcise kommunikationsfærdigheder, du har brug for."
 
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "Opret historie"
@@ -4085,7 +4087,7 @@ msgstr "frontend system design interview"
 msgid "Full Access"
 msgstr "Fuld Adgang"
 
-#: src/features/Dashboard/Dashboard.tsx:83
+#: src/features/Dashboard/Dashboard.tsx:88
 #. js-lingui-explicit-id
 msgid "Full access - Expiring soon"
 msgstr "Fuld adgang - Udløber snart"
@@ -4207,7 +4209,8 @@ msgid "Generate more unique lessons"
 msgstr "Generer flere unikke lektioner"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Genererer..."
@@ -7145,7 +7148,8 @@ msgstr "Nyt spil"
 msgid "New Grammar Rules"
 msgstr "Nye Grammatikregler"
 
-#: src/features/Sentence/TextConstructorSection.tsx:187
+#: src/features/Sentence/TextConstructorSection.tsx:188
+#: src/features/Sentence/TextConstructorStories.tsx:371
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "Nyt Billede"
@@ -8103,6 +8107,11 @@ msgstr ""
 "talecoach. Forbedr flydende, udtale og selvtillid gennem realistiske "
 "rollespilsscenarier med øjeblikkelig feedback."
 
+#: src/features/Sentence/TextConstructorStories.tsx:75
+#. js-lingui-explicit-id
+msgid "Practice crafting sentences"
+msgstr "Øv dig i at skabe sætninger"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
 #. js-lingui-explicit-id
 msgid "Practice daily"
@@ -8406,7 +8415,8 @@ msgstr "Forbereder hjernen"
 msgid "Preparing your game..."
 msgstr "Forbereder dit spil..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:152
+#: src/features/Sentence/TextConstructorSection.tsx:153
+#: src/features/Sentence/TextConstructorStories.tsx:335
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr ""
@@ -8508,7 +8518,7 @@ msgstr "Professionelle, der skifter fra andre områder til frontend-ingeniørarb
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/Sentence/TextConstructor.tsx:111
+#: src/features/Sentence/TextConstructor.tsx:125
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "Fremskridt"
@@ -8690,7 +8700,7 @@ msgstr "Læser"
 msgid "Reading practice"
 msgstr "Læseøvelse"
 
-#: src/features/Sentence/TextConstructorSection.tsx:149
+#: src/features/Sentence/TextConstructorSection.tsx:150
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "Klar til en ny historie?"
@@ -9010,7 +9020,7 @@ msgstr "Fjerner dine data..."
 msgid "Rendering Performance"
 msgstr "Ydeevne ved gengivelse"
 
-#: src/features/Dashboard/Dashboard.tsx:91
+#: src/features/Dashboard/Dashboard.tsx:96
 #. js-lingui-explicit-id
 msgid "Renew Now"
 msgstr "Forny nu"
@@ -11108,7 +11118,7 @@ msgstr "Oversæt ordet"
 msgid "Translates"
 msgstr "Oversætter"
 
-#: src/features/Sentence/TextConstructor.tsx:130
+#: src/features/Sentence/TextConstructor.tsx:145
 #. js-lingui-explicit-id
 msgid "Translation"
 msgstr "Oversættelse"
@@ -11133,6 +11143,11 @@ msgstr "Prøvedage"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Prøv"
+
+#: src/features/Sentence/TextConstructorStories.tsx:439
+#. js-lingui-explicit-id
+msgid "Try another image"
+msgstr "Prøv et andet billede"
 
 #: src/features/Blog/BlogOnePage.tsx:284
 #. js-lingui-explicit-id
@@ -11282,7 +11297,7 @@ msgid "Unlock for 1 year"
 msgstr "Lås op for 1 år"
 
 #: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:82
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "Lås op for fuld adgang"
@@ -11302,7 +11317,7 @@ msgstr ""
 "specifikt til dine mål."
 
 #: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:74
+#: src/features/Dashboard/Dashboard.tsx:79
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr ""
@@ -11767,6 +11782,11 @@ msgstr "Velkommen til din forberedelse til junior frontend-udviklerinterviewet"
 #. js-lingui-explicit-id
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "Velkommen til Din Senior Frontend Udvikler Interview Forberedelse"
+
+#: src/features/Sentence/TextConstructorStories.tsx:420
+#. js-lingui-explicit-id
+msgid "Well done! You completed the story."
+msgstr "Godt klaret! Du har afsluttet historien."
 
 #: src/features/Landing/PlanLandingBlock.tsx:259
 #. js-lingui-explicit-id
@@ -12708,12 +12728,12 @@ msgstr "Din Støttende Ven"
 msgid "Your transcripts are securely stored in our service"
 msgstr "Dine udskrifter er sikkert gemt i vores tjeneste"
 
-#: src/features/Dashboard/Dashboard.tsx:89
+#: src/features/Dashboard/Dashboard.tsx:94
 #. js-lingui-explicit-id
 msgid "Your unlimited access is about to expire soon."
 msgstr "Dit ubegrænsede adgang er ved at udløbe snart."
 
-#: src/features/Dashboard/Dashboard.tsx:86
+#: src/features/Dashboard/Dashboard.tsx:91
 #. js-lingui-explicit-id
 msgid "Your unlimited access is active until {date}"
 msgstr "Din ubegrænsede adgang er aktiv indtil {date}"
@@ -12728,7 +12748,7 @@ msgstr ""
 "dig, hvordan \"godt\" ser ud."
 
 #: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:73
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "Du er i forhåndsvisningstilstand"

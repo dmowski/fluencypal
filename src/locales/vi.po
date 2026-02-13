@@ -1755,6 +1755,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:144
 #: src/features/Header/NeedHelpModal.tsx:104
+#: src/features/Sentence/TextConstructorStories.tsx:451
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1878,7 +1879,7 @@ msgstr "Hoàn thành các nhiệm vụ trước đó trước."
 msgid "Complete the sentence"
 msgstr "Hoàn thành câu "
 
-#: src/features/Sentence/TextConstructor.tsx:133
+#: src/features/Sentence/TextConstructor.tsx:153
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Hoàn thành ✅"
@@ -2222,7 +2223,8 @@ msgstr ""
 "tình huống của bạn. Định dạng linh hoạt này giúp bạn làm chủ các kỹ năng "
 "giao tiếp chính xác mà bạn cần."
 
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "Tạo Câu Chuyện"
@@ -4134,7 +4136,7 @@ msgstr "phỏng vấn thiết kế hệ thống frontend"
 msgid "Full Access"
 msgstr "Truy cập đầy đủ"
 
-#: src/features/Dashboard/Dashboard.tsx:83
+#: src/features/Dashboard/Dashboard.tsx:88
 #. js-lingui-explicit-id
 msgid "Full access - Expiring soon"
 msgstr ""
@@ -4262,7 +4264,8 @@ msgid "Generate more unique lessons"
 msgstr "Tạo thêm nhiều bài học độc đáo"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Đang tạo..."
@@ -7211,7 +7214,8 @@ msgstr "Trò Chơi Mới"
 msgid "New Grammar Rules"
 msgstr "Quy tắc ngữ pháp mới"
 
-#: src/features/Sentence/TextConstructorSection.tsx:187
+#: src/features/Sentence/TextConstructorSection.tsx:188
+#: src/features/Sentence/TextConstructorStories.tsx:371
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "Hình Ảnh Mới"
@@ -8180,6 +8184,11 @@ msgstr ""
 "huấn luyện viên nói chuyện của bạn. Cải thiện sự trôi chảy, phát âm và sự "
 "tự tin thông qua các tình huống đóng vai thực tế với phản hồi ngay lập tức."
 
+#: src/features/Sentence/TextConstructorStories.tsx:75
+#. js-lingui-explicit-id
+msgid "Practice crafting sentences"
+msgstr "Thực hành tạo câu"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
 #. js-lingui-explicit-id
 msgid "Practice daily"
@@ -8493,7 +8502,8 @@ msgstr "Chuẩn bị cho bộ não"
 msgid "Preparing your game..."
 msgstr "Đang chuẩn bị trò chơi của bạn..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:152
+#: src/features/Sentence/TextConstructorSection.tsx:153
+#: src/features/Sentence/TextConstructorStories.tsx:335
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr "Nhấn nút bên dưới để tạo một câu chuyện dựa trên hình ảnh này"
@@ -8593,7 +8603,7 @@ msgstr "Chuyên gia chuyển đổi từ các lĩnh vực khác sang kỹ thuậ
 msgid "Profile"
 msgstr "Hồ sơ"
 
-#: src/features/Sentence/TextConstructor.tsx:111
+#: src/features/Sentence/TextConstructor.tsx:125
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "Tiến độ"
@@ -8777,7 +8787,7 @@ msgstr "Trình đọc"
 msgid "Reading practice"
 msgstr "Thực hành đọc"
 
-#: src/features/Sentence/TextConstructorSection.tsx:149
+#: src/features/Sentence/TextConstructorSection.tsx:150
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "Sẵn sàng cho một câu chuyện mới chưa?"
@@ -9102,7 +9112,7 @@ msgstr "Đang xóa dữ liệu của bạn..."
 msgid "Rendering Performance"
 msgstr "Hiệu Suất Kết Xuất"
 
-#: src/features/Dashboard/Dashboard.tsx:91
+#: src/features/Dashboard/Dashboard.tsx:96
 #. js-lingui-explicit-id
 msgid "Renew Now"
 msgstr "Gia hạn ngay bây giờ"
@@ -11221,7 +11231,7 @@ msgstr "Dịch từ"
 msgid "Translates"
 msgstr "Dịch thuật"
 
-#: src/features/Sentence/TextConstructor.tsx:130
+#: src/features/Sentence/TextConstructor.tsx:145
 #. js-lingui-explicit-id
 msgid "Translation"
 msgstr "Dịch thuật"
@@ -11246,6 +11256,11 @@ msgstr "Ngày dùng thử"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Cố gắng"
+
+#: src/features/Sentence/TextConstructorStories.tsx:439
+#. js-lingui-explicit-id
+msgid "Try another image"
+msgstr "Thử một hình ảnh khác"
 
 #: src/features/Blog/BlogOnePage.tsx:284
 #. js-lingui-explicit-id
@@ -11395,7 +11410,7 @@ msgid "Unlock for 1 year"
 msgstr "Mở khóa trong 1 năm"
 
 #: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:82
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "Mở Khóa Truy Cập Đầy Đủ"
@@ -11415,7 +11430,7 @@ msgstr ""
 "học được thiết kế riêng theo mục tiêu của bạn."
 
 #: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:74
+#: src/features/Dashboard/Dashboard.tsx:79
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr ""
@@ -11893,6 +11908,11 @@ msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr ""
 "Chào mừng bạn đến với Chuẩn bị Phỏng vấn Lập trình viên Giao diện cao cấp "
 "của bạn"
+
+#: src/features/Sentence/TextConstructorStories.tsx:420
+#. js-lingui-explicit-id
+msgid "Well done! You completed the story."
+msgstr "Làm tốt lắm! Bạn đã hoàn thành câu chuyện."
 
 #: src/features/Landing/PlanLandingBlock.tsx:259
 #. js-lingui-explicit-id
@@ -12844,12 +12864,12 @@ msgstr "Người Bạn Ủng Hộ Của Bạn"
 msgid "Your transcripts are securely stored in our service"
 msgstr "Bảng điểm của bạn được lưu trữ an toàn trong dịch vụ của chúng tôi"
 
-#: src/features/Dashboard/Dashboard.tsx:89
+#: src/features/Dashboard/Dashboard.tsx:94
 #. js-lingui-explicit-id
 msgid "Your unlimited access is about to expire soon."
 msgstr "Quyền truy cập không giới hạn của bạn sẽ sớm hết hạn."
 
-#: src/features/Dashboard/Dashboard.tsx:86
+#: src/features/Dashboard/Dashboard.tsx:91
 #. js-lingui-explicit-id
 msgid "Your unlimited access is active until {date}"
 msgstr "Quyền truy cập không giới hạn của bạn hoạt động đến {date}"
@@ -12864,7 +12884,7 @@ msgstr ""
 "bạn biết “tốt” trông như thế nào"
 
 #: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:73
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "Bạn đang ở chế độ xem trước"

@@ -1748,6 +1748,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:144
 #: src/features/Header/NeedHelpModal.tsx:104
+#: src/features/Sentence/TextConstructorStories.tsx:451
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1869,7 +1870,7 @@ msgstr "Slutför tidigare uppgifter först"
 msgid "Complete the sentence"
 msgstr "Fyll i meningen"
 
-#: src/features/Sentence/TextConstructor.tsx:133
+#: src/features/Sentence/TextConstructor.tsx:153
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Avklarad ✅"
@@ -2214,7 +2215,8 @@ msgstr ""
 "linje med temat för ditt scenario. Detta flexibla format hjälper dig att "
 "bemästra just de kommunikationsfärdigheter du behöver."
 
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "Skapa berättelse"
@@ -4101,7 +4103,7 @@ msgstr "frontend system design intervju"
 msgid "Full Access"
 msgstr "Fullständig Åtkomst"
 
-#: src/features/Dashboard/Dashboard.tsx:83
+#: src/features/Dashboard/Dashboard.tsx:88
 #. js-lingui-explicit-id
 msgid "Full access - Expiring soon"
 msgstr "Fullständig åtkomst - Utlöper snart"
@@ -4225,7 +4227,8 @@ msgid "Generate more unique lessons"
 msgstr "Generera fler unika lektioner"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Genererar..."
@@ -7156,7 +7159,8 @@ msgstr "Nytt Spel"
 msgid "New Grammar Rules"
 msgstr "Nya Grammatikregler"
 
-#: src/features/Sentence/TextConstructorSection.tsx:187
+#: src/features/Sentence/TextConstructorSection.tsx:188
+#: src/features/Sentence/TextConstructorStories.tsx:371
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "Ny bild"
@@ -8115,6 +8119,11 @@ msgstr ""
 "talcoach dygnet runt. Förbättra flyt, uttal och självförtroende genom "
 "verkliga rollspelscenarier med omedelbar feedback."
 
+#: src/features/Sentence/TextConstructorStories.tsx:75
+#. js-lingui-explicit-id
+msgid "Practice crafting sentences"
+msgstr "Öva på att skapa meningar"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
 #. js-lingui-explicit-id
 msgid "Practice daily"
@@ -8415,7 +8424,8 @@ msgstr "Förbereder hjärnan"
 msgid "Preparing your game..."
 msgstr "Förbereder ditt spel..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:152
+#: src/features/Sentence/TextConstructorSection.tsx:153
+#: src/features/Sentence/TextConstructorStories.tsx:335
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr "Tryck på knappen nedan för att generera en berättelse baserad på denna bild"
@@ -8515,7 +8525,7 @@ msgstr "Professionella som övergår från andra områden till frontend-utveckli
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/Sentence/TextConstructor.tsx:111
+#: src/features/Sentence/TextConstructor.tsx:125
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "Framsteg"
@@ -8697,7 +8707,7 @@ msgstr "Läsare"
 msgid "Reading practice"
 msgstr "Lästräning"
 
-#: src/features/Sentence/TextConstructorSection.tsx:149
+#: src/features/Sentence/TextConstructorSection.tsx:150
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "Redo för en ny berättelse?"
@@ -9019,7 +9029,7 @@ msgstr "Tar bort dina data..."
 msgid "Rendering Performance"
 msgstr "Renderingprestanda"
 
-#: src/features/Dashboard/Dashboard.tsx:91
+#: src/features/Dashboard/Dashboard.tsx:96
 #. js-lingui-explicit-id
 msgid "Renew Now"
 msgstr "Förnya nu"
@@ -11117,7 +11127,7 @@ msgstr "Översätt ordet"
 msgid "Translates"
 msgstr "Översätter"
 
-#: src/features/Sentence/TextConstructor.tsx:130
+#: src/features/Sentence/TextConstructor.tsx:145
 #. js-lingui-explicit-id
 msgid "Translation"
 msgstr "Översättning"
@@ -11142,6 +11152,11 @@ msgstr "Provdagar"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Försök"
+
+#: src/features/Sentence/TextConstructorStories.tsx:439
+#. js-lingui-explicit-id
+msgid "Try another image"
+msgstr "Försök med en annan bild"
 
 #: src/features/Blog/BlogOnePage.tsx:284
 #. js-lingui-explicit-id
@@ -11291,7 +11306,7 @@ msgid "Unlock for 1 year"
 msgstr "Lås upp i 1 år"
 
 #: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:82
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "Lås upp full åtkomst"
@@ -11311,7 +11326,7 @@ msgstr ""
 "efter dina mål."
 
 #: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:74
+#: src/features/Dashboard/Dashboard.tsx:79
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr "Lås upp obegränsad talövning, alla AI-funktioner och gemenskapsåtkomst."
@@ -11777,6 +11792,11 @@ msgstr "Välkommen till Din Förberedelse för Junior Frontend Utvecklarintervju
 #. js-lingui-explicit-id
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "Välkommen till din förberedelse för intervju som Senior Frontend-utvecklare"
+
+#: src/features/Sentence/TextConstructorStories.tsx:420
+#. js-lingui-explicit-id
+msgid "Well done! You completed the story."
+msgstr "Bra gjort! Du har slutfört berättelsen."
 
 #: src/features/Landing/PlanLandingBlock.tsx:259
 #. js-lingui-explicit-id
@@ -12719,12 +12739,12 @@ msgstr "Din Stöttande Vän"
 msgid "Your transcripts are securely stored in our service"
 msgstr "Dina utskrifter lagras säkert i vår tjänst"
 
-#: src/features/Dashboard/Dashboard.tsx:89
+#: src/features/Dashboard/Dashboard.tsx:94
 #. js-lingui-explicit-id
 msgid "Your unlimited access is about to expire soon."
 msgstr "Din obegränsade åtkomst kommer snart att upphöra."
 
-#: src/features/Dashboard/Dashboard.tsx:86
+#: src/features/Dashboard/Dashboard.tsx:91
 #. js-lingui-explicit-id
 msgid "Your unlimited access is active until {date}"
 msgstr "Ditt obegränsade tillträde är aktivt till {date}"
@@ -12739,7 +12759,7 @@ msgstr ""
 "ett \"bra\" system ser ut"
 
 #: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:73
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "Du är i förhandsgranskningsläge"

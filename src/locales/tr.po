@@ -1749,6 +1749,7 @@ msgstr "Sistem tasarımı için net yapı. Sonunda tavizleri dolandırmadan aç�
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:144
 #: src/features/Header/NeedHelpModal.tsx:104
+#: src/features/Sentence/TextConstructorStories.tsx:451
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1870,7 +1871,7 @@ msgstr "Tamamlayın önceki görevleri önce"
 msgid "Complete the sentence"
 msgstr "Cümleyi tamamla"
 
-#: src/features/Sentence/TextConstructor.tsx:133
+#: src/features/Sentence/TextConstructor.tsx:153
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Tamamlandı ✅"
@@ -2217,7 +2218,8 @@ msgstr ""
 "bulunacaktır. Bu esnek format, ihtiyaç duyduğunuz iletişim becerilerini tam "
 "olarak ustalaşmanıza yardımcı olur."
 
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "Hikaye Oluştur"
@@ -4112,7 +4114,7 @@ msgstr "frontend system tasarım mülakatı"
 msgid "Full Access"
 msgstr "Tam Erişim"
 
-#: src/features/Dashboard/Dashboard.tsx:83
+#: src/features/Dashboard/Dashboard.tsx:88
 #. js-lingui-explicit-id
 msgid "Full access - Expiring soon"
 msgstr "Tam erişim - Yakında sona eriyor"
@@ -4234,7 +4236,8 @@ msgid "Generate more unique lessons"
 msgstr "Daha eşsiz dersler oluşturun"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:172
+#: src/features/Sentence/TextConstructorSection.tsx:173
+#: src/features/Sentence/TextConstructorStories.tsx:355
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Oluşturuluyor..."
@@ -7168,7 +7171,8 @@ msgstr "Yeni Oyun"
 msgid "New Grammar Rules"
 msgstr "Yeni Dilbilgisi Kuralları"
 
-#: src/features/Sentence/TextConstructorSection.tsx:187
+#: src/features/Sentence/TextConstructorSection.tsx:188
+#: src/features/Sentence/TextConstructorStories.tsx:371
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "Yeni Resim"
@@ -8132,6 +8136,11 @@ msgstr ""
 "öğretmeniniz ve konuşma koçunuz. Gerçek yaşam rol oynama senaryoları ile "
 "akıcılığı, telaffuzu ve güveni anlık geri bildirim ile geliştirin."
 
+#: src/features/Sentence/TextConstructorStories.tsx:75
+#. js-lingui-explicit-id
+msgid "Practice crafting sentences"
+msgstr "Cümleler kurma pratiği yapın"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
 #. js-lingui-explicit-id
 msgid "Practice daily"
@@ -8440,7 +8449,8 @@ msgstr "Beyni hazırlama"
 msgid "Preparing your game..."
 msgstr "Oyunuz hazırlanıyor..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:152
+#: src/features/Sentence/TextConstructorSection.tsx:153
+#: src/features/Sentence/TextConstructorStories.tsx:335
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr "Aşağıdaki butona basarak bu görsele dayalı bir hikaye oluşturun."
@@ -8540,7 +8550,7 @@ msgstr "Diğer alanlardan ön uç mühendisliğine geçiş yapan profesyoneller"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/Sentence/TextConstructor.tsx:111
+#: src/features/Sentence/TextConstructor.tsx:125
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "İlerleme"
@@ -8720,7 +8730,7 @@ msgstr "Okuyucu"
 msgid "Reading practice"
 msgstr "Okuma pratiği"
 
-#: src/features/Sentence/TextConstructorSection.tsx:149
+#: src/features/Sentence/TextConstructorSection.tsx:150
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "Yeni bir hikayeye hazır mısınız?"
@@ -9041,7 +9051,7 @@ msgstr "Verileriniz kaldırılıyor..."
 msgid "Rendering Performance"
 msgstr "Rendering Performansı"
 
-#: src/features/Dashboard/Dashboard.tsx:91
+#: src/features/Dashboard/Dashboard.tsx:96
 #. js-lingui-explicit-id
 msgid "Renew Now"
 msgstr "Yenile"
@@ -11153,7 +11163,7 @@ msgstr "Kelimeyi çevir"
 msgid "Translates"
 msgstr "Çeviriler"
 
-#: src/features/Sentence/TextConstructor.tsx:130
+#: src/features/Sentence/TextConstructor.tsx:145
 #. js-lingui-explicit-id
 msgid "Translation"
 msgstr "Çeviri"
@@ -11178,6 +11188,11 @@ msgstr "Deneme günleri"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Denemek"
+
+#: src/features/Sentence/TextConstructorStories.tsx:439
+#. js-lingui-explicit-id
+msgid "Try another image"
+msgstr "Başka bir resim deneyin"
 
 #: src/features/Blog/BlogOnePage.tsx:284
 #. js-lingui-explicit-id
@@ -11327,7 +11342,7 @@ msgid "Unlock for 1 year"
 msgstr "1 yıl boyunca kilidi aç"
 
 #: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:82
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "Tam Erişimi Aç"
@@ -11347,7 +11362,7 @@ msgstr ""
 "bir müfredatın kilidini açın."
 
 #: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:74
+#: src/features/Dashboard/Dashboard.tsx:79
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr ""
@@ -11817,6 +11832,11 @@ msgstr "Junior Frontend Developer Mülakat Hazırlığı'na Hoş Geldiniz"
 #. js-lingui-explicit-id
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "Kıdemli Frontend Geliştirici Mülakat Hazırlığınıza Hoş Geldiniz"
+
+#: src/features/Sentence/TextConstructorStories.tsx:420
+#. js-lingui-explicit-id
+msgid "Well done! You completed the story."
+msgstr "Aferin! Hikayeyi tamamladınız."
 
 #: src/features/Landing/PlanLandingBlock.tsx:259
 #. js-lingui-explicit-id
@@ -12759,12 +12779,12 @@ msgstr "Destekleyici Arkadaşınız"
 msgid "Your transcripts are securely stored in our service"
 msgstr "Transkriptleriniz hizmetimizde güvenli bir şekilde saklanmaktadır"
 
-#: src/features/Dashboard/Dashboard.tsx:89
+#: src/features/Dashboard/Dashboard.tsx:94
 #. js-lingui-explicit-id
 msgid "Your unlimited access is about to expire soon."
 msgstr "Sınırsız erişiminizin süresi yakında dolacak."
 
-#: src/features/Dashboard/Dashboard.tsx:86
+#: src/features/Dashboard/Dashboard.tsx:91
 #. js-lingui-explicit-id
 msgid "Your unlimited access is active until {date}"
 msgstr "Sınırsız erişiminiz {date} tarihine kadar aktif"
@@ -12779,7 +12799,7 @@ msgstr ""
 "\"iyi\"nin nasıl göründüğünü söylemiyor"
 
 #: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:73
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "Önizleme modundasınız"
