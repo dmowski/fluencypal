@@ -22,7 +22,7 @@ export const CommunityDashboard = () => {
   const battles = useBattle();
   const access = useAccess();
 
-  const [activePage, setActivePage] = useUrlState<CommunityPage | ''>('section', '', false);
+  const [activePage, setActivePage] = useUrlState<CommunityPage | ''>('section', '', true);
 
   const iconStyle = {
     fontSize: 'var(--icon-size)',
