@@ -1017,7 +1017,7 @@ msgstr "Arquitetura & Resiliência"
 msgid "Are there any hidden fees?"
 msgstr "Existem taxas ocultas?"
 
-#: src/features/Chat/Message/Message.tsx:267
+#: src/features/Chat/Message/Message.tsx:293
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
 msgstr "Tem certeza de que deseja excluir este anexo?"
@@ -1029,7 +1029,7 @@ msgstr ""
 "Tem certeza de que deseja excluir este chat? Esta ação não pode ser "
 "desfeita."
 
-#: src/features/Chat/Message/Message.tsx:101
+#: src/features/Chat/Message/Message.tsx:103
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Tem certeza de que deseja excluir esta mensagem?"
@@ -1126,6 +1126,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Auth"
 msgstr "Autenticação"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:64
+#. js-lingui-explicit-id
+msgid "Auto-hide only for severe violations"
+msgstr "Autoocultar apenas para violações graves"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:397
 #. js-lingui-explicit-id
@@ -1521,7 +1526,8 @@ msgstr "Posso usar o FluencyPal de graça?"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:114
 #: src/features/Ai/AiKnowledgeModal.tsx:129
-#: src/features/Chat/Message/Message.tsx:256
+#: src/features/Chat/Message/Message.tsx:282
+#: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #. js-lingui-explicit-id
@@ -2219,7 +2225,7 @@ msgstr ""
 "do seu cenário. Este formato flexível ajuda você a dominar exatamente as "
 "habilidades de comunicação de que precisa."
 
-#: src/features/Sentence/TextConstructorSection.tsx:174
+#: src/features/Sentence/TextConstructorSection.tsx:172
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "Criar História"
@@ -2426,7 +2432,7 @@ msgid "Debates"
 msgstr "Debates"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:113
-#: src/features/Chat/Message/Message.tsx:378
+#: src/features/Chat/Message/Message.tsx:417
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "Excluir"
@@ -2837,6 +2843,11 @@ msgstr "Não deixe que erros te parem."
 msgid "Don’t skip small talk"
 msgstr "Não pule o papo casual"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:37
+#. js-lingui-explicit-id
+msgid "Doxxing"
+msgstr "Doxxing"
+
 #: src/features/Alias/components/RoundSettings.tsx:146
 #. js-lingui-explicit-id
 msgid "Duration"
@@ -2868,12 +2879,12 @@ msgid "Early access to new tools"
 msgstr "Acesso antecipado a novas ferramentas"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:115
-#: src/features/Chat/Message/Message.tsx:369
+#: src/features/Chat/Message/Message.tsx:396
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Editar"
 
-#: src/features/Chat/Message/Message.tsx:332
+#: src/features/Chat/Message/Message.tsx:358
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "editado"
@@ -4233,7 +4244,7 @@ msgid "Generate more unique lessons"
 msgstr "Gere mais lições únicas"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:174
+#: src/features/Sentence/TextConstructorSection.tsx:172
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Gerando..."
@@ -4689,6 +4700,11 @@ msgstr "Manuseie a concorrência com confiança"
 #. js-lingui-explicit-id
 msgid "Happy April 1st!"
 msgstr "Feliz 1 de Abril!"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:39
+#. js-lingui-explicit-id
+msgid "Hate speech"
+msgstr "Discurso de ódio"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:247
 #. js-lingui-explicit-id
@@ -6460,6 +6476,11 @@ msgstr "Apenas converse"
 msgid "Keep it concise and relevant"
 msgstr "Mantenha-o conciso e relevante"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:83
+#. js-lingui-explicit-id
+msgid "Keep visible until review"
+msgstr "Mantenha visível até revisão"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
 #. js-lingui-explicit-id
 msgid ""
@@ -6982,6 +7003,11 @@ msgstr "Mencione ferramentas que você usou (console, DevTools, logs)"
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "Mencione sua stack de tecnologia (React/JS/HTML/CSS)"
 
+#: src/features/Chat/Message/Message.tsx:157
+#. js-lingui-explicit-id
+msgid "Message hidden due to policy violation."
+msgstr "Mensagem oculta devido a violação de política."
+
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
 #. js-lingui-explicit-id
@@ -7179,7 +7205,7 @@ msgstr "Novo Jogo"
 msgid "New Grammar Rules"
 msgstr "Novas Regras de Gramática"
 
-#: src/features/Sentence/TextConstructorSection.tsx:189
+#: src/features/Sentence/TextConstructorSection.tsx:187
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "Nova Imagem"
@@ -7525,6 +7551,11 @@ msgid ""
 msgstr ""
 "do Website operado pela Fundacja Rozwoju Przedsiębiorczości \"Twój "
 "StartUp\" com sede em Varsóvia."
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:45
+#. js-lingui-explicit-id
+msgid "Off-topic"
+msgstr "Fora do tópico"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -8445,7 +8476,7 @@ msgstr "Preparando o cérebro"
 msgid "Preparing your game..."
 msgstr "Preparando seu jogo..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:154
+#: src/features/Sentence/TextConstructorSection.tsx:152
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr "Pressione o botão abaixo para gerar uma história com base nesta imagem"
@@ -8728,7 +8759,7 @@ msgstr "Leitor"
 msgid "Reading practice"
 msgstr "Prática de leitura"
 
-#: src/features/Sentence/TextConstructorSection.tsx:151
+#: src/features/Sentence/TextConstructorSection.tsx:149
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "Pronto para uma nova história?"
@@ -9063,6 +9094,21 @@ msgstr "Renovar Agora"
 msgid "Replies"
 msgstr "Respostas"
 
+#: src/features/Chat/Message/Message.tsx:406
+#. js-lingui-explicit-id
+msgid "Report"
+msgstr "Relatório"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Report message"
+msgstr "Mensagem de relatório"
+
+#: src/features/Chat/Message/Message.tsx:204
+#. js-lingui-explicit-id
+msgid "Report submitted. Thank you. We will review your request."
+msgstr "Relatório enviado. Obrigado. Vamos revisar sua solicitação."
+
 #: src/features/Header/PaymentHistoryModal.tsx:253
 #. js-lingui-explicit-id
 msgid "Request Refund"
@@ -9209,6 +9255,11 @@ msgstr "Rodada {current} de {total}"
 msgid "Routing"
 msgstr "Encaminhamento"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:44
+#. js-lingui-explicit-id
+msgid "Rudeness"
+msgstr "Rudeza"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:62
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
@@ -9249,7 +9300,7 @@ msgid "Salary negotiation preparation"
 msgstr "Preparação para negociação salarial"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:112
-#: src/features/Chat/Message/Message.tsx:253
+#: src/features/Chat/Message/Message.tsx:279
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Salvar"
@@ -9349,6 +9400,11 @@ msgstr "Selecione seu avatar de jogo"
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Selecione o seu idioma preferido"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:38
+#. js-lingui-explicit-id
+msgid "Self-harm"
+msgstr "Autoagressão"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
 #. js-lingui-explicit-id
@@ -9460,6 +9516,11 @@ msgstr "Definir Meu Idioma"
 msgid "Set the goal of your learning"
 msgstr "Defina o objetivo do seu aprendizado"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:36
+#. js-lingui-explicit-id
+msgid "Sexual content"
+msgstr "Conteúdo sexual"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:116
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
@@ -9546,7 +9607,7 @@ msgstr "Mostrar menos"
 msgid "Show More"
 msgstr "Mostrar Mais"
 
-#: src/features/Chat/Message/Message.tsx:418
+#: src/features/Chat/Message/Message.tsx:459
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -9791,6 +9852,11 @@ msgid ""
 msgstr ""
 "Desculpe, não há uma pergunta diária disponível para hoje. Por favor, volte "
 "amanhã!"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Spam"
+msgstr "Spam"
 
 #: src/features/Lang/getLabels.tsx:10
 #. js-lingui-explicit-id
@@ -11486,6 +11552,11 @@ msgstr "Visualizar seu histórico de pagamentos"
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "Visualize seu histórico de pagamentos. Reembolsos"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:35
+#. js-lingui-explicit-id
+msgid "Violence / threats"
+msgstr "Violência / ameaças"
 
 #: src/features/Landing/LandingPage.tsx:404
 #. js-lingui-explicit-id

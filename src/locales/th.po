@@ -1023,7 +1023,7 @@ msgstr "สถาปัตยกรรม & ความยืดหยุ่น
 msgid "Are there any hidden fees?"
 msgstr "มีค่าธรรมเนียมแอบแฝงหรือไม่?"
 
-#: src/features/Chat/Message/Message.tsx:267
+#: src/features/Chat/Message/Message.tsx:293
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
 msgstr "แน่ใจหรือว่าต้องการลบไฟล์แนบนี้?"
@@ -1033,7 +1033,7 @@ msgstr "แน่ใจหรือว่าต้องการลบไฟล
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr "คุณแน่ใจหรือว่าต้องการลบการสนทนานี้? การกระทำนี้ไม่สามารถยกเลิกได้"
 
-#: src/features/Chat/Message/Message.tsx:101
+#: src/features/Chat/Message/Message.tsx:103
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบข้อความนี้?"
@@ -1128,6 +1128,11 @@ msgid "Auth"
 msgstr ""
 "\n"
 "Auth\n"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:64
+#. js-lingui-explicit-id
+msgid "Auto-hide only for severe violations"
+msgstr "ซ่อนอัตโนมัติเฉพาะสำหรับการละเมิดที่รุนแรง"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:397
 #. js-lingui-explicit-id
@@ -1523,7 +1528,8 @@ msgstr "ฉันสามารถใช้ FluencyPal ได้ฟรีหร
 
 #: src/features/Ai/AiKnowledgeModal.tsx:114
 #: src/features/Ai/AiKnowledgeModal.tsx:129
-#: src/features/Chat/Message/Message.tsx:256
+#: src/features/Chat/Message/Message.tsx:282
+#: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #. js-lingui-explicit-id
@@ -2222,7 +2228,7 @@ msgstr ""
 "รูปแบบที่ยืดหยุ่นนี้จะช่วยให้คุณเชี่ยวชาญทักษะการสื่อสารที่คุณต้องการอย่างแท"
 "้จริง"
 
-#: src/features/Sentence/TextConstructorSection.tsx:174
+#: src/features/Sentence/TextConstructorSection.tsx:172
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "สร้างเรื่องราว"
@@ -2433,7 +2439,7 @@ msgid "Debates"
 msgstr "การโต้วาที"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:113
-#: src/features/Chat/Message/Message.tsx:378
+#: src/features/Chat/Message/Message.tsx:417
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "ลบ"
@@ -2839,6 +2845,11 @@ msgstr "อย่าให้ความผิดพลาดหยุดยั
 msgid "Don’t skip small talk"
 msgstr "อย่าข้ามการพูดคุยเล็กๆ"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:37
+#. js-lingui-explicit-id
+msgid "Doxxing"
+msgstr "การเปิดเผยข้อมูลส่วนบุคคลออนไลน์"
+
 #: src/features/Alias/components/RoundSettings.tsx:146
 #. js-lingui-explicit-id
 msgid "Duration"
@@ -2870,12 +2881,12 @@ msgid "Early access to new tools"
 msgstr "การเข้าถึงเครื่องมือใหม่ล่วงหน้า"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:115
-#: src/features/Chat/Message/Message.tsx:369
+#: src/features/Chat/Message/Message.tsx:396
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "แก้ไข"
 
-#: src/features/Chat/Message/Message.tsx:332
+#: src/features/Chat/Message/Message.tsx:358
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "แก้ไขแล้ว"
@@ -4243,7 +4254,7 @@ msgid "Generate more unique lessons"
 msgstr "สร้างบทเรียนที่ไม่ซ้ำซ้อนมากขึ้น"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:174
+#: src/features/Sentence/TextConstructorSection.tsx:172
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "กำลังสร้าง..."
@@ -4693,6 +4704,11 @@ msgstr "จัดการความพร้อมในการทำงา
 #. js-lingui-explicit-id
 msgid "Happy April 1st!"
 msgstr "สุขสันต์วันที่ 1 เมษายน!"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:39
+#. js-lingui-explicit-id
+msgid "Hate speech"
+msgstr "คำพูดแสดงความเกลียดชัง"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:247
 #. js-lingui-explicit-id
@@ -6457,6 +6473,11 @@ msgstr "แค่พูดคุย"
 msgid "Keep it concise and relevant"
 msgstr "เก็บให้กระชับและเกี่ยวข้อง"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:83
+#. js-lingui-explicit-id
+msgid "Keep visible until review"
+msgstr "คงการมองเห็นไว้จนกว่าจะตรวจสอบ"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
 #. js-lingui-explicit-id
 msgid ""
@@ -6979,6 +7000,11 @@ msgstr "ระบุเครื่องมือที่คุณใช้ (�
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "ระบุเทคโนโลยีที่คุณใช้ (React/JS/HTML/CSS)"
 
+#: src/features/Chat/Message/Message.tsx:157
+#. js-lingui-explicit-id
+msgid "Message hidden due to policy violation."
+msgstr "ข้อความถูกซ่อนเนื่องจากละเมิดนโยบาย"
+
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
 #. js-lingui-explicit-id
@@ -7168,7 +7194,7 @@ msgstr "เกมใหม่"
 msgid "New Grammar Rules"
 msgstr "กฎไวยากรณ์ใหม่"
 
-#: src/features/Sentence/TextConstructorSection.tsx:189
+#: src/features/Sentence/TextConstructorSection.tsx:187
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "ภาพใหม่"
@@ -7511,6 +7537,11 @@ msgid ""
 msgstr ""
 "ของเว็บไซต์ที่ดำเนินการโดยกองทุนพัฒนาผู้ประกอบการ \"Twój StartUp\" "
 "ที่มีสำนักงานจดทะเบียนในกรุงวอร์ซอว์"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:45
+#. js-lingui-explicit-id
+msgid "Off-topic"
+msgstr "นอกเรื่อง"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -8425,7 +8456,7 @@ msgstr "เตรียมสมอง"
 msgid "Preparing your game..."
 msgstr "กำลังเตรียมเกมของคุณ..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:154
+#: src/features/Sentence/TextConstructorSection.tsx:152
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr "กดปุ่มด้านล่างเพื่อสร้างเรื่องราวจากภาพนี้"
@@ -8709,7 +8740,7 @@ msgstr "ผู้อ่าน"
 msgid "Reading practice"
 msgstr "การฝึกอ่าน"
 
-#: src/features/Sentence/TextConstructorSection.tsx:151
+#: src/features/Sentence/TextConstructorSection.tsx:149
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "พร้อมสำหรับเรื่องราวใหม่หรือยัง?"
@@ -9034,6 +9065,21 @@ msgstr "ต่ออายุเดี๋ยวนี้"
 msgid "Replies"
 msgstr "การตอบกลับ"
 
+#: src/features/Chat/Message/Message.tsx:406
+#. js-lingui-explicit-id
+msgid "Report"
+msgstr "รายงาน"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Report message"
+msgstr "รายงานข้อความ"
+
+#: src/features/Chat/Message/Message.tsx:204
+#. js-lingui-explicit-id
+msgid "Report submitted. Thank you. We will review your request."
+msgstr "รายงานส่งแล้ว ขอบคุณ เราจะตรวจสอบคำขอของคุณ"
+
 #: src/features/Header/PaymentHistoryModal.tsx:253
 #. js-lingui-explicit-id
 msgid "Request Refund"
@@ -9179,6 +9225,11 @@ msgstr "รอบ {current} จาก {total}"
 msgid "Routing"
 msgstr "การกำหนดเส้นทาง"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:44
+#. js-lingui-explicit-id
+msgid "Rudeness"
+msgstr "ความหยาบคาย"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:62
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
@@ -9219,7 +9270,7 @@ msgid "Salary negotiation preparation"
 msgstr "การเตรียมการเจรจาเรื่องเงินเดือน"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:112
-#: src/features/Chat/Message/Message.tsx:253
+#: src/features/Chat/Message/Message.tsx:279
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "บันทึก"
@@ -9319,6 +9370,11 @@ msgstr "เลือกอวาตาร์เกมของคุณ"
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "เลือกภาษาที่คุณต้องการ"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:38
+#. js-lingui-explicit-id
+msgid "Self-harm"
+msgstr "การทำร้ายตัวเอง"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
 #. js-lingui-explicit-id
@@ -9432,6 +9488,11 @@ msgstr "ตั้งค่าภาษาของฉัน"
 msgid "Set the goal of your learning"
 msgstr "ตั้งเป้าหมายของการเรียนรู้ของคุณ"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:36
+#. js-lingui-explicit-id
+msgid "Sexual content"
+msgstr "เนื้อหาเกี่ยวกับเรื่องเพศ"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:116
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
@@ -9518,7 +9579,7 @@ msgstr "แสดงน้อยลง"
 msgid "Show More"
 msgstr "แสดงเพิ่มเติม"
 
-#: src/features/Chat/Message/Message.tsx:418
+#: src/features/Chat/Message/Message.tsx:459
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -9755,6 +9816,11 @@ msgid ""
 "Sorry, there is no daily question available for today. Please check back "
 "tomorrow!"
 msgstr "ขออภัย วันนี้ไม่มีคำถามประจำวัน กรุณาตรวจสอบใหม่วันพรุ่งนี้!"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Spam"
+msgstr "สแปม"
 
 #: src/features/Lang/getLabels.tsx:10
 #. js-lingui-explicit-id
@@ -11436,6 +11502,11 @@ msgstr "ดูประวัติการชำระเงินของค
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "ดูประวัติการชำระเงินของคุณ การคืนเงิน"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:35
+#. js-lingui-explicit-id
+msgid "Violence / threats"
+msgstr "ความรุนแรง / ข่มขู่"
 
 #: src/features/Landing/LandingPage.tsx:404
 #. js-lingui-explicit-id

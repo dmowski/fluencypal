@@ -1020,7 +1020,7 @@ msgstr "Kiến trúc & Khả năng phục hồi"
 msgid "Are there any hidden fees?"
 msgstr "Có bất kỳ khoản phí ẩn nào không?"
 
-#: src/features/Chat/Message/Message.tsx:267
+#: src/features/Chat/Message/Message.tsx:293
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
 msgstr "Bạn có chắc chắn muốn xóa tệp đính kèm này không?"
@@ -1032,7 +1032,7 @@ msgstr ""
 "Bạn có chắc chắn muốn xóa cuộc trò chuyện này không? Hành động này không "
 "thể hoàn tác."
 
-#: src/features/Chat/Message/Message.tsx:101
+#: src/features/Chat/Message/Message.tsx:103
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Bạn có chắc chắn muốn xóa tin nhắn này không?"
@@ -1125,6 +1125,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Auth"
 msgstr "Xác thực"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:64
+#. js-lingui-explicit-id
+msgid "Auto-hide only for severe violations"
+msgstr "Ẩn tự động chỉ đối với vi phạm nghiêm trọng"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:397
 #. js-lingui-explicit-id
@@ -1519,7 +1524,8 @@ msgstr "Tôi có thể sử dụng FluencyPal miễn phí không?"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:114
 #: src/features/Ai/AiKnowledgeModal.tsx:129
-#: src/features/Chat/Message/Message.tsx:256
+#: src/features/Chat/Message/Message.tsx:282
+#: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #. js-lingui-explicit-id
@@ -2216,7 +2222,7 @@ msgstr ""
 "tình huống của bạn. Định dạng linh hoạt này giúp bạn làm chủ các kỹ năng "
 "giao tiếp chính xác mà bạn cần."
 
-#: src/features/Sentence/TextConstructorSection.tsx:174
+#: src/features/Sentence/TextConstructorSection.tsx:172
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "Tạo Câu Chuyện"
@@ -2425,7 +2431,7 @@ msgid "Debates"
 msgstr "Tranh luận"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:113
-#: src/features/Chat/Message/Message.tsx:378
+#: src/features/Chat/Message/Message.tsx:417
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "Xóa"
@@ -2840,6 +2846,11 @@ msgstr "Đừng để những sai lầm ngăn cản bạn."
 msgid "Don’t skip small talk"
 msgstr "Đừng bỏ qua cuộc trò chuyện nhỏ"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:37
+#. js-lingui-explicit-id
+msgid "Doxxing"
+msgstr "Doxxing"
+
 #: src/features/Alias/components/RoundSettings.tsx:146
 #. js-lingui-explicit-id
 msgid "Duration"
@@ -2871,12 +2882,12 @@ msgid "Early access to new tools"
 msgstr "Quyền truy cập sớm vào công cụ mới"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:115
-#: src/features/Chat/Message/Message.tsx:369
+#: src/features/Chat/Message/Message.tsx:396
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Chỉnh sửa"
 
-#: src/features/Chat/Message/Message.tsx:332
+#: src/features/Chat/Message/Message.tsx:358
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "chỉnh sửa"
@@ -4251,7 +4262,7 @@ msgid "Generate more unique lessons"
 msgstr "Tạo thêm nhiều bài học độc đáo"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:174
+#: src/features/Sentence/TextConstructorSection.tsx:172
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Đang tạo..."
@@ -4702,6 +4713,11 @@ msgstr "Xử lý đồng thời một cách tự tin"
 #. js-lingui-explicit-id
 msgid "Happy April 1st!"
 msgstr "Chúc mừng ngày 1 tháng 4!"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:39
+#. js-lingui-explicit-id
+msgid "Hate speech"
+msgstr "Lời nói căm thù"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:247
 #. js-lingui-explicit-id
@@ -6476,6 +6492,11 @@ msgstr "Chỉ cần nói"
 msgid "Keep it concise and relevant"
 msgstr "Giữ cho nó ngắn gọn và phù hợp"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:83
+#. js-lingui-explicit-id
+msgid "Keep visible until review"
+msgstr "Giữ hiển thị cho đến khi xem xét"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
 #. js-lingui-explicit-id
 msgid ""
@@ -6994,6 +7015,11 @@ msgstr ""
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "Đề cập đến công nghệ bạn sử dụng (React/JS/HTML/CSS)"
 
+#: src/features/Chat/Message/Message.tsx:157
+#. js-lingui-explicit-id
+msgid "Message hidden due to policy violation."
+msgstr "Thông điệp bị ẩn do vi phạm chính sách."
+
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
 #. js-lingui-explicit-id
@@ -7185,7 +7211,7 @@ msgstr "Trò Chơi Mới"
 msgid "New Grammar Rules"
 msgstr "Quy tắc ngữ pháp mới"
 
-#: src/features/Sentence/TextConstructorSection.tsx:189
+#: src/features/Sentence/TextConstructorSection.tsx:187
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "Hình Ảnh Mới"
@@ -7533,6 +7559,11 @@ msgstr ""
 "của trang web được điều hành bởi Fundacja Rozwoju Przedsiębiorczości \"Twój "
 "\n"
 "                                  StartUp\" với trụ sở đăng ký tại Warsaw."
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:45
+#. js-lingui-explicit-id
+msgid "Off-topic"
+msgstr "Lạc đề"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -8462,7 +8493,7 @@ msgstr "Chuẩn bị cho bộ não"
 msgid "Preparing your game..."
 msgstr "Đang chuẩn bị trò chơi của bạn..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:154
+#: src/features/Sentence/TextConstructorSection.tsx:152
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr "Nhấn nút bên dưới để tạo một câu chuyện dựa trên hình ảnh này"
@@ -8746,7 +8777,7 @@ msgstr "Trình đọc"
 msgid "Reading practice"
 msgstr "Thực hành đọc"
 
-#: src/features/Sentence/TextConstructorSection.tsx:151
+#: src/features/Sentence/TextConstructorSection.tsx:149
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "Sẵn sàng cho một câu chuyện mới chưa?"
@@ -9081,6 +9112,21 @@ msgstr "Gia hạn ngay bây giờ"
 msgid "Replies"
 msgstr "Phản hồi"
 
+#: src/features/Chat/Message/Message.tsx:406
+#. js-lingui-explicit-id
+msgid "Report"
+msgstr "Báo cáo"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Report message"
+msgstr "Báo cáo tin nhắn"
+
+#: src/features/Chat/Message/Message.tsx:204
+#. js-lingui-explicit-id
+msgid "Report submitted. Thank you. We will review your request."
+msgstr "Báo cáo đã được gửi. Cảm ơn bạn. Chúng tôi sẽ xem xét yêu cầu của bạn."
+
 #: src/features/Header/PaymentHistoryModal.tsx:253
 #. js-lingui-explicit-id
 msgid "Request Refund"
@@ -9232,6 +9278,11 @@ msgstr "Vòng {current} của {total}"
 msgid "Routing"
 msgstr "Định tuyến"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:44
+#. js-lingui-explicit-id
+msgid "Rudeness"
+msgstr "Sự thô lỗ"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:62
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
@@ -9272,7 +9323,7 @@ msgid "Salary negotiation preparation"
 msgstr "Chuẩn bị đàm phán lương"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:112
-#: src/features/Chat/Message/Message.tsx:253
+#: src/features/Chat/Message/Message.tsx:279
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Lưu"
@@ -9372,6 +9423,11 @@ msgstr "Chọn hình đại diện trò chơi của bạn"
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Chọn ngôn ngữ ưa thích của bạn"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:38
+#. js-lingui-explicit-id
+msgid "Self-harm"
+msgstr "Tự làm hại bản thân"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
 #. js-lingui-explicit-id
@@ -9485,6 +9541,11 @@ msgstr "Đặt Ngôn Ngữ Của Tôi"
 msgid "Set the goal of your learning"
 msgstr "Đặt mục tiêu cho việc học của bạn"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:36
+#. js-lingui-explicit-id
+msgid "Sexual content"
+msgstr "Nội dung khiêu dâm"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:116
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
@@ -9571,7 +9632,7 @@ msgstr "Hiển thị ít hơn"
 msgid "Show More"
 msgstr "Hiển thị thêm"
 
-#: src/features/Chat/Message/Message.tsx:418
+#: src/features/Chat/Message/Message.tsx:459
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -9816,6 +9877,11 @@ msgid ""
 "Sorry, there is no daily question available for today. Please check back "
 "tomorrow!"
 msgstr "Xin lỗi, không có câu hỏi nào cho hôm nay. Vui lòng quay lại vào ngày mai!"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Spam"
+msgstr "Thư rác"
 
 #: src/features/Lang/getLabels.tsx:10
 #. js-lingui-explicit-id
@@ -11516,6 +11582,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "Xem lịch sử thanh toán của bạn. Hoàn tiền"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:35
+#. js-lingui-explicit-id
+msgid "Violence / threats"
+msgstr "Bạo lực / đe dọa"
 
 #: src/features/Landing/LandingPage.tsx:404
 #. js-lingui-explicit-id

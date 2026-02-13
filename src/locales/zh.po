@@ -975,7 +975,7 @@ msgstr "架构与弹性"
 msgid "Are there any hidden fees?"
 msgstr "是否有任何隐藏费用？"
 
-#: src/features/Chat/Message/Message.tsx:267
+#: src/features/Chat/Message/Message.tsx:293
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
 msgstr "您确定要删除此附件吗？"
@@ -985,7 +985,7 @@ msgstr "您确定要删除此附件吗？"
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr "您确定要删除此聊天记录吗？此操作无法撤销。"
 
-#: src/features/Chat/Message/Message.tsx:101
+#: src/features/Chat/Message/Message.tsx:103
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "您确定要删除此消息吗？"
@@ -1074,6 +1074,11 @@ msgstr "最后，我们将分享一个用于实际面试练习的宝贵工具。
 #. js-lingui-explicit-id
 msgid "Auth"
 msgstr "认证"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:64
+#. js-lingui-explicit-id
+msgid "Auto-hide only for severe violations"
+msgstr "仅对严重违规自动隐藏"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:397
 #. js-lingui-explicit-id
@@ -1455,7 +1460,8 @@ msgstr "FluencyPal 可以免费使用吗？"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:114
 #: src/features/Ai/AiKnowledgeModal.tsx:129
-#: src/features/Chat/Message/Message.tsx:256
+#: src/features/Chat/Message/Message.tsx:282
+#: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #. js-lingui-explicit-id
@@ -2113,7 +2119,7 @@ msgstr ""
 "你将通过提供对场景、角色和主要目标的简要描述来概述自己的角色扮演。AI将根据你的自定义指令调整，并进行与场景主题相一致的对话。这种灵活的格式帮助你掌握所"
 "需的具体沟通技能。"
 
-#: src/features/Sentence/TextConstructorSection.tsx:174
+#: src/features/Sentence/TextConstructorSection.tsx:172
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "创建故事"
@@ -2315,7 +2321,7 @@ msgid "Debates"
 msgstr "辩论"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:113
-#: src/features/Chat/Message/Message.tsx:378
+#: src/features/Chat/Message/Message.tsx:417
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "删除"
@@ -2679,6 +2685,11 @@ msgstr "不要让错误阻碍你。"
 msgid "Don’t skip small talk"
 msgstr "不要跳过闲聊"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:37
+#. js-lingui-explicit-id
+msgid "Doxxing"
+msgstr "人肉搜索"
+
 #: src/features/Alias/components/RoundSettings.tsx:146
 #. js-lingui-explicit-id
 msgid "Duration"
@@ -2707,12 +2718,12 @@ msgid "Early access to new tools"
 msgstr "新的工具抢先体验"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:115
-#: src/features/Chat/Message/Message.tsx:369
+#: src/features/Chat/Message/Message.tsx:396
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "编辑"
 
-#: src/features/Chat/Message/Message.tsx:332
+#: src/features/Chat/Message/Message.tsx:358
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "已编辑"
@@ -3951,7 +3962,7 @@ msgid "Generate more unique lessons"
 msgstr "生成更多独特的课程"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:174
+#: src/features/Sentence/TextConstructorSection.tsx:172
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "生成中..."
@@ -4352,6 +4363,11 @@ msgstr "自信地处理并发"
 #. js-lingui-explicit-id
 msgid "Happy April 1st!"
 msgstr "四月一日快乐！"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:39
+#. js-lingui-explicit-id
+msgid "Hate speech"
+msgstr "仇恨言论"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:247
 #. js-lingui-explicit-id
@@ -5898,6 +5914,11 @@ msgstr "只需说话"
 msgid "Keep it concise and relevant"
 msgstr "保持简明扼要和相关性"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:83
+#. js-lingui-explicit-id
+msgid "Keep visible until review"
+msgstr "保持可见直到审核完成"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
 #. js-lingui-explicit-id
 msgid ""
@@ -6392,6 +6413,11 @@ msgstr "提及您使用的工具（控制台、开发者工具、日志）"
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "提及您的技术栈（React/JS/HTML/CSS）"
 
+#: src/features/Chat/Message/Message.tsx:157
+#. js-lingui-explicit-id
+msgid "Message hidden due to policy violation."
+msgstr "由于违反政策，消息已隐藏。"
+
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
 #. js-lingui-explicit-id
@@ -6577,7 +6603,7 @@ msgstr "新游戏"
 msgid "New Grammar Rules"
 msgstr "新的语法规则"
 
-#: src/features/Sentence/TextConstructorSection.tsx:189
+#: src/features/Sentence/TextConstructorSection.tsx:187
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "新图片"
@@ -6902,6 +6928,11 @@ msgid ""
 "                                  StartUp\" with its registered office in "
 "Warsaw."
 msgstr "由 \"Twój StartUp\" 企业发展基金会经营的网站，其注册办事处位于华沙。"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:45
+#. js-lingui-explicit-id
+msgid "Off-topic"
+msgstr "离题"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -7749,7 +7780,7 @@ msgstr "准备大脑"
 msgid "Preparing your game..."
 msgstr "准备您的游戏..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:154
+#: src/features/Sentence/TextConstructorSection.tsx:152
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr "按下下面的按钮，根据这张图片生成一个故事"
@@ -8026,7 +8057,7 @@ msgstr "读者"
 msgid "Reading practice"
 msgstr "阅读练习"
 
-#: src/features/Sentence/TextConstructorSection.tsx:151
+#: src/features/Sentence/TextConstructorSection.tsx:149
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "准备好迎接一个新故事了吗？"
@@ -8341,6 +8372,21 @@ msgstr "立即续订"
 msgid "Replies"
 msgstr "回复"
 
+#: src/features/Chat/Message/Message.tsx:406
+#. js-lingui-explicit-id
+msgid "Report"
+msgstr "报告"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Report message"
+msgstr "报告消息"
+
+#: src/features/Chat/Message/Message.tsx:204
+#. js-lingui-explicit-id
+msgid "Report submitted. Thank you. We will review your request."
+msgstr "报告已提交。谢谢。我们将审核您的请求。"
+
 #: src/features/Header/PaymentHistoryModal.tsx:253
 #. js-lingui-explicit-id
 msgid "Request Refund"
@@ -8479,6 +8525,11 @@ msgstr "第 {current} 轮，共 {total} 轮"
 msgid "Routing"
 msgstr "路线"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:44
+#. js-lingui-explicit-id
+msgid "Rudeness"
+msgstr "无礼"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:62
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
@@ -8519,7 +8570,7 @@ msgid "Salary negotiation preparation"
 msgstr "薪资谈判准备"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:112
-#: src/features/Chat/Message/Message.tsx:253
+#: src/features/Chat/Message/Message.tsx:279
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "保存"
@@ -8617,6 +8668,11 @@ msgstr "选择你的游戏头像"
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "选择您的首选语言"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:38
+#. js-lingui-explicit-id
+msgid "Self-harm"
+msgstr "自残"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
 #. js-lingui-explicit-id
@@ -8724,6 +8780,11 @@ msgstr "设置我的语言"
 msgid "Set the goal of your learning"
 msgstr "设置你的学习目标"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:36
+#. js-lingui-explicit-id
+msgid "Sexual content"
+msgstr "性内容"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:116
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
@@ -8804,7 +8865,7 @@ msgstr "显示更少"
 msgid "Show More"
 msgstr "显示更多"
 
-#: src/features/Chat/Message/Message.tsx:418
+#: src/features/Chat/Message/Message.tsx:459
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -9029,6 +9090,11 @@ msgid ""
 "Sorry, there is no daily question available for today. Please check back "
 "tomorrow!"
 msgstr "对不起，今天没有可用的每日问题。请明天再来查看！"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Spam"
+msgstr "垃圾邮件"
 
 #: src/features/Lang/getLabels.tsx:10
 #. js-lingui-explicit-id
@@ -10611,6 +10677,11 @@ msgstr "查看您的付款历史"
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "查看您的付款历史。退款"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:35
+#. js-lingui-explicit-id
+msgid "Violence / threats"
+msgstr "暴力/威胁"
 
 #: src/features/Landing/LandingPage.tsx:404
 #. js-lingui-explicit-id

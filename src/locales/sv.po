@@ -1010,7 +1010,7 @@ msgstr "Arkitektur & Motståndskraft"
 msgid "Are there any hidden fees?"
 msgstr "Finns det några dolda avgifter?"
 
-#: src/features/Chat/Message/Message.tsx:267
+#: src/features/Chat/Message/Message.tsx:293
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
 msgstr "Är du säker på att du vill ta bort denna bifogade fil?"
@@ -1020,7 +1020,7 @@ msgstr "Är du säker på att du vill ta bort denna bifogade fil?"
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr "Är du säker på att du vill radera denna chatt? Denna åtgärd kan inte ångras."
 
-#: src/features/Chat/Message/Message.tsx:101
+#: src/features/Chat/Message/Message.tsx:103
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Är du säker på att du vill radera det här meddelandet?"
@@ -1115,6 +1115,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Auth"
 msgstr "Auth"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:64
+#. js-lingui-explicit-id
+msgid "Auto-hide only for severe violations"
+msgstr "Auto-dölj endast för allvarliga överträdelser"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:397
 #. js-lingui-explicit-id
@@ -1509,7 +1514,8 @@ msgstr "Kan jag använda FluencyPal gratis?"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:114
 #: src/features/Ai/AiKnowledgeModal.tsx:129
-#: src/features/Chat/Message/Message.tsx:256
+#: src/features/Chat/Message/Message.tsx:282
+#: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #. js-lingui-explicit-id
@@ -2208,7 +2214,7 @@ msgstr ""
 "linje med temat för ditt scenario. Detta flexibla format hjälper dig att "
 "bemästra just de kommunikationsfärdigheter du behöver."
 
-#: src/features/Sentence/TextConstructorSection.tsx:174
+#: src/features/Sentence/TextConstructorSection.tsx:172
 #. js-lingui-explicit-id
 msgid "Create Story"
 msgstr "Skapa berättelse"
@@ -2415,7 +2421,7 @@ msgid "Debates"
 msgstr "Debatteringar"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:113
-#: src/features/Chat/Message/Message.tsx:378
+#: src/features/Chat/Message/Message.tsx:417
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "Radera"
@@ -2820,6 +2826,11 @@ msgstr "Låt inte misstag stoppa dig."
 msgid "Don’t skip small talk"
 msgstr "Hoppa inte över småpratet"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:37
+#. js-lingui-explicit-id
+msgid "Doxxing"
+msgstr "Doxxning"
+
 #: src/features/Alias/components/RoundSettings.tsx:146
 #. js-lingui-explicit-id
 msgid "Duration"
@@ -2852,12 +2863,12 @@ msgid "Early access to new tools"
 msgstr "Tidigt tillträde till nya verktyg"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:115
-#: src/features/Chat/Message/Message.tsx:369
+#: src/features/Chat/Message/Message.tsx:396
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Redigera"
 
-#: src/features/Chat/Message/Message.tsx:332
+#: src/features/Chat/Message/Message.tsx:358
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "redigerad"
@@ -4214,7 +4225,7 @@ msgid "Generate more unique lessons"
 msgstr "Generera fler unika lektioner"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
-#: src/features/Sentence/TextConstructorSection.tsx:174
+#: src/features/Sentence/TextConstructorSection.tsx:172
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Genererar..."
@@ -4660,6 +4671,11 @@ msgstr "Hantera samtidighet med självförtroende"
 #. js-lingui-explicit-id
 msgid "Happy April 1st!"
 msgstr "Glad 1:a april!"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:39
+#. js-lingui-explicit-id
+msgid "Hate speech"
+msgstr "Hatpropaganda"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:247
 #. js-lingui-explicit-id
@@ -6423,6 +6439,11 @@ msgstr "Bara prata"
 msgid "Keep it concise and relevant"
 msgstr "Håll det kortfattat och relevant"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:83
+#. js-lingui-explicit-id
+msgid "Keep visible until review"
+msgstr "Behåll synlig tills granskning"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
 #. js-lingui-explicit-id
 msgid ""
@@ -6941,6 +6962,11 @@ msgstr "Ange verktyg du använde (konsol, DevTools, loggar)"
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "Ange din tekniska stack (React/JS/HTML/CSS)"
 
+#: src/features/Chat/Message/Message.tsx:157
+#. js-lingui-explicit-id
+msgid "Message hidden due to policy violation."
+msgstr "Meddelandet är dolt på grund av policyöverträdelse."
+
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
 #. js-lingui-explicit-id
@@ -7130,7 +7156,7 @@ msgstr "Nytt Spel"
 msgid "New Grammar Rules"
 msgstr "Nya Grammatikregler"
 
-#: src/features/Sentence/TextConstructorSection.tsx:189
+#: src/features/Sentence/TextConstructorSection.tsx:187
 #. js-lingui-explicit-id
 msgid "New Image"
 msgstr "Ny bild"
@@ -7475,6 +7501,11 @@ msgstr ""
 "av webbplatsen som drivs av Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
 "                                  StartUp\" med sitt registrerade kontor i "
 "Warszawa."
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:45
+#. js-lingui-explicit-id
+msgid "Off-topic"
+msgstr "Utanför ämnet"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -8384,7 +8415,7 @@ msgstr "Förbereder hjärnan"
 msgid "Preparing your game..."
 msgstr "Förbereder ditt spel..."
 
-#: src/features/Sentence/TextConstructorSection.tsx:154
+#: src/features/Sentence/TextConstructorSection.tsx:152
 #. js-lingui-explicit-id
 msgid "Press the button below to generate a story based on this image"
 msgstr "Tryck på knappen nedan för att generera en berättelse baserad på denna bild"
@@ -8666,7 +8697,7 @@ msgstr "Läsare"
 msgid "Reading practice"
 msgstr "Lästräning"
 
-#: src/features/Sentence/TextConstructorSection.tsx:151
+#: src/features/Sentence/TextConstructorSection.tsx:149
 #. js-lingui-explicit-id
 msgid "Ready for a new story?"
 msgstr "Redo för en ny berättelse?"
@@ -8998,6 +9029,21 @@ msgstr "Förnya nu"
 msgid "Replies"
 msgstr "Svar"
 
+#: src/features/Chat/Message/Message.tsx:406
+#. js-lingui-explicit-id
+msgid "Report"
+msgstr "Rapport"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Report message"
+msgstr "Rapportera meddelande"
+
+#: src/features/Chat/Message/Message.tsx:204
+#. js-lingui-explicit-id
+msgid "Report submitted. Thank you. We will review your request."
+msgstr "Report inlämnad. Tack. Vi kommer att granska din förfrågan."
+
 #: src/features/Header/PaymentHistoryModal.tsx:253
 #. js-lingui-explicit-id
 msgid "Request Refund"
@@ -9142,6 +9188,11 @@ msgstr "Omgång {current} av {total}"
 msgid "Routing"
 msgstr "Ruttning"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:44
+#. js-lingui-explicit-id
+msgid "Rudeness"
+msgstr "Oförskämdhet"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:62
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
@@ -9182,7 +9233,7 @@ msgid "Salary negotiation preparation"
 msgstr "Förberedelse för löneförhandlingar"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:112
-#: src/features/Chat/Message/Message.tsx:253
+#: src/features/Chat/Message/Message.tsx:279
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Spara"
@@ -9282,6 +9333,11 @@ msgstr "Välj din spelavatar"
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Välj ditt föredragna språk"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:38
+#. js-lingui-explicit-id
+msgid "Self-harm"
+msgstr "Självskada"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
 #. js-lingui-explicit-id
@@ -9393,6 +9449,11 @@ msgstr "Ställ in mitt språk"
 msgid "Set the goal of your learning"
 msgstr "Ange målet med ditt lärande"
 
+#: src/features/Chat/Message/ReportMessageModal.tsx:36
+#. js-lingui-explicit-id
+msgid "Sexual content"
+msgstr "Sexuellt innehåll"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:116
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
@@ -9479,7 +9540,7 @@ msgstr "Visa mindre"
 msgid "Show More"
 msgstr "Visa Mer"
 
-#: src/features/Chat/Message/Message.tsx:418
+#: src/features/Chat/Message/Message.tsx:459
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -9721,6 +9782,11 @@ msgid ""
 msgstr ""
 "Tyvärr finns det ingen daglig fråga tillgänglig för idag. Vänligen kom "
 "tillbaka imorgon!"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Spam"
+msgstr "Skräppost"
 
 #: src/features/Lang/getLabels.tsx:10
 #. js-lingui-explicit-id
@@ -11403,6 +11469,11 @@ msgstr "Visa din betalningshistorik"
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "Visa din betalningshistorik. Återbetalningar"
+
+#: src/features/Chat/Message/ReportMessageModal.tsx:35
+#. js-lingui-explicit-id
+msgid "Violence / threats"
+msgstr "Våld / hot"
 
 #: src/features/Landing/LandingPage.tsx:404
 #. js-lingui-explicit-id
