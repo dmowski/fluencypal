@@ -7,6 +7,7 @@ import {
   generateRandomWordOptions,
   getActiveSentencePart,
 } from './textConstructor.utils';
+import { useLingui } from '@lingui/react';
 
 const createSeededRandom = (seedSource: string): (() => number) => {
   let seed = 0;
@@ -35,6 +36,7 @@ export function TextConstructor({
   onContinue,
 }: TextConstructorProps) {
   const [wrongWord, setWrongWord] = useState<string | null>(null);
+  const { i18n } = useLingui();
 
   const activePart = useMemo(() => {
     return getActiveSentencePart({ sentences, sentencesTranslates, progress });
@@ -106,7 +108,7 @@ export function TextConstructor({
       <Stack sx={{ gap: { xs: '16px', sm: '20px' } }}>
         <Stack sx={{ gap: '8px' }}>
           <Typography variant="caption" sx={{ opacity: 0.75 }}>
-            Progress
+            {i18n._('Progress')}
           </Typography>
           <Typography
             variant="h4"
@@ -125,9 +127,11 @@ export function TextConstructor({
 
         <Stack sx={{ gap: '8px' }}>
           <Typography variant="caption" sx={{ opacity: 0.75 }}>
-            Translation
+            {i18n._('Translation')}
           </Typography>
-          <Typography variant="body1">{activePart?.activeTranslation ?? 'Completed ✅'}</Typography>
+          <Typography variant="body1">
+            {activePart?.activeTranslation ?? i18n._('Completed ✅')}
+          </Typography>
         </Stack>
       </Stack>
 
