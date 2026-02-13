@@ -1800,8 +1800,8 @@ msgstr "الوصول إلى المجتمع"
 msgid "Community Chat"
 msgstr "دردشة المجتمع"
 
-#: src/features/Community/CommunityDashboard.tsx:111
-#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Community/CommunityDashboard.tsx:102
+#: src/features/Community/CommunityPage.tsx:28
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Feed"
@@ -1809,7 +1809,7 @@ msgstr ""
 "\n"
 "المجتمع\n"
 
-#: src/features/Community/CommunityDashboard.tsx:81
+#: src/features/Community/CommunityDashboard.tsx:72
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "محور المجتمع"
@@ -1849,6 +1849,11 @@ msgstr "أكمل المهام السابقة أولاً"
 #. js-lingui-explicit-id
 msgid "Complete the sentence"
 msgstr "أكمل الجملة"
+
+#: src/features/Sentence/TextConstructor.tsx:133
+#. js-lingui-explicit-id
+msgid "Completed ✅"
+msgstr "مكتمل ✅"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:44
 #: src/features/Case/data/frontend-senior/techData.tsx:44
@@ -2191,6 +2196,11 @@ msgstr ""
 "ويتفاعل في حوار يتماشى مع موضوع سيناريوك. يساعدك هذا التنسيق المرن على "
 "إتقان مهارات الاتصال التي تحتاجها بالضبط."
 
+#: src/features/Sentence/TextConstructorSection.tsx:174
+#. js-lingui-explicit-id
+msgid "Create Story"
+msgstr "إنشاء قصة"
+
 #: src/features/RolePlay/rolePlayData.tsx:1103
 #. js-lingui-explicit-id
 msgid "Create Your Own Role-Play Scenario"
@@ -2289,8 +2299,8 @@ msgstr "الممارسة اليومية للغة"
 msgid "Daily Question Chat"
 msgstr "محادثة السؤال اليومي"
 
-#: src/features/Community/CommunityDashboard.tsx:145
-#: src/features/Community/CommunityPage.tsx:31
+#: src/features/Community/CommunityDashboard.tsx:136
+#: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "أسئلة يومية"
@@ -2383,8 +2393,8 @@ msgstr "بدأ النقاش!"
 msgid "Debate topics will be selected randomly."
 msgstr "سيتم اختيار مواضيع النقاش بشكل عشوائي."
 
-#: src/features/Community/CommunityDashboard.tsx:136
-#: src/features/Community/CommunityPage.tsx:30
+#: src/features/Community/CommunityDashboard.tsx:127
+#: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Debates"
 msgstr "مناظرات"
@@ -4112,8 +4122,8 @@ msgstr "ميزات الصوت الكاملة"
 msgid "Fun facts about yourself"
 msgstr "حقائق ممتعة عن نفسك"
 
-#: src/features/Community/CommunityDashboard.tsx:119
-#: src/features/Community/CommunityPage.tsx:28
+#: src/features/Community/CommunityDashboard.tsx:110
+#: src/features/Community/CommunityPage.tsx:29
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
 #. js-lingui-explicit-id
@@ -4168,6 +4178,7 @@ msgid "Generate more unique lessons"
 msgstr "قم بإنشاء دروس فريدة أكثر"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:462
+#: src/features/Sentence/TextConstructorSection.tsx:174
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "جار الإنشاء..."
@@ -6437,8 +6448,8 @@ msgstr "التحميل البطيء"
 msgid "Leaderboard"
 msgstr "لوحة المتصدرين"
 
-#: src/features/Community/CommunityDashboard.tsx:153
-#: src/features/Community/CommunityPage.tsx:33
+#: src/features/Community/CommunityDashboard.tsx:144
+#: src/features/Community/CommunityPage.tsx:34
 #. js-lingui-explicit-id
 msgid "Leaderboards"
 msgstr "لوحات الصدارة"
@@ -7012,6 +7023,11 @@ msgstr "لعبة جديدة"
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "قواعد النحو الجديدة"
+
+#: src/features/Sentence/TextConstructorSection.tsx:189
+#. js-lingui-explicit-id
+msgid "New Image"
+msgstr "صورة جديدة"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
 #: src/features/Landing/Price/PricePage.tsx:362
@@ -8276,6 +8292,11 @@ msgstr "تجهيز الدماغ"
 msgid "Preparing your game..."
 msgstr "جارٍ تحضير لعبتك..."
 
+#: src/features/Sentence/TextConstructorSection.tsx:154
+#. js-lingui-explicit-id
+msgid "Press the button below to generate a story based on this image"
+msgstr "اضغط على الزر أدناه لإنشاء قصة بناءً على هذه الصورة"
+
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:189
 #. js-lingui-explicit-id
 msgid "Previous Question"
@@ -8315,8 +8336,8 @@ msgstr "الدعم ذو الأولوية"
 msgid "Privacy Policy"
 msgstr "سياسة الخصوصية"
 
-#: src/features/Community/CommunityDashboard.tsx:160
-#: src/features/Community/CommunityPage.tsx:29
+#: src/features/Community/CommunityDashboard.tsx:151
+#: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Private Messages"
 msgstr "رسائل خاصة"
@@ -8372,6 +8393,13 @@ msgstr "محترفون ينتقلون من مجالات أخرى إلى هندس
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "الملف الشخصي"
+
+#: src/features/Sentence/TextConstructor.tsx:111
+#. js-lingui-explicit-id
+msgid "Progress"
+msgstr ""
+"\n"
+"التقدم\n"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:58
 #. js-lingui-explicit-id
@@ -8549,6 +8577,11 @@ msgstr "القارئ"
 #. js-lingui-explicit-id
 msgid "Reading practice"
 msgstr "ممارسة القراءة"
+
+#: src/features/Sentence/TextConstructorSection.tsx:151
+#. js-lingui-explicit-id
+msgid "Ready for a new story?"
+msgstr "جاهز لبدء قصة جديدة؟"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:10
 #. js-lingui-explicit-id
@@ -9249,6 +9282,12 @@ msgid "senior frontend interview"
 msgstr ""
 "plaintext\n"
 "مقابلة تطوير الواجهة الأمامية لكبار الموظفين\n"
+
+#: src/features/Community/CommunityDashboard.tsx:159
+#: src/features/Community/CommunityPage.tsx:35
+#. js-lingui-explicit-id
+msgid "Sentence Constructor"
+msgstr "منشئ الجمل"
 
 #: src/features/Game/UserProfileModal.tsx:94
 #. js-lingui-explicit-id
@@ -10178,8 +10217,8 @@ msgstr "مقابلة تقنية مع مطور واجهة أمامية للذكا
 msgid "Tech stack covered"
 msgstr "تكنولوجيا المُكوِّنة التي تم تغطيتها"
 
-#: src/features/Community/CommunityDashboard.tsx:128
-#: src/features/Community/CommunityPage.tsx:32
+#: src/features/Community/CommunityDashboard.tsx:119
+#: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Tech Support"
 msgstr "الدعم الفني"
@@ -10892,6 +10931,11 @@ msgstr "ترجم الكلمة"
 msgid "Translates"
 msgstr "يترجم"
 
+#: src/features/Sentence/TextConstructor.tsx:130
+#. js-lingui-explicit-id
+msgid "Translation"
+msgstr "ترجمة"
+
 #: src/features/RolePlay/rolePlayData.tsx:757
 #: src/features/RolePlay/rolePlayData.tsx:881
 #. js-lingui-explicit-id
@@ -11064,7 +11108,7 @@ msgstr "افتح لمدة أسبوع واحد"
 msgid "Unlock for 1 year"
 msgstr "افتح لمدة 1 سنة"
 
-#: src/features/Community/CommunityDashboard.tsx:90
+#: src/features/Community/CommunityDashboard.tsx:81
 #: src/features/Dashboard/Dashboard.tsx:77
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
@@ -11082,7 +11126,7 @@ msgid ""
 "specifically to your goals."
 msgstr "افتح محادثات صوتية شبيهة بالبشر ومنهجًا مُخصصًا لأهدافك تحديدًا."
 
-#: src/features/Community/CommunityDashboard.tsx:87
+#: src/features/Community/CommunityDashboard.tsx:78
 #: src/features/Dashboard/Dashboard.tsx:74
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
@@ -12498,7 +12542,7 @@ msgid ""
 "“good” looks like"
 msgstr "أنت مطالب بـ **تصميم الأنظمة بشكل فوري**، لكن لا أحد يخبرك كيف يبدو \"الجيد\""
 
-#: src/features/Community/CommunityDashboard.tsx:86
+#: src/features/Community/CommunityDashboard.tsx:77
 #: src/features/Dashboard/Dashboard.tsx:73
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
@@ -12554,6 +12598,16 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/Sentence/TextConstructorSection.tsx:174
+#. js-lingui-explicit-id
+#~ msgid "Generate Story"
+#~ msgstr "إنشاء قصة"
+
+#: src/features/Sentence/TextConstructorSection.tsx:189
+#. js-lingui-explicit-id
+#~ msgid "Another Image"
+#~ msgstr "صورة أخرى"
 
 #: src/features/Goal/Quiz/GoalReview.tsx:205
 #. js-lingui-explicit-id

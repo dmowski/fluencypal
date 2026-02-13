@@ -171,7 +171,7 @@ export function TextConstructorSection() {
                   }}
                   endIcon={initializing ? <Loader size={'20px'} /> : <Origami size={'20px'} />}
                 >
-                  {initializing ? i18n._('Generating...') : i18n._('Generate Story')}
+                  {initializing ? i18n._('Generating...') : i18n._('Create Story')}
                 </Button>
                 <Button
                   sx={{
@@ -186,7 +186,7 @@ export function TextConstructorSection() {
                   }}
                   endIcon={<RefreshCw size={'20px'} />}
                 >
-                  {i18n._('Another Image')}
+                  {i18n._('New Image')}
                 </Button>
               </Stack>
             </Stack>
