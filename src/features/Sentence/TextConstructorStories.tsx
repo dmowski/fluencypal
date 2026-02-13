@@ -12,6 +12,7 @@ import { TextConstructor } from './TextConstructor';
 import { Loader, Origami, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { shuffleArray } from '@/libs/array';
+import { sleep } from '@/libs/sleep';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
@@ -37,6 +38,14 @@ export const TextConstructorStories = () => {
     setSelectedImage(null);
   };
 
+  const onNext = async () => {
+    setSelectedImage(null);
+    await sleep(30);
+    const currentIndex = images.findIndex((img) => img.url === selectedImage?.url);
+    const nextIndex = (currentIndex + 1) % images.length;
+    setSelectedImage(images[nextIndex]);
+  };
+
   return (
     <Stack
       sx={{
@@ -48,7 +57,9 @@ export const TextConstructorStories = () => {
         position: 'relative',
       }}
     >
-      {selectedImage && <StoryModal imageDescription={selectedImage} onClose={closeStory} />}
+      {selectedImage && (
+        <StoryModal imageDescription={selectedImage} onClose={closeStory} onNext={onNext} />
+      )}
       <Stack
         sx={{
           width: '100%',
@@ -176,9 +187,11 @@ export const TextConstructorStories = () => {
 const StoryModal = ({
   imageDescription,
   onClose,
+  onNext,
 }: {
   imageDescription: ImageDescription;
   onClose: () => void;
+  onNext: () => void;
 }) => {
   const [progress, setProgress] = useState('');
   const ai = useTextAi();
@@ -188,7 +201,7 @@ const StoryModal = ({
   const [sentencesTranslates, setSentencesTranslates] = useState<string[]>([]);
 
   const userTargetLanguage = settings.fullLanguageName;
-  const [isCompleted, setIsCompleted] = useState(true);
+  const [isCompleted, setIsCompleted] = useState(false);
   const onComplete = () => {
     setIsCompleted(true);
   };
@@ -203,6 +216,7 @@ const StoryModal = ({
       userMessage: prompt,
       systemMessage: `You are a helpful assistant for language learners. Generate engaging and simple stories based on image descriptions. The story should be in ${userTargetLanguage} and should be easy to understand for someone learning the language. Avoid complex vocabulary and grammar structures, and focus on creating a clear and enjoyable narrative that helps learners practice their reading skills.`,
       model: 'gpt-4o',
+      cache: true,
     });
     return generatedText;
   };
@@ -400,7 +414,7 @@ const StoryModal = ({
                         sx={{
                           padding: '10px 30px',
                         }}
-                        onClick={() => onClose()}
+                        onClick={() => onNext()}
                         endIcon={<Origami size={'20px'} />}
                       >
                         {i18n._('Try another image')}
@@ -410,6 +424,7 @@ const StoryModal = ({
                         color="info"
                         sx={{
                           padding: '10px 30px',
+                          color: '#fff',
                         }}
                         onClick={() => onClose()}
                         endIcon={<X size={'20px'} />}

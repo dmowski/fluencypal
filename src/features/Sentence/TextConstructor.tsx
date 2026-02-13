@@ -41,11 +41,13 @@ export function TextConstructor({
       `${activePart.sentenceIndex}:${activePart.completedWordsInSentence}:${progress}`,
     );
 
+    const optionsCount = 3;
+
     return generateRandomWordOptions({
       activeSentenceWords: activePart.activeSentenceWords,
       completedWordsInSentence: activePart.completedWordsInSentence,
       correctWord: activePart.nextWord,
-      optionsCount: 3,
+      optionsCount: optionsCount,
       random,
     });
   }, [activePart, progress]);
@@ -80,24 +82,32 @@ export function TextConstructor({
     });
 
     onContinue(nextProgress);
-    if (onComplete && nextProgress === progress) {
-      onComplete();
-    }
   };
 
   const progressPercent = useMemo(() => {
     if (!activePart) {
-      return 0;
+      return 100;
     }
 
-    const totalWords = sentences[activePart.sentenceIndex].split(' ').length;
-    const completedWords =
-      activePart.sentenceIndex * totalWords + activePart.completedWordsInSentence;
+    const totalLetters = sentences.reduce((sum, sentence) => sum + sentence.length, 0);
+    const completedLetters = sentences
+      .slice(0, activePart.sentenceIndex)
+      .reduce((sum, sentence) => sum + sentence.length, 0);
+    const completedWordsInCurrentSentence = activePart.activeSentenceWords
+      .slice(0, activePart.completedWordsInSentence)
+      .join('').length;
 
-    const allWordsCount = sentences.reduce((acc, sentence) => acc + sentence.split(' ').length, 0);
-
-    return Math.round((completedWords / allWordsCount) * 100);
+    return Math.round(((completedLetters + completedWordsInCurrentSentence) / totalLetters) * 100);
   }, [activePart, sentences]);
+
+  useEffect(() => {
+    if (!activePart) {
+      if (onComplete) {
+        onComplete();
+      }
+      return;
+    }
+  }, [activePart, onComplete]);
 
   return (
     <Stack
@@ -123,6 +133,7 @@ export function TextConstructor({
               fontSize: { xs: 28, sm: 36 },
               lineHeight: 1.2,
               wordBreak: 'break-word',
+              textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
             }}
           >
             {progress || '...'}
@@ -133,7 +144,12 @@ export function TextConstructor({
           <Typography variant="caption" sx={{ opacity: 0.75 }}>
             {i18n._('Translation')}
           </Typography>
-          <Typography variant="body1">
+          <Typography
+            variant="body1"
+            sx={{
+              textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
+            }}
+          >
             {activePart?.activeTranslation ?? i18n._('Completed ✅')}
           </Typography>
         </Stack>
