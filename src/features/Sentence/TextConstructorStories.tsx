@@ -9,12 +9,12 @@ import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './splitTextIntoSentences';
 import { TextConstructor } from './TextConstructor';
-import { FlaskConical, Loader, Origami, RefreshCw, X } from 'lucide-react';
+import { FlaskConical, Loader, Origami, RefreshCcw, RefreshCw, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { shuffleArray } from '@/libs/array';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getAiVoiceByVoice } from '../Conversation/CallMode/voiceAvatar';
 import { getVoiceSpeedInstruction } from '../Conversation/CallMode/voiceSpeed';
+import { shuffleArray } from '@/libs/array';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
@@ -22,12 +22,20 @@ export const TextConstructorStories = () => {
 
   const [images, setImages] = useState<ImageDescription[]>([]);
 
+  const reshuffleImages = () => {
+    const countImagesToShow = 10;
+    const imagesToShow = shuffleArray(imageDescriptions).filter((_, index) => {
+      return index >= 0 && index < countImagesToShow;
+    });
+
+    setImages(imagesToShow);
+  };
+
   const initImage = () => {
     if (images.length > 0) {
       return;
     }
-    const randomImages = shuffleArray(imageDescriptions);
-    setImages(randomImages);
+    reshuffleImages();
   };
 
   useEffect(() => {
@@ -86,7 +94,9 @@ export const TextConstructorStories = () => {
             flexDirection: 'row',
             gap: '4px',
             alignItems: 'center',
+            cursor: 'pointer',
           }}
+          onClick={reshuffleImages}
         >
           <FlaskConical size={'12px'} />
           <Typography
@@ -101,6 +111,7 @@ export const TextConstructorStories = () => {
           >
             Experimental
           </Typography>
+          <RefreshCcw size={'11px'} style={{ cursor: 'pointer' }} onClick={reshuffleImages} />
         </Stack>
       </Stack>
 
@@ -250,7 +261,7 @@ const StoryModal = ({
   const isTranslateAvailable = translator.isTranslateAvailable;
 
   const generateTextBasedOnImage = async (image: ImageDescription) => {
-    const prompt = `Write a short story in ${userTargetLanguage} based on the following image description: ${image.fullImageDescription}. The story should be around 40 words and suitable for language learners.`;
+    const prompt = `Write a short story in ${userTargetLanguage} based on the following image description: ${image.fullImageDescription}. The story should be around 140 words and suitable for language learners.`;
     const generatedText = await ai.generate({
       userMessage: prompt,
       systemMessage: `You are a helpful assistant for language learners. Generate engaging and simple stories based on image descriptions. The story should be in ${userTargetLanguage} and should be easy to understand for someone learning the language. Avoid complex vocabulary and grammar structures, and focus on creating a clear and enjoyable narrative that helps learners practice their reading skills.`,
@@ -433,10 +444,8 @@ const StoryModal = ({
               <Stack
                 sx={{
                   width: '100%',
-                  maxWidth: '720px',
-                  maxHeight: '800px',
                   height: '100%',
-                  padding: ' 0 10px 40px 10px',
+                  padding: '0',
                 }}
               >
                 <TextConstructor

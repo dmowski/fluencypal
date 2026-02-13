@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, Stack, Typography } from '@mui/material';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   constructFinalProgress,
   generateRandomWordOptions,
@@ -115,99 +115,166 @@ export function TextConstructor({
     }
   }, [activePart, onComplete]);
   const translator = useTranslate();
-  console.log('translator.isTranslateAvailable', translator.isTranslateAvailable);
+  const scrollableRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!scrollableRef.current) {
+      return;
+    }
+
+    scrollableRef.current.scrollTo({
+      top: scrollableRef.current.scrollHeight,
+      behavior: 'smooth',
+    });
+  }, [progress]);
 
   return (
     <Stack
       sx={{
         width: '100%',
         height: '100%',
-        gap: { xs: '16px', sm: '20px' },
-        justifyContent: 'flex-end',
-        overflow: 'hidden',
       }}
     >
-      <Stack sx={{ gap: { xs: '16px', sm: '20px' } }}>
-        <Stack sx={{ gap: '8px' }}>
-          <Typography variant="caption" sx={{ opacity: 0.75 }}>
-            {i18n._('Progress')}: {progressPercent}%
-          </Typography>
-          {translator.translateModal}
+      {translator.translateModal}
+      <Stack
+        sx={{
+          height: '50%',
+          width: '100%',
+        }}
+      >
+        <Stack
+          sx={{
+            alignItems: 'center',
+            overflowY: 'scroll',
+            height: '100%',
+            //justifyContent: 'flex-end',
+            scrollbarWidth: 'thin',
+            scrollbarColor: '#333 transparent',
+            '&::-webkit-scrollbar': {
+              width: '6px',
+            },
+            '&::-webkit-scrollbar-track': {
+              background: 'transparent',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              background: 'transparent',
+              borderRadius: '3px',
+            },
+          }}
+          ref={scrollableRef}
+        >
           <Stack
-            className="progress"
             sx={{
-              '* p': {
-                fontWeight: '700 !important',
-                lineHeight: '1.2 !important',
-                textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
-                fontSize: '38px !important',
-                '@media (max-width:600px)': {
-                  fontSize: '28px !important',
-                },
-              },
+              width: '100%',
+              alignItems: 'center',
+              overflow: 'visible',
+              justifyContent: 'flex-end',
+              //backgroundColor: 'green',
+              height: 'max(8000px, 50dvh)',
             }}
           >
-            <Markdown
-              onWordClick={
-                translator.isTranslateAvailable
-                  ? (word, element) => {
-                      translator.translateWithModal(word, element);
-                    }
-                  : undefined
-              }
-              variant="conversation"
-            >
-              {progress ? `\n${progress}` : '...'}
-            </Markdown>
-          </Stack>
-        </Stack>
+            <Stack
+              className="progress"
+              sx={{
+                height: 'max-content',
+                //backgroundColor: 'blue',
+                maxWidth: '700px',
+                padding: '0 10px',
+                width: '100%',
 
-        <Stack sx={{ gap: '8px' }}>
-          <Typography variant="caption" sx={{ opacity: 0.75 }}>
-            {i18n._('Translation')}
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
-            }}
-          >
-            {activePart?.activeTranslation ?? i18n._('Completed ✅')}
-          </Typography>
+                '* p': {
+                  fontWeight: '700 !important',
+                  lineHeight: '1.2 !important',
+                  textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
+                  fontSize: '38px !important',
+                  '@media (max-width:600px)': {
+                    fontSize: '28px !important',
+                  },
+                },
+              }}
+            >
+              <Markdown
+                onWordClick={
+                  translator.isTranslateAvailable
+                    ? (word, element) => {
+                        translator.translateWithModal(word, element);
+                      }
+                    : undefined
+                }
+                variant="conversation"
+              >
+                {progress ? `\n${progress}` : '...'}
+              </Markdown>
+            </Stack>
+          </Stack>
         </Stack>
       </Stack>
 
       <Stack
-        direction="row"
         sx={{
-          gap: '8px',
-          flexWrap: 'wrap',
-          py: '8px',
+          height: '50%',
+          width: '100%',
+          paddingTop: '20px',
+          alignItems: 'center',
         }}
       >
-        {options.map((word) => {
-          const isWrongWord = wrongWord === word;
-
-          return (
-            <Button
-              key={word}
-              onClick={() => handlePick(word)}
-              variant="contained"
-              color={isWrongWord ? 'error' : 'info'}
+        <Stack sx={{ maxWidth: '700px', padding: '0 10px', width: '100%' }}>
+          <Stack sx={{ width: '100%' }}>
+            <Typography variant="caption" sx={{ opacity: 0.75 }}>
+              {i18n._('Progress')}: {progressPercent}%
+            </Typography>
+            <Stack
               sx={{
-                fontWeight: 500,
-                textTransform: 'none',
-                //borderRadius: '12px',
-                minHeight: '24px',
-                minWidth: '40px',
-                fontSize: '18px',
-                padding: '5px 20px',
+                minHeight: '76px',
+                width: '100%',
               }}
             >
-              {word}
-            </Button>
-          );
-        })}
+              <Typography
+                variant="body1"
+                sx={{
+                  textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                {activePart?.activeTranslation ?? i18n._('Completed ✅')}
+              </Typography>
+            </Stack>
+          </Stack>
+
+          <Stack
+            direction="row"
+            sx={{
+              gap: '8px',
+              width: '100%',
+              flexWrap: 'wrap',
+              py: '8px',
+            }}
+          >
+            {options.map((word) => {
+              const isWrongWord = wrongWord === word;
+
+              const isCorrectWord = activePart?.nextWord === word;
+
+              return (
+                <Button
+                  key={word}
+                  onClick={() => handlePick(word)}
+                  variant={isCorrectWord ? 'contained' : 'outlined'}
+                  color={isWrongWord ? 'error' : 'info'}
+                  sx={{
+                    fontWeight: 500,
+                    textTransform: 'none',
+                    //borderRadius: '12px',
+                    minHeight: '24px',
+                    minWidth: '40px',
+                    fontSize: '17px',
+                    padding: '5px 15px',
+                  }}
+                >
+                  {word}
+                </Button>
+              );
+            })}
+          </Stack>
+        </Stack>
       </Stack>
     </Stack>
   );

@@ -1,5 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { TextConstructorPlayground } from '@/features/Sentence/TextConstructorPlayground';
+import { PracticeProvider } from '../practiceProvider';
 
 export default function TextConstructorTestPage() {
   return (
@@ -9,7 +10,9 @@ export default function TextConstructorTestPage() {
       </head>
       <body>
         <Stack sx={{}}>
-          <TextConstructorPlayground />
+          <PracticeProvider>
+            <TextConstructorPlayground />
+          </PracticeProvider>
         </Stack>
       </body>
     </html>

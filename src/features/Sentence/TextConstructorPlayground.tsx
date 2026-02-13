@@ -31,7 +31,7 @@ const sentencesTranslates = [
 ];
 
 export function TextConstructorPlayground() {
-  const [progress, setProgress] = useState('');
+  const [progress, setProgress] = useState(sentences.join('\n\n'));
 
   return (
     <Stack sx={{ width: '100%' }}>
