@@ -22,6 +22,7 @@ import { JustTalkCard } from './JustTalkCard';
 import { PreviewCard } from '../Chat/Message/PreviewCard';
 import { StreaksDaysBadge } from './StreaksDaysBadge';
 import { TextConstructorStories } from '../Sentence/TextConstructorStories';
+import { useAuth } from '../Auth/useAuth';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -32,6 +33,8 @@ export function Dashboard({ lang }: DashboardProps) {
 
   const plan = usePlan();
   const { i18n } = useLingui();
+
+  const auth = useAuth();
 
   const access = useAccess();
 
@@ -68,7 +71,7 @@ export function Dashboard({ lang }: DashboardProps) {
           {appNavigation.currentPage === 'home' && (
             <>
               <JustTalkCard />
-              <TextConstructorStories />
+              {auth.isFounder && <TextConstructorStories />}
 
               {!access.isFullAppAccess && (
                 <AccessBadge

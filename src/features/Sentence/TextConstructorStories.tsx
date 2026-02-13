@@ -12,7 +12,6 @@ import { TextConstructor } from './TextConstructor';
 import { Loader, Origami, RefreshCw, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { shuffleArray } from '@/libs/array';
-import { sleep } from '@/libs/sleep';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
