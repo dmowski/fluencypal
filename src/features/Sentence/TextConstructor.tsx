@@ -257,7 +257,7 @@ export function TextConstructor({
                 <Button
                   key={word}
                   onClick={() => handlePick(word)}
-                  variant={isCorrectWord ? 'contained' : 'outlined'}
+                  variant={'contained'}
                   color={isWrongWord ? 'error' : 'info'}
                   sx={{
                     fontWeight: 500,
