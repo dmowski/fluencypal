@@ -301,31 +301,16 @@ const StoryModal = ({
   };
 
   const imageBg = (
-    <Stack
-      sx={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        zIndex: 1,
-        pointerEvents: 'none',
-        opacity: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+    <Image
+      src={imageDescription.url}
+      alt="Today's image"
+      fill
+      sizes="1200px"
+      style={{
+        objectFit: 'cover',
+        boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
       }}
-    >
-      <Image
-        src={imageDescription.url}
-        alt="Today's image"
-        fill
-        sizes="1200px"
-        style={{
-          objectFit: 'cover',
-          boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
-        }}
-      />
-    </Stack>
+    />
   );
 
   return (
