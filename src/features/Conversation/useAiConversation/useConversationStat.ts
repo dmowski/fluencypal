@@ -34,7 +34,7 @@ export const useConversationStat = (
 
     // todo: move to useAiConversationMessages
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
-    const messageCountToCheck = 10;
+    const messageCountToCheck = 5;
     if (
       isNeedToSaveUserInfo &&
       conversation.length >= 3 &&

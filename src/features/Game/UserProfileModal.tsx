@@ -244,22 +244,30 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
             </Stack>
 
             {!isMe && (
-              <Button
-                variant="contained"
-                color="info"
-                size="large"
-                disabled={isAlreadyAskedForBattle}
-                startIcon={<Swords />}
-                onClick={() => {
-                  if (access.isFullAppAccess) {
-                    setIsAskForDebates(true);
-                  } else {
-                    access.showPaymentModal();
-                  }
+              <Stack
+                sx={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: '10px',
                 }}
               >
-                {i18n._('Invite to a debate')}
-              </Button>
+                <Button
+                  variant="contained"
+                  color="info"
+                  size="large"
+                  disabled={isAlreadyAskedForBattle}
+                  startIcon={<Swords />}
+                  onClick={() => {
+                    if (access.isFullAppAccess) {
+                      setIsAskForDebates(true);
+                    } else {
+                      access.showPaymentModal();
+                    }
+                  }}
+                >
+                  {i18n._('Invite to a debate')}
+                </Button>
+              </Stack>
             )}
 
             <Stack

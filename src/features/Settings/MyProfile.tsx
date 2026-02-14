@@ -26,7 +26,6 @@ import { useUrlParam } from '../Url/useUrlParam';
 import { NeedHelpModal } from '../Header/NeedHelpModal';
 import { PaymentHistoryModal } from '../Header/PaymentHistoryModal';
 import { ContactMessageModal } from '../Header/ContactMessageModal';
-import { Trans } from '@lingui/react/macro';
 import { useRouter } from 'next/navigation';
 import { getUrlStart } from '../Lang/getUrlStart';
 import { GameMyAvatar } from '../Game/GameMyAvatar';
