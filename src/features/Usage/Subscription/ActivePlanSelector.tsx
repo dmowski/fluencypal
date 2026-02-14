@@ -52,14 +52,7 @@ export const ActivePlanSelector = ({
         sx={{
           width: '100%',
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
-          gap: '40px 20px',
-          '@media (max-width: 1000px)': {
-            gridTemplateColumns: '1fr 1fr',
-          },
-          '@media (max-width: 700px)': {
-            gridTemplateColumns: '1fr',
-          },
+          gridTemplateColumns: '1fr 1fr',
         }}
       >
         {selectedDuration === 'day' && (

@@ -4,6 +4,7 @@ import { useCurrency } from '@/features/User/useCurrency';
 import { Stack, Typography, Button } from '@mui/material';
 import { ChevronRight } from 'lucide-react';
 import dayjs from 'dayjs';
+import { FeatureList } from '@/features/Landing/Price/FeatureList';
 
 export const SubscriptionCard = ({
   title,
@@ -131,11 +132,12 @@ export const SubscriptionCard = ({
           <Stack
             sx={{
               gap: '5px',
+              width: '100%',
             }}
           >
             <Button
               color="info"
-              variant={isSuggested ? 'contained' : 'outlined'}
+              variant={'contained'}
               size="large"
               onClick={onPay}
               endIcon={<ChevronRight />}
@@ -146,6 +148,14 @@ export const SubscriptionCard = ({
               {buttonLabels[duration]}
             </Button>
           </Stack>
+        </Stack>
+
+        <Stack
+          sx={{
+            paddingTop: '10px',
+          }}
+        >
+          <FeatureList />
         </Stack>
         <Stack
           sx={{

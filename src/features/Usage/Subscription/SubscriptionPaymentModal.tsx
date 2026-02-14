@@ -246,7 +246,7 @@ export const SubscriptionPaymentModal = () => {
       <Stack
         sx={{
           width: '100%',
-          maxWidth: '1200px',
+          maxWidth: '700px',
         }}
         ref={containerRef}
       >
