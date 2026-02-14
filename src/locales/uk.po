@@ -503,7 +503,7 @@ msgstr "Подолайте співбесіду на позицію C# Backend D
 msgid "Achieve Speaking Fluency Fast"
 msgstr "Досягніть швидкого вільного спілкування"
 
-#: src/features/Game/UserProfileModal.tsx:318
+#: src/features/Game/UserProfileModal.tsx:329
 #. js-lingui-explicit-id
 msgid "Achievements"
 msgstr "Досягнення"
@@ -568,7 +568,7 @@ msgstr "Додати допис"
 msgid "Add Response"
 msgstr "Додати відповідь"
 
-#: src/features/Settings/MyProfile.tsx:249
+#: src/features/Settings/MyProfile.tsx:248
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
 msgstr "Додайте деяку інформацію, чому ви хочете відшкодування, і ми це зробимо."
@@ -659,7 +659,7 @@ msgstr ""
 "допоможемо вам якнайшвидше та переконаємось, що ви отримаєте доступ, за "
 "який заплатили."
 
-#: src/features/Game/UserProfileModal.tsx:100
+#: src/features/Game/UserProfileModal.tsx:101
 #. js-lingui-explicit-id
 msgid "AI"
 msgstr "ШІ"
@@ -731,7 +731,7 @@ msgid "AI Interview Practice"
 msgstr "Практика співбесід з AI"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:75
-#: src/features/Settings/MyProfile.tsx:94
+#: src/features/Settings/MyProfile.tsx:93
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
 msgstr "Знання штучного інтелекту про вас"
@@ -777,7 +777,7 @@ msgstr "Вартість AI репетитора"
 msgid "AI Tutor Updates"
 msgstr "Оновлення AI Репетитора"
 
-#: src/features/Settings/MyProfile.tsx:87
+#: src/features/Settings/MyProfile.tsx:86
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "Голос AI"
@@ -1019,7 +1019,7 @@ msgstr "Чи є приховані комісії?"
 msgid "Are you sure you want to delete this attachment?"
 msgstr "Ви впевнені, що хочете видалити це вкладення?"
 
-#: src/features/Chat/ChatPage.tsx:399
+#: src/features/Chat/ChatHeaderFull.tsx:54
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr "Ви впевнені, що хочете видалити цей чат? Цю дію не можна скасувати."
@@ -1146,13 +1146,13 @@ msgstr ""
 #: src/features/Alias/components/LanguageLevel.tsx:96
 #: src/features/Alias/components/PlayersSetup.tsx:308
 #: src/features/Alias/components/RoundSettings.tsx:221
-#: src/features/Chat/ChatPage.tsx:168
+#: src/features/Chat/ChatPage.tsx:153
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Назад"
 
-#: src/features/Chat/ChatPage.tsx:202
+#: src/features/Chat/ChatPage.tsx:187
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Повернутися до списку чатів"
@@ -1199,7 +1199,6 @@ msgstr "На основі вашого резюме, досвіду та ціл�
 msgid "Based on your level, the AI will suggest words to describe."
 msgstr "На основі вашого рівня, ШІ запропонує слова для опису."
 
-#: src/features/Landing/LandingPage.tsx:337
 #: src/features/Landing/PlanLandingBlock.tsx:430
 #. js-lingui-explicit-id
 msgid ""
@@ -1208,6 +1207,15 @@ msgid ""
 msgstr ""
 "На основі вашого початкового введення, FluencyPal миттєво генерує "
 "індивідуальний план навчання саме для вас."
+
+#: src/features/Landing/LandingPage.tsx:337
+#. js-lingui-explicit-id
+msgid ""
+"Based on your onboarding, FluencyPal will create a personalized learning "
+"plan just for you."
+msgstr ""
+"На основі вашого вступного тесту, FluencyPal створить індивідуальний план "
+"навчання саме для вас."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
 #. js-lingui-explicit-id
@@ -1568,21 +1576,21 @@ msgstr "Просування по кар'єрі"
 msgid "Career benefit:"
 msgstr "Користь для кар'єри:"
 
-#: src/features/Chat/ChatPage.tsx:355
-#: src/features/Chat/ChatPage.tsx:357
-#: src/features/Chat/ChatPage.tsx:444
-#: src/features/Chat/ChatPage.tsx:446
-#: src/features/Game/UserProfileModal.tsx:99
+#: src/features/Chat/ChatHeaderFull.tsx:99
+#: src/features/Chat/ChatHeaderFull.tsx:101
+#: src/features/Chat/ChatPage.tsx:340
+#: src/features/Chat/ChatPage.tsx:342
+#: src/features/Game/UserProfileModal.tsx:100
 #. js-lingui-explicit-id
 msgid "Chat"
 msgstr "Чат"
 
-#: src/features/Game/UserProfileModal.tsx:406
+#: src/features/Game/UserProfileModal.tsx:417
 #. js-lingui-explicit-id
 msgid "Chat between you and {userName}"
 msgstr "Чат між вами та {userName}"
 
-#: src/features/Chat/ChatPage.tsx:404
+#: src/features/Chat/ChatHeaderFull.tsx:59
 #. js-lingui-explicit-id
 msgid "Chat deleted successfully."
 msgstr "Чат успішно видалено."
@@ -1592,7 +1600,7 @@ msgstr "Чат успішно видалено."
 msgid "Chat history"
 msgstr "Історія чату"
 
-#: src/features/Chat/ChatPage.tsx:199
+#: src/features/Chat/ChatPage.tsx:184
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Чат не знайдено або у вас немає доступу до нього."
@@ -1708,7 +1716,7 @@ msgstr "Виберіть рівень мови"
 msgid "Choose Site Language"
 msgstr "Виберіть мову сайту"
 
-#: src/features/Settings/MyProfile.tsx:88
+#: src/features/Settings/MyProfile.tsx:87
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "Виберіть голос для свого AI вчителя"
@@ -1750,7 +1758,7 @@ msgstr ""
 #: src/features/Ai/AiKnowledgeModal.tsx:140
 #: src/features/Conversation/CallMode/CallButtons.tsx:660
 #: src/features/Game/Battle/BattleActionModal.tsx:299
-#: src/features/Game/UserProfileModal.tsx:146
+#: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
 #: src/features/Sentence/TextConstructorStories.tsx:523
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
@@ -1972,7 +1980,7 @@ msgstr ""
 "Послідовне вдосконалення завдяки структурованому навчанню проведення "
 "інтерв'ю та персоналізованій практиці."
 
-#: src/features/Game/UserProfileModal.tsx:101
+#: src/features/Game/UserProfileModal.tsx:102
 #. js-lingui-explicit-id
 msgid "Constructor"
 msgstr "Конструктор"
@@ -2323,8 +2331,8 @@ msgstr "Щоденне інтерв’ю без страху бути осудж
 msgid "Daily Language Practice"
 msgstr "Щоденна практика мови"
 
-#: src/features/Chat/ChatPage.tsx:353
-#: src/features/Chat/ChatPage.tsx:442
+#: src/features/Chat/ChatHeaderFull.tsx:97
+#: src/features/Chat/ChatPage.tsx:338
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Щоденний запитання чат"
@@ -2393,8 +2401,8 @@ msgstr "днів поспіль!"
 msgid "Debate"
 msgstr "Дебати"
 
-#: src/features/Chat/ChatPage.tsx:352
-#: src/features/Chat/ChatPage.tsx:441
+#: src/features/Chat/ChatHeaderFull.tsx:96
+#: src/features/Chat/ChatPage.tsx:337
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Дискусійний чат"
@@ -2404,12 +2412,12 @@ msgstr "Дискусійний чат"
 msgid "Debate ended!"
 msgstr "Дебати завершено!"
 
-#: src/features/Game/UserProfileModal.tsx:157
+#: src/features/Game/UserProfileModal.tsx:158
 #. js-lingui-explicit-id
 msgid "Debate Request"
 msgstr "Запит на дебати"
 
-#: src/features/Game/UserProfileModal.tsx:142
+#: src/features/Game/UserProfileModal.tsx:143
 #. js-lingui-explicit-id
 msgid "Debate Request Sent!"
 msgstr "Запит на дебати надіслано!"
@@ -2419,7 +2427,7 @@ msgstr "Запит на дебати надіслано!"
 msgid "Debate started!"
 msgstr "Дебати розпочаті!"
 
-#: src/features/Game/UserProfileModal.tsx:178
+#: src/features/Game/UserProfileModal.tsx:179
 #. js-lingui-explicit-id
 msgid "Debate topics will be selected randomly."
 msgstr "Теми для дебатів обиратимуться випадковим чином."
@@ -2446,7 +2454,7 @@ msgstr "Видалити аккаунт"
 msgid "Delete account (Total)"
 msgstr "Видалити обліковий запис (Усього)"
 
-#: src/features/Chat/ChatPage.tsx:501
+#: src/features/Chat/ChatHeaderFull.tsx:171
 #. js-lingui-explicit-id
 msgid "Delete chat"
 msgstr "Видалити чат"
@@ -2548,6 +2556,11 @@ msgstr "Опишіть слово, яке ви бачите на екрані, �
 msgid "Describe these words:"
 msgstr "Опишіть ці слова:"
 
+#: src/features/User/ReportModal.tsx:60
+#. js-lingui-explicit-id
+msgid "Describe what happened and why you are reporting this user."
+msgstr "Опишіть, що сталося і чому ви повідомляєте про цього користувача."
+
 #: src/features/RolePlay/rolePlayData.tsx:1111
 #. js-lingui-explicit-id
 msgid "Describe your custom scenario here..."
@@ -2639,7 +2652,7 @@ msgstr ""
 "Відкрийте для себе ефективні щоденні звички, які допоможуть вам легко та "
 "швидко вдосконалити ваші навички бізнес-англійської."
 
-#: src/features/Game/UserProfileModal.tsx:158
+#: src/features/Game/UserProfileModal.tsx:159
 #. js-lingui-explicit-id
 msgid "Discuss and improve your skills together!"
 msgstr "Обговорюйте та вдосконалюйте свої навички разом!"
@@ -2767,7 +2780,7 @@ msgstr ""
 "варіанти лікування. Під час природної бесіди ви вдосконалите свої "
 "комунікаційні навички в професійному медичному контексті."
 
-#: src/features/Game/UserProfileModal.tsx:97
+#: src/features/Game/UserProfileModal.tsx:98
 #. js-lingui-explicit-id
 msgid "Discussions"
 msgstr "Обговорення"
@@ -3645,6 +3658,17 @@ msgstr ""
 msgid "Failed to send feedback. Please try again later."
 msgstr "Не вдалося відправити відгук. Будь ласка, спробуйте ще раз пізніше."
 
+#: src/features/User/useUserReport.tsx:58
+#. js-lingui-explicit-id
+msgid ""
+"Failed to submit report. Please try to use support chat to report this user "
+"or send email with details to"
+msgstr ""
+"\n"
+"Не вдалося надіслати звіт. Будь ласка, спробуйте скористатися чатом "
+"підтримки, щоб повідомити про цього користувача, або надішліть електронний "
+"лист з деталями на\n"
+
 #: src/features/Game/UploadImageButton.tsx:47
 #: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
@@ -3684,7 +3708,7 @@ msgid "Fast Answer Practice"
 msgstr "Практика Швидкої Відповіді"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/Settings/MyProfile.tsx:257
+#: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Відгук"
@@ -3713,7 +3737,6 @@ msgstr "Розмір файлу повинен бути меншим за 250MB"
 msgid "File size must be less than 50MB"
 msgstr "Розмір файлу має бути менше 50 МБ"
 
-#: src/features/Landing/LandingPage.tsx:282
 #: src/features/Landing/PlanLandingBlock.tsx:393
 #. js-lingui-explicit-id
 msgid ""
@@ -3722,6 +3745,15 @@ msgid ""
 msgstr ""
 "Заповніть опитування приєднання, щоб допомогти FluencyPal зрозуміти ваші "
 "цілі та вподобання."
+
+#: src/features/Landing/LandingPage.tsx:282
+#. js-lingui-explicit-id
+msgid ""
+"Fill out an onboarding quiz to help FluencyPal understand your goals and "
+"preferences."
+msgstr ""
+"Заповніть опитувальник для онбордингу, щоб FluencyPal зрозумів ваші цілі та "
+"уподобання."
 
 #: src/features/Alias/components/GameEnd.tsx:101
 #. js-lingui-explicit-id
@@ -4137,7 +4169,7 @@ msgid "frontend system design interview"
 msgstr "інтерв’ю з проектування систем фронтенду"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:136
-#: src/features/Settings/MyProfile.tsx:74
+#: src/features/Settings/MyProfile.tsx:73
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:452
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:500
@@ -4404,7 +4436,7 @@ msgstr ""
 "прихованих платежів."
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
-#: src/features/Game/UserProfileModal.tsx:437
+#: src/features/Game/UserProfileModal.tsx:448
 #: src/features/Usage/FeatureBlocker.tsx:99
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:679
 #. js-lingui-explicit-id
@@ -4423,7 +4455,7 @@ msgstr ""
 "повний аналіз. Ми використовуємо карту, щоб запобігти зловживанням і надати "
 "вам безперервний доступ до всіх функцій."
 
-#: src/features/Game/UserProfileModal.tsx:429
+#: src/features/Game/UserProfileModal.tsx:440
 #. js-lingui-explicit-id
 msgid "Get full access to use the chat and many other features!"
 msgstr "Отримайте повний доступ до чату та багатьох інших функцій!"
@@ -4528,8 +4560,8 @@ msgstr "Дайте невеликий приклад (лічильник, вве
 msgid "Give it a few weeks. That’s when real confidence builds."
 msgstr "Дайте цьому кілька тижнів. Саме тоді з'являється справжня впевненість."
 
-#: src/features/Chat/ChatPage.tsx:354
-#: src/features/Chat/ChatPage.tsx:443
+#: src/features/Chat/ChatHeaderFull.tsx:98
+#: src/features/Chat/ChatPage.tsx:339
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Глобальний чат"
@@ -4735,7 +4767,7 @@ msgstr "Насолоджуйтесь!"
 msgid "Health"
 msgstr "Здоров'я"
 
-#: src/features/Settings/MyProfile.tsx:107
+#: src/features/Settings/MyProfile.tsx:106
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Допомога"
@@ -5592,7 +5624,7 @@ msgstr ""
 msgid "If you want to try before you buy."
 msgstr "Якщо ви хочете спробувати перед покупкою."
 
-#: src/features/Game/UserProfileModal.tsx:96
+#: src/features/Game/UserProfileModal.tsx:97
 #. js-lingui-explicit-id
 msgid "Images"
 msgstr "Зображення"
@@ -5795,12 +5827,12 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid ""
 "Improving your English speaking skills doesn't have to be complicated. With "
-"FluencyPal, anyone can practice confidently and see real progress in "
-"minutes, regardless of their current level."
+"FluencyPal, anyone can practice confidently and see real progress in weeks, "
+"regardless of their current level."
 msgstr ""
-"Покращення ваших навичок розмовної англійської мови не повинно бути "
-"складним. З FluencyPal кожен може впевнено практикуватися та бачити "
-"реальний прогрес за лічені хвилини, незалежно від свого поточного рівня."
+"Покращення навичок розмовної англійської не обов'язково має бути складним. "
+"З FluencyPal кожен може впевнено практикуватися і бачити реальний прогрес "
+"упродовж кількох тижнів, незалежно від свого поточного рівня."
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:12
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:12
@@ -6324,7 +6356,7 @@ msgstr "Вступ: Невимушена бесіда з інтерв'юером
 msgid "Invite Link Sent to:"
 msgstr "Запрошувальне посилання надіслано на:"
 
-#: src/features/Game/UserProfileModal.tsx:261
+#: src/features/Game/UserProfileModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Invite to a debate"
 msgstr "Запрос на дебати"
@@ -6537,7 +6569,7 @@ msgstr ""
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "Отримати свою першу роботу розробника важче, ніж мало б бути"
 
-#: src/features/Settings/MyProfile.tsx:80
+#: src/features/Settings/MyProfile.tsx:79
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Мова"
@@ -6599,7 +6631,7 @@ msgstr "Мови, встановлені у вашому мозку:"
 msgid "Last Visit"
 msgstr "Останній візит"
 
-#: src/features/Chat/ChatPage.tsx:475
+#: src/features/Chat/ChatHeaderFull.tsx:130
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "Останній візит: {lastVisited}"
@@ -6694,8 +6726,8 @@ msgid "Learning Plan"
 msgstr "План навчання"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:250
-#: src/features/Settings/MyProfile.tsx:259
+#: src/features/Settings/MyProfile.tsx:249
+#: src/features/Settings/MyProfile.tsx:258
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Залиште своє повідомлення"
@@ -6832,12 +6864,12 @@ msgid "Loading..."
 msgstr "Завантаження..."
 
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:122
+#: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Вийти"
 
-#: src/features/Settings/MyProfile.tsx:123
+#: src/features/Settings/MyProfile.tsx:122
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Вийти з вашого облікового запису"
@@ -6884,12 +6916,12 @@ msgstr "Переконайтеся, що ваша веб-камера працю
 msgid "Malay Learning Plan"
 msgstr "План вивчення малайської"
 
-#: src/features/Settings/MyProfile.tsx:75
+#: src/features/Settings/MyProfile.tsx:74
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Керуйте налаштуваннями повного доступу"
 
-#: src/features/Settings/MyProfile.tsx:171
+#: src/features/Settings/MyProfile.tsx:170
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Керуйте налаштуваннями свого профілю та перевіряйте свій прогрес"
@@ -7165,7 +7197,7 @@ msgid "natural and not robotic"
 msgstr "природній і не роботизований"
 
 #: src/features/Community/SupportPage.tsx:37
-#: src/features/Settings/MyProfile.tsx:108
+#: src/features/Settings/MyProfile.tsx:107
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Потрібна допомога?"
@@ -7824,7 +7856,7 @@ msgid "Payment failed! Please try again."
 msgstr "Оплата не пройшла! Спробуйте ще раз."
 
 #: src/features/Header/PaymentHistoryModal.tsx:65
-#: src/features/Settings/MyProfile.tsx:113
+#: src/features/Settings/MyProfile.tsx:112
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Історія платежів"
@@ -8093,7 +8125,7 @@ msgstr "Будь ласка, натисніть на меню ⋮ та обер�
 msgid "Please wait while we process your payment."
 msgstr "Зачекайте, поки ми обробляємо ваш платіж."
 
-#: src/features/Game/UserProfileModal.tsx:306
+#: src/features/Game/UserProfileModal.tsx:317
 #. js-lingui-explicit-id
 msgid "Points"
 msgstr "Бали"
@@ -8120,7 +8152,7 @@ msgstr "План навчання польської"
 msgid "Portuguese Learning Plan"
 msgstr "План вивчення португальської"
 
-#: src/features/Game/UserProfileModal.tsx:289
+#: src/features/Game/UserProfileModal.tsx:300
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "Посада"
@@ -8784,7 +8816,7 @@ msgstr ""
 msgid "Read the text"
 msgstr "Прочитайте текст"
 
-#: src/features/Game/UserProfileModal.tsx:98
+#: src/features/Game/UserProfileModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Reader"
 msgstr "Читач"
@@ -9068,7 +9100,7 @@ msgstr "Рефлекс"
 msgid "Refresh"
 msgstr "Оновити"
 
-#: src/features/Settings/MyProfile.tsx:248
+#: src/features/Settings/MyProfile.tsx:247
 #. js-lingui-explicit-id
 msgid "Refund"
 msgstr "Відшкодування"
@@ -9139,10 +9171,26 @@ msgstr "Звіт"
 msgid "Report message"
 msgstr "Повідомити про повідомлення"
 
+#: src/features/User/useUserReport.tsx:53
+#. js-lingui-explicit-id
+msgid "Report submitted, we will review it."
+msgstr "Звіт подано, ми його розглянемо."
+
 #: src/features/Chat/Message/Message.tsx:204
 #. js-lingui-explicit-id
 msgid "Report submitted. Thank you. We will review your request."
 msgstr "Звіт надіслано. Дякуємо. Ми розглянемо ваш запит."
+
+#: src/features/User/ReportModal.tsx:56
+#: src/features/User/UserMenu.tsx:38
+#. js-lingui-explicit-id
+msgid "Report User"
+msgstr "Повідомити про користувача"
+
+#: src/features/Chat/ChatHeaderFull.tsx:158
+#. js-lingui-explicit-id
+msgid "Report user"
+msgstr "Повідомити про користувача"
 
 #: src/features/Header/PaymentHistoryModal.tsx:253
 #. js-lingui-explicit-id
@@ -9203,7 +9251,7 @@ msgstr "Повернення"
 msgid "Returning an Item to a Store"
 msgstr "Повернення товару в магазин"
 
-#: src/features/Settings/MyProfile.tsx:95
+#: src/features/Settings/MyProfile.tsx:94
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "Перегляньте та відредагуйте те, що AI запам’ятовує"
@@ -9435,7 +9483,7 @@ msgstr "Виберіть голос, який ваш AI-вчитель вико�
 msgid "Select your game avatar"
 msgstr "Виберіть свій аватар у грі"
 
-#: src/features/Settings/MyProfile.tsx:81
+#: src/features/Settings/MyProfile.tsx:80
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Виберіть вашу бажану мову"
@@ -9487,7 +9535,7 @@ msgstr "Надішліть мені посилання для входу"
 msgid "Send Message"
 msgstr "Надіслати повідомлення"
 
-#: src/features/Game/UserProfileModal.tsx:160
+#: src/features/Game/UserProfileModal.tsx:161
 #. js-lingui-explicit-id
 msgid "Send Request"
 msgstr "Надіслати запит"
@@ -9540,7 +9588,7 @@ msgstr "співбесіда на позицію старшого фронтен
 msgid "Sentence Constructor"
 msgstr "Конструктор речень"
 
-#: src/features/Game/UserProfileModal.tsx:95
+#: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Sentences"
 msgstr "Речення"
@@ -10302,10 +10350,20 @@ msgstr "Надіслати відповідь"
 msgid "Submit Answers"
 msgstr "Надіслати відповіді"
 
+#: src/features/User/ReportModal.tsx:101
+#. js-lingui-explicit-id
+msgid "Submit Report"
+msgstr "Надіслати звіт"
+
 #: src/features/Header/PaymentHistoryModal.tsx:227
 #. js-lingui-explicit-id
 msgid "Submit Request"
 msgstr "Надіслати Запит"
+
+#: src/features/User/ReportModal.tsx:101
+#. js-lingui-explicit-id
+msgid "Submitting..."
+msgstr "Надсилання..."
 
 #: src/features/Header/PaymentHistoryModal.tsx:31
 #. js-lingui-explicit-id
@@ -10722,7 +10780,7 @@ msgstr ""
 "Персоналізований зворотній зв'язок показав мені точно, що я робив не так у "
 "своїх технічних поясненнях. Це змінило правила гри."
 
-#: src/features/Game/UserProfileModal.tsx:172
+#: src/features/Game/UserProfileModal.tsx:173
 #. js-lingui-explicit-id
 msgid "The request will be sent to user {userName}."
 msgstr "Запит буде надіслано користувачу {userName}."
@@ -10732,7 +10790,7 @@ msgstr "Запит буде надіслано користувачу {userName}
 msgid "The winner earns {points} game points!"
 msgstr "Переможець заробляє {points} ігрових балів!"
 
-#: src/features/Game/UserProfileModal.tsx:166
+#: src/features/Game/UserProfileModal.tsx:167
 #. js-lingui-explicit-id
 msgid "The winner gets {points} game points!"
 msgstr "Переможець отримує {points} ігрових балів!"
@@ -11223,7 +11281,7 @@ msgstr "Please provide the text that needs to be translated into Ukrainian."
 msgid "Translate the word"
 msgstr "Перекладіть слово"
 
-#: src/features/Game/UserProfileModal.tsx:94
+#: src/features/Game/UserProfileModal.tsx:95
 #. js-lingui-explicit-id
 msgid "Translates"
 msgstr "Перекладати"
@@ -11580,7 +11638,7 @@ msgstr "Переглянути турнірну таблицю"
 msgid "View your payment history"
 msgstr "Переглянути вашу історію платежів"
 
-#: src/features/Settings/MyProfile.tsx:114
+#: src/features/Settings/MyProfile.tsx:113
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "Перегляньте вашу історію платежів. Повернення коштів"
@@ -11645,7 +11703,7 @@ msgstr "Очікування підтвердження від інших гра
 msgid "Waiting for payment..."
 msgstr "Очікування платежу..."
 
-#: src/features/Game/UserProfileModal.tsx:143
+#: src/features/Game/UserProfileModal.tsx:144
 #. js-lingui-explicit-id
 msgid "Waiting for {userName} to respond."
 msgstr "Очікування відповіді від {userName}."
@@ -11787,7 +11845,7 @@ msgstr "Варшава"
 msgid "WCAG Standards"
 msgstr "Стандарти WCAG"
 
-#: src/features/Settings/MyProfile.tsx:258
+#: src/features/Settings/MyProfile.tsx:257
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Ми цінуємо ваш відгук!"
@@ -12246,6 +12304,11 @@ msgstr ""
 "Завершіть інтерв'ю з вдячністю та впевненістю. Використовуйте ці фрази, щоб "
 "закінчити на позитивній ноті:"
 
+#: src/features/User/ReportModal.tsx:82
+#. js-lingui-explicit-id
+msgid "Write your report here"
+msgstr "Напишіть свій звіт тут"
+
 #: src/features/Telegram/TgAppPage.tsx:94
 #. js-lingui-explicit-id
 msgid "Wrong Link"
@@ -12518,7 +12581,7 @@ msgstr ""
 "закінчиться, щоб уникнути\n"
 "переривання обслуговування."
 
-#: src/features/Game/UserProfileModal.tsx:183
+#: src/features/Game/UserProfileModal.tsx:184
 #. js-lingui-explicit-id
 msgid "You can track the progress on the main page."
 msgstr "Ви можете відстежувати прогрес на головній сторінці."
@@ -12602,7 +12665,7 @@ msgstr ""
 msgid "You have full access"
 msgstr "Ви маєте повний доступ"
 
-#: src/features/Chat/ChatPage.tsx:225
+#: src/features/Chat/ChatPage.tsx:210
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "У вас ще немає чатів."
@@ -12928,6 +12991,17 @@ msgid ""
 msgstr ""
 "— важливо задіяти цю коротку розмову, перш ніж приступати до професійних "
 "тем. Ось деякі корисні англійські фрази для початку інтерв'ю:"
+
+#: src/features/Landing/LandingPage.tsx:271
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Improving your English speaking skills doesn't have to be complicated. With "
+#~ "FluencyPal, anyone can practice confidently and see real progress in "
+#~ "minutes, regardless of their current level."
+#~ msgstr ""
+#~ "Покращення ваших навичок розмовної англійської мови не повинно бути "
+#~ "складним. З FluencyPal кожен може впевнено практикуватися та бачити "
+#~ "реальний прогрес за лічені хвилини, незалежно від свого поточного рівня."
 
 #: src/features/Sentence/TextConstructor.tsx:145
 #. js-lingui-explicit-id

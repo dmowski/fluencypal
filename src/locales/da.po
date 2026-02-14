@@ -499,7 +499,7 @@ msgstr "Bliv klar til din C# Backend-udvikler interview"
 msgid "Achieve Speaking Fluency Fast"
 msgstr "Opnå tale- og flydende hurtigt"
 
-#: src/features/Game/UserProfileModal.tsx:318
+#: src/features/Game/UserProfileModal.tsx:329
 #. js-lingui-explicit-id
 msgid "Achievements"
 msgstr "Præstationer"
@@ -564,7 +564,7 @@ msgstr "Tilføj Indlæg"
 msgid "Add Response"
 msgstr "Tilføj svar"
 
-#: src/features/Settings/MyProfile.tsx:249
+#: src/features/Settings/MyProfile.tsx:248
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
 msgstr ""
@@ -657,7 +657,7 @@ msgstr ""
 "dig så hurtigt som muligt og sikre, at du modtager den adgang, du har "
 "betalt for."
 
-#: src/features/Game/UserProfileModal.tsx:100
+#: src/features/Game/UserProfileModal.tsx:101
 #. js-lingui-explicit-id
 msgid "AI"
 msgstr "AI"
@@ -729,7 +729,7 @@ msgid "AI Interview Practice"
 msgstr "AI Interview Praktik"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:75
-#: src/features/Settings/MyProfile.tsx:94
+#: src/features/Settings/MyProfile.tsx:93
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
 msgstr "AI-viden om dig"
@@ -775,7 +775,7 @@ msgstr "AI vejleder omkostninger"
 msgid "AI Tutor Updates"
 msgstr "AI Tutor Opdateringer"
 
-#: src/features/Settings/MyProfile.tsx:87
+#: src/features/Settings/MyProfile.tsx:86
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "AI-stemme"
@@ -1015,7 +1015,7 @@ msgstr "Er der nogle skjulte gebyrer?"
 msgid "Are you sure you want to delete this attachment?"
 msgstr "Er du sikker på, at du vil slette denne vedhæftede fil?"
 
-#: src/features/Chat/ChatPage.tsx:399
+#: src/features/Chat/ChatHeaderFull.tsx:54
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr ""
@@ -1144,13 +1144,13 @@ msgstr ""
 #: src/features/Alias/components/LanguageLevel.tsx:96
 #: src/features/Alias/components/PlayersSetup.tsx:308
 #: src/features/Alias/components/RoundSettings.tsx:221
-#: src/features/Chat/ChatPage.tsx:168
+#: src/features/Chat/ChatPage.tsx:153
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Tilbage"
 
-#: src/features/Chat/ChatPage.tsx:202
+#: src/features/Chat/ChatPage.tsx:187
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Tilbage til chatliste"
@@ -1197,7 +1197,6 @@ msgstr "Baseret på dit CV, din erfaring og den målrettede rolle."
 msgid "Based on your level, the AI will suggest words to describe."
 msgstr "Baseret på dit niveau vil AI foreslå ord til at beskrive."
 
-#: src/features/Landing/LandingPage.tsx:337
 #: src/features/Landing/PlanLandingBlock.tsx:430
 #. js-lingui-explicit-id
 msgid ""
@@ -1206,6 +1205,15 @@ msgid ""
 msgstr ""
 "Baseret på din implementering, genererer FluencyPal øjeblikkeligt en "
 "skræddersyet læringsplan kun for dig."
+
+#: src/features/Landing/LandingPage.tsx:337
+#. js-lingui-explicit-id
+msgid ""
+"Based on your onboarding, FluencyPal will create a personalized learning "
+"plan just for you."
+msgstr ""
+"Baseret på din introduktion vil FluencyPal oprette en personlig læringsplan "
+"kun til dig."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
 #. js-lingui-explicit-id
@@ -1565,21 +1573,21 @@ msgstr "Karrierefremme"
 msgid "Career benefit:"
 msgstr "Karriere fordel:"
 
-#: src/features/Chat/ChatPage.tsx:355
-#: src/features/Chat/ChatPage.tsx:357
-#: src/features/Chat/ChatPage.tsx:444
-#: src/features/Chat/ChatPage.tsx:446
-#: src/features/Game/UserProfileModal.tsx:99
+#: src/features/Chat/ChatHeaderFull.tsx:99
+#: src/features/Chat/ChatHeaderFull.tsx:101
+#: src/features/Chat/ChatPage.tsx:340
+#: src/features/Chat/ChatPage.tsx:342
+#: src/features/Game/UserProfileModal.tsx:100
 #. js-lingui-explicit-id
 msgid "Chat"
 msgstr "Chat"
 
-#: src/features/Game/UserProfileModal.tsx:406
+#: src/features/Game/UserProfileModal.tsx:417
 #. js-lingui-explicit-id
 msgid "Chat between you and {userName}"
 msgstr "Chat mellem dig og {userName}"
 
-#: src/features/Chat/ChatPage.tsx:404
+#: src/features/Chat/ChatHeaderFull.tsx:59
 #. js-lingui-explicit-id
 msgid "Chat deleted successfully."
 msgstr "Chat slettet med succes."
@@ -1589,7 +1597,7 @@ msgstr "Chat slettet med succes."
 msgid "Chat history"
 msgstr "Chat historik"
 
-#: src/features/Chat/ChatPage.tsx:199
+#: src/features/Chat/ChatPage.tsx:184
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Chat ikke fundet, eller du har ikke adgang til det."
@@ -1705,7 +1713,7 @@ msgstr "Vælg sprogniveau"
 msgid "Choose Site Language"
 msgstr "Vælg sprog for websiden"
 
-#: src/features/Settings/MyProfile.tsx:88
+#: src/features/Settings/MyProfile.tsx:87
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "Vælg stemmen til din AI-lærer"
@@ -1747,7 +1755,7 @@ msgstr ""
 #: src/features/Ai/AiKnowledgeModal.tsx:140
 #: src/features/Conversation/CallMode/CallButtons.tsx:660
 #: src/features/Game/Battle/BattleActionModal.tsx:299
-#: src/features/Game/UserProfileModal.tsx:146
+#: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
 #: src/features/Sentence/TextConstructorStories.tsx:523
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
@@ -1969,7 +1977,7 @@ msgstr ""
 "Konsistent forbedring med struktureret interviewcoaching og personliggjort "
 "praksis."
 
-#: src/features/Game/UserProfileModal.tsx:101
+#: src/features/Game/UserProfileModal.tsx:102
 #. js-lingui-explicit-id
 msgid "Constructor"
 msgstr "Konstruktør"
@@ -2319,8 +2327,8 @@ msgstr "Daglig interview uden frygt for vurdering"
 msgid "Daily Language Practice"
 msgstr "Daglig Sprogpraksis"
 
-#: src/features/Chat/ChatPage.tsx:353
-#: src/features/Chat/ChatPage.tsx:442
+#: src/features/Chat/ChatHeaderFull.tsx:97
+#: src/features/Chat/ChatPage.tsx:338
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Dagligt spørgsmål chat"
@@ -2389,8 +2397,8 @@ msgstr "dage i træk!"
 msgid "Debate"
 msgstr "Debat"
 
-#: src/features/Chat/ChatPage.tsx:352
-#: src/features/Chat/ChatPage.tsx:441
+#: src/features/Chat/ChatHeaderFull.tsx:96
+#: src/features/Chat/ChatPage.tsx:337
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Debat Chat"
@@ -2400,12 +2408,12 @@ msgstr "Debat Chat"
 msgid "Debate ended!"
 msgstr "Debat afsluttet!"
 
-#: src/features/Game/UserProfileModal.tsx:157
+#: src/features/Game/UserProfileModal.tsx:158
 #. js-lingui-explicit-id
 msgid "Debate Request"
 msgstr "Anmodning om debat"
 
-#: src/features/Game/UserProfileModal.tsx:142
+#: src/features/Game/UserProfileModal.tsx:143
 #. js-lingui-explicit-id
 msgid "Debate Request Sent!"
 msgstr "Debatanmodning sendt!"
@@ -2415,7 +2423,7 @@ msgstr "Debatanmodning sendt!"
 msgid "Debate started!"
 msgstr "Debat startet!"
 
-#: src/features/Game/UserProfileModal.tsx:178
+#: src/features/Game/UserProfileModal.tsx:179
 #. js-lingui-explicit-id
 msgid "Debate topics will be selected randomly."
 msgstr "Debatemner vil blive valgt tilfældigt."
@@ -2442,7 +2450,7 @@ msgstr "Slet konto"
 msgid "Delete account (Total)"
 msgstr "Slet konto (Total)"
 
-#: src/features/Chat/ChatPage.tsx:501
+#: src/features/Chat/ChatHeaderFull.tsx:171
 #. js-lingui-explicit-id
 msgid "Delete chat"
 msgstr "Slet chat"
@@ -2544,6 +2552,11 @@ msgstr "Beskriv ordet du ser på skærmen uden at bruge selve ordet!"
 msgid "Describe these words:"
 msgstr "Beskriv disse ord:"
 
+#: src/features/User/ReportModal.tsx:60
+#. js-lingui-explicit-id
+msgid "Describe what happened and why you are reporting this user."
+msgstr "Beskriv, hvad der skete, og hvorfor du rapporterer denne bruger."
+
 #: src/features/RolePlay/rolePlayData.tsx:1111
 #. js-lingui-explicit-id
 msgid "Describe your custom scenario here..."
@@ -2633,7 +2646,7 @@ msgstr ""
 "Opdag effektive daglige vaner til ubesværet og hurtigt at forbedre dine "
 "forretning engelskkundskaber."
 
-#: src/features/Game/UserProfileModal.tsx:158
+#: src/features/Game/UserProfileModal.tsx:159
 #. js-lingui-explicit-id
 msgid "Discuss and improve your skills together!"
 msgstr "Diskutér og forbedr dine færdigheder sammen!"
@@ -2758,7 +2771,7 @@ msgstr ""
 "behandlinger. Ved at samtale naturligt, vil du forfine dine "
 "kommunikationsevner i en professionel sundhedskontekst."
 
-#: src/features/Game/UserProfileModal.tsx:97
+#: src/features/Game/UserProfileModal.tsx:98
 #. js-lingui-explicit-id
 msgid "Discussions"
 msgstr "Diskussioner"
@@ -3626,6 +3639,15 @@ msgstr "Fejlede i at slette din konto. Prøv igen senere, eller kontakt udvikler
 msgid "Failed to send feedback. Please try again later."
 msgstr "Kunne ikke sende feedback. Prøv igen senere."
 
+#: src/features/User/useUserReport.tsx:58
+#. js-lingui-explicit-id
+msgid ""
+"Failed to submit report. Please try to use support chat to report this user "
+"or send email with details to"
+msgstr ""
+"Fejl ved indsendelse af rapport. Prøv at bruge supportchatten til at "
+"rapportere denne bruger, eller send en e-mail med detaljer til"
+
 #: src/features/Game/UploadImageButton.tsx:47
 #: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
@@ -3665,7 +3687,7 @@ msgid "Fast Answer Practice"
 msgstr "Hurtig Svar Praksis"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/Settings/MyProfile.tsx:257
+#: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Tilbagemelding"
@@ -3694,7 +3716,6 @@ msgstr "Filstørrelsen skal være mindre end 250MB"
 msgid "File size must be less than 50MB"
 msgstr "Filstørrelsen skal være mindre end 50 MB"
 
-#: src/features/Landing/LandingPage.tsx:282
 #: src/features/Landing/PlanLandingBlock.tsx:393
 #. js-lingui-explicit-id
 msgid ""
@@ -3702,6 +3723,15 @@ msgid ""
 "preferences."
 msgstr ""
 " udfyld en onboarding quiz for at hjælpe FluencyPal med at forstå dine mål "
+"og præferencer."
+
+#: src/features/Landing/LandingPage.tsx:282
+#. js-lingui-explicit-id
+msgid ""
+"Fill out an onboarding quiz to help FluencyPal understand your goals and "
+"preferences."
+msgstr ""
+"Udfyld en onboarding-quiz for at hjælpe FluencyPal med at forstå dine mål "
 "og præferencer."
 
 #: src/features/Alias/components/GameEnd.tsx:101
@@ -4084,7 +4114,7 @@ msgid "frontend system design interview"
 msgstr "frontend system design interview"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:136
-#: src/features/Settings/MyProfile.tsx:74
+#: src/features/Settings/MyProfile.tsx:73
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:452
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:500
@@ -4349,7 +4379,7 @@ msgstr ""
 "nyd AI-drevet sprogpraksis uden abonnementer eller skjulte gebyrer."
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
-#: src/features/Game/UserProfileModal.tsx:437
+#: src/features/Game/UserProfileModal.tsx:448
 #: src/features/Usage/FeatureBlocker.tsx:99
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:679
 #. js-lingui-explicit-id
@@ -4367,7 +4397,7 @@ msgstr ""
 "AI-feedback, og se din fulde analyse. Vi bruger et kort til at forhindre "
 "misbrug og give dig uafbrudt adgang til alle funktioner."
 
-#: src/features/Game/UserProfileModal.tsx:429
+#: src/features/Game/UserProfileModal.tsx:440
 #. js-lingui-explicit-id
 msgid "Get full access to use the chat and many other features!"
 msgstr "Få fuld adgang til at bruge chatten og mange andre funktioner!"
@@ -4472,8 +4502,8 @@ msgstr "Giv et lille eksempel (tæller, input, knap)"
 msgid "Give it a few weeks. That’s when real confidence builds."
 msgstr "Giv det et par uger. Det er der, den ægte selvtillid opbygges."
 
-#: src/features/Chat/ChatPage.tsx:354
-#: src/features/Chat/ChatPage.tsx:443
+#: src/features/Chat/ChatHeaderFull.tsx:98
+#: src/features/Chat/ChatPage.tsx:339
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Global Chat"
@@ -4677,7 +4707,7 @@ msgstr "Hav det sjovt!"
 msgid "Health"
 msgstr "Sundhed"
 
-#: src/features/Settings/MyProfile.tsx:107
+#: src/features/Settings/MyProfile.tsx:106
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Hjælp"
@@ -5543,7 +5573,7 @@ msgstr ""
 msgid "If you want to try before you buy."
 msgstr "Hvis du vil prøve, før du køber."
 
-#: src/features/Game/UserProfileModal.tsx:96
+#: src/features/Game/UserProfileModal.tsx:97
 #. js-lingui-explicit-id
 msgid "Images"
 msgstr "Billeder"
@@ -5748,12 +5778,12 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid ""
 "Improving your English speaking skills doesn't have to be complicated. With "
-"FluencyPal, anyone can practice confidently and see real progress in "
-"minutes, regardless of their current level."
+"FluencyPal, anyone can practice confidently and see real progress in weeks, "
+"regardless of their current level."
 msgstr ""
-"At forbedre dine engelsktalende færdigheder behøver ikke at være "
-"kompliceret. Med FluencyPal kan alle øve sig trygt og se reel fremgang på "
-"få minutter, uanset hvilket niveau de er på."
+"Forbedring af dine engelsktalende færdigheder behøver ikke at være "
+"kompliceret. Med FluencyPal kan alle øve sig med selvtillid og se reel "
+"fremgang på få uger, uanset deres nuværende niveau."
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:12
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:12
@@ -6269,7 +6299,7 @@ msgstr "Introduktion: Small Talk med Intervieweren"
 msgid "Invite Link Sent to:"
 msgstr "Invite-link sendt til:"
 
-#: src/features/Game/UserProfileModal.tsx:261
+#: src/features/Game/UserProfileModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Invite to a debate"
 msgstr "Invitere til en debat"
@@ -6483,7 +6513,7 @@ msgstr ""
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "At lande dit første udvikler-job er sværere end det burde være"
 
-#: src/features/Settings/MyProfile.tsx:80
+#: src/features/Settings/MyProfile.tsx:79
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Sprog"
@@ -6545,7 +6575,7 @@ msgstr "Sprog installeret i din hjerne:"
 msgid "Last Visit"
 msgstr "Sidste besøg"
 
-#: src/features/Chat/ChatPage.tsx:475
+#: src/features/Chat/ChatHeaderFull.tsx:130
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "Sidst besøgt: {lastVisited}"
@@ -6638,8 +6668,8 @@ msgid "Learning Plan"
 msgstr "Læringsplan"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:250
-#: src/features/Settings/MyProfile.tsx:259
+#: src/features/Settings/MyProfile.tsx:249
+#: src/features/Settings/MyProfile.tsx:258
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Efterlad din besked"
@@ -6776,12 +6806,12 @@ msgid "Loading..."
 msgstr "Indlæser..."
 
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:122
+#: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Log Ud"
 
-#: src/features/Settings/MyProfile.tsx:123
+#: src/features/Settings/MyProfile.tsx:122
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Log ud af din konto"
@@ -6826,12 +6856,12 @@ msgstr "Sørg for, at dit webcam fungerer korrekt."
 msgid "Malay Learning Plan"
 msgstr "Malay Læringsplan"
 
-#: src/features/Settings/MyProfile.tsx:75
+#: src/features/Settings/MyProfile.tsx:74
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Administrer dine fulde adgangsindstillinger"
 
-#: src/features/Settings/MyProfile.tsx:171
+#: src/features/Settings/MyProfile.tsx:170
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Administrer dine profilindstillinger og kontroller din fremgang"
@@ -7107,7 +7137,7 @@ msgid "natural and not robotic"
 msgstr "naturlig og ikke robotagtig"
 
 #: src/features/Community/SupportPage.tsx:37
-#: src/features/Settings/MyProfile.tsx:108
+#: src/features/Settings/MyProfile.tsx:107
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Har du brug for hjælp?"
@@ -7754,7 +7784,7 @@ msgid "Payment failed! Please try again."
 msgstr "Betaling mislykkedes! Prøv venligst igen."
 
 #: src/features/Header/PaymentHistoryModal.tsx:65
-#: src/features/Settings/MyProfile.tsx:113
+#: src/features/Settings/MyProfile.tsx:112
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Betalingshistorik"
@@ -8021,7 +8051,7 @@ msgstr "Venligst tryk på menuen ⋮ og vælg"
 msgid "Please wait while we process your payment."
 msgstr "Vent venligst, mens vi behandler din betaling."
 
-#: src/features/Game/UserProfileModal.tsx:306
+#: src/features/Game/UserProfileModal.tsx:317
 #. js-lingui-explicit-id
 msgid "Points"
 msgstr "Point"
@@ -8048,7 +8078,7 @@ msgstr "Polsk Læringsplan"
 msgid "Portuguese Learning Plan"
 msgstr "Portugisisk Læringsplan"
 
-#: src/features/Game/UserProfileModal.tsx:289
+#: src/features/Game/UserProfileModal.tsx:300
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "Position"
@@ -8705,7 +8735,7 @@ msgstr ""
 msgid "Read the text"
 msgstr "Læs teksten"
 
-#: src/features/Game/UserProfileModal.tsx:98
+#: src/features/Game/UserProfileModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Reader"
 msgstr "Læser"
@@ -8984,7 +9014,7 @@ msgstr "Refleks"
 msgid "Refresh"
 msgstr "Opdater"
 
-#: src/features/Settings/MyProfile.tsx:248
+#: src/features/Settings/MyProfile.tsx:247
 #. js-lingui-explicit-id
 msgid "Refund"
 msgstr "Refundering"
@@ -9055,10 +9085,26 @@ msgstr "Rapport"
 msgid "Report message"
 msgstr "Rapportér besked"
 
+#: src/features/User/useUserReport.tsx:53
+#. js-lingui-explicit-id
+msgid "Report submitted, we will review it."
+msgstr "Rapport indsendt, vi vil gennemgå den."
+
 #: src/features/Chat/Message/Message.tsx:204
 #. js-lingui-explicit-id
 msgid "Report submitted. Thank you. We will review your request."
 msgstr "Rapport indsendt. Tak. Vi vil gennemgå din forespørgsel."
+
+#: src/features/User/ReportModal.tsx:56
+#: src/features/User/UserMenu.tsx:38
+#. js-lingui-explicit-id
+msgid "Report User"
+msgstr "Rapportér bruger"
+
+#: src/features/Chat/ChatHeaderFull.tsx:158
+#. js-lingui-explicit-id
+msgid "Report user"
+msgstr "Rapporter bruger"
 
 #: src/features/Header/PaymentHistoryModal.tsx:253
 #. js-lingui-explicit-id
@@ -9119,7 +9165,7 @@ msgstr "Retur"
 msgid "Returning an Item to a Store"
 msgstr "Returnering af en vare til en butik"
 
-#: src/features/Settings/MyProfile.tsx:95
+#: src/features/Settings/MyProfile.tsx:94
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "Gennemgå og rediger, hvad AI'en husker"
@@ -9347,7 +9393,7 @@ msgstr "Vælg den stemme, din AI-lærer vil bruge under samtaler."
 msgid "Select your game avatar"
 msgstr "Vælg din spilavatar"
 
-#: src/features/Settings/MyProfile.tsx:81
+#: src/features/Settings/MyProfile.tsx:80
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Vælg dit foretrukne sprog"
@@ -9401,7 +9447,7 @@ msgstr "Send mig tilmeldingslink"
 msgid "Send Message"
 msgstr "Send besked"
 
-#: src/features/Game/UserProfileModal.tsx:160
+#: src/features/Game/UserProfileModal.tsx:161
 #. js-lingui-explicit-id
 msgid "Send Request"
 msgstr "Send anmodning"
@@ -9456,7 +9502,7 @@ msgstr "senior frontend interview"
 msgid "Sentence Constructor"
 msgstr "Sætningskonstruktør"
 
-#: src/features/Game/UserProfileModal.tsx:95
+#: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Sentences"
 msgstr "Sætninger"
@@ -10210,10 +10256,20 @@ msgstr "Indsend svar"
 msgid "Submit Answers"
 msgstr "Indsend svar"
 
+#: src/features/User/ReportModal.tsx:101
+#. js-lingui-explicit-id
+msgid "Submit Report"
+msgstr "Indsend rapport"
+
 #: src/features/Header/PaymentHistoryModal.tsx:227
 #. js-lingui-explicit-id
 msgid "Submit Request"
 msgstr "Indsend anmodning"
+
+#: src/features/User/ReportModal.tsx:101
+#. js-lingui-explicit-id
+msgid "Submitting..."
+msgstr "Sender..."
 
 #: src/features/Header/PaymentHistoryModal.tsx:31
 #. js-lingui-explicit-id
@@ -10626,7 +10682,7 @@ msgstr ""
 "Den personlige feedback viste mig præcis, hvad jeg gjorde forkert i mine "
 "tekniske forklaringer. Game changer."
 
-#: src/features/Game/UserProfileModal.tsx:172
+#: src/features/Game/UserProfileModal.tsx:173
 #. js-lingui-explicit-id
 msgid "The request will be sent to user {userName}."
 msgstr "Anmodningen vil blive sendt til bruger {userName}."
@@ -10636,7 +10692,7 @@ msgstr "Anmodningen vil blive sendt til bruger {userName}."
 msgid "The winner earns {points} game points!"
 msgstr "Vinderen tjener {points} spillepoint!"
 
-#: src/features/Game/UserProfileModal.tsx:166
+#: src/features/Game/UserProfileModal.tsx:167
 #. js-lingui-explicit-id
 msgid "The winner gets {points} game points!"
 msgstr "Vinderen får {points} spilpoint!"
@@ -11128,7 +11184,7 @@ msgstr "Translate"
 msgid "Translate the word"
 msgstr "Oversæt ordet"
 
-#: src/features/Game/UserProfileModal.tsx:94
+#: src/features/Game/UserProfileModal.tsx:95
 #. js-lingui-explicit-id
 msgid "Translates"
 msgstr "Oversætter"
@@ -11480,7 +11536,7 @@ msgstr "Se resultatopslagstavle"
 msgid "View your payment history"
 msgstr "Se din betalingshistorik"
 
-#: src/features/Settings/MyProfile.tsx:114
+#: src/features/Settings/MyProfile.tsx:113
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "Se din betalingshistorik. Refusioner"
@@ -11545,7 +11601,7 @@ msgstr "Venter på at andre spillere accepterer..."
 msgid "Waiting for payment..."
 msgstr "Venter på betaling..."
 
-#: src/features/Game/UserProfileModal.tsx:143
+#: src/features/Game/UserProfileModal.tsx:144
 #. js-lingui-explicit-id
 msgid "Waiting for {userName} to respond."
 msgstr "Venter på, at {userName} svarer."
@@ -11687,7 +11743,7 @@ msgstr "Warszawa"
 msgid "WCAG Standards"
 msgstr "WCAG-standarder"
 
-#: src/features/Settings/MyProfile.tsx:258
+#: src/features/Settings/MyProfile.tsx:257
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Vi sætter pris på din feedback!"
@@ -12139,6 +12195,11 @@ msgstr ""
 "Afslut interviewet med taknemmelighed og selvtillid. Brug disse sætninger "
 "til at slutte på en positiv note:"
 
+#: src/features/User/ReportModal.tsx:82
+#. js-lingui-explicit-id
+msgid "Write your report here"
+msgstr "Skriv din rapport her"
+
 #: src/features/Telegram/TgAppPage.tsx:94
 #. js-lingui-explicit-id
 msgid "Wrong Link"
@@ -12404,7 +12465,7 @@ msgstr ""
 "Du kan forny din fulde adgang når som helst før den udløber for at undgå\n"
 "                          afbrydelse af tjenesten."
 
-#: src/features/Game/UserProfileModal.tsx:183
+#: src/features/Game/UserProfileModal.tsx:184
 #. js-lingui-explicit-id
 msgid "You can track the progress on the main page."
 msgstr "Du kan følge fremskridtene på hovedsiden."
@@ -12489,7 +12550,7 @@ msgstr ""
 msgid "You have full access"
 msgstr "Du har fuld adgang"
 
-#: src/features/Chat/ChatPage.tsx:225
+#: src/features/Chat/ChatPage.tsx:210
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "Du har ingen chats endnu."
@@ -12814,6 +12875,17 @@ msgstr ""
 "— det er vigtigt at deltage i denne korte samtale, før man hopper ind i "
 "professionelle emner. Her er nogle nyttige engelske vendinger til at starte "
 "interviewet:"
+
+#: src/features/Landing/LandingPage.tsx:271
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Improving your English speaking skills doesn't have to be complicated. With "
+#~ "FluencyPal, anyone can practice confidently and see real progress in "
+#~ "minutes, regardless of their current level."
+#~ msgstr ""
+#~ "At forbedre dine engelsktalende færdigheder behøver ikke at være "
+#~ "kompliceret. Med FluencyPal kan alle øve sig trygt og se reel fremgang på "
+#~ "få minutter, uanset hvilket niveau de er på."
 
 #: src/features/Sentence/TextConstructor.tsx:145
 #. js-lingui-explicit-id

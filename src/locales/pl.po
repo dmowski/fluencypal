@@ -514,7 +514,7 @@ msgstr "Osiągnij sukces na rozmowie kwalifikacyjnej dla Backend Developera C#"
 msgid "Achieve Speaking Fluency Fast"
 msgstr "Osiągnij płynność w mówieniu szybko"
 
-#: src/features/Game/UserProfileModal.tsx:318
+#: src/features/Game/UserProfileModal.tsx:329
 #. js-lingui-explicit-id
 msgid "Achievements"
 msgstr "Osiągnięcia"
@@ -579,7 +579,7 @@ msgstr "Dodaj Post"
 msgid "Add Response"
 msgstr "Dodaj odpowiedź"
 
-#: src/features/Settings/MyProfile.tsx:249
+#: src/features/Settings/MyProfile.tsx:248
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
 msgstr "Dodaj informacje, dlaczego chcesz zwrotu, a my to zrobimy."
@@ -669,7 +669,7 @@ msgstr ""
 "dostępu, skontaktuj się z obsługą za pośrednictwem czatu powyżej. Pomożemy "
 "Ci jak najszybciej i upewnimy się, że otrzymasz dostęp, za który zapłaciłeś."
 
-#: src/features/Game/UserProfileModal.tsx:100
+#: src/features/Game/UserProfileModal.tsx:101
 #. js-lingui-explicit-id
 msgid "AI"
 msgstr "AI"
@@ -741,7 +741,7 @@ msgid "AI Interview Practice"
 msgstr "Praktyka Wywiadów AI"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:75
-#: src/features/Settings/MyProfile.tsx:94
+#: src/features/Settings/MyProfile.tsx:93
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
 msgstr "Wiedza AI na Twój temat"
@@ -787,7 +787,7 @@ msgstr "Koszt korepetytora AI"
 msgid "AI Tutor Updates"
 msgstr "Aktualizacje AI Tutora"
 
-#: src/features/Settings/MyProfile.tsx:87
+#: src/features/Settings/MyProfile.tsx:86
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "Głos AI"
@@ -1029,7 +1029,7 @@ msgstr "Czy są jakieś ukryte opłaty?"
 msgid "Are you sure you want to delete this attachment?"
 msgstr "Czy na pewno chcesz usunąć ten załącznik?"
 
-#: src/features/Chat/ChatPage.tsx:399
+#: src/features/Chat/ChatHeaderFull.tsx:54
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr "Czy na pewno chcesz usunąć tę rozmowę? Tej akcji nie można cofnąć."
@@ -1156,13 +1156,13 @@ msgstr ""
 #: src/features/Alias/components/LanguageLevel.tsx:96
 #: src/features/Alias/components/PlayersSetup.tsx:308
 #: src/features/Alias/components/RoundSettings.tsx:221
-#: src/features/Chat/ChatPage.tsx:168
+#: src/features/Chat/ChatPage.tsx:153
 #: src/features/Chat/ChatSection.tsx:85
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Wstecz"
 
-#: src/features/Chat/ChatPage.tsx:202
+#: src/features/Chat/ChatPage.tsx:187
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Wróć do listy czatów"
@@ -1211,7 +1211,6 @@ msgstr "Na podstawie Twojego CV, doświadczenia i docelowej roli."
 msgid "Based on your level, the AI will suggest words to describe."
 msgstr "Na podstawie Twojego poziomu, AI zasugeruje słowa do opisania."
 
-#: src/features/Landing/LandingPage.tsx:337
 #: src/features/Landing/PlanLandingBlock.tsx:430
 #. js-lingui-explicit-id
 msgid ""
@@ -1220,6 +1219,15 @@ msgid ""
 msgstr ""
 "Na podstawie Twojego procesu wprowadzania, FluencyPal natychmiast generuje "
 "dla Ciebie indywidualny plan nauki."
+
+#: src/features/Landing/LandingPage.tsx:337
+#. js-lingui-explicit-id
+msgid ""
+"Based on your onboarding, FluencyPal will create a personalized learning "
+"plan just for you."
+msgstr ""
+"Na podstawie Twojego wprowadzenia FluencyPal stworzy specjalnie dla Ciebie "
+"spersonalizowany plan nauki."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
 #. js-lingui-explicit-id
@@ -1582,21 +1590,21 @@ msgstr "Rozwój Kariery"
 msgid "Career benefit:"
 msgstr "Korzyść zawodowa:"
 
-#: src/features/Chat/ChatPage.tsx:355
-#: src/features/Chat/ChatPage.tsx:357
-#: src/features/Chat/ChatPage.tsx:444
-#: src/features/Chat/ChatPage.tsx:446
-#: src/features/Game/UserProfileModal.tsx:99
+#: src/features/Chat/ChatHeaderFull.tsx:99
+#: src/features/Chat/ChatHeaderFull.tsx:101
+#: src/features/Chat/ChatPage.tsx:340
+#: src/features/Chat/ChatPage.tsx:342
+#: src/features/Game/UserProfileModal.tsx:100
 #. js-lingui-explicit-id
 msgid "Chat"
 msgstr "Czat"
 
-#: src/features/Game/UserProfileModal.tsx:406
+#: src/features/Game/UserProfileModal.tsx:417
 #. js-lingui-explicit-id
 msgid "Chat between you and {userName}"
 msgstr "Czat między tobą a {userName}"
 
-#: src/features/Chat/ChatPage.tsx:404
+#: src/features/Chat/ChatHeaderFull.tsx:59
 #. js-lingui-explicit-id
 msgid "Chat deleted successfully."
 msgstr "Czat został pomyślnie usunięty."
@@ -1606,7 +1614,7 @@ msgstr "Czat został pomyślnie usunięty."
 msgid "Chat history"
 msgstr "Historia czatu"
 
-#: src/features/Chat/ChatPage.tsx:199
+#: src/features/Chat/ChatPage.tsx:184
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Czat nie znaleziony lub nie masz do niego dostępu."
@@ -1721,7 +1729,7 @@ msgstr "Wybierz Poziom Języka"
 msgid "Choose Site Language"
 msgstr "Wybierz Język Strony"
 
-#: src/features/Settings/MyProfile.tsx:88
+#: src/features/Settings/MyProfile.tsx:87
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "Wybierz głos dla swojego nauczyciela AI"
@@ -1763,7 +1771,7 @@ msgstr ""
 #: src/features/Ai/AiKnowledgeModal.tsx:140
 #: src/features/Conversation/CallMode/CallButtons.tsx:660
 #: src/features/Game/Battle/BattleActionModal.tsx:299
-#: src/features/Game/UserProfileModal.tsx:146
+#: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
 #: src/features/Sentence/TextConstructorStories.tsx:523
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
@@ -1985,7 +1993,7 @@ msgstr ""
 "Stałe doskonalenie dzięki zorganizowanemu coachingu rozmów kwalifikacyjnych "
 "i spersonalizowanej praktyce."
 
-#: src/features/Game/UserProfileModal.tsx:101
+#: src/features/Game/UserProfileModal.tsx:102
 #. js-lingui-explicit-id
 msgid "Constructor"
 msgstr "Konstruktor"
@@ -2339,8 +2347,8 @@ msgstr "Codzienny wywiad bez obawy o osąd"
 msgid "Daily Language Practice"
 msgstr "Codzienna Praktyka Językowa"
 
-#: src/features/Chat/ChatPage.tsx:353
-#: src/features/Chat/ChatPage.tsx:442
+#: src/features/Chat/ChatHeaderFull.tsx:97
+#: src/features/Chat/ChatPage.tsx:338
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Codzienne Pytanie na Czacie"
@@ -2409,8 +2417,8 @@ msgstr "dni z rzędu!"
 msgid "Debate"
 msgstr "Debata"
 
-#: src/features/Chat/ChatPage.tsx:352
-#: src/features/Chat/ChatPage.tsx:441
+#: src/features/Chat/ChatHeaderFull.tsx:96
+#: src/features/Chat/ChatPage.tsx:337
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Czat Debatowy"
@@ -2420,12 +2428,12 @@ msgstr "Czat Debatowy"
 msgid "Debate ended!"
 msgstr "Debata zakończona!"
 
-#: src/features/Game/UserProfileModal.tsx:157
+#: src/features/Game/UserProfileModal.tsx:158
 #. js-lingui-explicit-id
 msgid "Debate Request"
 msgstr "Prośba o debatę"
 
-#: src/features/Game/UserProfileModal.tsx:142
+#: src/features/Game/UserProfileModal.tsx:143
 #. js-lingui-explicit-id
 msgid "Debate Request Sent!"
 msgstr "Prośba o Debatę Wysłana!"
@@ -2435,7 +2443,7 @@ msgstr "Prośba o Debatę Wysłana!"
 msgid "Debate started!"
 msgstr "Rozpoczęła się debata!"
 
-#: src/features/Game/UserProfileModal.tsx:178
+#: src/features/Game/UserProfileModal.tsx:179
 #. js-lingui-explicit-id
 msgid "Debate topics will be selected randomly."
 msgstr "Tematy debaty będą wybierane losowo."
@@ -2462,7 +2470,7 @@ msgstr "Usuń konto"
 msgid "Delete account (Total)"
 msgstr "Usuń konto (Całkowite)"
 
-#: src/features/Chat/ChatPage.tsx:501
+#: src/features/Chat/ChatHeaderFull.tsx:171
 #. js-lingui-explicit-id
 msgid "Delete chat"
 msgstr "Usuń czat"
@@ -2564,6 +2572,11 @@ msgstr "Opisz słowo, które widzisz na ekranie, nie używając tego słowa!"
 msgid "Describe these words:"
 msgstr "Opisz te słowa:"
 
+#: src/features/User/ReportModal.tsx:60
+#. js-lingui-explicit-id
+msgid "Describe what happened and why you are reporting this user."
+msgstr "Opisz, co się stało i dlaczego zgłaszasz tego użytkownika."
+
 #: src/features/RolePlay/rolePlayData.tsx:1111
 #. js-lingui-explicit-id
 msgid "Describe your custom scenario here..."
@@ -2657,7 +2670,7 @@ msgstr ""
 "Odkryj skuteczne codzienne nawyki, które pozwolą Ci poprawić Twoje "
 "umiejętności biznesowego angielskiego bez wysiłku i szybko."
 
-#: src/features/Game/UserProfileModal.tsx:158
+#: src/features/Game/UserProfileModal.tsx:159
 #. js-lingui-explicit-id
 msgid "Discuss and improve your skills together!"
 msgstr "Dyskutuj i rozwijaj swoje umiejętności razem!"
@@ -2786,7 +2799,7 @@ msgstr ""
 "Prowadząc naturalną rozmowę, udoskonalisz swoje umiejętności komunikacyjne "
 "w profesjonalnym kontekście opieki zdrowotnej."
 
-#: src/features/Game/UserProfileModal.tsx:97
+#: src/features/Game/UserProfileModal.tsx:98
 #. js-lingui-explicit-id
 msgid "Discussions"
 msgstr "Dyskusje"
@@ -3676,6 +3689,15 @@ msgstr ""
 msgid "Failed to send feedback. Please try again later."
 msgstr "Nie udało się wysłać opinii. Proszę spróbować ponownie później."
 
+#: src/features/User/useUserReport.tsx:58
+#. js-lingui-explicit-id
+msgid ""
+"Failed to submit report. Please try to use support chat to report this user "
+"or send email with details to"
+msgstr ""
+"Nie udało się przesłać raportu. Spróbuj skorzystać z czatu wsparcia, aby "
+"zgłosić tego użytkownika, lub wyślij e-mail ze szczegółami do"
+
 #: src/features/Game/UploadImageButton.tsx:47
 #: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
@@ -3715,7 +3737,7 @@ msgid "Fast Answer Practice"
 msgstr "Szybka Praktyka Odpowiedzi"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/Settings/MyProfile.tsx:257
+#: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Opinia"
@@ -3744,7 +3766,6 @@ msgstr "Rozmiar pliku musi być mniejszy niż 250MB"
 msgid "File size must be less than 50MB"
 msgstr "Rozmiar pliku musi być mniejszy niż 50 MB"
 
-#: src/features/Landing/LandingPage.tsx:282
 #: src/features/Landing/PlanLandingBlock.tsx:393
 #. js-lingui-explicit-id
 msgid ""
@@ -3752,6 +3773,15 @@ msgid ""
 "preferences."
 msgstr ""
 "Wypełnij quiz powitalny, aby pomóc FluencyPal zrozumieć Twoje cele i "
+"preferencje."
+
+#: src/features/Landing/LandingPage.tsx:282
+#. js-lingui-explicit-id
+msgid ""
+"Fill out an onboarding quiz to help FluencyPal understand your goals and "
+"preferences."
+msgstr ""
+"Wypełnij quiz wprowadzający, aby pomóc FluencyPal zrozumieć Twoje cele i "
 "preferencje."
 
 #: src/features/Alias/components/GameEnd.tsx:101
@@ -4144,7 +4174,7 @@ msgid "frontend system design interview"
 msgstr "projektowanie systemu frontendowego - rozmowa kwalifikacyjna"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:136
-#: src/features/Settings/MyProfile.tsx:74
+#: src/features/Settings/MyProfile.tsx:73
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:452
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:500
@@ -4408,7 +4438,7 @@ msgstr ""
 "się praktyką językową zasilaną przez AI, bez subskrypcji czy ukrytych opłat."
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
-#: src/features/Game/UserProfileModal.tsx:437
+#: src/features/Game/UserProfileModal.tsx:448
 #: src/features/Usage/FeatureBlocker.tsx:99
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:679
 #. js-lingui-explicit-id
@@ -4427,7 +4457,7 @@ msgstr ""
 "wyników. Używamy karty w celu zapobiegania nadużyciom oraz zapewnienia Ci "
 "nieprzerwanego dostępu do wszystkich funkcji."
 
-#: src/features/Game/UserProfileModal.tsx:429
+#: src/features/Game/UserProfileModal.tsx:440
 #. js-lingui-explicit-id
 msgid "Get full access to use the chat and many other features!"
 msgstr "Uzyskaj pełny dostęp do korzystania z czatu i wielu innych funkcji!"
@@ -4536,8 +4566,8 @@ msgstr "Podaj mały przykład (licznik, wejście, przycisk)"
 msgid "Give it a few weeks. That’s when real confidence builds."
 msgstr "Daj temu kilka tygodni. To wtedy buduje się prawdziwa pewność siebie."
 
-#: src/features/Chat/ChatPage.tsx:354
-#: src/features/Chat/ChatPage.tsx:443
+#: src/features/Chat/ChatHeaderFull.tsx:98
+#: src/features/Chat/ChatPage.tsx:339
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Globalny czat"
@@ -4744,7 +4774,7 @@ msgstr "Baw się dobrze!"
 msgid "Health"
 msgstr "Zdrowie"
 
-#: src/features/Settings/MyProfile.tsx:107
+#: src/features/Settings/MyProfile.tsx:106
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Pomoc"
@@ -5591,7 +5621,7 @@ msgstr ""
 msgid "If you want to try before you buy."
 msgstr "Jeśli chcesz wypróbować przed zakupem."
 
-#: src/features/Game/UserProfileModal.tsx:96
+#: src/features/Game/UserProfileModal.tsx:97
 #. js-lingui-explicit-id
 msgid "Images"
 msgstr "Obrazy"
@@ -5797,12 +5827,12 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid ""
 "Improving your English speaking skills doesn't have to be complicated. With "
-"FluencyPal, anyone can practice confidently and see real progress in "
-"minutes, regardless of their current level."
+"FluencyPal, anyone can practice confidently and see real progress in weeks, "
+"regardless of their current level."
 msgstr ""
-"Poprawa umiejętności mówienia po angielsku nie musi być skomplikowana. "
+"Poprawianie umiejętności mówienia po angielsku nie musi być skomplikowane. "
 "Dzięki FluencyPal każdy może ćwiczyć z pewnością siebie i zobaczyć realny "
-"postęp w ciągu kilku minut, niezależnie od swojego obecnego poziomu."
+"postęp w ciągu kilku tygodni, niezależnie od swojego obecnego poziomu."
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:12
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:12
@@ -6344,7 +6374,7 @@ msgstr "Wprowadzenie: Luźna rozmowa z osobą przeprowadzającą rozmowę kwalif
 msgid "Invite Link Sent to:"
 msgstr "Link do zaproszenia wysłany do:"
 
-#: src/features/Game/UserProfileModal.tsx:261
+#: src/features/Game/UserProfileModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Invite to a debate"
 msgstr "Zaproszenie do debaty"
@@ -6562,7 +6592,7 @@ msgstr ""
 "Znalezienie Pierwszej Pracy Jako Programista Jest Trudniejsze, Niż Powinno "
 "Być"
 
-#: src/features/Settings/MyProfile.tsx:80
+#: src/features/Settings/MyProfile.tsx:79
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Język"
@@ -6624,7 +6654,7 @@ msgstr "Języki zainstalowane w twoim mózgu:"
 msgid "Last Visit"
 msgstr "Ostatnia wizyta"
 
-#: src/features/Chat/ChatPage.tsx:475
+#: src/features/Chat/ChatHeaderFull.tsx:130
 #. js-lingui-explicit-id
 msgid "Last visited: {lastVisited}"
 msgstr "Ostatnio odwiedzono: {lastVisited}"
@@ -6719,8 +6749,8 @@ msgid "Learning Plan"
 msgstr "Plan nauki"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:250
-#: src/features/Settings/MyProfile.tsx:259
+#: src/features/Settings/MyProfile.tsx:249
+#: src/features/Settings/MyProfile.tsx:258
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Zostaw swoją wiadomość"
@@ -6857,12 +6887,12 @@ msgid "Loading..."
 msgstr "Ładowanie..."
 
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:122
+#: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Wyloguj się"
 
-#: src/features/Settings/MyProfile.tsx:123
+#: src/features/Settings/MyProfile.tsx:122
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Wyloguj się ze swojego konta"
@@ -6909,12 +6939,12 @@ msgstr "Upewnij się, że Twoja kamera internetowa działa prawidłowo."
 msgid "Malay Learning Plan"
 msgstr "Plan Nauki Malajskiego"
 
-#: src/features/Settings/MyProfile.tsx:75
+#: src/features/Settings/MyProfile.tsx:74
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Zarządzaj swoimi ustawieniami pełnego dostępu"
 
-#: src/features/Settings/MyProfile.tsx:171
+#: src/features/Settings/MyProfile.tsx:170
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Zarządzaj ustawieniami swojego profilu i sprawdzaj swoje postępy"
@@ -7195,7 +7225,7 @@ msgid "natural and not robotic"
 msgstr "naturalne i nie robotyczne"
 
 #: src/features/Community/SupportPage.tsx:37
-#: src/features/Settings/MyProfile.tsx:108
+#: src/features/Settings/MyProfile.tsx:107
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Potrzebujesz pomocy?"
@@ -7852,7 +7882,7 @@ msgid "Payment failed! Please try again."
 msgstr "Płatność nie powiodła się! Spróbuj ponownie."
 
 #: src/features/Header/PaymentHistoryModal.tsx:65
-#: src/features/Settings/MyProfile.tsx:113
+#: src/features/Settings/MyProfile.tsx:112
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Historia Płatności"
@@ -8121,7 +8151,7 @@ msgstr "Proszę nacisnąć menu ⋮ i wybrać"
 msgid "Please wait while we process your payment."
 msgstr "Proszę czekać, trwa przetwarzanie płatności."
 
-#: src/features/Game/UserProfileModal.tsx:306
+#: src/features/Game/UserProfileModal.tsx:317
 #. js-lingui-explicit-id
 msgid "Points"
 msgstr "Punkty"
@@ -8146,7 +8176,7 @@ msgstr "Plan Nauki Języka Polskiego"
 msgid "Portuguese Learning Plan"
 msgstr "Plan Nauki Portugalskiego"
 
-#: src/features/Game/UserProfileModal.tsx:289
+#: src/features/Game/UserProfileModal.tsx:300
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "Pozycja"
@@ -8819,7 +8849,7 @@ msgstr ""
 msgid "Read the text"
 msgstr "Przeczytaj tekst"
 
-#: src/features/Game/UserProfileModal.tsx:98
+#: src/features/Game/UserProfileModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Reader"
 msgstr "Czytnik"
@@ -9103,7 +9133,7 @@ msgstr "Refleks"
 msgid "Refresh"
 msgstr "Odśwież"
 
-#: src/features/Settings/MyProfile.tsx:248
+#: src/features/Settings/MyProfile.tsx:247
 #. js-lingui-explicit-id
 msgid "Refund"
 msgstr "Zwrot"
@@ -9174,10 +9204,26 @@ msgstr "Raport"
 msgid "Report message"
 msgstr "Zgłoś wiadomość"
 
+#: src/features/User/useUserReport.tsx:53
+#. js-lingui-explicit-id
+msgid "Report submitted, we will review it."
+msgstr "Raport został przesłany, przejrzymy go."
+
 #: src/features/Chat/Message/Message.tsx:204
 #. js-lingui-explicit-id
 msgid "Report submitted. Thank you. We will review your request."
 msgstr "Raport został przesłany. Dziękujemy. Przeanalizujemy Twoje zgłoszenie."
+
+#: src/features/User/ReportModal.tsx:56
+#: src/features/User/UserMenu.tsx:38
+#. js-lingui-explicit-id
+msgid "Report User"
+msgstr "Zgłoś Użytkownika"
+
+#: src/features/Chat/ChatHeaderFull.tsx:158
+#. js-lingui-explicit-id
+msgid "Report user"
+msgstr "Zgłoś użytkownika"
 
 #: src/features/Header/PaymentHistoryModal.tsx:253
 #. js-lingui-explicit-id
@@ -9238,7 +9284,7 @@ msgstr "Powrót"
 msgid "Returning an Item to a Store"
 msgstr "Zwracanie towaru do sklepu"
 
-#: src/features/Settings/MyProfile.tsx:95
+#: src/features/Settings/MyProfile.tsx:94
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "Przeglądaj i edytuj, co sztuczna inteligencja zapamiętuje"
@@ -9470,7 +9516,7 @@ msgstr "Wybierz głos, którego będzie używał Twój nauczyciel AI podczas roz
 msgid "Select your game avatar"
 msgstr "Wybierz swojego awatara z gry"
 
-#: src/features/Settings/MyProfile.tsx:81
+#: src/features/Settings/MyProfile.tsx:80
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Wybierz preferowany język"
@@ -9522,7 +9568,7 @@ msgstr "Wyślij mi link do logowania"
 msgid "Send Message"
 msgstr "Wyślij wiadomość"
 
-#: src/features/Game/UserProfileModal.tsx:160
+#: src/features/Game/UserProfileModal.tsx:161
 #. js-lingui-explicit-id
 msgid "Send Request"
 msgstr "Wyślij Żądanie"
@@ -9575,7 +9621,7 @@ msgstr "starszy frontendowy wywiad"
 msgid "Sentence Constructor"
 msgstr "Konstruktor zdań"
 
-#: src/features/Game/UserProfileModal.tsx:95
+#: src/features/Game/UserProfileModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Sentences"
 msgstr "Zdania"
@@ -10342,10 +10388,20 @@ msgstr "Prześlij odpowiedź"
 msgid "Submit Answers"
 msgstr "Prześlij odpowiedzi"
 
+#: src/features/User/ReportModal.tsx:101
+#. js-lingui-explicit-id
+msgid "Submit Report"
+msgstr "Zgłoś Raport"
+
 #: src/features/Header/PaymentHistoryModal.tsx:227
 #. js-lingui-explicit-id
 msgid "Submit Request"
 msgstr "Złóż prośbę"
+
+#: src/features/User/ReportModal.tsx:101
+#. js-lingui-explicit-id
+msgid "Submitting..."
+msgstr "Przesyłanie..."
 
 #: src/features/Header/PaymentHistoryModal.tsx:31
 #. js-lingui-explicit-id
@@ -10764,7 +10820,7 @@ msgstr ""
 "Spersonalizowana informacja zwrotna pokazała mi dokładnie, co robię źle w "
 "moich technicznych wyjaśnieniach. Przełomowa zmiana."
 
-#: src/features/Game/UserProfileModal.tsx:172
+#: src/features/Game/UserProfileModal.tsx:173
 #. js-lingui-explicit-id
 msgid "The request will be sent to user {userName}."
 msgstr "Żądanie zostanie wysłane do użytkownika {userName}."
@@ -10774,7 +10830,7 @@ msgstr "Żądanie zostanie wysłane do użytkownika {userName}."
 msgid "The winner earns {points} game points!"
 msgstr "Zwycięzca zdobywa {points} punkty w grze!"
 
-#: src/features/Game/UserProfileModal.tsx:166
+#: src/features/Game/UserProfileModal.tsx:167
 #. js-lingui-explicit-id
 msgid "The winner gets {points} game points!"
 msgstr "Zwycięzca otrzymuje {points} punktów w grze!"
@@ -11268,7 +11324,7 @@ msgstr "Przetłumacz"
 msgid "Translate the word"
 msgstr "Przetłumacz słowo"
 
-#: src/features/Game/UserProfileModal.tsx:94
+#: src/features/Game/UserProfileModal.tsx:95
 #. js-lingui-explicit-id
 msgid "Translates"
 msgstr "Tłumaczenia"
@@ -11623,7 +11679,7 @@ msgstr "Wyświetl tablicę wyników"
 msgid "View your payment history"
 msgstr "Wyświetl historię płatności"
 
-#: src/features/Settings/MyProfile.tsx:114
+#: src/features/Settings/MyProfile.tsx:113
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "Zobacz historię swoich płatności. Zwroty"
@@ -11688,7 +11744,7 @@ msgstr "Czekanie na zaakceptowanie przez innych graczy..."
 msgid "Waiting for payment..."
 msgstr "Oczekiwanie na płatność..."
 
-#: src/features/Game/UserProfileModal.tsx:143
+#: src/features/Game/UserProfileModal.tsx:144
 #. js-lingui-explicit-id
 msgid "Waiting for {userName} to respond."
 msgstr "Oczekiwanie na odpowiedź użytkownika {userName}."
@@ -11835,7 +11891,7 @@ msgstr "Warszawa"
 msgid "WCAG Standards"
 msgstr "Standardy WCAG"
 
-#: src/features/Settings/MyProfile.tsx:258
+#: src/features/Settings/MyProfile.tsx:257
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Cenimy Twoją opinię!"
@@ -12294,6 +12350,11 @@ msgstr ""
 "Zakończ rozmowę z wdzięcznością i pewnością siebie. Użyj tych zwrotów, aby "
 "zakończyć na pozytywnej nucie:"
 
+#: src/features/User/ReportModal.tsx:82
+#. js-lingui-explicit-id
+msgid "Write your report here"
+msgstr "Napisz tutaj swój raport"
+
 #: src/features/Telegram/TgAppPage.tsx:94
 #. js-lingui-explicit-id
 msgid "Wrong Link"
@@ -12568,7 +12629,7 @@ msgstr ""
 "aby uniknąć\n"
 "                          przerwy w dostępie do usługi."
 
-#: src/features/Game/UserProfileModal.tsx:183
+#: src/features/Game/UserProfileModal.tsx:184
 #. js-lingui-explicit-id
 msgid "You can track the progress on the main page."
 msgstr "Możesz śledzić postępy na stronie głównej."
@@ -12652,7 +12713,7 @@ msgstr ""
 msgid "You have full access"
 msgstr "Masz pełny dostęp"
 
-#: src/features/Chat/ChatPage.tsx:225
+#: src/features/Chat/ChatPage.tsx:210
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "Nie masz jeszcze żadnych rozmów."
@@ -12979,6 +13040,17 @@ msgstr ""
 "— ważne jest, aby zaangażować się w tę krótką rozmowę przed poruszeniem "
 "tematów zawodowych. Oto kilka przydatnych angielskich zwrotów, które pomogą "
 "rozpocząć wywiad:"
+
+#: src/features/Landing/LandingPage.tsx:271
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Improving your English speaking skills doesn't have to be complicated. With "
+#~ "FluencyPal, anyone can practice confidently and see real progress in "
+#~ "minutes, regardless of their current level."
+#~ msgstr ""
+#~ "Poprawa umiejętności mówienia po angielsku nie musi być skomplikowana. "
+#~ "Dzięki FluencyPal każdy może ćwiczyć z pewnością siebie i zobaczyć realny "
+#~ "postęp w ciągu kilku minut, niezależnie od swojego obecnego poziomu."
 
 #: src/features/Sentence/TextConstructor.tsx:145
 #. js-lingui-explicit-id
