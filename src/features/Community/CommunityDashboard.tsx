@@ -155,13 +155,6 @@ export const CommunityDashboard = () => {
                   isLocked={!access.isFullAppAccess}
                   onLockedClick={() => access.showPaymentModal()}
                 />
-                <CommunityCard
-                  title={i18n._('Sentence Constructor')}
-                  onClick={() => setActivePage('sentence-constructor')}
-                  icon={<Origami style={iconStyle} />}
-                  isLocked={false}
-                  onLockedClick={() => access.showPaymentModal()}
-                />
               </Stack>
             </Stack>
           )}
