@@ -24,6 +24,7 @@ import { GlobalModals } from '@/features/Modal/GlobalModals';
 import { ChatListProvider } from '@/features/Chat/useChatList';
 import { LessonPlanProvider } from '@/features/LessonPlan/useLessonPlan';
 import { ConversationAudioProvider } from '@/features/Audio/useConversationAudio';
+import { UserReportProvider } from '@/features/User/useUserReport';
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
@@ -33,46 +34,48 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
           <AppNavigationProvider>
             <NotificationsProvider>
               <AuthProvider>
-                <AnalyticsProvider>
-                  <SettingsProvider>
-                    <ChatListProvider>
-                      <WebCamProvider>
-                        <GameProvider>
-                          <UsageProvider>
-                            <TextAiProvider>
-                              <AudioProvider>
-                                <ConversationAudioProvider>
-                                  <AiUserInfoProvider>
-                                    <WordsProvider>
-                                      <CorrectionsProvider>
-                                        <ChatHistoryProvider>
-                                          <RulesProvider>
-                                            <TasksProvider>
-                                              <PlanProvider>
-                                                <AiConversationProvider>
-                                                  <BattleProvider>
-                                                    <LessonPlanProvider>
-                                                      {children}
-                                                    </LessonPlanProvider>
-                                                    <GlobalModals />
-                                                  </BattleProvider>
-                                                </AiConversationProvider>
-                                              </PlanProvider>
-                                            </TasksProvider>
-                                          </RulesProvider>
-                                        </ChatHistoryProvider>
-                                      </CorrectionsProvider>
-                                    </WordsProvider>
-                                  </AiUserInfoProvider>
-                                </ConversationAudioProvider>
-                              </AudioProvider>
-                            </TextAiProvider>
-                          </UsageProvider>
-                        </GameProvider>
-                      </WebCamProvider>
-                    </ChatListProvider>
-                  </SettingsProvider>
-                </AnalyticsProvider>
+                <UserReportProvider>
+                  <AnalyticsProvider>
+                    <SettingsProvider>
+                      <ChatListProvider>
+                        <WebCamProvider>
+                          <GameProvider>
+                            <UsageProvider>
+                              <TextAiProvider>
+                                <AudioProvider>
+                                  <ConversationAudioProvider>
+                                    <AiUserInfoProvider>
+                                      <WordsProvider>
+                                        <CorrectionsProvider>
+                                          <ChatHistoryProvider>
+                                            <RulesProvider>
+                                              <TasksProvider>
+                                                <PlanProvider>
+                                                  <AiConversationProvider>
+                                                    <BattleProvider>
+                                                      <LessonPlanProvider>
+                                                        {children}
+                                                      </LessonPlanProvider>
+                                                      <GlobalModals />
+                                                    </BattleProvider>
+                                                  </AiConversationProvider>
+                                                </PlanProvider>
+                                              </TasksProvider>
+                                            </RulesProvider>
+                                          </ChatHistoryProvider>
+                                        </CorrectionsProvider>
+                                      </WordsProvider>
+                                    </AiUserInfoProvider>
+                                  </ConversationAudioProvider>
+                                </AudioProvider>
+                              </TextAiProvider>
+                            </UsageProvider>
+                          </GameProvider>
+                        </WebCamProvider>
+                      </ChatListProvider>
+                    </SettingsProvider>
+                  </AnalyticsProvider>
+                </UserReportProvider>
               </AuthProvider>
             </NotificationsProvider>
           </AppNavigationProvider>

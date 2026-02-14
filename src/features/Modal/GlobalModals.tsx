@@ -7,6 +7,7 @@ import { useUsage } from '../Usage/useUsage';
 import { SubscriptionPaymentModal } from '../Usage/Subscription/SubscriptionPaymentModal';
 import { useAuth } from '../Auth/useAuth';
 import { TeacherVoiceModal } from './TeacherVoiceModal';
+import { ReportModal } from '../User/ReportModal';
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();
@@ -24,6 +25,7 @@ export const GlobalModals: React.FC = () => {
       {activeUserProfile && (
         <UserProfileModal stat={activeUserProfile} onClose={() => game.showUserInModal('')} />
       )}
+      <ReportModal />
       <TeacherVoiceModal />
     </>
   );

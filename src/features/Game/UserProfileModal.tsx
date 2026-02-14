@@ -19,6 +19,7 @@ import { BATTLE_WIN_POINTS } from './Battle/data';
 import { ChatProvider } from '../Chat/useChat';
 import { ChatSection } from '../Chat/ChatSection';
 import { useAccess } from '../Usage/useAccess';
+import { UserMenu } from '../User/UserMenu';
 
 interface IconColor {
   iconColor: string;
@@ -267,6 +268,8 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                 >
                   {i18n._('Invite to a debate')}
                 </Button>
+
+                <UserMenu userId={stat.userId} />
               </Stack>
             )}
 

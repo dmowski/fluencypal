@@ -244,8 +244,6 @@ function useProvideAuth(): AuthContext {
   const isFounder = userId === 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2';
 
   const sendTgMessage = async (message: string) => {
-    if (isFounder) return;
-
     await sendTelegramRequest(
       {
         message,
