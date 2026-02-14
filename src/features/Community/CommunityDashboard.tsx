@@ -104,6 +104,7 @@ export const CommunityDashboard = () => {
                   badgeNumber={chatList.unreadCountGlobal}
                   icon={<Newspaper style={iconStyle} />}
                   isLocked={!access.isFullAppAccess}
+                  isPremium={true}
                   onLockedClick={() => access.showPaymentModal()}
                 />
                 <CommunityCard
@@ -129,6 +130,7 @@ export const CommunityDashboard = () => {
                   onClick={() => setActivePage('debates')}
                   icon={<UsersRound style={iconStyle} />}
                   isLocked={!access.isFullAppAccess}
+                  isPremium={true}
                   onLockedClick={() => access.showPaymentModal()}
                 />
 
@@ -137,6 +139,7 @@ export const CommunityDashboard = () => {
                   onClick={() => setActivePage('daily-questions')}
                   icon={<PsychologyIcon style={iconStyle} />}
                   isLocked={!access.isFullAppAccess}
+                  isPremium={true}
                   onLockedClick={() => access.showPaymentModal()}
                 />
 
@@ -153,6 +156,7 @@ export const CommunityDashboard = () => {
                   badgeNumber={chatList.myUnreadCount}
                   icon={<Mail style={iconStyle} />}
                   isLocked={!access.isFullAppAccess}
+                  isPremium={true}
                   onLockedClick={() => access.showPaymentModal()}
                 />
               </Stack>

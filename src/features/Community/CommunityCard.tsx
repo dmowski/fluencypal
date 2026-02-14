@@ -1,5 +1,6 @@
+import { useLingui } from '@lingui/react';
 import { Badge, Stack, Typography } from '@mui/material';
-import { Lock } from 'lucide-react';
+import { Gem, Lock, Rocket, Sparkle } from 'lucide-react';
 
 export const CommunityCard = ({
   title,
@@ -8,6 +9,7 @@ export const CommunityCard = ({
   icon,
   isLocked,
   onLockedClick,
+  isPremium,
 }: {
   title: string;
   onClick: () => void;
@@ -15,7 +17,9 @@ export const CommunityCard = ({
   icon: React.ReactNode;
   isLocked: boolean;
   onLockedClick: () => void;
+  isPremium?: boolean;
 }) => {
+  const { i18n } = useLingui();
   return (
     <Stack
       component={'button'}
@@ -50,23 +54,26 @@ export const CommunityCard = ({
             position: 'absolute',
             top: '10px',
             right: '10px',
-            background: 'rgba(11, 136, 232, 0.5)',
-            padding: '2px 6px',
-            borderRadius: '4px',
+            background: isLocked ? 'rgba(11, 136, 232, 0.5)' : 'rgba(181, 16, 199, 0)',
+            color: isLocked ? '#fff' : 'rgb(255, 255, 255)',
+            padding: isLocked ? '2px 6px' : '7px 7px',
+            borderRadius: isLocked ? '4px' : '6px',
             flexDirection: 'row',
             gap: '4px',
             alignItems: 'center',
           }}
         >
-          <Lock size={'11px'} />
-          <Typography
-            sx={{
-              fontSize: '10px',
-              color: '#fff',
-            }}
-          >
-            Locked
-          </Typography>
+          {isPremium ? <Sparkle size={'19px'} /> : <Lock size={'11px'} />}
+          {isLocked && (
+            <Typography
+              sx={{
+                fontSize: '10px',
+                color: '#fff',
+              }}
+            >
+              {i18n._('Locked')}
+            </Typography>
+          )}
         </Stack>
       )}
       <Badge color="error" badgeContent={badgeNumber ?? 0}>
