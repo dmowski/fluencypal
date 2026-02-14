@@ -16,6 +16,7 @@ const achievementMap: Record<GameAchievement, boolean> = {
   read_text: true,
   chat_message: true,
   ai_conversation: true,
+  sentence_constructor: true,
 };
 
 export const allAchievementTypes: GameAchievement[] = Object.keys(
@@ -30,4 +31,5 @@ export const achievementsMaxPoints: Record<GameAchievement, number> = {
   read_text: 100,
   chat_message: 200,
   ai_conversation: 500,
+  sentence_constructor: 200,
 };
