@@ -1,5 +1,5 @@
 import { useLingui } from '@lingui/react';
-import { Button, Typography } from '@mui/material';
+import { Button, ButtonGroup, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
 import { ImageDescription, imageDescriptions } from '../Game/ImagesDescriptions';
@@ -13,7 +13,6 @@ import { FlaskConical, Loader, Origami, RefreshCcw, RefreshCw, X } from 'lucide-
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getAiVoiceByVoice } from '../Conversation/CallMode/voiceAvatar';
-import { getVoiceSpeedInstruction } from '../Conversation/CallMode/voiceSpeed';
 import { shuffleArray } from '@/libs/array';
 import { useAuth } from '../Auth/useAuth';
 import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
@@ -249,6 +248,21 @@ const StoryModal = ({
   };
 
   const audio = useConversationAudio();
+  type Mode = 'easy' | 'medium' | 'hard';
+  const [mode, setMode] = useState<Mode>('easy');
+  const numberOfOptionsMap: Record<Mode, number> = {
+    easy: 2,
+    medium: 3,
+    hard: 4,
+  };
+  const pointsToWinMap: Record<Mode, number> = {
+    easy: 1,
+    medium: 2,
+    hard: 3,
+  };
+  const pointsToWin = pointsToWinMap[mode];
+
+  const numberOfOptions = numberOfOptionsMap[mode];
 
   useEffect(() => {
     setProgress('');
@@ -318,12 +332,12 @@ const StoryModal = ({
 
   const onSentenceComplete = async () => {
     if (!auth.uid) return;
-    const points = 2;
+
     await increaseGamePointsRequest(
       {
         sentenceConstructor: {
           userId: auth.uid,
-          points,
+          points: pointsToWin,
         },
       },
       await auth.getToken(),
@@ -403,6 +417,7 @@ const StoryModal = ({
                     >
                       {imageDescription.shortDescription}
                     </Typography>
+
                     <Typography variant="body2" textAlign={'center'}>
                       {i18n._('Press the button below to generate a story based on this image')}
                     </Typography>
@@ -412,6 +427,33 @@ const StoryModal = ({
                       gap: '10px',
                     }}
                   >
+                    <ButtonGroup
+                      sx={{
+                        marginBottom: '10px',
+                      }}
+                    >
+                      <Button
+                        size="small"
+                        variant={mode === 'easy' ? 'contained' : 'outlined'}
+                        onClick={() => setMode('easy')}
+                      >
+                        {i18n._('Easy')}
+                      </Button>
+                      <Button
+                        size="small"
+                        variant={mode === 'medium' ? 'contained' : 'outlined'}
+                        onClick={() => setMode('medium')}
+                      >
+                        {i18n._('Medium')}
+                      </Button>
+                      <Button
+                        size="small"
+                        variant={mode === 'hard' ? 'contained' : 'outlined'}
+                        onClick={() => setMode('hard')}
+                      >
+                        {i18n._('Hard')}
+                      </Button>
+                    </ButtonGroup>
                     <Button
                       sx={{
                         padding: '10px 30px',
@@ -466,6 +508,7 @@ const StoryModal = ({
                 }}
               >
                 <TextConstructor
+                  numberOfOptions={numberOfOptions}
                   sentences={sentences}
                   sentencesTranslates={sentencesTranslates}
                   progress={progress}

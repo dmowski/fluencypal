@@ -23,6 +23,7 @@ type TextConstructorProps = {
   onComplete?: () => void;
   onPlayAudio?: (audioText: string) => void;
   onSentenceComplete?: (sentenceIndex: number) => void;
+  numberOfOptions?: number;
 };
 
 export function TextConstructor({
@@ -33,6 +34,7 @@ export function TextConstructor({
   onComplete,
   onPlayAudio,
   onSentenceComplete,
+  numberOfOptions = 3,
 }: TextConstructorProps) {
   const [wrongWord, setWrongWord] = useState<string | null>(null);
   const { i18n } = useLingui();
@@ -50,7 +52,7 @@ export function TextConstructor({
       `${activePart.sentenceIndex}:${activePart.completedWordsInSentence}:${progress}`,
     );
 
-    const optionsCount = 3;
+    const optionsCount = numberOfOptions;
 
     return generateRandomWordOptions({
       activeSentenceWords: activePart.activeSentenceWords,
