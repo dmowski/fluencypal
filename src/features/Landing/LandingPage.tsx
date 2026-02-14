@@ -269,7 +269,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
               label={i18n._(`Simple & Effective`)}
               title={i18n._(`How It Works`)}
               subTitle={i18n._(
-                "Improving your English speaking skills doesn't have to be complicated. With FluencyPal, anyone can practice confidently and see real progress in minutes, regardless of their current level.",
+                "Improving your English speaking skills doesn't have to be complicated. With FluencyPal, anyone can practice confidently and see real progress in weeks, regardless of their current level.",
               )}
               cards={[
                 {
@@ -280,7 +280,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   titleColor: '#fff',
                   titleBgColor: '#111',
                   subTitle: i18n._(
-                    `Fill out a onboarding quiz to help FluencyPal understand your goals and preferences.`,
+                    `Fill out an onboarding quiz to help FluencyPal understand your goals and preferences.`,
                   ),
                   subTitleColor: '#515154ff',
                   footerButton: (
@@ -335,7 +335,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   titleBgColor: '#fff',
 
                   subTitle: i18n._(
-                    'Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you.',
+                    'Based on your onboarding, FluencyPal will create a personalized learning plan just for you.',
                   ),
                   subTitleColor: '#fff',
                 },
