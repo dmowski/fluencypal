@@ -425,11 +425,12 @@ const StoryModal = ({
                   <Stack
                     sx={{
                       gap: '10px',
+                      alignItems: 'center',
                     }}
                   >
                     <ButtonGroup
                       sx={{
-                        marginBottom: '10px',
+                        marginBottom: '0px',
                       }}
                     >
                       <Button
