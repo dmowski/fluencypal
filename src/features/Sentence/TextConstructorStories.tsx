@@ -23,7 +23,7 @@ export const TextConstructorStories = () => {
   const [images, setImages] = useState<ImageDescription[]>([]);
 
   const reshuffleImages = () => {
-    const countImagesToShow = 10;
+    const countImagesToShow = 15;
     const imagesToShow = shuffleArray(imageDescriptions).filter((_, index) => {
       return index >= 0 && index < countImagesToShow;
     });
@@ -184,7 +184,7 @@ export const TextConstructorStories = () => {
                     src={image.url}
                     alt={image.shortDescription}
                     fill
-                    sizes="400px"
+                    sizes="300px"
                     style={{
                       objectFit: 'cover',
                       borderRadius: '8px',
@@ -234,7 +234,6 @@ const StoryModal = ({
   const settings = useSettings();
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
   const voiceInfo = getAiVoiceByVoice(voiceName);
-
   const voiceSpeed = settings.userSettings?.teacherVoiceSpeed || 'normal';
 
   const [sentences, setSentences] = useState<string[]>([]);
@@ -286,10 +285,10 @@ const StoryModal = ({
   const [initializing, setInitializing] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const initialize = async () => {
-    if (!imageToday) return;
+    if (!imageDescription) return;
     audio.startConversationAudio();
     setInitializing(true);
-    const generatedText = await generateTextBasedOnImage(imageToday);
+    const generatedText = await generateTextBasedOnImage(imageDescription);
     console.log('generatedText', generatedText);
     const sentences = splitTextIntoSentences(generatedText);
     console.log('sentences', sentences);
@@ -300,27 +299,33 @@ const StoryModal = ({
     setIsReady(true);
     setInitializing(false);
   };
-  const imageToday = imageDescription;
-
-  const playAudio = (text: string) => {
-    audio.speak(text, {
-      voice: voiceName,
-      instructions: `${getVoiceSpeedInstruction(voiceSpeed)} ${voiceInfo.voiceInstruction}`.trim(),
-    });
-  };
 
   const imageBg = (
-    <Image
-      src={imageToday.url}
-      alt="Today's image"
-      fill
-      sizes="1200px"
-      style={{
-        objectFit: 'cover',
-        borderRadius: '8px',
-        boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
+    <Stack
+      sx={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 1,
+        pointerEvents: 'none',
+        opacity: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
-    />
+    >
+      <Image
+        src={imageDescription.url}
+        alt="Today's image"
+        fill
+        sizes="1200px"
+        style={{
+          objectFit: 'cover',
+          boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
+        }}
+      />
+    </Stack>
   );
 
   return (
@@ -360,7 +365,7 @@ const StoryModal = ({
                     width: '100%',
                     height: '100%',
                     gap: '20px',
-                    padding: '0px 20px',
+                    padding: '0px 10px',
                     bottom: 0,
                     alignItems: 'center',
                     zIndex: 2,
@@ -380,8 +385,18 @@ const StoryModal = ({
                       textAlign={'center'}
                       sx={{
                         fontWeight: 800,
-                        maxWidth: '800px',
+                        maxWidth: '850px',
                         textWrap: 'balance',
+                        fontSize: '72px',
+                        '@media (max-width: 700px)': {
+                          fontSize: '52px',
+                        },
+                        '@media (max-width: 500px)': {
+                          fontSize: '42px',
+                        },
+                        '@media (max-width: 400px)': {
+                          fontSize: '32px',
+                        },
                       }}
                     >
                       {imageDescription.shortDescription}
