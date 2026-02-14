@@ -87,8 +87,6 @@ export function TextConstructor({
       return;
     }
 
-    onPlayAudio?.(activePart.nextWord);
-
     const nextProgress = constructFinalProgress({
       progress,
       nextWord: word,
@@ -214,8 +212,11 @@ export function TextConstructor({
                   translator.isTranslateAvailable
                     ? (word, element) => {
                         translator.translateWithModal(word, element);
+                        onPlayAudio?.(word);
                       }
-                    : undefined
+                    : onPlayAudio
+                      ? (word) => onPlayAudio(word)
+                      : undefined
                 }
                 variant="conversation"
               >

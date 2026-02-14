@@ -149,7 +149,7 @@ export const useTranslate = () => {
                 </Markdown>
                 <AudioPlayIcon
                   text={translatedText?.source || ''}
-                  instructions="Calm and clear"
+                  instructions={`Calm and clear. Use a ${fullLanguagesMap[learningLanguage] || 'unknown'} language.`}
                   voice={'shimmer'}
                 />
               </Stack>

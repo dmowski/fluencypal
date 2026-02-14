@@ -330,6 +330,13 @@ const StoryModal = ({
     />
   );
 
+  const playAudio = (text: string) => {
+    audio.speak(text, {
+      instructions: voiceInfo.voiceInstruction + `. Use a ${userTargetLanguage} language.`,
+      voice: voiceName,
+    });
+  };
+
   const onSentenceComplete = async () => {
     if (!auth.uid) return;
 
@@ -516,7 +523,7 @@ const StoryModal = ({
                   onContinue={setProgress}
                   onComplete={onComplete}
                   onSentenceComplete={onSentenceComplete}
-                  //onPlayAudio={playAudio}
+                  onPlayAudio={playAudio}
                 />
                 {isCompleted && (
                   <Stack
