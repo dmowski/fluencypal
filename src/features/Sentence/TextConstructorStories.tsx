@@ -15,6 +15,8 @@ import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getAiVoiceByVoice } from '../Conversation/CallMode/voiceAvatar';
 import { getVoiceSpeedInstruction } from '../Conversation/CallMode/voiceSpeed';
 import { shuffleArray } from '@/libs/array';
+import { useAuth } from '../Auth/useAuth';
+import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
@@ -231,6 +233,7 @@ const StoryModal = ({
 }) => {
   const [progress, setProgress] = useState('');
   const ai = useTextAi();
+  const auth = useAuth();
   const settings = useSettings();
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
   const voiceInfo = getAiVoiceByVoice(voiceName);
@@ -312,6 +315,20 @@ const StoryModal = ({
       }}
     />
   );
+
+  const onSentenceComplete = async () => {
+    if (!auth.uid) return;
+    const points = 2;
+    await increaseGamePointsRequest(
+      {
+        sentenceConstructor: {
+          userId: auth.uid,
+          points,
+        },
+      },
+      await auth.getToken(),
+    );
+  };
 
   return (
     <CustomModal isOpen={true} onClose={onClose}>
@@ -454,6 +471,7 @@ const StoryModal = ({
                   progress={progress}
                   onContinue={setProgress}
                   onComplete={onComplete}
+                  onSentenceComplete={onSentenceComplete}
                   //onPlayAudio={playAudio}
                 />
                 {isCompleted && (

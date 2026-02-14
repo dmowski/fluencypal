@@ -11,6 +11,9 @@ import { useLingui } from '@lingui/react';
 import { createSeededRandom } from './createSeededRandom';
 import { Markdown } from '../uiKit/Markdown/Markdown';
 import { useTranslate } from '../Translation/useTranslate';
+import { PositionChanged } from '../Game/PositionChanged';
+import { GamePointRow } from '../Game/GamePointRow';
+import { useGame } from '../Game/useGame';
 
 type TextConstructorProps = {
   sentences: string[];
@@ -19,6 +22,7 @@ type TextConstructorProps = {
   onContinue: (progress: string) => void;
   onComplete?: () => void;
   onPlayAudio?: (audioText: string) => void;
+  onSentenceComplete?: (sentenceIndex: number) => void;
 };
 
 export function TextConstructor({
@@ -28,6 +32,7 @@ export function TextConstructor({
   onContinue,
   onComplete,
   onPlayAudio,
+  onSentenceComplete,
 }: TextConstructorProps) {
   const [wrongWord, setWrongWord] = useState<string | null>(null);
   const { i18n } = useLingui();
@@ -126,6 +131,16 @@ export function TextConstructor({
       behavior: 'smooth',
     });
   }, [progress]);
+
+  useEffect(() => {
+    if (!activePart || activePart.sentenceIndex === 0) {
+      return;
+    }
+
+    onSentenceComplete?.(activePart.sentenceIndex);
+  }, [activePart?.sentenceIndex]);
+
+  const game = useGame();
 
   return (
     <Stack
@@ -273,6 +288,58 @@ export function TextConstructor({
                 </Button>
               );
             })}
+          </Stack>
+
+          <Stack
+            sx={{
+              width: 'max-content',
+              padding: '10px',
+
+              borderRadius: '8px',
+              marginTop: '20px',
+            }}
+          >
+            <Stack
+              sx={{
+                alignItems: 'center',
+                flexDirection: 'row',
+                gap: '20px',
+                width: '100%',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: '13px',
+                  opacity: 0.9,
+                  textTransform: 'uppercase',
+                }}
+              >
+                {i18n._('Points:')}
+              </Typography>
+              <GamePointRow points={game.myPoints || 1} isTop={game.isGameWinner} />
+            </Stack>
+
+            <Stack
+              sx={{
+                alignItems: 'center',
+                flexDirection: 'row',
+                gap: '20px',
+                width: '100%',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: '13px',
+                  opacity: 0.9,
+                  textTransform: 'uppercase',
+                }}
+              >
+                {i18n._('My Position:')}
+              </Typography>
+              <GamePointRow points={game.myPosition || 0} isTop={false} />
+            </Stack>
           </Stack>
         </Stack>
       </Stack>

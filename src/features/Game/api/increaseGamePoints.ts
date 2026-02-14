@@ -5,6 +5,7 @@ import { increaseUserPoints } from './statsResources';
 
 export const increaseGamePoints = async (
   props: IncreaseGamePointsRequest,
+  userId: string,
 ): Promise<IncreaseGamePointsResponse> => {
   if (props.battle?.winnerUserId) {
     await increaseUserPoints({
@@ -26,6 +27,18 @@ export const increaseGamePoints = async (
       userId: props.aiConversationUserId || '',
       points: props.aiConversationPoints,
       gameAchievement: 'ai_conversation',
+    });
+  }
+
+  if (
+    props.sentenceConstructor &&
+    props.sentenceConstructor.userId &&
+    props.sentenceConstructor.points
+  ) {
+    await increaseUserPoints({
+      userId: userId,
+      points: props.sentenceConstructor.points,
+      gameAchievement: 'sentence_constructor',
     });
   }
 
