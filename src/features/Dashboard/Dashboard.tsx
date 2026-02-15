@@ -21,7 +21,7 @@ import { AccessBadge } from './AccessBadge';
 import { JustTalkCard } from './JustTalkCard';
 import { PreviewCard } from '../Chat/Message/PreviewCard';
 import { StreaksDaysBadge } from './StreaksDaysBadge';
-import { TextConstructorStories } from '../Sentence/TextConstructorStories';
+import { TextConstructorStories } from '../Sentence/Stories';
 import { useAuth } from '../Auth/useAuth';
 
 interface DashboardProps {

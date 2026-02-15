@@ -44,6 +44,7 @@ export async function GET(req: Request) {
   if (isUseCache) {
     const cachedAudio = await getAudioFromStorage(audioId);
     if (cachedAudio) {
+      console.log('From cache', input);
       return new Response(cachedAudio as any, {
         headers: {
           'Content-Type': 'audio/mpeg',
@@ -72,6 +73,8 @@ export async function GET(req: Request) {
   const audioBuffer = Buffer.from(await resp.arrayBuffer());
 
   await saveAudioToStorage(audioId, audioBuffer);
+
+  console.log('SAVE TO cache', input);
 
   return new Response(audioBuffer, {
     headers: {
