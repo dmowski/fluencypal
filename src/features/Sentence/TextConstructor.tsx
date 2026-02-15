@@ -13,6 +13,7 @@ import { Markdown } from '../uiKit/Markdown/Markdown';
 import { useTranslate } from '../Translation/useTranslate';
 import { GamePointRow } from '../Game/GamePointRow';
 import { useGame } from '../Game/useGame';
+import { sleep } from '@/libs/sleep';
 
 type TextConstructorProps = {
   sentences: string[];
@@ -78,7 +79,7 @@ export function TextConstructor({
     };
   }, [wrongWord]);
 
-  const handlePick = (word: string) => {
+  const handlePick = async (word: string) => {
     if (!activePart) {
       return;
     }
@@ -87,7 +88,9 @@ export function TextConstructor({
       setWrongWord(word);
       return;
     }
+    console.log('click play');
     onPlayAudio?.(word, false);
+    await sleep(1);
 
     const nextProgress = constructFinalProgress({
       progress,
