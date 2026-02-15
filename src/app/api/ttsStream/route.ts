@@ -2,6 +2,7 @@
 import { getHash } from '@/libs/hash';
 import OpenAI from 'openai';
 import { getBucket } from '../config/firebase';
+import { SpeechCreateParams } from 'openai/resources/audio/speech.mjs';
 export const runtime = 'nodejs';
 
 const saveAudioToStorage = async (audioId: string, audioData: Buffer<ArrayBufferLike>) => {
@@ -48,7 +49,8 @@ export async function GET(req: Request) {
       return new Response(cachedAudio as any, {
         headers: {
           'Content-Type': 'audio/mpeg',
-          'Cache-Control': 'public, max-age=31536000, immutable',
+          'Cache-Control': 'no-store',
+          //'Cache-Control': 'public, max-age=31536000, immutable',
         },
       });
     }
@@ -56,12 +58,17 @@ export async function GET(req: Request) {
 
   const voiceInstruction = instructions || undefined;
 
-  const resp = await client.audio.speech.create({
+  const props: SpeechCreateParams = {
     model: 'gpt-4o-mini-tts',
     voice: voice || 'alloy',
     input,
-    instructions: voiceInstruction,
-  });
+  };
+
+  if (instructions) {
+    props.instructions = voiceInstruction;
+  }
+
+  const resp = await client.audio.speech.create(props);
 
   if (!isUseCache) {
     return new Response(resp.body as any, {
@@ -73,13 +80,14 @@ export async function GET(req: Request) {
   }
 
   const audioBuffer = Buffer.from(await resp.arrayBuffer());
+
   await saveAudioToStorage(audioId, audioBuffer);
 
   return new Response(audioBuffer, {
     headers: {
       'Content-Type': 'audio/mpeg',
-      //'Cache-Control': 'no-store',
-      'Cache-Control': 'public, max-age=31536000, immutable',
+      'Cache-Control': 'no-store',
+      //'Cache-Control': 'public, max-age=31536000, immutable',
     },
   });
 }
