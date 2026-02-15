@@ -13,6 +13,7 @@ import { useSettings } from '../Settings/useSettings';
 import { useAuth } from '../Auth/useAuth';
 import { sendTextToAudioRequest } from '@/app/api/textToAudio/sendTextToAudioRequest';
 import { AiVoice } from '@/common/ai';
+import { isSilentAudio } from './isSilentAudio';
 
 /**
  * What this gives you:
@@ -36,6 +37,7 @@ export type SpeakOptions = {
    */
   audioUrl?: string;
   cache?: boolean;
+  regenerateCache?: boolean;
 };
 
 interface ConversationAudioContextType {
@@ -278,7 +280,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     return playerRef.current!.isUnlocked();
   }, []);
 
-  const speak = useCallback(async (text: string, opts: SpeakOptions) => {
+  const generateTtsStreamUrl = (text: string, opts: SpeakOptions) => {
     const maxLength = 600;
     text = text.trim();
     const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
@@ -287,28 +289,48 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       voice: opts.voice,
       instructions: opts.instructions ?? '',
       cache: opts.cache ? 'true' : 'false',
+      regenerateCache: opts.regenerateCache ? 'true' : 'false',
     });
 
-    await playerRef.current!.playStreamUrl(`/api/ttsStream?${q}`);
+    return `/api/ttsStream?${q}`;
+  };
+
+  const speak = useCallback(async (text: string, opts: SpeakOptions) => {
+    const url = generateTtsStreamUrl(text, opts);
+
+    await playerRef.current!.playStreamUrl(url);
   }, []);
 
-  const initCache = useCallback(async (text: string, opts: SpeakOptions) => {
-    const maxLength = 600;
-    text = text.trim();
-    const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
-    const q = new URLSearchParams({
-      input: trimmedText,
-      voice: opts.voice,
-      instructions: opts.instructions ?? '',
-      cache: opts.cache ? 'true' : 'false',
-    });
-    const audioUrl = `/api/ttsStream?${q}`;
+  const initCache = useCallback(async (text: string, opts: SpeakOptions, attempt = 0) => {
+    const urlClean = generateTtsStreamUrl(text, { ...opts, regenerateCache: false });
+    const urlForRegenerate = generateTtsStreamUrl(text, { ...opts, regenerateCache: true });
+
+    const urlForAttempt = attempt === 0 ? urlClean : urlForRegenerate;
+    const urlWithSalt = urlForAttempt + '&date=' + Date.now();
 
     try {
-      const response = await fetch(audioUrl);
+      const response = await fetch(urlWithSalt);
       if (!response.ok) {
         throw new Error('Failed to fetch audio for caching');
       }
+
+      const buffer = await response.arrayBuffer();
+      const silent = await isSilentAudio(buffer);
+
+      if (silent) {
+        console.log('Audio is silent. NEED Regenerate.', text);
+        if (attempt < 5) {
+          console.log('Retrying...', attempt + 1);
+          return await initCache(text, opts, attempt + 1);
+        }
+      }
+
+      const responseClean = await fetch(urlClean);
+
+      if (!responseClean.ok) {
+        throw new Error('Failed to fetch audio for caching. clean attempt');
+      }
+
       // We don't need to do anything with the response; just fetching it should cache it
     } catch (error) {
       console.error('Error initializing audio cache:', error);
