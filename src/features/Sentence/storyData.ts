@@ -250,4 +250,196 @@ export const storyData: Story[] = [
       { textEn: 'Today is a great day for her.' },
     ],
   },
+  {
+    id: 'story-a-gondola-ride-in-venice',
+    title: 'A gondola ride in Venice',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-gondola-ride-in-venice.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          "In the beautiful city of Venice, a gondola glided through the narrow canals. Marco, the gondolier, stood on the back of the boat. He skillfully rowed through the calm waters with his long oar.\n\nThe old buildings on each side seemed to whisper stories from the past. Their colorful walls reflected in the water below. Tourists sat in the gondola, taking pictures and enjoying the gentle breeze.\n\nMarco smiled as he shared tales of Venice with his passengers. He talked about the city's history, the famous bridges, and the delicious food.\n\nAs the day slowly ended, the sun set over Venice, painting the sky in shades of orange and pink. The gondola drifted peacefully, creating memories for everyone.",
+      },
+    ],
+  },
+  {
+    id: 'story-a-hand-holding-a-mysterious-glowing-object',
+    title: 'A hand holding a mysterious glowing object',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-hand-holding-a-mysterious-glowing-object.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          'In a dark room, Mia sat quietly, holding a small glowing orb in her hand. The light from the orb lit up her fingers and her face, making shadows dance around her. She found the orb one day while walking in the forest. It was hidden under some leaves, shining softly.\n\nMia liked how the orb made her feel calm and peaceful. It was like holding a piece of the moon. She often sat in her room, just watching it glow. The light was gentle, and it seemed to whisper secrets only she could hear.\n\nAs she held the orb, Mia smiled, feeling a special kind of magic. It was as if the orb knew her dreams and kept them safe.',
+      },
+    ],
+  },
+  {
+    id: 'story-a-horse-in-a-meadow',
+    title: 'A horse in a meadow',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-horse-in-a-meadow.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          'In a beautiful green meadow, there was a brown horse named Bella. She loved the open fields and the colorful wildflowers that danced in the breeze. The sun shone brightly, making the flowers sparkle like little stars. \n\nBella often wandered around the meadow, grazing on the fresh grass. She enjoyed the view of the tall mountains in the distance. They watched over her like gentle giants, their peaks covered with snow even in summer.\n\nOne day, Bella noticed a butterfly fluttering near the flowers. Curious, she followed it, trotting softly through the meadow. The butterfly led her to a small stream where the water glistened in the sunlight. Bella felt happy and free. The meadow was her favorite place to be.',
+      },
+    ],
+  },
+  {
+    id: 'story-a-maasai-warrior-standing-in-the-savanna',
+    title: 'A Maasai warrior standing in the savanna',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-maasai-warrior-standing-in-the-savanna.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          'In the vast African savanna, the sun was setting, painting the sky in orange and pink hues. A Maasai warrior, named Tandu, stood proudly. He wore a bright red shuka, a traditional cloth, wrapped around his shoulders. Tandu also wore beautiful beaded jewelry that sparkled in the fading light.\n\nAs the cool breeze swept across the grasslands, Tandu listened to the sounds of nature. He could hear the distant call of a lion and the soft rustle of trees. Tandu loved this land—it was his home.\n\nEvery evening, Tandu watched the sunset, feeling the strength of his ancestors. The land taught him courage and wisdom. As the sky darkened, Tandu knew he was a protector of both the land and his people.',
+      },
+    ],
+  },
+  {
+    id: 'story-a-man-fishing-by-a-lake',
+    title: 'A man fishing by a lake',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-man-fishing-by-a-lake.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          'Early in the morning, John stood quietly on the wooden dock. In his hands, he held a fishing rod. The lake before him was calm and covered with a thin layer of fog. The water was like a mirror, reflecting the soft light of the rising sun.\n\nJohn loved these mornings. It was peaceful and quiet. He could hear birds singing in the trees and the gentle splash of water as fish jumped. He cast his line into the lake, hoping to catch a big fish for breakfast.\n\nAs he waited, he thought about how lucky he was to enjoy such a beautiful place. The fresh air and the stillness of the morning made him feel very happy.',
+      },
+    ],
+  },
+  {
+    id: 'story-a-maze-viewed-from-above',
+    title: 'A maze viewed from above',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-maze-viewed-from-above.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          'Once upon a time, there was a big hedge maze in a beautiful garden. The maze was full of tall green walls made of bushes. One sunny day, a young man named Jack decided to explore the maze. From above, the maze looked like a giant puzzle.\n\nJack walked inside the maze, and the sun cast long shadows on the path. He turned left, then right, trying to find the way out. Sometimes, he would end up in a dead end and had to turn around.\n\nBut Jack didn’t give up. He enjoyed his adventure, imagining he was a brave explorer. After a while, he finally found the exit. Jack smiled, happy and proud of his journey through the maze.',
+      },
+    ],
+  },
+  {
+    id: 'story-a-person-hiking-in-the-himalayas',
+    title: 'A person hiking in the Himalayas',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-person-hiking-in-the-himalayas.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          'Tom is a brave hiker. He loves to explore new places. One day, he decides to climb a rocky trail in the Himalayas. The path is steep and challenging, but Tom feels excited. He wears a warm jacket, boots, and carries a backpack with food and water.\n\nAs he climbs higher, he sees the beautiful snow-capped peaks in the distance. The sky is bright and blue above him. The fresh mountain air is cold but refreshing. Tom stops for a moment to catch his breath and admire the view.\n\nHe takes a deep breath and smiles. "This is amazing," he says to himself. The adventure is hard, but Tom feels happy and free. He continues climbing, ready to see more of this incredible mountain.',
+      },
+    ],
+  },
+  {
+    id: 'story-a-person-inside-a-transparent-bubble',
+    title: 'A person inside a transparent bubble',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-person-inside-a-transparent-bubble.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          'Once upon a time, in a wide green field, there was a magical bubble. Inside this clear bubble floated a young girl named Lily. The bubble was special because it could fly high in the sky.\n\nEvery morning, the bubble would lift Lily up. She would wave to the birds and look down at the tiny houses below. Lily felt like she was in a dream.\n\nOne day, as she floated, she saw a rainbow. The bubble took her closer, and she touched the colors. It was like magic!\n\nWhen the sun went down, the bubble gently landed back in the field. Lily smiled and knew each day in the bubble would bring new adventures. And that made her very happy.',
+      },
+    ],
+  },
+  {
+    id: 'story-a-person-walking-in-the-rain-with-an-umbrella',
+    title: 'A person walking in the rain with an umbrella',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-person-walking-in-the-rain-with-an-umbrella.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          'Emma was strolling down the city street dressed in her yellow raincoat. It was raining softly, and the bright lights from the shops reflected beautifully in the puddles on the ground. Emma held her colorful umbrella, which was red, blue, and green. It made her smile, even on this gray day.\n\nAs she walked, she heard the gentle splash of her boots in the puddles. The street was not too busy, so Emma enjoyed the peaceful sound. She looked around at the glowing lights shimmering in the water, creating a magical scene. Despite the rain, Emma felt happy and cozy under her umbrella. She loved walking in the rain and feeling the fresh drops on her face. It was her favorite weather.',
+      },
+    ],
+  },
+  {
+    id: 'story-a-person-walking-upside-down-surreal-style',
+    title: 'A person walking upside-down (surreal style)',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-person-walking-upside-down-surreal-style.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          'Once upon a time, in a magical town called Upside-Downville, there lived a young girl named Lily. One morning, Lily woke up and found herself walking on the ceiling! She looked down and saw her room below her. Everything was turned upside down.\n\nAt first, Lily was scared. But soon, she laughed and enjoyed her new trick. She danced across the ceiling like a ballerina. Her cat, Whiskers, watched her with wide eyes from the floor.\n\nLily had so much fun, she forgot about feeling scared. She imagined being like a superhero who could walk on ceilings. Eventually, gravity returned to normal, and Lily gently floated back.\n\nFrom that day on, Lily knew Upside-Downville held many surprises. She was excited to discover them all.',
+      },
+    ],
+  },
+  {
+    id: 'story-a-person-wearing-a-raincoat-and-boots',
+    title: 'A person wearing a raincoat and boots',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-person-wearing-a-raincoat-and-boots.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          "One rainy afternoon, Alex stood outside in the garden. The sky was gray, and the rain fell in steady drops. Alex wore a bright yellow raincoat and rubber boots, ready to meet the rain. In one hand, Alex held a closed umbrella.\n\nAlex loved the rain and listening to its rhythm. The garden looked beautiful, with raindrops on green leaves and colorful flowers. The umbrella stayed closed because Alex wanted to feel the rain.\n\nAlex walked around, enjoying the wet earth under the boots. A bird sang somewhere, happy with the rain too. After a while, Alex smiled and went inside, feeling refreshed and joyful. The rain had stopped, but the memory stayed bright, like Alex's yellow raincoat.",
+      },
+    ],
+  },
+  {
+    id: 'story-a-reflection-in-a-puddle',
+    title: 'A reflection in a puddle',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-reflection-in-a-puddle.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          "One rainy afternoon, Emma walked home from school. As she stepped carefully around the puddles on the street, she noticed something interesting. In one large puddle, she saw the tall city building reflected perfectly in the water. It was like the building had its twin in the puddle.\n\nEmma smiled and took a moment to enjoy the sight. She imagined small fish swimming near the building's reflection, as if it were an underwater city. Just then, a gentle breeze rippled the water, making the reflection dance like it was alive.\n\nEmma continued walking, feeling happy from her small discovery. She knew that even rainy days can hold little bits of magic.",
+      },
+    ],
+  },
+  {
+    id: 'story-a-scared-person-watching-a-horror-movie',
+    title: 'A scared person watching a horror movie',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-scared-person-watching-a-horror-movie.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          "It was a dark and stormy night. Sam sat alone on the couch, watching a spooky movie. The room was dark, except for the glow of the TV. The howling wind outside made the house creak and groan. \n\nThe movie showed an old, haunted house. Suddenly, a ghost appeared on the screen, making a loud noise. Sam gasped and covered their mouth in fear. \n\nSam's eyes were wide, glued to the screen. The ghost moved closer, and Sam's heart beat faster. \n\nJust then, a loud thunderclap made Sam jump. \"Phew, it's just a movie,\" Sam whispered, trying to calm down. \n\nEven though it was scary, Sam couldn't stop watching. It was going to be a spooky night!",
+      },
+    ],
+  },
+  {
+    id: 'story-a-sculptor-shaping-a-statue',
+    title: 'A sculptor shaping a statue',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-sculptor-shaping-a-statue.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          "In a small, dusty workshop, there was a sculptor named Ben. Every morning, Ben wore his old apron and got to work. His workshop was filled with stone and clay. \n\nToday, Ben was sculpting a beautiful angel from a large piece of stone. With his chisel and hammer, he slowly shaped the wings. Dust filled the air, but Ben didn’t mind. He loved the sound of the chisel tap-tapping on the stone.\n\nAfter hours of work, the angel's form appeared. Its wings seemed ready to fly. Ben smiled as he wiped the sweat from his brow. He loved turning hard stone into something so beautiful.\n\nAt the end of the day, Ben was tired but happy, dreaming of his next masterpiece.",
+      },
+    ],
+  },
+  {
+    id: 'story-a-shadow-doing-something-different-from-the-person',
+    title: 'A shadow doing something different from the person',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-shadow-doing-something-different-from-the-person.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          'Lily was walking home one evening when she stopped under a streetlamp. She noticed something strange. Her shadow was not standing still. Instead, it moved on its own!\n\nLily watched in surprise. Her shadow stretched out its hand, as if trying to touch something. "How is this happening?" Lily wondered. She waved her arm, but the shadow did not follow.\n\nLily felt a shiver but decided to step forward. Her shadow slid back into place, mirroring her again. Relieved, Lily continued her walk home, but she couldn\'t shake the feeling of mystery.\n\nFrom that day on, Lily often checked her shadow, curious and amazed by the unusual experience. Sometimes, life can be more mysterious than it seems.',
+      },
+    ],
+  },
+  {
+    id: 'story-a-staircase-leading-into-the-clouds',
+    title: 'A staircase leading into the clouds',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-staircase-leading-into-the-clouds.webp?alt=media',
+    parts: [
+      {
+        textEn:
+          'Once upon a time, in a small village, there was a staircase that reached up into the sky. Nobody knew where it came from or where it led. The wooden steps floated among fluffy white clouds, looking magical and dreamlike.\n\nOne day, a little girl named Lily found the staircase. She felt curious and decided to climb it. As she ascended, the clouds danced around her, and she felt as if she was walking in a dream.\n\nAt the top, Lily saw a beautiful land filled with colorful flowers and gentle animals. It was like a paradise. She played with the animals and picked flowers.\n\nWhen it was time to return, Lily promised she would visit again. The staircase was her secret pathway to a wondrous world.',
+      },
+    ],
+  },
 ];

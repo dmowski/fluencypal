@@ -28,8 +28,9 @@ export const TextConstructorStories = () => {
   const selectedImage = images.find((img) => img.id === selectedImageImageId) || null;
 
   const reshuffleImages = () => {
-    const sortedImageDescriptions = [...imageDescriptions].sort((a, b) => a.id.localeCompare(b.id));
-    setImages([...storyData, ...sortedImageDescriptions]);
+    //const sortedImageDescriptions = []; //[...imageDescriptions].sort((a, b) => a.id.localeCompare(b.id));
+    //setImages([...storyData, ...sortedImageDescriptions]);
+    setImages(storyData);
   };
 
   const initImage = () => {
@@ -351,7 +352,11 @@ const StoryModal = ({
         id: `story-${imageDescription.id}`,
         title: imageDescription.shortDescription,
         imageUrl: imageDescription.url,
-        parts: sentences.map((s) => ({ textEn: s })),
+        parts: [
+          {
+            textEn: generatedText,
+          },
+        ],
       };
 
       console.log(JSON.stringify(story));
