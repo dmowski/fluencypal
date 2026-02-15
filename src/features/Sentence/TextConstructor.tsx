@@ -23,6 +23,7 @@ type TextConstructorProps = {
   onPlayAudio?: (audioText: string, alternativeVoice: boolean) => void;
   onSentenceComplete?: (sentenceIndex: number) => void;
   numberOfOptions?: number;
+  onActiveWordsChange?: (activeWords: string[]) => void;
 };
 
 export function TextConstructor({
@@ -34,6 +35,7 @@ export function TextConstructor({
   onPlayAudio,
   onSentenceComplete,
   numberOfOptions = 3,
+  onActiveWordsChange,
 }: TextConstructorProps) {
   const [wrongWord, setWrongWord] = useState<string | null>(null);
   const { i18n } = useLingui();
@@ -139,6 +141,14 @@ export function TextConstructor({
 
     onSentenceComplete?.(activePart.sentenceIndex);
   }, [activePart?.sentenceIndex]);
+
+  useEffect(() => {
+    if (!activePart || !activePart?.activeSentenceWords.length) {
+      return;
+    }
+
+    onActiveWordsChange?.(activePart.activeSentenceWords);
+  }, [JSON.stringify(activePart?.activeSentenceWords)]);
 
   const game = useGame();
 

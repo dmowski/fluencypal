@@ -2,22 +2,23 @@ import { useLingui } from '@lingui/react';
 import { Button, ButtonGroup, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
-import { ImageDescription, imageDescriptions } from '../Game/ImagesDescriptions';
-import { useEffect, useState } from 'react';
+import { ImageDescription } from '../Game/ImagesDescriptions';
+import { useEffect, useRef, useState } from 'react';
 import { useTextAi } from '../Ai/useTextAi';
 import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './splitTextIntoSentences';
 import { TextConstructor } from './TextConstructor';
-import { FlaskConical, Loader, Origami, RefreshCcw, RefreshCw, X } from 'lucide-react';
+import { Loader, Origami, RefreshCw, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { useConversationAudio } from '../Audio/useConversationAudio';
+import { SpeakOptions, useConversationAudio } from '../Audio/useConversationAudio';
 import { getAiVoiceByVoice } from '../Conversation/CallMode/voiceAvatar';
 import { useAuth } from '../Auth/useAuth';
 import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
 import { Story } from './types';
 import { useUrlState } from '../Url/useUrlState';
 import { storyData } from './storyData';
+import { getHash } from '@/libs/hash';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
@@ -358,12 +359,33 @@ const StoryModal = ({
     />
   );
 
+  const isCachingMap = useRef<Record<string, boolean>>({});
+
+  const speakOptionsMain: SpeakOptions = {
+    instructions: `Speak in a neutral tone. Use a ${userTargetLanguage} language.`,
+    voice: 'marin',
+    cache: true,
+  };
+
+  const speakOptionsAlternative: SpeakOptions = {
+    instructions: `Speak in a neutral tone. Use a ${userTargetLanguage} language.`,
+    voice: 'shimmer',
+    cache: true,
+  };
+
+  const cacheAudioWords = async (words: string[]) => {
+    const wordsHash = getHash(words.join(' '));
+    const isCaching = isCachingMap.current[wordsHash];
+    if (isCaching) {
+      return;
+    }
+    isCachingMap.current[wordsHash] = true;
+
+    await Promise.all([words.map((word, index) => audio.initCache(word, speakOptionsMain))]);
+  };
+
   const playAudio = (text: string, alternativeVoice: boolean) => {
-    audio.speak(text, {
-      instructions: `Speak in a neutral tone. Use a ${userTargetLanguage} language.`,
-      voice: alternativeVoice ? 'shimmer' : 'marin',
-      cache: true,
-    });
+    audio.speak(text, alternativeVoice ? speakOptionsAlternative : speakOptionsMain);
   };
 
   const onSentenceComplete = async () => {
@@ -553,6 +575,7 @@ const StoryModal = ({
                   onComplete={onComplete}
                   onSentenceComplete={onSentenceComplete}
                   onPlayAudio={playAudio}
+                  onActiveWordsChange={cacheAudioWords}
                 />
                 {isCompleted && (
                   <Stack

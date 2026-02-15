@@ -28,7 +28,7 @@ import { AiVoice } from '@/common/ai';
  * - Works best with mp3/m4a/wav. iOS is safest with mp3/m4a.
  */
 
-type SpeakOptions = {
+export type SpeakOptions = {
   instructions: string;
   voice: AiVoice;
   /**
@@ -47,6 +47,7 @@ interface ConversationAudioContextType {
 
   /** Generate TTS and enqueue it, or enqueue provided audioUrl. */
   speak: (text: string, opts: SpeakOptions) => Promise<void>;
+  initCache: (text: string, opts: SpeakOptions) => Promise<void>;
 
   /** Stop everything immediately and clear queue. */
   interrupt: () => void;
@@ -291,6 +292,29 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     await playerRef.current!.playStreamUrl(`/api/ttsStream?${q}`);
   }, []);
 
+  const initCache = useCallback(async (text: string, opts: SpeakOptions) => {
+    const maxLength = 600;
+    text = text.trim();
+    const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
+    const q = new URLSearchParams({
+      input: trimmedText,
+      voice: opts.voice,
+      instructions: opts.instructions ?? '',
+      cache: opts.cache ? 'true' : 'false',
+    });
+    const audioUrl = `/api/ttsStream?${q}`;
+
+    try {
+      const response = await fetch(audioUrl);
+      if (!response.ok) {
+        throw new Error('Failed to fetch audio for caching');
+      }
+      // We don't need to do anything with the response; just fetching it should cache it
+    } catch (error) {
+      console.error('Error initializing audio cache:', error);
+    }
+  }, []);
+
   const interrupt = useCallback(() => {
     playerRef.current!.interrupt();
   }, []);
@@ -339,6 +363,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       getVolume,
       dispose,
       isPlaying,
+      initCache,
     }),
     [
       startConversationAudio,
@@ -350,6 +375,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       getVolume,
       dispose,
       isPlaying,
+      initCache,
     ],
   );
 }
