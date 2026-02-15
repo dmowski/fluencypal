@@ -318,7 +318,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       const silent = await isSilentAudio(buffer);
 
       if (silent) {
-        console.log('Audio is silent. NEED Regenerate.', text);
+        console.log(`Audio is silent. NEED Regenerate. |${text}| Attempt: ${attempt + 1}`);
         if (attempt < 5) {
           console.log('Retrying...', attempt + 1);
           return await initCache(text, opts, attempt + 1);
