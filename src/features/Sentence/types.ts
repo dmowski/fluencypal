@@ -1,6 +1,7 @@
 export interface StoryPart {
   textEn: string;
   imageUrl?: string;
+  imageDescription?: string;
 }
 
 export interface Story {
