@@ -47,7 +47,7 @@ export async function GET(req: Request) {
       return new Response(cachedAudio as any, {
         headers: {
           'Content-Type': 'audio/mpeg',
-          'Cache-Control': 'no-store',
+          'Cache-Control': 'public, max-age=31536000, immutable',
         },
       });
     }
@@ -76,7 +76,7 @@ export async function GET(req: Request) {
   return new Response(audioBuffer, {
     headers: {
       'Content-Type': 'audio/mpeg',
-      'Cache-Control': 'no-store',
+      'Cache-Control': 'public, max-age=31536000, immutable',
     },
   });
 }
