@@ -358,10 +358,11 @@ const StoryModal = ({
     />
   );
 
-  const playAudio = (text: string) => {
+  const playAudio = (text: string, alternativeVoice: boolean) => {
     audio.speak(text, {
-      instructions: voiceInfo.voiceInstruction + `. Use a ${userTargetLanguage} language.`,
-      voice: voiceName,
+      instructions: `Speak in a neutral tone. Use a ${userTargetLanguage} language.`,
+      voice: alternativeVoice ? 'shimmer' : 'marin',
+      cache: true,
     });
   };
 

@@ -35,6 +35,7 @@ type SpeakOptions = {
    * Optional: if you already have a URL, you can pass it and skip TTS generation.
    */
   audioUrl?: string;
+  cache?: boolean;
 };
 
 interface ConversationAudioContextType {
@@ -284,6 +285,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       input: trimmedText,
       voice: opts.voice,
       instructions: opts.instructions ?? '',
+      cache: opts.cache ? 'true' : 'false',
     });
 
     await playerRef.current!.playStreamUrl(`/api/ttsStream?${q}`);

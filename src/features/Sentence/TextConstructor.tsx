@@ -11,7 +11,6 @@ import { useLingui } from '@lingui/react';
 import { createSeededRandom } from './createSeededRandom';
 import { Markdown } from '../uiKit/Markdown/Markdown';
 import { useTranslate } from '../Translation/useTranslate';
-import { PositionChanged } from '../Game/PositionChanged';
 import { GamePointRow } from '../Game/GamePointRow';
 import { useGame } from '../Game/useGame';
 
@@ -21,7 +20,7 @@ type TextConstructorProps = {
   progress: string;
   onContinue: (progress: string) => void;
   onComplete?: () => void;
-  onPlayAudio?: (audioText: string) => void;
+  onPlayAudio?: (audioText: string, alternativeVoice: boolean) => void;
   onSentenceComplete?: (sentenceIndex: number) => void;
   numberOfOptions?: number;
 };
@@ -86,7 +85,7 @@ export function TextConstructor({
       setWrongWord(word);
       return;
     }
-    onPlayAudio?.(word);
+    onPlayAudio?.(word, false);
 
     const nextProgress = constructFinalProgress({
       progress,
@@ -213,10 +212,10 @@ export function TextConstructor({
                   translator.isTranslateAvailable
                     ? (word, element) => {
                         translator.translateWithModal(word, element);
-                        onPlayAudio?.(word);
+                        onPlayAudio?.(word, true);
                       }
                     : onPlayAudio
-                      ? (word) => onPlayAudio(word)
+                      ? (word) => onPlayAudio(word, true)
                       : undefined
                 }
                 variant="conversation"
