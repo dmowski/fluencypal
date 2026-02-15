@@ -128,10 +128,6 @@ export const transcribeAudioFileWithOpenAI = async ({
     });
     await audioStorageFile.makePublic();
     const url = audioStorageFile.publicUrl();
-    await sentSupportTelegramMessage({
-      message: `User recorded broken audio file (${actualFileSizeMb}) ${url}`,
-      userId,
-    });
     await sleep(1000);
 
     const errorResponse: TranscriptResponse = {

@@ -30,6 +30,7 @@ export const useAudioRecorder = () => {
     const format = recorderControls.recordedBlob.type.toLowerCase();
     getRecordTranscript(recorderControls.recordedBlob, format);
   }, [recorderControls.recordedBlob]);
+
   const isCancel = useRef(false);
   const getRecordTranscript = async (recordedAudioBlog: Blob, format: string) => {
     if (format.includes('ogg')) {
