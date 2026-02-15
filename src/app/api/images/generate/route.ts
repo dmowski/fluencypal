@@ -5,7 +5,6 @@ import {
   paintingVersionDescriptions,
 } from '@/features/Game/ImagesDescriptions';
 import { generateImageBuffer } from '../generateImage';
-import { resizeImage } from '../resizeImage';
 import { uploadImage } from '../uploadImage';
 import { getClient } from '../mj/getClient';
 import { generateImagesBuffers } from '../mj/generateImagesBuffers';
