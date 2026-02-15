@@ -131,24 +131,35 @@ export const storyData: Story[] = [
     parts: [
       {
         textEn:
-          'Once upon a time, in a vast golden desert, a group of friends set out on an adventure.',
-      },
-      { textEn: 'They rode on camels across the soft, sandy dunes.' },
-      {
-        textEn:
-          'The sun shone brightly in the clear blue sky, making the sand sparkle like tiny stars.',
+          'In a wide golden desert, where the sand seemed to stretch forever, a group of friends began an exciting journey. They wanted to see what was waiting beyond the tall dunes and feel the silence of the open land.',
       },
       {
         textEn:
-          'Each friend wore a colorful scarf to protect their faces from the hot, blowing wind.',
+          'They rode on camels across the soft, sandy hills. The sun shone brightly in the clear blue sky, and the sand sparkled like tiny stars. Each friend wore a colorful scarf to protect their face from the hot, blowing wind, and the scarves danced in the air as they moved forward.',
       },
-      { textEn: 'The scarves danced in the air as they moved along the desert path.' },
-      { textEn: 'The camels walked slowly, swaying gently with each step.' },
-      { textEn: 'The friends enjoyed the peaceful sound of the camel bells ringing softly.' },
-      { textEn: 'They felt excited and happy as they explored the desert together.' },
       {
         textEn:
-          'At sunset, the sky turned pink and orange, making their day in the desert even more magical.',
+          'The camels walked slowly, swaying gently with each step, and small bells around their necks rang in a calm, steady rhythm. At first, the sound felt peaceful. The friends laughed and talked, enjoying the beauty around them.',
+      },
+      {
+        textEn:
+          'After some time, the dunes grew higher and the path became harder to see. The wind grew stronger, and the sky slowly changed. The bright blue color faded, and a light brown cloud appeared far away on the horizon.',
+      },
+      {
+        textEn:
+          'Suddenly, the wind began to roar. Sand rose into the air and spun around them. The bells of the camels rang loudly and wildly. The friends could barely see each other through the moving sand. Fear replaced their laughter as they held tightly to their camels.',
+      },
+      {
+        textEn:
+          'The storm grew stronger for a few long minutes that felt like hours. One friend shouted that they must stay close and follow the tallest camel, which knew the way back. With courage and trust, they moved slowly through the storm, step by careful step.',
+      },
+      {
+        textEn:
+          'Then, just as suddenly as it had begun, the wind calmed. The sand fell back to the ground, and the sky slowly cleared. The friends found themselves standing on top of a high dune. Before them lay a breathtaking view of the desert glowing in the light of the setting sun.',
+      },
+      {
+        textEn:
+          'The sky turned pink and orange, and the sand shone warmly under the soft evening light. The friends looked at each other with relief and pride. They had faced the storm together and had not given up. Their camel ride in the desert had become more than an adventure—it had become a story they would never forget.',
       },
     ],
   },
