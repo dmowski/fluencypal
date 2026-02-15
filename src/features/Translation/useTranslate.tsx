@@ -1,6 +1,6 @@
 import { translateRequest } from '@/app/api/translate/translateRequest';
 import { useSettings } from '../Settings/useSettings';
-import { getPageLangCode } from '../Lang/lang';
+import { getPageLangCode, SupportedLanguage } from '../Lang/lang';
 import { usePlan } from '../Plan/usePlan';
 import { useMemo, useState } from 'react';
 import { IconButton, Popover, Stack } from '@mui/material';
@@ -10,6 +10,7 @@ import { ArrowDown, X } from 'lucide-react';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { fullLanguagesMap } from '@/libs/language/languages';
 import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
+import { NativeLangCode } from '@/libs/language/type';
 
 const translationCache: Record<string, string> = {};
 
@@ -41,21 +42,26 @@ export const useTranslate = () => {
 
   const isTranslateAvailable = targetLanguage && targetLanguage !== learningLanguage;
 
-  const translateText = async ({ text }: { text: string }) => {
-    if (!targetLanguage) {
+  const translateText = async (props: {
+    text: string;
+    sourceLanguage?: NativeLangCode | null;
+    targetLanguage?: NativeLangCode | null;
+  }) => {
+    const finalTargetLanguage = props.targetLanguage || targetLanguage;
+    if (!finalTargetLanguage) {
       return '';
     }
 
-    if (translationCache[text]) {
-      return translationCache[text];
+    if (translationCache[props.text]) {
+      return translationCache[props.text];
     }
 
     const response = await translateRequest({
-      text,
-      sourceLanguage: null,
-      targetLanguage,
+      text: props.text,
+      sourceLanguage: props.sourceLanguage || null,
+      targetLanguage: finalTargetLanguage,
     });
-    translationCache[text] = response.translatedText;
+    translationCache[props.text] = response.translatedText;
     return response.translatedText;
   };
 

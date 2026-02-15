@@ -13,23 +13,23 @@ import { FlaskConical, Loader, Origami, RefreshCcw, RefreshCw, X } from 'lucide-
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getAiVoiceByVoice } from '../Conversation/CallMode/voiceAvatar';
-import { shuffleArray } from '@/libs/array';
 import { useAuth } from '../Auth/useAuth';
 import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
+import { Story } from './types';
+import { useUrlState } from '../Url/useUrlState';
+import { storyData } from './storyData';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
-  const [selectedImage, setSelectedImage] = useState<ImageDescription | null>(null);
+  const [selectedImageImageId, setSelectedImageId] = useUrlState('storyImage', '', true);
 
-  const [images, setImages] = useState<ImageDescription[]>([]);
+  const [images, setImages] = useState<(ImageDescription | Story)[]>([]);
+
+  const selectedImage = images.find((img) => img.id === selectedImageImageId) || null;
 
   const reshuffleImages = () => {
-    const countImagesToShow = 15;
-    const imagesToShow = shuffleArray(imageDescriptions).filter((_, index) => {
-      return index >= 0 && index < countImagesToShow;
-    });
-
-    setImages(imagesToShow);
+    const sortedImageDescriptions = [...imageDescriptions].sort((a, b) => a.id.localeCompare(b.id));
+    setImages([...storyData, ...sortedImageDescriptions]);
   };
 
   const initImage = () => {
@@ -46,13 +46,14 @@ export const TextConstructorStories = () => {
   }, []);
 
   const closeStory = () => {
-    setSelectedImage(null);
+    setSelectedImageId('');
   };
 
   const onNext = async () => {
-    const currentIndex = images.findIndex((img) => img.url === selectedImage?.url);
+    const currentIndex = images.findIndex((img) => img.id === selectedImageImageId);
     const nextIndex = (currentIndex + 1) % images.length;
-    setSelectedImage(images[nextIndex]);
+    const nextImage = images[nextIndex];
+    setSelectedImageId(nextImage.id);
   };
 
   return (
@@ -66,9 +67,7 @@ export const TextConstructorStories = () => {
         position: 'relative',
       }}
     >
-      {selectedImage && (
-        <StoryModal imageDescription={selectedImage} onClose={closeStory} onNext={onNext} />
-      )}
+      {selectedImage && <StoryModal data={selectedImage} onClose={closeStory} onNext={onNext} />}
       <Stack
         sx={{
           width: '100%',
@@ -95,9 +94,7 @@ export const TextConstructorStories = () => {
             flexDirection: 'row',
             gap: '4px',
             alignItems: 'center',
-            cursor: 'pointer',
           }}
-          onClick={reshuffleImages}
         >
           <FlaskConical size={'12px'} />
           <Typography
@@ -112,7 +109,6 @@ export const TextConstructorStories = () => {
           >
             Experimental
           </Typography>
-          <RefreshCcw size={'11px'} style={{ cursor: 'pointer' }} onClick={reshuffleImages} />
         </Stack>
       </Stack>
 
@@ -153,6 +149,9 @@ export const TextConstructorStories = () => {
             }}
           >
             {images.map((image, index) => {
+              const isImageDescription = 'fullImageDescription' in image;
+              const imageUrl = !isImageDescription ? image.imageUrl : image.url;
+              const title = !isImageDescription ? image.title : image.shortDescription;
               return (
                 <Stack
                   sx={{
@@ -170,7 +169,9 @@ export const TextConstructorStories = () => {
                       inset: 0,
                       zIndex: 2,
                       borderRadius: '8px',
-                      boxShadow: 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1)',
+                      boxShadow: isImageDescription
+                        ? 'inset 0px 0px 0px 2px rgba(220, 0, 37, 0.7)'
+                        : 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1)',
                     },
                     ':focus': {
                       outline: 'none',
@@ -179,11 +180,11 @@ export const TextConstructorStories = () => {
                   }}
                   key={index}
                   component={'button'}
-                  onClick={() => setSelectedImage(image)}
+                  onClick={() => setSelectedImageId(image.id)}
                 >
                   <Image
-                    src={image.url}
-                    alt={image.shortDescription}
+                    src={imageUrl}
+                    alt={title}
                     fill
                     sizes="300px"
                     style={{
@@ -222,11 +223,13 @@ export const TextConstructorStories = () => {
 };
 
 const StoryModal = ({
-  imageDescription,
+  data,
+
   onClose,
   onNext,
 }: {
-  imageDescription: ImageDescription;
+  data: ImageDescription | Story;
+
   onClose: () => void;
   onNext: () => void;
 }) => {
@@ -234,6 +237,10 @@ const StoryModal = ({
   const ai = useTextAi();
   const auth = useAuth();
   const settings = useSettings();
+
+  const targetLanguage = settings.languageCode;
+  const nativeLanguage = settings.userSettings?.nativeLanguageCode;
+
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
   const voiceInfo = getAiVoiceByVoice(voiceName);
   const voiceSpeed = settings.userSettings?.teacherVoiceSpeed || 'normal';
@@ -269,7 +276,7 @@ const StoryModal = ({
     setSentences([]);
     setSentencesTranslates([]);
     setIsCompleted(false);
-  }, [imageDescription]);
+  }, [data]);
 
   const translator = useTranslate();
 
@@ -288,7 +295,8 @@ const StoryModal = ({
   };
 
   const translateSentence = async (sentence: string) => {
-    if (!isTranslateAvailable) {
+    const isTargetLanguageTheSameAsUserLanguage = targetLanguage === nativeLanguage;
+    if (!isTranslateAvailable || isTargetLanguageTheSameAsUserLanguage) {
       const maskedText = sentence.replace(/\w/g, '*');
       return maskedText;
     }
@@ -299,27 +307,67 @@ const StoryModal = ({
     return translated;
   };
 
+  const translateTextToTargetLanguageFromEng = async (text: string) => {
+    const translated = await translator.translateText({
+      text: text,
+      sourceLanguage: 'en',
+      targetLanguage: targetLanguage,
+    });
+    return translated;
+  };
+
   const [initializing, setInitializing] = useState(false);
   const [isReady, setIsReady] = useState(false);
+  const isStory = 'parts' in data;
+  const imageUrl = isStory ? data.imageUrl : data.url;
+  const title = isStory ? data.title : data.shortDescription;
+
   const initialize = async () => {
-    if (!imageDescription) return;
     audio.startConversationAudio();
     setInitializing(true);
-    const generatedText = await generateTextBasedOnImage(imageDescription);
-    console.log('generatedText', generatedText);
-    const sentences = splitTextIntoSentences(generatedText);
-    console.log('sentences', sentences);
-    const translatedSentences = await Promise.all(sentences.map((s) => translateSentence(s)));
-    console.log('translatedSentences', translatedSentences);
-    setSentences(sentences);
-    setSentencesTranslates(translatedSentences);
-    setIsReady(true);
-    setInitializing(false);
+    if (isStory) {
+      const fullTextEn = data.parts.map((part) => part.textEn).join(' ');
+      const isNeedToTranslate = targetLanguage !== 'en';
+      const fullText = isNeedToTranslate
+        ? await translateTextToTargetLanguageFromEng(fullTextEn)
+        : fullTextEn;
+
+      const sentences = splitTextIntoSentences(fullText);
+      const translatedSentencesToNative = await Promise.all(
+        sentences.map((s) => translateSentence(s)),
+      );
+
+      setSentences(sentences);
+      setSentencesTranslates(translatedSentencesToNative);
+      setIsReady(true);
+      setInitializing(false);
+    } else {
+      const imageDescription = data;
+      const generatedText = await generateTextBasedOnImage(imageDescription);
+
+      const sentences = splitTextIntoSentences(generatedText);
+
+      const story: Story = {
+        id: `story-${imageDescription.id}`,
+        title: imageDescription.shortDescription,
+        imageUrl: imageDescription.url,
+        parts: sentences.map((s) => ({ textEn: s })),
+      };
+
+      console.log(JSON.stringify(story));
+
+      const translatedSentences = await Promise.all(sentences.map((s) => translateSentence(s)));
+
+      setSentences(sentences);
+      setSentencesTranslates(translatedSentences);
+      setIsReady(true);
+      setInitializing(false);
+    }
   };
 
   const imageBg = (
     <Image
-      src={imageDescription.url}
+      src={imageUrl}
       alt="Today's image"
       fill
       sizes="1200px"
@@ -422,7 +470,7 @@ const StoryModal = ({
                         },
                       }}
                     >
-                      {imageDescription.shortDescription}
+                      {title}
                     </Typography>
 
                     <Typography variant="body2" textAlign={'center'}>
