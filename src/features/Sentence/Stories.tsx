@@ -361,14 +361,17 @@ const StoryModal = ({
 
   const isCachingMap = useRef<Record<string, boolean>>({});
 
+  const voiceInstruction =
+    targetLanguage === 'en' || !targetLanguage ? '' : `Use a ${userTargetLanguage} language`;
+
   const speakOptionsMain: SpeakOptions = {
-    instructions: `Speak in a neutral tone. Use a ${userTargetLanguage} language.`,
+    instructions: voiceInstruction,
     voice: 'marin',
     cache: true,
   };
 
   const speakOptionsAlternative: SpeakOptions = {
-    instructions: `Speak in a neutral tone. Use a ${userTargetLanguage} language.`,
+    instructions: voiceInstruction,
     voice: 'shimmer',
     cache: true,
   };

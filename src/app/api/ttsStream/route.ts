@@ -54,11 +54,13 @@ export async function GET(req: Request) {
     }
   }
 
+  const voiceInstruction = instructions || undefined;
+
   const resp = await client.audio.speech.create({
     model: 'gpt-4o-mini-tts',
     voice: voice || 'alloy',
     input,
-    instructions: instructions || 'Speak in a cheerful and positive tone.',
+    instructions: voiceInstruction,
   });
 
   if (!isUseCache) {
@@ -71,14 +73,12 @@ export async function GET(req: Request) {
   }
 
   const audioBuffer = Buffer.from(await resp.arrayBuffer());
-
   await saveAudioToStorage(audioId, audioBuffer);
-
-  console.log('SAVE TO cache', input);
 
   return new Response(audioBuffer, {
     headers: {
       'Content-Type': 'audio/mpeg',
+      //'Cache-Control': 'no-store',
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
   });
