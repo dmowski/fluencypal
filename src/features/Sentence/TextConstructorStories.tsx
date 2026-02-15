@@ -61,7 +61,7 @@ export const TextConstructorStories = () => {
     <Stack
       sx={{
         alignItems: 'flex-start',
-        gap: '10px',
+        gap: '0px',
         marginTop: '20px',
 
         width: '100%',
@@ -84,33 +84,8 @@ export const TextConstructorStories = () => {
             opacity: 0.8,
           }}
         >
-          {i18n._('Practice crafting sentences')}
+          {i18n._('Stories')}
         </Typography>
-        <Stack
-          sx={{
-            border: '1px solid #96a9fb',
-            color: '#96a9fb',
-            padding: '2px 6px',
-            borderRadius: '7px',
-            flexDirection: 'row',
-            gap: '4px',
-            alignItems: 'center',
-          }}
-        >
-          <FlaskConical size={'12px'} />
-          <Typography
-            variant="caption"
-            sx={{
-              opacity: 1,
-              fontSize: '10px',
-              letterSpacing: '1.2px',
-              fontWeight: 400,
-              textTransform: 'uppercase',
-            }}
-          >
-            Experimental
-          </Typography>
-        </Stack>
       </Stack>
 
       <Stack
@@ -145,7 +120,7 @@ export const TextConstructorStories = () => {
               flexDirection: 'row',
               alignItems: 'flex-start',
               gap: '10px',
-              padding: '7px 15px 20px 7px',
+              padding: '6px 15px 20px 7px',
               width: 'max-content',
             }}
           >
