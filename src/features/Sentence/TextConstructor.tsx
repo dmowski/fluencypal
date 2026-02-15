@@ -86,6 +86,7 @@ export function TextConstructor({
       setWrongWord(word);
       return;
     }
+    onPlayAudio?.(word);
 
     const nextProgress = constructFinalProgress({
       progress,
