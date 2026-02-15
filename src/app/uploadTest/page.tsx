@@ -253,7 +253,7 @@ function UploadTest() {
 
         <Stack sx={{ gap: '12px' }}>
           <Typography variant="h6">Video</Typography>
-          <UploadVideoButton onNewUploadUrl={(url) => setVideoUrl(url)} uploadMode="mock" />
+          <UploadVideoButton onNewUploadUrl={(url) => setVideoUrl(url)} />
           {videoUrl && (
             <Stack sx={{ gap: '8px' }}>
               <Typography variant="caption">Video URL</Typography>

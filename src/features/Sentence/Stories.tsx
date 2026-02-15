@@ -129,6 +129,8 @@ export const TextConstructorStories = () => {
               const isImageDescription = 'fullImageDescription' in image;
               const imageUrl = !isImageDescription ? image.imageUrl : image.url;
               const title = !isImageDescription ? image.title : image.shortDescription;
+              const videoUrl = 'videoUrl' in image ? image.videoUrl : undefined;
+
               return (
                 <Stack
                   sx={{
@@ -159,6 +161,28 @@ export const TextConstructorStories = () => {
                   component={'button'}
                   onClick={() => setSelectedImageId(image.id)}
                 >
+                  {videoUrl && (
+                    <Stack
+                      component={'video'}
+                      autoPlay
+                      loop
+                      playsInline
+                      controls={false}
+                      muted
+                      sx={{
+                        height: '100%',
+                        width: '100%',
+                        borderRadius: '8px',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        objectFit: 'cover',
+                        zIndex: 1,
+                      }}
+                      src={videoUrl}
+                    />
+                  )}
+
                   <Image
                     src={imageUrl}
                     alt={title}
