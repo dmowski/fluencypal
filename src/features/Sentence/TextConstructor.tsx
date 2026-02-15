@@ -88,7 +88,6 @@ export function TextConstructor({
       setWrongWord(word);
       return;
     }
-    console.log('click play');
     onPlayAudio?.(word, false);
     await sleep(1);
 
