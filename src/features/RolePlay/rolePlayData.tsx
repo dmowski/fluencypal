@@ -328,6 +328,9 @@ Start the conversation with:
 I’ve looked through your profile, and I think we can get started.
 
 So... Tell me about yourself"
+
+After the user responds, continue with more ridiculous questions related to their experience, but make the questions increasingly absurd and irrelevant.
+
 `,
 
       exampleOfFirstMessageFromAi: `Hi, my name is Verse, I’ll be your interviewer today.
