@@ -552,7 +552,7 @@ const StoryModal = ({
                       }}
                       endIcon={initializing ? <Loader size={'20px'} /> : <Origami size={'20px'} />}
                     >
-                      {initializing ? i18n._('Generating...') : i18n._('Create Story')}
+                      {initializing ? i18n._('Preparing...') : i18n._('Read')}
                     </Button>
 
                     <Button

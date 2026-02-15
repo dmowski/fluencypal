@@ -59,25 +59,44 @@ export const storyData: Story[] = [
 
   {
     id: 'story-nighthawks-by-edward-hopper',
-    title: 'Nighthawks by Edward Hopper',
+    title: 'Nighthawks',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fnighthawks-by-edward-hopper_3.webp?alt=media',
+    videoUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicVideo%2Fcaffe.webm?alt=media&token=0327dd73-c2b4-4f2a-b4f8-dac89cf481eb',
     parts: [
-      { textEn: 'It was a quiet night at the small diner on the corner.' },
-      { textEn: 'The street outside was empty, and the city was asleep.' },
-      { textEn: 'Inside, three customers sat at the counter.' },
-      { textEn: 'An old man drank coffee and read the newspaper.' },
-      { textEn: 'A young couple shared a slice of pie, whispering softly to each other.' },
-      { textEn: 'The server, a woman named Lily, moved from table to table.' },
-      { textEn: 'She smiled at the old man and poured him more coffee.' },
-      { textEn: 'She asked the couple if they needed anything else.' },
       {
         textEn:
-          'The fluorescent lights above buzzed gently, filling the diner with a soft, warm glow.',
+          'It was a quiet night at the small diner on the corner. The street outside was empty, and the city was asleep. A thin fog moved slowly along the road, covering the sidewalks and hiding the far end of the street. The sign above the diner door made a soft clicking sound as it swung gently in the cold wind.',
       },
-      { textEn: 'Outside, the street lights flickered.' },
-      { textEn: 'Inside, the diner felt safe and cozy.' },
-      { textEn: 'Everyone was calm and content, enjoying the peaceful night together.' },
+      {
+        textEn:
+          'Inside, three customers sat at the counter. An old man drank coffee and read the newspaper, turning each page slowly, as if he had all the time in the world. A young couple shared a slice of pie, whispering softly to each other and smiling at private jokes. Behind the counter, the server, a woman named Lily, moved from table to table with quiet steps. She smiled at the old man and poured him more coffee. She asked the couple if they needed anything else. Her voice was calm, almost too calm for such a late hour.',
+      },
+      {
+        textEn:
+          'The fluorescent lights above buzzed gently, filling the diner with a soft, warm glow. Outside, the street lights flickered once, then again. For a moment, the light through the window turned pale and strange, and the shadows inside the diner seemed longer than before. Inside, the diner still felt safe and cozy, and the smell of coffee and warm pie filled the air.',
+      },
+      {
+        textEn:
+          'Then the old man suddenly stopped turning his page. He looked up at Lily with wide, confused eyes and asked, "Have we met before?" Lily froze for a second, then smiled again and said softly that she did not think so. The young couple stopped whispering and looked toward the window, sure they had seen someone standing in the fog outside.',
+      },
+      {
+        textEn:
+          'All three customers turned their heads at the same time, but the street was empty. The fog was thicker now, pressing against the glass like a living thing. The street lights flickered again and then went out completely. Inside, the fluorescent lights began to buzz louder, and the warm glow slowly turned cold and white.',
+      },
+      {
+        textEn:
+          'The old man looked down at his newspaper and felt his heart beat faster. The date on the front page was not today’s date. It was the same date as yesterday. He turned to the couple and asked if they had not sat there the night before. The couple stared at each other, and the boy whispered that they had eaten the same pie in the same seats.',
+      },
+      {
+        textEn:
+          'Lily stood very still behind the counter, her smile unchanged. She told them gently that it was just another quiet night and that they did not need to worry. The lights flickered once more, and for a brief second, the diner fell into complete darkness.',
+      },
+      {
+        textEn:
+          'When the lights came back on, the old man, the couple, and the half-eaten slice of pie were exactly where they had been before. Outside, the fog covered the street again, and the empty city waited silently for the diner to open for another quiet night.',
+      },
     ],
   },
 
