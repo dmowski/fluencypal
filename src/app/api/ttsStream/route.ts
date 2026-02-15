@@ -14,7 +14,7 @@ export async function GET(req: Request) {
 
   const resp = await client.audio.speech.create({
     model: 'gpt-4o-mini-tts',
-    voice: voice as any,
+    voice: voice || 'alloy',
     input,
     instructions: instructions || 'Speak in a cheerful and positive tone.',
   });
