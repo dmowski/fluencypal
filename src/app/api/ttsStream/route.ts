@@ -36,13 +36,18 @@ export async function GET(req: Request) {
   const voice = (u.searchParams.get('voice') ?? '').trim();
   const instructions = (u.searchParams.get('instructions') ?? '').trim();
   const isUseCache = u.searchParams.get('cache') === 'true';
+  const isRegenerate = u.searchParams.get('regenerateCache') === 'true';
 
   const audioId = [input, voice, instructions]
     .filter(Boolean)
     .map((s) => getHash(s))
     .join('-');
 
-  if (isUseCache) {
+  if (isRegenerate) {
+    console.log('REGENERATING ⚠️');
+  }
+
+  if (isUseCache && !isRegenerate) {
     const cachedAudio = await getAudioFromStorage(audioId);
     if (cachedAudio) {
       console.log('From cache', input);
