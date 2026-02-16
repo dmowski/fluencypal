@@ -65,6 +65,8 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
 
+  if (access.isBlocked) return <BlockedAccess />;
+
   if (appNavigation.currentPage === 'community') return <CommunityDashboard />;
 
   if (aiConversation.errorInitiating) {
@@ -79,8 +81,6 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   if (aiConversation.isInitializing) {
     return <InfoBlockedSection title={aiConversation.isInitializing || i18n._(`Loading...`)} />;
   }
-
-  if (access.isBlocked) return <BlockedAccess />;
 
   if (!settings.languageCode) return <SelectLanguage pageLang={lang} />;
 
