@@ -98,15 +98,17 @@ export const CommunityDashboard = () => {
                   },
                 }}
               >
-                <CommunityCard
-                  title={i18n._('Community Feed')}
-                  onClick={() => setActivePage('chat')}
-                  badgeNumber={chatList.unreadCountGlobal}
-                  icon={<Newspaper style={iconStyle} />}
-                  isLocked={!access.isFullAppAccess}
-                  isPremium={true}
-                  onLockedClick={() => access.showPaymentModal()}
-                />
+                {access.canUseCommunity && (
+                  <CommunityCard
+                    title={i18n._('Community Feed')}
+                    onClick={() => setActivePage('chat')}
+                    badgeNumber={chatList.unreadCountGlobal}
+                    icon={<Newspaper style={iconStyle} />}
+                    isLocked={!access.isFullAppAccess}
+                    isPremium={true}
+                    onLockedClick={() => access.showPaymentModal()}
+                  />
+                )}
                 <CommunityCard
                   title={i18n._('Game')}
                   onClick={() => setActivePage('game')}
@@ -124,24 +126,28 @@ export const CommunityDashboard = () => {
                   onLockedClick={() => access.showPaymentModal()}
                 />
 
-                <CommunityCard
-                  title={i18n._('Debates')}
-                  badgeNumber={battles.countOfBattlesNeedToAttention}
-                  onClick={() => setActivePage('debates')}
-                  icon={<UsersRound style={iconStyle} />}
-                  isLocked={!access.isFullAppAccess}
-                  isPremium={true}
-                  onLockedClick={() => access.showPaymentModal()}
-                />
+                {access.canUseCommunity && (
+                  <CommunityCard
+                    title={i18n._('Debates')}
+                    badgeNumber={battles.countOfBattlesNeedToAttention}
+                    onClick={() => setActivePage('debates')}
+                    icon={<UsersRound style={iconStyle} />}
+                    isLocked={!access.isFullAppAccess}
+                    isPremium={true}
+                    onLockedClick={() => access.showPaymentModal()}
+                  />
+                )}
 
-                <CommunityCard
-                  title={i18n._('Daily Questions')}
-                  onClick={() => setActivePage('daily-questions')}
-                  icon={<PsychologyIcon style={iconStyle} />}
-                  isLocked={!access.isFullAppAccess}
-                  isPremium={true}
-                  onLockedClick={() => access.showPaymentModal()}
-                />
+                {access.canUseCommunity && (
+                  <CommunityCard
+                    title={i18n._('Daily Questions')}
+                    onClick={() => setActivePage('daily-questions')}
+                    icon={<PsychologyIcon style={iconStyle} />}
+                    isLocked={!access.isFullAppAccess}
+                    isPremium={true}
+                    onLockedClick={() => access.showPaymentModal()}
+                  />
+                )}
 
                 <CommunityCard
                   title={i18n._('Leaderboards')}
@@ -150,15 +156,18 @@ export const CommunityDashboard = () => {
                   isLocked={false}
                   onLockedClick={() => access.showPaymentModal()}
                 />
-                <CommunityCard
-                  title={i18n._('Private Messages')}
-                  onClick={() => setActivePage('dm')}
-                  badgeNumber={chatList.myUnreadCount}
-                  icon={<Mail style={iconStyle} />}
-                  isLocked={!access.isFullAppAccess}
-                  isPremium={true}
-                  onLockedClick={() => access.showPaymentModal()}
-                />
+
+                {access.canUseCommunity && (
+                  <CommunityCard
+                    title={i18n._('Private Messages')}
+                    onClick={() => setActivePage('dm')}
+                    badgeNumber={chatList.myUnreadCount}
+                    icon={<Mail style={iconStyle} />}
+                    isLocked={!access.isFullAppAccess}
+                    isPremium={true}
+                    onLockedClick={() => access.showPaymentModal()}
+                  />
+                )}
               </Stack>
             </Stack>
           )}

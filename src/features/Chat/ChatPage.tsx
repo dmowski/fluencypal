@@ -15,6 +15,7 @@ import { GlobalChatTabs } from './GlobalChatTabs';
 import { sleep } from '@/libs/sleep';
 import { FlatChat } from './FlatChat';
 import { ChatHeaderFull } from './ChatHeaderFull';
+import { useAccess } from '../Usage/useAccess';
 
 export const ChatPage = ({
   type,
@@ -57,6 +58,11 @@ export const ChatPage = ({
     await sleep(150);
     setActivePost('');
   };
+
+  const access = useAccess();
+  if (!access.canUseCommunity) {
+    return <></>;
+  }
 
   return (
     <Stack>

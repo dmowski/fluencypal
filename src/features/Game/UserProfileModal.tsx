@@ -244,7 +244,7 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
               </Stack>
             </Stack>
 
-            {!isMe && (
+            {!isMe && access.canUseCommunity && (
               <Stack
                 sx={{
                   flexDirection: 'row',
@@ -402,54 +402,56 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                 })}
               </Stack>
             </Stack>
-            <Stack
-              sx={{
-                width: '100%',
-                gap: '6px',
-              }}
-            >
-              <Typography
-                variant="caption"
+            {access.canUseCommunity && (
+              <Stack
                 sx={{
-                  opacity: 0.7,
+                  width: '100%',
+                  gap: '6px',
                 }}
               >
-                {i18n._('Chat between you and {userName}', { userName })}
-              </Typography>
-              {access.isFullAppAccess ? (
-                <Stack>
-                  <ChatProvider
-                    metadata={{
-                      spaceId: chatSpace,
-                      allowedUserIds: [stat.userId, userId],
-                      isPrivate: true,
-                      type: 'privateChat',
-                    }}
-                  >
-                    <ChatSection contextForAiAnalysis="" />
-                  </ChatProvider>
-                </Stack>
-              ) : (
-                <Stack
+                <Typography
+                  variant="caption"
                   sx={{
-                    alignItems: 'flex-start',
-                    gap: '10px',
+                    opacity: 0.7,
                   }}
                 >
-                  <Typography variant="body1">
-                    {i18n._('Get full access to use the chat and many other features!')}
-                  </Typography>
-                  <Button
-                    variant="outlined"
-                    endIcon={<Rocket size={'16px'} />}
-                    color="primary"
-                    onClick={() => access.showPaymentModal()}
+                  {i18n._('Chat between you and {userName}', { userName })}
+                </Typography>
+                {access.isFullAppAccess ? (
+                  <Stack>
+                    <ChatProvider
+                      metadata={{
+                        spaceId: chatSpace,
+                        allowedUserIds: [stat.userId, userId],
+                        isPrivate: true,
+                        type: 'privateChat',
+                      }}
+                    >
+                      <ChatSection contextForAiAnalysis="" />
+                    </ChatProvider>
+                  </Stack>
+                ) : (
+                  <Stack
+                    sx={{
+                      alignItems: 'flex-start',
+                      gap: '10px',
+                    }}
                   >
-                    {i18n._('Get Full Access')}
-                  </Button>
-                </Stack>
-              )}
-            </Stack>
+                    <Typography variant="body1">
+                      {i18n._('Get full access to use the chat and many other features!')}
+                    </Typography>
+                    <Button
+                      variant="outlined"
+                      endIcon={<Rocket size={'16px'} />}
+                      color="primary"
+                      onClick={() => access.showPaymentModal()}
+                    >
+                      {i18n._('Get Full Access')}
+                    </Button>
+                  </Stack>
+                )}
+              </Stack>
+            )}
           </Stack>
         </CustomModal>
       )}

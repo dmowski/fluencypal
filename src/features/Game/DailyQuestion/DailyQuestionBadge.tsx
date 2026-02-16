@@ -8,6 +8,7 @@ import { ChatProvider } from '@/features/Chat/useChat';
 import { DailyQuestion } from './types';
 import { PageContainer } from '@/features/Community/PageContainer';
 import { useSettings } from '@/features/Settings/useSettings';
+import { useAccess } from '@/features/Usage/useAccess';
 
 export const DailyQuestionBadge = () => {
   const settings = useSettings();
@@ -18,6 +19,11 @@ export const DailyQuestionBadge = () => {
 
   const todaysQuestion = dailyQuestions[questionsKeys[questionIndex]];
   const { i18n } = useLingui();
+
+  const access = useAccess();
+  if (!access.canUseCommunity) {
+    return <></>;
+  }
 
   if (!todaysQuestion) {
     return (
