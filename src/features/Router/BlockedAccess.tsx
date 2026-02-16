@@ -20,6 +20,7 @@ import { ParentConsent } from '@/common/userSettings';
 import { CONTACTS } from '../Landing/Contact/data';
 import { Check } from 'lucide-react';
 import { getUrlStart } from '../Lang/getUrlStart';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
 
 export const BlockedAccess = () => {
   const { i18n } = useLingui();
@@ -123,13 +124,13 @@ export const BlockedAccess = () => {
             </Typography>
           </Stack>
 
-          <Stack sx={{ gap: '102px', paddingBottom: '130px' }}>
-            <Typography variant="h4" sx={{ fontWeight: 800 }}>
-              {i18n._(`Parental Consent`)}
-            </Typography>
-
+          <Stack sx={{ gap: '102px', padding: '50px 0 130px 0' }}>
             {/* STEP 1 */}
             <Stack gap="12px">
+              <Typography variant="h4" sx={{ fontWeight: 800 }}>
+                {i18n._(`Parental Consent`)}
+              </Typography>
+
               <Stack>
                 <Typography variant="caption" sx={{ textTransform: 'uppercase', opacity: 0.85 }}>
                   {i18n._(`Step 1`)}
@@ -329,15 +330,6 @@ export const BlockedAccess = () => {
                 </Button>
                 {isCardConfirmed ? <Typography>{i18n._('Card verified')} ✅</Typography> : null}
               </Stack>
-
-              {isShowForm && clientSecret && !isCardConfirmed && (
-                <VerifyCard
-                  lang={settings.pageLanguageCode || 'en'}
-                  clientSecret={clientSecret}
-                  title={i18n._('Card Verification')}
-                  subtitle={i18n._('Complete verification to proceed.')}
-                />
-              )}
             </Stack>
 
             {/* STEP 3 */}
@@ -383,6 +375,22 @@ export const BlockedAccess = () => {
           </Stack>
         </Stack>
       </Stack>
+
+      {isShowForm && clientSecret && !isCardConfirmed && (
+        <CustomModal
+          isOpen={true}
+          onClose={() => {
+            setIsShowForm(false);
+          }}
+        >
+          <VerifyCard
+            lang={settings.pageLanguageCode || 'en'}
+            clientSecret={clientSecret}
+            title={i18n._('Card Verification')}
+            subtitle={i18n._('Complete verification to proceed.')}
+          />
+        </CustomModal>
+      )}
     </Stack>
   );
 };
