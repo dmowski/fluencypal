@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useAuth } from '../Auth/useAuth';
 import { createSetupIntentRequest } from '../PayWall/createSetupIntentRequest';
 import { VerifyCard } from '../PayWall/CardValidator';
+import { ParentConsent } from '@/common/userSettings';
 
 export const BlockedAccess = () => {
   const { i18n } = useLingui();
@@ -32,6 +33,17 @@ export const BlockedAccess = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const [consent, setConsent] = useState<ParentConsent>({
+    parentEmail: '',
+    parentName: '',
+    consentGivenAtIso: new Date().toISOString(),
+  });
+
+  const submitParentalConsent = async () => {
+    settings.setParentalConsent(consent);
+    alert(i18n._('Parental consent submitted!'));
   };
 
   return (
@@ -99,7 +111,7 @@ export const BlockedAccess = () => {
                     textTransform: 'uppercase',
                   }}
                 >
-                  {i18n._(`Step 1`)}
+                  {i18n._(`Step 2`)}
                 </Typography>
                 <Typography
                   variant="h5"

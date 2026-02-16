@@ -17,6 +17,7 @@ import {
   AppMode,
   ConversationMode,
   InitUserSettings,
+  ParentConsent,
   UserSettings,
 } from '@/common/userSettings';
 import { NativeLangCode } from '@/libs/language/type';
@@ -49,6 +50,7 @@ interface SettingsContextType {
   aiVoiceSpeed: AiVoiceSpeed;
   setAiVoiceSpeed: (speed: AiVoiceSpeed) => Promise<void>;
   pageLanguageCode: SupportedLanguage;
+  setParentalConsent: (consent: ParentConsent) => Promise<void>;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -74,6 +76,7 @@ export const settingsContext = createContext<SettingsContextType>({
   aiVoiceSpeed: 'slow',
   setAiVoiceSpeed: async () => {},
   pageLanguageCode: 'en',
+  setParentalConsent: async () => {},
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -101,6 +104,11 @@ function useProvideSettings(): SettingsContextType {
   const setConversationMode = async (mode: ConversationMode) => {
     if (!userSettingsDoc) return;
     await setDoc(userSettingsDoc, { conversationMode: mode }, { merge: true });
+  };
+
+  const setParentalConsent = async (consent: ParentConsent) => {
+    if (!userSettingsDoc) return;
+    await setDoc(userSettingsDoc, { parentalConsent: consent }, { merge: true });
   };
 
   const initUserSettings = async () => {
@@ -238,6 +246,7 @@ function useProvideSettings(): SettingsContextType {
       if (!userSettingsDoc) return;
       await setDoc(userSettingsDoc, { teacherVoiceSpeed: speed }, { merge: true });
     },
+    setParentalConsent,
   };
 }
 
