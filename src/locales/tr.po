@@ -13,6 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Router/BlockedAccess.tsx:170
+#: src/features/Router/BlockedAccess.tsx:319
+#. js-lingui-explicit-id
+msgid " and "
+msgstr " ve "
+
 #: src/features/Usage/HoursPaymentModal/FounderMessage.tsx:27
 #. js-lingui-explicit-id
 msgid ""
@@ -423,6 +429,22 @@ msgstr ""
 msgid "A method focused on clarity and reliability"
 msgstr "Açıklık ve güvenilirliğe odaklanmış bir yöntem"
 
+#: src/features/Router/BlockedAccess.tsx:161
+#. js-lingui-explicit-id
+msgid "A parent or guardian can withdraw consent later by contacting support."
+msgstr ""
+"Bir ebeveyn veya veli, destekle iletişime geçerek onayını daha sonra geri "
+"çekebilir."
+
+#: src/features/Router/BlockedAccess.tsx:196
+#. js-lingui-explicit-id
+msgid ""
+"A parent or legal guardian must confirm they approve using FluencyPal and "
+"understand how data is processed."
+msgstr ""
+"Bir ebeveyn veya yasal vasi, FluencyPal kullanmayı onayladığını ve "
+"verilerin nasıl işlendiğini anladığını doğrulamalıdır."
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
 #. js-lingui-explicit-id
 msgid "A polite and professional greeting."
@@ -439,7 +461,7 @@ msgstr "Ölçülebilir sonuçlar veren kanıtlanmış bir yöntem"
 msgid "A silence at the end of the algorithm"
 msgstr "Algoritmanın sonunda bir sessizlik"
 
-#: src/features/PayWall/CardValidator.tsx:94
+#: src/features/PayWall/CardValidator.tsx:103
 #. js-lingui-explicit-id
 msgid ""
 "A small temporary authorization may appear on your statement and will be "
@@ -463,6 +485,11 @@ msgstr "Size uygun bir ses ve stil."
 msgid "About"
 msgstr "Hakkında"
 
+#: src/features/Router/BlockedAccess.tsx:138
+#. js-lingui-explicit-id
+msgid "About FluencyPal"
+msgstr "FluencyPal Hakkında"
+
 #: src/features/Landing/PlanLandingBlock.tsx:232
 #. js-lingui-explicit-id
 msgid "Academic Word List"
@@ -473,7 +500,7 @@ msgstr "Akademik Kelime Listesi"
 msgid "Accept"
 msgstr "Kabul et"
 
-#: src/features/Router/BlockedAccess.tsx:26
+#: src/features/Router/BlockedAccess.tsx:117
 #. js-lingui-explicit-id
 msgid "Access Blocked"
 msgstr "Erişim Engellendi"
@@ -642,6 +669,15 @@ msgstr ""
 "gireceksiniz. Hangi ifadeleri kullanacağınızı, nasıl kendinizi sunacağınızı "
 "ve nasıl profesyonel bir şekilde cevap vereceğinizi bileceksiniz. Bu, hayal "
 "ettiğiniz işe yerleşme şansınızı önemli ölçüde artırabilir."
+
+#: src/features/Router/BlockedAccess.tsx:399
+#. js-lingui-explicit-id
+msgid ""
+"After steps 1 and 2 are completed, you can submit consent to enable access "
+"for this account."
+msgstr ""
+"Adım 1 ve 2 tamamlandıktan sonra, bu hesap için erişimi etkinleştirme "
+"onayını gönderebilirsiniz."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
 #. js-lingui-explicit-id
@@ -959,7 +995,7 @@ msgstr "Girdi verilerinizi analiz ediliyor..."
 msgid "Analyzing..."
 msgstr "Analiz ediliyor..."
 
-#: src/features/PayWall/CardValidator.tsx:106
+#: src/features/PayWall/CardValidator.tsx:115
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "ve"
@@ -1425,7 +1461,7 @@ msgstr "Tren Bileti Satın Alma"
 msgid "Buying {hours} hour(s) of AI usage"
 msgstr "AI kullanımından {hours} saat satın alınması"
 
-#: src/features/PayWall/CardValidator.tsx:97
+#: src/features/PayWall/CardValidator.tsx:106
 #. js-lingui-explicit-id
 msgid "By continuing, you agree to our"
 msgstr "Devam ederek, şunlara katıldığınızı kabul ediyorsunuz:"
@@ -1557,7 +1593,18 @@ msgstr ""
 "Zaten temel bilgileri bilen ancak mülakatlarda kararlarını net bir şekilde "
 "ifade etmekte zorlanan adaylar"
 
-#: src/features/PayWall/CardValidator.tsx:132
+#: src/features/Router/BlockedAccess.tsx:355
+#: src/features/Router/BlockedAccess.tsx:440
+#. js-lingui-explicit-id
+msgid "Card Verification"
+msgstr "Kart Doğrulama"
+
+#: src/features/Router/BlockedAccess.tsx:382
+#. js-lingui-explicit-id
+msgid "Card verified"
+msgstr "Kart doğrulandı"
+
+#: src/features/PayWall/CardValidator.tsx:141
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "Kart doğrulandı. Yükleniyor..."
@@ -1879,7 +1926,12 @@ msgstr "Tamamlayın önceki görevleri önce"
 msgid "Complete the sentence"
 msgstr "Cümleyi tamamla"
 
-#: src/features/Sentence/TextConstructor.tsx:268
+#: src/features/Router/BlockedAccess.tsx:441
+#. js-lingui-explicit-id
+msgid "Complete verification to proceed."
+msgstr "İlerlemek için doğrulamayı tamamlayın."
+
+#: src/features/Sentence/TextConstructor.tsx:267
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Tamamlandı ✅"
@@ -1927,7 +1979,7 @@ msgstr "Kredi Kartını Onayla"
 msgid "Confirm payment"
 msgstr "Ödemeyi onayla"
 
-#: src/features/PayWall/CardValidator.tsx:76
+#: src/features/PayWall/CardValidator.tsx:84
 #. js-lingui-explicit-id
 msgid "Confirm your payment method"
 msgstr "Ödeme yöntemini onayla"
@@ -2016,7 +2068,7 @@ msgstr "İletişim:"
 #: src/features/Case/data/frontend-senior/quizData.ts:315
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
-#: src/features/PayWall/CardValidator.tsx:133
+#: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -2933,6 +2985,11 @@ msgstr ""
 msgid "Email"
 msgstr "E-posta"
 
+#: src/features/Router/BlockedAccess.tsx:394
+#. js-lingui-explicit-id
+msgid "Enable Access"
+msgstr "Erişimi Etkinleştir"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:524
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
@@ -3828,6 +3885,16 @@ msgstr ""
 "yalnızca bir internet tarayıcısına ihtiyacınız vardır. FluencyPal'ı, "
 "herhangi bir şey yüklemeden, cep telefonu, tablet veya masaüstü "
 "bilgisayarda çalıştırabilirsiniz."
+
+#: src/features/Router/BlockedAccess.tsx:142
+#. js-lingui-explicit-id
+msgid ""
+"FluencyPal is a language-learning app that helps learners practice speaking "
+"and improve confidence through guided exercises and AI feedback."
+msgstr ""
+"FluencyPal, öğrenenlerin konuşma pratiği yapmalarına ve rehberli "
+"egzersizler ile AI geri bildirimi yoluyla güvenlerini artırmalarına "
+"yardımcı olan bir dil öğrenme uygulamasıdır."
 
 #: src/features/Landing/LandingPage.tsx:35
 #. js-lingui-explicit-id
@@ -5069,6 +5136,11 @@ msgstr "Kabul ediyorum"
 msgid "I agree"
 msgstr "Katılıyorum"
 
+#: src/features/Router/BlockedAccess.tsx:311
+#. js-lingui-explicit-id
+msgid "I agree to the Terms of Use and Privacy Policy."
+msgstr "Kullanım Koşulları ve Gizlilik Politikasını kabul ediyorum."
+
 #: src/features/Blog/blogData.tsx:38
 #. js-lingui-explicit-id
 msgid ""
@@ -5403,6 +5475,20 @@ msgstr "Bu simülasyonun gerçek bir hukuki danışmanlık olmadığını biliyo
 #. js-lingui-explicit-id
 msgid "I aware that this is a simulation and not a real medical consultation."
 msgstr "Bu bir simülasyonun ve gerçek bir tıbbi danışmanlığın farkındayım."
+
+#: src/features/Router/BlockedAccess.tsx:261
+#. js-lingui-explicit-id
+msgid "I confirm I am the child’s parent or legal guardian."
+msgstr "Çocuğun ebeveyni veya yasal vasisi olduğumu onaylıyorum."
+
+#: src/features/Router/BlockedAccess.tsx:285
+#. js-lingui-explicit-id
+msgid ""
+"I consent to processing the child’s data (voice and transcripts) to provide "
+"the service."
+msgstr ""
+"Çocuğun verilerinin (ses ve transkriptler) hizmet sağlanması için "
+"işlenmesine onay veriyorum."
 
 #: src/features/Community/SupportPage.tsx:79
 #. js-lingui-explicit-id
@@ -6679,6 +6765,11 @@ msgstr "Akademik yazı ve konuşmalarda kullanılan dilbilgisini öğrenin."
 msgid "Learn how to schedule a medical visit over the phone"
 msgstr "Telefonla tıbbi randevu nasıl alınır öğrenin"
 
+#: src/features/Router/BlockedAccess.tsx:166
+#. js-lingui-explicit-id
+msgid "Learn more in our "
+msgstr "Daha fazla bilgi edinin "
+
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:31
 #. js-lingui-explicit-id
 msgid ""
@@ -6832,7 +6923,7 @@ msgstr "Yükleniyor.."
 #: src/features/RolePlay/RolePlayModal.tsx:283
 #: src/features/Router/PracticePage.tsx:61
 #: src/features/Router/PracticePage.tsx:65
-#: src/features/Router/PracticePage.tsx:80
+#: src/features/Router/PracticePage.tsx:82
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:154
 #: src/features/Usage/Subscription/BalanceStatus.tsx:56
@@ -7156,7 +7247,7 @@ msgstr ""
 msgid "Movies, books, or music"
 msgstr "Filmler, kitaplar veya müzik"
 
-#: src/features/Sentence/TextConstructor.tsx:355
+#: src/features/Sentence/TextConstructor.tsx:354
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Benim Pozisyonum:"
@@ -7367,6 +7458,15 @@ msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr ""
 "Henüz not yok. AI öğretmeninizin sizi daha iyi tanıması için birkaç detay "
 "ekleyin."
+
+#: src/features/Router/BlockedAccess.tsx:366
+#. js-lingui-explicit-id
+msgid ""
+"No payment is taken. Your card is not stored or used for charges as part of "
+"this step."
+msgstr ""
+"Herhangi bir ödeme alınmaz. Kartınız bu adımın bir parçası olarak saklanmaz "
+"veya ücretlendirme için kullanılmaz."
 
 #: src/features/Header/PaymentHistoryModal.tsx:94
 #. js-lingui-explicit-id
@@ -7769,6 +7869,31 @@ msgstr "Ücretli plan:"
 msgid "parallel lives"
 msgstr "paralel hayatlar"
 
+#: src/features/Router/BlockedAccess.tsx:191
+#. js-lingui-explicit-id
+msgid "Parent / Guardian Details"
+msgstr "Ebeveyn / Vasi Bilgileri"
+
+#: src/features/Router/BlockedAccess.tsx:229
+#. js-lingui-explicit-id
+msgid "Parent / Guardian email"
+msgstr "Ebeveyn / Veli e-posta adresi"
+
+#: src/features/Router/BlockedAccess.tsx:214
+#. js-lingui-explicit-id
+msgid "Parent / Guardian full name"
+msgstr "Anne / Veli tam adı"
+
+#: src/features/Router/BlockedAccess.tsx:182
+#. js-lingui-explicit-id
+msgid "Parental Consent"
+msgstr "Ebeveyn İzni"
+
+#: src/features/Router/BlockedAccess.tsx:88
+#. js-lingui-explicit-id
+msgid "Parental consent submitted!"
+msgstr "Ebeveyn izni gönderildi!"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:374
 #. js-lingui-explicit-id
 msgid ""
@@ -8038,6 +8163,18 @@ msgstr "Oyuncu Ayarları"
 msgid "Players:"
 msgstr "Oyuncular:"
 
+#: src/features/Router/BlockedAccess.tsx:81
+#. js-lingui-explicit-id
+msgid "Please complete all steps and ensure the form is valid before submitting."
+msgstr ""
+"Lütfen tüm adımları tamamlayın ve göndermeden önce formun geçerli "
+"olduğundan emin olun."
+
+#: src/features/Router/BlockedAccess.tsx:422
+#. js-lingui-explicit-id
+msgid "Please complete card verification in Step 2."
+msgstr "Lütfen 2. Adımda kart doğrulamasını tamamlayın."
+
 #: src/features/PayWall/CardValidatorWall.tsx:117
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
@@ -8052,6 +8189,13 @@ msgstr "Lütfen her oyuncu için bir ad girin."
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
 msgstr "Lütfen geçerli bir e-posta adresi giriniz"
+
+#: src/features/Router/BlockedAccess.tsx:416
+#. js-lingui-explicit-id
+msgid "Please fill parent details and check all boxes in Step 1."
+msgstr ""
+"Lütfen ebeveyn bilgilerini doldurun ve 1. Adım'daki tüm kutucukları "
+"işaretleyin."
 
 #: src/features/Chat/SubmitForm.tsx:416
 #. js-lingui-explicit-id
@@ -8110,7 +8254,7 @@ msgstr ""
 "Kazanılan puan: {pointsEarned}. Skorunu geliştirmek için pratik yapmaya "
 "devam et!"
 
-#: src/features/Sentence/TextConstructor.tsx:334
+#: src/features/Sentence/TextConstructor.tsx:333
 #. js-lingui-explicit-id
 msgid "Points:"
 msgstr "Puanlar:"
@@ -8551,7 +8695,9 @@ msgstr "Öncelikli destek"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
-#: src/features/PayWall/CardValidator.tsx:113
+#: src/features/PayWall/CardValidator.tsx:122
+#: src/features/Router/BlockedAccess.tsx:168
+#: src/features/Router/BlockedAccess.tsx:317
 #: src/features/SEO/metadata.ts:179
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -8613,7 +8759,7 @@ msgstr "Diğer alanlardan ön uç mühendisliğine geçiş yapan profesyoneller"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/Sentence/TextConstructor.tsx:254
+#: src/features/Sentence/TextConstructor.tsx:253
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "İlerleme"
@@ -10129,6 +10275,7 @@ msgstr "Durum Yönetimi"
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:15
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:15
 #: src/features/Landing/PlanLandingBlock.tsx:391
+#: src/features/Router/BlockedAccess.tsx:187
 #. js-lingui-explicit-id
 msgid "Step 1"
 msgstr "Adım 1"
@@ -10137,6 +10284,7 @@ msgstr "Adım 1"
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:21
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:21
 #: src/features/Landing/PlanLandingBlock.tsx:428
+#: src/features/Router/BlockedAccess.tsx:345
 #. js-lingui-explicit-id
 msgid "Step 2"
 msgstr "Adım 2"
@@ -10145,6 +10293,7 @@ msgstr "Adım 2"
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:27
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:27
 #: src/features/Landing/PlanLandingBlock.tsx:583
+#: src/features/Router/BlockedAccess.tsx:390
 #. js-lingui-explicit-id
 msgid "Step 3"
 msgstr "Adım 3"
@@ -10322,6 +10471,11 @@ msgstr "Cevabı gönder"
 #. js-lingui-explicit-id
 msgid "Submit Answers"
 msgstr "Cevapları Gönder"
+
+#: src/features/Router/BlockedAccess.tsx:411
+#. js-lingui-explicit-id
+msgid "Submit Parental Consent"
+msgstr "Ebeveyn İzni Gönder"
 
 #: src/features/User/ReportModal.tsx:101
 #. js-lingui-explicit-id
@@ -10593,7 +10747,7 @@ msgstr ""
 msgid "Terms and Conditions"
 msgstr "Şartlar ve Koşullar"
 
-#: src/features/PayWall/CardValidator.tsx:104
+#: src/features/PayWall/CardValidator.tsx:113
 #. js-lingui-explicit-id
 msgid "Terms of Service"
 msgstr "Hizmet Şartları"
@@ -10606,6 +10760,8 @@ msgstr "Hizmet Şartları"
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Legal/TermsOfUse.tsx:13
+#: src/features/Router/BlockedAccess.tsx:172
+#: src/features/Router/BlockedAccess.tsx:325
 #: src/features/SEO/metadata.ts:195
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -10688,6 +10844,13 @@ msgid ""
 msgstr ""
 "API sürümleme ve dayanıklılık uygulaması, sorularıma güvenle yanıt vermeme "
 "yardımcı oldu. İki hafta içinde bir teklif aldım."
+
+#: src/features/Router/BlockedAccess.tsx:150
+#. js-lingui-explicit-id
+msgid "The app can process voice recordings to generate transcripts and feedback."
+msgstr ""
+"Uygulama, ses kayıtlarını işleyerek transkriptler ve geri bildirim "
+"oluşturabilir."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:252
 #. js-lingui-explicit-id
@@ -10799,6 +10962,15 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Thinking about which languages might be good to install..."
 msgstr "Hangi dillerin yüklenmesinin iyi olabileceğini düşünüyorum..."
+
+#: src/features/Router/BlockedAccess.tsx:121
+#. js-lingui-explicit-id
+msgid ""
+"This account is currently blocked due to age restrictions. A parent or "
+"legal guardian can enable access by completing the steps below."
+msgstr ""
+"Bu hesap, yaş kısıtlamaları nedeniyle şu anda engellenmiştir. Bir ebeveyn "
+"veya yasal vasi aşağıdaki adımları tamamlayarak erişimi etkinleştirebilir."
 
 #: src/features/Header/NeedHelpModal.tsx:53
 #. js-lingui-explicit-id
@@ -11175,6 +11347,24 @@ msgstr "Kalan süre"
 msgid "Timed"
 msgstr "Zamanlanmış"
 
+#: src/features/Router/BlockedAccess.tsx:334
+#. js-lingui-explicit-id
+msgid ""
+"Tip: You can withdraw consent later and request data deletion by contacting "
+"support."
+msgstr ""
+"İpucu: Daha sonra onayınızı geri çekebilir ve destekle iletişime geçerek "
+"veri silinmesini talep edebilirsiniz."
+
+#: src/features/Router/BlockedAccess.tsx:360
+#. js-lingui-explicit-id
+msgid ""
+"To help prevent unauthorized access, we verify the parent/guardian using a "
+"one-time card verification."
+msgstr ""
+"Yetkisiz erişimi önlemeye yardımcı olmak için, ebeveyn/veli doğrulamasını "
+"tek seferlik bir kart doğrulamasıyla yapıyoruz."
+
 #: src/features/Landing/Price/PricePage.tsx:301
 #. js-lingui-explicit-id
 msgid "To try full features for a short time"
@@ -11245,6 +11435,13 @@ msgstr "Akıcılık Gelişiminizi Takip Edin"
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Çevriliyor..."
+
+#: src/features/Router/BlockedAccess.tsx:156
+#. js-lingui-explicit-id
+msgid "Transcripts may be stored in the account to help track progress over time."
+msgstr ""
+"Transkriptler, ilerlemeyi zaman içinde izlemeye yardımcı olmak için hesapta "
+"saklanabilir."
 
 #: src/features/Chat/Message/MessageFooter.tsx:68
 #. js-lingui-explicit-id
@@ -11577,12 +11774,17 @@ msgstr "İş ilanı açıklaması"
 msgid "var is function scoped and let and const are block scoped."
 msgstr "var işlev (function) kapsamlıdır ve let ile const blok kapsamlıdır."
 
-#: src/features/PayWall/CardValidator.tsx:40
+#: src/features/PayWall/CardValidator.tsx:48
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "Doğrulama başarısız oldu"
 
-#: src/features/PayWall/CardValidator.tsx:130
+#: src/features/Router/BlockedAccess.tsx:380
+#. js-lingui-explicit-id
+msgid "Verify Card"
+msgstr "Kartı Doğrula"
+
+#: src/features/PayWall/CardValidator.tsx:139
 #. js-lingui-explicit-id
 msgid "Verifying..."
 msgstr "Doğrulanıyor..."
@@ -12720,15 +12922,6 @@ msgstr "Erişiminiz şu anda sınırlı"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Hesabınız başarıyla silindi. Sizi göndermekten üzgünüz!"
 
-#: src/features/Router/BlockedAccess.tsx:30
-#. js-lingui-explicit-id
-msgid ""
-"Your account is blocked due to age restrictions. Please contact support for "
-"assistance."
-msgstr ""
-"Hesabınız yaş sınırlamaları nedeniyle engellendi. Yardım için lütfen destek "
-"ile iletişime geçin."
-
 #: src/features/Usage/UsageStatsCards.tsx:440
 #. js-lingui-explicit-id
 msgid "Your achievements"
@@ -12760,7 +12953,7 @@ msgstr "Cevaplarınız gönderdikten sonra rakibiniz tarafından görülecektir.
 msgid "Your Avatar:"
 msgstr "Senin Avatarın:"
 
-#: src/features/PayWall/CardValidator.tsx:79
+#: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id
 msgid ""
 "Your card is used only to activate secure access and will not be billed "
@@ -12952,6 +13145,15 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Router/BlockedAccess.tsx:30
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your account is blocked due to age restrictions. Please contact support for "
+#~ "assistance."
+#~ msgstr ""
+#~ "Hesabınız yaş sınırlamaları nedeniyle engellendi. Yardım için lütfen destek "
+#~ "ile iletişime geçin."
 
 #: src/features/Sentence/TextConstructorStories.tsx:87
 #. js-lingui-explicit-id

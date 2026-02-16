@@ -13,6 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Router/BlockedAccess.tsx:170
+#: src/features/Router/BlockedAccess.tsx:319
+#. js-lingui-explicit-id
+msgid " and "
+msgstr "和"
+
 #: src/features/Usage/HoursPaymentModal/FounderMessage.tsx:27
 #. js-lingui-explicit-id
 msgid ""
@@ -396,6 +402,18 @@ msgstr "一个专为2至20名玩家打造的趣味猜词游戏。向你的队友
 msgid "A method focused on clarity and reliability"
 msgstr "一种注重清晰度和可靠性的方法"
 
+#: src/features/Router/BlockedAccess.tsx:161
+#. js-lingui-explicit-id
+msgid "A parent or guardian can withdraw consent later by contacting support."
+msgstr "家长或监护人可以通过联系支持人员来撤回同意。"
+
+#: src/features/Router/BlockedAccess.tsx:196
+#. js-lingui-explicit-id
+msgid ""
+"A parent or legal guardian must confirm they approve using FluencyPal and "
+"understand how data is processed."
+msgstr "家长或法定监护人必须确认他们同意使用 FluencyPal 并了解数据处理方式。"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
 #. js-lingui-explicit-id
 msgid "A polite and professional greeting."
@@ -412,7 +430,7 @@ msgstr "一个能够带来可衡量结果的验证方法"
 msgid "A silence at the end of the algorithm"
 msgstr "算法结束时的寂静"
 
-#: src/features/PayWall/CardValidator.tsx:94
+#: src/features/PayWall/CardValidator.tsx:103
 #. js-lingui-explicit-id
 msgid ""
 "A small temporary authorization may appear on your statement and will be "
@@ -434,6 +452,11 @@ msgstr "一个适合你的声音和风格。"
 msgid "About"
 msgstr "关于"
 
+#: src/features/Router/BlockedAccess.tsx:138
+#. js-lingui-explicit-id
+msgid "About FluencyPal"
+msgstr "关于FluencyPal"
+
 #: src/features/Landing/PlanLandingBlock.tsx:232
 #. js-lingui-explicit-id
 msgid "Academic Word List"
@@ -444,7 +467,7 @@ msgstr "学术词汇列表"
 msgid "Accept"
 msgstr "接受"
 
-#: src/features/Router/BlockedAccess.tsx:26
+#: src/features/Router/BlockedAccess.tsx:117
 #. js-lingui-explicit-id
 msgid "Access Blocked"
 msgstr "访问被阻止"
@@ -609,6 +632,13 @@ msgid ""
 msgstr ""
 "经过几次课程后，你将以更加自信的态度走进你的真实面试。你将会知道应该使用何种短语，如何表现自己，以及如何专业地回答问题。这可能会大大提高你获得梦寐以求的"
 "工作的机会。"
+
+#: src/features/Router/BlockedAccess.tsx:399
+#. js-lingui-explicit-id
+msgid ""
+"After steps 1 and 2 are completed, you can submit consent to enable access "
+"for this account."
+msgstr "在完成步骤 1 和步骤 2 后，您可以提交同意以启用对该帐户的访问。"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
 #. js-lingui-explicit-id
@@ -918,7 +948,7 @@ msgstr "正在分析您的输入..."
 msgid "Analyzing..."
 msgstr "正在分析..."
 
-#: src/features/PayWall/CardValidator.tsx:106
+#: src/features/PayWall/CardValidator.tsx:115
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "和"
@@ -1367,7 +1397,7 @@ msgstr "购买火车票"
 msgid "Buying {hours} hour(s) of AI usage"
 msgstr "购买 {hours} 小时的 AI 使用时间"
 
-#: src/features/PayWall/CardValidator.tsx:97
+#: src/features/PayWall/CardValidator.tsx:106
 #. js-lingui-explicit-id
 msgid "By continuing, you agree to our"
 msgstr "通过继续，您同意我们的"
@@ -1497,7 +1527,18 @@ msgid ""
 "clearly in interviews"
 msgstr "已经掌握基础知识但在面试中难以清晰表达决策的候选人"
 
-#: src/features/PayWall/CardValidator.tsx:132
+#: src/features/Router/BlockedAccess.tsx:355
+#: src/features/Router/BlockedAccess.tsx:440
+#. js-lingui-explicit-id
+msgid "Card Verification"
+msgstr "卡片验证"
+
+#: src/features/Router/BlockedAccess.tsx:382
+#. js-lingui-explicit-id
+msgid "Card verified"
+msgstr "卡验证成功"
+
+#: src/features/PayWall/CardValidator.tsx:141
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "卡已验证。加载中..."
@@ -1802,7 +1843,12 @@ msgstr "完成之前的任务。"
 msgid "Complete the sentence"
 msgstr "完成句子"
 
-#: src/features/Sentence/TextConstructor.tsx:268
+#: src/features/Router/BlockedAccess.tsx:441
+#. js-lingui-explicit-id
+msgid "Complete verification to proceed."
+msgstr "完成验证以继续。"
+
+#: src/features/Sentence/TextConstructor.tsx:267
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "已完成 ✅"
@@ -1850,7 +1896,7 @@ msgstr "确认信用卡"
 msgid "Confirm payment"
 msgstr "确认付款"
 
-#: src/features/PayWall/CardValidator.tsx:76
+#: src/features/PayWall/CardValidator.tsx:84
 #. js-lingui-explicit-id
 msgid "Confirm your payment method"
 msgstr "确认您的付款方式"
@@ -1933,7 +1979,7 @@ msgstr "联系人："
 #: src/features/Case/data/frontend-senior/quizData.ts:315
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
-#: src/features/PayWall/CardValidator.tsx:133
+#: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -2777,6 +2823,11 @@ msgstr "在忙碌的日程中提高您的英语口语技巧的有效策略。"
 msgid "Email"
 msgstr "电子邮件"
 
+#: src/features/Router/BlockedAccess.tsx:394
+#. js-lingui-explicit-id
+msgid "Enable Access"
+msgstr "启用访问"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:524
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
@@ -3584,6 +3635,13 @@ msgid ""
 msgstr ""
 "FluencyPal 是一款基于浏览器的应用程序，因此您仅需一个互联网浏览器即可使用它。您可以在手机、平板电脑或桌面设备上运行 "
 "FluencyPal，而无需安装任何软件。"
+
+#: src/features/Router/BlockedAccess.tsx:142
+#. js-lingui-explicit-id
+msgid ""
+"FluencyPal is a language-learning app that helps learners practice speaking "
+"and improve confidence through guided exercises and AI feedback."
+msgstr "FluencyPal 是一款语言学习应用程序，通过指导练习和 AI 反馈帮助学习者练习口语并提高自信。"
 
 #: src/features/Landing/LandingPage.tsx:35
 #. js-lingui-explicit-id
@@ -4710,6 +4768,11 @@ msgstr "我接受"
 msgid "I agree"
 msgstr "我同意"
 
+#: src/features/Router/BlockedAccess.tsx:311
+#. js-lingui-explicit-id
+msgid "I agree to the Terms of Use and Privacy Policy."
+msgstr "我同意使用条款和隐私政策。"
+
 #: src/features/Blog/blogData.tsx:38
 #. js-lingui-explicit-id
 msgid ""
@@ -4995,6 +5058,20 @@ msgstr "我知道这是一个模拟，而不是真实的法律咨询。"
 #. js-lingui-explicit-id
 msgid "I aware that this is a simulation and not a real medical consultation."
 msgstr "我知道这只是一次模拟，并非真正的医疗咨询。"
+
+#: src/features/Router/BlockedAccess.tsx:261
+#. js-lingui-explicit-id
+msgid "I confirm I am the child’s parent or legal guardian."
+msgstr ""
+"\n"
+"我确认我是该孩子的父母或法定监护人。\n"
+
+#: src/features/Router/BlockedAccess.tsx:285
+#. js-lingui-explicit-id
+msgid ""
+"I consent to processing the child’s data (voice and transcripts) to provide "
+"the service."
+msgstr "我同意处理孩子的数据（语音和文字记录）以提供服务。"
 
 #: src/features/Community/SupportPage.tsx:79
 #. js-lingui-explicit-id
@@ -6124,6 +6201,11 @@ msgstr "学习用于学术写作和演讲的语法。"
 msgid "Learn how to schedule a medical visit over the phone"
 msgstr "学习如何通过电话预约医疗就诊"
 
+#: src/features/Router/BlockedAccess.tsx:166
+#. js-lingui-explicit-id
+msgid "Learn more in our "
+msgstr "了解更多内容，请访问我们的 "
+
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:31
 #. js-lingui-explicit-id
 msgid ""
@@ -6275,7 +6357,7 @@ msgstr "加载中.."
 #: src/features/RolePlay/RolePlayModal.tsx:283
 #: src/features/Router/PracticePage.tsx:61
 #: src/features/Router/PracticePage.tsx:65
-#: src/features/Router/PracticePage.tsx:80
+#: src/features/Router/PracticePage.tsx:82
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:154
 #: src/features/Usage/Subscription/BalanceStatus.tsx:56
@@ -6587,7 +6669,7 @@ msgstr "大多数面试都包括经典的“优点和缺点”问题。用英语
 msgid "Movies, books, or music"
 msgstr "电影、书籍或音乐"
 
-#: src/features/Sentence/TextConstructor.tsx:355
+#: src/features/Sentence/TextConstructor.tsx:354
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "我的职位："
@@ -6797,6 +6879,13 @@ msgstr "暂无消息。快来分享你的想法吧！"
 #. js-lingui-explicit-id
 msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr "还没有备注。添加一些细节，让您的AI老师更了解您。"
+
+#: src/features/Router/BlockedAccess.tsx:366
+#. js-lingui-explicit-id
+msgid ""
+"No payment is taken. Your card is not stored or used for charges as part of "
+"this step."
+msgstr "无需付款。在此步骤中，您的卡不会被存储或用于支付。"
 
 #: src/features/Header/PaymentHistoryModal.tsx:94
 #. js-lingui-explicit-id
@@ -7163,6 +7252,31 @@ msgstr "付费计划："
 msgid "parallel lives"
 msgstr "平行人生"
 
+#: src/features/Router/BlockedAccess.tsx:191
+#. js-lingui-explicit-id
+msgid "Parent / Guardian Details"
+msgstr "父母/监护人详细信息"
+
+#: src/features/Router/BlockedAccess.tsx:229
+#. js-lingui-explicit-id
+msgid "Parent / Guardian email"
+msgstr "家长/监护人邮箱"
+
+#: src/features/Router/BlockedAccess.tsx:214
+#. js-lingui-explicit-id
+msgid "Parent / Guardian full name"
+msgstr "家长 / 监护人全名"
+
+#: src/features/Router/BlockedAccess.tsx:182
+#. js-lingui-explicit-id
+msgid "Parental Consent"
+msgstr "家长同意"
+
+#: src/features/Router/BlockedAccess.tsx:88
+#. js-lingui-explicit-id
+msgid "Parental consent submitted!"
+msgstr "家长同意书已提交！"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:374
 #. js-lingui-explicit-id
 msgid ""
@@ -7421,6 +7535,16 @@ msgstr "玩家设置"
 msgid "Players:"
 msgstr "玩家："
 
+#: src/features/Router/BlockedAccess.tsx:81
+#. js-lingui-explicit-id
+msgid "Please complete all steps and ensure the form is valid before submitting."
+msgstr "请完成所有步骤，并确保表单在提交之前有效。"
+
+#: src/features/Router/BlockedAccess.tsx:422
+#. js-lingui-explicit-id
+msgid "Please complete card verification in Step 2."
+msgstr "请在步骤2中完成卡验证。"
+
 #: src/features/PayWall/CardValidatorWall.tsx:117
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
@@ -7435,6 +7559,11 @@ msgstr "请输入每位玩家的名字。"
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
 msgstr "请输入有效的电子邮件地址"
+
+#: src/features/Router/BlockedAccess.tsx:416
+#. js-lingui-explicit-id
+msgid "Please fill parent details and check all boxes in Step 1."
+msgstr "请填写家长信息，并勾选第1步中的所有选项。"
 
 #: src/features/Chat/SubmitForm.tsx:416
 #. js-lingui-explicit-id
@@ -7491,7 +7620,7 @@ msgstr "积分"
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr "获得的积分：{pointsEarned}。继续练习以提高你的分数！"
 
-#: src/features/Sentence/TextConstructor.tsx:334
+#: src/features/Sentence/TextConstructor.tsx:333
 #. js-lingui-explicit-id
 msgid "Points:"
 msgstr "分数："
@@ -7885,7 +8014,9 @@ msgstr "优先支持"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
-#: src/features/PayWall/CardValidator.tsx:113
+#: src/features/PayWall/CardValidator.tsx:122
+#: src/features/Router/BlockedAccess.tsx:168
+#: src/features/Router/BlockedAccess.tsx:317
 #: src/features/SEO/metadata.ts:179
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -7947,7 +8078,7 @@ msgstr "正在从其他领域转向前端工程的专业人士"
 msgid "Profile"
 msgstr "个人资料"
 
-#: src/features/Sentence/TextConstructor.tsx:254
+#: src/features/Sentence/TextConstructor.tsx:253
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "进度"
@@ -9393,6 +9524,7 @@ msgstr "状态管理"
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:15
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:15
 #: src/features/Landing/PlanLandingBlock.tsx:391
+#: src/features/Router/BlockedAccess.tsx:187
 #. js-lingui-explicit-id
 msgid "Step 1"
 msgstr "步骤1"
@@ -9401,6 +9533,7 @@ msgstr "步骤1"
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:21
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:21
 #: src/features/Landing/PlanLandingBlock.tsx:428
+#: src/features/Router/BlockedAccess.tsx:345
 #. js-lingui-explicit-id
 msgid "Step 2"
 msgstr "步骤2"
@@ -9409,6 +9542,7 @@ msgstr "步骤2"
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:27
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:27
 #: src/features/Landing/PlanLandingBlock.tsx:583
+#: src/features/Router/BlockedAccess.tsx:390
 #. js-lingui-explicit-id
 msgid "Step 3"
 msgstr "第三步"
@@ -9558,6 +9692,11 @@ msgstr "提交答案"
 #. js-lingui-explicit-id
 msgid "Submit Answers"
 msgstr "提交答案"
+
+#: src/features/Router/BlockedAccess.tsx:411
+#. js-lingui-explicit-id
+msgid "Submit Parental Consent"
+msgstr "提交家长同意书"
 
 #: src/features/User/ReportModal.tsx:101
 #. js-lingui-explicit-id
@@ -9816,7 +9955,7 @@ msgstr "告诉我们你的背景，你迄今为止学到了什么，以及作为
 msgid "Terms and Conditions"
 msgstr "条款和条件"
 
-#: src/features/PayWall/CardValidator.tsx:104
+#: src/features/PayWall/CardValidator.tsx:113
 #. js-lingui-explicit-id
 msgid "Terms of Service"
 msgstr "服务条款"
@@ -9829,6 +9968,8 @@ msgstr "服务条款"
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Legal/TermsOfUse.tsx:13
+#: src/features/Router/BlockedAccess.tsx:172
+#: src/features/Router/BlockedAccess.tsx:325
 #: src/features/SEO/metadata.ts:195
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -9898,6 +10039,11 @@ msgid ""
 "The API versioning and resiliency practice helped me answer confidently. I "
 "got an offer in two weeks."
 msgstr "API 版本管理和弹性实践帮助我自信地回答。我在两周内得到了一个录用。"
+
+#: src/features/Router/BlockedAccess.tsx:150
+#. js-lingui-explicit-id
+msgid "The app can process voice recordings to generate transcripts and feedback."
+msgstr "该应用可以处理语音录音以生成逐字稿和反馈。"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:252
 #. js-lingui-explicit-id
@@ -9993,6 +10139,13 @@ msgstr "这里有一个社区，您可以在这里讨论不同的话题，并分
 #. js-lingui-explicit-id
 msgid "Thinking about which languages might be good to install..."
 msgstr "正在考虑安装哪些语言可能会更好..."
+
+#: src/features/Router/BlockedAccess.tsx:121
+#. js-lingui-explicit-id
+msgid ""
+"This account is currently blocked due to age restrictions. A parent or "
+"legal guardian can enable access by completing the steps below."
+msgstr "此账户因年龄限制目前被禁用。家长或法定监护人可以通过完成以下步骤来启用访问权限。"
 
 #: src/features/Header/NeedHelpModal.tsx:53
 #. js-lingui-explicit-id
@@ -10353,6 +10506,20 @@ msgstr "剩余时间"
 msgid "Timed"
 msgstr "定时"
 
+#: src/features/Router/BlockedAccess.tsx:334
+#. js-lingui-explicit-id
+msgid ""
+"Tip: You can withdraw consent later and request data deletion by contacting "
+"support."
+msgstr "提示：您可以在之后撤回同意并通过联系支持要求删除数据。"
+
+#: src/features/Router/BlockedAccess.tsx:360
+#. js-lingui-explicit-id
+msgid ""
+"To help prevent unauthorized access, we verify the parent/guardian using a "
+"one-time card verification."
+msgstr "为了帮助防止未经授权的访问，我们使用一次性卡验证来验证家长/监护人。"
+
 #: src/features/Landing/Price/PricePage.tsx:301
 #. js-lingui-explicit-id
 msgid "To try full features for a short time"
@@ -10418,6 +10585,11 @@ msgstr "跟踪您的流利度进度"
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "转录中..."
+
+#: src/features/Router/BlockedAccess.tsx:156
+#. js-lingui-explicit-id
+msgid "Transcripts may be stored in the account to help track progress over time."
+msgstr "成绩单可能会存储在账户中，以帮助跟踪随时间推移的进展。"
 
 #: src/features/Chat/Message/MessageFooter.tsx:68
 #. js-lingui-explicit-id
@@ -10740,12 +10912,17 @@ msgstr "职位描述"
 msgid "var is function scoped and let and const are block scoped."
 msgstr "var 是函数作用域，而 let 和 const 是块作用域。"
 
-#: src/features/PayWall/CardValidator.tsx:40
+#: src/features/PayWall/CardValidator.tsx:48
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "验证失败"
 
-#: src/features/PayWall/CardValidator.tsx:130
+#: src/features/Router/BlockedAccess.tsx:380
+#. js-lingui-explicit-id
+msgid "Verify Card"
+msgstr "验证卡片"
+
+#: src/features/PayWall/CardValidator.tsx:139
 #. js-lingui-explicit-id
 msgid "Verifying..."
 msgstr "正在验证..."
@@ -11782,13 +11959,6 @@ msgstr "您的访问目前受限"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "您的账户已成功删除。我们很遗憾您的离开！"
 
-#: src/features/Router/BlockedAccess.tsx:30
-#. js-lingui-explicit-id
-msgid ""
-"Your account is blocked due to age restrictions. Please contact support for "
-"assistance."
-msgstr "您的帐户因年龄限制被封锁。请联系支持部门以获取帮助。"
-
 #: src/features/Usage/UsageStatsCards.tsx:440
 #. js-lingui-explicit-id
 msgid "Your achievements"
@@ -11820,7 +11990,7 @@ msgstr "您的答案在提交后将对您的对手可见。"
 msgid "Your Avatar:"
 msgstr "你的头像："
 
-#: src/features/PayWall/CardValidator.tsx:79
+#: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id
 msgid ""
 "Your card is used only to activate secure access and will not be billed "
@@ -12004,6 +12174,13 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Router/BlockedAccess.tsx:30
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your account is blocked due to age restrictions. Please contact support for "
+#~ "assistance."
+#~ msgstr "您的帐户因年龄限制被封锁。请联系支持部门以获取帮助。"
 
 #: src/features/Sentence/TextConstructorStories.tsx:87
 #. js-lingui-explicit-id

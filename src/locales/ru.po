@@ -13,6 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Router/BlockedAccess.tsx:170
+#: src/features/Router/BlockedAccess.tsx:319
+#. js-lingui-explicit-id
+msgid " and "
+msgstr "и"
+
 #: src/features/Usage/HoursPaymentModal/FounderMessage.tsx:27
 #. js-lingui-explicit-id
 msgid ""
@@ -426,6 +432,22 @@ msgstr ""
 msgid "A method focused on clarity and reliability"
 msgstr "Метод, ориентированный на ясность и надежность"
 
+#: src/features/Router/BlockedAccess.tsx:161
+#. js-lingui-explicit-id
+msgid "A parent or guardian can withdraw consent later by contacting support."
+msgstr ""
+"Родитель или опекун может отозвать согласие позднее, связавшись со службой "
+"поддержки."
+
+#: src/features/Router/BlockedAccess.tsx:196
+#. js-lingui-explicit-id
+msgid ""
+"A parent or legal guardian must confirm they approve using FluencyPal and "
+"understand how data is processed."
+msgstr ""
+"Родитель или законный опекун должен подтвердить, что они одобряют "
+"использование FluencyPal и понимают, как обрабатываются данные."
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
 #. js-lingui-explicit-id
 msgid "A polite and professional greeting."
@@ -442,7 +464,7 @@ msgstr "Метод, который приносит измеримые резу�
 msgid "A silence at the end of the algorithm"
 msgstr "Тишина в конце алгоритма"
 
-#: src/features/PayWall/CardValidator.tsx:94
+#: src/features/PayWall/CardValidator.tsx:103
 #. js-lingui-explicit-id
 msgid ""
 "A small temporary authorization may appear on your statement and will be "
@@ -466,6 +488,11 @@ msgstr "Голос и стиль, который вам подходит."
 msgid "About"
 msgstr "О приложении"
 
+#: src/features/Router/BlockedAccess.tsx:138
+#. js-lingui-explicit-id
+msgid "About FluencyPal"
+msgstr "О компании FluencyPal"
+
 #: src/features/Landing/PlanLandingBlock.tsx:232
 #. js-lingui-explicit-id
 msgid "Academic Word List"
@@ -476,7 +503,7 @@ msgstr "Академический Список Слов"
 msgid "Accept"
 msgstr "Принять"
 
-#: src/features/Router/BlockedAccess.tsx:26
+#: src/features/Router/BlockedAccess.tsx:117
 #. js-lingui-explicit-id
 msgid "Access Blocked"
 msgstr "Доступ заблокирован"
@@ -645,6 +672,15 @@ msgstr ""
 "увереннее. Вы будете знать, какие фразы использовать, как презентовать "
 "себя, и как отвечать профессионально. Это может значительно увеличить ваши "
 "шансы получить работу мечты."
+
+#: src/features/Router/BlockedAccess.tsx:399
+#. js-lingui-explicit-id
+msgid ""
+"After steps 1 and 2 are completed, you can submit consent to enable access "
+"for this account."
+msgstr ""
+"После того как шаги 1 и 2 будут завершены, вы можете отправить согласие на "
+"предоставление доступа для этой учетной записи."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
 #. js-lingui-explicit-id
@@ -965,7 +1001,7 @@ msgstr "Анализ входных данных..."
 msgid "Analyzing..."
 msgstr "Анализирую..."
 
-#: src/features/PayWall/CardValidator.tsx:106
+#: src/features/PayWall/CardValidator.tsx:115
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "и"
@@ -1440,7 +1476,7 @@ msgstr "Покупка билета на поезд"
 msgid "Buying {hours} hour(s) of AI usage"
 msgstr "Покупка {hours} часа(ов) использования ИИ"
 
-#: src/features/PayWall/CardValidator.tsx:97
+#: src/features/PayWall/CardValidator.tsx:106
 #. js-lingui-explicit-id
 msgid "By continuing, you agree to our"
 msgstr "Продолжая, вы соглашаетесь с нашими"
@@ -1572,7 +1608,18 @@ msgstr ""
 "Кандидаты, которые уже знают основы, но испытывают трудности с четким "
 "изложением решений на собеседованиях."
 
-#: src/features/PayWall/CardValidator.tsx:132
+#: src/features/Router/BlockedAccess.tsx:355
+#: src/features/Router/BlockedAccess.tsx:440
+#. js-lingui-explicit-id
+msgid "Card Verification"
+msgstr "Проверка карты"
+
+#: src/features/Router/BlockedAccess.tsx:382
+#. js-lingui-explicit-id
+msgid "Card verified"
+msgstr "Карта проверена"
+
+#: src/features/PayWall/CardValidator.tsx:141
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "Карта подтверждена. Загрузка..."
@@ -1896,7 +1943,12 @@ msgstr "Завершите предыдущие задачи сначала"
 msgid "Complete the sentence"
 msgstr "Завершите предложение"
 
-#: src/features/Sentence/TextConstructor.tsx:268
+#: src/features/Router/BlockedAccess.tsx:441
+#. js-lingui-explicit-id
+msgid "Complete verification to proceed."
+msgstr "Завершите проверку, чтобы продолжить."
+
+#: src/features/Sentence/TextConstructor.tsx:267
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Завершено ✅"
@@ -1944,7 +1996,7 @@ msgstr "Подтвердите кредитную карту"
 msgid "Confirm payment"
 msgstr "Подтвердить платеж"
 
-#: src/features/PayWall/CardValidator.tsx:76
+#: src/features/PayWall/CardValidator.tsx:84
 #. js-lingui-explicit-id
 msgid "Confirm your payment method"
 msgstr "Подтвердите способ оплаты"
@@ -2034,7 +2086,7 @@ msgstr "Контакты:"
 #: src/features/Case/data/frontend-senior/quizData.ts:315
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
-#: src/features/PayWall/CardValidator.tsx:133
+#: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -2953,6 +3005,11 @@ msgstr ""
 msgid "Email"
 msgstr "Электронная почта"
 
+#: src/features/Router/BlockedAccess.tsx:394
+#. js-lingui-explicit-id
+msgid "Enable Access"
+msgstr "Включить доступ"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:524
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
@@ -3847,6 +3904,16 @@ msgstr ""
 "использования вам нужен только интернет-браузер. Вы можете запускать "
 "FluencyPal на мобильном телефоне, планшете или настольном компьютере без "
 "установки чего-либо."
+
+#: src/features/Router/BlockedAccess.tsx:142
+#. js-lingui-explicit-id
+msgid ""
+"FluencyPal is a language-learning app that helps learners practice speaking "
+"and improve confidence through guided exercises and AI feedback."
+msgstr ""
+"FluencyPal - это приложение для изучения языка, которое помогает учащимся "
+"практиковаться в разговорной речи и повышать уверенность с помощью "
+"направляемых упражнений и отзывов от ИИ."
 
 #: src/features/Landing/LandingPage.tsx:35
 #. js-lingui-explicit-id
@@ -5097,6 +5164,11 @@ msgstr "Я принимаю"
 msgid "I agree"
 msgstr "Я согласен"
 
+#: src/features/Router/BlockedAccess.tsx:311
+#. js-lingui-explicit-id
+msgid "I agree to the Terms of Use and Privacy Policy."
+msgstr "Я соглашаюсь с условиями использования и политикой конфиденциальности."
+
 #: src/features/Blog/blogData.tsx:38
 #. js-lingui-explicit-id
 msgid ""
@@ -5433,6 +5505,20 @@ msgstr "Я осведомлён, что это симуляция, а не на�
 #. js-lingui-explicit-id
 msgid "I aware that this is a simulation and not a real medical consultation."
 msgstr "Я осознаю, что это симуляция, а не реальная медицинская консультация."
+
+#: src/features/Router/BlockedAccess.tsx:261
+#. js-lingui-explicit-id
+msgid "I confirm I am the child’s parent or legal guardian."
+msgstr "Я подтверждаю, что являюсь родителем или законным опекуном ребенка."
+
+#: src/features/Router/BlockedAccess.tsx:285
+#. js-lingui-explicit-id
+msgid ""
+"I consent to processing the child’s data (voice and transcripts) to provide "
+"the service."
+msgstr ""
+"Я даю согласие на обработку данных ребенка (голос и расшифровки) для "
+"предоставления услуги."
 
 #: src/features/Community/SupportPage.tsx:79
 #. js-lingui-explicit-id
@@ -6729,6 +6815,11 @@ msgstr "Изучайте грамматику, используемую в ак�
 msgid "Learn how to schedule a medical visit over the phone"
 msgstr "Узнайте, как записаться на медицинский прием по телефону"
 
+#: src/features/Router/BlockedAccess.tsx:166
+#. js-lingui-explicit-id
+msgid "Learn more in our "
+msgstr "Узнать больше в нашем "
+
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:31
 #. js-lingui-explicit-id
 msgid ""
@@ -6882,7 +6973,7 @@ msgstr "Загрузка.."
 #: src/features/RolePlay/RolePlayModal.tsx:283
 #: src/features/Router/PracticePage.tsx:61
 #: src/features/Router/PracticePage.tsx:65
-#: src/features/Router/PracticePage.tsx:80
+#: src/features/Router/PracticePage.tsx:82
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:154
 #: src/features/Usage/Subscription/BalanceStatus.tsx:56
@@ -7214,7 +7305,7 @@ msgstr ""
 msgid "Movies, books, or music"
 msgstr "Фильмы, книги или музыка"
 
-#: src/features/Sentence/TextConstructor.tsx:355
+#: src/features/Sentence/TextConstructor.tsx:354
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Моя позиция:"
@@ -7427,6 +7518,15 @@ msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr ""
 "Пока нет заметок. Добавьте несколько деталей, чтобы ваш AI учитель узнал "
 "вас лучше."
+
+#: src/features/Router/BlockedAccess.tsx:366
+#. js-lingui-explicit-id
+msgid ""
+"No payment is taken. Your card is not stored or used for charges as part of "
+"this step."
+msgstr ""
+"Платеж не взимается. Ваша карта не хранится и не используется для взимания "
+"платы на этом этапе."
 
 #: src/features/Header/PaymentHistoryModal.tsx:94
 #. js-lingui-explicit-id
@@ -7832,6 +7932,31 @@ msgstr "Платный план:"
 msgid "parallel lives"
 msgstr "параллельные жизни"
 
+#: src/features/Router/BlockedAccess.tsx:191
+#. js-lingui-explicit-id
+msgid "Parent / Guardian Details"
+msgstr "Данные о родителе / опекуне"
+
+#: src/features/Router/BlockedAccess.tsx:229
+#. js-lingui-explicit-id
+msgid "Parent / Guardian email"
+msgstr "Родительский / опекунский адрес электронной почты"
+
+#: src/features/Router/BlockedAccess.tsx:214
+#. js-lingui-explicit-id
+msgid "Parent / Guardian full name"
+msgstr "Полное имя родителя / опекуна"
+
+#: src/features/Router/BlockedAccess.tsx:182
+#. js-lingui-explicit-id
+msgid "Parental Consent"
+msgstr "Родительское согласие"
+
+#: src/features/Router/BlockedAccess.tsx:88
+#. js-lingui-explicit-id
+msgid "Parental consent submitted!"
+msgstr "Согласие родителей отправлено!"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:374
 #. js-lingui-explicit-id
 msgid ""
@@ -8100,6 +8225,18 @@ msgstr "Настройка игроков"
 msgid "Players:"
 msgstr "Игроки:"
 
+#: src/features/Router/BlockedAccess.tsx:81
+#. js-lingui-explicit-id
+msgid "Please complete all steps and ensure the form is valid before submitting."
+msgstr ""
+"Пожалуйста, завершите все шаги и убедитесь, что форма действительна, прежде "
+"чем отправлять."
+
+#: src/features/Router/BlockedAccess.tsx:422
+#. js-lingui-explicit-id
+msgid "Please complete card verification in Step 2."
+msgstr "Пожалуйста, завершите проверку карты на шаге 2."
+
 #: src/features/PayWall/CardValidatorWall.tsx:117
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
@@ -8116,6 +8253,11 @@ msgstr "Пожалуйста, введите имя каждого игрока.
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
 msgstr "Пожалуйста, введите действующий адрес электронной почты"
+
+#: src/features/Router/BlockedAccess.tsx:416
+#. js-lingui-explicit-id
+msgid "Please fill parent details and check all boxes in Step 1."
+msgstr "Пожалуйста, заполните данные о родителях и отметьте все поля на Шаге 1."
 
 #: src/features/Chat/SubmitForm.tsx:416
 #. js-lingui-explicit-id
@@ -8174,7 +8316,7 @@ msgstr ""
 "Очки заработаны: {pointsEarned}. Продолжайте практиковаться, чтобы улучшить "
 "свой результат!"
 
-#: src/features/Sentence/TextConstructor.tsx:334
+#: src/features/Sentence/TextConstructor.tsx:333
 #. js-lingui-explicit-id
 msgid "Points:"
 msgstr "Очки:"
@@ -8619,7 +8761,9 @@ msgstr "Приоритетная поддержка"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
-#: src/features/PayWall/CardValidator.tsx:113
+#: src/features/PayWall/CardValidator.tsx:122
+#: src/features/Router/BlockedAccess.tsx:168
+#: src/features/Router/BlockedAccess.tsx:317
 #: src/features/SEO/metadata.ts:179
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -8681,7 +8825,7 @@ msgstr "Профессионалы, переходящие из других с�
 msgid "Profile"
 msgstr "Профиль"
 
-#: src/features/Sentence/TextConstructor.tsx:254
+#: src/features/Sentence/TextConstructor.tsx:253
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "Прогресс"
@@ -10204,6 +10348,7 @@ msgstr "Управление состоянием"
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:15
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:15
 #: src/features/Landing/PlanLandingBlock.tsx:391
+#: src/features/Router/BlockedAccess.tsx:187
 #. js-lingui-explicit-id
 msgid "Step 1"
 msgstr "Шаг 1"
@@ -10212,6 +10357,7 @@ msgstr "Шаг 1"
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:21
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:21
 #: src/features/Landing/PlanLandingBlock.tsx:428
+#: src/features/Router/BlockedAccess.tsx:345
 #. js-lingui-explicit-id
 msgid "Step 2"
 msgstr "Шаг 2"
@@ -10220,6 +10366,7 @@ msgstr "Шаг 2"
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:27
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:27
 #: src/features/Landing/PlanLandingBlock.tsx:583
+#: src/features/Router/BlockedAccess.tsx:390
 #. js-lingui-explicit-id
 msgid "Step 3"
 msgstr "Шаг 3"
@@ -10399,6 +10546,11 @@ msgstr "Отправить ответ"
 #. js-lingui-explicit-id
 msgid "Submit Answers"
 msgstr "Отправить ответы"
+
+#: src/features/Router/BlockedAccess.tsx:411
+#. js-lingui-explicit-id
+msgid "Submit Parental Consent"
+msgstr "Отправить согласие родителей"
 
 #: src/features/User/ReportModal.tsx:101
 #. js-lingui-explicit-id
@@ -10670,7 +10822,7 @@ msgstr ""
 msgid "Terms and Conditions"
 msgstr "Условия и положения"
 
-#: src/features/PayWall/CardValidator.tsx:104
+#: src/features/PayWall/CardValidator.tsx:113
 #. js-lingui-explicit-id
 msgid "Terms of Service"
 msgstr "Условия использования"
@@ -10683,6 +10835,8 @@ msgstr "Условия использования"
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Legal/TermsOfUse.tsx:13
+#: src/features/Router/BlockedAccess.tsx:172
+#: src/features/Router/BlockedAccess.tsx:325
 #: src/features/SEO/metadata.ts:195
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -10766,6 +10920,13 @@ msgid ""
 msgstr ""
 "Практика версионирования API и устойчивости помогла мне уверенно ответить. "
 "Я получил предложение через две недели."
+
+#: src/features/Router/BlockedAccess.tsx:150
+#. js-lingui-explicit-id
+msgid "The app can process voice recordings to generate transcripts and feedback."
+msgstr ""
+"Приложение может обрабатывать голосовые записи для создания текстовых "
+"расшифровок и обратной связи."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:252
 #. js-lingui-explicit-id
@@ -10877,6 +11038,16 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Thinking about which languages might be good to install..."
 msgstr "Думаете о том, какие языки могут быть полезно установить..."
+
+#: src/features/Router/BlockedAccess.tsx:121
+#. js-lingui-explicit-id
+msgid ""
+"This account is currently blocked due to age restrictions. A parent or "
+"legal guardian can enable access by completing the steps below."
+msgstr ""
+"Эта учетная запись в настоящее время заблокирована из-за возрастных "
+"ограничений. Родитель или законный представитель может предоставить доступ, "
+"выполнив указанные ниже шаги."
 
 #: src/features/Header/NeedHelpModal.tsx:53
 #. js-lingui-explicit-id
@@ -11254,6 +11425,24 @@ msgstr "Оставшееся время"
 msgid "Timed"
 msgstr "Время зафиксировано"
 
+#: src/features/Router/BlockedAccess.tsx:334
+#. js-lingui-explicit-id
+msgid ""
+"Tip: You can withdraw consent later and request data deletion by contacting "
+"support."
+msgstr ""
+"Подсказка: Вы можете отозвать согласие позже и запросить удаление данных, "
+"обратившись в службу поддержки."
+
+#: src/features/Router/BlockedAccess.tsx:360
+#. js-lingui-explicit-id
+msgid ""
+"To help prevent unauthorized access, we verify the parent/guardian using a "
+"one-time card verification."
+msgstr ""
+"Чтобы предотвратить несанкционированный доступ, мы проверяем "
+"родителя/опекуна, используя одноразовую проверку карты."
+
 #: src/features/Landing/Price/PricePage.tsx:301
 #. js-lingui-explicit-id
 msgid "To try full features for a short time"
@@ -11322,6 +11511,13 @@ msgstr "Отслеживайте свой прогресс в свободном
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Транскрибация..."
+
+#: src/features/Router/BlockedAccess.tsx:156
+#. js-lingui-explicit-id
+msgid "Transcripts may be stored in the account to help track progress over time."
+msgstr ""
+"Транскрипции могут храниться в учетной записи, чтобы помогать отслеживать "
+"прогресс с течением времени."
 
 #: src/features/Chat/Message/MessageFooter.tsx:68
 #. js-lingui-explicit-id
@@ -11659,12 +11855,17 @@ msgstr ""
 "var является функциональной областью видимости, а let и const - блочной "
 "областью видимости."
 
-#: src/features/PayWall/CardValidator.tsx:40
+#: src/features/PayWall/CardValidator.tsx:48
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "Проверка не удалась"
 
-#: src/features/PayWall/CardValidator.tsx:130
+#: src/features/Router/BlockedAccess.tsx:380
+#. js-lingui-explicit-id
+msgid "Verify Card"
+msgstr "Проверить карту"
+
+#: src/features/PayWall/CardValidator.tsx:139
 #. js-lingui-explicit-id
 msgid "Verifying..."
 msgstr "Проверка..."
@@ -12813,15 +13014,6 @@ msgstr "Ваш доступ в настоящий момент ограниче�
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Ваш аккаунт успешно удален. Нам жаль, что вы уходите!"
 
-#: src/features/Router/BlockedAccess.tsx:30
-#. js-lingui-explicit-id
-msgid ""
-"Your account is blocked due to age restrictions. Please contact support for "
-"assistance."
-msgstr ""
-"Ваш аккаунт заблокирован из-за возрастных ограничений. Пожалуйста, "
-"обратитесь в службу поддержки за помощью."
-
 #: src/features/Usage/UsageStatsCards.tsx:440
 #. js-lingui-explicit-id
 msgid "Your achievements"
@@ -12853,7 +13045,7 @@ msgstr "Ваши ответы будут видны вашему оппонен�
 msgid "Your Avatar:"
 msgstr "Ваш Аватар:"
 
-#: src/features/PayWall/CardValidator.tsx:79
+#: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id
 msgid ""
 "Your card is used only to activate secure access and will not be billed "
@@ -13048,6 +13240,15 @@ msgstr ""
 "— важно провести этот короткий разговор перед тем, как переходить к "
 "профессиональным темам. Вот несколько полезных английских фраз для начала "
 "интервью:"
+
+#: src/features/Router/BlockedAccess.tsx:30
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your account is blocked due to age restrictions. Please contact support for "
+#~ "assistance."
+#~ msgstr ""
+#~ "Ваш аккаунт заблокирован из-за возрастных ограничений. Пожалуйста, "
+#~ "обратитесь в службу поддержки за помощью."
 
 #: src/features/Sentence/TextConstructorStories.tsx:87
 #. js-lingui-explicit-id

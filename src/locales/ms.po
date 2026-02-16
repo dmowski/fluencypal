@@ -13,6 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Router/BlockedAccess.tsx:170
+#: src/features/Router/BlockedAccess.tsx:319
+#. js-lingui-explicit-id
+msgid " and "
+msgstr " dan "
+
 #: src/features/Usage/HoursPaymentModal/FounderMessage.tsx:27
 #. js-lingui-explicit-id
 msgid ""
@@ -429,6 +435,22 @@ msgstr ""
 msgid "A method focused on clarity and reliability"
 msgstr "Satu kaedah yang memfokuskan pada kejelasan dan kebolehpercayaan"
 
+#: src/features/Router/BlockedAccess.tsx:161
+#. js-lingui-explicit-id
+msgid "A parent or guardian can withdraw consent later by contacting support."
+msgstr ""
+"Seorang ibu bapa atau penjaga boleh menarik balik persetujuan kemudian "
+"dengan menghubungi sokongan."
+
+#: src/features/Router/BlockedAccess.tsx:196
+#. js-lingui-explicit-id
+msgid ""
+"A parent or legal guardian must confirm they approve using FluencyPal and "
+"understand how data is processed."
+msgstr ""
+"Seorang ibu bapa atau penjaga yang sah mesti mengesahkan bahawa mereka "
+"bersetuju menggunakan FluencyPal dan memahami bagaimana data diproses."
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
 #. js-lingui-explicit-id
 msgid "A polite and professional greeting."
@@ -445,7 +467,7 @@ msgstr "Satu kaedah yang terbukti yang memberikan hasil yang boleh diukur"
 msgid "A silence at the end of the algorithm"
 msgstr "Kediaman di akhir algoritma"
 
-#: src/features/PayWall/CardValidator.tsx:94
+#: src/features/PayWall/CardValidator.tsx:103
 #. js-lingui-explicit-id
 msgid ""
 "A small temporary authorization may appear on your statement and will be "
@@ -469,6 +491,11 @@ msgstr "Suara dan gaya yang sesuai dengan anda."
 msgid "About"
 msgstr "Mengenai"
 
+#: src/features/Router/BlockedAccess.tsx:138
+#. js-lingui-explicit-id
+msgid "About FluencyPal"
+msgstr "Mengenai FluencyPal"
+
 #: src/features/Landing/PlanLandingBlock.tsx:232
 #. js-lingui-explicit-id
 msgid "Academic Word List"
@@ -479,7 +506,7 @@ msgstr "Senarai Perkataan Akademik"
 msgid "Accept"
 msgstr "Terima"
 
-#: src/features/Router/BlockedAccess.tsx:26
+#: src/features/Router/BlockedAccess.tsx:117
 #. js-lingui-explicit-id
 msgid "Access Blocked"
 msgstr "Akses Dihalang"
@@ -649,6 +676,15 @@ msgstr ""
 "memperkenalkan diri, dan bagaimana untuk menjawab secara profesional. Ia "
 "boleh meningkatkan peluang anda untuk mendapatkan pekerjaan impian anda "
 "secara signifikan."
+
+#: src/features/Router/BlockedAccess.tsx:399
+#. js-lingui-explicit-id
+msgid ""
+"After steps 1 and 2 are completed, you can submit consent to enable access "
+"for this account."
+msgstr ""
+"Selepas langkah 1 dan 2 selesai, anda boleh menghantar persetujuan untuk "
+"membolehkan akses bagi akaun ini."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
 #. js-lingui-explicit-id
@@ -969,7 +1005,7 @@ msgstr "Menganalisis input anda..."
 msgid "Analyzing..."
 msgstr "Menganalisis..."
 
-#: src/features/PayWall/CardValidator.tsx:106
+#: src/features/PayWall/CardValidator.tsx:115
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "dan"
@@ -1444,7 +1480,7 @@ msgstr "Membeli Tiket Kereta"
 msgid "Buying {hours} hour(s) of AI usage"
 msgstr "Membeli penggunaan AI selama {hours} jam"
 
-#: src/features/PayWall/CardValidator.tsx:97
+#: src/features/PayWall/CardValidator.tsx:106
 #. js-lingui-explicit-id
 msgid "By continuing, you agree to our"
 msgstr "Dengan meneruskan, anda bersetuju dengan"
@@ -1580,7 +1616,18 @@ msgstr ""
 "Calon yang sudah tahu asas tetapi bergelut untuk menyampaikan keputusan "
 "dengan jelas dalam temu duga."
 
-#: src/features/PayWall/CardValidator.tsx:132
+#: src/features/Router/BlockedAccess.tsx:355
+#: src/features/Router/BlockedAccess.tsx:440
+#. js-lingui-explicit-id
+msgid "Card Verification"
+msgstr "Pengesahan Kad"
+
+#: src/features/Router/BlockedAccess.tsx:382
+#. js-lingui-explicit-id
+msgid "Card verified"
+msgstr "Kad disahkan"
+
+#: src/features/PayWall/CardValidator.tsx:141
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "Kad disahkan. Memuat..."
@@ -1902,7 +1949,12 @@ msgstr "Selesaikan tugas sebelumnya terlebih dahulu"
 msgid "Complete the sentence"
 msgstr "Lengkapkan ayat"
 
-#: src/features/Sentence/TextConstructor.tsx:268
+#: src/features/Router/BlockedAccess.tsx:441
+#. js-lingui-explicit-id
+msgid "Complete verification to proceed."
+msgstr "Selesaikan pengesahan untuk meneruskan."
+
+#: src/features/Sentence/TextConstructor.tsx:267
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Selesai ✅"
@@ -1953,7 +2005,7 @@ msgstr "Sahkan Kad Kredit"
 msgid "Confirm payment"
 msgstr "Sahkan pembayaran"
 
-#: src/features/PayWall/CardValidator.tsx:76
+#: src/features/PayWall/CardValidator.tsx:84
 #. js-lingui-explicit-id
 msgid "Confirm your payment method"
 msgstr "Sahkan kaedah pembayaran anda"
@@ -2042,7 +2094,7 @@ msgstr "Contacts:"
 #: src/features/Case/data/frontend-senior/quizData.ts:315
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
-#: src/features/PayWall/CardValidator.tsx:133
+#: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -2969,6 +3021,11 @@ msgstr ""
 msgid "Email"
 msgstr "E-mel"
 
+#: src/features/Router/BlockedAccess.tsx:394
+#. js-lingui-explicit-id
+msgid "Enable Access"
+msgstr "Aktifkan Akses"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:524
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
@@ -3872,6 +3929,16 @@ msgstr ""
 "FluencyPal ialah aplikasi berasaskan pelayar, jadi anda hanya memerlukan "
 "pelayar internet untuk menggunakannya. Anda boleh menjalankan FluencyPal "
 "pada telefon bimbit, tablet, atau desktop tanpa memasang apa-apa."
+
+#: src/features/Router/BlockedAccess.tsx:142
+#. js-lingui-explicit-id
+msgid ""
+"FluencyPal is a language-learning app that helps learners practice speaking "
+"and improve confidence through guided exercises and AI feedback."
+msgstr ""
+"FluencyPal adalah aplikasi pembelajaran bahasa yang membantu pelajar "
+"mempraktikkan percakapan dan meningkatkan keyakinan melalui latihan "
+"berpandu dan maklum balas AI."
 
 #: src/features/Landing/LandingPage.tsx:35
 #. js-lingui-explicit-id
@@ -5140,6 +5207,11 @@ msgstr "Saya terima"
 msgid "I agree"
 msgstr "Saya setuju"
 
+#: src/features/Router/BlockedAccess.tsx:311
+#. js-lingui-explicit-id
+msgid "I agree to the Terms of Use and Privacy Policy."
+msgstr "Saya bersetuju dengan Terma Penggunaan dan Dasar Privasi."
+
 #: src/features/Blog/blogData.tsx:38
 #. js-lingui-explicit-id
 msgid ""
@@ -5489,6 +5561,22 @@ msgid "I aware that this is a simulation and not a real medical consultation."
 msgstr ""
 "Saya sedar bahawa ini adalah simulasi dan bukan konsultasi perubatan "
 "sebenar."
+
+#: src/features/Router/BlockedAccess.tsx:261
+#. js-lingui-explicit-id
+msgid "I confirm I am the child’s parent or legal guardian."
+msgstr ""
+"Saya mengesahkan bahawa saya adalah ibu bapa atau penjaga sah kanak-kanak "
+"tersebut."
+
+#: src/features/Router/BlockedAccess.tsx:285
+#. js-lingui-explicit-id
+msgid ""
+"I consent to processing the child’s data (voice and transcripts) to provide "
+"the service."
+msgstr ""
+"Saya bersetuju dengan pemprosesan data kanak-kanak (suara dan transkrip) "
+"untuk menyediakan perkhidmatan."
 
 #: src/features/Community/SupportPage.tsx:79
 #. js-lingui-explicit-id
@@ -6804,6 +6892,11 @@ msgstr "Belajar tatabahasa yang digunakan dalam penulisan dan percakapan akademi
 msgid "Learn how to schedule a medical visit over the phone"
 msgstr "Pelajari cara menjadwalkan lawatan perubatan melalui telefon"
 
+#: src/features/Router/BlockedAccess.tsx:166
+#. js-lingui-explicit-id
+msgid "Learn more in our "
+msgstr "Pelajari lebih lanjut dalam kami "
+
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:31
 #. js-lingui-explicit-id
 msgid ""
@@ -6959,7 +7052,7 @@ msgstr "Memuatkan.."
 #: src/features/RolePlay/RolePlayModal.tsx:283
 #: src/features/Router/PracticePage.tsx:61
 #: src/features/Router/PracticePage.tsx:65
-#: src/features/Router/PracticePage.tsx:80
+#: src/features/Router/PracticePage.tsx:82
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:154
 #: src/features/Usage/Subscription/BalanceStatus.tsx:56
@@ -7292,7 +7385,7 @@ msgstr ""
 msgid "Movies, books, or music"
 msgstr "Filem, buku, atau muzik"
 
-#: src/features/Sentence/TextConstructor.tsx:355
+#: src/features/Sentence/TextConstructor.tsx:354
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Kedudukan Saya:"
@@ -7503,6 +7596,15 @@ msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr ""
 "Belum ada nota. Tambahkan beberapa butiran supaya guru AI anda lebih "
 "mengenali anda."
+
+#: src/features/Router/BlockedAccess.tsx:366
+#. js-lingui-explicit-id
+msgid ""
+"No payment is taken. Your card is not stored or used for charges as part of "
+"this step."
+msgstr ""
+"Tiada bayaran diambil. Kad anda tidak disimpan atau digunakan untuk caj "
+"sebagai sebahagian daripada langkah ini."
 
 #: src/features/Header/PaymentHistoryModal.tsx:94
 #. js-lingui-explicit-id
@@ -7911,6 +8013,33 @@ msgstr "Pelan berbayar:"
 msgid "parallel lives"
 msgstr "kehidupan selari"
 
+#: src/features/Router/BlockedAccess.tsx:191
+#. js-lingui-explicit-id
+msgid "Parent / Guardian Details"
+msgstr ""
+"malay\n"
+"Butiran Ibu Bapa / Penjaga\n"
+
+#: src/features/Router/BlockedAccess.tsx:229
+#. js-lingui-explicit-id
+msgid "Parent / Guardian email"
+msgstr "E-mel Ibu Bapa / Penjaga"
+
+#: src/features/Router/BlockedAccess.tsx:214
+#. js-lingui-explicit-id
+msgid "Parent / Guardian full name"
+msgstr "Nama penuh Ibu Bapa / Penjaga"
+
+#: src/features/Router/BlockedAccess.tsx:182
+#. js-lingui-explicit-id
+msgid "Parental Consent"
+msgstr "Persetujuan Ibu Bapa"
+
+#: src/features/Router/BlockedAccess.tsx:88
+#. js-lingui-explicit-id
+msgid "Parental consent submitted!"
+msgstr "Persetujuan ibu bapa telah dikemukakan!"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:374
 #. js-lingui-explicit-id
 msgid ""
@@ -8183,6 +8312,18 @@ msgstr "Persediaan Pemain"
 msgid "Players:"
 msgstr "Pemain:"
 
+#: src/features/Router/BlockedAccess.tsx:81
+#. js-lingui-explicit-id
+msgid "Please complete all steps and ensure the form is valid before submitting."
+msgstr ""
+"Sila lengkapkan semua langkah dan pastikan borang adalah sah sebelum "
+"menghantar."
+
+#: src/features/Router/BlockedAccess.tsx:422
+#. js-lingui-explicit-id
+msgid "Please complete card verification in Step 2."
+msgstr "Sila lengkapkan pengesahan kad di Langkah 2."
+
 #: src/features/PayWall/CardValidatorWall.tsx:117
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
@@ -8197,6 +8338,11 @@ msgstr "Sila masukkan nama untuk setiap pemain."
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
 msgstr "Sila masukkan alamat emel yang sah"
+
+#: src/features/Router/BlockedAccess.tsx:416
+#. js-lingui-explicit-id
+msgid "Please fill parent details and check all boxes in Step 1."
+msgstr "Sila isi butiran ibu bapa dan tandakan semua kotak dalam Langkah 1."
 
 #: src/features/Chat/SubmitForm.tsx:416
 #. js-lingui-explicit-id
@@ -8255,7 +8401,7 @@ msgstr ""
 "Mata yang diperoleh: {pointsEarned}. Teruskan berlatih untuk meningkatkan "
 "skor anda!"
 
-#: src/features/Sentence/TextConstructor.tsx:334
+#: src/features/Sentence/TextConstructor.tsx:333
 #. js-lingui-explicit-id
 msgid "Points:"
 msgstr "Mata:"
@@ -8704,7 +8850,9 @@ msgstr "Sokongan keutamaan"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
-#: src/features/PayWall/CardValidator.tsx:113
+#: src/features/PayWall/CardValidator.tsx:122
+#: src/features/Router/BlockedAccess.tsx:168
+#: src/features/Router/BlockedAccess.tsx:317
 #: src/features/SEO/metadata.ts:179
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -8766,7 +8914,7 @@ msgstr "Profesional yang beralih dari bidang lain ke kejuruteraan frontend"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/Sentence/TextConstructor.tsx:254
+#: src/features/Sentence/TextConstructor.tsx:253
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "Kemajuan"
@@ -10281,6 +10429,7 @@ msgstr "Pengurusan Negeri"
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:15
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:15
 #: src/features/Landing/PlanLandingBlock.tsx:391
+#: src/features/Router/BlockedAccess.tsx:187
 #. js-lingui-explicit-id
 msgid "Step 1"
 msgstr "Langkah 1"
@@ -10289,6 +10438,7 @@ msgstr "Langkah 1"
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:21
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:21
 #: src/features/Landing/PlanLandingBlock.tsx:428
+#: src/features/Router/BlockedAccess.tsx:345
 #. js-lingui-explicit-id
 msgid "Step 2"
 msgstr "Langkah 2"
@@ -10297,6 +10447,7 @@ msgstr "Langkah 2"
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:27
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:27
 #: src/features/Landing/PlanLandingBlock.tsx:583
+#: src/features/Router/BlockedAccess.tsx:390
 #. js-lingui-explicit-id
 msgid "Step 3"
 msgstr "Langkah 3"
@@ -10477,6 +10628,11 @@ msgstr "Hantar jawapan"
 #. js-lingui-explicit-id
 msgid "Submit Answers"
 msgstr "Hantar Jawapan"
+
+#: src/features/Router/BlockedAccess.tsx:411
+#. js-lingui-explicit-id
+msgid "Submit Parental Consent"
+msgstr "Kemukakan Persetujuan Ibu Bapa"
 
 #: src/features/User/ReportModal.tsx:101
 #. js-lingui-explicit-id
@@ -10749,7 +10905,7 @@ msgstr ""
 msgid "Terms and Conditions"
 msgstr "Terma dan Syarat"
 
-#: src/features/PayWall/CardValidator.tsx:104
+#: src/features/PayWall/CardValidator.tsx:113
 #. js-lingui-explicit-id
 msgid "Terms of Service"
 msgstr "Terma Perkhidmatan"
@@ -10762,6 +10918,8 @@ msgstr "Terma Perkhidmatan"
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Legal/TermsOfUse.tsx:13
+#: src/features/Router/BlockedAccess.tsx:172
+#: src/features/Router/BlockedAccess.tsx:325
 #: src/features/SEO/metadata.ts:195
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -10844,6 +11002,13 @@ msgid ""
 msgstr ""
 "Amalan pengurusan versi API dan keteguhan membantu saya menjawab dengan "
 "yakin. Saya menerima tawaran dalam masa dua minggu."
+
+#: src/features/Router/BlockedAccess.tsx:150
+#. js-lingui-explicit-id
+msgid "The app can process voice recordings to generate transcripts and feedback."
+msgstr ""
+"Aplikasi ini boleh memproses rakaman suara untuk menjana transkrip dan "
+"maklum balas."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:252
 #. js-lingui-explicit-id
@@ -10955,6 +11120,15 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Thinking about which languages might be good to install..."
 msgstr "Sedang memikirkan bahasa apa yang mungkin baik untuk dipasang..."
+
+#: src/features/Router/BlockedAccess.tsx:121
+#. js-lingui-explicit-id
+msgid ""
+"This account is currently blocked due to age restrictions. A parent or "
+"legal guardian can enable access by completing the steps below."
+msgstr ""
+"Akaun ini kini disekat kerana sekatan umur. Ibu bapa atau penjaga sah boleh "
+"membolehkan akses dengan melengkapkan langkah-langkah di bawah."
 
 #: src/features/Header/NeedHelpModal.tsx:53
 #. js-lingui-explicit-id
@@ -11339,6 +11513,24 @@ msgstr "Masa yang tinggal"
 msgid "Timed"
 msgstr "Masa"
 
+#: src/features/Router/BlockedAccess.tsx:334
+#. js-lingui-explicit-id
+msgid ""
+"Tip: You can withdraw consent later and request data deletion by contacting "
+"support."
+msgstr ""
+"Tip: Anda boleh menarik balik persetujuan kemudian dan meminta penghapusan "
+"data dengan menghubungi sokongan."
+
+#: src/features/Router/BlockedAccess.tsx:360
+#. js-lingui-explicit-id
+msgid ""
+"To help prevent unauthorized access, we verify the parent/guardian using a "
+"one-time card verification."
+msgstr ""
+"Untuk membantu mencegah akses tanpa kebenaran, kami mengesahkan ibu "
+"bapa/penjaga menggunakan pengesahan kad sekali sahaja."
+
 #: src/features/Landing/Price/PricePage.tsx:301
 #. js-lingui-explicit-id
 msgid "To try full features for a short time"
@@ -11407,6 +11599,13 @@ msgstr "Jejak Kemajuan Kefasihan Anda"
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Menyalin..."
+
+#: src/features/Router/BlockedAccess.tsx:156
+#. js-lingui-explicit-id
+msgid "Transcripts may be stored in the account to help track progress over time."
+msgstr ""
+"Transkrip mungkin disimpan dalam akaun untuk membantu menjejaki kemajuan "
+"dari semasa ke semasa."
 
 #: src/features/Chat/Message/MessageFooter.tsx:68
 #. js-lingui-explicit-id
@@ -11741,12 +11940,17 @@ msgstr ""
 "var adalah terikat kepada skop fungsi dan let serta const adalah terikat "
 "kepada skop blok."
 
-#: src/features/PayWall/CardValidator.tsx:40
+#: src/features/PayWall/CardValidator.tsx:48
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "Pengesahan gagal"
 
-#: src/features/PayWall/CardValidator.tsx:130
+#: src/features/Router/BlockedAccess.tsx:380
+#. js-lingui-explicit-id
+msgid "Verify Card"
+msgstr "Sahkan Kad"
+
+#: src/features/PayWall/CardValidator.tsx:139
 #. js-lingui-explicit-id
 msgid "Verifying..."
 msgstr "Sedang Mengesahkan..."
@@ -12910,13 +13114,6 @@ msgstr "Akses anda kini terhad"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Akaun anda telah berjaya dihapuskan. Kami sedih untuk melihat anda pergi!"
 
-#: src/features/Router/BlockedAccess.tsx:30
-#. js-lingui-explicit-id
-msgid ""
-"Your account is blocked due to age restrictions. Please contact support for "
-"assistance."
-msgstr "Akaun anda disekat kerana sekatan umur. Sila hubungi sokongan untuk bantuan."
-
 #: src/features/Usage/UsageStatsCards.tsx:440
 #. js-lingui-explicit-id
 msgid "Your achievements"
@@ -12948,7 +13145,7 @@ msgstr "Jawapan anda akan dapat dilihat oleh lawan anda selepas anda menyerahkan
 msgid "Your Avatar:"
 msgstr "Avatar Anda:"
 
-#: src/features/PayWall/CardValidator.tsx:79
+#: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id
 msgid ""
 "Your card is used only to activate secure access and will not be billed "
@@ -13145,6 +13342,13 @@ msgstr ""
 "— sangat penting untuk melibatkan diri dalam perbualan pendek ini sebelum "
 "melompat ke topik profesional. Berikut adalah beberapa frasa Inggeris yang "
 "berguna untuk memulakan temuduga:"
+
+#: src/features/Router/BlockedAccess.tsx:30
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your account is blocked due to age restrictions. Please contact support for "
+#~ "assistance."
+#~ msgstr "Akaun anda disekat kerana sekatan umur. Sila hubungi sokongan untuk bantuan."
 
 #: src/features/Sentence/TextConstructorStories.tsx:87
 #. js-lingui-explicit-id
