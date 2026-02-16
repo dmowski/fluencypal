@@ -124,6 +124,57 @@ export const BlockedAccess = () => {
             </Typography>
           </Stack>
 
+          {/* ABOUT FLUENCYPAL */}
+          <Stack
+            sx={{
+              border: '1px solid rgba(255,255,255,0.12)',
+              borderRadius: '16px',
+              padding: '18px',
+              background: 'rgba(255,255,255,0.04)',
+              gap: '10px',
+            }}
+          >
+            <Typography variant="h6" sx={{ fontWeight: 800 }}>
+              {i18n._('About FluencyPal')}
+            </Typography>
+
+            <Typography variant="body2" sx={{ opacity: 0.9 }}>
+              {i18n._(
+                'FluencyPal is a language-learning app that helps learners practice speaking and improve confidence through guided exercises and AI feedback.',
+              )}
+            </Typography>
+
+            <Stack sx={{ gap: '8px', paddingTop: '6px' }}>
+              <Typography variant="body2" sx={{ opacity: 0.9 }}>
+                •{' '}
+                {i18n._(
+                  'The app can process voice recordings to generate transcripts and feedback.',
+                )}
+              </Typography>
+              <Typography variant="body2" sx={{ opacity: 0.9 }}>
+                •{' '}
+                {i18n._(
+                  'Transcripts may be stored in the account to help track progress over time.',
+                )}
+              </Typography>
+              <Typography variant="body2" sx={{ opacity: 0.9 }}>
+                • {i18n._('A parent or guardian can withdraw consent later by contacting support.')}
+              </Typography>
+            </Stack>
+
+            <Typography variant="caption" sx={{ opacity: 0.8, paddingTop: '6px' }}>
+              {i18n._('Learn more in our ')}
+              <Link href={`${getUrlStart(pageLang)}privacy`} underline="hover" target="_blank">
+                {i18n._('Privacy Policy')}
+              </Link>
+              {i18n._(' and ')}
+              <Link href={`${getUrlStart(pageLang)}terms`} underline="hover" target="_blank">
+                {i18n._('Terms of Use')}
+              </Link>
+              .
+            </Typography>
+          </Stack>
+
           <Stack sx={{ gap: '102px', padding: '50px 0 130px 0' }}>
             {/* STEP 1 */}
             <Stack gap="12px">
