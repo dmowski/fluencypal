@@ -20,6 +20,12 @@ export type ConversationMode = 'record' | 'call' | 'chat';
 
 export type AiVoiceSpeed = 'extremely-slow' | 'slow' | 'normal' | 'fast';
 
+export interface ParentConsent {
+  parentName: string;
+  parentEmail: string;
+  consentGivenAtIso: string;
+}
+
 export interface UserSettings extends InitUserSettings {
   languageCode: SupportedLanguage | null;
   pageLanguageCode: SupportedLanguage | null;
@@ -42,6 +48,9 @@ export interface UserSettings extends InitUserSettings {
   teacherVoiceSpeed?: AiVoiceSpeed;
 
   isBlockedByAge: boolean | null;
+
+  isParentalConsentNeeded: boolean | null;
+  parentalConsent?: ParentConsent | null;
 }
 
 export interface UserSettingsWithId extends UserSettings {

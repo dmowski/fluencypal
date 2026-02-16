@@ -13,7 +13,15 @@ import { sendFeedbackMessageRequest } from '@/app/api/telegram/sendFeedbackMessa
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-function SetupForm({ clientSecret }: { clientSecret: string }) {
+function SetupForm({
+  clientSecret,
+  title,
+  subtitle,
+}: {
+  clientSecret: string;
+  title?: string;
+  subtitle?: string;
+}) {
   const stripe = useStripe();
   const { i18n } = useLingui();
   const auth = useAuth();
@@ -73,12 +81,13 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
               lineHeight: '1.2',
             }}
           >
-            {i18n._('Confirm your payment method')}
+            {title || i18n._('Confirm your payment method')}
           </Typography>
           <Typography sx={{}}>
-            {i18n._(
-              'Your card is used only to activate secure access and will not be billed unless you decide to continue.',
-            )}
+            {subtitle ||
+              i18n._(
+                'Your card is used only to activate secure access and will not be billed unless you decide to continue.',
+              )}
           </Typography>
         </Stack>
         <Stack>
@@ -142,9 +151,13 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
 export function VerifyCard({
   clientSecret,
   lang,
+  title,
+  subtitle,
 }: {
   clientSecret: string;
   lang: SupportedLanguage;
+  title?: string;
+  subtitle?: string;
 }) {
   const locale: StripeElementLocale = stripeLocaleMap[lang];
   const options: StripeElementsOptions = useMemo(
@@ -176,7 +189,7 @@ export function VerifyCard({
         options={options}
         stripe={stripePromise}
       >
-        <SetupForm clientSecret={clientSecret} />
+        <SetupForm clientSecret={clientSecret} title={title} subtitle={subtitle} />
       </Elements>
     </Stack>
   );

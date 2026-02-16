@@ -65,7 +65,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
 
-  if (access.isBlocked) return <BlockedAccess />;
+  if (access.isBlockedByAge) return <BlockedAccess />;
 
   if (appNavigation.currentPage === 'community') return <CommunityDashboard />;
 

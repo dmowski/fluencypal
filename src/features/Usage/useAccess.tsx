@@ -8,7 +8,12 @@ export const useAccess = () => {
   const usage = useUsage();
   const settings = useSettings();
 
-  const isBlocked = settings.userSettings?.isBlockedByAge || false;
+  const isParentalConsentNeeded = settings.userSettings?.isParentalConsentNeeded || false;
+  const isCreditCardValidated = settings.userSettings?.isCreditCardConfirmed;
+  const isConsentGiven =
+    settings.userSettings?.parentalConsent?.consentGivenAtIso && isCreditCardValidated;
+
+  const canUseCommunity = isParentalConsentNeeded ? false : true;
 
   const isExpiringSoon = game.isGameWinner
     ? false
@@ -21,6 +26,8 @@ export const useAccess = () => {
     isExpiringSoon,
     activeSubscriptionTill: usage.activeSubscriptionTill,
     showPaymentModal: () => usage.togglePaymentModal(true),
-    isBlocked: isBlocked,
+
+    isBlockedByAge: isParentalConsentNeeded ? !isConsentGiven : false,
+    canUseCommunity,
   };
 };
