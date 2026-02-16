@@ -1,5 +1,14 @@
 import { useLingui } from '@lingui/react';
-import { Button, Checkbox, Divider, Stack, TextField, Typography, Link } from '@mui/material';
+import {
+  Button,
+  Checkbox,
+  Divider,
+  Stack,
+  TextField,
+  Typography,
+  Link,
+  FormControlLabel,
+} from '@mui/material';
 import { useSettings } from '../Settings/useSettings';
 import { useAccess } from '../Usage/useAccess';
 import { LanguageSwitcher } from '../Lang/LanguageSwitcher';
@@ -10,6 +19,7 @@ import { VerifyCard } from '../PayWall/CardValidator';
 import { ParentConsent } from '@/common/userSettings';
 import { CONTACTS } from '../Landing/Contact/data';
 import { Check } from 'lucide-react';
+import { getUrlStart } from '../Lang/getUrlStart';
 
 export const BlockedAccess = () => {
   const { i18n } = useLingui();
@@ -23,6 +33,7 @@ export const BlockedAccess = () => {
 
   const isBlockedByAge = access.isBlockedByAge;
   const isCardConfirmed = !!settings.userSettings?.isCreditCardConfirmed;
+  const pageLang = settings.userSettings?.pageLanguageCode || 'en';
 
   // NOTE: consider storing consentVersion, childEmail, and ip on server-side too.
   const [consent, setConsent] = useState<ParentConsent>({
@@ -49,7 +60,11 @@ export const BlockedAccess = () => {
     }
   };
 
-  const isEmailValid = consent.parentEmail.trim().includes('@');
+  const isEmailValid =
+    consent.parentEmail.trim().includes('@') &&
+    consent.parentEmail.trim().length >= 5 &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(consent.parentEmail.trim());
+
   const isNameValid = consent.parentName.trim().length >= 2;
   const isParentFormValid =
     isNameValid &&
@@ -165,6 +180,8 @@ export const BlockedAccess = () => {
                     value={consent.parentEmail}
                     onChange={(e) => setConsent((p) => ({ ...p, parentEmail: e.target.value }))}
                     fullWidth
+                    type="email"
+                    error={consent.parentEmail.length > 0 && !isEmailValid}
                     required
                   />
                 </Stack>
@@ -172,55 +189,93 @@ export const BlockedAccess = () => {
 
               <Stack gap="8px" sx={{ paddingTop: '6px' }}>
                 <Stack direction="row" alignItems="center" gap="8px">
-                  <Checkbox
+                  <FormControlLabel
                     required
-                    size="large"
+                    sx={{
+                      '.MuiFormControlLabel-asterisk': {
+                        color: '#f24',
+                      },
+                    }}
                     checked={parentCheckboxes.isGuardian}
                     onChange={(e) =>
-                      setParentCheckboxes((p) => ({ ...p, isGuardian: e.target.checked }))
+                      setParentCheckboxes((p) => ({
+                        ...p,
+                        isGuardian: !parentCheckboxes.isGuardian,
+                      }))
+                    }
+                    control={<Checkbox size="large" />}
+                    label={
+                      <Typography variant="body2" component={'span'}>
+                        {i18n._(`I confirm I am the child’s parent or legal guardian.`)}
+                      </Typography>
                     }
                   />
-                  <Typography variant="body2">
-                    {i18n._(`I confirm I am the child’s parent or legal guardian.`)}
-                  </Typography>
                 </Stack>
 
                 <Stack direction="row" alignItems="center" gap="8px">
-                  <Checkbox
+                  <FormControlLabel
                     required
-                    size="large"
+                    sx={{
+                      '.MuiFormControlLabel-asterisk': {
+                        color: '#f24',
+                      },
+                    }}
                     checked={parentCheckboxes.agreesToProcessing}
                     onChange={(e) =>
-                      setParentCheckboxes((p) => ({ ...p, agreesToProcessing: e.target.checked }))
+                      setParentCheckboxes((p) => ({
+                        ...p,
+                        agreesToProcessing: !parentCheckboxes.agreesToProcessing,
+                      }))
+                    }
+                    control={<Checkbox size="large" />}
+                    label={
+                      <Typography variant="body2" component={'span'}>
+                        {i18n._(
+                          `I consent to processing the child’s data (voice and transcripts) to provide the service.`,
+                        )}
+                      </Typography>
                     }
                   />
-                  <Typography variant="body2">
-                    {i18n._(
-                      `I consent to processing the child’s data (voice and transcripts) to provide the service.`,
-                    )}
-                  </Typography>
                 </Stack>
 
                 <Stack direction="row" alignItems="center" gap="8px">
-                  <Checkbox
-                    size="large"
-                    checked={parentCheckboxes.agreesToGuidelines}
+                  <FormControlLabel
                     required
+                    sx={{
+                      '.MuiFormControlLabel-asterisk': {
+                        color: '#f24',
+                      },
+                    }}
+                    checked={parentCheckboxes.agreesToGuidelines}
                     onChange={(e) =>
-                      setParentCheckboxes((p) => ({ ...p, agreesToGuidelines: e.target.checked }))
+                      setParentCheckboxes((p) => ({
+                        ...p,
+                        agreesToGuidelines: !parentCheckboxes.agreesToGuidelines,
+                      }))
+                    }
+                    control={<Checkbox size="large" />}
+                    label={
+                      <Typography variant="body2" component={'span'}>
+                        {i18n._(`I agree to the Terms of Use and Privacy Policy.`)}{' '}
+                        <Link
+                          href={`${getUrlStart(pageLang)}privacy`}
+                          underline="hover"
+                          target="_blank"
+                        >
+                          {i18n._('Privacy Policy')}
+                        </Link>
+                        {i18n._(' and ')}
+                        <Link
+                          href={`${getUrlStart(pageLang)}terms`}
+                          underline="hover"
+                          target="_blank"
+                        >
+                          {i18n._('Terms of Use')}
+                        </Link>
+                        .
+                      </Typography>
                     }
                   />
-                  <Typography variant="body2">
-                    {i18n._(`I agree to the Terms of Use and Privacy Policy.`)}{' '}
-                    <Link href="/privacy" underline="hover" target="_blank">
-                      {i18n._('Privacy Policy')}
-                    </Link>
-                    {i18n._(' and ')}
-                    <Link href="/terms" underline="hover" target="_blank">
-                      {i18n._('Terms of Use')}
-                    </Link>
-                    .
-                  </Typography>
                 </Stack>
 
                 <Typography variant="caption" sx={{ opacity: 0.8 }}>
