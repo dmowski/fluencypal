@@ -47,8 +47,6 @@ export interface UserSettings extends InitUserSettings {
 
   teacherVoiceSpeed?: AiVoiceSpeed;
 
-  isBlockedByAge: boolean | null;
-
   isParentalConsentNeeded: boolean | null;
   parentalConsent?: ParentConsent | null;
 }
