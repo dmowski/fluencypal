@@ -364,7 +364,7 @@ export const BlockedAccess = () => {
 
               <Typography variant="body2" sx={{ opacity: 0.9 }}>
                 {i18n._(
-                  `No payment is taken. Your card is not stored or used for charges as part of this step.`,
+                  `No payment will be taken. Your card will not be stored or used for charges as part of this step.`,
                 )}
               </Typography>
 
