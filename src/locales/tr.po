@@ -312,15 +312,14 @@ msgstr "1 AI saati"
 msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
 msgstr "1 AI saati ≈ AI ile etkin bir konuşma saati."
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:32
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:60
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:69
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:208
 #. js-lingui-explicit-id
 msgid "1 day"
 msgstr "1 gün"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:48
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:80
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:89
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:210
 #. js-lingui-explicit-id
 msgid "1 month"
@@ -332,12 +331,14 @@ msgid "1 round"
 msgstr "1 tur"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:40
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:70
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:79
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:209
 #. js-lingui-explicit-id
 msgid "1 week"
 msgstr "1 hafta"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:57
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:99
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:211
 #. js-lingui-explicit-id
 msgid "1 year"
@@ -641,8 +642,9 @@ msgstr "ilerlemiş İngilizce konuşma"
 
 #: src/features/Landing/Price/FeatureList.tsx:56
 #: src/features/Landing/Price/FeatureList.tsx:80
-#: src/features/Landing/Price/PricePage.tsx:372
-#: src/features/Landing/Price/PricePage.tsx:460
+#: src/features/Landing/Price/PricePage.tsx:468
+#: src/features/Landing/Price/PricePage.tsx:551
+#: src/features/Landing/Price/PricePage.tsx:634
 #. js-lingui-explicit-id
 msgid "Advanced Personalization"
 msgstr "İleri Düzey Kişiselleştirme"
@@ -1047,7 +1049,7 @@ msgstr "Mimarlık & Tasarım"
 msgid "Architecture & Resiliency"
 msgstr "Mimarlık ve Dayanıklılık"
 
-#: src/features/Landing/Price/PricePage.tsx:86
+#: src/features/Landing/Price/PricePage.tsx:91
 #. js-lingui-explicit-id
 msgid "Are there any hidden fees?"
 msgstr "Hiç gizli ücret var mı?"
@@ -1466,8 +1468,9 @@ msgstr "AI kullanımından {hours} saat satın alınması"
 msgid "By continuing, you agree to our"
 msgstr "Devam ederek, şunlara katıldığınızı kabul ediyorsunuz:"
 
-#: src/features/Landing/Price/PricePage.tsx:368
-#: src/features/Landing/Price/PricePage.tsx:456
+#: src/features/Landing/Price/PricePage.tsx:464
+#: src/features/Landing/Price/PricePage.tsx:547
+#: src/features/Landing/Price/PricePage.tsx:630
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "Pratik yaparak, AI'den kişisel dil bilgisi kuralları alacaksınız."
@@ -1535,7 +1538,7 @@ msgstr "FluencyPal benim için kişisel bir pratik planı oluşturabilir mi?"
 msgid "Can I customize my practice sessions?"
 msgstr "Uygulama oturumlarımı özelleştirebilir miyim?"
 
-#: src/features/Landing/Price/PricePage.tsx:92
+#: src/features/Landing/Price/PricePage.tsx:97
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:44
 #: src/features/Usage/Subscription/FaqSubscription.tsx:20
 #. js-lingui-explicit-id
@@ -1547,13 +1550,13 @@ msgstr "Satın aldıktan sonra para iadesi yapabilir miyim?"
 msgid "Can I practice languages other than English?"
 msgstr "Diğer dillerde de pratik yapabilir miyim?"
 
-#: src/features/Landing/Price/PricePage.tsx:72
+#: src/features/Landing/Price/PricePage.tsx:77
 #. js-lingui-explicit-id
 msgid "Can I stop using FluencyPal anytime?"
 msgstr "FluencyPal'i istediğim zaman kullanmayı bırakabilir miyim?"
 
 #: src/features/Landing/LandingPage.tsx:69
-#: src/features/Landing/Price/PricePage.tsx:79
+#: src/features/Landing/Price/PricePage.tsx:84
 #. js-lingui-explicit-id
 msgid "Can I use FluencyPal for free?"
 msgstr "FluencyPal'i ücretsiz kullanabilir miyim?"
@@ -1865,8 +1868,6 @@ msgstr "İletişim ve Liderlik"
 msgid "Community"
 msgstr "Topluluk"
 
-#: src/features/Landing/Price/PricePage.tsx:379
-#: src/features/Landing/Price/PricePage.tsx:467
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:532
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:548
 #. js-lingui-explicit-id
@@ -2109,8 +2110,9 @@ msgid "Conversation Practice"
 msgstr "Konuşma Pratiği"
 
 #: src/features/Landing/Price/FeatureList.tsx:40
-#: src/features/Landing/Price/PricePage.tsx:352
-#: src/features/Landing/Price/PricePage.tsx:440
+#: src/features/Landing/Price/PricePage.tsx:448
+#: src/features/Landing/Price/PricePage.tsx:531
+#: src/features/Landing/Price/PricePage.tsx:614
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Konuşma pratikleri"
@@ -2428,8 +2430,7 @@ msgstr "Veri ve İşlemler"
 msgid "Databases & Transactions"
 msgstr "Veritabanları ve İşlemler"
 
-#: src/features/Landing/Price/PricePage.tsx:330
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:119
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:120
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "day"
@@ -2838,7 +2839,7 @@ msgstr ""
 msgid "Discussions"
 msgstr "Tartışmalar"
 
-#: src/features/Landing/Price/PricePage.tsx:53
+#: src/features/Landing/Price/PricePage.tsx:58
 #. js-lingui-explicit-id
 msgid "Do I need to enter a credit card to start?"
 msgstr "Başlamak için kredi kartı girmem gerekmiyor mu?"
@@ -3077,19 +3078,14 @@ msgstr ""
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr "Evcil hayvanlar ve günlük rutinler hakkında dostane küçük sohbetlere katılın"
 
-#: src/features/Landing/Price/PricePage.tsx:345
-#: src/features/Landing/Price/PricePage.tsx:434
+#: src/features/Landing/Price/PricePage.tsx:442
+#: src/features/Landing/Price/PricePage.tsx:525
+#: src/features/Landing/Price/PricePage.tsx:608
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr ""
 "Gerçek yaşam konuşmalarına katılın, örneğin iş görüşmeleri veya yemek "
 "siparişi verme gibi"
-
-#: src/features/Landing/Price/PricePage.tsx:380
-#: src/features/Landing/Price/PricePage.tsx:468
-#. js-lingui-explicit-id
-msgid "Engage with the community and participate in discussions"
-msgstr "Toplulukla etkileşime geçin ve tartışmalara katılın"
 
 #: src/features/Case/data/backendCSharp/whoIsThisForSection.ts:29
 #. js-lingui-explicit-id
@@ -3571,9 +3567,9 @@ msgstr ""
 "O yardımcı olacak.  \n"
 "Sadece bunu yaparken insanlık üzerine yorum yapacak."
 
-#: src/features/Landing/Price/PricePage.tsx:270
-#: src/features/Landing/Price/PricePage.tsx:335
-#: src/features/Landing/Price/PricePage.tsx:424
+#: src/features/Landing/Price/PricePage.tsx:432
+#: src/features/Landing/Price/PricePage.tsx:515
+#: src/features/Landing/Price/PricePage.tsx:598
 #. js-lingui-explicit-id
 msgid "Everything in Free, plus:"
 msgstr "Ücretsiz sürümde olan her şey, artı:"
@@ -3626,7 +3622,7 @@ msgstr ""
 "dost canlısı AI öğretmeniniz. İster acemi ister ileri düzey bir öğrenci "
 "olun, Bruno hızınıza uyum sağlar, hataları düzeltir ve sizi motive tutar."
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:170
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:179
 #. js-lingui-explicit-id
 msgid "Expires"
 msgstr "Sona Erme Tarihi"
@@ -3756,7 +3752,7 @@ msgstr "Adalet Kontrolü"
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
 #: src/features/Case/Landing/components/InterviewHeader.tsx:34
 #: src/features/Landing/LandingPage.tsx:425
-#: src/features/Landing/Price/PricePage.tsx:487
+#: src/features/Landing/Price/PricePage.tsx:656
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "Sıkça Sorulan Sorular"
@@ -4023,7 +4019,7 @@ msgid "FluencyPal – AI English Speaking Practice for Fluency & Confidence"
 msgstr "FluencyPal – Akıcılık ve Güven için AI İngilizce Konuşma Uygulaması"
 
 #: src/features/Landing/LandingPage.tsx:167
-#: src/features/Landing/Price/PricePage.tsx:113
+#: src/features/Landing/Price/PricePage.tsx:118
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
 msgstr "FluencyPal – Yapay Zeka İngilizce Konuşma Ortağın"
@@ -4068,12 +4064,17 @@ msgstr "Örneğin:"
 msgid "For focused, uninterrupted learning."
 msgstr "Odaklanmış, kesintisiz öğrenme için."
 
-#: src/features/Landing/Price/PricePage.tsx:236
+#: src/features/Landing/Price/PricePage.tsx:564
 #. js-lingui-explicit-id
-msgid "For learners getting started"
-msgstr "Öğrenmeye yeni başlayanlar için"
+msgid "For learners committed to fluency"
+msgstr "Akanlıklığı hedefleyen öğrenciler için"
 
-#: src/features/Landing/Price/PricePage.tsx:390
+#: src/features/Landing/Price/PricePage.tsx:398
+#. js-lingui-explicit-id
+msgid "For learners committed to improving their fluency"
+msgstr "Akıcılıklarını geliştirmeye kararlı öğrenenler için"
+
+#: src/features/Landing/Price/PricePage.tsx:481
 #. js-lingui-explicit-id
 msgid "For learners who want flexibility"
 msgstr "Esneklik isteyen öğrenciler için"
@@ -4127,11 +4128,6 @@ msgstr "Framework'e özgü içgörüler (React, Vue, Angular)"
 msgid "Frameworks & Libraries"
 msgstr "Frameworkler ve Kütüphaneler"
 
-#: src/features/Landing/Price/PricePage.tsx:235
-#. js-lingui-explicit-id
-msgid "Free"
-msgstr "Ücretsiz"
-
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:136
 #. js-lingui-explicit-id
 msgid "Free Access"
@@ -4178,7 +4174,7 @@ msgstr "Fransızca Öğrenme Planı"
 msgid "Frequently Asked Questions"
 msgstr "Sıkça Sorulan Sorular"
 
-#: src/features/Landing/Price/PricePage.tsx:194
+#: src/features/Landing/Price/PricePage.tsx:199
 #. js-lingui-explicit-id
 msgid "From mistakes and hesitation to confident conversations"
 msgstr "Hatalardan ve tereddütten kendinden emin konuşmalara"
@@ -4246,15 +4242,20 @@ msgstr "1 haftalık Tam Erişim"
 msgid "Full Access for 1 year"
 msgstr "Tam Erişim 1 yıl boyunca"
 
-#: src/features/Landing/Price/PricePage.tsx:300
-#. js-lingui-explicit-id
-msgid "Full Access for a Day"
-msgstr "Bir Gün Boyunca Tam Erişim"
-
-#: src/features/Landing/Price/PricePage.tsx:389
+#: src/features/Landing/Price/PricePage.tsx:480
 #. js-lingui-explicit-id
 msgid "Full Access for a Month"
 msgstr "Bir Ay Boyunca Tam Erişim"
+
+#: src/features/Landing/Price/PricePage.tsx:397
+#. js-lingui-explicit-id
+msgid "Full Access for a Week"
+msgstr "Bir Hafta Boyunca Tam Erişim"
+
+#: src/features/Landing/Price/PricePage.tsx:563
+#. js-lingui-explicit-id
+msgid "Full Access for a Year"
+msgstr "Bir Yıl Boyunca Tam Erişim"
 
 #: src/features/Case/data/reusable/priceSection.ts:24
 #. js-lingui-explicit-id
@@ -4272,8 +4273,9 @@ msgid "Full AI interview coach access"
 msgstr "Tam AI mülakat koçu erişimi"
 
 #: src/features/Landing/Price/FeatureList.tsx:32
-#: src/features/Landing/Price/PricePage.tsx:339
-#: src/features/Landing/Price/PricePage.tsx:428
+#: src/features/Landing/Price/PricePage.tsx:436
+#: src/features/Landing/Price/PricePage.tsx:519
+#: src/features/Landing/Price/PricePage.tsx:602
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Tam AI öğretmen erişimi"
@@ -4310,11 +4312,6 @@ msgstr "Oyun ayarları eksik. Lütfen geri dönün."
 #. js-lingui-explicit-id
 msgid "Game Statistics"
 msgstr "Oyun İstatistikleri"
-
-#: src/features/Landing/Price/PricePage.tsx:274
-#. js-lingui-explicit-id
-msgid "Game-based practice"
-msgstr "Oyun tabanlı pratik"
 
 #: src/features/Alias/components/GamePlay.tsx:103
 #. js-lingui-explicit-id
@@ -4473,12 +4470,12 @@ msgstr "Yapay zeka desteğiyle güven kazanın"
 #: src/features/SEO/metadata.ts:151
 #. js-lingui-explicit-id
 msgid ""
-"Get flexible pricing with FluencyPal. Start with 3 free days, and enjoy "
-"AI-powered language practice with no subscriptions or hidden fees."
+"Get flexible pricing with FluencyPal. Enjoy AI-powered language practice at "
+"your pace. Start improving your English fluency today!"
 msgstr ""
-"FluencyPal ile esnek fiyatlandırmayı edinin. 3 ücretsiz günle başlayın ve "
-"hiçbir abonelik ya da gizli ücret olmadan AI destekli dil pratiğinin tadını "
-"çıkarın."
+"Esnek fiyatlandırma ile FluencyPal. Kendi temponuzda yapay zeka destekli "
+"dil pratiğinin keyfini çıkarın. Bugün İngilizce akıcılığınızı geliştirmeye "
+"başlayın!"
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Game/UserProfileModal.tsx:449
@@ -4557,8 +4554,9 @@ msgstr ""
 msgid "Get My Plan"
 msgstr "Planımı Al"
 
-#: src/features/Landing/Price/PricePage.tsx:363
-#: src/features/Landing/Price/PricePage.tsx:451
+#: src/features/Landing/Price/PricePage.tsx:459
+#: src/features/Landing/Price/PricePage.tsx:542
+#: src/features/Landing/Price/PricePage.tsx:625
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "Bağlamda yeni kelimeler ve ifadeler edinin"
@@ -4569,8 +4567,8 @@ msgid "Get Ready"
 msgstr "Hazır Ol"
 
 #: src/features/Blog/BlogsPage.tsx:39
-#: src/features/Landing/Price/PricePage.tsx:199
-#: src/features/Landing/Price/PricePage.tsx:502
+#: src/features/Landing/Price/PricePage.tsx:204
+#: src/features/Landing/Price/PricePage.tsx:671
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "Başla"
@@ -4580,14 +4578,9 @@ msgstr "Başla"
 msgid "Get Started Free"
 msgstr "Ücretsiz Başlayın"
 
-#: src/features/Landing/Price/PricePage.tsx:269
-#. js-lingui-explicit-id
-msgid "Get started with basic features"
-msgstr "Temel özelliklerle başlayın"
-
-#: src/features/Landing/Price/PricePage.tsx:275
-#: src/features/Landing/Price/PricePage.tsx:340
-#: src/features/Landing/Price/PricePage.tsx:429
+#: src/features/Landing/Price/PricePage.tsx:437
+#: src/features/Landing/Price/PricePage.tsx:520
+#: src/features/Landing/Price/PricePage.tsx:603
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Sonsuz AI destekli dil pratik erişimi edinin"
@@ -5721,11 +5714,9 @@ msgstr "İngilizce Becerilerini Geliştir"
 msgid "improve English speaking"
 msgstr "İngilizce konuşmayı geliştirin"
 
-#: src/features/Landing/Price/PricePage.tsx:281
-#: src/features/Landing/Price/PricePage.tsx:286
-#: src/features/Landing/Price/PricePage.tsx:291
-#: src/features/Landing/Price/PricePage.tsx:353
-#: src/features/Landing/Price/PricePage.tsx:441
+#: src/features/Landing/Price/PricePage.tsx:449
+#: src/features/Landing/Price/PricePage.tsx:532
+#: src/features/Landing/Price/PricePage.tsx:615
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "Etkileşimli sohbet oturumları ile akıcılığı geliştirin"
@@ -6440,13 +6431,13 @@ msgstr "FluencyPal, insan öğretmenlerin yerine geçen bir uygulama mı?"
 msgid "Is my data used to train AI models?"
 msgstr "Verilerim AI modellerini eğitmek için kullanılıyor mu?"
 
-#: src/features/Landing/Price/PricePage.tsx:58
+#: src/features/Landing/Price/PricePage.tsx:63
 #. js-lingui-explicit-id
 msgid "Is the payment recurring?"
 msgstr "Ödeme yineleniyor mu?"
 
 #: src/features/Landing/LandingPage.tsx:62
-#: src/features/Landing/Price/PricePage.tsx:46
+#: src/features/Landing/Price/PricePage.tsx:51
 #. js-lingui-explicit-id
 msgid "Is there a free trial?"
 msgstr "Ücretsiz deneme var mı?"
@@ -6745,7 +6736,7 @@ msgstr "Öğren"
 msgid "Learn anywhere, anytime"
 msgstr "Her yerde, her zaman öğrenin"
 
-#: src/features/Landing/Price/PricePage.tsx:423
+#: src/features/Landing/Price/PricePage.tsx:514
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "Tam erişimle tam hızda öğrenin"
@@ -7199,9 +7190,8 @@ msgstr "Sahte Görüşmeler"
 msgid "modern literature"
 msgstr "modern edebiyat"
 
-#: src/features/Landing/Price/PricePage.tsx:265
-#: src/features/Landing/Price/PricePage.tsx:419
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:114
+#: src/features/Landing/Price/PricePage.tsx:510
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:115
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
 #. js-lingui-explicit-id
@@ -7314,8 +7304,9 @@ msgid "New Game"
 msgstr "Yeni Oyun"
 
 #: src/features/Landing/Price/FeatureList.tsx:52
-#: src/features/Landing/Price/PricePage.tsx:367
-#: src/features/Landing/Price/PricePage.tsx:455
+#: src/features/Landing/Price/PricePage.tsx:463
+#: src/features/Landing/Price/PricePage.tsx:546
+#: src/features/Landing/Price/PricePage.tsx:629
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "Yeni Dilbilgisi Kuralları"
@@ -7327,8 +7318,9 @@ msgid "New Image"
 msgstr "Yeni Resim"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
-#: src/features/Landing/Price/PricePage.tsx:362
-#: src/features/Landing/Price/PricePage.tsx:450
+#: src/features/Landing/Price/PricePage.tsx:458
+#: src/features/Landing/Price/PricePage.tsx:541
+#: src/features/Landing/Price/PricePage.tsx:624
 #. js-lingui-explicit-id
 msgid "New Words"
 msgstr "Yeni Kelimeler"
@@ -7556,7 +7548,7 @@ msgstr ""
 "istediğiniz zaman pratik yapabilir, geri bildirimleri hemen inceleyebilir "
 "ve soruları istediğiniz sıklıkta tekrarlayabilirsiniz."
 
-#: src/features/Landing/Price/PricePage.tsx:59
+#: src/features/Landing/Price/PricePage.tsx:64
 #. js-lingui-explicit-id
 msgid ""
 "No. FluencyPal does not use automatic recurring payments. You decide each "
@@ -7567,7 +7559,7 @@ msgstr ""
 "yeniden yaparsınız."
 
 #: src/features/Landing/LandingPage.tsx:63
-#: src/features/Landing/Price/PricePage.tsx:47
+#: src/features/Landing/Price/PricePage.tsx:52
 #. js-lingui-explicit-id
 msgid ""
 "No. FluencyPal offers a free plan with limited features and a monthly plan "
@@ -7579,7 +7571,7 @@ msgstr ""
 "kararı vermeden önce temel özellikleri keşfetmek için ücretsiz planı "
 "süresiz olarak kullanabilirsiniz."
 
-#: src/features/Landing/Price/PricePage.tsx:87
+#: src/features/Landing/Price/PricePage.tsx:92
 #. js-lingui-explicit-id
 msgid ""
 "No. The price shown is the full price. There are no hidden fees or surprise "
@@ -7588,7 +7580,7 @@ msgstr ""
 "Hayır. Gösterilen fiyat, tam fiyattır. Gizli ücretler veya sürpriz "
 "masraflar yoktur."
 
-#: src/features/Landing/Price/PricePage.tsx:54
+#: src/features/Landing/Price/PricePage.tsx:59
 #. js-lingui-explicit-id
 msgid "No. You can start the free plan without entering any payment details."
 msgstr "Hayır. Herhangi bir ödeme bilgisi girmeden ücretsiz plana başlayabilirsiniz."
@@ -7738,7 +7730,7 @@ msgstr "Çevrimiçi Dil Pratiği"
 msgid "Oops! Something went wrong"
 msgstr "Hata! Bir şeyler ters gitti"
 
-#: src/features/Landing/Price/PricePage.tsx:201
+#: src/features/Landing/Price/PricePage.tsx:206
 #. js-lingui-explicit-id
 msgid "Open"
 msgstr "Aç"
@@ -8066,11 +8058,6 @@ msgstr "Oynamaya başlamak için bir seviye seçin!"
 #. js-lingui-explicit-id
 msgid "Pick one or more categories to build your word list."
 msgstr "Bir kelime listesi oluşturmak için bir veya daha fazla kategori seçin."
-
-#: src/features/Landing/Price/PricePage.tsx:290
-#. js-lingui-explicit-id
-msgid "Place in the top 5 in the game to gain full access"
-msgstr "Oyunda ilk 5'e girerek tam erişim kazanın"
 
 #: src/features/Goal/Quiz/GoalReview.tsx:85
 #. js-lingui-explicit-id
@@ -8671,12 +8658,12 @@ msgstr "Önceki Soru"
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
 #: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:184
+#: src/features/Landing/Price/PricePage.tsx:189
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "Fiyat"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:180
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:189
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "Günlük fiyat"
@@ -8776,11 +8763,17 @@ msgstr "İlerleme Takibi"
 
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
-#: src/features/Landing/Price/PricePage.tsx:357
-#: src/features/Landing/Price/PricePage.tsx:445
+#: src/features/Landing/Price/PricePage.tsx:453
+#: src/features/Landing/Price/PricePage.tsx:536
+#: src/features/Landing/Price/PricePage.tsx:619
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "İlerleme takibi"
+
+#: src/features/Landing/Price/PricePage.tsx:597
+#. js-lingui-explicit-id
+msgid "Promote consistent learning and long-term progress"
+msgstr "Tutarlı öğrenimi ve uzun vadeli ilerlemeyi teşvik et"
 
 #: src/features/RolePlay/rolePlayData.tsx:1038
 #. js-lingui-explicit-id
@@ -8938,11 +8931,6 @@ msgstr "Metni okuyun"
 #. js-lingui-explicit-id
 msgid "Reader"
 msgstr "Okuyucu"
-
-#: src/features/Landing/Price/PricePage.tsx:285
-#. js-lingui-explicit-id
-msgid "Reading practice"
-msgstr "Okuma pratiği"
 
 #: src/features/Sentence/TextConstructorSection.tsx:150
 #. js-lingui-explicit-id
@@ -9413,8 +9401,9 @@ msgid "Role-Play"
 msgstr "Rol Oynama"
 
 #: src/features/Landing/Price/FeatureList.tsx:36
-#: src/features/Landing/Price/PricePage.tsx:344
-#: src/features/Landing/Price/PricePage.tsx:433
+#: src/features/Landing/Price/PricePage.tsx:441
+#: src/features/Landing/Price/PricePage.tsx:524
+#: src/features/Landing/Price/PricePage.tsx:607
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "Rol yapma senaryoları"
@@ -9568,8 +9557,9 @@ msgstr "Aldığınız geri bildirim türünü görün"
 msgid "See the type of feedback you'll get"
 msgstr "Alacağınız geri bildirim türünü görün"
 
-#: src/features/Landing/Price/PricePage.tsx:358
-#: src/features/Landing/Price/PricePage.tsx:446
+#: src/features/Landing/Price/PricePage.tsx:454
+#: src/features/Landing/Price/PricePage.tsx:537
+#: src/features/Landing/Price/PricePage.tsx:620
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
 msgstr "İlerlemelerinizi görün ve öğrenme yolculuğunuzu izleyin"
@@ -10115,9 +10105,9 @@ msgstr "Yıldızlar"
 #: src/features/Dashboard/PlanDashboardCards.tsx:300
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
-#: src/features/Landing/Price/PricePage.tsx:295
-#: src/features/Landing/Price/PricePage.tsx:384
-#: src/features/Landing/Price/PricePage.tsx:472
+#: src/features/Landing/Price/PricePage.tsx:475
+#: src/features/Landing/Price/PricePage.tsx:558
+#: src/features/Landing/Price/PricePage.tsx:641
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:325
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:283
@@ -10244,7 +10234,7 @@ msgid "Start Your Interview Test"
 msgstr "Başvurunuzu Başlatın Test"
 
 #: src/features/Blog/BlogsPage.tsx:38
-#: src/features/Landing/Price/PricePage.tsx:501
+#: src/features/Landing/Price/PricePage.tsx:670
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:40
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
@@ -10894,7 +10884,7 @@ msgstr ""
 "Hakkında sayfasında size bir \"kullanıcı\" gibi değil, bir arkadaş gibi "
 "yazabileceğim bir hizmet."
 
-#: src/features/Landing/Price/PricePage.tsx:66
+#: src/features/Landing/Price/PricePage.tsx:71
 #. js-lingui-explicit-id
 msgid ""
 "The paid plan gives you full access to all FluencyPal features, including "
@@ -11365,11 +11355,6 @@ msgstr ""
 "Yetkisiz erişimi önlemeye yardımcı olmak için, ebeveyn/veli doğrulamasını "
 "tek seferlik bir kart doğrulamasıyla yapıyoruz."
 
-#: src/features/Landing/Price/PricePage.tsx:301
-#. js-lingui-explicit-id
-msgid "To try full features for a short time"
-msgstr "Tam özellikleri kısa bir süre denemek için"
-
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
 msgid ""
@@ -11489,10 +11474,10 @@ msgstr "Başka bir resim deneyin"
 msgid "Try for free"
 msgstr "Ücretsiz deneyin"
 
-#: src/features/Landing/Price/PricePage.tsx:334
+#: src/features/Landing/Price/PricePage.tsx:431
 #. js-lingui-explicit-id
-msgid "Try full features and decide if it’s right for you"
-msgstr "Tüm özellikleri deneyin ve sizin için doğru olup olmadığına karar verin"
+msgid "Try full features and see significant improvement"
+msgstr "Tüm özellikleri deneyin ve önemli bir iyileşme görün"
 
 #: src/features/Lang/getLabels.tsx:27
 #. js-lingui-explicit-id
@@ -11838,11 +11823,6 @@ msgstr ""
 msgid "Vocabulary"
 msgstr "Kelime Dağarcığı"
 
-#: src/features/Landing/Price/PricePage.tsx:280
-#. js-lingui-explicit-id
-msgid "Vocabulary challenges"
-msgstr "Kelime dağarcığı zorlukları"
-
 #: src/features/SEO/metadata.ts:167
 #. js-lingui-explicit-id
 msgid "Vocabulary Practice"
@@ -12107,7 +12087,8 @@ msgstr "Webcam Geri Bildirim Önizlemesi"
 msgid "Webcam Setup"
 msgstr "Webcam Kurulumu"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:116
+#: src/features/Landing/Price/PricePage.tsx:427
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:117
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
@@ -12153,7 +12134,7 @@ msgstr "Ne paylaşabilirim?"
 msgid "What challenges you face"
 msgstr "Karşılaştığınız zorluklar nelerdir?"
 
-#: src/features/Landing/Price/PricePage.tsx:65
+#: src/features/Landing/Price/PricePage.tsx:70
 #. js-lingui-explicit-id
 msgid "What do I get with the paid plan?"
 msgstr "Ücretli planla ne elde ederim?"
@@ -12359,8 +12340,9 @@ msgstr ""
 "düzeltmeler ve destekleyici bir toplulukla öğrenme deneyiminizi "
 "geliştirebilirsiniz."
 
-#: src/features/Landing/Price/PricePage.tsx:373
-#: src/features/Landing/Price/PricePage.tsx:461
+#: src/features/Landing/Price/PricePage.tsx:469
+#: src/features/Landing/Price/PricePage.tsx:552
+#: src/features/Landing/Price/PricePage.tsx:635
 #. js-lingui-explicit-id
 msgid ""
 "With time, AI will adapt to your learning style and it will be more "
@@ -12481,7 +12463,8 @@ msgstr "Raporunuzu buraya yazın"
 msgid "Wrong Link"
 msgstr "Yanlış Bağlantı"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:118
+#: src/features/Landing/Price/PricePage.tsx:593
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:119
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
@@ -12553,7 +12536,7 @@ msgstr ""
 "Evet. Hizmetten memnun kalmadıysanız, \"Profil/Ödeme geçmişi\" sayfasında "
 "iade talebinde bulunabilirsiniz ve detayları görüşeceğiz."
 
-#: src/features/Landing/Price/PricePage.tsx:93
+#: src/features/Landing/Price/PricePage.tsx:98
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you’re not satisfied with the service, on \"Profile/Payment "
@@ -12564,7 +12547,7 @@ msgstr ""
 "sayfasından iade talebinde bulunabilirsiniz, biz de detayları görüşerek "
 "ödediğiniz tutarı iade edeceğiz."
 
-#: src/features/Landing/Price/PricePage.tsx:73
+#: src/features/Landing/Price/PricePage.tsx:78
 #. js-lingui-explicit-id
 msgid ""
 "Yes. Since there is no automatic renewal, you can simply stop using the app "
@@ -12574,7 +12557,7 @@ msgstr ""
 "kullanmayı bırakarak yeniden ücretlendirilmeden kullanımınızı "
 "durdurabilirsiniz."
 
-#: src/features/Landing/Price/PricePage.tsx:80
+#: src/features/Landing/Price/PricePage.tsx:85
 #. js-lingui-explicit-id
 msgid ""
 "Yes. You can earn free full access by ranking in the top 5 of the "
@@ -13145,6 +13128,72 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Landing/Price/PricePage.tsx:380
+#: src/features/Landing/Price/PricePage.tsx:468
+#. js-lingui-explicit-id
+#~ msgid "Engage with the community and participate in discussions"
+#~ msgstr "Toplulukla etkileşime geçin ve tartışmalara katılın"
+
+#: src/features/Landing/Price/PricePage.tsx:236
+#. js-lingui-explicit-id
+#~ msgid "For learners getting started"
+#~ msgstr "Öğrenmeye yeni başlayanlar için"
+
+#: src/features/Landing/Price/PricePage.tsx:235
+#. js-lingui-explicit-id
+#~ msgid "Free"
+#~ msgstr "Ücretsiz"
+
+#: src/features/Landing/Price/PricePage.tsx:300
+#. js-lingui-explicit-id
+#~ msgid "Full Access for a Day"
+#~ msgstr "Bir Gün Boyunca Tam Erişim"
+
+#: src/features/Landing/Price/PricePage.tsx:274
+#. js-lingui-explicit-id
+#~ msgid "Game-based practice"
+#~ msgstr "Oyun tabanlı pratik"
+
+#: src/features/SEO/metadata.ts:151
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Get flexible pricing with FluencyPal. Start with 3 free days, and enjoy "
+#~ "AI-powered language practice with no subscriptions or hidden fees."
+#~ msgstr ""
+#~ "FluencyPal ile esnek fiyatlandırmayı edinin. 3 ücretsiz günle başlayın ve "
+#~ "hiçbir abonelik ya da gizli ücret olmadan AI destekli dil pratiğinin tadını "
+#~ "çıkarın."
+
+#: src/features/Landing/Price/PricePage.tsx:269
+#. js-lingui-explicit-id
+#~ msgid "Get started with basic features"
+#~ msgstr "Temel özelliklerle başlayın"
+
+#: src/features/Landing/Price/PricePage.tsx:290
+#. js-lingui-explicit-id
+#~ msgid "Place in the top 5 in the game to gain full access"
+#~ msgstr "Oyunda ilk 5'e girerek tam erişim kazanın"
+
+#: src/features/Landing/Price/PricePage.tsx:285
+#. js-lingui-explicit-id
+#~ msgid "Reading practice"
+#~ msgstr "Okuma pratiği"
+
+#: src/features/Landing/Price/PricePage.tsx:301
+#. js-lingui-explicit-id
+#~ msgid "To try full features for a short time"
+#~ msgstr "Tam özellikleri kısa bir süre denemek için"
+
+#: src/features/Landing/Price/PricePage.tsx:334
+#. js-lingui-explicit-id
+#~ msgid "Try full features and decide if it’s right for you"
+#~ msgstr "Tüm özellikleri deneyin ve sizin için doğru olup olmadığına karar verin"
+
+#: src/features/Landing/Price/PricePage.tsx:280
+#. js-lingui-explicit-id
+#~ msgid "Vocabulary challenges"
+#~ msgstr "Kelime dağarcığı zorlukları"
 
 #: src/features/Router/BlockedAccess.tsx:366
 #. js-lingui-explicit-id

@@ -289,15 +289,14 @@ msgstr "1 AI 시간"
 msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
 msgstr "1 AI 시간 ≈ AI와의 적극적인 대화 1시간."
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:32
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:60
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:69
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:208
 #. js-lingui-explicit-id
 msgid "1 day"
 msgstr "1일"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:48
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:80
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:89
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:210
 #. js-lingui-explicit-id
 msgid "1 month"
@@ -309,12 +308,14 @@ msgid "1 round"
 msgstr "1 라운드"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:40
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:70
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:79
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:209
 #. js-lingui-explicit-id
 msgid "1 week"
 msgstr "1주일"
 
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:57
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:99
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:211
 #. js-lingui-explicit-id
 msgid "1 year"
@@ -604,8 +605,9 @@ msgstr "고급 영어 회화"
 
 #: src/features/Landing/Price/FeatureList.tsx:56
 #: src/features/Landing/Price/FeatureList.tsx:80
-#: src/features/Landing/Price/PricePage.tsx:372
-#: src/features/Landing/Price/PricePage.tsx:460
+#: src/features/Landing/Price/PricePage.tsx:468
+#: src/features/Landing/Price/PricePage.tsx:551
+#: src/features/Landing/Price/PricePage.tsx:634
 #. js-lingui-explicit-id
 msgid "Advanced Personalization"
 msgstr "고급 개인화"
@@ -998,7 +1000,7 @@ msgstr "건축 및 디자인"
 msgid "Architecture & Resiliency"
 msgstr "건축 및 회복력"
 
-#: src/features/Landing/Price/PricePage.tsx:86
+#: src/features/Landing/Price/PricePage.tsx:91
 #. js-lingui-explicit-id
 msgid "Are there any hidden fees?"
 msgstr "숨겨진 수수료가 있나요?"
@@ -1406,8 +1408,9 @@ msgstr "{hours}시간의 AI 사용 구매"
 msgid "By continuing, you agree to our"
 msgstr "계속 진행하면, 귀하는 당사의 것에 동의하게 됩니다."
 
-#: src/features/Landing/Price/PricePage.tsx:368
-#: src/features/Landing/Price/PricePage.tsx:456
+#: src/features/Landing/Price/PricePage.tsx:464
+#: src/features/Landing/Price/PricePage.tsx:547
+#: src/features/Landing/Price/PricePage.tsx:630
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "연습을 통해, AI로부터 개인화된 문법 규칙을 얻을 수 있습니다"
@@ -1475,7 +1478,7 @@ msgstr "FluencyPal이 개인 연습 계획을 만들어 줄 수 있나요?"
 msgid "Can I customize my practice sessions?"
 msgstr "연습 세션을 맞춤 설정할 수 있나요?"
 
-#: src/features/Landing/Price/PricePage.tsx:92
+#: src/features/Landing/Price/PricePage.tsx:97
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:44
 #: src/features/Usage/Subscription/FaqSubscription.tsx:20
 #. js-lingui-explicit-id
@@ -1487,13 +1490,13 @@ msgstr "구매 후 환불이 가능한가요?"
 msgid "Can I practice languages other than English?"
 msgstr "다른 언어도 연습할 수 있나요?"
 
-#: src/features/Landing/Price/PricePage.tsx:72
+#: src/features/Landing/Price/PricePage.tsx:77
 #. js-lingui-explicit-id
 msgid "Can I stop using FluencyPal anytime?"
 msgstr "FluencyPal을 언제든지 중지할 수 있나요?"
 
 #: src/features/Landing/LandingPage.tsx:69
-#: src/features/Landing/Price/PricePage.tsx:79
+#: src/features/Landing/Price/PricePage.tsx:84
 #. js-lingui-explicit-id
 msgid "Can I use FluencyPal for free?"
 msgstr "FluencyPal을 무료로 사용할 수 있나요?"
@@ -1788,8 +1791,6 @@ msgstr "커뮤니케이션 & 리더십"
 msgid "Community"
 msgstr "커뮤니티"
 
-#: src/features/Landing/Price/PricePage.tsx:379
-#: src/features/Landing/Price/PricePage.tsx:467
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:532
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:548
 #. js-lingui-explicit-id
@@ -2027,8 +2028,9 @@ msgid "Conversation Practice"
 msgstr "대화 연습"
 
 #: src/features/Landing/Price/FeatureList.tsx:40
-#: src/features/Landing/Price/PricePage.tsx:352
-#: src/features/Landing/Price/PricePage.tsx:440
+#: src/features/Landing/Price/PricePage.tsx:448
+#: src/features/Landing/Price/PricePage.tsx:531
+#: src/features/Landing/Price/PricePage.tsx:614
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "대화 연습"
@@ -2332,8 +2334,7 @@ msgstr "데이터 및 트랜잭션"
 msgid "Databases & Transactions"
 msgstr "데이터베이스 & 거래"
 
-#: src/features/Landing/Price/PricePage.tsx:330
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:119
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:120
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "day"
@@ -2700,7 +2701,7 @@ msgstr ""
 msgid "Discussions"
 msgstr "토론"
 
-#: src/features/Landing/Price/PricePage.tsx:53
+#: src/features/Landing/Price/PricePage.tsx:58
 #. js-lingui-explicit-id
 msgid "Do I need to enter a credit card to start?"
 msgstr "시작하려면 신용카드를 입력해야 하나요?"
@@ -2928,17 +2929,12 @@ msgstr ""
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr "반려동물과 일상에 대한 친구같은 가벼운 대화를 나누세요."
 
-#: src/features/Landing/Price/PricePage.tsx:345
-#: src/features/Landing/Price/PricePage.tsx:434
+#: src/features/Landing/Price/PricePage.tsx:442
+#: src/features/Landing/Price/PricePage.tsx:525
+#: src/features/Landing/Price/PricePage.tsx:608
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr "실제 직업 인터뷰나 음식 주문과 같은 대화에 참여하세요"
-
-#: src/features/Landing/Price/PricePage.tsx:380
-#: src/features/Landing/Price/PricePage.tsx:468
-#. js-lingui-explicit-id
-msgid "Engage with the community and participate in discussions"
-msgstr "커뮤니티에 참여하고 토론에 참여하세요"
 
 #: src/features/Case/data/backendCSharp/whoIsThisForSection.ts:29
 #. js-lingui-explicit-id
@@ -3379,9 +3375,9 @@ msgstr ""
 "그녀는 도와줄 것입니다.  \n"
 "인류에 대해 논평하면서 말이죠."
 
-#: src/features/Landing/Price/PricePage.tsx:270
-#: src/features/Landing/Price/PricePage.tsx:335
-#: src/features/Landing/Price/PricePage.tsx:424
+#: src/features/Landing/Price/PricePage.tsx:432
+#: src/features/Landing/Price/PricePage.tsx:515
+#: src/features/Landing/Price/PricePage.tsx:598
 #. js-lingui-explicit-id
 msgid "Everything in Free, plus:"
 msgstr "무료 버전의 모든 기능에 더하여:"
@@ -3431,7 +3427,7 @@ msgstr ""
 "경험해 보세요, 브루노와 함께하는 차세대 언어 연습. 초보자든 고급 학습자든, 브루노는 당신의 속도에 맞추어 조정하고, 실수를 "
 "교정하며, 당신을 지속적으로 동기 부여합니다."
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:170
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:179
 #. js-lingui-explicit-id
 msgid "Expires"
 msgstr "만료됨"
@@ -3553,7 +3549,7 @@ msgstr "공정성 검사"
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
 #: src/features/Case/Landing/components/InterviewHeader.tsx:34
 #: src/features/Landing/LandingPage.tsx:425
-#: src/features/Landing/Price/PricePage.tsx:487
+#: src/features/Landing/Price/PricePage.tsx:656
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "FAQ"
@@ -3786,7 +3782,7 @@ msgid "FluencyPal – AI English Speaking Practice for Fluency & Confidence"
 msgstr "FluencyPal – 유창성과 자신감을 위한 AI 영어 말하기 연습"
 
 #: src/features/Landing/LandingPage.tsx:167
-#: src/features/Landing/Price/PricePage.tsx:113
+#: src/features/Landing/Price/PricePage.tsx:118
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
 msgstr "FluencyPal – 당신의 AI 영어 말하기 파트너"
@@ -3827,12 +3823,17 @@ msgstr "예를 들어:"
 msgid "For focused, uninterrupted learning."
 msgstr "집중하고 방해받지 않는 학습을 위해."
 
-#: src/features/Landing/Price/PricePage.tsx:236
+#: src/features/Landing/Price/PricePage.tsx:564
 #. js-lingui-explicit-id
-msgid "For learners getting started"
-msgstr "시작하는 학습자를 위해"
+msgid "For learners committed to fluency"
+msgstr "유창함을 목표로 하는 학습자를 위한"
 
-#: src/features/Landing/Price/PricePage.tsx:390
+#: src/features/Landing/Price/PricePage.tsx:398
+#. js-lingui-explicit-id
+msgid "For learners committed to improving their fluency"
+msgstr "유창성을 향상시키기 위해 헌신한 학습자들을 위한 것"
+
+#: src/features/Landing/Price/PricePage.tsx:481
 #. js-lingui-explicit-id
 msgid "For learners who want flexibility"
 msgstr "유연성을 원하는 학습자들을 위해"
@@ -3886,11 +3887,6 @@ msgstr "프레임워크별 인사이트 (React, Vue, Angular)"
 msgid "Frameworks & Libraries"
 msgstr "프레임워크 및 라이브러리"
 
-#: src/features/Landing/Price/PricePage.tsx:235
-#. js-lingui-explicit-id
-msgid "Free"
-msgstr "무료"
-
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:136
 #. js-lingui-explicit-id
 msgid "Free Access"
@@ -3937,7 +3933,7 @@ msgstr "프랑스어 학습 계획"
 msgid "Frequently Asked Questions"
 msgstr "자주 묻는 질문"
 
-#: src/features/Landing/Price/PricePage.tsx:194
+#: src/features/Landing/Price/PricePage.tsx:199
 #. js-lingui-explicit-id
 msgid "From mistakes and hesitation to confident conversations"
 msgstr "실수와 망설임에서 자신감 있는 대화로"
@@ -4005,15 +4001,20 @@ msgstr "1주일 동안 전체 액세스"
 msgid "Full Access for 1 year"
 msgstr "1년 동안 전체 액세스 권한"
 
-#: src/features/Landing/Price/PricePage.tsx:300
-#. js-lingui-explicit-id
-msgid "Full Access for a Day"
-msgstr "하루 동안 전체 액세스"
-
-#: src/features/Landing/Price/PricePage.tsx:389
+#: src/features/Landing/Price/PricePage.tsx:480
 #. js-lingui-explicit-id
 msgid "Full Access for a Month"
 msgstr "한 달간 전체 액세스"
+
+#: src/features/Landing/Price/PricePage.tsx:397
+#. js-lingui-explicit-id
+msgid "Full Access for a Week"
+msgstr "일주일 동안 전체 액세스"
+
+#: src/features/Landing/Price/PricePage.tsx:563
+#. js-lingui-explicit-id
+msgid "Full Access for a Year"
+msgstr "1년 동안 전체 액세스 가능"
 
 #: src/features/Case/data/reusable/priceSection.ts:24
 #. js-lingui-explicit-id
@@ -4031,8 +4032,9 @@ msgid "Full AI interview coach access"
 msgstr "Full AI 인터뷰 코치 접근 권한"
 
 #: src/features/Landing/Price/FeatureList.tsx:32
-#: src/features/Landing/Price/PricePage.tsx:339
-#: src/features/Landing/Price/PricePage.tsx:428
+#: src/features/Landing/Price/PricePage.tsx:436
+#: src/features/Landing/Price/PricePage.tsx:519
+#: src/features/Landing/Price/PricePage.tsx:602
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "풀 AI 튜터 접근권"
@@ -4069,11 +4071,6 @@ msgstr "게임 설정이 누락되었습니다. 뒤로 가십시오."
 #. js-lingui-explicit-id
 msgid "Game Statistics"
 msgstr "게임 통계"
-
-#: src/features/Landing/Price/PricePage.tsx:274
-#. js-lingui-explicit-id
-msgid "Game-based practice"
-msgstr "게임 기반 연습"
 
 #: src/features/Alias/components/GamePlay.tsx:103
 #. js-lingui-explicit-id
@@ -4216,9 +4213,11 @@ msgstr "AI 지원으로 자신감을 얻으세요"
 #: src/features/SEO/metadata.ts:151
 #. js-lingui-explicit-id
 msgid ""
-"Get flexible pricing with FluencyPal. Start with 3 free days, and enjoy "
-"AI-powered language practice with no subscriptions or hidden fees."
-msgstr "FluencyPal에서 유연한 가격을 받으세요. 무료로 3일간 시작하고, 구독이나 숨겨진 비용 없이 AI가 강화된 언어 연습을 즐기세요."
+"Get flexible pricing with FluencyPal. Enjoy AI-powered language practice at "
+"your pace. Start improving your English fluency today!"
+msgstr ""
+"FluencyPal과 함께 유연한 가격을 즐기세요. AI 기반의 언어 연습을 여러분의 속도에 맞춰 즐기십시오. 오늘부터 영어 유창성을 "
+"향상시키세요!"
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Game/UserProfileModal.tsx:449
@@ -4285,8 +4284,9 @@ msgstr "실제 인터뷰 전에 구조, 명확성 및 고급 수준의 사고에
 msgid "Get My Plan"
 msgstr "내 계획 얻기"
 
-#: src/features/Landing/Price/PricePage.tsx:363
-#: src/features/Landing/Price/PricePage.tsx:451
+#: src/features/Landing/Price/PricePage.tsx:459
+#: src/features/Landing/Price/PricePage.tsx:542
+#: src/features/Landing/Price/PricePage.tsx:625
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "문맥 속에서 새로운 단어와 구문을 얻으세요"
@@ -4297,8 +4297,8 @@ msgid "Get Ready"
 msgstr "준비하세요"
 
 #: src/features/Blog/BlogsPage.tsx:39
-#: src/features/Landing/Price/PricePage.tsx:199
-#: src/features/Landing/Price/PricePage.tsx:502
+#: src/features/Landing/Price/PricePage.tsx:204
+#: src/features/Landing/Price/PricePage.tsx:671
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "시작하기"
@@ -4308,14 +4308,9 @@ msgstr "시작하기"
 msgid "Get Started Free"
 msgstr "무료로 시작하기"
 
-#: src/features/Landing/Price/PricePage.tsx:269
-#. js-lingui-explicit-id
-msgid "Get started with basic features"
-msgstr "기본 기능으로 시작하기"
-
-#: src/features/Landing/Price/PricePage.tsx:275
-#: src/features/Landing/Price/PricePage.tsx:340
-#: src/features/Landing/Price/PricePage.tsx:429
+#: src/features/Landing/Price/PricePage.tsx:437
+#: src/features/Landing/Price/PricePage.tsx:520
+#: src/features/Landing/Price/PricePage.tsx:603
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "무제한 AI 기반 언어 연습 이용하기"
@@ -5358,11 +5353,9 @@ msgstr "영어 기술 향상"
 msgid "improve English speaking"
 msgstr "영어 말하기 향상"
 
-#: src/features/Landing/Price/PricePage.tsx:281
-#: src/features/Landing/Price/PricePage.tsx:286
-#: src/features/Landing/Price/PricePage.tsx:291
-#: src/features/Landing/Price/PricePage.tsx:353
-#: src/features/Landing/Price/PricePage.tsx:441
+#: src/features/Landing/Price/PricePage.tsx:449
+#: src/features/Landing/Price/PricePage.tsx:532
+#: src/features/Landing/Price/PricePage.tsx:615
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "대화형 채팅 세션으로 유창성 향상하기"
@@ -5998,13 +5991,13 @@ msgstr "FluencyPal은 인간 교사의 대체재인가요?"
 msgid "Is my data used to train AI models?"
 msgstr "제 데이터가 AI 모델을 훈련하는 데 사용되나요?"
 
-#: src/features/Landing/Price/PricePage.tsx:58
+#: src/features/Landing/Price/PricePage.tsx:63
 #. js-lingui-explicit-id
 msgid "Is the payment recurring?"
 msgstr "결제가 자동으로 반복됩니까?"
 
 #: src/features/Landing/LandingPage.tsx:62
-#: src/features/Landing/Price/PricePage.tsx:46
+#: src/features/Landing/Price/PricePage.tsx:51
 #. js-lingui-explicit-id
 msgid "Is there a free trial?"
 msgstr "무료 체험을 제공하나요?"
@@ -6296,7 +6289,7 @@ msgstr "배우다"
 msgid "Learn anywhere, anytime"
 msgstr "언제 어디서든 배우세요"
 
-#: src/features/Landing/Price/PricePage.tsx:423
+#: src/features/Landing/Price/PricePage.tsx:514
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "전체 접근을 통한 최대 속도 학습"
@@ -6741,9 +6734,8 @@ msgstr "모의 인터뷰"
 msgid "modern literature"
 msgstr "현대 문학"
 
-#: src/features/Landing/Price/PricePage.tsx:265
-#: src/features/Landing/Price/PricePage.tsx:419
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:114
+#: src/features/Landing/Price/PricePage.tsx:510
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:115
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
 #. js-lingui-explicit-id
@@ -6852,8 +6844,9 @@ msgid "New Game"
 msgstr "새 게임"
 
 #: src/features/Landing/Price/FeatureList.tsx:52
-#: src/features/Landing/Price/PricePage.tsx:367
-#: src/features/Landing/Price/PricePage.tsx:455
+#: src/features/Landing/Price/PricePage.tsx:463
+#: src/features/Landing/Price/PricePage.tsx:546
+#: src/features/Landing/Price/PricePage.tsx:629
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "새로운 문법 규칙"
@@ -6865,8 +6858,9 @@ msgid "New Image"
 msgstr "새 이미지"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
-#: src/features/Landing/Price/PricePage.tsx:362
-#: src/features/Landing/Price/PricePage.tsx:450
+#: src/features/Landing/Price/PricePage.tsx:458
+#: src/features/Landing/Price/PricePage.tsx:541
+#: src/features/Landing/Price/PricePage.tsx:624
 #. js-lingui-explicit-id
 msgid "New Words"
 msgstr "새로운 단어들"
@@ -7086,7 +7080,7 @@ msgstr ""
 "아니요. 모든 세션은 주문형으로 제공됩니다. AI 기반 모의 인터뷰를 통해 언제든지 연습할 수 있으며, 즉시 피드백을 검토하고 원할 "
 "때마다 질문을 반복할 수 있습니다."
 
-#: src/features/Landing/Price/PricePage.tsx:59
+#: src/features/Landing/Price/PricePage.tsx:64
 #. js-lingui-explicit-id
 msgid ""
 "No. FluencyPal does not use automatic recurring payments. You decide each "
@@ -7094,7 +7088,7 @@ msgid ""
 msgstr "아니요. FluencyPal은 자동 반복 결제를 사용하지 않습니다. 매달 계속할지 여부를 결정하고 수동으로 다시 결제를 진행합니다."
 
 #: src/features/Landing/LandingPage.tsx:63
-#: src/features/Landing/Price/PricePage.tsx:47
+#: src/features/Landing/Price/PricePage.tsx:52
 #. js-lingui-explicit-id
 msgid ""
 "No. FluencyPal offers a free plan with limited features and a monthly plan "
@@ -7104,14 +7098,14 @@ msgstr ""
 "아니요. FluencyPal은 제한된 기능을 제공하는 무료 플랜과 전체 액세스를 위한 월간 플랜을 제공합니다. 업그레이드를 결정하기 "
 "전에 무료 플랜을 무기한으로 사용하여 말하기 연습을 하고 기본 기능을 탐색할 수 있습니다."
 
-#: src/features/Landing/Price/PricePage.tsx:87
+#: src/features/Landing/Price/PricePage.tsx:92
 #. js-lingui-explicit-id
 msgid ""
 "No. The price shown is the full price. There are no hidden fees or surprise "
 "charges."
 msgstr "번호. 표시된 가격은 전체 가격입니다. 숨겨진 수수료나 추가 요금은 없습니다."
 
-#: src/features/Landing/Price/PricePage.tsx:54
+#: src/features/Landing/Price/PricePage.tsx:59
 #. js-lingui-explicit-id
 msgid "No. You can start the free plan without entering any payment details."
 msgstr "아니요. 결제 정보를 입력하지 않고 무료 플랜을 시작할 수 있습니다."
@@ -7256,7 +7250,7 @@ msgstr "온라인 언어 연습"
 msgid "Oops! Something went wrong"
 msgstr "이런! 문제가 발생했습니다"
 
-#: src/features/Landing/Price/PricePage.tsx:201
+#: src/features/Landing/Price/PricePage.tsx:206
 #. js-lingui-explicit-id
 msgid "Open"
 msgstr "열기"
@@ -7565,11 +7559,6 @@ msgstr "게임을 시작하려면 레벨을 선택하세요!"
 #. js-lingui-explicit-id
 msgid "Pick one or more categories to build your word list."
 msgstr "하나 또는 여러 개의 카테고리를 선택하여 단어 목록을 만드세요."
-
-#: src/features/Landing/Price/PricePage.tsx:290
-#. js-lingui-explicit-id
-msgid "Place in the top 5 in the game to gain full access"
-msgstr "게임에서 상위 5위에 들어 전체 접근 권한을 얻으세요"
 
 #: src/features/Goal/Quiz/GoalReview.tsx:85
 #. js-lingui-explicit-id
@@ -8126,12 +8115,12 @@ msgstr "이전 질문"
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
 #: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:184
+#: src/features/Landing/Price/PricePage.tsx:189
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "가격"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:180
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:189
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "일일 가격"
@@ -8231,11 +8220,17 @@ msgstr "진행 상황 추적"
 
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
-#: src/features/Landing/Price/PricePage.tsx:357
-#: src/features/Landing/Price/PricePage.tsx:445
+#: src/features/Landing/Price/PricePage.tsx:453
+#: src/features/Landing/Price/PricePage.tsx:536
+#: src/features/Landing/Price/PricePage.tsx:619
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "진행 상황 추적"
+
+#: src/features/Landing/Price/PricePage.tsx:597
+#. js-lingui-explicit-id
+msgid "Promote consistent learning and long-term progress"
+msgstr "일관된 학습과 장기적인 발전을 촉진하세요"
 
 #: src/features/RolePlay/rolePlayData.tsx:1038
 #. js-lingui-explicit-id
@@ -8392,11 +8387,6 @@ msgstr "텍스트를 읽어보세요"
 #. js-lingui-explicit-id
 msgid "Reader"
 msgstr "리더"
-
-#: src/features/Landing/Price/PricePage.tsx:285
-#. js-lingui-explicit-id
-msgid "Reading practice"
-msgstr "리딩 연습"
 
 #: src/features/Sentence/TextConstructorSection.tsx:150
 #. js-lingui-explicit-id
@@ -8845,8 +8835,9 @@ msgid "Role-Play"
 msgstr "역할 놀이"
 
 #: src/features/Landing/Price/FeatureList.tsx:36
-#: src/features/Landing/Price/PricePage.tsx:344
-#: src/features/Landing/Price/PricePage.tsx:433
+#: src/features/Landing/Price/PricePage.tsx:441
+#: src/features/Landing/Price/PricePage.tsx:524
+#: src/features/Landing/Price/PricePage.tsx:607
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "역할극 시나리오"
@@ -8994,8 +8985,9 @@ msgstr "받게 될 백엔드 피드백 유형 보기"
 msgid "See the type of feedback you'll get"
 msgstr "어떤 유형의 피드백을 받을 수 있는지 확인하세요"
 
-#: src/features/Landing/Price/PricePage.tsx:358
-#: src/features/Landing/Price/PricePage.tsx:446
+#: src/features/Landing/Price/PricePage.tsx:454
+#: src/features/Landing/Price/PricePage.tsx:537
+#: src/features/Landing/Price/PricePage.tsx:620
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
 msgstr "당신의 개선 사항을 확인하고 학습 여정을 추적하십시오"
@@ -9513,9 +9505,9 @@ msgstr "별"
 #: src/features/Dashboard/PlanDashboardCards.tsx:300
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
-#: src/features/Landing/Price/PricePage.tsx:295
-#: src/features/Landing/Price/PricePage.tsx:384
-#: src/features/Landing/Price/PricePage.tsx:472
+#: src/features/Landing/Price/PricePage.tsx:475
+#: src/features/Landing/Price/PricePage.tsx:558
+#: src/features/Landing/Price/PricePage.tsx:641
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:325
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:283
@@ -9639,7 +9631,7 @@ msgid "Start Your Interview Test"
 msgstr "인터뷰 테스트 시작하기"
 
 #: src/features/Blog/BlogsPage.tsx:38
-#: src/features/Landing/Price/PricePage.tsx:501
+#: src/features/Landing/Price/PricePage.tsx:670
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:40
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
@@ -10245,7 +10237,7 @@ msgstr ""
 "주된 아이디어는 오랫동안 지속되고 재미있는 서비스를 만드는 것입니다. 소개 페이지에서 당신에게 \"사용자\"가 아닌 친구처럼 쓸 수 "
 "있는 그런 서비스입니다."
 
-#: src/features/Landing/Price/PricePage.tsx:66
+#: src/features/Landing/Price/PricePage.tsx:71
 #. js-lingui-explicit-id
 msgid ""
 "The paid plan gives you full access to all FluencyPal features, including "
@@ -10692,11 +10684,6 @@ msgid ""
 "one-time card verification."
 msgstr "무단 접근을 방지하기 위해, 우리는 일회용 카드 인증을 사용하여 부모/보호자를 확인합니다."
 
-#: src/features/Landing/Price/PricePage.tsx:301
-#. js-lingui-explicit-id
-msgid "To try full features for a short time"
-msgstr "전체 기능을 짧은 시간 동안 사용해보기 위해"
-
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
 msgid ""
@@ -10811,10 +10798,10 @@ msgstr "다른 이미지를 시도하세요"
 msgid "Try for free"
 msgstr "무료로 시도해보세요"
 
-#: src/features/Landing/Price/PricePage.tsx:334
+#: src/features/Landing/Price/PricePage.tsx:431
 #. js-lingui-explicit-id
-msgid "Try full features and decide if it’s right for you"
-msgstr "전체 기능을 사용해 보고 자신에게 맞는지 결정하세요"
+msgid "Try full features and see significant improvement"
+msgstr "전체 기능을 시도해보고 현저한 향상을 경험하세요."
 
 #: src/features/Lang/getLabels.tsx:27
 #. js-lingui-explicit-id
@@ -11146,11 +11133,6 @@ msgstr "자신의 일일 진행 상황을 직관적인 추적으로 시각화하
 msgid "Vocabulary"
 msgstr "어휘"
 
-#: src/features/Landing/Price/PricePage.tsx:280
-#. js-lingui-explicit-id
-msgid "Vocabulary challenges"
-msgstr "어휘 도전"
-
 #: src/features/SEO/metadata.ts:167
 #. js-lingui-explicit-id
 msgid "Vocabulary Practice"
@@ -11398,7 +11380,8 @@ msgstr "웹캠 피드백 미리보기"
 msgid "Webcam Setup"
 msgstr "웹캠 설정"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:116
+#: src/features/Landing/Price/PricePage.tsx:427
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:117
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
@@ -11444,7 +11427,7 @@ msgstr "무엇을 게시할 수 있나요?"
 msgid "What challenges you face"
 msgstr "어떤 도전에 직면하고 계신가요?"
 
-#: src/features/Landing/Price/PricePage.tsx:65
+#: src/features/Landing/Price/PricePage.tsx:70
 #. js-lingui-explicit-id
 msgid "What do I get with the paid plan?"
 msgstr "유료 플랜으로 무엇을 얻을 수 있습니까?"
@@ -11643,8 +11626,9 @@ msgid ""
 "feedback, real-time corrections, and a supportive community."
 msgstr "FluencyPal을 이용하면 개인 맞춤 피드백, 실시간 수정, 그리고 지원이 있는 커뮤니티를 통해 학습 경험을 향상시킬 수 있습니다."
 
-#: src/features/Landing/Price/PricePage.tsx:373
-#: src/features/Landing/Price/PricePage.tsx:461
+#: src/features/Landing/Price/PricePage.tsx:469
+#: src/features/Landing/Price/PricePage.tsx:552
+#: src/features/Landing/Price/PricePage.tsx:635
 #. js-lingui-explicit-id
 msgid ""
 "With time, AI will adapt to your learning style and it will be more "
@@ -11757,7 +11741,8 @@ msgstr "여기에 보고서를 작성하세요"
 msgid "Wrong Link"
 msgstr "잘못된 링크"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:118
+#: src/features/Landing/Price/PricePage.tsx:593
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:119
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
@@ -11825,7 +11810,7 @@ msgstr ""
 "예. 서비스에 만족하지 않으시는 경우, \"프로필/결제 내역\" 페이지에서 환불을 요청하실 수 있으며, 저희가 세부 사항을 논의할 "
 "것입니다."
 
-#: src/features/Landing/Price/PricePage.tsx:93
+#: src/features/Landing/Price/PricePage.tsx:98
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you’re not satisfied with the service, on \"Profile/Payment "
@@ -11835,14 +11820,14 @@ msgstr ""
 "예. 서비스에 만족하지 못하신 경우, \"프로필/결제 내역\" 페이지에서 환불을 요청할 수 있으며, 우리는 세부 사항을 논의하고 지불한 "
 "금액을 반환해 드립니다."
 
-#: src/features/Landing/Price/PricePage.tsx:73
+#: src/features/Landing/Price/PricePage.tsx:78
 #. js-lingui-explicit-id
 msgid ""
 "Yes. Since there is no automatic renewal, you can simply stop using the app "
 "at any time without being charged again."
 msgstr "네. 자동 갱신이 없으므로, 앱 사용을 중단하시면 추가 요금 없이 언제든지 이용을 멈출 수 있습니다."
 
-#: src/features/Landing/Price/PricePage.tsx:80
+#: src/features/Landing/Price/PricePage.tsx:85
 #. js-lingui-explicit-id
 msgid ""
 "Yes. You can earn free full access by ranking in the top 5 of the "
@@ -12365,6 +12350,69 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Landing/Price/PricePage.tsx:380
+#: src/features/Landing/Price/PricePage.tsx:468
+#. js-lingui-explicit-id
+#~ msgid "Engage with the community and participate in discussions"
+#~ msgstr "커뮤니티에 참여하고 토론에 참여하세요"
+
+#: src/features/Landing/Price/PricePage.tsx:236
+#. js-lingui-explicit-id
+#~ msgid "For learners getting started"
+#~ msgstr "시작하는 학습자를 위해"
+
+#: src/features/Landing/Price/PricePage.tsx:235
+#. js-lingui-explicit-id
+#~ msgid "Free"
+#~ msgstr "무료"
+
+#: src/features/Landing/Price/PricePage.tsx:300
+#. js-lingui-explicit-id
+#~ msgid "Full Access for a Day"
+#~ msgstr "하루 동안 전체 액세스"
+
+#: src/features/Landing/Price/PricePage.tsx:274
+#. js-lingui-explicit-id
+#~ msgid "Game-based practice"
+#~ msgstr "게임 기반 연습"
+
+#: src/features/SEO/metadata.ts:151
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Get flexible pricing with FluencyPal. Start with 3 free days, and enjoy "
+#~ "AI-powered language practice with no subscriptions or hidden fees."
+#~ msgstr "FluencyPal에서 유연한 가격을 받으세요. 무료로 3일간 시작하고, 구독이나 숨겨진 비용 없이 AI가 강화된 언어 연습을 즐기세요."
+
+#: src/features/Landing/Price/PricePage.tsx:269
+#. js-lingui-explicit-id
+#~ msgid "Get started with basic features"
+#~ msgstr "기본 기능으로 시작하기"
+
+#: src/features/Landing/Price/PricePage.tsx:290
+#. js-lingui-explicit-id
+#~ msgid "Place in the top 5 in the game to gain full access"
+#~ msgstr "게임에서 상위 5위에 들어 전체 접근 권한을 얻으세요"
+
+#: src/features/Landing/Price/PricePage.tsx:285
+#. js-lingui-explicit-id
+#~ msgid "Reading practice"
+#~ msgstr "리딩 연습"
+
+#: src/features/Landing/Price/PricePage.tsx:301
+#. js-lingui-explicit-id
+#~ msgid "To try full features for a short time"
+#~ msgstr "전체 기능을 짧은 시간 동안 사용해보기 위해"
+
+#: src/features/Landing/Price/PricePage.tsx:334
+#. js-lingui-explicit-id
+#~ msgid "Try full features and decide if it’s right for you"
+#~ msgstr "전체 기능을 사용해 보고 자신에게 맞는지 결정하세요"
+
+#: src/features/Landing/Price/PricePage.tsx:280
+#. js-lingui-explicit-id
+#~ msgid "Vocabulary challenges"
+#~ msgstr "어휘 도전"
 
 #: src/features/Router/BlockedAccess.tsx:366
 #. js-lingui-explicit-id
