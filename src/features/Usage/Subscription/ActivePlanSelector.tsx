@@ -23,14 +23,14 @@ export const ActivePlanSelector = ({
       }}
     >
       <ButtonGroup>
-        <Button
+        {/*<Button
           onClick={() => {
             setSelectedDuration('day');
           }}
           variant={selectedDuration === 'day' ? 'contained' : 'outlined'}
         >
           {i18n._('1 day')}
-        </Button>
+        </Button>*/}
         <Button
           onClick={() => {
             setSelectedDuration('week');
@@ -46,6 +46,15 @@ export const ActivePlanSelector = ({
           variant={selectedDuration === 'month' ? 'contained' : 'outlined'}
         >
           {i18n._('1 month')}
+        </Button>
+
+        <Button
+          onClick={() => {
+            setSelectedDuration('year');
+          }}
+          variant={selectedDuration === 'year' ? 'contained' : 'outlined'}
+        >
+          {i18n._('1 year')}
         </Button>
       </ButtonGroup>
       <Stack
@@ -84,14 +93,16 @@ export const ActivePlanSelector = ({
             expiringDateIso={prices.subscriptionPrices.month.expiringDateIso}
           />
         )}
-        {/*
-        <SubscriptionCard
-          title={i18n._('1 year')}
-          onPay={() => onSelectDuration('year')}
-          priceInUsd={prices.subscriptionPrices.year.usdPrice}
-          duration={'year'}
-          footnote={i18n._('Best for long-term access')}
-        />*/}
+
+        {selectedDuration === 'year' && (
+          <SubscriptionCard
+            title={i18n._('1 year')}
+            onPay={() => onSelectDuration('year')}
+            priceInUsd={prices.subscriptionPrices.year.usdPrice}
+            duration={'year'}
+            expiringDateIso={prices.subscriptionPrices.year.expiringDateIso}
+          />
+        )}
       </Stack>
     </Stack>
   );

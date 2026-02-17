@@ -1,4 +1,4 @@
-export const PRICE_PER_MONTH_USD = 8;
+export const PRICE_PER_MONTH_USD = 9;
 
 export const PRICE_PER_WEEK_USD = 4;
 
