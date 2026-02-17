@@ -17,7 +17,7 @@ import { isSilentAudio } from './isSilentAudio';
 
 /**
  * What this gives you:
- * - initAudio(): MUST be called from the "Start Conversation" button click handler (user gesture).
+ * - initAudio(): MUST be called from the button click handler (user gesture).
  *   This unlocks AudioContext on mobile.
  * - speak(): generates TTS audio url, fetches bytes, decodes, and queues it for gapless playback.
  * - interrupt(): hard cut, immediately stops queued/current audio.
