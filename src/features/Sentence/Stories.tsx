@@ -335,7 +335,7 @@ const StoryModal = ({
 
   const [initializing, setInitializing] = useState(false);
   const [isReady, setIsReady] = useState(false);
-  const isStory = 'parts' in data;
+  const isStory = 'imageUrl' in data;
   const imageUrl = isStory ? data.imageUrl : data.url;
   const title = isStory ? data.title : data.shortDescription;
 
@@ -344,12 +344,11 @@ const StoryModal = ({
     audio.initAudio();
 
     if (isStory) {
-      const fullTextEn = data.parts.map((part) => part.textEn).join(' ');
+      const fullTextEn = data.textEn;
       const isNeedToTranslate = targetLanguage !== 'en';
       const fullText = isNeedToTranslate
         ? await translateTextToTargetLanguageFromEng(fullTextEn)
         : fullTextEn;
-
       const sentences = splitTextIntoSentences(fullText);
       const translatedSentencesToNative = await Promise.all(
         sentences.map((s) => translateSentence(s)),
@@ -370,17 +369,11 @@ const StoryModal = ({
       const imageDescription = data;
       const generatedText = await generateTextBasedOnImage(imageDescription);
 
-      const sentences = splitTextIntoSentences(generatedText);
-
       const story: Story = {
         id: `story-${imageDescription.id}`,
         title: imageDescription.shortDescription,
         imageUrl: imageDescription.url,
-        parts: [
-          {
-            textEn: generatedText,
-          },
-        ],
+        textEn: generatedText,
       };
 
       console.log(JSON.stringify(story));
