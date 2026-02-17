@@ -25,6 +25,10 @@ type TextConstructorProps = {
   onSentenceComplete?: (sentenceIndex: number) => void;
   numberOfOptions?: number;
   onActiveWordsChange?: (activeWords: string[]) => void;
+
+  onGoodWord?: (word: string) => void;
+  onBadWord?: (word: string) => void;
+  onTranslationWord?: (word: string) => void;
 };
 
 export function TextConstructor({
@@ -37,6 +41,10 @@ export function TextConstructor({
   onSentenceComplete,
   numberOfOptions = 3,
   onActiveWordsChange,
+
+  onGoodWord,
+  onBadWord,
+  onTranslationWord,
 }: TextConstructorProps) {
   const [wrongWord, setWrongWord] = useState<string | null>(null);
   const { i18n } = useLingui();
@@ -86,8 +94,10 @@ export function TextConstructor({
 
     if (word !== activePart.nextWord) {
       setWrongWord(word);
+      onBadWord?.(word);
       return;
     }
+    onGoodWord?.(word);
     onPlayAudio?.(word, false);
     await sleep(1);
 
@@ -199,7 +209,22 @@ export function TextConstructor({
               height: 'max(8000px, 50dvh)',
             }}
           >
-            <StoryContent text={progress} onPlayAudio={onPlayAudio} />
+            <Stack
+              sx={{
+                height: 'max-content',
+                //backgroundColor: 'blue',
+                maxWidth: '700px',
+
+                width: '100%',
+                padding: '0 10px',
+              }}
+            >
+              <StoryContent
+                text={progress}
+                onPlayAudio={onPlayAudio}
+                onTranslationWord={onTranslationWord}
+              />
+            </Stack>
           </Stack>
         </Stack>
       </Stack>
@@ -330,28 +355,27 @@ export function TextConstructor({
 export const StoryContent = ({
   text,
   onPlayAudio,
+  onTranslationWord,
+  size = 'large',
 }: {
   text: string;
   onPlayAudio?: (audioText: string, alternativeVoice: boolean) => void;
+  onTranslationWord?: (word: string) => void;
+  size?: 'normal' | 'large';
 }) => {
   const translator = useTranslate();
   return (
     <Stack
       className="progress"
       sx={{
-        height: 'max-content',
-        //backgroundColor: 'blue',
-        maxWidth: '700px',
-        padding: '0 10px',
-        width: '100%',
-
         '* p': {
-          fontWeight: '700 !important',
+          fontWeight: size === 'large' ? '700 !important' : '400 !important',
           lineHeight: '1.2 !important',
-          textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
-          fontSize: '38px !important',
+          textShadow: '0px 1px 2px rgba(0, 0, 0, 0.2)',
+          fontSize: size === 'large' ? '38px !important' : '30px !important',
+
           '@media (max-width:600px)': {
-            fontSize: '28px !important',
+            fontSize: size === 'large' ? '28px !important' : '24px !important',
           },
         },
       }}
@@ -363,9 +387,13 @@ export const StoryContent = ({
             ? (word, element) => {
                 translator.translateWithModal(word, element);
                 onPlayAudio?.(word, true);
+                onTranslationWord?.(word);
               }
             : onPlayAudio
-              ? (word) => onPlayAudio(word, true)
+              ? (word) => {
+                  onPlayAudio(word, true);
+                  onTranslationWord?.(word);
+                }
               : undefined
         }
         variant="conversation"

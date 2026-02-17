@@ -20,6 +20,7 @@ import { useUrlState } from '../Url/useUrlState';
 import { storyData } from './storyData';
 import { getHash } from '@/libs/hash';
 import { sleep } from '@/libs/sleep';
+import { uniq } from '@/libs/uniq';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
@@ -447,8 +448,32 @@ const StoryModal = ({
     );
   };
 
+  const [allWords, setAllWords] = useState<string[]>([]);
+  const [badWords, setBadWords] = useState<string[]>([]);
+
+  const successRate =
+    allWords.length > 0
+      ? Math.round(((allWords.length - badWords.length) / allWords.length) * 100)
+      : 0;
+
+  const onWordSelected = (word: string) => {
+    setAllWords((prev) => uniq([...prev, word]));
+  };
+
+  const onBadWord = (word: string) => {
+    setBadWords((prev) => uniq([...prev, word]));
+  };
+
+  const [translationWords, setTranslationWords] = useState<string[]>([]);
+  const onTranslationWord = (word: string) => {
+    setTranslationWords((prev) => uniq([...prev, word]));
+  };
+
+  const attentionWords = uniq([...badWords, ...translationWords]);
+
   return (
     <CustomModal isOpen={true} onClose={onClose}>
+      {translator.translateModal}
       <Stack
         sx={{
           position: 'fixed',
@@ -622,6 +647,9 @@ const StoryModal = ({
                     onSentenceComplete={onSentenceComplete}
                     onPlayAudio={playAudio}
                     onActiveWordsChange={cacheAudioWords}
+                    onGoodWord={onWordSelected}
+                    onBadWord={onBadWord}
+                    onTranslationWord={onTranslationWord}
                   />
                 )}
 
@@ -640,45 +668,140 @@ const StoryModal = ({
                         alignItems: 'flex-start',
                         gap: '10px',
                         maxWidth: '700px',
-                        padding: '0 0px',
+                        padding: '0 10px',
                       }}
                     >
                       <Typography
-                        variant="body1"
+                        variant="body2"
                         sx={{
-                          marginTop: '50px',
-                          padding: '0 10px',
+                          fontWeight: 600,
+                          marginTop: '60px',
                         }}
                       >
                         {i18n._('Well done! You completed the story.')}
                       </Typography>
 
-                      {videoUrl && (
+                      <Stack
+                        sx={{
+                          gap: '80px',
+                          width: '100%',
+                          alignItems: 'flex-start',
+                        }}
+                      >
+                        {videoUrl && (
+                          <Stack
+                            sx={{
+                              maxWidth: '100%',
+                            }}
+                          >
+                            <Stack
+                              component={'video'}
+                              src={videoUrl}
+                              controls
+                              sx={{
+                                width: '100%',
+                                boxShadow: '0px 4px 22px rgba(0, 0, 0, 0.9)',
+                                maxWidth: '500px',
+                                margin: '0 auto',
+                                borderRadius: '8px',
+                              }}
+                            />
+                          </Stack>
+                        )}
+
                         <Stack
                           sx={{
-                            maxWidth: '100%',
-                            padding: '0 10px',
+                            padding: '0 0',
                           }}
                         >
-                          <Stack
-                            component={'video'}
-                            src={videoUrl}
-                            controls
+                          <Stack sx={{}}>
+                            <Typography
+                              variant="h3"
+                              sx={{
+                                fontWeight: 800,
+                              }}
+                            >
+                              {i18n._('Success rate:')}
+                            </Typography>
+                            <Typography
+                              variant="h1"
+                              sx={{
+                                fontWeight: 700,
+                              }}
+                            >
+                              {successRate}%
+                            </Typography>
+                          </Stack>
+                        </Stack>
+
+                        <Stack
+                          sx={{
+                            gap: '10px',
+                          }}
+                        >
+                          <Typography
+                            variant="h3"
                             sx={{
-                              width: '100%',
-                              boxShadow: '0px 4px 22px rgba(0, 0, 0, 0.9)',
-                              maxWidth: '500px',
-                              margin: '0 auto',
-                              borderRadius: '8px',
+                              fontWeight: 800,
                             }}
+                          >
+                            {i18n._('Words to pay attention to:')}
+                          </Typography>
+
+                          <Stack
+                            sx={{
+                              flexDirection: 'row',
+                              gap: '15px',
+                              flexWrap: 'wrap',
+                            }}
+                          >
+                            {attentionWords.map((word, index) => (
+                              <Typography
+                                key={index}
+                                variant="h5"
+                                sx={{
+                                  padding: '10px 20px',
+                                  backgroundColor: '#111',
+                                  borderRadius: '8px',
+                                  cursor: 'pointer',
+                                  fontWeight: 600,
+                                  textTransform: 'capitalize',
+                                  boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.4)',
+                                }}
+                                onClick={(e) => {
+                                  playAudio(word, false);
+                                  if (translator.isTranslateAvailable) {
+                                    translator.translateWithModal(word, e.currentTarget);
+                                  }
+                                }}
+                              >
+                                {word}
+                              </Typography>
+                            ))}
+                          </Stack>
+                        </Stack>
+
+                        <Stack
+                          sx={{
+                            gap: '10px',
+                          }}
+                        >
+                          <Typography
+                            variant="h3"
+                            sx={{
+                              fontWeight: 800,
+                            }}
+                          >
+                            {i18n._('Full story:')}
+                          </Typography>
+
+                          <StoryContent
+                            text={progress}
+                            size="normal"
+                            onPlayAudio={(text) => playAudio(text, false)}
                           />
                         </Stack>
-                      )}
-
-                      <StoryContent
-                        text={progress}
-                        onPlayAudio={(text) => playAudio(text, false)}
-                      />
+                      </Stack>
 
                       <Stack
                         sx={{
@@ -686,7 +809,7 @@ const StoryModal = ({
                           gap: '10px',
                           alignItems: 'center',
                           width: '100%',
-                          padding: '30px 10px 0 10px',
+                          padding: '30px 0px 0 0px',
                         }}
                       >
                         <Button
@@ -698,7 +821,7 @@ const StoryModal = ({
                           onClick={() => onNext()}
                           endIcon={<Origami size={'20px'} />}
                         >
-                          {i18n._('Try another image')}
+                          {i18n._('Try another story')}
                         </Button>
                         <Button
                           variant="text"
@@ -740,8 +863,9 @@ const StoryModal = ({
                   sx={{
                     position: 'absolute',
                     inset: 0,
-                    opacity: 0.2,
-                    background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(5, 10, 17) 100%)',
+                    opacity: isCompleted ? 1 : 0.3,
+                    background:
+                      'linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgb(5, 10, 17) 100%)',
                   }}
                 />
               </Stack>
