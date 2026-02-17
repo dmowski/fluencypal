@@ -261,6 +261,7 @@ const StoryModal = ({
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
   const voiceInfo = getAiVoiceByVoice(voiceName);
   const voiceSpeed = settings.userSettings?.teacherVoiceSpeed || 'normal';
+  const videoUrl = 'videoUrl' in data ? data.videoUrl : undefined;
 
   const [sentences, setSentences] = useState<string[]>([]);
   const [sentencesTranslates, setSentencesTranslates] = useState<string[]>([]);
@@ -628,26 +629,51 @@ const StoryModal = ({
                   <Stack
                     sx={{
                       alignItems: 'center',
+                      height: '100%',
+                      overflow: 'scroll',
+                      paddingBottom: '120px',
                     }}
                   >
                     <Stack
                       sx={{
                         width: '100%',
                         alignItems: 'flex-start',
-                        gap: '20px',
+                        gap: '10px',
                         maxWidth: '700px',
                         padding: '0 0px',
                       }}
                     >
                       <Typography
-                        variant="body2"
+                        variant="body1"
                         sx={{
-                          marginTop: '20px',
+                          marginTop: '50px',
                           padding: '0 10px',
                         }}
                       >
                         {i18n._('Well done! You completed the story.')}
                       </Typography>
+
+                      {videoUrl && (
+                        <Stack
+                          sx={{
+                            maxWidth: '100%',
+                            padding: '0 10px',
+                          }}
+                        >
+                          <Stack
+                            component={'video'}
+                            src={videoUrl}
+                            controls
+                            sx={{
+                              width: '100%',
+                              boxShadow: '0px 4px 22px rgba(0, 0, 0, 0.9)',
+                              maxWidth: '500px',
+                              margin: '0 auto',
+                              borderRadius: '8px',
+                            }}
+                          />
+                        </Stack>
+                      )}
 
                       <StoryContent
                         text={progress}
@@ -660,7 +686,7 @@ const StoryModal = ({
                           gap: '10px',
                           alignItems: 'center',
                           width: '100%',
-                          padding: '0 10px',
+                          padding: '30px 10px 0 10px',
                         }}
                       >
                         <Button
@@ -714,7 +740,7 @@ const StoryModal = ({
                   sx={{
                     position: 'absolute',
                     inset: 0,
-                    opacity: isCompleted ? 0.2 : 1,
+                    opacity: 0.2,
                     background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(5, 10, 17) 100%)',
                   }}
                 />
