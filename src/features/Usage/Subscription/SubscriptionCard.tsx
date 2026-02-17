@@ -65,7 +65,7 @@ export const SubscriptionCard = ({
         sx={{
           padding: '20px',
           height: '100%',
-          gap: '20px',
+          gap: '5px',
         }}
       >
         <Stack
@@ -73,6 +73,7 @@ export const SubscriptionCard = ({
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
+            paddingBottom: '15px',
           }}
         >
           <Typography variant="h6">{title}</Typography>
@@ -121,14 +122,22 @@ export const SubscriptionCard = ({
             </Stack>
           </Stack>
         </Stack>
+
         <Stack
           sx={{
             justifyContent: 'space-between',
             height: '100%',
-            gap: '40px',
+            gap: '10px',
           }}
         >
-          <Typography variant="body1">{footnote}</Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              minHeight: '60px',
+            }}
+          >
+            {footnote}
+          </Typography>
           <Stack
             sx={{
               gap: '5px',
