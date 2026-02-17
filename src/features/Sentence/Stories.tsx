@@ -57,6 +57,18 @@ export const TextConstructorStories = () => {
     const nextImage = images[nextIndex];
     setSelectedImageId(nextImage.id);
   };
+  const audio = useConversationAudio();
+
+  const onSelectImage = async (imageId: string) => {
+    setSelectedImageId(imageId);
+    await audio.startConversationAudio();
+
+    const story = storyData.find((s) => s.id === imageId);
+    if (story && story.audioUrl) {
+      const audioUrl = story.audioUrl;
+      console.log('audioUrl', audioUrl);
+    }
+  };
 
   return (
     <Stack
@@ -159,7 +171,7 @@ export const TextConstructorStories = () => {
                   }}
                   key={index}
                   component={'button'}
-                  onClick={() => setSelectedImageId(image.id)}
+                  onClick={() => onSelectImage(image.id)}
                 >
                   {videoUrl && (
                     <Stack
@@ -324,7 +336,6 @@ const StoryModal = ({
   const title = isStory ? data.title : data.shortDescription;
 
   const initialize = async () => {
-    audio.startConversationAudio();
     setInitializing(true);
     if (isStory) {
       const fullTextEn = data.parts.map((part) => part.textEn).join(' ');
