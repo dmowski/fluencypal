@@ -58,6 +58,16 @@ interface ConversationAudioContextType {
   setVolume: (value01: number) => void;
   getVolume: () => number;
 
+  music: {
+    play: (url?: string) => Promise<void>;
+    pause: () => void;
+    stop: () => void;
+    setVolume: (v01: number) => void;
+    getVolume: () => number;
+    setEnabled: (on: boolean) => void;
+    isPlaying: boolean;
+  };
+
   /** When user navigates away, you can release audio resources. */
   dispose: () => void;
 
@@ -65,54 +75,96 @@ interface ConversationAudioContextType {
 }
 
 const ConversationAudioContext = createContext<ConversationAudioContextType | null>(null);
+const DEFAULT_BG_MUSIC_URL = '/audio/background.mp3';
 
 class AudioQueuePlayer {
   private ctx: AudioContext | null = null;
-  private gain: GainNode | null = null;
+  private masterGain: GainNode | null = null;
+  private speechGain: GainNode | null = null;
+  private musicGain: GainNode | null = null;
 
   private unlocked = false;
 
   // Stream playback
-  private streamEl: HTMLAudioElement | null = null;
-  private streamNode: MediaElementAudioSourceNode | null = null;
+  private speechEl: HTMLAudioElement | null = null;
+  private speechNode: MediaElementAudioSourceNode | null = null;
+  private speechVolume = 1;
+
+  private musicEl: HTMLAudioElement | null = null;
+  private musicNode: MediaElementAudioSourceNode | null = null;
+  private musicBaseVolume = 1;
+  private musicEnabled = true;
+  private currentMusicUrl: string | null = null;
 
   // Track real playing state based on audio events
-  private _isPlaying = false;
+  private _speechPlaying = false;
+  private _musicPlaying = false;
 
   async unlockFromGesture(): Promise<void> {
     if (!this.ctx) {
       const Ctx = (window.AudioContext ||
         (window as any).webkitAudioContext) as typeof AudioContext;
       this.ctx = new Ctx();
-      this.gain = this.ctx.createGain();
-      this.gain.gain.value = 1;
-      this.gain.connect(this.ctx.destination);
+      this.masterGain = this.ctx.createGain();
+      this.masterGain.gain.value = 1;
+      this.masterGain.connect(this.ctx.destination);
+
+      this.speechGain = this.ctx.createGain();
+      this.speechGain.gain.value = this.speechVolume;
+      this.speechGain.connect(this.masterGain);
+
+      this.musicGain = this.ctx.createGain();
+      this.musicGain.gain.value = this.musicBaseVolume;
+      this.musicGain.connect(this.masterGain);
     }
 
     if (this.ctx.state === 'suspended') {
       await this.ctx.resume();
     }
 
-    // Create audio element + connect it to gain (so fade/volume works)
-    if (!this.streamEl) {
+    // Create speech element + connect it to gain (so fade/volume works)
+    if (!this.speechEl) {
       const el = new Audio();
       el.preload = 'auto';
-      this.streamNode = this.ctx!.createMediaElementSource(el);
-      this.streamNode.connect(this.gain!);
-      this.streamEl = el;
+      this.speechNode = this.ctx!.createMediaElementSource(el);
+      this.speechNode.connect(this.speechGain!);
+      this.speechEl = el;
 
-      // Listen to real audio playback events
+      // Listen to real speech playback events
       el.addEventListener('playing', () => {
-        this._isPlaying = true;
+        this._speechPlaying = true;
       });
       el.addEventListener('waiting', () => {
-        this._isPlaying = false;
+        this._speechPlaying = false;
       });
       el.addEventListener('pause', () => {
-        this._isPlaying = false;
+        this._speechPlaying = false;
       });
       el.addEventListener('ended', () => {
-        this._isPlaying = false;
+        this._speechPlaying = false;
+      });
+    }
+
+    if (!this.musicEl) {
+      const el = new Audio();
+      el.preload = 'auto';
+      el.loop = true;
+      this.musicNode = this.ctx!.createMediaElementSource(el);
+      this.musicNode.connect(this.musicGain!);
+      this.musicEl = el;
+
+      // Listen to real music playback events
+      el.addEventListener('playing', () => {
+        this._musicPlaying = true;
+      });
+      el.addEventListener('waiting', () => {
+        this._musicPlaying = false;
+      });
+      el.addEventListener('pause', () => {
+        this._musicPlaying = false;
+      });
+      el.addEventListener('ended', () => {
+        this._musicPlaying = false;
       });
     }
 
@@ -123,26 +175,32 @@ class AudioQueuePlayer {
     return this.unlocked && !!this.ctx && this.ctx.state !== 'closed';
   }
 
+  private ensureUnlocked(): void {
+    if (!this.ctx || !this.speechGain || !this.musicGain || !this.speechEl || !this.musicEl) {
+      throw new Error('AudioQueuePlayer: not unlocked. Call unlockFromGesture() first.');
+    }
+  }
+
   setVolume(value01: number) {
-    if (!this.gain) return;
     const v = Math.min(1, Math.max(0, value01));
-    this.gain.gain.value = v;
+    this.speechVolume = v;
+    if (!this.speechGain) return;
+    this.speechGain.gain.value = v;
   }
 
   getVolume(): number {
-    return this.gain?.gain.value ?? 1;
+    return this.speechVolume;
   }
 
   async playStreamUrl(url: string): Promise<void> {
-    if (!this.ctx || !this.gain || !this.streamEl) {
-      throw new Error('AudioQueuePlayer: not unlocked. Call unlockFromGesture() first.');
-    }
-    if (this.ctx.state === 'suspended') await this.ctx.resume();
+    this.ensureUnlocked();
+    const ctx = this.ctx!;
+    const el = this.speechEl!;
+
+    if (ctx.state === 'suspended') await ctx.resume();
 
     // Stop previous audio instantly
     this.stopStream();
-
-    const el = this.streamEl;
     el.src = url;
 
     // Plays as soon as buffered enough (streaming)
@@ -173,9 +231,9 @@ class AudioQueuePlayer {
   }
 
   stopStream(): void {
-    const el = this.streamEl;
+    const el = this.speechEl;
     if (!el) return;
-    this._isPlaying = false;
+    this._speechPlaying = false;
     try {
       el.pause();
       el.currentTime = 0;
@@ -189,14 +247,14 @@ class AudioQueuePlayer {
   }
 
   async interruptWithFade(ms = 120): Promise<void> {
-    if (!this.ctx || !this.gain) {
+    if (!this.ctx || !this.speechGain) {
       this.interrupt();
       return;
     }
     if (this.ctx.state === 'suspended') await this.ctx.resume();
 
     const now = this.ctx.currentTime;
-    const g = this.gain.gain;
+    const g = this.speechGain.gain;
 
     g.cancelScheduledValues(now);
     g.setValueAtTime(g.value, now);
@@ -208,24 +266,138 @@ class AudioQueuePlayer {
 
     const t = this.ctx.currentTime;
     g.cancelScheduledValues(t);
-    g.setValueAtTime(1.0, t);
+    g.setValueAtTime(this.speechVolume, t);
+  }
+
+  async playMusicUrl(url: string, opts: { loop?: boolean; restart?: boolean } = {}): Promise<void> {
+    this.ensureUnlocked();
+    const ctx = this.ctx!;
+    const el = this.musicEl!;
+
+    if (ctx.state === 'suspended') await ctx.resume();
+
+    const { loop = true, restart = false } = opts;
+
+    if (!restart && this.currentMusicUrl === url && el.src) {
+      el.loop = loop;
+      if (this.musicEnabled && el.paused) {
+        try {
+          await el.play();
+        } catch (error) {
+          if (isAbortError(error)) return;
+          throw error;
+        }
+      }
+      return;
+    }
+
+    el.pause();
+    el.currentTime = 0;
+    el.src = url;
+    el.loop = loop;
+    this.currentMusicUrl = url;
+    this.musicGain!.gain.value = this.musicBaseVolume;
+
+    if (!this.musicEnabled) {
+      return;
+    }
+
+    try {
+      await el.play();
+    } catch (error) {
+      if (isAbortError(error)) return;
+      throw error;
+    }
+  }
+
+  pauseMusic(): void {
+    const el = this.musicEl;
+    if (!el) return;
+    this._musicPlaying = false;
+    try {
+      el.pause();
+    } catch {}
+  }
+
+  stopMusic(): void {
+    const el = this.musicEl;
+    if (!el) return;
+    this._musicPlaying = false;
+    this.currentMusicUrl = null;
+    try {
+      el.pause();
+      el.currentTime = 0;
+      el.removeAttribute('src');
+      el.load();
+    } catch {}
+  }
+
+  setMusicVolume(value01: number): void {
+    const v = Math.min(1, Math.max(0, value01));
+    this.musicBaseVolume = v;
+    if (!this.musicGain) return;
+    this.musicGain.gain.value = this.musicEnabled ? this.musicBaseVolume : 0;
+  }
+
+  getMusicVolume(): number {
+    return this.musicBaseVolume;
+  }
+
+  isMusicPlaying(): boolean {
+    return this._musicPlaying;
+  }
+
+  setMusicEnabled(enabled: boolean): void {
+    this.musicEnabled = enabled;
+    if (!this.musicGain) return;
+
+    if (!enabled) {
+      this.musicGain.gain.value = 0;
+      this.pauseMusic();
+      return;
+    }
+
+    this.musicGain.gain.value = this.musicBaseVolume;
+
+    if (this.musicEl && this.musicEl.src) {
+      this.musicEl.play().catch((error) => {
+        if (!isAbortError(error)) {
+          throw error;
+        }
+      });
+    }
   }
 
   dispose(): void {
     this.interrupt();
+    this.stopMusic();
+
+    this.speechNode?.disconnect();
+    this.musicNode?.disconnect();
+    this.speechGain?.disconnect();
+    this.musicGain?.disconnect();
+    this.masterGain?.disconnect();
+
     if (this.ctx && this.ctx.state !== 'closed') {
       this.ctx.close().catch(() => {});
     }
+
     this.ctx = null;
-    this.gain = null;
-    this.streamNode = null;
-    this.streamEl = null;
+    this.masterGain = null;
+    this.speechGain = null;
+    this.musicGain = null;
+    this.speechNode = null;
+    this.speechEl = null;
+    this.musicNode = null;
+    this.musicEl = null;
     this.unlocked = false;
-    this._isPlaying = false;
+    this.currentMusicUrl = null;
+    this._speechPlaying = false;
+    this._musicPlaying = false;
   }
 
   isPlaying(): boolean {
-    return this._isPlaying;
+    return this._speechPlaying;
   }
 }
 
@@ -323,6 +495,30 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     return playerRef.current!.getVolume();
   }, []);
 
+  const playMusic = useCallback(async (url?: string) => {
+    await playerRef.current!.playMusicUrl(url ?? DEFAULT_BG_MUSIC_URL);
+  }, []);
+
+  const pauseMusic = useCallback(() => {
+    playerRef.current!.pauseMusic();
+  }, []);
+
+  const stopMusic = useCallback(() => {
+    playerRef.current!.stopMusic();
+  }, []);
+
+  const setMusicVolume = useCallback((value01: number) => {
+    playerRef.current!.setMusicVolume(value01);
+  }, []);
+
+  const getMusicVolume = useCallback(() => {
+    return playerRef.current!.getMusicVolume();
+  }, []);
+
+  const setMusicEnabled = useCallback((enabled: boolean) => {
+    playerRef.current!.setMusicEnabled(enabled);
+  }, []);
+
   const dispose = useCallback(() => {
     playerRef.current!.dispose();
   }, []);
@@ -331,18 +527,46 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     return playerRef.current!.isPlaying();
   }, []);
 
+  const isMusicPlayingChecker = useCallback(() => {
+    return playerRef.current!.isMusicPlaying();
+  }, []);
+
   const [isPlaying, setIsPlaying] = React.useState(false);
+  const [isMusicPlaying, setIsMusicPlaying] = React.useState(false);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
       const playing = isPlayingChecker();
+      const musicPlaying = isMusicPlayingChecker();
       setIsPlaying(playing);
-    }, 40);
+      setIsMusicPlaying(musicPlaying);
+    }, 100);
 
     return () => {
       clearInterval(interval);
     };
-  }, [isPlayingChecker]);
+  }, [isPlayingChecker, isMusicPlayingChecker]);
+
+  const music = useMemo(
+    () => ({
+      play: playMusic,
+      pause: pauseMusic,
+      stop: stopMusic,
+      setVolume: setMusicVolume,
+      getVolume: getMusicVolume,
+      setEnabled: setMusicEnabled,
+      isPlaying: isMusicPlaying,
+    }),
+    [
+      playMusic,
+      pauseMusic,
+      stopMusic,
+      setMusicVolume,
+      getMusicVolume,
+      setMusicEnabled,
+      isMusicPlaying,
+    ],
+  );
 
   return useMemo(
     () => ({
@@ -353,6 +577,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       interruptWithFade,
       setVolume,
       getVolume,
+      music,
       dispose,
       isPlaying,
       initCache,
@@ -365,6 +590,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       interruptWithFade,
       setVolume,
       getVolume,
+      music,
       dispose,
       isPlaying,
       initCache,

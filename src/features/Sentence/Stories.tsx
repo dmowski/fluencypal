@@ -19,6 +19,7 @@ import { Story } from './types';
 import { useUrlState } from '../Url/useUrlState';
 import { storyData } from './storyData';
 import { getHash } from '@/libs/hash';
+import { sleep } from '@/libs/sleep';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
@@ -49,6 +50,7 @@ export const TextConstructorStories = () => {
 
   const closeStory = () => {
     setSelectedImageId('');
+    audio.music.stop();
   };
 
   const onNext = async () => {
@@ -66,7 +68,9 @@ export const TextConstructorStories = () => {
     const story = storyData.find((s) => s.id === imageId);
     if (story && story.audioUrl) {
       const audioUrl = story.audioUrl;
-      console.log('audioUrl', audioUrl);
+      await sleep(500);
+      audio.music.play(audioUrl);
+      audio.music.setVolume(0.1);
     }
   };
 
@@ -337,6 +341,8 @@ const StoryModal = ({
 
   const initialize = async () => {
     setInitializing(true);
+    audio.initAudio();
+
     if (isStory) {
       const fullTextEn = data.parts.map((part) => part.textEn).join(' ');
       const isNeedToTranslate = targetLanguage !== 'en';
@@ -353,6 +359,13 @@ const StoryModal = ({
       setSentencesTranslates(translatedSentencesToNative);
       setIsReady(true);
       setInitializing(false);
+
+      if (data.audioUrl && !audio.music.isPlaying) {
+        const audioUrl = data.audioUrl;
+        await sleep(500);
+        audio.music.play(audioUrl);
+        audio.music.setVolume(0.1);
+      }
     } else {
       const imageDescription = data;
       const generatedText = await generateTextBasedOnImage(imageDescription);
