@@ -9,9 +9,6 @@ import React, {
   ReactNode,
   JSX,
 } from 'react';
-import { useSettings } from '../Settings/useSettings';
-import { useAuth } from '../Auth/useAuth';
-import { sendTextToAudioRequest } from '@/app/api/textToAudio/sendTextToAudioRequest';
 import { AiVoice } from '@/common/ai';
 import { isSilentAudio } from './isSilentAudio';
 
@@ -239,37 +236,10 @@ function isAbortError(error: unknown): boolean {
 }
 
 function useProvideConversationAudio(): ConversationAudioContextType {
-  const settings = useSettings();
-  const auth = useAuth();
-
   const playerRef = useRef<AudioQueuePlayer | null>(null);
   if (!playerRef.current) {
     playerRef.current = new AudioQueuePlayer();
   }
-
-  const getAudioUrl = useCallback(
-    async (text: string, instructions: string, voice: AiVoice) => {
-      const languageCode = settings.languageCode;
-      if (!languageCode) {
-        throw new Error('Language is not set | useProvideConversationAudio.getAudioUrl');
-      }
-
-      const response = await sendTextToAudioRequest(
-        {
-          languageCode: languageCode || 'en',
-          input: text.trim(),
-          instructions,
-          voice,
-        },
-        await auth.getToken(),
-      );
-
-      const audioUrl = response.audioUrl;
-      if (!audioUrl) throw new Error('Failed to generate audio');
-      return audioUrl;
-    },
-    [settings.languageCode, auth],
-  );
 
   const initAudio = useCallback(async () => {
     // MUST be called from a user gesture handler (button click/tap)
