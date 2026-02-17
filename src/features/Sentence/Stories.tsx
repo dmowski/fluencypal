@@ -8,7 +8,7 @@ import { useTextAi } from '../Ai/useTextAi';
 import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './splitTextIntoSentences';
-import { TextConstructor } from './TextConstructor';
+import { StoryContent, TextConstructor } from './TextConstructor';
 import { Loader, Origami, RefreshCw, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { SpeakOptions, useConversationAudio } from '../Audio/useConversationAudio';
@@ -610,65 +610,83 @@ const StoryModal = ({
                   padding: '0',
                 }}
               >
-                <TextConstructor
-                  numberOfOptions={numberOfOptions}
-                  sentences={sentences}
-                  sentencesTranslates={sentencesTranslates}
-                  progress={progress}
-                  onContinue={setProgress}
-                  onComplete={onComplete}
-                  onSentenceComplete={onSentenceComplete}
-                  onPlayAudio={playAudio}
-                  onActiveWordsChange={cacheAudioWords}
-                />
+                {!isCompleted && (
+                  <TextConstructor
+                    numberOfOptions={numberOfOptions}
+                    sentences={sentences}
+                    sentencesTranslates={sentencesTranslates}
+                    progress={progress}
+                    onContinue={setProgress}
+                    onComplete={onComplete}
+                    onSentenceComplete={onSentenceComplete}
+                    onPlayAudio={playAudio}
+                    onActiveWordsChange={cacheAudioWords}
+                  />
+                )}
+
                 {isCompleted && (
                   <Stack
                     sx={{
-                      width: '100%',
-                      alignItems: 'flex-start',
-                      gap: '20px',
+                      alignItems: 'center',
                     }}
                   >
-                    <Typography
-                      variant="h4"
-                      sx={{
-                        fontWeight: 800,
-                        marginTop: '20px',
-                      }}
-                    >
-                      {i18n._('Well done! You completed the story.')}
-                    </Typography>
                     <Stack
                       sx={{
-                        flexDirection: 'row',
-                        gap: '10px',
-                        alignItems: 'center',
                         width: '100%',
+                        alignItems: 'flex-start',
+                        gap: '20px',
+                        maxWidth: '700px',
+                        padding: '0 0px',
                       }}
                     >
-                      <Button
-                        variant="contained"
-                        color="info"
+                      <Typography
+                        variant="body2"
                         sx={{
-                          padding: '10px 30px',
+                          marginTop: '20px',
+                          padding: '0 10px',
                         }}
-                        onClick={() => onNext()}
-                        endIcon={<Origami size={'20px'} />}
                       >
-                        {i18n._('Try another image')}
-                      </Button>
-                      <Button
-                        variant="text"
-                        color="info"
+                        {i18n._('Well done! You completed the story.')}
+                      </Typography>
+
+                      <StoryContent
+                        text={progress}
+                        onPlayAudio={(text) => playAudio(text, false)}
+                      />
+
+                      <Stack
                         sx={{
-                          padding: '10px 30px',
-                          color: '#fff',
+                          flexDirection: 'row',
+                          gap: '10px',
+                          alignItems: 'center',
+                          width: '100%',
+                          padding: '0 10px',
                         }}
-                        onClick={() => onClose()}
-                        endIcon={<X size={'20px'} />}
                       >
-                        {i18n._('Close')}
-                      </Button>
+                        <Button
+                          variant="contained"
+                          color="info"
+                          sx={{
+                            padding: '10px 30px',
+                          }}
+                          onClick={() => onNext()}
+                          endIcon={<Origami size={'20px'} />}
+                        >
+                          {i18n._('Try another image')}
+                        </Button>
+                        <Button
+                          variant="text"
+                          color="info"
+                          sx={{
+                            padding: '10px 30px',
+                            color: '#fff',
+                          }}
+                          onClick={() => onClose()}
+                          endIcon={<X size={'20px'} />}
+                        >
+                          {i18n._('Close')}
+                        </Button>
+                      </Stack>
                     </Stack>
                   </Stack>
                 )}

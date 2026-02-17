@@ -199,42 +199,7 @@ export function TextConstructor({
               height: 'max(8000px, 50dvh)',
             }}
           >
-            <Stack
-              className="progress"
-              sx={{
-                height: 'max-content',
-                //backgroundColor: 'blue',
-                maxWidth: '700px',
-                padding: '0 10px',
-                width: '100%',
-
-                '* p': {
-                  fontWeight: '700 !important',
-                  lineHeight: '1.2 !important',
-                  textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
-                  fontSize: '38px !important',
-                  '@media (max-width:600px)': {
-                    fontSize: '28px !important',
-                  },
-                },
-              }}
-            >
-              <Markdown
-                onWordClick={
-                  translator.isTranslateAvailable
-                    ? (word, element) => {
-                        translator.translateWithModal(word, element);
-                        onPlayAudio?.(word, true);
-                      }
-                    : onPlayAudio
-                      ? (word) => onPlayAudio(word, true)
-                      : undefined
-                }
-                variant="conversation"
-              >
-                {progress ? `\n${progress}` : '...'}
-              </Markdown>
-            </Stack>
+            <StoryContent text={progress} onPlayAudio={onPlayAudio} />
           </Stack>
         </Stack>
       </Stack>
@@ -361,3 +326,52 @@ export function TextConstructor({
     </Stack>
   );
 }
+
+export const StoryContent = ({
+  text,
+  onPlayAudio,
+}: {
+  text: string;
+  onPlayAudio?: (audioText: string, alternativeVoice: boolean) => void;
+}) => {
+  const translator = useTranslate();
+  return (
+    <Stack
+      className="progress"
+      sx={{
+        height: 'max-content',
+        //backgroundColor: 'blue',
+        maxWidth: '700px',
+        padding: '0 10px',
+        width: '100%',
+
+        '* p': {
+          fontWeight: '700 !important',
+          lineHeight: '1.2 !important',
+          textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
+          fontSize: '38px !important',
+          '@media (max-width:600px)': {
+            fontSize: '28px !important',
+          },
+        },
+      }}
+    >
+      {translator.translateModal}
+      <Markdown
+        onWordClick={
+          translator.isTranslateAvailable
+            ? (word, element) => {
+                translator.translateWithModal(word, element);
+                onPlayAudio?.(word, true);
+              }
+            : onPlayAudio
+              ? (word) => onPlayAudio(word, true)
+              : undefined
+        }
+        variant="conversation"
+      >
+        {text ? `\n${text}` : '...'}
+      </Markdown>
+    </Stack>
+  );
+};

@@ -9,7 +9,9 @@ export const storyData: Story[] = [
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicVideo%2Ffrance.webm?alt=media&token=1ae3afb3-2d41-4e8a-8461-5b8a95a27eee',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fliberty-leading-the-people-by-eug-ne-delacroix_1.webp?alt=media',
-    textEn: `
+
+    textEn: `Emma was known for her bravery. The people were unhappy`,
+    textEn2: `
 In a small town, Emma was known for her bravery. One day, the people were unhappy because their leader was unfair. Emma decided to make a change. She picked up the French flag, a symbol of freedom, and gathered her friends.
 
 "Follow me!" she shouted with determination.
