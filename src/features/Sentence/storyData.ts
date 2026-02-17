@@ -4,26 +4,14 @@ export const storyData: Story[] = [
   {
     id: 'liberty-leading-the-people',
     title: 'Liberty Leading the People',
+    audioUrl: 'audio/courage_in_slow_dawn.mp3',
     videoUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicVideo%2Ffrance.webm?alt=media&token=1ae3afb3-2d41-4e8a-8461-5b8a95a27eee',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fliberty-leading-the-people-by-eug-ne-delacroix_1.webp?alt=media',
     parts: [
       {
-        textEn: `In a small town, Emma was known for her bravery. One day, the people were unhappy because their leader was unfair. Emma decided to make a change. She picked up the French flag, a symbol of freedom, and gathered her friends.`,
-        imageDescription: `A brave young woman standing in the center of a quiet European town square, holding a large French flag. Early morning light, soft golden tones, determined expression, simple 19th-century clothing, a few worried townspeople around her, cinematic composition, dramatic but hopeful atmosphere, painterly style, realistic, detailed, midjourney illustration`,
-      },
-      {
-        textEn: `"Follow me!" she shouted with determination. Together, they walked through the streets, calling for justice and equality. Some people joined; others watched from their windows.`,
-        imageDescription: `A determined woman leading a small group of townspeople through narrow old European streets. She raises a flag high while shouting. People looking from windows above, some stepping outside to join. Movement, emotion, warm dramatic lighting, light smoke in the air, cinematic perspective, historical setting, detailed painterly illustration`,
-      },
-      {
-        textEn: `As they marched, they passed the fallen bodies of those who had tried before. This sight gave them even more courage.`,
-        imageDescription: `Revolutionary group walking past fallen fighters lying on cobblestone street. The leader looks forward with courage, flag waving above her. Soft smoky battlefield atmosphere, emotional intensity, muted colors with strong contrast, dramatic sky, symbolic and powerful composition, historical realism, artistic painting style`,
-      },
-      {
-        textEn: `Emma felt a strong sense of responsibility, leading her friends toward a better future. The flag waved proudly, and the people knew they were fighting for what was right. Emma's courage inspired everyone.`,
-        imageDescription: `Heroic young woman standing on elevated ground with a large flag waving in the wind. Crowd behind her looking inspired and hopeful. Bright light breaking through clouds in the sky, symbol of freedom and future, epic cinematic composition, romantic realism painting style, highly detailed, inspirational atmosphere`,
+        textEn: `In a small town, Emma was known for her bravery. One day, the people were unhappy because their leader was unfair. Emma decided to make a change. She picked up the French flag, a symbol of freedom, and gathered her friends. "Follow me!" she shouted with determination. Together, they walked through the streets, calling for justice and equality. Some people joined; others watched from their windows. As they marched, they passed the fallen bodies of those who had tried before. This sight gave them even more courage. Emma felt a strong sense of responsibility, leading her friends toward a better future. The flag waved proudly, and the people knew they were fighting for what was right. Emma's courage inspired everyone.`,
       },
     ],
   },
