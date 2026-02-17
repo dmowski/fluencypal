@@ -192,7 +192,7 @@ export const LessonStartModal = ({
   const audio = useConversationAudio();
   const onStart = async () => {
     setIsStarting(true);
-    await audio.startConversationAudio();
+    await audio.initAudio();
 
     if (settings.conversationMode !== conversationMode) {
       await settings.setConversationMode(conversationMode);

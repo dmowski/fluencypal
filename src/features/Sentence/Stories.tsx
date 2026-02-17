@@ -61,7 +61,7 @@ export const TextConstructorStories = () => {
 
   const onSelectImage = async (imageId: string) => {
     setSelectedImageId(imageId);
-    await audio.startConversationAudio();
+    await audio.initAudio();
 
     const story = storyData.find((s) => s.id === imageId);
     if (story && story.audioUrl) {

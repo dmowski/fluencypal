@@ -277,7 +277,7 @@ export const RolePlayModal = () => {
                 endIcon={<ChevronRight size={'18px'} />}
                 disabled={isStarting}
                 onClick={async () => {
-                  await audio.startConversationAudio();
+                  await audio.initAudio();
                 }}
               >
                 {isStarting ? i18n._(`Loading...`) : i18n._(`Start`)}

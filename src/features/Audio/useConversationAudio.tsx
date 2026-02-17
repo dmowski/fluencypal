@@ -17,7 +17,7 @@ import { isSilentAudio } from './isSilentAudio';
 
 /**
  * What this gives you:
- * - startConversationAudio(): MUST be called from the "Start Conversation" button click handler (user gesture).
+ * - initAudio(): MUST be called from the "Start Conversation" button click handler (user gesture).
  *   This unlocks AudioContext on mobile.
  * - speak(): generates TTS audio url, fetches bytes, decodes, and queues it for gapless playback.
  * - interrupt(): hard cut, immediately stops queued/current audio.
@@ -42,7 +42,7 @@ export type SpeakOptions = {
 
 interface ConversationAudioContextType {
   /** Call from the user's "Start Conversation" button click. */
-  startConversationAudio: () => Promise<void>;
+  initAudio: () => Promise<void>;
 
   /** True after audio has been unlocked at least once. */
   isUnlocked: () => boolean;
@@ -271,7 +271,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     [settings.languageCode, auth],
   );
 
-  const startConversationAudio = useCallback(async () => {
+  const initAudio = useCallback(async () => {
     // MUST be called from a user gesture handler (button click/tap)
     await playerRef.current!.unlockFromGesture();
   }, []);
@@ -376,7 +376,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
 
   return useMemo(
     () => ({
-      startConversationAudio,
+      initAudio,
       isUnlocked,
       speak,
       interrupt,
@@ -388,7 +388,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       initCache,
     }),
     [
-      startConversationAudio,
+      initAudio,
       isUnlocked,
       speak,
       interrupt,

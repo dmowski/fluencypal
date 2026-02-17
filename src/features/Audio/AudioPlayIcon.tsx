@@ -29,7 +29,7 @@ export const AudioPlayIcon = ({
 
   const togglePlay = async () => {
     if (audio.isUnlocked() === false) {
-      await audio.startConversationAudio();
+      await audio.initAudio();
     }
     if (isPlaying && audio.isPlaying) {
       audio.interrupt();

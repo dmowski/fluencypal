@@ -28,7 +28,7 @@ export const JustTalkCard = () => {
   const audio = useConversationAudio();
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
   const startJustTalk = async () => {
-    audio.startConversationAudio();
+    audio.initAudio();
 
     setIsCallStarting(true);
     await settings.setConversationMode('call');
