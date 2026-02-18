@@ -22,17 +22,6 @@ Together, they walked through the streets, calling for justice and equality. Som
   },
 
   {
-    id: 'story-the-kiss-by-gustav-klimt',
-    title: 'The Kiss by Gustav Klimt',
-    audioUrl: 'audio/Blooming_Hearts_in_Springlight.mp3',
-
-    subtitle: 'A story of love and beauty',
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fthe-kiss-by-gustav-klimt_1.webp?alt=media',
-    textEn: `In a beautiful garden, Anna and Leo stood under a big, old tree. They wore robes as bright as the sun, covered with small, shining patterns like a mosaic. Flowers bloomed all around them, filling the air with their sweet scent. Anna and Leo were very much in love. They looked deeply into each other's eyes and felt the world around them disappear. Leo gently wrapped his arms around Anna, and she hugged him back. It was a moment of pure happiness. The flowers swayed in the gentle breeze, as if they were dancing for the couple. The garden was a magical place, and Anna and Leo knew their love would bloom forever, just like the flowers around them.`,
-  },
-
-  {
     id: 'story-nighthawks-by-edward-hopper',
     audioUrl: 'audio/midnight_coffee_empty_eyes.mp3',
     title: 'Nighthawks',
@@ -48,6 +37,8 @@ Together, they walked through the streets, calling for justice and equality. Som
   {
     id: 'story-star-wars-luke-gazing-at-twin-suns',
     title: 'The Day the Second Sun Fell',
+    videoUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicVideo%2Fsuns.webm?alt=media&token=9329d306-87c6-4bcb-8a83-2b7505b6dffd',
     audioUrl: 'audio/Twin_Suns_Over_the_Dunes.mp3',
     subtitle: 'A quiet village, two suns in the sky, and the moment everything changed.',
     imageUrl:
@@ -102,13 +93,37 @@ And now the desert was awake.
 
 Arin stood at the top of the dune, holding a piece of the broken sky, knowing that his quiet evenings were over — and that his real journey had just begun.`,
   },
+
   {
-    id: 'story-a-camel-ride-in-the-desert',
-    title: 'A camel ride in the desert',
+    id: 'story-a-sculptor-shaping-a-statue',
+    title: 'A sculptor shaping a statue',
     imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-camel-ride-in-the-desert.webp?alt=media',
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-sculptor-shaping-a-statue.webp?alt=media',
+
     textEn:
-      'In a wide golden desert, where the sand seemed to stretch forever, a group of friends began an exciting journey. They wanted to see what was waiting beyond the tall dunes and feel the silence of the open land. They rode on camels across the soft, sandy hills. The sun shone brightly in the clear blue sky, and the sand sparkled like tiny stars. Each friend wore a colorful scarf to protect their face from the hot, blowing wind, and the scarves danced in the air as they moved forward. The camels walked slowly, swaying gently with each step, and small bells around their necks rang in a calm, steady rhythm. At first, the sound felt peaceful. The friends laughed and talked, enjoying the beauty around them. After some time, the dunes grew higher and the path became harder to see. The wind grew stronger, and the sky slowly changed. The bright blue color faded, and a light brown cloud appeared far away on the horizon. Suddenly, the wind began to roar. Sand rose into the air and spun around them. The bells of the camels rang loudly and wildly. The friends could barely see each other through the moving sand. Fear replaced their laughter as they held tightly to their camels. The storm grew stronger for a few long minutes that felt like hours. One friend shouted that they must stay close and follow the tallest camel, which knew the way back. With courage and trust, they moved slowly through the storm, step by careful step. Then, just as suddenly as it had begun, the wind calmed. The sand fell back to the ground, and the sky slowly cleared. The friends found themselves standing on top of a high dune. Before them lay a breathtaking view of the desert glowing in the light of the setting sun. The sky turned pink and orange, and the sand shone warmly under the soft evening light. The friends looked at each other with relief and pride. They had faced the storm together and had not given up. Their camel ride in the desert had become more than an adventure—it had become a story they would never forget.',
+      "In a small, dusty workshop, there was a sculptor named Ben. Every morning, Ben wore his old apron and got to work. His workshop was filled with stone and clay.  Today, Ben was sculpting a beautiful angel from a large piece of stone. With his chisel and hammer, he slowly shaped the wings. Dust filled the air, but Ben didn’t mind. He loved the sound of the chisel tap-tapping on the stone. After hours of work, the angel's form appeared. Its wings seemed ready to fly. Ben smiled as he wiped the sweat from his brow. He loved turning hard stone into something so beautiful. At the end of the day, Ben was tired but happy, dreaming of his next masterpiece.",
+  },
+
+  {
+    id: 'story-a-staircase-leading-into-the-clouds',
+    title: 'A staircase leading into the clouds',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-staircase-leading-into-the-clouds.webp?alt=media',
+
+    textEn:
+      'Once upon a time, in a small village, there was a staircase that reached up into the sky. Nobody knew where it came from or where it led. The wooden steps floated among fluffy white clouds, looking magical and dreamlike. One day, a little girl named Lily found the staircase. She felt curious and decided to climb it. As she ascended, the clouds danced around her, and she felt as if she was walking in a dream. At the top, Lily saw a beautiful land filled with colorful flowers and gentle animals. It was like a paradise. She played with the animals and picked flowers. When it was time to return, Lily promised she would visit again. The staircase was her secret pathway to a wondrous world.',
+  },
+
+  {
+    id: 'story-the-kiss-by-gustav-klimt',
+    title: 'The Kiss by Gustav Klimt',
+    audioUrl: 'audio/Blooming_Hearts_in_Springlight.mp3',
+    videoUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicVideo%2Fkiss.webm?alt=media&token=860b9159-d877-49f5-907c-1a52cbcc0add',
+    subtitle: 'A story of love and beauty',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fthe-kiss-by-gustav-klimt_1.webp?alt=media',
+    textEn: `In a beautiful garden, Anna and Leo stood under a big, old tree. They wore robes as bright as the sun, covered with small, shining patterns like a mosaic. Flowers bloomed all around them, filling the air with their sweet scent. Anna and Leo were very much in love. They looked deeply into each other's eyes and felt the world around them disappear. Leo gently wrapped his arms around Anna, and she hugged him back. It was a moment of pure happiness. The flowers swayed in the gentle breeze, as if they were dancing for the couple. The garden was a magical place, and Anna and Leo knew their love would bloom forever, just like the flowers around them.`,
   },
   {
     id: 'story-a-child-drawing-on-a-foggy-window',
@@ -124,6 +139,15 @@ Arin stood at the top of the dune, holding a piece of the broken sky, knowing th
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-crying-child-holding-a-teddy-bear.webp?alt=media',
     textEn: `Once upon a time, there was a small child named Sam. Sam was feeling very sad one rainy afternoon. Sitting on the floor, Sam hugged a worn teddy bear tightly. The teddy bear's name was Mr. Fluffy, and he was Sam’s best friend. Tears ran down Sam's face. Sam had lost his favorite toy truck and couldn’t find it anywhere. “Mr. Fluffy, what will I do?” Sam whispered softly. Mr. Fluffy was old and had many patches, but he always listened carefully. Sam felt a little better with Mr. Fluffy in his arms. After a while, Sam’s mom came to help. Together with Mr. Fluffy, they searched everywhere. Soon, they found the missing truck under the bed. Sam smiled, hugging both Mr. Fluffy and the truck with joy.`,
+  },
+
+  {
+    id: 'story-a-camel-ride-in-the-desert',
+    title: 'A camel ride in the desert',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-camel-ride-in-the-desert.webp?alt=media',
+    textEn:
+      'In a wide golden desert, where the sand seemed to stretch forever, a group of friends began an exciting journey. They wanted to see what was waiting beyond the tall dunes and feel the silence of the open land. They rode on camels across the soft, sandy hills. The sun shone brightly in the clear blue sky, and the sand sparkled like tiny stars. Each friend wore a colorful scarf to protect their face from the hot, blowing wind, and the scarves danced in the air as they moved forward. The camels walked slowly, swaying gently with each step, and small bells around their necks rang in a calm, steady rhythm. At first, the sound felt peaceful. The friends laughed and talked, enjoying the beauty around them. After some time, the dunes grew higher and the path became harder to see. The wind grew stronger, and the sky slowly changed. The bright blue color faded, and a light brown cloud appeared far away on the horizon. Suddenly, the wind began to roar. Sand rose into the air and spun around them. The bells of the camels rang loudly and wildly. The friends could barely see each other through the moving sand. Fear replaced their laughter as they held tightly to their camels. The storm grew stronger for a few long minutes that felt like hours. One friend shouted that they must stay close and follow the tallest camel, which knew the way back. With courage and trust, they moved slowly through the storm, step by careful step. Then, just as suddenly as it had begun, the wind calmed. The sand fell back to the ground, and the sky slowly cleared. The friends found themselves standing on top of a high dune. Before them lay a breathtaking view of the desert glowing in the light of the setting sun. The sky turned pink and orange, and the sand shone warmly under the soft evening light. The friends looked at each other with relief and pride. They had faced the storm together and had not given up. Their camel ride in the desert had become more than an adventure—it had become a story they would never forget.',
   },
   {
     id: 'story-a-dancer-frozen-mid-jump',
@@ -269,15 +293,7 @@ Arin stood at the top of the dune, holding a piece of the broken sky, knowing th
     textEn:
       "It was a dark and stormy night. Sam sat alone on the couch, watching a spooky movie. The room was dark, except for the glow of the TV. The howling wind outside made the house creak and groan.  The movie showed an old, haunted house. Suddenly, a ghost appeared on the screen, making a loud noise. Sam gasped and covered their mouth in fear.  Sam's eyes were wide, glued to the screen. The ghost moved closer, and Sam's heart beat faster.  Just then, a loud thunderclap made Sam jump. \"Phew, it's just a movie,\" Sam whispered, trying to calm down.  Even though it was scary, Sam couldn't stop watching. It was going to be a spooky night!",
   },
-  {
-    id: 'story-a-sculptor-shaping-a-statue',
-    title: 'A sculptor shaping a statue',
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-sculptor-shaping-a-statue.webp?alt=media',
 
-    textEn:
-      "In a small, dusty workshop, there was a sculptor named Ben. Every morning, Ben wore his old apron and got to work. His workshop was filled with stone and clay.  Today, Ben was sculpting a beautiful angel from a large piece of stone. With his chisel and hammer, he slowly shaped the wings. Dust filled the air, but Ben didn’t mind. He loved the sound of the chisel tap-tapping on the stone. After hours of work, the angel's form appeared. Its wings seemed ready to fly. Ben smiled as he wiped the sweat from his brow. He loved turning hard stone into something so beautiful. At the end of the day, Ben was tired but happy, dreaming of his next masterpiece.",
-  },
   {
     id: 'story-a-shadow-doing-something-different-from-the-person',
     title: 'A shadow doing something different from the person',
@@ -286,14 +302,5 @@ Arin stood at the top of the dune, holding a piece of the broken sky, knowing th
 
     textEn:
       'Lily was walking home one evening when she stopped under a streetlamp. She noticed something strange. Her shadow was not standing still. Instead, it moved on its own! Lily watched in surprise. Her shadow stretched out its hand, as if trying to touch something. "How is this happening?" Lily wondered. She waved her arm, but the shadow did not follow. Lily felt a shiver but decided to step forward. Her shadow slid back into place, mirroring her again. Relieved, Lily continued her walk home, but she couldn\'t shake the feeling of mystery. From that day on, Lily often checked her shadow, curious and amazed by the unusual experience. Sometimes, life can be more mysterious than it seems.',
-  },
-  {
-    id: 'story-a-staircase-leading-into-the-clouds',
-    title: 'A staircase leading into the clouds',
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-staircase-leading-into-the-clouds.webp?alt=media',
-
-    textEn:
-      'Once upon a time, in a small village, there was a staircase that reached up into the sky. Nobody knew where it came from or where it led. The wooden steps floated among fluffy white clouds, looking magical and dreamlike. One day, a little girl named Lily found the staircase. She felt curious and decided to climb it. As she ascended, the clouds danced around her, and she felt as if she was walking in a dream. At the top, Lily saw a beautiful land filled with colorful flowers and gentle animals. It was like a paradise. She played with the animals and picked flowers. When it was time to return, Lily promised she would visit again. The staircase was her secret pathway to a wondrous world.',
   },
 ];
