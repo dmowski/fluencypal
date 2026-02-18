@@ -59,7 +59,17 @@ export const TextConstructorStories = () => {
     const nextIndex = (currentIndex + 1) % images.length;
     const nextImage = images[nextIndex];
     setSelectedImageId(nextImage.id);
+
+    audio.music.stop();
+
+    if ('audioUrl' in nextImage && nextImage.audioUrl) {
+      const audioUrl = nextImage.audioUrl;
+      await sleep(500);
+      audio.music.play(audioUrl);
+      audio.music.setVolume(0.1);
+    }
   };
+
   const audio = useConversationAudio();
 
   const onSelectImage = async (imageId: string) => {
