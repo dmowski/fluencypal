@@ -488,12 +488,105 @@ And somewhere above the clouds, a meadow chimed with laughter—waiting, patient
   },
   {
     id: 'story-a-dancer-frozen-mid-jump',
-    title: 'A dancer frozen mid-jump',
+    title: 'The Last Performance',
+    subtitle: 'When the spotlight never turns off',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-dancer-frozen-mid-jump.webp?alt=media',
 
-    textEn:
-      'Emma was a passionate dancer. Every day, she practiced for hours in the dance studio. She loved ballet and contemporary dance. Today was the big night. Emma was going to perform on stage. As the music started, the lights dimmed. A bright spotlight shone on Emma. She stood calmly, then moved gracefully across the stage. Her friends and family watched from the audience, smiling with pride. Emma leapt into the air, arms extended. She felt like she was flying. The audience was silent, captivated by her performance. Finally, she landed softly and finished her dance with a beautiful pose. Everyone clapped loudly. Emma beamed with joy. She had given her best performance yet, and she felt so happy.',
+    textEn: `Emma was a passionate dancer. Every day, she practiced for hours in the old dance studio at the edge of town. The mirrors were tall and slightly cracked. The wooden floor creaked under her feet. But Emma did not mind. She loved ballet and contemporary dance more than anything.
+
+Tonight was the big night.
+
+The theater was full. Her friends and family sat in the audience, smiling proudly. Backstage, Emma adjusted her costume and took a deep breath. The curtains were heavy and dark red. They looked almost black in the dim light.
+
+The music started.
+
+The lights faded. A single bright spotlight shone down on Emma. She stepped forward calmly and began to move across the stage. Her arms floated like soft wings. Her body bent and turned with perfect control.
+
+But something felt… different.
+
+The music sounded slower than during rehearsal. The air felt cold. When she spun, she noticed that the audience was completely silent — too silent. No coughing. No whispering. No movement.
+
+Emma leapt into the air, arms extended. For a second, she felt like she was flying.
+
+And then she did not come down.
+
+She was still in the air.
+
+Her body hung there, frozen in a perfect leap. Her heart raced. She tried to scream, but no sound came out. The spotlight grew brighter and brighter, burning her skin.
+
+Suddenly, the music stopped.
+
+Everything went dark.
+
+Emma dropped.
+
+She landed softly — but not on the stage. She was back in the old studio. Alone. The mirrors surrounded her.
+
+Except she was not alone.
+
+In the mirrors, she saw herself… still on the stage.
+
+Still frozen in the air.
+
+The theater was empty. The seats were broken. Covered in dust. The walls were cracked and old, like the building had been abandoned for years.
+
+Emma slowly turned around in the studio.
+
+There was no door.
+
+The music started again.
+
+From nowhere.
+
+Her reflection in the mirror began to move — but she did not. The reflection smiled. Slowly. Too widely.
+
+It bowed.
+
+And the sound of loud applause filled the studio.
+
+But the applause came from inside the mirrors.
+
+Emma tried to run, but the wooden floor became soft under her feet, like sinking mud. The mirrors began to crack. Thin black lines spread across the glass.
+
+The reflection stepped closer from inside.
+
+Tap.
+
+Tap.
+
+Tap.
+
+Like ballet shoes against glass.
+
+The spotlight appeared again — not above her, but inside the mirror.
+
+Emma felt herself becoming lighter.
+
+Her body slowly lifted off the ground.
+
+Her reflection stepped forward.
+
+And stepped out.
+
+The next morning, the real theater opened its doors for rehearsal.
+
+On the empty stage stood a single dancer.
+
+Frozen mid-leap.
+
+Perfect.
+
+Beautiful.
+
+Still smiling.
+
+And in the front row of the audience, barely visible in the dark…
+
+Emma sat and watched.
+
+Waiting for the next performance.
+`,
   },
   {
     id: 'story-a-family-decorating-a-christmas-tree',
