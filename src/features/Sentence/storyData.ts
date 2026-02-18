@@ -24,6 +24,8 @@ Together, they walked through the streets, calling for justice and equality. Som
   {
     id: 'story-the-kiss-by-gustav-klimt',
     title: 'The Kiss by Gustav Klimt',
+    audioUrl: 'audio/Blooming_Hearts_in_Springlight.mp3',
+
     subtitle: 'A story of love and beauty',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fthe-kiss-by-gustav-klimt_1.webp?alt=media',
@@ -45,11 +47,60 @@ Together, they walked through the streets, calling for justice and equality. Som
 
   {
     id: 'story-star-wars-luke-gazing-at-twin-suns',
-    title: 'Star Wars – Luke gazing at twin suns',
+    title: 'The Day the Second Sun Fell',
+    audioUrl: 'audio/Twin_Suns_Over_the_Dunes.mp3',
+    subtitle: 'A quiet village, two suns in the sky, and the moment everything changed.',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fstar-wars-luke-gazing-at-twin-suns_1.webp?alt=media',
-    textEn:
-      'Once upon a time, in a land far away, there was a young man named Arin. He lived in a small village surrounded by a vast desert. Every evening, Arin climbed a tall sand dune to watch the sunset. But his desert was special because it had two suns. One evening, as the glowing suns slowly dipped below the horizon, Arin dreamed of adventure. He imagined traveling across the desert to see new places and meet new people. The warm wind gently touched his face, carrying the scent of the sand. Arin promised himself that one day, he would follow the suns and discover what lay beyond the desert. Until then, he enjoyed the beauty of his twin sunsets.',
+    textEn: `The desert had always belonged to the twin suns.
+
+Every morning, they rose together — one golden and bright, the other pale and silver. The villagers believed the two suns kept balance in the world. If one ever disappeared, the elders said, the desert would wake up.
+
+Arin did not fully believe the old stories, but he respected them. Each evening, he climbed the tallest dune outside the village to watch the twin sunsets. The golden sun set first, painting the sand in fire. The silver sun followed slowly, covering the desert in soft blue light.
+
+That was how it had always been.
+
+Until the day the silver sun stopped moving.
+
+Arin noticed it first. The golden sun slipped below the horizon as usual, but the silver one remained in the sky — frozen, unmoving, trembling like a reflection in disturbed water.
+
+The air changed.
+
+The wind that usually felt warm and calm became restless. The sand beneath Arin’s feet vibrated softly, as if something deep below was turning in its sleep.
+
+Then the silver sun cracked.
+
+A thin dark line appeared across its surface. It spread slowly, silently, like ink in water. The villagers began shouting behind him. Some fell to their knees. Others ran inside their homes.
+
+Arin did not move.
+
+The crack widened, and instead of fire, darkness poured out of the broken sun. Not night — something thicker. Something alive.
+
+The desert answered.
+
+The dunes shifted like waves. Towers of sand rose into the air, spiraling toward the broken sky. Ancient shapes moved beneath the surface, massive and slow, as if the land itself had been waiting for this moment.
+
+Arin felt fear, but beneath it, something else — recognition.
+
+The old stories were not warnings.
+
+They were invitations.
+
+As the silver sun shattered completely, fragments of pale light fell like stars into the desert. One piece landed near Arin, glowing softly in the sand.
+
+Without fully understanding why, he reached for it.
+
+The moment his hand touched the fragment, the wind stopped. The darkness paused. The desert became silent.
+
+And for the first time in his life, Arin heard the desert speak — not with words, but with memory.
+
+The second sun had not fallen.
+
+It had chosen.
+
+And now the desert was awake.
+
+Arin stood at the top of the dune, holding a piece of the broken sky, knowing that his quiet evenings were over — and that his real journey had just begun.`,
   },
   {
     id: 'story-a-camel-ride-in-the-desert',
