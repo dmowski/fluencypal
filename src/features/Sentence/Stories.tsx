@@ -876,7 +876,7 @@ const StoryModal = ({
                   sx={{
                     position: 'absolute',
                     inset: 0,
-                    opacity: isCompleted ? 1 : 0.3,
+                    opacity: isCompleted ? 1 : 0.4,
                     background:
                       'linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgb(5, 10, 17) 100%)',
                   }}
