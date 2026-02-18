@@ -4,6 +4,7 @@ export const storyData: Story[] = [
   {
     id: 'liberty-leading-the-people',
     title: 'Liberty Leading the People',
+    subtitle: 'A story of courage and freedom',
     audioUrl: 'audio/courage_in_slow_dawn.mp3',
     videoUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicVideo%2Ffrance.webm?alt=media&token=1ae3afb3-2d41-4e8a-8461-5b8a95a27eee',
@@ -23,6 +24,7 @@ Together, they walked through the streets, calling for justice and equality. Som
   {
     id: 'story-the-kiss-by-gustav-klimt',
     title: 'The Kiss by Gustav Klimt',
+    subtitle: 'A story of love and beauty',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fthe-kiss-by-gustav-klimt_1.webp?alt=media',
     textEn: `In a beautiful garden, Anna and Leo stood under a big, old tree. They wore robes as bright as the sun, covered with small, shining patterns like a mosaic. Flowers bloomed all around them, filling the air with their sweet scent. Anna and Leo were very much in love. They looked deeply into each other's eyes and felt the world around them disappear. Leo gently wrapped his arms around Anna, and she hugged him back. It was a moment of pure happiness. The flowers swayed in the gentle breeze, as if they were dancing for the couple. The garden was a magical place, and Anna and Leo knew their love would bloom forever, just like the flowers around them.`,
@@ -30,7 +32,9 @@ Together, they walked through the streets, calling for justice and equality. Som
 
   {
     id: 'story-nighthawks-by-edward-hopper',
+    audioUrl: 'audio/midnight_coffee_empty_eyes.mp3',
     title: 'Nighthawks',
+    subtitle: 'A quiet night at a diner on the corner',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fnighthawks-by-edward-hopper_3.webp?alt=media',
     videoUrl:

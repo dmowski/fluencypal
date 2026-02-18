@@ -263,6 +263,10 @@ const StoryModal = ({
   const voiceInfo = getAiVoiceByVoice(voiceName);
   const voiceSpeed = settings.userSettings?.teacherVoiceSpeed || 'normal';
   const videoUrl = 'videoUrl' in data ? data.videoUrl : undefined;
+  const { i18n } = useLingui();
+
+  const subtitleData = 'subtitle' in data ? data.subtitle : undefined;
+  const subtitle = subtitleData || i18n._(`Press the button below to start the adventure!`);
 
   const [sentences, setSentences] = useState<string[]>([]);
   const [sentencesTranslates, setSentencesTranslates] = useState<string[]>([]);
@@ -299,7 +303,6 @@ const StoryModal = ({
 
   const translator = useTranslate();
 
-  const { i18n } = useLingui();
   const isTranslateAvailable = translator.isTranslateAvailable;
 
   const generateTextBasedOnImage = async (image: ImageDescription) => {
@@ -547,7 +550,7 @@ const StoryModal = ({
                     </Typography>
 
                     <Typography variant="body2" textAlign={'center'}>
-                      {i18n._('Press the button below to generate a story based on this image')}
+                      {subtitle}
                     </Typography>
                   </Stack>
                   <Stack

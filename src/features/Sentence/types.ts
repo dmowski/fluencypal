@@ -1,6 +1,7 @@
 export interface Story {
   id: string;
   title: string;
+  subtitle?: string;
 
   videoUrl?: string;
   audioUrl?: string;
