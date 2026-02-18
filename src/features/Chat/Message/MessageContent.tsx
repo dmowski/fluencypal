@@ -77,13 +77,27 @@ export const MessageContent = ({
         },
 
         // Link started with "/"
-        'a[href^="/"]': {
+        '* a[href^="/"]': {
           textDecoration: 'underline',
           color: '#16bbf7',
         },
 
+        '* a[href^="https:"]': {
+          textDecoration: 'underline',
+          color: '#16bbf7',
+        },
+
+        '* blockquote': {
+          borderLeft: '3px solid rgba(255, 255, 255, 0.2)',
+          marginLeft: 0,
+          paddingLeft: '10px',
+          color: 'rgba(255, 255, 255, 0.6)',
+          padding: '0 0 0 13px',
+        },
+
         '* p': {
           fontSize: contentFontSize || '15px',
+          padding: '4px 0',
         },
       }}
     >

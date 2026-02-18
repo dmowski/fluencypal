@@ -136,15 +136,16 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   em: ({ children }) => <em>{children}</em>,
   strong: ({ children }) => <strong>{children}</strong>,
   blockquote: ({ children }) => (
-    <blockquote
-      style={{
+    <Stack
+      component={'blockquote'}
+      sx={{
         margin: '10px 10px 10px 0',
         padding: '5px 10px 5px 15px',
         borderLeft: '4px solid rgba(0, 0, 0, 0.1)',
       }}
     >
       {children}
-    </blockquote>
+    </Stack>
   ),
   pre: ({ children }) => <pre>{children}</pre>,
   code: ({ children }) => <code>{children}</code>,
