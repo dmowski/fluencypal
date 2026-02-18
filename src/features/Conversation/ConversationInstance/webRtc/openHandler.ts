@@ -5,17 +5,19 @@ import { WebRtcState } from './types';
 import { updateSessionSafe } from './updateSessionSafe';
 
 export const openHandler = async (state: WebRtcState, config: ConversationConfig) => {
-  const last10 = state.lastMessages.slice(-10);
-  console.log('last10', last10);
-  if (last10.length > 0) {
-    await seedConversationItems(last10, state);
+  const lastMessages = state.lastMessages.slice(-10);
+
+  console.log('lastMessages', lastMessages);
+
+  if (lastMessages.length > 0) {
+    await seedConversationItems(lastMessages, state);
   }
 
   await sleep(200);
 
   await updateSessionSafe({ state, config });
 
-  if (last10.length === 0) {
+  if (lastMessages.length === 0) {
     config.onOpen();
   }
 };
