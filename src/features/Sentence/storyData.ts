@@ -197,6 +197,8 @@ And somewhere inside Ben’s heart, another masterpiece had already begun to for
     id: 'story-a-staircase-leading-into-the-clouds',
     title: 'The Staircase That Touched the Clouds',
     subtitle: 'A Journey of Curiosity, Courage, and a Promise to the Sky',
+    videoUrl:
+      'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicVideo%2Fstairs.webm?alt=media&token=24d7dc7a-3753-4421-887d-5fbb05e7a593',
     audioUrl: 'audio/cloudsteps.mp3',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-staircase-leading-into-the-clouds.webp?alt=media',
