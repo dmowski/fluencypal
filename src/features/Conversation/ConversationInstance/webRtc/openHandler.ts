@@ -5,7 +5,7 @@ import { WebRtcState } from './types';
 import { updateSessionSafe } from './updateSessionSafe';
 
 export const openHandler = async (state: WebRtcState, config: ConversationConfig) => {
-  const lastMessages = state.lastMessages.slice(-10);
+  const lastMessages = state.lastMessages.slice(-15);
 
   console.log('lastMessages', lastMessages);
 
