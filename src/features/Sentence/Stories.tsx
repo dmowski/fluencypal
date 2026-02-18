@@ -21,6 +21,7 @@ import { storyData } from './storyData';
 import { getHash } from '@/libs/hash';
 import { sleep } from '@/libs/sleep';
 import { uniq } from '@/libs/uniq';
+import { shuffleArray } from '@/libs/array';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
@@ -33,13 +34,12 @@ export const TextConstructorStories = () => {
   const reshuffleImages = () => {
     //const sortedImageDescriptions = []; //[...imageDescriptions].sort((a, b) => a.id.localeCompare(b.id));
     //setImages([...storyData, ...sortedImageDescriptions]);
-    setImages(storyData);
+    setImages(shuffleArray(storyData));
   };
 
   const initImage = () => {
-    if (images.length > 0) {
-      return;
-    }
+    if (images.length > 0) return;
+
     reshuffleImages();
   };
 
