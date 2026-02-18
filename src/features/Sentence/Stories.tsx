@@ -265,6 +265,8 @@ const StoryModal = ({
   const ai = useTextAi();
   const auth = useAuth();
   const settings = useSettings();
+  const storyText = 'textEn' in data ? data.textEn : '';
+  const wordsCount = storyText.split(' ').length;
 
   const targetLanguage = settings.languageCode;
   const nativeLanguage = settings.userSettings?.nativeLanguageCode;
@@ -562,10 +564,22 @@ const StoryModal = ({
                     <Typography variant="body2" textAlign={'center'}>
                       {subtitle}
                     </Typography>
+
+                    {wordsCount && (
+                      <Typography
+                        variant="caption"
+                        textAlign={'center'}
+                        sx={{
+                          opacity: 0.8,
+                        }}
+                      >
+                        {i18n._('{wordsCount} words', { wordsCount: wordsCount })}
+                      </Typography>
+                    )}
                   </Stack>
                   <Stack
                     sx={{
-                      gap: '10px',
+                      gap: '20px',
                       alignItems: 'center',
                     }}
                   >
@@ -598,7 +612,8 @@ const StoryModal = ({
                     </ButtonGroup>
                     <Button
                       sx={{
-                        padding: '10px 30px',
+                        padding: '15px 45px',
+                        fontSize: '18px',
                       }}
                       variant="contained"
                       color="info"
@@ -624,7 +639,7 @@ const StoryModal = ({
                       }}
                       endIcon={<RefreshCw size={'20px'} />}
                     >
-                      {i18n._('New Image')}
+                      {i18n._('Next story')}
                     </Button>
                   </Stack>
                 </Stack>
