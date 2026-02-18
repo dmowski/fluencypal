@@ -8,4 +8,6 @@ export interface Story {
   imageUrl: string;
 
   textEn: string;
+  sunoPrompt?: string;
+  videoDescription?: string;
 }

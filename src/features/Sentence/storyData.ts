@@ -96,22 +96,357 @@ Arin stood at the top of the dune, holding a piece of the broken sky, knowing th
 
   {
     id: 'story-a-sculptor-shaping-a-statue',
-    title: 'A sculptor shaping a statue',
+    title: 'The Angel in the Stone',
+    subtitle: 'Where Dust, Patience, and Dream Become Wings',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-sculptor-shaping-a-statue.webp?alt=media',
 
-    textEn:
-      "In a small, dusty workshop, there was a sculptor named Ben. Every morning, Ben wore his old apron and got to work. His workshop was filled with stone and clay.  Today, Ben was sculpting a beautiful angel from a large piece of stone. With his chisel and hammer, he slowly shaped the wings. Dust filled the air, but Ben didn’t mind. He loved the sound of the chisel tap-tapping on the stone. After hours of work, the angel's form appeared. Its wings seemed ready to fly. Ben smiled as he wiped the sweat from his brow. He loved turning hard stone into something so beautiful. At the end of the day, Ben was tired but happy, dreaming of his next masterpiece.",
+    textEn: `In a small, dusty workshop at the edge of town, there lived a sculptor named Ben. The windows were always half-covered in white powder, and the air smelled of stone and effort. Every morning, before the sun rose too high, Ben tied on his old apron and stepped into his world of marble and clay.
+
+The workshop was never quiet. Even in stillness, it seemed to breathe. Blocks of stone stood along the walls like silent giants waiting to be awakened. Clay rested on wooden tables. Tools lay carefully arranged — chisels of different sizes, heavy hammers, brushes worn soft with use.
+
+On this particular morning, a single massive block of pale stone stood in the center of the room.
+
+Ben walked around it slowly.
+
+He did not see just stone.
+
+He saw wings.
+
+He saw movement.
+
+He saw something hidden, waiting.
+
+“Let’s begin,” he whispered.
+
+The first strike of the chisel echoed through the workshop — sharp, clear, alive.
+
+Tap.
+
+Tap-tap.
+
+Small pieces of stone fell to the floor. Dust rose into the air like pale smoke. Light from the window caught the floating particles, turning them golden.
+
+Hour after hour, Ben worked.
+
+He shaped the curve of a shoulder.
+He carved the gentle bend of a neck.
+He traced the outline of wings that seemed to push against the stone from within.
+
+The sound of chisel against marble filled the room — steady, rhythmic, almost like a heartbeat.
+
+Tap-tap.
+Tap-tap-tap.
+
+Sweat ran down his forehead. His hands grew tired. His back ached.
+
+But Ben did not stop.
+
+Because slowly — very slowly — the angel began to appear.
+
+First, a face emerged from the rough surface. Calm. Peaceful. Almost breathing.
+
+Then feathers formed along the wings, one by one, each carefully shaped. They curved outward as if catching an invisible wind.
+
+Dust filled the air, but Ben didn’t mind. To him, it felt like magic in motion — proof that something new was being born.
+
+By afternoon, the shape was clear.
+
+The angel stood tall and graceful, wings lifted slightly, as if ready to rise from the workshop floor. Light from the window brushed against the stone, and for a moment, the statue seemed alive.
+
+Ben stepped back.
+
+His arms trembled from the day’s work.
+
+His clothes were covered in white powder.
+
+He wiped the sweat from his brow and smiled.
+
+“It was always there,” he murmured. “I just helped it come out.”
+
+The workshop grew quiet.
+
+Outside, the sun began to set, painting the sky in warm orange and deep blue. Inside, the angel stood glowing softly in the fading light.
+
+Ben sat on a wooden stool and looked at his creation.
+
+He was tired — deeply tired — but happy.
+
+Tomorrow there would be more shaping, more polishing, more patience. But tonight, he allowed himself to dream.
+
+He imagined the angel standing in a garden.
+Or in a quiet chapel.
+Or somewhere it could remind people that beauty can live inside even the hardest stone.
+
+As darkness gently filled the workshop, Ben removed his apron and turned off the lights.
+
+The angel remained.
+
+Silent.
+
+Strong.
+
+Wings ready.
+
+And somewhere inside Ben’s heart, another masterpiece had already begun to form.`,
+    sunoPrompt: `Cinematic orchestral background music with slow-building strings, deep cellos, subtle brass swells, and soft rhythmic percussion. Steady, focused atmosphere reflecting craftsmanship and dedication. Mid-section becomes slightly uplifting and expansive as the sculpture takes form, ending with warm, inspiring strings and gentle choir pads. Emotional, artistic, and powerful, moderate tempo.`,
+    videoDescription: `A passionate sculptor spends the day transforming a massive block of stone into a graceful angel. Through dust, patience, and steady hands, beauty slowly emerges from the marble — reminding us that masterpieces are hidden inside what seems unbreakable.`,
   },
 
   {
     id: 'story-a-staircase-leading-into-the-clouds',
-    title: 'A staircase leading into the clouds',
+    title: 'The Staircase That Touched the Clouds',
+    subtitle: 'A Journey of Curiosity, Courage, and a Promise to the Sky',
+    audioUrl: 'audio/cloudsteps.mp3',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-staircase-leading-into-the-clouds.webp?alt=media',
 
-    textEn:
-      'Once upon a time, in a small village, there was a staircase that reached up into the sky. Nobody knew where it came from or where it led. The wooden steps floated among fluffy white clouds, looking magical and dreamlike. One day, a little girl named Lily found the staircase. She felt curious and decided to climb it. As she ascended, the clouds danced around her, and she felt as if she was walking in a dream. At the top, Lily saw a beautiful land filled with colorful flowers and gentle animals. It was like a paradise. She played with the animals and picked flowers. When it was time to return, Lily promised she would visit again. The staircase was her secret pathway to a wondrous world.',
+    textEn: `Once upon a time, in a small village tucked between green hills, there stood a staircase that should not have been there.
+
+It began behind the old mill, where the air always smelled like warm bread and river mist. The first step was plain oak, worn smooth as if thousands of feet had climbed it. The second step hovered a finger’s width above the ground. The third step floated higher. And then, as if the world forgot how to be heavy, the staircase rose straight into the sky—vanishing into a quilt of white clouds.
+
+Nobody remembered anyone building it. The oldest grandmother, who remembered everything else, shook her head and said, “I was born with that staircase already staring at the sun.” The baker swore it appeared after a storm. The shepherd said it came down one night like moonlight, gentle and silent. But no one could agree, and no one dared to climb it very far.
+
+Because the staircase did something peculiar.
+
+If you put one foot on the first step and tried to count, you would find your numbers slipping away like fish. If you climbed past the tenth step, you might forget why you started. If you climbed past the twentieth, you might forget your own name.
+
+So the villagers treated it like a miracle best admired from a distance. They swept leaves away from its base. They placed flowers nearby in spring. They warned children, “Look, but don’t climb.”
+
+Of course, warnings are invitations to curious hearts.
+
+And the most curious heart in the village belonged to a little girl named Lily.
+
+Lily had eyes that noticed hidden things: the way dew made tiny crowns on grass, the way birds tilted their heads as if listening to secrets, the way the river glittered when it laughed over stones. She was the kind of child who asked the moon where it went during the day, and meant it seriously.
+
+One morning, when the village bells were still yawning and the world felt soft with early light, Lily wandered behind the mill to find a stray kitten she had heard meowing the night before.
+
+She did not find the kitten.
+
+She found the staircase.
+
+It was more beautiful up close. Each wooden step shone as if polished by clouds. And above the first few steps, the air looked different—like a bright, invisible water that you could climb through. A breeze drifted down from above, smelling of rain and something sweet, like strawberries warmed in the sun.
+
+Lily reached out and touched the first step.
+
+It felt warm.
+
+Not warm like a fire. Warm like a hand that wanted to hold yours.
+
+Her grandmother’s warning fluttered through her mind like a nervous bird, but Lily’s curiosity was stronger. She put one foot on the first step.
+
+Nothing terrible happened.
+
+She put her other foot on the second.
+
+The village behind her seemed to hush, as if even the mill was holding its breath.
+
+Lily smiled.
+
+And she began to climb.
+
+At first, she climbed carefully, counting the steps under her breath.
+
+“One… two… three…”
+
+But by the time she reached “seven,” she felt her numbers turning into giggles. By the time she reached “ten,” she couldn’t remember what came after ten, and somehow that seemed perfectly fine.
+
+The higher Lily went, the lighter her thoughts became. The clouds, which had looked still from below, swirled around her like friendly ghosts. They brushed her cheeks and hair, cool and ticklish. Sometimes they shaped themselves into curling animals—rabbits and whales and sleepy dragons—and then drifted apart again.
+
+Soon the village disappeared beneath a blanket of white. The sky grew bluer than any blue Lily had ever seen. And the staircase, steady beneath her feet, carried her onward as if it had been waiting for her all along.
+
+After what could have been minutes or hours—time feels different when you walk through clouds—Lily reached the top.
+
+There was no door. No gate. No thunder or trumpet.
+
+There was simply a final step.
+
+And beyond it, a meadow so bright it made her blink.
+
+The grass was soft as velvet, sprinkled with flowers in colors Lily didn’t know had names: misty coral, moon-silver, sunset-purple. Tiny bells hung from the stems of some blossoms, and when the wind passed, they chimed like laughter.
+
+Gentle animals wandered the meadow as if the world had never invented fear. Deer with dandelion fluff in their ears. Foxes with tails like painted brushes. Rabbits the size of bread loaves, hopping slowly as if savoring every jump. Birds with feathers that shimmered like bubbles.
+
+And near a small pond sat a creature Lily had never seen before.
+
+It looked like a cat, a deer, and a cloud had decided to become friends and then accidentally become one thing. It had soft white fur, a long tail tipped with a little star-shaped tuft, and eyes the color of the morning sky.
+
+It lifted its head as Lily approached, and spoke in a voice that sounded like wind through leaves.
+
+“You climbed,” it said.
+
+Lily froze, then remembered that in fairy lands, strange things speak all the time. She lifted her chin bravely.
+
+“Yes,” she said. “Is that… allowed?”
+
+The creature blinked slowly.
+
+“Allowed,” it repeated, tasting the word. “This place is not a house with rules. It is a promise with a price.”
+
+“A price?” Lily asked, suddenly wishing she had brought a cookie for courage.
+
+The creature stood, graceful as a drifting feather.
+
+“Yes,” it said. “The staircase does not like greedy feet. It does not like those who climb for gold or bragging or power. It forgets such people on purpose. But it likes curious hearts. Kind hearts. Hearts that remember to say thank you.”
+
+Lily thought about that. She looked at the meadow, at the animals, at the sparkling pond.
+
+“I didn’t climb for gold,” she said softly. “I climbed because… it was there.”
+
+The creature’s eyes warmed.
+
+“Then you may stay awhile,” it said. “But listen carefully. If you take something from this place, you must leave something behind. That is the balance.”
+
+Lily’s fingers twitched toward the flowers. She had already imagined bringing a bouquet home—proof that the staircase was real.
+
+“What could I leave behind?” she asked.
+
+The creature tilted its head.
+
+“A secret,” it suggested. “A small sorrow. A fear you no longer need.”
+
+Lily’s breath caught.
+
+She did have a fear.
+
+It was a quiet fear that lived in her chest and pretended to be part of her heartbeat: the fear that she was too small to matter. That the world was too big, and she would always be left behind when the grown-ups walked fast and talked about important things.
+
+Lily swallowed.
+
+“If I leave that fear,” she whispered, “will it go away?”
+
+The creature’s tail swayed like a slow comet.
+
+“It will not be yours anymore,” it said. “But you must mean it.”
+
+Lily looked down at her hands. They were small, yes. But they had picked up injured birds. They had held her grandmother’s warm teacup. They had waved at lonely travelers on the road.
+
+She clenched her fists, then opened them again.
+
+“I leave it,” Lily said. “I don’t want it.”
+
+The wind stirred. The pond shimmered. For a moment, Lily felt something lift from her chest—like a stone being removed from a pocket. Her shoulders loosened. Her breath came easier.
+
+The creature nodded, satisfied.
+
+“Then you may choose,” it said. “One gift, fairly taken.”
+
+Lily walked through the meadow, careful not to trample the flowers. She touched petals that felt like satin. She laughed when a rabbit leaned into her hand like a friendly dog. She watched deer drink from the pond, their reflections dancing with sunlight.
+
+She could have chosen a flower.
+
+She could have chosen a shining pebble from the pond.
+
+But then she heard a soft sound—a trembling, lonely sort of music—and followed it to a patch of tall, silver grass.
+
+There, hidden among the stems, was a tiny bird with a bent wing. Its feathers were a pale gold, and each time it tried to move, it made a small, sad chirp.
+
+Lily knelt at once.
+
+“Oh,” she breathed. “You poor thing.”
+
+The bird looked at her with frightened eyes.
+
+Lily turned back toward the cloud-creature.
+
+“Can my gift be… taking care of this bird?” she asked. “Can I bring it home so it can heal?”
+
+The creature watched her carefully, as if weighing her words.
+
+“You would take living responsibility,” it said. “That is a serious gift.”
+
+Lily nodded. “I’ll do it.”
+
+The creature stepped closer, and its star-tipped tail brushed the bird’s feathers.
+
+The bird’s trembling eased. Its eyes softened, as if it suddenly believed the world was safe again.
+
+“Yes,” the creature said. “You may take it. But remember the balance.”
+
+Lily thought quickly.
+
+She didn’t want to give up another fear or a secret. Then she remembered something else she carried—something small, but precious.
+
+From her pocket, she pulled out a smooth button, blue as a forget-me-not. It had come from her mother’s old coat. Lily kept it like a lucky charm.
+
+She held it out.
+
+“I leave this,” she said.
+
+The meadow wind lifted, as if taking a deep, happy breath. The flowers chimed. Somewhere, the clouds clapped softly together.
+
+The creature nodded again.
+
+“Fair,” it said. “Now go before the staircase grows sleepy. It does not like to be used twice in one day.”
+
+Lily gently cradled the little bird against her chest. The bird’s warmth seeped into her hands, and she felt a strange, brave joy.
+
+She walked back to the final step.
+
+The staircase waited.
+
+As Lily descended, the clouds swirled around her again, but this time they felt like friends waving goodbye. The world below grew clearer with each step. The village appeared like a toy—tiny roofs, thin roads, fields like patchwork.
+
+By the time Lily stepped onto the ground behind the mill, the morning had turned into afternoon. The air smelled like bread again.
+
+And in her arms, the golden bird sighed and fell asleep.
+
+Lily hurried to her grandmother’s cottage. She burst through the door, cheeks flushed, hair full of cloud-sparks.
+
+“Grandma!” she called.
+
+Her grandmother looked up from her knitting, startled.
+
+“Lily! Where have you been?” she demanded, then saw the sleeping bird. Her stern face softened. “Oh, my dear.”
+
+Lily told her everything.
+
+Or almost everything.
+
+She spoke of the staircase and the clouds, the meadow and the gentle animals, the strange creature with sky-colored eyes. She spoke of choosing the bird as her gift. She even spoke of leaving something behind—though she did not name the fear she had given away, because it felt like a quiet secret between her and the sky.
+
+Her grandmother listened without interrupting. When Lily finished, the old woman placed one wrinkled hand over Lily’s small one.
+
+“The staircase chose you back,” her grandmother said, voice thick with wonder. “Not everyone who climbs is invited.”
+
+Lily looked down at the bird. It made a small, content sound in its sleep.
+
+“What happens now?” Lily asked.
+
+“Now you heal it,” her grandmother said. “And you keep your promise. And you live as if you belong in the world.”
+
+That night, Lily made a little nest in a basket lined with soft cloth. She fed the bird drops of honey-water. She kept it warm by the hearth. Day by day, its wing grew stronger.
+
+And day by day, Lily felt something else grow strong inside her too.
+
+Not loud bravery.
+
+Not the kind that shouts.
+
+The quiet kind.
+
+The kind that stays.
+
+Weeks later, when the bird’s wing finally healed, it hopped onto Lily’s finger and looked at her with bright, knowing eyes. Then it fluttered up, circling her head once like a golden ribbon, and flew out the open window into the evening sky.
+
+Lily watched it go with a smile that felt like sunlight in her chest.
+
+The next morning, she went behind the mill.
+
+The staircase was still there, reaching upward into the clouds.
+
+Lily put one foot on the first step, then paused.
+
+She remembered the rule: no greed. No bragging. Balance.
+
+So she did not rush.
+
+Instead, she placed a small bundle of wildflowers at the foot of the staircase and whispered, “Thank you.”
+
+The breeze stirred, warm as a hand.
+
+And somewhere above the clouds, a meadow chimed with laughter—waiting, patiently, for the next time Lily climbed with a kind and curious heart.
+`,
   },
 
   {
