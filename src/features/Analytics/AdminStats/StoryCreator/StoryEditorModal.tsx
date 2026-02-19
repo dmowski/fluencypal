@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { UploadAudioFileButton } from '@/features/Audio/UploadAudioFileButton';
+import { UploadVideoButton } from '@/features/Video/UploadVideoButton';
 
 export const StoryEditorModal = ({
   story,
@@ -85,6 +86,26 @@ export const StoryEditorModal = ({
     setIsGenerating(false);
   };
 
+  const generateVideoDescription = async () => {
+    setIsGenerating(true);
+    const data = [story.title, story.subtitle, story.textEn].filter(Boolean).join('\n');
+    const systemMessage = `Based on the story data, create me description for a video generation model. The description should be concise and capture the essence of the story, highlighting key themes, emotions, and settings. No longer that 60 words. This video will be played in the background while the user is reading the story, so it should evoke the right atmosphere and mood for the story.`;
+
+    const generatedText = await ai.generate({
+      systemMessage,
+      userMessage: data,
+      model: 'gpt-4o',
+    });
+
+    if (generatedText) {
+      setInternalStory({
+        ...internalStory,
+        videoDescription: generatedText,
+      });
+    }
+    setIsGenerating(false);
+  };
+
   useEffect(() => {
     setInternalStory(story);
   }, [story]);
@@ -153,7 +174,7 @@ export const StoryEditorModal = ({
                 width: '700px',
               }}
               multiline
-              rows={6}
+              rows={5}
             />
 
             <Stack
@@ -168,28 +189,50 @@ export const StoryEditorModal = ({
                 onClick={generateTitleAndDescription}
                 disabled={isGenerating}
               >
-                Generate Title & Subtitle with AI
+                Title & Subtitle
               </Button>
 
               <Button variant="outlined" onClick={generateStoryText} disabled={isGenerating}>
-                Generate Story Text with AI
+                Story Text
               </Button>
 
               <Button variant="outlined" onClick={generateAudioDescription} disabled={isGenerating}>
-                Generate Audio Description
+                Audio Description
+              </Button>
+              <Button variant="outlined" onClick={generateVideoDescription} disabled={isGenerating}>
+                Video Description
               </Button>
             </Stack>
 
-            <TextField
-              label="Audio Description for Audio Generation Models (like Suno)"
-              value={internalStory.sunoPrompt || ''}
-              onChange={(e) => setInternalStory({ ...internalStory, sunoPrompt: e.target.value })}
+            <Stack
               sx={{
-                width: '700px',
+                flexDirection: 'row',
+                gap: 2,
               }}
-              multiline
-              rows={6}
-            />
+            >
+              <TextField
+                label="Audio Description for Audio Generation Models (like Suno)"
+                value={internalStory.sunoPrompt || ''}
+                onChange={(e) => setInternalStory({ ...internalStory, sunoPrompt: e.target.value })}
+                sx={{
+                  width: '600px',
+                }}
+                multiline
+                rows={7}
+              />
+              <TextField
+                label="Video Description for Video Generation Models (like Suno)"
+                value={internalStory.videoDescription || ''}
+                onChange={(e) =>
+                  setInternalStory({ ...internalStory, videoDescription: e.target.value })
+                }
+                sx={{
+                  width: '600px',
+                }}
+                multiline
+                rows={7}
+              />
+            </Stack>
 
             <Stack
               sx={{
@@ -208,6 +251,28 @@ export const StoryEditorModal = ({
                   controls
                   src={internalStory.audioUrl}
                   style={{ width: '400px' }}
+                  preload="none"
+                />
+              ) : null}
+            </Stack>
+
+            <Stack
+              sx={{
+                width: '700px',
+                alignItems: 'center',
+                flexDirection: 'row',
+                gap: '10px',
+              }}
+            >
+              <UploadVideoButton
+                type="icon"
+                onNewUploadUrl={(url) => setInternalStory((prev) => ({ ...prev, videoUrl: url }))}
+              />
+              {internalStory.videoUrl ? (
+                <video
+                  controls
+                  src={internalStory.videoUrl}
+                  style={{ width: '400px', height: '400px' }}
                   preload="none"
                 />
               ) : null}
