@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { UploadAudioFileButton } from '@/features/Audio/UploadAudioFileButton';
 import { UploadVideoButton } from '@/features/Video/UploadVideoButton';
+import { downloadAsJpg } from './downloadAsJpg';
 
 export const StoryEditorModal = ({
   story,
@@ -135,8 +136,9 @@ export const StoryEditorModal = ({
       >
         <Stack
           sx={{
-            flexDirection: 'row',
             gap: '20px',
+            display: 'grid',
+            gridTemplateColumns: '600px 1fr',
           }}
         >
           <Stack
@@ -157,11 +159,23 @@ export const StoryEditorModal = ({
                 boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
               }}
             />
+            <Button
+              sx={{
+                position: 'absolute',
+                bottom: '10px',
+                right: '10px',
+              }}
+              variant="outlined"
+              onClick={() => downloadAsJpg(internalStory.imageUrl)}
+            >
+              Download as JPG
+            </Button>
           </Stack>
 
           <Stack
             sx={{
               gap: '30px',
+              width: '100%',
             }}
           >
             <TextField
@@ -170,9 +184,7 @@ export const StoryEditorModal = ({
               onChange={(e) =>
                 setInternalStory({ ...internalStory, storySystemInstruction: e.target.value })
               }
-              sx={{
-                width: '700px',
-              }}
+              fullWidth
               multiline
               rows={5}
             />
@@ -208,16 +220,15 @@ export const StoryEditorModal = ({
               sx={{
                 flexDirection: 'row',
                 gap: 2,
+                width: '100%',
               }}
             >
               <TextField
                 label="Audio Description for Audio Generation Models (like Suno)"
                 value={internalStory.sunoPrompt || ''}
                 onChange={(e) => setInternalStory({ ...internalStory, sunoPrompt: e.target.value })}
-                sx={{
-                  width: '600px',
-                }}
                 multiline
+                fullWidth
                 rows={7}
               />
               <TextField
@@ -226,9 +237,7 @@ export const StoryEditorModal = ({
                 onChange={(e) =>
                   setInternalStory({ ...internalStory, videoDescription: e.target.value })
                 }
-                sx={{
-                  width: '600px',
-                }}
+                fullWidth
                 multiline
                 rows={7}
               />
@@ -236,7 +245,6 @@ export const StoryEditorModal = ({
 
             <Stack
               sx={{
-                width: '700px',
                 alignItems: 'center',
                 flexDirection: 'row',
                 gap: '10px',
@@ -258,7 +266,6 @@ export const StoryEditorModal = ({
 
             <Stack
               sx={{
-                width: '700px',
                 alignItems: 'center',
                 flexDirection: 'row',
                 gap: '10px',
