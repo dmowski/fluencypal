@@ -27,7 +27,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
-  const [selectedImageImageId, setSelectedImageId] = useUrlState('storyImage', '', true);
+  const [selectedImageImageId, setSelectedImageId] = useUrlState('storyImage', '', false);
 
   const auth = useAuth();
   const collectionRef = db.collections.stories(auth.uid);
