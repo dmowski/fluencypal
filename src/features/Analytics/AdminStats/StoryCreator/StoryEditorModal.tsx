@@ -64,14 +64,35 @@ export const StoryEditorModal = ({
     setIsGenerating(false);
   };
 
+  const generateAudioDescription = async () => {
+    setIsGenerating(true);
+    const data = [story.title, story.subtitle, story.textEn].filter(Boolean).join('\n');
+    const systemMessage = `Based on the story data, create me description for an audio generation model. The description should be concise and capture the essence of the story, highlighting key themes, emotions, and settings. It should be designed to inspire the creation of an audio experience that complements the narrative. Return only the description without any additional commentary. No longer that 60 words.`;
+
+    const generatedText = await ai.generate({
+      systemMessage,
+      userMessage: data,
+      model: 'gpt-4o',
+    });
+
+    if (generatedText) {
+      setInternalStory({
+        ...internalStory,
+        sunoPrompt: generatedText,
+      });
+    }
+    setIsGenerating(false);
+  };
+
   useEffect(() => {
     setInternalStory(story);
   }, [story]);
 
   const onSave = () => {
     update(internalStory);
-    onClose();
   };
+
+  const isNeedToSave = JSON.stringify(story) !== JSON.stringify(internalStory);
 
   const onDelete = () => {
     const isConfirmed = window.confirm('Are you sure you want to delete this story?');
@@ -152,7 +173,22 @@ export const StoryEditorModal = ({
               <Button variant="outlined" onClick={generateStoryText} disabled={isGenerating}>
                 Generate Story Text with AI
               </Button>
+
+              <Button variant="outlined" onClick={generateAudioDescription} disabled={isGenerating}>
+                Generate Audio Description
+              </Button>
             </Stack>
+
+            <TextField
+              label="Audio Description for Audio Generation Models (like Suno)"
+              value={internalStory.sunoPrompt || ''}
+              onChange={(e) => setInternalStory({ ...internalStory, sunoPrompt: e.target.value })}
+              sx={{
+                width: '700px',
+              }}
+              multiline
+              rows={6}
+            />
           </Stack>
         </Stack>
 
@@ -201,7 +237,7 @@ export const StoryEditorModal = ({
             }}
           >
             <Button
-              variant="contained"
+              variant={isNeedToSave ? 'contained' : 'outlined'}
               onClick={onSave}
               sx={{
                 padding: '30px 120px',
