@@ -8,6 +8,7 @@ export interface ImageDescription {
   fullImageDescription: string;
   url: string;
   id: string;
+  isPaintingVersion?: boolean;
 }
 
 const imageDescriptionsRaw: ImageDescriptionShort[] = [
@@ -1098,6 +1099,7 @@ export const paintingImageDescriptions: ImageDescription[] = paintingVersionDesc
       ...desc,
       id: convertNameIntoId(desc.shortDescription),
       url: getImagePublicUrl(desc.shortDescription, `${index}`),
+      isPaintingVersion: true,
     }));
   })
   .flat();
