@@ -132,6 +132,7 @@ export const StoryCreator = () => {
           >
             {storiesData?.map((image, index) => {
               const isPublished = image.isPublished;
+              const isAudio = image.audioUrl;
               return (
                 <Stack
                   key={index}
@@ -155,6 +156,22 @@ export const StoryCreator = () => {
                       }}
                     >
                       Published
+                    </Typography>
+                  )}
+                  {isAudio && (
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        position: 'absolute',
+                        top: 4,
+                        left: 4,
+                        backgroundColor: 'rgba(190, 39, 220, 0.8)',
+                        color: '#fff',
+                        padding: '2px 6px',
+                        borderRadius: '4px',
+                      }}
+                    >
+                      Audio
                     </Typography>
                   )}
                 </Stack>

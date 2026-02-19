@@ -68,7 +68,7 @@ export const StoryEditorModal = ({
   const generateAudioDescription = async () => {
     setIsGenerating(true);
     const data = [story.title, story.subtitle, story.textEn].filter(Boolean).join('\n');
-    const systemMessage = `Based on the story data, create me description for an audio generation model. The description should be concise and capture the essence of the story, highlighting key themes, emotions, and settings. It should be designed to inspire the creation of an audio experience that complements the narrative. Return only the description without any additional commentary. No longer that 60 words.`;
+    const systemMessage = `Based on the story data, create me description for an audio generation model. The description should be concise and capture the essence of the story, highlighting key themes, emotions, and settings. No longer that 60 words. This audio will be played in the background while the user is reading the story, so it should evoke the right atmosphere and mood for the story.`;
 
     const generatedText = await ai.generate({
       systemMessage,
@@ -232,22 +232,19 @@ export const StoryEditorModal = ({
           onChange={(e) => setInternalStory({ ...internalStory, textEn: e.target.value })}
           fullWidth
           multiline
-          rows={20}
-        />
-
-        <FormControlLabel
-          checked={internalStory.isPublished || false}
-          onChange={(e) =>
-            setInternalStory({ ...internalStory, isPublished: !internalStory.isPublished })
-          }
-          control={<Checkbox size="large" />}
-          label={<Stack>Published</Stack>}
+          rows={40}
         />
 
         <Stack
           sx={{
             flexDirection: 'row',
+            position: 'sticky',
+            bottom: '-10px',
+            marginTop: '120px',
             gap: 2,
+            backgroundColor: '#000',
+            border: '1px solid rgba(255, 255, 255, 0.4)',
+            padding: '20px 20px 30px 20px',
             justifyContent: 'space-between',
             paddingTop: '30px',
           }}
@@ -262,11 +259,20 @@ export const StoryEditorModal = ({
               variant={isNeedToSave ? 'contained' : 'outlined'}
               onClick={onSave}
               sx={{
-                padding: '30px 120px',
+                padding: '17px 120px',
               }}
             >
               Save
             </Button>
+
+            <FormControlLabel
+              checked={internalStory.isPublished || false}
+              onChange={(e) =>
+                setInternalStory({ ...internalStory, isPublished: !internalStory.isPublished })
+              }
+              control={<Checkbox size="large" />}
+              label={<Stack>Published</Stack>}
+            />
           </Stack>
 
           <Button color="error" onClick={onDelete}>
