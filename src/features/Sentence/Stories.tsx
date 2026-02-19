@@ -3,7 +3,7 @@ import { Button, ButtonGroup, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
 import { ImageDescription } from '../Game/ImagesDescriptions';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTextAi } from '../Ai/useTextAi';
 import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
@@ -21,34 +21,28 @@ import { storyData } from './storyData';
 import { getHash } from '@/libs/hash';
 import { sleep } from '@/libs/sleep';
 import { uniq } from '@/libs/uniq';
-import { shuffleArray } from '@/libs/array';
 import { StoryPreview } from './StoryPreview';
+import { db } from '../Firebase/firebaseDb';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
   const [selectedImageImageId, setSelectedImageId] = useUrlState('storyImage', '', true);
 
-  const [images, setImages] = useState<(ImageDescription | Story)[]>([]);
+  const auth = useAuth();
+  const collectionRef = db.collections.stories(auth.uid);
+  const [databaseStories] = useCollectionData(collectionRef);
+
+  const images = useMemo(() => {
+    const list = [...(databaseStories || []), ...storyData];
+    const sortedByDate = list.sort((a, b) => {
+      return b.updatedAtIso.localeCompare(a.updatedAtIso);
+    });
+
+    return sortedByDate;
+  }, [databaseStories]);
 
   const selectedImage = images.find((img) => img.id === selectedImageImageId) || null;
-
-  const reshuffleImages = () => {
-    //const sortedImageDescriptions = []; //[...imageDescriptions].sort((a, b) => a.id.localeCompare(b.id));
-    //setImages([...storyData, ...sortedImageDescriptions]);
-    setImages(shuffleArray(storyData));
-  };
-
-  const initImage = () => {
-    if (images.length > 0) return;
-
-    reshuffleImages();
-  };
-
-  useEffect(() => {
-    const isWindow = typeof window !== 'undefined';
-    if (!isWindow) return;
-    initImage();
-  }, []);
 
   const closeStory = () => {
     setSelectedImageId('');
@@ -331,6 +325,7 @@ const StoryModal = ({
         isPublished: false,
         storySystemInstruction: '',
         createdAtIso: new Date().toISOString(),
+        updatedAtIso: new Date().toISOString(),
       };
 
       console.log(JSON.stringify(story));

@@ -14,4 +14,5 @@ export interface Story {
 
   isPublished: boolean;
   createdAtIso: string;
+  updatedAtIso: string;
 }

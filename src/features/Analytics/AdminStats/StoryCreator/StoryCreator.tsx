@@ -33,6 +33,7 @@ export const StoryCreator = () => {
       isPublished: false,
       storySystemInstruction: '',
       createdAtIso: new Date().toISOString(),
+      updatedAtIso: new Date().toISOString(),
     };
 
     const docRef = doc(collectionRef, newId);
@@ -56,6 +57,7 @@ export const StoryCreator = () => {
       isPublished: false,
       storySystemInstruction: '',
       createdAtIso: new Date().toISOString(),
+      updatedAtIso: new Date().toISOString(),
     };
 
     const docRef = doc(collectionRef, newId);
@@ -66,7 +68,11 @@ export const StoryCreator = () => {
   const updateStory = async (story: Story) => {
     if (!collectionRef) return;
     const docRef = doc(collectionRef, story.id);
-    await setDoc(docRef, story);
+    await setDoc(docRef, {
+      ...story,
+      updatedAtIso: new Date().toISOString(),
+      createdAtIso: story.createdAtIso || new Date().toISOString(),
+    });
   };
 
   const onSelectImage = (id: string) => {
