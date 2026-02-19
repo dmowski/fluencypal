@@ -34,6 +34,7 @@ export const TextConstructorStories = () => {
   const [databaseStories] = useCollectionData(collectionRef);
 
   const storiesToShow = useMemo(() => {
+    if (!databaseStories) return [];
     const allElements = [...(databaseStories || []), ...storyData];
     const publishedStories = allElements.filter((s) => s.isPublished);
 
@@ -146,6 +147,7 @@ export const TextConstructorStories = () => {
               gap: '10px',
               padding: '6px 15px 20px 7px',
               width: 'max-content',
+              minHeight: '220px',
             }}
           >
             {storiesToShow.map((image, index) => {

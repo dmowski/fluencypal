@@ -6,7 +6,7 @@ import { Story } from '@/features/Sentence/types';
 import { useUrlState } from '@/features/Url/useUrlState';
 import { IconButton, Stack, Typography } from '@mui/material';
 import { deleteDoc, doc, setDoc } from 'firebase/firestore';
-import { CirclePlus } from 'lucide-react';
+import { CirclePlus, Eye, Music } from 'lucide-react';
 import { useCollection, useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { StoryEditorModal } from './StoryEditorModal';
 
@@ -155,40 +155,24 @@ export const StoryCreator = () => {
                 >
                   <StoryPreview key={index} onSelectImage={onSelectImage} image={image} />
 
-                  {isPublished && (
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        position: 'absolute',
-                        top: 4,
-                        right: 4,
-                        backgroundColor: 'rgba(39, 138, 220, 0.8)',
-                        color: '#fff',
-                        padding: '2px 6px',
-                        borderRadius: '4px',
-                        zIndex: 1,
-                      }}
-                    >
-                      Published
-                    </Typography>
-                  )}
-                  {isAudio && (
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        position: 'absolute',
-                        top: 4,
-                        left: 4,
-                        backgroundColor: 'rgba(190, 39, 220, 0.8)',
-                        color: '#fff',
-                        padding: '2px 6px',
-                        zIndex: 1,
-                        borderRadius: '4px',
-                      }}
-                    >
-                      Audio
-                    </Typography>
-                  )}
+                  <Stack
+                    sx={{
+                      position: 'absolute',
+                      top: 6,
+                      right: 6,
+                      backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                      color: '#fff',
+                      padding: '4px 8px',
+                      zIndex: 1,
+                      borderRadius: '6px',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: '8px',
+                    }}
+                  >
+                    {isAudio && <Music size={'15px'} />}
+                    {isPublished && <Eye size={'15px'} />}
+                  </Stack>
                 </Stack>
               );
             })}
