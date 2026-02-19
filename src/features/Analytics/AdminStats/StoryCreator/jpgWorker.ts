@@ -2,7 +2,7 @@ import type { JpgWorkerMessage, JpgWorkerResponse } from './jpgWorker/types';
 import { loadFFmpeg } from './jpgWorker/ffmpegLoader';
 import { convertImageToJpg } from './jpgWorker/conversion';
 
-const JPG_WORKER_BUILD_TAG = 'jpg-worker-2026-02-19-v3';
+const JPG_WORKER_BUILD_TAG = 'jpg-worker-2026-02-19-v4';
 console.log('[jpgWorker] Booted', { workerBuildTag: JPG_WORKER_BUILD_TAG });
 
 self.onmessage = async (e: MessageEvent<JpgWorkerMessage>) => {

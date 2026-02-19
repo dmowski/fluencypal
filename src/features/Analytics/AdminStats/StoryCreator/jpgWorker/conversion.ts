@@ -25,6 +25,28 @@ function sanitizeFileName(fileName: string): string {
   return safe || 'image';
 }
 
+async function convertPngToJpeg(pngData: Uint8Array, quality = 1): Promise<Uint8Array> {
+  const pngCopy = new Uint8Array(pngData.byteLength);
+  pngCopy.set(pngData);
+  const blob = new Blob([pngCopy.buffer], { type: 'image/png' });
+  const bitmap = await createImageBitmap(blob);
+
+  try {
+    const canvas = new OffscreenCanvas(bitmap.width, bitmap.height);
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      throw new Error('Cannot create 2D context for JPG encoding');
+    }
+
+    ctx.drawImage(bitmap, 0, 0);
+    const jpegBlob = await canvas.convertToBlob({ type: 'image/jpeg', quality });
+    const buffer = await jpegBlob.arrayBuffer();
+    return new Uint8Array(buffer);
+  } finally {
+    bitmap.close();
+  }
+}
+
 export async function convertImageToJpg(imageData: Uint8Array, imageName: string): Promise<void> {
   const ffmpeg = getFFmpeg();
   if (!ffmpeg) {
@@ -34,7 +56,7 @@ export async function convertImageToJpg(imageData: Uint8Array, imageName: string
   const safeOriginalName = sanitizeFileName(imageName || 'image');
   const inputExt = getExtension(safeOriginalName);
   const inputName = `input.${inputExt}`;
-  const outputName = 'output.jpg';
+  const outputName = 'output.png';
   const finalName = `${getBaseName(safeOriginalName)}.jpg`;
 
   console.log('[jpgWorker/conversion] convertImageToJpg called', {
@@ -53,7 +75,7 @@ export async function convertImageToJpg(imageData: Uint8Array, imageName: string
     data: { progress: 0 },
   } as JpgWorkerResponse);
 
-  const args = ['-i', inputName, '-frames:v', '1', '-q:v', '2', outputName];
+  const args = ['-i', inputName, '-frames:v', '1', outputName];
   console.log('[jpgWorker/conversion] Running ffmpeg.exec', args);
 
   let exitCode: number;
@@ -84,9 +106,13 @@ export async function convertImageToJpg(imageData: Uint8Array, imageName: string
     data: { progress: 80 },
   } as JpgWorkerResponse);
 
-  console.log('[jpgWorker/conversion] Reading output file');
-  const data = await ffmpeg.readFile(outputName);
-  console.log('[jpgWorker/conversion] Output file read', { outputBytes: data.byteLength });
+  console.log('[jpgWorker/conversion] Reading PNG output file');
+  const pngData = await ffmpeg.readFile(outputName);
+  console.log('[jpgWorker/conversion] PNG output read', { outputBytes: pngData.byteLength });
+
+  console.log('[jpgWorker/conversion] Converting PNG to JPG in worker canvas');
+  const data = await convertPngToJpeg(pngData, 1);
+  console.log('[jpgWorker/conversion] JPG output produced', { outputBytes: data.byteLength });
 
   try {
     console.log('[jpgWorker/conversion] Cleaning up temp files');

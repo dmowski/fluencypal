@@ -10,7 +10,7 @@ export interface ImageConversionResult {
   imageName: string;
 }
 
-const JPG_WORKER_BUILD_TAG = 'jpg-worker-2026-02-19-v3';
+const JPG_WORKER_BUILD_TAG = 'jpg-worker-2026-02-19-v4';
 
 export class ImageJpgConverter {
   private worker: Worker | null = null;
