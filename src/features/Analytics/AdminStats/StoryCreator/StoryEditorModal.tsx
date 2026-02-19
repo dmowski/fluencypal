@@ -259,7 +259,8 @@ export const StoryEditorModal = ({
               variant={isNeedToSave ? 'contained' : 'outlined'}
               onClick={onSave}
               sx={{
-                padding: '17px 120px',
+                height: '56px',
+                width: '240px',
               }}
             >
               Save
