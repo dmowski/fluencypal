@@ -34,6 +34,7 @@ import {
   UserChatMetadata,
 } from '../Chat/type';
 import { GameBattle } from '../Game/Battle/types';
+import { Story } from '../Sentence/types';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -80,6 +81,8 @@ export const db = {
 
     userChatList: (userId?: string) =>
       userId ? dataPointCollection<UserChatMetadata>(`chat`) : null,
+
+    stories: (userId?: string) => (userId ? dataPointCollection<Story>(`stories`) : null),
 
     usersChatMessages: (space: string, userId: string) =>
       userId ? dataPointCollection<ThreadsMessage>(`chat/${space}/messages`) : null,

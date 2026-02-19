@@ -1,13 +1,15 @@
 export interface Story {
   id: string;
   title: string;
-  subtitle?: string;
+  subtitle: string | null;
 
-  videoUrl?: string;
-  audioUrl?: string;
+  videoUrl: string | null;
+  audioUrl: string | null;
   imageUrl: string;
 
   textEn: string;
-  sunoPrompt?: string;
-  videoDescription?: string;
+  sunoPrompt: string | null;
+  videoDescription: string | null;
+
+  isPublished: boolean;
 }

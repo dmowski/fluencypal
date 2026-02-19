@@ -19,6 +19,9 @@ In a small town, Emma was known for her bravery. One day, the people were unhapp
 Together, they walked through the streets, calling for justice and equality. Some people joined; others watched from their windows. As they marched, they passed the fallen bodies of those who had tried before. This sight gave them even more courage. Emma felt a strong sense of responsibility, leading her friends toward a better future. The flag waved proudly, and the people knew they were fighting for what was right. Emma's courage inspired everyone.
 
 `,
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
   },
 
   {
@@ -32,6 +35,9 @@ Together, they walked through the streets, calling for justice and equality. Som
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicVideo%2Fcaffe.webm?alt=media&token=0327dd73-c2b4-4f2a-b4f8-dac89cf481eb',
     textEn:
       'It was a quiet night at the small diner on the corner. The street outside was empty, and the city was asleep. A thin fog moved slowly along the road, covering the sidewalks and hiding the far end of the street. The sign above the diner door made a soft clicking sound as it swung gently in the cold wind. Inside, three customers sat at the counter. An old man drank coffee and read the newspaper, turning each page slowly, as if he had all the time in the world. A young couple shared a slice of pie, whispering softly to each other and smiling at private jokes. Behind the counter, the server, a woman named Lily, moved from table to table with quiet steps. She smiled at the old man and poured him more coffee. She asked the couple if they needed anything else. Her voice was calm, almost too calm for such a late hour. The fluorescent lights above buzzed gently, filling the diner with a soft, warm glow. Outside, the street lights flickered once, then again. For a moment, the light through the window turned pale and strange, and the shadows inside the diner seemed longer than before. Inside, the diner still felt safe and cozy, and the smell of coffee and warm pie filled the air. Then the old man suddenly stopped turning his page. He looked up at Lily with wide, confused eyes and asked, "Have we met before?" Lily froze for a second, then smiled again and said softly that she did not think so. The young couple stopped whispering and looked toward the window, sure they had seen someone standing in the fog outside. All three customers turned their heads at the same time, but the street was empty. The fog was thicker now, pressing against the glass like a living thing. The street lights flickered again and then went out completely. Inside, the fluorescent lights began to buzz louder, and the warm glow slowly turned cold and white. The old man looked down at his newspaper and felt his heart beat faster. The date on the front page was not today’s date. It was the same date as yesterday. He turned to the couple and asked if they had not sat there the night before. The couple stared at each other, and the boy whispered that they had eaten the same pie in the same seats. Lily stood very still behind the counter, her smile unchanged. She told them gently that it was just another quiet night and that they did not need to worry. The lights flickered once more, and for a brief second, the diner fell into complete darkness. When the lights came back on, the old man, the couple, and the half-eaten slice of pie were exactly where they had been before. Outside, the fog covered the street again, and the empty city waited silently for the diner to open for another quiet night.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
   },
 
   {
@@ -92,6 +98,9 @@ It had chosen.
 And now the desert was awake.
 
 Arin stood at the top of the dune, holding a piece of the broken sky, knowing that his quiet evenings were over — and that his real journey had just begun.`,
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
   },
 
   {
@@ -191,6 +200,10 @@ Wings ready.
 And somewhere inside Ben’s heart, another masterpiece had already begun to form.`,
     sunoPrompt: `Cinematic orchestral background music with slow-building strings, deep cellos, subtle brass swells, and soft rhythmic percussion. Steady, focused atmosphere reflecting craftsmanship and dedication. Mid-section becomes slightly uplifting and expansive as the sculpture takes form, ending with warm, inspiring strings and gentle choir pads. Emotional, artistic, and powerful, moderate tempo.`,
     videoDescription: `A passionate sculptor spends the day transforming a massive block of stone into a graceful angel. Through dust, patience, and steady hands, beauty slowly emerges from the marble — reminding us that masterpieces are hidden inside what seems unbreakable.`,
+
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
   },
 
   {
@@ -449,6 +462,9 @@ The breeze stirred, warm as a hand.
 
 And somewhere above the clouds, a meadow chimed with laughter—waiting, patiently, for the next time Lily climbed with a kind and curious heart.
 `,
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
   },
 
   {
@@ -461,6 +477,9 @@ And somewhere above the clouds, a meadow chimed with laughter—waiting, patient
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fthe-kiss-by-gustav-klimt_1.webp?alt=media',
     textEn: `In a beautiful garden, Anna and Leo stood under a big, old tree. They wore robes as bright as the sun, covered with small, shining patterns like a mosaic. Flowers bloomed all around them, filling the air with their sweet scent. Anna and Leo were very much in love. They looked deeply into each other's eyes and felt the world around them disappear. Leo gently wrapped his arms around Anna, and she hugged him back. It was a moment of pure happiness. The flowers swayed in the gentle breeze, as if they were dancing for the couple. The garden was a magical place, and Anna and Leo knew their love would bloom forever, just like the flowers around them.`,
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
   },
   {
     id: 'story-a-child-drawing-on-a-foggy-window',
@@ -469,6 +488,12 @@ And somewhere above the clouds, a meadow chimed with laughter—waiting, patient
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-child-drawing-on-a-foggy-window.webp?alt=media',
     textEn:
       'On a cold winter morning, little Emma sat by the window. The outside world was covered in a blanket of white snow. She could see her breath as she exhaled softly. The window was fogged up from the warmth inside the house. Emma smiled and reached out with her finger to the misty glass. Slowly, she drew a big, happy face. It had bright eyes and a wide, cheerful smile. Next, she added a round sun in the top corner, shining down on everyone. Her mom came over and laughed. "That\'s a beautiful picture, Emma," she said. Emma giggled and added a little heart beside her creations. Drawing on the window made the cold day feel warm and fun.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-crying-child-holding-a-teddy-bear',
@@ -476,6 +501,12 @@ And somewhere above the clouds, a meadow chimed with laughter—waiting, patient
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-crying-child-holding-a-teddy-bear.webp?alt=media',
     textEn: `Once upon a time, there was a small child named Sam. Sam was feeling very sad one rainy afternoon. Sitting on the floor, Sam hugged a worn teddy bear tightly. The teddy bear's name was Mr. Fluffy, and he was Sam’s best friend. Tears ran down Sam's face. Sam had lost his favorite toy truck and couldn’t find it anywhere. “Mr. Fluffy, what will I do?” Sam whispered softly. Mr. Fluffy was old and had many patches, but he always listened carefully. Sam felt a little better with Mr. Fluffy in his arms. After a while, Sam’s mom came to help. Together with Mr. Fluffy, they searched everywhere. Soon, they found the missing truck under the bed. Sam smiled, hugging both Mr. Fluffy and the truck with joy.`,
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
 
   {
@@ -485,6 +516,12 @@ And somewhere above the clouds, a meadow chimed with laughter—waiting, patient
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-camel-ride-in-the-desert.webp?alt=media',
     textEn:
       'In a wide golden desert, where the sand seemed to stretch forever, a group of friends began an exciting journey. They wanted to see what was waiting beyond the tall dunes and feel the silence of the open land. They rode on camels across the soft, sandy hills. The sun shone brightly in the clear blue sky, and the sand sparkled like tiny stars. Each friend wore a colorful scarf to protect their face from the hot, blowing wind, and the scarves danced in the air as they moved forward. The camels walked slowly, swaying gently with each step, and small bells around their necks rang in a calm, steady rhythm. At first, the sound felt peaceful. The friends laughed and talked, enjoying the beauty around them. After some time, the dunes grew higher and the path became harder to see. The wind grew stronger, and the sky slowly changed. The bright blue color faded, and a light brown cloud appeared far away on the horizon. Suddenly, the wind began to roar. Sand rose into the air and spun around them. The bells of the camels rang loudly and wildly. The friends could barely see each other through the moving sand. Fear replaced their laughter as they held tightly to their camels. The storm grew stronger for a few long minutes that felt like hours. One friend shouted that they must stay close and follow the tallest camel, which knew the way back. With courage and trust, they moved slowly through the storm, step by careful step. Then, just as suddenly as it had begun, the wind calmed. The sand fell back to the ground, and the sky slowly cleared. The friends found themselves standing on top of a high dune. Before them lay a breathtaking view of the desert glowing in the light of the setting sun. The sky turned pink and orange, and the sand shone warmly under the soft evening light. The friends looked at each other with relief and pride. They had faced the storm together and had not given up. Their camel ride in the desert had become more than an adventure—it had become a story they would never forget.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-dancer-frozen-mid-jump',
@@ -587,6 +624,11 @@ Emma sat and watched.
 
 Waiting for the next performance.
 `,
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
   },
   {
     id: 'story-a-family-decorating-a-christmas-tree',
@@ -596,6 +638,12 @@ Waiting for the next performance.
 
     textEn:
       'It was a cold winter evening, and the Johnson family was excited. Today, they would decorate their Christmas tree. Mom and Dad brought a big, green tree into the living room. It smelled fresh and lovely. Jenny and her little brother Timmy were eager to help. They opened boxes full of colorful ornaments. Timmy picked up a shiny red ball and carefully hung it on a branch. Jenny found her favorite ornament, a tiny angel, and placed it at the top. Dad turned on the twinkling lights. The tree sparkled with colors. Everyone stood back and admired their work. It was beautiful! The Johnson family felt happy and together. They knew it was going to be a wonderful holiday season.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-fashion-model-walking-on-a-runway',
@@ -605,6 +653,12 @@ Waiting for the next performance.
 
     textEn:
       'Lena is a famous model. Today, she is walking in a big fashion show. The room is full of people who love fashion. Lena is tall and confident. She wears a beautiful, red dress. The dress is shiny and has gold buttons. Her shoes are high heels, and they sparkle when she walks. As Lena steps onto the runway, the lights are bright. The music is loud and exciting. She walks with grace and poise. Everyone watches her. Cameras flash as photographers take many pictures. Lena smiles because she loves her job. At the end of the runway, she turns and walks back. The crowd claps for her. Lena feels happy and proud. Today is a great day for her.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-gondola-ride-in-venice',
@@ -614,6 +668,12 @@ Waiting for the next performance.
 
     textEn:
       "In the beautiful city of Venice, a gondola glided through the narrow canals. Marco, the gondolier, stood on the back of the boat. He skillfully rowed through the calm waters with his long oar. The old buildings on each side seemed to whisper stories from the past. Their colorful walls reflected in the water below. Tourists sat in the gondola, taking pictures and enjoying the gentle breeze. Marco smiled as he shared tales of Venice with his passengers. He talked about the city's history, the famous bridges, and the delicious food. As the day slowly ended, the sun set over Venice, painting the sky in shades of orange and pink. The gondola drifted peacefully, creating memories for everyone.",
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-hand-holding-a-mysterious-glowing-object',
@@ -623,6 +683,12 @@ Waiting for the next performance.
 
     textEn:
       'In a dark room, Mia sat quietly, holding a small glowing orb in her hand. The light from the orb lit up her fingers and her face, making shadows dance around her. She found the orb one day while walking in the forest. It was hidden under some leaves, shining softly. Mia liked how the orb made her feel calm and peaceful. It was like holding a piece of the moon. She often sat in her room, just watching it glow. The light was gentle, and it seemed to whisper secrets only she could hear. As she held the orb, Mia smiled, feeling a special kind of magic. It was as if the orb knew her dreams and kept them safe.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-horse-in-a-meadow',
@@ -632,6 +698,12 @@ Waiting for the next performance.
 
     textEn:
       'In a beautiful green meadow, there was a brown horse named Bella. She loved the open fields and the colorful wildflowers that danced in the breeze. The sun shone brightly, making the flowers sparkle like little stars.  Bella often wandered around the meadow, grazing on the fresh grass. She enjoyed the view of the tall mountains in the distance. They watched over her like gentle giants, their peaks covered with snow even in summer. One day, Bella noticed a butterfly fluttering near the flowers. Curious, she followed it, trotting softly through the meadow. The butterfly led her to a small stream where the water glistened in the sunlight. Bella felt happy and free. The meadow was her favorite place to be.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-maasai-warrior-standing-in-the-savanna',
@@ -641,6 +713,12 @@ Waiting for the next performance.
 
     textEn:
       'In the vast African savanna, the sun was setting, painting the sky in orange and pink hues. A Maasai warrior, named Tandu, stood proudly. He wore a bright red shuka, a traditional cloth, wrapped around his shoulders. Tandu also wore beautiful beaded jewelry that sparkled in the fading light. As the cool breeze swept across the grasslands, Tandu listened to the sounds of nature. He could hear the distant call of a lion and the soft rustle of trees. Tandu loved this land—it was his home. Every evening, Tandu watched the sunset, feeling the strength of his ancestors. The land taught him courage and wisdom. As the sky darkened, Tandu knew he was a protector of both the land and his people.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-man-fishing-by-a-lake',
@@ -650,6 +728,12 @@ Waiting for the next performance.
 
     textEn:
       'Early in the morning, John stood quietly on the wooden dock. In his hands, he held a fishing rod. The lake before him was calm and covered with a thin layer of fog. The water was like a mirror, reflecting the soft light of the rising sun. John loved these mornings. It was peaceful and quiet. He could hear birds singing in the trees and the gentle splash of water as fish jumped. He cast his line into the lake, hoping to catch a big fish for breakfast. As he waited, he thought about how lucky he was to enjoy such a beautiful place. The fresh air and the stillness of the morning made him feel very happy.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-maze-viewed-from-above',
@@ -659,6 +743,12 @@ Waiting for the next performance.
 
     textEn:
       'Once upon a time, there was a big hedge maze in a beautiful garden. The maze was full of tall green walls made of bushes. One sunny day, a young man named Jack decided to explore the maze. From above, the maze looked like a giant puzzle. Jack walked inside the maze, and the sun cast long shadows on the path. He turned left, then right, trying to find the way out. Sometimes, he would end up in a dead end and had to turn around. But Jack didn’t give up. He enjoyed his adventure, imagining he was a brave explorer. After a while, he finally found the exit. Jack smiled, happy and proud of his journey through the maze.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-person-hiking-in-the-himalayas',
@@ -668,6 +758,12 @@ Waiting for the next performance.
 
     textEn:
       'Tom is a brave hiker. He loves to explore new places. One day, he decides to climb a rocky trail in the Himalayas. The path is steep and challenging, but Tom feels excited. He wears a warm jacket, boots, and carries a backpack with food and water. As he climbs higher, he sees the beautiful snow-capped peaks in the distance. The sky is bright and blue above him. The fresh mountain air is cold but refreshing. Tom stops for a moment to catch his breath and admire the view. He takes a deep breath and smiles. "This is amazing," he says to himself. The adventure is hard, but Tom feels happy and free. He continues climbing, ready to see more of this incredible mountain.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-person-inside-a-transparent-bubble',
@@ -677,6 +773,12 @@ Waiting for the next performance.
 
     textEn:
       'Once upon a time, in a wide green field, there was a magical bubble. Inside this clear bubble floated a young girl named Lily. The bubble was special because it could fly high in the sky. Every morning, the bubble would lift Lily up. She would wave to the birds and look down at the tiny houses below. Lily felt like she was in a dream. One day, as she floated, she saw a rainbow. The bubble took her closer, and she touched the colors. It was like magic! When the sun went down, the bubble gently landed back in the field. Lily smiled and knew each day in the bubble would bring new adventures. And that made her very happy.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-person-walking-in-the-rain-with-an-umbrella',
@@ -686,6 +788,12 @@ Waiting for the next performance.
 
     textEn:
       'Emma was strolling down the city street dressed in her yellow raincoat. It was raining softly, and the bright lights from the shops reflected beautifully in the puddles on the ground. Emma held her colorful umbrella, which was red, blue, and green. It made her smile, even on this gray day. As she walked, she heard the gentle splash of her boots in the puddles. The street was not too busy, so Emma enjoyed the peaceful sound. She looked around at the glowing lights shimmering in the water, creating a magical scene. Despite the rain, Emma felt happy and cozy under her umbrella. She loved walking in the rain and feeling the fresh drops on her face. It was her favorite weather.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-person-walking-upside-down-surreal-style',
@@ -695,6 +803,12 @@ Waiting for the next performance.
 
     textEn:
       'Once upon a time, in a magical town called Upside-Downville, there lived a young girl named Lily. One morning, Lily woke up and found herself walking on the ceiling! She looked down and saw her room below her. Everything was turned upside down. At first, Lily was scared. But soon, she laughed and enjoyed her new trick. She danced across the ceiling like a ballerina. Her cat, Whiskers, watched her with wide eyes from the floor. Lily had so much fun, she forgot about feeling scared. She imagined being like a superhero who could walk on ceilings. Eventually, gravity returned to normal, and Lily gently floated back. From that day on, Lily knew Upside-Downville held many surprises. She was excited to discover them all.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-person-wearing-a-raincoat-and-boots',
@@ -704,6 +818,12 @@ Waiting for the next performance.
 
     textEn:
       "One rainy afternoon, Alex stood outside in the garden. The sky was gray, and the rain fell in steady drops. Alex wore a bright yellow raincoat and rubber boots, ready to meet the rain. In one hand, Alex held a closed umbrella. Alex loved the rain and listening to its rhythm. The garden looked beautiful, with raindrops on green leaves and colorful flowers. The umbrella stayed closed because Alex wanted to feel the rain. Alex walked around, enjoying the wet earth under the boots. A bird sang somewhere, happy with the rain too. After a while, Alex smiled and went inside, feeling refreshed and joyful. The rain had stopped, but the memory stayed bright, like Alex's yellow raincoat.",
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-reflection-in-a-puddle',
@@ -713,6 +833,12 @@ Waiting for the next performance.
 
     textEn:
       "One rainy afternoon, Emma walked home from school. As she stepped carefully around the puddles on the street, she noticed something interesting. In one large puddle, she saw the tall city building reflected perfectly in the water. It was like the building had its twin in the puddle. Emma smiled and took a moment to enjoy the sight. She imagined small fish swimming near the building's reflection, as if it were an underwater city. Just then, a gentle breeze rippled the water, making the reflection dance like it was alive. Emma continued walking, feeling happy from her small discovery. She knew that even rainy days can hold little bits of magic.",
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
   {
     id: 'story-a-scared-person-watching-a-horror-movie',
@@ -722,6 +848,12 @@ Waiting for the next performance.
 
     textEn:
       "It was a dark and stormy night. Sam sat alone on the couch, watching a spooky movie. The room was dark, except for the glow of the TV. The howling wind outside made the house creak and groan.  The movie showed an old, haunted house. Suddenly, a ghost appeared on the screen, making a loud noise. Sam gasped and covered their mouth in fear.  Sam's eyes were wide, glued to the screen. The ghost moved closer, and Sam's heart beat faster.  Just then, a loud thunderclap made Sam jump. \"Phew, it's just a movie,\" Sam whispered, trying to calm down.  Even though it was scary, Sam couldn't stop watching. It was going to be a spooky night!",
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
 
   {
@@ -732,5 +864,11 @@ Waiting for the next performance.
 
     textEn:
       'Lily was walking home one evening when she stopped under a streetlamp. She noticed something strange. Her shadow was not standing still. Instead, it moved on its own! Lily watched in surprise. Her shadow stretched out its hand, as if trying to touch something. "How is this happening?" Lily wondered. She waved her arm, but the shadow did not follow. Lily felt a shiver but decided to step forward. Her shadow slid back into place, mirroring her again. Relieved, Lily continued her walk home, but she couldn\'t shake the feeling of mystery. From that day on, Lily often checked her shadow, curious and amazed by the unusual experience. Sometimes, life can be more mysterious than it seems.',
+    sunoPrompt: null,
+    videoDescription: null,
+    isPublished: true,
+    videoUrl: null,
+    audioUrl: null,
+    subtitle: null,
   },
 ];
