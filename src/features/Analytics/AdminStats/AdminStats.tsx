@@ -11,6 +11,7 @@ import { UserCard } from './UserCard';
 import { AdminMetrics } from './AdminMetrics';
 import { copyToClipboard } from './copyToClipboard';
 import { StoryCreator } from './StoryCreator';
+import { useUrlState } from '@/features/Url/useUrlState';
 
 export function AdminStats() {
   const auth = useAuth();
@@ -156,7 +157,7 @@ export function AdminStats() {
           ? secondDayVisitors
           : thirdAndMoreDayVisitors;
 
-  const [isStoryCreator, setIsStoryCreator] = useState(false);
+  const [isStoryCreator, setIsStoryCreator] = useUrlState('storyCreator', false, false);
 
   if (!isAdmin) return <></>;
   return (
@@ -183,7 +184,7 @@ export function AdminStats() {
         </Button>
 
         <Button
-          onClick={() => setIsStoryCreator((prev) => !prev)}
+          onClick={() => setIsStoryCreator(!isStoryCreator)}
           sx={{
             width: 'max-content',
             padding: '10px 50px',
