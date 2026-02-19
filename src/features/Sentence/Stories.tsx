@@ -34,8 +34,10 @@ export const TextConstructorStories = () => {
   const [databaseStories] = useCollectionData(collectionRef);
 
   const storiesToShow = useMemo(() => {
-    const list = [...(databaseStories || []), ...storyData];
-    const sortedByDate = list.sort((a, b) => {
+    const allElements = [...(databaseStories || []), ...storyData];
+    const publishedStories = allElements.filter((s) => s.isPublished);
+
+    const sortedByDate = publishedStories.sort((a, b) => {
       return b.updatedAtIso.localeCompare(a.updatedAtIso);
     });
 

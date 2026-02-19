@@ -1821,7 +1821,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Sentence/Stories.tsx:864
+#: src/features/Sentence/Stories.tsx:798
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -2955,7 +2955,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "Acceso anticipado a nuevas herramientas"
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/Stories.tsx:530
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "Fácil"
@@ -3752,6 +3752,12 @@ msgstr ""
 "Error al enviar el informe. Por favor, intenta usar el chat de soporte para "
 "reportar a este usuario o envía un correo electrónico con los detalles a\n"
 
+#: src/features/Audio/UploadAudioFileButton.tsx:56
+#: src/features/Audio/UploadAudioFileButton.tsx:63
+#. js-lingui-explicit-id
+msgid "Failed to upload audio. Please try again."
+msgstr "Error al subir el audio. Por favor, inténtalo de nuevo."
+
 #: src/features/Game/UploadImageButton.tsx:47
 #: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
@@ -3815,6 +3821,7 @@ msgstr "Comentarios que ayudan"
 msgid "File size must be less than 250MB"
 msgstr "El tamaño del archivo debe ser inferior a 250 MB"
 
+#: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Game/UploadImageButton.tsx:37
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
@@ -4310,7 +4317,7 @@ msgstr "Acceso completo al entrenador de entrevistas de IA"
 msgid "Full AI tutor access"
 msgstr "Acceso completo al tutor de IA"
 
-#: src/features/Sentence/Stories.tsx:823
+#: src/features/Sentence/Stories.tsx:757
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "Historia completa:"
@@ -4824,7 +4831,7 @@ msgstr "Maneja la concurrencia con confianza"
 msgid "Happy April 1st!"
 msgstr "¡Feliz 1 de abril!"
 
-#: src/features/Sentence/Stories.tsx:610
+#: src/features/Sentence/Stories.tsx:544
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "Difícil"
@@ -7132,7 +7139,7 @@ msgstr ""
 msgid "Medical Talk Simulation"
 msgstr "Simulación de Conversación Médica"
 
-#: src/features/Sentence/Stories.tsx:603
+#: src/features/Sentence/Stories.tsx:537
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "Medio"
@@ -7429,7 +7436,7 @@ msgstr "Siguiente pregunta"
 msgid "Next Step"
 msgstr "Siguiente paso"
 
-#: src/features/Sentence/Stories.tsx:642
+#: src/features/Sentence/Stories.tsx:576
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "Próxima historia"
@@ -8263,6 +8270,11 @@ msgstr "Por favor, graba un mensaje más largo (al menos unas pocas palabras)."
 msgid "Please refresh the page and try one more time"
 msgstr "Por favor, refresca la página e intenta una vez más"
 
+#: src/features/Audio/UploadAudioFileButton.tsx:40
+#. js-lingui-explicit-id
+msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
+msgstr "Por favor, selecciona un archivo de audio válido (MP3, WAV, OGG o M4A)"
+
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
@@ -8707,7 +8719,7 @@ msgstr "Preparando el cerebro"
 msgid "Preparing your game..."
 msgstr "Preparando tu juego..."
 
-#: src/features/Sentence/Stories.tsx:626
+#: src/features/Sentence/Stories.tsx:560
 #. js-lingui-explicit-id
 msgid "Preparing..."
 msgstr "Preparando..."
@@ -8717,7 +8729,7 @@ msgstr "Preparando..."
 msgid "Press the button below to generate a story based on this image"
 msgstr "Presione el botón de abajo para generar una historia basada en esta imagen"
 
-#: src/features/Sentence/Stories.tsx:281
+#: src/features/Sentence/Stories.tsx:206
 #. js-lingui-explicit-id
 msgid "Press the button below to start the adventure!"
 msgstr "Pulsa el botón de abajo para comenzar la aventura!"
@@ -8975,7 +8987,7 @@ msgstr ""
 "Especialistas en React, Vue o Angular enfrentan rondas de arquitectura y "
 "diseño de sistemas\n"
 
-#: src/features/Sentence/Stories.tsx:626
+#: src/features/Sentence/Stories.tsx:560
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Leer"
@@ -10443,7 +10455,7 @@ msgstr ""
 msgid "Stop"
 msgstr "Detener"
 
-#: src/features/Sentence/Stories.tsx:115
+#: src/features/Sentence/Stories.tsx:109
 #. js-lingui-explicit-id
 msgid "Stories"
 msgstr "Historias"
@@ -10585,7 +10597,7 @@ msgstr "Suscripción necesaria"
 msgid "subscription plans"
 msgstr "planes de suscripción"
 
-#: src/features/Sentence/Stories.tsx:752
+#: src/features/Sentence/Stories.tsx:686
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr "Tasa de éxito:"
@@ -11559,7 +11571,7 @@ msgstr "Días de prueba"
 msgid "Try"
 msgstr "Intenta"
 
-#: src/features/Sentence/Stories.tsx:852
+#: src/features/Sentence/Stories.tsx:786
 #. js-lingui-explicit-id
 msgid "Try another story"
 msgstr "Prueba otra historia"
@@ -11753,6 +11765,11 @@ msgstr ""
 "Mejora para desbloquear conversaciones ilimitadas con IA y todos los modos "
 "de práctica"
 
+#: src/features/Audio/UploadAudioFileButton.tsx:103
+#. js-lingui-explicit-id
+msgid "Upload audio"
+msgstr "Subir audio"
+
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
@@ -11769,6 +11786,7 @@ msgstr "Carga habilidades lingüísticas directamente en tu cerebro"
 msgid "Upload video"
 msgstr "Subir video"
 
+#: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:186
 #. js-lingui-explicit-id
@@ -12212,7 +12230,7 @@ msgstr ""
 "Bienvenido a tu Preparación para la Entrevista de Desarrollador Frontend "
 "Senior"
 
-#: src/features/Sentence/Stories.tsx:709
+#: src/features/Sentence/Stories.tsx:643
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "¡Bien hecho! Completaste la historia."
@@ -12509,7 +12527,7 @@ msgstr "Palabras por turno"
 msgid "Words to Learn"
 msgstr "Palabras para Aprender"
 
-#: src/features/Sentence/Stories.tsx:776
+#: src/features/Sentence/Stories.tsx:710
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "Palabras a las que prestar atención:"
@@ -13239,7 +13257,7 @@ msgstr "{userName} ¡te reta a un debate!"
 msgid "{winnerName} wins!"
 msgstr "{winnerName} gana!"
 
-#: src/features/Sentence/Stories.tsx:576
+#: src/features/Sentence/Stories.tsx:510
 #. js-lingui-explicit-id
 msgid "{wordsCount} words"
 msgstr "{countDEpalabras} palabras"
