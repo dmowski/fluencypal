@@ -13,7 +13,13 @@ import { StoryEditorModal } from './StoryEditorModal';
 export const StoryCreator = () => {
   const auth = useAuth();
   const collectionRef = db.collections.stories(auth.uid);
-  const [storiesData] = useCollectionData(collectionRef);
+  const [storiesDataRaw] = useCollectionData(collectionRef);
+
+  const storiesData = [
+    ...(storiesDataRaw || []).sort((a, b) => {
+      return b.updatedAtIso.localeCompare(a.updatedAtIso);
+    }),
+  ];
 
   const [selectedStoryId, setSelectedStoryId] = useUrlState('selectedStory', '', false);
 
@@ -160,6 +166,7 @@ export const StoryCreator = () => {
                         color: '#fff',
                         padding: '2px 6px',
                         borderRadius: '4px',
+                        zIndex: 1,
                       }}
                     >
                       Published
@@ -175,6 +182,7 @@ export const StoryCreator = () => {
                         backgroundColor: 'rgba(190, 39, 220, 0.8)',
                         color: '#fff',
                         padding: '2px 6px',
+                        zIndex: 1,
                         borderRadius: '4px',
                       }}
                     >

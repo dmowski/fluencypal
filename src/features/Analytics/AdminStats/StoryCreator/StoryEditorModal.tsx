@@ -126,8 +126,16 @@ export const StoryEditorModal = ({
 
   const textWordsCount = internalStory.textEn ? internalStory.textEn.split(/\s+/).length : 0;
 
+  const onCloseHandler = () => {
+    if (isNeedToSave) {
+      const isConfirmed = window.confirm('You have unsaved changes. Do you want to discard them?');
+      if (!isConfirmed) return;
+    }
+    onClose();
+  };
+
   return (
-    <CustomModal isOpen={true} onClose={onClose}>
+    <CustomModal isOpen={true} onClose={onCloseHandler}>
       <Stack
         sx={{
           width: '100%',
