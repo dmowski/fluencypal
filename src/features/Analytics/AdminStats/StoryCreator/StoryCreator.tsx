@@ -107,6 +107,61 @@ export const StoryCreator = () => {
         </IconButton>
       </Stack>
 
+      <Stack>
+        <Typography variant="h6">All stories:</Typography>
+
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            gap: 2,
+            flexWrap: 'wrap',
+          }}
+        >
+          {storiesData?.length === 0 && <Typography>No stories yet</Typography>}
+
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              alignItems: 'flex-start',
+              gap: '10px',
+              padding: '6px 15px 20px 7px',
+              width: 'max-content',
+            }}
+          >
+            {storiesData?.map((image, index) => {
+              const isPublished = image.isPublished;
+              return (
+                <Stack
+                  key={index}
+                  sx={{
+                    position: 'relative',
+                  }}
+                >
+                  <StoryPreview key={index} onSelectImage={onSelectImage} image={image} />
+
+                  {isPublished && (
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        position: 'absolute',
+                        top: 4,
+                        right: 4,
+                        backgroundColor: 'rgba(39, 138, 220, 0.8)',
+                        color: '#fff',
+                        padding: '2px 6px',
+                        borderRadius: '4px',
+                      }}
+                    >
+                      Published
+                    </Typography>
+                  )}
+                </Stack>
+              );
+            })}
+          </Stack>
+        </Stack>
+      </Stack>
+
       <Stack
         sx={{
           width: '100%',
@@ -148,61 +203,6 @@ export const StoryCreator = () => {
                     />
                   );
                 })}
-            </Stack>
-          </Stack>
-        </Stack>
-
-        <Stack>
-          <Typography variant="h6">All stories:</Typography>
-
-          <Stack
-            sx={{
-              flexDirection: 'row',
-              gap: 2,
-              flexWrap: 'wrap',
-            }}
-          >
-            {storiesData?.length === 0 && <Typography>No stories yet</Typography>}
-
-            <Stack
-              sx={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                gap: '10px',
-                padding: '6px 15px 20px 7px',
-                width: 'max-content',
-              }}
-            >
-              {storiesData?.map((image, index) => {
-                const isPublished = image.isPublished;
-                return (
-                  <Stack
-                    key={index}
-                    sx={{
-                      position: 'relative',
-                    }}
-                  >
-                    <StoryPreview key={index} onSelectImage={onSelectImage} image={image} />
-
-                    {isPublished && (
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          position: 'absolute',
-                          top: 4,
-                          right: 4,
-                          backgroundColor: 'rgba(39, 138, 220, 0.8)',
-                          color: '#fff',
-                          padding: '2px 6px',
-                          borderRadius: '4px',
-                        }}
-                      >
-                        Published
-                      </Typography>
-                    )}
-                  </Stack>
-                );
-              })}
             </Stack>
           </Stack>
         </Stack>
