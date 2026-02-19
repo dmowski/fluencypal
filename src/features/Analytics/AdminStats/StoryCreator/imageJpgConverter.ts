@@ -10,6 +10,8 @@ export interface ImageConversionResult {
   imageName: string;
 }
 
+const JPG_WORKER_BUILD_TAG = 'jpg-worker-2026-02-19-v3';
+
 export class ImageJpgConverter {
   private worker: Worker | null = null;
   private isLoaded = false;
@@ -25,8 +27,11 @@ export class ImageJpgConverter {
       return;
     }
 
-    console.log('[ImageJpgConverter] Creating worker');
-    this.worker = new Worker(new URL('./jpgWorker.ts', import.meta.url), {
+    console.log('[ImageJpgConverter] Creating worker', { workerBuildTag: JPG_WORKER_BUILD_TAG });
+    const workerUrl = new URL('./jpgWorker.ts', import.meta.url);
+    workerUrl.searchParams.set('v', JPG_WORKER_BUILD_TAG);
+
+    this.worker = new Worker(workerUrl, {
       type: 'module',
     });
 
@@ -183,8 +188,20 @@ export class ImageJpgConverter {
     });
 
     return new Promise<ImageConversionResult>((resolve, reject) => {
-      this.convertResolve = resolve;
-      this.convertReject = reject;
+      const timeout = setTimeout(() => {
+        console.error('[ImageJpgConverter] Conversion timeout after 150s, terminating worker');
+        this.destroy();
+        reject(new Error('JPG conversion timed out after 150 seconds'));
+      }, 150000);
+
+      this.convertResolve = (result) => {
+        clearTimeout(timeout);
+        resolve(result);
+      };
+      this.convertReject = (error) => {
+        clearTimeout(timeout);
+        reject(error);
+      };
 
       this.worker?.postMessage(
         {

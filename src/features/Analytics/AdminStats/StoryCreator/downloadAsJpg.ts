@@ -1,7 +1,5 @@
 import { ImageJpgConverter } from './imageJpgConverter';
 
-let converter: ImageJpgConverter | null = null;
-
 const FALLBACK_FILE_NAME = 'story-image';
 
 function toProxyMediaUrl(url: string): string {
@@ -39,6 +37,8 @@ export const downloadAsJpg = async (imageUrl: string) => {
     return;
   }
 
+  const converter = new ImageJpgConverter();
+
   try {
     const fetchUrl = toProxyMediaUrl(imageUrl);
     console.log('[downloadAsJpg] Starting download+convert', {
@@ -74,11 +74,6 @@ export const downloadAsJpg = async (imageUrl: string) => {
       fileSize: inputFile.size,
     });
 
-    if (!converter) {
-      console.log('[downloadAsJpg] Creating ImageJpgConverter instance');
-      converter = new ImageJpgConverter();
-    }
-
     const result = await converter.convert(inputFile);
     console.log('[downloadAsJpg] Conversion finished', {
       outputName: result.imageName,
@@ -95,5 +90,7 @@ export const downloadAsJpg = async (imageUrl: string) => {
       console.error('[downloadAsJpg] Error stack:', error.stack);
     }
     alert('Failed to convert image to JPG. Please try again.');
+  } finally {
+    converter.destroy();
   }
 };

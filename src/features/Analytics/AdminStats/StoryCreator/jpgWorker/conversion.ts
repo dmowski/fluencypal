@@ -9,18 +9,38 @@ function getBaseName(fileName: string): string {
   return fileName.slice(0, dotIndex);
 }
 
+function getExtension(fileName: string): string {
+  const dotIndex = fileName.lastIndexOf('.');
+  if (dotIndex <= 0 || dotIndex === fileName.length - 1) {
+    return 'img';
+  }
+  return fileName.slice(dotIndex + 1);
+}
+
+function sanitizeFileName(fileName: string): string {
+  const normalized = fileName.trim().toLowerCase();
+  const withoutPath = normalized.split('/').pop() || normalized;
+  const decoded = withoutPath.replace(/%[0-9a-f]{2}/gi, '_');
+  const safe = decoded.replace(/[^a-z0-9._-]/g, '_').replace(/_+/g, '_');
+  return safe || 'image';
+}
+
 export async function convertImageToJpg(imageData: Uint8Array, imageName: string): Promise<void> {
   const ffmpeg = getFFmpeg();
   if (!ffmpeg) {
     throw new Error('FFmpeg not initialized');
   }
 
-  const inputName = imageName || 'input-image';
-  const outputName = `${getBaseName(inputName)}.jpg`;
+  const safeOriginalName = sanitizeFileName(imageName || 'image');
+  const inputExt = getExtension(safeOriginalName);
+  const inputName = `input.${inputExt}`;
+  const outputName = 'output.jpg';
+  const finalName = `${getBaseName(safeOriginalName)}.jpg`;
 
   console.log('[jpgWorker/conversion] convertImageToJpg called', {
     inputName,
     outputName,
+    finalName,
     inputBytes: imageData.byteLength,
   });
 
@@ -33,24 +53,16 @@ export async function convertImageToJpg(imageData: Uint8Array, imageName: string
     data: { progress: 0 },
   } as JpgWorkerResponse);
 
-  const args = [
-    '-i',
-    inputName,
-    '-q:v',
-    '1',
-    '-qmin',
-    '1',
-    '-qmax',
-    '1',
-    '-pix_fmt',
-    'yuvj420p',
-    outputName,
-  ];
+  const args = ['-i', inputName, '-frames:v', '1', '-q:v', '2', outputName];
   console.log('[jpgWorker/conversion] Running ffmpeg.exec', args);
 
   let exitCode: number;
   try {
-    exitCode = await ffmpeg.exec(args);
+    const execPromise = ffmpeg.exec(args);
+    const timeoutPromise = new Promise<number>((_, reject) => {
+      setTimeout(() => reject(new Error('FFmpeg JPG conversion timeout after 120s')), 120000);
+    });
+    exitCode = await Promise.race([execPromise, timeoutPromise]);
   } catch (error) {
     console.error('[jpgWorker/conversion] ffmpeg.exec threw', error);
     throw error;
@@ -91,6 +103,6 @@ export async function convertImageToJpg(imageData: Uint8Array, imageName: string
 
   self.postMessage({
     type: 'complete',
-    data: { imageData: data, imageName: outputName },
+    data: { imageData: data, imageName: finalName },
   } as JpgWorkerResponse);
 }
