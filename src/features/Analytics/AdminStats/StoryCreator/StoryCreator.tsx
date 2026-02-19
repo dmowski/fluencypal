@@ -32,6 +32,7 @@ export const StoryCreator = () => {
       videoDescription: null,
       isPublished: false,
       storySystemInstruction: '',
+      createdAtIso: new Date().toISOString(),
     };
 
     const docRef = doc(collectionRef, newId);
@@ -54,6 +55,7 @@ export const StoryCreator = () => {
       videoDescription: null,
       isPublished: false,
       storySystemInstruction: '',
+      createdAtIso: new Date().toISOString(),
     };
 
     const docRef = doc(collectionRef, newId);

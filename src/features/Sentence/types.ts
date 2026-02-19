@@ -13,4 +13,5 @@ export interface Story {
   videoDescription: string | null;
 
   isPublished: boolean;
+  createdAtIso: string;
 }

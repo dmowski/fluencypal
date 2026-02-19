@@ -330,6 +330,7 @@ const StoryModal = ({
         videoDescription: null,
         isPublished: false,
         storySystemInstruction: '',
+        createdAtIso: new Date().toISOString(),
       };
 
       console.log(JSON.stringify(story));
