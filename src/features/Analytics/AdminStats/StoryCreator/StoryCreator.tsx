@@ -174,7 +174,34 @@ export const StoryCreator = () => {
               }}
             >
               {storiesData?.map((image, index) => {
-                return <StoryPreview key={index} onSelectImage={onSelectImage} image={image} />;
+                const isPublished = image.isPublished;
+                return (
+                  <Stack
+                    key={index}
+                    sx={{
+                      position: 'relative',
+                    }}
+                  >
+                    <StoryPreview key={index} onSelectImage={onSelectImage} image={image} />
+
+                    {isPublished && (
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          position: 'absolute',
+                          top: 4,
+                          right: 4,
+                          backgroundColor: 'rgba(39, 138, 220, 0.8)',
+                          color: '#fff',
+                          padding: '2px 6px',
+                          borderRadius: '4px',
+                        }}
+                      >
+                        Published
+                      </Typography>
+                    )}
+                  </Stack>
+                );
               })}
             </Stack>
           </Stack>
