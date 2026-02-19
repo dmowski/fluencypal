@@ -1,6 +1,6 @@
 import { Story } from '@/features/Sentence/types';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
-import { Button, Stack, TextField } from '@mui/material';
+import { Button, Checkbox, FormControlLabel, Stack, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useTextAi } from '@/features/Ai/useTextAi';
@@ -19,8 +19,10 @@ export const StoryEditorModal = ({
   const [internalStory, setInternalStory] = useState(story);
 
   const ai = useTextAi();
+  const [isGenerating, setIsGenerating] = useState(false);
   const generateTitleAndDescription = async () => {
     const data = [story.title, story.subtitle, story.textEn].filter(Boolean).join('\n');
+    setIsGenerating(true);
     const titleAndSubtitle = await ai.generateJson<{ title: string; subtitle: string }>({
       systemMessage:
         'Based on the following info, generate a concise title (max 5 words) and a subtitle (max 10 words) that captures the essence of the story. Return the result in JSON format with "title" and "subtitle" fields.',
@@ -36,6 +38,30 @@ export const StoryEditorModal = ({
         subtitle: titleAndSubtitle.subtitle,
       });
     }
+    setIsGenerating(false);
+  };
+
+  const defaultStorySystemInstruction =
+    'Based on the title, subtitle, and existing story text, generate an engaging story text in English that fits the title and subtitle. Expand on the details and create a compelling narrative. Return only the story text without any additional commentary.';
+
+  const generateStoryText = async () => {
+    setIsGenerating(true);
+    const data = [story.title, story.subtitle, story.textEn].filter(Boolean).join('\n');
+    const systemMessage = internalStory.storySystemInstruction || defaultStorySystemInstruction;
+
+    const generatedText = await ai.generate({
+      systemMessage,
+      userMessage: data,
+      model: 'gpt-4o',
+    });
+
+    if (generatedText) {
+      setInternalStory({
+        ...internalStory,
+        textEn: generatedText,
+      });
+    }
+    setIsGenerating(false);
   };
 
   useEffect(() => {
@@ -54,6 +80,8 @@ export const StoryEditorModal = ({
     onClose();
   };
 
+  const textWordsCount = internalStory.textEn ? internalStory.textEn.split(/\s+/).length : 0;
+
   return (
     <CustomModal isOpen={true} onClose={onClose}>
       <Stack
@@ -64,33 +92,68 @@ export const StoryEditorModal = ({
       >
         <Stack
           sx={{
-            width: '600px',
-            height: '600px',
-            position: 'relative',
-          }}
-        >
-          <Image
-            src={internalStory.imageUrl}
-            alt="Story Image"
-            fill
-            sizes="800px"
-            style={{
-              objectFit: 'contain',
-              borderRadius: '8px',
-              boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
-            }}
-          />
-        </Stack>
-
-        <Stack
-          sx={{
             flexDirection: 'row',
-            alignItems: 'center',
+            gap: '20px',
           }}
         >
-          <Button variant="outlined" onClick={generateTitleAndDescription}>
-            Generate Title & Subtitle with AI
-          </Button>
+          <Stack
+            sx={{
+              width: '600px',
+              height: '600px',
+              position: 'relative',
+            }}
+          >
+            <Image
+              src={internalStory.imageUrl}
+              alt="Story Image"
+              fill
+              sizes="800px"
+              style={{
+                objectFit: 'contain',
+                borderRadius: '8px',
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
+              }}
+            />
+          </Stack>
+
+          <Stack
+            sx={{
+              gap: '30px',
+            }}
+          >
+            <TextField
+              label="Story System Instruction"
+              value={internalStory.storySystemInstruction || defaultStorySystemInstruction}
+              onChange={(e) =>
+                setInternalStory({ ...internalStory, storySystemInstruction: e.target.value })
+              }
+              sx={{
+                width: '700px',
+              }}
+              multiline
+              rows={6}
+            />
+
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: '10px',
+              }}
+            >
+              <Button
+                variant="outlined"
+                onClick={generateTitleAndDescription}
+                disabled={isGenerating}
+              >
+                Generate Title & Subtitle with AI
+              </Button>
+
+              <Button variant="outlined" onClick={generateStoryText} disabled={isGenerating}>
+                Generate Story Text with AI
+              </Button>
+            </Stack>
+          </Stack>
         </Stack>
 
         <TextField
@@ -106,12 +169,21 @@ export const StoryEditorModal = ({
           fullWidth
         />
         <TextField
-          label="Text (EN)"
+          label={`Text (EN) - ${textWordsCount} words`}
           value={internalStory.textEn || ''}
           onChange={(e) => setInternalStory({ ...internalStory, textEn: e.target.value })}
           fullWidth
           multiline
           rows={20}
+        />
+
+        <FormControlLabel
+          checked={internalStory.isPublished || false}
+          onChange={(e) =>
+            setInternalStory({ ...internalStory, isPublished: !internalStory.isPublished })
+          }
+          control={<Checkbox size="large" />}
+          label={<Stack>Published</Stack>}
         />
 
         <Stack
@@ -128,15 +200,14 @@ export const StoryEditorModal = ({
               gap: 2,
             }}
           >
-            <Button variant="contained" onClick={onSave}>
-              Save
-            </Button>
             <Button
-              onClick={() => {
-                setInternalStory({ ...internalStory, isPublished: !internalStory.isPublished });
+              variant="contained"
+              onClick={onSave}
+              sx={{
+                padding: '30px 120px',
               }}
             >
-              {story.isPublished ? 'Unpublish' : 'Publish'}
+              Save
             </Button>
           </Stack>
 

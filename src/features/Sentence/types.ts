@@ -7,6 +7,7 @@ export interface Story {
   audioUrl: string | null;
   imageUrl: string;
 
+  storySystemInstruction: string | null;
   textEn: string;
   sunoPrompt: string | null;
   videoDescription: string | null;
