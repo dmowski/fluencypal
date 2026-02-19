@@ -104,12 +104,12 @@ export const TextConstructorStories = () => {
         }}
       >
         <Typography
-          variant="caption"
+          variant="body2"
           sx={{
             opacity: 0.8,
           }}
         >
-          {i18n._('Stories')}
+          {i18n._('Expand vocabulary with stories')}
         </Typography>
       </Stack>
 
