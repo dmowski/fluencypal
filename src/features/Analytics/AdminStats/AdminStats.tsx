@@ -10,6 +10,7 @@ import { Check, Copy, House } from 'lucide-react';
 import { UserCard } from './UserCard';
 import { AdminMetrics } from './AdminMetrics';
 import { copyToClipboard } from './copyToClipboard';
+import { StoryCreator } from './StoryCreator';
 
 export function AdminStats() {
   const auth = useAuth();
@@ -155,77 +156,106 @@ export function AdminStats() {
           ? secondDayVisitors
           : thirdAndMoreDayVisitors;
 
-  if (!isAdmin) return <></>;
+  const [isStoryCreator, setIsStoryCreator] = useState(false);
 
+  if (!isAdmin) return <></>;
   return (
     <Stack sx={{}}>
-      <Button
-        href="/practice"
+      <Stack
         sx={{
-          width: 'max-content',
-          padding: '10px 50px',
-          margin: '20px 0',
-          borderRadius: '210px',
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: '20px',
         }}
-        variant="contained"
-        startIcon={<House />}
       >
-        Home
-      </Button>
-      {isLoading && <Typography>Loading...</Typography>}
-      {data && (
-        <>
-          <Stack
-            sx={{
-              alignItems: 'flex-start',
-            }}
-          >
-            <AdminMetrics
-              todayMessagesCount={todayMessagesCount}
-              lastHourMessagesCount={lastHourMessagesCount}
-              todayUsersCount={todayUsers.length}
-              secondDayVisitorsCount={secondDayVisitors.length}
-              thirdAndMoreDayVisitorsCount={thirdAndMoreDayVisitors.length}
-              usersToShowMode={usersToShowMode}
-              onModeChange={setUsersToShowMode}
-            />
+        <Button
+          href="/practice"
+          sx={{
+            width: 'max-content',
+            padding: '10px 50px',
+            margin: '20px 0',
+            borderRadius: '210px',
+          }}
+          variant="contained"
+          startIcon={<House />}
+        >
+          Home
+        </Button>
 
-            <Stack
-              sx={{
-                gap: '10px',
-                flexDirection: 'row',
-              }}
-            >
-              <Button variant="contained" onClick={loadFullData}>
-                Load full data
-              </Button>
-              <Button
-                color={isCopied ? 'success' : 'primary'}
-                startIcon={isCopied ? <Check size="16px" /> : <Copy size="16px" />}
-                variant="outlined"
-                size="small"
-                onClick={() => copyAll()}
+        <Button
+          onClick={() => setIsStoryCreator((prev) => !prev)}
+          sx={{
+            width: 'max-content',
+            padding: '10px 50px',
+            margin: '20px 0',
+            borderRadius: '210px',
+          }}
+          variant={isStoryCreator ? 'contained' : 'outlined'}
+        >
+          Open Story Creator
+        </Button>
+      </Stack>
+
+      {isStoryCreator ? (
+        <StoryCreator />
+      ) : (
+        <>
+          {isLoading && <Typography>Loading...</Typography>}
+          {data && (
+            <>
+              <Stack
+                sx={{
+                  alignItems: 'flex-start',
+                }}
               >
-                Copy to clipboard
-              </Button>
-            </Stack>
-          </Stack>
-          <Stack
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: '1fr',
-              gap: '36px',
-              padding: '20px 10px',
-            }}
-          >
-            {usersToShow.map((user) => (
-              <UserCard
-                key={user.userData.id}
-                userStat={user}
-                allTextInfo={JSON.stringify(user, null, 2)}
-              />
-            ))}
-          </Stack>
+                <AdminMetrics
+                  todayMessagesCount={todayMessagesCount}
+                  lastHourMessagesCount={lastHourMessagesCount}
+                  todayUsersCount={todayUsers.length}
+                  secondDayVisitorsCount={secondDayVisitors.length}
+                  thirdAndMoreDayVisitorsCount={thirdAndMoreDayVisitors.length}
+                  usersToShowMode={usersToShowMode}
+                  onModeChange={setUsersToShowMode}
+                />
+
+                <Stack
+                  sx={{
+                    gap: '10px',
+                    flexDirection: 'row',
+                  }}
+                >
+                  <Button variant="contained" onClick={loadFullData}>
+                    Load full data
+                  </Button>
+                  <Button
+                    color={isCopied ? 'success' : 'primary'}
+                    startIcon={isCopied ? <Check size="16px" /> : <Copy size="16px" />}
+                    variant="outlined"
+                    size="small"
+                    onClick={() => copyAll()}
+                  >
+                    Copy to clipboard
+                  </Button>
+                </Stack>
+              </Stack>
+              <Stack
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr',
+                  gap: '36px',
+                  padding: '20px 10px',
+                }}
+              >
+                {usersToShow.map((user) => (
+                  <UserCard
+                    key={user.userData.id}
+                    userStat={user}
+                    allTextInfo={JSON.stringify(user, null, 2)}
+                  />
+                ))}
+              </Stack>
+            </>
+          )}
         </>
       )}
     </Stack>
