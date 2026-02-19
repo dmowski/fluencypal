@@ -31,6 +31,7 @@ export const StoryCreator = () => {
       sunoPrompt: null,
       videoDescription: null,
       isPublished: false,
+      storySystemInstruction: '',
     };
 
     const docRef = doc(collectionRef, newId);
@@ -52,6 +53,7 @@ export const StoryCreator = () => {
       sunoPrompt: null,
       videoDescription: null,
       isPublished: false,
+      storySystemInstruction: '',
     };
 
     const docRef = doc(collectionRef, newId);

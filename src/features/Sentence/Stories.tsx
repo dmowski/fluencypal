@@ -323,6 +323,13 @@ const StoryModal = ({
         title: imageDescription.shortDescription,
         imageUrl: imageDescription.url,
         textEn: generatedText,
+        subtitle: null,
+        videoUrl: null,
+        audioUrl: null,
+        sunoPrompt: null,
+        videoDescription: null,
+        isPublished: false,
+        storySystemInstruction: '',
       };
 
       console.log(JSON.stringify(story));
