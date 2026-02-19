@@ -33,7 +33,7 @@ export const TextConstructorStories = () => {
   const collectionRef = db.collections.stories(auth.uid);
   const [databaseStories] = useCollectionData(collectionRef);
 
-  const images = useMemo(() => {
+  const storiesToShow = useMemo(() => {
     const list = [...(databaseStories || []), ...storyData];
     const sortedByDate = list.sort((a, b) => {
       return b.updatedAtIso.localeCompare(a.updatedAtIso);
@@ -42,27 +42,32 @@ export const TextConstructorStories = () => {
     return sortedByDate;
   }, [databaseStories]);
 
-  const selectedImage = images.find((img) => img.id === selectedImageImageId) || null;
+  const selectedStory = storiesToShow.find((img) => img.id === selectedImageImageId) || null;
 
   const closeStory = () => {
     setSelectedImageId('');
     audio.music.stop();
   };
 
+  const playStoryAudio = async (story?: Story | null) => {
+    if (!story || !story.audioUrl) {
+      return;
+    }
+    const audioUrl = story.audioUrl;
+    await sleep(500);
+    audio.music.play(audioUrl);
+    audio.music.setVolume(0.1);
+  };
+
   const onNext = async () => {
-    const currentIndex = images.findIndex((img) => img.id === selectedImageImageId);
-    const nextIndex = (currentIndex + 1) % images.length;
-    const nextImage = images[nextIndex];
+    const currentIndex = storiesToShow.findIndex((img) => img.id === selectedImageImageId);
+    const nextIndex = (currentIndex + 1) % storiesToShow.length;
+    const nextImage = storiesToShow[nextIndex];
     setSelectedImageId(nextImage.id);
 
     audio.music.stop();
 
-    if ('audioUrl' in nextImage && nextImage.audioUrl) {
-      const audioUrl = nextImage.audioUrl;
-      await sleep(500);
-      audio.music.play(audioUrl);
-      audio.music.setVolume(0.1);
-    }
+    playStoryAudio(nextImage);
   };
 
   const audio = useConversationAudio();
@@ -70,14 +75,8 @@ export const TextConstructorStories = () => {
   const onSelectImage = async (imageId: string) => {
     setSelectedImageId(imageId);
     await audio.initAudio();
-
-    const story = storyData.find((s) => s.id === imageId);
-    if (story && story.audioUrl) {
-      const audioUrl = story.audioUrl;
-      await sleep(500);
-      audio.music.play(audioUrl);
-      audio.music.setVolume(0.1);
-    }
+    const story = storiesToShow.find((s) => s.id === imageId);
+    playStoryAudio(story);
   };
 
   return (
@@ -91,7 +90,7 @@ export const TextConstructorStories = () => {
         position: 'relative',
       }}
     >
-      {selectedImage && <StoryModal data={selectedImage} onClose={closeStory} onNext={onNext} />}
+      {selectedStory && <StoryModal data={selectedStory} onClose={closeStory} onNext={onNext} />}
       <Stack
         sx={{
           width: '100%',
@@ -147,7 +146,7 @@ export const TextConstructorStories = () => {
               width: 'max-content',
             }}
           >
-            {images.map((image, index) => {
+            {storiesToShow.map((image, index) => {
               return <StoryPreview key={index} onSelectImage={onSelectImage} image={image} />;
             })}
           </Stack>
