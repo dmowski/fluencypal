@@ -13,11 +13,13 @@ export async function loadFFmpeg(): Promise<void> {
   const loading = getIsLoading();
 
   if (existing && !loading) {
+    console.log('[jpgWorker/ffmpegLoader] FFmpeg already loaded');
     self.postMessage({ type: 'loaded' } as JpgWorkerResponse);
     return;
   }
 
   if (loading) {
+    console.log('[jpgWorker/ffmpegLoader] FFmpeg loading in progress, waiting');
     let attempts = 0;
     while (getIsLoading() && attempts < 100) {
       await new Promise((resolve) => setTimeout(resolve, 100));
@@ -34,10 +36,9 @@ export async function loadFFmpeg(): Promise<void> {
   try {
     const baseURL = `${self.location.origin}/ffmpeg`;
     const ffmpegModuleUrl = `${baseURL}/ffmpeg/index.js`;
+    console.log('[jpgWorker/ffmpegLoader] Importing FFmpeg module from', ffmpegModuleUrl);
 
-    const ffmpegModule = (await import(
-      /* webpackIgnore: true */ ffmpegModuleUrl
-    )) as FFmpegModule;
+    const ffmpegModule = (await import(/* webpackIgnore: true */ ffmpegModuleUrl)) as FFmpegModule;
 
     if (!ffmpegModule?.FFmpeg) {
       throw new Error('FFmpeg module failed to load from local assets');
@@ -45,6 +46,12 @@ export async function loadFFmpeg(): Promise<void> {
 
     const ffmpeg = new ffmpegModule.FFmpeg();
     setFFmpeg(ffmpeg);
+
+    ffmpeg.on('log', ({ message }) => {
+      if (message) {
+        console.log('[jpgWorker/ffmpeg log]', message);
+      }
+    });
 
     ffmpeg.on('progress', ({ progress, time }) => {
       self.postMessage({
@@ -56,13 +63,16 @@ export async function loadFFmpeg(): Promise<void> {
     const coreURL = `${baseURL}/ffmpeg-core.js`;
     const wasmURL = `${baseURL}/ffmpeg-core.wasm`;
     const workerURL = `${baseURL}/ffmpeg/worker.js`;
+    console.log('[jpgWorker/ffmpegLoader] Loading FFmpeg core', { coreURL, wasmURL, workerURL });
 
     await ffmpeg.load({ coreURL, wasmURL, workerURL });
+    console.log('[jpgWorker/ffmpegLoader] FFmpeg loaded successfully');
 
     setIsLoading(false);
     self.postMessage({ type: 'loaded' } as JpgWorkerResponse);
   } catch (error) {
     setIsLoading(false);
+    console.error('[jpgWorker/ffmpegLoader] Failed to load FFmpeg', error);
     throw error;
   }
 }

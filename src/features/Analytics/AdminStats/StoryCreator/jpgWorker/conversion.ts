@@ -18,14 +18,22 @@ export async function convertImageToJpg(imageData: Uint8Array, imageName: string
   const inputName = imageName || 'input-image';
   const outputName = `${getBaseName(inputName)}.jpg`;
 
+  console.log('[jpgWorker/conversion] convertImageToJpg called', {
+    inputName,
+    outputName,
+    inputBytes: imageData.byteLength,
+  });
+
+  console.log('[jpgWorker/conversion] Writing input file');
   await ffmpeg.writeFile(inputName, imageData);
+  console.log('[jpgWorker/conversion] Input file written');
 
   self.postMessage({
     type: 'progress',
     data: { progress: 0 },
   } as JpgWorkerResponse);
 
-  const exitCode = await ffmpeg.exec([
+  const args = [
     '-i',
     inputName,
     '-q:v',
@@ -37,9 +45,25 @@ export async function convertImageToJpg(imageData: Uint8Array, imageName: string
     '-pix_fmt',
     'yuvj420p',
     outputName,
-  ]);
+  ];
+  console.log('[jpgWorker/conversion] Running ffmpeg.exec', args);
+
+  let exitCode: number;
+  try {
+    exitCode = await ffmpeg.exec(args);
+  } catch (error) {
+    console.error('[jpgWorker/conversion] ffmpeg.exec threw', error);
+    throw error;
+  }
+
+  console.log('[jpgWorker/conversion] ffmpeg.exec finished', { exitCode });
 
   if (exitCode !== 0) {
+    console.error('[jpgWorker/conversion] Conversion failed', {
+      exitCode,
+      inputName,
+      outputName,
+    });
     throw new Error(`FFmpeg conversion failed with exit code ${exitCode}`);
   }
 
@@ -48,9 +72,12 @@ export async function convertImageToJpg(imageData: Uint8Array, imageName: string
     data: { progress: 80 },
   } as JpgWorkerResponse);
 
+  console.log('[jpgWorker/conversion] Reading output file');
   const data = await ffmpeg.readFile(outputName);
+  console.log('[jpgWorker/conversion] Output file read', { outputBytes: data.byteLength });
 
   try {
+    console.log('[jpgWorker/conversion] Cleaning up temp files');
     await ffmpeg.deleteFile(inputName);
     await ffmpeg.deleteFile(outputName);
   } catch {

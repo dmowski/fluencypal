@@ -25,12 +25,14 @@ export class ImageJpgConverter {
       return;
     }
 
+    console.log('[ImageJpgConverter] Creating worker');
     this.worker = new Worker(new URL('./jpgWorker.ts', import.meta.url), {
       type: 'module',
     });
 
     this.worker.onmessage = (e: MessageEvent<JpgWorkerResponse>) => {
       const { type, data } = e.data;
+      console.log('[ImageJpgConverter] Worker message:', type, data);
 
       switch (type) {
         case 'loaded':
@@ -68,6 +70,11 @@ export class ImageJpgConverter {
             errorMessage = errorData;
           }
 
+          console.error('[ImageJpgConverter] Worker returned error', {
+            errorMessage,
+            errorData,
+          });
+
           if (!this.isLoaded && this.loadReject) {
             this.loadReject(new Error(errorMessage || 'Failed to load FFmpeg'));
             this.loadResolve = undefined;
@@ -84,6 +91,7 @@ export class ImageJpgConverter {
 
     this.worker.onerror = (error) => {
       const message = error instanceof Error ? error.message : String(error);
+      console.error('[ImageJpgConverter] Worker onerror:', message, error);
       if (!this.isLoaded && this.loadReject) {
         this.loadReject(new Error(message));
         this.loadResolve = undefined;
@@ -100,13 +108,16 @@ export class ImageJpgConverter {
     this.ensureWorker();
 
     if (this.isLoaded) {
+      console.log('[ImageJpgConverter] Worker already loaded');
       return;
     }
 
     if (this.loadPromise) {
+      console.log('[ImageJpgConverter] Reusing existing load promise');
       return this.loadPromise;
     }
 
+    console.log('[ImageJpgConverter] Loading FFmpeg in worker');
     this.loadPromise = new Promise<void>((resolve, reject) => {
       if (!this.worker) {
         reject(new Error('Worker not initialized'));
@@ -152,6 +163,12 @@ export class ImageJpgConverter {
   ): Promise<ImageConversionResult> {
     this.onProgress = onProgress;
 
+    console.log('[ImageJpgConverter] Starting convert()', {
+      fileName: file.name,
+      fileType: file.type,
+      fileSize: file.size,
+    });
+
     await this.load();
 
     if (!this.worker) {
@@ -160,6 +177,10 @@ export class ImageJpgConverter {
 
     const arrayBuffer = await file.arrayBuffer();
     const imageData = new Uint8Array(arrayBuffer);
+    console.log('[ImageJpgConverter] Posting convert message to worker', {
+      imageBytes: imageData.byteLength,
+      imageName: file.name,
+    });
 
     return new Promise<ImageConversionResult>((resolve, reject) => {
       this.convertResolve = resolve;
