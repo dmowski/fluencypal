@@ -77,6 +77,14 @@ interface ConversationAudioContextType {
 const ConversationAudioContext = createContext<ConversationAudioContextType | null>(null);
 const DEFAULT_BG_MUSIC_URL = '/audio/background.mp3';
 
+function toMusicProxyUrl(url: string): string {
+  if (!url.startsWith('https://')) {
+    return url;
+  }
+
+  return `/api/proxyMedia?url=${encodeURIComponent(url)}`;
+}
+
 class AudioQueuePlayer {
   private ctx: AudioContext | null = null;
   private masterGain: GainNode | null = null;
@@ -496,7 +504,8 @@ function useProvideConversationAudio(): ConversationAudioContextType {
   }, []);
 
   const playMusic = useCallback(async (url?: string) => {
-    await playerRef.current!.playMusicUrl(url ?? DEFAULT_BG_MUSIC_URL);
+    const sourceUrl = url ?? DEFAULT_BG_MUSIC_URL;
+    await playerRef.current!.playMusicUrl(toMusicProxyUrl(sourceUrl));
   }, []);
 
   const pauseMusic = useCallback(() => {
