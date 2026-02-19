@@ -5,9 +5,10 @@ import { StoryPreview } from '@/features/Sentence/StoryPreview';
 import { Story } from '@/features/Sentence/types';
 import { useUrlState } from '@/features/Url/useUrlState';
 import { IconButton, Stack, Typography } from '@mui/material';
-import { doc, setDoc } from 'firebase/firestore';
+import { deleteDoc, doc, setDoc } from 'firebase/firestore';
 import { CirclePlus } from 'lucide-react';
 import { useCollection, useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
+import { StoryEditorModal } from './StoryEditorModal';
 
 export const StoryCreator = () => {
   const auth = useAuth();
@@ -68,6 +69,13 @@ export const StoryCreator = () => {
     setSelectedStoryId(id);
   };
 
+  const deleteStory = async (story: Story) => {
+    if (!collectionRef) return;
+    const docRef = doc(collectionRef, story.id);
+    deleteDoc(docRef);
+    setSelectedStoryId('');
+  };
+
   const selectedStoryData = storiesData?.find((story) => story.id === selectedStoryId);
   console.log('selectedStoryData', selectedStoryData);
 
@@ -78,6 +86,14 @@ export const StoryCreator = () => {
         padding: '20px',
       }}
     >
+      {selectedStoryData && (
+        <StoryEditorModal
+          story={selectedStoryData}
+          update={updateStory}
+          deleteStory={deleteStory}
+          onClose={() => setSelectedStoryId('')}
+        />
+      )}
       <Stack
         sx={{
           flexDirection: 'row',
