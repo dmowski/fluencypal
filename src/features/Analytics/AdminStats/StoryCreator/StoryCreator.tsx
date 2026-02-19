@@ -87,7 +87,6 @@ export const StoryCreator = () => {
   };
 
   const selectedStoryData = storiesData?.find((story) => story.id === selectedStoryId);
-  console.log('selectedStoryData', selectedStoryData);
 
   return (
     <Stack

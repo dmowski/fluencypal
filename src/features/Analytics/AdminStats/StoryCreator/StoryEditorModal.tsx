@@ -194,23 +194,24 @@ export const StoryEditorModal = ({
             <Stack
               sx={{
                 width: '700px',
-                alignItems: 'flex-start',
+                alignItems: 'center',
+                flexDirection: 'row',
+                gap: '10px',
               }}
             >
               <UploadAudioFileButton
                 type="icon"
                 onNewUploadUrl={(url) => setInternalStory((prev) => ({ ...prev, audioUrl: url }))}
               />
+              {internalStory.audioUrl ? (
+                <audio
+                  controls
+                  src={internalStory.audioUrl}
+                  style={{ width: '400px' }}
+                  preload="none"
+                />
+              ) : null}
             </Stack>
-
-            {internalStory.audioUrl ? (
-              <audio
-                controls
-                src={internalStory.audioUrl}
-                style={{ width: '700px' }}
-                preload="none"
-              />
-            ) : null}
           </Stack>
         </Stack>
 
