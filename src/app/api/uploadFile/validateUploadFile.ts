@@ -4,11 +4,24 @@ interface FileValidationResult {
   statusCode?: number;
 }
 
-export const validateUploadFile = (file: File, type: 'image' | 'video'): FileValidationResult => {
+export const validateUploadFile = (
+  file: File,
+  type: 'image' | 'video' | 'audio',
+): FileValidationResult => {
   // Validate file type
   const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
   const validVideoTypes = ['video/mp4', 'video/webm', 'video/quicktime'];
-  const validTypes = type === 'video' ? validVideoTypes : validImageTypes;
+  const validAudioTypes = [
+    'audio/mpeg',
+    'audio/mp3',
+    'audio/wav',
+    'audio/x-wav',
+    'audio/ogg',
+    'audio/mp4',
+  ];
+
+  const validTypes =
+    type === 'video' ? validVideoTypes : type === 'audio' ? validAudioTypes : validImageTypes;
 
   if (!validTypes.includes(file.type)) {
     return {

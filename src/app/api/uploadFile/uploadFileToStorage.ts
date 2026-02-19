@@ -2,7 +2,7 @@ import { getBucket } from '../config/firebase';
 interface UploadFileOptions {
   file: File;
   userId: string;
-  type: 'image' | 'video';
+  type: 'image' | 'video' | 'audio';
 }
 
 interface UploadFileResult {
@@ -25,7 +25,8 @@ export const uploadFileToStorage = async ({
     let buffer: Buffer = Buffer.from(await file.arrayBuffer());
 
     const randomName = `${timestamp}-${userId}.${fileExtension}`;
-    const folderPrefix = type === 'video' ? 'uploadedVideos' : 'uploadedImages';
+    const folderPrefix =
+      type === 'video' ? 'uploadedVideos' : type === 'audio' ? 'uploadedAudios' : 'uploadedImages';
 
     const filePath = `${folderPrefix}/${userId}/${randomName}`;
     const storageFile = bucket.file(filePath);

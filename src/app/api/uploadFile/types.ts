@@ -1,6 +1,6 @@
 export interface UploadFileRequest {
   file: File;
-  type: 'image' | 'video';
+  type: 'image' | 'video' | 'audio';
 }
 
 export interface UploadFileResponse {

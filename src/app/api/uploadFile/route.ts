@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
   const urlQueryParams = request.url.split('?')[1];
   const urlParams = new URLSearchParams(urlQueryParams);
-  const type = (urlParams.get('type') || 'image') as 'image' | 'video';
+  const type = (urlParams.get('type') || 'image') as 'image' | 'video' | 'audio';
 
   // Validate file
   const validation = validateUploadFile(file, type);

@@ -4,6 +4,7 @@ import { Button, Checkbox, FormControlLabel, Stack, TextField } from '@mui/mater
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useTextAi } from '@/features/Ai/useTextAi';
+import { UploadAudioFileButton } from '@/features/Audio/UploadAudioFileButton';
 
 export const StoryEditorModal = ({
   story,
@@ -189,6 +190,27 @@ export const StoryEditorModal = ({
               multiline
               rows={6}
             />
+
+            <Stack
+              sx={{
+                width: '700px',
+                alignItems: 'flex-start',
+              }}
+            >
+              <UploadAudioFileButton
+                type="icon"
+                onNewUploadUrl={(url) => setInternalStory((prev) => ({ ...prev, audioUrl: url }))}
+              />
+            </Stack>
+
+            {internalStory.audioUrl ? (
+              <audio
+                controls
+                src={internalStory.audioUrl}
+                style={{ width: '700px' }}
+                preload="none"
+              />
+            ) : null}
           </Stack>
         </Stack>
 
