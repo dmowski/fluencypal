@@ -67,7 +67,6 @@ export const StoryModal = ({
   useEffect(() => {
     initState();
   }, [storyHash]);
-
   const setState = (data: Partial<StoryState>) => {
     setInternalState((prevState) => ({ ...prevState, ...data }));
   };
