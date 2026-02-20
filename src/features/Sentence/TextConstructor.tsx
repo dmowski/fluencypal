@@ -109,6 +109,46 @@ export function TextConstructor({
     onContinue(nextProgress);
   };
 
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      const isEditableTarget =
+        target?.tagName === 'INPUT' || target?.tagName === 'TEXTAREA' || target?.isContentEditable;
+
+      if (isEditableTarget) {
+        return;
+      }
+
+      const keyToOptionIndex: Record<string, number> = {
+        '1': 0,
+        '2': 1,
+        '3': 2,
+        '4': 3,
+      };
+
+      const optionIndex = keyToOptionIndex[event.key];
+
+      if (optionIndex === undefined) {
+        return;
+      }
+
+      const selectedWord = options[optionIndex];
+
+      if (!selectedWord) {
+        return;
+      }
+
+      event.preventDefault();
+      void handlePick(selectedWord);
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [options, handlePick]);
+
   const progressPercent = useMemo(() => {
     if (!activePart) {
       return 100;
