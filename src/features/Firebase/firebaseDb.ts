@@ -116,6 +116,9 @@ export const db = {
     chat: (userId: string, space: string) =>
       space && userId ? dataPointDoc<UserChatMetadata>(`chat/${space}`) : null,
 
+    storiesViewsStats: (userId?: string) =>
+      userId ? dataPointDoc<Record<string, number>>(`stats/storiesViews`) : null,
+
     chatSpaceUserReadMetadata: (userId: string) =>
       userId
         ? dataPointDoc<ChatSpaceUserReadMetadata>(`users/${userId}/stats/chatSpaceUserReadMetadata`)

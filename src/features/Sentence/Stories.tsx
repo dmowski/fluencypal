@@ -23,7 +23,8 @@ import { sleep } from '@/libs/sleep';
 import { uniq } from '@/libs/uniq';
 import { StoryPreview } from './StoryPreview';
 import { db } from '../Firebase/firebaseDb';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
+import { getDoc, setDoc } from 'firebase/firestore';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
@@ -32,6 +33,29 @@ export const TextConstructorStories = () => {
   const auth = useAuth();
   const collectionRef = db.collections.stories(auth.uid);
   const [databaseStories] = useCollectionData(collectionRef);
+
+  const storiesViewsStatsDocRef = db.documents.storiesViewsStats(auth.uid);
+  const [storiesViewsStats] = useDocumentData(storiesViewsStatsDocRef);
+
+  const increaseViewsCount = async (storyId: string) => {
+    if (!auth.uid || !storiesViewsStatsDocRef) return;
+    const newestDoc = getDoc(storiesViewsStatsDocRef);
+    const newestData = (await newestDoc).data() || {};
+    const currentCount = newestData[storyId] || 0;
+    const newCount = currentCount + 1;
+
+    await setDoc(storiesViewsStatsDocRef, { [storyId]: newCount }, { merge: true });
+  };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (selectedImageImageId) {
+        increaseViewsCount(selectedImageImageId);
+      }
+    }, 4000);
+
+    return () => clearTimeout(timeout);
+  }, [selectedImageImageId]);
 
   const storiesToShow = useMemo(() => {
     if (!databaseStories) return [];
@@ -150,8 +174,15 @@ export const TextConstructorStories = () => {
               minHeight: '220px',
             }}
           >
-            {storiesToShow.map((image, index) => {
-              return <StoryPreview key={index} onSelectImage={onSelectImage} image={image} />;
+            {storiesToShow.map((story, index) => {
+              return (
+                <StoryPreview
+                  key={index}
+                  onSelectImage={onSelectImage}
+                  image={story}
+                  views={storiesViewsStats?.[story.id]}
+                />
+              );
             })}
           </Stack>
         </Stack>
@@ -193,6 +224,7 @@ const StoryModal = ({
   const [progress, setProgress] = useState('');
   const ai = useTextAi();
   const auth = useAuth();
+
   const settings = useSettings();
   const storyText = 'textEn' in data ? data.textEn : '';
   const wordsCount = storyText.split(' ').length;

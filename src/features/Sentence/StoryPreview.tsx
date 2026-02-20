@@ -2,13 +2,17 @@ import Stack from '@mui/material/Stack';
 import Image from 'next/image';
 import { Story } from './types';
 import { ImageDescription } from '../Game/ImagesDescriptions';
+import { Eye } from 'lucide-react';
+import { Typography } from '@mui/material';
 
 export const StoryPreview = ({
   onSelectImage,
   image,
+  views,
 }: {
   onSelectImage: (id: string) => void;
   image: ImageDescription | Story;
+  views?: number;
 }) => {
   const story: Story | null = 'textEn' in image ? image : null;
   const imageDescription: ImageDescription | null = 'textEn' in image ? null : image;
@@ -81,6 +85,29 @@ export const StoryPreview = ({
           boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
         }}
       />
+
+      {views !== undefined && (
+        <Stack
+          sx={{
+            position: 'absolute',
+            bottom: 4,
+            right: 4,
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+            color: '#fff',
+            padding: '2px 7px',
+            borderRadius: '12px',
+            fontSize: '12px',
+            zIndex: 3,
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '6px',
+            opacity: 0.8,
+          }}
+        >
+          <Eye size={11} />
+          <Typography variant="caption">{views}</Typography>
+        </Stack>
+      )}
     </Stack>
   );
 };
