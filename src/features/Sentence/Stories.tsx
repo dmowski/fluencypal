@@ -208,11 +208,17 @@ export const TextConstructorStories = () => {
   );
 };
 
+type Mode = 'easy' | 'medium' | 'hard';
+
 interface StoryState {
   progress: string;
   sentences: string[];
   sentencesTranslates: string[];
   isCompleted: boolean;
+  mode: Mode;
+  allWords: string[];
+  badWords: string[];
+  translationWords: string[];
 }
 
 const StoryModal = ({
@@ -230,6 +236,10 @@ const StoryModal = ({
     sentences: [],
     sentencesTranslates: [],
     isCompleted: false,
+    mode: 'easy',
+    allWords: [],
+    badWords: [],
+    translationWords: [],
   });
 
   const setState = (data: Partial<StoryState>) => {
@@ -254,8 +264,7 @@ const StoryModal = ({
   };
 
   const audio = useConversationAudio();
-  type Mode = 'easy' | 'medium' | 'hard';
-  const [mode, setMode] = useState<Mode>('easy');
+
   const numberOfOptionsMap: Record<Mode, number> = {
     easy: 2,
     medium: 3,
@@ -266,9 +275,8 @@ const StoryModal = ({
     medium: 2,
     hard: 3,
   };
-  const pointsToWin = pointsToWinMap[mode];
-
-  const numberOfOptions = numberOfOptionsMap[mode];
+  const pointsToWin = pointsToWinMap[state.mode];
+  const numberOfOptions = numberOfOptionsMap[state.mode];
 
   useEffect(() => {
     setState({
@@ -400,28 +408,30 @@ const StoryModal = ({
     );
   };
 
-  const [allWords, setAllWords] = useState<string[]>([]);
-  const [badWords, setBadWords] = useState<string[]>([]);
-
   const successRate =
-    allWords.length > 0
-      ? Math.round(((allWords.length - badWords.length) / allWords.length) * 100)
+    state.allWords.length > 0
+      ? Math.round(((state.allWords.length - state.badWords.length) / state.allWords.length) * 100)
       : 0;
 
   const onWordSelected = (word: string) => {
-    setAllWords((prev) => uniq([...prev, word]));
+    setState({
+      allWords: uniq([...state.allWords, word]),
+    });
   };
 
   const onBadWord = (word: string) => {
-    setBadWords((prev) => uniq([...prev, word]));
+    setState({
+      badWords: uniq([...state.badWords, word]),
+    });
   };
 
-  const [translationWords, setTranslationWords] = useState<string[]>([]);
   const onTranslationWord = (word: string) => {
-    setTranslationWords((prev) => uniq([...prev, word]));
+    setState({
+      translationWords: uniq([...state.translationWords, word]),
+    });
   };
 
-  const attentionWords = uniq([...badWords, ...translationWords]);
+  const attentionWords = uniq([...state.badWords, ...state.translationWords]);
 
   return (
     <CustomModal isOpen={true} onClose={onClose}>
@@ -527,22 +537,24 @@ const StoryModal = ({
                     >
                       <Button
                         size="small"
-                        variant={mode === 'easy' ? 'contained' : 'outlined'}
-                        onClick={() => setMode('easy')}
+                        variant={state.mode === 'easy' ? 'contained' : 'outlined'}
+                        onClick={() => {
+                          setState({ mode: 'easy' });
+                        }}
                       >
                         {i18n._('Easy')}
                       </Button>
                       <Button
                         size="small"
-                        variant={mode === 'medium' ? 'contained' : 'outlined'}
-                        onClick={() => setMode('medium')}
+                        variant={state.mode === 'medium' ? 'contained' : 'outlined'}
+                        onClick={() => setState({ mode: 'medium' })}
                       >
                         {i18n._('Medium')}
                       </Button>
                       <Button
                         size="small"
-                        variant={mode === 'hard' ? 'contained' : 'outlined'}
-                        onClick={() => setMode('hard')}
+                        variant={state.mode === 'hard' ? 'contained' : 'outlined'}
+                        onClick={() => setState({ mode: 'hard' })}
                       >
                         {i18n._('Hard')}
                       </Button>
