@@ -7,6 +7,7 @@ import { useTextAi } from '@/features/Ai/useTextAi';
 import { UploadAudioFileButton } from '@/features/Audio/UploadAudioFileButton';
 import { UploadVideoButton } from '@/features/Video/UploadVideoButton';
 import { downloadAsJpg } from './downloadAsJpg';
+import { Loader } from 'lucide-react';
 
 export const StoryEditorModal = ({
   story,
@@ -45,12 +46,14 @@ export const StoryEditorModal = ({
   };
 
   const defaultStorySystemInstruction =
-    'Based on the title, subtitle, and existing story text, generate an engaging story text in English that fits the title and subtitle. Expand on the details and create a compelling narrative. Return only the story text without any additional commentary.';
+    'Based on the title, subtitle, and existing story text, generate an engaging story text in English that fits the title and subtitle. Expand on the details and create a compelling narrative. Use relatively short sentences as the story is aimed at language learners.';
 
   const generateStoryText = async () => {
     setIsGenerating(true);
     const data = [story.title, story.subtitle, story.textEn].filter(Boolean).join('\n');
     const systemMessage = internalStory.storySystemInstruction || defaultStorySystemInstruction;
+
+    console.log('systemMessage', systemMessage);
 
     const generatedText = await ai.generate({
       systemMessage,
@@ -339,6 +342,7 @@ export const StoryEditorModal = ({
             <Button
               variant={isNeedToSave ? 'contained' : 'outlined'}
               onClick={onSave}
+              startIcon={isGenerating ? <Loader /> : null}
               sx={{
                 height: '56px',
                 width: '240px',
