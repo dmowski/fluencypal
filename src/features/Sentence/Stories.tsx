@@ -217,7 +217,6 @@ const StoryModal = ({
   onNext,
 }: {
   data: ImageDescription | Story;
-
   onClose: () => void;
   onNext: () => void;
 }) => {
@@ -232,9 +231,6 @@ const StoryModal = ({
   const targetLanguage = settings.languageCode;
   const nativeLanguage = settings.userSettings?.nativeLanguageCode;
 
-  const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
-  const voiceInfo = getAiVoiceByVoice(voiceName);
-  const voiceSpeed = settings.userSettings?.teacherVoiceSpeed || 'normal';
   const videoUrl = 'videoUrl' in data ? data.videoUrl : undefined;
   const { i18n } = useLingui();
 
