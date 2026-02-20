@@ -8,7 +8,7 @@ import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './splitTextIntoSentences';
 import { StoryContent, TextConstructor } from './TextConstructor';
-import { Loader, Origami, RefreshCw, X } from 'lucide-react';
+import { ChevronRight, Glasses, Loader, Origami, RefreshCw, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { SpeakOptions, useConversationAudio } from '../Audio/useConversationAudio';
 import { useAuth } from '../Auth/useAuth';
@@ -85,6 +85,7 @@ export const TextConstructorStories = () => {
   };
 
   const onNext = async () => {
+    await audio.initAudio();
     const currentIndex = storiesToShow.findIndex((img) => img.id === selectedImageImageId);
     const nextIndex = (currentIndex + 1) % storiesToShow.length;
     const nextImage = storiesToShow[nextIndex];
@@ -221,6 +222,47 @@ interface StoryState {
   translationWords: string[];
 }
 
+const STORIES_LS_KEY = 'stories_ls_key';
+type StoryProgress = Record<string, StoryState>;
+
+const getStoriesProgress = (hash: string): StoryState | null => {
+  if (typeof window === 'undefined') return null;
+  const dataString = localStorage.getItem(STORIES_LS_KEY);
+  if (!dataString) return null;
+  const data: StoryProgress = JSON.parse(dataString);
+  return data[hash] || null;
+};
+
+const saveStoryProgress = (hash: string, state: StoryState) => {
+  if (typeof window === 'undefined') return;
+  const dataString = localStorage.getItem(STORIES_LS_KEY);
+  const data: StoryProgress = dataString ? JSON.parse(dataString) : {};
+  data[hash] = state;
+  localStorage.setItem(STORIES_LS_KEY, JSON.stringify(data));
+};
+
+const defaultStoryState: StoryState = {
+  progress: '',
+  sentences: [],
+  sentencesTranslates: [],
+  isCompleted: false,
+  mode: 'easy',
+  allWords: [],
+  badWords: [],
+  translationWords: [],
+};
+
+const numberOfOptionsMap: Record<Mode, number> = {
+  easy: 2,
+  medium: 3,
+  hard: 4,
+};
+const pointsToWinMap: Record<Mode, number> = {
+  easy: 1,
+  medium: 2,
+  hard: 3,
+};
+
 const StoryModal = ({
   data,
 
@@ -231,20 +273,28 @@ const StoryModal = ({
   onClose: () => void;
   onNext: () => void;
 }) => {
-  const [internalState, setInternalState] = useState<StoryState>({
-    progress: '',
-    sentences: [],
-    sentencesTranslates: [],
-    isCompleted: false,
-    mode: 'easy',
-    allWords: [],
-    badWords: [],
-    translationWords: [],
-  });
+  const storyHash = useMemo(() => {
+    const dataToHash = [data.title, data.textEn, data.subtitle].join('|');
+    return getHash(dataToHash);
+  }, [data]);
+
+  const [internalState, setInternalState] = useState<StoryState>(defaultStoryState);
+
+  useEffect(() => {
+    const savedState = getStoriesProgress(storyHash);
+    if (savedState) {
+      setInternalState(savedState);
+    } else {
+      setInternalState(defaultStoryState);
+    }
+  }, [storyHash]);
 
   const setState = (data: Partial<StoryState>) => {
-    setInternalState((prev) => ({ ...prev, ...data }));
+    const newState: StoryState = { ...internalState, ...data };
+    saveStoryProgress(storyHash, newState);
+    setInternalState(newState);
   };
+
   const state = internalState;
 
   const auth = useAuth();
@@ -265,16 +315,6 @@ const StoryModal = ({
 
   const audio = useConversationAudio();
 
-  const numberOfOptionsMap: Record<Mode, number> = {
-    easy: 2,
-    medium: 3,
-    hard: 4,
-  };
-  const pointsToWinMap: Record<Mode, number> = {
-    easy: 1,
-    medium: 2,
-    hard: 3,
-  };
   const pointsToWin = pointsToWinMap[state.mode];
   const numberOfOptions = numberOfOptionsMap[state.mode];
 
@@ -309,32 +349,35 @@ const StoryModal = ({
   const imageUrl = data.imageUrl;
   const title = data.title;
 
-  const initialize = async () => {
-    setInitializing(true);
+  const start = async ({ isStartFromSavedState }: { isStartFromSavedState: boolean }) => {
     audio.initAudio();
 
-    const fullTextEn = data.textEn;
-    const isNeedToTranslate = targetLanguage !== 'en';
-    const fullText = isNeedToTranslate
-      ? await translateTextToTargetLanguageFromEng(fullTextEn)
-      : fullTextEn;
-    const sentences = splitTextIntoSentences(fullText);
-    const translatedSentencesToNative = await Promise.all(
-      sentences.map((s) => translateSentence(s)),
-    );
+    if (state.sentences.length > 0 && isStartFromSavedState) {
+      setIsReady(true);
+    } else {
+      setInitializing(true);
+      const fullTextEn = data.textEn;
+      const isNeedToTranslate = targetLanguage !== 'en';
+      const fullText = isNeedToTranslate
+        ? await translateTextToTargetLanguageFromEng(fullTextEn)
+        : fullTextEn;
+      const sentences = splitTextIntoSentences(fullText);
+      const translatedSentencesToNative = await Promise.all(
+        sentences.map((s) => translateSentence(s)),
+      );
 
-    setState({
-      progress: '',
-      sentences: sentences,
-      sentencesTranslates: translatedSentencesToNative,
-      isCompleted: false,
-      allWords: [],
-      badWords: [],
-      translationWords: [],
-    });
-
-    setIsReady(true);
-    setInitializing(false);
+      setState({
+        progress: '',
+        sentences: sentences,
+        sentencesTranslates: translatedSentencesToNative,
+        isCompleted: false,
+        allWords: [],
+        badWords: [],
+        translationWords: [],
+      });
+      setIsReady(true);
+      setInitializing(false);
+    }
 
     if (data.audioUrl && !audio.music.isPlaying) {
       const audioUrl = data.audioUrl;
@@ -427,6 +470,8 @@ const StoryModal = ({
   };
 
   const attentionWords = uniq([...state.badWords, ...state.translationWords]);
+
+  const isSavedProgress = state.progress.length > 0 && !state.isCompleted;
 
   return (
     <CustomModal isOpen={true} onClose={onClose}>
@@ -554,21 +599,55 @@ const StoryModal = ({
                         {i18n._('Hard')}
                       </Button>
                     </ButtonGroup>
-                    <Button
+                    <Stack
                       sx={{
-                        padding: '15px 45px',
-                        fontSize: '18px',
+                        flexDirection: 'row',
+                        gap: '10px',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexWrap: 'wrap',
                       }}
-                      variant="contained"
-                      color="info"
-                      onClick={() => {
-                        if (initializing) return;
-                        initialize();
-                      }}
-                      endIcon={initializing ? <Loader size={'20px'} /> : <Origami size={'20px'} />}
                     >
-                      {initializing ? i18n._('Preparing...') : i18n._('Read')}
-                    </Button>
+                      {isSavedProgress && (
+                        <Button
+                          sx={{
+                            padding: '15px 45px',
+                            fontSize: '18px',
+                          }}
+                          variant="contained"
+                          color="info"
+                          onClick={() => {
+                            start({
+                              isStartFromSavedState: true,
+                            });
+                          }}
+                          endIcon={<Glasses size={'20px'} />}
+                        >
+                          {i18n._('Continue')}
+                        </Button>
+                      )}
+
+                      <Button
+                        sx={{
+                          padding: '15px 45px',
+                          fontSize: '18px',
+                          backgroundColor: isSavedProgress ? 'rgba(0, 0, 0, 0.7)' : undefined,
+                        }}
+                        variant={isSavedProgress ? 'outlined' : 'contained'}
+                        color="info"
+                        onClick={() => {
+                          if (initializing) return;
+                          start({
+                            isStartFromSavedState: false,
+                          });
+                        }}
+                        endIcon={
+                          initializing ? <Loader size={'20px'} /> : <Origami size={'20px'} />
+                        }
+                      >
+                        {initializing ? i18n._('Preparing...') : i18n._('Read')}
+                      </Button>
+                    </Stack>
 
                     <Button
                       sx={{
@@ -581,7 +660,7 @@ const StoryModal = ({
                         if (initializing) return;
                         onNext();
                       }}
-                      endIcon={<RefreshCw size={'20px'} />}
+                      endIcon={<ChevronRight size={'20px'} />}
                     >
                       {i18n._('Next story')}
                     </Button>
