@@ -206,7 +206,7 @@ export function TextConstructor({
               overflow: 'visible',
               justifyContent: 'flex-end',
               //backgroundColor: 'green',
-              height: 'max(8000px, 50dvh)',
+              height: '8000px',
             }}
           >
             <Stack
