@@ -278,15 +278,6 @@ const StoryModal = ({
   const pointsToWin = pointsToWinMap[state.mode];
   const numberOfOptions = numberOfOptionsMap[state.mode];
 
-  useEffect(() => {
-    setState({
-      progress: '',
-      sentences: [],
-      sentencesTranslates: [],
-      isCompleted: false,
-    });
-  }, [data]);
-
   const translator = useTranslate();
 
   const isTranslateAvailable = translator.isTranslateAvailable;
