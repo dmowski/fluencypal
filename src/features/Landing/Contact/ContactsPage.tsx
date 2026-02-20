@@ -149,6 +149,26 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
 
                 <Stack
                   sx={{
+                    gap: '10px',
+                  }}
+                >
+                  <ContactParagraph>
+                    {i18n._(
+                      `P.S. To be fully transparent, here you can see how much money the service makes. I don't hide this information because I don't think there's anything to hide.`,
+                    )}
+                  </ContactParagraph>
+                  <a href="https://trustmrr.com/startup/fluencypal" target="_blank">
+                    <img
+                      src="https://trustmrr.com/api/embed/fluencypal?format=svg"
+                      alt="TrustMRR verified revenue badge"
+                      width="220"
+                      height="90"
+                    />
+                  </a>
+                </Stack>
+
+                <Stack
+                  sx={{
                     width: '100%',
                     gap: '10px',
                     padding: '30px 0 220px 0',
