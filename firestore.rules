@@ -1,9 +1,209 @@
 rules_version = '2';
+
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow all reads and writes for now during development with emulator
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Deny everything by default
     match /{document=**} {
-      allow read, write: if true;
+      allow read, write: if false;
+    }
+
+    
+    match /battles/{document=**} {
+    	allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+
+    match /game/gamePoints {
+    	allow read: if true;
+      allow write: if false;
+    }
+    
+    match /chat/{document=**} {
+    	allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    
+    match /stats/storiesViews {
+    	allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    
+    match /stories/{document=**} {
+    	allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    
+    match /game/gameLastVisit {
+    	allow read: if true;
+      allow write: if isSignedIn();
+    }
+    
+    match /dailyQuestionsAnswers/{answerId}/likes/{likeId} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+    
+    match /dailyQuestionsAnswers/{answerId} {
+
+      function isOwner() {
+        return request.auth != null && resource.data.authorUserId == request.auth.uid;
+      }
+
+      function isCreator() {
+        return request.auth != null && request.resource.data.authorUserId == request.auth.uid;
+      }
+
+      function isPublished() {
+        return resource.data.isPublished == true;
+      }
+
+      // Strict schema (adjust if you add/remove fields)
+      function hasOnlyAllowedKeys(d) {
+        return d.keys().hasOnly([
+          'authorUserId',
+          'questionId',
+          'answerLanguage',
+          'transcript',
+          'isPublished',
+          'createdAtIso',
+          'updatedAtIso',
+          'aiSuggestion',
+        ]);
+      }
+
+      function isValidDQA(d) {
+        return hasOnlyAllowedKeys(d)
+          && d.authorUserId is string
+          && d.questionId is string
+          && d.answerLanguage is string // tighten if you validate SupportedLanguage set elsewhere
+          && d.transcript is string
+          && d.isPublished is bool
+          && d.createdAtIso is string
+          && d.updatedAtIso is string;
+      }
+
+      /* ---------- reads ---------- */
+      // Per-document evaluation makes this safe for both get and list queries.
+      allow get, list: if isPublished() || isOwner();
+
+      /* ---------- creates ---------- */
+      // Author must be the signed-in user; require valid schema.
+      allow create: if isCreator() && isValidDQA(request.resource.data);
+
+      /* ---------- updates ---------- */
+      // Only the author can update; keep authorUserId and createdAtIso immutable; require valid schema.
+      allow update: if isOwner()
+                    && isValidDQA(request.resource.data)
+                    && request.resource.data.authorUserId == resource.data.authorUserId
+                    && request.resource.data.createdAtIso == resource.data.createdAtIso;
+
+      /* ---------- deletes ---------- */
+      // Only the author can delete.
+      allow delete: if isOwner();
+    }
+
+    match /game/gameAvatars {
+    	allow read: if true;
+      allow write: if isSignedIn();
+    }
+    
+    match /game2/gamePoints {
+    	allow read: if true;
+      allow write: if false;
+    }
+    
+    match /game2/gameLastVisit {
+    	allow read: if true;
+      allow write: if isSignedIn();
+    }
+    
+    match /game2/gameAvatars {
+    	allow read: if true;
+      allow write: if isSignedIn();
+    }
+    
+    match /game2/gameUserNames {
+    	allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    match /game2/gameUserAchievements {
+    	allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    match /users/{userId} {
+      
+      // Allow user to read and write their own document (/users/{userId})
+      allow read, write: if isSignedIn() && request.auth.uid == userId;
+
+      // Allow read-write for conversations
+      match /conversations/{conversationId} {
+        allow read, write: if isSignedIn() && request.auth.uid == userId;
+      }
+
+      // Allow read-write for stats
+      match /stats/{statId} {
+        allow read, write: if isSignedIn() && request.auth.uid == userId;
+      }
+      
+      // Allow read-write for phrases
+      match /phraseCorrections/{correction} {
+        allow read, write: if isSignedIn() && request.auth.uid == userId;
+      }
+      
+      // Allow read-write for goals
+      match /goals/{goalId} {
+        allow read, write: if isSignedIn() && request.auth.uid == userId;
+      }
+      
+      // Allow read-write for Interview Preparation
+      match /interview/{interviewId} {
+        allow read, write: if isSignedIn() && request.auth.uid == userId;
+      }
+
+      // homeworks
+      match /homeworks/{homeworkId} {
+        allow read, write: if isSignedIn() && request.auth.uid == userId;
+      }
+
+      // Allow read-write for usage document
+      match /usage {
+        allow read, write: if isSignedIn() && request.auth.uid == userId;
+      }
+
+      // Allow read-only for totalUsage specifically
+      match /usage/totalUsage {
+        allow read: if isSignedIn() && request.auth.uid == userId;
+        allow write: if false;
+      }
+
+      // Allow read-only access to all usageLogs documents
+      match /usageLogs/{logId} {
+        allow read: if isSignedIn() && request.auth.uid == userId;
+        allow write: if false;
+      }
+
+      // Allow read-only access to all payments documents
+      match /payments/{paymentId} {
+        allow read: if isSignedIn() && request.auth.uid == userId;
+        allow write: if false;
+      }
+      
+      // Allow read-write for quizSurvey
+      match /quiz2/{id} {
+        allow read, write: if isSignedIn() && request.auth.uid == userId;
+      }
+
+      // Deny all other unspecified documents under userId by default
+      match /{document=**} {
+        allow read, write: if false;
+      }
     }
   }
 }
