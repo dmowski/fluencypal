@@ -2,8 +2,9 @@ import { SendSdpOfferRequest, SendSdpOfferResponse } from '@/common/requests';
 import { getEphemeralToken } from '../token/getEphemeralToken';
 import { validateAuthToken } from '../config/firebase';
 import { rateLimitRealtimeInit } from '../usage/rateLimitRealtimeInit';
+import { RealTimeModel } from '@/common/ai';
 
-const ALLOWED_MODELS = new Set(['gpt-realtime-mini', 'gpt-realtime']);
+const ALLOWED_MODELS: RealTimeModel[] = ['gpt-realtime-mini', 'gpt-realtime'];
 
 export async function POST(request: Request) {
   try {
@@ -17,9 +18,10 @@ export async function POST(request: Request) {
     }
 
     const body = (await request.json()) as SendSdpOfferRequest;
+    const model: RealTimeModel = body?.model as RealTimeModel;
 
     // Validate model
-    if (!body?.model || !ALLOWED_MODELS.has(body.model)) {
+    if (!body?.model || !ALLOWED_MODELS.includes(model)) {
       return new Response('Invalid model', { status: 400 });
     }
 

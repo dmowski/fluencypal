@@ -24,6 +24,7 @@ export type TextToAudioModal = 'gpt-4o-mini-tts';
 
 export const MODELS = {
   REALTIME_CONVERSATION: SMALL_CONVERSATION_MODEL,
+  REALTIME_CONVERSATION_EXTRA: ADVANCED_REALTIME_CONVERSATION_MODEL,
   gpt_4o_mini: 'gpt-4o-mini',
   gpt_4o: 'gpt-4o',
 } as const;

@@ -29,7 +29,7 @@ import { useConversationStat } from './useConversationStat';
 import { useLimits } from './useLimits';
 import { useConversationUsage } from './useConversationUsage';
 
-const aiModal = MODELS.REALTIME_CONVERSATION;
+//const aiModal = MODELS.REALTIME_CONVERSATION;
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
 
@@ -156,7 +156,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const getBaseRtcConfig = async () => {
     const baseConfig: ConversationConfig = {
-      model: aiModal,
+      model: MODELS.REALTIME_CONVERSATION,
       initInstruction: '',
       onOpen,
       onMessage: (message) =>
@@ -242,7 +242,6 @@ ${lessonPlan.steps
 
       return {
         ...baseConfig,
-        model: aiModal,
         voice,
         initInstruction: `# Overview
 You are an ${fullLanguageName} speaking teacher. Your name is "${voice}".
@@ -268,7 +267,6 @@ Use ${fullLanguageName} language in conversation.
       setIsInitializing(`Starting Role Play...`);
       return {
         ...baseConfig,
-        model: aiModal,
         voice,
         initInstruction: `# Overview
 You are an ${fullLanguageName} speaking teacher. Your name is "${voice}".
@@ -313,7 +311,6 @@ Use ${fullLanguageName} language in conversation.
 
       return {
         ...baseConfig,
-        model: aiModal,
         voice,
         initInstruction: `${aiPersona} Your name is ${voice}. Your role is to make user talks.
 ${openerInfoPrompt}
@@ -343,7 +340,6 @@ During conversation ask only one question at a time or even without questions.
       return {
         ...baseConfig,
         voice,
-        model: aiModal,
         initInstruction: ``,
       };
     }
@@ -353,7 +349,7 @@ During conversation ask only one question at a time or even without questions.
       return {
         ...baseConfig,
         voice,
-        model: aiModal,
+
         initInstruction: `${aiPersona}
 The user wants to learn a new rule.
 Start your lesson be introducing the rule with short explanation.
@@ -371,7 +367,7 @@ ${voiceInstructions}
       let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
       return {
         ...baseConfig,
-        model: aiModal,
+
         voice,
         initInstruction: `${aiPersona}
 The user wants to learn new words.
@@ -478,8 +474,11 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 
       const initConversation = isUseRealtime ? initWebRtcConversation : initTextConversation;
 
+      const model = MODELS.REALTIME_CONVERSATION_EXTRA;
+
       const conversation = await initConversation({
         ...conversationConfig,
+        model: model,
         initInstruction: instruction,
         voice: conversationConfig.voice || input.voice,
         isMuted: isMutedInternal,
