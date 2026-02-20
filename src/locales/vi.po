@@ -1813,7 +1813,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Sentence/Stories.tsx:834
+#: src/features/Sentence/StoryModal.tsx:662
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1940,7 +1940,7 @@ msgstr "Hoàn thành câu "
 msgid "Complete verification to proceed."
 msgstr "Hoàn tất xác minh để tiếp tục."
 
-#: src/features/Sentence/TextConstructor.tsx:257
+#: src/features/Sentence/TextConstructor.tsx:288
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Hoàn thành ✅"
@@ -2078,6 +2078,7 @@ msgstr "Contacts:"
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
+#: src/features/Sentence/StoryModal.tsx:401
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Tiếp tục"
@@ -2953,7 +2954,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "Quyền truy cập sớm vào công cụ mới"
 
-#: src/features/Sentence/Stories.tsx:566
+#: src/features/Sentence/StoryModal.tsx:360
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "Dễ dàng"
@@ -3613,7 +3614,7 @@ msgstr "hư cấu hiện sinh"
 msgid "Exit"
 msgstr "Thoát"
 
-#: src/features/Sentence/Stories.tsx:136
+#: src/features/Sentence/Stories.tsx:125
 #. js-lingui-explicit-id
 msgid "Expand vocabulary with stories"
 msgstr "Mở rộng từ vựng bằng câu chuyện"
@@ -4321,7 +4322,7 @@ msgstr "Truy cập đầy đủ huấn luyện viên phỏng vấn AI"
 msgid "Full AI tutor access"
 msgstr "Truy cập đầy đủ vào gia sư AI"
 
-#: src/features/Sentence/Stories.tsx:793
+#: src/features/Sentence/StoryModal.tsx:621
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "Câu chuyện đầy đủ:"
@@ -4833,7 +4834,7 @@ msgstr "Xử lý đồng thời một cách tự tin"
 msgid "Happy April 1st!"
 msgstr "Chúc mừng ngày 1 tháng 4!"
 
-#: src/features/Sentence/Stories.tsx:580
+#: src/features/Sentence/StoryModal.tsx:374
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "Khó khăn"
@@ -7129,7 +7130,7 @@ msgstr ""
 msgid "Medical Talk Simulation"
 msgstr "Mô phỏng Cuộc trò chuyện y khoa"
 
-#: src/features/Sentence/Stories.tsx:573
+#: src/features/Sentence/StoryModal.tsx:367
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "Trung bình"
@@ -7298,7 +7299,12 @@ msgstr ""
 msgid "Movies, books, or music"
 msgstr "Phim, sách, hoặc âm nhạc"
 
-#: src/features/Sentence/TextConstructor.tsx:344
+#: src/features/Sentence/TextConstructor.tsx:303
+#. js-lingui-explicit-id
+msgid "My Points:"
+msgstr "Điểm của tôi:"
+
+#: src/features/Sentence/TextConstructor.tsx:304
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Vị trí của tôi:"
@@ -7424,7 +7430,7 @@ msgstr "Câu hỏi tiếp theo"
 msgid "Next Step"
 msgstr "Bước Tiếp Theo"
 
-#: src/features/Sentence/Stories.tsx:612
+#: src/features/Sentence/StoryModal.tsx:440
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "Câu chuyện tiếp theo"
@@ -8325,11 +8331,6 @@ msgstr ""
 "Điểm đã đạt được: {pointsEarned}. Tiếp tục luyện tập để cải thiện điểm số "
 "của bạn!"
 
-#: src/features/Sentence/TextConstructor.tsx:323
-#. js-lingui-explicit-id
-msgid "Points:"
-msgstr "Điểm:"
-
 #: src/features/Lang/getLabels.tsx:20
 #. js-lingui-explicit-id
 msgid "Polish Learning Plan"
@@ -8727,7 +8728,7 @@ msgstr "Chuẩn bị cho bộ não"
 msgid "Preparing your game..."
 msgstr "Đang chuẩn bị trò chơi của bạn..."
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Preparing..."
 msgstr ""
@@ -8739,7 +8740,7 @@ msgstr ""
 msgid "Press the button below to generate a story based on this image"
 msgstr "Nhấn nút bên dưới để tạo một câu chuyện dựa trên hình ảnh này"
 
-#: src/features/Sentence/Stories.tsx:242
+#: src/features/Sentence/StoryModal.tsx:327
 #. js-lingui-explicit-id
 msgid "Press the button below to start the adventure!"
 msgstr "Nhấn nút bên dưới để bắt đầu cuộc phiêu lưu!"
@@ -8840,11 +8841,6 @@ msgstr "Chuyên gia chuyển đổi từ các lĩnh vực khác sang kỹ thuậ
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Hồ sơ"
-
-#: src/features/Sentence/TextConstructor.tsx:243
-#. js-lingui-explicit-id
-msgid "Progress"
-msgstr "Tiến độ"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:58
 #. js-lingui-explicit-id
@@ -8994,7 +8990,7 @@ msgstr ""
 "Chuyên gia React, Vue hoặc Angular đối mặt với các vòng kiến trúc và thiết "
 "kế hệ thống"
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Đọc"
@@ -10462,6 +10458,11 @@ msgstr ""
 msgid "Stop"
 msgstr "Dừng"
 
+#: src/features/Sentence/TextConstructor.tsx:302
+#. js-lingui-explicit-id
+msgid "Story progress:"
+msgstr "Tiến độ câu chuyện:"
+
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:18
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:18
 #. js-lingui-explicit-id
@@ -10598,7 +10599,7 @@ msgstr "Cần đăng ký"
 msgid "subscription plans"
 msgstr "các gói đăng ký"
 
-#: src/features/Sentence/Stories.tsx:722
+#: src/features/Sentence/StoryModal.tsx:550
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr "Tỷ lệ thành công:"
@@ -11573,7 +11574,7 @@ msgstr "Ngày dùng thử"
 msgid "Try"
 msgstr "Cố gắng"
 
-#: src/features/Sentence/Stories.tsx:822
+#: src/features/Sentence/StoryModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Try another story"
 msgstr "Thử câu chuyện khác"
@@ -12232,7 +12233,7 @@ msgstr ""
 "Chào mừng bạn đến với Chuẩn bị Phỏng vấn Lập trình viên Giao diện cao cấp "
 "của bạn"
 
-#: src/features/Sentence/Stories.tsx:679
+#: src/features/Sentence/StoryModal.tsx:507
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "Làm tốt lắm! Bạn đã hoàn thành câu chuyện."
@@ -12527,7 +12528,7 @@ msgstr "Số từ mỗi lượt"
 msgid "Words to Learn"
 msgstr "Những Từ Cần Học"
 
-#: src/features/Sentence/Stories.tsx:746
+#: src/features/Sentence/StoryModal.tsx:574
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "Từ cần chú ý:"
@@ -13250,7 +13251,7 @@ msgstr "{userName} thách thức bạn tham gia một cuộc tranh luận!"
 msgid "{winnerName} wins!"
 msgstr "{winnerName} thắng cuộc!"
 
-#: src/features/Sentence/Stories.tsx:546
+#: src/features/Sentence/StoryModal.tsx:338
 #. js-lingui-explicit-id
 msgid "{wordsCount} words"
 msgstr "{wordsCount} từ"
@@ -13271,6 +13272,16 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Sentence/TextConstructor.tsx:323
+#. js-lingui-explicit-id
+#~ msgid "Points:"
+#~ msgstr "Điểm:"
+
+#: src/features/Sentence/TextConstructor.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Progress"
+#~ msgstr "Tiến độ"
 
 #: src/features/Sentence/Stories.tsx:112
 #. js-lingui-explicit-id

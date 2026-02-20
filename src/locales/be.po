@@ -1819,7 +1819,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Sentence/Stories.tsx:834
+#: src/features/Sentence/StoryModal.tsx:662
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1944,7 +1944,7 @@ msgstr "Завяршыце сказ"
 msgid "Complete verification to proceed."
 msgstr "Завершыце праверку для працягу."
 
-#: src/features/Sentence/TextConstructor.tsx:257
+#: src/features/Sentence/TextConstructor.tsx:288
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Выконана ✅"
@@ -2083,6 +2083,7 @@ msgstr "Кантакты:"
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
+#: src/features/Sentence/StoryModal.tsx:401
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Працягваць"
@@ -2955,7 +2956,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "Ранні доступ да новых інструментаў"
 
-#: src/features/Sentence/Stories.tsx:566
+#: src/features/Sentence/StoryModal.tsx:360
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "Лёгка"
@@ -3612,7 +3613,7 @@ msgstr "экзістэнцыйная літаратура"
 msgid "Exit"
 msgstr "Выхад"
 
-#: src/features/Sentence/Stories.tsx:136
+#: src/features/Sentence/Stories.tsx:125
 #. js-lingui-explicit-id
 msgid "Expand vocabulary with stories"
 msgstr "Пашырайце слоўнік з гісторыямі"
@@ -4314,7 +4315,7 @@ msgstr "Поўны доступ да штучнага інтэлекту трэ�
 msgid "Full AI tutor access"
 msgstr "Поўны доступ да AI-тутара"
 
-#: src/features/Sentence/Stories.tsx:793
+#: src/features/Sentence/StoryModal.tsx:621
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "Поўная гісторыя:"
@@ -4829,7 +4830,7 @@ msgstr "Кіруйце канкурэнцыяй упэўнена"
 msgid "Happy April 1st!"
 msgstr "З Днём 1 красавіка!"
 
-#: src/features/Sentence/Stories.tsx:580
+#: src/features/Sentence/StoryModal.tsx:374
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "Цяжка"
@@ -7128,7 +7129,7 @@ msgstr ""
 msgid "Medical Talk Simulation"
 msgstr "Медыцынская сімуляцыя размовы"
 
-#: src/features/Sentence/Stories.tsx:573
+#: src/features/Sentence/StoryModal.tsx:367
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "Сярэдні"
@@ -7297,7 +7298,12 @@ msgstr ""
 msgid "Movies, books, or music"
 msgstr "Фільмы, кнігі або музыка"
 
-#: src/features/Sentence/TextConstructor.tsx:344
+#: src/features/Sentence/TextConstructor.tsx:303
+#. js-lingui-explicit-id
+msgid "My Points:"
+msgstr "Мае Балы:"
+
+#: src/features/Sentence/TextConstructor.tsx:304
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Мая пазіцыя:"
@@ -7423,7 +7429,7 @@ msgstr "Наступнае пытанне"
 msgid "Next Step"
 msgstr "Наступны крок"
 
-#: src/features/Sentence/Stories.tsx:612
+#: src/features/Sentence/StoryModal.tsx:440
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "Наступная гісторыя"
@@ -8324,11 +8330,6 @@ msgstr ""
 "Points earned: {pointsEarned}. Працягвайце практыкавацца, каб палепшыць "
 "свой вынік!"
 
-#: src/features/Sentence/TextConstructor.tsx:323
-#. js-lingui-explicit-id
-msgid "Points:"
-msgstr "Балы:"
-
 #: src/features/Lang/getLabels.tsx:20
 #. js-lingui-explicit-id
 msgid "Polish Learning Plan"
@@ -8727,7 +8728,7 @@ msgstr "Падрыхтоўка мозга"
 msgid "Preparing your game..."
 msgstr "Падрыхтоўка вашай гульні..."
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Preparing..."
 msgstr "Падрыхтоўка..."
@@ -8737,7 +8738,7 @@ msgstr "Падрыхтоўка..."
 msgid "Press the button below to generate a story based on this image"
 msgstr "Націсніце кнопку ніжэй, каб згенераваць гісторыю на аснове гэтага малюнка"
 
-#: src/features/Sentence/Stories.tsx:242
+#: src/features/Sentence/StoryModal.tsx:327
 #. js-lingui-explicit-id
 msgid "Press the button below to start the adventure!"
 msgstr "Натисніце кнопку ніжэй, каб пачаць прыгоду!"
@@ -8840,11 +8841,6 @@ msgstr "Прафесіяналы, якія пераходзяць з іншых 
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Профіль"
-
-#: src/features/Sentence/TextConstructor.tsx:243
-#. js-lingui-explicit-id
-msgid "Progress"
-msgstr "Прагрэс"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:58
 #. js-lingui-explicit-id
@@ -8992,7 +8988,7 @@ msgstr ""
 "React, Vue, або Angular спецыялісты, якія сутыкаюцца з раўндамі архітэктуры "
 "і дызайну сістэм"
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Чытаць"
@@ -10455,6 +10451,11 @@ msgstr ""
 msgid "Stop"
 msgstr "Стоп"
 
+#: src/features/Sentence/TextConstructor.tsx:302
+#. js-lingui-explicit-id
+msgid "Story progress:"
+msgstr "Прагрэс гісторыі:"
+
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:18
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:18
 #. js-lingui-explicit-id
@@ -10591,7 +10592,7 @@ msgstr "Патрабуецца падпіска"
 msgid "subscription plans"
 msgstr "планы падпіскі"
 
-#: src/features/Sentence/Stories.tsx:722
+#: src/features/Sentence/StoryModal.tsx:550
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr "% поспеху:"
@@ -11567,7 +11568,7 @@ msgstr "Дні пробнага тэрміну"
 msgid "Try"
 msgstr "Паспрабуйце"
 
-#: src/features/Sentence/Stories.tsx:822
+#: src/features/Sentence/StoryModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Try another story"
 msgstr "Паспрабуйце іншую гісторыю"
@@ -12223,7 +12224,7 @@ msgstr ""
 "Сардэчна запрашаем у Падрыхтоўку да Сумоіспыту на Пазіцыю Старшага "
 "Фронтэнд-Распрацоўшчыка"
 
-#: src/features/Sentence/Stories.tsx:679
+#: src/features/Sentence/StoryModal.tsx:507
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "Малайчына! Вы завяршылі гісторыю."
@@ -12519,7 +12520,7 @@ msgstr "Словы за ход"
 msgid "Words to Learn"
 msgstr "Словы для вывучэння"
 
-#: src/features/Sentence/Stories.tsx:746
+#: src/features/Sentence/StoryModal.tsx:574
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "Словы, на якія варта звярнуць увагу:"
@@ -13236,7 +13237,7 @@ msgstr "{userName} кідае вам выклік на дэбаты!"
 msgid "{winnerName} wins!"
 msgstr "{winnerName} перамагае!"
 
-#: src/features/Sentence/Stories.tsx:546
+#: src/features/Sentence/StoryModal.tsx:338
 #. js-lingui-explicit-id
 msgid "{wordsCount} words"
 msgstr "{wordsCount} слоў"
@@ -13256,6 +13257,16 @@ msgid ""
 msgstr ""
 "— важна заняцца гэтай кароткай размовай, перш чым прыступіць да прафесійных "
 "тэм. Вось некаторыя карысныя англійскія фразы для пачатку інтэрв'ю:"
+
+#: src/features/Sentence/TextConstructor.tsx:323
+#. js-lingui-explicit-id
+#~ msgid "Points:"
+#~ msgstr "Балы:"
+
+#: src/features/Sentence/TextConstructor.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Progress"
+#~ msgstr "Прагрэс"
 
 #: src/features/Sentence/Stories.tsx:112
 #. js-lingui-explicit-id

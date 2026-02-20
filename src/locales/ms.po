@@ -1830,7 +1830,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Sentence/Stories.tsx:834
+#: src/features/Sentence/StoryModal.tsx:662
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1955,7 +1955,7 @@ msgstr "Lengkapkan ayat"
 msgid "Complete verification to proceed."
 msgstr "Selesaikan pengesahan untuk meneruskan."
 
-#: src/features/Sentence/TextConstructor.tsx:257
+#: src/features/Sentence/TextConstructor.tsx:288
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Selesai ✅"
@@ -2097,6 +2097,7 @@ msgstr "Contacts:"
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
+#: src/features/Sentence/StoryModal.tsx:401
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Teruskan"
@@ -2975,7 +2976,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "Akses awal kepada alat baharu"
 
-#: src/features/Sentence/Stories.tsx:566
+#: src/features/Sentence/StoryModal.tsx:360
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "Mudah"
@@ -3638,7 +3639,7 @@ msgstr "fiksi eksistensial"
 msgid "Exit"
 msgstr "Keluar"
 
-#: src/features/Sentence/Stories.tsx:136
+#: src/features/Sentence/Stories.tsx:125
 #. js-lingui-explicit-id
 msgid "Expand vocabulary with stories"
 msgstr "Kembangkan perbendaharaan kata dengan cerita"
@@ -4349,7 +4350,7 @@ msgstr "Akses penuh jurulatih temu duga AI"
 msgid "Full AI tutor access"
 msgstr "Akses penuh tutor AI"
 
-#: src/features/Sentence/Stories.tsx:793
+#: src/features/Sentence/StoryModal.tsx:621
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "Cerita penuh:"
@@ -4868,7 +4869,7 @@ msgstr "Kendalikan keserentakan dengan yakin"
 msgid "Happy April 1st!"
 msgstr "Selamat 1 April!"
 
-#: src/features/Sentence/Stories.tsx:580
+#: src/features/Sentence/StoryModal.tsx:374
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "Sukar"
@@ -7219,7 +7220,7 @@ msgstr ""
 msgid "Medical Talk Simulation"
 msgstr "Simulasi Percakapan Medikal"
 
-#: src/features/Sentence/Stories.tsx:573
+#: src/features/Sentence/StoryModal.tsx:367
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "Sederhana"
@@ -7390,7 +7391,12 @@ msgstr ""
 msgid "Movies, books, or music"
 msgstr "Filem, buku, atau muzik"
 
-#: src/features/Sentence/TextConstructor.tsx:344
+#: src/features/Sentence/TextConstructor.tsx:303
+#. js-lingui-explicit-id
+msgid "My Points:"
+msgstr "Mata Saya:"
+
+#: src/features/Sentence/TextConstructor.tsx:304
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Kedudukan Saya:"
@@ -7516,7 +7522,7 @@ msgstr "Soalan seterusnya"
 msgid "Next Step"
 msgstr "Langkah Seterusnya"
 
-#: src/features/Sentence/Stories.tsx:612
+#: src/features/Sentence/StoryModal.tsx:440
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "Cerita seterusnya"
@@ -8423,11 +8429,6 @@ msgstr ""
 "Mata yang diperoleh: {pointsEarned}. Teruskan berlatih untuk meningkatkan "
 "skor anda!"
 
-#: src/features/Sentence/TextConstructor.tsx:323
-#. js-lingui-explicit-id
-msgid "Points:"
-msgstr "Mata:"
-
 #: src/features/Lang/getLabels.tsx:20
 #. js-lingui-explicit-id
 msgid "Polish Learning Plan"
@@ -8828,7 +8829,7 @@ msgstr "Menyediakan otak"
 msgid "Preparing your game..."
 msgstr "Sedang menyediakan permainan anda..."
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Preparing..."
 msgstr "Sedang bersedia..."
@@ -8838,7 +8839,7 @@ msgstr "Sedang bersedia..."
 msgid "Press the button below to generate a story based on this image"
 msgstr "Tekan butang di bawah untuk menjana cerita berdasarkan imej ini"
 
-#: src/features/Sentence/Stories.tsx:242
+#: src/features/Sentence/StoryModal.tsx:327
 #. js-lingui-explicit-id
 msgid "Press the button below to start the adventure!"
 msgstr "Tekan butang di bawah untuk memulakan pengembaraan!"
@@ -8939,11 +8940,6 @@ msgstr "Profesional yang beralih dari bidang lain ke kejuruteraan frontend"
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
-
-#: src/features/Sentence/TextConstructor.tsx:243
-#. js-lingui-explicit-id
-msgid "Progress"
-msgstr "Kemajuan"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:58
 #. js-lingui-explicit-id
@@ -9091,7 +9087,7 @@ msgstr ""
 "Pakar React, Vue, atau Angular menghadapi pusingan reka bentuk seni bina "
 "dan sistem"
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Baca"
@@ -10551,6 +10547,11 @@ msgstr ""
 msgid "Stop"
 msgstr "Berhenti"
 
+#: src/features/Sentence/TextConstructor.tsx:302
+#. js-lingui-explicit-id
+msgid "Story progress:"
+msgstr "Kemajuan cerita:"
+
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:18
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:18
 #. js-lingui-explicit-id
@@ -10688,7 +10689,7 @@ msgstr "Langganan diperlukan"
 msgid "subscription plans"
 msgstr "pelan langganan"
 
-#: src/features/Sentence/Stories.tsx:722
+#: src/features/Sentence/StoryModal.tsx:550
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr ""
@@ -11669,7 +11670,7 @@ msgstr "Hari percubaan"
 msgid "Try"
 msgstr "Cuba"
 
-#: src/features/Sentence/Stories.tsx:822
+#: src/features/Sentence/StoryModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Try another story"
 msgstr "Cuba cerita lain"
@@ -12332,7 +12333,7 @@ msgstr "Selamat Datang ke Persediaan Temuduga Pembangun Frontend Junior Anda"
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "Selamat Datang ke Persiapan Temuduga Pembangun Frontend Kanan Anda"
 
-#: src/features/Sentence/Stories.tsx:679
+#: src/features/Sentence/StoryModal.tsx:507
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "Tahniah! Anda telah melengkapkan cerita ini."
@@ -12631,7 +12632,7 @@ msgstr ""
 "\n"
 "Perkataan untuk Dipelajari\n"
 
-#: src/features/Sentence/Stories.tsx:746
+#: src/features/Sentence/StoryModal.tsx:574
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "Perkataan yang perlu diberi perhatian kepada:"
@@ -13363,7 +13364,7 @@ msgstr "{userName} mencabar anda untuk debat!"
 msgid "{winnerName} wins!"
 msgstr "{winnerName} menang!"
 
-#: src/features/Sentence/Stories.tsx:546
+#: src/features/Sentence/StoryModal.tsx:338
 #. js-lingui-explicit-id
 msgid "{wordsCount} words"
 msgstr "{wordsCount} perkataan"
@@ -13384,6 +13385,16 @@ msgstr ""
 "— sangat penting untuk melibatkan diri dalam perbualan pendek ini sebelum "
 "melompat ke topik profesional. Berikut adalah beberapa frasa Inggeris yang "
 "berguna untuk memulakan temuduga:"
+
+#: src/features/Sentence/TextConstructor.tsx:323
+#. js-lingui-explicit-id
+#~ msgid "Points:"
+#~ msgstr "Mata:"
+
+#: src/features/Sentence/TextConstructor.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Progress"
+#~ msgstr "Kemajuan"
 
 #: src/features/Sentence/Stories.tsx:112
 #. js-lingui-explicit-id

@@ -1806,7 +1806,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Sentence/Stories.tsx:834
+#: src/features/Sentence/StoryModal.tsx:662
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1931,7 +1931,7 @@ msgstr "Fyll i meningen"
 msgid "Complete verification to proceed."
 msgstr "Slutför verifiering för att fortsätta."
 
-#: src/features/Sentence/TextConstructor.tsx:257
+#: src/features/Sentence/TextConstructor.tsx:288
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Avklarad ✅"
@@ -2070,6 +2070,7 @@ msgstr "Kontakter:"
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
+#: src/features/Sentence/StoryModal.tsx:401
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Fortsätt"
@@ -2934,7 +2935,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "Tidigt tillträde till nya verktyg"
 
-#: src/features/Sentence/Stories.tsx:566
+#: src/features/Sentence/StoryModal.tsx:360
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "Enkel"
@@ -3586,7 +3587,7 @@ msgstr "existentiell fiktion"
 msgid "Exit"
 msgstr "Avsluta"
 
-#: src/features/Sentence/Stories.tsx:136
+#: src/features/Sentence/Stories.tsx:125
 #. js-lingui-explicit-id
 msgid "Expand vocabulary with stories"
 msgstr "Utöka ordförrådet med berättelser"
@@ -4280,7 +4281,7 @@ msgstr "Full AI-intervjutränaråtkomst"
 msgid "Full AI tutor access"
 msgstr "Full AI-handled tillgång"
 
-#: src/features/Sentence/Stories.tsx:793
+#: src/features/Sentence/StoryModal.tsx:621
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "Fullständig berättelse:"
@@ -4789,7 +4790,7 @@ msgstr "Hantera samtidighet med självförtroende"
 msgid "Happy April 1st!"
 msgstr "Glad 1:a april!"
 
-#: src/features/Sentence/Stories.tsx:580
+#: src/features/Sentence/StoryModal.tsx:374
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "Svår"
@@ -7073,7 +7074,7 @@ msgstr ""
 msgid "Medical Talk Simulation"
 msgstr "Medicinsk Samtalssimulation"
 
-#: src/features/Sentence/Stories.tsx:573
+#: src/features/Sentence/StoryModal.tsx:367
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "Medium"
@@ -7241,7 +7242,12 @@ msgstr ""
 msgid "Movies, books, or music"
 msgstr "Filmer, böcker eller musik"
 
-#: src/features/Sentence/TextConstructor.tsx:344
+#: src/features/Sentence/TextConstructor.tsx:303
+#. js-lingui-explicit-id
+msgid "My Points:"
+msgstr "Mina Poäng:"
+
+#: src/features/Sentence/TextConstructor.tsx:304
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Min Position:"
@@ -7367,7 +7373,7 @@ msgstr "Nästa fråga"
 msgid "Next Step"
 msgstr "Nästa steg"
 
-#: src/features/Sentence/Stories.tsx:612
+#: src/features/Sentence/StoryModal.tsx:440
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "Nästa berättelse"
@@ -8258,11 +8264,6 @@ msgstr "Poäng"
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr "Poäng intjänade: {pointsEarned}. Fortsätt öva för att förbättra din poäng!"
 
-#: src/features/Sentence/TextConstructor.tsx:323
-#. js-lingui-explicit-id
-msgid "Points:"
-msgstr "Poäng:"
-
 #: src/features/Lang/getLabels.tsx:20
 #. js-lingui-explicit-id
 msgid "Polish Learning Plan"
@@ -8647,7 +8648,7 @@ msgstr "Förbereder hjärnan"
 msgid "Preparing your game..."
 msgstr "Förbereder ditt spel..."
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Preparing..."
 msgstr "Förbereder..."
@@ -8657,7 +8658,7 @@ msgstr "Förbereder..."
 msgid "Press the button below to generate a story based on this image"
 msgstr "Tryck på knappen nedan för att generera en berättelse baserad på denna bild"
 
-#: src/features/Sentence/Stories.tsx:242
+#: src/features/Sentence/StoryModal.tsx:327
 #. js-lingui-explicit-id
 msgid "Press the button below to start the adventure!"
 msgstr "Tryck på knappen nedan för att starta äventyret!"
@@ -8758,11 +8759,6 @@ msgstr "Professionella som övergår från andra områden till frontend-utveckli
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
-
-#: src/features/Sentence/TextConstructor.tsx:243
-#. js-lingui-explicit-id
-msgid "Progress"
-msgstr "Framsteg"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:58
 #. js-lingui-explicit-id
@@ -8910,7 +8906,7 @@ msgstr ""
 "React-, Vue- eller Angular-specialister som ställs inför arkitektur- och "
 "systemdesignomgångar"
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Läsa"
@@ -10362,6 +10358,11 @@ msgstr ""
 msgid "Stop"
 msgstr "Stopp"
 
+#: src/features/Sentence/TextConstructor.tsx:302
+#. js-lingui-explicit-id
+msgid "Story progress:"
+msgstr "Berättelseframsteg:"
+
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:18
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:18
 #. js-lingui-explicit-id
@@ -10498,7 +10499,7 @@ msgstr "Prenumeration krävs"
 msgid "subscription plans"
 msgstr "prenumerationsplaner"
 
-#: src/features/Sentence/Stories.tsx:722
+#: src/features/Sentence/StoryModal.tsx:550
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr "Success rate:"
@@ -11467,7 +11468,7 @@ msgstr "Provdagar"
 msgid "Try"
 msgstr "Försök"
 
-#: src/features/Sentence/Stories.tsx:822
+#: src/features/Sentence/StoryModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Try another story"
 msgstr "Prova en annan berättelse"
@@ -12114,7 +12115,7 @@ msgstr "Välkommen till Din Förberedelse för Junior Frontend Utvecklarintervju
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "Välkommen till din förberedelse för intervju som Senior Frontend-utvecklare"
 
-#: src/features/Sentence/Stories.tsx:679
+#: src/features/Sentence/StoryModal.tsx:507
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "Bra gjort! Du har slutfört berättelsen."
@@ -12410,7 +12411,7 @@ msgstr "Ord per omgång"
 msgid "Words to Learn"
 msgstr "Ord att Lära Sig"
 
-#: src/features/Sentence/Stories.tsx:746
+#: src/features/Sentence/StoryModal.tsx:574
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "Ord att uppmärksamma:"
@@ -13123,7 +13124,7 @@ msgstr "{userName} utmanar dig på en debatt!"
 msgid "{winnerName} wins!"
 msgstr "{winnerName} vinner!"
 
-#: src/features/Sentence/Stories.tsx:546
+#: src/features/Sentence/StoryModal.tsx:338
 #. js-lingui-explicit-id
 msgid "{wordsCount} words"
 msgstr "{wordsCount} ord"
@@ -13144,6 +13145,16 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Sentence/TextConstructor.tsx:323
+#. js-lingui-explicit-id
+#~ msgid "Points:"
+#~ msgstr "Poäng:"
+
+#: src/features/Sentence/TextConstructor.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Progress"
+#~ msgstr "Framsteg"
 
 #: src/features/Sentence/Stories.tsx:112
 #. js-lingui-explicit-id

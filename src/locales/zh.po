@@ -1726,7 +1726,7 @@ msgstr "清晰的系统设计结构。我终于在解释权衡时没有东拉西
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Sentence/Stories.tsx:834
+#: src/features/Sentence/StoryModal.tsx:662
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1849,7 +1849,7 @@ msgstr "完成句子"
 msgid "Complete verification to proceed."
 msgstr "完成验证以继续。"
 
-#: src/features/Sentence/TextConstructor.tsx:257
+#: src/features/Sentence/TextConstructor.tsx:288
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "已完成 ✅"
@@ -1982,6 +1982,7 @@ msgstr "联系人："
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
+#: src/features/Sentence/StoryModal.tsx:401
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "继续"
@@ -2781,7 +2782,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "新的工具抢先体验"
 
-#: src/features/Sentence/Stories.tsx:566
+#: src/features/Sentence/StoryModal.tsx:360
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "简单"
@@ -3369,7 +3370,7 @@ msgstr "存在主义小说"
 msgid "Exit"
 msgstr "退出"
 
-#: src/features/Sentence/Stories.tsx:136
+#: src/features/Sentence/Stories.tsx:125
 #. js-lingui-explicit-id
 msgid "Expand vocabulary with stories"
 msgstr "通过故事扩大词汇量"
@@ -4005,7 +4006,7 @@ msgstr "完全AI面试教练访问权限"
 msgid "Full AI tutor access"
 msgstr "全功能 AI 辅导员访问权限"
 
-#: src/features/Sentence/Stories.tsx:793
+#: src/features/Sentence/StoryModal.tsx:621
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "完整故事："
@@ -4467,7 +4468,7 @@ msgstr "自信地处理并发"
 msgid "Happy April 1st!"
 msgstr "四月一日快乐！"
 
-#: src/features/Sentence/Stories.tsx:580
+#: src/features/Sentence/StoryModal.tsx:374
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "难"
@@ -6513,7 +6514,7 @@ msgstr "用这份分步指南掌握你的下一次英语面试！为商务英语
 msgid "Medical Talk Simulation"
 msgstr "医学对话模拟"
 
-#: src/features/Sentence/Stories.tsx:573
+#: src/features/Sentence/StoryModal.tsx:367
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "中等"
@@ -6676,7 +6677,12 @@ msgstr "大多数面试都包括经典的“优点和缺点”问题。用英语
 msgid "Movies, books, or music"
 msgstr "电影、书籍或音乐"
 
-#: src/features/Sentence/TextConstructor.tsx:344
+#: src/features/Sentence/TextConstructor.tsx:303
+#. js-lingui-explicit-id
+msgid "My Points:"
+msgstr "我的积分:"
+
+#: src/features/Sentence/TextConstructor.tsx:304
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "我的职位："
@@ -6800,7 +6806,7 @@ msgstr "下一个问题"
 msgid "Next Step"
 msgstr "下一步"
 
-#: src/features/Sentence/Stories.tsx:612
+#: src/features/Sentence/StoryModal.tsx:440
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "下一个故事"
@@ -7641,11 +7647,6 @@ msgstr "积分"
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr "获得的积分：{pointsEarned}。继续练习以提高你的分数！"
 
-#: src/features/Sentence/TextConstructor.tsx:323
-#. js-lingui-explicit-id
-msgid "Points:"
-msgstr "分数："
-
 #: src/features/Lang/getLabels.tsx:20
 #. js-lingui-explicit-id
 msgid "Polish Learning Plan"
@@ -7991,7 +7992,7 @@ msgstr "准备大脑"
 msgid "Preparing your game..."
 msgstr "准备您的游戏..."
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Preparing..."
 msgstr "准备中..."
@@ -8001,7 +8002,7 @@ msgstr "准备中..."
 msgid "Press the button below to generate a story based on this image"
 msgstr "按下下面的按钮，根据这张图片生成一个故事"
 
-#: src/features/Sentence/Stories.tsx:242
+#: src/features/Sentence/StoryModal.tsx:327
 #. js-lingui-explicit-id
 msgid "Press the button below to start the adventure!"
 msgstr "按下下面的按钮开始冒险吧！"
@@ -8102,11 +8103,6 @@ msgstr "正在从其他领域转向前端工程的专业人士"
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "个人资料"
-
-#: src/features/Sentence/TextConstructor.tsx:243
-#. js-lingui-explicit-id
-msgid "Progress"
-msgstr "进度"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:58
 #. js-lingui-explicit-id
@@ -8252,7 +8248,7 @@ msgid ""
 "rounds"
 msgstr "React、Vue 或 Angular 专家面临架构和系统设计环节"
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "阅读"
@@ -9629,6 +9625,11 @@ msgstr ""
 msgid "Stop"
 msgstr "停止"
 
+#: src/features/Sentence/TextConstructor.tsx:302
+#. js-lingui-explicit-id
+msgid "Story progress:"
+msgstr "故事进度："
+
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:18
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:18
 #. js-lingui-explicit-id
@@ -9751,7 +9752,7 @@ msgstr "需要订阅"
 msgid "subscription plans"
 msgstr "订阅计划"
 
-#: src/features/Sentence/Stories.tsx:722
+#: src/features/Sentence/StoryModal.tsx:550
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr "成功率："
@@ -10652,7 +10653,7 @@ msgstr "试用天数"
 msgid "Try"
 msgstr "尝试"
 
-#: src/features/Sentence/Stories.tsx:822
+#: src/features/Sentence/StoryModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Try another story"
 msgstr "尝试另一个故事"
@@ -11270,7 +11271,7 @@ msgstr "欢迎来到您的初级前端开发人员面试准备"
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "欢迎来到您的高级前端开发人员面试准备"
 
-#: src/features/Sentence/Stories.tsx:679
+#: src/features/Sentence/StoryModal.tsx:507
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "做得好！你完成了这个故事。"
@@ -11552,7 +11553,7 @@ msgstr "每回合字数"
 msgid "Words to Learn"
 msgstr "要学习的单词"
 
-#: src/features/Sentence/Stories.tsx:746
+#: src/features/Sentence/StoryModal.tsx:574
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "注意的词："
@@ -12193,7 +12194,7 @@ msgstr "{userName} 向你发起了一场辩论挑战！"
 msgid "{winnerName} wins!"
 msgstr "{winnerName} 赢了！"
 
-#: src/features/Sentence/Stories.tsx:546
+#: src/features/Sentence/StoryModal.tsx:338
 #. js-lingui-explicit-id
 msgid "{wordsCount} words"
 msgstr "{wordsCount} 字符数"
@@ -12211,6 +12212,16 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Sentence/TextConstructor.tsx:323
+#. js-lingui-explicit-id
+#~ msgid "Points:"
+#~ msgstr "分数："
+
+#: src/features/Sentence/TextConstructor.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Progress"
+#~ msgstr "进度"
 
 #: src/features/Sentence/Stories.tsx:112
 #. js-lingui-explicit-id

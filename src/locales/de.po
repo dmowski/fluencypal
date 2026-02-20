@@ -1845,7 +1845,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Sentence/Stories.tsx:834
+#: src/features/Sentence/StoryModal.tsx:662
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1970,7 +1970,7 @@ msgstr "Vervollständige den Satz"
 msgid "Complete verification to proceed."
 msgstr "Verifizierung abschließen, um fortzufahren."
 
-#: src/features/Sentence/TextConstructor.tsx:257
+#: src/features/Sentence/TextConstructor.tsx:288
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Abgeschlossen ✅"
@@ -2109,6 +2109,7 @@ msgstr "Kontakte:"
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
+#: src/features/Sentence/StoryModal.tsx:401
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Fortsetzen"
@@ -2990,7 +2991,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "Früher Zugang zu neuen Tools"
 
-#: src/features/Sentence/Stories.tsx:566
+#: src/features/Sentence/StoryModal.tsx:360
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "Einfach"
@@ -3668,7 +3669,7 @@ msgstr "existenzielle Fiktion"
 msgid "Exit"
 msgstr "Beenden"
 
-#: src/features/Sentence/Stories.tsx:136
+#: src/features/Sentence/Stories.tsx:125
 #. js-lingui-explicit-id
 msgid "Expand vocabulary with stories"
 msgstr "Erweitern Sie den Wortschatz mit Geschichten"
@@ -4384,7 +4385,7 @@ msgstr "Vollständiger Zugriff auf den AI-Interview-Coach"
 msgid "Full AI tutor access"
 msgstr "Vollständiger Zugriff auf den KI-Tutor"
 
-#: src/features/Sentence/Stories.tsx:793
+#: src/features/Sentence/StoryModal.tsx:621
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "Volle Geschichte:"
@@ -4907,7 +4908,7 @@ msgstr "Gehe sicher mit Nebenläufigkeit um"
 msgid "Happy April 1st!"
 msgstr "Frohen 1. April!"
 
-#: src/features/Sentence/Stories.tsx:580
+#: src/features/Sentence/StoryModal.tsx:374
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "Schwer"
@@ -7267,7 +7268,7 @@ msgstr ""
 msgid "Medical Talk Simulation"
 msgstr "Medizinische Gesprächssimulation"
 
-#: src/features/Sentence/Stories.tsx:573
+#: src/features/Sentence/StoryModal.tsx:367
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "Mittel"
@@ -7436,7 +7437,12 @@ msgstr ""
 msgid "Movies, books, or music"
 msgstr "Filme, Bücher oder Musik"
 
-#: src/features/Sentence/TextConstructor.tsx:344
+#: src/features/Sentence/TextConstructor.tsx:303
+#. js-lingui-explicit-id
+msgid "My Points:"
+msgstr "Meine Punkte:"
+
+#: src/features/Sentence/TextConstructor.tsx:304
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Meine Position:"
@@ -7562,7 +7568,7 @@ msgstr "Nächste Frage"
 msgid "Next Step"
 msgstr "Nächster Schritt"
 
-#: src/features/Sentence/Stories.tsx:612
+#: src/features/Sentence/StoryModal.tsx:440
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "Nächste Geschichte"
@@ -8469,11 +8475,6 @@ msgstr ""
 "Punkte verdient: {pointsEarned}. Üben Sie weiter, um Ihre Punktzahl zu "
 "verbessern!"
 
-#: src/features/Sentence/TextConstructor.tsx:323
-#. js-lingui-explicit-id
-msgid "Points:"
-msgstr "Punkte:"
-
 #: src/features/Lang/getLabels.tsx:20
 #. js-lingui-explicit-id
 msgid "Polish Learning Plan"
@@ -8875,7 +8876,7 @@ msgstr "Vorbereitung des Gehirns"
 msgid "Preparing your game..."
 msgstr "Bereite dein Spiel vor..."
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Preparing..."
 msgstr "Vorbereitung..."
@@ -8887,7 +8888,7 @@ msgstr ""
 "Drücken Sie die Schaltfläche unten, um eine Geschichte basierend auf diesem "
 "Bild zu generieren"
 
-#: src/features/Sentence/Stories.tsx:242
+#: src/features/Sentence/StoryModal.tsx:327
 #. js-lingui-explicit-id
 msgid "Press the button below to start the adventure!"
 msgstr "Drücken Sie den untenstehenden Knopf, um das Abenteuer zu starten!"
@@ -8988,11 +8989,6 @@ msgstr "Fachleute, die von anderen Bereichen in das Frontend-Engineering wechsel
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
-
-#: src/features/Sentence/TextConstructor.tsx:243
-#. js-lingui-explicit-id
-msgid "Progress"
-msgstr "Fortschritt"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:58
 #. js-lingui-explicit-id
@@ -9142,7 +9138,7 @@ msgstr ""
 "React-, Vue- oder Angular-Spezialisten, die sich in Architektur- und "
 "Systemdesign-Runden befinden"
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Lesen"
@@ -10619,6 +10615,11 @@ msgstr ""
 msgid "Stop"
 msgstr "Stopp"
 
+#: src/features/Sentence/TextConstructor.tsx:302
+#. js-lingui-explicit-id
+msgid "Story progress:"
+msgstr "Story-Fortschritt:"
+
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:18
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:18
 #. js-lingui-explicit-id
@@ -10757,7 +10758,7 @@ msgstr "Abonnement erforderlich"
 msgid "subscription plans"
 msgstr "Abonnementpläne"
 
-#: src/features/Sentence/Stories.tsx:722
+#: src/features/Sentence/StoryModal.tsx:550
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr "Erfolgsquote:"
@@ -11742,7 +11743,7 @@ msgstr "Probetage"
 msgid "Try"
 msgstr "Versuchen"
 
-#: src/features/Sentence/Stories.tsx:822
+#: src/features/Sentence/StoryModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Try another story"
 msgstr "Probieren Sie eine andere Geschichte"
@@ -12405,7 +12406,7 @@ msgstr ""
 "Willkommen bei Ihrer Vorbereitung auf das Vorstellungsgespräch zum Senior "
 "Frontend Developer"
 
-#: src/features/Sentence/Stories.tsx:679
+#: src/features/Sentence/StoryModal.tsx:507
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "Gut gemacht! Du hast die Geschichte fertiggestellt."
@@ -12701,7 +12702,7 @@ msgstr "Wörter pro Runde"
 msgid "Words to Learn"
 msgstr "Wörter zu lernen"
 
-#: src/features/Sentence/Stories.tsx:746
+#: src/features/Sentence/StoryModal.tsx:574
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "Wörter, auf die Sie achten sollten:"
@@ -13430,7 +13431,7 @@ msgstr "{userName} fordert Sie zu einer Debatte heraus!"
 msgid "{winnerName} wins!"
 msgstr "{winnerName} gewinnt!"
 
-#: src/features/Sentence/Stories.tsx:546
+#: src/features/Sentence/StoryModal.tsx:338
 #. js-lingui-explicit-id
 msgid "{wordsCount} words"
 msgstr "{wordsCount} Wörter"
@@ -13451,6 +13452,16 @@ msgstr ""
 "— es ist wichtig, sich in dieses kurze Gespräch zu vertiefen, bevor man "
 "professionelle Themen anspricht. Hier sind einige nützliche englische "
 "Redewendungen, um das Interview zu beginnen:"
+
+#: src/features/Sentence/TextConstructor.tsx:323
+#. js-lingui-explicit-id
+#~ msgid "Points:"
+#~ msgstr "Punkte:"
+
+#: src/features/Sentence/TextConstructor.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Progress"
+#~ msgstr "Fortschritt"
 
 #: src/features/Sentence/Stories.tsx:112
 #. js-lingui-explicit-id

@@ -1815,7 +1815,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Sentence/Stories.tsx:834
+#: src/features/Sentence/StoryModal.tsx:662
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1938,7 +1938,7 @@ msgstr "ทำให้ประโยคสมบูรณ์"
 msgid "Complete verification to proceed."
 msgstr "กรุณายืนยันตัวตนเพื่อดำเนินการต่อ"
 
-#: src/features/Sentence/TextConstructor.tsx:257
+#: src/features/Sentence/TextConstructor.tsx:288
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "เสร็จสมบูรณ์ ✅"
@@ -2077,6 +2077,7 @@ msgstr "ติดต่อ:"
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
+#: src/features/Sentence/StoryModal.tsx:401
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "ต่อไป"
@@ -2950,7 +2951,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "การเข้าถึงเครื่องมือใหม่ล่วงหน้า"
 
-#: src/features/Sentence/Stories.tsx:566
+#: src/features/Sentence/StoryModal.tsx:360
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "ง่าย"
@@ -3599,7 +3600,7 @@ msgstr "นวนิยายเชิงปรัชญาการดำรง
 msgid "Exit"
 msgstr "ออก"
 
-#: src/features/Sentence/Stories.tsx:136
+#: src/features/Sentence/Stories.tsx:125
 #. js-lingui-explicit-id
 msgid "Expand vocabulary with stories"
 msgstr "ขยายคลังคำศัพท์ด้วยเรื่องราว"
@@ -4309,7 +4310,7 @@ msgstr "การเข้าถึงผู้ฝึกสอนการสั
 msgid "Full AI tutor access"
 msgstr "การเข้าถึงครูสอน AI เต็มรูปแบบ"
 
-#: src/features/Sentence/Stories.tsx:793
+#: src/features/Sentence/StoryModal.tsx:621
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "เรื่องเต็ม:"
@@ -4819,7 +4820,7 @@ msgstr "จัดการความพร้อมในการทำงา
 msgid "Happy April 1st!"
 msgstr "สุขสันต์วันที่ 1 เมษายน!"
 
-#: src/features/Sentence/Stories.tsx:580
+#: src/features/Sentence/StoryModal.tsx:374
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "ยาก"
@@ -7111,7 +7112,7 @@ msgstr ""
 msgid "Medical Talk Simulation"
 msgstr "จำลองการสนทนาทางการแพทย์"
 
-#: src/features/Sentence/Stories.tsx:573
+#: src/features/Sentence/StoryModal.tsx:367
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "ระดับกลาง"
@@ -7276,7 +7277,12 @@ msgstr ""
 msgid "Movies, books, or music"
 msgstr "ภาพยนตร์ หนังสือ หรือเพลง"
 
-#: src/features/Sentence/TextConstructor.tsx:344
+#: src/features/Sentence/TextConstructor.tsx:303
+#. js-lingui-explicit-id
+msgid "My Points:"
+msgstr "คะแนนของฉัน:"
+
+#: src/features/Sentence/TextConstructor.tsx:304
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "ตำแหน่งของฉัน:"
@@ -7402,7 +7408,7 @@ msgstr "คำถามถัดไป"
 msgid "Next Step"
 msgstr "ขั้นตอนต่อไป"
 
-#: src/features/Sentence/Stories.tsx:612
+#: src/features/Sentence/StoryModal.tsx:440
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "เรื่องถัดไป"
@@ -8291,11 +8297,6 @@ msgstr "คะแนน"
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr "คะแนนที่ได้รับ: {pointsEarned} เก็บฝึกฝนต่อไปเพื่อเพิ่มคะแนนของคุณ!"
 
-#: src/features/Sentence/TextConstructor.tsx:323
-#. js-lingui-explicit-id
-msgid "Points:"
-msgstr "คะแนน:"
-
 #: src/features/Lang/getLabels.tsx:20
 #. js-lingui-explicit-id
 msgid "Polish Learning Plan"
@@ -8683,7 +8684,7 @@ msgstr "เตรียมสมอง"
 msgid "Preparing your game..."
 msgstr "กำลังเตรียมเกมของคุณ..."
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Preparing..."
 msgstr "กำลังเตรียม..."
@@ -8693,7 +8694,7 @@ msgstr "กำลังเตรียม..."
 msgid "Press the button below to generate a story based on this image"
 msgstr "กดปุ่มด้านล่างเพื่อสร้างเรื่องราวจากภาพนี้"
 
-#: src/features/Sentence/Stories.tsx:242
+#: src/features/Sentence/StoryModal.tsx:327
 #. js-lingui-explicit-id
 msgid "Press the button below to start the adventure!"
 msgstr "กดปุ่มด้านล่างเพื่อเริ่มการผจญภัย!"
@@ -8794,11 +8795,6 @@ msgstr "ผู้เชี่ยวชาญที่เปลี่ยนจา
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "โปรไฟล์"
-
-#: src/features/Sentence/TextConstructor.tsx:243
-#. js-lingui-explicit-id
-msgid "Progress"
-msgstr "ความก้าวหน้า"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:58
 #. js-lingui-explicit-id
@@ -8948,7 +8944,7 @@ msgstr ""
 "ผู้เชี่ยวชาญด้าน React, Vue หรือ Angular "
 "ที่ต้องเผชิญกับรอบการออกแบบสถาปัตยกรรมและระบบ"
 
-#: src/features/Sentence/Stories.tsx:596
+#: src/features/Sentence/StoryModal.tsx:423
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "อ่าน"
@@ -10389,6 +10385,11 @@ msgstr ""
 msgid "Stop"
 msgstr "หยุด"
 
+#: src/features/Sentence/TextConstructor.tsx:302
+#. js-lingui-explicit-id
+msgid "Story progress:"
+msgstr "ความคืบหน้าของเรื่อง:"
+
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:18
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:18
 #. js-lingui-explicit-id
@@ -10526,7 +10527,7 @@ msgstr "ต้องการการสมัครสมาชิก"
 msgid "subscription plans"
 msgstr "แผนการสมัครสมาชิก"
 
-#: src/features/Sentence/Stories.tsx:722
+#: src/features/Sentence/StoryModal.tsx:550
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr ""
@@ -11494,7 +11495,7 @@ msgstr "วันทดลองใช้"
 msgid "Try"
 msgstr "ลอง"
 
-#: src/features/Sentence/Stories.tsx:822
+#: src/features/Sentence/StoryModal.tsx:650
 #. js-lingui-explicit-id
 msgid "Try another story"
 msgstr "ลองเรื่องอื่น"
@@ -12140,7 +12141,7 @@ msgstr "ยินดีต้อนรับสู่การเตรียม
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "ยินดีต้อนรับสู่การเตรียมตัวสัมภาษณ์สำหรับนักพัฒนาฝั่งหน้าอาวุโสของคุณ"
 
-#: src/features/Sentence/Stories.tsx:679
+#: src/features/Sentence/StoryModal.tsx:507
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "เยี่ยมมาก! คุณได้เขียนเรื่องราวจนจบแล้ว"
@@ -12439,7 +12440,7 @@ msgstr ""
 msgid "Words to Learn"
 msgstr "คำศัพท์ที่ต้องเรียนรู้"
 
-#: src/features/Sentence/Stories.tsx:746
+#: src/features/Sentence/StoryModal.tsx:574
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "คำที่ต้องใส่ใจ:"
@@ -13152,7 +13153,7 @@ msgstr "{userName} ท้าให้คุณเข้าร่วมการ�
 msgid "{winnerName} wins!"
 msgstr "{winnerName} ชนะ!"
 
-#: src/features/Sentence/Stories.tsx:546
+#: src/features/Sentence/StoryModal.tsx:338
 #. js-lingui-explicit-id
 msgid "{wordsCount} words"
 msgstr "{wordsCount} คำ"
@@ -13172,6 +13173,16 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Sentence/TextConstructor.tsx:323
+#. js-lingui-explicit-id
+#~ msgid "Points:"
+#~ msgstr "คะแนน:"
+
+#: src/features/Sentence/TextConstructor.tsx:243
+#. js-lingui-explicit-id
+#~ msgid "Progress"
+#~ msgstr "ความก้าวหน้า"
 
 #: src/features/Sentence/Stories.tsx:112
 #. js-lingui-explicit-id
