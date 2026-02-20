@@ -16,3 +16,16 @@ export interface Story {
   createdAtIso: string;
   updatedAtIso: string;
 }
+
+export type Mode = 'easy' | 'medium' | 'hard';
+
+export interface StoryState {
+  progress: string;
+  sentences: string[];
+  sentencesTranslates: string[];
+  isCompleted: boolean;
+  mode: Mode;
+  allWords: string[];
+  badWords: string[];
+  translationWords: string[];
+}

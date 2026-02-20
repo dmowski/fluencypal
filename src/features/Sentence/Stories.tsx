@@ -13,7 +13,7 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { SpeakOptions, useConversationAudio } from '../Audio/useConversationAudio';
 import { useAuth } from '../Auth/useAuth';
 import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
-import { Story } from './types';
+import { Mode, Story, StoryState } from './types';
 import { useUrlState } from '../Url/useUrlState';
 import { storyData } from './storyData';
 import { getHash } from '@/libs/hash';
@@ -209,19 +209,6 @@ export const TextConstructorStories = () => {
   );
 };
 
-type Mode = 'easy' | 'medium' | 'hard';
-
-interface StoryState {
-  progress: string;
-  sentences: string[];
-  sentencesTranslates: string[];
-  isCompleted: boolean;
-  mode: Mode;
-  allWords: string[];
-  badWords: string[];
-  translationWords: string[];
-}
-
 const defaultStoryState: StoryState = {
   progress: '',
   sentences: [],
@@ -254,34 +241,30 @@ const StoryModal = ({
   onClose: () => void;
   onNext: () => void;
 }) => {
+  const auth = useAuth();
+
   const storyHash = useMemo(() => {
     const dataToHash = [data.title, data.textEn, data.subtitle].join('|');
     return getHash(dataToHash);
   }, [data]);
 
-  const STORIES_LS_KEY = 'stories_ls_key';
-  type StoryProgress = Record<string, StoryState>;
+  const docRef = db.documents.storyReadProgress(auth.uid, storyHash);
 
-  const getStoriesProgress = async (hash: string): Promise<StoryState | null> => {
-    if (typeof window === 'undefined') return null;
-    const dataString = localStorage.getItem(STORIES_LS_KEY);
-    if (!dataString) return null;
-    const data: StoryProgress = JSON.parse(dataString);
-    return data[hash] || null;
+  const getStoriesProgress = async (): Promise<StoryState | null> => {
+    if (typeof window === 'undefined' || !docRef) return null;
+    const docSnap = await getDoc(docRef);
+    return docSnap.exists() ? docSnap.data() || null : null;
   };
 
-  const saveStoryProgress = async (hash: string, state: StoryState) => {
-    if (typeof window === 'undefined') return;
-    const dataString = localStorage.getItem(STORIES_LS_KEY);
-    const data: StoryProgress = dataString ? JSON.parse(dataString) : {};
-    data[hash] = state;
-    localStorage.setItem(STORIES_LS_KEY, JSON.stringify(data));
+  const saveStoryProgress = async (state: StoryState) => {
+    if (typeof window === 'undefined' || !docRef) return;
+    await setDoc(docRef, state);
   };
 
   const [internalState, setInternalState] = useState<StoryState>(defaultStoryState);
 
   const initState = async () => {
-    const savedState = await getStoriesProgress(storyHash);
+    const savedState = await getStoriesProgress();
     if (savedState) {
       setInternalState(savedState);
     } else {
@@ -295,13 +278,12 @@ const StoryModal = ({
 
   const setState = (data: Partial<StoryState>) => {
     const newState: StoryState = { ...internalState, ...data };
-    saveStoryProgress(storyHash, newState);
+    saveStoryProgress(newState);
     setInternalState(newState);
   };
 
   const state = internalState;
 
-  const auth = useAuth();
   const settings = useSettings();
   const storyText = data.textEn;
   const wordsCount = storyText.split(' ').length;
