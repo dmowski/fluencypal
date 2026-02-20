@@ -238,27 +238,6 @@ export function TextConstructor({
         }}
       >
         <Stack sx={{ maxWidth: '700px', padding: '0 10px', width: '100%' }}>
-          <Stack sx={{ width: '100%' }}>
-            <Typography variant="caption" sx={{ opacity: 0.75 }}>
-              {i18n._('Progress')}: {progressPercent}%
-            </Typography>
-            <Stack
-              sx={{
-                minHeight: '76px',
-                width: '100%',
-              }}
-            >
-              <Typography
-                variant="body1"
-                sx={{
-                  textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
-                }}
-              >
-                {activePart?.activeTranslation ?? i18n._('Completed ✅')}
-              </Typography>
-            </Stack>
-          </Stack>
-
           <Stack
             direction="row"
             sx={{
@@ -270,8 +249,6 @@ export function TextConstructor({
           >
             {options.map((word) => {
               const isWrongWord = wrongWord === word;
-
-              const isCorrectWord = activePart?.nextWord === word;
 
               return (
                 <Button
@@ -295,62 +272,75 @@ export function TextConstructor({
             })}
           </Stack>
 
+          <Stack sx={{ width: '100%' }}>
+            <Stack
+              sx={{
+                minHeight: '76px',
+                width: '100%',
+              }}
+            >
+              <Typography
+                variant="body1"
+                sx={{
+                  textShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                {activePart?.activeTranslation ?? i18n._('Completed ✅')}
+              </Typography>
+            </Stack>
+          </Stack>
+
           <Stack
             sx={{
               width: 'max-content',
-              padding: '10px',
-
+              padding: '10px 0',
               borderRadius: '8px',
               marginTop: '20px',
+              gap: '3px',
             }}
           >
-            <Stack
-              sx={{
-                alignItems: 'center',
-                flexDirection: 'row',
-                gap: '20px',
-                width: '100%',
-                justifyContent: 'space-between',
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: '13px',
-                  opacity: 0.9,
-                  textTransform: 'uppercase',
-                }}
-              >
-                {i18n._('Points:')}
-              </Typography>
-              <GamePointRow points={game.myPoints || 1} isTop={game.isGameWinner} />
-            </Stack>
-
-            <Stack
-              sx={{
-                alignItems: 'center',
-                flexDirection: 'row',
-                gap: '20px',
-                width: '100%',
-                justifyContent: 'space-between',
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: '13px',
-                  opacity: 0.9,
-                  textTransform: 'uppercase',
-                }}
-              >
-                {i18n._('My Position:')}
-              </Typography>
-              <GamePointRow points={game.myPosition || 0} isTop={false} />
-            </Stack>
+            <StatRow label={i18n._('Story progress:')} value={`${progressPercent}%`} />
+            <StatRow label={i18n._('My Points:')} value={`${game.myPoints || 0}`} />
+            <StatRow label={i18n._('My Position:')} value={`${game.myPosition || 0}`} />
           </Stack>
         </Stack>
       </Stack>
     </Stack>
   );
 }
+
+const StatRow = ({ label, value }: { label: string; value: string }) => {
+  return (
+    <Stack
+      sx={{
+        alignItems: 'center',
+        flexDirection: 'row',
+        gap: '5px',
+        width: '100%',
+        //justifyContent: 'space-between',
+      }}
+    >
+      <Typography
+        sx={{
+          fontSize: '13px',
+          opacity: 1,
+          //textTransform: 'uppercase',
+        }}
+      >
+        {label}
+      </Typography>
+      <Typography
+        sx={{
+          fontSize: '13px',
+          opacity: 1,
+          fontWeight: 700,
+        }}
+      >
+        {value}
+      </Typography>
+    </Stack>
+  );
+};
 
 export const StoryContent = ({
   text,
