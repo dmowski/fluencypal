@@ -52,13 +52,16 @@ export const StoryModal = ({
 
   const [internalState, setInternalState] = useState<StoryState>(defaultStoryState);
 
+  const [isStateInitialized, setIsStateInitialized] = useState(false);
   const initState = async () => {
+    setIsStateInitialized(false);
     const savedState = await getStoriesProgress();
     if (savedState) {
       setInternalState(savedState);
     } else {
       setInternalState(defaultStoryState);
     }
+    setIsStateInitialized(true);
   };
 
   useEffect(() => {
@@ -66,9 +69,7 @@ export const StoryModal = ({
   }, [storyHash]);
 
   const setState = (data: Partial<StoryState>) => {
-    const newState: StoryState = { ...internalState, ...data };
-    saveStoryProgress(newState);
-    setInternalState(newState);
+    setInternalState((prevState) => ({ ...prevState, ...data }));
   };
 
   const state = internalState;
@@ -121,6 +122,12 @@ export const StoryModal = ({
 
   const [initializing, setInitializing] = useState(false);
   const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    if (!isStateInitialized || !isReady) return;
+    saveStoryProgress(internalState);
+  }, [internalState, isStateInitialized, isReady]);
+
   const imageUrl = data.imageUrl;
   const title = data.title;
 
@@ -227,8 +234,9 @@ export const StoryModal = ({
       : 0;
 
   const onWordSelected = (word: string) => {
+    const newWords = uniq([...state.allWords, word]);
     setState({
-      allWords: uniq([...state.allWords, word]),
+      allWords: newWords,
     });
   };
 
@@ -246,7 +254,7 @@ export const StoryModal = ({
 
   const attentionWords = uniq([...state.badWords, ...state.translationWords]);
 
-  const isSavedProgress = state.progress.length > 0 && !state.isCompleted;
+  const isSavedProgress = state.progress.length > 0;
 
   return (
     <CustomModal isOpen={true} onClose={onClose}>
