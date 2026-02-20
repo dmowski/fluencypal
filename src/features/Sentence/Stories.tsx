@@ -2,7 +2,6 @@ import { useLingui } from '@lingui/react';
 import { Button, ButtonGroup, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
-import { ImageDescription } from '../Game/ImagesDescriptions';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTextAi } from '../Ai/useTextAi';
 import { useSettings } from '../Settings/useSettings';
@@ -12,7 +11,6 @@ import { StoryContent, TextConstructor } from './TextConstructor';
 import { Loader, Origami, RefreshCw, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { SpeakOptions, useConversationAudio } from '../Audio/useConversationAudio';
-import { getAiVoiceByVoice } from '../Conversation/CallMode/voiceAvatar';
 import { useAuth } from '../Auth/useAuth';
 import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
 import { Story } from './types';
@@ -210,40 +208,49 @@ export const TextConstructorStories = () => {
   );
 };
 
+interface StoryState {
+  progress: string;
+  sentences: string[];
+  sentencesTranslates: string[];
+  isCompleted: boolean;
+}
+
 const StoryModal = ({
   data,
 
   onClose,
   onNext,
 }: {
-  data: ImageDescription | Story;
+  data: Story;
   onClose: () => void;
   onNext: () => void;
 }) => {
-  const [progress, setProgress] = useState('');
-  const ai = useTextAi();
-  const auth = useAuth();
+  const [internalState, setInternalState] = useState<StoryState>({
+    progress: '',
+    sentences: [],
+    sentencesTranslates: [],
+    isCompleted: false,
+  });
 
+  const setState = (data: Partial<StoryState>) => {
+    setInternalState((prev) => ({ ...prev, ...data }));
+  };
+  const state = internalState;
+
+  const auth = useAuth();
   const settings = useSettings();
-  const storyText = 'textEn' in data ? data.textEn : '';
+  const storyText = data.textEn;
   const wordsCount = storyText.split(' ').length;
 
   const targetLanguage = settings.languageCode;
   const nativeLanguage = settings.userSettings?.nativeLanguageCode;
 
-  const videoUrl = 'videoUrl' in data ? data.videoUrl : undefined;
   const { i18n } = useLingui();
 
-  const subtitleData = 'subtitle' in data ? data.subtitle : undefined;
-  const subtitle = subtitleData || i18n._(`Press the button below to start the adventure!`);
-
-  const [sentences, setSentences] = useState<string[]>([]);
-  const [sentencesTranslates, setSentencesTranslates] = useState<string[]>([]);
-
   const userTargetLanguage = settings.fullLanguageName;
-  const [isCompleted, setIsCompleted] = useState(false);
+
   const onComplete = () => {
-    setIsCompleted(true);
+    setState({ isCompleted: true });
   };
 
   const audio = useConversationAudio();
@@ -264,26 +271,17 @@ const StoryModal = ({
   const numberOfOptions = numberOfOptionsMap[mode];
 
   useEffect(() => {
-    setProgress('');
-    setSentences([]);
-    setSentencesTranslates([]);
-    setIsCompleted(false);
+    setState({
+      progress: '',
+      sentences: [],
+      sentencesTranslates: [],
+      isCompleted: false,
+    });
   }, [data]);
 
   const translator = useTranslate();
 
   const isTranslateAvailable = translator.isTranslateAvailable;
-
-  const generateTextBasedOnImage = async (image: ImageDescription) => {
-    const prompt = `Write a short story in ${userTargetLanguage} based on the following image description: ${image.fullImageDescription}. The story should be around 120 words and suitable for language learners.`;
-    const generatedText = await ai.generate({
-      userMessage: prompt,
-      systemMessage: `You are a helpful assistant for language learners. Generate engaging and simple stories based on image descriptions. The story should be in ${userTargetLanguage} and should be easy to understand for someone learning the language. Avoid complex vocabulary and grammar structures, and focus on creating a clear and enjoyable narrative that helps learners practice their reading skills.`,
-      model: 'gpt-4o',
-      cache: true,
-    });
-    return generatedText;
-  };
 
   const translateSentence = async (sentence: string) => {
     const isTargetLanguageTheSameAsUserLanguage = targetLanguage === nativeLanguage;
@@ -309,64 +307,37 @@ const StoryModal = ({
 
   const [initializing, setInitializing] = useState(false);
   const [isReady, setIsReady] = useState(false);
-  const isStory = 'imageUrl' in data;
-  const imageUrl = isStory ? data.imageUrl : data.url;
-  const title = isStory ? data.title : data.shortDescription;
+  const imageUrl = data.imageUrl;
+  const title = data.title;
 
   const initialize = async () => {
     setInitializing(true);
     audio.initAudio();
 
-    if (isStory) {
-      const fullTextEn = data.textEn;
-      const isNeedToTranslate = targetLanguage !== 'en';
-      const fullText = isNeedToTranslate
-        ? await translateTextToTargetLanguageFromEng(fullTextEn)
-        : fullTextEn;
-      const sentences = splitTextIntoSentences(fullText);
-      const translatedSentencesToNative = await Promise.all(
-        sentences.map((s) => translateSentence(s)),
-      );
+    const fullTextEn = data.textEn;
+    const isNeedToTranslate = targetLanguage !== 'en';
+    const fullText = isNeedToTranslate
+      ? await translateTextToTargetLanguageFromEng(fullTextEn)
+      : fullTextEn;
+    const sentences = splitTextIntoSentences(fullText);
+    const translatedSentencesToNative = await Promise.all(
+      sentences.map((s) => translateSentence(s)),
+    );
 
-      setSentences(sentences);
-      setSentencesTranslates(translatedSentencesToNative);
-      setIsReady(true);
-      setInitializing(false);
+    setState({
+      progress: '',
+      sentences: sentences,
+      sentencesTranslates: translatedSentencesToNative,
+    });
 
-      if (data.audioUrl && !audio.music.isPlaying) {
-        const audioUrl = data.audioUrl;
-        await sleep(500);
-        audio.music.play(audioUrl);
-        audio.music.setVolume(0.1);
-      }
-    } else {
-      const imageDescription = data;
-      const generatedText = await generateTextBasedOnImage(imageDescription);
+    setIsReady(true);
+    setInitializing(false);
 
-      const story: Story = {
-        id: `story-${imageDescription.id}`,
-        title: imageDescription.shortDescription,
-        imageUrl: imageDescription.url,
-        textEn: generatedText,
-        subtitle: null,
-        videoUrl: null,
-        audioUrl: null,
-        sunoPrompt: null,
-        videoDescription: null,
-        isPublished: false,
-        storySystemInstruction: '',
-        createdAtIso: new Date().toISOString(),
-        updatedAtIso: new Date().toISOString(),
-      };
-
-      console.log(JSON.stringify(story));
-
-      const translatedSentences = await Promise.all(sentences.map((s) => translateSentence(s)));
-
-      setSentences(sentences);
-      setSentencesTranslates(translatedSentences);
-      setIsReady(true);
-      setInitializing(false);
+    if (data.audioUrl && !audio.music.isPlaying) {
+      const audioUrl = data.audioUrl;
+      await sleep(500);
+      audio.music.play(audioUrl);
+      audio.music.setVolume(0.1);
     }
   };
 
@@ -528,7 +499,7 @@ const StoryModal = ({
                     </Typography>
 
                     <Typography variant="body2" textAlign={'center'}>
-                      {subtitle}
+                      {data.subtitle || i18n._(`Press the button below to start the adventure!`)}
                     </Typography>
 
                     {wordsCount && (
@@ -630,13 +601,13 @@ const StoryModal = ({
                   padding: '0',
                 }}
               >
-                {!isCompleted && (
+                {!state.isCompleted && (
                   <TextConstructor
                     numberOfOptions={numberOfOptions}
-                    sentences={sentences}
-                    sentencesTranslates={sentencesTranslates}
-                    progress={progress}
-                    onContinue={setProgress}
+                    sentences={state.sentences}
+                    sentencesTranslates={state.sentencesTranslates}
+                    progress={state.progress}
+                    onContinue={(progress: string) => setState({ progress })}
                     onComplete={onComplete}
                     onSentenceComplete={onSentenceComplete}
                     onPlayAudio={playAudio}
@@ -647,7 +618,7 @@ const StoryModal = ({
                   />
                 )}
 
-                {isCompleted && (
+                {state.isCompleted && (
                   <Stack
                     sx={{
                       alignItems: 'center',
@@ -682,7 +653,7 @@ const StoryModal = ({
                           alignItems: 'flex-start',
                         }}
                       >
-                        {videoUrl && (
+                        {data.videoUrl && (
                           <Stack
                             sx={{
                               maxWidth: '100%',
@@ -690,7 +661,7 @@ const StoryModal = ({
                           >
                             <Stack
                               component={'video'}
-                              src={videoUrl}
+                              src={data.videoUrl}
                               controls
                               sx={{
                                 width: '100%',
@@ -790,7 +761,7 @@ const StoryModal = ({
                           </Typography>
 
                           <StoryContent
-                            text={progress}
+                            text={state.progress}
                             size="normal"
                             onPlayAudio={(text) => playAudio(text, false)}
                           />
@@ -857,7 +828,7 @@ const StoryModal = ({
                   sx={{
                     position: 'absolute',
                     inset: 0,
-                    opacity: isCompleted ? 1 : 0.4,
+                    opacity: state.isCompleted ? 1 : 0.4,
                     background:
                       'linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgb(5, 10, 17) 100%)',
                   }}
