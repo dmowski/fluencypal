@@ -222,25 +222,6 @@ interface StoryState {
   translationWords: string[];
 }
 
-const STORIES_LS_KEY = 'stories_ls_key';
-type StoryProgress = Record<string, StoryState>;
-
-const getStoriesProgress = (hash: string): StoryState | null => {
-  if (typeof window === 'undefined') return null;
-  const dataString = localStorage.getItem(STORIES_LS_KEY);
-  if (!dataString) return null;
-  const data: StoryProgress = JSON.parse(dataString);
-  return data[hash] || null;
-};
-
-const saveStoryProgress = (hash: string, state: StoryState) => {
-  if (typeof window === 'undefined') return;
-  const dataString = localStorage.getItem(STORIES_LS_KEY);
-  const data: StoryProgress = dataString ? JSON.parse(dataString) : {};
-  data[hash] = state;
-  localStorage.setItem(STORIES_LS_KEY, JSON.stringify(data));
-};
-
 const defaultStoryState: StoryState = {
   progress: '',
   sentences: [],
@@ -278,15 +259,38 @@ const StoryModal = ({
     return getHash(dataToHash);
   }, [data]);
 
+  const STORIES_LS_KEY = 'stories_ls_key';
+  type StoryProgress = Record<string, StoryState>;
+
+  const getStoriesProgress = async (hash: string): Promise<StoryState | null> => {
+    if (typeof window === 'undefined') return null;
+    const dataString = localStorage.getItem(STORIES_LS_KEY);
+    if (!dataString) return null;
+    const data: StoryProgress = JSON.parse(dataString);
+    return data[hash] || null;
+  };
+
+  const saveStoryProgress = async (hash: string, state: StoryState) => {
+    if (typeof window === 'undefined') return;
+    const dataString = localStorage.getItem(STORIES_LS_KEY);
+    const data: StoryProgress = dataString ? JSON.parse(dataString) : {};
+    data[hash] = state;
+    localStorage.setItem(STORIES_LS_KEY, JSON.stringify(data));
+  };
+
   const [internalState, setInternalState] = useState<StoryState>(defaultStoryState);
 
-  useEffect(() => {
-    const savedState = getStoriesProgress(storyHash);
+  const initState = async () => {
+    const savedState = await getStoriesProgress(storyHash);
     if (savedState) {
       setInternalState(savedState);
     } else {
       setInternalState(defaultStoryState);
     }
+  };
+
+  useEffect(() => {
+    initState();
   }, [storyHash]);
 
   const setState = (data: Partial<StoryState>) => {
