@@ -327,6 +327,10 @@ const StoryModal = ({
       progress: '',
       sentences: sentences,
       sentencesTranslates: translatedSentencesToNative,
+      isCompleted: false,
+      allWords: [],
+      badWords: [],
+      translationWords: [],
     });
 
     setIsReady(true);
