@@ -8,7 +8,7 @@ import { db } from '../Firebase/firebaseDb';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { AudioCache } from './types';
 import { clearWordForAudio } from './clearWord';
-import { isDev } from '../Analytics/isDev';
+import { getAudioHash } from './audioHash';
 
 interface AudioCacheContextType {
   cacheAudioWords: (words: string[], options: SpeakOptions) => Promise<void>;
@@ -16,21 +16,13 @@ interface AudioCacheContextType {
 
 const AudioCacheContext = createContext<AudioCacheContextType | null>(null);
 
-export const getAudioHash = (text: string, options: SpeakOptions): string => {
-  const data = [text, options.instructions, options.voice]
-    .filter(Boolean)
-    .map((part) => getHash(part))
-    .join('-');
-  return data;
-};
-
 function useProvideAudioCache(): AudioCacheContextType {
   const audio = useConversationAudio();
   const cachedWordStateMap = useRef<Record<string, 'pending' | 'done'>>({});
   const auth = useAuth();
 
   const isAudioGeneratedInDb = async (text: string, options: SpeakOptions) => {
-    const hash = getAudioHash(text, options);
+    const hash = getAudioHash(text, options.instructions || '', options.voice || '');
     try {
       const documentRef = db.documents.audioCache(auth.uid, hash);
       if (!documentRef) return false;
@@ -43,7 +35,7 @@ function useProvideAudioCache(): AudioCacheContextType {
   };
 
   const saveAudioToDb = async (text: string, options: SpeakOptions) => {
-    const hash = getAudioHash(text, options);
+    const hash = getAudioHash(text, options.instructions || '', options.voice || '');
     const audioData: AudioCache = {
       text: text,
       voice: options.voice,

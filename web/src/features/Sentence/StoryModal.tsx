@@ -20,10 +20,11 @@ import { getDoc, setDoc } from 'firebase/firestore';
 import { defaultStoryState, numberOfOptionsMap, pointsToWinMap } from './data';
 import { getStoryHash } from './getStoryHash';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { getAudioHash, useAudioCache } from '../Audio/useAudioCache';
+import { useAudioCache } from '../Audio/useAudioCache';
 import { isDev } from '../Analytics/isDev';
 import { splitWords } from './TextConstructor/textConstructor.utils';
 import { clearWordForAudio } from '../Audio/clearWord';
+import { getAudioHash } from '../Audio/audioHash';
 
 export const StoryModal = ({
   data,
@@ -237,7 +238,7 @@ export const StoryModal = ({
     const options = alternativeVoice ? speakOptionsAlternative : speakOptionsMain;
     const cleanWord = clearWordForAudio(text);
     if (!cleanWord) return;
-    const audioHash = getAudioHash(cleanWord, options);
+    const audioHash = getAudioHash(cleanWord, options.instructions || '', options.voice || '');
     console.log(audioHash, cleanWord);
     audio.speak(cleanWord, options);
   };

@@ -1,8 +1,8 @@
 // app/api/ttsStream/route.ts
-import { getHash } from '@/libs/hash';
 import OpenAI from 'openai';
 import { getBucket } from '../config/firebase';
 import { SpeechCreateParams } from 'openai/resources/audio/speech.mjs';
+import { getAudioHash } from '@/features/Audio/audioHash';
 export const runtime = 'nodejs';
 
 const saveAudioToStorage = async (audioId: string, audioData: Buffer<ArrayBufferLike>) => {
@@ -38,10 +38,7 @@ export async function GET(req: Request) {
   const isUseCache = u.searchParams.get('cache') === 'true';
   const isRegenerate = u.searchParams.get('regenerateCache') === 'true';
 
-  const audioId = [input, voice, instructions]
-    .filter(Boolean)
-    .map((s) => getHash(s))
-    .join('-');
+  const audioId = getAudioHash(input, instructions, voice);
 
   if (isRegenerate) {
     console.log('REGENERATING ⚠️');
