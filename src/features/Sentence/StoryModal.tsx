@@ -122,7 +122,13 @@ export const StoryModal = ({
 
   useEffect(() => {
     if (!isStateInitialized || !isReady) return;
-    saveStoryProgress(internalState);
+
+    const timeout = setTimeout(() => {
+      saveStoryProgress(internalState);
+      console.log('Save story progress');
+    }, 4000);
+
+    return () => clearTimeout(timeout);
   }, [internalState, isStateInitialized, isReady]);
 
   const imageUrl = data.imageUrl;
