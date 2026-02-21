@@ -1,6 +1,6 @@
 import { getBucket, getDB } from "../core/firebase.js";
 import { LOADED_DATA_DIR, PROCESSED_DATA_DIR, TTS_AUDIO_PREFIX } from "./config.js";
-import { basename, resolve } from "node:path";
+import { resolve } from "node:path";
 import { rm } from "node:fs/promises";
 
 export async function runRemove(): Promise<void> {
