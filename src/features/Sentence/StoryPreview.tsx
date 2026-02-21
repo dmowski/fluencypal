@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import Image from 'next/image';
 import { Story } from './types';
 import { ImageDescription } from '../Game/ImagesDescriptions';
-import { Eye } from 'lucide-react';
+import { CircleCheck, Eye } from 'lucide-react';
 import { Typography } from '@mui/material';
 import { useMemo } from 'react';
 import { getStoryHash } from './getStoryHash';
@@ -32,8 +32,10 @@ export const StoryPreview = ({
   }, [story]);
   const docRef = db.documents.storyReadProgress(auth.uid, storyHash || '');
 
-  const progressData = useDocumentData(docRef);
-  const isActive = !!progressData[0]?.progress.length;
+  const [progressData] = useDocumentData(docRef);
+  const isActive = !!progressData?.progress.length;
+
+  const isCompleted = progressData?.isCompleted;
 
   const id = image.id;
   const title = story?.title || imageDescription?.shortDescription || '';
@@ -149,7 +151,11 @@ export const StoryPreview = ({
             width: '30px',
           }}
         >
-          <BookmarkIcon fontSize="small" sx={{ color: '#33c1e8', fontSize: '18px' }} />
+          {isCompleted ? (
+            <CircleCheck color="#33e84b" />
+          ) : (
+            <BookmarkIcon fontSize="small" sx={{ color: '#33c1e8', fontSize: '18px' }} />
+          )}
         </Stack>
       )}
     </Stack>
