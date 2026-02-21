@@ -225,7 +225,10 @@ export const StoryModal = ({
   };
 
   const cacheAllAudioWords = async (sentences: string[]) => {
-    if (!isDev()) return;
+    // @ts-expect-error - for debug purposes
+    const isCacheEnabled = window.isCacheAll === true;
+    if (!isCacheEnabled) return;
+
     console.log('Start caching all words');
 
     const allWords = uniq(sentences.map((sentence) => splitWords(sentence)).flat());
