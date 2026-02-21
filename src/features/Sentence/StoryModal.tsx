@@ -19,6 +19,7 @@ import { db } from '../Firebase/firebaseDb';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { defaultStoryState, numberOfOptionsMap, pointsToWinMap } from './data';
 import { getStoryHash } from './getStoryHash';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 export const StoryModal = ({
   data,
@@ -411,7 +412,7 @@ export const StoryModal = ({
                               isStartFromSavedState: true,
                             });
                           }}
-                          endIcon={<Glasses size={'20px'} />}
+                          endIcon={<BookmarkIcon />}
                         >
                           {i18n._('Continue')}
                         </Button>
@@ -435,7 +436,11 @@ export const StoryModal = ({
                           initializing ? <Loader size={'20px'} /> : <Origami size={'20px'} />
                         }
                       >
-                        {initializing ? i18n._('Preparing...') : i18n._('Read')}
+                        {initializing
+                          ? i18n._('Preparing...')
+                          : isSavedProgress
+                            ? i18n._('Fresh start')
+                            : i18n._('Read')}
                       </Button>
                     </Stack>
 
@@ -704,9 +709,9 @@ export const StoryModal = ({
                   sx={{
                     position: 'absolute',
                     inset: 0,
-                    opacity: state.isCompleted ? 1 : 0.4,
+                    opacity: state.isCompleted ? 1 : 1,
                     background:
-                      'linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgb(5, 10, 17) 100%)',
+                      'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%)',
                   }}
                 />
               </Stack>
