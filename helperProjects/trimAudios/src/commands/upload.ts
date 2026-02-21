@@ -1,10 +1,19 @@
-import { readdir } from "node:fs/promises";
+import { access, readdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 import { getBucket } from "../core/firebase.js";
 import { ffmpegSilenceCheckConfig } from "../core/ffmpegConfig.js";
 
 const DEST_PREFIX = "ttsAudio/";
+
+async function exists(filePath: string): Promise<boolean> {
+  try {
+    await access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export async function runUpload(): Promise<void> {
   try {
@@ -24,15 +33,37 @@ export async function runUpload(): Promise<void> {
 
     const bucket = getBucket();
     let uploaded = 0;
+    let skipped = 0;
 
     for (const fileName of filesToUpload) {
       const localPath = resolve(processedDir, fileName);
       const destination = `${DEST_PREFIX}${fileName}`;
+      const logPath = resolve(processedDir, `${fileName}.log`);
+
+      if (await exists(logPath)) {
+        skipped += 1;
+        console.log(`[upload] skip ${fileName}: upload log exists (${logPath})`);
+        continue;
+      }
 
       await bucket.upload(localPath, {
         destination,
         contentType: "audio/mpeg",
       });
+
+      await writeFile(
+        logPath,
+        JSON.stringify(
+          {
+            fileName,
+            destination,
+            uploadedAt: new Date().toISOString(),
+          },
+          null,
+          2,
+        ),
+        "utf-8",
+      );
 
       uploaded += 1;
       console.log(`[upload] uploaded ${localPath} -> ${destination}`);
@@ -41,7 +72,9 @@ export async function runUpload(): Promise<void> {
       console.log(`[upload] PROGRESS: ${progressPercent}%`);
     }
 
-    console.log(`[upload] summary: selected=${filesToUpload.length}, uploaded=${uploaded}`);
+    console.log(
+      `[upload] summary: selected=${filesToUpload.length}, uploaded=${uploaded}, skipped=${skipped}`,
+    );
     process.exitCode = 0;
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : String(error);
