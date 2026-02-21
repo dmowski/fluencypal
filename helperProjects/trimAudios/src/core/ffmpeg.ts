@@ -34,6 +34,36 @@ export async function hasLeadingSilence(
   return silenceStartValues.some((value) => value <= options.leadingSilenceEpsilonSec);
 }
 
+export async function trimLeadingSilence(
+  inputPath: string,
+  outputPath: string,
+  options: {
+    silenceDurationSec: number;
+    silenceNoiseThreshold: string;
+  },
+): Promise<void> {
+  if (!ffmpegPath) {
+    throw new Error("ffmpeg-static binary is not available");
+  }
+
+  const args = [
+    "-hide_banner",
+    "-nostats",
+    "-i",
+    inputPath,
+    "-af",
+    `silenceremove=start_periods=1:start_duration=${options.silenceDurationSec}:start_threshold=${options.silenceNoiseThreshold}:start_silence=${options.silenceDurationSec}`,
+    "-vn",
+    "-codec:a",
+    "libmp3lame",
+    "-q:a",
+    "2",
+    outputPath,
+  ];
+
+  await runFfmpeg(ffmpegPath, args);
+}
+
 function runFfmpeg(command: string, args: string[]): Promise<string> {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args);

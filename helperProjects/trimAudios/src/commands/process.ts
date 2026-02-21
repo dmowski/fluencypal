@@ -1,12 +1,24 @@
-import { readdir } from "node:fs/promises";
+import { access, copyFile, mkdir, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
 
-import { hasLeadingSilence } from "../core/ffmpeg.js";
+import { hasLeadingSilence, trimLeadingSilence } from "../core/ffmpeg.js";
 import { ffmpegSilenceCheckConfig } from "../core/ffmpegConfig.js";
+
+async function exists(filePath: string): Promise<boolean> {
+  try {
+    await access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export async function runProcess(): Promise<void> {
   try {
     const inputDir = resolve(process.cwd(), ffmpegSilenceCheckConfig.inputDirectoryName);
+    const outputDir = resolve(process.cwd(), ffmpegSilenceCheckConfig.outputDirectoryName);
+    await mkdir(outputDir, { recursive: true });
+
     const entries = await readdir(inputDir, { withFileTypes: true });
 
     const mp3Files = entries
@@ -21,10 +33,22 @@ export async function runProcess(): Promise<void> {
       return;
     }
 
-    console.log(`[process] Checking first ${mp3Files.length} audio files for leading silence (50ms)...`);
+    console.log(`[process] Processing first ${mp3Files.length} audio files...`);
+
+    let skipped = 0;
+    let trimmed = 0;
+    let copied = 0;
 
     for (const fileName of mp3Files) {
       const inputPath = resolve(inputDir, fileName);
+      const outputPath = resolve(outputDir, fileName);
+
+      if (await exists(outputPath)) {
+        skipped += 1;
+        console.log(`[process] ${fileName}: already processed, skip`);
+        continue;
+      }
+
       const needsTrim = await hasLeadingSilence(inputPath, {
         silenceDurationSec: ffmpegSilenceCheckConfig.silenceDurationSec,
         silenceNoiseThreshold: ffmpegSilenceCheckConfig.silenceNoiseThreshold,
@@ -32,11 +56,22 @@ export async function runProcess(): Promise<void> {
       });
 
       if (needsTrim) {
+        await trimLeadingSilence(inputPath, outputPath, {
+          silenceDurationSec: ffmpegSilenceCheckConfig.silenceDurationSec,
+          silenceNoiseThreshold: ffmpegSilenceCheckConfig.silenceNoiseThreshold,
+        });
+        trimmed += 1;
         console.log(`[process] ${fileName}: audio is needed to trime`);
       } else {
+        await copyFile(inputPath, outputPath);
+        copied += 1;
         console.log(`[process] ${fileName}: Audio is fine`);
       }
     }
+
+    console.log(
+      `[process] summary: total=${mp3Files.length}, trimmed=${trimmed}, copied=${copied}, skipped=${skipped}`,
+    );
 
     process.exitCode = 0;
   } catch (error: unknown) {

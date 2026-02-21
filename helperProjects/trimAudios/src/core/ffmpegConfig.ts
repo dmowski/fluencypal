@@ -1,5 +1,6 @@
 export const ffmpegSilenceCheckConfig = {
   inputDirectoryName: "loadedData",
+  outputDirectoryName: "processedData",
   maxFilesToCheck: 5,
   silenceDurationSec: 0.05,
   silenceNoiseThreshold: "-35dB",
