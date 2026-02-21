@@ -74,6 +74,10 @@ function useProvideAudioCache(): AudioCacheContextType {
       try {
         const isSkipCheckingSilence = await isAudioGeneratedInDb(word, options);
 
+        if (!isSkipCheckingSilence) {
+          console.log('Generate from scratch', word);
+        }
+
         const isDoneAndNotSilent = await audio.initCache(word, options, 0, isSkipCheckingSilence);
         if (isDoneAndNotSilent) {
           cachedWordStateMap.current[word] = 'done';
