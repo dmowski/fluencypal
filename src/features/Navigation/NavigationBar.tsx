@@ -15,6 +15,7 @@ import { useChatList } from '../Chat/useChatList';
 import { useBattle } from '../Game/Battle/useBattle';
 import { sleep } from '@/libs/sleep';
 import { useAccess } from '../Usage/useAccess';
+import { useRouter } from 'next/navigation';
 
 export interface IconProps {
   color?: string;
@@ -33,6 +34,7 @@ const inactiveColor = '#A0A0A0'; // Define the inactive color for the icon
 
 export const NavigationBar: React.FC = () => {
   const appNavigation = useAppNavigation();
+  const router = useRouter();
 
   const [internalPageType, setInternalPageType] = useState<PageType | null>(null);
 
@@ -40,6 +42,11 @@ export const NavigationBar: React.FC = () => {
     setInternalPageType(pageType);
     await sleep(10);
     appNavigation.setCurrentPage(pageType);
+
+    const searchParams = new URLSearchParams();
+    searchParams.set('page', pageType);
+    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+    router.push(newUrl);
   };
 
   useEffect(() => {
