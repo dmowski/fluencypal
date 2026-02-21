@@ -33,6 +33,7 @@ const symbolsToRemove = [
   '`',
   ',”',
   '-',
+  '…',
 ];
 
 export const clearWordForAudio = (word: string): string | null => {
