@@ -4,8 +4,7 @@ import { resolve } from "node:path";
 import { inspectAudioSilence } from "../core/ffmpeg.js";
 import { ffmpegSilenceCheckConfig } from "../core/ffmpegConfig.js";
 import { getBucket } from "../core/firebase.js";
-
-const DEST_PREFIX = "ttsAudio/";
+import { TTS_AUDIO_PREFIX } from "./config.js";
 
 export async function runClean(): Promise<void> {
   try {
@@ -38,7 +37,7 @@ export async function runClean(): Promise<void> {
       if (silenceInfo.isOnlySilence) {
         onlySilenceFiles.push(fileName);
 
-        const destination = `${DEST_PREFIX}${fileName}`;
+        const destination = `${TTS_AUDIO_PREFIX}${fileName}`;
 
         console.log(`[clean] Empty file: ${destination}`);
         try {

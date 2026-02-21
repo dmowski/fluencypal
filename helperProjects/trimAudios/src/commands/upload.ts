@@ -3,8 +3,7 @@ import { resolve } from "node:path";
 
 import { getBucket } from "../core/firebase.js";
 import { ffmpegSilenceCheckConfig } from "../core/ffmpegConfig.js";
-
-const DEST_PREFIX = "ttsAudio/";
+import { TTS_AUDIO_PREFIX } from "./config.js";
 
 async function exists(filePath: string): Promise<boolean> {
   try {
@@ -37,7 +36,7 @@ export async function runUpload(): Promise<void> {
 
     for (const fileName of filesToUpload) {
       const localPath = resolve(processedDir, fileName);
-      const destination = `${DEST_PREFIX}${fileName}`;
+      const destination = `${TTS_AUDIO_PREFIX}${fileName}`;
       const logPath = resolve(processedDir, `${fileName}.log`);
 
       if (await exists(logPath)) {

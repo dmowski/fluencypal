@@ -1,8 +1,8 @@
 import { getBucket } from "../core/firebase.js";
 import { access, mkdir } from "node:fs/promises";
 import { basename, resolve } from "node:path";
+import { TTS_AUDIO_PREFIX } from "./config.js";
 
-const TTS_AUDIO_PREFIX = "ttsAudio/";
 const OUTPUT_DIR = "loadedData";
 
 async function exists(filePath: string): Promise<boolean> {
