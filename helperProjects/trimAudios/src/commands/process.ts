@@ -24,8 +24,7 @@ export async function runProcess(): Promise<void> {
     const mp3Files = entries
       .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".mp3"))
       .map((entry) => entry.name)
-      .sort((left, right) => left.localeCompare(right))
-      .slice(0, ffmpegSilenceCheckConfig.maxFilesToCheck);
+      .sort((left, right) => left.localeCompare(right));
 
     if (mp3Files.length === 0) {
       console.log(`[process] No mp3 files found in ${inputDir}`);
@@ -33,7 +32,7 @@ export async function runProcess(): Promise<void> {
       return;
     }
 
-    console.log(`[process] Processing first ${mp3Files.length} audio files...`);
+    console.log(`[process] Processing all ${mp3Files.length} audio files...`);
 
     let skipped = 0;
     let trimmed = 0;
