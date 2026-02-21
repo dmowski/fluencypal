@@ -11,6 +11,7 @@ import React, {
 } from 'react';
 import { AiVoice } from '@/common/ai';
 import { isSilentAudio } from './isSilentAudio';
+import { isDev } from '../Analytics/isDev';
 
 /**
  * What this gives you:
@@ -490,9 +491,11 @@ function useProvideConversationAudio(): ConversationAudioContextType {
 
         const buffer = await response.arrayBuffer();
         const silent = await isSilentAudio(buffer);
+
+        const maxAttempts = isDev() ? 10 : 5;
         if (silent) {
           console.log(`Audio is silent. NEED Regenerate. |${text}| Attempt: ${attempt + 1}`);
-          if (attempt < 5) {
+          if (attempt < maxAttempts) {
             console.log('Retrying...', attempt + 1);
             return await initCache(text, opts, attempt + 1, skipSilentCheck);
           } else {
