@@ -7,7 +7,7 @@ export type ActiveSentencePart = {
   nextWord: string;
 };
 
-const splitWords = (text: string): string[] => {
+export const splitWords = (text: string): string[] => {
   if (!text.trim()) {
     return [];
   }

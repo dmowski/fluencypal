@@ -21,6 +21,8 @@ import { defaultStoryState, numberOfOptionsMap, pointsToWinMap } from './data';
 import { getStoryHash } from './getStoryHash';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { useAudioCache } from '../Audio/useAudioCache';
+import { isDev } from '../Analytics/isDev';
+import { splitWords } from './TextConstructor/textConstructor.utils';
 
 export const StoryModal = ({
   data,
@@ -151,6 +153,7 @@ export const StoryModal = ({
     audio.initAudio();
 
     if (state.sentences.length > 0 && isStartFromSavedState) {
+      await cacheAllAudioWords(state.sentences);
       setIsReady(true);
     } else {
       setInitializing(true);
@@ -173,6 +176,7 @@ export const StoryModal = ({
         badWords: [],
         translationWords: [],
       });
+      await cacheAllAudioWords(sentences);
       setIsReady(true);
       setInitializing(false);
     }
@@ -215,6 +219,16 @@ export const StoryModal = ({
 
   const cacheAudioWords = async (words: string[]) => {
     audioCache.cacheAudioWords(words, speakOptionsMain);
+  };
+
+  const cacheAllAudioWords = async (sentences: string[]) => {
+    if (!isDev()) return;
+    console.log('Start caching all words');
+
+    const allWords = uniq(sentences.map((sentence) => splitWords(sentence)).flat());
+    console.log('allWords', allWords);
+    await audioCache.cacheAudioWords(allWords, speakOptionsMain);
+    console.log('CACHE IS DONE');
   };
 
   const playAudio = (text: string, alternativeVoice: boolean) => {
