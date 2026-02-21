@@ -4,11 +4,18 @@ import { ImageDescription, imageDescriptions } from '@/features/Game/ImagesDescr
 import { StoryPreview } from '@/features/Sentence/StoryPreview';
 import { Story } from '@/features/Sentence/types';
 import { useUrlState } from '@/features/Url/useUrlState';
-import { IconButton, Stack, Typography } from '@mui/material';
+import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { deleteDoc, doc, setDoc } from 'firebase/firestore';
 import { CirclePlus, Eye, Music } from 'lucide-react';
 import { useCollection, useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { StoryEditorModal } from './StoryEditorModal';
+import { useState } from 'react';
+import { splitTextIntoSentences } from '@/features/Sentence/TextConstructor/splitTextIntoSentences';
+import { uniq } from '@/libs/uniq';
+import { splitWords } from '@/features/Sentence/TextConstructor/textConstructor.utils';
+import { useAudioCache } from '@/features/Audio/useAudioCache';
+import { SpeakOptions } from '@/features/Audio/useConversationAudio';
+import { clearWordForAudio } from '@/features/Audio/clearWord';
 
 export const StoryCreator = () => {
   const auth = useAuth();
@@ -24,6 +31,9 @@ export const StoryCreator = () => {
   const [selectedStoryId, setSelectedStoryId] = useUrlState('selectedStory', '', false);
 
   const createNewStory = async () => {
+    const isConfirmed = window.confirm('Are you sure you want to create a new story?');
+    if (!isConfirmed) return;
+
     if (!collectionRef) return;
     const newId = Date.now().toString();
     const storyData: Story = {
@@ -94,6 +104,32 @@ export const StoryCreator = () => {
 
   const selectedStoryData = storiesData?.find((story) => story.id === selectedStoryId);
 
+  const audioCache = useAudioCache();
+
+  const speakOptionsMain: SpeakOptions = {
+    instructions: '',
+    voice: 'marin',
+    cache: true,
+  };
+
+  const [isCaching, setIsCaching] = useState(false);
+  const cacheAllAudio = async () => {
+    setIsCaching(true);
+    const allStoriesTextSentences = (storiesData || [])
+      .filter((story) => story.textEn && story.isPublished)
+      .map((story) => splitTextIntoSentences(story.textEn))
+      .flat();
+
+    const allWords = uniq(allStoriesTextSentences.map((sentence) => splitWords(sentence)).flat());
+
+    const uniqueWords = uniq(allWords.map((word) => clearWordForAudio(word) || '').filter(Boolean));
+
+    await audioCache.cacheAudioWords(allWords, speakOptionsMain);
+
+    console.log('uniqueWords', uniqueWords);
+    setIsCaching(false);
+  };
+
   return (
     <Stack
       sx={{
@@ -120,6 +156,9 @@ export const StoryCreator = () => {
         <IconButton onClick={createNewStory}>
           <CirclePlus />
         </IconButton>
+        <Button onClick={cacheAllAudio} disabled={isCaching}>
+          Cache all audios {isCaching ? '| Caching...' : ''}
+        </Button>
       </Stack>
 
       <Stack>
