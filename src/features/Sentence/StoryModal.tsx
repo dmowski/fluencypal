@@ -20,7 +20,7 @@ import { getDoc, setDoc } from 'firebase/firestore';
 import { defaultStoryState, numberOfOptionsMap, pointsToWinMap } from './data';
 import { getStoryHash } from './getStoryHash';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { useAudioCache } from '../Audio/useAudioHash';
+import { useAudioCache } from '../Audio/useAudioCache';
 
 export const StoryModal = ({
   data,

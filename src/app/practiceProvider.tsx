@@ -25,7 +25,7 @@ import { ChatListProvider } from '@/features/Chat/useChatList';
 import { LessonPlanProvider } from '@/features/LessonPlan/useLessonPlan';
 import { ConversationAudioProvider } from '@/features/Audio/useConversationAudio';
 import { UserReportProvider } from '@/features/User/useUserReport';
-import { AudioCacheProvider } from '@/features/Audio/useAudioHash';
+import { AudioCacheProvider } from '@/features/Audio/useAudioCache';
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
