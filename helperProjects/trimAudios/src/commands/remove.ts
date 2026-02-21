@@ -1,6 +1,7 @@
 import { getBucket, getDB } from "../core/firebase.js";
 import { LOADED_DATA_DIR, PROCESSED_DATA_DIR, TTS_AUDIO_PREFIX } from "./config.js";
 import { basename, resolve } from "node:path";
+import { rm } from "node:fs/promises";
 
 export async function runRemove(): Promise<void> {
   try {
@@ -21,8 +22,6 @@ export async function runRemove(): Promise<void> {
 
     if (onlyObjects.length === 0) {
       console.log(`[remove] No files found in /${TTS_AUDIO_PREFIX.replace(/\/$/, "")}`);
-      process.exitCode = 0;
-      return;
     }
 
     let removed = 0;
@@ -47,6 +46,18 @@ export async function runRemove(): Promise<void> {
     // remove folder and content from;
     const loadDir = resolve(process.cwd(), LOADED_DATA_DIR);
     const processedDir = resolve(process.cwd(), PROCESSED_DATA_DIR);
+
+    for (const dirPath of [loadDir, processedDir]) {
+      try {
+        await rm(dirPath, { recursive: true, force: true });
+        console.log(`[remove] removed local directory: ${dirPath}`);
+      } catch (error: unknown) {
+        failed += 1;
+        const message = error instanceof Error ? error.message : String(error);
+        console.error(`[remove] Failed to remove local directory: ${dirPath}`);
+        console.error(`[remove] reason: ${message}`);
+      }
+    }
 
     process.exitCode = failed > 0 ? 1 : 0;
   } catch (error: unknown) {
