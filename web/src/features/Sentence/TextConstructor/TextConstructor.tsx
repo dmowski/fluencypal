@@ -114,6 +114,12 @@ export function TextConstructor({
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement | null;
+      const isCtrlOrMetaPressed = event.ctrlKey || event.metaKey;
+
+      if (isCtrlOrMetaPressed) {
+        return;
+      }
+
       const isEditableTarget =
         target?.tagName === 'INPUT' || target?.tagName === 'TEXTAREA' || target?.isContentEditable;
 
