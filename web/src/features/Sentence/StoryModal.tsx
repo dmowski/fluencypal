@@ -162,6 +162,7 @@ export const StoryModal = ({
       const fullText = isNeedToTranslate
         ? await translateTextToTargetLanguageFromEng(fullTextEn)
         : fullTextEn;
+
       const sentences = splitTextIntoSentences(fullText);
       const translatedSentencesToNative = await Promise.all(
         sentences.map((s) => translateSentence(s)),
