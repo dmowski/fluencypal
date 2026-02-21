@@ -214,11 +214,11 @@ export const StoryModal = ({
     cache: true,
   };
 
-  const speakOptionsAlternative: SpeakOptions = {
+  const speakOptionsAlternative: SpeakOptions = speakOptionsMain; /*{
     instructions: voiceInstruction,
     voice: 'shimmer',
     cache: true,
-  };
+  };*/
 
   const cacheAudioWords = async (words: string[]) => {
     audioCache.cacheAudioWords(words, speakOptionsMain);

@@ -17,7 +17,6 @@ const getTextHash = (text: string): string => {
 
 export const getAudioHash = (text: string, instructions: string, voice: string): string => {
   let textHash = getTextHash(text);
-  console.log('textHash', textHash);
 
   const data = [instructions, voice]
     .filter(Boolean)
