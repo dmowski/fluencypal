@@ -7,7 +7,6 @@ import { useAuth } from '../Auth/useAuth';
 import { db } from '../Firebase/firebaseDb';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { AudioCache } from './types';
-import { sleep } from '@/libs/sleep';
 import { clearWordForAudio } from './clearWord';
 
 interface AudioCacheContextType {
@@ -98,23 +97,8 @@ function useProvideAudioCache(): AudioCacheContextType {
       }
     };
 
-    const isDoInParallel = false;
-
-    if (isDoInParallel) {
-      const chunkSize = 4;
-      const chunks: string[][] = [];
-      for (let i = 0; i < wordsToCache.length; i += chunkSize) {
-        chunks.push(wordsToCache.slice(i, i + chunkSize));
-      }
-      console.log('chunks', chunks.length);
-      for (const chunk of chunks) {
-        await Promise.all(chunk.map((word) => processWord(word)));
-        await sleep(100);
-      }
-    } else {
-      for (const word of wordsToCache) {
-        await processWord(word);
-      }
+    for (const word of wordsToCache) {
+      await processWord(word);
     }
   };
 
