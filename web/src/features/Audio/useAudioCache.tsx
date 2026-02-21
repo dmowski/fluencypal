@@ -8,6 +8,7 @@ import { db } from '../Firebase/firebaseDb';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { AudioCache } from './types';
 import { clearWordForAudio } from './clearWord';
+import { isDev } from '../Analytics/isDev';
 
 interface AudioCacheContextType {
   cacheAudioWords: (words: string[], options: SpeakOptions) => Promise<void>;
@@ -97,8 +98,12 @@ function useProvideAudioCache(): AudioCacheContextType {
       }
     };
 
+    let i = 0;
     for (const word of wordsToCache) {
+      i++;
       await processWord(word);
+      const progressPercent = ((i / wordsToCache.length) * 100).toFixed(2);
+      console.log('Caching progress:', progressPercent + '%');
     }
   };
 
