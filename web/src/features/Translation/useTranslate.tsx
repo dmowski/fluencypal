@@ -1,6 +1,6 @@
 import { translateRequest } from '@/app/api/translate/translateRequest';
 import { useSettings } from '../Settings/useSettings';
-import { getPageLangCode, SupportedLanguage } from '../Lang/lang';
+import { getPageLangCode } from '../Lang/lang';
 import { usePlan } from '../Plan/usePlan';
 import { useMemo, useState } from 'react';
 import { IconButton, Popover, Stack } from '@mui/material';
@@ -12,7 +12,36 @@ import { fullLanguagesMap } from '@/libs/language/languages';
 import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
 import { NativeLangCode } from '@/libs/language/type';
 
-const translationCache: Record<string, string> = {};
+const getTranslatorCache = (
+  sourceLanguage: string | null,
+  targetLanguage: string | null,
+): Record<string, string> => {
+  const localStorageKey = `translate_${sourceLanguage || 'auto'}-${targetLanguage || 'auto'}`;
+  const cacheString = localStorage.getItem(localStorageKey);
+  if (cacheString) {
+    try {
+      const cache = JSON.parse(cacheString);
+      return cache;
+    } catch (e) {
+      console.log('Error parsing translation cache from localStorage', e);
+      return {};
+    }
+  }
+  return {};
+};
+
+const setTranslatorCache = (
+  sourceLanguage: string | null,
+  targetLanguage: string | null,
+  cache: Record<string, string>,
+) => {
+  const localStorageKey = `translate_${sourceLanguage || 'auto'}-${targetLanguage || 'auto'}`;
+  try {
+    localStorage.setItem(localStorageKey, JSON.stringify(cache));
+  } catch (e) {
+    console.log('Error saving translation cache to localStorage', e);
+  }
+};
 
 export const useTranslate = () => {
   const settings = useSettings();
@@ -52,8 +81,9 @@ export const useTranslate = () => {
       return '';
     }
 
-    if (translationCache[props.text]) {
-      return translationCache[props.text];
+    let cache = getTranslatorCache(props.sourceLanguage || null, finalTargetLanguage);
+    if (cache[props.text]) {
+      return cache[props.text];
     }
 
     const response = await translateRequest({
@@ -61,7 +91,11 @@ export const useTranslate = () => {
       sourceLanguage: props.sourceLanguage || null,
       targetLanguage: finalTargetLanguage,
     });
-    translationCache[props.text] = response.translatedText;
+
+    cache = getTranslatorCache(props.sourceLanguage || null, finalTargetLanguage);
+    cache[props.text] = response.translatedText;
+    setTranslatorCache(props.sourceLanguage || null, finalTargetLanguage, cache);
+
     return response.translatedText;
   };
 
