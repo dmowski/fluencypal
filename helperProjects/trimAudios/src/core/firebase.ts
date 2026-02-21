@@ -53,3 +53,14 @@ export const getBucket = () => {
 
   return app.storage().bucket(storageBucket);
 };
+
+export const getDB = () => {
+  let app = firebaseAdmin.apps[0];
+  if (app) {
+    return app.firestore();
+  }
+
+  app = initApp();
+
+  return app.firestore();
+};
