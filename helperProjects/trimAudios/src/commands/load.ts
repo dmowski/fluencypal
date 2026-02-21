@@ -37,13 +37,13 @@ export async function runLoad(): Promise<void> {
 
       if (await exists(destinationPath)) {
         skipped += 1;
-        console.log(`[load] skip ${file.name} -> ${destinationPath}`);
+        console.log(`[load] skip ${file.name}`);
         continue;
       }
 
       await file.download({ destination: destinationPath });
       downloaded += 1;
-      console.log(`[load] loaded ${file.name} -> ${destinationPath}`);
+      console.log(`[load] loaded ${file.name}`);
     }
 
     console.log(
