@@ -43,10 +43,12 @@ export const NavigationBar: React.FC = () => {
     await sleep(10);
     appNavigation.setCurrentPage(pageType);
 
-    const searchParams = new URLSearchParams();
-    searchParams.set('page', pageType);
-    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-    router.push(newUrl);
+    setTimeout(() => {
+      const searchParams = new URLSearchParams();
+      searchParams.set('page', pageType);
+      const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+      router.push(newUrl);
+    }, 100);
   };
 
   useEffect(() => {
