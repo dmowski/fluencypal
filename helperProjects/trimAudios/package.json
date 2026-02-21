@@ -11,6 +11,7 @@
     "process": "tsx src/index.ts process",
     "upload": "tsx src/index.ts upload",
     "check": "tsx src/index.ts check",
+    "run-all": "npm run load && npm run process && npm run upload",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
