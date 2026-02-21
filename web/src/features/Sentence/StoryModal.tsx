@@ -226,7 +226,7 @@ export const StoryModal = ({
 
   const cacheAllAudioWords = async (sentences: string[]) => {
     // @ts-expect-error - for debug purposes
-    const isCacheEnabled = window.isCacheAll === true;
+    const isCacheEnabled = !!window.isCacheAll;
     if (!isCacheEnabled) return;
 
     console.log('Start caching all words');
