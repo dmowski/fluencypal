@@ -82,7 +82,15 @@ export const StoryModal = ({
     initState();
   }, [storyHash]);
   const setState = (data: Partial<StoryState>) => {
-    setInternalState((prevState) => ({ ...prevState, ...data }));
+    setInternalState((prevState) => {
+      const newData = { ...prevState, ...data };
+      const isTheSame = JSON.stringify(prevState) === JSON.stringify(newData);
+      if (isTheSame) {
+        return prevState;
+      }
+
+      return newData;
+    });
   };
 
   const state = internalState;
