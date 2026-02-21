@@ -1,9 +1,7 @@
 import { getBucket } from "../core/firebase.js";
 import { access, mkdir } from "node:fs/promises";
 import { basename, resolve } from "node:path";
-import { TTS_AUDIO_PREFIX } from "./config.js";
-
-const OUTPUT_DIR = "loadedData";
+import { LOADED_DATA_DIR, TTS_AUDIO_PREFIX } from "./config.js";
 
 async function exists(filePath: string): Promise<boolean> {
   try {
@@ -27,7 +25,7 @@ export async function runLoad(): Promise<void> {
       return;
     }
 
-    const outputDir = resolve(process.cwd(), OUTPUT_DIR);
+    const outputDir = resolve(process.cwd(), LOADED_DATA_DIR);
     await mkdir(outputDir, { recursive: true });
 
     let downloaded = 0;

@@ -1,10 +1,21 @@
-import { getBucket } from "../core/firebase.js";
-import { TTS_AUDIO_PREFIX } from "./config.js";
+import { getBucket, getDB } from "../core/firebase.js";
+import { LOADED_DATA_DIR, PROCESSED_DATA_DIR, TTS_AUDIO_PREFIX } from "./config.js";
+import { basename, resolve } from "node:path";
 
 export async function runRemove(): Promise<void> {
   try {
     const bucket = getBucket();
+    const db = getDB();
     const [files] = await bucket.getFiles({ prefix: TTS_AUDIO_PREFIX });
+
+    const cacheRef = db.collection("audioCache");
+    const cacheSnapshot = await cacheRef.get();
+    const batch = db.batch();
+    cacheSnapshot.forEach((doc) => {
+      batch.delete(doc.ref);
+    });
+    await batch.commit();
+    console.log(`[remove] Cleared audioCache collection`);
 
     const onlyObjects = files.filter((file) => file.name !== TTS_AUDIO_PREFIX);
 
@@ -21,7 +32,8 @@ export async function runRemove(): Promise<void> {
       try {
         await file.delete();
         removed += 1;
-        console.log(`[remove] removed ${file.name}`);
+        const percent = ((removed / onlyObjects.length) * 100).toFixed(2);
+        console.log(`[remove] ${percent}% | removed ${file.name}`);
       } catch (error: unknown) {
         failed += 1;
         const message = error instanceof Error ? error.message : String(error);
@@ -31,6 +43,11 @@ export async function runRemove(): Promise<void> {
     }
 
     console.log(`[remove] total: ${onlyObjects.length}, removed: ${removed}, failed: ${failed}`);
+
+    // remove folder and content from;
+    const loadDir = resolve(process.cwd(), LOADED_DATA_DIR);
+    const processedDir = resolve(process.cwd(), PROCESSED_DATA_DIR);
+
     process.exitCode = failed > 0 ? 1 : 0;
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : String(error);

@@ -70,7 +70,6 @@ export async function trimLeadingSilence(
   outputPath: string,
   options: {
     leadingSilenceDurationSec: number;
-    trailingSilenceKeepSec: number;
     silenceNoiseThreshold: string;
   },
 ): Promise<void> {
@@ -84,7 +83,7 @@ export async function trimLeadingSilence(
     "-i",
     inputPath,
     "-af",
-    `silenceremove=start_periods=1:start_duration=${options.leadingSilenceDurationSec}:start_threshold=${options.silenceNoiseThreshold}:start_silence=${options.leadingSilenceDurationSec},areverse,silenceremove=start_periods=1:start_duration=${options.trailingSilenceKeepSec}:start_threshold=${options.silenceNoiseThreshold}:start_silence=${options.trailingSilenceKeepSec},areverse`,
+    `silenceremove=start_periods=1:start_duration=${options.leadingSilenceDurationSec}:start_threshold=${options.silenceNoiseThreshold}:start_silence=${options.leadingSilenceDurationSec}`,
     "-vn",
     "-codec:a",
     "libmp3lame",

@@ -64,7 +64,6 @@ export async function runProcess(): Promise<void> {
       if (silenceInfo.hasLeadingSilence) {
         await trimLeadingSilence(inputPath, outputPath, {
           leadingSilenceDurationSec: ffmpegSilenceCheckConfig.leadingSilenceDurationSec,
-          trailingSilenceKeepSec: ffmpegSilenceCheckConfig.trailingSilenceKeepSec,
           silenceNoiseThreshold: ffmpegSilenceCheckConfig.silenceNoiseThreshold,
         });
         trimmed += 1;
