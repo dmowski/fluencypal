@@ -97,6 +97,8 @@ export function TextConstructor({
       return;
     }
 
+    setWrongWord(null);
+
     onPlayAudio?.(word, false);
     await sleep(20);
 
