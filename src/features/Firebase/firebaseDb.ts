@@ -35,6 +35,7 @@ import {
 } from '../Chat/type';
 import { GameBattle } from '../Game/Battle/types';
 import { Story, StoryState } from '../Sentence/types';
+import { AudioCache } from '../Audio/types';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -128,6 +129,9 @@ export const db = {
       userId && storyHash
         ? dataPointDoc<StoryState>(`users/${userId}/stats/story_${storyHash}`)
         : null,
+
+    audioCache: (userId: string, audioHash: string) =>
+      userId && audioHash ? dataPointDoc<AudioCache>(`audioCache/${audioHash}`) : null,
 
     homework: (userId?: string, homeworkId?: string) =>
       userId && homeworkId
