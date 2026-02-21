@@ -1,6 +1,18 @@
 import { getBucket } from "../core/firebase.js";
+import { access, mkdir } from "node:fs/promises";
+import { basename, resolve } from "node:path";
 
 const TTS_AUDIO_PREFIX = "ttsAudio/";
+const OUTPUT_DIR = "loadedData";
+
+async function exists(filePath: string): Promise<boolean> {
+  try {
+    await access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export async function runLoad(): Promise<void> {
   try {
@@ -15,17 +27,34 @@ export async function runLoad(): Promise<void> {
       return;
     }
 
-    console.log(`[load] Files in /${TTS_AUDIO_PREFIX.replace(/\/$/, "")}:`);
+    const outputDir = resolve(process.cwd(), OUTPUT_DIR);
+    await mkdir(outputDir, { recursive: true });
+
+    let downloaded = 0;
+    let skipped = 0;
 
     for (const file of onlyObjects.sort((left, right) => left.name.localeCompare(right.name))) {
-      console.log(file.name);
+      const fileName = basename(file.name);
+      const destinationPath = resolve(outputDir, fileName);
+
+      if (await exists(destinationPath)) {
+        skipped += 1;
+        console.log(`[load] skip ${file.name} -> ${destinationPath}`);
+        continue;
+      }
+
+      await file.download({ destination: destinationPath });
+      downloaded += 1;
+      console.log(`[load] loaded ${file.name} -> ${destinationPath}`);
     }
 
-    console.log(`[load] Total: ${onlyObjects.length}`);
+    console.log(
+      `[load] total: ${onlyObjects.length}, downloaded: ${downloaded}, skipped: ${skipped}`,
+    );
     process.exitCode = 0;
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : String(error);
-    console.error("[load] Failed to list files from Firebase Storage");
+    console.error("[load] Failed to load files from Firebase Storage");
     console.error(`[load] reason: ${message}`);
     process.exitCode = 1;
   }
