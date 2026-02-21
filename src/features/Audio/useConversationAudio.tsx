@@ -46,7 +46,12 @@ interface ConversationAudioContextType {
 
   /** Generate TTS and enqueue it, or enqueue provided audioUrl. */
   speak: (text: string, opts: SpeakOptions) => Promise<void>;
-  initCache: (text: string, opts: SpeakOptions) => Promise<void>;
+  initCache: (
+    text: string,
+    opts: SpeakOptions,
+    attempt?: number,
+    skipSilentCheck?: boolean,
+  ) => Promise<boolean>;
 
   /** Stop everything immediately and clear queue. */
   interrupt: () => void;
@@ -451,40 +456,65 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     await playerRef.current!.playStreamUrl(url);
   }, []);
 
-  const initCache = useCallback(async (text: string, opts: SpeakOptions, attempt = 0) => {
-    const urlClean = generateTtsStreamUrl(text, { ...opts, regenerateCache: false });
-    const urlForRegenerate = generateTtsStreamUrl(text, { ...opts, regenerateCache: true });
+  const initCache = useCallback(
+    async (
+      text: string,
+      opts: SpeakOptions,
+      attempt = 0,
+      skipSilentCheck = false,
+    ): Promise<boolean> => {
+      const urlClean = generateTtsStreamUrl(text, { ...opts, regenerateCache: false });
+      const urlForRegenerate = generateTtsStreamUrl(text, { ...opts, regenerateCache: true });
 
-    const urlForAttempt = attempt === 0 ? urlClean : urlForRegenerate;
-    const urlWithSalt = urlForAttempt + '&date=' + Date.now();
+      const urlForAttempt = attempt === 0 ? urlClean : urlForRegenerate;
+      const urlWithSalt = urlForAttempt + '&date=' + Date.now();
 
-    try {
-      const response = await fetch(urlWithSalt);
-      if (!response.ok) {
-        throw new Error('Failed to fetch audio for caching');
-      }
-
-      const buffer = await response.arrayBuffer();
-      const silent = await isSilentAudio(buffer);
-      if (silent) {
-        console.log(`Audio is silent. NEED Regenerate. |${text}| Attempt: ${attempt + 1}`);
-        if (attempt < 5) {
-          console.log('Retrying...', attempt + 1);
-          return await initCache(text, opts, attempt + 1);
+      if (skipSilentCheck) {
+        try {
+          const responseClean = await fetch(urlClean);
+          if (!responseClean.ok) {
+            throw new Error('Failed to fetch audio for caching. clean attempt');
+          }
+        } catch (error) {
+          console.error('Error initializing audio cache (clean attempt)', error);
         }
+
+        return true;
       }
 
-      const responseClean = await fetch(urlClean);
+      try {
+        const response = await fetch(urlWithSalt);
+        if (!response.ok) {
+          throw new Error('Failed to fetch audio for caching');
+        }
 
-      if (!responseClean.ok) {
-        throw new Error('Failed to fetch audio for caching. clean attempt');
+        const buffer = await response.arrayBuffer();
+        const silent = await isSilentAudio(buffer);
+        if (silent) {
+          console.log(`Audio is silent. NEED Regenerate. |${text}| Attempt: ${attempt + 1}`);
+          if (attempt < 5) {
+            console.log('Retrying...', attempt + 1);
+            return await initCache(text, opts, attempt + 1, skipSilentCheck);
+          } else {
+            return false;
+          }
+        }
+
+        const responseClean = await fetch(urlClean);
+
+        if (!responseClean.ok) {
+          throw new Error('Failed to fetch audio for caching. clean attempt');
+        }
+
+        return true;
+        // We don't need to do anything with the response; just fetching it should cache it
+      } catch (error) {
+        console.error('Error initializing audio cache:', error);
+        return false;
       }
-
-      // We don't need to do anything with the response; just fetching it should cache it
-    } catch (error) {
-      console.error('Error initializing audio cache:', error);
-    }
-  }, []);
+    },
+    [],
+  );
 
   const interrupt = useCallback(() => {
     playerRef.current!.interrupt();
