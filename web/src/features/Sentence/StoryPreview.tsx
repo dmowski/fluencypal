@@ -10,6 +10,7 @@ import { useAuth } from '../Auth/useAuth';
 import { db } from '../Firebase/firebaseDb';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import { useSettings } from '../Settings/useSettings';
 
 export const StoryPreview = ({
   onSelectImage,
@@ -21,15 +22,17 @@ export const StoryPreview = ({
   views?: number;
 }) => {
   const auth = useAuth();
+  const settings = useSettings();
   const story: Story | null = 'textEn' in image ? image : null;
   const imageDescription: ImageDescription | null = 'textEn' in image ? null : image;
 
   const storyHash = useMemo(() => {
     if (story) {
-      return getStoryHash(story);
+      return getStoryHash(story, settings.languageCode || 'en');
     }
     return null;
-  }, [story]);
+  }, [story, settings.languageCode]);
+
   const docRef = db.documents.storyReadProgress(auth.uid, storyHash || '');
 
   const [progressData] = useDocumentData(docRef);

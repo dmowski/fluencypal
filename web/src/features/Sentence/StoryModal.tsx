@@ -33,8 +33,12 @@ export const StoryModal = ({
   onNext: () => void;
 }) => {
   const auth = useAuth();
+  const settings = useSettings();
 
-  const storyHash = useMemo(() => getStoryHash(data), [data]);
+  const storyHash = useMemo(
+    () => getStoryHash(data, settings.languageCode || 'en'),
+    [data, settings.languageCode],
+  );
 
   const docRef = db.documents.storyReadProgress(auth.uid, storyHash);
 
@@ -79,7 +83,6 @@ export const StoryModal = ({
 
   const state = internalState;
 
-  const settings = useSettings();
   const storyText = data.textEn;
   const wordsCount = storyText.split(' ').length;
 
