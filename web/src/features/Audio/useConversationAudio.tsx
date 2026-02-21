@@ -472,6 +472,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
 
       if (skipSilentCheck) {
         try {
+          console.log('Rune clean request', text);
           const responseClean = await fetch(urlClean);
           if (!responseClean.ok) {
             throw new Error('Failed to fetch audio for caching. clean attempt');

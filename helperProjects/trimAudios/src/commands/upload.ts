@@ -65,7 +65,6 @@ export async function runUpload(): Promise<void> {
       );
 
       uploaded += 1;
-      console.log(`[upload] uploaded ${localPath} -> ${destination}`);
 
       const progressPercent = ((uploaded / filesToUpload.length) * 100).toFixed(2);
       console.log(`[upload] PROGRESS: ${progressPercent}%`);
