@@ -13,12 +13,12 @@ import { SpeakOptions, useConversationAudio } from '../Audio/useConversationAudi
 import { useAuth } from '../Auth/useAuth';
 import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
 import { Story, StoryState } from './types';
-import { getHash } from '@/libs/hash';
 import { sleep } from '@/libs/sleep';
 import { uniq } from '@/libs/uniq';
 import { db } from '../Firebase/firebaseDb';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { defaultStoryState, numberOfOptionsMap, pointsToWinMap } from './data';
+import { getStoryHash } from './getStoryHash';
 
 export const StoryModal = ({
   data,
@@ -32,10 +32,7 @@ export const StoryModal = ({
 }) => {
   const auth = useAuth();
 
-  const storyHash = useMemo(() => {
-    const dataToHash = [data.title, data.textEn, data.subtitle].join('|');
-    return getHash(dataToHash);
-  }, [data]);
+  const storyHash = useMemo(() => getStoryHash(data), [data]);
 
   const docRef = db.documents.storyReadProgress(auth.uid, storyHash);
 
