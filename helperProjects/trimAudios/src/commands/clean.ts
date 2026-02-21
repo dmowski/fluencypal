@@ -3,11 +3,16 @@ import { resolve } from "node:path";
 
 import { inspectAudioSilence } from "../core/ffmpeg.js";
 import { ffmpegSilenceCheckConfig } from "../core/ffmpegConfig.js";
+import { getBucket } from "../core/firebase.js";
+
+const DEST_PREFIX = "ttsAudio/";
 
 export async function runClean(): Promise<void> {
   try {
     const inputDir = resolve(process.cwd(), ffmpegSilenceCheckConfig.inputDirectoryName);
     const entries = await readdir(inputDir, { withFileTypes: true });
+    const processedDir = resolve(process.cwd(), ffmpegSilenceCheckConfig.outputDirectoryName);
+    const bucket = getBucket();
 
     const mp3Files = entries
       .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".mp3"))
@@ -32,19 +37,25 @@ export async function runClean(): Promise<void> {
 
       if (silenceInfo.isOnlySilence) {
         onlySilenceFiles.push(fileName);
-        console.log(`[clean] Empty file: ${fileName}`);
+
+        const destination = `${DEST_PREFIX}${fileName}`;
+
+        console.log(`[clean] Empty file: ${destination}`);
+        try {
+          const result = await bucket.file(destination).delete();
+          console.log("Result of deletion", result);
+        } catch (error: unknown) {
+          const message = error instanceof Error ? error.message : String(error);
+          console.error(`[clean] Failed to delete file: ${destination}`);
+          console.error(`[clean] reason: ${message}`);
+        }
       }
     }
 
     if (onlySilenceFiles.length === 0) {
-      console.log("[clean] No files containing only silence were found.");
+      //console.log("[clean] No files containing only silence were found.");
       process.exitCode = 0;
       return;
-    }
-
-    console.log("[clean] Files containing only silence:");
-    for (const fileName of onlySilenceFiles) {
-      console.log(fileName);
     }
 
     console.log(`[clean] total only-silence files: ${onlySilenceFiles.length}`);
