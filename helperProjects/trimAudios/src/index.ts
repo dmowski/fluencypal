@@ -2,14 +2,21 @@ import "dotenv/config";
 
 import { ensureRuntimeFolders } from "./core/bootstrap.js";
 import { runCheck } from "./commands/check.js";
+import { runClean } from "./commands/clean.js";
 import { runLoad } from "./commands/load.js";
 import { runProcess } from "./commands/process.js";
 import { runUpload } from "./commands/upload.js";
 
-type Command = "load" | "process" | "upload" | "check";
+type Command = "load" | "process" | "upload" | "check" | "clean";
 
 function parseCommand(value: string | undefined): Command | null {
-  if (value === "load" || value === "process" || value === "upload" || value === "check") {
+  if (
+    value === "load" ||
+    value === "process" ||
+    value === "upload" ||
+    value === "check" ||
+    value === "clean"
+  ) {
     return value;
   }
 
@@ -20,7 +27,7 @@ async function main(): Promise<void> {
   const command = parseCommand(process.argv[2]);
 
   if (!command) {
-    console.error("Unknown or missing command. Use one of: load, process, upload, check");
+    console.error("Unknown or missing command. Use one of: load, process, upload, check, clean");
     process.exitCode = 1;
     return;
   }
@@ -41,6 +48,11 @@ async function main(): Promise<void> {
 
   if (command === "process") {
     await runProcess();
+    return;
+  }
+
+  if (command === "clean") {
+    await runClean();
     return;
   }
 
