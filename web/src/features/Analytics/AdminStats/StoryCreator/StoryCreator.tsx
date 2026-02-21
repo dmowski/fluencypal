@@ -9,13 +9,16 @@ import { deleteDoc, doc, setDoc } from 'firebase/firestore';
 import { CirclePlus, Eye, Music } from 'lucide-react';
 import { useCollection, useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { StoryEditorModal } from './StoryEditorModal';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { splitTextIntoSentences } from '@/features/Sentence/TextConstructor/splitTextIntoSentences';
 import { uniq } from '@/libs/uniq';
 import { splitWords } from '@/features/Sentence/TextConstructor/textConstructor.utils';
 import { useAudioCache } from '@/features/Audio/useAudioCache';
 import { SpeakOptions } from '@/features/Audio/useConversationAudio';
 import { clearWordForAudio } from '@/features/Audio/clearWord';
+import { getVoiceSpeakOptionsForStory } from '@/features/Sentence/getVoiceSpeakOptionsForStory';
+import { useSettings } from '@/features/Settings/useSettings';
+import { useTranslate } from '@/features/Translation/useTranslate';
 
 export const StoryCreator = () => {
   const auth = useAuth();
@@ -105,19 +108,47 @@ export const StoryCreator = () => {
   const selectedStoryData = storiesData?.find((story) => story.id === selectedStoryId);
 
   const audioCache = useAudioCache();
+  const settings = useSettings();
 
-  const speakOptionsMain: SpeakOptions = {
-    instructions: '',
-    voice: 'marin',
-    cache: true,
+  const speakOptionsMain: SpeakOptions = useMemo(
+    () => getVoiceSpeakOptionsForStory(settings.userSettings),
+    [settings.userSettings],
+  );
+
+  const translator = useTranslate();
+  const targetLanguage = settings.userSettings?.languageCode || 'en';
+
+  const translateTextToTargetLanguageFromEng = async (text: string) => {
+    const translated = await translator.translateText({
+      text: text,
+      sourceLanguage: 'en',
+      targetLanguage: targetLanguage,
+    });
+    return translated;
   };
 
   const [isCaching, setIsCaching] = useState(false);
   const cacheAllAudio = async () => {
     setIsCaching(true);
-    const allStoriesTextSentences = (storiesData || [])
-      .filter((story) => story.textEn && story.isPublished)
-      .map((story) => splitTextIntoSentences(story.textEn))
+
+    const stories = storiesData || [];
+    const isNeedToTranslate = targetLanguage !== 'en';
+
+    const storiesTexts = !isNeedToTranslate
+      ? stories.map((story) => story.textEn || '').filter(Boolean)
+      : await Promise.all(
+          stories.map(async (story) => {
+            const textEn = story.textEn || '';
+            if (!textEn) return '';
+            const translated = await translateTextToTargetLanguageFromEng(textEn);
+            return translated;
+          }),
+        );
+
+    console.log('storiesTexts', storiesTexts);
+
+    const allStoriesTextSentences = storiesTexts
+      .map((storyText) => splitTextIntoSentences(storyText))
       .flat();
 
     const allWords = uniq(allStoriesTextSentences.map((sentence) => splitWords(sentence)).flat());

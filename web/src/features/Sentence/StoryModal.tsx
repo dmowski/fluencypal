@@ -21,10 +21,10 @@ import { defaultStoryState, numberOfOptionsMap, pointsToWinMap } from './data';
 import { getStoryHash } from './getStoryHash';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { useAudioCache } from '../Audio/useAudioCache';
-import { isDev } from '../Analytics/isDev';
 import { splitWords } from './TextConstructor/textConstructor.utils';
 import { clearWordForAudio } from '../Audio/clearWord';
 import { getAudioHash } from '../Audio/audioHash';
+import { getVoiceSpeakOptionsForStory } from './getVoiceSpeakOptionsForStory';
 
 export const StoryModal = ({
   data,
@@ -205,20 +205,10 @@ export const StoryModal = ({
     />
   );
 
-  const voiceInstruction =
-    targetLanguage === 'en' || !targetLanguage ? '' : `Use a ${userTargetLanguage} language`;
-
-  const speakOptionsMain: SpeakOptions = {
-    instructions: voiceInstruction,
-    voice: 'marin',
-    cache: true,
-  };
-
-  const speakOptionsAlternative: SpeakOptions = speakOptionsMain; /*{
-    instructions: voiceInstruction,
-    voice: 'shimmer',
-    cache: true,
-  };*/
+  const speakOptionsMain: SpeakOptions = useMemo(
+    () => getVoiceSpeakOptionsForStory(settings.userSettings),
+    [settings.userSettings],
+  );
 
   const cacheAudioWords = async (words: string[]) => {
     audioCache.cacheAudioWords(words, speakOptionsMain);
@@ -238,7 +228,7 @@ export const StoryModal = ({
   };
 
   const playAudio = (text: string, alternativeVoice: boolean) => {
-    const options = alternativeVoice ? speakOptionsAlternative : speakOptionsMain;
+    const options = speakOptionsMain;
     const cleanWord = clearWordForAudio(text);
     if (!cleanWord) return;
     const audioHash = getAudioHash(cleanWord, options.instructions || '', options.voice || '');
