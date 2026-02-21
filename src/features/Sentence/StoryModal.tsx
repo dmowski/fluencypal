@@ -440,7 +440,7 @@ export const StoryModal = ({
                           ? i18n._('Preparing...')
                           : isSavedProgress
                             ? i18n._('Fresh start')
-                            : i18n._('Read')}
+                            : i18n._('Start Quiz')}
                       </Button>
                     </Stack>
 
