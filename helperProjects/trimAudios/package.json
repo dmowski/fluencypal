@@ -1,0 +1,27 @@
+{
+  "name": "trim-audios",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "load": "tsx src/index.ts load",
+    "process": "tsx src/index.ts process",
+    "upload": "tsx src/index.ts upload",
+    "check": "tsx src/index.ts check",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "ffmpeg-static": "^5.2.0",
+    "firebase-admin": "^13.6.0",
+    "p-limit": "^6.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
