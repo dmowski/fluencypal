@@ -8,6 +8,7 @@ import { db } from '../Firebase/firebaseDb';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { AudioCache } from './types';
 import { sleep } from '@/libs/sleep';
+import { clearWordForAudio } from './clearWord';
 
 interface AudioCacheContextType {
   cacheAudioWords: (words: string[], options: SpeakOptions) => Promise<void>;
@@ -15,7 +16,7 @@ interface AudioCacheContextType {
 
 const AudioCacheContext = createContext<AudioCacheContextType | null>(null);
 
-const getAudioHash = (text: string, options: SpeakOptions): string => {
+export const getAudioHash = (text: string, options: SpeakOptions): string => {
   const data = [text, options.instructions, options.voice]
     .filter(Boolean)
     .map((part) => getHash(part))
@@ -60,7 +61,10 @@ function useProvideAudioCache(): AudioCacheContextType {
   };
 
   const cacheAudioWords = async (words: string[], options: SpeakOptions) => {
-    const uniqueWords = uniq(words).filter(Boolean);
+    const uniqueWords = uniq(words.map((word) => clearWordForAudio(word) || '').filter(Boolean));
+
+    console.log('uniqueWords', uniqueWords);
+
     const wordsToCache = uniqueWords.filter((word) => !cachedWordStateMap.current[word]);
 
     if (wordsToCache.length === 0) {

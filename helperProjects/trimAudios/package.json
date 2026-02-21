@@ -14,6 +14,7 @@
     "clean": "tsx src/index.ts clean",
     "check": "tsx src/index.ts check",
     "run-all": "npm run load && npm run process && npm run upload",
+    "all": "pnpm run run-all",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
