@@ -5,5 +5,4 @@ export type CommunityPage =
   | 'debates'
   | 'daily-questions'
   | 'tech-support'
-  | 'leaderboards'
-  | 'sentence-constructor';
+  | 'leaderboards';

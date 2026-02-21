@@ -9,10 +9,9 @@ import {
 } from './textConstructor.utils';
 import { useLingui } from '@lingui/react';
 import { createSeededRandom } from './createSeededRandom';
-import { Markdown } from '../uiKit/Markdown/Markdown';
-import { useTranslate } from '../Translation/useTranslate';
-import { GamePointRow } from '../Game/GamePointRow';
-import { useGame } from '../Game/useGame';
+import { Markdown } from '../../uiKit/Markdown/Markdown';
+import { useTranslate } from '../../Translation/useTranslate';
+import { useGame } from '../../Game/useGame';
 import { sleep } from '@/libs/sleep';
 
 type TextConstructorProps = {
