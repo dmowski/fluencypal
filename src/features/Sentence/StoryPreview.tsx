@@ -43,6 +43,11 @@ export const StoryPreview = ({
   const videoUrl = story?.videoUrl;
   const isImageDescription = !!imageDescription;
 
+  const fullText = progressData?.sentences.join(' ').length || 0;
+  const doneLength = progressData?.progress.length || 0;
+
+  const progressPercent = fullText && doneLength ? Math.floor((doneLength / fullText) * 100) : 0;
+
   return (
     <Stack
       sx={{
@@ -136,26 +141,24 @@ export const StoryPreview = ({
             position: 'absolute',
             top: '4px',
             left: '4px',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            backgroundColor: 'rgba(0, 0, 0, 0.4)',
             color: '#fff',
-            padding: '0',
+            padding: '3px 8px 3px 7px',
             borderRadius: '22px',
             fontSize: '12px',
             zIndex: 3,
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'center',
             gap: '6px',
-            opacity: 1,
-            height: '30px',
-            width: '30px',
+            opacity: 0.8,
           }}
         >
           {isCompleted ? (
-            <CircleCheck color="#33e84b" />
+            <CircleCheck size={'16px'} color="#33e84b" />
           ) : (
-            <BookmarkIcon fontSize="small" sx={{ color: '#33c1e8', fontSize: '18px' }} />
+            <BookmarkIcon fontSize="small" sx={{ color: '#33c1e8', fontSize: '16px' }} />
           )}
+          <Typography variant="caption">{`${progressPercent}%`}</Typography>
         </Stack>
       )}
     </Stack>
