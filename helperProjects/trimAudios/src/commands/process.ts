@@ -1,7 +1,7 @@
 import { access, copyFile, mkdir, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
 
-import { hasLeadingSilence, trimLeadingSilence } from "../core/ffmpeg.js";
+import { inspectAudioSilence, trimLeadingSilence } from "../core/ffmpeg.js";
 import { ffmpegSilenceCheckConfig } from "../core/ffmpegConfig.js";
 
 async function exists(filePath: string): Promise<boolean> {
@@ -49,15 +49,23 @@ export async function runProcess(): Promise<void> {
         continue;
       }
 
-      const needsTrim = await hasLeadingSilence(inputPath, {
-        silenceDurationSec: ffmpegSilenceCheckConfig.silenceDurationSec,
+      const silenceInfo = await inspectAudioSilence(inputPath, {
+        silenceDurationSec: ffmpegSilenceCheckConfig.leadingSilenceDurationSec,
         silenceNoiseThreshold: ffmpegSilenceCheckConfig.silenceNoiseThreshold,
         leadingSilenceEpsilonSec: ffmpegSilenceCheckConfig.leadingSilenceEpsilonSec,
       });
 
-      if (needsTrim) {
+      if (silenceInfo.isOnlySilence) {
+        await copyFile(inputPath, outputPath);
+        copied += 1;
+        console.log(`[process] ${fileName}: contains only silence, copied as processed`);
+        continue;
+      }
+
+      if (silenceInfo.hasLeadingSilence) {
         await trimLeadingSilence(inputPath, outputPath, {
-          silenceDurationSec: ffmpegSilenceCheckConfig.silenceDurationSec,
+          leadingSilenceDurationSec: ffmpegSilenceCheckConfig.leadingSilenceDurationSec,
+          trailingSilenceKeepSec: ffmpegSilenceCheckConfig.trailingSilenceKeepSec,
           silenceNoiseThreshold: ffmpegSilenceCheckConfig.silenceNoiseThreshold,
         });
         trimmed += 1;

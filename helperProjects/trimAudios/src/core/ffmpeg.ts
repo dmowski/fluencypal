@@ -4,14 +4,21 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const ffmpegPath = require("ffmpeg-static") as string | null;
 
-export async function hasLeadingSilence(
+type SilenceInspectOptions = {
+  silenceDurationSec: number;
+  silenceNoiseThreshold: string;
+  leadingSilenceEpsilonSec: number;
+};
+
+export type SilenceInspectResult = {
+  hasLeadingSilence: boolean;
+  isOnlySilence: boolean;
+};
+
+export async function inspectAudioSilence(
   inputPath: string,
-  options: {
-    silenceDurationSec: number;
-    silenceNoiseThreshold: string;
-    leadingSilenceEpsilonSec: number;
-  },
-): Promise<boolean> {
+  options: SilenceInspectOptions,
+): Promise<SilenceInspectResult> {
   if (!ffmpegPath) {
     throw new Error("ffmpeg-static binary is not available");
   }
@@ -30,15 +37,40 @@ export async function hasLeadingSilence(
 
   const output = await runFfmpeg(ffmpegPath, args);
   const silenceStartValues = extractSilenceStartValues(output);
+  const silenceDurationValues = extractSilenceDurationValues(output);
+  const audioDurationSec = extractAudioDurationSec(output);
 
-  return silenceStartValues.some((value) => value <= options.leadingSilenceEpsilonSec);
+  const hasLeadingSilence = silenceStartValues.some(
+    (value) => value <= options.leadingSilenceEpsilonSec,
+  );
+
+  let isOnlySilence = false;
+  if (hasLeadingSilence && audioDurationSec !== null && silenceDurationValues.length > 0) {
+    const maxSilenceDuration = Math.max(...silenceDurationValues);
+    const tolerance = Math.max(0.02, audioDurationSec * 0.01);
+    isOnlySilence = maxSilenceDuration >= audioDurationSec - tolerance;
+  }
+
+  return {
+    hasLeadingSilence,
+    isOnlySilence,
+  };
+}
+
+export async function hasLeadingSilence(
+  inputPath: string,
+  options: SilenceInspectOptions,
+): Promise<boolean> {
+  const result = await inspectAudioSilence(inputPath, options);
+  return result.hasLeadingSilence;
 }
 
 export async function trimLeadingSilence(
   inputPath: string,
   outputPath: string,
   options: {
-    silenceDurationSec: number;
+    leadingSilenceDurationSec: number;
+    trailingSilenceKeepSec: number;
     silenceNoiseThreshold: string;
   },
 ): Promise<void> {
@@ -52,7 +84,7 @@ export async function trimLeadingSilence(
     "-i",
     inputPath,
     "-af",
-    `silenceremove=start_periods=1:start_duration=${options.silenceDurationSec}:start_threshold=${options.silenceNoiseThreshold}:start_silence=${options.silenceDurationSec}`,
+    `silenceremove=start_periods=1:start_duration=${options.leadingSilenceDurationSec}:start_threshold=${options.silenceNoiseThreshold}:start_silence=${options.leadingSilenceDurationSec},areverse,silenceremove=start_periods=1:start_duration=${options.trailingSilenceKeepSec}:start_threshold=${options.silenceNoiseThreshold}:start_silence=${options.trailingSilenceKeepSec},areverse`,
     "-vn",
     "-codec:a",
     "libmp3lame",
@@ -106,4 +138,37 @@ function extractSilenceStartValues(logOutput: string): number[] {
   }
 
   return values;
+}
+
+function extractSilenceDurationValues(logOutput: string): number[] {
+  const values: number[] = [];
+  const regex = /silence_duration:\s*([0-9]*\.?[0-9]+)/g;
+
+  for (const match of logOutput.matchAll(regex)) {
+    const parsed = Number(match[1]);
+
+    if (!Number.isNaN(parsed)) {
+      values.push(parsed);
+    }
+  }
+
+  return values;
+}
+
+function extractAudioDurationSec(logOutput: string): number | null {
+  const durationMatch = logOutput.match(/Duration:\s*(\d+):(\d+):(\d+(?:\.\d+)?)/);
+
+  if (!durationMatch) {
+    return null;
+  }
+
+  const hours = Number(durationMatch[1]);
+  const minutes = Number(durationMatch[2]);
+  const seconds = Number(durationMatch[3]);
+
+  if (Number.isNaN(hours) || Number.isNaN(minutes) || Number.isNaN(seconds)) {
+    return null;
+  }
+
+  return hours * 3600 + minutes * 60 + seconds;
 }
