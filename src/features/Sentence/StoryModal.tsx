@@ -2,12 +2,12 @@ import { useLingui } from '@lingui/react';
 import { Button, ButtonGroup, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './TextConstructor/splitTextIntoSentences';
 import { StoryContent, TextConstructor } from './TextConstructor/TextConstructor';
-import { ChevronRight, Glasses, Loader, Origami, X } from 'lucide-react';
+import { ChevronRight, Loader, Origami, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { SpeakOptions, useConversationAudio } from '../Audio/useConversationAudio';
 import { useAuth } from '../Auth/useAuth';
@@ -20,6 +20,7 @@ import { getDoc, setDoc } from 'firebase/firestore';
 import { defaultStoryState, numberOfOptionsMap, pointsToWinMap } from './data';
 import { getStoryHash } from './getStoryHash';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import { useAudioCache } from '../Audio/useAudioHash';
 
 export const StoryModal = ({
   data,
@@ -94,6 +95,8 @@ export const StoryModal = ({
   };
 
   const audio = useConversationAudio();
+
+  const audioCache = useAudioCache();
 
   const pointsToWin = pointsToWinMap[state.mode];
   const numberOfOptions = numberOfOptionsMap[state.mode];
@@ -192,8 +195,6 @@ export const StoryModal = ({
     />
   );
 
-  const cachedWordStateMap = useRef<Record<string, 'pending' | 'done'>>({});
-
   const voiceInstruction =
     targetLanguage === 'en' || !targetLanguage ? '' : `Use a ${userTargetLanguage} language`;
 
@@ -210,25 +211,7 @@ export const StoryModal = ({
   };
 
   const cacheAudioWords = async (words: string[]) => {
-    const uniqueWords = uniq(words).filter(Boolean);
-    const wordsToCache = uniqueWords.filter((word) => !cachedWordStateMap.current[word]);
-
-    if (wordsToCache.length === 0) {
-      return;
-    }
-
-    wordsToCache.forEach((word) => {
-      cachedWordStateMap.current[word] = 'pending';
-    });
-
-    for (const word of wordsToCache) {
-      try {
-        await audio.initCache(word, speakOptionsMain);
-        cachedWordStateMap.current[word] = 'done';
-      } catch {
-        delete cachedWordStateMap.current[word];
-      }
-    }
+    audioCache.cacheAudioWords(words, speakOptionsMain);
   };
 
   const playAudio = (text: string, alternativeVoice: boolean) => {
