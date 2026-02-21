@@ -96,8 +96,11 @@ export function TextConstructor({
       onBadWord?.(word);
       return;
     }
-    onGoodWord?.(word);
+
     onPlayAudio?.(word, false);
+    await sleep(20);
+
+    onGoodWord?.(word);
     await sleep(1);
 
     const nextProgress = constructFinalProgress({
