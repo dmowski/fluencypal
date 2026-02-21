@@ -48,6 +48,13 @@ export const StoryModal = ({
     await setDoc(docRef, state);
   };
 
+  const onCloseHandler = async () => {
+    if (isReady) {
+      await saveStoryProgress(internalState);
+    }
+    onClose();
+  };
+
   const [internalState, setInternalState] = useState<StoryState>(defaultStoryState);
 
   const [isStateInitialized, setIsStateInitialized] = useState(false);
@@ -271,7 +278,7 @@ export const StoryModal = ({
   const isSavedProgress = state.progress.length > 0;
 
   return (
-    <CustomModal isOpen={true} onClose={onClose}>
+    <CustomModal isOpen={true} onClose={onCloseHandler}>
       {translator.translateModal}
       <Stack
         sx={{
@@ -682,7 +689,7 @@ export const StoryModal = ({
                             padding: '10px 30px',
                             color: '#fff',
                           }}
-                          onClick={() => onClose()}
+                          onClick={() => onCloseHandler()}
                           endIcon={<X size={'20px'} />}
                         >
                           {i18n._('Close')}
