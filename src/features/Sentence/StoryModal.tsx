@@ -181,7 +181,7 @@ export const StoryModal = ({
     />
   );
 
-  const isCachingMap = useRef<Record<string, boolean>>({});
+  const cachedWordStateMap = useRef<Record<string, 'pending' | 'done'>>({});
 
   const voiceInstruction =
     targetLanguage === 'en' || !targetLanguage ? '' : `Use a ${userTargetLanguage} language`;
@@ -199,14 +199,25 @@ export const StoryModal = ({
   };
 
   const cacheAudioWords = async (words: string[]) => {
-    const wordsHash = getHash(words.join(' '));
-    const isCaching = isCachingMap.current[wordsHash];
-    if (isCaching) {
+    const uniqueWords = uniq(words).filter(Boolean);
+    const wordsToCache = uniqueWords.filter((word) => !cachedWordStateMap.current[word]);
+
+    if (wordsToCache.length === 0) {
       return;
     }
-    isCachingMap.current[wordsHash] = true;
 
-    await Promise.all([words.map((word, index) => audio.initCache(word, speakOptionsMain))]);
+    wordsToCache.forEach((word) => {
+      cachedWordStateMap.current[word] = 'pending';
+    });
+
+    for (const word of wordsToCache) {
+      try {
+        await audio.initCache(word, speakOptionsMain);
+        cachedWordStateMap.current[word] = 'done';
+      } catch {
+        delete cachedWordStateMap.current[word];
+      }
+    }
   };
 
   const playAudio = (text: string, alternativeVoice: boolean) => {
