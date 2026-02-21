@@ -74,6 +74,9 @@ export async function runProcess(): Promise<void> {
         copied += 1;
         console.log(`[process] ${fileName}: Audio is fine`);
       }
+
+      const progressPercent = (((trimmed + copied + skipped) / mp3Files.length) * 100).toFixed(2);
+      console.log(`[process] PROGRESS: ${progressPercent}%`);
     }
 
     console.log(
