@@ -37,7 +37,7 @@ export async function runLoad(): Promise<void> {
 
       if (await exists(destinationPath)) {
         skipped += 1;
-        console.log(`[load] skip ${file.name}`);
+        //console.log(`[load] skip ${file.name}`);
         continue;
       }
 

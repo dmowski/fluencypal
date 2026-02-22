@@ -44,7 +44,7 @@ export async function runProcess(): Promise<void> {
 
       if (await exists(outputPath)) {
         skipped += 1;
-        console.log(`[process] ${fileName}: already processed, skip`);
+        //console.log(`[process] ${fileName}: already processed, skip`);
         continue;
       }
 

@@ -41,7 +41,7 @@ export async function runUpload(): Promise<void> {
 
       if (await exists(logPath)) {
         skipped += 1;
-        console.log(`[upload] skip ${fileName}: upload log exists`);
+        //console.log(`[upload] skip ${fileName}: upload log exists`);
         continue;
       }
 
