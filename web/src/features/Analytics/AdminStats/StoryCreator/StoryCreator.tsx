@@ -157,7 +157,7 @@ export const StoryCreator = () => {
 
     await audioCache.cacheAudioWords(uniqueWords, speakOptionsMain);
 
-    console.log('uniqueWords', uniqueWords);
+    console.log('DONE caching all audios | ', new Date().toISOString());
     setIsCaching(false);
   };
 
