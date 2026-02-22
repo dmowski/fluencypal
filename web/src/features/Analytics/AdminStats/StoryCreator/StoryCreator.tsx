@@ -153,9 +153,7 @@ export const StoryCreator = () => {
 
     const allWords = uniq(allStoriesTextSentences.map((sentence) => splitWords(sentence)).flat());
 
-    const uniqueWords = uniq(
-      allWords.map((word) => clearWordForAudio(word) || '').filter(Boolean),
-    ).reverse();
+    const uniqueWords = uniq(allWords.map((word) => clearWordForAudio(word) || '').filter(Boolean));
 
     await audioCache.cacheAudioWords(uniqueWords, speakOptionsMain);
 
