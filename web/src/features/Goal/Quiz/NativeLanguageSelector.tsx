@@ -96,7 +96,6 @@ export const NativeLanguageSelector = () => {
           onChange={(e) => setInternalFilterValue(e.target.value)}
           fullWidth
           variant="filled"
-          autoFocus
           label={i18n._('My Language is...')}
           placeholder={''}
           autoComplete="off"
