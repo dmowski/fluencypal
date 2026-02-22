@@ -423,37 +423,9 @@ function isAbortError(error: unknown): boolean {
 
 function useProvideConversationAudio(): ConversationAudioContextType {
   const playerRef = useRef<AudioQueuePlayer | null>(null);
-  const audioBlobCacheRef = useRef<Map<string, string>>(new Map());
   if (!playerRef.current) {
     playerRef.current = new AudioQueuePlayer();
   }
-
-  const cacheAudioBlobUrl = useCallback(
-    (url: string, audioBuffer: ArrayBuffer, contentType?: string) => {
-      const mime = contentType && contentType.length > 0 ? contentType : 'audio/mpeg';
-      const blob = new Blob([audioBuffer], { type: mime });
-      const nextBlobUrl = URL.createObjectURL(blob);
-
-      const prevBlobUrl = audioBlobCacheRef.current.get(url);
-      if (prevBlobUrl && prevBlobUrl !== nextBlobUrl) {
-        URL.revokeObjectURL(prevBlobUrl);
-      }
-
-      audioBlobCacheRef.current.set(url, nextBlobUrl);
-    },
-    [],
-  );
-
-  const getPlayableUrl = useCallback((url: string) => {
-    return audioBlobCacheRef.current.get(url) ?? url;
-  }, []);
-
-  const clearAudioBlobCache = useCallback(() => {
-    for (const blobUrl of audioBlobCacheRef.current.values()) {
-      URL.revokeObjectURL(blobUrl);
-    }
-    audioBlobCacheRef.current.clear();
-  }, []);
 
   const initAudio = useCallback(async () => {
     // MUST be called from a user gesture handler (button click/tap)
@@ -479,15 +451,11 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     return `/api/ttsStream?${q}`;
   };
 
-  const speak = useCallback(
-    async (text: string, opts: SpeakOptions) => {
-      const url = generateTtsStreamUrl(text, opts);
-      const playableUrl = getPlayableUrl(url);
+  const speak = useCallback(async (text: string, opts: SpeakOptions) => {
+    const url = generateTtsStreamUrl(text, opts);
 
-      await playerRef.current!.playStreamUrl(playableUrl);
-    },
-    [getPlayableUrl],
-  );
+    await playerRef.current!.playStreamUrl(url);
+  }, []);
 
   const initCache = useCallback(
     async (
@@ -509,9 +477,6 @@ function useProvideConversationAudio(): ConversationAudioContextType {
           if (!responseClean.ok) {
             throw new Error('Failed to fetch audio for caching. clean attempt');
           }
-
-          const cleanBuffer = await responseClean.arrayBuffer();
-          cacheAudioBlobUrl(urlClean, cleanBuffer, responseClean.headers.get('Content-Type') ?? '');
         } catch (error) {
           console.error('Error initializing audio cache (clean attempt)', error);
         }
@@ -545,9 +510,6 @@ function useProvideConversationAudio(): ConversationAudioContextType {
           throw new Error('Failed to fetch audio for caching. clean attempt');
         }
 
-        const cleanBuffer = await responseClean.arrayBuffer();
-        cacheAudioBlobUrl(urlClean, cleanBuffer, responseClean.headers.get('Content-Type') ?? '');
-
         return true;
         // We don't need to do anything with the response; just fetching it should cache it
       } catch (error) {
@@ -555,7 +517,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
         return false;
       }
     },
-    [cacheAudioBlobUrl],
+    [],
   );
 
   const interrupt = useCallback(() => {
@@ -600,9 +562,8 @@ function useProvideConversationAudio(): ConversationAudioContextType {
   }, []);
 
   const dispose = useCallback(() => {
-    clearAudioBlobCache();
     playerRef.current!.dispose();
-  }, [clearAudioBlobCache]);
+  }, []);
 
   const isPlayingChecker = useCallback(() => {
     return playerRef.current!.isPlaying();
