@@ -95,7 +95,7 @@ function useProvideAudioCache(): AudioCacheContextType {
       i++;
       await processWord(word);
       const progressPercent = ((i / wordsToCache.length) * 100).toFixed(2);
-      //console.log('Caching progress:', progressPercent + '%');
+      console.log('Caching progress:', progressPercent + '%');
     }
   };
 
