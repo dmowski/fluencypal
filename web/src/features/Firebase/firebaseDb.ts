@@ -34,7 +34,7 @@ import {
   UserChatMetadata,
 } from '../Chat/type';
 import { GameBattle } from '../Game/Battle/types';
-import { Story, StoryState } from '../Sentence/types';
+import { Story, StoryStat, StoryState } from '../Sentence/types';
 import { AudioCache } from '../Audio/types';
 
 interface FirestoreDataConverter<T> {
@@ -117,8 +117,8 @@ export const db = {
     chat: (userId: string, space: string) =>
       space && userId ? dataPointDoc<UserChatMetadata>(`chat/${space}`) : null,
 
-    storiesViewsStats: (userId?: string) =>
-      userId ? dataPointDoc<Record<string, number>>(`stats/storiesViews`) : null,
+    storyStats: (userId?: string, storyId?: string) =>
+      userId && storyId ? dataPointDoc<StoryStat>(`stats/stories/stats/${storyId}`) : null,
 
     chatSpaceUserReadMetadata: (userId: string) =>
       userId

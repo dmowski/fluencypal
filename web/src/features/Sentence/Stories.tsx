@@ -10,9 +10,10 @@ import { storyData } from './storyData';
 import { sleep } from '@/libs/sleep';
 import { StoryPreview } from './StoryPreview';
 import { db } from '../Firebase/firebaseDb';
-import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { StoryModal } from './StoryModal';
+import { uniq } from '@/libs/uniq';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
@@ -21,18 +22,21 @@ export const TextConstructorStories = () => {
   const auth = useAuth();
   const collectionRef = db.collections.stories(auth.uid);
   const [databaseStories] = useCollectionData(collectionRef);
-
-  const storiesViewsStatsDocRef = db.documents.storiesViewsStats(auth.uid);
-  const [storiesViewsStats] = useDocumentData(storiesViewsStatsDocRef);
+  const storiesViewsStatsDocRef = db.documents.storyStats(auth.uid, selectedImageImageId || '');
 
   const increaseViewsCount = async (storyId: string) => {
     if (!auth.uid || !storiesViewsStatsDocRef) return;
     const newestDoc = getDoc(storiesViewsStatsDocRef);
-    const newestData = (await newestDoc).data() || {};
-    const currentCount = newestData[storyId] || 0;
-    const newCount = currentCount + 1;
+    const newestData = (await newestDoc).data();
 
-    await setDoc(storiesViewsStatsDocRef, { [storyId]: newCount }, { merge: true });
+    const viewsUserIds: string[] = newestData?.viewsUserIds || [];
+    if (viewsUserIds.includes(auth.uid)) {
+      return;
+    }
+
+    const newCount = uniq([...viewsUserIds, auth.uid]);
+
+    await setDoc(storiesViewsStatsDocRef, { viewsUserIds: newCount }, { merge: true });
   };
 
   useEffect(() => {
@@ -164,14 +168,7 @@ export const TextConstructorStories = () => {
             }}
           >
             {storiesToShow.map((story, index) => {
-              return (
-                <StoryPreview
-                  key={index}
-                  onSelectImage={onSelectImage}
-                  image={story}
-                  views={storiesViewsStats?.[story.id]}
-                />
-              );
+              return <StoryPreview key={index} onSelectImage={onSelectImage} image={story} />;
             })}
           </Stack>
         </Stack>

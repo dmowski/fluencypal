@@ -29,3 +29,7 @@ export interface StoryState {
   badWords: string[];
   translationWords: string[];
 }
+
+export interface StoryStat {
+  viewsUserIds: string[];
+}

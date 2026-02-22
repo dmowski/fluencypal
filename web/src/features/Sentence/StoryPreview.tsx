@@ -8,23 +8,26 @@ import { useMemo } from 'react';
 import { getStoryHash } from './getStoryHash';
 import { useAuth } from '../Auth/useAuth';
 import { db } from '../Firebase/firebaseDb';
-import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { useDocumentData, useDocumentDataOnce } from 'react-firebase-hooks/firestore';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { useSettings } from '../Settings/useSettings';
 
 export const StoryPreview = ({
   onSelectImage,
   image,
-  views,
 }: {
   onSelectImage: (id: string) => void;
   image: ImageDescription | Story;
-  views?: number;
 }) => {
   const auth = useAuth();
   const settings = useSettings();
   const story: Story | null = 'textEn' in image ? image : null;
   const imageDescription: ImageDescription | null = 'textEn' in image ? null : image;
+
+  const storiesViewsStatsDocRef = db.documents.storyStats(auth.uid, story?.id);
+  const [storiesViewsStats] = useDocumentDataOnce(storiesViewsStatsDocRef);
+
+  const views = storiesViewsStats?.viewsUserIds.length || 0;
 
   const storyHash = useMemo(() => {
     if (story) {
