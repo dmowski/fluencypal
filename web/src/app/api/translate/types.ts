@@ -11,3 +11,9 @@ export interface TranslateResponse {
   sourceLanguage: NativeLangCode | null;
   targetLanguage: NativeLangCode;
 }
+
+export interface TranslateCacheEntry {
+  request: TranslateRequest;
+  response: TranslateResponse;
+  createdAtIso: string;
+}
