@@ -28,6 +28,8 @@ type TextConstructorProps = {
   onGoodWord?: (word: string) => void;
   onBadWord?: (word: string) => void;
   onTranslationWord?: (word: string) => void;
+
+  onCorrectWordAvailable?: (word: string) => void;
 };
 
 export function TextConstructor({
@@ -44,6 +46,7 @@ export function TextConstructor({
   onGoodWord,
   onBadWord,
   onTranslationWord,
+  onCorrectWordAvailable,
 }: TextConstructorProps) {
   const [wrongWord, setWrongWord] = useState<string | null>(null);
   const { i18n } = useLingui();
@@ -211,6 +214,13 @@ export function TextConstructor({
 
     onActiveWordsChange?.(activePart.activeSentenceWords);
   }, [JSON.stringify(activePart?.activeSentenceWords)]);
+
+  const activeCorrectWord = activePart?.nextWord;
+  useEffect(() => {
+    if (activeCorrectWord) {
+      onCorrectWordAvailable?.(activeCorrectWord);
+    }
+  }, [activeCorrectWord]);
 
   const game = useGame();
 

@@ -47,6 +47,7 @@ interface ConversationAudioContextType {
 
   /** Generate TTS and enqueue it, or enqueue provided audioUrl. */
   speak: (text: string, opts: SpeakOptions) => Promise<void>;
+
   initCache: (
     text: string,
     opts: SpeakOptions,
@@ -54,6 +55,7 @@ interface ConversationAudioContextType {
     skipSilentCheck?: boolean,
   ) => Promise<boolean>;
 
+  setTextAsPotentialSpeak: (text: string, opts: SpeakOptions) => Promise<void>;
   /** Stop everything immediately and clear queue. */
   interrupt: () => void;
 
@@ -113,6 +115,7 @@ class AudioQueuePlayer {
   // Track real playing state based on audio events
   private _speechPlaying = false;
   private _musicPlaying = false;
+  private potentialSpeakUrl: string | null = null;
 
   async unlockFromGesture(): Promise<void> {
     if (!this.ctx) {
@@ -206,6 +209,24 @@ class AudioQueuePlayer {
     return this.speechVolume;
   }
 
+  async setTextAsPotentialSpeak(url: string): Promise<void> {
+    if (this.potentialSpeakUrl === url) {
+      return;
+    }
+    this.ensureUnlocked();
+    const ctx = this.ctx!;
+    const el = this.speechEl!;
+
+    if (ctx.state === 'suspended') await ctx.resume();
+
+    await this.waitForCurrentAudioToEnd();
+    this.potentialSpeakUrl = url;
+
+    this.stopStream();
+    el.src = this.potentialSpeakUrl;
+    el.load();
+  }
+
   async playStreamUrl(url: string): Promise<void> {
     this.ensureUnlocked();
     const ctx = this.ctx!;
@@ -214,8 +235,11 @@ class AudioQueuePlayer {
     if (ctx.state === 'suspended') await ctx.resume();
 
     // Stop previous audio instantly
-    this.stopStream();
-    el.src = url;
+    if (!this.potentialSpeakUrl || this.potentialSpeakUrl !== url) {
+      this.stopStream();
+      el.src = url;
+    }
+    this.potentialSpeakUrl = null;
 
     // Plays as soon as buffered enough (streaming)
     try {
@@ -254,6 +278,19 @@ class AudioQueuePlayer {
       el.removeAttribute('src');
       el.load();
     } catch {}
+  }
+
+  waitForCurrentAudioToEnd(): Promise<void> {
+    const el = this.speechEl;
+    if (!el) return Promise.resolve();
+    if (el.paused) return Promise.resolve();
+    return new Promise<void>((resolve) => {
+      const onEnded = () => {
+        el.removeEventListener('ended', onEnded);
+        resolve();
+      };
+      el.addEventListener('ended', onEnded);
+    });
   }
 
   interrupt(): void {
@@ -457,6 +494,11 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     await playerRef.current!.playStreamUrl(url);
   }, []);
 
+  const setTextAsPotentialSpeak = useCallback(async (text: string, opts: SpeakOptions) => {
+    const url = generateTtsStreamUrl(text, opts);
+    await playerRef.current!.setTextAsPotentialSpeak(url);
+  }, []);
+
   const initCache = useCallback(
     async (
       text: string,
@@ -472,7 +514,6 @@ function useProvideConversationAudio(): ConversationAudioContextType {
 
       if (skipSilentCheck) {
         try {
-          console.log('Rune clean request', text);
           const responseClean = await fetch(urlClean);
           if (!responseClean.ok) {
             throw new Error('Failed to fetch audio for caching. clean attempt');
@@ -623,6 +664,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       dispose,
       isPlaying,
       initCache,
+      setTextAsPotentialSpeak,
     }),
     [
       initAudio,
@@ -636,6 +678,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       dispose,
       isPlaying,
       initCache,
+      setTextAsPotentialSpeak,
     ],
   );
 }

@@ -282,6 +282,11 @@ export const StoryModal = ({
     });
   };
 
+  const onCorrectWordAvailable = async (word: string) => {
+    await sleep(40);
+    await audio.setTextAsPotentialSpeak(word, speakOptionsMain);
+  };
+
   const attentionWords = uniq([...state.badWords, ...state.translationWords]);
 
   const isSavedProgress = state.progress.length > 0;
@@ -518,6 +523,7 @@ export const StoryModal = ({
                     onGoodWord={onWordSelected}
                     onBadWord={onBadWord}
                     onTranslationWord={onTranslationWord}
+                    onCorrectWordAvailable={onCorrectWordAvailable}
                   />
                 )}
 
