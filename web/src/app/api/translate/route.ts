@@ -1,3 +1,4 @@
+import { getTranslateCache, saveTranslateCache } from './cache';
 import { translateText } from './translateText';
 import { TranslateRequest, TranslateResponse } from './types';
 
@@ -13,6 +14,11 @@ export async function POST(request: Request) {
     return Response.json(response, { status: 400 });
   }
 
+  const cache = await getTranslateCache(data);
+  if (cache) {
+    return Response.json(cache);
+  }
+
   const translatedText = await translateText({
     text: data.text,
     sourceLanguage: data.sourceLanguage,
@@ -24,6 +30,7 @@ export async function POST(request: Request) {
     sourceLanguage: data.sourceLanguage,
     targetLanguage: data.targetLanguage,
   };
+  await saveTranslateCache(data, response);
   return Response.json(response);
 }
 
