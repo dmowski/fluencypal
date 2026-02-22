@@ -474,7 +474,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 
       const initConversation = isUseRealtime ? initWebRtcConversation : initTextConversation;
 
-      const model = MODELS.REALTIME_CONVERSATION_EXTRA;
+      const model = MODELS.REALTIME_CONVERSATION;
 
       const conversation = await initConversation({
         ...conversationConfig,
