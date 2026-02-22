@@ -12,11 +12,14 @@ import { fullLanguagesMap } from '@/libs/language/languages';
 import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
 import { NativeLangCode } from '@/libs/language/type';
 
+const localStoragePrefix = 'translate_';
+const isUseCache = false;
+
 const getTranslatorCache = (
   sourceLanguage: string | null,
   targetLanguage: string | null,
 ): Record<string, string> => {
-  const localStorageKey = `translate_${sourceLanguage || 'auto'}-${targetLanguage || 'auto'}`;
+  const localStorageKey = `${localStoragePrefix}${sourceLanguage || 'auto'}-${targetLanguage || 'auto'}`;
   const cacheString = localStorage.getItem(localStorageKey);
   if (cacheString) {
     try {
@@ -35,7 +38,7 @@ const setTranslatorCache = (
   targetLanguage: string | null,
   cache: Record<string, string>,
 ) => {
-  const localStorageKey = `translate_${sourceLanguage || 'auto'}-${targetLanguage || 'auto'}`;
+  const localStorageKey = `${localStoragePrefix}${sourceLanguage || 'auto'}-${targetLanguage || 'auto'}`;
   try {
     localStorage.setItem(localStorageKey, JSON.stringify(cache));
   } catch (e) {
@@ -81,7 +84,9 @@ export const useTranslate = () => {
       return '';
     }
 
-    let cache = getTranslatorCache(props.sourceLanguage || null, finalTargetLanguage);
+    let cache = isUseCache
+      ? getTranslatorCache(props.sourceLanguage || null, finalTargetLanguage)
+      : {};
     if (cache[props.text]) {
       return cache[props.text];
     }
@@ -92,9 +97,11 @@ export const useTranslate = () => {
       targetLanguage: finalTargetLanguage,
     });
 
-    cache = getTranslatorCache(props.sourceLanguage || null, finalTargetLanguage);
-    cache[props.text] = response.translatedText;
-    setTranslatorCache(props.sourceLanguage || null, finalTargetLanguage, cache);
+    if (isUseCache) {
+      cache = getTranslatorCache(props.sourceLanguage || null, finalTargetLanguage);
+      cache[props.text] = response.translatedText;
+      setTranslatorCache(props.sourceLanguage || null, finalTargetLanguage, cache);
+    }
 
     return response.translatedText;
   };
