@@ -5,7 +5,7 @@ const TELEGRAM_API_KEY = process.env.TELEGRAM_API_KEY || '';
 const TELEGRAM_SUPPORT_CHAT_ID = process.env.TELEGRAM_SUPPORT_CHAT_ID || '';
 const url = 'https://api.telegram.org/bot' + TELEGRAM_API_KEY + '/sendMessage';
 
-const sendTelegramMessage = async (message: string, chatId: string): Promise<void> => {
+const sendTelegramMessageInternal = async (message: string, chatId: string): Promise<void> => {
   try {
     console.log('urlForSend', url);
     const result = await fetch(url, {
@@ -61,5 +61,12 @@ export const sentSupportTelegramMessage = async ({
     postfixMessage = '\nUnknown user';
   }
 
-  await sendTelegramMessage(message + postfixMessage, TELEGRAM_SUPPORT_CHAT_ID);
+  await sendTelegramMessageInternal(message + postfixMessage, TELEGRAM_SUPPORT_CHAT_ID);
+};
+
+export const sendTelegramMessageServer = async (message: string): Promise<void> => {
+  if (!TELEGRAM_API_KEY || !TELEGRAM_SUPPORT_CHAT_ID) {
+    throw new Error('Telegram API key or chat ID is not set');
+  }
+  await sendTelegramMessageInternal(message, TELEGRAM_SUPPORT_CHAT_ID);
 };
