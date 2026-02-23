@@ -154,7 +154,7 @@ export const StoryModal = ({
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    if (!isStateInitializing.current || !isReady) return;
+    if (isStateInitializing.current || !isReady) return;
 
     const timeout = setTimeout(() => {
       saveStoryProgress(internalState);

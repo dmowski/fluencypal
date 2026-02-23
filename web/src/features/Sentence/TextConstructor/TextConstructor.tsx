@@ -211,11 +211,11 @@ export function TextConstructor({
     if (!activePart || !activePart?.activeSentenceWords.length) {
       return;
     }
-
     onActiveWordsChange?.(activePart.activeSentenceWords);
   }, [JSON.stringify(activePart?.activeSentenceWords)]);
 
   const activeCorrectWord = activePart?.nextWord;
+
   useEffect(() => {
     if (activeCorrectWord) {
       onCorrectWordAvailable?.(activeCorrectWord);
