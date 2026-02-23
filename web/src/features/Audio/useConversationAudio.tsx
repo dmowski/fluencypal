@@ -565,6 +565,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
             console.log('Retrying...', attempt + 1);
             return await initCache(text, opts, attempt + 1, skipSilentCheck);
           } else {
+            console.log('Audio is NOT silent', text);
             return false;
           }
         }

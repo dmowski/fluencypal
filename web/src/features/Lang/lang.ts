@@ -231,6 +231,31 @@ export const fullEnglishLanguageName: Record<SupportedLanguage, string> = {
   be: 'Belarusian',
 };
 
+export const languageInstructionForVoice: Record<SupportedLanguage, string> = {
+  en: 'Use english language',
+  ru: 'Используй русский язык',
+  de: 'Benutze die deutsche Sprache',
+  pl: 'Użyj języka polskiego',
+  uk: 'Використовуйте українську мову',
+  fr: 'Utilisez la langue française',
+  es: 'Usa el idioma español',
+  ar: 'استخدم اللغة العربية',
+  id: 'Gunakan bahasa Indonesia',
+  it: 'Usa la lingua italiana',
+  ja: '日本語を使用してください',
+  ko: '한국어를 사용하세요',
+  ms: 'Gunakan bahasa Melayu',
+  pt: 'Use o idioma português',
+  th: 'ใช้ภาษาไทย',
+  tr: 'Türkçe kullanın',
+  vi: 'Sử dụng tiếng Việt',
+  zh: '使用中文',
+  da: 'Brug dansk', // Danish
+  no: 'Bruk norsk', // Norwegian
+  sv: 'Använd svenska', // Swedish
+  be: 'Выкарыстоўвайце беларускую мову', // Belarusian
+};
+
 export const speechRecognitionLanguages: Record<SupportedLanguage, string> = {
   en: 'en-US',
   ru: 'ru-RU',
