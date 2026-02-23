@@ -103,8 +103,6 @@ export const StoryModal = ({
 
   const { i18n } = useLingui();
 
-  const userTargetLanguage = settings.fullLanguageName;
-
   const onComplete = () => {
     setState({ isCompleted: true });
   };
