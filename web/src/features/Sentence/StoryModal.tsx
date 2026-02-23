@@ -39,10 +39,15 @@ export const StoryModal = ({
   const auth = useAuth();
   const settings = useSettings();
 
+  const targetLanguage = settings.languageCode || 'en';
+  const nativeLanguage = settings.userSettings?.nativeLanguageCode || 'en';
+
   const storyHash = useMemo(
-    () => getStoryHash(data, settings.languageCode || 'en'),
-    [data, settings.languageCode],
+    () => getStoryHash(data, targetLanguage, nativeLanguage),
+    [data, targetLanguage, nativeLanguage],
   );
+
+  console.log('storyHash', storyHash);
 
   const docRef = db.documents.storyReadProgress(auth.uid, storyHash);
 
@@ -97,9 +102,6 @@ export const StoryModal = ({
 
   const storyText = data.textEn;
   const wordsCount = storyText.split(' ').length;
-
-  const targetLanguage = settings.languageCode;
-  const nativeLanguage = settings.userSettings?.nativeLanguageCode;
 
   const { i18n } = useLingui();
 
