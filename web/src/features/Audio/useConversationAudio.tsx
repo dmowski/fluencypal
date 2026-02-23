@@ -14,6 +14,8 @@ import { isSilentAudio } from './isSilentAudio';
 import { isDev } from '../Analytics/isDev';
 import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 
+export const ttsVersion = 'v5';
+
 /**
  * What this gives you:
  * - initAudio(): MUST be called from the button click handler (user gesture).
@@ -479,14 +481,13 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     text = text.trim();
     const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
 
-    const versionSalt = 'v5';
     const q = new URLSearchParams({
       input: trimmedText,
       voice: opts.voice,
       instructions: opts.instructions ?? '',
       cache: opts.cache ? 'true' : 'false',
       regenerateCache: opts.regenerateCache ? 'true' : 'false',
-      version: versionSalt,
+      version: ttsVersion,
     });
 
     return `/api/ttsStream?${q}`;

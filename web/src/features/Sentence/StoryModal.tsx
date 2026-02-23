@@ -9,7 +9,7 @@ import { splitTextIntoSentences } from './TextConstructor/splitTextIntoSentences
 import { StoryContent, TextConstructor } from './TextConstructor/TextConstructor';
 import { ChevronRight, Loader, Origami, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { SpeakOptions, useConversationAudio } from '../Audio/useConversationAudio';
+import { SpeakOptions, ttsVersion, useConversationAudio } from '../Audio/useConversationAudio';
 import { useAuth } from '../Auth/useAuth';
 import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
 import { Story, StoryState } from './types';
@@ -238,7 +238,9 @@ export const StoryModal = ({
   const cacheAudioWords = async (words: string[]) => {
     await audioCache.cacheAudioWords(words, speakOptionsMain);
     if (auth.isFounder) {
-      showDebugInfoBadgeOnTopWindow(`Cache is complete for words: ${words.join(', ')}`);
+      showDebugInfoBadgeOnTopWindow(
+        `Cache is complete for words: ${words.join(', ')} | ${ttsVersion}`,
+      );
     }
   };
 
@@ -251,7 +253,7 @@ export const StoryModal = ({
     //console.log(audioHash, cleanWord);
     if (auth.isFounder) {
       showDebugInfoBadgeOnTopWindow(
-        `Play audio | Text: "${cleanWord}" | Options: ${JSON.stringify(options)}`,
+        `Play audio | Text: "${cleanWord}" | Options: ${JSON.stringify(options)} | ${ttsVersion}`,
       );
     }
     audio.speak(cleanWord, options);
