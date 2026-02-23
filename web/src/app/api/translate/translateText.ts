@@ -51,6 +51,25 @@ export const translateText = async ({
 };
 
 export const getTranslatedResponse = async (data: TranslateRequest): Promise<TranslateResponse> => {
+  if (!data.targetLanguage) {
+    const response: TranslateResponse = {
+      originalText: data.text || '',
+      translatedText: data.text || '',
+      sourceLanguage: data.sourceLanguage || null,
+      targetLanguage: data.targetLanguage || 'unknown',
+    };
+    return response;
+  }
+
+  if (!data.text.trim()) {
+    return {
+      originalText: data.text,
+      translatedText: '',
+      sourceLanguage: data.sourceLanguage,
+      targetLanguage: data.targetLanguage,
+    };
+  }
+
   const cache = await getTranslateCache(data);
   if (cache) {
     return cache;

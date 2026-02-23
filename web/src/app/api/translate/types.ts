@@ -13,6 +13,19 @@ export interface TranslateResponse {
   targetLanguage: NativeLangCode;
 }
 
+export interface TranslateBatchRequest {
+  texts: string[];
+  sourceLanguage: NativeLangCode | null;
+  targetLanguage: NativeLangCode;
+}
+
+export interface TranslateBatchResponse {
+  originalTexts: string[];
+  translatedTexts: string[];
+  sourceLanguage: NativeLangCode | null;
+  targetLanguage: NativeLangCode;
+}
+
 export interface TranslateCacheEntry {
   request: TranslateRequest;
   response: TranslateResponse;

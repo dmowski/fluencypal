@@ -1,4 +1,9 @@
-import { TranslateRequest, TranslateResponse } from './types';
+import {
+  TranslateBatchRequest,
+  TranslateBatchResponse,
+  TranslateRequest,
+  TranslateResponse,
+} from './types';
 
 export const translateRequest = async (request: TranslateRequest): Promise<TranslateResponse> => {
   const response = await fetch('/api/translate', {
@@ -14,5 +19,24 @@ export const translateRequest = async (request: TranslateRequest): Promise<Trans
   }
 
   const data = (await response.json()) as TranslateResponse;
+  return data;
+};
+
+export const translateBatchRequest = async (
+  request: TranslateBatchRequest,
+): Promise<TranslateBatchResponse> => {
+  const response = await fetch('/api/translate/batch  ', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(request),
+  });
+
+  if (!response.ok) {
+    throw new Error('Translation failed');
+  }
+
+  const data = (await response.json()) as TranslateBatchResponse;
   return data;
 };

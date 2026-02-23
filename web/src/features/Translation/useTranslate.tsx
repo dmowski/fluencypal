@@ -1,4 +1,4 @@
-import { translateRequest } from '@/app/api/translate/translateRequest';
+import { translateBatchRequest, translateRequest } from '@/app/api/translate/translateRequest';
 import { useSettings } from '../Settings/useSettings';
 import { getPageLangCode } from '../Lang/lang';
 import { usePlan } from '../Plan/usePlan';
@@ -106,6 +106,26 @@ export const useTranslate = () => {
     return response.translatedText;
   };
 
+  const translateBatchText = async (props: {
+    texts: string[];
+    sourceLanguage?: NativeLangCode | null;
+    targetLanguage?: NativeLangCode | null;
+  }): Promise<string[]> => {
+    const finalTargetLanguage = props.targetLanguage || targetLanguage;
+    if (!finalTargetLanguage) {
+      return [];
+    }
+
+    const response = await translateBatchRequest({
+      texts: props.texts,
+      sourceLanguage: props.sourceLanguage || null,
+      targetLanguage: finalTargetLanguage,
+    });
+    console.log('response translateBatchText', response);
+
+    return response.translatedTexts;
+  };
+
   const [isTranslating, setIsTranslating] = useState(false);
   const [translatedText, setTranslatedText] = useState<{
     source: string;
@@ -146,6 +166,7 @@ export const useTranslate = () => {
     isTranslateAvailable,
     translateWithModal,
     onCloseTranslate,
+    translateBatchText,
     translateModal:
       (isTranslating || translatedText) && isShowModal && anchorEl ? (
         <Popover

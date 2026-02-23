@@ -120,15 +120,15 @@ export const StoryModal = ({
 
   const isTranslateAvailable = translator.isTranslateAvailable;
 
-  const translateSentence = async (sentence: string) => {
+  const translateSentences = async (sentences: string[]): Promise<string[]> => {
     const isTargetLanguageTheSameAsUserLanguage = targetLanguage === nativeLanguage;
     if (!isTranslateAvailable || isTargetLanguageTheSameAsUserLanguage) {
-      const maskedText = sentence.replace(/\w/g, '*');
-      return maskedText;
+      const maskedSentences = sentences.map((sentence) => sentence.replace(/\w/g, '*'));
+      return maskedSentences;
     }
 
-    const translated = await translator.translateText({
-      text: sentence,
+    const translated = await translator.translateBatchText({
+      texts: sentences,
     });
     return translated;
   };
@@ -174,9 +174,7 @@ export const StoryModal = ({
         : fullTextEn;
 
       const sentences = splitTextIntoSentences(fullText);
-      const translatedSentencesToNative = await Promise.all(
-        sentences.map((s) => translateSentence(s)),
-      );
+      const translatedSentencesToNative = await translateSentences(sentences);
 
       setState({
         progress: '',
