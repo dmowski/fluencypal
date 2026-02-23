@@ -47,8 +47,6 @@ export const StoryModal = ({
     [data, targetLanguage, nativeLanguage],
   );
 
-  console.log('storyHash', storyHash);
-
   const docRef = db.documents.storyReadProgress(auth.uid, storyHash);
 
   const getStoriesProgress = async (): Promise<StoryState | null> => {
