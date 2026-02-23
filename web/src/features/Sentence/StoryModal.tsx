@@ -25,6 +25,7 @@ import { splitWords } from './TextConstructor/textConstructor.utils';
 import { clearWordForAudio } from '../Audio/clearWord';
 import { getAudioHash } from '../Audio/audioHash';
 import { getVoiceSpeakOptionsForStory } from './getVoiceSpeakOptionsForStory';
+import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 
 export const StoryModal = ({
   data,
@@ -245,6 +246,11 @@ export const StoryModal = ({
 
     //const audioHash = getAudioHash(cleanWord, options.instructions || '', options.voice || '');
     //console.log(audioHash, cleanWord);
+    if (auth.isFounder) {
+      showDebugInfoBadgeOnTopWindow(
+        `Play audio | Text: "${cleanWord}" | Options: ${JSON.stringify(options)}`,
+      );
+    }
     audio.speak(cleanWord, options);
   };
 

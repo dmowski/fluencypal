@@ -19,4 +19,9 @@ export const showDebugInfoBadgeOnTopWindow = (message: string) => {
   }
 
   badge.innerText = message;
+  if (!message) {
+    badge.style.display = 'none';
+  } else {
+    badge.style.display = 'block';
+  }
 };
