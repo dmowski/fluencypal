@@ -479,12 +479,15 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     const maxLength = 600;
     text = text.trim();
     const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
+
+    const versionSalt = 'v1';
     const q = new URLSearchParams({
       input: trimmedText,
       voice: opts.voice,
       instructions: opts.instructions ?? '',
       cache: opts.cache ? 'true' : 'false',
       regenerateCache: opts.regenerateCache ? 'true' : 'false',
+      version: versionSalt,
     });
 
     return `/api/ttsStream?${q}`;

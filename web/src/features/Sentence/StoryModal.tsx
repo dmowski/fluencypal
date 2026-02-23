@@ -289,7 +289,9 @@ export const StoryModal = ({
 
   const onCorrectWordAvailable = async (word: string) => {
     await sleep(40);
-    await audio.setTextAsPotentialSpeak(word, speakOptionsMain);
+    const cleanWord = clearWordForAudio(word);
+    if (!cleanWord) return;
+    await audio.setTextAsPotentialSpeak(cleanWord, speakOptionsMain);
   };
 
   const attentionWords = uniq([...state.badWords, ...state.translationWords]);
