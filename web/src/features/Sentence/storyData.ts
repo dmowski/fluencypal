@@ -5,7 +5,7 @@ export const storyData: Story[] = [
     id: 'liberty-leading-the-people',
     title: 'Liberty Leading the People',
     subtitle: 'A story of courage and freedom',
-    audioUrl: 'audio/courage_in_slow_dawn.mp3',
+    audioUrl: '/audio/courage_in_slow_dawn.mp3',
     videoUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicVideo%2Ffrance.webm?alt=media&token=1ae3afb3-2d41-4e8a-8461-5b8a95a27eee',
     imageUrl:
@@ -29,7 +29,7 @@ Together, they walked through the streets, calling for justice and equality. Som
 
   {
     id: 'story-nighthawks-by-edward-hopper',
-    audioUrl: 'audio/midnight_coffee_empty_eyes.mp3',
+    audioUrl: '/audio/midnight_coffee_empty_eyes.mp3',
     title: 'Nighthawks',
     subtitle: 'A quiet night at a diner on the corner',
     imageUrl:
@@ -51,7 +51,7 @@ Together, they walked through the streets, calling for justice and equality. Som
     title: 'The Day the Second Sun Fell',
     videoUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicVideo%2Fsuns.webm?alt=media&token=9329d306-87c6-4bcb-8a83-2b7505b6dffd',
-    audioUrl: 'audio/Twin_Suns_Over_the_Dunes.mp3',
+    audioUrl: '/audio/Twin_Suns_Over_the_Dunes.mp3',
     subtitle: 'A quiet village, two suns in the sky, and the moment everything changed.',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fstar-wars-luke-gazing-at-twin-suns_1.webp?alt=media',
@@ -224,7 +224,7 @@ And somewhere inside Ben’s heart, another masterpiece had already begun to for
     subtitle: 'A Journey of Curiosity, Courage, and a Promise to the Sky',
     videoUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicVideo%2Fstairs.webm?alt=media&token=24d7dc7a-3753-4421-887d-5fbb05e7a593',
-    audioUrl: 'audio/cloudsteps.mp3',
+    audioUrl: '/audio/cloudsteps.mp3',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-staircase-leading-into-the-clouds.webp?alt=media',
 
@@ -485,7 +485,7 @@ And somewhere above the clouds, a meadow chimed with laughter—waiting, patient
   {
     id: 'story-the-kiss-by-gustav-klimt',
     title: 'The Kiss by Gustav Klimt',
-    audioUrl: 'audio/Blooming_Hearts_in_Springlight.mp3',
+    audioUrl: '/audio/Blooming_Hearts_in_Springlight.mp3',
     videoUrl:
       'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicVideo%2Fkiss.webm?alt=media&token=860b9159-d877-49f5-907c-1a52cbcc0add',
     subtitle: 'A story of love and beauty',
