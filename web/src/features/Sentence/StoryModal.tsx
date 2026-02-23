@@ -236,7 +236,10 @@ export const StoryModal = ({
   );
 
   const cacheAudioWords = async (words: string[]) => {
-    audioCache.cacheAudioWords(words, speakOptionsMain);
+    await audioCache.cacheAudioWords(words, speakOptionsMain);
+    if (auth.isFounder) {
+      showDebugInfoBadgeOnTopWindow(`Cache is complete for words: ${words.join(', ')}`);
+    }
   };
 
   const playAudio = (text: string, alternativeVoice: boolean) => {
