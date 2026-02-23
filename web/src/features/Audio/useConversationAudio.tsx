@@ -479,7 +479,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     text = text.trim();
     const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
 
-    const versionSalt = 'v3';
+    const versionSalt = 'v4';
     const q = new URLSearchParams({
       input: trimmedText,
       voice: opts.voice,
