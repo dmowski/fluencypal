@@ -37,7 +37,6 @@ export type SpeakOptions = {
   audioUrl?: string;
   cache?: boolean;
   regenerateCache?: boolean;
-  showDebugInfo?: boolean;
 };
 
 interface ConversationAudioContextType {
@@ -480,7 +479,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     text = text.trim();
     const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
 
-    const versionSalt = 'v2';
+    const versionSalt = 'v3';
     const q = new URLSearchParams({
       input: trimmedText,
       voice: opts.voice,
@@ -495,25 +494,6 @@ function useProvideConversationAudio(): ConversationAudioContextType {
 
   const speak = useCallback(async (text: string, opts: SpeakOptions) => {
     const url = generateTtsStreamUrl(text, opts);
-
-    const isShowDebugInfo = opts.showDebugInfo;
-    if (isShowDebugInfo) {
-      console.log('isShowDebugInfo', isShowDebugInfo);
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error('Failed to fetch audio for debug info');
-        }
-
-        const buffer = await response.arrayBuffer();
-        const silent = await isSilentAudio(buffer);
-        showDebugInfoBadgeOnTopWindow(
-          `Debug TTS Info | Silent: ${silent} | Text: "${text}" | URL: ${url}`,
-        );
-      } catch (error) {
-        showDebugInfoBadgeOnTopWindow('Error fetching audio for debug info: ' + error);
-      }
-    }
 
     await playerRef.current!.playStreamUrl(url);
   }, []);

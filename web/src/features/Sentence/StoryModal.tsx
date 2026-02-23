@@ -243,10 +243,9 @@ export const StoryModal = ({
     const cleanWord = clearWordForAudio(text);
     if (!cleanWord) return;
 
-    const isFounder = auth.isFounder;
-    const audioHash = getAudioHash(cleanWord, options.instructions || '', options.voice || '');
-    console.log(audioHash, cleanWord);
-    audio.speak(cleanWord, { ...options, showDebugInfo: isFounder });
+    //const audioHash = getAudioHash(cleanWord, options.instructions || '', options.voice || '');
+    //console.log(audioHash, cleanWord);
+    audio.speak(cleanWord, options);
   };
 
   const onSentenceComplete = async () => {
