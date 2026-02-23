@@ -6,6 +6,7 @@ export async function POST(request: Request) {
 
   if (!data.text || !data.targetLanguage) {
     const response: TranslateResponse = {
+      originalText: data.text || '',
       translatedText: 'Invalid request data',
       sourceLanguage: data.sourceLanguage || null,
       targetLanguage: data.targetLanguage || 'unknown',

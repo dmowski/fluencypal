@@ -7,6 +7,7 @@ export interface TranslateRequest {
 }
 
 export interface TranslateResponse {
+  originalText: string;
   translatedText: string;
   sourceLanguage: NativeLangCode | null;
   targetLanguage: NativeLangCode;

@@ -63,6 +63,7 @@ export const getTranslatedResponse = async (data: TranslateRequest): Promise<Tra
   });
 
   const response: TranslateResponse = {
+    originalText: data.text,
     translatedText: translatedText,
     sourceLanguage: data.sourceLanguage,
     targetLanguage: data.targetLanguage,
