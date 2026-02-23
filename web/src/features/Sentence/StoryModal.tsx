@@ -2,7 +2,7 @@ import { useLingui } from '@lingui/react';
 import { Button, ButtonGroup, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './TextConstructor/splitTextIntoSentences';
@@ -69,21 +69,31 @@ export const StoryModal = ({
 
   const [internalState, setInternalState] = useState<StoryState>(defaultStoryState);
 
-  const [isStateInitialized, setIsStateInitialized] = useState(false);
+  const isStateInitializing = useRef(false);
   const initState = async () => {
-    setIsStateInitialized(false);
+    if (isStateInitializing.current) return;
+
+    isStateInitializing.current = true;
     const savedState = await getStoriesProgress();
     if (savedState) {
       setInternalState(savedState);
     } else {
-      setInternalState(defaultStoryState);
+      setInternalState({ ...defaultStoryState });
+
+      const preparedSentences = await prepareSentences();
+      setInternalState((prevState) => ({
+        ...prevState,
+        sentences: preparedSentences.sentences,
+        sentencesTranslates: preparedSentences.sentencesTranslates,
+      }));
     }
-    setIsStateInitialized(true);
+    isStateInitializing.current = false;
   };
 
   useEffect(() => {
     initState();
   }, [storyHash]);
+
   const setState = (data: Partial<StoryState>) => {
     setInternalState((prevState) => {
       const newData = { ...prevState, ...data };
@@ -144,7 +154,7 @@ export const StoryModal = ({
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    if (!isStateInitialized || !isReady) return;
+    if (!isStateInitializing.current || !isReady) return;
 
     const timeout = setTimeout(() => {
       saveStoryProgress(internalState);
@@ -152,38 +162,48 @@ export const StoryModal = ({
     }, 4000);
 
     return () => clearTimeout(timeout);
-  }, [internalState, isStateInitialized, isReady]);
+  }, [internalState, isReady]);
 
   const imageUrl = data.imageUrl;
   const title = data.title;
 
+  const prepareSentences = async () => {
+    const fullTextEn = data.textEn;
+    const isNeedToTranslate = targetLanguage !== 'en';
+    const fullText = isNeedToTranslate
+      ? await translateTextToTargetLanguageFromEng(fullTextEn)
+      : fullTextEn;
+
+    const sentences = splitTextIntoSentences(fullText);
+    const translatedSentencesToNative = await translateSentences(sentences);
+
+    return {
+      sentences,
+      sentencesTranslates: translatedSentencesToNative,
+    };
+  };
+
   const start = async ({ isStartFromSavedState }: { isStartFromSavedState: boolean }) => {
     audio.initAudio();
 
-    if (state.sentences.length > 0 && isStartFromSavedState) {
-      await cacheAllAudioWords(state.sentences);
+    if (state.progress.length > 0 && isStartFromSavedState) {
       setIsReady(true);
     } else {
       setInitializing(true);
-      const fullTextEn = data.textEn;
-      const isNeedToTranslate = targetLanguage !== 'en';
-      const fullText = isNeedToTranslate
-        ? await translateTextToTargetLanguageFromEng(fullTextEn)
-        : fullTextEn;
 
-      const sentences = splitTextIntoSentences(fullText);
-      const translatedSentencesToNative = await translateSentences(sentences);
+      const preparedSentences = state.sentences.length
+        ? { sentences: state.sentences, sentencesTranslates: state.sentencesTranslates }
+        : await prepareSentences();
 
       setState({
         progress: '',
-        sentences: sentences,
-        sentencesTranslates: translatedSentencesToNative,
+        sentences: preparedSentences.sentences,
+        sentencesTranslates: preparedSentences.sentencesTranslates,
         isCompleted: false,
         allWords: [],
         badWords: [],
         translationWords: [],
       });
-      await cacheAllAudioWords(sentences);
       setIsReady(true);
       setInitializing(false);
     }
@@ -216,19 +236,6 @@ export const StoryModal = ({
 
   const cacheAudioWords = async (words: string[]) => {
     audioCache.cacheAudioWords(words, speakOptionsMain);
-  };
-
-  const cacheAllAudioWords = async (sentences: string[]) => {
-    // @ts-expect-error - for debug purposes
-    const isCacheEnabled = !!window.isCacheAll;
-    if (!isCacheEnabled) return;
-
-    console.log('Start caching all words');
-
-    const allWords = uniq(sentences.map((sentence) => splitWords(sentence)).flat());
-    console.log('allWords', allWords);
-    await audioCache.cacheAudioWords(allWords, speakOptionsMain);
-    console.log('CACHE IS DONE');
   };
 
   const playAudio = (text: string, alternativeVoice: boolean) => {

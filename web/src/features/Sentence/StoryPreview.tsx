@@ -29,12 +29,15 @@ export const StoryPreview = ({
 
   const views = storiesViewsStats?.viewsUserIds.length || 0;
 
+  const targetLanguage = settings.languageCode || 'en';
+  const nativeLanguage = settings.userSettings?.nativeLanguageCode || 'en';
+
   const storyHash = useMemo(() => {
     if (story) {
-      return getStoryHash(story, settings.languageCode || 'en');
+      return getStoryHash(story, targetLanguage, nativeLanguage);
     }
     return null;
-  }, [story, settings.languageCode]);
+  }, [story, targetLanguage, nativeLanguage]);
 
   const docRef = db.documents.storyReadProgress(auth.uid, storyHash || '');
 

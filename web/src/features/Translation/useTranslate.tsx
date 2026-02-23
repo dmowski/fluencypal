@@ -121,7 +121,6 @@ export const useTranslate = () => {
       sourceLanguage: props.sourceLanguage || null,
       targetLanguage: finalTargetLanguage,
     });
-    console.log('response translateBatchText', response);
 
     return response.translatedTexts;
   };
