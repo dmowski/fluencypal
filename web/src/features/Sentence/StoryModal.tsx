@@ -242,9 +242,11 @@ export const StoryModal = ({
     const options = speakOptionsMain;
     const cleanWord = clearWordForAudio(text);
     if (!cleanWord) return;
+
+    const isFounder = auth.isFounder;
     const audioHash = getAudioHash(cleanWord, options.instructions || '', options.voice || '');
     console.log(audioHash, cleanWord);
-    audio.speak(cleanWord, options);
+    audio.speak(cleanWord, { ...options, showDebugInfo: isFounder });
   };
 
   const onSentenceComplete = async () => {

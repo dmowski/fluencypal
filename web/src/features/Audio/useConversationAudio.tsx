@@ -12,6 +12,7 @@ import React, {
 import { AiVoice } from '@/common/ai';
 import { isSilentAudio } from './isSilentAudio';
 import { isDev } from '../Analytics/isDev';
+import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 
 /**
  * What this gives you:
@@ -36,6 +37,7 @@ export type SpeakOptions = {
   audioUrl?: string;
   cache?: boolean;
   regenerateCache?: boolean;
+  showDebugInfo?: boolean;
 };
 
 interface ConversationAudioContextType {
@@ -490,6 +492,25 @@ function useProvideConversationAudio(): ConversationAudioContextType {
 
   const speak = useCallback(async (text: string, opts: SpeakOptions) => {
     const url = generateTtsStreamUrl(text, opts);
+
+    const isShowDebugInfo = opts.showDebugInfo;
+    if (isShowDebugInfo) {
+      console.log('isShowDebugInfo', isShowDebugInfo);
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Failed to fetch audio for debug info');
+        }
+
+        const buffer = await response.arrayBuffer();
+        const silent = await isSilentAudio(buffer);
+        showDebugInfoBadgeOnTopWindow(
+          `Debug TTS Info | Silent: ${silent} | Text: "${text}" | URL: ${url}`,
+        );
+      } catch (error) {
+        showDebugInfoBadgeOnTopWindow('Error fetching audio for debug info: ' + error);
+      }
+    }
 
     await playerRef.current!.playStreamUrl(url);
   }, []);
