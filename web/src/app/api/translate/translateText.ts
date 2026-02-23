@@ -1,5 +1,7 @@
 import { NativeLangCode } from '@/libs/language/type';
 import { TranslationServiceClient } from '@google-cloud/translate';
+import { TranslateRequest, TranslateResponse } from './types';
+import { getTranslateCache, saveTranslateCache } from './cache';
 
 const getTranslateClient = () => {
   const serviceAccount = JSON.parse(process.env.GOOGLE_TRANSlATE_SERVICE_ACCOUNT_CREDS as string);
@@ -46,4 +48,25 @@ export const translateText = async ({
     console.error('Translation error:', error);
     return 'Translation error';
   }
+};
+
+export const getTranslatedResponse = async (data: TranslateRequest): Promise<TranslateResponse> => {
+  const cache = await getTranslateCache(data);
+  if (cache) {
+    return cache;
+  }
+
+  const translatedText = await translateText({
+    text: data.text,
+    sourceLanguage: data.sourceLanguage,
+    targetLanguage: data.targetLanguage,
+  });
+
+  const response: TranslateResponse = {
+    translatedText: translatedText,
+    sourceLanguage: data.sourceLanguage,
+    targetLanguage: data.targetLanguage,
+  };
+  await saveTranslateCache(data, response);
+  return response;
 };
