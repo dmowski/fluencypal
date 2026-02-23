@@ -55,8 +55,6 @@ function useProvideAudioCache(): AudioCacheContextType {
   const cacheAudioWords = async (words: string[], options: SpeakOptions) => {
     const uniqueWords = uniq(words.map((word) => clearWordForAudio(word) || '').filter(Boolean));
 
-    console.log('uniqueWords', uniqueWords);
-
     const wordsToCache = uniqueWords.filter((word) => !cachedWordStateMap.current[word]);
 
     if (wordsToCache.length === 0) {
