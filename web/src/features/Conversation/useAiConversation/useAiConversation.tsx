@@ -140,11 +140,18 @@ function useProvideAiConversation(): AiConversationContextType {
   }, []);
 
   const onOpen = async () => {
-    await sleep(300);
-    communicatorRef.current?.triggerAiResponse();
-    await sleep(1000);
     setIsInitializing('');
     setIsStarted(true);
+
+    await sleep(300);
+
+    const isRealtime = currentMode === 'talk' || currentMode === 'role-play';
+    if (isRealtime) {
+      console.log('Sleep before triggering');
+      await sleep(1300);
+    }
+    communicatorRef.current?.triggerAiResponse();
+    await sleep(1000);
   };
 
   const toggleConversationMode = (mode: ConversationMode) => {
