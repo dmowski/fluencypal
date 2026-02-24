@@ -59,6 +59,10 @@ interface ConversationAudioContextType {
   ) => Promise<boolean>;
 
   setTextAsPotentialSpeak: (text: string, opts: SpeakOptions) => Promise<void>;
+
+  setTextAsPotentialSpeak2: (text: string, opts: SpeakOptions) => Promise<void>;
+  playPotentialSpeakUrl2: (text: string, opts: SpeakOptions) => Promise<void>;
+
   /** Stop everything immediately and clear queue. */
   interrupt: () => void;
 
@@ -96,6 +100,13 @@ function toMusicProxyUrl(url: string): string {
   return `/api/proxyMedia?url=${encodeURIComponent(url)}`;
 }
 
+interface CachedAudio {
+  el: HTMLAudioElement;
+  node: MediaElementAudioSourceNode;
+  url: string;
+  playAndRemove: () => void;
+}
+
 class AudioQueuePlayer {
   private ctx: AudioContext | null = null;
   private masterGain: GainNode | null = null;
@@ -114,6 +125,12 @@ class AudioQueuePlayer {
   private musicBaseVolume = 1;
   private musicEnabled = true;
   private currentMusicUrl: string | null = null;
+
+  private cachedSpeech: Record<
+    // url
+    string,
+    CachedAudio
+  > = {};
 
   // Track real playing state based on audio events
   private _speechPlaying = false;
@@ -210,6 +227,52 @@ class AudioQueuePlayer {
 
   getVolume(): number {
     return this.speechVolume;
+  }
+
+  async setTextAsPotentialSpeak2(url: string): Promise<void> {
+    if (this.cachedSpeech[url]) {
+      return;
+    }
+
+    // create audio element and set to map
+    // xxxx
+    this.ensureUnlocked();
+
+    const el = new Audio();
+    el.preload = 'auto';
+    const speechNode = this.ctx!.createMediaElementSource(el);
+    speechNode.connect(this.speechGain!);
+    const speechEl = el;
+    const ctx = this.ctx!;
+
+    if (ctx.state === 'suspended') await ctx.resume();
+
+    el.pause();
+    el.currentTime = 0;
+    el.src = url;
+    el.load();
+
+    const cachedAudio: CachedAudio = {
+      url: url,
+      el: speechEl,
+      node: speechNode,
+      playAndRemove: () => {
+        speechEl.play().catch(() => {});
+        speechEl.addEventListener('ended', () => {
+          delete this.cachedSpeech[url];
+        });
+      },
+    };
+    this.cachedSpeech[url] = cachedAudio;
+  }
+
+  async playPotentialSpeakUrl2(url: string): Promise<void> {
+    const cached = this.cachedSpeech[url];
+    if (cached) {
+      cached.playAndRemove();
+    } else {
+      await this.playStreamUrl(url);
+    }
   }
 
   async setTextAsPotentialSpeak(url: string): Promise<void> {
@@ -504,6 +567,16 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     await playerRef.current!.setTextAsPotentialSpeak(url);
   }, []);
 
+  const setTextAsPotentialSpeak2 = useCallback(async (text: string, opts: SpeakOptions) => {
+    const url = generateTtsStreamUrl(text, opts);
+    await playerRef.current!.setTextAsPotentialSpeak2(url);
+  }, []);
+
+  const playPotentialSpeakUrl2 = useCallback(async (text: string, opts: SpeakOptions) => {
+    const url = generateTtsStreamUrl(text, opts);
+    await playerRef.current!.playPotentialSpeakUrl2(url);
+  }, []);
+
   const initCache = useCallback(
     async (
       text: string,
@@ -671,6 +744,8 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       isPlaying,
       initCache,
       setTextAsPotentialSpeak,
+      setTextAsPotentialSpeak2,
+      playPotentialSpeakUrl2,
     }),
     [
       initAudio,
@@ -685,6 +760,8 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       isPlaying,
       initCache,
       setTextAsPotentialSpeak,
+      setTextAsPotentialSpeak2,
+      playPotentialSpeakUrl2,
     ],
   );
 }

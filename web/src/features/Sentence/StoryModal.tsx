@@ -234,6 +234,19 @@ export const StoryModal = ({
   );
 
   const cacheAudioWords = async (words: string[]) => {
+    console.log('cacheAudioWords', words);
+
+    for (const word of words) {
+      const cleanWord = clearWordForAudio(word);
+      if (!cleanWord) continue;
+
+      await audio.setTextAsPotentialSpeak2(cleanWord, speakOptionsMain);
+      await sleep(200);
+      if (auth.isFounder) {
+        showDebugInfoBadgeOnTopWindow('Done with ' + cleanWord);
+      }
+    }
+
     /*
     await audioCache.cacheAudioWords(words, speakOptionsMain);
     if (auth.isFounder) {
@@ -244,13 +257,11 @@ export const StoryModal = ({
     */
   };
 
-  const playAudio = (text: string, alternativeVoice: boolean) => {
+  const playAudio = async (text: string, alternativeVoice: boolean) => {
     const options = speakOptionsMain;
     const cleanWord = clearWordForAudio(text);
     if (!cleanWord) return;
 
-    //const audioHash = getAudioHash(cleanWord, options.instructions || '', options.voice || '');
-    //console.log(audioHash, cleanWord);
     if (auth.isFounder) {
       /*
       showDebugInfoBadgeOnTopWindow(
@@ -258,7 +269,9 @@ export const StoryModal = ({
       );
       */
     }
-    audio.speak(cleanWord, options);
+    //audio.speak(cleanWord, options);
+    //await audio.setTextAsPotentialSpeak2(cleanWord, speakOptionsMain);
+    await audio.playPotentialSpeakUrl2(cleanWord, speakOptionsMain);
   };
 
   const onSentenceComplete = async () => {
@@ -307,7 +320,8 @@ export const StoryModal = ({
     if (auth.isFounder) {
       showDebugInfoBadgeOnTopWindow('Correct word is available: ' + cleanWord);
     }
-    await audio.setTextAsPotentialSpeak(cleanWord, speakOptionsMain);
+
+    await audio.setTextAsPotentialSpeak2(cleanWord, speakOptionsMain);
   };
 
   const attentionWords = uniq([...state.badWords, ...state.translationWords]);
