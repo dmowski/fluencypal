@@ -243,7 +243,7 @@ export const Message = ({
               access.showPaymentModal();
             }}
           >
-            <AudioPlayIcon text={text} voice={voice} instructions={voiceInfo.voiceInstruction} />
+            <AudioPlayIcon text={text} />
           </Stack>
 
           {isAbleToGenerateHelpAnswer && !proposedAnswer && (
@@ -309,11 +309,7 @@ export const Message = ({
               }}
             >
               <Markdown>{proposedAnswer}</Markdown>
-              <AudioPlayIcon
-                text={proposedAnswer}
-                voice={voice}
-                instructions={voiceInfo.voiceInstruction}
-              />
+              <AudioPlayIcon text={proposedAnswer} />
             </Stack>
             {proposedAnswerTranslation && <Divider />}
             {proposedAnswerTranslation && (

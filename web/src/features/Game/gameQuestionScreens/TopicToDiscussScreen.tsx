@@ -322,11 +322,7 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
                   >
                     <Languages size={'16px'} color="#eee" />
                   </IconButton>
-                  <AudioPlayIcon
-                    text={answerCorrectedMessage}
-                    instructions="Calm and clear"
-                    voice={'shimmer'}
-                  />
+                  <AudioPlayIcon text={answerCorrectedMessage} />
                 </Stack>
               )}
 

@@ -10,20 +10,21 @@ import { clearWordForAudio } from './clearWord';
 
 export interface AudioPlayIconProps {
   text: string;
-  voice: AiVoice;
-  instructions: string;
+  customVoice?: AiVoice;
+  customInstructions?: string;
   borderColor?: string;
   onChangeState?: (isPlaying: boolean) => void;
 }
 
 export const AudioPlayIcon = ({
   text,
+  customVoice,
+  customInstructions,
   borderColor,
-  instructions,
-  voice,
   onChangeState,
 }: AudioPlayIconProps) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [countOfClick, setCountOfClick] = useState(0);
 
   const settings = useSettings();
 
@@ -49,6 +50,7 @@ export const AudioPlayIcon = ({
     }
 
     setCountOfAttempts(countOfAttempts + 1);
+    setCountOfClick(countOfClick + 1);
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -59,12 +61,30 @@ export const AudioPlayIcon = ({
 
     let processedText: string | null = text.trim();
 
-    const isSingleWord = !processedText.includes(' ');
-    if (isSingleWord) {
-      processedText = clearWordForAudio(processedText);
-    }
-    if (processedText) {
-      await audio.speak(processedText, { ...speakOptionsMain, cache: isSingleWord });
+    if (customInstructions && customVoice) {
+      await audio.speak(processedText, {
+        voice: customVoice,
+        instructions: customInstructions,
+      });
+    } else {
+      const isSingleWord = !processedText.includes(' ');
+      if (isSingleWord) {
+        processedText = clearWordForAudio(processedText);
+      }
+      if (processedText) {
+        const isNeedToRegenerate = countOfClick >= 2 && isSingleWord;
+        if (isNeedToRegenerate) {
+          console.log(
+            `Regenerating audio for "${processedText}" after ${countOfClick} clicks and ${countOfAttempts} attempts`,
+          );
+          setCountOfAttempts(0);
+        }
+        await audio.speak(processedText, {
+          ...speakOptionsMain,
+          cache: isSingleWord,
+          regenerateCache: isNeedToRegenerate,
+        });
+      }
     }
     setIsPlaying(false);
     onChangeState?.(false);

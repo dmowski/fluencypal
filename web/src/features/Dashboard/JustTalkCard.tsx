@@ -10,10 +10,8 @@ import { useState } from 'react';
 import { useSettings } from '../Settings/useSettings';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
-import { AiAvatarVideo } from '../Conversation/CallMode/AiAvatarVideo';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { Avatar } from '../Game/Avatar';
-import dayjs from 'dayjs';
 
 export const JustTalkCard = () => {
   const { i18n } = useLingui();
@@ -182,11 +180,7 @@ export const JustTalkCard = () => {
             {footnotePhrase}
           </Typography>
         </Stack>
-        <AudioPlayIcon
-          text={footnotePhrase}
-          voice={voiceName}
-          instructions={aiAvatar.voiceInstruction}
-        />
+        <AudioPlayIcon text={footnotePhrase} />
       </Stack>
     </Stack>
   );

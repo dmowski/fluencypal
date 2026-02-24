@@ -22,7 +22,7 @@ export const CorrectedActions = ({
         gap: '2px',
       }}
     >
-      <AudioPlayIcon text={correctedMessage} instructions="Calm and clear" voice={'shimmer'} />
+      <AudioPlayIcon text={correctedMessage} />
       <IconButton onClick={onTranslate} disabled={isTranslating}>
         <Languages size={'16px'} style={{ opacity: 0.8 }} />
       </IconButton>

@@ -140,11 +140,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
                 <Languages size={'16px'} color="#eee" />
               </IconButton>
             )}
-            <AudioPlayIcon
-              text={question.question}
-              instructions="Calm and clear"
-              voice={'shimmer'}
-            />
+            <AudioPlayIcon text={question.question} />
           </Typography>
           <Stack
             sx={{

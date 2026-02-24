@@ -214,11 +214,7 @@ export const useTranslate = () => {
                   {translatedText?.source ||
                     (isTranslating ? i18n._('Loading...') : i18n._('No text to translate'))}
                 </Markdown>
-                <AudioPlayIcon
-                  text={translatedText?.source || ''}
-                  instructions={`Calm and clear. Use a ${fullLanguagesMap[learningLanguage] || 'unknown'} language.`}
-                  voice={'shimmer'}
-                />
+                <AudioPlayIcon text={translatedText?.source || ''} />
               </Stack>
 
               <ArrowDown size={'18px'} color="rgba(180, 180, 180, 1)" />
