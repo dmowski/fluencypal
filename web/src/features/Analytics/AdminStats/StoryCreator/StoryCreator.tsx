@@ -132,11 +132,10 @@ export const StoryCreator = () => {
     setIsCaching(true);
 
     const storiesRaw = storiesData || [];
-    const stories = storiesRaw
-      .sort((a, b) => {
-        return b.updatedAtIso.localeCompare(a.updatedAtIso);
-      })
-      .filter((story, index) => index <= 2);
+    const stories = storiesRaw.sort((a, b) => {
+      return b.updatedAtIso.localeCompare(a.updatedAtIso);
+    });
+    //.filter((story, index) => index <= 2);
 
     const isNeedToTranslate = targetLanguage !== 'en';
 
@@ -160,6 +159,8 @@ export const StoryCreator = () => {
     const allWords = uniq(allStoriesTextSentences.map((sentence) => splitWords(sentence)).flat());
 
     const uniqueWords = uniq(allWords.map((word) => clearWordForAudio(word) || '').filter(Boolean));
+    console.log('uniqueWords');
+    console.log(uniqueWords);
 
     await audioCache.cacheAudioWords(uniqueWords, speakOptionsMain);
 
