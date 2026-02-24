@@ -10,9 +10,11 @@ export const useConversationUsage = (setIsNeedToResetNow: (value: boolean) => vo
 
   const auth = useAuth();
 
+  /*
   useEffect(() => {
     if (usageInfo && auth.isFounder) showDebugInfoBadgeOnTopWindow(usageInfo);
   }, [usageInfo, auth.isFounder]);
+  */
 
   const onAddUsage = (usageLog: UsageLog) => {
     // xxx

@@ -28,11 +28,39 @@ export const JustTalkCard = () => {
   const startJustTalk = async () => {
     await audio.initAudio();
 
+    // ask microphone permission on call start
+    try {
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch (e) {
+      console.error('Microphone permission denied', e);
+      alert(
+        i18n._(
+          'Microphone permission is required to start the call. Please allow microphone access and try again.',
+        ),
+      );
+      setIsCallStarting(false);
+      return;
+    }
+
+    // ask video camera permission on call start
+    try {
+      await navigator.mediaDevices.getUserMedia({ video: true });
+    } catch (e) {
+      console.error('Video camera permission denied', e);
+      alert(
+        i18n._(
+          'Video camera permission is required to start the call. Please allow video camera access and try again.',
+        ),
+      );
+      setIsCallStarting(false);
+      return;
+    }
+
     try {
       audio.music.setVolume(0.6);
-      // audio.music.play('/audio/call_start_01.mp3');
+      audio.music.play('/audio/call_start_01.mp3');
       setTimeout(() => {
-        // audio.music.stop();
+        audio.music.stop();
       }, 10_000);
     } catch (e) {
       console.error('Error playing call start music', e);
