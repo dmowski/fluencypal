@@ -146,7 +146,9 @@ function useProvideAiConversation(): AiConversationContextType {
       console.log('Sleep before triggering');
       setIsInitializing('');
       setIsStarted(true);
-      await sleep(1300);
+      await sleep(1000);
+      //audio.music.stop();
+      await sleep(600);
     }
 
     communicatorRef.current?.triggerAiResponse();
@@ -488,6 +490,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       const initConversation = isUseRealtime ? initWebRtcConversation : initTextConversation;
 
       const model = MODELS.REALTIME_CONVERSATION;
+
+      // audio.music.stop();
 
       const conversation = await initConversation({
         ...conversationConfig,

@@ -13,6 +13,7 @@ import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { Avatar } from '../Game/Avatar';
 import { getMediaAudioStreams, getMediaVideoStreams } from '../webCam/mediaStream';
+import { sleep } from '@/libs/sleep';
 
 export const JustTalkCard = () => {
   const { i18n } = useLingui();
@@ -31,40 +32,38 @@ export const JustTalkCard = () => {
     setIsCallStarting(true);
 
     try {
+      await sleep(100);
+      //audio.music.setVolume(0.6);
+      await sleep(100);
+      //audio.music.play('/audio/call_start_01.mp3');
+
+      setTimeout(() => {
+        //audio.music.stop();
+      }, 10_000);
+    } catch (e) {
+      console.error('Error playing call start music', e);
+    }
+    /*
+    try {
       const mediaStream = await getMediaAudioStreams();
       if (!mediaStream) {
         throw new Error('Could not access microphone');
       }
 
+      await sleep(100);
       await getMediaVideoStreams();
     } catch (e) {
-      console.error('Microphone permission denied', e);
+      console.error('Microphone permission denied. error', e);
       alert(
         i18n._(
           'Microphone permission is required to start the call. Please allow microphone access and try again.',
         ),
       );
-
-      // hard refresh the page to reset any inconsistent state caused by denied permission
-
       window.location.reload();
-
       setIsCallStarting(false);
       return;
     }
-
-    /*
-    try {
-      audio.music.setVolume(0.6);
-      audio.music.play('/audio/call_start_01.mp3');
-      setTimeout(() => {
-        audio.music.stop();
-      }, 10_000);
-    } catch (e) {
-      console.error('Error playing call start music', e);
-    }
-      */
-
+*/
     await settings.setConversationMode('call');
     conversation.startConversation({
       conversationMode: 'call',
