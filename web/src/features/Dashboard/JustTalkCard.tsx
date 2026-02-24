@@ -44,6 +44,11 @@ export const JustTalkCard = () => {
           'Microphone permission is required to start the call. Please allow microphone access and try again.',
         ),
       );
+
+      // hard refresh the page to reset any inconsistent state caused by denied permission
+
+      window.location.reload();
+
       setIsCallStarting(false);
       return;
     }
