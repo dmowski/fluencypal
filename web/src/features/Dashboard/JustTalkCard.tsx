@@ -30,9 +30,9 @@ export const JustTalkCard = () => {
 
     try {
       audio.music.setVolume(0.6);
-      //audio.music.play('/audio/call_start_01.mp3');
+      // audio.music.play('/audio/call_start_01.mp3');
       setTimeout(() => {
-        audio.music.stop();
+        // audio.music.stop();
       }, 10_000);
     } catch (e) {
       console.error('Error playing call start music', e);
