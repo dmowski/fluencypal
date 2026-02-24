@@ -4,7 +4,7 @@ export const getMediaVideoStreams = async (): Promise<MediaStream | null> => {
     if (streamFromWindow && streamFromWindow.active) {
       return streamFromWindow;
     }
-    console.log('CREATE A NEW STREAM');
+    console.log('CREATE A NEW VIDEO STREAM');
     const mediaStream = await navigator.mediaDevices.getUserMedia({
       video: true,
     });

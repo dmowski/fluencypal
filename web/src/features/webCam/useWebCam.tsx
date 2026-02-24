@@ -38,7 +38,7 @@ function useProvideWebCam(): WebCamContextType {
       const mediaStream = await getMediaVideoStreams();
 
       stream.current = mediaStream;
-      //await sleep(9000);
+      await sleep(300);
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream;
         await videoRef.current.play();
@@ -103,8 +103,8 @@ function useProvideWebCam(): WebCamContextType {
 
   const disconnect = () => {
     if (stream.current) {
+      console.log('Disconnecting webcam stream');
       closeVideoMediaStream();
-
       stream.current = null;
     }
 
