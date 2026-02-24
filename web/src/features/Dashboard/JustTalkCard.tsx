@@ -26,7 +26,8 @@ export const JustTalkCard = () => {
   const audio = useConversationAudio();
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
   const startJustTalk = async () => {
-    // ask microphone permission on call start
+    await audio.initAudio();
+
     try {
       await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
     } catch (e) {
@@ -39,8 +40,6 @@ export const JustTalkCard = () => {
       setIsCallStarting(false);
       return;
     }
-
-    await audio.initAudio();
 
     try {
       audio.music.setVolume(0.6);
