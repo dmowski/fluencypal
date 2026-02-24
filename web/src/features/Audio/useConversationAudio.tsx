@@ -440,7 +440,11 @@ class AudioQueuePlayer {
     const el = this.musicEl;
     if (!el) return;
     this._musicPlaying = false;
+    if (!this.currentMusicUrl) {
+      return;
+    }
     this.currentMusicUrl = null;
+
     try {
       el.pause();
       el.currentTime = 0;
