@@ -188,7 +188,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
     };
     const timeout = setTimeout(() => {
       scrollToBottom();
-    }, 500);
+    }, 2);
 
     return () => {
       clearTimeout(timeout);

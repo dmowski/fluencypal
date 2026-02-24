@@ -149,6 +149,11 @@ export const Message = ({
         width: '100%',
         borderRadius: '8px',
         position: 'relative',
+        //border: isBot ? '1px solid red' : 'none',
+        minHeight: isBot ? '180px' : '40px',
+        '@media (max-width: 600px)': {
+          minHeight: isBot ? '280px' : '60px',
+        },
       }}
     >
       {isMessageInProgress && (
