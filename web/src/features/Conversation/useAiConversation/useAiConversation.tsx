@@ -147,7 +147,7 @@ function useProvideAiConversation(): AiConversationContextType {
       setIsInitializing('');
       setIsStarted(true);
       await sleep(1000);
-      //audio.music.stop();
+      audio.music.stop();
       await sleep(600);
     }
 
