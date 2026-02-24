@@ -48,8 +48,16 @@ export async function POST(request: Request) {
 
     return Response.json(response);
   } catch (error) {
+    let userId = 'unknown';
+    try {
+      userId = (await validateAuthToken(request)).uid;
+    } catch (e) {
+      console.error('Failed to validate auth token while handling error in addUsageLog', e);
+    }
+
     sentSupportTelegramMessage({
       message: `Error in addUsageLog: ${error}`,
+      userId: userId,
     });
     throw error;
   }
