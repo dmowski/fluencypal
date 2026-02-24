@@ -323,6 +323,8 @@ Ask the student to describe their day and try to cover new topics that used didn
 Don't focus solely on one topic. Try to cover a variety of topics (Example\n${potentialTopics}).
 Use ${fullLanguageName} language in conversation.
   `;
+        audio.music.stop();
+
         setIsInitializing(`Starting conversation...`);
       }
 
