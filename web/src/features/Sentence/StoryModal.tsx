@@ -243,7 +243,7 @@ export const StoryModal = ({
       await audio.setTextAsPotentialSpeak2(cleanWord, speakOptionsMain);
       await sleep(200);
       if (auth.isFounder) {
-        showDebugInfoBadgeOnTopWindow('Done with ' + cleanWord);
+        //showDebugInfoBadgeOnTopWindow('Done with ' + cleanWord);
       }
     }
 
@@ -318,7 +318,7 @@ export const StoryModal = ({
     if (!cleanWord) return;
 
     if (auth.isFounder) {
-      showDebugInfoBadgeOnTopWindow('Correct word is available: ' + cleanWord);
+      // showDebugInfoBadgeOnTopWindow('Correct word is available: ' + cleanWord);
     }
 
     await audio.setTextAsPotentialSpeak2(cleanWord, speakOptionsMain);

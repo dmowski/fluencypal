@@ -131,7 +131,13 @@ export const StoryCreator = () => {
   const cacheAllAudio = async () => {
     setIsCaching(true);
 
-    const stories = storiesData || [];
+    const storiesRaw = storiesData || [];
+    const stories = storiesRaw
+      .sort((a, b) => {
+        return b.updatedAtIso.localeCompare(a.updatedAtIso);
+      })
+      .filter((story, index) => index <= 2);
+
     const isNeedToTranslate = targetLanguage !== 'en';
 
     const storiesTexts = !isNeedToTranslate
