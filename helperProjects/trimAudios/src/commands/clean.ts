@@ -3,8 +3,9 @@ import { resolve } from "node:path";
 
 import { inspectAudioSilence } from "../core/ffmpeg.js";
 import { ffmpegSilenceCheckConfig } from "../core/ffmpegConfig.js";
-import { getBucket } from "../core/firebase.js";
+import { getBucket, getDB } from "../core/firebase.js";
 import { TTS_AUDIO_PREFIX } from "./config.js";
+import fs from "fs";
 
 export async function runClean(): Promise<void> {
   try {
@@ -12,6 +13,8 @@ export async function runClean(): Promise<void> {
     const entries = await readdir(inputDir, { withFileTypes: true });
     const processedDir = resolve(process.cwd(), ffmpegSilenceCheckConfig.outputDirectoryName);
     const bucket = getBucket();
+    const db = getDB();
+    const cacheRef = db.collection("audioCache");
 
     const mp3Files = entries
       .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".mp3"))
@@ -42,10 +45,35 @@ export async function runClean(): Promise<void> {
         console.log(`[clean] Empty file: ${destination}`);
         try {
           const result = await bucket.file(destination).delete();
-          console.log("Result of deletion", result);
         } catch (error: unknown) {
           const message = error instanceof Error ? error.message : String(error);
           console.error(`[clean] Failed to delete file: ${destination}`);
+          console.error(`[clean] reason: ${message}`);
+        }
+
+        const fileNameWithoutExt = fileName.slice(0, -4);
+        const doc = cacheRef.doc(fileNameWithoutExt);
+        try {
+          await doc.delete();
+        } catch (error: unknown) {
+          const message = error instanceof Error ? error.message : String(error);
+          console.error(`[clean] Failed to delete cache document for file: ${fileNameWithoutExt}`);
+          console.error(`[clean] reason: ${message}`);
+        }
+
+        // remove from loadedData and processedData folders
+        const loadedDataPath = resolve(process.cwd(), "loadedData", fileName);
+        const processedDataPath = resolve(process.cwd(), "processedData", fileName);
+        const logPath = resolve(processedDir, `${fileName}.log`);
+        try {
+          await Promise.all([
+            fs.promises.rm(loadedDataPath, { force: true }),
+            fs.promises.rm(processedDataPath, { force: true }),
+            fs.promises.rm(logPath, { force: true }),
+          ]);
+        } catch (error: unknown) {
+          const message = error instanceof Error ? error.message : String(error);
+          console.error(`[clean] Failed to remove local files for: ${fileName}`);
           console.error(`[clean] reason: ${message}`);
         }
       }
