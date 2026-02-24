@@ -29,8 +29,8 @@ export const JustTalkCard = () => {
     await audio.initAudio();
 
     try {
-      audio.music.play('/audio/call_start_01.mp3');
       audio.music.setVolume(0.6);
+      //audio.music.play('/audio/call_start_01.mp3');
       setTimeout(() => {
         audio.music.stop();
       }, 10_000);
