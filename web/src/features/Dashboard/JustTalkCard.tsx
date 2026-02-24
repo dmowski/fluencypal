@@ -26,11 +26,9 @@ export const JustTalkCard = () => {
   const audio = useConversationAudio();
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
   const startJustTalk = async () => {
-    await audio.initAudio();
-
     // ask microphone permission on call start
     try {
-      await navigator.mediaDevices.getUserMedia({ audio: true });
+      await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
     } catch (e) {
       console.error('Microphone permission denied', e);
       alert(
@@ -42,19 +40,7 @@ export const JustTalkCard = () => {
       return;
     }
 
-    // ask video camera permission on call start
-    try {
-      await navigator.mediaDevices.getUserMedia({ video: true });
-    } catch (e) {
-      console.error('Video camera permission denied', e);
-      alert(
-        i18n._(
-          'Video camera permission is required to start the call. Please allow video camera access and try again.',
-        ),
-      );
-      setIsCallStarting(false);
-      return;
-    }
+    await audio.initAudio();
 
     try {
       audio.music.setVolume(0.6);
