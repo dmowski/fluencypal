@@ -44,7 +44,7 @@ export async function GET(req: Request) {
     console.log('REGENERATING ⚠️');
   }
 
-  if (isUseCache && !isRegenerate) {
+  if (!isRegenerate) {
     const cachedAudio = await getAudioFromStorage(audioId);
     if (cachedAudio) {
       console.log('From cache', input);

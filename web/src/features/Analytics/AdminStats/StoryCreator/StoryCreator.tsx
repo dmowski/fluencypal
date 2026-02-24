@@ -16,7 +16,7 @@ import { splitWords } from '@/features/Sentence/TextConstructor/textConstructor.
 import { useAudioCache } from '@/features/Audio/useAudioCache';
 import { SpeakOptions } from '@/features/Audio/useConversationAudio';
 import { clearWordForAudio } from '@/features/Audio/clearWord';
-import { getVoiceSpeakOptionsForStory } from '@/features/Sentence/getVoiceSpeakOptionsForStory';
+import { getVoiceOverSpeakOptions } from '@/features/Audio/getVoiceOverSpeakOptions';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useTranslate } from '@/features/Translation/useTranslate';
 
@@ -111,7 +111,7 @@ export const StoryCreator = () => {
   const settings = useSettings();
 
   const speakOptionsMain: SpeakOptions = useMemo(
-    () => getVoiceSpeakOptionsForStory(settings.userSettings),
+    () => getVoiceOverSpeakOptions(settings.userSettings),
     [settings.userSettings],
   );
 

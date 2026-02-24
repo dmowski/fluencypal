@@ -21,10 +21,8 @@ import { defaultStoryState, numberOfOptionsMap, pointsToWinMap } from './data';
 import { getStoryHash } from './getStoryHash';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { useAudioCache } from '../Audio/useAudioCache';
-import { splitWords } from './TextConstructor/textConstructor.utils';
 import { clearWordForAudio } from '../Audio/clearWord';
-import { getAudioHash } from '../Audio/audioHash';
-import { getVoiceSpeakOptionsForStory } from './getVoiceSpeakOptionsForStory';
+import { getVoiceOverSpeakOptions } from '../Audio/getVoiceOverSpeakOptions';
 import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 
 export const StoryModal = ({
@@ -231,7 +229,7 @@ export const StoryModal = ({
   );
 
   const speakOptionsMain: SpeakOptions = useMemo(
-    () => getVoiceSpeakOptionsForStory(settings.userSettings),
+    () => getVoiceOverSpeakOptions(settings.userSettings),
     [settings.userSettings],
   );
 

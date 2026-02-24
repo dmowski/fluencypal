@@ -1,9 +1,12 @@
 'use client';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { IconButton } from '@mui/material';
 import { Loader, Pause, Volume2 } from 'lucide-react';
-import { useConversationAudio } from './useConversationAudio';
+import { SpeakOptions, useConversationAudio } from './useConversationAudio';
 import { AiVoice } from '@/common/ai';
+import { useSettings } from '../Settings/useSettings';
+import { getVoiceOverSpeakOptions } from './getVoiceOverSpeakOptions';
+import { clearWordForAudio } from './clearWord';
 
 export interface AudioPlayIconProps {
   text: string;
@@ -21,6 +24,13 @@ export const AudioPlayIcon = ({
   onChangeState,
 }: AudioPlayIconProps) => {
   const [isLoading, setIsLoading] = useState(false);
+
+  const settings = useSettings();
+
+  const speakOptionsMain: SpeakOptions = useMemo(
+    () => ({ ...getVoiceOverSpeakOptions(settings.userSettings), cache: false }),
+    [settings.userSettings],
+  );
 
   const audio = useConversationAudio();
 
@@ -46,7 +56,16 @@ export const AudioPlayIcon = ({
 
     setIsPlaying(true);
     onChangeState?.(true);
-    await audio.speak(text, { voice, instructions });
+
+    let processedText: string | null = text.trim();
+
+    const isSingleWord = !processedText.includes(' ');
+    if (isSingleWord) {
+      processedText = clearWordForAudio(processedText);
+    }
+    if (processedText) {
+      await audio.speak(processedText, speakOptionsMain);
+    }
     setIsPlaying(false);
     onChangeState?.(false);
   };

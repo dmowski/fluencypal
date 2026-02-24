@@ -1,8 +1,8 @@
 import { UserSettings } from '@/common/userSettings';
-import { SpeakOptions } from '../Audio/useConversationAudio';
+import { SpeakOptions } from './useConversationAudio';
 import { languageInstructionForVoice } from '../Lang/lang';
 
-export const getVoiceSpeakOptionsForStory = (userSettings?: UserSettings | null) => {
+export const getVoiceOverSpeakOptions = (userSettings?: UserSettings | null) => {
   const languageCode = userSettings?.languageCode || 'en';
   const userTargetLanguage = languageInstructionForVoice[languageCode || 'en'];
 
