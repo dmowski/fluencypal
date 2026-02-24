@@ -35,7 +35,6 @@ export const AudioPlayIcon = ({
 
   const audio = useConversationAudio();
 
-  const [countOfAttempts, setCountOfAttempts] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const togglePlay = async () => {
@@ -49,7 +48,6 @@ export const AudioPlayIcon = ({
       return;
     }
 
-    setCountOfAttempts(countOfAttempts + 1);
     setCountOfClick(countOfClick + 1);
     setIsLoading(true);
     setTimeout(() => {
@@ -74,10 +72,8 @@ export const AudioPlayIcon = ({
       if (processedText) {
         const isNeedToRegenerate = countOfClick >= 2 && isSingleWord;
         if (isNeedToRegenerate) {
-          console.log(
-            `Regenerating audio for "${processedText}" after ${countOfClick} clicks and ${countOfAttempts} attempts`,
-          );
-          setCountOfAttempts(0);
+          console.log(`Regenerating audio for "${processedText}" after ${countOfClick} clicks`);
+          setCountOfClick(0);
         }
         await audio.speak(processedText, {
           ...speakOptionsMain,
