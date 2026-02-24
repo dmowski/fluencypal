@@ -15,7 +15,7 @@ interface PracticePageTestProps {
   lang: SupportedLanguage;
 }
 
-const startTestMessages: ConversationMessage[] = [];
+let startTestMessages: ConversationMessage[] = [];
 
 for (let i = 0; i < 7; i++) {
   startTestMessages.push({

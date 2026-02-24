@@ -44,6 +44,7 @@ export const Messages = ({
           width: '100%',
         }}
       >
+        {sortedMessages.length === 0 && <LoadingShapes sizes={['100px', '100px', '100px']} />}
         {sortedMessages.map((message, index, all) => {
           const lastMessage = all[all.length - 1];
           const isLastIsBot = lastMessage?.isBot;
