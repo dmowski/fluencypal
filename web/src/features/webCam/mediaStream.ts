@@ -38,7 +38,11 @@ export const getMediaAudioStreams = async (): Promise<MediaStream | null> => {
     }
     console.log('CREATE A NEW AUDIO STREAM');
     const mediaStream = await navigator.mediaDevices.getUserMedia({
-      audio: true,
+      audio: {
+        echoCancellation: true,
+        noiseSuppression: true,
+        autoGainControl: true,
+      },
     });
     console.log('mediaStream', mediaStream);
     (window as any).singleMediaStreamAudio = mediaStream;
