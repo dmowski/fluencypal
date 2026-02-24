@@ -36,6 +36,9 @@ export const JustTalkCard = () => {
       audio.music.setVolume(0.4);
       await sleep(100);
       audio.music.play('/audio/call_start_01.mp3');
+      setTimeout(() => {
+        audio.music.stop();
+      }, 9000);
     } catch (e) {
       console.error('Error playing call start music', e);
     }
