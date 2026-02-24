@@ -64,7 +64,7 @@ export const AudioPlayIcon = ({
       processedText = clearWordForAudio(processedText);
     }
     if (processedText) {
-      await audio.speak(processedText, speakOptionsMain);
+      await audio.speak(processedText, { ...speakOptionsMain, cache: isSingleWord });
     }
     setIsPlaying(false);
     onChangeState?.(false);
