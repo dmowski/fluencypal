@@ -25,6 +25,7 @@ import { useLessonPlan } from '../LessonPlan/useLessonPlan';
 import { useAuth } from '../Auth/useAuth';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { usePlan } from './usePlan';
+import { getMediaAudioStreams } from '../webCam/mediaStream';
 
 type Step = 'intro' | 'mic' | 'webcam' | 'words' | 'rules' | 'start' | 'plan';
 
@@ -268,9 +269,10 @@ export const LessonStartModal = ({
                   disabled={isMicAllowed === true}
                   onClick={async () => {
                     try {
-                      await navigator.mediaDevices.getUserMedia({
-                        audio: true,
-                      });
+                      const mediaStream = await getMediaAudioStreams();
+                      if (!mediaStream) {
+                        throw new Error('Could not access microphone');
+                      }
                       setIsMicAllowed(true);
                     } catch (error) {
                       setIsMicAllowed(false);
