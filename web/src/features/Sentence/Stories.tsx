@@ -6,7 +6,6 @@ import { useConversationAudio } from '../Audio/useConversationAudio';
 import { useAuth } from '../Auth/useAuth';
 import { Story } from './types';
 import { useUrlState } from '../Url/useUrlState';
-import { storyData } from './storyData';
 import { sleep } from '@/libs/sleep';
 import { StoryPreview } from './StoryPreview';
 import { db } from '../Firebase/firebaseDb';
@@ -51,7 +50,7 @@ export const TextConstructorStories = () => {
 
   const storiesToShow = useMemo(() => {
     if (!databaseStories) return [];
-    const allElements = [...(databaseStories || []), ...storyData];
+    const allElements = [...(databaseStories || [])];
     const publishedStories = allElements.filter((s) => s.isPublished);
 
     const sortedByDate = publishedStories.sort((a, b) => {

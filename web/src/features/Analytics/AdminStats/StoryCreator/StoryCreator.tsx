@@ -19,13 +19,14 @@ import { clearWordForAudio } from '@/features/Audio/clearWord';
 import { getVoiceOverSpeakOptions } from '@/features/Audio/getVoiceOverSpeakOptions';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useTranslate } from '@/features/Translation/useTranslate';
+import { storyData } from '@/features/Sentence/storyData';
 
 export const StoryCreator = () => {
   const auth = useAuth();
   const collectionRef = db.collections.stories(auth.uid);
   const [storiesDataRaw] = useCollectionData(collectionRef);
 
-  const storiesData = [
+  const storiesDbData = [
     ...(storiesDataRaw || []).sort((a, b) => {
       return b.updatedAtIso.localeCompare(a.updatedAtIso);
     }),
@@ -105,7 +106,7 @@ export const StoryCreator = () => {
     setSelectedStoryId('');
   };
 
-  const selectedStoryData = storiesData?.find((story) => story.id === selectedStoryId);
+  const selectedStoryData = storiesDbData?.find((story) => story.id === selectedStoryId);
 
   const audioCache = useAudioCache();
   const settings = useSettings();
@@ -131,7 +132,7 @@ export const StoryCreator = () => {
   const cacheAllAudio = async () => {
     setIsCaching(true);
 
-    const storiesRaw = storiesData || [];
+    const storiesRaw = storiesDbData || [];
     const stories = storiesRaw.sort((a, b) => {
       return b.updatedAtIso.localeCompare(a.updatedAtIso);
     });
@@ -166,6 +167,26 @@ export const StoryCreator = () => {
 
     console.log('DONE caching all audios | ', new Date().toISOString());
     setIsCaching(false);
+  };
+
+  const migrateData = async () => {
+    if (!collectionRef) return;
+
+    for (const hardcodedStory of storyData) {
+      const id = hardcodedStory.id;
+      const isUploaded = !!storiesDbData?.find((story) => story.id === id);
+      if (isUploaded) {
+        console.log('Story already uploaded, skipping', hardcodedStory.title);
+        continue;
+      }
+      const docRef = doc(collectionRef, id);
+      await setDoc(docRef, {
+        ...hardcodedStory,
+        createdAtIso: new Date().toISOString(),
+        updatedAtIso: new Date().toISOString(),
+      });
+      console.log('Uploaded story', hardcodedStory.title);
+    }
   };
 
   return (
@@ -207,9 +228,10 @@ export const StoryCreator = () => {
             flexDirection: 'row',
             gap: 2,
             flexWrap: 'wrap',
+            maxWidth: '100%',
           }}
         >
-          {storiesData?.length === 0 && <Typography>No stories yet</Typography>}
+          {storiesDbData?.length === 0 && <Typography>No stories yet</Typography>}
 
           <Stack
             sx={{
@@ -218,9 +240,11 @@ export const StoryCreator = () => {
               gap: '10px',
               padding: '6px 15px 20px 7px',
               width: 'max-content',
+              maxWidth: '100%',
+              flexWrap: 'wrap',
             }}
           >
-            {storiesData?.map((image, index) => {
+            {storiesDbData?.map((image, index) => {
               const isPublished = image.isPublished;
               const isAudio = image.audioUrl;
               return (
