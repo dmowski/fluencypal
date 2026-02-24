@@ -3,7 +3,7 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 
 import { Typography, Button } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { AudioLines } from 'lucide-react';
+import { AudioLines, Loader } from 'lucide-react';
 import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useState } from 'react';
@@ -27,6 +27,7 @@ export const JustTalkCard = () => {
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
   const startJustTalk = async () => {
     await audio.initAudio();
+    setIsCallStarting(true);
 
     try {
       await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
@@ -51,7 +52,6 @@ export const JustTalkCard = () => {
       console.error('Error playing call start music', e);
     }
 
-    setIsCallStarting(true);
     await settings.setConversationMode('call');
     conversation.startConversation({
       conversationMode: 'call',
@@ -135,9 +135,8 @@ export const JustTalkCard = () => {
         >
           <Button
             color="info"
-            startIcon={<VideocamIcon />}
-            onClick={startJustTalk}
-            disabled={isCallStarting}
+            startIcon={isCallStarting ? <Loader size={'20px'} /> : <VideocamIcon />}
+            onClick={isCallStarting ? () => {} : startJustTalk}
             variant="contained"
             sx={{
               padding: '10px 35px',
