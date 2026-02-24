@@ -137,5 +137,6 @@ export const useAiConversationMessages = () => {
     resetMessageOrder: () => setMessageOrder({}),
     onAddDelta,
     onMessage,
+    isNewUser: history.conversations.length === 0,
   };
 };

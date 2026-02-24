@@ -209,12 +209,14 @@ function useProvideAiConversation(): AiConversationContextType {
     ideas,
     lessonPlan,
     voice,
+    isNewUser,
   }: {
     mode: ConversationType;
     goal?: GoalElementInfo | null;
     ideas?: ConversationIdea;
     lessonPlan?: LessonPlan;
     voice: AiVoice;
+    isNewUser: boolean;
   }): Promise<ConversationConfig> => {
     const baseConfig = getBaseRtcConfig();
 
@@ -335,11 +337,7 @@ Don't make user feel like they are being tested and feel stupid. Ask only one qu
 If you feel that the user is struggling, you can propose a new topic.
 Engage in a natural conversation without making it feel like a lesson.
 
-${
-  userInfo
-    ? ''
-    : 'After the first user response, introduce yourself, your role and ask user to describe their day.'
-}
+${isNewUser ? 'Introduce yourself, and ask user to describe their day.' : ''}
 
 ${voiceInstructions}
 
@@ -448,6 +446,7 @@ ${voiceInstructions}
         ideas: input.ideas,
         lessonPlan: input.lessonPlan,
         voice: input.voice || 'shimmer',
+        isNewUser: messages.isNewUser,
       });
 
       let instruction = conversationConfig.initInstruction;
