@@ -4,6 +4,7 @@ import { useAuth } from '../Auth/useAuth';
 import { sendImageAiRequest } from '../Ai/sendImageAiRequest';
 import { useSettings } from '../Settings/useSettings';
 import { sleep } from '@/libs/sleep';
+import { getMediaStream } from './mediaStream';
 
 interface WebCamContextType {
   init: () => Promise<void>;
@@ -34,9 +35,8 @@ function useProvideWebCam(): WebCamContextType {
     setIsError(false);
 
     try {
-      const mediaStream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-      });
+      const mediaStream = await getMediaStream();
+
       stream.current = mediaStream;
       //await sleep(9000);
       if (videoRef.current) {

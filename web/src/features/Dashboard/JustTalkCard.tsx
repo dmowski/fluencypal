@@ -12,6 +12,7 @@ import { useConversationAudio } from '../Audio/useConversationAudio';
 import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { Avatar } from '../Game/Avatar';
+import { getMediaStream } from '../webCam/mediaStream';
 
 export const JustTalkCard = () => {
   const { i18n } = useLingui();
@@ -30,7 +31,7 @@ export const JustTalkCard = () => {
     setIsCallStarting(true);
 
     try {
-      await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+      const mediaStream = await getMediaStream();
     } catch (e) {
       console.error('Microphone permission denied', e);
       alert(

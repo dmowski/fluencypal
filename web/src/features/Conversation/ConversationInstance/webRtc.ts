@@ -13,16 +13,21 @@ import { openHandler } from './webRtc/openHandler';
 import { updateInstruction } from './webRtc/updateInstruction';
 import { sendWebCamDescription } from './webRtc/sendWebCamDescription';
 import { initConnection } from './webRtc/initConnection';
+import { getMediaStream } from '@/features/webCam/mediaStream';
 
 export const initWebRtcConversation = async (
   config: ConversationConfig,
 ): Promise<ConversationInstance> => {
+  const stream =
+    (await getMediaStream()) ||
+    (await navigator.mediaDevices.getUserMedia({
+      audio: true,
+    }));
+
   const state: WebRtcState = {
     dataChannel: null,
     peerConnection: new RTCPeerConnection(),
-    userMedia: await navigator.mediaDevices.getUserMedia({
-      audio: true,
-    }),
+    userMedia: stream,
     lastMessages: [],
     instructionState: {
       baseInitInstruction: config.initInstruction,
