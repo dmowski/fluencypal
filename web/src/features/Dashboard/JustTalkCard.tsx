@@ -43,12 +43,14 @@ export const JustTalkCard = () => {
     } catch (e) {
       console.error('Error playing call start music', e);
     }
-    /*
+
     try {
+      /*
       const mediaStream = await getMediaAudioStreams();
       if (!mediaStream) {
         throw new Error('Could not access microphone');
       }
+      */
 
       await sleep(100);
       await getMediaVideoStreams();
@@ -63,7 +65,7 @@ export const JustTalkCard = () => {
       setIsCallStarting(false);
       return;
     }
-*/
+
     await settings.setConversationMode('call');
     conversation.startConversation({
       conversationMode: 'call',
