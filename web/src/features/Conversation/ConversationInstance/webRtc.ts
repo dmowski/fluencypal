@@ -19,10 +19,10 @@ export const initWebRtcConversation = async (
   config: ConversationConfig,
 ): Promise<ConversationInstance> => {
   const stream =
-    //(await getMediaAudioStreams()) ||
-    await navigator.mediaDevices.getUserMedia({
+    (await getMediaAudioStreams()) ||
+    (await navigator.mediaDevices.getUserMedia({
       audio: true,
-    });
+    }));
 
   const state: WebRtcState = {
     dataChannel: null,

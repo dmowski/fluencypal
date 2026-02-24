@@ -45,12 +45,10 @@ export const JustTalkCard = () => {
     }
 
     try {
-      /*
       const mediaStream = await getMediaAudioStreams();
       if (!mediaStream) {
         throw new Error('Could not access microphone');
       }
-      */
 
       await sleep(100);
       await getMediaVideoStreams();
