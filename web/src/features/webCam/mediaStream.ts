@@ -18,6 +18,18 @@ export const getMediaVideoStreams = async (): Promise<MediaStream | null> => {
   }
 };
 
+export const closeVideoMediaStream = () => {
+  console.log('CLOSING VIDEO STREAM');
+  const streamFromWindow = (window as any).singleMediaStreamVideo as MediaStream | undefined;
+  if (streamFromWindow) {
+    streamFromWindow.getTracks().forEach((track) => {
+      track.stop();
+    });
+
+    (window as any).singleMediaStreamVideo = null;
+  }
+};
+
 export const getMediaAudioStreams = async (): Promise<MediaStream | null> => {
   try {
     const streamFromWindow = (window as any).singleMediaStreamAudio as MediaStream | undefined;

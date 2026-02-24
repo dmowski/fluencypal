@@ -4,7 +4,7 @@ import { useAuth } from '../Auth/useAuth';
 import { sendImageAiRequest } from '../Ai/sendImageAiRequest';
 import { useSettings } from '../Settings/useSettings';
 import { sleep } from '@/libs/sleep';
-import { getMediaVideoStreams } from './mediaStream';
+import { closeVideoMediaStream, getMediaVideoStreams } from './mediaStream';
 
 interface WebCamContextType {
   init: () => Promise<void>;
@@ -103,9 +103,7 @@ function useProvideWebCam(): WebCamContextType {
 
   const disconnect = () => {
     if (stream.current) {
-      stream.current.getTracks().forEach((track) => {
-        track.stop();
-      });
+      closeVideoMediaStream();
 
       stream.current = null;
     }
