@@ -31,7 +31,7 @@ export const JustTalkCard = () => {
     await audio.initAudio();
     setIsCallStarting(true);
 
-    try {
+    /*try {
       await sleep(100);
       audio.music.setVolume(0.4);
       await sleep(50);
@@ -42,7 +42,7 @@ export const JustTalkCard = () => {
       }, 10000);
     } catch (e) {
       console.error('Error playing call start music', e);
-    }
+    }*/
 
     try {
       const mediaStream = await getMediaAudioStreams();
