@@ -4,7 +4,7 @@ import { useAuth } from '../Auth/useAuth';
 import { sendImageAiRequest } from '../Ai/sendImageAiRequest';
 import { useSettings } from '../Settings/useSettings';
 import { sleep } from '@/libs/sleep';
-import { getMediaStream } from './mediaStream';
+import { getMediaVideoStreams } from './mediaStream';
 
 interface WebCamContextType {
   init: () => Promise<void>;
@@ -35,7 +35,7 @@ function useProvideWebCam(): WebCamContextType {
     setIsError(false);
 
     try {
-      const mediaStream = await getMediaStream();
+      const mediaStream = await getMediaVideoStreams();
 
       stream.current = mediaStream;
       //await sleep(9000);
@@ -106,6 +106,7 @@ function useProvideWebCam(): WebCamContextType {
       stream.current.getTracks().forEach((track) => {
         track.stop();
       });
+
       stream.current = null;
     }
 

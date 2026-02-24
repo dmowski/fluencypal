@@ -13,13 +13,13 @@ import { openHandler } from './webRtc/openHandler';
 import { updateInstruction } from './webRtc/updateInstruction';
 import { sendWebCamDescription } from './webRtc/sendWebCamDescription';
 import { initConnection } from './webRtc/initConnection';
-import { getMediaStream } from '@/features/webCam/mediaStream';
+import { getMediaAudioStreams } from '@/features/webCam/mediaStream';
 
 export const initWebRtcConversation = async (
   config: ConversationConfig,
 ): Promise<ConversationInstance> => {
   const stream =
-    (await getMediaStream()) ||
+    (await getMediaAudioStreams()) ||
     (await navigator.mediaDevices.getUserMedia({
       audio: true,
     }));
