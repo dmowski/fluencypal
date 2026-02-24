@@ -48,6 +48,7 @@ export const JustTalkCard = () => {
       return;
     }
 
+    /*
     try {
       audio.music.setVolume(0.6);
       audio.music.play('/audio/call_start_01.mp3');
@@ -57,6 +58,7 @@ export const JustTalkCard = () => {
     } catch (e) {
       console.error('Error playing call start music', e);
     }
+      */
 
     await settings.setConversationMode('call');
     conversation.startConversation({
