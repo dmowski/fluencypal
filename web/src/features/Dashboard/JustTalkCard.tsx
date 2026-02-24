@@ -45,12 +45,12 @@ export const JustTalkCard = () => {
     }*/
 
     try {
-      const mediaStream = await getMediaAudioStreams();
+      /*const mediaStream = await getMediaAudioStreams();
       if (!mediaStream) {
         throw new Error('Could not access microphone');
-      }
+      }*/
 
-      await sleep(100);
+      //await sleep(100);
       await getMediaVideoStreams();
     } catch (e) {
       console.error('Microphone permission denied. error', e);
@@ -64,7 +64,7 @@ export const JustTalkCard = () => {
       return;
     }
 
-    await sleep(500);
+    //await sleep(500);
 
     await settings.setConversationMode('call');
     conversation.startConversation({
