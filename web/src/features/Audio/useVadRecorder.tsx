@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { getMediaAudioStreams } from '../webCam/mediaStream';
 
 type UseVadRecorderOptions = {
   onChunk: (blob: Blob, format: string, durationSeconds: number) => void;
@@ -186,13 +187,16 @@ export function useVadRecorder(options: UseVadRecorderOptions): UseVadRecorderRe
     if (isRunning) return;
 
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-          autoGainControl: true,
-        },
-      });
+      const streamFromGlobal = await getMediaAudioStreams();
+      const stream =
+        streamFromGlobal ||
+        (await navigator.mediaDevices.getUserMedia({
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true,
+          },
+        }));
       streamRef.current = stream;
 
       const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
