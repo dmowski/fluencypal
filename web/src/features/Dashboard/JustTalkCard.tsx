@@ -34,11 +34,12 @@ export const JustTalkCard = () => {
     try {
       await sleep(100);
       audio.music.setVolume(0.4);
-      await sleep(100);
+      await sleep(50);
       audio.music.play('/audio/call_start_01.mp3');
+      await sleep(150);
       setTimeout(() => {
         audio.music.stop();
-      }, 9000);
+      }, 10000);
     } catch (e) {
       console.error('Error playing call start music', e);
     }
@@ -62,6 +63,8 @@ export const JustTalkCard = () => {
       setIsCallStarting(false);
       return;
     }
+
+    await sleep(500);
 
     await settings.setConversationMode('call');
     conversation.startConversation({
