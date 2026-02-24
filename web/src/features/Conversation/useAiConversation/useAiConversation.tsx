@@ -167,7 +167,7 @@ function useProvideAiConversation(): AiConversationContextType {
     toggleVolume(isLimited ? false : true);
   };
 
-  const getBaseRtcConfig = async () => {
+  const getBaseRtcConfig = () => {
     const baseConfig: ConversationConfig = {
       model: MODELS.REALTIME_CONVERSATION,
       initInstruction: '',
@@ -216,7 +216,7 @@ function useProvideAiConversation(): AiConversationContextType {
     lessonPlan?: LessonPlan;
     voice: AiVoice;
   }): Promise<ConversationConfig> => {
-    const baseConfig = await getBaseRtcConfig();
+    const baseConfig = getBaseRtcConfig();
 
     const voiceInstructions = getVoiceInstructions(voice, voiceSpeed);
 
@@ -449,6 +449,7 @@ ${voiceInstructions}
         lessonPlan: input.lessonPlan,
         voice: input.voice || 'shimmer',
       });
+
       let instruction = conversationConfig.initInstruction;
 
       if (input.wordsToLearn?.length) {
