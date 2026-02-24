@@ -257,6 +257,8 @@ ${userInfoPrompt}
 ${voiceInstructions}
 
 Use ${fullLanguageName} language in conversation.
+
+Start the first message slowly and simply.
 `,
       };
     }

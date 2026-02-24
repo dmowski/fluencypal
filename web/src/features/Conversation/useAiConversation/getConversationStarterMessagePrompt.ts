@@ -3,5 +3,8 @@ export const getConversationStarterMessagePrompt = (startMessage: string): strin
     return '';
   }
   return `## Conversation Start
-Start the conversation with message like this: ${startMessage}.`;
+You can start the conversation with a topic like this: ${startMessage}.
+Start the conversation at a slow pace of voice. Add pauses between sentences.
+
+`;
 };
