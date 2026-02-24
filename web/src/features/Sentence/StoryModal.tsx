@@ -234,12 +234,14 @@ export const StoryModal = ({
   );
 
   const cacheAudioWords = async (words: string[]) => {
+    /*
     await audioCache.cacheAudioWords(words, speakOptionsMain);
     if (auth.isFounder) {
       showDebugInfoBadgeOnTopWindow(
         `Cache is complete for words: ${words.join(', ')} | ${ttsVersion}`,
       );
     }
+    */
   };
 
   const playAudio = (text: string, alternativeVoice: boolean) => {
@@ -250,9 +252,11 @@ export const StoryModal = ({
     //const audioHash = getAudioHash(cleanWord, options.instructions || '', options.voice || '');
     //console.log(audioHash, cleanWord);
     if (auth.isFounder) {
+      /*
       showDebugInfoBadgeOnTopWindow(
         `Play audio | Text: "${cleanWord}" | Options: ${JSON.stringify(options)} | ${ttsVersion}`,
       );
+      */
     }
     audio.speak(cleanWord, options);
   };
@@ -299,6 +303,10 @@ export const StoryModal = ({
     await sleep(40);
     const cleanWord = clearWordForAudio(word);
     if (!cleanWord) return;
+
+    if (auth.isFounder) {
+      showDebugInfoBadgeOnTopWindow('Correct word is available: ' + cleanWord);
+    }
     await audio.setTextAsPotentialSpeak(cleanWord, speakOptionsMain);
   };
 
