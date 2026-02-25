@@ -7,9 +7,9 @@ import { useUrlState } from '@/features/Url/useUrlState';
 import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { deleteDoc, doc, setDoc } from 'firebase/firestore';
 import { CirclePlus, Eye, Music } from 'lucide-react';
-import { useCollection, useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { StoryEditorModal } from './StoryEditorModal';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { splitTextIntoSentences } from '@/features/Sentence/TextConstructor/splitTextIntoSentences';
 import { uniq } from '@/libs/uniq';
 import { splitWords } from '@/features/Sentence/TextConstructor/textConstructor.utils';
@@ -17,10 +17,7 @@ import { useAudioCache } from '@/features/Audio/useAudioCache';
 import { SpeakOptions } from '@/features/Audio/useConversationAudio';
 import { clearWordForAudio } from '@/features/Audio/clearWord';
 import { getVoiceOverSpeakOptions } from '@/features/Audio/getVoiceOverSpeakOptions';
-import { useSettings } from '@/features/Settings/useSettings';
 import { useTranslate } from '@/features/Translation/useTranslate';
-import { storyData } from '@/features/Sentence/storyData';
-import { sleep } from '@/libs/sleep';
 import { SupportedLanguage } from '@/features/Lang/lang';
 
 export const StoryCreator = () => {
@@ -107,7 +104,6 @@ export const StoryCreator = () => {
   const selectedStoryData = storiesDbData?.find((story) => story.id === selectedStoryId);
 
   const audioCache = useAudioCache();
-  const settings = useSettings();
 
   const translator = useTranslate();
 
@@ -124,9 +120,10 @@ export const StoryCreator = () => {
   };
 
   const [isCaching, setIsCaching] = useState(false);
-  const cacheAllAudio = async () => {
+
+  const cacheAllAudioForLang = async (targetLanguage: SupportedLanguage) => {
     setIsCaching(true);
-    const targetLanguage: SupportedLanguage = 'en';
+    console.log('PROCESS ' + targetLanguage);
 
     const speakOptionsMain: SpeakOptions = getVoiceOverSpeakOptions(targetLanguage);
 
@@ -166,28 +163,13 @@ export const StoryCreator = () => {
 
     await audioCache.cacheAudioWords(uniqueWords, speakOptionsMain);
 
-    console.log('DONE caching all audios | ', new Date().toISOString());
+    console.log(`DONE ${targetLanguage} caching all audios | `, new Date().toISOString());
     setIsCaching(false);
   };
 
-  const migrateData = async () => {
-    if (!collectionRef) return;
-
-    for (const hardcodedStory of storyData) {
-      const id = hardcodedStory.id;
-      const isUploaded = !!storiesDbData?.find((story) => story.id === id);
-      if (isUploaded) {
-        console.log('Story already uploaded, skipping', hardcodedStory.title);
-        continue;
-      }
-      const docRef = doc(collectionRef, id);
-      await setDoc(docRef, {
-        ...hardcodedStory,
-        createdAtIso: new Date().toISOString(),
-        updatedAtIso: new Date().toISOString(),
-      });
-      console.log('Uploaded story', hardcodedStory.title);
-    }
+  const cacheAllAudio = async () => {
+    await cacheAllAudioForLang('en');
+    await cacheAllAudioForLang('pl');
   };
 
   return (

@@ -246,15 +246,6 @@ export const StoryModal = ({
         //showDebugInfoBadgeOnTopWindow('Done with ' + cleanWord);
       }
     }
-
-    /*
-    await audioCache.cacheAudioWords(words, speakOptionsMain);
-    if (auth.isFounder) {
-      showDebugInfoBadgeOnTopWindow(
-        `Cache is complete for words: ${words.join(', ')} | ${ttsVersion}`,
-      );
-    }
-    */
   };
 
   const playAudio = async (text: string, alternativeVoice: boolean) => {
