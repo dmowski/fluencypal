@@ -252,12 +252,12 @@ export const StoryCreator = () => {
               const isAudio = image.audioUrl;
               return (
                 <Stack
-                  key={index}
+                  key={image.id}
                   sx={{
                     position: 'relative',
                   }}
                 >
-                  <StoryPreview key={index} onSelectImage={onSelectImage} image={image} />
+                  <StoryPreview key={image.id} onSelectImage={onSelectImage} image={image} />
 
                   <Stack
                     sx={{

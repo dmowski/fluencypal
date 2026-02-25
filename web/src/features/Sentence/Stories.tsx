@@ -165,8 +165,8 @@ export const TextConstructorStories = () => {
               minHeight: '220px',
             }}
           >
-            {storiesToShow.map((story, index) => {
-              return <StoryPreview key={index} onSelectImage={onSelectImage} image={story} />;
+            {storiesToShow.map((story) => {
+              return <StoryPreview key={story.id} onSelectImage={onSelectImage} image={story} />;
             })}
           </Stack>
         </Stack>
