@@ -11,7 +11,7 @@ import {
   MessagesOrderMap,
 } from '@/common/conversation';
 import { useSettings } from '../Settings/useSettings';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useCollectionDataOnce } from 'react-firebase-hooks/firestore';
 
 interface ChatHistoryContextType {
   createConversation: (params: {
@@ -37,7 +37,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
   const settings = useSettings();
   const userId = auth.uid;
   const collectionRef = db.collections.conversation(userId);
-  const [conversations, loading] = useCollectionData(collectionRef);
+  const [conversations, loading] = useCollectionDataOnce(collectionRef);
 
   const getConversationDoc = (conversationId: string) => {
     const docRef = db.documents.conversation(userId, conversationId);
