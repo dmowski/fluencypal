@@ -79,11 +79,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   }
 
   if (aiConversation.isInitializing) {
-    return (
-      <InfoBlockedSection
-        title={aiConversation.isInitializing || i18n._(`Starting conversation...`)}
-      />
-    );
+    return <InfoBlockedSection title={aiConversation.isInitializing} />;
   }
 
   if (!settings.languageCode) return <SelectLanguage pageLang={lang} />;
