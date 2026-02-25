@@ -27,10 +27,11 @@ export const AudioPlayIcon = ({
   const [countOfClick, setCountOfClick] = useState(0);
 
   const settings = useSettings();
+  const targetLanguage = settings.userSettings?.languageCode || 'en';
 
   const speakOptionsMain: SpeakOptions = useMemo(
-    () => ({ ...getVoiceOverSpeakOptions(settings.userSettings), cache: false }),
-    [settings.userSettings],
+    () => ({ ...getVoiceOverSpeakOptions(targetLanguage), cache: false }),
+    [targetLanguage],
   );
 
   const audio = useConversationAudio();

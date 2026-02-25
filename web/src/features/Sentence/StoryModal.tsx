@@ -229,8 +229,8 @@ export const StoryModal = ({
   );
 
   const speakOptionsMain: SpeakOptions = useMemo(
-    () => getVoiceOverSpeakOptions(settings.userSettings),
-    [settings.userSettings],
+    () => getVoiceOverSpeakOptions(targetLanguage),
+    [targetLanguage],
   );
 
   const cacheAudioWords = async (words: string[]) => {

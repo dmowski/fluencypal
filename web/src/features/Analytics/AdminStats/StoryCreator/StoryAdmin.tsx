@@ -108,13 +108,14 @@ export const StoryCreator = () => {
   const audioCache = useAudioCache();
   const settings = useSettings();
 
+  const targetLanguage = settings.userSettings?.languageCode || 'en';
+
   const speakOptionsMain: SpeakOptions = useMemo(
-    () => getVoiceOverSpeakOptions(settings.userSettings),
-    [settings.userSettings],
+    () => getVoiceOverSpeakOptions(targetLanguage),
+    [targetLanguage],
   );
 
   const translator = useTranslate();
-  const targetLanguage = settings.userSettings?.languageCode || 'en';
 
   const translateTextToTargetLanguageFromEng = async (text: string) => {
     const translated = await translator.translateText({
