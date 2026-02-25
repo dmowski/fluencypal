@@ -10,7 +10,7 @@ import { Check, Copy, House } from 'lucide-react';
 import { UserCard } from './UserCard';
 import { AdminMetrics } from './AdminMetrics';
 import { copyToClipboard } from './copyToClipboard';
-import { StoryCreator } from './StoryCreator/StoryCreator';
+import { StoryCreator } from './StoryCreator/StoryAdmin';
 import { useUrlState } from '@/features/Url/useUrlState';
 
 export function AdminStats() {
