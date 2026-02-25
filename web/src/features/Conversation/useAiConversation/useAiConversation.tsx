@@ -308,7 +308,6 @@ ${voiceInstructions}
       let startFirstMessage = `"${firstAiMessage[languageCode]}"`;
 
       let openerInfoPrompt = 'Ask the student to describe their day.';
-
       if (userInfo && userInfo.length > 0) {
         setIsInitializing(`Analyzing info...`);
         const first = ideas || (await aiUserInfo.generateFirstMessageText(''));
@@ -325,6 +324,7 @@ Use ${fullLanguageName} language in conversation.
   `;
 
         setIsInitializing(`Starting conversation...`);
+        console.log('Starting');
       }
 
       return {
@@ -433,7 +433,7 @@ ${voiceInstructions}
 
     try {
       setIsStarted(true);
-      setIsInitializing(`Loading...`);
+      setIsInitializing(`Calling...`);
       setCurrentMode(input.mode);
       messages.setConversation([]);
       setIsClosing(false);
