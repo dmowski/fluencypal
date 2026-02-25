@@ -241,7 +241,7 @@ export const StoryEditorModal = ({
                 bottom: '10px',
                 right: '10px',
               }}
-              variant="outlined"
+              variant="contained"
               onClick={() => downloadAsJpg(internalStory.imageUrl)}
             >
               Download as JPG

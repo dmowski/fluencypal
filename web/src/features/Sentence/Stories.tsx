@@ -9,7 +9,7 @@ import { useUrlState } from '../Url/useUrlState';
 import { sleep } from '@/libs/sleep';
 import { StoryPreview } from './StoryPreview';
 import { db } from '../Firebase/firebaseDb';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useCollectionDataOnce } from 'react-firebase-hooks/firestore';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { StoryModal } from './StoryModal';
 import { uniq } from '@/libs/uniq';
@@ -21,7 +21,7 @@ export const TextConstructorStories = () => {
 
   const auth = useAuth();
   const collectionRef = db.collections.stories(auth.uid);
-  const [databaseStories] = useCollectionData(collectionRef);
+  const [databaseStories] = useCollectionDataOnce(collectionRef);
   const storiesViewsStatsDocRef = db.documents.storyStats(auth.uid, selectedImageImageId || '');
 
   const increaseViewsCount = async (storyId: string) => {
