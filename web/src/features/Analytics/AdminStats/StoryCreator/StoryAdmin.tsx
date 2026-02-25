@@ -90,7 +90,6 @@ export const StoryCreator = () => {
       updatedAtIso: new Date().toISOString(),
       createdAtIso: story.createdAtIso || new Date().toISOString(),
     });
-    await sleep(100);
   };
 
   const onSelectImage = (id: string) => {

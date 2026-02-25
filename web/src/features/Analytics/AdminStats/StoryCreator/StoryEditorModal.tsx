@@ -7,7 +7,7 @@ import { useTextAi } from '@/features/Ai/useTextAi';
 import { UploadAudioFileButton } from '@/features/Audio/UploadAudioFileButton';
 import { UploadVideoButton } from '@/features/Video/UploadVideoButton';
 import { downloadAsJpg } from './downloadAsJpg';
-import { Loader } from 'lucide-react';
+import { ChevronRight, Loader } from 'lucide-react';
 
 export const StoryEditorModal = ({
   story,
@@ -174,6 +174,12 @@ export const StoryEditorModal = ({
 
   const onSave = async () => {
     await update(internalStory);
+  };
+
+  const onSaveAndNext = async () => {
+    if (isNeedToSave) {
+      await update(internalStory);
+    }
     openNext();
   };
 
@@ -208,13 +214,13 @@ export const StoryEditorModal = ({
           sx={{
             gap: '20px',
             display: 'grid',
-            gridTemplateColumns: '600px 1fr',
+            gridTemplateColumns: '300px 1fr',
           }}
         >
           <Stack
             sx={{
-              width: '600px',
-              height: '600px',
+              width: '300px',
+              height: '300px',
               position: 'relative',
             }}
           >
@@ -222,7 +228,7 @@ export const StoryEditorModal = ({
               src={internalStory.imageUrl}
               alt="Story Image"
               fill
-              sizes="800px"
+              sizes="300px"
               style={{
                 objectFit: 'contain',
                 borderRadius: '8px',
@@ -256,54 +262,7 @@ export const StoryEditorModal = ({
               }
               fullWidth
               multiline
-              rows={5}
             />
-
-            <Stack
-              sx={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: '10px',
-              }}
-            >
-              <Button
-                variant="outlined"
-                onClick={() => generateTitleAndDescription()}
-                disabled={isGenerating}
-              >
-                Title & Subtitle
-              </Button>
-
-              <Button
-                variant="outlined"
-                onClick={() => generateStoryText()}
-                disabled={isGenerating}
-              >
-                Story Text
-              </Button>
-
-              <Button
-                variant="outlined"
-                onClick={() => generateAudioDescription()}
-                disabled={isGenerating}
-              >
-                Audio Description
-              </Button>
-              <Button
-                variant="outlined"
-                onClick={() => generateVideoDescription()}
-                disabled={isGenerating}
-              >
-                Video Description
-              </Button>
-              <Button variant="outlined" onClick={() => cleanUpText()} disabled={isGenerating}>
-                Clean Up Text
-              </Button>
-
-              <Button variant="outlined" onClick={() => generateAll()} disabled={isGenerating}>
-                ALL
-              </Button>
-            </Stack>
 
             <Stack
               sx={{
@@ -318,7 +277,6 @@ export const StoryEditorModal = ({
                 onChange={(e) => setInternalStory({ ...internalStory, sunoPrompt: e.target.value })}
                 multiline
                 fullWidth
-                rows={7}
               />
               <TextField
                 label="Video Description"
@@ -328,7 +286,6 @@ export const StoryEditorModal = ({
                 }
                 fullWidth
                 multiline
-                rows={7}
               />
             </Stack>
 
@@ -394,66 +351,139 @@ export const StoryEditorModal = ({
           onChange={(e) => setInternalStory({ ...internalStory, textEn: e.target.value })}
           fullWidth
           multiline
-          rows={40}
+        />
+        <Stack
+          sx={{
+            paddingTop: '200px',
+          }}
         />
 
         <Stack
           sx={{
-            flexDirection: 'row',
-            position: 'sticky',
+            position: 'fixed',
             bottom: '-10px',
             marginTop: '120px',
             gap: 2,
+            width: 'calc(100%)',
+            left: 0,
+            zIndex: 999,
             backgroundColor: '#000',
-            border: '1px solid rgba(255, 255, 255, 0.4)',
-            padding: '20px 20px 30px 20px',
+            borderTop: '1px solid rgba(255, 255, 255, 0.4)',
+            padding: '20px 20px 30px 90px',
             justifyContent: 'space-between',
-            paddingTop: '30px',
           }}
         >
           <Stack
             sx={{
               flexDirection: 'row',
-              gap: 2,
+              alignItems: 'center',
+              gap: '10px',
             }}
           >
-            <Button
-              variant={isNeedToSave ? 'contained' : 'outlined'}
-              onClick={onSave}
-              startIcon={isGenerating ? <Loader /> : null}
-              sx={{
-                height: '56px',
-                width: '240px',
+            <Image
+              src={internalStory.imageUrl}
+              alt="Story Image"
+              width={40}
+              height={40}
+              style={{
+                objectFit: 'cover',
+                borderRadius: '8px',
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
               }}
-            >
-              Save And Next
-            </Button>
-
-            <Button
-              variant={isNeedToSave ? 'contained' : 'outlined'}
-              onClick={onSave}
-              startIcon={isGenerating ? <Loader /> : null}
-              sx={{
-                height: '56px',
-                width: '240px',
-              }}
-            >
-              Save
-            </Button>
-
-            <FormControlLabel
-              checked={internalStory.isPublished || false}
-              onChange={(e) =>
-                setInternalStory({ ...internalStory, isPublished: !internalStory.isPublished })
-              }
-              control={<Checkbox size="large" />}
-              label={<Stack>Published</Stack>}
             />
+            <Button
+              variant="outlined"
+              onClick={() => generateTitleAndDescription()}
+              disabled={isGenerating}
+            >
+              Title & Subtitle
+            </Button>
+
+            <Button variant="outlined" onClick={() => generateStoryText()} disabled={isGenerating}>
+              Story Text
+            </Button>
+
+            <Button
+              variant="outlined"
+              onClick={() => generateAudioDescription()}
+              disabled={isGenerating}
+            >
+              Audio Description
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={() => generateVideoDescription()}
+              disabled={isGenerating}
+            >
+              Video Description
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={() => cleanUpText()}
+              disabled={isGenerating}
+              color="secondary"
+            >
+              Clean Up Text
+            </Button>
+
+            <Button variant="outlined" onClick={() => generateAll()} disabled={isGenerating}>
+              ALL
+            </Button>
           </Stack>
 
-          <Button color="error" onClick={onDelete}>
-            Delete
-          </Button>
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              gap: 2,
+              backgroundColor: '#000',
+              justifyContent: 'space-between',
+              paddingTop: '30px',
+            }}
+          >
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                gap: 2,
+              }}
+            >
+              <FormControlLabel
+                checked={internalStory.isPublished || false}
+                onChange={(e) =>
+                  setInternalStory({ ...internalStory, isPublished: !internalStory.isPublished })
+                }
+                control={<Checkbox size="large" />}
+                label={<Stack>Published</Stack>}
+              />
+
+              <Button
+                variant={isNeedToSave && !isGenerating ? 'contained' : 'outlined'}
+                onClick={onSave}
+                startIcon={isGenerating ? <Loader /> : null}
+                sx={{
+                  height: '56px',
+                }}
+              >
+                Just Save
+              </Button>
+
+              <Button
+                variant={isNeedToSave && !isGenerating ? 'contained' : 'outlined'}
+                onClick={onSaveAndNext}
+                startIcon={isGenerating ? <Loader /> : null}
+                sx={{
+                  height: '56px',
+                  width: '240px',
+                }}
+                endIcon={<ChevronRight />}
+              >
+                Save And Next
+              </Button>
+            </Stack>
+
+            <Button color="error" onClick={onDelete}>
+              Delete
+            </Button>
+          </Stack>
         </Stack>
       </Stack>
     </CustomModal>
