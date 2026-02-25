@@ -32,9 +32,9 @@ export const JustTalkCard = () => {
     setIsCallStarting(true);
 
     try {
-      await sleep(100);
+      audio.music.stop();
       audio.music.setVolume(0.5);
-      await sleep(50);
+      await sleep(150);
       audio.music.play('/audio/call_start_01.mp3');
       await sleep(150);
       setTimeout(() => {
