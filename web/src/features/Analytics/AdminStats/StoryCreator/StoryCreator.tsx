@@ -159,7 +159,9 @@ export const StoryCreator = () => {
 
     const allWords = uniq(allStoriesTextSentences.map((sentence) => splitWords(sentence)).flat());
 
-    const uniqueWords = uniq(allWords.map((word) => clearWordForAudio(word) || '').filter(Boolean));
+    const uniqueWords = uniq(
+      allWords.map((word) => clearWordForAudio(word) || '').filter(Boolean),
+    ).sort((a, b) => a.localeCompare(b));
     console.log('uniqueWords');
     console.log(uniqueWords);
 

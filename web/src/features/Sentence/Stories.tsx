@@ -13,6 +13,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { StoryModal } from './StoryModal';
 import { uniq } from '@/libs/uniq';
+import { shuffleArray } from '@/libs/array';
 
 export const TextConstructorStories = () => {
   const { i18n } = useLingui();
@@ -53,11 +54,9 @@ export const TextConstructorStories = () => {
     const allElements = [...(databaseStories || [])];
     const publishedStories = allElements.filter((s) => s.isPublished);
 
-    const sortedByDate = publishedStories.sort((a, b) => {
-      return b.updatedAtIso.localeCompare(a.updatedAtIso);
-    });
+    const storiesToShow = shuffleArray(publishedStories);
 
-    return sortedByDate;
+    return storiesToShow;
   }, [databaseStories]);
 
   const selectedStory = storiesToShow.find((img) => img.id === selectedImageImageId) || null;
