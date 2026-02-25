@@ -21,6 +21,7 @@ import { useSettings } from '@/features/Settings/useSettings';
 import { useTranslate } from '@/features/Translation/useTranslate';
 import { storyData } from '@/features/Sentence/storyData';
 import { sleep } from '@/libs/sleep';
+import { SupportedLanguage } from '@/features/Lang/lang';
 
 export const StoryCreator = () => {
   const auth = useAuth();
@@ -108,16 +109,12 @@ export const StoryCreator = () => {
   const audioCache = useAudioCache();
   const settings = useSettings();
 
-  const targetLanguage = settings.userSettings?.languageCode || 'en';
-
-  const speakOptionsMain: SpeakOptions = useMemo(
-    () => getVoiceOverSpeakOptions(targetLanguage),
-    [targetLanguage],
-  );
-
   const translator = useTranslate();
 
-  const translateTextToTargetLanguageFromEng = async (text: string) => {
+  const translateTextToTargetLanguageFromEng = async (
+    text: string,
+    targetLanguage: SupportedLanguage,
+  ) => {
     const translated = await translator.translateText({
       text: text,
       sourceLanguage: 'en',
@@ -129,6 +126,9 @@ export const StoryCreator = () => {
   const [isCaching, setIsCaching] = useState(false);
   const cacheAllAudio = async () => {
     setIsCaching(true);
+    const targetLanguage: SupportedLanguage = 'en';
+
+    const speakOptionsMain: SpeakOptions = getVoiceOverSpeakOptions(targetLanguage);
 
     const storiesRaw = storiesDbData || [];
     const stories = storiesRaw.sort((a, b) => {
@@ -144,7 +144,7 @@ export const StoryCreator = () => {
           stories.map(async (story) => {
             const textEn = story.textEn || '';
             if (!textEn) return '';
-            const translated = await translateTextToTargetLanguageFromEng(textEn);
+            const translated = await translateTextToTargetLanguageFromEng(textEn, targetLanguage);
             return translated;
           }),
         );
@@ -227,7 +227,7 @@ export const StoryCreator = () => {
           <CirclePlus />
         </IconButton>
         <Button onClick={cacheAllAudio} disabled={isCaching}>
-          Cache all audios ({targetLanguage}) {isCaching ? '| Caching...' : ''}
+          Cache all audios {isCaching ? '| Caching...' : ''}
         </Button>
       </Stack>
 
