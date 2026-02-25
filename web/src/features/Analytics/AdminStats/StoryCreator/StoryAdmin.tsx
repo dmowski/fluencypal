@@ -112,7 +112,6 @@ export const StoryCreator = () => {
     () => getVoiceOverSpeakOptions(settings.userSettings),
     [settings.userSettings],
   );
-  console.log('speakOptionsMain', speakOptionsMain);
 
   const translator = useTranslate();
   const targetLanguage = settings.userSettings?.languageCode || 'en';

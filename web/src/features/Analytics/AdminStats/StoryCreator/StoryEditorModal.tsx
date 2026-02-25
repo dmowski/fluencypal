@@ -217,35 +217,60 @@ export const StoryEditorModal = ({
             gridTemplateColumns: '300px 1fr',
           }}
         >
-          <Stack
-            sx={{
-              width: '300px',
-              height: '300px',
-              position: 'relative',
-            }}
-          >
-            <Image
-              src={internalStory.imageUrl}
-              alt="Story Image"
-              fill
-              sizes="300px"
-              style={{
-                objectFit: 'contain',
-                borderRadius: '8px',
-                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
-              }}
-            />
-            <Button
+          <Stack>
+            <Stack
               sx={{
-                position: 'absolute',
-                bottom: '10px',
-                right: '10px',
+                width: '300px',
+                height: '300px',
+                position: 'relative',
               }}
-              variant="contained"
-              onClick={() => downloadAsJpg(internalStory.imageUrl)}
             >
-              Download as JPG
-            </Button>
+              <Image
+                src={internalStory.imageUrl}
+                alt="Story Image"
+                fill
+                sizes="300px"
+                style={{
+                  objectFit: 'contain',
+                  borderRadius: '8px',
+                  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
+                }}
+              />
+              <Button
+                sx={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  right: '10px',
+                }}
+                variant="contained"
+                onClick={() => downloadAsJpg(internalStory.imageUrl)}
+              >
+                Download as JPG
+              </Button>
+            </Stack>
+
+            <Stack
+              sx={{
+                //alignItems: 'center',
+                //flexDirection: 'row',
+                alignItems: 'flex-start',
+                gap: '10px',
+                width: '100%',
+              }}
+            >
+              <UploadVideoButton
+                type="icon"
+                onNewUploadUrl={(url) => setInternalStory((prev) => ({ ...prev, videoUrl: url }))}
+              />
+              {internalStory.videoUrl ? (
+                <video
+                  controls
+                  src={internalStory.videoUrl}
+                  style={{ width: '200px', height: '200px' }}
+                  preload="none"
+                />
+              ) : null}
+            </Stack>
           </Stack>
 
           <Stack
@@ -309,42 +334,28 @@ export const StoryEditorModal = ({
                 />
               ) : null}
             </Stack>
-
-            <Stack
-              sx={{
-                alignItems: 'center',
-                flexDirection: 'row',
-                gap: '10px',
-              }}
-            >
-              <UploadVideoButton
-                type="icon"
-                onNewUploadUrl={(url) => setInternalStory((prev) => ({ ...prev, videoUrl: url }))}
-              />
-              {internalStory.videoUrl ? (
-                <video
-                  controls
-                  src={internalStory.videoUrl}
-                  style={{ width: '400px', height: '400px' }}
-                  preload="none"
-                />
-              ) : null}
-            </Stack>
           </Stack>
         </Stack>
 
-        <TextField
-          label="Title"
-          value={internalStory.title || ''}
-          onChange={(e) => setInternalStory({ ...internalStory, title: e.target.value })}
-          fullWidth
-        />
-        <TextField
-          label="Subtitle"
-          value={internalStory.subtitle || ''}
-          onChange={(e) => setInternalStory({ ...internalStory, subtitle: e.target.value })}
-          fullWidth
-        />
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            gap: '10px',
+          }}
+        >
+          <TextField
+            label="Title"
+            value={internalStory.title || ''}
+            onChange={(e) => setInternalStory({ ...internalStory, title: e.target.value })}
+            fullWidth
+          />
+          <TextField
+            label="Subtitle"
+            value={internalStory.subtitle || ''}
+            onChange={(e) => setInternalStory({ ...internalStory, subtitle: e.target.value })}
+            fullWidth
+          />
+        </Stack>
         <TextField
           label={`Text (EN) - ${textWordsCount} words`}
           value={internalStory.textEn || ''}
