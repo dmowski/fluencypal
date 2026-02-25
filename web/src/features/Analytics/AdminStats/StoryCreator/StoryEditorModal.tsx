@@ -12,11 +12,13 @@ import { Loader } from 'lucide-react';
 export const StoryEditorModal = ({
   story,
   update,
+  openNext,
   deleteStory,
   onClose,
 }: {
   story: Story;
-  update: (story: Story) => void;
+  update: (story: Story) => Promise<void>;
+  openNext: () => void;
   deleteStory: (story: Story) => void;
   onClose: () => void;
 }) => {
@@ -170,8 +172,9 @@ export const StoryEditorModal = ({
     setInternalStory(story);
   }, [story]);
 
-  const onSave = () => {
-    update(internalStory);
+  const onSave = async () => {
+    await update(internalStory);
+    openNext();
   };
 
   const isNeedToSave = JSON.stringify(story) !== JSON.stringify(internalStory);
@@ -414,6 +417,18 @@ export const StoryEditorModal = ({
               gap: 2,
             }}
           >
+            <Button
+              variant={isNeedToSave ? 'contained' : 'outlined'}
+              onClick={onSave}
+              startIcon={isGenerating ? <Loader /> : null}
+              sx={{
+                height: '56px',
+                width: '240px',
+              }}
+            >
+              Save And Next
+            </Button>
+
             <Button
               variant={isNeedToSave ? 'contained' : 'outlined'}
               onClick={onSave}

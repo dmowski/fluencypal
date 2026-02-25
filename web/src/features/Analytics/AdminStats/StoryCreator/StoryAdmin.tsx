@@ -20,6 +20,7 @@ import { getVoiceOverSpeakOptions } from '@/features/Audio/getVoiceOverSpeakOpti
 import { useSettings } from '@/features/Settings/useSettings';
 import { useTranslate } from '@/features/Translation/useTranslate';
 import { storyData } from '@/features/Sentence/storyData';
+import { sleep } from '@/libs/sleep';
 
 export const StoryCreator = () => {
   const auth = useAuth();
@@ -89,6 +90,7 @@ export const StoryCreator = () => {
       updatedAtIso: new Date().toISOString(),
       createdAtIso: story.createdAtIso || new Date().toISOString(),
     });
+    await sleep(100);
   };
 
   const onSelectImage = (id: string) => {
@@ -98,7 +100,7 @@ export const StoryCreator = () => {
   const deleteStory = async (story: Story) => {
     if (!collectionRef) return;
     const docRef = doc(collectionRef, story.id);
-    deleteDoc(docRef);
+    await deleteDoc(docRef);
     setSelectedStoryId('');
   };
 
@@ -201,6 +203,16 @@ export const StoryCreator = () => {
           update={updateStory}
           deleteStory={deleteStory}
           onClose={() => setSelectedStoryId('')}
+          openNext={() => {
+            const currentIndex =
+              storiesDbData?.findIndex((story) => story.id === selectedStoryId) || 0;
+            const nextStory = storiesDbData?.[currentIndex + 1];
+            if (nextStory) {
+              setSelectedStoryId(nextStory.id);
+            } else {
+              setSelectedStoryId('');
+            }
+          }}
         />
       )}
       <Stack
