@@ -226,7 +226,7 @@ export const StoryCreator = () => {
           <CirclePlus />
         </IconButton>
         <Button onClick={cacheAllAudio} disabled={isCaching}>
-          Cache all audios {isCaching ? '| Caching...' : ''}
+          Cache all audios ({targetLanguage}) {isCaching ? '| Caching...' : ''}
         </Button>
       </Stack>
 
