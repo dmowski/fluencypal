@@ -24,8 +24,13 @@ export const StoryEditorModal = ({
 
   const ai = useTextAi();
   const [isGenerating, setIsGenerating] = useState(false);
-  const generateTitleAndDescription = async () => {
-    const data = [story.title, story.subtitle, story.textEn].filter(Boolean).join('\n');
+
+  const generateTitleAndDescription = async (inputStory?: Story) => {
+    const storyToProcess = inputStory || internalStory;
+
+    const data = [storyToProcess.title, storyToProcess.subtitle, storyToProcess.textEn]
+      .filter(Boolean)
+      .join('\n');
     setIsGenerating(true);
     const titleAndSubtitle = await ai.generateJson<{ title: string; subtitle: string }>({
       systemMessage:
@@ -35,23 +40,31 @@ export const StoryEditorModal = ({
       model: 'gpt-4o',
     });
 
+    const resultedStory: Story = {
+      ...storyToProcess,
+    };
+
     if (titleAndSubtitle) {
+      resultedStory.title = titleAndSubtitle.title;
+      resultedStory.subtitle = titleAndSubtitle.subtitle;
       setInternalStory({
-        ...internalStory,
-        title: titleAndSubtitle.title,
-        subtitle: titleAndSubtitle.subtitle,
+        ...resultedStory,
       });
     }
     setIsGenerating(false);
+    return resultedStory;
   };
 
   const defaultStorySystemInstruction =
     'Based on the title, subtitle, and existing story text, generate an engaging story text in English that fits the title and subtitle. Expand on the details and create a compelling narrative. Use relatively short sentences as the story is aimed at language learners.';
 
-  const generateStoryText = async () => {
+  const generateStoryText = async (inputStory?: Story) => {
     setIsGenerating(true);
-    const data = [story.title, story.subtitle, story.textEn].filter(Boolean).join('\n');
-    const systemMessage = internalStory.storySystemInstruction || defaultStorySystemInstruction;
+    const storyToProcess = inputStory || internalStory;
+    const data = [storyToProcess.title, storyToProcess.subtitle, storyToProcess.textEn]
+      .filter(Boolean)
+      .join('\n');
+    const systemMessage = storyToProcess.storySystemInstruction || defaultStorySystemInstruction;
 
     console.log('systemMessage', systemMessage);
 
@@ -61,18 +74,26 @@ export const StoryEditorModal = ({
       model: 'gpt-4o',
     });
 
+    const resultedStory: Story = {
+      ...storyToProcess,
+    };
+
     if (generatedText) {
+      resultedStory.textEn = generatedText;
       setInternalStory({
-        ...internalStory,
-        textEn: generatedText,
+        ...resultedStory,
       });
     }
     setIsGenerating(false);
+    return resultedStory;
   };
 
-  const generateAudioDescription = async () => {
+  const generateAudioDescription = async (inputStory?: Story) => {
     setIsGenerating(true);
-    const data = [story.title, story.subtitle, story.textEn].filter(Boolean).join('\n');
+    const storyToProcess = inputStory || internalStory;
+    const data = [storyToProcess.title, storyToProcess.subtitle, storyToProcess.textEn]
+      .filter(Boolean)
+      .join('\n');
     const systemMessage = `Based on the story data, create me description for an audio generation model. The description should be concise and capture the essence of the story, highlighting key themes, emotions, and settings. No longer that 60 words. This audio will be played in the background while the user is reading the story, so it should evoke the right atmosphere and mood for the story.`;
 
     const generatedText = await ai.generate({
@@ -81,18 +102,24 @@ export const StoryEditorModal = ({
       model: 'gpt-4o',
     });
 
+    const resultedStory: Story = {
+      ...storyToProcess,
+    };
+
     if (generatedText) {
-      setInternalStory({
-        ...internalStory,
-        sunoPrompt: generatedText,
-      });
+      resultedStory.sunoPrompt = generatedText;
+      setInternalStory(resultedStory);
     }
     setIsGenerating(false);
+    return resultedStory;
   };
 
-  const generateVideoDescription = async () => {
+  const generateVideoDescription = async (inputStory?: Story) => {
     setIsGenerating(true);
-    const data = [story.title, story.subtitle, story.textEn].filter(Boolean).join('\n');
+    const storyToProcess = inputStory || internalStory;
+    const data = [storyToProcess.title, storyToProcess.subtitle, storyToProcess.textEn]
+      .filter(Boolean)
+      .join('\n');
     const systemMessage = `Based on the story data, create me description for a video generation model. The description should be concise and capture the essence of the story, highlighting key themes, emotions, and settings. No longer that 60 words. This video will be played in the background while the user is reading the story, so it should evoke the right atmosphere and mood for the story.`;
 
     const generatedText = await ai.generate({
@@ -101,13 +128,42 @@ export const StoryEditorModal = ({
       model: 'gpt-4o',
     });
 
+    const resultedStory: Story = {
+      ...storyToProcess,
+    };
+
     if (generatedText) {
-      setInternalStory({
-        ...internalStory,
-        videoDescription: generatedText,
-      });
+      resultedStory.videoDescription = generatedText;
+      setInternalStory(resultedStory);
     }
     setIsGenerating(false);
+
+    return resultedStory;
+  };
+
+  const cleanUpText = (inputStory?: Story) => {
+    const storyToProcess = inputStory || internalStory;
+    let cleanedText = storyToProcess.textEn;
+
+    cleanedText = cleanedText.split('—').join(' — ').split('  —  ').join(' — ');
+
+    const resultedStory: Story = {
+      ...storyToProcess,
+      textEn: cleanedText,
+    };
+
+    setInternalStory(resultedStory);
+
+    return resultedStory;
+  };
+
+  const generateAll = async () => {
+    console.log('internalStory', JSON.stringify(internalStory));
+    let story = await generateTitleAndDescription(internalStory);
+    story = await generateStoryText(story);
+    story = await generateAudioDescription(story);
+    story = await generateVideoDescription(story);
+    cleanUpText(story);
   };
 
   useEffect(() => {
@@ -209,21 +265,40 @@ export const StoryEditorModal = ({
             >
               <Button
                 variant="outlined"
-                onClick={generateTitleAndDescription}
+                onClick={() => generateTitleAndDescription()}
                 disabled={isGenerating}
               >
                 Title & Subtitle
               </Button>
 
-              <Button variant="outlined" onClick={generateStoryText} disabled={isGenerating}>
+              <Button
+                variant="outlined"
+                onClick={() => generateStoryText()}
+                disabled={isGenerating}
+              >
                 Story Text
               </Button>
 
-              <Button variant="outlined" onClick={generateAudioDescription} disabled={isGenerating}>
+              <Button
+                variant="outlined"
+                onClick={() => generateAudioDescription()}
+                disabled={isGenerating}
+              >
                 Audio Description
               </Button>
-              <Button variant="outlined" onClick={generateVideoDescription} disabled={isGenerating}>
+              <Button
+                variant="outlined"
+                onClick={() => generateVideoDescription()}
+                disabled={isGenerating}
+              >
                 Video Description
+              </Button>
+              <Button variant="outlined" onClick={() => cleanUpText()} disabled={isGenerating}>
+                Clean Up Text
+              </Button>
+
+              <Button variant="outlined" onClick={() => generateAll()} disabled={isGenerating}>
+                ALL
               </Button>
             </Stack>
 
@@ -235,7 +310,7 @@ export const StoryEditorModal = ({
               }}
             >
               <TextField
-                label="Audio Description for Audio Generation Models (like Suno)"
+                label="Audio Description"
                 value={internalStory.sunoPrompt || ''}
                 onChange={(e) => setInternalStory({ ...internalStory, sunoPrompt: e.target.value })}
                 multiline
@@ -243,7 +318,7 @@ export const StoryEditorModal = ({
                 rows={7}
               />
               <TextField
-                label="Video Description for Video Generation Models (like Suno)"
+                label="Video Description"
                 value={internalStory.videoDescription || ''}
                 onChange={(e) =>
                   setInternalStory({ ...internalStory, videoDescription: e.target.value })

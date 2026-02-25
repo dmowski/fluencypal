@@ -26,11 +26,7 @@ export const StoryCreator = () => {
   const collectionRef = db.collections.stories(auth.uid);
   const [storiesDataRaw] = useCollectionData(collectionRef);
 
-  const storiesDbData = [
-    ...(storiesDataRaw || []).sort((a, b) => {
-      return b.updatedAtIso.localeCompare(a.updatedAtIso);
-    }),
-  ];
+  const storiesDbData = [...(storiesDataRaw || [])];
 
   const [selectedStoryId, setSelectedStoryId] = useUrlState('selectedStory', '', false);
 
