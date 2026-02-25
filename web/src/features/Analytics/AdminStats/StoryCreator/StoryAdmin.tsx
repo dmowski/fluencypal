@@ -231,7 +231,7 @@ export const StoryCreator = () => {
       </Stack>
 
       <Stack>
-        <Typography variant="h6">All stories:</Typography>
+        <Typography variant="h6">All stories ({storiesDbData?.length || 0}):</Typography>
 
         <Stack
           sx={{
