@@ -1807,7 +1807,7 @@ msgstr "Sistem tasarımı için net yapı. Sonunda tavizleri dolandırmadan aç�
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Sentence/StoryModal.tsx:747
+#: src/features/Sentence/StoryModal.tsx:966
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -2071,7 +2071,7 @@ msgstr "İletişim:"
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
-#: src/features/Sentence/StoryModal.tsx:481
+#: src/features/Sentence/StoryModal.tsx:700
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Devam et"
@@ -2935,7 +2935,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "Yeni araçlara erken erişim"
 
-#: src/features/Sentence/StoryModal.tsx:440
+#: src/features/Sentence/StoryModal.tsx:659
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "Kolay"
@@ -4182,7 +4182,7 @@ msgstr "Fransızca Öğrenme Planı"
 msgid "Frequently Asked Questions"
 msgstr "Sıkça Sorulan Sorular"
 
-#: src/features/Sentence/StoryModal.tsx:506
+#: src/features/Sentence/StoryModal.tsx:725
 #. js-lingui-explicit-id
 msgid "Fresh start"
 msgstr "Yeni başlangıç"
@@ -4229,7 +4229,7 @@ msgstr "frontend system tasarım mülakatı"
 msgid "Full Access"
 msgstr "Tam Erişim"
 
-#: src/features/Dashboard/Dashboard.tsx:88
+#: src/features/Dashboard/Dashboard.tsx:87
 #. js-lingui-explicit-id
 msgid "Full access - Expiring soon"
 msgstr "Tam erişim - Yakında sona eriyor"
@@ -4293,7 +4293,7 @@ msgstr "Tam AI mülakat koçu erişimi"
 msgid "Full AI tutor access"
 msgstr "Tam AI öğretmen erişimi"
 
-#: src/features/Sentence/StoryModal.tsx:706
+#: src/features/Sentence/StoryModal.tsx:925
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "Tam hikaye:"
@@ -4809,7 +4809,7 @@ msgstr "Eşzamanlılığı güvenle yönetin"
 msgid "Happy April 1st!"
 msgstr "1 Nisan Kutlu Olsun!"
 
-#: src/features/Sentence/StoryModal.tsx:454
+#: src/features/Sentence/StoryModal.tsx:673
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "Zor"
@@ -6870,6 +6870,11 @@ msgstr "Sınırlı mesajlar"
 msgid "Limited voice features"
 msgstr "Sınırlı ses özellikleri"
 
+#: src/features/Sentence/StoryModal.tsx:637
+#. js-lingui-explicit-id
+msgid "Listen"
+msgstr "Dinle"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:517
 #. js-lingui-explicit-id
 msgid "Listening practice. You can hear AI responses"
@@ -7088,7 +7093,7 @@ msgstr ""
 msgid "Medical Talk Simulation"
 msgstr "Medikal Konuşma Simülasyonu"
 
-#: src/features/Sentence/StoryModal.tsx:447
+#: src/features/Sentence/StoryModal.tsx:666
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "Orta"
@@ -7362,6 +7367,7 @@ msgstr "Yeni Kelimeler"
 #: src/features/Goal/Quiz/QuizPage2.tsx:426
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:262
+#: src/features/Sentence/StoryModal.tsx:527
 #: src/features/Survey/InfoStep.tsx:272
 #: src/features/Survey/InterviewInfoStep.tsx:107
 #. js-lingui-explicit-id
@@ -7388,7 +7394,7 @@ msgstr "Sonraki soru"
 msgid "Next Step"
 msgstr "Sonraki Adım"
 
-#: src/features/Sentence/StoryModal.tsx:524
+#: src/features/Sentence/StoryModal.tsx:743
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "Sonraki hikaye"
@@ -7806,6 +7812,11 @@ msgid ""
 msgstr ""
 "Birinin profilini açın ve bir tartışma başlatmak için \"Tartışmaya Davet "
 "Et\" düğmesine basın!"
+
+#: src/features/Sentence/StoryModal.tsx:645
+#. js-lingui-explicit-id
+msgid "Or quiz it"
+msgstr "Ya da test et"
 
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
 #. js-lingui-explicit-id
@@ -8678,15 +8689,20 @@ msgstr "Beyni hazırlama"
 msgid "Preparing your game..."
 msgstr "Oyunuz hazırlanıyor..."
 
-#: src/features/Sentence/StoryModal.tsx:504
+#: src/features/Sentence/StoryModal.tsx:723
 #. js-lingui-explicit-id
 msgid "Preparing..."
 msgstr "Hazırlanıyor..."
 
-#: src/features/Sentence/StoryModal.tsx:407
+#: src/features/Sentence/StoryModal.tsx:607
 #. js-lingui-explicit-id
 msgid "Press the button below to start the adventure!"
 msgstr "Macera başlaması için aşağıdaki düğmeye basın!"
+
+#: src/features/Sentence/StoryModal.tsx:516
+#. js-lingui-explicit-id
+msgid "Previous"
+msgstr "Önceki"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:195
 #. js-lingui-explicit-id
@@ -9277,10 +9293,15 @@ msgstr "Verileriniz kaldırılıyor..."
 msgid "Rendering Performance"
 msgstr "Rendering Performansı"
 
-#: src/features/Dashboard/Dashboard.tsx:96
+#: src/features/Dashboard/Dashboard.tsx:95
 #. js-lingui-explicit-id
 msgid "Renew Now"
 msgstr "Yenile"
+
+#: src/features/Sentence/StoryModal.tsx:543
+#. js-lingui-explicit-id
+msgid "Replay"
+msgstr "Tekrar Oyna"
 
 #: src/features/Chat/GlobalChatTabs.tsx:80
 #. js-lingui-explicit-id
@@ -10197,7 +10218,7 @@ msgstr "Aylık Planı Başlat"
 msgid "Start Practicing"
 msgstr "Alıştırmaya Başla"
 
-#: src/features/Sentence/StoryModal.tsx:507
+#: src/features/Sentence/StoryModal.tsx:726
 #. js-lingui-explicit-id
 msgid "Start Quiz"
 msgstr "Başlayın Quiz"
@@ -10521,7 +10542,7 @@ msgstr "Abonelik gerekiyor"
 msgid "subscription plans"
 msgstr "abonelik planları"
 
-#: src/features/Sentence/StoryModal.tsx:635
+#: src/features/Sentence/StoryModal.tsx:854
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr "Başarı oranı:"
@@ -11493,7 +11514,7 @@ msgstr "Deneme günleri"
 msgid "Try"
 msgstr "Denemek"
 
-#: src/features/Sentence/StoryModal.tsx:735
+#: src/features/Sentence/StoryModal.tsx:954
 #. js-lingui-explicit-id
 msgid "Try another story"
 msgstr "Başka bir hikaye dene"
@@ -11646,7 +11667,7 @@ msgid "Unlock for 1 year"
 msgstr "1 yıl boyunca kilidi aç"
 
 #: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:82
+#: src/features/Dashboard/Dashboard.tsx:81
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "Tam Erişimi Aç"
@@ -11666,7 +11687,7 @@ msgstr ""
 "bir müfredatın kilidini açın."
 
 #: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:79
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr ""
@@ -12144,7 +12165,7 @@ msgstr "Junior Frontend Developer Mülakat Hazırlığı'na Hoş Geldiniz"
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "Kıdemli Frontend Geliştirici Mülakat Hazırlığınıza Hoş Geldiniz"
 
-#: src/features/Sentence/StoryModal.tsx:592
+#: src/features/Sentence/StoryModal.tsx:811
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "Aferin! Hikayeyi tamamladınız."
@@ -12436,7 +12457,7 @@ msgstr "Tur kelime sayısı"
 msgid "Words to Learn"
 msgstr "Öğrenilecek Kelimeler"
 
-#: src/features/Sentence/StoryModal.tsx:659
+#: src/features/Sentence/StoryModal.tsx:878
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "Dikkat edilecek kelimeler:"
@@ -13093,12 +13114,12 @@ msgstr "Destekleyici Arkadaşınız"
 msgid "Your transcripts are securely stored in our service"
 msgstr "Transkriptleriniz hizmetimizde güvenli bir şekilde saklanmaktadır"
 
-#: src/features/Dashboard/Dashboard.tsx:94
+#: src/features/Dashboard/Dashboard.tsx:93
 #. js-lingui-explicit-id
 msgid "Your unlimited access is about to expire soon."
 msgstr "Sınırsız erişiminizin süresi yakında dolacak."
 
-#: src/features/Dashboard/Dashboard.tsx:91
+#: src/features/Dashboard/Dashboard.tsx:90
 #. js-lingui-explicit-id
 msgid "Your unlimited access is active until {date}"
 msgstr "Sınırsız erişiminiz {date} tarihine kadar aktif"
@@ -13113,7 +13134,7 @@ msgstr ""
 "\"iyi\"nin nasıl göründüğünü söylemiyor"
 
 #: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:78
+#: src/features/Dashboard/Dashboard.tsx:77
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "Önizleme modundasınız"
@@ -13153,7 +13174,7 @@ msgstr "{userName} sizi bir tartışmaya davet ediyor!"
 msgid "{winnerName} wins!"
 msgstr "{winnerName} kazandı!"
 
-#: src/features/Sentence/StoryModal.tsx:418
+#: src/features/Sentence/StoryModal.tsx:618
 #. js-lingui-explicit-id
 msgid "{wordsCount} words"
 msgstr "{wordsCount} kelime"

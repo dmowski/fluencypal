@@ -1734,7 +1734,7 @@ msgstr "システムデザインの明確な構造。ついに寄り道せずに
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Sentence/StoryModal.tsx:747
+#: src/features/Sentence/StoryModal.tsx:966
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -1993,7 +1993,7 @@ msgstr "連絡先:"
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
-#: src/features/Sentence/StoryModal.tsx:481
+#: src/features/Sentence/StoryModal.tsx:700
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "続ける"
@@ -2797,7 +2797,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "新しいツールへの早期アクセス"
 
-#: src/features/Sentence/StoryModal.tsx:440
+#: src/features/Sentence/StoryModal.tsx:659
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "簡単"
@@ -3937,7 +3937,7 @@ msgstr ""
 "\n"
 "よくある質問\n"
 
-#: src/features/Sentence/StoryModal.tsx:506
+#: src/features/Sentence/StoryModal.tsx:725
 #. js-lingui-explicit-id
 msgid "Fresh start"
 msgstr "新しいスタート"
@@ -3984,7 +3984,7 @@ msgstr "フロントエンドシステム設計面接"
 msgid "Full Access"
 msgstr "フルアクセス"
 
-#: src/features/Dashboard/Dashboard.tsx:88
+#: src/features/Dashboard/Dashboard.tsx:87
 #. js-lingui-explicit-id
 msgid "Full access - Expiring soon"
 msgstr "完全アクセス - まもなく期限切れ"
@@ -4048,7 +4048,7 @@ msgstr "フル AI 面接コーチアクセス"
 msgid "Full AI tutor access"
 msgstr "フルAIチューターアクセス"
 
-#: src/features/Sentence/StoryModal.tsx:706
+#: src/features/Sentence/StoryModal.tsx:925
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "フルストーリー:"
@@ -4516,7 +4516,7 @@ msgstr "同時実行を安心して処理する"
 msgid "Happy April 1st!"
 msgstr "4月1日おめでとう！"
 
-#: src/features/Sentence/StoryModal.tsx:454
+#: src/features/Sentence/StoryModal.tsx:673
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "難しい"
@@ -6411,6 +6411,11 @@ msgstr "限定メッセージ数"
 msgid "Limited voice features"
 msgstr "制限された音声機能"
 
+#: src/features/Sentence/StoryModal.tsx:637
+#. js-lingui-explicit-id
+msgid "Listen"
+msgstr "聞く"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:517
 #. js-lingui-explicit-id
 msgid "Listening practice. You can hear AI responses"
@@ -6623,7 +6628,7 @@ msgstr "この段階的なガイドで次の英語の仕事の面接をマスタ
 msgid "Medical Talk Simulation"
 msgstr "メディカルトークシミュレーション"
 
-#: src/features/Sentence/StoryModal.tsx:447
+#: src/features/Sentence/StoryModal.tsx:666
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "中級"
@@ -6893,6 +6898,7 @@ msgstr "新しい単語"
 #: src/features/Goal/Quiz/QuizPage2.tsx:426
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:262
+#: src/features/Sentence/StoryModal.tsx:527
 #: src/features/Survey/InfoStep.tsx:272
 #: src/features/Survey/InterviewInfoStep.tsx:107
 #. js-lingui-explicit-id
@@ -6919,7 +6925,7 @@ msgstr "次の質問"
 msgid "Next Step"
 msgstr "次のステップ"
 
-#: src/features/Sentence/StoryModal.tsx:524
+#: src/features/Sentence/StoryModal.tsx:743
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "次のストーリー"
@@ -7313,6 +7319,11 @@ msgid ""
 "Open someones profile and press \"Invite to a debate\" button to start a "
 "debate!"
 msgstr "他の人のプロフィールを開き、「ディベートに招待」ボタンを押してディベートを開始してください！"
+
+#: src/features/Sentence/StoryModal.tsx:645
+#. js-lingui-explicit-id
+msgid "Or quiz it"
+msgstr "それをクイズにする"
 
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
 #. js-lingui-explicit-id
@@ -8125,15 +8136,20 @@ msgstr "脳を準備する"
 msgid "Preparing your game..."
 msgstr "ゲームの準備中..."
 
-#: src/features/Sentence/StoryModal.tsx:504
+#: src/features/Sentence/StoryModal.tsx:723
 #. js-lingui-explicit-id
 msgid "Preparing..."
 msgstr "準備中..."
 
-#: src/features/Sentence/StoryModal.tsx:407
+#: src/features/Sentence/StoryModal.tsx:607
 #. js-lingui-explicit-id
 msgid "Press the button below to start the adventure!"
 msgstr "以下のボタンを押して冒険を始めよう！"
+
+#: src/features/Sentence/StoryModal.tsx:516
+#. js-lingui-explicit-id
+msgid "Previous"
+msgstr "前へ"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:195
 #. js-lingui-explicit-id
@@ -8713,12 +8729,17 @@ msgstr "データを削除しています..."
 msgid "Rendering Performance"
 msgstr "レンダリングパフォーマンス"
 
-#: src/features/Dashboard/Dashboard.tsx:96
+#: src/features/Dashboard/Dashboard.tsx:95
 #. js-lingui-explicit-id
 msgid "Renew Now"
 msgstr ""
 "\n"
 "今すぐ更新\n"
+
+#: src/features/Sentence/StoryModal.tsx:543
+#. js-lingui-explicit-id
+msgid "Replay"
+msgstr "リプレイ"
 
 #: src/features/Chat/GlobalChatTabs.tsx:80
 #. js-lingui-explicit-id
@@ -9600,7 +9621,7 @@ msgstr "月額プランを開始"
 msgid "Start Practicing"
 msgstr "練習を始める"
 
-#: src/features/Sentence/StoryModal.tsx:507
+#: src/features/Sentence/StoryModal.tsx:726
 #. js-lingui-explicit-id
 msgid "Start Quiz"
 msgstr ""
@@ -9909,7 +9930,7 @@ msgstr "サブスクリプションが必要です"
 msgid "subscription plans"
 msgstr "サブスクリプションプラン"
 
-#: src/features/Sentence/StoryModal.tsx:635
+#: src/features/Sentence/StoryModal.tsx:854
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr "成功率:"
@@ -10828,7 +10849,7 @@ msgstr "試用日数"
 msgid "Try"
 msgstr "試してみてください"
 
-#: src/features/Sentence/StoryModal.tsx:735
+#: src/features/Sentence/StoryModal.tsx:954
 #. js-lingui-explicit-id
 msgid "Try another story"
 msgstr "別のストーリーを試してみる"
@@ -10981,7 +11002,7 @@ msgid "Unlock for 1 year"
 msgstr "1年間のアンロック"
 
 #: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:82
+#: src/features/Dashboard/Dashboard.tsx:81
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "フルアクセスのアンロック"
@@ -10999,7 +11020,7 @@ msgid ""
 msgstr "人間のような音声での会話と、あなたの目標に特化したカリキュラムを解放しましょう。"
 
 #: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:79
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr "無制限のスピーキング練習、すべてのAI機能、コミュニティへのアクセスをアンロックしましょう。"
@@ -11451,7 +11472,7 @@ msgstr "ジュニアフロントエンド開発者インタビュー準備へよ
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "あなたのシニアフロントエンド開発者面接準備へようこそ"
 
-#: src/features/Sentence/StoryModal.tsx:592
+#: src/features/Sentence/StoryModal.tsx:811
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "よくできました！ あなたは物語を完成させました。"
@@ -11744,7 +11765,7 @@ msgstr ""
 "\n"
 "学習する単語\n"
 
-#: src/features/Sentence/StoryModal.tsx:659
+#: src/features/Sentence/StoryModal.tsx:878
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "注意すべき言葉:"
@@ -12337,12 +12358,12 @@ msgstr "あなたのサポート役"
 msgid "Your transcripts are securely stored in our service"
 msgstr "あなたの成績証明書は、当サービスで安全に保存されています。"
 
-#: src/features/Dashboard/Dashboard.tsx:94
+#: src/features/Dashboard/Dashboard.tsx:93
 #. js-lingui-explicit-id
 msgid "Your unlimited access is about to expire soon."
 msgstr "あなたの無制限アクセスはまもなく期限切れになります。"
 
-#: src/features/Dashboard/Dashboard.tsx:91
+#: src/features/Dashboard/Dashboard.tsx:90
 #. js-lingui-explicit-id
 msgid "Your unlimited access is active until {date}"
 msgstr "あなたの無制限アクセスは{date}までアクティブです"
@@ -12355,7 +12376,7 @@ msgid ""
 msgstr "その場で**システムを設計する**よう求められますが、「良い」ものが何であるかは誰も教えてくれません"
 
 #: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:78
+#: src/features/Dashboard/Dashboard.tsx:77
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "プレビューモードになっています"
@@ -12395,7 +12416,7 @@ msgstr "{userName} があなたにディベートを挑んでいます！"
 msgid "{winnerName} wins!"
 msgstr "{winnerName} が勝ちました！"
 
-#: src/features/Sentence/StoryModal.tsx:418
+#: src/features/Sentence/StoryModal.tsx:618
 #. js-lingui-explicit-id
 msgid "{wordsCount} words"
 msgstr "{wordsCount} 語"
