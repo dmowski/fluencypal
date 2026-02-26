@@ -19,9 +19,8 @@ import { useAccess } from '../Usage/useAccess';
 import dayjs from 'dayjs';
 import { AccessBadge } from './AccessBadge';
 import { JustTalkCard } from './JustTalkCard';
-import { PreviewCard } from '../Chat/Message/PreviewCard';
 import { StreaksDaysBadge } from './StreaksDaysBadge';
-import { TextConstructorStories } from '../Sentence/Stories';
+import { Stories } from '../Sentence/Stories';
 import { useAuth } from '../Auth/useAuth';
 
 interface DashboardProps {
@@ -71,7 +70,7 @@ export function Dashboard({ lang }: DashboardProps) {
           {appNavigation.currentPage === 'home' && (
             <>
               <JustTalkCard />
-              {auth.isFounder && <TextConstructorStories />}
+              {auth.isFounder && <Stories />}
 
               {!access.isFullAppAccess && (
                 <AccessBadge

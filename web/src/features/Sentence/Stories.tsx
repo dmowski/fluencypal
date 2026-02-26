@@ -15,7 +15,7 @@ import { StoryModal } from './StoryModal';
 import { uniq } from '@/libs/uniq';
 import { shuffleArray } from '@/libs/array';
 
-export const TextConstructorStories = () => {
+export const Stories = () => {
   const { i18n } = useLingui();
   const [selectedImageImageId, setSelectedImageId] = useUrlState('storyImage', '', false);
 
