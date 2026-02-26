@@ -54,7 +54,9 @@ export const Stories = () => {
     const allElements = [...(databaseStories || [])];
     const publishedStories = allElements.filter((s) => s.isPublished);
 
-    const storiesToShow = shuffleArray(publishedStories);
+    const limit = 7;
+
+    const storiesToShow = shuffleArray(publishedStories).slice(0, limit);
 
     return storiesToShow;
   }, [databaseStories]);
