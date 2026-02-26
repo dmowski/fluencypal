@@ -7,7 +7,7 @@ import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './TextConstructor/splitTextIntoSentences';
 import { StoryContent, TextConstructor } from './TextConstructor/TextConstructor';
-import { ChevronRight, Loader, Music, Origami, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Loader, Music, Origami, Pause, Play, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { SpeakOptions, useConversationAudio } from '../Audio/useConversationAudio';
 import { useAuth } from '../Auth/useAuth';
@@ -351,12 +351,41 @@ export const StoryModal = ({
     audio.setTextAsPotentialSpeak2(listeningSentences[1].sentence, speakOptionsMain);
   };
 
+  const prevListenSentence = () => {
+    if (!listenState) return;
+
+    const prevIndex = listenState.activeSentenceIndex - 1;
+    if (prevIndex < 0) {
+      return;
+    }
+
+    const prevSentence = listenState.allSentences[prevIndex];
+    setListenState({
+      activeSentence: prevSentence,
+      activeSentenceIndex: prevIndex,
+      allSentences: listenState.allSentences,
+    });
+
+    audio.speak(prevSentence.sentence, speakOptionsMain);
+
+    const followingSentence = listenState.allSentences[prevIndex + 1];
+    if (followingSentence) {
+      audio.setTextAsPotentialSpeak2(followingSentence.sentence, speakOptionsMain);
+    }
+  };
+
+  const playActiveListenSentence = () => {
+    if (!listenState) return;
+    audio.speak(listenState.activeSentence.sentence, speakOptionsMain);
+  };
+
   const nextListenSentence = () => {
     if (!listenState) return;
 
     const nextIndex = listenState.activeSentenceIndex + 1;
     if (nextIndex >= listenState.allSentences.length) {
       setListenState(null);
+      setIsListenMode(false);
       return;
     }
 
@@ -437,30 +466,20 @@ export const StoryModal = ({
                           width: '100%',
                           height: '100%',
                           justifyContent: 'flex-end',
-                          gap: '10px',
+                          gap: '30px',
                         }}
                       >
-                        <Typography
-                          variant="h3"
-                          sx={{
-                            fontWeight: 800,
-                            maxWidth: '850px',
-                            textWrap: 'balance',
-                            fontSize: '72px',
-                            '@media (max-width: 700px)': {
-                              fontSize: '52px',
-                            },
-                            '@media (max-width: 500px)': {
-                              fontSize: '42px',
-                            },
-                            '@media (max-width: 400px)': {
-                              fontSize: '32px',
-                            },
-                          }}
-                        >
-                          {listenState?.activeSentence.sentence || i18n._('Loading...')}
+                        {listenState?.activeSentence.sentence && (
+                          <StoryContent
+                            text={listenState?.activeSentence.sentence}
+                            size="normal"
+                            onPlayAudio={(text) => playAudio(text, false)}
+                          />
+                        )}
+
+                        <Typography variant="body2">
+                          {listenState?.activeSentence.translate || '...'}
                         </Typography>
-                        <Typography>{listenState?.activeSentence.translate || '...'}</Typography>
                       </Stack>
 
                       <Stack
@@ -468,18 +487,60 @@ export const StoryModal = ({
                           width: '100%',
                           height: '40dvh',
                           alignItems: 'flex-start',
+                          justifyContent: 'space-between',
+                          flexDirection: 'row',
+                          gap: '10px',
+                          '@media (max-width: 700px)': {
+                            justifyContent: 'flex-start',
+                            alignItems: 'flex-start',
+                            flexDirection: 'column',
+                          },
                         }}
                       >
-                        <Button
-                          color="info"
-                          onClick={nextListenSentence}
-                          endIcon={<ChevronRight size={'20px'} />}
-                          variant="contained"
+                        <Stack
                           sx={{
-                            padding: '10px 50px',
+                            alignItems: 'flex-start',
+                            flexDirection: 'row',
+                            gap: '20px',
                           }}
                         >
-                          {i18n._('Next')}
+                          <Button
+                            color="info"
+                            onClick={prevListenSentence}
+                            startIcon={<ChevronLeft size={'20px'} />}
+                            variant="outlined"
+                            sx={{
+                              padding: '10px 50px',
+                            }}
+                          >
+                            {i18n._('Previous')}
+                          </Button>
+                          <Button
+                            color="info"
+                            onClick={nextListenSentence}
+                            endIcon={<ChevronRight size={'20px'} />}
+                            variant="contained"
+                            sx={{
+                              padding: '10px 50px',
+                            }}
+                          >
+                            {i18n._('Next')}
+                          </Button>
+                        </Stack>
+                        <Button
+                          color="secondary"
+                          onClick={
+                            audio.isPlaying ? () => audio.interrupt() : playActiveListenSentence
+                          }
+                          startIcon={
+                            audio.isPlaying ? <Pause size={'20px'} /> : <Play size={'20px'} />
+                          }
+                          variant="outlined"
+                          sx={{
+                            padding: '10px 30px',
+                          }}
+                        >
+                          {i18n._('Replay')}
                         </Button>
                       </Stack>
                     </Stack>

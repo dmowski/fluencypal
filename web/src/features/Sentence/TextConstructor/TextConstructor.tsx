@@ -419,10 +419,10 @@ export const StoryContent = ({
       className="progress"
       sx={{
         '* p': {
-          fontWeight: size === 'large' ? '700 !important' : '400 !important',
-          lineHeight: '1.2 !important',
+          fontWeight: size === 'large' ? '700 !important' : '600 !important',
+          lineHeight: '1.5 !important',
           textShadow: '0px 1px 2px rgba(0, 0, 0, 0.2)',
-          fontSize: size === 'large' ? '38px !important' : '30px !important',
+          fontSize: size === 'large' ? '38px !important' : '26px !important',
 
           '@media (max-width:600px)': {
             fontSize: size === 'large' ? '28px !important' : '24px !important',
