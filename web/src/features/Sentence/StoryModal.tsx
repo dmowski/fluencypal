@@ -24,6 +24,11 @@ import { useAudioCache } from '../Audio/useAudioCache';
 import { clearWordForAudio } from '../Audio/clearWord';
 import { getVoiceOverSpeakOptions } from '../Audio/getVoiceOverSpeakOptions';
 
+interface Sentence {
+  sentence: string;
+  translate: string;
+}
+
 export const StoryModal = ({
   data,
 
@@ -165,9 +170,11 @@ export const StoryModal = ({
   const imageUrl = data.imageUrl;
   const title = data.title;
 
+  const isNeedToTranslate = targetLanguage !== 'en';
+
   const prepareSentences = async () => {
     const fullTextEn = data.textEn;
-    const isNeedToTranslate = targetLanguage !== 'en';
+
     const fullText = isNeedToTranslate
       ? await translateTextToTargetLanguageFromEng(fullTextEn)
       : fullTextEn;
@@ -319,8 +326,53 @@ export const StoryModal = ({
   const isSavedProgress = state.progress.length > 0;
 
   const [isListenMode, setIsListenMode] = useState(false);
-  const startListenMode = () => {
+
+  const [listenState, setListenState] = useState<{
+    activeSentence: Sentence;
+    activeSentenceIndex: number;
+    allSentences: Sentence[];
+  } | null>(null);
+
+  const startListenMode = async () => {
+    audio.initAudio();
     setIsListenMode(true);
+    const sourceSentences = await prepareSentences();
+    const listeningSentences: Sentence[] = sourceSentences.sentences.map((sentence, index) => ({
+      sentence,
+      translate: sourceSentences.sentencesTranslates[index],
+    }));
+    setListenState({
+      activeSentence: listeningSentences[0],
+      activeSentenceIndex: 0,
+      allSentences: listeningSentences,
+    });
+
+    audio.speak(listeningSentences[0].sentence, speakOptionsMain);
+    audio.setTextAsPotentialSpeak2(listeningSentences[1].sentence, speakOptionsMain);
+  };
+
+  const nextListenSentence = () => {
+    if (!listenState) return;
+
+    const nextIndex = listenState.activeSentenceIndex + 1;
+    if (nextIndex >= listenState.allSentences.length) {
+      setListenState(null);
+      return;
+    }
+
+    const nextSentence = listenState.allSentences[nextIndex];
+    setListenState({
+      activeSentence: nextSentence,
+      activeSentenceIndex: nextIndex,
+      allSentences: listenState.allSentences,
+    });
+
+    audio.speak(nextSentence.sentence, speakOptionsMain);
+
+    const followingSentence = listenState.allSentences[nextIndex + 1];
+    if (followingSentence) {
+      audio.setTextAsPotentialSpeak2(followingSentence.sentence, speakOptionsMain);
+    }
   };
 
   return (
@@ -345,7 +397,99 @@ export const StoryModal = ({
             position: 'relative',
           }}
         >
-          {(!isReady || initializing) && (
+          {isListenMode && (
+            <>
+              <Stack>
+                <Stack
+                  sx={{
+                    width: '100%',
+                    position: 'relative',
+                    height: '100dvh',
+                  }}
+                >
+                  {imageBg}
+                  <Stack
+                    sx={{
+                      position: 'absolute',
+                      width: '100%',
+                      height: '100%',
+                      gap: '20px',
+                      padding: '0px 10px',
+                      bottom: 0,
+                      alignItems: 'center',
+                      zIndex: 2,
+                      justifyContent: 'center',
+                      background:
+                        'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%)',
+                    }}
+                  >
+                    <Stack
+                      sx={{
+                        width: '100%',
+                        maxWidth: '850px',
+                        alignItems: 'flex-start',
+                        gap: '30px',
+                        height: '100%',
+                      }}
+                    >
+                      <Stack
+                        sx={{
+                          width: '100%',
+                          height: '100%',
+                          justifyContent: 'flex-end',
+                          gap: '10px',
+                        }}
+                      >
+                        <Typography
+                          variant="h3"
+                          sx={{
+                            fontWeight: 800,
+                            maxWidth: '850px',
+                            textWrap: 'balance',
+                            fontSize: '72px',
+                            '@media (max-width: 700px)': {
+                              fontSize: '52px',
+                            },
+                            '@media (max-width: 500px)': {
+                              fontSize: '42px',
+                            },
+                            '@media (max-width: 400px)': {
+                              fontSize: '32px',
+                            },
+                          }}
+                        >
+                          {listenState?.activeSentence.sentence || i18n._('Loading...')}
+                        </Typography>
+                        <Typography>{listenState?.activeSentence.translate || '...'}</Typography>
+                      </Stack>
+
+                      <Stack
+                        sx={{
+                          width: '100%',
+                          height: '40dvh',
+                          alignItems: 'flex-start',
+                        }}
+                      >
+                        <Button
+                          color="info"
+                          onClick={nextListenSentence}
+                          endIcon={<ChevronRight size={'20px'} />}
+                          variant="contained"
+                          sx={{
+                            padding: '10px 50px',
+                          }}
+                        >
+                          {i18n._('Next')}
+                        </Button>
+                      </Stack>
+                    </Stack>
+                  </Stack>
+                </Stack>
+              </Stack>
+            </>
+          )}
+
+          {(!isReady || initializing) && !isListenMode && (
             <Stack>
               <Stack
                 sx={{
