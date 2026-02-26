@@ -7,9 +7,9 @@ import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './TextConstructor/splitTextIntoSentences';
 import { StoryContent, TextConstructor } from './TextConstructor/TextConstructor';
-import { ChevronRight, Loader, Origami, X } from 'lucide-react';
+import { ChevronRight, Loader, Music, Origami, X } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { SpeakOptions, ttsVersion, useConversationAudio } from '../Audio/useConversationAudio';
+import { SpeakOptions, useConversationAudio } from '../Audio/useConversationAudio';
 import { useAuth } from '../Auth/useAuth';
 import { increaseGamePointsRequest } from '../Game/gameBackendRequests';
 import { Story, StoryState } from './types';
@@ -23,7 +23,6 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { useAudioCache } from '../Audio/useAudioCache';
 import { clearWordForAudio } from '../Audio/clearWord';
 import { getVoiceOverSpeakOptions } from '../Audio/getVoiceOverSpeakOptions';
-import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 
 export const StoryModal = ({
   data,
@@ -319,6 +318,11 @@ export const StoryModal = ({
 
   const isSavedProgress = state.progress.length > 0;
 
+  const [isListenMode, setIsListenMode] = useState(false);
+  const startListenMode = () => {
+    setIsListenMode(true);
+  };
+
   return (
     <CustomModal isOpen={true} onClose={onCloseHandler}>
       {translator.translateModal}
@@ -416,6 +420,25 @@ export const StoryModal = ({
                       alignItems: 'center',
                     }}
                   >
+                    <Button
+                      onClick={startListenMode}
+                      disabled={initializing}
+                      endIcon={<Music size={'20px'} />}
+                      sx={{
+                        padding: '10px 30px',
+                      }}
+                      variant="outlined"
+                    >
+                      {i18n._('Listen')}
+                    </Button>
+                    <Typography
+                      className="decor-text"
+                      sx={{
+                        fontStyle: 'italic',
+                      }}
+                    >
+                      {i18n._('Or quiz it')}
+                    </Typography>
                     <ButtonGroup
                       sx={{
                         marginBottom: '0px',
