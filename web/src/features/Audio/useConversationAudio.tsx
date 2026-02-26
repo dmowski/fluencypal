@@ -14,7 +14,7 @@ import { isSilentAudio } from './isSilentAudio';
 import { isDev } from '../Analytics/isDev';
 import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 
-export const ttsVersion = 'v11';
+export const ttsVersion = 'v12';
 
 /**
  * What this gives you:

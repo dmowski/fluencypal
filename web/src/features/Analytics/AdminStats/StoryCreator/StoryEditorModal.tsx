@@ -217,7 +217,7 @@ export const StoryEditorModal = ({
             gridTemplateColumns: '300px 1fr',
           }}
         >
-          <Stack>
+          <Stack gap="10px">
             <Stack
               sx={{
                 width: '300px',
