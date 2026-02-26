@@ -71,7 +71,7 @@ export function Dashboard({ lang }: DashboardProps) {
           {appNavigation.currentPage === 'home' && (
             <>
               <JustTalkCard />
-              <TextConstructorStories />
+              {auth.isFounder && <TextConstructorStories />}
 
               {!access.isFullAppAccess && (
                 <AccessBadge
