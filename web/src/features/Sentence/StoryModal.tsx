@@ -599,7 +599,7 @@ export const StoryModal = ({
                 <Stack
                   sx={{
                     minHeight: '240px',
-                    gap: '10px',
+                    gap: '20px',
                   }}
                 >
                   <Stack sx={{}}>
