@@ -6,7 +6,7 @@ import { Story } from '@/features/Sentence/types';
 import { useUrlState } from '@/features/Url/useUrlState';
 import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { deleteDoc, doc, setDoc } from 'firebase/firestore';
-import { CirclePlus, Eye, Music } from 'lucide-react';
+import { CirclePlus, Eye, Music, X } from 'lucide-react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { StoryEditorModal } from './StoryEditorModal';
 import { useState } from 'react';
@@ -237,7 +237,7 @@ export const StoryCreator = () => {
               flexWrap: 'wrap',
             }}
           >
-            {storiesDbData?.map((image, index) => {
+            {storiesDbData?.map((image) => {
               const isPublished = image.isPublished;
               const isAudio = image.audioUrl;
               return (
@@ -266,6 +266,7 @@ export const StoryCreator = () => {
                   >
                     {isAudio && <Music size={'15px'} />}
                     {isPublished && <Eye size={'15px'} />}
+                    {!isPublished && <X size={'15px'} color="red" />}
                   </Stack>
                 </Stack>
               );
