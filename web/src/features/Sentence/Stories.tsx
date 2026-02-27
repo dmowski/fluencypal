@@ -44,6 +44,8 @@ export const Stories = () => {
             borderRight: 'none',
             borderRadius: '0',
             //border: 'none',
+            padding: '28px 5px 20px 22px',
+            gap: '22px',
           },
         }}
       >
