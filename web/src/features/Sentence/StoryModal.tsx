@@ -219,19 +219,6 @@ export const StoryModal = ({
     }
   };
 
-  const imageBg = (
-    <Image
-      src={imageUrl}
-      alt="Today's image"
-      fill
-      sizes="1000px"
-      style={{
-        objectFit: 'cover',
-        boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
-      }}
-    />
-  );
-
   const speakOptionsMain: SpeakOptions = useMemo(
     () => getVoiceOverSpeakOptions(targetLanguage),
     [targetLanguage],
@@ -434,7 +421,15 @@ export const StoryModal = ({
                     height: '100dvh',
                   }}
                 >
-                  {imageBg}
+                  <Image
+                    src={imageUrl}
+                    alt="Today's image"
+                    fill
+                    sizes="1000px"
+                    style={{
+                      objectFit: 'cover',
+                    }}
+                  />
                   <Stack
                     sx={{
                       position: 'absolute',
@@ -557,7 +552,15 @@ export const StoryModal = ({
                   height: '100dvh',
                 }}
               >
-                {imageBg}
+                <Image
+                  src={imageUrl}
+                  alt="Today's image"
+                  fill
+                  sizes="1000px"
+                  style={{
+                    objectFit: 'cover',
+                  }}
+                />
                 <Stack
                   sx={{
                     position: 'absolute',
@@ -985,7 +988,15 @@ export const StoryModal = ({
                     opacity: 1,
                   }}
                 >
-                  {imageBg}
+                  <Image
+                    src={imageUrl}
+                    alt="Today's image"
+                    fill
+                    sizes="1000px"
+                    style={{
+                      objectFit: 'cover',
+                    }}
+                  />
                 </Stack>
                 <Stack
                   sx={{
