@@ -1184,6 +1184,7 @@ msgstr ""
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:159
 #: src/features/Chat/ChatSection.tsx:85
+#: src/features/Sentence/StoryModal.tsx:461
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Tilbage"
@@ -1807,7 +1808,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Sentence/StoryModal.tsx:973
+#: src/features/Sentence/StoryModal.tsx:926
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -2071,7 +2072,7 @@ msgstr "Contacts:"
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
-#: src/features/Sentence/StoryModal.tsx:707
+#: src/features/Sentence/StoryModal.tsx:663
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Fortsæt"
@@ -2105,11 +2106,6 @@ msgstr "Kontrakttest"
 msgid "Conversation"
 msgstr "Samtale"
 
-#: src/features/Landing/LandingPage.tsx:255
-#. js-lingui-explicit-id
-msgid "Conversation Practice"
-msgstr "Samtaleøvelse"
-
 #: src/features/Landing/Price/FeatureList.tsx:40
 #: src/features/Landing/Price/PricePage.tsx:448
 #: src/features/Landing/Price/PricePage.tsx:531
@@ -2117,6 +2113,11 @@ msgstr "Samtaleøvelse"
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Samtalepraksis"
+
+#: src/features/Landing/LandingPage.tsx:255
+#. js-lingui-explicit-id
+msgid "Conversation Practice"
+msgstr "Samtaleøvelse"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:242
 #. js-lingui-explicit-id
@@ -2924,7 +2925,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "Tidlig adgang til nye værktøjer"
 
-#: src/features/Sentence/StoryModal.tsx:666
+#: src/features/Sentence/StoryModal.tsx:622
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "Nem"
@@ -3574,7 +3575,7 @@ msgstr "Afslut"
 msgid "Expand Your Vocabulary"
 msgstr "Udvid dit ordforråd"
 
-#: src/features/Sentence/Stories.tsx:131
+#: src/features/Sentence/Stories.tsx:150
 #. js-lingui-explicit-id
 msgid ""
 "Expand your vocabulary by listening to stories on the go. Good alternative "
@@ -4156,7 +4157,7 @@ msgstr "Fransk Læringsplan"
 msgid "Frequently Asked Questions"
 msgstr "Ofte Stillede Spørgsmål"
 
-#: src/features/Sentence/StoryModal.tsx:732
+#: src/features/Sentence/StoryModal.tsx:686
 #. js-lingui-explicit-id
 msgid "Fresh start"
 msgstr "Frisk start"
@@ -4269,7 +4270,7 @@ msgstr "Fuld adgang til AI-interviewcoach"
 msgid "Full AI tutor access"
 msgstr "Full AI tutor access"
 
-#: src/features/Sentence/StoryModal.tsx:932
+#: src/features/Sentence/StoryModal.tsx:885
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "Fuld historie:"
@@ -4773,7 +4774,7 @@ msgstr "Håndter samtidighed med selvsikkerhed"
 msgid "Happy April 1st!"
 msgstr "Glædelig 1. april!"
 
-#: src/features/Sentence/StoryModal.tsx:680
+#: src/features/Sentence/StoryModal.tsx:636
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "Svær"
@@ -6845,7 +6846,7 @@ msgstr "Begrænsede beskeder"
 msgid "Limited voice features"
 msgstr "Begrænsede stemmefunktioner"
 
-#: src/features/Sentence/StoryModal.tsx:644
+#: src/features/Sentence/StoryModal.tsx:607
 #. js-lingui-explicit-id
 msgid "Listen"
 msgstr "Lyt"
@@ -7068,7 +7069,7 @@ msgstr ""
 msgid "Medical Talk Simulation"
 msgstr "Medicinsk Samtale Simulation"
 
-#: src/features/Sentence/StoryModal.tsx:673
+#: src/features/Sentence/StoryModal.tsx:629
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "Medium"
@@ -7347,7 +7348,7 @@ msgstr "Nye Ord"
 #: src/features/Goal/Quiz/QuizPage2.tsx:426
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:262
-#: src/features/Sentence/StoryModal.tsx:526
+#: src/features/Sentence/StoryModal.tsx:554
 #: src/features/Survey/InfoStep.tsx:272
 #: src/features/Survey/InterviewInfoStep.tsx:107
 #. js-lingui-explicit-id
@@ -7374,7 +7375,7 @@ msgstr "Næste spørgsmål"
 msgid "Next Step"
 msgstr "Næste skridt"
 
-#: src/features/Sentence/StoryModal.tsx:750
+#: src/features/Sentence/StoryModal.tsx:704
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "Næste historie"
@@ -7510,7 +7511,7 @@ msgstr "Ingen supportbeskeder endnu"
 msgid "No text to translate"
 msgstr "Ingen tekst til oversættelse"
 
-#: src/features/Sentence/Stories.tsx:128
+#: src/features/Sentence/Stories.tsx:147
 #. js-lingui-explicit-id
 msgid "No time to speak?"
 msgstr "Ingen tid til at tale?"
@@ -7751,7 +7752,7 @@ msgid "Oops! Something went wrong"
 msgstr "Ups! Noget gik galt"
 
 #: src/features/Landing/Price/PricePage.tsx:206
-#: src/features/Sentence/Stories.tsx:155
+#: src/features/Sentence/Stories.tsx:174
 #. js-lingui-explicit-id
 msgid "Open"
 msgstr "Åben"
@@ -7798,11 +7799,6 @@ msgid ""
 msgstr ""
 "Åbn en persons profil og tryk på knappen \"Inviter til en debat\" for at "
 "starte en debat!"
-
-#: src/features/Sentence/StoryModal.tsx:652
-#. js-lingui-explicit-id
-msgid "Or quiz it"
-msgstr "Eller quiz det"
 
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
 #. js-lingui-explicit-id
@@ -8662,17 +8658,17 @@ msgstr "Forbereder hjernen"
 msgid "Preparing your game..."
 msgstr "Forbereder dit spil..."
 
-#: src/features/Sentence/StoryModal.tsx:730
+#: src/features/Sentence/StoryModal.tsx:684
 #. js-lingui-explicit-id
 msgid "Preparing..."
 msgstr "Forbereder..."
 
-#: src/features/Sentence/StoryModal.tsx:614
+#: src/features/Sentence/StoryModal.tsx:577
 #. js-lingui-explicit-id
 msgid "Press the button below to start the adventure!"
 msgstr "Tryk på knappen nedenfor for at starte eventyret!"
 
-#: src/features/Sentence/StoryModal.tsx:512
+#: src/features/Sentence/StoryModal.tsx:542
 #. js-lingui-explicit-id
 msgid "Previous"
 msgstr "Forrige"
@@ -8779,11 +8775,6 @@ msgstr "Profil"
 msgid "Progress Calendar"
 msgstr "Fremskridtskalender"
 
-#: src/features/Landing/LandingPage.tsx:402
-#. js-lingui-explicit-id
-msgid "Progress Tracking"
-msgstr "Progress Tracking"
-
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
 #: src/features/Landing/Price/PricePage.tsx:453
@@ -8792,6 +8783,11 @@ msgstr "Progress Tracking"
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Fremdriftssporing"
+
+#: src/features/Landing/LandingPage.tsx:402
+#. js-lingui-explicit-id
+msgid "Progress Tracking"
+msgstr "Progress Tracking"
 
 #: src/features/Landing/Price/PricePage.tsx:597
 #. js-lingui-explicit-id
@@ -9272,7 +9268,7 @@ msgstr "Ydeevne ved gengivelse"
 msgid "Renew Now"
 msgstr "Forny nu"
 
-#: src/features/Sentence/StoryModal.tsx:542
+#: src/features/Sentence/StoryModal.tsx:521
 #. js-lingui-explicit-id
 msgid "Replay"
 msgstr "Afspil igen"
@@ -9835,6 +9831,11 @@ msgstr "Vis problemløsningsfærdigheder"
 msgid "Show strong data fundamentals"
 msgstr "Vis stærke datagrundlag"
 
+#: src/features/Sentence/StoryModal.tsx:595
+#. js-lingui-explicit-id
+msgid "Show video"
+msgstr "Vis video"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
 #. js-lingui-explicit-id
 msgid "Show your long-term goals:"
@@ -10184,7 +10185,7 @@ msgstr "Start månedlig plan"
 msgid "Start Practicing"
 msgstr "Begynd at Øve"
 
-#: src/features/Sentence/StoryModal.tsx:733
+#: src/features/Sentence/StoryModal.tsx:687
 #. js-lingui-explicit-id
 msgid "Start Quiz"
 msgstr "Start Quiz"
@@ -10507,7 +10508,7 @@ msgstr "Abonnement påkrævet"
 msgid "subscription plans"
 msgstr "abonnementsplaner"
 
-#: src/features/Sentence/StoryModal.tsx:861
+#: src/features/Sentence/StoryModal.tsx:814
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr "Succesrate:"
@@ -11473,7 +11474,7 @@ msgstr "Prøvedage"
 msgid "Try"
 msgstr "Prøv"
 
-#: src/features/Sentence/StoryModal.tsx:961
+#: src/features/Sentence/StoryModal.tsx:914
 #. js-lingui-explicit-id
 msgid "Try another story"
 msgstr "Prøv en anden historie"
@@ -12119,7 +12120,7 @@ msgstr "Velkommen til din forberedelse til junior frontend-udviklerinterviewet"
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "Velkommen til Din Senior Frontend Udvikler Interview Forberedelse"
 
-#: src/features/Sentence/StoryModal.tsx:818
+#: src/features/Sentence/StoryModal.tsx:771
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "Godt klaret! Du har afsluttet historien."
@@ -12414,7 +12415,7 @@ msgstr "Ord per tur"
 msgid "Words to Learn"
 msgstr "Ord at Lære"
 
-#: src/features/Sentence/StoryModal.tsx:885
+#: src/features/Sentence/StoryModal.tsx:838
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "Ord at være opmærksom på:"
@@ -13127,11 +13128,6 @@ msgstr "{userName} udfordrer dig til en debat!"
 msgid "{winnerName} wins!"
 msgstr "{winnerName} vinder!"
 
-#: src/features/Sentence/StoryModal.tsx:625
-#. js-lingui-explicit-id
-msgid "{wordsCount} words"
-msgstr "{wordsCount} ord"
-
 #: src/features/SEO/metadata.ts:87
 #: src/features/SEO/metadata.ts:340
 #. js-lingui-explicit-id
@@ -13148,6 +13144,16 @@ msgstr ""
 "— det er vigtigt at deltage i denne korte samtale, før man hopper ind i "
 "professionelle emner. Her er nogle nyttige engelske vendinger til at starte "
 "interviewet:"
+
+#: src/features/Sentence/StoryModal.tsx:652
+#. js-lingui-explicit-id
+#~ msgid "Or quiz it"
+#~ msgstr "Eller quiz det"
+
+#: src/features/Sentence/StoryModal.tsx:625
+#. js-lingui-explicit-id
+#~ msgid "{wordsCount} words"
+#~ msgstr "{wordsCount} ord"
 
 #: src/features/Sentence/Stories.tsx:145
 #. js-lingui-explicit-id
