@@ -190,7 +190,7 @@ export const Stories = () => {
             </Typography>
             <Typography variant="body2" sx={{ opacity: 0.9, textWrap: 'balance' }}>
               {i18n._(
-                'Expand your vocabulary by listening to stories on the go. Good alternative to TikTok and Instagram reels',
+                'Expand your vocabulary by listening to stories or construction up a story word by word.',
               )}
             </Typography>
           </Stack>
