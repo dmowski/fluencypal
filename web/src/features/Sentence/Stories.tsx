@@ -15,7 +15,7 @@ export const Stories = () => {
     <Stack
       sx={{
         alignItems: 'center',
-        gap: '45px',
+        gap: '35px',
         marginTop: '20px',
 
         width: '100%',
@@ -27,10 +27,12 @@ export const Stories = () => {
         padding: '20px 0 20px 20px',
         '@media (max-width:600px)': {
           //alignItems: 'flex-start',
+          backgroundColor: 'transparent',
           borderLeft: 'none',
           paddingLeft: '7px',
           borderRight: 'none',
           borderRadius: '0',
+          border: 'none',
         },
       }}
     >
@@ -45,7 +47,6 @@ export const Stories = () => {
       <Stack
         sx={{
           position: 'relative',
-          //transform: 'scale(1.07)',
         }}
       >
         <Stack sx={{}}>
@@ -86,6 +87,9 @@ export const Stories = () => {
                     backgroundColor: 'rgb(111, 6, 24)',
                     borderRadius: '8px',
                     border: '1px solid rgba(255, 255, 255, 0.51)',
+                    '@media (max-width:400px)': {
+                      width: '90px',
+                    },
                   }}
                 ></Stack>
 
@@ -102,6 +106,9 @@ export const Stories = () => {
                     backgroundColor: 'rgba(200, 2, 75, 0.72)',
                     border: '1px solid rgba(255, 255, 255, 0.51)',
                     borderRadius: '8px',
+                    '@media (max-width:400px)': {
+                      width: '90px',
+                    },
                   }}
                 ></Stack>
               </>
