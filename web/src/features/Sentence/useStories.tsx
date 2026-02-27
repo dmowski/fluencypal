@@ -9,14 +9,17 @@ import { getDoc, setDoc } from 'firebase/firestore';
 import { uniq } from '@/libs/uniq';
 import { Story } from './types';
 import { shuffleArray } from '@/libs/array';
+import { useConversationAudio } from '../Audio/useConversationAudio';
+import { sleep } from '@/libs/sleep';
 
 interface StoriesContextType {
   loading: boolean;
   selectedStory: Story | null;
   stories: Story[];
-  openStory: (id: string) => Story | null;
-  openNextStory: () => Story | null;
-  openRandomStory: () => Story | null;
+  openStory: (id: string) => Promise<Story | null>;
+  openNextStory: () => Promise<Story | null>;
+  openRandomStory: () => Promise<Story | null>;
+  closeStory: () => void;
 }
 
 const StoriesContext = createContext<StoriesContextType | null>(null);
@@ -24,8 +27,24 @@ const StoriesContext = createContext<StoriesContextType | null>(null);
 function useProvideStories(): StoriesContextType {
   const settings = useSettings();
   const languageCode = settings.languageCode || 'en';
+  const audio = useConversationAudio();
 
   const [selectedImageImageId, setSelectedImageId] = useUrlState('storyImage', '', false);
+
+  const playStoryAudio = async (story?: Story | null) => {
+    if (!story || !story.audioUrl) {
+      return;
+    }
+    const audioUrl = story.audioUrl;
+    await sleep(500);
+    audio.music.play(audioUrl);
+    audio.music.setVolume(0.1);
+  };
+
+  const closeStory = () => {
+    audio.music.stop();
+    setSelectedImageId('');
+  };
 
   const auth = useAuth();
   const collectionRef = db.collections.stories(auth.uid);
@@ -72,25 +91,30 @@ function useProvideStories(): StoriesContextType {
     [databaseStories, selectedImageImageId],
   );
 
-  const openStory = (id: string) => {
+  const openStory = async (id: string) => {
     setSelectedImageId(id);
     return databaseStories?.find((story) => story.id === id) || null;
   };
 
-  const openRandomStory = () => {
+  const openRandomStory = async () => {
     if (storiesToShow.length === 0) return null;
     const randomStory = storiesToShow[Math.floor(Math.random() * storiesToShow.length)];
     setSelectedImageId(randomStory.id);
     return randomStory;
   };
 
-  const openNextStory = () => {
+  const openNextStory = async () => {
     if (storiesToShow.length === 0) return null;
+    await audio.initAudio();
     const currentIndex = storiesToShow.findIndex((img) => img.id === selectedImageImageId);
     const nextIndex = (currentIndex + 1) % storiesToShow.length;
-    const nextImage = storiesToShow[nextIndex];
-    setSelectedImageId(nextImage.id);
-    return nextImage;
+    const nextStory = storiesToShow[nextIndex];
+    setSelectedImageId(nextStory.id);
+
+    audio.music.stop();
+
+    playStoryAudio(nextStory);
+    return nextStory;
   };
 
   return {
@@ -100,6 +124,7 @@ function useProvideStories(): StoriesContextType {
     openStory,
     openRandomStory,
     openNextStory,
+    closeStory,
   };
 }
 

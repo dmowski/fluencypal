@@ -16,7 +16,7 @@ export const StoryPreview = ({
   onSelectImage,
   image,
 }: {
-  onSelectImage: (id: string) => void;
+  onSelectImage?: (id: string) => void;
   image: ImageDescription | Story;
 }) => {
   const auth = useAuth();
@@ -76,7 +76,7 @@ export const StoryPreview = ({
           borderRadius: '8px',
           boxShadow: isImageDescription
             ? 'inset 0px 0px 0px 2px rgba(220, 0, 37, 0.7)'
-            : 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1)',
+            : 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.3)',
         },
         ':focus': {
           outline: 'none',
@@ -84,7 +84,8 @@ export const StoryPreview = ({
         },
       }}
       component={'button'}
-      onClick={() => onSelectImage(id)}
+      disabled={!onSelectImage}
+      onClick={() => onSelectImage?.(id)}
     >
       {videoUrl && (
         <Stack
