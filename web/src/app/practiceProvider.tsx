@@ -26,6 +26,7 @@ import { LessonPlanProvider } from '@/features/LessonPlan/useLessonPlan';
 import { ConversationAudioProvider } from '@/features/Audio/useConversationAudio';
 import { UserReportProvider } from '@/features/User/useUserReport';
 import { AudioCacheProvider } from '@/features/Audio/useAudioCache';
+import { StoriesProvider } from '@/features/Sentence/useStories';
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
@@ -56,7 +57,9 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                                     <AiConversationProvider>
                                                       <BattleProvider>
                                                         <LessonPlanProvider>
-                                                          {children}
+                                                          <StoriesProvider>
+                                                            {children}
+                                                          </StoriesProvider>
                                                         </LessonPlanProvider>
                                                         <GlobalModals />
                                                       </BattleProvider>

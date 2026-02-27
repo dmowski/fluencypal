@@ -14,58 +14,16 @@ import { getDoc, setDoc } from 'firebase/firestore';
 import { StoryModal } from './StoryModal';
 import { uniq } from '@/libs/uniq';
 import { shuffleArray } from '@/libs/array';
+import { useStories } from './useStories';
 
 export const Stories = () => {
   const { i18n } = useLingui();
   const [selectedImageImageId, setSelectedImageId] = useUrlState('storyImage', '', false);
 
   const auth = useAuth();
-  const collectionRef = db.collections.stories(auth.uid);
-  const [databaseStories] = useCollectionDataOnce(collectionRef);
+
+  const stories = useStories();
   const audio = useConversationAudio();
-
-  const increaseViewsCount = async () => {
-    const storiesViewsStatsDocRef = db.documents.storyStats(auth.uid, selectedImageImageId || '');
-    if (!auth.uid || !storiesViewsStatsDocRef) return;
-    const newestDoc = getDoc(storiesViewsStatsDocRef);
-    const newestData = (await newestDoc).data();
-
-    const viewsUserIds: string[] = newestData?.viewsUserIds || [];
-    if (viewsUserIds.includes(auth.uid)) {
-      return;
-    }
-
-    const newCount = uniq([...viewsUserIds, auth.uid]);
-
-    await setDoc(storiesViewsStatsDocRef, { viewsUserIds: newCount }, { merge: true });
-  };
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (selectedImageImageId) {
-        increaseViewsCount();
-      }
-    }, 4000);
-
-    return () => clearTimeout(timeout);
-  }, [selectedImageImageId]);
-
-  const storiesToShow = useMemo(() => {
-    if (!databaseStories) return [];
-    const allElements = [...(databaseStories || [])];
-    const publishedStories = allElements.filter((s) => s.isPublished);
-
-    const limit = 7;
-
-    const storiesToShow = shuffleArray(publishedStories).slice(0, limit);
-
-    return storiesToShow;
-  }, [databaseStories]);
-
-  const selectedStory = useMemo(
-    () => databaseStories?.find((story) => story.id === selectedImageImageId) || null,
-    [databaseStories, selectedImageImageId],
-  );
 
   const closeStory = () => {
     setSelectedImageId('');
@@ -84,20 +42,16 @@ export const Stories = () => {
 
   const onNext = async () => {
     await audio.initAudio();
-    const currentIndex = storiesToShow.findIndex((img) => img.id === selectedImageImageId);
-    const nextIndex = (currentIndex + 1) % storiesToShow.length;
-    const nextImage = storiesToShow[nextIndex];
-    setSelectedImageId(nextImage.id);
-
+    const nextStory = stories.openNextStory();
     audio.music.stop();
 
-    playStoryAudio(nextImage);
+    playStoryAudio(nextStory);
   };
 
   const onSelectImage = async (imageId: string) => {
     setSelectedImageId(imageId);
     await audio.initAudio();
-    const story = storiesToShow.find((s) => s.id === imageId);
+    const story = stories.openStory(imageId);
     playStoryAudio(story);
   };
 
@@ -112,7 +66,6 @@ export const Stories = () => {
         position: 'relative',
       }}
     >
-      {selectedStory && <StoryModal data={selectedStory} onClose={closeStory} onNext={onNext} />}
       <Stack
         sx={{
           width: '100%',
@@ -169,31 +122,12 @@ export const Stories = () => {
               minHeight: '220px',
             }}
           >
-            {!selectedStory &&
-              storiesToShow.map((story) => {
+            {!stories.selectedStory &&
+              stories.stories.map((story) => {
                 return <StoryPreview key={story.id} onSelectImage={onSelectImage} image={story} />;
               })}
           </Stack>
         </Stack>
-
-        <Stack
-          sx={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            pointerEvents: 'none',
-            width: '80px',
-            height: '100%',
-            position: 'absolute',
-            zIndex: 122,
-            top: 0,
-            color: '#fff',
-            right: '-2px',
-            border: 'none',
-            background:
-              'linear-gradient(90deg, rgba(10, 18, 30, 0.1) 0%, rgba(10, 18, 30, 1) 90%, rgba(10, 18, 30, 1) 100%)',
-            cursor: 'pointer',
-          }}
-        ></Stack>
       </Stack>
     </Stack>
   );
