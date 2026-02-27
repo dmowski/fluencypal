@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 import { getStoryHash } from './getStoryHash';
 import { useAuth } from '../Auth/useAuth';
 import { db } from '../Firebase/firebaseDb';
-import { useDocumentData, useDocumentDataOnce } from 'react-firebase-hooks/firestore';
+import { useDocumentDataOnce } from 'react-firebase-hooks/firestore';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { useSettings } from '../Settings/useSettings';
 
@@ -39,9 +39,9 @@ export const StoryPreview = ({
     return null;
   }, [story, targetLanguage, nativeLanguage]);
 
-  const docRef = db.documents.storyReadProgress(auth.uid, storyHash || '');
+  const readProgress = db.documents.storyReadProgress(auth.uid, storyHash || '');
 
-  const [progressData] = useDocumentDataOnce(docRef);
+  const [progressData] = useDocumentDataOnce(readProgress);
   const isActive = !!progressData?.progress.length;
 
   const isCompleted = progressData?.isCompleted;

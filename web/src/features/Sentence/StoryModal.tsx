@@ -20,7 +20,6 @@ import { getDoc, setDoc } from 'firebase/firestore';
 import { defaultStoryState, numberOfOptionsMap, pointsToWinMap } from './data';
 import { getStoryHash } from './getStoryHash';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { useAudioCache } from '../Audio/useAudioCache';
 import { clearWordForAudio } from '../Audio/clearWord';
 import { getVoiceOverSpeakOptions } from '../Audio/getVoiceOverSpeakOptions';
 
@@ -60,6 +59,7 @@ export const StoryModal = ({
 
   const saveStoryProgress = async (state: StoryState) => {
     if (typeof window === 'undefined' || !docRef) return;
+    console.log('Save progress');
     await setDoc(docRef, state);
   };
 
