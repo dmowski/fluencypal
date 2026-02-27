@@ -24,7 +24,7 @@ export const Stories = () => {
         backgroundColor: 'rgba(0, 0, 0, 0.1)',
         border: '1px solid rgba(255, 255, 255, 0.1)',
         borderRadius: '16px',
-        padding: '25px',
+        //padding: '25px',
         '@media (max-width:400px)': {
           flexDirection: 'column',
           borderRadius: '0px',
@@ -45,6 +45,7 @@ export const Stories = () => {
       <Stack
         sx={{
           position: 'relative',
+          transform: 'scale(1.07)',
         }}
       >
         <Stack sx={{}}>
@@ -74,7 +75,7 @@ export const Stories = () => {
                   sx={{
                     position: 'absolute',
                     top: 0,
-                    left: '20px',
+                    left: '18px',
                     transform: 'rotate(0deg) scale(0.9)',
                     pointerEvents: 'none',
                     zIndex: 0,
@@ -110,7 +111,7 @@ export const Stories = () => {
       >
         <Stack>
           <Typography
-            variant="h3"
+            variant="h5"
             sx={{
               fontWeight: 800,
               '@media (max-width:600px)': {
@@ -123,7 +124,7 @@ export const Stories = () => {
           </Typography>
           <Typography variant="body2" sx={{ opacity: 0.8, textWrap: 'balance' }}>
             {i18n._(
-              'Play stories and listen to them on the go. Good alternative to TikTok and Instagram reels',
+              'Expand your vocabulary by listening to stories on the go. Good alternative to TikTok and Instagram reels',
             )}
           </Typography>
         </Stack>
