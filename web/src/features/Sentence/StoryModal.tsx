@@ -379,6 +379,7 @@ export const StoryModal = ({
 
     const prevIndex = listenState.activeSentenceIndex - 1;
     if (prevIndex < 0) {
+      openInitScreen();
       return;
     }
 
@@ -407,8 +408,7 @@ export const StoryModal = ({
 
     const nextIndex = listenState.activeSentenceIndex + 1;
     if (nextIndex >= listenState.allSentences.length) {
-      setListenState(null);
-      setIsListenMode(false);
+      openInitScreen();
       return;
     }
 
@@ -475,7 +475,7 @@ export const StoryModal = ({
               zIndex: 1,
             }}
           >
-            {data.videoUrl && <StoryVideo videoUrl={data.videoUrl} />}
+            {data.videoUrl && <StoryVideo videoUrl={data.videoUrl} bgAudioUrl={data.audioUrl} />}
 
             <Stack
               sx={{
@@ -1033,7 +1033,7 @@ export const StoryModal = ({
                           padding: '10px 30px',
                           color: '#fff',
                         }}
-                        onClick={() => onCloseHandler()}
+                        onClick={() => openInitScreen()}
                         endIcon={<X size={'20px'} />}
                       >
                         {i18n._('Close')}
@@ -1148,11 +1148,39 @@ export const StoryContainer = ({
   );
 };
 
-export const StoryVideo = ({ videoUrl }: { videoUrl: string }) => {
+export const StoryVideo = ({
+  videoUrl,
+  bgAudioUrl,
+}: {
+  videoUrl: string;
+  bgAudioUrl?: string | null;
+}) => {
   const [isVolumeEnabled, setIsVolumeEnabled] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const audio = useConversationAudio();
+
+  const onVideoClick = () => {
+    audio.initAudio();
+    if (!videoRef.current) return;
+
+    const isNeedToPause = !videoRef.current.paused;
+
+    if (isNeedToPause) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
+    }
+
+    setIsPaused((prev) => !prev);
+
+    if (isNeedToPause) {
+      audio.music.pause();
+    } else if (bgAudioUrl) {
+      audio.music.play(bgAudioUrl);
+      audio.music.setVolume(0.1);
+    }
+  };
 
   return (
     <Stack
@@ -1206,6 +1234,7 @@ export const StoryVideo = ({ videoUrl }: { videoUrl: string }) => {
         src={videoUrl}
         controls={false}
         muted={!isVolumeEnabled}
+        onClick={onVideoClick}
         autoPlay
         loop
         sx={{
