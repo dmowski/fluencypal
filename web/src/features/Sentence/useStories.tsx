@@ -98,8 +98,12 @@ function useProvideStories(): StoriesContextType {
 
   const openRandomStory = async () => {
     if (storiesToShow.length === 0) return null;
+    await audio.initAudio();
     const randomStory = storiesToShow[Math.floor(Math.random() * storiesToShow.length)];
     setSelectedImageId(randomStory.id);
+    audio.music.stop();
+
+    playStoryAudio(randomStory);
     return randomStory;
   };
 
