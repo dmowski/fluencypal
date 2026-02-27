@@ -26,6 +26,9 @@ export const Stories = () => {
         borderRadius: '16px',
         '@media (max-width:600px)': {
           //alignItems: 'flex-start',
+          borderLeft: 'none',
+          paddingLeft: '7px',
+          borderRight: 'none',
           borderRadius: '0',
         },
       }}
