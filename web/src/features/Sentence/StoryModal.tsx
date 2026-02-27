@@ -122,8 +122,6 @@ export const StoryModal = ({
 
   const audio = useConversationAudio();
 
-  const audioCache = useAudioCache();
-
   const pointsToWin = pointsToWinMap[state.mode];
   const numberOfOptions = numberOfOptionsMap[state.mode];
 
@@ -226,7 +224,7 @@ export const StoryModal = ({
       src={imageUrl}
       alt="Today's image"
       fill
-      sizes="1200px"
+      sizes="1000px"
       style={{
         objectFit: 'cover',
         boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',

@@ -41,7 +41,7 @@ export const StoryPreview = ({
 
   const docRef = db.documents.storyReadProgress(auth.uid, storyHash || '');
 
-  const [progressData] = useDocumentData(docRef);
+  const [progressData] = useDocumentDataOnce(docRef);
   const isActive = !!progressData?.progress.length;
 
   const isCompleted = progressData?.isCompleted;

@@ -1,7 +1,7 @@
 import { useLingui } from '@lingui/react';
 import { Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { useAuth } from '../Auth/useAuth';
 import { Story } from './types';
@@ -22,9 +22,10 @@ export const Stories = () => {
   const auth = useAuth();
   const collectionRef = db.collections.stories(auth.uid);
   const [databaseStories] = useCollectionDataOnce(collectionRef);
-  const storiesViewsStatsDocRef = db.documents.storyStats(auth.uid, selectedImageImageId || '');
+  const audio = useConversationAudio();
 
-  const increaseViewsCount = async (storyId: string) => {
+  const increaseViewsCount = async () => {
+    const storiesViewsStatsDocRef = db.documents.storyStats(auth.uid, selectedImageImageId || '');
     if (!auth.uid || !storiesViewsStatsDocRef) return;
     const newestDoc = getDoc(storiesViewsStatsDocRef);
     const newestData = (await newestDoc).data();
@@ -42,7 +43,7 @@ export const Stories = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (selectedImageImageId) {
-        increaseViewsCount(selectedImageImageId);
+        increaseViewsCount();
       }
     }, 4000);
 
@@ -61,7 +62,10 @@ export const Stories = () => {
     return storiesToShow;
   }, [databaseStories]);
 
-  const selectedStory = storiesToShow.find((img) => img.id === selectedImageImageId) || null;
+  const selectedStory = useMemo(
+    () => databaseStories?.find((story) => story.id === selectedImageImageId) || null,
+    [databaseStories, selectedImageImageId],
+  );
 
   const closeStory = () => {
     setSelectedImageId('');
@@ -89,8 +93,6 @@ export const Stories = () => {
 
     playStoryAudio(nextImage);
   };
-
-  const audio = useConversationAudio();
 
   const onSelectImage = async (imageId: string) => {
     setSelectedImageId(imageId);
@@ -167,9 +169,10 @@ export const Stories = () => {
               minHeight: '220px',
             }}
           >
-            {storiesToShow.map((story) => {
-              return <StoryPreview key={story.id} onSelectImage={onSelectImage} image={story} />;
-            })}
+            {!selectedStory &&
+              storiesToShow.map((story) => {
+                return <StoryPreview key={story.id} onSelectImage={onSelectImage} image={story} />;
+              })}
           </Stack>
         </Stack>
 
