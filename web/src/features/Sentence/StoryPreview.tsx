@@ -43,7 +43,6 @@ export const StoryPreview = ({
 
   const [progressData] = useDocumentDataOnce(readProgress);
   const isActive = !!progressData?.progress.length;
-
   const isCompleted = progressData?.isCompleted;
 
   const id = image.id;
@@ -52,10 +51,11 @@ export const StoryPreview = ({
   const videoUrl = story?.videoUrl;
   const isImageDescription = !!imageDescription;
 
-  const fullText = progressData?.sentences.join(' ').length || 0;
-  const doneLength = progressData?.progress.length || 0;
-
-  const progressPercent = fullText && doneLength ? Math.floor((doneLength / fullText) * 100) : 0;
+  const progressPercent = useMemo(() => {
+    const fullText = progressData?.sentences.join(' ').length || 0;
+    const doneLength = progressData?.progress.length || 0;
+    return fullText && doneLength ? Math.floor((doneLength / fullText) * 100) : 0;
+  }, [progressData]);
 
   return (
     <Stack
