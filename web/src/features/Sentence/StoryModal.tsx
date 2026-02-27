@@ -11,10 +11,8 @@ import {
   ArrowDown,
   ArrowLeft,
   ArrowUp,
-  ChevronDown,
   ChevronLeft,
   ChevronRight,
-  ChevronUp,
   Loader,
   Music,
   Origami,
@@ -40,6 +38,7 @@ import { getStoryHash } from './getStoryHash';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { clearWordForAudio } from '../Audio/clearWord';
 import { getVoiceOverSpeakOptions } from '../Audio/getVoiceOverSpeakOptions';
+import { useStories } from './useStories';
 
 interface Sentence {
   sentence: string;
@@ -60,6 +59,7 @@ export const StoryModal = ({
 }) => {
   const auth = useAuth();
   const settings = useSettings();
+  const stories = useStories();
 
   const targetLanguage = settings.languageCode || 'en';
   const nativeLanguage = settings.userSettings?.nativeLanguageCode || 'en';
@@ -235,16 +235,7 @@ export const StoryModal = ({
       setInitializing(false);
     }
 
-    playBgAudio();
-  };
-
-  const playBgAudio = async () => {
-    if (data.audioUrl && !audio.music.isPlaying) {
-      const audioUrl = data.audioUrl;
-      await sleep(500);
-      audio.music.play(audioUrl);
-      audio.music.setVolume(0.1);
-    }
+    stories.playStoryAudio(data);
   };
 
   const openInitScreen = () => {
@@ -371,7 +362,7 @@ export const StoryModal = ({
     audio.speak(listeningSentences[0].sentence, speakOptionsMain);
     audio.setTextAsPotentialSpeak2(listeningSentences[1].sentence, speakOptionsMain);
 
-    playBgAudio();
+    stories.playStoryAudio(data);
   };
 
   const prevListenSentence = () => {
@@ -433,9 +424,6 @@ export const StoryModal = ({
 
   const isAudioMode = isListenMode && !isShowVideo;
 
-  const [isVideoVolumeEnabled, setIsVideoVolumeEnabled] = useState(true);
-  const [isVideoPaused, setIsVideoPaused] = useState(true);
-
   const backIcon = (
     <Stack
       sx={{
@@ -482,10 +470,10 @@ export const StoryModal = ({
               <StoryVideo
                 videoUrl={data.videoUrl}
                 bgAudioUrl={data.audioUrl}
-                isVideoVolumeEnabled={isVideoVolumeEnabled}
-                setIsVideoVolumeEnabled={setIsVideoVolumeEnabled}
-                isVideoPaused={isVideoPaused}
-                setIsVideoPaused={setIsVideoPaused}
+                isVideoVolumeEnabled={stories.isVideoVolumeEnabled}
+                setIsVideoVolumeEnabled={stories.setIsVideoVolumeEnabled}
+                isVideoPaused={stories.isVideoPaused}
+                setIsVideoPaused={stories.setIsVideoPaused}
               />
             )}
 

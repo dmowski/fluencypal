@@ -1,5 +1,5 @@
 'use client';
-import { createContext, useContext, ReactNode, JSX, useEffect, useMemo } from 'react';
+import { createContext, useContext, ReactNode, JSX, useEffect, useMemo, useState } from 'react';
 import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
 import { useUrlState } from '../Url/useUrlState';
@@ -22,6 +22,11 @@ interface StoriesContextType {
   onPrevStory: () => Promise<Story | null>;
   openRandomStory: () => Promise<Story | null>;
   closeStory: () => void;
+  isVideoVolumeEnabled: boolean;
+  setIsVideoVolumeEnabled: (enabled: boolean) => void;
+  isVideoPaused: boolean;
+  setIsVideoPaused: (paused: boolean) => void;
+  playStoryAudio: (story?: Story | null) => Promise<void>;
 }
 
 const StoriesContext = createContext<StoriesContextType | null>(null);
@@ -30,6 +35,9 @@ function useProvideStories(): StoriesContextType {
   const settings = useSettings();
   const languageCode = settings.languageCode || 'en';
   const audio = useConversationAudio();
+
+  const [isVideoVolumeEnabled, setIsVideoVolumeEnabled] = useState(true);
+  const [isVideoPaused, setIsVideoPaused] = useState(true);
 
   const [selectedImageImageId, setSelectedImageId] = useUrlState('storyImage', '', false);
 
@@ -121,7 +129,9 @@ function useProvideStories(): StoriesContextType {
 
     audio.music.stop();
 
-    playStoryAudio(nextStory);
+    if (isVideoVolumeEnabled) {
+      playStoryAudio(nextStory);
+    }
     return nextStory;
   };
 
@@ -135,7 +145,9 @@ function useProvideStories(): StoriesContextType {
 
     audio.music.stop();
 
-    playStoryAudio(prevStory);
+    if (isVideoVolumeEnabled) {
+      playStoryAudio(prevStory);
+    }
     return prevStory;
   };
 
@@ -149,6 +161,11 @@ function useProvideStories(): StoriesContextType {
     openNextStory,
     closeStory,
     onPrevStory,
+    isVideoVolumeEnabled,
+    setIsVideoVolumeEnabled,
+    isVideoPaused,
+    setIsVideoPaused,
+    playStoryAudio,
   };
 }
 
