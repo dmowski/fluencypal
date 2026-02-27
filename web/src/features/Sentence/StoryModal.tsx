@@ -1,5 +1,5 @@
 import { useLingui } from '@lingui/react';
-import { Button, ButtonGroup, Typography } from '@mui/material';
+import { Button, ButtonGroup, IconButton, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -14,8 +14,11 @@ import {
   Music,
   Origami,
   Pause,
+  Play,
   RefreshCw,
   Video,
+  Volume2,
+  VolumeX,
   X,
 } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
@@ -423,24 +426,7 @@ export const StoryModal = ({
               zIndex: 1,
             }}
           >
-            {data.videoUrl && (
-              <Stack
-                component={'video'}
-                src={data.videoUrl}
-                controls={false}
-                autoPlay
-                loop
-                sx={{
-                  width: '100%',
-                  height: '100%',
-                  // container: cover
-                  objectFit: 'cover',
-                  boxShadow: '0px 4px 22px rgba(0, 0, 0, 0.9)',
-                  maxWidth: '700px',
-                  borderRadius: '8px',
-                }}
-              />
-            )}
+            {data.videoUrl && <StoryVideo videoUrl={data.videoUrl} />}
 
             <Stack
               sx={{
@@ -1031,6 +1017,77 @@ export const StoryContainer = ({
           />
         </Stack>
       </Stack>
+    </Stack>
+  );
+};
+
+export const StoryVideo = ({ videoUrl }: { videoUrl: string }) => {
+  const [isVolumeEnabled, setIsVolumeEnabled] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  return (
+    <Stack
+      sx={{
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+      }}
+    >
+      <Stack
+        sx={{
+          position: 'absolute',
+          top: '20px',
+          left: '20px',
+          zIndex: 1,
+          flexDirection: 'row',
+          gap: '10px',
+          alignItems: 'center',
+        }}
+      >
+        <IconButton
+          onClick={() => {
+            setIsVolumeEnabled((prev) => !prev);
+          }}
+          color="default"
+        >
+          {isVolumeEnabled ? <Volume2 size={'20px'} /> : <VolumeX size={'20px'} />}
+        </IconButton>
+        <IconButton
+          onClick={() => {
+            if (!videoRef.current) return;
+
+            if (isPaused) {
+              videoRef.current.play();
+            } else {
+              videoRef.current.pause();
+            }
+
+            setIsPaused((prev) => !prev);
+          }}
+          color="default"
+        >
+          {isPaused ? <Play size={'20px'} /> : <Pause size={'20px'} />}
+        </IconButton>
+      </Stack>
+      <Stack
+        component={'video'}
+        ref={videoRef}
+        src={videoUrl}
+        controls={false}
+        muted={!isVolumeEnabled}
+        autoPlay
+        loop
+        sx={{
+          width: '100%',
+          height: '100%',
+          // container: cover
+          objectFit: 'cover',
+          boxShadow: '0px 4px 22px rgba(0, 0, 0, 0.9)',
+          maxWidth: '700px',
+          borderRadius: '8px',
+        }}
+      />
     </Stack>
   );
 };
