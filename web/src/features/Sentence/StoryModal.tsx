@@ -434,7 +434,7 @@ export const StoryModal = ({
   const isAudioMode = isListenMode && !isShowVideo;
 
   const [isVideoVolumeEnabled, setIsVideoVolumeEnabled] = useState(true);
-  const [isVideoPaused, setIsVideoPaused] = useState(false);
+  const [isVideoPaused, setIsVideoPaused] = useState(true);
 
   const backIcon = (
     <Stack
@@ -1178,36 +1178,31 @@ export const StoryVideo = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const audio = useConversationAudio();
 
-  const isPlaying = audio.isUnlocked() && !isVideoPaused;
-
   const toggleVolume = () => {
     audio.initAudio();
-    const isEnabled = !isVideoVolumeEnabled;
-    setIsVideoVolumeEnabled(isEnabled);
-    audio.music.setVolume(isEnabled ? 0.1 : 0);
+    const isNeedToEnable = !isVideoVolumeEnabled;
+    setIsVideoVolumeEnabled(isNeedToEnable);
+    audio.music.setVolume(isNeedToEnable ? 0.1 : 0);
   };
 
   const togglePause = () => {
     audio.initAudio();
     if (!videoRef.current) return;
 
-    const isNeedToPause = isPlaying;
-    console.log('!!!! isNeedToPause', isNeedToPause);
+    const isNeedToPause = !isVideoPaused;
 
     if (isNeedToPause) {
       videoRef.current.pause();
+      audio.music.pause();
     } else {
       videoRef.current.play();
+      if (bgAudioUrl) {
+        audio.music.play(bgAudioUrl);
+        audio.music.setVolume(0.1);
+      }
     }
 
     setIsVideoPaused(isNeedToPause);
-
-    if (isNeedToPause) {
-      audio.music.pause();
-    } else if (bgAudioUrl) {
-      audio.music.play(bgAudioUrl);
-      audio.music.setVolume(0.1);
-    }
   };
 
   return (
@@ -1233,7 +1228,7 @@ export const StoryVideo = ({
           {isVideoVolumeEnabled ? <Volume2 size={'20px'} /> : <VolumeX size={'20px'} />}
         </IconButton>
         <IconButton onClick={togglePause} color="default">
-          {isPlaying ? <Pause size={'20px'} /> : <Play size={'20px'} />}
+          {isVideoPaused ? <Play size={'20px'} /> : <Pause size={'20px'} />}
         </IconButton>
       </Stack>
       <Stack
@@ -1245,14 +1240,18 @@ export const StoryVideo = ({
         onClick={togglePause}
         playsInline
         autoPlay
+        onPause={(e) => {
+          setIsVideoPaused(true);
+          audio.music.pause();
+        }}
+        onPlay={() => {
+          setIsVideoPaused(false);
+        }}
         loop
         sx={{
           width: '100%',
           height: '100%',
-          // container: cover
           objectFit: 'cover',
-          boxShadow: '0px 4px 22px rgba(0, 0, 0, 0.9)',
-          maxWidth: '700px',
         }}
       />
     </Stack>
