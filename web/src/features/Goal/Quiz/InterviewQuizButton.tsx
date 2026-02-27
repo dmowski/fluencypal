@@ -36,7 +36,7 @@ export const InterviewQuizButton: React.FC<{
         paddingTop: '20px',
         paddingBottom: '40px',
         flexDirection: 'row',
-        gap: '16px',
+        gap: '10px',
         justifyContent: 'flex-start',
         flexWrap: 'wrap',
       }}
@@ -65,7 +65,7 @@ export const InterviewQuizButton: React.FC<{
       {secondButtonTitle && onSecondButtonClick && (
         <Button
           onClick={onSecondButtonClick}
-          variant="text"
+          variant="outlined"
           color={color}
           type={type}
           size="large"

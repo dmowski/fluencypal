@@ -589,17 +589,26 @@ export const StoryModal = ({
                   gap: '10px',
                 }}
               >
-                {listenState?.activeSentence.sentence && (
-                  <StoryContent
-                    text={listenState?.activeSentence.sentence}
-                    size="normal"
-                    onPlayAudio={(text) => playAudio(text, false)}
-                  />
-                )}
+                <Stack
+                  sx={{
+                    minHeight: '240px',
+                    gap: '10px',
+                  }}
+                >
+                  <Stack sx={{}}>
+                    {listenState?.activeSentence.sentence && (
+                      <StoryContent
+                        text={listenState?.activeSentence.sentence}
+                        size="normal"
+                        onPlayAudio={(text) => playAudio(text, false)}
+                      />
+                    )}
+                  </Stack>
 
-                <Typography variant="body2">
-                  {listenState?.activeSentence.translate || '...'}
-                </Typography>
+                  <Typography variant="body2">
+                    {listenState?.activeSentence.translate || '...'}
+                  </Typography>
+                </Stack>
               </Stack>
 
               <Stack
