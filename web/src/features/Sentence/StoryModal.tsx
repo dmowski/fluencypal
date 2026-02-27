@@ -22,6 +22,7 @@ import { getStoryHash } from './getStoryHash';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { clearWordForAudio } from '../Audio/clearWord';
 import { getVoiceOverSpeakOptions } from '../Audio/getVoiceOverSpeakOptions';
+import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 
 interface Sentence {
   sentence: string;
@@ -394,9 +395,9 @@ export const StoryModal = ({
       {translator.translateModal}
       <Stack
         sx={{
-          position: 'fixed',
-          width: '100dvw',
-          height: '100dvh',
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
           top: 0,
           left: 0,
           alignItems: 'center',
@@ -406,19 +407,22 @@ export const StoryModal = ({
         <Stack
           sx={{
             width: '100%',
+            height: '100%',
             padding: '0',
-            height: '100dvh',
-            position: 'relative',
           }}
         >
           {isListenMode && (
             <>
-              <Stack>
+              <Stack
+                sx={{
+                  height: '100%',
+                }}
+              >
                 <Stack
                   sx={{
                     width: '100%',
                     position: 'relative',
-                    height: '100dvh',
+                    height: '100%',
                   }}
                 >
                   <Image
@@ -478,7 +482,7 @@ export const StoryModal = ({
                       <Stack
                         sx={{
                           width: '100%',
-                          height: '40dvh',
+                          height: '40%',
                           alignItems: 'flex-start',
                           justifyContent: 'space-between',
                           flexDirection: 'row',
@@ -550,7 +554,11 @@ export const StoryModal = ({
           )}
 
           {(!isReady || initializing) && !isListenMode && (
-            <Stack>
+            <Stack
+              sx={{
+                height: '100%',
+              }}
+            >
               <Stack
                 sx={{
                   width: '100%',
@@ -651,6 +659,7 @@ export const StoryModal = ({
                     >
                       {i18n._('Or quiz it')}
                     </Typography>
+
                     <ButtonGroup
                       sx={{
                         marginBottom: '0px',
@@ -763,6 +772,7 @@ export const StoryModal = ({
                 width: '100%',
                 alignItems: 'center',
                 justifyContent: 'center',
+                zIndex: 1,
               }}
             >
               <Stack
@@ -977,6 +987,7 @@ export const StoryModal = ({
                   </Stack>
                 )}
               </Stack>
+
               <Stack
                 sx={{
                   position: 'absolute',
