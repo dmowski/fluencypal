@@ -427,7 +427,7 @@ export const StoryModal = ({
               <Stack
                 component={'video'}
                 src={data.videoUrl}
-                controls
+                controls={false}
                 autoPlay
                 loop
                 sx={{
