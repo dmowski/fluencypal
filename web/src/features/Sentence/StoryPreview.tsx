@@ -76,7 +76,7 @@ export const StoryPreview = ({
           borderRadius: '8px',
           boxShadow: isImageDescription
             ? 'inset 0px 0px 0px 2px rgba(220, 0, 37, 0.7)'
-            : 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.3)',
+            : 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2)',
         },
         ':focus': {
           outline: 'none',

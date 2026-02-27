@@ -15,12 +15,23 @@ export const Stories = () => {
     <Stack
       sx={{
         alignItems: 'center',
-        gap: '40px',
+        gap: '45px',
         marginTop: '20px',
 
         width: '100%',
         position: 'relative',
         flexDirection: 'row',
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        borderRadius: '16px',
+        padding: '25px',
+        '@media (max-width:400px)': {
+          flexDirection: 'column',
+          borderRadius: '0px',
+          padding: '15px',
+          alignItems: 'flex-start',
+          gap: '15px',
+        },
       }}
     >
       {stories.selectedStory && (
@@ -99,23 +110,41 @@ export const Stories = () => {
       >
         <Stack>
           <Typography
-            variant="h4"
+            variant="h3"
             sx={{
               fontWeight: 800,
+              '@media (max-width:600px)': {
+                fontSize: '1.5rem',
+                lineHeight: '1.8rem',
+              },
             }}
           >
             {i18n._('No time to speak?')}
           </Typography>
-          <Typography>{i18n._('Play stories and listen to them on the go')}</Typography>
+          <Typography variant="body2" sx={{ opacity: 0.8, textWrap: 'balance' }}>
+            {i18n._(
+              'Play stories and listen to them on the go. Good alternative to TikTok and Instagram reels',
+            )}
+          </Typography>
         </Stack>
-        <Button
-          variant="outlined"
-          color="info"
-          endIcon={<ArrowRight />}
-          onClick={stories.openNextStory}
+        <Stack
+          sx={{
+            alignItems: 'flex-start',
+            gap: '10px',
+          }}
         >
-          {i18n._('See stories')}
-        </Button>
+          <Button
+            variant="outlined"
+            color="info"
+            endIcon={<ArrowRight />}
+            onClick={stories.openNextStory}
+            sx={{
+              padding: '10px 30px',
+            }}
+          >
+            {i18n._('See stories')}
+          </Button>
+        </Stack>
       </Stack>
     </Stack>
   );
