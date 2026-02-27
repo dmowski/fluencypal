@@ -247,7 +247,7 @@ export const StoryCreator = () => {
                     position: 'relative',
                   }}
                 >
-                  <StoryPreview key={image.id} onSelectImage={onSelectImage} image={image} />
+                  <StoryPreview key={image.id} onSelectImage={onSelectImage} data={image} />
 
                   <Stack
                     sx={{
@@ -311,7 +311,7 @@ export const StoryCreator = () => {
                     <StoryPreview
                       key={index}
                       onSelectImage={(id) => createFromImageDescription(image)}
-                      image={image}
+                      data={image}
                     />
                   );
                 })}

@@ -16,6 +16,7 @@ interface StoriesContextType {
   loading: boolean;
   selectedStory: Story | null;
   stories: Story[];
+  randomStoryWithVideo: Story | null;
   openStory: (id: string) => Promise<Story | null>;
   openNextStory: () => Promise<Story | null>;
   openRandomStory: () => Promise<Story | null>;
@@ -76,14 +77,16 @@ function useProvideStories(): StoriesContextType {
     return () => clearTimeout(timeout);
   }, [selectedImageImageId]);
 
-  const storiesToShow = useMemo(() => {
-    if (!databaseStories) return [];
+  const { storiesToShow, randomStoryWithVideo } = useMemo(() => {
+    if (!databaseStories) return { storiesToShow: [], randomStoryWithVideo: null };
     const allElements = [...(databaseStories || [])];
     const publishedStories = allElements.filter((s) => s.isPublished);
 
     const storiesToShow = shuffleArray(publishedStories);
 
-    return storiesToShow;
+    const randomStoryWithVideo = storiesToShow.find((story) => story.videoUrl) || null;
+
+    return { storiesToShow, randomStoryWithVideo };
   }, [databaseStories]);
 
   const selectedStory = useMemo(
@@ -125,6 +128,7 @@ function useProvideStories(): StoriesContextType {
     loading,
     selectedStory,
     stories: storiesToShow,
+    randomStoryWithVideo,
     openStory,
     openRandomStory,
     openNextStory,

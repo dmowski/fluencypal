@@ -14,15 +14,15 @@ import { useSettings } from '../Settings/useSettings';
 
 export const StoryPreview = ({
   onSelectImage,
-  image,
+  data,
 }: {
   onSelectImage?: (id: string) => void;
-  image: ImageDescription | Story;
+  data: ImageDescription | Story;
 }) => {
   const auth = useAuth();
   const settings = useSettings();
-  const story: Story | null = 'textEn' in image ? image : null;
-  const imageDescription: ImageDescription | null = 'textEn' in image ? null : image;
+  const story: Story | null = 'textEn' in data ? data : null;
+  const imageDescription: ImageDescription | null = 'textEn' in data ? null : data;
 
   const storiesViewsStatsDocRef = db.documents.storyStats(auth.uid, story?.id);
   const [storiesViewsStats] = useDocumentDataOnce(storiesViewsStatsDocRef);
@@ -45,7 +45,7 @@ export const StoryPreview = ({
   const isActive = !!progressData?.progress.length;
   const isCompleted = progressData?.isCompleted;
 
-  const id = image.id;
+  const id = data.id;
   const title = story?.title || imageDescription?.shortDescription || '';
   const imageUrl = story?.imageUrl || imageDescription?.url || '';
   const videoUrl = story?.videoUrl;

@@ -24,6 +24,7 @@ export const Stories = () => {
         backgroundColor: 'rgba(0, 0, 0, 0.1)',
         border: '1px solid rgba(255, 255, 255, 0.1)',
         borderRadius: '16px',
+        padding: '20px 0 20px 20px',
         '@media (max-width:600px)': {
           //alignItems: 'flex-start',
           borderLeft: 'none',
@@ -44,7 +45,7 @@ export const Stories = () => {
       <Stack
         sx={{
           position: 'relative',
-          transform: 'scale(1.07)',
+          //transform: 'scale(1.07)',
         }}
       >
         <Stack sx={{}}>
@@ -54,7 +55,7 @@ export const Stories = () => {
               position: 'relative',
             }}
           >
-            {!stories.selectedStory && stories.stories && (
+            {!stories.selectedStory && stories.randomStoryWithVideo && (
               <>
                 <Stack
                   sx={{
@@ -64,38 +65,45 @@ export const Stories = () => {
                 >
                   <StoryPreview
                     onSelectImage={() => {
-                      stories.openStory(stories.stories[1].id);
+                      stories.openStory(stories.randomStoryWithVideo?.id || '');
                     }}
-                    image={stories.stories[1]}
+                    data={stories.randomStoryWithVideo}
                   />
                 </Stack>
 
                 <Stack
                   sx={{
                     position: 'absolute',
+
                     top: 0,
-                    left: '18px',
-                    transform: 'rotate(0deg) scale(0.9)',
+                    left: '9px',
+                    transform: 'rotate(0deg) scale(0.93)',
                     pointerEvents: 'none',
                     zIndex: 0,
+                    width: '130px',
+                    aspectRatio: '130 / 200',
+
+                    backgroundColor: 'rgb(111, 6, 24)',
+                    borderRadius: '8px',
+                    border: '1px solid rgba(255, 255, 255, 0.51)',
                   }}
-                >
-                  <StoryPreview image={stories.stories[0]} />
-                </Stack>
+                ></Stack>
 
                 <Stack
                   sx={{
                     position: 'absolute',
-
                     top: 0,
-                    left: '10px',
-                    transform: 'rotate(0deg) scale(0.95)',
+                    left: '15px',
+                    transform: 'rotate(0deg) scale(0.88)',
                     pointerEvents: 'none',
-                    zIndex: 0,
+                    zIndex: -1,
+                    width: '130px',
+                    aspectRatio: '130 / 200',
+                    backgroundColor: 'rgba(200, 2, 75, 0.72)',
+                    border: '1px solid rgba(255, 255, 255, 0.51)',
+                    borderRadius: '8px',
                   }}
-                >
-                  <StoryPreview image={stories.stories[2]} />
-                </Stack>
+                ></Stack>
               </>
             )}
           </Stack>
@@ -112,6 +120,7 @@ export const Stories = () => {
         <Stack
           sx={{
             padding: '0 10px 0 0',
+            gap: '4px',
           }}
         >
           <Typography
