@@ -1177,6 +1177,7 @@ export const StoryVideo = ({
     audio.initAudio();
     const isNeedToEnable = !isVideoVolumeEnabled;
     setIsVideoVolumeEnabled(isNeedToEnable);
+    // remove
     audio.music.setVolume(isNeedToEnable ? 0.1 : 0);
   };
 
@@ -1188,9 +1189,12 @@ export const StoryVideo = ({
 
     if (isNeedToPause) {
       videoRef.current.pause();
+
+      // remove
       audio.music.pause();
     } else {
       videoRef.current.play();
+      // remove
       if (bgAudioUrl) {
         audio.music.play(bgAudioUrl);
         audio.music.setVolume(0.1);
