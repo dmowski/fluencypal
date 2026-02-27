@@ -51,9 +51,11 @@ export const StoryModal = ({
 
   onClose,
   onNext,
+  onPrev,
 }: {
   data: Story;
   onClose: () => void;
+  onPrev: () => void;
   onNext: () => void;
 }) => {
   const auth = useAuth();
@@ -542,6 +544,9 @@ export const StoryModal = ({
                       border: '1px solid rgba(255, 255, 255, 0.4)',
                       backgroundColor: 'rgba(0, 0, 0, 0.2)',
                     }}
+                    onClick={() => {
+                      onPrev();
+                    }}
                   >
                     <ArrowUp size={'25px'} />
                   </IconButton>
@@ -550,6 +555,9 @@ export const StoryModal = ({
                     sx={{
                       border: '1px solid rgba(255, 255, 255, 0.4)',
                       backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                    }}
+                    onClick={() => {
+                      onNext();
                     }}
                   >
                     <ArrowDown size={'25px'} />
@@ -606,13 +614,11 @@ export const StoryModal = ({
               >
                 <Button
                   onClick={audio.isPlaying ? () => audio.interrupt() : playActiveListenSentence}
-                  startIcon={
-                    audio.isPlaying ? <Pause size={'20px'} /> : <RefreshCw size={'20px'} />
-                  }
+                  startIcon={<RefreshCw size={'20px'} />}
                   variant="outlined"
                   sx={{
-                    color: '#fff',
-                    borderColor: '#fff',
+                    color: 'rgba(255, 255, 255, 0.9)',
+                    borderColor: 'rgba(255, 255, 255, 0.9)',
                   }}
                 >
                   {i18n._('Replay')}

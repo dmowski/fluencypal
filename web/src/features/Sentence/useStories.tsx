@@ -19,6 +19,7 @@ interface StoriesContextType {
   randomStoryWithVideo: Story | null;
   openStory: (id: string) => Promise<Story | null>;
   openNextStory: () => Promise<Story | null>;
+  onPrevStory: () => Promise<Story | null>;
   openRandomStory: () => Promise<Story | null>;
   closeStory: () => void;
 }
@@ -124,6 +125,20 @@ function useProvideStories(): StoriesContextType {
     return nextStory;
   };
 
+  const onPrevStory = async () => {
+    if (storiesToShow.length === 0) return null;
+    await audio.initAudio();
+    const currentIndex = storiesToShow.findIndex((img) => img.id === selectedImageImageId);
+    const prevIndex = (currentIndex - 1 + storiesToShow.length) % storiesToShow.length;
+    const prevStory = storiesToShow[prevIndex];
+    setSelectedImageId(prevStory.id);
+
+    audio.music.stop();
+
+    playStoryAudio(prevStory);
+    return prevStory;
+  };
+
   return {
     loading,
     selectedStory,
@@ -133,6 +148,7 @@ function useProvideStories(): StoriesContextType {
     openRandomStory,
     openNextStory,
     closeStory,
+    onPrevStory,
   };
 }
 

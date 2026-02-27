@@ -41,6 +41,7 @@ export const Stories = () => {
           data={stories.selectedStory}
           onClose={stories.closeStory}
           onNext={stories.openNextStory}
+          onPrev={stories.onPrevStory}
         />
       )}
 
