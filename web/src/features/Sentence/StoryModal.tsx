@@ -433,6 +433,9 @@ export const StoryModal = ({
 
   const isAudioMode = isListenMode && !isShowVideo;
 
+  const [isVideoVolumeEnabled, setIsVideoVolumeEnabled] = useState(true);
+  const [isVideoPaused, setIsVideoPaused] = useState(false);
+
   const backIcon = (
     <Stack
       sx={{
@@ -475,7 +478,16 @@ export const StoryModal = ({
               zIndex: 1,
             }}
           >
-            {data.videoUrl && <StoryVideo videoUrl={data.videoUrl} bgAudioUrl={data.audioUrl} />}
+            {data.videoUrl && (
+              <StoryVideo
+                videoUrl={data.videoUrl}
+                bgAudioUrl={data.audioUrl}
+                isVideoVolumeEnabled={isVideoVolumeEnabled}
+                setIsVideoVolumeEnabled={setIsVideoVolumeEnabled}
+                isVideoPaused={isVideoPaused}
+                setIsVideoPaused={setIsVideoPaused}
+              />
+            )}
 
             <Stack
               sx={{
@@ -1151,20 +1163,36 @@ export const StoryContainer = ({
 export const StoryVideo = ({
   videoUrl,
   bgAudioUrl,
+  isVideoVolumeEnabled,
+  setIsVideoVolumeEnabled,
+  isVideoPaused,
+  setIsVideoPaused,
 }: {
   videoUrl: string;
   bgAudioUrl?: string | null;
+  isVideoVolumeEnabled: boolean;
+  setIsVideoVolumeEnabled: (enabled: boolean) => void;
+  isVideoPaused: boolean;
+  setIsVideoPaused: (paused: boolean) => void;
 }) => {
-  const [isVolumeEnabled, setIsVolumeEnabled] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const audio = useConversationAudio();
 
-  const onVideoClick = () => {
+  const isPlaying = audio.isUnlocked() && !isVideoPaused;
+
+  const toggleVolume = () => {
+    audio.initAudio();
+    const isEnabled = !isVideoVolumeEnabled;
+    setIsVideoVolumeEnabled(isEnabled);
+    audio.music.setVolume(isEnabled ? 0.1 : 0);
+  };
+
+  const togglePause = () => {
     audio.initAudio();
     if (!videoRef.current) return;
 
-    const isNeedToPause = !videoRef.current.paused;
+    const isNeedToPause = isPlaying;
+    console.log('!!!! isNeedToPause', isNeedToPause);
 
     if (isNeedToPause) {
       videoRef.current.pause();
@@ -1172,7 +1200,7 @@ export const StoryVideo = ({
       videoRef.current.play();
     }
 
-    setIsPaused((prev) => !prev);
+    setIsVideoPaused(isNeedToPause);
 
     if (isNeedToPause) {
       audio.music.pause();
@@ -1201,31 +1229,11 @@ export const StoryVideo = ({
           alignItems: 'center',
         }}
       >
-        <IconButton
-          onClick={() => {
-            const isEnabled = !isVolumeEnabled;
-            setIsVolumeEnabled(isEnabled);
-            audio.music.setVolume(isEnabled ? 0.1 : 0);
-          }}
-          color="default"
-        >
-          {isVolumeEnabled ? <Volume2 size={'20px'} /> : <VolumeX size={'20px'} />}
+        <IconButton onClick={toggleVolume} color="default">
+          {isVideoVolumeEnabled ? <Volume2 size={'20px'} /> : <VolumeX size={'20px'} />}
         </IconButton>
-        <IconButton
-          onClick={() => {
-            if (!videoRef.current) return;
-
-            if (isPaused) {
-              videoRef.current.play();
-            } else {
-              videoRef.current.pause();
-            }
-
-            setIsPaused((prev) => !prev);
-          }}
-          color="default"
-        >
-          {isPaused ? <Play size={'20px'} /> : <Pause size={'20px'} />}
+        <IconButton onClick={togglePause} color="default">
+          {isPlaying ? <Pause size={'20px'} /> : <Play size={'20px'} />}
         </IconButton>
       </Stack>
       <Stack
@@ -1233,8 +1241,8 @@ export const StoryVideo = ({
         ref={videoRef}
         src={videoUrl}
         controls={false}
-        muted={!isVolumeEnabled}
-        onClick={onVideoClick}
+        muted={!isVideoVolumeEnabled}
+        onClick={togglePause}
         playsInline
         autoPlay
         loop
@@ -1245,7 +1253,6 @@ export const StoryVideo = ({
           objectFit: 'cover',
           boxShadow: '0px 4px 22px rgba(0, 0, 0, 0.9)',
           maxWidth: '700px',
-          borderRadius: '8px',
         }}
       />
     </Stack>
