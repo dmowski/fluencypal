@@ -1109,7 +1109,7 @@ export const StoryContainer = ({
             inset: 0,
             zIndex: 2,
             borderRadius: '16px',
-            boxShadow: 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.15)',
+            boxShadow: 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1)',
             '@media (max-width: 650px)': {
               boxShadow: 'none',
             },

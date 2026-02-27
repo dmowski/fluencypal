@@ -57,7 +57,7 @@ export const Stories = () => {
               position: 'relative',
             }}
           >
-            {!stories.selectedStory && stories.randomStoryWithVideo && (
+            {stories.randomStoryWithVideo && (
               <>
                 <Stack
                   sx={{
