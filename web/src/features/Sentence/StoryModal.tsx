@@ -491,9 +491,40 @@ export const StoryModal = ({
 
             <Stack
               sx={{
+                gap: '30px',
                 position: 'absolute',
-                bottom: '0',
-                left: '0',
+                bottom: '160px',
+                right: '20px',
+                width: 'max-content',
+              }}
+            >
+              <IconButton
+                size="large"
+                sx={{
+                  border: '1px solid rgba(255, 255, 255, 0.4)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                }}
+                onClick={() => onPrev()}
+              >
+                <ArrowUp size={'34px'} />
+              </IconButton>
+              <IconButton
+                size="large"
+                sx={{
+                  border: '1px solid rgba(255, 255, 255, 0.4)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                }}
+                onClick={() => onNext()}
+              >
+                <ArrowDown size={'34px'} />
+              </IconButton>
+            </Stack>
+
+            <Stack
+              sx={{
+                position: 'absolute',
+                bottom: '10px',
+                left: '5px',
                 width: '100%',
                 padding: '20px',
                 gap: '10px',
@@ -511,8 +542,6 @@ export const StoryModal = ({
                     gap: '10px',
                   }}
                 >
-                  <Typography>{data.title}</Typography>
-
                   <Stack
                     sx={{
                       flexDirection: 'row',
@@ -530,6 +559,9 @@ export const StoryModal = ({
                           isStartFromSavedState: isSavedProgress,
                         });
                       }}
+                      sx={{
+                        padding: '10px 20px',
+                      }}
                     >
                       {i18n._('Quiz')}
                     </Button>
@@ -540,40 +572,15 @@ export const StoryModal = ({
                       onClick={() => {
                         startListenMode();
                       }}
+                      sx={{
+                        padding: '10px 20px',
+                      }}
                     >
                       {i18n._('Listen')}
                     </Button>
                   </Stack>
-                </Stack>
-                <Stack
-                  sx={{
-                    gap: '25px',
-                  }}
-                >
-                  <IconButton
-                    size="large"
-                    sx={{
-                      border: '1px solid rgba(255, 255, 255, 0.4)',
-                      backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    }}
-                    onClick={() => {
-                      onPrev();
-                    }}
-                  >
-                    <ArrowUp size={'25px'} />
-                  </IconButton>
-                  <IconButton
-                    size="large"
-                    sx={{
-                      border: '1px solid rgba(255, 255, 255, 0.4)',
-                      backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    }}
-                    onClick={() => {
-                      onNext();
-                    }}
-                  >
-                    <ArrowDown size={'25px'} />
-                  </IconButton>
+
+                  <Typography>{data.title}</Typography>
                 </Stack>
               </Stack>
             </Stack>
@@ -1216,19 +1223,19 @@ export const StoryVideo = ({
       <Stack
         sx={{
           position: 'absolute',
-          top: '10px',
-          left: '10px',
+          top: '20px',
+          left: '20px',
           zIndex: 1,
           flexDirection: 'row',
-          gap: '0px',
+          gap: '5px',
           alignItems: 'center',
         }}
       >
-        <IconButton onClick={toggleVolume} color="default">
-          {isVideoVolumeEnabled ? <Volume2 size={'20px'} /> : <VolumeX size={'20px'} />}
+        <IconButton size="large" onClick={toggleVolume} color="default">
+          {isVideoVolumeEnabled ? <Volume2 size={'23px'} /> : <VolumeX size={'23px'} />}
         </IconButton>
-        <IconButton onClick={togglePause} color="default">
-          {isVideoPaused ? <Play size={'20px'} /> : <Pause size={'20px'} />}
+        <IconButton size="large" onClick={togglePause} color="default">
+          {isVideoPaused ? <Play size={'23px'} /> : <Pause size={'23px'} />}
         </IconButton>
       </Stack>
       <Stack
