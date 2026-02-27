@@ -146,7 +146,7 @@ export const Stories = () => {
             variant="outlined"
             color="info"
             endIcon={<ArrowRight />}
-            onClick={stories.openNextStory}
+            onClick={stories.openRandomStory}
             sx={{
               padding: '10px 30px',
               textAlign: 'left',
