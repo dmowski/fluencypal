@@ -1235,6 +1235,7 @@ export const StoryVideo = ({
         controls={false}
         muted={!isVolumeEnabled}
         onClick={onVideoClick}
+        playsInline
         autoPlay
         loop
         sx={{
