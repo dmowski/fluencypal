@@ -14,8 +14,8 @@ import {
   Music,
   Origami,
   Pause,
-  Play,
   RefreshCw,
+  Video,
   X,
 } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
@@ -32,7 +32,6 @@ import { getStoryHash } from './getStoryHash';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { clearWordForAudio } from '../Audio/clearWord';
 import { getVoiceOverSpeakOptions } from '../Audio/getVoiceOverSpeakOptions';
-import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 
 interface Sentence {
   sentence: string;
@@ -83,6 +82,12 @@ export const StoryModal = ({
 
   const [internalState, setInternalState] = useState<StoryState>(defaultStoryState);
 
+  const [isShowVideo, setIsShowVideo] = useState(false);
+  const isVideoAvailable = Boolean(data.videoUrl);
+  const showVideo = () => {
+    setIsShowVideo(true);
+  };
+
   const isStateInitializing = useRef(false);
   const initState = async () => {
     if (isStateInitializing.current) return;
@@ -121,9 +126,6 @@ export const StoryModal = ({
   };
 
   const state = internalState;
-
-  const storyText = data.textEn;
-  const wordsCount = storyText.split(' ').length;
 
   const { i18n } = useLingui();
 
@@ -400,14 +402,69 @@ export const StoryModal = ({
     }
   };
 
-  const isShowInitScreen = (!isReady || initializing) && !isListenMode;
+  const isShowInitScreen = (!isReady || initializing) && !isListenMode && !isShowVideo;
+  const isQuizMode = isReady && !initializing && !isShowVideo;
+  const isVideoMode = isVideoAvailable && isShowVideo;
 
-  const isQuizMode = isReady && !initializing;
+  const isAudioMode = isListenMode && !isShowVideo;
+
   return (
     <CustomModal isOpen={true} onClose={onCloseHandler}>
       {translator.translateModal}
       <StoryContainer story={data}>
-        {isListenMode && (
+        {isVideoMode && (
+          <Stack
+            sx={{
+              position: 'relative',
+              height: '100%',
+              width: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1,
+            }}
+          >
+            {data.videoUrl && (
+              <Stack
+                component={'video'}
+                src={data.videoUrl}
+                controls
+                autoPlay
+                loop
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  // container: cover
+                  objectFit: 'cover',
+                  boxShadow: '0px 4px 22px rgba(0, 0, 0, 0.9)',
+                  maxWidth: '700px',
+                  borderRadius: '8px',
+                }}
+              />
+            )}
+
+            <Stack
+              sx={{
+                position: 'absolute',
+                bottom: '90px',
+                left: '20px',
+                width: '100%',
+                alignItems: 'flex-start',
+              }}
+            >
+              <Button
+                startIcon={<ChevronLeft size={'20px'} />}
+                variant="outlined"
+                onClick={() => {
+                  setIsShowVideo(false);
+                }}
+              >
+                {i18n._('Back')}
+              </Button>
+            </Stack>
+          </Stack>
+        )}
+
+        {isAudioMode && (
           <>
             <Stack
               sx={{
@@ -521,10 +578,23 @@ export const StoryModal = ({
             </Typography>
             <Stack
               sx={{
-                gap: '20px',
+                gap: '10px',
                 alignItems: 'center',
               }}
             >
+              <Button
+                disabled={!isVideoAvailable}
+                onClick={showVideo}
+                endIcon={<Video size={'20px'} />}
+                sx={{
+                  padding: '10px 30px',
+                }}
+                variant="contained"
+                color="secondary"
+              >
+                {i18n._('Show video')}
+              </Button>
+
               <Button
                 onClick={startListenMode}
                 disabled={initializing}
