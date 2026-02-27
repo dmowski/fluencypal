@@ -24,13 +24,9 @@ export const Stories = () => {
         backgroundColor: 'rgba(0, 0, 0, 0.1)',
         border: '1px solid rgba(255, 255, 255, 0.1)',
         borderRadius: '16px',
-        //padding: '25px',
-        '@media (max-width:400px)': {
-          flexDirection: 'column',
-          borderRadius: '0px',
-          padding: '15px',
-          alignItems: 'flex-start',
-          gap: '15px',
+        '@media (max-width:600px)': {
+          //alignItems: 'flex-start',
+          borderRadius: '0',
         },
       }}
     >
@@ -107,15 +103,24 @@ export const Stories = () => {
           width: '100%',
           alignItems: 'flex-start',
           gap: '15px',
+          padding: '25px 0 25px 0',
         }}
       >
-        <Stack>
+        <Stack
+          sx={{
+            padding: '0 10px 0 0',
+          }}
+        >
           <Typography
             variant="h5"
             sx={{
               fontWeight: 800,
               '@media (max-width:600px)': {
                 fontSize: '1.5rem',
+                lineHeight: '1.8rem',
+              },
+              '@media (max-width:400px)': {
+                fontSize: '1.2rem',
                 lineHeight: '1.8rem',
               },
             }}
@@ -141,9 +146,13 @@ export const Stories = () => {
             onClick={stories.openNextStory}
             sx={{
               padding: '10px 30px',
+              textAlign: 'left',
+              '@media (max-width:600px)': {
+                padding: '8px 15px',
+              },
             }}
           >
-            {i18n._('See stories')}
+            {i18n._('Open')}
           </Button>
         </Stack>
       </Stack>

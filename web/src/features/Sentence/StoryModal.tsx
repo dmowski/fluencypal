@@ -504,6 +504,9 @@ export const StoryModal = ({
                             variant="outlined"
                             sx={{
                               padding: '10px 50px',
+                              '@media (max-width: 700px)': {
+                                padding: '10px 20px',
+                              },
                             }}
                           >
                             {i18n._('Previous')}
@@ -515,6 +518,9 @@ export const StoryModal = ({
                             variant="contained"
                             sx={{
                               padding: '10px 50px',
+                              '@media (max-width: 700px)': {
+                                padding: '10px 20px',
+                              },
                             }}
                           >
                             {i18n._('Next')}

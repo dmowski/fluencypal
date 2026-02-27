@@ -61,7 +61,7 @@ export const StoryPreview = ({
     <Stack
       sx={{
         width: '130px',
-        height: '200px',
+        aspectRatio: '130 / 200',
         position: 'relative',
         border: 'none',
         backgroundColor: 'transparent',
@@ -81,6 +81,9 @@ export const StoryPreview = ({
         ':focus': {
           outline: 'none',
           boxShadow: '0 0 0 4px #111, 0 0 0 6px #278adc',
+        },
+        '@media (max-width:400px)': {
+          width: '90px',
         },
       }}
       component={'button'}
