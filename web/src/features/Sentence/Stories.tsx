@@ -163,7 +163,13 @@ export const Stories = () => {
             variant="outlined"
             color="info"
             endIcon={<ArrowRight />}
-            onClick={stories.openRandomStory}
+            onClick={() => {
+              if (stories.randomStoryWithVideo) {
+                stories.openStory(stories.randomStoryWithVideo.id);
+              } else {
+                stories.openRandomStory();
+              }
+            }}
             sx={{
               padding: '10px 30px',
               textAlign: 'left',
