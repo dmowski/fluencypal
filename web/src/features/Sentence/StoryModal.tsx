@@ -8,8 +8,13 @@ import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './TextConstructor/splitTextIntoSentences';
 import { StoryContent, TextConstructor } from './TextConstructor/TextConstructor';
 import {
+  ArrowDown,
+  ArrowLeft,
+  ArrowUp,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
+  ChevronUp,
   Loader,
   Music,
   Origami,
@@ -204,6 +209,7 @@ export const StoryModal = ({
 
   const start = async ({ isStartFromSavedState }: { isStartFromSavedState: boolean }) => {
     audio.initAudio();
+    setIsListenMode(false);
 
     if (state.progress.length > 0 && isStartFromSavedState) {
       setIsReady(true);
@@ -347,6 +353,7 @@ export const StoryModal = ({
   const startListenMode = async () => {
     audio.initAudio();
     setIsShowVideo(false);
+    setIsReady(false);
     setIsListenMode(true);
     const sourceSentences = await prepareSentences();
     const listeningSentences: Sentence[] = sourceSentences.sentences.map((sentence, index) => ({
@@ -439,16 +446,14 @@ export const StoryModal = ({
         }}
         sx={{
           border: '1px solid rgba(255, 255, 255, 0.4)',
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          ':hover': {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          },
         }}
         color="default"
       >
-        <ChevronLeft
-          size={'20px'}
-          style={{
-            position: 'relative',
-            left: '-1px',
-          }}
-        />
+        <ArrowLeft size={'20px'} />
       </IconButton>
     </Stack>
   );
@@ -480,38 +485,76 @@ export const StoryModal = ({
                 gap: '10px',
               }}
             >
-              <Typography>{data.title}</Typography>
-
               <Stack
                 sx={{
                   flexDirection: 'row',
-                  gap: '10px',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-end',
                 }}
               >
-                <Button
-                  endIcon={<Origami size={'20px'} />}
-                  variant="contained"
-                  color="secondary"
-                  onClick={() => {
-                    setIsShowVideo(false);
-                    setIsListenMode(false);
-                    start({
-                      isStartFromSavedState: isSavedProgress,
-                    });
+                <Stack
+                  sx={{
+                    gap: '10px',
                   }}
                 >
-                  {i18n._('Quiz')}
-                </Button>
-                <Button
-                  endIcon={<Play size={'20px'} />}
-                  variant="contained"
-                  color="info"
-                  onClick={() => {
-                    startListenMode();
+                  <Typography>{data.title}</Typography>
+
+                  <Stack
+                    sx={{
+                      flexDirection: 'row',
+                      gap: '10px',
+                    }}
+                  >
+                    <Button
+                      endIcon={<Origami size={'20px'} />}
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => {
+                        setIsShowVideo(false);
+                        setIsListenMode(false);
+                        start({
+                          isStartFromSavedState: isSavedProgress,
+                        });
+                      }}
+                    >
+                      {i18n._('Quiz')}
+                    </Button>
+                    <Button
+                      endIcon={<Play size={'20px'} />}
+                      variant="contained"
+                      color="info"
+                      onClick={() => {
+                        startListenMode();
+                      }}
+                    >
+                      {i18n._('Listen')}
+                    </Button>
+                  </Stack>
+                </Stack>
+                <Stack
+                  sx={{
+                    gap: '25px',
                   }}
                 >
-                  {i18n._('Listen')}
-                </Button>
+                  <IconButton
+                    size="large"
+                    sx={{
+                      border: '1px solid rgba(255, 255, 255, 0.4)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                    }}
+                  >
+                    <ArrowUp size={'25px'} />
+                  </IconButton>
+                  <IconButton
+                    size="large"
+                    sx={{
+                      border: '1px solid rgba(255, 255, 255, 0.4)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                    }}
+                  >
+                    <ArrowDown size={'25px'} />
+                  </IconButton>
+                </Stack>
               </Stack>
             </Stack>
           </Stack>
