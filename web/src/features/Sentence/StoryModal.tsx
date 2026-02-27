@@ -85,7 +85,7 @@ export const StoryModal = ({
 
   const [internalState, setInternalState] = useState<StoryState>(defaultStoryState);
 
-  const [isShowVideo, setIsShowVideo] = useState(false);
+  const [isShowVideo, setIsShowVideo] = useState(true);
   const isVideoAvailable = Boolean(data.videoUrl);
   const showVideo = () => {
     setIsShowVideo(true);
@@ -227,12 +227,22 @@ export const StoryModal = ({
       setInitializing(false);
     }
 
+    playBgAudio();
+  };
+
+  const playBgAudio = async () => {
     if (data.audioUrl && !audio.music.isPlaying) {
       const audioUrl = data.audioUrl;
       await sleep(500);
       audio.music.play(audioUrl);
       audio.music.setVolume(0.1);
     }
+  };
+
+  const openInitScreen = () => {
+    setIsShowVideo(true);
+    setIsListenMode(false);
+    audio.music.stop();
   };
 
   const speakOptionsMain: SpeakOptions = useMemo(
@@ -336,6 +346,7 @@ export const StoryModal = ({
 
   const startListenMode = async () => {
     audio.initAudio();
+    setIsShowVideo(false);
     setIsListenMode(true);
     const sourceSentences = await prepareSentences();
     const listeningSentences: Sentence[] = sourceSentences.sentences.map((sentence, index) => ({
@@ -350,6 +361,8 @@ export const StoryModal = ({
 
     audio.speak(listeningSentences[0].sentence, speakOptionsMain);
     audio.setTextAsPotentialSpeak2(listeningSentences[1].sentence, speakOptionsMain);
+
+    playBgAudio();
   };
 
   const prevListenSentence = () => {
@@ -411,6 +424,35 @@ export const StoryModal = ({
 
   const isAudioMode = isListenMode && !isShowVideo;
 
+  const backIcon = (
+    <Stack
+      sx={{
+        position: 'absolute',
+        top: '10px',
+        left: '10px',
+        zIndex: 22,
+      }}
+    >
+      <IconButton
+        onClick={() => {
+          openInitScreen();
+        }}
+        sx={{
+          border: '1px solid rgba(255, 255, 255, 0.4)',
+        }}
+        color="default"
+      >
+        <ChevronLeft
+          size={'20px'}
+          style={{
+            position: 'relative',
+            left: '-1px',
+          }}
+        />
+      </IconButton>
+    </Stack>
+  );
+
   return (
     <CustomModal isOpen={true} onClose={onCloseHandler}>
       {translator.translateModal}
@@ -431,21 +473,46 @@ export const StoryModal = ({
             <Stack
               sx={{
                 position: 'absolute',
-                bottom: '90px',
-                left: '20px',
+                bottom: '0',
+                left: '0',
                 width: '100%',
-                alignItems: 'flex-start',
+                padding: '20px',
+                gap: '10px',
               }}
             >
-              <Button
-                startIcon={<ChevronLeft size={'20px'} />}
-                variant="outlined"
-                onClick={() => {
-                  setIsShowVideo(false);
+              <Typography>{data.title}</Typography>
+
+              <Stack
+                sx={{
+                  flexDirection: 'row',
+                  gap: '10px',
                 }}
               >
-                {i18n._('Back')}
-              </Button>
+                <Button
+                  endIcon={<Origami size={'20px'} />}
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => {
+                    setIsShowVideo(false);
+                    setIsListenMode(false);
+                    start({
+                      isStartFromSavedState: isSavedProgress,
+                    });
+                  }}
+                >
+                  {i18n._('Quiz')}
+                </Button>
+                <Button
+                  endIcon={<Play size={'20px'} />}
+                  variant="contained"
+                  color="info"
+                  onClick={() => {
+                    startListenMode();
+                  }}
+                >
+                  {i18n._('Listen')}
+                </Button>
+              </Stack>
             </Stack>
           </Stack>
         )}
@@ -462,6 +529,7 @@ export const StoryModal = ({
                 padding: '20px',
               }}
             >
+              {backIcon}
               <Stack
                 sx={{
                   width: '100%',
@@ -704,6 +772,7 @@ export const StoryModal = ({
               zIndex: 1,
             }}
           >
+            {backIcon}
             <Stack
               sx={{
                 width: '100%',
@@ -1025,6 +1094,7 @@ export const StoryVideo = ({ videoUrl }: { videoUrl: string }) => {
   const [isVolumeEnabled, setIsVolumeEnabled] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const audio = useConversationAudio();
 
   return (
     <Stack
@@ -1037,17 +1107,19 @@ export const StoryVideo = ({ videoUrl }: { videoUrl: string }) => {
       <Stack
         sx={{
           position: 'absolute',
-          top: '20px',
-          left: '20px',
+          top: '10px',
+          left: '10px',
           zIndex: 1,
           flexDirection: 'row',
-          gap: '10px',
+          gap: '0px',
           alignItems: 'center',
         }}
       >
         <IconButton
           onClick={() => {
-            setIsVolumeEnabled((prev) => !prev);
+            const isEnabled = !isVolumeEnabled;
+            setIsVolumeEnabled(isEnabled);
+            audio.music.setVolume(isEnabled ? 0.1 : 0);
           }}
           color="default"
         >

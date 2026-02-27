@@ -1196,7 +1196,6 @@ msgstr ""
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:159
 #: src/features/Chat/ChatSection.tsx:85
-#: src/features/Sentence/StoryModal.tsx:461
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Назад"
@@ -1825,7 +1824,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Sentence/StoryModal.tsx:926
+#: src/features/Sentence/StoryModal.tsx:935
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -2090,7 +2089,7 @@ msgstr "Контакты:"
 #: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/PayWall/CardValidator.tsx:142
 #: src/features/Plan/PlanCard.tsx:210
-#: src/features/Sentence/StoryModal.tsx:663
+#: src/features/Sentence/StoryModal.tsx:672
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Продолжить"
@@ -2124,6 +2123,11 @@ msgstr "Тесты Контрактов"
 msgid "Conversation"
 msgstr "Беседа"
 
+#: src/features/Landing/LandingPage.tsx:255
+#. js-lingui-explicit-id
+msgid "Conversation Practice"
+msgstr "Практика Разговора"
+
 #: src/features/Landing/Price/FeatureList.tsx:40
 #: src/features/Landing/Price/PricePage.tsx:448
 #: src/features/Landing/Price/PricePage.tsx:531
@@ -2131,11 +2135,6 @@ msgstr "Беседа"
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Практика разговора"
-
-#: src/features/Landing/LandingPage.tsx:255
-#. js-lingui-explicit-id
-msgid "Conversation Practice"
-msgstr "Практика Разговора"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:242
 #. js-lingui-explicit-id
@@ -2956,7 +2955,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "Ранний доступ к новым инструментам"
 
-#: src/features/Sentence/StoryModal.tsx:622
+#: src/features/Sentence/StoryModal.tsx:631
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "Легко"
@@ -4214,7 +4213,7 @@ msgstr "План изучения французского"
 msgid "Frequently Asked Questions"
 msgstr "Часто задаваемые вопросы"
 
-#: src/features/Sentence/StoryModal.tsx:686
+#: src/features/Sentence/StoryModal.tsx:695
 #. js-lingui-explicit-id
 msgid "Fresh start"
 msgstr "Свежий старт"
@@ -4327,7 +4326,7 @@ msgstr "Полный доступ к AI тренеру для интервью"
 msgid "Full AI tutor access"
 msgstr "Полный доступ к ИИ-наставнику"
 
-#: src/features/Sentence/StoryModal.tsx:885
+#: src/features/Sentence/StoryModal.tsx:894
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "Полная история:"
@@ -4840,7 +4839,7 @@ msgstr "Уверенно управляйте параллельностью"
 msgid "Happy April 1st!"
 msgstr "Счастливого 1 апреля!"
 
-#: src/features/Sentence/StoryModal.tsx:636
+#: src/features/Sentence/StoryModal.tsx:645
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "Трудно"
@@ -6925,7 +6924,8 @@ msgstr "Ограниченные сообщения"
 msgid "Limited voice features"
 msgstr "Ограниченные голосовые функции"
 
-#: src/features/Sentence/StoryModal.tsx:607
+#: src/features/Sentence/StoryModal.tsx:469
+#: src/features/Sentence/StoryModal.tsx:616
 #. js-lingui-explicit-id
 msgid "Listen"
 msgstr "Слушать"
@@ -7150,7 +7150,7 @@ msgstr ""
 msgid "Medical Talk Simulation"
 msgstr "Медицинская Симуляция Разговора"
 
-#: src/features/Sentence/StoryModal.tsx:629
+#: src/features/Sentence/StoryModal.tsx:638
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "Средний"
@@ -7430,7 +7430,7 @@ msgstr "Новые слова"
 #: src/features/Goal/Quiz/QuizPage2.tsx:426
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:262
-#: src/features/Sentence/StoryModal.tsx:554
+#: src/features/Sentence/StoryModal.tsx:563
 #: src/features/Survey/InfoStep.tsx:272
 #: src/features/Survey/InterviewInfoStep.tsx:107
 #. js-lingui-explicit-id
@@ -7457,7 +7457,7 @@ msgstr "Следующий вопрос"
 msgid "Next Step"
 msgstr "Следующий шаг"
 
-#: src/features/Sentence/StoryModal.tsx:704
+#: src/features/Sentence/StoryModal.tsx:713
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "Следующая история"
@@ -8761,17 +8761,17 @@ msgstr "Подготовка мозга"
 msgid "Preparing your game..."
 msgstr "Подготовка вашей игры..."
 
-#: src/features/Sentence/StoryModal.tsx:684
+#: src/features/Sentence/StoryModal.tsx:693
 #. js-lingui-explicit-id
 msgid "Preparing..."
 msgstr "Подготовка..."
 
-#: src/features/Sentence/StoryModal.tsx:577
+#: src/features/Sentence/StoryModal.tsx:586
 #. js-lingui-explicit-id
 msgid "Press the button below to start the adventure!"
 msgstr "Нажмите кнопку ниже, чтобы начать приключение!"
 
-#: src/features/Sentence/StoryModal.tsx:542
+#: src/features/Sentence/StoryModal.tsx:551
 #. js-lingui-explicit-id
 msgid "Previous"
 msgstr "Предыдущий"
@@ -8878,6 +8878,11 @@ msgstr "Профиль"
 msgid "Progress Calendar"
 msgstr "Календарь Прогресса"
 
+#: src/features/Landing/LandingPage.tsx:402
+#. js-lingui-explicit-id
+msgid "Progress Tracking"
+msgstr "Отслеживание Прогресса"
+
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
 #: src/features/Landing/Price/PricePage.tsx:453
@@ -8886,11 +8891,6 @@ msgstr "Календарь Прогресса"
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Отслеживание прогресса"
-
-#: src/features/Landing/LandingPage.tsx:402
-#. js-lingui-explicit-id
-msgid "Progress Tracking"
-msgstr "Отслеживание Прогресса"
 
 #: src/features/Landing/Price/PricePage.tsx:597
 #. js-lingui-explicit-id
@@ -8963,6 +8963,11 @@ msgstr "Вопросы, которые вы будете практиковат�
 #. js-lingui-explicit-id
 msgid "Queues"
 msgstr "Очереди"
+
+#: src/features/Sentence/StoryModal.tsx:457
+#. js-lingui-explicit-id
+msgid "Quiz"
+msgstr "Викторина"
 
 #: src/features/Alias/components/GameEnd.tsx:116
 #: src/features/Alias/components/Scoreboard.tsx:101
@@ -9380,7 +9385,7 @@ msgstr "Производительность рендеринга"
 msgid "Renew Now"
 msgstr "Обновить сейчас"
 
-#: src/features/Sentence/StoryModal.tsx:521
+#: src/features/Sentence/StoryModal.tsx:530
 #. js-lingui-explicit-id
 msgid "Replay"
 msgstr "Повторить"
@@ -9947,7 +9952,7 @@ msgstr "Показать навыки решения проблем"
 msgid "Show strong data fundamentals"
 msgstr "Показать прочные основы данных"
 
-#: src/features/Sentence/StoryModal.tsx:595
+#: src/features/Sentence/StoryModal.tsx:604
 #. js-lingui-explicit-id
 msgid "Show video"
 msgstr "Показать видео"
@@ -10302,7 +10307,7 @@ msgstr "Начать ежемесячный план"
 msgid "Start Practicing"
 msgstr "Начать практику"
 
-#: src/features/Sentence/StoryModal.tsx:687
+#: src/features/Sentence/StoryModal.tsx:696
 #. js-lingui-explicit-id
 msgid "Start Quiz"
 msgstr "Начать викторину"
@@ -10628,7 +10633,7 @@ msgstr "Необходима подписка"
 msgid "subscription plans"
 msgstr "планы подписки"
 
-#: src/features/Sentence/StoryModal.tsx:814
+#: src/features/Sentence/StoryModal.tsx:823
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr "Уровень успеха:"
@@ -11601,7 +11606,7 @@ msgstr "Пробные дни"
 msgid "Try"
 msgstr "Попробуйте"
 
-#: src/features/Sentence/StoryModal.tsx:914
+#: src/features/Sentence/StoryModal.tsx:923
 #. js-lingui-explicit-id
 msgid "Try another story"
 msgstr "Попробуйте другую историю"
@@ -12263,7 +12268,7 @@ msgstr ""
 "Добро пожаловать в подготовку к интервью на должность старшего "
 "фронтенд-разработчика"
 
-#: src/features/Sentence/StoryModal.tsx:771
+#: src/features/Sentence/StoryModal.tsx:780
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "Отлично! Вы завершили рассказ."
@@ -12559,7 +12564,7 @@ msgstr "Слова за ход"
 msgid "Words to Learn"
 msgstr "Слова для изучения"
 
-#: src/features/Sentence/StoryModal.tsx:838
+#: src/features/Sentence/StoryModal.tsx:847
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "Слова, на которые стоит обратить внимание:"
