@@ -315,7 +315,10 @@ export const StoriesModal = ({
 
   const startListenMode = async () => {
     audio.initAudio();
+    setListenState(null);
     setViewMode('listen');
+    setListenState(null);
+
     const sourceSentences = await prepareSentences();
     const listeningSentences: Sentence[] = sourceSentences.sentences.map((sentence, index) => ({
       sentence,
