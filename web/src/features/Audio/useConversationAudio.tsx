@@ -321,6 +321,18 @@ class AudioQueuePlayer {
       el.removeAttribute('src');
       el.load();
     } catch {}
+
+    // check cached audios and stop them too, just in case
+    Object.keys(this.cachedSpeech).forEach((key) => {
+      const { el } = this.cachedSpeech[key];
+      try {
+        el.pause();
+        el.currentTime = 0;
+        el.removeAttribute('src');
+        el.load();
+      } catch {}
+      delete this.cachedSpeech[key];
+    });
   }
 
   waitForCurrentAudioToEnd(): Promise<void> {
@@ -542,6 +554,8 @@ function useProvideConversationAudio(): ConversationAudioContextType {
   const speak = useCallback(async (text: string, opts: SpeakOptions) => {
     const url = generateTtsStreamUrl(text, opts);
 
+    setLastPlayedText('');
+
     await playerRef.current!.playStreamUrl(url, () => {
       setLastPlayedText(text);
     });
@@ -554,6 +568,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
 
   const playPotentialSpeakUrl = useCallback(async (text: string, opts: SpeakOptions) => {
     const url = generateTtsStreamUrl(text, opts);
+    setLastPlayedText('');
     await playerRef.current!.playPotentialSpeakUrl(url, () => {
       setLastPlayedText(text);
     });

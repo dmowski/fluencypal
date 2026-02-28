@@ -351,13 +351,17 @@ export const StoriesModal = ({
 
     if (!audio.isPlaying && audio.lastPlayedText === finishedTargetSentence.sentence) {
       sleep(500).then(() => {
-        nextListenSentence();
+        if (!audio.isPlaying && audio.lastPlayedText === finishedTargetSentence.sentence) {
+          console.log('Play from use effect', finishedTargetSentence.sentence);
+          nextListenSentence();
+        }
       });
     }
   }, [listenState?.activeSentenceIndex, audio.isPlaying, audio.lastPlayedText, isAutoPlay]);
 
   const prevListenSentence = async () => {
     if (!listenState) return;
+    audio.interrupt();
 
     const prevIndex = listenState.activeSentenceIndex - 1;
     if (prevIndex < 0) {
@@ -387,6 +391,7 @@ export const StoriesModal = ({
 
   const nextListenSentence = async () => {
     if (!listenState) return;
+    audio.interrupt();
 
     const nextIndex = listenState.activeSentenceIndex + 1;
     if (nextIndex >= listenState.allSentences.length) {
@@ -653,19 +658,12 @@ export const StoriesModal = ({
 
                 <Stack sx={{ gap: '10px', alignItems: 'flex-end' }}>
                   <Button
-                    onClick={
-                      audio.isPlaying
-                        ? async () => {
-                            audio.interrupt();
-                            sleep(100);
-                            playActiveListenSentence();
-                            setIsAutoPlay(false);
-                          }
-                        : () => {
-                            playActiveListenSentence();
-                            setIsAutoPlay(false);
-                          }
-                    }
+                    onClick={async () => {
+                      audio.interrupt();
+                      sleep(50);
+                      playActiveListenSentence();
+                      setIsAutoPlay(false);
+                    }}
                     startIcon={<RefreshCw size={'20px'} />}
                     variant="outlined"
                     sx={{
