@@ -19,11 +19,23 @@ export const StoryPreview = ({
   onSelectImage?: (id: string) => void;
   data: ImageDescription | Story;
 }) => {
-  const auth = useAuth();
-  const settings = useSettings();
+  //const auth = useAuth();
+  //const settings = useSettings();
   const story: Story | null = 'textEn' in data ? data : null;
   const imageDescription: ImageDescription | null = 'textEn' in data ? null : data;
+  const views = undefined;
 
+  const id = data.id;
+  const title = story?.title || imageDescription?.shortDescription || '';
+  const imageUrl = story?.imageUrl || imageDescription?.url || '';
+  const videoUrl = story?.videoUrl;
+  const isImageDescription = !!imageDescription;
+
+  const isActive = false;
+  const isCompleted = false;
+  const progressPercent = 0;
+
+  /*
   const storiesViewsStatsDocRef = db.documents.storyStats(auth.uid, story?.id);
   const [storiesViewsStats] = useDocumentDataOnce(storiesViewsStatsDocRef);
 
@@ -39,23 +51,20 @@ export const StoryPreview = ({
     return null;
   }, [story, targetLanguage, nativeLanguage]);
 
-  const readProgress = db.documents.storyReadProgress(auth.uid, storyHash || '');
+  //const readProgress = db.documents.storyReadProgress(auth.uid, storyHash || '');
 
-  const [progressData] = useDocumentDataOnce(readProgress);
-  const isActive = !!progressData?.progress.length;
-  const isCompleted = progressData?.isCompleted;
+  //const [progressData] = useDocumentDataOnce(readProgress);
+  const isActive = false;//!!progressData?.progress.length;
+  const isCompleted = false//progressData?.isCompleted;
 
-  const id = data.id;
-  const title = story?.title || imageDescription?.shortDescription || '';
-  const imageUrl = story?.imageUrl || imageDescription?.url || '';
-  const videoUrl = story?.videoUrl;
-  const isImageDescription = !!imageDescription;
+  
 
   const progressPercent = useMemo(() => {
     const fullText = progressData?.sentences.join(' ').length || 0;
     const doneLength = progressData?.progress.length || 0;
     return fullText && doneLength ? Math.floor((doneLength / fullText) * 100) : 0;
   }, [progressData]);
+  */
 
   return (
     <Stack
