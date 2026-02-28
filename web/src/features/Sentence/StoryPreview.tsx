@@ -19,8 +19,8 @@ export const StoryPreview = ({
   onSelectImage?: (id: string) => void;
   data: ImageDescription | Story;
 }) => {
-  //const auth = useAuth();
-  //const settings = useSettings();
+  // const auth = useAuth();
+  // const settings = useSettings();
   const story: Story | null = 'textEn' in data ? data : null;
   const imageDescription: ImageDescription | null = 'textEn' in data ? null : data;
   const views = undefined;
