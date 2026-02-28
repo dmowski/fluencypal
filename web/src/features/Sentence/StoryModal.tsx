@@ -1,5 +1,5 @@
 import { useLingui } from '@lingui/react';
-import { Button, ButtonGroup, IconButton, Typography } from '@mui/material';
+import { Button, IconButton, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -13,13 +13,10 @@ import {
   ArrowUp,
   ChevronLeft,
   ChevronRight,
-  Loader,
-  Music,
   Origami,
   Pause,
   Play,
   RefreshCw,
-  Video,
   Volume2,
   VolumeX,
   X,
@@ -35,7 +32,6 @@ import { db } from '../Firebase/firebaseDb';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { defaultStoryState, numberOfOptionsMap, pointsToWinMap } from './data';
 import { getStoryHash } from './getStoryHash';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { clearWordForAudio } from '../Audio/clearWord';
 import { getVoiceOverSpeakOptions } from '../Audio/getVoiceOverSpeakOptions';
 import { useStories } from './useStories';
@@ -79,7 +75,6 @@ export const StoryModal = ({
 
   const saveStoryProgress = async (state: StoryState) => {
     if (typeof window === 'undefined' || !docRef) return;
-    console.log('Save progress');
     await setDoc(docRef, state);
   };
 
@@ -94,9 +89,6 @@ export const StoryModal = ({
 
   const [isShowVideo, setIsShowVideo] = useState(true);
   const isVideoAvailable = Boolean(data.videoUrl);
-  const showVideo = () => {
-    setIsShowVideo(true);
-  };
 
   const isStateInitializing = useRef(false);
   const initState = async () => {
@@ -188,9 +180,6 @@ export const StoryModal = ({
     return () => clearTimeout(timeout);
   }, [internalState, isReady]);
 
-  const imageUrl = data.imageUrl;
-  const title = data.title;
-
   const isNeedToTranslate = targetLanguage !== 'en';
 
   const prepareSentences = async () => {
@@ -258,26 +247,13 @@ export const StoryModal = ({
 
       await audio.setTextAsPotentialSpeak2(cleanWord, speakOptionsMain);
       await sleep(200);
-      if (auth.isFounder) {
-        //showDebugInfoBadgeOnTopWindow('Done with ' + cleanWord);
-      }
     }
   };
 
   const playAudio = async (text: string, alternativeVoice: boolean) => {
-    const options = speakOptionsMain;
     const cleanWord = clearWordForAudio(text);
     if (!cleanWord) return;
 
-    if (auth.isFounder) {
-      /*
-      showDebugInfoBadgeOnTopWindow(
-        `Play audio | Text: "${cleanWord}" | Options: ${JSON.stringify(options)} | ${ttsVersion}`,
-      );
-      */
-    }
-    //audio.speak(cleanWord, options);
-    //await audio.setTextAsPotentialSpeak2(cleanWord, speakOptionsMain);
     await audio.playPotentialSpeakUrl2(cleanWord, speakOptionsMain);
   };
 
@@ -323,10 +299,6 @@ export const StoryModal = ({
     await sleep(40);
     const cleanWord = clearWordForAudio(word);
     if (!cleanWord) return;
-
-    if (auth.isFounder) {
-      // showDebugInfoBadgeOnTopWindow('Correct word is available: ' + cleanWord);
-    }
 
     await audio.setTextAsPotentialSpeak2(cleanWord, speakOptionsMain);
   };
@@ -418,7 +390,6 @@ export const StoryModal = ({
     }
   };
 
-  const isShowInitScreen = (!isReady || initializing) && !isListenMode && !isShowVideo;
   const isQuizMode = isReady && !initializing && !isShowVideo;
   const isVideoMode = isVideoAvailable && isShowVideo;
 
@@ -428,15 +399,13 @@ export const StoryModal = ({
     <Stack
       sx={{
         position: 'absolute',
-        top: '10px',
-        left: '10px',
+        top: '20px',
+        left: '20px',
         zIndex: 22,
       }}
     >
       <IconButton
-        onClick={() => {
-          openInitScreen();
-        }}
+        onClick={() => openInitScreen()}
         sx={{
           border: '1px solid rgba(255, 255, 255, 0.4)',
           backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -446,7 +415,7 @@ export const StoryModal = ({
         }}
         color="default"
       >
-        <ArrowLeft size={'20px'} />
+        <ArrowLeft size={'24px'} />
       </IconButton>
     </Stack>
   );
@@ -678,378 +647,222 @@ export const StoryModal = ({
           </>
         )}
 
-        {isShowInitScreen && (
-          <Stack
-            sx={{
-              width: '100%',
-              height: '100%',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '10px',
-            }}
-          >
-            <Typography variant="h4" textAlign={'center'}>
-              {title}
-            </Typography>
-
-            <Typography variant="body2" textAlign={'center'}>
-              {data.subtitle || i18n._(`Press the button below to start the adventure!`)}
-            </Typography>
-            <Stack
-              sx={{
-                gap: '10px',
-                alignItems: 'center',
-              }}
-            >
-              <Button
-                disabled={!isVideoAvailable}
-                onClick={showVideo}
-                endIcon={<Video size={'20px'} />}
-                sx={{
-                  padding: '10px 30px',
-                }}
-                variant="contained"
-                color="secondary"
-              >
-                {i18n._('Show video')}
-              </Button>
-
-              <Button
-                onClick={startListenMode}
-                disabled={initializing}
-                endIcon={<Music size={'20px'} />}
-                sx={{
-                  padding: '10px 30px',
-                }}
-                variant="outlined"
-              >
-                {i18n._('Listen')}
-              </Button>
-
-              <ButtonGroup
-                sx={{
-                  marginBottom: '0px',
-                }}
-              >
-                <Button
-                  size="small"
-                  variant={state.mode === 'easy' ? 'contained' : 'outlined'}
-                  onClick={() => {
-                    setState({ mode: 'easy' });
-                  }}
-                >
-                  {i18n._('Easy')}
-                </Button>
-                <Button
-                  size="small"
-                  variant={state.mode === 'medium' ? 'contained' : 'outlined'}
-                  onClick={() => setState({ mode: 'medium' })}
-                >
-                  {i18n._('Medium')}
-                </Button>
-                <Button
-                  size="small"
-                  variant={state.mode === 'hard' ? 'contained' : 'outlined'}
-                  onClick={() => setState({ mode: 'hard' })}
-                >
-                  {i18n._('Hard')}
-                </Button>
-              </ButtonGroup>
-              <Stack
-                sx={{
-                  flexDirection: 'row',
-                  gap: '10px',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexWrap: 'wrap',
-                }}
-              >
-                {isSavedProgress && (
-                  <Button
-                    sx={{
-                      padding: '15px 45px',
-                      fontSize: '18px',
-                    }}
-                    variant="contained"
-                    color="info"
-                    onClick={() => {
-                      start({
-                        isStartFromSavedState: true,
-                      });
-                    }}
-                    endIcon={<BookmarkIcon />}
-                  >
-                    {i18n._('Continue')}
-                  </Button>
-                )}
-
-                <Button
-                  sx={{
-                    padding: '15px 45px',
-                    fontSize: '18px',
-                    backgroundColor: isSavedProgress ? 'rgba(0, 0, 0, 0.7)' : undefined,
-                  }}
-                  variant={isSavedProgress ? 'outlined' : 'contained'}
-                  color="info"
-                  onClick={() => {
-                    if (initializing) return;
-                    start({
-                      isStartFromSavedState: false,
-                    });
-                  }}
-                  endIcon={initializing ? <Loader size={'20px'} /> : <Origami size={'20px'} />}
-                >
-                  {initializing
-                    ? i18n._('Preparing...')
-                    : isSavedProgress
-                      ? i18n._('Fresh start')
-                      : i18n._('Start Quiz')}
-                </Button>
-              </Stack>
-
-              <Button
-                sx={{
-                  padding: '10px 30px',
-                  color: '#fff',
-                }}
-                variant="text"
-                color="info"
-                onClick={() => {
-                  if (initializing) return;
-                  onNext();
-                }}
-                endIcon={<ChevronRight size={'20px'} />}
-              >
-                {i18n._('Next story')}
-              </Button>
-            </Stack>
-          </Stack>
-        )}
-
         {isQuizMode && (
           <Stack
             sx={{
               position: 'relative',
               height: '100%',
               width: '100%',
-              alignItems: 'center',
-              justifyContent: 'center',
               zIndex: 1,
+              padding: '10px',
             }}
           >
             {backIcon}
-            <Stack
-              sx={{
-                width: '100%',
-                height: '100%',
-                padding: '0',
-              }}
-            >
-              {!state.isCompleted && (
-                <TextConstructor
-                  numberOfOptions={numberOfOptions}
-                  sentences={state.sentences}
-                  sentencesTranslates={state.sentencesTranslates}
-                  progress={state.progress}
-                  onContinue={(progress: string) => setState({ progress })}
-                  onComplete={onComplete}
-                  onSentenceComplete={onSentenceComplete}
-                  onPlayAudio={playAudio}
-                  onActiveWordsChange={cacheAudioWords}
-                  onGoodWord={onWordSelected}
-                  onBadWord={onBadWord}
-                  onTranslationWord={onTranslationWord}
-                  onCorrectWordAvailable={onCorrectWordAvailable}
-                />
-              )}
 
-              {state.isCompleted && (
+            {!state.isCompleted && (
+              <TextConstructor
+                numberOfOptions={numberOfOptions}
+                sentences={state.sentences}
+                sentencesTranslates={state.sentencesTranslates}
+                progress={state.progress}
+                onContinue={(progress: string) => setState({ progress })}
+                onComplete={onComplete}
+                onSentenceComplete={onSentenceComplete}
+                onPlayAudio={playAudio}
+                onActiveWordsChange={cacheAudioWords}
+                onGoodWord={onWordSelected}
+                onBadWord={onBadWord}
+                onTranslationWord={onTranslationWord}
+                onCorrectWordAvailable={onCorrectWordAvailable}
+              />
+            )}
+
+            {state.isCompleted && (
+              <Stack
+                sx={{
+                  alignItems: 'center',
+                  height: '100%',
+                  overflow: 'scroll',
+                  paddingBottom: '120px',
+                }}
+              >
                 <Stack
                   sx={{
-                    alignItems: 'center',
-                    height: '100%',
-                    overflow: 'scroll',
-                    paddingBottom: '120px',
+                    width: '100%',
+                    alignItems: 'flex-start',
+                    gap: '10px',
+                    maxWidth: '700px',
+                    padding: '0 10px',
                   }}
                 >
-                  <Stack
+                  <Typography
+                    variant="body2"
                     sx={{
-                      width: '100%',
-                      alignItems: 'flex-start',
-                      gap: '10px',
-                      maxWidth: '700px',
-                      padding: '0 10px',
+                      fontWeight: 600,
+                      marginTop: '60px',
                     }}
                   >
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        fontWeight: 600,
-                        marginTop: '60px',
-                      }}
-                    >
-                      {i18n._('Well done! You completed the story.')}
-                    </Typography>
+                    {i18n._('Well done! You completed the story.')}
+                  </Typography>
 
-                    <Stack
-                      sx={{
-                        gap: '80px',
-                        width: '100%',
-                        alignItems: 'flex-start',
-                      }}
-                    >
-                      {data.videoUrl && (
+                  <Stack
+                    sx={{
+                      gap: '80px',
+                      width: '100%',
+                      alignItems: 'flex-start',
+                    }}
+                  >
+                    {data.videoUrl && (
+                      <Stack
+                        sx={{
+                          maxWidth: '100%',
+                        }}
+                      >
                         <Stack
+                          component={'video'}
+                          src={data.videoUrl}
+                          controls
                           sx={{
-                            maxWidth: '100%',
+                            width: '100%',
+                            boxShadow: '0px 4px 22px rgba(0, 0, 0, 0.9)',
+                            maxWidth: '500px',
+                            margin: '0 auto',
+                            borderRadius: '8px',
                           }}
-                        >
-                          <Stack
-                            component={'video'}
-                            src={data.videoUrl}
-                            controls
-                            sx={{
-                              width: '100%',
-                              boxShadow: '0px 4px 22px rgba(0, 0, 0, 0.9)',
-                              maxWidth: '500px',
-                              margin: '0 auto',
-                              borderRadius: '8px',
-                            }}
-                          />
-                        </Stack>
-                      )}
-
-                      <Stack
-                        sx={{
-                          padding: '0 0',
-                        }}
-                      >
-                        <Stack sx={{}}>
-                          <Typography
-                            variant="h3"
-                            sx={{
-                              fontWeight: 800,
-                            }}
-                          >
-                            {i18n._('Success rate:')}
-                          </Typography>
-                          <Typography
-                            variant="h1"
-                            sx={{
-                              fontWeight: 700,
-                            }}
-                          >
-                            {successRate}%
-                          </Typography>
-                        </Stack>
-                      </Stack>
-
-                      <Stack
-                        sx={{
-                          gap: '10px',
-                        }}
-                      >
-                        <Typography
-                          variant="h3"
-                          sx={{
-                            fontWeight: 800,
-                          }}
-                        >
-                          {i18n._('Words to pay attention to:')}
-                        </Typography>
-
-                        <Stack
-                          sx={{
-                            flexDirection: 'row',
-                            gap: '15px',
-                            flexWrap: 'wrap',
-                          }}
-                        >
-                          {attentionWords.map((word, index) => (
-                            <Typography
-                              key={index}
-                              variant="h5"
-                              sx={{
-                                padding: '10px 20px',
-                                backgroundColor: '#111',
-                                borderRadius: '8px',
-                                cursor: 'pointer',
-                                fontWeight: 600,
-                                textTransform: 'capitalize',
-                                boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.4)',
-                              }}
-                              onClick={(e) => {
-                                playAudio(word, false);
-                                if (translator.isTranslateAvailable) {
-                                  translator.translateWithModal(word, e.currentTarget);
-                                }
-                              }}
-                            >
-                              {word}
-                            </Typography>
-                          ))}
-                        </Stack>
-                      </Stack>
-
-                      <Stack
-                        sx={{
-                          gap: '10px',
-                        }}
-                      >
-                        <Typography
-                          variant="h3"
-                          sx={{
-                            fontWeight: 800,
-                          }}
-                        >
-                          {i18n._('Full story:')}
-                        </Typography>
-
-                        <StoryContent
-                          text={state.progress}
-                          size="normal"
-                          onPlayAudio={(text) => playAudio(text, false)}
                         />
                       </Stack>
+                    )}
+
+                    <Stack
+                      sx={{
+                        padding: '0 0',
+                      }}
+                    >
+                      <Stack sx={{}}>
+                        <Typography
+                          variant="h3"
+                          sx={{
+                            fontWeight: 800,
+                          }}
+                        >
+                          {i18n._('Success rate:')}
+                        </Typography>
+                        <Typography
+                          variant="h1"
+                          sx={{
+                            fontWeight: 700,
+                          }}
+                        >
+                          {successRate}%
+                        </Typography>
+                      </Stack>
                     </Stack>
 
                     <Stack
                       sx={{
-                        flexDirection: 'row',
                         gap: '10px',
-                        alignItems: 'center',
-                        width: '100%',
-                        padding: '30px 0px 0 0px',
                       }}
                     >
-                      <Button
-                        variant="contained"
-                        color="info"
+                      <Typography
+                        variant="h3"
                         sx={{
-                          padding: '10px 30px',
+                          fontWeight: 800,
                         }}
-                        onClick={() => onNext()}
-                        endIcon={<Origami size={'20px'} />}
                       >
-                        {i18n._('Try another story')}
-                      </Button>
-                      <Button
-                        variant="text"
-                        color="info"
+                        {i18n._('Words to pay attention to:')}
+                      </Typography>
+
+                      <Stack
                         sx={{
-                          padding: '10px 30px',
-                          color: '#fff',
+                          flexDirection: 'row',
+                          gap: '15px',
+                          flexWrap: 'wrap',
                         }}
-                        onClick={() => openInitScreen()}
-                        endIcon={<X size={'20px'} />}
                       >
-                        {i18n._('Close')}
-                      </Button>
+                        {attentionWords.map((word, index) => (
+                          <Typography
+                            key={index}
+                            variant="h5"
+                            sx={{
+                              padding: '10px 20px',
+                              backgroundColor: '#111',
+                              borderRadius: '8px',
+                              cursor: 'pointer',
+                              fontWeight: 600,
+                              textTransform: 'capitalize',
+                              boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.4)',
+                            }}
+                            onClick={(e) => {
+                              playAudio(word, false);
+                              if (translator.isTranslateAvailable) {
+                                translator.translateWithModal(word, e.currentTarget);
+                              }
+                            }}
+                          >
+                            {word}
+                          </Typography>
+                        ))}
+                      </Stack>
+                    </Stack>
+
+                    <Stack
+                      sx={{
+                        gap: '10px',
+                      }}
+                    >
+                      <Typography
+                        variant="h3"
+                        sx={{
+                          fontWeight: 800,
+                        }}
+                      >
+                        {i18n._('Full story:')}
+                      </Typography>
+
+                      <StoryContent
+                        text={state.progress}
+                        size="normal"
+                        onPlayAudio={(text) => playAudio(text, false)}
+                      />
                     </Stack>
                   </Stack>
+
+                  <Stack
+                    sx={{
+                      flexDirection: 'row',
+                      gap: '10px',
+                      alignItems: 'center',
+                      width: '100%',
+                      padding: '30px 0px 0 0px',
+                    }}
+                  >
+                    <Button
+                      variant="contained"
+                      color="info"
+                      sx={{
+                        padding: '10px 30px',
+                      }}
+                      onClick={() => onNext()}
+                      endIcon={<Origami size={'20px'} />}
+                    >
+                      {i18n._('Try another story')}
+                    </Button>
+                    <Button
+                      variant="text"
+                      color="info"
+                      sx={{
+                        padding: '10px 30px',
+                        color: '#fff',
+                      }}
+                      onClick={() => openInitScreen()}
+                      endIcon={<X size={'20px'} />}
+                    >
+                      {i18n._('Close')}
+                    </Button>
+                  </Stack>
                 </Stack>
-              )}
-            </Stack>
+              </Stack>
+            )}
           </Stack>
         )}
       </StoryContainer>

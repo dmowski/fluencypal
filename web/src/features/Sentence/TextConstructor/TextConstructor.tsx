@@ -276,7 +276,7 @@ export function TextConstructor({
                 maxWidth: '700px',
 
                 width: '100%',
-                padding: '0 10px',
+                padding: '0 0px',
               }}
             >
               <StoryContent
