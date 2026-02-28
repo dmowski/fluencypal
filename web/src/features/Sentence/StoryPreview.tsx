@@ -57,8 +57,6 @@ export const StoryPreview = ({
   const isActive = false;//!!progressData?.progress.length;
   const isCompleted = false//progressData?.isCompleted;
 
-  
-
   const progressPercent = useMemo(() => {
     const fullText = progressData?.sentences.join(' ').length || 0;
     const doneLength = progressData?.progress.length || 0;
