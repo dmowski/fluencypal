@@ -239,7 +239,7 @@ export const StoriesModal = ({
       const cleanWord = clearWordForAudio(word);
       if (!cleanWord) continue;
 
-      await audio.setTextAsPotentialSpeak2(cleanWord, speakOptionsMain);
+      await audio.setTextAsPotentialSpeak(cleanWord, speakOptionsMain);
       await sleep(200);
     }
   };
@@ -248,7 +248,7 @@ export const StoriesModal = ({
     const cleanWord = clearWordForAudio(text);
     if (!cleanWord) return;
 
-    await audio.playPotentialSpeakUrl2(cleanWord, speakOptionsMain);
+    await audio.playPotentialSpeakUrl(cleanWord, speakOptionsMain);
   };
 
   const onSentenceComplete = async () => {
@@ -294,7 +294,7 @@ export const StoriesModal = ({
     const cleanWord = clearWordForAudio(word);
     if (!cleanWord) return;
 
-    await audio.setTextAsPotentialSpeak2(cleanWord, speakOptionsMain);
+    await audio.setTextAsPotentialSpeak(cleanWord, speakOptionsMain);
   };
 
   const attentionWords = useMemo(
@@ -328,7 +328,7 @@ export const StoriesModal = ({
     });
 
     audio.speak(listeningSentences[0].sentence, speakOptionsMain);
-    audio.setTextAsPotentialSpeak2(listeningSentences[1].sentence, speakOptionsMain);
+    audio.setTextAsPotentialSpeak(listeningSentences[1].sentence, speakOptionsMain);
 
     stories.playStoryAudio(data);
   };
@@ -364,17 +364,17 @@ export const StoriesModal = ({
       allSentences: listenState.allSentences,
     });
 
-    audio.playPotentialSpeakUrl2(prevSentence.sentence, speakOptionsMain);
+    audio.playPotentialSpeakUrl(prevSentence.sentence, speakOptionsMain);
 
     const followingSentence = listenState.allSentences[prevIndex + 1];
     if (followingSentence) {
-      audio.setTextAsPotentialSpeak2(followingSentence.sentence, speakOptionsMain);
+      audio.setTextAsPotentialSpeak(followingSentence.sentence, speakOptionsMain);
     }
   };
 
   const playActiveListenSentence = async () => {
     if (!listenState) return;
-    audio.playPotentialSpeakUrl2(listenState.activeSentence.sentence, speakOptionsMain);
+    audio.playPotentialSpeakUrl(listenState.activeSentence.sentence, speakOptionsMain);
   };
 
   const nextListenSentence = async () => {
@@ -393,11 +393,11 @@ export const StoriesModal = ({
       allSentences: listenState.allSentences,
     });
 
-    audio.playPotentialSpeakUrl2(nextSentence.sentence, speakOptionsMain);
+    audio.playPotentialSpeakUrl(nextSentence.sentence, speakOptionsMain);
 
     const followingSentence = listenState.allSentences[nextIndex + 1];
     if (followingSentence) {
-      audio.setTextAsPotentialSpeak2(followingSentence.sentence, speakOptionsMain);
+      audio.setTextAsPotentialSpeak(followingSentence.sentence, speakOptionsMain);
     }
   };
 

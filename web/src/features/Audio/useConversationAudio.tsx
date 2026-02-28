@@ -60,9 +60,7 @@ interface ConversationAudioContextType {
   ) => Promise<boolean>;
 
   setTextAsPotentialSpeak: (text: string, opts: SpeakOptions) => Promise<void>;
-
-  setTextAsPotentialSpeak2: (text: string, opts: SpeakOptions) => Promise<void>;
-  playPotentialSpeakUrl2: (text: string, opts: SpeakOptions) => Promise<void>;
+  playPotentialSpeakUrl: (text: string, opts: SpeakOptions) => Promise<void>;
 
   /** Stop everything immediately and clear queue. */
   interrupt: () => void;
@@ -99,7 +97,7 @@ interface CachedAudio {
   el: HTMLAudioElement;
   node: MediaElementAudioSourceNode;
   url: string;
-  playAndRemove: () => void;
+  playAndRemove: (onEnded?: () => void) => void;
 }
 
 class AudioQueuePlayer {
@@ -224,7 +222,7 @@ class AudioQueuePlayer {
     return this.speechVolume;
   }
 
-  async setTextAsPotentialSpeak2(url: string): Promise<void> {
+  async setTextAsPotentialSpeak(url: string): Promise<void> {
     if (this.cachedSpeech[url]) {
       return;
     }
@@ -251,44 +249,27 @@ class AudioQueuePlayer {
       url: url,
       el: speechEl,
       node: speechNode,
-      playAndRemove: () => {
+      playAndRemove: (onEndedCallback?: () => void) => {
         speechEl.play().catch(() => {});
         speechEl.addEventListener('ended', () => {
           delete this.cachedSpeech[url];
+          onEndedCallback?.();
         });
       },
     };
     this.cachedSpeech[url] = cachedAudio;
   }
 
-  async playPotentialSpeakUrl2(url: string): Promise<void> {
+  async playPotentialSpeakUrl(url: string, onEndedCallback?: () => void): Promise<void> {
     const cached = this.cachedSpeech[url];
     if (cached) {
-      cached.playAndRemove();
+      cached.playAndRemove(onEndedCallback);
     } else {
-      await this.playStreamUrl(url);
+      await this.playStreamUrl(url, onEndedCallback);
     }
   }
 
-  async setTextAsPotentialSpeak(url: string): Promise<void> {
-    if (this.potentialSpeakUrl === url) {
-      return;
-    }
-    this.ensureUnlocked();
-    const ctx = this.ctx!;
-    const el = this.speechEl!;
-
-    if (ctx.state === 'suspended') await ctx.resume();
-
-    await this.waitForCurrentAudioToEnd();
-    this.potentialSpeakUrl = url;
-
-    this.stopStream();
-    el.src = this.potentialSpeakUrl;
-    el.load();
-  }
-
-  async playStreamUrl(url: string): Promise<void> {
+  async playStreamUrl(url: string, onEndedCallback?: () => void): Promise<void> {
     this.ensureUnlocked();
     const ctx = this.ctx!;
     const el = this.speechEl!;
@@ -311,7 +292,10 @@ class AudioQueuePlayer {
     }
 
     await new Promise<void>((resolve, reject) => {
-      const onEnded = () => cleanup(resolve);
+      const onEnded = () => {
+        onEndedCallback?.();
+        cleanup(resolve);
+      };
       const onError = () =>
         cleanup(() => {
           if (isAbortError(el.error)) return resolve();
@@ -559,9 +543,10 @@ function useProvideConversationAudio(): ConversationAudioContextType {
 
   const speak = useCallback(async (text: string, opts: SpeakOptions) => {
     const url = generateTtsStreamUrl(text, opts);
-    setLastPlayedText(text);
 
-    await playerRef.current!.playStreamUrl(url);
+    await playerRef.current!.playStreamUrl(url, () => {
+      setLastPlayedText(text);
+    });
   }, []);
 
   const setTextAsPotentialSpeak = useCallback(async (text: string, opts: SpeakOptions) => {
@@ -569,14 +554,11 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     await playerRef.current!.setTextAsPotentialSpeak(url);
   }, []);
 
-  const setTextAsPotentialSpeak2 = useCallback(async (text: string, opts: SpeakOptions) => {
+  const playPotentialSpeakUrl = useCallback(async (text: string, opts: SpeakOptions) => {
     const url = generateTtsStreamUrl(text, opts);
-    await playerRef.current!.setTextAsPotentialSpeak2(url);
-  }, []);
-
-  const playPotentialSpeakUrl2 = useCallback(async (text: string, opts: SpeakOptions) => {
-    const url = generateTtsStreamUrl(text, opts);
-    await playerRef.current!.playPotentialSpeakUrl2(url);
+    await playerRef.current!.playPotentialSpeakUrl(url, () => {
+      setLastPlayedText(text);
+    });
   }, []);
 
   const initCache = useCallback(
@@ -746,8 +728,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       isPlaying,
       initCache,
       setTextAsPotentialSpeak,
-      setTextAsPotentialSpeak2,
-      playPotentialSpeakUrl2,
+      playPotentialSpeakUrl,
       lastPlayedText,
     }),
     [
@@ -763,8 +744,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       isPlaying,
       initCache,
       setTextAsPotentialSpeak,
-      setTextAsPotentialSpeak2,
-      playPotentialSpeakUrl2,
+      playPotentialSpeakUrl,
       lastPlayedText,
     ],
   );
