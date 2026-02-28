@@ -41,7 +41,7 @@ interface Sentence {
   translate: string;
 }
 
-export const StoryModal = ({
+export const StoriesModal = ({
   data,
 
   onClose,

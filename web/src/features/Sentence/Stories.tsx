@@ -3,7 +3,7 @@ import { Button, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 
 import { StoryPreview } from './StoryPreview';
-import { StoryModal } from './StoryModal';
+import { StoriesModal } from './StoriesModal';
 import { useStories } from './useStories';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
@@ -15,7 +15,7 @@ export const Stories = () => {
   return (
     <>
       {stories.selectedStory && (
-        <StoryModal
+        <StoriesModal
           data={stories.selectedStory}
           onClose={stories.closeStory}
           onNext={stories.openNextStory}
