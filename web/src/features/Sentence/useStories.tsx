@@ -17,6 +17,7 @@ interface StoriesContextType {
   selectedStory: Story | null;
   stories: Story[];
   randomStoryWithVideo: Story | null;
+  rotateRandomStoryWithVideo: () => void;
   openStory: (id: string) => Promise<Story | null>;
   openNextStory: () => Promise<Story | null>;
   onPrevStory: () => Promise<Story | null>;
@@ -87,8 +88,8 @@ function useProvideStories(): StoriesContextType {
     return () => clearTimeout(timeout);
   }, [selectedImageImageId]);
 
-  const { storiesToShow, randomStoryWithVideo } = useMemo(() => {
-    if (!databaseStories) return { storiesToShow: [], randomStoryWithVideo: null };
+  const { storiesToShow, defaultRandomStoryWithVideo } = useMemo(() => {
+    if (!databaseStories) return { storiesToShow: [], defaultRandomStoryWithVideo: null };
     const allElements = [...(databaseStories || [])];
     const publishedStories = allElements.filter((s) => s.isPublished);
 
@@ -96,8 +97,21 @@ function useProvideStories(): StoriesContextType {
 
     const randomStoryWithVideo = storiesToShow.find((story) => story.videoUrl) || null;
 
-    return { storiesToShow, randomStoryWithVideo };
+    return { storiesToShow, defaultRandomStoryWithVideo: randomStoryWithVideo };
   }, [databaseStories]);
+
+  const [rotatedRandomStoryWithVideo, setRotatedRandomStoryWithVideo] = useState<Story | null>(
+    null,
+  );
+
+  const rotateRandomStoryWithVideo = () => {
+    if (storiesToShow.length === 0) return null;
+    const storiesWithVideo = storiesToShow.filter((story) => story.videoUrl);
+    if (storiesWithVideo.length === 0) return null;
+    const randomStoryWithVideo =
+      storiesWithVideo[Math.floor(Math.random() * storiesWithVideo.length)];
+    setRotatedRandomStoryWithVideo(randomStoryWithVideo);
+  };
 
   const selectedStory = useMemo(
     () => databaseStories?.find((story) => story.id === selectedImageImageId) || null,
@@ -157,7 +171,8 @@ function useProvideStories(): StoriesContextType {
     loading,
     selectedStory,
     stories: storiesToShow,
-    randomStoryWithVideo,
+    randomStoryWithVideo: rotatedRandomStoryWithVideo || defaultRandomStoryWithVideo,
+    rotateRandomStoryWithVideo,
     openStory,
     openRandomStory,
     openNextStory,

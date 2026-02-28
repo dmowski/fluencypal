@@ -1,11 +1,11 @@
 import { useLingui } from '@lingui/react';
-import { Button, Typography } from '@mui/material';
+import { Button, IconButton, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 
 import { StoryPreview } from './StoryPreview';
 import { StoriesModal } from './StoriesModal';
 import { useStories } from './useStories';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, RefreshCcw } from 'lucide-react';
 import Image from 'next/image';
 
 export const Stories = () => {
@@ -50,6 +50,20 @@ export const Stories = () => {
           },
         }}
       >
+        <IconButton
+          sx={{
+            position: 'absolute',
+            top: '10px',
+            right: '10px',
+            zIndex: 2,
+            opacity: 0.7,
+          }}
+          onClick={() => {
+            stories.rotateRandomStoryWithVideo();
+          }}
+        >
+          <RefreshCcw size={'18'} />
+        </IconButton>
         <Stack
           sx={{
             position: 'absolute',
