@@ -1,5 +1,5 @@
 import { useLingui } from '@lingui/react';
-import { Button, IconButton, Typography } from '@mui/material';
+import { Button, Checkbox, FormControlLabel, IconButton, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -334,6 +334,8 @@ export const StoriesModal = ({
     stories.playStoryAudio(data);
   };
 
+  const [isAutoPlay, setIsAutoPlay] = useState(false);
+
   const prevListenSentence = () => {
     if (!listenState) return;
 
@@ -591,22 +593,10 @@ export const StoriesModal = ({
                   height: '40%',
                   gap: '30px',
                   justifyContent: 'flex-start',
-                  alignItems: 'flex-start',
+                  alignItems: 'flex-end',
                   flexDirection: 'column',
                 }}
               >
-                <Button
-                  onClick={audio.isPlaying ? () => audio.interrupt() : playActiveListenSentence}
-                  startIcon={<RefreshCw size={'20px'} />}
-                  variant="outlined"
-                  sx={{
-                    color: 'rgba(255, 255, 255, 0.9)',
-                    borderColor: 'rgba(255, 255, 255, 0.9)',
-                  }}
-                >
-                  {i18n._('Replay')}
-                </Button>
-
                 <Stack
                   sx={{
                     alignItems: 'flex-start',
@@ -639,6 +629,29 @@ export const StoriesModal = ({
                   >
                     {i18n._('Next')}
                   </Button>
+                </Stack>
+
+                <Stack sx={{ gap: '5px', alignItems: 'flex-end' }}>
+                  <Button
+                    onClick={audio.isPlaying ? () => audio.interrupt() : playActiveListenSentence}
+                    startIcon={<RefreshCw size={'20px'} />}
+                    variant="outlined"
+                    sx={{
+                      color: 'rgba(255, 255, 255, 0.9)',
+                      borderColor: 'rgba(255, 255, 255, 0.9)',
+                    }}
+                  >
+                    {i18n._('Replay')}
+                  </Button>
+
+                  <FormControlLabel
+                    checked={isAutoPlay}
+                    onChange={(e) => setIsAutoPlay(!isAutoPlay)}
+                    control={<Checkbox size="large" />}
+                    label={
+                      <Typography variant="body2">{i18n._('Auto play next sentence')}</Typography>
+                    }
+                  />
                 </Stack>
               </Stack>
             </Stack>
