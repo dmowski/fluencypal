@@ -303,7 +303,13 @@ export const StoryModal = ({
     await audio.setTextAsPotentialSpeak2(cleanWord, speakOptionsMain);
   };
 
-  const attentionWords = uniq([...state.badWords, ...state.translationWords]);
+  const attentionWords = useMemo(
+    () =>
+      uniq(
+        [...state.badWords, ...state.translationWords].map((word) => clearWordForAudio(word) || ''),
+      ).filter(Boolean),
+    [state.badWords, state.translationWords],
+  );
 
   const isSavedProgress = state.progress.length > 0;
 
@@ -712,27 +718,6 @@ export const StoryModal = ({
                       alignItems: 'flex-start',
                     }}
                   >
-                    {data.videoUrl && (
-                      <Stack
-                        sx={{
-                          maxWidth: '100%',
-                        }}
-                      >
-                        <Stack
-                          component={'video'}
-                          src={data.videoUrl}
-                          controls
-                          sx={{
-                            width: '100%',
-                            boxShadow: '0px 4px 22px rgba(0, 0, 0, 0.9)',
-                            maxWidth: '500px',
-                            margin: '0 auto',
-                            borderRadius: '8px',
-                          }}
-                        />
-                      </Stack>
-                    )}
-
                     <Stack
                       sx={{
                         padding: '0 0',
