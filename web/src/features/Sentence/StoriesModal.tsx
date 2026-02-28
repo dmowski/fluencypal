@@ -438,6 +438,12 @@ export const StoriesModal = ({
                 setIsVideoVolumeEnabled={stories.setIsVideoVolumeEnabled}
                 isVideoPaused={stories.isVideoPaused}
                 setIsVideoPaused={stories.setIsVideoPaused}
+                onFinished={() => {
+                  const isAudioUnlocked = audio.isUnlocked();
+                  if (isAudioUnlocked) {
+                    startListenMode();
+                  }
+                }}
               />
             )}
 
@@ -935,12 +941,14 @@ export const StoryVideo = ({
   setIsVideoVolumeEnabled,
   isVideoPaused,
   setIsVideoPaused,
+  onFinished,
 }: {
   story: Story;
   isVideoVolumeEnabled: boolean;
   setIsVideoVolumeEnabled: (enabled: boolean) => void;
   isVideoPaused: boolean;
   setIsVideoPaused: (paused: boolean) => void;
+  onFinished: () => void;
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const audio = useConversationAudio();
@@ -974,6 +982,9 @@ export const StoryVideo = ({
 
     setIsVideoPaused(isNeedToPause);
   };
+
+  const isVideoInLoop = !audio.isUnlocked();
+  console.log('isVideoInLoop', isVideoInLoop);
 
   return (
     <Stack
@@ -1011,6 +1022,11 @@ export const StoryVideo = ({
           onClick={togglePause}
           playsInline
           autoPlay
+          loop={isVideoInLoop}
+          onEnded={() => {
+            console.log('onEnd');
+            onFinished();
+          }}
           onPause={(e) => {
             setIsVideoPaused(true);
             audio.music.pause();
@@ -1018,7 +1034,6 @@ export const StoryVideo = ({
           onPlay={() => {
             setIsVideoPaused(false);
           }}
-          loop
           sx={{
             width: '100%',
             height: '100%',
