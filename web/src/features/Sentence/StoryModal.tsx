@@ -167,10 +167,11 @@ export const StoryModal = ({
   };
 
   const [initializing, setInitializing] = useState(false);
-  const [isReady, setIsReady] = useState(false);
+
+  const [viewMode, setViewMode] = useState<'video' | 'quiz' | 'listen'>('video');
 
   useEffect(() => {
-    if (isStateInitializing.current || !isReady) return;
+    if (isStateInitializing.current || viewMode !== 'quiz') return;
 
     const timeout = setTimeout(() => {
       saveStoryProgress(internalState);
@@ -178,7 +179,7 @@ export const StoryModal = ({
     }, 4000);
 
     return () => clearTimeout(timeout);
-  }, [internalState, isReady]);
+  }, [internalState, viewMode]);
 
   const isNeedToTranslate = targetLanguage !== 'en';
 
@@ -202,9 +203,9 @@ export const StoryModal = ({
     audio.initAudio();
     setIsListenMode(false);
 
-    if (state.progress.length > 0 && isStartFromSavedState) {
-      setIsReady(true);
-    } else {
+    setViewMode('quiz');
+
+    if (state.progress.length === 0 || !isStartFromSavedState) {
       setInitializing(true);
 
       const preparedSentences = state.sentences.length
@@ -220,7 +221,6 @@ export const StoryModal = ({
         badWords: [],
         translationWords: [],
       });
-      setIsReady(true);
       setInitializing(false);
     }
 
@@ -324,7 +324,7 @@ export const StoryModal = ({
   const startListenMode = async () => {
     audio.initAudio();
     setIsShowVideo(false);
-    setIsReady(false);
+    setViewMode('listen');
     setIsListenMode(true);
     const sourceSentences = await prepareSentences();
     const listeningSentences: Sentence[] = sourceSentences.sentences.map((sentence, index) => ({
@@ -396,10 +396,10 @@ export const StoryModal = ({
     }
   };
 
-  const isQuizMode = isReady && !initializing && !isShowVideo;
-  const isVideoMode = isVideoAvailable && isShowVideo;
+  const isQuizMode = viewMode === 'quiz' && !initializing && !isShowVideo;
+  const isVideoMode = viewMode === 'video' && isShowVideo;
 
-  const isAudioMode = isListenMode && !isShowVideo;
+  const isAudioMode = viewMode === 'listen' && !isShowVideo;
 
   const backIcon = (
     <Stack
@@ -827,22 +827,13 @@ export const StoryModal = ({
                       sx={{
                         padding: '10px 30px',
                       }}
-                      onClick={() => onNext()}
-                      endIcon={<Origami size={'20px'} />}
-                    >
-                      {i18n._('Try another story')}
-                    </Button>
-                    <Button
-                      variant="text"
-                      color="info"
-                      sx={{
-                        padding: '10px 30px',
-                        color: '#fff',
+                      onClick={() => {
+                        onNext();
+                        setViewMode('video');
                       }}
-                      onClick={() => openInitScreen()}
-                      endIcon={<X size={'20px'} />}
+                      endIcon={<ChevronRight size={'20px'} />}
                     >
-                      {i18n._('Close')}
+                      {i18n._('Next story')}
                     </Button>
                   </Stack>
                 </Stack>
