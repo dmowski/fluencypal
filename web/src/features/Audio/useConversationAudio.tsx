@@ -13,6 +13,7 @@ import { AiVoice } from '@/common/ai';
 import { isSilentAudio } from './isSilentAudio';
 import { isDev } from '../Analytics/isDev';
 import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
+import { toMusicProxyUrl } from './toMusicProxyUrl';
 
 export const ttsVersion = 'v13';
 
@@ -87,18 +88,12 @@ interface ConversationAudioContextType {
   dispose: () => void;
 
   isPlaying: boolean;
+
+  lastPlayedText: string;
 }
 
 const ConversationAudioContext = createContext<ConversationAudioContextType | null>(null);
 const DEFAULT_BG_MUSIC_URL = '/audio/background.mp3';
-
-function toMusicProxyUrl(url: string): string {
-  if (!url.startsWith('https://')) {
-    return url;
-  }
-
-  return `/api/proxyMedia?url=${encodeURIComponent(url)}`;
-}
 
 interface CachedAudio {
   el: HTMLAudioElement;
@@ -534,6 +529,8 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     playerRef.current = new AudioQueuePlayer();
   }
 
+  const [lastPlayedText, setLastPlayedText] = React.useState<string>('');
+
   const initAudio = useCallback(async () => {
     // MUST be called from a user gesture handler (button click/tap)
     await playerRef.current!.unlockFromGesture();
@@ -562,6 +559,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
 
   const speak = useCallback(async (text: string, opts: SpeakOptions) => {
     const url = generateTtsStreamUrl(text, opts);
+    setLastPlayedText(text);
 
     await playerRef.current!.playStreamUrl(url);
   }, []);
@@ -750,6 +748,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       setTextAsPotentialSpeak,
       setTextAsPotentialSpeak2,
       playPotentialSpeakUrl2,
+      lastPlayedText,
     }),
     [
       initAudio,
@@ -766,6 +765,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
       setTextAsPotentialSpeak,
       setTextAsPotentialSpeak2,
       playPotentialSpeakUrl2,
+      lastPlayedText,
     ],
   );
 }

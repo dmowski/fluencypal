@@ -335,6 +335,18 @@ export const StoriesModal = ({
   };
 
   const [isAutoPlay, setIsAutoPlay] = useState(false);
+  useEffect(() => {
+    if (!listenState) return;
+    if (!isAutoPlay) return;
+
+    const finishedTargetSentence = listenState.allSentences[listenState.activeSentenceIndex];
+
+    if (!audio.isPlaying && audio.lastPlayedText === finishedTargetSentence.sentence) {
+      console.log('Time to switch. Finished:' + finishedTargetSentence.sentence);
+      //nextListenSentence();
+      // xxx
+    }
+  }, [listenState?.activeSentenceIndex, audio.isPlaying]);
 
   const prevListenSentence = () => {
     if (!listenState) return;
@@ -998,7 +1010,6 @@ export const StoryVideo = ({
   };
 
   const isVideoInLoop = !audio.isUnlocked();
-  console.log('isVideoInLoop', isVideoInLoop);
 
   return (
     <Stack

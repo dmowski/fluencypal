@@ -106,7 +106,13 @@ function useProvideStories(): StoriesContextType {
 
   const openStory = async (id: string) => {
     setSelectedImageId(id);
-    return databaseStories?.find((story) => story.id === id) || null;
+    audio.initAudio();
+    const story = databaseStories?.find((story) => story.id === id) || null;
+
+    if (story) {
+      playStoryAudio(story);
+    }
+    return story;
   };
 
   const openRandomStory = async () => {
@@ -114,7 +120,6 @@ function useProvideStories(): StoriesContextType {
     await audio.initAudio();
     const randomStory = storiesToShow[Math.floor(Math.random() * storiesToShow.length)];
     setSelectedImageId(randomStory.id);
-    audio.music.stop();
 
     playStoryAudio(randomStory);
     return randomStory;
