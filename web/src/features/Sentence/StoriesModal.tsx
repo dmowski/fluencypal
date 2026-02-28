@@ -100,7 +100,7 @@ export const StoriesModal = ({
     } else {
       setInternalState({ ...defaultStoryState });
 
-      const preparedSentences = await prepareSentences();
+      const preparedSentences = await prepareSentencesProcess;
       setInternalState((prevState) => ({
         ...prevState,
         sentences: preparedSentences.sentences,
@@ -181,21 +181,48 @@ export const StoriesModal = ({
 
   const isNeedToTranslate = targetLanguage !== 'en';
 
-  const prepareSentences = async () => {
-    const fullTextEn = data.textEn;
+  const preparingSentencesProgressMap = useRef<
+    Record<string, Promise<{ sentences: string[]; sentencesTranslates: string[] }> | undefined>
+  >({});
 
-    const fullText = isNeedToTranslate
-      ? await translateTextToTargetLanguageFromEng(fullTextEn)
-      : fullTextEn;
+  const prepareSentences = async (): Promise<{
+    sentences: string[];
+    sentencesTranslates: string[];
+  }> => {
+    const key = `${storyHash}_${isNeedToTranslate}`;
+    if (preparingSentencesProgressMap.current[key]) {
+      return preparingSentencesProgressMap.current[key];
+    }
 
-    const sentences = splitTextIntoSentences(fullText);
-    const translatedSentencesToNative = await translateSentences(sentences);
+    const process = new Promise<{ sentences: string[]; sentencesTranslates: string[] }>(
+      async (resolve) => {
+        const fullTextEn = data.textEn;
 
-    return {
-      sentences,
-      sentencesTranslates: translatedSentencesToNative,
-    };
+        const fullText = isNeedToTranslate
+          ? await translateTextToTargetLanguageFromEng(fullTextEn)
+          : fullTextEn;
+
+        const sentences = splitTextIntoSentences(fullText);
+        const translatedSentencesToNative = await translateSentences(sentences);
+        const result = {
+          sentences,
+          sentencesTranslates: translatedSentencesToNative,
+        };
+
+        if (audio.isUnlocked()) {
+          audio.setTextAsPotentialSpeak(sentences[0], speakOptionsMain);
+        }
+        resolve(result);
+        return process;
+      },
+    );
+    preparingSentencesProgressMap.current[key] = process;
+    return process;
   };
+
+  const prepareSentencesProcess = useMemo(() => {
+    return prepareSentences();
+  }, [data.textEn, isNeedToTranslate]);
 
   const startQuiz = async () => {
     audio.initAudio();
@@ -207,7 +234,7 @@ export const StoriesModal = ({
 
       const preparedSentences = state.sentences.length
         ? { sentences: state.sentences, sentencesTranslates: state.sentencesTranslates }
-        : await prepareSentences();
+        : await prepareSentencesProcess;
 
       setState({
         progress: '',
@@ -323,7 +350,7 @@ export const StoriesModal = ({
     setViewMode('listen');
     setListenState(null);
 
-    const sourceSentences = await prepareSentences();
+    const sourceSentences = await prepareSentencesProcess;
     const listeningSentences: Sentence[] = sourceSentences.sentences.map((sentence, index) => ({
       sentence,
       translate: sourceSentences.sentencesTranslates[index],
@@ -334,7 +361,7 @@ export const StoriesModal = ({
       allSentences: listeningSentences,
     });
 
-    audio.speak(listeningSentences[0].sentence, speakOptionsMain);
+    audio.playPotentialSpeakUrl(listeningSentences[0].sentence, speakOptionsMain);
     audio.setTextAsPotentialSpeak(listeningSentences[1].sentence, speakOptionsMain);
 
     stories.playStoryAudio(data);

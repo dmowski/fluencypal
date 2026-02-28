@@ -4,13 +4,7 @@ import { Story } from './types';
 import { ImageDescription } from '../Game/ImagesDescriptions';
 import { CircleCheck, Eye } from 'lucide-react';
 import { Typography } from '@mui/material';
-import { useMemo } from 'react';
-import { getStoryHash } from './getStoryHash';
-import { useAuth } from '../Auth/useAuth';
-import { db } from '../Firebase/firebaseDb';
-import { useDocumentDataOnce } from 'react-firebase-hooks/firestore';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { useSettings } from '../Settings/useSettings';
 
 export const StoryPreview = ({
   onSelectImage,
