@@ -15,7 +15,7 @@ import { isDev } from '../Analytics/isDev';
 import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 import { toMusicProxyUrl } from './toMusicProxyUrl';
 
-export const ttsVersion = 'v13';
+export const ttsVersion = 'v14';
 
 /**
  * What this gives you:
