@@ -196,12 +196,12 @@ export const StoryModal = ({
     };
   };
 
-  const start = async ({ isStartFromSavedState }: { isStartFromSavedState: boolean }) => {
+  const startQuiz = async () => {
     audio.initAudio();
 
     setViewMode('quiz');
 
-    if (state.progress.length === 0 || !isStartFromSavedState) {
+    if (state.progress.length === 0 || !isSavedProgress) {
       setInitializing(true);
 
       const preparedSentences = state.sentences.length
@@ -506,9 +506,7 @@ export const StoryModal = ({
                       variant="contained"
                       color="secondary"
                       onClick={() => {
-                        start({
-                          isStartFromSavedState: isSavedProgress,
-                        });
+                        startQuiz();
                       }}
                       sx={{
                         padding: '10px 20px',
