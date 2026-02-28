@@ -36,6 +36,7 @@ export const Stories = () => {
           borderRadius: '16px',
           padding: '28px 0 20px 20px',
           zIndex: 1,
+          overflow: 'hidden',
           '@media (max-width:600px)': {
             //alignItems: 'flex-start',
             //backgroundColor: 'rgba(0, 0, 0, 0.1)',
@@ -57,7 +58,6 @@ export const Stories = () => {
             top: 0,
             left: 0,
             overflow: 'hidden',
-            borderRadius: '16px',
             zIndex: -1,
             opacity: 1,
             '@media (max-width:600px)': {
@@ -120,41 +120,67 @@ export const Stories = () => {
                     sx={{
                       position: 'absolute',
 
-                      top: '-13px',
                       left: '0',
-                      transform: 'rotate(0deg) scale(0.93)',
+                      top: '-17px',
+                      transform: 'rotate(0deg) scale(0.89)',
                       pointerEvents: 'none',
                       zIndex: 0,
                       width: '130px',
                       aspectRatio: '130 / 200',
 
-                      backgroundColor: 'rgb(111, 6, 24)',
-                      borderRadius: '8px',
-                      border: '1px solid rgba(255, 255, 255, 0.51)',
+                      borderRadius: '10px',
+                      border: '1px solid rgba(149, 149, 149, 1)',
+                      overflow: 'hidden',
                       '@media (max-width:400px)': {
                         width: '90px',
                       },
                     }}
-                  ></Stack>
+                  >
+                    <Image
+                      src={stories.randomStoryWithVideo?.imageUrl}
+                      alt="Stories background"
+                      fill
+                      sizes="20px"
+                      quality={40}
+                      style={{
+                        objectFit: 'cover',
+                        filter: 'blur(10px) brightness(0.4) contrast(1)',
+                        transform: 'scale(1.2) ',
+                      }}
+                    />
+                  </Stack>
 
                   <Stack
                     sx={{
                       position: 'absolute',
-                      top: '-21px',
                       left: '0',
-                      transform: 'rotate(0deg) scale(0.88)',
+                      top: '-29px',
+                      transform: 'rotate(0deg) scale(0.8)',
                       pointerEvents: 'none',
                       zIndex: -1,
                       width: '130px',
                       aspectRatio: '130 / 200',
-                      backgroundColor: 'rgba(200, 2, 75, 0.72)',
-                      border: '1px solid rgba(255, 255, 255, 0.51)',
-                      borderRadius: '8px',
+                      border: '1px solid rgba(120, 120, 120, 1)',
+                      borderRadius: '9px',
+                      overflow: 'hidden',
                       '@media (max-width:400px)': {
                         width: '90px',
                       },
                     }}
-                  ></Stack>
+                  >
+                    <Image
+                      src={stories.randomStoryWithVideo?.imageUrl}
+                      alt="Stories background"
+                      fill
+                      sizes="20px"
+                      quality={40}
+                      style={{
+                        objectFit: 'cover',
+                        filter: 'blur(10px) brightness(0.8) contrast(0.94)',
+                        transform: 'scale(1.2) ',
+                      }}
+                    />
+                  </Stack>
                 </>
               )}
             </Stack>
