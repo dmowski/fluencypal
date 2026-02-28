@@ -338,6 +338,7 @@ export const StoriesModal = ({
   useEffect(() => {
     if (!listenState) return;
     if (!isAutoPlay) return;
+    if (viewMode !== 'listen') return;
 
     const finishedTargetSentence = listenState.allSentences[listenState.activeSentenceIndex];
 
