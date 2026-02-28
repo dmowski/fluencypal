@@ -172,7 +172,6 @@ export const StoriesModal = ({
 
     const timeout = setTimeout(() => {
       saveStoryProgress(internalState);
-      console.log('Save story progress');
     }, 4000);
 
     return () => clearTimeout(timeout);
@@ -334,7 +333,8 @@ export const StoriesModal = ({
     stories.playStoryAudio(data);
   };
 
-  const [isAutoPlay, setIsAutoPlay] = useState(false);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
+
   useEffect(() => {
     if (!listenState) return;
     if (!isAutoPlay) return;
@@ -342,13 +342,13 @@ export const StoriesModal = ({
     const finishedTargetSentence = listenState.allSentences[listenState.activeSentenceIndex];
 
     if (!audio.isPlaying && audio.lastPlayedText === finishedTargetSentence.sentence) {
-      console.log('Time to switch. Finished:' + finishedTargetSentence.sentence);
-      //nextListenSentence();
-      // xxx
+      sleep(500).then(() => {
+        nextListenSentence();
+      });
     }
-  }, [listenState?.activeSentenceIndex, audio.isPlaying]);
+  }, [listenState?.activeSentenceIndex, audio.isPlaying, audio.lastPlayedText, isAutoPlay]);
 
-  const prevListenSentence = () => {
+  const prevListenSentence = async () => {
     if (!listenState) return;
 
     const prevIndex = listenState.activeSentenceIndex - 1;
@@ -364,7 +364,7 @@ export const StoriesModal = ({
       allSentences: listenState.allSentences,
     });
 
-    audio.speak(prevSentence.sentence, speakOptionsMain);
+    audio.playPotentialSpeakUrl2(prevSentence.sentence, speakOptionsMain);
 
     const followingSentence = listenState.allSentences[prevIndex + 1];
     if (followingSentence) {
@@ -372,12 +372,12 @@ export const StoriesModal = ({
     }
   };
 
-  const playActiveListenSentence = () => {
+  const playActiveListenSentence = async () => {
     if (!listenState) return;
-    audio.speak(listenState.activeSentence.sentence, speakOptionsMain);
+    audio.playPotentialSpeakUrl2(listenState.activeSentence.sentence, speakOptionsMain);
   };
 
-  const nextListenSentence = () => {
+  const nextListenSentence = async () => {
     if (!listenState) return;
 
     const nextIndex = listenState.activeSentenceIndex + 1;
@@ -393,7 +393,7 @@ export const StoriesModal = ({
       allSentences: listenState.allSentences,
     });
 
-    audio.speak(nextSentence.sentence, speakOptionsMain);
+    audio.playPotentialSpeakUrl2(nextSentence.sentence, speakOptionsMain);
 
     const followingSentence = listenState.allSentences[nextIndex + 1];
     if (followingSentence) {
@@ -643,9 +643,21 @@ export const StoriesModal = ({
                   </Button>
                 </Stack>
 
-                <Stack sx={{ gap: '5px', alignItems: 'flex-end' }}>
+                <Stack sx={{ gap: '10px', alignItems: 'flex-end' }}>
                   <Button
-                    onClick={audio.isPlaying ? () => audio.interrupt() : playActiveListenSentence}
+                    onClick={
+                      audio.isPlaying
+                        ? async () => {
+                            audio.interrupt();
+                            sleep(100);
+                            playActiveListenSentence();
+                            setIsAutoPlay(false);
+                          }
+                        : () => {
+                            playActiveListenSentence();
+                            setIsAutoPlay(false);
+                          }
+                    }
                     startIcon={<RefreshCw size={'20px'} />}
                     variant="outlined"
                     sx={{
@@ -660,9 +672,7 @@ export const StoriesModal = ({
                     checked={isAutoPlay}
                     onChange={(e) => setIsAutoPlay(!isAutoPlay)}
                     control={<Checkbox size="large" />}
-                    label={
-                      <Typography variant="body2">{i18n._('Auto play next sentence')}</Typography>
-                    }
+                    label={<Typography>{i18n._('Auto play')}</Typography>}
                   />
                 </Stack>
               </Stack>
@@ -1049,7 +1059,6 @@ export const StoryVideo = ({
           autoPlay
           loop={isVideoInLoop}
           onEnded={() => {
-            console.log('onEnd');
             onFinished();
           }}
           onPause={(e) => {
