@@ -646,7 +646,7 @@ export const StoryModal = ({
               height: '100%',
               width: '100%',
               zIndex: 1,
-              padding: '10px',
+              padding: '10px 15px',
             }}
           >
             {backIcon}

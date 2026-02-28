@@ -103,10 +103,7 @@ export function TextConstructor({
     setWrongWord(null);
 
     onPlayAudio?.(word, false);
-    await sleep(20);
-
     onGoodWord?.(word);
-    await sleep(1);
 
     const nextProgress = constructFinalProgress({
       progress,
@@ -297,7 +294,7 @@ export function TextConstructor({
           alignItems: 'center',
         }}
       >
-        <Stack sx={{ maxWidth: '700px', padding: '0 10px', width: '100%' }}>
+        <Stack sx={{ maxWidth: '700px', padding: '0', width: '100%' }}>
           <Stack
             direction="row"
             sx={{
