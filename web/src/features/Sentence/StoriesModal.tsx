@@ -140,9 +140,9 @@ export const StoriesModal = ({
   const translator = useTranslate();
 
   const isTranslateAvailable = translator.isTranslateAvailable;
+  const isTargetLanguageTheSameAsUserLanguage = targetLanguage === nativeLanguage;
 
   const translateSentences = async (sentences: string[]): Promise<string[]> => {
-    const isTargetLanguageTheSameAsUserLanguage = targetLanguage === nativeLanguage;
     if (!isTranslateAvailable || isTargetLanguageTheSameAsUserLanguage) {
       const maskedSentences = sentences.map((sentence) => sentence.replace(/\w/g, '*'));
       return maskedSentences;
@@ -577,10 +577,11 @@ export const StoriesModal = ({
                       />
                     )}
                   </Stack>
-
-                  <Typography variant="body2">
-                    {listenState?.activeSentence.translate || '...'}
-                  </Typography>
+                  {!isTargetLanguageTheSameAsUserLanguage && (
+                    <Typography variant="body2">
+                      {listenState?.activeSentence.translate || '...'}
+                    </Typography>
+                  )}
                 </Stack>
               </Stack>
 
