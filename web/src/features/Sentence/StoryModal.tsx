@@ -87,9 +87,6 @@ export const StoryModal = ({
 
   const [internalState, setInternalState] = useState<StoryState>(defaultStoryState);
 
-  const [isShowVideo, setIsShowVideo] = useState(true);
-  const isVideoAvailable = Boolean(data.videoUrl);
-
   const isStateInitializing = useRef(false);
   const initState = async () => {
     if (isStateInitializing.current) return;
@@ -201,7 +198,6 @@ export const StoryModal = ({
 
   const start = async ({ isStartFromSavedState }: { isStartFromSavedState: boolean }) => {
     audio.initAudio();
-    setIsListenMode(false);
 
     setViewMode('quiz');
 
@@ -228,8 +224,7 @@ export const StoryModal = ({
   };
 
   const openInitScreen = () => {
-    setIsShowVideo(true);
-    setIsListenMode(false);
+    setViewMode('video');
     audio.music.stop();
   };
 
@@ -313,8 +308,6 @@ export const StoryModal = ({
 
   const isSavedProgress = state.progress.length > 0;
 
-  const [isListenMode, setIsListenMode] = useState(false);
-
   const [listenState, setListenState] = useState<{
     activeSentence: Sentence;
     activeSentenceIndex: number;
@@ -323,9 +316,7 @@ export const StoryModal = ({
 
   const startListenMode = async () => {
     audio.initAudio();
-    setIsShowVideo(false);
     setViewMode('listen');
-    setIsListenMode(true);
     const sourceSentences = await prepareSentences();
     const listeningSentences: Sentence[] = sourceSentences.sentences.map((sentence, index) => ({
       sentence,
@@ -396,10 +387,9 @@ export const StoryModal = ({
     }
   };
 
-  const isQuizMode = viewMode === 'quiz' && !initializing && !isShowVideo;
-  const isVideoMode = viewMode === 'video' && isShowVideo;
-
-  const isAudioMode = viewMode === 'listen' && !isShowVideo;
+  const isQuizMode = viewMode === 'quiz' && !initializing;
+  const isVideoMode = viewMode === 'video';
+  const isAudioMode = viewMode === 'listen';
 
   const backIcon = (
     <Stack
@@ -516,8 +506,6 @@ export const StoryModal = ({
                       variant="contained"
                       color="secondary"
                       onClick={() => {
-                        setIsShowVideo(false);
-                        setIsListenMode(false);
                         start({
                           isStartFromSavedState: isSavedProgress,
                         });
