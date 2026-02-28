@@ -83,6 +83,8 @@ export const StoriesModal = ({
       await saveStoryProgress(internalState);
     }
     onClose();
+    audio.music.stop();
+    audio.interrupt();
   };
 
   const [internalState, setInternalState] = useState<StoryState>(defaultStoryState);
@@ -225,6 +227,8 @@ export const StoriesModal = ({
   const openInitScreen = () => {
     setViewMode('video');
     audio.music.stop();
+    console.log('OPEN INIT SCREEN');
+    audio.interrupt();
   };
 
   const speakOptionsMain: SpeakOptions = useMemo(
