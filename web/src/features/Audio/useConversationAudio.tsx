@@ -227,8 +227,6 @@ class AudioQueuePlayer {
       return;
     }
 
-    // create audio element and set to map
-    // xxxx
     this.ensureUnlocked();
 
     const el = new Audio();
