@@ -79,7 +79,7 @@ export const StoryModal = ({
   };
 
   const onCloseHandler = async () => {
-    if (isReady) {
+    if (viewMode === 'quiz') {
       await saveStoryProgress(internalState);
     }
     onClose();
