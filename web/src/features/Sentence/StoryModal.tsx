@@ -701,16 +701,6 @@ export const StoryModal = ({
                     padding: '0 10px',
                   }}
                 >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      fontWeight: 600,
-                      marginTop: '60px',
-                    }}
-                  >
-                    {i18n._('Well done! You completed the story.')}
-                  </Typography>
-
                   <Stack
                     sx={{
                       gap: '80px',
@@ -725,9 +715,18 @@ export const StoryModal = ({
                     >
                       <Stack sx={{}}>
                         <Typography
+                          variant="body2"
+                          sx={{
+                            fontWeight: 500,
+                            marginTop: '60px',
+                          }}
+                        >
+                          {i18n._('Well done! You completed the story.')}
+                        </Typography>
+                        <Typography
                           variant="h3"
                           sx={{
-                            fontWeight: 800,
+                            fontWeight: 700,
                           }}
                         >
                           {i18n._('Success rate:')}
@@ -735,7 +734,8 @@ export const StoryModal = ({
                         <Typography
                           variant="h1"
                           sx={{
-                            fontWeight: 700,
+                            fontSize: '160px',
+                            fontWeight: 900,
                           }}
                         >
                           {successRate}%
@@ -944,7 +944,7 @@ export const StoryContainer = ({
               position: 'absolute',
               inset: 0,
 
-              background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%)',
+              background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%)',
             }}
           />
         </Stack>
