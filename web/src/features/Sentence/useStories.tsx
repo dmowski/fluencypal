@@ -46,6 +46,7 @@ function useProvideStories(): StoriesContextType {
       return;
     }
     const audioUrl = story.audioUrl;
+    audio.music.stop();
     await sleep(500);
     audio.music.play(audioUrl);
     audio.music.setVolume(0.1);
@@ -127,8 +128,6 @@ function useProvideStories(): StoriesContextType {
     const nextStory = storiesToShow[nextIndex];
     setSelectedImageId(nextStory.id);
 
-    audio.music.stop();
-
     if (isVideoVolumeEnabled) {
       playStoryAudio(nextStory);
     }
@@ -142,8 +141,6 @@ function useProvideStories(): StoriesContextType {
     const prevIndex = (currentIndex - 1 + storiesToShow.length) % storiesToShow.length;
     const prevStory = storiesToShow[prevIndex];
     setSelectedImageId(prevStory.id);
-
-    audio.music.stop();
 
     if (isVideoVolumeEnabled) {
       playStoryAudio(prevStory);

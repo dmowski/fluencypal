@@ -433,8 +433,7 @@ export const StoryModal = ({
           >
             {data.videoUrl && (
               <StoryVideo
-                videoUrl={data.videoUrl}
-                bgAudioUrl={data.audioUrl}
+                story={data}
                 isVideoVolumeEnabled={stories.isVideoVolumeEnabled}
                 setIsVideoVolumeEnabled={stories.setIsVideoVolumeEnabled}
                 isVideoPaused={stories.isVideoPaused}
@@ -931,15 +930,13 @@ export const StoryContainer = ({
 };
 
 export const StoryVideo = ({
-  videoUrl,
-  bgAudioUrl,
+  story,
   isVideoVolumeEnabled,
   setIsVideoVolumeEnabled,
   isVideoPaused,
   setIsVideoPaused,
 }: {
-  videoUrl: string;
-  bgAudioUrl?: string | null;
+  story: Story;
   isVideoVolumeEnabled: boolean;
   setIsVideoVolumeEnabled: (enabled: boolean) => void;
   isVideoPaused: boolean;
@@ -947,13 +944,18 @@ export const StoryVideo = ({
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const audio = useConversationAudio();
+  const stories = useStories();
 
   const toggleVolume = () => {
     audio.initAudio();
     const isNeedToEnable = !isVideoVolumeEnabled;
     setIsVideoVolumeEnabled(isNeedToEnable);
-    // remove
-    audio.music.setVolume(isNeedToEnable ? 0.1 : 0);
+
+    if (isNeedToEnable) {
+      stories.playStoryAudio(story);
+    } else {
+      audio.music.stop();
+    }
   };
 
   const togglePause = () => {
@@ -964,16 +966,10 @@ export const StoryVideo = ({
 
     if (isNeedToPause) {
       videoRef.current.pause();
-
-      // remove
-      audio.music.pause();
+      audio.music.stop();
     } else {
+      stories.playStoryAudio(story);
       videoRef.current.play();
-      // remove
-      if (bgAudioUrl) {
-        audio.music.play(bgAudioUrl);
-        audio.music.setVolume(0.1);
-      }
     }
 
     setIsVideoPaused(isNeedToPause);
@@ -1005,29 +1001,31 @@ export const StoryVideo = ({
           {isVideoPaused ? <Play size={'23px'} /> : <Pause size={'23px'} />}
         </IconButton>
       </Stack>
-      <Stack
-        component={'video'}
-        ref={videoRef}
-        src={videoUrl}
-        controls={false}
-        muted={!isVideoVolumeEnabled}
-        onClick={togglePause}
-        playsInline
-        autoPlay
-        onPause={(e) => {
-          setIsVideoPaused(true);
-          audio.music.pause();
-        }}
-        onPlay={() => {
-          setIsVideoPaused(false);
-        }}
-        loop
-        sx={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-        }}
-      />
+      {story.videoUrl && (
+        <Stack
+          component={'video'}
+          ref={videoRef}
+          src={story.videoUrl}
+          controls={false}
+          muted={!isVideoVolumeEnabled}
+          onClick={togglePause}
+          playsInline
+          autoPlay
+          onPause={(e) => {
+            setIsVideoPaused(true);
+            audio.music.pause();
+          }}
+          onPlay={() => {
+            setIsVideoPaused(false);
+          }}
+          loop
+          sx={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        />
+      )}
     </Stack>
   );
 };
