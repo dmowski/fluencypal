@@ -4,9 +4,10 @@ import { resolve } from "node:path";
 import { getDB } from "../core/firebase.js";
 import { STORY_VIDEO_DIR } from "./story/constants.js";
 import { downloadStoryVideo } from "./story/download.js";
-import { listOriginVideoFiles } from "./story/files.js";
+import { listOriginVideoFiles, listProcessedOutputFiles } from "./story/files.js";
 import { processOriginVideo } from "./story/process.js";
 import { Story } from "./story/types.js";
+import { uploadProcessedVideo } from "./story/upload.js";
 
 export async function runStories(): Promise<void> {
   try {
@@ -92,6 +93,38 @@ export async function runStories(): Promise<void> {
 
     console.log(
       `[stories] processing summary: total=${sourceVideos.length}, processed=${processed}, skipped=${processSkipped}, failed=${processFailed}`,
+    );
+
+    const processedOutputs = await listProcessedOutputFiles(outputDir);
+
+    let uploaded = 0;
+    let uploadSkipped = 0;
+    let uploadFailed = 0;
+
+    for (const processedOutput of processedOutputs) {
+      const uploadResult = await uploadProcessedVideo(outputDir, processedOutput);
+
+      if (uploadResult.status === "skipped") {
+        uploadSkipped += 1;
+        console.log(`[stories] skip upload ${processedOutput.fileName}: already uploaded`);
+        continue;
+      }
+
+      if (uploadResult.status === "uploaded") {
+        uploaded += 1;
+        console.log(
+          `[stories] uploaded ${processedOutput.fileName} -> ${uploadResult.destination}`,
+        );
+        continue;
+      }
+
+      uploadFailed += 1;
+      console.error(`[stories] failed upload ${processedOutput.fileName}`);
+      console.error(`[stories] upload reason: ${uploadResult.reason}`);
+    }
+
+    console.log(
+      `[stories] upload summary: total=${processedOutputs.length}, uploaded=${uploaded}, skipped=${uploadSkipped}, failed=${uploadFailed}`,
     );
     console.log(`[stories] outputDir: ${outputDir}`);
 

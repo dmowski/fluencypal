@@ -4,6 +4,12 @@ import { extname, resolve } from "node:path";
 import { DOWNLOAD_TMP_SUFFIX, OUTPUT_WEBM_SUFFIX, PROCESSED_LOG_SUFFIX } from "./constants.js";
 import { OriginVideoFile } from "./types.js";
 
+export type ProcessedOutputFile = {
+  hash: string;
+  fileName: string;
+  filePath: string;
+};
+
 export async function exists(filePath: string): Promise<boolean> {
   try {
     await access(filePath);
@@ -80,4 +86,32 @@ export async function listOriginVideoFiles(outputDir: string): Promise<OriginVid
   }
 
   return [...byHash.values()].sort((left, right) => left.hash.localeCompare(right.hash));
+}
+
+export async function listProcessedOutputFiles(outputDir: string): Promise<ProcessedOutputFile[]> {
+  const entries = await readdir(outputDir, { withFileTypes: true });
+  const result: ProcessedOutputFile[] = [];
+
+  for (const entry of entries) {
+    if (!entry.isFile()) {
+      continue;
+    }
+
+    if (!entry.name.endsWith(OUTPUT_WEBM_SUFFIX)) {
+      continue;
+    }
+
+    const hash = entry.name.replace(OUTPUT_WEBM_SUFFIX, "");
+    if (!/^[a-f0-9]{64}$/i.test(hash)) {
+      continue;
+    }
+
+    result.push({
+      hash: hash.toLowerCase(),
+      fileName: entry.name,
+      filePath: resolve(outputDir, entry.name),
+    });
+  }
+
+  return result.sort((left, right) => left.hash.localeCompare(right.hash));
 }
