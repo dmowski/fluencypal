@@ -45,7 +45,7 @@ export async function runStories(): Promise<void> {
     console.log(`[stories] Found ${stories.length} stories`);
     for (const story of stories) {
       console.log(
-        `[stories] id=${story.id}, title=${story.title}, published=${story.isPublished}, videoUrl=${story.videoUrl}`,
+        `[stories] id=${story.id}, title=${story.title}, published=${story.isPublished}, originalVideoUrl=${story.originalVideoUrl}`,
       );
     }
 
