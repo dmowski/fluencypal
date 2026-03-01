@@ -6,9 +6,9 @@ import { rm } from "node:fs/promises";
 export async function runRemove(): Promise<void> {
   try {
     const bucket = getBucket();
-    const db = getDB();
-    const [files] = await bucket.getFiles({ prefix: TTS_AUDIO_PREFIX });
 
+    const [files] = await bucket.getFiles({ prefix: TTS_AUDIO_PREFIX });
+    const db = getDB();
     const cacheRef = db.collection("audioCache");
     const cacheSnapshot = await cacheRef.get();
     const batch = db.batch();
