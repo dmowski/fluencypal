@@ -92,7 +92,7 @@ export async function POST(request: Request) {
         return Response.json(response);
       }
 
-      const hoursUsd = Math.round(amountOfHours * pricePerHourInCurrency);
+      const hoursUsd = amountOfHours * pricePerHourInCurrency;
       const stripeMoney = Number(toStripeUnit(hoursUsd, stripeCurrency.toUpperCase()));
 
       const session = await stripe.checkout.sessions.create({
@@ -150,10 +150,10 @@ export async function POST(request: Request) {
       const isYear = months === 12;
 
       // Calculate total price
-      const totalMonth = Math.round(PRICE_PER_MONTH_USD * rate * months);
-      const totalWeek = Math.round(PRICE_PER_WEEK_USD * rate);
-      const totalYear = Math.round(PRICE_PER_YEAR_USD * rate);
-      const totalDay = Math.round(PRICE_PER_DAY_USD * rate * days);
+      const totalMonth = PRICE_PER_MONTH_USD * rate * months;
+      const totalWeek = PRICE_PER_WEEK_USD * rate;
+      const totalYear = PRICE_PER_YEAR_USD * rate;
+      const totalDay = PRICE_PER_DAY_USD * rate * days;
 
       const totalUsd = isYear ? totalYear : isWeek ? totalWeek : days ? totalDay : totalMonth;
 

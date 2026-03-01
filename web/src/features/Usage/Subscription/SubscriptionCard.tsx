@@ -24,7 +24,7 @@ export const SubscriptionCard = ({
   const { i18n } = useLingui();
 
   const currency = useCurrency();
-  const priceInCurrency = Math.round(currency.rate * priceInUsd * 10) / 10;
+  const priceInCurrency = Math.round(currency.rate * priceInUsd * 100) / 100;
 
   const pricePerDayUsd =
     duration === 'day'

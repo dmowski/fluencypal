@@ -20,11 +20,12 @@ type RequestsSingletonCache = Record<
 >;
 
 const getRequestsCache = (): RequestsSingletonCache => {
-  if (typeof window === 'undefined')
+  if (typeof window === 'undefined') {
     return {
       currency_requests: undefined,
       currency_rate: undefined,
     };
+  }
 
   return window as unknown as RequestsSingletonCache;
 };
