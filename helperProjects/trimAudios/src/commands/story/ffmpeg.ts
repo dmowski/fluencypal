@@ -1,9 +1,78 @@
 import { spawn } from "node:child_process";
+import { createHash } from "node:crypto";
 import { createRequire } from "node:module";
 import { extname } from "node:path";
 
 const require = createRequire(import.meta.url);
 const ffmpegPath = require("ffmpeg-static") as string | null;
+
+const WEBM_VIDEO_CRF = "30";
+const WEBM_AUDIO_BITRATE = "64k";
+const WEBM_DEADLINE = "good";
+const WEBM_CPU_USED = "2";
+
+function buildWebmFfmpegArgs(inputPath: string, outputPath: string): string[] {
+  return [
+    "-hide_banner",
+    "-y",
+    "-i",
+    inputPath,
+    "-map",
+    "0:v:0",
+    "-map",
+    "0:a?",
+    "-c:v",
+    "libvpx-vp9",
+    "-pix_fmt",
+    "yuv420p",
+    "-b:v",
+    "0",
+    "-crf",
+    WEBM_VIDEO_CRF,
+    "-deadline",
+    WEBM_DEADLINE,
+    "-cpu-used",
+    WEBM_CPU_USED,
+    "-row-mt",
+    "1",
+    "-tile-columns",
+    "2",
+    "-frame-parallel",
+    "1",
+    "-auto-alt-ref",
+    "1",
+    "-lag-in-frames",
+    "25",
+    "-g",
+    "240",
+    "-c:a",
+    "libopus",
+    "-b:a",
+    WEBM_AUDIO_BITRATE,
+    outputPath,
+  ];
+}
+
+export function getWebmCommandSignature(): string {
+  const signatureSource = [
+    "libvpx-vp9",
+    "libopus",
+    "yuv420p",
+    "-b:v 0",
+    `-crf ${WEBM_VIDEO_CRF}`,
+    `-deadline ${WEBM_DEADLINE}`,
+    `-cpu-used ${WEBM_CPU_USED}`,
+    "-row-mt 1",
+    "-tile-columns 2",
+    "-frame-parallel 1",
+    "-auto-alt-ref 1",
+    "-lag-in-frames 25",
+    "-g 240",
+    `-b:a ${WEBM_AUDIO_BITRATE}`,
+  ].join("|");
+
+  return createHash("sha256").update(signatureSource).digest("hex");
+}
 
 function mapFormatToExtension(formatName: string): string | null {
   if (formatName === "mp4") {
@@ -109,33 +178,7 @@ export async function convertToWebm(inputPath: string, outputPath: string): Prom
     throw new Error("ffmpeg-static binary is not available");
   }
 
-  const args = [
-    "-hide_banner",
-    "-y",
-    "-i",
-    inputPath,
-    "-map",
-    "0:v:0",
-    "-map",
-    "0:a?",
-    "-c:v",
-    "libvpx-vp9",
-    "-b:v",
-    "0",
-    "-crf",
-    "18",
-    "-deadline",
-    "good",
-    "-cpu-used",
-    "2",
-    "-row-mt",
-    "1",
-    "-c:a",
-    "libopus",
-    "-b:a",
-    "96k",
-    outputPath,
-  ];
+  const args = buildWebmFfmpegArgs(inputPath, outputPath);
 
   await new Promise<void>((resolveConversion, reject) => {
     const child = spawn(ffmpegPath, args);
