@@ -31,7 +31,7 @@ export const BalanceStatus = () => {
       }}
     >
       <Typography variant="h3" component="h3" sx={{ marginBottom: '10px', fontWeight: 800 }}>
-        {i18n._('Access Status')}
+        {i18n._('Full Access')}
       </Typography>
 
       <Stack
@@ -66,7 +66,7 @@ export const BalanceStatus = () => {
                 ? i18n._('...')
                 : isHaveAccess
                   ? i18n._('Enjoy unlimited AI conversations and all practice modes!')
-                  : i18n._('Upgrade to unlock unlimited AI conversations and all practice modes')}
+                  : i18n._('Unlock unlimited AI conversations and all practice modes')}
             </Typography>
           </Stack>
         </Stack>

@@ -245,7 +245,7 @@ msgstr "+{points} ポイント"
 msgid "-"
 msgstr "-"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:64
+#: src/features/Usage/Subscription/BalanceStatus.tsx:66
 #. js-lingui-explicit-id
 msgid "..."
 msgstr "..."
@@ -471,11 +471,6 @@ msgstr "受け入れる"
 #. js-lingui-explicit-id
 msgid "Access Blocked"
 msgstr "アクセスがブロックされました"
-
-#: src/features/Usage/Subscription/BalanceStatus.tsx:34
-#. js-lingui-explicit-id
-msgid "Access Status"
-msgstr "アクセス状況"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:194
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:208
@@ -3033,7 +3028,7 @@ msgstr "ユニークな方法で単語を説明することにより、あなた
 msgid "Enjoy the game and see how the AI guesses your description!"
 msgstr "ゲームを楽しみ、AIがあなたの説明をどのように推測するかを見てみましょう！"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:66
+#: src/features/Usage/Subscription/BalanceStatus.tsx:68
 #. js-lingui-explicit-id
 msgid "Enjoy unlimited AI conversations and all practice modes!"
 msgstr "無制限のAI会話とすべての練習モードをお楽しみください！"
@@ -3965,6 +3960,7 @@ msgstr "フロントエンドシステム設計面接"
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:136
 #: src/features/Settings/MyProfile.tsx:73
 #: src/features/Usage/FeatureBlocker.tsx:51
+#: src/features/Usage/Subscription/BalanceStatus.tsx:34
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:452
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:500
 #. js-lingui-explicit-id
@@ -4216,7 +4212,6 @@ msgid ""
 msgstr "FluencyPal で柔軟な価格設定を。あなたのペースで AI を活用した言語練習を楽しんでください。今日から英語の流暢さを向上させましょう！"
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
-#: src/features/Game/UserProfileModal.tsx:449
 #: src/features/Usage/FeatureBlocker.tsx:99
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:679
 #. js-lingui-explicit-id
@@ -4232,11 +4227,6 @@ msgid ""
 msgstr ""
 "すべての機能へのフルアクセスを獲得しましょう。実際のインタビューを練習し、AIフィードバックを受け取り、完全な分析を確認できます。不正利用を防ぎ、すべて"
 "の機能に中断なくアクセスするためにカードを使用します。"
-
-#: src/features/Game/UserProfileModal.tsx:441
-#. js-lingui-explicit-id
-msgid "Get full access to use the chat and many other features!"
-msgstr "完全なアクセス権を取得して、チャットや他の多くの機能を利用しましょう！"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:542
 #. js-lingui-explicit-id
@@ -6458,7 +6448,7 @@ msgstr "読み込み中.."
 #: src/features/Router/PracticePage.tsx:65
 #: src/features/Telegram/TgAppPage.tsx:165
 #: src/features/Translation/useTranslate.tsx:215
-#: src/features/Usage/Subscription/BalanceStatus.tsx:56
+#: src/features/Usage/Subscription/BalanceStatus.tsx:58
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -7998,15 +7988,15 @@ msgid ""
 "business meetings, and everyday conversations."
 msgstr "リアルなシナリオで流暢に話す練習をします。職業面接、ビジネスミーティング、日常会話のような。"
 
-#: src/features/Blog/BlogOnePage.tsx:252
-#. js-lingui-explicit-id
-msgid "Practice speaking with AI"
-msgstr "AIと一緒にスピーキング練習"
-
 #: src/features/Landing/LandingPage.tsx:229
 #. js-lingui-explicit-id
 msgid "Practice Speaking with AI"
 msgstr "AIと話す訓練"
+
+#: src/features/Blog/BlogOnePage.tsx:252
+#. js-lingui-explicit-id
+msgid "Practice speaking with AI"
+msgstr "AIと一緒にスピーキング練習"
 
 #: src/features/Auth/InterviewAuthWall.tsx:31
 #. js-lingui-explicit-id
@@ -10970,6 +10960,11 @@ msgid ""
 "specifically to your goals."
 msgstr "人間のような音声での会話と、あなたの目標に特化したカリキュラムを解放しましょう。"
 
+#: src/features/Usage/Subscription/BalanceStatus.tsx:69
+#. js-lingui-explicit-id
+msgid "Unlock unlimited AI conversations and all practice modes"
+msgstr "無制限のAI会話とすべての練習モードをアンロック"
+
 #: src/features/Dashboard/Dashboard.tsx:75
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
@@ -10979,11 +10974,6 @@ msgstr "無制限のスピーキング練習、すべてのAI機能、コミュ�
 #. js-lingui-explicit-id
 msgid "Unpublish"
 msgstr "非公開にする"
-
-#: src/features/Usage/Subscription/BalanceStatus.tsx:67
-#. js-lingui-explicit-id
-msgid "Upgrade to unlock unlimited AI conversations and all practice modes"
-msgstr "アップグレードして無制限のAI会話とすべての練習モードをアンロック"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:103
 #. js-lingui-explicit-id
@@ -11928,7 +11918,7 @@ msgstr ""
 "、弱点を見つけ出し、発音の練習をする、そして予期しない質問に落ち着いて対処する方法を学ぶのに役立ちます。あなたはあなたの発言がより流暢になり、あなたの答"
 "えが試みるごとにより洗練されることに気付くでしょう。"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:78
+#: src/features/Usage/Subscription/BalanceStatus.tsx:80
 #. js-lingui-explicit-id
 msgid ""
 "You are a leader in leaderboard! Full access is active until you are on the "
@@ -12070,7 +12060,7 @@ msgid ""
 "the results."
 msgstr "すべての質問に回答しました。今すぐ回答を提出し、結果をお待ちください。"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:58
+#: src/features/Usage/Subscription/BalanceStatus.tsx:60
 #. js-lingui-explicit-id
 msgid "You have full access"
 msgstr "フルアクセスがあります"
@@ -12085,7 +12075,7 @@ msgstr "チャットはまだありません。"
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "回答を提出しました。他の人を待っています..."
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:88
+#: src/features/Usage/Subscription/BalanceStatus.tsx:90
 #. js-lingui-explicit-id
 msgid "You have {hours} AI hours on your balance"
 msgstr "あなたの残高には {hours} AI時間があります"
@@ -12149,7 +12139,7 @@ msgstr "あなたは素晴らしい進歩を遂げています。続けましょ
 msgid "You:"
 msgstr "あなた:"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:59
+#: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #. js-lingui-explicit-id
 msgid "Your access is currently limited"
 msgstr "現在、アクセスが制限されています"
@@ -12229,7 +12219,7 @@ msgstr "あなたのフルアクセスは以下の日付まで有効です"
 msgid "Your full access is active until {activeTill}"
 msgstr "あなたのフルアクセスは{activeTill}まで有効です"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:84
+#: src/features/Usage/Subscription/BalanceStatus.tsx:86
 #. js-lingui-explicit-id
 msgid "Your full access is active until {date}"
 msgstr "あなたのフルアクセスは {date} まで有効です。"
@@ -12373,6 +12363,21 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:34
+#. js-lingui-explicit-id
+#~ msgid "Access Status"
+#~ msgstr "アクセス状況"
+
+#: src/features/Game/UserProfileModal.tsx:441
+#. js-lingui-explicit-id
+#~ msgid "Get full access to use the chat and many other features!"
+#~ msgstr "完全なアクセス権を取得して、チャットや他の多くの機能を利用しましょう！"
+
+#: src/features/Usage/Subscription/BalanceStatus.tsx:67
+#. js-lingui-explicit-id
+#~ msgid "Upgrade to unlock unlimited AI conversations and all practice modes"
+#~ msgstr "アップグレードして無制限のAI会話とすべての練習モードをアンロック"
 
 #: src/features/Blog/BlogOnePage.tsx:252
 #. js-lingui-explicit-id
