@@ -15,8 +15,8 @@ export const CommunityCard = ({
   onClick: () => void;
   badgeNumber?: number;
   icon: React.ReactNode;
-  isLocked: boolean;
-  onLockedClick: () => void;
+  isLocked?: boolean;
+  onLockedClick?: () => void;
   isPremium?: boolean;
 }) => {
   const { i18n } = useLingui();

@@ -72,16 +72,6 @@ export const CommunityDashboard = () => {
                 {i18n._('Community Hub')}
               </Typography>
 
-              {!access.isFullAppAccess && (
-                <AccessBadge
-                  title={i18n._('You’re in preview mode')}
-                  subTitle={i18n._(
-                    'Unlock unlimited speaking practice, all AI features and community access.',
-                  )}
-                  buttonTitle={i18n._('Unlock Full Access')}
-                />
-              )}
-
               <Stack
                 sx={{
                   display: 'grid',
@@ -104,9 +94,6 @@ export const CommunityDashboard = () => {
                     onClick={() => setActivePage('chat')}
                     badgeNumber={chatList.unreadCountGlobal}
                     icon={<Newspaper style={iconStyle} />}
-                    isLocked={!access.isFullAppAccess}
-                    isPremium={true}
-                    onLockedClick={() => access.showPaymentModal()}
                   />
                 )}
                 <CommunityCard
@@ -114,16 +101,12 @@ export const CommunityDashboard = () => {
                   onClick={() => setActivePage('game')}
                   badgeNumber={0}
                   icon={<Swords style={iconStyle} />}
-                  isLocked={false}
-                  onLockedClick={() => access.showPaymentModal()}
                 />
 
                 <CommunityCard
                   title={i18n._('Tech Support')}
                   onClick={() => setActivePage('tech-support')}
                   icon={<SupportAgentIcon style={iconStyle} />}
-                  isLocked={false}
-                  onLockedClick={() => access.showPaymentModal()}
                 />
 
                 {access.canUseCommunity && (
@@ -132,9 +115,6 @@ export const CommunityDashboard = () => {
                     badgeNumber={battles.countOfBattlesNeedToAttention}
                     onClick={() => setActivePage('debates')}
                     icon={<UsersRound style={iconStyle} />}
-                    isLocked={!access.isFullAppAccess}
-                    isPremium={true}
-                    onLockedClick={() => access.showPaymentModal()}
                   />
                 )}
 
@@ -143,9 +123,6 @@ export const CommunityDashboard = () => {
                     title={i18n._('Daily Questions')}
                     onClick={() => setActivePage('daily-questions')}
                     icon={<PsychologyIcon style={iconStyle} />}
-                    isLocked={!access.isFullAppAccess}
-                    isPremium={true}
-                    onLockedClick={() => access.showPaymentModal()}
                   />
                 )}
 
@@ -153,8 +130,6 @@ export const CommunityDashboard = () => {
                   title={i18n._('Leaderboards')}
                   onClick={() => setActivePage('leaderboards')}
                   icon={<Crown style={iconStyle} />}
-                  isLocked={false}
-                  onLockedClick={() => access.showPaymentModal()}
                 />
 
                 {access.canUseCommunity && (
@@ -163,9 +138,6 @@ export const CommunityDashboard = () => {
                     onClick={() => setActivePage('dm')}
                     badgeNumber={chatList.myUnreadCount}
                     icon={<Mail style={iconStyle} />}
-                    isLocked={!access.isFullAppAccess}
-                    isPremium={true}
-                    onLockedClick={() => access.showPaymentModal()}
                   />
                 )}
               </Stack>
