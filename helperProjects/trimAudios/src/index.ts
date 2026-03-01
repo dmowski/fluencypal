@@ -6,9 +6,10 @@ import { runClean } from "./commands/clean.js";
 import { runLoad } from "./commands/load.js";
 import { runProcess } from "./commands/process.js";
 import { runRemove } from "./commands/remove.js";
+import { runStories } from "./commands/stories.js";
 import { runUpload } from "./commands/upload.js";
 
-type Command = "load" | "process" | "upload" | "check" | "clean" | "remove";
+type Command = "load" | "process" | "upload" | "check" | "clean" | "remove" | "stories";
 
 function parseCommand(value: string | undefined): Command | null {
   if (
@@ -17,7 +18,8 @@ function parseCommand(value: string | undefined): Command | null {
     value === "upload" ||
     value === "check" ||
     value === "clean" ||
-    value === "remove"
+    value === "remove" ||
+    value === "stories"
   ) {
     return value;
   }
@@ -30,7 +32,7 @@ async function main(): Promise<void> {
 
   if (!command) {
     console.error(
-      "Unknown or missing command. Use one of: load, process, upload, check, clean, remove",
+      "Unknown or missing command. Use one of: load, process, upload, check, clean, remove, stories",
     );
     process.exitCode = 1;
     return;
@@ -43,6 +45,11 @@ async function main(): Promise<void> {
 
   if (command === "remove") {
     await runRemove();
+    return;
+  }
+
+  if (command === "stories") {
+    await runStories();
     return;
   }
 
