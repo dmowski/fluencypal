@@ -274,7 +274,9 @@ export const StoryEditorModal = ({
             >
               <UploadVideoButton
                 type="icon"
-                onNewUploadUrl={(url) => setInternalStory((prev) => ({ ...prev, videoUrl: url }))}
+                onNewUploadUrl={(url) =>
+                  setInternalStory((prev) => ({ ...prev, originalVideoUrl: url }))
+                }
                 minify={false}
               />
               {internalStory.videoUrl ? (
