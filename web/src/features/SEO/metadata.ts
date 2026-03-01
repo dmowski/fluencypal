@@ -346,7 +346,7 @@ export const generateMetadataInfo = ({
   if (currentPath === '') {
     title = i18n._(`FluencyPal – AI English Speaking Practice for Fluency & Confidence`);
     description = i18n._(
-      `Practice conversational English with FluencyPal, your 24/7 AI English tutor and speaking coach. Improve fluency, pronunciation, and confidence through real-life role-play scenarios with instant feedback.`,
+      `Practice conversational English with FluencyPal, your 24/7 AI tutor. Improve fluency, pronunciation, and confidence.`,
     );
     keywords = [
       i18n._(`ai English tutor`),
