@@ -75,7 +75,7 @@ export const AccessBadge = ({
         endIcon={<Rocket size={'18px'} />}
         sx={{
           padding: '10px 30px',
-          background: 'linear-gradient(90deg, rgb(95, 255, 239) 0%, rgba(6,182,212,1) 100%)',
+          background: 'linear-gradient(90deg, rgb(250, 255, 95) 0%, rgba(6,182,212,1) 100%)',
         }}
       >
         {buttonTitle}

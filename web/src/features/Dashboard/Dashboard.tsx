@@ -69,9 +69,6 @@ export function Dashboard({ lang }: DashboardProps) {
         >
           {appNavigation.currentPage === 'home' && (
             <>
-              <JustTalkCard />
-              <Stories />
-
               {!access.isFullAppAccess && (
                 <AccessBadge
                   title={i18n._('You’re in preview mode')}
@@ -81,6 +78,9 @@ export function Dashboard({ lang }: DashboardProps) {
                   buttonTitle={i18n._('Unlock Full Access')}
                 />
               )}
+
+              <JustTalkCard />
+              <Stories />
 
               {access.isFullAppAccess && access.isExpiringSoon && (
                 <AccessBadge
