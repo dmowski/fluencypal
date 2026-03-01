@@ -6,7 +6,7 @@ import { DOWNLOAD_TMP_SUFFIX } from "./constants.js";
 import { exists, findAlreadyDownloadedPath } from "./files.js";
 import { detectVideoExtension } from "./ffmpeg.js";
 
-function hashUrl(url: string): string {
+export function hashUrl(url: string): string {
   return createHash("sha256").update(url).digest("hex");
 }
 

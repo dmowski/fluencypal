@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import { getDB } from "../core/firebase.js";
 import { STORY_VIDEO_DIR } from "./story/constants.js";
 import { backupStoriesSnapshot } from "./story/backup.js";
-import { downloadStoryVideo } from "./story/download.js";
+import { downloadStoryVideo, hashUrl } from "./story/download.js";
 import { listOriginVideoFiles, listProcessedOutputFiles } from "./story/files.js";
 import { processOriginVideo } from "./story/process.js";
 import { Story } from "./story/types.js";
@@ -26,13 +26,20 @@ export async function runStories(): Promise<void> {
       return;
     }
 
-    const stories: Story[] = snapshot.docs.map((doc) => {
+    const storyRows = snapshot.docs.map((doc) => {
       const story = doc.data() as Partial<Story>;
-      return {
+      const normalizedStory = {
         id: story.id ?? doc.id,
         ...story,
       } as Story;
+
+      return {
+        docId: doc.id,
+        story: normalizedStory,
+      };
     });
+
+    const stories: Story[] = storyRows.map((row) => row.story);
 
     const backupPath = await backupStoriesSnapshot(process.cwd(), stories);
     console.log(`[stories] backup created: ${backupPath}`);
@@ -104,17 +111,22 @@ export async function runStories(): Promise<void> {
     let uploaded = 0;
     let uploadSkipped = 0;
     let uploadFailed = 0;
+    const uploadedPublicUrlByHash = new Map<string, string>();
 
     for (const processedOutput of processedOutputs) {
       const uploadResult = await uploadProcessedVideo(outputDir, processedOutput);
 
       if (uploadResult.status === "skipped") {
+        if (uploadResult.publicUrl) {
+          uploadedPublicUrlByHash.set(processedOutput.hash, uploadResult.publicUrl);
+        }
         uploadSkipped += 1;
         console.log(`[stories] skip upload ${processedOutput.fileName}: already uploaded`);
         continue;
       }
 
       if (uploadResult.status === "uploaded") {
+        uploadedPublicUrlByHash.set(processedOutput.hash, uploadResult.publicUrl);
         uploaded += 1;
         console.log(
           `[stories] uploaded ${processedOutput.fileName} -> ${uploadResult.destination}`,
@@ -129,6 +141,51 @@ export async function runStories(): Promise<void> {
 
     console.log(
       `[stories] upload summary: total=${processedOutputs.length}, uploaded=${uploaded}, skipped=${uploadSkipped}, failed=${uploadFailed}`,
+    );
+
+    let dbUpdated = 0;
+    let dbSkipped = 0;
+    let dbNoUploadedUrl = 0;
+    let dbFailed = 0;
+
+    for (const row of storyRows) {
+      const sourceUrl = row.story.originalVideoUrl ?? null;
+
+      if (!sourceUrl) {
+        dbSkipped += 1;
+        continue;
+      }
+
+      const fileHash = hashUrl(sourceUrl);
+      const uploadedPublicUrl = uploadedPublicUrlByHash.get(fileHash);
+
+      if (!uploadedPublicUrl) {
+        dbNoUploadedUrl += 1;
+        continue;
+      }
+
+      if (row.story.videoUrl === uploadedPublicUrl) {
+        dbSkipped += 1;
+        continue;
+      }
+
+      try {
+        await cacheRef.doc(row.docId).update({
+          videoUrl: uploadedPublicUrl,
+          updatedAtIso: new Date().toISOString(),
+        });
+        dbUpdated += 1;
+        console.log(`[stories] updated story ${row.docId} videoUrl`);
+      } catch (updateError: unknown) {
+        dbFailed += 1;
+        const reason = updateError instanceof Error ? updateError.message : String(updateError);
+        console.error(`[stories] failed updating story ${row.docId}`);
+        console.error(`[stories] update reason: ${reason}`);
+      }
+    }
+
+    console.log(
+      `[stories] db sync summary: total=${storyRows.length}, updated=${dbUpdated}, skipped=${dbSkipped}, noUploadedUrl=${dbNoUploadedUrl}, failed=${dbFailed}`,
     );
     console.log(`[stories] outputDir: ${outputDir}`);
 

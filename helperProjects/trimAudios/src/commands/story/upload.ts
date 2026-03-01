@@ -22,7 +22,7 @@ type ProcessedLog = {
 
 export type UploadVideoResult =
   | { status: "uploaded"; destination: string; publicUrl: string }
-  | { status: "skipped" }
+  | { status: "skipped"; publicUrl?: string }
   | { status: "failed"; reason: string };
 
 async function readLog(logPath: string): Promise<ProcessedLog> {
@@ -47,8 +47,22 @@ export async function uploadProcessedVideo(
   try {
     const log = await readLog(logPath);
 
+    if (log.uploadDestination && !log.publicUrl) {
+      const bucket = getBucket();
+      const publicUrl = bucket.file(log.uploadDestination).publicUrl();
+      const nextLog: ProcessedLog = {
+        ...log,
+        hash: processedOutput.hash,
+        outputFileName: processedOutput.fileName,
+        publicUrl,
+      };
+
+      await writeFile(logPath, JSON.stringify(nextLog, null, 2), "utf-8");
+      return { status: "skipped", publicUrl };
+    }
+
     if (log.publicUrl && log.uploadDestination) {
-      return { status: "skipped" };
+      return { status: "skipped", publicUrl: log.publicUrl };
     }
 
     const destination = `${STORY_UPLOAD_PREFIX}${processedOutput.fileName}`;
