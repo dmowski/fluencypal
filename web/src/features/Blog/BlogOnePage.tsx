@@ -249,7 +249,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                     fontWeight: 600,
                   }}
                 >
-                  {i18n._(`Role-Play scenarios to practice`)}
+                  {i18n._(`Practice speaking with AI`)}
                 </Typography>
 
                 <Stack
@@ -280,7 +280,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
         </Stack>
 
         <CtaBlock
-          title={i18n._(`You can try AI in action now`)}
+          title={i18n._(`Start a Conversation with AI`)}
           actionButtonTitle={i18n._(`Try for free`)}
           actionButtonLink={`${getUrlStart(lang)}quiz`}
         />
