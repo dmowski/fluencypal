@@ -28,6 +28,8 @@ export class VideoConverter {
     this.worker = new Worker(new URL('./worker.ts', import.meta.url), {
       type: 'module',
     });
+    console.log('this.worker', this.worker);
+    debugger;
 
     this.worker.onmessage = (e: MessageEvent<WorkerResponse>) => {
       const { type, data } = e.data;
