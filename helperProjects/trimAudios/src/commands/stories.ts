@@ -1,3 +1,7 @@
+import { createHash } from "node:crypto";
+import { access, mkdir, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+
 import { getDB } from "../core/firebase.js";
 
 export interface Story {
@@ -21,10 +25,44 @@ export interface Story {
   updatedAtIso: string;
 }
 
+const STORY_VIDEO_DIR = "storyVideo";
+
+function hashUrl(url: string): string {
+  return createHash("sha256").update(url).digest("hex");
+}
+
+async function exists(filePath: string): Promise<boolean> {
+  try {
+    await access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function downloadToFile(url: string, destinationPath: string): Promise<void> {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Failed to download video: ${response.status} ${response.statusText}`);
+  }
+
+  if (!response.body) {
+    throw new Error("Video response body is empty");
+  }
+
+  const body = await response.arrayBuffer();
+  const buffer = Buffer.from(body);
+  await writeFile(destinationPath, buffer);
+}
+
 export async function runStories(): Promise<void> {
   try {
     const db = getDB();
     const cacheRef = db.collection("stories");
+    const outputDir = resolve(process.cwd(), STORY_VIDEO_DIR);
+
+    await mkdir(outputDir, { recursive: true });
 
     const snapshot = await cacheRef.get();
 
@@ -43,11 +81,37 @@ export async function runStories(): Promise<void> {
     });
 
     console.log(`[stories] Found ${stories.length} stories`);
+
+    let downloaded = 0;
+    let skipped = 0;
+    let withoutVideo = 0;
+
     for (const story of stories) {
-      console.log(
-        `[stories] id=${story.id}, title=${story.title}, published=${story.isPublished}, originalVideoUrl=${story.originalVideoUrl}`,
-      );
+      const sourceUrl = story.videoUrl ?? story.originalVideoUrl ?? null;
+
+      if (!sourceUrl) {
+        withoutVideo += 1;
+        continue;
+      }
+
+      const fileName = hashUrl(sourceUrl);
+      const destinationPath = resolve(outputDir, fileName);
+
+      if (await exists(destinationPath)) {
+        skipped += 1;
+        console.log(`[stories] skip ${story.id}: already downloaded`);
+        continue;
+      }
+
+      await downloadToFile(sourceUrl, destinationPath);
+      downloaded += 1;
+      console.log(`[stories] downloaded ${story.id} -> ${fileName}`);
     }
+
+    console.log(
+      `[stories] summary: total=${stories.length}, downloaded=${downloaded}, skipped=${skipped}, withoutVideo=${withoutVideo}`,
+    );
+    console.log(`[stories] outputDir: ${outputDir}`);
 
     process.exitCode = 0;
   } catch (error: unknown) {
