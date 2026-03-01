@@ -265,118 +265,102 @@ export const SubscriptionPaymentModal = () => {
               gap: '80px',
             }}
           >
-            <BalanceStatus />
             <Stack
               sx={{
                 gap: '20px',
               }}
             >
-              <Typography
-                variant="h4"
-                sx={{
-                  fontWeight: 800,
-                }}
-              >
-                {i18n._('How to get Full Access?')}
-              </Typography>
+              <BalanceStatus />
               <Stack
                 sx={{
+                  gap: '20px',
                   width: '100%',
-                  display: 'none',
                 }}
               >
-                <ButtonGroup>
-                  <Button
-                    onClick={() => setUsageType('subscription')}
-                    variant={usageType === 'subscription' ? 'contained' : 'outlined'}
-                  >
-                    {i18n._('Non-renewing subscription')}
-                  </Button>
-                  <Button
-                    onClick={() => setUsageType('hours')}
-                    variant={usageType === 'hours' ? 'contained' : 'outlined'}
-                  >
-                    {i18n._('AI tokens')}
-                  </Button>
-                </ButtonGroup>
-              </Stack>
-              {usageType === 'subscription' ? (
-                <Stack
-                  sx={{
-                    gap: '10px',
-                  }}
-                >
-                  <Stack>
-                    <Typography
-                      sx={{
-                        maxWidth: '700px',
-                      }}
-                    >
-                      {i18n._(`No auto-renewals. No hidden charges.`)}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        maxWidth: '700px',
-                      }}
-                    >
-                      {i18n._(`Choose how long you want access — and extend anytime.`)}
-                    </Typography>
-                  </Stack>
-                  <ActivePlanSelector onSelectDuration={onSelectDuration} />
-                </Stack>
-              ) : usageType === 'hours' ? (
-                <Stack
-                  sx={{
-                    gap: '25px',
-                  }}
-                >
-                  <Stack>
-                    <ColorIconTextList
-                      gap="12px"
-                      iconSize="18px"
-                      listItems={[
-                        {
-                          title: i18n._(`Buy AI tokens and use them whenever you want.`),
-                          iconName: 'star',
-                        },
-                        {
-                          title: i18n._(`1 AI hour ≈ 1 hour of active conversation with the AI.`),
-                          iconName: 'hourglass',
-                        },
-                        {
-                          title: i18n._(
-                            `You get full access, just like a subscription — but with complete flexibility.`,
-                          ),
-                          iconName: 'biceps-flexed',
-                        },
-                        {
-                          title: i18n._(
-                            `Use it on weekends, for a short project, or whenever it fits you.`,
-                          ),
-                          iconName: 'sprout',
-                        },
-                        {
-                          title: i18n._(`Tokens don’t expire, so you can save them for later.`),
-                          iconName: 'landmark',
-                        },
-                      ]}
-                    />
-                  </Stack>
-                  <HoursSelector onSelectHourPackage={onSelectHourPackage} />
-                </Stack>
-              ) : (
                 <Stack
                   sx={{
                     width: '100%',
+                    display: 'none',
                   }}
                 >
-                  <Typography>
-                    {i18n._(
-                      'Participate in Community activities like sharing posts in the Community Feed, discuss daily questions and play in the game. Top-5 most active users in the Community gets a Full Access until they in top-5',
-                    )}
-                  </Typography>
+                  <ButtonGroup>
+                    <Button
+                      onClick={() => setUsageType('subscription')}
+                      variant={usageType === 'subscription' ? 'contained' : 'outlined'}
+                    >
+                      {i18n._('Non-renewing subscription')}
+                    </Button>
+                    <Button
+                      onClick={() => setUsageType('hours')}
+                      variant={usageType === 'hours' ? 'contained' : 'outlined'}
+                    >
+                      {i18n._('AI tokens')}
+                    </Button>
+                  </ButtonGroup>
                 </Stack>
-              )}
+                {usageType === 'subscription' ? (
+                  <Stack
+                    sx={{
+                      gap: '10px',
+                      width: '100%',
+                    }}
+                  >
+                    <ActivePlanSelector onSelectDuration={onSelectDuration} />
+                  </Stack>
+                ) : usageType === 'hours' ? (
+                  <Stack
+                    sx={{
+                      gap: '25px',
+                    }}
+                  >
+                    <Stack>
+                      <ColorIconTextList
+                        gap="12px"
+                        iconSize="18px"
+                        listItems={[
+                          {
+                            title: i18n._(`Buy AI tokens and use them whenever you want.`),
+                            iconName: 'star',
+                          },
+                          {
+                            title: i18n._(`1 AI hour ≈ 1 hour of active conversation with the AI.`),
+                            iconName: 'hourglass',
+                          },
+                          {
+                            title: i18n._(
+                              `You get full access, just like a subscription — but with complete flexibility.`,
+                            ),
+                            iconName: 'biceps-flexed',
+                          },
+                          {
+                            title: i18n._(
+                              `Use it on weekends, for a short project, or whenever it fits you.`,
+                            ),
+                            iconName: 'sprout',
+                          },
+                          {
+                            title: i18n._(`Tokens don’t expire, so you can save them for later.`),
+                            iconName: 'landmark',
+                          },
+                        ]}
+                      />
+                    </Stack>
+                    <HoursSelector onSelectHourPackage={onSelectHourPackage} />
+                  </Stack>
+                ) : (
+                  <Stack
+                    sx={{
+                      width: '100%',
+                    }}
+                  >
+                    <Typography>
+                      {i18n._(
+                        'Participate in Community activities like sharing posts in the Community Feed, discuss daily questions and play in the game. Top-5 most active users in the Community gets a Full Access until they in top-5',
+                      )}
+                    </Typography>
+                  </Stack>
+                )}
+              </Stack>
             </Stack>
 
             <ResultsSection />

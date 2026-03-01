@@ -152,6 +152,10 @@ export const SubscriptionCard = ({
               endIcon={<ChevronRight />}
               sx={{
                 textAlign: 'left',
+                padding: '12px 20px',
+                fontSize: '1rem',
+                width: '100%',
+                fontWeight: 500,
               }}
             >
               {buttonLabels[duration]}
