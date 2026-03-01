@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 
 import { getDB } from "../core/firebase.js";
 import { STORY_VIDEO_DIR } from "./story/constants.js";
+import { backupStoriesSnapshot } from "./story/backup.js";
 import { downloadStoryVideo } from "./story/download.js";
 import { listOriginVideoFiles, listProcessedOutputFiles } from "./story/files.js";
 import { processOriginVideo } from "./story/process.js";
@@ -32,6 +33,9 @@ export async function runStories(): Promise<void> {
         ...story,
       } as Story;
     });
+
+    const backupPath = await backupStoriesSnapshot(process.cwd(), stories);
+    console.log(`[stories] backup created: ${backupPath}`);
 
     console.log(`[stories] Found ${stories.length} stories`);
 
