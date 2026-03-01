@@ -1888,17 +1888,13 @@ msgstr "Komunitas"
 msgid "Community access"
 msgstr "Akses komunitas"
 
+#: src/features/Community/CommunityDashboard.tsx:93
+#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
+#: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "Obrolan Komunitas"
-
-#: src/features/Community/CommunityDashboard.tsx:103
-#: src/features/Community/CommunityPage.tsx:27
-#: src/features/Game/GameOnboarding.tsx:107
-#. js-lingui-explicit-id
-msgid "Community Feed"
-msgstr "Umpan Komunitas"
 
 #: src/features/Community/CommunityDashboard.tsx:72
 #. js-lingui-explicit-id
@@ -2397,7 +2393,7 @@ msgstr "Praktek Bahasa Sehari-hari"
 msgid "Daily Question Chat"
 msgstr "Obrolan Pertanyaan Harian"
 
-#: src/features/Community/CommunityDashboard.tsx:143
+#: src/features/Community/CommunityDashboard.tsx:123
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2491,7 +2487,7 @@ msgstr "Debat dimulai!"
 msgid "Debate topics will be selected randomly."
 msgstr "Topik debat akan dipilih secara acak."
 
-#: src/features/Community/CommunityDashboard.tsx:131
+#: src/features/Community/CommunityDashboard.tsx:114
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -4339,7 +4335,7 @@ msgstr "Fitur suara penuh"
 msgid "Fun facts about yourself"
 msgstr "Fakta menarik tentang diri Anda"
 
-#: src/features/Community/CommunityDashboard.tsx:113
+#: src/features/Community/CommunityDashboard.tsx:100
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -6803,7 +6799,7 @@ msgstr "Pemuatan Lambat"
 msgid "Leaderboard"
 msgstr "Papan Peringkat"
 
-#: src/features/Community/CommunityDashboard.tsx:153
+#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -8022,13 +8018,13 @@ msgstr "Persetujuan orang tua telah diajukan!"
 #. js-lingui-explicit-id
 msgid ""
 "Participate in Community activities like sharing posts in the Community "
-"Feed, discuss daily questions and play in the game. Top-5 most active users "
+"Chat, discuss daily questions and play in the game. Top-5 most active users "
 "in the Community gets a Full Access until they in top-5"
 msgstr ""
-"Berpartisipasi dalam aktivitas Komunitas seperti berbagi postingan di Umpan "
-"Komunitas, diskusikan pertanyaan harian dan bermain dalam permainan. 5 "
-"pengguna paling aktif teratas di Komunitas mendapatkan Akses Penuh selama "
-"mereka berada di 5 teratas"
+"Berpartisipasi dalam aktivitas Komunitas seperti berbagi postingan di "
+"Obrolan Komunitas, berdiskusi tentang pertanyaan harian, dan bermain dalam "
+"permainan. 5 pengguna paling aktif di dalam Komunitas mendapatkan Akses "
+"Penuh selama mereka berada di 5 besar."
 
 #: src/features/RolePlay/rolePlayData.tsx:485
 #. js-lingui-explicit-id
@@ -8828,7 +8824,7 @@ msgstr "Dukungan prioritas"
 msgid "Privacy Policy"
 msgstr "Kebijakan Privasi"
 
-#: src/features/Community/CommunityDashboard.tsx:162
+#: src/features/Community/CommunityDashboard.tsx:137
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -9254,9 +9250,11 @@ msgstr "Rekam pesan"
 #: src/features/Game/GameOnboarding.tsx:118
 #. js-lingui-explicit-id
 msgid ""
-"Record a message in Community Feed and get {points} points in the "
+"Record a message in Community Chat and get {points} points in the "
 "leaderboard"
-msgstr "Rekam pesan di Umpan Komunitas dan dapatkan {points} poin di papan peringkat"
+msgstr ""
+"Rekam pesan di Obrolan Komunitas dan dapatkan {points} poin di papan "
+"peringkat"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:451
 #. js-lingui-explicit-id
@@ -10826,7 +10824,7 @@ msgstr "Wawancara teknis dengan pengembang frontend AI"
 msgid "Tech stack covered"
 msgstr "Tumpukan teknologi yang dibahas"
 
-#: src/features/Community/CommunityDashboard.tsx:122
+#: src/features/Community/CommunityDashboard.tsx:107
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -11771,8 +11769,7 @@ msgstr ""
 "\n"
 "Buka selama 1 tahun\n"
 
-#: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:81
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "Buka Akses Penuh"
@@ -11791,8 +11788,7 @@ msgstr ""
 "Buka percakapan suara seperti manusia dan kurikulum yang disesuaikan secara "
 "khusus dengan tujuan Anda."
 
-#: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:78
+#: src/features/Dashboard/Dashboard.tsx:75
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr "Buka latihan berbicara tanpa batas, semua fitur AI, dan akses komunitas."
@@ -13274,8 +13270,7 @@ msgstr ""
 "Anda diminta untuk **merancang sistem secara spontan**, tetapi tidak ada "
 "yang memberi tahu seperti apa rupa \"baik\"."
 
-#: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:74
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "Anda sedang dalam mode pratinjau"
@@ -13331,6 +13326,32 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
+
+#: src/features/Community/CommunityDashboard.tsx:103
+#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Game/GameOnboarding.tsx:107
+#. js-lingui-explicit-id
+#~ msgid "Community Feed"
+#~ msgstr "Umpan Komunitas"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:357
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Participate in Community activities like sharing posts in the Community "
+#~ "Feed, discuss daily questions and play in the game. Top-5 most active users "
+#~ "in the Community gets a Full Access until they in top-5"
+#~ msgstr ""
+#~ "Berpartisipasi dalam aktivitas Komunitas seperti berbagi postingan di Umpan "
+#~ "Komunitas, diskusikan pertanyaan harian dan bermain dalam permainan. 5 "
+#~ "pengguna paling aktif teratas di Komunitas mendapatkan Akses Penuh selama "
+#~ "mereka berada di 5 teratas"
+
+#: src/features/Game/GameOnboarding.tsx:118
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Record a message in Community Feed and get {points} points in the "
+#~ "leaderboard"
+#~ msgstr "Rekam pesan di Umpan Komunitas dan dapatkan {points} poin di papan peringkat"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
 #. js-lingui-explicit-id
@@ -14311,15 +14332,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Pembayaran Anda telah berhasil, tetapi pembaharuan mungkin memerlukan "
 #~ "beberapa menit"
-
-#: src/features/Game/GameOnboarding.tsx:118
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Record a message in Community Chat and get {points} points in the "
-#~ "leaderboard"
-#~ msgstr ""
-#~ "Rekam pesan di Obrolan Komunitas dan dapatkan {points} poin di papan "
-#~ "peringkat"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:167
 #. js-lingui-explicit-id

@@ -1879,17 +1879,13 @@ msgstr "ชุมชน"
 msgid "Community access"
 msgstr "การเข้าถึงชุมชน"
 
+#: src/features/Community/CommunityDashboard.tsx:93
+#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
+#: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "แชทชุมชน"
-
-#: src/features/Community/CommunityDashboard.tsx:103
-#: src/features/Community/CommunityPage.tsx:27
-#: src/features/Game/GameOnboarding.tsx:107
-#. js-lingui-explicit-id
-msgid "Community Feed"
-msgstr "ฟีดชุมชน"
 
 #: src/features/Community/CommunityDashboard.tsx:72
 #. js-lingui-explicit-id
@@ -2393,7 +2389,7 @@ msgstr "การฝึกภาษาประจำวัน"
 msgid "Daily Question Chat"
 msgstr "แชทถามตอบประจำวัน"
 
-#: src/features/Community/CommunityDashboard.tsx:143
+#: src/features/Community/CommunityDashboard.tsx:123
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2491,7 +2487,7 @@ msgstr "การโต้วาทีเริ่มขึ้นแล้ว!"
 msgid "Debate topics will be selected randomly."
 msgstr "หัวข้ออภิปรายจะถูกสุ่มเลือก"
 
-#: src/features/Community/CommunityDashboard.tsx:131
+#: src/features/Community/CommunityDashboard.tsx:114
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -4316,7 +4312,7 @@ msgstr "คุณสมบัติการใช้เสียงเต็ม
 msgid "Fun facts about yourself"
 msgstr "ข้อมูลสนุกเกี่ยวกับตัวคุณ"
 
-#: src/features/Community/CommunityDashboard.tsx:113
+#: src/features/Community/CommunityDashboard.tsx:100
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -6718,7 +6714,7 @@ msgstr "การโหลดแบบขี้เกียจ"
 msgid "Leaderboard"
 msgstr "ลีดเดอร์บอร์ด"
 
-#: src/features/Community/CommunityDashboard.tsx:153
+#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -7931,13 +7927,13 @@ msgstr "การยินยอมจากผู้ปกครองได้
 #. js-lingui-explicit-id
 msgid ""
 "Participate in Community activities like sharing posts in the Community "
-"Feed, discuss daily questions and play in the game. Top-5 most active users "
+"Chat, discuss daily questions and play in the game. Top-5 most active users "
 "in the Community gets a Full Access until they in top-5"
 msgstr ""
-"เข้าร่วมกิจกรรมชุมชน เช่น การแชร์โพสต์ในฟีดชุมชน อภิปรายคำถามประจำวัน "
-"และเล่นในเกม ผู้ใช้ที่มีความกระตือรือร้นที่สุดในอันดับ 5 "
-"อันดับแรกในชุมชนจะได้รับสิทธิ์การเข้าถึงเต็มรูปแบบจนกว่าพวกเขาจะอยู่ใน 5 "
-"อันดับแรก"
+"เข้าร่วมกิจกรรมในชุมชน เช่น การแชร์โพสต์ใน Community Chat "
+"พูดคุยเกี่ยวกับคำถามรายวัน และเล่นเกม ผู้ใช้ 5 "
+"คนที่มีความเคลื่อนไหวมากที่สุดในชุมชนจะได้รับสิทธิ์การใช้งานเต็มรูปแบบจนกว่า"
+"จะหลุดจาก 5 อันดับแรก"
 
 #: src/features/RolePlay/rolePlayData.tsx:485
 #. js-lingui-explicit-id
@@ -8715,7 +8711,7 @@ msgstr "การสนับสนุนลำดับความสำคั
 msgid "Privacy Policy"
 msgstr "นโยบายความเป็นส่วนตัว"
 
-#: src/features/Community/CommunityDashboard.tsx:162
+#: src/features/Community/CommunityDashboard.tsx:137
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -9132,9 +9128,9 @@ msgstr "บันทึกข้อความ"
 #: src/features/Game/GameOnboarding.tsx:118
 #. js-lingui-explicit-id
 msgid ""
-"Record a message in Community Feed and get {points} points in the "
+"Record a message in Community Chat and get {points} points in the "
 "leaderboard"
-msgstr "บันทึกข้อความในฟีดชุมชนและรับ {points} คะแนนในกระดานผู้นำ"
+msgstr "บันทึกข้อความในชุมชนแชทและรับ {points} คะแนนในกระดานผู้นำ"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:451
 #. js-lingui-explicit-id
@@ -10684,7 +10680,7 @@ msgstr "การสัมภาษณ์ด้านเทคโนโลยี
 msgid "Tech stack covered"
 msgstr "ครอบคลุมเทคโนโลยีที่ใช้"
 
-#: src/features/Community/CommunityDashboard.tsx:122
+#: src/features/Community/CommunityDashboard.tsx:107
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -11612,8 +11608,7 @@ msgstr "ปลดล็อกเป็นเวลา 1 สัปดาห์"
 msgid "Unlock for 1 year"
 msgstr "ปลดล็อกเป็นเวลา 1 ปี"
 
-#: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:81
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "ปลดล็อกการเข้าถึงทั้งหมด"
@@ -11632,8 +11627,7 @@ msgstr ""
 "ปลดล็อกบทสนทนาเสียงที่เหมือนมนุษย์และหลักสูตรที่ออกแบบมาโดยเฉพาะตามเป้าหมายข"
 "องคุณ"
 
-#: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:78
+#: src/features/Dashboard/Dashboard.tsx:75
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr "ปลดล็อกการฝึกพูดอย่างไม่จำกัด คุณสมบัติ AI ทั้งหมดและการเข้าถึงชุมชน"
@@ -13077,8 +13071,7 @@ msgstr ""
 "คุณถูกขอให้ **ออกแบบระบบในทันที** แต่ไม่มีใครบอกคุณเลยว่า \"ดี\" "
 "มันควรจะเป็นอย่างไร"
 
-#: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:74
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "คุณอยู่ในโหมดแสดงตัวอย่าง"
@@ -13133,6 +13126,32 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Community/CommunityDashboard.tsx:103
+#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Game/GameOnboarding.tsx:107
+#. js-lingui-explicit-id
+#~ msgid "Community Feed"
+#~ msgstr "ฟีดชุมชน"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:357
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Participate in Community activities like sharing posts in the Community "
+#~ "Feed, discuss daily questions and play in the game. Top-5 most active users "
+#~ "in the Community gets a Full Access until they in top-5"
+#~ msgstr ""
+#~ "เข้าร่วมกิจกรรมชุมชน เช่น การแชร์โพสต์ในฟีดชุมชน อภิปรายคำถามประจำวัน "
+#~ "และเล่นในเกม ผู้ใช้ที่มีความกระตือรือร้นที่สุดในอันดับ 5 "
+#~ "อันดับแรกในชุมชนจะได้รับสิทธิ์การเข้าถึงเต็มรูปแบบจนกว่าพวกเขาจะอยู่ใน 5 "
+#~ "อันดับแรก"
+
+#: src/features/Game/GameOnboarding.tsx:118
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Record a message in Community Feed and get {points} points in the "
+#~ "leaderboard"
+#~ msgstr "บันทึกข้อความในฟีดชุมชนและรับ {points} คะแนนในกระดานผู้นำ"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
 #. js-lingui-explicit-id
@@ -14104,13 +14123,6 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Your payment was successful, but updates might take a few minutes"
 #~ msgstr "การชำระเงินของคุณสำเร็จแล้ว แต่อัปเดตอาจใช้เวลาสักครู่"
-
-#: src/features/Game/GameOnboarding.tsx:118
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Record a message in Community Chat and get {points} points in the "
-#~ "leaderboard"
-#~ msgstr "บันทึกข้อความในชุมชนแชทและรับ {points} คะแนนในกระดานผู้นำ"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:167
 #. js-lingui-explicit-id

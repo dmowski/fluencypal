@@ -1881,17 +1881,13 @@ msgstr "Cộng đồng"
 msgid "Community access"
 msgstr "Quyền truy cập cộng đồng"
 
+#: src/features/Community/CommunityDashboard.tsx:93
+#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
+#: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "Community Chat -> Trò chuyện Cộng đồng"
-
-#: src/features/Community/CommunityDashboard.tsx:103
-#: src/features/Community/CommunityPage.tsx:27
-#: src/features/Game/GameOnboarding.tsx:107
-#. js-lingui-explicit-id
-msgid "Community Feed"
-msgstr "Nguồn tin Cộng đồng"
 
 #: src/features/Community/CommunityDashboard.tsx:72
 #. js-lingui-explicit-id
@@ -2389,7 +2385,7 @@ msgstr ""
 "\n"
 "Trò chuyện Câu hỏi Hàng ngày\n"
 
-#: src/features/Community/CommunityDashboard.tsx:143
+#: src/features/Community/CommunityDashboard.tsx:123
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2485,7 +2481,7 @@ msgstr "Cuộc tranh luận đã bắt đầu!"
 msgid "Debate topics will be selected randomly."
 msgstr "Các chủ đề tranh luận sẽ được chọn ngẫu nhiên."
 
-#: src/features/Community/CommunityDashboard.tsx:131
+#: src/features/Community/CommunityDashboard.tsx:114
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -4330,7 +4326,7 @@ msgstr "Các tính năng giọng nói đầy đủ"
 msgid "Fun facts about yourself"
 msgstr "Thông tin thú vị về bản thân bạn"
 
-#: src/features/Community/CommunityDashboard.tsx:113
+#: src/features/Community/CommunityDashboard.tsx:100
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -6746,7 +6742,7 @@ msgstr "Tải Lười Biếng"
 msgid "Leaderboard"
 msgstr "Bảng xếp hạng"
 
-#: src/features/Community/CommunityDashboard.tsx:153
+#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -7963,13 +7959,13 @@ msgstr "Sự đồng ý của phụ huynh đã được gửi!"
 #. js-lingui-explicit-id
 msgid ""
 "Participate in Community activities like sharing posts in the Community "
-"Feed, discuss daily questions and play in the game. Top-5 most active users "
+"Chat, discuss daily questions and play in the game. Top-5 most active users "
 "in the Community gets a Full Access until they in top-5"
 msgstr ""
-"Tham gia vào các hoạt động Cộng đồng như chia sẻ bài viết trong Nguồn tin "
-"Cộng đồng, thảo luận các câu hỏi hàng ngày và chơi trong trò chơi. Top 5 "
-"người dùng hoạt động tích cực nhất trong Cộng đồng sẽ có quyền Truy cập Đầy "
-"đủ cho đến khi họ nằm trong top 5"
+"Tham gia các hoạt động Cộng đồng như chia sẻ bài viết trong cuộc trò chuyện "
+"Cộng đồng, thảo luận câu hỏi hàng ngày và chơi trong trò chơi. 5 người dùng "
+"tích cực nhất trong Cộng đồng sẽ được Toàn quyền truy cập cho đến khi họ "
+"còn trong top 5."
 
 #: src/features/RolePlay/rolePlayData.tsx:485
 #. js-lingui-explicit-id
@@ -8759,7 +8755,7 @@ msgstr "Hỗ trợ ưu tiên"
 msgid "Privacy Policy"
 msgstr "Chính sách Bảo mật"
 
-#: src/features/Community/CommunityDashboard.tsx:162
+#: src/features/Community/CommunityDashboard.tsx:137
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -9184,11 +9180,11 @@ msgstr "Ghi âm một tin nhắn"
 #: src/features/Game/GameOnboarding.tsx:118
 #. js-lingui-explicit-id
 msgid ""
-"Record a message in Community Feed and get {points} points in the "
+"Record a message in Community Chat and get {points} points in the "
 "leaderboard"
 msgstr ""
-"Ghi lại một tin nhắn trong Community Feed và nhận {points} điểm trên bảng "
-"xếp hạng"
+"Ghi lại một tin nhắn trong Phòng chat Cộng đồng và nhận {points} điểm trên "
+"bảng xếp hạng"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:451
 #. js-lingui-explicit-id
@@ -10751,7 +10747,7 @@ msgstr "Phỏng vấn công nghệ với nhà phát triển giao diện AI"
 msgid "Tech stack covered"
 msgstr "Ngăn xếp công nghệ được đề cập"
 
-#: src/features/Community/CommunityDashboard.tsx:122
+#: src/features/Community/CommunityDashboard.tsx:107
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -11689,8 +11685,7 @@ msgstr "Mở khóa trong 1 tuần"
 msgid "Unlock for 1 year"
 msgstr "Mở khóa trong 1 năm"
 
-#: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:81
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "Mở Khóa Truy Cập Đầy Đủ"
@@ -11709,8 +11704,7 @@ msgstr ""
 "Mở khóa cuộc trò chuyện giọng nói giống như con người và một chương trình "
 "học được thiết kế riêng theo mục tiêu của bạn."
 
-#: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:78
+#: src/features/Dashboard/Dashboard.tsx:75
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr ""
@@ -13173,8 +13167,7 @@ msgstr ""
 "Bạn được yêu cầu **thiết kế hệ thống ngay lập tức**, nhưng không ai nói cho "
 "bạn biết “tốt” trông như thế nào"
 
-#: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:74
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "Bạn đang ở chế độ xem trước"
@@ -13230,6 +13223,34 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Community/CommunityDashboard.tsx:103
+#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Game/GameOnboarding.tsx:107
+#. js-lingui-explicit-id
+#~ msgid "Community Feed"
+#~ msgstr "Nguồn tin Cộng đồng"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:357
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Participate in Community activities like sharing posts in the Community "
+#~ "Feed, discuss daily questions and play in the game. Top-5 most active users "
+#~ "in the Community gets a Full Access until they in top-5"
+#~ msgstr ""
+#~ "Tham gia vào các hoạt động Cộng đồng như chia sẻ bài viết trong Nguồn tin "
+#~ "Cộng đồng, thảo luận các câu hỏi hàng ngày và chơi trong trò chơi. Top 5 "
+#~ "người dùng hoạt động tích cực nhất trong Cộng đồng sẽ có quyền Truy cập Đầy "
+#~ "đủ cho đến khi họ nằm trong top 5"
+
+#: src/features/Game/GameOnboarding.tsx:118
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Record a message in Community Feed and get {points} points in the "
+#~ "leaderboard"
+#~ msgstr ""
+#~ "Ghi lại một tin nhắn trong Community Feed và nhận {points} điểm trên bảng "
+#~ "xếp hạng"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
 #. js-lingui-explicit-id
@@ -14204,15 +14225,6 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Your payment was successful, but updates might take a few minutes"
 #~ msgstr "Thanh toán của bạn đã thành công, nhưng việc cập nhật có thể mất vài phút"
-
-#: src/features/Game/GameOnboarding.tsx:118
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Record a message in Community Chat and get {points} points in the "
-#~ "leaderboard"
-#~ msgstr ""
-#~ "Ghi lại một tin nhắn trong Phòng chat Cộng đồng và nhận {points} điểm trên "
-#~ "bảng xếp hạng"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:167
 #. js-lingui-explicit-id

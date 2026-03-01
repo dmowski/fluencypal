@@ -1889,17 +1889,13 @@ msgstr "Społeczność"
 msgid "Community access"
 msgstr "Dostęp społecznościowy"
 
+#: src/features/Community/CommunityDashboard.tsx:93
+#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
+#: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "Czat społecznościowy"
-
-#: src/features/Community/CommunityDashboard.tsx:103
-#: src/features/Community/CommunityPage.tsx:27
-#: src/features/Game/GameOnboarding.tsx:107
-#. js-lingui-explicit-id
-msgid "Community Feed"
-msgstr "Kanał społecznościowy"
 
 #: src/features/Community/CommunityDashboard.tsx:72
 #. js-lingui-explicit-id
@@ -2400,7 +2396,7 @@ msgstr "Codzienna Praktyka Językowa"
 msgid "Daily Question Chat"
 msgstr "Codzienne Pytanie na Czacie"
 
-#: src/features/Community/CommunityDashboard.tsx:143
+#: src/features/Community/CommunityDashboard.tsx:123
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2494,7 +2490,7 @@ msgstr "Rozpoczęła się debata!"
 msgid "Debate topics will be selected randomly."
 msgstr "Tematy debaty będą wybierane losowo."
 
-#: src/features/Community/CommunityDashboard.tsx:131
+#: src/features/Community/CommunityDashboard.tsx:114
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -4334,7 +4330,7 @@ msgstr "Pełne funkcje głosowe"
 msgid "Fun facts about yourself"
 msgstr "Ciekawe fakty o sobie"
 
-#: src/features/Community/CommunityDashboard.tsx:113
+#: src/features/Community/CommunityDashboard.tsx:100
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -6760,7 +6756,7 @@ msgstr "Leniwe ładowanie"
 msgid "Leaderboard"
 msgstr "Tablica wyników"
 
-#: src/features/Community/CommunityDashboard.tsx:153
+#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -7985,13 +7981,13 @@ msgstr "Zgoda rodziców została złożona!"
 #. js-lingui-explicit-id
 msgid ""
 "Participate in Community activities like sharing posts in the Community "
-"Feed, discuss daily questions and play in the game. Top-5 most active users "
+"Chat, discuss daily questions and play in the game. Top-5 most active users "
 "in the Community gets a Full Access until they in top-5"
 msgstr ""
-"Bierz udział w aktywnościach społecznościowych, takich jak udostępnianie "
-"postów w Feedzie Społeczności, omawianie codziennych pytań i gra w grze. 5 "
-"najaktywniejszych użytkowników w Społeczności otrzymuje pełny dostęp, "
-"dopóki są w top-5."
+"Participuj w działaniach społeczności, takich jak udostępnianie postów na "
+"czacie społeczności, dyskutowanie nad codziennymi pytaniami i granie w grę. "
+"Top-5 najbardziej aktywnych użytkowników w społeczności otrzymuje pełny "
+"dostęp tak długo, jak są w top-5"
 
 #: src/features/RolePlay/rolePlayData.tsx:485
 #. js-lingui-explicit-id
@@ -8788,7 +8784,7 @@ msgstr "Priorytetowe wsparcie"
 msgid "Privacy Policy"
 msgstr "Polityka Prywatności"
 
-#: src/features/Community/CommunityDashboard.tsx:162
+#: src/features/Community/CommunityDashboard.tsx:137
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -9214,9 +9210,11 @@ msgstr "Nagraj wiadomość"
 #: src/features/Game/GameOnboarding.tsx:118
 #. js-lingui-explicit-id
 msgid ""
-"Record a message in Community Feed and get {points} points in the "
+"Record a message in Community Chat and get {points} points in the "
 "leaderboard"
-msgstr "Nagraj wiadomość w Społeczności i zdobądź {points} punktów w rankingu"
+msgstr ""
+"Nagraj wiadomość na Czacie Społecznościowym i zdobądź {points} punktów w "
+"rankingu"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:451
 #. js-lingui-explicit-id
@@ -10781,7 +10779,7 @@ msgstr "Rozmowa techniczna z AI frontend deweloperem"
 msgid "Tech stack covered"
 msgstr "Stos technologiczny omówiony"
 
-#: src/features/Community/CommunityDashboard.tsx:122
+#: src/features/Community/CommunityDashboard.tsx:107
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -11718,8 +11716,7 @@ msgstr "Odblokuj na 1 tydzień"
 msgid "Unlock for 1 year"
 msgstr "Odblokuj na 1 rok"
 
-#: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:81
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "Odblokuj Pełny Dostęp"
@@ -11738,8 +11735,7 @@ msgstr ""
 "Odblokuj rozmowy z ludzkim głosem i program nauczania dostosowany "
 "specjalnie do Twoich celów."
 
-#: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:78
+#: src/features/Dashboard/Dashboard.tsx:75
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr ""
@@ -13204,8 +13200,7 @@ msgstr ""
 "Proszeni jesteście o **projektowanie systemów na miejscu**, ale nikt nie "
 "mówi wam, jak wygląda „dobro”"
 
-#: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:74
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "Jesteś w trybie podglądu"
@@ -13261,6 +13256,32 @@ msgstr ""
 "— ważne jest, aby zaangażować się w tę krótką rozmowę przed poruszeniem "
 "tematów zawodowych. Oto kilka przydatnych angielskich zwrotów, które pomogą "
 "rozpocząć wywiad:"
+
+#: src/features/Community/CommunityDashboard.tsx:103
+#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Game/GameOnboarding.tsx:107
+#. js-lingui-explicit-id
+#~ msgid "Community Feed"
+#~ msgstr "Kanał społecznościowy"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:357
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Participate in Community activities like sharing posts in the Community "
+#~ "Feed, discuss daily questions and play in the game. Top-5 most active users "
+#~ "in the Community gets a Full Access until they in top-5"
+#~ msgstr ""
+#~ "Bierz udział w aktywnościach społecznościowych, takich jak udostępnianie "
+#~ "postów w Feedzie Społeczności, omawianie codziennych pytań i gra w grze. 5 "
+#~ "najaktywniejszych użytkowników w Społeczności otrzymuje pełny dostęp, "
+#~ "dopóki są w top-5."
+
+#: src/features/Game/GameOnboarding.tsx:118
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Record a message in Community Feed and get {points} points in the "
+#~ "leaderboard"
+#~ msgstr "Nagraj wiadomość w Społeczności i zdobądź {points} punktów w rankingu"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
 #. js-lingui-explicit-id
@@ -14284,15 +14305,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Twoja płatność została zrealizowana pomyślnie, ale aktualizacje mogą "
 #~ "potrwać kilka minut"
-
-#: src/features/Game/GameOnboarding.tsx:118
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Record a message in Community Chat and get {points} points in the "
-#~ "leaderboard"
-#~ msgstr ""
-#~ "Nagraj wiadomość na Czacie Społecznościowym i zdobądź {points} punktów w "
-#~ "rankingu"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:167
 #. js-lingui-explicit-id

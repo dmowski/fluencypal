@@ -1853,19 +1853,13 @@ msgstr "المجتمع"
 msgid "Community access"
 msgstr "الوصول إلى المجتمع"
 
+#: src/features/Community/CommunityDashboard.tsx:93
+#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
+#: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
 msgid "Community Chat"
 msgstr "دردشة المجتمع"
-
-#: src/features/Community/CommunityDashboard.tsx:103
-#: src/features/Community/CommunityPage.tsx:27
-#: src/features/Game/GameOnboarding.tsx:107
-#. js-lingui-explicit-id
-msgid "Community Feed"
-msgstr ""
-"\n"
-"المجتمع\n"
 
 #: src/features/Community/CommunityDashboard.tsx:72
 #. js-lingui-explicit-id
@@ -2363,7 +2357,7 @@ msgstr "الممارسة اليومية للغة"
 msgid "Daily Question Chat"
 msgstr "محادثة السؤال اليومي"
 
-#: src/features/Community/CommunityDashboard.tsx:143
+#: src/features/Community/CommunityDashboard.tsx:123
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2456,7 +2450,7 @@ msgstr "بدأ النقاش!"
 msgid "Debate topics will be selected randomly."
 msgstr "سيتم اختيار مواضيع النقاش بشكل عشوائي."
 
-#: src/features/Community/CommunityDashboard.tsx:131
+#: src/features/Community/CommunityDashboard.tsx:114
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -4245,7 +4239,7 @@ msgstr "ميزات الصوت الكاملة"
 msgid "Fun facts about yourself"
 msgstr "حقائق ممتعة عن نفسك"
 
-#: src/features/Community/CommunityDashboard.tsx:113
+#: src/features/Community/CommunityDashboard.tsx:100
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -6581,7 +6575,7 @@ msgstr "التحميل البطيء"
 msgid "Leaderboard"
 msgstr "لوحة المتصدرين"
 
-#: src/features/Community/CommunityDashboard.tsx:153
+#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -7796,12 +7790,12 @@ msgstr "تم إرسال موافقة الوالدين!"
 #. js-lingui-explicit-id
 msgid ""
 "Participate in Community activities like sharing posts in the Community "
-"Feed, discuss daily questions and play in the game. Top-5 most active users "
+"Chat, discuss daily questions and play in the game. Top-5 most active users "
 "in the Community gets a Full Access until they in top-5"
 msgstr ""
-"شارك في أنشطة المجتمع مثل مشاركة المنشورات في الخلاصة المجتمعية، ناقش "
-"الأسئلة اليومية والعب في اللعبة. يحصل أكثر 5 مستخدمين نشاطًا في المجتمع على "
-"وصول كامل حتى يبقوا ضمن الخمسة الأوائل."
+"شارك في أنشطة المجتمع مثل مشاركة المنشورات في دردشة المجتمع، مناقشة الأسئلة "
+"اليومية واللعب في اللعبة. يحصل الخمسة الأوائل الأكثر نشاطًا في المجتمع على "
+"وصول كامل ماداموا في الخمسة الأوائل."
 
 #: src/features/RolePlay/rolePlayData.tsx:485
 #. js-lingui-explicit-id
@@ -8580,7 +8574,7 @@ msgstr "الدعم ذو الأولوية"
 msgid "Privacy Policy"
 msgstr "سياسة الخصوصية"
 
-#: src/features/Community/CommunityDashboard.tsx:162
+#: src/features/Community/CommunityDashboard.tsx:137
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -8999,9 +8993,9 @@ msgstr "سجل رسالة"
 #: src/features/Game/GameOnboarding.tsx:118
 #. js-lingui-explicit-id
 msgid ""
-"Record a message in Community Feed and get {points} points in the "
+"Record a message in Community Chat and get {points} points in the "
 "leaderboard"
-msgstr "سجل رسالة في تغذية المجتمع واحصل على {points} نقاط في لوحة المتصدرين"
+msgstr "سجل رسالة في الدردشة المجتمعية واحصل على {points} نقطة في لوحة المتصدرين"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:451
 #. js-lingui-explicit-id
@@ -10539,7 +10533,7 @@ msgstr "مقابلة تقنية مع مطور واجهة أمامية للذكا
 msgid "Tech stack covered"
 msgstr "تكنولوجيا المُكوِّنة التي تم تغطيتها"
 
-#: src/features/Community/CommunityDashboard.tsx:122
+#: src/features/Community/CommunityDashboard.tsx:107
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -11457,8 +11451,7 @@ msgstr "افتح لمدة أسبوع واحد"
 msgid "Unlock for 1 year"
 msgstr "افتح لمدة 1 سنة"
 
-#: src/features/Community/CommunityDashboard.tsx:81
-#: src/features/Dashboard/Dashboard.tsx:81
+#: src/features/Dashboard/Dashboard.tsx:78
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "افتح الوصول الكامل"
@@ -11475,8 +11468,7 @@ msgid ""
 "specifically to your goals."
 msgstr "افتح محادثات صوتية شبيهة بالبشر ومنهجًا مُخصصًا لأهدافك تحديدًا."
 
-#: src/features/Community/CommunityDashboard.tsx:78
-#: src/features/Dashboard/Dashboard.tsx:78
+#: src/features/Dashboard/Dashboard.tsx:75
 #. js-lingui-explicit-id
 msgid "Unlock unlimited speaking practice, all AI features and community access."
 msgstr ""
@@ -12913,8 +12905,7 @@ msgid ""
 "“good” looks like"
 msgstr "أنت مطالب بـ **تصميم الأنظمة بشكل فوري**، لكن لا أحد يخبرك كيف يبدو \"الجيد\""
 
-#: src/features/Community/CommunityDashboard.tsx:77
-#: src/features/Dashboard/Dashboard.tsx:77
+#: src/features/Dashboard/Dashboard.tsx:74
 #. js-lingui-explicit-id
 msgid "You’re in preview mode"
 msgstr "أنت في وضع المعاينة"
@@ -12969,6 +12960,33 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/Community/CommunityDashboard.tsx:103
+#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Game/GameOnboarding.tsx:107
+#. js-lingui-explicit-id
+#~ msgid "Community Feed"
+#~ msgstr ""
+#~ "\n"
+#~ "المجتمع\n"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:357
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Participate in Community activities like sharing posts in the Community "
+#~ "Feed, discuss daily questions and play in the game. Top-5 most active users "
+#~ "in the Community gets a Full Access until they in top-5"
+#~ msgstr ""
+#~ "شارك في أنشطة المجتمع مثل مشاركة المنشورات في الخلاصة المجتمعية، ناقش "
+#~ "الأسئلة اليومية والعب في اللعبة. يحصل أكثر 5 مستخدمين نشاطًا في المجتمع على "
+#~ "وصول كامل حتى يبقوا ضمن الخمسة الأوائل."
+
+#: src/features/Game/GameOnboarding.tsx:118
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Record a message in Community Feed and get {points} points in the "
+#~ "leaderboard"
+#~ msgstr "سجل رسالة في تغذية المجتمع واحصل على {points} نقاط في لوحة المتصدرين"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
 #. js-lingui-explicit-id
@@ -13930,13 +13948,6 @@ msgstr ""
 #. js-lingui-explicit-id
 #~ msgid "Your payment was successful, but updates might take a few minutes"
 #~ msgstr "تم الدفع بنجاح، لكن التحديثات قد تستغرق بضع دقائق"
-
-#: src/features/Game/GameOnboarding.tsx:118
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Record a message in Community Chat and get {points} points in the "
-#~ "leaderboard"
-#~ msgstr "سجل رسالة في الدردشة المجتمعية واحصل على {points} نقطة في لوحة المتصدرين"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:167
 #. js-lingui-explicit-id
