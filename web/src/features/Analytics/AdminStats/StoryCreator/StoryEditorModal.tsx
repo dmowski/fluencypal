@@ -299,7 +299,7 @@ export const StoryEditorModal = ({
               label="Story System Instruction"
               value={internalStory.storySystemInstruction || defaultStorySystemInstruction}
               onChange={(e) =>
-                setInternalStory({ ...internalStory, storySystemInstruction: e.target.value })
+                setInternalStory((prev) => ({ ...prev, storySystemInstruction: e.target.value }))
               }
               fullWidth
               multiline
@@ -315,7 +315,9 @@ export const StoryEditorModal = ({
               <TextField
                 label="Audio Description"
                 value={internalStory.sunoPrompt || ''}
-                onChange={(e) => setInternalStory({ ...internalStory, sunoPrompt: e.target.value })}
+                onChange={(e) =>
+                  setInternalStory((prev) => ({ ...prev, sunoPrompt: e.target.value }))
+                }
                 multiline
                 fullWidth
               />
@@ -323,7 +325,7 @@ export const StoryEditorModal = ({
                 label="Video Description"
                 value={internalStory.videoDescription || ''}
                 onChange={(e) =>
-                  setInternalStory({ ...internalStory, videoDescription: e.target.value })
+                  setInternalStory((prev) => ({ ...prev, videoDescription: e.target.value }))
                 }
                 fullWidth
                 multiline
@@ -362,20 +364,20 @@ export const StoryEditorModal = ({
           <TextField
             label="Title"
             value={internalStory.title || ''}
-            onChange={(e) => setInternalStory({ ...internalStory, title: e.target.value })}
+            onChange={(e) => setInternalStory((prev) => ({ ...prev, title: e.target.value }))}
             fullWidth
           />
           <TextField
             label="Subtitle"
             value={internalStory.subtitle || ''}
-            onChange={(e) => setInternalStory({ ...internalStory, subtitle: e.target.value })}
+            onChange={(e) => setInternalStory((prev) => ({ ...prev, subtitle: e.target.value }))}
             fullWidth
           />
         </Stack>
         <TextField
           label={`Text (EN) - ${textWordsCount} words`}
           value={internalStory.textEn || ''}
-          onChange={(e) => setInternalStory({ ...internalStory, textEn: e.target.value })}
+          onChange={(e) => setInternalStory((prev) => ({ ...prev, textEn: e.target.value }))}
           fullWidth
           multiline
         />
@@ -476,7 +478,7 @@ export const StoryEditorModal = ({
               <FormControlLabel
                 checked={internalStory.isPublished || false}
                 onChange={(e) =>
-                  setInternalStory({ ...internalStory, isPublished: !internalStory.isPublished })
+                  setInternalStory((prev) => ({ ...prev, isPublished: !prev.isPublished }))
                 }
                 control={<Checkbox size="large" />}
                 label={<Stack>Published</Stack>}

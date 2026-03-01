@@ -25,30 +25,30 @@ export async function convertVideo(videoData: Uint8Array, _videoName: string): P
     } as WorkerResponse);
 
     // Execute FFmpeg conversion with timeout
-    console.log('[Worker] Starting FFmpeg exec with H.264 codec (memory efficient)');
+    console.log('[Worker] Starting FFmpeg exec with H.264 codec (higher quality)');
 
     let conversionPromise: Promise<number>;
     try {
-      // Use H.264 (libx264) - most memory efficient for WASM
-      // Scale to 640p max to reduce memory usage
-      // CRF 28 balances quality and file size (lower = better, 0-51 range)
+      // Use H.264 (libx264) for broad browser compatibility.
+      // Scale to 960p max for better visual quality while staying memory-conscious in WASM.
+      // CRF 20 improves quality over previous settings (lower = better, 0-51 range).
       conversionPromise = ffmpeg.exec([
         '-i',
         inputName,
         '-vf',
-        'scale=min(640\\,iw):-2',
+        'scale=min(960\\,iw):-2',
         '-c:v',
         'libx264',
         '-preset',
-        'fast',
+        'medium',
         '-crf',
-        '24',
+        '20',
         '-pix_fmt',
         'yuv420p',
         '-c:a',
         'aac',
         '-b:a',
-        '128k',
+        '160k',
         outputName,
       ]);
     } catch (execError) {
