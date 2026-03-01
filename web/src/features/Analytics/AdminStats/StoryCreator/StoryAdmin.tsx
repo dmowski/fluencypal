@@ -19,6 +19,7 @@ import { clearWordForAudio } from '@/features/Audio/clearWord';
 import { getVoiceOverSpeakOptions } from '@/features/Audio/getVoiceOverSpeakOptions';
 import { useTranslate } from '@/features/Translation/useTranslate';
 import { SupportedLanguage } from '@/features/Lang/lang';
+import { useStories } from '@/features/Sentence/useStories';
 
 export const StoryCreator = () => {
   const auth = useAuth();
@@ -55,6 +56,8 @@ export const StoryCreator = () => {
     await setDoc(docRef, storyData);
     setSelectedStoryId(newId);
   };
+
+  const stories = useStories();
 
   const createFromImageDescription = async (imageDescription: ImageDescription) => {
     if (!collectionRef) return;
@@ -247,7 +250,12 @@ export const StoryCreator = () => {
                     position: 'relative',
                   }}
                 >
-                  <StoryPreview key={image.id} onSelectImage={onSelectImage} data={image} />
+                  <StoryPreview
+                    key={image.id}
+                    onSelectImage={onSelectImage}
+                    data={image}
+                    stat={stories.storiesStatsMap[image.id]}
+                  />
 
                   <Stack
                     sx={{

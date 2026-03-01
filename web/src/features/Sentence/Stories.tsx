@@ -127,6 +127,7 @@ export const Stories = () => {
                         stories.openStory(stories.randomStoryWithVideo?.id || '');
                       }}
                       data={stories.randomStoryWithVideo}
+                      stat={stories.storiesStatsMap[stories.randomStoryWithVideo?.id || '']}
                     />
                   </Stack>
 

@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
-import { Story } from './types';
+import { Story, StoryStat } from './types';
 import { ImageDescription } from '../Game/ImagesDescriptions';
 import { CircleCheck, Eye } from 'lucide-react';
 import { Typography } from '@mui/material';
@@ -9,15 +9,17 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 export const StoryPreview = ({
   onSelectImage,
   data,
+  stat,
 }: {
   onSelectImage?: (id: string) => void;
   data: ImageDescription | Story;
+  stat?: StoryStat | undefined;
 }) => {
   // const auth = useAuth();
   // const settings = useSettings();
   const story: Story | null = 'textEn' in data ? data : null;
   const imageDescription: ImageDescription | null = 'textEn' in data ? null : data;
-  const views = undefined;
+  const views = stat?.viewsUserIds.length || undefined;
 
   const id = data.id;
   const title = story?.title || imageDescription?.shortDescription || '';

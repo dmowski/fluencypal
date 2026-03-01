@@ -4,10 +4,10 @@ import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
 import { useUrlState } from '../Url/useUrlState';
 import { db } from '../Firebase/firebaseDb';
-import { useCollectionDataOnce } from 'react-firebase-hooks/firestore';
+import { useCollectionDataOnce, useCollectionOnce } from 'react-firebase-hooks/firestore';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { uniq } from '@/libs/uniq';
-import { Story } from './types';
+import { Story, StoryStat } from './types';
 import { shuffleArray } from '@/libs/array';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { sleep } from '@/libs/sleep';
@@ -28,6 +28,7 @@ interface StoriesContextType {
   isVideoPaused: boolean;
   setIsVideoPaused: (paused: boolean) => void;
   playStoryAudio: (story?: Story | null) => Promise<void>;
+  storiesStatsMap: Record<string, StoryStat>;
 }
 
 const StoriesContext = createContext<StoriesContextType | null>(null);
@@ -60,7 +61,19 @@ function useProvideStories(): StoriesContextType {
 
   const auth = useAuth();
   const collectionRef = db.collections.stories(auth.uid);
+  const statsCollectionRef = db.collections.storyStats(auth.uid);
   const [databaseStories, loading] = useCollectionDataOnce(collectionRef);
+  const [storiesStats] = useCollectionOnce(statsCollectionRef);
+
+  const storiesStatsMap = useMemo(() => {
+    if (!storiesStats) return {};
+    const map: Record<string, StoryStat> = {};
+    storiesStats.forEach((stat) => {
+      const id = stat.id;
+      map[id] = stat.data();
+    });
+    return map;
+  }, [storiesStats]);
 
   const increaseViewsCount = async () => {
     const storiesViewsStatsDocRef = db.documents.storyStats(auth.uid, selectedImageImageId || '');
@@ -183,6 +196,7 @@ function useProvideStories(): StoriesContextType {
     isVideoPaused,
     setIsVideoPaused,
     playStoryAudio,
+    storiesStatsMap,
   };
 }
 

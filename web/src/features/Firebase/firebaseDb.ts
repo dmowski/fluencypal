@@ -85,6 +85,9 @@ export const db = {
 
     stories: (userId?: string) => (userId ? dataPointCollection<Story>(`stories`) : null),
 
+    storyStats: (userId?: string) =>
+      userId ? dataPointCollection<StoryStat>(`stats/stories/stats`) : null,
+
     usersChatMessages: (space: string, userId: string) =>
       userId ? dataPointCollection<ThreadsMessage>(`chat/${space}/messages`) : null,
 
