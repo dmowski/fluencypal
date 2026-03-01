@@ -363,8 +363,8 @@ export const SubscriptionPaymentModal = () => {
               </Stack>
             </Stack>
 
-            <ResultsSection />
-            <FeatureSection />
+            {/*<ResultsSection />
+            <FeatureSection />*/}
             <FaqSubscription />
             <PriceContact />
           </Stack>
