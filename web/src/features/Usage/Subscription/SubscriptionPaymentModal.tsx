@@ -355,7 +355,7 @@ export const SubscriptionPaymentModal = () => {
                   >
                     <Typography>
                       {i18n._(
-                        'Participate in Community activities like sharing posts in the Community Feed, discuss daily questions and play in the game. Top-5 most active users in the Community gets a Full Access until they in top-5',
+                        'Participate in Community activities like sharing posts in the Community Chat, discuss daily questions and play in the game. Top-5 most active users in the Community gets a Full Access until they in top-5',
                       )}
                     </Typography>
                   </Stack>

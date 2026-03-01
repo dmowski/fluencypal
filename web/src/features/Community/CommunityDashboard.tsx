@@ -2,7 +2,7 @@
 
 import { Stack, Typography } from '@mui/material';
 import { NavigationBar } from '../Navigation/NavigationBar';
-import { Crown, Mail, Newspaper, Origami, Swords, UsersRound } from 'lucide-react';
+import { Crown, Mail, MessagesSquare, Newspaper, Origami, Swords, UsersRound } from 'lucide-react';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import { useUrlState } from '../Url/useUrlState';
@@ -90,10 +90,10 @@ export const CommunityDashboard = () => {
               >
                 {access.canUseCommunity && (
                   <CommunityCard
-                    title={i18n._('Community Feed')}
+                    title={i18n._('Community Chat')}
                     onClick={() => setActivePage('chat')}
                     badgeNumber={chatList.unreadCountGlobal}
-                    icon={<Newspaper style={iconStyle} />}
+                    icon={<MessagesSquare style={iconStyle} />}
                   />
                 )}
                 <CommunityCard
