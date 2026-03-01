@@ -12,6 +12,7 @@ import {
   PRICE_PER_YEAR_USD,
 } from '@/common/subscription';
 import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
+import { toStripeUnit } from 'zero-decimal-currencies';
 
 async function getConversionRate(toCurrency: string): Promise<number> {
   const isToCurrencyIsUsd = toCurrency.toLowerCase() === 'usd';
@@ -57,7 +58,8 @@ export async function POST(request: Request) {
     const stripe = new Stripe(stripeKey);
     const requestData = (await request.json()) as StripeCreateCheckoutRequest;
     const { userId, currency } = requestData;
-    if (!currency) {
+
+    if (!currency.toLowerCase()) {
       await sentSupportTelegramMessage({
         message: `Currency is not set for user ${userId} in createStripeCheckout API`,
         userId: userInfo.uid,
@@ -65,6 +67,8 @@ export async function POST(request: Request) {
 
       throw new Error('Currency is not set');
     }
+
+    const stripeCurrency = currency.toLowerCase();
 
     const supportedLang = supportedLanguages.find((l) => l === requestData.languageCode) || 'en';
     const rate = await getConversionRate(currency.toLowerCase());
@@ -88,7 +92,8 @@ export async function POST(request: Request) {
         return Response.json(response);
       }
 
-      const money = Math.round(amountOfHours * pricePerHourInCurrency * 100);
+      const hoursUsd = Math.round(amountOfHours * pricePerHourInCurrency);
+      const stripeMoney = Number(toStripeUnit(hoursUsd, stripeCurrency.toUpperCase()));
 
       const session = await stripe.checkout.sessions.create({
         line_items: [
@@ -99,7 +104,7 @@ export async function POST(request: Request) {
                 name: 'Balance Top-up',
                 description: `Add ${amountOfHours} hours to your account balance`,
               },
-              unit_amount: money,
+              unit_amount: stripeMoney,
             },
             quantity: 1,
           },
@@ -145,18 +150,12 @@ export async function POST(request: Request) {
       const isYear = months === 12;
 
       // Calculate total price
-      const totalMonthStripeMoney = Math.round(PRICE_PER_MONTH_USD * rate * months * 100);
-      const totalWeekStripeMoney = Math.round(PRICE_PER_WEEK_USD * rate * 100);
-      const totalYearStripeMoney = Math.round(PRICE_PER_YEAR_USD * rate * 100);
-      const totalDayStripeMoney = Math.round(PRICE_PER_DAY_USD * rate * days * 100);
+      const totalMonth = Math.round(PRICE_PER_MONTH_USD * rate * months);
+      const totalWeek = Math.round(PRICE_PER_WEEK_USD * rate);
+      const totalYear = Math.round(PRICE_PER_YEAR_USD * rate);
+      const totalDay = Math.round(PRICE_PER_DAY_USD * rate * days);
 
-      const totalStripeMoney = isYear
-        ? totalYearStripeMoney
-        : isWeek
-          ? totalWeekStripeMoney
-          : days
-            ? totalDayStripeMoney
-            : totalMonthStripeMoney;
+      const totalUsd = isYear ? totalYear : isWeek ? totalWeek : days ? totalDay : totalMonth;
 
       const title = isYear
         ? 'Full Access for a Year'
@@ -172,16 +171,18 @@ export async function POST(request: Request) {
           ? `Add ${days} day${days > 1 ? 's' : ''} to your account balance`
           : `Add ${months} month${months > 1 ? 's' : ''} to your account balance`;
 
+      const stripeMoney = Number(toStripeUnit(totalUsd, stripeCurrency.toUpperCase()));
+
       const session = await stripe.checkout.sessions.create({
         line_items: [
           {
             price_data: {
-              currency: currency.toLowerCase() || 'usd',
+              currency: stripeCurrency,
               product_data: {
                 name: title,
                 description: description,
               },
-              unit_amount: totalStripeMoney,
+              unit_amount: stripeMoney,
             },
             quantity: 1,
           },

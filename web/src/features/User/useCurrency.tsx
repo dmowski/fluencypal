@@ -30,7 +30,6 @@ const getRequestsCache = (): RequestsSingletonCache => {
 };
 
 const getCurrencyRequest = async () => {
-  const isWindow = typeof window !== 'undefined';
   const res = await fetch(`https://ipapi.co/currency/`);
   if (!res.ok) throw new Error('Failed to fetch currency from IP');
   const currency = (await res.text()).trim();
