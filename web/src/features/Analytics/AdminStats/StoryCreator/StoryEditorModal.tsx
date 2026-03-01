@@ -1,6 +1,6 @@
 import { Story } from '@/features/Sentence/types';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
-import { Button, Checkbox, FormControlLabel, Stack, TextField } from '@mui/material';
+import { Button, Checkbox, FormControlLabel, Stack, TextField, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useTextAi } from '@/features/Ai/useTextAi';
@@ -267,8 +267,6 @@ export const StoryEditorModal = ({
 
             <Stack
               sx={{
-                //alignItems: 'center',
-                //flexDirection: 'row',
                 alignItems: 'flex-start',
                 gap: '10px',
                 width: '100%',
@@ -277,14 +275,30 @@ export const StoryEditorModal = ({
               <UploadVideoButton
                 type="icon"
                 onNewUploadUrl={(url) => setInternalStory((prev) => ({ ...prev, videoUrl: url }))}
+                minify={false}
               />
               {internalStory.videoUrl ? (
-                <video
-                  controls
-                  src={internalStory.videoUrl}
-                  style={{ width: '200px', height: '200px' }}
-                  preload="none"
-                />
+                <Stack>
+                  <Typography variant="caption">Final Video:</Typography>
+                  <video
+                    controls
+                    src={internalStory.videoUrl}
+                    style={{ width: '200px', height: '200px' }}
+                    preload="none"
+                  />
+                </Stack>
+              ) : null}
+
+              {internalStory.originalVideoUrl ? (
+                <Stack>
+                  <Typography variant="caption">Original Video:</Typography>
+                  <video
+                    controls
+                    src={internalStory.originalVideoUrl}
+                    style={{ width: '200px', height: '200px' }}
+                    preload="none"
+                  />
+                </Stack>
               ) : null}
             </Stack>
           </Stack>

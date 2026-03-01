@@ -10,12 +10,14 @@ interface UploadVideoButtonProps {
   onNewUploadUrl: (url: string) => void;
   type?: 'button' | 'icon';
   uploadMode?: 'server' | 'mock';
+  minify?: boolean;
 }
 
 export const UploadVideoButton = ({
   onNewUploadUrl,
   type = 'button',
   uploadMode = 'server',
+  minify = true,
 }: UploadVideoButtonProps) => {
   const { i18n } = useLingui();
   const auth = useAuth();
@@ -69,6 +71,27 @@ export const UploadVideoButton = ({
       setIsUploading(true);
       setProgress(0);
 
+      if (!minify) {
+        const authToken = await auth.getToken();
+        if (uploadMode === 'mock') {
+          const dataUrl = await blobToDataUrl(file);
+          onNewUploadUrl(dataUrl);
+          return;
+        }
+
+        setProgress(50);
+        const uploadResult = await sendUploadFileRequest({ file, type: 'video' }, authToken);
+        setProgress(100);
+
+        if (uploadResult.error) {
+          alert(i18n._('Failed to upload video. Please try again.'));
+          return;
+        }
+
+        onNewUploadUrl(uploadResult.uploadUrl);
+        return;
+      }
+
       if (!converterRef.current) {
         converterRef.current = new VideoConverter();
       }
@@ -76,6 +99,7 @@ export const UploadVideoButton = ({
       const result = await converterRef.current.convert(file, (progressData) => {
         setProgress(progressData.progress);
       });
+
       setProgress(100);
       const convertedBlob = new Blob([result.videoData.slice()], { type: 'video/mp4' });
       const convertedFile = new File([convertedBlob], result.videoName, { type: 'video/mp4' });
