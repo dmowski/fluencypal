@@ -247,6 +247,7 @@ export const SubscriptionPaymentModal = () => {
         sx={{
           width: '100%',
           maxWidth: '700px',
+          paddingTop: '30px',
         }}
         ref={containerRef}
       >
