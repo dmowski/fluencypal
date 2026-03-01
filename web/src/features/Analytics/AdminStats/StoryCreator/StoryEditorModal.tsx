@@ -8,6 +8,7 @@ import { UploadAudioFileButton } from '@/features/Audio/UploadAudioFileButton';
 import { UploadVideoButton } from '@/features/Video/UploadVideoButton';
 import { downloadAsJpg } from './downloadAsJpg';
 import { ChevronRight, Loader } from 'lucide-react';
+import { UploadImageButton } from '@/features/Game/UploadImageButton';
 
 export const StoryEditorModal = ({
   story,
@@ -236,6 +237,21 @@ export const StoryEditorModal = ({
                   boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
                 }}
               />
+              <Stack
+                sx={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  left: '10px',
+                }}
+              >
+                <UploadImageButton
+                  type="icon"
+                  onNewUploadUrl={(url) => {
+                    setInternalStory((prev) => ({ ...prev, imageUrl: url }));
+                  }}
+                />
+              </Stack>
+
               <Button
                 sx={{
                   position: 'absolute',
