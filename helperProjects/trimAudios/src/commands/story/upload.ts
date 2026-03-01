@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { randomUUID } from "node:crypto";
 import { resolve } from "node:path";
 
 import { getBucket } from "../../core/firebase.js";
@@ -38,6 +39,38 @@ async function readLog(logPath: string): Promise<ProcessedLog> {
   }
 }
 
+function buildFirebasePublicUrl(bucketName: string, destination: string, token: string): string {
+  return `https://firebasestorage.googleapis.com/v0/b/${bucketName}/o/${encodeURIComponent(destination)}?alt=media&token=${token}`;
+}
+
+async function ensureFirebasePublicUrl(destination: string): Promise<string> {
+  const bucket = getBucket();
+  const file = bucket.file(destination);
+  const [metadata] = await file.getMetadata();
+
+  const rawTokens = metadata.metadata?.firebaseStorageDownloadTokens;
+  const normalizedTokens = typeof rawTokens === "string" ? rawTokens : undefined;
+  const firstToken = normalizedTokens
+    ?.split(",")
+    .map((item: string) => item.trim())
+    .find((item: string) => item.length > 0);
+
+  if (firstToken) {
+    return buildFirebasePublicUrl(bucket.name, destination, firstToken);
+  }
+
+  const nextToken = randomUUID();
+
+  await file.setMetadata({
+    metadata: {
+      ...(metadata.metadata ?? {}),
+      firebaseStorageDownloadTokens: nextToken,
+    },
+  });
+
+  return buildFirebasePublicUrl(bucket.name, destination, nextToken);
+}
+
 export async function uploadProcessedVideo(
   outputDir: string,
   processedOutput: ProcessedOutputFile,
@@ -46,10 +79,10 @@ export async function uploadProcessedVideo(
 
   try {
     const log = await readLog(logPath);
+    const defaultDestination = `${STORY_UPLOAD_PREFIX}${processedOutput.fileName}`;
 
     if (log.uploadDestination && !log.publicUrl) {
-      const bucket = getBucket();
-      const publicUrl = bucket.file(log.uploadDestination).publicUrl();
+      const publicUrl = await ensureFirebasePublicUrl(log.uploadDestination);
       const nextLog: ProcessedLog = {
         ...log,
         hash: processedOutput.hash,
@@ -62,10 +95,37 @@ export async function uploadProcessedVideo(
     }
 
     if (log.publicUrl && log.uploadDestination) {
-      return { status: "skipped", publicUrl: log.publicUrl };
+      const publicUrl = await ensureFirebasePublicUrl(log.uploadDestination);
+
+      if (publicUrl !== log.publicUrl) {
+        const nextLog: ProcessedLog = {
+          ...log,
+          hash: processedOutput.hash,
+          outputFileName: processedOutput.fileName,
+          publicUrl,
+        };
+
+        await writeFile(logPath, JSON.stringify(nextLog, null, 2), "utf-8");
+      }
+
+      return { status: "skipped", publicUrl };
     }
 
-    const destination = `${STORY_UPLOAD_PREFIX}${processedOutput.fileName}`;
+    if (!log.uploadDestination && log.publicUrl) {
+      const publicUrl = await ensureFirebasePublicUrl(defaultDestination);
+      const nextLog: ProcessedLog = {
+        ...log,
+        hash: processedOutput.hash,
+        outputFileName: processedOutput.fileName,
+        uploadDestination: defaultDestination,
+        publicUrl,
+      };
+
+      await writeFile(logPath, JSON.stringify(nextLog, null, 2), "utf-8");
+      return { status: "skipped", publicUrl };
+    }
+
+    const destination = defaultDestination;
 
     const bucket = getBucket();
     await bucket.upload(processedOutput.filePath, {
@@ -73,8 +133,7 @@ export async function uploadProcessedVideo(
       contentType: "video/webm",
     });
 
-    const uploadedFile = bucket.file(destination);
-    const publicUrl = uploadedFile.publicUrl();
+    const publicUrl = await ensureFirebasePublicUrl(destination);
 
     const nextLog: ProcessedLog = {
       ...log,
