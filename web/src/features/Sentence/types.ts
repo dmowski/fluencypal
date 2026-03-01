@@ -4,7 +4,7 @@ export interface Story {
   subtitle: string | null;
 
   videoUrl: string | null;
-  originalVideoUrl: string | null;
+  originalVideoUrl?: string | null;
 
   audioUrl: string | null;
   imageUrl: string;
