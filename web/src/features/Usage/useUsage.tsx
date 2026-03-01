@@ -19,6 +19,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { initWelcomeBalanceRequest } from './initWelcomeBalanceRequest';
 import { createUsageLog } from './createUsageLog';
 import dayjs from 'dayjs';
+import { sentPaymentTgMessage } from './sentTgMessage';
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
@@ -55,7 +56,7 @@ function useProvideUsage(): UsageContextType {
     }
   }, [isPaymentModalInUrl]);
 
-  const togglePaymentModal = (isOpen: boolean, isSuccessPayment?: boolean) => {
+  const togglePaymentModal = async (isOpen: boolean, isSuccessPayment?: boolean) => {
     setIsShowPaymentModal(isOpen);
 
     if (isSuccessPayment !== undefined) {
@@ -67,7 +68,6 @@ function useProvideUsage(): UsageContextType {
     if (isOpen) {
       searchParams.set('paymentModal', 'true');
       const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-
       router.push(`${newUrl}`, { scroll: false });
     } else {
       searchParams.delete('paymentModal');
