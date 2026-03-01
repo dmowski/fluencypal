@@ -42,14 +42,16 @@ export const BalanceStatus = () => {
         <Stack
           sx={{
             display: 'grid',
-            gridTemplateColumns: '40px 1fr',
+            gridTemplateColumns: 'auto 1fr',
             gap: '15px',
             alignItems: 'center',
           }}
         >
-          <AccessStatusIcon
-            state={usage.loading ? 'loading' : isHaveAccess ? 'full-access' : 'no-access'}
-          />
+          {(isHaveAccess || usage.loading) && (
+            <AccessStatusIcon
+              state={usage.loading ? 'loading' : isHaveAccess ? 'full-access' : 'no-access'}
+            />
+          )}
           <Stack>
             <Typography variant="h6" sx={{}}>
               {usage.loading
