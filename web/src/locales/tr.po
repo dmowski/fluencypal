@@ -307,19 +307,19 @@ msgstr "/ ay"
 msgid "1 AI hour"
 msgstr "1 AI saati"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:343
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:326
 #. js-lingui-explicit-id
 msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
 msgstr "1 AI saati ≈ AI ile etkin bir konuşma saati."
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:69
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:70
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:208
 #. js-lingui-explicit-id
 msgid "1 day"
 msgstr "1 gün"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:48
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:89
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:90
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:210
 #. js-lingui-explicit-id
 msgid "1 month"
@@ -331,14 +331,14 @@ msgid "1 round"
 msgstr "1 tur"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:40
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:79
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:80
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:209
 #. js-lingui-explicit-id
 msgid "1 week"
 msgstr "1 hafta"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:57
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:99
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:100
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:211
 #. js-lingui-explicit-id
 msgid "1 year"
@@ -802,7 +802,7 @@ msgstr "AI konuşma partneri"
 msgid "AI Speaking Practice"
 msgstr "AI Konuşma Pratiği"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:299
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:297
 #. js-lingui-explicit-id
 msgid "AI tokens"
 msgstr "AI jetonları"
@@ -1114,8 +1114,8 @@ msgstr "Destek kanalında sorun"
 msgid "Ask questions, get explanations, and solve everyday problems"
 msgstr "Sorular sorun, açıklamalar alın ve günlük sorunları çözün"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:517
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:533
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:549
 #. js-lingui-explicit-id
 msgid "Ask questions, share progress, and find speaking partners."
 msgstr "Sorular sorun, ilerlemenizi paylaşın ve konuşma partnerleri bulun."
@@ -1448,7 +1448,7 @@ msgstr "5 AI saati satın al"
 msgid "Buy a subscription"
 msgstr "Abonelik Satın Al"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:339
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
 #. js-lingui-explicit-id
 msgid "Buy AI tokens and use them whenever you want."
 msgstr "AI jetonları satın al ve istediğin zaman kullan."
@@ -1746,11 +1746,6 @@ msgstr "Çince Öğrenme Planı"
 msgid "Choose how long each turn lasts and how many rounds to play."
 msgstr "Her turun ne kadar süreceğini ve kaç tur oynanacağını seçin."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
-#. js-lingui-explicit-id
-msgid "Choose how long you want access — and extend anytime."
-msgstr "Ne kadar süre erişim istediğinizi seçin — ve istediğiniz zaman uzatın."
-
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:24
 #. js-lingui-explicit-id
 msgid "Choose isolation levels, model aggregates, and write efficient queries."
@@ -1812,7 +1807,7 @@ msgstr "Sistem tasarımı için net yapı. Sonunda tavizleri dolandırmadan aç�
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:390
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
 #. js-lingui-explicit-id
@@ -1872,8 +1867,8 @@ msgstr "İletişim ve Liderlik"
 msgid "Community"
 msgstr "Topluluk"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:516
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:532
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:548
 #. js-lingui-explicit-id
 msgid "Community access"
 msgstr "Topluluk erişimi"
@@ -2146,7 +2141,7 @@ msgstr "Konuşma İngilizcesi Pratiği"
 msgid "conversational English practice"
 msgstr "sohbet İngilizcesi pratikleri"
 
-#: src/features/Video/UploadVideoButton.tsx:84
+#: src/features/Video/UploadVideoButton.tsx:108
 #. js-lingui-explicit-id
 msgid "Converted file size must be less than 250MB"
 msgstr "Dönüştürülen dosya boyutu 250MB'den küçük olmalıdır."
@@ -3625,7 +3620,7 @@ msgstr ""
 "dost canlısı AI öğretmeniniz. İster acemi ister ileri düzey bir öğrenci "
 "olun, Bruno hızınıza uyum sağlar, hataları düzeltir ve sizi motive tutar."
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:179
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:183
 #. js-lingui-explicit-id
 msgid "Expires"
 msgstr "Sona Erme Tarihi"
@@ -3745,8 +3740,9 @@ msgstr "Ses yükleme başarısız oldu. Lütfen tekrar deneyin."
 msgid "Failed to upload image. Please try again."
 msgstr "Görüntü yüklenemedi. Lütfen tekrar deneyin."
 
-#: src/features/Video/UploadVideoButton.tsx:101
-#: src/features/Video/UploadVideoButton.tsx:108
+#: src/features/Video/UploadVideoButton.tsx:87
+#: src/features/Video/UploadVideoButton.tsx:125
+#: src/features/Video/UploadVideoButton.tsx:132
 #. js-lingui-explicit-id
 msgid "Failed to upload video. Please try again."
 msgstr "Video yüklenemedi. Lütfen tekrar deneyin."
@@ -3792,12 +3788,12 @@ msgstr ""
 "Geri bildirim belirsiz: \"**yeterli deneyim yok**\" — ama iş olmadan nasıl "
 "deneyim kazanırsınız?"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:524
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:508
 #. js-lingui-explicit-id
 msgid "Feedback that helps"
 msgstr "Geri bildirim yardımcı olur"
 
-#: src/features/Video/UploadVideoButton.tsx:50
+#: src/features/Video/UploadVideoButton.tsx:52
 #. js-lingui-explicit-id
 msgid "File size must be less than 250MB"
 msgstr "Dosya boyutu 250MB'den küçük olmalıdır."
@@ -4116,7 +4112,7 @@ msgstr "{USER_NAME} için"
 msgid "Formal Writing Practice"
 msgstr "Resmi Yazı Pratiği"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:468
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:452
 #. js-lingui-explicit-id
 msgid "Founder"
 msgstr "Kurucu"
@@ -4363,7 +4359,7 @@ msgstr "Oluşturuluyor..."
 msgid "German Learning Plan"
 msgstr "Almanca Öğrenme Planı"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:517
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:501
 #. js-lingui-explicit-id
 msgid "Get a clear path based on your level, goals, and progress."
 msgstr "Seviyenize, hedeflerinize ve ilerlemenize göre net bir yol elde edin."
@@ -4516,7 +4512,7 @@ msgstr ""
 msgid "Get full access to use the chat and many other features!"
 msgstr "Sohbeti ve birçok diğer özelliği tam erişimle kullanın!"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:557
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:541
 #. js-lingui-explicit-id
 msgid "Get help faster if something breaks or you have questions."
 msgstr "Bir şey bozulursa veya sorularınız varsa daha hızlı yardım alın."
@@ -4609,7 +4605,7 @@ msgstr "Hediye"
 msgid "Give a small example (counter, input, button)"
 msgstr "Küçük bir örnek ver (sayaç, giriş, düğme)"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:437
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:421
 #. js-lingui-explicit-id
 msgid "Give it a few weeks. That’s when real confidence builds."
 msgstr "Birkaç hafta verin. Gerçek güvenin inşa edildiği zaman budur."
@@ -5049,11 +5045,6 @@ msgid ""
 msgstr ""
 "Orta Düzey Öğreniciler İçin İngilizce İş Görüşmesini Başarıyla Tamamlamak: "
 "Adım Adım Kılavuz (2026)"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:280
-#. js-lingui-explicit-id
-msgid "How to get Full Access?"
-msgstr "Tam Erişim Nasıl Elde Edilir?"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:159
 #. js-lingui-explicit-id
@@ -6307,7 +6298,7 @@ msgstr "Yükle:"
 msgid "Installing..."
 msgstr "Yükleniyor..."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:525
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:509
 #. js-lingui-explicit-id
 msgid "Instant corrections and better phrasing so you improve faster."
 msgstr "Anında düzeltmeler ve daha iyi ifadelerle daha hızlı gelişin."
@@ -6489,7 +6480,7 @@ msgstr "Bir dakika kadar sürebilir."
 msgid "Italian Learning Plan"
 msgstr "İtalyanca Öğrenme Planı"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:445
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:429
 #. js-lingui-explicit-id
 msgid "I’ll return your money — no questions."
 msgstr "Paranızı geri vereceğim — sorgusuz sualsiz."
@@ -7396,15 +7387,10 @@ msgstr "Sıradaki Tur"
 msgid "No ads, no spam"
 msgstr "Reklam yok, spam yok"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:540
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:524
 #. js-lingui-explicit-id
 msgid "No auto-renew. You stay in control"
 msgstr "Otomatik yenileme yok. Kontrol sizde kalır"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:315
-#. js-lingui-explicit-id
-msgid "No auto-renewals. No hidden charges."
-msgstr "Otomatik yenileme yok. Gizli ücret yok."
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:77
 #. js-lingui-explicit-id
@@ -7617,7 +7603,7 @@ msgstr "Hayır. Herhangi bir ödeme bilgisi girmeden ücretsiz plana başlayabil
 msgid "non-native English speakers"
 msgstr "anadil olarak İngilizce konuşmayanlar"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:293
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:291
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
 msgstr "Yenilenmeyen abonelik"
@@ -7638,7 +7624,7 @@ msgstr "Norveççe Öğrenme Planı"
 msgid "NoSQL"
 msgstr "NoSQL"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:444
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:428
 #. js-lingui-explicit-id
 msgid "Not feeling real progress?"
 msgstr "Gerçek bir ilerleme hissetmiyor musunuz?"
@@ -7925,7 +7911,7 @@ msgstr "Ebeveyn İzni"
 msgid "Parental consent submitted!"
 msgstr "Ebeveyn izni gönderildi!"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:374
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:357
 #. js-lingui-explicit-id
 msgid ""
 "Participate in Community activities like sharing posts in the Community "
@@ -7954,7 +7940,7 @@ msgstr ""
 "CV metninizi buraya yapıştırın. Ayrıca deneyiminizle ilgili kısa bir özet "
 "yazabilirsiniz."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:541
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:525
 #. js-lingui-explicit-id
 msgid "Pay once for a day, week, or month — extend only if you want."
 msgstr ""
@@ -8030,7 +8016,7 @@ msgstr "Performans Metrikleri"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "Performans, dayanıklılık ve mimari desenler"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:516
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:500
 #. js-lingui-explicit-id
 msgid "Personal learning plan"
 msgstr "Kişisel öğrenme planı"
@@ -8243,7 +8229,7 @@ msgstr "Lütfen geçerli bir ses dosyası seçin (MP3, WAV, OGG veya M4A)"
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
 msgstr "Lütfen geçerli bir resim dosyası seçin (JPEG, PNG, GIF veya WebP)"
 
-#: src/features/Video/UploadVideoButton.tsx:44
+#: src/features/Video/UploadVideoButton.tsx:46
 #. js-lingui-explicit-id
 msgid "Please select a valid video file (MP4, WebM, or MOV)"
 msgstr "Lütfen geçerli bir video dosyası seçin (MP4, WebM veya MOV)"
@@ -8369,7 +8355,7 @@ msgstr ""
 "öğretmeniniz ve konuşma koçunuz. Gerçek yaşam rol oynama senaryoları ile "
 "akıcılığı, telaffuzu ve güveni anlık geri bildirim ile geliştirin."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:420
 #. js-lingui-explicit-id
 msgid "Practice daily"
 msgstr "Günlük pratik yap"
@@ -8696,13 +8682,13 @@ msgstr "Önceki Soru"
 msgid "Price"
 msgstr "Fiyat"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:189
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:193
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "Günlük fiyat"
 
 #: src/features/Case/data/reusable/priceSection.ts:44
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:556
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:540
 #. js-lingui-explicit-id
 msgid "Priority support"
 msgstr "Öncelikli destek"
@@ -9337,7 +9323,7 @@ msgstr "Esneklik & Gözlemlenebilirlik"
 msgid "Restaurant"
 msgstr "Restoran"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:420
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:404
 #. js-lingui-explicit-id
 msgid "Results"
 msgstr "Sonuçlar"
@@ -10611,7 +10597,7 @@ msgstr "Backend Hazırlık Testini Al"
 msgid "Take the Interview Readiness Test"
 msgstr "Mülakat Hazırlık Testini Alın"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:507
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:491
 #. js-lingui-explicit-id
 msgid "Talk as much as you want — role-plays, assistants, and real conversations."
 msgstr "İstediğiniz kadar konuşun — rol oynama, asistanlar ve gerçek konuşmalar."
@@ -11414,7 +11400,7 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "TOEFL Konuşma Görevleri"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:359
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Tokens don’t expire, so you can save them for later."
 msgstr ""
@@ -11604,7 +11590,7 @@ msgstr "Bilinmeyen hata"
 msgid "Unknown error during sign-in"
 msgstr "Oturum açma sırasında bilinmeyen hata"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:506
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:490
 #. js-lingui-explicit-id
 msgid "Unlimited AI speaking practice"
 msgstr "Sınırsız Yapay Zeka konuşma pratiği"
@@ -11695,19 +11681,19 @@ msgstr "Görüntü yükle"
 msgid "Upload language skills directly to your brain"
 msgstr "Dil becerilerini doğrudan beynine yükle"
 
-#: src/features/Video/UploadVideoButton.tsx:189
+#: src/features/Video/UploadVideoButton.tsx:213
 #. js-lingui-explicit-id
 msgid "Upload video"
 msgstr "Videoyu yükle"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
-#: src/features/Video/UploadVideoButton.tsx:186
+#: src/features/Video/UploadVideoButton.tsx:210
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "Yükleniyor..."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:353
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:336
 #. js-lingui-explicit-id
 msgid "Use it on weekends, for a short project, or whenever it fits you."
 msgstr "Hafta sonlarında, kısa bir proje için ya da size uyduğunda kullanın."
@@ -12287,7 +12273,7 @@ msgstr "Ne elde etmek istiyorsunuz?"
 msgid "What you will achieve"
 msgstr "Ne elde edeceksiniz"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:500
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:484
 #. js-lingui-explicit-id
 msgid "What's included?"
 msgstr "Neler dahil?"
@@ -12800,7 +12786,7 @@ msgstr ""
 "Geri bildirim alıyorsunuz: \"teknik açıdan güçlü, ancak **yeterince kıdemli "
 "değil**\" — ayrıntı yok"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:347
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:330
 #. js-lingui-explicit-id
 msgid ""
 "You get full access, just like a subscription — but with complete "
@@ -13162,6 +13148,21 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
+#. js-lingui-explicit-id
+#~ msgid "Choose how long you want access — and extend anytime."
+#~ msgstr "Ne kadar süre erişim istediğinizi seçin — ve istediğiniz zaman uzatın."
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:280
+#. js-lingui-explicit-id
+#~ msgid "How to get Full Access?"
+#~ msgstr "Tam Erişim Nasıl Elde Edilir?"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:315
+#. js-lingui-explicit-id
+#~ msgid "No auto-renewals. No hidden charges."
+#~ msgstr "Otomatik yenileme yok. Gizli ücret yok."
 
 #: src/features/Sentence/StoryModal.tsx:741
 #. js-lingui-explicit-id

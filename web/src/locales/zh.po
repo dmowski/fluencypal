@@ -286,19 +286,19 @@ msgstr "/月"
 msgid "1 AI hour"
 msgstr "1 小时 AI"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:343
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:326
 #. js-lingui-explicit-id
 msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
 msgstr "1 AI 小时 ≈ 与 AI 进行1小时的主动对话。"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:69
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:70
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:208
 #. js-lingui-explicit-id
 msgid "1 day"
 msgstr "1 天"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:48
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:89
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:90
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:210
 #. js-lingui-explicit-id
 msgid "1 month"
@@ -310,14 +310,14 @@ msgid "1 round"
 msgstr "1轮"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:40
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:79
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:80
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:209
 #. js-lingui-explicit-id
 msgid "1 week"
 msgstr "1 周"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:57
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:99
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:100
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:211
 #. js-lingui-explicit-id
 msgid "1 year"
@@ -761,7 +761,7 @@ msgstr "AI 语伴"
 msgid "AI Speaking Practice"
 msgstr "AI口语练习"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:299
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:297
 #. js-lingui-explicit-id
 msgid "AI tokens"
 msgstr "AI 代币"
@@ -1065,8 +1065,8 @@ msgstr "在支持频道中询问"
 msgid "Ask questions, get explanations, and solve everyday problems"
 msgstr "提出问题，获得解释，并解决日常问题"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:517
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:533
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:549
 #. js-lingui-explicit-id
 msgid "Ask questions, share progress, and find speaking partners."
 msgstr "提出问题、分享进展并寻找口语伙伴。"
@@ -1384,7 +1384,7 @@ msgstr "购买 5 小时 AI 服务"
 msgid "Buy a subscription"
 msgstr "购买订阅"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:339
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
 #. js-lingui-explicit-id
 msgid "Buy AI tokens and use them whenever you want."
 msgstr "购买 AI 代币并随时使用。"
@@ -1669,11 +1669,6 @@ msgstr "中文学习计划"
 msgid "Choose how long each turn lasts and how many rounds to play."
 msgstr "选择每轮持续多长时间以及要玩多少回合。"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
-#. js-lingui-explicit-id
-msgid "Choose how long you want access — and extend anytime."
-msgstr "选择您希望访问的时长 - 可以随时延长。"
-
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:24
 #. js-lingui-explicit-id
 msgid "Choose isolation levels, model aggregates, and write efficient queries."
@@ -1731,7 +1726,7 @@ msgstr "清晰的系统设计结构。我终于在解释权衡时没有东拉西
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:390
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
 #. js-lingui-explicit-id
@@ -1789,8 +1784,8 @@ msgstr "沟通与领导力"
 msgid "Community"
 msgstr "社区"
 
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:516
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:532
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:548
 #. js-lingui-explicit-id
 msgid "Community access"
 msgstr "社区访问"
@@ -2057,7 +2052,7 @@ msgstr "对话英语练习"
 msgid "conversational English practice"
 msgstr "对话英语练习"
 
-#: src/features/Video/UploadVideoButton.tsx:84
+#: src/features/Video/UploadVideoButton.tsx:108
 #. js-lingui-explicit-id
 msgid "Converted file size must be less than 250MB"
 msgstr "转换后的文件大小必须小于250MB"
@@ -3395,7 +3390,7 @@ msgstr ""
 "体验与布鲁诺（Bruno），您友好的人工智能导师，进行更高水平的语言练习。无论您是初学者还是高级学习者，布鲁诺都会根据您的节奏进行调整，纠正错误，并保持"
 "您的积极性。"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:179
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:183
 #. js-lingui-explicit-id
 msgid "Expires"
 msgstr "到期"
@@ -3505,8 +3500,9 @@ msgstr "音频上传失败。请重试。"
 msgid "Failed to upload image. Please try again."
 msgstr "上传图片失败。请重试。"
 
-#: src/features/Video/UploadVideoButton.tsx:101
-#: src/features/Video/UploadVideoButton.tsx:108
+#: src/features/Video/UploadVideoButton.tsx:87
+#: src/features/Video/UploadVideoButton.tsx:125
+#: src/features/Video/UploadVideoButton.tsx:132
 #. js-lingui-explicit-id
 msgid "Failed to upload video. Please try again."
 msgstr "无法上传视频。请再试一次。"
@@ -3550,12 +3546,12 @@ msgid ""
 "experience without a job?"
 msgstr "反馈含糊不清：“**经验不足**”——但如果没有工作，你如何获得经验？"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:524
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:508
 #. js-lingui-explicit-id
 msgid "Feedback that helps"
 msgstr "能够提供帮助的反馈"
 
-#: src/features/Video/UploadVideoButton.tsx:50
+#: src/features/Video/UploadVideoButton.tsx:52
 #. js-lingui-explicit-id
 msgid "File size must be less than 250MB"
 msgstr "文件大小必须小于250MB"
@@ -3829,7 +3825,7 @@ msgstr "为 {USER_NAME}"
 msgid "Formal Writing Practice"
 msgstr "正式写作练习"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:468
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:452
 #. js-lingui-explicit-id
 msgid "Founder"
 msgstr "创始人"
@@ -4074,7 +4070,7 @@ msgstr "生成中..."
 msgid "German Learning Plan"
 msgstr "德语学习计划"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:517
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:501
 #. js-lingui-explicit-id
 msgid "Get a clear path based on your level, goals, and progress."
 msgstr "根据您的水平、目标和进度，获取清晰的路径。"
@@ -4201,7 +4197,7 @@ msgstr "获取所有功能的完整访问权限。练习真实面试，获得AI�
 msgid "Get full access to use the chat and many other features!"
 msgstr "获取完整访问权限以使用聊天和许多其他功能！"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:557
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:541
 #. js-lingui-explicit-id
 msgid "Get help faster if something breaks or you have questions."
 msgstr "如果遇到问题或有疑问，可以更快获得帮助。"
@@ -4284,7 +4280,7 @@ msgstr "礼物"
 msgid "Give a small example (counter, input, button)"
 msgstr "给一个小例子（计数器，输入，按钮）"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:437
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:421
 #. js-lingui-explicit-id
 msgid "Give it a few weeks. That’s when real confidence builds."
 msgstr "给它几周时间。在那时，真正的自信就会建立起来。"
@@ -4687,11 +4683,6 @@ msgid ""
 "How to Ace Your English Job Interview: A Step-by-Step Guide for "
 "Intermediate Learners (2026)"
 msgstr "如何成功通过英语求职面试：中级学习者分步指南（2026年）"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:280
-#. js-lingui-explicit-id
-msgid "How to get Full Access?"
-msgstr "如何获得完整访问权限？"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:159
 #. js-lingui-explicit-id
@@ -5750,7 +5741,7 @@ msgstr "安装："
 msgid "Installing..."
 msgstr "正在安装..."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:525
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:509
 #. js-lingui-explicit-id
 msgid "Instant corrections and better phrasing so you improve faster."
 msgstr "即时纠正和更好的措辞，以便您更快提高。"
@@ -5932,7 +5923,7 @@ msgstr "可能需要长达一分钟。"
 msgid "Italian Learning Plan"
 msgstr "意大利语学习计划"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:445
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:429
 #. js-lingui-explicit-id
 msgid "I’ll return your money — no questions."
 msgstr "我会退还你的钱——不问任何问题。"
@@ -6812,18 +6803,13 @@ msgstr "下一回合"
 msgid "No ads, no spam"
 msgstr "没有广告，没有垃圾信息"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:540
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:524
 #. js-lingui-explicit-id
 msgid "No auto-renew. You stay in control"
 msgstr ""
 "No auto-renew. You stay in control\n"
 "\n"
 "没有自动续订。您掌控一切"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:315
-#. js-lingui-explicit-id
-msgid "No auto-renewals. No hidden charges."
-msgstr "没有自动续订。没有隐藏费用。"
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:77
 #. js-lingui-explicit-id
@@ -7015,7 +7001,7 @@ msgstr "不可以。您可以在不输入任何付款信息的情况下启动免
 msgid "non-native English speakers"
 msgstr "非英语母语者"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:293
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:291
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
 msgstr "不续订的订阅"
@@ -7036,7 +7022,7 @@ msgstr "挪威语学习计划"
 msgid "NoSQL"
 msgstr "NoSQL"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:444
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:428
 #. js-lingui-explicit-id
 msgid "Not feeling real progress?"
 msgstr "感受不到真正的进步？"
@@ -7301,7 +7287,7 @@ msgstr "家长同意"
 msgid "Parental consent submitted!"
 msgstr "家长同意书已提交！"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:374
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:357
 #. js-lingui-explicit-id
 msgid ""
 "Participate in Community activities like sharing posts in the Community "
@@ -7323,7 +7309,7 @@ msgid ""
 "experience."
 msgstr "将您的简历文本粘贴在这里。您还可以写一个简要的经验总结。"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:541
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:525
 #. js-lingui-explicit-id
 msgid "Pay once for a day, week, or month — extend only if you want."
 msgstr "仅需支付一天、一个星期或一个月的费用——只有在您想继续时才延长。"
@@ -7397,7 +7383,7 @@ msgstr "性能指标"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "性能、弹性和架构模式"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:516
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:500
 #. js-lingui-explicit-id
 msgid "Personal learning plan"
 msgstr "个人学习计划"
@@ -7604,7 +7590,7 @@ msgstr "请选择一个有效的音频文件（MP3、WAV、OGG或M4A）"
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
 msgstr "请选择一个有效的图像文件（JPEG、PNG、GIF 或 WebP）"
 
-#: src/features/Video/UploadVideoButton.tsx:44
+#: src/features/Video/UploadVideoButton.tsx:46
 #. js-lingui-explicit-id
 msgid "Please select a valid video file (MP4, WebM, or MOV)"
 msgstr "请选择一个有效的视频文件 (MP4、WebM 或 MOV)"
@@ -7723,7 +7709,7 @@ msgid ""
 "real-life role-play scenarios with instant feedback."
 msgstr "使用FluencyPal进行英语对话练习，您的24/7 AI英语教师和口语教练。通过真实场景的角色扮演和即时反馈，提高流利度、发音和自信心。"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:420
 #. js-lingui-explicit-id
 msgid "Practice daily"
 msgstr "每天练习"
@@ -8008,13 +7994,13 @@ msgstr "上一个问题"
 msgid "Price"
 msgstr "价格"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:189
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:193
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "每日价格"
 
 #: src/features/Case/data/reusable/priceSection.ts:44
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:556
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:540
 #. js-lingui-explicit-id
 msgid "Priority support"
 msgstr "优先支持"
@@ -8630,7 +8616,7 @@ msgstr "弹性 & 可观察性"
 msgid "Restaurant"
 msgstr "餐厅"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:420
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:404
 #. js-lingui-explicit-id
 msgid "Results"
 msgstr "结果"
@@ -9821,7 +9807,7 @@ msgstr "参加后端准备测试"
 msgid "Take the Interview Readiness Test"
 msgstr "参加面试准备测试"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:507
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:491
 #. js-lingui-explicit-id
 msgid "Talk as much as you want — role-plays, assistants, and real conversations."
 msgstr "尽情畅谈 — 角色扮演、助理和真实对话。"
@@ -10559,7 +10545,7 @@ msgstr "托福"
 msgid "TOEFL Speaking Tasks"
 msgstr "托福口语任务"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:359
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Tokens don’t expire, so you can save them for later."
 msgstr "令牌不会过期，因此您可以保存它们以备后用。"
@@ -10747,7 +10733,7 @@ msgstr "未知错误"
 msgid "Unknown error during sign-in"
 msgstr "在登录过程中出现未知错误"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:506
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:490
 #. js-lingui-explicit-id
 msgid "Unlimited AI speaking practice"
 msgstr "无限的AI口语练习"
@@ -10832,19 +10818,19 @@ msgstr "上传图片"
 msgid "Upload language skills directly to your brain"
 msgstr "将语言技能直接上传到你的大脑"
 
-#: src/features/Video/UploadVideoButton.tsx:189
+#: src/features/Video/UploadVideoButton.tsx:213
 #. js-lingui-explicit-id
 msgid "Upload video"
 msgstr "上传视频"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
-#: src/features/Video/UploadVideoButton.tsx:186
+#: src/features/Video/UploadVideoButton.tsx:210
 #. js-lingui-explicit-id
 msgid "Uploading..."
 msgstr "上传中..."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:353
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:336
 #. js-lingui-explicit-id
 msgid "Use it on weekends, for a short project, or whenever it fits you."
 msgstr "在周末、短期项目或任何适合你的时间使用它。"
@@ -11397,7 +11383,7 @@ msgstr "你想要实现什么"
 msgid "What you will achieve"
 msgstr "你将会达到的目标"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:500
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:484
 #. js-lingui-explicit-id
 msgid "What's included?"
 msgstr "包含什么？"
@@ -11847,7 +11833,7 @@ msgid ""
 "with no specifics"
 msgstr "你得到的反馈是“技术上很强，但还不够**资深**”——没有具体细节"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:347
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:330
 #. js-lingui-explicit-id
 msgid ""
 "You get full access, just like a subscription — but with complete "
@@ -12184,6 +12170,21 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:322
+#. js-lingui-explicit-id
+#~ msgid "Choose how long you want access — and extend anytime."
+#~ msgstr "选择您希望访问的时长 - 可以随时延长。"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:280
+#. js-lingui-explicit-id
+#~ msgid "How to get Full Access?"
+#~ msgstr "如何获得完整访问权限？"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:315
+#. js-lingui-explicit-id
+#~ msgid "No auto-renewals. No hidden charges."
+#~ msgstr "没有自动续订。没有隐藏费用。"
 
 #: src/features/Sentence/StoryModal.tsx:741
 #. js-lingui-explicit-id
