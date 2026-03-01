@@ -4,7 +4,7 @@ import { Button, Stack, Typography } from '@mui/material';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { UploadImageButton } from '@/features/Game/UploadImageButton';
 import { UploadVideoButton } from '@/features/Video/UploadVideoButton';
-import { useAuth } from '@/features/Auth/useAuth';
+import { AuthProvider, useAuth } from '@/features/Auth/useAuth';
 import { sendUploadFileRequest } from '@/app/api/uploadFile/sendUploadFileRequest';
 import { VideoConverter } from '@/features/Video/videoConverter';
 import { PracticeProvider } from '../practiceProvider';
@@ -320,11 +320,9 @@ export default function UploadTestPage() {
         <meta name="robots" content="noindex, nofollow" />
       </head>
       <body>
-        <PracticeProvider>
-          <AuthWall>
-            <UploadTest />
-          </AuthWall>
-        </PracticeProvider>
+        <AuthProvider>
+          <UploadTest />
+        </AuthProvider>
       </body>
     </html>
   );
