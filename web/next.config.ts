@@ -30,6 +30,7 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
+    proxyClientMaxBodySize: '100mb',
     swcPlugins: [
       [
         '@lingui/swc-plugin',
@@ -93,7 +94,6 @@ export default withSentryConfig(nextConfig, {
     enabled: true,
   },
 
-  // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
   // This can increase your server load as well as your hosting bill.
   // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
   // side errors will fail.

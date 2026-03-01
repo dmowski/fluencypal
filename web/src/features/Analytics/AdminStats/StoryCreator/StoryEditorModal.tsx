@@ -284,6 +284,9 @@ export const StoryEditorModal = ({
                   <Typography variant="caption">Final Video:</Typography>
                   <video
                     controls
+                    loop
+                    muted
+                    autoPlay
                     src={internalStory.videoUrl}
                     style={{ width: '200px', height: '200px' }}
                     preload="none"
@@ -296,6 +299,9 @@ export const StoryEditorModal = ({
                   <Typography variant="caption">Original Video:</Typography>
                   <video
                     controls
+                    loop
+                    autoPlay
+                    muted
                     src={internalStory.originalVideoUrl}
                     style={{ width: '200px', height: '200px' }}
                     preload="none"
