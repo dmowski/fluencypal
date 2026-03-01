@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from '@mui/material';
-import { Gem, Rocket, Sparkles } from 'lucide-react';
+import { EyeClosed, EyeOff, Gem, MicOff, Rocket, Sparkles, VolumeOff } from 'lucide-react';
 import { useUsage } from '../Usage/useUsage';
 import { useLingui } from '@lingui/react';
 
@@ -37,15 +37,16 @@ export const AccessBadge = ({
         },
         position: 'relative',
         overflow: 'hidden',
+        zIndex: 2,
       }}
     >
-      <Stack>
+      <Stack gap="5px">
         <Stack
           sx={{
             flexDirection: 'row',
             alignItems: 'center',
             //justifyContent: "center",
-            gap: '15px',
+            gap: '10px',
           }}
         >
           <Typography
@@ -57,12 +58,12 @@ export const AccessBadge = ({
           >
             {title}
           </Typography>
+          <VolumeOff size={'18px'} color={'#fff'} />
         </Stack>
         <Typography
           sx={{
-            opacity: 0.7,
+            opacity: 1,
           }}
-          variant="body2"
         >
           {subTitle}
         </Typography>
@@ -75,7 +76,8 @@ export const AccessBadge = ({
         endIcon={<Rocket size={'18px'} />}
         sx={{
           padding: '10px 30px',
-          background: 'linear-gradient(90deg, rgb(250, 255, 95) 0%, rgba(6,182,212,1) 100%)',
+          fontWeight: 500,
+          background: 'linear-gradient(90deg, rgb(54, 243, 63) 0%, rgb(85, 212, 6) 100%)',
         }}
       >
         {buttonTitle}
