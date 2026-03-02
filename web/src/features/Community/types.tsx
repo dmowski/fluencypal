@@ -6,3 +6,9 @@ export type CommunityPage =
   | 'daily-questions'
   | 'tech-support'
   | 'leaderboards';
+
+export interface Room {
+  id: string;
+  title: string;
+  description: string;
+}

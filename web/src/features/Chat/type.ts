@@ -14,7 +14,7 @@ export interface UserChatMetadataStatic {
   spaceId: string;
   allowedUserIds: string[] | null;
   isPrivate: boolean;
-  type: 'global' | 'debate' | 'privateChat' | 'dailyQuestion';
+  type: 'global' | 'debate' | 'privateChat' | 'dailyQuestion' | 'room';
 
   debateId?: string;
 }
