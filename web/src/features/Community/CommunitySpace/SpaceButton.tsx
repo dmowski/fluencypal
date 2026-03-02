@@ -1,18 +1,24 @@
 'use client';
 
-import { Badge, Stack, Typography } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import { Badge, IconButton, Stack, Typography } from '@mui/material';
 import { useChat } from '../../Chat/useChat';
+import { useAuth } from '../../Auth/useAuth';
 import { CommunitySpace } from '../types';
 
 export const SpaceButton = ({
   space,
   openSpaceId,
+  onEditSpace,
 }: {
   space: CommunitySpace;
   openSpaceId: (spaceId: string) => void;
+  onEditSpace?: (space: CommunitySpace) => void;
 }) => {
   const chatList = useChat();
+  const auth = useAuth();
   const unreadCount = chatList.unreadMessagesCount;
+  const isCreator = space.createdByUserId === auth.uid;
 
   return (
     <Stack
@@ -30,17 +36,43 @@ export const SpaceButton = ({
         cursor: 'pointer',
       }}
     >
-      <Badge badgeContent={unreadCount} color="error">
-        <Typography
-          variant="h5"
-          component={'span'}
-          sx={{
-            fontWeight: 700,
-          }}
-        >
-          {space.title}
-        </Typography>
-      </Badge>
+      <Stack
+        sx={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '10px',
+        }}
+      >
+        <Badge badgeContent={unreadCount} color="error">
+          <Typography
+            variant="h5"
+            component={'span'}
+            sx={{
+              fontWeight: 700,
+            }}
+          >
+            {space.title}
+          </Typography>
+        </Badge>
+
+        {isCreator && onEditSpace && (
+          <IconButton
+            size="small"
+            onClick={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              onEditSpace(space);
+            }}
+            sx={{
+              color: '#fff',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+            }}
+          >
+            <EditIcon fontSize="small" />
+          </IconButton>
+        )}
+      </Stack>
       <Typography sx={{ opacity: 0.9 }}>{space.description}</Typography>
     </Stack>
   );

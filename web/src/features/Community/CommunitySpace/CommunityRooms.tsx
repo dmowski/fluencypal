@@ -3,13 +3,18 @@
 import { Button, Stack, Typography } from '@mui/material';
 import { CirclePlus } from 'lucide-react';
 import { useLingui } from '@lingui/react';
+import { useState } from 'react';
 import { useCommunitySpace } from './useCommunitySpace';
 import { SpaceProvider } from './SpaceProvider';
 import { SpaceButton } from './SpaceButton';
+import { CommunitySpace } from '../types';
+import { SpaceEditorModal } from './SpaceEditorModal';
 
 export const CommunityRooms = ({ openSpaceId }: { openSpaceId: (spaceId: string) => void }) => {
   const { i18n } = useLingui();
   const { spaces } = useCommunitySpace();
+  const [isShowCreateModal, setIsShowCreateModal] = useState(false);
+  const [spaceForEdit, setSpaceForEdit] = useState<CommunitySpace | null>(null);
 
   return (
     <Stack
@@ -44,7 +49,11 @@ export const CommunityRooms = ({ openSpaceId }: { openSpaceId: (spaceId: string)
       >
         {spaces.map((space) => (
           <SpaceProvider key={space.id} space={space}>
-            <SpaceButton space={space} openSpaceId={openSpaceId} />
+            <SpaceButton
+              space={space}
+              openSpaceId={openSpaceId}
+              onEditSpace={(space) => setSpaceForEdit(space)}
+            />
           </SpaceProvider>
         ))}
 
@@ -56,10 +65,24 @@ export const CommunityRooms = ({ openSpaceId }: { openSpaceId: (spaceId: string)
             marginTop: '10px',
             padding: '10px 30px',
           }}
+          onClick={() => setIsShowCreateModal(true)}
         >
           {i18n._('Create New Space')}
         </Button>
       </Stack>
+
+      <SpaceEditorModal
+        isOpen={isShowCreateModal}
+        onClose={() => setIsShowCreateModal(false)}
+        type={'create'}
+      />
+
+      <SpaceEditorModal
+        isOpen={!!spaceForEdit}
+        onClose={() => setSpaceForEdit(null)}
+        type={'Edit'}
+        space={spaceForEdit}
+      />
     </Stack>
   );
 };
