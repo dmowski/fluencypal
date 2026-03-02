@@ -1,6 +1,10 @@
+'use client';
 import { createContext, JSX, ReactNode, useContext } from 'react';
 import { useLingui } from '@lingui/react';
 import { CommunitySpace } from './types';
+import { useAuth } from '../Auth/useAuth';
+import { db } from '../Firebase/firebaseDb';
+import { useCollectionDataOnce } from 'react-firebase-hooks/firestore';
 
 interface CommunitySpaceContext {
   spaces: CommunitySpace[];
@@ -10,6 +14,10 @@ const CommunitySpaceContext = createContext<CommunitySpaceContext | null>(null);
 
 const useProvideCommunitySpace = (): CommunitySpaceContext => {
   const { i18n } = useLingui();
+
+  const auth = useAuth();
+  const spacesDocRef = db.collections.communitySpaces(auth.uid);
+  const [spaceData] = useCollectionDataOnce(spacesDocRef);
   const spaces: CommunitySpace[] = [
     {
       id: 'development',
@@ -84,7 +92,7 @@ const useProvideCommunitySpace = (): CommunitySpaceContext => {
   ];
 
   return {
-    spaces,
+    spaces: spaceData || [],
   };
 };
 

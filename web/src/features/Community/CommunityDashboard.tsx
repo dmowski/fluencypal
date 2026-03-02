@@ -309,7 +309,7 @@ export const CommunityRooms = ({ openSpaceId }: { openSpaceId: (spaceId: string)
       <Stack
         sx={{
           gap: '20px',
-          alignItems: 'center',
+          alignItems: 'flex-start',
         }}
       >
         {spaces.map((space) => (
