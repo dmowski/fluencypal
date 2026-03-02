@@ -1,9 +1,9 @@
 'use client';
 import { createContext, JSX, ReactNode, useContext } from 'react';
 import { useLingui } from '@lingui/react';
-import { CommunitySpace } from './types';
-import { useAuth } from '../Auth/useAuth';
-import { db } from '../Firebase/firebaseDb';
+import { CommunitySpace } from '../types';
+import { useAuth } from '../../Auth/useAuth';
+import { db } from '../../Firebase/firebaseDb';
 import { useCollectionDataOnce } from 'react-firebase-hooks/firestore';
 
 interface CommunitySpaceContext {

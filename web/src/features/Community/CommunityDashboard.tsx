@@ -24,7 +24,7 @@ import { DashboardBlur } from '../Dashboard/DashboardBlur';
 import { useAccess } from '../Usage/useAccess';
 import { ChatProvider, useChat } from '../Chat/useChat';
 import { ChatSection } from '../Chat/ChatSection';
-import { useCommunitySpace } from './useCommunitySpace';
+import { useCommunitySpace } from './CommunitySpace/useCommunitySpace';
 
 export const CommunityDashboard = () => {
   const chatList = useChatList();
