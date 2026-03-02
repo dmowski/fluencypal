@@ -8,8 +8,6 @@ import {
   Crown,
   Mail,
   MessagesSquare,
-  Newspaper,
-  Origami,
   Swords,
   UsersRound,
 } from 'lucide-react';
@@ -23,16 +21,9 @@ import { useChatList } from '../Chat/useChatList';
 import { useLingui } from '@lingui/react';
 import { useBattle } from '../Game/Battle/useBattle';
 import { DashboardBlur } from '../Dashboard/DashboardBlur';
-import { AccessBadge } from '../Dashboard/AccessBadge';
 import { useAccess } from '../Usage/useAccess';
 import { useCommunityRoom } from './useCommunityRoom';
-import { DynamicIcon } from 'lucide-react/dynamic';
-import { useAuth } from '../Auth/useAuth';
-import { useGame } from '../Game/useGame';
-import { ChartSortMode } from '../Chat/type';
-import { sleep } from '@/libs/sleep';
 import { ChatProvider, useChat } from '../Chat/useChat';
-import { GlobalChatTabs } from '../Chat/GlobalChatTabs';
 import { ChatSection } from '../Chat/ChatSection';
 
 export const CommunityDashboard = () => {
@@ -40,7 +31,6 @@ export const CommunityDashboard = () => {
   const { i18n } = useLingui();
   const battles = useBattle();
   const access = useAccess();
-  const auth = useAuth();
   const { rooms } = useCommunityRoom();
 
   const [activePage, setActivePage] = useUrlState<CommunityPage | ''>('section', '', true);
@@ -198,23 +188,9 @@ export const CommunityDashboard = () => {
 };
 
 export const ActiveRoomPage = ({ room, onClose }: { room: Room; onClose: () => void }) => {
-  const { i18n } = useLingui();
-  const { rooms } = useCommunityRoom();
-
   const title = room.title;
-
   const [activeChatPost] = useUrlState<string | null>('post', null, false);
   const [activeChatId] = useUrlState<string | null>('activeChatId', null, false);
-
-  const titles: Record<CommunityPage, string> = {
-    chat: i18n._('Community Chat'),
-    game: i18n._('Game'),
-    dm: i18n._('Private Messages'),
-    debates: i18n._('Debates'),
-    'daily-questions': i18n._('Daily Questions'),
-    'tech-support': i18n._('Tech Support'),
-    leaderboards: i18n._('Leaderboards'),
-  };
 
   const isShowHeader = !activeChatPost && !activeChatId;
 
@@ -257,41 +233,6 @@ export const ActiveRoomPage = ({ room, onClose }: { room: Room; onClose: () => v
 const RoomChatPage = ({ room }: { room: Room }) => {
   const access = useAccess();
 
-  const { i18n } = useLingui();
-  const auth = useAuth();
-  const game = useGame();
-
-  const [activeChatId, setActiveChatId] = useUrlState<string>('activeChatId', '', false);
-  const [activePost, setActivePost] = useUrlState<string>('post', '', true);
-  const chatList = useChatList();
-
-  const [sortMode, setSortMode] = useUrlState<ChartSortMode>('chatSortMode', 'all', false);
-  const changePage = (newPage: ChartSortMode) => {
-    setSortMode(newPage);
-    if (activePost) {
-      setTimeout(() => setActivePost(''), 90);
-    } else {
-    }
-  };
-
-  const chatMetadata = chatList.myChats.find((chat) => chat.spaceId === activeChatId);
-
-  const activeChatBgImage =
-    game.gameAvatars[
-      chatMetadata?.allowedUserIds?.sort((a, b) => {
-        // my id last
-        if (a === auth.uid) return 1;
-        if (b === auth.uid) return -1;
-        return 0;
-      })?.[0] || ''
-    ];
-
-  const back = async () => {
-    setActiveChatId('');
-    await sleep(150);
-    setActivePost('');
-  };
-
   if (!access.canUseCommunity) {
     return <></>;
   }
@@ -303,8 +244,7 @@ const RoomChatPage = ({ room }: { room: Room }) => {
           width: '100%',
         }}
       >
-        <GlobalChatTabs sortMode={sortMode} setSortMode={changePage} />
-        <ChatSection contextForAiAnalysis="" isFullContentByDefault={false} sortMode={sortMode} />
+        <ChatSection contextForAiAnalysis="" isFullContentByDefault={false} sortMode={'all'} />
       </Stack>
     </RoomProvider>
   );
