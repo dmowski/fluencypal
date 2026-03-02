@@ -240,45 +240,49 @@ export const StoryCreator = () => {
               flexWrap: 'wrap',
             }}
           >
-            {storiesDbData?.map((image) => {
-              const isPublished = image.isPublished;
-              const isAudio = image.audioUrl;
-              return (
-                <Stack
-                  key={image.id}
-                  sx={{
-                    position: 'relative',
-                  }}
-                >
-                  <StoryPreview
-                    key={image.id}
-                    onSelectImage={onSelectImage}
-                    data={image}
-                    stat={stories.storiesStatsMap[image.id]}
-                  />
-
+            {storiesDbData
+              ?.sort((a, b) => {
+                return b.createdAtIso.localeCompare(a.createdAtIso);
+              })
+              .map((image) => {
+                const isPublished = image.isPublished;
+                const isAudio = image.audioUrl;
+                return (
                   <Stack
+                    key={image.id}
                     sx={{
-                      position: 'absolute',
-                      top: 6,
-                      right: 6,
-                      backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                      color: '#fff',
-                      padding: '4px 8px',
-                      zIndex: 1,
-                      borderRadius: '6px',
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: '8px',
+                      position: 'relative',
                     }}
                   >
-                    {isAudio && <Music size={'15px'} />}
-                    {isPublished && <Eye size={'15px'} />}
-                    {!isPublished && <X size={'15px'} color="red" />}
+                    <StoryPreview
+                      key={image.id}
+                      onSelectImage={onSelectImage}
+                      data={image}
+                      stat={stories.storiesStatsMap[image.id]}
+                    />
+
+                    <Stack
+                      sx={{
+                        position: 'absolute',
+                        top: 6,
+                        right: 6,
+                        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                        color: '#fff',
+                        padding: '4px 8px',
+                        zIndex: 1,
+                        borderRadius: '6px',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: '8px',
+                      }}
+                    >
+                      {isAudio && <Music size={'15px'} />}
+                      {isPublished && <Eye size={'15px'} />}
+                      {!isPublished && <X size={'15px'} color="red" />}
+                    </Stack>
                   </Stack>
-                </Stack>
-              );
-            })}
+                );
+              })}
           </Stack>
         </Stack>
       </Stack>
