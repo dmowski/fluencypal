@@ -33,6 +33,47 @@ export const useCommunityRoom = () => {
       title: i18n._('Essay Writing'),
       description: i18n._('Share tips, ask questions, and discuss essay writing techniques'),
     },
+
+    // Exams
+    {
+      id: 'exams',
+      title: i18n._('Exams'),
+      description: i18n._(
+        'Discuss exam preparation strategies, share resources, and support each other',
+      ),
+    },
+
+    // Tests
+    {
+      id: 'tests',
+      title: i18n._('Tests'),
+      description: i18n._('Share test-taking strategies, resources, and support each other'),
+    },
+
+    // Job interviews
+    {
+      id: 'job-interviews',
+      title: i18n._('Job Interviews'),
+      description: i18n._(
+        'Discuss job interview preparation, share resources, and support each other',
+      ),
+    },
+
+    // travel
+    {
+      id: 'travel',
+      title: i18n._('Travel'),
+      description: i18n._('Share travel tips, ask questions, and discuss travel experiences'),
+    },
+
+    // relocation
+    {
+      id: 'relocation',
+      title: i18n._('Relocation'),
+      description: i18n._(
+        'Discuss relocation experiences, share tips, and support each other through the process',
+      ),
+    },
   ];
 
   return {
