@@ -232,34 +232,14 @@ export const PlanCard = ({
           <Stack
             sx={{
               boxSizing: 'border-box',
-              //padding: '10px 5px 0px 5px',
+              background: `linear-gradient(135deg, ${startColor} 0%, ${endColor} 100%)`,
               width: 'max-content',
               bottom: '0px',
               right: '0px',
               zIndex: 2,
               position: 'relative',
               overflow: 'hidden',
-
               borderRadius: '100px',
-
-              '.avatar': {
-                transition: 'all 0.4s ease',
-                opacity: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-
-                '.avatarContent': {
-                  width: '50px',
-                  height: '50px',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid red',
-                  '@media (max-width: 450px)': {
-                    width: '35px',
-                    height: '35px',
-                  },
-                },
-              },
             }}
           >
             <Stack
@@ -298,19 +278,18 @@ export const PlanCard = ({
                       fontWeight: 500,
                       fontSize: '1.9rem',
                       lineHeight: '1.3rem',
+                      letterSpacing: '-0.09em',
+                      fontWidth: 500,
                     }}
                   >
                     {index + 1}
                   </Typography>
                   <Typography
                     variant="caption"
-                    ///className="decor-text"
                     sx={{
-                      //display: 'none',
                       textTransform: 'uppercase',
                       fontWeight: 700,
                       fontSize: '0.6rem',
-                      //opacity: 0.7,
                     }}
                   >
                     day
@@ -318,70 +297,6 @@ export const PlanCard = ({
                 </Stack>
               </Stack>
             </Stack>
-
-            <Stack
-              sx={{
-                backgroundColor: startColor,
-                width: '320px',
-                height: '120px',
-                borderRadius: '40px',
-                filter: 'blur(50px)',
-
-                position: 'absolute',
-                top: '-40px',
-                left: '-20px',
-                zIndex: 1,
-                opacity: isActive || isDone ? 0.9 : 0.8,
-              }}
-            ></Stack>
-
-            {(isActive || isDone) && (
-              <>
-                <Stack
-                  sx={{
-                    backgroundColor: endColor,
-                    width: '320px',
-                    height: '120px',
-                    borderRadius: '40px',
-                    filter: 'blur(80px)',
-
-                    position: 'absolute',
-                    bottom: '-40px',
-                    right: '-20px',
-                    zIndex: 1,
-                    opacity: 0.9,
-                  }}
-                ></Stack>
-
-                <Stack
-                  sx={{
-                    backgroundColor: bgColor,
-                    width: '100%',
-                    height: '100%',
-
-                    position: 'absolute',
-                    bottom: '0px',
-                    left: '0px',
-                    zIndex: 0,
-                    opacity: 0.1,
-                  }}
-                ></Stack>
-
-                <Stack
-                  sx={{
-                    backgroundColor: 'rgba(10, 18, 30, 1)',
-                    width: '100%',
-                    height: '100%',
-
-                    position: 'absolute',
-                    bottom: '0px',
-                    left: '0px',
-                    zIndex: -1,
-                    opacity: 1,
-                  }}
-                ></Stack>
-              </>
-            )}
           </Stack>
         </Stack>
 
