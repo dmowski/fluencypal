@@ -17,10 +17,7 @@ export const DashboardBlur = () => {
           opacity: 0.2,
           pointerEvents: 'none',
           '@media (max-width: 600px)': {
-            width: '100px',
-            backgroundColor: 'red',
-            zIndex: -2,
-            opacity: 0.4,
+            display: 'none',
           },
         }}
       ></Stack>
@@ -38,8 +35,7 @@ export const DashboardBlur = () => {
           opacity: 0.3,
           pointerEvents: 'none',
           '@media (max-width: 600px)': {
-            width: '50px',
-            opacity: 0.2,
+            display: 'none',
           },
         }}
       ></Stack>
@@ -56,6 +52,9 @@ export const DashboardBlur = () => {
           zIndex: -1,
           opacity: 0.4,
           pointerEvents: 'none',
+          '@media (max-width: 600px)': {
+            display: 'none',
+          },
         }}
       ></Stack>
     </>
