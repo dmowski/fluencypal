@@ -11,4 +11,9 @@ export interface CommunitySpace {
   id: string;
   title: string;
   description: string;
+
+  createdAtIso: string;
+  updatedAtIso: string;
+
+  createdByUserId: string;
 }
