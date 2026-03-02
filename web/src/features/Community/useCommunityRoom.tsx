@@ -27,6 +27,12 @@ export const useCommunityRoom = () => {
       title: i18n._('AI in education'),
       description: i18n._('Explore the impact of AI on education and share resources'),
     },
+
+    {
+      id: 'essay-writing',
+      title: i18n._('Essay Writing'),
+      description: i18n._('Share tips, ask questions, and discuss essay writing techniques'),
+    },
   ];
 
   return {
