@@ -7,6 +7,36 @@ import { Eye } from 'lucide-react';
 import { GameStatRow } from '../Game/GameStatRow';
 import { uniq } from '@/libs/uniq';
 
+export const ViewsContent = ({ viewUserIds }: { viewUserIds: string[] }) => {
+  const { i18n } = useLingui();
+  const game = useGame();
+  return (
+    <Stack
+      sx={{
+        padding: '10px 10px',
+        maxWidth: '600px',
+        maxHeight: '400px',
+        overflowY: 'auto',
+        gap: '10px',
+      }}
+    >
+      <Typography variant="body2">{i18n._('Viewed by')}</Typography>
+      {viewUserIds && viewUserIds.length > 0 ? (
+        viewUserIds.map((uid) => {
+          const userStat = game.stats.find((stat) => stat.userId === uid);
+          return (
+            <Stack key={uid}>{userStat && <GameStatRow stat={userStat} hidePosition />}</Stack>
+          );
+        })
+      ) : (
+        <Typography variant="caption" sx={{ opacity: 0.7 }}>
+          {i18n._('No views yet. Be the first to view this post!')}
+        </Typography>
+      )}
+    </Stack>
+  );
+};
+
 export const MessageViewsIcon = ({ activeMessage }: { activeMessage: ThreadsMessage }) => {
   const [showViewsAnchorEl, setShowViewsAnchorEl] = useState<null | HTMLElement>(null);
   const { i18n } = useLingui();
@@ -52,29 +82,7 @@ export const MessageViewsIcon = ({ activeMessage }: { activeMessage: ThreadsMess
           },
         }}
       >
-        <Stack
-          sx={{
-            padding: '10px 10px',
-            maxWidth: '600px',
-            maxHeight: '400px',
-            overflowY: 'auto',
-            gap: '10px',
-          }}
-        >
-          <Typography variant="body2">{i18n._('Users who viewed this post')}</Typography>
-          {viewUserIds && viewUserIds.length > 0 ? (
-            viewUserIds.map((uid) => {
-              const userStat = game.stats.find((stat) => stat.userId === uid);
-              return (
-                <Stack key={uid}>{userStat && <GameStatRow stat={userStat} hidePosition />}</Stack>
-              );
-            })
-          ) : (
-            <Typography variant="caption" sx={{ opacity: 0.7 }}>
-              {i18n._('No views yet. Be the first to view this post!')}
-            </Typography>
-          )}
-        </Stack>
+        <ViewsContent viewUserIds={viewUserIds} />
       </Popover>
     </>
   );

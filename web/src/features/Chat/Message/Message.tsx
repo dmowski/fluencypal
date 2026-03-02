@@ -30,6 +30,7 @@ import { Attachments } from './Attachments';
 import { MessageContent } from './MessageContent';
 import { MessageFooter } from './MessageFooter';
 import { ReportMessageModal } from './ReportMessageModal';
+import { ViewsContent } from '../MessageViewsIcon';
 
 const limitMessages = 300;
 
@@ -418,6 +419,16 @@ export function Message({
                       </ListItemText>
                     </MenuItem>
                   )}
+
+                  <Stack
+                    sx={{
+                      width: '100%',
+                      alignItems: 'flex-end',
+                      padding: '10px 0 0 0',
+                    }}
+                  >
+                    <ViewsContent viewUserIds={Object.keys(message?.viewsUserIdsMap || {})} />
+                  </Stack>
                 </Menu>
               </Stack>
             )}
