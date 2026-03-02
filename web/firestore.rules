@@ -17,18 +17,28 @@ service cloud.firestore {
     	allow read: if isSignedIn();
       allow write: if isSignedIn();
     }
+    
+    match /community/spaces/spaceList/{document=**} {
+    	allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
 
     match /game/gamePoints {
     	allow read: if true;
       allow write: if false;
     }
-    
+
+    match /audioCache/{document=**} {
+    	allow read: if true;
+      allow write: if isSignedIn();
+    }
+
     match /chat/{document=**} {
     	allow read: if isSignedIn();
       allow write: if isSignedIn();
     }
     
-    match /stats/storiesViews {
+    match /stats/{document=**} {
     	allow read: if isSignedIn();
       allow write: if isSignedIn();
     }
