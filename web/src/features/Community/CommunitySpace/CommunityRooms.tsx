@@ -30,14 +30,14 @@ export const CommunityRooms = ({ openSpaceId }: { openSpaceId: (spaceId: string)
             fontWeight: 800,
           }}
         >
-          {i18n._('Spaces')}
+          {i18n._('Rooms')}
         </Typography>
         <Typography
           sx={{
             paddingLeft: '5px',
           }}
         >
-          {i18n._('Join spaces to discuss specific topics with other members')}
+          {i18n._('Join rooms to discuss specific topics with other members')}
         </Typography>
       </Stack>
 
