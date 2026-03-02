@@ -712,11 +712,6 @@ msgstr "AI 피드백이 중요합니다"
 msgid "AI hours left in your balance."
 msgstr "AI 잔여 시간이 남아 있습니다."
 
-#: src/features/Community/useCommunityRoom.tsx:27
-#. js-lingui-explicit-id
-msgid "AI in education"
-msgstr "교육에서의 AI"
-
 #: src/features/SEO/metadata.ts:328
 #. js-lingui-explicit-id
 msgid "AI Interview Coach"
@@ -959,11 +954,6 @@ msgstr "그리고"
 msgid "Angular & RxJS"
 msgstr "Angular & RxJS"
 
-#: src/features/Community/useCommunityRoom.tsx:9
-#. js-lingui-explicit-id
-msgid "Announcements"
-msgstr "알림"
-
 #: src/features/Community/GamePage.tsx:107
 #. js-lingui-explicit-id
 msgid "Answer questions correctly to climb the leaderboard!"
@@ -1024,6 +1014,11 @@ msgstr "이 채팅을 삭제하시겠습니까? 이 작업은 되돌릴 수 없�
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "이 메시지를 삭제하시겠습니까?"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:52
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete this space?"
+msgstr "이 공간을 삭제하시겠습니까?"
 
 #: src/features/Auth/useDeleteAccount.tsx:68
 #: src/features/Header/NeedHelpModal.tsx:51
@@ -1515,6 +1510,7 @@ msgstr "FluencyPal을 무료로 사용할 수 있나요?"
 #: src/features/Ai/AiKnowledgeModal.tsx:129
 #: src/features/Chat/Message/Message.tsx:282
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:105
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #. js-lingui-explicit-id
@@ -1801,7 +1797,7 @@ msgstr "커뮤니티"
 msgid "Community access"
 msgstr "커뮤니티 액세스"
 
-#: src/features/Community/CommunityDashboard.tsx:126
+#: src/features/Community/CommunityDashboard.tsx:118
 #: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -1809,7 +1805,7 @@ msgstr "커뮤니티 액세스"
 msgid "Community Chat"
 msgstr "커뮤니티 채팅"
 
-#: src/features/Community/CommunityDashboard.tsx:95
+#: src/features/Community/CommunityDashboard.tsx:87
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "커뮤니티 허브"
@@ -2190,10 +2186,16 @@ msgstr ""
 "설정, 캐릭터 및 주요 목표에 대한 간략한 설명을 제공하여 자신의 역할극을 구체화합니다. AI는 여러분의 맞춤형 지침에 따라 조정되며, "
 "시나리오의 주제에 맞는 대화에 참여합니다. 이 유연한 형식은 필요한 정확한 커뮤니케이션 기술을 마스터하는 데 도움을 줍니다."
 
-#: src/features/Community/CommunityDashboard.tsx:318
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:70
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:25
 #. js-lingui-explicit-id
 msgid "Create New Space"
 msgstr "새 공간 만들기"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:108
+#. js-lingui-explicit-id
+msgid "Create Space"
+msgstr "공간 만들기"
 
 #: src/features/RolePlay/rolePlayData.tsx:1106
 #. js-lingui-explicit-id
@@ -2293,7 +2295,7 @@ msgstr "매일 언어 연습"
 msgid "Daily Question Chat"
 msgstr "일일 질문 채팅"
 
-#: src/features/Community/CommunityDashboard.tsx:156
+#: src/features/Community/CommunityDashboard.tsx:148
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2386,7 +2388,7 @@ msgstr "토론이 시작되었습니다!"
 msgid "Debate topics will be selected randomly."
 msgstr "토론 주제는 무작위로 선택됩니다."
 
-#: src/features/Community/CommunityDashboard.tsx:147
+#: src/features/Community/CommunityDashboard.tsx:139
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -2417,6 +2419,11 @@ msgstr "채팅 삭제"
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "현재 목표 삭제"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:101
+#. js-lingui-explicit-id
+msgid "Delete Space"
+msgstr "스페이스 삭제"
 
 #: src/features/Header/NeedHelpModal.tsx:79
 #: src/features/Header/NeedHelpModal.tsx:113
@@ -2509,6 +2516,11 @@ msgstr "이 사용자를 신고하는 이유와 발생한 일을 설명하세요
 msgid "Describe your custom scenario here..."
 msgstr "당신의 맞춤 시나리오를 여기에 설명하세요..."
 
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:83
+#. js-lingui-explicit-id
+msgid "Description"
+msgstr "설명"
+
 #: src/features/Usage/UsageStatsCards.tsx:403
 #. js-lingui-explicit-id
 msgid "Description:"
@@ -2597,16 +2609,6 @@ msgstr "함께 논의하고 기술을 향상시키세요!"
 msgid "Discuss component structure and state management"
 msgstr "컴포넌트 구조와 상태 관리에 대해 논의하기"
 
-#: src/features/Community/useCommunityRoom.tsx:41
-#. js-lingui-explicit-id
-msgid "Discuss exam preparation strategies, share resources, and support each other"
-msgstr "시험 준비 전략을 논의하고, 자료를 공유하며, 서로를 지원하세요"
-
-#: src/features/Community/useCommunityRoom.tsx:57
-#. js-lingui-explicit-id
-msgid "Discuss job interview preparation, share resources, and support each other"
-msgstr "직업 면접 준비에 대해 논의하고, 자료를 공유하며 서로 지원해주세요"
-
 #: src/features/RolePlay/rolePlayData.tsx:1071
 #. js-lingui-explicit-id
 msgid "Discuss mental health topics and express your thoughts effectively"
@@ -2657,13 +2659,6 @@ msgstr ""
 "관계 또는 자아 존중감 등으로 선택할 수 있습니다. AI는 당신의 심리학자 역할을 하여 지지적인 대화를 제공하고, 반영적인 질문을 "
 "던지며, 당신의 경험을 검증하여 의미 있고 심사숙고하는 대화 연습을 도와줍니다."
 
-#: src/features/Community/useCommunityRoom.tsx:73
-#. js-lingui-explicit-id
-msgid ""
-"Discuss relocation experiences, share tips, and support each other through "
-"the process"
-msgstr "이주 경험에 대해 논의하고, 팁을 공유하며, 과정 전반에 걸쳐 서로를 지원하세요."
-
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:38
 #. js-lingui-explicit-id
 msgid "Discuss scaling, observability, failure modes, and operational readiness."
@@ -2673,11 +2668,6 @@ msgstr "스케일링, 관측 가능성, 실패 모드 및 운영 준비성에 �
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "토픽 논의"
-
-#: src/features/Community/useCommunityRoom.tsx:16
-#. js-lingui-explicit-id
-msgid "Discuss topics related to Poland and its community"
-msgstr "폴란드와 그 지역 사회와 관련된 주제 논의"
 
 #: src/features/RolePlay/rolePlayData.tsx:778
 #. js-lingui-explicit-id
@@ -2826,6 +2816,11 @@ msgstr "새로운 도구에 대한 조기 액세스"
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "편집"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Edit Space"
+msgstr "편집 공간"
 
 #: src/features/Chat/Message/Message.tsx:358
 #. js-lingui-explicit-id
@@ -3149,11 +3144,6 @@ msgstr "오류:"
 msgid "Error: "
 msgstr "오류:"
 
-#: src/features/Community/useCommunityRoom.tsx:33
-#. js-lingui-explicit-id
-msgid "Essay Writing"
-msgstr "에세이 작성"
-
 #: src/features/Landing/PlanLandingBlock.tsx:268
 #. js-lingui-explicit-id
 msgid "Essays"
@@ -3414,11 +3404,6 @@ msgstr "눈에 띄고 직장을 얻기 위해 필요한 모든 것"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "예: 저는 베를린으로의 출장 준비를 하고 있습니다"
 
-#: src/features/Community/useCommunityRoom.tsx:40
-#. js-lingui-explicit-id
-msgid "Exams"
-msgstr "시험"
-
 #: src/features/Blog/blogData.tsx:25
 #. js-lingui-explicit-id
 msgid "existential fiction"
@@ -3526,15 +3511,10 @@ msgstr "역할 놀이 시나리오 탐색하기"
 msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "웰니스와 정신건강에 대해 이야기하기 위한 기법을 탐색해보세요."
 
-#: src/features/Community/CommunityDashboard.tsx:102
+#: src/features/Community/CommunityDashboard.tsx:94
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "커뮤니티를 탐색하고, 토론에 참여하며, 다른 회원들과 연결하세요."
-
-#: src/features/Community/useCommunityRoom.tsx:28
-#. js-lingui-explicit-id
-msgid "Explore the impact of AI on education and share resources"
-msgstr "AI가 교육에 미치는 영향을 탐구하고 자원을 공유하세요"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
 #. js-lingui-explicit-id
@@ -4107,7 +4087,7 @@ msgstr "전체 음성 기능"
 msgid "Fun facts about yourself"
 msgstr "당신에 관한 재미있는 사실"
 
-#: src/features/Community/CommunityDashboard.tsx:133
+#: src/features/Community/CommunityDashboard.tsx:125
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -6126,11 +6106,6 @@ msgstr "면접 팁"
 msgid "job interview tips"
 msgstr "면접 팁"
 
-#: src/features/Community/useCommunityRoom.tsx:56
-#. js-lingui-explicit-id
-msgid "Job Interviews"
-msgstr "구직 면접"
-
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
 #. js-lingui-explicit-id
 msgid "Join"
@@ -6142,7 +6117,7 @@ msgstr "가입하기"
 msgid "Join candidates who transformed their interview performance"
 msgstr "인터뷰 성과를 변환한 지원자들과 함께하세요"
 
-#: src/features/Community/CommunityDashboard.tsx:293
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:40
 #. js-lingui-explicit-id
 msgid "Join spaces to discuss specific topics with other members"
 msgstr "다른 회원들과 특정 주제에 대해 토론할 수 있는 공간에 참여하세요"
@@ -6313,7 +6288,7 @@ msgstr "게으른 로딩"
 msgid "Leaderboard"
 msgstr "리더보드"
 
-#: src/features/Community/CommunityDashboard.tsx:163
+#: src/features/Community/CommunityDashboard.tsx:155
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -7744,6 +7719,11 @@ msgstr "모든 기능에 액세스하려면 신용카드를 확인해 주세요.
 msgid "Please enter a name for every player."
 msgstr "각 플레이어의 이름을 입력하세요."
 
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:36
+#. js-lingui-explicit-id
+msgid "Please enter a space title"
+msgstr "공간 제목을 입력하세요"
+
 #: src/features/Auth/AuthWallBasic.tsx:166
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
@@ -7813,11 +7793,6 @@ msgstr "포인트"
 #. js-lingui-explicit-id
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr "포인트 획득: {pointsEarned}. 점수를 높이기 위해 계속 연습하세요!"
-
-#: src/features/Community/useCommunityRoom.tsx:15
-#. js-lingui-explicit-id
-msgid "Poland"
-msgstr "폴란드"
 
 #: src/features/Lang/getLabels.tsx:20
 #. js-lingui-explicit-id
@@ -8221,7 +8196,7 @@ msgstr "우선 지원"
 msgid "Privacy Policy"
 msgstr "개인정보 보호정책"
 
-#: src/features/Community/CommunityDashboard.tsx:170
+#: src/features/Community/CommunityDashboard.tsx:162
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -8738,11 +8713,6 @@ msgstr "페이지 새로고침"
 msgid "Reloading conversation..."
 msgstr "대화를 다시 불러오는 중..."
 
-#: src/features/Community/useCommunityRoom.tsx:72
-#. js-lingui-explicit-id
-msgid "Relocation"
-msgstr "이전"
-
 #: src/features/Game/Battle/BattleCard.tsx:385
 #. js-lingui-explicit-id
 msgid "Remove"
@@ -8996,6 +8966,11 @@ msgstr "급여 협상 준비"
 msgid "Save"
 msgstr "저장"
 
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:108
+#. js-lingui-explicit-id
+msgid "Save Changes"
+msgstr "변경 사항 저장"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
 #. js-lingui-explicit-id
 msgid ""
@@ -9212,26 +9187,6 @@ msgid ""
 "Share compelling stories about cross-team collaboration, conflict "
 "resolution, and project ownership."
 msgstr "팀 간 협업, 갈등 해결, 프로젝트 주인의식에 대한 매력적인 이야기를 공유하세요."
-
-#: src/features/Community/useCommunityRoom.tsx:22
-#. js-lingui-explicit-id
-msgid "Share insights, ask questions, and discuss software development topics"
-msgstr "통찰력 공유, 질문, 그리고 소프트웨어 개발 주제에 대해 토론하세요"
-
-#: src/features/Community/useCommunityRoom.tsx:50
-#. js-lingui-explicit-id
-msgid "Share test-taking strategies, resources, and support each other"
-msgstr "시험 응시 전략을 공유하고, 자료를 제공하며, 서로를 지원하세요."
-
-#: src/features/Community/useCommunityRoom.tsx:34
-#. js-lingui-explicit-id
-msgid "Share tips, ask questions, and discuss essay writing techniques"
-msgstr "팁을 공유하고, 질문을 하며, 에세이 작성 기법을 논의하세요"
-
-#: src/features/Community/useCommunityRoom.tsx:66
-#. js-lingui-explicit-id
-msgid "Share travel tips, ask questions, and discuss travel experiences"
-msgstr "여행 팁을 공유하고, 질문을 던지며, 여행 경험을 이야기하세요"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:70
 #. js-lingui-explicit-id
@@ -9501,11 +9456,6 @@ msgstr "따라서 진행 상황을 저장할 수 있습니다"
 msgid "Social"
 msgstr "소셜"
 
-#: src/features/Community/useCommunityRoom.tsx:21
-#. js-lingui-explicit-id
-msgid "Software Development"
-msgstr "소프트웨어 개발"
-
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:22
 #. js-lingui-explicit-id
 msgid ""
@@ -9534,7 +9484,7 @@ msgid ""
 "tomorrow!"
 msgstr "죄송합니다, 오늘은 제공되는 일일 질문이 없습니다. 내일 다시 확인해 주세요!"
 
-#: src/features/Community/CommunityDashboard.tsx:286
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:33
 #. js-lingui-explicit-id
 msgid "Spaces"
 msgstr "스페이스"
@@ -9756,11 +9706,6 @@ msgstr "웹캠 시작 중... "
 #. js-lingui-explicit-id
 msgid "State Management"
 msgstr "상태 관리"
-
-#: src/features/Community/useCommunityRoom.tsx:10
-#. js-lingui-explicit-id
-msgid "Stay updated with the latest announcements and news"
-msgstr "최신 발표 및 뉴스로 업데이트 유지하세요"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:15
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:15
@@ -10154,7 +10099,7 @@ msgstr "AI 프론트엔드 개발자와의 기술 면접"
 msgid "Tech stack covered"
 msgstr "다루는 기술 스택"
 
-#: src/features/Community/CommunityDashboard.tsx:140
+#: src/features/Community/CommunityDashboard.tsx:132
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -10244,11 +10189,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "테스트 및 품질"
-
-#: src/features/Community/useCommunityRoom.tsx:49
-#. js-lingui-explicit-id
-msgid "Tests"
-msgstr "테스트"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -10791,6 +10731,11 @@ msgid ""
 "support."
 msgstr "팁: 나중에 지원팀에 연락하여 동의를 철회하고 데이터 삭제를 요청할 수 있습니다."
 
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:75
+#. js-lingui-explicit-id
+msgid "Title"
+msgstr "타이틀"
+
 #: src/features/Router/BlockedAccess.tsx:360
 #. js-lingui-explicit-id
 msgid ""
@@ -10881,7 +10826,6 @@ msgstr "단어를 번역하십시오"
 msgid "Translates"
 msgstr "번역"
 
-#: src/features/Community/useCommunityRoom.tsx:65
 #: src/features/RolePlay/rolePlayData.tsx:760
 #: src/features/RolePlay/rolePlayData.tsx:884
 #. js-lingui-explicit-id
@@ -12463,6 +12407,103 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Community/useCommunityRoom.tsx:27
+#. js-lingui-explicit-id
+#~ msgid "AI in education"
+#~ msgstr "교육에서의 AI"
+
+#: src/features/Community/useCommunityRoom.tsx:9
+#. js-lingui-explicit-id
+#~ msgid "Announcements"
+#~ msgstr "알림"
+
+#: src/features/Community/useCommunityRoom.tsx:41
+#. js-lingui-explicit-id
+#~ msgid "Discuss exam preparation strategies, share resources, and support each other"
+#~ msgstr "시험 준비 전략을 논의하고, 자료를 공유하며, 서로를 지원하세요"
+
+#: src/features/Community/useCommunityRoom.tsx:57
+#. js-lingui-explicit-id
+#~ msgid "Discuss job interview preparation, share resources, and support each other"
+#~ msgstr "직업 면접 준비에 대해 논의하고, 자료를 공유하며 서로 지원해주세요"
+
+#: src/features/Community/useCommunityRoom.tsx:73
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Discuss relocation experiences, share tips, and support each other through "
+#~ "the process"
+#~ msgstr "이주 경험에 대해 논의하고, 팁을 공유하며, 과정 전반에 걸쳐 서로를 지원하세요."
+
+#: src/features/Community/useCommunityRoom.tsx:16
+#. js-lingui-explicit-id
+#~ msgid "Discuss topics related to Poland and its community"
+#~ msgstr "폴란드와 그 지역 사회와 관련된 주제 논의"
+
+#: src/features/Community/useCommunityRoom.tsx:33
+#. js-lingui-explicit-id
+#~ msgid "Essay Writing"
+#~ msgstr "에세이 작성"
+
+#: src/features/Community/useCommunityRoom.tsx:40
+#. js-lingui-explicit-id
+#~ msgid "Exams"
+#~ msgstr "시험"
+
+#: src/features/Community/useCommunityRoom.tsx:28
+#. js-lingui-explicit-id
+#~ msgid "Explore the impact of AI on education and share resources"
+#~ msgstr "AI가 교육에 미치는 영향을 탐구하고 자원을 공유하세요"
+
+#: src/features/Community/useCommunityRoom.tsx:56
+#. js-lingui-explicit-id
+#~ msgid "Job Interviews"
+#~ msgstr "구직 면접"
+
+#: src/features/Community/useCommunityRoom.tsx:15
+#. js-lingui-explicit-id
+#~ msgid "Poland"
+#~ msgstr "폴란드"
+
+#: src/features/Community/useCommunityRoom.tsx:72
+#. js-lingui-explicit-id
+#~ msgid "Relocation"
+#~ msgstr "이전"
+
+#: src/features/Community/useCommunityRoom.tsx:22
+#. js-lingui-explicit-id
+#~ msgid "Share insights, ask questions, and discuss software development topics"
+#~ msgstr "통찰력 공유, 질문, 그리고 소프트웨어 개발 주제에 대해 토론하세요"
+
+#: src/features/Community/useCommunityRoom.tsx:50
+#. js-lingui-explicit-id
+#~ msgid "Share test-taking strategies, resources, and support each other"
+#~ msgstr "시험 응시 전략을 공유하고, 자료를 제공하며, 서로를 지원하세요."
+
+#: src/features/Community/useCommunityRoom.tsx:34
+#. js-lingui-explicit-id
+#~ msgid "Share tips, ask questions, and discuss essay writing techniques"
+#~ msgstr "팁을 공유하고, 질문을 하며, 에세이 작성 기법을 논의하세요"
+
+#: src/features/Community/useCommunityRoom.tsx:66
+#. js-lingui-explicit-id
+#~ msgid "Share travel tips, ask questions, and discuss travel experiences"
+#~ msgstr "여행 팁을 공유하고, 질문을 던지며, 여행 경험을 이야기하세요"
+
+#: src/features/Community/useCommunityRoom.tsx:21
+#. js-lingui-explicit-id
+#~ msgid "Software Development"
+#~ msgstr "소프트웨어 개발"
+
+#: src/features/Community/useCommunityRoom.tsx:10
+#. js-lingui-explicit-id
+#~ msgid "Stay updated with the latest announcements and news"
+#~ msgstr "최신 발표 및 뉴스로 업데이트 유지하세요"
+
+#: src/features/Community/useCommunityRoom.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "Tests"
+#~ msgstr "테스트"
 
 #: src/features/Usage/Subscription/BalanceStatus.tsx:34
 #. js-lingui-explicit-id

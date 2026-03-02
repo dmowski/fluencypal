@@ -755,11 +755,6 @@ msgstr "Önemli olan AI geri bildirimi"
 msgid "AI hours left in your balance."
 msgstr "AI bakiyenizde kalan saatler."
 
-#: src/features/Community/useCommunityRoom.tsx:27
-#. js-lingui-explicit-id
-msgid "AI in education"
-msgstr "Eğitimde AI"
-
 #: src/features/SEO/metadata.ts:328
 #. js-lingui-explicit-id
 msgid "AI Interview Coach"
@@ -1008,11 +1003,6 @@ msgstr "ve"
 msgid "Angular & RxJS"
 msgstr "Angular & RxJS"
 
-#: src/features/Community/useCommunityRoom.tsx:9
-#. js-lingui-explicit-id
-msgid "Announcements"
-msgstr "Duyurular"
-
 #: src/features/Community/GamePage.tsx:107
 #. js-lingui-explicit-id
 msgid "Answer questions correctly to climb the leaderboard!"
@@ -1073,6 +1063,11 @@ msgstr "Bu sohbeti silmek istediğinizden emin misiniz? Bu işlem geri alınamaz
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Bu mesajı silmek istediğinizden emin misiniz?"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:52
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete this space?"
+msgstr "Bu alanı silmek istediğinizden emin misiniz?"
 
 #: src/features/Auth/useDeleteAccount.tsx:68
 #: src/features/Header/NeedHelpModal.tsx:51
@@ -1575,6 +1570,7 @@ msgstr "FluencyPal'i ücretsiz kullanabilir miyim?"
 #: src/features/Ai/AiKnowledgeModal.tsx:129
 #: src/features/Chat/Message/Message.tsx:282
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:105
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #. js-lingui-explicit-id
@@ -1878,7 +1874,7 @@ msgstr "Topluluk"
 msgid "Community access"
 msgstr "Topluluk erişimi"
 
-#: src/features/Community/CommunityDashboard.tsx:126
+#: src/features/Community/CommunityDashboard.tsx:118
 #: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -1886,7 +1882,7 @@ msgstr "Topluluk erişimi"
 msgid "Community Chat"
 msgstr "Topluluk Sohbeti"
 
-#: src/features/Community/CommunityDashboard.tsx:95
+#: src/features/Community/CommunityDashboard.tsx:87
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Topluluk Merkezi"
@@ -2285,10 +2281,16 @@ msgstr ""
 "bulunacaktır. Bu esnek format, ihtiyaç duyduğunuz iletişim becerilerini tam "
 "olarak ustalaşmanıza yardımcı olur."
 
-#: src/features/Community/CommunityDashboard.tsx:318
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:70
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:25
 #. js-lingui-explicit-id
 msgid "Create New Space"
 msgstr "Yeni Alan Oluştur"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:108
+#. js-lingui-explicit-id
+msgid "Create Space"
+msgstr "Alan Oluştur"
 
 #: src/features/RolePlay/rolePlayData.tsx:1106
 #. js-lingui-explicit-id
@@ -2388,7 +2390,7 @@ msgstr "Günlük Dil Pratiği"
 msgid "Daily Question Chat"
 msgstr "Günlük Soru Sohbeti"
 
-#: src/features/Community/CommunityDashboard.tsx:156
+#: src/features/Community/CommunityDashboard.tsx:148
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2482,7 +2484,7 @@ msgstr "Tartışma başladı!"
 msgid "Debate topics will be selected randomly."
 msgstr "Tartışma konuları rastgele seçilecektir."
 
-#: src/features/Community/CommunityDashboard.tsx:147
+#: src/features/Community/CommunityDashboard.tsx:139
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -2513,6 +2515,11 @@ msgstr "Sohbeti sil"
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Mevcut hedefi sil"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:101
+#. js-lingui-explicit-id
+msgid "Delete Space"
+msgstr "Boşluğu Sil"
 
 #: src/features/Header/NeedHelpModal.tsx:79
 #: src/features/Header/NeedHelpModal.tsx:113
@@ -2616,6 +2623,11 @@ msgstr "Bu kullanıcının ne yaptığını ve neden raporladığınızı açık
 msgid "Describe your custom scenario here..."
 msgstr "Kendi senaryonuzu buraya tanımlayın..."
 
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:83
+#. js-lingui-explicit-id
+msgid "Description"
+msgstr "Açıklama"
+
 #: src/features/Usage/UsageStatsCards.tsx:403
 #. js-lingui-explicit-id
 msgid "Description:"
@@ -2712,20 +2724,6 @@ msgstr "Becerilerinizi birlikte tartışın ve geliştirin!"
 msgid "Discuss component structure and state management"
 msgstr "Bileşen yapısını ve durum yönetimini tartışın"
 
-#: src/features/Community/useCommunityRoom.tsx:41
-#. js-lingui-explicit-id
-msgid "Discuss exam preparation strategies, share resources, and support each other"
-msgstr ""
-"Sınav hazırlık stratejilerini tartışın, kaynakları paylaşın ve birbirinize "
-"destek olun"
-
-#: src/features/Community/useCommunityRoom.tsx:57
-#. js-lingui-explicit-id
-msgid "Discuss job interview preparation, share resources, and support each other"
-msgstr ""
-"İş görüşmesi hazırlığını tartışın, kaynaklar paylaşın ve birbirinize destek "
-"olun"
-
 #: src/features/RolePlay/rolePlayData.tsx:1071
 #. js-lingui-explicit-id
 msgid "Discuss mental health topics and express your thoughts effectively"
@@ -2788,15 +2786,6 @@ msgstr ""
 "kılacak, bu sayede anlamlı ve düşünceli bir konuşma pratiği yapmanıza "
 "yardımcı olacaktır."
 
-#: src/features/Community/useCommunityRoom.tsx:73
-#. js-lingui-explicit-id
-msgid ""
-"Discuss relocation experiences, share tips, and support each other through "
-"the process"
-msgstr ""
-"Taşınma deneyimlerini tartışın, ipuçları paylaşın ve süreç boyunca "
-"birbirinize destek olun"
-
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:38
 #. js-lingui-explicit-id
 msgid "Discuss scaling, observability, failure modes, and operational readiness."
@@ -2808,11 +2797,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Konuyu tartışın"
-
-#: src/features/Community/useCommunityRoom.tsx:16
-#. js-lingui-explicit-id
-msgid "Discuss topics related to Poland and its community"
-msgstr "Polonya ve topluluğuna dair konuları tartışın"
 
 #: src/features/RolePlay/rolePlayData.tsx:778
 #. js-lingui-explicit-id
@@ -2972,6 +2956,11 @@ msgstr "Yeni araçlara erken erişim"
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Düzenle"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Edit Space"
+msgstr "Düzenleme Alanı"
 
 #: src/features/Chat/Message/Message.tsx:358
 #. js-lingui-explicit-id
@@ -3316,11 +3305,6 @@ msgstr "Hata:"
 msgid "Error: "
 msgstr "Hata:"
 
-#: src/features/Community/useCommunityRoom.tsx:33
-#. js-lingui-explicit-id
-msgid "Essay Writing"
-msgstr "Makale Yazma"
-
 #: src/features/Landing/PlanLandingBlock.tsx:268
 #. js-lingui-explicit-id
 msgid "Essays"
@@ -3612,11 +3596,6 @@ msgstr "Her şey öne çıkmak ve işi almak için ihtiyaç duyduğunuz şeyler"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "Örnek: Berlin'e iş seyahatine hazırlanıyorum"
 
-#: src/features/Community/useCommunityRoom.tsx:40
-#. js-lingui-explicit-id
-msgid "Exams"
-msgstr "Sınavlar"
-
 #: src/features/Blog/blogData.tsx:25
 #. js-lingui-explicit-id
 msgid "existential fiction"
@@ -3733,15 +3712,10 @@ msgstr "Rol Oynama Senaryolarını Keşfedin"
 msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "Sağlık ve zihinsel iyi oluş hakkında konuşma tekniklerini keşfedin."
 
-#: src/features/Community/CommunityDashboard.tsx:102
+#: src/features/Community/CommunityDashboard.tsx:94
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "Topluluğu keşfedin, tartışmalara katılın ve diğer üyelerle bağlantı kurun"
-
-#: src/features/Community/useCommunityRoom.tsx:28
-#. js-lingui-explicit-id
-msgid "Explore the impact of AI on education and share resources"
-msgstr "Eğitim üzerindeki AI etkisini keşfedin ve kaynakları paylaşın"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
 #. js-lingui-explicit-id
@@ -4356,7 +4330,7 @@ msgstr "Tam ses özellikleri"
 msgid "Fun facts about yourself"
 msgstr "Kendiniz hakkında eğlenceli gerçekler"
 
-#: src/features/Community/CommunityDashboard.tsx:133
+#: src/features/Community/CommunityDashboard.tsx:125
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -6576,11 +6550,6 @@ msgstr "İş Görüşmesi İpuçları"
 msgid "job interview tips"
 msgstr "iş görüşmesi ipuçları"
 
-#: src/features/Community/useCommunityRoom.tsx:56
-#. js-lingui-explicit-id
-msgid "Job Interviews"
-msgstr "İş Görüşmeleri"
-
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
 #. js-lingui-explicit-id
 msgid "Join"
@@ -6592,7 +6561,7 @@ msgstr "Katıl"
 msgid "Join candidates who transformed their interview performance"
 msgstr "Mülakat performanslarını dönüştüren adaylara katılın"
 
-#: src/features/Community/CommunityDashboard.tsx:293
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:40
 #. js-lingui-explicit-id
 msgid "Join spaces to discuss specific topics with other members"
 msgstr "Belirli konuları diğer üyelerle tartışmak için alanlara katılın"
@@ -6768,7 +6737,7 @@ msgstr "Tembel Yükleme"
 msgid "Leaderboard"
 msgstr "Lider Tablosu"
 
-#: src/features/Community/CommunityDashboard.tsx:163
+#: src/features/Community/CommunityDashboard.tsx:155
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -8256,6 +8225,11 @@ msgstr "Lütfen tüm özelliklere erişmek için kredi kartınızı doğrulayın
 msgid "Please enter a name for every player."
 msgstr "Lütfen her oyuncu için bir ad girin."
 
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:36
+#. js-lingui-explicit-id
+msgid "Please enter a space title"
+msgstr "Lütfen bir alan başlığı giriniz"
+
 #: src/features/Auth/AuthWallBasic.tsx:166
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
@@ -8329,11 +8303,6 @@ msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr ""
 "Kazanılan puan: {pointsEarned}. Skorunu geliştirmek için pratik yapmaya "
 "devam et!"
-
-#: src/features/Community/useCommunityRoom.tsx:15
-#. js-lingui-explicit-id
-msgid "Poland"
-msgstr "Polonya"
 
 #: src/features/Lang/getLabels.tsx:20
 #. js-lingui-explicit-id
@@ -8774,7 +8743,7 @@ msgstr "Öncelikli destek"
 msgid "Privacy Policy"
 msgstr "Gizlilik Politikası"
 
-#: src/features/Community/CommunityDashboard.tsx:170
+#: src/features/Community/CommunityDashboard.tsx:162
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -9306,11 +9275,6 @@ msgstr "Sayfayı yeniden yükle"
 msgid "Reloading conversation..."
 msgstr "Sohbet yeniden yükleniyor..."
 
-#: src/features/Community/useCommunityRoom.tsx:72
-#. js-lingui-explicit-id
-msgid "Relocation"
-msgstr "Taşınma"
-
 #: src/features/Game/Battle/BattleCard.tsx:385
 #. js-lingui-explicit-id
 msgid "Remove"
@@ -9574,6 +9538,11 @@ msgstr "Maaş pazarlığına hazırlık"
 msgid "Save"
 msgstr "Kaydet"
 
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:108
+#. js-lingui-explicit-id
+msgid "Save Changes"
+msgstr "Değişiklikleri Kaydet"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
 #. js-lingui-explicit-id
 msgid ""
@@ -9800,26 +9769,6 @@ msgid ""
 msgstr ""
 "Çapraz takım iş birliği, çatışma çözümü ve proje sahipliği hakkında ilgi "
 "çekici hikayeler paylaşın."
-
-#: src/features/Community/useCommunityRoom.tsx:22
-#. js-lingui-explicit-id
-msgid "Share insights, ask questions, and discuss software development topics"
-msgstr "Bilgileri paylaşın, sorular sorun ve yazılım geliştirme konularını tartışın"
-
-#: src/features/Community/useCommunityRoom.tsx:50
-#. js-lingui-explicit-id
-msgid "Share test-taking strategies, resources, and support each other"
-msgstr "Test alma stratejilerini, kaynakları paylaşın ve birbirinize destek olun"
-
-#: src/features/Community/useCommunityRoom.tsx:34
-#. js-lingui-explicit-id
-msgid "Share tips, ask questions, and discuss essay writing techniques"
-msgstr "İpuçları paylaşın, sorular sorun ve makale yazma tekniklerini tartışın"
-
-#: src/features/Community/useCommunityRoom.tsx:66
-#. js-lingui-explicit-id
-msgid "Share travel tips, ask questions, and discuss travel experiences"
-msgstr "Seyahat ipuçlarını paylaşın, sorular sorun ve seyahat deneyimlerini tartışın"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:70
 #. js-lingui-explicit-id
@@ -10104,11 +10053,6 @@ msgstr "Böylece ilerlemenizi kaydedebilirsiniz"
 msgid "Social"
 msgstr "Sosyal"
 
-#: src/features/Community/useCommunityRoom.tsx:21
-#. js-lingui-explicit-id
-msgid "Software Development"
-msgstr "Yazılım Geliştirme"
-
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:22
 #. js-lingui-explicit-id
 msgid ""
@@ -10144,7 +10088,7 @@ msgstr ""
 "Üzgünüz, bugün için mevcut günlük bir soru yok. Lütfen yarın tekrar kontrol "
 "edin!"
 
-#: src/features/Community/CommunityDashboard.tsx:286
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:33
 #. js-lingui-explicit-id
 msgid "Spaces"
 msgstr "Boşluklar"
@@ -10369,11 +10313,6 @@ msgstr "Webcam başlatılıyor..."
 #. js-lingui-explicit-id
 msgid "State Management"
 msgstr "Durum Yönetimi"
-
-#: src/features/Community/useCommunityRoom.tsx:10
-#. js-lingui-explicit-id
-msgid "Stay updated with the latest announcements and news"
-msgstr "En son duyurular ve haberlerle güncel kalın"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:15
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:15
@@ -10796,7 +10735,7 @@ msgstr "Yapay Zeka ön yüz geliştirici ile teknik mülakat"
 msgid "Tech stack covered"
 msgstr "Kapsanan teknoloji yığını"
 
-#: src/features/Community/CommunityDashboard.tsx:140
+#: src/features/Community/CommunityDashboard.tsx:132
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -10893,11 +10832,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "Test Etme & Kalite"
-
-#: src/features/Community/useCommunityRoom.tsx:49
-#. js-lingui-explicit-id
-msgid "Tests"
-msgstr "Testler"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -11470,6 +11404,11 @@ msgstr ""
 "İpucu: Daha sonra onayınızı geri çekebilir ve destekle iletişime geçerek "
 "veri silinmesini talep edebilirsiniz."
 
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:75
+#. js-lingui-explicit-id
+msgid "Title"
+msgstr "Başlık"
+
 #: src/features/Router/BlockedAccess.tsx:360
 #. js-lingui-explicit-id
 msgid ""
@@ -11567,7 +11506,6 @@ msgstr "Kelimeyi çevir"
 msgid "Translates"
 msgstr "Çeviriler"
 
-#: src/features/Community/useCommunityRoom.tsx:65
 #: src/features/RolePlay/rolePlayData.tsx:760
 #: src/features/RolePlay/rolePlayData.tsx:884
 #. js-lingui-explicit-id
@@ -13249,6 +13187,109 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Community/useCommunityRoom.tsx:27
+#. js-lingui-explicit-id
+#~ msgid "AI in education"
+#~ msgstr "Eğitimde AI"
+
+#: src/features/Community/useCommunityRoom.tsx:9
+#. js-lingui-explicit-id
+#~ msgid "Announcements"
+#~ msgstr "Duyurular"
+
+#: src/features/Community/useCommunityRoom.tsx:41
+#. js-lingui-explicit-id
+#~ msgid "Discuss exam preparation strategies, share resources, and support each other"
+#~ msgstr ""
+#~ "Sınav hazırlık stratejilerini tartışın, kaynakları paylaşın ve birbirinize "
+#~ "destek olun"
+
+#: src/features/Community/useCommunityRoom.tsx:57
+#. js-lingui-explicit-id
+#~ msgid "Discuss job interview preparation, share resources, and support each other"
+#~ msgstr ""
+#~ "İş görüşmesi hazırlığını tartışın, kaynaklar paylaşın ve birbirinize destek "
+#~ "olun"
+
+#: src/features/Community/useCommunityRoom.tsx:73
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Discuss relocation experiences, share tips, and support each other through "
+#~ "the process"
+#~ msgstr ""
+#~ "Taşınma deneyimlerini tartışın, ipuçları paylaşın ve süreç boyunca "
+#~ "birbirinize destek olun"
+
+#: src/features/Community/useCommunityRoom.tsx:16
+#. js-lingui-explicit-id
+#~ msgid "Discuss topics related to Poland and its community"
+#~ msgstr "Polonya ve topluluğuna dair konuları tartışın"
+
+#: src/features/Community/useCommunityRoom.tsx:33
+#. js-lingui-explicit-id
+#~ msgid "Essay Writing"
+#~ msgstr "Makale Yazma"
+
+#: src/features/Community/useCommunityRoom.tsx:40
+#. js-lingui-explicit-id
+#~ msgid "Exams"
+#~ msgstr "Sınavlar"
+
+#: src/features/Community/useCommunityRoom.tsx:28
+#. js-lingui-explicit-id
+#~ msgid "Explore the impact of AI on education and share resources"
+#~ msgstr "Eğitim üzerindeki AI etkisini keşfedin ve kaynakları paylaşın"
+
+#: src/features/Community/useCommunityRoom.tsx:56
+#. js-lingui-explicit-id
+#~ msgid "Job Interviews"
+#~ msgstr "İş Görüşmeleri"
+
+#: src/features/Community/useCommunityRoom.tsx:15
+#. js-lingui-explicit-id
+#~ msgid "Poland"
+#~ msgstr "Polonya"
+
+#: src/features/Community/useCommunityRoom.tsx:72
+#. js-lingui-explicit-id
+#~ msgid "Relocation"
+#~ msgstr "Taşınma"
+
+#: src/features/Community/useCommunityRoom.tsx:22
+#. js-lingui-explicit-id
+#~ msgid "Share insights, ask questions, and discuss software development topics"
+#~ msgstr "Bilgileri paylaşın, sorular sorun ve yazılım geliştirme konularını tartışın"
+
+#: src/features/Community/useCommunityRoom.tsx:50
+#. js-lingui-explicit-id
+#~ msgid "Share test-taking strategies, resources, and support each other"
+#~ msgstr "Test alma stratejilerini, kaynakları paylaşın ve birbirinize destek olun"
+
+#: src/features/Community/useCommunityRoom.tsx:34
+#. js-lingui-explicit-id
+#~ msgid "Share tips, ask questions, and discuss essay writing techniques"
+#~ msgstr "İpuçları paylaşın, sorular sorun ve makale yazma tekniklerini tartışın"
+
+#: src/features/Community/useCommunityRoom.tsx:66
+#. js-lingui-explicit-id
+#~ msgid "Share travel tips, ask questions, and discuss travel experiences"
+#~ msgstr "Seyahat ipuçlarını paylaşın, sorular sorun ve seyahat deneyimlerini tartışın"
+
+#: src/features/Community/useCommunityRoom.tsx:21
+#. js-lingui-explicit-id
+#~ msgid "Software Development"
+#~ msgstr "Yazılım Geliştirme"
+
+#: src/features/Community/useCommunityRoom.tsx:10
+#. js-lingui-explicit-id
+#~ msgid "Stay updated with the latest announcements and news"
+#~ msgstr "En son duyurular ve haberlerle güncel kalın"
+
+#: src/features/Community/useCommunityRoom.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "Tests"
+#~ msgstr "Testler"
 
 #: src/features/Usage/Subscription/BalanceStatus.tsx:34
 #. js-lingui-explicit-id

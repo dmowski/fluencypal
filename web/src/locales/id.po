@@ -761,11 +761,6 @@ msgstr "Umpan balik AI yang berarti"
 msgid "AI hours left in your balance."
 msgstr "Sisa jam AI di saldo Anda."
 
-#: src/features/Community/useCommunityRoom.tsx:27
-#. js-lingui-explicit-id
-msgid "AI in education"
-msgstr "AI dalam pendidikan"
-
 #: src/features/SEO/metadata.ts:328
 #. js-lingui-explicit-id
 msgid "AI Interview Coach"
@@ -1014,11 +1009,6 @@ msgstr "dan"
 msgid "Angular & RxJS"
 msgstr "Angular & RxJS"
 
-#: src/features/Community/useCommunityRoom.tsx:9
-#. js-lingui-explicit-id
-msgid "Announcements"
-msgstr "Pengumuman"
-
 #: src/features/Community/GamePage.tsx:107
 #. js-lingui-explicit-id
 msgid "Answer questions correctly to climb the leaderboard!"
@@ -1083,6 +1073,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Apakah Anda yakin ingin menghapus pesan ini?"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:52
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete this space?"
+msgstr "Apakah Anda yakin ingin menghapus ruang ini?"
 
 #: src/features/Auth/useDeleteAccount.tsx:68
 #: src/features/Header/NeedHelpModal.tsx:51
@@ -1590,6 +1585,7 @@ msgstr "Bisakah saya menggunakan FluencyPal secara gratis?"
 #: src/features/Ai/AiKnowledgeModal.tsx:129
 #: src/features/Chat/Message/Message.tsx:282
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:105
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #. js-lingui-explicit-id
@@ -1893,7 +1889,7 @@ msgstr "Komunitas"
 msgid "Community access"
 msgstr "Akses komunitas"
 
-#: src/features/Community/CommunityDashboard.tsx:126
+#: src/features/Community/CommunityDashboard.tsx:118
 #: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -1901,7 +1897,7 @@ msgstr "Akses komunitas"
 msgid "Community Chat"
 msgstr "Obrolan Komunitas"
 
-#: src/features/Community/CommunityDashboard.tsx:95
+#: src/features/Community/CommunityDashboard.tsx:87
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Pusat Komunitas"
@@ -2300,10 +2296,16 @@ msgstr ""
 "tema skenario Anda. Format yang fleksibel ini membantu Anda menguasai "
 "keterampilan komunikasi yang tepat yang Anda butuhkan."
 
-#: src/features/Community/CommunityDashboard.tsx:318
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:70
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:25
 #. js-lingui-explicit-id
 msgid "Create New Space"
 msgstr "Buat Ruang Baru"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:108
+#. js-lingui-explicit-id
+msgid "Create Space"
+msgstr "Buat Ruang"
 
 #: src/features/RolePlay/rolePlayData.tsx:1106
 #. js-lingui-explicit-id
@@ -2403,7 +2405,7 @@ msgstr "Praktek Bahasa Sehari-hari"
 msgid "Daily Question Chat"
 msgstr "Obrolan Pertanyaan Harian"
 
-#: src/features/Community/CommunityDashboard.tsx:156
+#: src/features/Community/CommunityDashboard.tsx:148
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -2497,7 +2499,7 @@ msgstr "Debat dimulai!"
 msgid "Debate topics will be selected randomly."
 msgstr "Topik debat akan dipilih secara acak."
 
-#: src/features/Community/CommunityDashboard.tsx:147
+#: src/features/Community/CommunityDashboard.tsx:139
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -2528,6 +2530,11 @@ msgstr "Hapus obrolan"
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Hapus tujuan saat ini"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:101
+#. js-lingui-explicit-id
+msgid "Delete Space"
+msgstr "Hapus Ruang"
 
 #: src/features/Header/NeedHelpModal.tsx:79
 #: src/features/Header/NeedHelpModal.tsx:113
@@ -2631,6 +2638,11 @@ msgstr "Jelaskan apa yang terjadi dan mengapa Anda melaporkan pengguna ini."
 msgid "Describe your custom scenario here..."
 msgstr "Deskripsikan skenario kustom Anda di sini..."
 
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:83
+#. js-lingui-explicit-id
+msgid "Description"
+msgstr "Deskripsi"
+
 #: src/features/Usage/UsageStatsCards.tsx:403
 #. js-lingui-explicit-id
 msgid "Description:"
@@ -2727,20 +2739,6 @@ msgstr "Diskusikan dan tingkatkan keterampilan Anda bersama!"
 msgid "Discuss component structure and state management"
 msgstr "Diskusikan struktur komponen dan manajemen state"
 
-#: src/features/Community/useCommunityRoom.tsx:41
-#. js-lingui-explicit-id
-msgid "Discuss exam preparation strategies, share resources, and support each other"
-msgstr ""
-"Diskusikan strategi persiapan ujian, bagikan sumber daya, dan saling "
-"mendukung satu sama lain"
-
-#: src/features/Community/useCommunityRoom.tsx:57
-#. js-lingui-explicit-id
-msgid "Discuss job interview preparation, share resources, and support each other"
-msgstr ""
-"Diskusikan persiapan wawancara kerja, bagikan sumber daya, dan saling "
-"mendukung"
-
 #: src/features/RolePlay/rolePlayData.tsx:1071
 #. js-lingui-explicit-id
 msgid "Discuss mental health topics and express your thoughts effectively"
@@ -2805,15 +2803,6 @@ msgstr ""
 "pertanyaan reflektif, dan memvalidasi pengalaman Anda untuk membantu Anda "
 "berlatih percakapan yang bermakna dan penuh pemikiran."
 
-#: src/features/Community/useCommunityRoom.tsx:73
-#. js-lingui-explicit-id
-msgid ""
-"Discuss relocation experiences, share tips, and support each other through "
-"the process"
-msgstr ""
-"Diskusikan pengalaman relokasi, bagikan tips, dan saling mendukung melalui "
-"proses ini"
-
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:38
 #. js-lingui-explicit-id
 msgid "Discuss scaling, observability, failure modes, and operational readiness."
@@ -2823,11 +2812,6 @@ msgstr "Diskusikan skala, observabilitas, mode kegagalan, dan kesiapan operasion
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Diskusikan topik tersebut"
-
-#: src/features/Community/useCommunityRoom.tsx:16
-#. js-lingui-explicit-id
-msgid "Discuss topics related to Poland and its community"
-msgstr "Diskusikan topik terkait Polandia dan komunitasnya"
 
 #: src/features/RolePlay/rolePlayData.tsx:778
 #. js-lingui-explicit-id
@@ -2991,6 +2975,11 @@ msgstr "Akses awal ke alat baru"
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Edit"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Edit Space"
+msgstr "Edit Ruang"
 
 #: src/features/Chat/Message/Message.tsx:358
 #. js-lingui-explicit-id
@@ -3340,11 +3329,6 @@ msgstr "Kesalahan:"
 msgid "Error: "
 msgstr "Kesalahan:"
 
-#: src/features/Community/useCommunityRoom.tsx:33
-#. js-lingui-explicit-id
-msgid "Essay Writing"
-msgstr "Menulis Esai"
-
 #: src/features/Landing/PlanLandingBlock.tsx:268
 #. js-lingui-explicit-id
 msgid "Essays"
@@ -3644,11 +3628,6 @@ msgstr "Segala sesuatu yang Anda butuhkan untuk menonjol dan mendapatkan pekerja
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "Contoh: Saya sedang bersiap untuk perjalanan bisnis ke Berlin"
 
-#: src/features/Community/useCommunityRoom.tsx:40
-#. js-lingui-explicit-id
-msgid "Exams"
-msgstr "Ujian"
-
 #: src/features/Blog/blogData.tsx:25
 #. js-lingui-explicit-id
 msgid "existential fiction"
@@ -3767,17 +3746,12 @@ msgstr "Jelajahi Skenario Peran"
 msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "Jelajahi teknik untuk berbicara tentang kesejahteraan dan kesehatan mental."
 
-#: src/features/Community/CommunityDashboard.tsx:102
+#: src/features/Community/CommunityDashboard.tsx:94
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr ""
 "Jelajahi komunitas, bergabung dalam diskusi, dan terhubung dengan anggota "
 "lainnya"
-
-#: src/features/Community/useCommunityRoom.tsx:28
-#. js-lingui-explicit-id
-msgid "Explore the impact of AI on education and share resources"
-msgstr "Jelajahi dampak AI pada pendidikan dan bagikan sumber daya"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
 #. js-lingui-explicit-id
@@ -4396,7 +4370,7 @@ msgstr "Fitur suara penuh"
 msgid "Fun facts about yourself"
 msgstr "Fakta menarik tentang diri Anda"
 
-#: src/features/Community/CommunityDashboard.tsx:133
+#: src/features/Community/CommunityDashboard.tsx:125
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -6668,11 +6642,6 @@ msgstr "Tips Wawancara Kerja"
 msgid "job interview tips"
 msgstr "tips wawancara kerja"
 
-#: src/features/Community/useCommunityRoom.tsx:56
-#. js-lingui-explicit-id
-msgid "Job Interviews"
-msgstr "Wawancara Kerja"
-
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
 #. js-lingui-explicit-id
 msgid "Join"
@@ -6684,7 +6653,7 @@ msgstr "Bergabung"
 msgid "Join candidates who transformed their interview performance"
 msgstr "Bergabunglah dengan kandidat yang telah mengubah kinerja wawancara mereka"
 
-#: src/features/Community/CommunityDashboard.tsx:293
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:40
 #. js-lingui-explicit-id
 msgid "Join spaces to discuss specific topics with other members"
 msgstr ""
@@ -6866,7 +6835,7 @@ msgstr "Pemuatan Lambat"
 msgid "Leaderboard"
 msgstr "Papan Peringkat"
 
-#: src/features/Community/CommunityDashboard.tsx:163
+#: src/features/Community/CommunityDashboard.tsx:155
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -8370,6 +8339,11 @@ msgstr "Silakan konfirmasi kartu kredit Anda untuk mengakses semua fitur."
 msgid "Please enter a name for every player."
 msgstr "Silakan masukkan nama untuk setiap pemain."
 
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:36
+#. js-lingui-explicit-id
+msgid "Please enter a space title"
+msgstr "Silakan masukkan judul ruang"
+
 #: src/features/Auth/AuthWallBasic.tsx:166
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
@@ -8441,11 +8415,6 @@ msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr ""
 "Poin yang diperoleh: {pointsEarned}. Terus berlatih untuk meningkatkan skor "
 "Anda!"
-
-#: src/features/Community/useCommunityRoom.tsx:15
-#. js-lingui-explicit-id
-msgid "Poland"
-msgstr "Poland"
 
 #: src/features/Lang/getLabels.tsx:20
 #. js-lingui-explicit-id
@@ -8898,7 +8867,7 @@ msgstr "Dukungan prioritas"
 msgid "Privacy Policy"
 msgstr "Kebijakan Privasi"
 
-#: src/features/Community/CommunityDashboard.tsx:170
+#: src/features/Community/CommunityDashboard.tsx:162
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -9439,11 +9408,6 @@ msgstr "Muat ulang halaman"
 msgid "Reloading conversation..."
 msgstr "Memuat ulang percakapan..."
 
-#: src/features/Community/useCommunityRoom.tsx:72
-#. js-lingui-explicit-id
-msgid "Relocation"
-msgstr "Relokasi"
-
 #: src/features/Game/Battle/BattleCard.tsx:385
 #. js-lingui-explicit-id
 msgid "Remove"
@@ -9705,6 +9669,11 @@ msgstr "Persiapan negosiasi gaji"
 msgid "Save"
 msgstr "Simpan"
 
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:108
+#. js-lingui-explicit-id
+msgid "Save Changes"
+msgstr "Simpan Perubahan"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
 #. js-lingui-explicit-id
 msgid ""
@@ -9935,30 +9904,6 @@ msgid ""
 msgstr ""
 "Bagikan cerita menarik tentang kolaborasi lintas tim, resolusi konflik, dan "
 "kepemilikan proyek."
-
-#: src/features/Community/useCommunityRoom.tsx:22
-#. js-lingui-explicit-id
-msgid "Share insights, ask questions, and discuss software development topics"
-msgstr ""
-"Bagikan wawasan, ajukan pertanyaan, dan diskusikan topik pengembangan "
-"perangkat lunak"
-
-#: src/features/Community/useCommunityRoom.tsx:50
-#. js-lingui-explicit-id
-msgid "Share test-taking strategies, resources, and support each other"
-msgstr "Bagikan strategi menghadapi ujian, sumber daya, dan saling mendukung"
-
-#: src/features/Community/useCommunityRoom.tsx:34
-#. js-lingui-explicit-id
-msgid "Share tips, ask questions, and discuss essay writing techniques"
-msgstr "Bagikan tips, ajukan pertanyaan, dan diskusikan teknik penulisan esai"
-
-#: src/features/Community/useCommunityRoom.tsx:66
-#. js-lingui-explicit-id
-msgid "Share travel tips, ask questions, and discuss travel experiences"
-msgstr ""
-"Bagikan tips perjalanan, ajukan pertanyaan, dan diskusikan pengalaman "
-"perjalanan"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:70
 #. js-lingui-explicit-id
@@ -10246,11 +10191,6 @@ msgstr ""
 msgid "Social"
 msgstr "Sosial"
 
-#: src/features/Community/useCommunityRoom.tsx:21
-#. js-lingui-explicit-id
-msgid "Software Development"
-msgstr "Pengembangan Perangkat Lunak"
-
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:22
 #. js-lingui-explicit-id
 msgid ""
@@ -10286,7 +10226,7 @@ msgstr ""
 "Maaf, tidak ada pertanyaan harian tersedia untuk hari ini. Silakan periksa "
 "kembali besok!"
 
-#: src/features/Community/CommunityDashboard.tsx:286
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:33
 #. js-lingui-explicit-id
 msgid "Spaces"
 msgstr "Spaces"
@@ -10509,11 +10449,6 @@ msgstr "Memulai webcam... "
 #. js-lingui-explicit-id
 msgid "State Management"
 msgstr "Manajemen Keadaan"
-
-#: src/features/Community/useCommunityRoom.tsx:10
-#. js-lingui-explicit-id
-msgid "Stay updated with the latest announcements and news"
-msgstr "Tetap diperbarui dengan pengumuman dan berita terbaru"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:15
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:15
@@ -10942,7 +10877,7 @@ msgstr "Wawancara teknis dengan pengembang frontend AI"
 msgid "Tech stack covered"
 msgstr "Tumpukan teknologi yang dibahas"
 
-#: src/features/Community/CommunityDashboard.tsx:140
+#: src/features/Community/CommunityDashboard.tsx:132
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -11040,11 +10975,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "Pengujian & Kualitas"
-
-#: src/features/Community/useCommunityRoom.tsx:49
-#. js-lingui-explicit-id
-msgid "Tests"
-msgstr "Tes"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -11623,6 +11553,11 @@ msgstr ""
 "Tip: Anda dapat menarik persetujuan nanti dan meminta penghapusan data "
 "dengan menghubungi dukungan."
 
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:75
+#. js-lingui-explicit-id
+msgid "Title"
+msgstr "Judul"
+
 #: src/features/Router/BlockedAccess.tsx:360
 #. js-lingui-explicit-id
 msgid ""
@@ -11720,7 +11655,6 @@ msgstr "Terjemahkan kata"
 msgid "Translates"
 msgstr "Menerjemahkan"
 
-#: src/features/Community/useCommunityRoom.tsx:65
 #: src/features/RolePlay/rolePlayData.tsx:760
 #: src/features/RolePlay/rolePlayData.tsx:884
 #. js-lingui-explicit-id
@@ -13445,6 +13379,113 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
+
+#: src/features/Community/useCommunityRoom.tsx:27
+#. js-lingui-explicit-id
+#~ msgid "AI in education"
+#~ msgstr "AI dalam pendidikan"
+
+#: src/features/Community/useCommunityRoom.tsx:9
+#. js-lingui-explicit-id
+#~ msgid "Announcements"
+#~ msgstr "Pengumuman"
+
+#: src/features/Community/useCommunityRoom.tsx:41
+#. js-lingui-explicit-id
+#~ msgid "Discuss exam preparation strategies, share resources, and support each other"
+#~ msgstr ""
+#~ "Diskusikan strategi persiapan ujian, bagikan sumber daya, dan saling "
+#~ "mendukung satu sama lain"
+
+#: src/features/Community/useCommunityRoom.tsx:57
+#. js-lingui-explicit-id
+#~ msgid "Discuss job interview preparation, share resources, and support each other"
+#~ msgstr ""
+#~ "Diskusikan persiapan wawancara kerja, bagikan sumber daya, dan saling "
+#~ "mendukung"
+
+#: src/features/Community/useCommunityRoom.tsx:73
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Discuss relocation experiences, share tips, and support each other through "
+#~ "the process"
+#~ msgstr ""
+#~ "Diskusikan pengalaman relokasi, bagikan tips, dan saling mendukung melalui "
+#~ "proses ini"
+
+#: src/features/Community/useCommunityRoom.tsx:16
+#. js-lingui-explicit-id
+#~ msgid "Discuss topics related to Poland and its community"
+#~ msgstr "Diskusikan topik terkait Polandia dan komunitasnya"
+
+#: src/features/Community/useCommunityRoom.tsx:33
+#. js-lingui-explicit-id
+#~ msgid "Essay Writing"
+#~ msgstr "Menulis Esai"
+
+#: src/features/Community/useCommunityRoom.tsx:40
+#. js-lingui-explicit-id
+#~ msgid "Exams"
+#~ msgstr "Ujian"
+
+#: src/features/Community/useCommunityRoom.tsx:28
+#. js-lingui-explicit-id
+#~ msgid "Explore the impact of AI on education and share resources"
+#~ msgstr "Jelajahi dampak AI pada pendidikan dan bagikan sumber daya"
+
+#: src/features/Community/useCommunityRoom.tsx:56
+#. js-lingui-explicit-id
+#~ msgid "Job Interviews"
+#~ msgstr "Wawancara Kerja"
+
+#: src/features/Community/useCommunityRoom.tsx:15
+#. js-lingui-explicit-id
+#~ msgid "Poland"
+#~ msgstr "Poland"
+
+#: src/features/Community/useCommunityRoom.tsx:72
+#. js-lingui-explicit-id
+#~ msgid "Relocation"
+#~ msgstr "Relokasi"
+
+#: src/features/Community/useCommunityRoom.tsx:22
+#. js-lingui-explicit-id
+#~ msgid "Share insights, ask questions, and discuss software development topics"
+#~ msgstr ""
+#~ "Bagikan wawasan, ajukan pertanyaan, dan diskusikan topik pengembangan "
+#~ "perangkat lunak"
+
+#: src/features/Community/useCommunityRoom.tsx:50
+#. js-lingui-explicit-id
+#~ msgid "Share test-taking strategies, resources, and support each other"
+#~ msgstr "Bagikan strategi menghadapi ujian, sumber daya, dan saling mendukung"
+
+#: src/features/Community/useCommunityRoom.tsx:34
+#. js-lingui-explicit-id
+#~ msgid "Share tips, ask questions, and discuss essay writing techniques"
+#~ msgstr "Bagikan tips, ajukan pertanyaan, dan diskusikan teknik penulisan esai"
+
+#: src/features/Community/useCommunityRoom.tsx:66
+#. js-lingui-explicit-id
+#~ msgid "Share travel tips, ask questions, and discuss travel experiences"
+#~ msgstr ""
+#~ "Bagikan tips perjalanan, ajukan pertanyaan, dan diskusikan pengalaman "
+#~ "perjalanan"
+
+#: src/features/Community/useCommunityRoom.tsx:21
+#. js-lingui-explicit-id
+#~ msgid "Software Development"
+#~ msgstr "Pengembangan Perangkat Lunak"
+
+#: src/features/Community/useCommunityRoom.tsx:10
+#. js-lingui-explicit-id
+#~ msgid "Stay updated with the latest announcements and news"
+#~ msgstr "Tetap diperbarui dengan pengumuman dan berita terbaru"
+
+#: src/features/Community/useCommunityRoom.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "Tests"
+#~ msgstr "Tes"
 
 #: src/features/Usage/Subscription/BalanceStatus.tsx:34
 #. js-lingui-explicit-id
