@@ -32,5 +32,7 @@ export const useAccess = () => {
     isBlockedByAge: isParentalConsentNeeded ? !isConsentGiven : false,
     canUseCommunity,
     canAccessSpaces: auth.isFounder,
+    isAge18PlusConfirmed: false,
+    //isConsentGiven || isCreditCardValidated || !!settings.userSettings?.age18PlusConfirmedAtIso,
   };
 };

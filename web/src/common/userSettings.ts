@@ -49,6 +49,8 @@ export interface UserSettings extends InitUserSettings {
 
   isParentalConsentNeeded: boolean | null;
   parentalConsent?: ParentConsent | null;
+
+  age18PlusConfirmedAtIso?: string | null;
 }
 
 export interface UserSettingsWithId extends UserSettings {

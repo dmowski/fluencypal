@@ -51,6 +51,8 @@ interface SettingsContextType {
   setAiVoiceSpeed: (speed: AiVoiceSpeed) => Promise<void>;
   pageLanguageCode: SupportedLanguage;
   setParentalConsent: (consent: ParentConsent) => Promise<void>;
+
+  confirmAge18Plus: () => Promise<void>;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -77,6 +79,7 @@ export const settingsContext = createContext<SettingsContextType>({
   setAiVoiceSpeed: async () => {},
   pageLanguageCode: 'en',
   setParentalConsent: async () => {},
+  confirmAge18Plus: async () => {},
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -220,8 +223,15 @@ function useProvideSettings(): SettingsContextType {
     await setDoc(userSettingsDoc, { teacherVoice: voice }, { merge: true });
   };
 
+  const confirmAge18Plus = async () => {
+    if (!userSettingsDoc) return;
+    const nowIso = new Date().toISOString();
+    await setDoc(userSettingsDoc, { age18PlusConfirmedAtIso: nowIso }, { merge: true });
+  };
+
   return {
     userCreatedAt,
+    confirmAge18Plus,
     pageLanguageCode: userSettings?.pageLanguageCode || 'en',
 
     setNativeLanguage,
