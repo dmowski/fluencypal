@@ -1048,7 +1048,7 @@ msgstr "Arkitektur & Motståndskraft"
 msgid "Are there any hidden fees?"
 msgstr "Finns det några dolda avgifter?"
 
-#: src/features/Chat/Message/Message.tsx:293
+#: src/features/Chat/Message/Message.tsx:294
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
 msgstr "Är du säker på att du vill ta bort denna bifogade fil?"
@@ -1058,7 +1058,7 @@ msgstr "Är du säker på att du vill ta bort denna bifogade fil?"
 msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr "Är du säker på att du vill radera denna chatt? Denna åtgärd kan inte ångras."
 
-#: src/features/Chat/Message/Message.tsx:103
+#: src/features/Chat/Message/Message.tsx:104
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Är du säker på att du vill radera det här meddelandet?"
@@ -1571,7 +1571,7 @@ msgstr "Kan jag använda FluencyPal gratis?"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:114
 #: src/features/Ai/AiKnowledgeModal.tsx:129
-#: src/features/Chat/Message/Message.tsx:282
+#: src/features/Chat/Message/Message.tsx:283
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:122
 #: src/features/Header/NeedHelpModal.tsx:90
@@ -2495,7 +2495,7 @@ msgid "Debates"
 msgstr "Debatteringar"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:113
-#: src/features/Chat/Message/Message.tsx:417
+#: src/features/Chat/Message/Message.tsx:418
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "Radera"
@@ -2952,7 +2952,7 @@ msgid "Early access to new tools"
 msgstr "Tidigt tillträde till nya verktyg"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:115
-#: src/features/Chat/Message/Message.tsx:396
+#: src/features/Chat/Message/Message.tsx:397
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Redigera"
@@ -2962,7 +2962,7 @@ msgstr "Redigera"
 msgid "Edit Space"
 msgstr "Redigera Utrymme"
 
-#: src/features/Chat/Message/Message.tsx:358
+#: src/features/Chat/Message/Message.tsx:359
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "redigerad"
@@ -7128,7 +7128,7 @@ msgstr "Ange verktyg du använde (konsol, DevTools, loggar)"
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "Ange din tekniska stack (React/JS/HTML/CSS)"
 
-#: src/features/Chat/Message/Message.tsx:157
+#: src/features/Chat/Message/Message.tsx:158
 #. js-lingui-explicit-id
 msgid "Message hidden due to policy violation."
 msgstr "Meddelandet är dolt på grund av policyöverträdelse."
@@ -7535,7 +7535,7 @@ msgstr "Ingen översättning tillgänglig"
 msgid "No turn data available."
 msgstr "Ingen vändata tillgänglig."
 
-#: src/features/Chat/MessageViewsIcon.tsx:74
+#: src/features/Chat/MessageViewsIcon.tsx:33
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "Inga visningar än. Var först med att se detta inlägg!"
@@ -9293,7 +9293,7 @@ msgstr "Spela igen"
 msgid "Replies"
 msgstr "Svar"
 
-#: src/features/Chat/Message/Message.tsx:406
+#: src/features/Chat/Message/Message.tsx:407
 #. js-lingui-explicit-id
 msgid "Report"
 msgstr "Rapport"
@@ -9308,7 +9308,7 @@ msgstr "Rapportera meddelande"
 msgid "Report submitted, we will review it."
 msgstr "Rapport inlämnad, vi kommer att granska den."
 
-#: src/features/Chat/Message/Message.tsx:204
+#: src/features/Chat/Message/Message.tsx:205
 #. js-lingui-explicit-id
 msgid "Report submitted. Thank you. We will review your request."
 msgstr "Report inlämnad. Tack. Vi kommer att granska din förfrågan."
@@ -9514,7 +9514,7 @@ msgid "Salary negotiation preparation"
 msgstr "Förberedelse för löneförhandlingar"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:112
-#: src/features/Chat/Message/Message.tsx:279
+#: src/features/Chat/Message/Message.tsx:280
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Spara"
@@ -9821,7 +9821,7 @@ msgstr "Visa mindre"
 msgid "Show More"
 msgstr "Visa Mer"
 
-#: src/features/Chat/Message/Message.tsx:459
+#: src/features/Chat/Message/Message.tsx:470
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -11763,11 +11763,6 @@ msgstr "Användarnamnet måste vara minst 3 tecken långt."
 msgid "Username:"
 msgstr "Användarnamn:"
 
-#: src/features/Chat/MessageViewsIcon.tsx:64
-#. js-lingui-explicit-id
-msgid "Users who viewed this post"
-msgstr "Användare som visade denna post"
-
 #: src/features/Conversation/CallMode/CallButtons.tsx:647
 #. js-lingui-explicit-id
 msgid ""
@@ -11838,6 +11833,11 @@ msgstr "Visa din betalningshistorik"
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "Visa din betalningshistorik. Återbetalningar"
+
+#: src/features/Chat/MessageViewsIcon.tsx:23
+#. js-lingui-explicit-id
+msgid "Viewed by"
+msgstr "Visad av"
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:35
 #. js-lingui-explicit-id
@@ -13167,6 +13167,11 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Chat/MessageViewsIcon.tsx:64
+#. js-lingui-explicit-id
+#~ msgid "Users who viewed this post"
+#~ msgstr "Användare som visade denna post"
 
 #: src/features/Auth/WebViewWall.tsx:190
 #. js-lingui-explicit-id

@@ -1062,7 +1062,7 @@ msgstr "Arsitektur & Ketahanan"
 msgid "Are there any hidden fees?"
 msgstr "Apakah ada biaya tersembunyi?"
 
-#: src/features/Chat/Message/Message.tsx:293
+#: src/features/Chat/Message/Message.tsx:294
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
 msgstr "Apakah Anda yakin ingin menghapus lampiran ini?"
@@ -1074,7 +1074,7 @@ msgstr ""
 "Apakah Anda yakin ingin menghapus percakapan ini? Tindakan ini tidak dapat "
 "dibatalkan."
 
-#: src/features/Chat/Message/Message.tsx:103
+#: src/features/Chat/Message/Message.tsx:104
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Apakah Anda yakin ingin menghapus pesan ini?"
@@ -1588,7 +1588,7 @@ msgstr "Bisakah saya menggunakan FluencyPal secara gratis?"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:114
 #: src/features/Ai/AiKnowledgeModal.tsx:129
-#: src/features/Chat/Message/Message.tsx:282
+#: src/features/Chat/Message/Message.tsx:283
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:122
 #: src/features/Header/NeedHelpModal.tsx:90
@@ -2511,7 +2511,7 @@ msgid "Debates"
 msgstr "Debat"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:113
-#: src/features/Chat/Message/Message.tsx:417
+#: src/features/Chat/Message/Message.tsx:418
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "Hapus"
@@ -2976,7 +2976,7 @@ msgid "Early access to new tools"
 msgstr "Akses awal ke alat baru"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:115
-#: src/features/Chat/Message/Message.tsx:396
+#: src/features/Chat/Message/Message.tsx:397
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Edit"
@@ -2986,7 +2986,7 @@ msgstr "Edit"
 msgid "Edit Space"
 msgstr "Edit Ruang"
 
-#: src/features/Chat/Message/Message.tsx:358
+#: src/features/Chat/Message/Message.tsx:359
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "diedit"
@@ -7240,7 +7240,7 @@ msgstr "Sebutkan alat-alat yang Anda gunakan (konsol, DevTools, log)"
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "Sebutkan tumpukan teknologi Anda (React/JS/HTML/CSS)"
 
-#: src/features/Chat/Message/Message.tsx:157
+#: src/features/Chat/Message/Message.tsx:158
 #. js-lingui-explicit-id
 msgid "Message hidden due to policy violation."
 msgstr "Pesan disembunyikan karena pelanggaran kebijakan."
@@ -7654,7 +7654,7 @@ msgstr "Tidak ada terjemahan yang tersedia"
 msgid "No turn data available."
 msgstr "Tidak ada data giliran yang tersedia."
 
-#: src/features/Chat/MessageViewsIcon.tsx:74
+#: src/features/Chat/MessageViewsIcon.tsx:33
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "Belum ada tayangan. Jadilah yang pertama melihat postingan ini!"
@@ -9449,7 +9449,7 @@ msgstr "Putar Ulang"
 msgid "Replies"
 msgstr "Balasan"
 
-#: src/features/Chat/Message/Message.tsx:406
+#: src/features/Chat/Message/Message.tsx:407
 #. js-lingui-explicit-id
 msgid "Report"
 msgstr "Laporan"
@@ -9464,7 +9464,7 @@ msgstr "Laporkan pesan"
 msgid "Report submitted, we will review it."
 msgstr "Laporan telah dikirim, kami akan meninjaunya."
 
-#: src/features/Chat/Message/Message.tsx:204
+#: src/features/Chat/Message/Message.tsx:205
 #. js-lingui-explicit-id
 msgid "Report submitted. Thank you. We will review your request."
 msgstr "Laporan telah dikirim. Terima kasih. Kami akan meninjau permintaan Anda."
@@ -9674,7 +9674,7 @@ msgid "Salary negotiation preparation"
 msgstr "Persiapan negosiasi gaji"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:112
-#: src/features/Chat/Message/Message.tsx:279
+#: src/features/Chat/Message/Message.tsx:280
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Simpan"
@@ -9987,7 +9987,7 @@ msgstr "Tampilkan lebih sedikit"
 msgid "Show More"
 msgstr "Tampilkan Lebih"
 
-#: src/features/Chat/Message/Message.tsx:459
+#: src/features/Chat/Message/Message.tsx:470
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -11956,11 +11956,6 @@ msgstr "Nama pengguna harus setidaknya 3 karakter."
 msgid "Username:"
 msgstr "Nama Pengguna:"
 
-#: src/features/Chat/MessageViewsIcon.tsx:64
-#. js-lingui-explicit-id
-msgid "Users who viewed this post"
-msgstr "Pengguna yang melihat postingan ini"
-
 #: src/features/Conversation/CallMode/CallButtons.tsx:647
 #. js-lingui-explicit-id
 msgid ""
@@ -12033,6 +12028,13 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "Lihat riwayat pembayaran Anda. Pengembalian dana"
+
+#: src/features/Chat/MessageViewsIcon.tsx:23
+#. js-lingui-explicit-id
+msgid "Viewed by"
+msgstr ""
+"\n"
+"Dilihat oleh\n"
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:35
 #. js-lingui-explicit-id
@@ -13398,6 +13400,11 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
+
+#: src/features/Chat/MessageViewsIcon.tsx:64
+#. js-lingui-explicit-id
+#~ msgid "Users who viewed this post"
+#~ msgstr "Pengguna yang melihat postingan ini"
 
 #: src/features/Auth/WebViewWall.tsx:190
 #. js-lingui-explicit-id

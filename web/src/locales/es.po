@@ -1057,7 +1057,7 @@ msgstr "Arquitectura y Resiliencia"
 msgid "Are there any hidden fees?"
 msgstr "¿Hay algún cargo oculto?"
 
-#: src/features/Chat/Message/Message.tsx:293
+#: src/features/Chat/Message/Message.tsx:294
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
 msgstr "¿Está seguro de que desea eliminar este archivo adjunto?"
@@ -1069,7 +1069,7 @@ msgstr ""
 "¿Estás seguro de que deseas eliminar este chat? Esta acción no se puede "
 "deshacer."
 
-#: src/features/Chat/Message/Message.tsx:103
+#: src/features/Chat/Message/Message.tsx:104
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "¿Está seguro de que desea eliminar este mensaje?"
@@ -1584,7 +1584,7 @@ msgstr "¿Puedo usar FluencyPal de forma gratuita?"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:114
 #: src/features/Ai/AiKnowledgeModal.tsx:129
-#: src/features/Chat/Message/Message.tsx:282
+#: src/features/Chat/Message/Message.tsx:283
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:122
 #: src/features/Header/NeedHelpModal.tsx:90
@@ -2512,7 +2512,7 @@ msgid "Debates"
 msgstr "Debates"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:113
-#: src/features/Chat/Message/Message.tsx:417
+#: src/features/Chat/Message/Message.tsx:418
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "Eliminar"
@@ -2973,7 +2973,7 @@ msgid "Early access to new tools"
 msgstr "Acceso anticipado a nuevas herramientas"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:115
-#: src/features/Chat/Message/Message.tsx:396
+#: src/features/Chat/Message/Message.tsx:397
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Editar"
@@ -2983,7 +2983,7 @@ msgstr "Editar"
 msgid "Edit Space"
 msgstr "Editar Espacio"
 
-#: src/features/Chat/Message/Message.tsx:358
+#: src/features/Chat/Message/Message.tsx:359
 #. js-lingui-explicit-id
 msgid "edited"
 msgstr "editado"
@@ -7194,7 +7194,7 @@ msgstr "Menciona las herramientas que utilizaste (consola, DevTools, registros)"
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "Menciona tu pila tecnológica (React/JS/HTML/CSS)"
 
-#: src/features/Chat/Message/Message.tsx:157
+#: src/features/Chat/Message/Message.tsx:158
 #. js-lingui-explicit-id
 msgid "Message hidden due to policy violation."
 msgstr "Mensaje oculto debido a violación de políticas."
@@ -7607,7 +7607,7 @@ msgstr "No hay traducción disponible"
 msgid "No turn data available."
 msgstr "No hay datos de turnos disponibles."
 
-#: src/features/Chat/MessageViewsIcon.tsx:74
+#: src/features/Chat/MessageViewsIcon.tsx:33
 #. js-lingui-explicit-id
 msgid "No views yet. Be the first to view this post!"
 msgstr "Aún no hay vistas. ¡Sé el primero en ver esta publicación!"
@@ -9391,7 +9391,7 @@ msgstr "Repetir"
 msgid "Replies"
 msgstr "Respuestas"
 
-#: src/features/Chat/Message/Message.tsx:406
+#: src/features/Chat/Message/Message.tsx:407
 #. js-lingui-explicit-id
 msgid "Report"
 msgstr "Informe"
@@ -9406,7 +9406,7 @@ msgstr "Informe mensaje"
 msgid "Report submitted, we will review it."
 msgstr "Informe enviado, lo revisaremos."
 
-#: src/features/Chat/Message/Message.tsx:204
+#: src/features/Chat/Message/Message.tsx:205
 #. js-lingui-explicit-id
 msgid "Report submitted. Thank you. We will review your request."
 msgstr "Informe enviado. Gracias. Revisaremos su solicitud."
@@ -9618,7 +9618,7 @@ msgid "Salary negotiation preparation"
 msgstr "Preparación para la negociación salarial"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:112
-#: src/features/Chat/Message/Message.tsx:279
+#: src/features/Chat/Message/Message.tsx:280
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Guardar"
@@ -9927,7 +9927,7 @@ msgstr "Mostrar menos"
 msgid "Show More"
 msgstr "Mostrar más"
 
-#: src/features/Chat/Message/Message.tsx:459
+#: src/features/Chat/Message/Message.tsx:470
 #: src/features/Conversation/ProcessUserInput.tsx:112
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -11883,11 +11883,6 @@ msgstr "El nombre de usuario debe tener al menos 3 caracteres de longitud."
 msgid "Username:"
 msgstr "Nombre de usuario:"
 
-#: src/features/Chat/MessageViewsIcon.tsx:64
-#. js-lingui-explicit-id
-msgid "Users who viewed this post"
-msgstr "Usuarios que vieron esta publicación"
-
 #: src/features/Conversation/CallMode/CallButtons.tsx:647
 #. js-lingui-explicit-id
 msgid ""
@@ -11957,6 +11952,11 @@ msgstr "Ver tu historial de pagos"
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "Ver su historial de pagos. Reembolsos"
+
+#: src/features/Chat/MessageViewsIcon.tsx:23
+#. js-lingui-explicit-id
+msgid "Viewed by"
+msgstr "Visto por"
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:35
 #. js-lingui-explicit-id
@@ -13311,6 +13311,11 @@ msgstr ""
 "— es importante participar en esta breve conversación antes de abordar "
 "temas profesionales. Aquí tienes algunas frases en inglés útiles para "
 "comenzar la entrevista:"
+
+#: src/features/Chat/MessageViewsIcon.tsx:64
+#. js-lingui-explicit-id
+#~ msgid "Users who viewed this post"
+#~ msgstr "Usuarios que vieron esta publicación"
 
 #: src/features/Auth/WebViewWall.tsx:190
 #. js-lingui-explicit-id
