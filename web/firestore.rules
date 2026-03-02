@@ -210,6 +210,11 @@ service cloud.firestore {
         allow read, write: if isSignedIn() && request.auth.uid == userId;
       }
 
+      // Allow read-write for community space settings
+      match /settings/communitySpace {
+        allow read, write: if isSignedIn() && request.auth.uid == userId;
+      }
+
       // Deny all other unspecified documents under userId by default
       match /{document=**} {
         allow read, write: if false;

@@ -3,8 +3,9 @@ import { createContext, JSX, ReactNode, useContext } from 'react';
 import { CommunitySpace } from '../types';
 import { useAuth } from '../../Auth/useAuth';
 import { db } from '../../Firebase/firebaseDb';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { deleteDoc, doc, setDoc } from 'firebase/firestore';
+import { CommunitySpaceSettings } from '../types';
 
 interface SaveSpaceInput {
   id?: string;
@@ -14,8 +15,11 @@ interface SaveSpaceInput {
 
 interface CommunitySpaceContext {
   spaces: CommunitySpace[];
+  bookmarkedSpacesIds: string[];
+  bookmarkedSpaces: CommunitySpace[];
   saveSpace: (input: SaveSpaceInput) => Promise<string | null>;
   deleteSpace: (spaceId: string) => Promise<void>;
+  toggleBookmark: (spaceId: string) => Promise<void>;
 }
 
 const CommunitySpaceContext = createContext<CommunitySpaceContext | null>(null);
@@ -24,6 +28,13 @@ const useProvideCommunitySpace = (): CommunitySpaceContext => {
   const auth = useAuth();
   const spacesDocRef = db.collections.communitySpaces(auth.uid);
   const [spaceData] = useCollectionData(spacesDocRef);
+  const communitySpaceSettingsDocRef = db.documents.communitySpaceSettings(auth.uid);
+  const [communitySpaceSettingsData] = useDocumentData(communitySpaceSettingsDocRef);
+
+  const bookmarkedSpacesIds = communitySpaceSettingsData?.bookmarkedSpacesIds || [];
+  const spaces = spaceData || [];
+
+  const bookmarkedSpaces = spaces.filter((space) => bookmarkedSpacesIds.includes(space.id));
 
   const saveSpace = async (input: SaveSpaceInput): Promise<string | null> => {
     if (!spacesDocRef || !auth.uid) return null;
@@ -53,10 +64,30 @@ const useProvideCommunitySpace = (): CommunitySpaceContext => {
     await deleteDoc(docRef);
   };
 
+  const toggleBookmark = async (spaceId: string): Promise<void> => {
+    if (!communitySpaceSettingsDocRef) return;
+
+    const currentBookmarkedIds = communitySpaceSettingsData?.bookmarkedSpacesIds || [];
+    const isBookmarked = currentBookmarkedIds.includes(spaceId);
+
+    const updatedBookmarkedIds = isBookmarked
+      ? currentBookmarkedIds.filter((id) => id !== spaceId)
+      : [...currentBookmarkedIds, spaceId];
+
+    const payload: CommunitySpaceSettings = {
+      bookmarkedSpacesIds: updatedBookmarkedIds,
+    };
+
+    await setDoc(communitySpaceSettingsDocRef, payload, { merge: true });
+  };
+
   return {
-    spaces: spaceData || [],
+    spaces,
+    bookmarkedSpacesIds,
+    bookmarkedSpaces,
     saveSpace,
     deleteSpace,
+    toggleBookmark,
   };
 };
 

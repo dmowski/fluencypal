@@ -17,3 +17,7 @@ export interface CommunitySpace {
 
   createdByUserId: string;
 }
+
+export interface CommunitySpaceSettings {
+  bookmarkedSpacesIds: string[];
+}

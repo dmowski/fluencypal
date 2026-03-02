@@ -36,7 +36,7 @@ import {
 import { GameBattle } from '../Game/Battle/types';
 import { Story, StoryStat, StoryState } from '../Sentence/types';
 import { AudioCache } from '../Audio/types';
-import { CommunitySpace } from '../Community/types';
+import { CommunitySpace, CommunitySpaceSettings } from '../Community/types';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -181,6 +181,12 @@ export const db = {
       userId && learningLanguage
         ? dataPointDoc<QuizSurvey2>(`users/${userId}/quiz2/${learningLanguage}`)
         : null,
+
+    communitySpaceSettings: (userId?: string) =>
+      userId
+        ? dataPointDoc<CommunitySpaceSettings>(`users/${userId}/settings/communitySpace`)
+        : null,
+
     interviewQuizSurvey: (userId?: string, interviewId?: string) =>
       userId && interviewId
         ? dataPointDoc<InterviewQuizSurvey>(`users/${userId}/interview/${interviewId}`)

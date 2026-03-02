@@ -1,5 +1,7 @@
 'use client';
 
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 import EditIcon from '@mui/icons-material/Edit';
 import { Badge, IconButton, Stack, Typography } from '@mui/material';
 import { useChat } from '../../Chat/useChat';
@@ -9,10 +11,14 @@ import { CommunitySpace } from '../types';
 export const SpaceButton = ({
   space,
   openSpaceId,
+  isBookmarked,
+  onToggleBookmark,
   onEditSpace,
 }: {
   space: CommunitySpace;
   openSpaceId: (spaceId: string) => void;
+  isBookmarked: boolean;
+  onToggleBookmark: (spaceId: string) => void;
   onEditSpace?: (space: CommunitySpace) => void;
 }) => {
   const chatList = useChat();
@@ -56,6 +62,25 @@ export const SpaceButton = ({
 
         <Typography sx={{ opacity: 0.9 }}>{space.description}</Typography>
       </Stack>
+
+      <IconButton
+        size="small"
+        onClick={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          onToggleBookmark(space.id);
+        }}
+        sx={{
+          position: 'absolute',
+          top: '10px',
+          right: isCreator && onEditSpace ? '44px' : '10px',
+          color: isBookmarked ? '#FFD54F' : '#fff',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        }}
+      >
+        {isBookmarked ? <BookmarkIcon fontSize="small" /> : <BookmarkBorderIcon fontSize="small" />}
+      </IconButton>
 
       {isCreator && onEditSpace && (
         <IconButton

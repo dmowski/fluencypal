@@ -12,7 +12,7 @@ import { SpaceEditorModal } from './SpaceEditorModal';
 
 export const CommunityRooms = ({ openSpaceId }: { openSpaceId: (spaceId: string) => void }) => {
   const { i18n } = useLingui();
-  const { spaces } = useCommunitySpace();
+  const { spaces, bookmarkedSpacesIds, toggleBookmark } = useCommunitySpace();
   const [isShowCreateModal, setIsShowCreateModal] = useState(false);
   const [spaceForEdit, setSpaceForEdit] = useState<CommunitySpace | null>(null);
 
@@ -52,6 +52,10 @@ export const CommunityRooms = ({ openSpaceId }: { openSpaceId: (spaceId: string)
             <SpaceButton
               space={space}
               openSpaceId={openSpaceId}
+              isBookmarked={bookmarkedSpacesIds.includes(space.id)}
+              onToggleBookmark={(spaceId) => {
+                void toggleBookmark(spaceId);
+              }}
               onEditSpace={(space) => setSpaceForEdit(space)}
             />
           </SpaceProvider>
