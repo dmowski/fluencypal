@@ -66,47 +66,74 @@ export const SpaceEditorModal = ({ isOpen, onClose, type, space }: SpaceEditorMo
         sx={{
           width: '100%',
           maxWidth: '560px',
-          gap: '16px',
+          gap: '36px',
         }}
       >
-        <Typography variant="h3">{modalTitle}</Typography>
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: 800,
+          }}
+        >
+          {modalTitle}
+        </Typography>
 
-        <TextField
-          label={i18n._('Title')}
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-          disabled={isSubmitting}
-          fullWidth
-        />
+        <Stack
+          sx={{
+            gap: '26px',
+          }}
+        >
+          <TextField
+            label={i18n._('Title')}
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+            disabled={isSubmitting}
+            fullWidth
+          />
 
-        <TextField
-          label={i18n._('Description')}
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-          disabled={isSubmitting}
-          multiline
-          minRows={3}
-          fullWidth
-        />
+          <TextField
+            label={i18n._('Description')}
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+            disabled={isSubmitting}
+            multiline
+            minRows={3}
+            fullWidth
+          />
+        </Stack>
 
         <Stack
           sx={{
             flexDirection: 'row',
             gap: '10px',
-            justifyContent: 'flex-end',
+            justifyContent: 'space-between',
           }}
         >
-          {type === 'Edit' && (
-            <Button color="error" variant="outlined" onClick={onDelete} disabled={isSubmitting}>
-              {i18n._('Delete Space')}
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              gap: '10px',
+            }}
+          >
+            <Button variant="contained" onClick={onSave} disabled={isSubmitting} color="info">
+              {type === 'create' ? i18n._('Create Space') : i18n._('Save Changes')}
             </Button>
-          )}
-          <Button onClick={onClose} disabled={isSubmitting}>
-            {i18n._('Cancel')}
-          </Button>
-          <Button variant="contained" onClick={onSave} disabled={isSubmitting}>
-            {type === 'create' ? i18n._('Create Space') : i18n._('Save Changes')}
-          </Button>
+            <Button onClick={onClose} disabled={isSubmitting}>
+              {i18n._('Cancel')}
+            </Button>
+          </Stack>
+
+          <Stack
+            sx={{
+              flexDirection: 'row',
+            }}
+          >
+            {type === 'Edit' && (
+              <Button color="error" variant="outlined" onClick={onDelete} disabled={isSubmitting}>
+                {i18n._('Delete Space')}
+              </Button>
+            )}
+          </Stack>
         </Stack>
       </Stack>
     </CustomModal>
