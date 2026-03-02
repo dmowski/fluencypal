@@ -48,7 +48,7 @@ export const SpaceButton = ({
           cursor: 'pointer',
         }}
       >
-        <Badge badgeContent={unreadCount} color="error">
+        <Badge badgeContent={unreadCount} color={isBookmarked ? 'error' : 'primary'}>
           <Typography
             variant="h5"
             component={'span'}
@@ -66,7 +66,7 @@ export const SpaceButton = ({
       <Stack
         sx={{
           position: 'absolute',
-          top: '10px',
+          bottom: '10px',
           right: '10px',
           flexDirection: 'row',
           alignItems: 'center',
