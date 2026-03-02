@@ -4,9 +4,10 @@ import { Checkbox, Link, Stack, Typography } from '@mui/material';
 import { MarkdownToJSX, default as MarkdownTool } from 'markdown-to-jsx';
 import React from 'react';
 
+type MdVariantVariant = 'small' | 'normal' | 'conversation' | 'blog' | 'chat';
 export interface MarkdownProps {
   children: string;
-  variant?: 'small' | 'normal' | 'conversation' | 'blog';
+  variant?: MdVariantVariant;
   onWordClick?: (word: string, element: HTMLElement) => void;
 }
 
@@ -320,15 +321,117 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   },
 };
 
+const markdownComponentsChat: MarkdownToJSX.Overrides = {
+  ...markdownComponents,
+
+  h1: ({ children }) => (
+    <Typography
+      variant="h1"
+      sx={{
+        fontSize: '24px',
+        fontWeight: 500,
+      }}
+    >
+      {children}
+    </Typography>
+  ),
+  h2: ({ children }) => (
+    <Typography
+      variant="h2"
+      sx={{
+        paddingTop: '20px',
+        fontSize: '22px',
+        fontWeight: 500,
+      }}
+    >
+      {children}
+    </Typography>
+  ),
+  h3: ({ children }) => (
+    <Typography
+      variant="h4"
+      component={'h3'}
+      sx={{
+        paddingTop: '20px',
+        fontSize: '20px',
+        fontWeight: 500,
+      }}
+    >
+      {children}
+    </Typography>
+  ),
+  h4: ({ children }) => (
+    <Typography
+      variant="h5"
+      component={'h4'}
+      sx={{
+        paddingTop: '20px',
+        fontSize: '18px',
+        fontWeight: 500,
+      }}
+    >
+      {children}
+    </Typography>
+  ),
+  h5: ({ children }) => (
+    <Typography
+      variant="h5"
+      sx={{
+        fontSize: '18px',
+        fontWeight: 500,
+      }}
+    >
+      {children}
+    </Typography>
+  ),
+  h6: ({ children }) => (
+    <Typography
+      variant="h6"
+      sx={{
+        fontSize: '18px',
+        fontWeight: 500,
+      }}
+    >
+      {children}
+    </Typography>
+  ),
+  p: ({ children }) => (
+    <Typography
+      sx={{
+        padding: '4px 0',
+      }}
+    >
+      {children}
+    </Typography>
+  ),
+  blockquote: ({ children }) => (
+    <Stack
+      component={'blockquote'}
+      sx={{
+        borderLeft: '3px solid rgba(255, 255, 255, 0.2)',
+        marginLeft: 0,
+        paddingLeft: '10px',
+        color: 'rgba(255, 255, 255, 0.6)',
+        padding: '0 0 0 13px',
+      }}
+    >
+      {children}
+    </Stack>
+  ),
+};
+
+const styleVariationMap: Record<MdVariantVariant, MarkdownToJSX.Overrides> = {
+  small: markdownComponentsSmall,
+  normal: markdownComponents,
+  conversation: markdownComponentsConversation,
+  blog: markdownComponentsBlog,
+  chat: markdownComponentsChat,
+};
+
 export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, variant }) => {
-  const styleComponents =
-    variant === 'small'
-      ? markdownComponentsSmall
-      : variant === 'conversation'
-        ? markdownComponentsConversation
-        : variant === 'blog'
-          ? markdownComponentsBlog
-          : markdownComponents;
+  const variantToUse = variant || 'normal';
+  const styleComponents = styleVariationMap[variantToUse];
+
   return (
     <Stack
       sx={{
