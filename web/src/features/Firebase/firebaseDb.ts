@@ -36,6 +36,7 @@ import {
 import { GameBattle } from '../Game/Battle/types';
 import { Story, StoryStat, StoryState } from '../Sentence/types';
 import { AudioCache } from '../Audio/types';
+import { CommunitySpace } from '../Community/types';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -115,6 +116,9 @@ export const db = {
       userId && answerDocId
         ? dataPointCollection<DailyQuestionLike>(`dailyQuestionsAnswers/${answerDocId}/likes`)
         : null,
+
+    communitySpaces: (userId?: string) =>
+      userId ? dataPointCollection<CommunitySpace>(`community/spaces/spaceList`) : null,
   },
   documents: {
     chat: (userId: string, space: string) =>

@@ -1,9 +1,16 @@
+import { createContext, JSX, ReactNode, useContext } from 'react';
 import { useLingui } from '@lingui/react';
-import { Room } from './types';
+import { CommunitySpace } from './types';
 
-export const useCommunityRoom = () => {
+interface CommunitySpaceContext {
+  spaces: CommunitySpace[];
+}
+
+const CommunitySpaceContext = createContext<CommunitySpaceContext | null>(null);
+
+const useProvideCommunitySpace = (): CommunitySpaceContext => {
   const { i18n } = useLingui();
-  const rooms: Room[] = [
+  const spaces: CommunitySpace[] = [
     {
       id: 'development',
       title: i18n._('Announcements'),
@@ -77,6 +84,21 @@ export const useCommunityRoom = () => {
   ];
 
   return {
-    rooms,
+    spaces,
   };
+};
+
+export function CommunitySpaceProvider({ children }: { children: ReactNode }): JSX.Element {
+  const hook = useProvideCommunitySpace();
+
+  return <CommunitySpaceContext.Provider value={hook}>{children}</CommunitySpaceContext.Provider>;
+}
+
+export const useCommunitySpace = (): CommunitySpaceContext => {
+  const context = useContext(CommunitySpaceContext);
+  if (!context) {
+    throw new Error('useCommunitySpace must be used within a CommunitySpaceProvider');
+  }
+
+  return context;
 };

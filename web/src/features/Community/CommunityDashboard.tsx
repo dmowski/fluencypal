@@ -16,27 +16,27 @@ import PsychologyIcon from '@mui/icons-material/Psychology';
 import { useUrlState } from '../Url/useUrlState';
 import { CommunityCard } from './CommunityCard';
 import { CommunityPageRouter } from './CommunityPage';
-import { CommunityPage, Room } from './types';
+import { CommunityPage, CommunitySpace } from './types';
 import { useChatList } from '../Chat/useChatList';
 import { useLingui } from '@lingui/react';
 import { useBattle } from '../Game/Battle/useBattle';
 import { DashboardBlur } from '../Dashboard/DashboardBlur';
 import { useAccess } from '../Usage/useAccess';
-import { useCommunityRoom } from './useCommunityRoom';
 import { ChatProvider, useChat } from '../Chat/useChat';
 import { ChatSection } from '../Chat/ChatSection';
+import { useCommunitySpace } from './useCommunitySpace';
 
 export const CommunityDashboard = () => {
   const chatList = useChatList();
   const { i18n } = useLingui();
   const battles = useBattle();
   const access = useAccess();
-  const { rooms } = useCommunityRoom();
+  const { spaces } = useCommunitySpace();
 
   const [activePage, setActivePage] = useUrlState<CommunityPage | ''>('section', '', true);
-  const [activeRoom, setActiveRoom] = useUrlState<string>('room', '', true);
+  const [activeSpace, setActiveSpace] = useUrlState<string>('space', '', true);
 
-  const activeRoomData = rooms.find((r) => r.id === activeRoom);
+  const activeSpaceData = spaces.find((r) => r.id === activeSpace);
 
   const iconStyle = {
     fontSize: 'var(--icon-size)',
@@ -62,8 +62,8 @@ export const CommunityDashboard = () => {
             },
           }}
         >
-          {activeRoom ? (
-            <ActiveRoomPage room={activeRoomData!} onClose={() => setActiveRoom('')} />
+          {activeSpace ? (
+            <ActiveSpacePage space={activeSpaceData!} onClose={() => setActiveSpace('')} />
           ) : activePage ? (
             <CommunityPageRouter activePage={activePage} onClose={() => setActivePage('')} />
           ) : (
@@ -176,7 +176,7 @@ export const CommunityDashboard = () => {
                 </Stack>
               </Stack>
 
-              {access.canAccessSpaces && <CommunityRooms openRoomId={setActiveRoom} />}
+              {access.canAccessSpaces && <CommunityRooms openSpaceId={setActiveSpace} />}
             </Stack>
           )}
         </Stack>
@@ -187,8 +187,14 @@ export const CommunityDashboard = () => {
   );
 };
 
-export const ActiveRoomPage = ({ room, onClose }: { room: Room; onClose: () => void }) => {
-  const title = room.title;
+export const ActiveSpacePage = ({
+  space,
+  onClose,
+}: {
+  space: CommunitySpace;
+  onClose: () => void;
+}) => {
+  const title = space.title;
   const [activeChatPost] = useUrlState<string | null>('post', null, false);
   const [activeChatId] = useUrlState<string | null>('activeChatId', null, false);
 
@@ -224,13 +230,13 @@ export const ActiveRoomPage = ({ room, onClose }: { room: Room; onClose: () => v
           paddingBottom: '100px',
         }}
       >
-        <RoomChatPage room={room} />
+        <SpaceChatPage space={space} />
       </Stack>
     </Stack>
   );
 };
 
-const RoomChatPage = ({ room }: { room: Room }) => {
+const SpaceChatPage = ({ space }: { space: CommunitySpace }) => {
   const access = useAccess();
 
   if (!access.canUseCommunity) {
@@ -238,7 +244,7 @@ const RoomChatPage = ({ room }: { room: Room }) => {
   }
 
   return (
-    <RoomProvider room={room}>
+    <SpaceProvider space={space}>
       <Stack
         sx={{
           width: '100%',
@@ -246,18 +252,24 @@ const RoomChatPage = ({ room }: { room: Room }) => {
       >
         <ChatSection contextForAiAnalysis="" isFullContentByDefault={false} sortMode={'all'} />
       </Stack>
-    </RoomProvider>
+    </SpaceProvider>
   );
 };
 
-const RoomProvider = ({ room, children }: { room: Room; children: React.ReactNode }) => {
+const SpaceProvider = ({
+  space,
+  children,
+}: {
+  space: CommunitySpace;
+  children: React.ReactNode;
+}) => {
   return (
     <ChatProvider
       metadata={{
-        spaceId: 'room-' + room.id,
+        spaceId: 'space-' + space.id,
         allowedUserIds: null,
         isPrivate: false,
-        type: 'room',
+        type: 'space',
       }}
     >
       {children}
@@ -265,9 +277,9 @@ const RoomProvider = ({ room, children }: { room: Room; children: React.ReactNod
   );
 };
 
-export const CommunityRooms = ({ openRoomId }: { openRoomId: (roomId: string) => void }) => {
+export const CommunityRooms = ({ openSpaceId }: { openSpaceId: (spaceId: string) => void }) => {
   const { i18n } = useLingui();
-  const { rooms } = useCommunityRoom();
+  const { spaces } = useCommunitySpace();
 
   return (
     <Stack
@@ -300,10 +312,10 @@ export const CommunityRooms = ({ openRoomId }: { openRoomId: (roomId: string) =>
           alignItems: 'center',
         }}
       >
-        {rooms.map((room) => (
-          <RoomProvider key={room.id} room={room}>
-            <RoomButton room={room} openRoomId={openRoomId} />
-          </RoomProvider>
+        {spaces.map((space) => (
+          <SpaceProvider key={space.id} space={space}>
+            <SpaceButton space={space} openSpaceId={openSpaceId} />
+          </SpaceProvider>
         ))}
 
         <Button
@@ -322,21 +334,21 @@ export const CommunityRooms = ({ openRoomId }: { openRoomId: (roomId: string) =>
   );
 };
 
-export const RoomButton = ({
-  room,
-  openRoomId,
+export const SpaceButton = ({
+  space,
+  openSpaceId,
 }: {
-  room: Room;
-  openRoomId: (roomId: string) => void;
+  space: CommunitySpace;
+  openSpaceId: (spaceId: string) => void;
 }) => {
   const chatList = useChat();
   const unreadCount = chatList.unreadMessagesCount;
 
   return (
     <Stack
-      key={room.id}
+      key={space.id}
       component={'button'}
-      onClick={() => openRoomId(room.id)}
+      onClick={() => openSpaceId(space.id)}
       sx={{
         textAlign: 'left',
         width: '100%',
@@ -356,10 +368,10 @@ export const RoomButton = ({
             fontWeight: 700,
           }}
         >
-          {room.title}
+          {space.title}
         </Typography>
       </Badge>
-      <Typography sx={{ opacity: 0.9 }}>{room.description}</Typography>
+      <Typography sx={{ opacity: 0.9 }}>{space.description}</Typography>
     </Stack>
   );
 };

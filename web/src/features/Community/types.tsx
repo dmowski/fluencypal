@@ -7,7 +7,7 @@ export type CommunityPage =
   | 'tech-support'
   | 'leaderboards';
 
-export interface Room {
+export interface CommunitySpace {
   id: string;
   title: string;
   description: string;
