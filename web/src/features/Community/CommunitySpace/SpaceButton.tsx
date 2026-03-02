@@ -63,45 +63,56 @@ export const SpaceButton = ({
         <Typography sx={{ opacity: 0.9 }}>{space.description}</Typography>
       </Stack>
 
-      <IconButton
-        size="small"
-        onClick={(event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          onToggleBookmark(space.id);
-        }}
+      <Stack
         sx={{
           position: 'absolute',
           top: '10px',
-          right: isCreator && onEditSpace ? '44px' : '10px',
-          color: isBookmarked ? '#FFD54F' : '#fff',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          backgroundColor: 'rgba(0, 0, 0, 0.2)',
+          right: '10px',
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: '5px',
         }}
       >
-        {isBookmarked ? <BookmarkIcon fontSize="small" /> : <BookmarkBorderIcon fontSize="small" />}
-      </IconButton>
+        {isCreator && onEditSpace && (
+          <IconButton
+            size="small"
+            onClick={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              onEditSpace(space);
+            }}
+            sx={{
+              color: '#fff',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              backgroundColor: 'rgba(0, 0, 0, 0.2)',
+            }}
+          >
+            <EditIcon fontSize="small" />
+          </IconButton>
+        )}
 
-      {isCreator && onEditSpace && (
         <IconButton
           size="small"
           onClick={(event) => {
             event.preventDefault();
             event.stopPropagation();
-            onEditSpace(space);
+            onToggleBookmark(space.id);
           }}
           sx={{
-            position: 'absolute',
-            top: '10px',
-            right: '10px',
-            color: '#fff',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            color: isBookmarked ? '#0abefa' : '#fff',
+            border: isBookmarked
+              ? '1px solid rgba(17, 229, 236, 0.3)'
+              : '1px solid rgba(255, 255, 255, 0.1)',
             backgroundColor: 'rgba(0, 0, 0, 0.2)',
           }}
         >
-          <EditIcon fontSize="small" />
+          {isBookmarked ? (
+            <BookmarkIcon fontSize="small" />
+          ) : (
+            <BookmarkBorderIcon fontSize="small" />
+          )}
         </IconButton>
-      )}
+      </Stack>
     </Stack>
   );
 };
