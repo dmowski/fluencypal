@@ -186,7 +186,7 @@ export const CommunityDashboard = () => {
                 </Stack>
               </Stack>
 
-              {auth.isFounder && <CommunityRooms openRoomId={setActiveRoom} />}
+              {access.canAccessSpaces && <CommunityRooms openRoomId={setActiveRoom} />}
             </Stack>
           )}
         </Stack>
