@@ -352,6 +352,21 @@ export const CommunityRooms = ({ openRoomId }: { openRoomId: (roomId: string) =>
         >
           {i18n._('Join spaces to discuss specific topics with other members')}
         </Typography>
+
+        <Typography
+          sx={{
+            paddingLeft: '5px',
+            border: '1px solid rgba(110, 14, 83, 0.9)',
+            backgroundColor: 'rgba(116, 9, 149, 0.24)',
+            padding: '8px 10px',
+            borderRadius: '8px',
+            marginTop: '10px',
+            width: 'fit-content',
+            fontSize: '0.9em',
+          }}
+        >
+          {i18n._('This feature is in early development. May be buggy')}
+        </Typography>
       </Stack>
 
       <Stack
