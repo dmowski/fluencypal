@@ -1,16 +1,8 @@
 'use client';
 
-import { Badge, Button, IconButton, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { NavigationBar } from '../Navigation/NavigationBar';
-import {
-  ArrowLeft,
-  CirclePlus,
-  Crown,
-  Mail,
-  MessagesSquare,
-  Swords,
-  UsersRound,
-} from 'lucide-react';
+import { Crown, Mail, MessagesSquare, Swords, UsersRound } from 'lucide-react';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import { useUrlState } from '../Url/useUrlState';
@@ -22,9 +14,9 @@ import { useLingui } from '@lingui/react';
 import { useBattle } from '../Game/Battle/useBattle';
 import { DashboardBlur } from '../Dashboard/DashboardBlur';
 import { useAccess } from '../Usage/useAccess';
-import { ChatProvider, useChat } from '../Chat/useChat';
-import { ChatSection } from '../Chat/ChatSection';
 import { useCommunitySpace } from './CommunitySpace/useCommunitySpace';
+import { ActiveSpacePage } from './CommunitySpace/ActiveSpacePage';
+import { CommunityRooms } from './CommunitySpace/CommunityRooms';
 
 export const CommunityDashboard = () => {
   const chatList = useChatList();
@@ -184,194 +176,5 @@ export const CommunityDashboard = () => {
         <DashboardBlur />
       </Stack>
     </>
-  );
-};
-
-export const ActiveSpacePage = ({
-  space,
-  onClose,
-}: {
-  space: CommunitySpace;
-  onClose: () => void;
-}) => {
-  const title = space.title;
-  const [activeChatPost] = useUrlState<string | null>('post', null, false);
-  const [activeChatId] = useUrlState<string | null>('activeChatId', null, false);
-
-  const isShowHeader = !activeChatPost && !activeChatId;
-
-  return (
-    <Stack>
-      {isShowHeader && (
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingTop: '10px',
-
-            gap: '10px',
-          }}
-          onClick={onClose}
-        >
-          <IconButton
-            sx={{
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-            }}
-          >
-            <ArrowLeft size={'18px'} />
-          </IconButton>
-          <Typography variant="body2">{title}</Typography>
-        </Stack>
-      )}
-
-      <Stack
-        sx={{
-          paddingTop: isShowHeader ? '20px' : 0,
-          paddingBottom: '100px',
-        }}
-      >
-        <SpaceChatPage space={space} />
-      </Stack>
-    </Stack>
-  );
-};
-
-const SpaceChatPage = ({ space }: { space: CommunitySpace }) => {
-  const access = useAccess();
-
-  if (!access.canUseCommunity) {
-    return <></>;
-  }
-
-  return (
-    <SpaceProvider space={space}>
-      <Stack
-        sx={{
-          width: '100%',
-        }}
-      >
-        <ChatSection contextForAiAnalysis="" isFullContentByDefault={false} sortMode={'all'} />
-      </Stack>
-    </SpaceProvider>
-  );
-};
-
-const SpaceProvider = ({
-  space,
-  children,
-}: {
-  space: CommunitySpace;
-  children: React.ReactNode;
-}) => {
-  return (
-    <ChatProvider
-      metadata={{
-        spaceId: 'space-' + space.id,
-        allowedUserIds: null,
-        isPrivate: false,
-        type: 'space',
-      }}
-    >
-      {children}
-    </ChatProvider>
-  );
-};
-
-export const CommunityRooms = ({ openSpaceId }: { openSpaceId: (spaceId: string) => void }) => {
-  const { i18n } = useLingui();
-  const { spaces } = useCommunitySpace();
-
-  return (
-    <Stack
-      sx={{
-        gap: '20px',
-      }}
-    >
-      <Stack>
-        <Typography
-          variant="h3"
-          sx={{
-            paddingLeft: '5px',
-            fontWeight: 800,
-          }}
-        >
-          {i18n._('Spaces')}
-        </Typography>
-        <Typography
-          sx={{
-            paddingLeft: '5px',
-          }}
-        >
-          {i18n._('Join spaces to discuss specific topics with other members')}
-        </Typography>
-      </Stack>
-
-      <Stack
-        sx={{
-          gap: '20px',
-          alignItems: 'flex-start',
-        }}
-      >
-        {spaces.map((space) => (
-          <SpaceProvider key={space.id} space={space}>
-            <SpaceButton space={space} openSpaceId={openSpaceId} />
-          </SpaceProvider>
-        ))}
-
-        <Button
-          startIcon={<CirclePlus />}
-          variant="outlined"
-          color="info"
-          sx={{
-            marginTop: '10px',
-            padding: '10px 30px',
-          }}
-        >
-          {i18n._('Create New Space')}
-        </Button>
-      </Stack>
-    </Stack>
-  );
-};
-
-export const SpaceButton = ({
-  space,
-  openSpaceId,
-}: {
-  space: CommunitySpace;
-  openSpaceId: (spaceId: string) => void;
-}) => {
-  const chatList = useChat();
-  const unreadCount = chatList.unreadMessagesCount;
-
-  return (
-    <Stack
-      key={space.id}
-      component={'button'}
-      onClick={() => openSpaceId(space.id)}
-      sx={{
-        textAlign: 'left',
-        width: '100%',
-        color: '#fff',
-        borderRadius: '8px',
-        padding: '15px',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        backgroundColor: '#111',
-        cursor: 'pointer',
-      }}
-    >
-      <Badge badgeContent={unreadCount} color="error">
-        <Typography
-          variant="h5"
-          component={'span'}
-          sx={{
-            fontWeight: 700,
-          }}
-        >
-          {space.title}
-        </Typography>
-      </Badge>
-      <Typography sx={{ opacity: 0.9 }}>{space.description}</Typography>
-    </Stack>
   );
 };
