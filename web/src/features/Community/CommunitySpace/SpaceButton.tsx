@@ -23,25 +23,23 @@ export const SpaceButton = ({
   return (
     <Stack
       key={space.id}
-      component={'button'}
-      onClick={() => openSpaceId(space.id)}
       sx={{
-        textAlign: 'left',
+        position: 'relative',
         width: '100%',
-        color: '#fff',
-        borderRadius: '8px',
-        padding: '15px',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        backgroundColor: '#111',
-        cursor: 'pointer',
       }}
     >
       <Stack
+        component={'button'}
+        onClick={() => openSpaceId(space.id)}
         sx={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '10px',
+          textAlign: 'left',
+          width: '100%',
+          color: '#fff',
+          borderRadius: '8px',
+          padding: '15px',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          backgroundColor: '#111',
+          cursor: 'pointer',
         }}
       >
         <Badge badgeContent={unreadCount} color="error">
@@ -56,24 +54,29 @@ export const SpaceButton = ({
           </Typography>
         </Badge>
 
-        {isCreator && onEditSpace && (
-          <IconButton
-            size="small"
-            onClick={(event) => {
-              event.preventDefault();
-              event.stopPropagation();
-              onEditSpace(space);
-            }}
-            sx={{
-              color: '#fff',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-            }}
-          >
-            <EditIcon fontSize="small" />
-          </IconButton>
-        )}
+        <Typography sx={{ opacity: 0.9 }}>{space.description}</Typography>
       </Stack>
-      <Typography sx={{ opacity: 0.9 }}>{space.description}</Typography>
+
+      {isCreator && onEditSpace && (
+        <IconButton
+          size="small"
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            onEditSpace(space);
+          }}
+          sx={{
+            position: 'absolute',
+            top: '10px',
+            right: '10px',
+            color: '#fff',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+          }}
+        >
+          <EditIcon fontSize="small" />
+        </IconButton>
+      )}
     </Stack>
   );
 };
