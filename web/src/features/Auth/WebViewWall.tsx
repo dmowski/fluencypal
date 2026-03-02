@@ -161,39 +161,49 @@ export const WebViewWall = ({
           minHeight: `calc(100dvh - 190px)`,
         }}
       >
-        <img
-          src={'/logo.jpeg'}
-          style={{
-            width: '180px',
-            height: '30px',
-          }}
-        />
         <Stack
           sx={{
             alignItems: 'center',
-            paddingTop: '60px',
           }}
         >
-          {mode === 'general' && (
-            <Typography align="center" variant="h6" component={'h1'}>
-              {i18n._('AI speaking partner')}
-            </Typography>
-          )}
+          <img
+            src={'/logo.jpeg'}
+            style={{
+              width: '180px',
+              height: '30px',
+            }}
+          />
+          <Stack
+            sx={{
+              alignItems: 'center',
+              paddingTop: '10px',
+            }}
+          >
+            {mode === 'general' && (
+              <Typography
+                align="center"
+                variant="h6"
+                component={'h1'}
+                sx={{
+                  fontSize: '1.1rem',
+                }}
+              >
+                {i18n._('AI speaking partner')}
+              </Typography>
+            )}
 
-          {mode === 'interview' && (
-            <Typography align="center" variant="h6" component={'h1'}>
-              {i18n._('Interview practice partner')}
-            </Typography>
-          )}
-
-          <Typography align="center" variant="caption" sx={{ opacity: 0.7 }}>
-            {i18n._("Let's choose how to start practicing")}
-          </Typography>
+            {mode === 'interview' && (
+              <Typography align="center" variant="h6" component={'h1'}>
+                {i18n._('Interview practice partner')}
+              </Typography>
+            )}
+          </Stack>
         </Stack>
+
         <Stack
           sx={{
             gap: '15px',
-            paddingTop: '20px',
+            paddingTop: '50px',
             alignItems: 'center',
           }}
         >
@@ -212,13 +222,12 @@ export const WebViewWall = ({
           )}
 
           <Button
-            variant="outlined"
+            variant="contained"
+            color="info"
             startIcon={<Compass strokeWidth={'0.1rem'} />}
             size="large"
-            sx={{
-              minWidth: '200px',
-            }}
             onClick={() => openInstruction()}
+            sx={{ minWidth: '200px', padding: '15px 40px' }}
           >
             {i18n._('Open in Browser')}
           </Button>
