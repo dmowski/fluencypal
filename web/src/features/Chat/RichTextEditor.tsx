@@ -1,5 +1,6 @@
 'use client';
 
+import { Stack } from '@mui/material';
 import {
   MDXEditor,
   BoldItalicUnderlineToggles,
@@ -19,25 +20,33 @@ interface RichTextEditorProps {
 
 export function RichTextEditor({ value, onChange }: RichTextEditorProps) {
   return (
-    <MDXEditor
-      markdown={value}
-      onChange={(nextValue) => onChange(nextValue || '')}
-      plugins={[
-        toolbarPlugin({
-          toolbarContents: () => (
-            <>
-              <BoldItalicUnderlineToggles />
-              <BlockTypeSelect />
-              <ListsToggle />
-            </>
-          ),
-        }),
-        headingsPlugin({
-          allowedHeadingLevels: [1, 2, 3, 4],
-        }),
-        listsPlugin(),
-        markdownShortcutPlugin(),
-      ]}
-    />
+    <Stack
+      className="dark"
+      sx={{
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        borderRadius: '8px',
+      }}
+    >
+      <MDXEditor
+        markdown={value}
+        onChange={(nextValue) => onChange(nextValue || '')}
+        plugins={[
+          toolbarPlugin({
+            toolbarContents: () => (
+              <>
+                <BoldItalicUnderlineToggles />
+                <BlockTypeSelect />
+                <ListsToggle />
+              </>
+            ),
+          }),
+          headingsPlugin({
+            allowedHeadingLevels: [1, 2, 3, 4],
+          }),
+          listsPlugin(),
+          markdownShortcutPlugin(),
+        ]}
+      />
+    </Stack>
   );
 }
