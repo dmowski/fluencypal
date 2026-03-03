@@ -3522,6 +3522,7 @@ msgstr "报告提交失败。请尝试使用支持聊天报告此用户或通过
 msgid "Failed to upload audio. Please try again."
 msgstr "音频上传失败。请重试。"
 
+#: src/features/Chat/RichTextEditor.tsx:46
 #: src/features/Game/UploadImageButton.tsx:47
 #: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
@@ -3585,6 +3586,7 @@ msgid "File size must be less than 250MB"
 msgstr "文件大小必须小于250MB"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:46
+#: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
@@ -5192,7 +5194,7 @@ msgstr ""
 "我已经在这个项目上工作了大约一年，我想我会继续长时间地工作下去。没有资金被削减或项目破产的风险——因为根本没有资金。只要有钱支付服务器费用，项目就能持续"
 "下去。而如果有一天我穷得支付不起了……好吧，我会租更便宜的服务器 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:178
+#: src/features/Chat/SubmitForm.tsx:185
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "您的消息创意："
@@ -6360,7 +6362,7 @@ msgstr "加载中。"
 msgid "Loading.."
 msgstr "加载中.."
 
-#: src/features/Chat/SubmitForm.tsx:88
+#: src/features/Chat/SubmitForm.tsx:95
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -7598,7 +7600,7 @@ msgstr "请输入有效的电子邮件地址"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "请填写家长信息，并勾选第1步中的所有选项。"
 
-#: src/features/Chat/SubmitForm.tsx:416
+#: src/features/Chat/SubmitForm.tsx:414
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "请录制一条较长的信息（至少几个字）。"
@@ -7613,6 +7615,7 @@ msgstr "请刷新页面并再试一次"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "请选择一个有效的音频文件（MP3、WAV、OGG或M4A）"
 
+#: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
@@ -8221,7 +8224,7 @@ msgstr "在前5名中排名以免费获取该应用"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "排名前5以获得所有功能的完全访问权限！"
 
-#: src/features/Chat/SubmitForm.tsx:328
+#: src/features/Chat/SubmitForm.tsx:326
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -8961,8 +8964,8 @@ msgstr "再次发送电子邮件"
 msgid "Send me sign-in link"
 msgstr "发送登录链接"
 
-#: src/features/Chat/SubmitForm.tsx:227
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:225
+#: src/features/Chat/SubmitForm.tsx:342
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "发送消息"
@@ -8978,7 +8981,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "发送 {messagesNeeded} 条消息以解锁完整访问权限"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:342
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -9630,7 +9633,7 @@ msgstr ""
 "在这个情境中，您将扮演一个求职者的角色，而我们的AI将扮演专业的招聘人员。您将被询问您的经验、技能和对这个角色的动机，AI会根据您的回答调整难度。利用提"
 "示来练习提供简洁、有说服力的答案，使您在任何工作面试中脱颖而出。"
 
-#: src/features/Chat/SubmitForm.tsx:304
+#: src/features/Chat/SubmitForm.tsx:302
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "停止"
@@ -12101,7 +12104,6 @@ msgstr "你的工作面试准备伙伴"
 msgid "Your Language Level"
 msgstr "你的语言水平"
 
-#: src/features/Chat/SubmitForm.tsx:188
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"

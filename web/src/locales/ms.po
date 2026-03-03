@@ -3811,6 +3811,7 @@ msgstr ""
 msgid "Failed to upload audio. Please try again."
 msgstr "Gagal memuat naik audio. Sila cuba lagi."
 
+#: src/features/Chat/RichTextEditor.tsx:46
 #: src/features/Game/UploadImageButton.tsx:47
 #: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
@@ -3876,6 +3877,7 @@ msgid "File size must be less than 250MB"
 msgstr "Saiz fail mesti kurang daripada 250MB"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:46
+#: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
@@ -5720,7 +5722,7 @@ msgstr ""
 "saya cukup miskin sehingga saya tidak mampu membayarnya... baiklah, saya "
 "akan menyewa pelayan yang lebih murah 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:178
+#: src/features/Chat/SubmitForm.tsx:185
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Idea untuk mesej anda:"
@@ -7057,7 +7059,7 @@ msgstr "Memuat."
 msgid "Loading.."
 msgstr "Memuatkan.."
 
-#: src/features/Chat/SubmitForm.tsx:88
+#: src/features/Chat/SubmitForm.tsx:95
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -8384,7 +8386,7 @@ msgstr "Sila masukkan alamat emel yang sah"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Sila isi butiran ibu bapa dan tandakan semua kotak dalam Langkah 1."
 
-#: src/features/Chat/SubmitForm.tsx:416
+#: src/features/Chat/SubmitForm.tsx:414
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Sila rakam mesej yang lebih panjang (sekurang-kurangnya beberapa perkataan)."
@@ -8399,6 +8401,7 @@ msgstr "Sila segarkan halaman dan cuba sekali lagi"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Sila pilih fail audio yang sah (MP3, WAV, OGG, atau M4A)"
 
+#: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
@@ -9062,7 +9065,7 @@ msgstr "Terdapat dalam 5 teratas untuk mendapatkan aplikasi ini secara percuma"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Peringkat dalam 5 teratas untuk mendapatkan akses penuh kepada semua ciri!"
 
-#: src/features/Chat/SubmitForm.tsx:328
+#: src/features/Chat/SubmitForm.tsx:326
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -9838,8 +9841,8 @@ msgstr "Hantar e-mel semula"
 msgid "Send me sign-in link"
 msgstr "Hantar saya pautan log masuk"
 
-#: src/features/Chat/SubmitForm.tsx:227
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:225
+#: src/features/Chat/SubmitForm.tsx:342
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Hantar Mesej"
@@ -9855,7 +9858,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Hantar {messagesNeeded} mesej untuk membuka kunci akses penuh"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:342
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -10556,7 +10559,7 @@ msgstr ""
 "petunjuk untuk berlatih memberikan jawapan yang ringkas, meyakinkan yang "
 "membantu anda menonjol di dalam sebarang temuduga kerja."
 
-#: src/features/Chat/SubmitForm.tsx:304
+#: src/features/Chat/SubmitForm.tsx:302
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Berhenti"
@@ -13274,7 +13277,6 @@ msgstr "Rakan persediaan temu duga kerja anda"
 msgid "Your Language Level"
 msgstr "Tahap Bahasa Anda"
 
-#: src/features/Chat/SubmitForm.tsx:188
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"

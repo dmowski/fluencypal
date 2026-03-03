@@ -3784,6 +3784,7 @@ msgstr ""
 msgid "Failed to upload audio. Please try again."
 msgstr "Error al subir el audio. Por favor, inténtalo de nuevo."
 
+#: src/features/Chat/RichTextEditor.tsx:46
 #: src/features/Game/UploadImageButton.tsx:47
 #: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
@@ -3849,6 +3850,7 @@ msgid "File size must be less than 250MB"
 msgstr "El tamaño del archivo debe ser inferior a 250 MB"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:46
+#: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
@@ -5663,7 +5665,7 @@ msgstr ""
 "si algún día soy lo suficientemente pobre como para no poder pagarlos… "
 "bueno, alquilaré servidores más baratos 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:178
+#: src/features/Chat/SubmitForm.tsx:185
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Idea para tu mensaje:"
@@ -6981,7 +6983,7 @@ msgstr "Cargando."
 msgid "Loading.."
 msgstr "Cargando.."
 
-#: src/features/Chat/SubmitForm.tsx:88
+#: src/features/Chat/SubmitForm.tsx:95
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -8297,7 +8299,7 @@ msgstr ""
 "Por favor, complete los detalles de los padres y marque todas las casillas "
 "en el Paso 1."
 
-#: src/features/Chat/SubmitForm.tsx:416
+#: src/features/Chat/SubmitForm.tsx:414
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Por favor, graba un mensaje más largo (al menos unas pocas palabras)."
@@ -8312,6 +8314,7 @@ msgstr "Por favor, refresca la página e intenta una vez más"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Por favor, selecciona un archivo de audio válido (MP3, WAV, OGG o M4A)"
 
+#: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
@@ -8971,7 +8974,7 @@ msgstr ""
 "¡Clasifícate entre los 5 primeros para obtener acceso completo a todas las "
 "funciones!"
 
-#: src/features/Chat/SubmitForm.tsx:328
+#: src/features/Chat/SubmitForm.tsx:326
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -9758,8 +9761,8 @@ msgstr "Enviar correo electrónico de nuevo"
 msgid "Send me sign-in link"
 msgstr "Envíame el enlace para iniciar sesión"
 
-#: src/features/Chat/SubmitForm.tsx:227
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:225
+#: src/features/Chat/SubmitForm.tsx:342
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Enviar mensaje"
@@ -9775,7 +9778,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Envía {messagesNeeded} mensajes para desbloquear el acceso completo"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:342
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -10474,7 +10477,7 @@ msgstr ""
 "practicar dando respuestas breves y persuasivas que te hagan destacar en "
 "cualquier entrevista de trabajo."
 
-#: src/features/Chat/SubmitForm.tsx:304
+#: src/features/Chat/SubmitForm.tsx:302
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Detener"
@@ -13172,7 +13175,6 @@ msgstr "Tu socio de preparación para entrevistas de trabajo"
 msgid "Your Language Level"
 msgstr "Tu Nivel de Idioma"
 
-#: src/features/Chat/SubmitForm.tsx:188
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"

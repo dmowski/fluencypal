@@ -3557,6 +3557,7 @@ msgstr "보고서를 제출하지 못했습니다. 이 사용자를 신고하려
 msgid "Failed to upload audio. Please try again."
 msgstr "오디오 업로드에 실패했습니다. 다시 시도해 주세요."
 
+#: src/features/Chat/RichTextEditor.tsx:46
 #: src/features/Game/UploadImageButton.tsx:47
 #: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
@@ -3620,6 +3621,7 @@ msgid "File size must be less than 250MB"
 msgstr "파일 크기는 250MB 미만이어야 합니다"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:46
+#: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
@@ -5272,7 +5274,7 @@ msgstr ""
 "파산할 위험은 없습니다. 왜냐하면 자금 지원이 없기 때문입니다. 서버를 운영할 돈이 있는 한 프로젝트는 계속됩니다. 그리고 언젠가 서버 "
 "비용을 감당할 수 없을 만큼 가난해진다면… 글쎄요, 더 저렴한 서버를 빌리겠습니다 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:178
+#: src/features/Chat/SubmitForm.tsx:185
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "메시지에 대한 아이디어:"
@@ -6477,7 +6479,7 @@ msgstr "로딩 중."
 msgid "Loading.."
 msgstr "로딩 중.."
 
-#: src/features/Chat/SubmitForm.tsx:88
+#: src/features/Chat/SubmitForm.tsx:95
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -7729,7 +7731,7 @@ msgstr "유효한 이메일 주소를 입력하세요"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "부모 세부 정보를 입력하고 1단계의 모든 항목을 선택하세요."
 
-#: src/features/Chat/SubmitForm.tsx:416
+#: src/features/Chat/SubmitForm.tsx:414
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "좀 더 긴 메시지를 녹음해 주세요(적어도 몇 단어 이상)."
@@ -7744,6 +7746,7 @@ msgstr "페이지를 새로고침하고 한 번 더 시도해주세요"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "유효한 오디오 파일을 선택하세요 (MP3, WAV, OGG, 또는 M4A)"
 
+#: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
@@ -8359,7 +8362,7 @@ msgstr "상위 5위 안에 들면 앱을 무료로 받을 수 있습니다"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "상위 5위에 랭크하여 모든 기능에 대한 전체 액세스 권한을 받으세요!"
 
-#: src/features/Chat/SubmitForm.tsx:328
+#: src/features/Chat/SubmitForm.tsx:326
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -9105,8 +9108,8 @@ msgstr "이메일 다시 보내기"
 msgid "Send me sign-in link"
 msgstr "로그인 링크 보내기"
 
-#: src/features/Chat/SubmitForm.tsx:227
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:225
+#: src/features/Chat/SubmitForm.tsx:342
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "메시지 보내기"
@@ -9122,7 +9125,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "전체 접근을 해제하려면 {messagesNeeded}개의 메시지를 보내세요"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:342
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -9782,7 +9785,7 @@ msgstr ""
 "역할에 대한 동기에 대해 질문을 받게 될 것이고, AI는 여러분의 응답에 기반하여 난이도를 조절합니다. 질문에 대해 간결하고 설득력 "
 "있는 답변을 제공하는 연습을 위해 프롬프트를 사용하세요. 어떤 직업 인터뷰에서든 돋보일 수 있도록 도움이 될 것입니다."
 
-#: src/features/Chat/SubmitForm.tsx:304
+#: src/features/Chat/SubmitForm.tsx:302
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "정지"
@@ -12290,7 +12293,6 @@ msgstr "당신의 면접 준비 파트너"
 msgid "Your Language Level"
 msgstr "당신의 언어 수준"
 
-#: src/features/Chat/SubmitForm.tsx:188
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"

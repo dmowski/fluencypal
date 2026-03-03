@@ -3551,6 +3551,7 @@ msgstr "報告の提出に失敗しました。このユーザーを報告する
 msgid "Failed to upload audio. Please try again."
 msgstr "音声のアップロードに失敗しました。もう一度お試しください。"
 
+#: src/features/Chat/RichTextEditor.tsx:46
 #: src/features/Game/UploadImageButton.tsx:47
 #: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
@@ -3614,6 +3615,7 @@ msgid "File size must be less than 250MB"
 msgstr "ファイルサイズは250MB未満である必要があります"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:46
+#: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
@@ -5259,7 +5261,7 @@ msgstr ""
 "いからです。プロジェクトはサーバーのためのお金がある限り存続します。そして、もしある日、私がそれらを維持できないほど貧しくなったら…まあ、もっと安いサー"
 "バーを借ります 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:178
+#: src/features/Chat/SubmitForm.tsx:185
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "あなたのメッセージのアイデア："
@@ -6469,7 +6471,7 @@ msgstr "ロード中。"
 msgid "Loading.."
 msgstr "読み込み中.."
 
-#: src/features/Chat/SubmitForm.tsx:88
+#: src/features/Chat/SubmitForm.tsx:95
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -7722,7 +7724,7 @@ msgstr "有効なメールアドレスを入力してください"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "ステップ1で親の詳細を記入し、すべてのチェックボックスを確認してください。"
 
-#: src/features/Chat/SubmitForm.tsx:416
+#: src/features/Chat/SubmitForm.tsx:414
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "長めのメッセージ（少なくとも数単語）を記録してください。"
@@ -7737,6 +7739,7 @@ msgstr "ページを更新して、もう一度試してください"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "有効なオーディオファイルを選択してください (MP3, WAV, OGG, または M4A)"
 
+#: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
@@ -8357,7 +8360,7 @@ msgstr "トップ5にランクインするとアプリを無料で入手でき�
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "トップ5にランクインして、全ての機能にフルアクセスしましょう！"
 
-#: src/features/Chat/SubmitForm.tsx:328
+#: src/features/Chat/SubmitForm.tsx:326
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -9105,8 +9108,8 @@ msgstr "メールを再送信"
 msgid "Send me sign-in link"
 msgstr "サインインリンクを送信してください。"
 
-#: src/features/Chat/SubmitForm.tsx:227
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:225
+#: src/features/Chat/SubmitForm.tsx:342
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "メッセージを送信"
@@ -9122,7 +9125,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "{messagesNeeded} 件のメッセージを送信して、完全なアクセスを解除"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:342
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -9792,7 +9795,7 @@ msgstr ""
 "いて尋ねられ、あなたの返答に基づいてAIが難易度を調整します。プロンプトを使用して、どのような職業インタビューでも引き立つような簡潔で説得力のある答えを"
 "提供する練習をしてみてください。"
 
-#: src/features/Chat/SubmitForm.tsx:304
+#: src/features/Chat/SubmitForm.tsx:302
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "ストップ"
@@ -12310,7 +12313,6 @@ msgstr "就職面接準備パートナー"
 msgid "Your Language Level"
 msgstr "あなたの言語レベル"
 
-#: src/features/Chat/SubmitForm.tsx:188
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"

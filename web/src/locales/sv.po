@@ -3756,6 +3756,7 @@ msgstr ""
 msgid "Failed to upload audio. Please try again."
 msgstr "Misslyckades med att ladda upp ljud. Vänligen försök igen."
 
+#: src/features/Chat/RichTextEditor.tsx:46
 #: src/features/Game/UploadImageButton.tsx:47
 #: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
@@ -3821,6 +3822,7 @@ msgid "File size must be less than 250MB"
 msgstr "Filstorleken måste vara mindre än 250 MB"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:46
+#: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
@@ -5612,7 +5614,7 @@ msgstr ""
 "Och om jag en dag är fattig nog att jag inte har råd med dem… tja, då hyr "
 "jag billigare servrar 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:178
+#: src/features/Chat/SubmitForm.tsx:185
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Idé för ditt meddelande:"
@@ -6914,7 +6916,7 @@ msgstr "Laddar."
 msgid "Loading.."
 msgstr "Laddar.."
 
-#: src/features/Chat/SubmitForm.tsx:88
+#: src/features/Chat/SubmitForm.tsx:95
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -8221,7 +8223,7 @@ msgstr "Vänligen ange en giltig e-postadress"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Var god fyll i föräldradetaljer och markera alla rutor i Steg 1."
 
-#: src/features/Chat/SubmitForm.tsx:416
+#: src/features/Chat/SubmitForm.tsx:414
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Vänligen spela in ett längre meddelande (åtminstone några ord)."
@@ -8236,6 +8238,7 @@ msgstr "Vänligen uppdatera sidan och försök en gång till"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Vänligen välj en giltig ljudfil (MP3, WAV, OGG eller M4A)"
 
+#: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
@@ -8882,7 +8885,7 @@ msgstr "Ranka bland de topp 5 för att få appen gratis"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Rankas bland de topp 5 för att få full tillgång till alla funktioner!"
 
-#: src/features/Chat/SubmitForm.tsx:328
+#: src/features/Chat/SubmitForm.tsx:326
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -9652,8 +9655,8 @@ msgstr "Skicka e-post igen"
 msgid "Send me sign-in link"
 msgstr "Skicka mig inloggningslänken"
 
-#: src/features/Chat/SubmitForm.tsx:227
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:225
+#: src/features/Chat/SubmitForm.tsx:342
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Skicka meddelande"
@@ -9669,7 +9672,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Skicka {messagesNeeded} meddelanden för att låsa upp fullständig åtkomst"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:342
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -10366,7 +10369,7 @@ msgstr ""
 "att leverera koncisa, övertygande svar som hjälper dig att sticka ut i alla "
 "jobbintervjuer."
 
-#: src/features/Chat/SubmitForm.tsx:304
+#: src/features/Chat/SubmitForm.tsx:302
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Stopp"
@@ -13028,7 +13031,6 @@ msgstr "Din partner för förberedelse inför jobbintervjun"
 msgid "Your Language Level"
 msgstr "Ditt Språknivå"
 
-#: src/features/Chat/SubmitForm.tsx:188
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"

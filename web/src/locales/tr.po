@@ -3762,6 +3762,7 @@ msgstr ""
 msgid "Failed to upload audio. Please try again."
 msgstr "Ses yükleme başarısız oldu. Lütfen tekrar deneyin."
 
+#: src/features/Chat/RichTextEditor.tsx:46
 #: src/features/Game/UploadImageButton.tsx:47
 #: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
@@ -3827,6 +3828,7 @@ msgid "File size must be less than 250MB"
 msgstr "Dosya boyutu 250MB'den küçük olmalıdır."
 
 #: src/features/Audio/UploadAudioFileButton.tsx:46
+#: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
@@ -5624,7 +5626,7 @@ msgstr ""
 "sürece yaşıyor. Ve bir gün o kadar fakirleşirsem ki bunları "
 "karşılayamazsam… o zaman daha ucuz sunucular kiralarım 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:178
+#: src/features/Chat/SubmitForm.tsx:185
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Mesajınız için fikir:"
@@ -6928,7 +6930,7 @@ msgstr "Yükleniyor."
 msgid "Loading.."
 msgstr "Yükleniyor.."
 
-#: src/features/Chat/SubmitForm.tsx:88
+#: src/features/Chat/SubmitForm.tsx:95
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -8237,7 +8239,7 @@ msgstr ""
 "Lütfen ebeveyn bilgilerini doldurun ve 1. Adım'daki tüm kutucukları "
 "işaretleyin."
 
-#: src/features/Chat/SubmitForm.tsx:416
+#: src/features/Chat/SubmitForm.tsx:414
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Lütfen daha uzun bir mesaj kaydedin (en az birkaç kelime)."
@@ -8252,6 +8254,7 @@ msgstr "Lütfen sayfayı yenileyin ve bir kez daha deneyin"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Lütfen geçerli bir ses dosyası seçin (MP3, WAV, OGG veya M4A)"
 
+#: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
@@ -8906,7 +8909,7 @@ msgstr "İlk 5 içinde yer alın ve uygulamayı ücretsiz olarak edinin"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "İlk 5'te yer alarak tüm özelliklere tam erişim sağlayın!"
 
-#: src/features/Chat/SubmitForm.tsx:328
+#: src/features/Chat/SubmitForm.tsx:326
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -9683,8 +9686,8 @@ msgstr "E-postayı tekrar gönder"
 msgid "Send me sign-in link"
 msgstr "Bana giriş bağlantısını gönder"
 
-#: src/features/Chat/SubmitForm.tsx:227
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:225
+#: src/features/Chat/SubmitForm.tsx:342
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Mesaj Gönder"
@@ -9700,7 +9703,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Tam erişimin kilidini açmak için {messagesNeeded} mesaj gönderin"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:342
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -10401,7 +10404,7 @@ msgstr ""
 "sizi öne çıkaracak, özlü ve ikna edici yanıtlar sunma pratiği yapmak için "
 "istemleri kullanın.\n"
 
-#: src/features/Chat/SubmitForm.tsx:304
+#: src/features/Chat/SubmitForm.tsx:302
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Dur"
@@ -13070,7 +13073,6 @@ msgstr "İş görüşmesi hazırlık ortağınız"
 msgid "Your Language Level"
 msgstr "Dil Seviyeniz"
 
-#: src/features/Chat/SubmitForm.tsx:188
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"

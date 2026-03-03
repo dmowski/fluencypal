@@ -3783,6 +3783,7 @@ msgstr ""
 msgid "Failed to upload audio. Please try again."
 msgstr "Không tải được âm thanh. Vui lòng thử lại."
 
+#: src/features/Chat/RichTextEditor.tsx:46
 #: src/features/Game/UploadImageButton.tsx:47
 #: src/features/Game/UploadImageButton.tsx:54
 #. js-lingui-explicit-id
@@ -3848,6 +3849,7 @@ msgid "File size must be less than 250MB"
 msgstr "Kích thước tệp phải nhỏ hơn 250MB"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:46
+#: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
@@ -5661,7 +5663,7 @@ msgstr ""
 "miễn là còn có tiền cho máy chủ. Và nếu một ngày nào đó tôi nghèo đến nỗi "
 "không thể chi trả cho chúng... thì, tôi sẽ thuê những máy chủ rẻ hơn 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:178
+#: src/features/Chat/SubmitForm.tsx:185
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Ý tưởng cho tin nhắn của bạn:"
@@ -6965,7 +6967,7 @@ msgstr "Đang tải."
 msgid "Loading.."
 msgstr "Đang tải.."
 
-#: src/features/Chat/SubmitForm.tsx:88
+#: src/features/Chat/SubmitForm.tsx:95
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -8284,7 +8286,7 @@ msgstr "Vui lòng nhập địa chỉ email hợp lệ"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Vui lòng điền thông tin bố mẹ và đánh dấu vào tất cả các ô trong Bước 1."
 
-#: src/features/Chat/SubmitForm.tsx:416
+#: src/features/Chat/SubmitForm.tsx:414
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Vui lòng ghi lại một thông điệp dài hơn (ít nhất vài từ)."
@@ -8299,6 +8301,7 @@ msgstr "Vui lòng làm mới trang và thử một lần nữa"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Vui lòng chọn tệp âm thanh hợp lệ (MP3, WAV, OGG, hoặc M4A)"
 
+#: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
 msgid "Please select a valid image file (JPEG, PNG, GIF, or WebP)"
@@ -8962,7 +8965,7 @@ msgstr "Đứng trong top 5 để nhận ứng dụng miễn phí"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Xếp hạng trong top 5 để có quyền truy cập đầy đủ vào tất cả các tính năng!"
 
-#: src/features/Chat/SubmitForm.tsx:328
+#: src/features/Chat/SubmitForm.tsx:326
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -9744,8 +9747,8 @@ msgstr "Gửi email lại"
 msgid "Send me sign-in link"
 msgstr "Gửi cho tôi liên kết đăng nhập"
 
-#: src/features/Chat/SubmitForm.tsx:227
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:225
+#: src/features/Chat/SubmitForm.tsx:342
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Gửi Tin Nhắn"
@@ -9761,7 +9764,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Gửi {messagesNeeded} tin nhắn để mở khóa truy cập đầy đủ"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:344
+#: src/features/Chat/SubmitForm.tsx:342
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -10464,7 +10467,7 @@ msgstr ""
 "đưa ra các câu trả lời ngắn gọn, thuyết phục giúp bạn nổi bật trong bất kỳ "
 "cuộc phỏng vấn công việc nào."
 
-#: src/features/Chat/SubmitForm.tsx:304
+#: src/features/Chat/SubmitForm.tsx:302
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Dừng"
@@ -13155,7 +13158,6 @@ msgstr "Người bạn đồng hành chuẩn bị phỏng vấn xin việc của
 msgid "Your Language Level"
 msgstr "Mức độ ngôn ngữ của bạn"
 
-#: src/features/Chat/SubmitForm.tsx:188
 #: src/features/Conversation/ProcessUserInput.tsx:108
 #. js-lingui-explicit-id
 msgid "Your Message"
