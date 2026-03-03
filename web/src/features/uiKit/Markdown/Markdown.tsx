@@ -425,17 +425,26 @@ const markdownComponentsChat: MarkdownToJSX.Overrides = {
       return null;
     }
 
+    const size = '200px';
+
     return (
       <Stack
         sx={{
-          width: '140px',
+          width: size,
+          height: size,
+          alignContent: 'center',
+          justifyContent: 'center',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          borderRadius: '8px',
+          padding: '5px',
+          backgroundColor: 'rgba(0, 0, 0, 0.1)',
         }}
       >
         <AttachmentImage
           url={src}
           canDelete={false}
           onDelete={() => {}}
-          size="140px"
+          size={size}
           objectFit="contain"
         />
       </Stack>

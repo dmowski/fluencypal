@@ -60,6 +60,11 @@ export function RichTextEditor({ value, onChange }: RichTextEditorProps) {
           borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
           borderRadius: '3px 3px 0 0',
         },
+        '.mdxeditor img': {
+          width: '140px',
+          maxWidth: '140px',
+          height: 'auto',
+        },
       }}
     >
       <MDXEditor
