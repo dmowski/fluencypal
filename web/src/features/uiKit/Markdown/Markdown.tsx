@@ -3,6 +3,7 @@
 import { Checkbox, Link, Stack, Typography } from '@mui/material';
 import { MarkdownToJSX, default as MarkdownTool } from 'markdown-to-jsx';
 import React from 'react';
+import { AttachmentImage } from '@/features/Chat/Message/AttachmentImage';
 
 type MdVariantVariant = 'small' | 'normal' | 'conversation' | 'blog' | 'chat';
 export interface MarkdownProps {
@@ -418,6 +419,28 @@ const markdownComponentsChat: MarkdownToJSX.Overrides = {
       {children}
     </Stack>
   ),
+
+  img: ({ src }) => {
+    if (!src || typeof src !== 'string') {
+      return null;
+    }
+
+    return (
+      <Stack
+        sx={{
+          width: '140px',
+        }}
+      >
+        <AttachmentImage
+          url={src}
+          canDelete={false}
+          onDelete={() => {}}
+          size="140px"
+          objectFit="contain"
+        />
+      </Stack>
+    );
+  },
 };
 
 const styleVariationMap: Record<MdVariantVariant, MarkdownToJSX.Overrides> = {
