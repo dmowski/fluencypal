@@ -144,7 +144,7 @@ Provide only the message user can send, without any additional explanation or co
         alignItems: 'flex-start',
         padding: '15px',
         '@media (max-width: 600px)': {
-          padding: '20px 0px',
+          padding: '20px 5px',
         },
       }}
     >
