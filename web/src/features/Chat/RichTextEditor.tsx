@@ -26,7 +26,11 @@ export function RichTextEditor({ value, onChange }: RichTextEditorProps) {
       sx={{
         border: '1px solid rgba(255, 255, 255, 0.3)',
         borderRadius: '3px',
-        backgroundColor: 'rgba(255, 255, 255, 0.01)',
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        '.mdxeditor-toolbar': {
+          borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
+          borderRadius: '3px 3px 0 0',
+        },
       }}
     >
       <MDXEditor

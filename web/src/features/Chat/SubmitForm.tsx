@@ -16,6 +16,7 @@ import { UploadVideoButton } from '../Video/UploadVideoButton';
 import { AttachmentVideo } from './Message/AttachmentVideo';
 import { AttachmentImage } from './Message/AttachmentImage';
 import { RichTextEditor } from './RichTextEditor';
+import { sleep } from '@/libs/sleep';
 
 interface SubmitFormProps {
   onSubmit: (message: string, attachments: ThreadsMessageAttachment[]) => Promise<void>;
@@ -80,6 +81,11 @@ export function SubmitForm({
     setAttachments([]);
     setTextMessage('');
     setPreSubmitTextMessage('');
+
+    // set mode
+    setIsTextMode(false);
+    await sleep(10);
+    setIsTextMode(true);
   };
 
   const [ideaForMessage, setIdeaForMessage] = useState('');
