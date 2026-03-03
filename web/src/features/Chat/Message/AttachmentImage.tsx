@@ -9,11 +9,13 @@ export const AttachmentImage = ({
   onDelete,
   canDelete,
   size = '80px',
+  objectFit = 'cover',
 }: {
   url: string;
   onDelete: () => void;
   canDelete: boolean;
   size?: string;
+  objectFit?: 'cover' | 'contain';
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -41,7 +43,7 @@ export const AttachmentImage = ({
             fill
             sizes={size}
             style={{
-              objectFit: 'cover',
+              objectFit: objectFit,
               zIndex: 1,
               borderRadius: '8px',
             }}
