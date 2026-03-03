@@ -4,10 +4,12 @@ import { UploadTest } from './UploadTest';
 import Stack from '@mui/material/Stack';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { TestForm } from './TestForm';
 
 export const TestPage = () => {
   const testPages: Record<string, React.ReactNode> = {
     upload: <UploadTest />,
+    form: <TestForm />,
   };
 
   const [page, setPage] = useUrlState<string>('testPage', 'upload', true);
