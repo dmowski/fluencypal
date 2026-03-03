@@ -32,6 +32,23 @@ export const SpaceButton = ({
       sx={{
         position: 'relative',
         width: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        background: 'rgba(255, 255, 255, 0.01)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        gap: '20px',
+        padding: '0 20px',
+        borderRadius: '12px',
+        display: 'grid',
+        gridTemplateColumns: '1fr max-content',
+        '@media (max-width: 600px)': {
+          gap: '10px',
+          padding: '0 10px',
+          borderRadius: '0px',
+          borderLeft: 'none',
+          borderRight: 'none',
+          background: 'rgba(255, 255, 255, 0.04)',
+        },
       }}
     >
       <Stack
@@ -41,19 +58,30 @@ export const SpaceButton = ({
           textAlign: 'left',
           width: '100%',
           color: '#fff',
+          padding: '20px 0',
+          border: 'none',
+          margin: 0,
+          backgroundColor: 'transparent',
           borderRadius: '8px',
-          padding: '15px',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          backgroundColor: '#111',
           cursor: 'pointer',
+          alignItems: 'flex-start',
+          gap: '5px',
+          '@media (max-width: 600px)': {
+            gap: '10px',
+            padding: '30px 0',
+          },
         }}
       >
-        <Badge badgeContent={unreadCount} color={isBookmarked ? 'error' : 'primary'}>
+        <Badge badgeContent={unreadCount} color={isBookmarked ? 'error' : 'primary'} sx={{}}>
           <Typography
             variant="h5"
             component={'span'}
             sx={{
               fontWeight: 700,
+              padding: '0 15px 0 0',
+              '@media (max-width: 600px)': {
+                fontSize: '1.1rem',
+              },
             }}
           >
             {space.title}
@@ -65,34 +93,11 @@ export const SpaceButton = ({
 
       <Stack
         sx={{
-          position: 'absolute',
-          bottom: '10px',
-          right: '10px',
           flexDirection: 'row',
-          alignItems: 'center',
-          gap: '5px',
+          gap: '8px',
         }}
       >
-        {isCreator && onEditSpace && (
-          <IconButton
-            size="small"
-            onClick={(event) => {
-              event.preventDefault();
-              event.stopPropagation();
-              onEditSpace(space);
-            }}
-            sx={{
-              color: '#fff',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              backgroundColor: 'rgba(0, 0, 0, 0.2)',
-            }}
-          >
-            <EditIcon fontSize="small" />
-          </IconButton>
-        )}
-
         <IconButton
-          size="small"
           onClick={(event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -101,17 +106,27 @@ export const SpaceButton = ({
           sx={{
             color: isBookmarked ? '#0abefa' : '#fff',
             border: isBookmarked
-              ? '1px solid rgba(17, 229, 236, 0.3)'
-              : '1px solid rgba(255, 255, 255, 0.1)',
-            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+              ? '1px solid rgba(17, 229, 236, 0)'
+              : '1px solid rgba(255, 255, 255, 0)',
           }}
         >
-          {isBookmarked ? (
-            <BookmarkIcon fontSize="small" />
-          ) : (
-            <BookmarkBorderIcon fontSize="small" />
-          )}
+          {isBookmarked ? <BookmarkIcon /> : <BookmarkBorderIcon />}
         </IconButton>
+
+        {isCreator && onEditSpace && (
+          <IconButton
+            onClick={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              onEditSpace(space);
+            }}
+            sx={{
+              color: '#fff',
+            }}
+          >
+            <EditIcon />
+          </IconButton>
+        )}
       </Stack>
     </Stack>
   );
