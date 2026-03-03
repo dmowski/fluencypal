@@ -8,7 +8,7 @@ import StopIcon from '@mui/icons-material/Stop';
 import MicIcon from '@mui/icons-material/Mic';
 import { useEffect, useState } from 'react';
 import { ProcessUserInput } from '../Conversation/ProcessUserInput';
-import { Keyboard, Lightbulb, Mic, TextSearch, Trash } from 'lucide-react';
+import { CircleEllipsis, Keyboard, Lightbulb, Mic, TextSearch, Trash } from 'lucide-react';
 import { useTextAi } from '../Ai/useTextAi';
 import { ThreadsMessageAttachment } from './type';
 import { UploadImageButton } from '../Game/UploadImageButton';
@@ -64,6 +64,8 @@ export function SubmitForm({
   const [isTextMode, setIsTextMode] = useState(false);
   const [textMessage, setTextMessage] = useState('');
   const [preSubmitTextMessage, setPreSubmitTextMessage] = useState('');
+
+  const [isShowMoreOptions, setIsShowMoreOptions] = useState(false);
 
   const onPreSubmitTextMessage = async () => {
     setPreSubmitTextMessage(textMessage.trim());
@@ -198,29 +200,17 @@ Provide only the message user can send, without any additional explanation or co
             sx={{
               flexDirection: 'row',
               display: 'grid',
-              gridTemplateColumns: 'auto 1fr auto',
+              gridTemplateColumns: '1fr auto',
               gap: '10px',
             }}
           >
-            <Stack
-              sx={{
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <IconButton
-                onClick={() => setIsTextMode(!isTextMode)}
-                disabled={recorder.isRecording || recorder.isTranscribing || isLoading}
-              >
-                <Mic size={'18px'} color={'rgba(200, 200, 200, 1)'} />
-              </IconButton>
-            </Stack>
-
             <Button
               variant="contained"
               onClick={async () => submitTextMessage()}
               disabled={textMessage.trim() === ''}
               endIcon={<SendIcon />}
+              color="info"
+              size="large"
               sx={{
                 width: '100%',
               }}
@@ -235,21 +225,45 @@ Provide only the message user can send, without any additional explanation or co
                 flexDirection: 'row',
               }}
             >
-              <UploadImageButton type="icon" onNewUploadUrl={(url) => addImage(url)} />
-              <UploadVideoButton type="icon" onNewUploadUrl={(url) => addVideo(url)} />
+              <Stack
+                sx={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <IconButton
+                  onClick={() => setIsTextMode(!isTextMode)}
+                  disabled={recorder.isRecording || recorder.isTranscribing || isLoading}
+                >
+                  <Mic size={'18px'} color={'rgba(200, 200, 200, 1)'} />
+                </IconButton>
+              </Stack>
 
-              <IconButton
-                onClick={generateIdeasForMessage}
-                disabled={isGeneratingIdea || !previousBotMessage}
-              >
-                <Lightbulb size={'18px'} color={'rgba(200, 200, 200, 1)'} />
-              </IconButton>
-              <IconButton
-                onClick={async () => onPreSubmitTextMessage()}
-                disabled={textMessage.trim() === ''}
-              >
-                <TextSearch size={'18px'} color={'rgba(200, 200, 200, 1)'} />
-              </IconButton>
+              {!isShowMoreOptions && (
+                <IconButton onClick={() => setIsShowMoreOptions(true)} sx={{}}>
+                  <CircleEllipsis size={'18px'} color="rgba(255, 255, 255, 0.5)" />
+                </IconButton>
+              )}
+
+              {isShowMoreOptions && (
+                <>
+                  <UploadImageButton type="icon" onNewUploadUrl={(url) => addImage(url)} />
+                  <UploadVideoButton type="icon" onNewUploadUrl={(url) => addVideo(url)} />
+
+                  <IconButton
+                    onClick={generateIdeasForMessage}
+                    disabled={isGeneratingIdea || !previousBotMessage}
+                  >
+                    <Lightbulb size={'18px'} color={'rgba(200, 200, 200, 1)'} />
+                  </IconButton>
+                  <IconButton
+                    onClick={async () => onPreSubmitTextMessage()}
+                    disabled={textMessage.trim() === ''}
+                  >
+                    <TextSearch size={'18px'} color={'rgba(200, 200, 200, 1)'} />
+                  </IconButton>
+                </>
+              )}
             </Stack>
           </Stack>
         </Stack>
@@ -269,21 +283,6 @@ Provide only the message user can send, without any additional explanation or co
               alignItems: 'center',
             }}
           >
-            {!recorder.transcription && !recorder.isTranscribing && !recorder.isRecording && (
-              <IconButton
-                onClick={() => setIsTextMode(!isTextMode)}
-                disabled={recorder.isRecording || recorder.isTranscribing || isLoading}
-                sx={{
-                  marginRight: '10px',
-                }}
-              >
-                <Keyboard
-                  size={'18px'}
-                  color={isTextMode ? 'rgba(0, 150, 255, 1)' : 'rgba(200, 200, 200, 1)'}
-                />
-              </IconButton>
-            )}
-
             {(!recorder.transcription || recorder.isTranscribing || recorder.isRecording) && (
               <Button
                 disabled={recorder.isTranscribing || isLoading}
@@ -318,6 +317,7 @@ Provide only the message user can send, without any additional explanation or co
                 <Button
                   variant="outlined"
                   color="info"
+                  size="large"
                   disabled={
                     needMoreText || recorder.isTranscribing || recorder.isRecording || isLoading
                   }
@@ -332,6 +332,7 @@ Provide only the message user can send, without any additional explanation or co
                 <Button
                   variant="contained"
                   color="info"
+                  size="large"
                   disabled={
                     needMoreText ||
                     recorder.isTranscribing ||
@@ -370,14 +371,35 @@ Provide only the message user can send, without any additional explanation or co
                   sx={{
                     width: '100%',
                     paddingLeft: '10px',
-                    '@media (max-width: 600px)': {
-                      display: 'none',
-                    },
+
                     flexDirection: 'row',
                   }}
                 >
-                  <UploadImageButton type="icon" onNewUploadUrl={(url) => addImage(url)} />
-                  <UploadVideoButton type="icon" onNewUploadUrl={(url) => addVideo(url)} />
+                  {!recorder.transcription && !recorder.isTranscribing && !recorder.isRecording && (
+                    <IconButton
+                      onClick={() => setIsTextMode(!isTextMode)}
+                      disabled={recorder.isRecording || recorder.isTranscribing || isLoading}
+                      sx={{}}
+                    >
+                      <Keyboard
+                        size={'18px'}
+                        color={isTextMode ? 'rgba(0, 150, 255, 1)' : 'rgba(255, 255, 255, 1)'}
+                      />
+                    </IconButton>
+                  )}
+
+                  {!isShowMoreOptions && (
+                    <IconButton onClick={() => setIsShowMoreOptions(true)} sx={{}}>
+                      <CircleEllipsis size={'18px'} color="rgba(255, 255, 255, 0.5)" />
+                    </IconButton>
+                  )}
+
+                  {isShowMoreOptions && (
+                    <UploadImageButton type="icon" onNewUploadUrl={(url) => addImage(url)} />
+                  )}
+                  {isShowMoreOptions && (
+                    <UploadVideoButton type="icon" onNewUploadUrl={(url) => addVideo(url)} />
+                  )}
                 </Stack>
               )}
 
