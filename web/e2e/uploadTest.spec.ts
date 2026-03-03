@@ -16,7 +16,7 @@ test('upload test page converts and uploads video', async ({ page }) => {
     await dialog.accept();
   });
 
-  await page.goto('/uploadTest');
+  await page.goto('/testUi');
 
   const videoInput = page.locator('input[type="file"][accept*="video"]');
   await expect(videoInput).toHaveCount(1);
