@@ -141,6 +141,9 @@ Provide only the message user can send, without any additional explanation or co
         gap: '20px',
         alignItems: 'flex-start',
         padding: '15px',
+        '@media (max-width: 600px)': {
+          padding: '20px 0px',
+        },
       }}
     >
       {(recorder.transcription ||
