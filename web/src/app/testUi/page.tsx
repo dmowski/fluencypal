@@ -2,6 +2,7 @@
 
 import { AuthProvider } from '@/features/Auth/useAuth';
 import { TestPage } from './testComponents/TestPage';
+import { Suspense } from 'react';
 
 export default function UploadTestPage() {
   return (
@@ -11,7 +12,9 @@ export default function UploadTestPage() {
       </head>
       <body>
         <AuthProvider>
-          <TestPage />
+          <Suspense fallback={<div>Loading...</div>}>
+            <TestPage />
+          </Suspense>
         </AuthProvider>
       </body>
     </html>
