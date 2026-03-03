@@ -5,7 +5,9 @@ import {
   MDXEditor,
   BoldItalicUnderlineToggles,
   BlockTypeSelect,
+  InsertCodeBlock,
   ListsToggle,
+  codeBlockPlugin,
   headingsPlugin,
   listsPlugin,
   markdownShortcutPlugin,
@@ -36,7 +38,7 @@ export function RichTextEditor({ value, onChange }: RichTextEditorProps) {
               <>
                 <BoldItalicUnderlineToggles />
                 <BlockTypeSelect />
-                <ListsToggle />
+                <ListsToggle options={['bullet', 'number']} />
               </>
             ),
           }),
