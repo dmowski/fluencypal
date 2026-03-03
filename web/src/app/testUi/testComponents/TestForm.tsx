@@ -2,7 +2,6 @@
 import { PracticeProvider } from '@/app/practiceProvider';
 import { SubmitForm } from '@/features/Chat/SubmitForm';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
-import { UsageProvider } from '@/features/Usage/useUsage';
 import { Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 
