@@ -429,6 +429,7 @@ const markdownComponentsChat: MarkdownToJSX.Overrides = {
 
     return (
       <Stack
+        component={'span'}
         sx={{
           width: size,
           height: size,

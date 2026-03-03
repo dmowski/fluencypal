@@ -25,8 +25,10 @@ export const AttachmentImage = ({
         sx={{
           position: 'relative',
         }}
+        component={'span'}
       >
         <Stack
+          component={'span'}
           sx={{
             width: size,
             height: size,
