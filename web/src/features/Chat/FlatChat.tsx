@@ -57,31 +57,31 @@ export const FlatChat = ({}: {}) => {
               isChain={index < all.length - 1}
             />
           ))}
-
-          <Stack
-            sx={{
-              borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-            }}
-          >
-            <SubmitForm
-              onSubmit={async (message, attachments) => {
-                await chat.addMessage({
-                  messageContent: message,
-                  parentMessageId: '',
-                  attachments,
-                });
-              }}
-              isLoading={chat.loading}
-              recordMessageTitle={i18n._('Record your message')}
-              setIsActiveRecording={() => {}}
-              previousBotMessage={''}
-            />
-          </Stack>
         </Stack>
       )}
       {chat.messages.length === 0 && (
         <NoMessagesPlaceholder noMessagesPlaceholder={i18n._('No messages yet')} />
       )}
+
+      <Stack
+        sx={{
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        }}
+      >
+        <SubmitForm
+          onSubmit={async (message, attachments) => {
+            await chat.addMessage({
+              messageContent: message,
+              parentMessageId: '',
+              attachments,
+            });
+          }}
+          isLoading={chat.loading}
+          recordMessageTitle={i18n._('Record your message')}
+          setIsActiveRecording={() => {}}
+          previousBotMessage={''}
+        />
+      </Stack>
     </Stack>
   );
 };

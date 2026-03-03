@@ -7,6 +7,7 @@ import { FaqItem } from '../Landing/FAQ/FaqItem';
 import { ReceiptText, Cookie } from 'lucide-react';
 import { ContactList } from '../Landing/Contact/ContactList';
 import { getUrlStart } from '../Lang/getUrlStart';
+import { FlatChat } from '../Chat/FlatChat';
 
 const supportUserId = 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2';
 
@@ -51,11 +52,7 @@ export const SupportPage = () => {
           type: 'privateChat',
         }}
       >
-        <ChatSection
-          contextForAiAnalysis=""
-          placeholder={i18n._('Add your problem here...')}
-          noMessagesPlaceholder={i18n._('No support messages yet')}
-        />
+        <FlatChat />
       </ChatProvider>
 
       <Stack
