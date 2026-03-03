@@ -7,10 +7,8 @@ import { UploadVideoButton } from '@/features/Video/UploadVideoButton';
 import { AuthProvider, useAuth } from '@/features/Auth/useAuth';
 import { sendUploadFileRequest } from '@/app/api/uploadFile/sendUploadFileRequest';
 import { VideoConverter } from '@/features/Video/videoConverter';
-import { PracticeProvider } from '../practiceProvider';
-import { AuthWall } from '@/features/Auth/AuthWall';
 
-function UploadTest() {
+export function UploadTest() {
   const auth = useAuth();
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
@@ -310,20 +308,5 @@ function UploadTest() {
         </Stack>
       )}
     </>
-  );
-}
-
-export default function UploadTestPage() {
-  return (
-    <html lang="en">
-      <head>
-        <meta name="robots" content="noindex, nofollow" />
-      </head>
-      <body>
-        <AuthProvider>
-          <UploadTest />
-        </AuthProvider>
-      </body>
-    </html>
   );
 }
