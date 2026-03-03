@@ -80,7 +80,6 @@ export function Dashboard({ lang }: DashboardProps) {
               )}
 
               <JustTalkCard />
-              <Stories />
 
               {access.isFullAppAccess && access.isExpiringSoon && (
                 <AccessBadge
@@ -97,6 +96,8 @@ export function Dashboard({ lang }: DashboardProps) {
               )}
 
               <PlanDashboardCards lang={lang} />
+
+              <Stories />
 
               <StreaksDaysBadge />
             </>
