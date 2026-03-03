@@ -1,6 +1,6 @@
 'use client';
 
-import { Stack, Typography, Button, IconButton, TextField } from '@mui/material';
+import { Stack, Typography, Button, IconButton } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAudioRecorder } from '../Audio/useAudioRecorder';
 import SendIcon from '@mui/icons-material/Send';
@@ -15,6 +15,7 @@ import { UploadImageButton } from '../Game/UploadImageButton';
 import { UploadVideoButton } from '../Video/UploadVideoButton';
 import { AttachmentVideo } from './Message/AttachmentVideo';
 import { AttachmentImage } from './Message/AttachmentImage';
+import { RichTextEditor } from './RichTextEditor';
 
 interface SubmitFormProps {
   onSubmit: (message: string, attachments: ThreadsMessageAttachment[]) => Promise<void>;
@@ -182,16 +183,7 @@ Provide only the message user can send, without any additional explanation or co
               </Typography>
             </Stack>
           )}
-          <TextField
-            placeholder={i18n._('')}
-            value={textMessage}
-            label={i18n._('Your Message')}
-            multiline
-            minRows={4}
-            maxRows={10}
-            fullWidth
-            onChange={(e) => onChangeTextMessage(e.target.value || '')}
-          />
+          <RichTextEditor value={textMessage} onChange={onChangeTextMessage} />
 
           <Stack
             sx={{
