@@ -5,12 +5,11 @@ import {
   MDXEditor,
   BoldItalicUnderlineToggles,
   BlockTypeSelect,
-  InsertCodeBlock,
   ListsToggle,
-  codeBlockPlugin,
   headingsPlugin,
   listsPlugin,
   markdownShortcutPlugin,
+  quotePlugin,
   toolbarPlugin,
 } from '@mdxeditor/editor';
 import '@mdxeditor/editor/style.css';
@@ -45,6 +44,7 @@ export function RichTextEditor({ value, onChange }: RichTextEditorProps) {
           headingsPlugin({
             allowedHeadingLevels: [1, 2, 3, 4],
           }),
+          quotePlugin(),
           listsPlugin(),
           markdownShortcutPlugin(),
         ]}
