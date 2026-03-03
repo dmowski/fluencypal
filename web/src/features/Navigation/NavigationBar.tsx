@@ -94,11 +94,7 @@ export const NavigationBar: React.FC = () => {
           name: 'community',
           icon: Users,
           title: i18n._('Community'),
-          badge: !access.canUseCommunity
-            ? undefined
-            : chatList.myUnreadCount +
-              chatList.unreadCountGlobal +
-              battles.countOfBattlesNeedToAttention,
+          badge: !access.canUseCommunity ? undefined : chatList.myUnreadCount,
         },
         {
           name: 'role-play',
