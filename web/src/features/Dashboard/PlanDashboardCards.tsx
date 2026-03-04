@@ -62,8 +62,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     rule: i18n._(`Rule`),
   };
 
-  const goalDescription = plan.activeGoal?.title;
-
   const sortedElements = useMemo(() => {
     return plan.activeGoal?.elements || [];
   }, [plan.activeGoal?.elements]);
@@ -250,37 +248,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 </Menu>
               )}
             </Stack>
-          </Stack>
-        </Stack>
-
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            gap: '5px',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            width: '100%',
-          }}
-        >
-          <Stack
-            sx={{
-              flexDirection: 'column',
-              alignItems: 'center',
-              width: '100%',
-              justifyContent: 'center',
-            }}
-          >
-            {goalDescription && (
-              <Typography
-                align="center"
-                sx={{
-                  opacity: 0.8,
-                }}
-                variant="caption"
-              >
-                {goalDescription}
-              </Typography>
-            )}
           </Stack>
         </Stack>
       </Stack>
