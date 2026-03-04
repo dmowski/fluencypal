@@ -554,12 +554,10 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     const conversationText = conversationMessages
       .map((message) => `${message.isBot ? 'Ai' : 'User'}: ${message.text}`)
       .join('\n');
-    const extractedRecords = await userInfo.extractUserRecordsFromText?.(conversationText);
-    const userRecords = (extractedRecords || []).map((record) => record.value);
+    const extractedRecordsRequest = userInfo.extractUserRecordsFromText?.(conversationText);
     const goal = await plan.generateGoal({
       languageCode: languageToLearn,
       conversationMessages: conversationMessages,
-      userInfo: userRecords,
     });
     const exampleOfWelcomeMessage = await generateExampleRequest;
 
@@ -576,7 +574,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
         ...surveyRef.current,
         goalData: goal,
         goalHash: finalSurveyHash,
-        advancedUserRecords: extractedRecords || [],
+        advancedUserRecords: (await extractedRecordsRequest) || [],
         exampleOfWelcomeMessage:
           exampleOfWelcomeMessage || (surveyRef.current || survey).exampleOfWelcomeMessage || '',
       },

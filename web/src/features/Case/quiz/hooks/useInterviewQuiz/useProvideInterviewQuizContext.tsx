@@ -216,15 +216,9 @@ export function useProvideInterviewQuizContext({
           })
           .flat();
 
-        const conversationText = conversationMessages
-          .map((message) => `${message.isBot ? 'Ai' : 'User'}: ${message.text}`)
-          .join('\n');
-        const extractedRecords = await userInfo.extractUserRecordsFromText?.(conversationText);
-        const userRecords = (extractedRecords || []).map((record) => record.value);
         const goal = await plan.generateGoal({
           languageCode: lang,
           conversationMessages: conversationMessages,
-          userInfo: userRecords,
           aiSystemMessage: stepSystemMessage,
         });
         practicePlan = goal;

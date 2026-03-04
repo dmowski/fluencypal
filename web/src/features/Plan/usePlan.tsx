@@ -28,6 +28,7 @@ import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang
 import { GoalQuiz } from '@/app/api/goal/types';
 import { uniq } from '@/libs/uniq';
 import { useUrlState } from '../Url/useUrlState';
+import { AdvancedUserRecord } from '@/common/userInfo';
 
 const appActivities = `The app supports the following activity types:
 * words: Practice vocabulary related to a specific topic
@@ -71,7 +72,6 @@ const exampleOfPlan = `Example of plan:
 
 interface GenerateGoalProps {
   conversationMessages: ConversationMessage[];
-  userInfo: string[];
   languageCode: SupportedLanguage;
   goalQuiz?: GoalQuiz;
   aiSystemMessage?: string;
