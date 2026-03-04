@@ -73,7 +73,6 @@ const exampleOfPlan = `Example of plan:
 interface GenerateGoalProps {
   context: string;
   languageCode: SupportedLanguage;
-
   aiSystemMessage?: string;
 }
 
