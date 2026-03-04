@@ -1,4 +1,4 @@
-import { IconButton, Stack, Tooltip } from '@mui/material';
+import { IconButton, Stack, Tooltip, Typography } from '@mui/material';
 import { CircleQuestionMark, Lock } from 'lucide-react';
 import LockIcon from '@mui/icons-material/Lock';
 import { useLingui } from '@lingui/react';
@@ -29,7 +29,22 @@ export const FooterButton = ({
         placement="top"
         open={isLocked ? true : false}
         arrow
-        title={isLocked ? `LIMITED` : ''}
+        title={
+          isLocked ? (
+            <Typography
+              variant="caption"
+              sx={{
+                fontSize: '13px',
+                padding: '8px 0',
+                fontWeight: 600,
+              }}
+            >
+              {i18n._('Unlock full access to continue')}
+            </Typography>
+          ) : (
+            ''
+          )
+        }
         slotProps={{
           popper: {
             sx: {
@@ -46,12 +61,12 @@ export const FooterButton = ({
           },
           tooltip: {
             sx: {
-              background: 'linear-gradient(145deg, rgb(163, 10, 10), rgb(58, 2, 60))',
+              background: 'linear-gradient(145deg, rgb(10, 163, 104), rgb(10, 163, 104))',
             },
           },
           arrow: {
             sx: {
-              color: 'rgba(94, 5, 43, 1)',
+              color: 'rgb(10, 163, 104)',
             },
           },
         }}
@@ -61,7 +76,7 @@ export const FooterButton = ({
             sx={{
               boxShadow: isLocked ? '0 0 0 2px rgba(222, 222, 222, 0)' : 'none',
               background: isLocked
-                ? 'linear-gradient(145deg, rgb(163, 10, 10), rgb(58, 2, 60))'
+                ? 'rgb(10, 163, 104)'
                 : isActive
                   ? 'rgba(100, 100, 100, 0.4)'
                   : 'rgb(250 222 220)',
