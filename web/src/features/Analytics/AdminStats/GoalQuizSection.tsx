@@ -67,29 +67,6 @@ export function GoalQuizSection({ goalQuiz2, aiUserInfo, onGoalClick }: GoalQuiz
           <Typography variant="body1">{goalQuiz2[0]?.goalUserTranscription || ''}</Typography>
         </Stack>
 
-        {aiUserInfo?.records && (
-          <details open>
-            <summary>AI User Info Records ({aiUserInfo.records.length})</summary>
-
-            <Stack sx={{ gap: '10px', paddingTop: '10px' }}>
-              {aiUserInfo?.records.map((record, index) => (
-                <Typography
-                  key={index}
-                  variant="body1"
-                  sx={{
-                    padding: '8px',
-                    borderRadius: '4px',
-                    fontSize: '18px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                  }}
-                >
-                  {record}
-                </Typography>
-              ))}
-            </Stack>
-          </details>
-        )}
-
         {aiUserInfo?.advancedRecords && (
           <details open>
             <summary>AI User Info Advanced Records ({aiUserInfo.advancedRecords.length})</summary>

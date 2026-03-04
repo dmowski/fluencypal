@@ -193,8 +193,8 @@ function useProvideRolePlay({
     }
 
     const userInfoString =
-      isNeedUserInfo && userInfo.userInfo?.records.length
-        ? '\n\nUser Info:' + userInfo.userInfo?.records.join(', ')
+      isNeedUserInfo && userInfo.advancedUserRecords
+        ? '\n\nUser Info:' + userInfo.advancedUserRecords
         : '';
     const systemMessage = aiSummarizingInstruction + requiredFields.join(', ') + userInfoString;
 

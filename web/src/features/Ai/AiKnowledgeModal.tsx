@@ -7,6 +7,8 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useAiUserInfo } from './useAiUserInfo';
 import { AiKnowledgeRecordRow } from './AiKnowledgeRecordRow';
 import { AiKnowledgeNewRecord } from './AiKnowledgeNewRecord';
+import { AdvancedUserRecord } from '@/common/userInfo';
+import dayjs from 'dayjs';
 
 interface AiKnowledgeModalProps {
   onClose: () => void;
@@ -16,20 +18,21 @@ export const AiKnowledgeModal = ({ onClose }: AiKnowledgeModalProps) => {
   const { i18n } = useLingui();
   const aiUserInfo = useAiUserInfo();
 
-  const recordsSignature = aiUserInfo.userInfo?.records?.join('|') || '';
+  const recordsSignature =
+    aiUserInfo.userInfo?.advancedRecords.map((r) => r.value)?.join('|') || '';
 
-  const [recordsDraft, setRecordsDraft] = useState<string[]>([]);
+  const [recordsDraft, setRecordsDraft] = useState<AdvancedUserRecord[]>([]);
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
-    setRecordsDraft(aiUserInfo.userInfo?.records || []);
-  }, [recordsSignature, aiUserInfo.userInfo?.records]);
+    setRecordsDraft(aiUserInfo.userInfo?.advancedRecords || []);
+  }, [recordsSignature, aiUserInfo.userInfo?.advancedRecords]);
 
-  const persistRecords = async (nextRecords: string[]) => {
+  const persistRecords = async (nextRecords: AdvancedUserRecord[]) => {
     setRecordsDraft(nextRecords);
     setIsSaving(true);
     try {
-      await aiUserInfo.setUserRecords(nextRecords);
+      await aiUserInfo.updateAllRecords(nextRecords);
     } catch (error) {
       console.error('Error saving AI user records', error);
     } finally {
@@ -43,7 +46,11 @@ export const AiKnowledgeModal = ({ onClose }: AiKnowledgeModalProps) => {
       return handleDeleteRecord(index);
     }
 
-    const nextRecords = recordsDraft.map((record, i) => (i === index ? trimmedRecord : record));
+    const dayIso = dayjs().format('YYYY-MM-DD');
+
+    const nextRecords = recordsDraft.map((record, i) =>
+      i === index ? { createdAtDayIso: dayIso, value: trimmedRecord } : record,
+    );
     await persistRecords(nextRecords);
   };
 
@@ -121,7 +128,13 @@ export const AiKnowledgeModal = ({ onClose }: AiKnowledgeModalProps) => {
           disabled={isSaving}
           onAdd={async (value) => {
             if (!value.trim()) return;
-            await persistRecords([...recordsDraft, value.trim()]);
+            await persistRecords([
+              ...recordsDraft,
+              {
+                value: value.trim(),
+                createdAtDayIso: dayjs().format('YYYY-MM-DD'),
+              },
+            ]);
           }}
           addLabel={i18n._('Add note')}
           heading={i18n._('Add new note')}

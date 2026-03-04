@@ -3,9 +3,10 @@
 import { useEffect, useState } from 'react';
 import { Button, IconButton, Stack, TextField, Typography } from '@mui/material';
 import { Check, Edit3, Trash } from 'lucide-react';
+import { AdvancedUserRecord } from '@/common/userInfo';
 
 interface AiKnowledgeRecordRowProps {
-  record: string;
+  record: AdvancedUserRecord;
   index: number;
   onSave: (index: number, value: string) => Promise<void>;
   onDelete: (index: number) => Promise<void>;
@@ -28,10 +29,10 @@ export const AiKnowledgeRecordRow = ({
   i18nEdit,
 }: AiKnowledgeRecordRowProps) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [draft, setDraft] = useState(record);
+  const [draft, setDraft] = useState(record.value);
 
   useEffect(() => {
-    setDraft(record);
+    setDraft(record.value);
   }, [record]);
 
   const onSaveClick = async () => {
@@ -40,7 +41,7 @@ export const AiKnowledgeRecordRow = ({
   };
 
   const onCancel = () => {
-    setDraft(record);
+    setDraft(record.value);
     setIsEditing(false);
   };
 
@@ -100,7 +101,7 @@ export const AiKnowledgeRecordRow = ({
               whiteSpace: 'pre-wrap',
             }}
           >
-            {record}
+            {record.value} ({record.createdAtDayIso})
           </Typography>
           <Stack direction="row" sx={{ gap: '6px' }}>
             <IconButton

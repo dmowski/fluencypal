@@ -551,7 +551,11 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     console.log('🦄 generateGoal | Starting goal generation.');
     const generateExampleRequest = generateWelcomeMessage();
 
-    const userRecords = await userInfo.extractUserRecords(conversationMessages);
+    const conversationText = conversationMessages
+      .map((message) => `${message.isBot ? 'Ai' : 'User'}: ${message.text}`)
+      .join('\n');
+    const extractedRecords = await userInfo.extractUserRecordsFromText?.(conversationText);
+    const userRecords = (extractedRecords || []).map((record) => record.value);
     const goal = await plan.generateGoal({
       languageCode: languageToLearn,
       conversationMessages: conversationMessages,
@@ -572,7 +576,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
         ...surveyRef.current,
         goalData: goal,
         goalHash: finalSurveyHash,
-        userRecords: userRecords,
+        advancedUserRecords: extractedRecords || [],
         exampleOfWelcomeMessage:
           exampleOfWelcomeMessage || (surveyRef.current || survey).exampleOfWelcomeMessage || '',
       },
@@ -668,7 +672,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
         goalData: null,
         goalHash: '',
-        userRecords: userInfo.userInfo?.records || [],
+        advancedUserRecords: userInfo.userInfo?.advancedRecords || [],
 
         updatedAtIso: new Date().toISOString(),
         createdAtIso: new Date().toISOString(),
@@ -874,8 +878,8 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       return;
     }
 
-    if (surveyDoc?.userRecords) {
-      await userInfo.saveUserInfo(surveyDoc.userRecords);
+    if (surveyDoc?.advancedUserRecords) {
+      await userInfo.updateAllRecords(surveyDoc?.advancedUserRecords);
     }
 
     await plan.addGoalPlan(surveyRef.current.goalData);

@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useContext, ReactNode, JSX, useMemo } from 'react';
-import { Conversation, ConversationMessage, MessagesOrderMap } from '@/common/conversation';
+import { ConversationMessage, MessagesOrderMap } from '@/common/conversation';
 import { AdvancedUserRecord, AiUserInfo, FirstBotConversationMessage } from '@/common/userInfo';
 import { useAuth } from '../Auth/useAuth';
 import { db } from '../Firebase/firebaseDb';
@@ -11,7 +11,6 @@ import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useSettings } from '../Settings/useSettings';
-import { useFixJson } from './useFixJson';
 import { useExtractKnowledge } from '../AiKnowledge/useExtractKnowledge';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
@@ -22,24 +21,22 @@ export interface ConversationIdea {
 }
 
 interface AiUserInfoContextType {
-  updateUserInfo: (conversation: ConversationMessage[]) => Promise<{
-    records: string[];
-  }>;
   userInfo: AiUserInfo | null;
   advancedUserRecords: string;
 
-  extractUserRecords: (conversation: ConversationMessage[]) => Promise<string[]>;
   generateFirstMessageText: (topic: string) => Promise<ConversationIdea>;
-  saveUserInfo: (updatedRecords: string[]) => Promise<void>;
-  setUserRecords: (records: string[]) => Promise<void>;
-  addRecord: (record: string) => Promise<void>;
-  updateRecord: (index: number, record: string) => Promise<void>;
+
+  addRecord: (record: AdvancedUserRecord) => Promise<void>;
+  updateRecord: (index: number, record: AdvancedUserRecord) => Promise<void>;
+  updateAllRecords: (records: AdvancedUserRecord[]) => Promise<void>;
   deleteRecord: (index: number) => Promise<void>;
 
   extractAdvancedUserRecordsFromConversation: (conversation: {
     messages: ConversationMessage[];
     messageOrder: MessagesOrderMap;
   }) => Promise<void>;
+
+  extractUserRecordsFromText?: (context: string) => Promise<AdvancedUserRecord[]>;
 }
 
 const AiUserInfoContext = createContext<AiUserInfoContextType | null>(null);
@@ -49,27 +46,8 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
   const settings = useSettings();
   const languageCode = settings.languageCode || 'en';
   const textAi = useTextAi();
-  const fixJson = useFixJson();
   const dbDocRef = db.documents.aiUserInfo(auth.uid);
   const [userInfo] = useDocumentData<AiUserInfo>(dbDocRef);
-
-  const cleanUpSummary = async (summary: string[]) => {
-    const systemMessage = `Given information about users from conversation with AI language teacher.
-Your goal is to clean up repeated information and return only unique information.
-Return info in JSON format.
-Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
-Example of return value: ["User's name is Alex", "Learning English", "Interested in programming", "From USA", "25 years old", "A student"]
-If not relevant information found, return empty array.
-`;
-    const aiUserMessage = JSON.stringify(summary);
-    const summaryFromConversation = await textAi.generate({
-      userMessage: aiUserMessage,
-      systemMessage,
-      model: 'gpt-4o',
-      languageCode,
-    });
-    return fixJson.parseJson<string[]>(summaryFromConversation);
-  };
 
   const getActualAdvancedUserRecords = async (): Promise<AdvancedUserRecord[]> => {
     // get from database
@@ -87,13 +65,9 @@ If not relevant information found, return empty array.
   };
 
   const updateAdvancedUserRecords = async (advancedRecords: AdvancedUserRecord[]) => {
-    if (advancedRecords.length === 0) {
-      return;
-    }
-
-    if (!dbDocRef) {
+    if (advancedRecords.length === 0) return;
+    if (!dbDocRef)
       throw new Error('dbDocRef is not defined | useAiUserInfo.updateAdvancedUserRecords');
-    }
 
     await setDoc(
       dbDocRef,
@@ -107,6 +81,16 @@ If not relevant information found, return empty array.
 
   const extractInfo = useExtractKnowledge();
 
+  const extractUserRecordsFromText = async (context: string): Promise<AdvancedUserRecord[]> => {
+    const newRecords = await extractInfo.extractUserRecords(context);
+    const oldRecords = await getActualAdvancedUserRecords();
+    const simplifiedResult = await extractInfo.simplifyRecords([...oldRecords, ...newRecords]);
+    console.log('extractUserRecordsFromText: User Advanced info', simplifiedResult);
+
+    await updateAdvancedUserRecords(simplifiedResult);
+    return simplifiedResult;
+  };
+
   const extractAdvancedUserRecordsFromConversation = async (conversation: {
     messages: ConversationMessage[];
     messageOrder: MessagesOrderMap;
@@ -114,7 +98,7 @@ If not relevant information found, return empty array.
     const newRecords = await extractInfo.extractRecordsFromConversation(conversation);
     const oldRecords = await getActualAdvancedUserRecords();
     const simplifiedResult = await extractInfo.simplifyRecords([...oldRecords, ...newRecords]);
-    console.log('User Advanced info', simplifiedResult);
+    console.log('extractAdvancedUserRecordsFromConversation: User Advanced info', simplifiedResult);
     await updateAdvancedUserRecords(simplifiedResult);
   };
 
@@ -133,48 +117,7 @@ If not relevant information found, return empty array.
     return `${todayIso}: today \n${recordsString}`;
   }, [userInfo]);
 
-  const extractUserRecords = async (conversation: ConversationMessage[]): Promise<string[]> => {
-    try {
-      const systemMessage = `Given conversation with user and language teacher.
-Your goal is to extract information about user from this conversation.
-Return info in JSON format. Important information like name or location should be first less important like interests, plans or preferences should be last.
-Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
-Example of return value: ["User's name is Alex", "Learning English", "Interested in programming", "From USA", "25 years old", "A student"]
-If not relevant information found, return empty array.`;
-
-      const aiUserMessage = JSON.stringify(
-        conversation.map((message) => {
-          return {
-            author: message.isBot ? 'Teacher' : 'User',
-            text: message.text,
-          };
-        }),
-      );
-
-      const parsedSummary = await textAi.generateJson<string[]>({
-        userMessage: aiUserMessage,
-        systemMessage,
-        model: 'gpt-4o',
-        languageCode,
-        attempts: 4,
-      });
-
-      const oldRecords = userInfo?.records;
-      const newRecords: string[] = parsedSummary;
-
-      const updatedRecords =
-        oldRecords && newRecords && newRecords.length > 0
-          ? await cleanUpSummary([...newRecords, ...oldRecords])
-          : newRecords;
-
-      return updatedRecords;
-    } catch (e) {
-      console.error('Error during extractUserRecords', e);
-      return userInfo?.records || [];
-    }
-  };
-
-  const saveUserInfo = async (updatedRecords: string[]) => {
+  const saveUserInfo = async (data: Partial<AiUserInfo>) => {
     if (!dbDocRef) {
       throw new Error('dbDocRef is not defined | useAiUserInfo.saveUserInfo');
     }
@@ -182,7 +125,7 @@ If not relevant information found, return empty array.`;
     await setDoc(
       dbDocRef,
       {
-        records: updatedRecords,
+        ...data,
         createdAt: userInfo?.createdAt || Date.now(),
         updatedAt: Date.now(),
       },
@@ -190,49 +133,23 @@ If not relevant information found, return empty array.`;
     );
   };
 
-  const updateUserInfo = async (conversation: ConversationMessage[]) => {
-    if (!dbDocRef) {
-      throw new Error('dbDocRef is not defined | useAiUserInfo.updateUserInfo');
-    }
-
-    const updatedRecords = await extractUserRecords(conversation);
-
-    await saveUserInfo(updatedRecords);
-
-    return {
-      records: updatedRecords,
-    };
-  };
-
-  const setUserRecords = async (records: string[]) => {
-    await saveUserInfo(records);
-  };
-
-  const addRecord = async (record: string) => {
-    if (!dbDocRef) {
-      throw new Error('dbDocRef is not defined | useAiUserInfo.addRecord');
-    }
-
-    const trimmedRecord = record.trim();
-    if (!trimmedRecord) return;
-
-    const existingRecords = userInfo?.records || [];
-    await saveUserInfo([...existingRecords, trimmedRecord]);
-  };
-
-  const updateRecord = async (index: number, record: string) => {
+  const updateRecord = async (index: number, record: AdvancedUserRecord) => {
     if (!dbDocRef) {
       throw new Error('dbDocRef is not defined | useAiUserInfo.updateRecord');
     }
 
-    const currentRecords = [...(userInfo?.records || [])];
+    const currentRecords = [...(userInfo?.advancedRecords || [])];
     if (index < 0 || index >= currentRecords.length) return;
 
-    const trimmedRecord = record.trim();
+    const trimmedRecord = record.value.trim();
     if (!trimmedRecord) return;
 
-    currentRecords[index] = trimmedRecord;
-    await saveUserInfo(currentRecords);
+    if (!currentRecords[index]) {
+      return;
+    }
+
+    currentRecords[index] = { ...record, value: trimmedRecord };
+    await updateAdvancedUserRecords(currentRecords);
   };
 
   const deleteRecord = async (index: number) => {
@@ -240,11 +157,11 @@ If not relevant information found, return empty array.`;
       throw new Error('dbDocRef is not defined | useAiUserInfo.deleteRecord');
     }
 
-    const currentRecords = [...(userInfo?.records || [])];
+    const currentRecords = [...(userInfo?.advancedRecords || [])];
     if (index < 0 || index >= currentRecords.length) return;
 
     const updatedRecords = currentRecords.filter((_, i) => i !== index);
-    await saveUserInfo(updatedRecords);
+    await saveUserInfo({ advancedRecords: updatedRecords });
   };
 
   const addFirstConversationMessage = async (message: string) => {
@@ -346,18 +263,43 @@ ${firstMessages.length === 0 ? 'None' : firstMessages.map((msg, i) => `${i + 1}.
     };
   };
 
+  const addRecord = async (record: AdvancedUserRecord) => {
+    if (!dbDocRef) {
+      throw new Error('dbDocRef is not defined | useAiUserInfo.addRecord');
+    }
+
+    const trimmedValue = record.value.trim();
+    if (!trimmedValue) {
+      return;
+    }
+
+    const newRecord = { ...record, value: trimmedValue };
+    const currentRecords = [...(userInfo?.advancedRecords || []), newRecord];
+    await updateAdvancedUserRecords(currentRecords);
+  };
+
+  const updateAllRecords = async (records: AdvancedUserRecord[]) => {
+    if (!dbDocRef) {
+      throw new Error('dbDocRef is not defined | useAiUserInfo.updateAllRecords');
+    }
+
+    const validRecords = records
+      .map((record) => ({ ...record, value: record.value.trim() }))
+      .filter((record) => record.value);
+
+    await updateAdvancedUserRecords(validRecords);
+  };
+
   return {
     advancedUserRecords,
     userInfo: userInfo || null,
     generateFirstMessageText,
-    extractUserRecords,
-    updateUserInfo,
-    saveUserInfo,
-    setUserRecords,
-    addRecord,
-    updateRecord,
     deleteRecord,
     extractAdvancedUserRecordsFromConversation,
+    updateRecord,
+    updateAllRecords,
+    extractUserRecordsFromText,
+    addRecord,
   };
 }
 

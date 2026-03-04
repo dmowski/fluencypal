@@ -311,8 +311,6 @@ ${JSON.stringify(previousProgress, null, 2)}
       return storagePlan;
     }
 
-    const userInfo = (aiUserInfo.userInfo?.records || []).join('. ');
-
     const mainGoal = goalInfo.goalPlan.title;
     const elementTitle = goalInfo.goalElement.title;
     const elementDescription = goalInfo.goalElement.description;
@@ -341,7 +339,7 @@ ${words ? `Words to learn: ${words.join(', ')}` : ''}
 ${rule ? `Rule to learn: ${rule}` : ''}
 
 Info about student:
-${userInfo}
+${aiUserInfo.advancedUserRecords}
 
 Provide a step-by-step lesson plan with clear objectives and activities.
 

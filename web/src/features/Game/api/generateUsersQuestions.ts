@@ -20,7 +20,7 @@ export const generateUsersQuestions = async ({
 
   const nativeLanguage = requestData.nativeLanguageCode;
   const learningLanguage = fullUserInfo.languageCode || 'en';
-  const userInfoRecords = aiUserInfo?.records || [];
+  const userInfoRecords = (aiUserInfo?.advancedRecords || []).map((record) => record.value);
 
   const unansweredQuestions = await getUnansweredQuestions(userInfo.uid, learningLanguage);
   if (unansweredQuestions.length > 10 && !alwaysGenerateQuestions) {

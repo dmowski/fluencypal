@@ -9,7 +9,6 @@ export interface AdvancedUserRecord {
 }
 
 export interface AiUserInfo {
-  records: string[];
   advancedRecords: AdvancedUserRecord[];
   createdAt: number;
   updatedAt: number;
