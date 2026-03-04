@@ -89,6 +89,29 @@ export function GoalQuizSection({ goalQuiz2, aiUserInfo, onGoalClick }: GoalQuiz
             </Stack>
           </details>
         )}
+
+        {aiUserInfo?.advancedRecords && (
+          <details open>
+            <summary>AI User Info Advanced Records ({aiUserInfo.advancedRecords.length})</summary>
+
+            <Stack sx={{ gap: '10px', paddingTop: '10px' }}>
+              {aiUserInfo?.advancedRecords.map((record, index) => (
+                <Typography
+                  key={index}
+                  variant="body1"
+                  sx={{
+                    padding: '8px',
+                    borderRadius: '4px',
+                    fontSize: '18px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                  }}
+                >
+                  {record.createdAtDayIso} - {record.value}
+                </Typography>
+              ))}
+            </Stack>
+          </details>
+        )}
       </Stack>
     </Stack>
   );
