@@ -4010,7 +4010,7 @@ msgstr "프론트엔드 시스템 설계 인터뷰"
 msgid "Full Access"
 msgstr "전체 접근 권한"
 
-#: src/features/Dashboard/Dashboard.tsx:87
+#: src/features/Dashboard/Dashboard.tsx:86
 #. js-lingui-explicit-id
 msgid "Full access - Expiring soon"
 msgstr "Full access - 곧 만료됩니다"
@@ -5274,7 +5274,7 @@ msgstr ""
 "파산할 위험은 없습니다. 왜냐하면 자금 지원이 없기 때문입니다. 서버를 운영할 돈이 있는 한 프로젝트는 계속됩니다. 그리고 언젠가 서버 "
 "비용을 감당할 수 없을 만큼 가난해진다면… 글쎄요, 더 저렴한 서버를 빌리겠습니다 🙂"
 
-#: src/features/Chat/SubmitForm.tsx:185
+#: src/features/Chat/SubmitForm.tsx:190
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "메시지에 대한 아이디어:"
@@ -6479,7 +6479,7 @@ msgstr "로딩 중."
 msgid "Loading.."
 msgstr "로딩 중.."
 
-#: src/features/Chat/SubmitForm.tsx:95
+#: src/features/Chat/SubmitForm.tsx:97
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:209
 #: src/features/Conversation/ConversationReviewModal.tsx:101
@@ -7731,7 +7731,7 @@ msgstr "유효한 이메일 주소를 입력하세요"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "부모 세부 정보를 입력하고 1단계의 모든 항목을 선택하세요."
 
-#: src/features/Chat/SubmitForm.tsx:414
+#: src/features/Chat/SubmitForm.tsx:439
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "좀 더 긴 메시지를 녹음해 주세요(적어도 몇 단어 이상)."
@@ -8362,7 +8362,7 @@ msgstr "상위 5위 안에 들면 앱을 무료로 받을 수 있습니다"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "상위 5위에 랭크하여 모든 기능에 대한 전체 액세스 권한을 받으세요!"
 
-#: src/features/Chat/SubmitForm.tsx:326
+#: src/features/Chat/SubmitForm.tsx:329
 #: src/features/Conversation/ConversationCanvas.tsx:684
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -8732,7 +8732,7 @@ msgstr "데이터를 제거 중..."
 msgid "Rendering Performance"
 msgstr "렌더링 성능"
 
-#: src/features/Dashboard/Dashboard.tsx:95
+#: src/features/Dashboard/Dashboard.tsx:94
 #. js-lingui-explicit-id
 msgid "Renew Now"
 msgstr "지금 갱신하기"
@@ -9108,8 +9108,8 @@ msgstr "이메일 다시 보내기"
 msgid "Send me sign-in link"
 msgstr "로그인 링크 보내기"
 
-#: src/features/Chat/SubmitForm.tsx:225
-#: src/features/Chat/SubmitForm.tsx:342
+#: src/features/Chat/SubmitForm.tsx:218
+#: src/features/Chat/SubmitForm.tsx:346
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "메시지 보내기"
@@ -9125,7 +9125,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "전체 접근을 해제하려면 {messagesNeeded}개의 메시지를 보내세요"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
-#: src/features/Chat/SubmitForm.tsx:342
+#: src/features/Chat/SubmitForm.tsx:346
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -9785,7 +9785,7 @@ msgstr ""
 "역할에 대한 동기에 대해 질문을 받게 될 것이고, AI는 여러분의 응답에 기반하여 난이도를 조절합니다. 질문에 대해 간결하고 설득력 "
 "있는 답변을 제공하는 연습을 위해 프롬프트를 사용하세요. 어떤 직업 인터뷰에서든 돋보일 수 있도록 도움이 될 것입니다."
 
-#: src/features/Chat/SubmitForm.tsx:302
+#: src/features/Chat/SubmitForm.tsx:304
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "정지"
@@ -11003,6 +11003,11 @@ msgstr "1년 동안 잠금 해제"
 #. js-lingui-explicit-id
 msgid "Unlock Full Access"
 msgstr "전체 액세스 잠금 해제"
+
+#: src/features/Conversation/CallMode/FooterButton.tsx:42
+#. js-lingui-explicit-id
+msgid "Unlock full access to continue"
+msgstr "전체 액세스를 해제하여 계속하기"
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:68
 #. js-lingui-explicit-id
@@ -12344,12 +12349,12 @@ msgstr "당신의 지원자 친구"
 msgid "Your transcripts are securely stored in our service"
 msgstr "당신의 성적 증명서는 저희 서비스에 안전하게 저장됩니다."
 
-#: src/features/Dashboard/Dashboard.tsx:93
+#: src/features/Dashboard/Dashboard.tsx:92
 #. js-lingui-explicit-id
 msgid "Your unlimited access is about to expire soon."
 msgstr "무제한 액세스가 곧 만료됩니다."
 
-#: src/features/Dashboard/Dashboard.tsx:90
+#: src/features/Dashboard/Dashboard.tsx:89
 #. js-lingui-explicit-id
 msgid "Your unlimited access is active until {date}"
 msgstr "귀하의 무제한 액세스는 {date}까지 활성화되어 있습니다."
