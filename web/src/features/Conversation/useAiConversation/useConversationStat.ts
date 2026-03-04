@@ -41,6 +41,7 @@ export const useConversationStat = (
       conversation.length >= 3 &&
       conversation.length % messageCountToCheck === 0
     ) {
+      console.log('Messages to process', conversation);
       aiUserInfo.extractAdvancedUserRecordsFromConversation({
         messages: conversation,
         messageOrder,
