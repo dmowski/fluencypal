@@ -62,7 +62,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     rule: i18n._(`Rule`),
   };
 
-  const goalDescription = plan.activeGoal?.goalQuiz?.description || '';
+  const goalDescription = plan.activeGoal?.title;
 
   const sortedElements = useMemo(() => {
     return plan.activeGoal?.elements || [];
@@ -415,10 +415,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               <Stack>
                 <Typography variant="h4" align="center" component="h2" className="decor-text">
                   {plan.activeGoal?.title || i18n._(`Goal`)}
-                </Typography>
-                <Typography sx={{ paddingTop: '5px' }} align="center" variant="caption">
-                  {plan.activeGoal?.goalQuiz?.description ||
-                    i18n._(`Generate more lessons to achieve your goal faster.`)}
                 </Typography>
               </Stack>
             </Stack>

@@ -27,8 +27,8 @@ export const useConversationsAnalysis = () => {
   const learningLanguage = settings.languageCode || 'en';
 
   const pageLangCode = useMemo(() => getPageLangCode(), []);
-  const planNativeLanguage = plan.activeGoal?.goalQuiz?.nativeLanguageCode;
-  const nativeLanguageCode = pageLangCode !== learningLanguage ? pageLangCode : planNativeLanguage;
+  const nativeLanguageCode =
+    pageLangCode !== learningLanguage ? pageLangCode : settings.userSettings?.nativeLanguageCode;
   const fullNativeLanguage = nativeLanguageCode
     ? fullLanguageName[nativeLanguageCode as SupportedLanguage] || nativeLanguageCode
     : nativeLanguageCode;
@@ -77,7 +77,6 @@ export const useConversationsAnalysis = () => {
       })
       .join('\n');
 
-    const planDescription = plan.activeGoal?.goalQuiz?.description || '';
     const goalElement = aiConversation.goalInfo?.goalElement;
 
     const goalElementId = goalElement?.id;
@@ -91,7 +90,7 @@ The user is learning ${settings.fullLanguageName}.
 
 Use the "${fullNativeLanguage}" language for analysis.
 
-The user has the following goal: ${planDescription}.
+The user has the following goal: ${aiConversation.goalInfo?.goalPlan.title}.
 
 The user is using the following lesson: ${goalElementDescription}.
 

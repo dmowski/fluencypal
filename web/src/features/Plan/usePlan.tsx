@@ -73,7 +73,7 @@ const exampleOfPlan = `Example of plan:
 interface GenerateGoalProps {
   context: string;
   languageCode: SupportedLanguage;
-  goalQuiz?: GoalQuiz;
+
   aiSystemMessage?: string;
 }
 
@@ -289,7 +289,6 @@ ${JSON.stringify(input.progress, null, 2)}
       createdAt: Date.now(),
       updatedAt: Date.now(),
       languageCode: input.languageCode,
-      goalQuiz: input.goalQuiz || null,
     };
 
     setIsCraftingGoal(false);

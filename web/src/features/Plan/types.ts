@@ -40,7 +40,6 @@ export interface GoalPlan {
   createdAt: number;
   updatedAt: number;
   languageCode: SupportedLanguage;
-  goalQuiz: GoalQuiz | null;
 
   progress?: GoalElementProgress[];
 }

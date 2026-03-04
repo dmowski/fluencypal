@@ -57,10 +57,8 @@ export const useTranslate = () => {
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
   const learningLanguage = settings.languageCode || 'en';
 
-  const planNativeLanguage = plan.activeGoal?.goalQuiz?.nativeLanguageCode;
-
   const targetLanguage = useMemo(() => {
-    const targetCandidates = [nativeLanguageCode, planNativeLanguage, pageLangCode].filter(Boolean);
+    const targetCandidates = [nativeLanguageCode, pageLangCode].filter(Boolean);
 
     const candidate =
       targetCandidates.find(
@@ -70,7 +68,7 @@ export const useTranslate = () => {
     const candidateLangCode = candidate ? fullLanguagesMap[candidate] || null : null;
 
     return candidateLangCode?.languageCode || null;
-  }, [nativeLanguageCode, planNativeLanguage, pageLangCode]);
+  }, [nativeLanguageCode, pageLangCode]);
 
   const isTranslateAvailable = targetLanguage && targetLanguage !== learningLanguage;
 
