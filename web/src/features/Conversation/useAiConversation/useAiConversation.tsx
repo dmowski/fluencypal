@@ -40,7 +40,8 @@ function useProvideAiConversation(): AiConversationContextType {
   const aiUserInfo = useAiUserInfo();
   const ai = useTextAi();
   const firstPotentialBotMessage = useRef('');
-  const userInfo = aiUserInfo.userInfo?.records?.join('. ') || '';
+  const userInfo = aiUserInfo.advancedUserRecords;
+
   const fullLanguageName = settings.fullLanguageName || 'English';
   const languageCode = settings.languageCode || 'en';
   const [isVolumeOn, setIsVolumeOn] = useState(true);
@@ -256,8 +257,6 @@ ${lessonPlan.steps
         ideas?.firstMessage || (await aiUserInfo.generateFirstMessageText(goalInfo)).firstMessage;
       firstPotentialBotMessage.current = firstMessage;
       let startFirstMessage = `"${firstMessage}".`;
-
-      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
 
       setIsInitializing(`Starting conversation...`);
 

@@ -1,5 +1,5 @@
 'use client';
-import { createContext, useContext, ReactNode, JSX } from 'react';
+import { createContext, useContext, ReactNode, JSX, useMemo } from 'react';
 import { Conversation, ConversationMessage, MessagesOrderMap } from '@/common/conversation';
 import { AdvancedUserRecord, AiUserInfo, FirstBotConversationMessage } from '@/common/userInfo';
 import { useAuth } from '../Auth/useAuth';
@@ -26,6 +26,7 @@ interface AiUserInfoContextType {
     records: string[];
   }>;
   userInfo: AiUserInfo | null;
+  advancedUserRecords: string;
 
   extractUserRecords: (conversation: ConversationMessage[]) => Promise<string[]>;
   generateFirstMessageText: (topic: string) => Promise<ConversationIdea>;
@@ -116,6 +117,21 @@ If not relevant information found, return empty array.
     console.log('User Advanced info', simplifiedResult);
     await updateAdvancedUserRecords(simplifiedResult);
   };
+
+  const advancedUserRecords = useMemo(() => {
+    if (!userInfo || !userInfo.advancedRecords) {
+      return '';
+    }
+    // YYYY-MM-DD
+    const todayIso = dayjs().format('YYYY-MM-DD');
+    const sortedRecords = userInfo.advancedRecords.sort((a, b) =>
+      b.createdAtDayIso.localeCompare(a.createdAtDayIso),
+    );
+    const recordsString = sortedRecords
+      .map((record) => `${record.createdAtDayIso}: ${record.value}`)
+      .join('\n');
+    return `${todayIso}: today \n${recordsString}`;
+  }, [userInfo]);
 
   const extractUserRecords = async (conversation: ConversationMessage[]): Promise<string[]> => {
     try {
@@ -271,8 +287,6 @@ If not relevant information found, return empty array.`;
   };
 
   const generateFirstMessageText = async (topic: string) => {
-    const infoNotes = userInfo?.records || [];
-
     const firstMessages: string[] = await getLastFirstMessage(4);
 
     const potentialTopicsToDiscuss =
@@ -288,7 +302,7 @@ Important that your guess should be not straightforward, but interesting and fun
 `,
         userMessage: `
 ### User Info (Use this to guess the interest):
-${infoNotes.map((note) => `- ${note}`).join('\n')}
+${advancedUserRecords}
 `,
         model: 'gpt-4o',
         cache: false,
@@ -333,6 +347,7 @@ ${firstMessages.length === 0 ? 'None' : firstMessages.map((msg, i) => `${i + 1}.
   };
 
   return {
+    advancedUserRecords,
     userInfo: userInfo || null,
     generateFirstMessageText,
     extractUserRecords,
