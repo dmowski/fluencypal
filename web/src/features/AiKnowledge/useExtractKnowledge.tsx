@@ -4,6 +4,8 @@ import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useTextAi } from '../Ai/useTextAi';
+import { Conversation } from '@/common/conversation';
+import { getSortedMessages } from '../Conversation/getSortedMessages';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
@@ -14,20 +16,21 @@ export function useExtractKnowledge() {
     info: string,
     oldRecords: AdvancedUserRecord[],
   ): Promise<AdvancedUserRecord[]> => {
-    const systemMessage = `Given info.
-Your goal is to extract information about user from his text.
+    const systemMessage = `Given info. Your goal is to extract existing information about user from the text.
 
-Return info in JSON format.
 Important information like name or location should be more important than interests, plans or preferences.
 
-Return each fact on a new line. Example:
+Return each fact on a new line.
+
+Example of returned facts based on given info:
 - name: John
 - location: New York
 - profession: software engineer
 - experience: 5 years
 - interests: coding, web development
 
-In case of lack of information, return the word 'No information'.
+
+In case of lack of information at all, return the word 'No information'.
 `;
     let parsedSummary = '';
     try {
@@ -70,7 +73,38 @@ In case of lack of information, return the word 'No information'.
     return [...newRecords, ...oldRecords];
   };
 
+  const extractUserInfoFromConversationWithAi = async (
+    conversation: Conversation,
+    oldRecords: AdvancedUserRecord[],
+  ) => {
+    if (conversation.messages.length < 3) {
+      return oldRecords;
+    }
+
+    const sortedMessages = getSortedMessages({
+      conversation: conversation.messages,
+      messageOrder: conversation.messageOrder,
+    });
+
+    const messagesList = sortedMessages
+      .map((m) => {
+        const author = m.isBot ? 'Teacher' : 'User';
+
+        const cleanText = m.text.replace(/\n/g, ' ').trim();
+        return `${author}: ${cleanText}`;
+      })
+      .join('\n');
+
+    const info = `Conversation between user and AI teacher:
+${messagesList}
+
+Extract information about user from this conversation.`;
+
+    return extractUserRecords(info, oldRecords);
+  };
+
   return {
     extractUserRecords,
+    extractUserInfoFromConversationWithAi,
   };
 }

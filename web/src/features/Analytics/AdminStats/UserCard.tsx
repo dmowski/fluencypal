@@ -1,11 +1,11 @@
-import { Stack, Link, Tooltip, Typography } from '@mui/material';
+import { Stack, Link, Tooltip, Typography, Button } from '@mui/material';
 import { useState } from 'react';
 import { UserStat } from '@/app/api/loadStats/types';
 import dayjs from 'dayjs';
 import { getFirebaseLink } from '../../Firebase/getFirebaseLink';
 import { useGame } from '../../Game/useGame';
 import { fullEnglishLanguageName, SupportedLanguage } from '../../Lang/lang';
-import { LogIn, UserPlus, BadgeCheck, Gem } from 'lucide-react';
+import { LogIn, UserPlus, BadgeCheck, Gem, Axe, Loader } from 'lucide-react';
 import { defaultAvatar } from '../../Game/avatars';
 import { UserSource } from '@/common/analytics';
 import { Messages } from '../../Conversation/Messages';
@@ -19,6 +19,8 @@ import { UserBadges } from './UserBadges';
 import { UserStats } from './UserStats';
 import { ConversationItem } from './ConversationItem';
 import { GoalQuizSection } from './GoalQuizSection';
+import { AdvancedUserRecord } from '@/common/userInfo';
+import { useExtractKnowledge } from '@/features/AiKnowledge/useExtractKnowledge';
 
 interface UserCardProps {
   userStat: UserStat;
@@ -91,6 +93,21 @@ export function UserCard({ userStat, allTextInfo }: UserCardProps) {
   const [showConversation, setShowConversation] = useState<Conversation | null>(null);
   const [showGoalPlan, setShowGoalPlan] = useState<GoalPlan | null>(null);
 
+  const [result, setResult] = useState<AdvancedUserRecord[]>([]);
+  const extractInfo = useExtractKnowledge();
+  const [loading, setLoading] = useState(false);
+  const onExtract = async () => {
+    if (!showConversation) return;
+
+    setResult([]);
+    setLoading(true);
+
+    const result = await extractInfo.extractUserInfoFromConversationWithAi(showConversation, []);
+
+    setResult(result);
+    setLoading(false);
+  };
+
   return (
     <Stack
       sx={{
@@ -117,11 +134,33 @@ export function UserCard({ userStat, allTextInfo }: UserCardProps) {
 
       {showConversation && (
         <CustomModal onClose={() => setShowConversation(null)} isOpen={true}>
-          <Messages
-            messageOrder={showConversation.messageOrder}
-            conversation={showConversation.messages}
-            voice="ash"
-          />
+          <Stack
+            sx={{
+              alignItems: 'flex-start',
+            }}
+          >
+            <Stack
+              sx={{
+                padding: '30px',
+                alignItems: 'flex-start',
+                border: '1px solid rgba(255, 255, 255, 0.3)',
+              }}
+            >
+              <Button
+                variant="contained"
+                onClick={onExtract}
+                startIcon={loading ? <Loader /> : <Axe />}
+              >
+                Extract Info
+              </Button>
+              <pre>{JSON.stringify(result, null, 2)}</pre>
+            </Stack>
+            <Messages
+              messageOrder={showConversation.messageOrder}
+              conversation={showConversation.messages}
+              voice="ash"
+            />
+          </Stack>
         </CustomModal>
       )}
 

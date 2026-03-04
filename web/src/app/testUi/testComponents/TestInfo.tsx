@@ -9,9 +9,7 @@ import { useState } from 'react';
 
 export const TestInfo = () => {
   const [result, setResult] = useState<AdvancedUserRecord[]>([]);
-
   const extractInfo = useExtractKnowledge();
-
   const [loading, setLoading] = useState(false);
 
   const onExtract = async () => {
