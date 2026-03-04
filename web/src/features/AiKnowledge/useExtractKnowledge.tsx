@@ -12,10 +12,7 @@ dayjs.extend(relativeTime);
 export function useExtractKnowledge() {
   const textAi = useTextAi();
 
-  const extractUserRecords = async (
-    info: string,
-    oldRecords: AdvancedUserRecord[],
-  ): Promise<AdvancedUserRecord[]> => {
+  const extractUserRecords = async (info: string): Promise<AdvancedUserRecord[]> => {
     const systemMessage = `Given info. Your goal is to extract existing information about user from the text.
 
 Important information like name or location should be more important than interests, plans or preferences.
@@ -41,7 +38,7 @@ In case of lack of information at all, return the word 'No information.'.
       });
     } catch (e) {
       console.error('Error extracting knowledge:', e);
-      return oldRecords;
+      return [];
     }
 
     console.log('Original parsedSummary');
@@ -49,11 +46,11 @@ In case of lack of information at all, return the word 'No information.'.
     console.log('-----');
     const ifNoInformation = parsedSummary.trim().toLowerCase() === 'no information.';
     if (ifNoInformation) {
-      return oldRecords;
+      return [];
     }
 
     if (!parsedSummary) {
-      return oldRecords;
+      return [];
     }
 
     // YYYY-MM-DD
@@ -73,15 +70,12 @@ In case of lack of information at all, return the word 'No information.'.
       return record;
     });
 
-    return [...newRecords, ...oldRecords];
+    return newRecords;
   };
 
-  const extractRecordsFromConversation = async (
-    conversation: Conversation,
-    oldRecords: AdvancedUserRecord[],
-  ) => {
+  const extractRecordsFromConversation = async (conversation: Conversation) => {
     if (conversation.messages.length < 3) {
-      return oldRecords;
+      return [];
     }
 
     const sortedMessages = getSortedMessages({
@@ -103,7 +97,7 @@ ${messagesList}
 
 Extract information about user from this conversation.`;
 
-    return extractUserRecords(info, oldRecords);
+    return extractUserRecords(info);
   };
 
   const cleanUpRecords = async (records: AdvancedUserRecord[]) => {

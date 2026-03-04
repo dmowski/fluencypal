@@ -17,7 +17,6 @@ export const TestInfo = () => {
     setLoading(true);
     const result = await extractInfo.extractUserRecords(
       'John is a software engineer who loves coding and has 5 years of experience in web development.',
-      [],
     );
 
     setResult(result);

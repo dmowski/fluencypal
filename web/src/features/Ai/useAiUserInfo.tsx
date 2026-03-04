@@ -1,17 +1,18 @@
 'use client';
 import { createContext, useContext, ReactNode, JSX } from 'react';
-import { ConversationMessage } from '@/common/conversation';
-import { AiUserInfo, FirstBotConversationMessage } from '@/common/userInfo';
+import { Conversation, ConversationMessage } from '@/common/conversation';
+import { AdvancedUserRecord, AiUserInfo, FirstBotConversationMessage } from '@/common/userInfo';
 import { useAuth } from '../Auth/useAuth';
 import { db } from '../Firebase/firebaseDb';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { useTextAi } from './useTextAi';
-import { setDoc } from 'firebase/firestore';
+import { getDoc, setDoc } from 'firebase/firestore';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useSettings } from '../Settings/useSettings';
 import { useFixJson } from './useFixJson';
+import { useExtractKnowledge } from '../AiKnowledge/useExtractKnowledge';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
@@ -33,6 +34,8 @@ interface AiUserInfoContextType {
   addRecord: (record: string) => Promise<void>;
   updateRecord: (index: number, record: string) => Promise<void>;
   deleteRecord: (index: number) => Promise<void>;
+
+  extractAdvancedUserRecordsFromConversation: (conversation: Conversation) => Promise<void>;
 }
 
 const AiUserInfoContext = createContext<AiUserInfoContextType | null>(null);
@@ -62,6 +65,51 @@ If not relevant information found, return empty array.
       languageCode,
     });
     return fixJson.parseJson<string[]>(summaryFromConversation);
+  };
+
+  const getActualAdvancedUserRecords = async (): Promise<AdvancedUserRecord[]> => {
+    // get from database
+    if (!dbDocRef) {
+      throw new Error('dbDocRef is not defined | useAiUserInfo.getActualAdvancedUserRecords');
+    }
+
+    const userInfoData = await getDoc(dbDocRef);
+    const userInfo = userInfoData.data();
+    if (!userInfo || !userInfo.advancedRecords) {
+      return [];
+    }
+
+    return userInfo.advancedRecords;
+  };
+
+  const updateAdvancedUserRecords = async (advancedRecords: AdvancedUserRecord[]) => {
+    if (advancedRecords.length === 0) {
+      return;
+    }
+
+    if (!dbDocRef) {
+      throw new Error('dbDocRef is not defined | useAiUserInfo.updateAdvancedUserRecords');
+    }
+
+    await setDoc(
+      dbDocRef,
+      {
+        advancedRecords,
+        updatedAt: Date.now(),
+      },
+      { merge: true },
+    );
+  };
+
+  const extractInfo = useExtractKnowledge();
+
+  const extractAdvancedUserRecordsFromConversation = async (
+    conversation: Conversation,
+  ): Promise<void> => {
+    const newRecords = await extractInfo.extractRecordsFromConversation(conversation);
+    const oldRecords = await getActualAdvancedUserRecords();
+    const simplifiedResult = await extractInfo.simplifyRecords([...oldRecords, ...newRecords]);
+    await updateAdvancedUserRecords(simplifiedResult);
   };
 
   const extractUserRecords = async (conversation: ConversationMessage[]): Promise<string[]> => {
@@ -289,6 +337,7 @@ ${firstMessages.length === 0 ? 'None' : firstMessages.map((msg, i) => `${i + 1}.
     addRecord,
     updateRecord,
     deleteRecord,
+    extractAdvancedUserRecordsFromConversation,
   };
 }
 
