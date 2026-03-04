@@ -557,7 +557,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     const extractedRecordsRequest = userInfo.extractUserRecordsFromText?.(conversationText);
     const goal = await plan.generateGoal({
       languageCode: languageToLearn,
-      conversationMessages: conversationMessages,
+      context: conversationText,
     });
     const exampleOfWelcomeMessage = await generateExampleRequest;
 

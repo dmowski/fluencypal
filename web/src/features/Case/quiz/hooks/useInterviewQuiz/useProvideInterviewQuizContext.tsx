@@ -199,7 +199,7 @@ export function useProvideInterviewQuizContext({
       }
 
       if (outputFormat === 'practice-plan') {
-        const conversationMessages: ConversationMessage[] = goodAnswersIds
+        const conversationMessages: string[] = goodAnswersIds
           .map((id) => {
             const questionStep = quiz.steps.find((step) => step.id === id);
 
@@ -209,16 +209,13 @@ export function useProvideInterviewQuizContext({
             const question = `${questionTitle}\n${questionSubTitle}:`;
             const answer = answers[id]?.answer || '';
 
-            return [
-              { id: '', isBot: true, text: `${question}` },
-              { id: '', isBot: false, text: `${answer}` },
-            ];
+            return [`${question}\n${answer}`];
           })
           .flat();
 
         const goal = await plan.generateGoal({
           languageCode: lang,
-          conversationMessages: conversationMessages,
+          context: conversationMessages.join('\n'),
           aiSystemMessage: stepSystemMessage,
         });
         practicePlan = goal;

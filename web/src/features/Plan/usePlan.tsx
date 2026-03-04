@@ -71,7 +71,7 @@ const exampleOfPlan = `Example of plan:
 ]`;
 
 interface GenerateGoalProps {
-  conversationMessages: ConversationMessage[];
+  context: string;
   languageCode: SupportedLanguage;
   goalQuiz?: GoalQuiz;
   aiSystemMessage?: string;
@@ -127,7 +127,7 @@ function useProvidePlan(): PlanContextType {
     const fullLangName = fullEnglishLanguageName[input.languageCode];
     const systemMessage = `
 You are professional ${fullLangName || 'English'} Teacher. 
-Here is student/teacher conversation. Based on student's lever and their goal, formulate learning goal. 
+User will provide a context. Based on student's lever and their goal, formulate learning goal. 
 
 Goal should me simple and clear. Max 3-4 words.
 Example: Pass Job Interview
@@ -136,16 +136,8 @@ Use ${fullLangName || 'English'} language for generating goal.
 If you can't formulate goal, return "General Practice" as goal.
 `;
 
-    const userMessage = `
-===
-Conversation:
-${input.conversationMessages.map((message) => {
-  const isBot = message.isBot;
-  const author = isBot ? 'Teacher' : 'Student';
-  const text = message.text;
-  return `${author}: ${text}`;
-})}
-`;
+    const userMessage = `Context:
+${input.context}`;
 
     const goal = await textAi.generate({
       systemMessage,
@@ -164,7 +156,7 @@ ${input.conversationMessages.map((message) => {
       input.aiSystemMessage ||
       `You are professional ${fullLangName} Teacher. 
 
-Below is a conversation between a student and a teacher. Based on the student's level and goals, generate a personalized language learning plan that can be completed using our AI-powered language learning app.`;
+User will provide a context. Based on student's level and their goal, generate a personalized language learning plan that can be completed using our AI-powered language learning app.`;
 
     const systemMessage = `${systemMessageTop}
 ${appActivities}
@@ -178,14 +170,8 @@ Use ${fullLangName} language for generating plan (title, description, details).
 The plan should include at least 8 elements and must cover each type of activity. 5 of them should be 'conversation' type.
 `;
 
-    const userMessage = `Conversation:
-${input.conversationMessages.map((message) => {
-  const isBot = message.isBot;
-  const author = isBot ? 'Teacher' : 'Student';
-  const text = message.text;
-  return `${author}: ${text}`;
-})}
-`;
+    const userMessage = `Context:
+${input.context}`;
 
     return generateElementsWithAi({
       systemMessage,
