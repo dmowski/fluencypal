@@ -48,10 +48,10 @@ export const AiKnowledgeModal = ({ onClose }: AiKnowledgeModalProps) => {
 
     const dayIso = dayjs().format('YYYY-MM-DD');
 
-    const nextRecords = recordsDraft.map((record, i) =>
-      i === index ? { createdAtDayIso: dayIso, value: trimmedRecord } : record,
-    );
-    await persistRecords(nextRecords);
+    await aiUserInfo.updateRecord(index, {
+      value: trimmedRecord,
+      createdAtDayIso: dayIso,
+    });
   };
 
   const handleDeleteRecord = async (index: number) => {

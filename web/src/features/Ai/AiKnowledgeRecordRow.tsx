@@ -36,8 +36,8 @@ export const AiKnowledgeRecordRow = ({
   }, [record]);
 
   const onSaveClick = async () => {
-    await onSave(index, draft);
     setIsEditing(false);
+    await onSave(index, draft);
   };
 
   const onCancel = () => {
@@ -94,15 +94,24 @@ export const AiKnowledgeRecordRow = ({
             alignItems: 'center',
           }}
         >
-          <Typography
-            variant="body1"
+          <Stack
             sx={{
-              flex: 1,
-              whiteSpace: 'pre-wrap',
+              width: '100%',
             }}
           >
-            {record.value} ({record.createdAtDayIso})
-          </Typography>
+            <Typography variant="caption" sx={{}}>
+              {record.createdAtDayIso}
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                flex: 1,
+                whiteSpace: 'pre-wrap',
+              }}
+            >
+              {record.value}
+            </Typography>
+          </Stack>
           <Stack direction="row" sx={{ gap: '6px' }}>
             <IconButton
               onClick={() => setIsEditing(true)}
