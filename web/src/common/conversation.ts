@@ -31,9 +31,8 @@ export type MessagesOrderMap = Record<string, string>;
 export interface Conversation {
   id: string;
   messagesCount: number;
-  messages: ConversationMessage[];
 
-  // parent-child relationships
+  messages: ConversationMessage[];
   messageOrder: MessagesOrderMap;
 
   createdAt: number;

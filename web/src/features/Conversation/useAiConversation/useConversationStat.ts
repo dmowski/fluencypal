@@ -1,4 +1,4 @@
-import { ConversationMessage, ConversationType } from '@/common/conversation';
+import { ConversationMessage, ConversationType, MessagesOrderMap } from '@/common/conversation';
 import { useAiUserInfo } from '@/features/Ai/useAiUserInfo';
 import { GoalElementInfo } from '@/features/Plan/types';
 import { usePlan } from '@/features/Plan/usePlan';
@@ -10,6 +10,7 @@ const modesToExtractUserInfo: ConversationType[] = ['talk', 'goal-talk'];
 export const useConversationStat = (
   conversationId: string,
   conversation: ConversationMessage[],
+  messageOrder: MessagesOrderMap,
   currentMode: ConversationType,
   goalInfo: GoalElementInfo | null,
 ) => {
@@ -40,10 +41,10 @@ export const useConversationStat = (
       conversation.length >= 3 &&
       conversation.length % messageCountToCheck === 0
     ) {
-      const lastMessagesToCheck = conversation.filter(
-        (_, index, all) => index >= all.length - messageCountToCheck,
-      );
-      aiUserInfo.updateUserInfo(lastMessagesToCheck);
+      aiUserInfo.extractAdvancedUserRecordsFromConversation({
+        messages: conversation,
+        messageOrder,
+      });
     }
 
     const usersMessagesCount = conversation.filter((message) => !message.isBot).length;

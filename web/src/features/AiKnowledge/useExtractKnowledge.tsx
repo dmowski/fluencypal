@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useTextAi } from '../Ai/useTextAi';
-import { Conversation } from '@/common/conversation';
+import { Conversation, ConversationMessage, MessagesOrderMap } from '@/common/conversation';
 import { getSortedMessages } from '../Conversation/getSortedMessages';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
@@ -73,7 +73,10 @@ In case of lack of information at all, return the word 'No information.'.
     return newRecords;
   };
 
-  const extractRecordsFromConversation = async (conversation: Conversation) => {
+  const extractRecordsFromConversation = async (conversation: {
+    messages: ConversationMessage[];
+    messageOrder: MessagesOrderMap;
+  }) => {
     if (conversation.messages.length < 3) {
       return [];
     }

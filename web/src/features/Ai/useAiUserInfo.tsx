@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useContext, ReactNode, JSX } from 'react';
-import { Conversation, ConversationMessage } from '@/common/conversation';
+import { Conversation, ConversationMessage, MessagesOrderMap } from '@/common/conversation';
 import { AdvancedUserRecord, AiUserInfo, FirstBotConversationMessage } from '@/common/userInfo';
 import { useAuth } from '../Auth/useAuth';
 import { db } from '../Firebase/firebaseDb';
@@ -35,7 +35,10 @@ interface AiUserInfoContextType {
   updateRecord: (index: number, record: string) => Promise<void>;
   deleteRecord: (index: number) => Promise<void>;
 
-  extractAdvancedUserRecordsFromConversation: (conversation: Conversation) => Promise<void>;
+  extractAdvancedUserRecordsFromConversation: (conversation: {
+    messages: ConversationMessage[];
+    messageOrder: MessagesOrderMap;
+  }) => Promise<void>;
 }
 
 const AiUserInfoContext = createContext<AiUserInfoContextType | null>(null);
@@ -103,12 +106,14 @@ If not relevant information found, return empty array.
 
   const extractInfo = useExtractKnowledge();
 
-  const extractAdvancedUserRecordsFromConversation = async (
-    conversation: Conversation,
-  ): Promise<void> => {
+  const extractAdvancedUserRecordsFromConversation = async (conversation: {
+    messages: ConversationMessage[];
+    messageOrder: MessagesOrderMap;
+  }): Promise<void> => {
     const newRecords = await extractInfo.extractRecordsFromConversation(conversation);
     const oldRecords = await getActualAdvancedUserRecords();
     const simplifiedResult = await extractInfo.simplifyRecords([...oldRecords, ...newRecords]);
+    console.log('User Advanced info', simplifiedResult);
     await updateAdvancedUserRecords(simplifiedResult);
   };
 

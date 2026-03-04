@@ -118,7 +118,13 @@ function useProvideAiConversation(): AiConversationContextType {
     if (instruction) communicatorRef.current?.sendWebCamDescription(instruction);
   };
 
-  useConversationStat(messages.conversationId || '', messages.conversation, currentMode, goalInfo);
+  useConversationStat(
+    messages.conversationId || '',
+    messages.conversation,
+    messages.messageOrder,
+    currentMode,
+    goalInfo,
+  );
 
   const toggleMute = (isMute: boolean) => {
     communicator?.toggleMute(isMute);
