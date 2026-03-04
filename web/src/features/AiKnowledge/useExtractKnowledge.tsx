@@ -30,7 +30,7 @@ Example of returned facts based on given info:
 - interests: coding, web development
 
 
-In case of lack of information at all, return the word 'No information'.
+In case of lack of information at all, return the word 'No information.'.
 `;
     let parsedSummary = '';
     try {
@@ -44,7 +44,10 @@ In case of lack of information at all, return the word 'No information'.
       return oldRecords;
     }
 
-    const ifNoInformation = parsedSummary.trim().toLowerCase() === 'no information';
+    console.log('Original parsedSummary');
+    console.log(parsedSummary);
+    console.log('-----');
+    const ifNoInformation = parsedSummary.trim().toLowerCase() === 'no information.';
     if (ifNoInformation) {
       return oldRecords;
     }
@@ -103,6 +106,72 @@ Extract information about user from this conversation.`;
     return extractUserRecords(info, oldRecords);
   };
 
+  const cleanUpRecords = async (records: AdvancedUserRecord[]) => {
+    if (records.length < 2) {
+      return records;
+    }
+
+    const systemMessage = `Your goal is to clean up user information records.
+
+Your goal is to clean up and unify the records, remove duplicates and contradictions.
+You should also unify similar records, for example:
+- "name: John" and "name: John Doe" can be unified into "name: John Doe"
+- "location: New York" and "location: NYC" can be unified into "location: New York City"
+
+Return only cleaned up records, without any explanations. Return each record on a new line.
+Return in the format: 
+ - {DATE}: {RECORD}
+
+If original records already look good and clean, return the word "OK".
+`;
+
+    const inputInFormat = records.map((r) => `- ${r.createdAtDayIso}: ${r.value}`).join('\n');
+    let parsedSummary = '';
+
+    try {
+      parsedSummary = await textAi.generate({
+        userMessage: inputInFormat,
+        systemMessage,
+        model: 'gpt-4o',
+      });
+      console.log('parsedSummary');
+      console.log(parsedSummary);
+    } catch (e) {
+      console.error('Error cleaning up records:', e);
+      return records;
+    }
+
+    const ifOk = parsedSummary.trim().toLowerCase() === 'ok';
+    if (ifOk) {
+      return records;
+    }
+
+    if (!parsedSummary) {
+      return records;
+    }
+
+    const lines = parsedSummary
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .filter((line) => line.startsWith('- '));
+
+    if (lines.length === 0) {
+      return records;
+    }
+
+    const cleanedRecords: AdvancedUserRecord[] = lines.map((line) => {
+      const date = line.substring(2, 12);
+      const value = line.substring(14).trim();
+      return {
+        createdAtDayIso: date,
+        value,
+      };
+    });
+
+    return cleanedRecords;
+  };
+
   const simplifyRecords = async (records: AdvancedUserRecord[]) => {
     const sortedByDate = [...records].sort((a, b) => {
       return b.createdAtDayIso.localeCompare(a.createdAtDayIso);
@@ -119,7 +188,9 @@ Extract information about user from this conversation.`;
       }
     }
 
-    return uniqRecords;
+    const cleanedRecords = await cleanUpRecords(uniqRecords);
+
+    return cleanedRecords;
   };
 
   return {
