@@ -73,7 +73,7 @@ In case of lack of information at all, return the word 'No information'.
     return [...newRecords, ...oldRecords];
   };
 
-  const extractUserInfoFromConversationWithAi = async (
+  const extractRecordsFromConversation = async (
     conversation: Conversation,
     oldRecords: AdvancedUserRecord[],
   ) => {
@@ -103,8 +103,28 @@ Extract information about user from this conversation.`;
     return extractUserRecords(info, oldRecords);
   };
 
+  const simplifyRecords = async (records: AdvancedUserRecord[]) => {
+    const sortedByDate = [...records].sort((a, b) => {
+      return b.createdAtDayIso.localeCompare(a.createdAtDayIso);
+    });
+
+    const uniqRecords: AdvancedUserRecord[] = [];
+
+    for (const record of sortedByDate) {
+      const isDuplicate = uniqRecords.some(
+        (r) => r.value.toLowerCase().trim() === record.value.toLowerCase().trim(),
+      );
+      if (!isDuplicate) {
+        uniqRecords.push(record);
+      }
+    }
+
+    return uniqRecords;
+  };
+
   return {
     extractUserRecords,
-    extractUserInfoFromConversationWithAi,
+    extractRecordsFromConversation,
+    simplifyRecords,
   };
 }

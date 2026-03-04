@@ -102,9 +102,26 @@ export function UserCard({ userStat, allTextInfo }: UserCardProps) {
     setResult([]);
     setLoading(true);
 
-    const result = await extractInfo.extractUserInfoFromConversationWithAi(showConversation, []);
+    const [result, result2] = await Promise.all([
+      extractInfo.extractRecordsFromConversation(showConversation, []),
+      extractInfo.extractRecordsFromConversation(showConversation, []),
+    ]);
 
-    setResult(result);
+    const simplifiedResult = await extractInfo.simplifyRecords([...result, ...result2]);
+
+    setResult([
+      ...result,
+      {
+        value: '💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯',
+        createdAtDayIso: dayjs().format('YYYY-MM-DD'),
+      },
+      ...result2,
+      {
+        value: '⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️',
+        createdAtDayIso: dayjs().format('YYYY-MM-DD'),
+      },
+      ...simplifiedResult,
+    ]);
     setLoading(false);
   };
 
