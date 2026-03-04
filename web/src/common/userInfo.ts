@@ -3,8 +3,14 @@ export interface FirstBotConversationMessage {
   text: string;
 }
 
+export interface AdvancedUserRecord {
+  value: string;
+  createdAtDayIso: string;
+}
+
 export interface AiUserInfo {
   records: string[];
+  advancedRecords: AdvancedUserRecord[];
   createdAt: number;
   updatedAt: number;
   firstBotMessages?: FirstBotConversationMessage[];
