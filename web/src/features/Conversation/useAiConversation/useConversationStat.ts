@@ -35,6 +35,10 @@ export const useConversationStat = (
 
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
     const messageCountToCheck = 5;
+
+    const isNeedToCleanUpOldGrammarFacts = conversation.length === messageCountToCheck;
+    console.log('isNeedToCleanUpOldGrammarFacts', isNeedToCleanUpOldGrammarFacts);
+
     if (
       isNeedToSaveUserInfo &&
       conversation.length >= 3 &&
@@ -44,6 +48,7 @@ export const useConversationStat = (
         messages: conversation,
         messageOrder,
         lastMessagesCount: messageCountToCheck + 5,
+        isNeedToCleanUpOldGrammarFacts,
       });
     }
 

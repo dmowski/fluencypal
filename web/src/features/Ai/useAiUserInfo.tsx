@@ -35,6 +35,7 @@ interface AiUserInfoContextType {
     messages: ConversationMessage[];
     messageOrder: MessagesOrderMap;
     lastMessagesCount?: number;
+    isNeedToCleanUpOldGrammarFacts: boolean;
   }) => Promise<void>;
 
   extractUserRecordsFromText?: (context: string) => Promise<AdvancedUserRecord[]>;
@@ -50,7 +51,10 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
   const dbDocRef = db.documents.aiUserInfo(auth.uid);
   const [userInfo] = useDocumentData<AiUserInfo>(dbDocRef);
 
-  const getActualAdvancedUserRecords = async (): Promise<AdvancedUserRecord[]> => {
+  const getActualAdvancedUserRecords = async (): Promise<{
+    advancedRecords: AdvancedUserRecord[];
+    grammarRecords: AdvancedUserRecord[];
+  }> => {
     // get from database
     if (!dbDocRef) {
       throw new Error('dbDocRef is not defined | useAiUserInfo.getActualAdvancedUserRecords');
@@ -58,11 +62,17 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
 
     const userInfoData = await getDoc(dbDocRef);
     const userInfo = userInfoData.data();
-    if (!userInfo || !userInfo.advancedRecords) {
-      return [];
+    if (!userInfo) {
+      return {
+        advancedRecords: [],
+        grammarRecords: [],
+      };
     }
 
-    return userInfo.advancedRecords;
+    return {
+      advancedRecords: userInfo.advancedRecords || [],
+      grammarRecords: userInfo.grammarRecords || [],
+    };
   };
 
   const updateGrammarRecords = async (grammarRecords: AdvancedUserRecord[]) => {
@@ -99,7 +109,10 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
   const extractUserRecordsFromText = async (context: string): Promise<AdvancedUserRecord[]> => {
     const newRecords = await extractInfo.extractUserRecords({ context, mode: 'user-info' });
     const oldRecords = await getActualAdvancedUserRecords();
-    const simplifiedResult = await extractInfo.simplifyRecords([...oldRecords, ...newRecords]);
+    const simplifiedResult = await extractInfo.simplifyRecords([
+      ...oldRecords.advancedRecords,
+      ...newRecords,
+    ]);
     console.log('extractUserRecordsFromText: User Advanced info', simplifiedResult);
 
     await updateAdvancedUserRecords(simplifiedResult);
@@ -110,15 +123,32 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
     messages: ConversationMessage[];
     messageOrder: MessagesOrderMap;
     lastMessagesCount?: number;
+    isNeedToCleanUpOldGrammarFacts: boolean;
   }): Promise<void> => {
-    const newRecords = await extractInfo.extractUserInfoRecordsFromConversation({
-      ...props,
-      mode: 'user-info',
-    });
+    const [newUserInfoRecords, newGrammarRecords] = await Promise.all([
+      extractInfo.extractUserInfoRecordsFromConversation({
+        ...props,
+        mode: 'user-info',
+      }),
+      extractInfo.extractUserInfoRecordsFromConversation({
+        ...props,
+        mode: 'grammar',
+      }),
+    ]);
+
     const oldRecords = await getActualAdvancedUserRecords();
-    const simplifiedResult = await extractInfo.simplifyRecords([...oldRecords, ...newRecords]);
-    console.log('Final User info', simplifiedResult);
-    await updateAdvancedUserRecords(simplifiedResult);
+
+    const [simplifiedUserInfoResult, simplifiedGrammarResult] = await Promise.all([
+      extractInfo.simplifyRecords([...oldRecords.advancedRecords, ...newUserInfoRecords]),
+      props.isNeedToCleanUpOldGrammarFacts
+        ? newGrammarRecords
+        : extractInfo.simplifyRecords([...oldRecords.grammarRecords, ...newGrammarRecords]),
+    ]);
+
+    console.log('Final User info', simplifiedUserInfoResult);
+    console.log('simplifiedGrammarResult', simplifiedGrammarResult);
+    await updateAdvancedUserRecords(simplifiedUserInfoResult);
+    await updateGrammarRecords(simplifiedGrammarResult);
   };
 
   const advancedUserRecords = useMemo(() => {
