@@ -9,15 +9,20 @@ import { getSortedMessages } from '../Conversation/getSortedMessages';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
+export type ExtractKnowledgeMode = 'user-info' | 'grammar-focus';
+
 export function useExtractKnowledge() {
   const textAi = useTextAi();
 
   const extractUserRecords = async ({
     context,
+    mode,
   }: {
     context: string;
+    mode: ExtractKnowledgeMode;
   }): Promise<AdvancedUserRecord[]> => {
     console.log('extractUserRecords', context);
+
     const systemMessage = `Given info. Your goal is to extract existing information about user from the text.
 
 Important information like name or location should be more important than interests, plans or preferences.
@@ -119,11 +124,12 @@ In case of lack of information at all, return the word 'No information.'.
     messages,
     messageOrder,
     lastMessagesCount,
+    mode,
   }: {
     messages: ConversationMessage[];
     messageOrder: MessagesOrderMap;
     lastMessagesCount?: number;
-    isGrammarFocus?: boolean;
+    mode: ExtractKnowledgeMode;
   }) => {
     if (messages.length < 3) {
       return [];
@@ -135,12 +141,10 @@ In case of lack of information at all, return the word 'No information.'.
       lastMessagesCount,
     });
 
-    const info = `Conversation between user and AI teacher:
-${messagesList}
+    const info = `Conversation between User and AI teacher:
+${messagesList}`;
 
-Extract information about user from this conversation.`;
-
-    return extractUserRecords({ context: info });
+    return extractUserRecords({ context: info, mode });
   };
 
   const cleanUpRecords = async (records: AdvancedUserRecord[]) => {

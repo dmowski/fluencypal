@@ -103,8 +103,14 @@ export function UserCard({ userStat, allTextInfo }: UserCardProps) {
     setLoading(true);
 
     const [result, result2] = await Promise.all([
-      extractInfo.extractUserInfoRecordsFromConversation({ ...showConversation }),
-      extractInfo.extractUserInfoRecordsFromConversation({ ...showConversation }),
+      extractInfo.extractUserInfoRecordsFromConversation({
+        ...showConversation,
+        mode: 'user-info',
+      }),
+      extractInfo.extractUserInfoRecordsFromConversation({
+        ...showConversation,
+        mode: 'user-info',
+      }),
     ]);
 
     const simplifiedResult = await extractInfo.simplifyRecords([...result, ...result2]);
