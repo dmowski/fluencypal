@@ -83,7 +83,7 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
   const extractInfo = useExtractKnowledge();
 
   const extractUserRecordsFromText = async (context: string): Promise<AdvancedUserRecord[]> => {
-    const newRecords = await extractInfo.extractUserRecords(context);
+    const newRecords = await extractInfo.extractUserRecords({ context });
     const oldRecords = await getActualAdvancedUserRecords();
     const simplifiedResult = await extractInfo.simplifyRecords([...oldRecords, ...newRecords]);
     console.log('extractUserRecordsFromText: User Advanced info', simplifiedResult);
