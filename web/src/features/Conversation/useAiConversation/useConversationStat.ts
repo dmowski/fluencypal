@@ -36,19 +36,29 @@ export const useConversationStat = (
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
     const messageCountToCheck = 5;
 
-    const isNeedToCleanUpOldGrammarFacts = conversation.length === messageCountToCheck;
-    console.log('isNeedToCleanUpOldGrammarFacts', isNeedToCleanUpOldGrammarFacts);
+    const isMessagesReadyToExtract =
+      conversation.length >= 3 && conversation.length % messageCountToCheck === 0;
 
-    if (
-      isNeedToSaveUserInfo &&
-      conversation.length >= 3 &&
-      conversation.length % messageCountToCheck === 0
-    ) {
+    const lastMessagesCount = messageCountToCheck + 5;
+    if (isNeedToSaveUserInfo && isMessagesReadyToExtract) {
       aiUserInfo.extractAdvancedUserRecordsFromConversation({
         messages: conversation,
         messageOrder,
-        lastMessagesCount: messageCountToCheck + 5,
-        isNeedToCleanUpOldGrammarFacts,
+        lastMessagesCount,
+        isNeedToCleanUpOldRecords: false,
+        mode: 'user-info',
+      });
+    }
+
+    if (isMessagesReadyToExtract) {
+      const isNeedToCleanUpOldGrammarFacts = conversation.length === messageCountToCheck;
+      console.log('isNeedToCleanUpOldGrammarFacts', isNeedToCleanUpOldGrammarFacts);
+      aiUserInfo.extractAdvancedUserRecordsFromConversation({
+        messages: conversation,
+        messageOrder,
+        lastMessagesCount,
+        isNeedToCleanUpOldRecords: isNeedToCleanUpOldGrammarFacts,
+        mode: 'grammar',
       });
     }
 

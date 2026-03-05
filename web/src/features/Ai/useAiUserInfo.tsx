@@ -11,7 +11,7 @@ import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useSettings } from '../Settings/useSettings';
-import { useExtractKnowledge } from '../AiKnowledge/useExtractKnowledge';
+import { ExtractKnowledgeMode, useExtractKnowledge } from '../AiKnowledge/useExtractKnowledge';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
@@ -35,7 +35,8 @@ interface AiUserInfoContextType {
     messages: ConversationMessage[];
     messageOrder: MessagesOrderMap;
     lastMessagesCount?: number;
-    isNeedToCleanUpOldGrammarFacts: boolean;
+    isNeedToCleanUpOldRecords: boolean;
+    mode: ExtractKnowledgeMode;
   }) => Promise<void>;
 
   extractUserRecordsFromText?: (context: string) => Promise<AdvancedUserRecord[]>;
@@ -123,32 +124,29 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
     messages: ConversationMessage[];
     messageOrder: MessagesOrderMap;
     lastMessagesCount?: number;
-    isNeedToCleanUpOldGrammarFacts: boolean;
+    isNeedToCleanUpOldRecords: boolean;
+    mode: ExtractKnowledgeMode;
   }): Promise<void> => {
-    const [newUserInfoRecords, newGrammarRecords] = await Promise.all([
-      extractInfo.extractUserInfoRecordsFromConversation({
-        ...props,
-        mode: 'user-info',
-      }),
-      extractInfo.extractUserInfoRecordsFromConversation({
-        ...props,
-        mode: 'grammar',
-      }),
-    ]);
+    const newRecords = await extractInfo.extractUserInfoRecordsFromConversation({
+      ...props,
+    });
 
-    const oldRecords = await getActualAdvancedUserRecords();
+    const oldRecordsAll = await getActualAdvancedUserRecords();
 
-    const [simplifiedUserInfoResult, simplifiedGrammarResult] = await Promise.all([
-      extractInfo.simplifyRecords([...oldRecords.advancedRecords, ...newUserInfoRecords]),
-      props.isNeedToCleanUpOldGrammarFacts
-        ? newGrammarRecords
-        : extractInfo.simplifyRecords([...oldRecords.grammarRecords, ...newGrammarRecords]),
-    ]);
+    const oldRecords =
+      props.mode === 'user-info' ? oldRecordsAll.advancedRecords : oldRecordsAll.grammarRecords;
 
-    console.log('Final User info', simplifiedUserInfoResult);
-    console.log('simplifiedGrammarResult', simplifiedGrammarResult);
-    await updateAdvancedUserRecords(simplifiedUserInfoResult);
-    await updateGrammarRecords(simplifiedGrammarResult);
+    const simplifiedAllRecords = props.isNeedToCleanUpOldRecords
+      ? newRecords
+      : await extractInfo.simplifyRecords([...oldRecords, ...newRecords]);
+
+    if (props.mode === 'user-info') {
+      await updateAdvancedUserRecords(simplifiedAllRecords);
+    }
+
+    if (props.mode === 'grammar') {
+      await updateGrammarRecords(simplifiedAllRecords);
+    }
   };
 
   const advancedUserRecords = useMemo(() => {
