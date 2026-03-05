@@ -22,6 +22,7 @@ import { JustTalkCard } from './JustTalkCard';
 import { StreaksDaysBadge } from './StreaksDaysBadge';
 import { Stories } from '../Sentence/Stories';
 import { useAuth } from '../Auth/useAuth';
+import { GrammarImprovesCard } from './GrammarImprovesCard';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -80,6 +81,7 @@ export function Dashboard({ lang }: DashboardProps) {
               )}
 
               <JustTalkCard />
+              <GrammarImprovesCard />
 
               {access.isFullAppAccess && access.isExpiringSoon && (
                 <AccessBadge
