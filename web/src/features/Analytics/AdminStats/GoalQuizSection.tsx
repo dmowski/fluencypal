@@ -2,6 +2,7 @@ import { Stack, Typography, IconButton } from '@mui/material';
 import { SquareArrowOutUpRight } from 'lucide-react';
 import { UserStat } from '@/app/api/loadStats/types';
 import { GoalPlan } from '../../Plan/types';
+import { AdvancedUserRecord } from '@/common/userInfo';
 
 interface GoalQuizSectionProps {
   goalQuiz2: UserStat['goalQuiz2'];
@@ -10,8 +11,6 @@ interface GoalQuizSectionProps {
 }
 
 export function GoalQuizSection({ goalQuiz2, aiUserInfo, onGoalClick }: GoalQuizSectionProps) {
-  if (goalQuiz2.length === 0) return null;
-
   return (
     <Stack
       sx={{
@@ -67,29 +66,52 @@ export function GoalQuizSection({ goalQuiz2, aiUserInfo, onGoalClick }: GoalQuiz
           <Typography variant="body1">{goalQuiz2[0]?.goalUserTranscription || ''}</Typography>
         </Stack>
 
-        {aiUserInfo?.advancedRecords && (
-          <details open>
-            <summary>AI User Info Advanced Records ({aiUserInfo.advancedRecords.length})</summary>
+        <details open>
+          <summary>User Records ({aiUserInfo?.advancedRecords?.length || 0})</summary>
 
-            <Stack sx={{ gap: '10px', paddingTop: '10px' }}>
-              {aiUserInfo?.advancedRecords.map((record, index) => (
-                <Typography
-                  key={index}
-                  variant="body1"
-                  sx={{
-                    padding: '8px',
-                    borderRadius: '4px',
-                    fontSize: '18px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                  }}
-                >
-                  {record.createdAtDayIso} - {record.value}
-                </Typography>
-              ))}
-            </Stack>
-          </details>
-        )}
+          <Stack sx={{ gap: '10px', paddingTop: '10px' }}>
+            {aiUserInfo?.advancedRecords?.map((record, index) => (
+              <AdvancedUserRecordRow key={index} record={record} />
+            ))}
+          </Stack>
+        </details>
+
+        <details open>
+          <summary>Grammar Records ({aiUserInfo?.grammarRecords?.length || 0})</summary>
+
+          <Stack sx={{ gap: '10px', paddingTop: '10px' }}>
+            {aiUserInfo?.grammarRecords?.map((record, index) => (
+              <AdvancedUserRecordRow key={index} record={record} />
+            ))}
+          </Stack>
+        </details>
       </Stack>
     </Stack>
   );
 }
+
+export const AdvancedUserRecordRow = ({ record }: { record: AdvancedUserRecord }) => {
+  return (
+    <Stack
+      sx={{
+        padding: '8px',
+        borderRadius: '4px',
+        fontSize: '18px',
+        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+      }}
+    >
+      <Typography>{record.value}</Typography>
+      <Typography
+        variant="caption"
+        sx={{
+          width: '160px',
+          textAlign: 'right',
+        }}
+      >
+        {record.createdAtDayIso}
+      </Typography>
+    </Stack>
+  );
+};
