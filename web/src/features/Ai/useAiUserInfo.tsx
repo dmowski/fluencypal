@@ -31,13 +31,11 @@ interface AiUserInfoContextType {
   updateAllRecords: (records: AdvancedUserRecord[]) => Promise<void>;
   deleteRecord: (index: number) => Promise<void>;
 
-  extractAdvancedUserRecordsFromConversation: (
-    conversation: {
-      messages: ConversationMessage[];
-      messageOrder: MessagesOrderMap;
-    },
-    lastMessagesCount?: number,
-  ) => Promise<void>;
+  extractAdvancedUserRecordsFromConversation: (props: {
+    messages: ConversationMessage[];
+    messageOrder: MessagesOrderMap;
+    lastMessagesCount?: number;
+  }) => Promise<void>;
 
   extractUserRecordsFromText?: (context: string) => Promise<AdvancedUserRecord[]>;
 }
@@ -94,17 +92,12 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
     return simplifiedResult;
   };
 
-  const extractAdvancedUserRecordsFromConversation = async (
-    conversation: {
-      messages: ConversationMessage[];
-      messageOrder: MessagesOrderMap;
-    },
-    lastMessagesCount?: number,
-  ): Promise<void> => {
-    const newRecords = await extractInfo.extractRecordsFromConversation(
-      conversation,
-      lastMessagesCount,
-    );
+  const extractAdvancedUserRecordsFromConversation = async (props: {
+    messages: ConversationMessage[];
+    messageOrder: MessagesOrderMap;
+    lastMessagesCount?: number;
+  }): Promise<void> => {
+    const newRecords = await extractInfo.extractRecordsFromConversation(props);
     const oldRecords = await getActualAdvancedUserRecords();
     const simplifiedResult = await extractInfo.simplifyRecords([...oldRecords, ...newRecords]);
     console.log('Final User info', simplifiedResult);

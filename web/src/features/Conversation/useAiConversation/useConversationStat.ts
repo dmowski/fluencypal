@@ -40,13 +40,11 @@ export const useConversationStat = (
       conversation.length >= 3 &&
       conversation.length % messageCountToCheck === 0
     ) {
-      aiUserInfo.extractAdvancedUserRecordsFromConversation(
-        {
-          messages: conversation,
-          messageOrder,
-        },
-        messageCountToCheck + 5,
-      );
+      aiUserInfo.extractAdvancedUserRecordsFromConversation({
+        messages: conversation,
+        messageOrder,
+        lastMessagesCount: messageCountToCheck + 5,
+      });
     }
 
     const usersMessagesCount = conversation.filter((message) => !message.isBot).length;

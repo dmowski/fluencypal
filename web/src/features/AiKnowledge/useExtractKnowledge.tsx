@@ -74,20 +74,22 @@ In case of lack of information at all, return the word 'No information.'.
     return newRecords;
   };
 
-  const extractRecordsFromConversation = async (
-    conversation: {
-      messages: ConversationMessage[];
-      messageOrder: MessagesOrderMap;
-    },
-    lastMessagesCount?: number,
-  ) => {
-    if (conversation.messages.length < 3) {
+  const extractRecordsFromConversation = async ({
+    messages,
+    messageOrder,
+    lastMessagesCount,
+  }: {
+    messages: ConversationMessage[];
+    messageOrder: MessagesOrderMap;
+    lastMessagesCount?: number;
+  }) => {
+    if (messages.length < 3) {
       return [];
     }
 
     const sortedMessages = getSortedMessages({
-      conversation: conversation.messages,
-      messageOrder: conversation.messageOrder,
+      conversation: messages,
+      messageOrder: messageOrder,
     });
 
     const messagesToProcess = lastMessagesCount
