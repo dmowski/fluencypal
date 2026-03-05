@@ -12,8 +12,12 @@ dayjs.extend(relativeTime);
 export function useExtractKnowledge() {
   const textAi = useTextAi();
 
-  const extractUserRecords = async (info: string): Promise<AdvancedUserRecord[]> => {
-    console.log('extractUserRecords', info);
+  const extractUserRecords = async ({
+    context,
+  }: {
+    context: string;
+  }): Promise<AdvancedUserRecord[]> => {
+    console.log('extractUserRecords', context);
     const systemMessage = `Given info. Your goal is to extract existing information about user from the text.
 
 Important information like name or location should be more important than interests, plans or preferences.
@@ -34,7 +38,7 @@ In case of lack of information at all, return the word 'No information.'.
     let parsedSummary = '';
     try {
       parsedSummary = await textAi.generate({
-        userMessage: info,
+        userMessage: context,
         systemMessage,
         model: 'gpt-4o',
       });
@@ -119,6 +123,7 @@ In case of lack of information at all, return the word 'No information.'.
     messages: ConversationMessage[];
     messageOrder: MessagesOrderMap;
     lastMessagesCount?: number;
+    isGrammarFocus?: boolean;
   }) => {
     if (messages.length < 3) {
       return [];
@@ -135,7 +140,7 @@ ${messagesList}
 
 Extract information about user from this conversation.`;
 
-    return extractUserRecords(info);
+    return extractUserRecords({ context: info });
   };
 
   const cleanUpRecords = async (records: AdvancedUserRecord[]) => {
