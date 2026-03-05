@@ -21,8 +21,6 @@ export function useExtractKnowledge() {
     context: string;
     mode: ExtractKnowledgeMode;
   }): Promise<AdvancedUserRecord[]> => {
-    console.log('extractUserRecords', context);
-
     const systemMessage = `Given info. Your goal is to extract existing information about user from the text.
 
 Important information like name or location should be more important than interests, plans or preferences.
@@ -40,9 +38,10 @@ Example of returned facts based on given info:
 
 In case of lack of information at all, return the word 'No information.'.
 `;
-    let parsedSummary = '';
+
+    let factsAiResponse = '';
     try {
-      parsedSummary = await textAi.generate({
+      factsAiResponse = await textAi.generate({
         userMessage: context,
         systemMessage,
         model: 'gpt-4o',
@@ -52,22 +51,28 @@ In case of lack of information at all, return the word 'No information.'.
       return [];
     }
 
-    console.log('Original parsedSummary');
-    console.log(parsedSummary);
+    console.log('factsAiResponse from context');
+    console.log(factsAiResponse);
+    console.log(context);
     console.log('-----');
-    const ifNoInformation = parsedSummary.trim().toLowerCase() === 'no information.';
+
+    return parseFactsFromText(factsAiResponse);
+  };
+
+  const parseFactsFromText = (aiResponse: string): AdvancedUserRecord[] => {
+    const ifNoInformation = aiResponse.trim().toLowerCase() === 'no information.';
     if (ifNoInformation) {
       return [];
     }
 
-    if (!parsedSummary) {
+    if (!aiResponse) {
       return [];
     }
 
     // YYYY-MM-DD
     const createdAtDayIso = dayjs().format('YYYY-MM-DD');
 
-    const parsed = parsedSummary
+    const parsed = aiResponse
       .split('\n')
       .map((fact) => fact.trim())
       .filter(Boolean);
