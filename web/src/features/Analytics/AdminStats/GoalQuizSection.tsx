@@ -11,6 +11,10 @@ interface GoalQuizSectionProps {
 }
 
 export function GoalQuizSection({ goalQuiz2, aiUserInfo, onGoalClick }: GoalQuizSectionProps) {
+  const grammarRecordsMap = aiUserInfo?.grammarRecordsMap;
+  const allGrammarRecords = grammarRecordsMap
+    ? (Object.values(grammarRecordsMap).flat() as AdvancedUserRecord[])
+    : [];
   return (
     <Stack
       sx={{
@@ -77,10 +81,10 @@ export function GoalQuizSection({ goalQuiz2, aiUserInfo, onGoalClick }: GoalQuiz
         </details>
 
         <details open>
-          <summary>Grammar Records ({aiUserInfo?.grammarRecords?.length || 0})</summary>
+          <summary>Grammar Records ({allGrammarRecords.length || 0})</summary>
 
           <Stack sx={{ gap: '10px', paddingTop: '10px' }}>
-            {aiUserInfo?.grammarRecords?.map((record, index) => (
+            {allGrammarRecords.map((record, index) => (
               <AdvancedUserRecordRow key={index} record={record} />
             ))}
           </Stack>

@@ -1,3 +1,5 @@
+import { SupportedLanguage } from '@/features/Lang/lang';
+
 export interface FirstBotConversationMessage {
   createdAt: number;
   text: string;
@@ -10,7 +12,7 @@ export interface AdvancedUserRecord {
 
 export interface AiUserInfo {
   advancedRecords: AdvancedUserRecord[];
-  grammarRecords?: AdvancedUserRecord[];
+  grammarRecordsMap?: Record<SupportedLanguage, AdvancedUserRecord[] | undefined>;
   createdAt: number;
   updatedAt: number;
   firstBotMessages?: FirstBotConversationMessage[];

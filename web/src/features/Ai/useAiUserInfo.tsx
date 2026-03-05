@@ -23,6 +23,7 @@ export interface ConversationIdea {
 interface AiUserInfoContextType {
   userInfo: AiUserInfo | null;
   advancedUserRecords: string;
+  grammarRecords: AdvancedUserRecord[];
 
   generateFirstMessageText: (topic: string) => Promise<ConversationIdea>;
 
@@ -52,6 +53,8 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
   const dbDocRef = db.documents.aiUserInfo(auth.uid);
   const [userInfo] = useDocumentData<AiUserInfo>(dbDocRef);
 
+  const grammarRecords = userInfo?.grammarRecordsMap?.[languageCode] || [];
+
   const getActualAdvancedUserRecords = async (): Promise<{
     advancedRecords: AdvancedUserRecord[];
     grammarRecords: AdvancedUserRecord[];
@@ -72,7 +75,7 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
 
     return {
       advancedRecords: userInfo.advancedRecords || [],
-      grammarRecords: userInfo.grammarRecords || [],
+      grammarRecords: userInfo.grammarRecordsMap?.[languageCode] || [],
     };
   };
 
@@ -83,7 +86,9 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
     await setDoc(
       dbDocRef,
       {
-        grammarRecords,
+        grammarRecordsMap: {
+          [languageCode]: grammarRecords,
+        },
         updatedAt: Date.now(),
       },
       { merge: true },
@@ -347,6 +352,7 @@ ${firstMessages.length === 0 ? 'None' : firstMessages.map((msg, i) => `${i + 1}.
     updateAllRecords,
     extractUserRecordsFromText,
     addRecord,
+    grammarRecords,
   };
 }
 
