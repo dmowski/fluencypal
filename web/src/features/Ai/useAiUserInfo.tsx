@@ -65,6 +65,20 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
     return userInfo.advancedRecords;
   };
 
+  const updateGrammarRecords = async (grammarRecords: AdvancedUserRecord[]) => {
+    if (grammarRecords.length === 0) return;
+    if (!dbDocRef) throw new Error('dbDocRef is not defined | useAiUserInfo.updateGrammarRecords');
+
+    await setDoc(
+      dbDocRef,
+      {
+        grammarRecords,
+        updatedAt: Date.now(),
+      },
+      { merge: true },
+    );
+  };
+
   const updateAdvancedUserRecords = async (advancedRecords: AdvancedUserRecord[]) => {
     if (advancedRecords.length === 0) return;
     if (!dbDocRef)

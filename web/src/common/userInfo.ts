@@ -10,6 +10,7 @@ export interface AdvancedUserRecord {
 
 export interface AiUserInfo {
   advancedRecords: AdvancedUserRecord[];
+  grammarRecords?: AdvancedUserRecord[];
   createdAt: number;
   updatedAt: number;
   firstBotMessages?: FirstBotConversationMessage[];
