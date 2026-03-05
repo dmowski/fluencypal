@@ -102,7 +102,7 @@ export function UserCard({ userStat, allTextInfo }: UserCardProps) {
     setResult([]);
     setLoading(true);
 
-    const [result, result2] = await Promise.all([
+    const [result, result2, grammarFacts] = await Promise.all([
       extractInfo.extractUserInfoRecordsFromConversation({
         ...showConversation,
         mode: 'user-info',
@@ -110,21 +110,30 @@ export function UserCard({ userStat, allTextInfo }: UserCardProps) {
       extractInfo.extractUserInfoRecordsFromConversation({
         ...showConversation,
         mode: 'user-info',
+      }),
+      extractInfo.extractUserInfoRecordsFromConversation({
+        ...showConversation,
+        mode: 'grammar',
       }),
     ]);
 
     const simplifiedResult = await extractInfo.simplifyRecords([...result, ...result2]);
 
     setResult([
+      ...grammarFacts,
+      {
+        value: 'GRAMMAR',
+        createdAtDayIso: '',
+      },
       ...result,
       {
         value: '💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯💯',
-        createdAtDayIso: dayjs().format('YYYY-MM-DD'),
+        createdAtDayIso: '',
       },
       ...result2,
       {
         value: '⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️',
-        createdAtDayIso: dayjs().format('YYYY-MM-DD'),
+        createdAtDayIso: '',
       },
       ...simplifiedResult,
     ]);

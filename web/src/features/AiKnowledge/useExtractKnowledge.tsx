@@ -9,19 +9,10 @@ import { getSortedMessages } from '../Conversation/getSortedMessages';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
-export type ExtractKnowledgeMode = 'user-info' | 'grammar-focus';
+export type ExtractKnowledgeMode = 'user-info' | 'grammar';
 
-export function useExtractKnowledge() {
-  const textAi = useTextAi();
-
-  const extractUserRecords = async ({
-    context,
-    mode,
-  }: {
-    context: string;
-    mode: ExtractKnowledgeMode;
-  }): Promise<AdvancedUserRecord[]> => {
-    const systemMessage = `Given info. Your goal is to extract existing information about user from the text.
+const extractSystemPrompts: Record<ExtractKnowledgeMode, string> = {
+  'user-info': `Given info. Your goal is to extract existing information about user from the text.
 
 Important information like name or location should be more important than interests, plans or preferences.
 
@@ -37,7 +28,32 @@ Example of returned facts based on given info:
 - studying English with a teacher and likes it
 
 In case of lack of information at all, return the word 'No information.'.
-`;
+`,
+  grammar: `Given info. Your goal is to extract information about user's grammar mistakes and difficulties from the text.
+
+Return each topic to improve on a new line.
+
+Example of returned facts based on given info:
+- Need to practice past tense verbs
+- Need to improve prepositions, especially "in" and "on"
+- Need to improve using articles "a" and "the"
+- It's worth practicing conditionals, especially second conditional
+- Strong need to work on word order in complex sentences
+
+In case of perfect grammar, return the word 'No information.'.`,
+};
+
+export function useExtractKnowledge() {
+  const textAi = useTextAi();
+
+  const extractUserRecords = async ({
+    context,
+    mode,
+  }: {
+    context: string;
+    mode: ExtractKnowledgeMode;
+  }): Promise<AdvancedUserRecord[]> => {
+    const systemMessage = extractSystemPrompts[mode];
 
     let factsAiResponse = '';
     try {
@@ -51,10 +67,14 @@ In case of lack of information at all, return the word 'No information.'.
       return [];
     }
 
-    console.log('factsAiResponse from context');
-    console.log(factsAiResponse);
+    console.log('Facts AiResponse from context');
+    console.log(systemMessage);
+    console.log('-');
     console.log(context);
-    console.log('-----');
+    console.log('-');
+    console.log(factsAiResponse);
+
+    console.log('--------------------');
 
     return parseFactsFromText(factsAiResponse);
   };
