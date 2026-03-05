@@ -26,7 +26,7 @@ Example of returned facts based on given info:
 - experience: 5 years
 - interests: coding, web development
 - exam preparation: planning to take TOEFL in 6 months
-
+- studying English with a teacher and likes it
 
 In case of lack of information at all, return the word 'No information.'.
 `;
@@ -74,10 +74,13 @@ In case of lack of information at all, return the word 'No information.'.
     return newRecords;
   };
 
-  const extractRecordsFromConversation = async (conversation: {
-    messages: ConversationMessage[];
-    messageOrder: MessagesOrderMap;
-  }) => {
+  const extractRecordsFromConversation = async (
+    conversation: {
+      messages: ConversationMessage[];
+      messageOrder: MessagesOrderMap;
+    },
+    lastMessagesCount?: number,
+  ) => {
     if (conversation.messages.length < 3) {
       return [];
     }
@@ -87,7 +90,13 @@ In case of lack of information at all, return the word 'No information.'.
       messageOrder: conversation.messageOrder,
     });
 
-    const messagesList = sortedMessages
+    const messagesToProcess = lastMessagesCount
+      ? sortedMessages.slice(-lastMessagesCount)
+      : sortedMessages;
+
+    console.log('messagesToProcess', messagesToProcess);
+
+    const messagesList = messagesToProcess
       .map((m) => {
         const author = m.isBot ? 'Teacher' : 'User';
 
