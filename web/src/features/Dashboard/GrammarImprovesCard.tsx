@@ -1,19 +1,7 @@
 import { useLingui } from '@lingui/react';
-import VideocamIcon from '@mui/icons-material/Videocam';
 
-import { Typography, Button } from '@mui/material';
+import { Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { AudioLines, Loader } from 'lucide-react';
-import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
-import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
-import { useState } from 'react';
-import { useSettings } from '../Settings/useSettings';
-import { useConversationAudio } from '../Audio/useConversationAudio';
-import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
-import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
-import { Avatar } from '../Game/Avatar';
-import { getMediaVideoStreams } from '../webCam/mediaStream';
-import { sleep } from '@/libs/sleep';
 import { useAiUserInfo } from '../Ai/useAiUserInfo';
 import { AdvancedUserRecord } from '@/common/userInfo';
 import { useAuth } from '../Auth/useAuth';
