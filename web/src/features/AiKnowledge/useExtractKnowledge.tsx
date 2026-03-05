@@ -25,6 +25,7 @@ Example of returned facts based on given info:
 - profession: software engineer
 - experience: 5 years
 - interests: coding, web development
+- exam preparation: planning to take TOEFL in 6 months
 
 
 In case of lack of information at all, return the word 'No information.'.
