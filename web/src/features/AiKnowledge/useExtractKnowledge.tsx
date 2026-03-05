@@ -111,7 +111,7 @@ In case of lack of information at all, return the word 'No information.'.
     return messagesList;
   };
 
-  const extractRecordsFromConversation = async ({
+  const extractUserInfoRecordsFromConversation = async ({
     messages,
     messageOrder,
     lastMessagesCount,
@@ -227,7 +227,7 @@ If original records already look good and clean, return the word "OK".
 
   return {
     extractUserRecords,
-    extractRecordsFromConversation,
+    extractUserInfoRecordsFromConversation,
     simplifyRecords,
   };
 }

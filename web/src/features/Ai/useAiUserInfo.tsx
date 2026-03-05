@@ -97,7 +97,7 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
     messageOrder: MessagesOrderMap;
     lastMessagesCount?: number;
   }): Promise<void> => {
-    const newRecords = await extractInfo.extractRecordsFromConversation(props);
+    const newRecords = await extractInfo.extractUserInfoRecordsFromConversation(props);
     const oldRecords = await getActualAdvancedUserRecords();
     const simplifiedResult = await extractInfo.simplifyRecords([...oldRecords, ...newRecords]);
     console.log('Final User info', simplifiedResult);
