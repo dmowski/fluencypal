@@ -13,6 +13,7 @@ export function useExtractKnowledge() {
   const textAi = useTextAi();
 
   const extractUserRecords = async (info: string): Promise<AdvancedUserRecord[]> => {
+    console.log('extractUserRecords', info);
     const systemMessage = `Given info. Your goal is to extract existing information about user from the text.
 
 Important information like name or location should be more important than interests, plans or preferences.
@@ -74,7 +75,7 @@ In case of lack of information at all, return the word 'No information.'.
     return newRecords;
   };
 
-  const extractRecordsFromConversation = async ({
+  const getConversationText = ({
     messages,
     messageOrder,
     lastMessagesCount,
@@ -84,7 +85,7 @@ In case of lack of information at all, return the word 'No information.'.
     lastMessagesCount?: number;
   }) => {
     if (messages.length < 3) {
-      return [];
+      return '';
     }
 
     const sortedMessages = getSortedMessages({
@@ -106,6 +107,28 @@ In case of lack of information at all, return the word 'No information.'.
         return `${author}: ${cleanText}`;
       })
       .join('\n');
+
+    return messagesList;
+  };
+
+  const extractRecordsFromConversation = async ({
+    messages,
+    messageOrder,
+    lastMessagesCount,
+  }: {
+    messages: ConversationMessage[];
+    messageOrder: MessagesOrderMap;
+    lastMessagesCount?: number;
+  }) => {
+    if (messages.length < 3) {
+      return [];
+    }
+
+    const messagesList = getConversationText({
+      messages: messages,
+      messageOrder,
+      lastMessagesCount,
+    });
 
     const info = `Conversation between user and AI teacher:
 ${messagesList}
