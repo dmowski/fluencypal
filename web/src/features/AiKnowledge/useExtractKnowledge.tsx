@@ -31,14 +31,14 @@ In case of lack of information at all, return the word 'No information.'.
 `,
   grammar: `Given info. Your goal is to extract information about user's grammar mistakes and difficulties from the text.
 
-Return each topic to improve on a new line.
+Return each topic to improve on a new line with short example of mistake.
 
 Example of returned facts based on given info:
-- Need to practice past tense verbs
-- Need to improve prepositions, especially "in" and "on"
-- Need to improve using articles "a" and "the"
-- It's worth practicing conditionals, especially second conditional
-- Strong need to work on word order in complex sentences
+- Need to practice past tense verbs (e.g. "I goed to the store" should be "I went to the store")
+- Need to improve prepositions, especially "in" and "on" (e.g. "I am good in English" should be "I am good at English")
+- Need to improve using articles "a" and "the" (e.g. "I have cat" should be "I have a cat")
+- It's worth practicing conditionals, especially second conditional (e.g. "If I will be rich, I will buy a house" should be "If I were rich, I would buy a house")
+- Strong need to work on word order in complex sentences (e.g. "I only like English" should be "Only I like English" or "I like only English")
 
 In case of perfect grammar, return the word 'No information.'.`,
 };
