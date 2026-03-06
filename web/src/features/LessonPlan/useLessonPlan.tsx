@@ -349,12 +349,14 @@ On the first step in teacherInstructions, include a start message to introduce t
 Student is learning ${settings.fullLanguageName || 'English'}. Use this language in the lesson plan.
 
 Format the response as a JSON array with each step containing "stepTitle", "stepDescriptionForStudent", and "teacherInstructions".
+
+Return only the JSON array, do not include any additional text.
   `;
-    //console.log("systemMessage", systemMessage);
+
     const response = await ai.generateJson<LessonPlanStep[]>({
       systemMessage,
       userMessage: `Create the lesson plan as specified.`,
-      attempts: 2,
+      attempts: 4,
       model: 'gpt-4o',
     });
 
