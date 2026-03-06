@@ -1,4 +1,4 @@
-export const grammarImprovementSystemPrompt = `You are a helpful assistant that provides grammar improvement suggestions based on user records.
+export const grammarImprovementSystemPrompt = `You are a helpful assistant that provides grammar improvement suggestions based on user speech notes.
 Given a user record, analyze it and provide a specific grammar improvement suggestion. Focus on one key improvement that would have the most impact for the user.
 
 The response should be in JSON format with the following structure:
