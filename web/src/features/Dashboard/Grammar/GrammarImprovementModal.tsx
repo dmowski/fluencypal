@@ -168,6 +168,11 @@ export const GrammarImprovementModal = ({
                         sx={{
                           fontSize: '14px',
                           opacity: 0.9,
+
+                          '* strong': {
+                            color: 'rgb(5, 185, 250)',
+                            fontWeight: '600',
+                          },
                         }}
                       >
                         <Markdown variant="small">
