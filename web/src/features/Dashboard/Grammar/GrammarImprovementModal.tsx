@@ -141,12 +141,9 @@ export const GrammarImprovementModal = ({
                       sx={{
                         '* strong': {
                           backgroundColor: 'rgba(11, 130, 194, 0.79)',
-                          padding: '2px 2px 2px 8px',
-                          marginRight: '5px',
+                          padding: '2px 8px',
                           borderRadius: '5px',
                           fontWeight: '700',
-                          // prevent word break in the middle of the highlighted part
-                          whiteSpace: 'nowrap',
                         },
                       }}
                     >
@@ -158,7 +155,7 @@ export const GrammarImprovementModal = ({
                               }
                             : undefined
                         }
-                        variant="conversation"
+                        variant="rule"
                       >
                         {'\n' + example}
                       </Markdown>

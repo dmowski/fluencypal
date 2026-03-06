@@ -63,7 +63,7 @@ ${postfixInstruction}`;
         userMessage: userPrompt,
         attempts: 3,
         model: 'gpt-5.4',
-        //cache: true,
+        cache: true,
       });
 
       return {
@@ -232,6 +232,7 @@ ${postfixInstruction}`;
           <Stack
             sx={{
               gap: '10px',
+              alignItems: 'flex-start',
             }}
           >
             {grammarPoints.length === 0 ? (

@@ -15,8 +15,9 @@ export interface MarkdownProps {
 const processStringChild = (child: string, index: number) => {
   const words = child.split(' ');
   return words.map((word, wordIndex) => (
-    <span key={`${index}-${wordIndex}`} className="conversation-word">
-      {word}{' '}
+    <span key={`${index}-${wordIndex}`}>
+      <span className="conversation-word">{word}</span>
+      {wordIndex < words.length - 1 ? ' ' : ''}
     </span>
   ));
 };

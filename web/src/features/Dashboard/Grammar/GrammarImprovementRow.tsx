@@ -20,10 +20,11 @@ export const GrammarImprovementRow = ({
     <Stack
       onClick={onClick}
       sx={{
-        width: '100%',
+        width: 'max-content',
+        gap: '10px',
         border: '1px solid rgba(255, 255, 255, 0.1)',
         borderRadius: '8px',
-        padding: '0px 10px',
+        padding: '0px 15px',
         alignItems: 'center',
         minHeight: rowHeight,
         justifyContent: 'space-between',
