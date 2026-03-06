@@ -123,7 +123,7 @@ export const GrammarImprovementModal = ({
               </Typography>
               <Stack
                 sx={{
-                  gap: '30px',
+                  gap: '50px',
                 }}
               >
                 {improvement.examples.map((example, index) => (
@@ -135,12 +135,18 @@ export const GrammarImprovementModal = ({
                       borderRadius: '8px',
                       //padding: '10px',
                       overflow: 'hidden',
+                      '@media (max-width: 600px)': {
+                        border: 'none',
+                      },
                     }}
                   >
                     <Stack
                       sx={{
                         padding: '10px',
                         gap: '7px',
+                        '@media (max-width: 600px)': {
+                          padding: 0,
+                        },
                       }}
                     >
                       <Stack
@@ -169,7 +175,7 @@ export const GrammarImprovementModal = ({
                       {isTranslateAvailable && (
                         <Stack
                           sx={{
-                            fontSize: '19px',
+                            fontSize: '16px',
 
                             '* strong': {
                               color: 'rgb(255, 255, 255)',
@@ -192,6 +198,10 @@ export const GrammarImprovementModal = ({
                         //padding: '0 10px 10px 10px',
                         padding: '10px',
                         gap: '10px',
+                        '@media (max-width: 600px)': {
+                          backgroundColor: 'transparent',
+                          padding: '0',
+                        },
                       }}
                     >
                       <AudioPlayIcon text={example} type="icon" />
