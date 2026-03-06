@@ -1,16 +1,36 @@
 import { useWindowSizes } from '@/features/Layout/useWindowSizes';
 import { IconButton, Modal, Stack } from '@mui/material';
 import { X } from 'lucide-react';
-import { JSX } from 'react';
+import { JSX, useEffect, useRef } from 'react';
 
 interface CustomModalProps {
   isOpen: boolean;
   onClose?: () => void;
+  scrollResetKey?: string | number;
   children: React.ReactNode;
 }
 
-export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JSX.Element => {
+export const CustomModal = ({
+  isOpen,
+  onClose,
+  scrollResetKey,
+  children,
+}: CustomModalProps): JSX.Element => {
   const sizes = useWindowSizes();
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    if (!scrollContainerRef.current) {
+      return;
+    }
+
+    scrollContainerRef.current.scrollTop = 0;
+  }, [isOpen, scrollResetKey]);
+
   if (!isOpen) return <></>;
 
   return (
@@ -58,6 +78,7 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
           </IconButton>
         )}
         <Stack
+          ref={scrollContainerRef}
           sx={{
             gap: '0px',
             width: '100%',
