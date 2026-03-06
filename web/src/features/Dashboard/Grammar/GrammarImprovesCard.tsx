@@ -13,6 +13,8 @@ import { GrammarImprovementRow } from './GrammarImprovementRow';
 import { grammarImprovementSystemPrompt } from './prompt';
 import { GrammarImprovement } from './types';
 
+const limitCount = 3;
+
 export const GrammarImprovesCard = () => {
   const { i18n } = useLingui();
   const auth = useAuth();
@@ -28,7 +30,6 @@ export const GrammarImprovesCard = () => {
   const improvementsMapRef = useRef<Record<string, GrammarImprovement>>({});
   const loadingMap = useRef<Record<string, Promise<GrammarImprovement> | null>>({});
 
-  const limitCount = 2;
   const limit = showAll ? grammarPoints.length : limitCount;
   const isLimited = grammarPoints.length > limitCount && !showAll;
 
