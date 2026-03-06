@@ -5,7 +5,7 @@ import { MarkdownToJSX, default as MarkdownTool } from 'markdown-to-jsx';
 import React from 'react';
 import { AttachmentImage } from '@/features/Chat/Message/AttachmentImage';
 
-type MdVariantVariant = 'small' | 'normal' | 'conversation' | 'blog' | 'chat';
+type MdVariantVariant = 'small' | 'normal' | 'conversation' | 'blog' | 'chat' | 'rule';
 export interface MarkdownProps {
   children: string;
   variant?: MdVariantVariant;
@@ -461,12 +461,158 @@ const markdownComponentsChat: MarkdownToJSX.Overrides = {
   },
 };
 
+const markdownComponentsRule: MarkdownToJSX.Overrides = {
+  ...markdownComponents,
+
+  h1: ({ children }) => (
+    <Typography
+      variant="h1"
+      sx={{
+        fontSize: '28px',
+        fontWeight: 700,
+      }}
+    >
+      {wrapChildrenWithTranslateWrapper(children)}
+    </Typography>
+  ),
+  h2: ({ children }) => (
+    <Typography
+      variant="h2"
+      sx={{
+        paddingTop: '20px',
+        fontSize: '24px',
+        fontWeight: 700,
+      }}
+    >
+      {wrapChildrenWithTranslateWrapper(children)}
+    </Typography>
+  ),
+  h3: ({ children }) => (
+    <Typography
+      variant="h4"
+      component={'h3'}
+      sx={{
+        paddingTop: '40px',
+        paddingBottom: '10px',
+        fontWeight: 900,
+      }}
+    >
+      {wrapChildrenWithTranslateWrapper(children)}
+    </Typography>
+  ),
+  h4: ({ children }) => (
+    <Typography
+      variant="h5"
+      component={'h4'}
+      sx={{
+        paddingTop: '20px',
+        paddingBottom: '5px',
+        fontSize: '20px',
+        fontWeight: 700,
+      }}
+    >
+      {wrapChildrenWithTranslateWrapper(children)}
+    </Typography>
+  ),
+  h5: ({ children }) => (
+    <Typography variant="h5">{wrapChildrenWithTranslateWrapper(children)}</Typography>
+  ),
+  h6: ({ children }) => (
+    <Typography variant="h6">{wrapChildrenWithTranslateWrapper(children)}</Typography>
+  ),
+
+  a: ({ href, children }) => (
+    <Link href={href} target="_blank">
+      {children}
+    </Link>
+  ),
+  ul: ({ children }) => (
+    <ul
+      style={{
+        padding: '0 0 0 20px',
+        margin: '5px 0',
+      }}
+    >
+      {wrapChildrenWithTranslateWrapper(children)}
+    </ul>
+  ),
+  ol: ({ children }) => (
+    <ol
+      style={{
+        padding: '0 0 0 20px',
+        margin: '14px 0',
+      }}
+    >
+      {wrapChildrenWithTranslateWrapper(children)}
+    </ol>
+  ),
+  li: ({ children }) => (
+    <Typography
+      component={'li'}
+      sx={{
+        fontSize: '21px',
+        paddingBottom: '8px',
+      }}
+    >
+      {wrapChildrenWithTranslateWrapper(children)}
+    </Typography>
+  ),
+  input: ({ checked }) => (
+    <Checkbox
+      checked={checked}
+      disabled
+      sx={{
+        padding: '0',
+      }}
+    />
+  ),
+  small: ({ children }) => <Typography>{wrapChildrenWithTranslateWrapper(children)}</Typography>,
+  em: ({ children }) => <em>{wrapChildrenWithTranslateWrapper(children)}</em>,
+  strong: ({ children }) => <strong>{wrapChildrenWithTranslateWrapper(children)}</strong>,
+  blockquote: ({ children }) => (
+    <blockquote>{wrapChildrenWithTranslateWrapper(children)}</blockquote>
+  ),
+  pre: ({ children }) => <pre>{children}</pre>,
+  code: ({ children }) => <code>{children}</code>,
+  thead: ({ children }) => <thead>{children}</thead>,
+  tbody: ({ children }) => <tbody>{children}</tbody>,
+  tr: ({ children }) => <tr>{children}</tr>,
+  th: ({ children }) => <th>{children}</th>,
+  td: ({ children }) => <td>{children}</td>,
+  table: ({ children }) => <table>{children}</table>,
+  p: ({ children }) => {
+    return (
+      <Typography
+        sx={{
+          fontSize: '21px',
+          fontWeight: 350,
+        }}
+      >
+        {wrapChildrenWithTranslateWrapper(children)}
+      </Typography>
+    );
+  },
+
+  span: ({ children }) => {
+    return (
+      <Typography
+        sx={{
+          fontSize: '21px',
+        }}
+      >
+        {wrapChildrenWithTranslateWrapper(children)}
+      </Typography>
+    );
+  },
+};
+
 const styleVariationMap: Record<MdVariantVariant, MarkdownToJSX.Overrides> = {
   small: markdownComponentsSmall,
   normal: markdownComponents,
   conversation: markdownComponentsConversation,
   blog: markdownComponentsBlog,
   chat: markdownComponentsChat,
+  rule: markdownComponentsRule,
 };
 
 export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, variant }) => {

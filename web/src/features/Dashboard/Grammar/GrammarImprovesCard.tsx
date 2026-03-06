@@ -53,18 +53,16 @@ export const GrammarImprovesCardUi = ({
         : `The user is learning ${fullLanguageName}. Native language of the user is ${nativeLanguageCode}.
         
 Use ${fullLanguageName} for example sentences.
-Use ${nativeLanguageCode} for explanations, be creative with explanations. Description should be really easy to understand for the user. Use simple words and avoid complex grammar in the description.`;
+Use ${nativeLanguageCode} for explanations, be creative with explanations. Description should be really easy to understand for the user and short. Use simple words and avoid complex grammar in the description.`;
 
       const finalSystemInstruction = `${grammarImprovementSystemPrompt}.
 ${postfixInstruction}`;
-
-      console.log('finalSystemInstruction', finalSystemInstruction, '|', userPrompt);
 
       const response = await textAi.generateJson<GrammarImprovement>({
         systemMessage: finalSystemInstruction,
         userMessage: userPrompt,
         attempts: 3,
-        model: 'gpt-4o',
+        model: 'gpt-5.4',
         //cache: true,
       });
 

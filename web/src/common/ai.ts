@@ -12,6 +12,7 @@ export type TextAiModel =
   | 'gpt-4o-mini'
   | 'gpt-5'
   | 'gpt-5-mini'
+  | 'gpt-5.4'
   | 'gpt-5.1'
   | 'gpt-5-nano'
   | 'chatgpt-4o-latest';
@@ -86,6 +87,11 @@ export const textModalPricePerMillionTokens: Record<TextAiModel, TextUsagePrice>
   'chatgpt-4o-latest': {
     text_input: 5,
     text_cached_input: 5,
+    text_output: 15,
+  },
+  'gpt-5.4': {
+    text_input: 2.5,
+    text_cached_input: 0.25,
     text_output: 15,
   },
 };

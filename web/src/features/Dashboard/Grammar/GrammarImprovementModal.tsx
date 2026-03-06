@@ -72,24 +72,24 @@ export const GrammarImprovementModal = ({
 
   return (
     <CustomModal isOpen={isOpen} onClose={onClose} scrollResetKey={scrollResetKey}>
-      <Stack sx={{ gap: '60px', padding: '20px', maxWidth: '700px', paddingBottom: '80px' }}>
+      <Stack sx={{ gap: '90px', padding: '20px', maxWidth: '700px', paddingBottom: '80px' }}>
         {translator.translateModal}
         <Stack
           sx={{
-            gap: '10px',
+            gap: '0px',
           }}
         >
           <Typography
-            variant="h4"
+            variant="body2"
             sx={{
-              fontWeight: '800',
+              textTransform: 'uppercase',
             }}
           >
             {improvement.title}
           </Typography>
           <Stack>
             <Markdown
-              variant="conversation"
+              variant="rule"
               onWordClick={
                 translator.isTranslateAvailable
                   ? (word, element) => {
@@ -186,11 +186,12 @@ export const GrammarImprovementModal = ({
                       flexDirection: 'row',
                       alignItems: 'center',
                       backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                      padding: '5px',
+                      //padding: '0 10px 10px 10px',
+                      padding: '10px',
                       gap: '10px',
                     }}
                   >
-                    <AudioPlayIcon text={example} />
+                    <AudioPlayIcon text={example} type="icon" />
                   </Stack>
                 </Stack>
               ))}

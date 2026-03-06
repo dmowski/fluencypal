@@ -1,12 +1,13 @@
 'use client';
 import { useMemo, useState } from 'react';
-import { IconButton } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import { Loader, Pause, Volume2 } from 'lucide-react';
 import { SpeakOptions, useConversationAudio } from './useConversationAudio';
 import { AiVoice } from '@/common/ai';
 import { useSettings } from '../Settings/useSettings';
 import { getVoiceOverSpeakOptions } from './getVoiceOverSpeakOptions';
 import { clearWordForAudio } from './clearWord';
+import { useLingui } from '@lingui/react';
 
 export interface AudioPlayIconProps {
   text: string;
@@ -14,6 +15,7 @@ export interface AudioPlayIconProps {
   customInstructions?: string;
   borderColor?: string;
   onChangeState?: (isPlaying: boolean) => void;
+  type?: 'icon' | 'button';
 }
 
 export const AudioPlayIcon = ({
@@ -22,7 +24,9 @@ export const AudioPlayIcon = ({
   customInstructions,
   borderColor,
   onChangeState,
+  type = 'icon',
 }: AudioPlayIconProps) => {
+  const { i18n } = useLingui();
   const [isLoading, setIsLoading] = useState(false);
   const [countOfClick, setCountOfClick] = useState(0);
 
@@ -87,22 +91,32 @@ export const AudioPlayIcon = ({
     onChangeState?.(false);
   };
 
+  const icon = isLoading ? (
+    <Loader size={'18px'} />
+  ) : isPlaying ? (
+    <Pause size={'18px'} />
+  ) : (
+    <Volume2 size={'18px'} />
+  );
+
+  if (type === 'icon') {
+    return (
+      <IconButton
+        disabled={isLoading}
+        onClick={togglePlay}
+        sx={{
+          opacity: 0.7,
+          border: borderColor ? `1px solid ${borderColor}` : 'none',
+        }}
+      >
+        {icon}
+      </IconButton>
+    );
+  }
+
   return (
-    <IconButton
-      disabled={isLoading}
-      onClick={togglePlay}
-      sx={{
-        opacity: 0.7,
-        border: borderColor ? `1px solid ${borderColor}` : 'none',
-      }}
-    >
-      {isLoading ? (
-        <Loader size={'18px'} />
-      ) : isPlaying ? (
-        <Pause size={'18px'} />
-      ) : (
-        <Volume2 size={'18px'} />
-      )}
-    </IconButton>
+    <Button disabled={isLoading} onClick={togglePlay} startIcon={icon} variant="text">
+      {i18n._('Play')}
+    </Button>
   );
 };
