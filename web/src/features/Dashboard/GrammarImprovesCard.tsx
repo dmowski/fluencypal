@@ -210,11 +210,9 @@ In examples, highlight the part that is relevant to the improvement by making it
   useEffect(() => {
     fetchImprovement();
   }, [record]);
+  const { i18n } = useLingui();
 
-  if (isLoading || !improvement) {
-    return <LoadingShapes sizes={[rowHeight]} />;
-  }
-
+  if (isLoading || !improvement) return <LoadingShapes sizes={[rowHeight]} />;
   return (
     <>
       {isFullSize && (
@@ -331,6 +329,24 @@ In examples, highlight the part that is relevant to the improvement by making it
                 </Stack>
               </Stack>
             )}
+
+            <Stack
+              sx={{
+                alignItems: 'flex-start',
+              }}
+            >
+              <Button
+                variant="contained"
+                color="info"
+                size="large"
+                sx={{
+                  padding: '10px 30px',
+                }}
+                endIcon={<ChevronRight size={'18px'} />}
+              >
+                {i18n._('Next')}
+              </Button>
+            </Stack>
           </Stack>
         </CustomModal>
       )}
