@@ -12,6 +12,7 @@ import { GrammarImprovementModal } from './GrammarImprovementModal';
 import { GrammarImprovementRow } from './GrammarImprovementRow';
 import { grammarImprovementSystemPrompt } from './prompt';
 import { GrammarImprovement } from './types';
+import { useSettings } from '@/features/Settings/useSettings';
 
 const limitCount = 3;
 
@@ -21,6 +22,8 @@ export const GrammarImprovesCard = () => {
   const userInfo = useAiUserInfo();
   const grammarPoints = userInfo.grammarRecords;
   const textAi = useTextAi();
+  const settings = useSettings();
+  const fullLanguageName = settings.fullLanguageName || 'English';
 
   const [isShowList, setIsShowList] = useState(true);
   const [showAll, setShowAll] = useState(false);
@@ -35,10 +38,14 @@ export const GrammarImprovesCard = () => {
 
   const generateImprovement = useCallback(
     async (record: AdvancedUserRecord): Promise<GrammarImprovement> => {
-      const userPrompt = `record: ${record.value}`;
+      const userPrompt = `${record.value}`;
+      const finalSystemInstruction = `${grammarImprovementSystemPrompt}.
+The user is learning ${fullLanguageName}. Use this language for all properties (example, description, title).`;
+
+      console.log('finalSystemInstruction', finalSystemInstruction, userPrompt);
 
       const response = await textAi.generateJson<GrammarImprovement>({
-        systemMessage: grammarImprovementSystemPrompt,
+        systemMessage: finalSystemInstruction,
         userMessage: userPrompt,
         attempts: 3,
         model: 'gpt-4o',
@@ -51,7 +58,7 @@ export const GrammarImprovesCard = () => {
         examples: response?.examples || [],
       };
     },
-    [textAi],
+    [textAi, fullLanguageName],
   );
 
   const fetchImprovement = useCallback(
@@ -227,7 +234,7 @@ export const GrammarImprovesCard = () => {
             }}
           >
             {grammarPoints.length === 0 ? (
-              <Typography sx={{ opacity: 0.8 }}>
+              <Typography sx={{ opacity: 0.8 }} variant="body2">
                 {i18n._('No grammar insights yet. Start chatting to get personalized tips!')}
               </Typography>
             ) : (

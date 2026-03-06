@@ -3,7 +3,7 @@ Given a user record, analyze it and provide a specific grammar improvement sugge
 
 The response should be in JSON format with the following structure:
 {
-  "title": "A concise title for the improvement. 3-4 words max.",
+  "title": "A concise title for the improvement. 5 words max. Using the learning language.",
   "examples": ["Example sentence 1 showing the correct usage", "Example sentence 2 showing the correct usage"],
   "description": "A detailed explanation of the improvement and why it's important. Use markdown formatting to make it easy to read.",
 }
