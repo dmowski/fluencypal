@@ -264,14 +264,22 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
     <ol
       style={{
         padding: '0 0 0 20px',
-        margin: '5px 0',
+        margin: '14px 0',
       }}
     >
       {wrapChildrenWithTranslateWrapper(children)}
     </ol>
   ),
   li: ({ children }) => (
-    <Typography component={'li'}>{wrapChildrenWithTranslateWrapper(children)}</Typography>
+    <Typography
+      component={'li'}
+      sx={{
+        fontSize: '21px',
+        paddingBottom: '8px',
+      }}
+    >
+      {wrapChildrenWithTranslateWrapper(children)}
+    </Typography>
   ),
   input: ({ checked }) => (
     <Checkbox
