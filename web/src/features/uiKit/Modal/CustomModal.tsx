@@ -6,30 +6,12 @@ import { JSX, useEffect, useRef } from 'react';
 interface CustomModalProps {
   isOpen: boolean;
   onClose?: () => void;
-  scrollResetKey?: string | number;
   children: React.ReactNode;
 }
 
-export const CustomModal = ({
-  isOpen,
-  onClose,
-  scrollResetKey,
-  children,
-}: CustomModalProps): JSX.Element => {
+export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JSX.Element => {
   const sizes = useWindowSizes();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-
-    if (!scrollContainerRef.current) {
-      return;
-    }
-
-    scrollContainerRef.current.scrollTop = 0;
-  }, [isOpen, scrollResetKey]);
 
   if (!isOpen) return <></>;
 

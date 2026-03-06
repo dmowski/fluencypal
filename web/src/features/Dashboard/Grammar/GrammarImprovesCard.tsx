@@ -134,12 +134,6 @@ ${postfixInstruction}`;
     }
   }, [grammarPoints.length, selectedIndex]);
 
-  const regenerate = async () => {
-    setIsShowList(false);
-    await sleep(50);
-    setIsShowList(true);
-  };
-
   const handleOpenModal = (index: number) => {
     setSelectedIndex(index);
   };
@@ -148,25 +142,48 @@ ${postfixInstruction}`;
     setSelectedIndex(null);
   };
 
-  const handleNext = () => {
-    setSelectedIndex((currentIndex) => {
-      if (currentIndex === null) {
-        return currentIndex;
-      }
+  const [isLoadingNew, setIsLoadingNew] = useState(false);
 
-      return Math.min(currentIndex + 1, grammarPoints.length - 1);
-    });
+  const handleNext = async () => {
+    if (selectedIndex === null) {
+      return;
+    }
+    setIsLoadingNew(true);
+
+    setSelectedIndex(null);
+    await sleep(300);
+
+    setSelectedIndex(Math.min(selectedIndex + 1, grammarPoints.length - 1));
+    setIsLoadingNew(false);
   };
 
-  const handlePrevious = () => {
-    setSelectedIndex((currentIndex) => {
-      if (currentIndex === null) {
-        return currentIndex;
-      }
+  const handlePrevious = async () => {
+    if (selectedIndex === null) {
+      return;
+    }
+    setIsLoadingNew(true);
+    setSelectedIndex(null);
+    await sleep(300);
 
-      return Math.max(currentIndex - 1, 0);
-    });
+    setSelectedIndex(Math.max(selectedIndex - 1, 0));
+    setIsLoadingNew(false);
   };
+
+  if (isLoadingNew) {
+    return (
+      <Stack
+        sx={{
+          width: '100dvw',
+          height: '100dvh',
+          backgroundColor: '#181818',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          zIndex: 9999,
+        }}
+      />
+    );
+  }
 
   return (
     <Stack
@@ -274,7 +291,6 @@ ${postfixInstruction}`;
             isFirstOne={selectedIndex === 0}
             isLastOne={selectedIndex === grammarPoints.length - 1}
             isOpen={true}
-            scrollResetKey={selectedIndex}
             onClose={handleCloseModal}
             onClickNext={handleNext}
             onClickPrevious={handlePrevious}

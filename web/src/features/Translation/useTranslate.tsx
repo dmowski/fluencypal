@@ -130,6 +130,7 @@ export const useTranslate = () => {
   } | null>(null);
   const translateWithModal = async (text: string, element: HTMLElement) => {
     try {
+      console.log('element', element);
       setAnchorEl(element);
       setIsShowModal(true);
       setTranslatedText(null);
@@ -169,6 +170,7 @@ export const useTranslate = () => {
         <Popover
           anchorEl={anchorEl}
           open={!!anchorEl}
+          disableScrollLock
           onClose={() => onCloseTranslate()}
           slotProps={{
             backdrop: {
