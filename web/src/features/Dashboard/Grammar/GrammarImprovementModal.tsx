@@ -15,6 +15,7 @@ export const GrammarImprovementModal = ({
   isFirstOne,
   isLastOne,
   isOpen,
+  scrollResetKey,
   onClose,
   onClickNext,
   onClickPrevious,
@@ -24,6 +25,7 @@ export const GrammarImprovementModal = ({
   isFirstOne: boolean;
   isLastOne: boolean;
   isOpen: boolean;
+  scrollResetKey?: string | number;
   onClose: () => void;
   onClickNext: () => void;
   onClickPrevious: () => void;
@@ -36,7 +38,7 @@ export const GrammarImprovementModal = ({
   if (isLoading || !improvement) return <LoadingShapes sizes={[rowHeight]} />;
 
   return (
-    <CustomModal isOpen={isOpen} onClose={onClose}>
+    <CustomModal isOpen={isOpen} onClose={onClose} scrollResetKey={scrollResetKey}>
       <Stack sx={{ gap: '60px', padding: '20px', maxWidth: '700px', paddingBottom: '80px' }}>
         {translator.translateModal}
         <Stack

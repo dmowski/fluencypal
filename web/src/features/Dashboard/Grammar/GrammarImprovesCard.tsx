@@ -8,7 +8,6 @@ import { useTextAi } from '../../Ai/useTextAi';
 import { useAuth } from '../../Auth/useAuth';
 import { useAiUserInfo } from '../../Ai/useAiUserInfo';
 import { sleep } from '@/libs/sleep';
-import { scrollTopFast } from '@/libs/scroll';
 import { GrammarImprovementModal } from './GrammarImprovementModal';
 import { GrammarImprovementRow } from './GrammarImprovementRow';
 import { grammarImprovementSystemPrompt } from './prompt';
@@ -128,7 +127,6 @@ export const GrammarImprovesCard = () => {
   };
 
   const handleNext = () => {
-    scrollTopFast();
     setSelectedIndex((currentIndex) => {
       if (currentIndex === null) {
         return currentIndex;
@@ -139,7 +137,6 @@ export const GrammarImprovesCard = () => {
   };
 
   const handlePrevious = () => {
-    scrollTopFast();
     setSelectedIndex((currentIndex) => {
       if (currentIndex === null) {
         return currentIndex;
@@ -270,6 +267,7 @@ export const GrammarImprovesCard = () => {
             isFirstOne={selectedIndex === 0}
             isLastOne={selectedIndex === grammarPoints.length - 1}
             isOpen={true}
+            scrollResetKey={selectedIndex}
             onClose={handleCloseModal}
             onClickNext={handleNext}
             onClickPrevious={handlePrevious}
