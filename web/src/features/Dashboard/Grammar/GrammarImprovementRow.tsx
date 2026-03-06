@@ -14,7 +14,16 @@ export const GrammarImprovementRow = ({
   onClick: () => void;
 }) => {
   const rowHeight = '45px';
-  if (isLoading || !improvement) return <LoadingShapes sizes={[rowHeight]} />;
+  if (isLoading || !improvement)
+    return (
+      <Stack
+        sx={{
+          width: '100%',
+        }}
+      >
+        <LoadingShapes sizes={[rowHeight]} />
+      </Stack>
+    );
 
   return (
     <Stack
