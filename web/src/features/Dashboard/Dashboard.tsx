@@ -22,7 +22,7 @@ import { JustTalkCard } from './JustTalkCard';
 import { StreaksDaysBadge } from './StreaksDaysBadge';
 import { Stories } from '../Sentence/Stories';
 import { useAuth } from '../Auth/useAuth';
-import { GrammarImprovesCard } from './GrammarImprovesCard';
+import { GrammarImprovesCard } from './Grammar/GrammarImprovesCard';
 
 interface DashboardProps {
   lang: SupportedLanguage;
