@@ -1,7 +1,7 @@
 import { useLingui } from '@lingui/react';
-import { Button, IconButton, Typography } from '@mui/material';
+import { Alert, Button, IconButton, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { ChevronDown, Gem, RefreshCcw } from 'lucide-react';
+import { ChevronDown, FlaskConicalOff, Gem, PlaneTakeoff, RefreshCcw, Sprout } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AdvancedUserRecord } from '@/common/userInfo';
 import { useTextAi } from '../../Ai/useTextAi';
@@ -243,6 +243,7 @@ ${postfixInstruction}`;
           <Typography
             sx={{
               opacity: 0.9,
+              textWrap: 'balance',
             }}
           >
             {i18n._(
@@ -259,9 +260,20 @@ ${postfixInstruction}`;
             }}
           >
             {grammarPoints.length === 0 ? (
-              <Typography sx={{ opacity: 0.8 }} variant="body2">
-                {i18n._('No grammar insights yet. Start chatting to get personalized tips!')}
-              </Typography>
+              <Stack
+                sx={{
+                  flexDirection: 'row',
+                  gap: '20px',
+                  alignItems: 'center',
+                  borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                  paddingTop: '15px',
+                  paddingRight: '15px',
+                }}
+              >
+                <Typography sx={{ opacity: 0.8, textWrap: 'balance' }} variant="body2">
+                  {i18n._('No grammar insights yet. Start chatting to get personalized tips!')}
+                </Typography>
+              </Stack>
             ) : (
               <>
                 {isShowRecords ? (
