@@ -191,19 +191,6 @@ ${postfixInstruction}`;
         },
       }}
     >
-      {auth.isFounder && (
-        <IconButton
-          onClick={regenerate}
-          sx={{
-            position: 'absolute',
-            top: '10px',
-            right: '10px',
-            opacity: 0.7,
-          }}
-        >
-          <RefreshCcw size={'19px'} />
-        </IconButton>
-      )}
       <Stack
         sx={{
           gap: '30px',

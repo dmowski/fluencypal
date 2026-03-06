@@ -166,12 +166,11 @@ export const GrammarImprovementModal = ({
                     {isTranslateAvailable && (
                       <Stack
                         sx={{
-                          fontSize: '14px',
-                          opacity: 0.9,
+                          fontSize: '19px',
 
                           '* strong': {
-                            color: 'rgb(5, 185, 250)',
-                            fontWeight: '600',
+                            color: 'rgb(255, 255, 255)',
+                            fontWeight: 800,
                           },
                         }}
                       >
