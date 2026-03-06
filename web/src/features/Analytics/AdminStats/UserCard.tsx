@@ -409,6 +409,7 @@ export function UserCard({ userStat, allTextInfo }: UserCardProps) {
 
         <GoalQuizSection
           goalQuiz2={userStat.goalQuiz2}
+          userStat={userStat}
           aiUserInfo={aiUserInfo}
           onGoalClick={setShowGoalPlan}
         />

@@ -13,17 +13,23 @@ import { GrammarImprovementRow } from './GrammarImprovementRow';
 import { grammarImprovementSystemPrompt } from './prompt';
 import { GrammarImprovement } from './types';
 import { useSettings } from '@/features/Settings/useSettings';
+import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang';
 
 const limitCount = 3;
 
-export const GrammarImprovesCard = () => {
+export const GrammarImprovesCardUi = ({
+  grammarPoints,
+  languageCode,
+}: {
+  grammarPoints: AdvancedUserRecord[];
+  languageCode: SupportedLanguage;
+}) => {
   const { i18n } = useLingui();
   const auth = useAuth();
-  const userInfo = useAiUserInfo();
-  const grammarPoints = userInfo.grammarRecords;
+
   const textAi = useTextAi();
-  const settings = useSettings();
-  const fullLanguageName = settings.fullLanguageName || 'English';
+
+  const fullLanguageName = fullEnglishLanguageName[languageCode];
 
   const [isShowList, setIsShowList] = useState(true);
   const [showAll, setShowAll] = useState(false);
@@ -281,4 +287,12 @@ The user is learning ${fullLanguageName}. Use this language for all properties (
       </Stack>
     </Stack>
   );
+};
+
+export const GrammarImprovesCard = () => {
+  const userInfo = useAiUserInfo();
+  const grammarPoints = userInfo.grammarRecords;
+  const settings = useSettings();
+  const languageCode = settings.languageCode || 'en';
+  return <GrammarImprovesCardUi grammarPoints={grammarPoints} languageCode={languageCode} />;
 };

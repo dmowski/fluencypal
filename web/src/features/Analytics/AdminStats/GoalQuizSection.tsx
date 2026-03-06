@@ -1,20 +1,34 @@
-import { Stack, Typography, IconButton } from '@mui/material';
+import { Stack, Typography, IconButton, Button } from '@mui/material';
 import { SquareArrowOutUpRight } from 'lucide-react';
 import { UserStat } from '@/app/api/loadStats/types';
 import { GoalPlan } from '../../Plan/types';
 import { AdvancedUserRecord } from '@/common/userInfo';
+import { useState } from 'react';
+import { GrammarImprovesCardUi } from '@/features/Dashboard/Grammar/GrammarImprovesCard';
+import { SupportedLanguage } from '@/features/Lang/lang';
 
 interface GoalQuizSectionProps {
   goalQuiz2: UserStat['goalQuiz2'];
+  userStat: UserStat;
   aiUserInfo?: UserStat['aiUserInfo'];
   onGoalClick: (goalData: GoalPlan) => void;
 }
 
-export function GoalQuizSection({ goalQuiz2, aiUserInfo, onGoalClick }: GoalQuizSectionProps) {
+export function GoalQuizSection({
+  goalQuiz2,
+  aiUserInfo,
+  onGoalClick,
+  userStat,
+}: GoalQuizSectionProps) {
   const grammarRecordsMap = aiUserInfo?.grammarRecordsMap;
   const allGrammarRecords = grammarRecordsMap
     ? (Object.values(grammarRecordsMap).flat() as AdvancedUserRecord[])
     : [];
+
+  const [showGrammarCards, setShowGrammarCards] = useState(false);
+
+  const languageUserCode: SupportedLanguage = userStat.userData.languageCode || 'en';
+
   return (
     <Stack
       sx={{
@@ -83,7 +97,33 @@ export function GoalQuizSection({ goalQuiz2, aiUserInfo, onGoalClick }: GoalQuiz
         <details open>
           <summary>Grammar Records ({allGrammarRecords.length || 0})</summary>
 
-          <Stack sx={{ gap: '10px', paddingTop: '10px' }}>
+          <Stack sx={{ gap: '10px', paddingTop: '10px', alignItems: 'flex-start' }}>
+            <Button
+              disabled={!allGrammarRecords.length}
+              variant="contained"
+              color="secondary"
+              onClick={() => {
+                setShowGrammarCards((prev) => !prev);
+              }}
+            >
+              Show Grammar full ({languageUserCode})
+            </Button>
+
+            {showGrammarCards && (
+              <Stack
+                sx={{
+                  width: '700px',
+                  backgroundColor: `rgba(10, 18, 30, 1)`,
+                  padding: '20px',
+                }}
+              >
+                <GrammarImprovesCardUi
+                  grammarPoints={allGrammarRecords}
+                  languageCode={languageUserCode}
+                />
+              </Stack>
+            )}
+
             {allGrammarRecords.map((record, index) => (
               <AdvancedUserRecordRow key={index} record={record} />
             ))}
