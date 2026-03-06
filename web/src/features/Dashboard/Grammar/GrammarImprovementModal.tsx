@@ -8,6 +8,7 @@ import { LoadingShapes } from '../../uiKit/Loading/LoadingShapes';
 import { Markdown } from '../../uiKit/Markdown/Markdown';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { GrammarImprovement } from './types';
+import { useEffect, useRef, useState } from 'react';
 
 export const GrammarImprovementModal = ({
   improvement,
@@ -32,6 +33,38 @@ export const GrammarImprovementModal = ({
 }) => {
   const translator = useTranslate();
   const { i18n } = useLingui();
+
+  const isTranslateAvailable = translator.isTranslateAvailable;
+
+  const [translatedExamplesMap, setTranslatedExamplesMap] = useState<Record<string, string>>({});
+  const translatedExamplesProgressMap = useRef<Record<string, Promise<string> | null>>({});
+
+  const translateExample = async (example: string) => {
+    if (translatedExamplesMap[example]) {
+      return translatedExamplesMap[example];
+    }
+
+    if (translatedExamplesProgressMap.current[example]) {
+      return translatedExamplesProgressMap.current[example];
+    }
+
+    const translatedPromise = translator.translateText({ text: example });
+    translatedExamplesProgressMap.current[example] = translatedPromise;
+    const translated = await translatedPromise;
+    setTranslatedExamplesMap((prev) => ({ ...prev, [example]: translated }));
+    translatedExamplesProgressMap.current[example] = null;
+    return translated;
+  };
+
+  useEffect(() => {
+    if (!isOpen || !improvement || !isTranslateAvailable) {
+      return;
+    }
+
+    improvement.examples.forEach((example) => {
+      translateExample(example);
+    });
+  }, [isOpen, improvement, isTranslateAvailable]);
 
   const rowHeight = '40px';
 
@@ -85,15 +118,6 @@ export const GrammarImprovementModal = ({
             <Stack
               sx={{
                 gap: '30px',
-                '* strong': {
-                  backgroundColor: 'rgba(11, 130, 194, 0.79)',
-                  padding: '2px 2px 2px 8px',
-                  marginRight: '5px',
-                  borderRadius: '5px',
-                  fontWeight: '700',
-                  // prevent word break in the middle of the highlighted part
-                  whiteSpace: 'nowrap',
-                },
               }}
             >
               {improvement.examples.map((example, index) => (
@@ -110,20 +134,47 @@ export const GrammarImprovementModal = ({
                   <Stack
                     sx={{
                       padding: '10px',
+                      gap: '7px',
                     }}
                   >
-                    <Markdown
-                      onWordClick={
-                        translator.isTranslateAvailable
-                          ? (word, element) => {
-                              translator.translateWithModal(word, element);
-                            }
-                          : undefined
-                      }
-                      variant="conversation"
+                    <Stack
+                      sx={{
+                        '* strong': {
+                          backgroundColor: 'rgba(11, 130, 194, 0.79)',
+                          padding: '2px 2px 2px 8px',
+                          marginRight: '5px',
+                          borderRadius: '5px',
+                          fontWeight: '700',
+                          // prevent word break in the middle of the highlighted part
+                          whiteSpace: 'nowrap',
+                        },
+                      }}
                     >
-                      {'\n' + example}
-                    </Markdown>
+                      <Markdown
+                        onWordClick={
+                          translator.isTranslateAvailable
+                            ? (word, element) => {
+                                translator.translateWithModal(word, element);
+                              }
+                            : undefined
+                        }
+                        variant="conversation"
+                      >
+                        {'\n' + example}
+                      </Markdown>
+                    </Stack>
+                    {isTranslateAvailable && (
+                      <Stack
+                        sx={{
+                          fontSize: '14px',
+                          opacity: 0.9,
+                        }}
+                      >
+                        <Markdown variant="small">
+                          {translatedExamplesMap[example] || 'Translating...'}
+                        </Markdown>
+                      </Stack>
+                    )}
                   </Stack>
 
                   <Stack
@@ -136,15 +187,6 @@ export const GrammarImprovementModal = ({
                     }}
                   >
                     <AudioPlayIcon text={example} />
-
-                    <IconButton
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        translator.translateWithModal(example, e.currentTarget);
-                      }}
-                    >
-                      <Languages size={'16px'} color={'rgba(255, 255, 255, 0.7)'} />
-                    </IconButton>
                   </Stack>
                 </Stack>
               ))}
