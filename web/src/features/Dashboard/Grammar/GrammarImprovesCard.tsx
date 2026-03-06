@@ -300,7 +300,7 @@ ${postfixInstruction}`;
                       color="secondary"
                       onClick={() => setShowRecords(true)}
                     >
-                      {i18n._('Open improvements')}
+                      {i18n._('Open My Improvements')}
                     </Button>
                   </>
                 )}
