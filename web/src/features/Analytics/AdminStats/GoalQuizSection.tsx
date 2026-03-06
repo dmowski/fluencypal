@@ -29,6 +29,9 @@ export function GoalQuizSection({
 
   const languageUserCode: SupportedLanguage = userStat.userData.languageCode || 'en';
 
+  const nativeLanguage =
+    userStat.userData.nativeLanguageCode || userStat.userData.pageLanguageCode || 'en';
+
   return (
     <Stack
       sx={{
@@ -120,6 +123,7 @@ export function GoalQuizSection({
                 <GrammarImprovesCardUi
                   grammarPoints={allGrammarRecords}
                   languageCode={languageUserCode}
+                  nativeLanguageCode={nativeLanguage}
                 />
               </Stack>
             )}

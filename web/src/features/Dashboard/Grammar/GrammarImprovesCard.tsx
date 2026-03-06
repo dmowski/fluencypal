@@ -20,9 +20,11 @@ const limitCount = 3;
 export const GrammarImprovesCardUi = ({
   grammarPoints,
   languageCode,
+  nativeLanguageCode,
 }: {
   grammarPoints: AdvancedUserRecord[];
   languageCode: SupportedLanguage;
+  nativeLanguageCode: string;
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
@@ -45,8 +47,13 @@ export const GrammarImprovesCardUi = ({
   const generateImprovement = useCallback(
     async (record: AdvancedUserRecord): Promise<GrammarImprovement> => {
       const userPrompt = `${record.value}`;
+      const isNativeLanguageSameAsLearning = nativeLanguageCode === languageCode;
+      const postfixInstruction = isNativeLanguageSameAsLearning
+        ? `The user is learning ${fullLanguageName}. Use this language for all properties (example, description, title).`
+        : `The user is learning ${fullLanguageName}. Native language of the user is ${nativeLanguageCode}. Use ${fullLanguageName} for example sentences, and use ${nativeLanguageCode} for explanations.`;
+
       const finalSystemInstruction = `${grammarImprovementSystemPrompt}.
-The user is learning ${fullLanguageName}. Use this language for all properties (example, description, title).`;
+${postfixInstruction}`;
 
       console.log('finalSystemInstruction', finalSystemInstruction, userPrompt);
 
@@ -294,5 +301,13 @@ export const GrammarImprovesCard = () => {
   const grammarPoints = userInfo.grammarRecords;
   const settings = useSettings();
   const languageCode = settings.languageCode || 'en';
-  return <GrammarImprovesCardUi grammarPoints={grammarPoints} languageCode={languageCode} />;
+  const nativeLanguageCode =
+    settings.userSettings?.nativeLanguageCode || settings.userSettings?.pageLanguageCode || 'en';
+  return (
+    <GrammarImprovesCardUi
+      grammarPoints={grammarPoints}
+      languageCode={languageCode}
+      nativeLanguageCode={nativeLanguageCode}
+    />
+  );
 };
