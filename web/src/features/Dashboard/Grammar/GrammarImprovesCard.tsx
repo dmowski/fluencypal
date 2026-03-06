@@ -1,7 +1,7 @@
 import { useLingui } from '@lingui/react';
 import { Button, IconButton, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { ChevronDown, RefreshCcw } from 'lucide-react';
+import { ChevronDown, Gem, RefreshCcw } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AdvancedUserRecord } from '@/common/userInfo';
 import { useTextAi } from '../../Ai/useTextAi';
@@ -113,11 +113,17 @@ ${postfixInstruction}`;
     [generateImprovement],
   );
 
+  const [isShowRecords, setShowRecords] = useState(false);
+
   useEffect(() => {
+    if (!isShowRecords) {
+      return;
+    }
+
     for (const record of grammarPoints) {
       void fetchImprovement(record);
     }
-  }, [fetchImprovement, grammarPoints]);
+  }, [fetchImprovement, grammarPoints, isShowRecords]);
 
   useEffect(() => {
     if (selectedIndex === null) {
@@ -257,21 +263,39 @@ ${postfixInstruction}`;
                 {i18n._('No grammar insights yet. Start chatting to get personalized tips!')}
               </Typography>
             ) : (
-              grammarPoints.slice(0, limit).map((record, index) => {
-                const key = record.value;
+              <>
+                {isShowRecords ? (
+                  <>
+                    {grammarPoints.slice(0, limit).map((record, index) => {
+                      const key = record.value;
 
-                return (
-                  <GrammarImprovementRow
-                    key={record.value}
-                    improvement={improvements[key] || null}
-                    isLoading={!improvements[key]}
-                    onClick={() => handleOpenModal(index)}
-                  />
-                );
-              })
+                      return (
+                        <GrammarImprovementRow
+                          key={record.value}
+                          improvement={improvements[key] || null}
+                          isLoading={!improvements[key]}
+                          onClick={() => handleOpenModal(index)}
+                        />
+                      );
+                    })}
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      startIcon={<Gem size={'18px'} />}
+                      variant="outlined"
+                      size="large"
+                      color="secondary"
+                      onClick={() => setShowRecords(true)}
+                    >
+                      {i18n._('Open improvements')}
+                    </Button>
+                  </>
+                )}
+              </>
             )}
 
-            {isLimited && (
+            {isLimited && isShowRecords && (
               <Button
                 startIcon={<ChevronDown size={'18px'} />}
                 variant="text"
