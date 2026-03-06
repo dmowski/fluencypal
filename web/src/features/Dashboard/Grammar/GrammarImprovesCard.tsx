@@ -50,19 +50,22 @@ export const GrammarImprovesCardUi = ({
       const isNativeLanguageSameAsLearning = nativeLanguageCode === languageCode;
       const postfixInstruction = isNativeLanguageSameAsLearning
         ? `The user is learning ${fullLanguageName}. Use this language for all properties (example, description, title).`
-        : `The user is learning ${fullLanguageName}. Native language of the user is ${nativeLanguageCode}. Use ${fullLanguageName} for example sentences, and use ${nativeLanguageCode} for explanations.`;
+        : `The user is learning ${fullLanguageName}. Native language of the user is ${nativeLanguageCode}.
+        
+Use ${fullLanguageName} for example sentences.
+Use ${nativeLanguageCode} for explanations, be creative with explanations. Description should be really easy to understand for the user. Use simple words and avoid complex grammar in the description.`;
 
       const finalSystemInstruction = `${grammarImprovementSystemPrompt}.
 ${postfixInstruction}`;
 
-      console.log('finalSystemInstruction', finalSystemInstruction, userPrompt);
+      console.log('finalSystemInstruction', finalSystemInstruction, '|', userPrompt);
 
       const response = await textAi.generateJson<GrammarImprovement>({
         systemMessage: finalSystemInstruction,
         userMessage: userPrompt,
         attempts: 3,
         model: 'gpt-4o',
-        cache: true,
+        //cache: true,
       });
 
       return {
@@ -303,6 +306,10 @@ export const GrammarImprovesCard = () => {
   const languageCode = settings.languageCode || 'en';
   const nativeLanguageCode =
     settings.userSettings?.nativeLanguageCode || settings.userSettings?.pageLanguageCode || 'en';
+
+  if (settings.loading) {
+    return <></>;
+  }
   return (
     <GrammarImprovesCardUi
       grammarPoints={grammarPoints}
