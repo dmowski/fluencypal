@@ -255,7 +255,7 @@ ${postfixInstruction}`;
         {isShowList && (
           <Stack
             sx={{
-              gap: '10px',
+              gap: '20px',
               alignItems: 'flex-start',
             }}
           >
@@ -284,6 +284,7 @@ ${postfixInstruction}`;
                       return (
                         <GrammarImprovementRow
                           key={record.value}
+                          createdAtDayIso={record.createdAtDayIso}
                           improvement={improvements[key] || null}
                           isLoading={!improvements[key]}
                           onClick={() => handleOpenModal(index)}

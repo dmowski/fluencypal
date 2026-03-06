@@ -3,17 +3,20 @@ import Stack from '@mui/material/Stack';
 import { ChevronRight } from 'lucide-react';
 import { LoadingShapes } from '../../uiKit/Loading/LoadingShapes';
 import { GrammarImprovement } from './types';
+import dayjs from 'dayjs';
 
 export const GrammarImprovementRow = ({
   improvement,
   isLoading,
   onClick,
+  createdAtDayIso,
 }: {
   improvement: GrammarImprovement | null;
   isLoading: boolean;
   onClick: () => void;
+  createdAtDayIso: string;
 }) => {
-  const rowHeight = '45px';
+  const rowHeight = '75px';
   if (isLoading || !improvement)
     return (
       <Stack
@@ -29,11 +32,11 @@ export const GrammarImprovementRow = ({
     <Stack
       onClick={onClick}
       sx={{
-        width: 'max-content',
-        gap: '10px',
+        width: '100%',
+        gap: '20px',
         border: '1px solid rgba(255, 255, 255, 0.1)',
         borderRadius: '8px',
-        padding: '0px 15px',
+        padding: '8px 20px 8px 20px',
         alignItems: 'center',
         minHeight: rowHeight,
         justifyContent: 'space-between',
@@ -45,8 +48,19 @@ export const GrammarImprovementRow = ({
       }}
       component={'button'}
     >
-      <Typography>{improvement.title}</Typography>
-      <ChevronRight size={'20px'} />
+      <Stack>
+        <Typography
+          sx={{
+            opacity: 0.8,
+            textTransform: 'uppercase',
+          }}
+          variant="caption"
+        >
+          {dayjs(createdAtDayIso).format('D MMMM')}
+        </Typography>
+        <Typography>{improvement.title}</Typography>
+      </Stack>
+      <ChevronRight size={'30px'} />
     </Stack>
   );
 };
