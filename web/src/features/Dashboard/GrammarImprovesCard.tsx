@@ -251,7 +251,7 @@ In examples, highlight the part that is relevant to the improvement by making it
             </Stack>
 
             {improvement.examples.length > 0 && (
-              <Stack sx={{ gap: '20px' }}>
+              <Stack sx={{ gap: '10px' }}>
                 <Typography
                   variant="caption"
                   sx={{
@@ -264,34 +264,55 @@ In examples, highlight the part that is relevant to the improvement by making it
                 </Typography>
                 <Stack
                   sx={{
-                    gap: '20px',
+                    gap: '30px',
                     '* strong': {
                       backgroundColor: 'rgba(11, 130, 194, 0.79)',
                       padding: '2px 2px 2px 8px',
                       marginRight: '5px',
                       borderRadius: '5px',
                       fontWeight: '700',
+                      // prevent word break in the middle of the highlighted part
+                      whiteSpace: 'nowrap',
                     },
                   }}
                 >
                   {improvement.examples.map((example, index) => (
-                    <Stack key={index}>
-                      <Markdown
-                        onWordClick={
-                          translator.isTranslateAvailable
-                            ? (word, element) => {
-                                translator.translateWithModal(word, element);
-                              }
-                            : undefined
-                        }
-                        variant="conversation"
+                    <Stack
+                      key={index}
+                      sx={{
+                        gap: '5px',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        borderRadius: '8px',
+                        //padding: '10px',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      <Stack
+                        sx={{
+                          padding: '10px',
+                        }}
                       >
-                        {'\n' + example}
-                      </Markdown>
+                        <Markdown
+                          onWordClick={
+                            translator.isTranslateAvailable
+                              ? (word, element) => {
+                                  translator.translateWithModal(word, element);
+                                }
+                              : undefined
+                          }
+                          variant="conversation"
+                        >
+                          {'\n' + example}
+                        </Markdown>
+                      </Stack>
+
                       <Stack
                         sx={{
                           flexDirection: 'row',
                           alignItems: 'center',
+                          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                          padding: '5px',
+                          gap: '10px',
                         }}
                       >
                         <AudioPlayIcon text={example} />
