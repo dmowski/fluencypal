@@ -123,7 +123,7 @@ export function GoalQuizSection({
                 <GrammarImprovesCardUi
                   grammarPoints={allGrammarRecords}
                   languageCode={languageUserCode}
-                  nativeLanguageCode={nativeLanguage}
+                  nativeLanguageCode={'ru'}
                 />
               </Stack>
             )}

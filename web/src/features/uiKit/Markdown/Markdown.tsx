@@ -468,7 +468,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
     <Typography
       variant="h1"
       sx={{
-        fontSize: '28px',
+        //fontSize: '28px',
         fontWeight: 700,
       }}
     >
@@ -480,7 +480,6 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
       variant="h2"
       sx={{
         paddingTop: '20px',
-        fontSize: '24px',
         fontWeight: 700,
       }}
     >
@@ -507,7 +506,6 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
       sx={{
         paddingTop: '20px',
         paddingBottom: '5px',
-        fontSize: '20px',
         fontWeight: 700,
       }}
     >
