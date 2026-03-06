@@ -17,7 +17,15 @@ const config: Config = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
-  testPathIgnorePatterns: ['/node_modules/', '/e2e/', '.next/', '.vercel/', '.playwright-report/'],
+  testPathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/.next/',
+    '<rootDir>/.vscode/',
+    '<rootDir>/public/',
+    '<rootDir>/.vercel/',
+    '<rootDir>/e2e/',
+    '<rootDir>/.playwright-report/',
+  ],
 };
 
 export default config;
