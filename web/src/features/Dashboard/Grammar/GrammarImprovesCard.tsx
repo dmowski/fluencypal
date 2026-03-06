@@ -147,9 +147,6 @@ export const GrammarImprovesCard = () => {
     });
   };
 
-  if (!auth.isFounder) {
-    return <></>;
-  }
   return (
     <Stack
       sx={{
