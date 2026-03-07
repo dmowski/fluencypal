@@ -3,7 +3,69 @@ import {
   constructFinalProgress,
   generateRandomWordOptions,
   getActiveSentencePart,
+  splitWords,
 } from './textConstructor.utils';
+
+describe('splitWords', () => {
+  it('splits Japanese text without spaces into words', () => {
+    const result = splitWords('私は学校に行きます');
+
+    expect(result).toEqual(['私', 'は', '学校', 'に', '行き', 'ます']);
+  });
+
+  it('splits Chinese text without spaces into words', () => {
+    const result = splitWords('我每天去学校');
+
+    expect(result).toEqual(['我', '每天', '去', '学校']);
+  });
+
+  it('splits Arabic text with spaces into words', () => {
+    const result = splitWords('أنا أذهب إلى المدرسة كل يوم');
+
+    expect(result).toEqual(['أنا', 'أذهب', 'إلى', 'المدرسة', 'كل', 'يوم']);
+  });
+
+  it('splits Thai text without spaces into words', () => {
+    const result = splitWords('ฉันไปโรงเรียนทุกวัน');
+
+    expect(result.length).toBeGreaterThan(1);
+    expect(result.join('')).toBe('ฉันไปโรงเรียนทุกวัน');
+  });
+
+  it('supports all currently supported app languages', () => {
+    const samples: Array<{ lang: string; text: string; minWords: number }> = [
+      { lang: 'en', text: 'I go to school every day.', minWords: 6 },
+      { lang: 'es', text: 'Voy a la escuela cada día.', minWords: 6 },
+      { lang: 'zh', text: '我每天去学校', minWords: 2 },
+      { lang: 'fr', text: 'Je vais à lécole chaque jour.', minWords: 6 },
+      { lang: 'de', text: 'Ich gehe jeden Tag zur Schule.', minWords: 6 },
+      { lang: 'ja', text: '私は毎日学校に行きます', minWords: 2 },
+      { lang: 'ko', text: '나는 매일 학교에 간다.', minWords: 4 },
+      { lang: 'ar', text: 'أنا أذهب إلى المدرسة كل يوم', minWords: 6 },
+      { lang: 'pt', text: 'Eu vou para a escola todos os dias.', minWords: 8 },
+      { lang: 'it', text: 'Vado a scuola ogni giorno.', minWords: 5 },
+      { lang: 'pl', text: 'Codziennie chodzę do szkoły.', minWords: 4 },
+      { lang: 'ru', text: 'Я хожу в школу каждый день.', minWords: 6 },
+      { lang: 'uk', text: 'Я ходжу до школи щодня.', minWords: 5 },
+      { lang: 'id', text: 'Saya pergi ke sekolah setiap hari.', minWords: 6 },
+      { lang: 'ms', text: 'Saya pergi ke sekolah setiap hari.', minWords: 6 },
+      { lang: 'th', text: 'ฉันไปโรงเรียนทุกวัน', minWords: 2 },
+      { lang: 'tr', text: 'Her gün okula giderim.', minWords: 4 },
+      { lang: 'vi', text: 'Tôi đi học mỗi ngày.', minWords: 5 },
+      { lang: 'da', text: 'Jeg går i skole hver dag.', minWords: 6 },
+      { lang: 'no', text: 'Jeg går på skolen hver dag.', minWords: 6 },
+      { lang: 'sv', text: 'Jag går till skolan varje dag.', minWords: 6 },
+      { lang: 'be', text: 'Я хаджу ў школу кожны дзень.', minWords: 6 },
+    ];
+
+    for (const sample of samples) {
+      const words = splitWords(sample.text);
+
+      expect(words.length).toBeGreaterThanOrEqual(sample.minWords);
+      expect(words.every((word) => word.trim().length > 0)).toBe(true);
+    }
+  });
+});
 
 describe('getActiveSentencePart', () => {
   const sentences = [

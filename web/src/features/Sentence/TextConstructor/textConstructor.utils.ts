@@ -8,11 +8,32 @@ export type ActiveSentencePart = {
 };
 
 export const splitWords = (text: string): string[] => {
-  if (!text.trim()) {
+  const trimmedText = text.trim();
+
+  if (!trimmedText) {
     return [];
   }
 
-  return text.trim().split(/\s+/).filter(Boolean);
+  if (/\s/u.test(trimmedText)) {
+    return trimmedText.split(/\s+/).filter(Boolean);
+  }
+
+  if (typeof Intl !== 'undefined' && typeof Intl.Segmenter !== 'undefined') {
+    const segmenter = new Intl.Segmenter(undefined, { granularity: 'word' });
+    const segmentedWords: string[] = [];
+
+    for (const segment of segmenter.segment(trimmedText)) {
+      if (segment.isWordLike) {
+        segmentedWords.push(segment.segment);
+      }
+    }
+
+    if (segmentedWords.length > 0) {
+      return segmentedWords;
+    }
+  }
+
+  return trimmedText.match(/[\p{L}\p{N}]+/gu) ?? [trimmedText];
 };
 
 const normalizeWord = (word: string): string => {

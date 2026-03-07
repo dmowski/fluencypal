@@ -24,6 +24,40 @@ describe('splitTextIntoSentences', () => {
     expect(splitTextIntoSentences('   ')).toEqual([]);
   });
 
+  it('splits Japanese sentences without requiring spaces', () => {
+    const result = splitTextIntoSentences('今日は晴れです。明日も晴れです。');
+
+    expect(result).toEqual(['今日は晴れです。', '明日も晴れです。']);
+  });
+
+  it('splits Chinese and Arabic punctuation correctly', () => {
+    const mixedText = '我每天去学校。你呢？أنا أذهب إلى المدرسة كل يوم؟هذا رائع!';
+    const result = splitTextIntoSentences(mixedText);
+
+    expect(result).toEqual([
+      '我每天去学校。',
+      '你呢？',
+      'أنا أذهب إلى المدرسة كل يوم؟',
+      'هذا رائع!',
+    ]);
+  });
+
+  it('splits Thai sentences without requiring spaces after punctuation', () => {
+    const result = splitTextIntoSentences('ฉันไปโรงเรียนทุกวัน.คุณล่ะ?ฉันสบายดี!');
+
+    expect(result).toEqual(['ฉันไปโรงเรียนทุกวัน.', 'คุณล่ะ?', 'ฉันสบายดี!']);
+  });
+
+  it('supports sentence splitting across all supported app language scripts', () => {
+    const text =
+      'I learn every day. Aprendo cada día. 我每天学习。 J’apprends chaque jour. Ich lerne jeden Tag. 私は毎日勉強します。 나는 매일 공부한다. أنا أتعلم كل يوم؟ Eu aprendo todos os dias. Imparo ogni giorno. Uczę się codziennie. Я учусь каждый день. Я навчаюся щодня. Saya belajar setiap hari. Saya belajar setiap hari. ฉันเรียนทุกวัน. Her gün öğreniyorum. Tôi học mỗi ngày. Jeg lærer hver dag. Jeg lærer hver dag. Jag lär mig varje dag. Я вучуся кожны дзень.';
+
+    const result = splitTextIntoSentences(text);
+
+    expect(result.length).toBe(22);
+    expect(result.every((sentence) => sentence.trim().length > 0)).toBe(true);
+  });
+
   it('handles long multiline Polish story with quotes and does not create punctuation-only entries', () => {
     const text = `Na skraju pustyni, młody mężczyzna o imieniu Piotr stał w swojej tunice. Miał w sobie coś niezwykłego - odwaga i ciekawość świata. Piotr patrzył na horyzont, gdzie dwa świecące słońca powoli schodziły za linię piasku.
 
