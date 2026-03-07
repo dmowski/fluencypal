@@ -12,6 +12,8 @@ import { AdminMetrics } from './AdminMetrics';
 import { copyToClipboard } from './copyToClipboard';
 import { StoryCreator } from './StoryCreator/StoryAdmin';
 import { useUrlState } from '@/features/Url/useUrlState';
+import { useSettings } from '@/features/Settings/useSettings';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
 
 export function AdminStats() {
   const auth = useAuth();
@@ -158,6 +160,8 @@ export function AdminStats() {
           : thirdAndMoreDayVisitors;
 
   const [isStoryCreator, setIsStoryCreator] = useUrlState('storyCreator', false, false);
+  const settings = useSettings();
+  const pageLanguage = settings.pageLanguageCode || 'en';
 
   if (!isAdmin) return <></>;
   return (
@@ -170,7 +174,7 @@ export function AdminStats() {
         }}
       >
         <Button
-          href="/practice"
+          href={`${getUrlStart(pageLanguage)}practice`}
           sx={{
             width: 'max-content',
             padding: '10px 50px',
