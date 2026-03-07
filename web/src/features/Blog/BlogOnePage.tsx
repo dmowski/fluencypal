@@ -17,6 +17,7 @@ import { getBlogs } from './blogData';
 import { getRolePlayScenarios } from '../RolePlay/rolePlayData';
 import { RolePlayCard } from '../Landing/RolePlay/RolePlayCard';
 import { HeaderStatic } from '../Header/HeaderStatic';
+import Image from 'next/image';
 
 interface BlogOnePageProps {
   id?: string;
@@ -192,26 +193,38 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                   <Stack
                     sx={{
                       maxHeight: '400px',
+                      height: '400px',
+                      width: '100%',
                       overflow: 'hidden',
                       alignItems: 'center',
                       justifyContent: 'center',
                       borderRadius: '20px',
+                      position: 'relative',
                       boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.15)',
                       '@media (max-width: 800px)': {
                         borderRadius: 0,
                         boxShadow: 'none',
+                        height: 'max-content',
+                        minHeight: '400px',
+                      },
+
+                      '@media (max-width: 500px)': {
+                        minHeight: '300px',
+                      },
+                      '@media (max-width: 400px)': {
+                        minHeight: '250px',
                       },
                     }}
                   >
-                    <img
+                    <Image
                       src={item.imagePreviewUrl}
                       className="blog-image"
                       alt={`Illustration for ${item.title}`}
+                      sizes="1000px"
+                      fill
                       style={{
+                        objectFit: 'cover',
                         width: '100%',
-
-                        height: 'auto',
-                        position: 'relative',
                       }}
                     />
                   </Stack>
