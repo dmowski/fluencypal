@@ -236,6 +236,7 @@ When user struggle with one example, try to switch to another example and come b
                         <Stack
                           sx={{
                             fontSize: '16px',
+                            opacity: translatedExamplesMap[example] ? 1 : 0.4,
 
                             '* strong': {
                               color: 'rgb(255, 255, 255)',
@@ -244,7 +245,7 @@ When user struggle with one example, try to switch to another example and come b
                           }}
                         >
                           <Markdown variant="small">
-                            {translatedExamplesMap[example] || 'Translating...'}
+                            {translatedExamplesMap[example] || example}
                           </Markdown>
                         </Stack>
                       )}
