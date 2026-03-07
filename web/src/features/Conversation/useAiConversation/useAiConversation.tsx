@@ -28,6 +28,7 @@ import { useRestart } from './useRestart';
 import { useConversationStat } from './useConversationStat';
 import { useLimits } from './useLimits';
 import { useConversationUsage } from './useConversationUsage';
+import { closeAudioMediaStream, closeVideoMediaStream } from '@/features/webCam/mediaStream';
 
 //const aiModal = MODELS.REALTIME_CONVERSATION;
 
@@ -552,6 +553,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 
     messages.setConversationId(null);
     messages.setConversation([]);
+    closeVideoMediaStream();
+    closeAudioMediaStream();
   };
 
   const addUserMessage = async (message: string) => {
