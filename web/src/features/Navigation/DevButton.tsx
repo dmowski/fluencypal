@@ -25,7 +25,7 @@ export const DevButton = () => {
         position: 'fixed',
         top: '60px',
         right: '10px',
-        zIndex: 10000,
+        zIndex: 300,
         alignItems: 'flex-end',
         gap: '5px',
       }}
