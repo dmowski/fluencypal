@@ -16,6 +16,8 @@ import { useBattle } from '../Game/Battle/useBattle';
 import { sleep } from '@/libs/sleep';
 import { useAccess } from '../Usage/useAccess';
 import { useRouter } from 'next/navigation';
+import { langFlags } from '../Lang/lang';
+import { getUrlStart } from '../Lang/getUrlStart';
 
 export interface IconProps {
   color?: string;
@@ -62,6 +64,9 @@ export const NavigationBar: React.FC = () => {
   const game = useGame();
   const auth = useAuth();
   const settings = useSettings();
+  const targetLanguage = settings.languageCode || 'en';
+  const flagImage = langFlags[targetLanguage] || '';
+
   const appMode = settings.appMode;
   const userPhoto = game.gameAvatars?.[auth.uid] || '';
   const { bottomOffset } = useWindowSizes();
@@ -149,6 +154,12 @@ export const NavigationBar: React.FC = () => {
     setCurrentPage(item.name);
   };
 
+  const rotateLanguage = () => {
+    const currentLanguage = settings.languageCode || 'en';
+    const nextLanguage = currentLanguage === 'en' ? 'pl' : 'en';
+    settings.setLanguage(nextLanguage);
+  };
+
   return (
     <Stack
       component={'nav'}
@@ -172,7 +183,31 @@ export const NavigationBar: React.FC = () => {
         },
       }}
     >
-      <Stack sx={{ width: '100%', maxWidth: '700px', padding: '0 10px' }}>
+      <Stack sx={{ width: '100%', maxWidth: '700px', padding: '0 10px', position: 'relative' }}>
+        {flagImage && auth.isFounder && (
+          <Stack
+            component={'img'}
+            src={flagImage}
+            onClick={rotateLanguage}
+            sx={{
+              width: '35px',
+              borderRadius: '1px',
+              position: 'absolute',
+              right: '20px',
+              top: '10px',
+              zIndex: 10,
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+
+              ':hover': {
+                boxShadow: '0 0 8px 2px #29b6f6',
+                border: '1px solid #29b6f6',
+                transform: 'scale(1.2)',
+              },
+            }}
+          />
+        )}
+
         <Stack
           sx={{
             flexDirection: 'row',
