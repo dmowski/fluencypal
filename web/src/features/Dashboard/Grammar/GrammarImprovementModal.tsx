@@ -1,7 +1,7 @@
 import { useLingui } from '@lingui/react';
 import { Button, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Loader } from 'lucide-react';
 import { AudioPlayIcon } from '../../Audio/AudioPlayIcon';
 import { useTranslate } from '../../Translation/useTranslate';
 import { LoadingShapes } from '../../uiKit/Loading/LoadingShapes';
@@ -9,6 +9,12 @@ import { Markdown } from '../../uiKit/Markdown/Markdown';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { GrammarImprovement } from './types';
 import { useEffect, useRef, useState } from 'react';
+import { useAuth } from '@/features/Auth/useAuth';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import { useAiConversation } from '@/features/Conversation/useAiConversation/useAiConversation';
+import { useConversationAudio } from '@/features/Audio/useConversationAudio';
+import { getMediaVideoStreams } from '@/features/webCam/mediaStream';
+import { useSettings } from '@/features/Settings/useSettings';
 
 export const GrammarImprovementModal = ({
   improvement,
@@ -31,6 +37,61 @@ export const GrammarImprovementModal = ({
 }) => {
   const translator = useTranslate();
   const { i18n } = useLingui();
+  const auth = useAuth();
+  const audio = useConversationAudio();
+  const aiConversation = useAiConversation();
+  const [isCallStarting, setIsCallStarting] = useState(false);
+  const settings = useSettings();
+
+  const practiceWithAi = async () => {
+    audio.initAudio();
+    if (!improvement || isCallStarting) return;
+    setIsCallStarting(true);
+
+    try {
+      /*const mediaStream = await getMediaAudioStreams();
+          if (!mediaStream) {
+            throw new Error('Could not access microphone');
+          }*/
+
+      //await sleep(100);
+      await getMediaVideoStreams();
+    } catch (e) {
+      console.error('Microphone permission denied. error', e);
+      alert(
+        i18n._(
+          'Microphone permission is required to start the call. Please allow microphone access and try again.',
+        ),
+      );
+      window.location.reload();
+      setIsCallStarting(false);
+      return;
+    }
+
+    const baseInstruction = `${improvement.description}
+    
+Important: User already read the rule.
+    
+Your goal is to talk with user and make them practice this rule. You should try to make user produce different sentences with this grammar rule. 
+
+You should ask user questions to make them produce more sentences with this grammar rule.
+
+You should not explain the rule, just make user practice it.
+
+Cover all examples: ${improvement.examples.join('\n')}.
+
+When user struggle with one example, try to switch to another example and come back later to the difficult one.
+`;
+
+    await settings.setConversationMode('record');
+
+    await aiConversation.startConversation({
+      mode: 'grammar-improvement',
+      ruleToLearn: baseInstruction,
+      conversationMode: 'record',
+    });
+    setIsCallStarting(false);
+  };
 
   const isTranslateAvailable = translator.isTranslateAvailable;
 
@@ -211,41 +272,71 @@ export const GrammarImprovementModal = ({
               </Stack>
             </Stack>
           )}
-
           <Stack
             sx={{
-              alignItems: 'flex-start',
-              flexDirection: 'row',
               gap: '20px',
             }}
           >
-            <Button
-              color="info"
-              variant="outlined"
-              size="large"
-              sx={{
-                padding: '10px 30px',
-              }}
-              disabled={isFirstOne}
-              onClick={onClickPrevious}
-              startIcon={<ChevronLeft size={'18px'} />}
-            >
-              {i18n._('Previous')}
-            </Button>
+            {auth.isFounder && (
+              <Stack
+                sx={{
+                  alignItems: 'flex-start',
+                  flexDirection: 'row',
+                  gap: '20px',
+                }}
+              >
+                <Button
+                  color="info"
+                  variant="contained"
+                  size="large"
+                  endIcon={isCallStarting ? <Loader /> : <VideocamIcon />}
+                  sx={{
+                    padding: '10px 30px',
+                  }}
+                  onClick={practiceWithAi}
+                >
+                  {i18n._('Practice with AI')}
+                </Button>
+              </Stack>
+            )}
 
-            <Button
-              variant="contained"
-              color="info"
-              size="large"
+            <Stack
               sx={{
-                padding: '10px 30px',
+                alignItems: 'flex-start',
+                flexDirection: 'row',
+                gap: '20px',
               }}
-              disabled={isLastOne}
-              onClick={onClickNext}
-              endIcon={<ChevronRight size={'18px'} />}
             >
-              {i18n._('Next')}
-            </Button>
+              <Button
+                color="info"
+                variant="outlined"
+                size="large"
+                fullWidth
+                sx={{
+                  padding: '10px 30px',
+                }}
+                disabled={isFirstOne}
+                onClick={onClickPrevious}
+                startIcon={<ChevronLeft size={'18px'} />}
+              >
+                {i18n._('Previous')}
+              </Button>
+
+              <Button
+                variant="outlined"
+                color="info"
+                size="large"
+                fullWidth
+                sx={{
+                  padding: '10px 30px',
+                }}
+                disabled={isLastOne}
+                onClick={onClickNext}
+                endIcon={<ChevronRight size={'18px'} />}
+              >
+                {i18n._('Next')}
+              </Button>
+            </Stack>
           </Stack>
           {translator.translateModal}
         </Stack>

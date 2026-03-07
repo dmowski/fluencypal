@@ -6,6 +6,7 @@ import { useTasks } from '@/features/Tasks/useTasks';
 import { useEffect } from 'react';
 
 const modesToExtractUserInfo: ConversationType[] = ['talk', 'goal-talk'];
+const modesToNotExtractGrammar: ConversationType[] = ['grammar-improvement'];
 
 export const useConversationStat = (
   conversationId: string,
@@ -50,7 +51,7 @@ export const useConversationStat = (
       });
     }
 
-    if (isMessagesReadyToExtract) {
+    if (isMessagesReadyToExtract && !modesToNotExtractGrammar.includes(currentMode)) {
       const isNeedToCleanUpOldGrammarFacts = conversation.length === messageCountToCheck;
       console.log('isNeedToCleanUpOldGrammarFacts', isNeedToCleanUpOldGrammarFacts);
       aiUserInfo.extractAdvancedUserRecordsFromConversation({

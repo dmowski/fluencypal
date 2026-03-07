@@ -402,6 +402,22 @@ ${voiceInstructions}
       };
     }
 
+    if (mode === 'grammar-improvement') {
+      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
+      return {
+        ...baseConfig,
+
+        voice,
+        initInstruction: `${aiPersona}
+
+${userInfoPrompt}
+
+${voiceInstructions}
+
+`,
+      };
+    }
+
     throw new Error(`Unknown mode: ${mode}`);
   };
 
