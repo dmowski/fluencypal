@@ -228,6 +228,20 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                     </Stack>
                   )}
                 </Stack>
+                <Stack
+                  sx={{
+                    flexDirection: 'row',
+                    display: 'flex',
+                    gap: '10px',
+                    alignItems: 'center',
+                    color: '#666',
+                    paddingTop: '30px',
+                  }}
+                >
+                  <Typography>
+                    {i18n._('Published on')}: {item.publishedAtIso}
+                  </Typography>
+                </Stack>
               </Stack>
             </Stack>
 

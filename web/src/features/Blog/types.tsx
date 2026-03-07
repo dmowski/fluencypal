@@ -12,7 +12,7 @@ export interface BlogPost {
   imagePreviewUrl: string;
   videoSrc?: string;
 
-  publishedAt: number;
+  publishedAtIso: string;
   category: ResourceCategory;
   relatedRolePlays: string[];
 }
