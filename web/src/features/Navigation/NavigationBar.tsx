@@ -18,6 +18,7 @@ import { useAccess } from '../Usage/useAccess';
 import { useRouter } from 'next/navigation';
 import { langFlags } from '../Lang/lang';
 import { getUrlStart } from '../Lang/getUrlStart';
+import { DevButton } from './DevButton';
 
 export interface IconProps {
   color?: string;
@@ -152,204 +153,147 @@ export const NavigationBar: React.FC = () => {
     setCurrentPage(item.name);
   };
 
-  const rotateLearnLanguage = () => {
-    const currentLanguage = settings.languageCode || 'en';
-    const nextLanguage = currentLanguage === 'en' ? 'pl' : 'en';
-    settings.setLanguage(nextLanguage);
-  };
-
-  const rotatePageLanguage = () => {
-    const currentLanguage = settings.pageLanguageCode || 'en';
-    const nextLanguage = currentLanguage === 'en' ? 'ru' : 'en';
-    settings.setPageLanguage(nextLanguage);
-  };
-
   return (
-    <Stack
-      component={'nav'}
-      sx={{
-        width: '100%',
-        alignItems: 'center',
-        position: 'relative',
-        zIndex: 999,
+    <>
+      <Stack
+        component={'nav'}
+        sx={{
+          width: '100%',
+          alignItems: 'center',
+          position: 'relative',
+          zIndex: 999,
 
-        borderTop: '1px solid rgba(255, 255, 255, 0.07)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
-        marginBottom: '40px',
-        '@media (max-width: 700px)': {
-          backgroundColor: 'rgba(0, 0, 0, 0.9)',
-          borderBottom: 'none',
-          marginBottom: '0px',
-          position: 'fixed',
-          bottom: '-2px',
-          paddingBottom: '2px',
-          left: 0,
-        },
-      }}
-    >
-      <Stack sx={{ width: '100%', maxWidth: '700px', padding: '0 10px', position: 'relative' }}>
-        {langFlags[settings.languageCode || 'en'] && auth.isFounder && (
+          borderTop: '1px solid rgba(255, 255, 255, 0.07)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
+          marginBottom: '40px',
+          '@media (max-width: 700px)': {
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+            borderBottom: 'none',
+            marginBottom: '0px',
+            position: 'fixed',
+            bottom: '-2px',
+            paddingBottom: '2px',
+            left: 0,
+          },
+        }}
+      >
+        <Stack sx={{ width: '100%', maxWidth: '700px', padding: '0 10px', position: 'relative' }}>
           <Stack
-            component={'img'}
-            src={langFlags[settings.languageCode || 'en'] || ''}
-            onClick={rotateLearnLanguage}
             sx={{
-              width: '35px',
-              borderRadius: '1px',
-              position: 'absolute',
-              right: '20px',
-              top: '10px',
-              zIndex: 10,
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-
-              ':hover': {
-                boxShadow: '0 0 8px 2px #29b6f6',
-                border: '1px solid #29b6f6',
-                transform: 'scale(1.2)',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              borderLeft: '1px solid rgba(255, 255, 255, 0.07)',
+              borderRight: '1px solid rgba(255, 255, 255, 0.07)',
+              '@media (max-width: 900px)': {
+                border: 'none',
               },
             }}
-          />
-        )}
+          >
+            {navigationItems.map((item) => {
+              const isActive = internalPageType
+                ? internalPageType === item.name
+                : appNavigation.currentPage === item.name;
+              const color = isActive ? activeColor : inactiveColor;
 
-        {langFlags[settings.pageLanguageCode || 'en'] && auth.isFounder && (
-          <Stack
-            component={'img'}
-            src={langFlags[settings.pageLanguageCode || 'en'] || ''}
-            onClick={rotatePageLanguage}
-            sx={{
-              width: '35px',
-              borderRadius: '1px',
-              position: 'absolute',
-              right: '20px',
-              bottom: '10px',
-              zIndex: 10,
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
+              const isActiveBadge = item.badge !== undefined && item.badge > 0;
 
-              ':hover': {
-                boxShadow: '0 0 8px 2px #29b6f6',
-                border: '1px solid #29b6f6',
-                transform: 'scale(1.2)',
-              },
-            }}
-          />
-        )}
-
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            borderLeft: '1px solid rgba(255, 255, 255, 0.07)',
-            borderRight: '1px solid rgba(255, 255, 255, 0.07)',
-            '@media (max-width: 900px)': {
-              border: 'none',
-            },
-          }}
-        >
-          {navigationItems.map((item) => {
-            const isActive = internalPageType
-              ? internalPageType === item.name
-              : appNavigation.currentPage === item.name;
-            const color = isActive ? activeColor : inactiveColor;
-
-            const isActiveBadge = item.badge !== undefined && item.badge > 0;
-
-            const isProfile = item.name === 'profile';
-            return (
-              <Stack
-                key={item.name}
-                sx={{
-                  listStyle: 'none',
-                  color: color,
-                  height: '100%',
-                  padding: '0',
-                  margin: '0',
-                  width: '100%',
-                  textDecoration: 'none',
-                  position: 'relative',
-
-                  ...(isActive
-                    ? {
-                        fontWeight: 'bold',
-                      }
-                    : {}),
-                }}
-              >
-                {isActive && <ActiveBottomBlur />}
-
-                <Link
-                  href={`${appNavigation.pageUrl(item.name)}`}
-                  onClick={(e) => e.preventDefault()}
-                  onTouchStart={(e) => navigateTo(e, item)}
-                  onMouseDown={(e) => navigateTo(e, item)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      e.preventDefault();
-                      setCurrentPage(item.name);
-                    }
-                  }}
+              const isProfile = item.name === 'profile';
+              return (
+                <Stack
+                  key={item.name}
                   sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: 'none',
+                    listStyle: 'none',
+                    color: color,
                     height: '100%',
-                    width: '100%',
-                    background: 'none',
-                    color: 'inherit',
-                    textDecoration: 'none',
                     padding: '0',
-                    boxSizing: 'border-box',
-                    paddingTop: '15px',
-                    paddingBottom: `calc(10px + ${bottomOffset})`,
                     margin: '0',
-                    gap: '5px',
-                    transition: 'background-color 0.3s ease',
-                    ':hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                    },
-                    '@media (max-width: 700px)': {
-                      ':hover': {
-                        backgroundColor: 'transparent',
-                      },
-                    },
+                    width: '100%',
+                    textDecoration: 'none',
+                    position: 'relative',
+
+                    ...(isActive
+                      ? {
+                          fontWeight: 'bold',
+                        }
+                      : {}),
                   }}
                 >
-                  <Badge color="error" badgeContent={isActiveBadge ? item.badge : 0}>
-                    {isProfile && userPhoto ? (
-                      <Avatar
-                        avatarSize="20px"
-                        url={userPhoto}
-                        isActive={isActive}
-                        activeColor={activeColor}
-                      />
-                    ) : (
-                      <item.icon color={color} width={'20px'} height={'20px'} />
-                    )}
-                  </Badge>
+                  {isActive && <ActiveBottomBlur />}
 
-                  <Stack
+                  <Link
+                    href={`${appNavigation.pageUrl(item.name)}`}
+                    onClick={(e) => e.preventDefault()}
+                    onTouchStart={(e) => navigateTo(e, item)}
+                    onMouseDown={(e) => navigateTo(e, item)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault();
+                        setCurrentPage(item.name);
+                      }
+                    }}
                     sx={{
-                      flexDirection: 'row',
+                      display: 'flex',
+                      flexDirection: 'column',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      gap: '3px',
+                      border: 'none',
+                      height: '100%',
                       width: '100%',
+                      background: 'none',
+                      color: 'inherit',
+                      textDecoration: 'none',
+                      padding: '0',
+                      boxSizing: 'border-box',
+                      paddingTop: '15px',
+                      paddingBottom: `calc(10px + ${bottomOffset})`,
+                      margin: '0',
+                      gap: '5px',
+                      transition: 'background-color 0.3s ease',
+                      ':hover': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                      },
+                      '@media (max-width: 700px)': {
+                        ':hover': {
+                          backgroundColor: 'transparent',
+                        },
+                      },
                     }}
                   >
-                    <Typography variant="caption" component={'span'} align="center">
-                      {item.title}
-                    </Typography>
-                  </Stack>
-                </Link>
-              </Stack>
-            );
-          })}
+                    <Badge color="error" badgeContent={isActiveBadge ? item.badge : 0}>
+                      {isProfile && userPhoto ? (
+                        <Avatar
+                          avatarSize="20px"
+                          url={userPhoto}
+                          isActive={isActive}
+                          activeColor={activeColor}
+                        />
+                      ) : (
+                        <item.icon color={color} width={'20px'} height={'20px'} />
+                      )}
+                    </Badge>
+
+                    <Stack
+                      sx={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '3px',
+                        width: '100%',
+                      }}
+                    >
+                      <Typography variant="caption" component={'span'} align="center">
+                        {item.title}
+                      </Typography>
+                    </Stack>
+                  </Link>
+                </Stack>
+              );
+            })}
+          </Stack>
         </Stack>
       </Stack>
-    </Stack>
+      <DevButton />
+    </>
   );
 };
 
