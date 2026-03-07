@@ -582,7 +582,20 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
     </Stack>
   ),
   pre: ({ children }) => <pre>{children}</pre>,
-  code: ({ children }) => <code>{children}</code>,
+  code: ({ children }) => (
+    <Typography
+      component={'code'}
+      sx={{
+        backgroundColor: 'rgb(18, 48, 74)',
+        padding: '4px 10px',
+        borderRadius: '4px',
+        fontSize: '20px',
+        width: 'fit-content',
+      }}
+    >
+      {wrapChildrenWithTranslateWrapper(children)}
+    </Typography>
+  ),
   thead: ({ children }) => <thead>{children}</thead>,
   tbody: ({ children }) => <tbody>{children}</tbody>,
   tr: ({ children }) => <tr>{children}</tr>,
