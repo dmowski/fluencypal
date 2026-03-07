@@ -481,7 +481,8 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
     <Typography
       variant="h2"
       sx={{
-        paddingTop: '20px',
+        paddingTop: '55px',
+        paddingBottom: '10px',
         fontSize: '32px',
         fontWeight: 700,
       }}
@@ -493,9 +494,10 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
     <Typography
       variant="h3"
       sx={{
+        paddingTop: '25px',
         paddingBottom: '10px',
-        fontSize: '28px',
-        fontWeight: 900,
+        fontSize: '24px',
+        fontWeight: 500,
       }}
     >
       {wrapChildrenWithTranslateWrapper(children)}
