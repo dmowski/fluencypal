@@ -202,6 +202,7 @@ function useProvideAiConversation(): AiConversationContextType {
       playAudio: async (textToPlay: string, voice: AiVoice, instruction: string) => {
         await audio.interruptWithFade(120);
         setIsAiSpeakingStartedFromConversation(true);
+        console.log('Start speaking', textToPlay);
         await audio.speak(textToPlay, { instructions: instruction, voice });
         setIsAiSpeakingStartedFromConversation(false);
       },

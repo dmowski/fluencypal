@@ -73,6 +73,7 @@ export async function GET(req: Request) {
   const resp = await client.audio.speech.create(props);
 
   if (!isUseCache) {
+    console.log('Stream response');
     return new Response(resp.body as any, {
       headers: {
         'Content-Type': 'audio/mpeg',
