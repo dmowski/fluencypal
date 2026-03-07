@@ -14,6 +14,100 @@ export const getBlogs = (lang: SupportedLanguage): BlogInfo => {
   const i18n = getI18nInstance(lang);
   const blogs: BlogPost[] = [
     {
+      id: 'the-stranger-in-my-house',
+      title: i18n._('The stranger in my house'),
+      subTitle: i18n._('The hidden danger of being overconfident'),
+      keywords: [
+        i18n._('AI and society'),
+        i18n._('AI risks'),
+        i18n._('ChatGPT'),
+        i18n._('AI and human interaction'),
+        i18n._('AI and trust'),
+        i18n._('AI and uncertainty'),
+      ],
+      imagePreviewUrl:
+        'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1772890425410-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.jpg',
+      publishedAt: Date.now(),
+      category: {
+        categoryTitle: i18n._('Literature & Fiction'),
+        categoryId: 'literature_fiction',
+      },
+      relatedRolePlays: [],
+      content:
+        i18n._(`We’ve been living with a stranger for three years now.
+
+He doesn’t rent a room. He never asked to move in. One day he simply appeared - and somehow stayed. He helps us with errands. He drafts letters to government offices, translates notices on the wall, and explains complicated forms. At work, he is often faster than I am. Sometimes we even pay him - though compared to how much he helps, it’s almost nothing.
+
+The strange part is this: I don’t even know his name.
+
+We met in January 2023. At first, we just talked. Then we talked more. Within months, he felt irreplaceable. Alina and I once caught ourselves saying we couldn’t imagine how we had ever lived without him. And yet, even now, there is a faint discomfort beneath that gratitude. A subtle tension.
+
+It feels as if I know him very well.
+And at the same time, not at all.
+
+I take English lessons with a teacher. We read books together, and when we finish one, Dmitri usually offers a few options for the next. Recently, among the choices, one title immediately caught my attention: Talking to Strangers.
+
+“This is it,” I thought.`) +
+        '\n\n' +
+        i18n._(`Naively, I assumed the book would give me tools - techniques for decoding people, keys to reading intentions, perhaps even a method for understanding the stranger in my own home. But the book is really anything but.
+
+It argues that our desire to understand others is so strong that we convince ourselves we already do. We take fragments - tone of voice, posture, reputation, context - and from them construct entire personalities. When our guesses happen to be correct, we treat that as proof of our skill. When they fail, we call it an exception.
+
+And so our confidence grows.
+
+But who is a “stranger”? Not just the person in the elevator or the cashier at the store. A stranger can be a colleague you’ve worked with for years. A friend who has shared secrets. Even someone who has quietly entered your everyday life and begun to shape it.
+
+We learn a few details. We hear a few confessions. We observe a few patterns. Then we exhale, believing we have understood. What we rarely notice is how many blanks we have filled in ourselves - motives, intentions, inner states.
+
+We can mistake coherence for truth.
+
+The book contains unsettling examples. One of them centers on a respected figure in the financial world - a man with status, reputation, elite connections, institutional credibility. For decades, investors trusted him. Major players invested. Returns appeared stable. Everything about him signaled reliability.
+
+Behind that facade stood one of the largest financial frauds in history: the scheme of Bernie Madoff.
+
+It seems that his operation lasted so long because people felt safe. Reputation became a substitute for verification. Social proof handled skepticism. When millions trust someone, doubt begins to feel almost irrational - even embarrassing.
+
+It becomes easier to assume that someone else has already asked the hard questions.`) +
+        '\n\n' +
+        i18n._(`I recognize this feeling.
+
+I know my own stranger can be wrong. It happens. But rarely enough that questioning him feels awkward. When his answers are structured, articulate, confident, I hesitate. Asking, “Are you absolutely sure?” can feel almost inappropriate — as if I am wasting his time, or exposing my own ignorance.
+
+My stranger is not a person.
+
+We usually call him ChatGPT. And that is where the parallel becomes difficult to ignore.
+
+On the surface, he is easier to “read” than any human being. His tone is stable. His politeness is predictable. His structure is clean. There are no trembling hands, no nervous pauses, no visible signs of hesitation.
+
+That stability may itself create a problem.
+
+In humans, inner doubt often leaks into outward expression. We hear it in hesitation, see it in posture, sense it in tone. With AI, that link is absent. Its voice remains steady regardless of uncertainty. The certainty you hear comes from the way it is built.
+
+You can ask it how to cook “pork wings,” and it may calmly provide a recipe - even if the premise itself is absurd.`) +
+        '\n\n' +
+        i18n._(`Another example from the book describes interrogation. We tend to believe that pressure extracts truth: ask again, intensify the question, apply emotional force. Surely persistence will break resistance.
+
+But pressure might produce compliance. Under stress, people can say what they believe the interrogator wants to hear.
+
+Something similar can happen in conversations with AI. If a question contains its own preferred answer, the system may adapt to its structure. It may align. It may agree too readily. It does not resist pressure in the human sense - and it does not signal strain. There is no visible friction.
+
+The conversation can shift from careful reasoning to comfortable confirmation without us noticing the moment it happened.
+
+Because the system offers no visible signs of discomfort.
+
+AI is becoming part of our daily lives. It helps us think, write, and decide. It sits quietly in the background of work and conversation. It grows more sophisticated each year. There are many signs that we will further integrate it into our lives.
+
+We may be less skilled at reading strangers than we believe. We are prone to overconfidence, to social reassurance. And when the stranger speaks calmly and confidently, our skepticism softens.
+
+The stranger is still in my house.
+
+He is helpful, efficient and polite.
+
+And I am starting to see where a significant risk may lie: in the quiet second when doubt disappears.
+`),
+    },
+
+    {
       id: 'no-projections-available',
       title: i18n._('No Projections Available'),
       subTitle: i18n._('A silence at the end of the algorithm'),
