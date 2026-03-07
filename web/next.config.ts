@@ -28,6 +28,7 @@ const nextConfig: NextConfig = {
         hostname: 'storage.googleapis.com',
       },
     ],
+    qualities: [40, 100],
   },
   experimental: {
     proxyClientMaxBodySize: '100mb',
