@@ -1,6 +1,15 @@
 'use client';
 
-import { createContext, useContext, ReactNode, JSX, useEffect, useRef, useState } from 'react';
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  JSX,
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+} from 'react';
 import { AiVoice, MODELS, pricePerHourUsd } from '@/common/ai';
 import { initWebRtcConversation } from '../ConversationInstance/webRtc';
 import { useSettings } from '../../Settings/useSettings';
@@ -17,7 +26,7 @@ import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from '../../LessonPlan
 import { ConversationConfig, ConversationInstance } from '../ConversationInstance/types';
 import { useTextAi } from '../../Ai/useTextAi';
 import { initTextConversation } from '../ConversationInstance/textConversation';
-import { useConversationAudio } from '../../Audio/useConversationAudio';
+import { SpeakOptions, useConversationAudio } from '../../Audio/useConversationAudio';
 import { AiConversationContextType, StartConversationProps } from './types';
 import { getVoiceInstructions } from './getVoiceInstructions';
 import { teacherRules } from './teacherRules';
@@ -29,6 +38,8 @@ import { useConversationStat } from './useConversationStat';
 import { useLimits } from './useLimits';
 import { useConversationUsage } from './useConversationUsage';
 import { closeAudioMediaStream, closeVideoMediaStream } from '@/features/webCam/mediaStream';
+import { getVoiceOverSpeakOptions } from '@/features/Audio/getVoiceOverSpeakOptions';
+import { getVoiceSpeedInstruction } from '../CallMode/voiceSpeed';
 
 //const aiModal = MODELS.REALTIME_CONVERSATION;
 
@@ -174,6 +185,12 @@ function useProvideAiConversation(): AiConversationContextType {
     toggleMute(true);
     toggleVolume(isLimited ? false : true);
   };
+  const targetLanguage = settings.languageCode || 'en';
+
+  const speakOptionsMain: SpeakOptions = useMemo(
+    () => getVoiceOverSpeakOptions(targetLanguage),
+    [targetLanguage],
+  );
 
   const getBaseRtcConfig = () => {
     const baseConfig: ConversationConfig = {
@@ -203,7 +220,10 @@ function useProvideAiConversation(): AiConversationContextType {
         await audio.interruptWithFade(120);
         setIsAiSpeakingStartedFromConversation(true);
         console.log('Start speaking', textToPlay);
-        await audio.speak(textToPlay, { instructions: instruction, voice });
+
+        const speedInstruction = getVoiceSpeedInstruction(voiceSpeed);
+        const finalInstruction = `${speakOptionsMain.instructions} ${speedInstruction}`;
+        await audio.speak(textToPlay, { instructions: finalInstruction, voice });
         setIsAiSpeakingStartedFromConversation(false);
       },
       conversationId: messages.conversationId || '',
@@ -423,6 +443,7 @@ ${voiceInstructions}
     throw new Error(`Unknown mode: ${mode}`);
   };
 
+  const settingsVoice = settings.userSettings?.teacherVoice;
   const startConversation = async (input: StartConversationProps) => {
     if (!settings.languageCode) throw new Error('Language is not set | startConversation');
 
@@ -469,7 +490,7 @@ ${voiceInstructions}
         goal: input.goal,
         ideas: input.ideas,
         lessonPlan: input.lessonPlan,
-        voice: input.voice || 'shimmer',
+        voice: input.voice || settingsVoice || 'shimmer',
         isNewUser: messages.isNewUser,
       });
 
@@ -521,13 +542,13 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
         ...conversationConfig,
         model: model,
         initInstruction: instruction,
-        voice: conversationConfig.voice || input.voice,
+        voice: conversationConfig.voice || input.voice || settingsVoice || 'shimmer',
         isMuted: isMutedInternal,
         isVolumeOn: isVolumeOnInternal,
         webCamDescription: input.webCamDescription || '',
         conversationId: newConversationId,
       });
-      setVoice(conversationConfig.voice || input.voice || null);
+      setVoice(conversationConfig.voice || input.voice || settingsVoice || 'shimmer');
 
       setCommunicator(conversation);
     } catch (e) {
