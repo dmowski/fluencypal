@@ -23,7 +23,7 @@ export const DevButton = () => {
     <Stack
       sx={{
         position: 'fixed',
-        top: '10px',
+        top: '60px',
         right: '10px',
         zIndex: 10000,
         alignItems: 'flex-end',
