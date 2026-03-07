@@ -277,28 +277,26 @@ When user struggle with one example, try to switch to another example and come b
               gap: '20px',
             }}
           >
-            {auth.isFounder && (
-              <Stack
+            <Stack
+              sx={{
+                alignItems: 'flex-start',
+                flexDirection: 'row',
+                gap: '20px',
+              }}
+            >
+              <Button
+                color="info"
+                variant="contained"
+                size="large"
+                endIcon={isCallStarting ? <Loader /> : <VideocamIcon />}
                 sx={{
-                  alignItems: 'flex-start',
-                  flexDirection: 'row',
-                  gap: '20px',
+                  padding: '10px 30px',
                 }}
+                onClick={practiceWithAi}
               >
-                <Button
-                  color="info"
-                  variant="contained"
-                  size="large"
-                  endIcon={isCallStarting ? <Loader /> : <VideocamIcon />}
-                  sx={{
-                    padding: '10px 30px',
-                  }}
-                  onClick={practiceWithAi}
-                >
-                  {i18n._('Practice with AI')}
-                </Button>
-              </Stack>
-            )}
+                {i18n._('Practice with AI')}
+              </Button>
+            </Stack>
 
             <Stack
               sx={{
