@@ -13,5 +13,5 @@ Make sure the title is catchy and easy to understand, and that the description p
 Provide 7 examples if possible. Use only corrected sentences in the examples, do not include incorrect sentences.
 In examples, highlight the part that is relevant to the improvement by making it bold. For example, if the improvement is about using the correct preposition, the example could be: "I am interested in **learning** new languages."
 
-In description start with h3 header ("### {Idea}") and then provide the explanation
+In description start with h1 header ("# {Idea}") and then provide the explanation. Use only one h1 and many other markdown elements.
 `;

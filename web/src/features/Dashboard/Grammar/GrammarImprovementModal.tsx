@@ -143,31 +143,30 @@ When user struggle with one example, try to switch to another example and come b
         >
           <Stack
             sx={{
-              gap: '0px',
+              gap: '20px',
             }}
           >
             <Typography
-              variant="body2"
+              variant="caption"
               sx={{
                 textTransform: 'uppercase',
+                letterSpacing: '0.1em',
               }}
             >
               {improvement.title}
             </Typography>
-            <Stack>
-              <Markdown
-                variant="rule"
-                onWordClick={
-                  translator.isTranslateAvailable
-                    ? (word, element) => {
-                        translator.translateWithModal(word, element);
-                      }
-                    : undefined
-                }
-              >
-                {'\n' + improvement.description}
-              </Markdown>
-            </Stack>
+            <Markdown
+              variant="rule"
+              onWordClick={
+                translator.isTranslateAvailable
+                  ? (word, element) => {
+                      translator.translateWithModal(word, element);
+                    }
+                  : undefined
+              }
+            >
+              {'\n' + improvement.description}
+            </Markdown>
           </Stack>
 
           {improvement.examples.length > 0 && (

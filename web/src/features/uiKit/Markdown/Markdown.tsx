@@ -469,8 +469,9 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
     <Typography
       variant="h1"
       sx={{
-        //fontSize: '28px',
-        fontWeight: 700,
+        fontSize: '47px',
+        paddingBottom: '15px',
+        fontWeight: 900,
       }}
     >
       {wrapChildrenWithTranslateWrapper(children)}
@@ -481,6 +482,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
       variant="h2"
       sx={{
         paddingTop: '20px',
+        fontSize: '32px',
         fontWeight: 700,
       }}
     >
@@ -489,11 +491,10 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
   ),
   h3: ({ children }) => (
     <Typography
-      variant="h4"
-      component={'h3'}
+      variant="h3"
       sx={{
-        paddingTop: '40px',
         paddingBottom: '10px',
+        fontSize: '28px',
         fontWeight: 900,
       }}
     >
@@ -502,8 +503,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
   ),
   h4: ({ children }) => (
     <Typography
-      variant="h5"
-      component={'h4'}
+      variant="h4"
       sx={{
         paddingTop: '20px',
         paddingBottom: '5px',
@@ -569,7 +569,17 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
   em: ({ children }) => <em>{wrapChildrenWithTranslateWrapper(children)}</em>,
   strong: ({ children }) => <strong>{wrapChildrenWithTranslateWrapper(children)}</strong>,
   blockquote: ({ children }) => (
-    <blockquote>{wrapChildrenWithTranslateWrapper(children)}</blockquote>
+    <Stack
+      component={'blockquote'}
+      sx={{
+        borderLeft: '3px solid rgba(255, 255, 255, 0.2)',
+        marginLeft: 0,
+        color: 'rgba(255, 255, 255, .8)',
+        padding: '10px 0 10px 19px',
+      }}
+    >
+      {wrapChildrenWithTranslateWrapper(children)}
+    </Stack>
   ),
   pre: ({ children }) => <pre>{children}</pre>,
   code: ({ children }) => <code>{children}</code>,
