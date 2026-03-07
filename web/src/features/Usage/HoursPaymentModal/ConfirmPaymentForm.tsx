@@ -122,13 +122,6 @@ export const ConfirmPaymentForm = ({
           </Typography>
         </Stack>
       </Stack>
-      <Stack
-        sx={{
-          paddingTop: '20px',
-        }}
-      >
-        <FeatureList />
-      </Stack>
     </Stack>
   );
 };

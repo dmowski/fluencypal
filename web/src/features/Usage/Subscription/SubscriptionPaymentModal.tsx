@@ -367,30 +367,32 @@ export const SubscriptionPaymentModal = () => {
             {/*<ResultsSection />
             <FeatureSection />*/}
             <FaqSubscription />
-            <PriceContact />
+            {/*<PriceContact />*/}
           </Stack>
         )}
-        <Stack
-          sx={{
-            paddingTop: '30px',
-            width: '100%',
-            alignItems: 'flex-start',
-          }}
-        >
-          <Button
-            variant="outlined"
-            endIcon={<X />}
-            onClick={() => {
-              if (isShowConfirmPayments) {
-                openMainSubscriptionPage();
-                return;
-              }
-              usage.togglePaymentModal(false);
+        {!isShowConfirmPayments && (
+          <Stack
+            sx={{
+              paddingTop: '30px',
+              width: '100%',
+              alignItems: 'flex-start',
             }}
           >
-            {i18n._('Close')}
-          </Button>
-        </Stack>
+            <Button
+              variant="outlined"
+              endIcon={<X />}
+              onClick={() => {
+                if (isShowConfirmPayments) {
+                  openMainSubscriptionPage();
+                  return;
+                }
+                usage.togglePaymentModal(false);
+              }}
+            >
+              {i18n._('Close')}
+            </Button>
+          </Stack>
+        )}
       </Stack>
     </CustomModal>
   );

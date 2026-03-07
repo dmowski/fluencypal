@@ -134,6 +134,7 @@ export const SubscriptionCard = ({
             variant="body1"
             sx={{
               minHeight: '60px',
+              display: 'none',
             }}
           >
             {footnote}
@@ -142,6 +143,7 @@ export const SubscriptionCard = ({
             sx={{
               gap: '5px',
               width: '100%',
+              paddingTop: '30px',
             }}
           >
             <Button
@@ -168,7 +170,7 @@ export const SubscriptionCard = ({
             paddingTop: '10px',
           }}
         >
-          <FeatureList />
+          <Typography>{i18n._('Unlimited access to all features')}</Typography>
         </Stack>
         <Stack
           sx={{

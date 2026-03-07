@@ -6,7 +6,7 @@ export const FaqSubscription = () => {
   const { i18n } = useLingui();
   return (
     <Stack gap="10px">
-      <Typography variant="h4" component="h3" sx={{ marginBottom: '10px', fontWeight: 800 }}>
+      <Typography variant="h6" component="h3" sx={{ marginBottom: '10px', fontWeight: 400 }}>
         {i18n._('Frequently Asked Questions')}
       </Typography>
 
@@ -17,9 +17,19 @@ export const FaqSubscription = () => {
       >
         <FaqItem
           info={{
-            question: i18n._('Can I do a refund after purchase?'),
-            answer: i18n._(
-              'Yes. If you\'re not satisfied with the service, on "Profile/Payment history" page you can request a refund and we will discuss the details.',
+            question: i18n._('Call duration limits?'),
+            answer: (
+              <Stack
+                sx={{
+                  gap: '10px',
+                }}
+              >
+                <Typography>
+                  {i18n._(
+                    'No, there are no call duration limits. You can talk as long as you want during the selected time period.',
+                  )}
+                </Typography>
+              </Stack>
             ),
           }}
         />
@@ -39,6 +49,53 @@ export const FaqSubscription = () => {
                   )}
                 </Typography>
               </Stack>
+            ),
+          }}
+        />
+
+        <FaqItem
+          info={{
+            question: i18n._('Daily Limits?'),
+            answer: (
+              <Stack
+                sx={{
+                  gap: '10px',
+                }}
+              >
+                <Typography>
+                  {i18n._(
+                    'No, there are no daily limits. You can talk as many times as you want during the selected time period.',
+                  )}
+                </Typography>
+              </Stack>
+            ),
+          }}
+        />
+
+        <FaqItem
+          info={{
+            question: i18n._('Can I use it on smartphone?'),
+            answer: (
+              <Stack
+                sx={{
+                  gap: '10px',
+                }}
+              >
+                <Typography>
+                  {i18n._(
+                    'Yes, you can use it on your smartphone. The service is fully accessible from mobile devices. Simply open the website in your mobile browser and log in to your account.',
+                  )}
+                </Typography>
+              </Stack>
+            ),
+          }}
+        />
+
+        <FaqItem
+          info={{
+            question: i18n._('Can I do a refund after purchase?'),
+            answer: i18n._(
+              'Yes. If you are not satisfied with the service, you can request a refund on the Profile/Payment History page, and we will process it.',
             ),
           }}
         />
