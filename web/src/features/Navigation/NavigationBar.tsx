@@ -64,8 +64,6 @@ export const NavigationBar: React.FC = () => {
   const game = useGame();
   const auth = useAuth();
   const settings = useSettings();
-  const targetLanguage = settings.languageCode || 'en';
-  const flagImage = langFlags[targetLanguage] || '';
 
   const appMode = settings.appMode;
   const userPhoto = game.gameAvatars?.[auth.uid] || '';
@@ -154,10 +152,16 @@ export const NavigationBar: React.FC = () => {
     setCurrentPage(item.name);
   };
 
-  const rotateLanguage = () => {
+  const rotateLearnLanguage = () => {
     const currentLanguage = settings.languageCode || 'en';
     const nextLanguage = currentLanguage === 'en' ? 'pl' : 'en';
     settings.setLanguage(nextLanguage);
+  };
+
+  const rotatePageLanguage = () => {
+    const currentLanguage = settings.pageLanguageCode || 'en';
+    const nextLanguage = currentLanguage === 'en' ? 'ru' : 'en';
+    settings.setPageLanguage(nextLanguage);
   };
 
   return (
@@ -184,17 +188,41 @@ export const NavigationBar: React.FC = () => {
       }}
     >
       <Stack sx={{ width: '100%', maxWidth: '700px', padding: '0 10px', position: 'relative' }}>
-        {flagImage && auth.isFounder && (
+        {langFlags[settings.languageCode || 'en'] && auth.isFounder && (
           <Stack
             component={'img'}
-            src={flagImage}
-            onClick={rotateLanguage}
+            src={langFlags[settings.languageCode || 'en'] || ''}
+            onClick={rotateLearnLanguage}
             sx={{
               width: '35px',
               borderRadius: '1px',
               position: 'absolute',
               right: '20px',
               top: '10px',
+              zIndex: 10,
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+
+              ':hover': {
+                boxShadow: '0 0 8px 2px #29b6f6',
+                border: '1px solid #29b6f6',
+                transform: 'scale(1.2)',
+              },
+            }}
+          />
+        )}
+
+        {langFlags[settings.pageLanguageCode || 'en'] && auth.isFounder && (
+          <Stack
+            component={'img'}
+            src={langFlags[settings.pageLanguageCode || 'en'] || ''}
+            onClick={rotatePageLanguage}
+            sx={{
+              width: '35px',
+              borderRadius: '1px',
+              position: 'absolute',
+              right: '20px',
+              bottom: '10px',
               zIndex: 10,
               cursor: 'pointer',
               transition: 'all 0.3s ease',
