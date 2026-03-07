@@ -149,6 +149,13 @@ export default function LandingPage({ lang }: LandingPageProps) {
         `FluencyPal does not use your personal data or conversations to train AI models.`,
       ),
     },
+
+    {
+      question: i18n._(`How does FluencyPal improve my speaking skills?`),
+      answer: i18n._(
+        `During conversations, FluencyPal keeps track of the mistakes you make. Based on these patterns, it generates personalized language rules designed specifically for your weak areas. You can then practice each rule separately: read a short explanation, see clear examples, and speak with the AI while focusing only on that aspect of the language. This allows you to systematically improve the exact grammar or expression patterns that cause you the most difficulty, turning your mistakes into targeted speaking practice.`,
+      ),
+    },
   ];
   const pageUrl = 'https://www.fluencypal.com' + getUrlStart(lang);
 
