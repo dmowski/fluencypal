@@ -2,7 +2,6 @@ import { useLingui } from '@lingui/react';
 import { Button, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import { ChevronLeft, ChevronRight, Loader } from 'lucide-react';
-import { AudioPlayIcon } from '../../Audio/AudioPlayIcon';
 import { useTranslate } from '../../Translation/useTranslate';
 import { LoadingShapes } from '../../uiKit/Loading/LoadingShapes';
 import { Markdown } from '../../uiKit/Markdown/Markdown';
@@ -15,6 +14,8 @@ import { useAiConversation } from '@/features/Conversation/useAiConversation/use
 import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 import { getMediaVideoStreams } from '@/features/webCam/mediaStream';
 import { useSettings } from '@/features/Settings/useSettings';
+import { useTextConstructorFlow } from '@/features/Sentence/TextConstructor/useTextConstructorFlow';
+import { OptionsList } from '@/features/Sentence/TextConstructor/OptionsList';
 
 export const GrammarImprovementModal = ({
   improvement,
@@ -280,6 +281,25 @@ export const InteractiveExample = ({
   isTranslateAvailable: boolean;
   translateWithModal: (word: string, element: HTMLElement) => void;
 }) => {
+  const { i18n } = useLingui();
+  const [progress, setProgress] = useState('');
+  const [isCompleted, setIsCompleted] = useState(false);
+
+  const { options, wrongWord, handlePick } = useTextConstructorFlow({
+    sentences: [example],
+    sentencesTranslates: [translation || example],
+    progress,
+    numberOfOptions: 2,
+    keyboardShortcutsEnabled: false,
+    onContinue: setProgress,
+    onComplete: () => setIsCompleted(true),
+  });
+
+  useEffect(() => {
+    setProgress('');
+    setIsCompleted(false);
+  }, [example]);
+
   return (
     <Stack
       sx={{
@@ -340,23 +360,25 @@ export const InteractiveExample = ({
             <Markdown variant="small">{translation || example}</Markdown>
           </Stack>
         )}
-      </Stack>
 
-      <Stack
-        sx={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          backgroundColor: 'rgba(255, 255, 255, 0.05)',
-          //padding: '0 10px 10px 10px',
-          padding: '10px',
-          gap: '10px',
-          '@media (max-width: 600px)': {
-            backgroundColor: 'transparent',
-            padding: '0',
-          },
-        }}
-      >
-        <AudioPlayIcon text={example} type="icon" />
+        <Stack
+          sx={{
+            gap: '8px',
+          }}
+        >
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: progress ? 1 : 0.5,
+            }}
+          >
+            {progress || i18n._('Pick words to build the sentence')}
+          </Typography>
+
+          {!isCompleted && (
+            <OptionsList options={options} handlePick={handlePick} wrongWord={wrongWord} />
+          )}
+        </Stack>
       </Stack>
     </Stack>
   );

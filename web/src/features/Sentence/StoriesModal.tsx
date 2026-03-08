@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSettings } from '../Settings/useSettings';
 import { useTranslate } from '../Translation/useTranslate';
 import { splitTextIntoSentences } from './TextConstructor/splitTextIntoSentences';
-import { StoryContent, TextConstructor } from './TextConstructor/TextConstructor';
+import { TextConstructor } from './TextConstructor/TextConstructor';
 import {
   ArrowDown,
   ArrowLeft,
@@ -35,6 +35,7 @@ import { getStoryHash } from './getStoryHash';
 import { clearWordForAudio } from '../Audio/clearWord';
 import { getVoiceOverSpeakOptions } from '../Audio/getVoiceOverSpeakOptions';
 import { useStories } from './useStories';
+import { StoryContent } from './TextConstructor/StoryContent';
 
 interface Sentence {
   sentence: string;
