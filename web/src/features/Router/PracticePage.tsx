@@ -2,7 +2,7 @@
 
 import { useAiConversation } from '@/features/Conversation/useAiConversation/useAiConversation';
 import { useAuth } from '../Auth/useAuth';
-import { accordionClasses, Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import { SignInForm } from '../Auth/SignInForm';
 import { useUsage } from '../Usage/useUsage';
 import { useSettings } from '../Settings/useSettings';
@@ -24,7 +24,6 @@ import { useLessonPlan } from '../LessonPlan/useLessonPlan';
 import { usePlan } from '../Plan/usePlan';
 import { usePageLangRedirect } from './usePageLangRedirect';
 import { CommunityDashboard } from '../Community/CommunityDashboard';
-import { ConversationType } from '@/common/conversation';
 import { BlockedAccess } from './BlockedAccess';
 
 interface PracticePageProps {
