@@ -7,9 +7,10 @@ import { useTextConstructorFlow } from '@/features/Sentence/TextConstructor/useT
 import { splitWords } from '@/features/Sentence/TextConstructor/textConstructor.utils';
 import { useQuizWordAudio } from '@/features/Audio/useQuizWordAudio';
 import { Markdown } from '../../uiKit/Markdown/Markdown';
-import Button from '@mui/material/Button';
 import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
 import { sleep } from '@/libs/sleep';
+import { useConversationAudio } from '@/features/Audio/useConversationAudio';
+import { clearWordForAudio } from '@/features/Audio/clearWord';
 
 const cleanMarkdownStyles = (text: string): string => {
   return text
@@ -33,12 +34,28 @@ export const InteractiveExample = ({
   const settings = useSettings();
   const targetLanguage = settings.languageCode || 'en';
   const quizWordAudio = useQuizWordAudio({ targetLanguage });
+  const audio = useConversationAudio();
 
   const cleanedExample = useMemo(() => cleanMarkdownStyles(example), [example]);
-  const initialProgress = useMemo(() => splitWords(cleanedExample)[0] ?? '', [cleanedExample]);
+  const words = useMemo(() => splitWords(cleanedExample), [cleanedExample]);
+  const lastWord = useMemo(() => words[words.length - 1], [words]);
+  const clearLastWordForAudio = useMemo(() => clearWordForAudio(lastWord), [lastWord]);
+  const initialProgress = useMemo(() => words[0] ?? '', [words]);
 
   const [progress, setProgress] = useState(initialProgress);
   const [isCompleted, setIsCompleted] = useState(false);
+
+  const playFullExampleAudio = async () => {
+    sleep(300);
+    await audio.playPotentialSpeakUrl(cleanedExample, quizWordAudio.speakOptions);
+  };
+
+  useEffect(() => {
+    const isLastWordPlayed =
+      clearLastWordForAudio && clearLastWordForAudio === audio.lastPlayedText;
+    if (!isLastWordPlayed) return;
+    playFullExampleAudio();
+  }, [audio.lastPlayedText]);
 
   const { options, wrongWord, handlePick } = useTextConstructorFlow({
     sentences: [cleanedExample],
@@ -49,11 +66,10 @@ export const InteractiveExample = ({
     onContinue: setProgress,
     onComplete: async () => {
       setIsCompleted(true);
-      await sleep(1200);
-      await quizWordAudio.playWordAudio(cleanedExample);
     },
-    onPlayAudio: (word) => {
-      void quizWordAudio.playWordAudio(word);
+    onPlayAudio: async (word) => {
+      audio.setTextAsPotentialSpeak(cleanedExample, quizWordAudio.speakOptions);
+      quizWordAudio.playWordAudio(word);
     },
     onCorrectWordAvailable: (word) => {
       void quizWordAudio.preloadWordAudio(word);
