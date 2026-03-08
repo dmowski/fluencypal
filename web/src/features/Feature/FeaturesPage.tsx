@@ -26,7 +26,7 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
           width: '100%',
           alignItems: 'center',
           padding: { xs: '96px 12px 0', md: '118px 16px 0' },
-          backgroundColor: 'background.default',
+          backgroundColor: 'rgba(10, 18, 30, 1)',
         }}
       >
         <Stack sx={{ width: '100%', maxWidth: maxLandingWidth, gap: { xs: '12px', md: '14px' } }}>
