@@ -2,6 +2,7 @@ import { Stack, Typography } from '@mui/material';
 import { maxContentWidth, subTitleFontStyle, titleFontStyle } from '../landingSettings';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
+import Image from 'next/image';
 
 interface ListRolePlayIntroProps {
   lang: SupportedLanguage;
@@ -92,9 +93,12 @@ export const ListRolePlayIntro = ({ lang }: ListRolePlayIntroProps) => {
               },
             }}
           >
-            <img
+            <Image
               src="/peopleIll.jpg"
-              alt="Role Play Scenarios"
+              loading="eager"
+              alt="Role Play Scenarios Illustration"
+              width={931}
+              height={800}
               style={{
                 width: 'max-content',
                 maxWidth: '90vw',

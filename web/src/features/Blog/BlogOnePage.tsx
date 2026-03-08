@@ -221,6 +221,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                       className="blog-image"
                       alt={`Illustration for ${item.title}`}
                       sizes="1000px"
+                      loading="eager"
                       fill
                       style={{
                         objectFit: 'cover',
