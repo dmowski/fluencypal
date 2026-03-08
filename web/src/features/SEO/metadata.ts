@@ -9,6 +9,7 @@ import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
 import { getBlogs } from '@/features/Blog/blogData';
 import { getLangLearnPlanLabels } from '@/features/Lang/getLabels';
 import { getAllInterviews } from '../Case/data/data';
+import { getFeatureById } from '../Feature/featuresData';
 
 type Page =
   | 'contacts'
@@ -22,6 +23,7 @@ type Page =
   | 'terms'
   | 'scenarios'
   | 'blog'
+  | 'features'
   | 'case'
   | 'alias'
   | '';
@@ -33,6 +35,7 @@ interface generateMetadataInfoProps {
   currentPath: Page;
   scenarioId?: string;
   interviewId?: string;
+  featureId?: string;
   blogId?: string;
   category?: string;
   rolePlayId?: string;
@@ -49,6 +52,7 @@ export const generateMetadataInfo = ({
   rolePlayId,
   languageToLearn,
   interviewId,
+  featureId,
   afterIdPage,
 }: generateMetadataInfoProps) => {
   const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
@@ -273,6 +277,30 @@ export const generateMetadataInfo = ({
     openGraphImageUrl = blog?.imagePreviewUrl || openGraphImageUrl;
   }
 
+  if (currentPath === 'features' && !featureId) {
+    title = i18n._('FluencyPal Features: AI English Speaking Practice, Grammar, Role Plays');
+    description = i18n._(
+      'Explore FluencyPal features for AI English speaking practice, personalized grammar, vocabulary lessons, role plays, stories, debates, and community learning.',
+    );
+    keywords = [
+      i18n._('FluencyPal features'),
+      i18n._('AI English practice'),
+      i18n._('English role play'),
+      i18n._('English speaking app'),
+    ];
+  }
+
+  if (currentPath === 'features' && featureId) {
+    const feature = getFeatureById(supportedLang, featureId);
+    if (!feature) {
+      needIndex = false;
+    }
+
+    title = feature?.metaTitle || 'Features | FluencyPal';
+    description = feature?.metaDescription || '';
+    keywords = feature?.keywords || [];
+  }
+
   if (currentPath === 'scenarios' && scenarioId) {
     const rolePlayScenarios = getRolePlayScenarios(supportedLang);
     const scenario = rolePlayScenarios.rolePlayScenarios.find((s) => s.id === scenarioId);
@@ -360,7 +388,7 @@ export const generateMetadataInfo = ({
     ];
   }
 
-  const id = scenarioId || blogId || interviewId;
+  const id = scenarioId || blogId || interviewId || featureId;
 
   const metadataUrls = getMetadataUrls({
     pagePath: currentPath,

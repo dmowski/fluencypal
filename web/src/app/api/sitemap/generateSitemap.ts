@@ -2,6 +2,7 @@ import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
 import { getBlogs } from '@/features/Blog/blogData';
 import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
 import { getAllInterviews } from '@/features/Case/data/data';
+import { getFeaturesData } from '@/features/Feature/featuresData';
 
 const updateTime = '2026-03-07T13:01:02+00:00';
 
@@ -99,6 +100,12 @@ export async function generateSitemap(): Promise<string> {
       priority: '0.5000',
     }));
 
+  const { features } = getFeaturesData('en');
+  const featureUrls: UrlDefinition[] = features.map((item) => ({
+    path: `features/${item.id}`,
+    priority: '0.7000',
+  }));
+
   const quizUrls: UrlDefinition[] = supportedLanguages
     .filter((lang) => lang !== 'en')
     .map((lang) => ({
@@ -135,6 +142,11 @@ export async function generateSitemap(): Promise<string> {
     },
 
     {
+      path: 'features',
+      priority: '0.8000',
+    },
+
+    {
       path: 'contacts',
       priority: '0.6000',
     },
@@ -164,6 +176,7 @@ export async function generateSitemap(): Promise<string> {
     ...scenariosCategoriesUrls,
     ...blogsUrls,
     ...blogsCategoriesUrls,
+    ...featureUrls,
     ...quizUrls,
   ];
 

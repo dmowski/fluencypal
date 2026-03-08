@@ -166,5 +166,30 @@ describe('SEO Metadata', () => {
       );
       expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/ru/scenarios/alias-game`);
     });
+
+    test('generates metadata for features index', () => {
+      const meta = generateMetadataInfo({
+        lang: 'en',
+        currentPath: 'features',
+      });
+
+      expect(meta.title).toBe(
+        'FluencyPal Features: AI English Speaking Practice, Grammar, Role Plays',
+      );
+      expect(meta.description).toContain('Explore FluencyPal features');
+      expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/features`);
+    });
+
+    test('generates metadata for one feature page', () => {
+      const meta = generateMetadataInfo({
+        lang: 'en',
+        currentPath: 'features',
+        featureId: 'learning-plan',
+      });
+
+      expect(meta.title).toBe('Personalized Learning Plan for English Practice | FluencyPal');
+      expect(meta.description).toContain('Build a personalized English learning plan with AI.');
+      expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/features/learning-plan`);
+    });
   });
 });
