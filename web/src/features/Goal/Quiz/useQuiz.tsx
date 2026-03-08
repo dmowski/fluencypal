@@ -159,7 +159,7 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
 
     'before_goalReview',
     'goalReview',
-    //'accessPlan',
+    'accessPlan',
     //'writeWelcomeMessageInChat',
   ];
 

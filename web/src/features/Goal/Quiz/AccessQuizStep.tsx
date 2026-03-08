@@ -122,8 +122,8 @@ const AccessSelector = ({
           <Typography
             variant="h4"
             sx={{
-              fontSize: isFullAccess ? '42px' : '28px',
-              fontWeight: isFullAccess ? 800 : 600,
+              fontSize: isFullAccess ? '32px' : '28px',
+              fontWeight: isFullAccess ? 700 : 600,
               '@media (max-width: 600px)': {
                 fontSize: isFullAccess ? '32px' : '24px',
               },
@@ -133,7 +133,7 @@ const AccessSelector = ({
               },
             }}
           >
-            {isFullAccess ? i18n._(`Full Access`) : i18n._(`Free Access`)}
+            {isFullAccess ? i18n._(`Full Access`) : i18n._(`Limited Access`)}
           </Typography>
 
           <Typography
@@ -194,6 +194,11 @@ const AccessSelector = ({
                     title: i18n._('Access to the community'),
                     iconName: 'users',
                   },
+
+                  {
+                    title: i18n._('Improvements to your grammar'),
+                    iconName: 'book-type',
+                  },
                 ]
               : [
                   {
@@ -203,10 +208,6 @@ const AccessSelector = ({
                   {
                     title: i18n._('Limited voice features'),
                     iconName: 'volume-off',
-                  },
-                  {
-                    title: i18n._('Access to the community'),
-                    iconName: 'users',
                   },
                 ]
           }
