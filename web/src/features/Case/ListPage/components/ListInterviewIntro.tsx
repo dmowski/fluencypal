@@ -101,7 +101,7 @@ export const ListInterviewIntro = ({ lang }: ListInterviewIntroProps) => {
               src="/blog.jpg"
               width={797}
               height={600}
-              alt="Illustration of people reading"
+              alt={i18n._('Illustration of people reading')}
               loading="eager"
               style={{
                 width: 'max-content',
