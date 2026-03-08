@@ -69,19 +69,29 @@ export const AccessBadge = ({
         </Typography>
       </Stack>
 
-      <Button
-        color="success"
-        onClick={() => usage.togglePaymentModal(true)}
-        variant="contained"
-        endIcon={<Rocket size={'18px'} />}
+      <Stack
         sx={{
-          padding: '10px 30px',
-          fontWeight: 500,
-          background: 'linear-gradient(90deg, rgb(54, 243, 63) 0%, rgb(85, 212, 6) 100%)',
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: '4px 15px',
+          flexWrap: 'wrap',
         }}
       >
-        {buttonTitle}
-      </Button>
+        <Button
+          color="success"
+          onClick={() => usage.togglePaymentModal(true)}
+          variant="contained"
+          endIcon={<Rocket size={'18px'} />}
+          sx={{
+            padding: '10px 30px',
+            fontWeight: 500,
+            background: 'linear-gradient(90deg, rgb(54, 243, 63) 0%, rgb(85, 212, 6) 100%)',
+          }}
+        >
+          {buttonTitle}
+        </Button>
+        <Typography variant="caption">{i18n._('Only $9 per month')}</Typography>
+      </Stack>
     </Stack>
   );
 };
