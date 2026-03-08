@@ -65,8 +65,12 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
               </Typography>
               <Typography sx={{ color: '#555' }}>{feature.subTitle}</Typography>
               <Stack sx={{ alignItems: 'flex-start', paddingTop: '6px' }}>
-                <Button variant="contained" href={`${urlStart}features/${feature.id}`}>
-                  {i18n._('Read more')}
+                <Button
+                  variant="contained"
+                  href={`${urlStart}features/${feature.id}`}
+                  aria-label={`${i18n._('Read more about')} ${feature.title}`}
+                >
+                  {`${i18n._('Read more about')} ${feature.title}`}
                 </Button>
               </Stack>
             </Stack>

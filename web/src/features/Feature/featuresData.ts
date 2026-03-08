@@ -83,7 +83,9 @@ While you practice, FluencyPal tracks mistakes and turns them into targeted impr
     {
       id: 'personalized-grammar-rules',
       title: i18n._('Personalized English Grammar Practice with AI'),
-      subTitle: i18n._('Get grammar rules based on your real mistakes.'),
+      subTitle: i18n._(
+        'Get grammar practice based on your real mistakes and your communication goals.',
+      ),
       metaTitle: i18n._('Personalized English Grammar Practice with AI | FluencyPal'),
       metaDescription: i18n._(
         'Get personalized grammar rules based on your mistakes. Practice English grammar with explanations, quizzes, and AI conversation.',
@@ -102,6 +104,14 @@ Each grammar item includes:
 - a short quiz
 - AI conversation practice for the same rule
 
+## Goal-aligned preparation
+
+FluencyPal can also prioritize grammar patterns based on the kind of English you need to use, such as:
+- job interviews
+- travel communication
+- everyday conversations
+- formal speaking
+
 ## How the learning loop works
 
 You improve grammar in three steps:
@@ -111,7 +121,7 @@ You improve grammar in three steps:
 
 ## Why it helps
 
-This approach makes grammar practice more personal and more practical. Instead of reviewing random rules, you focus on the patterns that are slowing down your real English communication.`,
+This approach makes grammar practice more personal and more practical. Instead of reviewing random rules, you focus on the patterns that are slowing down your real English communication and the rules you are most likely to need next.`,
       ),
     },
     {
@@ -212,43 +222,6 @@ You can create role plays for:
 This gives you more control over your learning and makes speaking practice highly relevant to your real life.
 
 The result is personalized AI conversation practice that matches your exact context.`,
-      ),
-    },
-    {
-      id: 'goal-based-grammar-practice',
-      title: i18n._('Goal-Based English Grammar Practice'),
-      subTitle: i18n._(
-        'Practice grammar your goals require, even before recurring mistakes appear.',
-      ),
-      metaTitle: i18n._('Goal-Based English Grammar Practice | FluencyPal'),
-      metaDescription: i18n._(
-        'Practice grammar that matches your learning goals. FluencyPal focuses on the English rules most useful for your real conversations.',
-      ),
-      keywords: [
-        'goal-based grammar',
-        'practical grammar practice',
-        'grammar for conversation goals',
-      ],
-      content: i18n._(
-        `## Grammar practice aligned with your goal
-
-FluencyPal does not only react to your mistakes. It also prepares grammar practice based on the kind of English you want to use.
-
-## How it works
-
-If your goal involves:
-- job interviews
-- travel communication
-- everyday conversations
-- formal speaking
-
-the system can highlight grammar patterns that are especially useful for those situations.
-
-## Why it helps
-
-This makes grammar practice more strategic. You work on the rules that are likely to matter in your future conversations, not only the mistakes you already made.
-
-That helps you prepare for important situations before they happen.`,
       ),
     },
     {
