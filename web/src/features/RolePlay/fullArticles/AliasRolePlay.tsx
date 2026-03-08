@@ -1,8 +1,9 @@
 import { getI18nInstance } from '@/appRouterI18n';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { SupportedLanguage } from '@/features/Lang/lang';
-import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { AudioLines, ChevronRight, Heart, Speech, User, Users, Zap } from 'lucide-react';
+import Image from 'next/image';
 import { JSX } from 'react';
 
 export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Element => {
@@ -177,8 +178,10 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
       <Typography variant="caption" style={{ fontSize: '0.9rem', opacity: 0.8 }}>
         {i18n._(`Pick a level to start playing!`)}
       </Typography>
-      <img
+      <Image
         src="/rolePlaysPublic/alias/level.webp"
+        width={944}
+        height={180}
         style={{
           width: '460px',
           maxWidth: 'calc(100dvw - 32px)',
@@ -201,8 +204,10 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
       <Typography variant="caption" style={{ fontSize: '0.9rem', opacity: 0.8 }}>
         {i18n._(`Based on your level, the AI will suggest words to describe.`)}
       </Typography>
-      <img
+      <Image
         src="/rolePlaysPublic/alias/options.webp"
+        width={918}
+        height={262}
         style={{
           width: '460px',
           maxWidth: 'calc(100dvw - 32px)',
@@ -225,8 +230,10 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
       <Typography variant="caption" style={{ fontSize: '0.9rem', opacity: 0.8 }}>
         {i18n._(`Describe the word you see on the screen without using the word itself!`)}
       </Typography>
-      <img
+      <Image
         src="/rolePlaysPublic/alias/recording.webp"
+        width={900}
+        height={176}
         style={{
           width: '460px',
           maxWidth: 'calc(100dvw - 32px)',
@@ -249,8 +256,10 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
       <Typography variant="caption" style={{ fontSize: '0.9rem', opacity: 0.8 }}>
         {i18n._(`Enjoy the game and see how the AI guesses your description!`)}
       </Typography>
-      <img
+      <Image
         src="/rolePlaysPublic/alias/botThinking.webp"
+        width={1200}
+        height={768}
         style={{
           width: '460px',
           maxWidth: 'calc(100dvw - 32px)',
