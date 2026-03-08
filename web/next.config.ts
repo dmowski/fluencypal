@@ -83,4 +83,6 @@ export default withSentryConfig(nextConfig, {
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
+
+  widenClientFileUpload: true,
 });
