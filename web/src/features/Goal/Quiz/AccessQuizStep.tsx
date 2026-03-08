@@ -27,9 +27,7 @@ export const AccessQuizStep = ({
   return (
     <InfoStep
       title={i18n._(`How would you like to practice?`)}
-      subTitle={i18n._(
-        `Unlock human-like voice conversations and a curriculum tailored specifically to your goals.`,
-      )}
+      subTitle={i18n._(`Unlock unlimited access to all features`)}
       subComponent={
         <Stack sx={{ paddingTop: '30px', gap: '30px' }}>
           <AccessSelector
