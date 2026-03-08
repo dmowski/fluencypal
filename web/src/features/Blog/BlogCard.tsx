@@ -3,6 +3,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { getI18nInstance } from '@/appRouterI18n';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { BlogPost } from './types';
+import Image from 'next/image';
 
 interface BlogCardProps {
   blog: BlogPost;
@@ -67,24 +68,36 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blog, lang, height, variant 
             overflow: 'hidden',
             maxHeight: '300px',
             position: 'relative',
-            img: {
-              height: '400px',
-              width: 'max-content',
-              maxWidth: '100%',
-              borderRadius: '20px 20px 0 0',
-              boxShadow: '0px 0px 20px 0px rgba(0,0,0,0.3)',
-              position: 'relative',
-            },
             '@media (max-width: 600px)': {
               padding: '0',
-              img: {
-                borderRadius: '12px 12px 0 0',
-                height: 'auto',
-              },
             },
           }}
         >
-          <img src={blog.imagePreviewUrl} alt={`Illustration for ${blog.title}`} style={{}} />
+          <Stack
+            sx={{
+              height: '700px',
+              width: '100%',
+              maxWidth: '600px',
+              borderRadius: '20px 20px 0 0',
+              overflow: 'hidden',
+              boxShadow: '0px 0px 20px 0px rgba(0,0,0,0.3)',
+              position: 'relative',
+              '@media (max-width: 600px)': {
+                borderRadius: '12px 12px 0 0',
+                height: '300px',
+              },
+            }}
+          >
+            <Image
+              src={blog.imagePreviewUrl}
+              alt={`Illustration for ${blog.title}`}
+              fill
+              sizes="700px"
+              style={{
+                objectFit: 'cover',
+              }}
+            />
+          </Stack>
           <Stack
             sx={{
               backgroundImage: `url(${blog.imagePreviewUrl})`,

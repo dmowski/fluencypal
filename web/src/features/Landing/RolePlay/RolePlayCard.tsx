@@ -3,6 +3,7 @@ import { RolePlayInstruction } from '../../RolePlay/types';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { getI18nInstance } from '@/appRouterI18n';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
+import Image from 'next/image';
 
 interface RolePlayCardProps {
   scenario: RolePlayInstruction;
@@ -40,13 +41,8 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
         ':hover': {
           //opacity: 0.8,
           border: '1px solid rgba(0, 0, 0, 0.3)',
-          '.role-play-image': {
-            backgroundImage:
-              variant === 'highlight' && scenario.videoSrc ? '' : `url(${scenario.imageSrc})`,
-
-            video: {
-              opacity: 1,
-            },
+          '.role-play-image video': {
+            opacity: 1,
           },
         },
       }}
@@ -54,12 +50,10 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
       <Stack
         className="role-play-image"
         sx={{
-          backgroundImage: `url(${scenario.imageSrc})`,
+          position: 'relative',
           width: '100%',
           height: '230px',
           minHeight: '230px',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
           top: 0,
           left: 0,
           right: 0,
@@ -67,6 +61,13 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
           zIndex: 0,
         }}
       >
+        <Image
+          src={scenario.imageSrc}
+          alt={scenario.title}
+          fill
+          sizes="(max-width: 600px) calc(100vw - 30px), (max-width: 1200px) 50vw, 600px"
+          style={{ objectFit: 'cover' }}
+        />
         {variant === 'highlight' && scenario.videoSrc && (
           <video
             src={scenario.videoSrc}
