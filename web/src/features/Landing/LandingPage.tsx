@@ -275,6 +275,8 @@ export default function LandingPage({ lang }: LandingPageProps) {
             <HowItWorks
               label={i18n._(`Simple & Effective`)}
               title={i18n._(`How It Works`)}
+              allFeaturesTitle={i18n._(`Explore All Features`)}
+              allFeaturesHref={`${getUrlStart(lang)}features`}
               subTitle={i18n._(
                 "Improving your English speaking skills doesn't have to be complicated. With FluencyPal, anyone can practice confidently and see real progress in weeks, regardless of their current level.",
               )}

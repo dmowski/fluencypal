@@ -33,6 +33,9 @@ export interface HowItWorksProps {
   id: string;
 
   cards: CardData[];
+
+  allFeaturesTitle: string;
+  allFeaturesHref: string;
 }
 
 export const HowItWorks = (props: HowItWorksProps) => {
@@ -206,21 +209,36 @@ export const HowItWorks = (props: HowItWorksProps) => {
         })}
       </Stack>
 
-      <Button
-        href={props.buttonHref}
-        variant="contained"
-        size="large"
-        color="info"
-        sx={{
-          marginTop: '32px',
-          padding: '14px 45px 14px 48px',
-          borderRadius: '48px',
-          fontSize: '1.1rem',
-        }}
-        endIcon={<MoveRight />}
-      >
-        {props.buttonTitle}
-      </Button>
+      <Stack>
+        <Button
+          href={props.buttonHref}
+          variant="contained"
+          size="large"
+          color="info"
+          sx={{
+            marginTop: '32px',
+            padding: '14px 45px 14px 48px',
+            borderRadius: '48px',
+            fontSize: '1.1rem',
+          }}
+          endIcon={<MoveRight />}
+        >
+          {props.buttonTitle}
+        </Button>
+        <Button
+          href={props.allFeaturesHref}
+          variant="text"
+          size="large"
+          color="info"
+          sx={{
+            marginTop: '16px',
+            fontSize: '1.1rem',
+            borderRadius: '48px',
+          }}
+        >
+          {props.allFeaturesTitle}
+        </Button>
+      </Stack>
     </Stack>
   );
 };
