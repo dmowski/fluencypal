@@ -198,7 +198,7 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
                 key={button.href}
                 href={`${button.href}`}
                 onClick={(e) => navigateTo(`${button.href}`, e)}
-                variant={isHighlightJoin ? 'contained' : 'outlined'}
+                variant={'contained'}
                 color="info"
                 className={button.isSolid ? '' : 'hideOnMobile'}
                 sx={{

@@ -6,6 +6,7 @@ import {
 } from '../../../Landing/landingSettings';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
+import Image from 'next/image';
 
 interface ListInterviewIntroProps {
   lang: SupportedLanguage;
@@ -96,9 +97,12 @@ export const ListInterviewIntro = ({ lang }: ListInterviewIntroProps) => {
               },
             }}
           >
-            <img
+            <Image
               src="/blog.jpg"
+              width={797}
+              height={600}
               alt="Illustration of people reading"
+              loading="eager"
               style={{
                 width: 'max-content',
                 maxWidth: '90vw',
