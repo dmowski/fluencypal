@@ -59,7 +59,34 @@ type QuizStep =
   | 'writeWelcomeMessageInChat'
   | 'teacherSelection'
   | 'accessPlan'
+  | 'magicFlow'
   | 'goalReview';
+
+const stepsViews: QuizStep[] = [
+  //'quizOrSkip',
+  'learnLanguage',
+  'before_nativeLanguage',
+  'nativeLanguage',
+
+  'before_pageLanguage',
+  'pageLanguage',
+
+  'before_recordAbout',
+  'recordAbout',
+  'teacherSelection',
+
+  'before_recordAboutFollowUp',
+  'recordAboutFollowUp',
+
+  'before_recordAboutFollowUp2',
+  'recordAboutFollowUp2',
+
+  'before_goalReview',
+  'goalReview',
+  //'magicFlow',
+  'accessPlan',
+  //'writeWelcomeMessageInChat',
+];
 
 export const MIN_WORDS_FOR_ANSWER = 30;
 
@@ -137,31 +164,6 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   const settings = useSettings();
   const plan = usePlan();
   const userInfo = useAiUserInfo();
-
-  const stepsViews: QuizStep[] = [
-    //'quizOrSkip',
-    'learnLanguage',
-    'before_nativeLanguage',
-    'nativeLanguage',
-
-    'before_pageLanguage',
-    'pageLanguage',
-
-    'before_recordAbout',
-    'recordAbout',
-    'teacherSelection',
-
-    'before_recordAboutFollowUp',
-    'recordAboutFollowUp',
-
-    'before_recordAboutFollowUp2',
-    'recordAboutFollowUp2',
-
-    'before_goalReview',
-    'goalReview',
-    'accessPlan',
-    //'writeWelcomeMessageInChat',
-  ];
 
   const [isFirstLoading, setIsFirstLoading] = useState(true);
   const defaultState: QuizUrlState = useMemo(
