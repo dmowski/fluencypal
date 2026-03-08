@@ -93,6 +93,7 @@ export const InteractiveExample = ({
             onWordClick={
               isTranslateAvailable
                 ? (word, element) => {
+                    quizWordAudio.playWordAudio(word);
                     translateWithModal(word, element);
                   }
                 : undefined
