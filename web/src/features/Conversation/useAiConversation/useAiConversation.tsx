@@ -73,9 +73,9 @@ function useProvideAiConversation(): AiConversationContextType {
   const messages = useAiConversationMessages();
   const [recordingVoiceMode, setRecordingVoiceMode] =
     useState<RecordingUserMessageMode>('PushToTalk');
-  const [communicator, setCommunicator] = useState<ConversationInstance>();
-  const communicatorRef = useRef(communicator);
-  communicatorRef.current = communicator;
+
+  const communicatorRef = useRef<ConversationInstance | undefined>(undefined);
+
   const [isMuted, setIsMuted] = useState(true);
   const access = useAccess();
   const audio = useConversationAudio();
@@ -140,7 +140,7 @@ function useProvideAiConversation(): AiConversationContextType {
   );
 
   const toggleMute = (isMute: boolean) => {
-    communicator?.toggleMute(isMute);
+    communicatorRef.current?.toggleMute(isMute);
     setIsMuted(isMute);
   };
 
@@ -155,7 +155,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const conversationUsage = useConversationUsage(setIsNeedToResetNow);
 
   useEffect(() => {
-    return () => communicator?.closeHandler();
+    return () => communicatorRef.current?.closeHandler();
   }, []);
 
   const onOpen = async () => {
@@ -216,7 +216,7 @@ function useProvideAiConversation(): AiConversationContextType {
           model: 'gpt-4o',
         });
       },
-      playAudio: async (textToPlay: string, voice: AiVoice, instruction: string) => {
+      playAudio: async (textToPlay: string, voice: AiVoice) => {
         await audio.interruptWithFade(120);
         setIsAiSpeakingStartedFromConversation(true);
         console.log('Start speaking', textToPlay);
@@ -251,7 +251,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
     const voiceInstructions = getVoiceInstructions(voice, voiceSpeed);
 
-    let lessonPlanPrompt = lessonPlan
+    const lessonPlanPrompt = lessonPlan
       ? `## Lesson Plan:
 ${lessonPlan.steps
   .map(
@@ -268,7 +268,7 @@ ${lessonPlan.steps
     const goalInfo = `${goalTitle} - ${elementTitle} - ${elementDescription}`;
     const elementDetails = goal?.goalElement.details || '';
 
-    let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
+    const userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
 
     // GOAL TALK, conversation
     if (mode === 'goal-talk') {
@@ -278,7 +278,7 @@ ${lessonPlan.steps
       const firstMessage =
         ideas?.firstMessage || (await aiUserInfo.generateFirstMessageText(goalInfo)).firstMessage;
       firstPotentialBotMessage.current = firstMessage;
-      let startFirstMessage = `"${firstMessage}".`;
+      const startFirstMessage = `"${firstMessage}".`;
 
       setIsInitializing(`Starting conversation...`);
 
@@ -386,7 +386,7 @@ During conversation ask only one question at a time or even without questions.
     }
 
     if (mode === 'rule') {
-      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
+      const userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
       return {
         ...baseConfig,
         voice,
@@ -405,7 +405,7 @@ ${voiceInstructions}
     }
 
     if (mode === 'words') {
-      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
+      const userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
       return {
         ...baseConfig,
 
@@ -425,7 +425,7 @@ ${voiceInstructions}
     }
 
     if (mode === 'grammar-improvement') {
-      let userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
+      const userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
       return {
         ...baseConfig,
 
@@ -460,7 +460,7 @@ ${voiceInstructions}
       isMutedInternal = true;
     }
 
-    let isVolumeOnInternal = true;
+    const isVolumeOnInternal = true;
 
     console.log('START', {
       isVolumeOnInternal,
@@ -550,7 +550,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       });
       setVoice(conversationConfig.voice || input.voice || settingsVoice || 'shimmer');
 
-      setCommunicator(conversation);
+      communicatorRef.current = conversation;
     } catch (e) {
       console.error(e);
       const isNotAllowedError = (e as Error).toString().includes('NotAllowedError');
@@ -570,7 +570,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
     setIsClosing(true);
     setIsStarted(false);
     setIsInitializing('');
-    communicator?.closeHandler();
+    communicatorRef.current?.closeHandler();
     setLessonPlanAnalysis(null);
 
     messages.setConversationId(null);
@@ -580,7 +580,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
   };
 
   const addUserMessage = async (message: string) => {
-    communicator?.addThreadsMessage(message);
+    communicatorRef.current?.addThreadsMessage(message);
     if (!lessonPlan) {
       await sleep(100);
       await communicatorRef.current?.triggerAiResponse();
