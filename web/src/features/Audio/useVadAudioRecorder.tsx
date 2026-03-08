@@ -65,10 +65,7 @@ export const useVadAudioRecorder = ({
     onStart: () => setIsEnabled(true),
   });
 
-  const { inWebView } = useIsWebView();
-
   return {
-    isAbleToUse: !inWebView,
     isTranscribing,
     speakingLevel: recorderControls.inputLevel01,
     start: recorderControls.start,

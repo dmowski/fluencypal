@@ -13,7 +13,7 @@ export const WebViewWall = ({
   children: ReactNode;
   mode?: 'interview' | 'general';
 }) => {
-  const { isAndroid, inWebView, isTelegram } = useIsWebView();
+  const { isAndroid, inWebView, isTelegram, uaName } = useIsWebView();
 
   const { i18n } = useLingui();
   const [isShowInstruction, setIsShowInstruction] = useState(false);

@@ -40,6 +40,7 @@ export const useIsWebView = () => {
 
   const [inWebView, setIsWebView] = useState(false);
   const [isTiktok, setIsTikTok] = useState(false);
+  const [uaName, setUaName] = useState('');
 
   const initCheck = async () => {
     const isTelegramApp = isTMA();
@@ -57,6 +58,7 @@ export const useIsWebView = () => {
       );*/
 
     const isTiktokWebView = isTikTokWebView();
+    setUaName(ua);
     const isTelegramWebView = isTelegramData.isTgAndroid || isTelegramData.isTgIos;
 
     if (!isTelegramApp) {
@@ -77,6 +79,7 @@ export const useIsWebView = () => {
   return {
     isAndroid,
     agent,
+    uaName,
     inWebView,
     isTelegram,
     isTiktok,

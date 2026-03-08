@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { sendTranscriptRequest } from '@/app/api/transcript/sendTranscriptRequest';
 import { useVoiceVisualizer, VoiceVisualizer } from 'react-voice-visualizer';
-import { useIsWebView } from '../Auth/useIsWebView';
 import { isAllowedMicrophone, requestMicrophoneAccess } from '@/libs/mic';
 import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
@@ -21,7 +20,6 @@ export const useAudioRecorder = () => {
     const seconds = Math.floor(recordingMilliSeconds / 1000);
     setRecordingSeconds(seconds);
   }, [recordingMilliSeconds]);
-  const { inWebView } = useIsWebView();
   useEffect(() => {
     if (!recorderControls.recordedBlob) return;
     if (isCancel.current) {
@@ -116,7 +114,6 @@ export const useAudioRecorder = () => {
     transcription,
     error: recorderControls.error?.message || transcriptionError || '',
     recordingMilliSeconds: recordingSeconds * 1000,
-    isAbleToRecord: !inWebView,
     removeTranscript,
     visualizerComponent: recorderControls.isRecordingInProgress ? (
       <VoiceVisualizer
