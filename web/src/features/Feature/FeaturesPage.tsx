@@ -6,7 +6,7 @@ import { CtaBlock } from '@/features/Landing/ctaBlock';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { maxLandingWidth, titleFontStyle } from '@/features/Landing/landingSettings';
 import { getFeaturesData } from './featuresData';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Link, Stack, Typography } from '@mui/material';
 
 interface FeaturesPageProps {
   lang: SupportedLanguage;
@@ -61,8 +61,8 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
             width: '100%',
             maxWidth: maxLandingWidth,
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(255px, 1fr))',
-            gap: { xs: '14px', md: '18px' },
+            gridTemplateColumns: '1fr',
+            gap: { xs: '34px', md: '38px' },
             padding: { xs: '24px 0 60px', md: '30px 0 76px' },
           }}
         >
@@ -74,26 +74,21 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
                 border: '1px solid',
                 borderColor: 'divider',
                 borderRadius: '14px',
-                backgroundColor: 'background.paper',
-                padding: { xs: '16px', md: '18px' },
+                backgroundColor: 'rgba(255,255,255, 0.02)',
+                padding: { xs: '20px 20px', md: '30px' },
                 gap: '12px',
                 justifyContent: 'space-between',
                 boxShadow: 0,
                 transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
-                '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: 3,
-                  borderColor: 'text.disabled',
-                },
               }}
             >
               <Typography
-                variant="h6"
+                variant="h5"
                 component={'h2'}
                 sx={{
                   color: 'text.primary',
                   lineHeight: 1.35,
-                  minHeight: { xs: 'unset', md: '3.2em' },
+                  fontWeight: 800,
                 }}
               >
                 {feature.title}
@@ -108,10 +103,8 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
                 {feature.subTitle}
               </Typography>
               <Stack sx={{ alignItems: 'flex-start', paddingTop: '6px' }}>
-                <Button
-                  variant="outlined"
+                <Link
                   href={`${urlStart}features/${feature.id}`}
-                  aria-label={`${i18n._('Read more about')} ${feature.title}`}
                   sx={{
                     textTransform: 'none',
                     borderRadius: '10px',
@@ -119,7 +112,7 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
                   }}
                 >
                   {`${i18n._('Read more about')} ${feature.title}`}
-                </Button>
+                </Link>
               </Stack>
             </Stack>
           ))}
