@@ -61,13 +61,6 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
           zIndex: 0,
         }}
       >
-        <Image
-          src={scenario.imageSrc}
-          alt={scenario.title}
-          fill
-          sizes="(max-width: 600px) calc(100vw - 30px), (max-width: 1200px) 50vw, 600px"
-          style={{ objectFit: 'cover' }}
-        />
         {variant === 'highlight' && scenario.videoSrc && (
           <video
             src={scenario.videoSrc}
@@ -81,9 +74,19 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
               backgroundColor: 'rgba(10, 18, 30, 1)',
               height: '230px',
               objectFit: 'cover',
+              position: 'relative',
+              zIndex: 1,
             }}
           />
         )}
+
+        <Image
+          src={scenario.imageSrc}
+          alt={scenario.title}
+          fill
+          sizes="(max-width: 600px) calc(100vw - 30px), (max-width: 1200px) 50vw, 600px"
+          style={{ objectFit: 'cover' }}
+        />
       </Stack>
 
       <Stack
