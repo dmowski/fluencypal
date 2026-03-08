@@ -22,7 +22,12 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
       <HeaderStatic lang={lang} />
       <Stack
         component={'main'}
-        sx={{ width: '100%', alignItems: 'center', padding: '110px 10px 0' }}
+        sx={{
+          width: '100%',
+          alignItems: 'center',
+          padding: '110px 10px 0',
+          backgroundColor: '#f9f9f9',
+        }}
       >
         <Stack sx={{ width: '100%', maxWidth: maxLandingWidth, gap: '18px' }}>
           <Typography component={'h1'} variant="h2" sx={{ ...titleFontStyle, color: '#111' }}>

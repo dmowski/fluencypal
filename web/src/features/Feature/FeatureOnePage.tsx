@@ -29,7 +29,12 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
       <HeaderStatic lang={lang} />
       <Stack
         component={'main'}
-        sx={{ width: '100%', alignItems: 'center', padding: '110px 10px 0' }}
+        sx={{
+          width: '100%',
+          alignItems: 'center',
+          padding: '110px 10px 0',
+          backgroundColor: '#f9f9f9',
+        }}
       >
         <Stack sx={{ width: '100%', maxWidth: maxLandingWidth, gap: '15px' }}>
           <Typography component={'h1'} variant="h2" sx={{ ...titleFontStyle, color: '#111' }}>
@@ -40,7 +45,7 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
           </Typography>
 
           <Stack sx={{ alignItems: 'flex-start', paddingTop: '8px' }}>
-            <Button variant="outlined" href={`${urlStart}features`}>
+            <Button variant="contained" href={`${urlStart}features`}>
               {i18n._('View all features')}
             </Button>
           </Stack>
