@@ -21,6 +21,7 @@ import { getI18nInstance } from '@/appRouterI18n';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import { FeatureList } from '../Price/FeatureList';
+import Image from 'next/image';
 
 interface ScenarioOnePageProps {
   id?: string;
@@ -183,46 +184,39 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
               <Stack
                 sx={{
                   width: '100%',
-                  backgroundColor: 'rgba(125, 123, 74, 0.4)',
-                  alignItems: 'center',
+                  alignItems: 'flex-start',
                   borderRadius: '20px',
-                  padding: '40px 15px 0 15px',
+                  padding: '0 10px',
                   boxSizing: 'border-box',
                   maxWidth: maxContentWidth,
-                  overflow: 'hidden',
-                  maxHeight: '300px',
                   position: 'relative',
                 }}
               >
-                <img
-                  src={item.imageSrc}
-                  alt="Role Play Scenarios"
-                  style={{
-                    width: 'max-content',
-                    maxWidth: '100%',
-                    height: '400px',
-                    borderRadius: '20px 20px 0 0',
-                    boxShadow: '0px 0px 20px 0px rgba(0,0,0,0.3)',
-                    position: 'relative',
-                    //zIndex: 0,
-                  }}
-                />
                 <Stack
                   sx={{
-                    backgroundImage: `url(${item.imageSrc})`,
-                    filter: 'blur(50px)',
-                    backgroundSize: 'cover',
-                    opacity: 0.5,
-                    position: 'absolute',
-                    bottom: 0,
-                    left: '-50%',
-                    top: '-50%',
-
-                    width: '200%',
-                    height: '200%',
-                    zIndex: -1,
+                    width: '100%',
+                    maxWidth: '800px',
+                    aspectRatio: '16/9',
+                    overflow: 'hidden',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '20px',
+                    position: 'relative',
                   }}
-                ></Stack>
+                >
+                  <Image
+                    src={item.imageSrc}
+                    className="blog-image"
+                    alt={`Illustration for ${item.title}`}
+                    sizes="1000px"
+                    loading="eager"
+                    fill
+                    style={{
+                      objectFit: 'cover',
+                      width: '100%',
+                    }}
+                  />
+                </Stack>
               </Stack>
             </Stack>
 
