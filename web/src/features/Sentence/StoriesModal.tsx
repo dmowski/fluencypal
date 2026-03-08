@@ -36,6 +36,7 @@ import { clearWordForAudio } from '../Audio/clearWord';
 import { getVoiceOverSpeakOptions } from '../Audio/getVoiceOverSpeakOptions';
 import { useStories } from './useStories';
 import { StoryContent } from './TextConstructor/StoryContent';
+import { useQuizWordAudio } from '../Audio/useQuizWordAudio';
 
 interface Sentence {
   sentence: string;
@@ -259,29 +260,12 @@ export const StoriesModal = ({
     audio.interrupt();
   };
 
+  const quizWordAudio = useQuizWordAudio({ targetLanguage });
+
   const speakOptionsMain: SpeakOptions = useMemo(
     () => getVoiceOverSpeakOptions(targetLanguage),
     [targetLanguage],
   );
-
-  const cacheAudioWords = async (words: string[]) => {
-    console.log('cacheAudioWords', words);
-
-    for (const word of words) {
-      const cleanWord = clearWordForAudio(word);
-      if (!cleanWord) continue;
-
-      await audio.setTextAsPotentialSpeak(cleanWord, speakOptionsMain);
-      await sleep(200);
-    }
-  };
-
-  const playAudio = async (text: string, alternativeVoice: boolean) => {
-    const cleanWord = clearWordForAudio(text);
-    if (!cleanWord) return;
-
-    await audio.playPotentialSpeakUrl(cleanWord, speakOptionsMain);
-  };
 
   const onSentenceComplete = async () => {
     if (!auth.uid) return;
@@ -322,11 +306,7 @@ export const StoriesModal = ({
   };
 
   const onCorrectWordAvailable = async (word: string) => {
-    await sleep(40);
-    const cleanWord = clearWordForAudio(word);
-    if (!cleanWord) return;
-
-    await audio.setTextAsPotentialSpeak(cleanWord, speakOptionsMain);
+    await quizWordAudio.preloadWordAudio(word);
   };
 
   const attentionWords = useMemo(
@@ -626,7 +606,7 @@ export const StoriesModal = ({
                       <StoryContent
                         text={listenState?.activeSentence.sentence}
                         size="normal"
-                        onPlayAudio={(text) => playAudio(text, false)}
+                        onPlayAudio={quizWordAudio.playWordAudio}
                       />
                     )}
                   </Stack>
@@ -733,8 +713,8 @@ export const StoriesModal = ({
                 onContinue={(progress: string) => setState({ progress })}
                 onComplete={onComplete}
                 onSentenceComplete={onSentenceComplete}
-                onPlayAudio={playAudio}
-                onActiveWordsChange={cacheAudioWords}
+                onPlayAudio={quizWordAudio.playWordAudio}
+                onActiveWordsChange={quizWordAudio.cacheAudioWords}
                 onGoodWord={onWordSelected}
                 onBadWord={onBadWord}
                 onTranslationWord={onTranslationWord}
@@ -837,7 +817,7 @@ export const StoriesModal = ({
                               boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.4)',
                             }}
                             onClick={(e) => {
-                              playAudio(word, false);
+                              quizWordAudio.playWordAudio(word);
                               if (translator.isTranslateAvailable) {
                                 translator.translateWithModal(word, e.currentTarget);
                               }
@@ -866,7 +846,7 @@ export const StoriesModal = ({
                       <StoryContent
                         text={state.progress}
                         size="normal"
-                        onPlayAudio={(text) => playAudio(text, false)}
+                        onPlayAudio={quizWordAudio.playWordAudio}
                       />
                     </Stack>
                   </Stack>

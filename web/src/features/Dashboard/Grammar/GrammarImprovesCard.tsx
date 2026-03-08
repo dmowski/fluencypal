@@ -14,6 +14,7 @@ import { grammarImprovementSystemPrompt } from './prompt';
 import { GrammarImprovement } from './types';
 import { useSettings } from '@/features/Settings/useSettings';
 import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang';
+import { useQuizWordAudio } from '@/features/Audio/useQuizWordAudio';
 
 const limitCount = 3;
 
@@ -37,6 +38,7 @@ export const GrammarImprovesCardUi = ({
   const [showAll, setShowAll] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [improvements, setImprovements] = useState<Record<string, GrammarImprovement>>({});
+  const quizWordAudio = useQuizWordAudio({ targetLanguage: languageCode });
 
   const improvementsMapRef = useRef<Record<string, GrammarImprovement>>({});
   const loadingMap = useRef<Record<string, Promise<GrammarImprovement> | null>>({});
@@ -140,7 +142,8 @@ ${postfixInstruction}`;
     }
   }, [grammarPoints.length, selectedIndex]);
 
-  const handleOpenModal = (index: number) => {
+  const handleOpenModal = async (index: number) => {
+    await quizWordAudio.initAudio();
     setSelectedIndex(index);
   };
 
@@ -287,7 +290,9 @@ ${postfixInstruction}`;
                           createdAtDayIso={record.createdAtDayIso}
                           improvement={improvements[key] || null}
                           isLoading={!improvements[key]}
-                          onClick={() => handleOpenModal(index)}
+                          onClick={() => {
+                            void handleOpenModal(index);
+                          }}
                         />
                       );
                     })}

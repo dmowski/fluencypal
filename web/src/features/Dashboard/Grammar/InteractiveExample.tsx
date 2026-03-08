@@ -1,9 +1,11 @@
 import { useLingui } from '@lingui/react';
 import Stack from '@mui/material/Stack';
 import { useEffect, useMemo, useState } from 'react';
+import { useSettings } from '@/features/Settings/useSettings';
 import { OptionsList } from '@/features/Sentence/TextConstructor/OptionsList';
 import { useTextConstructorFlow } from '@/features/Sentence/TextConstructor/useTextConstructorFlow';
 import { splitWords } from '@/features/Sentence/TextConstructor/textConstructor.utils';
+import { useQuizWordAudio } from '@/features/Audio/useQuizWordAudio';
 import { Markdown } from '../../uiKit/Markdown/Markdown';
 
 const cleanMarkdownStyles = (text: string): string => {
@@ -25,6 +27,9 @@ export const InteractiveExample = ({
   translateWithModal: (word: string, element: HTMLElement) => void;
 }) => {
   const { i18n } = useLingui();
+  const settings = useSettings();
+  const targetLanguage = settings.languageCode || 'en';
+  const quizWordAudio = useQuizWordAudio({ targetLanguage });
 
   const cleanedExample = useMemo(() => cleanMarkdownStyles(example), [example]);
   const initialProgress = useMemo(() => splitWords(cleanedExample)[0] ?? '', [cleanedExample]);
@@ -40,6 +45,12 @@ export const InteractiveExample = ({
     keyboardShortcutsEnabled: false,
     onContinue: setProgress,
     onComplete: () => setIsCompleted(true),
+    onPlayAudio: (word) => {
+      void quizWordAudio.playWordAudio(word);
+    },
+    onCorrectWordAvailable: (word) => {
+      void quizWordAudio.preloadWordAudio(word);
+    },
   });
 
   useEffect(() => {
