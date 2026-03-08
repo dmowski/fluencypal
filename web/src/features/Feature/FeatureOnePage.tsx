@@ -7,7 +7,7 @@ import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { maxLandingWidth, titleFontStyle } from '@/features/Landing/landingSettings';
 import { getFeatureById } from './featuresData';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Link, Stack, Typography } from '@mui/material';
 
 interface FeatureOnePageProps {
   id: string;
@@ -36,34 +36,47 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
           backgroundColor: '#f9f9f9',
         }}
       >
-        <Stack sx={{ width: '100%', maxWidth: maxLandingWidth, gap: '15px' }}>
-          <Typography component={'h1'} variant="h2" sx={{ ...titleFontStyle, color: '#111' }}>
-            {feature.title}
-          </Typography>
-          <Typography sx={{ fontSize: '1.1rem', color: '#555', maxWidth: '900px' }}>
-            {feature.subTitle}
-          </Typography>
-
-          <Stack sx={{ alignItems: 'flex-start', paddingTop: '8px' }}>
-            <Button variant="contained" href={`${urlStart}features`}>
-              {i18n._('View all features')}
-            </Button>
+        <Stack sx={{ width: '100%', gap: '15px', maxWidth: '900px' }}>
+          <Stack sx={{ width: '100%', gap: '15px' }}>
+            <Stack sx={{ alignItems: 'flex-start', paddingTop: '8px' }}>
+              <Link
+                sx={{
+                  color: '#007eeb',
+                }}
+                href={`${urlStart}features`}
+              >
+                {i18n._('View all features')}
+              </Link>
+            </Stack>
+            <Typography component={'h1'} variant="h2" sx={{ ...titleFontStyle, color: '#111' }}>
+              {feature.title}
+            </Typography>
+            <Typography sx={{ fontSize: '1.1rem', color: '#555', maxWidth: '900px' }}>
+              {feature.subTitle}
+            </Typography>
           </Stack>
-        </Stack>
+          <Stack
+            sx={{
+              width: '100%',
 
-        <Stack
-          sx={{
-            width: '100%',
-            maxWidth: maxLandingWidth,
-            padding: '24px 0 70px',
-            color: '#222',
-            h2: {
-              fontSize: '1.3rem',
-              fontWeight: 650,
-            },
-          }}
-        >
-          <Markdown variant="blog">{feature.content}</Markdown>
+              padding: '40px 0 120px 0',
+              color: '#222',
+              alignItems: 'flex-start',
+
+              h2: {
+                fontSize: '1.3rem',
+                fontWeight: 650,
+              },
+            }}
+          >
+            <Stack
+              sx={{
+                maxWidth: '600px',
+              }}
+            >
+              <Markdown variant="blog">{feature.content}</Markdown>
+            </Stack>
+          </Stack>
         </Stack>
       </Stack>
 

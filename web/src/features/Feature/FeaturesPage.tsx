@@ -65,7 +65,7 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
               </Typography>
               <Typography sx={{ color: '#555' }}>{feature.subTitle}</Typography>
               <Stack sx={{ alignItems: 'flex-start', paddingTop: '6px' }}>
-                <Button variant="outlined" href={`${urlStart}features/${feature.id}`}>
+                <Button variant="contained" href={`${urlStart}features/${feature.id}`}>
                   {i18n._('Read more')}
                 </Button>
               </Stack>
