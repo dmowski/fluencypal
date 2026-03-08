@@ -2,13 +2,11 @@ import dayjs from 'dayjs';
 import { useGame } from '../Game/useGame';
 import { useUsage } from './useUsage';
 import { useSettings } from '../Settings/useSettings';
-import { useAuth } from '../Auth/useAuth';
 
 export const useAccess = () => {
   const game = useGame();
   const usage = useUsage();
   const settings = useSettings();
-  const auth = useAuth();
 
   const isParentalConsentNeeded = settings.userSettings?.isParentalConsentNeeded || false;
   const isCreditCardValidated = settings.userSettings?.isCreditCardConfirmed;
