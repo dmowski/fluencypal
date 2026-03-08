@@ -1268,7 +1268,7 @@ msgstr ""
 msgid "Auth"
 msgstr "Auth"
 
-#: src/features/Sentence/StoriesModal.tsx:708
+#: src/features/Sentence/StoriesModal.tsx:687
 #. js-lingui-explicit-id
 msgid "Auto play"
 msgstr "Putar otomatis"
@@ -1372,7 +1372,7 @@ msgstr ""
 "Berdasarkan orientasi Anda, FluencyPal akan membuat rencana pembelajaran "
 "yang dipersonalisasi hanya untuk Anda."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:249
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:252
 #. js-lingui-explicit-id
 msgid ""
 "Based on your recent conversations, here are some tips to improve your "
@@ -2066,7 +2066,7 @@ msgstr "Lengkapi kalimat ini"
 msgid "Complete verification to proceed."
 msgstr "Selesaikan verifikasi untuk melanjutkan."
 
-#: src/features/Sentence/TextConstructor/TextConstructor.tsx:345
+#: src/features/Sentence/TextConstructor/TextConstructor.tsx:173
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Selesai ✅"
@@ -4507,7 +4507,7 @@ msgstr "Akses penuh pelatih wawancara AI"
 msgid "Full AI tutor access"
 msgstr "Akses penuh tutor AI"
 
-#: src/features/Sentence/StoriesModal.tsx:864
+#: src/features/Sentence/StoriesModal.tsx:843
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "Cerita lengkap:"
@@ -6062,7 +6062,7 @@ msgstr ""
 "menjelaskan dan menebak kata-kata secara kreatif, memperluas kepercayaan "
 "diri linguistik Anda."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:240
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
 #. js-lingui-explicit-id
 msgid "Improvements to your grammar"
 msgstr "Peningkatan pada tata bahasa Anda"
@@ -6651,6 +6651,11 @@ msgstr "Pengujian Integrasi"
 msgid "Integration Tests"
 msgstr "Tes Integrasi"
 
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:182
+#. js-lingui-explicit-id
+msgid "Interactive examples:"
+msgstr "Contoh interaktif:"
+
 #: src/features/Blog/blogData.tsx:269
 #: src/features/Blog/blogData.tsx:333
 #. js-lingui-explicit-id
@@ -7197,7 +7202,7 @@ msgstr "Pesan terbatas"
 msgid "Limited voice features"
 msgstr "Fitur suara terbatas"
 
-#: src/features/Sentence/StoriesModal.tsx:587
+#: src/features/Sentence/StoriesModal.tsx:566
 #. js-lingui-explicit-id
 msgid "Listen"
 msgstr "Dengarkan"
@@ -7600,12 +7605,12 @@ msgstr "Film, buku, atau musik"
 msgid "My Language is..."
 msgstr "Bahasa saya adalah..."
 
-#: src/features/Sentence/TextConstructor/TextConstructor.tsx:360
+#: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:27
 #. js-lingui-explicit-id
 msgid "My Points:"
 msgstr "Poin Saya:"
 
-#: src/features/Sentence/TextConstructor/TextConstructor.tsx:361
+#: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:28
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Posisi Saya:"
@@ -7775,7 +7780,7 @@ msgstr "Kata Baru"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:335
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:261
 #: src/features/Game/Battle/BattleActionModal.tsx:402
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
@@ -7784,7 +7789,7 @@ msgstr "Kata Baru"
 #: src/features/Goal/Quiz/QuizPage2.tsx:426
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:269
-#: src/features/Sentence/StoriesModal.tsx:682
+#: src/features/Sentence/StoriesModal.tsx:661
 #: src/features/Survey/InfoStep.tsx:272
 #: src/features/Survey/InterviewInfoStep.tsx:107
 #. js-lingui-explicit-id
@@ -7811,7 +7816,7 @@ msgstr "Pertanyaan berikutnya"
 msgid "Next Step"
 msgstr "Langkah Berikutnya"
 
-#: src/features/Sentence/StoriesModal.tsx:896
+#: src/features/Sentence/StoriesModal.tsx:875
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "Cerita berikutnya"
@@ -7878,7 +7883,7 @@ msgstr "Tidak ada pertanyaan harian untuk hari ini"
 msgid "No debates yet"
 msgstr "Belum ada perdebatan"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:274
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:277
 #. js-lingui-explicit-id
 msgid "No grammar insights yet. Start chatting to get personalized tips!"
 msgstr ""
@@ -8242,7 +8247,7 @@ msgstr "Buka di Peramban"
 msgid "Open in Telegram"
 msgstr "Buka di Telegram"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:304
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:309
 #. js-lingui-explicit-id
 msgid "Open My Improvements"
 msgstr "Buka Perbaikan Saya"
@@ -8561,12 +8566,17 @@ msgstr "Pilih level untuk mulai bermain!"
 msgid "Pick one or more categories to build your word list."
 msgstr "Pilih satu atau lebih kategori untuk membangun daftar kata Anda."
 
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:126
+#. js-lingui-explicit-id
+msgid "Pick words to build the sentence"
+msgstr "Pilih kata-kata untuk membangun kalimat"
+
 #: src/features/Goal/Quiz/GoalReview.tsx:85
 #. js-lingui-explicit-id
 msgid "Plan for"
 msgstr "Rencana untuk"
 
-#: src/features/Audio/AudioPlayIcon.tsx:119
+#: src/features/Audio/AudioPlayIcon.tsx:135
 #: src/features/Community/GamePage.tsx:90
 #. js-lingui-explicit-id
 msgid "Play"
@@ -8586,6 +8596,11 @@ msgstr "Bermain Alias secara offline dengan teman secara langsung"
 #. js-lingui-explicit-id
 msgid "Play and Learn"
 msgstr "Bermain dan Belajar"
+
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:164
+#. js-lingui-explicit-id
+msgid "Play full example"
+msgstr "Putar contoh lengkap"
 
 #: src/features/Usage/PayWall.tsx:116
 #. js-lingui-explicit-id
@@ -9064,7 +9079,7 @@ msgstr "Latihan memecahkan masalah teknis melalui telepon"
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Berlatih kosakata dengan mendeskripsikan dan menebak kata secara kreatif"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:297
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:223
 #. js-lingui-explicit-id
 msgid "Practice with AI"
 msgstr "Berlatih dengan AI"
@@ -9165,8 +9180,8 @@ msgstr "Mempersiapkan otak"
 msgid "Preparing your game..."
 msgstr "Menyiapkan permainan Anda..."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:320
-#: src/features/Sentence/StoriesModal.tsx:670
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:246
+#: src/features/Sentence/StoriesModal.tsx:649
 #. js-lingui-explicit-id
 msgid "Previous"
 msgstr "Sebelumnya"
@@ -9367,7 +9382,7 @@ msgstr ""
 msgid "Queues"
 msgstr "Antrean"
 
-#: src/features/Sentence/StoriesModal.tsx:574
+#: src/features/Sentence/StoriesModal.tsx:553
 #. js-lingui-explicit-id
 msgid "Quiz"
 msgstr "Kuis"
@@ -9784,7 +9799,7 @@ msgstr "Kinerja Rendering"
 msgid "Renew Now"
 msgstr "Perbarui Sekarang"
 
-#: src/features/Sentence/StoriesModal.tsx:701
+#: src/features/Sentence/StoriesModal.tsx:680
 #. js-lingui-explicit-id
 msgid "Replay"
 msgstr "Putar Ulang"
@@ -10305,7 +10320,7 @@ msgstr "cerita pendek"
 msgid "Shorter words and familiar vocabulary"
 msgstr "Kata yang lebih pendek dan kosakata yang dikenal"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:318
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:323
 #. js-lingui-explicit-id
 msgid "Show all improvements"
 msgstr "Tampilkan semua peningkatan"
@@ -10902,7 +10917,7 @@ msgstr ""
 msgid "Stop"
 msgstr "Berhenti"
 
-#: src/features/Sentence/TextConstructor/TextConstructor.tsx:359
+#: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:26
 #. js-lingui-explicit-id
 msgid "Story progress:"
 msgstr "Kemajuan cerita:"
@@ -11045,7 +11060,7 @@ msgstr "Langganan diperlukan"
 msgid "subscription plans"
 msgstr "paket langganan"
 
-#: src/features/Sentence/StoriesModal.tsx:792
+#: src/features/Sentence/StoriesModal.tsx:771
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr ""
@@ -12717,7 +12732,7 @@ msgstr "Selamat Datang di Persiapan Wawancara Developer Frontend Junior Anda"
 msgid "Welcome to Your Senior Frontend Developer Interview Prep"
 msgstr "Selamat Datang di Persiapan Wawancara Senior Frontend Developer Anda"
 
-#: src/features/Sentence/StoriesModal.tsx:784
+#: src/features/Sentence/StoriesModal.tsx:763
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "Kerja bagus! Kamu telah menyelesaikan cerita ini."
@@ -13077,7 +13092,7 @@ msgstr ""
 "\n"
 "Kata-kata untuk Dipelajari\n"
 
-#: src/features/Sentence/StoriesModal.tsx:817
+#: src/features/Sentence/StoriesModal.tsx:796
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "Kata-kata yang perlu diperhatikan:"

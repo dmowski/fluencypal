@@ -1281,7 +1281,7 @@ msgstr "Am Ende teilen wir ein wertvolles Tool für realistische Interviewübung
 msgid "Auth"
 msgstr "Authentifizierung"
 
-#: src/features/Sentence/StoriesModal.tsx:708
+#: src/features/Sentence/StoriesModal.tsx:687
 #. js-lingui-explicit-id
 msgid "Auto play"
 msgstr "Automatische Wiedergabe"
@@ -1387,7 +1387,7 @@ msgstr ""
 "Basierend auf Ihrem Onboarding wird FluencyPal einen personalisierten "
 "Lernplan nur für Sie erstellen."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:249
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:252
 #. js-lingui-explicit-id
 msgid ""
 "Based on your recent conversations, here are some tips to improve your "
@@ -2087,7 +2087,7 @@ msgstr "Vervollständige den Satz"
 msgid "Complete verification to proceed."
 msgstr "Verifizierung abschließen, um fortzufahren."
 
-#: src/features/Sentence/TextConstructor/TextConstructor.tsx:345
+#: src/features/Sentence/TextConstructor/TextConstructor.tsx:173
 #. js-lingui-explicit-id
 msgid "Completed ✅"
 msgstr "Abgeschlossen ✅"
@@ -4559,7 +4559,7 @@ msgstr "Vollständiger Zugriff auf den AI-Interview-Coach"
 msgid "Full AI tutor access"
 msgstr "Vollständiger Zugriff auf den KI-Tutor"
 
-#: src/features/Sentence/StoriesModal.tsx:864
+#: src/features/Sentence/StoriesModal.tsx:843
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "Volle Geschichte:"
@@ -6121,7 +6121,7 @@ msgstr ""
 "Wörter zu erklären und zu erraten, und so Ihr sprachliches Selbstvertrauen "
 "stärken."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:240
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
 #. js-lingui-explicit-id
 msgid "Improvements to your grammar"
 msgstr "Verbesserungen Ihrer Grammatik"
@@ -6722,6 +6722,11 @@ msgstr "Integrationstests"
 msgid "Integration Tests"
 msgstr "Integrationstests"
 
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:182
+#. js-lingui-explicit-id
+msgid "Interactive examples:"
+msgstr "Interaktive Beispiele:"
+
 #: src/features/Blog/blogData.tsx:269
 #: src/features/Blog/blogData.tsx:333
 #. js-lingui-explicit-id
@@ -7273,7 +7278,7 @@ msgstr "Begrenzte Nachrichten"
 msgid "Limited voice features"
 msgstr "Begrenzte Sprachfunktionen"
 
-#: src/features/Sentence/StoriesModal.tsx:587
+#: src/features/Sentence/StoriesModal.tsx:566
 #. js-lingui-explicit-id
 msgid "Listen"
 msgstr "Zuhören"
@@ -7679,12 +7684,12 @@ msgstr "Filme, Bücher oder Musik"
 msgid "My Language is..."
 msgstr "Meine Sprache ist..."
 
-#: src/features/Sentence/TextConstructor/TextConstructor.tsx:360
+#: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:27
 #. js-lingui-explicit-id
 msgid "My Points:"
 msgstr "Meine Punkte:"
 
-#: src/features/Sentence/TextConstructor/TextConstructor.tsx:361
+#: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:28
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Meine Position:"
@@ -7854,7 +7859,7 @@ msgstr "Neue Wörter"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:335
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:261
 #: src/features/Game/Battle/BattleActionModal.tsx:402
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
@@ -7863,7 +7868,7 @@ msgstr "Neue Wörter"
 #: src/features/Goal/Quiz/QuizPage2.tsx:426
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:269
-#: src/features/Sentence/StoriesModal.tsx:682
+#: src/features/Sentence/StoriesModal.tsx:661
 #: src/features/Survey/InfoStep.tsx:272
 #: src/features/Survey/InterviewInfoStep.tsx:107
 #. js-lingui-explicit-id
@@ -7890,7 +7895,7 @@ msgstr "Nächste Frage"
 msgid "Next Step"
 msgstr "Nächster Schritt"
 
-#: src/features/Sentence/StoriesModal.tsx:896
+#: src/features/Sentence/StoriesModal.tsx:875
 #. js-lingui-explicit-id
 msgid "Next story"
 msgstr "Nächste Geschichte"
@@ -7955,7 +7960,7 @@ msgstr "Keine tägliche Frage für heute"
 msgid "No debates yet"
 msgstr "Noch keine Debatten"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:274
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:277
 #. js-lingui-explicit-id
 msgid "No grammar insights yet. Start chatting to get personalized tips!"
 msgstr ""
@@ -8319,7 +8324,7 @@ msgstr "Im Browser öffnen"
 msgid "Open in Telegram"
 msgstr "In Telegram öffnen"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:304
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:309
 #. js-lingui-explicit-id
 msgid "Open My Improvements"
 msgstr "Öffne Meine Verbesserungen"
@@ -8639,12 +8644,17 @@ msgstr "Wähle eine Stufe zum Starten des Spiels!"
 msgid "Pick one or more categories to build your word list."
 msgstr "Wähle eine oder mehrere Kategorien, um deine Wortliste zu erstellen."
 
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:126
+#. js-lingui-explicit-id
+msgid "Pick words to build the sentence"
+msgstr "Wählen Sie Wörter aus, um den Satz zu bilden"
+
 #: src/features/Goal/Quiz/GoalReview.tsx:85
 #. js-lingui-explicit-id
 msgid "Plan for"
 msgstr "Planen für"
 
-#: src/features/Audio/AudioPlayIcon.tsx:119
+#: src/features/Audio/AudioPlayIcon.tsx:135
 #: src/features/Community/GamePage.tsx:90
 #. js-lingui-explicit-id
 msgid "Play"
@@ -8664,6 +8674,11 @@ msgstr "Spielen Sie Alias offline mit Freunden persönlich"
 #. js-lingui-explicit-id
 msgid "Play and Learn"
 msgstr "Spielen und Lernen"
+
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:164
+#. js-lingui-explicit-id
+msgid "Play full example"
+msgstr "Volles Beispiel abspielen"
 
 #: src/features/Usage/PayWall.tsx:116
 #. js-lingui-explicit-id
@@ -9144,7 +9159,7 @@ msgstr "Üben Sie, ein technisches Problem am Telefon zu beheben"
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Üben Sie Wortschatz, indem Sie Worte kreativ beschreiben und erraten"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:297
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:223
 #. js-lingui-explicit-id
 msgid "Practice with AI"
 msgstr "Übung mit KI"
@@ -9243,8 +9258,8 @@ msgstr "Vorbereitung des Gehirns"
 msgid "Preparing your game..."
 msgstr "Bereite dein Spiel vor..."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:320
-#: src/features/Sentence/StoriesModal.tsx:670
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:246
+#: src/features/Sentence/StoriesModal.tsx:649
 #. js-lingui-explicit-id
 msgid "Previous"
 msgstr "Vorherige"
@@ -9442,7 +9457,7 @@ msgstr "Fragen, die Sie üben werden"
 msgid "Queues"
 msgstr "Warteschlangen"
 
-#: src/features/Sentence/StoriesModal.tsx:574
+#: src/features/Sentence/StoriesModal.tsx:553
 #. js-lingui-explicit-id
 msgid "Quiz"
 msgstr "Quiz"
@@ -9863,7 +9878,7 @@ msgstr "Renderleistung"
 msgid "Renew Now"
 msgstr "Jetzt erneuern"
 
-#: src/features/Sentence/StoriesModal.tsx:701
+#: src/features/Sentence/StoriesModal.tsx:680
 #. js-lingui-explicit-id
 msgid "Replay"
 msgstr "Wiederholung"
@@ -10386,7 +10401,7 @@ msgstr "Kurzgeschichte"
 msgid "Shorter words and familiar vocabulary"
 msgstr "Kürzere Wörter und vertrautes Vokabular"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:318
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:323
 #. js-lingui-explicit-id
 msgid "Show all improvements"
 msgstr "Alle Verbesserungen anzeigen"
@@ -10986,7 +11001,7 @@ msgstr ""
 msgid "Stop"
 msgstr "Stopp"
 
-#: src/features/Sentence/TextConstructor/TextConstructor.tsx:359
+#: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:26
 #. js-lingui-explicit-id
 msgid "Story progress:"
 msgstr "Story-Fortschritt:"
@@ -11129,7 +11144,7 @@ msgstr "Abonnement erforderlich"
 msgid "subscription plans"
 msgstr "Abonnementpläne"
 
-#: src/features/Sentence/StoriesModal.tsx:792
+#: src/features/Sentence/StoriesModal.tsx:771
 #. js-lingui-explicit-id
 msgid "Success rate:"
 msgstr "Erfolgsquote:"
@@ -12805,7 +12820,7 @@ msgstr ""
 "Willkommen bei Ihrer Vorbereitung auf das Vorstellungsgespräch zum Senior "
 "Frontend Developer"
 
-#: src/features/Sentence/StoriesModal.tsx:784
+#: src/features/Sentence/StoriesModal.tsx:763
 #. js-lingui-explicit-id
 msgid "Well done! You completed the story."
 msgstr "Gut gemacht! Du hast die Geschichte fertiggestellt."
@@ -13156,7 +13171,7 @@ msgstr "Wörter pro Runde"
 msgid "Words to Learn"
 msgstr "Wörter zu lernen"
 
-#: src/features/Sentence/StoriesModal.tsx:817
+#: src/features/Sentence/StoriesModal.tsx:796
 #. js-lingui-explicit-id
 msgid "Words to pay attention to:"
 msgstr "Wörter, auf die Sie achten sollten:"
