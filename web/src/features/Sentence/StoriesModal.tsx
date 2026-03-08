@@ -494,9 +494,7 @@ export const StoriesModal = ({
                 setIsVideoPaused={stories.setIsVideoPaused}
                 onFinished={() => {
                   const isAudioUnlocked = audio.isUnlocked();
-                  if (isAudioUnlocked) {
-                    startListenMode();
-                  }
+                  if (isAudioUnlocked) startListenMode();
                 }}
               />
             )}
