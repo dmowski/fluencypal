@@ -16,6 +16,7 @@ export interface AudioPlayIconProps {
   borderColor?: string;
   onChangeState?: (isPlaying: boolean) => void;
   type?: 'icon' | 'button';
+  buttonLabel?: string;
 }
 
 export const AudioPlayIcon = ({
@@ -25,6 +26,7 @@ export const AudioPlayIcon = ({
   borderColor,
   onChangeState,
   type = 'icon',
+  buttonLabel,
 }: AudioPlayIconProps) => {
   const { i18n } = useLingui();
   const [isLoading, setIsLoading] = useState(false);
@@ -115,8 +117,22 @@ export const AudioPlayIcon = ({
   }
 
   return (
-    <Button disabled={isLoading} onClick={togglePlay} startIcon={icon} variant="text">
-      {i18n._('Play')}
+    <Button
+      disabled={isLoading}
+      onClick={togglePlay}
+      startIcon={icon}
+      variant="outlined"
+      color="info"
+      sx={{
+        fontWeight: 500,
+        textTransform: 'none',
+        minHeight: '24px',
+        minWidth: '40px',
+        fontSize: '17px',
+        padding: '5px 15px',
+      }}
+    >
+      {buttonLabel || i18n._('Play')}
     </Button>
   );
 };

@@ -154,7 +154,7 @@ export const useTextConstructorFlow = ({
       onComplete?.();
       return;
     }
-  }, [activePart, onComplete]);
+  }, [activePart]);
 
   useEffect(() => {
     if (!activePart || activePart.sentenceIndex === 0) {
@@ -162,7 +162,7 @@ export const useTextConstructorFlow = ({
     }
 
     onSentenceComplete?.(activePart.sentenceIndex);
-  }, [activePart, onSentenceComplete]);
+  }, [activePart]);
 
   useEffect(() => {
     if (!activePart || !activePart.activeSentenceWords.length) {
@@ -170,7 +170,7 @@ export const useTextConstructorFlow = ({
     }
 
     onActiveWordsChange?.(activePart.activeSentenceWords);
-  }, [activePart, onActiveWordsChange]);
+  }, [activePart]);
 
   useEffect(() => {
     if (!activePart?.nextWord) {
@@ -178,7 +178,7 @@ export const useTextConstructorFlow = ({
     }
 
     onCorrectWordAvailable?.(activePart.nextWord);
-  }, [activePart, onCorrectWordAvailable]);
+  }, [activePart]);
 
   return {
     activePart,

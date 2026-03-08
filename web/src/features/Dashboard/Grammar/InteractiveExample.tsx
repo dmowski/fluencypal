@@ -7,6 +7,9 @@ import { useTextConstructorFlow } from '@/features/Sentence/TextConstructor/useT
 import { splitWords } from '@/features/Sentence/TextConstructor/textConstructor.utils';
 import { useQuizWordAudio } from '@/features/Audio/useQuizWordAudio';
 import { Markdown } from '../../uiKit/Markdown/Markdown';
+import Button from '@mui/material/Button';
+import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
+import { sleep } from '@/libs/sleep';
 
 const cleanMarkdownStyles = (text: string): string => {
   return text
@@ -44,7 +47,11 @@ export const InteractiveExample = ({
     numberOfOptions: 2,
     keyboardShortcutsEnabled: false,
     onContinue: setProgress,
-    onComplete: () => setIsCompleted(true),
+    onComplete: async () => {
+      setIsCompleted(true);
+      await sleep(1200);
+      await quizWordAudio.playWordAudio(cleanedExample);
+    },
     onPlayAudio: (word) => {
       void quizWordAudio.playWordAudio(word);
     },
@@ -122,9 +129,26 @@ export const InteractiveExample = ({
         <Stack
           sx={{
             gap: '8px',
+            minHeight: '59px',
           }}
         >
-          {!isCompleted && (
+          {isCompleted ? (
+            <Stack
+              direction="row"
+              sx={{
+                gap: '8px',
+                width: '100%',
+                flexWrap: 'wrap',
+                py: '8px',
+              }}
+            >
+              <AudioPlayIcon
+                text={example}
+                type="button"
+                buttonLabel={i18n._('Play full example')}
+              />
+            </Stack>
+          ) : (
             <OptionsList options={options} handlePick={handlePick} wrongWord={wrongWord} />
           )}
         </Stack>
