@@ -295,39 +295,7 @@ export function TextConstructor({
         }}
       >
         <Stack sx={{ maxWidth: '700px', padding: '0', width: '100%' }}>
-          <Stack
-            direction="row"
-            sx={{
-              gap: '8px',
-              width: '100%',
-              flexWrap: 'wrap',
-              py: '8px',
-            }}
-          >
-            {options.map((word) => {
-              const isWrongWord = wrongWord === word;
-
-              return (
-                <Button
-                  key={word}
-                  onClick={() => handlePick(word)}
-                  variant={'contained'}
-                  color={isWrongWord ? 'error' : 'info'}
-                  sx={{
-                    fontWeight: 500,
-                    textTransform: 'none',
-                    //borderRadius: '12px',
-                    minHeight: '24px',
-                    minWidth: '40px',
-                    fontSize: '17px',
-                    padding: '5px 15px',
-                  }}
-                >
-                  {word}
-                </Button>
-              );
-            })}
-          </Stack>
+          <OptionsList options={options} handlePick={handlePick} wrongWord={wrongWord} />
 
           <Stack sx={{ width: '100%' }}>
             <Stack
@@ -365,6 +333,52 @@ export function TextConstructor({
     </Stack>
   );
 }
+
+export const OptionsList = ({
+  options,
+  handlePick,
+  wrongWord,
+}: {
+  options: string[];
+  handlePick: (word: string) => void;
+  wrongWord: string | null;
+}) => {
+  return (
+    <Stack
+      direction="row"
+      sx={{
+        gap: '8px',
+        width: '100%',
+        flexWrap: 'wrap',
+        py: '8px',
+      }}
+    >
+      {options.map((word) => {
+        const isWrongWord = wrongWord === word;
+
+        return (
+          <Button
+            key={word}
+            onClick={() => handlePick(word)}
+            variant={'contained'}
+            color={isWrongWord ? 'error' : 'info'}
+            sx={{
+              fontWeight: 500,
+              textTransform: 'none',
+              //borderRadius: '12px',
+              minHeight: '24px',
+              minWidth: '40px',
+              fontSize: '17px',
+              padding: '5px 15px',
+            }}
+          >
+            {word}
+          </Button>
+        );
+      })}
+    </Stack>
+  );
+};
 
 const StatRow = ({ label, value }: { label: string; value: string }) => {
   return (

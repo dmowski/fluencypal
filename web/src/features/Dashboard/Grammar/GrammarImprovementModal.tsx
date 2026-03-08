@@ -179,7 +179,7 @@ When user struggle with one example, try to switch to another example and come b
                   textTransform: 'uppercase',
                 }}
               >
-                Examples:
+                {i18n._(`Interactive examples:`)}
               </Typography>
               <Stack
                 sx={{
@@ -187,87 +187,13 @@ When user struggle with one example, try to switch to another example and come b
                 }}
               >
                 {improvement.examples.map((example, index) => (
-                  <Stack
+                  <InteractiveExample
+                    example={example}
+                    translation={translatedExamplesMap[example] || ''}
+                    isTranslateAvailable={isTranslateAvailable || false}
+                    translateWithModal={translator.translateWithModal}
                     key={index}
-                    sx={{
-                      gap: '5px',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      borderRadius: '8px',
-                      //padding: '10px',
-                      overflow: 'hidden',
-                      '@media (max-width: 600px)': {
-                        border: 'none',
-                      },
-                    }}
-                  >
-                    <Stack
-                      sx={{
-                        padding: '10px',
-                        gap: '7px',
-                        '@media (max-width: 600px)': {
-                          padding: 0,
-                        },
-                      }}
-                    >
-                      <Stack
-                        sx={{
-                          '* strong': {
-                            backgroundColor: 'rgba(11, 130, 194, 0.79)',
-                            padding: '2px 8px',
-                            borderRadius: '5px',
-                            fontWeight: '700',
-                          },
-                        }}
-                      >
-                        <Markdown
-                          onWordClick={
-                            translator.isTranslateAvailable
-                              ? (word, element) => {
-                                  translator.translateWithModal(word, element);
-                                }
-                              : undefined
-                          }
-                          variant="rule"
-                        >
-                          {'\n' + example}
-                        </Markdown>
-                      </Stack>
-                      {isTranslateAvailable && (
-                        <Stack
-                          sx={{
-                            fontSize: '16px',
-                            opacity: translatedExamplesMap[example] ? 1 : 0.4,
-
-                            '* strong': {
-                              color: 'rgb(255, 255, 255)',
-                              fontWeight: 800,
-                            },
-                          }}
-                        >
-                          <Markdown variant="small">
-                            {translatedExamplesMap[example] || example}
-                          </Markdown>
-                        </Stack>
-                      )}
-                    </Stack>
-
-                    <Stack
-                      sx={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                        //padding: '0 10px 10px 10px',
-                        padding: '10px',
-                        gap: '10px',
-                        '@media (max-width: 600px)': {
-                          backgroundColor: 'transparent',
-                          padding: '0',
-                        },
-                      }}
-                    >
-                      <AudioPlayIcon text={example} type="icon" />
-                    </Stack>
-                  </Stack>
+                  />
                 ))}
               </Stack>
             </Stack>
@@ -340,5 +266,98 @@ When user struggle with one example, try to switch to another example and come b
         </Stack>
       </CustomModal>
     </>
+  );
+};
+
+export const InteractiveExample = ({
+  example,
+  translation,
+  isTranslateAvailable,
+  translateWithModal,
+}: {
+  example: string;
+  translation: string;
+  isTranslateAvailable: boolean;
+  translateWithModal: (word: string, element: HTMLElement) => void;
+}) => {
+  return (
+    <Stack
+      sx={{
+        gap: '5px',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        borderRadius: '8px',
+        //padding: '10px',
+        overflow: 'hidden',
+        '@media (max-width: 600px)': {
+          border: 'none',
+        },
+      }}
+    >
+      <Stack
+        sx={{
+          padding: '10px',
+          gap: '7px',
+          '@media (max-width: 600px)': {
+            padding: 0,
+          },
+        }}
+      >
+        <Stack
+          sx={{
+            '* strong': {
+              backgroundColor: 'rgba(11, 130, 194, 0.79)',
+              padding: '2px 8px',
+              borderRadius: '5px',
+              fontWeight: '700',
+            },
+          }}
+        >
+          <Markdown
+            onWordClick={
+              isTranslateAvailable
+                ? (word, element) => {
+                    translateWithModal(word, element);
+                  }
+                : undefined
+            }
+            variant="rule"
+          >
+            {'\n' + example}
+          </Markdown>
+        </Stack>
+        {isTranslateAvailable && (
+          <Stack
+            sx={{
+              fontSize: '16px',
+              opacity: translation ? 1 : 0.4,
+
+              '* strong': {
+                color: 'rgb(255, 255, 255)',
+                fontWeight: 800,
+              },
+            }}
+          >
+            <Markdown variant="small">{translation || example}</Markdown>
+          </Stack>
+        )}
+      </Stack>
+
+      <Stack
+        sx={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+          //padding: '0 10px 10px 10px',
+          padding: '10px',
+          gap: '10px',
+          '@media (max-width: 600px)': {
+            backgroundColor: 'transparent',
+            padding: '0',
+          },
+        }}
+      >
+        <AudioPlayIcon text={example} type="icon" />
+      </Stack>
+    </Stack>
   );
 };
