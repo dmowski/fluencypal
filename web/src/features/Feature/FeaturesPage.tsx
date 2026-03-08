@@ -25,15 +25,31 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
         sx={{
           width: '100%',
           alignItems: 'center',
-          padding: '110px 10px 0',
-          backgroundColor: '#f9f9f9',
+          padding: { xs: '96px 12px 0', md: '118px 16px 0' },
+          backgroundColor: 'background.default',
         }}
       >
-        <Stack sx={{ width: '100%', maxWidth: maxLandingWidth, gap: '18px' }}>
-          <Typography component={'h1'} variant="h2" sx={{ ...titleFontStyle, color: '#111' }}>
+        <Stack sx={{ width: '100%', maxWidth: maxLandingWidth, gap: { xs: '12px', md: '14px' } }}>
+          <Typography
+            component={'h1'}
+            variant="h2"
+            sx={{
+              ...titleFontStyle,
+              color: 'text.primary',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.1,
+            }}
+          >
             {i18n._('FluencyPal Features')}
           </Typography>
-          <Typography sx={{ fontSize: '1.1rem', color: '#444', maxWidth: '900px' }}>
+          <Typography
+            sx={{
+              fontSize: { xs: '1.1rem', md: '1.2rem' },
+              color: 'text.secondary',
+              maxWidth: '900px',
+              lineHeight: 1.5,
+            }}
+          >
             {i18n._(
               'Explore FluencyPal features for AI English speaking practice, personalized grammar, vocabulary lessons, role plays, stories, debates, and community learning.',
             )}
@@ -45,30 +61,62 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
             width: '100%',
             maxWidth: maxLandingWidth,
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '16px',
-            padding: '28px 0 70px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(255px, 1fr))',
+            gap: { xs: '14px', md: '18px' },
+            padding: { xs: '24px 0 60px', md: '30px 0 76px' },
           }}
         >
           {features.map((feature) => (
             <Stack
               key={feature.id}
               sx={{
-                border: '1px solid rgba(0,0,0,0.12)',
-                borderRadius: '12px',
-                padding: '18px',
-                gap: '10px',
+                height: '100%',
+                border: '1px solid',
+                borderColor: 'divider',
+                borderRadius: '14px',
+                backgroundColor: 'background.paper',
+                padding: { xs: '16px', md: '18px' },
+                gap: '12px',
+                justifyContent: 'space-between',
+                boxShadow: 0,
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: 3,
+                  borderColor: 'text.disabled',
+                },
               }}
             >
-              <Typography variant="h6" component={'h2'} sx={{ color: '#111' }}>
+              <Typography
+                variant="h6"
+                component={'h2'}
+                sx={{
+                  color: 'text.primary',
+                  lineHeight: 1.35,
+                  minHeight: { xs: 'unset', md: '3.2em' },
+                }}
+              >
                 {feature.title}
               </Typography>
-              <Typography sx={{ color: '#555' }}>{feature.subTitle}</Typography>
+              <Typography
+                sx={{
+                  color: 'text.secondary',
+                  lineHeight: 1.5,
+                  flexGrow: 1,
+                }}
+              >
+                {feature.subTitle}
+              </Typography>
               <Stack sx={{ alignItems: 'flex-start', paddingTop: '6px' }}>
                 <Button
-                  variant="contained"
+                  variant="outlined"
                   href={`${urlStart}features/${feature.id}`}
                   aria-label={`${i18n._('Read more about')} ${feature.title}`}
+                  sx={{
+                    textTransform: 'none',
+                    borderRadius: '10px',
+                    fontWeight: 600,
+                  }}
                 >
                   {`${i18n._('Read more about')} ${feature.title}`}
                 </Button>
