@@ -36,7 +36,6 @@ import { useSettings } from '@/features/Settings/useSettings';
 import { SelectTeacher } from '@/features/Conversation/CallMode/SelectTeacher';
 import { AiAvatarVideo } from '@/features/Conversation/CallMode/AiAvatarVideo';
 import { getAiVoiceByVoice } from '@/features/Conversation/CallMode/voiceAvatar';
-import { AiAvatar } from '@/features/Conversation/CallMode/types';
 import { useAccess } from '@/features/Usage/useAccess';
 import { AccessQuizStep } from './AccessQuizStep';
 
@@ -424,6 +423,96 @@ const QuizQuestions = () => {
                 isLoading={isGoalGenerating || survey?.goalData === null}
                 goalData={survey?.goalData}
                 actionButtonLabel={i18n._('Next')}
+              />
+            </AuthWall>
+          )}
+
+          {currentStep === 'magicFlow' && (
+            <AuthWall>
+              <InfoStep
+                title={i18n._(`FluencyPal gets stronger as you use it`)}
+                subTitle={i18n._(
+                  `Different modes help in different ways. You will discover what works best for you over time.`,
+                )}
+                subComponent={
+                  <Stack
+                    sx={{
+                      paddingTop: '20px',
+                      gap: '10px',
+                    }}
+                    component={'span'}
+                  >
+                    {[
+                      {
+                        title: i18n._('Just Talk'),
+                        text: i18n._(
+                          'Build speaking confidence, fluency, and listening through natural conversation.',
+                        ),
+                      },
+                      {
+                        title: i18n._('Grammar Rules'),
+                        text: i18n._(
+                          'Fix repeated mistakes with clear explanations, quizzes, and focused practice.',
+                        ),
+                      },
+                      {
+                        title: i18n._('Words Practice'),
+                        text: i18n._(
+                          'Learn vocabulary that matches your goals and use it in context.',
+                        ),
+                      },
+                      {
+                        title: i18n._('Role Play'),
+                        text: i18n._(
+                          'Prepare for interviews, daily situations, and real-life conversations.',
+                        ),
+                      },
+                    ].map((item) => (
+                      <Stack
+                        key={item.title}
+                        component={'span'}
+                        sx={{
+                          padding: '14px 16px',
+                          borderRadius: '16px',
+                          background: 'rgba(255,255,255,0.04)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                          gap: '4px',
+                        }}
+                      >
+                        <Typography
+                          component={'span'}
+                          sx={{
+                            fontWeight: 700,
+                          }}
+                        >
+                          {item.title}
+                        </Typography>
+
+                        <Typography
+                          component={'span'}
+                          sx={{
+                            opacity: 0.9,
+                          }}
+                        >
+                          {item.text}
+                        </Typography>
+                      </Stack>
+                    ))}
+
+                    <Typography
+                      component={'span'}
+                      sx={{
+                        paddingTop: '6px',
+                        opacity: 0.9,
+                      }}
+                    >
+                      {i18n._(`Start simple, stay consistent, and let the system adapt as you go.`)}
+                    </Typography>
+                  </Stack>
+                }
+                onClick={next}
+                disabled={isStepLoading}
+                isStepLoading={isStepLoading}
               />
             </AuthWall>
           )}
