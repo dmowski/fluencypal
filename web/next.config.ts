@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'storage.googleapis.com',
       },
+      // https://flagcdn.com/w80/sa.png
+      {
+        protocol: 'https',
+        hostname: 'flagcdn.com',
+      },
     ],
     qualities: [40, 100],
   },

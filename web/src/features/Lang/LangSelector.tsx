@@ -10,6 +10,7 @@ import {
 import { JSX, useMemo } from 'react';
 import { MenuItem, Select, Stack, Typography } from '@mui/material';
 import { CheckIcon, GraduationCap } from 'lucide-react';
+import Image from 'next/image';
 
 interface LangSelectorProps {
   value: SupportedLanguage | null;
@@ -179,11 +180,12 @@ export const LanguageButton = ({
           }}
         >
           {flagImageUrl && (
-            <img
+            <Image
               src={flagImageUrl}
               alt={label}
+              width={flagSize === 'small' ? 30 : flagSize === 'large' ? 70 : 50}
+              height={flagSize === 'small' ? 20 : flagSize === 'large' ? 50 : 33}
               style={{
-                width: flagSize === 'small' ? '30px' : flagSize === 'large' ? '70px' : '50px',
                 border: '1px solid rgba(0, 0, 0, 0.15)',
                 borderRadius: flagSize === 'small' ? '4px' : '1px',
               }}
