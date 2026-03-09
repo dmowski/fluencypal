@@ -90,7 +90,6 @@ export const AccessBadge = ({
         >
           {buttonTitle}
         </Button>
-        <Typography variant="caption">{i18n._('Only $9 per month')}</Typography>
       </Stack>
     </Stack>
   );
