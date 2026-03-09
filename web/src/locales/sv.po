@@ -1207,7 +1207,7 @@ msgstr "Lägg till inlägg"
 msgid "Add Response"
 msgstr "Lägg till svar"
 
-#: src/features/Settings/MyProfile.tsx:248
+#: src/features/Settings/MyProfile.tsx:257
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
 msgstr ""
@@ -1407,7 +1407,7 @@ msgid "AI Interview Practice"
 msgstr "AI-intervjuträning"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:82
-#: src/features/Settings/MyProfile.tsx:93
+#: src/features/Settings/MyProfile.tsx:96
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
 msgstr "AI-kunskaper om dig"
@@ -1478,7 +1478,7 @@ msgstr "AI-ordförrådsövning för riktiga konversationer"
 msgid "AI Vocabulary Practice for Real Conversations | FluencyPal"
 msgstr "AI-ordförrådsövning för riktiga konversationer | FluencyPal"
 
-#: src/features/Settings/MyProfile.tsx:86
+#: src/features/Settings/MyProfile.tsx:89
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "AI-röst"
@@ -2567,7 +2567,7 @@ msgstr "Välj språknivå"
 msgid "Choose Site Language"
 msgstr "Välj Webbplatsens Språk"
 
-#: src/features/Settings/MyProfile.tsx:87
+#: src/features/Settings/MyProfile.tsx:90
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "Välj rösten för din AI-lärare"
@@ -2611,6 +2611,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
+#: src/features/Header/NotificationsModal.tsx:73
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:392
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -4748,7 +4749,7 @@ msgid "Fast Answer Practice"
 msgstr "Snabbt Svarsövning"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/Settings/MyProfile.tsx:256
+#: src/features/Settings/MyProfile.tsx:269
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Återkoppling"
@@ -5209,7 +5210,7 @@ msgid "frontend system design interview"
 msgstr "frontend system design intervju"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
-#: src/features/Settings/MyProfile.tsx:73
+#: src/features/Settings/MyProfile.tsx:76
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:34
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:452
@@ -5825,7 +5826,7 @@ msgstr "Ha kul!"
 msgid "Health"
 msgstr "Hälsa"
 
-#: src/features/Settings/MyProfile.tsx:106
+#: src/features/Settings/MyProfile.tsx:109
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Hjälp"
@@ -7764,7 +7765,7 @@ msgstr "Brist på artighet — Använd *snälla*, *tack*, *ursäkta mig* vid beh
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "Att få ditt första utvecklarjobb är svårare än det borde vara"
 
-#: src/features/Settings/MyProfile.tsx:79
+#: src/features/Settings/MyProfile.tsx:82
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Språk"
@@ -7949,8 +7950,8 @@ msgid "Learning Plan"
 msgstr "Inlärningsplan"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:249
 #: src/features/Settings/MyProfile.tsx:258
+#: src/features/Settings/MyProfile.tsx:271
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Lämna ditt meddelande"
@@ -8097,12 +8098,12 @@ msgid "Locked"
 msgstr "Låst"
 
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:121
+#: src/features/Settings/MyProfile.tsx:130
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Logga ut"
 
-#: src/features/Settings/MyProfile.tsx:122
+#: src/features/Settings/MyProfile.tsx:131
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Logga ut från ditt konto"
@@ -8147,12 +8148,18 @@ msgstr "Se till att din webbkamera fungerar korrekt."
 msgid "Malay Learning Plan"
 msgstr "Malaysiskt Lärplan"
 
-#: src/features/Settings/MyProfile.tsx:74
+#: src/features/Settings/MyProfile.tsx:77
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Hantera dina fullständiga åtkomstinställningar"
 
-#: src/features/Settings/MyProfile.tsx:170
+#: src/features/Header/NotificationsModal.tsx:35
+#: src/features/Settings/MyProfile.tsx:116
+#. js-lingui-explicit-id
+msgid "Manage your notification settings"
+msgstr "Hantera dina aviseringarinställningar"
+
+#: src/features/Settings/MyProfile.tsx:179
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Hantera dina profilinställningar och kontrollera dina framsteg"
@@ -8526,7 +8533,7 @@ msgid "natural and not robotic"
 msgstr "naturlig och inte robotisk"
 
 #: src/features/Community/SupportPage.tsx:38
-#: src/features/Settings/MyProfile.tsx:107
+#: src/features/Settings/MyProfile.tsx:110
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Behöver du hjälp?"
@@ -8933,10 +8940,20 @@ msgstr "Osäker på vad du ska skriva? Prova en av dessa:"
 msgid "Not sure yet?"
 msgstr "Inte säker än?"
 
+#: src/features/Header/NotificationsModal.tsx:33
+#. js-lingui-explicit-id
+msgid "Notification Settings"
+msgstr "Notifikationsinställningar"
+
 #: src/features/Conversation/ConversationError.tsx:47
 #. js-lingui-explicit-id
 msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "Meddelandet skickades till utvecklingsteamet. Ledsen för det..."
+
+#: src/features/Settings/MyProfile.tsx:115
+#. js-lingui-explicit-id
+msgid "Notifications"
+msgstr "Meddelanden"
 
 #: src/features/Alias/components/Scoreboard.tsx:147
 #. js-lingui-explicit-id
@@ -9060,7 +9077,7 @@ msgstr "Öppna i Telegram"
 msgid "Open My Improvements"
 msgstr "Öppna Mina Förbättringar"
 
-#: src/features/Auth/SignInForm.tsx:29
+#: src/features/Auth/SignInForm.tsx:26
 #. js-lingui-explicit-id
 msgid "Open personal plan"
 msgstr "Öppna personlig plan"
@@ -9258,7 +9275,7 @@ msgid "Payment failed! Please try again."
 msgstr "Betalning misslyckades! Försök igen."
 
 #: src/features/Header/PaymentHistoryModal.tsx:65
-#: src/features/Settings/MyProfile.tsx:112
+#: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Betalningshistorik"
@@ -10604,7 +10621,7 @@ msgstr "Reflex"
 msgid "Refresh"
 msgstr "Uppdatera"
 
-#: src/features/Settings/MyProfile.tsx:247
+#: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Refund"
 msgstr "Återbetalning"
@@ -10759,7 +10776,7 @@ msgstr "Återvänd"
 msgid "Returning an Item to a Store"
 msgstr "Återlämna en vara till en butik"
 
-#: src/features/Settings/MyProfile.tsx:94
+#: src/features/Settings/MyProfile.tsx:97
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "Granska och redigera vad AI:n kommer ihåg"
@@ -10994,7 +11011,7 @@ msgstr "Välj rösten som din AI-lärare kommer att använda under samtal."
 msgid "Select your game avatar"
 msgstr "Välj din spelavatar"
 
-#: src/features/Settings/MyProfile.tsx:80
+#: src/features/Settings/MyProfile.tsx:83
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Välj ditt föredragna språk"
@@ -11034,6 +11051,11 @@ msgstr "Skicka"
 #. js-lingui-explicit-id
 msgid "Send email again"
 msgstr "Skicka e-post igen"
+
+#: src/features/Header/NotificationsModal.tsx:57
+#. js-lingui-explicit-id
+msgid "Send me email notifications"
+msgstr "Skicka mig e-postmeddelanden"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
 #. js-lingui-explicit-id
@@ -11310,8 +11332,8 @@ msgstr ""
 msgid "Simulate speaking tasks from the TOEFL exam."
 msgstr "Simulera taluppgifter från TOEFL-provet."
 
-#: src/features/Auth/SignInForm.tsx:31
-#: src/features/Auth/SignInForm.tsx:32
+#: src/features/Auth/SignInForm.tsx:28
+#: src/features/Auth/SignInForm.tsx:29
 #. js-lingui-explicit-id
 msgid "Sing in"
 msgstr "Logga in"
@@ -11402,13 +11424,13 @@ msgstr "Så vi behöver ditt godkännande med det och våra policyer"
 
 #: src/features/Auth/AuthWall.tsx:46
 #: src/features/Auth/InterviewAuthWall.tsx:36
-#: src/features/Auth/SignInForm.tsx:35
+#: src/features/Auth/SignInForm.tsx:32
 #. js-lingui-explicit-id
 msgid "So you can keep your progress"
 msgstr "Så att du kan behålla dina framsteg"
 
-#: src/features/Auth/SignInForm.tsx:37
-#: src/features/Auth/SignInForm.tsx:38
+#: src/features/Auth/SignInForm.tsx:34
+#: src/features/Auth/SignInForm.tsx:35
 #. js-lingui-explicit-id
 msgid "So you can save your progress"
 msgstr "Så att du kan spara dina framsteg"
@@ -13262,7 +13284,7 @@ msgstr "Visa resultattavla"
 msgid "View your payment history"
 msgstr "Visa din betalningshistorik"
 
-#: src/features/Settings/MyProfile.tsx:113
+#: src/features/Settings/MyProfile.tsx:122
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "Visa din betalningshistorik. Återbetalningar"
@@ -13469,7 +13491,7 @@ msgstr "Warszawa"
 msgid "WCAG Standards"
 msgstr "WCAG-standarder"
 
-#: src/features/Settings/MyProfile.tsx:257
+#: src/features/Settings/MyProfile.tsx:270
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Vi uppskattar din feedback!"

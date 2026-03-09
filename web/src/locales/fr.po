@@ -1232,7 +1232,7 @@ msgstr "Ajouter un post"
 msgid "Add Response"
 msgstr "Ajouter une réponse"
 
-#: src/features/Settings/MyProfile.tsx:248
+#: src/features/Settings/MyProfile.tsx:257
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
 msgstr ""
@@ -1432,7 +1432,7 @@ msgid "AI Interview Practice"
 msgstr "Pratique d'entretien avec AI"
 
 #: src/features/Ai/AiKnowledgeModal.tsx:82
-#: src/features/Settings/MyProfile.tsx:93
+#: src/features/Settings/MyProfile.tsx:96
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
 msgstr "Connaissances de l'IA à votre sujet"
@@ -1503,7 +1503,7 @@ msgstr "Pratique du Vocabulaire AI pour des Conversations Réelles"
 msgid "AI Vocabulary Practice for Real Conversations | FluencyPal"
 msgstr "Pratique de Vocabulaire IA pour des Conversations Réelles | FluencyPal"
 
-#: src/features/Settings/MyProfile.tsx:86
+#: src/features/Settings/MyProfile.tsx:89
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "Voix IA"
@@ -2619,7 +2619,7 @@ msgstr "Choisissez le Niveau de Langue"
 msgid "Choose Site Language"
 msgstr "Choisir la langue du site"
 
-#: src/features/Settings/MyProfile.tsx:87
+#: src/features/Settings/MyProfile.tsx:90
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "Choisissez la voix de votre professeur AI"
@@ -2663,6 +2663,7 @@ msgstr ""
 #: src/features/Game/Battle/BattleActionModal.tsx:299
 #: src/features/Game/UserProfileModal.tsx:147
 #: src/features/Header/NeedHelpModal.tsx:104
+#: src/features/Header/NotificationsModal.tsx:73
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:392
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -4838,7 +4839,7 @@ msgid "Fast Answer Practice"
 msgstr "Pratique de Réponse Rapide"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/Settings/MyProfile.tsx:256
+#: src/features/Settings/MyProfile.tsx:269
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Retour d'information"
@@ -5312,7 +5313,7 @@ msgid "frontend system design interview"
 msgstr "entretien sur la conception de système frontend"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
-#: src/features/Settings/MyProfile.tsx:73
+#: src/features/Settings/MyProfile.tsx:76
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:34
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:452
@@ -5945,7 +5946,7 @@ msgstr "Amusez-vous bien !"
 msgid "Health"
 msgstr "Santé"
 
-#: src/features/Settings/MyProfile.tsx:106
+#: src/features/Settings/MyProfile.tsx:109
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Aide"
@@ -7974,7 +7975,7 @@ msgstr ""
 "Chercher et Obtenir un Premier Emploi en Développement est Plus Difficile "
 "qu'il ne Devrait l'Être"
 
-#: src/features/Settings/MyProfile.tsx:79
+#: src/features/Settings/MyProfile.tsx:82
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Langue"
@@ -8165,8 +8166,8 @@ msgid "Learning Plan"
 msgstr "Plan d'apprentissage"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:249
 #: src/features/Settings/MyProfile.tsx:258
+#: src/features/Settings/MyProfile.tsx:271
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Laissez votre message"
@@ -8313,12 +8314,12 @@ msgid "Locked"
 msgstr "Verrouillé"
 
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:121
+#: src/features/Settings/MyProfile.tsx:130
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Se déconnecter"
 
-#: src/features/Settings/MyProfile.tsx:122
+#: src/features/Settings/MyProfile.tsx:131
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Se déconnecter de votre compte"
@@ -8365,12 +8366,18 @@ msgstr "Assurez-vous que votre webcam fonctionne correctement."
 msgid "Malay Learning Plan"
 msgstr "Plan d'Apprentissage du Malais"
 
-#: src/features/Settings/MyProfile.tsx:74
+#: src/features/Settings/MyProfile.tsx:77
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Gérez vos paramètres d'accès complet"
 
-#: src/features/Settings/MyProfile.tsx:170
+#: src/features/Header/NotificationsModal.tsx:35
+#: src/features/Settings/MyProfile.tsx:116
+#. js-lingui-explicit-id
+msgid "Manage your notification settings"
+msgstr "Gérez vos paramètres de notification"
+
+#: src/features/Settings/MyProfile.tsx:179
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Gérez les paramètres de votre profil et vérifiez vos progrès"
@@ -8756,7 +8763,7 @@ msgid "natural and not robotic"
 msgstr "naturel et non robotique"
 
 #: src/features/Community/SupportPage.tsx:38
-#: src/features/Settings/MyProfile.tsx:107
+#: src/features/Settings/MyProfile.tsx:110
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Besoin d'aide ?"
@@ -9169,10 +9176,20 @@ msgstr "Pas sûr de quoi écrire ? Essayez l'une de celles-ci :"
 msgid "Not sure yet?"
 msgstr "Pas encore sûr ?"
 
+#: src/features/Header/NotificationsModal.tsx:33
+#. js-lingui-explicit-id
+msgid "Notification Settings"
+msgstr "Paramètres de notification"
+
 #: src/features/Conversation/ConversationError.tsx:47
 #. js-lingui-explicit-id
 msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "La notification a été envoyée à l'équipe de dev. Désolé pour cela..."
+
+#: src/features/Settings/MyProfile.tsx:115
+#. js-lingui-explicit-id
+msgid "Notifications"
+msgstr "Notifications"
 
 #: src/features/Alias/components/Scoreboard.tsx:147
 #. js-lingui-explicit-id
@@ -9297,7 +9314,7 @@ msgstr "Ouvrir dans Telegram"
 msgid "Open My Improvements"
 msgstr "Ouvrir Mes Améliorations"
 
-#: src/features/Auth/SignInForm.tsx:29
+#: src/features/Auth/SignInForm.tsx:26
 #. js-lingui-explicit-id
 msgid "Open personal plan"
 msgstr "Ouvrir le plan personnel"
@@ -9504,7 +9521,7 @@ msgid "Payment failed! Please try again."
 msgstr "Échec du paiement ! Veuillez réessayer."
 
 #: src/features/Header/PaymentHistoryModal.tsx:65
-#: src/features/Settings/MyProfile.tsx:112
+#: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Historique des Paiements"
@@ -10905,7 +10922,7 @@ msgstr "Réflexe"
 msgid "Refresh"
 msgstr "Rafraîchir"
 
-#: src/features/Settings/MyProfile.tsx:247
+#: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Refund"
 msgstr "Remboursement"
@@ -11063,7 +11080,7 @@ msgstr "Retour"
 msgid "Returning an Item to a Store"
 msgstr "Renvoyer un article à un magasin"
 
-#: src/features/Settings/MyProfile.tsx:94
+#: src/features/Settings/MyProfile.tsx:97
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "Revoir et modifier ce dont l'IA se souvient"
@@ -11307,7 +11324,7 @@ msgstr ""
 msgid "Select your game avatar"
 msgstr "Sélectionnez votre avatar de jeu"
 
-#: src/features/Settings/MyProfile.tsx:80
+#: src/features/Settings/MyProfile.tsx:83
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Sélectionnez votre langue préférée"
@@ -11349,6 +11366,11 @@ msgstr "Envoyer"
 #. js-lingui-explicit-id
 msgid "Send email again"
 msgstr "Envoyer l'e-mail à nouveau"
+
+#: src/features/Header/NotificationsModal.tsx:57
+#. js-lingui-explicit-id
+msgid "Send me email notifications"
+msgstr "Envoyez-moi des notifications par e-mail"
 
 #: src/features/Auth/AuthWallBasic.tsx:147
 #. js-lingui-explicit-id
@@ -11631,8 +11653,8 @@ msgstr ""
 msgid "Simulate speaking tasks from the TOEFL exam."
 msgstr "Simulez les tâches de discours de l'examen TOEFL."
 
-#: src/features/Auth/SignInForm.tsx:31
-#: src/features/Auth/SignInForm.tsx:32
+#: src/features/Auth/SignInForm.tsx:28
+#: src/features/Auth/SignInForm.tsx:29
 #. js-lingui-explicit-id
 msgid "Sing in"
 msgstr "Se connecter"
@@ -11723,13 +11745,13 @@ msgstr "Donc, nous avons besoin de votre accord avec cela et nos politiques"
 
 #: src/features/Auth/AuthWall.tsx:46
 #: src/features/Auth/InterviewAuthWall.tsx:36
-#: src/features/Auth/SignInForm.tsx:35
+#: src/features/Auth/SignInForm.tsx:32
 #. js-lingui-explicit-id
 msgid "So you can keep your progress"
 msgstr "Ainsi, vous pouvez conserver vos progrès"
 
-#: src/features/Auth/SignInForm.tsx:37
-#: src/features/Auth/SignInForm.tsx:38
+#: src/features/Auth/SignInForm.tsx:34
+#: src/features/Auth/SignInForm.tsx:35
 #. js-lingui-explicit-id
 msgid "So you can save your progress"
 msgstr "Ainsi, vous pouvez enregistrer vos progrès"
@@ -13627,7 +13649,7 @@ msgstr ""
 "plaintext\n"
 "Voir votre historique de paiements\n"
 
-#: src/features/Settings/MyProfile.tsx:113
+#: src/features/Settings/MyProfile.tsx:122
 #. js-lingui-explicit-id
 msgid "View your payment history. Refunds"
 msgstr "Afficher votre historique de paiement. Remboursements"
@@ -13841,7 +13863,7 @@ msgstr "Varsovie"
 msgid "WCAG Standards"
 msgstr "Normes WCAG"
 
-#: src/features/Settings/MyProfile.tsx:257
+#: src/features/Settings/MyProfile.tsx:270
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Nous apprécions vos commentaires !"

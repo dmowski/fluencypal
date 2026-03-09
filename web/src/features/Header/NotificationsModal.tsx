@@ -30,7 +30,7 @@ export const NotificationsModal = ({ onClose }: NotificationsModalProps) => {
               fontWeight: 800,
             }}
           >
-            {i18n._(`Notification Settings`)}
+            {i18n._(`Notifications`)}
           </Typography>
           <Typography variant="caption">{i18n._(`Manage your notification settings`)}</Typography>
         </Stack>
