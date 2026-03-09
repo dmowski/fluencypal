@@ -79,8 +79,8 @@ function useProvideTextAi(): TextAiContextType {
 
       return JSON.parse(trimmedJson);
     } catch (error) {
-      console.error('Error parsing JSON. error', error);
-      console.error('Error parsing JSON. json', json);
+      console.error('Error parsing JSON. error:', error + '');
+      console.error('Error parsing JSON. json:', json);
 
       Sentry.captureException(error, {
         extra: {
@@ -146,7 +146,7 @@ function useProvideTextAi(): TextAiContextType {
           title: 'Error generating JSON in useTextAi',
         },
       });
-      await sleep(2000);
+      await sleep(500);
       console.log('Retrying AI JSON generation, attempt:', (attemptInfo?.attempt || 0) + 1);
       return generateJson<T>(
         { ...conversationDate, cache: false },
