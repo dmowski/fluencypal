@@ -121,5 +121,7 @@ export default withSentryConfig(nextConfig, {
     throw error;
   },
 
+  telemetry: false,
+
   widenClientFileUpload: true,
 });
