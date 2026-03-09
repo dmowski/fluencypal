@@ -1,6 +1,5 @@
 'use client';
 import { Stack, Typography } from '@mui/material';
-import { useAuth } from './useAuth';
 import { useSearchParams } from 'next/navigation';
 import { useLingui } from '@lingui/react';
 import { SupportedLanguage } from '@/features/Lang/lang';
@@ -14,12 +13,10 @@ interface SignInFormProps {
   lang: SupportedLanguage;
 }
 export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
-  const auth = useAuth();
   const searchParams = useSearchParams();
   const goalId = searchParams.get('goalId');
   const { i18n } = useLingui();
   const rolePlayId = searchParams.get('rolePlayId');
-  const webView = useIsWebView();
 
   const scenario = rolePlayId
     ? rolePlayInfo.rolePlayScenarios.find((scenario) => scenario.id === rolePlayId)
@@ -55,16 +52,6 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
         >
           <></>
         </AuthWall>
-        <Typography
-          sx={{
-            width: '100%',
-            maxWidth: '580px',
-            fontSize: '12px',
-            opacity: 0.3,
-          }}
-        >
-          {webView.uaName}
-        </Typography>
       </Stack>
     </WebViewWall>
   );
