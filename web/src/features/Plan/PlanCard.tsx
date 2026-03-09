@@ -278,7 +278,6 @@ export const PlanCard = ({
                       fontWeight: 500,
                       fontSize: '1.9rem',
                       lineHeight: '1.3rem',
-                      letterSpacing: '-0.09em',
                       fontWidth: 500,
                     }}
                   >
