@@ -1,10 +1,10 @@
-export const PRICE_PER_MONTH_USD = 7;
+export const PRICE_PER_MONTH_USD = 5;
 
-export const PRICE_PER_WEEK_USD = 3;
+export const PRICE_PER_WEEK_USD = 2;
 
 export const PRICE_PER_DAY_USD = 1.1;
 
-export const PRICE_PER_YEAR_USD = 50;
+export const PRICE_PER_YEAR_USD = 45;
 
 export const TRIAL_DAYS = 0;
 
