@@ -7,7 +7,7 @@ export async function GET(request: Request) {
   const query = new URL(request.url).searchParams;
   const isSendTest = query.get('isSendTest') === 'true';
   const type = query.get('type');
-  const confirmSend = false;
+  const confirmSend = true;
 
   const confirmEmailUi = getConfirmEmailTemplate({
     receiptUrl: 'https://example.com/receipt.pdf',
