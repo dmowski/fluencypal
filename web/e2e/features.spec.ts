@@ -17,10 +17,12 @@ test.describe('Features pages', () => {
     expect(htmlLang).toBe('ru');
 
     await expect(
-      page.getByRole('heading', { name: 'Personalized Learning Plan for English Practice' }),
+      page.getByRole('heading', {
+        name: 'Персонализированный учебный план для практики английского языка',
+      }),
     ).toBeVisible();
 
-    await expect(page.getByRole('link', { name: 'View all features' })).toHaveAttribute(
+    await expect(page.getByRole('link', { name: 'Просмотреть все функции' })).toHaveAttribute(
       'href',
       '/ru/features',
     );
