@@ -4,6 +4,7 @@ import { useState, useEffect, ForwardRefExoticComponent, RefAttributes } from 'r
 import { useAuth } from '../Auth/useAuth';
 import { Avatar, Button, Stack, Typography } from '@mui/material';
 import {
+  Bell,
   Brain,
   ChevronRight,
   Landmark,
@@ -32,6 +33,7 @@ import { GameMyAvatar } from '../Game/GameMyAvatar';
 import { GameMyUsername } from '../Game/GameMyUsername';
 import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 import { AiKnowledgeModal } from '../Ai/AiKnowledgeModal';
+import { NotificationsModal } from '../Header/NotificationsModal';
 
 export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -52,6 +54,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   }, []);
 
   const [isShowHelpModal, setIsShowHelpModal] = useUrlParam('help');
+  const [isShowNotificationsModal, setIsShowNotificationsModal] = useUrlParam('notifications');
   const [isShowRefundModal, setIsShowRefundModal] = useUrlParam('refund');
   const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] = useUrlParam('paymentHistory');
   const [isShowFeedbackModal, setIsShowFeedbackModal] = useUrlParam('feedback');
@@ -107,6 +110,12 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       subTitle: i18n._(`Need help?`),
       icon: MessageCircleQuestionMark,
       onClick: () => setIsShowHelpModal(true),
+    },
+    {
+      title: i18n._(`Notifications`),
+      subTitle: i18n._(`Manage your notification settings`),
+      icon: Bell,
+      onClick: () => setIsShowNotificationsModal(true),
     },
     {
       title: i18n._(`Payment History`),
@@ -249,6 +258,10 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
           placeholder={i18n._(`Leave your message`)}
           onClose={() => setIsShowRefundModal(false)}
         />
+      )}
+
+      {isShowNotificationsModal && (
+        <NotificationsModal onClose={() => setIsShowNotificationsModal(false)} />
       )}
 
       {isShowFeedbackModal && (

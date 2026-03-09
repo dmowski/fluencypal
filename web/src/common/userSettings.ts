@@ -51,6 +51,8 @@ export interface UserSettings extends InitUserSettings {
   parentalConsent?: ParentConsent | null;
 
   age18PlusConfirmedAtIso?: string | null;
+
+  isSendEmailNotifications?: boolean | null;
 }
 
 export interface UserSettingsWithId extends UserSettings {

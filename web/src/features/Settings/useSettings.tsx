@@ -53,6 +53,9 @@ interface SettingsContextType {
   setParentalConsent: (consent: ParentConsent) => Promise<void>;
 
   confirmAge18Plus: () => Promise<void>;
+
+  setIsSendEmailNotifications: (isEnabled: boolean) => Promise<void>;
+  isSendEmailNotifications: boolean;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -80,6 +83,8 @@ export const settingsContext = createContext<SettingsContextType>({
   pageLanguageCode: 'en',
   setParentalConsent: async () => {},
   confirmAge18Plus: async () => {},
+  setIsSendEmailNotifications: async () => {},
+  isSendEmailNotifications: false,
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -91,6 +96,13 @@ function useProvideSettings(): SettingsContextType {
   const userSource = useUserSource();
 
   const [userSettings, loading] = useDocumentData(userSettingsDoc);
+
+  const isSendEmailNotifications = userSettings?.isSendEmailNotifications === false ? false : true;
+
+  const setIsSendEmailNotifications = async (isEnabled: boolean) => {
+    if (!userSettingsDoc) return;
+    await setDoc(userSettingsDoc, { isSendEmailNotifications: isEnabled }, { merge: true });
+  };
 
   const setLanguage = async (languageCode: SupportedLanguage) => {
     if (!userSettingsDoc) return 'en';
@@ -257,6 +269,8 @@ function useProvideSettings(): SettingsContextType {
       await setDoc(userSettingsDoc, { teacherVoiceSpeed: speed }, { merge: true });
     },
     setParentalConsent,
+    isSendEmailNotifications,
+    setIsSendEmailNotifications,
   };
 }
 
