@@ -1,8 +1,9 @@
 import { Stack, SxProps, Typography } from '@mui/material';
 import { WelcomeScreenButton } from './FirstEnterButton';
 import { PageLabel2 } from '../Case/Landing/components/Typography';
-import { ArrowRight, MoveRight } from 'lucide-react';
+import { MoveRight } from 'lucide-react';
 import { maxLandingWidth } from './landingSettings';
+import Image from 'next/image';
 
 interface PreviewCard {
   imageUrl?: string;
@@ -224,15 +225,29 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                   }}
                 >
                   {card.imageUrl && !card.videoUrl && (
-                    <Stack component={'img'} alt={card.alt} src={card.imageUrl} sx={contentStyle} />
+                    <Stack sx={{ ...contentStyle, position: 'relative' }}>
+                      <Image
+                        src={card.imageUrl}
+                        alt={card.alt}
+                        width={411}
+                        height={896}
+                        quality={40}
+                        style={{
+                          borderRadius: 'inherit',
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                        }}
+                      />
+                    </Stack>
                   )}
                   {card.videoUrl && (
                     <>
                       {card.imageUrl && (
                         <Stack
-                          component={'img'}
-                          alt={card.alt}
-                          src={card.imageUrl}
                           sx={{
                             ...contentStyle,
                             aspectRatio: '411 / 896',
@@ -242,9 +257,25 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                             top: 0,
                             left: 0,
                             zIndex: 1,
-                            //filter: "blur(3px)",
                           }}
-                        />
+                        >
+                          <Image
+                            src={card.imageUrl}
+                            alt={card.alt}
+                            width={411}
+                            height={896}
+                            quality={40}
+                            style={{
+                              borderRadius: 'inherit',
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover',
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                            }}
+                          />
+                        </Stack>
                       )}
                       <Stack
                         component={'video'}
