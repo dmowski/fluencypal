@@ -229,9 +229,8 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                       <Image
                         src={card.imageUrl}
                         alt={card.alt}
-                        width={411}
-                        height={896}
-                        quality={40}
+                        width={240}
+                        height={522}
                         style={{
                           borderRadius: 'inherit',
                           width: '100%',
@@ -262,8 +261,8 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                           <Image
                             src={card.imageUrl}
                             alt={card.alt}
-                            width={411}
-                            height={896}
+                            width={240}
+                            height={522}
                             quality={40}
                             style={{
                               borderRadius: 'inherit',
