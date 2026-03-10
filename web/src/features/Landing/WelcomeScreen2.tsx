@@ -79,6 +79,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
           opacity: 0.5,
           '@media (max-width: 600px)': {
             display: 'none',
+            background: 'none',
           },
         }}
       />
