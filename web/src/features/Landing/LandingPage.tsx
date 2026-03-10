@@ -314,8 +314,8 @@ export default function LandingPage({ lang }: LandingPageProps) {
                           color="info"
                           sx={{
                             padding: '10px 30px',
-                            backgroundColor: '#29A9FF',
-                            color: '#fff',
+                            backgroundColor: '#ffffff',
+                            color: '#111',
                             fontWeight: 600,
                             borderRadius: '2px',
                             fontSize: '16px',
@@ -346,12 +346,12 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   subTitle: i18n._(
                     'Based on your onboarding, FluencyPal will create a personalized learning plan just for you.',
                   ),
-                  subTitleColor: '#fff',
+                  subTitleColor: '#111',
                 },
 
                 {
                   videoUrl: '/call/ash/talk1.webm',
-                  bgColor: 'rgb(169, 129, 255)',
+                  bgColor: 'rgb(112, 59, 227)',
 
                   title: i18n._('Practice'),
                   titleColor: '#111',
