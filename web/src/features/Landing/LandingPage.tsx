@@ -234,9 +234,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
               data={{
                 type: 'webcamDemo',
                 title: i18n._('Practice Speaking with AI'),
-                subTitle: i18n._(
-                  'Get instant AI feedback on clarity, vocabulary, and flow — while you speak.',
-                ),
+                subTitle: i18n._('Confidence in a safe and calm environment.'),
                 content: i18n._(
                   'Practice real conversations and explain your thoughts out loud in a safe, pressure-free environment — without fear of mistakes.',
                 ),
@@ -258,9 +256,9 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   },
                 ],
                 webCamPreview: {
-                  videoUrl: '/interview/interviewWebPreview2.webm',
-                  title: i18n._('Conversation Practice'),
-                  participants: i18n._('AI conversation'),
+                  videoUrl: '/call/marin/talk.webm',
+                  title: '',
+                  participants: 'Marin - AI Teacher',
 
                   beforeSectionTitle: i18n._('Warm-up'),
                   beforeSectionSubTitle: i18n._('Done'),

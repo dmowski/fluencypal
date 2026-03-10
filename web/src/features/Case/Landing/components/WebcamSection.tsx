@@ -100,6 +100,7 @@ export const WebcamSection = (props: WebcamSectionProps) => {
           sx={{
             alignItems: 'center',
             gap: '10px',
+            maxWidth: '800px',
           }}
         >
           <H2>{props.data.title}</H2>
@@ -112,6 +113,7 @@ export const WebcamSection = (props: WebcamSectionProps) => {
             marginTop: '26px',
             alignItems: 'center',
             width: '100%',
+            maxWidth: '700px',
           }}
         >
           <Stack
@@ -134,21 +136,14 @@ export const WebcamSection = (props: WebcamSectionProps) => {
                 controls={false}
                 muted
                 sx={{
-                  width: '864px',
-                  aspectRatio: '16/9',
+                  aspectRatio: '16/10',
                   maxWidth: '100%',
-                  borderRadius: '12px',
                   objectFit: 'cover',
-                  boxShadow: '0 0 20px rgba(0, 0, 0, 1)',
+                  boxShadow: '0 0 20px rgba(0, 0, 0, 0.21)',
                   backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                  '@media (max-width: 1300px)': {
-                    width: 'calc(100vw - 420px)',
-                  },
 
-                  '@media (max-width: 1000px)': {
-                    width: '100%',
-                    borderRadius: '12px 12px 0 0',
-                  },
+                  width: '100%',
+                  borderRadius: '12px 12px 0 0',
                 }}
                 src={props.data.webCamPreview.videoUrl}
               />
@@ -160,17 +155,11 @@ export const WebcamSection = (props: WebcamSectionProps) => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 flexDirection: 'row',
-                position: 'absolute',
-                top: 'calc(50% - 60px)',
-                left: '-200px',
-                width: 'calc(100% + 400px)',
-                '@media (max-width: 1000px)': {
-                  position: 'relative',
-                  top: '0',
-                  left: '0',
-                  width: '100%',
-                  gap: '1px',
-                },
+                position: 'relative',
+                top: '0',
+                left: '0',
+                width: '100%',
+                gap: '1px',
               }}
             >
               <NavigationBlock
@@ -193,9 +182,11 @@ export const WebcamSection = (props: WebcamSectionProps) => {
                 zIndex: 1,
               }}
             >
-              <Typography variant="h6" component={'span'}>
-                {props.data.webCamPreview.title}
-              </Typography>
+              {props.data.webCamPreview.title && (
+                <Typography variant="h6" component={'span'}>
+                  {props.data.webCamPreview.title}
+                </Typography>
+              )}
               <Stack
                 sx={{
                   flexDirection: 'row',
@@ -203,7 +194,6 @@ export const WebcamSection = (props: WebcamSectionProps) => {
                   gap: '7px',
                 }}
               >
-                <Users size={'12px'} />
                 <Typography
                   variant="caption"
                   sx={{
@@ -284,17 +274,12 @@ const NavigationBlock = ({
       sx={{
         alignItems: 'center',
         backgroundColor: 'rgba(255, 255, 255, 0.1)',
-        padding: '20px 12px 18px 12px',
-        borderRadius: isDone ? '12px 0 0 12px' : '0 12px 12px 0',
-        width: '200px',
         position: 'relative',
         zIndex: 0,
-        '@media (max-width: 1000px)': {
-          width: '100%',
-          borderRadius: isDone ? '0 0 0 12px' : '0 0 12px 0',
-          padding: '32px 5px 18px 5px',
-          marginTop: '-10px',
-        },
+        width: '100%',
+        borderRadius: isDone ? '0 0 0 12px' : '0 0 12px 0',
+        padding: '32px 5px 18px 5px',
+        marginTop: '-10px',
       }}
     >
       {isDone && <CircleCheckBig size={'27px'} color="rgb(96, 165, 250)" />}
