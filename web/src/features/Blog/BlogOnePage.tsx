@@ -219,8 +219,9 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                     <Image
                       src={item.imagePreviewUrl}
                       className="blog-image"
+                      fetchPriority="high"
                       alt={`Illustration for ${item.title}`}
-                      sizes="1000px"
+                      sizes="600px"
                       loading="eager"
                       fill
                       style={{
