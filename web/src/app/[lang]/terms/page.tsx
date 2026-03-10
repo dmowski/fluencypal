@@ -5,9 +5,11 @@ import { generateMetadataInfo } from '@/features/SEO/metadata';
 import { Footer } from '@/features/Landing/Footer';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
 
+/*
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
 }
+*/
 
 interface PageProps {
   params: Promise<{ lang: string }>;
