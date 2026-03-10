@@ -9,7 +9,6 @@ import { initLingui } from '@/initLingui';
 import { LinguiClientProvider } from '@/features/Lang/LinguiClientProvider';
 import { allMessages } from '@/appRouterI18n';
 import { UserSourceProvider } from '@/features/Analytics/useUserSource';
-import { BasicAnalytics } from '@/features/Analytics/BasicAnalytics';
 import { UrlStateProvider } from '@/features/Url/UrlStateContext';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
@@ -37,10 +36,7 @@ export default async function RootLayout({
               initialLocale={supportedLang}
               initialMessages={allMessages[supportedLang]!}
             >
-              <UrlStateProvider>
-                <BasicAnalytics />
-                {children}
-              </UrlStateProvider>
+              <UrlStateProvider>{children}</UrlStateProvider>
             </LinguiClientProvider>
           </AppRouterCacheProvider>
         </WindowSizesProvider>
