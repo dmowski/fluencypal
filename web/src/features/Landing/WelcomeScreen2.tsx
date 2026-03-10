@@ -77,8 +77,43 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
           background: `url('${bgUrl}') no-repeat center center`,
           backgroundSize: 'cover',
           opacity: 0.5,
+          '@media (max-width: 600px)': {
+            display: 'none',
+          },
         }}
       />
+
+      <Stack
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: '0px',
+          margin: '0 auto',
+          width: '100vw',
+          overflow: 'hidden',
+          height: '100%',
+          zIndex: -2,
+          backgroundSize: 'cover',
+          opacity: 0.5,
+          display: 'none',
+          '@media (max-width: 600px)': {
+            display: 'flex',
+          },
+        }}
+      >
+        <Image
+          src={'/landing/preview/space2Mobile.jpg'}
+          alt={'space background'}
+          fill
+          sizes="600px"
+          style={{
+            width: '100%',
+            height: '100%',
+
+            objectFit: 'cover',
+          }}
+        />
+      </Stack>
 
       <Stack
         sx={{
