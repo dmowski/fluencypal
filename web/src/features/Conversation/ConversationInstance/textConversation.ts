@@ -2,7 +2,10 @@
 import { ConversationMessage } from '@/common/conversation';
 import { ConversationConfig, ConversationInstance } from './types';
 import { getHash } from '@/libs/hash';
-import { clientSendAiChatRequest } from '@/app/api/ai/chat/clientSendAiChatRequest';
+import {
+  clientSendAiChatRequest,
+  clientSendAiChatRequestRetirable,
+} from '@/app/api/ai/chat/clientSendAiChatRequest';
 
 // --- Progressive summary config ---
 const SUMMARY_CHUNK_SIZE = 8;
@@ -87,7 +90,7 @@ Format the summary as explicit facts: what user and teacher said.`;
   }): Promise<string> => {
     const token = await getAuthToken();
 
-    const result = await clientSendAiChatRequest(
+    const result = await clientSendAiChatRequestRetirable(
       {
         chatMessages: latestMessages || [],
         systemMessage:

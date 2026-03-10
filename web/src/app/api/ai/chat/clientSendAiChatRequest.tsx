@@ -20,3 +20,23 @@ export const clientSendAiChatRequest = async (
   const data = (await response.json()) as AiResponse;
   return data;
 };
+
+export const clientSendAiChatRequestRetirable = async (
+  aiRequest: AiChatRequest,
+  auth: string,
+  retries = 3,
+  retryDelay = 1000,
+): Promise<AiResponse> => {
+  for (let attempt = 0; attempt < retries; attempt++) {
+    try {
+      return await clientSendAiChatRequest(aiRequest, auth);
+    } catch (error) {
+      if (attempt < retries - 1) {
+        await new Promise((resolve) => setTimeout(resolve, retryDelay));
+      } else {
+        throw error;
+      }
+    }
+  }
+  throw new Error('Failed to send AI chat request after multiple attempts');
+};
