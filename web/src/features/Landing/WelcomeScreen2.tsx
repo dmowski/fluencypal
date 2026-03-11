@@ -116,11 +116,12 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
       >
         <Image
           src={'/landing/preview/space2Mobile.jpg'}
-          alt={'space background'}
+          alt={'Page background'}
           fill
           fetchPriority="high"
           loading="eager"
-          sizes="600px"
+          sizes="400px"
+          quality={90}
           style={{
             width: '100%',
             height: '100%',
