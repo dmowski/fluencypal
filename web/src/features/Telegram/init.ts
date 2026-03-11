@@ -25,6 +25,7 @@ async function internalInit(options: {
 }): Promise<void> {
   // Set @telegram-apps/sdk-react debug mode and initialize it.
   setDebug(options.debug);
+  console.log('Init sdk');
   initSDK();
 
   // Add Eruda if needed.
@@ -72,11 +73,13 @@ async function internalInit(options: {
 
   if (mountMiniAppSync.isAvailable()) {
     mountMiniAppSync();
+    console.log('mountMiniAppSync');
     bindThemeParamsCssVars();
   }
 
   if (mountViewport.isAvailable()) {
     mountViewport().then(() => {
+      console.log('bindViewportCssVars');
       bindViewportCssVars();
     });
   }
