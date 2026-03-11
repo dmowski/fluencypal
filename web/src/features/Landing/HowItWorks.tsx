@@ -182,7 +182,7 @@ export const HowItWorks = (props: HowItWorksProps) => {
                 {card.imageUrl && (
                   <Image
                     src={card.imageUrl}
-                    alt={'space background'}
+                    alt={'Illustration for ' + card.title}
                     fetchPriority="high"
                     width={card.imageWidth}
                     height={card.imageHeight}
