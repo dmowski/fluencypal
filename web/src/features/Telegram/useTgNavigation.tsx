@@ -8,16 +8,7 @@ import {
   isFullscreen,
 } from '@telegram-apps/sdk-react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  JSX,
-  useEffect,
-  useRef,
-  useCallback,
-  useState,
-} from 'react';
+import { createContext, useContext, ReactNode, JSX, useEffect, useRef, useState } from 'react';
 
 interface TgNavigationContextType {
   addBackHandler: (handler: () => void) => () => void;

@@ -28,6 +28,7 @@ import { UserReportProvider } from '@/features/User/useUserReport';
 import { AudioCacheProvider } from '@/features/Audio/useAudioCache';
 import { StoriesProvider } from '@/features/Sentence/useStories';
 import { CommunitySpaceProvider } from '@/features/Community/CommunitySpace/useCommunitySpace';
+import '@telegram-apps/telegram-ui/dist/styles.css';
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (

@@ -3,7 +3,6 @@ import './globals.css';
 import { ThemeProvider } from '@mui/material/styles';
 import { darkTheme } from '../features/uiKit/theme';
 import { Inter, Old_Standard_TT } from 'next/font/google';
-import '@telegram-apps/telegram-ui/dist/styles.css';
 import { WindowSizesProvider } from '@/features/Layout/useWindowSizes';
 import { initLingui } from '@/initLingui';
 import { LinguiClientProvider } from '@/features/Lang/LinguiClientProvider';
