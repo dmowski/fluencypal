@@ -62,9 +62,18 @@ function useProvideTgNavigation(): TgNavigationContextType {
   useEffect(() => {
     const isTelegramApp = isTMA();
     if (!isTelegramApp) return;
-    const removeBackEventListener = backButton.onClick(backHandler);
+    const removeBackEventListener = () => {
+      try {
+        return backButton.onClick(backHandler);
+      } catch (e) {
+        console.log('Failed to set back button handler', e);
+        return () => {};
+      }
+    };
+
+    const removeBackEventListenerFn = removeBackEventListener();
     return () => {
-      removeBackEventListener();
+      removeBackEventListenerFn();
     };
   }, [backStack, route]);
 
