@@ -49,7 +49,11 @@ function useProvideTgNavigation(): TgNavigationContextType {
       if (searchParamsString) {
         backButton.show();
       } else {
-        backButton.hide();
+        try {
+          backButton.hide();
+        } catch (e) {
+          console.log('Failed to hide back button', e);
+        }
       }
     }
   }, [searchParamsString, path]);
