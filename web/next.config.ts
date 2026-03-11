@@ -51,7 +51,7 @@ const nextConfig: NextConfig = {
         hostname: 'flagcdn.com',
       },
     ],
-    qualities: [40, 100],
+    qualities: [40, 90, 100],
   },
   experimental: {
     proxyClientMaxBodySize: '100mb',

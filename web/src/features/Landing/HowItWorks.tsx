@@ -3,10 +3,13 @@ import { Theme, themeMap } from '../Case/Landing/components/theme';
 import { H2, PageLabel, SubTitle } from '../Case/Landing/components/Typography';
 import { MoveRight } from 'lucide-react';
 import { QuizAnimation } from '../uiKit/Animations/QuizAnimation';
+import Image from 'next/image';
 
 export interface CardData {
   videoUrl?: string;
   imageUrl?: string;
+  imageWidth: number;
+  imageHeight: number;
   quizAnimation?: string;
 
   bgColor: string;
@@ -177,15 +180,20 @@ export const HowItWorks = (props: HowItWorksProps) => {
                 )}
 
                 {card.imageUrl && (
-                  <Stack
-                    component={'img'}
+                  <Image
                     src={card.imageUrl}
-                    alt=""
-                    sx={{
+                    alt={'space background'}
+                    fetchPriority="high"
+                    width={card.imageWidth}
+                    height={card.imageHeight}
+                    quality={90}
+                    style={{
                       width: '100%',
+                      aspectRatio: `${card.imageWidth} / ${card.imageHeight}`,
+                      height: 'auto',
+                      //objectFit: 'cover',
                       position: 'relative',
                       top: '3px',
-                      marginTop: '30px',
                     }}
                   />
                 )}

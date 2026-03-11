@@ -282,6 +282,8 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 {
                   imageUrl: '/quiz/step1.webp',
                   bgColor: '#e9e9e9ff',
+                  imageWidth: 560,
+                  imageHeight: 440,
 
                   title: i18n._('Smart Start'),
                   titleColor: '#fff',
@@ -336,6 +338,8 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 {
                   quizAnimation: 'step2',
                   bgColor: '#02b1ff',
+                  imageWidth: 1020,
+                  imageHeight: 800,
 
                   title: i18n._('Personal Plan'),
                   titleColor: '#111',
@@ -349,6 +353,8 @@ export default function LandingPage({ lang }: LandingPageProps) {
 
                 {
                   videoUrl: '/call/ash/talk1.webm',
+                  imageWidth: 1020,
+                  imageHeight: 800,
                   bgColor: 'rgb(112, 59, 227)',
 
                   title: i18n._('Practice'),
