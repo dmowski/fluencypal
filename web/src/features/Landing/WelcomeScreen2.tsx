@@ -87,7 +87,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
           fill
           fetchPriority="high"
           loading="eager"
-          sizes="1000px"
+          sizes="100vw"
           style={{
             width: '100%',
             height: '100%',
@@ -117,15 +117,15 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
         <Image
           src={'/landing/preview/space2Mobile.jpg'}
           alt={'Page background'}
-          fill
           fetchPriority="high"
           loading="eager"
-          sizes="400px"
+          width={600}
+          height={1072}
           quality={90}
           style={{
             width: '100%',
+            aspectRatio: '600 / 1072',
             height: '100%',
-
             objectFit: 'cover',
           }}
         />
