@@ -83,7 +83,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
       >
         <Image
           src={'/landing/preview/space2.webp'}
-          alt={'space background'}
+          alt={'Space background'}
           fill
           fetchPriority="high"
           loading="eager"
@@ -96,7 +96,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
         />
       </Stack>
 
-      <Stack
+      {/*<Stack
         sx={{
           position: 'absolute',
           top: 0,
@@ -129,7 +129,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
             objectFit: 'cover',
           }}
         />
-      </Stack>
+      </Stack>*/}
 
       <Stack
         sx={{
@@ -348,7 +348,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                   )}
                   <Stack
                     sx={{
-                      background: `#000`,
+                      background: 'rgba(10, 18, 30, 1)',
                       position: 'absolute',
                       '--padding': '0px',
                       width: 'calc(100% + var(--padding) * 2)',

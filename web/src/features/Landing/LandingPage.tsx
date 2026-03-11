@@ -207,7 +207,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             cards={[
               {
                 videoUrl: '/landing/preview/grammar2.webm',
-                imageUrl: '/landing/preview/grammar2.webp',
+                //imageUrl: '/landing/preview/grammar2.webp',
                 alt: i18n._('Grammar Correction Preview'),
               },
               {
