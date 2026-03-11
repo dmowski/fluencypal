@@ -106,6 +106,8 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
           src={'/landing/preview/space2Mobile.jpg'}
           alt={'space background'}
           fill
+          fetchPriority="high"
+          loading="eager"
           sizes="600px"
           style={{
             width: '100%',
@@ -267,6 +269,8 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                         alt={card.alt}
                         width={240}
                         height={522}
+                        fetchPriority="high"
+                        loading="eager"
                         style={{
                           borderRadius: 'inherit',
                           width: '100%',
@@ -300,6 +304,8 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                             width={240}
                             height={522}
                             quality={40}
+                            fetchPriority="high"
+                            loading="eager"
                             style={{
                               borderRadius: 'inherit',
                               width: '100%',
