@@ -33,7 +33,6 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
   openMyPracticeLinkTitle,
 }) => {
   //const bgUrl = "https://cdn.midjourney.com/7813fa3b-6e7f-42c6-b04d-ee77a5058aad/0_0.png";
-  const bgUrl = '/landing/preview/space2.webp';
   return (
     <Stack
       sx={{
@@ -74,7 +73,6 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
           overflow: 'hidden',
           height: '100%',
           zIndex: -2,
-          background: `url('${bgUrl}') no-repeat center center`,
           backgroundSize: 'cover',
           opacity: 0.5,
           '@media (max-width: 600px)': {
@@ -82,7 +80,21 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
             background: 'none',
           },
         }}
-      />
+      >
+        <Image
+          src={'/landing/preview/space2.webp'}
+          alt={'space background'}
+          fill
+          fetchPriority="high"
+          loading="eager"
+          sizes="1000px"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        />
+      </Stack>
 
       <Stack
         sx={{
