@@ -635,11 +635,13 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       return;
     }
     if (!auth.uid) {
-      throw new Error('ensureSurveyDocExists | No auth uid');
+      console.warn('ensureSurveyDocExists | No auth uid, skipping survey doc creation');
+      return;
     }
 
     if (!surveyDocRef) {
-      throw new Error('ensureSurveyDocExists | No survey doc ref');
+      console.error('ensureSurveyDocExists | No survey doc ref');
+      return;
     }
 
     const doc = await getDoc(surveyDocRef);
@@ -830,6 +832,10 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     }
 
     if (currentStep === 'before_recordAbout') {
+      ensureSurveyDocExists();
+    }
+
+    if (currentStep === 'recordAbout') {
       ensureSurveyDocExists();
     }
 
