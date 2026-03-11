@@ -114,6 +114,8 @@ function useProvideAuth(): AuthContext {
       window.localStorage.removeItem(LOCALSTORAGE_EMAIL_KEY);
       cleanEmailSignInUrl();
     } catch (error) {
+      alert('Failed to sign in with email link. Please try again.');
+
       console.error('Error confirming email link sign-in', error);
       throw error;
     }
