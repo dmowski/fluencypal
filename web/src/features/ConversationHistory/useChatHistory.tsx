@@ -73,14 +73,15 @@ function useProvideChatHistory(): ChatHistoryContextType {
     messageOrder: MessagesOrderMap,
   ) => {
     const conversationDoc = getConversationDoc(conversationId);
+
     await setDoc(
       conversationDoc,
       {
-        messages,
-        messagesCount: messages.length,
+        messages: messages || [],
+        messagesCount: messages.length || 0,
         updatedAt: Date.now(),
         updatedAtIso: new Date().toISOString(),
-        messageOrder,
+        messageOrder: messageOrder || {},
       },
       { merge: true },
     );
