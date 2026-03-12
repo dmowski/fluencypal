@@ -10,7 +10,7 @@ import { UserSourceProvider } from '@/features/Analytics/useUserSource';
 import { UrlStateProvider } from '@/features/Url/UrlStateContext';
 import { globalInlineCss } from './globalInlineCss';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' });
+const inter = Inter({ subsets: ['latin'], display: 'swap', preload: false });
 
 export default async function RootLayout({
   children,
