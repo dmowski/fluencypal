@@ -17,6 +17,7 @@ import { useSettings } from '../Settings/useSettings';
 import { useRouter } from 'next/navigation';
 import { getUrlStart } from '../Lang/getUrlStart';
 import { useLingui } from '@lingui/react';
+import { useIsTgInitialized } from '@/app/telegramProvider';
 
 interface TgAppPageProps {
   lang: SupportedLanguage;
@@ -27,6 +28,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   const [isTelegramAuthLoading, setIsTelegramAuthLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const auth = useAuth();
+  const isSdkInitialized = useIsTgInitialized();
 
   const plan = usePlan();
   const settings = useSettings();
@@ -78,10 +80,12 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
         const token = res.token;
         const result = await auth.signInWithCustomToken(token);
         if (result.error) {
+          console.log('rrrr');
           setError(result.error || i18n._('Unknown error during sign-in'));
         }
       }
     } catch (err: any) {
+      console.log('catch error', err);
       setError(err?.message || i18n._('Unknown error'));
     } finally {
       setIsTelegramAuthLoading(false);
@@ -97,7 +101,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   }, []);
 
   useEffect(() => {
-    if (isInitializing.current || auth.isAuthorized || auth.loading) {
+    if (isInitializing.current || auth.isAuthorized || auth.loading || !isSdkInitialized) {
       return;
     }
 
@@ -111,7 +115,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
     } else {
       setError(i18n._('Not running inside Telegram App'));
     }
-  }, [raw, auth.isAuthorized, auth.loading]);
+  }, [raw, auth.isAuthorized, auth.loading, isSdkInitialized]);
 
   return (
     <Stack sx={{}}>
