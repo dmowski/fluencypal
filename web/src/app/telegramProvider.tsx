@@ -1,6 +1,6 @@
 'use client';
 
-import { type PropsWithChildren, useEffect, useState } from 'react';
+import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { isTMA } from '@telegram-apps/sdk-react';
 import { initTg } from '@/features/Telegram/init';
@@ -26,7 +26,67 @@ function TelegramProviderInner({ children }: PropsWithChildren) {
 export function TelegramProvider(props: PropsWithChildren) {
   const didMount = useDidMount();
   const isTelegramApp = isTMA();
-  isTelegramApp && initTg();
+  const [isInit, setIsInit] = useState(false);
+  const isInitializing = useRef(false);
 
-  return didMount && isTelegramApp ? <TelegramProviderInner {...props} /> : <>{props.children}</>;
+  const initTgOnce = async () => {
+    if (isInitializing.current) return;
+    isInitializing.current = true;
+
+    await initTg();
+    setIsInit(true);
+
+    // @ts-expect-error
+    window.isTgSdkInitialized = true;
+  };
+
+  useEffect(() => {
+    isTelegramApp && initTgOnce();
+  }, [isTelegramApp]);
+
+  return didMount && isTelegramApp && isInit ? (
+    <TelegramProviderInner {...props} />
+  ) : (
+    <>{props.children}</>
+  );
 }
+
+export const isTgInitialized = () => {
+  if (typeof window === 'undefined') return false;
+  // @ts-expect-error
+  return !!window.isTgSdkInitialized;
+};
+
+export const waitForTgInitialization = () => {
+  return new Promise<void>((resolve) => {
+    if (isTgInitialized()) {
+      resolve();
+    } else {
+      const checkInterval = setInterval(() => {
+        if (isTgInitialized()) {
+          clearInterval(checkInterval);
+          resolve();
+        }
+      }, 100);
+    }
+  });
+};
+
+export const useIsTgInitialized = () => {
+  const [isInitialized, setIsInitialized] = useState(isTgInitialized());
+
+  useEffect(() => {
+    if (isInitialized) return;
+
+    const checkInterval = setInterval(() => {
+      if (isTgInitialized()) {
+        clearInterval(checkInterval);
+        setIsInitialized(true);
+      }
+    }, 100);
+
+    return () => clearInterval(checkInterval);
+  }, [isInitialized]);
+
+  return isInitialized;
+};

@@ -85,7 +85,7 @@ async function internalInit(options: {
   }
 }
 
-export const initTg = () => {
+export const initTg = async () => {
   const inWindow = typeof window !== 'undefined';
   // @ts-expect-error
   if (!inWindow || window.initInternalTg) return;
@@ -93,7 +93,7 @@ export const initTg = () => {
   // @ts-expect-error
   window.initInternalTg = true;
 
-  mockEnv().then(() => {
+  await mockEnv().then(async () => {
     try {
       const launchParams = retrieveLaunchParams();
       const { tgWebAppPlatform: platform } = launchParams;
@@ -101,7 +101,7 @@ export const initTg = () => {
         (launchParams.tgWebAppStartParam || '').includes('debug') ||
         process.env.NODE_ENV === 'development';
 
-      internalInit({
+      await internalInit({
         debug,
         eruda: debug && ['ios', 'android'].includes(platform),
         mockForMacOS: platform === 'macos',

@@ -1,4 +1,5 @@
 'use client';
+import { useIsTgInitialized } from '@/app/telegramProvider';
 import {
   backButton,
   isTMA,
@@ -21,10 +22,15 @@ function useProvideTgNavigation(): TgNavigationContextType {
   const searchParams = useSearchParams();
   const path = usePathname();
   const searchParamsString = searchParams.toString();
+  const isTgInitialized = useIsTgInitialized();
 
   useEffect(() => {
     const isTelegramApp = isTMA();
     if (!isTelegramApp) {
+      return;
+    }
+
+    if (!isTgInitialized) {
       return;
     }
 
@@ -47,7 +53,7 @@ function useProvideTgNavigation(): TgNavigationContextType {
         }
       }
     }
-  }, [searchParamsString, path]);
+  }, [searchParamsString, path, isTgInitialized]);
 
   const [backStack, setBackStack] = useState<(() => void)[]>([]);
   const backHandler = () => {
@@ -60,6 +66,7 @@ function useProvideTgNavigation(): TgNavigationContextType {
   };
 
   useEffect(() => {
+    if (!isTgInitialized) return;
     const isTelegramApp = isTMA();
     if (!isTelegramApp) return;
     const removeBackEventListener = () => {
@@ -75,10 +82,11 @@ function useProvideTgNavigation(): TgNavigationContextType {
     return () => {
       removeBackEventListenerFn();
     };
-  }, [backStack, route]);
+  }, [backStack, route, isTgInitialized]);
 
   const isRequestedFullScreen = useRef(false);
   useEffect(() => {
+    if (!isTgInitialized) return;
     const isTelegramApp = isTMA();
     if (!isTelegramApp) return;
 
@@ -107,7 +115,7 @@ function useProvideTgNavigation(): TgNavigationContextType {
       swipeBehavior.enableVertical.ifAvailable?.();
       closingBehavior.disableConfirmation.ifAvailable?.();
     };
-  }, []);
+  }, [isTgInitialized]);
 
   const addBackHandler = (newHandler: () => void): (() => void) => {
     const isTelegramApp = isTMA();
