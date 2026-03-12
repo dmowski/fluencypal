@@ -61,7 +61,7 @@ export async function POST(req: Request) {
 
     await call('sendMessage', {
       chat_id: msg.chat.id,
-      text: `✅ Payment received! Thanks for your purchase.`,
+      text: `Thank you for your purchase. I always appreciate it. Your subscription will be activated within a minute. If you have any questions, please don't hesitate to contact our in-app support team.`,
     });
 
     await sentSupportTelegramMessage({
