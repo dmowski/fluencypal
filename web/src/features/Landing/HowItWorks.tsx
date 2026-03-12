@@ -187,6 +187,7 @@ export const HowItWorks = (props: HowItWorksProps) => {
                     width={card.imageWidth}
                     height={card.imageHeight}
                     quality={90}
+                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 80vw, 560px"
                     style={{
                       width: '100%',
                       aspectRatio: `${card.imageWidth} / ${card.imageHeight}`,
