@@ -44,11 +44,7 @@ export function TelegramProvider(props: PropsWithChildren) {
     isTelegramApp && initTgOnce();
   }, [isTelegramApp]);
 
-  return didMount && isTelegramApp && isInit ? (
-    <TelegramProviderInner {...props} />
-  ) : (
-    <>{props.children}</>
-  );
+  return didMount && isTelegramApp ? <TelegramProviderInner {...props} /> : <>{props.children}</>;
 }
 
 export const isTgInitialized = () => {
