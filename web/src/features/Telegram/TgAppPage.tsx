@@ -87,6 +87,8 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
     } catch (err: any) {
       console.log('catch error', err);
       setError(err?.message || i18n._('Unknown error'));
+      setIsTelegramAuthLoading(false);
+      throw err;
     } finally {
       setIsTelegramAuthLoading(false);
     }
