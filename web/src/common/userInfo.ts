@@ -11,8 +11,8 @@ export interface AdvancedUserRecord {
 }
 
 export interface AiUserInfo {
-  advancedRecords: AdvancedUserRecord[];
-  grammarRecordsMap?: Record<SupportedLanguage, AdvancedUserRecord[] | undefined>;
+  advancedRecords: AdvancedUserRecord[] | null;
+  grammarRecordsMap: Record<SupportedLanguage, AdvancedUserRecord[] | undefined> | null;
   createdAt: number;
   updatedAt: number;
   firstBotMessages?: FirstBotConversationMessage[];

@@ -19,7 +19,7 @@ export const AiKnowledgeModal = ({ onClose }: AiKnowledgeModalProps) => {
   const aiUserInfo = useAiUserInfo();
 
   const recordsSignature =
-    aiUserInfo.userInfo?.advancedRecords.map((r) => r.value)?.join('|') || '';
+    aiUserInfo.userInfo?.advancedRecords?.map((r) => r.value)?.join('|') || '';
 
   const [recordsDraft, setRecordsDraft] = useState<AdvancedUserRecord[]>([]);
   const [isSaving, setIsSaving] = useState(false);
