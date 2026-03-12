@@ -62,7 +62,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
         }}
       />
 
-      <Stack
+      {/* <Stack
         sx={{
           position: 'absolute',
           backgroundColor: `#10131a`,
@@ -96,7 +96,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
         />
       </Stack>
 
-      {/*<Stack
+      <Stack
         sx={{
           position: 'absolute',
           top: 0,
