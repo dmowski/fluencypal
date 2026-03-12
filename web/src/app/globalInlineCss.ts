@@ -1,7 +1,5 @@
 export const globalInlineCss = `
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
 :root {
   --background: rgba(10, 18, 30, 1);
   --foreground: #eaf3f7;
@@ -35,7 +33,7 @@ html {
 }
 
 * {
-  font-family: 'Inter', 'Roboto', sans-serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   box-sizing: border-box;
 }
 
