@@ -1,7 +1,7 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import { darkTheme } from '../features/uiKit/theme';
-import { Inter, Old_Standard_TT } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { WindowSizesProvider } from '@/features/Layout/useWindowSizes';
 import { initLingui } from '@/initLingui';
 import { LinguiClientProvider } from '@/features/Lang/LinguiClientProvider';
@@ -11,12 +11,6 @@ import { UrlStateProvider } from '@/features/Url/UrlStateContext';
 import { globalInlineCss } from './globalInlineCss';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
-const oldStandardTT = Old_Standard_TT({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
-  display: 'swap',
-});
 
 export default async function RootLayout({
   children,
