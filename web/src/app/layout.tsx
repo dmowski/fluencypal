@@ -1,5 +1,4 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import './globals.css';
 import { ThemeProvider } from '@mui/material/styles';
 import { darkTheme } from '../features/uiKit/theme';
 import { Inter, Old_Standard_TT } from 'next/font/google';
@@ -9,6 +8,7 @@ import { LinguiClientProvider } from '@/features/Lang/LinguiClientProvider';
 import { allMessages } from '@/appRouterI18n';
 import { UserSourceProvider } from '@/features/Analytics/useUserSource';
 import { UrlStateProvider } from '@/features/Url/UrlStateContext';
+import { globalInlineCss } from './globalInlineCss';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 const oldStandardTT = Old_Standard_TT({
@@ -27,19 +27,26 @@ export default async function RootLayout({
   initLingui(supportedLang);
 
   return (
-    <UserSourceProvider>
-      <ThemeProvider theme={darkTheme}>
-        <WindowSizesProvider>
-          <AppRouterCacheProvider options={{ key: 'css' }}>
-            <LinguiClientProvider
-              initialLocale={supportedLang}
-              initialMessages={allMessages[supportedLang]!}
-            >
-              <UrlStateProvider>{children}</UrlStateProvider>
-            </LinguiClientProvider>
-          </AppRouterCacheProvider>
-        </WindowSizesProvider>
-      </ThemeProvider>
-    </UserSourceProvider>
+    <>
+      <style
+        href="app-global-inline-css"
+        precedence="default"
+        dangerouslySetInnerHTML={{ __html: globalInlineCss }}
+      />
+      <UserSourceProvider>
+        <ThemeProvider theme={darkTheme}>
+          <WindowSizesProvider>
+            <AppRouterCacheProvider options={{ key: 'css' }}>
+              <LinguiClientProvider
+                initialLocale={supportedLang}
+                initialMessages={allMessages[supportedLang]!}
+              >
+                <UrlStateProvider>{children}</UrlStateProvider>
+              </LinguiClientProvider>
+            </AppRouterCacheProvider>
+          </WindowSizesProvider>
+        </ThemeProvider>
+      </UserSourceProvider>
+    </>
   );
 }
