@@ -31,6 +31,7 @@ export const JustTalkCard = () => {
     await audio.initAudio();
     setIsCallStarting(true);
 
+    /*
     try {
       //audio.music.stop();
       //audio.music.setVolume(0.5);
@@ -43,23 +44,25 @@ export const JustTalkCard = () => {
     } catch (e) {
       console.error('Error playing call start music', e);
     }
+    */
 
     try {
-      /*const mediaStream = await getMediaAudioStreams();
+      const mediaStream = await getMediaAudioStreams();
       if (!mediaStream) {
         throw new Error('Could not access microphone');
-      }*/
+      }
 
       //await sleep(100);
       await getMediaVideoStreams();
     } catch (e) {
-      console.error('Microphone permission denied. error', e);
+      console.warn('Microphone permission denied. error', e);
       alert(
         i18n._(
-          'Microphone permission is required to start the call. Please allow microphone access and try again.',
+          `Microphone access is required to start the call.
+Please allow microphone permission in your browser settings, refresh the page, and try again.`,
         ),
       );
-      window.location.reload();
+      // window.location.reload();
       setIsCallStarting(false);
       return;
     }
