@@ -347,6 +347,9 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                             top: 0,
                             left: 0,
                             zIndex: 1,
+                            '@media (max-width: 700px)': {
+                              display: 'none',
+                            },
                           }}
                         >
                           <Image
