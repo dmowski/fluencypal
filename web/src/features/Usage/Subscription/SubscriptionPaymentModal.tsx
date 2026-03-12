@@ -43,7 +43,6 @@ export const SubscriptionPaymentModal = () => {
   const notifications = useNotifications();
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
 
-  const [isPaymentSuccess, setPaymentSuccess] = useUrlState('paymentSuccess', '', false);
   const supportedLang = settings.pageLanguageCode || 'en';
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [amountHoursToAdd, setAmountHoursToAdd] = useState<0 | HoursPackage>(0);
@@ -179,8 +178,6 @@ export const SubscriptionPaymentModal = () => {
   if (!usage.isShowPaymentModal) return null;
 
   const closePaymentSuccessModal = async () => {
-    await setPaymentSuccess('');
-    await sleep(50);
     usage.togglePaymentModal(false);
   };
 
@@ -224,9 +221,9 @@ export const SubscriptionPaymentModal = () => {
     }
   };
 
-  if (isPaymentSuccess) {
+  if (usage.isSuccessPayment) {
     return (
-      <CustomModal isOpen={!!isPaymentSuccess} onClose={closePaymentSuccessModal}>
+      <CustomModal isOpen={true} onClose={closePaymentSuccessModal}>
         <PaymentSuccess onClose={closePaymentSuccessModal} />
       </CustomModal>
     );

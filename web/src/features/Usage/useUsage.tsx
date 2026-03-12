@@ -19,7 +19,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { initWelcomeBalanceRequest } from './initWelcomeBalanceRequest';
 import { createUsageLog } from './createUsageLog';
 import dayjs from 'dayjs';
-import { sentPaymentTgMessage } from './sentTgMessage';
+import { useUrlState } from '../Url/useUrlState';
+import { sleep } from '@/libs/sleep';
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
@@ -27,7 +28,7 @@ interface UsageContextType extends TotalUsageInfo {
   paymentLogs?: PaymentLog[];
   setUsageLogs: Dispatch<SetStateAction<UsageLog[]>>;
   isShowPaymentModal: boolean;
-  togglePaymentModal: (isOpen: boolean, isSuccessPayment?: boolean) => void;
+  togglePaymentModal: (isOpen: boolean) => void;
   isSuccessPayment: boolean;
   loading: boolean;
   balanceHours: number;
@@ -38,45 +39,15 @@ const UsageContext = createContext<UsageContextType | null>(null);
 
 function useProvideUsage(): UsageContextType {
   const [usageLogs, setUsageLogs] = useState<UsageLog[]>([]);
-  const [isShowPaymentModal, setIsShowPaymentModal] = useState(false);
-  const [isSuccessPayment, setIsSuccessPayment] = useState(false);
+  const [isShowPaymentModal, setIsShowPaymentModal] = useUrlState('paymentModal', false, true);
+  const [isSuccessPayment, setIsSuccessPayment] = useUrlState('paymentSuccess', false, true);
   const [isWelcomeBalanceInitialized, setIsWelcomeBalanceInitialized] = useState(false);
-  const searchParams = useSearchParams();
-  const isPaymentModalInUrl = searchParams.get('paymentModal') === 'true';
-  const router = useRouter();
 
-  useEffect(() => {
-    if (isPaymentModalInUrl && isPaymentModalInUrl !== isShowPaymentModal) {
-      togglePaymentModal(true, isSuccessPayment);
-      return;
-    }
-
-    if (!isPaymentModalInUrl && isShowPaymentModal) {
-      togglePaymentModal(false);
-    }
-  }, [isPaymentModalInUrl]);
-
-  const togglePaymentModal = async (isOpen: boolean, isSuccessPayment?: boolean) => {
+  const togglePaymentModal = async (isOpen: boolean) => {
     setIsShowPaymentModal(isOpen);
 
-    if (isSuccessPayment !== undefined) {
-      setIsSuccessPayment(isSuccessPayment);
-    }
-
-    const searchParams = new URLSearchParams(window.location.search);
-
-    if (isOpen) {
-      searchParams.set('paymentModal', 'true');
-      const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-      router.push(`${newUrl}`, { scroll: false });
-    } else {
-      searchParams.delete('paymentModal');
-      searchParams.delete('paymentSuccess');
-      searchParams.delete('session_id');
-      searchParams.delete('paymentCanceled');
-
-      const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-      router.push(newUrl, { scroll: false });
+    if (!isOpen) {
+      await sleep(500);
       setIsSuccessPayment(false);
     }
   };
