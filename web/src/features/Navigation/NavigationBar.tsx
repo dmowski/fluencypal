@@ -16,8 +16,6 @@ import { useBattle } from '../Game/Battle/useBattle';
 import { sleep } from '@/libs/sleep';
 import { useAccess } from '../Usage/useAccess';
 import { useRouter } from 'next/navigation';
-import { langFlags } from '../Lang/lang';
-import { getUrlStart } from '../Lang/getUrlStart';
 import { DevButton } from './DevButton';
 
 export interface IconProps {
@@ -42,6 +40,11 @@ export const NavigationBar: React.FC = () => {
   const [internalPageType, setInternalPageType] = useState<PageType | null>(null);
 
   const setCurrentPage = async (pageType: PageType) => {
+    const isAlreadyOnPage = appNavigation.currentPage === pageType;
+    if (isAlreadyOnPage) {
+      return;
+    }
+
     setInternalPageType(pageType);
     await sleep(10);
     appNavigation.setCurrentPage(pageType);
