@@ -212,7 +212,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
               },
               {
                 videoUrl: '/landing/preview/camera2.webm',
-                imageUrl: '/landing/preview/camera2.webp',
+                //imageUrl: '/landing/preview/camera2.webp',
                 alt: i18n._('Webcam Feedback Preview'),
               },
               {

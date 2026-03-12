@@ -277,23 +277,61 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                 >
                   {card.imageUrl && !card.videoUrl && (
                     <Stack sx={{ ...contentStyle, position: 'relative' }}>
-                      <Image
-                        src={card.imageUrl}
-                        alt={card.alt}
-                        width={240}
-                        height={522}
-                        fetchPriority="high"
-                        loading="eager"
-                        style={{
-                          borderRadius: 'inherit',
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover',
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
+                      <Stack
+                        sx={{
+                          ...contentStyle,
+                          borderRadius: borderRadius,
+                          '@media (max-width: 700px)': {
+                            display: 'none',
+                          },
                         }}
-                      />
+                      >
+                        <Image
+                          src={card.imageUrl}
+                          alt={card.alt}
+                          width={240}
+                          height={522}
+                          fetchPriority="high"
+                          loading="eager"
+                          style={{
+                            borderRadius: 'inherit',
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                          }}
+                        />
+                      </Stack>
+
+                      <Stack
+                        sx={{
+                          display: 'none',
+                          borderRadius: borderRadius,
+                          '@media (max-width: 700px)': {
+                            display: 'flex',
+                          },
+                        }}
+                      >
+                        <Image
+                          src={card.imageUrl}
+                          alt={card.alt}
+                          width={165}
+                          height={360}
+                          fetchPriority="high"
+                          loading="eager"
+                          style={{
+                            borderRadius: 'inherit',
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                          }}
+                        />
+                      </Stack>
                     </Stack>
                   )}
                   {card.videoUrl && (
