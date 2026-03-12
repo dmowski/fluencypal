@@ -1,7 +1,6 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import { darkTheme } from '../features/uiKit/theme';
-import { Inter } from 'next/font/google';
 import { WindowSizesProvider } from '@/features/Layout/useWindowSizes';
 import { initLingui } from '@/initLingui';
 import { LinguiClientProvider } from '@/features/Lang/LinguiClientProvider';
@@ -9,8 +8,6 @@ import { allMessages } from '@/appRouterI18n';
 import { UserSourceProvider } from '@/features/Analytics/useUserSource';
 import { UrlStateProvider } from '@/features/Url/UrlStateContext';
 import { globalInlineCss } from './globalInlineCss';
-
-const inter = Inter({ subsets: ['latin'], display: 'swap', preload: false });
 
 export default async function RootLayout({
   children,
