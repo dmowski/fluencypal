@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from '@mui/material';
-import Galaxy from '../uiKit/Animations/Galaxy';
+//import Galaxy from '../uiKit/Animations/Galaxy';
 import { buttonStyle, titleFontStyle } from './landingSettings';
 
 interface CtaBlockProps {
@@ -70,7 +70,7 @@ export const CtaBlock: React.FC<CtaBlockProps> = ({
         </Button>
       </Stack>
 
-      <Stack
+      {/* <Stack
         sx={{
           width: '100%',
           height: '1300px',
@@ -90,6 +90,7 @@ export const CtaBlock: React.FC<CtaBlockProps> = ({
       >
         <Galaxy />
       </Stack>
+        */}
     </Stack>
   );
 };
