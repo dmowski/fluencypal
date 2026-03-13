@@ -3,8 +3,8 @@ import { RefObject, useEffect } from 'react';
 import { ConversationInstance } from '../ConversationInstance/types';
 import { useAccess } from '@/features/Usage/useAccess';
 
-const LIMITED_MESSAGES_COUNT = 9;
-const LIMITED_VOICE_MESSAGES_COUNT = 4;
+const LIMITED_MESSAGES_COUNT = 30;
+const LIMITED_VOICE_MESSAGES_COUNT = 50;
 
 export const useLimits = (
   communicatorRef: RefObject<ConversationInstance | undefined>,
