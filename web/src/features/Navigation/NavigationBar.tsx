@@ -1,7 +1,14 @@
 'use client';
 import { Badge, Link, Stack, Typography } from '@mui/material';
 import { Home, LucideProps, User, Users, VenetianMask } from 'lucide-react';
-import { ForwardRefExoticComponent, RefAttributes, useEffect, useMemo, useState } from 'react';
+import {
+  ForwardRefExoticComponent,
+  RefAttributes,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { useLingui } from '@lingui/react';
 import { useWindowSizes } from '../Layout/useWindowSizes';
 import { PageType } from './types';
@@ -13,7 +20,6 @@ import { AppMode } from '@/common/userSettings';
 import { Avatar } from '../Game/Avatar';
 import { useChatList } from '../Chat/useChatList';
 import { useBattle } from '../Game/Battle/useBattle';
-import { sleep } from '@/libs/sleep';
 import { useAccess } from '../Usage/useAccess';
 import { useRouter } from 'next/navigation';
 import { DevButton } from './DevButton';
@@ -38,28 +44,25 @@ export const NavigationBar: React.FC = () => {
   const router = useRouter();
 
   const [internalPageType, setInternalPageType] = useState<PageType | null>(null);
+  const internalPageRef = useRef<PageType | null>(appNavigation.currentPage);
 
   const setCurrentPage = async (pageType: PageType) => {
-    const isAlreadyOnPage = appNavigation.currentPage === pageType;
-    if (isAlreadyOnPage) {
+    setInternalPageType(pageType);
+    internalPageRef.current = pageType;
+    const searchParams = new URLSearchParams();
+    searchParams.set('page', pageType);
+    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+    const currentUrl = `${window.location.pathname}${window.location.search}`;
+    if (currentUrl === newUrl) {
       return;
     }
-
-    setInternalPageType(pageType);
-    await sleep(10);
-    appNavigation.setCurrentPage(pageType);
-
-    setTimeout(() => {
-      const searchParams = new URLSearchParams();
-      searchParams.set('page', pageType);
-      const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-      router.push(newUrl);
-    }, 100);
+    router.push(newUrl);
   };
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setInternalPageType(null);
+      internalPageRef.current = null;
     }, 300);
     return () => clearTimeout(timeout);
   }, [internalPageType]);
