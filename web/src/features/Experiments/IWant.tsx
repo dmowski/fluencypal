@@ -7,6 +7,7 @@ import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { ChevronRight, Trash, Wand } from 'lucide-react';
 import { fullEnglishLanguageName, SupportedLanguage } from '../Lang/lang';
 import { useLingui } from '@lingui/react';
+import { useConversationAudio } from '../Audio/useConversationAudio';
 
 interface IWantResponse {
   resultMarkdown?: string;
@@ -43,6 +44,7 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
   const [error, setError] = useState('');
   const [resultMarkdown, setResultMarkdown] = useState('');
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const audio = useConversationAudio();
 
   const imagePreview = useMemo(() => {
     if (!selectedFile) {
@@ -60,6 +62,7 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
   }, [imagePreview]);
 
   const handleChooseFile = () => {
+    audio.initAudio();
     setError('');
     setResultMarkdown('');
     setSelectedFile(null);
