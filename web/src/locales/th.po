@@ -2014,7 +2014,7 @@ msgstr ""
 "ตามข้อมูลที่คุณให้ไว้ FluencyPal "
 "จะสร้างแผนการเรียนรู้เฉพาะบุคคลสำหรับคุณโดยเฉพาะ"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:252
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
 #. js-lingui-explicit-id
 msgid ""
 "Based on your recent conversations, here are some tips to improve your "
@@ -2669,7 +2669,7 @@ msgid "Communication & Leadership"
 msgstr "การสื่อสารและภาวะผู้นำ"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
-#: src/features/Navigation/NavigationBar.tsx:100
+#: src/features/Navigation/NavigationBar.tsx:106
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "ชุมชน"
@@ -3120,6 +3120,11 @@ msgstr "สร้างสถานการณ์การเล่นบทบ
 #. js-lingui-explicit-id
 msgid "Create Your Own Scenario"
 msgstr "สร้างสถานการณ์ของคุณเอง"
+
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:160
+#. js-lingui-explicit-id
+msgid "Creating your improvement..."
+msgstr "กำลังสร้างการพัฒนาของคุณ..."
 
 #: src/features/SEO/metadata.ts:175
 #. js-lingui-explicit-id
@@ -5951,8 +5956,8 @@ msgstr "คำแนะนำเพื่อเพิ่มความมั่
 msgid "Hobbies or interests"
 msgstr "งานอดิเรกหรือความสนใจ"
 
-#: src/features/Navigation/NavigationBar.tsx:82
-#: src/features/Navigation/NavigationBar.tsx:95
+#: src/features/Navigation/NavigationBar.tsx:88
+#: src/features/Navigation/NavigationBar.tsx:101
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "หน้าแรก"
@@ -6845,7 +6850,7 @@ msgstr ""
 "เป็นเกมทายคำที่เต็มไปด้วยชีวิตชีวาซึ่งคุณจะได้ฝึกฝนการอธิบายและคาดเดาคำต่าง "
 "ๆ อย่างสร้างสรรค์ เพิ่มความมั่นใจทางภาษาของคุณให้มากขึ้น"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:236
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:197
 #. js-lingui-explicit-id
 msgid "Improvements to your grammar"
@@ -7440,7 +7445,7 @@ msgstr "เรื่องราวภาษาอังกฤษแบบโต
 msgid "Interactive English Stories with Quiz Practice | FluencyPal"
 msgstr "อินเตอร์แอคทีฟสตอรี่ภาษาอังกฤษพร้อมฝึกแบบทดสอบ | FluencyPal"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:182
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:209
 #. js-lingui-explicit-id
 msgid "Interactive examples:"
 msgstr "Interactive examples: โต้ตอบตัวอย่าง:"
@@ -7595,6 +7600,13 @@ msgid ""
 msgstr ""
 "มันช่วยให้ฉันตอบคำถามเกี่ยวกับความสามารถในการเข้าถึงและการเพิ่มประสิทธิภาพกา"
 "รทำงานโดยไม่ตื่นตระหนก"
+
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:163
+#. js-lingui-explicit-id
+msgid ""
+"It might take about a minute to prepare rules and examples based on your "
+"conversation. Please wait."
+msgstr "อาจใช้เวลาประมาณหนึ่งนาทีในการเตรียมกฎและตัวอย่างตามการสนทนาของคุณ โปรดรอ"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:400
 #. js-lingui-explicit-id
@@ -8617,7 +8629,7 @@ msgstr "คำศัพท์ใหม่"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:261
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:288
 #: src/features/Game/Battle/BattleActionModal.tsx:402
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
@@ -8718,7 +8730,7 @@ msgstr "ไม่มีคำถามประจำวันสำหรับ
 msgid "No debates yet"
 msgstr "ยังไม่มีการอภิปราย"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:277
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
 #. js-lingui-explicit-id
 msgid "No grammar insights yet. Start chatting to get personalized tips!"
 msgstr ""
@@ -9082,13 +9094,6 @@ msgstr "เปิดในเบราว์เซอร์"
 #. js-lingui-explicit-id
 msgid "Open in Telegram"
 msgstr "เปิดใน Telegram"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:309
-#. js-lingui-explicit-id
-msgid "Open My Improvements"
-msgstr ""
-"\n"
-"เปิดการพัฒนาของฉัน\n"
 
 #: src/features/Auth/SignInForm.tsx:26
 #. js-lingui-explicit-id
@@ -9975,7 +9980,7 @@ msgstr "ฝึกแก้ไขปัญหาทางเทคนิคทา
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "ฝึกฝนคำศัพท์โดยการอธิบายและทายคำอย่างสร้างสรรค์"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:223
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:250
 #. js-lingui-explicit-id
 msgid "Practice with AI"
 msgstr "ฝึกฝนกับ AI"
@@ -10075,7 +10080,7 @@ msgstr "เตรียมสมอง"
 msgid "Preparing your game..."
 msgstr "กำลังเตรียมเกมของคุณ..."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:246
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:273
 #: src/features/Sentence/StoriesModal.tsx:649
 #. js-lingui-explicit-id
 msgid "Previous"
@@ -10172,8 +10177,8 @@ msgstr "การพัฒนาทักษะทางวิชาชีพ"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "ผู้เชี่ยวชาญที่เปลี่ยนจากสาขาอื่นไปยังวิศวกรรมส่วนหน้าผู้ใช้"
 
-#: src/features/Navigation/NavigationBar.tsx:88
-#: src/features/Navigation/NavigationBar.tsx:111
+#: src/features/Navigation/NavigationBar.tsx:94
+#: src/features/Navigation/NavigationBar.tsx:117
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "โปรไฟล์"
@@ -10808,7 +10813,7 @@ msgstr "โรบอทกำลังคิด"
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Goal/Quiz/QuizPage2.tsx:465
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:106
+#: src/features/Navigation/NavigationBar.tsx:112
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -11213,7 +11218,7 @@ msgstr "เรื่องสั้น"
 msgid "Shorter words and familiar vocabulary"
 msgstr "คำที่สั้นกว่าและคำศัพท์ที่คุ้นเคย"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:323
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
 #. js-lingui-explicit-id
 msgid "Show all improvements"
 msgstr "แสดงการปรับปรุงทั้งหมด"
@@ -14708,6 +14713,13 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:309
+#. js-lingui-explicit-id
+#~ msgid "Open My Improvements"
+#~ msgstr ""
+#~ "\n"
+#~ "เปิดการพัฒนาของฉัน\n"
 
 #: src/features/Dashboard/JustTalkCard.tsx:60
 #. js-lingui-explicit-id

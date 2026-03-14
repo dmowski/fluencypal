@@ -2003,7 +2003,7 @@ msgstr ""
 "Baserat på din introduktion kommer FluencyPal att skapa en personlig "
 "lektionsplan endast för dig."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:252
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
 #. js-lingui-explicit-id
 msgid ""
 "Based on your recent conversations, here are some tips to improve your "
@@ -2662,7 +2662,7 @@ msgid "Communication & Leadership"
 msgstr "Kommunikation & Ledarskap"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
-#: src/features/Navigation/NavigationBar.tsx:100
+#: src/features/Navigation/NavigationBar.tsx:106
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Gemenskap"
@@ -3108,6 +3108,11 @@ msgstr "Skapa ditt eget rollspelscenario"
 #. js-lingui-explicit-id
 msgid "Create Your Own Scenario"
 msgstr "Skapa ditt eget scenario"
+
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:160
+#. js-lingui-explicit-id
+msgid "Creating your improvement..."
+msgstr "Skapar din förbättring..."
 
 #: src/features/SEO/metadata.ts:175
 #. js-lingui-explicit-id
@@ -5926,8 +5931,8 @@ msgstr "Ledtrådar för att stärka ditt självförtroende"
 msgid "Hobbies or interests"
 msgstr "Hobbyer eller intressen"
 
-#: src/features/Navigation/NavigationBar.tsx:82
-#: src/features/Navigation/NavigationBar.tsx:95
+#: src/features/Navigation/NavigationBar.tsx:88
+#: src/features/Navigation/NavigationBar.tsx:101
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Hem"
@@ -6838,7 +6843,7 @@ msgstr ""
 "förklara och gissa ord på ett kreativt sätt, vilket stärker ditt språkliga "
 "självförtroende."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:236
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:197
 #. js-lingui-explicit-id
 msgid "Improvements to your grammar"
@@ -7420,7 +7425,7 @@ msgstr "Interaktiva engelska berättelser med quizövningar"
 msgid "Interactive English Stories with Quiz Practice | FluencyPal"
 msgstr "Interaktiva engelska berättelser med frågesportsövning | FluencyPal"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:182
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:209
 #. js-lingui-explicit-id
 msgid "Interactive examples:"
 msgstr "Interaktiva exempel:"
@@ -7575,6 +7580,15 @@ msgid ""
 msgstr ""
 "Det hjälpte mig att svara på frågor om tillgänglighet och "
 "prestandaoptimering utan panik."
+
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:163
+#. js-lingui-explicit-id
+msgid ""
+"It might take about a minute to prepare rules and examples based on your "
+"conversation. Please wait."
+msgstr ""
+"Det kan ta ungefär en minut att förbereda regler och exempel baserat på din "
+"konversation. Vänligen vänta."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:400
 #. js-lingui-explicit-id
@@ -8596,7 +8610,7 @@ msgstr "Nya Ord"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:261
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:288
 #: src/features/Game/Battle/BattleActionModal.tsx:402
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
@@ -8697,7 +8711,7 @@ msgstr "Ingen daglig fråga för idag"
 msgid "No debates yet"
 msgstr "Inga debatter ännu"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:277
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
 #. js-lingui-explicit-id
 msgid "No grammar insights yet. Start chatting to get personalized tips!"
 msgstr "Inga grammatikinsikter ännu. Börja chatta för att få personliga tips!"
@@ -9060,11 +9074,6 @@ msgstr "Öppna i webbläsare"
 #. js-lingui-explicit-id
 msgid "Open in Telegram"
 msgstr "Öppna i Telegram"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:309
-#. js-lingui-explicit-id
-msgid "Open My Improvements"
-msgstr "Öppna Mina Förbättringar"
 
 #: src/features/Auth/SignInForm.tsx:26
 #. js-lingui-explicit-id
@@ -9950,7 +9959,7 @@ msgstr "Öva på att felsöka ett tekniskt problem över telefonen"
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Öva ordförråd genom att kreativt beskriva och gissa ord"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:223
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:250
 #. js-lingui-explicit-id
 msgid "Practice with AI"
 msgstr "Öva med AI"
@@ -10050,7 +10059,7 @@ msgstr "Förbereder hjärnan"
 msgid "Preparing your game..."
 msgstr "Förbereder ditt spel..."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:246
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:273
 #: src/features/Sentence/StoriesModal.tsx:649
 #. js-lingui-explicit-id
 msgid "Previous"
@@ -10147,8 +10156,8 @@ msgstr "Professionell Utveckling"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Professionella som övergår från andra områden till frontend-utveckling"
 
-#: src/features/Navigation/NavigationBar.tsx:88
-#: src/features/Navigation/NavigationBar.tsx:111
+#: src/features/Navigation/NavigationBar.tsx:94
+#: src/features/Navigation/NavigationBar.tsx:117
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
@@ -10785,7 +10794,7 @@ msgstr "Robot tänker"
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Goal/Quiz/QuizPage2.tsx:465
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:106
+#: src/features/Navigation/NavigationBar.tsx:112
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -11192,7 +11201,7 @@ msgstr "kort berättelse"
 msgid "Shorter words and familiar vocabulary"
 msgstr "Kortare ord och bekant ordförråd"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:323
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
 #. js-lingui-explicit-id
 msgid "Show all improvements"
 msgstr "Visa alla förbättringar"
@@ -14691,6 +14700,11 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:309
+#. js-lingui-explicit-id
+#~ msgid "Open My Improvements"
+#~ msgstr "Öppna Mina Förbättringar"
 
 #: src/features/Dashboard/JustTalkCard.tsx:60
 #. js-lingui-explicit-id

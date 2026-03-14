@@ -2019,7 +2019,7 @@ msgstr ""
 "Dựa trên quá trình hướng dẫn, FluencyPal sẽ tạo ra một kế hoạch học tập cá "
 "nhân hóa chỉ dành cho bạn."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:252
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
 #. js-lingui-explicit-id
 msgid ""
 "Based on your recent conversations, here are some tips to improve your "
@@ -2680,7 +2680,7 @@ msgstr ""
 "Giao tiếp & Lãnh đạo\n"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
-#: src/features/Navigation/NavigationBar.tsx:100
+#: src/features/Navigation/NavigationBar.tsx:106
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Cộng đồng"
@@ -3125,6 +3125,11 @@ msgstr "Tạo Kịch Bản Giao Diễn Của Bạn"
 #. js-lingui-explicit-id
 msgid "Create Your Own Scenario"
 msgstr "Tạo Kịch Bản Của Bạn"
+
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:160
+#. js-lingui-explicit-id
+msgid "Creating your improvement..."
+msgstr "Đang tạo cải thiện của bạn..."
 
 #: src/features/SEO/metadata.ts:175
 #. js-lingui-explicit-id
@@ -5977,8 +5982,8 @@ msgstr "Gợi ý để tăng sự tự tin của bạn"
 msgid "Hobbies or interests"
 msgstr "Sở thích hoặc mối quan tâm"
 
-#: src/features/Navigation/NavigationBar.tsx:82
-#: src/features/Navigation/NavigationBar.tsx:95
+#: src/features/Navigation/NavigationBar.tsx:88
+#: src/features/Navigation/NavigationBar.tsx:101
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Trang chủ"
@@ -6899,7 +6904,7 @@ msgstr ""
 "và đoán từ một cách sáng tạo, mở rộng sự tự tin trong giao tiếp ngôn ngữ "
 "của bạn."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:236
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:197
 #. js-lingui-explicit-id
 msgid "Improvements to your grammar"
@@ -7482,7 +7487,7 @@ msgstr "Các Câu Chuyện Tiếng Anh Tương Tác Kèm Thực Hành Đố Vui"
 msgid "Interactive English Stories with Quiz Practice | FluencyPal"
 msgstr "Câu chuyện tiếng Anh tương tác với Thực hành bài kiểm tra | FluencyPal"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:182
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:209
 #. js-lingui-explicit-id
 msgid "Interactive examples:"
 msgstr "Các ví dụ tương tác:"
@@ -7637,6 +7642,15 @@ msgid ""
 msgstr ""
 "Nó đã giúp tôi trả lời các câu hỏi về khả năng tiếp cận và tối ưu hóa hiệu "
 "suất mà không hoảng loạn."
+
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:163
+#. js-lingui-explicit-id
+msgid ""
+"It might take about a minute to prepare rules and examples based on your "
+"conversation. Please wait."
+msgstr ""
+"Có thể mất khoảng một phút để chuẩn bị các quy tắc và ví dụ dựa trên cuộc "
+"trò chuyện của bạn. Vui lòng chờ."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:400
 #. js-lingui-explicit-id
@@ -8661,7 +8675,7 @@ msgstr "Từ mới"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:261
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:288
 #: src/features/Game/Battle/BattleActionModal.tsx:402
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
@@ -8762,7 +8776,7 @@ msgstr "Không có câu hỏi hàng ngày cho hôm nay"
 msgid "No debates yet"
 msgstr "Chưa có tranh luận nào"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:277
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
 #. js-lingui-explicit-id
 msgid "No grammar insights yet. Start chatting to get personalized tips!"
 msgstr ""
@@ -9133,11 +9147,6 @@ msgstr "Mở trong Trình duyệt"
 #. js-lingui-explicit-id
 msgid "Open in Telegram"
 msgstr "Mở trong Telegram"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:309
-#. js-lingui-explicit-id
-msgid "Open My Improvements"
-msgstr "Mở Cải Tiến Của Tôi"
 
 #: src/features/Auth/SignInForm.tsx:26
 #. js-lingui-explicit-id
@@ -10039,7 +10048,7 @@ msgstr "Thực hành khắc phục sự cố kỹ thuật qua điện thoại"
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Luyện tập từ vựng bằng cách mô tả sáng tạo và đoán từ"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:223
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:250
 #. js-lingui-explicit-id
 msgid "Practice with AI"
 msgstr "Luyện tập với AI"
@@ -10146,7 +10155,7 @@ msgstr "Chuẩn bị cho bộ não"
 msgid "Preparing your game..."
 msgstr "Đang chuẩn bị trò chơi của bạn..."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:246
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:273
 #: src/features/Sentence/StoriesModal.tsx:649
 #. js-lingui-explicit-id
 msgid "Previous"
@@ -10243,8 +10252,8 @@ msgstr "Phát Triển Chuyên Môn"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Chuyên gia chuyển đổi từ các lĩnh vực khác sang kỹ thuật frontend"
 
-#: src/features/Navigation/NavigationBar.tsx:88
-#: src/features/Navigation/NavigationBar.tsx:111
+#: src/features/Navigation/NavigationBar.tsx:94
+#: src/features/Navigation/NavigationBar.tsx:117
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Hồ sơ"
@@ -10894,7 +10903,7 @@ msgstr "Robot Đang suy nghĩ"
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Goal/Quiz/QuizPage2.tsx:465
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:106
+#: src/features/Navigation/NavigationBar.tsx:112
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -11302,7 +11311,7 @@ msgstr "truyện ngắn"
 msgid "Shorter words and familiar vocabulary"
 msgstr "Từ ngắn hơn và từ vựng quen thuộc"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:323
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
 #. js-lingui-explicit-id
 msgid "Show all improvements"
 msgstr "Hiển thị tất cả các cải tiến"
@@ -14835,6 +14844,11 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:309
+#. js-lingui-explicit-id
+#~ msgid "Open My Improvements"
+#~ msgstr "Mở Cải Tiến Của Tôi"
 
 #: src/features/Dashboard/JustTalkCard.tsx:60
 #. js-lingui-explicit-id
