@@ -21,6 +21,12 @@ export const GrammarImprovementRow = ({
 }) => {
   const rowHeight = '75px';
 
+  const maxTitleLength = 50;
+  const truncatedTitle =
+    record.value.length > maxTitleLength
+      ? record.value.slice(0, maxTitleLength) + '...'
+      : record.value;
+
   return (
     <Stack
       onClick={onClick}
@@ -38,6 +44,8 @@ export const GrammarImprovementRow = ({
         cursor: 'pointer',
         textAlign: 'left',
         flexDirection: 'row',
+        display: 'grid',
+        gridTemplateColumns: '1fr auto',
       }}
       component={'button'}
     >
@@ -51,7 +59,15 @@ export const GrammarImprovementRow = ({
         >
           {dayjs(createdAtDayIso).format('D MMMM')}
         </Typography>
-        <Typography>{record.value}</Typography>
+        <Typography
+          sx={
+            {
+              //textWrap: 'balance',
+            }
+          }
+        >
+          {truncatedTitle}
+        </Typography>
       </Stack>
       <ChevronRight size={'30px'} />
     </Stack>
