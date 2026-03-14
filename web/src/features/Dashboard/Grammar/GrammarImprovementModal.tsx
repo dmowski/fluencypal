@@ -1,7 +1,7 @@
 import { useLingui } from '@lingui/react';
 import { Button, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { ChevronLeft, ChevronRight, Loader } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight, Loader } from 'lucide-react';
 import { useTranslate } from '../../Translation/useTranslate';
 import { LoadingShapes } from '../../uiKit/Loading/LoadingShapes';
 import { Markdown } from '../../uiKit/Markdown/Markdown';
@@ -235,11 +235,13 @@ When user struggle with one example, try to switch to another example and come b
                     alignItems: 'flex-start',
                     flexDirection: 'row',
                     gap: '20px',
+                    width: '100%',
+                    justifyContent: 'space-between',
                   }}
                 >
                   <Button
                     color="info"
-                    variant="contained"
+                    variant="outlined"
                     size="large"
                     endIcon={isCallStarting ? <Loader /> : <VideocamIcon />}
                     sx={{
