@@ -206,19 +206,54 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
               gap: '12px',
             }}
           >
-            {imagePreview && <ImagePreview src={imagePreview} maxSize={120} />}
-
             <Stack
               sx={{
-                h2: {
-                  fontWeight: 800,
-                  fontSize: '52px',
-                  color: getColorBasedOnTitle(resultMarkdown),
-                },
+                position: 'relative',
               }}
             >
-              <Markdown variant="normal">{resultMarkdown}</Markdown>
+              <Stack
+                component={'img'}
+                src={imagePreview}
+                alt="Uploaded preview"
+                sx={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: '8px',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                }}
+              />
+              <Stack
+                sx={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  background: 'linear-gradient(180deg, rgba(0,0,0, 0.9) 0%, rgba(0,0,0,0) 100%)',
+                  borderRadius: '8px',
+                }}
+              ></Stack>
+
+              <Stack
+                sx={{
+                  position: 'absolute',
+                  top: '0',
+                  left: '0',
+                  width: '100%',
+                  height: '100%',
+                  padding: '10px 20px',
+                  h2: {
+                    fontWeight: 800,
+                    fontSize: '42px',
+                    color: getColorBasedOnTitle(resultMarkdown),
+                    paddingBottom: '10px',
+                  },
+                }}
+              >
+                <Markdown variant="normal">{resultMarkdown}</Markdown>
+              </Stack>
             </Stack>
+
             <Button
               variant={'contained'}
               color="info"
