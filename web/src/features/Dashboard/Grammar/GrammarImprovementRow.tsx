@@ -4,29 +4,22 @@ import { ChevronRight } from 'lucide-react';
 import { LoadingShapes } from '../../uiKit/Loading/LoadingShapes';
 import { GrammarImprovement } from './types';
 import dayjs from 'dayjs';
+import { AdvancedUserRecord } from '@/common/userInfo';
 
 export const GrammarImprovementRow = ({
   improvement,
   isLoading,
+  record,
   onClick,
   createdAtDayIso,
 }: {
   improvement: GrammarImprovement | null;
+  record: AdvancedUserRecord;
   isLoading: boolean;
   onClick: () => void;
   createdAtDayIso: string;
 }) => {
   const rowHeight = '75px';
-  if (isLoading || !improvement)
-    return (
-      <Stack
-        sx={{
-          width: '100%',
-        }}
-      >
-        <LoadingShapes sizes={[rowHeight]} />
-      </Stack>
-    );
 
   return (
     <Stack
@@ -58,7 +51,7 @@ export const GrammarImprovementRow = ({
         >
           {dayjs(createdAtDayIso).format('D MMMM')}
         </Typography>
-        <Typography>{improvement.title}</Typography>
+        <Typography>{record.value}</Typography>
       </Stack>
       <ChevronRight size={'30px'} />
     </Stack>

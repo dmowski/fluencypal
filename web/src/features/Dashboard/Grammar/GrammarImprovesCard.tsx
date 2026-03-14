@@ -290,6 +290,7 @@ ${postfixInstruction}`;
                           createdAtDayIso={record.createdAtDayIso}
                           improvement={improvements[key] || null}
                           isLoading={!improvements[key]}
+                          record={record}
                           onClick={() => {
                             void handleOpenModal(index);
                           }}
