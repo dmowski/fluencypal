@@ -24,13 +24,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   });
 }
 
-interface BlogPageProps {
-  searchParams: Promise<{
-    category?: string;
-  }>;
-  params: Promise<{ lang: string }>;
-}
-export default async function BlogFullPage(props: BlogPageProps) {
+export default async function BlogFullPage(props: PageProps) {
   const params = await props.searchParams;
   const category = params.category;
 

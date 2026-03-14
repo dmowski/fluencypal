@@ -5,6 +5,8 @@ import { Image } from '@mui/icons-material';
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { Trash, Wand } from 'lucide-react';
+import { fullEnglishLanguageName, SupportedLanguage } from '../Lang/lang';
+import { useLingui } from '@lingui/react';
 
 interface IWantResponse {
   resultMarkdown?: string;
@@ -32,7 +34,10 @@ const getColorBasedOnTitle = (title: string) => {
   return textColors[hash % textColors.length];
 };
 
-export const IWant = () => {
+export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
+  const { i18n } = useLingui();
+
+  const fullLanguageName = fullEnglishLanguageName[lang];
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -69,7 +74,7 @@ export const IWant = () => {
     }
 
     if (!file.type.startsWith('image/')) {
-      setError('Please choose an image file.');
+      setError(i18n._('Please choose an image file.'));
       setSelectedFile(null);
       return;
     }
@@ -79,7 +84,7 @@ export const IWant = () => {
 
   const handleSubmit = async () => {
     if (!selectedFile) {
-      setError('Please upload a photo first.');
+      setError(i18n._('Please upload a photo first.'));
       return;
     }
 
@@ -91,7 +96,7 @@ export const IWant = () => {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      const response = await fetch('/api/iWant', {
+      const response = await fetch(`/api/iWant?fullLanguageName=${fullLanguageName}`, {
         method: 'POST',
         body: formData,
       });
@@ -99,13 +104,13 @@ export const IWant = () => {
       const data = (await response.json()) as IWantResponse;
 
       if (!response.ok || !data.resultMarkdown) {
-        setError(data.error || 'Failed to analyze image. Please try again.');
+        setError(data.error || i18n._('Failed to analyze image. Please try again.'));
         return;
       }
 
       setResultMarkdown(data.resultMarkdown);
     } catch {
-      setError('Request failed. Please try again.');
+      setError(i18n._('Request failed. Please try again.'));
     } finally {
       setIsLoading(false);
     }
@@ -119,21 +124,6 @@ export const IWant = () => {
       fileInputRef.current.value = '';
     }
   };
-
-  const image = imagePreview ? (
-    <Stack
-      component={'img'}
-      src={imagePreview}
-      alt="Uploaded preview"
-      sx={{
-        maxWidth: '100%',
-        width: '320px',
-        height: 'auto',
-        borderRadius: '8px',
-        border: '1px solid rgba(255,255,255,0.15)',
-      }}
-    />
-  ) : null;
 
   return (
     <Stack
@@ -163,10 +153,10 @@ export const IWant = () => {
               fontWeight: 900,
             }}
           >
-            I want...
+            {i18n._('I want...')}
           </Typography>
 
-          <Typography>Upload a photo and AI will tell you what you want.</Typography>
+          <Typography>{i18n._('Upload a photo and AI will tell you what you want.')}</Typography>
         </Stack>
 
         <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileChange} hidden />
@@ -183,7 +173,7 @@ export const IWant = () => {
                 maxWidth: '300px',
               }}
             >
-              Upload a photo
+              {i18n._('Upload a photo')}
             </Button>
 
             <Typography
@@ -193,8 +183,9 @@ export const IWant = () => {
                 paddingTop: '6px',
               }}
             >
-              After submitting your photo, it will be processed with AI and removed right after
-              processing.
+              {i18n._(
+                'After submitting your photo, it will be processed with AI and removed right after processing.',
+              )}
             </Typography>
           </Stack>
         )}
@@ -227,7 +218,7 @@ export const IWant = () => {
                 alignSelf: 'flex-start',
               }}
             >
-              Try another photo
+              {i18n._('Try another photo')}
             </Button>
           </Stack>
         )}
@@ -273,10 +264,10 @@ export const IWant = () => {
               {isLoading ? (
                 <Stack direction="row" alignItems="center" gap={1}>
                   <CircularProgress size={18} color="inherit" />
-                  <span>Thinking...</span>
+                  <span>{i18n._('Thinking...')}</span>
                 </Stack>
               ) : (
-                'Tell me what I want'
+                i18n._('Tell me what I want')
               )}
             </Button>
           </Stack>

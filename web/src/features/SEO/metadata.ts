@@ -26,6 +26,7 @@ type Page =
   | 'features'
   | 'case'
   | 'alias'
+  | 'iwant'
   | '';
 
 type AfterIdPage = 'quiz';
@@ -71,6 +72,13 @@ export const generateMetadataInfo = ({
       `Get in touch with the FluencyPal for any inquiries, support, or feedback.`,
     );
     keywords = [];
+  }
+
+  if (currentPath === 'iwant') {
+    title = i18n._(`I Want`) + ' | ' + APP_NAME;
+    description = i18n._(`Discover the "I Want" feature in FluencyPal,`);
+    keywords = [];
+    needIndex = false;
   }
 
   if (currentPath === 'quiz') {

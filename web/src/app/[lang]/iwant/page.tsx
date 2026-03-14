@@ -18,11 +18,5 @@ export default async function IWantRoutePage(props: PageProps) {
   const lang = (await props.params).lang;
   const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
 
-  return (
-    <html lang={supportedLang}>
-      <body>
-        <IWantPage lang={supportedLang} />
-      </body>
-    </html>
-  );
+  return <IWantPage lang={supportedLang} />;
 }

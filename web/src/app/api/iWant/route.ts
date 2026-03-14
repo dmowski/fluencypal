@@ -17,6 +17,9 @@ export async function POST(request: Request) {
     return Response.json(response, { status: 500 });
   }
 
+  const languageParam = new URL(request.url).searchParams.get('fullLanguageName');
+  const fullLanguageName = languageParam || 'English';
+
   try {
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
@@ -69,6 +72,8 @@ Response format:
 
 {SHORT_DESCRIPTION_FROM_FIRST_PERSON}
 
+
+Use ${fullLanguageName} for your response language.
 `,
         },
         {
