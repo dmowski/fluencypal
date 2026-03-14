@@ -115,18 +115,6 @@ ${postfixInstruction}`;
     [generateImprovement],
   );
 
-  const [isShowRecords, setShowRecords] = useState(false);
-
-  useEffect(() => {
-    if (!isShowRecords) {
-      return;
-    }
-
-    for (const record of grammarPoints) {
-      void fetchImprovement(record);
-    }
-  }, [fetchImprovement, grammarPoints, isShowRecords]);
-
   useEffect(() => {
     if (selectedIndex === null) {
       return;
@@ -143,9 +131,14 @@ ${postfixInstruction}`;
   }, [grammarPoints.length, selectedIndex]);
 
   const handleOpenModal = async (index: number) => {
+    fetchAllImprovements();
     await quizWordAudio.initAudio();
     setSelectedIndex(index);
   };
+
+  const fetchAllImprovements = useCallback(async () => {
+    await Promise.all(grammarPoints.map((record) => fetchImprovement(record)));
+  }, [fetchImprovement, grammarPoints, limit]);
 
   const handleCloseModal = () => {
     setSelectedIndex(null);
@@ -279,42 +272,24 @@ ${postfixInstruction}`;
               </Stack>
             ) : (
               <>
-                {isShowRecords ? (
-                  <>
-                    {grammarPoints.slice(0, limit).map((record, index) => {
-                      const key = record.value;
+                {grammarPoints.slice(0, limit).map((record, index) => {
+                  const key = record.value;
 
-                      return (
-                        <GrammarImprovementRow
-                          key={record.value}
-                          createdAtDayIso={record.createdAtDayIso}
-                          improvement={improvements[key] || null}
-                          isLoading={!improvements[key]}
-                          record={record}
-                          onClick={() => {
-                            void handleOpenModal(index);
-                          }}
-                        />
-                      );
-                    })}
-                  </>
-                ) : (
-                  <>
-                    <Button
-                      startIcon={<Gem size={'18px'} />}
-                      variant="outlined"
-                      size="large"
-                      color="secondary"
-                      onClick={() => setShowRecords(true)}
-                    >
-                      {i18n._('Open My Improvements')}
-                    </Button>
-                  </>
-                )}
+                  return (
+                    <GrammarImprovementRow
+                      key={record.value}
+                      createdAtDayIso={record.createdAtDayIso}
+                      improvement={improvements[key] || null}
+                      isLoading={!improvements[key]}
+                      record={record}
+                      onClick={() => handleOpenModal(index)}
+                    />
+                  );
+                })}
               </>
             )}
 
-            {isLimited && isShowRecords && (
+            {isLimited && (
               <Button
                 startIcon={<ChevronDown size={'18px'} />}
                 variant="text"
