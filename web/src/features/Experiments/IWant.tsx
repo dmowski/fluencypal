@@ -60,6 +60,10 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
   }, [imagePreview]);
 
   const handleChooseFile = () => {
+    setError('');
+    setResultMarkdown('');
+    setSelectedFile(null);
+
     fileInputRef.current?.click();
   };
 
@@ -168,7 +172,7 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
         {!selectedFile && (
           <Stack>
             <Button
-              variant={selectedFile ? 'outlined' : 'contained'}
+              variant={'contained'}
               color="info"
               startIcon={<Image />}
               onClick={handleChooseFile}
@@ -216,13 +220,16 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
               <Markdown variant="normal">{resultMarkdown}</Markdown>
             </Stack>
             <Button
-              variant="outlined"
-              onClick={handleRetry}
+              variant={'contained'}
+              color="info"
+              startIcon={<Image />}
+              onClick={handleChooseFile}
               sx={{
-                alignSelf: 'flex-start',
+                padding: '10px 20px',
+                maxWidth: '300px',
               }}
             >
-              {i18n._('Try another photo')}
+              {i18n._('Upload a photo')}
             </Button>
           </Stack>
         )}
