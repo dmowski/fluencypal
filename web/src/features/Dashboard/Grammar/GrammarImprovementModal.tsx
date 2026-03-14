@@ -127,7 +127,8 @@ When user struggle with one example, try to switch to another example and come b
 
   const rowHeight = '40px';
 
-  if (isLoading || !improvement) return <LoadingShapes sizes={[rowHeight]} />;
+  const isShowLoader = isLoading || !improvement;
+
   return (
     <>
       <CustomModal isOpen={isOpen} onClose={onClose}>
@@ -135,133 +136,161 @@ When user struggle with one example, try to switch to another example and come b
           sx={{
             gap: '90px',
             padding: '20px',
+            width: '100%',
             maxWidth: '700px',
             paddingBottom: '80px',
             opacity: 0,
             animation: `fadeInOpacity  1.6s ease 100ms forwards`,
           }}
         >
-          <Stack
-            sx={{
-              gap: '20px',
-            }}
-          >
-            <Typography
-              variant="caption"
+          {isShowLoader ? (
+            <Stack
               sx={{
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em',
+                width: '100%',
+                gap: '20px',
               }}
             >
-              {improvement.title}
-            </Typography>
-            <Markdown
-              variant="rule"
-              onWordClick={
-                translator.isTranslateAvailable
-                  ? (word, element) => {
-                      translator.translateWithModal(word, element);
-                    }
-                  : undefined
-              }
-            >
-              {'\n' + improvement.description}
-            </Markdown>
-          </Stack>
-
-          {improvement.examples.length > 0 && (
-            <Stack sx={{ gap: '10px' }}>
               <Typography
                 variant="caption"
                 sx={{
-                  fontWeight: '700',
-                  letterSpacing: '0.04em',
                   textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
                 }}
               >
-                {i18n._(`Interactive examples:`)}
+                {i18n._('Creating your improvement...')}
               </Typography>
+              <Typography variant="body2" sx={{}}>
+                {i18n._(
+                  'It might take about a minute to prepare rules and examples based on your conversation. Please wait.',
+                )}
+              </Typography>
+              <LoadingShapes sizes={['30px', '200px', '30px', '200px']} />
+            </Stack>
+          ) : (
+            <>
               <Stack
                 sx={{
-                  gap: '50px',
+                  gap: '20px',
                 }}
               >
-                {improvement.examples.map((example, index) => (
-                  <InteractiveExample
-                    example={example}
-                    translation={translatedExamplesMap[example] || ''}
-                    isTranslateAvailable={isTranslateAvailable || false}
-                    translateWithModal={translator.translateWithModal}
-                    key={index}
-                  />
-                ))}
+                <Typography
+                  variant="caption"
+                  sx={{
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                  }}
+                >
+                  {improvement.title}
+                </Typography>
+                <Markdown
+                  variant="rule"
+                  onWordClick={
+                    translator.isTranslateAvailable
+                      ? (word, element) => {
+                          translator.translateWithModal(word, element);
+                        }
+                      : undefined
+                  }
+                >
+                  {'\n' + improvement.description}
+                </Markdown>
               </Stack>
-            </Stack>
+
+              {improvement.examples.length > 0 && (
+                <Stack sx={{ gap: '10px' }}>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      fontWeight: '700',
+                      letterSpacing: '0.04em',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {i18n._(`Interactive examples:`)}
+                  </Typography>
+                  <Stack
+                    sx={{
+                      gap: '50px',
+                    }}
+                  >
+                    {improvement.examples.map((example, index) => (
+                      <InteractiveExample
+                        example={example}
+                        translation={translatedExamplesMap[example] || ''}
+                        isTranslateAvailable={isTranslateAvailable || false}
+                        translateWithModal={translator.translateWithModal}
+                        key={index}
+                      />
+                    ))}
+                  </Stack>
+                </Stack>
+              )}
+              <Stack
+                sx={{
+                  gap: '20px',
+                }}
+              >
+                <Stack
+                  sx={{
+                    alignItems: 'flex-start',
+                    flexDirection: 'row',
+                    gap: '20px',
+                  }}
+                >
+                  <Button
+                    color="info"
+                    variant="contained"
+                    size="large"
+                    endIcon={isCallStarting ? <Loader /> : <VideocamIcon />}
+                    sx={{
+                      padding: '10px 30px',
+                    }}
+                    onClick={practiceWithAi}
+                  >
+                    {i18n._('Practice with AI')}
+                  </Button>
+                </Stack>
+
+                <Stack
+                  sx={{
+                    alignItems: 'flex-start',
+                    flexDirection: 'row',
+                    gap: '20px',
+                  }}
+                >
+                  <Button
+                    color="info"
+                    variant="outlined"
+                    size="large"
+                    fullWidth
+                    sx={{
+                      padding: '10px 30px',
+                    }}
+                    disabled={isFirstOne}
+                    onClick={onClickPrevious}
+                    startIcon={<ChevronLeft size={'18px'} />}
+                  >
+                    {i18n._('Previous')}
+                  </Button>
+
+                  <Button
+                    variant="outlined"
+                    color="info"
+                    size="large"
+                    fullWidth
+                    sx={{
+                      padding: '10px 30px',
+                    }}
+                    disabled={isLastOne}
+                    onClick={onClickNext}
+                    endIcon={<ChevronRight size={'18px'} />}
+                  >
+                    {i18n._('Next')}
+                  </Button>
+                </Stack>
+              </Stack>
+            </>
           )}
-          <Stack
-            sx={{
-              gap: '20px',
-            }}
-          >
-            <Stack
-              sx={{
-                alignItems: 'flex-start',
-                flexDirection: 'row',
-                gap: '20px',
-              }}
-            >
-              <Button
-                color="info"
-                variant="contained"
-                size="large"
-                endIcon={isCallStarting ? <Loader /> : <VideocamIcon />}
-                sx={{
-                  padding: '10px 30px',
-                }}
-                onClick={practiceWithAi}
-              >
-                {i18n._('Practice with AI')}
-              </Button>
-            </Stack>
-
-            <Stack
-              sx={{
-                alignItems: 'flex-start',
-                flexDirection: 'row',
-                gap: '20px',
-              }}
-            >
-              <Button
-                color="info"
-                variant="outlined"
-                size="large"
-                fullWidth
-                sx={{
-                  padding: '10px 30px',
-                }}
-                disabled={isFirstOne}
-                onClick={onClickPrevious}
-                startIcon={<ChevronLeft size={'18px'} />}
-              >
-                {i18n._('Previous')}
-              </Button>
-
-              <Button
-                variant="outlined"
-                color="info"
-                size="large"
-                fullWidth
-                sx={{
-                  padding: '10px 30px',
-                }}
-                disabled={isLastOne}
-                onClick={onClickNext}
-                endIcon={<ChevronRight size={'18px'} />}
-              >
-                {i18n._('Next')}
-              </Button>
-            </Stack>
-          </Stack>
           {translator.translateModal}
         </Stack>
       </CustomModal>
