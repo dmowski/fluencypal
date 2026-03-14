@@ -145,19 +145,21 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
           },
         }}
       >
-        <Stack>
-          <Typography
-            variant="h2"
-            component={'h3'}
-            sx={{
-              fontWeight: 900,
-            }}
-          >
-            {i18n._('I want...')}
-          </Typography>
+        {!selectedFile && (
+          <Stack>
+            <Typography
+              variant="h2"
+              component={'h3'}
+              sx={{
+                fontWeight: 900,
+              }}
+            >
+              {i18n._('I want...')}
+            </Typography>
 
-          <Typography>{i18n._('Upload a photo and AI will tell you what you want.')}</Typography>
-        </Stack>
+            <Typography>{i18n._('Upload a photo and AI will tell you what you want.')}</Typography>
+          </Stack>
+        )}
 
         <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileChange} hidden />
 
