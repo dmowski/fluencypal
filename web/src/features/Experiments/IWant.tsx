@@ -24,7 +24,7 @@ const getColorBasedOnTitle = (title: string) => {
     '#1391ff',
     '#ff61a6',
     '#ff9f1c',
-    '#43aa8b',
+    '#1bffbb',
     '#f3722c',
     '#79f619',
     '#ff007f',
@@ -248,6 +248,7 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
                     fontSize: '42px',
                     color: getColorBasedOnTitle(resultMarkdown),
                     paddingBottom: '10px',
+                    paddingTop: '0',
                   },
                 }}
               >
