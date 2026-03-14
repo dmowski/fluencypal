@@ -4,7 +4,7 @@ import { Button, CircularProgress, IconButton, Stack, Typography } from '@mui/ma
 import { Image } from '@mui/icons-material';
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
-import { Trash, Wand } from 'lucide-react';
+import { ChevronRight, Trash, Wand } from 'lucide-react';
 import { fullEnglishLanguageName, SupportedLanguage } from '../Lang/lang';
 import { useLingui } from '@lingui/react';
 
@@ -256,21 +256,15 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
               variant="contained"
               onClick={handleSubmit}
               disabled={isLoading}
-              color="secondary"
-              endIcon={<Wand />}
+              color="info"
+              startIcon={isLoading ? <CircularProgress size={24} color="inherit" /> : <Wand />}
+              endIcon={<ChevronRight />}
               sx={{
                 padding: '10px 20px',
                 maxWidth: '300px',
               }}
             >
-              {isLoading ? (
-                <Stack direction="row" alignItems="center" gap={1}>
-                  <CircularProgress size={18} color="inherit" />
-                  <span>{i18n._('Thinking...')}</span>
-                </Stack>
-              ) : (
-                i18n._('Tell me what I want')
-              )}
+              {isLoading ? i18n._('Thinking...') : i18n._('Tell me what I want')}
             </Button>
           </Stack>
         )}
