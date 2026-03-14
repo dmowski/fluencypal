@@ -118,6 +118,20 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
       }
 
       setResultMarkdown(data.resultMarkdown);
+
+      const firstLine = data.resultMarkdown
+        .split('\n')[0]
+        .replace(/#/g, '')
+        .trim()
+        .replaceAll('*', '')
+        .trim();
+
+      const textToVoice = firstLine;
+
+      audio.speak(textToVoice, {
+        instructions: '',
+        voice: 'marin',
+      });
     } catch {
       setError(i18n._('Request failed. Please try again.'));
     } finally {
