@@ -24,6 +24,7 @@ import { NativeLangCode } from '@/libs/language/type';
 import { useUserSource } from '../Analytics/useUserSource';
 import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
 import { AiVoice } from '@/common/ai';
+import { useUrlState } from '../Url/useUrlState';
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -56,6 +57,11 @@ interface SettingsContextType {
 
   setIsSendEmailNotifications: (isEnabled: boolean) => Promise<void>;
   isSendEmailNotifications: boolean;
+  teacherSettings: {
+    isSettingsModalOpen: boolean;
+    openSettingsModal: () => void;
+    closeSettingsModal: () => void;
+  };
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -85,6 +91,11 @@ export const settingsContext = createContext<SettingsContextType>({
   confirmAge18Plus: async () => {},
   setIsSendEmailNotifications: async () => {},
   isSendEmailNotifications: false,
+  teacherSettings: {
+    isSettingsModalOpen: false,
+    openSettingsModal: () => {},
+    closeSettingsModal: () => {},
+  },
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -98,6 +109,20 @@ function useProvideSettings(): SettingsContextType {
   const [userSettings, loading] = useDocumentData(userSettingsDoc);
 
   const isSendEmailNotifications = userSettings?.isSendEmailNotifications === false ? false : true;
+
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useUrlState(
+    'teacherSettings',
+    false,
+    false,
+  );
+
+  const openSettingsModal = () => {
+    setIsSettingsModalOpen(true);
+  };
+
+  const closeSettingsModal = () => {
+    setIsSettingsModalOpen(false);
+  };
 
   const setIsSendEmailNotifications = async (isEnabled: boolean) => {
     if (!userSettingsDoc) return;
@@ -271,6 +296,12 @@ function useProvideSettings(): SettingsContextType {
     setParentalConsent,
     isSendEmailNotifications,
     setIsSendEmailNotifications,
+
+    teacherSettings: {
+      isSettingsModalOpen,
+      openSettingsModal,
+      closeSettingsModal,
+    },
   };
 }
 

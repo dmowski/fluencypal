@@ -28,13 +28,12 @@ import { ActiveLessonCard } from '../Plan/ActiveLessonCard';
 
 import { getAiVoiceByVoice } from '../Conversation/CallMode/voiceAvatar';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
   const plan = usePlan();
-  const teacherSettings = useTeacherSettings();
   const settings = useSettings();
+  const teacherSettings = settings.teacherSettings;
 
   const [selectGoalModalAnchorEl, setSelectGoalModalAnchorEl] = useState<null | HTMLElement>(null);
 

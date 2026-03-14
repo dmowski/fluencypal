@@ -1,6 +1,5 @@
 'use client';
 
-import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { Button, Stack, Typography, Select, MenuItem, FormControl } from '@mui/material';
 import { useLingui } from '@lingui/react';
@@ -11,13 +10,12 @@ import { Check } from 'lucide-react';
 export const TeacherVoiceModal: React.FC = () => {
   const { i18n } = useLingui();
   const settings = useSettings();
-  const teacherSettings = useTeacherSettings();
   const voiceSpeed = settings.aiVoiceSpeed;
 
   return (
     <>
-      {teacherSettings.isSettingsModalOpen && (
-        <CustomModal isOpen={true} onClose={teacherSettings.closeSettingsModal}>
+      {settings.teacherSettings.isSettingsModalOpen && (
+        <CustomModal isOpen={true} onClose={settings.teacherSettings.closeSettingsModal}>
           <Stack
             sx={{
               gap: '30px',
@@ -72,7 +70,7 @@ export const TeacherVoiceModal: React.FC = () => {
               color="info"
               variant="contained"
               startIcon={<Check />}
-              onClick={teacherSettings.closeSettingsModal}
+              onClick={settings.teacherSettings.closeSettingsModal}
             >
               {i18n._('Done')}
             </Button>

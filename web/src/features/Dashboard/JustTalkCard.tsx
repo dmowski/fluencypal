@@ -4,7 +4,6 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import { Typography, Button } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import { AudioLines, Loader } from 'lucide-react';
-import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useState } from 'react';
 import { useSettings } from '../Settings/useSettings';
@@ -18,13 +17,13 @@ import { sleep } from '@/libs/sleep';
 export const JustTalkCard = () => {
   const { i18n } = useLingui();
 
-  const teacherSettings = useTeacherSettings();
+  const settings = useSettings();
+  const teacherSettings = settings.teacherSettings;
 
   const [footnotePhraseIndex, setFootnotePhraseIndex] = useState(new Date().getDate());
 
   const conversation = useAiConversation();
   const [isCallStarting, setIsCallStarting] = useState(false);
-  const settings = useSettings();
   const audio = useConversationAudio();
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
   const startJustTalk = async () => {

@@ -31,17 +31,16 @@ import { useRouter } from 'next/navigation';
 import { getUrlStart } from '../Lang/getUrlStart';
 import { GameMyAvatar } from '../Game/GameMyAvatar';
 import { GameMyUsername } from '../Game/GameMyUsername';
-import { useTeacherSettings } from '../Conversation/CallMode/useTeacherSettings';
 import { AiKnowledgeModal } from '../Ai/AiKnowledgeModal';
 import { NotificationsModal } from '../Header/NotificationsModal';
 
 export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
   const settings = useSettings();
+  const teacherSettings = settings.teacherSettings;
 
   const { i18n } = useLingui();
   const [isShowLogout, setIsShowLogout] = useState(true);
-  const teacherSettings = useTeacherSettings();
 
   useEffect(() => {
     const isTelegramApp = isTMA();
