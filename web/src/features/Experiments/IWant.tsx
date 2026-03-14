@@ -80,10 +80,12 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
     }
 
     setSelectedFile(file);
+    handleSubmit(file);
   };
 
-  const handleSubmit = async () => {
-    if (!selectedFile) {
+  const handleSubmit = async (directFile?: File) => {
+    const file = directFile || selectedFile;
+    if (!file) {
       setError(i18n._('Please upload a photo first.'));
       return;
     }
@@ -94,7 +96,7 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
 
     try {
       const formData = new FormData();
-      formData.append('file', selectedFile);
+      formData.append('file', file);
 
       const response = await fetch(`/api/iWant?fullLanguageName=${fullLanguageName}`, {
         method: 'POST',
@@ -254,7 +256,7 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
 
             <Button
               variant="contained"
-              onClick={handleSubmit}
+              onClick={() => handleSubmit()}
               disabled={isLoading}
               color="info"
               startIcon={isLoading ? <CircularProgress size={24} color="inherit" /> : <Wand />}
