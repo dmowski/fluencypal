@@ -209,6 +209,7 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
             <Stack
               sx={{
                 position: 'relative',
+                minHeight: '330px',
               }}
             >
               <Stack
@@ -229,7 +230,7 @@ export const IWantComponent = ({ lang }: { lang: SupportedLanguage }) => {
                   left: 0,
                   width: '100%',
                   height: '100%',
-                  background: 'linear-gradient(180deg, rgba(0,0,0, 0.9) 0%, rgba(0,0,0,0) 100%)',
+                  background: 'linear-gradient(180deg, rgba(0,0,0, 0.5) 0%, rgba(0,0,0,0) 100%)',
                   borderRadius: '8px',
                 }}
               ></Stack>
