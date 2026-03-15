@@ -47,6 +47,9 @@ export const NavigationBar: React.FC = () => {
   const internalPageRef = useRef<PageType | null>(appNavigation.currentPage);
 
   const setCurrentPage = async (pageType: PageType) => {
+    if (internalPageRef.current === pageType) {
+      return;
+    }
     setInternalPageType(pageType);
     internalPageRef.current = pageType;
     const searchParams = new URLSearchParams();
