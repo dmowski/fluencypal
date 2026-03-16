@@ -17,10 +17,14 @@ export const useGoalQuizForm = (defaultData: GoalQuizData) => {
   const [isQuizDataLoading, setIsQuizDataLoading] = useState<boolean>(true);
 
   const saveDataToStorage = (data: GoalQuizData) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    if (typeof window === 'undefined') return null;
+
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   };
   const getDataFromStorage = (): GoalQuizData | null => {
-    const storageData = localStorage.getItem(STORAGE_KEY);
+    if (typeof window === 'undefined') return null;
+
+    const storageData = window.localStorage.getItem(STORAGE_KEY);
     if (storageData) {
       try {
         return JSON.parse(storageData) as GoalQuizData;

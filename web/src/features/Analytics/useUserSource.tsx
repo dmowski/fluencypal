@@ -11,7 +11,9 @@ interface UserSourceContextType {
 }
 
 export const getParamsFromStorage = (): UserSource | null => {
-  const stored = localStorage.getItem(SOURCE_STORAGE_KEY);
+  if (typeof window === 'undefined') return null;
+
+  const stored = window.localStorage.getItem(SOURCE_STORAGE_KEY);
   if (!stored) return null;
   try {
     return JSON.parse(stored) as UserSource;
