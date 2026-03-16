@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { generateMetadataInfo } from '@/features/SEO/metadata';
 import { PracticeProvider } from '../practiceProvider';
 import { AdminStats } from '@/features/Analytics/AdminStats/AdminStats';
+import { AuthWall } from '@/features/Auth/AuthWall';
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
@@ -39,7 +40,9 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
       <body>
         <PracticeProvider>
           <main>
-            <AdminStats />
+            <AuthWall>
+              <AdminStats />
+            </AuthWall>
           </main>
         </PracticeProvider>
       </body>

@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode } from 'react';
 import { useLingui } from '@lingui/react';
 import { AuthWallBasic } from './AuthWallBasic';
