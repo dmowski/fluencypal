@@ -38,13 +38,13 @@ export const UiCards = () => {
               imageUrl: '/call/shimmer/girl2.webp',
               actionButtonTitle: 'Start',
               onClick: () => {
-                alert('clicked');
+                alert('Row item: Shimmer clicked');
               },
             },
           ]}
           itemsBackgroundColor={'rgba(0, 0, 0, 0.2)'}
           onClick={() => {
-            alert('clicked');
+            alert('Card clicked: Shimmer card');
           }}
           itemsViewMode={'list'}
         />
@@ -60,7 +60,7 @@ export const UiCards = () => {
           items={[]}
           itemsBackgroundColor={'rgba(0, 0, 0, 0.2)'}
           onClick={() => {
-            alert('clicked');
+            alert('clicked Ash card');
           }}
           itemsViewMode={'list'}
         />

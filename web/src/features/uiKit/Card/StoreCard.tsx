@@ -165,6 +165,11 @@ export const StoreCardRowItem = ({
         padding: '10px 20px',
         cursor: 'pointer',
       }}
+      onClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        data.onClick();
+      }}
     >
       <RowIcon imageUrl={data.imageUrl} size={'49px'} iconBorderRadius={iconBorderRadius} />
       <Stack>
@@ -185,7 +190,11 @@ export const StoreCardRowItem = ({
 const StoreButton = ({ title, onClick }: { title: string; onClick: () => void }) => {
   return (
     <Button
-      onClick={onClick}
+      onClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        onClick();
+      }}
       sx={{
         padding: '6px 20px',
         minWidth: '32px',
