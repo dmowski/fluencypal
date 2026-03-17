@@ -129,7 +129,7 @@ export const StoreCard = (props: StoreCardProps) => {
         />
       </Stack>
 
-      {props.items.length && (
+      {!!props.items.length && (
         <Stack
           sx={{
             width: '100%',

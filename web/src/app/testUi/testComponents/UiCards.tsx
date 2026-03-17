@@ -1,8 +1,6 @@
 'use client';
-import { SubmitForm } from '@/features/Chat/SubmitForm';
 import { StoreCard } from '@/features/uiKit/Card/StoreCard';
-import { Markdown } from '@/features/uiKit/Markdown/Markdown';
-import { Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import { useState } from 'react';
 
 export const UiCards = () => {
@@ -11,7 +9,6 @@ export const UiCards = () => {
     <Stack
       sx={{
         width: '100%',
-        maxWidth: '800px',
         padding: '40px 10px',
         alignItems: 'center',
       }}
