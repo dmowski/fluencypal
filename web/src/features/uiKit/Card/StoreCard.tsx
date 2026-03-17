@@ -1,4 +1,4 @@
-import { Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 
 interface RowItem {
@@ -32,17 +32,32 @@ export const StoreCard = (props: StoreCardProps) => {
         width: '100%',
         height: '100%',
         backgroundColor: props.backgroundColor,
-        border: `${props.borderSize} solid ${props.backgroundColor}`,
         borderRadius: '16px',
         boxSizing: 'border-box',
         padding: '0',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
       <Stack
         sx={{
+          boxShadow: `inset 0px 0px 0px ${props.borderSize} ${props.backgroundColor}`,
+          position: 'absolute',
+          borderRadius: '16px',
+          pointerEvents: 'none',
+          zIndex: 4,
+          width: '100%',
+          height: '100%',
+          top: 0,
+          left: 0,
+        }}
+      />
+
+      <Stack
+        sx={{
           width: '100%',
           position: 'relative',
-          borderRadius: '16px 16px 0 0',
+          borderRadius: '12px 12px 0 0',
           minHeight: '350px',
           overflow: 'hidden',
           justifyContent: 'flex-end',
@@ -112,6 +127,126 @@ export const StoreCard = (props: StoreCardProps) => {
           />
         </Stack>
       </Stack>
+
+      {props.items.length && (
+        <Stack
+          sx={{
+            width: '100%',
+            backgroundColor: props.itemsBackgroundColor,
+            position: 'relative',
+            padding: '5px 0',
+            zIndex: 5,
+          }}
+        >
+          {props.items.map((item, index) => (
+            <StoreCardRowItem key={index} data={item} iconBorderRadius="10px" />
+          ))}
+        </Stack>
+      )}
+    </Stack>
+  );
+};
+
+export const StoreCardRowItem = ({
+  data,
+  iconBorderRadius,
+}: {
+  data: RowItem;
+  iconBorderRadius: string;
+}) => {
+  return (
+    <Stack
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: 'min-content 1fr min-content',
+        gap: '12px',
+        alignItems: 'center',
+        padding: '10px 20px',
+        cursor: 'pointer',
+      }}
+    >
+      <RowIcon imageUrl={data.imageUrl} size={'49px'} iconBorderRadius={iconBorderRadius} />
+      <Stack>
+        <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>
+          {data.title}
+        </Typography>
+        <Typography variant="body2" color={'text.secondary'}>
+          {data.subTitle}
+        </Typography>
+      </Stack>
+      <Stack>
+        <StoreButton onClick={data.onClick} title={data.actionButtonTitle} />
+      </Stack>
+    </Stack>
+  );
+};
+
+const StoreButton = ({ title, onClick }: { title: string; onClick: () => void }) => {
+  return (
+    <Button
+      onClick={onClick}
+      sx={{
+        padding: '6px 20px',
+        minWidth: '32px',
+        height: '32px',
+        borderRadius: '36px',
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        color: '#fff',
+        fontSize: '14px',
+        fontWeight: 500,
+        letterSpacing: '0.02em',
+        textTransform: 'none',
+        ':hover': {
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        },
+      }}
+    >
+      {title}
+    </Button>
+  );
+};
+
+export const RowIcon = ({
+  imageUrl,
+  size,
+  iconBorderRadius,
+}: {
+  imageUrl: string;
+  size: string;
+  iconBorderRadius: string;
+}) => {
+  return (
+    <Stack
+      sx={{
+        width: size,
+        minWidth: size,
+        height: size,
+        borderRadius: iconBorderRadius,
+        position: 'relative',
+
+        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+
+        ':after': {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          zIndex: 2,
+          borderRadius: iconBorderRadius,
+          boxShadow: 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1)',
+        },
+      }}
+    >
+      <Image
+        src={imageUrl}
+        alt=""
+        fill
+        sizes={size}
+        style={{
+          objectFit: 'cover',
+          zIndex: 1,
+          borderRadius: iconBorderRadius,
+        }}
+      />
     </Stack>
   );
 };

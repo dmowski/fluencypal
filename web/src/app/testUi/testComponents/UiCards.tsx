@@ -31,7 +31,17 @@ export const UiCards = () => {
           label={'JUST TALK MODE'}
           title={'Conversation with AI'}
           subTitle={`Start a casual call to practice your communication skills. This is a no-strings-attached conversation if you'd like to chat in a casual setting.`}
-          items={[]}
+          items={[
+            {
+              title: 'Shimmer',
+              subTitle: 'Your AI Speech Partner',
+              imageUrl: '/call/shimmer/girl2.webp',
+              actionButtonTitle: 'Start',
+              onClick: () => {
+                alert('clicked');
+              },
+            },
+          ]}
           itemsBackgroundColor={'rgba(0, 0, 0, 0.2)'}
           onClick={() => {
             alert('clicked');
