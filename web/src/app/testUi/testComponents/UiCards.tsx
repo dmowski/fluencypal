@@ -53,7 +53,6 @@ export const UiCards = () => {
           badge={'FLUENCY PRACTICE'}
           textColor={'#fff'}
           backgroundColor={'#d0024e'}
-          borderSize={'8px'}
           previewImageUrl={'/call/ash/photo.webp'}
           label={'JUST TALK MODE'}
           title={'Conversation with AI'}

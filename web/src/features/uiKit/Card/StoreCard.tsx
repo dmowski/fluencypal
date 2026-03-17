@@ -13,7 +13,7 @@ interface StoreCardProps {
   badge: string;
   textColor: string;
   backgroundColor: string;
-  borderSize: string;
+  borderSize?: string;
   previewImageUrl: string;
 
   label: string;
@@ -41,7 +41,9 @@ export const StoreCard = (props: StoreCardProps) => {
     >
       <Stack
         sx={{
-          boxShadow: `inset 0px 0px 0px ${props.borderSize} ${props.backgroundColor}`,
+          boxShadow: props.borderSize
+            ? `inset 0px 0px 0px ${props.borderSize} ${props.backgroundColor}`
+            : `inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1)`,
           position: 'absolute',
           borderRadius: '16px',
           pointerEvents: 'none',
