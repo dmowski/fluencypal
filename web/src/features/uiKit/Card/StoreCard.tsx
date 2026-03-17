@@ -1,5 +1,6 @@
 import { Button, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
+import { useState } from 'react';
 
 interface RowItem {
   imageUrl: string;
@@ -65,6 +66,10 @@ export const StoreCard = (props: StoreCardProps) => {
           justifyContent: 'flex-end',
           padding: '0px',
           zIndex: 3,
+          cursor: 'pointer',
+        }}
+        onClick={() => {
+          props.onClick();
         }}
       >
         <Stack
@@ -111,23 +116,17 @@ export const StoreCard = (props: StoreCardProps) => {
           }}
         ></Stack>
 
-        <Stack>
-          <Image
-            src={props.previewImageUrl}
-            alt="Preview"
-            fill
-            style={{
-              objectFit: 'cover',
-              backgroundColor: props.backgroundColor,
-              position: 'absolute',
-              top: '0',
-              left: '0',
-              width: '100%',
-              height: '100%',
-              zIndex: 0,
-            }}
-          />
-        </Stack>
+        <Image
+          src={props.previewImageUrl}
+          alt="Preview"
+          loading="eager"
+          fill
+          style={{
+            objectFit: 'cover',
+            backgroundColor: props.backgroundColor,
+            zIndex: 0,
+          }}
+        />
       </Stack>
 
       {props.items.length && (
