@@ -12,13 +12,14 @@ export const UiCards = () => {
       sx={{
         width: '100%',
         maxWidth: '800px',
-        padding: '40px',
+        padding: '40px 10px',
         alignItems: 'center',
       }}
     >
       <Stack
         sx={{
-          width: '700px',
+          width: '100%',
+          maxWidth: '700px',
           gap: '50px',
         }}
       >
