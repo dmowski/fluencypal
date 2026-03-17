@@ -28,9 +28,8 @@ import { UserReportProvider } from '@/features/User/useUserReport';
 import { AudioCacheProvider } from '@/features/Audio/useAudioCache';
 import { StoriesProvider } from '@/features/Sentence/useStories';
 import { CommunitySpaceProvider } from '@/features/Community/CommunitySpace/useCommunitySpace';
-import '@telegram-apps/telegram-ui/dist/styles.css';
-
 import { Old_Standard_TT } from 'next/font/google';
+import '@telegram-apps/telegram-ui/dist/styles.css';
 
 const oldStandardTT = Old_Standard_TT({
   subsets: ['latin'],

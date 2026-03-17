@@ -8,46 +8,44 @@ import { useState } from 'react';
 export const TestForm = () => {
   const [message, setMessage] = useState('');
   return (
-    <PracticeProvider>
+    <Stack
+      sx={{
+        width: '100%',
+        maxWidth: '800px',
+        padding: '40px',
+      }}
+    >
       <Stack
         sx={{
-          width: '100%',
-          maxWidth: '800px',
-          padding: '40px',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
         }}
       >
         <Stack
           sx={{
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            width: '100%',
+            height: '200px',
+            borderRadius: '8px',
+            padding: '10px',
+            gap: '10px',
           }}
         >
+          <Typography variant="caption">Test Form</Typography>
           <Stack
             sx={{
-              width: '100%',
-              height: '200px',
-              borderRadius: '8px',
-              padding: '10px',
-              gap: '10px',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
             }}
           >
-            <Typography variant="caption">Test Form</Typography>
-            <Stack
-              sx={{
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-              }}
-            >
-              <Markdown variant="chat">{message}</Markdown>
-            </Stack>
+            <Markdown variant="chat">{message}</Markdown>
           </Stack>
-          <SubmitForm
-            onSubmit={async (e) => setMessage(e)}
-            isLoading={false}
-            recordMessageTitle={'recordMessageTitle'}
-            setIsActiveRecording={function (isRecording: boolean): void {}}
-            previousBotMessage={'previousBotMessage'}
-          />
         </Stack>
+        <SubmitForm
+          onSubmit={async (e) => setMessage(e)}
+          isLoading={false}
+          recordMessageTitle={'recordMessageTitle'}
+          setIsActiveRecording={function (isRecording: boolean): void {}}
+          previousBotMessage={'previousBotMessage'}
+        />
       </Stack>
-    </PracticeProvider>
+    </Stack>
   );
 };

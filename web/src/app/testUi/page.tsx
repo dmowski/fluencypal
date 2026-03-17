@@ -1,8 +1,6 @@
-'use client';
-
-import { AuthProvider } from '@/features/Auth/useAuth';
 import { TestPage } from './testComponents/TestPage';
 import { Suspense } from 'react';
+import { PracticeProvider } from '../practiceProvider';
 
 export default function UploadTestPage() {
   return (
@@ -11,11 +9,11 @@ export default function UploadTestPage() {
         <meta name="robots" content="noindex, nofollow" />
       </head>
       <body>
-        <AuthProvider>
+        <PracticeProvider>
           <Suspense fallback={<div>Loading...</div>}>
             <TestPage />
           </Suspense>
-        </AuthProvider>
+        </PracticeProvider>
       </body>
     </html>
   );
