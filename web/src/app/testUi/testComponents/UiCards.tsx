@@ -24,7 +24,7 @@ export const UiCards = () => {
           badge={'FLUENCY PRACTICE'}
           textColor={'#fff'}
           backgroundColor={'#0286D0'}
-          borderSize={'8px'}
+          borderSize={'5px'}
           previewImageUrl={'/call/shimmer/photo1.webp'}
           label={'JUST TALK MODE'}
           title={'Conversation with AI'}
