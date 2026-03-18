@@ -1844,6 +1844,7 @@ msgstr "これらのミスを避けることで、よりプロフェッショナ
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:159
 #: src/features/Chat/ChatSection.tsx:100
+#: src/features/Navigation/BackHomeNavButton.tsx:36
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr ""
@@ -2121,7 +2122,7 @@ msgstr "サブスクリプションを購入する"
 msgid "Buy AI tokens and use them whenever you want."
 msgstr "AI トークンを購入して、好きなときに使ってみよう。"
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:691
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:696
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "もっと買う"
@@ -2547,7 +2548,7 @@ msgstr ""
 msgid "Community access"
 msgstr "コミュニティアクセス"
 
-#: src/features/Community/CommunityDashboard.tsx:118
+#: src/features/Community/CommunityDashboard.tsx:116
 #: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -2555,7 +2556,7 @@ msgstr "コミュニティアクセス"
 msgid "Community Chat"
 msgstr "コミュニティチャット"
 
-#: src/features/Community/CommunityDashboard.tsx:87
+#: src/features/Community/CommunityDashboard.tsx:85
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "コミュニティハブ"
@@ -3074,7 +3075,7 @@ msgstr "デイリーリミット？"
 msgid "Daily Question Chat"
 msgstr "デイリークエスチョンチャット"
 
-#: src/features/Community/CommunityDashboard.tsx:148
+#: src/features/Community/CommunityDashboard.tsx:146
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -3113,15 +3114,11 @@ msgstr "データ & トランザクションズ"
 msgid "Databases & Transactions"
 msgstr "データベースとトランザクション"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:125
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:662
 #. js-lingui-explicit-id
 msgid "Day"
-msgstr "日"
-
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:120
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
-#. js-lingui-explicit-id
-msgid "day"
 msgstr "日"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
@@ -3165,7 +3162,7 @@ msgstr "ディベートが始まりました！"
 msgid "Debate topics will be selected randomly."
 msgstr "ランダムにディベートトピックが選ばれます。"
 
-#: src/features/Community/CommunityDashboard.tsx:139
+#: src/features/Community/CommunityDashboard.tsx:137
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -4323,7 +4320,7 @@ msgstr ""
 "次世代の言語練習を体験してください、あなたの友達のAIチューター、ブルーノと共に。初心者でも上級者でも、ブルーノはあなたのペースに合わせ、間違いを修正し"
 "、モチベーションを保ちます。"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:185
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:190
 #. js-lingui-explicit-id
 msgid "Expires"
 msgstr "期限切れ"
@@ -4402,7 +4399,7 @@ msgstr "役割演技シナリオを探る"
 msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "ウェルネスとメンタルヘルスについて話すための技術を探究しましょう。"
 
-#: src/features/Community/CommunityDashboard.tsx:94
+#: src/features/Community/CommunityDashboard.tsx:92
 #: src/features/Dashboard/CommunityDashboardCard.tsx:25
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
@@ -5007,7 +5004,7 @@ msgstr "フルボイス機能"
 msgid "Fun facts about yourself"
 msgstr "自分自身に関する楽しい事実"
 
-#: src/features/Community/CommunityDashboard.tsx:125
+#: src/features/Community/CommunityDashboard.tsx:123
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -5155,12 +5152,12 @@ msgstr ""
 "あなたは食料品を買いに行く顧客の役割を担います。AIは店員として、あなたが何を探しているかを尋ね、特売を提案し、正しい商品に案内します。このインタラクテ"
 "ィブなロールプレイは、リアルな買い物体験をシミュレーションし、必要なコミュニケーションスキルを構築するのに役立ちます。"
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:665
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:670
 #. js-lingui-explicit-id
 msgid "Get confidence with AI support"
 msgstr "AIのサポートで自信をつける"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:80
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:81
 #. js-lingui-explicit-id
 msgid "Get creative"
 msgstr "クリエイティブになろう"
@@ -5174,7 +5171,7 @@ msgstr "FluencyPal で柔軟な価格設定を。あなたのペースで AI を
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Usage/FeatureBlocker.tsx:99
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:679
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:684
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "フルアクセスを取得する"
@@ -7351,7 +7348,7 @@ msgstr "遅延読み込み"
 msgid "Leaderboard"
 msgstr "リーダーボード"
 
-#: src/features/Community/CommunityDashboard.tsx:155
+#: src/features/Community/CommunityDashboard.tsx:153
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -7875,17 +7872,17 @@ msgstr "模擬インタビュー"
 msgid "modern literature"
 msgstr "現代文学"
 
-#: src/features/Landing/Price/PricePage.tsx:510
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:115
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
-#. js-lingui-explicit-id
-msgid "month"
-msgstr "月"
-
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:120
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:608
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "Month"
+msgstr "月"
+
+#: src/features/Landing/Price/PricePage.tsx:510
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
+#. js-lingui-explicit-id
+msgid "month"
 msgstr "月"
 
 #: src/features/Case/data/reusable/priceSection.ts:17
@@ -9238,13 +9235,13 @@ msgid ""
 "interviews confident and prepared."
 msgstr "実際のシニアフロントエンド面接を練習し、重大なギャップを埋め、自信を持って準備万端で面接に臨みましょう。"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:69
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:70
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:67
 #. js-lingui-explicit-id
 msgid "Practice Real-Life Conversations With Role-Play Scenarios"
 msgstr "実生活の会話をロールプレイシナリオで練習する"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:53
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Practice real-life conversations with various role-play scenarios."
 msgstr "さまざまなロールプレイシナリオで実際の会話を練習しましょう。"
@@ -9498,7 +9495,7 @@ msgstr "前の質問"
 msgid "Price"
 msgstr "価格"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:195
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:200
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "1日あたりの価格"
@@ -9525,7 +9522,7 @@ msgstr "優先サポート"
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 
-#: src/features/Community/CommunityDashboard.tsx:162
+#: src/features/Community/CommunityDashboard.tsx:160
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -9580,7 +9577,7 @@ msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "他の分野からフロントエンドエンジニアリングに転職するプロフェッショナル"
 
 #: src/features/Navigation/NavigationBar.tsx:100
-#: src/features/Navigation/NavigationBar.tsx:119
+#: src/features/Navigation/NavigationBar.tsx:123
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "プロフィール"
@@ -10197,11 +10194,12 @@ msgid "Robot Thinking"
 msgstr "ロボット思考中"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:57
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:68
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:69
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Goal/Quiz/QuizPage2.tsx:465
 #: src/features/Landing/PlanLandingBlock.tsx:279
+#: src/features/Navigation/NavigationBar.tsx:118
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -10224,17 +10222,17 @@ msgstr "ロールプレイシナリオ"
 msgid "Role-Play"
 msgstr "役割演技"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:45
-#. js-lingui-explicit-id
-msgid "Role-Play Scenarios"
-msgstr "ロールプレイシナリオ"
-
 #: src/features/Landing/Price/FeatureList.tsx:36
 #: src/features/Landing/Price/PricePage.tsx:441
 #: src/features/Landing/Price/PricePage.tsx:524
 #: src/features/Landing/Price/PricePage.tsx:607
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
+msgstr "ロールプレイシナリオ"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:46
+#. js-lingui-explicit-id
+msgid "Role-Play Scenarios"
 msgstr "ロールプレイシナリオ"
 
 #: src/features/Header/HeaderStatic.tsx:17
@@ -10369,7 +10367,7 @@ msgstr "AIリクルーターとのスクリーニングインタビュー"
 msgid "Second Place"
 msgstr "セカンドプレース"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:70
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "See all"
 msgstr "すべて表示"
@@ -11481,7 +11479,7 @@ msgstr "AIフロントエンド開発者との技術面接"
 msgid "Tech stack covered"
 msgstr "カバーされている技術スタック"
 
-#: src/features/Community/CommunityDashboard.tsx:132
+#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -12264,7 +12262,7 @@ msgstr "無料で試してみる"
 msgid "Try full features and see significant improvement"
 msgstr "すべての機能をお試しいただき、顕著な改善を実感してください"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:81
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:82
 #. js-lingui-explicit-id
 msgid "Try these role-plays"
 msgstr "ロールプレイを試してみましょう"
@@ -12371,7 +12369,7 @@ msgstr "不明なエラー"
 msgid "Unknown error during sign-in"
 msgstr "サインイン中に不明なエラーが発生しました"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:173
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:178
 #. js-lingui-explicit-id
 msgid "Unlimited access to all features"
 msgstr ""
@@ -12428,7 +12426,7 @@ msgstr "フルインタビュー準備をアンロック"
 msgid "Unlock unlimited access to all features"
 msgstr "すべての機能に無制限でアクセスする"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:69
+#: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #. js-lingui-explicit-id
 msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "無制限のAI会話とすべての練習モードをアンロック"
@@ -12437,6 +12435,13 @@ msgstr "無制限のAI会話とすべての練習モードをアンロック"
 #. js-lingui-explicit-id
 msgid "Unpublish"
 msgstr "非公開にする"
+
+#: src/features/Navigation/SimpleNavigationBar.tsx:169
+#. js-lingui-explicit-id
+msgid "Update"
+msgstr ""
+"\n"
+"アップデート\n"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -12874,14 +12879,14 @@ msgstr "ウェブカメラフィードバックプレビュー"
 msgid "Webcam Setup"
 msgstr "ウェブカメラのセットアップ"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:122
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:659
 #. js-lingui-explicit-id
 msgid "Week"
 msgstr "週間"
 
 #: src/features/Landing/Price/PricePage.tsx:427
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:117
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
 msgstr ""
@@ -13306,14 +13311,14 @@ msgstr "ここにレポートを書いてください"
 msgid "Wrong Link"
 msgstr "リンクが間違っています"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:124
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:661
 #. js-lingui-explicit-id
 msgid "Year"
 msgstr "年"
 
 #: src/features/Landing/Price/PricePage.tsx:593
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:119
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
 msgstr "年"
@@ -13547,7 +13552,7 @@ msgstr ""
 "シニアフロントエンド、リード、およびスタッフレベルのインタビューの練習ができます。技術的ラウンド、フロントエンドシステムデザイン、ライブコーディング、R"
 "eact、Vue、Angular、TypeScript、モダンなウェブアーキテクチャに焦点を当てた行動インタビューを含みます。"
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:709
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:714
 #. js-lingui-explicit-id
 msgid ""
 "You can renew your full access any time before it expires to avoid\n"
@@ -13700,11 +13705,6 @@ msgstr "あなたは素晴らしい進歩を遂げています。続けましょ
 msgid "You:"
 msgstr "あなた:"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:61
-#. js-lingui-explicit-id
-msgid "Your access is currently limited"
-msgstr "現在、アクセスが制限されています"
-
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
@@ -13780,7 +13780,7 @@ msgstr "あなたの体験"
 msgid "Your full access is active until"
 msgstr "あなたのフルアクセスは以下の日付まで有効です"
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:698
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:703
 #. js-lingui-explicit-id
 msgid "Your full access is active until {activeTill}"
 msgstr "あなたのフルアクセスは{activeTill}まで有効です"
@@ -13913,118 +13913,3 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:290
-#. js-lingui-explicit-id
-#~ msgid "Show more lessons"
-#~ msgstr "レッスンをもっと表示"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Based on your recent conversations, here are some tips to improve your "
-#~ "grammar. Click on the tip to see more details!"
-#~ msgstr "最近の会話に基づいて、文法を向上させるためのいくつかのヒントを紹介します。詳細を見るにはヒントをクリックしてください！"
-
-#: src/features/Dashboard/Dashboard.tsx:88
-#. js-lingui-explicit-id
-#~ msgid "Full access - Expiring soon"
-#~ msgstr "完全アクセス - まもなく期限切れ"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
-#. js-lingui-explicit-id
-#~ msgid "No grammar insights yet. Start chatting to get personalized tips!"
-#~ msgstr "まだ文法のインサイトはありません。チャットを始めて、パーソナライズされたヒントを手に入れましょう！"
-
-#: src/features/Dashboard/Dashboard.tsx:96
-#. js-lingui-explicit-id
-#~ msgid "Renew Now"
-#~ msgstr ""
-#~ "\n"
-#~ "今すぐ更新\n"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
-#. js-lingui-explicit-id
-#~ msgid "Show all improvements"
-#~ msgstr "すべての改善を表示"
-
-#: src/features/Dashboard/JustTalkCard.tsx:161
-#. js-lingui-explicit-id
-#~ msgid "Start a call"
-#~ msgstr "通話を開始"
-
-#: src/features/Dashboard/Dashboard.tsx:79
-#. js-lingui-explicit-id
-#~ msgid "Unlock Full Access"
-#~ msgstr "フルアクセスのアンロック"
-
-#: src/features/Dashboard/Dashboard.tsx:76
-#. js-lingui-explicit-id
-#~ msgid "Unlock unlimited speaking practice, all AI features and community access."
-#~ msgstr "無制限のスピーキング練習、すべてのAI機能、コミュニティへのアクセスをアンロックしましょう。"
-
-#: src/features/Dashboard/Dashboard.tsx:94
-#. js-lingui-explicit-id
-#~ msgid "Your unlimited access is about to expire soon."
-#~ msgstr "あなたの無制限アクセスはまもなく期限切れになります。"
-
-#: src/features/Dashboard/Dashboard.tsx:91
-#. js-lingui-explicit-id
-#~ msgid "Your unlimited access is active until {date}"
-#~ msgstr "あなたの無制限アクセスは{date}までアクティブです"
-
-#: src/features/Dashboard/Dashboard.tsx:75
-#. js-lingui-explicit-id
-#~ msgid "You’re in preview mode"
-#~ msgstr "プレビューモードになっています"
-
-#: src/features/Experiments/IWant.tsx:223
-#. js-lingui-explicit-id
-#~ msgid "Try another photo"
-#~ msgstr "別の写真を試してください"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:309
-#. js-lingui-explicit-id
-#~ msgid "Open My Improvements"
-#~ msgstr "改善点を開く"
-
-#: src/features/Dashboard/JustTalkCard.tsx:60
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Microphone permission is required to start the call. Please allow "
-#~ "microphone access and try again. You can find the microphone permission "
-#~ "settings in your browser settings. After allowing permission, please "
-#~ "refresh the page and try starting the call again."
-#~ msgstr ""
-#~ "通話を開始するには、マイクの許可が必要です。マイクへのアクセスを許可して、再試行してください。マイクの許可設定は、ブラウザの設定で見つけることができます"
-#~ "。許可を与えた後、ページを更新して、もう一度通話を開始してみてください。"
-
-#: src/features/Landing/LandingPage.tsx:261
-#. js-lingui-explicit-id
-#~ msgid "AI conversation"
-#~ msgstr "AI会話"
-
-#: src/features/Landing/LandingPage.tsx:260
-#. js-lingui-explicit-id
-#~ msgid "Conversation Practice"
-#~ msgstr "会話練習"
-
-#: src/features/Landing/LandingPage.tsx:237
-#. js-lingui-explicit-id
-#~ msgid "Confidence in a safe, relaxed environment"
-#~ msgstr "安全でリラックスした環境での自信"
-
-#: src/features/Landing/LandingPage.tsx:237
-#. js-lingui-explicit-id
-#~ msgid "Get instant AI feedback on clarity, vocabulary, and flow — while you speak."
-#~ msgstr "話している間に、明瞭さ、語彙、流れについて即座にAIフィードバックを得ることができます。"
-
-#: src/features/Dashboard/AccessBadge.tsx:93
-#. js-lingui-explicit-id
-#~ msgid "Only $9 per month"
-#~ msgstr "たった月額9ドル"
-
-#: src/features/Header/NotificationsModal.tsx:33
-#. js-lingui-explicit-id
-#~ msgid "Notification Settings"
-#~ msgstr "通知設定"

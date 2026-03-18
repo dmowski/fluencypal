@@ -647,14 +647,19 @@ export const TelegramSubscriptionPaymentModal = () => {
                           >
                             {currency.currency} /
                           </Typography>
-                          <Typography variant="caption">
+                          <Typography
+                            variant="caption"
+                            sx={{
+                              textTransform: 'lowercase',
+                            }}
+                          >
                             {duration === 'month'
-                              ? i18n._('month')
+                              ? i18n._('Month')
                               : duration === 'week'
-                                ? i18n._('week')
+                                ? i18n._('Week')
                                 : duration === 'year'
-                                  ? i18n._('year')
-                                  : i18n._('day')}
+                                  ? i18n._('Year')
+                                  : i18n._('Day')}
                           </Typography>
                         </Stack>
                       </Stack>

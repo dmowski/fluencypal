@@ -1963,6 +1963,7 @@ msgstr ""
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:159
 #: src/features/Chat/ChatSection.tsx:100
+#: src/features/Navigation/BackHomeNavButton.tsx:36
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Назад"
@@ -2266,7 +2267,7 @@ msgstr "Купить подписку"
 msgid "Buy AI tokens and use them whenever you want."
 msgstr "Покупайте токены AI и используйте их, когда захотите."
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:691
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:696
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Купить Больше"
@@ -2705,7 +2706,7 @@ msgstr "Сообщество"
 msgid "Community access"
 msgstr "Доступ к сообществу"
 
-#: src/features/Community/CommunityDashboard.tsx:118
+#: src/features/Community/CommunityDashboard.tsx:116
 #: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -2713,7 +2714,7 @@ msgstr "Доступ к сообществу"
 msgid "Community Chat"
 msgstr "Чат Сообщества"
 
-#: src/features/Community/CommunityDashboard.tsx:87
+#: src/features/Community/CommunityDashboard.tsx:85
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Центр Сообщества"
@@ -3255,7 +3256,7 @@ msgstr "Дневные лимиты?"
 msgid "Daily Question Chat"
 msgstr "Ежедневный Вопрос Чат"
 
-#: src/features/Community/CommunityDashboard.tsx:148
+#: src/features/Community/CommunityDashboard.tsx:146
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -3297,16 +3298,12 @@ msgstr "Данные и транзакции"
 msgid "Databases & Transactions"
 msgstr "Базы данных и транзакции"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:125
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:662
 #. js-lingui-explicit-id
 msgid "Day"
 msgstr "День"
-
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:120
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
-#. js-lingui-explicit-id
-msgid "day"
-msgstr "день"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
 #. js-lingui-explicit-id
@@ -3349,7 +3346,7 @@ msgstr "Дебаты начались!"
 msgid "Debate topics will be selected randomly."
 msgstr "Темы для дебатов будут выбраны случайным образом."
 
-#: src/features/Community/CommunityDashboard.tsx:139
+#: src/features/Community/CommunityDashboard.tsx:137
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -4629,7 +4626,7 @@ msgstr ""
 "подстраивается под ваш темп, исправляет ошибки и поддерживает вашу "
 "мотивацию."
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:185
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:190
 #. js-lingui-explicit-id
 msgid "Expires"
 msgstr "Истекает"
@@ -4715,7 +4712,7 @@ msgstr "Исследуйте сценарии ролевых игр"
 msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "Изучайте техники для обсуждения здоровья и психического благополучия."
 
-#: src/features/Community/CommunityDashboard.tsx:94
+#: src/features/Community/CommunityDashboard.tsx:92
 #: src/features/Dashboard/CommunityDashboardCard.tsx:25
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
@@ -5373,7 +5370,7 @@ msgstr "Полные голосовые функции"
 msgid "Fun facts about yourself"
 msgstr "Интересные факты о себе"
 
-#: src/features/Community/CommunityDashboard.tsx:125
+#: src/features/Community/CommunityDashboard.tsx:123
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -5536,12 +5533,12 @@ msgstr ""
 "реалистичный опыт покупок, помогая вам развивать основные коммуникативные "
 "навыки."
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:665
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:670
 #. js-lingui-explicit-id
 msgid "Get confidence with AI support"
 msgstr "Получите уверенность с поддержкой ИИ"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:80
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:81
 #. js-lingui-explicit-id
 msgid "Get creative"
 msgstr "Станьте креативными"
@@ -5558,7 +5555,7 @@ msgstr ""
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Usage/FeatureBlocker.tsx:99
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:679
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:684
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "Получить полный доступ"
@@ -7972,7 +7969,7 @@ msgstr "Ленивая загрузка"
 msgid "Leaderboard"
 msgstr "Таблица лидеров"
 
-#: src/features/Community/CommunityDashboard.tsx:155
+#: src/features/Community/CommunityDashboard.tsx:153
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -8520,18 +8517,18 @@ msgstr "Мок-интервью"
 msgid "modern literature"
 msgstr "современная литература"
 
-#: src/features/Landing/Price/PricePage.tsx:510
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:115
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
-#. js-lingui-explicit-id
-msgid "month"
-msgstr "месяц"
-
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:120
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:608
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "Month"
 msgstr "Месяц"
+
+#: src/features/Landing/Price/PricePage.tsx:510
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
+#. js-lingui-explicit-id
+msgid "month"
+msgstr "месяц"
 
 #: src/features/Case/data/reusable/priceSection.ts:17
 #. js-lingui-explicit-id
@@ -9979,13 +9976,13 @@ msgstr ""
 "фронтенд-разработчика, устраняйте критические пробелы и приходите на "
 "собеседования уверенными и подготовленными."
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:69
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:70
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:67
 #. js-lingui-explicit-id
 msgid "Practice Real-Life Conversations With Role-Play Scenarios"
 msgstr "Практикуйте реальные разговоры с помощью ролевых сценариев"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:53
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Practice real-life conversations with various role-play scenarios."
 msgstr "Практикуйте реальные разговоры с различными сценариями ролевых игр."
@@ -10272,7 +10269,7 @@ msgstr "Предыдущий вопрос"
 msgid "Price"
 msgstr "Цена"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:195
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:200
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "Цена за день"
@@ -10299,7 +10296,7 @@ msgstr "Приоритетная поддержка"
 msgid "Privacy Policy"
 msgstr "Политика конфиденциальности"
 
-#: src/features/Community/CommunityDashboard.tsx:162
+#: src/features/Community/CommunityDashboard.tsx:160
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -10350,7 +10347,7 @@ msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Профессионалы, переходящие из других сфер в разработку интерфейсов"
 
 #: src/features/Navigation/NavigationBar.tsx:100
-#: src/features/Navigation/NavigationBar.tsx:119
+#: src/features/Navigation/NavigationBar.tsx:123
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Профиль"
@@ -10995,11 +10992,12 @@ msgid "Robot Thinking"
 msgstr "Робот размышляет"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:57
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:68
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:69
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Goal/Quiz/QuizPage2.tsx:465
 #: src/features/Landing/PlanLandingBlock.tsx:279
+#: src/features/Navigation/NavigationBar.tsx:118
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -11025,11 +11023,6 @@ msgstr "Ролевые сценарии"
 msgid "Role-Play"
 msgstr "Ролевая игра"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:45
-#. js-lingui-explicit-id
-msgid "Role-Play Scenarios"
-msgstr "Ролевые сценарии"
-
 #: src/features/Landing/Price/FeatureList.tsx:36
 #: src/features/Landing/Price/PricePage.tsx:441
 #: src/features/Landing/Price/PricePage.tsx:524
@@ -11037,6 +11030,11 @@ msgstr "Ролевые сценарии"
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "Сценарии ролевых игр"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:46
+#. js-lingui-explicit-id
+msgid "Role-Play Scenarios"
+msgstr "Ролевые сценарии"
 
 #: src/features/Header/HeaderStatic.tsx:17
 #. js-lingui-explicit-id
@@ -11174,7 +11172,7 @@ msgstr "Собеседование с AI-рекрутером"
 msgid "Second Place"
 msgstr "Второе место"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:70
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "See all"
 msgstr "Смотреть все"
@@ -12338,7 +12336,7 @@ msgstr "Техническое интервью с фронтенд-разраб
 msgid "Tech stack covered"
 msgstr "Используемый стек технологий"
 
-#: src/features/Community/CommunityDashboard.tsx:132
+#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -13170,7 +13168,7 @@ msgstr "Попробуйте бесплатно"
 msgid "Try full features and see significant improvement"
 msgstr "Попробуйте все функции и заметите значительное улучшение"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:81
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:82
 #. js-lingui-explicit-id
 msgid "Try these role-plays"
 msgstr "Попробуйте эти ролевые игры"
@@ -13277,7 +13275,7 @@ msgstr "Неизвестная ошибка"
 msgid "Unknown error during sign-in"
 msgstr "Неизвестная ошибка при входе в систему"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:173
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:178
 #. js-lingui-explicit-id
 msgid "Unlimited access to all features"
 msgstr "Неограниченный доступ ко всем функциям"
@@ -13334,7 +13332,7 @@ msgstr "Разблокируйте полную подготовку к собе
 msgid "Unlock unlimited access to all features"
 msgstr "Разблокируйте безлимитный доступ ко всем функциям"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:69
+#: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #. js-lingui-explicit-id
 msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "Откройте безлимитные AI разговоры и все режимы практики"
@@ -13343,6 +13341,11 @@ msgstr "Откройте безлимитные AI разговоры и все 
 #. js-lingui-explicit-id
 msgid "Unpublish"
 msgstr "Отменить публикацию"
+
+#: src/features/Navigation/SimpleNavigationBar.tsx:169
+#. js-lingui-explicit-id
+msgid "Update"
+msgstr "Обновление"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -13811,14 +13814,14 @@ msgstr "Предварительный просмотр обратной свя�
 msgid "Webcam Setup"
 msgstr "Настройка веб-камеры"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:122
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:659
 #. js-lingui-explicit-id
 msgid "Week"
 msgstr "Неделя"
 
 #: src/features/Landing/Price/PricePage.tsx:427
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:117
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
 msgstr "неделя"
@@ -14261,14 +14264,14 @@ msgstr "Напишите свой отчет здесь"
 msgid "Wrong Link"
 msgstr "Неправильная ссылка"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:124
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:661
 #. js-lingui-explicit-id
 msgid "Year"
 msgstr "Год"
 
 #: src/features/Landing/Price/PricePage.tsx:593
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:119
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
 msgstr "год"
@@ -14545,7 +14548,7 @@ msgstr ""
 "поведенческие собеседования, ориентируясь на React, Vue, Angular, "
 "TypeScript и современную веб-архитектуру."
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:709
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:714
 #. js-lingui-explicit-id
 msgid ""
 "You can renew your full access any time before it expires to avoid\n"
@@ -14712,11 +14715,6 @@ msgstr "Вы достигли великолепных результатов. �
 msgid "You:"
 msgstr "Вы:"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:61
-#. js-lingui-explicit-id
-msgid "Your access is currently limited"
-msgstr "Ваш доступ в настоящий момент ограничен"
-
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
@@ -14796,7 +14794,7 @@ msgstr "Ваш опыт"
 msgid "Your full access is active until"
 msgstr "Ваш полный доступ активен до"
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:698
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:703
 #. js-lingui-explicit-id
 msgid "Your full access is active until {activeTill}"
 msgstr "Ваш полный доступ активен до {activeTill}"
@@ -14936,127 +14934,3 @@ msgstr ""
 "— важно провести этот короткий разговор перед тем, как переходить к "
 "профессиональным темам. Вот несколько полезных английских фраз для начала "
 "интервью:"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:290
-#. js-lingui-explicit-id
-#~ msgid "Show more lessons"
-#~ msgstr "Показать больше уроков"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Based on your recent conversations, here are some tips to improve your "
-#~ "grammar. Click on the tip to see more details!"
-#~ msgstr ""
-#~ "На основе ваших недавних разговоров, вот несколько советов по улучшению "
-#~ "вашей грамматики. Нажмите на совет, чтобы увидеть больше деталей!"
-
-#: src/features/Dashboard/Dashboard.tsx:88
-#. js-lingui-explicit-id
-#~ msgid "Full access - Expiring soon"
-#~ msgstr "Полный доступ - Скоро закончится"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
-#. js-lingui-explicit-id
-#~ msgid "No grammar insights yet. Start chatting to get personalized tips!"
-#~ msgstr ""
-#~ "Нет пока никаких грамматических подсказок. Начните общение, чтобы получить "
-#~ "персонализированные советы!"
-
-#: src/features/Dashboard/Dashboard.tsx:96
-#. js-lingui-explicit-id
-#~ msgid "Renew Now"
-#~ msgstr "Обновить сейчас"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
-#. js-lingui-explicit-id
-#~ msgid "Show all improvements"
-#~ msgstr "Показать все улучшения"
-
-#: src/features/Dashboard/JustTalkCard.tsx:161
-#. js-lingui-explicit-id
-#~ msgid "Start a call"
-#~ msgstr "Начать звонок"
-
-#: src/features/Dashboard/Dashboard.tsx:79
-#. js-lingui-explicit-id
-#~ msgid "Unlock Full Access"
-#~ msgstr "Разблокировать полный доступ"
-
-#: src/features/Dashboard/Dashboard.tsx:76
-#. js-lingui-explicit-id
-#~ msgid "Unlock unlimited speaking practice, all AI features and community access."
-#~ msgstr ""
-#~ "Разблокируйте неограниченную практику разговорной речи, все функции ИИ и "
-#~ "доступ к сообществу."
-
-#: src/features/Dashboard/Dashboard.tsx:94
-#. js-lingui-explicit-id
-#~ msgid "Your unlimited access is about to expire soon."
-#~ msgstr "Ваш неограниченный доступ скоро истечет."
-
-#: src/features/Dashboard/Dashboard.tsx:91
-#. js-lingui-explicit-id
-#~ msgid "Your unlimited access is active until {date}"
-#~ msgstr "Ваш неограниченный доступ активен до {date}"
-
-#: src/features/Dashboard/Dashboard.tsx:75
-#. js-lingui-explicit-id
-#~ msgid "You’re in preview mode"
-#~ msgstr "Вы находитесь в режиме предварительного просмотра"
-
-#: src/features/Experiments/IWant.tsx:223
-#. js-lingui-explicit-id
-#~ msgid "Try another photo"
-#~ msgstr "Попробуйте другое фото"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:309
-#. js-lingui-explicit-id
-#~ msgid "Open My Improvements"
-#~ msgstr "Открыть мои улучшения"
-
-#: src/features/Dashboard/JustTalkCard.tsx:60
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Microphone permission is required to start the call. Please allow "
-#~ "microphone access and try again. You can find the microphone permission "
-#~ "settings in your browser settings. After allowing permission, please "
-#~ "refresh the page and try starting the call again."
-#~ msgstr ""
-#~ "Для начала вызова требуется разрешение на использование микрофона. "
-#~ "Пожалуйста, разрешите доступ к микрофону и попробуйте снова. Вы можете "
-#~ "найти настройки разрешений для микрофона в настройках вашего браузера. "
-#~ "После предоставления разрешения, пожалуйста, обновите страницу и попробуйте "
-#~ "начать вызов снова."
-
-#: src/features/Landing/LandingPage.tsx:261
-#. js-lingui-explicit-id
-#~ msgid "AI conversation"
-#~ msgstr "AI разговор"
-
-#: src/features/Landing/LandingPage.tsx:260
-#. js-lingui-explicit-id
-#~ msgid "Conversation Practice"
-#~ msgstr "Практика Разговора"
-
-#: src/features/Landing/LandingPage.tsx:237
-#. js-lingui-explicit-id
-#~ msgid "Confidence in a safe, relaxed environment"
-#~ msgstr "Уверенность в безопасной, расслабленной обстановке"
-
-#: src/features/Landing/LandingPage.tsx:237
-#. js-lingui-explicit-id
-#~ msgid "Get instant AI feedback on clarity, vocabulary, and flow — while you speak."
-#~ msgstr ""
-#~ "Получайте мгновенную обратную связь от ИИ о ясности, словарном запасе и "
-#~ "плавности — во время разговора."
-
-#: src/features/Dashboard/AccessBadge.tsx:93
-#. js-lingui-explicit-id
-#~ msgid "Only $9 per month"
-#~ msgstr "Только $9 в месяц"
-
-#: src/features/Header/NotificationsModal.tsx:33
-#. js-lingui-explicit-id
-#~ msgid "Notification Settings"
-#~ msgstr "Настройки уведомлений"

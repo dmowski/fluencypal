@@ -1944,6 +1944,7 @@ msgstr ""
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:159
 #: src/features/Chat/ChatSection.tsx:100
+#: src/features/Navigation/BackHomeNavButton.tsx:36
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Geri"
@@ -2239,7 +2240,7 @@ msgstr "Abonelik Satın Al"
 msgid "Buy AI tokens and use them whenever you want."
 msgstr "AI jetonları satın al ve istediğin zaman kullan."
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:691
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:696
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Daha Fazla Satın Al"
@@ -2678,7 +2679,7 @@ msgstr "Topluluk"
 msgid "Community access"
 msgstr "Topluluk erişimi"
 
-#: src/features/Community/CommunityDashboard.tsx:118
+#: src/features/Community/CommunityDashboard.tsx:116
 #: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -2686,7 +2687,7 @@ msgstr "Topluluk erişimi"
 msgid "Community Chat"
 msgstr "Topluluk Sohbeti"
 
-#: src/features/Community/CommunityDashboard.tsx:87
+#: src/features/Community/CommunityDashboard.tsx:85
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Topluluk Merkezi"
@@ -3224,7 +3225,7 @@ msgstr "Günlük Sınırlamalar?"
 msgid "Daily Question Chat"
 msgstr "Günlük Soru Sohbeti"
 
-#: src/features/Community/CommunityDashboard.tsx:148
+#: src/features/Community/CommunityDashboard.tsx:146
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -3266,16 +3267,12 @@ msgstr "Veri ve İşlemler"
 msgid "Databases & Transactions"
 msgstr "Veritabanları ve İşlemler"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:125
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:662
 #. js-lingui-explicit-id
 msgid "Day"
 msgstr "Gün"
-
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:120
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
-#. js-lingui-explicit-id
-msgid "day"
-msgstr "gün"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
 #. js-lingui-explicit-id
@@ -3318,7 +3315,7 @@ msgstr "Tartışma başladı!"
 msgid "Debate topics will be selected randomly."
 msgstr "Tartışma konuları rastgele seçilecektir."
 
-#: src/features/Community/CommunityDashboard.tsx:139
+#: src/features/Community/CommunityDashboard.tsx:137
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -4593,7 +4590,7 @@ msgstr ""
 "dost canlısı AI öğretmeniniz. İster acemi ister ileri düzey bir öğrenci "
 "olun, Bruno hızınıza uyum sağlar, hataları düzeltir ve sizi motive tutar."
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:185
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:190
 #. js-lingui-explicit-id
 msgid "Expires"
 msgstr "Sona Erme Tarihi"
@@ -4679,7 +4676,7 @@ msgstr "Rol Oynama Senaryolarını Keşfedin"
 msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "Sağlık ve zihinsel iyi oluş hakkında konuşma tekniklerini keşfedin."
 
-#: src/features/Community/CommunityDashboard.tsx:94
+#: src/features/Community/CommunityDashboard.tsx:92
 #: src/features/Dashboard/CommunityDashboardCard.tsx:25
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
@@ -5326,7 +5323,7 @@ msgstr "Tam ses özellikleri"
 msgid "Fun facts about yourself"
 msgstr "Kendiniz hakkında eğlenceli gerçekler"
 
-#: src/features/Community/CommunityDashboard.tsx:125
+#: src/features/Community/CommunityDashboard.tsx:123
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -5492,12 +5489,12 @@ msgstr ""
 "yapma, gerçeğe yakın bir alışveriş deneyimini simüle ederek temel iletişim "
 "becerilerinizi geliştirmenize yardımcı olur."
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:665
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:670
 #. js-lingui-explicit-id
 msgid "Get confidence with AI support"
 msgstr "Yapay zeka desteğiyle güven kazanın"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:80
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:81
 #. js-lingui-explicit-id
 msgid "Get creative"
 msgstr "Yaratıcı ol"
@@ -5514,7 +5511,7 @@ msgstr ""
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Usage/FeatureBlocker.tsx:99
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:679
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:684
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "Tam Erişim Alın"
@@ -7904,7 +7901,7 @@ msgstr "Tembel Yükleme"
 msgid "Leaderboard"
 msgstr "Lider Tablosu"
 
-#: src/features/Community/CommunityDashboard.tsx:155
+#: src/features/Community/CommunityDashboard.tsx:153
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -8441,18 +8438,18 @@ msgstr "Sahte Görüşmeler"
 msgid "modern literature"
 msgstr "modern edebiyat"
 
-#: src/features/Landing/Price/PricePage.tsx:510
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:115
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
-#. js-lingui-explicit-id
-msgid "month"
-msgstr "ay"
-
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:120
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:608
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "Month"
 msgstr "Ay"
+
+#: src/features/Landing/Price/PricePage.tsx:510
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
+#. js-lingui-explicit-id
+msgid "month"
+msgstr "ay"
 
 #: src/features/Case/data/reusable/priceSection.ts:17
 #. js-lingui-explicit-id
@@ -9892,13 +9889,13 @@ msgstr ""
 "Gerçek kıdemli ön yüz mülakatlarını pratik yapın, kritik boşlukları "
 "düzeltin ve mülakatlara kendinden emin ve hazırlanmış bir şekilde girin."
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:69
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:70
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:67
 #. js-lingui-explicit-id
 msgid "Practice Real-Life Conversations With Role-Play Scenarios"
 msgstr "Gerçek Hayat Konuşmalarını Rol Oyun Senaryoları ile Pratik Yapın"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:53
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Practice real-life conversations with various role-play scenarios."
 msgstr "Gerçek hayattaki konuşmaları çeşitli rol yapma senaryolarıyla pratik yapın."
@@ -10184,7 +10181,7 @@ msgstr "Önceki Soru"
 msgid "Price"
 msgstr "Fiyat"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:195
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:200
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "Günlük fiyat"
@@ -10211,7 +10208,7 @@ msgstr "Öncelikli destek"
 msgid "Privacy Policy"
 msgstr "Gizlilik Politikası"
 
-#: src/features/Community/CommunityDashboard.tsx:162
+#: src/features/Community/CommunityDashboard.tsx:160
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -10262,7 +10259,7 @@ msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Diğer alanlardan ön uç mühendisliğine geçiş yapan profesyoneller"
 
 #: src/features/Navigation/NavigationBar.tsx:100
-#: src/features/Navigation/NavigationBar.tsx:119
+#: src/features/Navigation/NavigationBar.tsx:123
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
@@ -10897,11 +10894,12 @@ msgid "Robot Thinking"
 msgstr "Robot Düşünüyor"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:57
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:68
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:69
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Goal/Quiz/QuizPage2.tsx:465
 #: src/features/Landing/PlanLandingBlock.tsx:279
+#: src/features/Navigation/NavigationBar.tsx:118
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -10927,11 +10925,6 @@ msgstr "Rol Oynama Senaryoları"
 msgid "Role-Play"
 msgstr "Rol Oynama"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:45
-#. js-lingui-explicit-id
-msgid "Role-Play Scenarios"
-msgstr "Rol Yapma Senaryoları"
-
 #: src/features/Landing/Price/FeatureList.tsx:36
 #: src/features/Landing/Price/PricePage.tsx:441
 #: src/features/Landing/Price/PricePage.tsx:524
@@ -10939,6 +10932,11 @@ msgstr "Rol Yapma Senaryoları"
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "Rol yapma senaryoları"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:46
+#. js-lingui-explicit-id
+msgid "Role-Play Scenarios"
+msgstr "Rol Yapma Senaryoları"
 
 #: src/features/Header/HeaderStatic.tsx:17
 #. js-lingui-explicit-id
@@ -11078,7 +11076,7 @@ msgstr "AI işe alım uzmanı ile tarama görüşmesi"
 msgid "Second Place"
 msgstr "İkinci Yer"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:70
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "See all"
 msgstr "Tümünü gör"
@@ -12243,7 +12241,7 @@ msgstr "Yapay Zeka ön yüz geliştirici ile teknik mülakat"
 msgid "Tech stack covered"
 msgstr "Kapsanan teknoloji yığını"
 
-#: src/features/Community/CommunityDashboard.tsx:132
+#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -13074,7 +13072,7 @@ msgstr "Ücretsiz deneyin"
 msgid "Try full features and see significant improvement"
 msgstr "Tüm özellikleri deneyin ve önemli bir iyileşme görün"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:81
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:82
 #. js-lingui-explicit-id
 msgid "Try these role-plays"
 msgstr "Bu rol oyunlarını deneyin"
@@ -13181,7 +13179,7 @@ msgstr "Bilinmeyen hata"
 msgid "Unknown error during sign-in"
 msgstr "Oturum açma sırasında bilinmeyen hata"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:173
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:178
 #. js-lingui-explicit-id
 msgid "Unlimited access to all features"
 msgstr "Tüm özelliklere sınırsız erişim"
@@ -13236,7 +13234,7 @@ msgstr "Tam görüşme hazırlığının kilidini aç"
 msgid "Unlock unlimited access to all features"
 msgstr "Tüm özelliklere sınırsız erişimi açın"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:69
+#: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #. js-lingui-explicit-id
 msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "Sınırsız AI konuşmalarının ve tüm pratik modlarının kilidini açın"
@@ -13245,6 +13243,11 @@ msgstr "Sınırsız AI konuşmalarının ve tüm pratik modlarının kilidini a�
 #. js-lingui-explicit-id
 msgid "Unpublish"
 msgstr "Yayından Kaldır"
+
+#: src/features/Navigation/SimpleNavigationBar.tsx:169
+#. js-lingui-explicit-id
+msgid "Update"
+msgstr "Güncelleme"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -13708,14 +13711,14 @@ msgstr "Webcam Geri Bildirim Önizlemesi"
 msgid "Webcam Setup"
 msgstr "Webcam Kurulumu"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:122
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:659
 #. js-lingui-explicit-id
 msgid "Week"
 msgstr "Hafta"
 
 #: src/features/Landing/Price/PricePage.tsx:427
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:117
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
 msgstr "hafta"
@@ -14148,14 +14151,14 @@ msgstr "Raporunuzu buraya yazın"
 msgid "Wrong Link"
 msgstr "Yanlış Bağlantı"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:124
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:661
 #. js-lingui-explicit-id
 msgid "Year"
 msgstr "Yıl"
 
 #: src/features/Landing/Price/PricePage.tsx:593
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:119
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
 msgstr "yıl"
@@ -14427,7 +14430,7 @@ msgstr ""
 "TypeScript ve modern web mimarisine odaklanmış davranışsal mülakatlar "
 "dahilinde pratik yapabilirsiniz."
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:709
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:714
 #. js-lingui-explicit-id
 msgid ""
 "You can renew your full access any time before it expires to avoid\n"
@@ -14599,11 +14602,6 @@ msgstr "Harika bir ilerleme kaydettiniz. Hadi devam edelim."
 msgid "You:"
 msgstr "Sen:"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:61
-#. js-lingui-explicit-id
-msgid "Your access is currently limited"
-msgstr "Erişiminiz şu anda sınırlı"
-
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
@@ -14683,7 +14681,7 @@ msgstr "Deneyiminiz"
 msgid "Your full access is active until"
 msgstr "Tam erişiminiz şu tarihe kadar aktiftir:"
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:698
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:703
 #. js-lingui-explicit-id
 msgid "Your full access is active until {activeTill}"
 msgstr "Tam erişiminiz {activeTill} tarihine kadar aktiftir."
@@ -14820,126 +14818,3 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:290
-#. js-lingui-explicit-id
-#~ msgid "Show more lessons"
-#~ msgstr "Daha fazla ders göster"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Based on your recent conversations, here are some tips to improve your "
-#~ "grammar. Click on the tip to see more details!"
-#~ msgstr ""
-#~ "Son konuşmalarınıza dayanarak, dil bilginizi geliştirmeniz için bazı "
-#~ "ipuçları burada. Daha fazla ayrıntı görmek için ipucuna tıklayın!"
-
-#: src/features/Dashboard/Dashboard.tsx:88
-#. js-lingui-explicit-id
-#~ msgid "Full access - Expiring soon"
-#~ msgstr "Tam erişim - Yakında sona eriyor"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
-#. js-lingui-explicit-id
-#~ msgid "No grammar insights yet. Start chatting to get personalized tips!"
-#~ msgstr ""
-#~ "Henüz dilbilgisi içgörüsü yok. Kişiselleştirilmiş ipuçları almak için "
-#~ "sohbet etmeye başlayın!"
-
-#: src/features/Dashboard/Dashboard.tsx:96
-#. js-lingui-explicit-id
-#~ msgid "Renew Now"
-#~ msgstr "Yenile"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
-#. js-lingui-explicit-id
-#~ msgid "Show all improvements"
-#~ msgstr "Tüm iyileştirmeleri göster"
-
-#: src/features/Dashboard/JustTalkCard.tsx:161
-#. js-lingui-explicit-id
-#~ msgid "Start a call"
-#~ msgstr "Bir görüşme başlat"
-
-#: src/features/Dashboard/Dashboard.tsx:79
-#. js-lingui-explicit-id
-#~ msgid "Unlock Full Access"
-#~ msgstr "Tam Erişimi Aç"
-
-#: src/features/Dashboard/Dashboard.tsx:76
-#. js-lingui-explicit-id
-#~ msgid "Unlock unlimited speaking practice, all AI features and community access."
-#~ msgstr ""
-#~ "Sınırsız konuşma pratiği, tüm AI özellikleri ve topluluk erişiminin "
-#~ "kilidini açın."
-
-#: src/features/Dashboard/Dashboard.tsx:94
-#. js-lingui-explicit-id
-#~ msgid "Your unlimited access is about to expire soon."
-#~ msgstr "Sınırsız erişiminizin süresi yakında dolacak."
-
-#: src/features/Dashboard/Dashboard.tsx:91
-#. js-lingui-explicit-id
-#~ msgid "Your unlimited access is active until {date}"
-#~ msgstr "Sınırsız erişiminiz {date} tarihine kadar aktif"
-
-#: src/features/Dashboard/Dashboard.tsx:75
-#. js-lingui-explicit-id
-#~ msgid "You’re in preview mode"
-#~ msgstr "Önizleme modundasınız"
-
-#: src/features/Experiments/IWant.tsx:223
-#. js-lingui-explicit-id
-#~ msgid "Try another photo"
-#~ msgstr "Başka bir fotoğraf deneyin"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:309
-#. js-lingui-explicit-id
-#~ msgid "Open My Improvements"
-#~ msgstr "Geliştirmelerimi Aç"
-
-#: src/features/Dashboard/JustTalkCard.tsx:60
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Microphone permission is required to start the call. Please allow "
-#~ "microphone access and try again. You can find the microphone permission "
-#~ "settings in your browser settings. After allowing permission, please "
-#~ "refresh the page and try starting the call again."
-#~ msgstr ""
-#~ "Çağrıyı başlatmak için mikrofon izni gereklidir. Lütfen mikrofon erişimine "
-#~ "izin verin ve tekrar deneyin. Mikrofon izin ayarlarını tarayıcı ayarlarında "
-#~ "bulabilirsiniz. İzni verdikten sonra lütfen sayfayı yenileyin ve çağrıyı "
-#~ "başlatmayı tekrar deneyin."
-
-#: src/features/Landing/LandingPage.tsx:261
-#. js-lingui-explicit-id
-#~ msgid "AI conversation"
-#~ msgstr "AI konuşma"
-
-#: src/features/Landing/LandingPage.tsx:260
-#. js-lingui-explicit-id
-#~ msgid "Conversation Practice"
-#~ msgstr "Konuşma Pratiği"
-
-#: src/features/Landing/LandingPage.tsx:237
-#. js-lingui-explicit-id
-#~ msgid "Confidence in a safe, relaxed environment"
-#~ msgstr "Güvenli, rahat bir ortamda kendine güven"
-
-#: src/features/Landing/LandingPage.tsx:237
-#. js-lingui-explicit-id
-#~ msgid "Get instant AI feedback on clarity, vocabulary, and flow — while you speak."
-#~ msgstr ""
-#~ "Konuştukça açıklık, kelime dağarcığı ve akıcılık üzerine anında AI geri "
-#~ "bildirimi alın."
-
-#: src/features/Dashboard/AccessBadge.tsx:93
-#. js-lingui-explicit-id
-#~ msgid "Only $9 per month"
-#~ msgstr "Sadece ayda 9$"
-
-#: src/features/Header/NotificationsModal.tsx:33
-#. js-lingui-explicit-id
-#~ msgid "Notification Settings"
-#~ msgstr "Bildirim Ayarları"

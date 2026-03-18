@@ -1968,6 +1968,7 @@ msgstr ""
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:159
 #: src/features/Chat/ChatSection.tsx:100
+#: src/features/Navigation/BackHomeNavButton.tsx:36
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Kembali"
@@ -2265,7 +2266,7 @@ msgstr "Beli langganan"
 msgid "Buy AI tokens and use them whenever you want."
 msgstr "Beli token AI dan gunakan kapan pun Anda mau."
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:691
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:696
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Beli Lebih Banyak"
@@ -2704,7 +2705,7 @@ msgstr "Komunitas"
 msgid "Community access"
 msgstr "Akses komunitas"
 
-#: src/features/Community/CommunityDashboard.tsx:118
+#: src/features/Community/CommunityDashboard.tsx:116
 #: src/features/Community/CommunityPage.tsx:27
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -2712,7 +2713,7 @@ msgstr "Akses komunitas"
 msgid "Community Chat"
 msgstr "Obrolan Komunitas"
 
-#: src/features/Community/CommunityDashboard.tsx:87
+#: src/features/Community/CommunityDashboard.tsx:85
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Pusat Komunitas"
@@ -3250,7 +3251,7 @@ msgstr "Batas Harian?"
 msgid "Daily Question Chat"
 msgstr "Obrolan Pertanyaan Harian"
 
-#: src/features/Community/CommunityDashboard.tsx:148
+#: src/features/Community/CommunityDashboard.tsx:146
 #: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Daily Questions"
@@ -3292,16 +3293,12 @@ msgstr "Data & Transaksi"
 msgid "Databases & Transactions"
 msgstr "Basis Data & Transaksi"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:125
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:662
 #. js-lingui-explicit-id
 msgid "Day"
 msgstr "Hari"
-
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:120
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
-#. js-lingui-explicit-id
-msgid "day"
-msgstr "hari"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
 #. js-lingui-explicit-id
@@ -3344,7 +3341,7 @@ msgstr "Debat dimulai!"
 msgid "Debate topics will be selected randomly."
 msgstr "Topik debat akan dipilih secara acak."
 
-#: src/features/Community/CommunityDashboard.tsx:139
+#: src/features/Community/CommunityDashboard.tsx:137
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -4636,7 +4633,7 @@ msgstr ""
 "Apakah Anda pemula atau pelajar tingkat lanjut, Bruno menyesuaikan dengan "
 "kecepatan Anda, memperbaiki kesalahan, dan menjaga Anda termotivasi."
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:185
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:190
 #. js-lingui-explicit-id
 msgid "Expires"
 msgstr "Kedaluwarsa"
@@ -4724,7 +4721,7 @@ msgstr "Jelajahi Skenario Peran"
 msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "Jelajahi teknik untuk berbicara tentang kesejahteraan dan kesehatan mental."
 
-#: src/features/Community/CommunityDashboard.tsx:94
+#: src/features/Community/CommunityDashboard.tsx:92
 #: src/features/Dashboard/CommunityDashboardCard.tsx:25
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
@@ -5377,7 +5374,7 @@ msgstr "Fitur suara penuh"
 msgid "Fun facts about yourself"
 msgstr "Fakta menarik tentang diri Anda"
 
-#: src/features/Community/CommunityDashboard.tsx:125
+#: src/features/Community/CommunityDashboard.tsx:123
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -5543,12 +5540,12 @@ msgstr ""
 "interaktif ini mensimulasikan pengalaman berbelanja yang realistis, "
 "membantu Anda membangun keterampilan komunikasi yang penting."
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:665
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:670
 #. js-lingui-explicit-id
 msgid "Get confidence with AI support"
 msgstr "Dapatkan kepercayaan diri dengan dukungan AI"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:80
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:81
 #. js-lingui-explicit-id
 msgid "Get creative"
 msgstr "Dapatkan kreativitas"
@@ -5565,7 +5562,7 @@ msgstr ""
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Usage/FeatureBlocker.tsx:99
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:679
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:684
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "Dapatkan Akses Penuh"
@@ -8015,7 +8012,7 @@ msgstr "Pemuatan Lambat"
 msgid "Leaderboard"
 msgstr "Papan Peringkat"
 
-#: src/features/Community/CommunityDashboard.tsx:155
+#: src/features/Community/CommunityDashboard.tsx:153
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -8558,18 +8555,18 @@ msgstr "Wawancara Tiruan"
 msgid "modern literature"
 msgstr "sastra modern"
 
-#: src/features/Landing/Price/PricePage.tsx:510
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:115
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:652
-#. js-lingui-explicit-id
-msgid "month"
-msgstr "bulan"
-
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:120
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:608
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "Month"
 msgstr "Bulan"
+
+#: src/features/Landing/Price/PricePage.tsx:510
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
+#. js-lingui-explicit-id
+msgid "month"
+msgstr "bulan"
 
 #: src/features/Case/data/reusable/priceSection.ts:17
 #. js-lingui-explicit-id
@@ -10026,13 +10023,13 @@ msgstr ""
 "Latihan wawancara frontend senior yang sebenarnya, perbaiki kekurangan "
 "kritis, dan masuklah ke wawancara dengan percaya diri dan siap."
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:69
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:70
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:67
 #. js-lingui-explicit-id
 msgid "Practice Real-Life Conversations With Role-Play Scenarios"
 msgstr "Latih Percakapan Kehidupan Nyata Dengan Skenario Peran"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:53
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Practice real-life conversations with various role-play scenarios."
 msgstr "Berlatih percakapan kehidupan nyata dengan berbagai skenario bermain peran."
@@ -10327,7 +10324,7 @@ msgstr "Pertanyaan Sebelumnya"
 msgid "Price"
 msgstr "Harga"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:195
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:200
 #. js-lingui-explicit-id
 msgid "Price per day"
 msgstr "Harga per hari"
@@ -10354,7 +10351,7 @@ msgstr "Dukungan prioritas"
 msgid "Privacy Policy"
 msgstr "Kebijakan Privasi"
 
-#: src/features/Community/CommunityDashboard.tsx:162
+#: src/features/Community/CommunityDashboard.tsx:160
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -10405,7 +10402,7 @@ msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Profesional yang beralih dari bidang lain ke rekayasa frontend"
 
 #: src/features/Navigation/NavigationBar.tsx:100
-#: src/features/Navigation/NavigationBar.tsx:119
+#: src/features/Navigation/NavigationBar.tsx:123
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
@@ -11047,11 +11044,12 @@ msgid "Robot Thinking"
 msgstr "Robot Berpikir"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:57
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:68
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:69
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Goal/Quiz/QuizPage2.tsx:465
 #: src/features/Landing/PlanLandingBlock.tsx:279
+#: src/features/Navigation/NavigationBar.tsx:118
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -11077,11 +11075,6 @@ msgstr "Skenario Peran Bermain"
 msgid "Role-Play"
 msgstr "Peran-Peran"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:45
-#. js-lingui-explicit-id
-msgid "Role-Play Scenarios"
-msgstr "Skenario Bermain Peran"
-
 #: src/features/Landing/Price/FeatureList.tsx:36
 #: src/features/Landing/Price/PricePage.tsx:441
 #: src/features/Landing/Price/PricePage.tsx:524
@@ -11089,6 +11082,11 @@ msgstr "Skenario Bermain Peran"
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "Skenario permainan peran"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:46
+#. js-lingui-explicit-id
+msgid "Role-Play Scenarios"
+msgstr "Skenario Bermain Peran"
 
 #: src/features/Header/HeaderStatic.tsx:17
 #. js-lingui-explicit-id
@@ -11226,7 +11224,7 @@ msgstr "Wawancara penyaringan dengan perekrut AI"
 msgid "Second Place"
 msgstr "Peringkat Kedua"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:70
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "See all"
 msgstr "Lihat semua"
@@ -12404,7 +12402,7 @@ msgstr "Wawancara teknis dengan pengembang frontend AI"
 msgid "Tech stack covered"
 msgstr "Tumpukan teknologi yang dibahas"
 
-#: src/features/Community/CommunityDashboard.tsx:132
+#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -13242,7 +13240,7 @@ msgstr "Coba gratis"
 msgid "Try full features and see significant improvement"
 msgstr "Coba fitur lengkap dan lihat peningkatan yang signifikan"
 
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:81
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:82
 #. js-lingui-explicit-id
 msgid "Try these role-plays"
 msgstr "Cobalah bermain peran ini"
@@ -13351,7 +13349,7 @@ msgstr ""
 "\n"
 "Kesalahan tidak dikenal saat masuk\n"
 
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:173
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:178
 #. js-lingui-explicit-id
 msgid "Unlimited access to all features"
 msgstr "Akses tak terbatas ke semua fitur"
@@ -13408,7 +13406,7 @@ msgstr "Buka persiapan wawancara lengkap"
 msgid "Unlock unlimited access to all features"
 msgstr "Buka akses tak terbatas ke semua fitur"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:69
+#: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #. js-lingui-explicit-id
 msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "Buka kunci percakapan AI tanpa batas dan semua mode latihan"
@@ -13417,6 +13415,11 @@ msgstr "Buka kunci percakapan AI tanpa batas dan semua mode latihan"
 #. js-lingui-explicit-id
 msgid "Unpublish"
 msgstr "Tidak Dipublikasikan"
+
+#: src/features/Navigation/SimpleNavigationBar.tsx:169
+#. js-lingui-explicit-id
+msgid "Update"
+msgstr "Perbarui"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -13893,14 +13896,14 @@ msgstr "Pratinjau Umpan Balik Webcam"
 msgid "Webcam Setup"
 msgstr "Pengaturan Webcam"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:122
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:659
 #. js-lingui-explicit-id
 msgid "Week"
 msgstr "Minggu"
 
 #: src/features/Landing/Price/PricePage.tsx:427
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:117
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
 msgstr "minggu"
@@ -14352,14 +14355,14 @@ msgstr "Tulis laporan Anda di sini"
 msgid "Wrong Link"
 msgstr "Tautan Salah"
 
+#: src/features/Usage/Subscription/SubscriptionCard.tsx:124
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:661
 #. js-lingui-explicit-id
 msgid "Year"
 msgstr "Tahun"
 
 #: src/features/Landing/Price/PricePage.tsx:593
-#: src/features/Usage/Subscription/SubscriptionCard.tsx:119
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
 msgstr "tahun"
@@ -14638,7 +14641,7 @@ msgstr ""
 "perilaku yang berfokus pada React, Vue, Angular, TypeScript, dan arsitektur "
 "web modern."
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:709
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:714
 #. js-lingui-explicit-id
 msgid ""
 "You can renew your full access any time before it expires to avoid\n"
@@ -14812,11 +14815,6 @@ msgstr "Anda telah membuat kemajuan yang luar biasa. Mari kita lanjutkan."
 msgid "You:"
 msgstr "Anda:"
 
-#: src/features/Usage/Subscription/BalanceStatus.tsx:61
-#. js-lingui-explicit-id
-msgid "Your access is currently limited"
-msgstr "Akses Anda saat ini terbatas"
-
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
@@ -14901,7 +14899,7 @@ msgstr "Pengalaman Anda"
 msgid "Your full access is active until"
 msgstr "Akses penuh Anda aktif hingga"
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:698
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:703
 #. js-lingui-explicit-id
 msgid "Your full access is active until {activeTill}"
 msgstr "Akses penuh Anda aktif hingga {activeTill}"
@@ -15045,125 +15043,3 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:290
-#. js-lingui-explicit-id
-#~ msgid "Show more lessons"
-#~ msgstr "Tampilkan lebih banyak pelajaran"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Based on your recent conversations, here are some tips to improve your "
-#~ "grammar. Click on the tip to see more details!"
-#~ msgstr ""
-#~ "Berdasarkan percakapan Anda baru-baru ini, berikut adalah beberapa tips "
-#~ "untuk meningkatkan tata bahasa Anda. Klik pada tip untuk melihat lebih "
-#~ "banyak detail!"
-
-#: src/features/Dashboard/Dashboard.tsx:88
-#. js-lingui-explicit-id
-#~ msgid "Full access - Expiring soon"
-#~ msgstr "Akses penuh - Akan segera berakhir"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
-#. js-lingui-explicit-id
-#~ msgid "No grammar insights yet. Start chatting to get personalized tips!"
-#~ msgstr ""
-#~ "Belum ada wawasan tata bahasa. Mulailah mengobrol untuk mendapatkan tips "
-#~ "yang dipersonalisasi!"
-
-#: src/features/Dashboard/Dashboard.tsx:96
-#. js-lingui-explicit-id
-#~ msgid "Renew Now"
-#~ msgstr "Perbarui Sekarang"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
-#. js-lingui-explicit-id
-#~ msgid "Show all improvements"
-#~ msgstr "Tampilkan semua peningkatan"
-
-#: src/features/Dashboard/JustTalkCard.tsx:161
-#. js-lingui-explicit-id
-#~ msgid "Start a call"
-#~ msgstr "Mulai panggilan"
-
-#: src/features/Dashboard/Dashboard.tsx:79
-#. js-lingui-explicit-id
-#~ msgid "Unlock Full Access"
-#~ msgstr "Buka Akses Penuh"
-
-#: src/features/Dashboard/Dashboard.tsx:76
-#. js-lingui-explicit-id
-#~ msgid "Unlock unlimited speaking practice, all AI features and community access."
-#~ msgstr "Buka latihan berbicara tanpa batas, semua fitur AI, dan akses komunitas."
-
-#: src/features/Dashboard/Dashboard.tsx:94
-#. js-lingui-explicit-id
-#~ msgid "Your unlimited access is about to expire soon."
-#~ msgstr "Akses tak terbatas Anda akan segera berakhir."
-
-#: src/features/Dashboard/Dashboard.tsx:91
-#. js-lingui-explicit-id
-#~ msgid "Your unlimited access is active until {date}"
-#~ msgstr "Akses tak terbatas Anda aktif hingga {date}"
-
-#: src/features/Dashboard/Dashboard.tsx:75
-#. js-lingui-explicit-id
-#~ msgid "You’re in preview mode"
-#~ msgstr "Anda sedang dalam mode pratinjau"
-
-#: src/features/Experiments/IWant.tsx:223
-#. js-lingui-explicit-id
-#~ msgid "Try another photo"
-#~ msgstr "Coba foto lain"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:309
-#. js-lingui-explicit-id
-#~ msgid "Open My Improvements"
-#~ msgstr "Buka Perbaikan Saya"
-
-#: src/features/Dashboard/JustTalkCard.tsx:60
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Microphone permission is required to start the call. Please allow "
-#~ "microphone access and try again. You can find the microphone permission "
-#~ "settings in your browser settings. After allowing permission, please "
-#~ "refresh the page and try starting the call again."
-#~ msgstr ""
-#~ "Izin mikrofon diperlukan untuk memulai panggilan. Harap izinkan akses "
-#~ "mikrofon dan coba lagi. Anda dapat menemukan pengaturan izin mikrofon di "
-#~ "pengaturan browser Anda. Setelah mengizinkan izin, harap muat ulang halaman "
-#~ "dan coba mulai panggilan lagi."
-
-#: src/features/Landing/LandingPage.tsx:261
-#. js-lingui-explicit-id
-#~ msgid "AI conversation"
-#~ msgstr "Percakapan AI"
-
-#: src/features/Landing/LandingPage.tsx:260
-#. js-lingui-explicit-id
-#~ msgid "Conversation Practice"
-#~ msgstr "Latihan Percakapan"
-
-#: src/features/Landing/LandingPage.tsx:237
-#. js-lingui-explicit-id
-#~ msgid "Confidence in a safe, relaxed environment"
-#~ msgstr "Percaya diri dalam lingkungan yang aman dan santai"
-
-#: src/features/Landing/LandingPage.tsx:237
-#. js-lingui-explicit-id
-#~ msgid "Get instant AI feedback on clarity, vocabulary, and flow — while you speak."
-#~ msgstr ""
-#~ "Dapatkan umpan balik AI instan tentang kejelasan, kosakata, dan aliran — "
-#~ "saat Anda berbicara."
-
-#: src/features/Dashboard/AccessBadge.tsx:93
-#. js-lingui-explicit-id
-#~ msgid "Only $9 per month"
-#~ msgstr "Hanya $9 per bulan"
-
-#: src/features/Header/NotificationsModal.tsx:33
-#. js-lingui-explicit-id
-#~ msgid "Notification Settings"
-#~ msgstr "Pengaturan Pemberitahuan"
