@@ -18,8 +18,35 @@ import { useQuizWordAudio } from '@/features/Audio/useQuizWordAudio';
 import { SectionHeader } from '../CartsHeader';
 import { RowItem, StoreCard } from '@/features/uiKit/Card/StoreCard';
 import dayjs from 'dayjs';
+import { IconName } from 'lucide-react/dynamic';
 
 const limitCount = 3;
+
+const improvementsIcons: {
+  color: string;
+  iconName: IconName;
+}[] = [
+  {
+    color: '#335FFC',
+    iconName: 'star',
+  },
+  {
+    color: '#FF6AD8',
+    iconName: 'heart',
+  },
+  {
+    color: '#00C2FF',
+    iconName: 'thumbs-up',
+  },
+  {
+    color: '#FF8A00',
+    iconName: 'zap',
+  },
+  {
+    color: '#00FFAB',
+    iconName: 'smile',
+  },
+];
 
 export const GrammarImprovesCardUi = ({
   grammarPoints,
@@ -193,11 +220,12 @@ ${postfixInstruction}`;
   const items: RowItem[] = [];
 
   grammarPoints.forEach((record, index) => {
+    const icon = improvementsIcons[index % improvementsIcons.length];
     items.push({
       title: dayjs(record.createdAtDayIso).format('MMMM D, YYYY'),
       subTitle: record.value.substring(0, 100) + (record.value.length > 100 ? '...' : ''),
-      imageUrl:
-        'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773858639762-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+      iconName: 'book',
+      bgColor: icon.color,
       actionButtonTitle: i18n._('Open'),
       onClick: function (): void {
         handleOpenModal(index);
@@ -233,7 +261,7 @@ ${postfixInstruction}`;
         emptyItemsStateText={i18n._(
           'No grammar mistakes found. Keep practicing to see improvements here!',
         )}
-        itemsBackgroundColor={'#1C1C1E'}
+        itemsBackgroundColor={'rgba(45, 45, 46, 0.8)'}
         onClick={() => {
           if (grammarPoints.length > 0) {
             handleOpenModal(0);

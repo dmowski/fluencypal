@@ -70,14 +70,19 @@ export function Dashboard({ lang }: DashboardProps) {
         >
           {appNavigation.currentPage === 'home' && (
             <>
-              <JustTalkCard />
-              <GrammarImprovesCard />
+              <Stack
+                sx={{
+                  gap: '50px',
+                  '@media (max-width:600px)': {
+                    padding: '0 10px',
+                  },
+                }}
+              >
+                <JustTalkCard />
+                <GrammarImprovesCard />
+              </Stack>
 
               <PlanDashboardCards lang={lang} />
-
-              <Stories />
-
-              <StreaksDaysBadge />
             </>
           )}
 

@@ -1,10 +1,14 @@
 import { Button, Stack, Typography } from '@mui/material';
 import { DraftingCompass } from 'lucide-react';
+import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 import Image from 'next/image';
 import { useState } from 'react';
 
 export interface RowItem {
-  imageUrl: string;
+  imageUrl?: string;
+  iconName?: IconName;
+  bgColor?: string;
+
   title: string;
   subTitle: string;
   actionButtonTitle: string;
@@ -189,12 +193,28 @@ export const StoreCardRowItem = ({
         data.onClick();
       }}
     >
-      <RowIcon imageUrl={data.imageUrl} size={'49px'} iconBorderRadius={iconBorderRadius} />
+      <RowIcon
+        iconName={data.iconName}
+        imageUrl={data.imageUrl}
+        bgColor={data.bgColor}
+        size={'50px'}
+        iconBorderRadius={iconBorderRadius}
+      />
       <Stack>
         <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>
           {data.title}
         </Typography>
-        <Typography variant="body2" color={'text.secondary'}>
+        <Typography
+          variant="body2"
+          color={'text.secondary'}
+          sx={{
+            maxHeight: '18px',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            maxWidth: '100%',
+            marginBottom: '6px',
+          }}
+        >
           {data.subTitle}
         </Typography>
       </Stack>
@@ -235,11 +255,15 @@ const StoreButton = ({ title, onClick }: { title: string; onClick: () => void })
 };
 
 export const RowIcon = ({
+  iconName,
   imageUrl,
+  bgColor,
   size,
   iconBorderRadius,
 }: {
-  imageUrl: string;
+  iconName?: IconName;
+  bgColor?: string;
+  imageUrl?: string;
   size: string;
   iconBorderRadius: string;
 }) => {
@@ -251,8 +275,10 @@ export const RowIcon = ({
         height: size,
         borderRadius: iconBorderRadius,
         position: 'relative',
+        justifyContent: 'center',
+        alignItems: 'center',
 
-        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        backgroundColor: bgColor || 'rgba(255, 255, 255, 0.05)',
 
         ':after': {
           content: '""',
@@ -264,15 +290,39 @@ export const RowIcon = ({
         },
       }}
     >
-      <Image
-        src={imageUrl}
-        alt=""
-        fill
-        sizes={size}
-        style={{
-          objectFit: 'cover',
-          zIndex: 1,
+      {iconName && (
+        <DynamicIcon
+          name={iconName}
+          size={'22px'}
+          style={{
+            position: 'relative',
+            zIndex: 3,
+          }}
+        />
+      )}
+
+      {!iconName && imageUrl && (
+        <Image
+          src={imageUrl}
+          alt=""
+          fill
+          sizes={size}
+          style={{
+            objectFit: 'cover',
+            zIndex: 1,
+            borderRadius: iconBorderRadius,
+          }}
+        />
+      )}
+
+      <Stack
+        sx={{
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
           borderRadius: iconBorderRadius,
+          background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%)',
+          zIndex: 0,
         }}
       />
     </Stack>
