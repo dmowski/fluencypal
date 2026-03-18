@@ -18,20 +18,9 @@ export const RolePlayBoard = () => {
       gap={'20px'}
       sx={{
         maxWidth: '100%',
+        width: '100%',
       }}
     >
-      <Tabs
-        scrollButtons={true}
-        variant="scrollable"
-        allowScrollButtonsMobile
-        value={selectedCategoryId}
-        onChange={(event, newId) => setSelectedCategoryId(`${newId}`)}
-      >
-        {allTabs.map((tab, index) => {
-          return <Tab key={index} label={tab.title} value={tab.id} />;
-        })}
-      </Tabs>
-
       <Stack
         gap="15px"
         sx={{

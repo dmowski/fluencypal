@@ -33,6 +33,7 @@ export const RolePlayDashboardCard = () => {
               maxWidth: '700px',
               padding: '0 10px',
               gap: '30px',
+              width: '100%',
             }}
           >
             <Stack>

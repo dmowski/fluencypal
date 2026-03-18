@@ -58,7 +58,7 @@ export const BalanceStatus = () => {
                 ? i18n._('Loading...')
                 : isHaveAccess
                   ? i18n._('You have full access')
-                  : i18n._('Your access is currently limited')}
+                  : i18n._('Unlock unlimited AI conversations and all practice modes')}
             </Typography>
 
             <Typography variant="body2" sx={{}}>
@@ -66,7 +66,7 @@ export const BalanceStatus = () => {
                 ? i18n._('...')
                 : isHaveAccess
                   ? i18n._('Enjoy unlimited AI conversations and all practice modes!')
-                  : i18n._('Unlock unlimited AI conversations and all practice modes')}
+                  : ''}
             </Typography>
           </Stack>
         </Stack>

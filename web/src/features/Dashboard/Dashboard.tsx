@@ -25,6 +25,8 @@ import { useAuth } from '../Auth/useAuth';
 import { GrammarImprovesCard } from './Grammar/GrammarImprovesCard';
 import { RolePlayDashboardCard } from './RolePlayDashboardCard';
 import { CommunityDashboardCard } from './CommunityDashboardCard';
+import { SimpleNavigationBar } from '../Navigation/SimpleNavigationBar';
+import { BackHomeNavButton } from '../Navigation/BackHomeNavButton';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -42,7 +44,8 @@ export function Dashboard({ lang }: DashboardProps) {
 
   return (
     <>
-      <NavigationBar />
+      {appNavigation.currentPage === 'home' ? <SimpleNavigationBar /> : <BackHomeNavButton />}
+
       <RolePlayModal />
 
       {plan.activeGoalElementInfo && (

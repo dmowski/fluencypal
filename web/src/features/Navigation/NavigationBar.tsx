@@ -112,7 +112,11 @@ export const NavigationBar: React.FC = () => {
           title: i18n._('Community'),
           badge: !access.canUseCommunity ? undefined : chatList.myUnreadCount,
         },
-
+        {
+          name: 'role-play',
+          icon: VenetianMask,
+          title: i18n._('Role Play'),
+        },
         {
           name: 'profile',
           icon: User,
