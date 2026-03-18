@@ -240,7 +240,7 @@ ${postfixInstruction}`;
 
     grammarPoints.slice(0, limit).forEach((record, index) => {
       const icon = improvementsIcons[index % improvementsIcons.length];
-      const fullTitle = titleMap[record.value]?.title || `...`;
+      const fullTitle = titleMap[record.value]?.title || i18n._(`Loading...`);
       const subTitle = titleMap[record.value]?.subTitle || '...';
 
       newItems.push({
