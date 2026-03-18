@@ -17,6 +17,7 @@ import { useAccess } from '../Usage/useAccess';
 import { useCommunitySpace } from './CommunitySpace/useCommunitySpace';
 import { ActiveSpacePage } from './CommunitySpace/ActiveSpacePage';
 import { CommunityRooms } from './CommunitySpace/CommunityRooms';
+import { BackHomeNavButton } from '../Navigation/BackHomeNavButton';
 
 export const CommunityDashboard = () => {
   const chatList = useChatList();
@@ -38,7 +39,7 @@ export const CommunityDashboard = () => {
 
   return (
     <>
-      <NavigationBar />
+      <BackHomeNavButton />
       <Stack
         sx={{
           alignItems: 'center',
@@ -48,10 +49,8 @@ export const CommunityDashboard = () => {
         <Stack
           sx={{
             width: '100%',
-            maxWidth: '680px',
-            '@media (max-width: 600px)': {
-              maxWidth: '700px',
-            },
+            maxWidth: '700px',
+            padding: '10px',
           }}
         >
           {activeSpace ? (
@@ -61,7 +60,6 @@ export const CommunityDashboard = () => {
           ) : (
             <Stack
               sx={{
-                padding: '20px',
                 gap: '80px',
                 '--icon-size': '40px',
                 paddingBottom: '100px',
