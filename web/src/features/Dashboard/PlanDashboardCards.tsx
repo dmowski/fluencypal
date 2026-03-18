@@ -274,21 +274,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               />
             );
           })}
-          <Stack
-            sx={{
-              alignItems: 'center',
-              maxWidth: '700px',
-              paddingTop: '10px',
-            }}
-          >
-            <Button
-              startIcon={<Sparkle size={'14px'} />}
-              variant="outlined"
-              onClick={() => setIsShowMoreModal(true)}
-            >
-              {i18n._(`Show more lessons`)}
-            </Button>
-          </Stack>
         </Stack>
       ) : (
         <Button
