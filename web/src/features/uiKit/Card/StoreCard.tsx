@@ -310,6 +310,7 @@ export const RowIcon = ({
           src={imageUrl}
           alt=""
           fill
+          loading="eager"
           sizes={size}
           style={{
             objectFit: 'cover',

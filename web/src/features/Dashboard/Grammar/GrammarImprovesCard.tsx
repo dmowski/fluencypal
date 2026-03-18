@@ -1,15 +1,13 @@
+'use client';
+
 import { useLingui } from '@lingui/react';
-import { Alert, Button, IconButton, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { ChevronDown, FlaskConicalOff, Gem, PlaneTakeoff, RefreshCcw, Sprout } from 'lucide-react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AdvancedUserRecord } from '@/common/userInfo';
 import { useTextAi } from '../../Ai/useTextAi';
-import { useAuth } from '../../Auth/useAuth';
 import { useAiUserInfo } from '../../Ai/useAiUserInfo';
 import { sleep } from '@/libs/sleep';
 import { GrammarImprovementModal } from './GrammarImprovementModal';
-import { GrammarImprovementRow } from './GrammarImprovementRow';
 import { grammarImprovementSystemPrompt } from './prompt';
 import { GrammarImprovement } from './types';
 import { useSettings } from '@/features/Settings/useSettings';
@@ -17,8 +15,12 @@ import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang
 import { useQuizWordAudio } from '@/features/Audio/useQuizWordAudio';
 import { SectionHeader } from '../CartsHeader';
 import { RowItem, StoreCard } from '@/features/uiKit/Card/StoreCard';
-import dayjs from 'dayjs';
 import { IconName } from 'lucide-react/dynamic';
+
+interface TitleMetadata {
+  title: string;
+  subTitle: string;
+}
 
 const limitCount = 3;
 
@@ -58,13 +60,11 @@ export const GrammarImprovesCardUi = ({
   nativeLanguageCode: string;
 }) => {
   const { i18n } = useLingui();
-  const auth = useAuth();
 
   const textAi = useTextAi();
 
   const fullLanguageName = fullEnglishLanguageName[languageCode];
 
-  const [isShowList, setIsShowList] = useState(true);
   const [showAll, setShowAll] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [improvements, setImprovements] = useState<Record<string, GrammarImprovement>>({});
@@ -107,6 +107,55 @@ ${postfixInstruction}`;
     [textAi, fullLanguageName],
   );
 
+  const [titleMap, setTitleMap] = useState<Record<string, TitleMetadata | null>>({});
+
+  const generateTitleImprovement = async (record: AdvancedUserRecord): Promise<TitleMetadata> => {
+    const userPrompt = `${record.value}`;
+
+    const finalSystemInstruction = `Your goal is to create a short title for the following grammar point. Return only 3-4 words in your response. Return JSON with "title" and "subTitle" properties. The title should be catchy and make the user want to click on it`;
+
+    const data = await textAi.generateJson<TitleMetadata>({
+      systemMessage: finalSystemInstruction,
+      userMessage: userPrompt,
+      model: 'gpt-4o',
+      cache: true,
+    });
+
+    return data;
+  };
+
+  const isMetadataGenerating = useRef(false);
+  const generateMetadata = async (limit: number) => {
+    const pointsToGenerate = grammarPoints.slice(0, limit);
+    if (pointsToGenerate.length === 0) {
+      return;
+    }
+    if (isMetadataGenerating.current) {
+      return;
+    }
+    isMetadataGenerating.current = true;
+
+    await Promise.all(
+      pointsToGenerate.map(async (record, index) => {
+        const key = record.value;
+        if (titleMap[key]) {
+          return titleMap[key];
+        }
+
+        await sleep(index * 2 + 10);
+        const improvement = await generateTitleImprovement(record);
+        setTitleMap((prev) => ({ ...prev, [key]: improvement }));
+        return improvement;
+      }),
+    );
+
+    isMetadataGenerating.current = false;
+  };
+
+  useEffect(() => {
+    generateMetadata(limit);
+  }, [grammarPoints.length, limit]);
+
   const fetchImprovement = useCallback(
     async (record: AdvancedUserRecord) => {
       const key = record.value;
@@ -144,21 +193,6 @@ ${postfixInstruction}`;
     },
     [generateImprovement],
   );
-
-  useEffect(() => {
-    if (selectedIndex === null) {
-      return;
-    }
-
-    if (grammarPoints.length === 0) {
-      setSelectedIndex(null);
-      return;
-    }
-
-    if (selectedIndex >= grammarPoints.length) {
-      setSelectedIndex(grammarPoints.length - 1);
-    }
-  }, [grammarPoints.length, selectedIndex]);
 
   const handleOpenModal = async (index: number) => {
     fetchAllImprovements();
@@ -201,6 +235,42 @@ ${postfixInstruction}`;
     setIsLoadingNew(false);
   };
 
+  const items: RowItem[] = useMemo(() => {
+    const newItems: RowItem[] = [];
+
+    grammarPoints.slice(0, limit).forEach((record, index) => {
+      const icon = improvementsIcons[index % improvementsIcons.length];
+      const fullTitle = titleMap[record.value]?.title || `...`;
+      const subTitle = titleMap[record.value]?.subTitle || '...';
+
+      newItems.push({
+        title: fullTitle,
+        subTitle: subTitle,
+        iconName: 'book',
+        bgColor: icon.color,
+        actionButtonTitle: i18n._('Open'),
+        onClick: function (): void {
+          handleOpenModal(index);
+        },
+      });
+    });
+
+    if (isLimited) {
+      newItems.push({
+        title: i18n._('More improvements'),
+        subTitle: i18n._('Show all your grammar improvements.'),
+        iconName: 'eye',
+        bgColor: '#888',
+        actionButtonTitle: i18n._('More...'),
+        onClick: function (): void {
+          setShowAll(true);
+        },
+      });
+    }
+
+    return newItems;
+  }, [grammarPoints.length, titleMap]);
+
   if (isLoadingNew) {
     return (
       <Stack
@@ -215,36 +285,6 @@ ${postfixInstruction}`;
         }}
       />
     );
-  }
-
-  const items: RowItem[] = [];
-
-  grammarPoints.slice(0, limit).forEach((record, index) => {
-    const icon = improvementsIcons[index % improvementsIcons.length];
-
-    items.push({
-      title: i18n._('Improvement') + ` #${index + 1}`,
-      subTitle: record.value.substring(0, 100) + (record.value.length > 100 ? '...' : ''),
-      iconName: 'book',
-      bgColor: icon.color,
-      actionButtonTitle: i18n._('Open'),
-      onClick: function (): void {
-        handleOpenModal(index);
-      },
-    });
-  });
-
-  if (isLimited) {
-    items.push({
-      title: i18n._('More improvements'),
-      subTitle: i18n._('Show all your grammar improvements.'),
-      iconName: 'eye',
-      bgColor: '#888',
-      actionButtonTitle: i18n._('More...'),
-      onClick: function (): void {
-        setShowAll(true);
-      },
-    });
   }
 
   return (
