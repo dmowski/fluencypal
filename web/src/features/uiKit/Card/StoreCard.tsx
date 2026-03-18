@@ -16,7 +16,7 @@ export interface RowItem {
 }
 
 interface StoreCardProps {
-  badge: string;
+  badge?: string;
   textColor: string;
   backgroundColor: string;
   borderSize?: string;

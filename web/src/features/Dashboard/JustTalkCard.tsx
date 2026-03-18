@@ -93,10 +93,8 @@ Please allow microphone permission in your browser settings, refresh the page, a
     >
       <SectionHeader title={i18n._('Speaking')} subTitle={footnotePhrase} />
       <StoreCard
-        badge={'FLUENCY PRACTICE'}
         textColor={'#fff'}
         backgroundColor={'#0286D0'}
-        borderSize={'5px'}
         previewImageUrl={aiAvatar.photoUrls?.[0] || ''}
         label={'JUST TALK MODE'}
         title={i18n._('Conversation with AI')}

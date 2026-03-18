@@ -205,7 +205,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             badge={''}
             textColor={'#fff'}
             backgroundColor={'#7a02d0'}
-            borderSize={'0'}
             previewImageUrl={
               'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773861934880-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
             }

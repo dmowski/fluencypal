@@ -250,7 +250,6 @@ ${postfixInstruction}`;
         badge={''}
         textColor={'#fff'}
         backgroundColor={'#6A5439'}
-        borderSize={'0px'}
         previewImageUrl={
           'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773858639762-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
         }
