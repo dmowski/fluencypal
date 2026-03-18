@@ -1201,7 +1201,7 @@ msgstr ""
 msgid "Add Comment"
 msgstr "Kommentar hinzufügen"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:196
+#: src/features/Dashboard/PlanDashboardCards.tsx:192
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "Neues Ziel hinzufügen"
@@ -1856,7 +1856,7 @@ msgstr "Sind Sie sicher, dass Sie diesen Bereich löschen möchten?"
 msgid "Are you sure you want to delete your account?"
 msgstr "Sind Sie sicher, dass Sie Ihr Konto löschen möchten?"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:46
+#: src/features/Dashboard/PlanDashboardCards.tsx:42
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr ""
@@ -2715,8 +2715,10 @@ msgstr "Systementwurfs-Kommunikationskompromisse"
 msgid "Communication & Leadership"
 msgstr "Kommunikation & Führung"
 
+#: src/features/Dashboard/CommunityDashboardCard.tsx:24
+#: src/features/Dashboard/CommunityDashboardCard.tsx:36
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
-#: src/features/Navigation/NavigationBar.tsx:109
+#: src/features/Navigation/NavigationBar.tsx:112
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Gemeinschaft"
@@ -2949,7 +2951,7 @@ msgstr "Weiter zur nächsten Runde"
 msgid "Contract Tests"
 msgstr "Vertragstests"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:60
+#: src/features/Dashboard/PlanDashboardCards.tsx:56
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
 #: src/features/Goal/Quiz/GoalReview.tsx:40
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
@@ -2976,7 +2978,7 @@ msgstr "Vorbereitung auf das Gespräch"
 msgid "Conversation speed"
 msgstr "Konversationsgeschwindigkeit"
 
-#: src/features/Dashboard/JustTalkCard.tsx:102
+#: src/features/Dashboard/JustTalkCard.tsx:100
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "Konversation mit KI"
@@ -3193,7 +3195,7 @@ msgstr "Kreditkartenprüfung"
 msgid "csharp developer interview"
 msgstr "csharp-Entwickler Vorstellungsgespräch"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:212
+#: src/features/Dashboard/PlanDashboardCards.tsx:207
 #. js-lingui-explicit-id
 msgid "Current Lesson"
 msgstr "Aktuelle Lektion"
@@ -3320,15 +3322,15 @@ msgstr "Daten & Transaktionen"
 msgid "Databases & Transactions"
 msgstr "Datenbanken & Transaktionen"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
+#. js-lingui-explicit-id
+msgid "Day"
+msgstr "Tag"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:120
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "day"
-msgstr "Tag"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
-#. js-lingui-explicit-id
-msgid "Day"
 msgstr "Tag"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
@@ -3399,7 +3401,7 @@ msgstr "Konto löschen (Gesamt)"
 msgid "Delete chat"
 msgstr "Chat löschen"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:358
+#: src/features/Dashboard/PlanDashboardCards.tsx:338
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Aktuelles Ziel löschen"
@@ -4241,7 +4243,7 @@ msgstr "Genießen Sie das Spiel und sehen Sie, wie die KI Ihre Beschreibung err�
 msgid "Enjoy unlimited AI conversations and all practice modes!"
 msgstr "Genießen Sie unbegrenzte KI-Gespräche und alle Übungsmodi!"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:258
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:257
 #. js-lingui-explicit-id
 msgid "Enough with speaking? Time to improve!"
 msgstr "Genug mit dem Reden? Zeit, sich zu verbessern!"
@@ -4770,6 +4772,7 @@ msgstr ""
 "sprechen."
 
 #: src/features/Community/CommunityDashboard.tsx:94
+#: src/features/Dashboard/CommunityDashboardCard.tsx:25
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr ""
@@ -5466,12 +5469,12 @@ msgstr "Allgemeiner KI-Assistent"
 msgid "General Assistant"
 msgstr "Allgemeiner Assistent"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:375
+#: src/features/Dashboard/PlanDashboardCards.tsx:355
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Generiere mehr einzigartige Lektionen"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:374
+#: src/features/Dashboard/PlanDashboardCards.tsx:354
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Generieren..."
@@ -5600,6 +5603,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Get confidence with AI support"
 msgstr "Gewinnen Sie Vertrauen mit KI-Unterstützung"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:80
+#. js-lingui-explicit-id
+msgid "Get creative"
+msgstr "Werde kreativ"
 
 #: src/features/SEO/metadata.ts:163
 #. js-lingui-explicit-id
@@ -5766,8 +5774,8 @@ msgid "Go to the main page"
 msgstr "Gehe zur Hauptseite"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:135
-#: src/features/Dashboard/PlanDashboardCards.tsx:333
+#: src/features/Dashboard/PlanDashboardCards.tsx:131
+#: src/features/Dashboard/PlanDashboardCards.tsx:313
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Ziel"
@@ -6085,8 +6093,8 @@ msgstr "Tipps, um Ihr Selbstvertrauen zu stärken"
 msgid "Hobbies or interests"
 msgstr "Hobbys oder Interessen"
 
-#: src/features/Navigation/NavigationBar.tsx:91
-#: src/features/Navigation/NavigationBar.tsx:104
+#: src/features/Navigation/NavigationBar.tsx:94
+#: src/features/Navigation/NavigationBar.tsx:107
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Zuhause"
@@ -7201,7 +7209,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "In weniger als 5 Minuten erhalten Sie:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:385
+#: src/features/Dashboard/PlanDashboardCards.tsx:365
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr ""
@@ -8179,12 +8187,17 @@ msgstr ""
 "Lernen Sie Vokabeln, die zu Ihren Zielen passen, und verwenden Sie sie im "
 "Kontext."
 
+#: src/features/Dashboard/CommunityDashboardCard.tsx:37
+#. js-lingui-explicit-id
+msgid "Learn with the community"
+msgstr "Lernen Sie mit der Gemeinschaft"
+
 #: src/features/SEO/metadata.ts:259
 #. js-lingui-explicit-id
 msgid "Learning Blog"
 msgstr "Lernblog"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:132
+#: src/features/Dashboard/PlanDashboardCards.tsx:128
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Lernplan"
@@ -8655,7 +8668,7 @@ msgstr "More"
 msgid "More options"
 msgstr "Mehr Optionen"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:329
+#: src/features/Dashboard/PlanDashboardCards.tsx:309
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Mehr einzigartige Lektionen"
@@ -8955,7 +8968,7 @@ msgstr "Keine tägliche Frage für heute"
 msgid "No debates yet"
 msgstr "Noch keine Debatten"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:261
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:260
 #. js-lingui-explicit-id
 msgid "No grammar mistakes found. Keep practicing to see improvements here!"
 msgstr ""
@@ -10094,10 +10107,16 @@ msgstr ""
 "Üben Sie echte Frontend-Interviews für Senioren, beheben Sie kritische "
 "Lücken und gehen Sie selbstbewusst und vorbereitet in Interviews."
 
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:69
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:67
 #. js-lingui-explicit-id
 msgid "Practice Real-Life Conversations With Role-Play Scenarios"
 msgstr "Übe echte Gespräche mit Rollenspiel-Szenarien"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:53
+#. js-lingui-explicit-id
+msgid "Practice real-life conversations with various role-play scenarios."
+msgstr "Üben Sie reale Gespräche mit verschiedenen Rollenspielszenarien."
 
 #: src/features/Feature/featuresData.ts:168
 #. js-lingui-explicit-id
@@ -10272,7 +10291,7 @@ msgstr ""
 "Selbstvertrauen stärken und Ihre Kommunikationsfähigkeiten verbessern "
 "sollen."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:257
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:256
 #. js-lingui-explicit-id
 msgid "PRACTICE, IMPROVE, REPEAT"
 msgstr "ÜBEN, VERBESSERN, WIEDERHOLEN"
@@ -10465,8 +10484,8 @@ msgstr "Berufliche Weiterbildung"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Fachleute, die von anderen Bereichen in das Frontend-Engineering wechseln"
 
-#: src/features/Navigation/NavigationBar.tsx:97
-#: src/features/Navigation/NavigationBar.tsx:120
+#: src/features/Navigation/NavigationBar.tsx:100
+#: src/features/Navigation/NavigationBar.tsx:119
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
@@ -11110,12 +11129,12 @@ msgstr ""
 msgid "Robot Thinking"
 msgstr "Roboter Denken"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:61
+#: src/features/Dashboard/PlanDashboardCards.tsx:57
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:68
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Goal/Quiz/QuizPage2.tsx:465
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:115
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -11140,6 +11159,11 @@ msgstr "Rollenspielszenarien"
 #. js-lingui-explicit-id
 msgid "Role-Play"
 msgstr "Rollen-Spiel"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:45
+#. js-lingui-explicit-id
+msgid "Role-Play Scenarios"
+msgstr "Rollenspiel-Szenarien"
 
 #: src/features/Landing/Price/FeatureList.tsx:36
 #: src/features/Landing/Price/PricePage.tsx:441
@@ -11189,7 +11213,7 @@ msgstr "Routen"
 msgid "Rudeness"
 msgstr "Unhöflichkeit"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:63
+#: src/features/Dashboard/PlanDashboardCards.tsx:59
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
@@ -11282,6 +11306,11 @@ msgstr "Vorstellungsgespräch mit KI-Recruiter"
 #. js-lingui-explicit-id
 msgid "Second Place"
 msgstr "Zweiter Platz"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:70
+#. js-lingui-explicit-id
+msgid "See all"
+msgstr "Alle ansehen"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
@@ -11564,11 +11593,6 @@ msgstr "Mehr Anzeigen"
 msgid "Show more"
 msgstr "Mehr anzeigen"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:290
-#. js-lingui-explicit-id
-msgid "Show more lessons"
-msgstr "Mehr Lektionen anzeigen"
-
 #: src/features/Chat/ShowPreviousMessagesButton.tsx:61
 #. js-lingui-explicit-id
 msgid "Show previous"
@@ -11779,7 +11803,7 @@ msgstr ""
 "Solide Kenntnisse in ASP.NET Core und EF Core. Einige Lücken in "
 "Resilienzmustern und Beobachtbarkeit."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:106
+#: src/features/Dashboard/PlanDashboardCards.tsx:102
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr ""
@@ -11863,7 +11887,8 @@ msgid "Stars"
 msgstr "Sterne"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/JustTalkCard.tsx:111
+#: src/features/Dashboard/JustTalkCard.tsx:109
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:21
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:475
@@ -11876,7 +11901,7 @@ msgstr "Sterne"
 msgid "Start"
 msgstr "Start"
 
-#: src/features/Dashboard/JustTalkCard.tsx:103
+#: src/features/Dashboard/JustTalkCard.tsx:101
 #. js-lingui-explicit-id
 msgid ""
 "Start a casual call to practice your communication skills. This is a "
@@ -12014,7 +12039,7 @@ msgstr "Starten Sie Ihren Interview-Test"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Beginne jetzt deine Reise zu fließenden Gesprächen"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:136
+#: src/features/Dashboard/PlanDashboardCards.tsx:132
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Beginnen Sie Ihren Weg zur Fließendheit"
@@ -13308,6 +13333,11 @@ msgstr ""
 "Probieren Sie die vollständigen Funktionen aus und sehen Sie eine "
 "signifikante Verbesserung"
 
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:81
+#. js-lingui-explicit-id
+msgid "Try these role-plays"
+msgstr "Versuchen Sie diese Rollenspiele"
+
 #: src/features/Lang/getLabels.tsx:27
 #. js-lingui-explicit-id
 msgid "Turkish Learning Plan"
@@ -13945,16 +13975,16 @@ msgstr "Webcam-Vorschau-Feedback"
 msgid "Webcam Setup"
 msgstr "Webcam-Einrichtung"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
+#. js-lingui-explicit-id
+msgid "Week"
+msgstr "Woche"
+
 #: src/features/Landing/Price/PricePage.tsx:427
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:117
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
-msgstr "Woche"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
-#. js-lingui-explicit-id
-msgid "Week"
 msgstr "Woche"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:13
@@ -14291,7 +14321,7 @@ msgid "Word Stats"
 msgstr "Wortstatistiken"
 
 #: src/features/Alias/components/WordCounter.tsx:16
-#: src/features/Dashboard/PlanDashboardCards.tsx:62
+#: src/features/Dashboard/PlanDashboardCards.tsx:58
 #: src/features/Dashboard/StreaksDaysBadge.tsx:133
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
@@ -14395,16 +14425,16 @@ msgstr "Schreiben Sie hier Ihren Bericht"
 msgid "Wrong Link"
 msgstr "Falscher Link"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
+#. js-lingui-explicit-id
+msgid "Year"
+msgstr "Jahr"
+
 #: src/features/Landing/Price/PricePage.tsx:593
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:119
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
-msgstr "Jahr"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
-#. js-lingui-explicit-id
-msgid "Year"
 msgstr "Jahr"
 
 #: src/features/Chat/AgeConfirmation.tsx:69
@@ -14876,7 +14906,7 @@ msgstr "Deine Errungenschaften"
 msgid "Your AI speaking partner"
 msgstr "Ihr KI-Gesprächspartner"
 
-#: src/features/Dashboard/JustTalkCard.tsx:109
+#: src/features/Dashboard/JustTalkCard.tsx:107
 #. js-lingui-explicit-id
 msgid "Your AI Speech Partner"
 msgstr "Ihr AI-Sprachpartner"
@@ -15080,6 +15110,11 @@ msgstr ""
 "— es ist wichtig, sich in dieses kurze Gespräch zu vertiefen, bevor man "
 "professionelle Themen anspricht. Hier sind einige nützliche englische "
 "Redewendungen, um das Interview zu beginnen:"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:290
+#. js-lingui-explicit-id
+#~ msgid "Show more lessons"
+#~ msgstr "Mehr Lektionen anzeigen"
 
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
 #. js-lingui-explicit-id

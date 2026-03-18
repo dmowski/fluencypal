@@ -24,6 +24,7 @@ import { Stories } from '../Sentence/Stories';
 import { useAuth } from '../Auth/useAuth';
 import { GrammarImprovesCard } from './Grammar/GrammarImprovesCard';
 import { RolePlayDashboardCard } from './RolePlayDashboardCard';
+import { CommunityDashboardCard } from './CommunityDashboardCard';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -82,8 +83,8 @@ export function Dashboard({ lang }: DashboardProps) {
                 <JustTalkCard />
                 <GrammarImprovesCard />
                 <PlanDashboardCards lang={lang} />
-
                 <RolePlayDashboardCard />
+                <CommunityDashboardCard />
               </Stack>
             </>
           )}

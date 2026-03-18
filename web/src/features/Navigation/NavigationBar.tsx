@@ -53,7 +53,10 @@ export const NavigationBar: React.FC = () => {
     setInternalPageType(pageType);
     internalPageRef.current = pageType;
     const searchParams = new URLSearchParams();
-    searchParams.set('page', pageType);
+    if (pageType !== 'home') {
+      searchParams.set('page', pageType);
+    }
+
     const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
     const currentUrl = `${window.location.pathname}${window.location.search}`;
     if (currentUrl === newUrl) {
@@ -109,11 +112,7 @@ export const NavigationBar: React.FC = () => {
           title: i18n._('Community'),
           badge: !access.canUseCommunity ? undefined : chatList.myUnreadCount,
         },
-        {
-          name: 'role-play',
-          icon: VenetianMask,
-          title: i18n._('Role Play'),
-        },
+
         {
           name: 'profile',
           icon: User,

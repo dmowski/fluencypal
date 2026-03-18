@@ -1172,7 +1172,7 @@ msgstr "Lägg till mellan 2 och 20 spelare. Tryck på ett namn för att redigera
 msgid "Add Comment"
 msgstr "Lägg till kommentar"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:196
+#: src/features/Dashboard/PlanDashboardCards.tsx:192
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "Lägg till nytt mål"
@@ -1817,7 +1817,7 @@ msgstr "Är du säker på att du vill ta bort detta utrymme?"
 msgid "Are you sure you want to delete your account?"
 msgstr "Är du säker på att du vill radera ditt konto?"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:46
+#: src/features/Dashboard/PlanDashboardCards.tsx:42
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr ""
@@ -2660,8 +2660,10 @@ msgstr "Kommunicera avvägningar i systemdesign"
 msgid "Communication & Leadership"
 msgstr "Kommunikation & Ledarskap"
 
+#: src/features/Dashboard/CommunityDashboardCard.tsx:24
+#: src/features/Dashboard/CommunityDashboardCard.tsx:36
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
-#: src/features/Navigation/NavigationBar.tsx:109
+#: src/features/Navigation/NavigationBar.tsx:112
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Gemenskap"
@@ -2894,7 +2896,7 @@ msgstr "Fortsätt till nästa omgång"
 msgid "Contract Tests"
 msgstr "Kontraktstester"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:60
+#: src/features/Dashboard/PlanDashboardCards.tsx:56
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
 #: src/features/Goal/Quiz/GoalReview.tsx:40
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
@@ -2921,7 +2923,7 @@ msgstr "Samtalsförberedelse"
 msgid "Conversation speed"
 msgstr "Konversationshastighet"
 
-#: src/features/Dashboard/JustTalkCard.tsx:102
+#: src/features/Dashboard/JustTalkCard.tsx:100
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "Samtal med AI"
@@ -3133,7 +3135,7 @@ msgstr "Kreditkortskontroll"
 msgid "csharp developer interview"
 msgstr "csharp utvecklarintervju"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:212
+#: src/features/Dashboard/PlanDashboardCards.tsx:207
 #. js-lingui-explicit-id
 msgid "Current Lesson"
 msgstr "Nuvarande lektion"
@@ -3258,16 +3260,16 @@ msgstr "Data & Transaktioner"
 msgid "Databases & Transactions"
 msgstr "Databaser & Transaktioner"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
+#. js-lingui-explicit-id
+msgid "Day"
+msgstr "Dag"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:120
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "day"
 msgstr "dag"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
-#. js-lingui-explicit-id
-msgid "Day"
-msgstr "Dag"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
 #. js-lingui-explicit-id
@@ -3339,7 +3341,7 @@ msgstr "Ta bort konto (Totalt)"
 msgid "Delete chat"
 msgstr "Radera chatt"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:358
+#: src/features/Dashboard/PlanDashboardCards.tsx:338
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Radera nuvarande mål"
@@ -4161,7 +4163,7 @@ msgstr "Njut av spelet och se hur AI gissar din beskrivning!"
 msgid "Enjoy unlimited AI conversations and all practice modes!"
 msgstr "Njut av obegränsade AI-samtal och alla övningslägen!"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:258
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:257
 #. js-lingui-explicit-id
 msgid "Enough with speaking? Time to improve!"
 msgstr "Nog med att tala? Dags att förbättra!"
@@ -4666,6 +4668,7 @@ msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "Utforska tekniker för att prata om välbefinnande och mental hälsa."
 
 #: src/features/Community/CommunityDashboard.tsx:94
+#: src/features/Dashboard/CommunityDashboardCard.tsx:25
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr ""
@@ -5347,12 +5350,12 @@ msgstr "Allmän AI-assistent"
 msgid "General Assistant"
 msgstr "Allmän assistent"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:375
+#: src/features/Dashboard/PlanDashboardCards.tsx:355
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Generera fler unika lektioner"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:374
+#: src/features/Dashboard/PlanDashboardCards.tsx:354
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Genererar..."
@@ -5476,6 +5479,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Get confidence with AI support"
 msgstr "Få självförtroende med AI-stöd"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:80
+#. js-lingui-explicit-id
+msgid "Get creative"
+msgstr "Bli kreativ"
 
 #: src/features/SEO/metadata.ts:163
 #. js-lingui-explicit-id
@@ -5635,8 +5643,8 @@ msgid "Go to the main page"
 msgstr "Gå till huvudsidan"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:135
-#: src/features/Dashboard/PlanDashboardCards.tsx:333
+#: src/features/Dashboard/PlanDashboardCards.tsx:131
+#: src/features/Dashboard/PlanDashboardCards.tsx:313
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Mål"
@@ -5945,8 +5953,8 @@ msgstr "Ledtrådar för att stärka ditt självförtroende"
 msgid "Hobbies or interests"
 msgstr "Hobbyer eller intressen"
 
-#: src/features/Navigation/NavigationBar.tsx:91
-#: src/features/Navigation/NavigationBar.tsx:104
+#: src/features/Navigation/NavigationBar.tsx:94
+#: src/features/Navigation/NavigationBar.tsx:107
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Hem"
@@ -7025,7 +7033,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "Inom mindre än 5 minuter kommer du att få:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:385
+#: src/features/Dashboard/PlanDashboardCards.tsx:365
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "För att generera fler lektioner måste du slutföra minst 3 lektioner"
@@ -7964,12 +7972,17 @@ msgstr ""
 msgid "Learn vocabulary that matches your goals and use it in context."
 msgstr "Lär dig ordförråd som matchar dina mål och använd det i sitt sammanhang."
 
+#: src/features/Dashboard/CommunityDashboardCard.tsx:37
+#. js-lingui-explicit-id
+msgid "Learn with the community"
+msgstr "Lär dig med communityn"
+
 #: src/features/SEO/metadata.ts:259
 #. js-lingui-explicit-id
 msgid "Learning Blog"
 msgstr "Lärande Blogg"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:132
+#: src/features/Dashboard/PlanDashboardCards.tsx:128
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Inlärningsplan"
@@ -8436,7 +8449,7 @@ msgstr "Mer"
 msgid "More options"
 msgstr "Fler alternativ"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:329
+#: src/features/Dashboard/PlanDashboardCards.tsx:309
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Fler unika lektioner"
@@ -8734,7 +8747,7 @@ msgstr "Ingen daglig fråga för idag"
 msgid "No debates yet"
 msgstr "Inga debatter ännu"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:261
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:260
 #. js-lingui-explicit-id
 msgid "No grammar mistakes found. Keep practicing to see improvements here!"
 msgstr "Inga grammatiska fel hittades. Fortsätt öva för att se förbättringar här!"
@@ -9847,10 +9860,16 @@ msgstr ""
 "Öva på riktiga seniora frontend-intervjuer, åtgärda kritiska brister och gå "
 "in i intervjuer med självförtroende och förberedelse."
 
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:69
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:67
 #. js-lingui-explicit-id
 msgid "Practice Real-Life Conversations With Role-Play Scenarios"
 msgstr "Öva på verkliga konversationer med rollspelscenarier"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:53
+#. js-lingui-explicit-id
+msgid "Practice real-life conversations with various role-play scenarios."
+msgstr "Öva på samtal i verkliga livet med olika rollspelsscenarier."
 
 #: src/features/Feature/featuresData.ts:168
 #. js-lingui-explicit-id
@@ -10016,7 +10035,7 @@ msgstr ""
 "Öva med våra interaktiva intervjuscenerier utformade för att öka ditt "
 "självförtroende och förbättra dina kommunikationsfärdigheter."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:257
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:256
 #. js-lingui-explicit-id
 msgid "PRACTICE, IMPROVE, REPEAT"
 msgstr "ÖVA, FÖRBÄTTRA, UPPREPA"
@@ -10204,8 +10223,8 @@ msgstr "Professionell Utveckling"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "Professionella som övergår från andra områden till frontend-utveckling"
 
-#: src/features/Navigation/NavigationBar.tsx:97
-#: src/features/Navigation/NavigationBar.tsx:120
+#: src/features/Navigation/NavigationBar.tsx:100
+#: src/features/Navigation/NavigationBar.tsx:119
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
@@ -10837,12 +10856,12 @@ msgstr "Granska, redigera eller lägg till de anteckningar som AI använder om d
 msgid "Robot Thinking"
 msgstr "Robot tänker"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:61
+#: src/features/Dashboard/PlanDashboardCards.tsx:57
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:68
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Goal/Quiz/QuizPage2.tsx:465
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:115
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -10866,6 +10885,11 @@ msgstr "Rollspelsscenarier"
 #. js-lingui-explicit-id
 msgid "Role-Play"
 msgstr "Rollspel"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:45
+#. js-lingui-explicit-id
+msgid "Role-Play Scenarios"
+msgstr "Rollspelsscenarier"
 
 #: src/features/Landing/Price/FeatureList.tsx:36
 #: src/features/Landing/Price/PricePage.tsx:441
@@ -10915,7 +10939,7 @@ msgstr "Ruttning"
 msgid "Rudeness"
 msgstr "Oförskämdhet"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:63
+#: src/features/Dashboard/PlanDashboardCards.tsx:59
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
@@ -11008,6 +11032,11 @@ msgstr "Screeningsintervju med AI-rekryterare"
 #. js-lingui-explicit-id
 msgid "Second Place"
 msgstr "Andra plats"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:70
+#. js-lingui-explicit-id
+msgid "See all"
+msgstr "Se alla"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
@@ -11280,11 +11309,6 @@ msgstr "Visa Mer"
 msgid "Show more"
 msgstr "Visa mer"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:290
-#. js-lingui-explicit-id
-msgid "Show more lessons"
-msgstr "Visa fler lektioner"
-
 #: src/features/Chat/ShowPreviousMessagesButton.tsx:61
 #. js-lingui-explicit-id
 msgid "Show previous"
@@ -11492,7 +11516,7 @@ msgstr ""
 "Solid kunskap om ASP.NET Core och EF Core. Vissa luckor i "
 "motståndskraftsmönster och observationbarhet."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:106
+#: src/features/Dashboard/PlanDashboardCards.tsx:102
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr ""
@@ -11575,7 +11599,8 @@ msgid "Stars"
 msgstr "Stjärnor"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/JustTalkCard.tsx:111
+#: src/features/Dashboard/JustTalkCard.tsx:109
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:21
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:475
@@ -11588,7 +11613,7 @@ msgstr "Stjärnor"
 msgid "Start"
 msgstr "Start"
 
-#: src/features/Dashboard/JustTalkCard.tsx:103
+#: src/features/Dashboard/JustTalkCard.tsx:101
 #. js-lingui-explicit-id
 msgid ""
 "Start a casual call to practice your communication skills. This is a "
@@ -11725,7 +11750,7 @@ msgstr "Starta ditt intervjutest"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Börja din resa mot flytande konversationer nu"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:136
+#: src/features/Dashboard/PlanDashboardCards.tsx:132
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Starta din väg till flytande"
@@ -12997,6 +13022,11 @@ msgstr "Prova gratis"
 msgid "Try full features and see significant improvement"
 msgstr "Prova alla funktioner och se betydande förbättringar"
 
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:81
+#. js-lingui-explicit-id
+msgid "Try these role-plays"
+msgstr "Prova dessa rollspel"
+
 #: src/features/Lang/getLabels.tsx:27
 #. js-lingui-explicit-id
 msgid "Turkish Learning Plan"
@@ -13624,17 +13654,17 @@ msgstr "Webbkamera Förhandsgranskning av Feedback"
 msgid "Webcam Setup"
 msgstr "Webbkamera Inställning"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
+#. js-lingui-explicit-id
+msgid "Week"
+msgstr "Vecka"
+
 #: src/features/Landing/Price/PricePage.tsx:427
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:117
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
 msgstr "vecka"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
-#. js-lingui-explicit-id
-msgid "Week"
-msgstr "Vecka"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:13
 #. js-lingui-explicit-id
@@ -13966,7 +13996,7 @@ msgid "Word Stats"
 msgstr "Ordstatistik"
 
 #: src/features/Alias/components/WordCounter.tsx:16
-#: src/features/Dashboard/PlanDashboardCards.tsx:62
+#: src/features/Dashboard/PlanDashboardCards.tsx:58
 #: src/features/Dashboard/StreaksDaysBadge.tsx:133
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
@@ -14070,17 +14100,17 @@ msgstr "Skriv din rapport här"
 msgid "Wrong Link"
 msgstr "Fel länk"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
+#. js-lingui-explicit-id
+msgid "Year"
+msgstr "År"
+
 #: src/features/Landing/Price/PricePage.tsx:593
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:119
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
 msgstr "år"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
-#. js-lingui-explicit-id
-msgid "Year"
-msgstr "År"
 
 #: src/features/Chat/AgeConfirmation.tsx:69
 #. js-lingui-explicit-id
@@ -14536,7 +14566,7 @@ msgstr "Dina prestationer"
 msgid "Your AI speaking partner"
 msgstr "Din AI-pratpartner"
 
-#: src/features/Dashboard/JustTalkCard.tsx:109
+#: src/features/Dashboard/JustTalkCard.tsx:107
 #. js-lingui-explicit-id
 msgid "Your AI Speech Partner"
 msgstr "Din AI-talpartner"
@@ -14740,6 +14770,11 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:290
+#. js-lingui-explicit-id
+#~ msgid "Show more lessons"
+#~ msgstr "Visa fler lektioner"
 
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
 #. js-lingui-explicit-id

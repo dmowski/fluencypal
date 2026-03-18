@@ -1180,7 +1180,7 @@ msgstr "เพิ่มผู้เล่นตั้งแต่ 2 ถึง 20
 msgid "Add Comment"
 msgstr "เพิ่มความคิดเห็น"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:196
+#: src/features/Dashboard/PlanDashboardCards.tsx:192
 #. js-lingui-explicit-id
 msgid "Add new goal"
 msgstr "เพิ่มเป้าหมายใหม่"
@@ -1828,7 +1828,7 @@ msgstr "คุณแน่ใจหรือว่าต้องการลบ
 msgid "Are you sure you want to delete your account?"
 msgstr "คุณแน่ใจหรือว่าต้องการลบบัญชีของคุณ?"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:46
+#: src/features/Dashboard/PlanDashboardCards.tsx:42
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "คุณแน่ใจไหมว่าต้องการลบเป้าหมายของคุณ? การกระทำนี้ไม่สามารถยกเลิกได้."
@@ -2667,8 +2667,10 @@ msgstr "สื่อสารข้อแลกเปลี่ยนในกา
 msgid "Communication & Leadership"
 msgstr "การสื่อสารและภาวะผู้นำ"
 
+#: src/features/Dashboard/CommunityDashboardCard.tsx:24
+#: src/features/Dashboard/CommunityDashboardCard.tsx:36
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
-#: src/features/Navigation/NavigationBar.tsx:109
+#: src/features/Navigation/NavigationBar.tsx:112
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "ชุมชน"
@@ -2901,7 +2903,7 @@ msgstr "ดำเนินการต่อไปยังรอบต่อไ
 msgid "Contract Tests"
 msgstr "ทดสอบสัญญา"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:60
+#: src/features/Dashboard/PlanDashboardCards.tsx:56
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
 #: src/features/Goal/Quiz/GoalReview.tsx:40
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
@@ -2928,7 +2930,7 @@ msgstr "การเตรียมการสนทนา"
 msgid "Conversation speed"
 msgstr "ความเร็วในการสนทนา"
 
-#: src/features/Dashboard/JustTalkCard.tsx:102
+#: src/features/Dashboard/JustTalkCard.tsx:100
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "การสนทนากับ AI"
@@ -3147,7 +3149,7 @@ msgstr "ตรวจสอบบัตรเครดิต"
 msgid "csharp developer interview"
 msgstr "การสัมภาษณ์นักพัฒนาซีชาร์ป"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:212
+#: src/features/Dashboard/PlanDashboardCards.tsx:207
 #. js-lingui-explicit-id
 msgid "Current Lesson"
 msgstr "บทเรียนปัจจุบัน"
@@ -3274,15 +3276,15 @@ msgstr "ข้อมูล & ธุรกรรม"
 msgid "Databases & Transactions"
 msgstr "ฐานข้อมูล & ธุรกรรม"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
+#. js-lingui-explicit-id
+msgid "Day"
+msgstr "วัน"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:120
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "day"
-msgstr "วัน"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:594
-#. js-lingui-explicit-id
-msgid "Day"
 msgstr "วัน"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
@@ -3355,7 +3357,7 @@ msgstr "ลบบัญชี (ทั้งหมด)"
 msgid "Delete chat"
 msgstr "ลบการสนทนา"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:358
+#: src/features/Dashboard/PlanDashboardCards.tsx:338
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "ลบเป้าหมายปัจจุบัน"
@@ -4175,7 +4177,7 @@ msgstr "สนุกกับเกมและดูว่า AI จะทา�
 msgid "Enjoy unlimited AI conversations and all practice modes!"
 msgstr "เพลิดเพลินไปกับการสนทนา AI ที่ไม่จำกัดและโหมดฝึกฝนทั้งหมด!"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:258
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:257
 #. js-lingui-explicit-id
 msgid "Enough with speaking? Time to improve!"
 msgstr "พอแล้วกับการพูด? ถึงเวลาพัฒนาแล้ว!"
@@ -4676,6 +4678,7 @@ msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "สำรวจเทคนิคในการสนทนาเกี่ยวกับสุขภาพร่างกายและสุขภาพจิต."
 
 #: src/features/Community/CommunityDashboard.tsx:94
+#: src/features/Dashboard/CommunityDashboardCard.tsx:25
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "สำรวจชุมชน, เข้าร่วมการสนทนา, และเชื่อมต่อกับสมาชิกคนอื่นๆ"
@@ -5366,12 +5369,12 @@ msgstr "ผู้ช่วย AI ทั่วไป"
 msgid "General Assistant"
 msgstr "ผู้ช่วยทั่วไป"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:375
+#: src/features/Dashboard/PlanDashboardCards.tsx:355
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "สร้างบทเรียนที่ไม่ซ้ำซ้อนมากขึ้น"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:374
+#: src/features/Dashboard/PlanDashboardCards.tsx:354
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "กำลังสร้าง..."
@@ -5494,6 +5497,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Get confidence with AI support"
 msgstr "ได้รับความมั่นใจด้วยการสนับสนุนจาก AI"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:80
+#. js-lingui-explicit-id
+msgid "Get creative"
+msgstr "รับความคิดสร้างสรรค์"
 
 #: src/features/SEO/metadata.ts:163
 #. js-lingui-explicit-id
@@ -5654,8 +5662,8 @@ msgid "Go to the main page"
 msgstr "ไปที่หน้าหลัก"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:135
-#: src/features/Dashboard/PlanDashboardCards.tsx:333
+#: src/features/Dashboard/PlanDashboardCards.tsx:131
+#: src/features/Dashboard/PlanDashboardCards.tsx:313
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "เป้าหมาย"
@@ -5968,8 +5976,8 @@ msgstr "คำแนะนำเพื่อเพิ่มความมั่
 msgid "Hobbies or interests"
 msgstr "งานอดิเรกหรือความสนใจ"
 
-#: src/features/Navigation/NavigationBar.tsx:91
-#: src/features/Navigation/NavigationBar.tsx:104
+#: src/features/Navigation/NavigationBar.tsx:94
+#: src/features/Navigation/NavigationBar.tsx:107
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "หน้าแรก"
@@ -7032,7 +7040,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "ในเวลาน้อยกว่า 5 นาที คุณจะได้รับ:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:385
+#: src/features/Dashboard/PlanDashboardCards.tsx:365
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "เพื่อสร้างบทเรียนเพิ่มเติม คุณต้องสมบูรณ์อย่างน้อย 3 บทเรียน"
@@ -7980,12 +7988,17 @@ msgstr ""
 msgid "Learn vocabulary that matches your goals and use it in context."
 msgstr "เรียนรู้คำศัพท์ที่ตรงกับเป้าหมายของคุณและใช้ในบริบท"
 
+#: src/features/Dashboard/CommunityDashboardCard.tsx:37
+#. js-lingui-explicit-id
+msgid "Learn with the community"
+msgstr "เรียนรู้ไปกับชุมชน"
+
 #: src/features/SEO/metadata.ts:259
 #. js-lingui-explicit-id
 msgid "Learning Blog"
 msgstr "บล็อกการเรียนรู้"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:132
+#: src/features/Dashboard/PlanDashboardCards.tsx:128
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "แผนการเรียนรู้"
@@ -8456,7 +8469,7 @@ msgstr "เพิ่มเติม"
 msgid "More options"
 msgstr "ตัวเลือกเพิ่มเติม"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:329
+#: src/features/Dashboard/PlanDashboardCards.tsx:309
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "บทเรียนที่ไม่ซ้ำซาก"
@@ -8751,7 +8764,7 @@ msgstr "ไม่มีคำถามประจำวันสำหรับ
 msgid "No debates yet"
 msgstr "ยังไม่มีการอภิปราย"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:261
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:260
 #. js-lingui-explicit-id
 msgid "No grammar mistakes found. Keep practicing to see improvements here!"
 msgstr "ไม่มีข้อผิดพลาดทางไวยากรณ์ พบว่าการฝึกฝนเป็นประจำจะช่วยให้เห็นการพัฒนา!"
@@ -9864,10 +9877,16 @@ msgstr ""
 "ฝึกสัมภาษณ์สายเฟรนต์เอนด์ระดับอาวุโสจริง ๆ แก้ไขช่องว่างที่สำคัญ "
 "และเข้าร่วมสัมภาษณ์ด้วยความมั่นใจและการเตรียมพร้อม"
 
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:69
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:67
 #. js-lingui-explicit-id
 msgid "Practice Real-Life Conversations With Role-Play Scenarios"
 msgstr "ฝึกการสนทนาในชีวิตจริงด้วยสถานการณ์บทบาทสมมติ"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:53
+#. js-lingui-explicit-id
+msgid "Practice real-life conversations with various role-play scenarios."
+msgstr "ฝึกการสนทนาเสมือนจริงด้วยสถานการณ์บทบาทสมมติที่หลากหลาย"
 
 #: src/features/Feature/featuresData.ts:168
 #. js-lingui-explicit-id
@@ -10033,7 +10052,7 @@ msgstr ""
 "ฝึกฝนกับสถานการณ์การสัมภาษณ์ที่สามารถโต้ตอบได้ของเรา "
 "ซึ่งออกแบบมาเพื่อเพิ่มความมั่นใจและพัฒนาทักษะการสื่อสารของคุณ"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:257
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:256
 #. js-lingui-explicit-id
 msgid "PRACTICE, IMPROVE, REPEAT"
 msgstr "ฝึกฝน, พัฒนา, ทำซ้ำ"
@@ -10221,8 +10240,8 @@ msgstr "การพัฒนาทักษะทางวิชาชีพ"
 msgid "Professionals transitioning from other fields into frontend engineering"
 msgstr "ผู้เชี่ยวชาญที่เปลี่ยนจากสาขาอื่นไปยังวิศวกรรมส่วนหน้าผู้ใช้"
 
-#: src/features/Navigation/NavigationBar.tsx:97
-#: src/features/Navigation/NavigationBar.tsx:120
+#: src/features/Navigation/NavigationBar.tsx:100
+#: src/features/Navigation/NavigationBar.tsx:119
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "โปรไฟล์"
@@ -10855,12 +10874,12 @@ msgstr "ตรวจสอบ แก้ไข หรือเพิ่มบั�
 msgid "Robot Thinking"
 msgstr "โรบอทกำลังคิด"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:61
+#: src/features/Dashboard/PlanDashboardCards.tsx:57
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:68
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Goal/Quiz/QuizPage2.tsx:465
 #: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:115
 #: src/features/Usage/UsageStatsCards.tsx:77
 #. js-lingui-explicit-id
 msgid "Role Play"
@@ -10884,6 +10903,11 @@ msgstr "สถานการณ์เล่นบทบาท"
 #. js-lingui-explicit-id
 msgid "Role-Play"
 msgstr "บทบาทการเล่น"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:45
+#. js-lingui-explicit-id
+msgid "Role-Play Scenarios"
+msgstr "สถานการณ์การเล่นบทบาท"
 
 #: src/features/Landing/Price/FeatureList.tsx:36
 #: src/features/Landing/Price/PricePage.tsx:441
@@ -10933,7 +10957,7 @@ msgstr "การกำหนดเส้นทาง"
 msgid "Rudeness"
 msgstr "ความหยาบคาย"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:63
+#: src/features/Dashboard/PlanDashboardCards.tsx:59
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
@@ -11026,6 +11050,11 @@ msgstr "การสัมภาษณ์คัดกรองกับผู้
 #. js-lingui-explicit-id
 msgid "Second Place"
 msgstr "อันดับที่สอง"
+
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:70
+#. js-lingui-explicit-id
+msgid "See all"
+msgstr "ดูทั้งหมด"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
@@ -11298,11 +11327,6 @@ msgstr "แสดงเพิ่มเติม"
 msgid "Show more"
 msgstr "แสดงเพิ่มเติม"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:290
-#. js-lingui-explicit-id
-msgid "Show more lessons"
-msgstr "แสดงบทเรียนเพิ่มเติม"
-
 #: src/features/Chat/ShowPreviousMessagesButton.tsx:61
 #. js-lingui-explicit-id
 msgid "Show previous"
@@ -11508,7 +11532,7 @@ msgstr ""
 "แต่มีบางจุดที่ขาดด้านรูปแบบการทนทาน (resiliency patterns) และการสังเกตการณ์ "
 "(observability)"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:106
+#: src/features/Dashboard/PlanDashboardCards.tsx:102
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "เกิดข้อผิดพลาดขณะสร้างบทเรียนเพิ่มเติม กรุณาลองใหม่ภายหลัง"
@@ -11588,7 +11612,8 @@ msgid "Stars"
 msgstr "ดาว"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/JustTalkCard.tsx:111
+#: src/features/Dashboard/JustTalkCard.tsx:109
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:21
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:475
@@ -11601,7 +11626,7 @@ msgstr "ดาว"
 msgid "Start"
 msgstr "เริ่มต้น"
 
-#: src/features/Dashboard/JustTalkCard.tsx:103
+#: src/features/Dashboard/JustTalkCard.tsx:101
 #. js-lingui-explicit-id
 msgid ""
 "Start a casual call to practice your communication skills. This is a "
@@ -11734,7 +11759,7 @@ msgstr "เริ่มการทดสอบสัมภาษณ์ของ
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "เริ่มการเดินทางของคุณสู่การสนทนาที่คล่องแคล่วตอนนี้"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:136
+#: src/features/Dashboard/PlanDashboardCards.tsx:132
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "เริ่มทางของคุณสู่การใช้ภาษาได้คล่องแคล่ว"
@@ -13006,6 +13031,11 @@ msgstr "ลองใช้ฟรี"
 msgid "Try full features and see significant improvement"
 msgstr "ลองใช้ฟีเจอร์ทั้งหมดและสังเกตเห็นการพัฒนาที่โดดเด่น"
 
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:81
+#. js-lingui-explicit-id
+msgid "Try these role-plays"
+msgstr "ลองเล่นบทบาทเหล่านี้"
+
 #: src/features/Lang/getLabels.tsx:27
 #. js-lingui-explicit-id
 msgid "Turkish Learning Plan"
@@ -13636,16 +13666,16 @@ msgstr "การแสดงตัวอย่างข้อเสนอแน
 msgid "Webcam Setup"
 msgstr "การตั้งค่าเว็บแคม"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
+#. js-lingui-explicit-id
+msgid "Week"
+msgstr "สัปดาห์"
+
 #: src/features/Landing/Price/PricePage.tsx:427
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:117
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:654
 #. js-lingui-explicit-id
 msgid "week"
-msgstr "สัปดาห์"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:601
-#. js-lingui-explicit-id
-msgid "Week"
 msgstr "สัปดาห์"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:13
@@ -13978,7 +14008,7 @@ msgid "Word Stats"
 msgstr "สถิติคำศัพท์"
 
 #: src/features/Alias/components/WordCounter.tsx:16
-#: src/features/Dashboard/PlanDashboardCards.tsx:62
+#: src/features/Dashboard/PlanDashboardCards.tsx:58
 #: src/features/Dashboard/StreaksDaysBadge.tsx:133
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
@@ -14082,16 +14112,16 @@ msgstr "เขียนรายงานของคุณที่นี่"
 msgid "Wrong Link"
 msgstr "ลิงก์ผิด"
 
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
+#. js-lingui-explicit-id
+msgid "Year"
+msgstr "ปี"
+
 #: src/features/Landing/Price/PricePage.tsx:593
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:119
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
 #. js-lingui-explicit-id
 msgid "year"
-msgstr "ปี"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:615
-#. js-lingui-explicit-id
-msgid "Year"
 msgstr "ปี"
 
 #: src/features/Chat/AgeConfirmation.tsx:69
@@ -14549,7 +14579,7 @@ msgstr "ความสำเร็จของคุณ"
 msgid "Your AI speaking partner"
 msgstr "คู่สนทนา AI ของคุณ"
 
-#: src/features/Dashboard/JustTalkCard.tsx:109
+#: src/features/Dashboard/JustTalkCard.tsx:107
 #. js-lingui-explicit-id
 msgid "Your AI Speech Partner"
 msgstr "คู่พูด AI ของคุณ"
@@ -14752,6 +14782,11 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:290
+#. js-lingui-explicit-id
+#~ msgid "Show more lessons"
+#~ msgstr "แสดงบทเรียนเพิ่มเติม"
 
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
 #. js-lingui-explicit-id

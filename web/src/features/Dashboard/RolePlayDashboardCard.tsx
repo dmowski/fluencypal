@@ -9,8 +9,7 @@ import { RolePlayBoard } from '../RolePlay/RolePlayBoard';
 
 export const RolePlayDashboardCard = () => {
   const { i18n } = useLingui();
-  const { selectedCategoryId, setSelectedCategoryId, allTabs, visibleScenarios, selectScenario } =
-    useRolePlay();
+  const { visibleScenarios, selectScenario } = useRolePlay();
 
   const items: RowItem[] = visibleScenarios
     .filter((s, index) => isShowAll || index < 4)
@@ -91,5 +90,3 @@ export const RolePlayDashboardCard = () => {
     </>
   );
 };
-
-// <RolePlayBoard />
