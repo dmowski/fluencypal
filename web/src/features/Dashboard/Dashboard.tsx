@@ -70,32 +70,8 @@ export function Dashboard({ lang }: DashboardProps) {
         >
           {appNavigation.currentPage === 'home' && (
             <>
-              {!access.isFullAppAccess && (
-                <AccessBadge
-                  title={i18n._('You’re in preview mode')}
-                  subTitle={i18n._(
-                    'Unlock unlimited speaking practice, all AI features and community access.',
-                  )}
-                  buttonTitle={i18n._('Unlock Full Access')}
-                />
-              )}
-
               <JustTalkCard />
               <GrammarImprovesCard />
-
-              {access.isFullAppAccess && access.isExpiringSoon && (
-                <AccessBadge
-                  title={i18n._('Full access - Expiring soon')}
-                  subTitle={
-                    access.activeSubscriptionTill
-                      ? i18n._('Your unlimited access is active until {date}', {
-                          date: dayjs(access.activeSubscriptionTill).format('MMM D, YYYY HH:mm'),
-                        })
-                      : i18n._('Your unlimited access is about to expire soon.')
-                  }
-                  buttonTitle={i18n._('Renew Now')}
-                />
-              )}
 
               <PlanDashboardCards lang={lang} />
 

@@ -14,6 +14,7 @@ import { Avatar } from '../Game/Avatar';
 import { getMediaAudioStreams, getMediaVideoStreams } from '../webCam/mediaStream';
 import { sleep } from '@/libs/sleep';
 import { StoreCard } from '../uiKit/Card/StoreCard';
+import { SectionHeader } from './CartsHeader';
 
 export const JustTalkCard = () => {
   const { i18n } = useLingui();
@@ -90,24 +91,7 @@ Please allow microphone permission in your browser settings, refresh the page, a
         gap: '20px',
       }}
     >
-      <Stack>
-        <Typography
-          variant="h5"
-          sx={{
-            fontWeight: 600,
-          }}
-        >
-          Speaking
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            opacity: 0.8,
-          }}
-        >
-          {footnotePhrase}
-        </Typography>
-      </Stack>
+      <SectionHeader title={i18n._('Speaking')} subTitle={footnotePhrase} />
       <StoreCard
         badge={'FLUENCY PRACTICE'}
         textColor={'#fff'}
