@@ -24,7 +24,7 @@ interface StoreCardProps {
 
   label: string;
   title: string;
-  subTitle: string;
+  subTitle?: string;
 
   items: RowItem[];
   itemsBackgroundColor: string;
@@ -98,15 +98,17 @@ export const StoreCard = (props: StoreCardProps) => {
           >
             {props.title}
           </Typography>
-          <Typography
-            variant="subtitle1"
-            color={props.textColor}
-            sx={{
-              opacity: 0.9,
-            }}
-          >
-            {props.subTitle}
-          </Typography>
+          {props.subTitle && (
+            <Typography
+              variant="subtitle1"
+              color={props.textColor}
+              sx={{
+                opacity: 0.9,
+              }}
+            >
+              {props.subTitle}
+            </Typography>
+          )}
         </Stack>
 
         <Stack
@@ -122,17 +124,19 @@ export const StoreCard = (props: StoreCardProps) => {
           }}
         ></Stack>
 
-        <Image
-          src={props.previewImageUrl}
-          alt="Preview"
-          loading="eager"
-          fill
-          style={{
-            objectFit: 'cover',
-            backgroundColor: props.backgroundColor,
-            zIndex: 0,
-          }}
-        />
+        {props.previewImageUrl && (
+          <Image
+            src={props.previewImageUrl}
+            alt="Preview"
+            loading="eager"
+            fill
+            style={{
+              objectFit: 'cover',
+              backgroundColor: props.backgroundColor,
+              zIndex: 0,
+            }}
+          />
+        )}
       </Stack>
 
       {!!props.items.length && (

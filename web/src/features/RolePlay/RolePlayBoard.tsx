@@ -20,6 +20,18 @@ export const RolePlayBoard = () => {
         maxWidth: '100%',
       }}
     >
+      <Tabs
+        scrollButtons={true}
+        variant="scrollable"
+        allowScrollButtonsMobile
+        value={selectedCategoryId}
+        onChange={(event, newId) => setSelectedCategoryId(`${newId}`)}
+      >
+        {allTabs.map((tab, index) => {
+          return <Tab key={index} label={tab.title} value={tab.id} />;
+        })}
+      </Tabs>
+
       <Stack
         gap="15px"
         sx={{
@@ -43,18 +55,6 @@ export const RolePlayBoard = () => {
           })}
         </Stack>
       </Stack>
-
-      <Tabs
-        scrollButtons={true}
-        variant="scrollable"
-        allowScrollButtonsMobile
-        value={selectedCategoryId}
-        onChange={(event, newId) => setSelectedCategoryId(`${newId}`)}
-      >
-        {allTabs.map((tab, index) => {
-          return <Tab key={index} label={tab.title} value={tab.id} />;
-        })}
-      </Tabs>
     </Stack>
   );
 };
