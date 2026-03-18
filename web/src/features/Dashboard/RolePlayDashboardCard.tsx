@@ -73,9 +73,11 @@ export const RolePlayDashboardCard = () => {
         />
 
         <StoreCard
-          textColor={'#fff'}
-          backgroundColor={'rgba(20, 118, 145, 0.8)'}
-          previewImageUrl={visibleScenarios[0].imageSrc}
+          textColor={'#000'}
+          backgroundColor={'rgba(227, 209, 193, 0.6)'}
+          previewImageUrl={
+            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773868292032-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+          }
           label={i18n._('Get creative').toUpperCase()}
           title={i18n._('Try these role-plays')}
           items={items}
