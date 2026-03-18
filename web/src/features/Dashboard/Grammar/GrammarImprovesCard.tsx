@@ -219,7 +219,7 @@ ${postfixInstruction}`;
 
   const items: RowItem[] = [];
 
-  grammarPoints.forEach((record, index) => {
+  grammarPoints.slice(0, limit).forEach((record, index) => {
     const icon = improvementsIcons[index % improvementsIcons.length];
     items.push({
       title: dayjs(record.createdAtDayIso).format('MMMM D, YYYY'),
@@ -232,6 +232,19 @@ ${postfixInstruction}`;
       },
     });
   });
+
+  if (isLimited) {
+    items.push({
+      title: i18n._('More improvements'),
+      subTitle: i18n._('Show all your grammar improvements.'),
+      iconName: 'eye',
+      bgColor: '#888',
+      actionButtonTitle: i18n._('More...'),
+      onClick: function (): void {
+        setShowAll(true);
+      },
+    });
+  }
 
   return (
     <Stack
