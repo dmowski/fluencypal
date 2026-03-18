@@ -1466,7 +1466,6 @@ msgid "AI Voice"
 msgstr "الصوت الذكي"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:635
-#: src/features/Dashboard/JustTalkCard.tsx:172
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "صوت الذكاء الاصطناعي"
@@ -1986,15 +1985,6 @@ msgid ""
 msgstr ""
 "استنادًا إلى عملية التعريف الخاصة بك، ستقوم FluencyPal بإنشاء خطة تعلم "
 "مخصصة لك فقط."
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
-#. js-lingui-explicit-id
-msgid ""
-"Based on your recent conversations, here are some tips to improve your "
-"grammar. Click on the tip to see more details!"
-msgstr ""
-"بناءً على محادثاتك الأخيرة، إليك بعض النصائح لتحسين قواعدك النحوية. انقر "
-"على النصيحة لمشاهدة المزيد من التفاصيل!"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
 #. js-lingui-explicit-id
@@ -2897,7 +2887,7 @@ msgstr "إعداد المحادثة"
 msgid "Conversation speed"
 msgstr "سرعة المحادثة"
 
-#: src/features/Dashboard/JustTalkCard.tsx:130
+#: src/features/Dashboard/JustTalkCard.tsx:102
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr ""
@@ -4116,6 +4106,11 @@ msgstr "استمتع باللعبة وشاهد كيف يقوم الذكاء ال
 msgid "Enjoy unlimited AI conversations and all practice modes!"
 msgstr "استمتع بمحاورات غير محدودة مع الذكاء الاصطناعي وجميع وضعيات التدرب!"
 
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:258
+#. js-lingui-explicit-id
+msgid "Enough with speaking? Time to improve!"
+msgstr "حان وقت التحسن بدلاً من الكلام!"
+
 #: src/features/Auth/AuthWallBasic.tsx:150
 #. js-lingui-explicit-id
 msgid "Enter your email to get a sign-in link"
@@ -5165,11 +5160,6 @@ msgstr ""
 msgid "Full Access"
 msgstr "الوصول الكامل"
 
-#: src/features/Dashboard/Dashboard.tsx:88
-#. js-lingui-explicit-id
-msgid "Full access - Expiring soon"
-msgstr "كامل الوصول - سينتهي قريبًا"
-
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:425
 #. js-lingui-explicit-id
 msgid "Full Access for 1 day"
@@ -5673,6 +5663,11 @@ msgstr "تصحيحات القواعد لزيادة ثقتك بنفسك"
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "تحسين القواعد"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#. js-lingui-explicit-id
+msgid "Grammar Improvements"
+msgstr "تحسينات القواعد"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:453
 #. js-lingui-explicit-id
@@ -6764,7 +6759,6 @@ msgstr ""
 "لتخمين الكلمات حيث ستقوم بممارسة شرح وتخمين الكلمات بطرق إبداعية، مما سيزيد "
 "من ثقتك اللغوية."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:236
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:197
 #. js-lingui-explicit-id
 msgid "Improvements to your grammar"
@@ -8196,7 +8190,7 @@ msgstr "إمكانية الوصول إلى الميكروفون"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "تم رفض الوصول إلى الميكروفون. يُرجى تمكينه في إعدادات المتصفح لديك."
 
-#: src/features/Dashboard/JustTalkCard.tsx:59
+#: src/features/Dashboard/JustTalkCard.tsx:62
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is required to start the call.\n"
@@ -8603,10 +8597,10 @@ msgstr "لا يوجد سؤال يومي لليوم"
 msgid "No debates yet"
 msgstr "لا توجد مناقشات بعد"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:261
 #. js-lingui-explicit-id
-msgid "No grammar insights yet. Start chatting to get personalized tips!"
-msgstr "لا توجد ملاحظات نحوية حتى الآن. ابدأ المحادثة للحصول على نصائح مخصصة!"
+msgid "No grammar mistakes found. Keep practicing to see improvements here!"
+msgstr "لم يتم العثور على أخطاء نحوية. استمر في الممارسة لتلاحظ التحسينات هنا!"
 
 #: src/features/Case/ListPage/components/ListInterview.tsx:131
 #. js-lingui-explicit-id
@@ -8946,6 +8940,7 @@ msgstr "ممارسة اللغة عبر الإنترنت"
 msgid "Oops! Something went wrong"
 msgstr "عفوًا! حدث خطأ ما"
 
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:229
 #: src/features/Landing/Price/PricePage.tsx:206
 #: src/features/Sentence/Stories.tsx:265
 #. js-lingui-explicit-id
@@ -9235,6 +9230,13 @@ msgstr "ممارسة قواعد اللغة الإنجليزية الشخصية �
 #. js-lingui-explicit-id
 msgid "Personalized English Grammar Practice with AI | FluencyPal"
 msgstr "ممارسة قواعد اللغة الإنجليزية الشخصية مع الذكاء الاصطناعي | FluencyPal"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:244
+#. js-lingui-explicit-id
+msgid ""
+"Personalized explanations and examples to help you understand and improve "
+"your grammar."
+msgstr "تفسيرات وأمثلة مخصصة لمساعدتك على فهم وتحسين قواعدك اللغوية."
 
 #: src/features/Case/data/frontend-senior/quizData.ts:34
 #. js-lingui-explicit-id
@@ -9885,6 +9887,11 @@ msgid ""
 msgstr ""
 "تدرب مع سيناريوهات المقابلات التفاعلية لدينا المصممة لتعزيز ثقتك بنفسك "
 "وتحسين مهاراتك في التواصل."
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:257
+#. js-lingui-explicit-id
+msgid "PRACTICE, IMPROVE, REPEAT"
+msgstr "ممارسة، تحسين، تكرار"
 
 #: src/features/Case/data/backendCSharp/demoSnippetSection.ts:11
 #. js-lingui-explicit-id
@@ -10578,11 +10585,6 @@ msgstr "جاري إزالة بياناتك..."
 msgid "Rendering Performance"
 msgstr "أداء العرض"
 
-#: src/features/Dashboard/Dashboard.tsx:96
-#. js-lingui-explicit-id
-msgid "Renew Now"
-msgstr "تجديد الآن"
-
 #: src/features/Sentence/StoriesModal.tsx:680
 #. js-lingui-explicit-id
 msgid "Replay"
@@ -11114,11 +11116,6 @@ msgstr "قصة قصيرة"
 msgid "Shorter words and familiar vocabulary"
 msgstr "كلمات أقصر ومفردات مألوفة"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
-#. js-lingui-explicit-id
-msgid "Show all improvements"
-msgstr "عرض جميع التحسينات"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
 #. js-lingui-explicit-id
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
@@ -11399,6 +11396,7 @@ msgstr "خطة التعلم الإسبانية"
 msgid "Speak naturally, without overthinking"
 msgstr "تحدث بشكل طبيعي، دون التفكير المفرط"
 
+#: src/features/Dashboard/JustTalkCard.tsx:94
 #: src/features/Landing/LandingPage.tsx:385
 #: src/features/Landing/PlanLandingBlock.tsx:222
 #. js-lingui-explicit-id
@@ -11441,6 +11439,7 @@ msgid "Stars"
 msgstr "النجوم"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
+#: src/features/Dashboard/JustTalkCard.tsx:111
 #: src/features/Dashboard/PlanDashboardCards.tsx:266
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -11454,12 +11453,7 @@ msgstr "النجوم"
 msgid "Start"
 msgstr "ابدأ"
 
-#: src/features/Dashboard/JustTalkCard.tsx:161
-#. js-lingui-explicit-id
-msgid "Start a call"
-msgstr "ابدأ مكالمة"
-
-#: src/features/Dashboard/JustTalkCard.tsx:139
+#: src/features/Dashboard/JustTalkCard.tsx:103
 #. js-lingui-explicit-id
 msgid ""
 "Start a casual call to practice your communication skills. This is a "
@@ -12987,11 +12981,6 @@ msgstr "افتح لمدة أسبوع واحد"
 msgid "Unlock for 1 year"
 msgstr "افتح لمدة 1 سنة"
 
-#: src/features/Dashboard/Dashboard.tsx:79
-#. js-lingui-explicit-id
-msgid "Unlock Full Access"
-msgstr "افتح الوصول الكامل"
-
 #: src/features/Conversation/CallMode/FooterButton.tsx:42
 #. js-lingui-explicit-id
 msgid "Unlock full access to continue"
@@ -13011,13 +13000,6 @@ msgstr "افتح الوصول غير المحدود إلى جميع الميزا
 #. js-lingui-explicit-id
 msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "افتح محادثات AI غير محدودة وجميع أوضاع الممارسة"
-
-#: src/features/Dashboard/Dashboard.tsx:76
-#. js-lingui-explicit-id
-msgid "Unlock unlimited speaking practice, all AI features and community access."
-msgstr ""
-"افتح ممارسة التحدث غير المحدودة، وجميع ميزات الذكاء الاصطناعي والوصول إلى "
-"المجتمع."
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -14384,6 +14366,11 @@ msgstr "إنجازاتك"
 msgid "Your AI speaking partner"
 msgstr "شريكك للحديث بالذكاء الاصطناعي"
 
+#: src/features/Dashboard/JustTalkCard.tsx:109
+#. js-lingui-explicit-id
+msgid "Your AI Speech Partner"
+msgstr "شريكك في الخطب AI"
+
 #: src/features/Modal/TeacherVoiceModal.tsx:35
 #. js-lingui-explicit-id
 msgid "Your AI teacher voice:"
@@ -14523,29 +14510,12 @@ msgstr ""
 "plaintext\n"
 "يتم تخزين النصوص الخاصة بك بشكل آمن في خدمتنا\n"
 
-#: src/features/Dashboard/Dashboard.tsx:94
-#. js-lingui-explicit-id
-msgid "Your unlimited access is about to expire soon."
-msgstr "اشتراكك في الوصول غير المحدود على وشك الانتهاء قريباً."
-
-#: src/features/Dashboard/Dashboard.tsx:91
-#. js-lingui-explicit-id
-msgid "Your unlimited access is active until {date}"
-msgstr ""
-"plaintext\n"
-"وصولك غير المحدود نشط حتى {date}\n"
-
 #: src/features/Case/data/frontend-senior/painSection.ts:16
 #. js-lingui-explicit-id
 msgid ""
 "You’re asked to **design systems on the spot**, but no one tells you what "
 "“good” looks like"
 msgstr "أنت مطالب بـ **تصميم الأنظمة بشكل فوري**، لكن لا أحد يخبرك كيف يبدو \"الجيد\""
-
-#: src/features/Dashboard/Dashboard.tsx:75
-#. js-lingui-explicit-id
-msgid "You’re in preview mode"
-msgstr "أنت في وضع المعاينة"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #. js-lingui-explicit-id
@@ -14597,6 +14567,69 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Based on your recent conversations, here are some tips to improve your "
+#~ "grammar. Click on the tip to see more details!"
+#~ msgstr ""
+#~ "بناءً على محادثاتك الأخيرة، إليك بعض النصائح لتحسين قواعدك النحوية. انقر "
+#~ "على النصيحة لمشاهدة المزيد من التفاصيل!"
+
+#: src/features/Dashboard/Dashboard.tsx:88
+#. js-lingui-explicit-id
+#~ msgid "Full access - Expiring soon"
+#~ msgstr "كامل الوصول - سينتهي قريبًا"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
+#. js-lingui-explicit-id
+#~ msgid "No grammar insights yet. Start chatting to get personalized tips!"
+#~ msgstr "لا توجد ملاحظات نحوية حتى الآن. ابدأ المحادثة للحصول على نصائح مخصصة!"
+
+#: src/features/Dashboard/Dashboard.tsx:96
+#. js-lingui-explicit-id
+#~ msgid "Renew Now"
+#~ msgstr "تجديد الآن"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
+#. js-lingui-explicit-id
+#~ msgid "Show all improvements"
+#~ msgstr "عرض جميع التحسينات"
+
+#: src/features/Dashboard/JustTalkCard.tsx:161
+#. js-lingui-explicit-id
+#~ msgid "Start a call"
+#~ msgstr "ابدأ مكالمة"
+
+#: src/features/Dashboard/Dashboard.tsx:79
+#. js-lingui-explicit-id
+#~ msgid "Unlock Full Access"
+#~ msgstr "افتح الوصول الكامل"
+
+#: src/features/Dashboard/Dashboard.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Unlock unlimited speaking practice, all AI features and community access."
+#~ msgstr ""
+#~ "افتح ممارسة التحدث غير المحدودة، وجميع ميزات الذكاء الاصطناعي والوصول إلى "
+#~ "المجتمع."
+
+#: src/features/Dashboard/Dashboard.tsx:94
+#. js-lingui-explicit-id
+#~ msgid "Your unlimited access is about to expire soon."
+#~ msgstr "اشتراكك في الوصول غير المحدود على وشك الانتهاء قريباً."
+
+#: src/features/Dashboard/Dashboard.tsx:91
+#. js-lingui-explicit-id
+#~ msgid "Your unlimited access is active until {date}"
+#~ msgstr ""
+#~ "plaintext\n"
+#~ "وصولك غير المحدود نشط حتى {date}\n"
+
+#: src/features/Dashboard/Dashboard.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "You’re in preview mode"
+#~ msgstr "أنت في وضع المعاينة"
 
 #: src/features/Experiments/IWant.tsx:223
 #. js-lingui-explicit-id

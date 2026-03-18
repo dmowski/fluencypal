@@ -1408,7 +1408,6 @@ msgid "AI Voice"
 msgstr "AI 음성"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:635
-#: src/features/Dashboard/JustTalkCard.tsx:172
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AI 음성"
@@ -1910,13 +1909,6 @@ msgid ""
 "Based on your onboarding, FluencyPal will create a personalized learning "
 "plan just for you."
 msgstr "귀하의 온보딩을 기반으로, FluencyPal은 귀하만을 위한 맞춤형 학습 계획을 만들어 드립니다."
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
-#. js-lingui-explicit-id
-msgid ""
-"Based on your recent conversations, here are some tips to improve your "
-"grammar. Click on the tip to see more details!"
-msgstr "최근 대화를 기반으로, 문법을 향상시키기 위한 몇 가지 팁이 있습니다. 팁을 클릭하여 더 자세한 내용을 확인하세요!"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
 #. js-lingui-explicit-id
@@ -2796,7 +2788,7 @@ msgstr "대화 준비"
 msgid "Conversation speed"
 msgstr "대화 속도"
 
-#: src/features/Dashboard/JustTalkCard.tsx:130
+#: src/features/Dashboard/JustTalkCard.tsx:102
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "AI와의 대화"
@@ -3960,6 +3952,11 @@ msgstr "게임을 즐기고 AI가 어떻게 당신의 설명을 추측하는지 
 msgid "Enjoy unlimited AI conversations and all practice modes!"
 msgstr "무제한 AI 대화 및 모든 연습 모드를 마음껏 즐기세요!"
 
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:258
+#. js-lingui-explicit-id
+msgid "Enough with speaking? Time to improve!"
+msgstr "말하기는 충분하다구요? 이제 발전할 시간입니다!"
+
 #: src/features/Auth/AuthWallBasic.tsx:150
 #. js-lingui-explicit-id
 msgid "Enter your email to get a sign-in link"
@@ -4939,11 +4936,6 @@ msgstr "프론트엔드 시스템 설계 인터뷰"
 msgid "Full Access"
 msgstr "전체 접근 권한"
 
-#: src/features/Dashboard/Dashboard.tsx:88
-#. js-lingui-explicit-id
-msgid "Full access - Expiring soon"
-msgstr "Full access - 곧 만료됩니다"
-
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:425
 #. js-lingui-explicit-id
 msgid "Full Access for 1 day"
@@ -5413,6 +5405,11 @@ msgstr "자신감을 높여주는 문법 수정"
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "문법 개선"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#. js-lingui-explicit-id
+msgid "Grammar Improvements"
+msgstr "문법 개선사항"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:453
 #. js-lingui-explicit-id
@@ -6442,7 +6439,6 @@ msgstr ""
 "재미있게 어휘력과 말하기 능력을 향상하세요! Alias는 역동적인 단어 추측 게임으로, 창의적으로 단어를 설명하고 추측하면서 언어적 "
 "자신감을 키울 수 있습니다."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:236
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:197
 #. js-lingui-explicit-id
 msgid "Improvements to your grammar"
@@ -7804,7 +7800,7 @@ msgstr "마이크 접근 권한"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "마이크 접근이 거부되었습니다. 브라우저 설정에서 이를 활성화해 주세요."
 
-#: src/features/Dashboard/JustTalkCard.tsx:59
+#: src/features/Dashboard/JustTalkCard.tsx:62
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is required to start the call.\n"
@@ -8185,10 +8181,10 @@ msgstr "오늘의 질문 없음"
 msgid "No debates yet"
 msgstr "디베이트가 아직 없습니다"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:261
 #. js-lingui-explicit-id
-msgid "No grammar insights yet. Start chatting to get personalized tips!"
-msgstr "아직 문법 인사이트가 없습니다. 채팅을 시작하여 개인 맞춤형 팁을 받으세요!"
+msgid "No grammar mistakes found. Keep practicing to see improvements here!"
+msgstr "문법 오류가 발견되지 않았습니다. 계속해서 연습하여 여기서 향상을 확인하세요!"
 
 #: src/features/Case/ListPage/components/ListInterview.tsx:131
 #. js-lingui-explicit-id
@@ -8496,6 +8492,7 @@ msgstr "온라인 언어 연습"
 msgid "Oops! Something went wrong"
 msgstr "이런! 문제가 발생했습니다"
 
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:229
 #: src/features/Landing/Price/PricePage.tsx:206
 #: src/features/Sentence/Stories.tsx:265
 #. js-lingui-explicit-id
@@ -8777,6 +8774,13 @@ msgstr "AI를 활용한 개인 맞춤형 영어 문법 연습"
 #. js-lingui-explicit-id
 msgid "Personalized English Grammar Practice with AI | FluencyPal"
 msgstr "AI 맞춤형 영어 문법 연습 | FluencyPal"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:244
+#. js-lingui-explicit-id
+msgid ""
+"Personalized explanations and examples to help you understand and improve "
+"your grammar."
+msgstr "개인 맞춤형 설명 및 예제는 문법 이해 및 향상을 돕기 위해 제공됩니다."
 
 #: src/features/Case/data/frontend-senior/quizData.ts:34
 #. js-lingui-explicit-id
@@ -9381,6 +9385,11 @@ msgid ""
 "Practice with our interactive interview scenarios designed to boost your "
 "confidence and improve your communication skills."
 msgstr "우리의 대화형 인터뷰 시나리오를 통해 자신감을 높이고 의사소통 능력을 향상시키세요."
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:257
+#. js-lingui-explicit-id
+msgid "PRACTICE, IMPROVE, REPEAT"
+msgstr "연습, 개선, 반복"
 
 #: src/features/Case/data/backendCSharp/demoSnippetSection.ts:11
 #. js-lingui-explicit-id
@@ -10056,11 +10065,6 @@ msgstr "데이터를 제거 중..."
 msgid "Rendering Performance"
 msgstr "렌더링 성능"
 
-#: src/features/Dashboard/Dashboard.tsx:96
-#. js-lingui-explicit-id
-msgid "Renew Now"
-msgstr "지금 갱신하기"
-
 #: src/features/Sentence/StoriesModal.tsx:680
 #. js-lingui-explicit-id
 msgid "Replay"
@@ -10574,11 +10578,6 @@ msgstr "단편 소설"
 msgid "Shorter words and familiar vocabulary"
 msgstr "짧은 단어와 익숙한 어휘"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
-#. js-lingui-explicit-id
-msgid "Show all improvements"
-msgstr "모든 개선 사항 표시"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
 #. js-lingui-explicit-id
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
@@ -10847,6 +10846,7 @@ msgstr "스페인어 학습 계획"
 msgid "Speak naturally, without overthinking"
 msgstr "생각하지 않고 자연스럽게 말하기"
 
+#: src/features/Dashboard/JustTalkCard.tsx:94
 #: src/features/Landing/LandingPage.tsx:385
 #: src/features/Landing/PlanLandingBlock.tsx:222
 #. js-lingui-explicit-id
@@ -10889,6 +10889,7 @@ msgid "Stars"
 msgstr "별"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
+#: src/features/Dashboard/JustTalkCard.tsx:111
 #: src/features/Dashboard/PlanDashboardCards.tsx:266
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -10902,12 +10903,7 @@ msgstr "별"
 msgid "Start"
 msgstr "시작"
 
-#: src/features/Dashboard/JustTalkCard.tsx:161
-#. js-lingui-explicit-id
-msgid "Start a call"
-msgstr "통화 시작"
-
-#: src/features/Dashboard/JustTalkCard.tsx:139
+#: src/features/Dashboard/JustTalkCard.tsx:103
 #. js-lingui-explicit-id
 msgid ""
 "Start a casual call to practice your communication skills. This is a "
@@ -12380,11 +12376,6 @@ msgstr "1주일 동안 잠금 해제"
 msgid "Unlock for 1 year"
 msgstr "1년 동안 잠금 해제"
 
-#: src/features/Dashboard/Dashboard.tsx:79
-#. js-lingui-explicit-id
-msgid "Unlock Full Access"
-msgstr "전체 액세스 잠금 해제"
-
 #: src/features/Conversation/CallMode/FooterButton.tsx:42
 #. js-lingui-explicit-id
 msgid "Unlock full access to continue"
@@ -12404,11 +12395,6 @@ msgstr "모든 기능에 대한 무제한 접근 잠금 해제"
 #. js-lingui-explicit-id
 msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "무제한 AI 대화 및 모든 연습 모드를 잠금 해제하세요."
-
-#: src/features/Dashboard/Dashboard.tsx:76
-#. js-lingui-explicit-id
-msgid "Unlock unlimited speaking practice, all AI features and community access."
-msgstr "무제한 말하기 연습, 모든 AI 기능 및 커뮤니티 접근을 잠금 해제하세요."
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -13688,6 +13674,11 @@ msgstr "당신의 성과"
 msgid "Your AI speaking partner"
 msgstr "당신의 AI 스피킹 파트너"
 
+#: src/features/Dashboard/JustTalkCard.tsx:109
+#. js-lingui-explicit-id
+msgid "Your AI Speech Partner"
+msgstr "당신의 AI 음성 파트너"
+
 #: src/features/Modal/TeacherVoiceModal.tsx:35
 #. js-lingui-explicit-id
 msgid "Your AI teacher voice:"
@@ -13821,27 +13812,12 @@ msgstr "당신의 지원자 친구"
 msgid "Your transcripts are securely stored in our service"
 msgstr "당신의 성적 증명서는 저희 서비스에 안전하게 저장됩니다."
 
-#: src/features/Dashboard/Dashboard.tsx:94
-#. js-lingui-explicit-id
-msgid "Your unlimited access is about to expire soon."
-msgstr "무제한 액세스가 곧 만료됩니다."
-
-#: src/features/Dashboard/Dashboard.tsx:91
-#. js-lingui-explicit-id
-msgid "Your unlimited access is active until {date}"
-msgstr "귀하의 무제한 액세스는 {date}까지 활성화되어 있습니다."
-
 #: src/features/Case/data/frontend-senior/painSection.ts:16
 #. js-lingui-explicit-id
 msgid ""
 "You’re asked to **design systems on the spot**, but no one tells you what "
 "“good” looks like"
 msgstr "당신은 **즉석에서 시스템을 설계하라고 요청받지만**, 아무도 \"좋은\" 것이 무엇인지 말해주지 않습니다."
-
-#: src/features/Dashboard/Dashboard.tsx:75
-#. js-lingui-explicit-id
-msgid "You’re in preview mode"
-msgstr "프리뷰 모드입니다"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #. js-lingui-explicit-id
@@ -13893,6 +13869,63 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Based on your recent conversations, here are some tips to improve your "
+#~ "grammar. Click on the tip to see more details!"
+#~ msgstr "최근 대화를 기반으로, 문법을 향상시키기 위한 몇 가지 팁이 있습니다. 팁을 클릭하여 더 자세한 내용을 확인하세요!"
+
+#: src/features/Dashboard/Dashboard.tsx:88
+#. js-lingui-explicit-id
+#~ msgid "Full access - Expiring soon"
+#~ msgstr "Full access - 곧 만료됩니다"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
+#. js-lingui-explicit-id
+#~ msgid "No grammar insights yet. Start chatting to get personalized tips!"
+#~ msgstr "아직 문법 인사이트가 없습니다. 채팅을 시작하여 개인 맞춤형 팁을 받으세요!"
+
+#: src/features/Dashboard/Dashboard.tsx:96
+#. js-lingui-explicit-id
+#~ msgid "Renew Now"
+#~ msgstr "지금 갱신하기"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
+#. js-lingui-explicit-id
+#~ msgid "Show all improvements"
+#~ msgstr "모든 개선 사항 표시"
+
+#: src/features/Dashboard/JustTalkCard.tsx:161
+#. js-lingui-explicit-id
+#~ msgid "Start a call"
+#~ msgstr "통화 시작"
+
+#: src/features/Dashboard/Dashboard.tsx:79
+#. js-lingui-explicit-id
+#~ msgid "Unlock Full Access"
+#~ msgstr "전체 액세스 잠금 해제"
+
+#: src/features/Dashboard/Dashboard.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Unlock unlimited speaking practice, all AI features and community access."
+#~ msgstr "무제한 말하기 연습, 모든 AI 기능 및 커뮤니티 접근을 잠금 해제하세요."
+
+#: src/features/Dashboard/Dashboard.tsx:94
+#. js-lingui-explicit-id
+#~ msgid "Your unlimited access is about to expire soon."
+#~ msgstr "무제한 액세스가 곧 만료됩니다."
+
+#: src/features/Dashboard/Dashboard.tsx:91
+#. js-lingui-explicit-id
+#~ msgid "Your unlimited access is active until {date}"
+#~ msgstr "귀하의 무제한 액세스는 {date}까지 활성화되어 있습니다."
+
+#: src/features/Dashboard/Dashboard.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "You’re in preview mode"
+#~ msgstr "프리뷰 모드입니다"
 
 #: src/features/Experiments/IWant.tsx:223
 #. js-lingui-explicit-id

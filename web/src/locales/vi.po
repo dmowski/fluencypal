@@ -1501,7 +1501,6 @@ msgid "AI Voice"
 msgstr "Giọng nói AI"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:635
-#: src/features/Dashboard/JustTalkCard.tsx:172
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "Giọng nói AI"
@@ -2027,15 +2026,6 @@ msgid ""
 msgstr ""
 "Dựa trên quá trình hướng dẫn, FluencyPal sẽ tạo ra một kế hoạch học tập cá "
 "nhân hóa chỉ dành cho bạn."
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
-#. js-lingui-explicit-id
-msgid ""
-"Based on your recent conversations, here are some tips to improve your "
-"grammar. Click on the tip to see more details!"
-msgstr ""
-"Dựa trên các cuộc trò chuyện gần đây của bạn, dưới đây là một số mẹo để cải "
-"thiện ngữ pháp của bạn. Nhấp vào mẹo để xem chi tiết hơn!"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
 #. js-lingui-explicit-id
@@ -2948,7 +2938,7 @@ msgstr "Chuẩn bị cuộc hội thoại"
 msgid "Conversation speed"
 msgstr "Tốc độ hội thoại"
 
-#: src/features/Dashboard/JustTalkCard.tsx:130
+#: src/features/Dashboard/JustTalkCard.tsx:102
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "Cuộc trò chuyện với AI"
@@ -4200,6 +4190,11 @@ msgstr "Tận hưởng trò chơi và xem AI đoán mô tả của bạn!"
 msgid "Enjoy unlimited AI conversations and all practice modes!"
 msgstr "Thỏa sức trò chuyện với AI không giới hạn và tất cả các chế độ luyện tập!"
 
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:258
+#. js-lingui-explicit-id
+msgid "Enough with speaking? Time to improve!"
+msgstr "Đủ với việc chỉ nói? Đã đến lúc cải thiện!"
+
 #: src/features/Auth/AuthWallBasic.tsx:150
 #. js-lingui-explicit-id
 msgid "Enter your email to get a sign-in link"
@@ -5279,13 +5274,6 @@ msgstr "phỏng vấn thiết kế hệ thống frontend"
 msgid "Full Access"
 msgstr "Truy cập đầy đủ"
 
-#: src/features/Dashboard/Dashboard.tsx:88
-#. js-lingui-explicit-id
-msgid "Full access - Expiring soon"
-msgstr ""
-"\n"
-"Truy cập đầy đủ - Sắp hết hạn\n"
-
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:425
 #. js-lingui-explicit-id
 msgid "Full Access for 1 day"
@@ -5797,6 +5785,11 @@ msgstr "Sửa ngữ pháp để tăng cường sự tự tin của bạn"
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "Cải thiện ngữ pháp"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#. js-lingui-explicit-id
+msgid "Grammar Improvements"
+msgstr "Cải Thiện Ngữ Pháp"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:453
 #. js-lingui-explicit-id
@@ -6933,7 +6926,6 @@ msgstr ""
 "và đoán từ một cách sáng tạo, mở rộng sự tự tin trong giao tiếp ngôn ngữ "
 "của bạn."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:236
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:197
 #. js-lingui-explicit-id
 msgid "Improvements to your grammar"
@@ -8402,7 +8394,7 @@ msgstr ""
 "Quyền truy cập micro đã bị từ chối. Vui lòng bật nó trong cài đặt trình "
 "duyệt của bạn."
 
-#: src/features/Dashboard/JustTalkCard.tsx:59
+#: src/features/Dashboard/JustTalkCard.tsx:62
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is required to start the call.\n"
@@ -8805,12 +8797,12 @@ msgstr "Không có câu hỏi hàng ngày cho hôm nay"
 msgid "No debates yet"
 msgstr "Chưa có tranh luận nào"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:261
 #. js-lingui-explicit-id
-msgid "No grammar insights yet. Start chatting to get personalized tips!"
+msgid "No grammar mistakes found. Keep practicing to see improvements here!"
 msgstr ""
-"Chưa có thông tin nào về ngữ pháp. Hãy bắt đầu trò chuyện để nhận mẹo cá "
-"nhân hóa!"
+"Không tìm thấy lỗi ngữ pháp nào. Hãy tiếp tục luyện tập để thấy sự tiến bộ "
+"ở đây!"
 
 #: src/features/Case/ListPage/components/ListInterview.tsx:131
 #. js-lingui-explicit-id
@@ -9149,6 +9141,7 @@ msgstr "Chăm Sóc Ngôn Ngữ Trực Tuyến"
 msgid "Oops! Something went wrong"
 msgstr "Rất tiếc! Đã xảy ra lỗi"
 
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:229
 #: src/features/Landing/Price/PricePage.tsx:206
 #: src/features/Sentence/Stories.tsx:265
 #. js-lingui-explicit-id
@@ -9448,6 +9441,15 @@ msgstr "Thực hành Ngữ pháp Tiếng Anh Cá nhân hóa với AI"
 #. js-lingui-explicit-id
 msgid "Personalized English Grammar Practice with AI | FluencyPal"
 msgstr "Thực Hành Ngữ Pháp Tiếng Anh Cá Nhân Hóa với AI | FluencyPal"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:244
+#. js-lingui-explicit-id
+msgid ""
+"Personalized explanations and examples to help you understand and improve "
+"your grammar."
+msgstr ""
+"Giải thích và ví dụ cá nhân hóa để giúp bạn hiểu và cải thiện ngữ pháp của "
+"mình."
 
 #: src/features/Case/data/frontend-senior/quizData.ts:34
 #. js-lingui-explicit-id
@@ -10100,6 +10102,11 @@ msgid ""
 msgstr ""
 "Thực hành với các tình huống phỏng vấn tương tác của chúng tôi được thiết "
 "kế để tăng cường sự tự tin và cải thiện kỹ năng giao tiếp của bạn."
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:257
+#. js-lingui-explicit-id
+msgid "PRACTICE, IMPROVE, REPEAT"
+msgstr "THỰC HÀNH, CẢI THIỆN, LẶP LẠI"
 
 #: src/features/Case/data/backendCSharp/demoSnippetSection.ts:11
 #. js-lingui-explicit-id
@@ -10812,11 +10819,6 @@ msgstr "Đang xóa dữ liệu của bạn..."
 msgid "Rendering Performance"
 msgstr "Hiệu Suất Kết Xuất"
 
-#: src/features/Dashboard/Dashboard.tsx:96
-#. js-lingui-explicit-id
-msgid "Renew Now"
-msgstr "Gia hạn ngay bây giờ"
-
 #: src/features/Sentence/StoriesModal.tsx:680
 #. js-lingui-explicit-id
 msgid "Replay"
@@ -11355,11 +11357,6 @@ msgstr "truyện ngắn"
 msgid "Shorter words and familiar vocabulary"
 msgstr "Từ ngắn hơn và từ vựng quen thuộc"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
-#. js-lingui-explicit-id
-msgid "Show all improvements"
-msgstr "Hiển thị tất cả các cải tiến"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
 #. js-lingui-explicit-id
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
@@ -11648,6 +11645,7 @@ msgstr "Kế Hoạch Học Tiếng Tây Ban Nha"
 msgid "Speak naturally, without overthinking"
 msgstr "Nói một cách tự nhiên, đừng suy nghĩ quá nhiều"
 
+#: src/features/Dashboard/JustTalkCard.tsx:94
 #: src/features/Landing/LandingPage.tsx:385
 #: src/features/Landing/PlanLandingBlock.tsx:222
 #. js-lingui-explicit-id
@@ -11690,6 +11688,7 @@ msgid "Stars"
 msgstr "Ngôi sao"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
+#: src/features/Dashboard/JustTalkCard.tsx:111
 #: src/features/Dashboard/PlanDashboardCards.tsx:266
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -11703,12 +11702,7 @@ msgstr "Ngôi sao"
 msgid "Start"
 msgstr "Bắt đầu"
 
-#: src/features/Dashboard/JustTalkCard.tsx:161
-#. js-lingui-explicit-id
-msgid "Start a call"
-msgstr "Bắt đầu cuộc gọi"
-
-#: src/features/Dashboard/JustTalkCard.tsx:139
+#: src/features/Dashboard/JustTalkCard.tsx:103
 #. js-lingui-explicit-id
 msgid ""
 "Start a casual call to practice your communication skills. This is a "
@@ -13266,11 +13260,6 @@ msgstr "Mở khóa trong 1 tuần"
 msgid "Unlock for 1 year"
 msgstr "Mở khóa trong 1 năm"
 
-#: src/features/Dashboard/Dashboard.tsx:79
-#. js-lingui-explicit-id
-msgid "Unlock Full Access"
-msgstr "Mở Khóa Truy Cập Đầy Đủ"
-
 #: src/features/Conversation/CallMode/FooterButton.tsx:42
 #. js-lingui-explicit-id
 msgid "Unlock full access to continue"
@@ -13290,13 +13279,6 @@ msgstr "Mở khóa truy cập không giới hạn vào tất cả các tính nă
 #. js-lingui-explicit-id
 msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "Mở khóa trò chuyện AI không giới hạn và tất cả các chế độ thực hành"
-
-#: src/features/Dashboard/Dashboard.tsx:76
-#. js-lingui-explicit-id
-msgid "Unlock unlimited speaking practice, all AI features and community access."
-msgstr ""
-"Mở khóa luyện nói không giới hạn, tất cả tính năng AI và quyền truy cập "
-"cộng đồng."
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -14693,6 +14675,11 @@ msgstr "Thành tích của bạn"
 msgid "Your AI speaking partner"
 msgstr "Đối tác nói chuyện AI của bạn"
 
+#: src/features/Dashboard/JustTalkCard.tsx:109
+#. js-lingui-explicit-id
+msgid "Your AI Speech Partner"
+msgstr "Đối Tác Nói Chuyện AI của Bạn"
+
 #: src/features/Modal/TeacherVoiceModal.tsx:35
 #. js-lingui-explicit-id
 msgid "Your AI teacher voice:"
@@ -14834,16 +14821,6 @@ msgstr "Người Bạn Ủng Hộ Của Bạn"
 msgid "Your transcripts are securely stored in our service"
 msgstr "Bảng điểm của bạn được lưu trữ an toàn trong dịch vụ của chúng tôi"
 
-#: src/features/Dashboard/Dashboard.tsx:94
-#. js-lingui-explicit-id
-msgid "Your unlimited access is about to expire soon."
-msgstr "Quyền truy cập không giới hạn của bạn sẽ sớm hết hạn."
-
-#: src/features/Dashboard/Dashboard.tsx:91
-#. js-lingui-explicit-id
-msgid "Your unlimited access is active until {date}"
-msgstr "Quyền truy cập không giới hạn của bạn hoạt động đến {date}"
-
 #: src/features/Case/data/frontend-senior/painSection.ts:16
 #. js-lingui-explicit-id
 msgid ""
@@ -14852,11 +14829,6 @@ msgid ""
 msgstr ""
 "Bạn được yêu cầu **thiết kế hệ thống ngay lập tức**, nhưng không ai nói cho "
 "bạn biết “tốt” trông như thế nào"
-
-#: src/features/Dashboard/Dashboard.tsx:75
-#. js-lingui-explicit-id
-msgid "You’re in preview mode"
-msgstr "Bạn đang ở chế độ xem trước"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #. js-lingui-explicit-id
@@ -14909,6 +14881,71 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Based on your recent conversations, here are some tips to improve your "
+#~ "grammar. Click on the tip to see more details!"
+#~ msgstr ""
+#~ "Dựa trên các cuộc trò chuyện gần đây của bạn, dưới đây là một số mẹo để cải "
+#~ "thiện ngữ pháp của bạn. Nhấp vào mẹo để xem chi tiết hơn!"
+
+#: src/features/Dashboard/Dashboard.tsx:88
+#. js-lingui-explicit-id
+#~ msgid "Full access - Expiring soon"
+#~ msgstr ""
+#~ "\n"
+#~ "Truy cập đầy đủ - Sắp hết hạn\n"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
+#. js-lingui-explicit-id
+#~ msgid "No grammar insights yet. Start chatting to get personalized tips!"
+#~ msgstr ""
+#~ "Chưa có thông tin nào về ngữ pháp. Hãy bắt đầu trò chuyện để nhận mẹo cá "
+#~ "nhân hóa!"
+
+#: src/features/Dashboard/Dashboard.tsx:96
+#. js-lingui-explicit-id
+#~ msgid "Renew Now"
+#~ msgstr "Gia hạn ngay bây giờ"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
+#. js-lingui-explicit-id
+#~ msgid "Show all improvements"
+#~ msgstr "Hiển thị tất cả các cải tiến"
+
+#: src/features/Dashboard/JustTalkCard.tsx:161
+#. js-lingui-explicit-id
+#~ msgid "Start a call"
+#~ msgstr "Bắt đầu cuộc gọi"
+
+#: src/features/Dashboard/Dashboard.tsx:79
+#. js-lingui-explicit-id
+#~ msgid "Unlock Full Access"
+#~ msgstr "Mở Khóa Truy Cập Đầy Đủ"
+
+#: src/features/Dashboard/Dashboard.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Unlock unlimited speaking practice, all AI features and community access."
+#~ msgstr ""
+#~ "Mở khóa luyện nói không giới hạn, tất cả tính năng AI và quyền truy cập "
+#~ "cộng đồng."
+
+#: src/features/Dashboard/Dashboard.tsx:94
+#. js-lingui-explicit-id
+#~ msgid "Your unlimited access is about to expire soon."
+#~ msgstr "Quyền truy cập không giới hạn của bạn sẽ sớm hết hạn."
+
+#: src/features/Dashboard/Dashboard.tsx:91
+#. js-lingui-explicit-id
+#~ msgid "Your unlimited access is active until {date}"
+#~ msgstr "Quyền truy cập không giới hạn của bạn hoạt động đến {date}"
+
+#: src/features/Dashboard/Dashboard.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "You’re in preview mode"
+#~ msgstr "Bạn đang ở chế độ xem trước"
 
 #: src/features/Experiments/IWant.tsx:223
 #. js-lingui-explicit-id

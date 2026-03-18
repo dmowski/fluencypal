@@ -1409,7 +1409,6 @@ msgid "AI Voice"
 msgstr "AI 音声"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:635
-#: src/features/Dashboard/JustTalkCard.tsx:172
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AIボイス"
@@ -1911,13 +1910,6 @@ msgid ""
 "Based on your onboarding, FluencyPal will create a personalized learning "
 "plan just for you."
 msgstr "あなたのオンボーディングに基づいて、FluencyPalはあなた専用のパーソナライズされた学習プランを作成します。"
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
-#. js-lingui-explicit-id
-msgid ""
-"Based on your recent conversations, here are some tips to improve your "
-"grammar. Click on the tip to see more details!"
-msgstr "最近の会話に基づいて、文法を向上させるためのいくつかのヒントを紹介します。詳細を見るにはヒントをクリックしてください！"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
 #. js-lingui-explicit-id
@@ -2797,7 +2789,7 @@ msgstr "会話の準備"
 msgid "Conversation speed"
 msgstr "会話速度"
 
-#: src/features/Dashboard/JustTalkCard.tsx:130
+#: src/features/Dashboard/JustTalkCard.tsx:102
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "AIとの会話"
@@ -3947,6 +3939,11 @@ msgstr "ゲームを楽しみ、AIがあなたの説明をどのように推測�
 msgid "Enjoy unlimited AI conversations and all practice modes!"
 msgstr "無制限のAI会話とすべての練習モードをお楽しみください！"
 
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:258
+#. js-lingui-explicit-id
+msgid "Enough with speaking? Time to improve!"
+msgstr "話すだけでは足りませんか？改善する時です！"
+
 #: src/features/Auth/AuthWallBasic.tsx:150
 #. js-lingui-explicit-id
 msgid "Enter your email to get a sign-in link"
@@ -4933,11 +4930,6 @@ msgstr "フロントエンドシステム設計面接"
 msgid "Full Access"
 msgstr "フルアクセス"
 
-#: src/features/Dashboard/Dashboard.tsx:88
-#. js-lingui-explicit-id
-msgid "Full access - Expiring soon"
-msgstr "完全アクセス - まもなく期限切れ"
-
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:425
 #. js-lingui-explicit-id
 msgid "Full Access for 1 day"
@@ -5403,6 +5395,11 @@ msgstr "文法の修正で自信を高めましょう"
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "文法の改善"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#. js-lingui-explicit-id
+msgid "Grammar Improvements"
+msgstr "文法改善"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:453
 #. js-lingui-explicit-id
@@ -6427,7 +6424,6 @@ msgstr ""
 "楽しく語彙力とスピーキングスキルを向上させましょう！エイリアスは、言葉を創造的に説明したり推測したりする練習をする、ダイナミックな単語クイズゲームです。"
 "言語的な自信を高めることができます。"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:236
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:197
 #. js-lingui-explicit-id
 msgid "Improvements to your grammar"
@@ -7793,7 +7789,7 @@ msgstr "マイクアクセス"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "マイクへのアクセスが拒否されました。ブラウザの設定で有効にしてください。"
 
-#: src/features/Dashboard/JustTalkCard.tsx:59
+#: src/features/Dashboard/JustTalkCard.tsx:62
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is required to start the call.\n"
@@ -8177,10 +8173,10 @@ msgstr "今日のデイリークエスチョンはありません"
 msgid "No debates yet"
 msgstr "まだ議論がありません"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:261
 #. js-lingui-explicit-id
-msgid "No grammar insights yet. Start chatting to get personalized tips!"
-msgstr "まだ文法のインサイトはありません。チャットを始めて、パーソナライズされたヒントを手に入れましょう！"
+msgid "No grammar mistakes found. Keep practicing to see improvements here!"
+msgstr "文法の間違いは見つかりませんでした。ここでの改善を見るために練習を続けてください！"
 
 #: src/features/Case/ListPage/components/ListInterview.tsx:131
 #. js-lingui-explicit-id
@@ -8486,6 +8482,7 @@ msgstr "オンライン言語練習"
 msgid "Oops! Something went wrong"
 msgstr "おっと！何かが間違っています"
 
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:229
 #: src/features/Landing/Price/PricePage.tsx:206
 #: src/features/Sentence/Stories.tsx:265
 #. js-lingui-explicit-id
@@ -8769,6 +8766,13 @@ msgstr "AIによるパーソナライズされた英語の文法練習"
 #. js-lingui-explicit-id
 msgid "Personalized English Grammar Practice with AI | FluencyPal"
 msgstr "AIによるパーソナライズされた英語文法練習 | FraencyPal"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:244
+#. js-lingui-explicit-id
+msgid ""
+"Personalized explanations and examples to help you understand and improve "
+"your grammar."
+msgstr "文法を理解し改善するための個別の説明と例。"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:34
 #. js-lingui-explicit-id
@@ -9370,6 +9374,11 @@ msgid ""
 "Practice with our interactive interview scenarios designed to boost your "
 "confidence and improve your communication skills."
 msgstr "インタラクティブな面接シナリオで練習し、自信を高め、コミュニケーションスキルを向上させましょう。"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:257
+#. js-lingui-explicit-id
+msgid "PRACTICE, IMPROVE, REPEAT"
+msgstr "練習、向上、繰り返す"
 
 #: src/features/Case/data/backendCSharp/demoSnippetSection.ts:11
 #. js-lingui-explicit-id
@@ -10049,13 +10058,6 @@ msgstr "データを削除しています..."
 msgid "Rendering Performance"
 msgstr "レンダリングパフォーマンス"
 
-#: src/features/Dashboard/Dashboard.tsx:96
-#. js-lingui-explicit-id
-msgid "Renew Now"
-msgstr ""
-"\n"
-"今すぐ更新\n"
-
 #: src/features/Sentence/StoriesModal.tsx:680
 #. js-lingui-explicit-id
 msgid "Replay"
@@ -10571,11 +10573,6 @@ msgstr "短編小説"
 msgid "Shorter words and familiar vocabulary"
 msgstr "短い言葉と親しみやすい語彙"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
-#. js-lingui-explicit-id
-msgid "Show all improvements"
-msgstr "すべての改善を表示"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
 #. js-lingui-explicit-id
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
@@ -10848,6 +10845,7 @@ msgstr "スペイン語学習計画"
 msgid "Speak naturally, without overthinking"
 msgstr "自然に話しましょう、深く考えすぎないでください。"
 
+#: src/features/Dashboard/JustTalkCard.tsx:94
 #: src/features/Landing/LandingPage.tsx:385
 #: src/features/Landing/PlanLandingBlock.tsx:222
 #. js-lingui-explicit-id
@@ -10890,6 +10888,7 @@ msgid "Stars"
 msgstr "スターズ"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
+#: src/features/Dashboard/JustTalkCard.tsx:111
 #: src/features/Dashboard/PlanDashboardCards.tsx:266
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -10903,12 +10902,7 @@ msgstr "スターズ"
 msgid "Start"
 msgstr "開始"
 
-#: src/features/Dashboard/JustTalkCard.tsx:161
-#. js-lingui-explicit-id
-msgid "Start a call"
-msgstr "通話を開始"
-
-#: src/features/Dashboard/JustTalkCard.tsx:139
+#: src/features/Dashboard/JustTalkCard.tsx:103
 #. js-lingui-explicit-id
 msgid ""
 "Start a casual call to practice your communication skills. This is a "
@@ -12390,11 +12384,6 @@ msgstr "1週間のロック解除"
 msgid "Unlock for 1 year"
 msgstr "1年間のアンロック"
 
-#: src/features/Dashboard/Dashboard.tsx:79
-#. js-lingui-explicit-id
-msgid "Unlock Full Access"
-msgstr "フルアクセスのアンロック"
-
 #: src/features/Conversation/CallMode/FooterButton.tsx:42
 #. js-lingui-explicit-id
 msgid "Unlock full access to continue"
@@ -12414,11 +12403,6 @@ msgstr "すべての機能に無制限でアクセスする"
 #. js-lingui-explicit-id
 msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "無制限のAI会話とすべての練習モードをアンロック"
-
-#: src/features/Dashboard/Dashboard.tsx:76
-#. js-lingui-explicit-id
-msgid "Unlock unlimited speaking practice, all AI features and community access."
-msgstr "無制限のスピーキング練習、すべてのAI機能、コミュニティへのアクセスをアンロックしましょう。"
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -13707,6 +13691,11 @@ msgstr "あなたの成果"
 msgid "Your AI speaking partner"
 msgstr "あなたのAIスピーキングパートナー"
 
+#: src/features/Dashboard/JustTalkCard.tsx:109
+#. js-lingui-explicit-id
+msgid "Your AI Speech Partner"
+msgstr "あなたのAIスピーチパートナー"
+
 #: src/features/Modal/TeacherVoiceModal.tsx:35
 #. js-lingui-explicit-id
 msgid "Your AI teacher voice:"
@@ -13840,27 +13829,12 @@ msgstr "あなたのサポート役"
 msgid "Your transcripts are securely stored in our service"
 msgstr "あなたの成績証明書は、当サービスで安全に保存されています。"
 
-#: src/features/Dashboard/Dashboard.tsx:94
-#. js-lingui-explicit-id
-msgid "Your unlimited access is about to expire soon."
-msgstr "あなたの無制限アクセスはまもなく期限切れになります。"
-
-#: src/features/Dashboard/Dashboard.tsx:91
-#. js-lingui-explicit-id
-msgid "Your unlimited access is active until {date}"
-msgstr "あなたの無制限アクセスは{date}までアクティブです"
-
 #: src/features/Case/data/frontend-senior/painSection.ts:16
 #. js-lingui-explicit-id
 msgid ""
 "You’re asked to **design systems on the spot**, but no one tells you what "
 "“good” looks like"
 msgstr "その場で**システムを設計する**よう求められますが、「良い」ものが何であるかは誰も教えてくれません"
-
-#: src/features/Dashboard/Dashboard.tsx:75
-#. js-lingui-explicit-id
-msgid "You’re in preview mode"
-msgstr "プレビューモードになっています"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #. js-lingui-explicit-id
@@ -13910,6 +13884,65 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Based on your recent conversations, here are some tips to improve your "
+#~ "grammar. Click on the tip to see more details!"
+#~ msgstr "最近の会話に基づいて、文法を向上させるためのいくつかのヒントを紹介します。詳細を見るにはヒントをクリックしてください！"
+
+#: src/features/Dashboard/Dashboard.tsx:88
+#. js-lingui-explicit-id
+#~ msgid "Full access - Expiring soon"
+#~ msgstr "完全アクセス - まもなく期限切れ"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
+#. js-lingui-explicit-id
+#~ msgid "No grammar insights yet. Start chatting to get personalized tips!"
+#~ msgstr "まだ文法のインサイトはありません。チャットを始めて、パーソナライズされたヒントを手に入れましょう！"
+
+#: src/features/Dashboard/Dashboard.tsx:96
+#. js-lingui-explicit-id
+#~ msgid "Renew Now"
+#~ msgstr ""
+#~ "\n"
+#~ "今すぐ更新\n"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
+#. js-lingui-explicit-id
+#~ msgid "Show all improvements"
+#~ msgstr "すべての改善を表示"
+
+#: src/features/Dashboard/JustTalkCard.tsx:161
+#. js-lingui-explicit-id
+#~ msgid "Start a call"
+#~ msgstr "通話を開始"
+
+#: src/features/Dashboard/Dashboard.tsx:79
+#. js-lingui-explicit-id
+#~ msgid "Unlock Full Access"
+#~ msgstr "フルアクセスのアンロック"
+
+#: src/features/Dashboard/Dashboard.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Unlock unlimited speaking practice, all AI features and community access."
+#~ msgstr "無制限のスピーキング練習、すべてのAI機能、コミュニティへのアクセスをアンロックしましょう。"
+
+#: src/features/Dashboard/Dashboard.tsx:94
+#. js-lingui-explicit-id
+#~ msgid "Your unlimited access is about to expire soon."
+#~ msgstr "あなたの無制限アクセスはまもなく期限切れになります。"
+
+#: src/features/Dashboard/Dashboard.tsx:91
+#. js-lingui-explicit-id
+#~ msgid "Your unlimited access is active until {date}"
+#~ msgstr "あなたの無制限アクセスは{date}までアクティブです"
+
+#: src/features/Dashboard/Dashboard.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "You’re in preview mode"
+#~ msgstr "プレビューモードになっています"
 
 #: src/features/Experiments/IWant.tsx:223
 #. js-lingui-explicit-id

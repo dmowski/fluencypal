@@ -1513,7 +1513,6 @@ msgid "AI Voice"
 msgstr "Suara AI"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:635
-#: src/features/Dashboard/JustTalkCard.tsx:172
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "Suara AI"
@@ -2046,15 +2045,6 @@ msgid ""
 msgstr ""
 "Berdasarkan onboarding anda, FluencyPal akan mencipta pelan pembelajaran "
 "yang diperibadikan khusus untuk anda."
-
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
-#. js-lingui-explicit-id
-msgid ""
-"Based on your recent conversations, here are some tips to improve your "
-"grammar. Click on the tip to see more details!"
-msgstr ""
-"Berdasarkan perbualan terkini anda, berikut adalah beberapa petua untuk "
-"memperbaiki tatabahasa anda. Klik pada petua untuk melihat lebih lanjut!"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
 #. js-lingui-explicit-id
@@ -2979,7 +2969,7 @@ msgstr "Persediaan perbualan"
 msgid "Conversation speed"
 msgstr "Kelajuan perbualan"
 
-#: src/features/Dashboard/JustTalkCard.tsx:130
+#: src/features/Dashboard/JustTalkCard.tsx:102
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "Perbualan dengan AI"
@@ -4238,6 +4228,11 @@ msgstr "Nikmati permainan dan lihat bagaimana AI menebak deskripsi anda!"
 msgid "Enjoy unlimited AI conversations and all practice modes!"
 msgstr "Nikmati perbualan AI tanpa had dan semua mod latihan!"
 
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:258
+#. js-lingui-explicit-id
+msgid "Enough with speaking? Time to improve!"
+msgstr "Cukup dengan bercakap? Masa untuk memperbaiki!"
+
 #: src/features/Auth/AuthWallBasic.tsx:150
 #. js-lingui-explicit-id
 msgid "Enter your email to get a sign-in link"
@@ -5331,11 +5326,6 @@ msgstr "temu duga reka bentuk sistem frontend"
 msgid "Full Access"
 msgstr "Akses Penuh"
 
-#: src/features/Dashboard/Dashboard.tsx:88
-#. js-lingui-explicit-id
-msgid "Full access - Expiring soon"
-msgstr "Akses penuh - Akan tamat tidak lama lagi"
-
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:425
 #. js-lingui-explicit-id
 msgid "Full Access for 1 day"
@@ -5850,6 +5840,11 @@ msgstr "Pembetulan tatabahasa untuk meningkatkan keyakinan anda"
 #: src/features/Usage/UsageStatsCards.tsx:80
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
+msgstr "Penambahbaikan Tatabahasa"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#. js-lingui-explicit-id
+msgid "Grammar Improvements"
 msgstr "Penambahbaikan Tatabahasa"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:453
@@ -7019,7 +7014,6 @@ msgstr ""
 "anda akan berlatih menjelaskan dan meneka perkataan secara kreatif, "
 "memperluas keyakinan linguistik anda."
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:236
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:197
 #. js-lingui-explicit-id
 msgid "Improvements to your grammar"
@@ -8517,7 +8511,7 @@ msgstr ""
 "Akses mikrofon dinafikan. Sila aktifkannya dalam tetapan penyemak imbas "
 "anda."
 
-#: src/features/Dashboard/JustTalkCard.tsx:59
+#: src/features/Dashboard/JustTalkCard.tsx:62
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is required to start the call.\n"
@@ -8926,12 +8920,12 @@ msgstr "Tiada soalan harian untuk hari ini"
 msgid "No debates yet"
 msgstr "Tiada perdebatan lagi"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:261
 #. js-lingui-explicit-id
-msgid "No grammar insights yet. Start chatting to get personalized tips!"
+msgid "No grammar mistakes found. Keep practicing to see improvements here!"
 msgstr ""
-"Tiada pandangan tatabahasa lagi. Mula bersembang untuk mendapatkan petua "
-"yang diperibadikan!"
+"Tiada kesalahan tatabahasa ditemui. Teruskan berlatih untuk melihat "
+"peningkatan di sini!"
 
 #: src/features/Case/ListPage/components/ListInterview.tsx:131
 #. js-lingui-explicit-id
@@ -9268,6 +9262,7 @@ msgstr "Amalan Bahasa Dalam Talian"
 msgid "Oops! Something went wrong"
 msgstr "Oops! Ada yang tidak kena"
 
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:229
 #: src/features/Landing/Price/PricePage.tsx:206
 #: src/features/Sentence/Stories.tsx:265
 #. js-lingui-explicit-id
@@ -9571,6 +9566,15 @@ msgstr "Latihan Tatabahasa Inggeris Peribadi dengan AI"
 #. js-lingui-explicit-id
 msgid "Personalized English Grammar Practice with AI | FluencyPal"
 msgstr "Latihan Tatabahasa Inggeris Peribadi dengan AI | FluencyPal"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:244
+#. js-lingui-explicit-id
+msgid ""
+"Personalized explanations and examples to help you understand and improve "
+"your grammar."
+msgstr ""
+"Penjelasan dan contoh peribadi untuk membantu anda memahami dan memperbaiki "
+"tatabahasa anda."
 
 #: src/features/Case/data/frontend-senior/quizData.ts:34
 #. js-lingui-explicit-id
@@ -10227,6 +10231,11 @@ msgid ""
 msgstr ""
 "Berlatih dengan senario temu bual interaktif kami yang direka untuk "
 "meningkatkan keyakinan anda dan memperbaiki kemahiran komunikasi anda."
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:257
+#. js-lingui-explicit-id
+msgid "PRACTICE, IMPROVE, REPEAT"
+msgstr "LATIH, PERBAIKI, ULANGI"
 
 #: src/features/Case/data/backendCSharp/demoSnippetSection.ts:11
 #. js-lingui-explicit-id
@@ -10937,11 +10946,6 @@ msgstr "Mengeluarkan data anda..."
 msgid "Rendering Performance"
 msgstr "Prestasi Perenderan"
 
-#: src/features/Dashboard/Dashboard.tsx:96
-#. js-lingui-explicit-id
-msgid "Renew Now"
-msgstr "Perbaharui Sekarang"
-
 #: src/features/Sentence/StoriesModal.tsx:680
 #. js-lingui-explicit-id
 msgid "Replay"
@@ -11472,11 +11476,6 @@ msgstr "cerita pendek"
 msgid "Shorter words and familiar vocabulary"
 msgstr "Perkataan yang lebih pendek dan kosa kata biasa"
 
-#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
-#. js-lingui-explicit-id
-msgid "Show all improvements"
-msgstr "Tunjukkan semua penambahbaikan"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
 #. js-lingui-explicit-id
 msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
@@ -11766,6 +11765,7 @@ msgstr "Pelan Pembelajaran Bahasa Sepanyol"
 msgid "Speak naturally, without overthinking"
 msgstr "Bercakap secara semula jadi, tanpa terlalu memikirkan"
 
+#: src/features/Dashboard/JustTalkCard.tsx:94
 #: src/features/Landing/LandingPage.tsx:385
 #: src/features/Landing/PlanLandingBlock.tsx:222
 #. js-lingui-explicit-id
@@ -11808,6 +11808,7 @@ msgid "Stars"
 msgstr "Bintang-bintang"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
+#: src/features/Dashboard/JustTalkCard.tsx:111
 #: src/features/Dashboard/PlanDashboardCards.tsx:266
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
@@ -11821,12 +11822,7 @@ msgstr "Bintang-bintang"
 msgid "Start"
 msgstr "Mula"
 
-#: src/features/Dashboard/JustTalkCard.tsx:161
-#. js-lingui-explicit-id
-msgid "Start a call"
-msgstr "Mulakan panggilan"
-
-#: src/features/Dashboard/JustTalkCard.tsx:139
+#: src/features/Dashboard/JustTalkCard.tsx:103
 #. js-lingui-explicit-id
 msgid ""
 "Start a casual call to practice your communication skills. This is a "
@@ -13393,11 +13389,6 @@ msgstr "Buka kunci untuk 1 minggu"
 msgid "Unlock for 1 year"
 msgstr "Buka selama 1 tahun"
 
-#: src/features/Dashboard/Dashboard.tsx:79
-#. js-lingui-explicit-id
-msgid "Unlock Full Access"
-msgstr "Buka Akses Penuh"
-
 #: src/features/Conversation/CallMode/FooterButton.tsx:42
 #. js-lingui-explicit-id
 msgid "Unlock full access to continue"
@@ -13417,11 +13408,6 @@ msgstr "Membuka akses tanpa had kepada semua ciri"
 #. js-lingui-explicit-id
 msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "Buka kunci perbualan AI yang tidak terhad dan semua mod latihan"
-
-#: src/features/Dashboard/Dashboard.tsx:76
-#. js-lingui-explicit-id
-msgid "Unlock unlimited speaking practice, all AI features and community access."
-msgstr "Buka kunci latihan bercakap tanpa had, semua ciri AI dan akses komuniti."
 
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:192
 #. js-lingui-explicit-id
@@ -14844,6 +14830,11 @@ msgstr "Pencapaian anda"
 msgid "Your AI speaking partner"
 msgstr "Rakan berbicara AI anda"
 
+#: src/features/Dashboard/JustTalkCard.tsx:109
+#. js-lingui-explicit-id
+msgid "Your AI Speech Partner"
+msgstr "Rakan Ucapan AI Anda"
+
 #: src/features/Modal/TeacherVoiceModal.tsx:35
 #. js-lingui-explicit-id
 msgid "Your AI teacher voice:"
@@ -14985,16 +14976,6 @@ msgstr "Rakan Penunjang Anda"
 msgid "Your transcripts are securely stored in our service"
 msgstr "Transkrip anda disimpan dengan selamat dalam perkhidmatan kami"
 
-#: src/features/Dashboard/Dashboard.tsx:94
-#. js-lingui-explicit-id
-msgid "Your unlimited access is about to expire soon."
-msgstr "Akses tanpa had anda akan tamat tidak lama lagi."
-
-#: src/features/Dashboard/Dashboard.tsx:91
-#. js-lingui-explicit-id
-msgid "Your unlimited access is active until {date}"
-msgstr "Akses tanpa had anda aktif sehingga {date}"
-
 #: src/features/Case/data/frontend-senior/painSection.ts:16
 #. js-lingui-explicit-id
 msgid ""
@@ -15003,11 +14984,6 @@ msgid ""
 msgstr ""
 "Anda diminta untuk **mereka bentuk sistem dengan serta-merta**, tetapi "
 "tiada siapa yang memberitahu anda bagaimana rupa \"baik\" "
-
-#: src/features/Dashboard/Dashboard.tsx:75
-#. js-lingui-explicit-id
-msgid "You’re in preview mode"
-msgstr "Anda berada dalam mod pratonton"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #. js-lingui-explicit-id
@@ -15060,6 +15036,67 @@ msgstr ""
 "— sangat penting untuk melibatkan diri dalam perbualan pendek ini sebelum "
 "melompat ke topik profesional. Berikut adalah beberapa frasa Inggeris yang "
 "berguna untuk memulakan temuduga:"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:245
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Based on your recent conversations, here are some tips to improve your "
+#~ "grammar. Click on the tip to see more details!"
+#~ msgstr ""
+#~ "Berdasarkan perbualan terkini anda, berikut adalah beberapa petua untuk "
+#~ "memperbaiki tatabahasa anda. Klik pada petua untuk melihat lebih lanjut!"
+
+#: src/features/Dashboard/Dashboard.tsx:88
+#. js-lingui-explicit-id
+#~ msgid "Full access - Expiring soon"
+#~ msgstr "Akses penuh - Akan tamat tidak lama lagi"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:270
+#. js-lingui-explicit-id
+#~ msgid "No grammar insights yet. Start chatting to get personalized tips!"
+#~ msgstr ""
+#~ "Tiada pandangan tatabahasa lagi. Mula bersembang untuk mendapatkan petua "
+#~ "yang diperibadikan!"
+
+#: src/features/Dashboard/Dashboard.tsx:96
+#. js-lingui-explicit-id
+#~ msgid "Renew Now"
+#~ msgstr "Perbaharui Sekarang"
+
+#: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:299
+#. js-lingui-explicit-id
+#~ msgid "Show all improvements"
+#~ msgstr "Tunjukkan semua penambahbaikan"
+
+#: src/features/Dashboard/JustTalkCard.tsx:161
+#. js-lingui-explicit-id
+#~ msgid "Start a call"
+#~ msgstr "Mulakan panggilan"
+
+#: src/features/Dashboard/Dashboard.tsx:79
+#. js-lingui-explicit-id
+#~ msgid "Unlock Full Access"
+#~ msgstr "Buka Akses Penuh"
+
+#: src/features/Dashboard/Dashboard.tsx:76
+#. js-lingui-explicit-id
+#~ msgid "Unlock unlimited speaking practice, all AI features and community access."
+#~ msgstr "Buka kunci latihan bercakap tanpa had, semua ciri AI dan akses komuniti."
+
+#: src/features/Dashboard/Dashboard.tsx:94
+#. js-lingui-explicit-id
+#~ msgid "Your unlimited access is about to expire soon."
+#~ msgstr "Akses tanpa had anda akan tamat tidak lama lagi."
+
+#: src/features/Dashboard/Dashboard.tsx:91
+#. js-lingui-explicit-id
+#~ msgid "Your unlimited access is active until {date}"
+#~ msgstr "Akses tanpa had anda aktif sehingga {date}"
+
+#: src/features/Dashboard/Dashboard.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "You’re in preview mode"
+#~ msgstr "Anda berada dalam mod pratonton"
 
 #: src/features/Experiments/IWant.tsx:223
 #. js-lingui-explicit-id
