@@ -60,7 +60,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const [isShowAiKnowledgeModal, setIsShowAiKnowledgeModal] = useUrlParam('ai-knowledge');
 
   const usage = useUsage();
-  const [_, setIsShowModal] = useUrlParam('lang-selection');
+  const [_, setIsShowLanguageModal] = useUrlParam('lang-selection');
   const router = useRouter();
 
   interface MenuItem {
@@ -81,7 +81,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       title: i18n._(`Language`),
       subTitle: i18n._(`Select your preferred language`),
       icon: Languages,
-      onClick: () => setIsShowModal(true),
+      onClick: () => setIsShowLanguageModal(true),
     },
 
     {

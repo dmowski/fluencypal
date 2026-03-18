@@ -24,6 +24,8 @@ import { useAccess } from '../Usage/useAccess';
 import { useRouter } from 'next/navigation';
 import { DevButton } from './DevButton';
 import { langFlags } from '../Lang/lang';
+import { useUrlParam } from '../Url/useUrlParam';
+import { LanguageSwitcher } from '../Lang/LanguageSwitcher';
 
 export interface IconProps {
   color?: string;
@@ -79,58 +81,8 @@ export const SimpleNavigationBar: React.FC = () => {
   const auth = useAuth();
   const settings = useSettings();
 
-  const appMode = settings.appMode;
   const userPhoto = game.gameAvatars?.[auth.uid] || '';
-  const { bottomOffset } = useWindowSizes();
-  const chatList = useChatList();
-  const battles = useBattle();
   const access = useAccess();
-
-  const navigationItemsByMode: Record<AppMode, NavigationItem[]> = useMemo(
-    () => ({
-      interview: [
-        {
-          name: 'home',
-          icon: Home,
-          title: i18n._('Home'),
-        },
-
-        {
-          name: 'profile',
-          icon: User,
-          title: i18n._('Profile'),
-        },
-      ],
-      learning: [
-        {
-          name: 'home',
-          icon: Home,
-          title: i18n._('Home'),
-        },
-        {
-          name: 'community',
-          icon: Users,
-          title: i18n._('Community'),
-          badge: !access.canUseCommunity ? undefined : chatList.myUnreadCount,
-        },
-
-        {
-          name: 'profile',
-          icon: User,
-          title: i18n._('Profile'),
-        },
-      ],
-    }),
-    [
-      appMode,
-      chatList.myUnreadCount,
-      chatList.unreadCountGlobal,
-      battles.countOfBattlesNeedToAttention,
-      access.canUseCommunity,
-    ],
-  );
-
-  const navigationItems: NavigationItem[] = navigationItemsByMode[appMode || 'learning'];
 
   const navigateTo = (
     e: React.MouseEvent<HTMLAnchorElement> | React.TouchEvent<HTMLAnchorElement>,
@@ -164,6 +116,7 @@ export const SimpleNavigationBar: React.FC = () => {
 
   const currentLanguage = settings.languageCode || 'en';
   const langIcon = langFlags[settings.languageCode || 'en'];
+  const [_, setIsShowLanguageModal] = useUrlParam('lang-selection');
 
   return (
     <>
@@ -185,8 +138,12 @@ export const SimpleNavigationBar: React.FC = () => {
               width: '100%',
             }}
           >
-            {/*Language icon*/}
-            <Avatar avatarSize="30px" url={langIcon} activeColor={activeColor} />
+            <Avatar
+              avatarSize="30px"
+              url={langIcon}
+              activeColor={activeColor}
+              onClick={() => setIsShowLanguageModal(true)}
+            />
 
             <Stack
               sx={{
@@ -235,6 +192,15 @@ export const SimpleNavigationBar: React.FC = () => {
         </Stack>
       </Stack>
       <DevButton />
+      <LanguageSwitcher
+        isHidden
+        isAuth={auth.isAuthorized}
+        langToLearn={settings.languageCode || 'en'}
+        setLanguageToLearn={settings.appMode === 'learning' ? settings.setLanguage : undefined}
+        setPageLanguage={settings.setPageLanguage}
+        nativeLang={settings.userSettings?.nativeLanguageCode || 'en'}
+        setNativeLanguage={settings.setNativeLanguage}
+      />
     </>
   );
 };
