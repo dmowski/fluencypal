@@ -2,7 +2,7 @@ import { Button, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useState } from 'react';
 
-interface RowItem {
+export interface RowItem {
   imageUrl: string;
   title: string;
   subTitle: string;

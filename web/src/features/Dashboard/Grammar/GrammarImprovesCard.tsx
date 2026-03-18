@@ -15,6 +15,8 @@ import { GrammarImprovement } from './types';
 import { useSettings } from '@/features/Settings/useSettings';
 import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang';
 import { useQuizWordAudio } from '@/features/Audio/useQuizWordAudio';
+import { SectionHeader } from '../CartsHeader';
+import { RowItem, StoreCard } from '@/features/uiKit/Card/StoreCard';
 
 const limitCount = 3;
 
@@ -187,134 +189,67 @@ ${postfixInstruction}`;
     );
   }
 
+  const items: RowItem[] = [];
+
+  grammarPoints.forEach((record, index) => {
+    items.push({
+      title: record.createdAtDayIso,
+      subTitle: record.value.substring(0, 100) + (record.value.length > 100 ? '...' : ''),
+      imageUrl:
+        'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773858639762-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+      actionButtonTitle: i18n._('Open'),
+      onClick: function (): void {
+        handleOpenModal(index);
+      },
+    });
+  });
+
   return (
     <Stack
       sx={{
-        marginBottom: '20px',
-        alignItems: 'flex-start',
-        gap: '30px',
-
-        width: '100%',
-        borderRadius: '16px',
-        position: 'relative',
-        //padding: '40px',
-        backgroundColor: 'rgba(0, 0, 0, 0.1)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        '@media (max-width:600px)': {
-          borderRadius: '0px',
-          padding: '40px 0px 0px 0px',
-          backgroundColor: 'rgba(255, 255, 255, 0)',
-          border: 'none',
-        },
+        gap: '20px',
       }}
     >
-      <Stack
-        sx={{
-          gap: '30px',
-          padding: '30px 30px 30px 30px',
-          '@media (max-width:600px)': {
-            padding: '0px 20px 0 20px',
-          },
+      <SectionHeader
+        title={i18n._('Grammar Improvements')}
+        subTitle={i18n._(
+          'Based on your recent conversations, here are some tips to improve your grammar',
+        )}
+      />
+
+      <StoreCard
+        badge={''}
+        textColor={'#fff'}
+        backgroundColor={'#6A5439'}
+        borderSize={'0px'}
+        previewImageUrl={
+          'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773858639762-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+        }
+        label={'JUST TALK MODE'}
+        title={i18n._('Conversation with AI')}
+        subTitle={i18n._(
+          "Start a casual call to practice your communication skills. This is a no-strings-attached conversation if you'd like to chat in a casual setting.",
+        )}
+        items={items}
+        itemsBackgroundColor={'#1C1C1E'}
+        onClick={() => {
+          //startJustTalk();
         }}
-      >
-        <Stack
-          sx={{
-            gap: '10px',
-          }}
-        >
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: '800',
-              textWrap: 'balance',
-              '@media (max-width:600px)': {
-                fontSize: '2rem',
-                lineHeight: '2.2rem',
-              },
-            }}
-          >
-            {i18n._('Improvements to your grammar')}
-          </Typography>
+        itemsViewMode={'list'}
+      />
 
-          <Typography
-            sx={{
-              opacity: 0.9,
-              textWrap: 'balance',
-            }}
-          >
-            {i18n._(
-              'Based on your recent conversations, here are some tips to improve your grammar. Click on the tip to see more details!',
-            )}
-          </Typography>
-        </Stack>
-
-        {isShowList && (
-          <Stack
-            sx={{
-              gap: '20px',
-              alignItems: 'flex-start',
-            }}
-          >
-            {grammarPoints.length === 0 ? (
-              <Stack
-                sx={{
-                  flexDirection: 'row',
-                  gap: '20px',
-                  alignItems: 'center',
-                  borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-                  paddingTop: '15px',
-                  paddingRight: '15px',
-                }}
-              >
-                <Typography sx={{ opacity: 0.8, textWrap: 'balance' }} variant="body2">
-                  {i18n._('No grammar insights yet. Start chatting to get personalized tips!')}
-                </Typography>
-              </Stack>
-            ) : (
-              <>
-                {grammarPoints.slice(0, limit).map((record, index) => {
-                  const key = record.value;
-
-                  return (
-                    <GrammarImprovementRow
-                      key={record.value}
-                      createdAtDayIso={record.createdAtDayIso}
-                      improvement={improvements[key] || null}
-                      isLoading={!improvements[key]}
-                      record={record}
-                      onClick={() => handleOpenModal(index)}
-                    />
-                  );
-                })}
-              </>
-            )}
-
-            {isLimited && (
-              <Button
-                startIcon={<ChevronDown size={'18px'} />}
-                variant="text"
-                size="small"
-                onClick={() => setShowAll(true)}
-              >
-                {i18n._('Show all improvements')}
-              </Button>
-            )}
-          </Stack>
-        )}
-
-        {selectedIndex !== null && grammarPoints[selectedIndex] && (
-          <GrammarImprovementModal
-            improvement={improvements[grammarPoints[selectedIndex].value] || null}
-            isLoading={!improvements[grammarPoints[selectedIndex].value]}
-            isFirstOne={selectedIndex === 0}
-            isLastOne={selectedIndex === grammarPoints.length - 1}
-            isOpen={true}
-            onClose={handleCloseModal}
-            onClickNext={handleNext}
-            onClickPrevious={handlePrevious}
-          />
-        )}
-      </Stack>
+      {selectedIndex !== null && grammarPoints[selectedIndex] && (
+        <GrammarImprovementModal
+          improvement={improvements[grammarPoints[selectedIndex].value] || null}
+          isLoading={!improvements[grammarPoints[selectedIndex].value]}
+          isFirstOne={selectedIndex === 0}
+          isLastOne={selectedIndex === grammarPoints.length - 1}
+          isOpen={true}
+          onClose={handleCloseModal}
+          onClickNext={handleNext}
+          onClickPrevious={handlePrevious}
+        />
+      )}
     </Stack>
   );
 };
