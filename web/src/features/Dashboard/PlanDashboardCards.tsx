@@ -24,10 +24,7 @@ import { useUrlParam } from '../Url/useUrlParam';
 import { useSettings } from '../Settings/useSettings';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-import { ActiveLessonCard } from '../Plan/ActiveLessonCard';
 
-import { getAiVoiceByVoice } from '../Conversation/CallMode/voiceAvatar';
-import SettingsIcon from '@mui/icons-material/Settings';
 import { SectionHeader } from './CartsHeader';
 import { StoreCard } from '../uiKit/Card/StoreCard';
 
@@ -35,7 +32,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
   const plan = usePlan();
   const settings = useSettings();
-  const teacherSettings = settings.teacherSettings;
 
   const [selectGoalModalAnchorEl, setSelectGoalModalAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -141,7 +137,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             size="small"
             onClick={(event) => setSelectGoalModalAnchorEl(event.currentTarget)}
           >
-            <Settings />
+            <Settings size={'20px'} />
           </IconButton>
         )}
       </Stack>
