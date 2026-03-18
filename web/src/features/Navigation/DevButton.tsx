@@ -31,16 +31,12 @@ export const DevButton = () => {
       }}
     >
       {langFlags[settings.languageCode || 'en'] && auth.isFounder && (
-        <Switcher
-          label="learn"
-          value={settings.languageCode || 'en'}
-          onClick={rotateLearnLanguage}
-        />
+        <Switcher label="l" value={settings.languageCode || 'en'} onClick={rotateLearnLanguage} />
       )}
 
       {auth.isFounder && (
         <Switcher
-          label="page"
+          label="p"
           value={settings.pageLanguageCode || 'en'}
           onClick={rotatePageLanguage}
         />
@@ -68,10 +64,10 @@ const Switcher = ({
 
         display: 'inline',
         textAlign: 'right',
-        border: '1px solid rgba(255, 255, 255, 0.4)',
         borderRadius: '3px',
         cursor: 'pointer',
         transition: 'all 0.3s ease',
+        opacity: 0.2,
 
         ':hover': {
           boxShadow: '0 0 8px 2px #29b6f6',
@@ -80,7 +76,7 @@ const Switcher = ({
         },
       }}
     >
-      {label}: <b>{value}</b>
+      {label}: {value}
     </Stack>
   );
 };
