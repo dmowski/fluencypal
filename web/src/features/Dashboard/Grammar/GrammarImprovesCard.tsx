@@ -221,8 +221,9 @@ ${postfixInstruction}`;
 
   grammarPoints.slice(0, limit).forEach((record, index) => {
     const icon = improvementsIcons[index % improvementsIcons.length];
+
     items.push({
-      title: dayjs(record.createdAtDayIso).format('MMMM D, YYYY'),
+      title: i18n._('Improvement') + ` #${index + 1}`,
       subTitle: record.value.substring(0, 100) + (record.value.length > 100 ? '...' : ''),
       iconName: 'book',
       bgColor: icon.color,
