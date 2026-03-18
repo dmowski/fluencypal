@@ -11,8 +11,10 @@ export const RolePlayDashboardCard = () => {
   const { i18n } = useLingui();
   const { visibleScenarios, selectScenario } = useRolePlay();
 
+  const [isShowAll, setIsShowAll] = useState(false);
+
   const items: RowItem[] = visibleScenarios
-    .filter((s, index) => isShowAll || index < 4)
+    .filter((s, index) => index < 4)
     .map((scenario) => ({
       id: scenario.id,
       title: scenario.shortTitle,
@@ -21,8 +23,6 @@ export const RolePlayDashboardCard = () => {
       actionButtonTitle: i18n._('Start'),
       onClick: () => selectScenario(scenario),
     }));
-
-  const [isShowAll, setIsShowAll] = useState(false);
 
   return (
     <>
