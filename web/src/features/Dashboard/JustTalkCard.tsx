@@ -13,6 +13,7 @@ import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { Avatar } from '../Game/Avatar';
 import { getMediaAudioStreams, getMediaVideoStreams } from '../webCam/mediaStream';
 import { sleep } from '@/libs/sleep';
+import { StoreCard } from '../uiKit/Card/StoreCard';
 
 export const JustTalkCard = () => {
   const { i18n } = useLingui();
@@ -27,6 +28,7 @@ export const JustTalkCard = () => {
   const audio = useConversationAudio();
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
   const startJustTalk = async () => {
+    if (isCallStarting) return;
     await audio.initAudio();
     setIsCallStarting(true);
 
@@ -80,7 +82,64 @@ Please allow microphone permission in your browser settings, refresh the page, a
 
   const funnyPhrases = aiAvatar.funnyPhrases;
   const footnotePhrase = funnyPhrases[footnotePhraseIndex % funnyPhrases.length];
+  const secondPhotoUrl = aiAvatar.photoUrls?.[1] || aiAvatar.photoUrls?.[0] || '';
 
+  return (
+    <Stack
+      sx={{
+        gap: '20px',
+      }}
+    >
+      <Stack>
+        <Typography
+          variant="h5"
+          sx={{
+            fontWeight: 600,
+          }}
+        >
+          Speaking
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            opacity: 0.8,
+          }}
+        >
+          {footnotePhrase}
+        </Typography>
+      </Stack>
+      <StoreCard
+        badge={'FLUENCY PRACTICE'}
+        textColor={'#fff'}
+        backgroundColor={'#0286D0'}
+        borderSize={'5px'}
+        previewImageUrl={aiAvatar.photoUrls?.[0] || ''}
+        label={'JUST TALK MODE'}
+        title={i18n._('Conversation with AI')}
+        subTitle={i18n._(
+          "Start a casual call to practice your communication skills. This is a no-strings-attached conversation if you'd like to chat in a casual setting.",
+        )}
+        items={[
+          {
+            title: voiceName.charAt(0).toUpperCase() + voiceName.slice(1),
+            subTitle: i18n._('Your AI Speech Partner'),
+            imageUrl: secondPhotoUrl,
+            actionButtonTitle: i18n._('Start'),
+            onClick: () => {
+              startJustTalk();
+            },
+          },
+        ]}
+        itemsBackgroundColor={'rgba(0, 0, 0, 0.2)'}
+        onClick={() => {
+          startJustTalk();
+        }}
+        itemsViewMode={'list'}
+      />
+    </Stack>
+  );
+
+  /*
   return (
     <Stack
       sx={{
@@ -221,5 +280,5 @@ Please allow microphone permission in your browser settings, refresh the page, a
         <AudioPlayIcon text={footnotePhrase} />
       </Stack>
     </Stack>
-  );
+  );*/
 };
