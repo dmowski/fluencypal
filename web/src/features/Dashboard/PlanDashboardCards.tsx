@@ -9,7 +9,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { ChevronDown, Flag, LandPlot, MoveRight, Plus, Sparkle } from 'lucide-react';
+import { ChevronDown, Flag, LandPlot, MoveRight, Plus, Settings, Sparkle } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { usePlan } from '../Plan/usePlan';
 import { PlanElementMode } from '../Plan/types';
@@ -28,6 +28,8 @@ import { ActiveLessonCard } from '../Plan/ActiveLessonCard';
 
 import { getAiVoiceByVoice } from '../Conversation/CallMode/voiceAvatar';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { SectionHeader } from './CartsHeader';
+import { StoreCard } from '../uiKit/Card/StoreCard';
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -121,153 +123,101 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     <Stack gap="20px">
       <Stack
         sx={{
-          display: 'grid',
+          flexDirection: 'row',
           alignItems: 'center',
-          gridTemplateColumns: '1fr',
-          gap: '5px',
-          paddingTop: '40px',
+          justifyContent: 'space-between',
         }}
       >
-        <Stack
-          sx={{
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '20px',
-            flexWrap: 'wrap',
-          }}
-        >
-          <Stack
-            sx={{
-              borderRadius: '50%',
-              background: 'linear-gradient(45deg,rgb(120, 13, 220) 0%,rgb(199, 13, 236) 100%)',
-              height: '60px',
-              width: '60px',
-
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
+        <SectionHeader
+          title={i18n._('Learning Plan')}
+          subTitle={
+            isGoalSet
+              ? plan.activeGoal?.title || i18n._(`Goal`)
+              : i18n._(`Start your way to fluency`)
+          }
+        />
+        {languageGoals.length > 0 && (
+          <IconButton
+            size="small"
+            onClick={(event) => setSelectGoalModalAnchorEl(event.currentTarget)}
           >
-            <Flag size={'27px'} />
-          </Stack>
-          <Stack>
-            <Typography
-              variant="caption"
-              align="center"
-              sx={{
-                opacity: 0.7,
-                textTransform: 'uppercase',
-              }}
-            >
-              {i18n._(`Learning Plan`)}
-            </Typography>
-            <Stack
-              sx={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '5px',
-              }}
-            >
-              {languageGoals.length > 1 && (
-                <IconButton
-                  size="small"
-                  sx={{
-                    visibility: 'hidden',
-                  }}
-                >
-                  <ChevronDown />
-                </IconButton>
-              )}
-
-              <Typography variant="h6" align="center">
-                {isGoalSet
-                  ? plan.activeGoal?.title || i18n._(`Goal`)
-                  : i18n._(`Start your way to fluency`)}
-              </Typography>
-              {languageGoals.length > 1 && (
-                <IconButton
-                  size="small"
-                  onClick={(event) => setSelectGoalModalAnchorEl(event.currentTarget)}
-                >
-                  <ChevronDown />
-                </IconButton>
-              )}
-
-              {selectGoalModalAnchorEl && (
-                <Menu
-                  sx={{
-                    marginBottom: '130px',
-                  }}
-                  anchorEl={selectGoalModalAnchorEl}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  keepMounted
-                  open={Boolean(selectGoalModalAnchorEl)}
-                  onClose={() => setSelectGoalModalAnchorEl(null)}
-                >
-                  {languageGoals.map((goal) => {
-                    const isActive = plan.activeGoal?.id === goal.id;
-                    return (
-                      <MenuItem
-                        key={goal.id}
-                        sx={{}}
-                        disabled={isActive}
-                        onClick={() => {
-                          setSelectGoalModalAnchorEl(null);
-                          plan.setActiveGoal(goal.id);
-                        }}
-                      >
-                        <ListItemIcon>
-                          {isActive ? <RadioButtonCheckedIcon /> : <RadioButtonUncheckedIcon />}
-                        </ListItemIcon>
-                        <ListItemText>
-                          <Typography>{goal.title}</Typography>
-                        </ListItemText>
-                      </MenuItem>
-                    );
-                  })}
-
-                  <Divider />
-
-                  <MenuItem
-                    onClick={() => {
-                      window.location.href = `${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}`;
-                    }}
-                  >
-                    <ListItemIcon>
-                      <Plus />
-                    </ListItemIcon>
-                    <ListItemText>
-                      <Typography> {i18n._(`Add new goal`)}</Typography>
-                    </ListItemText>
-                  </MenuItem>
-                </Menu>
-              )}
-            </Stack>
-          </Stack>
-        </Stack>
+            <Settings />
+          </IconButton>
+        )}
       </Stack>
 
-      {plan.nextElement && nextElementId && (
-        <Stack
+      {selectGoalModalAnchorEl && (
+        <Menu
           sx={{
-            paddingBottom: '50px',
-            gap: '0px',
+            marginBottom: '130px',
           }}
+          anchorEl={selectGoalModalAnchorEl}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          keepMounted
+          open={Boolean(selectGoalModalAnchorEl)}
+          onClose={() => setSelectGoalModalAnchorEl(null)}
         >
-          <ActiveLessonCard
-            subTitle={i18n._('Current Lesson')}
+          {languageGoals.map((goal) => {
+            const isActive = plan.activeGoal?.id === goal.id;
+            return (
+              <MenuItem
+                key={goal.id}
+                sx={{}}
+                disabled={isActive}
+                onClick={() => {
+                  setSelectGoalModalAnchorEl(null);
+                  plan.setActiveGoal(goal.id);
+                }}
+              >
+                <ListItemIcon>
+                  {isActive ? <RadioButtonCheckedIcon /> : <RadioButtonUncheckedIcon />}
+                </ListItemIcon>
+                <ListItemText>
+                  <Typography>{goal.title}</Typography>
+                </ListItemText>
+              </MenuItem>
+            );
+          })}
+
+          <Divider />
+
+          <MenuItem
+            onClick={() => {
+              window.location.href = `${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}`;
+            }}
+          >
+            <ListItemIcon>
+              <Plus />
+            </ListItemIcon>
+            <ListItemText>
+              <Typography> {i18n._(`Add new goal`)}</Typography>
+            </ListItemText>
+          </MenuItem>
+        </Menu>
+      )}
+
+      {plan.nextElement && nextElementId && (
+        <Stack sx={{ gap: '10px' }}>
+          <StoreCard
+            badge={''}
+            textColor={'#fff'}
+            backgroundColor={'#0286D0'}
+            borderSize={'0'}
+            previewImageUrl={
+              'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773861934880-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+            }
+            label={i18n._('Current Lesson').toUpperCase()}
             title={plan.nextElement.title}
-            descriptionTop={plan.nextElement.description}
-            descriptionBottom={plan.nextElement.subTitle}
-            actionLabel={i18n._('Start')}
-            aiVideo={getAiVoiceByVoice(settings.userSettings?.teacherVoice || 'shimmer')}
-            onAction={() => plan.openElementModal(nextElementId)}
-            settingsIcon={<SettingsIcon />}
-            onSettingsClick={() => teacherSettings.openSettingsModal()}
+            subTitle={plan.nextElement.description}
+            items={[]}
+            itemsBackgroundColor={'rgba(0, 0, 0, 0.2)'}
+            onClick={() => {
+              plan.openElementModal(nextElementId);
+            }}
+            itemsViewMode={'list'}
           />
         </Stack>
       )}

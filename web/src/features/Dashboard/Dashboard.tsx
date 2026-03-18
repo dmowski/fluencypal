@@ -72,7 +72,7 @@ export function Dashboard({ lang }: DashboardProps) {
             <>
               <Stack
                 sx={{
-                  gap: '50px',
+                  gap: '80px',
                   '@media (max-width:600px)': {
                     padding: '0 10px',
                   },
@@ -80,9 +80,8 @@ export function Dashboard({ lang }: DashboardProps) {
               >
                 <JustTalkCard />
                 <GrammarImprovesCard />
+                <PlanDashboardCards lang={lang} />
               </Stack>
-
-              <PlanDashboardCards lang={lang} />
             </>
           )}
 
