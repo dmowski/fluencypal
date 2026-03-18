@@ -1,4 +1,5 @@
 import { Button, Stack, Typography } from '@mui/material';
+import { DraftingCompass } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -25,6 +26,7 @@ interface StoreCardProps {
   itemsBackgroundColor: string;
   onClick: () => void;
   itemsViewMode: 'list' | 'flow';
+  emptyItemsStateText?: string;
 }
 export const StoreCard = (props: StoreCardProps) => {
   return (
@@ -142,6 +144,22 @@ export const StoreCard = (props: StoreCardProps) => {
           {props.items.map((item, index) => (
             <StoreCardRowItem key={index} data={item} iconBorderRadius="10px" />
           ))}
+        </Stack>
+      )}
+      {!props.items.length && props.emptyItemsStateText && (
+        <Stack
+          sx={{
+            width: '100%',
+            backgroundColor: props.itemsBackgroundColor,
+            position: 'relative',
+            padding: '20px',
+            zIndex: 5,
+            gap: '10px',
+          }}
+        >
+          <Typography variant="body2" color={'#fff'} sx={{ opacity: 0.9 }}>
+            {props.emptyItemsStateText}
+          </Typography>
         </Stack>
       )}
     </Stack>

@@ -214,7 +214,7 @@ ${postfixInstruction}`;
       <SectionHeader
         title={i18n._('Grammar Improvements')}
         subTitle={i18n._(
-          'Based on your recent conversations, here are some tips to improve your grammar',
+          'Personalized explanations and examples to help you understand and improve your grammar.',
         )}
       />
 
@@ -226,15 +226,18 @@ ${postfixInstruction}`;
         previewImageUrl={
           'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773858639762-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
         }
-        label={'JUST TALK MODE'}
-        title={i18n._('Conversation with AI')}
-        subTitle={i18n._(
-          "Start a casual call to practice your communication skills. This is a no-strings-attached conversation if you'd like to chat in a casual setting.",
-        )}
+        label={i18n._('PRACTICE, IMPROVE, REPEAT')}
+        title={i18n._('Enough with speaking? Time to improve!')}
+        subTitle={''}
         items={items}
+        emptyItemsStateText={i18n._(
+          'No grammar mistakes found. Keep practicing to see improvements here!',
+        )}
         itemsBackgroundColor={'#1C1C1E'}
         onClick={() => {
-          //startJustTalk();
+          if (grammarPoints.length > 0) {
+            handleOpenModal(0);
+          }
         }}
         itemsViewMode={'list'}
       />
