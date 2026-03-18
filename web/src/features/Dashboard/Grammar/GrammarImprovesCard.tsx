@@ -17,6 +17,7 @@ import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang
 import { useQuizWordAudio } from '@/features/Audio/useQuizWordAudio';
 import { SectionHeader } from '../CartsHeader';
 import { RowItem, StoreCard } from '@/features/uiKit/Card/StoreCard';
+import dayjs from 'dayjs';
 
 const limitCount = 3;
 
@@ -193,7 +194,7 @@ ${postfixInstruction}`;
 
   grammarPoints.forEach((record, index) => {
     items.push({
-      title: record.createdAtDayIso,
+      title: dayjs(record.createdAtDayIso).format('MMMM D, YYYY'),
       subTitle: record.value.substring(0, 100) + (record.value.length > 100 ? '...' : ''),
       imageUrl:
         'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773858639762-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
