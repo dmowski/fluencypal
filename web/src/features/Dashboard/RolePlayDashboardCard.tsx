@@ -68,7 +68,10 @@ export const RolePlayDashboardCard = () => {
         <SectionHeader
           title={i18n._('Role Play')}
           subTitle={i18n._('Practice Real-Life Conversations With Role-Play Scenarios')}
+          buttonTitle={i18n._('See all')}
+          onButtonClick={() => setIsShowAll(true)}
         />
+
         <StoreCard
           textColor={'#fff'}
           backgroundColor={'rgba(20, 118, 145, 0.8)'}
