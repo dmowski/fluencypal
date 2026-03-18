@@ -204,7 +204,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           <StoreCard
             badge={''}
             textColor={'#fff'}
-            backgroundColor={'#0286D0'}
+            backgroundColor={'#7a02d0'}
             borderSize={'0'}
             previewImageUrl={
               'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773861934880-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
