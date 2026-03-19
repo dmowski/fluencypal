@@ -22,16 +22,18 @@ interface StoreCardProps {
   borderSize?: string;
   previewImageUrl: string;
 
-  label: string;
+  label?: string;
   title: string;
   subTitle?: string;
 
   items: RowItem[];
   itemsBackgroundColor: string;
-  onClick: () => void;
+  onClick?: () => void;
   itemsViewMode: 'list' | 'flow';
   emptyItemsStateText?: string;
+  children?: React.ReactNode;
 }
+
 export const StoreCard = (props: StoreCardProps) => {
   return (
     <Stack
@@ -46,6 +48,31 @@ export const StoreCard = (props: StoreCardProps) => {
         overflow: 'hidden',
       }}
     >
+      {props.badge && (
+        <Stack
+          sx={{
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            zIndex: 10,
+            backgroundColor: props.backgroundColor,
+            padding: '10px 25px 10px 20px',
+            borderRadius: '0 0 28px 0',
+            color: props.textColor,
+          }}
+        >
+          <Typography
+            variant="body2"
+            color={props.textColor}
+            sx={{
+              fontWeight: 500,
+            }}
+          >
+            {props.badge}
+          </Typography>
+        </Stack>
+      )}
+
       <Stack
         sx={{
           boxShadow: props.borderSize
@@ -72,10 +99,10 @@ export const StoreCard = (props: StoreCardProps) => {
           justifyContent: 'flex-end',
           padding: '0px',
           zIndex: 3,
-          cursor: 'pointer',
+          cursor: props.onClick ? 'pointer' : 'default',
         }}
         onClick={() => {
-          props.onClick();
+          props.onClick?.();
         }}
       >
         <Stack
@@ -86,9 +113,11 @@ export const StoreCard = (props: StoreCardProps) => {
             color: props.textColor,
           }}
         >
-          <Typography variant="body2" color={props.textColor}>
-            {props.label}
-          </Typography>
+          {props.label && (
+            <Typography variant="body2" color={props.textColor}>
+              {props.label}
+            </Typography>
+          )}
           <Typography
             variant="h4"
             color={props.textColor}
@@ -170,6 +199,7 @@ export const StoreCard = (props: StoreCardProps) => {
           </Typography>
         </Stack>
       )}
+      {props.children && <Stack>{props.children}</Stack>}
     </Stack>
   );
 };

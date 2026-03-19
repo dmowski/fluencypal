@@ -66,7 +66,13 @@ export const DailyQuestionBadge = () => {
   );
 };
 
-const QuestionSection = ({ question, isOld }: { question: DailyQuestion; isOld: boolean }) => {
+export const QuestionSection = ({
+  question,
+  isOld,
+}: {
+  question: DailyQuestion;
+  isOld: boolean;
+}) => {
   return (
     <Stack>
       <ChatProvider
