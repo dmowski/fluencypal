@@ -1,5 +1,5 @@
 'use client';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import { useChat } from './useChat';
 import { useMemo, useState } from 'react';
 import { useUrlState } from '../Url/useUrlState';
@@ -13,8 +13,6 @@ import { MessageViewsIcon } from './MessageViewsIcon';
 import { ActiveMessageHeaderContainer } from './ActiveMessageHeaderContainer';
 import { ChatReplyModal } from './ChatReplyModal';
 import { ChartSortMode } from './type';
-import { useAccess } from '../Usage/useAccess';
-import { useSettings } from '../Settings/useSettings';
 import { AgeConfirmationChatBlock } from './AgeConfirmation';
 
 export const ChatSection = ({
@@ -38,8 +36,6 @@ export const ChatSection = ({
 }) => {
   const chat = useChat();
   const { i18n } = useLingui();
-  const access = useAccess();
-  const settings = useSettings();
 
   const [activeMessageId, setActiveMessageId] = useUrlState('post', '', true);
   const activeMessage = chat.messages.find((msg) => msg.id === activeMessageId);
@@ -62,8 +58,6 @@ export const ChatSection = ({
     setIsNewPostModalOpen(false);
   };
 
-  const isNeedAgeConfirmation = !access.isAge18PlusConfirmed;
-
   return (
     <Stack
       sx={{
@@ -72,12 +66,7 @@ export const ChatSection = ({
         position: 'relative',
       }}
     >
-      {isNeedAgeConfirmation && (
-        <AgeConfirmationChatBlock
-          onConfirmed={() => settings.confirmAge18Plus()}
-          onRefused={() => window.history.back()}
-        />
-      )}
+      <AgeConfirmationChatBlock />
 
       {isModalOpen && (
         <ChatReplyModal

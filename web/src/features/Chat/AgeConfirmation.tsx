@@ -1,14 +1,25 @@
 import { useLingui } from '@lingui/react';
 import { Stack, Typography, Button } from '@mui/material';
+import { useAccess } from '../Usage/useAccess';
+import { useSettings } from '../Settings/useSettings';
 
-export const AgeConfirmationChatBlock = ({
-  onConfirmed,
-  onRefused,
-}: {
-  onConfirmed: () => void;
-  onRefused: () => void;
-}) => {
+export const AgeConfirmationChatBlock = () => {
   const { i18n } = useLingui();
+  const access = useAccess();
+  const settings = useSettings();
+
+  //access.isAge18PlusConfirmed
+  if (true) {
+    return null;
+  }
+
+  const onConfirmed = () => {
+    settings.confirmAge18Plus();
+  };
+
+  const onRefused = () => {
+    //window.history.back();
+  };
 
   return (
     <Stack
@@ -22,7 +33,7 @@ export const AgeConfirmationChatBlock = ({
         backgroundColor: 'rgba(4, 22, 43, 0.82)',
         border: '1px solid rgba(255, 255, 255, 0.3)',
         backdropFilter: 'blur(5px)',
-        borderRadius: '12px',
+        borderRadius: '16px',
         zIndex: 10,
         alignItems: 'center',
       }}
@@ -67,9 +78,6 @@ export const AgeConfirmationChatBlock = ({
         >
           <Button size="large" variant="contained" color="info" onClick={onConfirmed}>
             {i18n._('Yes, 18+ years old')}
-          </Button>
-          <Button size="large" variant="outlined" color="inherit" onClick={onRefused}>
-            {i18n._('No, take me back')}
           </Button>
         </Stack>
       </Stack>

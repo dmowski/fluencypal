@@ -6,6 +6,7 @@ import { Stack } from '@mui/material';
 import { Message } from './Message/Message';
 import { ShowPreviousMessagesButton } from './ShowPreviousMessagesButton';
 import { SubmitForm } from './SubmitForm';
+import { AgeConfirmationChatBlock } from './AgeConfirmation';
 
 export const FlatChat = ({}: {}) => {
   const chat = useChat();
@@ -33,8 +34,10 @@ export const FlatChat = ({}: {}) => {
       sx={{
         borderRadius: '12px',
         backgroundColor: 'rgba(255, 255, 255, 0.03)',
+        position: 'relative',
       }}
     >
+      <AgeConfirmationChatBlock />
       {isNeedToShowLoadMore && (
         <Stack
           sx={{
