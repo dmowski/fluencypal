@@ -41,6 +41,7 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
           height: '100dvh',
           maxHeight: '100dvh',
           boxSizing: 'border-box',
+          outline: 'none',
         }}
       >
         {onClose && (
