@@ -21,10 +21,6 @@ export const SpaceEditorModal = ({ isOpen, onClose, type, space }: SpaceEditorMo
   const [description, setDescription] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const modalTitle = useMemo(() => {
-    return type === 'create' ? i18n._('Create New Space') : i18n._('Edit Space');
-  }, [i18n, type]);
-
   useEffect(() => {
     if (!isOpen) return;
     setTitle(space?.title || '');
@@ -75,7 +71,7 @@ export const SpaceEditorModal = ({ isOpen, onClose, type, space }: SpaceEditorMo
             fontWeight: 800,
           }}
         >
-          {modalTitle}
+          {type === 'create' ? i18n._('New Space') : i18n._('Edit Community Space')}
         </Typography>
 
         <Stack
