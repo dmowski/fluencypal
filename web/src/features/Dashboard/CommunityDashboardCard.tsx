@@ -5,7 +5,6 @@ import { useLingui } from '@lingui/react';
 import { useAppNavigation } from '../Navigation/useAppNavigation';
 import { DailyQuestionDashboardCard } from './DailyQuestionDashboardCard';
 import { useCommunitySpace } from '../Community/CommunitySpace/useCommunitySpace';
-import { useRouter } from 'next/navigation';
 
 export const CommunityDashboardCard = () => {
   const { i18n } = useLingui();
