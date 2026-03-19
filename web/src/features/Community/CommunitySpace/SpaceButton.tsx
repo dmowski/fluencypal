@@ -7,6 +7,7 @@ import { Badge, IconButton, Stack, Typography } from '@mui/material';
 import { useChat } from '../../Chat/useChat';
 import { useAuth } from '../../Auth/useAuth';
 import { CommunitySpace } from '../types';
+import { RowIcon } from '@/features/uiKit/Card/StoreCard';
 
 export const SpaceButton = ({
   space,
@@ -25,7 +26,7 @@ export const SpaceButton = ({
   const auth = useAuth();
   const unreadCount = chatList.unreadMessagesCount;
   const isCreator = space.createdByUserId === auth.uid;
-
+  const iconImageUrl = space.iconImageUrl;
   return (
     <Stack
       key={space.id}
@@ -34,10 +35,9 @@ export const SpaceButton = ({
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        background: 'rgba(255, 255, 255, 0.01)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        background: 'rgba(255, 255, 255, 0.07)',
         gap: '20px',
-        padding: '0 20px',
+        padding: '0 10px',
         borderRadius: '12px',
         display: 'grid',
         gridTemplateColumns: '1fr max-content',
@@ -58,7 +58,7 @@ export const SpaceButton = ({
           textAlign: 'left',
           width: '100%',
           color: '#fff',
-          padding: '20px 0',
+          padding: '15px 0',
           border: 'none',
           margin: 0,
           backgroundColor: 'transparent',
@@ -72,23 +72,39 @@ export const SpaceButton = ({
           },
         }}
       >
-        <Badge badgeContent={unreadCount} color={isBookmarked ? 'error' : 'primary'} sx={{}}>
-          <Typography
-            variant="h5"
-            component={'span'}
-            sx={{
-              fontWeight: 700,
-              padding: '0 15px 0 0',
-              '@media (max-width: 600px)': {
-                fontSize: '1.1rem',
-              },
-            }}
-          >
-            {space.title}
-          </Typography>
-        </Badge>
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '10px',
+          }}
+        >
+          {iconImageUrl && (
+            <RowIcon size={'50px'} iconBorderRadius={'5px'} imageUrl={iconImageUrl} />
+          )}
+          <Stack>
+            <Badge badgeContent={unreadCount} color={isBookmarked ? 'error' : 'primary'} sx={{}}>
+              <Typography
+                variant="h5"
+                component={'span'}
+                sx={{
+                  fontWeight: 700,
+                  fontSize: '1.25rem',
+                  padding: '0 15px 0 0',
+                  '@media (max-width: 600px)': {
+                    fontSize: '1.1rem',
+                  },
+                }}
+              >
+                {space.title}
+              </Typography>
+            </Badge>
 
-        <Typography sx={{ opacity: 0.9 }}>{space.description}</Typography>
+            <Typography variant="body2" sx={{ opacity: 0.9 }}>
+              {space.description}
+            </Typography>
+          </Stack>
+        </Stack>
       </Stack>
 
       <Stack
