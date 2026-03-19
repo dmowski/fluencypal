@@ -11,29 +11,20 @@ export const CommunityDashboardCard = () => {
   const { i18n } = useLingui();
   const appNavigation = useAppNavigation();
 
-  const { spaces } = useCommunitySpace();
-  const router = useRouter();
-
-  const openCommunity = (spaceId: string) => {
-    const searchParams = new URLSearchParams();
-    searchParams.set('page', 'community');
-    searchParams.set('space', spaceId);
-    router.push(`?${searchParams.toString()}`);
-  };
+  const { spaces, openSpace } = useCommunitySpace();
 
   const items: RowItem[] = spaces.map((space) => {
-    const item: RowItem = {
+    const spaceItem: RowItem = {
       title: space.title,
       subTitle: space.description,
-      onClick: () => {
-        openCommunity(space.id);
-      },
+      onClick: () => openSpace(space.id),
+      imageUrl: space.iconImageUrl || undefined,
       bgColor: 'rgba(155, 58, 190, 0.6)',
       actionButtonTitle: i18n._('Read'),
-      iconName: 'users-round',
+      iconName: space.iconImageUrl ? undefined : 'users-round',
     };
 
-    return item;
+    return spaceItem;
   });
 
   return (

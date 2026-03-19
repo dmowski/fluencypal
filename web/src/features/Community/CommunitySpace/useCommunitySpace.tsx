@@ -6,6 +6,7 @@ import { db } from '../../Firebase/firebaseDb';
 import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { deleteDoc, doc, setDoc } from 'firebase/firestore';
 import { CommunitySpaceSettings } from '../types';
+import { useRouter } from 'next/navigation';
 
 interface SaveSpaceInput {
   id?: string;
@@ -21,6 +22,7 @@ interface CommunitySpaceContext {
   saveSpace: (input: SaveSpaceInput) => Promise<string | null>;
   deleteSpace: (spaceId: string) => Promise<void>;
   toggleBookmark: (spaceId: string) => Promise<void>;
+  openSpace: (spaceId: string) => void;
 }
 
 const CommunitySpaceContext = createContext<CommunitySpaceContext | null>(null);
@@ -36,6 +38,13 @@ const useProvideCommunitySpace = (): CommunitySpaceContext => {
   const spaces = spaceData || [];
 
   const bookmarkedSpaces = spaces.filter((space) => bookmarkedSpacesIds.includes(space.id));
+  const router = useRouter();
+  const openSpace = (spaceId: string) => {
+    const searchParams = new URLSearchParams();
+    searchParams.set('page', 'community');
+    searchParams.set('space', spaceId);
+    router.push(`?${searchParams.toString()}`);
+  };
 
   const saveSpace = async (input: SaveSpaceInput): Promise<string | null> => {
     if (!spacesDocRef || !auth.uid) return null;
@@ -90,6 +99,7 @@ const useProvideCommunitySpace = (): CommunitySpaceContext => {
     saveSpace,
     deleteSpace,
     toggleBookmark,
+    openSpace,
   };
 };
 
