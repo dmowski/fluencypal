@@ -141,14 +141,6 @@ export const CommunityDashboard = () => {
                     />
                   )}
 
-                  {access.canUseCommunity && (
-                    <CommunityCard
-                      title={i18n._('Daily Questions')}
-                      onClick={() => setActivePage('daily-questions')}
-                      icon={<PsychologyIcon style={iconStyle} />}
-                    />
-                  )}
-
                   <CommunityCard
                     title={i18n._('Leaderboards')}
                     onClick={() => setActivePage('leaderboards')}
