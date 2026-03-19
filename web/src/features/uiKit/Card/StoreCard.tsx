@@ -158,6 +158,7 @@ export const StoreCard = (props: StoreCardProps) => {
             src={props.previewImageUrl}
             alt="Preview"
             loading="eager"
+            sizes="(max-width: 600px) 100vw, 50vw"
             fill
             style={{
               objectFit: 'cover',
