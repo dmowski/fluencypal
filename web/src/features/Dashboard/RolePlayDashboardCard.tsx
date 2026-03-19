@@ -20,7 +20,7 @@ export const RolePlayDashboardCard = () => {
       title: scenario.shortTitle,
       subTitle: scenario.title,
       imageUrl: scenario.imageSrc,
-      actionButtonTitle: i18n._('Start'),
+      actionButtonTitle: i18n._('Open'),
       onClick: () => selectScenario(scenario),
     }));
 

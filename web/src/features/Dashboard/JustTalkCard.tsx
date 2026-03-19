@@ -106,7 +106,7 @@ Please allow microphone permission in your browser settings, refresh the page, a
             title: voiceName.charAt(0).toUpperCase() + voiceName.slice(1),
             subTitle: i18n._('Your AI Speech Partner'),
             imageUrl: secondPhotoUrl,
-            actionButtonTitle: i18n._('Start'),
+            actionButtonTitle: i18n._('Open'),
             onClick: () => {
               startJustTalk();
             },
