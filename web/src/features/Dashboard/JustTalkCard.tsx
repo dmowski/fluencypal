@@ -94,7 +94,7 @@ Please allow microphone permission in your browser settings, refresh the page, a
       <SectionHeader title={i18n._('Speaking')} subTitle={footnotePhrase} />
       <StoreCard
         textColor={'#fff'}
-        backgroundColor={'#0286D0'}
+        backgroundColor={'rgba(2, 134, 208, .94)'}
         previewImageUrl={aiAvatar.photoUrls?.[0] || ''}
         label={'JUST TALK MODE'}
         title={i18n._('Conversation with AI')}
