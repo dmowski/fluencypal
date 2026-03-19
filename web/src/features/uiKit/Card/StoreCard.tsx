@@ -114,7 +114,13 @@ export const StoreCard = (props: StoreCardProps) => {
           }}
         >
           {props.label && (
-            <Typography variant="body2" color={props.textColor}>
+            <Typography
+              variant="body2"
+              color={props.textColor}
+              sx={{
+                fontWeight: 500,
+              }}
+            >
               {props.label}
             </Typography>
           )}
@@ -175,12 +181,12 @@ export const StoreCard = (props: StoreCardProps) => {
             width: '100%',
             backgroundColor: props.itemsBackgroundColor,
             position: 'relative',
-            padding: '5px 0',
+            padding: '15px 0 12px 0',
             zIndex: 5,
           }}
         >
           {props.items.map((item, index) => (
-            <StoreCardRowItem key={index} data={item} iconBorderRadius="10px" />
+            <StoreCardRowItem key={index} data={item} iconBorderRadius="12px" />
           ))}
         </Stack>
       )}
@@ -232,22 +238,55 @@ export const StoreCardRowItem = ({
         iconName={data.iconName}
         imageUrl={data.imageUrl}
         bgColor={data.bgColor}
-        size={'50px'}
+        size={'59px'}
+        iconSize="29px"
         iconBorderRadius={iconBorderRadius}
       />
       <Stack>
-        <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            fontWeight: 500,
+            lineHeight: '18px',
+            //backgroundColor: 'red',
+
+            fontSize: '15px',
+            padding: 0,
+            margin: 0,
+            paddingTop: '2px',
+          }}
+        >
           {data.title}
         </Typography>
         <Typography
-          variant="body2"
+          variant="subtitle1"
           color={'text.secondary'}
           sx={{
-            maxHeight: '18px',
+            fontSize: '13px',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
+
+            wordBreak: 'break-word',
+            whiteSpace: 'nowrap',
             maxWidth: '100%',
-            marginBottom: '6px',
+            opacity: 0.8,
+            //backgroundColor: 'blue',
+            width: '420px',
+            '@media (max-width: 700px)': {
+              width: '300px',
+            },
+
+            '@media (max-width: 550px)': {
+              width: '200px',
+            },
+            '@media (max-width: 450px)': {
+              width: '120px',
+            },
+            '@media (max-width: 350px)': {
+              width: '100%',
+              whiteSpace: 'normal',
+              height: '21px',
+            },
           }}
         >
           {data.subTitle}
@@ -295,12 +334,14 @@ export const RowIcon = ({
   bgColor,
   size,
   iconBorderRadius,
+  iconSize,
 }: {
   iconName?: IconName;
   bgColor?: string;
   imageUrl?: string;
   size: string;
   iconBorderRadius: string;
+  iconSize?: string;
 }) => {
   return (
     <Stack
@@ -321,14 +362,14 @@ export const RowIcon = ({
           inset: 0,
           zIndex: 2,
           borderRadius: iconBorderRadius,
-          boxShadow: 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1)',
+          boxShadow: 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2)',
         },
       }}
     >
       {iconName && (
         <DynamicIcon
           name={iconName}
-          size={'22px'}
+          size={iconSize || '22px'}
           style={{
             position: 'relative',
             zIndex: 3,
