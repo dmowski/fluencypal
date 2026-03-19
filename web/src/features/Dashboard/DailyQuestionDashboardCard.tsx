@@ -4,11 +4,13 @@ import { dailyQuestions } from '../Game/DailyQuestion/dailyQuestions';
 import { useLingui } from '@lingui/react';
 import { useAccess } from '../Usage/useAccess';
 import { ChatProvider } from '../Chat/useChat';
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { StoreCard } from '../uiKit/Card/StoreCard';
 import { FlatChat } from '../Chat/FlatChat';
 import { SectionHeader } from './CartsHeader';
-import { useRouter } from 'next/navigation';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { DailyQuestionBadge } from '../Game/DailyQuestion/DailyQuestionBadge';
+import { useUrlState } from '../Url/useUrlState';
 
 export const DailyQuestionDashboardCard = () => {
   const settings = useSettings();
@@ -19,13 +21,10 @@ export const DailyQuestionDashboardCard = () => {
 
   const todaysQuestion = dailyQuestions[questionsKeys[questionIndex]];
   const { i18n } = useLingui();
-  const router = useRouter();
+  const [isShowAll, setIsShowAll] = useUrlState('dailyQuestions', false, false);
 
   const openAll = () => {
-    const searchParams = new URLSearchParams();
-    searchParams.set('page', 'community');
-    searchParams.set('section', 'daily-questions');
-    router.push(`?${searchParams.toString()}`);
+    setIsShowAll(true);
   };
 
   const access = useAccess();
@@ -40,6 +39,40 @@ export const DailyQuestionDashboardCard = () => {
         gap: '20px',
       }}
     >
+      {isShowAll && (
+        <CustomModal isOpen={true} onClose={() => setIsShowAll(false)}>
+          <Stack
+            sx={{
+              maxWidth: '700px',
+              padding: '0 10px',
+              gap: '30px',
+              width: '100%',
+            }}
+          >
+            <Stack>
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: 800,
+                }}
+              >
+                {i18n._('Daily Questions')}
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: 'text.secondary',
+                }}
+              >
+                {i18n._('Answer a new question every day and see how your style improves!')}
+              </Typography>
+            </Stack>
+
+            <DailyQuestionBadge />
+          </Stack>
+        </CustomModal>
+      )}
+
       <SectionHeader
         title={i18n._('Daily Question')}
         subTitle={i18n._('Answer a new question every day and see how your style improves!')}

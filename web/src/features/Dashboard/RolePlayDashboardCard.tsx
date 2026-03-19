@@ -3,15 +3,15 @@ import { RowItem, StoreCard } from '../uiKit/Card/StoreCard';
 import { SectionHeader } from './CartsHeader';
 import { useLingui } from '@lingui/react';
 import { useRolePlay } from '../RolePlay/useRolePlay';
-import { useState } from 'react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { RolePlayBoard } from '../RolePlay/RolePlayBoard';
+import { useUrlState } from '../Url/useUrlState';
 
 export const RolePlayDashboardCard = () => {
   const { i18n } = useLingui();
   const { visibleScenarios, selectScenario } = useRolePlay();
 
-  const [isShowAll, setIsShowAll] = useState(false);
+  const [isShowAll, setIsShowAll] = useUrlState('rolePlayScenarios', false, false);
 
   const items: RowItem[] = visibleScenarios
     .filter((s, index) => index < 4)
@@ -83,7 +83,7 @@ export const RolePlayDashboardCard = () => {
           items={items}
           itemsBackgroundColor={'rgba(32, 32, 32, 0.98)'}
           onClick={() => {
-            setIsShowAll((prev) => !prev);
+            setIsShowAll(true);
           }}
           itemsViewMode={'list'}
         />

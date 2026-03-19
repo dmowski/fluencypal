@@ -9,6 +9,7 @@ import { DailyQuestion } from './types';
 import { PageContainer } from '@/features/Community/PageContainer';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useAccess } from '@/features/Usage/useAccess';
+import { FlatChat } from '@/features/Chat/FlatChat';
 
 export const DailyQuestionBadge = () => {
   const settings = useSettings();
@@ -241,12 +242,7 @@ export const DailyQuestionBadgeComponent = ({
             </Stack>
           )}
 
-          <ChatSection
-            placeholder={i18n._('What do you think?')}
-            titleContent={<Stack>{content}</Stack>}
-            contextForAiAnalysis={todaysQuestion.title + '. ' + todaysQuestion.description}
-            addNewPostButtonText={i18n._('Add Response')}
-          />
+          <FlatChat />
         </Stack>
       </Stack>
     </Stack>
