@@ -1215,11 +1215,6 @@ msgstr "Дадаць гульца"
 msgid "Add Post"
 msgstr "Дадаць паст"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
-#. js-lingui-explicit-id
-msgid "Add Response"
-msgstr "Дадаць Адказ"
-
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1326,7 +1321,7 @@ msgstr ""
 "хвілін, звяжыцеся з падтрымкай праз чат вышэй. Мы дапаможам вам як мага "
 "хутчэй і ўпэўнімся, што вы атрымаеце доступ, за які заплацілі."
 
-#: src/features/Chat/AgeConfirmation.tsx:46
+#: src/features/Chat/AgeConfirmation.tsx:57
 #. js-lingui-explicit-id
 msgid "Age Confirmation Required"
 msgstr "Патрабуецца пацвярджэнне ўзросту"
@@ -1756,7 +1751,8 @@ msgstr ""
 "І я пачынаю бачыць, дзе можа ляжаць значная рызыка: у ціхім моманце, калі "
 "сумненні знікаюць."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:45
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:67
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:78
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr ""
@@ -1964,7 +1960,7 @@ msgstr ""
 #: src/features/Alias/components/PlayersSetup.tsx:308
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:159
-#: src/features/Chat/ChatSection.tsx:100
+#: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:47
 #. js-lingui-explicit-id
 msgid "Back"
@@ -2722,7 +2718,7 @@ msgstr "Супольнасць Hub"
 msgid "Community messages:"
 msgstr "Паведамленні супольнасці:"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:232
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:233
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "Адказы супольнасці:"
@@ -3248,7 +3244,7 @@ msgstr "Шкодныя моўныя практыкі"
 msgid "Daily Limits?"
 msgstr "Штодзённыя абмежаванні?"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:44
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:77
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Штодзённае пытанне"
@@ -3261,6 +3257,7 @@ msgstr "Штодзённая дыскусія па пытаннях"
 
 #: src/features/Community/CommunityDashboard.tsx:146
 #: src/features/Community/CommunityPage.tsx:31
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:59
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "Штодзённыя пытанні"
@@ -8192,6 +8189,7 @@ msgstr "Загрузка.."
 #: src/features/Conversation/ConversationReviewModal.tsx:131
 #: src/features/Conversation/ConversationReviewModal.tsx:146
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:83
@@ -8825,7 +8823,7 @@ msgstr "Пакуль няма правільных слоў."
 msgid "No corrections yet"
 msgstr "Пакуль няма правак"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:36
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:37
 #. js-lingui-explicit-id
 msgid "No daily question for today"
 msgstr "Сёння няма штодзённага пытання"
@@ -8847,7 +8845,7 @@ msgstr ""
 msgid "No interviews found"
 msgstr "Интэрв'ю не знойдзеныя"
 
-#: src/features/Chat/FlatChat.tsx:63
+#: src/features/Chat/FlatChat.tsx:66
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "Яшчэ няма паведамленняў"
@@ -8928,11 +8926,6 @@ msgstr "Яшчэ няма праглядаў. Станьце першым, хт�
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Ніякіх слоў пакуль не выкарыстана"
-
-#: src/features/Chat/AgeConfirmation.tsx:72
-#. js-lingui-explicit-id
-msgid "No, take me back"
-msgstr "Не, вярні мяне назад"
 
 #: src/features/Usage/Subscription/FaqSubscription.tsx:28
 #. js-lingui-explicit-id
@@ -9173,8 +9166,11 @@ msgstr "Практыка анлайн мовы"
 msgid "Oops! Something went wrong"
 msgstr "Ой! Нешта пайшло не так"
 
+#: src/features/Dashboard/CommunityDashboardCard.tsx:22
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:251
+#: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:247
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:23
 #: src/features/Landing/Price/PricePage.tsx:206
 #: src/features/Sentence/Stories.tsx:265
 #. js-lingui-explicit-id
@@ -9546,7 +9542,7 @@ msgstr "Абярыце ўзровень, каб пачаць гуляць!"
 msgid "Pick one or more categories to build your word list."
 msgstr "Выберыце адну або некалькі катэгорый для стварэння свайго спісу слоў."
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:126
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:87
 #. js-lingui-explicit-id
 msgid "Pick words to build the sentence"
 msgstr "Выберыце словы для складання сказа"
@@ -9577,7 +9573,7 @@ msgstr "Гуляйце ў Alias у аўтаномным рэжыме з сябр
 msgid "Play and Learn"
 msgstr "Гуляй і вучыся"
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:164
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:171
 #. js-lingui-explicit-id
 msgid "Play full example"
 msgstr "Прагарніце поўны прыклад"
@@ -9723,7 +9719,7 @@ msgstr "Калі ласка, выберыце сапраўдны відэафа�
 msgid "Please select at least one category."
 msgstr "Выберыце, калі ласка, як мінімум адну катэгорыю."
 
-#: src/features/Chat/ChatSection.tsx:58
+#: src/features/Chat/ChatSection.tsx:54
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Калі ласка, спыніце запіс перад закрыццём акна."
@@ -10247,7 +10243,7 @@ msgstr "Падрыхтоўка вашай гульні..."
 msgid "Previous"
 msgstr "Папярэдні"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:201
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
 #. js-lingui-explicit-id
 msgid "Previous Question"
 msgstr "Папярэдняе пытанне"
@@ -10412,7 +10408,7 @@ msgid "Purchase 5 hours"
 msgstr "Набыць 5 гадзін"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:66
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:99
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "Пытанне"
@@ -10498,11 +10494,6 @@ msgid ""
 msgstr ""
 "React, Vue, або Angular спецыялісты, якія сутыкаюцца з раўндамі архітэктуры "
 "і дызайну сістэм"
-
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
-#. js-lingui-explicit-id
-msgid "Read"
-msgstr "Чытаць"
 
 #: src/features/Blog/ListBlogIntro.tsx:67
 #. js-lingui-explicit-id
@@ -10774,7 +10765,7 @@ msgstr "Запісаць яшчэ"
 msgid "Record your description"
 msgstr "Запішыце свой апісанне"
 
-#: src/features/Chat/FlatChat.tsx:80
+#: src/features/Chat/FlatChat.tsx:83
 #. js-lingui-explicit-id
 msgid "Record your message"
 msgstr "Запішыце сваё паведамленне"
@@ -11160,15 +11151,15 @@ msgstr "Скрынінгавае інтэрв'ю з AI-рэкрутарам"
 msgid "Second Place"
 msgstr "Другое месца"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:46
-#. js-lingui-explicit-id
-msgid "See All"
-msgstr "Паказаць Усё"
-
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "See all"
 msgstr "Паглядзець усё"
+
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:79
+#. js-lingui-explicit-id
+msgid "See All"
+msgstr "Паказаць Усё"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
@@ -11676,7 +11667,7 @@ msgstr ""
 "можаце набыць кароткатэрміновы перыяд, каб паспрабаваць гэтае прыкладанне і "
 "вырашыць, ці адпавядае яно вашым патрэбам."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:38
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:39
 #. js-lingui-explicit-id
 msgid ""
 "Sorry, there is no daily question available for today. Please check back "
@@ -11743,8 +11734,6 @@ msgid "Stars"
 msgstr "Зоркі"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/JustTalkCard.tsx:109
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:23
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:475
@@ -12655,7 +12644,7 @@ msgstr "Гэта дзеянне незваротнае."
 msgid "This approach shows self-awareness and growth."
 msgstr "Гэты падыход паказвае самасвядомасць і рост."
 
-#: src/features/Chat/AgeConfirmation.tsx:54
+#: src/features/Chat/AgeConfirmation.tsx:65
 #. js-lingui-explicit-id
 msgid ""
 "This content may contain material that is not suitable for all ages. Please "
@@ -13064,12 +13053,12 @@ msgstr ""
 "тым выпадку, калі вы ўключыце зваротную сувязь праз вэб-камеру. Устаноўка "
 "не патрабуецца."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:63
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "Сёння"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:201
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "Сённяшняе Пытанне"
@@ -13939,11 +13928,6 @@ msgstr "Што я атрымліваю з платным планам?"
 msgid "What do I need to use FluencyPal?"
 msgstr "Што мне трэба, каб выкарыстоўваць FluencyPal?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
-#. js-lingui-explicit-id
-msgid "What do you think?"
-msgstr "Што вы думаеце?"
-
 #: src/features/Landing/LandingPage.tsx:34
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
@@ -14286,7 +14270,7 @@ msgstr "Год"
 msgid "year"
 msgstr "год"
 
-#: src/features/Chat/AgeConfirmation.tsx:69
+#: src/features/Chat/AgeConfirmation.tsx:80
 #. js-lingui-explicit-id
 msgid "Yes, 18+ years old"
 msgstr "Так, 18+ гадоў"
@@ -14517,7 +14501,7 @@ msgstr "Вы можаце выдаліць свае персанальныя д�
 msgid "You can discuss the battle here."
 msgstr "Вы можаце абмеркаваць бітву тут."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:239
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:240
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "Вы можаце абмеркаваць штодзённае пытанне тут."
@@ -14939,3 +14923,23 @@ msgid ""
 msgstr ""
 "— важна заняцца гэтай кароткай размовай, перш чым прыступіць да прафесійных "
 "тэм. Вось некаторыя карысныя англійскія фразы для пачатку інтэрв'ю:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
+#. js-lingui-explicit-id
+#~ msgid "Add Response"
+#~ msgstr "Дадаць Адказ"
+
+#: src/features/Chat/AgeConfirmation.tsx:72
+#. js-lingui-explicit-id
+#~ msgid "No, take me back"
+#~ msgstr "Не, вярні мяне назад"
+
+#: src/features/Dashboard/CommunityDashboardCard.tsx:22
+#. js-lingui-explicit-id
+#~ msgid "Read"
+#~ msgstr "Чытаць"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
+#. js-lingui-explicit-id
+#~ msgid "What do you think?"
+#~ msgstr "Што вы думаеце?"

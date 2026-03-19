@@ -94,7 +94,7 @@ Please allow microphone permission in your browser settings, refresh the page, a
       <SectionHeader title={i18n._('Speaking')} subTitle={footnotePhrase} />
       <StoreCard
         textColor={'#fff'}
-        backgroundColor={'rgba(2, 134, 208, .94)'}
+        backgroundColor={isCallStarting ? 'rgba(2, 134, 208, .54)' : 'rgba(2, 134, 208, .94)'}
         previewImageUrl={aiAvatar.photoUrls?.[0] || ''}
         label={'JUST TALK MODE'}
         title={i18n._('Conversation with AI')}
@@ -106,7 +106,7 @@ Please allow microphone permission in your browser settings, refresh the page, a
             title: voiceName.charAt(0).toUpperCase() + voiceName.slice(1),
             subTitle: i18n._('Your AI Speech Partner'),
             imageUrl: secondPhotoUrl,
-            actionButtonTitle: i18n._('Open'),
+            actionButtonTitle: isCallStarting ? i18n._('Loading...') : i18n._('Open'),
             onClick: () => {
               startJustTalk();
             },

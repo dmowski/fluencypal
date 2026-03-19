@@ -1133,11 +1133,6 @@ msgstr "プレイヤーを追加"
 msgid "Add Post"
 msgstr "投稿を追加"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
-#. js-lingui-explicit-id
-msgid "Add Response"
-msgstr "レスポンスを追加"
-
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1235,7 +1230,7 @@ msgstr ""
 "分経ってもまだアクセスできない場合は、上記のチャットを通じてサポートに連絡してください。できるだけ早くお手伝いし、お支払い済みのアクセス権を確実に受け取"
 "れるようにいたします。"
 
-#: src/features/Chat/AgeConfirmation.tsx:46
+#: src/features/Chat/AgeConfirmation.tsx:57
 #. js-lingui-explicit-id
 msgid "Age Confirmation Required"
 msgstr "年齢確認が必要です"
@@ -1650,7 +1645,8 @@ msgstr ""
 "\n"
 "そして私は、かなりのリスクが潜んでいる場所を見始めています：疑念が消える静かな一瞬に。"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:45
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:67
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:78
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "毎日新しい質問に答えて、自分のスタイルがどのように向上するかを見てみましょう！"
@@ -1848,7 +1844,7 @@ msgstr "これらのミスを避けることで、よりプロフェッショナ
 #: src/features/Alias/components/PlayersSetup.tsx:308
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:159
-#: src/features/Chat/ChatSection.tsx:100
+#: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:47
 #. js-lingui-explicit-id
 msgid "Back"
@@ -2571,7 +2567,7 @@ msgstr "コミュニティハブ"
 msgid "Community messages:"
 msgstr "コミュニティメッセージ:"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:232
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:233
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "コミュニティの回答:"
@@ -3074,7 +3070,7 @@ msgstr "毎日の言語練習"
 msgid "Daily Limits?"
 msgstr "デイリーリミット？"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:44
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:77
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "毎日の質問"
@@ -3087,6 +3083,7 @@ msgstr "デイリークエスチョンチャット"
 
 #: src/features/Community/CommunityDashboard.tsx:146
 #: src/features/Community/CommunityPage.tsx:31
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:59
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "デイリークエスチョン"
@@ -7586,6 +7583,7 @@ msgstr "読み込み中.."
 #: src/features/Conversation/ConversationReviewModal.tsx:131
 #: src/features/Conversation/ConversationReviewModal.tsx:146
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:83
@@ -8190,7 +8188,7 @@ msgstr "まだ正しい単語はありません。"
 msgid "No corrections yet"
 msgstr "まだ訂正はありません"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:36
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:37
 #. js-lingui-explicit-id
 msgid "No daily question for today"
 msgstr "今日のデイリークエスチョンはありません"
@@ -8210,7 +8208,7 @@ msgstr "文法の間違いは見つかりませんでした。ここでの改善
 msgid "No interviews found"
 msgstr "該当するインタビューが見つかりませんでした"
 
-#: src/features/Chat/FlatChat.tsx:63
+#: src/features/Chat/FlatChat.tsx:66
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "まだメッセージはありません"
@@ -8289,11 +8287,6 @@ msgstr "まだ閲覧されていません。この投稿を最初に閲覧する
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "まだ使用されている単語はありません"
-
-#: src/features/Chat/AgeConfirmation.tsx:72
-#. js-lingui-explicit-id
-msgid "No, take me back"
-msgstr "いや、戻して"
 
 #: src/features/Usage/Subscription/FaqSubscription.tsx:28
 #. js-lingui-explicit-id
@@ -8509,8 +8502,11 @@ msgstr "オンライン言語練習"
 msgid "Oops! Something went wrong"
 msgstr "おっと！何かが間違っています"
 
+#: src/features/Dashboard/CommunityDashboardCard.tsx:22
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:251
+#: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:247
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:23
 #: src/features/Landing/Price/PricePage.tsx:206
 #: src/features/Sentence/Stories.tsx:265
 #. js-lingui-explicit-id
@@ -8861,7 +8857,7 @@ msgstr "プレイ開始のレベルを選んでください！"
 msgid "Pick one or more categories to build your word list."
 msgstr "一つ以上のカテゴリーを選んで、単語リストを作成しましょう。"
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:126
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:87
 #. js-lingui-explicit-id
 msgid "Pick words to build the sentence"
 msgstr "文を組み立てるための単語を選ぶ"
@@ -8892,7 +8888,7 @@ msgstr "友達とオフラインでAliasをプレイ"
 msgid "Play and Learn"
 msgstr "プレイと学習"
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:164
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:171
 #. js-lingui-explicit-id
 msgid "Play full example"
 msgstr "完全な例を再生"
@@ -9034,7 +9030,7 @@ msgstr "有効なビデオファイルを選択してください (MP4, WebM, �
 msgid "Please select at least one category."
 msgstr "少なくとも1つのカテゴリーを選択してください。"
 
-#: src/features/Chat/ChatSection.tsx:58
+#: src/features/Chat/ChatSection.tsx:54
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "ウィンドウを閉じる前に録音を停止してください。"
@@ -9499,7 +9495,7 @@ msgstr "ゲームの準備中..."
 msgid "Previous"
 msgstr "前へ"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:201
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
 #. js-lingui-explicit-id
 msgid "Previous Question"
 msgstr "前の質問"
@@ -9666,7 +9662,7 @@ msgid "Purchase 5 hours"
 msgstr "5時間 購入"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:66
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:99
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "質問"
@@ -9752,11 +9748,6 @@ msgid ""
 "React, Vue, or Angular specialists facing architecture and system design "
 "rounds"
 msgstr "React、Vue、またはAngularの専門家がアーキテクチャおよびシステム設計ラウンドに直面する場合"
-
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
-#. js-lingui-explicit-id
-msgid "Read"
-msgstr "読む"
 
 #: src/features/Blog/ListBlogIntro.tsx:67
 #. js-lingui-explicit-id
@@ -10010,7 +10001,7 @@ msgstr "録音を続ける"
 msgid "Record your description"
 msgstr "あなたの説明を録音してください"
 
-#: src/features/Chat/FlatChat.tsx:80
+#: src/features/Chat/FlatChat.tsx:83
 #. js-lingui-explicit-id
 msgid "Record your message"
 msgstr "メッセージを録音する"
@@ -10387,15 +10378,15 @@ msgstr "AIリクルーターとのスクリーニングインタビュー"
 msgid "Second Place"
 msgstr "セカンドプレース"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:46
-#. js-lingui-explicit-id
-msgid "See All"
-msgstr "すべてを見る"
-
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "See all"
 msgstr "すべて表示"
+
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:79
+#. js-lingui-explicit-id
+msgid "See All"
+msgstr "すべてを見る"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
@@ -10875,7 +10866,7 @@ msgstr ""
 "申し訳ございませんが、AIには費用がかかります… 残念ながら… "
 "しかし、短期利用期間を購入してアプリを試用し、自分のニーズに合っているかどうかを確認することができます。"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:38
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:39
 #. js-lingui-explicit-id
 msgid ""
 "Sorry, there is no daily question available for today. Please check back "
@@ -10940,8 +10931,6 @@ msgid "Stars"
 msgstr "スターズ"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/JustTalkCard.tsx:109
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:23
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:475
@@ -11792,7 +11781,7 @@ msgstr "この操作は元に戻せません。"
 msgid "This approach shows self-awareness and growth."
 msgstr "このアプローチは自己認識と成長を示しています。"
 
-#: src/features/Chat/AgeConfirmation.tsx:54
+#: src/features/Chat/AgeConfirmation.tsx:65
 #. js-lingui-explicit-id
 msgid ""
 "This content may contain material that is not suitable for all ages. Please "
@@ -12182,12 +12171,12 @@ msgstr ""
 "FluencyPalを使用するには、最新のインターネットブラウザとマイクが必要です。ウェブカメラはオプションで、ウェブカメラフィードバックを有効にした場"
 "合のみ使用されます。インストールは不要です。"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:63
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "今日"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:201
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "本日の質問"
@@ -13027,11 +13016,6 @@ msgstr "有料プランで何が得られますか？"
 msgid "What do I need to use FluencyPal?"
 msgstr "FluencyPalを利用するには何が必要ですか?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
-#. js-lingui-explicit-id
-msgid "What do you think?"
-msgstr "何を考えていますか？"
-
 #: src/features/Landing/LandingPage.tsx:34
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
@@ -13363,7 +13347,7 @@ msgstr "年"
 msgid "year"
 msgstr "年"
 
-#: src/features/Chat/AgeConfirmation.tsx:69
+#: src/features/Chat/AgeConfirmation.tsx:80
 #. js-lingui-explicit-id
 msgid "Yes, 18+ years old"
 msgstr "はい、18歳以上"
@@ -13558,7 +13542,7 @@ msgstr "個人データはいつでも削除できます"
 msgid "You can discuss the battle here."
 msgstr "ここで戦いについて話し合うことができます。"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:239
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:240
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "日々の質問をここで議論できます。"
@@ -13953,3 +13937,23 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
+#. js-lingui-explicit-id
+#~ msgid "Add Response"
+#~ msgstr "レスポンスを追加"
+
+#: src/features/Chat/AgeConfirmation.tsx:72
+#. js-lingui-explicit-id
+#~ msgid "No, take me back"
+#~ msgstr "いや、戻して"
+
+#: src/features/Dashboard/CommunityDashboardCard.tsx:22
+#. js-lingui-explicit-id
+#~ msgid "Read"
+#~ msgstr "読む"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
+#. js-lingui-explicit-id
+#~ msgid "What do you think?"
+#~ msgstr "何を考えていますか？"

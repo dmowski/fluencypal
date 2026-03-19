@@ -1210,11 +1210,6 @@ msgstr "เพิ่มผู้เล่น"
 msgid "Add Post"
 msgstr "เพิ่มโพสต์"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
-#. js-lingui-explicit-id
-msgid "Add Response"
-msgstr "เพิ่มคำตอบ"
-
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1320,7 +1315,7 @@ msgstr ""
 "เราจะช่วยเหลือคุณโดยเร็วที่สุดและทำให้แน่ใจว่าคุณได้รับสิทธิ์การเข้าถึงที่คุ"
 "ณชำระเงินไปแล้ว"
 
-#: src/features/Chat/AgeConfirmation.tsx:46
+#: src/features/Chat/AgeConfirmation.tsx:57
 #. js-lingui-explicit-id
 msgid "Age Confirmation Required"
 msgstr "ยืนยันอายุ"
@@ -1749,7 +1744,8 @@ msgstr ""
 "และฉันเริ่มมองเห็นว่าอันตรายอย่างมีนัยยะอาจอยู่ตรงไหน: ในขณะเงียบๆ "
 "ที่ความสงสัยได้หายไป"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:45
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:67
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:78
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "ตอบคำถามใหม่ทุกวันและดูว่ารูปแบบของคุณพัฒนาขึ้นอย่างไร!"
@@ -1957,7 +1953,7 @@ msgstr ""
 #: src/features/Alias/components/PlayersSetup.tsx:308
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:159
-#: src/features/Chat/ChatSection.tsx:100
+#: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:47
 #. js-lingui-explicit-id
 msgid "Back"
@@ -2705,7 +2701,7 @@ msgstr "ฮับชุมชน"
 msgid "Community messages:"
 msgstr "ข้อความจากชุมชน:"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:232
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:233
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "การตอบสนองของชุมชน:"
@@ -3232,7 +3228,7 @@ msgstr "การฝึกภาษาประจำวัน"
 msgid "Daily Limits?"
 msgstr "ขีดจำกัดรายวัน?"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:44
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:77
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "คำถามประจำวัน"
@@ -3245,6 +3241,7 @@ msgstr "แชทถามตอบประจำวัน"
 
 #: src/features/Community/CommunityDashboard.tsx:146
 #: src/features/Community/CommunityPage.tsx:31
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:59
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "คำถามประจำวัน"
@@ -8140,6 +8137,7 @@ msgstr "กำลังโหลด.."
 #: src/features/Conversation/ConversationReviewModal.tsx:131
 #: src/features/Conversation/ConversationReviewModal.tsx:146
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:83
@@ -8768,7 +8766,7 @@ msgstr "ยังไม่มีคำที่ถูกต้องเลย."
 msgid "No corrections yet"
 msgstr "ยังไม่มีการแก้ไข"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:36
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:37
 #. js-lingui-explicit-id
 msgid "No daily question for today"
 msgstr "ไม่มีคำถามประจำวันสำหรับวันนี้"
@@ -8788,7 +8786,7 @@ msgstr "ไม่มีข้อผิดพลาดทางไวยากร
 msgid "No interviews found"
 msgstr "ไม่พบการสัมภาษณ์"
 
-#: src/features/Chat/FlatChat.tsx:63
+#: src/features/Chat/FlatChat.tsx:66
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "ยังไม่มีข้อความ"
@@ -8869,11 +8867,6 @@ msgstr "ยังไม่มีใครเข้าชม มาเป็น�
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "ยังไม่มีคำใดๆ ถูกใช้งานเลย"
-
-#: src/features/Chat/AgeConfirmation.tsx:72
-#. js-lingui-explicit-id
-msgid "No, take me back"
-msgstr "ไม่ พาฉันกลับ"
 
 #: src/features/Usage/Subscription/FaqSubscription.tsx:28
 #. js-lingui-explicit-id
@@ -9113,8 +9106,11 @@ msgstr "การฝึกภาษาทางออนไลน์"
 msgid "Oops! Something went wrong"
 msgstr "โอ๊ะ! มีบางอย่างผิดพลาด"
 
+#: src/features/Dashboard/CommunityDashboardCard.tsx:22
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:251
+#: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:247
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:23
 #: src/features/Landing/Price/PricePage.tsx:206
 #: src/features/Sentence/Stories.tsx:265
 #. js-lingui-explicit-id
@@ -9482,7 +9478,7 @@ msgstr "เลือกระดับเพื่อเริ่มเล่น
 msgid "Pick one or more categories to build your word list."
 msgstr "เลือกหนึ่งหมวดหมู่หรือมากกว่านั้นเพื่อสร้างรายการคำของคุณ"
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:126
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:87
 #. js-lingui-explicit-id
 msgid "Pick words to build the sentence"
 msgstr "เลือกคำเพื่อสร้างประโยค"
@@ -9513,7 +9509,7 @@ msgstr "เล่น Alias แบบออฟไลน์กับเพื่�
 msgid "Play and Learn"
 msgstr "เล่นและเรียนรู้"
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:164
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:171
 #. js-lingui-explicit-id
 msgid "Play full example"
 msgstr "เล่นตัวอย่างเต็ม"
@@ -9655,7 +9651,7 @@ msgstr "โปรดเลือกไฟล์วิดีโอที่ถู
 msgid "Please select at least one category."
 msgstr "โปรดเลือกหมวดหมู่อย่างน้อยหนึ่งหมวดหมู่"
 
-#: src/features/Chat/ChatSection.tsx:58
+#: src/features/Chat/ChatSection.tsx:54
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "โปรดหยุดการบันทึกก่อนที่จะปิดหน้าต่าง"
@@ -10164,7 +10160,7 @@ msgstr "กำลังเตรียมเกมของคุณ..."
 msgid "Previous"
 msgstr "ก่อนหน้านี้"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:201
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
 #. js-lingui-explicit-id
 msgid "Previous Question"
 msgstr "คำถามก่อนหน้า"
@@ -10327,7 +10323,7 @@ msgid "Purchase 5 hours"
 msgstr "สั่งซื้อ 5 ชั่วโมง"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:66
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:99
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "คำถาม"
@@ -10415,11 +10411,6 @@ msgid ""
 msgstr ""
 "ผู้เชี่ยวชาญด้าน React, Vue หรือ Angular "
 "ที่ต้องเผชิญกับรอบการออกแบบสถาปัตยกรรมและระบบ"
-
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
-#. js-lingui-explicit-id
-msgid "Read"
-msgstr "อ่าน"
 
 #: src/features/Blog/ListBlogIntro.tsx:67
 #. js-lingui-explicit-id
@@ -10681,7 +10672,7 @@ msgstr "บันทึกเพิ่มเติม"
 msgid "Record your description"
 msgstr "บันทึกคำอธิบายของคุณ"
 
-#: src/features/Chat/FlatChat.tsx:80
+#: src/features/Chat/FlatChat.tsx:83
 #. js-lingui-explicit-id
 msgid "Record your message"
 msgstr "บันทึกข้อความของคุณ"
@@ -11069,14 +11060,14 @@ msgstr "การสัมภาษณ์คัดกรองกับผู้
 msgid "Second Place"
 msgstr "อันดับที่สอง"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:46
-#. js-lingui-explicit-id
-msgid "See All"
-msgstr "ดูทั้งหมด"
-
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "See all"
+msgstr "ดูทั้งหมด"
+
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:79
+#. js-lingui-explicit-id
+msgid "See All"
 msgstr "ดูทั้งหมด"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:55
@@ -11575,7 +11566,7 @@ msgstr ""
 "แต่คุณสามารถซื้อช่วงเวลาสั้น ๆ "
 "เพื่อทดลองใช้แอปและตัดสินใจว่ามันเหมาะกับคุณหรือไม่"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:38
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:39
 #. js-lingui-explicit-id
 msgid ""
 "Sorry, there is no daily question available for today. Please check back "
@@ -11640,8 +11631,6 @@ msgid "Stars"
 msgstr "ดาว"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/JustTalkCard.tsx:109
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:23
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:475
@@ -12546,7 +12535,7 @@ msgstr "การดำเนินการนี้ไม่สามารถ
 msgid "This approach shows self-awareness and growth."
 msgstr "วิธีนี้แสดงถึงการรู้ตัวและการเติบโต"
 
-#: src/features/Chat/AgeConfirmation.tsx:54
+#: src/features/Chat/AgeConfirmation.tsx:65
 #. js-lingui-explicit-id
 msgid ""
 "This content may contain material that is not suitable for all ages. Please "
@@ -12953,12 +12942,12 @@ msgstr ""
 "กล้องเว็บแคมเป็นอุปกรณ์เสริมที่ใช้เฉพาะเมื่อคุณเปิดใช้งานการตอบกลับด้วยเว็บแ"
 "คม ไม่จำเป็นต้องติดตั้ง"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:63
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "วันนี้"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:201
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "คำถามของวันนี้"
@@ -13820,11 +13809,6 @@ msgstr "ฉันจะได้รับอะไรจากแผนการ
 msgid "What do I need to use FluencyPal?"
 msgstr "ฉันต้องใช้อะไรบ้างในการใช้ FluencyPal?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
-#. js-lingui-explicit-id
-msgid "What do you think?"
-msgstr "คุณคิดว่าอย่างไร?"
-
 #: src/features/Landing/LandingPage.tsx:34
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
@@ -14167,7 +14151,7 @@ msgstr "ปี"
 msgid "year"
 msgstr "ปี"
 
-#: src/features/Chat/AgeConfirmation.tsx:69
+#: src/features/Chat/AgeConfirmation.tsx:80
 #. js-lingui-explicit-id
 msgid "Yes, 18+ years old"
 msgstr "ใช่, อายุ 18 ปีขึ้นไป"
@@ -14395,7 +14379,7 @@ msgstr "คุณสามารถลบข้อมูลส่วนตัว
 msgid "You can discuss the battle here."
 msgstr "คุณสามารถพูดคุยเกี่ยวกับการรบที่นี่"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:239
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:240
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "คุณสามารถสนทนาเกี่ยวกับคำถามประจำวันได้ที่นี่"
@@ -14820,3 +14804,23 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
+#. js-lingui-explicit-id
+#~ msgid "Add Response"
+#~ msgstr "เพิ่มคำตอบ"
+
+#: src/features/Chat/AgeConfirmation.tsx:72
+#. js-lingui-explicit-id
+#~ msgid "No, take me back"
+#~ msgstr "ไม่ พาฉันกลับ"
+
+#: src/features/Dashboard/CommunityDashboardCard.tsx:22
+#. js-lingui-explicit-id
+#~ msgid "Read"
+#~ msgstr "อ่าน"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
+#. js-lingui-explicit-id
+#~ msgid "What do you think?"
+#~ msgstr "คุณคิดว่าอย่างไร?"

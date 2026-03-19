@@ -1202,11 +1202,6 @@ msgstr "Lägg till spelare"
 msgid "Add Post"
 msgstr "Lägg till inlägg"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
-#. js-lingui-explicit-id
-msgid "Add Response"
-msgstr "Lägg till svar"
-
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1314,7 +1309,7 @@ msgstr ""
 "dig så snart som möjligt och ser till att du får den åtkomst du har betalat "
 "för."
 
-#: src/features/Chat/AgeConfirmation.tsx:46
+#: src/features/Chat/AgeConfirmation.tsx:57
 #. js-lingui-explicit-id
 msgid "Age Confirmation Required"
 msgstr "Åldersbekräftelse krävs"
@@ -1740,7 +1735,8 @@ msgstr ""
 "Och jag börjar se var en betydande risk kan ligga: i det tysta ögonblicket "
 "när tvivlet försvinner."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:45
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:67
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:78
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "Svara på en ny fråga varje dag och se hur din stil förbättras!"
@@ -1946,7 +1942,7 @@ msgstr ""
 #: src/features/Alias/components/PlayersSetup.tsx:308
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:159
-#: src/features/Chat/ChatSection.tsx:100
+#: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:47
 #. js-lingui-explicit-id
 msgid "Back"
@@ -2698,7 +2694,7 @@ msgstr "Community Hub"
 msgid "Community messages:"
 msgstr "Community messages:"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:232
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:233
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "Community Responses:"
@@ -3218,7 +3214,7 @@ msgstr "Daglig Språkträning"
 msgid "Daily Limits?"
 msgstr "Dagliga gränser?"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:44
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:77
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Daglig fråga"
@@ -3231,6 +3227,7 @@ msgstr "Daglig Frågechatt"
 
 #: src/features/Community/CommunityDashboard.tsx:146
 #: src/features/Community/CommunityPage.tsx:31
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:59
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "Dagliga frågor"
@@ -8118,6 +8115,7 @@ msgstr "Laddar.."
 #: src/features/Conversation/ConversationReviewModal.tsx:131
 #: src/features/Conversation/ConversationReviewModal.tsx:146
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:83
@@ -8751,7 +8749,7 @@ msgstr "Inga korrekta ord än."
 msgid "No corrections yet"
 msgstr "Inga korrigeringar ännu"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:36
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:37
 #. js-lingui-explicit-id
 msgid "No daily question for today"
 msgstr "Ingen daglig fråga för idag"
@@ -8771,7 +8769,7 @@ msgstr "Inga grammatiska fel hittades. Fortsätt öva för att se förbättringa
 msgid "No interviews found"
 msgstr "Inga intervjuer hittades"
 
-#: src/features/Chat/FlatChat.tsx:63
+#: src/features/Chat/FlatChat.tsx:66
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "Inga meddelanden än"
@@ -8852,11 +8850,6 @@ msgstr "Inga visningar än. Var först med att se detta inlägg!"
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Inga ord använda än"
-
-#: src/features/Chat/AgeConfirmation.tsx:72
-#. js-lingui-explicit-id
-msgid "No, take me back"
-msgstr "Nej, ta mig tillbaka"
 
 #: src/features/Usage/Subscription/FaqSubscription.tsx:28
 #. js-lingui-explicit-id
@@ -9097,8 +9090,11 @@ msgstr "Online språkträning"
 msgid "Oops! Something went wrong"
 msgstr "Oj! Något gick fel"
 
+#: src/features/Dashboard/CommunityDashboardCard.tsx:22
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:251
+#: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:247
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:23
 #: src/features/Landing/Price/PricePage.tsx:206
 #: src/features/Sentence/Stories.tsx:265
 #. js-lingui-explicit-id
@@ -9465,7 +9461,7 @@ msgstr "Välj en nivå för att börja spela!"
 msgid "Pick one or more categories to build your word list."
 msgstr "Välj en eller flera kategorier för att bygga din ordlista."
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:126
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:87
 #. js-lingui-explicit-id
 msgid "Pick words to build the sentence"
 msgstr "Välj ord för att bygga meningen"
@@ -9496,7 +9492,7 @@ msgstr "Spela Alias offline med vänner personligen"
 msgid "Play and Learn"
 msgstr "Spela och Lär"
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:164
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:171
 #. js-lingui-explicit-id
 msgid "Play full example"
 msgstr "Spela hela exemplet"
@@ -9640,7 +9636,7 @@ msgstr "Vänligen välj en giltig videofil (MP4, WebM eller MOV)"
 msgid "Please select at least one category."
 msgstr "Vänligen välj minst en kategori."
 
-#: src/features/Chat/ChatSection.tsx:58
+#: src/features/Chat/ChatSection.tsx:54
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Vänligen stoppa inspelningen innan du stänger fönstret."
@@ -10147,7 +10143,7 @@ msgstr "Förbereder ditt spel..."
 msgid "Previous"
 msgstr "Föregående"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:201
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
 #. js-lingui-explicit-id
 msgid "Previous Question"
 msgstr "Föregående fråga"
@@ -10310,7 +10306,7 @@ msgid "Purchase 5 hours"
 msgstr "Köp 5 timmar"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:66
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:99
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "Fråga"
@@ -10396,11 +10392,6 @@ msgid ""
 msgstr ""
 "React-, Vue- eller Angular-specialister som ställs inför arkitektur- och "
 "systemdesignomgångar"
-
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
-#. js-lingui-explicit-id
-msgid "Read"
-msgstr "Läs"
 
 #: src/features/Blog/ListBlogIntro.tsx:67
 #. js-lingui-explicit-id
@@ -10667,7 +10658,7 @@ msgstr "Spela in mer"
 msgid "Record your description"
 msgstr "Spela in din beskrivning"
 
-#: src/features/Chat/FlatChat.tsx:80
+#: src/features/Chat/FlatChat.tsx:83
 #. js-lingui-explicit-id
 msgid "Record your message"
 msgstr "Spela in ditt meddelande"
@@ -11051,15 +11042,15 @@ msgstr "Screeningsintervju med AI-rekryterare"
 msgid "Second Place"
 msgstr "Andra plats"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:46
-#. js-lingui-explicit-id
-msgid "See All"
-msgstr "Visa alla"
-
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "See all"
 msgstr "Se alla"
+
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:79
+#. js-lingui-explicit-id
+msgid "See All"
+msgstr "Visa alla"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
@@ -11560,7 +11551,7 @@ msgstr ""
 "Tyvärr för det, men AI kostar pengar... Tyvärr... Men du kan köpa en "
 "korttidsperiod för att prova appen och bestämma om den passar dina behov."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:38
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:39
 #. js-lingui-explicit-id
 msgid ""
 "Sorry, there is no daily question available for today. Please check back "
@@ -11627,8 +11618,6 @@ msgid "Stars"
 msgstr "Stjärnor"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/JustTalkCard.tsx:109
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:23
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:475
@@ -12537,7 +12526,7 @@ msgstr "Denna åtgärd är irreversibel."
 msgid "This approach shows self-awareness and growth."
 msgstr "Denna strategi visar självmedvetenhet och tillväxt."
 
-#: src/features/Chat/AgeConfirmation.tsx:54
+#: src/features/Chat/AgeConfirmation.tsx:65
 #. js-lingui-explicit-id
 msgid ""
 "This content may contain material that is not suitable for all ages. Please "
@@ -12944,12 +12933,12 @@ msgstr ""
 "mikrofon. En webbkamera är valfri och används endast om du aktiverar "
 "webbkamerafeedback. Ingen installation krävs."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:63
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "Idag"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:201
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "Dagens Fråga"
@@ -13809,11 +13798,6 @@ msgstr "Vad får jag med betalplanen?"
 msgid "What do I need to use FluencyPal?"
 msgstr "Vad behöver jag för att använda FluencyPal?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
-#. js-lingui-explicit-id
-msgid "What do you think?"
-msgstr "Vad tycker du?"
-
 #: src/features/Landing/LandingPage.tsx:34
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
@@ -14155,7 +14139,7 @@ msgstr "År"
 msgid "year"
 msgstr "år"
 
-#: src/features/Chat/AgeConfirmation.tsx:69
+#: src/features/Chat/AgeConfirmation.tsx:80
 #. js-lingui-explicit-id
 msgid "Yes, 18+ years old"
 msgstr "Ja, 18+ år gammal"
@@ -14381,7 +14365,7 @@ msgstr "Du kan radera dina personuppgifter när som helst"
 msgid "You can discuss the battle here."
 msgstr "Du kan diskutera striden här."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:239
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:240
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "Du kan diskutera dagens fråga här."
@@ -14808,3 +14792,23 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
+#. js-lingui-explicit-id
+#~ msgid "Add Response"
+#~ msgstr "Lägg till svar"
+
+#: src/features/Chat/AgeConfirmation.tsx:72
+#. js-lingui-explicit-id
+#~ msgid "No, take me back"
+#~ msgstr "Nej, ta mig tillbaka"
+
+#: src/features/Dashboard/CommunityDashboardCard.tsx:22
+#. js-lingui-explicit-id
+#~ msgid "Read"
+#~ msgstr "Läs"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
+#. js-lingui-explicit-id
+#~ msgid "What do you think?"
+#~ msgstr "Vad tycker du?"

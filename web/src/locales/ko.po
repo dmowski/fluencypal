@@ -1133,11 +1133,6 @@ msgstr "플레이어 추가"
 msgid "Add Post"
 msgstr "게시물 추가"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
-#. js-lingui-explicit-id
-msgid "Add Response"
-msgstr "응답 추가"
-
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1234,7 +1229,7 @@ msgstr ""
 "결제가 완료된 후, 시스템이 이를 처리하고 접근 권한을 부여하는 데 몇 분이 소요될 수 있습니다. 10분 후에도 여전히 접근 권한이 "
 "없는 경우, 위의 채팅을 통해 지원팀에 문의해 주십시오. 가능한 한 빨리 도와드리며, 결제하신 접근 권한을 받으실 수 있도록 하겠습니다."
 
-#: src/features/Chat/AgeConfirmation.tsx:46
+#: src/features/Chat/AgeConfirmation.tsx:57
 #. js-lingui-explicit-id
 msgid "Age Confirmation Required"
 msgstr "연령 확인 필요"
@@ -1647,7 +1642,8 @@ msgstr ""
 "\n"
 "그리고 나는 의심이 사라지는 조용한 순간에 중요한 위험이 어디에 있을 수 있는지 보기 시작하고 있습니다."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:45
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:67
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:78
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "매일 새 질문에 답해보세요, 그리고 당신의 스타일이 어떻게 향상되는지 확인하세요!"
@@ -1845,7 +1841,7 @@ msgstr "이러한 실수를 피하면 당신이 더 전문적으로 보이게 �
 #: src/features/Alias/components/PlayersSetup.tsx:308
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:159
-#: src/features/Chat/ChatSection.tsx:100
+#: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:47
 #. js-lingui-explicit-id
 msgid "Back"
@@ -2570,7 +2566,7 @@ msgstr "커뮤니티 허브"
 msgid "Community messages:"
 msgstr "커뮤니티 메시지:"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:232
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:233
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "커뮤니티 응답:"
@@ -3074,7 +3070,7 @@ msgstr "매일 언어 연습"
 msgid "Daily Limits?"
 msgstr "일일 제한?"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:44
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:77
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "일일 질문"
@@ -3087,6 +3083,7 @@ msgstr "일일 질문 채팅"
 
 #: src/features/Community/CommunityDashboard.tsx:146
 #: src/features/Community/CommunityPage.tsx:31
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:59
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "일일 질문"
@@ -7596,6 +7593,7 @@ msgstr "로딩 중.."
 #: src/features/Conversation/ConversationReviewModal.tsx:131
 #: src/features/Conversation/ConversationReviewModal.tsx:146
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:243
+#: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:83
@@ -8198,7 +8196,7 @@ msgstr "아직 맞는 단어가 없습니다."
 msgid "No corrections yet"
 msgstr "아직 수정 사항 없음"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:36
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:37
 #. js-lingui-explicit-id
 msgid "No daily question for today"
 msgstr "오늘의 질문 없음"
@@ -8218,7 +8216,7 @@ msgstr "문법 오류가 발견되지 않았습니다. 계속해서 연습하여
 msgid "No interviews found"
 msgstr "인터뷰가 없습니다"
 
-#: src/features/Chat/FlatChat.tsx:63
+#: src/features/Chat/FlatChat.tsx:66
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "메시지가 아직 없습니다"
@@ -8295,11 +8293,6 @@ msgstr "아직 조회수 없음. 이 게시물을 처음으로 조회하세요!"
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "아직 사용된 단어 없음"
-
-#: src/features/Chat/AgeConfirmation.tsx:72
-#. js-lingui-explicit-id
-msgid "No, take me back"
-msgstr "아니요, 다시 돌아가고 싶어요"
 
 #: src/features/Usage/Subscription/FaqSubscription.tsx:28
 #. js-lingui-explicit-id
@@ -8519,8 +8512,11 @@ msgstr "온라인 언어 연습"
 msgid "Oops! Something went wrong"
 msgstr "이런! 문제가 발생했습니다"
 
+#: src/features/Dashboard/CommunityDashboardCard.tsx:22
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:251
+#: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:247
+#: src/features/Dashboard/RolePlayDashboardCard.tsx:23
 #: src/features/Landing/Price/PricePage.tsx:206
 #: src/features/Sentence/Stories.tsx:265
 #. js-lingui-explicit-id
@@ -8869,7 +8865,7 @@ msgstr "게임을 시작하려면 레벨을 선택하세요!"
 msgid "Pick one or more categories to build your word list."
 msgstr "하나 또는 여러 개의 카테고리를 선택하여 단어 목록을 만드세요."
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:126
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:87
 #. js-lingui-explicit-id
 msgid "Pick words to build the sentence"
 msgstr "문장을 구성할 단어 선택"
@@ -8900,7 +8896,7 @@ msgstr "Alias 게임을 오프라인에서 친구들과 직접 플레이하세�
 msgid "Play and Learn"
 msgstr "플레이와 학습"
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:164
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:171
 #. js-lingui-explicit-id
 msgid "Play full example"
 msgstr "전체 예시 재생"
@@ -9042,7 +9038,7 @@ msgstr "유효한 비디오 파일(MP4, WebM, 또는 MOV)을 선택하세요."
 msgid "Please select at least one category."
 msgstr "카테고리를 최소 하나 선택하세요."
 
-#: src/features/Chat/ChatSection.tsx:58
+#: src/features/Chat/ChatSection.tsx:54
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "창을 닫기 전에 녹음을 중지해 주세요."
@@ -9510,7 +9506,7 @@ msgstr "게임을 준비 중입니다..."
 msgid "Previous"
 msgstr "이전"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:201
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
 #. js-lingui-explicit-id
 msgid "Previous Question"
 msgstr "이전 질문"
@@ -9673,7 +9669,7 @@ msgid "Purchase 5 hours"
 msgstr "5시간 구매"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:66
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:99
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "질문"
@@ -9757,11 +9753,6 @@ msgid ""
 "React, Vue, or Angular specialists facing architecture and system design "
 "rounds"
 msgstr "React, Vue, 또는 Angular 전문가들이 아키텍처 및 시스템 설계 라운드를 경험하는 경우"
-
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
-#. js-lingui-explicit-id
-msgid "Read"
-msgstr "읽기"
 
 #: src/features/Blog/ListBlogIntro.tsx:67
 #. js-lingui-explicit-id
@@ -10017,7 +10008,7 @@ msgstr "더 녹음하기"
 msgid "Record your description"
 msgstr "당신의 설명을 녹음하세요"
 
-#: src/features/Chat/FlatChat.tsx:80
+#: src/features/Chat/FlatChat.tsx:83
 #. js-lingui-explicit-id
 msgid "Record your message"
 msgstr "메시지를 녹음하세요"
@@ -10392,14 +10383,14 @@ msgstr "AI 리쿠르터와의 사전 인터뷰"
 msgid "Second Place"
 msgstr "두 번째 장소"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:46
-#. js-lingui-explicit-id
-msgid "See All"
-msgstr "모두 보기"
-
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "See all"
+msgstr "모두 보기"
+
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:79
+#. js-lingui-explicit-id
+msgid "See All"
 msgstr "모두 보기"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:55
@@ -10876,7 +10867,7 @@ msgstr ""
 "죄송하지만, AI는 비용이 듭니다... 안타깝게도... 하지만 앱을 시험 사용해보고 필요한지 결정할 수 있도록 단기 기간을 구매할 수 "
 "있습니다."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:38
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:39
 #. js-lingui-explicit-id
 msgid ""
 "Sorry, there is no daily question available for today. Please check back "
@@ -10941,8 +10932,6 @@ msgid "Stars"
 msgstr "별"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/JustTalkCard.tsx:109
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:23
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:475
@@ -11794,7 +11783,7 @@ msgstr "이 작업은 되돌릴 수 없습니다."
 msgid "This approach shows self-awareness and growth."
 msgstr "이 접근법은 자기 인식과 성장을 보여줍니다."
 
-#: src/features/Chat/AgeConfirmation.tsx:54
+#: src/features/Chat/AgeConfirmation.tsx:65
 #. js-lingui-explicit-id
 msgid ""
 "This content may contain material that is not suitable for all ages. Please "
@@ -12182,12 +12171,12 @@ msgstr ""
 "FluencyPal을 사용하려면 최신 인터넷 브라우저와 마이크가 필요합니다. 웹캠은 선택 사항이며, 웹캠 피드백을 활성화한 경우에만 "
 "사용됩니다. 설치는 필요하지 않습니다."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:63
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "오늘"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:201
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "오늘의 질문"
@@ -13014,11 +13003,6 @@ msgstr "유료 플랜으로 무엇을 얻을 수 있습니까?"
 msgid "What do I need to use FluencyPal?"
 msgstr "FluencyPal을 사용하려면 무엇이 필요합니까?"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
-#. js-lingui-explicit-id
-msgid "What do you think?"
-msgstr "무엇을 생각하세요?"
-
 #: src/features/Landing/LandingPage.tsx:34
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
@@ -13340,7 +13324,7 @@ msgstr "연도"
 msgid "year"
 msgstr "년"
 
-#: src/features/Chat/AgeConfirmation.tsx:69
+#: src/features/Chat/AgeConfirmation.tsx:80
 #. js-lingui-explicit-id
 msgid "Yes, 18+ years old"
 msgstr "네, 18세 이상"
@@ -13541,7 +13525,7 @@ msgstr "언제든지 개인정보를 삭제할 수 있습니다"
 msgid "You can discuss the battle here."
 msgstr "당신은 여기에서 전투에 대해 논의할 수 있습니다."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:239
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:240
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "여기에서 일일 질문에 대해 토론할 수 있습니다."
@@ -13936,3 +13920,23 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
+#. js-lingui-explicit-id
+#~ msgid "Add Response"
+#~ msgstr "응답 추가"
+
+#: src/features/Chat/AgeConfirmation.tsx:72
+#. js-lingui-explicit-id
+#~ msgid "No, take me back"
+#~ msgstr "아니요, 다시 돌아가고 싶어요"
+
+#: src/features/Dashboard/CommunityDashboardCard.tsx:22
+#. js-lingui-explicit-id
+#~ msgid "Read"
+#~ msgstr "읽기"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
+#. js-lingui-explicit-id
+#~ msgid "What do you think?"
+#~ msgstr "무엇을 생각하세요?"
