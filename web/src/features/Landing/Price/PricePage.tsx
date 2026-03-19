@@ -507,7 +507,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                       >
                         <CurrencyToDisplay />
                       </Typography>
-                      <Typography variant="caption">/ {i18n._('month')}</Typography>
+                      <Typography variant="caption">/ {i18n._('Month')}</Typography>
                     </Stack>
                   </Stack>
                 }

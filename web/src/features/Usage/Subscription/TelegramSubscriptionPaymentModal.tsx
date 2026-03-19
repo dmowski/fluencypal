@@ -559,7 +559,7 @@ export const TelegramSubscriptionPaymentModal = () => {
                           >
                             {i18n._(`Stars`)} /
                           </Typography>
-                          <Typography variant="caption">{i18n._('month')}</Typography>
+                          <Typography variant="caption">{i18n._('Month')}</Typography>
                         </Stack>
                       </Stack>
                     </>
