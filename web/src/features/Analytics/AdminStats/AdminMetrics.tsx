@@ -4,20 +4,23 @@ import { StatCard } from './StatCard';
 interface AdminMetricsProps {
   todayMessagesCount: number;
   lastHourMessagesCount: number;
+  lastDayUsersCount: number;
   todayUsersCount: number;
+
   secondDayVisitorsCount: number;
   thirdAndMoreDayVisitorsCount: number;
-  usersToShowMode: 'all' | 'today' | 'secondDay' | 'old';
-  onModeChange: (mode: 'all' | 'today' | 'secondDay' | 'old') => void;
+  usersToShowMode: 'all' | 'lastDay' | 'todayDay' | 'secondDay' | 'old';
+  onModeChange: (mode: 'all' | 'lastDay' | 'todayDay' | 'secondDay' | 'old') => void;
 }
 
 export function AdminMetrics({
   todayMessagesCount,
   lastHourMessagesCount,
-  todayUsersCount,
+  lastDayUsersCount,
   secondDayVisitorsCount,
   thirdAndMoreDayVisitorsCount,
   usersToShowMode,
+  todayUsersCount,
   onModeChange,
 }: AdminMetricsProps) {
   return (
@@ -54,22 +57,29 @@ export function AdminMetrics({
       <StatCard value={lastHourMessagesCount} label="Last Hour Messages" />
 
       <StatCard
+        value={lastDayUsersCount}
+        label="Last Day Users"
+        isActive={usersToShowMode === 'lastDay'}
+        onClick={() => onModeChange('lastDay')}
+      />
+
+      <StatCard
         value={todayUsersCount}
         label="Today Users"
-        isActive={usersToShowMode === 'today'}
-        onClick={() => onModeChange('today')}
+        isActive={usersToShowMode === 'todayDay'}
+        onClick={() => onModeChange('todayDay')}
       />
 
       <StatCard
         value={secondDayVisitorsCount}
-        label="Second Day Visitors"
+        label="Second Day Users (today)"
         isActive={usersToShowMode === 'secondDay'}
         onClick={() => onModeChange('secondDay')}
       />
 
       <StatCard
         value={thirdAndMoreDayVisitorsCount}
-        label="Old Visitors"
+        label="Old Users (today)"
         isActive={usersToShowMode === 'old'}
         onClick={() => onModeChange('old')}
       />

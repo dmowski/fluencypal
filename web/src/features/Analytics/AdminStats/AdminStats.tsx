@@ -15,6 +15,8 @@ import { useUrlState } from '@/features/Url/useUrlState';
 import { useSettings } from '@/features/Settings/useSettings';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 
+type UserMode = 'all' | 'lastDay' | 'todayDay' | 'secondDay' | 'old';
+
 export function AdminStats() {
   const auth = useAuth();
   const isAdmin = DEV_EMAILS.includes(auth?.userInfo?.email || '');
@@ -22,9 +24,7 @@ export function AdminStats() {
   const isLoadingRef = useRef(false);
   const [sourceData, setData] = useState<AdminStatsResponse | null>(null);
 
-  const [usersToShowMode, setUsersToShowMode] = useState<'all' | 'today' | 'secondDay' | 'old'>(
-    'all',
-  );
+  const [usersToShowMode, setUsersToShowMode] = useState<UserMode>('all');
 
   const data = useMemo(() => {
     if (!sourceData) return null;
@@ -117,9 +117,15 @@ export function AdminStats() {
       return dayjs(bLostLogins).diff(dayjs(aLostLogins));
     }) || [];
 
-  const todayUsers = users.filter((user) => {
+  const lastDayUsers = users.filter((user) => {
     const lastLogin = user.userData.lastLoginAtDateTime;
     return lastLogin && dayjs().diff(dayjs(lastLogin), 'hour') < 24;
+  });
+
+  const todayUsers = users.filter((user) => {
+    const lastLogin = user.userData.lastLoginAtDateTime;
+    const currentHour = dayjs().hour();
+    return lastLogin && dayjs().diff(dayjs(lastLogin), 'hour') < currentHour + 1;
   });
 
   const secondDayVisitors = todayUsers.filter((user) => {
@@ -150,14 +156,15 @@ export function AdminStats() {
     return acc + lastHourMessages;
   }, 0);
 
-  const usersToShow =
-    usersToShowMode === 'all'
-      ? users
-      : usersToShowMode === 'today'
-        ? todayUsers
-        : usersToShowMode === 'secondDay'
-          ? secondDayVisitors
-          : thirdAndMoreDayVisitors;
+  const usersToShowMap: Record<UserMode, typeof users> = {
+    all: users,
+    lastDay: lastDayUsers,
+    todayDay: todayUsers,
+    secondDay: secondDayVisitors,
+    old: thirdAndMoreDayVisitors,
+  };
+
+  const usersToShow = usersToShowMap[usersToShowMode];
 
   const [isStoryCreator, setIsStoryCreator] = useUrlState('storyCreator', false, false);
   const settings = useSettings();
@@ -214,13 +221,14 @@ export function AdminStats() {
                 }}
               >
                 <AdminMetrics
-                  todayMessagesCount={todayMessagesCount}
                   lastHourMessagesCount={lastHourMessagesCount}
                   todayUsersCount={todayUsers.length}
                   secondDayVisitorsCount={secondDayVisitors.length}
                   thirdAndMoreDayVisitorsCount={thirdAndMoreDayVisitors.length}
                   usersToShowMode={usersToShowMode}
                   onModeChange={setUsersToShowMode}
+                  todayMessagesCount={todayMessagesCount}
+                  lastDayUsersCount={lastDayUsers.length}
                 />
 
                 <Stack
