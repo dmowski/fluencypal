@@ -32,7 +32,7 @@ export const CommunityDashboardCard = () => {
             textColor={'#000'}
             backgroundColor={'rgba(227, 209, 193, 0.6)'}
             previewImageUrl={
-              'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773869239010-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+              'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773947337313-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
             }
             label={i18n._('Community').toUpperCase()}
             title={i18n._('Learn with the community')}

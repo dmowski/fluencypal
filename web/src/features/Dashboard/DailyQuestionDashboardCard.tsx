@@ -41,10 +41,10 @@ export const DailyQuestionDashboardCard = () => {
         <StoreCard
           badge={i18n._('Daily Question').toUpperCase()}
           textColor={'#fff'}
-          backgroundColor={'rgba(46, 43, 137, 0.9)'}
+          backgroundColor={'#00000065'}
           label={i18n._('Question') + ' #' + (questionIndex + 1)}
           previewImageUrl={
-            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773945943743-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773947976503-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
           }
           title={todaysQuestion.title}
           subTitle={todaysQuestion.description}
