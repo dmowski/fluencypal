@@ -65,7 +65,7 @@ export const BalanceStatus = () => {
               {usage.loading
                 ? i18n._('...')
                 : isHaveAccess
-                  ? i18n._('Enjoy unlimited AI conversations and all practice modes!')
+                  ? i18n._('Unlimited conversations and all practice modes!')
                   : ''}
             </Typography>
           </Stack>
