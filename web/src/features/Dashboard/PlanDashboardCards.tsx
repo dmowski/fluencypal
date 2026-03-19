@@ -26,7 +26,8 @@ import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 
 import { SectionHeader } from './CartsHeader';
-import { StoreCard } from '../uiKit/Card/StoreCard';
+import { RowItem, StoreCard } from '../uiKit/Card/StoreCard';
+import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -114,6 +115,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     .sort((a, b) => b.createdAt - a.createdAt);
 
   const nextElementId = plan.nextElement?.id;
+  const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
+  const aiAvatar = voiceAvatarMap[voiceName];
 
   return (
     <Stack gap="20px">
@@ -200,15 +203,54 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           <StoreCard
             badge={''}
             textColor={'#fff'}
-            backgroundColor={'#7a02d0'}
+            backgroundColor={'#2e0949'}
+            itemsBackgroundColor={'rgb(42, 39, 42)'}
             previewImageUrl={
               'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773861934880-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
             }
             label={i18n._('Current Lesson').toUpperCase()}
             title={plan.nextElement.title}
             subTitle={plan.nextElement.description}
-            items={[]}
-            itemsBackgroundColor={'rgba(0, 0, 0, 0.2)'}
+            items={sortedElements.map((planElement, index, all) => {
+              const cardInfo = modeCardProps[planElement.mode];
+              const colorIndex = index % cardColors.length;
+              const cardColor = cardColors[colorIndex];
+              const elementsWithSameMode =
+                sortedElements.filter((element) => element.mode === planElement.mode) || [];
+              const currentElementIndex = elementsWithSameMode.findIndex(
+                (element) => element.id === planElement.id,
+              );
+
+              const imageVariants =
+                planElement.mode === 'conversation' ? aiAvatar.photoUrls : cardInfo.imgUrl;
+              const imageIndex = currentElementIndex % imageVariants.length;
+              const imageUrl = imageVariants[imageIndex];
+
+              const isDone =
+                plan.activeGoal?.progress?.find((part) => part.elementId === planElement.id)
+                  ?.state === 'completed';
+
+              const isActive = index === activeIndex;
+
+              const item: RowItem = {
+                title: planElement.title,
+                subTitle: modeLabels[planElement.mode],
+                iconName:
+                  planElement.mode === 'rule'
+                    ? 'book-open-text'
+                    : planElement.mode === 'words'
+                      ? 'type'
+                      : planElement.mode === 'play'
+                        ? 'venetian-mask'
+                        : 'messages-square',
+                bgColor: isDone ? '#16c476' : isActive ? 'rgba(244, 9, 9, 0.72)' : '#677b82',
+                actionButtonTitle: isActive ? i18n._('Continue') : i18n._('Open'),
+                onClick: function (): void {
+                  plan.openElementModal(planElement.id);
+                },
+              };
+              return item;
+            })}
             onClick={() => {
               plan.openElementModal(nextElementId);
             }}
@@ -217,7 +259,20 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         </Stack>
       )}
 
-      {isGoalSet && plan.activeGoal ? (
+      {(!isGoalSet || !plan.activeGoal) && (
+        <Button
+          startIcon={<LandPlot size={'21px'} />}
+          href={`${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}&currentStep=before_recordAbout`}
+          sx={{
+            padding: '10px 20px',
+          }}
+          variant="outlined"
+        >
+          Create a plan
+        </Button>
+      )}
+
+      {isGoalSet && plan.activeGoal && !(plan.nextElement && nextElementId) && (
         <Stack
           sx={{
             gap: '20px',
@@ -271,17 +326,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             );
           })}
         </Stack>
-      ) : (
-        <Button
-          startIcon={<LandPlot size={'21px'} />}
-          href={`${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}&currentStep=before_recordAbout`}
-          sx={{
-            padding: '10px 20px',
-          }}
-          variant="outlined"
-        >
-          Create a plan
-        </Button>
       )}
 
       {isShowMoreModal && (
