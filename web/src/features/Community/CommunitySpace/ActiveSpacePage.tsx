@@ -22,24 +22,16 @@ export const ActiveSpacePage = ({
   return (
     <Stack>
       {isShowHeader && (
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingTop: '10px',
-
-            gap: '10px',
-          }}
-          onClick={onClose}
-        >
-          <IconButton
+        <Stack sx={{}}>
+          <Typography
+            variant="h3"
             sx={{
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              fontWeight: 800,
             }}
           >
-            <ArrowLeft size={'18px'} />
-          </IconButton>
-          <Typography variant="body2">{title}</Typography>
+            {title}
+          </Typography>
+          <Typography>{space.description}</Typography>
         </Stack>
       )}
 

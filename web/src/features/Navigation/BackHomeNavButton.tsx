@@ -1,11 +1,22 @@
 import { useLingui } from '@lingui/react';
 import { Button, Stack } from '@mui/material';
-import { useAppNavigation } from './useAppNavigation';
 import { ChevronLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export const BackHomeNavButton = () => {
   const { i18n } = useLingui();
-  const appNavigation = useAppNavigation();
+  const router = useRouter();
+
+  const backHome = async () => {
+    const searchParams = new URLSearchParams();
+
+    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+    const currentUrl = `${window.location.pathname}${window.location.search}`;
+    if (currentUrl === newUrl) {
+      return;
+    }
+    router.push(newUrl);
+  };
 
   return (
     <Stack
@@ -29,7 +40,7 @@ export const BackHomeNavButton = () => {
       >
         <Button
           variant="outlined"
-          onClick={() => appNavigation.setCurrentPage('home')}
+          onClick={backHome}
           color="info"
           startIcon={<ChevronLeft size={18} />}
         >
