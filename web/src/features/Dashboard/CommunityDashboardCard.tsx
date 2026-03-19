@@ -1,13 +1,40 @@
 import { Stack } from '@mui/material';
-import { StoreCard } from '../uiKit/Card/StoreCard';
+import { RowItem, StoreCard } from '../uiKit/Card/StoreCard';
 import { SectionHeader } from './CartsHeader';
 import { useLingui } from '@lingui/react';
 import { useAppNavigation } from '../Navigation/useAppNavigation';
 import { DailyQuestionDashboardCard } from './DailyQuestionDashboardCard';
+import { useCommunitySpace } from '../Community/CommunitySpace/useCommunitySpace';
+import { useRouter } from 'next/navigation';
 
 export const CommunityDashboardCard = () => {
   const { i18n } = useLingui();
   const appNavigation = useAppNavigation();
+
+  const { spaces } = useCommunitySpace();
+  const router = useRouter();
+
+  const openCommunity = (spaceId: string) => {
+    const searchParams = new URLSearchParams();
+    searchParams.set('page', 'community');
+    searchParams.set('space', spaceId);
+    router.push(`?${searchParams.toString()}`);
+  };
+
+  const items: RowItem[] = spaces.map((space) => {
+    const item: RowItem = {
+      title: space.title,
+      subTitle: space.description,
+      onClick: () => {
+        openCommunity(space.id);
+      },
+      bgColor: 'rgba(155, 58, 190, 0.6)',
+      actionButtonTitle: i18n._('Read'),
+      iconName: 'users-round',
+    };
+
+    return item;
+  });
 
   return (
     <>
@@ -29,15 +56,15 @@ export const CommunityDashboardCard = () => {
           }}
         >
           <StoreCard
-            textColor={'#000'}
-            backgroundColor={'rgba(227, 209, 193, 0.6)'}
+            textColor={'#fff'}
+            backgroundColor={'rgba(125, 52, 52, 0.3)'}
             previewImageUrl={
               'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773947337313-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
             }
             label={i18n._('Community').toUpperCase()}
             title={i18n._('Learn with the community')}
-            items={[]}
-            itemsBackgroundColor={'rgba(32, 32, 32, 0.98)'}
+            items={items}
+            itemsBackgroundColor={'rgba(32, 32, 32, 0.7)'}
             onClick={() => {
               appNavigation.setCurrentPage('community');
             }}
