@@ -11,6 +11,7 @@ interface SaveSpaceInput {
   id?: string;
   title: string;
   description: string;
+  iconImageUrl?: string;
 }
 
 interface CommunitySpaceContext {
@@ -47,6 +48,7 @@ const useProvideCommunitySpace = (): CommunitySpaceContext => {
       id: spaceId,
       title: input.title.trim(),
       description: input.description.trim(),
+      iconImageUrl: input.iconImageUrl || null,
       createdAtIso: existingSpace?.createdAtIso || nowIso,
       updatedAtIso: nowIso,
       createdByUserId: existingSpace?.createdByUserId || auth.uid,

@@ -6,6 +6,9 @@ import { useLingui } from '@lingui/react';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { CommunitySpace } from '../types';
 import { useCommunitySpace } from './useCommunitySpace';
+import { UploadImageButton } from '@/features/Game/UploadImageButton';
+import Image from 'next/image';
+import { RowIcon } from '@/features/uiKit/Card/StoreCard';
 
 interface SpaceEditorModalProps {
   isOpen: boolean;
@@ -18,6 +21,7 @@ export const SpaceEditorModal = ({ isOpen, onClose, type, space }: SpaceEditorMo
   const { i18n } = useLingui();
   const { saveSpace, deleteSpace } = useCommunitySpace();
   const [title, setTitle] = useState('');
+  const [iconImageUrl, setIconImageUrl] = useState('');
   const [description, setDescription] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -25,6 +29,7 @@ export const SpaceEditorModal = ({ isOpen, onClose, type, space }: SpaceEditorMo
     if (!isOpen) return;
     setTitle(space?.title || '');
     setDescription(space?.description || '');
+    setIconImageUrl(space?.iconImageUrl || '');
   }, [isOpen, space?.description, space?.title]);
 
   const onSave = async () => {
@@ -38,6 +43,7 @@ export const SpaceEditorModal = ({ isOpen, onClose, type, space }: SpaceEditorMo
       id: type === 'Edit' ? space?.id : undefined,
       title,
       description,
+      iconImageUrl,
     });
     setIsSubmitting(false);
     onClose();
@@ -79,6 +85,25 @@ export const SpaceEditorModal = ({ isOpen, onClose, type, space }: SpaceEditorMo
             gap: '26px',
           }}
         >
+          <Stack
+            sx={{
+              alignItems: 'center',
+              flexDirection: 'row',
+              gap: '10px',
+            }}
+          >
+            {iconImageUrl && (
+              <RowIcon size={'50px'} iconBorderRadius={'5px'} imageUrl={iconImageUrl} />
+            )}
+
+            <UploadImageButton
+              type="icon"
+              onNewUploadUrl={(url) => {
+                setIconImageUrl(url);
+              }}
+            />
+          </Stack>
+
           <TextField
             label={i18n._('Title')}
             value={title}

@@ -16,6 +16,7 @@ export interface CommunitySpace {
   updatedAtIso: string;
 
   createdByUserId: string;
+  iconImageUrl?: string | null;
 }
 
 export interface CommunitySpaceSettings {
