@@ -1716,7 +1716,7 @@ msgstr "チャットを削除してもよろしいですか？この操作は元
 msgid "Are you sure you want to delete this message?"
 msgstr "このメッセージを削除してもよろしいですか？"
 
-#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:52
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:54
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this space?"
 msgstr "このスペースを削除してもよろしいですか？"
@@ -2249,7 +2249,7 @@ msgstr "スマートフォンで使用できますか？"
 #: src/features/Ai/AiKnowledgeModal.tsx:142
 #: src/features/Chat/Message/Message.tsx:283
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:122
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:143
 #: src/features/Header/NeedHelpModal.tsx:90
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #. js-lingui-explicit-id
@@ -2532,8 +2532,8 @@ msgstr "システム設計のトレードオフを伝える"
 msgid "Communication & Leadership"
 msgstr "コミュニケーション & リーダーシップ"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:20
 #: src/features/Dashboard/CommunityDashboardCard.tsx:37
+#: src/features/Dashboard/CommunityDashboardCard.tsx:54
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
 #. js-lingui-explicit-id
@@ -2948,12 +2948,11 @@ msgid "Create Custom English Role Plays with AI | FluencyPal"
 msgstr "カスタム英語ロールプレイをAIで作成 | FluencyPal"
 
 #: src/features/Community/CommunitySpace/CommunityRooms.tsx:74
-#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:25
 #. js-lingui-explicit-id
 msgid "Create New Space"
 msgstr "新しいスペースを作成"
 
-#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:119
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Create Space"
 msgstr "スペースを作成"
@@ -3200,7 +3199,7 @@ msgstr "チャットを削除"
 msgid "Delete current goal"
 msgstr "現在の目標を削除"
 
-#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:133
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:154
 #. js-lingui-explicit-id
 msgid "Delete Space"
 msgstr "スペースを削除"
@@ -3296,7 +3295,7 @@ msgstr "何が起こったのか、そしてこのユーザーを報告する理
 msgid "Describe your custom scenario here..."
 msgstr "あなたのカスタムシナリオをここに説明してください..."
 
-#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:95
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Description"
 msgstr "説明"
@@ -3638,10 +3637,10 @@ msgstr "練習でポイントを獲得し、FluencyPalのリーダーボード�
 msgid "Edit"
 msgstr "編集"
 
-#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:25
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:80
 #. js-lingui-explicit-id
-msgid "Edit Space"
-msgstr "編集スペース"
+msgid "Edit Community Space"
+msgstr "コミュニティ スペースの編集"
 
 #: src/features/Chat/Message/Message.tsx:359
 #. js-lingui-explicit-id
@@ -4401,7 +4400,7 @@ msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "ウェルネスとメンタルヘルスについて話すための技術を探究しましょう。"
 
 #: src/features/Community/CommunityDashboard.tsx:92
-#: src/features/Dashboard/CommunityDashboardCard.tsx:21
+#: src/features/Dashboard/CommunityDashboardCard.tsx:38
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "コミュニティを探索し、ディスカッションに参加し、他のメンバーとつながりましょう"
@@ -7434,7 +7433,7 @@ msgstr "目標に基づいて役立つ英単語を学びましょう。文脈に
 msgid "Learn vocabulary that matches your goals and use it in context."
 msgstr "目標に合った語彙を学び、文脈の中でそれを使用しましょう。"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:38
+#: src/features/Dashboard/CommunityDashboardCard.tsx:55
 #. js-lingui-explicit-id
 msgid "Learn with the community"
 msgstr "コミュニティと一緒に学ぶ"
@@ -7874,17 +7873,17 @@ msgstr "模擬インタビュー"
 msgid "modern literature"
 msgstr "現代文学"
 
+#: src/features/Landing/Price/PricePage.tsx:510
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
+#. js-lingui-explicit-id
+msgid "month"
+msgstr "月"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:120
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:608
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:657
 #. js-lingui-explicit-id
 msgid "Month"
-msgstr "月"
-
-#: src/features/Landing/Price/PricePage.tsx:510
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:562
-#. js-lingui-explicit-id
-msgid "month"
 msgstr "月"
 
 #: src/features/Case/data/reusable/priceSection.ts:17
@@ -8080,6 +8079,11 @@ msgstr "新しいゲーム"
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "新しい文法ルール"
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:80
+#. js-lingui-explicit-id
+msgid "New Space"
+msgstr "新しいスペース"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
 #: src/features/Landing/Price/PricePage.tsx:458
@@ -8983,7 +8987,7 @@ msgstr "すべての機能にアクセスするために、クレジットカー
 msgid "Please enter a name for every player."
 msgstr "プレイヤーごとに名前を入力してください。"
 
-#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:36
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:37
 #. js-lingui-explicit-id
 msgid "Please enter a space title"
 msgstr "スペースのタイトルを入力してください"
@@ -9600,11 +9604,6 @@ msgstr "プロフィール"
 msgid "Progress Calendar"
 msgstr "進行カレンダー"
 
-#: src/features/Landing/LandingPage.tsx:415
-#. js-lingui-explicit-id
-msgid "Progress Tracking"
-msgstr "進捗追跡"
-
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
 #: src/features/Landing/Price/PricePage.tsx:453
@@ -9613,6 +9612,11 @@ msgstr "進捗追跡"
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "進行状況の追跡"
+
+#: src/features/Landing/LandingPage.tsx:415
+#. js-lingui-explicit-id
+msgid "Progress Tracking"
+msgstr "進捗追跡"
 
 #: src/features/Landing/Price/PricePage.tsx:597
 #. js-lingui-explicit-id
@@ -9751,6 +9755,11 @@ msgid ""
 "React, Vue, or Angular specialists facing architecture and system design "
 "rounds"
 msgstr "React、Vue、またはAngularの専門家がアーキテクチャおよびシステム設計ラウンドに直面する場合"
+
+#: src/features/Dashboard/CommunityDashboardCard.tsx:22
+#. js-lingui-explicit-id
+msgid "Read"
+msgstr "読む"
 
 #: src/features/Blog/ListBlogIntro.tsx:67
 #. js-lingui-explicit-id
@@ -10334,7 +10343,7 @@ msgstr "給与交渉の準備"
 msgid "Save"
 msgstr "保存"
 
-#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:119
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Save Changes"
 msgstr "変更を保存"
@@ -12149,7 +12158,7 @@ msgid ""
 "support."
 msgstr "ヒント：後で同意を撤回し、サポートに連絡することでデータ削除を要求することができます。"
 
-#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:87
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:108
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "タイトル"
@@ -13937,6 +13946,11 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:25
+#. js-lingui-explicit-id
+#~ msgid "Edit Space"
+#~ msgstr "編集スペース"
 
 #: src/features/Usage/Subscription/BalanceStatus.tsx:68
 #. js-lingui-explicit-id
