@@ -412,7 +412,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 actionButtonTitle: i18n._(`Expand Your Vocabulary`),
               },
               {
-                category: i18n._(`Progress Tracking`),
+                category: i18n._(`Progress tracking`),
                 title: i18n._(`Track Your Fluency Progress`),
                 description: i18n._(
                   `Visualize your daily progress with intuitive tracking. Stay motivated by clearly seeing your improvements.`,
