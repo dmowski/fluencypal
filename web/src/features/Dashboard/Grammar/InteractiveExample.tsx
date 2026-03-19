@@ -81,6 +81,11 @@ export const InteractiveExample = ({
     setIsCompleted(false);
   }, [initialProgress]);
 
+  const emptyOption = `_____`;
+  const progressString = progress ? `${progress} ${isCompleted ? '' : emptyOption}`.trim() : '';
+  const progressToShow =
+    '\n' + (progressString || initialProgress || i18n._('Pick words to build the sentence'));
+
   return (
     <Stack
       sx={{
@@ -116,6 +121,8 @@ export const InteractiveExample = ({
             onWordClick={
               isTranslateAvailable
                 ? (word, element) => {
+                    const isEmptyOption = word === emptyOption;
+                    if (isEmptyOption) return;
                     quizWordAudio.playWordAudio(word);
                     translateWithModal(word, element);
                   }
@@ -123,7 +130,7 @@ export const InteractiveExample = ({
             }
             variant="rule"
           >
-            {'\n' + (progress || initialProgress || i18n._('Pick words to build the sentence'))}
+            {progressToShow}
           </Markdown>
         </Stack>
 

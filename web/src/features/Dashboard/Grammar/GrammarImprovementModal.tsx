@@ -1,7 +1,7 @@
 import { useLingui } from '@lingui/react';
 import { Button, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { Check, ChevronLeft, ChevronRight, Loader } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Loader } from 'lucide-react';
 import { useTranslate } from '../../Translation/useTranslate';
 import { LoadingShapes } from '../../uiKit/Loading/LoadingShapes';
 import { Markdown } from '../../uiKit/Markdown/Markdown';
