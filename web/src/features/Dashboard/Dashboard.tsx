@@ -27,6 +27,7 @@ import { RolePlayDashboardCard } from './RolePlayDashboardCard';
 import { CommunityDashboardCard } from './CommunityDashboardCard';
 import { SimpleNavigationBar } from '../Navigation/SimpleNavigationBar';
 import { BackHomeNavButton } from '../Navigation/BackHomeNavButton';
+import { DailyQuestionDashboardCard } from './DailyQuestionDashboardCard';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -88,6 +89,8 @@ export function Dashboard({ lang }: DashboardProps) {
                 <PlanDashboardCards lang={lang} />
                 <RolePlayDashboardCard />
                 <CommunityDashboardCard />
+
+                <DailyQuestionDashboardCard />
               </Stack>
             </>
           )}

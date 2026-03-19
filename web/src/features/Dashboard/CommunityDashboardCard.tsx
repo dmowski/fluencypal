@@ -40,29 +40,21 @@ export const CommunityDashboardCard = () => {
           )}
         />
 
-        <Stack
-          sx={{
-            gap: '40px',
+        <StoreCard
+          textColor={'#fff'}
+          backgroundColor={'rgba(125, 52, 52, 0.3)'}
+          previewImageUrl={
+            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773947337313-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+          }
+          label={i18n._('Community').toUpperCase()}
+          title={i18n._('Learn with the community')}
+          items={items}
+          itemsBackgroundColor={'rgba(32, 32, 32, 0.7)'}
+          onClick={() => {
+            appNavigation.setCurrentPage('community');
           }}
-        >
-          <StoreCard
-            textColor={'#fff'}
-            backgroundColor={'rgba(125, 52, 52, 0.3)'}
-            previewImageUrl={
-              'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773947337313-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
-            }
-            label={i18n._('Community').toUpperCase()}
-            title={i18n._('Learn with the community')}
-            items={items}
-            itemsBackgroundColor={'rgba(32, 32, 32, 0.7)'}
-            onClick={() => {
-              appNavigation.setCurrentPage('community');
-            }}
-            itemsViewMode={'list'}
-          />
-
-          <DailyQuestionDashboardCard />
-        </Stack>
+          itemsViewMode={'list'}
+        />
       </Stack>
     </>
   );

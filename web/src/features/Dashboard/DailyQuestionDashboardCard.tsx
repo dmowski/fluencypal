@@ -7,6 +7,8 @@ import { ChatProvider } from '../Chat/useChat';
 import { Stack } from '@mui/material';
 import { StoreCard } from '../uiKit/Card/StoreCard';
 import { FlatChat } from '../Chat/FlatChat';
+import { SectionHeader } from './CartsHeader';
+import { useRouter } from 'next/navigation';
 
 export const DailyQuestionDashboardCard = () => {
   const settings = useSettings();
@@ -17,6 +19,14 @@ export const DailyQuestionDashboardCard = () => {
 
   const todaysQuestion = dailyQuestions[questionsKeys[questionIndex]];
   const { i18n } = useLingui();
+  const router = useRouter();
+
+  const openAll = () => {
+    const searchParams = new URLSearchParams();
+    searchParams.set('page', 'community');
+    searchParams.set('section', 'daily-questions');
+    router.push(`?${searchParams.toString()}`);
+  };
 
   const access = useAccess();
   if (!access.canUseCommunity) {
@@ -25,43 +35,56 @@ export const DailyQuestionDashboardCard = () => {
 
   const spaceId = 'daily-question-' + todaysQuestion.id;
   return (
-    <ChatProvider
-      metadata={{
-        spaceId: spaceId,
-        allowedUserIds: null,
-        isPrivate: false,
-        type: 'dailyQuestion',
+    <Stack
+      sx={{
+        gap: '20px',
       }}
     >
-      <Stack
-        sx={{
-          gap: '10px',
+      <SectionHeader
+        title={i18n._('Daily Question')}
+        subTitle={i18n._('Answer a new question every day and see how your style improves!')}
+        buttonTitle={i18n._('See All')}
+        onButtonClick={openAll}
+      />
+      <ChatProvider
+        metadata={{
+          spaceId: spaceId,
+          allowedUserIds: null,
+          isPrivate: false,
+          type: 'dailyQuestion',
         }}
       >
-        <StoreCard
-          badge={i18n._('Daily Question').toUpperCase()}
-          textColor={'#fff'}
-          backgroundColor={'#00000065'}
-          label={i18n._('Question') + ' #' + (questionIndex + 1)}
-          previewImageUrl={
-            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773947976503-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
-          }
-          title={todaysQuestion.title}
-          subTitle={todaysQuestion.description}
-          items={[]}
-          itemsBackgroundColor={'rgba(32, 32, 32, 0.98)'}
-          itemsViewMode={'list'}
+        <Stack
+          sx={{
+            gap: '10px',
+          }}
         >
-          <Stack
-            sx={{
-              backgroundColor: 'rgba(32, 32, 32, 0.98)',
-              //borderRadius: '16px',
-            }}
+          <StoreCard
+            badge={i18n._('Today').toUpperCase()}
+            textColor={'#fff'}
+            backgroundColor={'#00000065'}
+            label={i18n._('Question') + ' #' + (questionIndex + 1)}
+            previewImageUrl={
+              'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773947976503-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+            }
+            title={todaysQuestion.title}
+            subTitle={todaysQuestion.description}
+            items={[]}
+            onClick={openAll}
+            itemsBackgroundColor={'rgba(32, 32, 32, 0.98)'}
+            itemsViewMode={'list'}
           >
-            <FlatChat />
-          </Stack>
-        </StoreCard>
-      </Stack>
-    </ChatProvider>
+            <Stack
+              sx={{
+                backgroundColor: 'rgba(32, 32, 32, 0.98)',
+                //borderRadius: '16px',
+              }}
+            >
+              <FlatChat />
+            </Stack>
+          </StoreCard>
+        </Stack>
+      </ChatProvider>
+    </Stack>
   );
 };
