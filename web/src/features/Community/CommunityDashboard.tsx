@@ -119,15 +119,6 @@ export const CommunityDashboard = () => {
                       icon={<UsersRound style={iconStyle} />}
                     />
                   )}
-
-                  {access.canUseCommunity && (
-                    <CommunityCard
-                      title={i18n._('Private Messages')}
-                      onClick={() => setActivePage('dm')}
-                      badgeNumber={chatList.myUnreadCount}
-                      icon={<Mail style={iconStyle} />}
-                    />
-                  )}
                 </Stack>
               </Stack>
 
