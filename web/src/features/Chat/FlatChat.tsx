@@ -80,7 +80,7 @@ export const FlatChat = ({}: {}) => {
             });
           }}
           isLoading={chat.loading}
-          recordMessageTitle={i18n._('Record your message')}
+          recordMessageTitle={i18n._('Record message')}
           setIsActiveRecording={() => {}}
           previousBotMessage={''}
         />
