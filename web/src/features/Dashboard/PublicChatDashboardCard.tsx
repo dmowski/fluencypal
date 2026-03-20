@@ -8,10 +8,24 @@ import { useUrlState } from '../Url/useUrlState';
 
 import { ChatPage } from '../Chat/ChatPage';
 import { PreviewCard } from '../Chat/Message/PreviewCard';
+import { useRouter } from 'next/navigation';
+import { sleep } from '@/libs/sleep';
 
 export const PublicChatDashboardCard = () => {
   const { i18n } = useLingui();
   const [isShowAll, setIsShowAll] = useUrlState('publicChat', false, false);
+
+  const router = useRouter();
+  const close = async () => {
+    setIsShowAll(false);
+    await sleep(400);
+
+    const searchParams = new URLSearchParams();
+    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+    router.push(newUrl, {
+      scroll: false,
+    });
+  };
 
   const access = useAccess();
   if (!access.canUseCommunity) {
@@ -25,7 +39,7 @@ export const PublicChatDashboardCard = () => {
       }}
     >
       {isShowAll && (
-        <CustomModal isOpen={true} onClose={() => setIsShowAll(false)} mobilePadding="40px 0">
+        <CustomModal isOpen={true} onClose={close} mobilePadding="40px 0">
           <Stack
             sx={{
               maxWidth: '700px',

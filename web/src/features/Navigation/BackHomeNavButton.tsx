@@ -5,12 +5,14 @@ import { useRouter } from 'next/navigation';
 
 export const BackHomeNavButton = () => {
   const { i18n } = useLingui();
-  const router = useRouter();
 
-  const backHome = async () => {
+  const router = useRouter();
+  const close = async () => {
     const searchParams = new URLSearchParams();
     const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-    router.push(newUrl);
+    router.push(newUrl, {
+      scroll: true,
+    });
   };
 
   return (
@@ -35,7 +37,7 @@ export const BackHomeNavButton = () => {
       >
         <Button
           variant="outlined"
-          onClick={backHome}
+          onClick={close}
           color="info"
           startIcon={<ChevronLeft size={18} />}
         >
