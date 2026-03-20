@@ -1,13 +1,16 @@
 import { Email } from '@mui/icons-material';
-import { IconButton, Stack, Typography } from '@mui/material';
+import { IconButton, Stack, Tabs, Tab, Typography } from '@mui/material';
 import { useUrlState } from '../Url/useUrlState';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useLingui } from '@lingui/react';
 import { ChatPage } from '../Chat/ChatPage';
+import { BattleSection } from '../Game/Battle/BattleSection';
 
 export const PrivateMessagesButton: React.FC = () => {
   const [isShow, setIsShow] = useUrlState('showPrivateMessages', false, false);
   const { i18n } = useLingui();
+
+  const [mode, setMode] = useUrlState<'messages' | 'debates' | ''>('section', 'messages', false);
 
   return (
     <>
@@ -43,7 +46,36 @@ export const PrivateMessagesButton: React.FC = () => {
                 {i18n._('Here you can see your private messages with other users.')}
               </Typography>
             </Stack>
-            <ChatPage type={'private'} />
+            <Stack
+              sx={{
+                alignItems: 'flex-start',
+              }}
+            >
+              <Tabs
+                value={mode}
+                onChange={(e, value) => setMode(value)}
+                variant="fullWidth"
+                sx={{
+                  paddingLeft: '15px',
+                }}
+              >
+                <Tab
+                  label={<Typography variant="button">{i18n._('Messages')}</Typography>}
+                  value={'messages'}
+                />
+                <Tab
+                  label={<Typography variant="button">{i18n._('Debates')}</Typography>}
+                  value={'debates'}
+                />
+              </Tabs>
+              <Stack
+                sx={{
+                  width: '100%',
+                }}
+              >
+                {mode === 'messages' ? <ChatPage type={'private'} /> : <BattleSection />}
+              </Stack>
+            </Stack>
           </Stack>
         </CustomModal>
       )}
