@@ -37,13 +37,7 @@ interface DashboardProps {
 
 export function Dashboard({ lang }: DashboardProps) {
   const appNavigation = useAppNavigation();
-
   const plan = usePlan();
-  const { i18n } = useLingui();
-
-  const auth = useAuth();
-
-  const access = useAccess();
 
   return (
     <>
