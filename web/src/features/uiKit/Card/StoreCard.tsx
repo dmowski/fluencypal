@@ -182,6 +182,7 @@ export const StoreCard = (props: StoreCardProps) => {
             autoPlay
             playsInline
             loop
+            controls={false}
             muted
             sx={{
               objectFit: 'cover',
