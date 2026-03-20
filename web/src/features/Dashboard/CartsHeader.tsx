@@ -14,9 +14,13 @@ export const SectionHeader = ({
   return (
     <Stack
       sx={{
-        flexDirection: 'row',
+        display: 'grid',
+        gridTemplateColumns: '1fr auto',
         alignItems: 'flex-start',
-        justifyContent: 'space-between',
+        '@media (max-width: 400px)': {
+          gridTemplateColumns: '1fr',
+          gap: '10px',
+        },
       }}
     >
       <Stack>
@@ -39,8 +43,17 @@ export const SectionHeader = ({
           </Typography>
         )}
       </Stack>
+
       {buttonTitle && (
-        <Button variant="text" onClick={onButtonClick} color="info">
+        <Button
+          variant="text"
+          onClick={onButtonClick}
+          color="info"
+          sx={{
+            whiteSpace: 'nowrap',
+            width: 'max-content',
+          }}
+        >
           {buttonTitle}
         </Button>
       )}
