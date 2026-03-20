@@ -131,11 +131,11 @@ When user struggle with one example, try to switch to another example and come b
 
   return (
     <>
-      <CustomModal isOpen={isOpen} onClose={onClose}>
+      <CustomModal isOpen={isOpen} onClose={onClose} mobilePadding="0">
         <Stack
           sx={{
             gap: '90px',
-            padding: '20px',
+            padding: '20px 5px',
             width: '100%',
             maxWidth: '700px',
             paddingBottom: '80px',
