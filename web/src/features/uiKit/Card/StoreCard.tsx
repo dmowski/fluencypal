@@ -174,6 +174,26 @@ export const StoreCard = (props: StoreCardProps) => {
             }}
           />
         )}
+
+        {props.previewVideoUrl && (
+          <Stack
+            component={'video'}
+            src={props.previewVideoUrl}
+            autoPlay
+            loop
+            muted
+            sx={{
+              objectFit: 'cover',
+              backgroundColor: props.backgroundColor,
+              zIndex: 0,
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              top: 0,
+              left: 0,
+            }}
+          />
+        )}
       </Stack>
 
       {!!props.items.length && (
