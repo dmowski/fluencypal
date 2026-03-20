@@ -1,7 +1,6 @@
 'use client';
 
-import { IconButton, Stack, Typography } from '@mui/material';
-import { ArrowLeft } from 'lucide-react';
+import { Stack, Typography } from '@mui/material';
 import { useUrlState } from '../../Url/useUrlState';
 import { CommunitySpace } from '../types';
 import { SpaceChatPage } from './SpaceChatPage';
@@ -22,7 +21,11 @@ export const ActiveSpacePage = ({
   return (
     <Stack>
       {isShowHeader && (
-        <Stack sx={{}}>
+        <Stack
+          sx={{
+            padding: '0 10px',
+          }}
+        >
           <Typography
             variant="h3"
             sx={{

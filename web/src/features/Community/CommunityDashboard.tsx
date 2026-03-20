@@ -121,8 +121,6 @@ export const CommunityDashboard = () => {
                   )}
                 </Stack>
               </Stack>
-
-              {access.canAccessSpaces && <CommunityRooms openSpaceId={setActiveSpace} />}
             </Stack>
           )}
         </Stack>

@@ -6,12 +6,20 @@ import { useCommunitySpace } from '../Community/CommunitySpace/useCommunitySpace
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useUrlState } from '../Url/useUrlState';
 import { CommunityRooms } from '../Community/CommunitySpace/CommunityRooms';
+import { ActiveSpacePage } from '../Community/CommunitySpace/ActiveSpacePage';
 
 export const CommunityDashboardCard = () => {
   const { i18n } = useLingui();
 
-  const { spaces, openSpace } = useCommunitySpace();
+  const { spaces } = useCommunitySpace();
   const [isShowAll, setIsShowAll] = useUrlState('showRooms', false, false);
+
+  const [activeSpaceId, setActiveSpaceId] = useUrlState('activeSpaceId', '', false);
+
+  const openSpace = (spaceId: string) => {
+    setActiveSpaceId(spaceId);
+  };
+  const activeSpace = spaces.find((space) => space.id === activeSpaceId);
 
   const items: RowItem[] = spaces.map((space) => {
     const spaceItem: RowItem = {
@@ -29,6 +37,33 @@ export const CommunityDashboardCard = () => {
 
   return (
     <>
+      {activeSpace && (
+        <CustomModal
+          isOpen={true}
+          onClose={() => {
+            setActiveSpaceId('');
+          }}
+          mobilePadding="40px 0"
+        >
+          <Stack
+            sx={{
+              maxWidth: '700px',
+
+              gap: '30px',
+              width: '100%',
+            }}
+          >
+            <Stack
+              sx={{
+                padding: '0',
+              }}
+            >
+              <ActiveSpacePage space={activeSpace} onClose={() => setActiveSpaceId('')} />
+            </Stack>
+          </Stack>
+        </CustomModal>
+      )}
+
       {isShowAll && (
         <CustomModal isOpen={true} onClose={() => setIsShowAll(false)} mobilePadding="40px 0">
           <Stack
