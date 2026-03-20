@@ -193,7 +193,6 @@ export const SimpleNavigationBar: React.FC = () => {
           </Stack>
         </Stack>
       </Stack>
-      <DevButton />
       <LanguageSwitcher
         isHidden
         isAuth={auth.isAuthorized}

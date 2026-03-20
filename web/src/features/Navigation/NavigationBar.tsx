@@ -304,7 +304,6 @@ export const NavigationBar: React.FC = () => {
           </Stack>
         </Stack>
       </Stack>
-      <DevButton />
     </>
   );
 };
