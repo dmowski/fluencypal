@@ -1,15 +1,18 @@
 import { Email } from '@mui/icons-material';
-import { IconButton, Stack, Tabs, Tab, Typography } from '@mui/material';
+import { IconButton, Stack, Tabs, Tab, Typography, Badge } from '@mui/material';
 import { useUrlState } from '../Url/useUrlState';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useLingui } from '@lingui/react';
 import { ChatPage } from '../Chat/ChatPage';
 import { BattleSection } from '../Game/Battle/BattleSection';
 import { sleep } from '@/libs/sleep';
+import { useChatList } from '../Chat/useChatList';
 
 export const PrivateMessagesButton: React.FC = () => {
   const [isShow, setIsShow] = useUrlState('inbox', false, false);
   const { i18n } = useLingui();
+  const chatList = useChatList();
+  const newMessagesCount = chatList.myUnreadCount;
 
   const [mode, setMode] = useUrlState<'messages' | 'debates' | ''>('inboxType', 'messages', false);
 
@@ -88,11 +91,13 @@ export const PrivateMessagesButton: React.FC = () => {
       )}
 
       <IconButton onClick={() => setIsShow(true)}>
-        <Email
-          sx={{
-            opacity: 0.7,
-          }}
-        />
+        <Badge badgeContent={newMessagesCount} color="error">
+          <Email
+            sx={{
+              opacity: 0.7,
+            }}
+          />
+        </Badge>
       </IconButton>
     </>
   );
