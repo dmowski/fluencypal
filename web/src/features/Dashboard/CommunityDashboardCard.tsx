@@ -1,16 +1,17 @@
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { RowItem, StoreCard } from '../uiKit/Card/StoreCard';
 import { SectionHeader } from './CartsHeader';
 import { useLingui } from '@lingui/react';
-import { useAppNavigation } from '../Navigation/useAppNavigation';
-import { DailyQuestionDashboardCard } from './DailyQuestionDashboardCard';
 import { useCommunitySpace } from '../Community/CommunitySpace/useCommunitySpace';
+import { CustomModal } from '../uiKit/Modal/CustomModal';
+import { useUrlState } from '../Url/useUrlState';
+import { CommunityRooms } from '../Community/CommunitySpace/CommunityRooms';
 
 export const CommunityDashboardCard = () => {
   const { i18n } = useLingui();
-  const appNavigation = useAppNavigation();
 
   const { spaces, openSpace } = useCommunitySpace();
+  const [isShowAll, setIsShowAll] = useUrlState('showRooms', false, false);
 
   const items: RowItem[] = spaces.map((space) => {
     const spaceItem: RowItem = {
@@ -28,6 +29,48 @@ export const CommunityDashboardCard = () => {
 
   return (
     <>
+      {isShowAll && (
+        <CustomModal isOpen={true} onClose={() => setIsShowAll(false)} mobilePadding="40px 0">
+          <Stack
+            sx={{
+              maxWidth: '700px',
+
+              gap: '30px',
+              width: '100%',
+            }}
+          >
+            <Stack
+              sx={{
+                padding: '0 10px',
+              }}
+            >
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: 800,
+                }}
+              >
+                {i18n._('Community Rooms')}
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: 'text.secondary',
+                }}
+              >
+                {i18n._('Join rooms to discuss specific topics with other members')}
+              </Typography>
+            </Stack>
+
+            <CommunityRooms
+              openSpaceId={(spaceId) => {
+                openSpace(spaceId);
+              }}
+            />
+          </Stack>
+        </CustomModal>
+      )}
+
       <Stack
         sx={{
           gap: '20px',
@@ -51,7 +94,7 @@ export const CommunityDashboardCard = () => {
           items={items}
           itemsBackgroundColor={'rgba(32, 32, 32, 0.7)'}
           onClick={() => {
-            appNavigation.setCurrentPage('community');
+            setIsShowAll(true);
           }}
           itemsViewMode={'list'}
         />

@@ -22,25 +22,6 @@ export const CommunityRooms = ({ openSpaceId }: { openSpaceId: (spaceId: string)
         gap: '20px',
       }}
     >
-      <Stack>
-        <Typography
-          variant="h3"
-          sx={{
-            paddingLeft: '5px',
-            fontWeight: 800,
-          }}
-        >
-          {i18n._('Rooms')}
-        </Typography>
-        <Typography
-          sx={{
-            paddingLeft: '5px',
-          }}
-        >
-          {i18n._('Join rooms to discuss specific topics with other members')}
-        </Typography>
-      </Stack>
-
       <Stack
         sx={{
           gap: '20px',
