@@ -5,17 +5,24 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useLingui } from '@lingui/react';
 import { ChatPage } from '../Chat/ChatPage';
 import { BattleSection } from '../Game/Battle/BattleSection';
+import { sleep } from '@/libs/sleep';
 
 export const PrivateMessagesButton: React.FC = () => {
-  const [isShow, setIsShow] = useUrlState('showPrivateMessages', false, false);
+  const [isShow, setIsShow] = useUrlState('inbox', false, false);
   const { i18n } = useLingui();
 
-  const [mode, setMode] = useUrlState<'messages' | 'debates' | ''>('section', 'messages', false);
+  const [mode, setMode] = useUrlState<'messages' | 'debates' | ''>('inboxType', 'messages', false);
+
+  const onClose = async () => {
+    setIsShow(false);
+    await sleep(300);
+    setMode('messages');
+  };
 
   return (
     <>
       {isShow && (
-        <CustomModal isOpen={isShow} onClose={() => setIsShow(false)} mobilePadding="40px 0">
+        <CustomModal isOpen={isShow} onClose={onClose} mobilePadding="40px 0">
           <Stack
             sx={{
               maxWidth: '700px',
