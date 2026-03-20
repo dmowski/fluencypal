@@ -7,6 +7,7 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useUrlState } from '../Url/useUrlState';
 
 import { ChatPage } from '../Chat/ChatPage';
+import { PreviewCard } from '../Chat/Message/PreviewCard';
 
 export const PublicChatDashboardCard = () => {
   const { i18n } = useLingui();
@@ -71,6 +72,8 @@ export const PublicChatDashboardCard = () => {
           itemsBackgroundColor={'rgba(32, 32, 32, 1)'}
           itemsViewMode={'list'}
         />
+
+        <PreviewCard />
       </Stack>
     </Stack>
   );

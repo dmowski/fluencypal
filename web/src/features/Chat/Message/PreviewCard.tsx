@@ -1,12 +1,9 @@
-import { useLingui } from '@lingui/react';
-import { Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import { ChatProvider, useChat } from '../useChat';
 import { useRouter } from 'next/navigation';
 import { PreviewMessage } from './PreviewMessage';
 
 const PreviewCardComponent = () => {
-  const { i18n } = useLingui();
   const chat = useChat();
   const router = useRouter();
 
@@ -15,8 +12,8 @@ const PreviewCardComponent = () => {
   const openMessage = async (messageId: string) => {
     const newSearchParams = new URLSearchParams(window.location.search);
     newSearchParams.set('post', `${messageId}`);
-    newSearchParams.set('page', `community`);
-    newSearchParams.set('section', `chat`);
+    newSearchParams.set('publicChat', `true`);
+
     const newUrl = `${window.location.pathname}?${newSearchParams.toString()}`;
     router.push(`${newUrl}`, { scroll: true });
   };
@@ -35,16 +32,6 @@ const PreviewCardComponent = () => {
         position: 'relative',
       }}
     >
-      <Typography
-        variant="caption"
-        sx={{
-          opacity: 0.8,
-          padding: '5px 0 0px 10px',
-        }}
-      >
-        {i18n._('Community messages:')}
-      </Typography>
-
       <Stack
         sx={{
           position: 'relative',
