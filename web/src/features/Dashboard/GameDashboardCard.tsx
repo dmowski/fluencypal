@@ -1,12 +1,8 @@
 import { useLingui } from '@lingui/react';
-import { useAccess } from '../Usage/useAccess';
 import { Button, Stack, Typography } from '@mui/material';
 import { StoreCard } from '../uiKit/Card/StoreCard';
 
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { useUrlState } from '../Url/useUrlState';
-
-import { ChatPage } from '../Chat/ChatPage';
 import { useGame } from '../Game/useGame';
 import { useSettings } from '../Settings/useSettings';
 import { useState } from 'react';
@@ -18,8 +14,6 @@ import { PositionChanged } from '../Game/PositionChanged';
 import { Loader, Swords } from 'lucide-react';
 
 export const GameDashboardCard = () => {
-  const [isShowAll, setIsShowAll] = useUrlState('publicChat', false, false);
-
   const game = useGame();
   const { i18n } = useLingui();
   const settings = useSettings();
@@ -90,7 +84,7 @@ export const GameDashboardCard = () => {
           textColor={'#fff'}
           backgroundColor={'#191919'}
           previewImageUrl={
-            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773967266492-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.jpg'
+            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773967504941-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
           }
           subTitle={i18n._('Rank in top 5 on the leaderboard and get the app for free!')}
           title={i18n._('Ready to test your knowledge?')}
