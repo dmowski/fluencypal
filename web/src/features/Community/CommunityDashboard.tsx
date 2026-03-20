@@ -111,13 +111,6 @@ export const CommunityDashboard = () => {
                     },
                   }}
                 >
-                  <CommunityCard
-                    title={i18n._('Game')}
-                    onClick={() => setActivePage('game')}
-                    badgeNumber={0}
-                    icon={<Swords style={iconStyle} />}
-                  />
-
                   {access.canUseCommunity && (
                     <CommunityCard
                       title={i18n._('Debates')}
@@ -126,12 +119,6 @@ export const CommunityDashboard = () => {
                       icon={<UsersRound style={iconStyle} />}
                     />
                   )}
-
-                  <CommunityCard
-                    title={i18n._('Leaderboards')}
-                    onClick={() => setActivePage('leaderboards')}
-                    icon={<Crown style={iconStyle} />}
-                  />
 
                   {access.canUseCommunity && (
                     <CommunityCard
