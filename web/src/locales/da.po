@@ -1734,8 +1734,8 @@ msgstr ""
 "Og jeg er begyndt at se, hvor en betydelig risiko måske ligger: i det "
 "stille sekund, hvor tvivlen forsvinder."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:67
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:78
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:71
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:82
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "Besvar et nyt spørgsmål hver dag og se, hvordan din stil forbedres!"
@@ -2676,8 +2676,9 @@ msgstr "Fællesskab"
 msgid "Community access"
 msgstr "Community adgang"
 
-#: src/features/Community/CommunityDashboard.tsx:116
 #: src/features/Community/CommunityPage.tsx:27
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:51
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:79
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
@@ -2694,7 +2695,7 @@ msgstr "Fællesskabshub"
 msgid "Community messages:"
 msgstr "Fællesskabsmeddelelser:"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:233
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "Fællesskabets svar:"
@@ -3214,7 +3215,7 @@ msgstr "Daglig Sprogpraksis"
 msgid "Daily Limits?"
 msgstr "Daglige grænser?"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:77
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:81
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Dagligt Spørgsmål"
@@ -3225,9 +3226,8 @@ msgstr "Dagligt Spørgsmål"
 msgid "Daily Question Chat"
 msgstr "Dagligt spørgsmål chat"
 
-#: src/features/Community/CommunityDashboard.tsx:146
 #: src/features/Community/CommunityPage.tsx:31
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:59
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:63
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "Daglige spørgsmål"
@@ -3316,7 +3316,7 @@ msgstr "Debat startet!"
 msgid "Debate topics will be selected randomly."
 msgstr "Debatemner vil blive valgt tilfældigt."
 
-#: src/features/Community/CommunityDashboard.tsx:137
+#: src/features/Community/CommunityDashboard.tsx:123
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -5286,7 +5286,7 @@ msgstr "Fuldstændige stemmefunktioner"
 msgid "Fun facts about yourself"
 msgstr "Sjove fakta om dig selv"
 
-#: src/features/Community/CommunityDashboard.tsx:123
+#: src/features/Community/CommunityDashboard.tsx:115
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -7673,6 +7673,12 @@ msgstr "Deltag i kandidater, der har transformeret deres interviewpræstation"
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "Deltag i rum for at diskutere specifikke emner med andre medlemmer"
 
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:59
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:80
+#. js-lingui-explicit-id
+msgid "Join the community chat and connect with other members!"
+msgstr "Deltag i fælleschatten og få kontakt med andre medlemmer!"
+
 #: src/features/Feature/featuresData.ts:354
 #. js-lingui-explicit-id
 msgid ""
@@ -7862,7 +7868,7 @@ msgstr "Doven indlæsning"
 msgid "Leaderboard"
 msgstr "Rangliste"
 
-#: src/features/Community/CommunityDashboard.tsx:153
+#: src/features/Community/CommunityDashboard.tsx:131
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -10128,7 +10134,7 @@ msgstr "Forbereder dit spil..."
 msgid "Previous"
 msgstr "Forrige"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:210
 #. js-lingui-explicit-id
 msgid "Previous Question"
 msgstr "Forrige spørgsmål"
@@ -10169,7 +10175,7 @@ msgstr "Prioritetsstøtte"
 msgid "Privacy Policy"
 msgstr "Privatlivspolitik"
 
-#: src/features/Community/CommunityDashboard.tsx:160
+#: src/features/Community/CommunityDashboard.tsx:138
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -10291,7 +10297,7 @@ msgid "Purchase 5 hours"
 msgstr "Køb 5 timer"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:99
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:103
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "Spørgsmål"
@@ -11034,7 +11040,7 @@ msgstr "Andenplads"
 msgid "See all"
 msgstr "Se alle"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:79
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:83
 #. js-lingui-explicit-id
 msgid "See All"
 msgstr "Se alle"
@@ -12195,7 +12201,6 @@ msgstr "Tech interview med AI frontend udvikler"
 msgid "Tech stack covered"
 msgstr "Teknologisk stak dækket"
 
-#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -12916,12 +12921,12 @@ msgstr ""
 "mikrofon. Et webcam er valgfrit og bruges kun, hvis du aktiverer "
 "webcam-feedback. Ingen installation er påkrævet."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:100
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "I dag"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:210
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "Dagens spørgsmål"
@@ -14343,7 +14348,7 @@ msgstr "Du kan slette dine personlige data når som helst"
 msgid "You can discuss the battle here."
 msgstr "Du kan diskutere slaget her."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:240
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:255
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "Du kan diskutere dagens spørgsmål her."
@@ -14771,6 +14776,21 @@ msgstr ""
 "— det er vigtigt at deltage i denne korte samtale, før man hopper ind i "
 "professionelle emner. Her er nogle nyttige engelske vendinger til at starte "
 "interviewet:"
+
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:79
+#. js-lingui-explicit-id
+#~ msgid "Main Chat"
+#~ msgstr ""
+
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:80
+#. js-lingui-explicit-id
+#~ msgid "Join the main chat and connect with other members!"
+#~ msgstr ""
+
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:87
+#. js-lingui-explicit-id
+#~ msgid "Join the global chat and connect with other members!"
+#~ msgstr "Deltag i den globale chat og forbind med andre medlemmer!"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
 #. js-lingui-explicit-id

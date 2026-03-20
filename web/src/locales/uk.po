@@ -1740,8 +1740,8 @@ msgstr ""
 "І я починаю бачити, де може лежати значний ризик: у тихій секунді, коли "
 "зникають сумніви."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:67
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:78
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:71
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:82
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "Відповідайте на нове запитання щодня і побачте, як ваш стиль покращується!"
@@ -2683,8 +2683,9 @@ msgstr "Спільнота"
 msgid "Community access"
 msgstr "Доступ до спільноти"
 
-#: src/features/Community/CommunityDashboard.tsx:116
 #: src/features/Community/CommunityPage.tsx:27
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:51
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:79
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
@@ -2701,7 +2702,7 @@ msgstr "Спільнота"
 msgid "Community messages:"
 msgstr "Повідомлення від спільноти:"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:233
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "Відповіді спільноти:"
@@ -3224,7 +3225,7 @@ msgstr "Щоденна практика мови"
 msgid "Daily Limits?"
 msgstr "Добові ліміти?"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:77
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:81
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Щоденне питання"
@@ -3235,9 +3236,8 @@ msgstr "Щоденне питання"
 msgid "Daily Question Chat"
 msgstr "Щоденний запитання чат"
 
-#: src/features/Community/CommunityDashboard.tsx:146
 #: src/features/Community/CommunityPage.tsx:31
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:59
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:63
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "Щоденні запитання"
@@ -3326,7 +3326,7 @@ msgstr "Дебати розпочаті!"
 msgid "Debate topics will be selected randomly."
 msgstr "Теми для дебатів обиратимуться випадковим чином."
 
-#: src/features/Community/CommunityDashboard.tsx:137
+#: src/features/Community/CommunityDashboard.tsx:123
 #: src/features/Community/CommunityPage.tsx:30
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -5362,7 +5362,7 @@ msgstr "Повний голосовий функціонал"
 msgid "Fun facts about yourself"
 msgstr "Цікаві факти про себе"
 
-#: src/features/Community/CommunityDashboard.tsx:123
+#: src/features/Community/CommunityDashboard.tsx:115
 #: src/features/Community/CommunityPage.tsx:28
 #: src/features/Community/GamePage.tsx:72
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -7751,6 +7751,12 @@ msgstr "Приєднуйтесь до кандидатів, які змінил�
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "Приєднуйтесь до кімнат, щоб обговорювати конкретні теми з іншими учасниками"
 
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:59
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:80
+#. js-lingui-explicit-id
+msgid "Join the community chat and connect with other members!"
+msgstr "Приєднуйтесь до спільного чату та спілкуйтеся з іншими учасниками!"
+
 #: src/features/Feature/featuresData.ts:354
 #. js-lingui-explicit-id
 msgid ""
@@ -7939,7 +7945,7 @@ msgstr "Ліниве завантаження"
 msgid "Leaderboard"
 msgstr "Таблиця лідерів"
 
-#: src/features/Community/CommunityDashboard.tsx:153
+#: src/features/Community/CommunityDashboard.tsx:131
 #: src/features/Community/CommunityPage.tsx:33
 #. js-lingui-explicit-id
 msgid "Leaderboards"
@@ -10235,7 +10241,7 @@ msgstr "Підготовка вашої гри..."
 msgid "Previous"
 msgstr "Попередній"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:210
 #. js-lingui-explicit-id
 msgid "Previous Question"
 msgstr "Попереднє питання"
@@ -10276,7 +10282,7 @@ msgstr "Пріоритетна підтримка"
 msgid "Privacy Policy"
 msgstr "Політика конфіденційності"
 
-#: src/features/Community/CommunityDashboard.tsx:160
+#: src/features/Community/CommunityDashboard.tsx:138
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -10398,7 +10404,7 @@ msgid "Purchase 5 hours"
 msgstr "Придбати 5 годин"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:99
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:103
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "Питання"
@@ -11150,7 +11156,7 @@ msgstr "Друге місце"
 msgid "See all"
 msgstr "Переглянути все"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:79
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:83
 #. js-lingui-explicit-id
 msgid "See All"
 msgstr "Переглянути все"
@@ -12317,7 +12323,6 @@ msgstr "Технічна співбесіда з AI фронтенд-розро�
 msgid "Tech stack covered"
 msgstr "Технологічний стек охоплено"
 
-#: src/features/Community/CommunityDashboard.tsx:130
 #: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Tech Support"
@@ -13040,12 +13045,12 @@ msgstr ""
 "мікрофон. Вебкамера є необов’язковою і використовується лише якщо ви "
 "ввімкнете зворотний зв’язок з вебкамери. Інсталяція не потрібна."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:100
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "Сьогодні"
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:202
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:210
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "Сьогоднішнє Запитання"
@@ -14487,7 +14492,7 @@ msgstr "Ви можете видалити свої особисті дані б
 msgid "You can discuss the battle here."
 msgstr "Ви можете обговорити битву тут."
 
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:240
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:255
 #. js-lingui-explicit-id
 msgid "You can discuss the daily question here."
 msgstr "Ви можете обговорити щоденне запитання тут."
@@ -14918,6 +14923,21 @@ msgid ""
 msgstr ""
 "— важливо задіяти цю коротку розмову, перш ніж приступати до професійних "
 "тем. Ось деякі корисні англійські фрази для початку інтерв'ю:"
+
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:79
+#. js-lingui-explicit-id
+#~ msgid "Main Chat"
+#~ msgstr ""
+
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:80
+#. js-lingui-explicit-id
+#~ msgid "Join the main chat and connect with other members!"
+#~ msgstr ""
+
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:87
+#. js-lingui-explicit-id
+#~ msgid "Join the global chat and connect with other members!"
+#~ msgstr "Приєднуйтеся до глобального чату та спілкуйтеся з іншими учасниками!"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
 #. js-lingui-explicit-id
