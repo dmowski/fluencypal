@@ -180,6 +180,7 @@ export const StoreCard = (props: StoreCardProps) => {
             component={'video'}
             src={props.previewVideoUrl}
             autoPlay
+            playsInline
             loop
             muted
             sx={{
