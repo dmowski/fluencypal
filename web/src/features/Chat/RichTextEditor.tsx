@@ -68,7 +68,6 @@ export function RichTextEditor({ value, onChange }: RichTextEditorProps) {
         '[aria-label="editable markdown"]': {
           paddingTop: 0,
         },
-        //'--basePageBg': 'transparent',
       }}
     >
       <MDXEditor
