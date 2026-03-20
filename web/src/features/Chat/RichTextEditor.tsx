@@ -54,17 +54,21 @@ export function RichTextEditor({ value, onChange }: RichTextEditorProps) {
       className="dark"
       sx={{
         border: '1px solid rgba(255, 255, 255, 0.3)',
-        borderRadius: '3px',
+        borderRadius: '13px',
         backgroundColor: 'rgba(0, 0, 0, 0.4)',
         '.mdxeditor-toolbar': {
           borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
-          borderRadius: '3px 3px 0 0',
+          borderRadius: '13px 13px 0 0',
         },
         '.mdxeditor img': {
           width: '140px',
           maxWidth: '140px',
           height: 'auto',
         },
+        '[aria-label="editable markdown"]': {
+          paddingTop: 0,
+        },
+        //'--basePageBg': 'transparent',
       }}
     >
       <MDXEditor
@@ -84,7 +88,6 @@ export function RichTextEditor({ value, onChange }: RichTextEditorProps) {
             toolbarContents: () => (
               <>
                 <BoldItalicUnderlineToggles />
-                <BlockTypeSelect />
                 <ListsToggle options={['bullet', 'number']} />
                 <InsertImage />
               </>
