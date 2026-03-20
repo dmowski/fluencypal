@@ -2670,8 +2670,8 @@ msgstr "Спілкуйтеся про компроміси у проектува
 msgid "Communication & Leadership"
 msgstr "Спілкування та Лідерство"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:37
-#: src/features/Dashboard/CommunityDashboardCard.tsx:49
+#: src/features/Dashboard/CommunityDashboardCard.tsx:115
+#: src/features/Dashboard/CommunityDashboardCard.tsx:127
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
 #. js-lingui-explicit-id
@@ -2707,6 +2707,11 @@ msgstr "Повідомлення від спільноти:"
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "Відповіді спільноти:"
+
+#: src/features/Dashboard/CommunityDashboardCard.tsx:88
+#. js-lingui-explicit-id
+msgid "Community Rooms"
+msgstr "Спільноти кімнат"
 
 #: src/features/Auth/AuthWall.tsx:43
 #. js-lingui-explicit-id
@@ -3104,7 +3109,7 @@ msgstr ""
 "Створюйте індивідуальні рольові ігри англійською мовою за допомогою ШІ | "
 "FluencyPal"
 
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:74
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:55
 #. js-lingui-explicit-id
 msgid "Create New Space"
 msgstr "Створити новий простір"
@@ -3329,6 +3334,7 @@ msgstr "Теми для дебатів обиратимуться випадко
 
 #: src/features/Community/CommunityDashboard.tsx:116
 #: src/features/Community/CommunityPage.tsx:30
+#: src/features/Navigation/PrivateMessagesButton.tsx:67
 #. js-lingui-explicit-id
 msgid "Debates"
 msgstr "Дебати"
@@ -4679,7 +4685,7 @@ msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "Досліджуйте методи розмови про здоров'я та психічне благополуччя."
 
 #: src/features/Community/CommunityDashboard.tsx:92
-#: src/features/Dashboard/CommunityDashboardCard.tsx:38
+#: src/features/Dashboard/CommunityDashboardCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr ""
@@ -5929,7 +5935,7 @@ msgstr "Ось слова, які ви найчастіше використов
 msgid "Here is the lesson plan for this session:"
 msgstr "Ось план уроку для цього заняття:"
 
-#: src/features/Navigation/PrivateMessagesButton.tsx:43
+#: src/features/Navigation/PrivateMessagesButton.tsx:46
 #. js-lingui-explicit-id
 msgid "Here you can see your private messages with other users."
 msgstr "Тут ви можете переглянути свої приватні повідомлення з іншими користувачами."
@@ -7458,7 +7464,7 @@ msgstr ""
 "вашому майбутньому собі - та вашій кар'єрі - відчути переваги вашого "
 "прихильного ставлення."
 
-#: src/features/Navigation/PrivateMessagesButton.tsx:35
+#: src/features/Navigation/PrivateMessagesButton.tsx:38
 #. js-lingui-explicit-id
 msgid "Inbox"
 msgstr ""
@@ -7759,7 +7765,7 @@ msgstr "Приєднатися"
 msgid "Join candidates who transformed their interview performance"
 msgstr "Приєднуйтесь до кандидатів, які змінили свої результати на співбесідах"
 
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:40
+#: src/features/Dashboard/CommunityDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "Приєднуйтесь до кімнат, щоб обговорювати конкретні теми з іншими учасниками"
@@ -8049,7 +8055,7 @@ msgstr ""
 "Вивчайте лексику, яка відповідає вашим цілям, та використовуйте її в "
 "контексті."
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:50
+#: src/features/Dashboard/CommunityDashboardCard.tsx:128
 #. js-lingui-explicit-id
 msgid "Learn with the community"
 msgstr "Навчайтеся з спільнотою"
@@ -8407,6 +8413,11 @@ msgstr "Зазначте ваш технологічний стек (React/JS/HT
 #. js-lingui-explicit-id
 msgid "Message hidden due to policy violation."
 msgstr "Повідомлення приховано через порушення політики."
+
+#: src/features/Navigation/PrivateMessagesButton.tsx:63
+#. js-lingui-explicit-id
+msgid "Messages"
+msgstr "Повідомлення"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
@@ -9178,7 +9189,7 @@ msgstr "Онлайн практика мов"
 msgid "Oops! Something went wrong"
 msgstr "Ой! Щось пішло не так"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
+#: src/features/Dashboard/CommunityDashboardCard.tsx:31
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:251
 #: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:247
@@ -10295,7 +10306,6 @@ msgstr "Пріоритетна підтримка"
 msgid "Privacy Policy"
 msgstr "Політика конфіденційності"
 
-#: src/features/Community/CommunityDashboard.tsx:125
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -11045,11 +11055,6 @@ msgstr "Рольові Ігри"
 #. js-lingui-explicit-id
 msgid "Roleplay Preview"
 msgstr "Попередній перегляд рольової гри"
-
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:33
-#. js-lingui-explicit-id
-msgid "Rooms"
-msgstr "Кімнати"
 
 #: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
@@ -14955,38 +14960,3 @@ msgid ""
 msgstr ""
 "— важливо задіяти цю коротку розмову, перш ніж приступати до професійних "
 "тем. Ось деякі корисні англійські фрази для початку інтерв'ю:"
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:79
-#. js-lingui-explicit-id
-#~ msgid "Main Chat"
-#~ msgstr ""
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:80
-#. js-lingui-explicit-id
-#~ msgid "Join the main chat and connect with other members!"
-#~ msgstr ""
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:87
-#. js-lingui-explicit-id
-#~ msgid "Join the global chat and connect with other members!"
-#~ msgstr "Приєднуйтеся до глобального чату та спілкуйтеся з іншими учасниками!"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
-#. js-lingui-explicit-id
-#~ msgid "Add Response"
-#~ msgstr "Додати відповідь"
-
-#: src/features/Chat/AgeConfirmation.tsx:72
-#. js-lingui-explicit-id
-#~ msgid "No, take me back"
-#~ msgstr "Ні, поверніть мене назад"
-
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
-#. js-lingui-explicit-id
-#~ msgid "Read"
-#~ msgstr "Читати"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
-#. js-lingui-explicit-id
-#~ msgid "What do you think?"
-#~ msgstr "Що ви думаєте?"

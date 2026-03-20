@@ -2670,8 +2670,8 @@ msgstr "สื่อสารข้อแลกเปลี่ยนในกา
 msgid "Communication & Leadership"
 msgstr "การสื่อสารและภาวะผู้นำ"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:37
-#: src/features/Dashboard/CommunityDashboardCard.tsx:49
+#: src/features/Dashboard/CommunityDashboardCard.tsx:115
+#: src/features/Dashboard/CommunityDashboardCard.tsx:127
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
 #. js-lingui-explicit-id
@@ -2707,6 +2707,13 @@ msgstr "ข้อความจากชุมชน:"
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "การตอบสนองของชุมชน:"
+
+#: src/features/Dashboard/CommunityDashboardCard.tsx:88
+#. js-lingui-explicit-id
+msgid "Community Rooms"
+msgstr ""
+"\n"
+"ห้องชุมชน\n"
 
 #: src/features/Auth/AuthWall.tsx:43
 #. js-lingui-explicit-id
@@ -3106,7 +3113,7 @@ msgstr "สร้างบทบาทสมมติภาษาอังกฤ
 msgid "Create Custom English Role Plays with AI | FluencyPal"
 msgstr "สร้างบทบาทสมมติภาษาอังกฤษแบบกำหนดเองด้วย AI | FluencyPal"
 
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:74
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:55
 #. js-lingui-explicit-id
 msgid "Create New Space"
 msgstr "สร้างสเปซใหม่"
@@ -3337,6 +3344,7 @@ msgstr "หัวข้ออภิปรายจะถูกสุ่มเล
 
 #: src/features/Community/CommunityDashboard.tsx:116
 #: src/features/Community/CommunityPage.tsx:30
+#: src/features/Navigation/PrivateMessagesButton.tsx:67
 #. js-lingui-explicit-id
 msgid "Debates"
 msgstr "การโต้วาที"
@@ -4678,7 +4686,7 @@ msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "สำรวจเทคนิคในการสนทนาเกี่ยวกับสุขภาพร่างกายและสุขภาพจิต."
 
 #: src/features/Community/CommunityDashboard.tsx:92
-#: src/features/Dashboard/CommunityDashboardCard.tsx:38
+#: src/features/Dashboard/CommunityDashboardCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "สำรวจชุมชน, เข้าร่วมการสนทนา, และเชื่อมต่อกับสมาชิกคนอื่นๆ"
@@ -5896,7 +5904,7 @@ msgstr "นี่คือคำที่คุณใช้มากที่ส
 msgid "Here is the lesson plan for this session:"
 msgstr "นี่คือแผนการสอนสำหรับเซสชันนี้:"
 
-#: src/features/Navigation/PrivateMessagesButton.tsx:43
+#: src/features/Navigation/PrivateMessagesButton.tsx:46
 #. js-lingui-explicit-id
 msgid "Here you can see your private messages with other users."
 msgstr "ที่นี่คุณสามารถดูข้อความส่วนตัวของคุณกับผู้ใช้อื่นๆ ได้"
@@ -7418,7 +7426,7 @@ msgstr ""
 "เริ่มต้นทำการวันนี้และให้ฉันในอนาคต—และอาชีพของคุณ—เก็บผลตอบแทนจากความมุ่งมั"
 "่นของคุณ."
 
-#: src/features/Navigation/PrivateMessagesButton.tsx:35
+#: src/features/Navigation/PrivateMessagesButton.tsx:38
 #. js-lingui-explicit-id
 msgid "Inbox"
 msgstr "กล่องขาเข้า"
@@ -7715,7 +7723,7 @@ msgstr "เข้าร่วม"
 msgid "Join candidates who transformed their interview performance"
 msgstr "เข้าร่วมกับผู้สมัครที่ได้รับการเปลี่ยนแปลงในการแสดงผลสัมภาษณ์ของพวกเขา"
 
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:40
+#: src/features/Dashboard/CommunityDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "เข้าร่วมห้องเพื่อพูดคุยเกี่ยวกับหัวข้อเฉพาะกับสมาชิกคนอื่น ๆ"
@@ -8002,7 +8010,7 @@ msgstr ""
 msgid "Learn vocabulary that matches your goals and use it in context."
 msgstr "เรียนรู้คำศัพท์ที่ตรงกับเป้าหมายของคุณและใช้ในบริบท"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:50
+#: src/features/Dashboard/CommunityDashboardCard.tsx:128
 #. js-lingui-explicit-id
 msgid "Learn with the community"
 msgstr "เรียนรู้ไปกับชุมชน"
@@ -8364,6 +8372,11 @@ msgstr "ระบุเทคโนโลยีที่คุณใช้ (Reac
 #. js-lingui-explicit-id
 msgid "Message hidden due to policy violation."
 msgstr "ข้อความถูกซ่อนเนื่องจากละเมิดนโยบาย"
+
+#: src/features/Navigation/PrivateMessagesButton.tsx:63
+#. js-lingui-explicit-id
+msgid "Messages"
+msgstr "ข้อความ"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
@@ -9122,7 +9135,7 @@ msgstr "การฝึกภาษาทางออนไลน์"
 msgid "Oops! Something went wrong"
 msgstr "โอ๊ะ! มีบางอย่างผิดพลาด"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
+#: src/features/Dashboard/CommunityDashboardCard.tsx:31
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:251
 #: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:247
@@ -10218,7 +10231,6 @@ msgstr "การสนับสนุนลำดับความสำคั
 msgid "Privacy Policy"
 msgstr "นโยบายความเป็นส่วนตัว"
 
-#: src/features/Community/CommunityDashboard.tsx:125
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -10962,11 +10974,6 @@ msgstr "บทบาทสมมติ"
 #. js-lingui-explicit-id
 msgid "Roleplay Preview"
 msgstr "ตัวอย่างบทบาทสมมติ"
-
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:33
-#. js-lingui-explicit-id
-msgid "Rooms"
-msgstr "ห้อง"
 
 #: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
@@ -14837,38 +14844,3 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:79
-#. js-lingui-explicit-id
-#~ msgid "Main Chat"
-#~ msgstr ""
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:80
-#. js-lingui-explicit-id
-#~ msgid "Join the main chat and connect with other members!"
-#~ msgstr ""
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:87
-#. js-lingui-explicit-id
-#~ msgid "Join the global chat and connect with other members!"
-#~ msgstr "เข้าร่วมการสนทนาทั่วโลกและเชื่อมต่อกับสมาชิกคนอื่น ๆ!"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
-#. js-lingui-explicit-id
-#~ msgid "Add Response"
-#~ msgstr "เพิ่มคำตอบ"
-
-#: src/features/Chat/AgeConfirmation.tsx:72
-#. js-lingui-explicit-id
-#~ msgid "No, take me back"
-#~ msgstr "ไม่ พาฉันกลับ"
-
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
-#. js-lingui-explicit-id
-#~ msgid "Read"
-#~ msgstr "อ่าน"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
-#. js-lingui-explicit-id
-#~ msgid "What do you think?"
-#~ msgstr "คุณคิดว่าอย่างไร?"

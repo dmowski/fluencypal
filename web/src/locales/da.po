@@ -2663,8 +2663,8 @@ msgstr "Kommunikér systemdesign-afvejninger"
 msgid "Communication & Leadership"
 msgstr "Kommunikation & Lederskab"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:37
-#: src/features/Dashboard/CommunityDashboardCard.tsx:49
+#: src/features/Dashboard/CommunityDashboardCard.tsx:115
+#: src/features/Dashboard/CommunityDashboardCard.tsx:127
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
 #. js-lingui-explicit-id
@@ -2700,6 +2700,11 @@ msgstr "Fællesskabsmeddelelser:"
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "Fællesskabets svar:"
+
+#: src/features/Dashboard/CommunityDashboardCard.tsx:88
+#. js-lingui-explicit-id
+msgid "Community Rooms"
+msgstr "Fællesrum"
 
 #: src/features/Auth/AuthWall.tsx:43
 #. js-lingui-explicit-id
@@ -3094,7 +3099,7 @@ msgstr "Opret brugerdefinerede engelske rollespil med AI"
 msgid "Create Custom English Role Plays with AI | FluencyPal"
 msgstr "Opret brugerdefinerede engelske rollespil med AI | FluencyPal"
 
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:74
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:55
 #. js-lingui-explicit-id
 msgid "Create New Space"
 msgstr "Opret Nytt Rum"
@@ -3319,6 +3324,7 @@ msgstr "Debatemner vil blive valgt tilfældigt."
 
 #: src/features/Community/CommunityDashboard.tsx:116
 #: src/features/Community/CommunityPage.tsx:30
+#: src/features/Navigation/PrivateMessagesButton.tsx:67
 #. js-lingui-explicit-id
 msgid "Debates"
 msgstr "Debatter"
@@ -4650,7 +4656,7 @@ msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "Udforsk teknikker til at tale om velvære og mental sundhed."
 
 #: src/features/Community/CommunityDashboard.tsx:92
-#: src/features/Dashboard/CommunityDashboardCard.tsx:38
+#: src/features/Dashboard/CommunityDashboardCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "Udforsk fællesskabet, deltag i diskussioner og forbind med andre medlemmer"
@@ -5849,7 +5855,7 @@ msgstr "Her er de ord, du brugte mest i dine samtaler."
 msgid "Here is the lesson plan for this session:"
 msgstr "Her er lektionsplanen for denne session:"
 
-#: src/features/Navigation/PrivateMessagesButton.tsx:43
+#: src/features/Navigation/PrivateMessagesButton.tsx:46
 #. js-lingui-explicit-id
 msgid "Here you can see your private messages with other users."
 msgstr "Her kan du se dine private beskeder med andre brugere."
@@ -7378,7 +7384,7 @@ msgstr ""
 "for at forbedre dine færdigheder. Start i dag, og lad din fremtidige selv – "
 "og din karriere – høste fordelene ved din dedikation.\n"
 
-#: src/features/Navigation/PrivateMessagesButton.tsx:35
+#: src/features/Navigation/PrivateMessagesButton.tsx:38
 #. js-lingui-explicit-id
 msgid "Inbox"
 msgstr "Indbakke"
@@ -7679,7 +7685,7 @@ msgstr "Tilmeld dig"
 msgid "Join candidates who transformed their interview performance"
 msgstr "Deltag i kandidater, der har transformeret deres interviewpræstation"
 
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:40
+#: src/features/Dashboard/CommunityDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "Deltag i rum for at diskutere specifikke emner med andre medlemmer"
@@ -7964,7 +7970,7 @@ msgstr ""
 msgid "Learn vocabulary that matches your goals and use it in context."
 msgstr "Lær ordforråd, der matcher dine mål, og brug det i kontekst."
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:50
+#: src/features/Dashboard/CommunityDashboardCard.tsx:128
 #. js-lingui-explicit-id
 msgid "Learn with the community"
 msgstr "Lær med fællesskabet"
@@ -8322,6 +8328,11 @@ msgstr "Nævn din teknologiske stak (React/JS/HTML/CSS)"
 #. js-lingui-explicit-id
 msgid "Message hidden due to policy violation."
 msgstr "Besked skjult på grund af politikovertrædelse."
+
+#: src/features/Navigation/PrivateMessagesButton.tsx:63
+#. js-lingui-explicit-id
+msgid "Messages"
+msgstr "Beskeder"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
@@ -9087,7 +9098,7 @@ msgstr "Online sprogpraksis"
 msgid "Oops! Something went wrong"
 msgstr "Ups! Noget gik galt"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
+#: src/features/Dashboard/CommunityDashboardCard.tsx:31
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:251
 #: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:247
@@ -10186,7 +10197,6 @@ msgstr "Prioritetsstøtte"
 msgid "Privacy Policy"
 msgstr "Privatlivspolitik"
 
-#: src/features/Community/CommunityDashboard.tsx:125
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -10931,11 +10941,6 @@ msgstr "Roller-spil"
 #. js-lingui-explicit-id
 msgid "Roleplay Preview"
 msgstr "Roleplay Forhåndsvisning"
-
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:33
-#. js-lingui-explicit-id
-msgid "Rooms"
-msgstr "Værelser"
 
 #: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
@@ -14804,38 +14809,3 @@ msgstr ""
 "— det er vigtigt at deltage i denne korte samtale, før man hopper ind i "
 "professionelle emner. Her er nogle nyttige engelske vendinger til at starte "
 "interviewet:"
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:79
-#. js-lingui-explicit-id
-#~ msgid "Main Chat"
-#~ msgstr ""
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:80
-#. js-lingui-explicit-id
-#~ msgid "Join the main chat and connect with other members!"
-#~ msgstr ""
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:87
-#. js-lingui-explicit-id
-#~ msgid "Join the global chat and connect with other members!"
-#~ msgstr "Deltag i den globale chat og forbind med andre medlemmer!"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
-#. js-lingui-explicit-id
-#~ msgid "Add Response"
-#~ msgstr "Tilføj svar"
-
-#: src/features/Chat/AgeConfirmation.tsx:72
-#. js-lingui-explicit-id
-#~ msgid "No, take me back"
-#~ msgstr "Nej, tag mig tilbage"
-
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
-#. js-lingui-explicit-id
-#~ msgid "Read"
-#~ msgstr "Læs"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
-#. js-lingui-explicit-id
-#~ msgid "What do you think?"
-#~ msgstr "Hvad tænker du?"

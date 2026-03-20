@@ -2534,8 +2534,8 @@ msgstr "システム設計のトレードオフを伝える"
 msgid "Communication & Leadership"
 msgstr "コミュニケーション & リーダーシップ"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:37
-#: src/features/Dashboard/CommunityDashboardCard.tsx:49
+#: src/features/Dashboard/CommunityDashboardCard.tsx:115
+#: src/features/Dashboard/CommunityDashboardCard.tsx:127
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
 #. js-lingui-explicit-id
@@ -2573,6 +2573,11 @@ msgstr "コミュニティメッセージ:"
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "コミュニティの回答:"
+
+#: src/features/Dashboard/CommunityDashboardCard.tsx:88
+#. js-lingui-explicit-id
+msgid "Community Rooms"
+msgstr "コミュニティルーム"
 
 #: src/features/Auth/AuthWall.tsx:43
 #. js-lingui-explicit-id
@@ -2950,7 +2955,7 @@ msgstr "AI でカスタム英語ロールプレイを作成"
 msgid "Create Custom English Role Plays with AI | FluencyPal"
 msgstr "カスタム英語ロールプレイをAIで作成 | FluencyPal"
 
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:74
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:55
 #. js-lingui-explicit-id
 msgid "Create New Space"
 msgstr "新しいスペースを作成"
@@ -3172,6 +3177,7 @@ msgstr "ランダムにディベートトピックが選ばれます。"
 
 #: src/features/Community/CommunityDashboard.tsx:116
 #: src/features/Community/CommunityPage.tsx:30
+#: src/features/Navigation/PrivateMessagesButton.tsx:67
 #. js-lingui-explicit-id
 msgid "Debates"
 msgstr "ディベート"
@@ -4403,7 +4409,7 @@ msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "ウェルネスとメンタルヘルスについて話すための技術を探究しましょう。"
 
 #: src/features/Community/CommunityDashboard.tsx:92
-#: src/features/Dashboard/CommunityDashboardCard.tsx:38
+#: src/features/Dashboard/CommunityDashboardCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "コミュニティを探索し、ディスカッションに参加し、他のメンバーとつながりましょう"
@@ -5531,7 +5537,7 @@ msgstr "これらは、あなたの会話で最も使用された単語です。
 msgid "Here is the lesson plan for this session:"
 msgstr "このセッションのレッスンプランは次のとおりです。"
 
-#: src/features/Navigation/PrivateMessagesButton.tsx:43
+#: src/features/Navigation/PrivateMessagesButton.tsx:46
 #. js-lingui-explicit-id
 msgid "Here you can see your private messages with other users."
 msgstr "ここで他のユーザーとのプライベートメッセージを見ることができます。"
@@ -6885,7 +6891,7 @@ msgstr ""
 "FluencyPalを無料で試して、より流暢なインタビューへの旅を始めましょう。インタラクティブな練習セッションに参加し、リアルタイムのフィードバックを"
 "受けてスキルを磨きましょう。今日から始めて、将来のあなた自身―そしてあなたのキャリア―があなたの奉仕の恩恵を受けることを可能にしましょう。"
 
-#: src/features/Navigation/PrivateMessagesButton.tsx:35
+#: src/features/Navigation/PrivateMessagesButton.tsx:38
 #. js-lingui-explicit-id
 msgid "Inbox"
 msgstr "受信箱"
@@ -7180,7 +7186,7 @@ msgstr "参加する"
 msgid "Join candidates who transformed their interview performance"
 msgstr "面接のパフォーマンスを向上させた候補者に参加しましょう"
 
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:40
+#: src/features/Dashboard/CommunityDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "特定のトピックについて他のメンバーと話し合うためにルームに参加してください"
@@ -7450,7 +7456,7 @@ msgstr "目標に基づいて役立つ英単語を学びましょう。文脈に
 msgid "Learn vocabulary that matches your goals and use it in context."
 msgstr "目標に合った語彙を学び、文脈の中でそれを使用しましょう。"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:50
+#: src/features/Dashboard/CommunityDashboardCard.tsx:128
 #. js-lingui-explicit-id
 msgid "Learn with the community"
 msgstr "コミュニティと一緒に学ぶ"
@@ -7801,6 +7807,11 @@ msgstr "あなたの技術スタックを記載してください (React/JS/HTML
 #. js-lingui-explicit-id
 msgid "Message hidden due to policy violation."
 msgstr "ポリシー違反のためメッセージが非表示になっています。"
+
+#: src/features/Navigation/PrivateMessagesButton.tsx:63
+#. js-lingui-explicit-id
+msgid "Messages"
+msgstr "メッセージ"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
@@ -8518,7 +8529,7 @@ msgstr "オンライン言語練習"
 msgid "Oops! Something went wrong"
 msgstr "おっと！何かが間違っています"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
+#: src/features/Dashboard/CommunityDashboardCard.tsx:31
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:251
 #: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:247
@@ -9553,7 +9564,6 @@ msgstr "優先サポート"
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 
-#: src/features/Community/CommunityDashboard.tsx:125
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -10282,11 +10292,6 @@ msgstr "ロールプレイ"
 #. js-lingui-explicit-id
 msgid "Roleplay Preview"
 msgstr "ロールプレイ プレビュー"
-
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:33
-#. js-lingui-explicit-id
-msgid "Rooms"
-msgstr "部屋"
 
 #: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
@@ -13970,38 +13975,3 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:79
-#. js-lingui-explicit-id
-#~ msgid "Main Chat"
-#~ msgstr ""
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:80
-#. js-lingui-explicit-id
-#~ msgid "Join the main chat and connect with other members!"
-#~ msgstr ""
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:87
-#. js-lingui-explicit-id
-#~ msgid "Join the global chat and connect with other members!"
-#~ msgstr "グローバルチャットに参加して、他のメンバーとつながりましょう！"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
-#. js-lingui-explicit-id
-#~ msgid "Add Response"
-#~ msgstr "レスポンスを追加"
-
-#: src/features/Chat/AgeConfirmation.tsx:72
-#. js-lingui-explicit-id
-#~ msgid "No, take me back"
-#~ msgstr "いや、戻して"
-
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
-#. js-lingui-explicit-id
-#~ msgid "Read"
-#~ msgstr "読む"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
-#. js-lingui-explicit-id
-#~ msgid "What do you think?"
-#~ msgstr "何を考えていますか？"

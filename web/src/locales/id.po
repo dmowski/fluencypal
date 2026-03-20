@@ -2693,8 +2693,8 @@ msgstr "Komunikasikan kompromi desain sistem"
 msgid "Communication & Leadership"
 msgstr "Komunikasi & Kepemimpinan"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:37
-#: src/features/Dashboard/CommunityDashboardCard.tsx:49
+#: src/features/Dashboard/CommunityDashboardCard.tsx:115
+#: src/features/Dashboard/CommunityDashboardCard.tsx:127
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
 #. js-lingui-explicit-id
@@ -2730,6 +2730,11 @@ msgstr "Pesan komunitas:"
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "Respon dari Komunitas:"
+
+#: src/features/Dashboard/CommunityDashboardCard.tsx:88
+#. js-lingui-explicit-id
+msgid "Community Rooms"
+msgstr "Ruang Komunitas"
 
 #: src/features/Auth/AuthWall.tsx:43
 #. js-lingui-explicit-id
@@ -3126,7 +3131,7 @@ msgstr "Buat Bermain Peran Bahasa Inggris Kustom dengan AI"
 msgid "Create Custom English Role Plays with AI | FluencyPal"
 msgstr "Buat Permainan Peran Bahasa Inggris Khusus dengan AI | FluencyPal"
 
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:74
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:55
 #. js-lingui-explicit-id
 msgid "Create New Space"
 msgstr "Buat Ruang Baru"
@@ -3351,6 +3356,7 @@ msgstr "Topik debat akan dipilih secara acak."
 
 #: src/features/Community/CommunityDashboard.tsx:116
 #: src/features/Community/CommunityPage.tsx:30
+#: src/features/Navigation/PrivateMessagesButton.tsx:67
 #. js-lingui-explicit-id
 msgid "Debates"
 msgstr "Debat"
@@ -4725,7 +4731,7 @@ msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "Jelajahi teknik untuk berbicara tentang kesejahteraan dan kesehatan mental."
 
 #: src/features/Community/CommunityDashboard.tsx:92
-#: src/features/Dashboard/CommunityDashboardCard.tsx:38
+#: src/features/Dashboard/CommunityDashboardCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr ""
@@ -5954,7 +5960,7 @@ msgstr ""
 msgid "Here is the lesson plan for this session:"
 msgstr "Berikut adalah rencana pelajaran untuk sesi ini:"
 
-#: src/features/Navigation/PrivateMessagesButton.tsx:43
+#: src/features/Navigation/PrivateMessagesButton.tsx:46
 #. js-lingui-explicit-id
 msgid "Here you can see your private messages with other users."
 msgstr "Di sini Anda dapat melihat pesan pribadi Anda dengan pengguna lain."
@@ -7524,7 +7530,7 @@ msgstr ""
 "biarkan diri Anda di masa depan—and karier Anda—memanen manfaat dari "
 "dedikasi Anda."
 
-#: src/features/Navigation/PrivateMessagesButton.tsx:35
+#: src/features/Navigation/PrivateMessagesButton.tsx:38
 #. js-lingui-explicit-id
 msgid "Inbox"
 msgstr "Kotak Masuk"
@@ -7829,7 +7835,7 @@ msgstr "Bergabung"
 msgid "Join candidates who transformed their interview performance"
 msgstr "Bergabunglah dengan kandidat yang telah mengubah kinerja wawancara mereka"
 
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:40
+#: src/features/Dashboard/CommunityDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
 msgstr ""
@@ -8121,7 +8127,7 @@ msgstr ""
 msgid "Learn vocabulary that matches your goals and use it in context."
 msgstr "Belajar kosakata yang sesuai dengan tujuan Anda dan gunakan dalam konteks."
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:50
+#: src/features/Dashboard/CommunityDashboardCard.tsx:128
 #. js-lingui-explicit-id
 msgid "Learn with the community"
 msgstr ""
@@ -8479,6 +8485,11 @@ msgstr "Sebutkan tumpukan teknologi Anda (React/JS/HTML/CSS)"
 #. js-lingui-explicit-id
 msgid "Message hidden due to policy violation."
 msgstr "Pesan disembunyikan karena pelanggaran kebijakan."
+
+#: src/features/Navigation/PrivateMessagesButton.tsx:63
+#. js-lingui-explicit-id
+msgid "Messages"
+msgstr "Pesan"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
@@ -9254,7 +9265,7 @@ msgstr "Online Language Practice"
 msgid "Oops! Something went wrong"
 msgstr "Ups! Ada yang salah"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
+#: src/features/Dashboard/CommunityDashboardCard.tsx:31
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:251
 #: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:247
@@ -10382,7 +10393,6 @@ msgstr "Dukungan prioritas"
 msgid "Privacy Policy"
 msgstr "Kebijakan Privasi"
 
-#: src/features/Community/CommunityDashboard.tsx:125
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -11137,11 +11147,6 @@ msgstr "Peran-Permain"
 #. js-lingui-explicit-id
 msgid "Roleplay Preview"
 msgstr "Pratinjau Bermain Peran"
-
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:33
-#. js-lingui-explicit-id
-msgid "Rooms"
-msgstr "Kamar-Kamar"
 
 #: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
@@ -15104,38 +15109,3 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:79
-#. js-lingui-explicit-id
-#~ msgid "Main Chat"
-#~ msgstr ""
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:80
-#. js-lingui-explicit-id
-#~ msgid "Join the main chat and connect with other members!"
-#~ msgstr ""
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:87
-#. js-lingui-explicit-id
-#~ msgid "Join the global chat and connect with other members!"
-#~ msgstr "Bergabunglah dengan obrolan global dan terhubung dengan anggota lainnya!"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
-#. js-lingui-explicit-id
-#~ msgid "Add Response"
-#~ msgstr "Tambahkan Tanggapan"
-
-#: src/features/Chat/AgeConfirmation.tsx:72
-#. js-lingui-explicit-id
-#~ msgid "No, take me back"
-#~ msgstr "Tidak, bawa saya kembali"
-
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
-#. js-lingui-explicit-id
-#~ msgid "Read"
-#~ msgstr "Baca"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
-#. js-lingui-explicit-id
-#~ msgid "What do you think?"
-#~ msgstr "Apa pendapat Anda?"

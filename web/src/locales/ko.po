@@ -2535,8 +2535,8 @@ msgstr "시스템 설계 트레이드오프를 전달하기"
 msgid "Communication & Leadership"
 msgstr "커뮤니케이션 & 리더십"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:37
-#: src/features/Dashboard/CommunityDashboardCard.tsx:49
+#: src/features/Dashboard/CommunityDashboardCard.tsx:115
+#: src/features/Dashboard/CommunityDashboardCard.tsx:127
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
 #. js-lingui-explicit-id
@@ -2572,6 +2572,11 @@ msgstr "커뮤니티 메시지:"
 #. js-lingui-explicit-id
 msgid "Community Responses:"
 msgstr "커뮤니티 응답:"
+
+#: src/features/Dashboard/CommunityDashboardCard.tsx:88
+#. js-lingui-explicit-id
+msgid "Community Rooms"
+msgstr "커뮤니티 룸"
 
 #: src/features/Auth/AuthWall.tsx:43
 #. js-lingui-explicit-id
@@ -2950,7 +2955,7 @@ msgstr "AI로 맞춤형 영어 역할극 만들기"
 msgid "Create Custom English Role Plays with AI | FluencyPal"
 msgstr "AI로 맞춤형 영어 역할극 만들기 | FluencyPal"
 
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:74
+#: src/features/Community/CommunitySpace/CommunityRooms.tsx:55
 #. js-lingui-explicit-id
 msgid "Create New Space"
 msgstr "새 공간 만들기"
@@ -3174,6 +3179,7 @@ msgstr "토론 주제는 무작위로 선택됩니다."
 
 #: src/features/Community/CommunityDashboard.tsx:116
 #: src/features/Community/CommunityPage.tsx:30
+#: src/features/Navigation/PrivateMessagesButton.tsx:67
 #. js-lingui-explicit-id
 msgid "Debates"
 msgstr "토론"
@@ -4413,7 +4419,7 @@ msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "웰니스와 정신건강에 대해 이야기하기 위한 기법을 탐색해보세요."
 
 #: src/features/Community/CommunityDashboard.tsx:92
-#: src/features/Dashboard/CommunityDashboardCard.tsx:38
+#: src/features/Dashboard/CommunityDashboardCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "커뮤니티를 탐색하고, 토론에 참여하며, 다른 회원들과 연결하세요."
@@ -5541,7 +5547,7 @@ msgstr "다음은 당신이 대화에서 가장 많이 사용한 단어들입니
 msgid "Here is the lesson plan for this session:"
 msgstr "이번 세션의 수업 계획은 다음과 같습니다:"
 
-#: src/features/Navigation/PrivateMessagesButton.tsx:43
+#: src/features/Navigation/PrivateMessagesButton.tsx:46
 #. js-lingui-explicit-id
 msgid "Here you can see your private messages with other users."
 msgstr "여기에서 다른 사용자와의 개인 메시지를 확인할 수 있습니다."
@@ -6897,7 +6903,7 @@ msgstr ""
 "FluencyPal을 무료로 시도하며 더 능통한 인터뷰를 위한 여정을 시작해 보세요. 상호 작용적인 연습 세션에 참여하고 실시간 "
 "피드백을 받아 당신의 능력을 세련되게 하세요. 오늘 시작하고, 미래의 자신-그리고 당신의 경력-이 당신의 헌신의 이점을 누리세요."
 
-#: src/features/Navigation/PrivateMessagesButton.tsx:35
+#: src/features/Navigation/PrivateMessagesButton.tsx:38
 #. js-lingui-explicit-id
 msgid "Inbox"
 msgstr "받은 편지함"
@@ -7194,7 +7200,7 @@ msgstr "가입하기"
 msgid "Join candidates who transformed their interview performance"
 msgstr "인터뷰 성과를 변환한 지원자들과 함께하세요"
 
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:40
+#: src/features/Dashboard/CommunityDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "특정 주제에 대해 다른 회원들과 토론하기 위해 방에 참여하세요"
@@ -7464,7 +7470,7 @@ msgstr "목표에 따라 유용한 영어 단어를 배워보세요. AI 수업�
 msgid "Learn vocabulary that matches your goals and use it in context."
 msgstr "당신의 목표에 맞는 어휘를 배우고 그것을 문맥에서 사용하세요."
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:50
+#: src/features/Dashboard/CommunityDashboardCard.tsx:128
 #. js-lingui-explicit-id
 msgid "Learn with the community"
 msgstr "커뮤니티와 함께 배우기"
@@ -7812,6 +7818,11 @@ msgstr "당신의 기술 스택을 언급하세요 (React/JS/HTML/CSS)"
 #. js-lingui-explicit-id
 msgid "Message hidden due to policy violation."
 msgstr "정책 위반으로 인해 메시지가 숨겨졌습니다."
+
+#: src/features/Navigation/PrivateMessagesButton.tsx:63
+#. js-lingui-explicit-id
+msgid "Messages"
+msgstr "메시지"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
@@ -8528,7 +8539,7 @@ msgstr "온라인 언어 연습"
 msgid "Oops! Something went wrong"
 msgstr "이런! 문제가 발생했습니다"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
+#: src/features/Dashboard/CommunityDashboardCard.tsx:31
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:251
 #: src/features/Dashboard/JustTalkCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:247
@@ -9564,7 +9575,6 @@ msgstr "우선 지원"
 msgid "Privacy Policy"
 msgstr "개인정보 보호정책"
 
-#: src/features/Community/CommunityDashboard.tsx:125
 #: src/features/Community/CommunityPage.tsx:29
 #. js-lingui-explicit-id
 msgid "Private Messages"
@@ -10287,11 +10297,6 @@ msgstr "역할 놀이"
 #. js-lingui-explicit-id
 msgid "Roleplay Preview"
 msgstr "롤플레이 미리보기"
-
-#: src/features/Community/CommunitySpace/CommunityRooms.tsx:33
-#. js-lingui-explicit-id
-msgid "Rooms"
-msgstr "방"
 
 #: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
@@ -13953,38 +13958,3 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:79
-#. js-lingui-explicit-id
-#~ msgid "Main Chat"
-#~ msgstr ""
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:80
-#. js-lingui-explicit-id
-#~ msgid "Join the main chat and connect with other members!"
-#~ msgstr ""
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:87
-#. js-lingui-explicit-id
-#~ msgid "Join the global chat and connect with other members!"
-#~ msgstr "글로벌 채팅에 참여하여 다른 회원들과 소통하세요!"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:248
-#. js-lingui-explicit-id
-#~ msgid "Add Response"
-#~ msgstr "응답 추가"
-
-#: src/features/Chat/AgeConfirmation.tsx:72
-#. js-lingui-explicit-id
-#~ msgid "No, take me back"
-#~ msgstr "아니요, 다시 돌아가고 싶어요"
-
-#: src/features/Dashboard/CommunityDashboardCard.tsx:22
-#. js-lingui-explicit-id
-#~ msgid "Read"
-#~ msgstr "읽기"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:245
-#. js-lingui-explicit-id
-#~ msgid "What do you think?"
-#~ msgstr "무엇을 생각하세요?"
