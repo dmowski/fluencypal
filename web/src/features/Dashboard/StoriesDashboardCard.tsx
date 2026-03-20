@@ -32,6 +32,7 @@ export const StoriesDashboardCard = () => {
         backgroundColor={'rgba(0, 0, 0, 0.5)'}
         label={''}
         previewImageUrl={currentStory.imageUrl || ''}
+        previewVideoUrl={currentStory.videoUrl || ''}
         title={currentStory.title}
         subTitle={currentStory.subtitle || ''}
         items={[]}

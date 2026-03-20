@@ -21,6 +21,7 @@ interface StoreCardProps {
   backgroundColor: string;
   borderSize?: string;
   previewImageUrl: string;
+  previewVideoUrl?: string;
 
   label?: string;
   title: string;
