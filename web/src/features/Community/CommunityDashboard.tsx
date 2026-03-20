@@ -111,25 +111,11 @@ export const CommunityDashboard = () => {
                     },
                   }}
                 >
-                  {access.canUseCommunity && (
-                    <CommunityCard
-                      title={i18n._('Community Chat')}
-                      onClick={() => setActivePage('chat')}
-                      badgeNumber={chatList.unreadCountGlobal}
-                      icon={<MessagesSquare style={iconStyle} />}
-                    />
-                  )}
                   <CommunityCard
                     title={i18n._('Game')}
                     onClick={() => setActivePage('game')}
                     badgeNumber={0}
                     icon={<Swords style={iconStyle} />}
-                  />
-
-                  <CommunityCard
-                    title={i18n._('Tech Support')}
-                    onClick={() => setActivePage('tech-support')}
-                    icon={<SupportAgentIcon style={iconStyle} />}
                   />
 
                   {access.canUseCommunity && (
