@@ -26,6 +26,7 @@ import { DevButton } from './DevButton';
 import { langFlags } from '../Lang/lang';
 import { useUrlParam } from '../Url/useUrlParam';
 import { LanguageSwitcher } from '../Lang/LanguageSwitcher';
+import { PrivateMessagesButton } from './PrivateMessagesButton';
 
 export interface IconProps {
   color?: string;
@@ -169,6 +170,7 @@ export const SimpleNavigationBar: React.FC = () => {
                   {i18n._('Update')}
                 </Button>
               )}
+              <PrivateMessagesButton />
               <Link
                 href={`${appNavigation.pageUrl('profile')}`}
                 onClick={(e) => navigateTo(e, 'profile')}
