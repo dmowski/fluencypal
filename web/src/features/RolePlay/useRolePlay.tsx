@@ -92,7 +92,7 @@ function useProvideRolePlay({
 }): RolePlayContextType {
   const userInfo = useAiUserInfo();
 
-  const [rolePlayId, setRolePlayId] = useUrlState('rolePlayId', '', true);
+  const [rolePlayId, setRolePlayId] = useUrlState('rolePlayId', '', false);
   const [selectedCategoryId, setSelectedCategoryId] = useUrlState(
     'rolePlayTab',
     rolePlayInfo.allCategory.categoryId,
