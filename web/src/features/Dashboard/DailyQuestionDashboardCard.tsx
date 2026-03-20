@@ -12,12 +12,27 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { DailyQuestionBadge } from '../Game/DailyQuestion/DailyQuestionBadge';
 import { useUrlState } from '../Url/useUrlState';
 
+const images: string[] = [
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774036079435-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035398903-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035331701-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035304855-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035287672-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035201036-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035156483-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035037754-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774034994467-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773947976503-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+];
+
 export const DailyQuestionDashboardCard = () => {
   const settings = useSettings();
   const startDay = settings.userSettings?.createdAtIso || settings.userSettings?.createdAt;
   const daysSinceStart = startDay ? dayjs().diff(dayjs(startDay), 'day') : 0;
   const questionsKeys = Object.keys(dailyQuestions);
   const questionIndex = daysSinceStart % questionsKeys.length;
+
+  const previewImageUrl = images[questionIndex % images.length];
 
   const todaysQuestion = dailyQuestions[questionsKeys[questionIndex]];
   const { i18n } = useLingui();
@@ -99,11 +114,9 @@ export const DailyQuestionDashboardCard = () => {
           <StoreCard
             badge={i18n._('Today').toUpperCase()}
             textColor={'#fff'}
-            backgroundColor={'#00000065'}
+            backgroundColor={'rgba(0, 0, 0, 0.5)'}
             label={i18n._('Question') + ' #' + (questionIndex + 1)}
-            previewImageUrl={
-              'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773947976503-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
-            }
+            previewImageUrl={previewImageUrl}
             title={todaysQuestion.title}
             subTitle={todaysQuestion.description}
             items={[]}
