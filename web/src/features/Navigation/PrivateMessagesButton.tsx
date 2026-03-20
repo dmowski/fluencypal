@@ -13,6 +13,7 @@ export const PrivateMessagesButton: React.FC = () => {
   const { i18n } = useLingui();
   const chatList = useChatList();
   const newMessagesCount = chatList.myUnreadCount;
+  console.log('newMessagesCount', newMessagesCount);
 
   const [mode, setMode] = useUrlState<'messages' | 'debates' | ''>('inboxType', 'messages', false);
 

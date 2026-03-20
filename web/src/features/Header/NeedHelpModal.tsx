@@ -1,8 +1,7 @@
-import { Button, Link, Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { Cookie, ReceiptText, Trash } from 'lucide-react';
+import { Trash } from 'lucide-react';
 import { useState } from 'react';
-import { ContactList } from '../Landing/Contact/ContactList';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getUrlStart } from '../Lang/getUrlStart';
 import { useLingui } from '@lingui/react';
