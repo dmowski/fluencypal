@@ -14,14 +14,6 @@ export const Stories = () => {
 
   return (
     <>
-      {stories.selectedStory && (
-        <StoriesModal
-          data={stories.selectedStory}
-          onClose={stories.closeStory}
-          onNext={stories.openNextStory}
-          onPrev={stories.onPrevStory}
-        />
-      )}
       <Stack
         sx={{
           alignItems: 'center',

@@ -8,11 +8,14 @@ import { SubscriptionPaymentModal } from '../Usage/Subscription/SubscriptionPaym
 import { useAuth } from '../Auth/useAuth';
 import { TeacherVoiceModal } from './TeacherVoiceModal';
 import { ReportModal } from '../User/ReportModal';
+import { useStories } from '../Sentence/useStories';
+import { StoriesModal } from '../Sentence/StoriesModal';
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();
   const usage = useUsage();
   const auth = useAuth();
+  const stories = useStories();
 
   const activeUserProfile = useMemo(() => {
     return game.modalUserId ? game.stats.find((s) => s.userId === game.modalUserId) : null;
@@ -20,6 +23,15 @@ export const GlobalModals: React.FC = () => {
 
   return (
     <>
+      {stories.selectedStory && (
+        <StoriesModal
+          data={stories.selectedStory}
+          onClose={stories.closeStory}
+          onNext={stories.openNextStory}
+          onPrev={stories.onPrevStory}
+        />
+      )}
+
       {usage.isShowPaymentModal && <SubscriptionPaymentModal />}
 
       {activeUserProfile && (

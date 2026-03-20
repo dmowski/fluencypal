@@ -70,10 +70,10 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                                           <StoriesProvider>
                                                             <CommunitySpaceProvider>
                                                               {children}
+                                                              <GlobalModals />
                                                             </CommunitySpaceProvider>
                                                           </StoriesProvider>
                                                         </LessonPlanProvider>
-                                                        <GlobalModals />
                                                       </BattleProvider>
                                                     </AiConversationProvider>
                                                   </PlanProvider>

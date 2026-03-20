@@ -22,6 +22,7 @@ import { BackHomeNavButton } from '../Navigation/BackHomeNavButton';
 import { DailyQuestionDashboardCard } from './DailyQuestionDashboardCard';
 import { PublicChatDashboardCard } from './PublicChatDashboardCard';
 import { GameDashboardCard } from './GameDashboardCard';
+import { StoriesDashboardCard } from './StoriesDashboardCard';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -80,6 +81,7 @@ export function Dashboard({ lang }: DashboardProps) {
                 <DailyQuestionDashboardCard />
                 <PublicChatDashboardCard />
                 <GameDashboardCard />
+                <StoriesDashboardCard />
               </Stack>
             </>
           )}
