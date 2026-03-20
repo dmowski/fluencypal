@@ -53,7 +53,7 @@ function useProvideTgNavigation(): TgNavigationContextType {
         }
       }
     }
-  }, [searchParamsString, path, isTgInitialized]);
+  }, [searchParamsString, path]);
 
   const [backStack, setBackStack] = useState<(() => void)[]>([]);
   const backHandler = () => {
@@ -69,20 +69,12 @@ function useProvideTgNavigation(): TgNavigationContextType {
     if (!isTgInitialized) return;
     const isTelegramApp = isTMA();
     if (!isTelegramApp) return;
-    const removeBackEventListener = () => {
-      try {
-        return backButton.onClick(backHandler);
-      } catch (e) {
-        console.log('Failed to set back button handler', e);
-        return () => {};
-      }
-    };
+    const removeBackEventListener = backButton.onClick(backHandler);
 
-    const removeBackEventListenerFn = removeBackEventListener();
     return () => {
-      removeBackEventListenerFn();
+      removeBackEventListener();
     };
-  }, [backStack, route, isTgInitialized]);
+  }, [backStack, route]);
 
   const isRequestedFullScreen = useRef(false);
   useEffect(() => {
@@ -115,7 +107,7 @@ function useProvideTgNavigation(): TgNavigationContextType {
       swipeBehavior.enableVertical.ifAvailable?.();
       closingBehavior.disableConfirmation.ifAvailable?.();
     };
-  }, [isTgInitialized]);
+  }, []);
 
   const addBackHandler = (newHandler: () => void): (() => void) => {
     const isTelegramApp = isTMA();

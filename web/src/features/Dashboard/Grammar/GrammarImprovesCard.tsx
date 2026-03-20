@@ -16,6 +16,7 @@ import { useQuizWordAudio } from '@/features/Audio/useQuizWordAudio';
 import { SectionHeader } from '../CartsHeader';
 import { RowItem, StoreCard } from '@/features/uiKit/Card/StoreCard';
 import { IconName } from 'lucide-react/dynamic';
+import { useUrlState } from '@/features/Url/useUrlState';
 
 interface TitleMetadata {
   title: string;
@@ -66,7 +67,7 @@ export const GrammarImprovesCardUi = ({
   const fullLanguageName = fullEnglishLanguageName[languageCode];
 
   const [showAll, setShowAll] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useUrlState<number | null>('improvement', null, false);
   const [improvements, setImprovements] = useState<Record<string, GrammarImprovement>>({});
   const quizWordAudio = useQuizWordAudio({ targetLanguage: languageCode });
 
