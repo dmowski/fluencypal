@@ -5,7 +5,6 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useLingui } from '@lingui/react';
 import { ChatPage } from '../Chat/ChatPage';
 import { BattleSection } from '../Game/Battle/BattleSection';
-import { sleep } from '@/libs/sleep';
 import { useChatList } from '../Chat/useChatList';
 import { useRouter } from 'next/navigation';
 
