@@ -10,10 +10,6 @@ export const BackHomeNavButton = () => {
   const backHome = async () => {
     const searchParams = new URLSearchParams();
     const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-    const currentUrl = `${window.location.pathname}${window.location.search}`;
-    if (currentUrl === newUrl) {
-      return;
-    }
     router.push(newUrl);
   };
 
