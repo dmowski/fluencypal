@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material';
 import { ChatProvider } from './useChat';
-import { ChatSection } from './ChatSection';
+import { FlatChat } from './FlatChat';
 
 export const UsersPrivateChat = ({ userIds }: { userIds: string[] }) => {
   const sorterUserIds = [...userIds].sort((a, b) => a.localeCompare(b));
@@ -16,7 +16,7 @@ export const UsersPrivateChat = ({ userIds }: { userIds: string[] }) => {
           type: 'privateChat',
         }}
       >
-        <ChatSection contextForAiAnalysis="" />
+        <FlatChat />
       </ChatProvider>
     </Stack>
   );
