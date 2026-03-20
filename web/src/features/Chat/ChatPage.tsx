@@ -16,6 +16,7 @@ import { sleep } from '@/libs/sleep';
 import { FlatChat } from './FlatChat';
 import { ChatHeaderFull } from './ChatHeaderFull';
 import { useAccess } from '../Usage/useAccess';
+import { PageContainer } from '../Community/PageContainer';
 
 export const ChatPage = ({
   type,
@@ -202,11 +203,8 @@ export const ChatPage = ({
               ) : (
                 <>
                   {chatList.myChats.length === 0 ? (
-                    <Stack
-                      sx={{
-                        paddingTop: '10px',
-                      }}
-                    >
+                    <PageContainer>
+                      <Typography variant="h6">{i18n._('No chats yet')}</Typography>
                       <Typography
                         variant="body2"
                         sx={{
@@ -215,13 +213,12 @@ export const ChatPage = ({
                       >
                         {i18n._('You have no chats yet.')}
                       </Typography>
-                    </Stack>
+                    </PageContainer>
                   ) : (
                     <Stack
                       sx={{
                         gap: '10px',
                         padding: '15px 0 20px 0',
-
                         borderRadius: '12px',
                         border: '1px solid rgba(255, 255, 255, 0.1)',
                         backgroundColor: 'rgba(255, 255, 255, 0.03)',

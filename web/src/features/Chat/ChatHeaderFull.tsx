@@ -152,9 +152,6 @@ export const ChatHeaderFull = ({ chat, close }: { chat: UserChatMetadata; close:
                 setMenuAnchorEl(null);
               }}
             >
-              <ListItemIcon>
-                <FlagIcon color="warning" />
-              </ListItemIcon>
               <ListItemText>{i18n._('Report user')}</ListItemText>
             </MenuItem>
 
@@ -164,9 +161,6 @@ export const ChatHeaderFull = ({ chat, close }: { chat: UserChatMetadata; close:
                 setMenuAnchorEl(null);
               }}
             >
-              <ListItemIcon>
-                <DeleteIcon color="error" />
-              </ListItemIcon>
               <ListItemText>
                 <Typography color="error">{i18n._('Delete chat')}</Typography>
               </ListItemText>

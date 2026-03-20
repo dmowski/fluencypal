@@ -49,18 +49,15 @@ export const BattleSection = () => {
   if (actualBattles.length === 0)
     return (
       <PageContainer>
-        <Stack
+        <Typography variant="h6">{i18n._('No debates yet')}</Typography>
+        <Typography
+          variant="body2"
           sx={{
-            gap: '5px',
+            opacity: 0.7,
           }}
         >
-          <Typography variant="h6">{i18n._('No debates yet')}</Typography>
-          <Typography variant="body2">
-            {i18n._(
-              'Open someones profile and press "Invite to a debate" button to start a debate!',
-            )}
-          </Typography>
-        </Stack>
+          {i18n._('Open someones profile and press "Invite to a debate" button to start a debate!')}
+        </Typography>
       </PageContainer>
     );
 
