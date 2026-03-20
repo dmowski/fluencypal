@@ -25,6 +25,9 @@ export interface UserChatMetadata extends UserChatMetadataStatic {
   totalTopLevelMessagesIds: string[];
   secondLevelSingleCommentsIds: string[];
   lastMessageAtIso: string;
+
+  // id: updateAtIso
+  allMessagesIds: Record<string, string> | null;
 }
 
 // Metadata about a user in a chat space

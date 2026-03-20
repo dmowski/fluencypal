@@ -76,17 +76,15 @@ interface ChatContextType {
 const ChatContext = createContext<ChatContextType | null>(null);
 
 const getIsCanRead = ({
-  chatMetadata,
+  isPrivate,
   userId,
+  allowedUserIds,
 }: {
-  chatMetadata?: UserChatMetadata;
   userId: string;
+  isPrivate?: boolean;
+  allowedUserIds?: string[] | null;
 }) => {
-  return (
-    chatMetadata &&
-    userId &&
-    (chatMetadata.isPrivate === false || chatMetadata.allowedUserIds?.includes(userId))
-  );
+  return userId && (isPrivate === false || allowedUserIds?.includes(userId));
 };
 
 function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextType {
@@ -96,7 +94,11 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
   const metaRef = db.documents.chat(userId, propsChatMetadata.spaceId);
   const [metaData] = useDocumentData(metaRef);
 
-  const isCanRead = getIsCanRead({ chatMetadata: metaData, userId });
+  const isCanRead = getIsCanRead({
+    isPrivate: metaData?.isPrivate,
+    allowedUserIds: metaData?.allowedUserIds,
+    userId,
+  });
 
   const messagesRef = isCanRead
     ? db.collections.usersChatMessages(propsChatMetadata.spaceId, userId)
@@ -119,17 +121,13 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
         lastMessageAtIso: new Date().toISOString(),
         totalTopLevelMessagesIds: [],
         secondLevelSingleCommentsIds: [],
+        allMessagesIds: {},
       });
     }
 
     const isCanReadAfterInit = getIsCanRead({
-      chatMetadata: {
-        ...propsChatMetadata,
-        totalMessages: 0,
-        lastMessageAtIso: new Date().toISOString(),
-        totalTopLevelMessagesIds: [],
-        secondLevelSingleCommentsIds: [],
-      },
+      isPrivate: propsChatMetadata.isPrivate,
+      allowedUserIds: propsChatMetadata.allowedUserIds,
       userId,
     });
     return isCanReadAfterInit
@@ -223,10 +221,17 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     const realTotalMessages = messagesData.length;
     const totalTopLevelMessagesIds = topLevelMessages.map((msg) => msg.id);
 
+    const allMessagesIds: Record<string, string> = {};
+    messagesData.forEach((msg) => {
+      allMessagesIds[msg.id] = msg.updatedAtIso || msg.createdAtIso;
+    });
+
     if (
       metaData.totalMessages === realTotalMessages &&
       (metaData?.totalTopLevelMessagesIds?.length || 0) === totalTopLevelMessagesIds.length &&
-      secondLevelSingleCommentsIds.length === (metaData?.secondLevelSingleCommentsIds?.length || 0)
+      secondLevelSingleCommentsIds.length ===
+        (metaData?.secondLevelSingleCommentsIds?.length || 0) &&
+      Object.keys(metaData.allMessagesIds || {}).length === Object.keys(allMessagesIds).length
     ) {
       return;
     }
@@ -236,6 +241,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       lastMessageAtIso: new Date().toISOString(),
       totalTopLevelMessagesIds: totalTopLevelMessagesIds,
       secondLevelSingleCommentsIds: secondLevelSingleCommentsIds,
+      allMessagesIds: allMessagesIds,
     };
 
     setDoc(metaRef, partialMetadata, { merge: true });

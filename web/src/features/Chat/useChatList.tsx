@@ -51,9 +51,9 @@ function useProvideChatList(): ChatListContextType {
         return aTime.localeCompare(bTime);
       })
       .forEach((chat) => {
-        const readMessagesCount = Object.keys(myReadStatsData?.[chat.spaceId] || {}).length;
-        const totalMessagesCount = chat.totalMessages || 0;
-        const unreadCount = Math.max(0, totalMessagesCount - readMessagesCount);
+        const readMessagesCount = Object.keys(myReadStatsData?.[chat.spaceId] || {});
+        const allMessages = Object.keys(chat.allMessagesIds || {});
+        const unreadCount = allMessages.filter((id) => !readMessagesCount.includes(id)).length;
         if (unreadCount > 0) {
           unreadLocalData[chat.spaceId] = unreadCount;
         }
