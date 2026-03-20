@@ -40,46 +40,46 @@ export const GameDashboardCard = () => {
         )}
       />
 
+      {isShowOnboarding && !isGameOnboardingCompleted && (
+        <GameOnboarding
+          onFinish={() => {
+            setIsShowOnboarding(false);
+            settings.onDoneGameOnboarding();
+          }}
+        />
+      )}
+
+      {game.activeQuestion && game.isGamePlaying && !isShowOnboarding && (
+        <Stack
+          sx={{
+            gap: '20px',
+          }}
+        >
+          <CustomModal
+            isOpen={true}
+            onClose={() => {
+              game.stopGame();
+              exitFullScreen();
+            }}
+          >
+            <Stack
+              sx={{
+                padding: '0',
+                width: '100%',
+                alignItems: 'center',
+              }}
+            >
+              <GameQuestion />
+            </Stack>
+          </CustomModal>
+        </Stack>
+      )}
+
       <Stack
         sx={{
           gap: '10px',
         }}
       >
-        {isShowOnboarding && !isGameOnboardingCompleted && (
-          <GameOnboarding
-            onFinish={() => {
-              setIsShowOnboarding(false);
-              settings.onDoneGameOnboarding();
-            }}
-          />
-        )}
-
-        {game.activeQuestion && game.isGamePlaying && !isShowOnboarding && (
-          <Stack
-            sx={{
-              gap: '20px',
-            }}
-          >
-            <CustomModal
-              isOpen={true}
-              onClose={() => {
-                game.stopGame();
-                exitFullScreen();
-              }}
-            >
-              <Stack
-                sx={{
-                  padding: '0',
-                  width: '100%',
-                  alignItems: 'center',
-                }}
-              >
-                <GameQuestion />
-              </Stack>
-            </CustomModal>
-          </Stack>
-        )}
-
         <StoreCard
           textColor={'#fff'}
           backgroundColor={'#191919'}
