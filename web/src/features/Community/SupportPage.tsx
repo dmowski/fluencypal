@@ -1,22 +1,18 @@
 import { Link, Stack, Typography } from '@mui/material';
-import { ChatProvider } from '../Chat/useChat';
 import { useAuth } from '../Auth/useAuth';
-import { ChatSection } from '../Chat/ChatSection';
 import { useLingui } from '@lingui/react';
 import { FaqItem } from '../Landing/FAQ/FaqItem';
 import { ReceiptText, Cookie } from 'lucide-react';
 import { ContactList } from '../Landing/Contact/ContactList';
 import { getUrlStart } from '../Lang/getUrlStart';
-import { FlatChat } from '../Chat/FlatChat';
+import { UsersPrivateChat } from '../Chat/UsersPrivateChat';
 
 const supportUserId = 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2';
 
 export const SupportPage = () => {
   const auth = useAuth();
   const { i18n } = useLingui();
-
   const users = [auth.uid, supportUserId];
-  const chatSpace = `support_${users.sort((a, b) => a.localeCompare(b)).join('_')}`;
   if (!auth.uid) return null;
   return (
     <Stack
@@ -44,16 +40,7 @@ export const SupportPage = () => {
         </Typography>
       </Stack>
 
-      <ChatProvider
-        metadata={{
-          spaceId: chatSpace,
-          allowedUserIds: users,
-          isPrivate: true,
-          type: 'privateChat',
-        }}
-      >
-        <FlatChat />
-      </ChatProvider>
+      <UsersPrivateChat userIds={users} />
 
       <Stack
         sx={{

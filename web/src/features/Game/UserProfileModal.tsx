@@ -20,6 +20,7 @@ import { ChatProvider } from '../Chat/useChat';
 import { ChatSection } from '../Chat/ChatSection';
 import { useAccess } from '../Usage/useAccess';
 import { UserMenu } from '../User/UserMenu';
+import { UsersPrivateChat } from '../Chat/UsersPrivateChat';
 
 interface IconColor {
   iconColor: string;
@@ -417,18 +418,7 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                 >
                   {i18n._('Chat between you and {userName}', { userName })}
                 </Typography>
-                <Stack>
-                  <ChatProvider
-                    metadata={{
-                      spaceId: chatSpace,
-                      allowedUserIds: [stat.userId, userId],
-                      isPrivate: true,
-                      type: 'privateChat',
-                    }}
-                  >
-                    <ChatSection contextForAiAnalysis="" />
-                  </ChatProvider>
-                </Stack>
+                <UsersPrivateChat userIds={[stat.userId, userId]} />
               </Stack>
             )}
           </Stack>

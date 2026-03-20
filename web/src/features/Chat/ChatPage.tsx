@@ -13,10 +13,10 @@ import { ChartSortMode, UserChatMetadata } from './type';
 import { UserName } from '../User/UserName';
 import { GlobalChatTabs } from './GlobalChatTabs';
 import { sleep } from '@/libs/sleep';
-import { FlatChat } from './FlatChat';
 import { ChatHeaderFull } from './ChatHeaderFull';
 import { useAccess } from '../Usage/useAccess';
 import { PageContainer } from '../Community/PageContainer';
+import { UsersPrivateChat } from './UsersPrivateChat';
 
 export const ChatPage = ({
   type,
@@ -170,9 +170,7 @@ export const ChatPage = ({
                     </Stack>
                   </Stack>
 
-                  <ChatProvider metadata={chatMetadata}>
-                    <FlatChat />
-                  </ChatProvider>
+                  <UsersPrivateChat userIds={chatMetadata.allowedUserIds || []} />
                 </>
               ) : (
                 <Stack
