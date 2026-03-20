@@ -180,10 +180,10 @@ export const StoreCard = (props: StoreCardProps) => {
             component={'video'}
             src={props.previewVideoUrl}
             autoPlay
-            playsInline
-            loop
             controls={false}
             muted
+            loop
+            playsInline
             sx={{
               objectFit: 'cover',
               backgroundColor: props.backgroundColor,
