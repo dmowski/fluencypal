@@ -15,7 +15,9 @@ const PreviewCardComponent = () => {
     newSearchParams.set('publicChat', `true`);
 
     const newUrl = `${window.location.pathname}?${newSearchParams.toString()}`;
-    router.push(`${newUrl}`, { scroll: true });
+    router.push(`${newUrl}`, {
+      scroll: false,
+    });
   };
 
   if (previewMessages.length === 0) {
