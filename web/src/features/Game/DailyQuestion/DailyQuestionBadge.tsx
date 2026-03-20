@@ -155,6 +155,7 @@ export const DailyQuestionBadgeComponent = ({
         '@media (max-width:600px)': {
           boxShadow: 'none',
           borderRadius: '0px',
+          padding: '21px 0 4px 0',
         },
       }}
     >
@@ -165,61 +166,69 @@ export const DailyQuestionBadgeComponent = ({
       >
         <Stack
           sx={{
-            width: '100%',
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-            alignItems: 'center',
-            color: '#feb985ff',
-            paddingBottom: '5px',
+            '@media (max-width:600px)': {
+              padding: '0 15px',
+            },
           }}
         >
           <Stack
             sx={{
+              width: '100%',
+              justifyContent: 'space-between',
               flexDirection: 'row',
               alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
+              color: '#feb985ff',
+              paddingBottom: '5px',
             }}
           >
-            {!isOld && (
-              <img
-                src="/icons/flame-icon.svg"
-                style={{
-                  width: 20,
-                  height: 20,
-                  position: 'relative',
-                  top: '-2px',
-                  left: '-1px',
-                }}
-              />
-            )}
-            <Typography
-              variant="body2"
+            <Stack
               sx={{
-                fontWeight: 500,
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
               }}
             >
-              {isOld ? i18n._('Previous Question') : i18n._("Today's Question")}
-            </Typography>
+              {!isOld && (
+                <img
+                  src="/icons/flame-icon.svg"
+                  style={{
+                    width: 20,
+                    height: 20,
+                    position: 'relative',
+                    top: '-2px',
+                    left: '-1px',
+                  }}
+                />
+              )}
+              <Typography
+                variant="body2"
+                sx={{
+                  fontWeight: 500,
+                }}
+              >
+                {isOld ? i18n._('Previous Question') : i18n._("Today's Question")}
+              </Typography>
+            </Stack>
           </Stack>
-        </Stack>
 
-        {content}
+          {content}
 
-        <Stack
-          sx={{
-            padding: '20px 0 10px 0',
-            color: 'rgba(255, 255, 255, 0.9)',
-          }}
-        >
-          <ColorIconTextList
-            gap="8px"
-            listItems={todaysQuestion.hints.map((hint) => ({
-              iconColor: 'rgba(255, 255, 255, 0.9)',
-              title: hint,
-              iconName: 'lightbulb',
-            }))}
-          />
+          <Stack
+            sx={{
+              padding: '20px 0 10px 0',
+              color: 'rgba(255, 255, 255, 0.9)',
+            }}
+          >
+            <ColorIconTextList
+              gap="8px"
+              listItems={todaysQuestion.hints.map((hint) => ({
+                iconColor: 'rgba(255, 255, 255, 0.9)',
+                title: hint,
+                iconName: 'lightbulb',
+              }))}
+            />
+          </Stack>
         </Stack>
 
         <Stack
@@ -229,7 +238,13 @@ export const DailyQuestionBadgeComponent = ({
           }}
         >
           {!isOld && (
-            <Stack>
+            <Stack
+              sx={{
+                '@media (max-width:600px)': {
+                  padding: '0 15px',
+                },
+              }}
+            >
               <Typography variant="h6">{i18n._(`Community Responses:`)}</Typography>
               <Typography
                 variant="body2"

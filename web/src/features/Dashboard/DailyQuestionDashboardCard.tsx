@@ -40,16 +40,20 @@ export const DailyQuestionDashboardCard = () => {
       }}
     >
       {isShowAll && (
-        <CustomModal isOpen={true} onClose={() => setIsShowAll(false)}>
+        <CustomModal isOpen={true} onClose={() => setIsShowAll(false)} mobilePadding="40px 0">
           <Stack
             sx={{
               maxWidth: '700px',
-              padding: '0 10px',
+
               gap: '30px',
               width: '100%',
             }}
           >
-            <Stack>
+            <Stack
+              sx={{
+                padding: '0 10px',
+              }}
+            >
               <Typography
                 variant="h3"
                 sx={{

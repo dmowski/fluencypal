@@ -7,9 +7,15 @@ interface CustomModalProps {
   isOpen: boolean;
   onClose?: () => void;
   children: React.ReactNode;
+  mobilePadding?: string;
 }
 
-export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JSX.Element => {
+export const CustomModal = ({
+  isOpen,
+  onClose,
+  children,
+  mobilePadding,
+}: CustomModalProps): JSX.Element => {
   const sizes = useWindowSizes();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
@@ -90,7 +96,7 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
                 boxSizing: 'border-box',
                 minHeight: `calc(100dvh - ${sizes.topOffset} - ${sizes.bottomOffset} - 0px)`,
                 '@media (max-width: 600px)': {
-                  padding: '20px 10px',
+                  padding: mobilePadding || '20px 10px',
                 },
               }}
             >
