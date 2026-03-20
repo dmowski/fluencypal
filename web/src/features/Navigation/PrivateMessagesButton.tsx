@@ -7,20 +7,20 @@ import { ChatPage } from '../Chat/ChatPage';
 import { BattleSection } from '../Game/Battle/BattleSection';
 import { sleep } from '@/libs/sleep';
 import { useChatList } from '../Chat/useChatList';
+import { useRouter } from 'next/navigation';
 
 export const PrivateMessagesButton: React.FC = () => {
   const [isShow, setIsShow] = useUrlState('inbox', false, false);
   const { i18n } = useLingui();
   const chatList = useChatList();
   const newMessagesCount = chatList.myUnreadCount;
-  console.log('newMessagesCount', newMessagesCount);
-
+  const router = useRouter();
   const [mode, setMode] = useUrlState<'messages' | 'debates' | ''>('inboxType', 'messages', false);
 
   const onClose = async () => {
-    setIsShow(false);
-    await sleep(300);
-    setMode('messages');
+    const searchParams = new URLSearchParams();
+    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+    router.push(newUrl);
   };
 
   return (
