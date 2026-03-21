@@ -8,6 +8,7 @@ import { GoalElementInfo } from '@/features/Plan/types';
 import { usePlan } from '@/features/Plan/usePlan';
 import { useTasks } from '@/features/Tasks/useTasks';
 import { useEffect } from 'react';
+import { useDailyTasks } from '@/features/Tasks/useDailyTasks';
 
 const modesToExtractUserInfo: ConversationType[] = ['talk', 'goal-talk'];
 const modesToNotExtractGrammar: ConversationType[] = ['grammar-improvement'];
@@ -21,6 +22,7 @@ export const useConversationStat = (
 ) => {
   const tasks = useTasks();
   const plan = usePlan();
+  const dailyTasks = useDailyTasks();
   const aiUserInfo = useAiUserInfo();
 
   const planMessageCount = 10;
@@ -36,6 +38,10 @@ export const useConversationStat = (
       } else {
         tasks.completeTask('lesson');
       }
+    }
+
+    if (conversation.length === 10 && currentMode === 'talk') {
+      dailyTasks.onCompleteTask('just-talk');
     }
 
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);

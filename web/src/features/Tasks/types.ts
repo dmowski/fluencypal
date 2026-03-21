@@ -24,29 +24,6 @@ export interface DailyTaskInfo {
   content: string; // Full description of the task, shown in the modal when user clicks on the task. Markdown format.
 }
 
-export interface DailyTaskApi {
-  // Will be called from features side.
-  onCompleteTask: (taskType: DailyTaskType) => Promise<void>;
-
-  // today's tasks that should be shown to the user.
-  // Show in list on dashboard, use tasksInfo for full content in list and modal
-  // Use todayTaskProgress to show which tasks are completed in the list and modal.
-  todaysActualTasks: DailyTaskType[];
-
-  // More detailed info about tasks, needed to show in the modal.
-  tasksInfo: Record<DailyTaskType, DailyTaskInfo> | null;
-
-  // User's progress for today's tasks, needed to show which tasks are completed in the list and modal.
-  // Sync this with firebase by /users/{userId}/dailyTasks/{dayIso}_{languageCode}
-  todayTaskProgress: DailyTaskProgress | null;
-
-  // For dashboard card:
-  title: string;
-  subTitle: string;
-  badge: string;
-  previewImageUrl: string;
-}
-
 // Sync with DataBase by /users/{userId}/dailyTasks/{dayIso}_{languageCode}
 export interface DailyTaskProgress {
   languageCode: SupportedLanguage;

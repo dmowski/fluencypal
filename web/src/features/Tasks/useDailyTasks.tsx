@@ -3,16 +3,34 @@ import { createContext, useContext, ReactNode, JSX, useMemo } from 'react';
 import { useAuth } from '../Auth/useAuth';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { db } from '../Firebase/firebaseDb';
-import {
-  DailyTaskApi,
-  DailyTaskInfo,
-  DailyTaskProgress,
-  DailyTaskType,
-} from '@/features/Tasks/types';
+import { DailyTaskInfo, DailyTaskProgress, DailyTaskType } from '@/features/Tasks/types';
 import dayjs from 'dayjs';
 import { setDoc } from 'firebase/firestore';
 import { useSettings } from '../Settings/useSettings';
 import { useLingui } from '@lingui/react';
+
+export interface DailyTaskApi {
+  // Will be called from features side.
+  onCompleteTask: (taskType: DailyTaskType) => Promise<void>;
+
+  // today's tasks that should be shown to the user.
+  // Show in list on dashboard, use tasksInfo for full content in list and modal
+  // Use todayTaskProgress to show which tasks are completed in the list and modal.
+  todaysActualTasks: DailyTaskType[];
+
+  // More detailed info about tasks, needed to show in the modal.
+  tasksInfo: Record<DailyTaskType, DailyTaskInfo> | null;
+
+  // User's progress for today's tasks, needed to show which tasks are completed in the list and modal.
+  // Sync this with firebase by /users/{userId}/dailyTasks/{dayIso}_{languageCode}
+  todayTaskProgress: DailyTaskProgress | null;
+
+  // For dashboard card:
+  title: string;
+  subTitle: string;
+  badge: string;
+  previewImageUrl: string;
+}
 
 export const dailyTasksContext = createContext<DailyTaskApi>({
   onCompleteTask: async () => void 0,
@@ -88,7 +106,12 @@ function useProvideDailyTasks(): DailyTaskApi {
     }
 
     const isAlreadyCompleted = todayTaskProgress?.completedTasks?.[taskType];
-    if (isAlreadyCompleted) return;
+    if (isAlreadyCompleted) {
+      console.log(`Task ${taskType} is already completed for today.`);
+      return;
+    } else {
+      console.log('onCompleteTask', taskType);
+    }
 
     const progressData: DailyTaskProgress = {
       languageCode: settings.languageCode,

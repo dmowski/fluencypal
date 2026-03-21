@@ -7,6 +7,7 @@ import { useMemo } from 'react';
 import { DailyTaskType } from '../Tasks/types';
 import { useStories } from '../Sentence/useStories';
 import { useUrlState } from '../Url/useUrlState';
+import { useJustTalk } from '../Conversation/useJustTalk';
 
 const taskIconMap: Record<DailyTaskType, string> = {
   'just-talk':
@@ -27,9 +28,13 @@ export const DailyTasksDashboardCard = () => {
   const stories = useStories();
   const [, setIsShowDailyQuestions] = useUrlState('dailyQuestions', false, false);
 
+  const { startJustTalk, isCallStarting } = useJustTalk();
+
   const onStartTask = (taskType: DailyTaskType) => {
     const tasksHandlerMap: Record<DailyTaskType, () => void> = {
-      'just-talk': () => {},
+      'just-talk': () => {
+        startJustTalk();
+      },
       'goal-lesson': () => {},
       community: () => {},
       story: () => {
@@ -60,24 +65,35 @@ export const DailyTasksDashboardCard = () => {
     }
   };
 
+  const isLoading = isCallStarting;
+
   const items: RowItem[] = useMemo(() => {
     return tasks.todaysActualTasks.map((taskType) => {
+      const isJustTalkTask = taskType === 'just-talk';
+      const isLoadingItem = isJustTalkTask && isCallStarting;
+
       const taskInfo = tasks.tasksInfo ? tasks.tasksInfo[taskType] : null;
       const isCompleted = tasks.todayTaskProgress
         ? !!tasks.todayTaskProgress.completedTasks[taskType]
         : false;
       const image = taskIconMap[taskType];
+
+      const actionButtonTitle = isLoadingItem
+        ? i18n._('Loading...')
+        : isCompleted
+          ? i18n._('Completed')
+          : i18n._('Start');
       const taskItem: RowItem = {
         title: taskInfo ? taskInfo.title : taskType,
         onClick: () => onStartTask(taskType),
         subTitle: taskInfo ? taskInfo.label : '',
-        actionButtonTitle: isCompleted ? i18n._('Completed') : i18n._('Start'),
+        actionButtonTitle,
         imageUrl: image,
         bgColor: isCompleted ? 'rgba(147, 7, 255, 0.5)' : 'rgba(147, 7, 255, 0.2)',
       };
       return taskItem;
     });
-  }, [tasks.todaysActualTasks, tasks.tasksInfo, tasks.todayTaskProgress]);
+  }, [tasks.todaysActualTasks, tasks.tasksInfo, tasks.todayTaskProgress, isCallStarting]);
 
   return (
     <Stack
@@ -88,14 +104,14 @@ export const DailyTasksDashboardCard = () => {
       <SectionHeader title={i18n._('Daily tasks')} />
       <StoreCard
         textColor={'#fff'}
-        backgroundColor={'#9307ff69'}
+        backgroundColor={isLoading ? '#000000' : '#9307ff69'}
         previewImageUrl={tasks.previewImageUrl}
         title={tasks.title}
         subTitle={tasks.subTitle}
         badge={tasks.badge}
         items={items}
         onClick={openCard}
-        itemsBackgroundColor={'rgba(32, 32, 32, 0.9)'}
+        itemsBackgroundColor={isLoading ? 'rgba(32, 32, 32, 0)' : 'rgba(32, 32, 32, 0.9)'}
         itemsViewMode={'list'}
       />
     </Stack>
