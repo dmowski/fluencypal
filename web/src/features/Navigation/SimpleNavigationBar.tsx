@@ -1,32 +1,20 @@
 'use client';
-import { Badge, Button, Link, Stack, Typography } from '@mui/material';
-import { Home, LucideProps, Star, User, Users, VenetianMask } from 'lucide-react';
-import {
-  ForwardRefExoticComponent,
-  RefAttributes,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { Button, Link, Stack } from '@mui/material';
+import { LucideProps, Star, User } from 'lucide-react';
+import { ForwardRefExoticComponent, RefAttributes, useEffect, useRef, useState } from 'react';
 import { useLingui } from '@lingui/react';
-import { useWindowSizes } from '../Layout/useWindowSizes';
 import { PageType } from './types';
 import { useAppNavigation } from './useAppNavigation';
 import { useAuth } from '../Auth/useAuth';
 import { useGame } from '../Game/useGame';
 import { useSettings } from '../Settings/useSettings';
-import { AppMode } from '@/common/userSettings';
 import { Avatar } from '../Game/Avatar';
-import { useChatList } from '../Chat/useChatList';
-import { useBattle } from '../Game/Battle/useBattle';
 import { useAccess } from '../Usage/useAccess';
 import { useRouter } from 'next/navigation';
-import { DevButton } from './DevButton';
 import { langFlags } from '../Lang/lang';
 import { useUrlParam } from '../Url/useUrlParam';
 import { LanguageSwitcher } from '../Lang/LanguageSwitcher';
-import { PrivateMessagesButton } from './PrivateMessagesButton';
+import { AppNotificationsButton } from './AppNotificationsButton';
 
 export interface IconProps {
   color?: string;
@@ -170,7 +158,7 @@ export const SimpleNavigationBar: React.FC = () => {
                   {i18n._('Update')}
                 </Button>
               )}
-              <PrivateMessagesButton />
+              <AppNotificationsButton />
               <Link
                 href={`${appNavigation.pageUrl('profile')}`}
                 onClick={(e) => navigateTo(e, 'profile')}

@@ -8,7 +8,7 @@ import { BattleSection } from '../Game/Battle/BattleSection';
 import { useChatList } from '../Chat/useChatList';
 import { useRouter } from 'next/navigation';
 
-export const PrivateMessagesButton: React.FC = () => {
+export const AppNotificationsButton: React.FC = () => {
   const [isShow, setIsShow] = useUrlState('inbox', false, false);
   const { i18n } = useLingui();
   const chatList = useChatList();
