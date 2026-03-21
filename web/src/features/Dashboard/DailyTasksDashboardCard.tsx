@@ -6,9 +6,9 @@ import { SectionHeader } from './CartsHeader';
 import { useMemo } from 'react';
 import { DailyTaskType } from '../Tasks/types';
 import { useStories } from '../Sentence/useStories';
-import { useUrlState } from '../Url/useUrlState';
 import { useJustTalk } from '../Conversation/useJustTalk';
 import { usePlan } from '../Plan/usePlan';
+import { useGlobalModals } from '../Modal/useGlobalModals';
 
 const taskIconMap: Record<DailyTaskType, string> = {
   'just-talk':
@@ -27,10 +27,9 @@ export const DailyTasksDashboardCard = () => {
   const { i18n } = useLingui();
   const tasks = useDailyTasks();
   const stories = useStories();
-  const [, setIsShowDailyQuestions] = useUrlState('dailyQuestions', false, false);
   const plan = usePlan();
 
-  const [isShowPublicChat, setIsShowPublicChat] = useUrlState('publicChat', false, false);
+  const globalModals = useGlobalModals();
 
   const { startJustTalk, isCallStarting } = useJustTalk();
 
@@ -46,9 +45,9 @@ export const DailyTasksDashboardCard = () => {
     const tasksHandlerMap: Record<DailyTaskType, () => void> = {
       'just-talk': startJustTalk,
       'goal-lesson': openLearningPlan,
-      community: () => setIsShowPublicChat(true),
+      community: globalModals.openPublicChat,
       story: () => stories.openRandomStory(),
-      'daily-question': () => setIsShowDailyQuestions(true),
+      'daily-question': globalModals.openDailyQuestions,
     };
 
     const handler = tasksHandlerMap[taskType];

@@ -12,6 +12,8 @@ import { useStories } from '../Sentence/useStories';
 import { StoriesModal } from '../Sentence/StoriesModal';
 import { useBattle } from '../Game/Battle/useBattle';
 import { BattleActionModal } from '../Game/Battle/BattleActionModal';
+import { PublicChatModal } from '../Chat/PublicChatModal';
+import { useGlobalModals } from './useGlobalModals';
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();
@@ -19,6 +21,7 @@ export const GlobalModals: React.FC = () => {
   const auth = useAuth();
   const stories = useStories();
   const battles = useBattle();
+  const globalModals = useGlobalModals();
 
   const activeUserProfile = useMemo(() => {
     return game.modalUserId ? game.stats.find((s) => s.userId === game.modalUserId) : null;
@@ -34,6 +37,8 @@ export const GlobalModals: React.FC = () => {
           onPrev={stories.onPrevStory}
         />
       )}
+
+      {globalModals.isShowPublicChat && <PublicChatModal onClose={globalModals.closeAllModels} />}
 
       {battles.activeBattle && (
         <BattleActionModal battle={battles.activeBattle} onClose={battles.closeActiveBattle} />
