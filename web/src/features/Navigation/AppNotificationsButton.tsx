@@ -7,6 +7,7 @@ import { ChatPage } from '../Chat/ChatPage';
 import { BattleSection } from '../Game/Battle/BattleSection';
 import { useChatList } from '../Chat/useChatList';
 import { useRouter } from 'next/navigation';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 export const AppNotificationsButton: React.FC = () => {
   const [isShow, setIsShow] = useUrlState('inbox', false, false);
@@ -92,7 +93,7 @@ export const AppNotificationsButton: React.FC = () => {
 
       <IconButton onClick={() => setIsShow(true)}>
         <Badge badgeContent={newMessagesCount} color="error">
-          <Email
+          <NotificationsIcon
             sx={{
               opacity: 0.7,
             }}
