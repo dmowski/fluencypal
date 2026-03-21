@@ -12,13 +12,10 @@ import {
 import dayjs from 'dayjs';
 import { setDoc } from 'firebase/firestore';
 import { useSettings } from '../Settings/useSettings';
-import { useUrlState } from '../Url/useUrlState';
 import { useLingui } from '@lingui/react';
 
 export const dailyTasksContext = createContext<DailyTaskApi>({
-  onStartTask: async () => void 0,
   onCompleteTask: async () => void 0,
-  activeTask: null,
   todaysActualTasks: [],
   tasksInfo: null,
   todayTaskProgress: null,
@@ -31,8 +28,6 @@ export const dailyTasksContext = createContext<DailyTaskApi>({
 function useProvideDailyTasks(): DailyTaskApi {
   const auth = useAuth();
   const settings = useSettings();
-
-  const [activeTask, setActiveTask] = useUrlState<DailyTaskType | null>('activeTask', null, false);
 
   const userId = auth.uid;
   const { i18n } = useLingui();
@@ -53,10 +48,10 @@ function useProvideDailyTasks(): DailyTaskApi {
         ),
       },
       'goal-lesson': {
-        title: i18n._('Goal lesson'),
-        label: i18n._('Finish a lesson from your Goal plan'),
+        title: i18n._('Learning Plan'),
+        label: i18n._('Finish a lesson from your Learning Plan'),
         content: i18n._(
-          'Complete any lesson from your current Goal plan to mark this task as done.',
+          'Complete any lesson from your current Learning Plan to mark this task as done.',
         ),
       },
       community: {
@@ -87,10 +82,6 @@ function useProvideDailyTasks(): DailyTaskApi {
 
   const [todayTaskProgress] = useDocumentData(dailyTaskProgressDocRef);
 
-  const onStartTask = async (taskType: DailyTaskType) => {
-    setActiveTask(taskType);
-  };
-
   const onCompleteTask = async (taskType: DailyTaskType) => {
     if (!userId || !dailyTaskProgressDocRef || !settings.languageCode) {
       throw new Error('User or language not available. onCompleteTask failed.');
@@ -112,9 +103,7 @@ function useProvideDailyTasks(): DailyTaskApi {
   };
 
   return {
-    onStartTask,
     onCompleteTask,
-    activeTask,
     todaysActualTasks,
     tasksInfo,
     todayTaskProgress: todayTaskProgress ?? null,

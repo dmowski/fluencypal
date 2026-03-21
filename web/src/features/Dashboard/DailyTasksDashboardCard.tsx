@@ -34,9 +34,9 @@ export const DailyTasksDashboardCard = () => {
 
   const onStartTask = (taskType: DailyTaskType) => {
     const tasksHandlerMap: Record<DailyTaskType, () => void> = {
-      'just-talk': () => tasks.onStartTask('just-talk'),
-      'goal-lesson': () => tasks.onStartTask('goal-lesson'),
-      community: () => tasks.onStartTask('community'),
+      'just-talk': () => {},
+      'goal-lesson': () => {},
+      community: () => {},
       story: () => {
         stories.openRandomStory();
       },

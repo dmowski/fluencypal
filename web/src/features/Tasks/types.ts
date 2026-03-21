@@ -25,14 +25,8 @@ export interface DailyTaskInfo {
 }
 
 export interface DailyTaskApi {
-  // Open modal with full description and button to start the task
-  onStartTask: (taskType: DailyTaskType) => Promise<void>;
-
   // Will be called from features side.
   onCompleteTask: (taskType: DailyTaskType) => Promise<void>;
-
-  // Needed to show task modal with content and start button when user clicks on the task in the list
-  activeTask: DailyTaskType | null;
 
   // today's tasks that should be shown to the user.
   // Show in list on dashboard, use tasksInfo for full content in list and modal
