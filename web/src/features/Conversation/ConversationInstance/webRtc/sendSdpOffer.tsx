@@ -1,5 +1,5 @@
 import { RealTimeModel } from '@/features/Ai/ai';
-import { SendSdpOfferRequest, SendSdpOfferResponse } from '@/common/requests';
+import { SendSdpOfferRequest, SendSdpOfferResponse } from '../../webrtc.types';
 import { sleep } from '@/libs/sleep';
 
 const sendSdpOfferRaw = async (

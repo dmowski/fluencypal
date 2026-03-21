@@ -1,4 +1,4 @@
-import { AiChatRequest, AiResponse } from '@/common/requests';
+import { AiChatRequest, AiResponse } from '../aiRequest.types';
 import {
   calculateTextUsagePrice,
   convertUsageUsdToBalanceHours,

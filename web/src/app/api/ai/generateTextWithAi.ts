@@ -1,5 +1,5 @@
 import { TextAiModel } from '@/features/Ai/ai';
-import { AiChatMessage } from '@/common/requests';
+import { AiChatMessage } from './aiRequest.types';
 import OpenAI from 'openai';
 
 const openAIKey = process.env.OPENAI_API_KEY;

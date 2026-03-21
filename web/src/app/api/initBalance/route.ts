@@ -1,4 +1,4 @@
-import { InitBalanceResponse } from '@/common/requests';
+import { InitBalanceResponse } from '../addUsageLog/usageRequest.types';
 import { getDB, validateAuthToken } from '../config/firebase';
 import { WELCOME_BONUS } from '@/features/Usage/usage';
 import { addPaymentLog } from '../payment/addPaymentLog';

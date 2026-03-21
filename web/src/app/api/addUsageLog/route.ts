@@ -1,4 +1,4 @@
-import { AddUsageLogRequest, AddUsageLogResponse } from '@/common/requests';
+import { AddUsageLogRequest, AddUsageLogResponse } from './usageRequest.types';
 import { validateAuthToken } from '../config/firebase';
 import { addUsage, isUsageLogExists } from '../payment/addUsage';
 import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';

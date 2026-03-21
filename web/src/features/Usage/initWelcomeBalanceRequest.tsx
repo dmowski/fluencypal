@@ -1,4 +1,4 @@
-import { InitBalanceRequest, InitBalanceResponse } from '@/common/requests';
+import { InitBalanceRequest, InitBalanceResponse } from '@/app/api/addUsageLog/usageRequest.types';
 
 export const initWelcomeBalanceRequest = async (requestData: InitBalanceRequest, auth: string) => {
   const response = await fetch('/api/initBalance', {

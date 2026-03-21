@@ -1,4 +1,4 @@
-import { AiImageRequest, AiImageResponse } from '@/common/requests';
+import { AiImageRequest, AiImageResponse } from '@/app/api/ai/aiRequest.types';
 
 export const sendImageAiRequest = async (conversationDate: AiImageRequest, auth: string) => {
   const response = await fetch('/api/analyzeImage', {

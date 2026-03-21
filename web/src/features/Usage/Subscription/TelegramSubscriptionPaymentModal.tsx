@@ -26,7 +26,7 @@ import { TgGoldStar } from '../../Icon/TgStar';
 import { SubscriptionWaiter } from '../SubscriptionWaiter';
 import { CRYPTO_MONTHLY_PRICE_TON } from '../../Telegram/cryptoPrice';
 import { useSettings } from '../../Settings/useSettings';
-import { StripeCreateCheckoutRequest } from '@/common/requests';
+import { StripeCreateCheckoutRequest } from '../stripe.types';
 import { sleep } from '@/libs/sleep';
 import { Check, Plus } from 'lucide-react';
 import { useAnalytics } from '../../Analytics/useAnalytics';

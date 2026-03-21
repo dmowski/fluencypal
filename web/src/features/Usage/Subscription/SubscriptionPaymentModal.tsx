@@ -11,7 +11,7 @@ import { useCurrency } from '../../User/useCurrency';
 import { sentPaymentTgMessage } from '../sentTgMessage';
 import { FeatureList } from '../../Landing/Price/FeatureList';
 import { useSettings } from '../../Settings/useSettings';
-import { StripeCreateCheckoutRequest } from '@/common/requests';
+import { StripeCreateCheckoutRequest } from '../stripe.types';
 import { sleep } from '@/libs/sleep';
 import { useAnalytics } from '../../Analytics/useAnalytics';
 import { useUrlState } from '../../Url/useUrlState';

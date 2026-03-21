@@ -1,4 +1,4 @@
-import { TelegramRequest, TelegramResponse } from '@/common/requests';
+import { TelegramRequest, TelegramResponse } from './telegramRequest.types';
 import { validateAuthToken } from '../config/firebase';
 import { sentSupportTelegramMessage } from './sendTelegramMessage';
 

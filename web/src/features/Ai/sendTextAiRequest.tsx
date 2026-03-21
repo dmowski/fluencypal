@@ -1,4 +1,4 @@
-import { AiResponse, AiRequest } from '@/common/requests';
+import { AiResponse, AiRequest } from '@/app/api/ai/aiRequest.types';
 import { getGlobalConversationId } from '../Usage/globalConversationId';
 import { sleep } from '@/libs/sleep';
 

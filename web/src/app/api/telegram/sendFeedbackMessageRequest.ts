@@ -1,6 +1,6 @@
 'use client';
 
-import { TelegramRequest, TelegramResponse } from '@/common/requests';
+import { TelegramRequest, TelegramResponse } from './telegramRequest.types';
 
 export const sendFeedbackMessageRequest = async (message: TelegramRequest, auth: string) => {
   const response = await fetch('/api/telegram', {

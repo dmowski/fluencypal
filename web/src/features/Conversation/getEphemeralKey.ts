@@ -1,5 +1,5 @@
 import { RealTimeModel } from '@/features/Ai/ai';
-import { GetEphemeralTokenResponse, GetEphemeralTokenRequest } from '@/common/requests';
+import { GetEphemeralTokenResponse, GetEphemeralTokenRequest } from './webrtc.types';
 
 export const getEphemeralKey = async (model: RealTimeModel, authToken: string) => {
   const requestData: GetEphemeralTokenRequest = {

@@ -1,4 +1,4 @@
-import { TelegramRequest, TelegramResponse } from '@/common/requests';
+import { TelegramRequest, TelegramResponse } from '@/app/api/telegram/telegramRequest.types';
 
 export const sendTelegramRequest = async (request: TelegramRequest, authToken: string) => {
   const response = await fetch('/api/telegram', {

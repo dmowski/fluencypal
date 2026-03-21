@@ -1,4 +1,4 @@
-import { AddUsageLogRequest, AddUsageLogResponse } from '@/common/requests';
+import { AddUsageLogRequest, AddUsageLogResponse } from '@/app/api/addUsageLog/usageRequest.types';
 
 const createUsageLogRaw = async (requestData: AddUsageLogRequest, auth: string) => {
   const response = await fetch('/api/addUsageLog', {

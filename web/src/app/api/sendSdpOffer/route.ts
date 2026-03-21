@@ -1,4 +1,4 @@
-import { SendSdpOfferRequest, SendSdpOfferResponse } from '@/common/requests';
+import { SendSdpOfferRequest, SendSdpOfferResponse } from '@/features/Conversation/webrtc.types';
 import { getEphemeralToken } from '../token/getEphemeralToken';
 import { validateAuthToken } from '../config/firebase';
 import { rateLimitRealtimeInit } from '../usage/rateLimitRealtimeInit';

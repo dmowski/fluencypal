@@ -1,5 +1,8 @@
 import { supportedLanguages } from '@/features/Lang/lang';
-import { StripeCreateCheckoutRequest, StripeCreateCheckoutResponse } from '@/common/requests';
+import {
+  StripeCreateCheckoutRequest,
+  StripeCreateCheckoutResponse,
+} from '@/features/Usage/stripe.types';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import Stripe from 'stripe';
 import { validateAuthToken } from '../config/firebase';

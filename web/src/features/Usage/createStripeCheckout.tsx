@@ -1,4 +1,4 @@
-import { StripeCreateCheckoutResponse, StripeCreateCheckoutRequest } from '@/common/requests';
+import { StripeCreateCheckoutResponse, StripeCreateCheckoutRequest } from './stripe.types';
 
 export const createStripeCheckout = async (
   conversationDate: StripeCreateCheckoutRequest,

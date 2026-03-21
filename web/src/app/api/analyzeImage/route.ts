@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { AiImageRequest, AiImageResponse } from '@/common/requests';
+import { AiImageRequest, AiImageResponse } from '../ai/aiRequest.types';
 import { calculateTextUsagePrice, TextAiModel, TextUsageEvent } from '@/features/Ai/ai';
 import { validateAuthToken } from '../config/firebase';
 
