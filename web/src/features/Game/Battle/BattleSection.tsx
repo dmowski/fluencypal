@@ -1,11 +1,8 @@
-import { Button, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { useBattle } from './useBattle';
 import { BattleCard } from './BattleCard';
-import { useState } from 'react';
 import { useLingui } from '@lingui/react';
-import { ChevronDown } from 'lucide-react';
 import { useAuth } from '@/features/Auth/useAuth';
-import { ChatProvider } from '@/features/Chat/useChat';
 import { PageContainer } from '@/features/Community/PageContainer';
 import { PositionChanged } from '../PositionChanged';
 
