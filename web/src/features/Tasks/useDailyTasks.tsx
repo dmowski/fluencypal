@@ -25,6 +25,8 @@ export interface DailyTaskApi {
   // Sync this with firebase by /users/{userId}/dailyTasks/{dayIso}_{languageCode}
   todayTaskProgress: DailyTaskProgress | null;
 
+  isAllTasksCompleted: boolean;
+
   // For dashboard card:
   title: string;
   subTitle: string;
@@ -41,6 +43,7 @@ export const dailyTasksContext = createContext<DailyTaskApi>({
   subTitle: '',
   badge: '',
   previewImageUrl: '',
+  isAllTasksCompleted: false,
 });
 
 function useProvideDailyTasks(): DailyTaskApi {
@@ -114,14 +117,26 @@ function useProvideDailyTasks(): DailyTaskApi {
     await setDoc(dailyTaskProgressDocRef, progressData, { merge: true });
   };
 
+  const isAllTasksCompleted = useMemo(() => {
+    if (!todayTaskProgress) return false;
+    return todaysActualTasks.every((taskType) => {
+      return !!todayTaskProgress?.completedTasks?.[taskType];
+    });
+  }, [todayTaskProgress, todaysActualTasks]);
+
   return {
     onCompleteTask,
     todaysActualTasks,
+    isAllTasksCompleted,
     tasksInfo,
     todayTaskProgress: todayTaskProgress ?? null,
-    title: i18n._('Complete daily tasks to build a learning habit'),
-    subTitle: '',
-    badge: dayjs().format('D MMM'), // e.g. "23 Mar"
+    title: isAllTasksCompleted
+      ? i18n._('All tasks completed')
+      : i18n._('Complete daily tasks to build a learning habit'),
+    subTitle: isAllTasksCompleted
+      ? i18n._('Great job! Come back tomorrow for new tasks.')
+      : i18n._('Let’s get started with today’s tasks!'),
+    badge: isAllTasksCompleted ? i18n._('Done').toUpperCase() : dayjs().format('D MMM'), // e.g. "23 Mar"
     previewImageUrl:
       'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774034994467-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
   };

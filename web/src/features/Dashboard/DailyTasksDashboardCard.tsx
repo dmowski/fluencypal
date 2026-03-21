@@ -109,14 +109,23 @@ export const DailyTasksDashboardCard = () => {
       <SectionHeader title={i18n._('Daily tasks')} />
       <StoreCard
         textColor={'#fff'}
-        backgroundColor={isLoading ? '#000000' : '#9307ff69'}
+        backgroundColor={
+          tasks.isAllTasksCompleted ? '#0798ff' : isLoading ? '#000000' : '#9307ff69'
+        }
         previewImageUrl={tasks.previewImageUrl}
+        borderSize={tasks.isAllTasksCompleted ? '5px' : undefined}
         title={tasks.title}
         subTitle={tasks.subTitle}
         badge={tasks.badge}
         items={items}
         onClick={openCard}
-        itemsBackgroundColor={isLoading ? 'rgba(32, 32, 32, 0)' : 'rgba(32, 32, 32, 0.9)'}
+        itemsBackgroundColor={
+          tasks.isAllTasksCompleted
+            ? 'rgb(5, 29, 47)'
+            : isLoading
+              ? 'rgba(32, 32, 32, 0)'
+              : 'rgba(32, 32, 32, 0.9)'
+        }
         itemsViewMode={'list'}
       />
     </Stack>
