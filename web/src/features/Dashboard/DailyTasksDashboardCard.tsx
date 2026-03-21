@@ -30,6 +30,8 @@ export const DailyTasksDashboardCard = () => {
   const [, setIsShowDailyQuestions] = useUrlState('dailyQuestions', false, false);
   const plan = usePlan();
 
+  const [isShowPublicChat, setIsShowPublicChat] = useUrlState('publicChat', false, false);
+
   const { startJustTalk, isCallStarting } = useJustTalk();
 
   const openLearningPlan = () => {
@@ -44,7 +46,7 @@ export const DailyTasksDashboardCard = () => {
     const tasksHandlerMap: Record<DailyTaskType, () => void> = {
       'just-talk': startJustTalk,
       'goal-lesson': openLearningPlan,
-      community: () => {},
+      community: () => setIsShowPublicChat(true),
       story: () => stories.openRandomStory(),
       'daily-question': () => setIsShowDailyQuestions(true),
     };

@@ -80,7 +80,6 @@ export function Dashboard({ lang }: DashboardProps) {
                 <PlanDashboardCards lang={lang} />
                 <StoriesDashboardCard />
                 <RolePlayDashboardCard />
-
                 <CommunityDashboardCard />
                 <DailyQuestionDashboardCard />
                 <PublicChatDashboardCard />

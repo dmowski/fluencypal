@@ -10,9 +10,8 @@ import { ActiveSpacePage } from '../Community/CommunitySpace/ActiveSpacePage';
 
 export const CommunityDashboardCard = () => {
   const { i18n } = useLingui();
-
   const { spaces } = useCommunitySpace();
-  const [isShowAll, setIsShowAll] = useUrlState('showRooms', false, false);
+  const [isShowCommunityRooms, setIsShowCommunityRooms] = useUrlState('showRooms', false, false);
 
   const [activeSpaceId, setActiveSpaceId] = useUrlState('activeSpaceId', '', false);
 
@@ -64,8 +63,12 @@ export const CommunityDashboardCard = () => {
         </CustomModal>
       )}
 
-      {isShowAll && (
-        <CustomModal isOpen={true} onClose={() => setIsShowAll(false)} mobilePadding="40px 0">
+      {isShowCommunityRooms && (
+        <CustomModal
+          isOpen={true}
+          onClose={() => setIsShowCommunityRooms(false)}
+          mobilePadding="40px 0"
+        >
           <Stack
             sx={{
               maxWidth: '700px',
@@ -129,7 +132,7 @@ export const CommunityDashboardCard = () => {
           items={items}
           itemsBackgroundColor={'rgba(32, 32, 32, 0.7)'}
           onClick={() => {
-            setIsShowAll(true);
+            setIsShowCommunityRooms(true);
           }}
           itemsViewMode={'list'}
         />

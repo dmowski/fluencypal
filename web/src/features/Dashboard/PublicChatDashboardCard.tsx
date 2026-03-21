@@ -13,11 +13,11 @@ import { sleep } from '@/libs/sleep';
 
 export const PublicChatDashboardCard = () => {
   const { i18n } = useLingui();
-  const [isShowAll, setIsShowAll] = useUrlState('publicChat', false, false);
+  const [isShowPublicChat, setIsShowPublicChat] = useUrlState('publicChat', false, false);
 
   const router = useRouter();
   const close = async () => {
-    setIsShowAll(false);
+    setIsShowPublicChat(false);
     await sleep(400);
 
     const searchParams = new URLSearchParams();
@@ -38,7 +38,7 @@ export const PublicChatDashboardCard = () => {
         gap: '20px',
       }}
     >
-      {isShowAll && (
+      {isShowPublicChat && (
         <CustomModal isOpen={true} onClose={close} mobilePadding="40px 0">
           <Stack
             sx={{
@@ -82,7 +82,7 @@ export const PublicChatDashboardCard = () => {
           title={i18n._('Community Chat')}
           subTitle={i18n._('Join the community chat and connect with other members!')}
           items={[]}
-          onClick={() => setIsShowAll(true)}
+          onClick={() => setIsShowPublicChat(true)}
           itemsBackgroundColor={'rgba(32, 32, 32, 1)'}
           itemsViewMode={'list'}
         />
