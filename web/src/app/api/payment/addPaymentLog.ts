@@ -1,4 +1,4 @@
-import { PaymentLog, PaymentLogType } from '@/common/usage';
+import { PaymentLog, PaymentLogType } from '@/features/Usage/usage';
 import { getDB } from '../config/firebase';
 import { addToTotalBalance } from './addToTotalBalance';
 import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';

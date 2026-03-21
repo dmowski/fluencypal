@@ -1,4 +1,4 @@
-import { UsageLog } from '@/common/usage';
+import { UsageLog } from '@/features/Usage/usage';
 import { useAuth } from '@/features/Auth/useAuth';
 import { useUsage } from '@/features/Usage/useUsage';
 import { useEffect, useState } from 'react';

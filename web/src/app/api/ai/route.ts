@@ -8,7 +8,7 @@ import { validateAuthToken } from '../config/firebase';
 import { generateTextWithAi } from './generateTextWithAi';
 import { addConversationUsage } from '../usage/addConversationUsage';
 import { getUserPricePerHour } from '../usage/getUserPricePerHour';
-import { TextUsageLog } from '@/common/usage';
+import { TextUsageLog } from '@/features/Usage/usage';
 import { addUsage } from '../payment/addUsage';
 
 export const maxDuration = 60;

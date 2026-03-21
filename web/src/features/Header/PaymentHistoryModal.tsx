@@ -5,7 +5,7 @@ import { useLingui } from '@lingui/react';
 import { useUsage } from '../Usage/useUsage';
 import dayjs from 'dayjs';
 import { convertHoursToHumanFormat } from '@/libs/convertHoursToHumanFormat';
-import { PaymentLogType } from '@/common/usage';
+import { PaymentLogType } from '@/features/Usage/usage';
 import { useState } from 'react';
 import { BanknoteX } from 'lucide-react';
 import { sendFeedbackMessageRequest } from '@/app/api/telegram/sendFeedbackMessageRequest';

@@ -1,6 +1,6 @@
 import { InitBalanceResponse } from '@/common/requests';
 import { getDB, validateAuthToken } from '../config/firebase';
-import { WELCOME_BONUS } from '@/common/usage';
+import { WELCOME_BONUS } from '@/features/Usage/usage';
 import { addPaymentLog } from '../payment/addPaymentLog';
 import { TRIAL_MINUTES } from '@/features/Price/price';
 

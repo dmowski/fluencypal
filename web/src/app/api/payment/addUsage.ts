@@ -1,4 +1,4 @@
-import { UsageLog } from '@/common/usage';
+import { UsageLog } from '@/features/Usage/usage';
 import { addToTotalBalance } from './addToTotalBalance';
 import { getDB } from '../config/firebase';
 import { getUserBalance } from './getUserBalance';

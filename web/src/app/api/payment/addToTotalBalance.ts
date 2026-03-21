@@ -1,4 +1,4 @@
-import { TotalUsageInfo } from '@/common/usage';
+import { TotalUsageInfo } from '@/features/Usage/usage';
 import { getDB } from '../config/firebase';
 import { getUserBalance } from './getUserBalance';
 import dayjs from 'dayjs';
