@@ -29,9 +29,11 @@ export const dailyTasksContext = createContext<DailyTaskApi>({
 });
 
 function useProvideDailyTasks(): DailyTaskApi {
-  const [activeTask, setActiveTask] = useUrlState<DailyTaskType | null>('activeTask', null, false);
   const auth = useAuth();
   const settings = useSettings();
+
+  const [activeTask, setActiveTask] = useUrlState<DailyTaskType | null>('activeTask', null, false);
+
   const userId = auth.uid;
   const { i18n } = useLingui();
 
