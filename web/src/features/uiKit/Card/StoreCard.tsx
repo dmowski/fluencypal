@@ -1,8 +1,6 @@
 import { Button, Stack, Typography } from '@mui/material';
-import { DraftingCompass } from 'lucide-react';
 import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 import Image from 'next/image';
-import { useState } from 'react';
 
 interface IconRowItem {
   imageUrl?: string;
@@ -13,6 +11,7 @@ interface IconRowItem {
 export interface RowItem extends IconRowItem {
   title: string;
   subTitle: string;
+  rowBgColor?: string;
   actionButtonTitle: string;
   onClick: () => void;
 }
@@ -252,6 +251,7 @@ export const StoreCardRowItem = ({
         alignItems: 'center',
         padding: '10px 20px',
         cursor: 'pointer',
+        backgroundColor: data.rowBgColor || 'transparent',
       }}
       onClick={(e) => {
         e.stopPropagation();
