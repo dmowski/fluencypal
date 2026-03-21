@@ -1635,8 +1635,8 @@ msgstr ""
 "\n"
 "而我开始看到重大风险可能就潜伏在：疑虑消失的那安静一秒。"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:86
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:97
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:53
+#: src/features/Game/DailyQuestion/DailyQuestionModal.tsx:37
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "每天回答一个新问题，看看你的风格如何提升！"
@@ -2523,8 +2523,8 @@ msgstr "传达系统设计权衡"
 msgid "Communication & Leadership"
 msgstr "沟通与领导力"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:115
-#: src/features/Dashboard/CommunityDashboardCard.tsx:127
+#: src/features/Dashboard/CommunityDashboardCard.tsx:118
+#: src/features/Dashboard/CommunityDashboardCard.tsx:130
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
 #: src/features/Tasks/useDailyTasks.tsx:70
@@ -2538,9 +2538,9 @@ msgstr "社区"
 msgid "Community access"
 msgstr "社区访问"
 
+#: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:27
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:62
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:82
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:38
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
@@ -2557,7 +2557,7 @@ msgstr "社区中心"
 msgid "Community Responses:"
 msgstr "社区回复："
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:88
+#: src/features/Dashboard/CommunityDashboardCard.tsx:91
 #. js-lingui-explicit-id
 msgid "Community Rooms"
 msgstr "社区房间"
@@ -2598,7 +2598,7 @@ msgstr "完成句子"
 msgid "Complete verification to proceed."
 msgstr "完成验证以继续。"
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:88
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:89
 #. js-lingui-explicit-id
 msgid "Completed"
 msgstr "完成"
@@ -3071,7 +3071,7 @@ msgstr "每日限制？"
 msgid "Daily question"
 msgstr "每日问题"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:52
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "每日问题"
@@ -3083,7 +3083,7 @@ msgid "Daily Question Chat"
 msgstr "每日问题聊天"
 
 #: src/features/Community/CommunityPage.tsx:31
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:78
+#: src/features/Game/DailyQuestion/DailyQuestionModal.tsx:29
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "每日问题"
@@ -3101,7 +3101,7 @@ msgstr "每日口语任务引入新的词汇和句型，帮助您养成学习习
 msgid "Daily Tasks"
 msgstr "每日任务"
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:108
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:109
 #. js-lingui-explicit-id
 msgid "Daily tasks"
 msgstr "日常任务"
@@ -4393,7 +4393,7 @@ msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "探索讨论健康和心理健康的技巧。"
 
 #: src/features/Community/CommunityDashboard.tsx:92
-#: src/features/Dashboard/CommunityDashboardCard.tsx:116
+#: src/features/Dashboard/CommunityDashboardCard.tsx:119
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "探索社区，参与讨论，与其他成员建立联系"
@@ -7089,12 +7089,12 @@ msgstr "加入"
 msgid "Join candidates who transformed their interview performance"
 msgstr "加入那些改变了面试表现的候选人"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:96
+#: src/features/Dashboard/CommunityDashboardCard.tsx:99
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "加入房间，与其他成员讨论特定话题"
 
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:83
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Join the community chat and connect with other members!"
 msgstr "加入社区聊天并与其他成员联系！"
@@ -7355,7 +7355,7 @@ msgstr "根据您的目标学习有用的英语词汇。通过 AI 课程和指�
 msgid "Learn vocabulary that matches your goals and use it in context."
 msgstr "学习符合您目标的词汇并在上下文中使用它。"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:128
+#: src/features/Dashboard/CommunityDashboardCard.tsx:131
 #. js-lingui-explicit-id
 msgid "Learn with the community"
 msgstr "与社区一起学习"
@@ -7509,7 +7509,7 @@ msgstr "加载中.."
 #: src/features/Conversation/ConversationReviewModal.tsx:116
 #: src/features/Conversation/ConversationReviewModal.tsx:131
 #: src/features/Conversation/ConversationReviewModal.tsx:146
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:86
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:87
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:244
 #: src/features/Dashboard/JustTalkCard.tsx:48
@@ -8069,7 +8069,7 @@ msgstr "下一个故事"
 msgid "Next Turn"
 msgstr "下一回合"
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:37
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:38
 #. js-lingui-explicit-id
 msgid "No active lesson found. Please create a learning plan to access this task."
 msgstr "未找到活动课程。请创建学习计划以访问此任务。"
@@ -8433,7 +8433,7 @@ msgstr "在线语言练习"
 msgid "Oops! Something went wrong"
 msgstr "哎呀！出了些问题"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:31
+#: src/features/Dashboard/CommunityDashboardCard.tsx:30
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:252
 #: src/features/Dashboard/JustTalkCard.tsx:48
 #: src/features/Dashboard/PlanDashboardCards.tsx:248
@@ -9577,7 +9577,7 @@ msgid "Purchase 5 hours"
 msgstr "购买5小时"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:118
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "问题"
@@ -10296,7 +10296,7 @@ msgstr "亚军"
 msgid "See all"
 msgstr "查看全部"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:98
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "See All"
 msgstr "查看全部"
@@ -10838,7 +10838,7 @@ msgid "Stars"
 msgstr "星星"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:89
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:90
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:475
@@ -12066,7 +12066,7 @@ msgid ""
 "installation is required."
 msgstr "要使用 FluencyPal，您需要一个现代的网络浏览器和一个麦克风。摄像头是可选的，只有在您启用摄像头反馈时才会使用。无需安装。"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:115
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "今天"

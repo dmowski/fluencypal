@@ -1755,8 +1755,8 @@ msgstr ""
 "I zaczynam dostrzegać, gdzie może leżeć znaczące ryzyko: w cichej "
 "sekundzie, gdy znika wątpliwość."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:86
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:97
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:53
+#: src/features/Game/DailyQuestion/DailyQuestionModal.tsx:37
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "Odpowiedz na nowe pytanie każdego dnia i zobacz, jak poprawia się Twój styl!"
@@ -2697,8 +2697,8 @@ msgstr "Komunikuj kompromisy projektowe systemu"
 msgid "Communication & Leadership"
 msgstr "Komunikacja i Przywództwo"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:115
-#: src/features/Dashboard/CommunityDashboardCard.tsx:127
+#: src/features/Dashboard/CommunityDashboardCard.tsx:118
+#: src/features/Dashboard/CommunityDashboardCard.tsx:130
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
 #: src/features/Tasks/useDailyTasks.tsx:70
@@ -2712,9 +2712,9 @@ msgstr "Społeczność"
 msgid "Community access"
 msgstr "Dostęp społecznościowy"
 
+#: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:27
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:62
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:82
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:38
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
@@ -2731,7 +2731,7 @@ msgstr "Centrum społeczności"
 msgid "Community Responses:"
 msgstr "Odpowiedzi Społeczności:"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:88
+#: src/features/Dashboard/CommunityDashboardCard.tsx:91
 #. js-lingui-explicit-id
 msgid "Community Rooms"
 msgstr "Pokoje Społecznościowe"
@@ -2772,7 +2772,7 @@ msgstr "Dokończ zdanie"
 msgid "Complete verification to proceed."
 msgstr "Dokończ weryfikację, aby kontynuować."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:88
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:89
 #. js-lingui-explicit-id
 msgid "Completed"
 msgstr "Ukończono"
@@ -3270,7 +3270,7 @@ msgstr "Limity dzienne?"
 msgid "Daily question"
 msgstr "Codzienne pytanie"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:52
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Codzienne Pytanie"
@@ -3282,7 +3282,7 @@ msgid "Daily Question Chat"
 msgstr "Codzienne Pytanie na Czacie"
 
 #: src/features/Community/CommunityPage.tsx:31
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:78
+#: src/features/Game/DailyQuestion/DailyQuestionModal.tsx:29
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "Codzienne pytania"
@@ -3303,7 +3303,7 @@ msgstr ""
 msgid "Daily Tasks"
 msgstr "Codzienne zadania"
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:108
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:109
 #. js-lingui-explicit-id
 msgid "Daily tasks"
 msgstr "Codzienne zadania"
@@ -4742,7 +4742,7 @@ msgstr ""
 "psychicznym."
 
 #: src/features/Community/CommunityDashboard.tsx:92
-#: src/features/Dashboard/CommunityDashboardCard.tsx:116
+#: src/features/Dashboard/CommunityDashboardCard.tsx:119
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "Eksploruj społeczność, dołączaj do dyskusji i łącz się z innymi członkami"
@@ -7802,12 +7802,12 @@ msgstr ""
 "Dołącz do kandydatów, którzy poprawili swoje wyniki w rozmowach "
 "kwalifikacyjnych"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:96
+#: src/features/Dashboard/CommunityDashboardCard.tsx:99
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "Dołącz do pokoi, aby omawiać konkretne tematy z innymi członkami"
 
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:83
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Join the community chat and connect with other members!"
 msgstr "Dołącz do czatu społecznościowego i połącz się z innymi członkami!"
@@ -8093,7 +8093,7 @@ msgstr ""
 msgid "Learn vocabulary that matches your goals and use it in context."
 msgstr "Ucz się słownictwa, które odpowiada Twoim celom i używaj go w kontekście."
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:128
+#: src/features/Dashboard/CommunityDashboardCard.tsx:131
 #. js-lingui-explicit-id
 msgid "Learn with the community"
 msgstr "Ucz się z społecznością"
@@ -8247,7 +8247,7 @@ msgstr "Ładowanie.."
 #: src/features/Conversation/ConversationReviewModal.tsx:116
 #: src/features/Conversation/ConversationReviewModal.tsx:131
 #: src/features/Conversation/ConversationReviewModal.tsx:146
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:86
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:87
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:244
 #: src/features/Dashboard/JustTalkCard.tsx:48
@@ -8893,7 +8893,7 @@ msgstr "Następna historia"
 msgid "Next Turn"
 msgstr "Następna tura"
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:37
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:38
 #. js-lingui-explicit-id
 msgid "No active lesson found. Please create a learning plan to access this task."
 msgstr ""
@@ -9295,7 +9295,7 @@ msgstr "Online praktyka językowa"
 msgid "Oops! Something went wrong"
 msgstr "Ups! Coś poszło nie tak"
 
-#: src/features/Dashboard/CommunityDashboardCard.tsx:31
+#: src/features/Dashboard/CommunityDashboardCard.tsx:30
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:252
 #: src/features/Dashboard/JustTalkCard.tsx:48
 #: src/features/Dashboard/PlanDashboardCards.tsx:248
@@ -10539,7 +10539,7 @@ msgid "Purchase 5 hours"
 msgstr "Zakup 5 godzin"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:118
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "Pytanie"
@@ -11302,7 +11302,7 @@ msgstr "Drugie Miejsce"
 msgid "See all"
 msgstr "Zobacz wszystko"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:98
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "See All"
 msgstr "Zobacz Wszystko"
@@ -11878,7 +11878,7 @@ msgid "Stars"
 msgstr "Gwiazdy"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:89
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:90
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:475
@@ -13225,7 +13225,7 @@ msgstr ""
 "tylko wtedy, gdy włączysz sprzężenie zwrotne z kamery internetowej. "
 "Instalacja nie jest wymagana."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:115
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "Dziś"
