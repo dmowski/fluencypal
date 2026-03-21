@@ -6,7 +6,7 @@ import { AiAvatar } from './types';
 import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
 import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 import { useState } from 'react';
-import { AiVoiceSpeed } from '@/common/userSettings';
+import { AiVoiceSpeed } from '@/features/Settings/userSettings';
 import { getVoiceSpeedInstruction } from './voiceSpeed';
 
 export const SelectTeacher = ({

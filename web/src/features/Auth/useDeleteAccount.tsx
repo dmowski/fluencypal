@@ -4,7 +4,7 @@ import { useAuth } from '../Auth/useAuth';
 import { useEffect, useMemo, useState } from 'react';
 import { deleteCollectionDocs, firestore } from '../Firebase/init';
 import { doc, DocumentReference, setDoc } from 'firebase/firestore';
-import { UserSettings } from '@/common/userSettings';
+import { UserSettings } from '@/features/Settings/userSettings';
 import { useNotifications } from '@toolpad/core/useNotifications';
 import { useLingui } from '@lingui/react';
 import { isTMA } from '@telegram-apps/sdk-react';

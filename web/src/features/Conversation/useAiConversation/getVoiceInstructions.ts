@@ -1,5 +1,5 @@
 import { AiVoice } from '@/features/Ai/ai';
-import { AiVoiceSpeed } from '@/common/userSettings';
+import { AiVoiceSpeed } from '@/features/Settings/userSettings';
 import { getAiVoiceByVoice } from '../CallMode/voiceAvatar';
 import { getVoiceSpeedInstruction } from '../CallMode/voiceSpeed';
 

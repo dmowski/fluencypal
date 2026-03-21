@@ -16,7 +16,7 @@ import { useAppNavigation } from './useAppNavigation';
 import { useAuth } from '../Auth/useAuth';
 import { useGame } from '../Game/useGame';
 import { useSettings } from '../Settings/useSettings';
-import { AppMode } from '@/common/userSettings';
+import { AppMode } from '@/features/Settings/userSettings';
 import { Avatar } from '../Game/Avatar';
 import { useChatList } from '../Chat/useChatList';
 import { useBattle } from '../Game/Battle/useBattle';

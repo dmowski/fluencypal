@@ -37,7 +37,7 @@ import { useResizeElement } from '../Layout/useResizeElement';
 import { Messages } from './Messages';
 import { AiVoice } from '@/features/Ai/ai';
 import { CameraCanvas } from './CallMode/CameraCanvas';
-import { ConversationMode } from '@/common/userSettings';
+import { ConversationMode } from '@/features/Settings/userSettings';
 import { ProcessUserInput } from './ProcessUserInput';
 import { ConversationReviewModal } from './ConversationReviewModal';
 import { LessonPlanAnalysis } from '../LessonPlan/type';

@@ -19,7 +19,7 @@ import {
   InitUserSettings,
   ParentConsent,
   UserSettings,
-} from '@/common/userSettings';
+} from '@/features/Settings/userSettings';
 import { NativeLangCode } from '@/libs/language/type';
 import { useUserSource } from '../Analytics/useUserSource';
 import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';

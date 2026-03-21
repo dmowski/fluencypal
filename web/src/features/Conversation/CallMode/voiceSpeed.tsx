@@ -1,4 +1,4 @@
-import { AiVoiceSpeed } from '@/common/userSettings';
+import { AiVoiceSpeed } from '@/features/Settings/userSettings';
 
 const voiceSpeedInstructionsMap: Record<AiVoiceSpeed, string> = {
   'extremely-slow': 'Speak very slowly, with clear pronunciation and longer pauses between words.',

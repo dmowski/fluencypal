@@ -8,7 +8,7 @@ import { GuessGameStat } from '../Conversation/types';
 import { useEffect, useState } from 'react';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useAiUserInfo } from '../Ai/useAiUserInfo';
-import { ConversationMode } from '@/common/userSettings';
+import { ConversationMode } from '@/features/Settings/userSettings';
 
 interface PracticePageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;

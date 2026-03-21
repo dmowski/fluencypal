@@ -16,7 +16,7 @@ import { useState } from 'react';
 import { useAuth } from '../Auth/useAuth';
 import { createSetupIntentRequest } from '../PayWall/createSetupIntentRequest';
 import { VerifyCard } from '../PayWall/CardValidator';
-import { ParentConsent } from '@/common/userSettings';
+import { ParentConsent } from '@/features/Settings/userSettings';
 import { CONTACTS } from '../Landing/Contact/data';
 import { Check } from 'lucide-react';
 import { getUrlStart } from '../Lang/getUrlStart';

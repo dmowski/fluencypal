@@ -20,7 +20,7 @@ import { GuessGameStat, RecordingUserMessageMode } from '../types';
 import { useAuth } from '../../Auth/useAuth';
 import { firstAiMessage } from '@/features/Lang/lang';
 import { GoalElementInfo } from '../../Plan/types';
-import { ConversationMode } from '@/common/userSettings';
+import { ConversationMode } from '@/features/Settings/userSettings';
 import { useAccess } from '../../Usage/useAccess';
 import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from '../../LessonPlan/type';
 import { ConversationConfig, ConversationInstance } from '../ConversationInstance/types';
