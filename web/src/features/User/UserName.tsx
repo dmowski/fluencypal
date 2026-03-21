@@ -28,7 +28,13 @@ export const UserName = ({
         gap: size === 'large' ? '6px' : '5px',
       }}
     >
-      {center && <Badge size={size} isShow={isVerified} opacity={0} />}
+      {center && (
+        <Stack
+          sx={{
+            width: '6px',
+          }}
+        />
+      )}
       <Typography
         variant={size === 'large' ? 'h4' : 'body1'}
         sx={{

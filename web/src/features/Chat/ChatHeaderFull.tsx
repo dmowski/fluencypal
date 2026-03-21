@@ -70,12 +70,7 @@ export const ChatHeaderFull = ({ chat, close }: { chat: UserChatMetadata; close:
       >
         {userIds.map((userId, index) => {
           return (
-            <Stack
-              key={userId}
-              sx={{
-                marginLeft: index === 0 ? '0' : '-30px',
-              }}
-            >
+            <Stack key={userId}>
               <Avatar
                 url={game.getUserAvatarUrl(userId)}
                 avatarSize={'90px'}
