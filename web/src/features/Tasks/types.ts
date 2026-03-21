@@ -53,5 +53,5 @@ export interface DailyTaskProgress {
   dayIso: string;
 
   // key is DailyTaskType, value is iso timestamp when task was completed
-  completedTasks: Record<DailyTaskType, string | null> | null;
+  completedTasks: Partial<Record<DailyTaskType, string>>;
 }
