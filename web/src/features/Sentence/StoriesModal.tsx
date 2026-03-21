@@ -134,6 +134,7 @@ export const StoriesModal = ({
 
   const onComplete = () => {
     setState({ isCompleted: true });
+    stories.onFinishStory();
   };
 
   const audio = useConversationAudio();
@@ -404,6 +405,7 @@ export const StoriesModal = ({
     const nextIndex = listenState.activeSentenceIndex + 1;
     if (nextIndex >= listenState.allSentences.length) {
       openInitScreen();
+      stories.onFinishStory();
       return;
     }
 

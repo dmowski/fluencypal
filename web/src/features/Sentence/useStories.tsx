@@ -11,6 +11,7 @@ import { Story, StoryStat } from './types';
 import { shuffleArray } from '@/libs/array';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { sleep } from '@/libs/sleep';
+import { useDailyTasks } from '../Tasks/useDailyTasks';
 
 interface StoriesContextType {
   loading: boolean;
@@ -29,12 +30,14 @@ interface StoriesContextType {
   setIsVideoPaused: (paused: boolean) => void;
   playStoryAudio: (story?: Story | null) => Promise<void>;
   storiesStatsMap: Record<string, StoryStat>;
+  onFinishStory: () => void;
 }
 
 const StoriesContext = createContext<StoriesContextType | null>(null);
 
 function useProvideStories(): StoriesContextType {
   const settings = useSettings();
+  const tasks = useDailyTasks();
   const languageCode = settings.languageCode || 'en';
   const audio = useConversationAudio();
 
@@ -180,6 +183,10 @@ function useProvideStories(): StoriesContextType {
     return prevStory;
   };
 
+  const onFinishStory = () => {
+    tasks.onCompleteTask('story');
+  };
+
   return {
     loading,
     selectedStory,
@@ -195,6 +202,7 @@ function useProvideStories(): StoriesContextType {
     setIsVideoVolumeEnabled,
     isVideoPaused,
     setIsVideoPaused,
+    onFinishStory,
     playStoryAudio,
     storiesStatsMap,
   };

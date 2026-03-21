@@ -5,6 +5,7 @@ import { useDailyTasks } from '../Tasks/useDailyTasks';
 import { SectionHeader } from './CartsHeader';
 import { useMemo } from 'react';
 import { DailyTaskType } from '../Tasks/types';
+import { useStories } from '../Sentence/useStories';
 
 const taskIconMap: Record<DailyTaskType, string> = {
   'just-talk':
@@ -22,10 +23,28 @@ const taskIconMap: Record<DailyTaskType, string> = {
 export const DailyTasksDashboardCard = () => {
   const { i18n } = useLingui();
   const tasks = useDailyTasks();
+  const stories = useStories();
 
   const openCard = () => {
     if (!tasks.todaysActualTasks[0]) return;
     tasks.onStartTask(tasks.todaysActualTasks[0]);
+  };
+
+  const onStartTask = (taskType: DailyTaskType) => {
+    const tasksHandlerMap: Record<DailyTaskType, () => void> = {
+      'just-talk': () => tasks.onStartTask('just-talk'),
+      'goal-lesson': () => tasks.onStartTask('goal-lesson'),
+      community: () => tasks.onStartTask('community'),
+      story: () => {
+        stories.openRandomStory();
+      },
+      'daily-question': () => tasks.onStartTask('daily-question'),
+    };
+
+    const handler = tasksHandlerMap[taskType];
+    if (handler) {
+      handler();
+    }
   };
 
   const items: RowItem[] = useMemo(() => {
@@ -37,7 +56,7 @@ export const DailyTasksDashboardCard = () => {
       const image = taskIconMap[taskType];
       const taskItem: RowItem = {
         title: taskInfo ? taskInfo.title : taskType,
-        onClick: () => tasks.onStartTask(taskType),
+        onClick: () => onStartTask(taskType),
         subTitle: taskInfo ? taskInfo.label : '',
         actionButtonTitle: isCompleted ? i18n._('Completed') : i18n._('Start'),
         imageUrl: image,
