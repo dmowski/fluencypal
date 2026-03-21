@@ -116,11 +116,11 @@ function useProvideDailyTasks(): DailyTaskApi {
     todaysActualTasks,
     tasksInfo,
     todayTaskProgress: todayTaskProgress ?? null,
-    title: i18n._('Daily tasks'),
-    subTitle: i18n._('Complete daily tasks to build a learning habit and earn rewards'),
+    title: i18n._('Complete daily tasks to build a learning habit'),
+    subTitle: '',
     badge: dayjs().format('D MMM'), // e.g. "23 Mar"
     previewImageUrl:
-      'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035331701-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+      'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774034994467-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
   };
 }
 

@@ -1108,7 +1108,7 @@ msgstr "주석 추가"
 msgid "Add new goal"
 msgstr "새 목표 추가"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:140
+#: src/features/User/AiKnowledgeModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Add new note"
 msgstr "새 노트 추가"
@@ -1118,7 +1118,7 @@ msgstr "새 노트 추가"
 msgid "Add New Post"
 msgstr "새 게시물 추가"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:139
+#: src/features/User/AiKnowledgeModal.tsx:139
 #. js-lingui-explicit-id
 msgid "Add note"
 msgstr "노트 추가"
@@ -1325,8 +1325,8 @@ msgstr "AI 인터뷰 코치"
 msgid "AI Interview Practice"
 msgstr "AI 인터뷰 연습"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:82
 #: src/features/Settings/MyProfile.tsx:95
+#: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
 msgstr "AI에 대한 지식"
@@ -1648,6 +1648,11 @@ msgstr ""
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "매일 새 질문에 답해보세요, 그리고 당신의 스타일이 어떻게 향상되는지 확인하세요!"
 
+#: src/features/Tasks/useDailyTasks.tsx:74
+#. js-lingui-explicit-id
+msgid "Answer daily question"
+msgstr "일일 질문에 답하세요"
+
 #: src/features/Feature/featuresData.ts:260
 #. js-lingui-explicit-id
 msgid "Answer one new prompt every day and build confidence."
@@ -1658,6 +1663,11 @@ msgstr "매일 새로운 질문에 답하고 자신감을 키우세요."
 #. js-lingui-explicit-id
 msgid "Answer questions correctly to climb the leaderboard!"
 msgstr "질문에 올바르게 답하여 리더보드에서 순위를 올리세요!"
+
+#: src/features/Tasks/useDailyTasks.tsx:75
+#. js-lingui-explicit-id
+msgid "Answer today's daily question to complete this task."
+msgstr "오늘의 일일 질문에 답하여 이 작업을 완료하십시오."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
 #. js-lingui-explicit-id
@@ -2250,13 +2260,13 @@ msgstr "FluencyPal을 무료로 사용할 수 있나요?"
 msgid "Can I use it on smartphone?"
 msgstr "스마트폰에서 사용할 수 있나요?"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:121
-#: src/features/Ai/AiKnowledgeModal.tsx:142
 #: src/features/Chat/Message/Message.tsx:283
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:143
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/User/AiKnowledgeModal.tsx:121
+#: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "취소"
@@ -2477,7 +2487,6 @@ msgid ""
 "rambling."
 msgstr "명확한 시스템 설계 구조. 마침내 횡설수설하지 않고 트레이드오프를 설명했습니다."
 
-#: src/features/Ai/AiKnowledgeModal.tsx:153
 #: src/features/Conversation/CallMode/CallButtons.tsx:660
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
@@ -2486,6 +2495,7 @@ msgstr "명확한 시스템 설계 구조. 마침내 횡설수설하지 않고 �
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:402
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
+#: src/features/User/AiKnowledgeModal.tsx:153
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "닫기"
@@ -2539,6 +2549,7 @@ msgstr "커뮤니케이션 & 리더십"
 #: src/features/Dashboard/CommunityDashboardCard.tsx:127
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
+#: src/features/Tasks/useDailyTasks.tsx:61
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "커뮤니티"
@@ -2588,6 +2599,16 @@ msgstr "친구"
 #. js-lingui-explicit-id
 msgid "Company"
 msgstr "회사"
+
+#: src/features/Tasks/useDailyTasks.tsx:56
+#. js-lingui-explicit-id
+msgid "Complete any lesson from your current Goal plan to mark this task as done."
+msgstr "현재 목표 계획에서 어떤 수업이든 완료하여 이 작업을 완료로 표시하세요."
+
+#: src/features/Tasks/useDailyTasks.tsx:119
+#. js-lingui-explicit-id
+msgid "Complete daily tasks to build a learning habit"
+msgstr "학습 습관을 기르기 위해 일일 과제를 완료하세요"
 
 #: src/features/Dashboard/TasksCard.tsx:56
 #. js-lingui-explicit-id
@@ -3072,6 +3093,11 @@ msgstr "매일 언어 연습"
 msgid "Daily Limits?"
 msgstr "일일 제한?"
 
+#: src/features/Tasks/useDailyTasks.tsx:73
+#. js-lingui-explicit-id
+msgid "Daily question"
+msgstr "일일 질문"
+
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Daily Question"
@@ -3102,6 +3128,11 @@ msgstr ""
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Daily Tasks"
+msgstr "일일 작업"
+
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:22
+#. js-lingui-explicit-id
+msgid "Daily tasks"
 msgstr "일일 작업"
 
 #: src/features/Lang/getLabels.tsx:29
@@ -3179,8 +3210,8 @@ msgstr "토론 주제는 무작위로 선택됩니다."
 msgid "Debates"
 msgstr "토론"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:120
 #: src/features/Chat/Message/Message.tsx:418
+#: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "삭제"
@@ -3639,8 +3670,8 @@ msgstr ""
 "연습을 통해 포인트를 얻고 FluencyPal 리더보드에서 순위를 올리세요. 상위 사용자들은 적극적인 영어 학습을 통해 보상을 잠금 "
 "해제할 수 있습니다."
 
-#: src/features/Ai/AiKnowledgeModal.tsx:122
 #: src/features/Chat/Message/Message.tsx:397
+#: src/features/User/AiKnowledgeModal.tsx:122
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "편집"
@@ -4287,7 +4318,7 @@ msgstr "무료 버전의 모든 기능에 더하여:"
 msgid "Everything you need to stand out and get the job"
 msgstr "눈에 띄고 직장을 얻기 위해 필요한 모든 것"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:141
+#: src/features/User/AiKnowledgeModal.tsx:141
 #. js-lingui-explicit-id
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "예: 저는 베를린으로의 출장 준비를 하고 있습니다"
@@ -4563,6 +4594,11 @@ msgstr "최종 순위"
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
 msgstr "결정 마무리 중 ..."
+
+#: src/features/Tasks/useDailyTasks.tsx:55
+#. js-lingui-explicit-id
+msgid "Finish a lesson from your Goal plan"
+msgstr "목표 계획에서 수업을 마치세요"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:118
 #. js-lingui-explicit-id
@@ -5326,6 +5362,11 @@ msgstr "메인 페이지로 이동하십시오"
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "목표"
+
+#: src/features/Tasks/useDailyTasks.tsx:54
+#. js-lingui-explicit-id
+msgid "Goal lesson"
+msgstr "목표 수업"
 
 #: src/features/Usage/UsageStatsCards.tsx:78
 #. js-lingui-explicit-id
@@ -7195,6 +7236,11 @@ msgstr "특정 주제에 대해 다른 회원들과 토론하기 위해 방에 �
 msgid "Join the community chat and connect with other members!"
 msgstr "커뮤니티 채팅에 참여하고 다른 회원들과 연결하세요!"
 
+#: src/features/Tasks/useDailyTasks.tsx:63
+#. js-lingui-explicit-id
+msgid "Join the community space and send at least one message to other learners."
+msgstr "커뮤니티 공간에 참여하고 다른 학습자들에게 최소한 한 개의 메시지를 보내세요."
+
 #: src/features/Feature/featuresData.ts:354
 #. js-lingui-explicit-id
 msgid ""
@@ -8228,7 +8274,7 @@ msgstr "아직 수정 사항 없음"
 msgid "No daily question for today"
 msgstr "오늘의 질문 없음"
 
-#: src/features/Game/Battle/BattleSection.tsx:48
+#: src/features/Game/Battle/BattleSection.tsx:45
 #. js-lingui-explicit-id
 msgid "No debates yet"
 msgstr "디베이트가 아직 없습니다"
@@ -8253,7 +8299,7 @@ msgstr "메시지가 아직 없습니다"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "아직 메시지가 없습니다. 가장 먼저 당신의 생각을 공유해보세요!"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:107
+#: src/features/User/AiKnowledgeModal.tsx:107
 #. js-lingui-explicit-id
 msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr "아직 메모가 없습니다. AI 선생님이 당신을 더 잘 알 수 있도록 몇 가지 세부 정보를 추가하세요."
@@ -8584,7 +8630,7 @@ msgstr "개인 계획 열기"
 msgid "Open results"
 msgstr "결과 열기"
 
-#: src/features/Game/Battle/BattleSection.tsx:51
+#: src/features/Game/Battle/BattleSection.tsx:48
 #. js-lingui-explicit-id
 msgid ""
 "Open someones profile and press \"Invite to a debate\" button to start a "
@@ -10236,7 +10282,7 @@ msgstr "물품을 상점에 반품하기"
 msgid "Review and edit what the AI remembers"
 msgstr "AI가 기억하는 내용을 검토하고 편집하세요."
 
-#: src/features/Ai/AiKnowledgeModal.tsx:90
+#: src/features/User/AiKnowledgeModal.tsx:90
 #. js-lingui-explicit-id
 msgid "Review, edit, or add the notes AI uses about you."
 msgstr "AI가 당신에 대해 사용하는 메모를 검토, 편집 또는 추가하세요."
@@ -10362,8 +10408,8 @@ msgstr "AI SEO와의 급여 협상 인터뷰"
 msgid "Salary negotiation preparation"
 msgstr "급여 협상 준비"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:119
 #: src/features/Chat/Message/Message.tsx:280
+#: src/features/User/AiKnowledgeModal.tsx:119
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "저장"
@@ -10507,6 +10553,16 @@ msgstr "시맨틱 HTML"
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "보내기"
+
+#: src/features/Tasks/useDailyTasks.tsx:48
+#. js-lingui-explicit-id
+msgid "Send at least 10 messages in Just talk"
+msgstr "Just talk에서 최소 10개의 메시지를 보내세요."
+
+#: src/features/Tasks/useDailyTasks.tsx:62
+#. js-lingui-explicit-id
+msgid "Send at least one message in the community space"
+msgstr "커뮤니티 공간에 최소 하나의 메시지를 보내세요"
 
 #: src/features/Auth/AuthWallBasic.tsx:138
 #. js-lingui-explicit-id
@@ -10967,6 +11023,13 @@ msgstr "별"
 msgid "Start"
 msgstr "시작"
 
+#: src/features/Tasks/useDailyTasks.tsx:49
+#. js-lingui-explicit-id
+msgid ""
+"Start a \"Just talk\" conversation and exchange at least 10 messages with "
+"the AI."
+msgstr "\"Just talk\" 대화를 시작하고 AI와 최소 10개의 메시지를 교환하세요."
+
 #: src/features/Dashboard/JustTalkCard.tsx:101
 #. js-lingui-explicit-id
 msgid ""
@@ -11205,6 +11268,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "정지"
+
+#: src/features/Tasks/useDailyTasks.tsx:68
+#. js-lingui-explicit-id
+msgid "Story"
+msgstr "이야기"
 
 #: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:26
 #. js-lingui-explicit-id
@@ -11766,7 +11834,7 @@ msgstr "우승자는 {points} 게임 포인트를 받습니다!"
 msgid "The winner has been declared."
 msgstr "우승자가 선언되었습니다."
 
-#: src/features/Game/Battle/BattleSection.tsx:63
+#: src/features/Game/Battle/BattleSection.tsx:60
 #. js-lingui-explicit-id
 msgid ""
 "The winner will earn 40 points. The more points you have, the higher your "
@@ -12237,7 +12305,7 @@ msgstr "TOEFL 스피킹 과제들"
 msgid "Tokens don’t expire, so you can save them for later."
 msgstr "토큰은 만료되지 않으므로 나중을 위해 저장할 수 있습니다."
 
-#: src/features/Game/Battle/BattleSection.tsx:69
+#: src/features/Game/Battle/BattleSection.tsx:66
 #. js-lingui-explicit-id
 msgid ""
 "Top 5 in the leaderboard get the full access to all the features of the app "
@@ -12853,6 +12921,16 @@ msgstr "준비 운동"
 #. js-lingui-explicit-id
 msgid "Warsaw"
 msgstr "바르샤바"
+
+#: src/features/Tasks/useDailyTasks.tsx:69
+#. js-lingui-explicit-id
+msgid "Watch a story and listen in to the end or finish quiz"
+msgstr "이야기를 보고 끝까지 듣거나 퀴즈를 완료하세요."
+
+#: src/features/Tasks/useDailyTasks.tsx:70
+#. js-lingui-explicit-id
+msgid "Watch a story and listen through to the end, or complete the story quiz."
+msgstr "이야기를 보고 끝까지 듣거나, 이야기 퀴즈를 완료하세요."
 
 #: src/features/Case/data/frontend-junior/techData.tsx:84
 #: src/features/Case/data/frontend-senior/techData.tsx:84
@@ -13546,7 +13624,7 @@ msgstr "당신은 리더보드에서 선두주자입니다! 상위 5위에 있�
 msgid "You are on the waitlist"
 msgstr "당신은 대기자 명단에 있습니다"
 
-#: src/features/Game/Battle/BattleSection.tsx:57
+#: src/features/Game/Battle/BattleSection.tsx:54
 #. js-lingui-explicit-id
 msgid ""
 "You both will be challenged to record answers to 2 questions. After that, "
@@ -13972,6 +14050,16 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Tasks/useDailyTasks.tsx:120
+#. js-lingui-explicit-id
+#~ msgid "Complete daily tasks to build a learning habit and earn rewards"
+#~ msgstr "매일 과제를 완료하여 학습 습관을 형성하고 보상을 획득하세요."
+
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:33
+#. js-lingui-explicit-id
+#~ msgid "Complete daily tasks to unlock full access for one day"
+#~ msgstr "하루 동안 전체 액세스를 해제하려면 일일 작업을 완료하세요"
 
 #: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id

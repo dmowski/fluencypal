@@ -23,6 +23,7 @@ import { DailyQuestionDashboardCard } from './DailyQuestionDashboardCard';
 import { PublicChatDashboardCard } from './PublicChatDashboardCard';
 import { GameDashboardCard } from './GameDashboardCard';
 import { StoriesDashboardCard } from './StoriesDashboardCard';
+import { DailyTasksDashboardCard } from './DailyTasksDashboardCard';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -73,6 +74,7 @@ export function Dashboard({ lang }: DashboardProps) {
                   },
                 }}
               >
+                <DailyTasksDashboardCard />
                 <JustTalkCard />
                 <GrammarImprovesCard />
                 <PlanDashboardCards lang={lang} />

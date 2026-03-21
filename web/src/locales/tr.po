@@ -1183,7 +1183,7 @@ msgstr "Yorum Ekle"
 msgid "Add new goal"
 msgstr "Yeni hedef ekle"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:140
+#: src/features/User/AiKnowledgeModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Add new note"
 msgstr "Yeni not ekle"
@@ -1193,7 +1193,7 @@ msgstr "Yeni not ekle"
 msgid "Add New Post"
 msgstr "Yeni Gönderi Ekle"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:139
+#: src/features/User/AiKnowledgeModal.tsx:139
 #. js-lingui-explicit-id
 msgid "Add note"
 msgstr "Not ekle"
@@ -1410,8 +1410,8 @@ msgstr "AI Görüşme Antrenörü"
 msgid "AI Interview Practice"
 msgstr "AI Mülakat Pratiği"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:82
 #: src/features/Settings/MyProfile.tsx:95
+#: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
 msgstr "Hakkınızda AI bilgisi"
@@ -1747,6 +1747,11 @@ msgstr ""
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "Her gün yeni bir soruya cevap ver ve stilinin nasıl geliştiğini gör!"
 
+#: src/features/Tasks/useDailyTasks.tsx:74
+#. js-lingui-explicit-id
+msgid "Answer daily question"
+msgstr "Günlük soruyu cevapla"
+
 #: src/features/Feature/featuresData.ts:260
 #. js-lingui-explicit-id
 msgid "Answer one new prompt every day and build confidence."
@@ -1757,6 +1762,11 @@ msgstr "Her gün yeni bir soruyu yanıtlayarak güven kazanın."
 #. js-lingui-explicit-id
 msgid "Answer questions correctly to climb the leaderboard!"
 msgstr "Soruları doğru yanıtlayarak liderlik tablosunda yükselin!"
+
+#: src/features/Tasks/useDailyTasks.tsx:75
+#. js-lingui-explicit-id
+msgid "Answer today's daily question to complete this task."
+msgstr "Bugünün günlük sorusunu yanıtlayarak bu görevi tamamlayın."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
 #. js-lingui-explicit-id
@@ -2365,13 +2375,13 @@ msgstr "FluencyPal'i ücretsiz kullanabilir miyim?"
 msgid "Can I use it on smartphone?"
 msgstr "Akıllı telefonda kullanabilir miyim?"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:121
-#: src/features/Ai/AiKnowledgeModal.tsx:142
 #: src/features/Chat/Message/Message.tsx:283
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:143
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/User/AiKnowledgeModal.tsx:121
+#: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "İptal"
@@ -2607,7 +2617,6 @@ msgid ""
 "rambling."
 msgstr "Sistem tasarımı için net yapı. Sonunda tavizleri dolandırmadan açıkladım."
 
-#: src/features/Ai/AiKnowledgeModal.tsx:153
 #: src/features/Conversation/CallMode/CallButtons.tsx:660
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
@@ -2616,6 +2625,7 @@ msgstr "Sistem tasarımı için net yapı. Sonunda tavizleri dolandırmadan aç�
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:402
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
+#: src/features/User/AiKnowledgeModal.tsx:153
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "Kapat"
@@ -2671,6 +2681,7 @@ msgstr "İletişim ve Liderlik"
 #: src/features/Dashboard/CommunityDashboardCard.tsx:127
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
+#: src/features/Tasks/useDailyTasks.tsx:61
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Topluluk"
@@ -2720,6 +2731,18 @@ msgstr "Yoldaş"
 #. js-lingui-explicit-id
 msgid "Company"
 msgstr "Şirket"
+
+#: src/features/Tasks/useDailyTasks.tsx:56
+#. js-lingui-explicit-id
+msgid "Complete any lesson from your current Goal plan to mark this task as done."
+msgstr ""
+"Geçerli Hedef planınızdan herhangi bir dersi tamamlayarak bu görevi "
+"tamamlanmış olarak işaretleyin."
+
+#: src/features/Tasks/useDailyTasks.tsx:119
+#. js-lingui-explicit-id
+msgid "Complete daily tasks to build a learning habit"
+msgstr "Öğrenme alışkanlığı kazanmak için günlük görevleri tamamlayın"
 
 #: src/features/Dashboard/TasksCard.tsx:56
 #. js-lingui-explicit-id
@@ -3222,6 +3245,11 @@ msgstr "Günlük Dil Pratiği"
 msgid "Daily Limits?"
 msgstr "Günlük Sınırlamalar?"
 
+#: src/features/Tasks/useDailyTasks.tsx:73
+#. js-lingui-explicit-id
+msgid "Daily question"
+msgstr "Günlük soru"
+
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Daily Question"
@@ -3254,6 +3282,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Daily Tasks"
 msgstr "Günlük Görevler"
+
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:22
+#. js-lingui-explicit-id
+msgid "Daily tasks"
+msgstr "Günlük görevler"
 
 #: src/features/Lang/getLabels.tsx:29
 #. js-lingui-explicit-id
@@ -3330,8 +3363,8 @@ msgstr "Tartışma konuları rastgele seçilecektir."
 msgid "Debates"
 msgstr "Tartışmalar"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:120
 #: src/features/Chat/Message/Message.tsx:418
+#: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "Sil"
@@ -3840,8 +3873,8 @@ msgstr ""
 "Pratik yaparak puan kazanın ve FluencyPal liderlik tablosunda yükselin. En "
 "iyi kullanıcılar, aktif İngilizce öğrenme yoluyla ödüllerin kilidini açar."
 
-#: src/features/Ai/AiKnowledgeModal.tsx:122
 #: src/features/Chat/Message/Message.tsx:397
+#: src/features/User/AiKnowledgeModal.tsx:122
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Düzenle"
@@ -4542,7 +4575,7 @@ msgstr "Ücretsiz sürümde olan her şey, artı:"
 msgid "Everything you need to stand out and get the job"
 msgstr "Her şey öne çıkmak ve işi almak için ihtiyaç duyduğunuz şeyler"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:141
+#: src/features/User/AiKnowledgeModal.tsx:141
 #. js-lingui-explicit-id
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "Örnek: Berlin'e iş seyahatine hazırlanıyorum"
@@ -4842,6 +4875,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
 msgstr "Kararı sonlandırma ..."
+
+#: src/features/Tasks/useDailyTasks.tsx:55
+#. js-lingui-explicit-id
+msgid "Finish a lesson from your Goal plan"
+msgstr "Hedef planınızdan bir dersi bitirin"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:118
 #. js-lingui-explicit-id
@@ -5671,6 +5709,11 @@ msgstr "Ana sayfaya git"
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Hedef"
+
+#: src/features/Tasks/useDailyTasks.tsx:54
+#. js-lingui-explicit-id
+msgid "Goal lesson"
+msgstr "Hedef dersi"
 
 #: src/features/Usage/UsageStatsCards.tsx:78
 #. js-lingui-explicit-id
@@ -7725,6 +7768,11 @@ msgstr "Belirli konuları diğer üyelerle tartışmak için odalara katılın"
 msgid "Join the community chat and connect with other members!"
 msgstr "Topluluk sohbetine katıl ve diğer üyelerle bağlantı kur!"
 
+#: src/features/Tasks/useDailyTasks.tsx:63
+#. js-lingui-explicit-id
+msgid "Join the community space and send at least one message to other learners."
+msgstr "Topluluk alanına katılın ve diğer öğrenenlere en az bir mesaj gönderin."
+
 #: src/features/Feature/featuresData.ts:354
 #. js-lingui-explicit-id
 msgid ""
@@ -8800,7 +8848,7 @@ msgstr "Henüz bir düzeltme yok"
 msgid "No daily question for today"
 msgstr "Bugün için günlük soru yok"
 
-#: src/features/Game/Battle/BattleSection.tsx:48
+#: src/features/Game/Battle/BattleSection.tsx:45
 #. js-lingui-explicit-id
 msgid "No debates yet"
 msgstr "Henüz tartışma yok"
@@ -8827,7 +8875,7 @@ msgstr "Henüz mesaj yok"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Henüz mesaj yok. Düşüncelerinizi paylaşan ilk kişi olun!"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:107
+#: src/features/User/AiKnowledgeModal.tsx:107
 #. js-lingui-explicit-id
 msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr ""
@@ -9182,7 +9230,7 @@ msgstr "Kişisel planı aç"
 msgid "Open results"
 msgstr "Sonuçları aç"
 
-#: src/features/Game/Battle/BattleSection.tsx:51
+#: src/features/Game/Battle/BattleSection.tsx:48
 #. js-lingui-explicit-id
 msgid ""
 "Open someones profile and press \"Invite to a debate\" button to start a "
@@ -10929,7 +10977,7 @@ msgstr "Bir Ürünü Mağazaya İade Etmek"
 msgid "Review and edit what the AI remembers"
 msgstr "AI'nin hatırladıklarını gözden geçirin ve düzenleyin"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:90
+#: src/features/User/AiKnowledgeModal.tsx:90
 #. js-lingui-explicit-id
 msgid "Review, edit, or add the notes AI uses about you."
 msgstr ""
@@ -11062,8 +11110,8 @@ msgstr "AI SEO ile maaş pazarlığı görüşmesi"
 msgid "Salary negotiation preparation"
 msgstr "Maaş pazarlığına hazırlık"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:119
 #: src/features/Chat/Message/Message.tsx:280
+#: src/features/User/AiKnowledgeModal.tsx:119
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Kaydet"
@@ -11213,6 +11261,16 @@ msgstr "Semantik HTML"
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Gönder"
+
+#: src/features/Tasks/useDailyTasks.tsx:48
+#. js-lingui-explicit-id
+msgid "Send at least 10 messages in Just talk"
+msgstr "En az 10 mesaj gönder Sadece konuşmakta"
+
+#: src/features/Tasks/useDailyTasks.tsx:62
+#. js-lingui-explicit-id
+msgid "Send at least one message in the community space"
+msgstr "Topluluk alanında en az bir mesaj gönder"
 
 #: src/features/Auth/AuthWallBasic.tsx:138
 #. js-lingui-explicit-id
@@ -11701,6 +11759,15 @@ msgstr "Yıldızlar"
 msgid "Start"
 msgstr "Başla"
 
+#: src/features/Tasks/useDailyTasks.tsx:49
+#. js-lingui-explicit-id
+msgid ""
+"Start a \"Just talk\" conversation and exchange at least 10 messages with "
+"the AI."
+msgstr ""
+"\"Just talk\" sohbeti başlatın ve AI ile en az 10 mesaj alışverişinde "
+"bulunun."
+
 #: src/features/Dashboard/JustTalkCard.tsx:101
 #. js-lingui-explicit-id
 msgid ""
@@ -11958,6 +12025,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Dur"
+
+#: src/features/Tasks/useDailyTasks.tsx:68
+#. js-lingui-explicit-id
+msgid "Story"
+msgstr "Hikaye"
 
 #: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:26
 #. js-lingui-explicit-id
@@ -12554,7 +12626,7 @@ msgstr "Kazanan {points} oyun puanı alır!"
 msgid "The winner has been declared."
 msgstr "Kazanan ilan edildi."
 
-#: src/features/Game/Battle/BattleSection.tsx:63
+#: src/features/Game/Battle/BattleSection.tsx:60
 #. js-lingui-explicit-id
 msgid ""
 "The winner will earn 40 points. The more points you have, the higher your "
@@ -13055,7 +13127,7 @@ msgstr ""
 "Jetonlar sona ermez, bu yüzden onları daha sonra kullanmak üzere "
 "saklayabilirsiniz."
 
-#: src/features/Game/Battle/BattleSection.tsx:69
+#: src/features/Game/Battle/BattleSection.tsx:66
 #. js-lingui-explicit-id
 msgid ""
 "Top 5 in the leaderboard get the full access to all the features of the app "
@@ -13699,6 +13771,16 @@ msgstr "Isınma"
 #. js-lingui-explicit-id
 msgid "Warsaw"
 msgstr "Varşova"
+
+#: src/features/Tasks/useDailyTasks.tsx:69
+#. js-lingui-explicit-id
+msgid "Watch a story and listen in to the end or finish quiz"
+msgstr "Bir hikaye izle ve sonuna kadar dinle veya testi bitir"
+
+#: src/features/Tasks/useDailyTasks.tsx:70
+#. js-lingui-explicit-id
+msgid "Watch a story and listen through to the end, or complete the story quiz."
+msgstr "Bir hikaye izle ve sonuna kadar dinle ya da hikaye quizini tamamla."
 
 #: src/features/Case/data/frontend-junior/techData.tsx:84
 #: src/features/Case/data/frontend-senior/techData.tsx:84
@@ -14440,7 +14522,7 @@ msgstr ""
 msgid "You are on the waitlist"
 msgstr "Bekleme listesinde bulunuyorsunuz."
 
-#: src/features/Game/Battle/BattleSection.tsx:57
+#: src/features/Game/Battle/BattleSection.tsx:54
 #. js-lingui-explicit-id
 msgid ""
 "You both will be challenged to record answers to 2 questions. After that, "
@@ -14901,6 +14983,18 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Tasks/useDailyTasks.tsx:120
+#. js-lingui-explicit-id
+#~ msgid "Complete daily tasks to build a learning habit and earn rewards"
+#~ msgstr ""
+#~ "Günlük görevleri tamamlayarak öğrenme alışkanlığı oluşturun ve ödüller "
+#~ "kazanın"
+
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:33
+#. js-lingui-explicit-id
+#~ msgid "Complete daily tasks to unlock full access for one day"
+#~ msgstr "Bir gün boyunca tam erişimin kilidini açmak için günlük görevleri tamamlayın"
 
 #: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id

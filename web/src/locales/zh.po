@@ -1104,7 +1104,7 @@ msgstr "添加评论"
 msgid "Add new goal"
 msgstr "添加新目标"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:140
+#: src/features/User/AiKnowledgeModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Add new note"
 msgstr "添加新笔记"
@@ -1114,7 +1114,7 @@ msgstr "添加新笔记"
 msgid "Add New Post"
 msgstr "添加新帖子"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:139
+#: src/features/User/AiKnowledgeModal.tsx:139
 #. js-lingui-explicit-id
 msgid "Add note"
 msgstr "添加备注"
@@ -1321,8 +1321,8 @@ msgstr "AI 面试教练"
 msgid "AI Interview Practice"
 msgstr "AI 面试练习"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:82
 #: src/features/Settings/MyProfile.tsx:95
+#: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
 msgstr "AI 关于您的知识"
@@ -1641,6 +1641,11 @@ msgstr ""
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "每天回答一个新问题，看看你的风格如何提升！"
 
+#: src/features/Tasks/useDailyTasks.tsx:74
+#. js-lingui-explicit-id
+msgid "Answer daily question"
+msgstr "回答每日问题"
+
 #: src/features/Feature/featuresData.ts:260
 #. js-lingui-explicit-id
 msgid "Answer one new prompt every day and build confidence."
@@ -1651,6 +1656,11 @@ msgstr "每天回答一个新提示，建立自信。"
 #. js-lingui-explicit-id
 msgid "Answer questions correctly to climb the leaderboard!"
 msgstr "答对问题以登上排行榜！"
+
+#: src/features/Tasks/useDailyTasks.tsx:75
+#. js-lingui-explicit-id
+msgid "Answer today's daily question to complete this task."
+msgstr "回答今天的每日问题以完成此任务。"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
 #. js-lingui-explicit-id
@@ -2235,13 +2245,13 @@ msgstr "FluencyPal 可以免费使用吗？"
 msgid "Can I use it on smartphone?"
 msgstr "我可以在智能手机上使用吗？"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:121
-#: src/features/Ai/AiKnowledgeModal.tsx:142
 #: src/features/Chat/Message/Message.tsx:283
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:143
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/User/AiKnowledgeModal.tsx:121
+#: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "取消"
@@ -2460,7 +2470,6 @@ msgid ""
 "rambling."
 msgstr "清晰的系统设计结构。我终于在解释权衡时没有东拉西扯。"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:153
 #: src/features/Conversation/CallMode/CallButtons.tsx:660
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
@@ -2469,6 +2478,7 @@ msgstr "清晰的系统设计结构。我终于在解释权衡时没有东拉西
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:402
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
+#: src/features/User/AiKnowledgeModal.tsx:153
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "关闭"
@@ -2522,6 +2532,7 @@ msgstr "沟通与领导力"
 #: src/features/Dashboard/CommunityDashboardCard.tsx:127
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
+#: src/features/Tasks/useDailyTasks.tsx:61
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "社区"
@@ -2571,6 +2582,16 @@ msgstr "伙伴"
 #. js-lingui-explicit-id
 msgid "Company"
 msgstr "公司"
+
+#: src/features/Tasks/useDailyTasks.tsx:56
+#. js-lingui-explicit-id
+msgid "Complete any lesson from your current Goal plan to mark this task as done."
+msgstr "完成您当前目标计划中的任何课程，以将此任务标记为已完成。"
+
+#: src/features/Tasks/useDailyTasks.tsx:119
+#. js-lingui-explicit-id
+msgid "Complete daily tasks to build a learning habit"
+msgstr "完成每日任务以养成学习习惯"
 
 #: src/features/Dashboard/TasksCard.tsx:56
 #. js-lingui-explicit-id
@@ -3050,6 +3071,11 @@ msgstr "日常语言练习"
 msgid "Daily Limits?"
 msgstr "每日限制？"
 
+#: src/features/Tasks/useDailyTasks.tsx:73
+#. js-lingui-explicit-id
+msgid "Daily question"
+msgstr "每日问题"
+
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Daily Question"
@@ -3079,6 +3105,11 @@ msgstr "每日口语任务引入新的词汇和句型，帮助您养成学习习
 #. js-lingui-explicit-id
 msgid "Daily Tasks"
 msgstr "每日任务"
+
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:22
+#. js-lingui-explicit-id
+msgid "Daily tasks"
+msgstr "日常任务"
 
 #: src/features/Lang/getLabels.tsx:29
 #. js-lingui-explicit-id
@@ -3155,8 +3186,8 @@ msgstr "辩论话题将被随机选择。"
 msgid "Debates"
 msgstr "辩论"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:120
 #: src/features/Chat/Message/Message.tsx:418
+#: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "删除"
@@ -3607,8 +3638,8 @@ msgid ""
 "unlock rewards through active English learning."
 msgstr "通过练习赚取积分并攀升FluencyPal排行榜。顶尖用户通过积极的英语学习解锁奖励。"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:122
 #: src/features/Chat/Message/Message.tsx:397
+#: src/features/User/AiKnowledgeModal.tsx:122
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "编辑"
@@ -4242,7 +4273,7 @@ msgstr "免费版的所有内容，外加："
 msgid "Everything you need to stand out and get the job"
 msgstr "一切你需要的，以便脱颖而出并获得工作机会"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:141
+#: src/features/User/AiKnowledgeModal.tsx:141
 #. js-lingui-explicit-id
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "示例：我正在准备去柏林的商务旅行"
@@ -4516,6 +4547,11 @@ msgstr "最终排名"
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
 msgstr "正在做出决定..."
+
+#: src/features/Tasks/useDailyTasks.tsx:55
+#. js-lingui-explicit-id
+msgid "Finish a lesson from your Goal plan"
+msgstr "从您的目标计划中完成一节课"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:118
 #. js-lingui-explicit-id
@@ -5261,6 +5297,11 @@ msgstr "去主页"
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "目标"
+
+#: src/features/Tasks/useDailyTasks.tsx:54
+#. js-lingui-explicit-id
+msgid "Goal lesson"
+msgstr "目标课程"
 
 #: src/features/Usage/UsageStatsCards.tsx:78
 #. js-lingui-explicit-id
@@ -7068,6 +7109,11 @@ msgstr "加入房间，与其他成员讨论特定话题"
 msgid "Join the community chat and connect with other members!"
 msgstr "加入社区聊天并与其他成员联系！"
 
+#: src/features/Tasks/useDailyTasks.tsx:63
+#. js-lingui-explicit-id
+msgid "Join the community space and send at least one message to other learners."
+msgstr "加入社区空间，并至少向其他学习者发送一条消息。"
+
 #: src/features/Feature/featuresData.ts:354
 #. js-lingui-explicit-id
 msgid ""
@@ -8094,7 +8140,7 @@ msgstr "暂无修正"
 msgid "No daily question for today"
 msgstr "今天没有每日问题"
 
-#: src/features/Game/Battle/BattleSection.tsx:48
+#: src/features/Game/Battle/BattleSection.tsx:45
 #. js-lingui-explicit-id
 msgid "No debates yet"
 msgstr "还没有辩论"
@@ -8119,7 +8165,7 @@ msgstr "尚无消息"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "暂无消息。快来分享你的想法吧！"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:107
+#: src/features/User/AiKnowledgeModal.tsx:107
 #. js-lingui-explicit-id
 msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr "还没有备注。添加一些细节，让您的AI老师更了解您。"
@@ -8440,7 +8486,7 @@ msgstr "打开个人计划"
 msgid "Open results"
 msgstr "打开结果"
 
-#: src/features/Game/Battle/BattleSection.tsx:51
+#: src/features/Game/Battle/BattleSection.tsx:48
 #. js-lingui-explicit-id
 msgid ""
 "Open someones profile and press \"Invite to a debate\" button to start a "
@@ -10073,7 +10119,7 @@ msgstr "退回商品到商店"
 msgid "Review and edit what the AI remembers"
 msgstr "查看和编辑 AI 的记忆"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:90
+#: src/features/User/AiKnowledgeModal.tsx:90
 #. js-lingui-explicit-id
 msgid "Review, edit, or add the notes AI uses about you."
 msgstr "查看、编辑或添加 AI 使用的关于您的笔记。"
@@ -10199,8 +10245,8 @@ msgstr "AI SEO 的薪资谈判面试"
 msgid "Salary negotiation preparation"
 msgstr "薪资谈判准备"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:119
 #: src/features/Chat/Message/Message.tsx:280
+#: src/features/User/AiKnowledgeModal.tsx:119
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "保存"
@@ -10344,6 +10390,16 @@ msgstr "语义化 HTML"
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "发送"
+
+#: src/features/Tasks/useDailyTasks.tsx:48
+#. js-lingui-explicit-id
+msgid "Send at least 10 messages in Just talk"
+msgstr "在 Just talk 中发送至少 10 条消息"
+
+#: src/features/Tasks/useDailyTasks.tsx:62
+#. js-lingui-explicit-id
+msgid "Send at least one message in the community space"
+msgstr "在社区空间中至少发送一条消息"
 
 #: src/features/Auth/AuthWallBasic.tsx:138
 #. js-lingui-explicit-id
@@ -10802,6 +10858,13 @@ msgstr "星星"
 msgid "Start"
 msgstr "开始"
 
+#: src/features/Tasks/useDailyTasks.tsx:49
+#. js-lingui-explicit-id
+msgid ""
+"Start a \"Just talk\" conversation and exchange at least 10 messages with "
+"the AI."
+msgstr "开始一个“只是聊天”的对话，并与AI交换至少10条消息。"
+
 #: src/features/Dashboard/JustTalkCard.tsx:101
 #. js-lingui-explicit-id
 msgid ""
@@ -11034,6 +11097,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "停止"
+
+#: src/features/Tasks/useDailyTasks.tsx:68
+#. js-lingui-explicit-id
+msgid "Story"
+msgstr "故事"
 
 #: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:26
 #. js-lingui-explicit-id
@@ -11577,7 +11645,7 @@ msgstr "获胜者将获得 {points} 个游戏积分！"
 msgid "The winner has been declared."
 msgstr "获胜者已被宣布。"
 
-#: src/features/Game/Battle/BattleSection.tsx:63
+#: src/features/Game/Battle/BattleSection.tsx:60
 #. js-lingui-explicit-id
 msgid ""
 "The winner will earn 40 points. The more points you have, the higher your "
@@ -12042,7 +12110,7 @@ msgstr "托福口语任务"
 msgid "Tokens don’t expire, so you can save them for later."
 msgstr "令牌不会过期，因此您可以保存它们以备后用。"
 
-#: src/features/Game/Battle/BattleSection.tsx:69
+#: src/features/Game/Battle/BattleSection.tsx:66
 #. js-lingui-explicit-id
 msgid ""
 "Top 5 in the leaderboard get the full access to all the features of the app "
@@ -12660,6 +12728,16 @@ msgstr "热身"
 #. js-lingui-explicit-id
 msgid "Warsaw"
 msgstr "华沙"
+
+#: src/features/Tasks/useDailyTasks.tsx:69
+#. js-lingui-explicit-id
+msgid "Watch a story and listen in to the end or finish quiz"
+msgstr "观看故事并听至结尾或完成测验"
+
+#: src/features/Tasks/useDailyTasks.tsx:70
+#. js-lingui-explicit-id
+msgid "Watch a story and listen through to the end, or complete the story quiz."
+msgstr "观看故事并听到最后，或者完成故事测验。"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:84
 #: src/features/Case/data/frontend-senior/techData.tsx:84
@@ -13334,7 +13412,7 @@ msgstr "您是排行榜中的领袖！完整访问权限有效，直至您处于
 msgid "You are on the waitlist"
 msgstr "您在候补名单上"
 
-#: src/features/Game/Battle/BattleSection.tsx:57
+#: src/features/Game/Battle/BattleSection.tsx:54
 #. js-lingui-explicit-id
 msgid ""
 "You both will be challenged to record answers to 2 questions. After that, "
@@ -13756,6 +13834,16 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Tasks/useDailyTasks.tsx:120
+#. js-lingui-explicit-id
+#~ msgid "Complete daily tasks to build a learning habit and earn rewards"
+#~ msgstr "完成每日任务以养成学习习惯并获得奖励"
+
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:33
+#. js-lingui-explicit-id
+#~ msgid "Complete daily tasks to unlock full access for one day"
+#~ msgstr "完成每日任务即可解锁全天访问权限"
 
 #: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id

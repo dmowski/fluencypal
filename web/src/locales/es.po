@@ -1193,7 +1193,7 @@ msgstr "Agregar comentario"
 msgid "Add new goal"
 msgstr "Agregar nuevo objetivo"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:140
+#: src/features/User/AiKnowledgeModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Add new note"
 msgstr "Agregar nueva nota"
@@ -1203,7 +1203,7 @@ msgstr "Agregar nueva nota"
 msgid "Add New Post"
 msgstr "Agregar nueva publicación"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:139
+#: src/features/User/AiKnowledgeModal.tsx:139
 #. js-lingui-explicit-id
 msgid "Add note"
 msgstr "Agregar nota"
@@ -1419,8 +1419,8 @@ msgstr "Entrenador de Entrevistas de IA"
 msgid "AI Interview Practice"
 msgstr "Práctica de Entrevista con IA"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:82
 #: src/features/Settings/MyProfile.tsx:95
+#: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
 msgstr "Conocimiento de IA sobre ti"
@@ -1758,6 +1758,11 @@ msgstr ""
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "¡Responde una nueva pregunta cada día y observa cómo mejora tu estilo!"
 
+#: src/features/Tasks/useDailyTasks.tsx:74
+#. js-lingui-explicit-id
+msgid "Answer daily question"
+msgstr "Responde a la pregunta diaria"
+
 #: src/features/Feature/featuresData.ts:260
 #. js-lingui-explicit-id
 msgid "Answer one new prompt every day and build confidence."
@@ -1768,6 +1773,11 @@ msgstr "Responde a un nuevo mensaje cada día y gana confianza."
 #. js-lingui-explicit-id
 msgid "Answer questions correctly to climb the leaderboard!"
 msgstr "¡Responde correctamente a las preguntas para subir en la clasificación!"
+
+#: src/features/Tasks/useDailyTasks.tsx:75
+#. js-lingui-explicit-id
+msgid "Answer today's daily question to complete this task."
+msgstr "Responde la pregunta diaria de hoy para completar esta tarea."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
 #. js-lingui-explicit-id
@@ -2384,13 +2394,13 @@ msgstr "¿Puedo usar FluencyPal de forma gratuita?"
 msgid "Can I use it on smartphone?"
 msgstr "¿Puedo usarlo en un teléfono inteligente?"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:121
-#: src/features/Ai/AiKnowledgeModal.tsx:142
 #: src/features/Chat/Message/Message.tsx:283
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:143
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/User/AiKnowledgeModal.tsx:121
+#: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "Cancelar"
@@ -2629,7 +2639,6 @@ msgstr ""
 "Estructura clara para el diseño del sistema. Finalmente expliqué los "
 "compromisos sin divagar."
 
-#: src/features/Ai/AiKnowledgeModal.tsx:153
 #: src/features/Conversation/CallMode/CallButtons.tsx:660
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
@@ -2638,6 +2647,7 @@ msgstr ""
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:402
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
+#: src/features/User/AiKnowledgeModal.tsx:153
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "Cerrar"
@@ -2693,6 +2703,7 @@ msgstr "Comunicación y Liderazgo"
 #: src/features/Dashboard/CommunityDashboardCard.tsx:127
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
+#: src/features/Tasks/useDailyTasks.tsx:61
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Comunidad"
@@ -2742,6 +2753,18 @@ msgstr "Compañero"
 #. js-lingui-explicit-id
 msgid "Company"
 msgstr "Compañía"
+
+#: src/features/Tasks/useDailyTasks.tsx:56
+#. js-lingui-explicit-id
+msgid "Complete any lesson from your current Goal plan to mark this task as done."
+msgstr ""
+"Completa cualquier lección de tu plan de Objetivos actual para marcar esta "
+"tarea como completada."
+
+#: src/features/Tasks/useDailyTasks.tsx:119
+#. js-lingui-explicit-id
+msgid "Complete daily tasks to build a learning habit"
+msgstr "Completa tareas diarias para desarrollar un hábito de aprendizaje"
 
 #: src/features/Dashboard/TasksCard.tsx:56
 #. js-lingui-explicit-id
@@ -3246,6 +3269,11 @@ msgstr "Práctica Diaria de Idioma"
 msgid "Daily Limits?"
 msgstr "¿Límites diarios?"
 
+#: src/features/Tasks/useDailyTasks.tsx:73
+#. js-lingui-explicit-id
+msgid "Daily question"
+msgstr "Pregunta diaria"
+
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Daily Question"
@@ -3278,6 +3306,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Daily Tasks"
 msgstr "Tareas Diarias"
+
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:22
+#. js-lingui-explicit-id
+msgid "Daily tasks"
+msgstr "Tareas diarias"
 
 #: src/features/Lang/getLabels.tsx:29
 #. js-lingui-explicit-id
@@ -3354,8 +3387,8 @@ msgstr "Los temas de debate se seleccionarán al azar."
 msgid "Debates"
 msgstr "Debates"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:120
 #: src/features/Chat/Message/Message.tsx:418
+#: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
 msgstr "Eliminar"
@@ -3865,8 +3898,8 @@ msgstr ""
 "FluencyPal. Los usuarios principales desbloquean recompensas mediante el "
 "aprendizaje activo de inglés."
 
-#: src/features/Ai/AiKnowledgeModal.tsx:122
 #: src/features/Chat/Message/Message.tsx:397
+#: src/features/User/AiKnowledgeModal.tsx:122
 #. js-lingui-explicit-id
 msgid "Edit"
 msgstr "Editar"
@@ -4568,7 +4601,7 @@ msgstr "Todo en Free, además:"
 msgid "Everything you need to stand out and get the job"
 msgstr "Todo lo que necesitas para destacar y conseguir el trabajo"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:141
+#: src/features/User/AiKnowledgeModal.tsx:141
 #. js-lingui-explicit-id
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "Ejemplo: Estoy preparando para un viaje de negocios a Berlín"
@@ -4871,6 +4904,11 @@ msgstr "Clasificación Final"
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
 msgstr "Finalizando decisión ..."
+
+#: src/features/Tasks/useDailyTasks.tsx:55
+#. js-lingui-explicit-id
+msgid "Finish a lesson from your Goal plan"
+msgstr "Termina una lección de tu plan de metas"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:118
 #. js-lingui-explicit-id
@@ -5707,6 +5745,11 @@ msgstr "Ir a la página principal"
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Meta"
+
+#: src/features/Tasks/useDailyTasks.tsx:54
+#. js-lingui-explicit-id
+msgid "Goal lesson"
+msgstr "Objetivo de la lección"
 
 #: src/features/Usage/UsageStatsCards.tsx:78
 #. js-lingui-explicit-id
@@ -7781,6 +7824,13 @@ msgstr "Únete a salas para discutir temas específicos con otros miembros"
 msgid "Join the community chat and connect with other members!"
 msgstr "¡Únete al chat de la comunidad y conéctate con otros miembros!"
 
+#: src/features/Tasks/useDailyTasks.tsx:63
+#. js-lingui-explicit-id
+msgid "Join the community space and send at least one message to other learners."
+msgstr ""
+"Únete al espacio comunitario y envía al menos un mensaje a otros "
+"estudiantes."
+
 #: src/features/Feature/featuresData.ts:354
 #. js-lingui-explicit-id
 msgid ""
@@ -8872,7 +8922,7 @@ msgstr "Aún no hay correcciones"
 msgid "No daily question for today"
 msgstr "No hay pregunta diaria para hoy"
 
-#: src/features/Game/Battle/BattleSection.tsx:48
+#: src/features/Game/Battle/BattleSection.tsx:45
 #. js-lingui-explicit-id
 msgid "No debates yet"
 msgstr "Sin debates todavía"
@@ -8899,7 +8949,7 @@ msgstr "Aún no hay mensajes"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "No hay mensajes aún. ¡Sé el primero en compartir tus pensamientos!"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:107
+#: src/features/User/AiKnowledgeModal.tsx:107
 #. js-lingui-explicit-id
 msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr ""
@@ -9254,7 +9304,7 @@ msgstr "Abrir plan personal"
 msgid "Open results"
 msgstr "Abrir resultados"
 
-#: src/features/Game/Battle/BattleSection.tsx:51
+#: src/features/Game/Battle/BattleSection.tsx:48
 #. js-lingui-explicit-id
 msgid ""
 "Open someones profile and press \"Invite to a debate\" button to start a "
@@ -11020,7 +11070,7 @@ msgstr "Devolviendo un Artículo a una Tienda"
 msgid "Review and edit what the AI remembers"
 msgstr "Revisar y editar lo que recuerda la IA"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:90
+#: src/features/User/AiKnowledgeModal.tsx:90
 #. js-lingui-explicit-id
 msgid "Review, edit, or add the notes AI uses about you."
 msgstr "Revisar, editar o agregar las notas que la IA utiliza sobre ti."
@@ -11151,8 +11201,8 @@ msgstr "Entrevista de negociación salarial con AI SEO"
 msgid "Salary negotiation preparation"
 msgstr "Preparación para la negociación salarial"
 
-#: src/features/Ai/AiKnowledgeModal.tsx:119
 #: src/features/Chat/Message/Message.tsx:280
+#: src/features/User/AiKnowledgeModal.tsx:119
 #. js-lingui-explicit-id
 msgid "Save"
 msgstr "Guardar"
@@ -11302,6 +11352,16 @@ msgstr "HTML Semántico"
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Enviar"
+
+#: src/features/Tasks/useDailyTasks.tsx:48
+#. js-lingui-explicit-id
+msgid "Send at least 10 messages in Just talk"
+msgstr "Envía al menos 10 mensajes en Solo hablar"
+
+#: src/features/Tasks/useDailyTasks.tsx:62
+#. js-lingui-explicit-id
+msgid "Send at least one message in the community space"
+msgstr "Envía al menos un mensaje en el espacio comunitario"
 
 #: src/features/Auth/AuthWallBasic.tsx:138
 #. js-lingui-explicit-id
@@ -11790,6 +11850,15 @@ msgstr "Estrellas"
 msgid "Start"
 msgstr "Inicio"
 
+#: src/features/Tasks/useDailyTasks.tsx:49
+#. js-lingui-explicit-id
+msgid ""
+"Start a \"Just talk\" conversation and exchange at least 10 messages with "
+"the AI."
+msgstr ""
+"Inicia una conversación de \"Solo habla\" e intercambia al menos 10 "
+"mensajes con la IA."
+
 #: src/features/Dashboard/JustTalkCard.tsx:101
 #. js-lingui-explicit-id
 msgid ""
@@ -12043,6 +12112,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Detener"
+
+#: src/features/Tasks/useDailyTasks.tsx:68
+#. js-lingui-explicit-id
+msgid "Story"
+msgstr "Historia"
 
 #: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:26
 #. js-lingui-explicit-id
@@ -12644,7 +12718,7 @@ msgstr "¡El ganador obtiene {points} puntos de juego!"
 msgid "The winner has been declared."
 msgstr "El ganador ha sido declarado."
 
-#: src/features/Game/Battle/BattleSection.tsx:63
+#: src/features/Game/Battle/BattleSection.tsx:60
 #. js-lingui-explicit-id
 msgid ""
 "The winner will earn 40 points. The more points you have, the higher your "
@@ -13145,7 +13219,7 @@ msgstr "Tareas de Habla TOEFL"
 msgid "Tokens don’t expire, so you can save them for later."
 msgstr "Los tokens no caducan, por lo que puedes guardarlos para más tarde."
 
-#: src/features/Game/Battle/BattleSection.tsx:69
+#: src/features/Game/Battle/BattleSection.tsx:66
 #. js-lingui-explicit-id
 msgid ""
 "Top 5 in the leaderboard get the full access to all the features of the app "
@@ -13791,6 +13865,18 @@ msgstr "Calentamiento"
 #. js-lingui-explicit-id
 msgid "Warsaw"
 msgstr "Varsovia"
+
+#: src/features/Tasks/useDailyTasks.tsx:69
+#. js-lingui-explicit-id
+msgid "Watch a story and listen in to the end or finish quiz"
+msgstr "Mira una historia y escucha hasta el final o termina el cuestionario"
+
+#: src/features/Tasks/useDailyTasks.tsx:70
+#. js-lingui-explicit-id
+msgid "Watch a story and listen through to the end, or complete the story quiz."
+msgstr ""
+"Mira una historia y escucha hasta el final, o completa el cuestionario de "
+"la historia."
 
 #: src/features/Case/data/frontend-junior/techData.tsx:84
 #: src/features/Case/data/frontend-senior/techData.tsx:84
@@ -14547,7 +14633,7 @@ msgstr ""
 msgid "You are on the waitlist"
 msgstr "Estás en la lista de espera"
 
-#: src/features/Game/Battle/BattleSection.tsx:57
+#: src/features/Game/Battle/BattleSection.tsx:54
 #. js-lingui-explicit-id
 msgid ""
 "You both will be challenged to record answers to 2 questions. After that, "
@@ -15018,6 +15104,18 @@ msgstr ""
 "— es importante participar en esta breve conversación antes de abordar "
 "temas profesionales. Aquí tienes algunas frases en inglés útiles para "
 "comenzar la entrevista:"
+
+#: src/features/Tasks/useDailyTasks.tsx:120
+#. js-lingui-explicit-id
+#~ msgid "Complete daily tasks to build a learning habit and earn rewards"
+#~ msgstr ""
+#~ "Completa tareas diarias para desarrollar un hábito de aprendizaje y ganar "
+#~ "recompensas"
+
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:33
+#. js-lingui-explicit-id
+#~ msgid "Complete daily tasks to unlock full access for one day"
+#~ msgstr "Completa tareas diarias para desbloquear el acceso completo por un día"
 
 #: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id
