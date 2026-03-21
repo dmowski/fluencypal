@@ -5,11 +5,13 @@ import dayjs from 'dayjs';
 import { useAccess } from '../useAccess';
 import { useUsage } from '../useUsage';
 import { AccessStatusIcon } from './AccessStatusIcon';
+import { useDailyTasks } from '@/features/Tasks/useDailyTasks';
 
 export const BalanceStatus = () => {
   const usage = useUsage();
   const game = useGame();
   const access = useAccess();
+  const dailyTasks = useDailyTasks();
 
   const { i18n } = useLingui();
 
@@ -18,6 +20,7 @@ export const BalanceStatus = () => {
     : null;
 
   const isGameWinner = game.isGameWinner;
+  const isAllDailyTasksCompleted = dailyTasks.isAllTasksCompleted;
   const balanceHours = usage.balanceHours;
 
   const isHaveAccess = access.isFullAppAccess;
@@ -75,7 +78,13 @@ export const BalanceStatus = () => {
             maxWidth: '700px',
           }}
         >
-          {isGameWinner ? (
+          {isAllDailyTasksCompleted && !activeTill ? (
+            <Typography variant="body1">
+              {i18n._(
+                'You have completed all daily tasks! Full access is valid until the next day.',
+              )}
+            </Typography>
+          ) : isGameWinner ? (
             <Typography variant="body1">
               {i18n._(
                 'You are a leader in leaderboard! Full access is active until you are on the top-5',

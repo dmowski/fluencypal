@@ -2,11 +2,14 @@ import dayjs from 'dayjs';
 import { useGame } from '../Game/useGame';
 import { useUsage } from './useUsage';
 import { useSettings } from '../Settings/useSettings';
+import { useDailyTasks } from '../Tasks/useDailyTasks';
 
 export const useAccess = () => {
   const game = useGame();
   const usage = useUsage();
   const settings = useSettings();
+  const dailyTasks = useDailyTasks();
+  const isAllDailyTasksCompleted = dailyTasks.isAllTasksCompleted;
 
   const isParentalConsentNeeded = settings.userSettings?.isParentalConsentNeeded || false;
   const isCreditCardValidated = settings.userSettings?.isCreditCardConfirmed;
@@ -22,7 +25,7 @@ export const useAccess = () => {
       : dayjs(usage.activeSubscriptionTill).diff(dayjs(), 'hour') <= 5;
 
   return {
-    isFullAppAccess: game.isGameWinner || usage.isFullAccess,
+    isFullAppAccess: game.isGameWinner || usage.isFullAccess || isAllDailyTasksCompleted,
     isExpiringSoon,
     activeSubscriptionTill: usage.activeSubscriptionTill,
     showPaymentModal: () => usage.togglePaymentModal(true),
