@@ -42,7 +42,9 @@ function useProvideDailyTasks(): DailyTaskApi {
       'just-talk': {
         title: 'Just talk',
         label: i18n._('Send at least 10 messages in Just talk'),
-        content: 'Start a "Just talk" conversation and exchange at least 10 messages with the AI.',
+        content: i18n._(
+          'Start a "Just talk" conversation and exchange at least 10 messages with the AI.',
+        ),
       },
       'goal-lesson': {
         title: i18n._('Goal lesson'),
