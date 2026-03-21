@@ -1,7 +1,7 @@
 'use client';
-import { createContext, useContext, ReactNode, JSX, useMemo } from 'react';
+import { createContext, useContext, ReactNode, JSX, useMemo, use } from 'react';
 import { useAuth } from '../Auth/useAuth';
-import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { db } from '../Firebase/firebaseDb';
 import { DailyTaskInfo, DailyTaskProgress, DailyTaskType } from '@/features/Tasks/types';
 import dayjs from 'dayjs';
@@ -48,7 +48,7 @@ export const dailyTasksContext = createContext<DailyTaskApi>({
 
 const tasksPerDays: DailyTaskType[][] = [
   // Day1
-  ['just-talk'],
+  ['just-talk', 'community'],
 
   // Day2
   ['just-talk', 'goal-lesson'],
@@ -71,10 +71,6 @@ function useProvideDailyTasks(): DailyTaskApi {
   const { i18n } = useLingui();
 
   const today = useMemo(() => dayjs().format('YYYY-MM-DD'), []);
-
-  const todaysActualTasks: DailyTaskType[] = useMemo(() => {
-    return ['just-talk', 'goal-lesson', 'community', 'story', 'daily-question'];
-  }, [today]);
 
   const tasksInfo: Record<DailyTaskType, DailyTaskInfo> = useMemo(() => {
     return {
@@ -100,6 +96,24 @@ function useProvideDailyTasks(): DailyTaskApi {
       },
     };
   }, [today]);
+
+  const allDailyTasksProgressRef = db.collections.dailyTaskProgress(userId ?? undefined);
+  const [allProgressRaw] = useCollectionData(allDailyTasksProgressRef);
+
+  const allPreviousProgress = useMemo(() => {
+    // filter by language and date
+    return (
+      allProgressRaw
+        ?.filter((p) => p.languageCode === settings.languageCode)
+        .filter((p) => p.dayIso < today) ?? []
+    );
+  }, [allProgressRaw, settings.languageCode]);
+
+  const todaysActualTasks: DailyTaskType[] = useMemo(() => {
+    const countOfActiveDays = allPreviousProgress.length;
+    const tasksForToday = tasksPerDays[Math.min(countOfActiveDays, tasksPerDays.length - 1)];
+    return tasksForToday;
+  }, [today, allPreviousProgress]);
 
   const dailyTaskProgressDocRef = db.documents.dailyTaskProgress(
     userId ?? undefined,
