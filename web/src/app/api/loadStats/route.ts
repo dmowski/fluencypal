@@ -1,5 +1,5 @@
 import { validateAuthToken } from '../config/firebase';
-import { DEV_EMAILS } from '@/common/dev';
+import { DEV_EMAILS } from '@/features/DevTools/dev';
 import { AdminStatsRequest, AdminStatsResponse, UserStat } from './types';
 import {
   getAllUsersWithIds,

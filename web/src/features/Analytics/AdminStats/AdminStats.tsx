@@ -1,7 +1,7 @@
 'use client';
 import { Button, Stack, Typography } from '@mui/material';
 import { useAuth } from '../../Auth/useAuth';
-import { DEV_EMAILS } from '@/common/dev';
+import { DEV_EMAILS } from '@/features/DevTools/dev';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { loadStatsRequest } from '@/app/api/loadStats/loadStatsRequest';
 import { AdminStatsResponse } from '@/app/api/loadStats/types';
