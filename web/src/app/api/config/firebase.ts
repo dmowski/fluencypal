@@ -1,4 +1,4 @@
-import { firebaseConfig } from '@/common/firebaseConfig';
+import { firebaseConfig } from '@/features/Firebase/firebaseConfig';
 import firebaseAdmin from 'firebase-admin';
 import { AuthUserInfo } from './type';
 

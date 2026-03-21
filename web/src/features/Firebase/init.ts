@@ -1,6 +1,6 @@
 'use client';
 
-import { firebaseConfig } from '@/common/firebaseConfig';
+import { firebaseConfig } from '@/features/Firebase/firebaseConfig';
 import { connectToEmulator } from '@/libs/firebaseEmulator';
 import { initializeApp } from 'firebase/app';
 import {
