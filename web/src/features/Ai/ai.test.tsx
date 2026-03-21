@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { calculateTextUsagePrice, calculateUsagePrice, TextAiModel } from '../features/Ai/ai';
+import { calculateTextUsagePrice, calculateUsagePrice, TextAiModel } from './ai';
 
 describe('Calculate real time price', () => {
   const modelGpt4o = 'gpt-4o-realtime-preview';
