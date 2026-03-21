@@ -11,6 +11,7 @@ import { uniq } from '@/libs/uniq';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { useGame } from '../useGame';
 import { increaseGamePointsRequest } from '../gameBackendRequests';
+import { useUrlState } from '@/features/Url/useUrlState';
 
 interface SubmitResult {
   isWinnerExists: boolean;
@@ -24,6 +25,10 @@ interface BattleContextType {
   acceptBattle: (battleId: string) => Promise<void>;
 
   createBattleWithUser: (userId: string) => Promise<void>;
+
+  activeBattle: GameBattle | null;
+  openBattle: (battleId: string) => void;
+  closeActiveBattle: () => void;
 
   updateAnswerTranscription: ({}: {
     battleId: string;
@@ -274,7 +279,23 @@ Please provide your decision in the following JSON format:
     return uniqIds?.length || 0;
   }, [battles, userId]);
 
+  const [activeBattleId, setActiveBattleId] = useUrlState('activeBattleId', '', false);
+  const activeBattle = useMemo(() => {
+    return battles?.find((b) => b.battleId === activeBattleId) || null;
+  }, [activeBattleId, battles]);
+
+  const openBattle = (battleId: string) => {
+    setActiveBattleId(battleId);
+  };
+
+  const closeActiveBattle = () => {
+    setActiveBattleId('');
+  };
+
   return {
+    activeBattle,
+    openBattle,
+    closeActiveBattle,
     battles: sortedBattles,
     loading,
     acceptBattle,

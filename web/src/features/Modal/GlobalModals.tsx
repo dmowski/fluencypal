@@ -10,12 +10,15 @@ import { TeacherVoiceModal } from './TeacherVoiceModal';
 import { ReportModal } from '../User/ReportModal';
 import { useStories } from '../Sentence/useStories';
 import { StoriesModal } from '../Sentence/StoriesModal';
+import { useBattle } from '../Game/Battle/useBattle';
+import { BattleActionModal } from '../Game/Battle/BattleActionModal';
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();
   const usage = useUsage();
   const auth = useAuth();
   const stories = useStories();
+  const battles = useBattle();
 
   const activeUserProfile = useMemo(() => {
     return game.modalUserId ? game.stats.find((s) => s.userId === game.modalUserId) : null;
@@ -30,6 +33,10 @@ export const GlobalModals: React.FC = () => {
           onNext={stories.openNextStory}
           onPrev={stories.onPrevStory}
         />
+      )}
+
+      {battles.activeBattle && (
+        <BattleActionModal battle={battles.activeBattle} onClose={battles.closeActiveBattle} />
       )}
 
       {usage.isShowPaymentModal && <SubscriptionPaymentModal />}

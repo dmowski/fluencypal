@@ -21,15 +21,12 @@ import {
   CircleEllipsis,
   Crown,
   HatGlasses,
-  MessageCircle,
   Mic,
   SquareCheckBig,
   Swords,
   Trash,
 } from 'lucide-react';
 import { useState } from 'react';
-import { BattleActionModal } from './BattleActionModal';
-import { useChat } from '@/features/Chat/useChat';
 
 export const BattleCard = ({ battle }: { battle: GameBattle }) => {
   const { i18n } = useLingui();
@@ -51,11 +48,6 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
   const isAcceptedByAll = battle.approvedUsersIds.length === battle.usersIds.length;
 
   const [isShowMenu, setIsShowMenu] = useState<null | HTMLElement>(null);
-
-  const [isActiveModal, setIsActiveModal] = useState(false);
-  const openBattle = () => {
-    setIsActiveModal(true);
-  };
 
   const isSubmittedByMe = battle.submittedUsersIds.includes(auth.uid || '');
 
@@ -88,9 +80,6 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
         },
       }}
     >
-      {isActiveModal && (
-        <BattleActionModal battle={battle} onClose={() => setIsActiveModal(false)} />
-      )}
       <Stack
         sx={{
           width: '100%',
@@ -274,7 +263,7 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                       startIcon={<Swords />}
                       onClick={() => {
                         battles.acceptBattle(battle.battleId);
-                        openBattle();
+                        battles.openBattle(battle.battleId);
                       }}
                     >
                       {i18n._('Accept')}
@@ -294,32 +283,24 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                 )}
 
                 {isAcceptedByAll && !isSubmittedByMe && !battle.winnerUserId && (
-                  <Button variant="contained" color="info" startIcon={<Mic />} onClick={openBattle}>
+                  <Button
+                    variant="contained"
+                    color="info"
+                    startIcon={<Mic />}
+                    onClick={() => battles.openBattle(battle.battleId)}
+                  >
                     {i18n._('Start Debate')}
                   </Button>
                 )}
 
                 {battle.winnerUserId && (
                   <>
-                    {!battle.hiddenByUsersIds?.includes(auth.uid || '') && (
-                      <Button
-                        variant="contained"
-                        color="info"
-                        onClick={() => battles.closeBattle(battle.battleId)}
-                      >
-                        {i18n._('Hide')}
-                      </Button>
-                    )}
-
                     <Button
                       color="info"
+                      variant="contained"
                       startIcon={<Crown />}
                       onClick={() => {
-                        openBattle();
-
-                        if (!battle.hiddenByUsersIds?.includes(auth.uid || '')) {
-                          battles.closeBattle(battle.battleId);
-                        }
+                        battles.openBattle(battle.battleId);
                       }}
                     >
                       {i18n._('Open results')}
