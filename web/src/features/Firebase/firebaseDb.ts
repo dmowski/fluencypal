@@ -119,6 +119,9 @@ export const db = {
 
     communitySpaces: (userId?: string) =>
       userId ? dataPointCollection<CommunitySpace>(`community/spaces/spaceList`) : null,
+
+    dailyTaskProgress: (userId?: string) =>
+      userId ? dataPointCollection<DailyTaskProgress>(`users/${userId}/dailyTasks`) : null,
   },
   documents: {
     chat: (userId: string, space: string) =>
