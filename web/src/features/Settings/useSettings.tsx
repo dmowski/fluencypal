@@ -23,7 +23,7 @@ import {
 import { NativeLangCode } from '@/libs/language/type';
 import { useUserSource } from '../Analytics/useUserSource';
 import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
-import { AiVoice } from '@/common/ai';
+import { AiVoice } from '@/features/Ai/ai';
 import { useUrlState } from '../Url/useUrlState';
 
 interface SettingsContextType {

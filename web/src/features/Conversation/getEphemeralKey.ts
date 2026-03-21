@@ -1,4 +1,4 @@
-import { RealTimeModel } from '@/common/ai';
+import { RealTimeModel } from '@/features/Ai/ai';
 import { GetEphemeralTokenResponse, GetEphemeralTokenRequest } from '@/common/requests';
 
 export const getEphemeralKey = async (model: RealTimeModel, authToken: string) => {

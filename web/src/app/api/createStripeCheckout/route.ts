@@ -4,7 +4,7 @@ import { getUrlStart } from '@/features/Lang/getUrlStart';
 import Stripe from 'stripe';
 import { validateAuthToken } from '../config/firebase';
 import { stripeConfig } from '../payment/config';
-import { pricePerHourUsd } from '@/common/ai';
+import { pricePerHourUsd } from '@/features/Ai/ai';
 import {
   PRICE_PER_DAY_USD,
   PRICE_PER_MONTH_USD,

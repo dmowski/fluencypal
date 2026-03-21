@@ -1,4 +1,4 @@
-import { RealTimeModel } from '@/common/ai';
+import { RealTimeModel } from '@/features/Ai/ai';
 import { SendSdpOfferRequest, SendSdpOfferResponse } from '@/common/requests';
 import { sleep } from '@/libs/sleep';
 

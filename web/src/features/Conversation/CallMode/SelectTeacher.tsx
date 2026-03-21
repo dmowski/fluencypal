@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { voiceAvatarMap } from './voiceAvatar';
-import { AiVoice } from '@/common/ai';
+import { AiVoice } from '@/features/Ai/ai';
 import { AiAvatarVideo } from './AiAvatarVideo';
 import { AiAvatar } from './types';
 import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';

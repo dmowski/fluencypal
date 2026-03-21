@@ -1,4 +1,4 @@
-import { AiVoice } from '@/common/ai';
+import { AiVoice } from '@/features/Ai/ai';
 import { ConversationMessage, MessagesOrderMap } from '@/common/conversation';
 import { useWindowSizes } from '../../Layout/useWindowSizes';
 import { useLingui } from '@lingui/react';

@@ -2,7 +2,7 @@ import {
   calculateAudioTranscriptionPrice,
   convertUsageUsdToBalanceHours,
   TranscriptAiModel,
-} from '@/common/ai';
+} from '@/features/Ai/ai';
 import { validateAuthToken } from '../config/firebase';
 import { TranscriptResponse } from './types';
 import { supportedLanguages } from '@/features/Lang/lang';

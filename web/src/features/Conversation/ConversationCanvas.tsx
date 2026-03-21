@@ -35,7 +35,7 @@ import { ConversationResult } from '../Plan/types';
 import { useTranslate } from '../Translation/useTranslate';
 import { useResizeElement } from '../Layout/useResizeElement';
 import { Messages } from './Messages';
-import { AiVoice } from '@/common/ai';
+import { AiVoice } from '@/features/Ai/ai';
 import { CameraCanvas } from './CallMode/CameraCanvas';
 import { ConversationMode } from '@/common/userSettings';
 import { ProcessUserInput } from './ProcessUserInput';

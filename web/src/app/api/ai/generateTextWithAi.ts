@@ -1,4 +1,4 @@
-import { TextAiModel } from '@/common/ai';
+import { TextAiModel } from '@/features/Ai/ai';
 import { AiChatMessage } from '@/common/requests';
 import OpenAI from 'openai';
 

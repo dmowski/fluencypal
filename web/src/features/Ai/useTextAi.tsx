@@ -2,7 +2,7 @@
 import { createContext, useContext, ReactNode, JSX } from 'react';
 import * as Sentry from '@sentry/nextjs';
 import { sendTextAiRequest } from './sendTextAiRequest';
-import { TextAiModel } from '@/common/ai';
+import { TextAiModel } from '@/features/Ai/ai';
 import { getDataFromCache, setDataToCache } from '@/libs/localStorageCache';
 import { useAuth } from '../Auth/useAuth';
 import { SupportedLanguage } from '@/features/Lang/lang';

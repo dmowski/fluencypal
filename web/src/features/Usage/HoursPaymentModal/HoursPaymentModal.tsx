@@ -7,7 +7,7 @@ import { useAuth } from '../../Auth/useAuth';
 import { createStripeCheckout } from '../createStripeCheckout';
 import { useLingui } from '@lingui/react';
 import { useCurrency } from '../../User/useCurrency';
-import { pricePerHourUsd } from '@/common/ai';
+import { pricePerHourUsd } from '@/features/Ai/ai';
 import { sleep } from '@/libs/sleep';
 import { BalanceContent } from './BalanceContent';
 import { ConfirmPaymentForm } from './ConfirmPaymentForm';

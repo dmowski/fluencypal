@@ -1,4 +1,4 @@
-import { AiVoice } from '@/common/ai';
+import { AiVoice } from '@/features/Ai/ai';
 import { ConversationType, ConversationMessage, MessagesOrderMap } from '@/common/conversation';
 import { ConversationMode } from '@/common/userSettings';
 import { ConversationIdea } from '@/features/Ai/useAiUserInfo';

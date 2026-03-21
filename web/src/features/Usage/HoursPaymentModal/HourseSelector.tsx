@@ -1,4 +1,4 @@
-import { pricePerHourUsd } from '@/common/ai';
+import { pricePerHourUsd } from '@/features/Ai/ai';
 import { Stack } from '@mui/material';
 import { HourCard } from './HourCard';
 import { useLingui } from '@lingui/react';

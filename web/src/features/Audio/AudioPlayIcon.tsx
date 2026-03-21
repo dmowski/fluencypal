@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import { Button, IconButton } from '@mui/material';
 import { Loader, Pause, Volume2 } from 'lucide-react';
 import { SpeakOptions, useConversationAudio } from './useConversationAudio';
-import { AiVoice } from '@/common/ai';
+import { AiVoice } from '@/features/Ai/ai';
 import { useSettings } from '../Settings/useSettings';
 import { getVoiceOverSpeakOptions } from './getVoiceOverSpeakOptions';
 import { clearWordForAudio } from './clearWord';

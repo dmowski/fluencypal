@@ -15,7 +15,7 @@ import { useSettings } from '../Settings/useSettings';
 import { RolePlayScenariosInfo } from './rolePlayData';
 import { useLocalStorage } from 'react-use';
 import { GuessGameStat } from '../Conversation/types';
-import { MODELS } from '@/common/ai';
+import { MODELS } from '@/features/Ai/ai';
 import { ConversationMode } from '@/common/userSettings';
 import { useUrlState } from '../Url/useUrlState';
 

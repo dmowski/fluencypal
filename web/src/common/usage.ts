@@ -5,7 +5,7 @@ import {
   TextUsageEvent,
   TranscriptAiModel,
   UsageEvent,
-} from './ai';
+} from '../features/Ai/ai';
 import { SupportedLanguage } from '../features/Lang/lang';
 
 export interface TotalUsageInfo {

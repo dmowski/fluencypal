@@ -6,7 +6,7 @@ import { db } from '../Firebase/firebaseDb';
 
 import { useSettings } from '../Settings/useSettings';
 import { useTextAi } from '../Ai/useTextAi';
-import { MODELS } from '@/common/ai';
+import { MODELS } from '@/features/Ai/ai';
 import { useWords } from '../Words/useWords';
 import { PhraseCorrection } from './types';
 import { doc, setDoc } from 'firebase/firestore';

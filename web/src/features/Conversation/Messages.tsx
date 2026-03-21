@@ -10,7 +10,7 @@ import { useTranslate } from '../Translation/useTranslate';
 import { useMemo, useState } from 'react';
 import { getSortedMessages } from './getSortedMessages';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
-import { AiVoice } from '@/common/ai';
+import { AiVoice } from '@/features/Ai/ai';
 import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
 import { useAccess } from '../Usage/useAccess';
 import { useConversationsAnalysis } from './useConversationsAnalysis';

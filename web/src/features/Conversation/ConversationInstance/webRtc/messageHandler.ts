@@ -1,4 +1,4 @@
-import { calculateUsagePrice, convertUsageUsdToBalanceHours, UsageEvent } from '@/common/ai';
+import { calculateUsagePrice, convertUsageUsdToBalanceHours, UsageEvent } from '@/features/Ai/ai';
 import { ConversationConfig } from '../types';
 import { EventHandlers, WebRtcState } from './types';
 

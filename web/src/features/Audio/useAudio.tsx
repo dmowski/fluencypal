@@ -3,7 +3,7 @@ import { createContext, useContext, ReactNode, JSX } from 'react';
 import { useSettings } from '../Settings/useSettings';
 import { useAuth } from '../Auth/useAuth';
 import { sendTextToAudioRequest } from '@/app/api/textToAudio/sendTextToAudioRequest';
-import { AiVoice } from '@/common/ai';
+import { AiVoice } from '@/features/Ai/ai';
 
 interface AudioContextType {
   getAudioUrl: (text: string, instructions: string, voice: AiVoice) => Promise<string>;

@@ -1,4 +1,4 @@
-import { TextAiModel, TextUsageEvent } from './ai';
+import { TextAiModel, TextUsageEvent } from '../features/Ai/ai';
 import { SupportedLanguage } from '../features/Lang/lang';
 import { UsageLog } from './usage';
 

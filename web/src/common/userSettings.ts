@@ -1,7 +1,7 @@
 import { NativeLangCode } from '@/libs/language/type';
 import { SupportedLanguage } from '../features/Lang/lang';
 import { UserSource } from './analytics';
-import { AiVoice } from './ai';
+import { AiVoice } from '../features/Ai/ai';
 
 export interface InitUserSettings {
   createdAt: number | null;

@@ -1,4 +1,4 @@
-import { AiVoice } from '@/common/ai';
+import { AiVoice } from '@/features/Ai/ai';
 import { AiAvatarVideo } from '@/features/Conversation/CallMode/AiAvatarVideo';
 import { AiAvatar } from '@/features/Conversation/CallMode/types';
 import { getAiVoiceByVoice } from '@/features/Conversation/CallMode/voiceAvatar';

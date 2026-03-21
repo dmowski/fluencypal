@@ -2,7 +2,7 @@ import { SendSdpOfferRequest, SendSdpOfferResponse } from '@/common/requests';
 import { getEphemeralToken } from '../token/getEphemeralToken';
 import { validateAuthToken } from '../config/firebase';
 import { rateLimitRealtimeInit } from '../usage/rateLimitRealtimeInit';
-import { RealTimeModel } from '@/common/ai';
+import { RealTimeModel } from '@/features/Ai/ai';
 
 const ALLOWED_MODELS: RealTimeModel[] = ['gpt-realtime-mini', 'gpt-realtime'];
 

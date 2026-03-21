@@ -3,7 +3,7 @@ import {
   calculateTextUsagePrice,
   convertUsageUsdToBalanceHours,
   TextUsageEvent,
-} from '@/common/ai';
+} from '@/features/Ai/ai';
 import { validateAuthToken } from '../../config/firebase';
 import { generateChatWithAi } from './../generateTextWithAi';
 import { addConversationUsage } from '../../usage/addConversationUsage';

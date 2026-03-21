@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { TranscriptAiModel } from '@/common/ai';
+import { TranscriptAiModel } from '@/features/Ai/ai';
 import { getBucket } from '../config/firebase';
 import { TranscriptResponse } from './types';
 import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';

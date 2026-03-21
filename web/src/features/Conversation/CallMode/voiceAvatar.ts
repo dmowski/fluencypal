@@ -1,4 +1,4 @@
-import { AiVoice } from '@/common/ai';
+import { AiVoice } from '@/features/Ai/ai';
 import { AiAvatar } from './types';
 
 export const voiceAvatarMap: Record<AiVoice, AiAvatar> = {

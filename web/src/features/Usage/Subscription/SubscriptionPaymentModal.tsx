@@ -24,7 +24,7 @@ import { BalanceStatus } from './BalanceStatus';
 import { usePrices } from './usePrices';
 import { ActivePlanSelector } from './ActivePlanSelector';
 import { HoursSelector } from '../HoursPaymentModal/HourseSelector';
-import { pricePerHourUsd } from '@/common/ai';
+import { pricePerHourUsd } from '@/features/Ai/ai';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { X } from 'lucide-react';
 import dayjs from 'dayjs';

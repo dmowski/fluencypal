@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { TextToAudioModal } from '@/common/ai';
+import { TextToAudioModal } from '@/features/Ai/ai';
 import { getBucket, validateAuthToken } from '../config/firebase';
 import { TextToAudioRequest, TextToAudioResponse } from './types';
 import { createHash } from 'crypto';

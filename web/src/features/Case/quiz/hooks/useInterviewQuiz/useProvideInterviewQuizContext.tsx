@@ -19,7 +19,7 @@ import { useEffect, useState } from 'react';
 import { initEmptyData } from './data';
 import { getHash } from './hash';
 import { useTextAi } from '@/features/Ai/useTextAi';
-import { MODELS } from '@/common/ai';
+import { MODELS } from '@/features/Ai/ai';
 import { useAnalytics } from '@/features/Analytics/useAnalytics';
 import { ScorePreview } from '@/features/Case/Landing/components/ScorePreviewSection';
 import { GoalPlan } from '@/features/Plan/types';
