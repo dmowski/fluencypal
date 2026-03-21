@@ -13,42 +13,7 @@ import dayjs from 'dayjs';
 import { setDoc } from 'firebase/firestore';
 import { useSettings } from '../Settings/useSettings';
 import { useUrlState } from '../Url/useUrlState';
-
-const ALL_DAILY_TASKS: DailyTaskType[] = [
-  'just-talk',
-  'goal-lesson',
-  'community',
-  'story',
-  'daily-question',
-];
-
-const TASKS_INFO: Record<DailyTaskType, DailyTaskInfo> = {
-  'just-talk': {
-    title: 'Just talk',
-    label: 'Send at least 10 messages in Just talk',
-    content: 'Start a "Just talk" conversation and exchange at least 10 messages with the AI.',
-  },
-  'goal-lesson': {
-    title: 'Goal lesson',
-    label: 'Finish a lesson from your Goal plan',
-    content: 'Complete any lesson from your current Goal plan to mark this task as done.',
-  },
-  community: {
-    title: 'Community',
-    label: 'Send at least one message in the community space',
-    content: 'Join the community space and send at least one message to other learners.',
-  },
-  story: {
-    title: 'Story',
-    label: 'Watch a story and listen in to the end or finish quiz',
-    content: 'Watch a story and listen through to the end, or complete the story quiz.',
-  },
-  'daily-question': {
-    title: 'Daily question',
-    label: 'Answer daily question',
-    content: "Answer today's daily question to complete this task.",
-  },
-};
+import { useLingui } from '@lingui/react';
 
 export const dailyTasksContext = createContext<DailyTaskApi>({
   onStartTask: async () => void 0,
@@ -64,8 +29,47 @@ function useProvideDailyTasks(): DailyTaskApi {
   const auth = useAuth();
   const settings = useSettings();
   const userId = auth.uid;
+  const { i18n } = useLingui();
 
   const today = useMemo(() => dayjs().format('YYYY-MM-DD'), []);
+
+  const todaysActualTasks: DailyTaskType[] = useMemo(() => {
+    return ['just-talk', 'goal-lesson', 'community', 'story', 'daily-question'];
+  }, [today]);
+
+  const tasksInfo: Record<DailyTaskType, DailyTaskInfo> = useMemo(() => {
+    return {
+      'just-talk': {
+        title: 'Just talk',
+        label: i18n._('Send at least 10 messages in Just talk'),
+        content: 'Start a "Just talk" conversation and exchange at least 10 messages with the AI.',
+      },
+      'goal-lesson': {
+        title: i18n._('Goal lesson'),
+        label: i18n._('Finish a lesson from your Goal plan'),
+        content: i18n._(
+          'Complete any lesson from your current Goal plan to mark this task as done.',
+        ),
+      },
+      community: {
+        title: i18n._('Community'),
+        label: i18n._('Send at least one message in the community space'),
+        content: i18n._(
+          'Join the community space and send at least one message to other learners.',
+        ),
+      },
+      story: {
+        title: i18n._('Story'),
+        label: i18n._('Watch a story and listen in to the end or finish quiz'),
+        content: i18n._('Watch a story and listen through to the end, or complete the story quiz.'),
+      },
+      'daily-question': {
+        title: i18n._('Daily question'),
+        label: i18n._('Answer daily question'),
+        content: i18n._("Answer today's daily question to complete this task."),
+      },
+    };
+  }, [today]);
 
   const dailyTaskProgressDocRef = db.documents.dailyTaskProgress(
     userId ?? undefined,
@@ -103,8 +107,8 @@ function useProvideDailyTasks(): DailyTaskApi {
     onStartTask,
     onCompleteTask,
     activeTask,
-    todaysActualTasks: ALL_DAILY_TASKS,
-    tasksInfo: TASKS_INFO,
+    todaysActualTasks,
+    tasksInfo,
     todayTaskProgress: todayTaskProgress ?? null,
   };
 }
