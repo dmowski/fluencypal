@@ -27,8 +27,10 @@ export const useGlobalModals = () => {
   return {
     openPublicChat: () => setIsShowPublicChat(true),
     isShowPublicChat,
-    closeAllModels,
+
     openDailyQuestions: () => setIsShowDailyQuestions(true),
     isShowDailyQuestions,
+
+    closeAllModels,
   };
 };
