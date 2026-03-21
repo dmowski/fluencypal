@@ -8,6 +8,7 @@ import { useChatList } from '../Chat/useChatList';
 import { useRouter } from 'next/navigation';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useBattle } from '../Game/Battle/useBattle';
+import { TabLabel } from '../Game/TabLabel';
 
 export const AppNotificationsButton: React.FC = () => {
   const [isShow, setIsShow] = useUrlState('inbox', false, false);
@@ -74,11 +75,17 @@ export const AppNotificationsButton: React.FC = () => {
                 }}
               >
                 <Tab
-                  label={<Typography variant="button">{i18n._('Messages')}</Typography>}
+                  label={<TabLabel label={i18n._('Messages')} badgeNumber={newMessagesCount} />}
                   value={'messages'}
                 />
                 <Tab
-                  label={<Typography variant="button">{i18n._('Debates')}</Typography>}
+                  label={
+                    <TabLabel
+                      label={i18n._('Debates')}
+                      badgeNumber={battles.countOfBattlesNeedToAttention}
+                      badgeHighlight
+                    />
+                  }
                   value={'debates'}
                 />
               </Tabs>
