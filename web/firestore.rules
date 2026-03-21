@@ -165,6 +165,10 @@ service cloud.firestore {
       match /stats/{statId} {
         allow read, write: if isUser(userId);
       }
+
+      match /dailyTasks/{taskId} {
+        allow read, write: if isUser(userId);
+      }
       
       // Allow read-write for phrases
       match /phraseCorrections/{correction} {
