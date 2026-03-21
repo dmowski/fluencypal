@@ -1,4 +1,3 @@
-import { Email } from '@mui/icons-material';
 import { IconButton, Stack, Tabs, Tab, Typography, Badge } from '@mui/material';
 import { useUrlState } from '../Url/useUrlState';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
@@ -8,6 +7,7 @@ import { BattleSection } from '../Game/Battle/BattleSection';
 import { useChatList } from '../Chat/useChatList';
 import { useRouter } from 'next/navigation';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { useBattle } from '../Game/Battle/useBattle';
 
 export const AppNotificationsButton: React.FC = () => {
   const [isShow, setIsShow] = useUrlState('inbox', false, false);
@@ -15,6 +15,7 @@ export const AppNotificationsButton: React.FC = () => {
   const chatList = useChatList();
   const newMessagesCount = chatList.myUnreadCount;
   const router = useRouter();
+  const battles = useBattle();
   const [mode, setMode] = useUrlState<'messages' | 'debates' | ''>('inboxType', 'messages', false);
 
   const onClose = async () => {
@@ -22,6 +23,8 @@ export const AppNotificationsButton: React.FC = () => {
     const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
     router.push(newUrl);
   };
+
+  const notificationsCount = newMessagesCount + battles.countOfBattlesNeedToAttention;
 
   return (
     <>
@@ -92,7 +95,7 @@ export const AppNotificationsButton: React.FC = () => {
       )}
 
       <IconButton onClick={() => setIsShow(true)}>
-        <Badge badgeContent={newMessagesCount} color="error">
+        <Badge badgeContent={notificationsCount} color="error">
           <NotificationsIcon
             sx={{
               opacity: 0.7,
