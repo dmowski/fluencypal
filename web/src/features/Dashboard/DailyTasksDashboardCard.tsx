@@ -9,19 +9,8 @@ import { useStories } from '../Sentence/useStories';
 import { useJustTalk } from '../Conversation/useJustTalk';
 import { usePlan } from '../Plan/usePlan';
 import { useGlobalModals } from '../Modal/useGlobalModals';
-
-const taskIconMap: Record<DailyTaskType, string> = {
-  'just-talk':
-    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774036079435-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
-  'goal-lesson':
-    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035398903-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
-  community:
-    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035331701-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
-  story:
-    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035304855-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
-  'daily-question':
-    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035287672-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
-};
+import { useSettings } from '../Settings/useSettings';
+import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 
 export const DailyTasksDashboardCard = () => {
   const { i18n } = useLingui();
@@ -30,6 +19,25 @@ export const DailyTasksDashboardCard = () => {
   const plan = usePlan();
 
   const globalModals = useGlobalModals();
+
+  const settings = useSettings();
+  const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
+  const aiAvatar = voiceAvatarMap[voiceName];
+  const secondPhotoUrl = aiAvatar.photoUrls?.[1] || aiAvatar.photoUrls?.[0] || '';
+
+  const taskIconMap: Record<DailyTaskType, string> = useMemo(
+    () => ({
+      'just-talk': secondPhotoUrl,
+      'goal-lesson':
+        'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773861934880-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+      community:
+        'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773964951620-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.jpg',
+      story: stories.randomStoryWithVideo?.imageUrl || '',
+      'daily-question':
+        'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035287672-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+    }),
+    [secondPhotoUrl, stories.randomStoryWithVideo?.imageUrl],
+  );
 
   const { startJustTalk, isCallStarting } = useJustTalk();
 
@@ -42,15 +50,20 @@ export const DailyTasksDashboardCard = () => {
   };
 
   const onStartTask = (taskType: DailyTaskType) => {
+    console.log('Open task', taskType);
     const tasksHandlerMap: Record<DailyTaskType, () => void> = {
       'just-talk': startJustTalk,
       'goal-lesson': openLearningPlan,
       community: globalModals.openPublicChat,
-      story: () => stories.openRandomStory(),
+      story: () => {
+        stories.openStory(stories.randomStoryWithVideo?.id || '');
+        stories.rotateRandomStoryWithVideo();
+      },
       'daily-question': globalModals.openDailyQuestions,
     };
 
     const handler = tasksHandlerMap[taskType];
+    console.log('handler', tasksHandlerMap, taskType);
     if (handler) {
       handler();
     }
@@ -98,7 +111,13 @@ export const DailyTasksDashboardCard = () => {
       };
       return taskItem;
     });
-  }, [tasks.todaysActualTasks, tasks.tasksInfo, tasks.todayTaskProgress, isCallStarting]);
+  }, [
+    tasks.todaysActualTasks,
+    taskIconMap,
+    tasks.tasksInfo,
+    tasks.todayTaskProgress,
+    isCallStarting,
+  ]);
 
   return (
     <Stack

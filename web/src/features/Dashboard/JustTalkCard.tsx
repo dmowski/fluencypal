@@ -11,18 +11,15 @@ export const JustTalkCard = () => {
   const { i18n } = useLingui();
 
   const { startJustTalk, isCallStarting } = useJustTalk();
-
-  const settings = useSettings();
-
   const [footnotePhraseIndex] = useState(new Date().getDate());
 
+  const settings = useSettings();
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
-
   const aiAvatar = voiceAvatarMap[voiceName];
+  const secondPhotoUrl = aiAvatar.photoUrls?.[1] || aiAvatar.photoUrls?.[0] || '';
 
   const funnyPhrases = aiAvatar.funnyPhrases;
   const footnotePhrase = funnyPhrases[footnotePhraseIndex % funnyPhrases.length];
-  const secondPhotoUrl = aiAvatar.photoUrls?.[1] || aiAvatar.photoUrls?.[0] || '';
 
   return (
     <Stack
