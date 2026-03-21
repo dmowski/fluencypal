@@ -5,7 +5,7 @@ import { GameBattle } from './types';
 import { useGame } from '../useGame';
 import { GameStatRow } from '../GameStatRow';
 import { useAuth } from '@/features/Auth/useAuth';
-import { Check, Crown, EyeClosed, HatGlasses, Scale, X } from 'lucide-react';
+import { Check, Crown, HatGlasses, Scale, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { InfoStep } from '@/features/Survey/InfoStep';
@@ -15,7 +15,7 @@ import { useSettings } from '@/features/Settings/useSettings';
 import { BATTLE_WIN_POINTS } from './data';
 import { fullLanguageName } from '@/features/Lang/lang';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
-import { ChatSection } from '@/features/Chat/ChatSection';
+import { UsersPrivateChat } from '@/features/Chat/UsersPrivateChat';
 
 export const BattleActionModal = ({
   battle,
@@ -288,10 +288,7 @@ export const BattleActionModal = ({
                           {i18n._(`You can discuss the battle here.`)}
                         </Typography>
                       </Stack>
-                      <ChatSection
-                        placeholder={i18n._('How the battle went?')}
-                        contextForAiAnalysis=""
-                      />
+                      <UsersPrivateChat userIds={users} />
                     </Stack>
                   </Stack>
                 </>
