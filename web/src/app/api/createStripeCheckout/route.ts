@@ -10,7 +10,7 @@ import {
   PRICE_PER_MONTH_USD,
   PRICE_PER_WEEK_USD,
   PRICE_PER_YEAR_USD,
-} from '@/common/subscription';
+} from '@/features/Price/price';
 import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 import { toStripeUnit } from 'zero-decimal-currencies';
 

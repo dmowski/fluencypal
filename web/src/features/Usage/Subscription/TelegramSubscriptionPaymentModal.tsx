@@ -15,7 +15,7 @@ import {
   PRICE_PER_MONTH_USD,
   PRICE_PER_WEEK_USD,
   PRICE_PER_YEAR_USD,
-} from '@/common/subscription';
+} from '@/features/Price/price';
 import { sentPaymentTgMessage } from '../sentTgMessage';
 import dayjs from 'dayjs';
 import { FeatureList } from '../../Landing/Price/FeatureList';

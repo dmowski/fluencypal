@@ -3,7 +3,7 @@ import {
   PRICE_PER_DAY_USD,
   PRICE_PER_YEAR_USD,
   PRICE_PER_WEEK_USD,
-} from '@/common/subscription';
+} from '@/features/Price/price';
 import { useCurrency } from '@/features/User/useCurrency';
 import { SubscriptionDuration, PriceInfo } from './types';
 import dayjs from 'dayjs';

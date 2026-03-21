@@ -1,7 +1,7 @@
 import { PriceSection } from '../../types';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
-import { PRICE_PER_MONTH_USD } from '@/common/subscription';
+import { PRICE_PER_MONTH_USD } from '@/features/Price/price';
 
 export const getPriceSection = (lang: SupportedLanguage): PriceSection => {
   const i18n = getI18nInstance(lang);

@@ -2,7 +2,7 @@ import { InitBalanceResponse } from '@/common/requests';
 import { getDB, validateAuthToken } from '../config/firebase';
 import { WELCOME_BONUS } from '@/common/usage';
 import { addPaymentLog } from '../payment/addPaymentLog';
-import { TRIAL_MINUTES } from '@/common/subscription';
+import { TRIAL_MINUTES } from '@/features/Price/price';
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
