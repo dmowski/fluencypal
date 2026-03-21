@@ -6,6 +6,7 @@ import { SectionHeader } from './CartsHeader';
 import { useMemo } from 'react';
 import { DailyTaskType } from '../Tasks/types';
 import { useStories } from '../Sentence/useStories';
+import { useUrlState } from '../Url/useUrlState';
 
 const taskIconMap: Record<DailyTaskType, string> = {
   'just-talk':
@@ -24,6 +25,7 @@ export const DailyTasksDashboardCard = () => {
   const { i18n } = useLingui();
   const tasks = useDailyTasks();
   const stories = useStories();
+  const [, setIsShowDailyQuestions] = useUrlState('dailyQuestions', false, false);
 
   const openCard = () => {
     if (!tasks.todaysActualTasks[0]) return;
@@ -38,7 +40,9 @@ export const DailyTasksDashboardCard = () => {
       story: () => {
         stories.openRandomStory();
       },
-      'daily-question': () => tasks.onStartTask('daily-question'),
+      'daily-question': () => {
+        setIsShowDailyQuestions(true);
+      },
     };
 
     const handler = tasksHandlerMap[taskType];

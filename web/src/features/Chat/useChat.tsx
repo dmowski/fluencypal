@@ -27,6 +27,7 @@ import { useUrlState } from '../Url/useUrlState';
 import { sendFeedbackMessageRequest } from '@/app/api/telegram/sendFeedbackMessageRequest';
 import dayjs from 'dayjs';
 import { useTasks } from '../Tasks/useTasks';
+import { useDailyTasks } from '../Tasks/useDailyTasks';
 
 interface AddMessageProps {
   messageContent: string;
@@ -93,6 +94,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
 
   const metaRef = db.documents.chat(userId, propsChatMetadata.spaceId);
   const [metaData] = useDocumentData(metaRef);
+  const dailyTasks = useDailyTasks();
 
   const isCanRead = getIsCanRead({
     isPrivate: metaData?.isPrivate,
@@ -329,6 +331,13 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     };
     const messageDoc = doc(messagesRefInternal, newMessage.id);
     await setDoc(messageDoc, newMessage);
+
+    const isDailyQuestion = propsChatMetadata.type === 'dailyQuestion';
+    if (isDailyQuestion) {
+      dailyTasks.onCompleteTask('daily-question');
+    } else {
+      dailyTasks.onCompleteTask('community');
+    }
 
     if (!isDev) {
       tasks.completeTask('chat');
