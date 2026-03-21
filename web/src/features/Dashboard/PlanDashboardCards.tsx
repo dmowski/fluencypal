@@ -204,6 +204,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             badge={''}
             textColor={'#fff'}
             backgroundColor={'#2e0949'}
+            onClick={() => plan.openElementModal(nextElementId)}
             itemsBackgroundColor={'rgb(42, 39, 42)'}
             previewImageUrl={
               'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773861934880-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
@@ -251,9 +252,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               };
               return item;
             })}
-            onClick={() => {
-              plan.openElementModal(nextElementId);
-            }}
             itemsViewMode={'list'}
           />
         </Stack>

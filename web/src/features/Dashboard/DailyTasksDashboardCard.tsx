@@ -8,6 +8,7 @@ import { DailyTaskType } from '../Tasks/types';
 import { useStories } from '../Sentence/useStories';
 import { useUrlState } from '../Url/useUrlState';
 import { useJustTalk } from '../Conversation/useJustTalk';
+import { usePlan } from '../Plan/usePlan';
 
 const taskIconMap: Record<DailyTaskType, string> = {
   'just-talk':
@@ -27,22 +28,25 @@ export const DailyTasksDashboardCard = () => {
   const tasks = useDailyTasks();
   const stories = useStories();
   const [, setIsShowDailyQuestions] = useUrlState('dailyQuestions', false, false);
+  const plan = usePlan();
 
   const { startJustTalk, isCallStarting } = useJustTalk();
 
   const onStartTask = (taskType: DailyTaskType) => {
     const tasksHandlerMap: Record<DailyTaskType, () => void> = {
-      'just-talk': () => {
-        startJustTalk();
+      'just-talk': () => startJustTalk(),
+      'goal-lesson': () => {
+        if (!plan.nextElement?.id) {
+          alert(
+            i18n._('No active lesson found. Please create a learning plan to access this task.'),
+          );
+          return;
+        }
+        plan.openElementModal(plan.nextElement.id);
       },
-      'goal-lesson': () => {},
       community: () => {},
-      story: () => {
-        stories.openRandomStory();
-      },
-      'daily-question': () => {
-        setIsShowDailyQuestions(true);
-      },
+      story: () => stories.openRandomStory(),
+      'daily-question': () => setIsShowDailyQuestions(true),
     };
 
     const handler = tasksHandlerMap[taskType];
