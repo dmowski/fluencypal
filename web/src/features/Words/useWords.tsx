@@ -4,7 +4,7 @@ import { useAuth } from '../Auth/useAuth';
 import { setDoc } from 'firebase/firestore';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { db } from '../Firebase/firebaseDb';
-import { WordsStats } from '@/common/words';
+import { WordsStats } from '@/features/Words/words';
 import { getWordsFromText } from '@/libs/getWordsFromText';
 import { useSettings } from '../Settings/useSettings';
 import { useTextAi } from '../Ai/useTextAi';
