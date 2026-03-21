@@ -27,7 +27,7 @@ export const dailyTasksContext = createContext<DailyTaskApi>({
 function useProvideDailyTasks(): DailyTaskApi {
   const [activeTask, setActiveTask] = useUrlState<DailyTaskType | null>('activeTask', null, false);
 
-  const today = useMemo(() => dayjs().format('DD-MM-YYYY'), []);
+  const today = useMemo(() => dayjs().format('YYYY-MM-DD'), []);
 
   const onStartTask = async (taskType: DailyTaskType) => {
     setActiveTask(taskType);
