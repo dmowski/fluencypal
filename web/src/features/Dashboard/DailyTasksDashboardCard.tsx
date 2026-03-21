@@ -27,11 +27,6 @@ export const DailyTasksDashboardCard = () => {
   const stories = useStories();
   const [, setIsShowDailyQuestions] = useUrlState('dailyQuestions', false, false);
 
-  const openCard = () => {
-    if (!tasks.todaysActualTasks[0]) return;
-    tasks.onStartTask(tasks.todaysActualTasks[0]);
-  };
-
   const onStartTask = (taskType: DailyTaskType) => {
     const tasksHandlerMap: Record<DailyTaskType, () => void> = {
       'just-talk': () => {},
@@ -48,6 +43,20 @@ export const DailyTasksDashboardCard = () => {
     const handler = tasksHandlerMap[taskType];
     if (handler) {
       handler();
+    }
+  };
+
+  const openCard = () => {
+    if (!tasks.todaysActualTasks[0]) return;
+    const inCompletedTaskType = tasks.todaysActualTasks.find((taskType) => {
+      const isCompleted = tasks.todayTaskProgress
+        ? !!tasks.todayTaskProgress.completedTasks?.[taskType]
+        : false;
+      return !isCompleted;
+    });
+
+    if (inCompletedTaskType) {
+      onStartTask(inCompletedTaskType);
     }
   };
 
