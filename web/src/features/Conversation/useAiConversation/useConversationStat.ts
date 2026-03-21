@@ -3,7 +3,7 @@ import {
   ConversationType,
   MessagesOrderMap,
 } from '@/features/Conversation/conversation';
-import { useAiUserInfo } from '@/features/Ai/useAiUserInfo';
+import { useAiUserInfo } from '@/features/User/useAiUserInfo';
 import { GoalElementInfo } from '@/features/Plan/types';
 import { usePlan } from '@/features/Plan/usePlan';
 import { useTasks } from '@/features/Tasks/useTasks';

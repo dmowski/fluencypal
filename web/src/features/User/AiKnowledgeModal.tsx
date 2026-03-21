@@ -7,7 +7,7 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useAiUserInfo } from './useAiUserInfo';
 import { AiKnowledgeRecordRow } from './AiKnowledgeRecordRow';
 import { AiKnowledgeNewRecord } from './AiKnowledgeNewRecord';
-import { AdvancedUserRecord } from '@/common/userInfo';
+import { AdvancedUserRecord } from '@/features/User/userInfo';
 import dayjs from 'dayjs';
 
 interface AiKnowledgeModalProps {

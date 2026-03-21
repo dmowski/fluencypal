@@ -1,6 +1,6 @@
 import { UserConversationsMeta } from '@/features/Conversation/conversation';
 import { UserSettingsWithId } from '@/features/Settings/userSettings';
-import { AiUserInfo } from '@/common/userInfo';
+import { AiUserInfo } from '@/features/User/userInfo';
 import { InterviewQuizSurvey } from '@/features/Case/types';
 import { QuizSurvey2 } from '@/features/Goal/Quiz/types';
 

@@ -1,4 +1,4 @@
-import { AdvancedUserRecord } from '@/common/userInfo';
+import { AdvancedUserRecord } from '@/features/User/userInfo';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import type { GoalPlan } from '@/features/Plan/types';
 import { NativeLangCode } from '@/libs/language/type';

@@ -5,7 +5,7 @@ import { useSettings } from '../Settings/useSettings';
 import { useTextAi } from '../Ai/useTextAi';
 import * as Sentry from '@sentry/nextjs';
 import { useAuth } from '../Auth/useAuth';
-import { useAiUserInfo } from '../Ai/useAiUserInfo';
+import { useAiUserInfo } from '../User/useAiUserInfo';
 import { useNotifications } from '@toolpad/core/useNotifications';
 import { useLingui } from '@lingui/react';
 import { fullLanguageName, getPageLangCode, SupportedLanguage } from '../Lang/lang';

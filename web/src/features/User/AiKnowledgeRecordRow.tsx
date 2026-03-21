@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Button, IconButton, Stack, TextField, Typography } from '@mui/material';
 import { Check, Edit3, Trash } from 'lucide-react';
-import { AdvancedUserRecord } from '@/common/userInfo';
+import { AdvancedUserRecord } from '@/features/User/userInfo';
 
 interface AiKnowledgeRecordRowProps {
   record: AdvancedUserRecord;

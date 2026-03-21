@@ -1,6 +1,6 @@
 import { UserSettings, UserSettingsWithId } from '@/features/Settings/userSettings';
 import { getDB } from '../config/firebase';
-import { AiUserInfo } from '@/common/userInfo';
+import { AiUserInfo } from '@/features/User/userInfo';
 import { Conversation, UserConversationsMeta } from '@/features/Conversation/conversation';
 import { QuizSurvey2 } from '@/features/Goal/Quiz/types';
 import { InterviewQuizSurvey } from '@/features/Case/types';

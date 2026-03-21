@@ -32,7 +32,7 @@ import { useTextAi } from '@/features/Ai/useTextAi';
 import { useSettings } from '@/features/Settings/useSettings';
 import { usePlan } from '@/features/Plan/usePlan';
 import { ConversationMessage } from '@/features/Conversation/conversation';
-import { useAiUserInfo } from '@/features/Ai/useAiUserInfo';
+import { useAiUserInfo } from '@/features/User/useAiUserInfo';
 import { fnv1aHash } from '@/libs/hash';
 import { getWordsCount } from '@/libs/words';
 import { NativeLangCode } from '@/libs/language/type';

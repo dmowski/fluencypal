@@ -1,11 +1,15 @@
 'use client';
 import { createContext, useContext, ReactNode, JSX, useMemo } from 'react';
 import { ConversationMessage, MessagesOrderMap } from '@/features/Conversation/conversation';
-import { AdvancedUserRecord, AiUserInfo, FirstBotConversationMessage } from '@/common/userInfo';
+import {
+  AdvancedUserRecord,
+  AiUserInfo,
+  FirstBotConversationMessage,
+} from '@/features/User/userInfo';
 import { useAuth } from '../Auth/useAuth';
 import { db } from '../Firebase/firebaseDb';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
-import { useTextAi } from './useTextAi';
+import { useTextAi } from '../Ai/useTextAi';
 import { getDoc, setDoc } from 'firebase/firestore';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';

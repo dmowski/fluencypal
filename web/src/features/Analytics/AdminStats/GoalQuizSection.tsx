@@ -2,7 +2,7 @@ import { Stack, Typography, IconButton, Button } from '@mui/material';
 import { SquareArrowOutUpRight } from 'lucide-react';
 import { UserStat } from '@/app/api/loadStats/types';
 import { GoalPlan } from '../../Plan/types';
-import { AdvancedUserRecord } from '@/common/userInfo';
+import { AdvancedUserRecord } from '@/features/User/userInfo';
 import { useState } from 'react';
 import { GrammarImprovesCardUi } from '@/features/Dashboard/Grammar/GrammarImprovesCard';
 import { SupportedLanguage } from '@/features/Lang/lang';

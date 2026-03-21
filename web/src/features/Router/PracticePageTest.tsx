@@ -7,7 +7,7 @@ import { ConversationMessage } from '@/features/Conversation/conversation';
 import { GuessGameStat } from '../Conversation/types';
 import { useEffect, useState } from 'react';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
-import { useAiUserInfo } from '../Ai/useAiUserInfo';
+import { useAiUserInfo } from '../User/useAiUserInfo';
 import { ConversationMode } from '@/features/Settings/userSettings';
 
 interface PracticePageTestProps {

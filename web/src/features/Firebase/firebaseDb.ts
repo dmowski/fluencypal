@@ -12,7 +12,7 @@ import { UserSettings } from '@/features/Settings/userSettings';
 import { Conversation } from '@/features/Conversation/conversation';
 import { UserTaskStats } from '@/common/userTask';
 import { WordsStats } from '@/features/Words/words';
-import { AiUserInfo } from '@/common/userInfo';
+import { AiUserInfo } from '@/features/User/userInfo';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { PhraseCorrection } from '../Corrections/types';
 import { GoalPlan } from '../Plan/types';

@@ -19,7 +19,7 @@ import { ConversationMode } from '@/features/Settings/userSettings';
 import { ConversationType } from '@/features/Conversation/conversation';
 import { Markdown } from '../uiKit/Markdown/Markdown';
 import { useTranslate } from '../Translation/useTranslate';
-import { ConversationIdea, useAiUserInfo } from '../Ai/useAiUserInfo';
+import { ConversationIdea, useAiUserInfo } from '../User/useAiUserInfo';
 import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
 import { useLessonPlan } from '../LessonPlan/useLessonPlan';
 import { useAuth } from '../Auth/useAuth';

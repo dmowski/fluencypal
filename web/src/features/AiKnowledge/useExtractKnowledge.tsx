@@ -1,5 +1,5 @@
 'use client';
-import { AdvancedUserRecord } from '@/common/userInfo';
+import { AdvancedUserRecord } from '@/features/User/userInfo';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';

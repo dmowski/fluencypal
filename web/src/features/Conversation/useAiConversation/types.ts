@@ -5,7 +5,7 @@ import {
   MessagesOrderMap,
 } from '@/features/Conversation/conversation';
 import { ConversationMode } from '@/features/Settings/userSettings';
-import { ConversationIdea } from '@/features/Ai/useAiUserInfo';
+import { ConversationIdea } from '@/features/User/useAiUserInfo';
 import { LessonPlan, LessonPlanAnalysis } from '@/features/LessonPlan/type';
 import { GoalElementInfo } from '@/features/Plan/types';
 import { GuessGameStat, RecordingUserMessageMode } from '../types';

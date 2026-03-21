@@ -8,7 +8,7 @@ import {
   RolePlayInputType,
   RolePlayInstruction,
 } from './types';
-import { useAiUserInfo } from '../Ai/useAiUserInfo';
+import { useAiUserInfo } from '../User/useAiUserInfo';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useTextAi } from '../Ai/useTextAi';
 import { useSettings } from '../Settings/useSettings';

@@ -5,7 +5,7 @@ import { useAiConversation } from '../Conversation/useAiConversation/useAiConver
 import { useTextAi } from '../Ai/useTextAi';
 import { getSortedMessages } from '../Conversation/getSortedMessages';
 import { GoalElementInfo } from '../Plan/types';
-import { useAiUserInfo } from '../Ai/useAiUserInfo';
+import { useAiUserInfo } from '../User/useAiUserInfo';
 import { useSettings } from '../Settings/useSettings';
 import { getHash } from '@/libs/hash';
 import { MessagesOrderMap } from '@/features/Conversation/conversation';

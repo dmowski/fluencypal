@@ -19,7 +19,7 @@ import { UserBadges } from './UserBadges';
 import { UserStats } from './UserStats';
 import { ConversationItem } from './ConversationItem';
 import { GoalQuizSection } from './GoalQuizSection';
-import { AdvancedUserRecord } from '@/common/userInfo';
+import { AdvancedUserRecord } from '@/features/User/userInfo';
 import { useExtractKnowledge } from '@/features/AiKnowledge/useExtractKnowledge';
 
 interface UserCardProps {

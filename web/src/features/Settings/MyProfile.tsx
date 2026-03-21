@@ -31,7 +31,7 @@ import { useRouter } from 'next/navigation';
 import { getUrlStart } from '../Lang/getUrlStart';
 import { GameMyAvatar } from '../Game/GameMyAvatar';
 import { GameMyUsername } from '../Game/GameMyUsername';
-import { AiKnowledgeModal } from '../Ai/AiKnowledgeModal';
+import { AiKnowledgeModal } from '../User/AiKnowledgeModal';
 import { NotificationsModal } from '../Header/NotificationsModal';
 
 export function MyProfile({ lang }: { lang: SupportedLanguage }) {

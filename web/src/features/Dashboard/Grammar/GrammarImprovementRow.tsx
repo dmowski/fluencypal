@@ -4,7 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import { LoadingShapes } from '../../uiKit/Loading/LoadingShapes';
 import { GrammarImprovement } from './types';
 import dayjs from 'dayjs';
-import { AdvancedUserRecord } from '@/common/userInfo';
+import { AdvancedUserRecord } from '@/features/User/userInfo';
 
 export const GrammarImprovementRow = ({
   improvement,

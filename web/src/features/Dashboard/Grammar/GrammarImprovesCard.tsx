@@ -3,9 +3,9 @@
 import { useLingui } from '@lingui/react';
 import Stack from '@mui/material/Stack';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { AdvancedUserRecord } from '@/common/userInfo';
+import { AdvancedUserRecord } from '@/features/User/userInfo';
 import { useTextAi } from '../../Ai/useTextAi';
-import { useAiUserInfo } from '../../Ai/useAiUserInfo';
+import { useAiUserInfo } from '../../User/useAiUserInfo';
 import { sleep } from '@/libs/sleep';
 import { GrammarImprovementModal } from './GrammarImprovementModal';
 import { grammarImprovementSystemPrompt } from './prompt';

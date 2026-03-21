@@ -7,7 +7,7 @@ import { TasksProvider } from '@/features/Tasks/useTasks';
 import { WordsProvider } from '@/features/Words/useWords';
 import { RulesProvider } from '@/features/Rules/useRules';
 import { TextAiProvider } from '@/features/Ai/useTextAi';
-import { AiUserInfoProvider } from '@/features/Ai/useAiUserInfo';
+import { AiUserInfoProvider } from '@/features/User/useAiUserInfo';
 import { AudioProvider } from '@/features/Audio/useAudio';
 import { WebCamProvider } from '@/features/webCam/useWebCam';
 import { CorrectionsProvider } from '@/features/Corrections/useCorrections';

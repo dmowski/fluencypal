@@ -15,7 +15,7 @@ import { initWebRtcConversation } from '../ConversationInstance/webRtc';
 import { useSettings } from '../../Settings/useSettings';
 import { ConversationType } from '@/features/Conversation/conversation';
 import { sleep } from '@/libs/sleep';
-import { ConversationIdea, useAiUserInfo } from '../../Ai/useAiUserInfo';
+import { ConversationIdea, useAiUserInfo } from '../../User/useAiUserInfo';
 import { GuessGameStat, RecordingUserMessageMode } from '../types';
 import { useAuth } from '../../Auth/useAuth';
 import { firstAiMessage } from '@/features/Lang/lang';

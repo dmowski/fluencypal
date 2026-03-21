@@ -24,7 +24,7 @@ import { useAnalytics } from '@/features/Analytics/useAnalytics';
 import { ScorePreview } from '@/features/Case/Landing/components/ScorePreviewSection';
 import { GoalPlan } from '@/features/Plan/types';
 import { usePlan } from '@/features/Plan/usePlan';
-import { useAiUserInfo } from '@/features/Ai/useAiUserInfo';
+import { useAiUserInfo } from '@/features/User/useAiUserInfo';
 import { ConversationMessage } from '@/features/Conversation/conversation';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useRouter } from 'next/navigation';
