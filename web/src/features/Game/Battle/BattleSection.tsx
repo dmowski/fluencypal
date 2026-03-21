@@ -7,6 +7,7 @@ import { ChevronDown } from 'lucide-react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { ChatProvider } from '@/features/Chat/useChat';
 import { PageContainer } from '@/features/Community/PageContainer';
+import { PositionChanged } from '../PositionChanged';
 
 const defaultLimit = 1;
 
@@ -45,14 +46,39 @@ export const BattleSection = () => {
     return (
       <PageContainer>
         <Typography variant="h6">{i18n._('No debates yet')}</Typography>
-        <Typography
-          variant="body2"
+        <Stack gap="20px">
+          <Typography>
+            {i18n._(
+              'Open someones profile and press "Invite to a debate" button to start a debate!',
+            )}
+          </Typography>
+
+          <Typography>
+            {i18n._(
+              'You both will be challenged to record answers to 2 questions. After that, AI will analyze your answers and tell who won the debate!',
+            )}
+          </Typography>
+
+          <Typography>
+            {i18n._(
+              'The winner will earn 40 points. The more points you have, the higher your position in the ranking!',
+            )}
+          </Typography>
+
+          <Typography>
+            {i18n._(
+              'Top 5 in the leaderboard get the full access to all the features of the app for free! So, start debating and climb the leaderboard!',
+            )}
+          </Typography>
+        </Stack>
+
+        <Stack
           sx={{
-            opacity: 0.7,
+            paddingTop: '40px',
           }}
         >
-          {i18n._('Open someones profile and press "Invite to a debate" button to start a debate!')}
-        </Typography>
+          <PositionChanged />
+        </Stack>
       </PageContainer>
     );
 

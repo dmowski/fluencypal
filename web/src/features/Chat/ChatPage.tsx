@@ -203,14 +203,16 @@ export const ChatPage = ({
                   {chatList.myChats.length === 0 ? (
                     <PageContainer>
                       <Typography variant="h6">{i18n._('No chats yet')}</Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          opacity: 0.7,
-                        }}
-                      >
-                        {i18n._('You have no chats yet.')}
-                      </Typography>
+                      <Stack gap="20px">
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            opacity: 0.7,
+                          }}
+                        >
+                          {i18n._('You have no chats yet.')}
+                        </Typography>
+                      </Stack>
                     </PageContainer>
                   ) : (
                     <Stack
