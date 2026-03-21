@@ -34,8 +34,6 @@ import { useChat } from '@/features/Chat/useChat';
 export const BattleCard = ({ battle }: { battle: GameBattle }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
-  const chat = useChat();
-  const commentsCount = chat.messages.length;
 
   const battles = useBattle();
   const game = useGame();
@@ -326,21 +324,6 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                     >
                       {i18n._('Open results')}
                     </Button>
-                    <Stack
-                      sx={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        gap: '8px',
-                      }}
-                      onClick={() => {
-                        openBattle();
-                      }}
-                    >
-                      <MessageCircle size="16px" color="rgba(255, 255, 255, 0.6)" />
-                      <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-                        {commentsCount || 0}
-                      </Typography>
-                    </Stack>
                   </>
                 )}
 
