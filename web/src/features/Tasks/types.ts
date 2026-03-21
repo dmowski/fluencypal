@@ -45,6 +45,12 @@ export interface DailyTaskApi {
   // User's progress for today's tasks, needed to show which tasks are completed in the list and modal.
   // Sync this with firebase by /users/{userId}/dailyTasks/{dayIso}_{languageCode}
   todayTaskProgress: DailyTaskProgress | null;
+
+  // For dashboard card:
+  title: string;
+  subTitle: string;
+  badge: string;
+  previewImageUrl: string;
 }
 
 // Sync with DataBase by /users/{userId}/dailyTasks/{dayIso}_{languageCode}
