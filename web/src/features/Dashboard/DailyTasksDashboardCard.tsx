@@ -138,7 +138,7 @@ export const DailyTasksDashboardCard = () => {
       <StoreCard
         textColor={'#fff'}
         backgroundColor={
-          tasks.isAllTasksCompleted ? '#0798ff' : isLoading ? '#000000' : '#9307ff69'
+          tasks.isAllTasksCompleted ? '#0798ff' : isLoading ? '#000000' : 'rgba(147, 7, 255, 0.3)'
         }
         previewImageUrl={tasks.previewImageUrl}
         borderSize={tasks.isAllTasksCompleted ? '5px' : undefined}
@@ -152,7 +152,7 @@ export const DailyTasksDashboardCard = () => {
             ? 'rgb(5, 29, 47)'
             : isLoading
               ? 'rgba(32, 32, 32, 0)'
-              : 'rgba(32, 32, 32, 0.9)'
+              : 'rgba(32, 32, 32, 0.6)'
         }
         itemsViewMode={'list'}
       />

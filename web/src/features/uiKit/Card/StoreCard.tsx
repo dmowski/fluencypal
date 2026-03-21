@@ -283,7 +283,6 @@ export const StoreCardRowItem = ({
         </Typography>
         <Typography
           variant="subtitle1"
-          color={'text.secondary'}
           sx={{
             fontSize: '13px',
             overflow: 'hidden',
@@ -292,7 +291,7 @@ export const StoreCardRowItem = ({
             wordBreak: 'break-word',
             whiteSpace: 'nowrap',
             maxWidth: '100%',
-            opacity: 0.8,
+            opacity: 0.9,
             //backgroundColor: 'blue',
             width: '420px',
             '@media (max-width: 700px)': {

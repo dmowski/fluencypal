@@ -75,7 +75,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       },
       story: {
         title: i18n._('Story'),
-        label: i18n._('Watch a story and listen in to the end or finish quiz'),
+        label: i18n._('Listen in to the end or finish quiz'),
       },
       'daily-question': {
         title: i18n._('Daily question'),
