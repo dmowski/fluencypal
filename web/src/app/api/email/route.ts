@@ -1,4 +1,4 @@
-import { appName } from '@/common/metadata';
+import { appName } from '@/features/SEO/appInfo';
 import { sendEmail } from './sendEmail';
 import { getConfirmEmailTemplate } from '../webhooks/stripe/getConfirmEmailTemplate';
 import { getWelcomeEmailTemplate } from './getWelcomeEmailTemplate';

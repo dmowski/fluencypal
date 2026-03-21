@@ -3,7 +3,7 @@ import { addPaymentLog } from '../../payment/addPaymentLog';
 import { sentSupportTelegramMessage } from '../../telegram/sendTelegramMessage';
 import { stripeConfig } from '../../payment/config';
 import { sendEmail } from '../../email/sendEmail';
-import { appName } from '@/common/metadata';
+import { appName } from '@/features/SEO/appInfo';
 import { getUserInfo, updateUserInfo } from '../../user/getUserInfo';
 import { refundPayment } from '../../payment/refund';
 import { getConfirmEmailTemplate } from './getConfirmEmailTemplate';

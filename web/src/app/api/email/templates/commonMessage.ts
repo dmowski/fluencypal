@@ -1,4 +1,4 @@
-import { appName, siteUrl } from '@/common/metadata';
+import { appName, siteUrl } from '@/features/SEO/appInfo';
 
 export const templateConfig = {
   projectUrl: siteUrl,

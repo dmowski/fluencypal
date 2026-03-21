@@ -2,7 +2,7 @@ import 'server-only';
 
 import { getI18nInstance } from '@/appRouterI18n';
 import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
-import { siteUrl } from '@/common/metadata';
+import { siteUrl } from '@/features/SEO/appInfo';
 import { APP_NAME } from '@/features/Landing/landingSettings';
 import { initLingui } from '@/initLingui';
 import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';

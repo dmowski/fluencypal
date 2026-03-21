@@ -3,7 +3,7 @@ jest.mock('../../appRouterI18n', () => ({
   getI18nInstance: (lang: string) => ({ _: (s: string) => s }),
 }));
 
-import { siteUrl } from '../../common/metadata';
+import { siteUrl } from './appInfo';
 import {
   getOpenGraph,
   getTwitterCard,
