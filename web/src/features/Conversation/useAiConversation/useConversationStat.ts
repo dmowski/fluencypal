@@ -13,6 +13,14 @@ import { useDailyTasks } from '@/features/Tasks/useDailyTasks';
 const modesToExtractUserInfo: ConversationType[] = ['talk', 'goal-talk'];
 const modesToNotExtractGrammar: ConversationType[] = ['grammar-improvement'];
 
+const learningPlanModes: ConversationType[] = [
+  'words',
+  'rule',
+  'goal-role-play',
+  'goal-talk',
+  'grammar-improvement',
+];
+
 export const useConversationStat = (
   conversationId: string,
   conversation: ConversationMessage[],
@@ -26,6 +34,8 @@ export const useConversationStat = (
   const aiUserInfo = useAiUserInfo();
 
   const planMessageCount = 10;
+
+  const isLearningPlanMode = learningPlanModes.includes(currentMode);
 
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
@@ -42,6 +52,10 @@ export const useConversationStat = (
 
     if (conversation.length === 10 && currentMode === 'talk') {
       dailyTasks.onCompleteTask('just-talk');
+    }
+
+    if (conversation.length === 6 && isLearningPlanMode) {
+      dailyTasks.onCompleteTask('goal-lesson');
     }
 
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
