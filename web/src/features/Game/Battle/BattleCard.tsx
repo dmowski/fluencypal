@@ -64,8 +64,8 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
         width: '100%',
         height: 'auto',
 
-        background: 'rgba(22, 25, 35, 1)',
-        border: '1px solid rgba(255, 255, 255, 0.031)',
+        background: 'rgb(34, 34, 34)',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
         flexDirection: 'row',
         transition: 'all 0.3s ease',
         gap: '20px',
@@ -297,7 +297,6 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                   <>
                     <Button
                       color="info"
-                      variant="contained"
                       startIcon={<Crown />}
                       onClick={() => {
                         battles.openBattle(battle.battleId);

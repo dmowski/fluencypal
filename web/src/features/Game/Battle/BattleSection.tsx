@@ -16,8 +16,6 @@ export const BattleSection = () => {
   const auth = useAuth();
   const userId = auth.uid;
 
-  const [isLimited, setIsLimited] = useState(true);
-
   const actualBattles = battles.battles
     .filter((battle) => {
       const isMyBattle = userId ? battle.usersIds.includes(userId) : false;
@@ -28,21 +26,18 @@ export const BattleSection = () => {
       return b.updatedAtIso.localeCompare(a.updatedAtIso);
     });
 
-  const battlesToShow = actualBattles
-    .filter((battle) => !isLimited || !battle.hiddenByUsersIds?.includes(userId))
-    .filter((battle, index) => !isLimited || index < defaultLimit)
-    .sort((a, b) => {
-      const isAHidden = a.hiddenByUsersIds?.includes(userId) ? 1 : 0;
-      const isBHidden = b.hiddenByUsersIds?.includes(userId) ? 1 : 0;
-      const aUpdated = a.updatedAtIso;
-      const bUpdated = b.updatedAtIso;
+  const battlesToShow = actualBattles.sort((a, b) => {
+    const isAHidden = a.hiddenByUsersIds?.includes(userId) ? 1 : 0;
+    const isBHidden = b.hiddenByUsersIds?.includes(userId) ? 1 : 0;
+    const aUpdated = a.updatedAtIso;
+    const bUpdated = b.updatedAtIso;
 
-      if (isAHidden !== isBHidden) {
-        return isAHidden - isBHidden;
-      }
+    if (isAHidden !== isBHidden) {
+      return isAHidden - isBHidden;
+    }
 
-      return bUpdated.localeCompare(aUpdated);
-    });
+    return bUpdated.localeCompare(aUpdated);
+  });
 
   const isNeedToShowMoreButton = battlesToShow.length < actualBattles.length;
 
@@ -80,12 +75,6 @@ export const BattleSection = () => {
           </Stack>
         ))}
       </Stack>
-
-      {isNeedToShowMoreButton && (
-        <Button onClick={() => setIsLimited(false)} endIcon={<ChevronDown />}>
-          {battlesToShow.length === 0 ? i18n._(`Show Debates`) : i18n._(`Show More`)}
-        </Button>
-      )}
     </Stack>
   );
 };
