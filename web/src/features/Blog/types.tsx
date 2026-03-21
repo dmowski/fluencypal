@@ -1,4 +1,4 @@
-import { ResourceCategory } from '@/common/category';
+import { ResourceCategory } from '@/features/Blog/category';
 import { JSX } from 'react';
 
 export interface BlogPost {

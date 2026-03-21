@@ -1,7 +1,7 @@
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { BlogPost } from './types';
 import { getI18nInstance } from '@/appRouterI18n';
-import { ResourceCategory } from '@/common/category';
+import { ResourceCategory } from '@/features/Blog/category';
 import { PhrasesArticles } from './Articles/phrases-for-an-interview';
 
 export interface BlogInfo {

@@ -1,5 +1,5 @@
 import { AiVoice } from '@/features/Ai/ai';
-import { ResourceCategory } from '@/common/category';
+import { ResourceCategory } from '@/features/Blog/category';
 import { JSX } from 'react';
 
 export type RolePlayInputType = 'text-input' | 'textarea' | 'options' | 'checkbox';
