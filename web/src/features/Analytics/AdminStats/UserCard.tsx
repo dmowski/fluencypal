@@ -7,7 +7,7 @@ import { useGame } from '../../Game/useGame';
 import { fullEnglishLanguageName, SupportedLanguage } from '../../Lang/lang';
 import { LogIn, UserPlus, BadgeCheck, Gem, Axe, Loader } from 'lucide-react';
 import { defaultAvatar } from '../../Game/avatars';
-import { UserSource } from '@/common/analytics';
+import { UserSource } from '@/features/Analytics/analytics';
 import { Messages } from '../../Conversation/Messages';
 import { Conversation } from '@/common/conversation';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';

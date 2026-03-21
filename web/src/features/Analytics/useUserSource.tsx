@@ -1,6 +1,6 @@
 'use client';
 
-import { UserSource } from '@/common/analytics';
+import { UserSource } from '@/features/Analytics/analytics';
 import { createContext, useContext, ReactNode, useEffect, useState } from 'react';
 
 const SOURCE_STORAGE_KEY = 'user_source_info';

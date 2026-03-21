@@ -1,6 +1,6 @@
 import { NativeLangCode } from '@/libs/language/type';
 import { SupportedLanguage } from '../features/Lang/lang';
-import { UserSource } from './analytics';
+import { UserSource } from '../features/Analytics/analytics';
 import { AiVoice } from '../features/Ai/ai';
 
 export interface InitUserSettings {
