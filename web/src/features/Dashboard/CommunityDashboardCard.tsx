@@ -26,7 +26,7 @@ export const CommunityDashboardCard = () => {
       subTitle: space.description,
       onClick: () => openSpace(space.id),
       imageUrl: space.iconImageUrl || undefined,
-      bgColor: 'rgba(155, 58, 190, 0.6)',
+      iconBgColor: 'rgba(155, 58, 190, 0.6)',
       actionButtonTitle: i18n._('Open'),
       iconName: space.iconImageUrl ? undefined : 'users-round',
     };

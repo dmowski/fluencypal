@@ -80,7 +80,13 @@ export const SpaceButton = ({
           }}
         >
           {iconImageUrl && (
-            <RowIcon size={'50px'} iconBorderRadius={'5px'} imageUrl={iconImageUrl} />
+            <RowIcon
+              size={'50px'}
+              iconBorderRadius={'5px'}
+              data={{
+                imageUrl: iconImageUrl,
+              }}
+            />
           )}
           <Stack>
             <Badge badgeContent={unreadCount} color={isBookmarked ? 'error' : 'primary'} sx={{}}>

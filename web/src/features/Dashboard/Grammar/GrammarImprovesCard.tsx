@@ -248,7 +248,7 @@ ${postfixInstruction}`;
         title: fullTitle,
         subTitle: subTitle,
         iconName: 'book',
-        bgColor: icon.color,
+        iconBgColor: icon.color,
         actionButtonTitle: i18n._('Open'),
         onClick: function (): void {
           handleOpenModal(index);
@@ -261,7 +261,7 @@ ${postfixInstruction}`;
         title: i18n._('More improvements'),
         subTitle: i18n._('Show all your grammar improvements.'),
         iconName: 'eye',
-        bgColor: '#888',
+        iconBgColor: '#888',
         actionButtonTitle: i18n._('More...'),
         onClick: function (): void {
           setShowAll(true);

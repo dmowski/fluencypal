@@ -244,7 +244,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                       : planElement.mode === 'play'
                         ? 'venetian-mask'
                         : 'messages-square',
-                bgColor: isDone ? '#16c476' : isActive ? 'rgba(244, 9, 9, 0.72)' : '#677b82',
+                iconBgColor: isDone ? '#16c476' : isActive ? 'rgba(244, 9, 9, 0.72)' : '#677b82',
                 actionButtonTitle: isActive ? i18n._('Continue') : i18n._('Open'),
                 onClick: function (): void {
                   plan.openElementModal(planElement.id);

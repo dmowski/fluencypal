@@ -109,7 +109,6 @@ export const DailyTasksDashboardCard = () => {
         subTitle: taskInfo ? taskInfo.label : '',
         actionButtonTitle,
         imageUrl: image,
-        bgColor: isCompleted ? 'rgba(147, 7, 255, 0.5)' : 'rgba(147, 7, 255, 0.2)',
       };
       return taskItem;
     });

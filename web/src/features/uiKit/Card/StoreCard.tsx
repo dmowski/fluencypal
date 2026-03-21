@@ -4,11 +4,13 @@ import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 import Image from 'next/image';
 import { useState } from 'react';
 
-export interface RowItem {
+interface IconRowItem {
   imageUrl?: string;
   iconName?: IconName;
-  bgColor?: string;
+  iconBgColor?: string;
+}
 
+export interface RowItem extends IconRowItem {
   title: string;
   subTitle: string;
   actionButtonTitle: string;
@@ -257,14 +259,7 @@ export const StoreCardRowItem = ({
         data.onClick();
       }}
     >
-      <RowIcon
-        iconName={data.iconName}
-        imageUrl={data.imageUrl}
-        bgColor={data.bgColor}
-        size={'59px'}
-        iconSize="29px"
-        iconBorderRadius={iconBorderRadius}
-      />
+      <RowIcon data={data} size={'59px'} iconSize="29px" iconBorderRadius={iconBorderRadius} />
       <Stack>
         <Typography
           variant="subtitle1"
@@ -351,16 +346,12 @@ const StoreButton = ({ title, onClick }: { title: string; onClick: () => void })
 };
 
 export const RowIcon = ({
-  iconName,
-  imageUrl,
-  bgColor,
+  data,
   size,
   iconBorderRadius,
   iconSize,
 }: {
-  iconName?: IconName;
-  bgColor?: string;
-  imageUrl?: string;
+  data: IconRowItem;
   size: string;
   iconBorderRadius: string;
   iconSize?: string;
@@ -376,7 +367,7 @@ export const RowIcon = ({
         justifyContent: 'center',
         alignItems: 'center',
 
-        backgroundColor: bgColor || 'rgba(255, 255, 255, 0.05)',
+        backgroundColor: data.iconBgColor || 'rgba(255, 255, 255, 0.05)',
 
         ':after': {
           content: '""',
@@ -388,9 +379,9 @@ export const RowIcon = ({
         },
       }}
     >
-      {iconName && (
+      {data.iconName && (
         <DynamicIcon
-          name={iconName}
+          name={data.iconName}
           size={iconSize || '22px'}
           style={{
             position: 'relative',
@@ -399,9 +390,9 @@ export const RowIcon = ({
         />
       )}
 
-      {!iconName && imageUrl && (
+      {!data.iconName && data.imageUrl && (
         <Image
-          src={imageUrl}
+          src={data.imageUrl}
           alt=""
           fill
           loading="eager"
