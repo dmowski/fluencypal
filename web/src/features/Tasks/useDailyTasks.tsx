@@ -48,7 +48,7 @@ export const dailyTasksContext = createContext<DailyTaskApi>({
 
 const tasksPerDays: DailyTaskType[][] = [
   // Day1
-  ['just-talk', 'community'],
+  ['just-talk', 'daily-question'],
 
   // Day2
   ['just-talk', 'goal-lesson'],
