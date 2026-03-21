@@ -61,33 +61,22 @@ function useProvideDailyTasks(): DailyTaskApi {
       'just-talk': {
         title: 'Just talk',
         label: i18n._('Send at least 10 messages in Just talk'),
-        content: i18n._(
-          'Start a "Just talk" conversation and exchange at least 10 messages with the AI.',
-        ),
       },
       'goal-lesson': {
         title: i18n._('Learning Plan'),
         label: i18n._('Finish a lesson from your Learning Plan'),
-        content: i18n._(
-          'Complete any lesson from your current Learning Plan to mark this task as done.',
-        ),
       },
       community: {
         title: i18n._('Community'),
-        label: i18n._('Send at least one message in the community space'),
-        content: i18n._(
-          'Join the community space and send at least one message to other learners.',
-        ),
+        label: i18n._('Send one message in the community space'),
       },
       story: {
         title: i18n._('Story'),
         label: i18n._('Watch a story and listen in to the end or finish quiz'),
-        content: i18n._('Watch a story and listen through to the end, or complete the story quiz.'),
       },
       'daily-question': {
         title: i18n._('Daily question'),
         label: i18n._('Answer daily question'),
-        content: i18n._("Answer today's daily question to complete this task."),
       },
     };
   }, [today]);

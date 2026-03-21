@@ -20,8 +20,6 @@ export type DailyTaskType =
 export interface DailyTaskInfo {
   title: string; // e.g. "Just talk", "Goal lesson", "Community", "Story", "Daily question"
   label: string; // e.g. "Send at least 10 messages in Just talk", "Finish a lesson from your Goal plan", "Send at least one message in the community space", "Watch a story and listen in to the end or finish quiz", "Answer daily question"
-
-  content: string; // Full description of the task, shown in the modal when user clicks on the task. Markdown format.
 }
 
 // Sync with DataBase by /users/{userId}/dailyTasks/{dayIso}_{languageCode}

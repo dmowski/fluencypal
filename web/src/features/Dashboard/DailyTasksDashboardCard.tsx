@@ -32,18 +32,18 @@ export const DailyTasksDashboardCard = () => {
 
   const { startJustTalk, isCallStarting } = useJustTalk();
 
+  const openLearningPlan = () => {
+    if (!plan.nextElement?.id) {
+      alert(i18n._('No active lesson found. Please create a learning plan to access this task.'));
+      return;
+    }
+    plan.openElementModal(plan.nextElement.id);
+  };
+
   const onStartTask = (taskType: DailyTaskType) => {
     const tasksHandlerMap: Record<DailyTaskType, () => void> = {
-      'just-talk': () => startJustTalk(),
-      'goal-lesson': () => {
-        if (!plan.nextElement?.id) {
-          alert(
-            i18n._('No active lesson found. Please create a learning plan to access this task.'),
-          );
-          return;
-        }
-        plan.openElementModal(plan.nextElement.id);
-      },
+      'just-talk': startJustTalk,
+      'goal-lesson': openLearningPlan,
       community: () => {},
       story: () => stories.openRandomStory(),
       'daily-question': () => setIsShowDailyQuestions(true),
