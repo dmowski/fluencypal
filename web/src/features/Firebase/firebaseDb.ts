@@ -10,7 +10,7 @@ import { firestore } from './init';
 import { PaymentLog, TotalUsageInfo, UsageLog } from '@/features/Usage/usage';
 import { UserSettings } from '@/features/Settings/userSettings';
 import { Conversation } from '@/features/Conversation/conversation';
-import { UserTaskStats } from '@/features/Tasks/userTask';
+import { UserTaskStats } from '@/features/Tasks/types';
 import { WordsStats } from '@/features/Words/words';
 import { AiUserInfo } from '@/features/User/userInfo';
 import { SupportedLanguage } from '@/features/Lang/lang';

@@ -3,7 +3,7 @@ import { ChevronDown, Circle, CircleCheckBig, Flame } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import dayjs from 'dayjs';
 import { useTasks } from '../Tasks/useTasks';
-import { DayTasks, UserTaskType } from '@/features/Tasks/userTask';
+import { DayTasks, UserTaskType } from '@/features/Tasks/types';
 
 const last5Days: string[] = [];
 
