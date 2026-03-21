@@ -40,7 +40,7 @@ export interface DailyTaskApi {
   todaysActualTasks: DailyTaskType[];
 
   // More detailed info about tasks, needed to show in the modal.
-  tasksInfo: Record<DailyTaskType, DailyTaskInfo>;
+  tasksInfo: Record<DailyTaskType, DailyTaskInfo> | null;
 
   // User's progress for today's tasks, needed to show which tasks are completed in the list and modal.
   // Sync this with firebase by /users/{userId}/dailyTasks/{dayIso}_{languageCode}
