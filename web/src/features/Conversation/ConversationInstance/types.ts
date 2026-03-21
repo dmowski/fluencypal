@@ -1,5 +1,5 @@
 import { AiVoice, RealTimeModel } from '@/features/Ai/ai';
-import { ConversationMessage, MessagesOrderMap } from '@/common/conversation';
+import { ConversationMessage, MessagesOrderMap } from '@/features/Conversation/conversation';
 import { UsageLog } from '@/features/Usage/usage';
 import { SupportedLanguage } from '@/features/Lang/lang';
 

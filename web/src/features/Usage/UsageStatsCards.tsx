@@ -14,7 +14,7 @@ import dayjs from 'dayjs';
 import { useCorrections } from '../Corrections/useCorrections';
 import { useSettings } from '../Settings/useSettings';
 import { GradientBgCard } from '../uiKit/Card/GradientBgCard';
-import { ConversationType } from '@/common/conversation';
+import { ConversationType } from '@/features/Conversation/conversation';
 
 interface WorkStat {
   word: string;

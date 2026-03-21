@@ -23,7 +23,7 @@ import { useVadAudioRecorder } from '@/features/Audio/useVadAudioRecorder';
 import { FooterButton } from './FooterButton';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { RecordingUserMessageMode } from '../types';
-import { ConversationMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/features/Conversation/conversation';
 import { useAccess } from '@/features/Usage/useAccess';
 
 export const CallButtons = ({

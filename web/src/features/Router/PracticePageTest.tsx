@@ -3,7 +3,7 @@ import { Divider, Stack } from '@mui/material';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { RolePlayScenariosInfo } from '../RolePlay/rolePlayData';
 import { ConversationCanvas } from '../Conversation/ConversationCanvas';
-import { ConversationMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/features/Conversation/conversation';
 import { GuessGameStat } from '../Conversation/types';
 import { useEffect, useState } from 'react';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';

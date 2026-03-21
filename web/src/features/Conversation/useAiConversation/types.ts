@@ -1,5 +1,9 @@
 import { AiVoice } from '@/features/Ai/ai';
-import { ConversationType, ConversationMessage, MessagesOrderMap } from '@/common/conversation';
+import {
+  ConversationType,
+  ConversationMessage,
+  MessagesOrderMap,
+} from '@/features/Conversation/conversation';
 import { ConversationMode } from '@/features/Settings/userSettings';
 import { ConversationIdea } from '@/features/Ai/useAiUserInfo';
 import { LessonPlan, LessonPlanAnalysis } from '@/features/LessonPlan/type';

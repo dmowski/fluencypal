@@ -1,7 +1,7 @@
 import { sleep } from '@/libs/sleep';
 import { useState, useRef, RefObject, useEffect } from 'react';
 import { ConversationInstance } from '../ConversationInstance/types';
-import { ConversationMessage, ConversationType } from '@/common/conversation';
+import { ConversationMessage, ConversationType } from '@/features/Conversation/conversation';
 import { useAuth } from '@/features/Auth/useAuth';
 
 export const useRestart = (

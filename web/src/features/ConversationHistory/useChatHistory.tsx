@@ -9,7 +9,7 @@ import {
   Conversation,
   ConversationType,
   MessagesOrderMap,
-} from '@/common/conversation';
+} from '@/features/Conversation/conversation';
 import { useSettings } from '../Settings/useSettings';
 import { useCollectionDataOnce } from 'react-firebase-hooks/firestore';
 

@@ -1,4 +1,4 @@
-import { Conversation } from '@/common/conversation';
+import { Conversation } from '@/features/Conversation/conversation';
 
 export function getConversationsStats(conversations: Conversation): {
   userWords: number;

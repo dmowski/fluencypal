@@ -9,7 +9,7 @@ import {
 import { firestore } from './init';
 import { PaymentLog, TotalUsageInfo, UsageLog } from '@/features/Usage/usage';
 import { UserSettings } from '@/features/Settings/userSettings';
-import { ConversationMessage, Conversation } from '@/common/conversation';
+import { ConversationMessage, Conversation } from '@/features/Conversation/conversation';
 import { Homework } from '@/common/homework';
 import { UserTaskStats } from '@/common/userTask';
 import { WordsStats } from '@/features/Words/words';

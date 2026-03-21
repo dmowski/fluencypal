@@ -1,5 +1,5 @@
 'use client';
-import { ConversationMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/features/Conversation/conversation';
 import { ConversationConfig, ConversationInstance } from './types';
 import { getHash } from '@/libs/hash';
 import {

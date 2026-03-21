@@ -1,5 +1,5 @@
 import { AiVoice } from '@/features/Ai/ai';
-import { ConversationMessage, MessagesOrderMap } from '@/common/conversation';
+import { ConversationMessage, MessagesOrderMap } from '@/features/Conversation/conversation';
 import { useWindowSizes } from '../../Layout/useWindowSizes';
 import { useLingui } from '@lingui/react';
 import { useWebCam } from '../../webCam/useWebCam';

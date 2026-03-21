@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useContext, ReactNode, JSX, useMemo } from 'react';
-import { ConversationMessage, MessagesOrderMap } from '@/common/conversation';
+import { ConversationMessage, MessagesOrderMap } from '@/features/Conversation/conversation';
 import { AdvancedUserRecord, AiUserInfo, FirstBotConversationMessage } from '@/common/userInfo';
 import { useAuth } from '../Auth/useAuth';
 import { db } from '../Firebase/firebaseDb';

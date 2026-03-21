@@ -1,4 +1,4 @@
-import { ConversationType } from './conversation';
+import { ConversationType } from '../features/Conversation/conversation';
 import { SupportedLanguage } from '../features/Lang/lang';
 
 export interface Homework {

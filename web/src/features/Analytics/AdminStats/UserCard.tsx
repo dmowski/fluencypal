@@ -9,7 +9,7 @@ import { LogIn, UserPlus, BadgeCheck, Gem, Axe, Loader } from 'lucide-react';
 import { defaultAvatar } from '../../Game/avatars';
 import { UserSource } from '@/features/Analytics/analytics';
 import { Messages } from '../../Conversation/Messages';
-import { Conversation } from '@/common/conversation';
+import { Conversation } from '@/features/Conversation/conversation';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { GoalPlan } from '../../Plan/types';
 import { GoalReview } from '../../Goal/Quiz/GoalReview';

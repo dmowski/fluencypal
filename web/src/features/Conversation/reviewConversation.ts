@@ -1,4 +1,4 @@
-import { ConversationMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/features/Conversation/conversation';
 
 export const reviewConversation = async (chatHistory: ConversationMessage[]) => {
   const response = await fetch('/api/review-conversation', {

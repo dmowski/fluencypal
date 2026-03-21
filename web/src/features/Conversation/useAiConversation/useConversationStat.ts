@@ -1,4 +1,8 @@
-import { ConversationMessage, ConversationType, MessagesOrderMap } from '@/common/conversation';
+import {
+  ConversationMessage,
+  ConversationType,
+  MessagesOrderMap,
+} from '@/features/Conversation/conversation';
 import { useAiUserInfo } from '@/features/Ai/useAiUserInfo';
 import { GoalElementInfo } from '@/features/Plan/types';
 import { usePlan } from '@/features/Plan/usePlan';

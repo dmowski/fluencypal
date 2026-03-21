@@ -4,7 +4,7 @@ import { Markdown } from '../uiKit/Markdown/Markdown';
 import { Button, Divider, IconButton, Stack, Typography } from '@mui/material';
 import { AudioLines, Languages, Loader, Sparkles } from 'lucide-react';
 
-import { ConversationMessage, MessagesOrderMap } from '@/common/conversation';
+import { ConversationMessage, MessagesOrderMap } from '@/features/Conversation/conversation';
 import { useLingui } from '@lingui/react';
 import { useTranslate } from '../Translation/useTranslate';
 import { useMemo, useState } from 'react';

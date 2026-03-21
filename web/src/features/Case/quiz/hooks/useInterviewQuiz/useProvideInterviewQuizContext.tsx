@@ -25,7 +25,7 @@ import { ScorePreview } from '@/features/Case/Landing/components/ScorePreviewSec
 import { GoalPlan } from '@/features/Plan/types';
 import { usePlan } from '@/features/Plan/usePlan';
 import { useAiUserInfo } from '@/features/Ai/useAiUserInfo';
-import { ConversationMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/features/Conversation/conversation';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useRouter } from 'next/navigation';
 import { sleep } from '@/libs/sleep';

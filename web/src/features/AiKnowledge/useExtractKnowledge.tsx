@@ -4,7 +4,11 @@ import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useTextAi } from '../Ai/useTextAi';
-import { Conversation, ConversationMessage, MessagesOrderMap } from '@/common/conversation';
+import {
+  Conversation,
+  ConversationMessage,
+  MessagesOrderMap,
+} from '@/features/Conversation/conversation';
 import { getSortedMessages } from '../Conversation/getSortedMessages';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);

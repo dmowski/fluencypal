@@ -31,7 +31,7 @@ import * as Sentry from '@sentry/nextjs';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { useSettings } from '@/features/Settings/useSettings';
 import { usePlan } from '@/features/Plan/usePlan';
-import { ConversationMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/features/Conversation/conversation';
 import { useAiUserInfo } from '@/features/Ai/useAiUserInfo';
 import { fnv1aHash } from '@/libs/hash';
 import { getWordsCount } from '@/libs/words';

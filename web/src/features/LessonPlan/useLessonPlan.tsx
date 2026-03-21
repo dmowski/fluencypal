@@ -8,7 +8,7 @@ import { GoalElementInfo } from '../Plan/types';
 import { useAiUserInfo } from '../Ai/useAiUserInfo';
 import { useSettings } from '../Settings/useSettings';
 import { getHash } from '@/libs/hash';
-import { MessagesOrderMap } from '@/common/conversation';
+import { MessagesOrderMap } from '@/features/Conversation/conversation';
 
 interface LessonPlanContextType {
   loading: boolean;

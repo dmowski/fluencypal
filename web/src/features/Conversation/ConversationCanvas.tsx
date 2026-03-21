@@ -27,7 +27,7 @@ import {
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 
 import { AliasGamePanel } from './AliasGamePanel';
-import { ConversationMessage, MessagesOrderMap } from '@/common/conversation';
+import { ConversationMessage, MessagesOrderMap } from '@/features/Conversation/conversation';
 import { GuessGameStat, RecordingUserMessageMode } from './types';
 import dayjs from 'dayjs';
 import { useLingui } from '@lingui/react';

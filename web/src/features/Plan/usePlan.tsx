@@ -22,7 +22,7 @@ import {
   GoalElementInfo,
 } from './types';
 import { useSettings } from '../Settings/useSettings';
-import { ConversationMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/features/Conversation/conversation';
 import { useTextAi } from '../Ai/useTextAi';
 import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang';
 import { GoalQuiz } from '@/app/api/goal/types';

@@ -1,5 +1,9 @@
 import * as Sentry from '@sentry/nextjs';
-import { ConversationMessage, MessagesOrderMap, ConversationType } from '@/common/conversation';
+import {
+  ConversationMessage,
+  MessagesOrderMap,
+  ConversationType,
+} from '@/features/Conversation/conversation';
 import { activateAnalyticUser, conversationStarted } from '@/features/Analytics/activationTracker';
 import { useChatHistory } from '@/features/ConversationHistory/useChatHistory';
 import { useSettings } from '@/features/Settings/useSettings';

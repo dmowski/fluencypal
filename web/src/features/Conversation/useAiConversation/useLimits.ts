@@ -1,4 +1,4 @@
-import { ConversationMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/features/Conversation/conversation';
 import { RefObject, useEffect } from 'react';
 import { ConversationInstance } from '../ConversationInstance/types';
 import { useAccess } from '@/features/Usage/useAccess';

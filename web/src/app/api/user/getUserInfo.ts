@@ -1,7 +1,7 @@
 import { UserSettings, UserSettingsWithId } from '@/features/Settings/userSettings';
 import { getDB } from '../config/firebase';
 import { AiUserInfo } from '@/common/userInfo';
-import { Conversation, UserConversationsMeta } from '@/common/conversation';
+import { Conversation, UserConversationsMeta } from '@/features/Conversation/conversation';
 import { QuizSurvey2 } from '@/features/Goal/Quiz/types';
 import { InterviewQuizSurvey } from '@/features/Case/types';
 import dayjs from 'dayjs';

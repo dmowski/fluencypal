@@ -1,4 +1,4 @@
-import { UserConversationsMeta } from '@/common/conversation';
+import { UserConversationsMeta } from '@/features/Conversation/conversation';
 import { UserSettingsWithId } from '@/features/Settings/userSettings';
 import { AiUserInfo } from '@/common/userInfo';
 import { InterviewQuizSurvey } from '@/features/Case/types';

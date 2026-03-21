@@ -13,7 +13,7 @@ import {
 import { AiVoice, MODELS, pricePerHourUsd } from '@/features/Ai/ai';
 import { initWebRtcConversation } from '../ConversationInstance/webRtc';
 import { useSettings } from '../../Settings/useSettings';
-import { ConversationType } from '@/common/conversation';
+import { ConversationType } from '@/features/Conversation/conversation';
 import { sleep } from '@/libs/sleep';
 import { ConversationIdea, useAiUserInfo } from '../../Ai/useAiUserInfo';
 import { GuessGameStat, RecordingUserMessageMode } from '../types';

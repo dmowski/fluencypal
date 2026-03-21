@@ -4,7 +4,7 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 import { useEffect, useMemo, useState } from 'react';
 import { uniq } from '@/libs/uniq';
-import { ConversationMessage } from '@/common/conversation';
+import { ConversationMessage } from '@/features/Conversation/conversation';
 import { GuessGameStat } from './types';
 import { useTranslate } from '../Translation/useTranslate';
 import { ChevronRight, Languages } from 'lucide-react';

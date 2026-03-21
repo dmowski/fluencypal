@@ -1,7 +1,7 @@
 import { Stack, Tooltip, Typography } from '@mui/material';
 import { Bot, MessageSquareCodeIcon, MessagesSquare, User } from 'lucide-react';
 import dayjs from 'dayjs';
-import { Conversation } from '@/common/conversation';
+import { Conversation } from '@/features/Conversation/conversation';
 import { getConversationsStats } from './getConversationsStats';
 
 interface ConversationItemProps {
