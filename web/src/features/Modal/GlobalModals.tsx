@@ -14,6 +14,7 @@ import { useBattle } from '../Game/Battle/useBattle';
 import { BattleActionModal } from '../Game/Battle/BattleActionModal';
 import { PublicChatModal } from '../Chat/PublicChatModal';
 import { useGlobalModals } from './useGlobalModals';
+import { DailyQuestionModal } from '../Game/DailyQuestion/DailyQuestionModal';
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();
@@ -39,6 +40,9 @@ export const GlobalModals: React.FC = () => {
       )}
 
       {globalModals.isShowPublicChat && <PublicChatModal onClose={globalModals.closeAllModels} />}
+      {globalModals.isShowDailyQuestions && (
+        <DailyQuestionModal onClose={globalModals.closeAllModels} />
+      )}
 
       {battles.activeBattle && (
         <BattleActionModal battle={battles.activeBattle} onClose={battles.closeActiveBattle} />
