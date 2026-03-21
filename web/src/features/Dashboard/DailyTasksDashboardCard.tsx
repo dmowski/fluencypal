@@ -11,6 +11,8 @@ import { usePlan } from '../Plan/usePlan';
 import { useGlobalModals } from '../Modal/useGlobalModals';
 import { useSettings } from '../Settings/useSettings';
 import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
+import { useGame } from '../Game/useGame';
+import { useUsage } from '../Usage/useUsage';
 
 export const DailyTasksDashboardCard = () => {
   const { i18n } = useLingui();
@@ -119,13 +121,20 @@ export const DailyTasksDashboardCard = () => {
     isCallStarting,
   ]);
 
+  const game = useGame();
+  const usage = useUsage();
+
+  const rewardMessage = i18n._('Complete all daily tasks to gain full access for that day!');
+
+  const headerSubTitle = !game.isGameWinner && !usage.isFullAccess ? rewardMessage : undefined;
+
   return (
     <Stack
       sx={{
         gap: '20px',
       }}
     >
-      <SectionHeader title={i18n._('Daily tasks')} />
+      <SectionHeader title={i18n._('Daily tasks')} subTitle={headerSubTitle} />
       <StoreCard
         textColor={'#fff'}
         backgroundColor={

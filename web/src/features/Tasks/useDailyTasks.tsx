@@ -130,9 +130,7 @@ function useProvideDailyTasks(): DailyTaskApi {
     isAllTasksCompleted,
     tasksInfo,
     todayTaskProgress: todayTaskProgress ?? null,
-    title: isAllTasksCompleted
-      ? i18n._('All tasks completed')
-      : i18n._('Complete daily tasks to build a learning habit'),
+    title: isAllTasksCompleted ? i18n._('All tasks completed') : i18n._('Make learning a habit!'),
     subTitle: isAllTasksCompleted
       ? i18n._('Great job! Come back tomorrow for new tasks.')
       : i18n._('Let’s get started with today’s tasks!'),
