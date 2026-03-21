@@ -46,6 +46,23 @@ export const dailyTasksContext = createContext<DailyTaskApi>({
   isAllTasksCompleted: false,
 });
 
+const tasksPerDays: DailyTaskType[][] = [
+  // Day1
+  ['just-talk'],
+
+  // Day2
+  ['just-talk', 'goal-lesson'],
+
+  // Day3
+  ['just-talk', 'goal-lesson', 'community'],
+
+  // Day4
+  ['just-talk', 'goal-lesson', 'community', 'story'],
+
+  // Day5 and on
+  ['just-talk', 'goal-lesson', 'community', 'story', 'daily-question'],
+];
+
 function useProvideDailyTasks(): DailyTaskApi {
   const auth = useAuth();
   const settings = useSettings();
