@@ -57,7 +57,6 @@ export const DailyTasksDashboardCard = () => {
   };
 
   const onStartTask = (taskType: DailyTaskType) => {
-    console.log('Open task', taskType);
     const tasksHandlerMap: Record<DailyTaskType, () => void> = {
       'just-talk': startJustTalk,
       'goal-lesson': openLearningPlan,
@@ -73,7 +72,6 @@ export const DailyTasksDashboardCard = () => {
     };
 
     const handler = tasksHandlerMap[taskType];
-    console.log('handler', tasksHandlerMap, taskType);
     if (handler) {
       handler();
     }
