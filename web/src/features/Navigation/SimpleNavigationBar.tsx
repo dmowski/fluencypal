@@ -8,7 +8,7 @@ import { useAppNavigation } from './useAppNavigation';
 import { useAuth } from '../Auth/useAuth';
 import { useGame } from '../Game/useGame';
 import { useSettings } from '../Settings/useSettings';
-import { Avatar } from '../Game/Avatar';
+import { Avatar } from '../User/Avatar';
 import { useAccess } from '../Usage/useAccess';
 import { useRouter } from 'next/navigation';
 import { langFlags } from '../Lang/lang';

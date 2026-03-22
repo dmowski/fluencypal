@@ -18,7 +18,7 @@ import { UserName } from '../User/UserName';
 import { useUserReport } from '../User/useUserReport';
 import { UserChatMetadata } from './type';
 import { useChatList } from './useChatList';
-import { Avatar } from '../Game/Avatar';
+import { Avatar } from '../User/Avatar';
 
 export const ChatHeaderFull = ({ chat, close }: { chat: UserChatMetadata; close: () => void }) => {
   const { i18n } = useLingui();

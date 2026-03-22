@@ -13,7 +13,7 @@ import { Conversation } from '@/features/Conversation/conversation';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { GoalPlan } from '../../Plan/types';
 import { GoalReview } from '../../Goal/Quiz/GoalReview';
-import { Avatar } from '../../Game/Avatar';
+import { Avatar } from '../../User/Avatar';
 import { parseBrowserInfo } from './parseBrowserInfo';
 import { UserBadges } from './UserBadges';
 import { UserStats } from './UserStats';

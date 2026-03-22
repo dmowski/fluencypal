@@ -2,7 +2,7 @@ import { AiVoice } from '@/features/Ai/ai';
 import { AiAvatarVideo } from '@/features/Conversation/CallMode/AiAvatarVideo';
 import { AiAvatar } from '@/features/Conversation/CallMode/types';
 import { getAiVoiceByVoice } from '@/features/Conversation/CallMode/voiceAvatar';
-import { Avatar } from '@/features/Game/Avatar';
+import { Avatar } from '@/features/User/Avatar';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { InfoStep } from '@/features/Survey/InfoStep';
 import { useLingui } from '@lingui/react';

@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 import { UsersStat } from './types';
 import { useAuth } from '../Auth/useAuth';
 import { GamePointRow } from './GamePointRow';
-import { Avatar } from './Avatar';
+import { Avatar } from '../User/Avatar';
 import { UserName } from '../User/UserName';
 
 export const GameStatRow = ({

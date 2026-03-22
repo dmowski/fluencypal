@@ -23,7 +23,7 @@ import { useChat } from '../useChat';
 import { useAuth } from '../../Auth/useAuth';
 import { useGame } from '../../Game/useGame';
 import { useTranslate } from '../../Translation/useTranslate';
-import { Avatar } from '../../Game/Avatar';
+import { Avatar } from '../../User/Avatar';
 import { CircleEllipsis } from 'lucide-react';
 import { UserName } from '../../User/UserName';
 import { Attachments } from './Attachments';

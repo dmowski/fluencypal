@@ -5,7 +5,7 @@ import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useUrlParam } from '../Url/useUrlParam';
 import { useAuth } from '../Auth/useAuth';
-import { Avatar } from './Avatar';
+import { Avatar } from '../User/Avatar';
 import { UploadImageButton } from './UploadImageButton';
 import { uniq } from '@/libs/uniq';
 

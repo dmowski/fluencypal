@@ -3,7 +3,7 @@ import { Stack, Typography, Button } from '@mui/material';
 import { useAuth } from '../Auth/useAuth';
 import { useGame } from '../Game/useGame';
 import { useChat } from './useChat';
-import { Avatar } from '../Game/Avatar';
+import { Avatar } from '../User/Avatar';
 import AddIcon from '@mui/icons-material/Add';
 
 export const ChatSectionHeader = ({

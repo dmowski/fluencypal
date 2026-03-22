@@ -7,7 +7,7 @@ import { UserName } from '../../User/UserName';
 import { Attachments } from './Attachments';
 import { ThreadsMessage } from '../type';
 import { useChat } from '../useChat';
-import { Avatar } from '../../Game/Avatar';
+import { Avatar } from '../../User/Avatar';
 import { MessageContent } from './MessageContent';
 import { MessageFooter } from './MessageFooter';
 

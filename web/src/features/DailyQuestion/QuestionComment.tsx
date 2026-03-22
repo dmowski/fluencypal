@@ -11,7 +11,7 @@ import { deleteDoc, doc, setDoc } from 'firebase/firestore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { useGame } from '../Game/useGame';
-import { Avatar } from '../Game/Avatar';
+import { Avatar } from '../User/Avatar';
 
 export const QuestionComment = ({
   answerDocId,

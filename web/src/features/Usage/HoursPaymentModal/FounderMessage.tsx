@@ -1,4 +1,4 @@
-import { Avatar } from '@/features/Game/Avatar';
+import { Avatar } from '@/features/User/Avatar';
 import { useGame } from '@/features/Game/useGame';
 import { useLingui } from '@lingui/react';
 import { Stack, Typography } from '@mui/material';

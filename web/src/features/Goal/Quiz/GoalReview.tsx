@@ -9,7 +9,7 @@ import { cardColors, modeCardProps } from '@/features/Plan/data';
 import { LoadingShapes } from '@/features/uiKit/Loading/LoadingShapes';
 import { FooterButton } from '../../Survey/FooterButton';
 import { useAuth } from '@/features/Auth/useAuth';
-import { Avatar } from '@/features/Game/Avatar';
+import { Avatar } from '@/features/User/Avatar';
 import { scrollTopFast } from '@/libs/scroll';
 
 export const GoalReview = ({

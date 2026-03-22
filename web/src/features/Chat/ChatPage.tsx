@@ -7,7 +7,7 @@ import { useChatList } from './useChatList';
 import { useUrlState } from '../Url/useUrlState';
 import { useAuth } from '../Auth/useAuth';
 import { useGame } from '../Game/useGame';
-import { Avatar } from '../Game/Avatar';
+import { Avatar } from '../User/Avatar';
 import { uniq } from '@/libs/uniq';
 import { ChartSortMode, UserChatMetadata } from './type';
 import { UserName } from '../User/UserName';
