@@ -30,7 +30,6 @@ interface GrammarImprovementContextValue {
   handleCloseModal: () => void;
   handleNext: () => Promise<void>;
   handlePrevious: () => Promise<void>;
-  quizWordAudio: ReturnType<typeof useQuizWordAudio>;
 }
 
 const GrammarImprovementContext = createContext<GrammarImprovementContextValue | null>(null);
@@ -232,7 +231,6 @@ ${postfixInstruction}`;
         handleCloseModal,
         handleNext,
         handlePrevious,
-        quizWordAudio,
       }}
     >
       {children}
