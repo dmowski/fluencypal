@@ -33,13 +33,7 @@ export const DailyQuestionFullList = () => {
         .filter((key) => key !== questionsKeys[questionIndex])
         .map((key) => {
           const question = dailyQuestions[key];
-          return (
-            <DailyQuestionFullCard
-              key={question.id}
-              question={question}
-              badge={i18n._('Old Question')}
-            />
-          );
+          return <DailyQuestionFullCard key={question.id} question={question} />;
         })}
     </Stack>
   );
