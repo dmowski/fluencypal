@@ -205,12 +205,12 @@ export const StoreCard = (props: StoreCardProps) => {
             width: '100%',
             backgroundColor: props.itemsBackgroundColor,
             position: 'relative',
-            padding: '15px 0 12px 0',
+            padding: '10px 0 10px 0',
             zIndex: 5,
           }}
         >
           {props.items.map((item, index) => (
-            <StoreCardRowItem key={index} data={item} iconBorderRadius="12px" />
+            <StoreCardRowItem key={index} data={item} />
           ))}
         </Stack>
       )}
@@ -235,13 +235,7 @@ export const StoreCard = (props: StoreCardProps) => {
   );
 };
 
-export const StoreCardRowItem = ({
-  data,
-  iconBorderRadius,
-}: {
-  data: RowItem;
-  iconBorderRadius: string;
-}) => {
+export const StoreCardRowItem = ({ data }: { data: RowItem }) => {
   return (
     <Stack
       sx={{
@@ -259,19 +253,20 @@ export const StoreCardRowItem = ({
         data.onClick();
       }}
     >
-      <RowIcon data={data} size={'59px'} iconSize="29px" iconBorderRadius={iconBorderRadius} />
+      <RowIcon data={data} />
       <Stack>
         <Typography
           variant="subtitle1"
           sx={{
             fontWeight: 500,
             lineHeight: '18px',
-            //backgroundColor: 'red',
-
-            fontSize: '15px',
+            fontSize: '16px',
             padding: 0,
             margin: 0,
             paddingTop: '2px',
+            '@media (max-width: 450px)': {
+              fontSize: '14px',
+            },
           }}
         >
           {data.title}
@@ -345,17 +340,9 @@ const StoreButton = ({ title, onClick }: { title: string; onClick: () => void })
   );
 };
 
-export const RowIcon = ({
-  data,
-  size,
-  iconBorderRadius,
-  iconSize,
-}: {
-  data: IconRowItem;
-  size: string;
-  iconBorderRadius: string;
-  iconSize?: string;
-}) => {
+export const RowIcon = ({ data }: { data: IconRowItem }) => {
+  const size = '59px';
+  const iconBorderRadius = '12px';
   return (
     <Stack
       sx={{
@@ -382,7 +369,7 @@ export const RowIcon = ({
       {data.iconName && (
         <DynamicIcon
           name={data.iconName}
-          size={iconSize || '22px'}
+          size={size}
           style={{
             position: 'relative',
             zIndex: 3,

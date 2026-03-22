@@ -94,8 +94,6 @@ export const SpaceEditorModal = ({ isOpen, onClose, type, space }: SpaceEditorMo
           >
             {iconImageUrl && (
               <RowIcon
-                size={'50px'}
-                iconBorderRadius={'5px'}
                 data={{
                   imageUrl: iconImageUrl,
                 }}

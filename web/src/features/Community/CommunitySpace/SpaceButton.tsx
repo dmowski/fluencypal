@@ -81,8 +81,6 @@ export const SpaceButton = ({
         >
           {iconImageUrl && (
             <RowIcon
-              size={'50px'}
-              iconBorderRadius={'5px'}
               data={{
                 imageUrl: iconImageUrl,
               }}
