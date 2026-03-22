@@ -1,161 +1,56 @@
-import { Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import { FlatChat } from '../Chat/FlatChat';
 import { ChatProvider } from '../Chat/useChat';
-import { ColorIconTextList } from '../Survey/ColorIconTextList';
 import { DailyQuestion } from './types';
+import { getDailyQuestionImage } from './data';
+import { StoreCard } from '../uiKit/Card/StoreCard';
+import { useLingui } from '@lingui/react';
+import { dailyQuestions } from './dailyQuestions';
 
 export const DailyQuestionFullCard = ({
   question,
-  backgroundColor,
-  isShowFlameIcon,
   badge,
+  onClick,
 }: {
   question: DailyQuestion;
-  backgroundColor: string;
-  isShowFlameIcon: boolean;
   badge: string;
+  onClick?: () => void;
 }) => {
+  const previewImageUrl = getDailyQuestionImage(question);
+  const spaceId = 'daily-question-' + question.id;
+  const { i18n } = useLingui();
+  const questionIndex = Object.values(dailyQuestions).findIndex((q) => q.id === question.id);
+
   return (
     <ChatProvider
       metadata={{
-        spaceId: 'daily-question-' + question.id,
+        spaceId: spaceId,
         allowedUserIds: null,
         isPrivate: false,
         type: 'dailyQuestion',
       }}
     >
-      <Stack
-        sx={{
-          padding: '0',
-          color: '#fff',
-          textDecoration: 'none',
-          maxWidth: '700px',
-          borderRadius: '15px',
-          width: '100%',
-          height: 'auto',
-          cursor: 'initial',
-
-          background: backgroundColor,
-          boxShadow: '0px 0px 0px 1px rgba(255, 255, 255, 0)',
-          flexDirection: 'row',
-          transition: 'all 0.3s ease',
-          gap: '20px',
-          alignItems: 'center',
-          boxSizing: 'border-box',
-          display: 'grid',
-          minHeight: '120px',
-          gridTemplateColumns: '1fr',
-          '@media (max-width:600px)': {
-            boxShadow: 'none',
-            borderRadius: '0px',
-            padding: '21px 0 4px 0',
-          },
-        }}
+      <StoreCard
+        badge={badge}
+        textColor={'#fff'}
+        backgroundColor={'rgba(0, 0, 0, 0.5)'}
+        label={i18n._('Question') + ' #' + (questionIndex + 1)}
+        previewImageUrl={previewImageUrl}
+        title={question.title}
+        subTitle={question.description}
+        items={[]}
+        onClick={onClick}
+        itemsBackgroundColor={'rgba(32, 32, 32, 0.98)'}
+        itemsViewMode={'list'}
       >
         <Stack
           sx={{
-            width: '100%',
-            gap: '40px',
+            backgroundColor: 'rgba(32, 32, 32, 0.98)',
           }}
         >
-          <Stack
-            sx={{
-              padding: '25px 25px 0 25px',
-              '@media (max-width:600px)': {
-                padding: '15px 15px 0 15px',
-              },
-            }}
-          >
-            <Stack
-              sx={{
-                width: '100%',
-                justifyContent: 'space-between',
-                flexDirection: 'row',
-                alignItems: 'center',
-                color: '#feb985ff',
-                paddingBottom: '5px',
-              }}
-            >
-              <Stack
-                sx={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '6px',
-                }}
-              >
-                {isShowFlameIcon && (
-                  <img
-                    src="/icons/flame-icon.svg"
-                    style={{
-                      width: 20,
-                      height: 20,
-                      position: 'relative',
-                      top: '-2px',
-                      left: '-1px',
-                    }}
-                  />
-                )}
-                <Typography
-                  variant="body2"
-                  sx={{
-                    fontWeight: 500,
-                  }}
-                >
-                  {badge}
-                </Typography>
-              </Stack>
-            </Stack>
-
-            <Typography
-              sx={{
-                paddingTop: '10px',
-                fontSize: '1.7rem',
-                fontWeight: 560,
-                lineHeight: 1.3,
-                '@media (max-width:600px)': {
-                  fontSize: '1.5rem',
-                },
-              }}
-            >
-              {question.title}
-            </Typography>
-
-            <Typography
-              sx={{
-                paddingTop: '10px',
-                fontSize: '0.9rem',
-                fontWeight: 350,
-                lineHeight: 1.3,
-                color: '#fff',
-                opacity: 0.96,
-              }}
-            >
-              {question.description}
-            </Typography>
-
-            <Stack
-              sx={{
-                padding: '20px 0 10px 0',
-                color: 'rgba(255, 255, 255, 0.9)',
-              }}
-            >
-              <ColorIconTextList
-                gap="8px"
-                listItems={question.hints.map((hint) => ({
-                  iconColor: 'rgba(255, 255, 255, 0.9)',
-                  title: hint,
-                  iconName: 'lightbulb',
-                }))}
-              />
-            </Stack>
-          </Stack>
-
-          <Stack sx={{}}>
-            <FlatChat />
-          </Stack>
+          <FlatChat />
         </Stack>
-      </Stack>
+      </StoreCard>
     </ChatProvider>
   );
 };

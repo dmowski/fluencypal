@@ -27,12 +27,7 @@ export const DailyQuestionFullList = () => {
         gap: '90px',
       }}
     >
-      <DailyQuestionFullCard
-        question={todaysQuestion}
-        isShowFlameIcon={true}
-        backgroundColor="rgba(115, 25, 35, 0.2)"
-        badge={i18n._("Today's Question")}
-      />
+      <DailyQuestionFullCard question={todaysQuestion} badge={i18n._("Today's Question")} />
 
       {questionsKeys
         .filter((key) => key !== questionsKeys[questionIndex])
@@ -42,8 +37,6 @@ export const DailyQuestionFullList = () => {
             <DailyQuestionFullCard
               key={question.id}
               question={question}
-              isShowFlameIcon={false}
-              backgroundColor="rgba(25, 88, 115, 0.2)"
               badge={i18n._('Old Question')}
             />
           );

@@ -33,13 +33,7 @@ export const DailyQuestionNotificationsList = () => {
           )?.latestNotMineChanges || '',
         ).fromNow();
         return (
-          <DailyQuestionFullCard
-            key={question.id}
-            question={question}
-            isShowFlameIcon={false}
-            backgroundColor="rgba(255, 255, 255, 0.03)"
-            badge={latestChanged}
-          />
+          <DailyQuestionFullCard key={question.id} question={question} badge={latestChanged} />
         );
       })}
     </Stack>
