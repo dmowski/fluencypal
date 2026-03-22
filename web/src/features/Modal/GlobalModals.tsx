@@ -1,20 +1,20 @@
 'use client';
 
 import { useMemo } from 'react';
-import { useGame } from '../Game/useGame';
-import { UserProfileModal } from '../Game/UserProfileModal';
-import { useUsage } from '../Usage/useUsage';
-import { SubscriptionPaymentModal } from '../Usage/Subscription/SubscriptionPaymentModal';
-import { useAuth } from '../Auth/useAuth';
+import { useGame } from '@/features/Game/useGame';
+import { UserProfileModal } from '@/features/Game/UserProfileModal';
+import { useUsage } from '@/features/Usage/useUsage';
+import { SubscriptionPaymentModal } from '@/features/Usage/Subscription/SubscriptionPaymentModal';
+import { useAuth } from '@/features/Auth/useAuth';
 import { TeacherVoiceModal } from './TeacherVoiceModal';
-import { ReportModal } from '../User/ReportModal';
-import { useStories } from '../Sentence/useStories';
-import { StoriesModal } from '../Sentence/StoriesModal';
-import { useBattle } from '../Game/Battle/useBattle';
-import { BattleActionModal } from '../Game/Battle/BattleActionModal';
-import { PublicChatModal } from '../Chat/PublicChatModal';
+import { ReportModal } from '@/features/User/ReportModal';
+import { useStories } from '@/features/Sentence/useStories';
+import { StoriesModal } from '@/features/Sentence/StoriesModal';
+import { useBattle } from '@/features/Game/Battle/useBattle';
+import { BattleActionModal } from '@/features/Game/Battle/BattleActionModal';
+import { PublicChatModal } from '@/features/Chat/PublicChatModal';
 import { useGlobalModals } from './useGlobalModals';
-import { DailyQuestionModal } from '../Game/DailyQuestion/DailyQuestionModal';
+import { DailyQuestionModal } from '@/features/DailyQuestion/DailyQuestionModal';
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();

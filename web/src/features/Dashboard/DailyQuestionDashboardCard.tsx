@@ -1,14 +1,14 @@
 import dayjs from 'dayjs';
-import { useSettings } from '../Settings/useSettings';
-import { dailyQuestions } from '../Game/DailyQuestion/dailyQuestions';
+import { useSettings } from '@/features//Settings/useSettings';
+import { dailyQuestions } from '@/features/DailyQuestion/dailyQuestions';
 import { useLingui } from '@lingui/react';
-import { useAccess } from '../Usage/useAccess';
-import { ChatProvider } from '../Chat/useChat';
+import { useAccess } from '@/features//Usage/useAccess';
+import { ChatProvider } from '@/features//Chat/useChat';
 import { Stack } from '@mui/material';
-import { StoreCard } from '../uiKit/Card/StoreCard';
-import { FlatChat } from '../Chat/FlatChat';
+import { StoreCard } from '@/features//uiKit/Card/StoreCard';
+import { FlatChat } from '@/features//Chat/FlatChat';
 import { SectionHeader } from './CartsHeader';
-import { useGlobalModals } from '../Modal/useGlobalModals';
+import { useGlobalModals } from '@/features//Modal/useGlobalModals';
 
 const images: string[] = [
   'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774036079435-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',

@@ -7,11 +7,11 @@ import { useAuth } from '@/features/Auth/useAuth';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { db } from '@/features/Firebase/firebaseDb';
 import { DailyQuestionAnswer, DailyQuestionLike, LikeType } from './types';
-import { useGame } from '../useGame';
 import { deleteDoc, doc, setDoc } from 'firebase/firestore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import { Avatar } from '../Avatar';
+import { useGame } from '../Game/useGame';
+import { Avatar } from '../Game/Avatar';
 
 export const QuestionComment = ({
   answerDocId,

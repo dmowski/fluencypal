@@ -14,29 +14,29 @@ import { DailyTaskProgress, UserTaskStats } from '@/features/Tasks/types';
 import { WordsStats } from '@/features/Words/words';
 import { AiUserInfo } from '@/features/User/userInfo';
 import { SupportedLanguage } from '@/features/Lang/lang';
-import { PhraseCorrection } from '../Corrections/types';
-import { GoalPlan } from '../Plan/types';
+import { PhraseCorrection } from '@/features/Corrections/types';
+import { GoalPlan } from '@/features/Plan/types';
 import {
   GameAvatars,
   GameLastVisit,
   GameUserNames,
   GameUsersAchievements,
   GameUsersPoints,
-} from '../Game/types';
-import { QuizSurvey2 } from '../Goal/Quiz/types';
-import { DailyQuestionAnswer, DailyQuestionLike } from '../Game/DailyQuestion/types';
-import { InterviewQuizSurvey } from '../Case/types';
+} from '@/features/Game/types';
+import { QuizSurvey2 } from '@/features/Goal/Quiz/types';
+import { DailyQuestionAnswer, DailyQuestionLike } from '@/features/DailyQuestion/types';
+import { InterviewQuizSurvey } from '@/features/Case/types';
 import {
   ChatLike,
   ChatSpaceUserReadMetadata,
   ThreadsMessage,
   UserChatMetadata,
-} from '../Chat/type';
-import { GameBattle } from '../Game/Battle/types';
-import { Story, StoryStat, StoryState } from '../Sentence/types';
-import { AudioCache } from '../Audio/types';
-import { CommunitySpace, CommunitySpaceSettings } from '../Community/types';
-import { Homework } from '../Homework/homework';
+} from '@/features/Chat/type';
+import { GameBattle } from '@/features/Game/Battle/types';
+import { Story, StoryStat, StoryState } from '@/features/Sentence/types';
+import { AudioCache } from '@/features/Audio/types';
+import { CommunitySpace, CommunitySpaceSettings } from '@/features/Community/types';
+import { Homework } from '@/features/Homework/homework';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;

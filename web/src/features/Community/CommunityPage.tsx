@@ -2,14 +2,14 @@ import { IconButton, Stack, Typography } from '@mui/material';
 import { CommunityPage } from './types';
 import { useLingui } from '@lingui/react';
 import { ArrowLeft } from 'lucide-react';
-import { ChatPage } from '../Chat/ChatPage';
-import { GameStats } from '../Game/GameStats';
+import { ChatPage } from '@/features/Chat/ChatPage';
+import { GameStats } from '@/features/Game/GameStats';
 import { GamePage } from './GamePage';
 import { DebatesPage } from './DebatesPage';
-import { DailyQuestionBadge } from '../Game/DailyQuestion/DailyQuestionBadge';
+import { DailyQuestionBadge } from '@/features/DailyQuestion/DailyQuestionBadge';
 import { SupportPage } from './SupportPage';
 import { PageContainer } from './PageContainer';
-import { useUrlState } from '../Url/useUrlState';
+import { useUrlState } from '@/features/Url/useUrlState';
 
 export const CommunityPageRouter = ({
   activePage,
