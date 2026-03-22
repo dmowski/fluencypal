@@ -70,36 +70,33 @@ export const GrammarImprovementProvider = ({
   const loadingMap = useRef<Record<string, Promise<GrammarImprovement> | null>>({});
   const isMetadataGenerating = useRef(false);
 
-  const generateImprovement = useCallback(
-    async (record: AdvancedUserRecord): Promise<GrammarImprovement> => {
-      const userPrompt = `${record.value}`;
-      const isNativeLanguageSameAsLearning = nativeLanguageCode === languageCode;
-      const postfixInstruction = isNativeLanguageSameAsLearning
-        ? `The user is learning ${fullLanguageName}. Use this language for all properties (example, description, title).`
-        : `The user is learning ${fullLanguageName}. Native language of the user is ${nativeLanguageCode}.
+  const generateImprovement = async (record: AdvancedUserRecord): Promise<GrammarImprovement> => {
+    const userPrompt = `${record.value}`;
+    const isNativeLanguageSameAsLearning = nativeLanguageCode === languageCode;
+    const postfixInstruction = isNativeLanguageSameAsLearning
+      ? `The user is learning ${fullLanguageName}. Use this language for all properties (example, description, title).`
+      : `The user is learning ${fullLanguageName}. Native language of the user is ${nativeLanguageCode}.
         
 Use ${fullLanguageName} for example sentences.
 Use ${nativeLanguageCode} for explanations, be creative with explanations. Description should be really easy to understand for the user and short. Use simple words and avoid complex grammar in the description.`;
 
-      const finalSystemInstruction = `${grammarImprovementSystemPrompt}.
+    const finalSystemInstruction = `${grammarImprovementSystemPrompt}.
 ${postfixInstruction}`;
 
-      const response = await textAi.generateJson<GrammarImprovement>({
-        systemMessage: finalSystemInstruction,
-        userMessage: userPrompt,
-        attempts: 3,
-        model: 'gpt-5.4',
-        cache: true,
-      });
+    const response = await textAi.generateJson<GrammarImprovement>({
+      systemMessage: finalSystemInstruction,
+      userMessage: userPrompt,
+      attempts: 3,
+      model: 'gpt-5.4',
+      cache: true,
+    });
 
-      return {
-        title: response?.title || `???`,
-        description: response?.description || `???`,
-        examples: response?.examples || [],
-      };
-    },
-    [textAi, fullLanguageName, nativeLanguageCode, languageCode],
-  );
+    return {
+      title: response?.title || `???`,
+      description: response?.description || `???`,
+      examples: response?.examples || [],
+    };
+  };
 
   const generateTitleImprovement = async (record: AdvancedUserRecord): Promise<TitleMetadata> => {
     const userPrompt = `${record.value}`;
@@ -136,50 +133,44 @@ ${postfixInstruction}`;
     isMetadataGenerating.current = false;
   };
 
-  const fetchImprovement = useCallback(
-    async (record: AdvancedUserRecord) => {
-      const key = record.value;
-      console.log('Fetch record', record);
+  const fetchImprovement = async (record: AdvancedUserRecord) => {
+    const key = record.value;
+    console.log('Fetch record', record);
 
-      const existingImprovement = improvementsMapRef.current[key];
-      if (existingImprovement) return existingImprovement;
+    const existingImprovement = improvementsMapRef.current[key];
+    if (existingImprovement) return existingImprovement;
 
-      const existingRequest = loadingMap.current[key];
-      if (existingRequest) return existingRequest;
+    const existingRequest = loadingMap.current[key];
+    if (existingRequest) return existingRequest;
 
-      const request = generateImprovement(record)
-        .then((result) => {
-          setImprovements((prevState) => {
-            if (prevState[key]) return prevState;
-            const nextState = { ...prevState, [key]: result };
-            improvementsMapRef.current = nextState;
-            return nextState;
-          });
-          return result;
-        })
-        .finally(() => {
-          loadingMap.current[key] = null;
+    const request = generateImprovement(record)
+      .then((result) => {
+        setImprovements((prevState) => {
+          if (prevState[key]) return prevState;
+          const nextState = { ...prevState, [key]: result };
+          improvementsMapRef.current = nextState;
+          return nextState;
         });
+        return result;
+      })
+      .finally(() => {
+        loadingMap.current[key] = null;
+      });
 
-      loadingMap.current[key] = request;
-      return request;
-    },
-    [generateImprovement],
-  );
+    loadingMap.current[key] = request;
+    return request;
+  };
 
-  const handleOpenModal = useCallback(
-    async (index: number) => {
-      await quizWordAudio.initAudio();
-      setSelectedIndex(index);
-    },
-    [quizWordAudio, setSelectedIndex],
-  );
+  const handleOpenModal = async (index: number) => {
+    quizWordAudio.initAudio();
+    setSelectedIndex(index);
+  };
 
-  const showAvailable = useCallback(() => {
+  const showAvailable = () => {
     if (grammarPoints.length > 0) {
       handleOpenModal(0);
     }
-  }, [grammarPoints.length, handleOpenModal]);
+  };
 
   useEffect(() => {
     if (selectedIndex === null || selectedIndex === -1 || grammarPoints.length === 0) return;
@@ -188,20 +179,20 @@ ${postfixInstruction}`;
     fetchImprovement(selectedRecord);
   }, [selectedIndex, grammarPoints.length]);
 
-  const handleCloseModal = useCallback(() => {
+  const handleCloseModal = () => {
     setSelectedIndex(null);
-  }, [setSelectedIndex]);
+  };
 
-  const handleNext = useCallback(async () => {
+  const handleNext = async () => {
     if (selectedIndex === null) return;
     setIsLoadingNew(true);
     setSelectedIndex(null);
     await sleep(300);
     setSelectedIndex(Math.min(selectedIndex + 1, grammarPoints.length - 1));
     setIsLoadingNew(false);
-  }, [selectedIndex, grammarPoints.length, setSelectedIndex]);
+  };
 
-  const handlePrevious = useCallback(async () => {
+  const handlePrevious = async () => {
     setIsLoadingNew(true);
     await sleep(10);
     setSelectedIndex(null);
@@ -210,7 +201,7 @@ ${postfixInstruction}`;
     const previousIndex = activeIndex === 0 ? grammarPoints.length - 1 : activeIndex - 1;
     setSelectedIndex(previousIndex);
     setIsLoadingNew(false);
-  }, [selectedIndex, setSelectedIndex]);
+  };
 
   useEffect(() => {
     generateMetadata(grammarPoints.length);
