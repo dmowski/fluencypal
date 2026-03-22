@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material';
-import { RowItem, StoreCard } from '../uiKit/Card/StoreCard';
+import { CardItem, StoreCard } from '../uiKit/Card/StoreCard';
 import { SectionHeader } from './CartsHeader';
 import { useLingui } from '@lingui/react';
 import { useCommunitySpace } from '../Community/CommunitySpace/useCommunitySpace';
@@ -20,8 +20,8 @@ export const CommunityDashboardCard = () => {
   };
   const activeSpace = spaces.find((space) => space.id === activeSpaceId);
 
-  const items: RowItem[] = spaces.map((space) => {
-    const spaceItem: RowItem = {
+  const items: CardItem[] = spaces.map((space) => {
+    const spaceItem: CardItem = {
       title: space.title,
       subTitle: space.description,
       onClick: () => openSpace(space.id),

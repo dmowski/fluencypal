@@ -26,7 +26,7 @@ import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 
 import { SectionHeader } from './CartsHeader';
-import { RowItem, StoreCard } from '../uiKit/Card/StoreCard';
+import { CardItem, StoreCard } from '../uiKit/Card/StoreCard';
 import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
@@ -233,7 +233,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
               const isActive = index === activeIndex;
 
-              const item: RowItem = {
+              const item: CardItem = {
                 title: planElement.title,
                 subTitle: modeLabels[planElement.mode],
                 iconName:

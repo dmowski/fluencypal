@@ -14,7 +14,7 @@ import { useSettings } from '@/features/Settings/useSettings';
 import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang';
 import { useQuizWordAudio } from '@/features/Audio/useQuizWordAudio';
 import { SectionHeader } from '../CartsHeader';
-import { RowItem, StoreCard } from '@/features/uiKit/Card/StoreCard';
+import { CardItem, StoreCard } from '@/features/uiKit/Card/StoreCard';
 import { IconName } from 'lucide-react/dynamic';
 import { useUrlState } from '@/features/Url/useUrlState';
 
@@ -236,8 +236,8 @@ ${postfixInstruction}`;
     setIsLoadingNew(false);
   };
 
-  const items: RowItem[] = useMemo(() => {
-    const newItems: RowItem[] = [];
+  const items: CardItem[] = useMemo(() => {
+    const newItems: CardItem[] = [];
 
     grammarPoints.slice(0, limit).forEach((record, index) => {
       const icon = improvementsIcons[index % improvementsIcons.length];

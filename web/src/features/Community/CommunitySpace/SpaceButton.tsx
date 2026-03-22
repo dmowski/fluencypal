@@ -7,7 +7,7 @@ import { Badge, IconButton, Stack, Typography } from '@mui/material';
 import { useChat } from '../../Chat/useChat';
 import { useAuth } from '../../Auth/useAuth';
 import { CommunitySpace } from '../types';
-import { RowIcon } from '@/features/uiKit/Card/StoreCard';
+import { CardItemIcon } from '@/features/uiKit/Card/StoreCard';
 
 export const SpaceButton = ({
   space,
@@ -80,7 +80,7 @@ export const SpaceButton = ({
           }}
         >
           {iconImageUrl && (
-            <RowIcon
+            <CardItemIcon
               data={{
                 imageUrl: iconImageUrl,
               }}

@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material';
-import { RowItem, StoreCard } from '../uiKit/Card/StoreCard';
+import { CardItem, StoreCard } from '../uiKit/Card/StoreCard';
 import { SectionHeader } from './CartsHeader';
 import { useLingui } from '@lingui/react';
 import { useRolePlay } from '../RolePlay/useRolePlay';
@@ -13,7 +13,7 @@ export const RolePlayDashboardCard = () => {
 
   const [isShowAll, setIsShowAll] = useUrlState('rolePlayScenarios', false, false);
 
-  const items: RowItem[] = visibleScenarios
+  const items: CardItem[] = visibleScenarios
     .filter((s, index) => index < 4)
     .map((scenario) => ({
       id: scenario.id,

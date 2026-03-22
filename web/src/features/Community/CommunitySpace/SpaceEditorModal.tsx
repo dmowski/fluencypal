@@ -1,14 +1,13 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Stack, TextField, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { CommunitySpace } from '../types';
 import { useCommunitySpace } from './useCommunitySpace';
 import { UploadImageButton } from '@/features/Game/UploadImageButton';
-import Image from 'next/image';
-import { RowIcon } from '@/features/uiKit/Card/StoreCard';
+import { CardItemIcon } from '@/features/uiKit/Card/StoreCard';
 
 interface SpaceEditorModalProps {
   isOpen: boolean;
@@ -93,7 +92,7 @@ export const SpaceEditorModal = ({ isOpen, onClose, type, space }: SpaceEditorMo
             }}
           >
             {iconImageUrl && (
-              <RowIcon
+              <CardItemIcon
                 data={{
                   imageUrl: iconImageUrl,
                 }}

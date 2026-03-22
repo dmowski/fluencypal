@@ -2,13 +2,13 @@ import { Button, Stack, Typography } from '@mui/material';
 import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 import Image from 'next/image';
 
-interface IconRowItem {
+interface CardItemIcon {
   imageUrl?: string;
   iconName?: IconName;
   iconBgColor?: string;
 }
 
-export interface RowItem extends IconRowItem {
+export interface CardItem extends CardItemIcon {
   title: string;
   subTitle: string;
   rowBgColor?: string;
@@ -28,7 +28,7 @@ interface StoreCardProps {
   title: string;
   subTitle?: string;
 
-  items: RowItem[];
+  items: CardItem[];
   itemsBackgroundColor: string;
   onClick?: () => void;
   itemsViewMode: 'list' | 'flow';
@@ -235,7 +235,7 @@ export const StoreCard = (props: StoreCardProps) => {
   );
 };
 
-export const StoreCardRowItem = ({ data }: { data: RowItem }) => {
+export const StoreCardRowItem = ({ data }: { data: CardItem }) => {
   return (
     <Stack
       sx={{
@@ -253,7 +253,7 @@ export const StoreCardRowItem = ({ data }: { data: RowItem }) => {
         data.onClick();
       }}
     >
-      <RowIcon data={data} />
+      <CardItemIcon data={data} />
       <Stack>
         <Typography
           variant="subtitle1"
@@ -340,7 +340,7 @@ const StoreButton = ({ title, onClick }: { title: string; onClick: () => void })
   );
 };
 
-export const RowIcon = ({ data }: { data: IconRowItem }) => {
+export const CardItemIcon = ({ data }: { data: CardItemIcon }) => {
   const size = '59px';
   const iconBorderRadius = '12px';
   return (

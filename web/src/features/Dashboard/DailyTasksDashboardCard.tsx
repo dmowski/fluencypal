@@ -1,6 +1,6 @@
 import { useLingui } from '@lingui/react';
 import { Stack } from '@mui/material';
-import { RowItem, StoreCard } from '../uiKit/Card/StoreCard';
+import { CardItem, CardItemIcon, StoreCard } from '../uiKit/Card/StoreCard';
 import { useDailyTasks } from '../Tasks/useDailyTasks';
 import { SectionHeader } from './CartsHeader';
 import { useMemo } from 'react';
@@ -87,7 +87,7 @@ export const DailyTasksDashboardCard = () => {
 
   const isLoading = isCallStarting;
 
-  const items: RowItem[] = useMemo(() => {
+  const items: CardItem[] = useMemo(() => {
     return tasks.todaysActualTasks.map((taskType) => {
       const isJustTalkTask = taskType === 'just-talk';
       const isLoadingItem = isJustTalkTask && isCallStarting;
@@ -103,7 +103,7 @@ export const DailyTasksDashboardCard = () => {
         : isCompleted
           ? i18n._('Completed')
           : i18n._('Start');
-      const taskItem: RowItem = {
+      const taskItem: CardItem = {
         title: taskInfo ? taskInfo.title : taskType,
         onClick: () => onStartTask(taskType),
         subTitle: taskInfo ? taskInfo.label : '',
