@@ -31,7 +31,7 @@ export interface DailyTaskApi {
   title: string;
   subTitle: string;
   badge: string;
-  previewImageUrl: string;
+  dayTasksMeta: DayTasksMeta;
 }
 
 export const dailyTasksContext = createContext<DailyTaskApi>({
@@ -42,14 +42,24 @@ export const dailyTasksContext = createContext<DailyTaskApi>({
   title: '',
   subTitle: '',
   badge: '',
-  previewImageUrl: '',
   isAllTasksCompleted: false,
+  dayTasksMeta: {
+    tasks: [],
+    title: '',
+    subTitle: '',
+    imageUrl: '',
+    bgColor: '',
+    itemsBackgroundColor: '',
+  },
 });
 
 interface DayTasksMeta {
   tasks: DailyTaskType[];
   title: string;
   subTitle: string;
+  imageUrl: string;
+  bgColor: string;
+  itemsBackgroundColor: string;
 }
 
 function useProvideDailyTasks(): DailyTaskApi {
@@ -102,21 +112,33 @@ function useProvideDailyTasks(): DailyTaskApi {
     );
   }, [allProgressRaw, settings.languageCode]);
 
+  const previewImageUrl =
+    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774127689670-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
+
   const dailyPlans: DayTasksMeta[] = [
     {
       tasks: ['just-talk'],
       title: i18n._('Make learning a habit!'),
       subTitle: i18n._('Let’s get started with today’s tasks!'),
+      imageUrl: previewImageUrl,
+      itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
+      bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
       tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
       title: i18n._('Second day, keep it up!'),
       subTitle: i18n._('Keep the momentum going with today’s tasks!'),
+      imageUrl: previewImageUrl,
+      itemsBackgroundColor: 'rgba(32, 32, 32, 0.94)',
+      bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
       tasks: ['just-talk', 'goal-lesson', 'grammar-improvement', 'daily-question'],
       title: i18n._('Third day, you are doing great!'),
       subTitle: i18n._('You are doing great! Check out today’s tasks!'),
+      imageUrl: previewImageUrl,
+      itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
+      bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
       tasks: ['story'],
@@ -124,11 +146,17 @@ function useProvideDailyTasks(): DailyTaskApi {
       subTitle: i18n._(
         'Enjoy a story today and get a full access. Thank you for being with us on this learning journey!',
       ),
+      imageUrl: previewImageUrl,
+      itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
+      bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
       tasks: ['just-talk', 'grammar-improvement', 'story', 'daily-question'],
       title: i18n._('Fifth day, you are on fire!'),
       subTitle: i18n._('You are on fire! Check out today’s tasks!'),
+      imageUrl: previewImageUrl,
+      itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
+      bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
       tasks: [
@@ -141,11 +169,17 @@ function useProvideDailyTasks(): DailyTaskApi {
       ],
       title: i18n._('Sixth day, you are amazing!'),
       subTitle: i18n._('You are amazing! Check out today’s tasks!'),
+      imageUrl: previewImageUrl,
+      itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
+      bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
       tasks: ['just-talk', 'daily-question'],
       title: i18n._('Seventh day, great job!'),
       subTitle: i18n._('Great job on making it a week! Check out today’s tasks!'),
+      imageUrl: previewImageUrl,
+      itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
+      bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
       tasks: [
@@ -158,11 +192,17 @@ function useProvideDailyTasks(): DailyTaskApi {
       ],
       title: i18n._('Eighth day, you are unstoppable!'),
       subTitle: i18n._(`Most have already given up, but not you! I'm proud of you!`),
+      imageUrl: previewImageUrl,
+      itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
+      bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
       tasks: ['just-talk', 'grammar-improvement', 'daily-question', 'community'],
       title: i18n._('Daily tasks'),
       subTitle: i18n._('You know what to do'),
+      imageUrl: previewImageUrl,
+      itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
+      bgColor: 'rgba(147, 7, 255, 0.7)',
     },
   ];
 
@@ -219,6 +259,7 @@ function useProvideDailyTasks(): DailyTaskApi {
 
   return {
     onCompleteTask,
+    dayTasksMeta: dayPlan,
     todaysActualTasks: dayPlan.tasks,
     isAllTasksCompleted,
     tasksInfo,
@@ -228,8 +269,6 @@ function useProvideDailyTasks(): DailyTaskApi {
       ? i18n._('Great job! Come back tomorrow for new tasks.')
       : dayPlan.subTitle,
     badge: isAllTasksCompleted ? i18n._('Done').toUpperCase() : dayjs().format('D MMM'), // e.g. "23 Mar"
-    previewImageUrl:
-      'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774127689670-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
   };
 }
 
