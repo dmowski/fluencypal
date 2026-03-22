@@ -13,7 +13,7 @@ export const DailyQuestionFullCard = ({
   onClick,
 }: {
   question: DailyQuestion;
-  badge: string;
+  badge?: string;
   onClick?: () => void;
 }) => {
   const previewImageUrl = getDailyQuestionImage(question);
