@@ -13,7 +13,7 @@ import { useSettings } from '../Settings/useSettings';
 import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 import { useGame } from '../Game/useGame';
 import { useUsage } from '../Usage/useUsage';
-import { useUrlState } from '../Url/useUrlState';
+import { useGrammarImprovement } from './Grammar/useGrammarImprovement';
 
 export const DailyTasksDashboardCard = () => {
   const { i18n } = useLingui();
@@ -28,7 +28,7 @@ export const DailyTasksDashboardCard = () => {
   const aiAvatar = voiceAvatarMap[voiceName];
   const secondPhotoUrl = aiAvatar.photoUrls?.[1] || aiAvatar.photoUrls?.[0] || '';
 
-  const [selectedIndex, setSelectedIndex] = useUrlState<number | null>('improvement', null, false);
+  const grammarImprovement = useGrammarImprovement();
 
   const taskIconMap: Record<DailyTaskType, string> = useMemo(
     () => ({
@@ -68,7 +68,7 @@ export const DailyTasksDashboardCard = () => {
       },
       'daily-question': globalModals.openDailyQuestions,
       'grammar-improvement': () => {
-        setSelectedIndex(0);
+        grammarImprovement.showAvailable();
       },
     };
 

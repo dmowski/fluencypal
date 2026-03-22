@@ -15,6 +15,7 @@ import { BattleActionModal } from '@/features/Game/Battle/BattleActionModal';
 import { PublicChatModal } from '@/features/Chat/PublicChatModal';
 import { useGlobalModals } from './useGlobalModals';
 import { DailyQuestionModal } from '@/features/DailyQuestion/DailyQuestionModal';
+import { GrammarImprovementModal } from '@/features/Dashboard/Grammar/GrammarImprovementModal';
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();
@@ -55,6 +56,8 @@ export const GlobalModals: React.FC = () => {
       )}
       <ReportModal />
       <TeacherVoiceModal />
+
+      <GrammarImprovementModal />
     </>
   );
 };

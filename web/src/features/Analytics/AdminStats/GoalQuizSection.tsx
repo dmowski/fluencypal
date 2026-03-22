@@ -5,6 +5,7 @@ import { GoalPlan } from '../../Plan/types';
 import { AdvancedUserRecord } from '@/features/User/userInfo';
 import { useState } from 'react';
 import { GrammarImprovesCardUi } from '@/features/Dashboard/Grammar/GrammarImprovesCard';
+import { GrammarImprovementProvider } from '@/features/Dashboard/Grammar/useGrammarImprovement';
 import { SupportedLanguage } from '@/features/Lang/lang';
 
 interface GoalQuizSectionProps {
@@ -120,11 +121,13 @@ export function GoalQuizSection({
                   padding: '20px',
                 }}
               >
-                <GrammarImprovesCardUi
-                  grammarPoints={allGrammarRecords}
-                  languageCode={languageUserCode}
-                  nativeLanguageCode={'ru'}
-                />
+                <GrammarImprovementProvider
+                  grammarPointsOverride={allGrammarRecords}
+                  languageCodeOverride={languageUserCode}
+                  nativeLanguageCodeOverride={nativeLanguage}
+                >
+                  <GrammarImprovesCardUi />
+                </GrammarImprovementProvider>
               </Stack>
             )}
 
