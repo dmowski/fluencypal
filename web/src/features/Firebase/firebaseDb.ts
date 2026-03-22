@@ -109,14 +109,6 @@ export const db = {
     goals: (userId?: string) =>
       userId ? dataPointCollection<GoalPlan>(`users/${userId}/goals`) : null,
 
-    dailyQuestionsAnswers: (userId?: string) =>
-      userId ? dataPointCollection<DailyQuestionAnswer>(`dailyQuestionsAnswers`) : null,
-
-    dailyQuestionsAnswersLikes: (userId?: string, answerDocId?: string) =>
-      userId && answerDocId
-        ? dataPointCollection<DailyQuestionLike>(`dailyQuestionsAnswers/${answerDocId}/likes`)
-        : null,
-
     communitySpaces: (userId?: string) =>
       userId ? dataPointCollection<CommunitySpace>(`community/spaces/spaceList`) : null,
 
