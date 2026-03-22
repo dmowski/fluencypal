@@ -66,9 +66,7 @@ export const DailyTasksDashboardCard = () => {
         stories.rotateRandomStoryWithVideo();
       },
       'daily-question': globalModals.openDailyQuestions,
-      'grammar-improvement': () => {
-        grammarImprovement.showAvailable();
-      },
+      'grammar-improvement': grammarImprovement.showAvailable,
     };
 
     const handler = tasksHandlerMap[taskType];
@@ -125,6 +123,7 @@ export const DailyTasksDashboardCard = () => {
     tasks.tasksInfo,
     tasks.todayTaskProgress,
     isCallStarting,
+    grammarImprovement.selectedIndex,
   ]);
 
   const game = useGame();
