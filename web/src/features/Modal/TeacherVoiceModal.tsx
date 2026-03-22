@@ -48,7 +48,7 @@ export const TeacherVoiceModal: React.FC = () => {
               <FormControl fullWidth>
                 <Select
                   value={voiceSpeed}
-                  onChange={(e) => settings.setAiVoiceSpeed(e.target.value as any)}
+                  onChange={(e) => settings.setAiVoiceSpeed(e.target.value)}
                   sx={{
                     minWidth: '200px',
                   }}
