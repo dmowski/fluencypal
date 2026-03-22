@@ -17,13 +17,34 @@ import { useGrammarImprovement } from './useGrammarImprovement';
 
 export const GrammarImprovementModal = () => {
   const grammar = useGrammarImprovement();
-
   const isOpen =
     grammar.selectedIndex !== null && !!grammar.grammarPoints[grammar.selectedIndex ?? -1];
-  const improvement = isOpen
-    ? grammar.improvements[grammar.grammarPoints[grammar.selectedIndex!].value] || null
-    : null;
-  const isLoading = isOpen && !improvement;
+
+  if (!isOpen) return <></>;
+
+  if (grammar.isLoadingNew) {
+    return (
+      <Stack
+        sx={{
+          width: '100dvw',
+          height: '100dvh',
+          backgroundColor: '#181818',
+          position: 'fixed',
+
+          top: 0,
+          left: 0,
+          zIndex: 9999,
+        }}
+      />
+    );
+  }
+
+  return <GrammarImprovementModalContent onClose={grammar.handleCloseModal} />;
+};
+
+export const GrammarImprovementModalContent = ({ onClose }: { onClose: () => void }) => {
+  const grammar = useGrammarImprovement();
+  const improvement = grammar.improvements[grammar.grammarPoints[grammar.selectedIndex!].value];
   const isFirstOne = grammar.selectedIndex === 0;
   const isLastOne = grammar.selectedIndex === grammar.grammarPoints.length - 1;
   const translator = useTranslate();
@@ -32,6 +53,8 @@ export const GrammarImprovementModal = () => {
   const aiConversation = useAiConversation();
   const [isCallStarting, setIsCallStarting] = useState(false);
   const settings = useSettings();
+
+  const isShowLoader = !improvement;
 
   const practiceWithAi = async () => {
     audio.initAudio();
@@ -106,36 +129,18 @@ When user struggle with one example, try to switch to another example and come b
   };
 
   useEffect(() => {
-    if (!isOpen || !improvement || !isTranslateAvailable) {
+    if (!improvement || !isTranslateAvailable) {
       return;
     }
 
     improvement.examples.forEach((example) => {
       translateExample(example);
     });
-  }, [isOpen, improvement, isTranslateAvailable]);
-
-  const isShowLoader = isLoading || !improvement;
-  if (grammar.isLoadingNew) {
-    return (
-      <Stack
-        sx={{
-          width: '100dvw',
-          height: '100dvh',
-          backgroundColor: '#181818',
-          position: 'fixed',
-
-          top: 0,
-          left: 0,
-          zIndex: 9999,
-        }}
-      />
-    );
-  }
+  }, [improvement, isTranslateAvailable]);
 
   return (
     <>
-      <CustomModal isOpen={isOpen} onClose={grammar.handleCloseModal} mobilePadding="0">
+      <CustomModal isOpen={true} onClose={onClose} mobilePadding="0">
         <Stack
           sx={{
             gap: '90px',
