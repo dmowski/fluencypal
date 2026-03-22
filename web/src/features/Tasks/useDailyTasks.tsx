@@ -10,20 +10,14 @@ import { useSettings } from '../Settings/useSettings';
 import { useLingui } from '@lingui/react';
 
 const tasksPerDays: DailyTaskType[][] = [
-  // Day1
   ['just-talk'],
-
-  // Day2
   ['just-talk', 'goal-lesson', 'grammar-improvement'],
-
-  // Day3
-  ['just-talk', 'goal-lesson', 'grammar-improvement', 'community'],
-
-  // Day4
-  ['just-talk', 'goal-lesson', 'grammar-improvement', 'community', 'story'],
-
-  // Day5 and on
-  ['just-talk', 'goal-lesson', 'grammar-improvement', 'community', 'story', 'daily-question'],
+  ['just-talk', 'goal-lesson', 'grammar-improvement', 'daily-question'],
+  ['just-talk', 'story'],
+  ['just-talk', 'grammar-improvement', 'story', 'daily-question'],
+  ['just-talk', 'goal-lesson', 'grammar-improvement', 'story', 'daily-question', 'community'],
+  ['just-talk', 'daily-question'],
+  ['just-talk', 'goal-lesson', 'grammar-improvement', 'story', 'daily-question', 'community'],
 ];
 
 export interface DailyTaskApi {
