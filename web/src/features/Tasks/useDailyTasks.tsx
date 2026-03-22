@@ -129,7 +129,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       title: i18n._('Second day, keep it up!'),
       subTitle: i18n._('Keep the momentum going with today’s tasks!'),
       imageUrl: previewImageUrl,
-      itemsBackgroundColor: 'rgba(32, 32, 32, 0.94)',
+      itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
