@@ -83,6 +83,7 @@ export const AppNotificationsButton: React.FC = () => {
                     <TabLabel
                       label={i18n._('Questions')}
                       badgeNumber={chatList.totalDailyQuestionsUnreadMessagesCount}
+                      badgeHighlight
                     />
                   }
                   value={'dailyQuestions'}
