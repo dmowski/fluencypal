@@ -140,8 +140,7 @@ ${postfixInstruction}`;
   const fetchImprovement = useCallback(
     async (record: AdvancedUserRecord) => {
       const key = record.value;
-
-      console.log('fetchImprovement', record);
+      console.log('Fetch record', record);
 
       const existingImprovement = improvementsMapRef.current[key];
       if (existingImprovement) return existingImprovement;
@@ -169,10 +168,6 @@ ${postfixInstruction}`;
     [generateImprovement],
   );
 
-  const fetchAllImprovements = useCallback(async () => {
-    await Promise.all(grammarPoints.map((record) => fetchImprovement(record)));
-  }, [fetchImprovement, grammarPoints]);
-
   const handleOpenModal = useCallback(
     async (index: number) => {
       await quizWordAudio.initAudio();
@@ -189,8 +184,10 @@ ${postfixInstruction}`;
 
   useEffect(() => {
     if (selectedIndex === null || selectedIndex === -1 || grammarPoints.length === 0) return;
-    fetchAllImprovements();
-  }, [selectedIndex, fetchAllImprovements, grammarPoints.length]);
+    const selectedRecord = grammarPoints[selectedIndex];
+    if (!selectedRecord) return;
+    fetchImprovement(selectedRecord);
+  }, [selectedIndex, grammarPoints.length]);
 
   const handleCloseModal = useCallback(() => {
     setSelectedIndex(null);
