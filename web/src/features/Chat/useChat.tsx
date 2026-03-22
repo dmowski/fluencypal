@@ -313,7 +313,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     const isDev = auth.userInfo?.email?.includes('dmowski');
 
     if (!isDev) {
-      const url = `https://www.fluencypal.com/ru/practice?page=community`;
+      const url = `https://www.fluencypal.com/practice?dailyQuestions=true`;
       sendFeedbackMessageRequest(
         {
           message: `💬 New message in ${propsChatMetadata.type} chat:\n\n${messageContent}\n\n${url}`,
