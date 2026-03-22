@@ -59,7 +59,13 @@ export const GrammarImprovementProvider = ({
 
   const fullLanguageName = fullEnglishLanguageName[languageCode];
 
-  const [selectedIndex, setSelectedIndex] = useUrlState<number | null>('improvement', null, false);
+  const [selectedIndexRaw, setSelectedIndex] = useUrlState<number | null>(
+    'improvement',
+    null,
+    false,
+  );
+  const selectedIndex = selectedIndexRaw === null ? null : Number(selectedIndexRaw);
+
   const [improvements, setImprovements] = useState<Record<string, GrammarImprovement>>({});
   const [titleMap, setTitleMap] = useState<Record<string, TitleMetadata | null>>({});
   const [isLoadingNew, setIsLoadingNew] = useState(false);
@@ -135,7 +141,6 @@ ${postfixInstruction}`;
 
   const fetchImprovement = async (record: AdvancedUserRecord) => {
     const key = record.value;
-    console.log('Fetch record', record);
 
     const existingImprovement = improvementsMapRef.current[key];
     if (existingImprovement) return existingImprovement;
@@ -198,7 +203,8 @@ ${postfixInstruction}`;
     setSelectedIndex(null);
     await sleep(300);
     const activeIndex = selectedIndex ?? 0;
-    const previousIndex = activeIndex === 0 ? grammarPoints.length - 1 : activeIndex - 1;
+    const previousIndex =
+      activeIndex === 0 ? Math.max(0, grammarPoints.length - 1) : Math.max(0, activeIndex - 1);
     setSelectedIndex(previousIndex);
     setIsLoadingNew(false);
   };
