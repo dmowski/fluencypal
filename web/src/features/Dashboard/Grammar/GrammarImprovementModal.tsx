@@ -16,21 +16,16 @@ import { InteractiveExample } from './InteractiveExample';
 import { useGrammarImprovement } from './useGrammarImprovement';
 
 export const GrammarImprovementModal = () => {
-  const {
-    selectedIndex,
-    grammarPoints,
-    improvements,
-    handleCloseModal,
-    handleNext,
-    handlePrevious,
-    isLoadingNew,
-  } = useGrammarImprovement();
+  const grammar = useGrammarImprovement();
 
-  const isOpen = selectedIndex !== null && !!grammarPoints[selectedIndex ?? -1];
-  const improvement = isOpen ? improvements[grammarPoints[selectedIndex!].value] || null : null;
+  const isOpen =
+    grammar.selectedIndex !== null && !!grammar.grammarPoints[grammar.selectedIndex ?? -1];
+  const improvement = isOpen
+    ? grammar.improvements[grammar.grammarPoints[grammar.selectedIndex!].value] || null
+    : null;
   const isLoading = isOpen && !improvement;
-  const isFirstOne = selectedIndex === 0;
-  const isLastOne = selectedIndex === grammarPoints.length - 1;
+  const isFirstOne = grammar.selectedIndex === 0;
+  const isLastOne = grammar.selectedIndex === grammar.grammarPoints.length - 1;
   const translator = useTranslate();
   const { i18n } = useLingui();
   const audio = useConversationAudio();
@@ -121,7 +116,7 @@ When user struggle with one example, try to switch to another example and come b
   }, [isOpen, improvement, isTranslateAvailable]);
 
   const isShowLoader = isLoading || !improvement;
-  if (isLoadingNew) {
+  if (grammar.isLoadingNew) {
     return (
       <Stack
         sx={{
@@ -140,7 +135,7 @@ When user struggle with one example, try to switch to another example and come b
 
   return (
     <>
-      <CustomModal isOpen={isOpen} onClose={handleCloseModal} mobilePadding="0">
+      <CustomModal isOpen={isOpen} onClose={grammar.handleCloseModal} mobilePadding="0">
         <Stack
           sx={{
             gap: '90px',
@@ -278,7 +273,7 @@ When user struggle with one example, try to switch to another example and come b
                       padding: '10px 30px',
                     }}
                     disabled={isFirstOne}
-                    onClick={handlePrevious}
+                    onClick={grammar.handlePrevious}
                     startIcon={<ChevronLeft size={'18px'} />}
                   >
                     {i18n._('Previous')}
@@ -293,7 +288,7 @@ When user struggle with one example, try to switch to another example and come b
                       padding: '10px 30px',
                     }}
                     disabled={isLastOne}
-                    onClick={handleNext}
+                    onClick={grammar.handleNext}
                     endIcon={<ChevronRight size={'18px'} />}
                   >
                     {i18n._('Next')}
