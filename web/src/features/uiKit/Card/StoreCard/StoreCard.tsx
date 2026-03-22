@@ -93,6 +93,8 @@ export const StoreCard = (props: StoreCardProps) => {
               sx={{
                 fontWeight: 500,
                 textTransform: 'uppercase',
+                lineHeight: 1,
+                opacity: 0.9,
               }}
             >
               {props.label}
@@ -102,7 +104,9 @@ export const StoreCard = (props: StoreCardProps) => {
             variant="h4"
             color={props.textColor}
             sx={{
-              fontWeight: 800,
+              fontWeight: 700,
+              lineHeight: 1.2,
+              paddingTop: '5px',
             }}
           >
             {props.title}
@@ -113,6 +117,8 @@ export const StoreCard = (props: StoreCardProps) => {
               color={props.textColor}
               sx={{
                 opacity: 0.9,
+                lineHeight: 1.5,
+                paddingTop: '2px',
               }}
             >
               {props.subTitle}
