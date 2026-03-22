@@ -9,6 +9,23 @@ import { setDoc } from 'firebase/firestore';
 import { useSettings } from '../Settings/useSettings';
 import { useLingui } from '@lingui/react';
 
+const tasksPerDays: DailyTaskType[][] = [
+  // Day1
+  ['just-talk'],
+
+  // Day2
+  ['just-talk', 'goal-lesson', 'grammar-improvement'],
+
+  // Day3
+  ['just-talk', 'goal-lesson', 'grammar-improvement', 'community'],
+
+  // Day4
+  ['just-talk', 'goal-lesson', 'grammar-improvement', 'community', 'story'],
+
+  // Day5 and on
+  ['just-talk', 'goal-lesson', 'grammar-improvement', 'community', 'story', 'daily-question'],
+];
+
 export interface DailyTaskApi {
   // Will be called from features side.
   onCompleteTask: (taskType: DailyTaskType) => Promise<void>;
@@ -45,23 +62,6 @@ export const dailyTasksContext = createContext<DailyTaskApi>({
   previewImageUrl: '',
   isAllTasksCompleted: false,
 });
-
-const tasksPerDays: DailyTaskType[][] = [
-  // Day1
-  ['just-talk'],
-
-  // Day2
-  ['just-talk', 'goal-lesson', 'grammar-improvement'],
-
-  // Day3
-  ['just-talk', 'goal-lesson', 'grammar-improvement', 'community'],
-
-  // Day4
-  ['just-talk', 'goal-lesson', 'grammar-improvement', 'community', 'story'],
-
-  // Day5 and on
-  ['just-talk', 'goal-lesson', 'grammar-improvement', 'community', 'story', 'daily-question'],
-];
 
 function useProvideDailyTasks(): DailyTaskApi {
   const auth = useAuth();
