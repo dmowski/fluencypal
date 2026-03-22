@@ -9,12 +9,11 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { ChevronDown, Flag, LandPlot, MoveRight, Plus, Settings, Sparkle } from 'lucide-react';
+import { LandPlot, Plus, Settings } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { usePlan } from '../Plan/usePlan';
 import { PlanElementMode } from '../Plan/types';
 import { PlanCard } from '../Plan/PlanCard';
-
 import { cardColors, modeCardProps } from '../Plan/data';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { useMemo, useState } from 'react';
@@ -24,7 +23,6 @@ import { useUrlParam } from '../Url/useUrlParam';
 import { useSettings } from '../Settings/useSettings';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-
 import { SectionHeader } from './CartsHeader';
 import { CardItem, StoreCard } from '../uiKit/Card/StoreCard';
 import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
