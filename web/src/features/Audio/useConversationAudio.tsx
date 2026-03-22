@@ -226,8 +226,12 @@ class AudioQueuePlayer {
     if (this.cachedSpeech[url]) {
       return;
     }
-
-    this.ensureUnlocked();
+    try {
+      this.ensureUnlocked();
+    } catch (error) {
+      console.warn('Audio not unlocked, cannot set potential speak:', error);
+      return;
+    }
 
     const el = new Audio();
     el.preload = 'auto';

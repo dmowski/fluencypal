@@ -1,3 +1,4 @@
+import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 import { Button, Stack } from '@mui/material';
 
 export const OptionsList = ({
@@ -9,6 +10,7 @@ export const OptionsList = ({
   handlePick: (word: string) => void;
   wrongWord: string | null;
 }) => {
+  const audio = useConversationAudio();
   return (
     <Stack
       direction="row"
@@ -25,7 +27,10 @@ export const OptionsList = ({
         return (
           <Button
             key={word}
-            onClick={() => handlePick(word)}
+            onClick={() => {
+              audio.initAudio();
+              handlePick(word);
+            }}
             variant={'contained'}
             color={isWrongWord ? 'error' : 'info'}
             sx={{
