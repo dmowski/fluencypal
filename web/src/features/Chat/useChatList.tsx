@@ -7,6 +7,13 @@ import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firesto
 import { ChatSpaceUserReadMetadata, UserChatMetadata } from './type';
 import { useSettings } from '../Settings/useSettings';
 
+// I send a message, and someone send a new message
+interface MyDailyQuestionNotification {
+  spaceId: string;
+  latestChanges: string;
+  unreadCount: number;
+}
+
 interface ChatListContextType {
   loading: boolean;
   myChats: UserChatMetadata[];
@@ -16,6 +23,7 @@ interface ChatListContextType {
   unreadCountGlobal: number;
   deleteChat: (spaceId: string) => Promise<void>;
   totalDailyQuestionsUnreadMessagesCount: number;
+  dailyQuestionsNotifications: MyDailyQuestionNotification[];
 }
 
 const ChatListContext = createContext<ChatListContextType | null>(null);
@@ -47,13 +55,6 @@ function useProvideChatList(): ChatListContextType {
 
   if (myChatsError) {
     console.error('Error fetching my chats:', myChatsError);
-  }
-
-  // I send a message, and someone send a new message
-  interface MyDailyQuestionNotification {
-    spaceId: string;
-    latestNotMineChangesIso: string;
-    unreadCount: number;
   }
 
   const {
@@ -114,24 +115,27 @@ function useProvideChatList(): ChatListContextType {
       const myMessageLastIndex = dailyChatMessagesIds.findLastIndex(
         (id) => allMessagesAuthorsMap[id] === auth.uid,
       );
-      const isMyMessageLast = myMessageLastIndex === dailyChatMessagesIds.length - 1;
-      if (myMessageLastIndex === -1 || isMyMessageLast) {
+      if (myMessageLastIndex === -1) {
         return;
       }
-      const messagesAfterMyLastMessage = dailyChatMessagesIds.slice(myMessageLastIndex + 1);
 
-      const latestNotMineChangesIso =
-        allMessagesObject[messagesAfterMyLastMessage[messagesAfterMyLastMessage.length - 1]];
+      const notMineMessages = dailyChatMessagesIds.filter((id, index) => {
+        const authorId = allMessagesAuthorsMap[id];
+        const isMine = authorId === auth.uid;
+        return !isMine;
+      });
 
-      const unreadDailyRepliesCount = messagesAfterMyLastMessage.filter((id) => {
+      const latestChanges = allMessagesObject[notMineMessages[notMineMessages.length - 1]] || null;
+
+      const unreadDailyRepliesCount = notMineMessages.filter((id) => {
         const isRead = myReadStatsData?.[spaceId]?.[id];
         return !isRead;
       }).length;
 
-      if (latestNotMineChangesIso) {
+      if (latestChanges) {
         dailyQuestionsNotifications.push({
           spaceId,
-          latestNotMineChangesIso,
+          latestChanges,
           unreadCount: unreadDailyRepliesCount,
         });
         totalDailyQuestionsUnreadMessagesCount += unreadDailyRepliesCount;
@@ -170,6 +174,7 @@ function useProvideChatList(): ChatListContextType {
     unreadSpaces,
     myUnreadCount,
     unreadCountGlobal,
+    dailyQuestionsNotifications,
     deleteChat,
   };
 }

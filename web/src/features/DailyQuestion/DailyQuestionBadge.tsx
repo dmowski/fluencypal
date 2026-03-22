@@ -8,12 +8,33 @@ import { DailyQuestion } from './types';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useAccess } from '@/features/Usage/useAccess';
 import { FlatChat } from '@/features/Chat/FlatChat';
+import { useChatList } from '../Chat/useChatList';
 
-export const DailyQuestionBadge = ({
-  sort = 'my-questions',
-}: {
-  sort?: 'my-questions' | 'latest';
-}) => {
+export const DailyQuestionNotifications = () => {
+  const chatList = useChatList();
+  const dailyQuestionsNotifications = chatList.dailyQuestionsNotifications;
+  const questionIds = dailyQuestionsNotifications.map((notification) =>
+    notification.spaceId.replace('daily-question-', ''),
+  );
+  const questionsRaw = questionIds.map((id) =>
+    Object.values(dailyQuestions).find((question) => question.id === id),
+  );
+  const questions = questionsRaw.filter((question) => question !== undefined);
+
+  return (
+    <Stack
+      sx={{
+        gap: '90px',
+      }}
+    >
+      {questions.map((question) => (
+        <QuestionSection key={question.id} question={question} isOld={true} />
+      ))}
+    </Stack>
+  );
+};
+
+export const DailyQuestionBadge = () => {
   const settings = useSettings();
   const createdAt = settings.userSettings?.createdAtIso || settings.userSettings?.createdAt;
   const daysSinceUserCreatedAccount = createdAt ? dayjs().diff(dayjs(createdAt), 'day') : 0;
