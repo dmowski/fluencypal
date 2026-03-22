@@ -39,7 +39,7 @@ export const DailyQuestionNotifications = () => {
           )?.latestNotMineChanges || '',
         ).fromNow();
         return (
-          <DailyQuestionCard
+          <DailyQuestionFullCard
             key={question.id}
             question={question}
             isShowFlameIcon={false}
@@ -52,7 +52,7 @@ export const DailyQuestionNotifications = () => {
   );
 };
 
-export const DailyQuestionBadge = () => {
+export const DailyQuestionFullList = () => {
   const settings = useSettings();
   const { i18n } = useLingui();
   const createdAt = settings.userSettings?.createdAtIso || settings.userSettings?.createdAt;
@@ -73,7 +73,7 @@ export const DailyQuestionBadge = () => {
         gap: '90px',
       }}
     >
-      <DailyQuestionCard
+      <DailyQuestionFullCard
         question={todaysQuestion}
         isShowFlameIcon={true}
         backgroundColor="rgba(115, 25, 35, 0.2)"
@@ -85,7 +85,7 @@ export const DailyQuestionBadge = () => {
         .map((key) => {
           const question = dailyQuestions[key];
           return (
-            <DailyQuestionCard
+            <DailyQuestionFullCard
               key={question.id}
               question={question}
               isShowFlameIcon={false}
@@ -98,7 +98,7 @@ export const DailyQuestionBadge = () => {
   );
 };
 
-export const DailyQuestionCard = ({
+export const DailyQuestionFullCard = ({
   question,
   backgroundColor,
   isShowFlameIcon,

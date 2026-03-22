@@ -9,7 +9,7 @@ import { StoreCard } from '@/features//uiKit/Card/StoreCard';
 import { FlatChat } from '@/features//Chat/FlatChat';
 import { SectionHeader } from './CartsHeader';
 import { useGlobalModals } from '@/features//Modal/useGlobalModals';
-import { dailyQuestionsImages } from '../DailyQuestion/data';
+import { getDailyQuestionImage } from '../DailyQuestion/data';
 
 export const DailyQuestionDashboardCard = () => {
   const settings = useSettings();
@@ -18,9 +18,8 @@ export const DailyQuestionDashboardCard = () => {
   const questionsKeys = Object.keys(dailyQuestions);
   const questionIndex = daysSinceStart % questionsKeys.length;
 
-  const previewImageUrl = dailyQuestionsImages[questionIndex % dailyQuestionsImages.length];
-
   const todaysQuestion = dailyQuestions[questionsKeys[questionIndex]];
+  const previewImageUrl = getDailyQuestionImage(todaysQuestion);
   const { i18n } = useLingui();
   const globalModals = useGlobalModals();
 

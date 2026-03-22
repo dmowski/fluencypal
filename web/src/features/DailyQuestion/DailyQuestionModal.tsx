@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material';
-import { DailyQuestionBadge } from './DailyQuestionBadge';
+import { DailyQuestionFullList } from './DailyQuestionBadge';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { useLingui } from '@lingui/react';
 
@@ -38,7 +38,7 @@ export const DailyQuestionModal = ({ onClose }: { onClose: () => void }) => {
           </Typography>
         </Stack>
 
-        <DailyQuestionBadge />
+        <DailyQuestionFullList />
       </Stack>
     </CustomModal>
   );

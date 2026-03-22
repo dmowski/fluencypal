@@ -1,4 +1,6 @@
-export const dailyQuestionsImages: string[] = [
+import { DailyQuestion } from './types';
+
+const dailyQuestionsImages: string[] = [
   'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774036079435-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
   'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035398903-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
   'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035331701-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
@@ -10,3 +12,9 @@ export const dailyQuestionsImages: string[] = [
   'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774034994467-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
   'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773947976503-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
 ];
+
+export const getDailyQuestionImage = (question: DailyQuestion) => {
+  const text = `${question.description}${question.title}`;
+  const questionIndex = text.length % dailyQuestionsImages.length;
+  return dailyQuestionsImages[questionIndex];
+};

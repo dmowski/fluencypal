@@ -6,7 +6,7 @@ import { ChatPage } from '@/features/Chat/ChatPage';
 import { GameStats } from '@/features/Game/GameStats';
 import { GamePage } from './GamePage';
 import { DebatesPage } from './DebatesPage';
-import { DailyQuestionBadge } from '@/features/DailyQuestion/DailyQuestionBadge';
+import { DailyQuestionFullList } from '@/features/DailyQuestion/DailyQuestionBadge';
 import { SupportPage } from './SupportPage';
 import { PageContainer } from './PageContainer';
 import { useUrlState } from '@/features/Url/useUrlState';
@@ -76,7 +76,7 @@ const CommunityPageContent = ({ activePage }: { activePage: CommunityPage }) => 
   if (activePage == 'dm') return <ChatPage type="private" isFullContentByDefault />;
   if (activePage == 'game') return <GamePage />;
   if (activePage == 'debates') return <DebatesPage />;
-  if (activePage == 'daily-questions') return <DailyQuestionBadge />;
+  if (activePage == 'daily-questions') return <DailyQuestionFullList />;
   if (activePage == 'tech-support')
     return (
       <PageContainer>
