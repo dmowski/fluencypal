@@ -12,7 +12,12 @@ import { useChatList } from '../Chat/useChatList';
 
 export const DailyQuestionNotifications = () => {
   const chatList = useChatList();
-  const dailyQuestionsNotifications = chatList.dailyQuestionsNotifications;
+  const dailyQuestionsNotifications = chatList.dailyQuestionsNotifications.sort((a, b) => {
+    const aTimeIso = a.latestNotMineChanges;
+    const bTimeIso = b.latestNotMineChanges;
+    return bTimeIso.localeCompare(aTimeIso);
+  });
+
   const questionIds = dailyQuestionsNotifications.map((notification) =>
     notification.spaceId.replace('daily-question-', ''),
   );

@@ -10,7 +10,7 @@ import { useSettings } from '../Settings/useSettings';
 // I send a message, and someone send a new message
 interface MyDailyQuestionNotification {
   spaceId: string;
-  latestChanges: string;
+  latestNotMineChanges: string;
   unreadCount: number;
 }
 
@@ -125,17 +125,18 @@ function useProvideChatList(): ChatListContextType {
         return !isMine;
       });
 
-      const latestChanges = allMessagesObject[notMineMessages[notMineMessages.length - 1]] || null;
+      const latestNotMineChanges =
+        allMessagesObject[notMineMessages[notMineMessages.length - 1]] || null;
 
       const unreadDailyRepliesCount = notMineMessages.filter((id) => {
         const isRead = myReadStatsData?.[spaceId]?.[id];
         return !isRead;
       }).length;
 
-      if (latestChanges) {
+      if (latestNotMineChanges) {
         dailyQuestionsNotifications.push({
           spaceId,
-          latestChanges,
+          latestNotMineChanges,
           unreadCount: unreadDailyRepliesCount,
         });
         totalDailyQuestionsUnreadMessagesCount += unreadDailyRepliesCount;
