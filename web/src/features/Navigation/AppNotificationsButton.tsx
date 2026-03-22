@@ -50,15 +50,7 @@ export const AppNotificationsButton: React.FC = () => {
                   fontWeight: 800,
                 }}
               >
-                {i18n._('Inbox')}
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: 'text.secondary',
-                }}
-              >
-                {i18n._('Here you can see your private messages with other users.')}
+                {i18n._('Notifications')}
               </Typography>
             </Stack>
             <Stack
