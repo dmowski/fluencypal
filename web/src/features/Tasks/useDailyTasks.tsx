@@ -9,17 +9,6 @@ import { setDoc } from 'firebase/firestore';
 import { useSettings } from '../Settings/useSettings';
 import { useLingui } from '@lingui/react';
 
-const tasksPerDays: DailyTaskType[][] = [
-  ['just-talk'],
-  ['just-talk', 'goal-lesson', 'grammar-improvement'],
-  ['just-talk', 'goal-lesson', 'grammar-improvement', 'daily-question'],
-  ['just-talk', 'story'],
-  ['just-talk', 'grammar-improvement', 'story', 'daily-question'],
-  ['just-talk', 'goal-lesson', 'grammar-improvement', 'story', 'daily-question', 'community'],
-  ['just-talk', 'daily-question'],
-  ['just-talk', 'goal-lesson', 'grammar-improvement', 'story', 'daily-question', 'community'],
-];
-
 export interface DailyTaskApi {
   // Will be called from features side.
   onCompleteTask: (taskType: DailyTaskType) => Promise<void>;
@@ -56,6 +45,12 @@ export const dailyTasksContext = createContext<DailyTaskApi>({
   previewImageUrl: '',
   isAllTasksCompleted: false,
 });
+
+interface DayTasksMeta {
+  tasks: DailyTaskType[];
+  title: string;
+  subTitle: string;
+}
 
 function useProvideDailyTasks(): DailyTaskApi {
   const auth = useAuth();
@@ -107,9 +102,68 @@ function useProvideDailyTasks(): DailyTaskApi {
     );
   }, [allProgressRaw, settings.languageCode]);
 
-  const todaysActualTasks: DailyTaskType[] = useMemo(() => {
+  const dailyPlans: DayTasksMeta[] = [
+    {
+      tasks: ['just-talk'],
+      title: i18n._('Make learning a habit!'),
+      subTitle: i18n._('Let’s get started with today’s tasks!'),
+    },
+    {
+      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
+      title: i18n._('Second day, keep it up!'),
+      subTitle: i18n._('Keep the momentum going with today’s tasks!'),
+    },
+    {
+      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement', 'daily-question'],
+      title: i18n._('Third day, you are doing great!'),
+      subTitle: i18n._('You are doing great! Check out today’s tasks!'),
+    },
+    {
+      tasks: ['story'],
+      title: i18n._('Fourth day, time for a story!'),
+      subTitle: i18n._(
+        'Enjoy a story today and get a full access. Thank you for being with us on this learning journey!',
+      ),
+    },
+    {
+      tasks: ['just-talk', 'grammar-improvement', 'story', 'daily-question'],
+      title: i18n._('Fifth day, you are on fire!'),
+      subTitle: i18n._('You are on fire! Check out today’s tasks!'),
+    },
+    {
+      tasks: [
+        'just-talk',
+        'goal-lesson',
+        'grammar-improvement',
+        'story',
+        'daily-question',
+        'community',
+      ],
+      title: i18n._('Sixth day, you are amazing!'),
+      subTitle: i18n._('You are amazing! Check out today’s tasks!'),
+    },
+    {
+      tasks: ['just-talk', 'daily-question'],
+      title: i18n._('Seventh day, great job!'),
+      subTitle: i18n._('Great job on making it a week! Check out today’s tasks!'),
+    },
+    {
+      tasks: [
+        'just-talk',
+        'goal-lesson',
+        'grammar-improvement',
+        'story',
+        'daily-question',
+        'community',
+      ],
+      title: i18n._('Eighth day, you are unstoppable!'),
+      subTitle: i18n._(`Most have already given up, but not you! I'm proud of you!`),
+    },
+  ];
+
+  const dayPlan: DayTasksMeta = useMemo(() => {
     const countOfActiveDays = allPreviousProgress.length;
-    const tasksForToday = tasksPerDays[Math.min(countOfActiveDays, tasksPerDays.length - 1)];
+    const tasksForToday = dailyPlans[Math.min(countOfActiveDays, dailyPlans.length - 1)];
     return tasksForToday;
   }, [today, allPreviousProgress]);
 
@@ -153,21 +207,21 @@ function useProvideDailyTasks(): DailyTaskApi {
 
   const isAllTasksCompleted = useMemo(() => {
     if (!todayTaskProgress) return false;
-    return todaysActualTasks.every((taskType) => {
+    return dayPlan.tasks.every((taskType) => {
       return !!todayTaskProgress?.completedTasks?.[taskType];
     });
-  }, [todayTaskProgress, todaysActualTasks]);
+  }, [todayTaskProgress, dayPlan]);
 
   return {
     onCompleteTask,
-    todaysActualTasks,
+    todaysActualTasks: dayPlan.tasks,
     isAllTasksCompleted,
     tasksInfo,
     todayTaskProgress: todayTaskProgress ?? null,
-    title: isAllTasksCompleted ? i18n._('All tasks completed') : i18n._('Make learning a habit!'),
+    title: isAllTasksCompleted ? i18n._('All tasks completed') : dayPlan.title,
     subTitle: isAllTasksCompleted
       ? i18n._('Great job! Come back tomorrow for new tasks.')
-      : i18n._('Let’s get started with today’s tasks!'),
+      : dayPlan.subTitle,
     badge: isAllTasksCompleted ? i18n._('Done').toUpperCase() : dayjs().format('D MMM'), // e.g. "23 Mar"
     previewImageUrl:
       'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774127689670-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
