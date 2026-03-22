@@ -1604,7 +1604,7 @@ msgstr "Todas las Entrevistas"
 msgid "All Scenarios"
 msgstr "Todos los escenarios"
 
-#: src/features/Tasks/useDailyTasks.tsx:173
+#: src/features/Tasks/useDailyTasks.tsx:226
 #. js-lingui-explicit-id
 msgid "All tasks completed"
 msgstr "Todas las tareas completadas"
@@ -1763,7 +1763,7 @@ msgstr ""
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "¡Responde una nueva pregunta cada día y observa cómo mejora tu estilo!"
 
-#: src/features/Tasks/useDailyTasks.tsx:99
+#: src/features/Tasks/useDailyTasks.tsx:88
 #. js-lingui-explicit-id
 msgid "Answer daily question"
 msgstr "Responde a la pregunta diaria"
@@ -2698,7 +2698,7 @@ msgstr "Comunicación y Liderazgo"
 #: src/features/Dashboard/CommunityDashboardCard.tsx:130
 #: src/features/Goal/Quiz/QuizPage2.tsx:539
 #: src/features/Navigation/NavigationBar.tsx:112
-#: src/features/Tasks/useDailyTasks.tsx:90
+#: src/features/Tasks/useDailyTasks.tsx:79
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Comunidad"
@@ -3014,7 +3014,7 @@ msgstr "Core Web Vitals"
 msgid "Correct"
 msgstr "Correcto"
 
-#: src/features/Tasks/useDailyTasks.tsx:83
+#: src/features/Tasks/useDailyTasks.tsx:72
 #. js-lingui-explicit-id
 msgid "Correct one of your sentences in Grammar improvement"
 msgstr "Corrige una de tus oraciones en Mejora de gramática"
@@ -3262,7 +3262,7 @@ msgstr "Práctica Diaria de Idioma"
 msgid "Daily Limits?"
 msgstr "¿Límites diarios?"
 
-#: src/features/Tasks/useDailyTasks.tsx:98
+#: src/features/Tasks/useDailyTasks.tsx:87
 #. js-lingui-explicit-id
 msgid "Daily question"
 msgstr "Pregunta diaria"
@@ -3295,15 +3295,16 @@ msgstr ""
 "estructuras de oraciones, te ayudan a crear un hábito de aprendizaje y "
 "refuerzan tus habilidades para mejorar la fluidez más rápidamente."
 
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:142
+#: src/features/Tasks/useDailyTasks.tsx:164
+#. js-lingui-explicit-id
+msgid "Daily tasks"
+msgstr "Tareas diarias"
+
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Daily Tasks"
 msgstr "Tareas Diarias"
-
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Daily tasks"
-msgstr "Tareas diarias"
 
 #: src/features/Lang/getLabels.tsx:29
 #. js-lingui-explicit-id
@@ -3800,7 +3801,7 @@ msgstr "¡No olvides probar el modo de llamada en la sección de práctica!"
 #: src/features/Landing/LandingPage.tsx:264
 #: src/features/Modal/TeacherVoiceModal.tsx:75
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
-#: src/features/Tasks/useDailyTasks.tsx:177
+#: src/features/Tasks/useDailyTasks.tsx:230
 #: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
 msgid "Done"
@@ -3933,6 +3934,11 @@ msgid ""
 msgstr ""
 "Estrategias efectivas para mejorar tus habilidades de habla en inglés en "
 "medio de una agenda apretada."
+
+#: src/features/Tasks/useDailyTasks.tsx:159
+#. js-lingui-explicit-id
+msgid "Eighth day, you are unstoppable!"
+msgstr "¡Octavo día, eres imparable!"
 
 #: src/features/Auth/AuthWallBasic.tsx:161
 #. js-lingui-explicit-id
@@ -4220,6 +4226,15 @@ msgstr "Mejora Tu Gramática"
 #. js-lingui-explicit-id
 msgid "Enhance your vocabulary by describing words in unique ways."
 msgstr "Mejora tu vocabulario describiendo palabras de maneras únicas."
+
+#: src/features/Tasks/useDailyTasks.tsx:124
+#. js-lingui-explicit-id
+msgid ""
+"Enjoy a story today and get a full access. Thank you for being with us on "
+"this learning journey!"
+msgstr ""
+"Disfruta una historia hoy y obtén acceso completo. ¡Gracias por "
+"acompañarnos en este viaje de aprendizaje!"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:257
 #. js-lingui-explicit-id
@@ -4854,6 +4869,11 @@ msgstr ""
 msgid "Feedback that helps"
 msgstr "Comentarios que ayudan"
 
+#: src/features/Tasks/useDailyTasks.tsx:130
+#. js-lingui-explicit-id
+msgid "Fifth day, you are on fire!"
+msgstr "¡Quinto día, estás en llamas!"
+
 #: src/features/Video/UploadVideoButton.tsx:52
 #. js-lingui-explicit-id
 msgid "File size must be less than 250MB"
@@ -4899,7 +4919,7 @@ msgstr "Clasificación Final"
 msgid "Finalizing decision ..."
 msgstr "Finalizando decisión ..."
 
-#: src/features/Tasks/useDailyTasks.tsx:87
+#: src/features/Tasks/useDailyTasks.tsx:76
 #. js-lingui-explicit-id
 msgid "Finish a lesson from your Learning Plan"
 msgstr "Termina una lección de tu Plan de Aprendizaje"
@@ -5225,6 +5245,11 @@ msgstr "Fundador"
 #. js-lingui-explicit-id
 msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
 msgstr "Cuatro maneras en que FluencyPal mejora tus habilidades de conversación"
+
+#: src/features/Tasks/useDailyTasks.tsx:123
+#. js-lingui-explicit-id
+msgid "Fourth day, time for a story!"
+msgstr "¡Cuarto día, momento para una historia!"
 
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:17
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:17
@@ -5831,15 +5856,15 @@ msgstr "Correcciones Gramaticales"
 msgid "Grammar corrections to boost your confidence"
 msgstr "Correcciones gramaticales para aumentar tu confianza"
 
-#: src/features/Tasks/useDailyTasks.tsx:82
-#. js-lingui-explicit-id
-msgid "Grammar improvement"
-msgstr "Mejora de gramática"
-
 #: src/features/Usage/UsageStatsCards.tsx:80
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "Mejora Gramatical"
+
+#: src/features/Tasks/useDailyTasks.tsx:71
+#. js-lingui-explicit-id
+msgid "Grammar improvement"
+msgstr "Mejora de gramática"
 
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:72
 #. js-lingui-explicit-id
@@ -5851,7 +5876,12 @@ msgstr "Mejoras gramaticales"
 msgid "Grammar Rules"
 msgstr "Reglas Gramaticales"
 
-#: src/features/Tasks/useDailyTasks.tsx:175
+#: src/features/Tasks/useDailyTasks.tsx:148
+#. js-lingui-explicit-id
+msgid "Great job on making it a week! Check out today’s tasks!"
+msgstr "¡Gran trabajo al llegar a una semana! ¡Consulta las tareas de hoy!"
+
+#: src/features/Tasks/useDailyTasks.tsx:228
 #. js-lingui-explicit-id
 msgid "Great job! Come back tomorrow for new tasks."
 msgstr "¡Gran trabajo! Vuelve mañana para nuevas tareas."
@@ -7870,6 +7900,11 @@ msgstr "Solo Habla"
 msgid "Keep it concise and relevant"
 msgstr "Manténgalo conciso y relevante"
 
+#: src/features/Tasks/useDailyTasks.tsx:114
+#. js-lingui-explicit-id
+msgid "Keep the momentum going with today’s tasks!"
+msgstr "¡Mantén el impulso con las tareas de hoy!"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
 msgid "Keep visible until review"
@@ -8104,7 +8139,7 @@ msgid "Learning Blog"
 msgstr "Blog de Aprendizaje"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:129
-#: src/features/Tasks/useDailyTasks.tsx:86
+#: src/features/Tasks/useDailyTasks.tsx:75
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Plan de Aprendizaje"
@@ -8147,7 +8182,7 @@ msgstr "Creemos una cuenta"
 msgid "Let's see who has the best arguments."
 msgstr "Veamos quién tiene los mejores argumentos."
 
-#: src/features/Tasks/useDailyTasks.tsx:176
+#: src/features/Tasks/useDailyTasks.tsx:109
 #. js-lingui-explicit-id
 msgid "Let’s get started with today’s tasks!"
 msgstr "¡Comencemos con las tareas de hoy!"
@@ -8187,7 +8222,7 @@ msgstr "Funciones de voz limitadas"
 msgid "Listen"
 msgstr "Escuchar"
 
-#: src/features/Tasks/useDailyTasks.tsx:95
+#: src/features/Tasks/useDailyTasks.tsx:84
 #. js-lingui-explicit-id
 msgid "Listen in to the end or finish quiz"
 msgstr "Escucha hasta el final o termina el cuestionario"
@@ -8312,7 +8347,7 @@ msgstr "¿Buscando algo específico?"
 msgid "Main goal in learning"
 msgstr "Objetivo principal en el aprendizaje"
 
-#: src/features/Tasks/useDailyTasks.tsx:173
+#: src/features/Tasks/useDailyTasks.tsx:108
 #. js-lingui-explicit-id
 msgid "Make learning a habit!"
 msgstr "¡Haz del aprendizaje un hábito!"
@@ -8620,6 +8655,11 @@ msgstr "Más lecciones únicas"
 #. js-lingui-explicit-id
 msgid "More..."
 msgstr "Más..."
+
+#: src/features/Tasks/useDailyTasks.tsx:160
+#. js-lingui-explicit-id
+msgid "Most have already given up, but not you! I'm proud of you!"
+msgstr "¡La mayoría ya se ha rendido, pero tú no! ¡Estoy orgulloso de ti!"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
 #. js-lingui-explicit-id
@@ -11233,6 +11273,11 @@ msgstr "Detección"
 msgid "Screening interview with AI recruiter"
 msgstr "Entrevista de selección con reclutador de IA"
 
+#: src/features/Tasks/useDailyTasks.tsx:113
+#. js-lingui-explicit-id
+msgid "Second day, keep it up!"
+msgstr "¡Segundo día, sigue así!"
+
 #: src/features/Game/Battle/BattleActionModal.tsx:167
 #. js-lingui-explicit-id
 msgid "Second Place"
@@ -11335,7 +11380,7 @@ msgstr "HTML Semántico"
 msgid "Send"
 msgstr "Enviar"
 
-#: src/features/Tasks/useDailyTasks.tsx:79
+#: src/features/Tasks/useDailyTasks.tsx:68
 #. js-lingui-explicit-id
 msgid "Send at least 10 messages in Just talk"
 msgstr "Envía al menos 10 mensajes en Solo hablar"
@@ -11361,7 +11406,7 @@ msgstr "Envíame el enlace para iniciar sesión"
 msgid "Send Message"
 msgstr "Enviar mensaje"
 
-#: src/features/Tasks/useDailyTasks.tsx:91
+#: src/features/Tasks/useDailyTasks.tsx:80
 #. js-lingui-explicit-id
 msgid "Send one message in the community space"
 msgstr "Envía un mensaje en el espacio comunitario"
@@ -11436,6 +11481,11 @@ msgstr "Establecer Mi Idioma"
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
 msgstr "Establece el objetivo de tu aprendizaje"
+
+#: src/features/Tasks/useDailyTasks.tsx:147
+#. js-lingui-explicit-id
+msgid "Seventh day, great job!"
+msgstr "¡Séptimo día, gran trabajo!"
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:36
 #. js-lingui-explicit-id
@@ -11625,6 +11675,11 @@ msgstr "Iniciar sesión"
 #. js-lingui-explicit-id
 msgid "Single player mode with AI"
 msgstr "Modo de un solo jugador con IA"
+
+#: src/features/Tasks/useDailyTasks.tsx:142
+#. js-lingui-explicit-id
+msgid "Sixth day, you are amazing!"
+msgstr "¡Sexto día, eres increíble!"
 
 #: src/features/Case/data/backendCSharp/exampleQuestionsSection.ts:46
 #. js-lingui-explicit-id
@@ -12078,7 +12133,7 @@ msgstr ""
 msgid "Stop"
 msgstr "Detener"
 
-#: src/features/Tasks/useDailyTasks.tsx:94
+#: src/features/Tasks/useDailyTasks.tsx:83
 #. js-lingui-explicit-id
 msgid "Story"
 msgstr "Historia"
@@ -12719,6 +12774,11 @@ msgstr "Pensando en qué idiomas podrían ser buenos para instalar..."
 #. js-lingui-explicit-id
 msgid "Thinking..."
 msgstr "Pensando..."
+
+#: src/features/Tasks/useDailyTasks.tsx:118
+#. js-lingui-explicit-id
+msgid "Third day, you are doing great!"
+msgstr "¡Tercer día, lo estás haciendo genial!"
 
 #: src/features/Router/BlockedAccess.tsx:121
 #. js-lingui-explicit-id
@@ -14566,6 +14626,21 @@ msgstr ""
 "¡Eres un líder en la tabla de clasificación! El acceso completo está activo "
 "mientras estés en el top-5"
 
+#: src/features/Tasks/useDailyTasks.tsx:143
+#. js-lingui-explicit-id
+msgid "You are amazing! Check out today’s tasks!"
+msgstr "¡Eres increíble! ¡Revisa las tareas de hoy!"
+
+#: src/features/Tasks/useDailyTasks.tsx:119
+#. js-lingui-explicit-id
+msgid "You are doing great! Check out today’s tasks!"
+msgstr "¡Lo estás haciendo genial! ¡Revisa las tareas de hoy!"
+
+#: src/features/Tasks/useDailyTasks.tsx:131
+#. js-lingui-explicit-id
+msgid "You are on fire! Check out today’s tasks!"
+msgstr "¡Estás en llamas! ¡Revisa las tareas de hoy!"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -14764,6 +14839,11 @@ msgid ""
 msgstr ""
 "Sabes de tecnología, pero **tienes dificultades para explicar decisiones "
 "claramente bajo presión**"
+
+#: src/features/Tasks/useDailyTasks.tsx:165
+#. js-lingui-explicit-id
+msgid "You know what to do"
+msgstr "Sabes qué hacer"
 
 #: src/features/Alias/components/PlayersSetup.tsx:285
 #. js-lingui-explicit-id
