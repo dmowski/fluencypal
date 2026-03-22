@@ -23,6 +23,7 @@ export const GrammarImprovementModal = () => {
     handleCloseModal,
     handleNext,
     handlePrevious,
+    isLoadingNew,
   } = useGrammarImprovement();
 
   const isOpen = selectedIndex !== null && !!grammarPoints[selectedIndex ?? -1];
@@ -119,9 +120,23 @@ When user struggle with one example, try to switch to another example and come b
     });
   }, [isOpen, improvement, isTranslateAvailable]);
 
-  const rowHeight = '40px';
-
   const isShowLoader = isLoading || !improvement;
+  if (isLoadingNew) {
+    return (
+      <Stack
+        sx={{
+          width: '100dvw',
+          height: '100dvh',
+          backgroundColor: '#181818',
+          position: 'fixed',
+
+          top: 0,
+          left: 0,
+          zIndex: 9999,
+        }}
+      />
+    );
+  }
 
   return (
     <>

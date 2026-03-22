@@ -24,8 +24,7 @@ const improvementsIcons: {
 
 export const GrammarImprovesCardUi = () => {
   const { i18n } = useLingui();
-  const { grammarPoints, titleMap, isLoadingNew, handleOpenModal, showAvailable } =
-    useGrammarImprovement();
+  const { grammarPoints, titleMap, handleOpenModal, showAvailable } = useGrammarImprovement();
 
   const [showAll, setShowAll] = useState(false);
   const limit = showAll ? grammarPoints.length : limitCount;
@@ -66,22 +65,6 @@ export const GrammarImprovesCardUi = () => {
 
     return newItems;
   }, [grammarPoints.length, titleMap, limit, isLimited]);
-
-  if (isLoadingNew) {
-    return (
-      <Stack
-        sx={{
-          width: '100dvw',
-          height: '100dvh',
-          backgroundColor: '#181818',
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          zIndex: 9999,
-        }}
-      />
-    );
-  }
 
   return (
     <Stack sx={{ gap: '20px' }}>

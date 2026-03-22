@@ -186,6 +186,8 @@ ${postfixInstruction}`;
   const showAvailable = useCallback(() => {
     if (grammarPoints.length > 0) {
       handleOpenModal(0);
+    } else {
+      console.log('No available');
     }
   }, [grammarPoints.length, handleOpenModal]);
 
@@ -203,11 +205,13 @@ ${postfixInstruction}`;
   }, [selectedIndex, grammarPoints.length, setSelectedIndex]);
 
   const handlePrevious = useCallback(async () => {
-    if (selectedIndex === null) return;
     setIsLoadingNew(true);
+    await sleep(10);
     setSelectedIndex(null);
     await sleep(300);
-    setSelectedIndex(Math.max(selectedIndex - 1, 0));
+    const activeIndex = selectedIndex ?? 0;
+    const previousIndex = activeIndex === 0 ? grammarPoints.length - 1 : activeIndex - 1;
+    setSelectedIndex(previousIndex);
     setIsLoadingNew(false);
   }, [selectedIndex, setSelectedIndex]);
 
