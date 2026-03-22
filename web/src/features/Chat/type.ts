@@ -28,6 +28,8 @@ export interface UserChatMetadata extends UserChatMetadataStatic {
 
   // id: updateAtIso
   allMessagesIds: Record<string, string> | null;
+
+  allMessagesIdsAuthorsMap: Record<string, string> | null;
 }
 
 // Metadata about a user in a chat space

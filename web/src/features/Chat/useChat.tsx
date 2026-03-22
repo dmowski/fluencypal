@@ -124,6 +124,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
         totalTopLevelMessagesIds: [],
         secondLevelSingleCommentsIds: [],
         allMessagesIds: {},
+        allMessagesIdsAuthorsMap: {},
       });
     }
 
@@ -228,12 +229,19 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       allMessagesIds[msg.id] = msg.updatedAtIso || msg.createdAtIso;
     });
 
+    const allMessagesIdsAuthorsMap: Record<string, string> = {};
+    messagesData.forEach((msg) => {
+      allMessagesIdsAuthorsMap[msg.id] = msg.senderId;
+    });
+
     if (
       metaData.totalMessages === realTotalMessages &&
       (metaData?.totalTopLevelMessagesIds?.length || 0) === totalTopLevelMessagesIds.length &&
       secondLevelSingleCommentsIds.length ===
         (metaData?.secondLevelSingleCommentsIds?.length || 0) &&
-      Object.keys(metaData.allMessagesIds || {}).length === Object.keys(allMessagesIds).length
+      Object.keys(metaData.allMessagesIds || {}).length === Object.keys(allMessagesIds).length &&
+      Object.keys(metaData.allMessagesIdsAuthorsMap || {}).length ===
+        Object.keys(allMessagesIdsAuthorsMap).length
     ) {
       return;
     }
@@ -244,7 +252,10 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       totalTopLevelMessagesIds: totalTopLevelMessagesIds,
       secondLevelSingleCommentsIds: secondLevelSingleCommentsIds,
       allMessagesIds: allMessagesIds,
+      allMessagesIdsAuthorsMap: allMessagesIdsAuthorsMap,
     };
+
+    console.log('Update metadata', partialMetadata);
 
     setDoc(metaRef, partialMetadata, { merge: true });
   };
