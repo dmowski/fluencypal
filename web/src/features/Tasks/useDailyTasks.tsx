@@ -51,16 +51,16 @@ const tasksPerDays: DailyTaskType[][] = [
   ['just-talk'],
 
   // Day2
-  ['just-talk', 'goal-lesson'],
+  ['just-talk', 'goal-lesson', 'grammar-improvement'],
 
   // Day3
-  ['just-talk', 'goal-lesson', 'community'],
+  ['just-talk', 'goal-lesson', 'grammar-improvement', 'community'],
 
   // Day4
-  ['just-talk', 'goal-lesson', 'community', 'story'],
+  ['just-talk', 'goal-lesson', 'grammar-improvement', 'community', 'story'],
 
   // Day5 and on
-  ['just-talk', 'goal-lesson', 'community', 'story', 'daily-question'],
+  ['just-talk', 'goal-lesson', 'grammar-improvement', 'community', 'story', 'daily-question'],
 ];
 
 function useProvideDailyTasks(): DailyTaskApi {
@@ -77,6 +77,10 @@ function useProvideDailyTasks(): DailyTaskApi {
       'just-talk': {
         title: 'Just talk',
         label: i18n._('Send at least 10 messages in Just talk'),
+      },
+      'grammar-improvement': {
+        title: i18n._('Grammar improvement'),
+        label: i18n._('Correct one of your sentences in Grammar improvement'),
       },
       'goal-lesson': {
         title: i18n._('Learning Plan'),

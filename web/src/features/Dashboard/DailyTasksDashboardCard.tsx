@@ -13,6 +13,7 @@ import { useSettings } from '../Settings/useSettings';
 import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 import { useGame } from '../Game/useGame';
 import { useUsage } from '../Usage/useUsage';
+import { useUrlState } from '../Url/useUrlState';
 
 export const DailyTasksDashboardCard = () => {
   const { i18n } = useLingui();
@@ -27,6 +28,8 @@ export const DailyTasksDashboardCard = () => {
   const aiAvatar = voiceAvatarMap[voiceName];
   const secondPhotoUrl = aiAvatar.photoUrls?.[1] || aiAvatar.photoUrls?.[0] || '';
 
+  const [selectedIndex, setSelectedIndex] = useUrlState<number | null>('improvement', null, false);
+
   const taskIconMap: Record<DailyTaskType, string> = useMemo(
     () => ({
       'just-talk': secondPhotoUrl,
@@ -35,6 +38,8 @@ export const DailyTasksDashboardCard = () => {
       community:
         'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773964951620-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.jpg',
       story: stories.randomStoryWithVideo?.imageUrl || '',
+      'grammar-improvement':
+        'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773858639762-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
       'daily-question':
         'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035287672-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
     }),
@@ -62,6 +67,9 @@ export const DailyTasksDashboardCard = () => {
         stories.rotateRandomStoryWithVideo();
       },
       'daily-question': globalModals.openDailyQuestions,
+      'grammar-improvement': () => {
+        setSelectedIndex(0);
+      },
     };
 
     const handler = tasksHandlerMap[taskType];

@@ -15,6 +15,7 @@ export type DailyTaskType =
   | 'goal-lesson' // Finish a lesson from the Goal plan
   | 'community' // Send at least one message in the community space
   | 'story' // Watch a story and listen in to the end or finish quiz
+  | 'grammar-improvement'
   | 'daily-question'; // Answer daily question
 
 export interface DailyTaskInfo {
