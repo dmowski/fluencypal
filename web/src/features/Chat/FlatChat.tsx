@@ -32,8 +32,6 @@ export const FlatChat = ({}: {}) => {
   return (
     <Stack
       sx={{
-        borderRadius: '12px',
-        backgroundColor: 'rgba(255, 255, 255, 0.03)',
         position: 'relative',
       }}
     >

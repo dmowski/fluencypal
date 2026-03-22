@@ -46,6 +46,7 @@ export const DailyQuestionFullCard = ({
         <Stack
           sx={{
             backgroundColor: 'rgba(32, 32, 32, 0.98)',
+            borderRadius: '0 0 16px 16px',
           }}
         >
           <FlatChat />

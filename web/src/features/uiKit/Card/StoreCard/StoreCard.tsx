@@ -5,20 +5,35 @@ import { StoreCardRowItem } from './StoreCardRowItem';
 import type { StoreCardProps } from './types';
 
 export const StoreCard = (props: StoreCardProps) => {
+  const cardBorderRadius = '16px';
+  const isOnlyImage = props.items.length === 0 && !props.emptyItemsStateText && !props.children;
   return (
     <Stack
       sx={{
         width: '100%',
         height: '100%',
         backgroundColor: props.backgroundColor,
-        borderRadius: '16px',
-
-        boxSizing: 'border-box',
-        padding: '0',
+        borderRadius: cardBorderRadius,
         position: 'relative',
-        overflow: 'hidden',
       }}
     >
+      <Stack
+        sx={{
+          boxShadow: props.borderSize
+            ? `inset 0px 0px 0px ${props.borderSize} ${props.backgroundColor}`
+            : `inset 0px 0px 0px 1px rgba(255, 255, 255, 0.08)`,
+          position: 'absolute',
+          borderRadius: cardBorderRadius,
+
+          pointerEvents: 'none',
+          zIndex: 11,
+          width: '100%',
+          height: '100%',
+          top: 0,
+          left: 0,
+        }}
+      />
+
       {props.badge && (
         <Stack
           sx={{
@@ -29,7 +44,7 @@ export const StoreCard = (props: StoreCardProps) => {
             backgroundColor: props.backgroundColor,
             padding: '10px 25px 10px 20px',
 
-            borderRadius: '0 0 28px 0',
+            borderRadius: `${cardBorderRadius} 0 ${cardBorderRadius} 0`,
             color: props.textColor,
           }}
         >
@@ -47,26 +62,11 @@ export const StoreCard = (props: StoreCardProps) => {
 
       <Stack
         sx={{
-          boxShadow: props.borderSize
-            ? `inset 0px 0px 0px ${props.borderSize} ${props.backgroundColor}`
-            : `inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1)`,
-          position: 'absolute',
-          borderRadius: '16px',
-
-          pointerEvents: 'none',
-          zIndex: 4,
-          width: '100%',
-          height: '100%',
-          top: 0,
-          left: 0,
-        }}
-      />
-
-      <Stack
-        sx={{
           width: '100%',
           position: 'relative',
-          borderRadius: '12px 12px 0 0',
+          borderRadius: isOnlyImage
+            ? cardBorderRadius
+            : `${cardBorderRadius} ${cardBorderRadius} 0 0`,
 
           minHeight: '350px',
           overflow: 'hidden',
@@ -93,6 +93,7 @@ export const StoreCard = (props: StoreCardProps) => {
               color={props.textColor}
               sx={{
                 fontWeight: 500,
+                textTransform: 'uppercase',
               }}
             >
               {props.label}
@@ -176,13 +177,21 @@ export const StoreCard = (props: StoreCardProps) => {
           sx={{
             width: '100%',
             backgroundColor: props.itemsBackgroundColor,
+
             position: 'relative',
             padding: '10px 0 10px 0',
             zIndex: 5,
+            borderRadius: `0 0 ${cardBorderRadius} ${cardBorderRadius}`,
           }}
         >
-          {props.items.map((item, index) => (
-            <StoreCardRowItem key={index} data={item} />
+          {props.items.map((item, index, all) => (
+            <StoreCardRowItem
+              key={index}
+              data={item}
+              borderRadius={
+                index === all.length - 1 ? `0 0 ${cardBorderRadius} ${cardBorderRadius}` : undefined
+              }
+            />
           ))}
         </Stack>
       )}
@@ -195,6 +204,8 @@ export const StoreCard = (props: StoreCardProps) => {
             padding: '20px',
             zIndex: 5,
             gap: '10px',
+            borderRadius: `0 0 ${cardBorderRadius} ${cardBorderRadius}`,
+            overflow: 'hidden',
           }}
         >
           <Typography variant="body2" color={'#fff'} sx={{ opacity: 0.9 }}>
@@ -202,7 +213,8 @@ export const StoreCard = (props: StoreCardProps) => {
           </Typography>
         </Stack>
       )}
-      {props.children && <Stack>{props.children}</Stack>}
+
+      {props.children && <Stack sx={{}}>{props.children}</Stack>}
     </Stack>
   );
 };

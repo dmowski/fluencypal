@@ -4,7 +4,13 @@ import { CardItemIcon } from './CardItemIcon';
 import { StoreButton } from './StoreButton';
 import type { CardItem } from './types';
 
-export const StoreCardRowItem = ({ data }: { data: CardItem }) => {
+export const StoreCardRowItem = ({
+  data,
+  borderRadius,
+}: {
+  data: CardItem;
+  borderRadius?: string;
+}) => {
   return (
     <Stack
       sx={{
@@ -15,6 +21,7 @@ export const StoreCardRowItem = ({ data }: { data: CardItem }) => {
         padding: '10px 20px',
         cursor: 'pointer',
         backgroundColor: data.rowBgColor || 'transparent',
+        borderRadius: borderRadius,
       }}
       onClick={(e) => {
         e.stopPropagation();
