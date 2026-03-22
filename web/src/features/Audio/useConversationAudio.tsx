@@ -131,6 +131,8 @@ class AudioQueuePlayer {
   private potentialSpeakUrl: string | null = null;
 
   async unlockFromGesture(): Promise<void> {
+    if (this.unlocked) return;
+
     if (!this.ctx) {
       const Ctx = (window.AudioContext ||
         (window as any).webkitAudioContext) as typeof AudioContext;
