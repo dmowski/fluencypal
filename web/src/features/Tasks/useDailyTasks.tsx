@@ -159,6 +159,11 @@ function useProvideDailyTasks(): DailyTaskApi {
       title: i18n._('Eighth day, you are unstoppable!'),
       subTitle: i18n._(`Most have already given up, but not you! I'm proud of you!`),
     },
+    {
+      tasks: ['just-talk', 'grammar-improvement', 'daily-question', 'community'],
+      title: i18n._('Daily tasks'),
+      subTitle: i18n._('You know what to do'),
+    },
   ];
 
   const dayPlan: DayTasksMeta = useMemo(() => {
