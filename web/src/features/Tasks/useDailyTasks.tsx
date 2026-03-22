@@ -122,13 +122,18 @@ function useProvideDailyTasks(): DailyTaskApi {
   const dailyTaskProgressDocRef = db.documents.dailyTaskProgress(
     userId ?? undefined,
     today,
-    settings.languageCode ?? undefined,
+    settings.languageCode ?? 'en',
   );
 
   const [todayTaskProgress] = useDocumentData(dailyTaskProgressDocRef);
 
   const onCompleteTask = async (taskType: DailyTaskType) => {
     if (!userId || !dailyTaskProgressDocRef || !settings.languageCode) {
+      console.log({
+        userId,
+        dailyTaskProgressDocRef,
+        languageCode: settings.languageCode,
+      });
       throw new Error('User or language not available. onCompleteTask failed.');
     }
 

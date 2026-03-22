@@ -14,6 +14,7 @@ import { getMediaVideoStreams } from '@/features/webCam/mediaStream';
 import { useSettings } from '@/features/Settings/useSettings';
 import { InteractiveExample } from './InteractiveExample';
 import { useGrammarImprovement } from './useGrammarImprovement';
+import { useDailyTasks } from '@/features/Tasks/useDailyTasks';
 
 export const GrammarImprovementModal = () => {
   const grammar = useGrammarImprovement();
@@ -53,8 +54,18 @@ export const GrammarImprovementModalContent = ({ onClose }: { onClose: () => voi
   const aiConversation = useAiConversation();
   const [isCallStarting, setIsCallStarting] = useState(false);
   const settings = useSettings();
+  const dailyTasks = useDailyTasks();
 
   const isShowLoader = !improvement;
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      dailyTasks.onCompleteTask('grammar-improvement');
+    }, 5000);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
 
   const practiceWithAi = async () => {
     audio.initAudio();
