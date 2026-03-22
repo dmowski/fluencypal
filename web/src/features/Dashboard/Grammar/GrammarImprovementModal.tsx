@@ -20,8 +20,6 @@ export const GrammarImprovementModal = () => {
   const isOpen =
     grammar.selectedIndex !== null && !!grammar.grammarPoints[grammar.selectedIndex ?? -1];
 
-  if (!isOpen) return <></>;
-
   if (grammar.isLoadingNew) {
     return (
       <Stack
@@ -38,6 +36,8 @@ export const GrammarImprovementModal = () => {
       />
     );
   }
+
+  if (!isOpen) return <></>;
 
   return <GrammarImprovementModalContent onClose={grammar.handleCloseModal} />;
 };
