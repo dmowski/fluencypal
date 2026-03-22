@@ -83,7 +83,6 @@ export const DailyQuestionDashboardCard = () => {
             <Stack
               sx={{
                 backgroundColor: 'rgba(32, 32, 32, 0.98)',
-                //borderRadius: '16px',
               }}
             >
               <FlatChat />

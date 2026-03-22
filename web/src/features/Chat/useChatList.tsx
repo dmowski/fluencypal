@@ -15,6 +15,7 @@ interface ChatListContextType {
   myUnreadCount: number;
   unreadCountGlobal: number;
   deleteChat: (spaceId: string) => Promise<void>;
+  totalDailyQuestionsUnreadMessagesCount: number;
 }
 
 const ChatListContext = createContext<ChatListContextType | null>(null);
@@ -48,7 +49,20 @@ function useProvideChatList(): ChatListContextType {
     console.error('Error fetching my chats:', myChatsError);
   }
 
-  const { unreadSpaces, myUnreadCount, unreadCountGlobal } = useMemo(() => {
+  // I send a message, and someone send a new message
+  interface MyDailyQuestionNotification {
+    spaceId: string;
+    latestNotMineChangesIso: string;
+    unreadCount: number;
+  }
+
+  const {
+    unreadSpaces,
+    myUnreadCount,
+    unreadCountGlobal,
+    dailyQuestionsNotifications,
+    totalDailyQuestionsUnreadMessagesCount,
+  } = useMemo(() => {
     const unreadLocalData: Record<string, number> = {};
     myChats
       ?.sort((a, b) => {
@@ -81,24 +95,15 @@ function useProvideChatList(): ChatListContextType {
       (id) => !myGlobalReadMessagesIds.includes(id),
     ).length;
 
-    /*
-    // todo:
-    // 1) get list of daily questions messages id
-    // 2) Find my answer, and get messages after my last message in that space
-    // 3) Filter only unread messages from that list, and add to unread count
+    const dailyQuestionsNotifications: MyDailyQuestionNotification[] = [];
 
-    interface DailyUnreadMessages {
-      spaceId: string;
-      unreadCount: number;
-      unreadMessagesIds: string[];
-    }
-
-    const dailyUnreadMessages: DailyUnreadMessages[] = [];
+    let totalDailyQuestionsUnreadMessagesCount = 0;
 
     dailyQuestionsChats?.forEach((dailyChat) => {
       const spaceId = dailyChat.spaceId;
       // id: iso data
       const allMessagesObject = dailyChat.allMessagesIds || {};
+      const allMessagesAuthorsMap = dailyChat.allMessagesIdsAuthorsMap || {};
       // old first
       const dailyChatMessagesIds = Object.keys(allMessagesObject).sort((a, b) => {
         const aIso = allMessagesObject[a] || '';
@@ -106,18 +111,39 @@ function useProvideChatList(): ChatListContextType {
         return aIso.localeCompare(bIso);
       });
 
-      const isMyMessagesIncludes = dailyChatMessagesIds.filter((dailyMessageId) => {
-        
-      });
+      const myMessageLastIndex = dailyChatMessagesIds.findLastIndex(
+        (id) => allMessagesAuthorsMap[id] === auth.uid,
+      );
+      const isMyMessageLast = myMessageLastIndex === dailyChatMessagesIds.length - 1;
+      if (myMessageLastIndex === -1 || isMyMessageLast) {
+        return;
+      }
+      const messagesAfterMyLastMessage = dailyChatMessagesIds.slice(myMessageLastIndex + 1);
 
-      console.log('dailyChatMessagesIds', spaceId, dailyChatMessagesIds);
+      const latestNotMineChangesIso =
+        allMessagesObject[messagesAfterMyLastMessage[messagesAfterMyLastMessage.length - 1]];
+
+      const unreadDailyRepliesCount = messagesAfterMyLastMessage.filter((id) => {
+        const isRead = myReadStatsData?.[spaceId]?.[id];
+        return !isRead;
+      }).length;
+
+      if (latestNotMineChangesIso) {
+        dailyQuestionsNotifications.push({
+          spaceId,
+          latestNotMineChangesIso,
+          unreadCount: unreadDailyRepliesCount,
+        });
+        totalDailyQuestionsUnreadMessagesCount += unreadDailyRepliesCount;
+      }
     });
-    */
 
     return {
       unreadSpaces: unreadLocalData,
       myUnreadCount: myUnreadCount,
       unreadCountGlobal,
+      dailyQuestionsNotifications,
+      totalDailyQuestionsUnreadMessagesCount,
     };
   }, [myChats, myReadStatsData, globalChat, userCreatedAt, dailyQuestionsChats]);
 
@@ -140,6 +166,7 @@ function useProvideChatList(): ChatListContextType {
     loading: myChatsLoading,
     myChats: myChats || [],
     myReadStats: myReadStatsData || {},
+    totalDailyQuestionsUnreadMessagesCount,
     unreadSpaces,
     myUnreadCount,
     unreadCountGlobal,

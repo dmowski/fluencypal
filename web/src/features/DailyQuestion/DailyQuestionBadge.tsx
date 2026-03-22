@@ -3,15 +3,17 @@ import { useLingui } from '@lingui/react';
 import { dailyQuestions } from './dailyQuestions';
 import dayjs from 'dayjs';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
-import { ChatSection } from '@/features/Chat/ChatSection';
 import { ChatProvider } from '@/features/Chat/useChat';
 import { DailyQuestion } from './types';
-import { PageContainer } from '@/features/Community/PageContainer';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useAccess } from '@/features/Usage/useAccess';
 import { FlatChat } from '@/features/Chat/FlatChat';
 
-export const DailyQuestionBadge = () => {
+export const DailyQuestionBadge = ({
+  sort = 'my-questions',
+}: {
+  sort?: 'my-questions' | 'latest';
+}) => {
   const settings = useSettings();
   const createdAt = settings.userSettings?.createdAtIso || settings.userSettings?.createdAt;
   const daysSinceUserCreatedAccount = createdAt ? dayjs().diff(dayjs(createdAt), 'day') : 0;
@@ -19,30 +21,10 @@ export const DailyQuestionBadge = () => {
   const questionIndex = daysSinceUserCreatedAccount % questionsKeys.length;
 
   const todaysQuestion = dailyQuestions[questionsKeys[questionIndex]];
-  const { i18n } = useLingui();
 
   const access = useAccess();
   if (!access.canUseCommunity) {
     return <></>;
-  }
-
-  if (!todaysQuestion) {
-    return (
-      <PageContainer>
-        <Stack
-          sx={{
-            gap: '5px',
-          }}
-        >
-          <Typography variant="h6">{i18n._('No daily question for today')}</Typography>
-          <Typography variant="body2">
-            {i18n._(
-              'Sorry, there is no daily question available for today. Please check back tomorrow!',
-            )}
-          </Typography>
-        </Stack>
-      </PageContainer>
-    );
   }
 
   return (

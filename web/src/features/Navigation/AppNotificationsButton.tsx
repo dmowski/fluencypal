@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useBattle } from '../Game/Battle/useBattle';
 import { TabLabel } from '../Game/TabLabel';
+import { DailyQuestionBadge } from '../DailyQuestion/DailyQuestionBadge';
 
 export const AppNotificationsButton: React.FC = () => {
   const [isShow, setIsShow] = useUrlState('inbox', false, false);
@@ -17,7 +18,11 @@ export const AppNotificationsButton: React.FC = () => {
   const newMessagesCount = chatList.myUnreadCount;
   const router = useRouter();
   const battles = useBattle();
-  const [mode, setMode] = useUrlState<'messages' | 'debates' | ''>('inboxType', 'messages', false);
+  const [mode, setMode] = useUrlState<'messages' | 'debates' | 'dailyQuestions'>(
+    'inboxType',
+    'messages',
+    false,
+  );
 
   const onClose = async () => {
     const searchParams = new URLSearchParams();
@@ -25,7 +30,10 @@ export const AppNotificationsButton: React.FC = () => {
     router.push(newUrl);
   };
 
-  const notificationsCount = newMessagesCount + battles.countOfBattlesNeedToAttention;
+  const notificationsCount =
+    newMessagesCount +
+    battles.countOfBattlesNeedToAttention +
+    chatList.totalDailyQuestionsUnreadMessagesCount;
 
   return (
     <>
@@ -80,13 +88,24 @@ export const AppNotificationsButton: React.FC = () => {
                   }
                   value={'debates'}
                 />
+                <Tab
+                  label={
+                    <TabLabel
+                      label={i18n._('Questions')}
+                      badgeNumber={chatList.totalDailyQuestionsUnreadMessagesCount}
+                    />
+                  }
+                  value={'dailyQuestions'}
+                />
               </Tabs>
               <Stack
                 sx={{
                   width: '100%',
                 }}
               >
-                {mode === 'messages' ? <ChatPage type={'private'} /> : <BattleSection />}
+                {mode === 'messages' && <ChatPage type={'private'} />}
+                {mode === 'debates' && <BattleSection />}
+                {mode === 'dailyQuestions' && <DailyQuestionBadge sort="latest" />}
               </Stack>
             </Stack>
           </Stack>
