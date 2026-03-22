@@ -176,21 +176,14 @@ export const StoreCard = (props: StoreCardProps) => {
           sx={{
             width: '100%',
             backgroundColor: props.itemsBackgroundColor,
-
             position: 'relative',
             padding: '10px 0 10px 0',
             zIndex: 5,
             borderRadius: `0 0 ${cardBorderRadius} ${cardBorderRadius}`,
           }}
         >
-          {props.items.map((item, index, all) => (
-            <StoreCardRowItem
-              key={index}
-              data={item}
-              borderRadius={
-                index === all.length - 1 ? `0 0 ${cardBorderRadius} ${cardBorderRadius}` : undefined
-              }
-            />
+          {props.items.map((item, index) => (
+            <StoreCardRowItem key={index} data={item} />
           ))}
         </Stack>
       )}
