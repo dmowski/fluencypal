@@ -177,6 +177,7 @@ function useProvideSettings(): SettingsContextType {
       userSource: userSource.userSource,
       teacherVoice: null,
     };
+    console.log('Init user settings', settingsData);
 
     await setDoc(userSettingsDoc, settingsData, { merge: true });
   };
@@ -256,6 +257,15 @@ function useProvideSettings(): SettingsContextType {
   }, [pageLanguageCode]);
 
   const setVoice = async (voice: AiVoice) => {
+    if (!voice) {
+      throw new Error('Voice is required');
+    }
+
+    if (voice === userSettings?.teacherVoice) {
+      return;
+    }
+    console.log('setVoice', voice);
+
     if (!userSettingsDoc) return;
     await setDoc(userSettingsDoc, { teacherVoice: voice }, { merge: true });
   };
