@@ -44,6 +44,7 @@ export const StoreCard = (props: StoreCardProps) => {
         height: '100%',
         backgroundColor: props.backgroundColor,
         borderRadius: '16px',
+
         boxSizing: 'border-box',
         padding: '0',
         position: 'relative',
@@ -59,6 +60,7 @@ export const StoreCard = (props: StoreCardProps) => {
             zIndex: 10,
             backgroundColor: props.backgroundColor,
             padding: '10px 25px 10px 20px',
+
             borderRadius: '0 0 28px 0',
             color: props.textColor,
           }}
@@ -82,6 +84,7 @@ export const StoreCard = (props: StoreCardProps) => {
             : `inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1)`,
           position: 'absolute',
           borderRadius: '16px',
+
           pointerEvents: 'none',
           zIndex: 4,
           width: '100%',
@@ -96,6 +99,7 @@ export const StoreCard = (props: StoreCardProps) => {
           width: '100%',
           position: 'relative',
           borderRadius: '12px 12px 0 0',
+
           minHeight: '350px',
           overflow: 'hidden',
           justifyContent: 'flex-end',
@@ -341,18 +345,26 @@ const StoreButton = ({ title, onClick }: { title: string; onClick: () => void })
 };
 
 export const CardItemIcon = ({ data }: { data: CardItemIcon }) => {
-  const size = '59px';
-  const iconBorderRadius = '12px';
+  const cardIconSize = '50px';
+  const cardIconSizeMobile = '50px';
+  const iconBorderRadius = '10px';
+  const iconsSize = 19;
+  const iconsSizeMobile = 19;
+
   return (
     <Stack
       sx={{
-        width: size,
-        minWidth: size,
-        height: size,
+        width: cardIconSize,
+        minWidth: cardIconSize,
+        height: cardIconSize,
         borderRadius: iconBorderRadius,
+
+        overflow: 'hidden',
+
         position: 'relative',
         justifyContent: 'center',
         alignItems: 'center',
+        '--icon-size': iconsSize,
 
         backgroundColor: data.iconBgColor || 'rgba(255, 255, 255, 0.05)',
 
@@ -362,14 +374,22 @@ export const CardItemIcon = ({ data }: { data: CardItemIcon }) => {
           inset: 0,
           zIndex: 2,
           borderRadius: iconBorderRadius,
-          boxShadow: 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2)',
+
+          boxShadow: 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1)',
+        },
+
+        '@media (max-width: 450px)': {
+          width: cardIconSizeMobile,
+          minWidth: cardIconSizeMobile,
+          height: cardIconSizeMobile,
+          '--icon-size': iconsSizeMobile,
         },
       }}
     >
       {data.iconName && (
         <DynamicIcon
           name={data.iconName}
-          size={size}
+          size={'var(--icon-size)'}
           style={{
             position: 'relative',
             zIndex: 3,
@@ -383,11 +403,10 @@ export const CardItemIcon = ({ data }: { data: CardItemIcon }) => {
           alt=""
           fill
           loading="eager"
-          sizes={size}
+          sizes={'(max-width: 600px) 100vw, 50vw'}
           style={{
             objectFit: 'cover',
             zIndex: 1,
-            borderRadius: iconBorderRadius,
           }}
         />
       )}
@@ -398,7 +417,8 @@ export const CardItemIcon = ({ data }: { data: CardItemIcon }) => {
           height: '100%',
           position: 'absolute',
           borderRadius: iconBorderRadius,
-          background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%)',
+
+          background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%)',
           zIndex: 0,
         }}
       />
