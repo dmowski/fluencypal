@@ -1,7 +1,8 @@
 import { Stack, Typography } from '@mui/material';
-import { DailyQuestionFullList } from './DailyQuestionBadge';
+
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { useLingui } from '@lingui/react';
+import { DailyQuestionFullList } from './DailyQuestionFullList';
 
 export const DailyQuestionModal = ({ onClose }: { onClose: () => void }) => {
   const { i18n } = useLingui();

@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useBattle } from '../Game/Battle/useBattle';
 import { TabLabel } from '../Game/TabLabel';
-import { DailyQuestionNotifications } from '../DailyQuestion/DailyQuestionBadge';
+import { DailyQuestionNotificationsList } from '../DailyQuestion/DailyQuestionNotificationsList';
 
 export const AppNotificationsButton: React.FC = () => {
   const [isShow, setIsShow] = useUrlState('inbox', false, false);
@@ -105,7 +105,7 @@ export const AppNotificationsButton: React.FC = () => {
               >
                 {mode === 'messages' && <ChatPage type={'private'} />}
                 {mode === 'debates' && <BattleSection />}
-                {mode === 'dailyQuestions' && <DailyQuestionNotifications />}
+                {mode === 'dailyQuestions' && <DailyQuestionNotificationsList />}
               </Stack>
             </Stack>
           </Stack>
