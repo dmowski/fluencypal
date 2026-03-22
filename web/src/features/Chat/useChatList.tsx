@@ -33,6 +33,14 @@ function useProvideChatList(): ChatListContextType {
     return query(chatListRef, where('allowedUserIds', 'array-contains', auth.uid));
   }, [chatListRef, auth.uid]);
 
+  const dailyQuestionsChatsQuery = useMemo(() => {
+    if (!chatListRef) return null;
+    return query(chatListRef, where('type', '==', 'dailyQuestion'));
+  }, [chatListRef]);
+
+  const [dailyQuestionsChats, dailyQuestionsChatsLoading, dailyQuestionsChatsError] =
+    useCollectionData(dailyQuestionsChatsQuery);
+
   const [myChats, myChatsLoading, myChatsError] = useCollectionData(myChatsQuery);
   const [globalChat] = useDocumentData(db.documents.chat(auth.uid, 'global'));
 
@@ -73,12 +81,45 @@ function useProvideChatList(): ChatListContextType {
       (id) => !myGlobalReadMessagesIds.includes(id),
     ).length;
 
+    /*
+    // todo:
+    // 1) get list of daily questions messages id
+    // 2) Find my answer, and get messages after my last message in that space
+    // 3) Filter only unread messages from that list, and add to unread count
+
+    interface DailyUnreadMessages {
+      spaceId: string;
+      unreadCount: number;
+      unreadMessagesIds: string[];
+    }
+
+    const dailyUnreadMessages: DailyUnreadMessages[] = [];
+
+    dailyQuestionsChats?.forEach((dailyChat) => {
+      const spaceId = dailyChat.spaceId;
+      // id: iso data
+      const allMessagesObject = dailyChat.allMessagesIds || {};
+      // old first
+      const dailyChatMessagesIds = Object.keys(allMessagesObject).sort((a, b) => {
+        const aIso = allMessagesObject[a] || '';
+        const bIso = allMessagesObject[b] || '';
+        return aIso.localeCompare(bIso);
+      });
+
+      const isMyMessagesIncludes = dailyChatMessagesIds.filter((dailyMessageId) => {
+        
+      });
+
+      console.log('dailyChatMessagesIds', spaceId, dailyChatMessagesIds);
+    });
+    */
+
     return {
       unreadSpaces: unreadLocalData,
       myUnreadCount: myUnreadCount,
       unreadCountGlobal,
     };
-  }, [myChats, myReadStatsData, globalChat, userCreatedAt]);
+  }, [myChats, myReadStatsData, globalChat, userCreatedAt, dailyQuestionsChats]);
 
   const deleteChat = async (spaceId: string) => {
     const chatRef = db.documents.chat(auth.uid, spaceId);
