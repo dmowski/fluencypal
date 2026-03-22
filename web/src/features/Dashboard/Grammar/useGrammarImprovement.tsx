@@ -30,7 +30,6 @@ interface GrammarImprovementContextValue {
   handleCloseModal: () => void;
   handleNext: () => Promise<void>;
   handlePrevious: () => Promise<void>;
-  fetchAllImprovements: () => Promise<void>;
   quizWordAudio: ReturnType<typeof useQuizWordAudio>;
 }
 
@@ -176,20 +175,22 @@ ${postfixInstruction}`;
 
   const handleOpenModal = useCallback(
     async (index: number) => {
-      fetchAllImprovements();
       await quizWordAudio.initAudio();
       setSelectedIndex(index);
     },
-    [fetchAllImprovements, quizWordAudio, setSelectedIndex],
+    [quizWordAudio, setSelectedIndex],
   );
 
   const showAvailable = useCallback(() => {
     if (grammarPoints.length > 0) {
       handleOpenModal(0);
-    } else {
-      console.log('No available');
     }
   }, [grammarPoints.length, handleOpenModal]);
+
+  useEffect(() => {
+    if (selectedIndex === null || selectedIndex === -1 || grammarPoints.length === 0) return;
+    fetchAllImprovements();
+  }, [selectedIndex, fetchAllImprovements, grammarPoints.length]);
 
   const handleCloseModal = useCallback(() => {
     setSelectedIndex(null);
@@ -234,7 +235,6 @@ ${postfixInstruction}`;
         handleCloseModal,
         handleNext,
         handlePrevious,
-        fetchAllImprovements,
         quizWordAudio,
       }}
     >
