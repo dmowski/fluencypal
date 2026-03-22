@@ -1647,8 +1647,8 @@ msgstr ""
 "\n"
 "그리고 나는 의심이 사라지는 조용한 순간에 중요한 위험이 어디에 있을 수 있는지 보기 시작하고 있습니다."
 
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:37
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:53
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:38
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "매일 새 질문에 답해보세요, 그리고 당신의 스타일이 어떻게 향상되는지 확인하세요!"
@@ -2556,7 +2556,7 @@ msgid "Community access"
 msgstr "커뮤니티 액세스"
 
 #: src/features/Chat/PublicChatModal.tsx:29
-#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:38
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -2568,11 +2568,6 @@ msgstr "커뮤니티 채팅"
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "커뮤니티 허브"
-
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
-#. js-lingui-explicit-id
-msgid "Community Responses:"
-msgstr "커뮤니티 응답:"
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:91
 #. js-lingui-explicit-id
@@ -3093,7 +3088,7 @@ msgstr "일일 제한?"
 msgid "Daily question"
 msgstr "일일 질문"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:52
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:34
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "일일 질문"
@@ -3104,8 +3099,8 @@ msgstr "일일 질문"
 msgid "Daily Question Chat"
 msgstr "일일 질문 채팅"
 
-#: src/features/Community/CommunityPage.tsx:31
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:29
+#: src/features/Community/CommunityPage.tsx:30
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:30
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "일일 질문"
@@ -3199,7 +3194,7 @@ msgid "Debate topics will be selected randomly."
 msgstr "토론 주제는 무작위로 선택됩니다."
 
 #: src/features/Community/CommunityDashboard.tsx:116
-#: src/features/Community/CommunityPage.tsx:30
+#: src/features/Community/CommunityPage.tsx:29
 #: src/features/Navigation/AppNotificationsButton.tsx:93
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -5046,7 +5041,7 @@ msgstr "전체 음성 기능"
 msgid "Fun facts about yourself"
 msgstr "당신에 관한 재미있는 사실"
 
-#: src/features/Community/CommunityPage.tsx:28
+#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Community/GamePage.tsx:72
 #: src/features/Dashboard/GameDashboardCard.tsx:37
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -7400,7 +7395,7 @@ msgstr "게으른 로딩"
 msgid "Leaderboard"
 msgstr "리더보드"
 
-#: src/features/Community/CommunityPage.tsx:33
+#: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Leaderboards"
 msgstr "리더보드"
@@ -8287,7 +8282,7 @@ msgstr "문법 오류가 발견되지 않았습니다. 계속해서 연습하여
 msgid "No interviews found"
 msgstr "인터뷰가 없습니다"
 
-#: src/features/Chat/FlatChat.tsx:66
+#: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "메시지가 아직 없습니다"
@@ -8524,6 +8519,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Off-topic"
 msgstr "주제에서 벗어남"
+
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:40
+#. js-lingui-explicit-id
+msgid "Old Question"
+msgstr "이전 질문"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -9569,11 +9569,6 @@ msgstr "게임을 준비 중입니다..."
 msgid "Previous"
 msgstr "이전"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
-#. js-lingui-explicit-id
-msgid "Previous Question"
-msgstr "이전 질문"
-
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -9610,7 +9605,7 @@ msgstr "우선 지원"
 msgid "Privacy Policy"
 msgstr "개인정보 보호정책"
 
-#: src/features/Community/CommunityPage.tsx:29
+#: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Private Messages"
 msgstr "개인 메시지"
@@ -9721,7 +9716,7 @@ msgid "Purchase 5 hours"
 msgstr "5시간 구매"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:74
+#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "질문"
@@ -10065,7 +10060,7 @@ msgstr "기록된 답변"
 msgid "Record Message"
 msgstr "메시지 기록"
 
-#: src/features/Chat/FlatChat.tsx:83
+#: src/features/Chat/FlatChat.tsx:81
 #. js-lingui-explicit-id
 msgid "Record message"
 msgstr "메시지 녹음"
@@ -10451,7 +10446,7 @@ msgstr "두 번째 장소"
 msgid "See all"
 msgstr "모두 보기"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:54
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "See All"
 msgstr "모두 보기"
@@ -11547,7 +11542,7 @@ msgstr "AI 프론트엔드 개발자와의 기술 면접"
 msgid "Tech stack covered"
 msgstr "다루는 기술 스택"
 
-#: src/features/Community/CommunityPage.tsx:32
+#: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Tech Support"
 msgstr "기술 지원"
@@ -12236,12 +12231,12 @@ msgstr ""
 "FluencyPal을 사용하려면 최신 인터넷 브라우저와 마이크가 필요합니다. 웹캠은 선택 사항이며, 웹캠 피드백을 활성화한 경우에만 "
 "사용됩니다. 설치는 필요하지 않습니다."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:71
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:42
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "오늘"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:30
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "오늘의 질문"
@@ -13601,11 +13596,6 @@ msgstr "언제든지 개인정보를 삭제할 수 있습니다"
 msgid "You can discuss the battle here."
 msgstr "당신은 여기에서 전투에 대해 논의할 수 있습니다."
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
-#. js-lingui-explicit-id
-msgid "You can discuss the daily question here."
-msgstr "여기에서 일일 질문에 대해 토론할 수 있습니다."
-
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -13996,6 +13986,21 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
+#. js-lingui-explicit-id
+#~ msgid "Community Responses:"
+#~ msgstr "커뮤니티 응답:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Previous Question"
+#~ msgstr "이전 질문"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
+#. js-lingui-explicit-id
+#~ msgid "You can discuss the daily question here."
+#~ msgstr "여기에서 일일 질문에 대해 토론할 수 있습니다."
 
 #: src/features/Navigation/AppNotificationsButton.tsx:61
 #. js-lingui-explicit-id

@@ -1734,8 +1734,8 @@ msgstr ""
 "Og jeg begynner å se hvor en betydelig risiko kan ligge: i det stille "
 "sekundet når tvilen forsvinner."
 
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:37
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:53
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:38
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "Svar på et nytt spørsmål hver dag og se hvordan stilen din forbedres!"
@@ -2676,7 +2676,7 @@ msgid "Community access"
 msgstr "Tilgang til fellesskapet"
 
 #: src/features/Chat/PublicChatModal.tsx:29
-#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:38
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -2688,11 +2688,6 @@ msgstr "Fellesskapschat"
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Fellesskapssenter"
-
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
-#. js-lingui-explicit-id
-msgid "Community Responses:"
-msgstr "Fellesskapsreaksjoner:"
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:91
 #. js-lingui-explicit-id
@@ -3229,7 +3224,7 @@ msgstr "Daglige Begrensninger?"
 msgid "Daily question"
 msgstr "Daglig spørsmål"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:52
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:34
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Daglig spørsmål"
@@ -3240,8 +3235,8 @@ msgstr "Daglig spørsmål"
 msgid "Daily Question Chat"
 msgstr "Daglig Spørsmål Chat"
 
-#: src/features/Community/CommunityPage.tsx:31
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:29
+#: src/features/Community/CommunityPage.tsx:30
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:30
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "Daglige spørsmål"
@@ -3338,7 +3333,7 @@ msgid "Debate topics will be selected randomly."
 msgstr "Debattemner vil bli valgt tilfeldig."
 
 #: src/features/Community/CommunityDashboard.tsx:116
-#: src/features/Community/CommunityPage.tsx:30
+#: src/features/Community/CommunityPage.tsx:29
 #: src/features/Navigation/AppNotificationsButton.tsx:93
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -5326,7 +5321,7 @@ msgstr ""
 msgid "Fun facts about yourself"
 msgstr "Morsomme fakta om deg selv"
 
-#: src/features/Community/CommunityPage.tsx:28
+#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Community/GamePage.tsx:72
 #: src/features/Dashboard/GameDashboardCard.tsx:37
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -7895,7 +7890,7 @@ msgstr "Latinnlasting"
 msgid "Leaderboard"
 msgstr "Toppliste"
 
-#: src/features/Community/CommunityPage.tsx:33
+#: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Leaderboards"
 msgstr "Lederbord"
@@ -8816,7 +8811,7 @@ msgstr "Ingen grammatiske feil funnet. Fortsett å øve for å se forbedringer h
 msgid "No interviews found"
 msgstr "Ingen intervjuer funnet"
 
-#: src/features/Chat/FlatChat.tsx:66
+#: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "Ingen meldinger ennå"
@@ -9074,6 +9069,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Off-topic"
 msgstr "Utenfor tema"
+
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:40
+#. js-lingui-explicit-id
+msgid "Old Question"
+msgstr "Gammelt spørsmål"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -10181,11 +10181,6 @@ msgstr "Forbereder spillet ditt..."
 msgid "Previous"
 msgstr "Forrige"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
-#. js-lingui-explicit-id
-msgid "Previous Question"
-msgstr "Forrige spørsmål"
-
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -10222,7 +10217,7 @@ msgstr "Prioritert støtte"
 msgid "Privacy Policy"
 msgstr "Personvernerklæring"
 
-#: src/features/Community/CommunityPage.tsx:29
+#: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Private Messages"
 msgstr "Privatmeldinger"
@@ -10333,7 +10328,7 @@ msgid "Purchase 5 hours"
 msgstr "Kjøp 5 timer"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:74
+#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "Spørsmål"
@@ -10690,7 +10685,7 @@ msgstr "Ta opp svar"
 msgid "Record Message"
 msgstr "Ta opp melding"
 
-#: src/features/Chat/FlatChat.tsx:83
+#: src/features/Chat/FlatChat.tsx:81
 #. js-lingui-explicit-id
 msgid "Record message"
 msgstr "Ta opp melding"
@@ -11086,7 +11081,7 @@ msgstr "Andreplass"
 msgid "See all"
 msgstr "Se alle"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:54
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "See All"
 msgstr "Se alle"
@@ -12256,7 +12251,7 @@ msgstr "Tech-intervju med AI frontend-utvikler"
 msgid "Tech stack covered"
 msgstr "Teknologier dekket"
 
-#: src/features/Community/CommunityPage.tsx:32
+#: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Tech Support"
 msgstr "Teknisk støtte"
@@ -12992,12 +12987,12 @@ msgstr ""
 "webkamera er valgfritt og brukes kun hvis du aktiverer "
 "webkameraforhåndsvisninger. Ingen installasjon er nødvendig."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:71
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:42
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "I dag"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:30
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "Dagens spørsmål"
@@ -14441,11 +14436,6 @@ msgstr "Du kan slette dine personlige data når som helst"
 msgid "You can discuss the battle here."
 msgstr "Du kan diskutere slaget her."
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
-#. js-lingui-explicit-id
-msgid "You can discuss the daily question here."
-msgstr "Du kan diskutere dagens spørsmål her."
-
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -14877,6 +14867,21 @@ msgstr ""
 "— det er viktig å delta i denne korte samtalen før du hopper inn i "
 "profesjonelle emner. Her er noen nyttige engelske uttrykk for å starte "
 "intervjuet:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
+#. js-lingui-explicit-id
+#~ msgid "Community Responses:"
+#~ msgstr "Fellesskapsreaksjoner:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Previous Question"
+#~ msgstr "Forrige spørsmål"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
+#. js-lingui-explicit-id
+#~ msgid "You can discuss the daily question here."
+#~ msgstr "Du kan diskutere dagens spørsmål her."
 
 #: src/features/Navigation/AppNotificationsButton.tsx:61
 #. js-lingui-explicit-id

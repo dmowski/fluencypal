@@ -1751,8 +1751,8 @@ msgstr ""
 "และฉันเริ่มมองเห็นว่าอันตรายอย่างมีนัยยะอาจอยู่ตรงไหน: ในขณะเงียบๆ "
 "ที่ความสงสัยได้หายไป"
 
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:37
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:53
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:38
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "ตอบคำถามใหม่ทุกวันและดูว่ารูปแบบของคุณพัฒนาขึ้นอย่างไร!"
@@ -2693,7 +2693,7 @@ msgid "Community access"
 msgstr "การเข้าถึงชุมชน"
 
 #: src/features/Chat/PublicChatModal.tsx:29
-#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:38
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -2705,11 +2705,6 @@ msgstr "แชทชุมชน"
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "ฮับชุมชน"
-
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
-#. js-lingui-explicit-id
-msgid "Community Responses:"
-msgstr "การตอบสนองของชุมชน:"
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:91
 #. js-lingui-explicit-id
@@ -3255,7 +3250,7 @@ msgstr "ขีดจำกัดรายวัน?"
 msgid "Daily question"
 msgstr "คำถามประจำวัน"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:52
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:34
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "คำถามประจำวัน"
@@ -3266,8 +3261,8 @@ msgstr "คำถามประจำวัน"
 msgid "Daily Question Chat"
 msgstr "แชทถามตอบประจำวัน"
 
-#: src/features/Community/CommunityPage.tsx:31
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:29
+#: src/features/Community/CommunityPage.tsx:30
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:30
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "คำถามประจำวัน"
@@ -3366,7 +3361,7 @@ msgid "Debate topics will be selected randomly."
 msgstr "หัวข้ออภิปรายจะถูกสุ่มเลือก"
 
 #: src/features/Community/CommunityDashboard.tsx:116
-#: src/features/Community/CommunityPage.tsx:30
+#: src/features/Community/CommunityPage.tsx:29
 #: src/features/Navigation/AppNotificationsButton.tsx:93
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -5368,7 +5363,7 @@ msgstr "คุณสมบัติการใช้เสียงเต็ม
 msgid "Fun facts about yourself"
 msgstr "ข้อมูลสนุกเกี่ยวกับตัวคุณ"
 
-#: src/features/Community/CommunityPage.tsx:28
+#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Community/GamePage.tsx:72
 #: src/features/Dashboard/GameDashboardCard.tsx:37
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -7934,7 +7929,7 @@ msgstr "การโหลดแบบขี้เกียจ"
 msgid "Leaderboard"
 msgstr "ลีดเดอร์บอร์ด"
 
-#: src/features/Community/CommunityPage.tsx:33
+#: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Leaderboards"
 msgstr "กระดานผู้นำ"
@@ -8861,7 +8856,7 @@ msgstr "ไม่มีข้อผิดพลาดทางไวยากร
 msgid "No interviews found"
 msgstr "ไม่พบการสัมภาษณ์"
 
-#: src/features/Chat/FlatChat.tsx:66
+#: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "ยังไม่มีข้อความ"
@@ -9117,6 +9112,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Off-topic"
 msgstr "นอกเรื่อง"
+
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:40
+#. js-lingui-explicit-id
+msgid "Old Question"
+msgstr "คำถามเก่า"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -10227,11 +10227,6 @@ msgstr "กำลังเตรียมเกมของคุณ..."
 msgid "Previous"
 msgstr "ก่อนหน้านี้"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
-#. js-lingui-explicit-id
-msgid "Previous Question"
-msgstr "คำถามก่อนหน้า"
-
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -10268,7 +10263,7 @@ msgstr "การสนับสนุนลำดับความสำคั
 msgid "Privacy Policy"
 msgstr "นโยบายความเป็นส่วนตัว"
 
-#: src/features/Community/CommunityPage.tsx:29
+#: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Private Messages"
 msgstr "ข้อความส่วนตัว"
@@ -10379,7 +10374,7 @@ msgid "Purchase 5 hours"
 msgstr "สั่งซื้อ 5 ชั่วโมง"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:74
+#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "คำถาม"
@@ -10733,7 +10728,7 @@ msgstr "บันทึกคำตอบ"
 msgid "Record Message"
 msgstr "บันทึกข้อความ"
 
-#: src/features/Chat/FlatChat.tsx:83
+#: src/features/Chat/FlatChat.tsx:81
 #. js-lingui-explicit-id
 msgid "Record message"
 msgstr "บันทึกข้อความ"
@@ -11132,7 +11127,7 @@ msgstr "อันดับที่สอง"
 msgid "See all"
 msgstr "ดูทั้งหมด"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:54
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "See All"
 msgstr "ดูทั้งหมด"
@@ -12284,7 +12279,7 @@ msgstr "การสัมภาษณ์ด้านเทคโนโลยี
 msgid "Tech stack covered"
 msgstr "ครอบคลุมเทคโนโลยีที่ใช้"
 
-#: src/features/Community/CommunityPage.tsx:32
+#: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Tech Support"
 msgstr "ฝ่ายสนับสนุนทางเทคนิค"
@@ -13013,12 +13008,12 @@ msgstr ""
 "กล้องเว็บแคมเป็นอุปกรณ์เสริมที่ใช้เฉพาะเมื่อคุณเปิดใช้งานการตอบกลับด้วยเว็บแ"
 "คม ไม่จำเป็นต้องติดตั้ง"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:71
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:42
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "วันนี้"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:30
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "คำถามของวันนี้"
@@ -14464,11 +14459,6 @@ msgstr "คุณสามารถลบข้อมูลส่วนตัว
 msgid "You can discuss the battle here."
 msgstr "คุณสามารถพูดคุยเกี่ยวกับการรบที่นี่"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
-#. js-lingui-explicit-id
-msgid "You can discuss the daily question here."
-msgstr "คุณสามารถสนทนาเกี่ยวกับคำถามประจำวันได้ที่นี่"
-
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -14891,6 +14881,21 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
+#. js-lingui-explicit-id
+#~ msgid "Community Responses:"
+#~ msgstr "การตอบสนองของชุมชน:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Previous Question"
+#~ msgstr "คำถามก่อนหน้า"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
+#. js-lingui-explicit-id
+#~ msgid "You can discuss the daily question here."
+#~ msgstr "คุณสามารถสนทนาเกี่ยวกับคำถามประจำวันได้ที่นี่"
 
 #: src/features/Navigation/AppNotificationsButton.tsx:61
 #. js-lingui-explicit-id

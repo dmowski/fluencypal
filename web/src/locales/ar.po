@@ -1723,8 +1723,8 @@ msgstr ""
 "وأنا بدأت أرى أين قد يكمن خطر كبير: في اللحظة الهادئة التي تختفي فيها "
 "الشكوك."
 
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:37
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:53
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:38
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "أجب عن سؤال جديد كل يوم وشاهد كيف يتحسن أسلوبك!"
@@ -2653,7 +2653,7 @@ msgid "Community access"
 msgstr "الوصول إلى المجتمع"
 
 #: src/features/Chat/PublicChatModal.tsx:29
-#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:38
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -2665,11 +2665,6 @@ msgstr "دردشة المجتمع"
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "محور المجتمع"
-
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
-#. js-lingui-explicit-id
-msgid "Community Responses:"
-msgstr "استجابات المجتمع:"
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:91
 #. js-lingui-explicit-id
@@ -3209,7 +3204,7 @@ msgstr "الحدود اليومية؟"
 msgid "Daily question"
 msgstr "سؤال اليوم"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:52
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:34
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "سؤال اليوم"
@@ -3220,8 +3215,8 @@ msgstr "سؤال اليوم"
 msgid "Daily Question Chat"
 msgstr "محادثة السؤال اليومي"
 
-#: src/features/Community/CommunityPage.tsx:31
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:29
+#: src/features/Community/CommunityPage.tsx:30
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:30
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "أسئلة يومية"
@@ -3315,7 +3310,7 @@ msgid "Debate topics will be selected randomly."
 msgstr "سيتم اختيار مواضيع النقاش بشكل عشوائي."
 
 #: src/features/Community/CommunityDashboard.tsx:116
-#: src/features/Community/CommunityPage.tsx:30
+#: src/features/Community/CommunityPage.tsx:29
 #: src/features/Navigation/AppNotificationsButton.tsx:93
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -5284,7 +5279,7 @@ msgstr "ميزات الصوت الكاملة"
 msgid "Fun facts about yourself"
 msgstr "حقائق ممتعة عن نفسك"
 
-#: src/features/Community/CommunityPage.tsx:28
+#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Community/GamePage.tsx:72
 #: src/features/Dashboard/GameDashboardCard.tsx:37
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -7784,7 +7779,7 @@ msgstr "التحميل البطيء"
 msgid "Leaderboard"
 msgstr "لوحة المتصدرين"
 
-#: src/features/Community/CommunityPage.tsx:33
+#: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Leaderboards"
 msgstr "لوحات الصدارة"
@@ -8711,7 +8706,7 @@ msgstr ""
 "\n"
 "لم يتم العثور على مقابلات\n"
 
-#: src/features/Chat/FlatChat.tsx:66
+#: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "لا توجد رسائل بعد"
@@ -8974,6 +8969,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Off-topic"
 msgstr "خارج الموضوع"
+
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:40
+#. js-lingui-explicit-id
+msgid "Old Question"
+msgstr "سؤال قديم"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -10082,11 +10082,6 @@ msgstr "جارٍ تحضير لعبتك..."
 msgid "Previous"
 msgstr "السابق"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
-#. js-lingui-explicit-id
-msgid "Previous Question"
-msgstr "السؤال السابق"
-
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -10123,7 +10118,7 @@ msgstr "الدعم ذو الأولوية"
 msgid "Privacy Policy"
 msgstr "سياسة الخصوصية"
 
-#: src/features/Community/CommunityPage.tsx:29
+#: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Private Messages"
 msgstr "رسائل خاصة"
@@ -10236,7 +10231,7 @@ msgid "Purchase 5 hours"
 msgstr "شراء 5 ساعات"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:74
+#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "سؤال"
@@ -10591,7 +10586,7 @@ msgstr "سجل الإجابة"
 msgid "Record Message"
 msgstr "سجل الرسالة"
 
-#: src/features/Chat/FlatChat.tsx:83
+#: src/features/Chat/FlatChat.tsx:81
 #. js-lingui-explicit-id
 msgid "Record message"
 msgstr ""
@@ -10989,7 +10984,7 @@ msgstr "المركز الثاني"
 msgid "See all"
 msgstr "شاهد الكل"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:54
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "See All"
 msgstr "شاهد الكل"
@@ -12128,7 +12123,7 @@ msgstr "مقابلة تقنية مع مطور واجهة أمامية للذكا
 msgid "Tech stack covered"
 msgstr "تكنولوجيا المُكوِّنة التي تم تغطيتها"
 
-#: src/features/Community/CommunityPage.tsx:32
+#: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Tech Support"
 msgstr "الدعم الفني"
@@ -12843,12 +12838,12 @@ msgstr ""
 "اختيارية وتستخدم فقط إذا قمت بتمكين تعليقات كاميرا الويب. لا يتطلب أي "
 "تثبيت.\n"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:71
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:42
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "اليوم"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:30
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "سؤال اليوم"
@@ -14275,11 +14270,6 @@ msgstr "يمكنك حذف بياناتك الشخصية في أي وقت"
 msgid "You can discuss the battle here."
 msgstr "يمكنك مناقشة المعركة هنا."
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
-#. js-lingui-explicit-id
-msgid "You can discuss the daily question here."
-msgstr "يمكنك مناقشة السؤال اليومي هنا."
-
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -14706,6 +14696,21 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
+#. js-lingui-explicit-id
+#~ msgid "Community Responses:"
+#~ msgstr "استجابات المجتمع:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Previous Question"
+#~ msgstr "السؤال السابق"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
+#. js-lingui-explicit-id
+#~ msgid "You can discuss the daily question here."
+#~ msgstr "يمكنك مناقشة السؤال اليومي هنا."
 
 #: src/features/Navigation/AppNotificationsButton.tsx:61
 #. js-lingui-explicit-id

@@ -1760,8 +1760,8 @@ msgstr ""
 "I zaczynam dostrzegać, gdzie może leżeć znaczące ryzyko: w cichej "
 "sekundzie, gdy znika wątpliwość."
 
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:37
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:53
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:38
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "Odpowiedz na nowe pytanie każdego dnia i zobacz, jak poprawia się Twój styl!"
@@ -2713,7 +2713,7 @@ msgid "Community access"
 msgstr "Dostęp społecznościowy"
 
 #: src/features/Chat/PublicChatModal.tsx:29
-#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:38
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -2725,11 +2725,6 @@ msgstr "Czat społecznościowy"
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Centrum społeczności"
-
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
-#. js-lingui-explicit-id
-msgid "Community Responses:"
-msgstr "Odpowiedzi Społeczności:"
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:91
 #. js-lingui-explicit-id
@@ -3270,7 +3265,7 @@ msgstr "Limity dzienne?"
 msgid "Daily question"
 msgstr "Codzienne pytanie"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:52
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:34
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Codzienne Pytanie"
@@ -3281,8 +3276,8 @@ msgstr "Codzienne Pytanie"
 msgid "Daily Question Chat"
 msgstr "Codzienne Pytanie na Czacie"
 
-#: src/features/Community/CommunityPage.tsx:31
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:29
+#: src/features/Community/CommunityPage.tsx:30
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:30
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "Codzienne pytania"
@@ -3377,7 +3372,7 @@ msgid "Debate topics will be selected randomly."
 msgstr "Tematy debaty będą wybierane losowo."
 
 #: src/features/Community/CommunityDashboard.tsx:116
-#: src/features/Community/CommunityPage.tsx:30
+#: src/features/Community/CommunityPage.tsx:29
 #: src/features/Navigation/AppNotificationsButton.tsx:93
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -5402,7 +5397,7 @@ msgstr "Pełne funkcje głosowe"
 msgid "Fun facts about yourself"
 msgstr "Ciekawe fakty o sobie"
 
-#: src/features/Community/CommunityPage.tsx:28
+#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Community/GamePage.tsx:72
 #: src/features/Dashboard/GameDashboardCard.tsx:37
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -7999,7 +7994,7 @@ msgstr "Leniwe ładowanie"
 msgid "Leaderboard"
 msgstr "Tablica wyników"
 
-#: src/features/Community/CommunityPage.tsx:33
+#: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Leaderboards"
 msgstr "Tablice wyników"
@@ -8980,7 +8975,7 @@ msgstr "Brak błędów gramatycznych. Kontynuuj ćwiczenia, aby zobaczyć tutaj 
 msgid "No interviews found"
 msgstr "Nie znaleziono żadnych wywiadów"
 
-#: src/features/Chat/FlatChat.tsx:66
+#: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "Brak wiadomości"
@@ -9240,6 +9235,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Off-topic"
 msgstr "Nie na temat"
+
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:40
+#. js-lingui-explicit-id
+msgid "Old Question"
+msgstr "Stare pytanie"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -10376,11 +10376,6 @@ msgstr "Przygotowywanie twojej gry..."
 msgid "Previous"
 msgstr "Poprzedni"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
-#. js-lingui-explicit-id
-msgid "Previous Question"
-msgstr "Poprzednie Pytanie"
-
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -10417,7 +10412,7 @@ msgstr "Priorytetowe wsparcie"
 msgid "Privacy Policy"
 msgstr "Polityka Prywatności"
 
-#: src/features/Community/CommunityPage.tsx:29
+#: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Private Messages"
 msgstr "Wiadomości Prywatne"
@@ -10528,7 +10523,7 @@ msgid "Purchase 5 hours"
 msgstr "Zakup 5 godzin"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:74
+#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "Pytanie"
@@ -10895,7 +10890,7 @@ msgstr "Nagraj odpowiedź"
 msgid "Record Message"
 msgstr "Nagraj Wiadomość"
 
-#: src/features/Chat/FlatChat.tsx:83
+#: src/features/Chat/FlatChat.tsx:81
 #. js-lingui-explicit-id
 msgid "Record message"
 msgstr "Nagraj wiadomość"
@@ -11296,7 +11291,7 @@ msgstr "Drugie Miejsce"
 msgid "See all"
 msgstr "Zobacz wszystko"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:54
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "See All"
 msgstr "Zobacz Wszystko"
@@ -12460,7 +12455,7 @@ msgstr "Rozmowa techniczna z AI frontend deweloperem"
 msgid "Tech stack covered"
 msgstr "Stos technologiczny omówiony"
 
-#: src/features/Community/CommunityPage.tsx:32
+#: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Tech Support"
 msgstr "Wsparcie Techniczne"
@@ -13200,12 +13195,12 @@ msgstr ""
 "tylko wtedy, gdy włączysz sprzężenie zwrotne z kamery internetowej. "
 "Instalacja nie jest wymagana."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:71
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:42
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "Dziś"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:30
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "Dzisiejsze Pytanie"
@@ -14661,11 +14656,6 @@ msgstr "Możesz usunąć swoje dane osobowe w dowolnym momencie"
 msgid "You can discuss the battle here."
 msgstr "Możesz omówić bitwę tutaj."
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
-#. js-lingui-explicit-id
-msgid "You can discuss the daily question here."
-msgstr "Możesz omówić codzienne pytanie tutaj."
-
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -15095,6 +15085,21 @@ msgstr ""
 "— ważne jest, aby zaangażować się w tę krótką rozmowę przed poruszeniem "
 "tematów zawodowych. Oto kilka przydatnych angielskich zwrotów, które pomogą "
 "rozpocząć wywiad:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
+#. js-lingui-explicit-id
+#~ msgid "Community Responses:"
+#~ msgstr "Odpowiedzi Społeczności:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Previous Question"
+#~ msgstr "Poprzednie Pytanie"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
+#. js-lingui-explicit-id
+#~ msgid "You can discuss the daily question here."
+#~ msgstr "Możesz omówić codzienne pytanie tutaj."
 
 #: src/features/Navigation/AppNotificationsButton.tsx:61
 #. js-lingui-explicit-id

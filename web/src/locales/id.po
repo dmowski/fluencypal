@@ -1762,8 +1762,8 @@ msgstr ""
 "Dan saya mulai melihat di mana risiko signifikan mungkin bersembunyi: di "
 "saat sunyi ketika keraguan menghilang."
 
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:37
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:53
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:38
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "Jawab pertanyaan baru setiap hari dan lihat bagaimana gaya Anda meningkat!"
@@ -2714,7 +2714,7 @@ msgid "Community access"
 msgstr "Akses komunitas"
 
 #: src/features/Chat/PublicChatModal.tsx:29
-#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:38
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -2726,11 +2726,6 @@ msgstr "Obrolan Komunitas"
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "Pusat Komunitas"
-
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
-#. js-lingui-explicit-id
-msgid "Community Responses:"
-msgstr "Respon dari Komunitas:"
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:91
 #. js-lingui-explicit-id
@@ -3269,7 +3264,7 @@ msgstr "Batas Harian?"
 msgid "Daily question"
 msgstr "Pertanyaan harian"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:52
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:34
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Pertanyaan Harian"
@@ -3280,8 +3275,8 @@ msgstr "Pertanyaan Harian"
 msgid "Daily Question Chat"
 msgstr "Obrolan Pertanyaan Harian"
 
-#: src/features/Community/CommunityPage.tsx:31
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:29
+#: src/features/Community/CommunityPage.tsx:30
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:30
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "Pertanyaan Harian"
@@ -3376,7 +3371,7 @@ msgid "Debate topics will be selected randomly."
 msgstr "Topik debat akan dipilih secara acak."
 
 #: src/features/Community/CommunityDashboard.tsx:116
-#: src/features/Community/CommunityPage.tsx:30
+#: src/features/Community/CommunityPage.tsx:29
 #: src/features/Navigation/AppNotificationsButton.tsx:93
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -5410,7 +5405,7 @@ msgstr "Fitur suara penuh"
 msgid "Fun facts about yourself"
 msgstr "Fakta menarik tentang diri Anda"
 
-#: src/features/Community/CommunityPage.tsx:28
+#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Community/GamePage.tsx:72
 #: src/features/Dashboard/GameDashboardCard.tsx:37
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -8048,7 +8043,7 @@ msgstr "Pemuatan Lambat"
 msgid "Leaderboard"
 msgstr "Papan Peringkat"
 
-#: src/features/Community/CommunityPage.tsx:33
+#: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Leaderboards"
 msgstr "Papan Peringkat"
@@ -8986,7 +8981,7 @@ msgstr ""
 msgid "No interviews found"
 msgstr "Tidak ada wawancara ditemukan"
 
-#: src/features/Chat/FlatChat.tsx:66
+#: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "Belum ada pesan"
@@ -9248,6 +9243,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Off-topic"
 msgstr "Di luar topik"
+
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:40
+#. js-lingui-explicit-id
+msgid "Old Question"
+msgstr "Pertanyaan Lama"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -10389,11 +10389,6 @@ msgstr "Menyiapkan permainan Anda..."
 msgid "Previous"
 msgstr "Sebelumnya"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
-#. js-lingui-explicit-id
-msgid "Previous Question"
-msgstr "Pertanyaan Sebelumnya"
-
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -10430,7 +10425,7 @@ msgstr "Dukungan prioritas"
 msgid "Privacy Policy"
 msgstr "Kebijakan Privasi"
 
-#: src/features/Community/CommunityPage.tsx:29
+#: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Private Messages"
 msgstr "Pesan Pribadi"
@@ -10541,7 +10536,7 @@ msgid "Purchase 5 hours"
 msgstr "Beli 5 jam"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:74
+#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "Pertanyaan"
@@ -10908,7 +10903,7 @@ msgstr "Rekam jawaban"
 msgid "Record Message"
 msgstr "Rekam Pesan"
 
-#: src/features/Chat/FlatChat.tsx:83
+#: src/features/Chat/FlatChat.tsx:81
 #. js-lingui-explicit-id
 msgid "Record message"
 msgstr "Rekam pesan"
@@ -11307,7 +11302,7 @@ msgstr "Peringkat Kedua"
 msgid "See all"
 msgstr "Lihat semua"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:54
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "See All"
 msgstr "Lihat Semua"
@@ -12480,7 +12475,7 @@ msgstr "Wawancara teknis dengan pengembang frontend AI"
 msgid "Tech stack covered"
 msgstr "Tumpukan teknologi yang dibahas"
 
-#: src/features/Community/CommunityPage.tsx:32
+#: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Tech Support"
 msgstr "Dukungan Teknis"
@@ -13222,12 +13217,12 @@ msgstr ""
 "mikrofon. Webcam bersifat opsional dan hanya digunakan jika Anda "
 "mengaktifkan umpan balik webcam. Tidak diperlukan instalasi."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:71
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:42
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "Hari ini"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:30
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "Pertanyaan Hari Ini"
@@ -14711,11 +14706,6 @@ msgstr "Anda dapat menghapus data pribadi Anda kapan saja"
 msgid "You can discuss the battle here."
 msgstr "Anda dapat mendiskusikan pertempuran di sini."
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
-#. js-lingui-explicit-id
-msgid "You can discuss the daily question here."
-msgstr "Anda dapat mendiskusikan pertanyaan harian di sini."
-
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -15155,6 +15145,21 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
+#. js-lingui-explicit-id
+#~ msgid "Community Responses:"
+#~ msgstr "Respon dari Komunitas:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Previous Question"
+#~ msgstr "Pertanyaan Sebelumnya"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
+#. js-lingui-explicit-id
+#~ msgid "You can discuss the daily question here."
+#~ msgstr "Anda dapat mendiskusikan pertanyaan harian di sini."
 
 #: src/features/Navigation/AppNotificationsButton.tsx:61
 #. js-lingui-explicit-id

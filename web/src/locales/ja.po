@@ -1650,8 +1650,8 @@ msgstr ""
 "\n"
 "そして私は、かなりのリスクが潜んでいる場所を見始めています：疑念が消える静かな一瞬に。"
 
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:37
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:53
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:38
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "毎日新しい質問に答えて、自分のスタイルがどのように向上するかを見てみましょう！"
@@ -2557,7 +2557,7 @@ msgid "Community access"
 msgstr "コミュニティアクセス"
 
 #: src/features/Chat/PublicChatModal.tsx:29
-#: src/features/Community/CommunityPage.tsx:27
+#: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:38
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
@@ -2569,11 +2569,6 @@ msgstr "コミュニティチャット"
 #. js-lingui-explicit-id
 msgid "Community Hub"
 msgstr "コミュニティハブ"
-
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
-#. js-lingui-explicit-id
-msgid "Community Responses:"
-msgstr "コミュニティの回答:"
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:91
 #. js-lingui-explicit-id
@@ -3093,7 +3088,7 @@ msgstr "デイリーリミット？"
 msgid "Daily question"
 msgstr "デイリークエスチョン"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:52
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:34
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "毎日の質問"
@@ -3104,8 +3099,8 @@ msgstr "毎日の質問"
 msgid "Daily Question Chat"
 msgstr "デイリークエスチョンチャット"
 
-#: src/features/Community/CommunityPage.tsx:31
-#: src/features/DailyQuestion/DailyQuestionModal.tsx:29
+#: src/features/Community/CommunityPage.tsx:30
+#: src/features/DailyQuestion/DailyQuestionModal.tsx:30
 #. js-lingui-explicit-id
 msgid "Daily Questions"
 msgstr "デイリークエスチョン"
@@ -3197,7 +3192,7 @@ msgid "Debate topics will be selected randomly."
 msgstr "ランダムにディベートトピックが選ばれます。"
 
 #: src/features/Community/CommunityDashboard.tsx:116
-#: src/features/Community/CommunityPage.tsx:30
+#: src/features/Community/CommunityPage.tsx:29
 #: src/features/Navigation/AppNotificationsButton.tsx:93
 #. js-lingui-explicit-id
 msgid "Debates"
@@ -5040,7 +5035,7 @@ msgstr "フルボイス機能"
 msgid "Fun facts about yourself"
 msgstr "自分自身に関する楽しい事実"
 
-#: src/features/Community/CommunityPage.tsx:28
+#: src/features/Community/CommunityPage.tsx:27
 #: src/features/Community/GamePage.tsx:72
 #: src/features/Dashboard/GameDashboardCard.tsx:37
 #: src/features/RolePlay/rolePlayData.tsx:20
@@ -7384,7 +7379,7 @@ msgstr "遅延読み込み"
 msgid "Leaderboard"
 msgstr "リーダーボード"
 
-#: src/features/Community/CommunityPage.tsx:33
+#: src/features/Community/CommunityPage.tsx:32
 #. js-lingui-explicit-id
 msgid "Leaderboards"
 msgstr "リーダーボード"
@@ -8279,7 +8274,7 @@ msgstr "文法の間違いは見つかりませんでした。ここでの改善
 msgid "No interviews found"
 msgstr "該当するインタビューが見つかりませんでした"
 
-#: src/features/Chat/FlatChat.tsx:66
+#: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
 msgstr "まだメッセージはありません"
@@ -8516,6 +8511,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Off-topic"
 msgstr "オフトピック"
+
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:40
+#. js-lingui-explicit-id
+msgid "Old Question"
+msgstr "古い質問"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -9558,11 +9558,6 @@ msgstr "ゲームの準備中..."
 msgid "Previous"
 msgstr "前へ"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
-#. js-lingui-explicit-id
-msgid "Previous Question"
-msgstr "前の質問"
-
 #: src/features/Case/Landing/components/Footer.tsx:117
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
@@ -9599,7 +9594,7 @@ msgstr "優先サポート"
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 
-#: src/features/Community/CommunityPage.tsx:29
+#: src/features/Community/CommunityPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Private Messages"
 msgstr "プライベートメッセージ"
@@ -9714,7 +9709,7 @@ msgid "Purchase 5 hours"
 msgstr "5時間 購入"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:74
+#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "質問"
@@ -10058,7 +10053,7 @@ msgstr "回答を記録"
 msgid "Record Message"
 msgstr "メッセージを記録"
 
-#: src/features/Chat/FlatChat.tsx:83
+#: src/features/Chat/FlatChat.tsx:81
 #. js-lingui-explicit-id
 msgid "Record message"
 msgstr "メッセージを記録"
@@ -10446,7 +10441,7 @@ msgstr "セカンドプレース"
 msgid "See all"
 msgstr "すべて表示"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:54
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "See All"
 msgstr "すべてを見る"
@@ -11555,7 +11550,7 @@ msgstr "AIフロントエンド開発者との技術面接"
 msgid "Tech stack covered"
 msgstr "カバーされている技術スタック"
 
-#: src/features/Community/CommunityPage.tsx:32
+#: src/features/Community/CommunityPage.tsx:31
 #. js-lingui-explicit-id
 msgid "Tech Support"
 msgstr "テクニカルサポート"
@@ -12236,12 +12231,12 @@ msgstr ""
 "FluencyPalを使用するには、最新のインターネットブラウザとマイクが必要です。ウェブカメラはオプションで、ウェブカメラフィードバックを有効にした場"
 "合のみ使用されます。インストールは不要です。"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:71
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:42
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "今日"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#: src/features/DailyQuestion/DailyQuestionFullList.tsx:30
 #. js-lingui-explicit-id
 msgid "Today's Question"
 msgstr "本日の質問"
@@ -13616,11 +13611,6 @@ msgstr "個人データはいつでも削除できます"
 msgid "You can discuss the battle here."
 msgstr "ここで戦いについて話し合うことができます。"
 
-#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
-#. js-lingui-explicit-id
-msgid "You can discuss the daily question here."
-msgstr "日々の質問をここで議論できます。"
-
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -14011,6 +14001,21 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:230
+#. js-lingui-explicit-id
+#~ msgid "Community Responses:"
+#~ msgstr "コミュニティの回答:"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:192
+#. js-lingui-explicit-id
+#~ msgid "Previous Question"
+#~ msgstr "前の質問"
+
+#: src/features/DailyQuestion/DailyQuestionBadge.tsx:237
+#. js-lingui-explicit-id
+#~ msgid "You can discuss the daily question here."
+#~ msgstr "日々の質問をここで議論できます。"
 
 #: src/features/Navigation/AppNotificationsButton.tsx:61
 #. js-lingui-explicit-id
