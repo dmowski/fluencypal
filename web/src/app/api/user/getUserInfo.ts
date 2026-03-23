@@ -5,6 +5,7 @@ import { Conversation, UserConversationsMeta } from '@/features/Conversation/con
 import { QuizSurvey2 } from '@/features/Goal/Quiz/types';
 import { InterviewQuizSurvey } from '@/features/Case/types';
 import dayjs from 'dayjs';
+import { DailyTaskProgress } from '@/features/Tasks/types';
 
 export interface StripeUserInfo {
   customerId: string;
@@ -81,6 +82,22 @@ export const getAllUsersWithIds = async ({ limits }: { limits?: number }) => {
     return { id: doc.id, ...data };
   });
   return users;
+};
+
+export const getUserDailyTasksProgress = async (userId: string): Promise<DailyTaskProgress[]> => {
+  const db = getDB();
+  const progressCollection = await db
+    .collection('users')
+    .doc(userId)
+    .collection('dailyTasks')
+    .get();
+
+  const data: DailyTaskProgress[] = progressCollection.docs.map((doc) => {
+    const data = doc.data() as DailyTaskProgress;
+    return { ...data };
+  });
+
+  return data;
 };
 
 export const getUsersQuizSurvey = async (userId: string): Promise<QuizSurvey2[]> => {

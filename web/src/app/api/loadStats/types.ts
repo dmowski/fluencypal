@@ -3,6 +3,7 @@ import { UserSettingsWithId } from '@/features/Settings/userSettings';
 import { AiUserInfo } from '@/features/User/userInfo';
 import { InterviewQuizSurvey } from '@/features/Case/types';
 import { QuizSurvey2 } from '@/features/Goal/Quiz/types';
+import { DailyTaskProgress } from '@/features/Tasks/types';
 
 export interface UserStat {
   userData: UserSettingsWithId;
@@ -12,6 +13,7 @@ export interface UserStat {
   activeSubscriptionTill: string | null;
   isGameWinner: boolean;
   aiUserInfo: AiUserInfo | null;
+  dailyProgress: DailyTaskProgress[];
 }
 
 export interface AdminStatsRequest {

@@ -5,6 +5,7 @@ import {
   getAllUsersWithIds,
   getUserAiInfo,
   getUserConversationsMeta,
+  getUserDailyTasksProgress,
   getUsersInterviewSurvey,
   getUsersQuizSurvey,
 } from '../user/getUserInfo';
@@ -28,13 +29,15 @@ export async function POST(request: Request) {
 
   const userStats = await Promise.all(
     allUsers.map(async (user) => {
-      const [conversationMeta, goalQuiz2, interviewStats, balance, aiUserInfo] = await Promise.all([
-        getUserConversationsMeta(user.id),
-        getUsersQuizSurvey(user.id),
-        getUsersInterviewSurvey(user.id),
-        getUserBalance(user.id),
-        getUserAiInfo(user.id),
-      ]);
+      const [conversationMeta, goalQuiz2, interviewStats, balance, aiUserInfo, dailyProgress] =
+        await Promise.all([
+          getUserConversationsMeta(user.id),
+          getUsersQuizSurvey(user.id),
+          getUsersInterviewSurvey(user.id),
+          getUserBalance(user.id),
+          getUserAiInfo(user.id),
+          getUserDailyTasksProgress(user.id),
+        ]);
 
       const userStat: UserStat = {
         userData: user,
@@ -44,6 +47,7 @@ export async function POST(request: Request) {
         activeSubscriptionTill: balance.activeSubscriptionTill,
         isGameWinner: balance.isGameWinner,
         aiUserInfo,
+        dailyProgress,
       };
       return userStat;
     }),
