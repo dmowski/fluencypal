@@ -15,6 +15,7 @@ import { useSettings } from '@/features/Settings/useSettings';
 import { InteractiveExample } from './InteractiveExample';
 import { useGrammarImprovement } from './useGrammarImprovement';
 import { useDailyTasks } from '@/features/Tasks/useDailyTasks';
+import { sleep } from '@/libs/sleep';
 
 export const GrammarImprovementModal = () => {
   const grammar = useGrammarImprovement();
@@ -106,7 +107,6 @@ Cover all examples: ${improvement.examples.join('\n')}.
 
 When user struggle with one example, try to switch to another example and come back later to the difficult one.
 `;
-
     await settings.setConversationMode('record');
 
     await aiConversation.startConversation({
@@ -114,7 +114,10 @@ When user struggle with one example, try to switch to another example and come b
       ruleToLearn: baseInstruction,
       conversationMode: 'record',
     });
+
     setIsCallStarting(false);
+    await sleep(1000);
+    onClose();
   };
 
   const isTranslateAvailable = translator.isTranslateAvailable;
