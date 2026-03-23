@@ -27,6 +27,7 @@ export interface DailyTaskInfo {
 export interface DailyTaskProgress {
   languageCode: SupportedLanguage;
   dayIso: string;
+  tasks: DailyTaskType[];
 
   // key is DailyTaskType, value is iso timestamp when task was completed
   completedTasks: Partial<Record<DailyTaskType, string>>;

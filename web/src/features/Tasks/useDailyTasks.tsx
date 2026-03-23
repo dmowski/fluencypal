@@ -241,6 +241,7 @@ function useProvideDailyTasks(): DailyTaskApi {
     const progressData: DailyTaskProgress = {
       languageCode: settings.languageCode,
       dayIso: today,
+      tasks: dayPlan.tasks,
       completedTasks: {
         ...(todayTaskProgress?.completedTasks ?? {}),
         [taskType]: new Date().toISOString(),
