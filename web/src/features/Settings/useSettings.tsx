@@ -167,6 +167,10 @@ function useProvideSettings(): SettingsContextType {
       ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || null
       : null;
 
+    if (auth.userInfo?.email === 'dmowski.alex@gmail.com') {
+      alert('Creating settings for user ' + auth.userInfo.email);
+    }
+
     const settingsData: InitUserSettings = {
       createdAt: Date.now(),
       createdAtIso: new Date().toISOString(),
