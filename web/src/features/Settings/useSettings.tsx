@@ -179,7 +179,6 @@ function useProvideSettings(): SettingsContextType {
       country: country || null,
       countryName: countryName || null,
       userSource: userSource.userSource,
-      teacherVoice: null,
     };
     console.log('Init user settings', settingsData);
 

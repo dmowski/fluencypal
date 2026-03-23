@@ -11,7 +11,6 @@ export interface InitUserSettings {
   country: string | null;
   countryName: string | null;
   userSource: UserSource | null;
-  teacherVoice: AiVoice | null;
 }
 
 export type AppMode = 'interview' | 'learning';
@@ -53,6 +52,7 @@ export interface UserSettings extends InitUserSettings {
   age18PlusConfirmedAtIso?: string | null;
 
   isSendEmailNotifications?: boolean | null;
+  teacherVoice: AiVoice | null;
 }
 
 export interface UserSettingsWithId extends UserSettings {
