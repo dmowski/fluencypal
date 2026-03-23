@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import { getFirebaseLink } from '../../Firebase/getFirebaseLink';
 import { useGame } from '../../Game/useGame';
 import { fullEnglishLanguageName, SupportedLanguage } from '../../Lang/lang';
-import { LogIn, UserPlus, BadgeCheck, Gem, Axe, Loader } from 'lucide-react';
+import { LogIn, UserPlus, BadgeCheck, Gem, Axe, Loader, ListChecks } from 'lucide-react';
 import { defaultAvatar } from '../../Game/avatars';
 import { UserSource } from '@/features/Analytics/analytics';
 import { Messages } from '../../Conversation/Messages';
@@ -24,10 +24,9 @@ import { useExtractKnowledge } from '@/features/AiKnowledge/useExtractKnowledge'
 
 interface UserCardProps {
   userStat: UserStat;
-  allTextInfo: string;
 }
 
-export function UserCard({ userStat, allTextInfo }: UserCardProps) {
+export function UserCard({ userStat }: UserCardProps) {
   const game = useGame();
   const user = userStat.userData;
   const userId = user.id;
@@ -163,6 +162,11 @@ export function UserCard({ userStat, allTextInfo }: UserCardProps) {
     setLoading(false);
   };
 
+  const today = dayjs().format('YYYY-MM-DD');
+  const todayProgress = userStat.dailyProgress
+    ? userStat.dailyProgress.find((d) => d.dayIso === today)
+    : null;
+
   return (
     <Stack
       sx={{
@@ -261,6 +265,27 @@ export function UserCard({ userStat, allTextInfo }: UserCardProps) {
             <Tooltip title={dayjs(user.createdAtIso).format('DD MMMM YYYY HH:mm') || ''}>
               <Typography variant="body2">
                 <UserPlus className="icon" /> {createdAgo} | Created
+              </Typography>
+            </Tooltip>
+
+            <Tooltip
+              title={
+                <>
+                  <p>
+                    Completed:
+                    <br /> {Object.keys(todayProgress?.completedTasks || {}).join(', ') || '-'}
+                  </p>
+                  <p>
+                    All tasks:
+                    <br /> {todayProgress?.tasks?.join(', ') || '-'}
+                  </p>
+                </>
+              }
+            >
+              <Typography variant="body2">
+                <ListChecks className="icon" />{' '}
+                {Object.keys(todayProgress?.completedTasks || {}).length}/
+                {todayProgress?.tasks?.length || 0}
               </Typography>
             </Tooltip>
           </Stack>

@@ -260,11 +260,7 @@ export function AdminStats() {
                 }}
               >
                 {usersToShow.map((user) => (
-                  <UserCard
-                    key={user.userData.id}
-                    userStat={user}
-                    allTextInfo={JSON.stringify(user, null, 2)}
-                  />
+                  <UserCard key={user.userData.id} userStat={user} />
                 ))}
               </Stack>
             </>
