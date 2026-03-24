@@ -17,7 +17,8 @@
     "check": "tsx src/index.ts check",
     "run-all": "npm run load && npm run process && npm run upload && npm run stories",
     "all": "pnpm run run-all",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "restore-libs": "node node_modules/ffmpeg-static/install.js"
   },
   "dependencies": {
     "dotenv": "^16.6.1",
