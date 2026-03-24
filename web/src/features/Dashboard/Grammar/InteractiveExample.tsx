@@ -24,11 +24,13 @@ export const InteractiveExample = ({
   translation,
   isTranslateAvailable,
   translateWithModal,
+  onComplete,
 }: {
   example: string;
   translation: string;
   isTranslateAvailable: boolean;
   translateWithModal: (word: string, element: HTMLElement) => void;
+  onComplete: () => void;
 }) => {
   const { i18n } = useLingui();
   const settings = useSettings();
@@ -44,6 +46,10 @@ export const InteractiveExample = ({
 
   const [progress, setProgress] = useState(initialProgress);
   const [isCompleted, setIsCompleted] = useState(false);
+
+  useEffect(() => {
+    onComplete();
+  }, [isCompleted]);
 
   const playFullExampleAudio = async () => {
     sleep(300);

@@ -16,6 +16,7 @@ import { InteractiveExample } from './InteractiveExample';
 import { useGrammarImprovement } from './useGrammarImprovement';
 import { useDailyTasks } from '@/features/Tasks/useDailyTasks';
 import { sleep } from '@/libs/sleep';
+import { uniq } from '@/libs/uniq';
 
 export const GrammarImprovementModal = () => {
   const grammar = useGrammarImprovement();
@@ -56,20 +57,25 @@ export const GrammarImprovementModalContent = ({ onClose }: { onClose: () => voi
   const [isCallStarting, setIsCallStarting] = useState(false);
   const settings = useSettings();
   const dailyTasks = useDailyTasks();
+  const [completedExamples, setCompletedExamples] = useState<string[]>([]);
+
+  const onCompleteExample = (example: string) => {
+    setCompletedExamples((prev) => uniq([...prev, example]));
+  };
+
+  const isAllExamplesCompleted = improvement
+    ? completedExamples.length === improvement.examples.length
+    : true;
 
   const isShowLoader = !improvement;
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      dailyTasks.onCompleteTask('grammar-improvement');
-    }, 5000);
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
-
   const practiceWithAi = async () => {
     audio.initAudio();
+    if (!isAllExamplesCompleted) {
+      alert(i18n._('Please complete all interactive examples before practicing with AI.'));
+      return;
+    }
+
     if (!improvement || isCallStarting) return;
     setIsCallStarting(true);
 
@@ -118,6 +124,8 @@ When user struggle with one example, try to switch to another example and come b
     setIsCallStarting(false);
     await sleep(1000);
     onClose();
+
+    dailyTasks.onCompleteTask('grammar-improvement');
   };
 
   const isTranslateAvailable = translator.isTranslateAvailable;
@@ -243,6 +251,7 @@ When user struggle with one example, try to switch to another example and come b
                         isTranslateAvailable={isTranslateAvailable || false}
                         translateWithModal={translator.translateWithModal}
                         key={index}
+                        onComplete={() => onCompleteExample(example)}
                       />
                     ))}
                   </Stack>
