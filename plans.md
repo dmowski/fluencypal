@@ -4,8 +4,8 @@
 
 To start practice grammar improvement you need to fill:
 
-[x] Interactive quiz (Done)
-[] Then record sentence correctly
+- [ ] Interactive quiz (Done)
+- [ ] Then record sentence correctly
 
 ### How to do that?
 
