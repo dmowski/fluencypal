@@ -59,6 +59,8 @@ export const GrammarImprovementModalContent = ({ onClose }: { onClose: () => voi
   const dailyTasks = useDailyTasks();
   const [completedExamples, setCompletedExamples] = useState<string[]>([]);
 
+  console.log('completedExamples', completedExamples);
+
   const onCompleteExample = (example: string) => {
     setCompletedExamples((prev) => uniq([...prev, example]));
   };
@@ -228,20 +230,26 @@ When user struggle with one example, try to switch to another example and come b
               </Stack>
 
               {improvement.examples.length > 0 && (
-                <Stack sx={{ gap: '10px' }}>
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      fontWeight: '700',
-                      letterSpacing: '0.04em',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    {i18n._(`Interactive examples:`)}
-                  </Typography>
+                <Stack sx={{ gap: '30px' }}>
+                  <Stack>
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        fontWeight: '600',
+                        //letterSpacing: '0.04em',
+                        //textTransform: 'uppercase',
+                      }}
+                    >
+                      {i18n._(`Interactive examples:`)}
+                    </Typography>
+                    <Typography>
+                      {i18n._('Complete all examples to unlock the AI training option.')}
+                    </Typography>
+                  </Stack>
+
                   <Stack
                     sx={{
-                      gap: '50px',
+                      gap: '40px',
                     }}
                   >
                     {improvement.examples.map((example, index) => (
@@ -255,6 +263,10 @@ When user struggle with one example, try to switch to another example and come b
                       />
                     ))}
                   </Stack>
+
+                  <Typography variant="body2" sx={{}}>
+                    {i18n._('Done:')} {completedExamples.length} / {improvement.examples.length}
+                  </Typography>
                 </Stack>
               )}
               <Stack

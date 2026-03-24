@@ -48,7 +48,9 @@ export const InteractiveExample = ({
   const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
-    onComplete();
+    if (isCompleted) {
+      onComplete();
+    }
   }, [isCompleted]);
 
   const playFullExampleAudio = async () => {
@@ -70,9 +72,7 @@ export const InteractiveExample = ({
     numberOfOptions: 2,
     keyboardShortcutsEnabled: false,
     onContinue: setProgress,
-    onComplete: async () => {
-      setIsCompleted(true);
-    },
+    onComplete: async () => setIsCompleted(true),
     onPlayAudio: async (word) => {
       audio.setTextAsPotentialSpeak(cleanedExample, quizWordAudio.speakOptions);
       quizWordAudio.playWordAudio(word);
@@ -95,92 +95,77 @@ export const InteractiveExample = ({
   return (
     <Stack
       sx={{
-        gap: '5px',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        borderRadius: '8px',
-        overflow: 'hidden',
+        gap: '7px',
+        paddingTop: '35px',
+        borderTop: '1px solid rgba(255, 255, 255, 0.2)',
         '@media (max-width: 600px)': {
-          border: 'none',
+          borderRadius: '0',
         },
       }}
     >
       <Stack
         sx={{
-          padding: '10px',
-          gap: '7px',
-          '@media (max-width: 600px)': {
-            padding: 0,
+          '* strong': {
+            backgroundColor: 'rgba(11, 130, 194, 0.79)',
+            padding: '2px 8px',
+            borderRadius: '5px',
+            fontWeight: '700',
           },
         }}
       >
+        <Markdown
+          onWordClick={
+            isTranslateAvailable
+              ? (word, element) => {
+                  const isEmptyOption = word === emptyOption;
+                  if (isEmptyOption) return;
+                  quizWordAudio.playWordAudio(word);
+                  translateWithModal(word, element);
+                }
+              : undefined
+          }
+          variant="rule"
+        >
+          {progressToShow}
+        </Markdown>
+      </Stack>
+
+      {isTranslateAvailable && (
         <Stack
           sx={{
+            fontSize: '16px',
+            opacity: translation ? 1 : 0.4,
             '* strong': {
-              backgroundColor: 'rgba(11, 130, 194, 0.79)',
-              padding: '2px 8px',
-              borderRadius: '5px',
-              fontWeight: '700',
+              color: 'rgb(255, 255, 255)',
+              fontWeight: 800,
             },
           }}
         >
-          <Markdown
-            onWordClick={
-              isTranslateAvailable
-                ? (word, element) => {
-                    const isEmptyOption = word === emptyOption;
-                    if (isEmptyOption) return;
-                    quizWordAudio.playWordAudio(word);
-                    translateWithModal(word, element);
-                  }
-                : undefined
-            }
-            variant="rule"
-          >
-            {progressToShow}
-          </Markdown>
+          <Markdown variant="small">{translation || example}</Markdown>
         </Stack>
+      )}
 
-        {isTranslateAvailable && (
+      <Stack
+        sx={{
+          gap: '8px',
+          minHeight: '59px',
+        }}
+      >
+        {isCompleted ? (
           <Stack
+            direction="row"
             sx={{
-              fontSize: '16px',
-              opacity: translation ? 1 : 0.4,
-              '* strong': {
-                color: 'rgb(255, 255, 255)',
-                fontWeight: 800,
-              },
+              gap: '8px',
+              width: '100%',
+              flexWrap: 'wrap',
+              py: '8px',
             }}
           >
-            <Markdown variant="small">{translation || example}</Markdown>
+            <AudioPlayIcon text={example} type="button" buttonLabel={i18n._('Play full example')} />
           </Stack>
+        ) : (
+          <OptionsList options={options} handlePick={handlePick} wrongWord={wrongWord} />
         )}
-
-        <Stack
-          sx={{
-            gap: '8px',
-            minHeight: '59px',
-          }}
-        >
-          {isCompleted ? (
-            <Stack
-              direction="row"
-              sx={{
-                gap: '8px',
-                width: '100%',
-                flexWrap: 'wrap',
-                py: '8px',
-              }}
-            >
-              <AudioPlayIcon
-                text={example}
-                type="button"
-                buttonLabel={i18n._('Play full example')}
-              />
-            </Stack>
-          ) : (
-            <OptionsList options={options} handlePick={handlePick} wrongWord={wrongWord} />
-          )}
-        </Stack>
       </Stack>
     </Stack>
   );
