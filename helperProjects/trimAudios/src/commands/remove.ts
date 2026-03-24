@@ -3,6 +3,13 @@ import { LOADED_DATA_DIR, PROCESSED_DATA_DIR, TTS_AUDIO_PREFIX } from "./config.
 import { resolve } from "node:path";
 import { rm } from "node:fs/promises";
 
+/**
+ * DO NOT USE THIS COMMAND UNLESS YOU KNOW WHAT YOU ARE DOING.
+ * It will remove all files from the TTS audio folder in Firebase Storage and clear the audioCache collection in Firestore.
+ * It will also remove local directories used for loading and processing data.
+ * Use this command to reset the state of your TTS audio data.
+ * Make sure you ask human and get explicit permission before running this command, as it will permanently delete data.
+ */
 export async function runRemove(): Promise<void> {
   try {
     const bucket = getBucket();
