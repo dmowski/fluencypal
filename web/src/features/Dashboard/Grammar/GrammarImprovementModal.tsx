@@ -59,8 +59,6 @@ export const GrammarImprovementModalContent = ({ onClose }: { onClose: () => voi
   const dailyTasks = useDailyTasks();
   const [completedExamples, setCompletedExamples] = useState<string[]>([]);
 
-  console.log('completedExamples', completedExamples);
-
   const onCompleteExample = (example: string) => {
     setCompletedExamples((prev) => uniq([...prev, example]));
   };
