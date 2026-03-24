@@ -72,6 +72,10 @@ export function Dashboard({ lang }: DashboardProps) {
                   '@media (max-width:600px)': {
                     padding: '0 10px',
                   },
+
+                  '@media (max-width:350px)': {
+                    padding: '0 5px',
+                  },
                 }}
               >
                 <DailyTasksDashboardCard />

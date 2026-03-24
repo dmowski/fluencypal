@@ -22,6 +22,9 @@ export const StoreCardRowItem = ({
         cursor: 'pointer',
         backgroundColor: data.rowBgColor || 'transparent',
         borderRadius: borderRadius,
+        '@media (max-width: 400px)': {
+          padding: '10px 5px',
+        },
       }}
       onClick={(e) => {
         e.stopPropagation();

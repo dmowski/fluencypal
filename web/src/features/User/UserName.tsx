@@ -45,6 +45,15 @@ export const UserName = ({
           '@media (max-width: 600px)': {
             fontSize: size === 'large' ? '18px' : '1rem',
           },
+
+          '@media (max-width: 350px)': {
+            fontSize: size === 'large' ? '14px' : '12px',
+          },
+          '@media (max-width: 310px)': {
+            maxWidth: '100px',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          },
         }}
       >
         {userName}

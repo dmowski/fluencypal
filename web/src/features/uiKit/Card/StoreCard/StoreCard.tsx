@@ -84,6 +84,9 @@ export const StoreCard = (props: StoreCardProps) => {
             zIndex: 3,
             padding: '20px',
             color: props.textColor,
+            '@media (max-width: 400px)': {
+              padding: '10px',
+            },
           }}
         >
           {props.label && (
@@ -204,6 +207,9 @@ export const StoreCard = (props: StoreCardProps) => {
             gap: '10px',
             borderRadius: `0 0 ${cardBorderRadius} ${cardBorderRadius}`,
             overflow: 'hidden',
+            '@media (max-width: 400px)': {
+              padding: '10px',
+            },
           }}
         >
           <Typography variant="body2" color={'#fff'} sx={{ opacity: 0.9 }}>

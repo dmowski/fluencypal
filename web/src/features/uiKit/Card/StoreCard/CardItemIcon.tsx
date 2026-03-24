@@ -7,9 +7,12 @@ import type { CardItemIcon as CardItemIconProps } from './types';
 export const CardItemIcon = ({ data }: { data: CardItemIconProps }) => {
   const cardIconSize = '50px';
   const cardIconSizeMobile = '50px';
+  const cardIconSizeSmallMobile = '40px';
+
   const iconBorderRadius = '10px';
   const iconsSize = 21;
   const iconsSizeMobile = 21;
+  const iconsSizeSmallMobile = 18;
 
   return (
     <Stack
@@ -43,6 +46,12 @@ export const CardItemIcon = ({ data }: { data: CardItemIconProps }) => {
           minWidth: cardIconSizeMobile,
           height: cardIconSizeMobile,
           '--icon-size': iconsSizeMobile,
+        },
+        '@media (max-width: 350px)': {
+          width: cardIconSizeSmallMobile,
+          minWidth: cardIconSizeSmallMobile,
+          height: cardIconSizeSmallMobile,
+          '--icon-size': iconsSizeSmallMobile,
         },
       }}
     >

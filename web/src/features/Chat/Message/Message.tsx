@@ -335,6 +335,9 @@ export function Message({
                     outline: 'none',
                     boxShadow: '0 0 0 2px rgba(41, 179, 229, 0.5)',
                   },
+                  '@media (max-width: 350px)': {
+                    gap: '5px',
+                  },
                 }}
                 component={'button'}
                 onClick={() => game.showUserInModal(message.senderId)}
@@ -353,6 +356,10 @@ export function Message({
                       paddingLeft: '10px',
                     },
                     span: {},
+
+                    '@media (max-width: 350px)': {
+                      fontSize: '11px',
+                    },
                   }}
                 >
                   {updatedAgo}
