@@ -46,12 +46,13 @@ export const InteractiveExample = ({
 
   const [progress, setProgress] = useState(initialProgress);
   const [isCompletedQuiz, setIsCompletedQuiz] = useState(false);
+  const [isCompletedReading, setIsCompletedReading] = useState(true);
 
   useEffect(() => {
-    if (isCompletedQuiz) {
+    if (isCompletedQuiz && isCompletedReading) {
       onComplete();
     }
-  }, [isCompletedQuiz]);
+  }, [isCompletedQuiz, isCompletedReading]);
 
   const playFullExampleAudio = async () => {
     sleep(300);
