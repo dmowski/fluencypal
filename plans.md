@@ -9,14 +9,14 @@ To start practice grammar improvement you need to fill:
 
 ### How to do that?
 
-1. MVP. Just use recorder that we do for all recording and compare strings
-2. Use Realtime transcriber. But it might have downsides of quality
+- [ ] MVP. Just use recorder that we do for all recording and compare strings
+- [ ] Use Realtime transcriber. But it might have downsides of quality
 
 ---
 
 ## Daily question
 
-[] Daily Tasks - Show image that is used for todays question
+- [ ] Daily Tasks - Show image that is used for todays question
 
 ## Community
 
