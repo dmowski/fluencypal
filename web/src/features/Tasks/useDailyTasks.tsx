@@ -141,7 +141,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
-      tasks: ['story'],
+      tasks: ['story', 'daily-question'],
       title: i18n._('Fourth day, time for a story!'),
       subTitle: i18n._(
         'Enjoy a story today and get a full access. Thank you for being with us on this learning journey!',
