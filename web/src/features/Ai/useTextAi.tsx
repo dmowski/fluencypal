@@ -85,7 +85,13 @@ function useProvideTextAi(): TextAiContextType {
       console.error('Error parsing JSON. error:', error + '');
       console.error('Error parsing JSON. json:', json);
       console.log(json);
-      debugger;
+      Sentry.captureException(error, {
+        extra: {
+          title:
+            'Error parsing JSON in useTextAi | First attempt to parse JSON failed, trying to fix it with AI',
+          json,
+        },
+      });
 
       const fixedJson = await fixJson(json, error + '');
       return fixedJson;
