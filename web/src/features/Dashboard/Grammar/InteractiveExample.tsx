@@ -45,13 +45,13 @@ export const InteractiveExample = ({
   const initialProgress = useMemo(() => words[0] ?? '', [words]);
 
   const [progress, setProgress] = useState(initialProgress);
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [isCompletedQuiz, setIsCompletedQuiz] = useState(false);
 
   useEffect(() => {
-    if (isCompleted) {
+    if (isCompletedQuiz) {
       onComplete();
     }
-  }, [isCompleted]);
+  }, [isCompletedQuiz]);
 
   const playFullExampleAudio = async () => {
     sleep(300);
@@ -72,7 +72,7 @@ export const InteractiveExample = ({
     numberOfOptions: 2,
     keyboardShortcutsEnabled: false,
     onContinue: setProgress,
-    onComplete: async () => setIsCompleted(true),
+    onComplete: async () => setIsCompletedQuiz(true),
     onPlayAudio: async (word) => {
       audio.setTextAsPotentialSpeak(cleanedExample, quizWordAudio.speakOptions);
       quizWordAudio.playWordAudio(word);
@@ -84,11 +84,11 @@ export const InteractiveExample = ({
 
   useEffect(() => {
     setProgress(initialProgress);
-    setIsCompleted(false);
+    setIsCompletedQuiz(false);
   }, [initialProgress]);
 
   const emptyOption = `_____`;
-  const progressString = progress ? `${progress} ${isCompleted ? '' : emptyOption}`.trim() : '';
+  const progressString = progress ? `${progress} ${isCompletedQuiz ? '' : emptyOption}`.trim() : '';
   const progressToShow =
     '\n' + (progressString || initialProgress || i18n._('Pick words to build the sentence'));
 
@@ -151,7 +151,7 @@ export const InteractiveExample = ({
           minHeight: '59px',
         }}
       >
-        {isCompleted ? (
+        {isCompletedQuiz ? (
           <Stack
             direction="row"
             sx={{
