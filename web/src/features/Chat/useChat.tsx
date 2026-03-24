@@ -255,7 +255,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       allMessagesIdsAuthorsMap: allMessagesIdsAuthorsMap,
     };
 
-    console.log('Update metadata', partialMetadata);
+    console.log('Update metadata', propsChatMetadata.spaceId, partialMetadata);
 
     setDoc(metaRef, partialMetadata, { merge: true });
   };
