@@ -21,9 +21,16 @@ For example active word highlighted with green. If it's correct. Or red.
 If green: I just continue reading
 
 If red: I can repeat until I do it correctly.
+Options: Play word/phrase (by pressing on button or automatically)
 
 Questions - how to understand that it is really correct?
-Options: Play word/phrase (by pressing on button or automatically)
+For MVP it's enough that AI understand the phrase correctly
+
+How to achieve that "Guided support", can we use old mechanism for record voice?
+
+[ACTION_ITEM] Need to dive deeper into realtime api for transcript.
+How to do that?
+Create a simple hook and make connection with RTC.
 
 ### How to do that?
 
