@@ -64,7 +64,7 @@ export const GrammarImprovesCardUi = () => {
     }
 
     return newItems;
-  }, [grammarPoints.length, titleMap, limit, isLimited]);
+  }, [grammarPoints, titleMap, limit, isLimited]);
 
   return (
     <Stack sx={{ gap: '20px' }}>
