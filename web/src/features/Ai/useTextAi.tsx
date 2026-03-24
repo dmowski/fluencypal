@@ -8,6 +8,7 @@ import { useAuth } from '../Auth/useAuth';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { useSettings } from '../Settings/useSettings';
 import { sleep } from '@/libs/sleep';
+import { jsonrepair } from 'jsonrepair';
 
 const cacheKey = `DL_text-ai-cache`;
 
@@ -77,10 +78,14 @@ function useProvideTextAi(): TextAiContextType {
         trimmedJson = trimmedJson.slice(7, -3).trim();
       }
 
-      return JSON.parse(trimmedJson);
+      const repairedJson = jsonrepair(trimmedJson);
+
+      return JSON.parse(repairedJson);
     } catch (error) {
       console.error('Error parsing JSON. error:', error + '');
       console.error('Error parsing JSON. json:', json);
+      console.log(json);
+      debugger;
 
       const fixedJson = await fixJson(json, error + '');
       return fixedJson;
