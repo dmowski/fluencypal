@@ -9,7 +9,7 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { deleteDoc, doc, setDoc } from 'firebase/firestore';
+import { deleteDoc, doc, getDoc, setDoc } from 'firebase/firestore';
 import { useAuth } from '../Auth/useAuth';
 import { db } from '../Firebase/firebaseDb';
 import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
@@ -117,15 +117,13 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
 
     if (metaRef && userId) {
       console.log('Init metadata');
-      await setDoc(metaRef, {
-        ...propsChatMetadata,
-        totalMessages: 0,
-        lastMessageAtIso: new Date().toISOString(),
-        totalTopLevelMessagesIds: [],
-        secondLevelSingleCommentsIds: [],
-        allMessagesIds: {},
-        allMessagesIdsAuthorsMap: {},
-      });
+      await setDoc(
+        metaRef,
+        {
+          ...propsChatMetadata,
+        },
+        { merge: true },
+      );
     }
 
     const isCanReadAfterInit = getIsCanRead({
@@ -143,11 +141,10 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     return shuffled.slice(0, count);
   };
 
-  const { messages, topLevelMessages, commentsInfo, secondLevelSingleCommentsIds } = useMemo<{
+  const { messages, topLevelMessages, commentsInfo } = useMemo<{
     messages: ThreadsMessage[];
     topLevelMessages: ThreadsMessage[];
     commentsInfo: Record<string, number>;
-    secondLevelSingleCommentsIds: string[];
   }>(() => {
     const sortedMessages = messagesData
       ? [...messagesData].sort((a, b) => b.createdAtIso.localeCompare(a.createdAtIso))
@@ -156,30 +153,6 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     const topLevel = sortedMessages.filter((msg) => {
       const isTopLevel = !msg.parentMessageId;
       return isTopLevel;
-    });
-
-    const topLevelIds = topLevel.map((msg) => msg.id);
-
-    const topLevelMap: Record<string, string[]> = {};
-
-    sortedMessages.forEach((msg) => {
-      const isSecondLevel = msg.parentMessageId && topLevelIds.includes(msg.parentMessageId);
-      if (!isSecondLevel) return;
-
-      const topLevelBucket = topLevelMap[msg.parentMessageId];
-      if (topLevelBucket) {
-        topLevelBucket.push(msg.id);
-      } else {
-        topLevelMap[msg.parentMessageId] = [msg.id];
-      }
-    });
-
-    const secondLevelSingleCommentsIds = Object.values(topLevelMap)
-      .filter((ids) => ids.length === 1)
-      .map((ids) => ids[0]);
-
-    secondLevelSingleCommentsIds.map((id) => {
-      const message = sortedMessages.find((msg) => msg.id === id);
     });
 
     const commentsMap: Record<string, number> = {};
@@ -196,13 +169,8 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       messages: sortedMessages,
       topLevelMessages: topLevel,
       commentsInfo: commentsMap,
-      secondLevelSingleCommentsIds,
     };
   }, [messagesData]);
-
-  useEffect(() => {
-    updateTotalMessages();
-  }, [messagesData, metaData]);
 
   const previewMessageCount = 5;
   const previewMessages = useMemo(() => {
@@ -219,38 +187,43 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     return [latestMessage, ...getRandomMessages(otherMessages, previewMessageCount)];
   }, [topLevelMessages.length]);
 
-  const updateTotalMessages = () => {
-    if (!metaData || !metaRef || !messagesData) return;
-    const realTotalMessages = messagesData.length;
-    const totalTopLevelMessagesIds = topLevelMessages.map((msg) => msg.id);
+  const syncChatStats = async (allMessages: ThreadsMessage[]) => {
+    if (!metaRef) return;
+
+    const recentMetadataDoc = await getDoc(metaRef);
+    const recentMetadata = recentMetadataDoc ? recentMetadataDoc.data() : null;
+    if (!recentMetadata) return;
 
     const allMessagesIds: Record<string, string> = {};
-    messagesData.forEach((msg) => {
+    allMessages.forEach((msg) => {
       allMessagesIds[msg.id] = msg.updatedAtIso || msg.createdAtIso;
     });
 
     const allMessagesIdsAuthorsMap: Record<string, string> = {};
-    messagesData.forEach((msg) => {
+    allMessages.forEach((msg) => {
       allMessagesIdsAuthorsMap[msg.id] = msg.senderId;
     });
 
-    if (
-      metaData.totalMessages === realTotalMessages &&
-      (metaData?.totalTopLevelMessagesIds?.length || 0) === totalTopLevelMessagesIds.length &&
-      secondLevelSingleCommentsIds.length ===
-        (metaData?.secondLevelSingleCommentsIds?.length || 0) &&
-      Object.keys(metaData.allMessagesIds || {}).length === Object.keys(allMessagesIds).length &&
-      Object.keys(metaData.allMessagesIdsAuthorsMap || {}).length ===
-        Object.keys(allMessagesIdsAuthorsMap).length
-    ) {
+    const isAllMessagesIdsSame =
+      recentMetadata.allMessagesIds &&
+      Object.keys(recentMetadata.allMessagesIds).length === Object.keys(allMessagesIds).length &&
+      Object.keys(recentMetadata.allMessagesIds).every(
+        (key) => recentMetadata.allMessagesIds?.[key] === allMessagesIds[key],
+      );
+
+    const isAllMessagesIdsAuthorsMapSame =
+      recentMetadata.allMessagesIdsAuthorsMap &&
+      Object.keys(recentMetadata.allMessagesIdsAuthorsMap).length ===
+        Object.keys(allMessagesIdsAuthorsMap).length &&
+      Object.keys(recentMetadata.allMessagesIdsAuthorsMap).every(
+        (key) => recentMetadata.allMessagesIdsAuthorsMap?.[key] === allMessagesIdsAuthorsMap[key],
+      );
+
+    if (isAllMessagesIdsSame && isAllMessagesIdsAuthorsMapSame) {
       return;
     }
 
     const partialMetadata: Partial<UserChatMetadata> = {
-      totalMessages: realTotalMessages,
-      lastMessageAtIso: new Date().toISOString(),
-      totalTopLevelMessagesIds: totalTopLevelMessagesIds,
-      secondLevelSingleCommentsIds: secondLevelSingleCommentsIds,
       allMessagesIds: allMessagesIds,
       allMessagesIdsAuthorsMap: allMessagesIdsAuthorsMap,
     };
@@ -365,6 +338,8 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     }
 
     isSending.current = '';
+
+    await syncChatStats([...messages, newMessage]);
   };
 
   const deleteMessage = async (messageId: string) => {
@@ -382,6 +357,7 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     } else {
       const messageDoc = doc(messagesRef, messageId);
       await deleteDoc(messageDoc);
+      await syncChatStats(messages.filter((msg) => msg.id !== messageId));
     }
   };
 
@@ -503,8 +479,16 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     return recentDate;
   };
 
-  const readMessagesCount = Object.keys(myMetaDataSnap?.[propsChatMetadata.spaceId] || {}).length;
-  const unreadMessagesCount = Math.max(0, (metaData?.totalMessages || 0) - readMessagesCount);
+  const unreadMessagesCount = useMemo(() => {
+    if (!myMetaDataSnap) return 0;
+    if (!metaData) return 0;
+
+    const myReadMessagesIds = Object.keys(myMetaDataSnap?.[propsChatMetadata.spaceId] || {});
+    const allMessagesIds = Object.keys(metaData.allMessagesIds || {});
+
+    const unreadCount = allMessagesIds.filter((id) => !myReadMessagesIds.includes(id)).length;
+    return unreadCount;
+  }, [myMetaDataSnap, metaData]);
 
   return {
     messages,

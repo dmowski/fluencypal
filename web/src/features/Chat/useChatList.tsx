@@ -20,7 +20,6 @@ interface ChatListContextType {
   myReadStats: ChatSpaceUserReadMetadata;
   unreadSpaces: Record<string, number>;
   myUnreadCount: number;
-  unreadCountGlobal: number;
   deleteChat: (spaceId: string) => Promise<void>;
   totalDailyQuestionsUnreadMessagesCount: number;
   dailyQuestionsNotifications: MyDailyQuestionNotification[];
@@ -60,18 +59,24 @@ function useProvideChatList(): ChatListContextType {
   const {
     unreadSpaces,
     myUnreadCount,
-    unreadCountGlobal,
     dailyQuestionsNotifications,
     totalDailyQuestionsUnreadMessagesCount,
   } = useMemo(() => {
     const unreadLocalData: Record<string, number> = {};
     myChats
       ?.sort((a, b) => {
-        const aTime = b.lastMessageAtIso || '';
-        const bTime = a.lastMessageAtIso || '';
+        const aAllMessagesTimes = Object.values(a.allMessagesIds || {}).sort((a, b) =>
+          a.localeCompare(b),
+        );
+        const bAllMessagesTimes = Object.values(b.allMessagesIds || {}).sort((a, b) =>
+          a.localeCompare(b),
+        );
+
+        const aLastMessageTime = aAllMessagesTimes[aAllMessagesTimes.length - 1] || '';
+        const bLastMessageTime = bAllMessagesTimes[bAllMessagesTimes.length - 1] || '';
 
         // last message first
-        return aTime.localeCompare(bTime);
+        return bLastMessageTime.localeCompare(aLastMessageTime);
       })
       .forEach((chat) => {
         const readMessagesCount = Object.keys(myReadStatsData?.[chat.spaceId] || {});
@@ -82,19 +87,6 @@ function useProvideChatList(): ChatListContextType {
         }
       });
     const myUnreadCount = Object.values(unreadLocalData).reduce((a, b) => a + b, 0);
-
-    const myGlobalReadMessagesIds = Object.keys(myReadStatsData?.['global'] || {});
-
-    const globalTopLevelMessages = [...(globalChat?.totalTopLevelMessagesIds || [])];
-    const myGlobalTopLevelMessages = globalTopLevelMessages.filter((id) => {
-      if (!userCreatedAt) return false;
-      const messageCreatedAtString = parseInt(id.split('-')?.[1] || id);
-      return messageCreatedAtString >= userCreatedAt;
-    });
-
-    const unreadCountGlobal = myGlobalTopLevelMessages.filter(
-      (id) => !myGlobalReadMessagesIds.includes(id),
-    ).length;
 
     const dailyQuestionsNotifications: MyDailyQuestionNotification[] = [];
 
@@ -146,7 +138,6 @@ function useProvideChatList(): ChatListContextType {
     return {
       unreadSpaces: unreadLocalData,
       myUnreadCount: myUnreadCount,
-      unreadCountGlobal,
       dailyQuestionsNotifications,
       totalDailyQuestionsUnreadMessagesCount,
     };
@@ -174,7 +165,6 @@ function useProvideChatList(): ChatListContextType {
     totalDailyQuestionsUnreadMessagesCount,
     unreadSpaces,
     myUnreadCount,
-    unreadCountGlobal,
     dailyQuestionsNotifications,
     deleteChat,
   };

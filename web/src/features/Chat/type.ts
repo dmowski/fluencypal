@@ -21,14 +21,7 @@ export interface UserChatMetadataStatic {
 
 // Metadata about a chat space
 export interface UserChatMetadata extends UserChatMetadataStatic {
-  totalMessages: number;
-  totalTopLevelMessagesIds: string[];
-  secondLevelSingleCommentsIds: string[];
-  lastMessageAtIso: string;
-
-  // id: updateAtIso
   allMessagesIds: Record<string, string> | null;
-
   allMessagesIdsAuthorsMap: Record<string, string> | null;
 }
 

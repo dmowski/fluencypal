@@ -127,7 +127,6 @@ export const NavigationBar: React.FC = () => {
     [
       appMode,
       chatList.myUnreadCount,
-      chatList.unreadCountGlobal,
       battles.countOfBattlesNeedToAttention,
       access.canUseCommunity,
     ],
