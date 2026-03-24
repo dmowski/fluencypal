@@ -7,6 +7,24 @@ To start practice grammar improvement you need to fill:
 - [x] Interactive quiz (Done)
 - [ ] Then record sentence correctly
 
+What I really want from reading?
+
+: Guided support about what I am saying.
+
+How to achieve that? From UX prospective?
+
+: I am reading text and see what is good and what is wrong. So when something is wrong, I can repeat the phrase, maybe several times, and improve my pronunciation.
+
+For example sentences. Firstly, I hear example. Than I start repeating. I am telling one word, and see the system feedback.
+For example active word highlighted with green. If it's correct. Or red.
+
+If green: I just continue reading
+
+If red: I can repeat until I do it correctly.
+
+Questions - how to understand that it is really correct?
+Options: Play word/phrase (by pressing on button or automatically)
+
 ### How to do that?
 
 - [ ] MVP. Just use recorder that we do for all recording and compare strings
