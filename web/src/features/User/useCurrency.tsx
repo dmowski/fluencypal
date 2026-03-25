@@ -2,6 +2,7 @@
 
 import { getCurrencyRateRequest } from '@/app/api/currency/currencyRequest';
 import { useState, useEffect } from 'react';
+import * as Sentry from '@sentry/nextjs';
 
 const localStorageCurrencyKey = 'currency_ipapi';
 
@@ -96,6 +97,11 @@ export const useCurrency = () => {
         }
       } catch (error) {
         console.error('Failed to convert currency:', error);
+        Sentry.captureException(error, {
+          extra: {
+            title: 'Failed to convert currency in useCurrency hook, defaulting to USD with rate 1',
+          },
+        });
       }
     };
 

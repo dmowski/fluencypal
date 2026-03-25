@@ -2,7 +2,7 @@
 
 ## Currencies
 
-Create wrapper around https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}
+Limit currencies to allowed only?
 
 ## Reading:
 
