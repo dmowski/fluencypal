@@ -1,6 +1,8 @@
 import { getConversionRate } from './getConversionRate';
 import { CurrencyResponse } from './types';
 
+export const maxDuration = 60;
+
 export async function GET(request: Request) {
   // from query
   const { searchParams } = new URL(request.url);
