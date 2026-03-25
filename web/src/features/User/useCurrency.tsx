@@ -1,5 +1,6 @@
 'use client';
 
+import { getCurrencyRateRequest } from '@/app/api/currency/currencyRequest';
 import { useState, useEffect } from 'react';
 
 const localStorageCurrencyKey = 'currency_ipapi';
@@ -59,13 +60,9 @@ async function getCurrencyByIP(): Promise<string> {
   return currency;
 }
 
-const getRateRequest = async (toCurrency: string): Promise<string> => {
-  const res = await fetch(
-    `https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}`,
-  );
-  const data = await res.json();
-  const rate = data.rates[toCurrency.toUpperCase()];
-  return `${rate}`;
+const getCurrencyRateFromNetwork = async (toCurrency: string): Promise<string> => {
+  const result = await getCurrencyRateRequest({ currencyFrom: 'USD', currencyTo: toCurrency });
+  return `${result.rate}`;
 };
 
 async function getConversionRate(toCurrency: string): Promise<number> {
@@ -74,7 +71,7 @@ async function getConversionRate(toCurrency: string): Promise<number> {
     return 1;
   }
 
-  const requestRate = getRequestsCache().currency_rate || getRateRequest(toCurrency);
+  const requestRate = getRequestsCache().currency_rate || getCurrencyRateFromNetwork(toCurrency);
   getRequestsCache().currency_rate = requestRate;
 
   const rateStr = await requestRate;

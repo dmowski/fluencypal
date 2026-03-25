@@ -1,5 +1,6 @@
 export interface CurrencyRequest {
-  currency: string;
+  currencyFrom: string;
+  currencyTo: string;
 }
 
 export interface CurrencyResponse {
