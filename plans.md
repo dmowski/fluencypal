@@ -1,9 +1,5 @@
 # Live document with short/long term ideas
 
-## Currencies
-
-Limit currencies to allowed only?
-
 ## Reading:
 
 To start practice grammar improvement you need to fill:
