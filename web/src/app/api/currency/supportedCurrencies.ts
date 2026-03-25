@@ -108,7 +108,7 @@ const supportedCurrencies: string[] = [
   'sle',
   'sos',
   'srd',
-  'std',
+  //'std', not supported by frankfurter
   'szl',
   'thb',
   'tjs',
@@ -127,7 +127,7 @@ const supportedCurrencies: string[] = [
   'wst',
   'xaf',
   'xcd',
-  'xcg',
+  // 'xcg', not supported by frankfurter
   'xof',
   'xpf',
   'yer',
