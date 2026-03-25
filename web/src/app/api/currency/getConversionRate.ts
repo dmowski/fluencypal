@@ -73,17 +73,20 @@ export async function getConversionRate(props: {
     return cachedRate;
   }
 
-  const res = await fetch(
-    `https://api.frankfurter.app/latest?from=${currencyFrom.toUpperCase()}&to=${currencyTo.toUpperCase()}`,
-  );
+  if (!currencyFrom || !currencyTo) {
+    throw new Error('Both currencyFrom and currencyTo must be provided');
+  }
+
+  const res = await fetch(`https://api.frankfurter.dev/v2/rate/${currencyFrom}/${currencyTo}`);
 
   if (!res.ok) {
+    console.error(res);
     throw new Error('Failed to fetch conversion rate');
   }
 
   const data = await res.json();
 
-  const rate = data.rates[currencyTo.toUpperCase()];
+  const rate = data.rate;
 
   if (!rate) {
     throw new Error(`Conversion rate for ${currencyTo} not found`);
