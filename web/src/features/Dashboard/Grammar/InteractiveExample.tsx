@@ -11,6 +11,10 @@ import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
 import { sleep } from '@/libs/sleep';
 import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 import { clearWordForAudio } from '@/features/Audio/clearWord';
+import { useRealtimeTranscript } from '@/features/Transcript/useRealtimeTranscript';
+import { Button, Typography } from '@mui/material';
+import { StringDiff } from 'react-string-diff';
+import { Mic } from 'lucide-react';
 
 const cleanMarkdownStyles = (text: string): string => {
   return text
@@ -18,6 +22,8 @@ const cleanMarkdownStyles = (text: string): string => {
     .replace(/(\*|_)(.*?)\1/g, '$2')
     .replace(/`([^`]+)`/g, '$1');
 };
+
+const IS_SHOW_READING = false;
 
 export const InteractiveExample = ({
   example,
@@ -47,6 +53,22 @@ export const InteractiveExample = ({
   const [progress, setProgress] = useState(initialProgress);
   const [isCompletedQuiz, setIsCompletedQuiz] = useState(false);
   const [isCompletedReading, setIsCompletedReading] = useState(true);
+
+  const realtimeTranscript = useRealtimeTranscript();
+
+  const startRecording = async () => {
+    const instruction = `User is reading the following sentence: "${cleanedExample}".
+Please provide real-time feedback on the user's pronunciation and fluency.
+
+Format of your feedback should be:
+{PERCENT_OF_ACCURACY}% accuracy. Word to work on: {WORD_IF_APPLICABLE}
+`;
+    await realtimeTranscript.start({ instruction });
+  };
+
+  const stopRecording = async () => {
+    realtimeTranscript.stop();
+  };
 
   useEffect(() => {
     if (isCompletedQuiz && isCompletedReading) {
@@ -163,11 +185,97 @@ export const InteractiveExample = ({
             }}
           >
             <AudioPlayIcon text={example} type="button" buttonLabel={i18n._('Play full example')} />
+
+            {IS_SHOW_READING && (
+              <>
+                {realtimeTranscript.isActive ? (
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    disabled={realtimeTranscript.isActivating}
+                    onClick={stopRecording}
+                  >
+                    {i18n._('Done')}
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    color="info"
+                    disabled={realtimeTranscript.isActivating}
+                    onClick={startRecording}
+                  >
+                    {realtimeTranscript.isActivating ? 'Loading...' : i18n._('Start reading')}
+                  </Button>
+                )}
+              </>
+            )}
           </Stack>
         ) : (
           <OptionsList options={options} handlePick={handlePick} wrongWord={wrongWord} />
         )}
       </Stack>
+      {isCompletedQuiz && IS_SHOW_READING && (
+        <Stack
+          sx={{
+            width: '100%',
+            gap: '10px',
+          }}
+        >
+          <Stack
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: 'max-content 1fr',
+              gap: '10px',
+              alignItems: 'center',
+            }}
+          >
+            <Mic size={'18px'} />
+            <Typography
+              variant="body2"
+              component={'div'}
+              sx={{
+                fontWeight: 400,
+                fontSize: '18px',
+                paddingBottom: '3px',
+              }}
+            >
+              <StringDiff
+                styles={{
+                  added: {
+                    color: '#81d3e3',
+                    fontWeight: 600,
+                  },
+                  removed: {
+                    textDecoration: 'none',
+                    opacity: 1,
+                    color: '#c2c2c2',
+                  },
+                  default: {
+                    color: 'rgba(88, 241, 157, 0.8)',
+                    fontWeight: 500,
+                  },
+                }}
+                oldValue={cleanedExample}
+                newValue={realtimeTranscript.transcript.join('')}
+              />
+            </Typography>
+          </Stack>
+
+          {realtimeTranscript.aiHelperMessage && (
+            <Typography
+              sx={{
+                width: '100%',
+                border: '1px solid rgba(143, 142, 143, 0.61)',
+                borderRadius: '12px',
+                padding: '6px 9px',
+                backgroundColor: 'rgba(255, 255, 255, 0.02)',
+              }}
+            >
+              {realtimeTranscript.aiHelperMessage}
+            </Typography>
+          )}
+        </Stack>
+      )}
     </Stack>
   );
 };
