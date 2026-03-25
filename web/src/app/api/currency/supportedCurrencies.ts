@@ -22,7 +22,7 @@ const supportedCurrencies: string[] = [
   'byn',
   'bzd',
   'cad',
-  'cdf',
+  // 'cdf',
   'chf',
   'clp',
   'cny',
