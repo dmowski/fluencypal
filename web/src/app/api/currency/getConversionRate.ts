@@ -58,13 +58,16 @@ const saveRateToCache = async (
   console.log(`Saved rate to cache for ${propertyName}: ${rate}`);
 };
 
-export async function getConversionRate({
-  currencyFrom,
-  currencyTo,
-}: {
+export async function getConversionRate(props: {
   currencyFrom: string;
   currencyTo: string;
 }): Promise<number> {
+  const currencyFrom = props.currencyFrom.trim().toUpperCase();
+  const currencyTo = props.currencyTo.trim().toUpperCase();
+  if (currencyFrom === currencyTo) {
+    return 1;
+  }
+
   const cachedRate = await getCachedRate(currencyFrom, currencyTo);
   if (cachedRate !== null) {
     return cachedRate;

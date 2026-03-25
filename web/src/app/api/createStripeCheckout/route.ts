@@ -16,31 +16,7 @@ import {
 } from '@/features/Price/price';
 import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 import { toStripeUnit } from 'zero-decimal-currencies';
-
-async function getConversionRate(toCurrency: string): Promise<number> {
-  const isToCurrencyIsUsd = toCurrency.toLowerCase() === 'usd';
-  if (isToCurrencyIsUsd) {
-    return 1;
-  }
-
-  const res = await fetch(
-    `https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}`,
-  );
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch conversion rate');
-  }
-
-  const data = await res.json();
-
-  const rate = data.rates[toCurrency.toUpperCase()];
-
-  if (!rate) {
-    throw new Error(`Conversion rate for ${toCurrency} not found`);
-  }
-
-  return rate as number;
-}
+import { getConversionRate } from '../currency/getConversionRate';
 
 export async function POST(request: Request) {
   try {
@@ -74,7 +50,7 @@ export async function POST(request: Request) {
     const stripeCurrency = currency.toLowerCase();
 
     const supportedLang = supportedLanguages.find((l) => l === requestData.languageCode) || 'en';
-    const rate = await getConversionRate(currency.toLowerCase());
+    const rate = await getConversionRate({ currencyFrom: 'USD', currencyTo: currency });
 
     if ('amountOfHours' in requestData) {
       const amountOfHours = requestData.amountOfHours;

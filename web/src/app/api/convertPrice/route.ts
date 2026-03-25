@@ -1,30 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ConvertPriceRequest, ConvertPriceResponse } from './types';
+import { getConversionRate } from '../currency/getConversionRate';
 
 async function getCurrencyByIP(): Promise<string> {
   const res = await fetch(`https://ipapi.co/currency/`);
   if (!res.ok) throw new Error('Failed to fetch currency from IP');
   return (await res.text()).trim();
-}
-
-async function getConversionRate(toCurrency: string): Promise<number> {
-  const res = await fetch(
-    `https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}`,
-  );
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch conversion rate');
-  }
-
-  const data = await res.json();
-
-  const rate = data.rates[toCurrency.toUpperCase()];
-
-  if (!rate) {
-    throw new Error(`Conversion rate for ${toCurrency} not found`);
-  }
-
-  return rate as number;
 }
 
 // Endpoint handler
@@ -38,7 +19,7 @@ export async function POST(request: NextRequest) {
     const currency = await getCurrencyByIP();
     console.log('currency', currency);
 
-    const rate = await getConversionRate(currency);
+    const rate = await getConversionRate({ currencyFrom: 'USD', currencyTo: currency });
     const convertedAmount = amountInUsd * rate;
 
     const formattedAmount = new Intl.NumberFormat('en-US', {
