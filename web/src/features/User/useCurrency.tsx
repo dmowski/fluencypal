@@ -3,6 +3,7 @@
 import { getCurrencyRateRequest } from '@/app/api/currency/currencyRequest';
 import { useState, useEffect } from 'react';
 import * as Sentry from '@sentry/nextjs';
+import { getSupportedCurrency } from '@/app/api/currency/supportedCurrencies';
 
 const localStorageCurrencyKey = 'currency_ipapi';
 
@@ -13,7 +14,7 @@ const getFromLocalStorage = () => {
 
 const setToLocalStorage = (currency: string) => {
   if (typeof window === 'undefined') return;
-  localStorage.setItem(localStorageCurrencyKey, currency);
+  localStorage.setItem(localStorageCurrencyKey, getSupportedCurrency(currency));
 };
 
 type RequestsSingletonCache = Record<
@@ -36,7 +37,7 @@ const getCurrencyRequest = async () => {
   const res = await fetch(`https://ipapi.co/currency/`);
   if (!res.ok) throw new Error('Failed to fetch currency from IP');
   const currency = (await res.text()).trim();
-  return currency;
+  return getSupportedCurrency(currency);
 };
 
 async function getCurrencyByIP(): Promise<string> {
@@ -44,7 +45,7 @@ async function getCurrencyByIP(): Promise<string> {
   if (isWindow) {
     const localCurrency = getFromLocalStorage();
     if (localCurrency) {
-      return localCurrency;
+      return getSupportedCurrency(localCurrency);
     }
   }
   console.log('getCurrencyByIP');
@@ -52,7 +53,7 @@ async function getCurrencyByIP(): Promise<string> {
   const currencyRequest = getRequestsCache().currency_requests || getCurrencyRequest();
   getRequestsCache().currency_requests = currencyRequest;
 
-  const currency = await currencyRequest;
+  const currency = getSupportedCurrency(await currencyRequest);
 
   if (isWindow && currency) {
     setToLocalStorage(currency);
@@ -122,7 +123,7 @@ export const useCurrency = () => {
 
   return {
     rate,
-    currency: `${currency || 'USD'}`.toLowerCase(),
+    currency: `${currency || 'USD'}`.toUpperCase(),
     convertUsdToCurrency,
   };
 };
