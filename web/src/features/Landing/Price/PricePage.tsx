@@ -14,12 +14,6 @@ import {
   Sparkles,
   Speech,
   UsersRound,
-  Blocks,
-  Gem,
-  Swords,
-  Languages,
-  BookText,
-  Crown,
 } from 'lucide-react';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
@@ -27,7 +21,6 @@ import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { CurrencyToDisplay, PriceDisplay } from './PriceDisplay';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import {
-  PRICE_PER_DAY_USD,
   PRICE_PER_MONTH_USD,
   PRICE_PER_WEEK_USD,
   PRICE_PER_YEAR_USD,
@@ -131,7 +124,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
   };
 
   return (
-    <Stack sx={{}}>
+    <Stack>
       <HeaderStatic lang={lang} />
 
       <Script
