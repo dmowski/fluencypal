@@ -1,5 +1,9 @@
 # Live document with short/long term ideas
 
+## Currencies
+
+Create wrapper around https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}
+
 ## Reading:
 
 To start practice grammar improvement you need to fill:
