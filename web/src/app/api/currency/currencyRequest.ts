@@ -17,8 +17,5 @@ export const getCurrencyRateRequest = async (
   }
   const data = (await res.json()) as CurrencyResponse;
 
-  console.log('getCurrencyRateRequest result');
-  console.log(data);
-
   return data;
 };
