@@ -69,7 +69,7 @@ function useProvideDailyTasks(): DailyTaskApi {
   const userId = auth.uid;
   const { i18n } = useLingui();
 
-  const today = useMemo(() => dayjs().format('YYYY-MM-DD'), []);
+  const today = useMemo(() => new Date().toISOString().split('T')[0], []);
 
   const tasksInfo: Record<DailyTaskType, DailyTaskInfo> = useMemo(() => {
     return {

@@ -1,5 +1,5 @@
 import { Stack, Link, Tooltip, Typography, Button } from '@mui/material';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { UserStat } from '@/app/api/loadStats/types';
 import dayjs from 'dayjs';
 import { getFirebaseLink } from '../../Firebase/getFirebaseLink';
@@ -162,7 +162,8 @@ export function UserCard({ userStat }: UserCardProps) {
     setLoading(false);
   };
 
-  const today = dayjs().format('YYYY-MM-DD');
+  const today = useMemo(() => new Date().toISOString().split('T')[0], []);
+
   const todayProgress = userStat.dailyProgress
     ? userStat.dailyProgress.find((d) => d.dayIso === today)
     : null;
