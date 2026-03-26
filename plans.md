@@ -1,6 +1,12 @@
 # Live document with short/long term ideas
 
+## Add notifications about mentions in global chat
+
+## Create experiment with improved Talking and Correction in realtime
+
 ## Reading:
+
+[ACTION_ITEM] Try old transcription mode to get transcription
 
 To start practice grammar improvement you need to fill:
 
