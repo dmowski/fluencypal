@@ -287,12 +287,13 @@ const QuizQuestions = () => {
                     title: i18n._('What you want to achieve'),
                     iconName: 'flag',
                   },
+                  /*
                   {
                     title: i18n._('Use {LEARNING_LANGUAGE} for your answer', {
                       LEARNING_LANGUAGE: learningLanguageName,
                     }),
                     iconName: 'flag',
-                  },
+                  },*/
                 ]}
                 transcript={survey?.aboutUserTranscription || ''}
                 minWords={MIN_WORDS_FOR_ANSWER}
