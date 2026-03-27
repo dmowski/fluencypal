@@ -57,7 +57,7 @@ export const InteractiveExample = ({
   const realtimeTranscript = useRealtimeTranscript();
 
   const startRecording = async () => {
-    await realtimeTranscript.start();
+    await realtimeTranscript.start({ mode: 'ai', language: targetLanguage });
   };
 
   const stopRecording = async () => {

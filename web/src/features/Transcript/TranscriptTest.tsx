@@ -2,20 +2,37 @@
 
 import { useState } from 'react';
 import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
 import Stack from '@mui/material/Stack';
+import Select from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useRealtimeTranscript } from './useRealtimeTranscript';
+import { SupportedLanguage, fullEnglishLanguageName, supportedLanguages } from '../Lang/lang';
+import { useSettings } from '../Settings/useSettings';
 
 export const TranscriptTest = () => {
-  const { start, stop, clear, isActive, isActivating, partialTranscript, completedTranscripts } =
-    useRealtimeTranscript();
+  const {
+    start,
+    stop,
+    clear,
+    isActive,
+    isActivating,
+    partialTranscript,
+    completedTranscripts,
+    activeMode,
+  } = useRealtimeTranscript();
+  const settings = useSettings();
   const [error, setError] = useState<string | null>(null);
+  const [mode, setMode] = useState<'ai' | 'native'>('ai');
+  const [language, setLanguage] = useState<SupportedLanguage>(settings.languageCode || 'en');
 
   const handleStart = async () => {
     setError(null);
     try {
-      await start();
+      await start({ mode, language });
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to start transcription');
     }
@@ -35,6 +52,42 @@ export const TranscriptTest = () => {
   return (
     <Stack sx={{ p: 3, gap: 2, maxWidth: 700 }}>
       <Typography variant="h6">Realtime Transcript</Typography>
+
+      <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ gap: 1 }}>
+        <FormControl size="small" sx={{ minWidth: 160 }}>
+          <InputLabel id="transcript-mode-label">Mode</InputLabel>
+          <Select
+            labelId="transcript-mode-label"
+            label="Mode"
+            value={mode}
+            onChange={(event) => setMode(event.target.value as 'ai' | 'native')}
+          >
+            <MenuItem value="ai">AI</MenuItem>
+            <MenuItem value="native">Native Browser</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl size="small" sx={{ minWidth: 200 }}>
+          <InputLabel id="transcript-language-label">Language</InputLabel>
+          <Select
+            labelId="transcript-language-label"
+            label="Language"
+            value={language}
+            onChange={(event) => setLanguage(event.target.value as SupportedLanguage)}
+          >
+            {supportedLanguages.map((item) => (
+              <MenuItem key={item} value={item}>
+                {fullEnglishLanguageName[item]}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Stack>
+
+      <Typography variant="body2" color="text.secondary">
+        Native mode falls back to AI when browser speech recognition is unavailable for the selected
+        language.
+      </Typography>
 
       <Stack direction="row" sx={{ gap: 1, alignItems: 'center' }}>
         {isActive ? (
@@ -75,7 +128,7 @@ export const TranscriptTest = () => {
               }}
             />
             <Typography variant="caption" color="error">
-              Recording
+              Recording via {activeMode === 'native' ? 'native browser' : 'AI realtime'}
             </Typography>
           </Stack>
         )}
