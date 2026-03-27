@@ -534,7 +534,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 
       const initConversation = isUseRealtime ? initWebRtcConversation : initTextConversation;
 
-      const model = MODELS.REALTIME_CONVERSATION;
+      const model = input.model || MODELS.REALTIME_CONVERSATION;
 
       // audio.music.stop();
 

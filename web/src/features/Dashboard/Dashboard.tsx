@@ -24,6 +24,9 @@ import { PublicChatDashboardCard } from './PublicChatDashboardCard';
 import { GameDashboardCard } from './GameDashboardCard';
 import { StoriesDashboardCard } from './StoriesDashboardCard';
 import { DailyTasksDashboardCard } from './DailyTasksDashboardCard';
+import { ExperimentalDashboardCard } from './ExperimentalDashboardCard';
+import { useGame } from '../Game/useGame';
+import { hasExperimentalDashboardAccess } from './experimentalDashboardAccess';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -32,6 +35,8 @@ interface DashboardProps {
 export function Dashboard({ lang }: DashboardProps) {
   const appNavigation = useAppNavigation();
   const plan = usePlan();
+  const game = useGame();
+  const isShowExperimentalDashboard = hasExperimentalDashboardAccess(game.myUserName);
 
   return (
     <>
@@ -80,6 +85,7 @@ export function Dashboard({ lang }: DashboardProps) {
               >
                 <DailyTasksDashboardCard />
                 <JustTalkCard />
+                {isShowExperimentalDashboard && <ExperimentalDashboardCard />}
                 <GrammarImprovesCard />
                 <PlanDashboardCards lang={lang} />
                 <StoriesDashboardCard />

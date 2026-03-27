@@ -4,7 +4,7 @@ import { validateAuthToken } from '../config/firebase';
 import { rateLimitRealtimeInit } from '../usage/rateLimitRealtimeInit';
 import { RealTimeModel } from '@/features/Ai/ai';
 
-const ALLOWED_MODELS: RealTimeModel[] = ['gpt-realtime-mini', 'gpt-realtime'];
+const ALLOWED_MODELS: RealTimeModel[] = ['gpt-realtime-mini', 'gpt-realtime', 'gpt-realtime-1.5'];
 
 export async function POST(request: Request) {
   try {

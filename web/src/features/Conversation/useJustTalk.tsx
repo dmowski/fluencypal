@@ -4,6 +4,7 @@ import { useAiConversation } from './useAiConversation/useAiConversation';
 import { useState } from 'react';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getMediaAudioStreams, getMediaVideoStreams } from '../webCam/mediaStream';
+import { RealTimeModel } from '../Ai/ai';
 
 export const useJustTalk = () => {
   const { i18n } = useLingui();
@@ -14,7 +15,7 @@ export const useJustTalk = () => {
   const [isCallStarting, setIsCallStarting] = useState(false);
   const audio = useConversationAudio();
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
-  const startJustTalk = async () => {
+  const startJustTalk = async (model?: RealTimeModel) => {
     if (isCallStarting) return;
     await audio.initAudio();
     setIsCallStarting(true);
@@ -62,6 +63,7 @@ Please allow microphone permission in your browser settings, refresh the page, a
       conversationMode: 'call',
       mode: 'talk',
       voice: voiceName,
+      model,
     });
   };
 

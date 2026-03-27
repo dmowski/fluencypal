@@ -1,8 +1,22 @@
 # Live document with short/long term ideas
 
+## Create experiment with improved Talking and Correction in realtime
+
+- Create a section: ExperimentalDashboardCard
+- Insert it into web/src/features/Dashboard/Dashboard.tsx
+- Add title, subtitle that these features are experimental for limited number of users
+- Create a .ts config with usernames who has access
+- Show ExperimentalDashboardCard only for those users. useGame().username to check
+- As items, add items with title "Realtime-1.5", add some star icon
+- When user start each card, we should start conversation with mode "just talk" mode.
+  You can check web/src/features/Conversation/useJustTalk.tsx
+- we need to add model param to useJustTalk.tsx startJustTalk function. and we need to use these models in
+  web/src/features/Conversation/useAiConversation/useAiConversation.tsx. add param "model" into StartConversationProps.
+  For "gpt-realtime-1.5" use model "gpt-realtime-1.5"
+
 ## Add notifications about mentions in global chat
 
-## Create experiment with improved Talking and Correction in realtime
+Maybe combine all notification into one flow?
 
 ## Reading:
 

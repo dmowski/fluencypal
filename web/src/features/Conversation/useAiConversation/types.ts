@@ -1,4 +1,4 @@
-import { AiVoice } from '@/features/Ai/ai';
+import { AiVoice, RealTimeModel } from '@/features/Ai/ai';
 import {
   ConversationType,
   ConversationMessage,
@@ -24,6 +24,7 @@ export interface StartConversationProps {
   ideas?: ConversationIdea;
   lessonPlan?: LessonPlan;
   rolePlayId?: string;
+  model?: RealTimeModel;
 }
 
 export interface AiConversationContextType {
