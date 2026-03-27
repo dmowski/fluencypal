@@ -2,16 +2,8 @@
 
 ## Realtime transcript
 
-The goal - create text component/hook to realtime transcript from user mic.
-
-- Create a new test component (<TranscriptTest />): and use it here web/src/app/testUi/testComponents/TestPage.tsx
-- Create a standalone hook to handle realtime transcript.
-- Use OpenAi for realtime transcript
-- https://developers.openai.com/api/docs/guides/realtime-transcription
-- Create separate endpoint if needed, or use code and endpoints from here :web/src/features/Conversation/ConversationInstance/webRtc/initConnection.ts
-- On text component add button "Start/Stop" recording and realtime transcript rendering
-- Install necessary libs if needed: for example @openai/agents/realtime to simplify development
-- Ensure pnpm lint pass
+- Update quiz to mention that records is need to be done in (learning language)
+- Start using useRealtimeTranscript on quiz
 
 ## Reading:
 

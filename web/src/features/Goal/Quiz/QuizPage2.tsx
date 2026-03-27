@@ -273,19 +273,7 @@ const QuizQuestions = () => {
             <AuthWall>
               <RecordUserAudio
                 title={i18n._('Tell me about yourself')}
-                subTitle={
-                  languageToLearn === nativeLanguage ? (
-                    <Trans>
-                      Record 2-3 minutes story. This will help me to create a personalized practice
-                      plan.
-                    </Trans>
-                  ) : (
-                    <Trans>
-                      Record 2-3 minutes story. This will help me to create a personalized practice
-                      plan.
-                    </Trans>
-                  )
-                }
+                subTitle={`${i18n._(`Record 2-3 minutes story. This will help me to create a personalized practice plan.`)}`}
                 listItems={[
                   {
                     title: i18n._('Hobbies or interests'),
@@ -295,9 +283,14 @@ const QuizQuestions = () => {
                     title: i18n._('What challenges you face'),
                     iconName: 'alert-triangle',
                   },
-
                   {
                     title: i18n._('What you want to achieve'),
+                    iconName: 'flag',
+                  },
+                  {
+                    title: i18n._('Use {LEARNING_LANGUAGE} for your answer', {
+                      LEARNING_LANGUAGE: learningLanguageName,
+                    }),
                     iconName: 'flag',
                   },
                 ]}
