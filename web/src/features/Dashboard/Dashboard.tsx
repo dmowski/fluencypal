@@ -35,8 +35,6 @@ interface DashboardProps {
 export function Dashboard({ lang }: DashboardProps) {
   const appNavigation = useAppNavigation();
   const plan = usePlan();
-  const game = useGame();
-  const isShowExperimentalDashboard = hasExperimentalDashboardAccess(game.myUserName);
 
   return (
     <>
@@ -84,8 +82,8 @@ export function Dashboard({ lang }: DashboardProps) {
                 }}
               >
                 <DailyTasksDashboardCard />
+                <ExperimentalDashboardCard />
                 <JustTalkCard />
-                {isShowExperimentalDashboard && <ExperimentalDashboardCard />}
                 <GrammarImprovesCard />
                 <PlanDashboardCards lang={lang} />
                 <StoriesDashboardCard />

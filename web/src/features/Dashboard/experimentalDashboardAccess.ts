@@ -1,5 +1,7 @@
 export const EXPERIMENTAL_DASHBOARD_USERNAMES: readonly string[] = [
   'Alex',
+  'PluckySycamoreAssassin',
+  'DynamicLagoonThinker',
   // Add game usernames here to enable the experimental dashboard section.
 ];
 
