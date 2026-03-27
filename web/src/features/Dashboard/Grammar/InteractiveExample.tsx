@@ -57,13 +57,7 @@ export const InteractiveExample = ({
   const realtimeTranscript = useRealtimeTranscript();
 
   const startRecording = async () => {
-    const instruction = `User is reading the following sentence: "${cleanedExample}".
-Please provide real-time feedback on the user's pronunciation and fluency.
-
-Format of your feedback should be:
-{PERCENT_OF_ACCURACY}% accuracy. Word to work on: {WORD_IF_APPLICABLE}
-`;
-    await realtimeTranscript.start({ instruction });
+    await realtimeTranscript.start();
   };
 
   const stopRecording = async () => {
@@ -260,20 +254,6 @@ Format of your feedback should be:
               />
             </Typography>
           </Stack>
-
-          {realtimeTranscript.aiHelperMessage && (
-            <Typography
-              sx={{
-                width: '100%',
-                border: '1px solid rgba(143, 142, 143, 0.61)',
-                borderRadius: '12px',
-                padding: '6px 9px',
-                backgroundColor: 'rgba(255, 255, 255, 0.02)',
-              }}
-            >
-              {realtimeTranscript.aiHelperMessage}
-            </Typography>
-          )}
         </Stack>
       )}
     </Stack>
