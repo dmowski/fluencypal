@@ -1506,7 +1506,7 @@ msgstr "모든 인터뷰"
 msgid "All Scenarios"
 msgstr "모든 시나리오"
 
-#: src/features/Tasks/useDailyTasks.tsx:268
+#: src/features/Tasks/useDailyTasks.tsx:275
 #. js-lingui-explicit-id
 msgid "All tasks completed"
 msgstr "모든 작업이 완료되었습니다"
@@ -3126,7 +3126,7 @@ msgstr ""
 "도와줍니다."
 
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:142
-#: src/features/Tasks/useDailyTasks.tsx:201
+#: src/features/Tasks/useDailyTasks.tsx:208
 #. js-lingui-explicit-id
 msgid "Daily tasks"
 msgstr "일일 작업"
@@ -3588,7 +3588,7 @@ msgstr "연습 섹션에서 통화 모드를 꼭 시도해 보세요!"
 #: src/features/Landing/LandingPage.tsx:264
 #: src/features/Modal/TeacherVoiceModal.tsx:75
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
-#: src/features/Tasks/useDailyTasks.tsx:272
+#: src/features/Tasks/useDailyTasks.tsx:279
 #: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
 msgid "Done"
@@ -3659,6 +3659,13 @@ msgstr ""
 "측정합니다. 이를 통해 활동 수준에 기반하여 자원을 공정하게 할당할 수 있습니다. 이를 \"AI 시간\"이라고 부르는 이유는 연속적으로 "
 "AI를 사용할 경우 소모할 대략적인 시간을 나타내기 때문입니다."
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:30
+#. js-lingui-explicit-id
+msgid ""
+"Early access features for a limited number of users. These features may "
+"change quickly."
+msgstr "소수의 사용자에게 조기 접속 기능을 제공합니다. 이러한 기능은 빠르게 변경될 수 있습니다."
+
 #: src/features/Case/data/reusable/priceSection.ts:45
 #. js-lingui-explicit-id
 msgid "Early access to new tools"
@@ -3716,7 +3723,7 @@ msgid ""
 "hectic schedule."
 msgstr "바쁜 일정 속에서도 영어 말하기 능력을 향상시키는 효과적인 전략."
 
-#: src/features/Tasks/useDailyTasks.tsx:193
+#: src/features/Tasks/useDailyTasks.tsx:200
 #. js-lingui-explicit-id
 msgid "Eighth day, you are unstoppable!"
 msgstr "여덟 번째 날, 당신은 멈출 수 없습니다!"
@@ -3994,7 +4001,7 @@ msgstr "당신의 문법을 향상시키세요"
 msgid "Enhance your vocabulary by describing words in unique ways."
 msgstr "독특한 방식으로 단어를 설명함으로써 당신의 어휘력을 향상시키세요."
 
-#: src/features/Tasks/useDailyTasks.tsx:146
+#: src/features/Tasks/useDailyTasks.tsx:153
 #. js-lingui-explicit-id
 msgid ""
 "Enjoy a story today and get a full access. Thank you for being with us on "
@@ -4385,6 +4392,16 @@ msgstr ""
 "경험해 보세요, 브루노와 함께하는 차세대 언어 연습. 초보자든 고급 학습자든, 브루노는 당신의 속도에 맞추어 조정하고, 실수를 "
 "교정하며, 당신을 지속적으로 동기 부여합니다."
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:49
+#. js-lingui-explicit-id
+msgid "Experimental features"
+msgstr "실험 기능"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:29
+#. js-lingui-explicit-id
+msgid "Experimental Lab"
+msgstr "실험실"
+
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:190
 #. js-lingui-explicit-id
 msgid "Expires"
@@ -4574,7 +4591,7 @@ msgstr "피드백이 모호함: \"**경험이 부족하다**\" — 하지만 직
 msgid "Feedback that helps"
 msgstr "피드백이 도움이 됩니다"
 
-#: src/features/Tasks/useDailyTasks.tsx:155
+#: src/features/Tasks/useDailyTasks.tsx:162
 #. js-lingui-explicit-id
 msgid "Fifth day, you are on fire!"
 msgstr "다섯째 날, 불타오르네요!"
@@ -4905,7 +4922,7 @@ msgstr "설립자"
 msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
 msgstr "플루언시팔이 당신의 말하기 능력을 향상시키는 네 가지 방법"
 
-#: src/features/Tasks/useDailyTasks.tsx:145
+#: src/features/Tasks/useDailyTasks.tsx:152
 #. js-lingui-explicit-id
 msgid "Fourth day, time for a story!"
 msgstr "네 번째 날, 이야기를 나눌 시간이에요!"
@@ -5496,12 +5513,12 @@ msgstr "문법 개선사항"
 msgid "Grammar Rules"
 msgstr "문법 규칙"
 
-#: src/features/Tasks/useDailyTasks.tsx:179
+#: src/features/Tasks/useDailyTasks.tsx:186
 #. js-lingui-explicit-id
 msgid "Great job on making it a week! Check out today’s tasks!"
 msgstr "훌륭합니다! 한 주를 잘 보냈어요! 오늘의 할 일을 확인해 보세요!"
 
-#: src/features/Tasks/useDailyTasks.tsx:270
+#: src/features/Tasks/useDailyTasks.tsx:277
 #. js-lingui-explicit-id
 msgid "Great job! Come back tomorrow for new tasks."
 msgstr "훌륭해요! 새로운 과제를 위해 내일 다시 오세요."
@@ -7312,12 +7329,17 @@ msgstr "그냥 말하세요"
 msgid "Just Talk"
 msgstr "그냥 말하세요"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
+#. js-lingui-explicit-id
+msgid "Just Talk mode with better AI behind it."
+msgstr "Just Talk 모드가 더 발전된 AI로 강화되었습니다."
+
 #: src/features/Case/data/frontend-senior/quizData.ts:168
 #. js-lingui-explicit-id
 msgid "Keep it concise and relevant"
 msgstr "간결하고 관련성을 유지하세요"
 
-#: src/features/Tasks/useDailyTasks.tsx:130
+#: src/features/Tasks/useDailyTasks.tsx:137
 #. js-lingui-explicit-id
 msgid "Keep the momentum going with today’s tasks!"
 msgstr "오늘의 과제들로 모멘텀을 유지하세요!"
@@ -7585,7 +7607,7 @@ msgstr "계정을 만듭시다"
 msgid "Let's see who has the best arguments."
 msgstr "누가 가장 설득력 있는 주장을 펼치는지 봅시다."
 
-#: src/features/Tasks/useDailyTasks.tsx:122
+#: src/features/Tasks/useDailyTasks.tsx:129
 #. js-lingui-explicit-id
 msgid "Let’s get started with today’s tasks!"
 msgstr "오늘의 작업을 시작해 봅시다!"
@@ -7696,6 +7718,7 @@ msgstr "로딩 중.."
 #: src/features/Conversation/ConversationReviewModal.tsx:131
 #: src/features/Conversation/ConversationReviewModal.tsx:146
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:106
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
 #: src/features/Dashboard/JustTalkCard.tsx:45
@@ -7750,7 +7773,7 @@ msgstr "특정한 것을 찾고 계신가요?"
 msgid "Main goal in learning"
 msgstr "배움의 주요 목표"
 
-#: src/features/Tasks/useDailyTasks.tsx:121
+#: src/features/Tasks/useDailyTasks.tsx:128
 #. js-lingui-explicit-id
 msgid "Make learning a habit!"
 msgstr "배움을 습관으로 만드세요!"
@@ -7929,7 +7952,7 @@ msgstr "마이크 접근 권한"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "마이크 접근이 거부되었습니다. 브라우저 설정에서 이를 활성화해 주세요."
 
-#: src/features/Conversation/useJustTalk.tsx:48
+#: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is required to start the call.\n"
@@ -8041,7 +8064,7 @@ msgstr "더욱 독특한 수업들"
 msgid "More..."
 msgstr "더 보기..."
 
-#: src/features/Tasks/useDailyTasks.tsx:194
+#: src/features/Tasks/useDailyTasks.tsx:201
 #. js-lingui-explicit-id
 msgid "Most have already given up, but not you! I'm proud of you!"
 msgstr "대부분은 이미 포기했지만, 당신은 아니에요! 정말 자랑스러워요!"
@@ -10494,7 +10517,7 @@ msgstr "스크리닝"
 msgid "Screening interview with AI recruiter"
 msgstr "AI 리쿠르터와의 사전 인터뷰"
 
-#: src/features/Tasks/useDailyTasks.tsx:129
+#: src/features/Tasks/useDailyTasks.tsx:136
 #. js-lingui-explicit-id
 msgid "Second day, keep it up!"
 msgstr "두 번째 날, 계속해보세요!"
@@ -10693,7 +10716,7 @@ msgstr "내 언어 설정"
 msgid "Set the goal of your learning"
 msgstr "학습의 목표를 설정하십시오"
 
-#: src/features/Tasks/useDailyTasks.tsx:178
+#: src/features/Tasks/useDailyTasks.tsx:185
 #. js-lingui-explicit-id
 msgid "Seventh day, great job!"
 msgstr "일곱째 날, 잘 했어요!"
@@ -10877,7 +10900,7 @@ msgstr "로그인"
 msgid "Single player mode with AI"
 msgstr "AI와의 싱글 플레이어 모드"
 
-#: src/features/Tasks/useDailyTasks.tsx:170
+#: src/features/Tasks/useDailyTasks.tsx:177
 #. js-lingui-explicit-id
 msgid "Sixth day, you are amazing!"
 msgstr "여섯째 날, 당신은 놀라워요!"
@@ -11058,6 +11081,7 @@ msgstr "별"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:109
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -11910,7 +11934,7 @@ msgstr "어떤 언어를 설치할지 고민 중..."
 msgid "Thinking..."
 msgstr "생각 중..."
 
-#: src/features/Tasks/useDailyTasks.tsx:137
+#: src/features/Tasks/useDailyTasks.tsx:144
 #. js-lingui-explicit-id
 msgid "Third day, you are doing great!"
 msgstr "세 번째 날, 잘하고 있어요!"
@@ -13644,17 +13668,17 @@ msgid ""
 "top-5"
 msgstr "당신은 리더보드에서 선두주자입니다! 상위 5위에 있는 동안 전체 접근이 활성화됩니다."
 
-#: src/features/Tasks/useDailyTasks.tsx:171
+#: src/features/Tasks/useDailyTasks.tsx:178
 #. js-lingui-explicit-id
 msgid "You are amazing! Check out today’s tasks!"
 msgstr "당신은 대단해요! 오늘의 작업을 확인해보세요!"
 
-#: src/features/Tasks/useDailyTasks.tsx:138
+#: src/features/Tasks/useDailyTasks.tsx:145
 #. js-lingui-explicit-id
 msgid "You are doing great! Check out today’s tasks!"
 msgstr "좋은 일을 하고 있어요! 오늘의 작업을 확인해 보세요!"
 
-#: src/features/Tasks/useDailyTasks.tsx:156
+#: src/features/Tasks/useDailyTasks.tsx:163
 #. js-lingui-explicit-id
 msgid "You are on fire! Check out today’s tasks!"
 msgstr "당신은 열정적입니다! 오늘의 과제를 확인해 보세요!"
@@ -13828,7 +13852,7 @@ msgid ""
 "pressure**"
 msgstr "기술은 알고 있지만 **압박감 속에서 결정을 명확하게 설명하는 데 어려움을 겪습니다**"
 
-#: src/features/Tasks/useDailyTasks.tsx:202
+#: src/features/Tasks/useDailyTasks.tsx:209
 #. js-lingui-explicit-id
 msgid "You know what to do"
 msgstr "당신은 무엇을 해야 할지 알고 있습니다"
@@ -14090,6 +14114,23 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "Experimental"
+#~ msgstr "실험적인"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:50
+#. js-lingui-explicit-id
+#~ msgid "Realtime Talking & Correction"
+#~ msgstr "실시간 대화 및 교정"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Try a newer realtime model tuned for smoother talking and faster "
+#~ "corrections."
+#~ msgstr "더 부드러운 대화와 빠른 수정이 가능한 최신 실시간 모델을 사용해보세요."
 
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:40
 #. js-lingui-explicit-id

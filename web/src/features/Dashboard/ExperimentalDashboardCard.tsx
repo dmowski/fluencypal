@@ -46,11 +46,7 @@ export const ExperimentalDashboardCard = () => {
           previewImageUrl={
             'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774632920465-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
           }
-          label={i18n._('Experimental').toUpperCase()}
-          title={i18n._('Realtime Talking & Correction')}
-          subTitle={i18n._(
-            'Try a newer realtime model tuned for smoother talking and faster corrections.',
-          )}
+          title={i18n._('Experimental features')}
           items={[
             {
               title: 'Realtime-1.5 - Just Talk',
