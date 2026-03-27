@@ -27,9 +27,7 @@ export const ExperimentalDashboardCard = () => {
     >
       <SectionHeader
         title={i18n._('Experimental Lab')}
-        subTitle={i18n._(
-          'Early access features for a limited number of users. These features may change quickly.',
-        )}
+        subTitle={i18n._('Early access features. These features may change quickly.')}
       />
       <ChatProvider
         metadata={{
