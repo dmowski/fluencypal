@@ -57,7 +57,7 @@ export const InteractiveExample = ({
   const realtimeTranscript = useRealtimeTranscript();
 
   const startRecording = async () => {
-    await realtimeTranscript.start({ mode: 'ai', language: targetLanguage });
+    await realtimeTranscript.start({ mode: 'native', language: targetLanguage });
   };
 
   const stopRecording = async () => {
@@ -250,7 +250,7 @@ export const InteractiveExample = ({
                   },
                 }}
                 oldValue={cleanedExample}
-                newValue={realtimeTranscript.transcript.join('')}
+                newValue={realtimeTranscript.transcript.join('') || ''}
               />
             </Typography>
           </Stack>

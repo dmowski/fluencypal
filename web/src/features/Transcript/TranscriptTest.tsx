@@ -26,7 +26,7 @@ export const TranscriptTest = () => {
   } = useRealtimeTranscript();
   const settings = useSettings();
   const [error, setError] = useState<string | null>(null);
-  const [mode, setMode] = useState<'ai' | 'native'>('ai');
+  const [mode, setMode] = useState<'ai' | 'native'>('native');
   const [language, setLanguage] = useState<SupportedLanguage>(settings.languageCode || 'en');
 
   const handleStart = async () => {

@@ -2,8 +2,7 @@
 
 ## Realtime transcript
 
-- Update quiz to mention that records is need to be done in (learning language)
-- Start using useRealtimeTranscript on quiz
+- Integrate it with interactive quiz
 
 ## Reading:
 
