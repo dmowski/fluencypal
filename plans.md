@@ -1,18 +1,18 @@
 # Live document with short/long term ideas
 
-## Fix uploading images on avatars
-
 ## Reading
 
 Validate on polish grammar
+
+## Daily question
+
+- Daily Tasks - Show image that is used for todays question
 
 ## Add notifications about mentions in global chat
 
 Maybe combine all notification into one flow?
 
-## Daily question
-
-- [ ] Daily Tasks - Show image that is used for todays question
+## Validate new AI model for conversation
 
 ## Community
 
