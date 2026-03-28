@@ -60,4 +60,28 @@ describe('getReadingProgress', () => {
       activeMarkdown: '*We travel by train every* weekend.',
     });
   });
+
+  it('tracks partial progress in Chinese text with transcript noise', () => {
+    const fullText = '我 练习 英语 和 老师 一起 阅读 书籍。';
+    const transcript = '嗯 我 练习 英语 和 老师 一起 啊 阅读';
+
+    const result = getReadingProgress(fullText, transcript);
+
+    expect(result).toEqual({
+      isDone: false,
+      activeMarkdown: '*我 练习 英语 和 老师 一起 阅读* 书籍。',
+    });
+  });
+
+  it('handles Arabic punctuation and marks completion correctly', () => {
+    const fullText = 'أنا أتمرن على الإنجليزية مع معلمي، ثم نقرأ كتابًا.';
+    const transcript = 'أنا أتمرن على الإنجليزية مع معلمي، ثم نقرأ كتابًا';
+
+    const result = getReadingProgress(fullText, transcript);
+
+    expect(result).toEqual({
+      isDone: true,
+      activeMarkdown: '*أنا أتمرن على الإنجليزية مع معلمي، ثم نقرأ كتابًا.*',
+    });
+  });
 });
