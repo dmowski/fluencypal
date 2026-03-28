@@ -245,7 +245,7 @@ export const InteractiveExample = ({
                           ? 'Loading...'
                           : isCompletedReading
                             ? i18n._('Read again')
-                            : i18n._('Start reading')}
+                            : i18n._('Read')}
                       </Button>
                     )}
                   </>
@@ -297,6 +297,10 @@ export const InteractiveExample = ({
           </Stack>
         ) : (
           <OptionsList options={options} handlePick={handlePick} wrongWord={wrongWord} />
+        )}
+
+        {realtimeTranscript.isActive && (
+          <Typography>{realtimeTranscript.transcript.join(' ')}</Typography>
         )}
       </Stack>
     </Stack>

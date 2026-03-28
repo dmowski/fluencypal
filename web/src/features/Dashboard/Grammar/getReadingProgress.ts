@@ -21,12 +21,13 @@ type LcsMatch = {
 // Arabic vowel diacritics (harakat) — STT engines typically strip these from output.
 const arabicDiacritics =
   /[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED]/g;
+const apostropheVariants = /[\u2019\u2018\u02BC\uFF07]/g;
 
 const normalizeForMatching = (word: string): string | null => {
   const cleared = clearWordForAudio(word);
   if (!cleared) return null;
 
-  return cleared.replace(arabicDiacritics, '');
+  return cleared.replace(arabicDiacritics, '').replace(apostropheVariants, "'");
 };
 
 const tokenizeText = (text: string): TextToken[] => {

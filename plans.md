@@ -2,6 +2,7 @@
 
 ## Realtime transcript
 
+- Test grammar reading to stop bugs
 - Tune of next Grammar/prev. and Practice with AI
 
 ## Add notifications about mentions in global chat

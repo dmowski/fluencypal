@@ -187,4 +187,17 @@ describe('getReadingProgress', () => {
       activeMarkdown: '*I have* two *books.*',
     });
   });
+
+  it('matches sentence start when full text uses curly apostrophe and transcript uses straight apostrophe', () => {
+    const fullText = 'It’s a course for beginners and intermediate students.';
+    const transcript = "it's a course";
+
+    const result = getReadingProgress(fullText, transcript);
+
+    expect(result).toEqual({
+      isDone: false,
+      completionPercentage: 38,
+      activeMarkdown: '*It’s a course* for beginners and intermediate students.',
+    });
+  });
 });
