@@ -1,21 +1,13 @@
-import dayjs from 'dayjs';
-import { useSettings } from '@/features//Settings/useSettings';
-import { dailyQuestions } from '@/features/DailyQuestion/dailyQuestions';
 import { useLingui } from '@lingui/react';
 import { useAccess } from '@/features//Usage/useAccess';
 import { Stack } from '@mui/material';
 import { SectionHeader } from './CartsHeader';
 import { useGlobalModals } from '@/features//Modal/useGlobalModals';
 import { DailyQuestionFullCard } from '../DailyQuestion/DailyQuestionFullCard';
+import { useDailyQuestion } from '../DailyQuestion/useDailyQuestion';
 
 export const DailyQuestionDashboardCard = () => {
-  const settings = useSettings();
-  const startDay = settings.userSettings?.createdAtIso || settings.userSettings?.createdAt;
-  const daysSinceStart = startDay ? dayjs().diff(dayjs(startDay), 'day') : 0;
-  const questionsKeys = Object.keys(dailyQuestions);
-  const questionIndex = daysSinceStart % questionsKeys.length;
-
-  const todaysQuestion = dailyQuestions[questionsKeys[questionIndex]];
+  const question = useDailyQuestion();
   const { i18n } = useLingui();
   const globalModals = useGlobalModals();
 
@@ -38,7 +30,7 @@ export const DailyQuestionDashboardCard = () => {
       />
 
       <DailyQuestionFullCard
-        question={todaysQuestion}
+        question={question.todaysQuestion}
         badge={i18n._('Today').toUpperCase()}
         onClick={globalModals.openDailyQuestions}
       />

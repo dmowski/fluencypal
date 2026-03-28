@@ -1,20 +1,12 @@
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { dailyQuestions } from './dailyQuestions';
-import dayjs from 'dayjs';
-import { useSettings } from '@/features/Settings/useSettings';
 import { useAccess } from '@/features/Usage/useAccess';
 import { DailyQuestionFullCard } from './DailyQuestionFullCard';
+import { useDailyQuestion } from './useDailyQuestion';
 
 export const DailyQuestionFullList = () => {
-  const settings = useSettings();
   const { i18n } = useLingui();
-  const createdAt = settings.userSettings?.createdAtIso || settings.userSettings?.createdAt;
-  const daysSinceUserCreatedAccount = createdAt ? dayjs().diff(dayjs(createdAt), 'day') : 0;
-  const questionsKeys = Object.keys(dailyQuestions);
-  const questionIndex = daysSinceUserCreatedAccount % questionsKeys.length;
-
-  const todaysQuestion = dailyQuestions[questionsKeys[questionIndex]];
+  const questions = useDailyQuestion();
 
   const access = useAccess();
   if (!access.canUseCommunity) {
@@ -27,14 +19,40 @@ export const DailyQuestionFullList = () => {
         gap: '90px',
       }}
     >
-      <DailyQuestionFullCard question={todaysQuestion} badge={i18n._("Today's Question")} />
+      <DailyQuestionFullCard
+        question={questions.todaysQuestion}
+        badge={i18n._("Today's Question")}
+      />
 
-      {questionsKeys
-        .filter((key) => key !== questionsKeys[questionIndex])
-        .map((key) => {
-          const question = dailyQuestions[key];
-          return <DailyQuestionFullCard key={question.id} question={question} />;
-        })}
+      <Stack
+        sx={{
+          gap: '20px',
+        }}
+      >
+        <Stack>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: 600,
+            }}
+          >
+            {i18n._('Previous Questions')}
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            {i18n._('Explore past questions and their discussions.')}
+          </Typography>
+        </Stack>
+
+        <Stack
+          sx={{
+            gap: '50px',
+          }}
+        >
+          {questions.otherQuestions.map((question) => {
+            return <DailyQuestionFullCard key={question.id} question={question} />;
+          })}
+        </Stack>
+      </Stack>
     </Stack>
   );
 };

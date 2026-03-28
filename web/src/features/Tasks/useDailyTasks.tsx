@@ -132,7 +132,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
-      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
+      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement', 'daily-question'],
       title: i18n._('Second day, keep it up!'),
       subTitle: i18n._('Keep the momentum going with today’s tasks!'),
       imageUrl: previewImageUrl,

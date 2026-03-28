@@ -1,6 +1,6 @@
 import { useLingui } from '@lingui/react';
 import { Stack } from '@mui/material';
-import { CardItem, CardItemIcon, StoreCard } from '../uiKit/Card/StoreCard';
+import { CardItem, StoreCard } from '../uiKit/Card/StoreCard';
 import { useDailyTasks } from '../Tasks/useDailyTasks';
 import { SectionHeader } from './CartsHeader';
 import { useMemo } from 'react';
@@ -14,6 +14,7 @@ import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 import { useGame } from '../Game/useGame';
 import { useUsage } from '../Usage/useUsage';
 import { useGrammarImprovement } from './Grammar/useGrammarImprovement';
+import { useDailyQuestion } from '../DailyQuestion/useDailyQuestion';
 
 export const DailyTasksDashboardCard = () => {
   const { i18n } = useLingui();
@@ -29,6 +30,7 @@ export const DailyTasksDashboardCard = () => {
   const secondPhotoUrl = aiAvatar.photoUrls?.[1] || aiAvatar.photoUrls?.[0] || '';
 
   const grammarImprovement = useGrammarImprovement();
+  const dailyQuestion = useDailyQuestion();
 
   const taskIconMap: Record<DailyTaskType, string> = useMemo(
     () => ({
@@ -40,10 +42,9 @@ export const DailyTasksDashboardCard = () => {
       story: stories.randomStoryWithVideo?.imageUrl || '',
       'grammar-improvement':
         'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773858639762-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
-      'daily-question':
-        'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774035287672-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+      'daily-question': dailyQuestion.todaysQuestionImage || '',
     }),
-    [secondPhotoUrl, stories.randomStoryWithVideo?.imageUrl],
+    [secondPhotoUrl, stories.randomStoryWithVideo?.imageUrl, dailyQuestion.todaysQuestionImage],
   );
 
   const { startJustTalk, isCallStarting } = useJustTalk();

@@ -1,7 +1,8 @@
 # Live document with short/long term ideas
 
-## Reading
+# Grammar improvement: AI call
 
+How to start "Call". Why it's fails during starting
 Validate on polish grammar
 
 ## Daily question
