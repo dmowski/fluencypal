@@ -174,7 +174,7 @@ function useProvideDailyTasks(): DailyTaskApi {
         'daily-question',
         'community',
       ],
-      title: i18n._('Day six: strong consistency'),
+      title: i18n._('Strong consistency'),
       subTitle: i18n._('Your consistency is paying off. Here are today’s tasks.'),
       imageUrl: previewImageUrl,
       itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
