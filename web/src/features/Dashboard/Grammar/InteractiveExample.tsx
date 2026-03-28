@@ -170,6 +170,9 @@ export const InteractiveExample = ({
 
       <Stack
         sx={{
+          '@media (max-width: 500px)': {
+            minHeight: '64px',
+          },
           '* strong': {
             backgroundColor: 'rgba(11, 130, 194, 0.79)',
             padding: '2px 8px',
