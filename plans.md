@@ -3,6 +3,12 @@
 ## Realtime transcript
 
 - Integrate it with interactive quiz
+- How to calculate if recording is done
+  -- Split transcript and sentence into words and check that all words are pronounced
+  -- Render pronounced words with "**word**" formatting
+
+- While recording, show red blinking dot
+- Close previous transcript session after starting a new one
 
 ## Reading:
 

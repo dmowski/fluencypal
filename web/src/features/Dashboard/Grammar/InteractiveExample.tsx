@@ -13,7 +13,6 @@ import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 import { clearWordForAudio } from '@/features/Audio/clearWord';
 import { useRealtimeTranscript } from '@/features/Transcript/useRealtimeTranscript';
 import { Button, Typography } from '@mui/material';
-import { StringDiff } from 'react-string-diff';
 import { CheckCheck, Mic } from 'lucide-react';
 
 const cleanMarkdownStyles = (text: string): string => {
@@ -21,6 +20,34 @@ const cleanMarkdownStyles = (text: string): string => {
     .replace(/(\*\*|__)(.*?)\1/g, '$2')
     .replace(/(\*|_)(.*?)\1/g, '$2')
     .replace(/`([^`]+)`/g, '$1');
+};
+
+interface ReadingProgress {
+  // with separate styling for pronounced word
+  activeMarkdown: string;
+  isDone: boolean;
+}
+
+const getReadingProgress = (fullText: string, transcript: string): ReadingProgress => {
+  if (!transcript || transcript.trim() === '') {
+    return {
+      activeMarkdown: fullText,
+      isDone: false,
+    };
+  }
+
+  /**
+1. Split transcript and sentence into words and check that all words are pronounced
+2. Render pronounced words with "**word**" formatting
+*/
+
+  const textWords = splitWords(fullText).map((word) => clearWordForAudio(word) || '');
+  const transcriptWords = splitWords(transcript).map((word) => clearWordForAudio(word) || '');
+  console.log('textWords', textWords);
+  return {
+    activeMarkdown: textWords.join(' '),
+    isDone: false,
+  };
 };
 
 export const InteractiveExample = ({
@@ -57,6 +84,13 @@ export const InteractiveExample = ({
   const startRecording = async () => {
     await realtimeTranscript.start({ mode: 'native', language: targetLanguage });
   };
+
+  const readingProgress = useMemo(
+    () => getReadingProgress(cleanedExample, realtimeTranscript.transcript.join(' ')),
+    [cleanedExample, realtimeTranscript.transcript],
+  );
+
+  console.log('readingProgress', readingProgress);
 
   const stopRecording = async () => {
     realtimeTranscript.stop();
@@ -104,8 +138,9 @@ export const InteractiveExample = ({
 
   const emptyOption = `_____`;
   const progressString = progress ? `${progress} ${isCompletedQuiz ? '' : emptyOption}`.trim() : '';
-  const progressToShow =
-    '\n' + (progressString || initialProgress || i18n._('Pick words to build the sentence'));
+  const progressToShow = realtimeTranscript.isActive
+    ? '\n' + readingProgress.activeMarkdown
+    : '\n' + (progressString || initialProgress || i18n._('Pick words to build the sentence'));
 
   return (
     <Stack
