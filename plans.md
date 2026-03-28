@@ -1,9 +1,5 @@
 # Live document with short/long term ideas
 
-## Validate new AI model for conversation
-
-gpt realtime 1.5. Can we limit free users more and focus on quality
-
 ## Add notifications about mentions in global chat
 
 Maybe combine all notification into one flow?
