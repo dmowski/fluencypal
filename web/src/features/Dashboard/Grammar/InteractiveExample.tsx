@@ -106,7 +106,7 @@ export const InteractiveExample = ({
 
   useEffect(() => {
     if (readingProgress.isDone) {
-      realtimeTranscript.stop();
+      // realtimeTranscript.stop();
       setIsCompletedReading(true);
     }
   }, [readingProgress.isDone]);
@@ -119,11 +119,9 @@ export const InteractiveExample = ({
 
   const emptyOption = `_____`;
   const progressString = progress ? `${progress} ${isCompletedQuiz ? '' : emptyOption}`.trim() : '';
-  const progressToShow = isCompletedReading
-    ? `\n *${cleanedExample}*`
-    : realtimeTranscript.isActive
-      ? '\n' + readingProgress.activeMarkdown
-      : '\n' + (progressString || initialProgress || i18n._('Pick words to build the sentence'));
+  const progressToShow = realtimeTranscript.isActive
+    ? '\n' + readingProgress.activeMarkdown
+    : '\n' + (progressString || initialProgress || i18n._('Pick words to build the sentence'));
 
   return (
     <Stack
@@ -201,59 +199,59 @@ export const InteractiveExample = ({
               py: '8px',
             }}
           >
-            {isCompletedReading ? (
-              <Stack
-                sx={{
-                  borderRadius: '6px',
-                  width: 'fit-content',
-                  padding: '4px 8px',
-                  flexDirection: 'row',
-                  gap: '6px',
-                  alignItems: 'center',
-                  color: '#b0d9c0',
-                  border: '1px solid #b0d9c049',
-                }}
-              >
-                <CheckCheck size={'18px'} />
-                <Typography variant="body2">{i18n._('Great job!')}</Typography>
-              </Stack>
-            ) : (
-              <Stack
-                sx={{
-                  flexDirection: 'row',
-                  gap: '15px',
-                  alignItems: 'center',
-                }}
-              >
-                {realtimeTranscript.isActive ? (
-                  <Button
-                    variant="contained"
-                    color="error"
-                    disabled={realtimeTranscript.isActivating}
-                    onClick={stopRecording}
-                  >
-                    {i18n._('Done')}
-                  </Button>
-                ) : (
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    startIcon={<Mic size={16} />}
-                    disabled={realtimeTranscript.isActivating}
-                    onClick={startRecording}
-                  >
-                    {realtimeTranscript.isActivating ? 'Loading...' : i18n._('Start reading')}
-                  </Button>
-                )}
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                gap: '15px',
+                alignItems: 'center',
+              }}
+            >
+              {realtimeTranscript.isActive ? (
+                <Button
+                  variant="contained"
+                  color="error"
+                  disabled={realtimeTranscript.isActivating}
+                  onClick={stopRecording}
+                >
+                  {i18n._('Done')}
+                </Button>
+              ) : (
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  startIcon={<Mic size={16} />}
+                  disabled={realtimeTranscript.isActivating}
+                  onClick={startRecording}
+                >
+                  {realtimeTranscript.isActivating ? 'Loading...' : i18n._('Start reading')}
+                </Button>
+              )}
 
-                {realtimeTranscript.isActive && <PulseDot />}
-              </Stack>
-            )}
+              {realtimeTranscript.isActive && <PulseDot />}
+            </Stack>
 
             <AudioPlayIcon text={example} type="icon" buttonLabel={i18n._('Play full example')} />
           </Stack>
         ) : (
           <OptionsList options={options} handlePick={handlePick} wrongWord={wrongWord} />
+        )}
+
+        {isCompletedReading && (
+          <Stack
+            sx={{
+              borderRadius: '6px',
+              width: 'fit-content',
+              padding: '4px 8px',
+              flexDirection: 'row',
+              gap: '6px',
+              alignItems: 'center',
+              color: '#b0d9c0',
+              border: '1px solid #b0d9c049',
+            }}
+          >
+            <CheckCheck size={'18px'} />
+            <Typography variant="body2">{i18n._('Great job!')}</Typography>
+          </Stack>
         )}
 
         {realtimeTranscript.isActive && (
