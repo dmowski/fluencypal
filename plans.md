@@ -2,11 +2,6 @@
 
 ## Realtime transcript
 
-There's a case when user press "Start reading" in several interactiveExamples.
-In this case, close previous transcript session before starting a new one.
-
-Figure out on how to better to that. Analyze usage of <InteractiveExamples> components
-
 ## Add notifications about mentions in global chat
 
 Maybe combine all notification into one flow?

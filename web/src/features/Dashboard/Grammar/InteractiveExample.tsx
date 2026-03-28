@@ -117,13 +117,6 @@ export const InteractiveExample = ({
   }, [readingProgress.completionPercentage, realtimeTranscript.isActive]);
 
   useEffect(() => {
-    if (!isCompletedQuiz || isCompletedReading) return;
-    if (realtimeTranscript.isActive || realtimeTranscript.isActivating) return;
-
-    void startRecording();
-  }, [isCompletedQuiz, isCompletedReading, realtimeTranscript.isActive, realtimeTranscript.isActivating]);
-
-  useEffect(() => {
     setProgress(initialProgress);
     setIsCompletedQuiz(false);
     setIsCompletedReading(false);
