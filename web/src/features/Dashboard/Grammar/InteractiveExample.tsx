@@ -69,7 +69,8 @@ export const InteractiveExample = ({
   };
 
   useEffect(() => {
-    if (isCompletedQuiz && isCompletedReading) {
+    if (isCompletedQuiz) {
+      // && isCompletedReading
       onComplete();
     }
   }, [isCompletedQuiz, isCompletedReading]);
@@ -253,6 +254,10 @@ export const InteractiveExample = ({
           </Stack>
         ) : (
           <OptionsList options={options} handlePick={handlePick} wrongWord={wrongWord} />
+        )}
+
+        {realtimeTranscript.isActive && (
+          <Typography>{realtimeTranscript.transcript.join(' ')}</Typography>
         )}
       </Stack>
     </Stack>

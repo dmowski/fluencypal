@@ -2,12 +2,11 @@
 
 ## Realtime transcript
 
-- Integrate it with interactive quiz
-- How to calculate if recording is done
-  -- Split transcript and sentence into words and check that all words are pronounced
-  -- Render pronounced words with "**word**" formatting
+- How to handle case when text has "who", but recording provides "2"
+  -- Create a dictionary? Remove examples with numbers
 
-- While recording, show red blinking dot
+  -- Manually review all users readings to spot similar problems
+
 - Close previous transcript session after starting a new one
 
 ## Reading:
