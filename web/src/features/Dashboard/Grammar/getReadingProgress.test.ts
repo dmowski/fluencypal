@@ -213,4 +213,18 @@ describe('getReadingProgress', () => {
       activeMarkdown: '*My brother and I went to the store after work.*',
     });
   });
+
+  it('keeps progress when first words are corrected later in transcript (Polish STT case)', () => {
+    const fullText = 'Kupiłem książkę, która bardzo jasno tłumaczy polską gramatykę.';
+    const transcript =
+      'kupiłam książkę która bardzo jasno tłumaczy polskie gramatykę Kupiłem książkę Kupiłem książkę';
+
+    const result = getReadingProgress(fullText, transcript);
+
+    expect(result).toEqual({
+      isDone: true,
+      completionPercentage: 88,
+      activeMarkdown: '*Kupiłem książkę, która bardzo jasno tłumaczy* polską *gramatykę.*',
+    });
+  });
 });

@@ -156,6 +156,9 @@ export const InteractiveExample = ({
             height: '30px',
             gap: '6px',
             alignItems: 'center',
+            color: realtimeTranscript.isActive
+              ? 'rgba(255, 255, 255, 1)'
+              : 'rgba(130, 227, 200, 0.93)',
           }}
         >
           <CheckCheck size={'18px'} />
@@ -289,9 +292,11 @@ export const InteractiveExample = ({
 
         {realtimeTranscript.isActive && (
           <Typography
-            sx={{
-              display: 'none',
-            }}
+            sx={
+              {
+                //display: 'none',
+              }
+            }
           >
             {realtimeTranscript.transcript.join(' ')}
           </Typography>

@@ -144,6 +144,32 @@ const getWordInventoryCoverageCount = (textWords: string[], transcriptWords: str
   return matchedCount;
 };
 
+const getLeadingCoverageCount = (textWords: string[], transcriptWords: string[]): number => {
+  if (!textWords.length || !transcriptWords.length) {
+    return 0;
+  }
+
+  const transcriptWordCounts = new Map<string, number>();
+
+  for (const word of transcriptWords) {
+    transcriptWordCounts.set(word, (transcriptWordCounts.get(word) ?? 0) + 1);
+  }
+
+  let leadingCount = 0;
+
+  for (const word of textWords) {
+    const count = transcriptWordCounts.get(word) ?? 0;
+    if (count <= 0) {
+      break;
+    }
+
+    leadingCount += 1;
+    transcriptWordCounts.set(word, count - 1);
+  }
+
+  return leadingCount;
+};
+
 const renderRunsMarkdown = (
   fullText: string,
   tokens: TextToken[],
@@ -209,8 +235,13 @@ export const getReadingProgress = (fullText: string, transcript: string): Readin
     };
   }
 
-  // Keep UX predictable: we only show progress after the user starts from the beginning.
-  if (lcsMatches[0].textWordIndex !== 0) {
+  // Keep UX predictable: show progress only after the first sentence word is pronounced
+  // at least once, even if STT noise causes LCS to start from a later token.
+  const firstTextWord = textWords[0];
+  const startedFromBeginning =
+    typeof firstTextWord === 'string' && transcriptWords.includes(firstTextWord);
+
+  if (!startedFromBeginning) {
     return {
       activeMarkdown: fullText,
       isDone: false,
@@ -219,7 +250,13 @@ export const getReadingProgress = (fullText: string, transcript: string): Readin
   }
 
   const matchedTextWordIndices = lcsMatches.map((match) => match.textWordIndex);
-  const runs = splitIntoRuns(matchedTextWordIndices);
+  const leadingCoverageCount = getLeadingCoverageCount(textWords, transcriptWords);
+  const recoveredPrefixIndices =
+    leadingCoverageCount > 0 ? Array.from({ length: leadingCoverageCount }, (_, i) => i) : [];
+  const mergedMatchedIndices = Array.from(
+    new Set<number>([...matchedTextWordIndices, ...recoveredPrefixIndices]),
+  ).sort((a, b) => a - b);
+  const runs = splitIntoRuns(mergedMatchedIndices);
 
   const lcsHighlightedWordCount = runs.reduce(
     (count, [start, end]) => count + (end - start + 1),
