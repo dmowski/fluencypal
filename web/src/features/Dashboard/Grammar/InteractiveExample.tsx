@@ -200,7 +200,7 @@ export const InteractiveExample = ({
               py: '8px',
             }}
           >
-            {readingProgress.isDone ? (
+            {isCompletedReading ? (
               <Stack
                 sx={{
                   borderRadius: '6px',
