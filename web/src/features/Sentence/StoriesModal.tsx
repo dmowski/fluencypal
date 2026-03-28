@@ -228,6 +228,7 @@ export const StoriesModal = ({
 
   const startQuiz = async () => {
     audio.initAudio();
+    audio.setVolume(1);
 
     setViewMode('quiz');
 
