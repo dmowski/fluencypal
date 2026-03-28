@@ -20,7 +20,7 @@ describe('getReadingProgress', () => {
     const result = getReadingProgress(fullText, transcript);
 
     expect(result).toEqual({
-      isDone: false,
+      isDone: true,
       activeMarkdown: '*I practiced English with my teacher, and we* read a book.',
     });
   });
@@ -56,7 +56,7 @@ describe('getReadingProgress', () => {
     const result = getReadingProgress(fullText, transcript);
 
     expect(result).toEqual({
-      isDone: false,
+      isDone: true,
       activeMarkdown: '*We travel by train every* weekend.',
     });
   });
@@ -68,7 +68,7 @@ describe('getReadingProgress', () => {
     const result = getReadingProgress(fullText, transcript);
 
     expect(result).toEqual({
-      isDone: false,
+      isDone: true,
       activeMarkdown: '*我 练习 英语 和 老师 一起 阅读* 书籍。',
     });
   });
@@ -105,7 +105,7 @@ describe('getReadingProgress', () => {
 
     // second "the" is not yet read — prefix ends after "and"
     expect(result).toEqual({
-      isDone: false,
+      isDone: true,
       activeMarkdown: '*She took the book and* the bag.',
     });
   });
@@ -147,6 +147,30 @@ describe('getReadingProgress', () => {
     expect(result).toEqual({
       isDone: true,
       activeMarkdown: '*أنا أقرأُ كلَّ يوم.*',
+    });
+  });
+
+  it('highlights multiple met parts while skipping difficult words', () => {
+    const fullText = "No, it's a book by Malcolm Gladwell and David Ingoloff.";
+    const transcript = "no it's a book by bank account Gladwell and David in golf";
+
+    const result = getReadingProgress(fullText, transcript);
+
+    expect(result).toEqual({
+      isDone: true,
+      activeMarkdown: "*No, it's a book by* Malcolm *Gladwell and David* Ingoloff.",
+    });
+  });
+
+  it('does not use language-specific aliases for number words', () => {
+    const fullText = 'I have two books.';
+    const transcript = 'I have 2 books';
+
+    const result = getReadingProgress(fullText, transcript);
+
+    expect(result).toEqual({
+      isDone: true,
+      activeMarkdown: '*I have* two *books.*',
     });
   });
 });

@@ -13,6 +13,10 @@ type TextToken = {
   normalized: string | null;
 };
 
+type LcsMatch = {
+  textWordIndex: number;
+};
+
 // Arabic vowel diacritics (harakat) — STT engines typically strip these from output.
 const arabicDiacritics =
   /[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED]/g;
@@ -20,6 +24,7 @@ const arabicDiacritics =
 const normalizeForMatching = (word: string): string | null => {
   const cleared = clearWordForAudio(word);
   if (!cleared) return null;
+
   return cleared.replace(arabicDiacritics, '');
 };
 
@@ -41,53 +46,105 @@ const tokenizeText = (text: string): TextToken[] => {
   return tokens;
 };
 
-const countMatchedWords = (textWords: string[], transcriptWords: string[]): number => {
-  if (!textWords.length || !transcriptWords.length) {
-    return 0;
+const getLcsMatches = (textWords: string[], transcriptWords: string[]): LcsMatch[] => {
+  const textLength = textWords.length;
+  const transcriptLength = transcriptWords.length;
+
+  if (!textLength || !transcriptLength) {
+    return [];
   }
 
-  let transcriptIndex = 0;
-  let matched = 0;
+  const dp: number[][] = Array.from({ length: textLength + 1 }, () =>
+    Array.from({ length: transcriptLength + 1 }, () => 0),
+  );
 
-  for (const textWord of textWords) {
-    while (
-      transcriptIndex < transcriptWords.length &&
-      transcriptWords[transcriptIndex] !== textWord
-    ) {
-      transcriptIndex += 1;
+  for (let i = 1; i <= textLength; i += 1) {
+    for (let j = 1; j <= transcriptLength; j += 1) {
+      if (textWords[i - 1] === transcriptWords[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
     }
-
-    if (transcriptIndex >= transcriptWords.length) {
-      break;
-    }
-
-    matched += 1;
-    transcriptIndex += 1;
   }
 
-  return matched;
-};
+  const matches: LcsMatch[] = [];
+  let textCursor = textLength;
+  let transcriptCursor = transcriptLength;
 
-const getPrefixEnd = (tokens: TextToken[], matchedWordCount: number): number => {
-  if (matchedWordCount <= 0) {
-    return 0;
-  }
-
-  let normalizedCount = 0;
-
-  for (const token of tokens) {
-    if (!token.normalized) {
+  while (textCursor > 0 && transcriptCursor > 0) {
+    if (textWords[textCursor - 1] === transcriptWords[transcriptCursor - 1]) {
+      matches.push({
+        textWordIndex: textCursor - 1,
+      });
+      textCursor -= 1;
+      transcriptCursor -= 1;
       continue;
     }
 
-    normalizedCount += 1;
-
-    if (normalizedCount === matchedWordCount) {
-      return token.end;
+    if (dp[textCursor - 1][transcriptCursor] >= dp[textCursor][transcriptCursor - 1]) {
+      textCursor -= 1;
+    } else {
+      transcriptCursor -= 1;
     }
   }
 
-  return tokens[tokens.length - 1]?.end ?? 0;
+  return matches.reverse();
+};
+
+const splitIntoRuns = (matchedTextWordIndices: number[]): Array<[number, number]> => {
+  if (!matchedTextWordIndices.length) {
+    return [];
+  }
+
+  const runs: Array<[number, number]> = [];
+  let runStart = matchedTextWordIndices[0];
+  let runEnd = matchedTextWordIndices[0];
+
+  for (let index = 1; index < matchedTextWordIndices.length; index += 1) {
+    const current = matchedTextWordIndices[index];
+
+    if (current === runEnd + 1) {
+      runEnd = current;
+      continue;
+    }
+
+    runs.push([runStart, runEnd]);
+    runStart = current;
+    runEnd = current;
+  }
+
+  runs.push([runStart, runEnd]);
+  return runs;
+};
+
+const renderRunsMarkdown = (
+  fullText: string,
+  tokens: TextToken[],
+  textWordToTokenIndex: number[],
+  runs: Array<[number, number]>,
+): string => {
+  if (!runs.length) {
+    return fullText;
+  }
+
+  let cursor = 0;
+  let result = '';
+
+  for (const [runStart, runEnd] of runs) {
+    const startTokenIndex = textWordToTokenIndex[runStart];
+    const endTokenIndex = textWordToTokenIndex[runEnd];
+
+    const startOffset = tokens[startTokenIndex]?.start ?? 0;
+    const endOffset = tokens[endTokenIndex]?.end ?? 0;
+
+    result += fullText.slice(cursor, startOffset);
+    result += `*${fullText.slice(startOffset, endOffset)}*`;
+    cursor = endOffset;
+  }
+
+  result += fullText.slice(cursor);
+  return result;
 };
 
 export const getReadingProgress = (fullText: string, transcript: string): ReadingProgress => {
@@ -99,29 +156,50 @@ export const getReadingProgress = (fullText: string, transcript: string): Readin
   }
 
   const textTokens = tokenizeText(fullText);
-  const textWords = textTokens
-    .map((token) => token.normalized)
-    .filter((word): word is string => Boolean(word));
+  const textWordToTokenIndex: number[] = [];
+  const textWords: string[] = [];
+
+  for (let tokenIndex = 0; tokenIndex < textTokens.length; tokenIndex += 1) {
+    const normalized = textTokens[tokenIndex].normalized;
+    if (!normalized) continue;
+
+    textWords.push(normalized);
+    textWordToTokenIndex.push(tokenIndex);
+  }
+
   const transcriptWords = splitWords(transcript)
     .map((word) => normalizeForMatching(word))
     .filter((word): word is string => Boolean(word));
 
-  const matchedWordCount = countMatchedWords(textWords, transcriptWords);
-  const isDone = textWords.length > 0 && matchedWordCount === textWords.length;
+  const lcsMatches = getLcsMatches(textWords, transcriptWords);
+  const matchedWordCount = lcsMatches.length;
 
   if (matchedWordCount === 0) {
     return {
       activeMarkdown: fullText,
-      isDone,
+      isDone: false,
     };
   }
 
-  const prefixEnd = getPrefixEnd(textTokens, matchedWordCount);
-  const prefix = fullText.slice(0, prefixEnd);
-  const suffix = fullText.slice(prefixEnd);
+  // Keep UX predictable: we only show progress after the user starts from the beginning.
+  if (lcsMatches[0].textWordIndex !== 0) {
+    return {
+      activeMarkdown: fullText,
+      isDone: false,
+    };
+  }
+
+  const matchedTextWordIndices = lcsMatches.map((match) => match.textWordIndex);
+  const runs = splitIntoRuns(matchedTextWordIndices);
+
+  const highlightedWordCount = runs.reduce((count, [start, end]) => count + (end - start + 1), 0);
+  const completionRatio = textWords.length > 0 ? highlightedWordCount / textWords.length : 0;
+  const isDone = completionRatio >= 0.5;
+
+  const activeMarkdown = renderRunsMarkdown(fullText, textTokens, textWordToTokenIndex, runs);
 
   return {
-    activeMarkdown: `*${prefix}*${suffix}`,
+    activeMarkdown,
     isDone,
   };
 };
