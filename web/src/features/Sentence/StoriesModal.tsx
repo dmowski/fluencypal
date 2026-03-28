@@ -19,7 +19,6 @@ import {
   RefreshCw,
   Volume2,
   VolumeX,
-  X,
 } from 'lucide-react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { SpeakOptions, useConversationAudio } from '../Audio/useConversationAudio';
@@ -328,6 +327,7 @@ export const StoriesModal = ({
 
   const startListenMode = async () => {
     audio.initAudio();
+    audio.setVolume(1);
     setListenState(null);
     setViewMode('listen');
     setListenState(null);

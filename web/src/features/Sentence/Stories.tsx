@@ -3,7 +3,6 @@ import { Button, IconButton, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 
 import { StoryPreview } from './StoryPreview';
-import { StoriesModal } from './StoriesModal';
 import { useStories } from './useStories';
 import { ArrowRight, RefreshCcw } from 'lucide-react';
 import Image from 'next/image';
