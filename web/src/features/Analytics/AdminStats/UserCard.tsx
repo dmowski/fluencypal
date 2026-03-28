@@ -334,7 +334,7 @@ export function UserCard({ userStat }: UserCardProps) {
           }}
           component={'a'}
           target="_blank"
-          href={`/practice?page=community&userId=${userId}`}
+          href={`/practice?userId=${userId}`}
         >
           {gameAvatar && (
             <img src={gameAvatar} style={{ borderRadius: '34px', width: '22px', height: '22px' }} />

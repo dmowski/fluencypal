@@ -9,15 +9,12 @@ import { createStripeCheckout } from '../createStripeCheckout';
 import { useLingui } from '@lingui/react';
 import { useCurrency } from '../../User/useCurrency';
 import { sentPaymentTgMessage } from '../sentTgMessage';
-import { FeatureList } from '../../Landing/Price/FeatureList';
 import { useSettings } from '../../Settings/useSettings';
 import { StripeCreateCheckoutRequest } from '../stripe.types';
 import { sleep } from '@/libs/sleep';
 import { useAnalytics } from '../../Analytics/useAnalytics';
-import { useUrlState } from '../../Url/useUrlState';
 import { PaymentSuccess } from '../HoursPaymentModal/PaymentSuccess';
 import { FaqSubscription } from './FaqSubscription';
-import { PriceContact } from '../HoursPaymentModal/PriceContact';
 import { ConfirmPayment } from './ConfirmPayment';
 import { HoursPackage, SubscriptionDuration } from './types';
 import { BalanceStatus } from './BalanceStatus';
@@ -28,8 +25,7 @@ import { pricePerHourUsd } from '@/features/Ai/ai';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { X } from 'lucide-react';
 import dayjs from 'dayjs';
-import { AccessStatusIcon } from './AccessStatusIcon';
-import { DynamicIcon, IconName } from 'lucide-react/dynamic';
+import { DynamicIcon } from 'lucide-react/dynamic';
 import { CONTACTS } from '@/features/Landing/Contact/data';
 import { FeatureItem } from './FeatureItem';
 import { useAccess } from '../useAccess';
@@ -374,10 +370,7 @@ export const SubscriptionPaymentModal = () => {
               )}
             </Stack>
 
-            {/*<ResultsSection />
-            <FeatureSection />*/}
             <FaqSubscription />
-            {/*<PriceContact />*/}
           </Stack>
         )}
         {!isShowConfirmPayments && (

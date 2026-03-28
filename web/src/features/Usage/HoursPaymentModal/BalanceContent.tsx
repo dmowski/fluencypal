@@ -1,7 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { BalanceHeader } from './BalanceHeader';
 import { FaqHours } from './FaqHours';
-import { PriceContact } from './PriceContact';
 import { useLingui } from '@lingui/react';
 import { HoursSelector } from './HourseSelector';
 
@@ -37,7 +36,6 @@ export const BalanceContent = ({
         }}
       >
         <FaqHours />
-        <PriceContact />
       </Stack>
     </Stack>
   );

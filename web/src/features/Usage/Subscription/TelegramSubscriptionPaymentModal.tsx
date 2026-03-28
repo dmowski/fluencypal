@@ -33,7 +33,6 @@ import { useAnalytics } from '../../Analytics/useAnalytics';
 import { useUrlState } from '../../Url/useUrlState';
 import { PaymentSuccess } from '../HoursPaymentModal/PaymentSuccess';
 import { FaqSubscription } from './FaqSubscription';
-import { PriceContact } from '../HoursPaymentModal/PriceContact';
 import { ConfirmPaymentForm } from '../HoursPaymentModal/ConfirmPaymentForm';
 import { FounderMessage } from '../HoursPaymentModal/FounderMessage';
 import { TgWalletButton } from './TgWalletButton';
@@ -724,7 +723,6 @@ export const TelegramSubscriptionPaymentModal = () => {
               </Stack>
 
               <FaqSubscription />
-              <PriceContact />
             </Stack>
           </>
         )}
