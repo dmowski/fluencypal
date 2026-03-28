@@ -282,7 +282,7 @@ When user struggle with one example, try to switch to another example and come b
                   }}
                 >
                   <Button
-                    color="info"
+                    color={'info'}
                     variant={isAllExamplesCompleted ? 'contained' : 'outlined'}
                     startIcon={
                       isAllExamplesCompleted ? <Check size={'18px'} /> : <Lock size={'18px'} />
@@ -298,11 +298,13 @@ When user struggle with one example, try to switch to another example and come b
                   </Button>
                 </Stack>
 
+                {/* TUNE UI*/}
                 <Stack
                   sx={{
                     alignItems: 'flex-start',
                     flexDirection: 'row',
                     gap: '20px',
+                    paddingTop: '60px',
                   }}
                 >
                   <Button
