@@ -69,8 +69,7 @@ export const InteractiveExample = ({
   };
 
   useEffect(() => {
-    if (isCompletedQuiz) {
-      // && isCompletedReading
+    if (isCompletedQuiz && isCompletedReading) {
       onComplete();
     }
   }, [isCompletedQuiz, isCompletedReading]);
@@ -262,7 +261,7 @@ export const InteractiveExample = ({
                     gap: '6px',
                     alignItems: 'center',
                     color: '#fff',
-                    backgroundColor: realtimeTranscript.isActive ? '#10b84549': '#10b845',
+                    backgroundColor: realtimeTranscript.isActive ? '#10b84549' : '#10b845',
                   }}
                 >
                   <CheckCheck size={'18px'} />
