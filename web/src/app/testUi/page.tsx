@@ -1,6 +1,7 @@
 import { TestPage } from './testComponents/TestPage';
 import { Suspense } from 'react';
 import { PracticeProvider } from '../practiceProvider';
+import { AuthWall } from '@/features/Auth/AuthWall';
 
 export default function UploadTestPage() {
   return (
@@ -11,7 +12,9 @@ export default function UploadTestPage() {
       <body>
         <PracticeProvider>
           <Suspense fallback={<div>Loading...</div>}>
-            <TestPage />
+            <AuthWall>
+              <TestPage />
+            </AuthWall>
           </Suspense>
         </PracticeProvider>
       </body>
