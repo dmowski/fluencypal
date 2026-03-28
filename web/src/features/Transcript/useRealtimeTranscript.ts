@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { SupportedLanguage } from '../Lang/lang';
 import { useSettings } from '../Settings/useSettings';
 import { useAuth } from '../Auth/useAuth';
@@ -16,6 +16,12 @@ import type {
   TranscriptMode,
 } from './types';
 
+const stopOthersEventName = 'darkeng:realtime-transcript-stop-others';
+
+type StopOthersEventDetail = {
+  requesterId: string;
+};
+
 export const useRealtimeTranscript = () => {
   const [completedTranscripts, setCompletedTranscripts] = useState<string[]>([]);
   const [partialTranscriptMap, setPartialTranscriptMap] = useState<Record<string, string>>({});
@@ -30,6 +36,9 @@ export const useRealtimeTranscript = () => {
   const dcRef = useRef<RTCDataChannel | null>(null);
   const recognitionRef = useRef<BrowserSpeechRecognition | null>(null);
   const stopRequestedRef = useRef(false);
+  const instanceIdRef = useRef(
+    `realtime-transcript-${Math.random().toString(36).slice(2, 10)}-${Date.now()}`,
+  );
 
   const partialTranscript = Object.values(partialTranscriptMap).join(' ');
 
@@ -130,13 +139,56 @@ export const useRealtimeTranscript = () => {
     setPartialTranscriptMap({});
   };
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const onStopOthers = (event: Event) => {
+      const customEvent = event as CustomEvent<StopOthersEventDetail>;
+      const requesterId = customEvent.detail?.requesterId;
+
+      if (requesterId === instanceIdRef.current) {
+        return;
+      }
+
+      if (!pcRef.current && !recognitionRef.current && !isActive && !isActivating) {
+        return;
+      }
+
+      stopRequestedRef.current = true;
+      setIsActive(false);
+      setIsActivating(false);
+      cleanup();
+    };
+
+    window.addEventListener(stopOthersEventName, onStopOthers);
+
+    return () => {
+      window.removeEventListener(stopOthersEventName, onStopOthers);
+    };
+  }, [isActive, isActivating]);
+
+  const requestStopOthers = () => {
+    if (typeof window === 'undefined') return;
+
+    window.dispatchEvent(
+      new CustomEvent<StopOthersEventDetail>(stopOthersEventName, {
+        detail: { requesterId: instanceIdRef.current },
+      }),
+    );
+  };
+
+  const startWithGuard = async (params: StartRealtimeTranscriptParams) => {
+    requestStopOthers();
+    await start(params);
+  };
+
   return {
     partialTranscript,
     completedTranscripts,
     transcript: partialTranscript
       ? [...completedTranscripts, partialTranscript]
       : completedTranscripts,
-    start,
+    start: startWithGuard,
     stop,
     clear,
     isActivating,
