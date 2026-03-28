@@ -177,9 +177,10 @@ export const InteractiveExample = ({
           <Stack
             direction="row"
             sx={{
-              gap: '8px',
+              gap: '12px',
               width: '100%',
               flexWrap: 'wrap',
+              alignItems: 'center',
               py: '8px',
             }}
           >
@@ -200,11 +201,17 @@ export const InteractiveExample = ({
                 <Typography variant="body2">{i18n._('Great job!')}</Typography>
               </Stack>
             ) : (
-              <>
+              <Stack
+                sx={{
+                  flexDirection: 'row',
+                  gap: '15px',
+                  alignItems: 'center',
+                }}
+              >
                 {realtimeTranscript.isActive ? (
                   <Button
                     variant="contained"
-                    color="secondary"
+                    color="error"
                     disabled={realtimeTranscript.isActivating}
                     onClick={stopRecording}
                   >
@@ -223,7 +230,7 @@ export const InteractiveExample = ({
                 )}
 
                 {realtimeTranscript.isActive && <PulseDot />}
-              </>
+              </Stack>
             )}
 
             <AudioPlayIcon text={example} type="icon" buttonLabel={i18n._('Play full example')} />
