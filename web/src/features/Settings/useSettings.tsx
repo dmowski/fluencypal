@@ -25,6 +25,7 @@ import { useUserSource } from '../Analytics/useUserSource';
 import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
 import { AiVoice } from '@/features/Ai/ai';
 import { useUrlState } from '../Url/useUrlState';
+import * as Sentry from '@sentry/nextjs';
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -156,8 +157,11 @@ function useProvideSettings(): SettingsContextType {
       return;
     }
 
-    const data = await getDoc(userSettingsDoc);
-    const isNew = !data.exists() || !data.data().createdAt;
+    const dataDoc = await getDoc(userSettingsDoc);
+    const isExists = dataDoc.exists();
+    const data = dataDoc.data();
+    const isNoCreatedAt = !data?.createdAt;
+    const isNew = !isExists || isNoCreatedAt;
     if (!isNew) {
       return;
     }
@@ -169,6 +173,14 @@ function useProvideSettings(): SettingsContextType {
 
     if (auth.userInfo?.email === 'dmowski.alex@gmail.com') {
       alert('Creating settings for user ' + auth.userInfo.email);
+      Sentry.captureException('Create settings AGAIN for ' + auth.userInfo.email, {
+        extra: {
+          email: auth.userInfo.email,
+          isExists,
+          isNoCreatedAt,
+          data,
+        },
+      });
     }
 
     const settingsData: InitUserSettings = {
