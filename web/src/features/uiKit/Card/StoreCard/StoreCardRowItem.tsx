@@ -22,7 +22,10 @@ export const StoreCardRowItem = ({
         cursor: 'pointer',
         backgroundColor: data.rowBgColor || 'transparent',
         borderRadius: borderRadius,
-        '@media (max-width: 400px)': {
+        '@media (max-width: 600px)': {
+          padding: '10px 15px',
+        },
+        '@media (max-width: 350px)': {
           padding: '10px 5px',
         },
       }}

@@ -22,6 +22,15 @@ export const StoreButton = ({ title, onClick }: { title: string; onClick: () => 
         ':hover': {
           backgroundColor: 'rgba(255, 255, 255, 0.2)',
         },
+        '@media (max-width: 600px)': {
+          height: '30px',
+          padding: '0 15px',
+          fontSize: '12px',
+        },
+        '@media (max-width: 400px)': {
+          height: '30px',
+          fontSize: '11px',
+        },
       }}
     >
       {title}
