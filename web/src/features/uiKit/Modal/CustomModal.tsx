@@ -8,6 +8,7 @@ interface CustomModalProps {
   onClose?: () => void;
   children: React.ReactNode;
   mobilePadding?: string;
+  desktopPadding?: string;
 }
 
 export const CustomModal = ({
@@ -15,6 +16,7 @@ export const CustomModal = ({
   onClose,
   children,
   mobilePadding,
+  desktopPadding,
 }: CustomModalProps): JSX.Element => {
   const sizes = useWindowSizes();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -92,7 +94,7 @@ export const CustomModal = ({
               sx={{
                 width: '100%',
                 alignItems: 'center',
-                padding: '40px',
+                padding: desktopPadding || '40px',
                 boxSizing: 'border-box',
                 minHeight: `calc(100dvh - ${sizes.topOffset} - ${sizes.bottomOffset} - 0px)`,
                 '@media (max-width: 600px)': {

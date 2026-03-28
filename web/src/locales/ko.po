@@ -2395,6 +2395,11 @@ msgstr ""
 "호텔에 도착한 손님 역할을 하게 되며, 저희 AI는 접수원의 역할을 맡습니다. 접수원은 귀하의 이름, 예약 세부사항 및 요청할 특별 "
 "사항에 대해 질문합니다. 자연스럽게 응답함으로써 원활한 호텔 체크인 경험을 위해 필요한 대화 기술을 키워 나가세요."
 
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:364
+#. js-lingui-explicit-id
+msgid "Check other grammar points and examples."
+msgstr "다른 문법 포인트와 예제를 확인하세요."
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:202
 #. js-lingui-explicit-id
 msgid "Check proposed words"
@@ -2595,10 +2600,15 @@ msgstr "회사"
 msgid "Complete all daily tasks to gain full access for that day!"
 msgstr "해당 날짜에 대한 전체 접근 권한을 얻기 위해 모든 일일 과제를 완료하세요!"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:244
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:253
 #. js-lingui-explicit-id
 msgid "Complete all examples to unlock the AI training option."
 msgstr "모든 예제를 완료하여 AI 훈련 옵션을 잠금 해제하세요."
+
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:309
+#. js-lingui-explicit-id
+msgid "Complete all interactive examples to unlock AI practice."
+msgstr "AI 연습을 잠금 해제하려면 모든 대화형 예제를 완료하세요."
 
 #: src/features/Dashboard/TasksCard.tsx:56
 #. js-lingui-explicit-id
@@ -2991,7 +3001,7 @@ msgstr "당신만의 역할극 시나리오 만들기"
 msgid "Create Your Own Scenario"
 msgstr "자신만의 시나리오 만들기"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:191
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:182
 #. js-lingui-explicit-id
 msgid "Creating your improvement..."
 msgstr "개선을 생성 중입니다..."
@@ -3581,7 +3591,7 @@ msgstr "연습 섹션에서 통화 모드를 꼭 시도해 보세요!"
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
 #: src/features/Conversation/ConversationCanvas.tsx:535
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:275
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:165
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:250
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
@@ -3599,7 +3609,7 @@ msgstr "완료"
 msgid "Done recording"
 msgstr "녹음 완료"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:266
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:335
 #. js-lingui-explicit-id
 msgid "Done:"
 msgstr "완료:"
@@ -4469,6 +4479,11 @@ msgid ""
 "learning."
 msgstr "FluencyPal 기능 탐색 - AI 영어 회화 연습, 개인 맞춤형 문법, 어휘 수업, 역할극, 이야기, 토론, 커뮤니티 학습."
 
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:362
+#. js-lingui-explicit-id
+msgid "Explore more grammar points"
+msgstr "더 많은 문법 포인트 탐색"
+
 #: src/features/Landing/LandingPage.tsx:431
 #. js-lingui-explicit-id
 msgid "Explore Role-Play Scenarios"
@@ -4635,7 +4650,7 @@ msgstr "최종 순위"
 msgid "Finalizing decision ..."
 msgstr "결정 마무리 중 ..."
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:232
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:259
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "완료"
@@ -4644,11 +4659,6 @@ msgstr "완료"
 #. js-lingui-explicit-id
 msgid "Finish a lesson from your Learning Plan"
 msgstr "학습 계획에서 수업 완료하기"
-
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:292
-#. js-lingui-explicit-id
-msgid "Finish reading to complete the exercise"
-msgstr "연습을 완료하려면 읽기를 끝내세요"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:118
 #. js-lingui-explicit-id
@@ -7050,7 +7060,7 @@ msgstr "인터랙티브 영어 이야기와 퀴즈 연습"
 msgid "Interactive English Stories with Quiz Practice | FluencyPal"
 msgstr "상호 작용 영어 이야기와 퀴즈 연습 | FluencyPal"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:241
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:250
 #. js-lingui-explicit-id
 msgid "Interactive examples:"
 msgstr "인터랙티브 예제:"
@@ -7206,7 +7216,7 @@ msgid ""
 "optimization without panic."
 msgstr "접근성 및 성능 최적화에 대한 질문을 당황하지 않고 대답할 수 있도록 도와줬습니다."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:194
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:185
 #. js-lingui-explicit-id
 msgid ""
 "It might take about a minute to prepare rules and examples based on your "
@@ -7274,6 +7284,16 @@ msgstr "면접 팁"
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "가입하기"
+
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:332
+#. js-lingui-explicit-id
+msgid "Join a Call"
+msgstr "통화 참여"
+
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:305
+#. js-lingui-explicit-id
+msgid "Join a call with our AI tutor to practice this rule."
+msgstr "우리의 AI 튜터와 함께 이 규칙을 연습하기 위해 통화에 참여하세요."
 
 #: src/features/Case/data/frontend-junior/reviewSection.ts:11
 #: src/features/Case/data/frontend-senior/reviewSection.ts:11
@@ -7970,7 +7990,7 @@ msgstr ""
 "통화를 시작하려면 마이크 액세스가 필요합니다.\n"
 "브라우저 설정에서 마이크 사용 권한을 허용하고 페이지를 새로 고친 후 다시 시도하세요."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:93
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -8256,7 +8276,6 @@ msgstr "새로운 단어들"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:335
 #: src/features/Game/Battle/BattleActionModal.tsx:399
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
@@ -9017,7 +9036,7 @@ msgstr "게임을 시작하려면 레벨을 선택하세요!"
 msgid "Pick one or more categories to build your word list."
 msgstr "하나 또는 여러 개의 카테고리를 선택하여 단어 목록을 만드세요."
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:130
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:138
 #. js-lingui-explicit-id
 msgid "Pick words to build the sentence"
 msgstr "문장을 구성할 단어 선택"
@@ -9049,7 +9068,7 @@ msgstr "Alias 게임을 오프라인에서 친구들과 직접 플레이하세�
 msgid "Play and Learn"
 msgstr "플레이와 학습"
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:257
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:284
 #. js-lingui-explicit-id
 msgid "Play full example"
 msgstr "전체 예시 재생"
@@ -9120,7 +9139,7 @@ msgstr "플레이어:"
 msgid "Please choose an image file."
 msgstr "이미지 파일을 선택하세요."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:75
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:76
 #. js-lingui-explicit-id
 msgid "Please complete all interactive examples before practicing with AI."
 msgstr "모든 상호작용 예제를 완료한 후에 AI와 연습하세요."
@@ -9557,11 +9576,6 @@ msgstr "기술 문제를 전화로 해결하는 연습하기"
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "어휘를 연습하며 창의적으로 단어를 설명하고 추측하세요."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:297
-#. js-lingui-explicit-id
-msgid "Practice with AI"
-msgstr "AI와 연습하기"
-
 #: src/features/Case/ListPage/components/ListInterviewIntro.tsx:82
 #. js-lingui-explicit-id
 msgid ""
@@ -9653,7 +9667,6 @@ msgstr "두뇌 준비하기"
 msgid "Preparing your game..."
 msgstr "게임을 준비 중입니다..."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:320
 #: src/features/Sentence/StoriesModal.tsx:651
 #. js-lingui-explicit-id
 msgid "Previous"
@@ -9901,7 +9914,12 @@ msgid ""
 "rounds"
 msgstr "React, Vue, 또는 Angular 전문가들이 아키텍처 및 시스템 설계 라운드를 경험하는 경우"
 
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:247
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:275
+#. js-lingui-explicit-id
+msgid "Read"
+msgstr "읽기"
+
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:274
 #. js-lingui-explicit-id
 msgid "Read again"
 msgstr "다시 읽기"
@@ -9967,6 +9985,11 @@ msgstr "플레이할 준비가 되셨나요?"
 #. js-lingui-explicit-id
 msgid "Ready to play?"
 msgstr "준비 되셨나요?"
+
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:301
+#. js-lingui-explicit-id
+msgid "Ready to real practice?"
+msgstr "실전 연습할 준비가 되셨나요?"
 
 #: src/features/Community/GamePage.tsx:74
 #. js-lingui-explicit-id
@@ -11171,11 +11194,6 @@ msgstr "연습 시작하기"
 #. js-lingui-explicit-id
 msgid "Start Practicing"
 msgstr "연습 시작하기"
-
-#: src/features/Dashboard/Grammar/InteractiveExample.tsx:248
-#. js-lingui-explicit-id
-msgid "Start reading"
-msgstr "읽기 시작하기"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:503
 #. js-lingui-explicit-id
@@ -14127,6 +14145,21 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:292
+#. js-lingui-explicit-id
+#~ msgid "Finish reading to complete the exercise"
+#~ msgstr "연습을 완료하려면 읽기를 끝내세요"
+
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:297
+#. js-lingui-explicit-id
+#~ msgid "Practice with AI"
+#~ msgstr "AI와 연습하기"
+
+#: src/features/Dashboard/Grammar/InteractiveExample.tsx:248
+#. js-lingui-explicit-id
+#~ msgid "Start reading"
+#~ msgstr "읽기 시작하기"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:291
 #. js-lingui-explicit-id
