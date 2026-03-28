@@ -104,15 +104,25 @@ export const InteractiveExample = ({
   });
 
   useEffect(() => {
+    if (readingProgress.isDone) {
+      realtimeTranscript.stop();
+      setIsCompletedReading(true);
+    }
+  }, [readingProgress.isDone]);
+
+  useEffect(() => {
     setProgress(initialProgress);
     setIsCompletedQuiz(false);
+    setIsCompletedReading(false);
   }, [initialProgress]);
 
   const emptyOption = `_____`;
   const progressString = progress ? `${progress} ${isCompletedQuiz ? '' : emptyOption}`.trim() : '';
-  const progressToShow = realtimeTranscript.isActive
-    ? '\n' + readingProgress.activeMarkdown
-    : '\n' + (progressString || initialProgress || i18n._('Pick words to build the sentence'));
+  const progressToShow = isCompletedReading
+    ? `\n *${cleanedExample}*`
+    : realtimeTranscript.isActive
+      ? '\n' + readingProgress.activeMarkdown
+      : '\n' + (progressString || initialProgress || i18n._('Pick words to build the sentence'));
 
   return (
     <Stack
@@ -132,6 +142,12 @@ export const InteractiveExample = ({
             padding: '2px 8px',
             borderRadius: '5px',
             fontWeight: '700',
+          },
+
+          '* em': {
+            color: 'rgb(255, 255, 255)',
+            fontStyle: 'normal',
+            backgroundColor: 'rgba(243, 21, 39, 0.61)',
           },
         }}
       >
@@ -184,7 +200,7 @@ export const InteractiveExample = ({
               py: '8px',
             }}
           >
-            {isCompletedReading ? (
+            {readingProgress.isDone ? (
               <Stack
                 sx={{
                   borderRadius: '6px',

@@ -13,6 +13,16 @@ type TextToken = {
   normalized: string | null;
 };
 
+// Arabic vowel diacritics (harakat) — STT engines typically strip these from output.
+const arabicDiacritics =
+  /[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED]/g;
+
+const normalizeForMatching = (word: string): string | null => {
+  const cleared = clearWordForAudio(word);
+  if (!cleared) return null;
+  return cleared.replace(arabicDiacritics, '');
+};
+
 const tokenizeText = (text: string): TextToken[] => {
   const tokens: TextToken[] = [];
 
@@ -24,7 +34,7 @@ const tokenizeText = (text: string): TextToken[] => {
       raw,
       start,
       end: start + raw.length,
-      normalized: clearWordForAudio(raw),
+      normalized: normalizeForMatching(raw),
     });
   }
 
@@ -93,7 +103,7 @@ export const getReadingProgress = (fullText: string, transcript: string): Readin
     .map((token) => token.normalized)
     .filter((word): word is string => Boolean(word));
   const transcriptWords = splitWords(transcript)
-    .map((word) => clearWordForAudio(word))
+    .map((word) => normalizeForMatching(word))
     .filter((word): word is string => Boolean(word));
 
   const matchedWordCount = countMatchedWords(textWords, transcriptWords);
