@@ -2,53 +2,8 @@
 
 ## Realtime transcript
 
-- How to handle case when text has "who", but recording provides "2"
-  -- Create a dictionary? Remove examples with numbers
-
-  -- Manually review all users readings to spot similar problems
-
 - Close previous transcript session after starting a new one
-
-## Reading:
-
-[ACTION_ITEM] Try old transcription mode to get transcription
-
-To start practice grammar improvement you need to fill:
-
-- [x] Interactive quiz (Done)
-- [ ] Then record sentence correctly
-
-What I really want from reading?
-
-: Guided support about what I am saying.
-
-How to achieve that? From UX prospective?
-
-: I am reading text and see what is good and what is wrong. So when something is wrong, I can repeat the phrase, maybe several times, and improve my pronunciation.
-
-For example sentences. Firstly, I hear example. Than I start repeating. I am telling one word, and see the system feedback.
-For example active word highlighted with green. If it's correct. Or red.
-
-If green: I just continue reading
-
-If red: I can repeat until I do it correctly.
-Options: Play word/phrase (by pressing on button or automatically)
-
-Questions - how to understand that it is really correct?
-For MVP it's enough that AI understand the phrase correctly
-
-How to achieve that "Guided support", can we use old mechanism for record voice?
-
-[ACTION_ITEM] Need to dive deeper into realtime api for transcript.
-How to do that?
-Create a simple hook and make connection with RTC.
-
-### How to do that?
-
-- [ ] MVP. Just use recorder that we do for all recording and compare strings
-- [ ] Use Realtime transcriber. But it might have downsides of quality
-
----
+- Update UI for handling partial isDone progress
 
 ## Add notifications about mentions in global chat
 
