@@ -65,7 +65,7 @@ export const InteractiveExample = ({
   };
 
   const readingProgressRuntime = useMemo(() => {
-    return getReadingProgress(cleanedExample, realtimeTranscript.transcript.join(' '));
+    return getReadingProgress(cleanedExample, realtimeTranscript.transcript);
   }, [cleanedExample, realtimeTranscript.transcript]);
 
   const readingProgress = completedReadingProgress || readingProgressRuntime;
@@ -298,7 +298,7 @@ export const InteractiveExample = ({
               }
             }
           >
-            {realtimeTranscript.transcript.join(' ')}
+            {realtimeTranscript.transcript}
           </Typography>
         )}
       </Stack>

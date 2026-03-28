@@ -23,8 +23,7 @@ type StopOthersEventDetail = {
 };
 
 export const useRealtimeTranscript = () => {
-  const [completedTranscripts, setCompletedTranscripts] = useState<string[]>([]);
-  const [partialTranscriptMap, setPartialTranscriptMap] = useState<Record<string, string>>({});
+  const [transcript, setTranscript] = useState('');
   const [isActive, setIsActive] = useState(false);
   const [isActivating, setIsActivating] = useState(false);
   const [activeMode, setActiveMode] = useState<TranscriptMode | null>(null);
@@ -40,10 +39,8 @@ export const useRealtimeTranscript = () => {
     `realtime-transcript-${Math.random().toString(36).slice(2, 10)}-${Date.now()}`,
   );
 
-  const partialTranscript = Object.values(partialTranscriptMap).join(' ');
-
   const cleanup = () => {
-    cleanupNativeRealtimeTranscript({ recognitionRef, setPartialTranscriptMap });
+    cleanupNativeRealtimeTranscript({ recognitionRef });
     cleanupOpenAiRealtimeTranscript({
       pcRef,
       dcRef,
@@ -54,8 +51,7 @@ export const useRealtimeTranscript = () => {
   };
 
   const resetTranscriptState = () => {
-    setCompletedTranscripts([]);
-    setPartialTranscriptMap({});
+    setTranscript('');
   };
 
   const startAiTranscript = async (language: SupportedLanguage) => {
@@ -69,8 +65,7 @@ export const useRealtimeTranscript = () => {
         stopRequestedRef,
       },
       state: {
-        setCompletedTranscripts,
-        setPartialTranscriptMap,
+        setTranscript,
         setIsActive,
         setIsActivating,
         setActiveMode,
@@ -88,8 +83,7 @@ export const useRealtimeTranscript = () => {
         stopRequestedRef,
       },
       state: {
-        setCompletedTranscripts,
-        setPartialTranscriptMap,
+        setTranscript,
         setIsActive,
         setIsActivating,
         setActiveMode,
@@ -135,8 +129,7 @@ export const useRealtimeTranscript = () => {
   };
 
   const clear = () => {
-    setCompletedTranscripts([]);
-    setPartialTranscriptMap({});
+    setTranscript('');
   };
 
   useEffect(() => {
@@ -183,11 +176,7 @@ export const useRealtimeTranscript = () => {
   };
 
   return {
-    partialTranscript,
-    completedTranscripts,
-    transcript: partialTranscript
-      ? [...completedTranscripts, partialTranscript]
-      : completedTranscripts,
+    transcript,
     start: startWithGuard,
     stop,
     clear,

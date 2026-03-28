@@ -12,8 +12,6 @@ export type TranscriptSdpResponse = {
   sdpResponse: string;
 };
 
-export type PartialTranscriptMap = Record<string, string>;
-
 export type BrowserSpeechRecognitionAlternative = {
   transcript: string;
 };
@@ -57,8 +55,7 @@ export type BrowserSpeechRecognitionConstructor = new () => BrowserSpeechRecogni
 export type SetState<T> = Dispatch<SetStateAction<T>>;
 
 export type TranscriptStateHandlers = {
-  setCompletedTranscripts: SetState<string[]>;
-  setPartialTranscriptMap: SetState<PartialTranscriptMap>;
+  setTranscript: SetState<string>;
   setIsActive: SetState<boolean>;
   setIsActivating: SetState<boolean>;
   setActiveMode: SetState<TranscriptMode | null>;

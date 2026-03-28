@@ -15,16 +15,8 @@ import { useSettings } from '../Settings/useSettings';
 import { PulseDot } from './PulseDot';
 
 export const TranscriptTest = () => {
-  const {
-    start,
-    stop,
-    clear,
-    isActive,
-    isActivating,
-    partialTranscript,
-    completedTranscripts,
-    activeMode,
-  } = useRealtimeTranscript();
+  const { start, stop, clear, isActive, isActivating, transcript, activeMode } =
+    useRealtimeTranscript();
   const settings = useSettings();
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<'ai' | 'native'>('native');
@@ -48,7 +40,7 @@ export const TranscriptTest = () => {
     setError(null);
   };
 
-  const hasContent = completedTranscripts.length > 0 || partialTranscript;
+  const hasContent = Boolean(transcript);
 
   return (
     <Stack sx={{ p: 3, gap: 2, maxWidth: 700 }}>
@@ -140,24 +132,15 @@ export const TranscriptTest = () => {
             backgroundColor: 'rgba(255,255,255,0.03)',
           }}
         >
-          {completedTranscripts.length === 0 && !partialTranscript && (
+          {!transcript && (
             <Typography variant="body2" color="text.secondary">
               Speak into your mic to see the transcript here…
             </Typography>
           )}
 
-          {completedTranscripts.map((text, i) => (
-            <Typography key={i} variant="body1" sx={{ opacity: 0.85 }}>
-              {text}
-            </Typography>
-          ))}
-
-          {partialTranscript && (
-            <Typography
-              variant="body1"
-              sx={{ color: 'primary.light', fontStyle: 'italic', opacity: 0.7 }}
-            >
-              {partialTranscript}
+          {transcript && (
+            <Typography variant="body1" sx={{ opacity: 0.85 }}>
+              {transcript}
             </Typography>
           )}
         </Stack>

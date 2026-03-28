@@ -1,51 +1,27 @@
 import { speechRecognitionLanguages } from '../Lang/lang';
 import type { SupportedLanguage } from '../Lang/lang';
 import type {
+  BrowserSpeechRecognitionEvent,
   BrowserSpeechRecognitionConstructor,
   TranscriptRefs,
   TranscriptStateHandlers,
 } from './types';
 
-const NATIVE_PARTIAL_ID = 'native-partial';
 const RECOVERABLE_NATIVE_ERRORS = new Set(['aborted', 'no-speech']);
 
-const clearNativePartialTranscript = (
-  setPartialTranscriptMap: TranscriptStateHandlers['setPartialTranscriptMap'],
-) => {
-  setPartialTranscriptMap((prev) => {
-    if (!prev[NATIVE_PARTIAL_ID]) return prev;
+const normalizeTranscript = (text: string): string => text.replace(/\s+/g, ' ').trim();
 
-    const next = { ...prev };
-    delete next[NATIVE_PARTIAL_ID];
-    return next;
-  });
-};
+const joinTranscriptParts = (parts: string[]): string => normalizeTranscript(parts.join(' '));
 
 const syncNativeTranscriptState = ({
   event,
-  persistedCompletedTranscripts,
+  persistedCompletedTranscript,
   state,
 }: {
-  event: Parameters<
-    NonNullable<TranscriptStateHandlers['setCompletedTranscripts']>
-  >[0] extends never
-    ? never
-    : Parameters<NonNullable<TranscriptStateHandlers['setPartialTranscriptMap']>>[0] extends never
-      ? never
-      : {
-          results: {
-            [index: number]: {
-              isFinal: boolean;
-              0: {
-                transcript: string;
-              };
-            };
-            length: number;
-          };
-        };
-  persistedCompletedTranscripts: string[];
+  event: BrowserSpeechRecognitionEvent;
+  persistedCompletedTranscript: string;
   state: TranscriptStateHandlers;
-}): string[] => {
+}): { completedTranscript: string; combinedTranscript: string } => {
   const nextRecognitionCompleted: string[] = [];
   const nextPartial: string[] = [];
 
@@ -62,20 +38,17 @@ const syncNativeTranscriptState = ({
     }
   }
 
-  const nextCompletedTranscripts = [...persistedCompletedTranscripts, ...nextRecognitionCompleted];
+  const recognitionCompleted = joinTranscriptParts(nextRecognitionCompleted);
+  const nextCompletedTranscript = joinTranscriptParts([
+    persistedCompletedTranscript,
+    recognitionCompleted,
+  ]);
+  const partialTranscript = joinTranscriptParts(nextPartial);
+  const combinedTranscript = joinTranscriptParts([nextCompletedTranscript, partialTranscript]);
 
-  state.setCompletedTranscripts(nextCompletedTranscripts);
+  state.setTranscript(combinedTranscript);
 
-  if (nextPartial.length === 0) {
-    clearNativePartialTranscript(state.setPartialTranscriptMap);
-  } else {
-    state.setPartialTranscriptMap((prev) => ({
-      ...prev,
-      [NATIVE_PARTIAL_ID]: nextPartial.join(' '),
-    }));
-  }
-
-  return nextCompletedTranscripts;
+  return { completedTranscript: nextCompletedTranscript, combinedTranscript };
 };
 
 const getSpeechRecognitionConstructor = (): BrowserSpeechRecognitionConstructor | null => {
@@ -86,9 +59,7 @@ const getSpeechRecognitionConstructor = (): BrowserSpeechRecognitionConstructor 
 
 export const cleanupNativeRealtimeTranscript = ({
   recognitionRef,
-  setPartialTranscriptMap,
-}: Pick<TranscriptRefs, 'recognitionRef'> &
-  Pick<TranscriptStateHandlers, 'setPartialTranscriptMap'>) => {
+}: Pick<TranscriptRefs, 'recognitionRef'>) => {
   const recognition = recognitionRef.current;
   recognitionRef.current = null;
 
@@ -104,8 +75,6 @@ export const cleanupNativeRealtimeTranscript = ({
       // noop
     }
   }
-
-  clearNativePartialTranscript(setPartialTranscriptMap);
 };
 
 export const startNativeRealtimeTranscript = async ({
@@ -133,7 +102,7 @@ export const startNativeRealtimeTranscript = async ({
 
   await new Promise<void>((resolve, reject) => {
     let isSettled = false;
-    let persistedCompletedTranscripts: string[] = [];
+    let persistedCompletedTranscript = '';
     let restartTimeoutId: number | null = null;
     let isRestarting = false;
 
@@ -161,15 +130,15 @@ export const startNativeRealtimeTranscript = async ({
       state.setIsActive(false);
       state.setIsActivating(false);
       state.setActiveMode(null);
+      state.setTranscript((prev) => normalizeTranscript(prev));
       cleanupNativeRealtimeTranscript({
         recognitionRef: refs.recognitionRef,
-        setPartialTranscriptMap: state.setPartialTranscriptMap,
       });
     };
 
     const startRecognition = () => {
       const recognition = new SpeechRecognition();
-      let latestCompletedTranscripts = persistedCompletedTranscripts;
+      let latestCompletedTranscript = persistedCompletedTranscript;
 
       refs.recognitionRef.current = recognition;
       recognition.continuous = true;
@@ -185,23 +154,23 @@ export const startNativeRealtimeTranscript = async ({
       };
 
       recognition.onresult = (event) => {
-        latestCompletedTranscripts = syncNativeTranscriptState({
+        const nextState = syncNativeTranscriptState({
           event,
-          persistedCompletedTranscripts,
+          persistedCompletedTranscript,
           state,
         });
+        latestCompletedTranscript = nextState.completedTranscript;
       };
 
       recognition.onerror = (event) => {
         if (RECOVERABLE_NATIVE_ERRORS.has(event.error)) {
-          clearNativePartialTranscript(state.setPartialTranscriptMap);
+          state.setTranscript(latestCompletedTranscript);
           return;
         }
 
         if (event.error === 'language-not-supported') {
           cleanupNativeRealtimeTranscript({
             recognitionRef: refs.recognitionRef,
-            setPartialTranscriptMap: state.setPartialTranscriptMap,
           });
 
           if (!isSettled) {
@@ -230,14 +199,15 @@ export const startNativeRealtimeTranscript = async ({
           refs.recognitionRef.current = null;
         }
 
-        persistedCompletedTranscripts = latestCompletedTranscripts;
-        clearNativePartialTranscript(state.setPartialTranscriptMap);
+        persistedCompletedTranscript = latestCompletedTranscript;
+        state.setTranscript(persistedCompletedTranscript);
 
         if (refs.stopRequestedRef.current) {
           clearRestartTimeout();
           state.setIsActive(false);
           state.setIsActivating(false);
           state.setActiveMode(null);
+          state.setTranscript(persistedCompletedTranscript);
           return;
         }
 
@@ -252,8 +222,8 @@ export const startNativeRealtimeTranscript = async ({
         }
 
         isRestarting = true;
-        state.setIsActive(false);
-        state.setIsActivating(true);
+        state.setIsActive(true);
+        state.setIsActivating(false);
 
         restartTimeoutId = window.setTimeout(() => {
           restartTimeoutId = null;
@@ -273,8 +243,7 @@ export const startNativeRealtimeTranscript = async ({
         if (refs.recognitionRef.current === recognition) {
           refs.recognitionRef.current = null;
         }
-
-        clearNativePartialTranscript(state.setPartialTranscriptMap);
+        state.setTranscript(latestCompletedTranscript);
 
         if (!isSettled) {
           rejectOnce(

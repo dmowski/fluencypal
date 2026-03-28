@@ -3,6 +3,33 @@ import { closeAudioMediaStream, getMediaAudioStreams } from '../webCam/mediaStre
 import type { SupportedLanguage } from '../Lang/lang';
 import type { TranscriptRefs, TranscriptSdpResponse, TranscriptStateHandlers } from './types';
 
+const normalizeTranscript = (text: string): string => text.replace(/\s+/g, ' ').trim();
+
+const appendTranscript = (current: string, next: string): string => {
+  const normalizedCurrent = normalizeTranscript(current);
+  const normalizedNext = normalizeTranscript(next);
+
+  if (!normalizedCurrent) return normalizedNext;
+  if (!normalizedNext) return normalizedCurrent;
+
+  return `${normalizedCurrent} ${normalizedNext}`;
+};
+
+const getCombinedTranscript = ({
+  completedTranscript,
+  partialById,
+}: {
+  completedTranscript: string;
+  partialById: Record<string, string>;
+}): string => {
+  const partialTranscript = normalizeTranscript(Object.values(partialById).join(' '));
+
+  if (!completedTranscript) return partialTranscript;
+  if (!partialTranscript) return completedTranscript;
+
+  return `${completedTranscript} ${partialTranscript}`;
+};
+
 const exchangeSdp = async (
   offer: RTCSessionDescriptionInit,
   authToken: string,
@@ -60,6 +87,8 @@ export const startOpenAiRealtimeTranscript = async ({
 
   state.setActiveMode('ai');
   refs.stopRequestedRef.current = false;
+  let completedTranscript = '';
+  const partialTranscriptById: Record<string, string> = {};
 
   const peerConnection = new RTCPeerConnection();
   refs.pcRef.current = peerConnection;
@@ -108,7 +137,13 @@ export const startOpenAiRealtimeTranscript = async ({
         const delta = payload.delta as string;
 
         if (id && delta) {
-          state.setPartialTranscriptMap((prev) => ({ ...prev, [id]: (prev[id] ?? '') + delta }));
+          partialTranscriptById[id] = `${partialTranscriptById[id] ?? ''}${delta}`;
+          state.setTranscript(
+            getCombinedTranscript({
+              completedTranscript,
+              partialById: partialTranscriptById,
+            }),
+          );
         }
       }
 
@@ -117,15 +152,18 @@ export const startOpenAiRealtimeTranscript = async ({
         const transcript = payload.transcript as string;
 
         if (transcript) {
-          state.setCompletedTranscripts((prev) => [...prev, transcript]);
+          completedTranscript = appendTranscript(completedTranscript, transcript);
 
           if (id) {
-            state.setPartialTranscriptMap((prev) => {
-              const next = { ...prev };
-              delete next[id];
-              return next;
-            });
+            delete partialTranscriptById[id];
           }
+
+          state.setTranscript(
+            getCombinedTranscript({
+              completedTranscript,
+              partialById: partialTranscriptById,
+            }),
+          );
         }
       }
     });
