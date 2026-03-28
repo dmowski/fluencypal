@@ -14,7 +14,7 @@ import { clearWordForAudio } from '@/features/Audio/clearWord';
 import { useRealtimeTranscript } from '@/features/Transcript/useRealtimeTranscript';
 import { PulseDot } from '@/features/Transcript/PulseDot';
 import { Button, Typography } from '@mui/material';
-import { CheckCheck, Mic } from 'lucide-react';
+import { CheckCheck, CircleStop, Mic, Pause } from 'lucide-react';
 import { getReadingProgress } from './getReadingProgress';
 
 const cleanMarkdownStyles = (text: string): string => {
@@ -204,58 +204,93 @@ export const InteractiveExample = ({
                 flexDirection: 'row',
                 gap: '15px',
                 alignItems: 'center',
+                //justifyContent: 'space-between',
+                width: '100%',
               }}
             >
-              {realtimeTranscript.isActive ? (
-                <Button
-                  variant="contained"
-                  color="error"
-                  disabled={realtimeTranscript.isActivating}
-                  onClick={stopRecording}
+              <Stack
+                sx={{
+                  flexDirection: 'row',
+                  gap: '15px',
+                  alignItems: 'center',
+                }}
+              >
+                {realtimeTranscript.isActive ? (
+                  <Button
+                    variant="contained"
+                    color="error"
+                    startIcon={<CircleStop size={16} />}
+                    disabled={realtimeTranscript.isActivating}
+                    onClick={stopRecording}
+                  >
+                    {i18n._('Finish')}
+                  </Button>
+                ) : (
+                  <>
+                    {!isCompletedReading && (
+                      <Button
+                        variant={isCompletedReading ? 'outlined' : 'contained'}
+                        color="secondary"
+                        startIcon={<Mic size={16} />}
+                        disabled={realtimeTranscript.isActivating}
+                        onClick={startRecording}
+                      >
+                        {realtimeTranscript.isActivating
+                          ? 'Loading...'
+                          : isCompletedReading
+                            ? i18n._('Read again')
+                            : i18n._('Start reading')}
+                      </Button>
+                    )}
+                  </>
+                )}
+                {realtimeTranscript.isActive && <PulseDot />}
+                <AudioPlayIcon
+                  text={example}
+                  type="icon"
+                  buttonLabel={i18n._('Play full example')}
+                />
+              </Stack>
+
+              {isCompletedReading ? (
+                <Stack
+                  sx={{
+                    borderRadius: '4px',
+                    width: 'fit-content',
+                    padding: '4px 8px',
+                    flexDirection: 'row',
+                    gap: '6px',
+                    alignItems: 'center',
+                    color: '#fff',
+                    backgroundColor: realtimeTranscript.isActive ? '#10b84549': '#10b845',
+                  }}
                 >
-                  {i18n._('Done')}
-                </Button>
+                  <CheckCheck size={'18px'} />
+                  <Typography variant="body2">{i18n._('Done')}</Typography>
+                </Stack>
               ) : (
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  startIcon={<Mic size={16} />}
-                  disabled={realtimeTranscript.isActivating}
-                  onClick={startRecording}
+                <Stack
+                  sx={{
+                    borderRadius: '6px',
+                    width: 'fit-content',
+                    padding: '4px 8px',
+                    flexDirection: 'row',
+                    gap: '6px',
+                    alignItems: 'center',
+                    color: '#d6dbd8',
+                    border: '1px solid #d4ddd749',
+                    display: 'none',
+                  }}
                 >
-                  {realtimeTranscript.isActivating ? 'Loading...' : i18n._('Start reading')}
-                </Button>
+                  <Typography variant="body2">
+                    {i18n._('Finish reading to complete the exercise')}
+                  </Typography>
+                </Stack>
               )}
-
-              {realtimeTranscript.isActive && <PulseDot />}
             </Stack>
-
-            <AudioPlayIcon text={example} type="icon" buttonLabel={i18n._('Play full example')} />
           </Stack>
         ) : (
           <OptionsList options={options} handlePick={handlePick} wrongWord={wrongWord} />
-        )}
-
-        {isCompletedReading && (
-          <Stack
-            sx={{
-              borderRadius: '6px',
-              width: 'fit-content',
-              padding: '4px 8px',
-              flexDirection: 'row',
-              gap: '6px',
-              alignItems: 'center',
-              color: '#b0d9c0',
-              border: '1px solid #b0d9c049',
-            }}
-          >
-            <CheckCheck size={'18px'} />
-            <Typography variant="body2">{i18n._('Great job!')}</Typography>
-          </Stack>
-        )}
-
-        {realtimeTranscript.isActive && (
-          <Typography>{realtimeTranscript.transcript.join(' ')}</Typography>
         )}
       </Stack>
     </Stack>

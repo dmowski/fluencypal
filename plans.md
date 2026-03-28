@@ -2,8 +2,12 @@
 
 ## Realtime transcript
 
+- When finished quiz, immediately start transcribing
+- When reading done in 100% accuracy, close transcript and mark as done
+
 - Close previous transcript session after starting a new one
 - Update UI for handling partial isDone progress
+  -- Describe UI states and how to show these steps
 
 ## Add notifications about mentions in global chat
 
