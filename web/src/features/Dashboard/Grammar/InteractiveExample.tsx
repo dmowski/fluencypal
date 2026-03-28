@@ -14,40 +14,13 @@ import { clearWordForAudio } from '@/features/Audio/clearWord';
 import { useRealtimeTranscript } from '@/features/Transcript/useRealtimeTranscript';
 import { Button, Typography } from '@mui/material';
 import { CheckCheck, Mic } from 'lucide-react';
+import { getReadingProgress } from './getReadingProgress';
 
 const cleanMarkdownStyles = (text: string): string => {
   return text
     .replace(/(\*\*|__)(.*?)\1/g, '$2')
     .replace(/(\*|_)(.*?)\1/g, '$2')
     .replace(/`([^`]+)`/g, '$1');
-};
-
-interface ReadingProgress {
-  // with separate styling for pronounced word
-  activeMarkdown: string;
-  isDone: boolean;
-}
-
-const getReadingProgress = (fullText: string, transcript: string): ReadingProgress => {
-  if (!transcript || transcript.trim() === '') {
-    return {
-      activeMarkdown: fullText,
-      isDone: false,
-    };
-  }
-
-  /**
-1. Split transcript and sentence into words and check that all words are pronounced
-2. Render pronounced words with "**word**" formatting
-*/
-
-  const textWords = splitWords(fullText).map((word) => clearWordForAudio(word) || '');
-  const transcriptWords = splitWords(transcript).map((word) => clearWordForAudio(word) || '');
-  console.log('textWords', textWords);
-  return {
-    activeMarkdown: textWords.join(' '),
-    isDone: false,
-  };
 };
 
 export const InteractiveExample = ({
@@ -89,8 +62,6 @@ export const InteractiveExample = ({
     () => getReadingProgress(cleanedExample, realtimeTranscript.transcript.join(' ')),
     [cleanedExample, realtimeTranscript.transcript],
   );
-
-  console.log('readingProgress', readingProgress);
 
   const stopRecording = async () => {
     realtimeTranscript.stop();
