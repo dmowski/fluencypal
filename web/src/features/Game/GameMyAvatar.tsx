@@ -20,9 +20,7 @@ export const GameMyAvatar = ({ avatarSize }: { avatarSize?: string }) => {
     game.setAvatar(url);
     setIsShowAvatarSelector(false);
   };
-  const avatarsToSelectFrom = uniq([game.myAvatar || '', myAuthAvatar || '', ...avatars]).filter(
-    Boolean,
-  );
+  const avatarsToSelectFrom = uniq([game.myAvatar || '', ...avatars]).filter(Boolean);
 
   return (
     <>

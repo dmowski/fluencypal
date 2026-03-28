@@ -1,5 +1,7 @@
 # Live document with short/long term ideas
 
+## Fix uploading images on avatars
+
 ## Reading
 
 Validate on polish grammar
