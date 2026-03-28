@@ -472,6 +472,9 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
         fontSize: '47px',
         paddingBottom: '15px',
         fontWeight: 900,
+        '@media (max-width: 600px)': {
+          fontSize: '32px',
+        },
       }}
     >
       {wrapChildrenWithTranslateWrapper(children)}

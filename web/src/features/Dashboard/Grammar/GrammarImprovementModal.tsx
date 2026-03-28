@@ -315,8 +315,9 @@ When user struggle with one example, try to switch to another example and come b
                       sx={{
                         alignItems: 'center',
                         flexDirection: 'row',
-                        gap: '20px',
+                        gap: '5px 20px',
                         width: '100%',
+                        flexWrap: 'wrap',
                       }}
                     >
                       <Button
