@@ -16,6 +16,10 @@ export const useQuizWordAudio = ({ targetLanguage }: { targetLanguage: Supported
 
   const cacheAudioWords = useCallback(
     async (words: string[]) => {
+      if (!audio.isUnlocked()) {
+        return;
+      }
+
       for (const word of words) {
         const cleanWord = clearWordForAudio(word);
         if (!cleanWord) continue;
@@ -40,6 +44,10 @@ export const useQuizWordAudio = ({ targetLanguage }: { targetLanguage: Supported
   const preloadWordAudio = useCallback(
     async (word: string) => {
       await sleep(40);
+      if (!audio.isUnlocked()) {
+        return;
+      }
+
       const cleanWord = clearWordForAudio(word);
       if (!cleanWord) return;
 
