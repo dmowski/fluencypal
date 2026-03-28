@@ -200,4 +200,17 @@ describe('getReadingProgress', () => {
       activeMarkdown: '*It’s a course* for beginners and intermediate students.',
     });
   });
+
+  it('returns 100 percent when transcript contains all words across repeated segments', () => {
+    const fullText = 'My brother and I went to the store after work.';
+    const transcript = 'my brother and I went to store after work I went to the store';
+
+    const result = getReadingProgress(fullText, transcript);
+
+    expect(result).toEqual({
+      isDone: true,
+      completionPercentage: 100,
+      activeMarkdown: '*My brother and I went to the store after work.*',
+    });
+  });
 });

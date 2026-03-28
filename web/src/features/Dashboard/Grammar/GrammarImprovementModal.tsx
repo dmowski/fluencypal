@@ -247,7 +247,7 @@ When user struggle with one example, try to switch to another example and come b
 
                   <Stack
                     sx={{
-                      gap: '40px',
+                      gap: '45px',
                     }}
                   >
                     {improvement.examples.map((example, index) => (

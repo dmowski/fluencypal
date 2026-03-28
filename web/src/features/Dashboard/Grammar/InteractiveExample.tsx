@@ -15,7 +15,7 @@ import { useRealtimeTranscript } from '@/features/Transcript/useRealtimeTranscri
 import { PulseDot } from '@/features/Transcript/PulseDot';
 import { Button, Typography } from '@mui/material';
 import { CheckCheck, CircleStop, Mic } from 'lucide-react';
-import { getReadingProgress } from './getReadingProgress';
+import { getReadingProgress, ReadingProgress } from './getReadingProgress';
 
 const cleanMarkdownStyles = (text: string): string => {
   return text
@@ -53,18 +53,25 @@ export const InteractiveExample = ({
   const [progress, setProgress] = useState(initialProgress);
   const [isCompletedQuiz, setIsCompletedQuiz] = useState(false);
   const [isCompletedReading, setIsCompletedReading] = useState(false);
+  const [completedReadingProgress, setCompletedReadingProgress] = useState<ReadingProgress | null>(
+    null,
+  );
 
   const realtimeTranscript = useRealtimeTranscript();
 
   const startRecording = async () => {
+    setCompletedReadingProgress(null);
     await realtimeTranscript.start({ mode: 'native', language: targetLanguage });
   };
 
-  const readingProgress = useMemo(() => {
+  const readingProgressRuntime = useMemo(() => {
     return getReadingProgress(cleanedExample, realtimeTranscript.transcript.join(' '));
   }, [cleanedExample, realtimeTranscript.transcript]);
 
+  const readingProgress = completedReadingProgress || readingProgressRuntime;
+
   const stopRecording = async () => {
+    setCompletedReadingProgress(readingProgress);
     realtimeTranscript.stop();
   };
 
@@ -113,7 +120,7 @@ export const InteractiveExample = ({
   useEffect(() => {
     if (readingProgress.completionPercentage !== 100) return;
     if (!realtimeTranscript.isActive) return;
-
+    setCompletedReadingProgress(readingProgress);
     realtimeTranscript.stop();
   }, [readingProgress.completionPercentage, realtimeTranscript.isActive]);
 
@@ -125,21 +132,37 @@ export const InteractiveExample = ({
 
   const emptyOption = `_____`;
   const progressString = progress ? `${progress} ${isCompletedQuiz ? '' : emptyOption}`.trim() : '';
-  const progressToShow = realtimeTranscript.isActive
-    ? '\n' + readingProgress.activeMarkdown
-    : '\n' + (progressString || initialProgress || i18n._('Pick words to build the sentence'));
+  const progressToShow =
+    realtimeTranscript.isActive || isCompletedReading
+      ? '\n' + readingProgress.activeMarkdown
+      : '\n' + (progressString || initialProgress || i18n._('Pick words to build the sentence'));
 
   return (
     <Stack
       sx={{
         gap: '7px',
-        paddingTop: '35px',
+        paddingTop: isCompletedReading ? '10px' : '47px',
         borderTop: '1px solid rgba(255, 255, 255, 0.2)',
         '@media (max-width: 600px)': {
           borderRadius: '0',
         },
       }}
     >
+      {isCompletedReading && (
+        <Stack
+          sx={{
+            width: 'fit-content',
+            flexDirection: 'row',
+            height: '30px',
+            gap: '6px',
+            alignItems: 'center',
+          }}
+        >
+          <CheckCheck size={'18px'} />
+          <Typography variant="body2">{i18n._('Done')}</Typography>
+        </Stack>
+      )}
+
       <Stack
         sx={{
           '* strong': {
@@ -150,9 +173,10 @@ export const InteractiveExample = ({
           },
 
           '* em': {
-            color: 'rgb(255, 255, 255)',
+            color: 'rgb(12, 12, 12)',
             fontStyle: 'normal',
-            backgroundColor: 'rgba(243, 21, 39, 0.61)',
+            backgroundColor: 'rgba(130, 227, 200, 0.93)',
+            borderRadius: '3px',
           },
         }}
       >
@@ -208,7 +232,7 @@ export const InteractiveExample = ({
             <Stack
               sx={{
                 flexDirection: 'row',
-                gap: '15px',
+                gap: '10px',
                 alignItems: 'center',
                 //justifyContent: 'space-between',
                 width: '100%',
@@ -257,42 +281,6 @@ export const InteractiveExample = ({
                   buttonLabel={i18n._('Play full example')}
                 />
               </Stack>
-
-              {isCompletedReading ? (
-                <Stack
-                  sx={{
-                    borderRadius: '4px',
-                    width: 'fit-content',
-                    padding: '4px 8px',
-                    flexDirection: 'row',
-                    gap: '6px',
-                    alignItems: 'center',
-                    color: '#fff',
-                    backgroundColor: realtimeTranscript.isActive ? '#10b84549' : '#10b845',
-                  }}
-                >
-                  <CheckCheck size={'18px'} />
-                  <Typography variant="body2">{i18n._('Done')}</Typography>
-                </Stack>
-              ) : (
-                <Stack
-                  sx={{
-                    borderRadius: '6px',
-                    width: 'fit-content',
-                    padding: '4px 8px',
-                    flexDirection: 'row',
-                    gap: '6px',
-                    alignItems: 'center',
-                    color: '#d6dbd8',
-                    border: '1px solid #d4ddd749',
-                    display: 'none',
-                  }}
-                >
-                  <Typography variant="body2">
-                    {i18n._('Finish reading to complete the exercise')}
-                  </Typography>
-                </Stack>
-              )}
             </Stack>
           </Stack>
         ) : (
@@ -300,7 +288,13 @@ export const InteractiveExample = ({
         )}
 
         {realtimeTranscript.isActive && (
-          <Typography>{realtimeTranscript.transcript.join(' ')}</Typography>
+          <Typography
+            sx={{
+              display: 'none',
+            }}
+          >
+            {realtimeTranscript.transcript.join(' ')}
+          </Typography>
         )}
       </Stack>
     </Stack>

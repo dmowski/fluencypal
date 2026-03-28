@@ -120,6 +120,30 @@ const splitIntoRuns = (matchedTextWordIndices: number[]): Array<[number, number]
   return runs;
 };
 
+const getWordInventoryCoverageCount = (textWords: string[], transcriptWords: string[]): number => {
+  if (!textWords.length || !transcriptWords.length) {
+    return 0;
+  }
+
+  const transcriptWordCounts = new Map<string, number>();
+
+  for (const word of transcriptWords) {
+    transcriptWordCounts.set(word, (transcriptWordCounts.get(word) ?? 0) + 1);
+  }
+
+  let matchedCount = 0;
+
+  for (const word of textWords) {
+    const count = transcriptWordCounts.get(word) ?? 0;
+    if (count <= 0) continue;
+
+    matchedCount += 1;
+    transcriptWordCounts.set(word, count - 1);
+  }
+
+  return matchedCount;
+};
+
 const renderRunsMarkdown = (
   fullText: string,
   tokens: TextToken[],
@@ -197,12 +221,20 @@ export const getReadingProgress = (fullText: string, transcript: string): Readin
   const matchedTextWordIndices = lcsMatches.map((match) => match.textWordIndex);
   const runs = splitIntoRuns(matchedTextWordIndices);
 
-  const highlightedWordCount = runs.reduce((count, [start, end]) => count + (end - start + 1), 0);
+  const lcsHighlightedWordCount = runs.reduce(
+    (count, [start, end]) => count + (end - start + 1),
+    0,
+  );
+  const inventoryCoverageCount = getWordInventoryCoverageCount(textWords, transcriptWords);
+  const highlightedWordCount = Math.max(lcsHighlightedWordCount, inventoryCoverageCount);
   const completionPercentage =
     textWords.length > 0 ? Math.round((highlightedWordCount / textWords.length) * 100) : 0;
   const isDone = completionPercentage > 50;
 
-  const activeMarkdown = renderRunsMarkdown(fullText, textTokens, textWordToTokenIndex, runs);
+  const activeMarkdown =
+    completionPercentage === 100
+      ? `*${fullText}*`
+      : renderRunsMarkdown(fullText, textTokens, textWordToTokenIndex, runs);
 
   return {
     activeMarkdown,
