@@ -1,7 +1,7 @@
 import { useLingui } from '@lingui/react';
 import { Button, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { ChevronLeft, ChevronRight, Loader } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight, Loader, Lock } from 'lucide-react';
 import { useTranslate } from '../../Translation/useTranslate';
 import { LoadingShapes } from '../../uiKit/Loading/LoadingShapes';
 import { Markdown } from '../../uiKit/Markdown/Markdown';
@@ -65,7 +65,7 @@ export const GrammarImprovementModalContent = ({ onClose }: { onClose: () => voi
 
   const isAllExamplesCompleted = improvement
     ? completedExamples.length === improvement.examples.length
-    : true;
+    : false;
 
   const isShowLoader = !improvement;
 
@@ -283,7 +283,10 @@ When user struggle with one example, try to switch to another example and come b
                 >
                   <Button
                     color="info"
-                    variant="outlined"
+                    variant={isAllExamplesCompleted ? 'contained' : 'outlined'}
+                    startIcon={
+                      isAllExamplesCompleted ? <Check size={'18px'} /> : <Lock size={'18px'} />
+                    }
                     size="large"
                     endIcon={isCallStarting ? <Loader /> : <VideocamIcon />}
                     sx={{

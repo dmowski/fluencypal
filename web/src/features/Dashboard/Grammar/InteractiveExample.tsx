@@ -70,6 +70,7 @@ export const InteractiveExample = ({
 
   useEffect(() => {
     if (isCompletedQuiz && isCompletedReading) {
+      console.log('COMPLETE', cleanedExample);
       onComplete();
     }
   }, [isCompletedQuiz, isCompletedReading]);
