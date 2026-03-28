@@ -11,40 +11,108 @@ const RECOVERABLE_NATIVE_ERRORS = new Set(['aborted', 'no-speech']);
 
 const normalizeTranscript = (text: string): string => text.replace(/\s+/g, ' ').trim();
 
-const joinTranscriptParts = (parts: string[]): string => normalizeTranscript(parts.join(' '));
+const mergeTranscriptText = (current: string, next: string): string => {
+  const normalizedCurrent = normalizeTranscript(current);
+  const normalizedNext = normalizeTranscript(next);
+
+  if (!normalizedCurrent) return normalizedNext;
+  if (!normalizedNext) return normalizedCurrent;
+
+  const currentParts = normalizedCurrent.split(' ');
+  const nextParts = normalizedNext.split(' ');
+  const maxOverlap = Math.min(currentParts.length, nextParts.length);
+
+  for (let overlap = maxOverlap; overlap > 0; overlap -= 1) {
+    const currentSuffix = currentParts.slice(currentParts.length - overlap).join(' ');
+    const nextPrefix = nextParts.slice(0, overlap).join(' ');
+
+    if (currentSuffix === nextPrefix) {
+      return [...currentParts, ...nextParts.slice(overlap)].join(' ');
+    }
+  }
+
+  return `${normalizedCurrent} ${normalizedNext}`;
+};
+
+const mergeTranscriptParts = (parts: string[]): string => {
+  let result = '';
+
+  for (const part of parts) {
+    result = mergeTranscriptText(result, part);
+  }
+
+  return result;
+};
 
 const syncNativeTranscriptState = ({
   event,
   persistedCompletedTranscript,
+  completedByIndex,
+  partialByIndex,
   state,
 }: {
   event: BrowserSpeechRecognitionEvent;
   persistedCompletedTranscript: string;
+  completedByIndex: Record<number, string>;
+  partialByIndex: Record<number, string>;
   state: TranscriptStateHandlers;
 }): { completedTranscript: string; combinedTranscript: string } => {
-  const nextRecognitionCompleted: string[] = [];
-  const nextPartial: string[] = [];
-
-  for (let index = 0; index < event.results.length; index += 1) {
+  for (let index = event.resultIndex; index < event.results.length; index += 1) {
     const result = event.results[index];
-    const transcript = result?.[0]?.transcript?.trim() || '';
-
-    if (!transcript) continue;
+    const transcript = normalizeTranscript(result?.[0]?.transcript || '');
 
     if (result.isFinal) {
-      nextRecognitionCompleted.push(transcript);
+      if (transcript) {
+        completedByIndex[index] = transcript;
+      } else {
+        delete completedByIndex[index];
+      }
+
+      delete partialByIndex[index];
     } else {
-      nextPartial.push(transcript);
+      if (transcript) {
+        partialByIndex[index] = transcript;
+      } else {
+        delete partialByIndex[index];
+      }
+
+      delete completedByIndex[index];
     }
   }
 
-  const recognitionCompleted = joinTranscriptParts(nextRecognitionCompleted);
-  const nextCompletedTranscript = joinTranscriptParts([
+  const maxIndex = event.results.length;
+
+  for (const key of Object.keys(completedByIndex)) {
+    if (Number(key) >= maxIndex) {
+      delete completedByIndex[Number(key)];
+    }
+  }
+
+  for (const key of Object.keys(partialByIndex)) {
+    if (Number(key) >= maxIndex) {
+      delete partialByIndex[Number(key)];
+    }
+  }
+
+  const completedSegments = Object.keys(completedByIndex)
+    .map((key) => Number(key))
+    .sort((a, b) => a - b)
+    .map((key) => completedByIndex[key])
+    .filter(Boolean);
+
+  const partialSegments = Object.keys(partialByIndex)
+    .map((key) => Number(key))
+    .sort((a, b) => a - b)
+    .map((key) => partialByIndex[key])
+    .filter(Boolean);
+
+  const recognitionCompleted = mergeTranscriptParts(completedSegments);
+  const nextCompletedTranscript = mergeTranscriptText(
     persistedCompletedTranscript,
     recognitionCompleted,
-  ]);
-  const partialTranscript = joinTranscriptParts(nextPartial);
-  const combinedTranscript = joinTranscriptParts([nextCompletedTranscript, partialTranscript]);
+  );
+  const partialTranscript = mergeTranscriptParts(partialSegments);
+  const combinedTranscript = mergeTranscriptText(nextCompletedTranscript, partialTranscript);
 
   state.setTranscript(combinedTranscript);
 
@@ -139,6 +207,8 @@ export const startNativeRealtimeTranscript = async ({
     const startRecognition = () => {
       const recognition = new SpeechRecognition();
       let latestCompletedTranscript = persistedCompletedTranscript;
+      const completedByIndex: Record<number, string> = {};
+      const partialByIndex: Record<number, string> = {};
 
       refs.recognitionRef.current = recognition;
       recognition.continuous = true;
@@ -157,6 +227,8 @@ export const startNativeRealtimeTranscript = async ({
         const nextState = syncNativeTranscriptState({
           event,
           persistedCompletedTranscript,
+          completedByIndex,
+          partialByIndex,
           state,
         });
         latestCompletedTranscript = nextState.completedTranscript;
