@@ -37,7 +37,7 @@ Update first video landscape video
 
 ## Emails
 
-After Sign Up: send welcome email
+After Sign Up: send welcome email. With idea behind project. Not "beautiful" templates. Just write as you feel
 
 # Price
 
