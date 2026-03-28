@@ -2,12 +2,10 @@
 
 ## Realtime transcript
 
-- When finished quiz, immediately start transcribing
-- When reading done in 100% accuracy, close transcript and mark as done
+There's a case when user press "Start reading" in several interactiveExamples.
+In this case, close previous transcript session before starting a new one.
 
-- Close previous transcript session after starting a new one
-- Update UI for handling partial isDone progress
-  -- Describe UI states and how to show these steps
+Figure out on how to better to that. Analyze usage of <InteractiveExamples> components
 
 ## Add notifications about mentions in global chat
 

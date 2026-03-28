@@ -9,6 +9,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: false,
+      completionPercentage: 0,
       activeMarkdown: fullText,
     });
   });
@@ -21,6 +22,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: true,
+      completionPercentage: 73,
       activeMarkdown: '*I practiced English with my teacher, and we* read a book.',
     });
   });
@@ -33,6 +35,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: true,
+      completionPercentage: 100,
       activeMarkdown: '*Wait, what is this?*',
     });
   });
@@ -45,6 +48,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: false,
+      completionPercentage: 0,
       activeMarkdown: fullText,
     });
   });
@@ -57,6 +61,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: true,
+      completionPercentage: 83,
       activeMarkdown: '*We travel by train every* weekend.',
     });
   });
@@ -69,6 +74,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: true,
+      completionPercentage: 88,
       activeMarkdown: '*我 练习 英语 和 老师 一起 阅读* 书籍。',
     });
   });
@@ -81,6 +87,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: true,
+      completionPercentage: 100,
       activeMarkdown: '*أنا أتمرن على الإنجليزية مع معلمي، ثم نقرأ كتابًا.*',
     });
   });
@@ -93,6 +100,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: false,
+      completionPercentage: 0,
       activeMarkdown: fullText,
     });
   });
@@ -106,6 +114,7 @@ describe('getReadingProgress', () => {
     // second "the" is not yet read — prefix ends after "and"
     expect(result).toEqual({
       isDone: true,
+      completionPercentage: 71,
       activeMarkdown: '*She took the book and* the bag.',
     });
   });
@@ -118,6 +127,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: true,
+      completionPercentage: 100,
       activeMarkdown: '*Hello!*',
     });
   });
@@ -132,6 +142,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: true,
+      completionPercentage: 100,
       activeMarkdown: '*Wait ... are you there?*',
     });
   });
@@ -146,6 +157,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: true,
+      completionPercentage: 100,
       activeMarkdown: '*أنا أقرأُ كلَّ يوم.*',
     });
   });
@@ -158,6 +170,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: true,
+      completionPercentage: 80,
       activeMarkdown: "*No, it's a book by* Malcolm *Gladwell and David* Ingoloff.",
     });
   });
@@ -170,6 +183,7 @@ describe('getReadingProgress', () => {
 
     expect(result).toEqual({
       isDone: true,
+      completionPercentage: 75,
       activeMarkdown: '*I have* two *books.*',
     });
   });

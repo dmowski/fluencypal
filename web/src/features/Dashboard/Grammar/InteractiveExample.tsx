@@ -14,7 +14,7 @@ import { clearWordForAudio } from '@/features/Audio/clearWord';
 import { useRealtimeTranscript } from '@/features/Transcript/useRealtimeTranscript';
 import { PulseDot } from '@/features/Transcript/PulseDot';
 import { Button, Typography } from '@mui/material';
-import { CheckCheck, CircleStop, Mic, Pause } from 'lucide-react';
+import { CheckCheck, CircleStop, Mic } from 'lucide-react';
 import { getReadingProgress } from './getReadingProgress';
 
 const cleanMarkdownStyles = (text: string): string => {
@@ -105,10 +105,23 @@ export const InteractiveExample = ({
 
   useEffect(() => {
     if (readingProgress.isDone) {
-      // realtimeTranscript.stop();
       setIsCompletedReading(true);
     }
   }, [readingProgress.isDone]);
+
+  useEffect(() => {
+    if (readingProgress.completionPercentage !== 100) return;
+    if (!realtimeTranscript.isActive) return;
+
+    realtimeTranscript.stop();
+  }, [readingProgress.completionPercentage, realtimeTranscript.isActive]);
+
+  useEffect(() => {
+    if (!isCompletedQuiz || isCompletedReading) return;
+    if (realtimeTranscript.isActive || realtimeTranscript.isActivating) return;
+
+    void startRecording();
+  }, [isCompletedQuiz, isCompletedReading, realtimeTranscript.isActive, realtimeTranscript.isActivating]);
 
   useEffect(() => {
     setProgress(initialProgress);

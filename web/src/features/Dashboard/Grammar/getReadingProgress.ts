@@ -4,6 +4,7 @@ import { splitWords } from '@/features/Sentence/TextConstructor/textConstructor.
 export interface ReadingProgress {
   activeMarkdown: string;
   isDone: boolean;
+  completionPercentage: number;
 }
 
 type TextToken = {
@@ -152,6 +153,7 @@ export const getReadingProgress = (fullText: string, transcript: string): Readin
     return {
       activeMarkdown: fullText,
       isDone: false,
+      completionPercentage: 0,
     };
   }
 
@@ -178,6 +180,7 @@ export const getReadingProgress = (fullText: string, transcript: string): Readin
     return {
       activeMarkdown: fullText,
       isDone: false,
+      completionPercentage: 0,
     };
   }
 
@@ -186,6 +189,7 @@ export const getReadingProgress = (fullText: string, transcript: string): Readin
     return {
       activeMarkdown: fullText,
       isDone: false,
+      completionPercentage: 0,
     };
   }
 
@@ -193,13 +197,15 @@ export const getReadingProgress = (fullText: string, transcript: string): Readin
   const runs = splitIntoRuns(matchedTextWordIndices);
 
   const highlightedWordCount = runs.reduce((count, [start, end]) => count + (end - start + 1), 0);
-  const completionRatio = textWords.length > 0 ? highlightedWordCount / textWords.length : 0;
-  const isDone = completionRatio >= 0.5;
+  const completionPercentage =
+    textWords.length > 0 ? Math.round((highlightedWordCount / textWords.length) * 100) : 0;
+  const isDone = completionPercentage > 50;
 
   const activeMarkdown = renderRunsMarkdown(fullText, textTokens, textWordToTokenIndex, runs);
 
   return {
     activeMarkdown,
     isDone,
+    completionPercentage,
   };
 };
