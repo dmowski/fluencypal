@@ -1,17 +1,8 @@
 # Live document with short/long term ideas
 
-## Native transcript on android fails
-
-Renders too many transcripts. stops after a recorder message
-
-## Daily Tasks: tune title/subtile
-
-It's too much "exiting"
-
 ## Grammar improvement: AI call
 
-How to start "Call". Why it's fails during starting
-Validate on polish grammar
+Why it's fails during starting on mobile?
 
 ## Validate new AI model for conversation
 
