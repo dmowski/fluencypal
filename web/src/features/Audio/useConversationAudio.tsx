@@ -60,7 +60,7 @@ interface ConversationAudioContextType {
   ) => Promise<boolean>;
 
   setTextAsPotentialSpeak: (text: string, opts: SpeakOptions) => Promise<void>;
-  playPotentialSpeakUrl: (text: string, opts: SpeakOptions) => Promise<void>;
+  playPotentialSpeakUrl: (text: string, opts: SpeakOptions, onEnd?: () => void) => Promise<void>;
 
   /** Stop everything immediately and clear queue. */
   interrupt: () => void;
@@ -572,13 +572,19 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     await playerRef.current!.setTextAsPotentialSpeak(url);
   }, []);
 
-  const playPotentialSpeakUrl = useCallback(async (text: string, opts: SpeakOptions) => {
-    const url = generateTtsStreamUrl(text, opts);
-    setLastPlayedText('');
-    await playerRef.current!.playPotentialSpeakUrl(url, () => {
-      setLastPlayedText(text);
-    });
-  }, []);
+  const playPotentialSpeakUrl = useCallback(
+    async (text: string, opts: SpeakOptions, onEnd?: () => void) => {
+      const url = generateTtsStreamUrl(text, opts);
+      setLastPlayedText('');
+      await playerRef.current!.playPotentialSpeakUrl(url, () => {
+        setLastPlayedText(text);
+        if (onEnd) {
+          onEnd();
+        }
+      });
+    },
+    [],
+  );
 
   const initCache = useCallback(
     async (

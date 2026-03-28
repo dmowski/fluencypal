@@ -13,8 +13,8 @@ import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 import { clearWordForAudio } from '@/features/Audio/clearWord';
 import { useRealtimeTranscript } from '@/features/Transcript/useRealtimeTranscript';
 import { PulseDot } from '@/features/Transcript/PulseDot';
-import { Button, Typography } from '@mui/material';
-import { CheckCheck, CircleStop, Mic } from 'lucide-react';
+import { Button, IconButton, Typography } from '@mui/material';
+import { CheckCheck, CircleStop, Mic, Volume2 } from 'lucide-react';
 import { getReadingProgress, ReadingProgress } from './getReadingProgress';
 
 const cleanMarkdownStyles = (text: string): string => {
@@ -46,8 +46,6 @@ export const InteractiveExample = ({
   const cleanedExample = useMemo(() => cleanMarkdownStyles(example), [example]);
 
   const words = useMemo(() => splitWords(cleanedExample), [cleanedExample]);
-  const lastWord = useMemo(() => words[words.length - 1], [words]);
-  const clearLastWordForAudio = useMemo(() => clearWordForAudio(lastWord), [lastWord]);
   const initialProgress = useMemo(() => words[0] ?? '', [words]);
 
   const [progress, setProgress] = useState(initialProgress);
@@ -59,9 +57,15 @@ export const InteractiveExample = ({
 
   const realtimeTranscript = useRealtimeTranscript();
 
+  const [isRecordingLoading, setIsRecordingLoading] = useState(false);
+
   const startRecording = async () => {
+    setIsRecordingLoading(true);
+    await playFullExampleAudio();
+
     setCompletedReadingProgress(null);
     await realtimeTranscript.start({ mode: 'native', language: targetLanguage });
+    setIsRecordingLoading(false);
   };
 
   const readingProgressRuntime = useMemo(() => {
@@ -84,15 +88,13 @@ export const InteractiveExample = ({
 
   const playFullExampleAudio = async () => {
     sleep(300);
-    await audio.playPotentialSpeakUrl(cleanedExample, quizWordAudio.speakOptions);
+    return new Promise<void>((resolve) => {
+      audio.playPotentialSpeakUrl(cleanedExample, quizWordAudio.speakOptions, () => {
+        console.log('FULL AUDIO PLAYED?');
+        resolve();
+      });
+    });
   };
-
-  useEffect(() => {
-    const isLastWordPlayed =
-      clearLastWordForAudio && clearLastWordForAudio === audio.lastPlayedText;
-    if (!isLastWordPlayed) return;
-    playFullExampleAudio();
-  }, [audio.lastPlayedText]);
 
   const { options, wrongWord, handlePick } = useTextConstructorFlow({
     sentences: [cleanedExample],
@@ -264,8 +266,8 @@ export const InteractiveExample = ({
                       <Button
                         variant={isCompletedReading ? 'outlined' : 'contained'}
                         color="secondary"
-                        startIcon={<Mic size={16} />}
-                        disabled={realtimeTranscript.isActivating}
+                        startIcon={isRecordingLoading ? <Volume2 size={16} /> : <Mic size={16} />}
+                        disabled={realtimeTranscript.isActivating || isRecordingLoading}
                         onClick={startRecording}
                       >
                         {realtimeTranscript.isActivating
@@ -278,11 +280,9 @@ export const InteractiveExample = ({
                   </>
                 )}
                 {realtimeTranscript.isActive && <PulseDot />}
-                <AudioPlayIcon
-                  text={example}
-                  type="icon"
-                  buttonLabel={i18n._('Play full example')}
-                />
+                <IconButton onClick={playFullExampleAudio}>
+                  <Volume2 size={'18px'} />
+                </IconButton>
               </Stack>
             </Stack>
           </Stack>
