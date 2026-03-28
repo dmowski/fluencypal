@@ -12,6 +12,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useRealtimeTranscript } from './useRealtimeTranscript';
 import { SupportedLanguage, fullEnglishLanguageName, supportedLanguages } from '../Lang/lang';
 import { useSettings } from '../Settings/useSettings';
+import { PulseDot } from './PulseDot';
 
 export const TranscriptTest = () => {
   const {
@@ -114,19 +115,7 @@ export const TranscriptTest = () => {
 
         {isActive && (
           <Stack direction="row" sx={{ gap: 0.5, alignItems: 'center' }}>
-            <Stack
-              sx={{
-                width: 8,
-                height: 8,
-                borderRadius: '50%',
-                backgroundColor: 'error.main',
-                animation: 'pulse 1.2s ease-in-out infinite',
-                '@keyframes pulse': {
-                  '0%, 100%': { opacity: 1 },
-                  '50%': { opacity: 0.3 },
-                },
-              }}
-            />
+            <PulseDot />
             <Typography variant="caption" color="error">
               Recording via {activeMode === 'native' ? 'native browser' : 'AI realtime'}
             </Typography>

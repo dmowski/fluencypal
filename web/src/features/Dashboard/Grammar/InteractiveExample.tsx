@@ -12,6 +12,7 @@ import { sleep } from '@/libs/sleep';
 import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 import { clearWordForAudio } from '@/features/Audio/clearWord';
 import { useRealtimeTranscript } from '@/features/Transcript/useRealtimeTranscript';
+import { PulseDot } from '@/features/Transcript/PulseDot';
 import { Button, Typography } from '@mui/material';
 import { CheckCheck, Mic } from 'lucide-react';
 import { getReadingProgress } from './getReadingProgress';
@@ -220,6 +221,8 @@ export const InteractiveExample = ({
                     {realtimeTranscript.isActivating ? 'Loading...' : i18n._('Start reading')}
                   </Button>
                 )}
+
+                {realtimeTranscript.isActive && <PulseDot />}
               </>
             )}
 
