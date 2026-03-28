@@ -44,6 +44,7 @@ export const InteractiveExample = ({
   const audio = useConversationAudio();
 
   const cleanedExample = useMemo(() => cleanMarkdownStyles(example), [example]);
+
   const words = useMemo(() => splitWords(cleanedExample), [cleanedExample]);
   const lastWord = useMemo(() => words[words.length - 1], [words]);
   const clearLastWordForAudio = useMemo(() => clearWordForAudio(lastWord), [lastWord]);
@@ -59,10 +60,9 @@ export const InteractiveExample = ({
     await realtimeTranscript.start({ mode: 'native', language: targetLanguage });
   };
 
-  const readingProgress = useMemo(
-    () => getReadingProgress(cleanedExample, realtimeTranscript.transcript.join(' ')),
-    [cleanedExample, realtimeTranscript.transcript],
-  );
+  const readingProgress = useMemo(() => {
+    return getReadingProgress(cleanedExample, realtimeTranscript.transcript.join(' '));
+  }, [cleanedExample, realtimeTranscript.transcript]);
 
   const stopRecording = async () => {
     realtimeTranscript.stop();
