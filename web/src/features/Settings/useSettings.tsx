@@ -26,6 +26,7 @@ import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
 import { AiVoice } from '@/features/Ai/ai';
 import { useUrlState } from '../Url/useUrlState';
 import * as Sentry from '@sentry/nextjs';
+import { sleep } from '@/libs/sleep';
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -156,6 +157,8 @@ function useProvideSettings(): SettingsContextType {
     if (!userId || !userSettingsDoc) {
       return;
     }
+
+    await sleep(500);
 
     const dataDoc = await getDoc(userSettingsDoc);
     const isExists = dataDoc.exists();
