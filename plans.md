@@ -5,15 +5,13 @@
 How to start "Call". Why it's fails during starting
 Validate on polish grammar
 
-## Daily question
+## Validate new AI model for conversation
 
-- Daily Tasks - Show image that is used for todays question
+gpt realtime 1.5. Can we limit free users more and focus on quality
 
 ## Add notifications about mentions in global chat
 
 Maybe combine all notification into one flow?
-
-## Validate new AI model for conversation
 
 ## Community
 
