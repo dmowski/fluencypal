@@ -14,7 +14,7 @@ import { clearWordForAudio } from '@/features/Audio/clearWord';
 import { useRealtimeTranscript } from '@/features/Transcript/useRealtimeTranscript';
 import { Button, Typography } from '@mui/material';
 import { StringDiff } from 'react-string-diff';
-import { Mic } from 'lucide-react';
+import { CheckCheck, Mic } from 'lucide-react';
 
 const cleanMarkdownStyles = (text: string): string => {
   return text
@@ -22,8 +22,6 @@ const cleanMarkdownStyles = (text: string): string => {
     .replace(/(\*|_)(.*?)\1/g, '$2')
     .replace(/`([^`]+)`/g, '$1');
 };
-
-const IS_SHOW_READING = false;
 
 export const InteractiveExample = ({
   example,
@@ -52,7 +50,7 @@ export const InteractiveExample = ({
 
   const [progress, setProgress] = useState(initialProgress);
   const [isCompletedQuiz, setIsCompletedQuiz] = useState(false);
-  const [isCompletedReading, setIsCompletedReading] = useState(true);
+  const [isCompletedReading, setIsCompletedReading] = useState(false);
 
   const realtimeTranscript = useRealtimeTranscript();
 
@@ -178,9 +176,23 @@ export const InteractiveExample = ({
               py: '8px',
             }}
           >
-            <AudioPlayIcon text={example} type="button" buttonLabel={i18n._('Play full example')} />
-
-            {IS_SHOW_READING && (
+            {isCompletedReading ? (
+              <Stack
+                sx={{
+                  borderRadius: '6px',
+                  width: 'fit-content',
+                  padding: '4px 8px',
+                  flexDirection: 'row',
+                  gap: '6px',
+                  alignItems: 'center',
+                  color: '#b0d9c0',
+                  border: '1px solid #b0d9c049',
+                }}
+              >
+                <CheckCheck size={'18px'} />
+                <Typography variant="body2">{i18n._('Great job!')}</Typography>
+              </Stack>
+            ) : (
               <>
                 {realtimeTranscript.isActive ? (
                   <Button
@@ -194,7 +206,8 @@ export const InteractiveExample = ({
                 ) : (
                   <Button
                     variant="contained"
-                    color="info"
+                    color="secondary"
+                    startIcon={<Mic size={16} />}
                     disabled={realtimeTranscript.isActivating}
                     onClick={startRecording}
                   >
@@ -203,59 +216,13 @@ export const InteractiveExample = ({
                 )}
               </>
             )}
+
+            <AudioPlayIcon text={example} type="icon" buttonLabel={i18n._('Play full example')} />
           </Stack>
         ) : (
           <OptionsList options={options} handlePick={handlePick} wrongWord={wrongWord} />
         )}
       </Stack>
-      {isCompletedQuiz && IS_SHOW_READING && (
-        <Stack
-          sx={{
-            width: '100%',
-            gap: '10px',
-          }}
-        >
-          <Stack
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: 'max-content 1fr',
-              gap: '10px',
-              alignItems: 'center',
-            }}
-          >
-            <Mic size={'18px'} />
-            <Typography
-              variant="body2"
-              component={'div'}
-              sx={{
-                fontWeight: 400,
-                fontSize: '18px',
-                paddingBottom: '3px',
-              }}
-            >
-              <StringDiff
-                styles={{
-                  added: {
-                    color: '#81d3e3',
-                    fontWeight: 600,
-                  },
-                  removed: {
-                    textDecoration: 'none',
-                    opacity: 1,
-                    color: '#c2c2c2',
-                  },
-                  default: {
-                    color: 'rgba(88, 241, 157, 0.8)',
-                    fontWeight: 500,
-                  },
-                }}
-                oldValue={cleanedExample}
-                newValue={realtimeTranscript.transcript.join('') || ''}
-              />
-            </Typography>
-          </Stack>
-        </Stack>
-      )}
     </Stack>
   );
 };
