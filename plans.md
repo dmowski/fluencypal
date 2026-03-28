@@ -1,14 +1,12 @@
 # Live document with short/long term ideas
 
-## Realtime transcript
+## Reading
 
-- Tune of next Grammar/prev. and Practice with AI
+Validate on polish grammar
 
 ## Add notifications about mentions in global chat
 
 Maybe combine all notification into one flow?
-
----
 
 ## Daily question
 
